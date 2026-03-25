@@ -52,9 +52,8 @@ region_keywords <- c("Africa", "Americas", "Asia", "Europe", "Oceania",
   "Land Locked", "Net Food")
 
 classify_type <- function(name, prefix, code) {
-  # Regions
+  # FAO-prefixed entries are always regions
   if (prefix %in% fao_region_prefixes) return("region")
-  if (any(str_detect(name, fixed(region_keywords)))) return("region")
 
   # Historical empires and multi-state entities
   empire_names <- c("Ottoman Empire", "Austria-Hungary", "USSR",
@@ -62,6 +61,17 @@ classify_type <- function(name, prefix, code) {
     "Ethiopia (old)", "Korea (old)", "Sudan (old)", "Tibet (old)",
     "Netherlands (old)", "Luxembourg (old)", "Netherlands Antilles (original)")
   if (name %in% empire_names) return("aggregate")
+
+  # Exact region names (avoid partial matching "Africa" in "South Africa")
+  exact_regions <- c("Africa", "Americas", "Asia", "Europe", "Oceania",
+    "Caribbean", "Central America", "South America", "Latin America",
+    "World", "Melanesia", "Polynesia",
+    "Latin America and the Caribbean")
+  if (name %in% exact_regions) return("region")
+
+  # Region keywords only for names that start with these patterns
+  if (str_detect(name, "^(Eastern|Western|Northern|Southern|Middle|South-|North )")) return("region")
+  if (str_detect(name, "^(OECD|Annex|Non-Annex|Least |Low[ -]|High-|Upper-|Net Food|Land Locked|Small Island|Developed|Developing|Sub-Saharan|FAO Major|International Centres|Regional Centres|European Union)")) return("region")
 
   # Colonies and protectorates
   colonial_keywords <- c("British ", "French ", "Dutch ", "German ",
