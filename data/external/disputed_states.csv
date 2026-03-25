@@ -1,0 +1,11 @@
+entity,status,claimed_independence,recognized_by_n_states,de_facto_area_km2,parent_state,iso3_if_any,database_handling,notes
+Taiwan (ROC),de facto independent,1949,13,36193,China (PRC),TWN,Separate in trade data (WTO member as SCTTPMK),Never formally declared independence from China
+Kosovo,partially recognized,2008-02-17,104,10887,Serbia,XKX,Separate in World Bank/IMF; under Serbia in some UN datasets,ICJ 2010: declaration did not violate international law
+Somaliland,unrecognized,1991-05-18,0,137600,Somalia,,Included in Somalia in virtually all databases,De facto independent since 1991
+Transnistria (PMR),unrecognized,1990-09-02,0,4163,Moldova,,Included in Moldova data,Recognized by Abkhazia/South Ossetia
+Abkhazia,mostly unrecognized,1992-07-23,5,8660,Georgia,,Included in Georgia data,Recognized by Russia/Nicaragua/Nauru/Venezuela/Syria
+South Ossetia,mostly unrecognized,1991-11-28,5,3900,Georgia,,Included in Georgia data,Recognized by Russia/Nicaragua/Nauru/Venezuela/Syria
+Northern Cyprus (TRNC),recognized by Turkey only,1983-11-15,1,3355,Cyprus,,Included in Cyprus data in all major databases,Recognized only by Turkey
+Western Sahara (SADR),disputed,1976-02-27,40,266000,Morocco (controls ~80%),ESH,Listed separately in UN (ISO code EH); trade merged with Morocco,African Union recognizes SADR
+Palestine,UN observer state,1988-11-15,139,6020,,PSE,Separate in World Bank (West Bank and Gaza),UN non-member observer state since 2012
+Artsakh (Nagorno-Karabakh),dissolved,1991,0,4400,Azerbaijan,,Was included in Azerbaijan data,Dissolved Sep 2023 after Azerbaijan recaptured territory

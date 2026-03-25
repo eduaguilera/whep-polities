@@ -1,0 +1,83 @@
+territory,colonial_power,independence_date,independence_year,successor_state,iso3,continent,area_km2,notes
+Indonesia,Netherlands,1949-12-27,1949,Republic of Indonesia,IDN,Asia,1904569,Declared 1945; recognized 1949
+Vietnam,France,1954-07-21,1954,Vietnam (split),VNM,Asia,331212,Geneva Accords
+Philippines,USA,1946-07-04,1946,Republic of the Philippines,PHL,Asia,300000,
+India,Britain,1947-08-15,1947,Republic of India,IND,Asia,3287263,Partition with Pakistan
+Pakistan,Britain,1947-08-14,1947,Islamic Republic of Pakistan,PAK,Asia,881913,Including East Pakistan
+Burma (Myanmar),Britain,1948-01-04,1948,Union of Burma,MMR,Asia,676578,
+Ceylon (Sri Lanka),Britain,1948-02-04,1948,Dominion of Ceylon,LKA,Asia,65610,
+Israel/Palestine,Britain,1948-05-14,1948,State of Israel,ISR,Asia,20770,Mandate terminated
+Laos,France,1953-10-22,1953,Kingdom of Laos,LAO,Asia,236800,
+Cambodia,France,1953-11-09,1953,Kingdom of Cambodia,KHM,Asia,181035,
+Malaya,Britain,1957-08-31,1957,Federation of Malaya,MYS,Asia,330803,Malaysia 1963
+Singapore,Britain/Malaysia,1965-08-09,1965,Republic of Singapore,SGP,Asia,728,Separated from Malaysia
+Brunei,Britain,1984-01-01,1984,Brunei Darussalam,BRN,Asia,5765,
+Libya,Italy/UK/France,1951-12-24,1951,United Kingdom of Libya,LBY,Africa,1759540,
+Sudan,Britain/Egypt,1956-01-01,1956,Republic of the Sudan,SDN,Africa,2505813,Condominium
+Morocco,France/Spain,1956-03-02,1956,Kingdom of Morocco,MAR,Africa,446550,
+Tunisia,France,1956-03-20,1956,Republic of Tunisia,TUN,Africa,163610,
+Ghana,Britain,1957-03-06,1957,Republic of Ghana,GHA,Africa,238533,Gold Coast
+Guinea,France,1958-10-02,1958,Republic of Guinea,GIN,Africa,245857,
+Cameroon,France,1960-01-01,1960,Republic of Cameroon,CMR,Africa,475442,
+Senegal,France,1960-04-04,1960,Republic of Senegal,SEN,Africa,196722,
+Togo,France,1960-04-27,1960,Republic of Togo,TGO,Africa,56785,
+Mali,France,1960-09-22,1960,Republic of Mali,MLI,Africa,1240192,
+Madagascar,France,1960-06-26,1960,Malagasy Republic,MDG,Africa,587041,
+DR Congo,Belgium,1960-06-30,1960,Republic of the Congo,COD,Africa,2344858,
+Somalia,Italy/Britain,1960-07-01,1960,Somali Republic,SOM,Africa,637657,Union of two territories
+Benin,France,1960-08-01,1960,Republic of Dahomey,BEN,Africa,112622,
+Niger,France,1960-08-03,1960,Republic of Niger,NER,Africa,1267000,
+Burkina Faso,France,1960-08-05,1960,Republic of Upper Volta,BFA,Africa,274200,
+Côte d'Ivoire,France,1960-08-07,1960,Republic of Côte d'Ivoire,CIV,Africa,322463,
+Chad,France,1960-08-11,1960,Republic of Chad,TCD,Africa,1284000,
+Central African Republic,France,1960-08-13,1960,Central African Republic,CAF,Africa,622984,
+Republic of the Congo,France,1960-08-15,1960,Republic of the Congo,COG,Africa,342000,
+Gabon,France,1960-08-17,1960,Republic of Gabon,GAB,Africa,267668,
+Mauritania,France,1960-11-28,1960,Islamic Republic of Mauritania,MRT,Africa,1030700,
+Sierra Leone,Britain,1961-04-27,1961,Sierra Leone,SLE,Africa,71740,
+Tanzania,Britain,1961-12-09,1961,Tanganyika,TZA,Africa,947303,Union with Zanzibar 1964
+Rwanda,Belgium,1962-07-01,1962,Republic of Rwanda,RWA,Africa,26338,
+Burundi,Belgium,1962-07-01,1962,Kingdom of Burundi,BDI,Africa,27834,
+Algeria,France,1962-07-05,1962,People's Democratic Republic of Algeria,DZA,Africa,2381741,
+Uganda,Britain,1962-10-09,1962,Republic of Uganda,UGA,Africa,241038,
+Kenya,Britain,1963-12-12,1963,Republic of Kenya,KEN,Africa,580367,
+Malawi,Britain,1964-07-06,1964,Republic of Malawi,MWI,Africa,118484,
+Zambia,Britain,1964-10-24,1964,Republic of Zambia,ZMB,Africa,752618,
+Gambia,Britain,1965-02-18,1965,Republic of The Gambia,GMB,Africa,11295,
+Botswana,Britain,1966-09-30,1966,Republic of Botswana,BWA,Africa,581730,
+Lesotho,Britain,1966-10-04,1966,Kingdom of Lesotho,LSO,Africa,30355,
+Mauritius,Britain,1968-03-12,1968,Republic of Mauritius,MUS,Africa,2040,
+Eswatini,Britain,1968-09-06,1968,Kingdom of Eswatini,SWZ,Africa,17364,
+Equatorial Guinea,Spain,1968-10-12,1968,Republic of Equatorial Guinea,GNQ,Africa,28051,
+Guinea-Bissau,Portugal,1974-09-10,1974,Republic of Guinea-Bissau,GNB,Africa,36125,
+Mozambique,Portugal,1975-06-25,1975,Mozambique,MOZ,Africa,801590,
+Cape Verde,Portugal,1975-07-05,1975,Republic of Cape Verde,CPV,Africa,4033,
+Comoros,France,1975-07-06,1975,Comoros,COM,Africa,2235,
+São Tomé and Príncipe,Portugal,1975-07-12,1975,Republic of São Tomé and Príncipe,STP,Africa,964,
+Angola,Portugal,1975-11-11,1975,People's Republic of Angola,AGO,Africa,1246700,
+Seychelles,Britain,1976-06-29,1976,Republic of Seychelles,SYC,Africa,455,
+Djibouti,France,1977-06-27,1977,Republic of Djibouti,DJI,Africa,23200,
+Zimbabwe,Britain,1980-04-18,1980,Republic of Zimbabwe,ZWE,Africa,390757,UDI 1965
+Namibia,South Africa,1990-03-21,1990,Republic of Namibia,NAM,Africa,825615,
+Eritrea,Ethiopia,1993-05-24,1993,State of Eritrea,ERI,Africa,117600,Referendum 1993
+South Sudan,Sudan,2011-07-09,2011,Republic of South Sudan,SSD,Africa,644329,Referendum 2011
+Jamaica,Britain,1962-08-06,1962,Jamaica,JAM,North America,10991,
+Trinidad and Tobago,Britain,1962-08-31,1962,Republic of Trinidad and Tobago,TTO,North America,5131,
+Guyana,Britain,1966-05-26,1966,Republic of Guyana,GUY,South America,214969,
+Barbados,Britain,1966-11-30,1966,Barbados,BRB,North America,430,
+Bahamas,Britain,1973-07-10,1973,Commonwealth of The Bahamas,BHS,North America,13878,
+Grenada,Britain,1974-02-07,1974,Grenada,GRD,North America,344,
+Suriname,Netherlands,1975-11-25,1975,Republic of Suriname,SUR,South America,163820,
+Dominica,Britain,1978-11-03,1978,Commonwealth of Dominica,DMA,North America,751,
+Saint Lucia,Britain,1979-02-22,1979,Saint Lucia,LCA,North America,616,
+Saint Vincent and the Grenadines,Britain,1979-10-27,1979,Saint Vincent and the Grenadines,VCT,North America,389,
+Samoa,New Zealand,1962-01-01,1962,Independent State of Samoa,WSM,Oceania,2842,
+Nauru,Australia,1968-01-31,1968,Republic of Nauru,NRU,Oceania,21,
+Fiji,Britain,1970-10-10,1970,Republic of Fiji,FJI,Oceania,18274,
+Tonga,Britain,1970-06-04,1970,Kingdom of Tonga,TON,Oceania,747,
+Papua New Guinea,Australia,1975-09-16,1975,Independent State of Papua New Guinea,PNG,Oceania,462840,
+Solomon Islands,Britain,1978-07-07,1978,Solomon Islands,SLB,Oceania,28896,
+Tuvalu,Britain,1978-10-01,1978,Tuvalu,TUV,Oceania,26,
+Kiribati,Britain,1979-07-12,1979,Republic of Kiribati,KIR,Oceania,811,
+Vanuatu,Britain/France,1980-07-30,1980,Republic of Vanuatu,VUT,Oceania,12189,
+Timor-Leste,Indonesia,2002-05-20,2002,Democratic Republic of Timor-Leste,TLS,Asia,14874,Referendum 1999
