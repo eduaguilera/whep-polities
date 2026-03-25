@@ -95,7 +95,7 @@ german_states <- c("Bavaria", "Saxony", "Baden", "Württemberg", "Hanover",
   "Hohenzollern-Hechingen", "Hohenzollern-Sigmaringen")
 italian_states <- c("Piedmont", "Tuscany", "Duchy Modena", "Duchy Parma",
   "Papal States", "Two Sicilies", "Kingdom of Naples", "Sardinia", "Lucca",
-  "Massa")
+  "Massa", "Ionian islands")
 
 master <- master %>%
   mutate(polity_type = case_when(
@@ -116,7 +116,11 @@ assign_continent <- function(name) {
     "Namibia", "Niger", "Nigeria", "Rwanda", "Sao Tome and Principe", "Senegal",
     "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan",
     "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe",
-    "Zanzibar", "Mayotte", "Réunion", "Western Sahara")
+    "Zanzibar", "Mayotte", "Réunion", "Western Sahara",
+    "Basutoland", "Bechuanaland", "Cape Colony", "Natal", "Transvaal",
+    "Orange Free State", "Rhodesia", "Nyasaland", "Gold Coast", "Lagos",
+    "Oil Rivers", "Togoland", "Kamerun", "Somaliland", "Dronning Maud",
+    "St. Helena", "Ceuta", "Melilla")
   if (any(str_detect(name, fixed(africa_countries)))) return("Africa")
 
   # Asia
@@ -129,7 +133,12 @@ assign_continent <- function(name) {
     "Taiwan", "Tajikistan", "Thailand", "Timor-Leste", "Turkmenistan", "Türkiye",
     "United Arab Emirates", "Uzbekistan", "Vietnam", "Yemen", "Hong Kong",
     "Macao", "Ottoman", "Bukhara", "Khiva", "Kokand", "Herat", "Badakhshan",
-    "Manchukuo", "Tibet", "Sikkim")
+    "Manchukuo", "Tibet", "Sikkim",
+    "Abu Dhabi", "Ajman", "Fujairah", "Ras al Khaimah", "Sharjah",
+    "Umm al Qawain", "Aden", "Indochina", "Malay", "Straits Settlement",
+    "Perak", "Selangore", "Pahang", "Sabah", "Sarawak", "Kwang", "Kwantung",
+    "Kiautchou", "Chechnya", "Circassia", "Jammu", "Kashmir",
+    "Neutral Zone", "Gaza", "West Bank", "Ryukyu")
   if (any(str_detect(name, fixed(asia_countries)))) return("Asia")
 
   # Europe
@@ -149,7 +158,9 @@ assign_continent <- function(name) {
     "Schleswig", "Reuss", "Saxe-", "Wolfenbüttel", "Waldeck", "Anhalt",
     "Hohenzollern", "Hohengeroldseck", "Lippe", "Schaumburg", "Nassau",
     "East Berlin", "West Berlin", "East Germany", "West Germany",
-    "Dodecanese", "Crete", "Herzegovina")
+    "Dodecanese", "Crete", "Herzegovina", "Zollverein",
+    "Duchy Modena", "Duchy Parma", "Kingdom of Naples", "Lucca", "Massa",
+    "Yunnan")
   if (any(str_detect(name, fixed(europe_countries)))) return("Europe")
 
   # Oceania
@@ -162,7 +173,8 @@ assign_continent <- function(name) {
     "Midway", "Johnston", "Palmyra", "Canton", "Marquesas", "Gambier",
     "Society Islands", "Christmas Island", "Cocos", "Papua", "Bougainville",
     "Queensland", "New South Wales", "Victoria", "South Australia",
-    "Western Australia", "Van Diemen", "Tasmania", "British Columbia")
+    "Western Australia", "Van Diemen", "Tasmania",
+    "Heard Island", "South Georgia")
   if (any(str_detect(name, fixed(oceania_countries)))) return("Oceania")
 
   # South America
@@ -180,7 +192,9 @@ assign_continent <- function(name) {
     "Montserrat", "Anguilla", "Aruba", "Curaçao", "Bonaire", "Sint Maarten",
     "Guadeloupe", "Martinique", "Saint Pierre", "Leeward", "Newfoundland",
     "Nova Scotia", "New Brunswick", "Ontario", "Prince Edward", "Lower Quebec",
-    "Vancouver", "Alaska")
+    "Vancouver", "Alaska", "British Columbia",
+    "Dutch West Indies", "Danish Virgin Islands", "St Martin",
+    "St. Lucía", "St. Vincent")
   if (any(str_detect(name, fixed(na_countries)))) return("North America")
 
   # Default for remaining
