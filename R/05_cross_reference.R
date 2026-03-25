@@ -263,7 +263,7 @@ if (nrow(whep_not_cow) > 0) print(whep_not_cow)
 
 ne_countries_data <- ne_countries(scale = "medium", returnclass = "sf") %>%
   st_drop_geometry() %>%
-  select(name, iso_a3, iso_n3, pop_est, gdp_md_est, economy, income_grp)
+  select(name, iso_a3, iso_n3, pop_est, gdp_md, economy, income_grp)
 
 ne_not_whep <- ne_countries_data %>%
   filter(!iso_a3 %in% master$iso3_code,

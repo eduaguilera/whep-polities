@@ -11,7 +11,7 @@ master <- read_csv(file.path(compiled_dir, "polities_master.csv"),
 
 # --- Load world map ---
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
-  select(name, iso_a3, iso_a2, continent, pop_est, gdp_md_est, geometry)
+  select(name, iso_a3, iso_a2, continent, pop_est, gdp_md, geometry)
 
 # ==============================================================================
 # Plot 1: WHEP Coverage Map - Which countries are in the database?
