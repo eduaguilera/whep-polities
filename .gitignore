@@ -1,0 +1,16 @@
+# renv
+renv/library/
+renv/staging/
+renv/cellar/
+renv/sandbox/
+
+# R output
+output/plots/*.png
+output/reports/*.txt
+data/compiled/
+
+# R artifacts
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
