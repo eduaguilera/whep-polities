@@ -120,7 +120,9 @@ assign_continent <- function(name) {
     "Basutoland", "Bechuanaland", "Cape Colony", "Natal", "Transvaal",
     "Orange Free State", "Rhodesia", "Nyasaland", "Gold Coast", "Lagos",
     "Oil Rivers", "Togoland", "Kamerun", "Somaliland", "Dronning Maud",
-    "St. Helena", "Ceuta", "Melilla")
+    "St. Helena", "Ceuta", "Melilla",
+    "East Africa", "Equatorial Africa", "West Africa",
+    "Libia Cyrenaica", "Canary Islands", "Spanish North Africa")
   if (any(str_detect(name, fixed(africa_countries)))) return("Africa")
 
   # Asia
@@ -138,7 +140,8 @@ assign_continent <- function(name) {
     "Umm al Qawain", "Aden", "Indochina", "Malay", "Straits Settlement",
     "Perak", "Selangore", "Pahang", "Sabah", "Sarawak", "Kwang", "Kwantung",
     "Kiautchou", "Chechnya", "Circassia", "Jammu", "Kashmir",
-    "Neutral Zone", "Gaza", "West Bank", "Ryukyu")
+    "Neutral Zone", "Gaza", "West Bank", "Ryukyu",
+    "Federation of South Arabia", "Southern Sakhalin")
   if (any(str_detect(name, fixed(asia_countries)))) return("Asia")
 
   # Europe
@@ -174,7 +177,9 @@ assign_continent <- function(name) {
     "Society Islands", "Christmas Island", "Cocos", "Papua", "Bougainville",
     "Queensland", "New South Wales", "Victoria", "South Australia",
     "Western Australia", "Van Diemen", "Tasmania",
-    "Heard Island", "South Georgia")
+    "Heard Island", "South Georgia",
+    "settlement Oceania", "colonies Oceania", "Settlements in Oceania",
+    "Pacific Islands Trust")
   if (any(str_detect(name, fixed(oceania_countries)))) return("Oceania")
 
   # South America
