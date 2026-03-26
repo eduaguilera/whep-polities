@@ -1,7 +1,25 @@
 # Coverage Analysis and Cross-References
 
 This document analyzes the completeness of the polities database across time periods,
-geographic regions, and source datasets.
+geographic regions, and source datasets. Includes results from the exhaustive automated
+gap search (`analyze_exhaustive_gaps.py`).
+
+---
+
+## Exhaustive Gap Search Summary
+
+A systematic search across all external reference systems identifies 68 gaps in
+5 categories. None are critical.
+
+| Source | Count | Severity | Description |
+|--------|-------|----------|-------------|
+| Polygon source mismatch | 29 | Low | Claims CShapes but gets GADM fallback |
+| COW state system | 15 | Low | COW codes not matched (see Section 4) |
+| Missing polygons | 10 | Medium | Non-region polities without any polygon |
+| Predecessor/successor chain | 10 | Low | Broken refs (all to USSR region code) |
+| Temporal gaps | 4 | Medium | Same-ISO same-type gaps > 1 year |
+
+Full report: `data/analysis/exhaustive_gap_report.csv`
 
 ---
 
@@ -13,9 +31,9 @@ geographic regions, and source datasets.
 | Unique polity codes | 810 (100% unique) |
 | Sovereign states (active 2025) | 194 (193 UN + Vatican) |
 | Historical entities | 339 |
-| Colonial entities | 88 |
-| Dependencies/territories | 70 |
-| Trade aggregates | 24 |
+| Colonial entities | 47 |
+| Dependencies/territories | 75 |
+| Trade aggregates | 60 |
 | Mandates | 13 |
 | Statistical regions | 77 |
 | Disputed entities | 4 |
@@ -58,6 +76,19 @@ The database captures all major waves of state creation:
 
 ### 2.3 Temporal Gaps
 
+**Automated gap search** (same ISO code + same polity type, gaps > 1 year):
+
+| ISO | Type | Gap | Years | Explanation |
+|-----|------|-----|-------|-------------|
+| SCG | historical | 1871-1991 | 121 | Serbia & Montenegro was part of Yugoslavia |
+| MYT | dependency | 1915-2001 | 87 | Mayotte: French colonial period |
+| SER | historical | 1919-2005 | 87 | Serbia: part of Yugoslavia 1919-1991 |
+| FED | colonial | 1947-1952 | 6 | Federation of Malaya: transition period |
+
+All are intentional — the territories are covered by parent entities during these periods.
+
+**Additional known intentional gaps:**
+
 | Gap | Polity | Reason | Intentional? |
 |-----|--------|--------|-------------|
 | 1888-1919 | Afghanistan | No CShapes data; buffer state period | YES |
@@ -65,7 +96,6 @@ The database captures all major waves of state creation:
 | 1915-2006 | Montenegro | In Yugoslavia | YES |
 | 1945-1990 | Germany | Split into FRG/GDR (tracked separately) | YES |
 | 1893-1954 | Vietnam | In French Indochina (tracked as FID) | YES |
-| 1914-2002 | Mayotte | French administrative integration | YES |
 
 ---
 
@@ -113,6 +143,23 @@ Colombia 3 periods, Bolivia 4 periods, Ecuador 2 periods, Peru 4 periods.
 **Dependencies**: 18 Pacific territories.
 **Historical**: Australian pre-federation colonies (6), New Guinea mandates,
 Pacific island protectorates.
+
+### 3.7 Polygon Coverage by Continent
+
+| Continent | With polygon | Total | Coverage |
+|-----------|-------------|-------|----------|
+| Africa | 217 | 217 | 100.0% |
+| South America | 35 | 35 | 100.0% |
+| Europe | 182 | 183 | 99.5% |
+| Asia | 160 | 162 | 98.8% |
+| North America | 63 | 64 | 98.4% |
+| Oceania | 63 | 68 | 92.6% |
+| Antarctica | 3 | 4 | 75.0% |
+
+**10 non-region polities without polygons**: Canton & Enderbury, Johnston Island,
+Midway, Wake Island, US misc. Pacific, US settlement Oceania (all tiny Pacific
+atolls), Dronning Maud Land (Antarctic claim), Danish India (trading posts),
+Neutral Zone (abolished), Sark (tiny Channel Island).
 
 ---
 
@@ -371,7 +418,33 @@ records after annexation):
 
 ---
 
-## 12. Quality Metrics
+## 12. Data Source Coverage
+
+| Source | Polities | % of total |
+|--------|----------|------------|
+| CShapes | 744 | 91.9% |
+| Federico-Tena | 641 | 79.1% |
+| FAOSTAT | 472 | 58.3% |
+| UN M49 | 444 | 54.8% |
+| WHEP-fix | 25 | 3.1% |
+
+**Single-source polities**: 63 total (48 Federico-Tena only, 15 CShapes only).
+FT-only entries are primarily 19th-century trade entities predating modern systems.
+
+---
+
+## 13. Predecessor/Successor Chain Completeness
+
+- **15 broken predecessor refs**: All point to `F228-1940-1991` (USSR region code)
+- **0 broken successor refs**
+- **8 asymmetric links**: Forward link exists but reciprocal not recorded
+
+Key asymmetric links: Ottoman → Turkey, Pakistan pre/post-1971,
+Yugoslavia → North Macedonia, Italy pre/post-1919, Russia/Ukraine pre/post-2014.
+
+---
+
+## 14. Quality Metrics
 
 | Metric | Value | Source of validation |
 |--------|-------|---------------------|
@@ -385,3 +458,17 @@ records after annexation):
 | Timeline continuity (no unexplained gaps) | YES | Internal analysis |
 | Unique polity codes | 810/810 (100%) | Code uniqueness check |
 | Unique polity names | 810/810 (100%) | Name uniqueness check |
+
+---
+
+## 15. Analysis Scripts
+
+| Script | What it checks | Plots |
+|--------|---------------|-------|
+| `analyze_exhaustive_gaps.py` | COW, polygon, chain, temporal, source, verification gaps | 6 |
+| `analyze_coverage.py` | Excel region → polity matching, polygon coverage map | 1 |
+| `stress_test.py` | 31 automated integrity tests | 5 |
+| `validate_iso_overlaps.py` | ISO prefix collision detection | 3 |
+| `compare_polygons.py` | CShapes vs GADM cross-validation | 5 |
+| `analyze_subnational.py` | GADM admin-1 for 19 countries | 8 |
+| `generate_validation_report.py` | Combined validation dashboard | 3 |
