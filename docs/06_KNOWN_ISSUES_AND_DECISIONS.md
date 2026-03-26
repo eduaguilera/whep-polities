@@ -165,6 +165,15 @@
 - Final type distribution: sovereign 194, historical 339, aggregate 60, dependency 75,
   colonial 47, region 77, mandate 13, disputed 4, puppet 1
 
+### Version 1.2 (2026-03-26)
+- Extracted 91 subnational polygons from 110 subnational regions using 4-tier quality system
+- Implemented 6 extraction methods: cshapes, cshapes_merge, cshapes_subtract, gadm0, gadm1/gadm1_merge, subtract_gadm1
+- Added subtraction-based polygons for China excl. Manchuria, Turkey in Asia, USA residual, British India excl. Burma
+- 19 tier-4 regions documented as requiring historical GIS (no acceptable modern proxy)
+- Excel data region polygon coverage: 389/409 (95.1%)
+- Added comprehensive subnational polygon documentation (docs/07_SUBNATIONAL_POLYGONS.md)
+- Updated analysis pipeline to include subnational coverage statistics
+
 ### Version 1.0 (2026-03-26)
 - Initial release with 810 polity entries
 - Applied 5 fixes from prior research (Manchukuo, Ionian Islands, Kokand,

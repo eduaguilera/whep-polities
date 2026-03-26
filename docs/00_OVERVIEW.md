@@ -1,4 +1,4 @@
-# WHEP Polities Database v1.0 -- Overview
+# WHEP Polities Database v1.2 -- Overview
 
 **Project**: Who Has Eaten the Planet (WHEP)
 **Funded by**: European Research Council (ERC)
@@ -25,13 +25,20 @@ territory changes significantly (>10% area), a new polity entry is created.
 | Total entries | 810 |
 | Sovereign states | 194 |
 | Historical entities | 339 |
-| Colonial entities | 88 |
-| Dependencies/territories | 70 |
-| Trade aggregates | 24 |
+| Colonial entities | 47 |
+| Dependencies/territories | 75 |
+| Trade aggregates | 60 |
 | Mandates | 13 |
 | Statistical regions | 77 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
+
+### Polygon Coverage
+| Category | Count |
+|----------|-------|
+| Polities with polygons | 720/810 (88.9%) |
+| Subnational polygons extracted | 91/110 (82.7%) |
+| Excel data regions with polygons | 389/409 (95.1%) |
 
 ### Geographic Distribution
 | Continent | Entries |
@@ -125,6 +132,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `04_POLYGON_SOURCES.md` | Where each polygon comes from, technical details |
 | `05_COVERAGE_ANALYSIS.md` | Coverage by era, continent; cross-references with COW/CShapes/FAOSTAT |
 | `06_KNOWN_ISSUES_AND_DECISIONS.md` | 5 fixes, 4 known limitations, 9 design decisions, changelog |
+| `07_SUBNATIONAL_POLYGONS.md` | Subnational polygon extraction: quality tiers, limitations, GADM assessment |
 
 ---
 
