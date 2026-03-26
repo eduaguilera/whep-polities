@@ -1047,6 +1047,22 @@ def get_cow_code(name, code):
     """Look up COW code for a polity."""
     prefix, start, end = parse_code(code)
 
+    # ISO code collision exclusions: these prefixes are shared between
+    # a modern country and a different historical entity. The historical
+    # entity should NOT get the modern country's COW code.
+    iso_collision_exclude = {
+        ("NOR", "Rhodesia"),    # NOR = Norway, but NOR-1900-* = Rhodesia
+        ("PER", "Perak"),       # PER = Peru, but PER-1800-1896 = Perak
+        ("CHE", "Chechnya"),    # CHE = Switzerland, but CHE-1816-1857 = Chechnya
+        ("SWE", "Saxe"),        # SWE = Sweden, but SWE-1816-1870 = Saxe-Weimar
+        ("JAM", "Jammu"),       # JAM = Jamaica, but JAM-1947-1949 = Jammu & Kashmir
+        ("CAN", "Canton"),      # CAN = Canada, but CAN-1800-1982 = Canton & Enderbury
+        ("PAL", "Palmyra"),     # PAL = Palau, but PAL-1889-1912 = Palmyra Island
+    }
+    for (col_prefix, name_fragment) in iso_collision_exclude:
+        if prefix == col_prefix and name_fragment.lower() in name.lower():
+            return ""
+
     # Direct ISO3 lookup
     if prefix in cow_by_iso3:
         return cow_by_iso3[prefix]

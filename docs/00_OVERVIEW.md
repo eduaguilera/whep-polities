@@ -36,7 +36,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 724/810 (89.4%) |
+| Polities with polygons | 723/810 (89.3%) |
 | Subnational polygons extracted | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
 | COW State System coverage | 207/209 (99.0%) |

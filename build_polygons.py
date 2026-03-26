@@ -369,6 +369,28 @@ CSHAPES_NAME_MAP = {
     "Northern Nigeria": "Northern Nigeria",
     "Southern Nigeria": "Southern Nigeria",
 
+    # Caribbean islands (name map prevents COW code mismatch with CShapes)
+    "Dominica": "Dominica",
+    "Saint Lucia": "St. Lucia",
+    "Saint Vincent and the Grenadines": "St. Vincent and the Grenadines",
+    "Antigua and Barbuda": "Antigua & Barbuda",
+    "Grenada": "Grenada",
+
+    # Fix ISO code collision mismatches (these entity names must map correctly
+    # because their ISO/COW codes collide with different countries)
+    "Northeastern Rhodesia": "Northeastern Rhodesia",
+    "Northeastern Rhodesia (1900-1911)": "Northeastern Rhodesia",
+    "Northwestern Rhodesia": "Northwestern Rhodesia",
+    "Northwestern Rhodesia (1900-1905)": "Northwestern Rhodesia",
+    "Northwestern Rhodesia (1905-1911)": "Northwestern Rhodesia",
+    "Perak": "Perak",
+    "Perak (to 1896)": "Perak",
+    "Sardinia": "Italy/Sardinia",
+    "German Solomon Islands": "German Solomon Islands",
+    "German colonies Oceania": "New Guinea (German New Guinea) (Kaiser Wilhelmsland)",
+    "Jammu and Kashmir": "Jammu and Kashmir",
+    "Jammu and Kashmir (1947-1949)": "Jammu and Kashmir",
+
     # CShapes-Europe names
     "Two Sicilies": "Two Sicilies",
     "Papal States": "Papal States",
@@ -376,6 +398,21 @@ CSHAPES_NAME_MAP = {
     "Bavaria": "Bavaria",
     "Saxony": "Saxony",
     "Hanover": "Hanover",
+}
+
+# Polity codes where ISO/COW codes collide with a different country.
+# COW matching AND GADM ISO fallback are skipped for these to prevent
+# wrong-continent polygon assignment.
+SKIP_COW_MATCHING = {
+    "CHE-1816-1857",   # Chechnya ≠ Switzerland (both CHE/225)
+    "SWE-1816-1870",   # Saxe-Weimar ≠ Sweden (both SWE/380)
+    "JAM-1947-1949",   # Jammu & Kashmir ≠ Jamaica (both JAM/51)
+    "CAN-1800-1982",   # Canton & Enderbury ≠ Canada (both CAN/20)
+    "PAL-1889-1912",   # Palmyra Island ≠ Palau (PAL code)
+    "SAR-1800-1860",   # Sardinia: COW 338 = Malta in CShapes (use name map)
+    "MAN-1932-1945",   # Manchukuo ≠ China (already has name map)
+    "GER-1800-1899",   # German Solomon Islands ≠ Germany (GER/255)
+    "GER-1884-2025",   # German colonies Oceania ≠ Germany (GER/255)
 }
 
 # COW code mapping for secondary matching
@@ -395,7 +432,8 @@ def normalize(name):
 
 
 def find_cshapes_match(polity_name, polity_code, cow_code, start_year, end_year):
-    """Find the best CShapes polygon match for a polity, targeting ~1920 era."""
+    """Find the best CShapes polygon match for a polity, targeting ~1920 era.
+    polity_code is used to check SKIP_COW_MATCHING for ISO/COW collision avoidance."""
     # 1. Direct name mapping
     cs_name = CSHAPES_NAME_MAP.get(polity_name)
     if not cs_name:
@@ -408,8 +446,8 @@ def find_cshapes_match(polity_name, polity_code, cow_code, start_year, end_year)
         if len(matches) > 0:
             return select_best_temporal(matches, start_year, end_year)
 
-    # 2. Try COW code matching
-    if cow_code and str(cow_code) not in ("", "nan"):
+    # 2. Try COW code matching (skip for known ISO/COW code collisions)
+    if cow_code and str(cow_code) not in ("", "nan") and polity_code not in SKIP_COW_MATCHING:
         cow_str = str(int(float(cow_code))) if "." in str(cow_code) else str(cow_code)
         matches = cshapes[cshapes["cowcode"].astype(str) == cow_str]
         if len(matches) > 0:
@@ -552,7 +590,8 @@ for _, p in polities.iterrows():
                     match_name = eu_match["polity_name"]
 
     # 5. Ultimate fallback: full GADM by ISO3 code
-    if geom is None and pd.notna(p.get("iso3_code")):
+    # Skip for entities with colliding ISO codes (would get wrong country's polygon)
+    if geom is None and pd.notna(p.get("iso3_code")) and pcode not in SKIP_COW_MATCHING:
         iso = p["iso3_code"]
         gf = gadm_full[gadm_full["GID_0"] == iso]
         if len(gf) > 0:

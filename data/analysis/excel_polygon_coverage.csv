@@ -26,7 +26,7 @@ british aden,matched,ADE-1839-1967,,True,CShapes 2.0 (1937-1962),1,False
 british aden (by land),matched,ADE-1839-1967,,True,CShapes 2.0 (1937-1962),1,False
 british aden (by sea),matched,ADE-1839-1967,,True,CShapes 2.0 (1937-1962),1,False
 british andaman and nicobar,matched,IND-1800-1947,,True,CShapes 2.0 (1886-1893),1,False
-british antigua,matched,ATG-1800-2025,,True,GADM 4.1 fallback,1,False
+british antigua,matched,ATG-1800-2025,,True,CShapes 2.0 (1981-2019),1,False
 british ascension,matched,SHN-1800-2025,,True,GADM 4.1,1,False
 british bahamas,matched,BHS-1800-2025,,True,CShapes 2.0 (1886-1973),1,False
 british barbados,matched,BRB-1800-2025,,True,CShapes 2.0 (1886-1966),1,False
@@ -40,7 +40,7 @@ british caymans,matched,CYM-1800-2025,,True,GADM 4.1,1,False
 british ceylon,matched,LKA-1800-2025,,True,CShapes 2.0 (1886-1948),1,False
 british christmas,matched,CXR-1800-2025,,True,GADM 4.1,1,False
 british cyprus,matched,CYP-1879-2025,,True,CShapes 2.0 (1914-1960),1,False
-british dominica,matched,DMA-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
+british dominica,matched,DMA-1800-2025,,True,CShapes 2.0 (1978-2019),1,False
 british falkland islands,matched,FLK-1833-2025,,True,"GADM 3.6 (full, FLK)",1,False
 british federated malay states,matched,FED-1909-1946,,True,CShapes 2.0 (1909-1946),1,False
 british fiji,matched,FJI-1874-2025,,True,CShapes 2.0 (1886-1970),1,False
@@ -91,8 +91,8 @@ british palestine,matched,PAL-1920-1948,,True,CShapes 2.0 (1923-1948),1,False
 british saint christopher and nevis,matched,KNA-1800-2025,,True,CShapes 2.0 (1983-2019),1,False
 british saint helena,matched,SHN-1800-2025,,True,GADM 4.1,1,False
 british saint lucia,matched,LCA-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
-british saint vincent,matched,VCT-1800-2025,,True,CShapes 2.0 (1981-2019),1,False
-british saint vincent (sea island),matched,VCT-1800-2025,,True,CShapes 2.0 (1981-2019),1,False
+british saint vincent,matched,VCT-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
+british saint vincent (sea island),matched,VCT-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
 british samoa,matched,WSM-1900-2025,,True,CShapes 2.0 (1976-2019),1,False
 british sarawak,matched,SAR-1841-2025,,True,CShapes 2.0 (1889-1946),1,False
 british seychelles,matched,SYC-1903-2025,,True,CShapes 2.0 (1976-2019),1,False
@@ -121,7 +121,7 @@ british unfederated malay states: perlis,subnational,UNF-1909-1946,UNF-1909-1946
 british unfederated malay states: terengganu,subnational,UNF-1909-1946,UNF-1909-1946,True,GADM admin-1: MYS [Trengganu],2,True
 british virgin islands,matched,VGB-1800-2025,,True,GADM 4.1,1,False
 british west indies federation,matched,LEE-1800-2025,,True,GADM 4.1,1,False
-british windward islands,matched,VCT-1800-2025,,True,CShapes 2.0 (1981-2019),1,False
+british windward islands,matched,VCT-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
 british zanzibar,matched,ZAN-1890-1964,,True,CShapes 2.0 (1895-1963),1,False
 british-french togoland,matched,TGO-1960-2025,,True,CShapes 2.0 (1960-2019),1,False
 british‑egyptian sudan,matched,SUD-1882-2025,,True,CShapes 2.0 (1934-1955),1,False
@@ -236,7 +236,7 @@ french upper volta,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Bu
 french west africa,matched,FWA-1895-2025,,True,CShapes 2.0 (1898-1902),1,False
 french west morocco,subnational,MOR-1904-1956,MOR-1904-1956,False,,,True
 german bohemia and moravia,matched,CZE-1947-1992,,True,CShapes 2.0 (1947-1992),1,False
-german new guinea,matched,GER-1884-2025,,True,CShapes 2.0 (1886-1919),1,False
+german new guinea,matched,GER-1884-2025,,True,CShapes 2.0 (1920-1949),1,False
 german south west africa,matched,GWA-1884-1914,,True,GADM 4.1 fallback,1,False
 german togoland,matched,GER-1897-1919,,True,CShapes 2.0 (1897-1914),1,False
 german western samoa,matched,WSM-1900-2025,,True,CShapes 2.0 (1976-2019),1,False

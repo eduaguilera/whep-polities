@@ -96,8 +96,8 @@ SOU-1899-1906,Southern Nigeria (1899-1906),CShapes 2.0 (1899-1906),Southern Nige
 SUD-1899-1902,Sudan (1899-1902),CShapes 2.0 (1899-1902),Sudan,True
 CHA-1900-1912,Chad (1900-1912),CShapes 2.0 (1900-1912),Chad,True
 CON-1900-1906,Congo (1900-1906),CShapes 2.0 (1900-1906),Congo,True
-NOR-1900-1911,Northeastern Rhodesia (1900-1911),CShapes 2.0 (1905-1940),Norway,True
-NOR-1900-1905,Northwestern Rhodesia (1900-1905),CShapes 2.0 (1905-1940),Norway,True
+NOR-1900-1911,Northeastern Rhodesia (1900-1911),CShapes 2.0 (1900-1911),Northeastern Rhodesia,True
+NOR-1900-1905,Northwestern Rhodesia (1900-1905),CShapes 2.0 (1900-1905),Northwestern Rhodesia,True
 ALG-1902-1919,Algeria (1902-1919),CShapes 2.0 (1902-1919),Algeria,True
 ETH-1902-1907,Ethiopia (1902-1907),CShapes 2.0 (1902-1907),Ethiopia,True
 KEN-1902-1906,Kenya (1902-1906),CShapes 2.0 (1902-1906),Kenya,True
@@ -108,7 +108,7 @@ MOR-1904-1956,Morocco (1904-1956),CShapes 2.0 (1912-1956),Morocco,True
 NOR-1904-1913,Northern Nigeria (1904-1913),CShapes 2.0 (1904-1913),Northern Nigeria,True
 MAL-1905-1919,Mali (1905-1919),CShapes 2.0 (1905-1913),Mali,True
 NIG-1905-1932,Niger (1905-1932),CShapes 2.0 (1905-1926),Niger,True
-NOR-1905-1911,Northwestern Rhodesia (1905-1911),CShapes 2.0 (1905-1940),Norway,True
+NOR-1905-1911,Northwestern Rhodesia (1905-1911),CShapes 2.0 (1905-1911),Northwestern Rhodesia,True
 CEN-1906-1912,Central African Republic (1906-1912),CShapes 2.0 (1906-1912),Central African Republic,True
 CON-1906-1912,Congo (1906-1912),CShapes 2.0 (1906-1912),Congo,True
 SOU-1906-1913,Southern Nigeria (1906-1913),CShapes 2.0 (1906-1913),Southern Nigeria,True
@@ -284,12 +284,12 @@ KHI-1800-1920,Khiva (to 1920),CShapes 2.0 (1886-1920),Khiva,True
 KOK-1800-1876,Kokand,GADM 4.1,Kokand,True
 OKO-1800-1910,Korea (to 1910),CShapes 2.0 (1887-1905),Korea,True
 OTT-1800-1912,Ottoman Empire,CShapes-Europe,Ottoman Empire,True
-PER-1800-1896,Perak (to 1896),CShapes 2.0 (1886-1909),Peru,True
+PER-1800-1896,Perak (to 1896),CShapes 2.0 (1886-1896),Perak,True
 SEL-1800-1896,Selangore (to 1896),CShapes 2.0 (1886-1896),Selangore,True
 THA-1800-1893,Thailand (to 1893),CShapes 2.0 (1887-1893),Thailand,True
 VNM-1800-1893,Vietnam (to 1893),CShapes 2.0 (1887-1893),Vietnam (Annam/Cochin China/Tonkin),True
 BRN-1816-1888,Brunei (greater),CShapes 2.0 (1888-1983),Brunei,True
-CHE-1816-1857,Chechnya,CShapes 2.0 fallback (1886-2019),Switzerland,True
+CHE-1816-1857,Chechnya,CShapes-Europe fallback,Chechnya,True
 CIR-1816-1861,Circassia,CShapes-Europe fallback,Circassia,True
 YUN-1856-1871,Yunnan,GADM 4.1,Yunnan,True
 PAH-1888-1896,Pahang (1888-1896),CShapes 2.0 (1888-1896),Pahang,True
@@ -320,7 +320,7 @@ MAL-1946-1963,Malaysia (1946-1963),CShapes 2.0 (1946-1957),Malaysia,True
 SYR-1946-1967,Syrian Arab Republic (1946-1967),CShapes 2.0 (1946-1958),Syria,True
 CHN-1947-1949,China (1947-1949),CShapes 2.0 (1947-1949),China,True
 IND-1947-1949,India (1947-1949),CShapes 2.0 (1947-1949),India,True
-JAM-1947-1949,Jammu and Kashmir (1947-1949),CShapes 2.0 (1886-1962),Jamaica,True
+JAM-1947-1949,Jammu and Kashmir (1947-1949),CShapes 2.0 (1947-1949),Jammu and Kashmir,True
 KAS-1947-1949,Kashmir (North Azad) (1947-1949),CShapes 2.0 (1947-1949),"Kashmir (North, Azad)",True
 PAK-1947-1949,Pakistan (1947-1949),CShapes 2.0 (1947-1949),Pakistan,True
 ISR-1948-1967,Israel (1948-1967),CShapes 2.0 (1948-1967),Israel,True
@@ -443,7 +443,7 @@ HES-1800-1871,Hesse,GADM 4.1,Hesse,True
 MEK-1800-1871,Mecklenburg,GADM 4.1,Mecklenburg,True
 OLD-1800-1871,Oldenburg,GADM 4.1,Oldenburg,True
 PAP-1800-1870,Papal States,CShapes-Europe,Papal States,True
-SAR-1800-1860,Sardinia,CShapes 2.0 (1886-1964),Malta,True
+SAR-1800-1860,Sardinia,CShapes 2.0 (1886-1919),Italy/Sardinia,True
 SAX-1800-1871,Saxony,CShapes-Europe,Saxony,True
 SHL-1800-1866,Schleswig-Holstein,GADM 4.1,Schleswig-Holstein,True
 SER-1800-1913,Serbia (to 1913),CShapes 2.0 (1886-1913),Serbia,True
@@ -475,7 +475,7 @@ SCS-1816-1826,Saxe-Coburg-Saalfeld,CShapes-Europe fallback,Saxe-Coburg-Saalfeld,
 SGA-1816-1826,Saxe-Gotha-Altenberg,CShapes-Europe fallback,Saxe-Gotha-Altenberg,True
 SHI-1816-1826,Saxe-Hildburgchausen,CShapes-Europe fallback,Saxe-Hildburgchausen,True
 SME-1816-1870,Saxe-Meiningen,CShapes-Europe fallback,Saxe-Meiningen,True
-SWE-1816-1870,Saxe-Weimar,CShapes 2.0 fallback (1886-1905),Sweden,True
+SWE-1816-1870,Saxe-Weimar,CShapes-Europe fallback,Saxe-Weimar,True
 SCL-1816-1870,Schaumburg-Lippe,CShapes-Europe fallback,Schaumburg-Lippe,True
 SER-1816-1913,Serbia (1816-1913),CShapes 2.0 (1886-1913),Serbia,True
 WAL-1816-1870,Waldeck,CShapes-Europe,Waldeck,True
@@ -641,13 +641,13 @@ F5303-2005-2025,Southern Asia,none (region),,False
 F420-2017-2025,Sub-Saharan Africa,none (region),,False
 DEDREG-2021-2025,Developed regions,none (region),,False
 DNGREG-2021-2025,Developing regions,none (region),,False
-ATG-1800-2025,Antigua and Barbuda,GADM 4.1 fallback,Antigua and Barbuda,True
+ATG-1800-2025,Antigua and Barbuda,CShapes 2.0 (1981-2019),Antigua & Barbuda,True
 BHS-1800-2025,Bahamas,CShapes 2.0 (1886-1973),Bahamas,True
 BRB-1800-2025,Barbados,CShapes 2.0 (1886-1966),Barbados,True
 BLZ-1800-2025,Belize,CShapes 2.0 (1886-1970),Belize,True
 CRI-1800-2025,Costa Rica,CShapes 2.0 (1920-2019),Costa Rica,True
 CUB-1800-2025,Cuba,CShapes 2.0 (1909-2019),Cuba,True
-DMA-1800-2025,Dominica,CShapes 2.0 (1979-2019),St. Lucia,True
+DMA-1800-2025,Dominica,CShapes 2.0 (1978-2019),Dominica,True
 DOM-1800-2025,Dominican Republic,CShapes 2.0 (1894-1916),Dominican Republic,True
 HTI-1800-2025,Haiti,CShapes 2.0 (1886-1915),Haiti,True
 HND-1800-2025,Honduras,CShapes 2.0 (1899-2019),Honduras,True
@@ -655,8 +655,8 @@ JAM-1800-2025,Jamaica,CShapes 2.0 (1886-1962),Jamaica,True
 MEX-1800-2025,Mexico,CShapes 2.0 (1886-2019),Mexico,True
 NIC-1800-2025,Nicaragua,CShapes 2.0 (1900-2019),Nicaragua,True
 KNA-1800-2025,Saint Kitts and Nevis,CShapes 2.0 (1983-2019),St. Kitts and Nevis,True
-LCA-1800-2025,Saint Lucia,CShapes 2.0 (1979-2019),St. Vincent and the Grenadines,True
-VCT-1800-2025,Saint Vincent and the Grenadines,CShapes 2.0 (1981-2019),Antigua & Barbuda,True
+LCA-1800-2025,Saint Lucia,CShapes 2.0 (1979-2019),St. Lucia,True
+VCT-1800-2025,Saint Vincent and the Grenadines,CShapes 2.0 (1979-2019),St. Vincent and the Grenadines,True
 TTO-1800-2025,Trinidad and Tobago,CShapes 2.0 (1886-1962),Trinidad and Tobago,True
 SLV-1821-2025,El Salvador,CShapes 2.0 (1886-2019),El Salvador,True
 GTM-1821-2025,Guatemala,CShapes 2.0 (1886-2019),Guatemala,True
@@ -666,7 +666,7 @@ USA-1959-2025,United States of America,CShapes 2.0 (1959-2019),United States of 
 BLM-2007-2025,Saint Barthélemy,GADM 4.1 fallback,Saint Barthélemy,True
 CUW-2010-2025,Curaçao,GADM 4.1 fallback,Curaçao,True
 ALA-1800-1959,Alaska (to 1959),CShapes 2.0 (1886-1959),Alaska,True
-CAN-1800-1982,Canton and Enderbury Islands,CShapes 2.0 (1886-1920),Canada,True
+CAN-1800-1982,Canton and Enderbury Islands,UNMATCHED,,False
 GRD-1800-1833,Grenada,GADM 4.1,Grenada,True
 LOW-1800-1866,Lower Quebec,GADM 4.1,Lower Quebec,True
 NBW-1800-1866,New Brunswick,GADM 4.1,New Brunswick,True
@@ -739,7 +739,7 @@ GAM-1881-1903,Gambier Island,GADM 4.1 fallback,Gambier Island,True
 PAL-1889-1912,Palmyra Island,CShapes 2.0 (1898-1959),Hawaii,True
 SOL-1893-1899,Solomon Islands (1893-1899),CShapes 2.0 (1893-1899),Solomon Islands,True
 HAW-1898-1959,Hawaii (1898-1959),CShapes 2.0 (1898-1959),Hawaii,True
-GER-1800-1899,German Solomon Islands (to 1899),CShapes 2.0 (1886-1919),Germany (Prussia),True
+GER-1800-1899,German Solomon Islands (to 1899),CShapes 2.0 (1886-1899),German Solomon Islands,True
 WES-1949-1969,Dutch new Guinea (1949-1969),CShapes 2.0 (1949-1962),West Irian (Dutch New Guinea),True
 CXR-1800-2025,Christmas Island,GADM 4.1,Christmas Island,True
 CCK-1800-2025,Cocos (Keeling) Islands,"GADM 3.6 (full, CCK)",Cocos Islands,True
@@ -767,7 +767,7 @@ MRI-1800-2025,Mariana Island,GADM 4.1 fallback,Mariana Island,True
 BOC-1839-2025,British settlement Oceania,CShapes 2.0 (1886-1970),Fiji,True
 FSO-1844-2025,French Settlements in Oceania,CShapes 2.0 (1903-2019),French Polynesia,True
 BNG-1884-2025,British New Guinea,CShapes 2.0 (1920-1949),Papua,True
-GER-1884-2025,German colonies Oceania,CShapes 2.0 (1886-1919),Germany (Prussia),True
+GER-1884-2025,German colonies Oceania,CShapes 2.0 (1920-1949),New Guinea (German New Guinea) (Kaiser Wilhelmsland),True
 NGN-1884-2025,New Guinea,CShapes 2.0 (1949-1975),Papua New Guinea,True
 CAR-1885-2025,Caroline Island,GADM 4.1 fallback,Caroline Island,True
 GIL-1892-2025,Gilbert and Ellice Island,CShapes 2.0 (1999-2019),Kiribati,True
