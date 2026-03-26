@@ -136,6 +136,8 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `05_COVERAGE_ANALYSIS.md` | Coverage by era, continent; cross-references with COW/CShapes/FAOSTAT |
 | `06_KNOWN_ISSUES_AND_DECISIONS.md` | 5 fixes, 4 known limitations, 9 design decisions, changelog |
 | `07_SUBNATIONAL_POLYGONS.md` | Subnational polygon extraction: quality tiers, limitations, GADM assessment |
+| `08_POLYGON_ACCURACY_AUDIT.md` | Deep audit: 12 problem zones, 18 severity entries, external GIS sources |
+| `09_SUBNATIONAL_MAJOR_COUNTRIES.md` | GADM admin-1 for 19 countries: stability ratings, 374 potential entries |
 
 ---
 
@@ -150,6 +152,18 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **100%** coverage of tracked empire dissolutions (17)
 - **5 fixes** applied from exhaustive cross-referencing
 - **478 polities** individually verified against multiple sources
+
+### Automated Stress Testing (31 tests)
+- **23 PASS**: Schema, types, dates, code uniqueness, duration, polygon validity, CRS, etc.
+- **7 WARN**: ISO code sharing (by design), predecessor chain gaps (region codes), centroid
+  exceptions (Turkey, Greenland — transcontinental entities), date overlaps (by design)
+- **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
+
+### Polygon Cross-Validation
+- CShapes 2.0 vs GADM: **median IoU 0.975** across 183 countries
+- **157 countries** with IoU ≥ 0.8 (good agreement)
+- **14 countries** with IoU < 0.5 (all small island nations)
+- **41 CShapes-Europe entries** unique to that dataset (pre-unification German/Italian states)
 
 ---
 
@@ -168,6 +182,21 @@ Filter by `end_year = 2025` and `polity_type = "sovereign"` to get current state
 
 ### For joining with other datasets:
 Use `iso3_code` for ISO-based datasets, `cow_code` for COW-based datasets.
+
+---
+
+## Analysis Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `build_database.py` | Build final polities_database.csv from all sources |
+| `build_polygons.py` | Match polities to CShapes/GADM/CShapes-Europe polygons |
+| `generate_plots.py` | Generate 13 analysis and cross-validation plots |
+| `stress_test.py` | 31 automated integrity checks with diagnostic plots |
+| `compare_polygons.py` | CShapes vs GADM IoU comparison for 183 countries |
+| `validate_iso_overlaps.py` | ISO code collision detection and classification |
+| `analyze_subnational.py` | GADM admin-1 analysis for 19 major countries |
+| `generate_validation_report.py` | Combined validation dashboard (3 plots) |
 
 ---
 
