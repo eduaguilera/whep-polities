@@ -1,0 +1,217 @@
+polity_code,polity_name,start_year,end_year,duration_years,polity_type,continent,iso3_code,cow_code,polygon_source,predecessor,successor,data_sources,verification_status,notes
+USAL-1959-2025,Alabama (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.1_1
+USAK-1959-2025,Alaska (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.2_1
+USAZ-1959-2025,Arizona (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.3_1
+USAR-1959-2025,Arkansas (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.4_1
+USCA-1959-2025,California (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.5_1
+USCO-1959-2025,Colorado (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.6_1
+USCT-1959-2025,Connecticut (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.7_1
+USDE-1959-2025,Delaware (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.8_1
+USDC-1959-2025,District of Columbia (Federal District),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.9_1
+USFL-1959-2025,Florida (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.10_1
+USGA-1959-2025,Georgia (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.11_1
+USHI-1959-2025,Hawaii (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.12_1
+USID-1959-2025,Idaho (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.13_1
+USIL-1959-2025,Illinois (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.14_1
+USIN-1959-2025,Indiana (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.15_1
+USIA-1959-2025,Iowa (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.16_1
+USKS-1959-2025,Kansas (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.17_1
+USKY-1959-2025,Kentucky (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.18_1
+USLA-1959-2025,Louisiana (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.19_1
+USME-1959-2025,Maine (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.20_1
+USMD-1959-2025,Maryland (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.21_1
+USMA-1959-2025,Massachusetts (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.22_1
+USMI-1959-2025,Michigan (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.23_1
+USMN-1959-2025,Minnesota (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.24_1
+USMS-1959-2025,Mississippi (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.25_1
+USMO-1959-2025,Missouri (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.26_1
+USMT-1959-2025,Montana (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.27_1
+USNE-1959-2025,Nebraska (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.28_1
+USNV-1959-2025,Nevada (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.29_1
+USNH-1959-2025,New Hampshire (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.30_1
+USNJ-1959-2025,New Jersey (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.31_1
+USNM-1959-2025,New Mexico (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.32_1
+USNY-1959-2025,New York (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.33_1
+USNC-1959-2025,North Carolina (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.34_1
+USND-1959-2025,North Dakota (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.35_1
+USOH-1959-2025,Ohio (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.36_1
+USOK-1959-2025,Oklahoma (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.37_1
+USOR-1959-2025,Oregon (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.38_1
+USPA-1959-2025,Pennsylvania (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.39_1
+USRI-1959-2025,Rhode Island (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.40_1
+USSC-1959-2025,South Carolina (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.41_1
+USSD-1959-2025,South Dakota (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.42_1
+USTN-1959-2025,Tennessee (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.43_1
+USTX-1959-2025,Texas (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.44_1
+USUT-1959-2025,Utah (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.45_1
+USVT-1959-2025,Vermont (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.46_1
+USVA-1959-2025,Virginia (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.47_1
+USWA-1959-2025,Washington (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.48_1
+USWV-1959-2025,West Virginia (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.49_1
+USWI-1959-2025,Wisconsin (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.50_1
+USWY-1959-2025,Wyoming (State),1959,2025,67,subnational,North America,USA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: USA-1959-2025; GADM GID: USA.51_1
+CAAB-1999-2025,Alberta (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.1_1
+CABC-1999-2025,British Columbia (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.2_1
+CAMB-1999-2025,Manitoba (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.3_1
+CANB-1999-2025,New Brunswick (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.4_1
+CANF-1999-2025,Newfoundland and Labrador (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.5_1
+CANT-1999-2025,Northwest Territories (Territory),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.6_1
+CANS-1999-2025,Nova Scotia (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.7_1
+CANU-1999-2025,Nunavut (Territory),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.8_1
+CAON-1999-2025,Ontario (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.9_1
+CAPE-1999-2025,Prince Edward Island (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.10_1
+CAQC-1999-2025,Québec (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.11_1
+CASK-1999-2025,Saskatchewan (Province),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.12_1
+CAYT-1999-2025,Yukon (Territory),1999,2025,27,subnational,North America,CAN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: CAN-1948-2025; GADM GID: CAN.13_1
+BRAC-1988-2025,Acre (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.1_1
+BRAL-1988-2025,Alagoas (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.2_1
+BRAP-1988-2025,Amapá (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.3_1
+BRAM-1988-2025,Amazonas (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.4_1
+BRBA-1988-2025,Bahia (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.5_1
+BRCE-1988-2025,Ceará (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.6_1
+BRDF-1988-2025,Distrito Federal (Federal District),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.7_1
+BRES-1988-2025,Espírito Santo (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.8_1
+BRGO-1988-2025,Goiás (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.9_1
+BRMA-1988-2025,Maranhão (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.10_1
+BRMT-1988-2025,Mato Grosso (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.12_1
+BRMS-1988-2025,Mato Grosso do Sul (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.11_1
+BRMG-1988-2025,Minas Gerais (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.13_1
+BRPR-1988-2025,Paraná (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.16_1
+BRPB-1988-2025,Paraíba (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.15_1
+BRPA-1988-2025,Pará (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.14_1
+BRPE-1988-2025,Pernambuco (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.17_1
+BRPI-1988-2025,Piauí (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.18_1
+BRRN-1988-2025,Rio Grande do Norte (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.20_1
+BRRS-1988-2025,Rio Grande do Sul (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.21_1
+BRRJ-1988-2025,Rio de Janeiro (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.19_1
+BRRO-1988-2025,Rondônia (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.22_1
+BRRR-1988-2025,Roraima (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.23_1
+BRSC-1988-2025,Santa Catarina (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.24_1
+BRSE-1988-2025,Sergipe (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.26_1
+BRSP-1988-2025,São Paulo (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.25_1
+BRTO-1988-2025,Tocantins (State),1988,2025,38,subnational,South America,BRA,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: BRA-1909-2025; GADM GID: BRA.27_1
+AUAS-1901-2025,Ashmore and Cartier Islands (Territory),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.1_1
+AUAC-1901-2025,Australian Capital Territory (Territory),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.2_1
+AUCR-1901-2025,Coral Sea Islands Territory (Territory),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.3_1
+AUJB-1901-2025,Jervis Bay Territory (Territory),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.4_1
+AUNS-1901-2025,New South Wales (State),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.5_1
+AUNT-1901-2025,Northern Territory (Territory),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.6_1
+AUQL-1901-2025,Queensland (State),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.7_1
+AUSA-1901-2025,South Australia (State),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.8_1
+AUTS-1901-2025,Tasmania (State),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.9_1
+AUVI-1901-2025,Victoria (State),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.10_1
+AUWA-1901-2025,Western Australia (State),1901,2025,125,subnational,Oceania,AUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: AUS-1901-2025; GADM GID: AUS.11_1
+CNAH-1997-2025,Anhui (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.1_1
+CNBJ-1997-2025,Beijing (Municipality),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.2_1
+CNCQ-1997-2025,Chongqing (Municipality),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.3_1
+CNFJ-1997-2025,Fujian (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.4_1
+CNGS-1997-2025,Gansu (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.5_1
+CNGD-1997-2025,Guangdong (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.6_1
+CNGX-1997-2025,Guangxi (Autonomous Region),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.7_1
+CNGZ-1997-2025,Guizhou (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.8_1
+CNHA-1997-2025,Hainan (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.9_1
+CNHB-1997-2025,Hebei (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.10_1
+CNHL-1997-2025,Heilongjiang (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.11_1
+CNHE-1997-2025,Henan (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.12_1
+CNHU-1997-2025,Hubei (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.13_1
+CNHN-1997-2025,Hunan (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.14_1
+CNJS-1997-2025,Jiangsu (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.15_1
+CNJX-1997-2025,Jiangxi (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.16_1
+CNJL-1997-2025,Jilin (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.17_1
+CNLN-1997-2025,Liaoning (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.18_1
+CNNM-1997-2025,Nei Mongol (Autonomous Region),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.19_1
+CNNX-1997-2025,Ningxia Hui (Autonomous Region),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.20_1
+CNQH-1997-2025,Qinghai (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.21_1
+CNSA-1997-2025,Shaanxi (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.22_1
+CNSD-1997-2025,Shandong (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.23_1
+CNSH-1997-2025,Shanghai (Municipality),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.24_1
+CNSX-1997-2025,Shanxi (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.25_1
+CNSC-1997-2025,Sichuan (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.26_1
+CNTJ-1997-2025,Tianjin (Municipality),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.27_1
+CNXJ-1997-2025,Xinjiang Uygur (Autonomous Region),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.28_1
+CNXZ-1997-2025,Xizang (Autonomous Region),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.29_1
+CNYN-1997-2025,Yunnan (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.30_1
+CNZJ-1997-2025,Zhejiang (Province),1997,2025,29,subnational,Asia,CHN,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: F351-1950-2025; GADM GID: CHN.31_1
+RUAD-1993-2025,Adygey (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.1_1
+RUAL-1993-2025,Altay (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.2_1
+RUAM-1993-2025,Amur (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.3_1
+RUAR-1993-2025,Arkhangel'sk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.4_1
+RUAS-1993-2025,Astrakhan' (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.5_1
+RUBK-1993-2025,Bashkortostan (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.6_1
+RUBL-1993-2025,Belgorod (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.7_1
+RUBR-1993-2025,Bryansk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.8_1
+RUBU-1993-2025,Buryat (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.9_1
+RUCN-1993-2025,Chechnya (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.10_1
+RUCL-1993-2025,Chelyabinsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.11_1
+RUCK-1993-2025,Chukot (Autonomous Province),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.12_1
+RUCV-1993-2025,Chuvash (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.13_1
+RUSP-1993-2025,City of St. Petersburg (City),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.14_1
+RUDA-1993-2025,Dagestan (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.15_1
+RUGA-1993-2025,Gorno-Altay (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.16_1
+RUIN-1993-2025,Ingush (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.17_1
+RUIK-1993-2025,Irkutsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.18_1
+RUIV-1993-2025,Ivanovo (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.19_1
+RUKB-1993-2025,Kabardin-Balkar (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.20_1
+RUKN-1993-2025,Kaliningrad (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.21_1
+RUKL-1993-2025,Kalmyk (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.22_1
+RUKG-1993-2025,Kaluga (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.23_1
+RUKQ-1993-2025,Kamchatka (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.24_1
+RUKC-1993-2025,Karachay-Cherkess (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.25_1
+RUKI-1993-2025,Karelia (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.26_1
+RUKE-1993-2025,Kemerovo (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.27_1
+RUKH-1993-2025,Khabarovsk (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.28_1
+RUKK-1993-2025,Khakass (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.29_1
+RUKM-1993-2025,Khanty-Mansiy (Autonomous Province),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.30_1
+RUKV-1993-2025,Kirov (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.31_1
+RUKO-1993-2025,Komi (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.32_1
+RUKT-1993-2025,Kostroma (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.33_1
+RUKD-1993-2025,Krasnodar (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.34_1
+RUKX-1993-2025,Krasnoyarsk (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.35_1
+RUKU-1993-2025,Kurgan (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.36_1
+RUKS-1993-2025,Kursk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.37_1
+RULN-1993-2025,Leningrad (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.38_1
+RULP-1993-2025,Lipetsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.39_1
+RUMG-1993-2025,Maga Buryatdan (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.40_1
+RUME-1993-2025,Mariy-El (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.41_1
+RUMR-1993-2025,Mordovia (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.42_1
+RUMW-1993-2025,Moscow City (City),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.43_1
+RUMS-1993-2025,Moskva (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.44_1
+RUMM-1993-2025,Murmansk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.45_1
+RUNN-1993-2025,Nenets (Autonomous Province),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.46_1
+RUNZ-1993-2025,Nizhegorod (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.47_1
+RUNO-1993-2025,North Ossetia (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.48_1
+RUNG-1993-2025,Novgorod (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.49_1
+RUNS-1993-2025,Novosibirsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.50_1
+RUOM-1993-2025,Omsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.51_1
+RUOL-1993-2025,Orel (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.52_1
+RUOB-1993-2025,Orenburg (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.53_1
+RUPZ-1993-2025,Penza (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.54_1
+RUPE-1993-2025,Perm' (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.55_1
+RUPR-1993-2025,Primor'ye (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.56_1
+RUPS-1993-2025,Pskov (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.57_1
+RURO-1993-2025,Rostov (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.58_1
+RURZ-1993-2025,Ryazan' (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.59_1
+RUSK-1993-2025,Sakha (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.60_1
+RUSL-1993-2025,Sakhalin (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.61_1
+RUSA-1993-2025,Samara (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.62_1
+RUSR-1993-2025,Saratov (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.63_1
+RUSM-1993-2025,Smolensk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.64_1
+RUST-1993-2025,Stavropol' (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.65_1
+RUSV-1993-2025,Sverdlovsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.66_1
+RUTB-1993-2025,Tambov (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.67_1
+RUTT-1993-2025,Tatarstan (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.68_1
+RUTO-1993-2025,Tomsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.69_1
+RUTL-1993-2025,Tula (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.70_1
+RUTU-1993-2025,Tuva (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.71_1
+RUTV-1993-2025,Tver' (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.72_1
+RUTY-1993-2025,Tyumen' (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.73_1
+RUUD-1993-2025,Udmurt (Republic),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.74_1
+RUUL-1993-2025,Ul'yanovsk (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.75_1
+RUVL-1993-2025,Vladimir (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.76_1
+RUVG-1993-2025,Volgograd (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.77_1
+RUVO-1993-2025,Vologda (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.78_1
+RUVR-1993-2025,Voronezh (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.79_1
+RUYN-1993-2025,Yamal-Nenets (Autonomous Province),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.80_1
+RUYS-1993-2025,Yaroslavl' (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.81_1
+RUYV-1993-2025,Yevrey (Autonomous Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.82_1
+RUZB-1993-2025,Zabaykal'ye (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.83_1

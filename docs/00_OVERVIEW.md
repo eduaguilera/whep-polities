@@ -1,4 +1,4 @@
-# WHEP Polities Database v1.2 -- Overview
+# WHEP Polities Database v1.3 -- Overview
 
 **Project**: Who Has Eaten the Planet (WHEP)
 **Funded by**: European Research Council (ERC)
@@ -9,9 +9,10 @@
 
 ## What Is This Database?
 
-A comprehensive database of **810 historical political entities ("polities")** spanning
+A comprehensive database of **1,026 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
+Includes **216 present-day subnational entries** for the 6 largest countries by area.
 
 Each polity represents a **fixed territory over a continuous period of time**. When
 territory changes significantly (>10% area), a new polity entry is created.
@@ -22,7 +23,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 810 |
+| Total entries | 1,026 |
 | Sovereign states | 194 |
 | Historical entities | 339 |
 | Colonial entities | 47 |
@@ -32,18 +33,20 @@ territory changes significantly (>10% area), a new polity entry is created.
 | Statistical regions | 77 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
+| **Subnational entries** | **216** |
 
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 723/810 (89.3%) |
-| Subnational polygons extracted | 91/110 (82.7%) |
+| Polities with polygons | 939/1,026 (91.5%) |
+| Subnational polygons (top 6 countries) | 216/216 (100%) |
+| Historical subnational polygons | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
 | COW State System coverage | 207/209 (99.0%) |
 | FAOSTAT coverage | 249/252 (98.8%) |
 | Decolonization events | 94/94 (100%) |
 
-### Geographic Distribution
+### Geographic Distribution (non-subnational)
 | Continent | Entries |
 |-----------|---------|
 | Africa | 217 |
@@ -54,6 +57,16 @@ territory changes significantly (>10% area), a new polity entry is created.
 | North America | 64 |
 | South America | 35 |
 | Antarctica | 4 |
+
+### Subnational Coverage (6 largest countries by area)
+| Country | Admin-1 units | Start year | Source |
+|---------|---------------|------------|--------|
+| Russia | 83 | 1993 | GADM 3.6 |
+| USA | 51 | 1959 | GADM 3.6 |
+| China | 31 | 1997 | GADM 3.6 |
+| Brazil | 27 | 1988 | GADM 3.6 |
+| Canada | 13 | 1999 | GADM 3.6 |
+| Australia | 11 | 1901 | GADM 3.6 |
 
 ### Temporal Coverage
 - **Earliest start**: 1800
@@ -74,7 +87,7 @@ The final database (`data/final/polities_database.csv`) has 15 columns:
 | `start_year` | Integer | Start year (inclusive) |
 | `end_year` | Integer | End year (inclusive; 2025 = still exists) |
 | `duration_years` | Integer | end_year - start_year + 1 |
-| `polity_type` | String | sovereign/historical/colonial/dependency/mandate/occupation/puppet/aggregate/region/disputed |
+| `polity_type` | String | sovereign/historical/colonial/dependency/mandate/occupation/puppet/aggregate/region/disputed/subnational |
 | `continent` | String | Africa/Asia/Europe/North America/South America/Oceania/Antarctica/Global |
 | `iso3_code` | String | ISO 3166-1 alpha-3 code (if applicable) |
 | `cow_code` | String | Correlates of War numeric code (if applicable) |
@@ -117,7 +130,8 @@ Each polity is assigned a polygon source indicating where its geographic boundar
 | GADM 4.1 | 75 | Modern boundaries |
 | GADM 4.1 or Natural Earth | 36 | Fallback for remaining |
 | CShapes-Europe | 21 | Pre-1886 European states |
-| GADM 4.1 (subnational) | 7 | Sub-national units |
+| GADM 4.1 (subnational) | 7 | Historical sub-national units |
+| GADM 3.6 (subnational) | 216 | Present-day admin-1 for top 6 countries |
 | None (statistical aggregate) | 77 | Regions (no geometry needed) |
 
 All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
@@ -181,6 +195,10 @@ actual territorial configurations.
 ### For modern country analysis:
 Filter by `end_year = 2025` and `polity_type = "sovereign"` to get current states.
 
+### For subnational data:
+Filter by `polity_type = "subnational"` to get admin-1 units for Russia, Canada, USA,
+China, Brazil, and Australia. The `notes` field contains the parent polity code.
+
 ### For joining with other datasets:
 Use `iso3_code` for ISO-based datasets, `cow_code` for COW-based datasets.
 
@@ -201,7 +219,8 @@ Use `iso3_code` for ISO-based datasets, `cow_code` for COW-based datasets.
 | `analyze_temporal_evolution.py` | Temporal evolution, decolonization, European states | 6 |
 | `analyze_polygon_quality.py` | Polygon geometry quality (area, vertices, compactness) | 5 |
 | `generate_validation_report.py` | Combined validation dashboard | 3 |
-| **Total** | **31+ tests, 10 analyses** | **54 plots** |
+| `add_subnational_polities.py` | Add GADM admin-1 for top 6 countries | — |
+| **Total** | **31+ tests, 11 analyses** | **54 plots** |
 
 ---
 
