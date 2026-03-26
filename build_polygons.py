@@ -36,12 +36,14 @@ cshapes = gpd.read_file(f"{BASE}/data/geodata/cshapes2_full.gpkg")
 cshapes_sov = gpd.read_file(f"{BASE}/data/geodata/cshapes2_sovereign.gpkg")
 cshapes_eu = gpd.read_file(f"{REF}/cshapes_europe_geometries.gpkg")
 gadm = gpd.read_file(f"{REF}/gadm_geometries.gpkg")
+gadm_full = gpd.read_file("/home/usuario/LandInG/gadm/gadm36_levels.gpkg", layer="level0")
 
 print(f"  Polities: {len(polities)}")
 print(f"  CShapes (full): {len(cshapes)}")
 print(f"  CShapes (sovereign): {len(cshapes_sov)}")
 print(f"  CShapes-Europe: {len(cshapes_eu)}")
-print(f"  GADM: {len(gadm)}")
+print(f"  GADM (ref): {len(gadm)}")
+print(f"  GADM (full): {len(gadm_full)}")
 
 # Parse CShapes dates
 cshapes["start_dt"] = pd.to_datetime(cshapes["start"])
@@ -548,6 +550,15 @@ for _, p in polities.iterrows():
                     geom = eu_match.geometry
                     source_used = "CShapes-Europe fallback"
                     match_name = eu_match["polity_name"]
+
+    # 5. Ultimate fallback: full GADM by ISO3 code
+    if geom is None and pd.notna(p.get("iso3_code")):
+        iso = p["iso3_code"]
+        gf = gadm_full[gadm_full["GID_0"] == iso]
+        if len(gf) > 0:
+            geom = gf.iloc[0].geometry
+            source_used = f"GADM 3.6 (full, {iso})"
+            match_name = gf.iloc[0]["NAME_0"]
 
     if geom is not None:
         matched += 1

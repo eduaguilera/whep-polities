@@ -1058,7 +1058,7 @@ def get_cow_code(name, code):
         "GER": "255",  # Germany
         "TWO": "329",  # Two Sicilies
         "PAP": "327",  # Papal States
-        "SAR": "325",  # Sardinia (also Sarawak)
+        "SAR": "338",  # Sardinia/Piedmont (COW 338)
         "TUS": "337",  # Tuscany
         "DMO": "332",  # Modena
         "DPA": "335",  # Parma
@@ -1070,12 +1070,16 @@ def get_cow_code(name, code):
         "HES": "275",  # Hesse (Grand Ducal/Electoral)
         "MEK": "280",  # Mecklenburg-Schwerin
         "NAP": "329",  # Kingdom of Naples = Two Sicilies
-        "PIE": "325",  # Piedmont = Sardinia
+        "PIE": "338",  # Piedmont = Sardinia (COW 338)
         "F228": "365", # USSR
         "F248": "345", # Yugoslavia
         "F51": "315",  # Czechoslovakia
         "F78": "260",  # West Germany
         "F77": "265",  # East Germany
+        "F246": "679", # North Yemen
+        "F247": "680", # South Yemen
+        "OKO": "730",  # Korea (pre-split)
+        "KOS": "347",  # Kosovo
     }
     if prefix in cow_special:
         return cow_special[prefix]
