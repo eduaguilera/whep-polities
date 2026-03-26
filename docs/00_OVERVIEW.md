@@ -153,6 +153,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `08_POLYGON_ACCURACY_AUDIT.md` | Deep audit: 12 problem zones, 18 severity entries, external GIS sources |
 | `09_SUBNATIONAL_MAJOR_COUNTRIES.md` | GADM admin-1 for 19 countries: stability ratings, 374 potential entries |
 | `10_VALIDATION_SUMMARY.md` | Data quality scorecard: 31 tests, polygon cross-validation, known issues |
+| `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 1,900 edges, usage examples |
 
 ---
 
@@ -220,7 +221,9 @@ Use `iso3_code` for ISO-based datasets, `cow_code` for COW-based datasets.
 | `analyze_polygon_quality.py` | Polygon geometry quality (area, vertices, compactness) | 5 |
 | `generate_validation_report.py` | Combined validation dashboard | 3 |
 | `add_subnational_polities.py` | Add GADM admin-1 for top 6 countries | — |
-| **Total** | **31+ tests, 11 analyses** | **54 plots** |
+| `build_knowledge_graph.py` | Build polity knowledge graph (9 relation types) | — |
+| `visualize_knowledge_graph.py` | Knowledge graph visualizations | 6 |
+| **Total** | **31+ tests, 13 analyses** | **60 plots** |
 
 ---
 
