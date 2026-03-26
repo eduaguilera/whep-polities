@@ -15,6 +15,12 @@ WHEP polity entries. Each country is evaluated for:
 261 have high-confidence stable boundaries (rating 4-5/5), making them strong
 candidates for inclusion as WHEP polities.
 
+**Refined recommendation (from detailed research)**: Of these, the strongest
+candidates are Japan's 47 prefectures (unchanged since 1888), US 51 states
+(unchanged since admission), and a select group from China, Brazil, Mexico,
+Canada, Argentina, Australia, and UK — totaling approximately 250-300 viable
+entries depending on the temporal depth required.
+
 ---
 
 ## Boundary Stability Rating System
@@ -56,10 +62,19 @@ since our database starts at 1800). End_year = 2025. Polygon quality: **Tier 2**
 
 **Potential entries**: 51
 
+**Detailed boundary notes**:
+- **Original 13 states**: All stable since 1800 except Virginia (lost West Virginia 1863)
+  and Massachusetts (lost Maine 1820). Georgia ceded western lands by 1802.
+- **Texas**: Current boundaries since Compromise of 1850 (ceded western claims).
+- **Nevada**: Gained southern tip from Arizona Territory 1867; stable since.
+- All other states: boundaries unchanged since date of admission.
+- For pre-split states (VA pre-1863, MA pre-1820), merged GADM polygons would be
+  needed (VA+WV, MA+ME). These are Tier 3 entries.
+
 **Limitations**:
 - Pre-statehood territorial boundaries differ (e.g., Dakota Territory → North/South Dakota)
-- Some states had minor border adjustments early in their history
 - GADM boundaries are modern — won't capture territorial phase boundaries
+- US territories (Puerto Rico, Guam, etc.) are separate GADM level-0 entries, not admin-1
 
 ---
 
@@ -221,22 +236,31 @@ Tierra del Fuego was the last territory elevated to province status (1990).
 **GADM admin-1**: 31 units (22 provinces + 5 autonomous regions + 4 municipalities)
 **Total area**: 9,382,250 km²
 
-**Boundary stability**: Mostly good. Provincial boundaries are largely inherited
-from the Qing dynasty, with some modern adjustments:
-- 1988: Hainan Province separated from Guangdong
-- 1997: Chongqing Municipality separated from Sichuan
+**Boundary stability**: Mostly good. Many provincial boundaries trace to the Ming
+dynasty (pre-1644) or Qing dynasty. The core 18 provinces have been remarkably stable.
 
-**Key considerations**:
-- Inner Mongolia's boundaries changed significantly (expanded in 1947, contracted
-  during Cultural Revolution, restored 1979)
-- Tibet's modern boundaries differ from historical Tibet
-- Manchuria's three provinces (Heilongjiang, Jilin, Liaoning) are relatively stable
+**16 core provinces with stable boundaries (Tier 2)**:
+Anhui (1667), Fujian (~1400), Guangdong (~1400, but lost Hainan 1988), Guizhou (~1413),
+Hebei (as Zhili, ~1724), Henan (~1400), Hubei (1664), Hunan (1664), Jiangsu (1667),
+Jiangxi (~1400), Shaanxi (~1400), Shandong (~1400), Shanxi (~1400), Sichuan (~1400,
+but lost Chongqing 1997), Yunnan (~1400), Zhejiang (~1400).
 
-**Recommendation**: Add major provinces with stable boundaries. Start dates need
-careful research per province. Polygon quality: **Tier 2** for core provinces,
-**Tier 3** for border regions with historical boundary changes.
+**Provinces requiring merged GADM polygons for historical accuracy (Tier 3)**:
+- Guangdong + Hainan = historical Guangdong (pre-1988)
+- Sichuan + Chongqing = historical Sichuan (pre-1997)
+- Jiangsu + Shanghai = historical Jiangsu (pre-municipality)
+- Hebei + Beijing + Tianjin = historical Zhili (pre-municipalities)
 
-**Potential entries**: 31
+**Not recommended**:
+- Inner Mongolia: boundaries changed dramatically (1947, 1956, 1969, 1979)
+- Ningxia: only province-level since 1958
+- Xinjiang: boundaries shifted with Qing expansion
+- Xizang (Tibet): effective Chinese control varies; autonomous region only since 1965
+
+**Recommendation**: Add 16 core provinces (Tier 2) + 5 merged variants (Tier 3).
+Only worth adding if subnational data exists for Chinese provinces.
+
+**Potential entries**: 16-21
 
 ---
 
@@ -325,20 +349,21 @@ as historical proxies. Polygon quality: **Tier 2** (post-1994 only).
 **GADM admin-1**: 83 units (46 regions + 21 republics + 9 territories + 4 autonomous provinces + 2 cities + 1 autonomous region)
 **Total area**: 16,925,825 km²
 
-**Boundary stability**: Poor. Frequent changes:
-- Soviet era: Numerous creations, mergers, transfers
-- 2003-2008: Several mergers (e.g., Perm Krai absorbed Komi-Permyak)
+**Boundary stability**: Poor. The Soviet period involved constant reorganization
+(oblasts created, merged, split, renamed). Post-Soviet changes include:
+- 1992: Chechen-Ingush split into Chechnya and Ingushetia
+- 2005-2008: Four mergers (Perm, Kamchatka, Zabaykalye, Irkutsk absorption)
 - 2014: Crimea and Sevastopol annexed (internationally disputed)
 
-**Key consideration**: The sheer number of federal subjects (83) and frequent
-changes make individual tracking very complex. Major historical oblasts
-(Moscow, St. Petersburg/Leningrad, Novosibirsk, Sverdlovsk) have relatively
-stable boundaries.
+**General recommendation**: Do NOT add Russian federal subjects as polities.
+Russia has been a centralized state throughout the period of interest. Oblast
+boundaries have been unstable and there is no period where all 83 subjects
+simultaneously had their current boundaries.
 
-**Recommendation**: Only add the most stable and significant subjects.
-Polygon quality: **Tier 3** for stable subjects, **Tier 4** for recently merged.
+**Conditional exception**: Kaliningrad Oblast (1946-2025) — geographically
+distinct exclave with stable boundaries.
 
-**Potential entries**: ~20 (most stable subjects only)
+**Potential entries**: 0-1 (Kaliningrad only)
 
 ---
 
@@ -347,24 +372,25 @@ Polygon quality: **Tier 3** for stable subjects, **Tier 4** for recently merged.
 **GADM admin-1**: 36 units (28 states + 8 union territories)
 **Total area**: 3,152,800 km²
 
-**Boundary stability**: Poor. Frequent reorganizations:
-- 1947: Partition (British India → India + Pakistan)
-- 1956: States Reorganisation Act (complete restructuring on linguistic lines)
+**Boundary stability**: Poor. India's subnational boundaries are among the most
+volatile of any large country. The 1956 States Reorganisation Act (linguistic
+reorganization) changed virtually every internal boundary. Further changes:
 - 1960: Bombay State → Maharashtra + Gujarat
-- 1966: Punjab → Punjab + Haryana
-- 2000: Chhattisgarh, Jharkhand, Uttarakhand created
+- 1966: Punjab → Punjab + Haryana + Himachal Pradesh
+- 2000: Chhattisgarh (from MP), Jharkhand (from Bihar), Uttarakhand (from UP)
 - 2014: Telangana split from Andhra Pradesh
-- 2019: Jammu & Kashmir reorganized into 2 UTs
+- 2019: J&K split into J&K UT and Ladakh UT (not in GADM 3.6)
 
-**Key consideration**: Very few Indian states have stable boundaries across
-the full 1947-2025 period. States reorganized in 1956 mostly retained their
-post-1956 boundaries, but 7 more states were created 2000-2019.
+**States with reasonably stable boundaries since 1956**:
+Tamil Nadu, Kerala, Odisha, West Bengal, Rajasthan, Goa (1961+, Portuguese enclave)
 
-**Recommendation**: Only add states stable since 1956 (Tamil Nadu, Kerala,
-Karnataka, West Bengal, Rajasthan, etc.). Exclude recently split states
-unless using post-split dates.
+**General recommendation**: Do NOT add Indian states as polities. Modern boundaries
+are unusable as proxies for any pre-1956 entity.
 
-**Potential entries**: ~25 (stable post-1956 states)
+**Exceptions (island-based, inherently stable geography)**:
+- Andaman and Nicobar Islands (1950+), Lakshadweep (1956+), Goa (1961+), Sikkim (1975+)
+
+**Potential entries**: ~4 (island/enclave exceptions only)
 
 ---
 
@@ -426,27 +452,34 @@ historical continuity with any pre-1967 administrative division.
 
 | Country | GADM Units | Rating | Recommended | Tier | Notes |
 |---------|-----------|--------|-------------|------|-------|
-| USA | 51 | 5 | 51 | 2 | Stable since 1912 |
+| USA | 51 | 5 | 51 | 2 | Stable since admission |
 | JPN | 47 | 5 | 47 | 2 | Stable since 1888 |
-| AUS | 11 | 5 | 8 | 2 | Some already in DB |
-| GBR | 4 | 5 | 0 | - | Already covered |
-| CAN | 13 | 4 | 13 | 2-3 | Manitoba boundary issue |
+| AUS | 11 | 5 | 8 | 2 | Post-1901 states + territories |
+| GBR | 4 | 5 | 4 | 2 | Promote existing subnational |
+| CAN | 13 | 4 | 13 | 2-3 | MB/ON/QC GADM valid from 1912 |
 | DEU | 16 | 4 | 16 | 2 | Post-1990 only |
-| MEX | 32 | 4 | 32 | 2 | Stable since 1974 |
-| ARG | 24 | 4 | 24 | 2 | Stable since 1991 |
-| CHN | 31 | 4 | 31 | 2-3 | Mostly stable |
+| MEX | 32 | 4 | 32 | 2 | Most stable since 19th century |
+| ARG | 24 | 4 | 24 | 2 | Historic provinces from 1853 |
+| CHN | 31 | 4 | 16-21 | 2-3 | Core provinces only |
 | COL | 32 | 4 | 32 | 2 | Stable since 1991 |
-| BRA | 27 | 3 | 27 | 2-3 | Tocantins 1988 |
-| FRA | 13 | 3 | 13 | 2 | Regions post-2016 |
+| BRA | 27 | 3 | 27 | 2-3 | Start dates vary by state |
+| FRA | 13 | 3 | 0 | - | Regions too recent; use departments |
 | ZAF | 9 | 3 | 9 | 2 | Post-1994 only |
 | PER | 26 | 3 | 26 | 2 | Mostly stable |
-| RUS | 83 | 2 | ~20 | 3 | Only stable subjects |
-| IND | 36 | 2 | ~25 | 3 | Post-1956 states |
+| RUS | 83 | 2 | 0-1 | 3 | Kaliningrad only |
+| IND | 36 | 2 | 4 | 2 | Island/enclave exceptions only |
 | EGY | 27 | 2 | 0 | - | Too unstable |
-| IDN | 33 | 1 | 0 | - | Constant splits |
+| IDN | 33 | 1 | 2 | 2 | Bali, Yogyakarta only |
 | NGA | 37 | 1 | 0 | - | No historical continuity |
 
-**Total recommended new polity entries**: ~374
+**Total recommended new polity entries**: ~312 (conservative) to ~350 (with merged variants)
+
+**Priority tiers**:
+- **High priority** (stable, long time span): USA 51, JPN 47, AUS 8, GBR 4, CAN 13,
+  ARG 24, MEX 32 = **179 entries**
+- **Medium priority** (shorter time span or conditional): CHN 16-21, BRA 27, DEU 16,
+  ZAF 9, COL 32, PER 26 = **126-131 entries**
+- **Low priority**: IND 4, IDN 2, RUS 0-1 = **6-7 entries**
 
 ---
 
