@@ -1,0 +1,185 @@
+prefix,code1,name1,type1,code2,name2,type2,overlap_years,category
+AND,AND-1800-2025,Andorra,sovereign,AND-1816-1863,Anhalt-Dessau,historical,48,different_type_dual
+BAD,BAD-1800-1873,Badakhshan,historical,BAD-1800-1871,Baden,colonial,72,different_type_dual
+BEL,BEL-1831-2025,Belgium,sovereign,BEL-1885-2025,Belgian Congo,aggregate,141,different_type_dual
+BRI,BRI-1800-1895,British Bechuanaland (to 1895),colonial,BRI-1800-1960,British Protectorate (British Somaliland) (to 1960),colonial,96,iso_collision
+BRI,BRI-1800-1960,British Protectorate (British Somaliland) (to 1960),colonial,BRI-1919-1961,British Cameroon (1919-1961),mandate,42,different_type_dual
+BRI,BRI-1800-1960,British Protectorate (British Somaliland) (to 1960),colonial,BRI-1922-1955,British Togoland (1922-1955),colonial,34,iso_collision
+BRI,BRI-1919-1961,British Cameroon (1919-1961),mandate,BRI-1922-1955,British Togoland (1922-1955),colonial,34,different_type_dual
+BRN,BRN-1816-1888,Brunei (greater),historical,BRN-1888-2025,Brunei Darussalam,sovereign,1,different_type_dual
+CAM,CAM-1800-1904,Cambodia (to 1904),historical,CAM-1904-1907,Cambodia (1904-1907),historical,1,same_entity_period_split
+CAN,CAN-1800-2025,Canary Islands,dependency,CAN-1800-1982,Canton and Enderbury Islands,historical,183,different_type_dual
+CAN,CAN-1800-2025,Canary Islands,dependency,CAN-1866-1948,Canada (to 1948),historical,83,different_type_dual
+CAN,CAN-1800-2025,Canary Islands,dependency,CAN-1948-2025,Canada,sovereign,78,different_type_dual
+CAN,CAN-1800-1982,Canton and Enderbury Islands,historical,CAN-1866-1948,Canada (to 1948),historical,83,iso_collision
+CAN,CAN-1800-1982,Canton and Enderbury Islands,historical,CAN-1948-2025,Canada,sovereign,35,different_type_dual
+CAN,CAN-1866-1948,Canada (to 1948),historical,CAN-1948-2025,Canada,sovereign,1,same_entity_period_split
+CHA,CHA-1800-2023,Channel Islands,dependency,CHA-1900-1912,Chad (1900-1912),historical,13,different_type_dual
+CHA,CHA-1800-2023,Channel Islands,dependency,CHA-1912-1919,Chad (1912-1919),historical,8,different_type_dual
+CHA,CHA-1900-1912,Chad (1900-1912),historical,CHA-1912-1919,Chad (1912-1919),historical,1,same_entity_period_split
+CHE,CHE-1800-2025,Switzerland,sovereign,CHE-1816-1857,Chechnya,historical,42,different_type_dual
+CHN,CHN-1800-1895,China (to 1895),historical,CHN-1800-2025,"China, mainland",aggregate,96,different_type_dual
+CHN,CHN-1800-1895,China (to 1895),historical,CHN-1895-1912,China (1895-1912),historical,1,same_entity_period_split
+CHN,CHN-1800-2025,"China, mainland",aggregate,CHN-1895-1912,China (1895-1912),historical,18,different_type_dual
+CHN,CHN-1800-2025,"China, mainland",aggregate,CHN-1913-1914,China (1913-1914),historical,2,different_type_dual
+CHN,CHN-1800-2025,"China, mainland",aggregate,CHN-1914-1921,China (1914-1921),historical,8,different_type_dual
+CHN,CHN-1800-2025,"China, mainland",aggregate,CHN-1921-1945,China (1921-1945),historical,25,different_type_dual
+CHN,CHN-1800-2025,"China, mainland",aggregate,CHN-1945-1947,China (1945-1947),historical,3,different_type_dual
+CHN,CHN-1800-2025,"China, mainland",aggregate,CHN-1947-1949,China (1947-1949),historical,3,different_type_dual
+CHN,CHN-1800-2025,"China, mainland",aggregate,CHN-1949-1950,China (1949-1950),historical,2,different_type_dual
+CHN,CHN-1913-1914,China (1913-1914),historical,CHN-1914-1921,China (1914-1921),historical,1,same_entity_period_split
+CHN,CHN-1914-1921,China (1914-1921),historical,CHN-1921-1945,China (1921-1945),historical,1,same_entity_period_split
+CHN,CHN-1921-1945,China (1921-1945),historical,CHN-1945-1947,China (1945-1947),historical,1,same_entity_period_split
+CHN,CHN-1945-1947,China (1945-1947),historical,CHN-1947-1949,China (1947-1949),historical,1,same_entity_period_split
+CHN,CHN-1947-1949,China (1947-1949),historical,CHN-1949-1950,China (1949-1950),historical,1,same_entity_period_split
+CON,CON-1800-1898,Congo (to 1898),historical,CON-1800-1891,Democratic Republic of the Congo (to 1891),historical,92,iso_collision
+CON,CON-1800-1898,Congo (to 1898),historical,CON-1891-1894,Democratic Republic of the Congo (1891-1894),historical,4,iso_collision
+CON,CON-1800-1898,Congo (to 1898),historical,CON-1894-1910,Democratic Republic of the Congo (1894-1910),historical,5,iso_collision
+CON,CON-1800-1898,Congo (to 1898),historical,CON-1898-1900,Congo (1898-1900),historical,1,same_entity_period_split
+CON,CON-1800-1891,Democratic Republic of the Congo (to 1891),historical,CON-1891-1894,Democratic Republic of the Congo (1891-1894),historical,1,same_entity_period_split
+CON,CON-1891-1894,Democratic Republic of the Congo (1891-1894),historical,CON-1894-1910,Democratic Republic of the Congo (1894-1910),historical,1,same_entity_period_split
+CON,CON-1894-1910,Democratic Republic of the Congo (1894-1910),historical,CON-1898-1900,Congo (1898-1900),historical,3,iso_collision
+CON,CON-1894-1910,Democratic Republic of the Congo (1894-1910),historical,CON-1900-1906,Congo (1900-1906),historical,7,iso_collision
+CON,CON-1894-1910,Democratic Republic of the Congo (1894-1910),historical,CON-1906-1912,Congo (1906-1912),historical,5,iso_collision
+CON,CON-1898-1900,Congo (1898-1900),historical,CON-1900-1906,Congo (1900-1906),historical,1,same_entity_period_split
+CON,CON-1900-1906,Congo (1900-1906),historical,CON-1906-1912,Congo (1906-1912),historical,1,same_entity_period_split
+CON,CON-1906-1912,Congo (1906-1912),historical,CON-1912-1919,Congo (1912-1919),historical,1,same_entity_period_split
+DAN,DAN-1800-1845,Danish India,historical,DAN-1800-2025,Danish Virgin Islands,aggregate,46,different_type_dual
+DAN,DAN-1800-2025,Danish Virgin Islands,aggregate,DAN-1919-1938,Danzig (1919-1938),mandate,20,different_type_dual
+DUT,DUT-1800-2025,Dutch West Indies (Netherland Antilles),aggregate,DUT-1898-2025,Dutch new Guinea,aggregate,128,iso_collision
+FED,FED-1895-1922,Federated Malay States,colonial,FED-1896-1909,Federated Malay States (1896-1909),colonial,14,same_entity_period_split
+FED,FED-1895-1922,Federated Malay States,colonial,FED-1909-1946,Federated Malay States (1909-1946),colonial,14,same_entity_period_split
+FED,FED-1896-1909,Federated Malay States (1896-1909),colonial,FED-1909-1946,Federated Malay States (1909-1946),colonial,1,same_entity_period_split
+FED,FED-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),colonial,FED-1962-1967,Federation of South Arabia (1962-1967),historical,3,different_type_dual
+FRA,FRA-1800-1919,France (to 1919),historical,FRA-1800-1982,"France, Metropolitan",aggregate,120,different_type_dual
+FRA,FRA-1800-1919,France (to 1919),historical,FRA-1816-1866,Frankfurt (Free City),historical,51,iso_collision
+FRA,FRA-1800-1919,France (to 1919),historical,FRA-1919-2025,France,sovereign,1,same_entity_period_split
+FRA,FRA-1800-1982,"France, Metropolitan",aggregate,FRA-1816-1866,Frankfurt (Free City),historical,51,different_type_dual
+FRA,FRA-1800-1982,"France, Metropolitan",aggregate,FRA-1919-2025,France,sovereign,64,different_type_dual
+FRE,FRE-1800-1930,French Guiana (to 1930),dependency,FRE-1895-1898,French West Africa (1895-1898),colonial,4,different_type_dual
+FRE,FRE-1800-1930,French Guiana (to 1930),dependency,FRE-1898-1902,French West Africa (1898-1902),colonial,5,different_type_dual
+FRE,FRE-1800-1930,French Guiana (to 1930),dependency,FRE-1902-1904,French West Africa (1902-1904),colonial,3,different_type_dual
+FRE,FRE-1800-1930,French Guiana (to 1930),dependency,FRE-1930-1946,French Guiana (1930-1946),dependency,1,same_entity_period_split
+FRE,FRE-1895-1898,French West Africa (1895-1898),colonial,FRE-1898-1902,French West Africa (1898-1902),colonial,1,same_entity_period_split
+FRE,FRE-1898-1902,French West Africa (1898-1902),colonial,FRE-1902-1904,French West Africa (1902-1904),colonial,1,same_entity_period_split
+FSM,FSM-1887-2025,French Somaliland,aggregate,FSM-1991-2025,Micronesia,sovereign,35,different_type_dual
+FSO,FSO-1844-2025,French Settlements in Oceania,aggregate,FSO-1884-1977,French Somalia,colonial,94,different_type_dual
+GER,GER-1800-2025,Germany/Zollverein,aggregate,GER-1800-1899,German Solomon Islands (to 1899),colonial,100,different_type_dual
+GER,GER-1800-2025,Germany/Zollverein,aggregate,GER-1884-2025,German colonies Oceania,aggregate,142,iso_collision
+GER,GER-1800-2025,Germany/Zollverein,aggregate,GER-1887-1888,German Togoland (1887-1888),colonial,2,different_type_dual
+GER,GER-1800-2025,Germany/Zollverein,aggregate,GER-1888-1896,German Togoland (1888-1896),colonial,9,different_type_dual
+GER,GER-1800-2025,Germany/Zollverein,aggregate,GER-1897-1919,German Togoland (1897-1919),colonial,23,different_type_dual
+GER,GER-1800-2025,Germany/Zollverein,aggregate,GER-1919-1922,German Togoland (1919-1922),colonial,4,different_type_dual
+GER,GER-1800-1899,German Solomon Islands (to 1899),colonial,GER-1884-2025,German colonies Oceania,aggregate,16,different_type_dual
+GER,GER-1800-1899,German Solomon Islands (to 1899),colonial,GER-1887-1888,German Togoland (1887-1888),colonial,2,iso_collision
+GER,GER-1800-1899,German Solomon Islands (to 1899),colonial,GER-1888-1896,German Togoland (1888-1896),colonial,9,iso_collision
+GER,GER-1800-1899,German Solomon Islands (to 1899),colonial,GER-1897-1919,German Togoland (1897-1919),colonial,3,iso_collision
+GER,GER-1884-2025,German colonies Oceania,aggregate,GER-1887-1888,German Togoland (1887-1888),colonial,2,different_type_dual
+GER,GER-1884-2025,German colonies Oceania,aggregate,GER-1888-1896,German Togoland (1888-1896),colonial,9,different_type_dual
+GER,GER-1884-2025,German colonies Oceania,aggregate,GER-1897-1919,German Togoland (1897-1919),colonial,23,different_type_dual
+GER,GER-1884-2025,German colonies Oceania,aggregate,GER-1919-1922,German Togoland (1919-1922),colonial,4,different_type_dual
+GER,GER-1887-1888,German Togoland (1887-1888),colonial,GER-1888-1896,German Togoland (1888-1896),colonial,1,same_entity_period_split
+GER,GER-1897-1919,German Togoland (1897-1919),colonial,GER-1919-1922,German Togoland (1919-1922),colonial,1,same_entity_period_split
+HER,HER-1800-1862,Herat,historical,HER-1800-1908,Herzegovina (to 1908),historical,63,iso_collision
+IND,IND-1800-1893,India (to 1893),historical,IND-1800-1947,India (to 1947),historical,94,same_entity_period_split
+IND,IND-1800-1893,India (to 1893),historical,IND-1800-1889,Indonesia (to 1889),historical,90,iso_collision
+IND,IND-1800-1893,India (to 1893),historical,IND-1889-1949,Indonesia (1889-1949),historical,5,iso_collision
+IND,IND-1800-1893,India (to 1893),historical,IND-1893-1914,India (1893-1914),historical,1,same_entity_period_split
+IND,IND-1800-1947,India (to 1947),historical,IND-1800-1889,Indonesia (to 1889),historical,90,iso_collision
+IND,IND-1800-1947,India (to 1947),historical,IND-1889-1949,Indonesia (1889-1949),historical,59,iso_collision
+IND,IND-1800-1947,India (to 1947),historical,IND-1893-1914,India (1893-1914),historical,22,same_entity_period_split
+IND,IND-1800-1947,India (to 1947),historical,IND-1914-1937,India (1914-1937),historical,24,same_entity_period_split
+IND,IND-1800-1947,India (to 1947),historical,IND-1937-1947,India (1937-1947),historical,11,same_entity_period_split
+IND,IND-1800-1947,India (to 1947),historical,IND-1947-1949,India (1947-1949),historical,1,same_entity_period_split
+IND,IND-1800-1889,Indonesia (to 1889),historical,IND-1889-1949,Indonesia (1889-1949),historical,1,same_entity_period_split
+IND,IND-1889-1949,Indonesia (1889-1949),historical,IND-1893-1914,India (1893-1914),historical,22,iso_collision
+IND,IND-1889-1949,Indonesia (1889-1949),historical,IND-1914-1937,India (1914-1937),historical,24,iso_collision
+IND,IND-1889-1949,Indonesia (1889-1949),historical,IND-1937-1947,India (1937-1947),historical,11,iso_collision
+IND,IND-1889-1949,Indonesia (1889-1949),historical,IND-1947-1949,India (1947-1949),historical,3,iso_collision
+IND,IND-1889-1949,Indonesia (1889-1949),historical,IND-1949-2025,India,sovereign,1,different_type_dual
+IND,IND-1893-1914,India (1893-1914),historical,IND-1914-1937,India (1914-1937),historical,1,same_entity_period_split
+IND,IND-1914-1937,India (1914-1937),historical,IND-1937-1947,India (1937-1947),historical,1,same_entity_period_split
+IND,IND-1937-1947,India (1937-1947),historical,IND-1947-1949,India (1947-1949),historical,1,same_entity_period_split
+IND,IND-1947-1949,India (1947-1949),historical,IND-1949-2025,India,sovereign,1,same_entity_period_split
+ITA,ITA-1861-1919,Italy (to 1919),historical,ITA-1889-1924,Italian Somaliland (1889-1924),colonial,31,different_type_dual
+ITA,ITA-1861-1919,Italy (to 1919),historical,ITA-1919-2025,Italy,sovereign,1,same_entity_period_split
+ITA,ITA-1889-1924,Italian Somaliland (1889-1924),colonial,ITA-1919-2025,Italy,sovereign,6,different_type_dual
+ITA,ITA-1889-1924,Italian Somaliland (1889-1924),colonial,ITA-1924-1960,Italian Somaliland (1924-1960),colonial,1,same_entity_period_split
+ITA,ITA-1919-2025,Italy,sovereign,ITA-1924-1960,Italian Somaliland (1924-1960),colonial,37,different_type_dual
+JAM,JAM-1800-2025,Jamaica,sovereign,JAM-1947-1949,Jammu and Kashmir (1947-1949),historical,3,different_type_dual
+MAL,MAL-1905-1919,Mali (1905-1919),historical,MAL-1919-1932,Mali (1919-1932),historical,1,same_entity_period_split
+MAL,MAL-1919-1932,Mali (1919-1932),historical,MAL-1932-1944,Mali (1932-1944),historical,1,same_entity_period_split
+MAL,MAL-1932-1944,Mali (1932-1944),historical,MAL-1944-1947,Mali (1944-1947),historical,1,same_entity_period_split
+MAL,MAL-1944-1947,Mali (1944-1947),historical,MAL-1946-1963,Malaysia (1946-1963),historical,2,iso_collision
+MAL,MAL-1944-1947,Mali (1944-1947),historical,MAL-1947-1959,Mali (1947-1959),historical,1,same_entity_period_split
+MAL,MAL-1946-1963,Malaysia (1946-1963),historical,MAL-1947-1959,Mali (1947-1959),historical,13,iso_collision
+MAL,MAL-1946-1963,Malaysia (1946-1963),historical,MAL-1959-1960,Mali (1959-1960),historical,2,iso_collision
+MAL,MAL-1947-1959,Mali (1947-1959),historical,MAL-1959-1960,Mali (1959-1960),historical,1,same_entity_period_split
+NET,NET-1800-2025,Netherlands (old),aggregate,NET-1800-1986,Netherlands Antilles (original),dependency,187,different_type_dual
+NEW,NEW-1800-1948,Newfoundland (to 1948),historical,NEW-1800-1920,New Guinea (to 1920),historical,121,iso_collision
+NEW,NEW-1800-1948,Newfoundland (to 1948),historical,NEW-1800-1900,New South Wales (to 1900),historical,101,iso_collision
+NEW,NEW-1800-1948,Newfoundland (to 1948),historical,NEW-1920-1949,New Guinea (1920-1949),mandate,29,different_type_dual
+NEW,NEW-1800-1920,New Guinea (to 1920),historical,NEW-1800-1900,New South Wales (to 1900),historical,101,iso_collision
+NEW,NEW-1800-1920,New Guinea (to 1920),historical,NEW-1920-1949,New Guinea (1920-1949),mandate,1,same_entity_period_split
+NIG,NIG-1905-1932,Niger (1905-1932),historical,NIG-1914-1961,Nigeria (1914-1961),historical,19,iso_collision
+NIG,NIG-1905-1932,Niger (1905-1932),historical,NIG-1932-1947,Niger (1932-1947),historical,1,same_entity_period_split
+NIG,NIG-1914-1961,Nigeria (1914-1961),historical,NIG-1932-1947,Niger (1932-1947),historical,16,iso_collision
+NOR,NOR-1800-2025,Norway,sovereign,NOR-1899-1904,Northern Nigeria (1899-1904),historical,6,different_type_dual
+NOR,NOR-1800-2025,Norway,sovereign,NOR-1900-1911,Northeastern Rhodesia (1900-1911),historical,12,different_type_dual
+NOR,NOR-1800-2025,Norway,sovereign,NOR-1900-1905,Northwestern Rhodesia (1900-1905),historical,6,different_type_dual
+NOR,NOR-1800-2025,Norway,sovereign,NOR-1904-1913,Northern Nigeria (1904-1913),historical,10,different_type_dual
+NOR,NOR-1800-2025,Norway,sovereign,NOR-1905-1911,Northwestern Rhodesia (1905-1911),historical,7,different_type_dual
+NOR,NOR-1899-1904,Northern Nigeria (1899-1904),historical,NOR-1900-1911,Northeastern Rhodesia (1900-1911),historical,5,iso_collision
+NOR,NOR-1899-1904,Northern Nigeria (1899-1904),historical,NOR-1900-1905,Northwestern Rhodesia (1900-1905),historical,5,iso_collision
+NOR,NOR-1899-1904,Northern Nigeria (1899-1904),historical,NOR-1904-1913,Northern Nigeria (1904-1913),historical,1,same_entity_period_split
+NOR,NOR-1900-1911,Northeastern Rhodesia (1900-1911),historical,NOR-1900-1905,Northwestern Rhodesia (1900-1905),historical,6,iso_collision
+NOR,NOR-1900-1911,Northeastern Rhodesia (1900-1911),historical,NOR-1904-1913,Northern Nigeria (1904-1913),historical,8,iso_collision
+NOR,NOR-1900-1911,Northeastern Rhodesia (1900-1911),historical,NOR-1905-1911,Northwestern Rhodesia (1905-1911),historical,7,iso_collision
+NOR,NOR-1900-1905,Northwestern Rhodesia (1900-1905),historical,NOR-1904-1913,Northern Nigeria (1904-1913),historical,2,iso_collision
+NOR,NOR-1900-1905,Northwestern Rhodesia (1900-1905),historical,NOR-1905-1911,Northwestern Rhodesia (1905-1911),historical,1,same_entity_period_split
+NOR,NOR-1904-1913,Northern Nigeria (1904-1913),historical,NOR-1905-1911,Northwestern Rhodesia (1905-1911),historical,7,iso_collision
+PAL,PAL-1918-2025,Palestine/Jordan,mandate,PAL-1920-1948,Palestine (1920-1948),mandate,29,iso_collision
+PAP,PAP-1800-1870,Papal States,historical,PAP-1800-1949,Papua (to 1949),historical,71,iso_collision
+PER,PER-1800-1896,Perak (to 1896),historical,PER-1825-1909,Peru (to 1909),historical,72,iso_collision
+PER,PER-1825-1909,Peru (to 1909),historical,PER-1909-1922,Peru (1909-1922),historical,1,same_entity_period_split
+PER,PER-1909-1922,Peru (1909-1922),historical,PER-1922-1942,Peru (1922-1942),historical,1,same_entity_period_split
+PER,PER-1922-1942,Peru (1922-1942),historical,PER-1942-2025,Peru,sovereign,1,same_entity_period_split
+PRI,PRI-1800-1866,Prince Edward Island,historical,PRI-1800-2025,Puerto Rico,dependency,67,different_type_dual
+REU,REU-1816-2025,Réunion,dependency,REU-1816-1870,Reuss,historical,55,different_type_dual
+RWA,RWA-1920-1962,Rwanda and Burundi (1920-1962),mandate,RWA-1962-2025,Rwanda,sovereign,1,different_type_dual
+SAR,SAR-1800-1860,Sardinia,historical,SAR-1841-2025,Sarawak,aggregate,20,different_type_dual
+SAR,SAR-1841-2025,Sarawak,aggregate,SAR-1888-1963,Sarawak (1888-1963),colonial,76,same_entity_period_split
+SOU,SOU-1800-1900,South Australia (to 1900),historical,SOU-1838-1900,South Australia,historical,63,same_entity_period_split
+SOU,SOU-1800-1900,South Australia (to 1900),historical,SOU-1899-1906,Southern Nigeria (1899-1906),historical,2,iso_collision
+SOU,SOU-1838-1900,South Australia,historical,SOU-1899-1906,Southern Nigeria (1899-1906),historical,2,iso_collision
+SOU,SOU-1899-1906,Southern Nigeria (1899-1906),historical,SOU-1905-1945,Southern Sakhalin Island (1905-1945),historical,2,iso_collision
+SOU,SOU-1899-1906,Southern Nigeria (1899-1906),historical,SOU-1906-1913,Southern Nigeria (1906-1913),historical,1,same_entity_period_split
+SOU,SOU-1905-1945,Southern Sakhalin Island (1905-1945),historical,SOU-1906-1913,Southern Nigeria (1906-1913),historical,8,iso_collision
+SPA,SPA-1800-1982,Spanish North Africa,colonial,SPA-1800-1912,Spanish West Africa (to 1912),colonial,113,iso_collision
+SPA,SPA-1800-1982,Spanish North Africa,colonial,SPA-1858-2025,Spanish Guinea,aggregate,125,different_type_dual
+SPA,SPA-1800-1982,Spanish North Africa,colonial,SPA-1912-1956,Spanish Morocco (1912-1956),colonial,45,iso_collision
+SPA,SPA-1800-1982,Spanish North Africa,colonial,SPA-1912-1958,Spanish West Africa (1912-1958),colonial,47,iso_collision
+SPA,SPA-1800-1982,Spanish North Africa,colonial,SPA-1958-1975,Western Sahara (1958-1975),historical,18,different_type_dual
+SPA,SPA-1800-1912,Spanish West Africa (to 1912),colonial,SPA-1858-2025,Spanish Guinea,aggregate,55,different_type_dual
+SPA,SPA-1800-1912,Spanish West Africa (to 1912),colonial,SPA-1912-1956,Spanish Morocco (1912-1956),colonial,1,boundary_transition
+SPA,SPA-1800-1912,Spanish West Africa (to 1912),colonial,SPA-1912-1958,Spanish West Africa (1912-1958),colonial,1,same_entity_period_split
+SPA,SPA-1858-2025,Spanish Guinea,aggregate,SPA-1912-1956,Spanish Morocco (1912-1956),colonial,45,different_type_dual
+SPA,SPA-1858-2025,Spanish Guinea,aggregate,SPA-1912-1958,Spanish West Africa (1912-1958),colonial,47,different_type_dual
+SPA,SPA-1858-2025,Spanish Guinea,aggregate,SPA-1958-1975,Western Sahara (1958-1975),historical,18,different_type_dual
+SPA,SPA-1912-1956,Spanish Morocco (1912-1956),colonial,SPA-1912-1958,Spanish West Africa (1912-1958),colonial,45,iso_collision
+SPA,SPA-1912-1958,Spanish West Africa (1912-1958),colonial,SPA-1958-1975,Western Sahara (1958-1975),historical,1,different_type_dual
+ST.,ST.-1800-2025,St. Helena,dependency,ST.-1800-1838,St. Lucía,historical,39,different_type_dual
+ST.,ST.-1800-2025,St. Helena,dependency,ST.-1800-1833,St. Vincent,historical,34,different_type_dual
+ST.,ST.-1800-1838,St. Lucía,historical,ST.-1800-1833,St. Vincent,historical,34,iso_collision
+SWE,SWE-1800-2025,Sweden,sovereign,SWE-1800-1905,Sweden (to 1905),historical,106,same_entity_period_split
+SWE,SWE-1800-2025,Sweden,sovereign,SWE-1816-1870,Saxe-Weimar,historical,55,different_type_dual
+SWE,SWE-1800-1905,Sweden (to 1905),historical,SWE-1816-1870,Saxe-Weimar,historical,55,iso_collision
+SYR,SYR-1918-2025,Syria and Lebanon,aggregate,SYR-1920-1967,Syrian Arab Republic (1920-1967),historical,48,different_type_dual
+SYR,SYR-1918-2025,Syria and Lebanon,aggregate,SYR-1946-1967,Syrian Arab Republic (1946-1967),historical,22,different_type_dual
+SYR,SYR-1918-2025,Syria and Lebanon,aggregate,SYR-1967-2025,Syrian Arab Republic,sovereign,59,different_type_dual
+SYR,SYR-1920-1967,Syrian Arab Republic (1920-1967),historical,SYR-1946-1967,Syrian Arab Republic (1946-1967),historical,22,same_entity_period_split
+SYR,SYR-1920-1967,Syrian Arab Republic (1920-1967),historical,SYR-1967-2025,Syrian Arab Republic,sovereign,1,same_entity_period_split
+SYR,SYR-1946-1967,Syrian Arab Republic (1946-1967),historical,SYR-1967-2025,Syrian Arab Republic,sovereign,1,same_entity_period_split
+VAN,VAN-1828-1900,Van Diemen's Land (Tasmania),historical,VAN-1849-1866,Vancouver's Island,historical,18,iso_collision
+WES,WES-1800-1900,Western Australia (to 1900),historical,WES-1838-1900,Western Australia,historical,63,same_entity_period_split
+WES,WES-1948-1967,West Bank (1948-1967),dependency,WES-1949-1969,Dutch new Guinea (1949-1969),colonial,19,different_type_dual
