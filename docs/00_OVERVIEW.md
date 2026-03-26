@@ -36,9 +36,12 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 720/810 (88.9%) |
+| Polities with polygons | 724/810 (89.4%) |
 | Subnational polygons extracted | 91/110 (82.7%) |
-| Excel data regions with polygons | 389/409 (95.1%) |
+| Excel data regions with polygons | 390/409 (95.4%) |
+| COW State System coverage | 207/209 (99.0%) |
+| FAOSTAT coverage | 249/252 (98.8%) |
+| Decolonization events | 94/94 (100%) |
 
 ### Geographic Distribution
 | Continent | Entries |

@@ -41,7 +41,7 @@ british ceylon,matched,LKA-1800-2025,,True,CShapes 2.0 (1886-1948),1,False
 british christmas,matched,CXR-1800-2025,,True,GADM 4.1,1,False
 british cyprus,matched,CYP-1879-2025,,True,CShapes 2.0 (1914-1960),1,False
 british dominica,matched,DMA-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
-british falkland islands,matched,FLK-1833-2025,,False,,,False
+british falkland islands,matched,FLK-1833-2025,,True,"GADM 3.6 (full, FLK)",1,False
 british federated malay states,matched,FED-1909-1946,,True,CShapes 2.0 (1909-1946),1,False
 british fiji,matched,FJI-1874-2025,,True,CShapes 2.0 (1886-1970),1,False
 british gambia,matched,GMB-1800-2025,,True,CShapes 2.0 (1889-1965),1,False

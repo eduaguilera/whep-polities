@@ -443,7 +443,7 @@ HES-1800-1871,Hesse,GADM 4.1,Hesse,True
 MEK-1800-1871,Mecklenburg,GADM 4.1,Mecklenburg,True
 OLD-1800-1871,Oldenburg,GADM 4.1,Oldenburg,True
 PAP-1800-1870,Papal States,CShapes-Europe,Papal States,True
-SAR-1800-1860,Sardinia,CShapes 2.0 (1886-1919),Italy/Sardinia,True
+SAR-1800-1860,Sardinia,CShapes 2.0 (1886-1964),Malta,True
 SAX-1800-1871,Saxony,CShapes-Europe,Saxony,True
 SHL-1800-1866,Schleswig-Holstein,GADM 4.1,Schleswig-Holstein,True
 SER-1800-1913,Serbia (to 1913),CShapes 2.0 (1886-1913),Serbia,True
@@ -548,7 +548,7 @@ SER-2006-2008,Serbia (2006-2008),CShapes 2.0 (2006-2008),Serbia,True
 BAD-1800-1871,Baden,GADM 4.1,Baden,True
 CHA-1800-2023,Channel Islands,GADM 4.1,Channel Islands,True
 GEB-1800-1982,East Berlin,GADM 4.1,East Berlin,True
-FRO-1800-2025,Faroe Islands,UNMATCHED,,False
+FRO-1800-2025,Faroe Islands,"GADM 3.6 (full, FRO)",Faroe Islands,True
 GIB-1800-2025,Gibraltar,GADM 4.1,Gibraltar,True
 GRL-1800-2025,Greenland,GADM 4.1,Greenland,True
 IMN-1800-2025,Isle of Man,GADM 4.1,Isle of Man,True
@@ -742,13 +742,13 @@ HAW-1898-1959,Hawaii (1898-1959),CShapes 2.0 (1898-1959),Hawaii,True
 GER-1800-1899,German Solomon Islands (to 1899),CShapes 2.0 (1886-1919),Germany (Prussia),True
 WES-1949-1969,Dutch new Guinea (1949-1969),CShapes 2.0 (1949-1962),West Irian (Dutch New Guinea),True
 CXR-1800-2025,Christmas Island,GADM 4.1,Christmas Island,True
-CCK-1800-2025,Cocos (Keeling) Islands,UNMATCHED,,False
+CCK-1800-2025,Cocos (Keeling) Islands,"GADM 3.6 (full, CCK)",Cocos Islands,True
 PYF-1800-2025,French Polynesia,GADM 4.1,French Polynesia,True
 GUM-1800-2025,Guam,GADM 4.1,Guam,True
 HMD-1800-2025,Heard Island and McDonald Islands,GADM 4.1,Heard Island and McDonald Islands,True
 JTN-1800-1982,Johnston Island,UNMATCHED,,False
 NFK-1800-1901,Norfolk Island,GADM 4.1,Norfolk Island,True
-UMI-1800-2025,United States Minor Outlying Islands,UNMATCHED,,False
+UMI-1800-2025,United States Minor Outlying Islands,"GADM 3.6 (full, UMI)",United States Minor Outlying Islands,True
 UNI-1800-1982,United States miscellaneous Pacific Islands,UNMATCHED,,False
 PCN-1839-2025,Pitcairn,GADM 4.1,Pitcairn,True
 WLF-1842-2025,Wallis and Futuna,GADM 4.1,Wallis and Futuna,True
@@ -806,6 +806,6 @@ INI-1930-1946,Inini (1930-1946),CShapes 2.0 (1930-1946),Inini,True
 GUF-1800-2025,French Guiana,GADM 4.1,French Guiana,True
 FRE-1800-1930,French Guiana (to 1930),CShapes 2.0 fallback (1886-1930),French Guyana,True
 SGS-1800-2025,South Georgia and the South Sandwich Islands,GADM 4.1,South Georgia and the South Sandwich Islands,True
-FLK-1833-2025,Falkland Islands,UNMATCHED,,False
+FLK-1833-2025,Falkland Islands,"GADM 3.6 (full, FLK)",Falkland Islands,True
 FRE-1930-1946,French Guiana (1930-1946),CShapes 2.0 fallback (1930-1946),French Guyana,True
 DGU-1800-2025,Dutch Guayana,GADM 4.1 fallback,Dutch Guayana,True

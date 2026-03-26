@@ -13,8 +13,8 @@ This document describes how we extracted polygon geometries for these subnationa
 regions, including the quality tier system, sources used, and detailed limitations.
 
 **Results**: 91 of 110 subnational regions received polygon geometries (82.7%).
-Combined with 298 direct polity matches, **389 of 409 data-bearing Excel regions
-have polygons (95.1%)**.
+Combined with 299 direct polity matches, **390 of 409 data-bearing Excel regions
+have polygons (95.4%)**.
 
 ---
 
