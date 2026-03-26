@@ -1,0 +1,69 @@
+source,code,name,iso,severity,note
+COW,54,Dominica,DMA,low,COW state not matched to polity
+COW,273,Hesse Grand Ducal,HSD,low,COW state not matched to polity
+COW,291,Parma,PRM,low,COW state not matched to polity
+COW,293,Papal States,PAP,low,COW state not matched to polity
+COW,294,Tuscany,TUS,low,COW state not matched to polity
+COW,331,Vatican City/Holy See,VAT,low,COW state not matched to polity
+COW,340,Poland,POL,low,COW state not matched to polity
+COW,342,Latvia,LVA,low,COW state not matched to polity
+COW,357,Denmark,DNK,low,COW state not matched to polity
+COW,402,Cape Verde,CPV,low,COW state not matched to polity
+COW,511,Zanzibar,ZNZ,low,COW state not matched to polity
+COW,581,Comoros,COM,low,COW state not matched to polity
+COW,760,Bhutan,BTN,low,COW state not matched to polity
+COW,817,"Vietnam, Democratic Republic",VDR,low,COW state not matched to polity
+COW,818,Republic of Vietnam,RVN,low,COW state not matched to polity
+polygon,DRO-1800-1982,Dronning Maud Land,DRO,medium,"No polygon (dependency, Antarctica)"
+polygon,DAN-1800-1845,Danish India,DAN,medium,"No polygon (historical, Asia)"
+polygon,NEU-1800-1982,Neutral Zone,NEU,medium,"No polygon (dependency, Asia)"
+polygon,F285-2011-2023,Sark,,medium,"No polygon (dependency, Europe)"
+polygon,CAN-1800-1982,Canton and Enderbury Islands,CAN,medium,"No polygon (historical, North America)"
+polygon,JTN-1800-1982,Johnston Island,JTN,medium,"No polygon (dependency, Oceania)"
+polygon,UNI-1800-1982,United States miscellaneous Pacific Islands,UNI,medium,"No polygon (dependency, Oceania)"
+polygon,MID-1859-1982,Midway Islands,MID,medium,"No polygon (dependency, Oceania)"
+polygon,USS-1859-2025,US settlement Oceania,USS,medium,"No polygon (dependency, Oceania)"
+polygon,WAK-1898-1982,Wake Island,WAK,medium,"No polygon (dependency, Oceania)"
+chain,ARM-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,AZE-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,GEO-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,KAZ-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,KGZ-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,TJK-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,TKM-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,UZB-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,BLR-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+chain,EST-1991-2025,→ F228-1940-1991,,low,Broken predecessor ref
+temporal,SCG,historical gap 1871-1991,SCG,medium,121yr gap between SCG-1827-1870 and SCG-1992-2006
+temporal,MYT,dependency gap 1915-2001,MYT,medium,87yr gap between MYT-1843-1914 and MYT-2002-2025
+temporal,SER,historical gap 1919-2005,SER,medium,87yr gap between SER-1913-1918 and SER-2006-2008
+temporal,FED,colonial gap 1947-1952,FED,medium,6yr gap between FED-1909-1946 and FED-1953-1964
+polygon_src,SPA-1800-1982,Spanish North Africa,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,FSO-1884-1977,French Somalia,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,GWA-1884-1914,German West Africa,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,BSO-1884-2025,British Protectorate (British Somaliland),,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,ABU-1800-1971,Abu Dhabi,,low,"Claims CShapes 2.0 + CShapes-Europe, got GADM 4.1 fallback"
+polygon_src,AJM-1800-1971,Ajman,,low,"Claims CShapes 2.0 + CShapes-Europe, got GADM 4.1 fallback"
+polygon_src,STR-1826-1922,Straits Settlement,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,KIA-1898-1922,Kiautchou,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,PAL-1918-2025,Palestine/Jordan,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,POR-1800-2025,Portuguese India,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,SHA-1800-2025,Sharjah,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,SIK-1800-2025,Sikkim,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,FUJ-1886-2025,Fujairah,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,UMM-1892-2025,Umm al Qawain,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,KCW-1898-2025,Kwang-Chou-Wan,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,KWA-1898-2025,Kwantung (Port Arthur),,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,RAS-1919-2025,Ras al Khaimah,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,TUS-1800-1860,Tuscany,,low,"Claims CShapes-Europe, got GADM 4.1 fallback"
+polygon_src,BLM-2007-2025,Saint Barthélemy,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,CUW-2010-2025,Curaçao,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,DAN-1800-2025,Danish Virgin Islands,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,DUT-1800-2025,Dutch West Indies (Netherland Antilles),,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,MRQ-1844-1903,Marquesas Island,,low,"Claims CShapes 2.0 + CShapes-Europe, got GADM 4.1 fallback"
+polygon_src,SOC-1844-1903,Society Islands  (Tahiti),,low,"Claims CShapes 2.0 + CShapes-Europe, got GADM 4.1 fallback"
+polygon_src,GAM-1881-1903,Gambier Island,,low,"Claims CShapes 2.0 + CShapes-Europe, got GADM 4.1 fallback"
+polygon_src,MRI-1800-2025,Mariana Island,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,CAR-1885-2025,Caroline Island,,low,"Claims CShapes 2.0, got GADM 4.1 fallback"
+polygon_src,DUT-1898-2025,Dutch new Guinea,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
+polygon_src,DGU-1800-2025,Dutch Guayana,,low,"Claims CShapes 2.0 (dependencies=TRUE, got GADM 4.1 fallback"
