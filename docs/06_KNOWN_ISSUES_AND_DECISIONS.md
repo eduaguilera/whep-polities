@@ -165,6 +165,18 @@
 - Final type distribution: sovereign 194, historical 339, aggregate 60, dependency 75,
   colonial 47, region 77, mandate 13, disputed 4, puppet 1
 
+### Version 1.3 (2026-03-26)
+- Added 31-test automated stress test suite (`stress_test.py`)
+- Added CShapes vs GADM polygon cross-validation (median IoU 0.975) (`compare_polygons.py`)
+- Added ISO prefix collision analysis (20 collision groups) (`validate_iso_overlaps.py`)
+- Added exhaustive coverage gap search (68 gaps, none critical) (`analyze_exhaustive_gaps.py`)
+- Added combined validation dashboard (`generate_validation_report.py`)
+- Added GADM admin-1 subnational assessment for 19 major countries (`analyze_subnational.py`)
+- Fixed 4 polygon source assignments via improved CShapes-Europe name mapping
+- Updated docs 00, 05 with new analysis results
+- Added docs 08 (polygon accuracy audit), 09 (subnational major countries), 10 (validation summary)
+- Generated 37 diagnostic/analysis plots total
+
 ### Version 1.2 (2026-03-26)
 - Extracted 91 subnational polygons from 110 subnational regions using 4-tier quality system
 - Implemented 6 extraction methods: cshapes, cshapes_merge, cshapes_subtract, gadm0, gadm1/gadm1_merge, subtract_gadm1
