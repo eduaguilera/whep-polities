@@ -1,0 +1,410 @@
+excel_region,match_status,polity_code,parent_code,has_polygon,polygon_source,quality_tier,needs_subnational
+aden and perim,matched,ADE-1839-1967,,True,CShapes 2.0 (1937-1962),1,False
+aegean economic zone,matched,GRC-1919-2025,,True,CShapes 2.0 (1944-2019),1,False
+albania,matched,ALB-1913-2025,,True,CShapes 2.0 (1944-2019),1,False
+argentina,matched,ARG-1902-2025,,True,CShapes 2.0 (1902-2019),1,False
+argentina: mendoza,subnational,ARG-1902-2025,ARG-1902-2025,True,GADM admin-1: ARG [Mendoza],2,True
+australia,matched,AUS-1901-2025,,True,CShapes 2.0 (1927-2019),1,False
+australia (production area),matched,AUS-1901-2025,,True,CShapes 2.0 (1927-2019),1,False
+australia (total and production area),matched,AUS-1901-2025,,True,CShapes 2.0 (1927-2019),1,False
+australia (total area),matched,AUS-1901-2025,,True,CShapes 2.0 (1927-2019),1,False
+australia administered islands,matched,AUS-1901-2025,,True,CShapes 2.0 (1927-2019),1,False
+australia: queensland,subnational,AUS-1901-2025,AUS-1901-2025,True,GADM admin-1: AUS [Queensland],2,True
+australia: tasmania,subnational,AUS-1901-2025,AUS-1901-2025,True,GADM admin-1: AUS [Tasmania],2,True
+australia: victoria,subnational,AUS-1901-2025,AUS-1901-2025,True,GADM admin-1: AUS [Victoria],2,True
+australian papua,matched,PAP-1800-1949,,True,CShapes 2.0 (1886-1887),1,False
+austria,matched,AUT-1918-2025,,True,CShapes 2.0 (1955-2019),1,False
+austria-hungary,matched,AUH-1908-1918,,True,CShapes 2.0 (1908-1918),1,False
+belgian congo,matched,BEL-1885-2025,,True,CShapes 2.0 (1910-1960),1,False
+belgian ruanda-urundi,matched,RWB-1919-2025,,True,CShapes 2.0 (1922-1962),1,False
+belgium,matched,BEL-1831-2025,,True,CShapes 2.0 (1886-1940),1,False
+belgium-luxembourg economic union,matched,F15-1800-1999,,True,CShapes 2.0 (1886-1940),1,False
+bolivia,matched,BOL-1938-2025,,True,CShapes 2.0 (1938-2019),1,False
+brazil,matched,BRA-1909-2025,,True,CShapes 2.0 (1960-2019),1,False
+brazil: sao paulo,subnational,BRA-1909-2025,BRA-1909-2025,True,GADM admin-1: BRA [São Paulo],2,True
+british aden,matched,ADE-1839-1967,,True,CShapes 2.0 (1937-1962),1,False
+british aden (by land),matched,ADE-1839-1967,,True,CShapes 2.0 (1937-1962),1,False
+british aden (by sea),matched,ADE-1839-1967,,True,CShapes 2.0 (1937-1962),1,False
+british andaman and nicobar,matched,IND-1800-1947,,True,CShapes 2.0 (1886-1893),1,False
+british antigua,matched,ATG-1800-2025,,True,GADM 4.1 fallback,1,False
+british ascension,matched,SHN-1800-2025,,True,GADM 4.1,1,False
+british bahamas,matched,BHS-1800-2025,,True,CShapes 2.0 (1886-1973),1,False
+british barbados,matched,BRB-1800-2025,,True,CShapes 2.0 (1886-1966),1,False
+british basutoland,matched,BAS-1884-2025,,True,CShapes 2.0 (1886-1966),1,False
+british bechuanaland,matched,BEC-1885-2025,,True,CShapes 2.0 (1890-1895),1,False
+british bermuda,matched,BMU-1800-2025,,True,GADM 4.1,1,False
+british brunei,matched,BRN-1888-2025,,True,CShapes 2.0 (1888-1983),1,False
+british burma,matched,MMR-1800-2025,,True,CShapes 2.0 (1948-2005),1,False
+british cameroon,matched,BCA-1914-2025,,True,CShapes 2.0 (1922-1961),1,False
+british caymans,matched,CYM-1800-2025,,True,GADM 4.1,1,False
+british ceylon,matched,LKA-1800-2025,,True,CShapes 2.0 (1886-1948),1,False
+british christmas,matched,CXR-1800-2025,,True,GADM 4.1,1,False
+british cyprus,matched,CYP-1879-2025,,True,CShapes 2.0 (1914-1960),1,False
+british dominica,matched,DMA-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
+british falkland islands,matched,FLK-1833-2025,,False,,,False
+british federated malay states,matched,FED-1909-1946,,True,CShapes 2.0 (1909-1946),1,False
+british fiji,matched,FJI-1874-2025,,True,CShapes 2.0 (1886-1970),1,False
+british gambia,matched,GMB-1800-2025,,True,CShapes 2.0 (1889-1965),1,False
+british gibraltar,matched,GIB-1800-2025,,True,GADM 4.1,1,False
+british gilbert and ellice,matched,GIL-1892-2025,,True,CShapes 2.0 (1999-2019),1,False
+british gold coast,matched,GOL-1843-2025,,True,CShapes 2.0 (1898-1956),1,False
+british grenada,matched,GRD-1800-1833,,True,GADM 4.1,1,False
+british guernsey,matched,GGY-2005-2025,,True,GADM 4.1,1,False
+british guiana,matched,GUY-1800-2025,,True,CShapes 2.0 (1886-1966),1,False
+british honduras,matched,BLZ-1800-2025,,True,CShapes 2.0 (1886-1970),1,False
+british hong kong,matched,HKG-1841-2025,,True,GADM 4.1,1,False
+british india,matched,IND-1800-1947,,True,CShapes 2.0 (1886-1893),1,False
+british india (by land),matched,IND-1800-1947,,True,CShapes 2.0 (1886-1893),1,False
+british india (by sea),matched,IND-1800-1947,,True,CShapes 2.0 (1886-1893),1,False
+british india: crown provinces,subnational,IND-1800-1947,IND-1800-1947,False,,,True
+"british india: crown provinces, excluding burma",subnational,IND-1800-1947,IND-1800-1947,False,,,True
+british india: excluding burma,subnational,IND-1800-1947,IND-1800-1947,True,CShapes 2.0 subtracted: India - [Myanmar (Burma)],3,True
+british india: princely states,subnational,IND-1800-1947,IND-1800-1947,False,,,True
+british india: south provinces,subnational,IND-1800-1947,IND-1800-1947,False,,,True
+british iraq,matched,IRQ-1921-2025,,True,CShapes 2.0 (1932-2019),1,False
+british jamaica,matched,JAM-1800-2025,,True,CShapes 2.0 (1886-1962),1,False
+british jersey,matched,JEY-2005-2025,,True,GADM 4.1,1,False
+british kenya,matched,KEN-1924-1926,,True,CShapes 2.0 (1924-1926),1,False
+british kenya (european cultivation),subnational,KEN-1924-1926,KEN-1924-1926,True,"CShapes 2.0 (Kenya, 1914-1920)",2,True
+british kenya and uganda,matched,BEA-1895-2025,,True,CShapes 2.0 (1926-1963),1,False
+british leeward islands,matched,LEE-1800-2025,,True,GADM 4.1,1,False
+british malaya,matched,BMA-1922-2025,,True,CShapes 2.0 (1909-1946),1,False
+british malta,matched,MLT-1800-2025,,True,CShapes 2.0 (1886-1964),1,False
+british mauritius,matched,MUS-1800-2025,,True,CShapes 2.0 (1886-1968),1,False
+"british mauritius, adamawa and bornu",subnational,MUS-1800-2025,MUS-1800-2025,False,,,True
+british montserrat,matched,MSR-1800-2025,,True,GADM 4.1,1,False
+british nauru,matched,NRU-1888-2025,,True,CShapes 2.0 (1999-2019),1,False
+british nauru and ocean island,matched,NRU-1888-2025,,True,CShapes 2.0 (1999-2019),1,False
+british newfoundland,matched,NFL-1816-2025,,True,CShapes 2.0 (1886-1948),1,False
+british nigeria,matched,NIG-1914-1961,,True,CShapes 2.0 (1914-1960),1,False
+"british nigeria and cameroon: north provinces, adamawa and bornu",subnational,NIG-1914-1961,NIG-1914-1961,True,"CShapes 2.0 merged: Northern Nigeria, British Cameroons",2,True
+british nigeria and cameroon: south provinces,subnational,NIG-1914-1961,NIG-1914-1961,True,"CShapes 2.0 merged: Southern Nigeria, British Cameroons",2,True
+british nigeria: north provinces,subnational,NIG-1914-1961,NIG-1914-1961,True,"CShapes 2.0 (Northern Nigeria, 1903-1904)",1,True
+british nigeria: south provinces,subnational,NIG-1914-1961,NIG-1914-1961,True,"CShapes 2.0 (Southern Nigeria, 1906-1913)",1,True
+british north borneo,matched,SAB-1888-2025,,True,CShapes 2.0 (1946-1963),1,False
+british north rhodesia,matched,ZMB-1964-2025,,True,CShapes 2.0 (1964-2019),1,False
+british nyasaland,matched,NYA-1891-2025,,True,CShapes 2.0 (1891-1953),1,False
+british nyasaland (european cultivation),subnational,NYA-1891-2025,NYA-1891-2025,True,"CShapes 2.0 (Malawi, 1891-1953)",2,True
+british nyasaland (indigenous cultivation),subnational,NYA-1891-2025,NYA-1891-2025,True,"CShapes 2.0 (Malawi, 1891-1953)",2,True
+british ocean island,matched,KIR-1800-2025,,True,CShapes 2.0 (1999-2019),1,False
+british palestine,matched,PAL-1920-1948,,True,CShapes 2.0 (1923-1948),1,False
+british saint christopher and nevis,matched,KNA-1800-2025,,True,CShapes 2.0 (1983-2019),1,False
+british saint helena,matched,SHN-1800-2025,,True,GADM 4.1,1,False
+british saint lucia,matched,LCA-1800-2025,,True,CShapes 2.0 (1979-2019),1,False
+british saint vincent,matched,VCT-1800-2025,,True,CShapes 2.0 (1981-2019),1,False
+british saint vincent (sea island),matched,VCT-1800-2025,,True,CShapes 2.0 (1981-2019),1,False
+british samoa,matched,WSM-1900-2025,,True,CShapes 2.0 (1976-2019),1,False
+british sarawak,matched,SAR-1841-2025,,True,CShapes 2.0 (1889-1946),1,False
+british seychelles,matched,SYC-1903-2025,,True,CShapes 2.0 (1976-2019),1,False
+british sierra leone,matched,SLE-1800-2025,,True,CShapes 2.0 (1895-1961),1,False
+british solomon,matched,SLB-1885-2025,,True,CShapes 2.0 (1952-1978),1,False
+british somaliland,matched,BSO-1884-2025,,True,GADM 4.1 fallback,1,False
+british south rhodesia,matched,ZWE-1890-2025,,True,CShapes 2.0 (1965-2019),1,False
+british south west africa,matched,NAM-1884-2025,,True,CShapes 2.0 (1920-1966),1,False
+british straits settlements,matched,STR-1826-1922,,True,GADM 4.1 fallback,1,False
+british straits settlements: labuan,subnational,STR-1826-1922,STR-1826-1922,True,GADM admin-1: MYS [Labuan],2,True
+british straits settlements: malacca,subnational,STR-1826-1922,STR-1826-1922,True,GADM admin-1: MYS [Melaka],2,True
+british straits settlements: penang,subnational,STR-1826-1922,STR-1826-1922,True,GADM admin-1: MYS [Pulau Pinang],2,True
+british straits settlements: singapore,subnational,STR-1826-1922,STR-1826-1922,True,GADM admin-0: SGP,2,True
+british swaziland,matched,SWZ-1894-2025,,True,CShapes 2.0 (1902-1968),1,False
+british tanganyika,matched,TAN-1922-1964,,True,CShapes 2.0 (1922-1961),1,False
+british togoland,matched,BRI-1922-1955,,True,CShapes 2.0 (1922-1955),1,False
+british tonga,matched,TON-1800-2025,,True,CShapes 2.0 (1999-2019),1,False
+british transjordan,matched,JOR-1920-1923,,True,CShapes 2.0 (1920-1923),1,False
+british trinidad and tobago,matched,TTO-1800-2025,,True,CShapes 2.0 (1886-1962),1,False
+british turks and caicos islands,matched,TCA-1800-2025,,True,GADM 4.1,1,False
+british uganda,matched,UGA-1910-1926,,True,CShapes 2.0 (1914-1926),1,False
+british unfederated malay states: johor,subnational,UNF-1909-1946,UNF-1909-1946,True,GADM admin-1: MYS [Johor],2,True
+british unfederated malay states: kedah,subnational,UNF-1909-1946,UNF-1909-1946,True,GADM admin-1: MYS [Kedah],2,True
+british unfederated malay states: kelantan,subnational,UNF-1909-1946,UNF-1909-1946,True,GADM admin-1: MYS [Kelantan],2,True
+british unfederated malay states: perlis,subnational,UNF-1909-1946,UNF-1909-1946,True,GADM admin-1: MYS [Perlis],2,True
+british unfederated malay states: terengganu,subnational,UNF-1909-1946,UNF-1909-1946,True,GADM admin-1: MYS [Trengganu],2,True
+british virgin islands,matched,VGB-1800-2025,,True,GADM 4.1,1,False
+british west indies federation,matched,LEE-1800-2025,,True,GADM 4.1,1,False
+british windward islands,matched,VCT-1800-2025,,True,CShapes 2.0 (1981-2019),1,False
+british zanzibar,matched,ZAN-1890-1964,,True,CShapes 2.0 (1895-1963),1,False
+british-french togoland,matched,TGO-1960-2025,,True,CShapes 2.0 (1960-2019),1,False
+british‑egyptian sudan,matched,SUD-1882-2025,,True,CShapes 2.0 (1934-1955),1,False
+british‑french cameroon,matched,CMR-1884-2025,,True,CShapes 2.0 (1901-1912),1,False
+british‑french new hebrides,matched,NHB-1906-2025,,True,CShapes 2.0 (1981-2019),1,False
+bulgaria,matched,BGR-1940-2025,,True,CShapes 2.0 (1940-2019),1,False
+canada,matched,CAN-1948-2025,,True,CShapes 2.0 (1948-2019),1,False
+chile,matched,CHL-1902-2025,,True,CShapes 2.0 (1902-2019),1,False
+chile (reexportation),matched,CHL-1902-2025,,True,CShapes 2.0 (1902-2019),1,False
+china,matched,CHN-1800-2025,,True,CShapes 2.0 (1899-1912),1,False
+china: excluding manchuria,subnational,CHN-1800-2025,CHN-1800-2025,True,"GADM admin-0 minus admin-1: CHN - [Heilongjiang, Jilin, Liaoning]",3,True
+china: manchuria,subnational,CHN-1800-2025,CHN-1800-2025,True,"GADM admin-1 merged: CHN [Heilongjiang, Jilin, Liaoning]",3,True
+colombia,matched,COL-1922-2025,,True,CShapes 2.0 (1922-2019),1,False
+costa rica,matched,CRI-1800-2025,,True,CShapes 2.0 (1920-2019),1,False
+cuba,matched,CUB-1800-2025,,True,CShapes 2.0 (1909-2019),1,False
+czechoslovakia,matched,F51-1918-1938,,True,CShapes 2.0 (1918-1938),1,False
+denmark,matched,DNK-1920-2025,,True,CShapes 2.0 (1945-2019),1,False
+denmark (rural communities),subnational,DNK-1920-2025,DNK-1920-2025,True,GADM admin-0: DNK,2,True
+denmark: faroe islands,subnational,FRO-1800-2025,FRO-1800-2025,True,GADM admin-0: FRO,2,True
+denmark: greenland,subnational,GRL-1800-2025,GRL-1800-2025,True,GADM admin-0: GRL,2,True
+dominican republic,matched,DOM-1800-2025,,True,CShapes 2.0 (1894-1916),1,False
+dutch bali and lombok,subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Bali, Nusa Tenggara Barat]",3,True
+dutch bali and lombok (indigenous cultivation),subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Bali, Nusa Tenggara Barat]",3,True
+dutch curacao,matched,CUW-2010-2025,,True,GADM 4.1 fallback,1,False
+dutch east indies,matched,DEI-1800-2025,,True,CShapes 2.0 (1889-1945),1,False
+dutch east indies (european plantations),matched,DEI-1800-2025,,True,CShapes 2.0 (1889-1945),1,False
+dutch east indies (indigenous cultivation),matched,DEI-1800-2025,,True,CShapes 2.0 (1889-1945),1,False
+dutch east outer provinces,subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Nusa Tenggara Timur, Sulawesi Utara, Sulawesi Tengah, Sulawesi Selatan, Sulawesi Tenggara, Gorontalo, Sulawesi Barat, Maluku, Maluku Utara, Papua, Papua Barat]",3,True
+dutch east outer provinces (european plantations),subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Nusa Tenggara Timur, Sulawesi Utara, Sulawesi Tengah, Sulawesi Selatan, Sulawesi Tenggara, Gorontalo, Sulawesi Barat, Maluku, Maluku Utara, Papua, Papua Barat]",3,True
+dutch east outer provinces (indigenous cultivation),subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Nusa Tenggara Timur, Sulawesi Utara, Sulawesi Tengah, Sulawesi Selatan, Sulawesi Tenggara, Gorontalo, Sulawesi Barat, Maluku, Maluku Utara, Papua, Papua Barat]",3,True
+dutch guiana,matched,DGU-1800-2025,,True,GADM 4.1 fallback,1,False
+dutch java and madura,subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Jawa Barat, Jawa Tengah, Jawa Timur, Banten, Jakarta Raya, Yogyakarta]",2,True
+dutch java and madura (european cultivation),subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Jawa Barat, Jawa Tengah, Jawa Timur, Banten, Jakarta Raya, Yogyakarta]",2,True
+dutch java and madura (indigenous cultivation),subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Jawa Barat, Jawa Tengah, Jawa Timur, Banten, Jakarta Raya, Yogyakarta]",2,True
+dutch java and madura (native cultivations),subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Jawa Barat, Jawa Tengah, Jawa Timur, Banten, Jakarta Raya, Yogyakarta]",2,True
+dutch java and sumatra,subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Jawa Barat, Jawa Tengah, Jawa Timur, Banten, Jakarta Raya, Yogyakarta, Aceh, Sumatera Utara, Sumatera Barat, Kepulauan Riau, Jambi, Sumatera Selatan, Bengkulu, Lampung, Kepulauan Riau]",2,True
+"dutch java, madura and east outer provinces",subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Jawa Barat, Jawa Tengah, Jawa Timur, Banten, Jakarta Raya, Yogyakarta, Nusa Tenggara Timur, Sulawesi Utara, Sulawesi Tengah, Sulawesi Selatan, Sulawesi Tenggara, Gorontalo, Sulawesi Barat, Maluku, Maluku Utara, Papua, Papua Barat]",3,True
+dutch sint eustatius and sint maarten,subnational,DUT-1800-2025,DUT-1800-2025,True,"GADM admin-0 merged: BES, SXM",3,True
+dutch sumatra,subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Aceh, Sumatera Utara, Sumatera Barat, Kepulauan Riau, Jambi, Sumatera Selatan, Bengkulu, Lampung, Kepulauan Riau]",2,True
+dutch sumatra (european cultivation),subnational,DEI-1800-2025,DEI-1800-2025,True,"GADM admin-1 merged: IDN [Aceh, Sumatera Utara, Sumatera Barat, Kepulauan Riau, Jambi, Sumatera Selatan, Bengkulu, Lampung, Kepulauan Riau]",2,True
+ecuador,matched,ECU-1942-2025,,True,CShapes 2.0 (1942-2019),1,False
+egypt,matched,EGY-1899-1925,,True,CShapes 2.0 (1899-1914),1,False
+egypt (trade with british-egyptian sudan),matched,EGY-1899-1925,,True,CShapes 2.0 (1899-1914),1,False
+el salvador,matched,SLV-1821-2025,,True,CShapes 2.0 (1886-2019),1,False
+el salvador: san salvador department,subnational,SLV-1821-2025,SLV-1821-2025,True,GADM admin-1: SLV [San Salvador],2,True
+estonia,matched,EST-1991-2025,,True,CShapes 2.0 (1991-2019),1,False
+ethiopia,matched,ETH-1800-2025,,True,CShapes 2.0 (1907-1936),1,False
+finland,matched,FIN-1940-2025,,True,CShapes 2.0 (1940-2019),1,False
+france,matched,FRA-1919-2025,,True,CShapes 2.0 (1944-2019),1,False
+france: alsace,subnational,FRA-1919-2025,FRA-1919-2025,True,"GADM admin-2 merged: FRA [Bas-Rhin, Haut-Rhin]",2,True
+free city of danzig,matched,DAN-1919-1938,,True,CShapes 2.0 (1919-1938),1,False
+french algeria,matched,DZA-1831-2025,,True,CShapes 2.0 (1919-1962),1,False
+french annam,subnational,FID-1887-2025,FID-1887-2025,False,,,True
+french cambodia,subnational,FID-1887-2025,FID-1887-2025,True,"CShapes 2.0 (Cambodia (Kampuchea), 1907-1953)",1,True
+french cameroon,matched,CAM-1919-1961,,True,CShapes 2.0 (1922-1959),1,False
+french chad,subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 (Chad, 1919-1920)",1,True
+french chad and oubangui‑chari,subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 merged: Chad, Central African Republic",2,True
+"french chad, gabon, middle congo and oubangui‑chari",subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 merged: Chad, Gabon, Congo, Central African Republic",2,True
+"french chad, middle congo and oubangui‑chari",subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 merged: Chad, Congo, Central African Republic",2,True
+french cochinchina,subnational,FID-1887-2025,FID-1887-2025,False,,,True
+french dahomey,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Benin, 1898-1960)",1,True
+french dakar,subnational,FWA-1895-2025,FWA-1895-2025,True,GADM admin-1: SEN [Dakar],3,True
+french east morocco,subnational,MOR-1904-1956,MOR-1904-1956,False,,,True
+french equatorial africa,matched,FEA-1910-2025,,True,CShapes 2.0 (1960-2019),1,False
+french gabon,subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 (Gabon, 1919-1960)",1,True
+french gabon and middle congo,subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 merged: Gabon, Congo",2,True
+french guadeloupe,matched,GLP-1800-2025,,True,GADM 4.1,1,False
+french guadeloupe: marie‑galante,subnational,GLP-1800-2025,GLP-1800-2025,False,,,True
+french guiana,matched,GUF-1800-2025,,True,GADM 4.1,1,False
+french guinea,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Guinea, 1894-1958)",1,True
+french india,matched,FRI-1800-2025,,True,CShapes 2.0 (1899-1914),1,False
+french indochine,matched,FID-1887-2025,,True,CShapes 2.0 (1893-1954),1,False
+french ivory coast,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Cote D'Ivoire, 1902-1932)",1,True
+french laos,subnational,FID-1887-2025,FID-1887-2025,True,"CShapes 2.0 (Laos, 1896-1953)",1,True
+french lebanon,subnational,SYR-1918-2025,SYR-1918-2025,True,"CShapes 2.0 (Lebanon, 1920-1920)",1,True
+french madagascar,matched,MAD-1912-1946,,True,CShapes 2.0 (1912-1946),1,False
+french madagascar: juan de nova,subnational,MAD-1912-1946,MAD-1912-1946,False,,,True
+french martinique,matched,MTQ-1800-2025,,True,GADM 4.1,1,False
+french mauritania,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Mauritania, 1913-1920)",1,True
+french mayotte,matched,MYT-1843-1914,,True,GADM 4.1,1,False
+french middle congo,subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 (Congo, 1919-1960)",1,True
+french middle congo and oubangui‑chari,subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 merged: Congo, Central African Republic",2,True
+french morocco,matched,MOR-1904-1956,,True,CShapes 2.0 (1912-1956),1,False
+french morocco (european vineyard),matched,MOR-1904-1956,,True,CShapes 2.0 (1912-1956),1,False
+french morocco (indigenous vineyard),matched,MOR-1904-1956,,True,CShapes 2.0 (1912-1956),1,False
+french morocco (muslim vineyard),matched,MOR-1904-1956,,True,CShapes 2.0 (1912-1956),1,False
+french new caledonia,matched,NCL-1853-2025,,True,GADM 4.1,1,False
+french niger,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Niger, 1905-1926)",1,True
+french oceania,matched,PYF-1800-2025,,True,GADM 4.1,1,False
+french oceania: makatea,subnational,PYF-1800-2025,PYF-1800-2025,False,,,True
+french oubangui‑chari,subnational,FEA-1910-2025,FEA-1910-2025,True,"CShapes 2.0 (Central African Republic, 1919-1960)",1,True
+french reunion,matched,REU-1816-2025,,True,GADM 4.1,1,False
+french saint pierre and miquelon,matched,SPM-1800-2025,,True,GADM 4.1,1,False
+french senegal,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Senegal, 1886-1959)",1,True
+french senegal and sudan,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 merged: Senegal, Mali",2,True
+french somali coast,matched,FSO-1884-1977,,True,GADM 4.1 fallback,1,False
+french sudan,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Mali, 1919-1932)",1,True
+french syria,subnational,SYR-1918-2025,SYR-1918-2025,True,"CShapes 2.0 (Syria, 1920-1920)",1,True
+french syria and lebanon,matched,SYR-1918-2025,,True,CShapes 2.0 (1967-2019),1,False
+french syria and lebanon (area in production),matched,SYR-1918-2025,,True,CShapes 2.0 (1967-2019),1,False
+french syria and lebanon (total area and area in production),matched,SYR-1918-2025,,True,CShapes 2.0 (1967-2019),1,False
+french syria and lebanon (total area),matched,SYR-1918-2025,,True,CShapes 2.0 (1967-2019),1,False
+french syria and lebanon: state of the alawites,subnational,SYR-1918-2025,SYR-1918-2025,True,"GADM admin-1 merged: SYR [Lattakia, Tartus]",3,True
+french tangier,matched,MOR-1904-1956,,True,CShapes 2.0 (1912-1956),1,False
+french togoland,matched,GER-1919-1922,,True,CShapes 2.0 (1919-1922),1,False
+french tonkin,subnational,FID-1887-2025,FID-1887-2025,False,,,True
+french tunisia,matched,TUN-1881-2025,,True,CShapes 2.0 (1886-1955),1,False
+french tunisia (european vineyard),matched,TUN-1881-2025,,True,CShapes 2.0 (1886-1955),1,False
+french tunisia (indigenous vineyard),matched,TUN-1881-2025,,True,CShapes 2.0 (1886-1955),1,False
+french upper senegal and niger,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 merged: Mali, Niger, Burkina Faso (Upper Volta)",3,True
+french upper volta,subnational,FWA-1895-2025,FWA-1895-2025,True,"CShapes 2.0 (Burkina Faso (Upper Volta), 1919-1932)",1,True
+french west africa,matched,FWA-1895-2025,,True,CShapes 2.0 (1898-1902),1,False
+french west morocco,subnational,MOR-1904-1956,MOR-1904-1956,False,,,True
+german bohemia and moravia,matched,CZE-1947-1992,,True,CShapes 2.0 (1947-1992),1,False
+german new guinea,matched,GER-1884-2025,,True,CShapes 2.0 (1886-1919),1,False
+german south west africa,matched,GWA-1884-1914,,True,GADM 4.1 fallback,1,False
+german togoland,matched,GER-1897-1919,,True,CShapes 2.0 (1897-1914),1,False
+german western samoa,matched,WSM-1900-2025,,True,CShapes 2.0 (1976-2019),1,False
+germany,matched,DEU-1990-2025,,True,CShapes 2.0 (1990-2019),1,False
+greece,matched,GRC-1919-2025,,True,CShapes 2.0 (1944-2019),1,False
+greece (fresh),matched,GRC-1919-2025,,True,CShapes 2.0 (1944-2019),1,False
+greece (regular plantations),matched,GRC-1919-2025,,True,CShapes 2.0 (1944-2019),1,False
+greece (trellises),matched,GRC-1919-2025,,True,CShapes 2.0 (1944-2019),1,False
+guatemala,matched,GTM-1821-2025,,True,CShapes 2.0 (1886-2019),1,False
+haiti,matched,HTI-1800-2025,,True,CShapes 2.0 (1886-1915),1,False
+honduras,matched,HND-1800-2025,,True,CShapes 2.0 (1899-2019),1,False
+hungary,matched,HUN-1947-2025,,True,CShapes 2.0 (1947-2019),1,False
+iceland,matched,ISL-1800-2025,,True,CShapes 2.0 (1886-1918),1,False
+iran,matched,IRN-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+ireland,matched,IRL-1921-2025,,True,CShapes 2.0 (1922-2019),1,False
+italian and british somaliland,matched,SOM-1960-2025,,True,CShapes 2.0 (1960-2019),1,False
+italian dodecanese islands,matched,DOD-1912-2025,,True,CShapes 2.0 (1944-2019),1,False
+italian east africa,matched,ETH-1907-1952,,True,CShapes 2.0 (1907-1936),1,False
+italian eritrea,matched,ERI-1882-2025,,True,CShapes 2.0 (1941-1952),1,False
+italian eritrea (by land),matched,ERI-1882-2025,,True,CShapes 2.0 (1941-1952),1,False
+italian eritrea (by sea),matched,ERI-1882-2025,,True,CShapes 2.0 (1941-1952),1,False
+italian libya,matched,ITL-1911-2025,,True,CShapes 2.0 (1951-2019),1,False
+italian libya (associated cultivation),matched,ITL-1911-2025,,True,CShapes 2.0 (1951-2019),1,False
+italian libya (simple and associated cultivation),matched,ITL-1911-2025,,True,CShapes 2.0 (1951-2019),1,False
+italian libya (simple cultivation),matched,ITL-1911-2025,,True,CShapes 2.0 (1951-2019),1,False
+italian libya: cyrenaica,subnational,ITL-1911-2025,ITL-1911-2025,True,"GADM admin-1 merged: LBY [Benghazi, Al Marj, Darnah, Al Jabal al Akhdar, Al Butnan, Al Kufrah, Al Wahat]",3,True
+italian libya: tripolitania,subnational,ITL-1911-2025,ITL-1911-2025,True,"GADM admin-1 merged: LBY [Tripoli, Al Marqab, Misratah, Al Jufrah, Nalut, Az Zawiyah, An Nuqat al Khams, Al Jabal al Gharbi]",3,True
+italian somaliland,matched,ITS-1908-2025,,True,CShapes 2.0 (1924-1941),1,False
+italy,matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (associated cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (intercalary cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (main and secondary cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (main cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (secondary cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (simple and associated cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (simple cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+italy (total cultivation),matched,ITA-1919-2025,,True,CShapes 2.0 (1919-2019),1,False
+japan,matched,JPN-1800-2025,,True,CShapes 2.0 (1886-1945),1,False
+japan (coree seule),matched,JPN-1800-2025,,True,CShapes 2.0 (1886-1945),1,False
+japan (frijoles rojos),matched,JPN-1800-2025,,True,CShapes 2.0 (1886-1945),1,False
+japan (trade with foreign countries),matched,JPN-1800-2025,,True,CShapes 2.0 (1886-1945),1,False
+japan (trade with formosa),matched,JPN-1800-2025,,True,CShapes 2.0 (1886-1945),1,False
+japan (trade with korea),matched,JPN-1800-2025,,True,CShapes 2.0 (1886-1945),1,False
+japan: karafuto prefecture,subnational,JPN-1800-2025,JPN-1800-2025,True,"CShapes 2.0 (Southern Sakhalin Island, 1905-1945)",1,True
+japanese korea,matched,KOR-1800-1945,,True,CShapes 2.0 (1945-1948),1,False
+japanese korea (autumn rearing),matched,KOR-1800-1945,,True,CShapes 2.0 (1945-1948),1,False
+japanese korea (spring rearing),matched,KOR-1800-1945,,True,CShapes 2.0 (1945-1948),1,False
+japanese korea (trade with foreign countries),matched,KOR-1800-1945,,True,CShapes 2.0 (1945-1948),1,False
+japanese korea (trade with japan),matched,KOR-1800-1945,,True,CShapes 2.0 (1945-1948),1,False
+japanese kwantung,matched,KWA-1898-2025,,True,GADM 4.1 fallback,1,False
+japanese manchukuo,matched,MAN-1932-1945,,True,CShapes 2.0 (1921-1945),1,False
+japanese south pacific,matched,MNP-1991-2025,,True,GADM 4.1,1,False
+japanese south pacific: angaur,subnational,MNP-1991-2025,MNP-1991-2025,False,,,True
+japanese south pacific: palau,subnational,MNP-1991-2025,MNP-1991-2025,True,GADM admin-0: PLW,2,True
+japanese taiwan,matched,TWN-1896-2025,,True,CShapes 2.0 (1949-2019),1,False
+japanese taiwan (trade with foreign countries),matched,TWN-1896-2025,,True,CShapes 2.0 (1949-2019),1,False
+japanese taiwan (trade with japan),matched,TWN-1896-2025,,True,CShapes 2.0 (1949-2019),1,False
+"kingdom of serbs, croats and slovenes",matched,F248-1920-1991,,True,CShapes 2.0 (1944-1991),1,False
+latvia,matched,LVA-1991-2025,,True,CShapes 2.0 (1991-2019),1,False
+liberia,matched,LBR-1847-2025,,True,CShapes 2.0 (1920-2019),1,False
+lithuania,matched,LTU-1991-2025,,True,CShapes 2.0 (1991-2019),1,False
+luxembourg,matched,LUX-2000-2025,,True,CShapes 2.0 (1944-2019),1,False
+mexico,matched,MEX-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+nepal,matched,NPL-1800-2025,,True,CShapes 2.0 (1886-1919),1,False
+netherlands,matched,NLD-1800-2025,,True,CShapes 2.0 (1893-1940),1,False
+new zealand,matched,NZL-1907-2025,,True,CShapes 2.0 (1920-2019),1,False
+new zealand: cook,subnational,COK-1893-2025,COK-1893-2025,True,GADM admin-0: COK,2,True
+nicaragua,matched,NIC-1800-2025,,True,CShapes 2.0 (1900-2019),1,False
+norway,matched,NOR-1800-2025,,True,CShapes 2.0 (1905-1940),1,False
+panama,matched,PAN-1903-2025,,True,CShapes 2.0 (1903-2019),1,False
+paraguay,matched,PRY-1938-2025,,True,CShapes 2.0 (1938-2019),1,False
+peru,matched,PER-1942-2025,,True,CShapes 2.0 (1942-2019),1,False
+peru (for agriculture),matched,PER-1942-2025,,True,CShapes 2.0 (1942-2019),1,False
+peru (for export),matched,PER-1942-2025,,True,CShapes 2.0 (1942-2019),1,False
+poland,matched,POL-1945-2025,,True,CShapes 2.0 (1945-2019),1,False
+portugal,matched,PRT-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+portugal: madeira,subnational,PRT-1800-2025,PRT-1800-2025,True,GADM admin-1: PRT [Madeira],2,True
+portuguese angola,matched,AGO-1816-2025,,True,CShapes 2.0 (1905-1975),1,False
+portuguese cape verde,matched,CPV-1800-2025,,True,CShapes 2.0 (1886-1975),1,False
+portuguese guinea,matched,GNB-1879-2025,,True,CShapes 2.0 (1942-1974),1,False
+portuguese india,matched,POR-1800-2025,,True,GADM 4.1 fallback,1,False
+portuguese macau,matched,MAC-1800-2025,,True,GADM 4.1,1,False
+portuguese mozambique,matched,MOZ-1816-2025,,True,CShapes 2.0 (1891-1975),1,False
+portuguese mozambique: company,subnational,MOZ-1816-2025,MOZ-1816-2025,True,"GADM admin-1 merged: MOZ [Manica, Sofala]",3,True
+portuguese mozambique: niassa,subnational,MOZ-1816-2025,MOZ-1816-2025,True,"GADM admin-1 merged: MOZ [Cabo Delgado, Nassa]",3,True
+portuguese mozambique: province,subnational,MOZ-1816-2025,MOZ-1816-2025,True,"GADM admin-1 merged: MOZ [Maputo, Gaza, Inhambane, Zambezia, Tete, Nampula]",3,True
+portuguese sao tome and principe,matched,STP-1800-2025,,True,CShapes 2.0 (1975-2019),1,False
+portuguese timor,matched,TLS-1800-2025,,True,CShapes 2.0 (1886-1976),1,False
+portuguese timor and kambing,matched,TLS-1800-2025,,True,CShapes 2.0 (1886-1976),1,False
+romania,matched,ROU-1940-2025,,True,CShapes 2.0 (1940-2019),1,False
+russia,matched,RUS-1991-2014,,True,CShapes 2.0 (1991-2014),1,False
+russia in asia,subnational,RUS-1991-2014,RUS-1991-2014,False,,,True
+russia in europe,subnational,RUS-1991-2014,RUS-1991-2014,False,,,True
+serbia,matched,SRB-2008-2025,,True,CShapes 2.0 (2008-2019),1,False
+siam,matched,THA-1909-2025,,True,CShapes 2.0 (1909-2019),1,False
+south west africa,matched,NAM-1884-2025,,True,CShapes 2.0 (1920-1966),1,False
+spain,matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (associated cultivation),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (in production),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (mixed cultivation),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (production area),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (simple cultivation),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (specialist cultivation),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (total area),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain (total cultivation),matched,ESP-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+spain: canary,subnational,CAN-1800-2025,CAN-1800-2025,True,GADM admin-1: ESP [Islas Canarias],2,True
+spanish fernando po,matched,SPA-1858-2025,,True,CShapes 2.0 (1900-1968),1,False
+spanish guinea,matched,SPA-1858-2025,,True,CShapes 2.0 (1900-1968),1,False
+spanish guinea and fernando po,matched,SPA-1858-2025,,True,CShapes 2.0 (1900-1968),1,False
+spanish morocco,matched,SPA-1912-1956,,True,CShapes 2.0 (1912-1956),1,False
+spanish morocco: ceuta,subnational,SPA-1912-1956,SPA-1912-1956,True,GADM admin-1: ESP [Ceuta y Melilla],2,True
+spanish morocco: melilla,subnational,SPA-1912-1956,SPA-1912-1956,True,GADM admin-1: ESP [Ceuta y Melilla],2,True
+sweden,matched,SWE-1800-2025,,True,CShapes 2.0 (1905-2019),1,False
+switzerland,matched,CHE-1800-2025,,True,CShapes 2.0 (1886-2019),1,False
+territory of the saar basin,matched,DEU-1920-1938,,True,CShapes 2.0 (1990-2019),1,False
+turkey,matched,TUR-1920-2025,,True,CShapes 2.0 (1923-2019),1,False
+turkey in asia,subnational,TUR-1920-2025,TUR-1920-2025,True,"GADM admin-0 minus admin-1: TUR - [Edirne, Kirklareli, Tekirdag]",3,True
+turkey in europe,subnational,TUR-1920-2025,TUR-1920-2025,True,"GADM admin-1 merged: TUR [Edirne, Kirklareli, Tekirdag]",3,True
+uk,matched,GBR-1800-1921,,True,CShapes 2.0 (1886-1921),1,False
+uk: england and wales,subnational,GBR-1800-1921,GBR-1800-1921,True,"GADM admin-1 merged: GBR [England, Wales]",2,True
+uk: great britain,subnational,GBR-1800-1921,GBR-1800-1921,True,"GADM admin-1 merged: GBR [England, Wales, Scotland]",2,True
+uk: north ireland,subnational,GBR-1800-1921,GBR-1800-1921,True,GADM admin-1: GBR [Northern Ireland],2,True
+uk: scotland,subnational,GBR-1800-1921,GBR-1800-1921,True,GADM admin-1: GBR [Scotland],2,True
+union of south africa,matched,ZAF-1828-2025,,True,CShapes 2.0 (1920-2019),1,False
+union of south africa (rural communities),matched,ZAF-1828-2025,,True,CShapes 2.0 (1920-2019),1,False
+union of south africa (trade with foreign countries),matched,ZAF-1828-2025,,True,CShapes 2.0 (1920-2019),1,False
+union of south africa (trade with the rhodesias and south west africa),matched,ZAF-1828-2025,,True,CShapes 2.0 (1920-2019),1,False
+union of south africa (urban communities),matched,ZAF-1828-2025,,True,CShapes 2.0 (1920-2019),1,False
+union of south africa: cape province,subnational,ZAF-1828-2025,ZAF-1828-2025,True,"GADM admin-1 merged: ZAF [Western Cape, Eastern Cape, Northern Cape]",3,True
+uruguay,matched,URY-1828-2025,,True,CShapes 2.0 (1886-2019),1,False
+us alaska,matched,ALA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+us alaska (trade with the united states),matched,ALA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+us guam,matched,GUM-1800-2025,,True,GADM 4.1,1,False
+us hawaii,matched,HAW-1898-1959,,True,CShapes 2.0 (1898-1959),1,False
+us hawaii (trade with foreign countries),matched,HAW-1898-1959,,True,CShapes 2.0 (1898-1959),1,False
+us hawaii (trade with the united states),matched,HAW-1898-1959,,True,CShapes 2.0 (1898-1959),1,False
+us panama canal,matched,PAN-1800-1979,,True,CShapes 2.0 (1903-2019),1,False
+us philippines,matched,PHL-1800-2025,,True,CShapes 2.0 (1898-1946),1,False
+us philippines (area in production),matched,PHL-1800-2025,,True,CShapes 2.0 (1898-1946),1,False
+us philippines (total area and area in production),matched,PHL-1800-2025,,True,CShapes 2.0 (1898-1946),1,False
+us philippines (total area),matched,PHL-1800-2025,,True,CShapes 2.0 (1898-1946),1,False
+us puerto rico,matched,PRI-1800-2025,,True,GADM 4.1,1,False
+us puerto rico (trade with foreign countries),matched,PRI-1800-2025,,True,GADM 4.1,1,False
+us puerto rico (trade with the united states),matched,PRI-1800-2025,,True,GADM 4.1,1,False
+us samoa,matched,ASM-1900-2025,,True,GADM 4.1,1,False
+us virgin islands,matched,VIR-1800-2025,,True,GADM 4.1,1,False
+usa,matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (non-production area),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (not wine grapes),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (production area),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (raisins),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (table grapes),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (total and production area),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (total area),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (trade with alaska),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (trade with foreign countries),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (trade with hawaii),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (trade with puerto rico),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (vines for wine),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa (wine grapes),matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa and canada,matched,USA-1800-1959,,True,CShapes 2.0 (1886-1959),1,False
+usa: california,subnational,USA-1800-1959,USA-1800-1959,True,GADM admin-1: USA [California],2,True
+usa: louisiana and florida,subnational,USA-1800-1959,USA-1800-1959,True,"GADM admin-1 merged: USA [Louisiana, Florida]",2,True
+"usa: other states different from alaska, california, louisiana and florida",subnational,USA-1800-1959,USA-1800-1959,True,"GADM admin-0 minus admin-1: USA - [Alaska, California, Louisiana, Florida]",3,True
+ussr,matched,F228-1921-1940,,True,CShapes 2.0 (1921-1940),1,False
+ussr in asia,subnational,F228-1921-1940,F228-1921-1940,False,,,True
+ussr in europe,subnational,F228-1921-1940,F228-1921-1940,False,,,True
+ussr: khibiny,subnational,F228-1921-1940,F228-1921-1940,False,,,True
+ussr: transcaucasian sfsr,subnational,F228-1921-1940,F228-1921-1940,True,"CShapes 2.0 merged: Georgia, Armenia, Azerbaijan",2,True
+venezuela,matched,VEN-1821-2025,,True,CShapes 2.0 (1886-2019),1,False
+yugoslavia,matched,F248-1920-1991,,True,CShapes 2.0 (1944-1991),1,False

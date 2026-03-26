@@ -1,0 +1,443 @@
+cleaned_name,match_status,matched_polity_code,matched_polity_name,parent_polity_code,notes
+aden and perim,matched,ADE-1839-1967,Aden,,
+aegean economic zone,matched,GRC-1919-2025,Greece,,
+albania,matched,ALB-1913-2025,Albania,,
+argentina,matched,ARG-1902-2025,Argentina,,
+argentina: mendoza,subnational,ARG-1902-2025,Argentina,ARG-1902-2025,Subnational: Mendoza
+australia,matched,AUS-1901-2025,Australia,,
+australia (production area),matched,AUS-1901-2025,Australia,,Measurement variant: (production area)
+australia (total and production area),matched,AUS-1901-2025,Australia,,Measurement variant: (total and production area)
+australia (total area),matched,AUS-1901-2025,Australia,,Measurement variant: (total area)
+australia administered islands,matched,AUS-1901-2025,Australia,,
+australia: queensland,subnational,AUS-1901-2025,Australia,AUS-1901-2025,Subnational: Queensland
+australia: tasmania,subnational,AUS-1901-2025,Australia,AUS-1901-2025,Subnational: Tasmania
+australia: victoria,subnational,AUS-1901-2025,Australia,AUS-1901-2025,Subnational: Victoria
+australian papua,matched,PAP-1800-1949,Papua (to 1949),,
+austria,matched,AUT-1918-2025,Austria,,
+austria-hungary,matched,AUH-1908-1918,Austria-Hungary (1908-1918),,
+belgian congo,matched,BEL-1885-2025,Belgian Congo,,
+belgian ruanda-urundi,matched,RWB-1919-2025,Rwanda and Burundi,,
+belgium,matched,BEL-1831-2025,Belgium,,
+belgium-luxembourg economic union,matched,F15-1800-1999,Belgium-Luxembourg,,
+bolivia,matched,BOL-1938-2025,Bolivia,,
+brazil,matched,BRA-1909-2025,Brazil,,
+brazil: sao paulo,subnational,BRA-1909-2025,Brazil,BRA-1909-2025,Subnational: Sao Paulo
+british aden,matched,ADE-1839-1967,Aden,,
+british aden (by land),matched,ADE-1839-1967,Aden,,Measurement variant: (by land)
+british aden (by sea),matched,ADE-1839-1967,Aden,,Measurement variant: (by sea)
+british andaman and nicobar,matched,IND-1800-1947,India (to 1947),,
+british antigua,matched,ATG-1800-2025,Antigua and Barbuda,,
+british ascension,matched,SHN-1800-2025,"Saint Helena, Ascension and Tristan da Cunha",,
+british bahamas,matched,BHS-1800-2025,Bahamas,,
+british barbados,matched,BRB-1800-2025,Barbados,,
+british basutoland,matched,BAS-1884-2025,Basutoland,,
+british bechuanaland,matched,BEC-1885-2025,Bechuanaland Protectorate,,
+british bermuda,matched,BMU-1800-2025,Bermuda,,
+british brunei,matched,BRN-1888-2025,Brunei Darussalam,,
+british burma,matched,MMR-1800-2025,Myanmar,,
+british cameroon,matched,BCA-1914-2025,British Cameroon,,
+british caymans,matched,CYM-1800-2025,Cayman Islands,,
+british ceylon,matched,LKA-1800-2025,Sri Lanka,,
+british christmas,matched,CXR-1800-2025,Christmas Island,,
+british cyprus,matched,CYP-1879-2025,Cyprus,,
+british dominica,matched,DMA-1800-2025,Dominica,,
+british falkland islands,matched,FLK-1833-2025,Falkland Islands,,
+british federated malay states,matched,FED-1909-1946,Federated Malay States (1909-1946),,
+british fiji,matched,FJI-1874-2025,Fiji,,
+british gambia,matched,GMB-1800-2025,Gambia,,
+british gibraltar,matched,GIB-1800-2025,Gibraltar,,
+british gilbert and ellice,matched,GIL-1892-2025,Gilbert and Ellice Island,,
+british gold coast,matched,GOL-1843-2025,Gold Coast,,
+british grenada,matched,GRD-1800-1833,Grenada,,
+british guernsey,matched,GGY-2005-2025,Guernsey,,
+british guiana,matched,GUY-1800-2025,Guyana,,
+british honduras,matched,BLZ-1800-2025,Belize,,
+british hong kong,matched,HKG-1841-2025,Hong Kong,,
+british india,matched,IND-1800-1947,India (to 1947),,
+british india (by land),matched,IND-1800-1947,India (to 1947),,Measurement variant: (by land)
+british india (by sea),matched,IND-1800-1947,India (to 1947),,Measurement variant: (by sea)
+british india: crown provinces,subnational,IND-1800-1947,India (to 1947),IND-1800-1947,Subnational: Crown provinces sub-division
+"british india: crown provinces, excluding burma",subnational,IND-1800-1947,India (to 1947),IND-1800-1947,Subnational: Crown provinces excluding Burma
+british india: excluding burma,subnational,IND-1800-1947,India (to 1947),IND-1800-1947,Subnational: India excluding Burma
+british india: princely states,subnational,IND-1800-1947,India (to 1947),IND-1800-1947,Subnational: Princely states sub-division
+british india: south provinces,subnational,IND-1800-1947,India (to 1947),IND-1800-1947,Subnational: South provinces sub-division
+british iraq,matched,IRQ-1921-2025,Iraq,,
+british jamaica,matched,JAM-1800-2025,Jamaica,,
+british jersey,matched,JEY-2005-2025,Jersey,,
+british kenya,matched,KEN-1924-1926,Kenya (1924-1926),,
+british kenya (european cultivation),subnational,KEN-1924-1926,Kenya (1924-1926),KEN-1924-1926,Subnational: European cultivation variant; Measurement variant: (european cultivation)
+british kenya and uganda,matched,BEA-1895-2025,British East Africa,,
+british leeward islands,matched,LEE-1800-2025,"Leeward Islands (Antigua, Dominica, St.Christopher, Montserrat, Nevis, Virgin Island)",,
+british malaya,matched,BMA-1922-2025,British Malaya,,
+british malta,matched,MLT-1800-2025,Malta,,
+british mauritius,matched,MUS-1800-2025,Mauritius,,
+"british mauritius, adamawa and bornu",subnational,MUS-1800-2025,Mauritius,MUS-1800-2025,"Subnational: Possibly mislabeled entry, includes Adamawa and Bornu"
+british montserrat,matched,MSR-1800-2025,Montserrat,,
+british nauru,matched,NRU-1888-2025,Nauru,,
+british nauru and ocean island,matched,NRU-1888-2025,Nauru,,
+british newfoundland,matched,NFL-1816-2025,Newfoundland,,
+british nigeria,matched,NIG-1914-1961,Nigeria (1914-1961),,
+"british nigeria and cameroon: north provinces, adamawa and bornu",subnational,NIG-1914-1961,Nigeria (1914-1961),NIG-1914-1961,"Subnational: North provinces, Adamawa and Bornu (incl. Cameroon)"
+british nigeria and cameroon: south provinces,subnational,NIG-1914-1961,Nigeria (1914-1961),NIG-1914-1961,Subnational: South provinces (incl. Cameroon)
+british nigeria: north provinces,subnational,NIG-1914-1961,Nigeria (1914-1961),NIG-1914-1961,Subnational: North provinces
+british nigeria: south provinces,subnational,NIG-1914-1961,Nigeria (1914-1961),NIG-1914-1961,Subnational: South provinces
+british north borneo,matched,SAB-1888-2025,Sabah (British Borneo),,
+british north rhodesia,matched,ZMB-1964-2025,Zambia,,
+british nyasaland,matched,NYA-1891-2025,Nyasaland Protectorate (Malawi),,
+british nyasaland (european cultivation),subnational,NYA-1891-2025,Nyasaland Protectorate (Malawi),NYA-1891-2025,Subnational: European cultivation variant; Measurement variant: (european cultivation)
+british nyasaland (indigenous cultivation),subnational,NYA-1891-2025,Nyasaland Protectorate (Malawi),NYA-1891-2025,Subnational: Indigenous cultivation variant; Measurement variant: (indigenous cultivation)
+british ocean island,matched,KIR-1800-2025,Kiribati,,
+british palestine,matched,PAL-1920-1948,Palestine (1920-1948),,
+british saint christopher and nevis,matched,KNA-1800-2025,Saint Kitts and Nevis,,
+british saint helena,matched,SHN-1800-2025,"Saint Helena, Ascension and Tristan da Cunha",,
+british saint lucia,matched,LCA-1800-2025,Saint Lucia,,
+british saint vincent,matched,VCT-1800-2025,Saint Vincent and the Grenadines,,
+british saint vincent (sea island),matched,VCT-1800-2025,Saint Vincent and the Grenadines,,Measurement variant: (sea island)
+british samoa,matched,WSM-1900-2025,Samoa,,
+british sarawak,matched,SAR-1841-2025,Sarawak,,
+british seychelles,matched,SYC-1903-2025,Seychelles,,
+british sierra leone,matched,SLE-1800-2025,Sierra Leone,,
+british solomon,matched,SLB-1885-2025,Solomon Islands,,
+british somaliland,matched,BSO-1884-2025,British Protectorate (British Somaliland),,
+british south rhodesia,matched,ZWE-1890-2025,Zimbabwe,,
+british south west africa,matched,NAM-1884-2025,Namibia,,
+british straits settlements,matched,STR-1826-1922,Straits Settlement,,
+british straits settlements: labuan,subnational,STR-1826-1922,Straits Settlement,STR-1826-1922,Subnational: Labuan
+british straits settlements: malacca,subnational,STR-1826-1922,Straits Settlement,STR-1826-1922,Subnational: Malacca
+british straits settlements: penang,subnational,STR-1826-1922,Straits Settlement,STR-1826-1922,Subnational: Penang
+british straits settlements: singapore,subnational,STR-1826-1922,Straits Settlement,STR-1826-1922,Subnational: Singapore
+british swaziland,matched,SWZ-1894-2025,Eswatini,,
+british tanganyika,matched,TAN-1922-1964,Tanzania (1922-1964),,
+british togoland,matched,BRI-1922-1955,British Togoland (1922-1955),,
+british tonga,matched,TON-1800-2025,Tonga,,
+british transjordan,matched,JOR-1920-1923,Jordan (1920-1923),,
+british trinidad and tobago,matched,TTO-1800-2025,Trinidad and Tobago,,
+british turks and caicos islands,matched,TCA-1800-2025,Turks and Caicos Islands,,
+british uganda,matched,UGA-1910-1926,Uganda (1910-1926),,
+british unfederated malay states: johor,subnational,UNF-1909-1946,Unfederated Malay States (1909-1946),UNF-1909-1946,Subnational: Johor
+british unfederated malay states: kedah,subnational,UNF-1909-1946,Unfederated Malay States (1909-1946),UNF-1909-1946,Subnational: Kedah
+british unfederated malay states: kelantan,subnational,UNF-1909-1946,Unfederated Malay States (1909-1946),UNF-1909-1946,Subnational: Kelantan
+british unfederated malay states: perlis,subnational,UNF-1909-1946,Unfederated Malay States (1909-1946),UNF-1909-1946,Subnational: Perlis
+british unfederated malay states: terengganu,subnational,UNF-1909-1946,Unfederated Malay States (1909-1946),UNF-1909-1946,Subnational: Terengganu
+british virgin islands,matched,VGB-1800-2025,British Virgin Islands,,
+british west indies federation,matched,LEE-1800-2025,"Leeward Islands (Antigua, Dominica, St.Christopher, Montserrat, Nevis, Virgin Island)",,
+british windward islands,matched,VCT-1800-2025,Saint Vincent and the Grenadines,,
+british zanzibar,matched,ZAN-1890-1964,Zanzibar (1890-1964),,
+british-french togoland,matched,TGO-1960-2025,Togo,,
+british‑egyptian sudan,matched,SUD-1882-2025,Sudan (Anglo-Egyptian),,
+british‑french cameroon,matched,CMR-1884-2025,Cameroon (Kamerun),,
+british‑french new hebrides,matched,NHB-1906-2025,New Hebrides,,
+bulgaria,matched,BGR-1940-2025,Bulgaria,,
+canada,matched,CAN-1948-2025,Canada,,
+chile,matched,CHL-1902-2025,Chile,,
+chile (reexportation),matched,CHL-1902-2025,Chile,,Measurement variant: (reexportation)
+china,matched,CHN-1800-2025,"China, mainland",,
+china: excluding manchuria,subnational,CHN-1800-2025,"China, mainland",CHN-1800-2025,Subnational: Excluding Manchuria
+china: manchuria,subnational,CHN-1800-2025,"China, mainland",CHN-1800-2025,Subnational: Manchuria
+colombia,matched,COL-1922-2025,Colombia,,
+costa rica,matched,CRI-1800-2025,Costa Rica,,
+cuba,matched,CUB-1800-2025,Cuba,,
+czechoslovakia,matched,F51-1918-1938,Czechoslovakia (1918-1938),,
+denmark,matched,DNK-1920-2025,Denmark,,
+denmark (rural communities),subnational,DNK-1920-2025,Denmark,DNK-1920-2025,Subnational: Rural communities; Measurement variant: (rural communities)
+denmark: faroe islands,subnational,FRO-1800-2025,Faroe Islands,FRO-1800-2025,Subnational: Faroe Islands
+denmark: greenland,subnational,GRL-1800-2025,Greenland,GRL-1800-2025,Subnational: Greenland
+dominican republic,matched,DOM-1800-2025,Dominican Republic,,
+dutch bali and lombok,subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Bali and Lombok
+dutch bali and lombok (indigenous cultivation),subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Bali and Lombok; Measurement variant: (indigenous cultivation)
+dutch curacao,matched,CUW-2010-2025,Curacao,,
+dutch east indies,matched,DEI-1800-2025,Dutch East Indies (Indonesia),,
+dutch east indies (european plantations),matched,DEI-1800-2025,Dutch East Indies (Indonesia),,Measurement variant: (european plantations)
+dutch east indies (indigenous cultivation),matched,DEI-1800-2025,Dutch East Indies (Indonesia),,Measurement variant: (indigenous cultivation)
+dutch east outer provinces,subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: East Outer Provinces
+dutch east outer provinces (european plantations),subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: East Outer Provinces; Measurement variant: (european plantations)
+dutch east outer provinces (indigenous cultivation),subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: East Outer Provinces; Measurement variant: (indigenous cultivation)
+dutch guiana,matched,DGU-1800-2025,Dutch Guayana,,
+dutch java and madura,subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Java and Madura
+dutch java and madura (european cultivation),subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Java and Madura; Measurement variant: (european cultivation)
+dutch java and madura (indigenous cultivation),subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Java and Madura; Measurement variant: (indigenous cultivation)
+dutch java and madura (native cultivations),subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Java and Madura; Measurement variant: (native cultivations)
+dutch java and sumatra,subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Java and Sumatra
+"dutch java, madura and east outer provinces",subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,"Subnational: Java, Madura and East Outer Provinces"
+dutch sint eustatius and sint maarten,subnational,DUT-1800-2025,Dutch West Indies (Netherland Antilles),DUT-1800-2025,Subnational: Sint Eustatius and Sint Maarten
+dutch sumatra,subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Sumatra
+dutch sumatra (european cultivation),subnational,DEI-1800-2025,Dutch East Indies (Indonesia),DEI-1800-2025,Subnational: Sumatra; Measurement variant: (european cultivation)
+ecuador,matched,ECU-1942-2025,Ecuador,,
+egypt,matched,EGY-1899-1925,Egypt (1899-1925),,
+egypt (trade with british-egyptian sudan),matched,EGY-1899-1925,Egypt (1899-1925),,Measurement variant: (trade with british-egyptian sudan)
+el salvador,matched,SLV-1821-2025,El Salvador,,
+el salvador: san salvador department,subnational,SLV-1821-2025,El Salvador,SLV-1821-2025,Subnational: San Salvador department
+estonia,matched,EST-1991-2025,Estonia,,
+ethiopia,matched,ETH-1800-2025,Ethiopia (old),,
+finland,matched,FIN-1940-2025,Finland,,
+france,matched,FRA-1919-2025,France,,
+france: alsace,subnational,FRA-1919-2025,France,FRA-1919-2025,Subnational: Alsace
+free city of danzig,matched,DAN-1919-1938,Danzig (1919-1938),,
+french algeria,matched,DZA-1831-2025,Algeria,,
+french annam,subnational,FID-1887-2025,French Indochina,FID-1887-2025,Subnational: Annam
+french cambodia,subnational,FID-1887-2025,French Indochina,FID-1887-2025,Subnational: Cambodia
+french cameroon,matched,CAM-1919-1961,Cameroon (1919-1961),,
+french chad,subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,Subnational: Chad
+french chad and oubangui‑chari,subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,Subnational: Chad and Oubangui-Chari
+"french chad, gabon, middle congo and oubangui‑chari",subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,"Subnational: Chad, Gabon, Middle Congo and Oubangui-Chari"
+"french chad, middle congo and oubangui‑chari",subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,"Subnational: Chad, Middle Congo and Oubangui-Chari"
+french cochinchina,subnational,FID-1887-2025,French Indochina,FID-1887-2025,Subnational: Cochinchina
+french dahomey,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Dahomey
+french dakar,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Dakar
+french east morocco,subnational,MOR-1904-1956,Morocco (1904-1956),MOR-1904-1956,Subnational: East Morocco
+french equatorial africa,matched,FEA-1910-2025,French Equatorial Africa,,
+french gabon,subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,Subnational: Gabon
+french gabon and middle congo,subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,Subnational: Gabon and Middle Congo
+french guadeloupe,matched,GLP-1800-2025,Guadeloupe,,
+french guadeloupe: marie‑galante,subnational,GLP-1800-2025,Guadeloupe,GLP-1800-2025,Subnational: Marie-Galante
+french guiana,matched,GUF-1800-2025,French Guiana,,
+french guinea,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Guinea
+french india,matched,FRI-1800-2025,French India,,
+french indochine,matched,FID-1887-2025,French Indochina,,
+french ivory coast,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Ivory Coast
+french laos,subnational,FID-1887-2025,French Indochina,FID-1887-2025,Subnational: Laos
+french lebanon,subnational,SYR-1918-2025,Syria and Lebanon,SYR-1918-2025,Subnational: Lebanon
+french madagascar,matched,MAD-1912-1946,Madagascar (1912-1946),,
+french madagascar: juan de nova,subnational,MAD-1912-1946,Madagascar (1912-1946),MAD-1912-1946,Subnational: Juan de Nova
+french martinique,matched,MTQ-1800-2025,Martinique,,
+french mauritania,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Mauritania
+french mayotte,matched,MYT-1843-1914,Mayotte and Noissi-be,,
+french middle congo,subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,Subnational: Middle Congo
+french middle congo and oubangui‑chari,subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,Subnational: Middle Congo and Oubangui-Chari
+french morocco,matched,MOR-1904-1956,Morocco (1904-1956),,
+french morocco (european vineyard),matched,MOR-1904-1956,Morocco (1904-1956),,Measurement variant: (european vineyard)
+french morocco (indigenous vineyard),matched,MOR-1904-1956,Morocco (1904-1956),,Measurement variant: (indigenous vineyard)
+french morocco (muslim vineyard),matched,MOR-1904-1956,Morocco (1904-1956),,Measurement variant: (muslim vineyard)
+french new caledonia,matched,NCL-1853-2025,New Caledonia,,
+french niger,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Niger
+french oceania,matched,PYF-1800-2025,French Polynesia,,
+french oceania: makatea,subnational,PYF-1800-2025,French Polynesia,PYF-1800-2025,Subnational: Makatea
+french oubangui‑chari,subnational,FEA-1910-2025,French Equatorial Africa,FEA-1910-2025,Subnational: Oubangui-Chari
+french reunion,matched,REU-1816-2025,Reunion,,
+french saint pierre and miquelon,matched,SPM-1800-2025,Saint Pierre and Miquelon,,
+french senegal,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Senegal
+french senegal and sudan,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Senegal and Sudan
+french somali coast,matched,FSO-1884-1977,French Somalia,,
+french sudan,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Sudan (French)
+french syria,subnational,SYR-1918-2025,Syria and Lebanon,SYR-1918-2025,Subnational: Syria
+french syria and lebanon,matched,SYR-1918-2025,Syria and Lebanon,,
+french syria and lebanon (area in production),matched,SYR-1918-2025,Syria and Lebanon,,Measurement variant: (area in production)
+french syria and lebanon (total area and area in production),matched,SYR-1918-2025,Syria and Lebanon,,Measurement variant: (total area and area in production)
+french syria and lebanon (total area),matched,SYR-1918-2025,Syria and Lebanon,,Measurement variant: (total area)
+french syria and lebanon: state of the alawites,subnational,SYR-1918-2025,Syria and Lebanon,SYR-1918-2025,Subnational: State of the Alawites
+french tangier,matched,MOR-1904-1956,Morocco (1904-1956),,
+french togoland,matched,GER-1919-1922,German Togoland (1919-1922),,
+french tonkin,subnational,FID-1887-2025,French Indochina,FID-1887-2025,Subnational: Tonkin
+french tunisia,matched,TUN-1881-2025,Tunisia,,
+french tunisia (european vineyard),matched,TUN-1881-2025,Tunisia,,Measurement variant: (european vineyard)
+french tunisia (indigenous vineyard),matched,TUN-1881-2025,Tunisia,,Measurement variant: (indigenous vineyard)
+french upper senegal and niger,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Upper Senegal and Niger
+french upper volta,subnational,FWA-1895-2025,French West Africa,FWA-1895-2025,Subnational: Upper Volta
+french west africa,matched,FWA-1895-2025,French West Africa,,
+french west morocco,subnational,MOR-1904-1956,Morocco (1904-1956),MOR-1904-1956,Subnational: West Morocco
+german bohemia and moravia,matched,CZE-1947-1992,Czechoslovakia (1947-1992),,
+german new guinea,matched,GER-1884-2025,German colonies Oceania,,
+german south west africa,matched,GWA-1884-1914,German West Africa,,
+german togoland,matched,GER-1897-1919,German Togoland (1897-1919),,
+german western samoa,matched,WSM-1900-2025,Samoa,,
+germany,matched,DEU-1990-2025,Germany,,
+greece,matched,GRC-1919-2025,Greece,,
+greece (fresh),matched,GRC-1919-2025,Greece,,Measurement variant: (fresh)
+greece (regular plantations),matched,GRC-1919-2025,Greece,,Measurement variant: (regular plantations)
+greece (trellises),matched,GRC-1919-2025,Greece,,Measurement variant: (trellises)
+guatemala,matched,GTM-1821-2025,Guatemala,,
+haiti,matched,HTI-1800-2025,Haiti,,
+honduras,matched,HND-1800-2025,Honduras,,
+hungary,matched,HUN-1947-2025,Hungary,,
+iceland,matched,ISL-1800-2025,Iceland,,
+iran,matched,IRN-1800-2025,Iran,,
+ireland,matched,IRL-1921-2025,Ireland,,
+italian and british somaliland,matched,SOM-1960-2025,Somalia,,
+italian dodecanese islands,matched,DOD-1912-2025,Dodecanese Is.,,
+italian east africa,matched,ETH-1907-1952,Ethiopia (1907-1952),,
+italian eritrea,matched,ERI-1882-2025,Eritrea,,
+italian eritrea (by land),matched,ERI-1882-2025,Eritrea,,Measurement variant: (by land)
+italian eritrea (by sea),matched,ERI-1882-2025,Eritrea,,Measurement variant: (by sea)
+italian libya,matched,ITL-1911-2025,Italian Libia Cyrenaica (Lybia),,
+italian libya (associated cultivation),matched,ITL-1911-2025,Italian Libia Cyrenaica (Lybia),,Measurement variant: (associated cultivation)
+italian libya (simple and associated cultivation),matched,ITL-1911-2025,Italian Libia Cyrenaica (Lybia),,Measurement variant: (simple and associated cultivation)
+italian libya (simple cultivation),matched,ITL-1911-2025,Italian Libia Cyrenaica (Lybia),,Measurement variant: (simple cultivation)
+italian libya: cyrenaica,subnational,ITL-1911-2025,Italian Libia Cyrenaica (Lybia),ITL-1911-2025,Subnational: Cyrenaica
+italian libya: tripolitania,subnational,ITL-1911-2025,Italian Libia Cyrenaica (Lybia),ITL-1911-2025,Subnational: Tripolitania
+italian somaliland,matched,ITS-1908-2025,Italian Somaliland,,
+italy,matched,ITA-1919-2025,Italy,,
+italy (associated cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (associated cultivation)
+italy (intercalary cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (intercalary cultivation)
+italy (main and secondary cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (main and secondary cultivation)
+italy (main cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (main cultivation)
+italy (secondary cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (secondary cultivation)
+italy (simple and associated cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (simple and associated cultivation)
+italy (simple cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (simple cultivation)
+italy (total cultivation),matched,ITA-1919-2025,Italy,,Measurement variant: (total cultivation)
+japan,matched,JPN-1800-2025,Japan,,
+japan (coree seule),matched,JPN-1800-2025,Japan,,Measurement variant: (coree seule)
+japan (frijoles rojos),matched,JPN-1800-2025,Japan,,Measurement variant: (frijoles rojos)
+japan (trade with foreign countries),matched,JPN-1800-2025,Japan,,Measurement variant: (trade with foreign countries)
+japan (trade with formosa),matched,JPN-1800-2025,Japan,,Measurement variant: (trade with formosa)
+japan (trade with korea),matched,JPN-1800-2025,Japan,,Measurement variant: (trade with korea)
+japan: karafuto prefecture,subnational,JPN-1800-2025,Japan,JPN-1800-2025,Subnational: Karafuto (South Sakhalin)
+japanese korea,matched,KOR-1800-1945,Korea (old) (to 1945),,
+japanese korea (autumn rearing),matched,KOR-1800-1945,Korea (old) (to 1945),,Measurement variant: (autumn rearing)
+japanese korea (spring rearing),matched,KOR-1800-1945,Korea (old) (to 1945),,Measurement variant: (spring rearing)
+japanese korea (trade with foreign countries),matched,KOR-1800-1945,Korea (old) (to 1945),,Measurement variant: (trade with foreign countries)
+japanese korea (trade with japan),matched,KOR-1800-1945,Korea (old) (to 1945),,Measurement variant: (trade with japan)
+japanese kwantung,matched,KWA-1898-2025,Kwantung (Port Arthur),,
+japanese manchukuo,matched,MAN-1932-1945,Manchukuo,,
+japanese south pacific,matched,MNP-1991-2025,Northern Mariana Islands,,
+japanese south pacific: angaur,subnational,MNP-1991-2025,Northern Mariana Islands,MNP-1991-2025,Subnational: Angaur
+japanese south pacific: palau,subnational,MNP-1991-2025,Northern Mariana Islands,MNP-1991-2025,Subnational: Palau
+japanese taiwan,matched,TWN-1896-2025,Taiwan,,
+japanese taiwan (trade with foreign countries),matched,TWN-1896-2025,Taiwan,,Measurement variant: (trade with foreign countries)
+japanese taiwan (trade with japan),matched,TWN-1896-2025,Taiwan,,Measurement variant: (trade with japan)
+"kingdom of serbs, croats and slovenes",matched,F248-1920-1991,Yugoslavia (1920-1991),,
+latvia,matched,LVA-1991-2025,Latvia,,
+liberia,matched,LBR-1847-2025,Liberia,,
+lithuania,matched,LTU-1991-2025,Lithuania,,
+luxembourg,matched,LUX-2000-2025,Luxembourg,,
+mexico,matched,MEX-1800-2025,Mexico,,
+nepal,matched,NPL-1800-2025,Nepal,,
+netherlands,matched,NLD-1800-2025,Netherlands,,
+new zealand,matched,NZL-1907-2025,New Zealand,,
+new zealand: cook,subnational,COK-1893-2025,Cook Islands,COK-1893-2025,Subnational: Cook Islands
+nicaragua,matched,NIC-1800-2025,Nicaragua,,
+norway,matched,NOR-1800-2025,Norway,,
+panama,matched,PAN-1903-2025,Panama,,
+paraguay,matched,PRY-1938-2025,Paraguay,,
+peru,matched,PER-1942-2025,Peru,,
+peru (for agriculture),matched,PER-1942-2025,Peru,,Measurement variant: (for agriculture)
+peru (for export),matched,PER-1942-2025,Peru,,Measurement variant: (for export)
+poland,matched,POL-1945-2025,Poland,,
+portugal,matched,PRT-1800-2025,Portugal,,
+portugal: madeira,subnational,PRT-1800-2025,Portugal,PRT-1800-2025,Subnational: Madeira
+portuguese angola,matched,AGO-1816-2025,Angola,,
+portuguese cape verde,matched,CPV-1800-2025,Cabo Verde,,
+portuguese guinea,matched,GNB-1879-2025,Guinea-Bissau,,
+portuguese india,matched,POR-1800-2025,Portuguese India,,
+portuguese macau,matched,MAC-1800-2025,Macao,,
+portuguese mozambique,matched,MOZ-1816-2025,Mozambique,,
+portuguese mozambique: company,subnational,MOZ-1816-2025,Mozambique,MOZ-1816-2025,Subnational: Mozambique Company territory
+portuguese mozambique: niassa,subnational,MOZ-1816-2025,Mozambique,MOZ-1816-2025,Subnational: Niassa
+portuguese mozambique: province,subnational,MOZ-1816-2025,Mozambique,MOZ-1816-2025,Subnational: Province territory
+portuguese sao tome and principe,matched,STP-1800-2025,Sao Tome and Principe,,
+portuguese timor,matched,TLS-1800-2025,Timor-Leste,,
+portuguese timor and kambing,matched,TLS-1800-2025,Timor-Leste,,
+romania,matched,ROU-1940-2025,Romania,,
+russia,matched,RUS-1991-2014,Russia (1991-2014),,
+russia in asia,subnational,RUS-1991-2014,Russia (1991-2014),RUS-1991-2014,Subnational: Russia in Asia
+russia in europe,subnational,RUS-1991-2014,Russia (1991-2014),RUS-1991-2014,Subnational: Russia in Europe
+serbia,matched,SRB-2008-2025,Serbia,,
+siam,matched,THA-1909-2025,Thailand,,
+south west africa,matched,NAM-1884-2025,Namibia,,
+spain,matched,ESP-1800-2025,Spain,,
+spain (associated cultivation),matched,ESP-1800-2025,Spain,,Measurement variant: (associated cultivation)
+spain (in production),matched,ESP-1800-2025,Spain,,Measurement variant: (in production)
+spain (mixed cultivation),matched,ESP-1800-2025,Spain,,Measurement variant: (mixed cultivation)
+spain (production area),matched,ESP-1800-2025,Spain,,Measurement variant: (production area)
+spain (simple cultivation),matched,ESP-1800-2025,Spain,,Measurement variant: (simple cultivation)
+spain (specialist cultivation),matched,ESP-1800-2025,Spain,,Measurement variant: (specialist cultivation)
+spain (total area),matched,ESP-1800-2025,Spain,,Measurement variant: (total area)
+spain (total cultivation),matched,ESP-1800-2025,Spain,,Measurement variant: (total cultivation)
+spain: canary,subnational,CAN-1800-2025,Canary Islands,CAN-1800-2025,Subnational: Canary Islands
+spanish fernando po,matched,SPA-1858-2025,Spanish Guinea,,
+spanish guinea,matched,SPA-1858-2025,Spanish Guinea,,
+spanish guinea and fernando po,matched,SPA-1858-2025,Spanish Guinea,,
+spanish morocco,matched,SPA-1912-1956,Spanish Morocco (1912-1956),,
+spanish morocco: ceuta,subnational,SPA-1912-1956,Spanish Morocco (1912-1956),SPA-1912-1956,Subnational: Ceuta
+spanish morocco: melilla,subnational,SPA-1912-1956,Spanish Morocco (1912-1956),SPA-1912-1956,Subnational: Melilla
+sweden,matched,SWE-1800-2025,Sweden,,
+switzerland,matched,CHE-1800-2025,Switzerland,,
+territory of the saar basin,matched,DEU-1920-1938,Germany (1920-1938),,
+total,aggregate,,,,Total/summary row
+total africa,aggregate,,,,Total/summary row
+total africa net,aggregate,,,,Total/summary row
+total america,aggregate,,,,Total/summary row
+total america net,aggregate,,,,Total/summary row
+total asia,aggregate,,,,Total/summary row
+total asia net,aggregate,,,,Total/summary row
+total europe,aggregate,,,,Total/summary row
+total europe excluding the ussr,aggregate,,,,Total/summary row
+total europe net,aggregate,,,,Total/summary row
+total europe net excluding the ussr,aggregate,,,,Total/summary row
+total excluding the ussr,aggregate,,,,Total/summary row
+total general,aggregate,,,,Total/summary row
+total general excluding the ussr,aggregate,,,,Total/summary row
+total general including the ussr,aggregate,,,,Total/summary row
+total general net,aggregate,,,,Total/summary row
+total general net excluding the ussr,aggregate,,,,Total/summary row
+total net,aggregate,,,,Total/summary row
+total net excluding the ussr,aggregate,,,,Total/summary row
+total north hemisphere,aggregate,,,,Total/summary row
+total north hemisphere aggregated,aggregate,,,,Total/summary row
+total north hemisphere aggregated excluding the ussr,aggregate,,,,Total/summary row
+total north hemisphere excluding the ussr,aggregate,,,,Total/summary row
+total oceania,aggregate,,,,Total/summary row
+total oceania excluding the ussr,aggregate,,,,Total/summary row
+total oceania net,aggregate,,,,Total/summary row
+total south hemisphere,aggregate,,,,Total/summary row
+total south hemisphere aggregated,aggregate,,,,Total/summary row
+total world,aggregate,,,,Total/summary row
+total world excluding the ussr,aggregate,,,,Total/summary row
+total world including the ussr,aggregate,,,,Total/summary row
+total world net,aggregate,,,,Total/summary row
+total world net excluding the ussr,aggregate,,,,Total/summary row
+turkey,matched,TUR-1920-2025,Turkiye,,
+turkey in asia,subnational,TUR-1920-2025,Turkiye,TUR-1920-2025,Subnational: Turkey in Asia
+turkey in europe,subnational,TUR-1920-2025,Turkiye,TUR-1920-2025,Subnational: Turkey in Europe
+uk,matched,GBR-1800-1921,United Kingdom (to 1921),,
+uk: england and wales,subnational,GBR-1800-1921,United Kingdom (to 1921),GBR-1800-1921,Subnational: England and Wales
+uk: great britain,subnational,GBR-1800-1921,United Kingdom (to 1921),GBR-1800-1921,Subnational: Great Britain
+uk: north ireland,subnational,GBR-1800-1921,United Kingdom (to 1921),GBR-1800-1921,Subnational: North Ireland
+uk: scotland,subnational,GBR-1800-1921,United Kingdom (to 1921),GBR-1800-1921,Subnational: Scotland
+union of south africa,matched,ZAF-1828-2025,South Africa,,
+union of south africa (rural communities),matched,ZAF-1828-2025,South Africa,,Measurement variant: (rural communities)
+union of south africa (trade with foreign countries),matched,ZAF-1828-2025,South Africa,,Measurement variant: (trade with foreign countries)
+union of south africa (trade with the rhodesias and south west africa),matched,ZAF-1828-2025,South Africa,,Measurement variant: (trade with the rhodesias and south west africa)
+union of south africa (urban communities),matched,ZAF-1828-2025,South Africa,,Measurement variant: (urban communities)
+union of south africa: cape province,subnational,ZAF-1828-2025,South Africa,ZAF-1828-2025,Subnational: Cape Province
+uruguay,matched,URY-1828-2025,Uruguay,,
+us alaska,matched,ALA-1800-1959,Alaska (to 1959),,
+us alaska (trade with the united states),matched,ALA-1800-1959,Alaska (to 1959),,Measurement variant: (trade with the united states)
+us guam,matched,GUM-1800-2025,Guam,,
+us hawaii,matched,HAW-1898-1959,Hawaii (1898-1959),,
+us hawaii (trade with foreign countries),matched,HAW-1898-1959,Hawaii (1898-1959),,Measurement variant: (trade with foreign countries)
+us hawaii (trade with the united states),matched,HAW-1898-1959,Hawaii (1898-1959),,Measurement variant: (trade with the united states)
+us panama canal,matched,PAN-1800-1979,Panama (before Canal Zone),,
+us philippines,matched,PHL-1800-2025,Philippines,,
+us philippines (area in production),matched,PHL-1800-2025,Philippines,,Measurement variant: (area in production)
+us philippines (total area and area in production),matched,PHL-1800-2025,Philippines,,Measurement variant: (total area and area in production)
+us philippines (total area),matched,PHL-1800-2025,Philippines,,Measurement variant: (total area)
+us puerto rico,matched,PRI-1800-2025,Puerto Rico,,
+us puerto rico (trade with foreign countries),matched,PRI-1800-2025,Puerto Rico,,Measurement variant: (trade with foreign countries)
+us puerto rico (trade with the united states),matched,PRI-1800-2025,Puerto Rico,,Measurement variant: (trade with the united states)
+us samoa,matched,ASM-1900-2025,American Samoa,,
+us virgin islands,matched,VIR-1800-2025,United States Virgin Islands,,
+usa,matched,USA-1800-1959,United States of America (to 1959),,
+usa (non-production area),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (non-production area)
+usa (not wine grapes),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (not wine grapes)
+usa (production area),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (production area)
+usa (raisins),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (raisins)
+usa (table grapes),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (table grapes)
+usa (total and production area),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (total and production area)
+usa (total area),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (total area)
+usa (trade with alaska),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (trade with alaska)
+usa (trade with foreign countries),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (trade with foreign countries)
+usa (trade with hawaii),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (trade with hawaii)
+usa (trade with puerto rico),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (trade with puerto rico)
+usa (vines for wine),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (vines for wine)
+usa (wine grapes),matched,USA-1800-1959,United States of America (to 1959),,Measurement variant: (wine grapes)
+usa and canada,matched,USA-1800-1959,United States of America (to 1959),,
+usa: california,subnational,USA-1800-1959,United States of America (to 1959),USA-1800-1959,Subnational: California
+usa: louisiana and florida,subnational,USA-1800-1959,United States of America (to 1959),USA-1800-1959,Subnational: Louisiana and Florida
+"usa: other states different from alaska, california, louisiana and florida",subnational,USA-1800-1959,United States of America (to 1959),USA-1800-1959,Subnational: Other states
+ussr,matched,F228-1921-1940,USSR (1921-1940),,
+ussr in asia,subnational,F228-1921-1940,USSR (1921-1940),F228-1921-1940,Subnational: USSR in Asia
+ussr in europe,subnational,F228-1921-1940,USSR (1921-1940),F228-1921-1940,Subnational: USSR in Europe
+ussr: khibiny,subnational,F228-1921-1940,USSR (1921-1940),F228-1921-1940,Subnational: Khibiny
+ussr: transcaucasian sfsr,subnational,F228-1921-1940,USSR (1921-1940),F228-1921-1940,Subnational: Transcaucasian SFSR
+venezuela,matched,VEN-1821-2025,Venezuela,,
+yugoslavia,matched,F248-1920-1991,Yugoslavia (1920-1991),,
