@@ -3,7 +3,7 @@
 Build polygon database for WHEP polities.
 
 Reads:
-  - data/final/polities_database.csv (810 polity entries)
+  - data/final/polities_database.csv (polity entries)
   - data/geodata/cshapes2_full.gpkg (CShapes 2.0, dependencies=TRUE)
   - data/geodata/cshapes2_sovereign.gpkg (CShapes 2.0, sovereign only)
   - WHEP reference project geodata (CShapes-Europe, GADM)

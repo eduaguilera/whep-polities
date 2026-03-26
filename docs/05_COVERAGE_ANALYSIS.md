@@ -27,8 +27,8 @@ Full report: `data/analysis/exhaustive_gap_report.csv`
 
 | Metric | Value |
 |--------|-------|
-| Total polity entries | 810 |
-| Unique polity codes | 810 (100% unique) |
+| Total polity entries | 1,026 |
+| Unique polity codes | 1,026 (100% unique) |
 | Sovereign states (active 2025) | 194 (193 UN + Vatican) |
 | Historical entities | 339 |
 | Colonial entities | 47 |
@@ -36,10 +36,11 @@ Full report: `data/analysis/exhaustive_gap_report.csv`
 | Trade aggregates | 60 |
 | Mandates | 13 |
 | Statistical regions | 77 |
+| Subnational entries | 216 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
-| Verified entries | 478 (59%) |
-| Verified + region + fixed | 601 (74%) |
+| Verified entries | 699 (68%) |
+| Verified + region + fixed | 817 (80%) |
 | Earliest start year | 1800 |
 | Latest end year | 2025 |
 
@@ -456,8 +457,8 @@ Yugoslavia → North Macedonia, Italy pre/post-1919, Russia/Ukraine pre/post-201
 | Empire dissolutions covered | 100% | Empire dissolutions dataset |
 | FAOSTAT entities covered | 100% | FAOSTAT regions dataset |
 | Timeline continuity (no unexplained gaps) | YES | Internal analysis |
-| Unique polity codes | 810/810 (100%) | Code uniqueness check |
-| Unique polity names | 810/810 (100%) | Name uniqueness check |
+| Unique polity codes | 1,026/1,026 (100%) | Code uniqueness check |
+| Unique polity names | 1,026/1,026 (100%) | Name uniqueness check |
 
 ---
 

@@ -165,6 +165,21 @@
 - Final type distribution: sovereign 194, historical 339, aggregate 60, dependency 75,
   colonial 47, region 77, mandate 13, disputed 4, puppet 1
 
+### Version 1.4 (2026-03-26)
+- Added 216 present-day subnational entries for top 6 countries by area:
+  Russia (83), USA (51), China (31), Brazil (27), Canada (13), Australia (11)
+- New polity_type "subnational" with HASC-derived codes (e.g. USCA-1959-2025)
+- All 216 subnational polygons extracted from GADM 3.6 admin-1
+- Database expanded from 810 to 1,026 entries; polygons from 723 to 939
+- Built polity knowledge graph: 1,034 nodes, 1,900 edges, 9 relation types
+  (predecessor/successor, subregion_of, aggregate_covers, temporal_next,
+  colonial_ruler_of, region_contains, located_in_continent, same_territory)
+- Exports: CSV edge/node lists + GraphML (for Gephi/Cytoscape/NetworkX/igraph)
+- Added 6 knowledge graph visualization plots
+- Added docs 11 (knowledge graph documentation)
+- Updated type distribution: sovereign 194, historical 339, subnational 216,
+  aggregate 60, dependency 75, colonial 47, region 77, mandate 13, disputed 4, puppet 1
+
 ### Version 1.3 (2026-03-26)
 - Added 31-test automated stress test suite (`stress_test.py`)
 - Added CShapes vs GADM polygon cross-validation (median IoU 0.975) (`compare_polygons.py`)

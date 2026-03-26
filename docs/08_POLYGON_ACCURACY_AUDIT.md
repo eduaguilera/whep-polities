@@ -493,16 +493,17 @@ source name (after filtering known colonial→modern name changes).
 
 ### 11.4 Post-Fix Polygon Count
 
-| Metric | Before fix | After fix |
-|--------|-----------|-----------|
-| Total polygons matched | 724 | 723 |
-| Correctly matched | 711 | 723 |
-| Wrong polygon (wrong country/continent) | 13 | 0 |
-| Truly unmatched (tiny islands, aggregates) | 9 | 10 |
+| Metric | Before fix | After fix | After subnational |
+|--------|-----------|-----------|-------------------|
+| Total polygons matched | 724 | 723 | 939 |
+| Correctly matched | 711 | 723 | 939 |
+| Wrong polygon (wrong country/continent) | 13 | 0 | 0 |
+| Truly unmatched (tiny islands, aggregates) | 9 | 10 | 10 |
 
 The net polygon count decreased by 1 because Canton & Enderbury Islands (a tiny
 uninhabited Pacific atoll) was previously incorrectly getting Canada's polygon
-and is now correctly reported as unmatched.
+and is now correctly reported as unmatched. The "after subnational" column reflects
+the addition of 216 GADM admin-1 polygons for the 6 largest countries (v1.4).
 
 ---
 

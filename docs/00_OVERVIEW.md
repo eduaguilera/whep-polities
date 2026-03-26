@@ -1,4 +1,4 @@
-# WHEP Polities Database v1.3 -- Overview
+# WHEP Polities Database v1.4 -- Overview
 
 **Project**: Who Has Eaten the Planet (WHEP)
 **Funded by**: European Research Council (ERC)
@@ -38,7 +38,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 939/1,026 (91.5%) |
+| Polities with polygons | 939/949 non-region (98.9%) |
 | Subnational polygons (top 6 countries) | 216/216 (100%) |
 | Historical subnational polygons | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
@@ -167,13 +167,17 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **100%** coverage of tracked decolonization events (96)
 - **100%** coverage of tracked empire dissolutions (17)
 - **5 fixes** applied from exhaustive cross-referencing
-- **478 polities** individually verified against multiple sources
+- **699 polities** individually verified against multiple sources
 
 ### Automated Stress Testing (31 tests)
 - **23 PASS**: Schema, types, dates, code uniqueness, duration, polygon validity, CRS, etc.
 - **7 WARN**: ISO code sharing (by design), predecessor chain gaps (region codes), centroid
   exceptions (Turkey, Greenland — transcontinental entities), date overlaps (by design)
 - **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
+
+### Knowledge Graph
+- **1,034 nodes** (1,026 polities + 8 continent nodes), **1,900 edges**, **9 relation types**
+- Exports: CSV, GraphML (Gephi/Cytoscape/NetworkX/igraph compatible)
 
 ### Polygon Cross-Validation
 - CShapes 2.0 vs GADM: **median IoU 0.975** across 183 countries

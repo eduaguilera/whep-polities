@@ -6,13 +6,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total entries | 810 |
-| Non-region entries | 733 |
+| Total entries | 1,026 |
+| Non-region entries | 949 |
+| Subnational entries | 216 |
 | Statistical regions | 77 |
-| Entries with polygons | 723/733 (98.6%) |
-| Verified entries | 483/810 (60%) |
-| Unique polity codes | 810 (100% unique) |
-| ISO3 codes assigned | 704 entries |
+| Entries with polygons | 939/949 non-region (98.9%) |
+| Verified entries | 699/1,026 (68%) |
+| Unique polity codes | 1,026 (100% unique) |
+| ISO3 codes assigned | 920 entries |
 | COW codes matched | 207/209 external COW states |
 
 ---
@@ -22,21 +23,21 @@
 ### PASSED (23 tests)
 1. Required columns present (all 9)
 2. No nulls in required fields
-3. Valid polity types (9 used)
+3. Valid polity types (10 used, incl. subnational)
 4. Valid continents (8 used)
-6. Code uniqueness (810 unique)
+6. Code uniqueness (1,026 unique)
 7. start_year <= end_year
 8. duration_years consistency
 9. Code dates match column dates
 10. Dates within 1800-2025
 14. ISO3 code format (704 valid)
 16. COW codes match external system (207 matched, 2 COW-only)
-17. Polygon coverage rate (98.6%)
-18. All polygon geometries valid (723 OK)
+17. Polygon coverage rate (98.9% of non-region entries)
+18. All polygon geometries valid (939 OK)
 19. No empty geometries
 20. CRS is EPSG:4326
 23. Data source labels valid
-24. Verification coverage (60% verified)
+24. Verification coverage (68% verified)
 25. No empty decades (min 227 in 1800)
 26. No sudden drops in active count
 27. No suspiciously tiny polygons (1 dep. island, acceptable)
@@ -186,11 +187,11 @@ geographic/territorial analysis rather than direct trade data linkage.
 
 ## Polygon Geometry Quality
 
-All 723 polygons pass validity checks. Key metrics:
+All 939 polygons pass validity checks. Key metrics:
 
 | Metric | Value |
 |--------|-------|
-| Valid geometries | 723/723 (100%) |
+| Valid geometries | 939/939 (100%) |
 | MultiPolygons | 408 (56%) |
 | With holes | 33 (5%) |
 | Median area | 14.38 deg² |
@@ -218,7 +219,10 @@ Source quality comparison (median vertices): CShapes 2.0 > GADM > CShapes-Europe
 | `analyze_polygon_quality.py` | Geometry quality (area, vertices, compactness) | 5 |
 | `generate_validation_report.py` | Combined dashboard | 3 |
 | `generate_plots.py` | Cross-validation & analysis | 13 |
-| **Total** | **31+ tests, 10 analyses** | **54 plots** |
+| `add_subnational_polities.py` | Add GADM admin-1 for top 6 countries | — |
+| `build_knowledge_graph.py` | Polity knowledge graph (9 relation types) | — |
+| `visualize_knowledge_graph.py` | Knowledge graph visualizations | 6 |
+| **Total** | **31+ tests, 13 analyses** | **60 plots** |
 
 ---
 

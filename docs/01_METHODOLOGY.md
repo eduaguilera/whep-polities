@@ -133,6 +133,7 @@ Each polity is classified into one of these types:
 | `region` | FAOSTAT/UN statistical aggregate | Africa, Eastern Europe, OECD |
 | `disputed` | Entity with contested sovereignty | Kosovo, Taiwan, Western Sahara |
 | `puppet` | Client/puppet state of another power | Manchukuo (1932-1945) |
+| `subnational` | Present-day admin-1 subdivision of a large country | California, São Paulo, Guangdong |
 
 ## 6. Continent Assignment
 
