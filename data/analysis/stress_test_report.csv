@@ -29,4 +29,4 @@ test,name,status,details
 28,Large polygon check,PASS,1 polygons > 5000 deg²: ATA-1800-2025
 29,FAOSTAT entries have ISO3,PASS,330 FAOSTAT entries with ISO3 codes out of 472 total
 30,Decolonization event coverage,PASS,94/94 events matched
-31,Polygon source matches claim,WARN,33 source mismatches
+31,Polygon source matches claim,WARN,29 source mismatches
