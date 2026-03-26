@@ -220,5 +220,5 @@ Open `knowledge_graph.graphml` directly in Gephi for interactive exploration.
 
 | Script | Purpose |
 |--------|---------|
-| `build_knowledge_graph.py` | Extract all 9 relation types, build graph, export CSV + GraphML |
-| `visualize_knowledge_graph.py` | Generate 6 visualization plots |
+| `R/07_build_knowledge_graph.R` | Extract all 9 relation types, build graph, export CSV + GraphML |
+| `R/09_visualize_knowledge_graph.R` | Generate 6 visualization plots |

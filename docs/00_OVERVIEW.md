@@ -209,25 +209,25 @@ Use `iso3_code` for ISO-based datasets, `cow_code` for COW-based datasets.
 
 ---
 
-## Analysis Scripts
+## R Scripts
 
-| Script | Purpose | Plots |
-|--------|---------|-------|
-| `build_database.py` | Build final polities_database.csv from all sources | — |
-| `build_polygons.py` | Match polities to CShapes/GADM/CShapes-Europe polygons | — |
-| `generate_plots.py` | Generate 13 analysis and cross-validation plots | 13 |
-| `stress_test.py` | 31 automated integrity checks with diagnostic plots | 5 |
-| `compare_polygons.py` | CShapes vs GADM IoU comparison for 183 countries | 5 |
-| `validate_iso_overlaps.py` | ISO code collision detection and classification | 3 |
-| `analyze_subnational.py` | GADM admin-1 analysis for 19 major countries | 8 |
-| `analyze_exhaustive_gaps.py` | Exhaustive coverage gap search (68 gaps) | 6 |
-| `analyze_temporal_evolution.py` | Temporal evolution, decolonization, European states | 6 |
-| `analyze_polygon_quality.py` | Polygon geometry quality (area, vertices, compactness) | 5 |
-| `generate_validation_report.py` | Combined validation dashboard | 3 |
-| `add_subnational_polities.py` | Add GADM admin-1 for top 6 countries | — |
-| `build_knowledge_graph.py` | Build polity knowledge graph (9 relation types) | — |
-| `visualize_knowledge_graph.py` | Knowledge graph visualizations | 6 |
-| **Total** | **31+ tests, 13 analyses** | **60 plots** |
+All analysis is in R (managed by `renv`). Run `renv::restore()` to install dependencies.
+
+| Script | Purpose |
+|--------|---------|
+| `R/00_setup.R` | Package loading, paths, color palettes |
+| `R/01_build_master_db.R` | Build polities_database.csv from source data |
+| `R/02_temporal_analysis.R` | Temporal trends, formation/dissolution rates |
+| `R/03_gap_analysis.R` | Data quality gaps, source coverage |
+| `R/04_map_analysis.R` | World maps showing WHEP coverage |
+| `R/05_cross_reference.R` | Cross-reference against COW, Natural Earth |
+| `R/06_add_subnational.R` | Add GADM admin-1 for top 6 countries |
+| `R/07_build_knowledge_graph.R` | Build polity knowledge graph (9 relation types) |
+| `R/08_stress_test.R` | 31 automated integrity checks |
+| `R/09_visualize_knowledge_graph.R` | Knowledge graph visualizations (6 plots) |
+| `R/10_analysis_plots.R` | Consolidated analysis: temporal, polygon quality, ISO, coverage (12 plots) |
+
+Original Python scripts are archived in `python_archive/` for reference.
 
 ---
 

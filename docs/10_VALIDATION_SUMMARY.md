@@ -208,21 +208,17 @@ Source quality comparison (median vertices): CShapes 2.0 > GADM > CShapes-Europe
 
 ## Analysis Scripts and Outputs
 
-| Script | Tests/Analyses | Plots |
-|--------|---------------|-------|
-| `stress_test.py` | 31 integrity tests | 5 |
-| `compare_polygons.py` | CShapes/GADM/CShapes-Europe comparison | 5 |
-| `validate_iso_overlaps.py` | ISO collision classification | 3 |
-| `analyze_subnational.py` | 19-country GADM assessment | 8 |
-| `analyze_exhaustive_gaps.py` | Coverage gaps (COW, temporal, chain) | 6 |
-| `analyze_temporal_evolution.py` | Decolonization, formation rates, Europe | 6 |
-| `analyze_polygon_quality.py` | Geometry quality (area, vertices, compactness) | 5 |
-| `generate_validation_report.py` | Combined dashboard | 3 |
-| `generate_plots.py` | Cross-validation & analysis | 13 |
-| `add_subnational_polities.py` | Add GADM admin-1 for top 6 countries | — |
-| `build_knowledge_graph.py` | Polity knowledge graph (9 relation types) | — |
-| `visualize_knowledge_graph.py` | Knowledge graph visualizations | 6 |
-| **Total** | **31+ tests, 13 analyses** | **60 plots** |
+| Script | Tests/Analyses |
+|--------|---------------|
+| `R/08_stress_test.R` | 31 integrity tests |
+| `R/07_build_knowledge_graph.R` | Knowledge graph (9 relation types) |
+| `R/09_visualize_knowledge_graph.R` | Knowledge graph visualizations (6 plots) |
+| `R/10_analysis_plots.R` | Temporal, polygon quality, ISO, coverage (12 plots) |
+| `R/06_add_subnational.R` | Add GADM admin-1 for top 6 countries |
+| `R/01_build_master_db.R` | Build database from sources |
+| `R/02_temporal_analysis.R` | Temporal trends |
+| `R/03_gap_analysis.R` | Data quality gaps |
+| `R/05_cross_reference.R` | COW/Natural Earth cross-reference |
 
 ---
 

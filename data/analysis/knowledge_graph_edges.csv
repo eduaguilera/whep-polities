@@ -318,30 +318,106 @@ GER-1884-2025,GER-1887-1888,aggregate_covers,"same ISO3 (GER), date range contai
 GER-1884-2025,GER-1888-1896,aggregate_covers,"same ISO3 (GER), date range contained",1888,1896
 GER-1884-2025,GER-1897-1919,aggregate_covers,"same ISO3 (GER), date range contained",1897,1919
 GER-1884-2025,GER-1919-1922,aggregate_covers,"same ISO3 (GER), date range contained",1919,1922
+GHA-1800-1888,GHA-1888-1898,temporal_next,"same ISO3 (GHA), gap=0y",1888,1888
+GHA-1888-1898,GHA-1898-1956,temporal_next,"same ISO3 (GHA), gap=0y",1898,1898
+GHA-1898-1956,GHA-1957-2025,temporal_next,"same ISO3 (GHA), gap=1y",1956,1957
+GAB-1800-1912,GAB-1912-1919,temporal_next,"same ISO3 (GAB), gap=0y",1912,1912
+CMR-1960-1961,CMR-1961-2025,temporal_next,"same ISO3 (CMR), gap=0y",1961,1961
+NGA-1960-1961,NGA-1961-2025,temporal_next,"same ISO3 (NGA), gap=0y",1961,1961
+RWA-1920-1962,RWA-1962-2025,temporal_next,"same ISO3 (RWA), gap=0y",1962,1962
+UGA-1894-1902,UGA-1902-1910,temporal_next,"same ISO3 (UGA), gap=0y",1902,1902
+UGA-1902-1910,UGA-1910-1926,temporal_next,"same ISO3 (UGA), gap=0y",1910,1910
+KEN-1888-1891,KEN-1891-1894,temporal_next,"same ISO3 (KEN), gap=0y",1891,1891
+KEN-1891-1894,KEN-1894-1902,temporal_next,"same ISO3 (KEN), gap=0y",1894,1894
+KEN-1894-1902,KEN-1902-1906,temporal_next,"same ISO3 (KEN), gap=0y",1902,1902
+KEN-1902-1906,KEN-1907-1924,temporal_next,"same ISO3 (KEN), gap=1y",1906,1907
+KEN-1907-1924,KEN-1924-1926,temporal_next,"same ISO3 (KEN), gap=0y",1924,1924
+TZA-1961-1964,TZA-1964-2025,temporal_next,"same ISO3 (TZA), gap=0y",1964,1964
+EGY-1922-1925,EGY-1925-1967,temporal_next,"same ISO3 (EGY), gap=0y",1925,1925
+EGY-1925-1967,EGY-1967-1979,temporal_next,"same ISO3 (EGY), gap=0y",1967,1967
+EGY-1967-1979,EGY-1979-2025,temporal_next,"same ISO3 (EGY), gap=0y",1979,1979
+MRT-1960-1975,MRT-1975-1979,temporal_next,"same ISO3 (MRT), gap=0y",1975,1975
+MRT-1975-1979,MRT-1979-2025,temporal_next,"same ISO3 (MRT), gap=0y",1979,1979
+MAR-1911-1958,MAR-1958-1975,temporal_next,"same ISO3 (MAR), gap=0y",1958,1958
+MAR-1958-1975,MAR-1975-1979,temporal_next,"same ISO3 (MAR), gap=0y",1975,1975
+MAR-1975-1979,MAR-1979-2025,temporal_next,"same ISO3 (MAR), gap=0y",1979,1979
+ETH-1800-1889,ETH-1889-1897,temporal_next,"same ISO3 (ETH), gap=0y",1889,1889
+ETH-1889-1897,ETH-1897-1902,temporal_next,"same ISO3 (ETH), gap=0y",1897,1897
+ETH-1897-1902,ETH-1902-1907,temporal_next,"same ISO3 (ETH), gap=0y",1902,1902
+ETH-1902-1907,ETH-1907-1952,temporal_next,"same ISO3 (ETH), gap=0y",1907,1907
+ETH-1907-1952,ETH-1952-1993,temporal_next,"same ISO3 (ETH), gap=0y",1952,1952
+ETH-1952-1993,ETH-1993-2025,temporal_next,"same ISO3 (ETH), gap=0y",1993,1993
 ALG-1800-1902,ALG-1902-1919,temporal_next,"same ISO3 (ALG), gap=0y",1902,1902
 ANG-1800-1890,ANG-1890-1891,temporal_next,"same ISO3 (ANG), gap=0y",1890,1890
 ANG-1890-1891,ANG-1891-1905,temporal_next,"same ISO3 (ANG), gap=0y",1891,1891
-ARG-1800-1899,ARG-1899-1902,temporal_next,"same ISO3 (ARG), gap=0y",1899,1899
-ARG-1899-1902,ARG-1902-2025,temporal_next,"same ISO3 (ARG), gap=0y",1902,1902
-AUH-1800-1908,AUH-1908-1918,temporal_next,"same ISO3 (AUH), gap=0y",1908,1908
-BGR-1878-1913,BGR-1913-1918,temporal_next,"same ISO3 (BGR), gap=0y",1913,1913
-BGR-1913-1918,BGR-1918-1919,temporal_next,"same ISO3 (BGR), gap=0y",1918,1918
-BGR-1918-1919,BGR-1919-1940,temporal_next,"same ISO3 (BGR), gap=0y",1919,1919
-BGR-1919-1940,BGR-1940-2025,temporal_next,"same ISO3 (BGR), gap=0y",1940,1940
-BOL-1825-1903,BOL-1903-1909,temporal_next,"same ISO3 (BOL), gap=0y",1903,1903
-BOL-1903-1909,BOL-1909-1938,temporal_next,"same ISO3 (BOL), gap=0y",1909,1909
-BOL-1909-1938,BOL-1938-2025,temporal_next,"same ISO3 (BOL), gap=0y",1938,1938
 BOT-1800-1890,BOT-1890-1895,temporal_next,"same ISO3 (BOT), gap=0y",1890,1890
-BRA-1800-1903,BRA-1903-1909,temporal_next,"same ISO3 (BRA), gap=0y",1903,1903
-BRA-1903-1909,BRA-1909-2025,temporal_next,"same ISO3 (BRA), gap=0y",1909,1909
-BRN-1816-1888,BRN-1888-2025,temporal_next,"same ISO3 (BRN), gap=0y",1888,1888
-CAM-1800-1904,CAM-1904-1907,temporal_next,"same ISO3 (CAM), gap=0y",1904,1904
-CAN-1866-1948,CAN-1948-2025,temporal_next,"same ISO3 (CAN), gap=0y",1948,1948
-CAP-1800-1895,CAP-1895-1910,temporal_next,"same ISO3 (CAP), gap=0y",1895,1895
-CEN-1906-1912,CEN-1912-1919,temporal_next,"same ISO3 (CEN), gap=0y",1912,1912
+CON-1800-1891,CON-1891-1894,temporal_next,"same ISO3 (CON), gap=0y",1891,1891
+CON-1891-1894,CON-1894-1910,temporal_next,"same ISO3 (CON), gap=0y",1894,1894
+CON-1898-1900,CON-1900-1906,temporal_next,"same ISO3 (CON), gap=0y",1900,1900
+CON-1900-1906,CON-1906-1912,temporal_next,"same ISO3 (CON), gap=0y",1906,1906
+CON-1906-1912,CON-1912-1919,temporal_next,"same ISO3 (CON), gap=0y",1912,1912
+MAD-1800-1912,MAD-1912-1946,temporal_next,"same ISO3 (MAD), gap=0y",1912,1912
+MOR-1800-1904,MOR-1904-1956,temporal_next,"same ISO3 (MOR), gap=0y",1904,1904
+MOR-1904-1956,MOR-1956-1958,temporal_next,"same ISO3 (MOR), gap=0y",1956,1956
+COT-1889-1932,COT-1932-1947,temporal_next,"same ISO3 (COT), gap=0y",1932,1932
+ZIM-1889-1891,ZIM-1891-1900,temporal_next,"same ISO3 (ZIM), gap=0y",1891,1891
+NOR-1900-1905,NOR-1904-1913,temporal_next,"same ISO3 (NOR), gap=-1y",1905,1904
+SOU-1838-1900,SOU-1899-1906,temporal_next,"same ISO3 (SOU), gap=-1y",1900,1899
+SOU-1899-1906,SOU-1905-1945,temporal_next,"same ISO3 (SOU), gap=-1y",1906,1905
+SUD-1899-1902,SUD-1902-1910,temporal_next,"same ISO3 (SUD), gap=0y",1902,1902
+SUD-1902-1910,SUD-1910-1934,temporal_next,"same ISO3 (SUD), gap=0y",1910,1910
+SUD-1910-1934,SUD-1934-2011,temporal_next,"same ISO3 (SUD), gap=0y",1934,1934
 CHA-1900-1912,CHA-1912-1919,temporal_next,"same ISO3 (CHA), gap=0y",1912,1912
-CHL-1810-1899,CHL-1899-1902,temporal_next,"same ISO3 (CHL), gap=0y",1899,1899
-CHL-1899-1902,CHL-1902-2025,temporal_next,"same ISO3 (CHL), gap=0y",1902,1902
+MAU-1904-1912,MAU-1912-1944,temporal_next,"same ISO3 (MAU), gap=0y",1912,1912
+MAU-1912-1944,MAU-1944-1975,temporal_next,"same ISO3 (MAU), gap=0y",1944,1944
+MAL-1905-1919,MAL-1919-1932,temporal_next,"same ISO3 (MAL), gap=0y",1919,1919
+MAL-1919-1932,MAL-1932-1944,temporal_next,"same ISO3 (MAL), gap=0y",1932,1932
+MAL-1932-1944,MAL-1944-1947,temporal_next,"same ISO3 (MAL), gap=0y",1944,1944
+MAL-1944-1947,MAL-1946-1963,temporal_next,"same ISO3 (MAL), gap=-1y",1947,1946
+MAL-1947-1959,MAL-1959-1960,temporal_next,"same ISO3 (MAL), gap=0y",1959,1959
+CEN-1906-1912,CEN-1912-1919,temporal_next,"same ISO3 (CEN), gap=0y",1912,1912
+LIB-1912-1919,LIB-1919-1925,temporal_next,"same ISO3 (LIB), gap=0y",1919,1919
+LIB-1919-1925,LIB-1925-1934,temporal_next,"same ISO3 (LIB), gap=0y",1925,1925
+SPA-1800-1912,SPA-1912-1956,temporal_next,"same ISO3 (SPA), gap=0y",1912,1912
+SPA-1912-1958,SPA-1958-1975,temporal_next,"same ISO3 (SPA), gap=0y",1958,1958
+KAM-1800-1912,KAM-1912-1919,temporal_next,"same ISO3 (KAM), gap=0y",1912,1912
+CAP-1800-1895,CAP-1895-1910,temporal_next,"same ISO3 (CAP), gap=0y",1895,1895
+NAT-1800-1895,NAT-1895-1910,temporal_next,"same ISO3 (NAT), gap=0y",1895,1895
+GER-1887-1888,GER-1888-1896,temporal_next,"same ISO3 (GER), gap=0y",1888,1888
+GER-1888-1896,GER-1897-1919,temporal_next,"same ISO3 (GER), gap=1y",1896,1897
+GER-1897-1919,GER-1919-1922,temporal_next,"same ISO3 (GER), gap=0y",1919,1919
+FRE-1895-1898,FRE-1898-1902,temporal_next,"same ISO3 (FRE), gap=0y",1898,1898
+FRE-1898-1902,FRE-1902-1904,temporal_next,"same ISO3 (FRE), gap=0y",1902,1902
+FED-1896-1909,FED-1909-1946,temporal_next,"same ISO3 (FED), gap=0y",1909,1909
+FED-1953-1964,FED-1962-1967,temporal_next,"same ISO3 (FED), gap=-2y",1964,1962
+CAN-1866-1948,CAN-1948-2025,temporal_next,"same ISO3 (CAN), gap=0y",1948,1948
+TAN-1891-1920,TAN-1920-1922,temporal_next,"same ISO3 (TAN), gap=0y",1920,1920
+TAN-1920-1922,TAN-1922-1964,temporal_next,"same ISO3 (TAN), gap=0y",1922,1922
+CAM-1800-1904,CAM-1904-1907,temporal_next,"same ISO3 (CAM), gap=0y",1904,1904
+BRN-1816-1888,BRN-1888-2025,temporal_next,"same ISO3 (BRN), gap=0y",1888,1888
+THA-1800-1893,THA-1893-1904,temporal_next,"same ISO3 (THA), gap=0y",1893,1893
+THA-1893-1904,THA-1904-1907,temporal_next,"same ISO3 (THA), gap=0y",1904,1904
+THA-1904-1907,THA-1907-1909,temporal_next,"same ISO3 (THA), gap=0y",1907,1907
+THA-1907-1909,THA-1909-2025,temporal_next,"same ISO3 (THA), gap=0y",1909,1909
+IND-1800-1889,IND-1889-1949,temporal_next,"same ISO3 (IND), gap=0y",1889,1889
+IND-1893-1914,IND-1914-1937,temporal_next,"same ISO3 (IND), gap=0y",1914,1914
+IND-1914-1937,IND-1937-1947,temporal_next,"same ISO3 (IND), gap=0y",1937,1937
+IND-1937-1947,IND-1947-1949,temporal_next,"same ISO3 (IND), gap=0y",1947,1947
+IND-1947-1949,IND-1949-2025,temporal_next,"same ISO3 (IND), gap=0y",1949,1949
+MYS-1957-1963,MYS-1963-1965,temporal_next,"same ISO3 (MYS), gap=0y",1963,1963
+MYS-1963-1965,MYS-1965-2025,temporal_next,"same ISO3 (MYS), gap=0y",1965,1965
+SYR-1946-1967,SYR-1967-2025,temporal_next,"same ISO3 (SYR), gap=0y",1967,1967
+PAK-1947-1949,PAK-1949-1971,temporal_next,"same ISO3 (PAK), gap=0y",1949,1949
+PAK-1949-1971,PAK-1971-2025,temporal_next,"same ISO3 (PAK), gap=0y",1971,1971
+ISR-1948-1967,ISR-1967-1979,temporal_next,"same ISO3 (ISR), gap=0y",1967,1967
+ISR-1967-1979,ISR-1979-2025,temporal_next,"same ISO3 (ISR), gap=0y",1979,1979
+SAU-1924-1932,SAU-1932-2000,temporal_next,"same ISO3 (SAU), gap=0y",1932,1932
+SAU-1932-2000,SAU-2000-2025,temporal_next,"same ISO3 (SAU), gap=0y",2000,2000
+YEM-1990-2000,YEM-2000-2025,temporal_next,"same ISO3 (YEM), gap=0y",2000,2000
+IDN-1945-1949,IDN-1949-1969,temporal_next,"same ISO3 (IDN), gap=0y",1949,1949
+IDN-1949-1969,IDN-1969-1976,temporal_next,"same ISO3 (IDN), gap=0y",1969,1969
+IDN-1969-1976,IDN-1976-2002,temporal_next,"same ISO3 (IDN), gap=0y",1976,1976
+IDN-1976-2002,IDN-2002-2025,temporal_next,"same ISO3 (IDN), gap=0y",2002,2002
 CHN-1800-1895,CHN-1895-1912,temporal_next,"same ISO3 (CHN), gap=0y",1895,1895
 CHN-1895-1912,CHN-1913-1914,temporal_next,"same ISO3 (CHN), gap=1y",1912,1913
 CHN-1913-1914,CHN-1914-1921,temporal_next,"same ISO3 (CHN), gap=0y",1914,1914
@@ -349,138 +425,62 @@ CHN-1914-1921,CHN-1921-1945,temporal_next,"same ISO3 (CHN), gap=0y",1921,1921
 CHN-1921-1945,CHN-1945-1947,temporal_next,"same ISO3 (CHN), gap=0y",1945,1945
 CHN-1945-1947,CHN-1947-1949,temporal_next,"same ISO3 (CHN), gap=0y",1947,1947
 CHN-1947-1949,CHN-1949-1950,temporal_next,"same ISO3 (CHN), gap=0y",1949,1949
-CMR-1960-1961,CMR-1961-2025,temporal_next,"same ISO3 (CMR), gap=0y",1961,1961
-COL-1800-1903,COL-1903-1922,temporal_next,"same ISO3 (COL), gap=0y",1903,1903
-COL-1903-1922,COL-1922-2025,temporal_next,"same ISO3 (COL), gap=0y",1922,1922
-CON-1800-1891,CON-1891-1894,temporal_next,"same ISO3 (CON), gap=0y",1891,1891
-CON-1891-1894,CON-1894-1910,temporal_next,"same ISO3 (CON), gap=0y",1894,1894
-CON-1898-1900,CON-1900-1906,temporal_next,"same ISO3 (CON), gap=0y",1900,1900
-CON-1900-1906,CON-1906-1912,temporal_next,"same ISO3 (CON), gap=0y",1906,1906
-CON-1906-1912,CON-1912-1919,temporal_next,"same ISO3 (CON), gap=0y",1912,1912
-COT-1889-1932,COT-1932-1947,temporal_next,"same ISO3 (COT), gap=0y",1932,1932
-CZE-1947-1992,CZE-1993-2025,temporal_next,"same ISO3 (CZE), gap=1y",1992,1993
-DEU-1800-1919,DEU-1919-1920,temporal_next,"same ISO3 (DEU), gap=0y",1919,1919
-DEU-1919-1920,DEU-1920-1938,temporal_next,"same ISO3 (DEU), gap=0y",1920,1920
-DEU-1920-1938,DEU-1938-1945,temporal_next,"same ISO3 (DEU), gap=0y",1938,1938
-DNK-1800-1920,DNK-1920-2025,temporal_next,"same ISO3 (DNK), gap=0y",1920,1920
-ECU-1800-1942,ECU-1942-2025,temporal_next,"same ISO3 (ECU), gap=0y",1942,1942
-EGY-1922-1925,EGY-1925-1967,temporal_next,"same ISO3 (EGY), gap=0y",1925,1925
-EGY-1925-1967,EGY-1967-1979,temporal_next,"same ISO3 (EGY), gap=0y",1967,1967
-EGY-1967-1979,EGY-1979-2025,temporal_next,"same ISO3 (EGY), gap=0y",1979,1979
-ETH-1800-1889,ETH-1889-1897,temporal_next,"same ISO3 (ETH), gap=0y",1889,1889
-ETH-1889-1897,ETH-1897-1902,temporal_next,"same ISO3 (ETH), gap=0y",1897,1897
-ETH-1897-1902,ETH-1902-1907,temporal_next,"same ISO3 (ETH), gap=0y",1902,1902
-ETH-1902-1907,ETH-1907-1952,temporal_next,"same ISO3 (ETH), gap=0y",1907,1907
-ETH-1907-1952,ETH-1952-1993,temporal_next,"same ISO3 (ETH), gap=0y",1952,1952
-ETH-1952-1993,ETH-1993-2025,temporal_next,"same ISO3 (ETH), gap=0y",1993,1993
-FED-1896-1909,FED-1909-1946,temporal_next,"same ISO3 (FED), gap=0y",1909,1909
-FED-1953-1964,FED-1962-1967,temporal_next,"same ISO3 (FED), gap=-2y",1964,1962
-FIN-1917-1940,FIN-1940-2025,temporal_next,"same ISO3 (FIN), gap=0y",1940,1940
-FRE-1895-1898,FRE-1898-1902,temporal_next,"same ISO3 (FRE), gap=0y",1898,1898
-FRE-1898-1902,FRE-1902-1904,temporal_next,"same ISO3 (FRE), gap=0y",1902,1902
-GAB-1800-1912,GAB-1912-1919,temporal_next,"same ISO3 (GAB), gap=0y",1912,1912
-GBR-1800-1921,GBR-1921-2025,temporal_next,"same ISO3 (GBR), gap=0y",1921,1921
-GER-1887-1888,GER-1888-1896,temporal_next,"same ISO3 (GER), gap=0y",1888,1888
-GER-1888-1896,GER-1897-1919,temporal_next,"same ISO3 (GER), gap=1y",1896,1897
-GER-1897-1919,GER-1919-1922,temporal_next,"same ISO3 (GER), gap=0y",1919,1919
-GHA-1800-1888,GHA-1888-1898,temporal_next,"same ISO3 (GHA), gap=0y",1888,1888
-GHA-1888-1898,GHA-1898-1956,temporal_next,"same ISO3 (GHA), gap=0y",1898,1898
-GHA-1898-1956,GHA-1957-2025,temporal_next,"same ISO3 (GHA), gap=1y",1956,1957
-GRC-1800-1913,GRC-1913-1919,temporal_next,"same ISO3 (GRC), gap=0y",1913,1913
-GRC-1913-1919,GRC-1919-2025,temporal_next,"same ISO3 (GRC), gap=0y",1919,1919
-HUN-1918-1919,HUN-1919-1920,temporal_next,"same ISO3 (HUN), gap=0y",1919,1919
-HUN-1919-1920,HUN-1920-1938,temporal_next,"same ISO3 (HUN), gap=0y",1920,1920
-HUN-1920-1938,HUN-1938-1947,temporal_next,"same ISO3 (HUN), gap=0y",1938,1938
-HUN-1938-1947,HUN-1947-2025,temporal_next,"same ISO3 (HUN), gap=0y",1947,1947
-IDN-1945-1949,IDN-1949-1969,temporal_next,"same ISO3 (IDN), gap=0y",1949,1949
-IDN-1949-1969,IDN-1969-1976,temporal_next,"same ISO3 (IDN), gap=0y",1969,1969
-IDN-1969-1976,IDN-1976-2002,temporal_next,"same ISO3 (IDN), gap=0y",1976,1976
-IDN-1976-2002,IDN-2002-2025,temporal_next,"same ISO3 (IDN), gap=0y",2002,2002
-IND-1800-1889,IND-1889-1949,temporal_next,"same ISO3 (IND), gap=0y",1889,1889
-IND-1893-1914,IND-1914-1937,temporal_next,"same ISO3 (IND), gap=0y",1914,1914
-IND-1914-1937,IND-1937-1947,temporal_next,"same ISO3 (IND), gap=0y",1937,1937
-IND-1937-1947,IND-1947-1949,temporal_next,"same ISO3 (IND), gap=0y",1947,1947
-IND-1947-1949,IND-1949-2025,temporal_next,"same ISO3 (IND), gap=0y",1949,1949
-ISR-1948-1967,ISR-1967-1979,temporal_next,"same ISO3 (ISR), gap=0y",1967,1967
-ISR-1967-1979,ISR-1979-2025,temporal_next,"same ISO3 (ISR), gap=0y",1979,1979
-KAM-1800-1912,KAM-1912-1919,temporal_next,"same ISO3 (KAM), gap=0y",1912,1912
-KEN-1888-1891,KEN-1891-1894,temporal_next,"same ISO3 (KEN), gap=0y",1891,1891
-KEN-1891-1894,KEN-1894-1902,temporal_next,"same ISO3 (KEN), gap=0y",1894,1894
-KEN-1894-1902,KEN-1902-1906,temporal_next,"same ISO3 (KEN), gap=0y",1902,1902
-KEN-1902-1906,KEN-1907-1924,temporal_next,"same ISO3 (KEN), gap=1y",1906,1907
-KEN-1907-1924,KEN-1924-1926,temporal_next,"same ISO3 (KEN), gap=0y",1924,1924
-LIB-1912-1919,LIB-1919-1925,temporal_next,"same ISO3 (LIB), gap=0y",1919,1919
-LIB-1919-1925,LIB-1925-1934,temporal_next,"same ISO3 (LIB), gap=0y",1925,1925
-LTU-1918-1920,LTU-1920-1940,temporal_next,"same ISO3 (LTU), gap=0y",1920,1920
-MAD-1800-1912,MAD-1912-1946,temporal_next,"same ISO3 (MAD), gap=0y",1912,1912
-MAL-1905-1919,MAL-1919-1932,temporal_next,"same ISO3 (MAL), gap=0y",1919,1919
-MAL-1919-1932,MAL-1932-1944,temporal_next,"same ISO3 (MAL), gap=0y",1932,1932
-MAL-1932-1944,MAL-1944-1947,temporal_next,"same ISO3 (MAL), gap=0y",1944,1944
-MAL-1944-1947,MAL-1946-1963,temporal_next,"same ISO3 (MAL), gap=-1y",1947,1946
-MAL-1947-1959,MAL-1959-1960,temporal_next,"same ISO3 (MAL), gap=0y",1959,1959
-MAR-1911-1958,MAR-1958-1975,temporal_next,"same ISO3 (MAR), gap=0y",1958,1958
-MAR-1958-1975,MAR-1975-1979,temporal_next,"same ISO3 (MAR), gap=0y",1975,1975
-MAR-1975-1979,MAR-1979-2025,temporal_next,"same ISO3 (MAR), gap=0y",1979,1979
-MAU-1904-1912,MAU-1912-1944,temporal_next,"same ISO3 (MAU), gap=0y",1912,1912
-MAU-1912-1944,MAU-1944-1975,temporal_next,"same ISO3 (MAU), gap=0y",1944,1944
-MNE-1878-1913,MNE-1913-1915,temporal_next,"same ISO3 (MNE), gap=0y",1913,1913
-MOR-1800-1904,MOR-1904-1956,temporal_next,"same ISO3 (MOR), gap=0y",1904,1904
-MOR-1904-1956,MOR-1956-1958,temporal_next,"same ISO3 (MOR), gap=0y",1956,1956
-MRT-1960-1975,MRT-1975-1979,temporal_next,"same ISO3 (MRT), gap=0y",1975,1975
-MRT-1975-1979,MRT-1979-2025,temporal_next,"same ISO3 (MRT), gap=0y",1979,1979
-MYS-1957-1963,MYS-1963-1965,temporal_next,"same ISO3 (MYS), gap=0y",1963,1963
-MYS-1963-1965,MYS-1965-2025,temporal_next,"same ISO3 (MYS), gap=0y",1965,1965
-NAT-1800-1895,NAT-1895-1910,temporal_next,"same ISO3 (NAT), gap=0y",1895,1895
-NGA-1960-1961,NGA-1961-2025,temporal_next,"same ISO3 (NGA), gap=0y",1961,1961
-NOR-1900-1905,NOR-1904-1913,temporal_next,"same ISO3 (NOR), gap=-1y",1905,1904
-PAK-1947-1949,PAK-1949-1971,temporal_next,"same ISO3 (PAK), gap=0y",1949,1949
-PAK-1949-1971,PAK-1971-2025,temporal_next,"same ISO3 (PAK), gap=0y",1971,1971
 PER-1825-1909,PER-1909-1922,temporal_next,"same ISO3 (PER), gap=0y",1909,1909
 PER-1909-1922,PER-1922-1942,temporal_next,"same ISO3 (PER), gap=0y",1922,1922
 PER-1922-1942,PER-1942-2025,temporal_next,"same ISO3 (PER), gap=0y",1942,1942
-POL-1918-1919,POL-1919-1920,temporal_next,"same ISO3 (POL), gap=0y",1919,1919
-POL-1919-1920,POL-1920-1921,temporal_next,"same ISO3 (POL), gap=0y",1920,1920
-POL-1920-1921,POL-1921-1945,temporal_next,"same ISO3 (POL), gap=0y",1921,1921
-POL-1921-1945,POL-1945-2025,temporal_next,"same ISO3 (POL), gap=0y",1945,1945
-PRY-1811-1938,PRY-1938-2025,temporal_next,"same ISO3 (PRY), gap=0y",1938,1938
+TIB-1913-1914,TIB-1914-1950,temporal_next,"same ISO3 (TIB), gap=0y",1914,1914
+UNF-1800-1909,UNF-1909-1946,temporal_next,"same ISO3 (UNF), gap=0y",1909,1909
+GRC-1800-1913,GRC-1913-1919,temporal_next,"same ISO3 (GRC), gap=0y",1913,1913
+GRC-1913-1919,GRC-1919-2025,temporal_next,"same ISO3 (GRC), gap=0y",1919,1919
+DNK-1800-1920,DNK-1920-2025,temporal_next,"same ISO3 (DNK), gap=0y",1920,1920
+TUR-1800-1912,TUR-1913-1914,temporal_next,"same ISO3 (TUR), gap=1y",1912,1913
+TUR-1913-1914,TUR-1914-1918,temporal_next,"same ISO3 (TUR), gap=0y",1914,1914
+TUR-1914-1918,TUR-1918-1920,temporal_next,"same ISO3 (TUR), gap=0y",1918,1918
+TUR-1918-1920,TUR-1920-2025,temporal_next,"same ISO3 (TUR), gap=0y",1920,1920
+GBR-1800-1921,GBR-1921-2025,temporal_next,"same ISO3 (GBR), gap=0y",1921,1921
+BGR-1878-1913,BGR-1913-1918,temporal_next,"same ISO3 (BGR), gap=0y",1913,1913
+BGR-1913-1918,BGR-1918-1919,temporal_next,"same ISO3 (BGR), gap=0y",1918,1918
+BGR-1918-1919,BGR-1919-1940,temporal_next,"same ISO3 (BGR), gap=0y",1919,1919
+BGR-1919-1940,BGR-1940-2025,temporal_next,"same ISO3 (BGR), gap=0y",1940,1940
+FIN-1917-1940,FIN-1940-2025,temporal_next,"same ISO3 (FIN), gap=0y",1940,1940
 ROU-1859-1913,ROU-1913-1918,temporal_next,"same ISO3 (ROU), gap=0y",1913,1913
 ROU-1913-1918,ROU-1918-1919,temporal_next,"same ISO3 (ROU), gap=0y",1918,1918
 ROU-1918-1919,ROU-1919-1920,temporal_next,"same ISO3 (ROU), gap=0y",1919,1919
 ROU-1919-1920,ROU-1920-1940,temporal_next,"same ISO3 (ROU), gap=0y",1920,1920
 ROU-1920-1940,ROU-1940-2025,temporal_next,"same ISO3 (ROU), gap=0y",1940,1940
+POL-1918-1919,POL-1919-1920,temporal_next,"same ISO3 (POL), gap=0y",1919,1919
+POL-1919-1920,POL-1920-1921,temporal_next,"same ISO3 (POL), gap=0y",1920,1920
+POL-1920-1921,POL-1921-1945,temporal_next,"same ISO3 (POL), gap=0y",1921,1921
+POL-1921-1945,POL-1945-2025,temporal_next,"same ISO3 (POL), gap=0y",1945,1945
+HUN-1918-1919,HUN-1919-1920,temporal_next,"same ISO3 (HUN), gap=0y",1919,1919
+HUN-1919-1920,HUN-1920-1938,temporal_next,"same ISO3 (HUN), gap=0y",1920,1920
+HUN-1920-1938,HUN-1938-1947,temporal_next,"same ISO3 (HUN), gap=0y",1938,1938
+HUN-1938-1947,HUN-1947-2025,temporal_next,"same ISO3 (HUN), gap=0y",1947,1947
+DEU-1800-1919,DEU-1919-1920,temporal_next,"same ISO3 (DEU), gap=0y",1919,1919
+DEU-1919-1920,DEU-1920-1938,temporal_next,"same ISO3 (DEU), gap=0y",1920,1920
+DEU-1920-1938,DEU-1938-1945,temporal_next,"same ISO3 (DEU), gap=0y",1938,1938
+LTU-1918-1920,LTU-1920-1940,temporal_next,"same ISO3 (LTU), gap=0y",1920,1920
+CZE-1947-1992,CZE-1993-2025,temporal_next,"same ISO3 (CZE), gap=1y",1992,1993
+MNE-1878-1913,MNE-1913-1915,temporal_next,"same ISO3 (MNE), gap=0y",1913,1913
 RUS-1991-2014,RUS-2014-2025,temporal_next,"same ISO3 (RUS), gap=0y",2014,2014
-RWA-1920-1962,RWA-1962-2025,temporal_next,"same ISO3 (RWA), gap=0y",1962,1962
-SAU-1924-1932,SAU-1932-2000,temporal_next,"same ISO3 (SAU), gap=0y",1932,1932
-SAU-1932-2000,SAU-2000-2025,temporal_next,"same ISO3 (SAU), gap=0y",2000,2000
+UKR-1991-2014,UKR-2014-2025,temporal_next,"same ISO3 (UKR), gap=0y",2014,2014
+AUH-1800-1908,AUH-1908-1918,temporal_next,"same ISO3 (AUH), gap=0y",1908,1908
 SER-1816-1913,SER-1913-1915,temporal_next,"same ISO3 (SER), gap=0y",1913,1913
 SER-1913-1915,SER-1913-1918,temporal_next,"same ISO3 (SER), gap=-2y",1915,1913
-SOU-1838-1900,SOU-1899-1906,temporal_next,"same ISO3 (SOU), gap=-1y",1900,1899
-SOU-1899-1906,SOU-1905-1945,temporal_next,"same ISO3 (SOU), gap=-1y",1906,1905
-SPA-1800-1912,SPA-1912-1956,temporal_next,"same ISO3 (SPA), gap=0y",1912,1912
-SPA-1912-1958,SPA-1958-1975,temporal_next,"same ISO3 (SPA), gap=0y",1958,1958
-SUD-1899-1902,SUD-1902-1910,temporal_next,"same ISO3 (SUD), gap=0y",1902,1902
-SUD-1902-1910,SUD-1910-1934,temporal_next,"same ISO3 (SUD), gap=0y",1910,1910
-SUD-1910-1934,SUD-1934-2011,temporal_next,"same ISO3 (SUD), gap=0y",1934,1934
-SYR-1946-1967,SYR-1967-2025,temporal_next,"same ISO3 (SYR), gap=0y",1967,1967
-TAN-1891-1920,TAN-1920-1922,temporal_next,"same ISO3 (TAN), gap=0y",1920,1920
-TAN-1920-1922,TAN-1922-1964,temporal_next,"same ISO3 (TAN), gap=0y",1922,1922
-THA-1800-1893,THA-1893-1904,temporal_next,"same ISO3 (THA), gap=0y",1893,1893
-THA-1893-1904,THA-1904-1907,temporal_next,"same ISO3 (THA), gap=0y",1904,1904
-THA-1904-1907,THA-1907-1909,temporal_next,"same ISO3 (THA), gap=0y",1907,1907
-THA-1907-1909,THA-1909-2025,temporal_next,"same ISO3 (THA), gap=0y",1909,1909
-TIB-1913-1914,TIB-1914-1950,temporal_next,"same ISO3 (TIB), gap=0y",1914,1914
-TUR-1800-1912,TUR-1913-1914,temporal_next,"same ISO3 (TUR), gap=1y",1912,1913
-TUR-1913-1914,TUR-1914-1918,temporal_next,"same ISO3 (TUR), gap=0y",1914,1914
-TUR-1914-1918,TUR-1918-1920,temporal_next,"same ISO3 (TUR), gap=0y",1918,1918
-TUR-1918-1920,TUR-1920-2025,temporal_next,"same ISO3 (TUR), gap=0y",1920,1920
-TZA-1961-1964,TZA-1964-2025,temporal_next,"same ISO3 (TZA), gap=0y",1964,1964
-UGA-1894-1902,UGA-1902-1910,temporal_next,"same ISO3 (UGA), gap=0y",1902,1902
-UGA-1902-1910,UGA-1910-1926,temporal_next,"same ISO3 (UGA), gap=0y",1910,1910
-UKR-1991-2014,UKR-2014-2025,temporal_next,"same ISO3 (UKR), gap=0y",2014,2014
-UNF-1800-1909,UNF-1909-1946,temporal_next,"same ISO3 (UNF), gap=0y",1909,1909
 USA-1800-1959,USA-1959-2025,temporal_next,"same ISO3 (USA), gap=0y",1959,1959
-YEM-1990-2000,YEM-2000-2025,temporal_next,"same ISO3 (YEM), gap=0y",2000,2000
-ZIM-1889-1891,ZIM-1891-1900,temporal_next,"same ISO3 (ZIM), gap=0y",1891,1891
+ARG-1800-1899,ARG-1899-1902,temporal_next,"same ISO3 (ARG), gap=0y",1899,1899
+ARG-1899-1902,ARG-1902-2025,temporal_next,"same ISO3 (ARG), gap=0y",1902,1902
+CHL-1810-1899,CHL-1899-1902,temporal_next,"same ISO3 (CHL), gap=0y",1899,1899
+CHL-1899-1902,CHL-1902-2025,temporal_next,"same ISO3 (CHL), gap=0y",1902,1902
+BRA-1800-1903,BRA-1903-1909,temporal_next,"same ISO3 (BRA), gap=0y",1903,1903
+BRA-1903-1909,BRA-1909-2025,temporal_next,"same ISO3 (BRA), gap=0y",1909,1909
+COL-1800-1903,COL-1903-1922,temporal_next,"same ISO3 (COL), gap=0y",1903,1903
+COL-1903-1922,COL-1922-2025,temporal_next,"same ISO3 (COL), gap=0y",1922,1922
+BOL-1825-1903,BOL-1903-1909,temporal_next,"same ISO3 (BOL), gap=0y",1903,1903
+BOL-1903-1909,BOL-1909-1938,temporal_next,"same ISO3 (BOL), gap=0y",1909,1909
+BOL-1909-1938,BOL-1938-2025,temporal_next,"same ISO3 (BOL), gap=0y",1938,1938
+PRY-1811-1938,PRY-1938-2025,temporal_next,"same ISO3 (PRY), gap=0y",1938,1938
+ECU-1800-1942,ECU-1942-2025,temporal_next,"same ISO3 (ECU), gap=0y",1942,1942
 GBR-1800-1921,BRI-1800-1895,colonial_ruler_of,name contains 'British',1800,1895
 GBR-1800-1921,BRI-1800-1960,colonial_ruler_of,name contains 'British',1800,1921
 ESP-1800-2025,SPA-1800-1982,colonial_ruler_of,name contains 'Spanish',1800,1982
@@ -519,264 +519,171 @@ USA-1800-1959,ASM-1900-2025,colonial_ruler_of,name contains 'American',1900,1959
 FRA-1800-1919,GUF-1800-2025,colonial_ruler_of,name contains 'French',1800,1919
 FRA-1800-1919,FRE-1800-1930,colonial_ruler_of,name contains 'French',1800,1919
 FRA-1919-2025,FRE-1930-1946,colonial_ruler_of,name contains 'French',1930,1946
-F5103-1800-2025,DZA-1831-2025,region_contains,M49 code 15,1831,2025
-X06-1800-2025,DZA-1831-2025,region_contains,M49 code 2,1831,2025
-F5103-1800-2025,EGY-1979-2025,region_contains,M49 code 15,1979,2025
-X06-1800-2025,EGY-1979-2025,region_contains,M49 code 2,1979,2025
-F5103-1800-2025,LBY-1951-2025,region_contains,M49 code 15,1951,2025
-X06-1800-2025,LBY-1951-2025,region_contains,M49 code 2,1951,2025
-F5103-1800-2025,MAR-1979-2025,region_contains,M49 code 15,1979,2025
-X06-1800-2025,MAR-1979-2025,region_contains,M49 code 2,1979,2025
-F5103-1800-2025,SDN-2011-2025,region_contains,M49 code 15,2011,2025
-X06-1800-2025,SDN-2011-2025,region_contains,M49 code 2,2011,2025
-F5103-1800-2025,TUN-1881-2025,region_contains,M49 code 15,1881,2025
-X06-1800-2025,TUN-1881-2025,region_contains,M49 code 2,1881,2025
-F5101-1800-2025,BDI-1962-2025,region_contains,M49 code 14,1962,2025
-X06-1800-2025,BDI-1962-2025,region_contains,M49 code 2,1962,2025
-F5101-1800-2025,COM-1975-2025,region_contains,M49 code 14,1975,2025
-X06-1800-2025,COM-1975-2025,region_contains,M49 code 2,1975,2025
-F5101-1800-2025,DJI-1977-2025,region_contains,M49 code 14,1977,2025
-X06-1800-2025,DJI-1977-2025,region_contains,M49 code 2,1977,2025
-F5101-1800-2025,ERI-1882-2025,region_contains,M49 code 14,1882,2025
-X06-1800-2025,ERI-1882-2025,region_contains,M49 code 2,1882,2025
-F5101-1800-2025,ETH-1993-2025,region_contains,M49 code 14,1993,2025
-X06-1800-2025,ETH-1993-2025,region_contains,M49 code 2,1993,2025
-F5101-1800-2025,KEN-1963-2025,region_contains,M49 code 14,1963,2025
-X06-1800-2025,KEN-1963-2025,region_contains,M49 code 2,1963,2025
-F5101-1800-2025,MDG-1882-2025,region_contains,M49 code 14,1882,2025
-X06-1800-2025,MDG-1882-2025,region_contains,M49 code 2,1882,2025
-F5101-1800-2025,MWI-1964-2025,region_contains,M49 code 14,1964,2025
-X06-1800-2025,MWI-1964-2025,region_contains,M49 code 2,1964,2025
-F5101-1800-2025,MUS-1800-2025,region_contains,M49 code 14,1800,2025
-X06-1800-2025,MUS-1800-2025,region_contains,M49 code 2,1800,2025
-F5101-1800-2025,MOZ-1816-2025,region_contains,M49 code 14,1816,2025
-X06-1800-2025,MOZ-1816-2025,region_contains,M49 code 2,1816,2025
-F5101-1800-2025,REU-1816-1870,region_contains,M49 code 14,1816,1870
-X06-1800-2025,REU-1816-1870,region_contains,M49 code 2,1816,1870
-F5101-1800-2025,RWA-1962-2025,region_contains,M49 code 14,1962,2025
-X06-1800-2025,RWA-1962-2025,region_contains,M49 code 2,1962,2025
-F5101-1800-2025,SYC-1903-2025,region_contains,M49 code 14,1903,2025
-X06-1800-2025,SYC-1903-2025,region_contains,M49 code 2,1903,2025
-F5101-1800-2025,SOM-1960-2025,region_contains,M49 code 14,1960,2025
-X06-1800-2025,SOM-1960-2025,region_contains,M49 code 2,1960,2025
-F5101-1800-2025,SSD-2011-2025,region_contains,M49 code 14,2011,2025
-X06-1800-2025,SSD-2011-2025,region_contains,M49 code 2,2011,2025
-F5101-1800-2025,UGA-1962-2025,region_contains,M49 code 14,1962,2025
-X06-1800-2025,UGA-1962-2025,region_contains,M49 code 2,1962,2025
-F5101-1800-2025,TZA-1964-2025,region_contains,M49 code 14,1964,2025
-X06-1800-2025,TZA-1964-2025,region_contains,M49 code 2,1964,2025
-F5101-1800-2025,ZMB-1964-2025,region_contains,M49 code 14,1964,2025
-X06-1800-2025,ZMB-1964-2025,region_contains,M49 code 2,1964,2025
-F5101-1800-2025,ZWE-1890-2025,region_contains,M49 code 14,1890,2025
-X06-1800-2025,ZWE-1890-2025,region_contains,M49 code 2,1890,2025
-F5102-1800-2025,AGO-1816-2025,region_contains,M49 code 17,1816,2025
-X06-1800-2025,AGO-1816-2025,region_contains,M49 code 2,1816,2025
-F5102-1800-2025,CMR-1961-2025,region_contains,M49 code 17,1961,2025
-X06-1800-2025,CMR-1961-2025,region_contains,M49 code 2,1961,2025
-F5102-1800-2025,CAF-1960-2025,region_contains,M49 code 17,1960,2025
-X06-1800-2025,CAF-1960-2025,region_contains,M49 code 2,1960,2025
-F5102-1800-2025,TCD-1960-2025,region_contains,M49 code 17,1960,2025
-X06-1800-2025,TCD-1960-2025,region_contains,M49 code 2,1960,2025
-F5102-1800-2025,COG-1960-2025,region_contains,M49 code 17,1960,2025
-X06-1800-2025,COG-1960-2025,region_contains,M49 code 2,1960,2025
-F5102-1800-2025,COD-1960-2025,region_contains,M49 code 17,1960,2025
-X06-1800-2025,COD-1960-2025,region_contains,M49 code 2,1960,2025
-F5102-1800-2025,GNQ-1968-2025,region_contains,M49 code 17,1968,2025
-X06-1800-2025,GNQ-1968-2025,region_contains,M49 code 2,1968,2025
-F5102-1800-2025,GAB-1960-2025,region_contains,M49 code 17,1960,2025
-X06-1800-2025,GAB-1960-2025,region_contains,M49 code 2,1960,2025
-F5102-1800-2025,STP-1800-2025,region_contains,M49 code 17,1800,2025
-X06-1800-2025,STP-1800-2025,region_contains,M49 code 2,1800,2025
-F5104-1800-2025,BWA-1966-2025,region_contains,M49 code 18,1966,2025
-X06-1800-2025,BWA-1966-2025,region_contains,M49 code 2,1966,2025
-F5104-1800-2025,SWZ-1894-2025,region_contains,M49 code 18,1894,2025
-X06-1800-2025,SWZ-1894-2025,region_contains,M49 code 2,1894,2025
-F5104-1800-2025,LSO-1966-2025,region_contains,M49 code 18,1966,2025
-X06-1800-2025,LSO-1966-2025,region_contains,M49 code 2,1966,2025
-F5104-1800-2025,NAM-1884-2025,region_contains,M49 code 18,1884,2025
-X06-1800-2025,NAM-1884-2025,region_contains,M49 code 2,1884,2025
-F5104-1800-2025,ZAF-1828-2025,region_contains,M49 code 18,1828,2025
-X06-1800-2025,ZAF-1828-2025,region_contains,M49 code 2,1828,2025
-F5105-1800-2025,BEN-1960-2025,region_contains,M49 code 11,1960,2025
-X06-1800-2025,BEN-1960-2025,region_contains,M49 code 2,1960,2025
-F5105-1800-2025,BFA-1960-2025,region_contains,M49 code 11,1960,2025
-X06-1800-2025,BFA-1960-2025,region_contains,M49 code 2,1960,2025
-F5105-1800-2025,CPV-1800-2025,region_contains,M49 code 11,1800,2025
-X06-1800-2025,CPV-1800-2025,region_contains,M49 code 2,1800,2025
-F5105-1800-2025,CIV-1960-2025,region_contains,M49 code 11,1960,2025
-X06-1800-2025,CIV-1960-2025,region_contains,M49 code 2,1960,2025
-F5105-1800-2025,GMB-1800-2025,region_contains,M49 code 11,1800,2025
-X06-1800-2025,GMB-1800-2025,region_contains,M49 code 2,1800,2025
-F5105-1800-2025,GHA-1957-2025,region_contains,M49 code 11,1957,2025
-X06-1800-2025,GHA-1957-2025,region_contains,M49 code 2,1957,2025
-F5105-1800-2025,GIN-1958-2025,region_contains,M49 code 11,1958,2025
-X06-1800-2025,GIN-1958-2025,region_contains,M49 code 2,1958,2025
-F5105-1800-2025,GNB-1879-2025,region_contains,M49 code 11,1879,2025
-X06-1800-2025,GNB-1879-2025,region_contains,M49 code 2,1879,2025
-F5105-1800-2025,LBR-1847-2025,region_contains,M49 code 11,1847,2025
-X06-1800-2025,LBR-1847-2025,region_contains,M49 code 2,1847,2025
-F5105-1800-2025,MLI-1960-2025,region_contains,M49 code 11,1960,2025
-X06-1800-2025,MLI-1960-2025,region_contains,M49 code 2,1960,2025
-F5105-1800-2025,MRT-1979-2025,region_contains,M49 code 11,1979,2025
-X06-1800-2025,MRT-1979-2025,region_contains,M49 code 2,1979,2025
-F5105-1800-2025,NER-1960-2025,region_contains,M49 code 11,1960,2025
-X06-1800-2025,NER-1960-2025,region_contains,M49 code 2,1960,2025
-F5105-1800-2025,NGA-1961-2025,region_contains,M49 code 11,1961,2025
-X06-1800-2025,NGA-1961-2025,region_contains,M49 code 2,1961,2025
-F5105-1800-2025,SEN-1960-2025,region_contains,M49 code 11,1960,2025
-X06-1800-2025,SEN-1960-2025,region_contains,M49 code 2,1960,2025
-F5105-1800-2025,SLE-1800-2025,region_contains,M49 code 11,1800,2025
-X06-1800-2025,SLE-1800-2025,region_contains,M49 code 2,1800,2025
-F5105-1800-2025,TGO-1960-2025,region_contains,M49 code 11,1960,2025
-X06-1800-2025,TGO-1960-2025,region_contains,M49 code 2,1960,2025
-F5206-1800-2025,ATG-1800-2025,region_contains,M49 code 29,1800,2025
+F5103-1800-2025,DZA-1831-2025,region_contains,M49 code 015,1831,2025
+F5103-1800-2025,EGY-1979-2025,region_contains,M49 code 015,1979,2025
+F5103-1800-2025,LBY-1951-2025,region_contains,M49 code 015,1951,2025
+F5103-1800-2025,MAR-1979-2025,region_contains,M49 code 015,1979,2025
+F5103-1800-2025,SDN-2011-2025,region_contains,M49 code 015,2011,2025
+F5103-1800-2025,TUN-1881-2025,region_contains,M49 code 015,1881,2025
+F5101-1800-2025,BDI-1962-2025,region_contains,M49 code 014,1962,2025
+F5101-1800-2025,COM-1975-2025,region_contains,M49 code 014,1975,2025
+F5101-1800-2025,DJI-1977-2025,region_contains,M49 code 014,1977,2025
+F5101-1800-2025,ERI-1882-2025,region_contains,M49 code 014,1882,2025
+F5101-1800-2025,ETH-1993-2025,region_contains,M49 code 014,1993,2025
+F5101-1800-2025,KEN-1963-2025,region_contains,M49 code 014,1963,2025
+F5101-1800-2025,MDG-1882-2025,region_contains,M49 code 014,1882,2025
+F5101-1800-2025,MWI-1964-2025,region_contains,M49 code 014,1964,2025
+F5101-1800-2025,MUS-1800-2025,region_contains,M49 code 014,1800,2025
+F5101-1800-2025,MOZ-1816-2025,region_contains,M49 code 014,1816,2025
+F5101-1800-2025,REU-1816-1870,region_contains,M49 code 014,1816,1870
+F5101-1800-2025,RWA-1962-2025,region_contains,M49 code 014,1962,2025
+F5101-1800-2025,SYC-1903-2025,region_contains,M49 code 014,1903,2025
+F5101-1800-2025,SOM-1960-2025,region_contains,M49 code 014,1960,2025
+F5101-1800-2025,SSD-2011-2025,region_contains,M49 code 014,2011,2025
+F5101-1800-2025,UGA-1962-2025,region_contains,M49 code 014,1962,2025
+F5101-1800-2025,TZA-1964-2025,region_contains,M49 code 014,1964,2025
+F5101-1800-2025,ZMB-1964-2025,region_contains,M49 code 014,1964,2025
+F5101-1800-2025,ZWE-1890-2025,region_contains,M49 code 014,1890,2025
+F5102-1800-2025,AGO-1816-2025,region_contains,M49 code 017,1816,2025
+F5102-1800-2025,CMR-1961-2025,region_contains,M49 code 017,1961,2025
+F5102-1800-2025,CAF-1960-2025,region_contains,M49 code 017,1960,2025
+F5102-1800-2025,TCD-1960-2025,region_contains,M49 code 017,1960,2025
+F5102-1800-2025,COG-1960-2025,region_contains,M49 code 017,1960,2025
+F5102-1800-2025,COD-1960-2025,region_contains,M49 code 017,1960,2025
+F5102-1800-2025,GNQ-1968-2025,region_contains,M49 code 017,1968,2025
+F5102-1800-2025,GAB-1960-2025,region_contains,M49 code 017,1960,2025
+F5102-1800-2025,STP-1800-2025,region_contains,M49 code 017,1800,2025
+F5104-1800-2025,BWA-1966-2025,region_contains,M49 code 018,1966,2025
+F5104-1800-2025,SWZ-1894-2025,region_contains,M49 code 018,1894,2025
+F5104-1800-2025,LSO-1966-2025,region_contains,M49 code 018,1966,2025
+F5104-1800-2025,NAM-1884-2025,region_contains,M49 code 018,1884,2025
+F5104-1800-2025,ZAF-1828-2025,region_contains,M49 code 018,1828,2025
+F5105-1800-2025,BEN-1960-2025,region_contains,M49 code 011,1960,2025
+F5105-1800-2025,BFA-1960-2025,region_contains,M49 code 011,1960,2025
+F5105-1800-2025,CPV-1800-2025,region_contains,M49 code 011,1800,2025
+F5105-1800-2025,CIV-1960-2025,region_contains,M49 code 011,1960,2025
+F5105-1800-2025,GMB-1800-2025,region_contains,M49 code 011,1800,2025
+F5105-1800-2025,GHA-1957-2025,region_contains,M49 code 011,1957,2025
+F5105-1800-2025,GIN-1958-2025,region_contains,M49 code 011,1958,2025
+F5105-1800-2025,GNB-1879-2025,region_contains,M49 code 011,1879,2025
+F5105-1800-2025,LBR-1847-2025,region_contains,M49 code 011,1847,2025
+F5105-1800-2025,MLI-1960-2025,region_contains,M49 code 011,1960,2025
+F5105-1800-2025,MRT-1979-2025,region_contains,M49 code 011,1979,2025
+F5105-1800-2025,NER-1960-2025,region_contains,M49 code 011,1960,2025
+F5105-1800-2025,NGA-1961-2025,region_contains,M49 code 011,1961,2025
+F5105-1800-2025,SEN-1960-2025,region_contains,M49 code 011,1960,2025
+F5105-1800-2025,SLE-1800-2025,region_contains,M49 code 011,1800,2025
+F5105-1800-2025,TGO-1960-2025,region_contains,M49 code 011,1960,2025
+F5206-1800-2025,ATG-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,ATG-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,ATG-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,BHS-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,BHS-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,BHS-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,BHS-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,BRB-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,BRB-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,BRB-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,BRB-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,CUB-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,CUB-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,CUB-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,CUB-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,CUW-2010-2025,region_contains,M49 code 29,2010,2025
+F5206-1800-2025,CUW-2010-2025,region_contains,M49 code 029,2010,2025
 F5205-1800-2025,CUW-2010-2025,region_contains,M49 code 419,2010,2025
-X21-1800-2025,CUW-2010-2025,region_contains,M49 code 19,2010,2025
-F5206-1800-2025,DMA-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,DMA-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,DMA-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,DMA-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,DOM-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,DOM-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,DOM-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,DOM-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,GRD-1800-1833,region_contains,M49 code 29,1800,1833
+F5206-1800-2025,GRD-1800-1833,region_contains,M49 code 029,1800,1833
 F5205-1800-2025,GRD-1800-1833,region_contains,M49 code 419,1800,1833
-X21-1800-2025,GRD-1800-1833,region_contains,M49 code 19,1800,1833
-F5206-1800-2025,HTI-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,HTI-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,HTI-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,HTI-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,JAM-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,JAM-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,JAM-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,JAM-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,PRI-1800-1866,region_contains,M49 code 29,1800,1866
+F5206-1800-2025,PRI-1800-1866,region_contains,M49 code 029,1800,1866
 F5205-1800-2025,PRI-1800-1866,region_contains,M49 code 419,1800,1866
-X21-1800-2025,PRI-1800-1866,region_contains,M49 code 19,1800,1866
-F5206-1800-2025,BLM-2007-2025,region_contains,M49 code 29,2007,2025
+F5206-1800-2025,BLM-2007-2025,region_contains,M49 code 029,2007,2025
 F5205-1800-2025,BLM-2007-2025,region_contains,M49 code 419,2007,2025
-X21-1800-2025,BLM-2007-2025,region_contains,M49 code 19,2007,2025
-F5206-1800-2025,KNA-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,KNA-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,KNA-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,KNA-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,LCA-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,LCA-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,LCA-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,LCA-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,VCT-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,VCT-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,VCT-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,VCT-1800-2025,region_contains,M49 code 19,1800,2025
-F5206-1800-2025,TTO-1800-2025,region_contains,M49 code 29,1800,2025
+F5206-1800-2025,TTO-1800-2025,region_contains,M49 code 029,1800,2025
 F5205-1800-2025,TTO-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,TTO-1800-2025,region_contains,M49 code 19,1800,2025
-F5204-1800-2025,BLZ-1800-2025,region_contains,M49 code 13,1800,2025
+F5204-1800-2025,BLZ-1800-2025,region_contains,M49 code 013,1800,2025
 F5205-1800-2025,BLZ-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,BLZ-1800-2025,region_contains,M49 code 19,1800,2025
-F5204-1800-2025,CRI-1800-2025,region_contains,M49 code 13,1800,2025
+F5204-1800-2025,CRI-1800-2025,region_contains,M49 code 013,1800,2025
 F5205-1800-2025,CRI-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,CRI-1800-2025,region_contains,M49 code 19,1800,2025
-F5204-1800-2025,SLV-1821-2025,region_contains,M49 code 13,1821,2025
+F5204-1800-2025,SLV-1821-2025,region_contains,M49 code 013,1821,2025
 F5205-1800-2025,SLV-1821-2025,region_contains,M49 code 419,1821,2025
-X21-1800-2025,SLV-1821-2025,region_contains,M49 code 19,1821,2025
-F5204-1800-2025,GTM-1821-2025,region_contains,M49 code 13,1821,2025
+F5204-1800-2025,GTM-1821-2025,region_contains,M49 code 013,1821,2025
 F5205-1800-2025,GTM-1821-2025,region_contains,M49 code 419,1821,2025
-X21-1800-2025,GTM-1821-2025,region_contains,M49 code 19,1821,2025
-F5204-1800-2025,HND-1800-2025,region_contains,M49 code 13,1800,2025
+F5204-1800-2025,HND-1800-2025,region_contains,M49 code 013,1800,2025
 F5205-1800-2025,HND-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,HND-1800-2025,region_contains,M49 code 19,1800,2025
-F5204-1800-2025,MEX-1800-2025,region_contains,M49 code 13,1800,2025
+F5204-1800-2025,MEX-1800-2025,region_contains,M49 code 013,1800,2025
 F5205-1800-2025,MEX-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,MEX-1800-2025,region_contains,M49 code 19,1800,2025
-F5204-1800-2025,NIC-1800-2025,region_contains,M49 code 13,1800,2025
+F5204-1800-2025,NIC-1800-2025,region_contains,M49 code 013,1800,2025
 F5205-1800-2025,NIC-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,NIC-1800-2025,region_contains,M49 code 19,1800,2025
-F5204-1800-2025,PAN-1903-2025,region_contains,M49 code 13,1903,2025
+F5204-1800-2025,PAN-1903-2025,region_contains,M49 code 013,1903,2025
 F5205-1800-2025,PAN-1903-2025,region_contains,M49 code 419,1903,2025
-X21-1800-2025,PAN-1903-2025,region_contains,M49 code 19,1903,2025
-F5207-1800-2025,ARG-1902-2025,region_contains,M49 code 5,1902,2025
+F5207-1800-2025,ARG-1902-2025,region_contains,M49 code 005,1902,2025
 F5205-1800-2025,ARG-1902-2025,region_contains,M49 code 419,1902,2025
-X21-1800-2025,ARG-1902-2025,region_contains,M49 code 19,1902,2025
-F5207-1800-2025,BOL-1938-2025,region_contains,M49 code 5,1938,2025
+F5207-1800-2025,BOL-1938-2025,region_contains,M49 code 005,1938,2025
 F5205-1800-2025,BOL-1938-2025,region_contains,M49 code 419,1938,2025
-X21-1800-2025,BOL-1938-2025,region_contains,M49 code 19,1938,2025
-F5207-1800-2025,BRA-1909-2025,region_contains,M49 code 5,1909,2025
+F5207-1800-2025,BRA-1909-2025,region_contains,M49 code 005,1909,2025
 F5205-1800-2025,BRA-1909-2025,region_contains,M49 code 419,1909,2025
-X21-1800-2025,BRA-1909-2025,region_contains,M49 code 19,1909,2025
-F5207-1800-2025,CHL-1902-2025,region_contains,M49 code 5,1902,2025
+F5207-1800-2025,CHL-1902-2025,region_contains,M49 code 005,1902,2025
 F5205-1800-2025,CHL-1902-2025,region_contains,M49 code 419,1902,2025
-X21-1800-2025,CHL-1902-2025,region_contains,M49 code 19,1902,2025
-F5207-1800-2025,COL-1922-2025,region_contains,M49 code 5,1922,2025
+F5207-1800-2025,COL-1922-2025,region_contains,M49 code 005,1922,2025
 F5205-1800-2025,COL-1922-2025,region_contains,M49 code 419,1922,2025
-X21-1800-2025,COL-1922-2025,region_contains,M49 code 19,1922,2025
-F5207-1800-2025,ECU-1942-2025,region_contains,M49 code 5,1942,2025
+F5207-1800-2025,ECU-1942-2025,region_contains,M49 code 005,1942,2025
 F5205-1800-2025,ECU-1942-2025,region_contains,M49 code 419,1942,2025
-X21-1800-2025,ECU-1942-2025,region_contains,M49 code 19,1942,2025
-F5207-1800-2025,GUY-1800-2025,region_contains,M49 code 5,1800,2025
+F5207-1800-2025,GUY-1800-2025,region_contains,M49 code 005,1800,2025
 F5205-1800-2025,GUY-1800-2025,region_contains,M49 code 419,1800,2025
-X21-1800-2025,GUY-1800-2025,region_contains,M49 code 19,1800,2025
-F5207-1800-2025,PRY-1938-2025,region_contains,M49 code 5,1938,2025
+F5207-1800-2025,PRY-1938-2025,region_contains,M49 code 005,1938,2025
 F5205-1800-2025,PRY-1938-2025,region_contains,M49 code 419,1938,2025
-X21-1800-2025,PRY-1938-2025,region_contains,M49 code 19,1938,2025
-F5207-1800-2025,PER-1942-2025,region_contains,M49 code 5,1942,2025
+F5207-1800-2025,PER-1942-2025,region_contains,M49 code 005,1942,2025
 F5205-1800-2025,PER-1942-2025,region_contains,M49 code 419,1942,2025
-X21-1800-2025,PER-1942-2025,region_contains,M49 code 19,1942,2025
-F5207-1800-2025,SUR-1975-2025,region_contains,M49 code 5,1975,2025
+F5207-1800-2025,SUR-1975-2025,region_contains,M49 code 005,1975,2025
 F5205-1800-2025,SUR-1975-2025,region_contains,M49 code 419,1975,2025
-X21-1800-2025,SUR-1975-2025,region_contains,M49 code 19,1975,2025
-F5207-1800-2025,URY-1828-2025,region_contains,M49 code 5,1828,2025
+F5207-1800-2025,URY-1828-2025,region_contains,M49 code 005,1828,2025
 F5205-1800-2025,URY-1828-2025,region_contains,M49 code 419,1828,2025
-X21-1800-2025,URY-1828-2025,region_contains,M49 code 19,1828,2025
-F5207-1800-2025,VEN-1821-2025,region_contains,M49 code 5,1821,2025
+F5207-1800-2025,VEN-1821-2025,region_contains,M49 code 005,1821,2025
 F5205-1800-2025,VEN-1821-2025,region_contains,M49 code 419,1821,2025
-X21-1800-2025,VEN-1821-2025,region_contains,M49 code 19,1821,2025
-F5203-1800-2025,CAN-1948-2025,region_contains,M49 code 21,1948,2025
-X21-1800-2025,CAN-1948-2025,region_contains,M49 code 19,1948,2025
-F5203-1800-2025,USA-1959-2025,region_contains,M49 code 21,1959,2025
-X21-1800-2025,USA-1959-2025,region_contains,M49 code 19,1959,2025
+F5203-1800-2025,CAN-1948-2025,region_contains,M49 code 021,1948,2025
+F5203-1800-2025,USA-1959-2025,region_contains,M49 code 021,1959,2025
 F5300-1800-2025,KAZ-1991-2025,region_contains,M49 code 142,1991,2025
 F5300-1800-2025,KGZ-1991-2025,region_contains,M49 code 142,1991,2025
 F5300-1800-2025,TJK-1991-2025,region_contains,M49 code 142,1991,2025
 F5300-1800-2025,TKM-1991-2025,region_contains,M49 code 142,1991,2025
 F5300-1800-2025,UZB-1991-2025,region_contains,M49 code 142,1991,2025
-F5302-1800-2025,CHN-1949-1950,region_contains,M49 code 30,1949,1950
+F5302-1800-2025,CHN-1949-1950,region_contains,M49 code 030,1949,1950
 F5300-1800-2025,CHN-1949-1950,region_contains,M49 code 142,1949,1950
-F5302-1800-2025,PRK-1948-2025,region_contains,M49 code 30,1948,2025
+F5302-1800-2025,PRK-1948-2025,region_contains,M49 code 030,1948,2025
 F5300-1800-2025,PRK-1948-2025,region_contains,M49 code 142,1948,2025
-F5302-1800-2025,JPN-1800-2025,region_contains,M49 code 30,1800,2025
+F5302-1800-2025,JPN-1800-2025,region_contains,M49 code 030,1800,2025
 F5300-1800-2025,JPN-1800-2025,region_contains,M49 code 142,1800,2025
-F5302-1800-2025,MNG-1911-2025,region_contains,M49 code 30,1911,2025
+F5302-1800-2025,MNG-1911-2025,region_contains,M49 code 030,1911,2025
 F5300-1800-2025,MNG-1911-2025,region_contains,M49 code 142,1911,2025
-F5302-1800-2025,KOR-1948-2025,region_contains,M49 code 30,1948,2025
+F5302-1800-2025,KOR-1948-2025,region_contains,M49 code 030,1948,2025
 F5300-1800-2025,KOR-1948-2025,region_contains,M49 code 142,1948,2025
-F5304-1800-2025,BRN-1888-2025,region_contains,M49 code 35,1888,2025
+F5304-1800-2025,BRN-1888-2025,region_contains,M49 code 035,1888,2025
 F5300-1800-2025,BRN-1888-2025,region_contains,M49 code 142,1888,2025
-F5304-1800-2025,KHM-1953-2025,region_contains,M49 code 35,1953,2025
+F5304-1800-2025,KHM-1953-2025,region_contains,M49 code 035,1953,2025
 F5300-1800-2025,KHM-1953-2025,region_contains,M49 code 142,1953,2025
-F5304-1800-2025,IDN-2002-2025,region_contains,M49 code 35,2002,2025
+F5304-1800-2025,IDN-2002-2025,region_contains,M49 code 035,2002,2025
 F5300-1800-2025,IDN-2002-2025,region_contains,M49 code 142,2002,2025
-F5304-1800-2025,LAO-1954-2025,region_contains,M49 code 35,1954,2025
+F5304-1800-2025,LAO-1954-2025,region_contains,M49 code 035,1954,2025
 F5300-1800-2025,LAO-1954-2025,region_contains,M49 code 142,1954,2025
-F5304-1800-2025,MYS-1965-2025,region_contains,M49 code 35,1965,2025
+F5304-1800-2025,MYS-1965-2025,region_contains,M49 code 035,1965,2025
 F5300-1800-2025,MYS-1965-2025,region_contains,M49 code 142,1965,2025
-F5304-1800-2025,MMR-1800-2025,region_contains,M49 code 35,1800,2025
+F5304-1800-2025,MMR-1800-2025,region_contains,M49 code 035,1800,2025
 F5300-1800-2025,MMR-1800-2025,region_contains,M49 code 142,1800,2025
-F5304-1800-2025,PHL-1800-2025,region_contains,M49 code 35,1800,2025
+F5304-1800-2025,PHL-1800-2025,region_contains,M49 code 035,1800,2025
 F5300-1800-2025,PHL-1800-2025,region_contains,M49 code 142,1800,2025
-F5304-1800-2025,SGP-1965-2025,region_contains,M49 code 35,1965,2025
+F5304-1800-2025,SGP-1965-2025,region_contains,M49 code 035,1965,2025
 F5300-1800-2025,SGP-1965-2025,region_contains,M49 code 142,1965,2025
-F5304-1800-2025,THA-1909-2025,region_contains,M49 code 35,1909,2025
+F5304-1800-2025,THA-1909-2025,region_contains,M49 code 035,1909,2025
 F5300-1800-2025,THA-1909-2025,region_contains,M49 code 142,1909,2025
-F5304-1800-2025,TLS-1800-2025,region_contains,M49 code 35,1800,2025
+F5304-1800-2025,TLS-1800-2025,region_contains,M49 code 035,1800,2025
 F5300-1800-2025,TLS-1800-2025,region_contains,M49 code 142,1800,2025
-F5304-1800-2025,VNM-1975-2025,region_contains,M49 code 35,1975,2025
+F5304-1800-2025,VNM-1975-2025,region_contains,M49 code 035,1975,2025
 F5300-1800-2025,VNM-1975-2025,region_contains,M49 code 142,1975,2025
 F5300-1800-2025,AFG-1919-2025,region_contains,M49 code 142,1919,2025
 F5300-1800-2025,BGD-1971-2025,region_contains,M49 code 142,1971,2025
@@ -863,35 +770,35 @@ F5402-1800-2025,SWE-1800-2025,region_contains,M49 code 154,1800,2025
 F5400-1800-2025,SWE-1800-2025,region_contains,M49 code 150,1800,2025
 F5402-1800-2025,GBR-1921-2025,region_contains,M49 code 154,1921,2025
 F5400-1800-2025,GBR-1921-2025,region_contains,M49 code 150,1921,2025
-F5403-1800-2025,ALB-1913-2025,region_contains,M49 code 39,1913,2025
+F5403-1800-2025,ALB-1913-2025,region_contains,M49 code 039,1913,2025
 F5400-1800-2025,ALB-1913-2025,region_contains,M49 code 150,1913,2025
-F5403-1800-2025,AND-1800-2025,region_contains,M49 code 39,1800,2025
+F5403-1800-2025,AND-1800-2025,region_contains,M49 code 039,1800,2025
 F5400-1800-2025,AND-1800-2025,region_contains,M49 code 150,1800,2025
-F5403-1800-2025,BIH-1992-2025,region_contains,M49 code 39,1992,2025
+F5403-1800-2025,BIH-1992-2025,region_contains,M49 code 039,1992,2025
 F5400-1800-2025,BIH-1992-2025,region_contains,M49 code 150,1992,2025
-F5403-1800-2025,HRV-1992-2025,region_contains,M49 code 39,1992,2025
+F5403-1800-2025,HRV-1992-2025,region_contains,M49 code 039,1992,2025
 F5400-1800-2025,HRV-1992-2025,region_contains,M49 code 150,1992,2025
-F5403-1800-2025,GRC-1919-2025,region_contains,M49 code 39,1919,2025
+F5403-1800-2025,GRC-1919-2025,region_contains,M49 code 039,1919,2025
 F5400-1800-2025,GRC-1919-2025,region_contains,M49 code 150,1919,2025
-F5403-1800-2025,VAT-1800-2025,region_contains,M49 code 39,1800,2025
+F5403-1800-2025,VAT-1800-2025,region_contains,M49 code 039,1800,2025
 F5400-1800-2025,VAT-1800-2025,region_contains,M49 code 150,1800,2025
-F5403-1800-2025,ITA-1919-2025,region_contains,M49 code 39,1919,2025
+F5403-1800-2025,ITA-1919-2025,region_contains,M49 code 039,1919,2025
 F5400-1800-2025,ITA-1919-2025,region_contains,M49 code 150,1919,2025
-F5403-1800-2025,MLT-1800-2025,region_contains,M49 code 39,1800,2025
+F5403-1800-2025,MLT-1800-2025,region_contains,M49 code 039,1800,2025
 F5400-1800-2025,MLT-1800-2025,region_contains,M49 code 150,1800,2025
-F5403-1800-2025,MNE-2006-2025,region_contains,M49 code 39,2006,2025
+F5403-1800-2025,MNE-2006-2025,region_contains,M49 code 039,2006,2025
 F5400-1800-2025,MNE-2006-2025,region_contains,M49 code 150,2006,2025
-F5403-1800-2025,MKD-1991-2025,region_contains,M49 code 39,1991,2025
+F5403-1800-2025,MKD-1991-2025,region_contains,M49 code 039,1991,2025
 F5400-1800-2025,MKD-1991-2025,region_contains,M49 code 150,1991,2025
-F5403-1800-2025,PRT-1800-2025,region_contains,M49 code 39,1800,2025
+F5403-1800-2025,PRT-1800-2025,region_contains,M49 code 039,1800,2025
 F5400-1800-2025,PRT-1800-2025,region_contains,M49 code 150,1800,2025
-F5403-1800-2025,SMR-1800-2025,region_contains,M49 code 39,1800,2025
+F5403-1800-2025,SMR-1800-2025,region_contains,M49 code 039,1800,2025
 F5400-1800-2025,SMR-1800-2025,region_contains,M49 code 150,1800,2025
-F5403-1800-2025,SRB-2008-2025,region_contains,M49 code 39,2008,2025
+F5403-1800-2025,SRB-2008-2025,region_contains,M49 code 039,2008,2025
 F5400-1800-2025,SRB-2008-2025,region_contains,M49 code 150,2008,2025
-F5403-1800-2025,SVN-1992-2025,region_contains,M49 code 39,1992,2025
+F5403-1800-2025,SVN-1992-2025,region_contains,M49 code 039,1992,2025
 F5400-1800-2025,SVN-1992-2025,region_contains,M49 code 150,1992,2025
-F5403-1800-2025,ESP-1800-2025,region_contains,M49 code 39,1800,2025
+F5403-1800-2025,ESP-1800-2025,region_contains,M49 code 039,1800,2025
 F5400-1800-2025,ESP-1800-2025,region_contains,M49 code 150,1800,2025
 F5404-1800-2025,AUT-1918-2025,region_contains,M49 code 155,1918,2025
 F5400-1800-2025,AUT-1918-2025,region_contains,M49 code 150,1918,2025
@@ -911,44 +818,37 @@ F5404-1800-2025,NLD-1800-2025,region_contains,M49 code 155,1800,2025
 F5400-1800-2025,NLD-1800-2025,region_contains,M49 code 150,1800,2025
 F5404-1800-2025,CHE-1800-2025,region_contains,M49 code 155,1800,2025
 F5400-1800-2025,CHE-1800-2025,region_contains,M49 code 150,1800,2025
-F5501-1800-2025,AUS-1901-2025,region_contains,M49 code 53,1901,2025
-F5500-1800-2025,AUS-1901-2025,region_contains,M49 code 9,1901,2025
-F5501-1800-2025,NZL-1907-2025,region_contains,M49 code 53,1907,2025
-F5500-1800-2025,NZL-1907-2025,region_contains,M49 code 9,1907,2025
-F5502-1800-2025,FJI-1874-2025,region_contains,M49 code 54,1874,2025
-F5500-1800-2025,FJI-1874-2025,region_contains,M49 code 9,1874,2025
-F5502-1800-2025,PNG-1975-2025,region_contains,M49 code 54,1975,2025
-F5500-1800-2025,PNG-1975-2025,region_contains,M49 code 9,1975,2025
-F5502-1800-2025,SLB-1885-2025,region_contains,M49 code 54,1885,2025
-F5500-1800-2025,SLB-1885-2025,region_contains,M49 code 9,1885,2025
-F5502-1800-2025,VUT-1800-2025,region_contains,M49 code 54,1800,2025
-F5500-1800-2025,VUT-1800-2025,region_contains,M49 code 9,1800,2025
-F5503-1800-2025,KIR-1800-2025,region_contains,M49 code 57,1800,2025
-F5500-1800-2025,KIR-1800-2025,region_contains,M49 code 9,1800,2025
-F5503-1800-2025,MHL-1874-2025,region_contains,M49 code 57,1874,2025
-F5500-1800-2025,MHL-1874-2025,region_contains,M49 code 9,1874,2025
-F5503-1800-2025,FSM-1991-2025,region_contains,M49 code 57,1991,2025
-F5500-1800-2025,FSM-1991-2025,region_contains,M49 code 9,1991,2025
-F5503-1800-2025,NRU-1888-2025,region_contains,M49 code 57,1888,2025
-F5500-1800-2025,NRU-1888-2025,region_contains,M49 code 9,1888,2025
-F5503-1800-2025,PLW-1991-2025,region_contains,M49 code 57,1991,2025
-F5500-1800-2025,PLW-1991-2025,region_contains,M49 code 9,1991,2025
-F5504-1800-2025,WSM-1900-2025,region_contains,M49 code 61,1900,2025
-F5500-1800-2025,WSM-1900-2025,region_contains,M49 code 9,1900,2025
-F5504-1800-2025,TON-1800-2025,region_contains,M49 code 61,1800,2025
-F5500-1800-2025,TON-1800-2025,region_contains,M49 code 9,1800,2025
-F5504-1800-2025,TUV-1800-2025,region_contains,M49 code 61,1800,2025
-F5500-1800-2025,TUV-1800-2025,region_contains,M49 code 9,1800,2025
-F5103-1800-2025,X06-1800-2025,subregion_of,M49 hierarchy,1800,2025
-F5101-1800-2025,X06-1800-2025,subregion_of,M49 hierarchy,1800,2025
-F5102-1800-2025,X06-1800-2025,subregion_of,M49 hierarchy,1800,2025
-F5104-1800-2025,X06-1800-2025,subregion_of,M49 hierarchy,1800,2025
-F5105-1800-2025,X06-1800-2025,subregion_of,M49 hierarchy,1800,2025
+F5501-1800-2025,AUS-1901-2025,region_contains,M49 code 053,1901,2025
+F5500-1800-2025,AUS-1901-2025,region_contains,M49 code 009,1901,2025
+F5501-1800-2025,NZL-1907-2025,region_contains,M49 code 053,1907,2025
+F5500-1800-2025,NZL-1907-2025,region_contains,M49 code 009,1907,2025
+F5502-1800-2025,FJI-1874-2025,region_contains,M49 code 054,1874,2025
+F5500-1800-2025,FJI-1874-2025,region_contains,M49 code 009,1874,2025
+F5502-1800-2025,PNG-1975-2025,region_contains,M49 code 054,1975,2025
+F5500-1800-2025,PNG-1975-2025,region_contains,M49 code 009,1975,2025
+F5502-1800-2025,SLB-1885-2025,region_contains,M49 code 054,1885,2025
+F5500-1800-2025,SLB-1885-2025,region_contains,M49 code 009,1885,2025
+F5502-1800-2025,VUT-1800-2025,region_contains,M49 code 054,1800,2025
+F5500-1800-2025,VUT-1800-2025,region_contains,M49 code 009,1800,2025
+F5503-1800-2025,KIR-1800-2025,region_contains,M49 code 057,1800,2025
+F5500-1800-2025,KIR-1800-2025,region_contains,M49 code 009,1800,2025
+F5503-1800-2025,MHL-1874-2025,region_contains,M49 code 057,1874,2025
+F5500-1800-2025,MHL-1874-2025,region_contains,M49 code 009,1874,2025
+F5503-1800-2025,FSM-1991-2025,region_contains,M49 code 057,1991,2025
+F5500-1800-2025,FSM-1991-2025,region_contains,M49 code 009,1991,2025
+F5503-1800-2025,NRU-1888-2025,region_contains,M49 code 057,1888,2025
+F5500-1800-2025,NRU-1888-2025,region_contains,M49 code 009,1888,2025
+F5503-1800-2025,PLW-1991-2025,region_contains,M49 code 057,1991,2025
+F5500-1800-2025,PLW-1991-2025,region_contains,M49 code 009,1991,2025
+F5504-1800-2025,WSM-1900-2025,region_contains,M49 code 061,1900,2025
+F5500-1800-2025,WSM-1900-2025,region_contains,M49 code 009,1900,2025
+F5504-1800-2025,TON-1800-2025,region_contains,M49 code 061,1800,2025
+F5500-1800-2025,TON-1800-2025,region_contains,M49 code 009,1800,2025
+F5504-1800-2025,TUV-1800-2025,region_contains,M49 code 061,1800,2025
+F5500-1800-2025,TUV-1800-2025,region_contains,M49 code 009,1800,2025
 F5206-1800-2025,F5205-1800-2025,subregion_of,M49 hierarchy,1800,2025
-F5205-1800-2025,X21-1800-2025,subregion_of,M49 hierarchy,1800,2025
 F5204-1800-2025,F5205-1800-2025,subregion_of,M49 hierarchy,1800,2025
 F5207-1800-2025,F5205-1800-2025,subregion_of,M49 hierarchy,1800,2025
-F5203-1800-2025,X21-1800-2025,subregion_of,M49 hierarchy,1800,2025
 F5302-1800-2025,F5300-1800-2025,subregion_of,M49 hierarchy,1800,2025
 F5304-1800-2025,F5300-1800-2025,subregion_of,M49 hierarchy,1800,2025
 F5305-1800-2025,F5300-1800-2025,subregion_of,M49 hierarchy,1800,2025
@@ -1909,21 +1809,21 @@ RUYN-1993-2025,Europe,located_in_continent,continent column,1993,2025
 RUYS-1993-2025,Europe,located_in_continent,continent column,1993,2025
 RUYV-1993-2025,Europe,located_in_continent,continent column,1993,2025
 RUZB-1993-2025,Europe,located_in_continent,continent column,1993,2025
-BAD-1800-1873,BAD-1800-1871,same_territory,"same ISO3 (BAD), temporal overlap",1800,1871
-CAN-1948-2025,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1948,2025
-CAN-1800-1982,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1800,1982
-CAN-1866-1948,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1866,1948
+RWA-1962-2025,RWA-1920-1962,same_territory,"same ISO3 (RWA), temporal overlap",1962,1962
+TZA-1964-2025,TZA-1961-1964,same_territory,"same ISO3 (TZA), temporal overlap",1964,1964
 CHA-1900-1912,CHA-1800-2023,same_territory,"same ISO3 (CHA), temporal overlap",1900,1912
 CHA-1912-1919,CHA-1800-2023,same_territory,"same ISO3 (CHA), temporal overlap",1912,1919
-FED-1962-1967,FED-1953-1964,same_territory,"same ISO3 (FED), temporal overlap",1962,1964
+SPA-1958-1975,SPA-1800-1982,same_territory,"same ISO3 (SPA), temporal overlap",1958,1975
+SPA-1958-1975,SPA-1912-1958,same_territory,"same ISO3 (SPA), temporal overlap",1958,1958
 ITA-1919-2025,ITA-1889-1924,same_territory,"same ISO3 (ITA), temporal overlap",1919,1924
 ITA-1919-2025,ITA-1924-1960,same_territory,"same ISO3 (ITA), temporal overlap",1924,1960
 ITA-1861-1919,ITA-1889-1924,same_territory,"same ISO3 (ITA), temporal overlap",1889,1919
+FED-1962-1967,FED-1953-1964,same_territory,"same ISO3 (FED), temporal overlap",1962,1964
+CAN-1948-2025,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1948,2025
+CAN-1800-1982,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1800,1982
+CAN-1866-1948,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1866,1948
+REU-1816-1870,REU-1816-2025,same_territory,"same ISO3 (REU), temporal overlap",1816,1870
+BAD-1800-1873,BAD-1800-1871,same_territory,"same ISO3 (BAD), temporal overlap",1800,1871
 NEW-1800-1948,NEW-1920-1949,same_territory,"same ISO3 (NEW), temporal overlap",1920,1948
 NEW-1800-1920,NEW-1920-1949,same_territory,"same ISO3 (NEW), temporal overlap",1920,1920
 PRI-1800-1866,PRI-1800-2025,same_territory,"same ISO3 (PRI), temporal overlap",1800,1866
-REU-1816-1870,REU-1816-2025,same_territory,"same ISO3 (REU), temporal overlap",1816,1870
-RWA-1962-2025,RWA-1920-1962,same_territory,"same ISO3 (RWA), temporal overlap",1962,1962
-SPA-1958-1975,SPA-1800-1982,same_territory,"same ISO3 (SPA), temporal overlap",1958,1975
-SPA-1958-1975,SPA-1912-1958,same_territory,"same ISO3 (SPA), temporal overlap",1958,1958
-TZA-1964-2025,TZA-1961-1964,same_territory,"same ISO3 (TZA), temporal overlap",1964,1964
