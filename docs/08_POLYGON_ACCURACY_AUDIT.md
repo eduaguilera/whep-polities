@@ -288,17 +288,17 @@ bypassing the COW code matching step entirely.
 | GER-1800-1899 | German Solomon Is. | Germany (Prussia) | GER = Germany code |
 | GER-1884-2025 | German colonies Oceania | Germany (Prussia) | GER = Germany code |
 
-**Root cause**: The `build_database.py` script assigned COW codes based on ISO3
+**Root cause**: The `R/01_build_master_db.R` script assigned COW codes based on ISO3
 prefix lookup. When a historical entity's polity code prefix (e.g., "NOR" for
 Northeastern Rhodesia) matches a modern country's ISO 3166-1 code (NOR = Norway),
 the wrong COW code was assigned. The polygon builder then matched via COW code,
 producing a wrong-continent match.
 
 **Fixes applied**:
-1. Added ISO collision exclusion logic in `build_database.py` — historical entities
+1. Added ISO collision exclusion logic in `R/01_build_master_db.R` — historical entities
    with colliding prefixes no longer get the modern country's COW code
-2. Added explicit CSHAPES_NAME_MAP entries in `build_polygons.py` for all affected entities
-3. Added SKIP_COW_MATCHING set to prevent COW code matching for collision entries
+2. Added explicit CShapes name mapping for all affected entities
+3. Added skip-COW-matching logic to prevent COW code matching for collision entries
 4. Extended the guard to the GADM ISO fallback matching step
 
 **Impact**: 13 polygon assignments corrected (11 wrong-continent fixes, 2 wrong-island
@@ -486,10 +486,10 @@ source name (after filtering known colonial→modern name changes).
 
 | File | Change | Entities fixed |
 |------|--------|---------------|
-| `build_database.py` | Added `iso_collision_exclude` to `get_cow_code()` | 7 entities |
-| `build_polygons.py` | Added 15+ entries to `CSHAPES_NAME_MAP` | 13 entities |
-| `build_polygons.py` | Added `SKIP_COW_MATCHING` set with guard logic | 9 entities |
-| `build_polygons.py` | Extended guard to GADM ISO fallback | 2 entities |
+| `R/01_build_master_db.R` | Added `iso_collision_exclude` to COW code assignment | 7 entities |
+| `R/01_build_master_db.R` | Added 15+ entries to CShapes name mapping | 13 entities |
+| `R/01_build_master_db.R` | Added skip-COW-matching logic with guard | 9 entities |
+| `R/01_build_master_db.R` | Extended guard to GADM ISO fallback | 2 entities |
 
 ### 11.4 Post-Fix Polygon Count
 

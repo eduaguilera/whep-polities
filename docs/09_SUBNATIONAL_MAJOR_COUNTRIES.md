@@ -560,8 +560,8 @@ are NOT replaceable by GADM modern boundaries.
 
 | File | Description |
 |------|-------------|
-| `analyze_subnational.py` | Analysis script generating all plots and CSV |
-| `compare_polygons.py` | CShapes vs GADM cross-comparison script |
+| `R/10_analysis_plots.R` | Analysis script generating all plots and CSV |
+| `R/05_cross_reference.R` | CShapes vs GADM cross-comparison script |
 | `data/analysis/subnational_gadm_analysis.csv` | 552 admin-1 units with areas |
 | `data/analysis/polygon_comparison.csv` | 183 country IoU comparisons |
 | `data/analysis/plots/subnational_*.png` | 8 subnational analysis plots |

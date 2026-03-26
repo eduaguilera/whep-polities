@@ -2,7 +2,7 @@
 
 This document analyzes the completeness of the polities database across time periods,
 geographic regions, and source datasets. Includes results from the exhaustive automated
-gap search (`analyze_exhaustive_gaps.py`).
+gap search (`R/03_gap_analysis.R`).
 
 ---
 
@@ -466,10 +466,8 @@ Yugoslavia → North Macedonia, Italy pre/post-1919, Russia/Ukraine pre/post-201
 
 | Script | What it checks | Plots |
 |--------|---------------|-------|
-| `analyze_exhaustive_gaps.py` | COW, polygon, chain, temporal, source, verification gaps | 6 |
-| `analyze_coverage.py` | Excel region → polity matching, polygon coverage map | 1 |
-| `stress_test.py` | 31 automated integrity tests | 5 |
-| `validate_iso_overlaps.py` | ISO prefix collision detection | 3 |
-| `compare_polygons.py` | CShapes vs GADM cross-validation | 5 |
-| `analyze_subnational.py` | GADM admin-1 for 19 countries | 8 |
-| `generate_validation_report.py` | Combined validation dashboard | 3 |
+| `R/03_gap_analysis.R` | COW, polygon, chain, temporal, source, verification gaps | 6 |
+| `R/04_map_analysis.R` | Excel region → polity matching, polygon coverage map | 1 |
+| `R/08_stress_test.R` | 31 automated integrity tests | 5 |
+| `R/10_analysis_plots.R` | ISO prefix collision detection, GADM admin-1 analysis | 14 |
+| `R/05_cross_reference.R` | CShapes vs GADM cross-validation, COW/NE cross-refs | 5 |

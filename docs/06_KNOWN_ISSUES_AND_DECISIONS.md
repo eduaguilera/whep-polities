@@ -174,19 +174,18 @@
 - Built polity knowledge graph: 1,034 nodes, 1,900 edges, 9 relation types
   (predecessor/successor, subregion_of, aggregate_covers, temporal_next,
   colonial_ruler_of, region_contains, located_in_continent, same_territory)
-- Exports: CSV edge/node lists + GraphML (for Gephi/Cytoscape/NetworkX/igraph)
+- Exports: CSV edge/node lists + GraphML (for Gephi/Cytoscape/igraph)
 - Added 6 knowledge graph visualization plots
 - Added docs 11 (knowledge graph documentation)
 - Updated type distribution: sovereign 194, historical 339, subnational 216,
   aggregate 60, dependency 75, colonial 47, region 77, mandate 13, disputed 4, puppet 1
 
 ### Version 1.3 (2026-03-26)
-- Added 31-test automated stress test suite (`stress_test.py`)
-- Added CShapes vs GADM polygon cross-validation (median IoU 0.975) (`compare_polygons.py`)
-- Added ISO prefix collision analysis (20 collision groups) (`validate_iso_overlaps.py`)
-- Added exhaustive coverage gap search (68 gaps, none critical) (`analyze_exhaustive_gaps.py`)
-- Added combined validation dashboard (`generate_validation_report.py`)
-- Added GADM admin-1 subnational assessment for 19 major countries (`analyze_subnational.py`)
+- Added 31-test automated stress test suite (`R/08_stress_test.R`)
+- Added CShapes vs GADM polygon cross-validation (median IoU 0.975) (`R/05_cross_reference.R`)
+- Added ISO prefix collision analysis (20 collision groups) (`R/10_analysis_plots.R`)
+- Added exhaustive coverage gap search (68 gaps, none critical) (`R/03_gap_analysis.R`)
+- Added GADM admin-1 subnational assessment for 19 major countries (`R/10_analysis_plots.R`)
 - Fixed 4 polygon source assignments via improved CShapes-Europe name mapping
 - Updated docs 00, 05 with new analysis results
 - Added docs 08 (polygon accuracy audit), 09 (subnational major countries), 10 (validation summary)

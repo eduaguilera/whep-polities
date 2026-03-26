@@ -177,7 +177,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 
 ### Knowledge Graph
 - **1,034 nodes** (1,026 polities + 8 continent nodes), **1,900 edges**, **9 relation types**
-- Exports: CSV, GraphML (Gephi/Cytoscape/NetworkX/igraph compatible)
+- Exports: CSV, GraphML (Gephi/Cytoscape/igraph compatible)
 
 ### Polygon Cross-Validation
 - CShapes 2.0 vs GADM: **median IoU 0.975** across 183 countries
@@ -226,8 +226,6 @@ All analysis is in R (managed by `renv`). Run `renv::restore()` to install depen
 | `R/08_stress_test.R` | 31 automated integrity checks |
 | `R/09_visualize_knowledge_graph.R` | Knowledge graph visualizations (6 plots) |
 | `R/10_analysis_plots.R` | Consolidated analysis: temporal, polygon quality, ISO, coverage (12 plots) |
-
-Original Python scripts are archived in `python_archive/` for reference.
 
 ---
 

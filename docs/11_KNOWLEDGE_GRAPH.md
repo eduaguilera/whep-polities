@@ -137,7 +137,7 @@ one classified as sovereign and the other as colonial.
 |------|--------|---------|
 | `data/analysis/knowledge_graph_edges.csv` | CSV | All edges with source, target, relation, evidence, dates |
 | `data/analysis/knowledge_graph_nodes.csv` | CSV | All nodes with attributes and degree metrics |
-| `data/analysis/knowledge_graph.graphml` | GraphML | Full graph for Gephi/Cytoscape/NetworkX |
+| `data/analysis/knowledge_graph.graphml` | GraphML | Full graph for Gephi/Cytoscape/igraph |
 
 ---
 
@@ -178,36 +178,29 @@ one classified as sovereign and the other as colonial.
 
 ## How to Use
 
-### Load in Python (NetworkX)
-
-```python
-import networkx as nx
-G = nx.read_graphml("data/analysis/knowledge_graph.graphml")
-
-# Find all successors of the Ottoman Empire
-ottoman = "OTT-1800-1912"
-successors = [t for _, t, d in G.out_edges(ottoman, data=True)
-              if d["relation"] == "successor_of"]
-
-# Get all subnational units of the USA
-usa_subs = [s for s, _, d in G.in_edges("USA-1959-2025", data=True)
-            if d["relation"] == "subregion_of"]
-
-# Trace temporal chain for Germany
-chain = ["DEU-1800-1919"]
-while True:
-    nexts = [t for _, t, d in G.out_edges(chain[-1], data=True)
-             if d["relation"] == "temporal_next"]
-    if not nexts:
-        break
-    chain.append(nexts[0])
-```
-
 ### Load in R (igraph)
 
 ```r
 library(igraph)
 g <- read_graph("data/analysis/knowledge_graph.graphml", format = "graphml")
+
+# Find all successors of the Ottoman Empire
+ottoman <- "OTT-1800-1912"
+edges_out <- E(g)[from(ottoman)]
+successors <- ends(g, edges_out[edge_attr(g, "relation", edges_out) == "successor_of"])[, 2]
+
+# Get all subnational units of the USA
+edges_in <- E(g)[to("USA-1959-2025")]
+usa_subs <- ends(g, edges_in[edge_attr(g, "relation", edges_in) == "subregion_of"])[, 1]
+
+# Trace temporal chain for Germany
+chain <- "DEU-1800-1919"
+repeat {
+  e_out <- E(g)[from(tail(chain, 1))]
+  nexts <- ends(g, e_out[edge_attr(g, "relation", e_out) == "temporal_next"])[, 2]
+  if (length(nexts) == 0) break
+  chain <- c(chain, nexts[1])
+}
 ```
 
 ### Load in Gephi

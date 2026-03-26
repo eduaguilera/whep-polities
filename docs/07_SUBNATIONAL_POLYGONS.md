@@ -189,7 +189,7 @@ Country-level GADM polygon minus specific admin-1 regions
 |------|-------------|
 | `data/geodata/subnational_polygons.gpkg` | 91 subnational polygon geometries (EPSG:4326) |
 | `data/analysis/subnational_report.csv` | All 110 regions with tier, source, limitations, geometry flag |
-| `build_subnational_polygons.py` | Extraction script with all rules and methods |
+| `R/06_add_subnational.R` | Extraction script with all rules and methods |
 
 ---
 
