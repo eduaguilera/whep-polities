@@ -138,6 +138,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `07_SUBNATIONAL_POLYGONS.md` | Subnational polygon extraction: quality tiers, limitations, GADM assessment |
 | `08_POLYGON_ACCURACY_AUDIT.md` | Deep audit: 12 problem zones, 18 severity entries, external GIS sources |
 | `09_SUBNATIONAL_MAJOR_COUNTRIES.md` | GADM admin-1 for 19 countries: stability ratings, 374 potential entries |
+| `10_VALIDATION_SUMMARY.md` | Data quality scorecard: 31 tests, polygon cross-validation, known issues |
 
 ---
 
@@ -187,16 +188,20 @@ Use `iso3_code` for ISO-based datasets, `cow_code` for COW-based datasets.
 
 ## Analysis Scripts
 
-| Script | Purpose |
-|--------|---------|
-| `build_database.py` | Build final polities_database.csv from all sources |
-| `build_polygons.py` | Match polities to CShapes/GADM/CShapes-Europe polygons |
-| `generate_plots.py` | Generate 13 analysis and cross-validation plots |
-| `stress_test.py` | 31 automated integrity checks with diagnostic plots |
-| `compare_polygons.py` | CShapes vs GADM IoU comparison for 183 countries |
-| `validate_iso_overlaps.py` | ISO code collision detection and classification |
-| `analyze_subnational.py` | GADM admin-1 analysis for 19 major countries |
-| `generate_validation_report.py` | Combined validation dashboard (3 plots) |
+| Script | Purpose | Plots |
+|--------|---------|-------|
+| `build_database.py` | Build final polities_database.csv from all sources | — |
+| `build_polygons.py` | Match polities to CShapes/GADM/CShapes-Europe polygons | — |
+| `generate_plots.py` | Generate 13 analysis and cross-validation plots | 13 |
+| `stress_test.py` | 31 automated integrity checks with diagnostic plots | 5 |
+| `compare_polygons.py` | CShapes vs GADM IoU comparison for 183 countries | 5 |
+| `validate_iso_overlaps.py` | ISO code collision detection and classification | 3 |
+| `analyze_subnational.py` | GADM admin-1 analysis for 19 major countries | 8 |
+| `analyze_exhaustive_gaps.py` | Exhaustive coverage gap search (68 gaps) | 6 |
+| `analyze_temporal_evolution.py` | Temporal evolution, decolonization, European states | 6 |
+| `analyze_polygon_quality.py` | Polygon geometry quality (area, vertices, compactness) | 5 |
+| `generate_validation_report.py` | Combined validation dashboard | 3 |
+| **Total** | **31+ tests, 10 analyses** | **54 plots** |
 
 ---
 
