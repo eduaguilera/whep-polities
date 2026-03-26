@@ -21,7 +21,19 @@ library(gridExtra)
 library(RColorBrewer)
 
 # Project paths
-proj_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile), ".."))
+# Support both source() and Rscript invocation
+if (!is.null(sys.frame(1)$ofile)) {
+  proj_root <- normalizePath(file.path(dirname(sys.frame(1)$ofile), ".."))
+} else {
+  # Called via Rscript — use commandArgs to find script location
+  args <- commandArgs(trailingOnly = FALSE)
+  file_arg <- grep("^--file=", args, value = TRUE)
+  if (length(file_arg) > 0) {
+    proj_root <- normalizePath(file.path(dirname(sub("^--file=", "", file_arg)), ".."))
+  } else {
+    proj_root <- normalizePath(".")
+  }
+}
 
 data_dir <- file.path(proj_root, "data")
 final_dir <- file.path(data_dir, "final")
