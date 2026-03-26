@@ -184,17 +184,41 @@ geographic/territorial analysis rather than direct trade data linkage.
 
 ---
 
+## Polygon Geometry Quality
+
+All 723 polygons pass validity checks. Key metrics:
+
+| Metric | Value |
+|--------|-------|
+| Valid geometries | 723/723 (100%) |
+| MultiPolygons | 408 (56%) |
+| With holes | 33 (5%) |
+| Median area | 14.38 deg² |
+| Median vertices | 517 |
+| Median compactness | 0.260 |
+| Most fragmented | Greenland (5,837 parts) |
+| Most complex | Greenland (208,170 vertices) |
+| Smallest | Gibraltar (0.0007 deg²) |
+| Centroid-continent mismatches | 43 (all transcontinental/island entities) |
+
+Source quality comparison (median vertices): CShapes 2.0 > GADM > CShapes-Europe.
+
+---
+
 ## Analysis Scripts and Outputs
 
 | Script | Tests/Analyses | Plots |
 |--------|---------------|-------|
-| `stress_test.py` | 31 integrity tests | 5 diagnostic plots |
-| `compare_polygons.py` | CShapes/GADM/CShapes-Europe comparison | 5 comparison plots |
-| `validate_iso_overlaps.py` | ISO collision classification | 3 overlap plots |
-| `analyze_subnational.py` | 19-country GADM assessment | 8 subnational plots |
-| `generate_validation_report.py` | Combined dashboard | 3 dashboard plots |
-| `generate_plots.py` | Cross-validation & analysis | 13 analysis plots |
-| **Total** | **31+ tests, 6 analyses** | **37 plots** |
+| `stress_test.py` | 31 integrity tests | 5 |
+| `compare_polygons.py` | CShapes/GADM/CShapes-Europe comparison | 5 |
+| `validate_iso_overlaps.py` | ISO collision classification | 3 |
+| `analyze_subnational.py` | 19-country GADM assessment | 8 |
+| `analyze_exhaustive_gaps.py` | Coverage gaps (COW, temporal, chain) | 6 |
+| `analyze_temporal_evolution.py` | Decolonization, formation rates, Europe | 6 |
+| `analyze_polygon_quality.py` | Geometry quality (area, vertices, compactness) | 5 |
+| `generate_validation_report.py` | Combined dashboard | 3 |
+| `generate_plots.py` | Cross-validation & analysis | 13 |
+| **Total** | **31+ tests, 10 analyses** | **54 plots** |
 
 ---
 
@@ -202,11 +226,15 @@ geographic/territorial analysis rather than direct trade data linkage.
 
 1. **3 polity codes with dots** (ST. prefix) — cosmetic, non-breaking
 2. **15 broken predecessor references** to USSR region code F228 — documentation gap
-3. **29 polygon source mismatches** — entities getting GADM when CShapes was expected
+3. **8 asymmetric predecessor/successor links** — forward link exists, reciprocal missing
+4. **29 polygon source mismatches** — entities getting GADM when CShapes was expected
    (15 aggregates + 14 small/missing entries)
-4. **10 unmatched non-region polities** — tiny islands/atolls with no GADM coverage
+5. **10 unmatched non-region polities** — tiny islands/atolls with no GADM coverage
    (Canton & Enderbury, Johnston, Midway, Wake, etc.)
-5. **20 ISO prefix collision groups** — inherent to 3-letter system, all polygon bugs fixed
+6. **20 ISO prefix collision groups** — inherent to 3-letter system, all polygon bugs fixed
+7. **4 temporal gaps** (same ISO + type) — all intentional (territories covered by parent)
+8. **43 centroid-continent mismatches** — all transcontinental/island entities (expected)
+9. **209 unverified polities** — mostly African historical; based on CShapes (peer-reviewed)
 
 None of these issues affect the core data quality for trade data analysis or
 geographic territory mapping.
