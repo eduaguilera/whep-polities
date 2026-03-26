@@ -328,38 +328,36 @@ Hudson Bay only in 1912. Overall: acceptable proxy with caveat about northern ex
 
 ---
 
-## 7. Ottoman Empire (OTT-1800-1912) — CRITICAL
+## 7. Ottoman Empire — MODERATE (with caveat)
 
-**Historical reality**: At its zenith in 1800, the Ottoman Empire controlled:
-- Anatolia (modern Turkey)
-- The Balkans (Greece, Bulgaria, Serbia, Albania, Romania, Bosnia, parts of Hungary)
-- The Levant (Syria, Lebanon, Palestine, Jordan)
-- Mesopotamia (Iraq)
-- The Arabian Peninsula (Hejaz, Yemen — varying degrees of control)
-- Egypt (nominal suzerainty, effectively autonomous under Muhammad Ali from 1805)
-- North Africa: Libya (Tripolitania and Cyrenaica), Tunisia (autonomous beylik)
-- Total area: approximately 5-6 million km2
+**Historical reality**: At its zenith in 1800, the Ottoman Empire controlled Anatolia,
+the Balkans, the Levant, Mesopotamia, the Arabian Peninsula (varying control), Egypt
+(nominal suzerainty), and North Africa (Libya, Tunisia). Total: ~5-6 million km2.
+The empire contracted dramatically during the 19th century.
 
-The empire contracted dramatically during the 19th century: Greece (1830), Serbia
-(autonomous 1817, independent 1878), Romania (1878), Bulgaria (1878/1908), Bosnia
-(occupied by Austria 1878), Crete (1898), Libya (lost to Italy 1911-12), Balkans
-(1912-13).
+**Our polygons**: The database has TWO overlapping entries for the pre-1912 period:
 
-**Our polygon**: CShapes-Europe "Ottoman Empire" entry. Based on the centroid analysis,
-this polygon covers approximately 15-42°E, 34-48°N — essentially Anatolia plus parts
-of the Levant. It does NOT include:
-- Arabia (~3 million km2)
-- Mesopotamia/Iraq (~435,000 km2)
-- North Africa
-- The full Balkans extent
+| Entry | Polygon source | Area (deg²) | Bounds |
+|-------|---------------|-------------|--------|
+| **TUR-1800-1912** (Türkiye) | CShapes 2.0 (1886-1908) | 283 | 9-51°E, 13-44°N |
+| **OTT-1800-1912** (Ottoman Empire) | CShapes-Europe | 64 | 16-42°E, 35-48°N |
 
-**Magnitude of error**: The polygon represents approximately 20% of the empire's 1800
-territorial extent. This is the largest single polygon accuracy issue by area in the
-entire database.
+The **TUR entry** has the correct large polygon from CShapes 2.0, covering Anatolia,
+the Levant, Mesopotamia, Arabia (down to 13°N including Yemen), and North Africa. This
+is comprehensive and reasonably accurate for the 1886-1908 Ottoman territory.
 
-**Note**: CShapes does have separate entries for Ottoman dependencies (e.g., Egypt,
-Tunisia) which partially address this. But the core Ottoman polygon still misses
-Arabia, Mesopotamia, and the full Levant.
+The **OTT entry** has only the small CShapes-Europe polygon (Balkans/Anatolia subset).
+This is because the matching logic tries CShapes-Europe first (the polygon_source says
+"CShapes 2.0 + CShapes-Europe"), and CShapes-Europe has a match for "Ottoman Empire."
+
+CShapes also correctly captures the Ottoman territorial contraction through 5 period
+splits from 1886-1923 (282→81 deg²), tracking the Balkan Wars, WWI losses, and the
+establishment of the Republic of Turkey.
+
+**Assessment**: For practical use, TUR-1800-1912 provides accurate Ottoman territorial
+representation. The OTT-1800-1912 entry's smaller polygon is a matching priority issue
+(CShapes-Europe found first). If users need Ottoman Empire territory, they should use
+the TUR entry.
 
 ---
 
@@ -516,7 +514,7 @@ and is now correctly reported as unmatched.
 | NOR/PER/CHE/SWE/JAM/CAN/SAR/GER | Various | CRITICAL | Wrong continent | ISO code collision | **FIXED** |
 | DMA/LCA/VCT | Caribbean | CRITICAL | Wrong island | COW/CShapes discrepancy | **FIXED** |
 | **Historical territory inaccuracies** | | | | | |
-| OTT-1800-1912 | Ottoman Empire | CRITICAL | ~80% underestimation | Polygon covers only Anatolia/Levant | Known |
+| OTT-1800-1912 | Ottoman Empire | MODERATE | OTT=small polygon, TUR=correct | CShapes-Europe matched first for OTT | Known |
 | ETH-1800-1889 | Pre-Menelik Ethiopia | CRITICAL | 2-3x too large | Post-expansion polygon back-projected | Known |
 | EGY-1800-1899 | Egypt without Sudan | CRITICAL | Missing 60% territory (1820-1882) | Post-Mahdist polygon back-projected | Known |
 | ZAN-1800-1890 | Zanzibar islands only | CRITICAL | Missing ~90% territory | Mainland coastal empire not captured | Known |
