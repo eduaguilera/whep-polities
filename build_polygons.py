@@ -391,13 +391,18 @@ CSHAPES_NAME_MAP = {
     "Jammu and Kashmir": "Jammu and Kashmir",
     "Jammu and Kashmir (1947-1949)": "Jammu and Kashmir",
 
-    # CShapes-Europe names
-    "Two Sicilies": "Two Sicilies",
+    # CShapes-Europe names (must match exactly what's in the gpkg)
     "Papal States": "Papal States",
-    "Tuscany": "Tuscany",
     "Bavaria": "Bavaria",
     "Saxony": "Saxony",
     "Hanover": "Hanover",
+
+    # Entities needing special CShapes 2.0 name mapping
+    "Two Sicilies": "Kingdom of Naples",  # CShapes-Europe has "Kingdom of Naples"
+    "Serbia and Montenegro": "Yugoslavia/Serbia",  # SCG maps to Yugoslavia/Serbia in CShapes
+    "Serbia and Montenegro (1992-2006)": "Yugoslavia/Serbia",
+    "Van Diemen's Land (Tasmania)": "Tasmania",
+    "Crete": "Greece",  # Autonomous state within Ottoman, then Greek; use Greece polygon as proxy
 }
 
 # Polity codes where ISO/COW codes collide with a different country.
@@ -499,6 +504,13 @@ def find_gadm_match(polity_name):
 
 def find_cshapes_eu_match(polity_name):
     """Find a CShapes-Europe polygon match."""
+    # Check name map first (e.g. "Two Sicilies" → "Kingdom of Naples")
+    mapped = CSHAPES_NAME_MAP.get(polity_name)
+    if mapped:
+        for _, row in cshapes_eu.iterrows():
+            if normalize(row["polity_name"]) == normalize(mapped):
+                return row
+
     norm = normalize(polity_name)
     for _, row in cshapes_eu.iterrows():
         if normalize(row["polity_name"]) == norm:

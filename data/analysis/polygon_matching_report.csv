@@ -450,7 +450,7 @@ SER-1800-1913,Serbia (to 1913),CShapes 2.0 (1886-1913),Serbia,True
 SWE-1800-1905,Sweden (to 1905),CShapes 2.0 (1886-1905),Sweden,True
 THU-1800-1871,Thuringia,GADM 4.1,Thuringia,True
 TUS-1800-1860,Tuscany,GADM 4.1 fallback,Tuscany,True
-TWO-1800-1860,Two Sicilies,GADM 4.1 fallback,Two Sicilies,True
+TWO-1800-1860,Two Sicilies,CShapes-Europe,Kingdom of Naples,True
 TUR-1800-1912,Türkiye (to 1912),CShapes 2.0 (1886-1908),Turkey (Ottoman Empire),True
 F228-1800-1905,USSR (to 1905),CShapes 2.0 (1886-1905),Russia (Soviet Union),True
 GBR-1800-1921,United Kingdom (to 1921),CShapes 2.0 (1886-1921),United Kingdom,True
@@ -487,7 +487,7 @@ ITA-1861-1919,Italy (to 1919),CShapes 2.0 (1886-1919),Italy/Sardinia,True
 ANH-1864-1870,Anhalt,CShapes-Europe,Anhalt,True
 BGR-1878-1913,Bulgaria (to 1913),CShapes 2.0 (1908-1913),Bulgaria,True
 MNE-1878-1913,Montenegro (to 1913),CShapes 2.0 (1915-1918),Montenegro,True
-CRE-1898-1913,Crete,GADM 4.1 fallback,Crete,True
+CRE-1898-1913,Crete,CShapes 2.0 (1886-1913),Greece,True
 F228-1905-1914,USSR (1905-1914),CShapes 2.0 (1905-1914),Russia (Soviet Union),True
 AUH-1908-1918,Austria-Hungary (1908-1918),CShapes 2.0 (1908-1918),Austria-Hungary,True
 BGR-1913-1918,Bulgaria (1913-1918),CShapes 2.0 (1913-1918),Bulgaria,True
@@ -542,7 +542,7 @@ F78-1949-1990,West Germany,CShapes 2.0 (1955-1990),German Federal Republic,True
 RUS-1991-2014,Russia (1991-2014),CShapes 2.0 (1991-2014),Russia (Soviet Union),True
 UKR-1991-2014,Ukraine (1991-2014),CShapes 2.0 (1991-2014),Ukraine,True
 F248-1991-1992,Yugoslavia (1991-1992),CShapes 2.0 (1991-1992),Yugoslavia/Serbia,True
-SCG-1992-2006,Serbia and Montenegro,GADM 4.1 fallback,Serbia and Montenegro,True
+SCG-1992-2006,Serbia and Montenegro,CShapes 2.0 (1993-2006),Yugoslavia/Serbia,True
 YUG-1992-2006,Yugoslavia (1992-2006),CShapes 2.0 (1993-2006),Yugoslavia/Serbia,True
 SER-2006-2008,Serbia (2006-2008),CShapes 2.0 (2006-2008),Serbia,True
 BAD-1800-1871,Baden,GADM 4.1,Baden,True
@@ -727,7 +727,7 @@ SOU-1800-1900,South Australia (to 1900),CShapes 2.0 (1886-1900),South Australia,
 TAS-1800-1900,Van Diemen's Land (Tasmania) (to 1900),CShapes 2.0 (1886-1900),Tasmania,True
 VIC-1800-1900,Victoria (to 1900),CShapes 2.0 (1886-1900),Victoria,True
 WES-1800-1900,Western Australia (to 1900),CShapes 2.0 (1886-1900),Western Australia,True
-VAN-1828-1900,Van Diemen's Land (Tasmania),GADM 4.1 fallback,Van Diemen's Land (Tasmania),True
+VAN-1828-1900,Van Diemen's Land (Tasmania),CShapes 2.0 (1886-1900),Tasmania,True
 SOU-1838-1900,South Australia,CShapes 2.0 (1886-1900),South Australia,True
 WES-1838-1900,Western Australia,CShapes 2.0 (1886-1900),Western Australia,True
 MRQ-1844-1903,Marquesas Island,GADM 4.1 fallback,Marquesas Island,True
