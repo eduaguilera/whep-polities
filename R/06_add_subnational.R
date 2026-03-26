@@ -11,13 +11,34 @@ source("R/00_setup.R")
 # --- Configuration ---
 
 country_config <- tribble(
-  ~iso3, ~start_year, ~continent,         ~parent_polity,
-  "USA", 1959L,       "North America",    "USA-1959-2025",
-  "CAN", 1999L,       "North America",    "CAN-1948-2025",
-  "BRA", 1988L,       "South America",    "BRA-1909-2025",
-  "AUS", 1901L,       "Oceania",          "AUS-1901-2025",
-  "CHN", 1997L,       "Asia",             "F351-1950-2025",
-  "RUS", 1993L,       "Europe",           "RUS-2014-2025"
+  ~iso3,
+  ~start_year,
+  ~continent,
+  ~parent_polity,
+  "USA",
+  1959L,
+  "North America",
+  "USA-1959-2025",
+  "CAN",
+  1999L,
+  "North America",
+  "CAN-1948-2025",
+  "BRA",
+  1988L,
+  "South America",
+  "BRA-1909-2025",
+  "AUS",
+  1901L,
+  "Oceania",
+  "AUS-1901-2025",
+  "CHN",
+  1997L,
+  "Asia",
+  "F351-1950-2025",
+  "RUS",
+  1993L,
+  "Europe",
+  "RUS-2014-2025"
 )
 
 hasc_fixes <- c("Moscow City" = "RU.MW")
@@ -25,8 +46,10 @@ hasc_fixes <- c("Moscow City" = "RU.MW")
 # --- Load data ---
 
 cat("Loading data...\n")
-polities <- read_csv(file.path(final_dir, "polities_database.csv"),
-                     show_col_types = FALSE)
+polities <- read_csv(
+  file.path(final_dir, "polities_database.csv"),
+  show_col_types = FALSE
+)
 gadm <- st_read(gadm_path, layer = "level1", quiet = TRUE)
 
 cat("  Existing polities:", nrow(polities), "\n")
@@ -88,21 +111,21 @@ for (i in seq_len(nrow(country_config))) {
     polity_name <- sprintf("%s (%s)", name, eng_type)
 
     new_entries[[length(new_entries) + 1]] <- tibble(
-      polity_code        = polity_code,
-      polity_name        = polity_name,
-      start_year         = cfg$start_year,
-      end_year           = 2025L,
-      duration_years     = 2025L - cfg$start_year + 1L,
-      polity_type        = "subnational",
-      continent          = cfg$continent,
-      iso3_code          = cfg$iso3,
-      cow_code           = NA_character_,
-      polygon_source     = "GADM 3.6 (subnational)",
-      predecessor        = NA_character_,
-      successor          = NA_character_,
-      data_sources       = "GADM",
+      polity_code = polity_code,
+      polity_name = polity_name,
+      start_year = cfg$start_year,
+      end_year = 2025L,
+      duration_years = 2025L - cfg$start_year + 1L,
+      polity_type = "subnational",
+      continent = cfg$continent,
+      iso3_code = cfg$iso3,
+      cow_code = NA_character_,
+      polygon_source = "GADM 3.6 (subnational)",
+      predecessor = NA_character_,
+      successor = NA_character_,
+      data_sources = "GADM",
       verification_status = "VERIFIED",
-      notes              = sprintf("Parent: %s; GADM GID: %s", cfg$parent_polity, gid)
+      notes = sprintf("Parent: %s; GADM GID: %s", cfg$parent_polity, gid)
     )
 
     existing_codes <- c(existing_codes, polity_code)
@@ -112,7 +135,7 @@ for (i in seq_len(nrow(country_config))) {
       new_polys[[length(new_polys) + 1]] <- st_sf(
         polity_code = polity_code,
         polity_name = polity_name,
-        geometry    = geom
+        geometry = geom
       )
     }
 
@@ -125,18 +148,29 @@ for (i in seq_len(nrow(country_config))) {
 new_df <- bind_rows(new_entries)
 new_poly_sf <- bind_rows(new_polys) %>% st_set_crs(4326)
 
-cat(sprintf("\n%s\nTotal new entries: %d\nTotal new polygons: %d\n",
-            strrep("=", 60), nrow(new_df), nrow(new_poly_sf)))
+cat(sprintf(
+  "\n%s\nTotal new entries: %d\nTotal new polygons: %d\n",
+  strrep("=", 60),
+  nrow(new_df),
+  nrow(new_poly_sf)
+))
 
 iso_summary <- new_df %>% count(iso3_code)
-walk2(iso_summary$iso3_code, iso_summary$n, ~cat(sprintf("  %s: %d\n", .x, .y)))
+walk2(
+  iso_summary$iso3_code,
+  iso_summary$n,
+  ~ cat(sprintf("  %s: %d\n", .x, .y))
+)
 
 # --- Save updated CSV ---
 
 updated <- bind_rows(polities, new_df)
 write_csv(updated, file.path(final_dir, "polities_database.csv"))
-cat(sprintf("\nUpdated polities_database.csv: %d -> %d entries\n",
-            nrow(polities), nrow(updated)))
+cat(sprintf(
+  "\nUpdated polities_database.csv: %d -> %d entries\n",
+  nrow(polities),
+  nrow(updated)
+))
 
 # --- Save updated polygons ---
 
@@ -147,9 +181,14 @@ if (nrow(new_poly_sf) > 0) {
   } else {
     combined <- new_poly_sf
   }
-  if (file.exists(poly_path)) file.remove(poly_path)
+  if (file.exists(poly_path)) {
+    file.remove(poly_path)
+  }
   st_write(combined, poly_path, layer = "polities", quiet = TRUE)
-  cat(sprintf("Updated polities_polygons.gpkg: %d total polygons\n", nrow(combined)))
+  cat(sprintf(
+    "Updated polities_polygons.gpkg: %d total polygons\n",
+    nrow(combined)
+  ))
 }
 
 # --- Save report ---
