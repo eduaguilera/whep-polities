@@ -328,9 +328,113 @@ Hudson Bay only in 1912. Overall: acceptable proxy with caveat about northern ex
 
 ---
 
-## 7. Available Historical GIS Sources
+## 7. Ottoman Empire (OTT-1800-1912) — CRITICAL
 
-### 7.1 High Priority
+**Historical reality**: At its zenith in 1800, the Ottoman Empire controlled:
+- Anatolia (modern Turkey)
+- The Balkans (Greece, Bulgaria, Serbia, Albania, Romania, Bosnia, parts of Hungary)
+- The Levant (Syria, Lebanon, Palestine, Jordan)
+- Mesopotamia (Iraq)
+- The Arabian Peninsula (Hejaz, Yemen — varying degrees of control)
+- Egypt (nominal suzerainty, effectively autonomous under Muhammad Ali from 1805)
+- North Africa: Libya (Tripolitania and Cyrenaica), Tunisia (autonomous beylik)
+- Total area: approximately 5-6 million km2
+
+The empire contracted dramatically during the 19th century: Greece (1830), Serbia
+(autonomous 1817, independent 1878), Romania (1878), Bulgaria (1878/1908), Bosnia
+(occupied by Austria 1878), Crete (1898), Libya (lost to Italy 1911-12), Balkans
+(1912-13).
+
+**Our polygon**: CShapes-Europe "Ottoman Empire" entry. Based on the centroid analysis,
+this polygon covers approximately 15-42°E, 34-48°N — essentially Anatolia plus parts
+of the Levant. It does NOT include:
+- Arabia (~3 million km2)
+- Mesopotamia/Iraq (~435,000 km2)
+- North Africa
+- The full Balkans extent
+
+**Magnitude of error**: The polygon represents approximately 20% of the empire's 1800
+territorial extent. This is the largest single polygon accuracy issue by area in the
+entire database.
+
+**Note**: CShapes does have separate entries for Ottoman dependencies (e.g., Egypt,
+Tunisia) which partially address this. But the core Ottoman polygon still misses
+Arabia, Mesopotamia, and the full Levant.
+
+---
+
+## 8. Qing China (CHN-1800-1912) — MAJOR
+
+**Historical reality**: The Qing Empire at its maximum extent (c. 1820) included:
+- China proper (18 provinces)
+- Manchuria (homeland of the Qing dynasty)
+- Inner Mongolia
+- Outer Mongolia (tributary, 1.5+ million km2)
+- Xinjiang (conquered 1757-59, reconquered 1876-78 after Dungan Revolt)
+- Tibet (varying degrees of control, amban system)
+- Taiwan
+
+Total area: approximately 13-14 million km2 at maximum.
+
+**Our polygon**: CShapes "China" (73-135°E, 18-54°N). This represents roughly modern
+PRC borders including Manchuria, Inner Mongolia, Xinjiang, and Tibet.
+
+**Key issue**: Outer Mongolia (~1.5 million km2). CShapes creates the Mongolia entry
+starting 1921 (Soviet-backed independence), but Mongolia was already effectively
+independent from 1911 (Bogd Khan's declaration after the Xinhai Revolution). For the
+period 1800-1911, the Qing's sovereignty over Outer Mongolia is not reflected — the
+China polygon likely uses modern borders that exclude Mongolia.
+
+**Magnitude of error**: ~10-15% of Qing territory missing for 1800-1911 period
+(Outer Mongolia). The actual CShapes China polygon may include Tibet and Xinjiang
+(modern PRC extent), which is reasonable for the Qing period.
+
+---
+
+## 9. Interwar European Entities (1918-1939)
+
+### 9.1 Missing Entities
+
+Several interwar League of Nations mandated territories have no entry in our database:
+
+| Entity | Period | Area | Status |
+|--------|--------|------|--------|
+| **Saar Territory** | 1920-1935 | ~2,570 km2 | NOT IN DATABASE |
+| **Memel Territory** | 1920-1923 | ~2,600 km2 | NOT IN DATABASE |
+| **Free City of Fiume** | 1920-1924 | ~28 km2 | NOT IN DATABASE |
+
+The Saar Territory (administered by League of Nations 1920-1935, returned to Germany
+by plebiscite) is the most significant omission. The Memel Territory (administered
+by France/League 1920-1923, then seized by Lithuania) is also notable.
+
+### 9.2 Mongolia 1911-1921 Gap
+
+Mongolia declared independence from China in 1911 (Bogd Khan), but CShapes starts
+Mongolia at 1921 (Soviet-backed). This creates a 10-year gap where Mongolia exists
+as a de facto independent state but has no polygon in our database.
+
+### 9.3 Baltic States Pre-1940 vs Post-1991 Borders
+
+Estonia, Latvia, and Lithuania have slightly different borders in their pre-1940
+incarnations compared to post-1991:
+- Estonia: Lost the Petseri (Pechory) district to Russia (1944)
+- Latvia: Lost Abrene (Pytalovo) district to Russia (1944)
+- Lithuania: Gained Vilnius region (from Poland 1939, confirmed 1945) and Klaipėda
+  (Memel, from Germany 1923/1945)
+
+CShapes captures these changes through period splits. The magnitude of difference
+is small (~5% of territory) for Estonia and Latvia, larger for Lithuania.
+
+### 9.4 Danzig Free City (DAN-1919-1938)
+
+CShapes has a Danzig entry. The polygon correctly represents the Free City territory
+(~1,966 km2 including the city and surrounding rural districts). This is well-captured.
+
+---
+
+## 10. Available Historical GIS Sources
+
+### 10.1 High Priority
 
 | Dataset | Coverage | Format | Access |
 |---------|----------|--------|--------|
@@ -339,7 +443,7 @@ Hudson Bay only in 1912. Overall: acceptable proxy with caveat about northern ex
 | **Murdock (1959) digitized** | 825 African ethnic groups, ~1890-1910 | Shapefiles | Harvard Dataverse / R package |
 | **HGIS Germany** | German states 1820-1914 | Shapefiles | Harvard Geospatial Library |
 
-### 7.2 Reference Sources (not GIS-ready)
+### 10.2 Reference Sources (not GIS-ready)
 
 | Source | Coverage | Notes |
 |--------|----------|-------|
@@ -348,7 +452,7 @@ Hudson Bay only in 1912. Overall: acceptable proxy with caveat about northern ex
 | **Omniatlas** | Interactive global historical atlas | omniatlas.com — visual reference, not downloadable GIS |
 | **Centennia Historical Atlas** | European borders 1000-2000 CE | Commercial software |
 
-### 7.3 Institutional Portals
+### 10.3 Institutional Portals
 
 | Portal | URL | Content |
 |--------|-----|---------|
@@ -359,9 +463,9 @@ Hudson Bay only in 1912. Overall: acceptable proxy with caveat about northern ex
 
 ---
 
-## 8. Polygon Matching Bugs Found and Fixed
+## 11. Polygon Matching Bugs Found and Fixed
 
-### 8.1 Summary
+### 11.1 Summary
 
 A comprehensive audit of the polygon matching pipeline discovered **13 wrong polygon
 assignments** across two categories:
@@ -374,13 +478,13 @@ assignments** across two categories:
    CShapes use different numeric codes for small Caribbean islands, producing a
    cascade of off-by-one polygon mismatches.
 
-### 8.2 Detection Method
+### 11.2 Detection Method
 
 We compared polity names against their matched CShapes names, flagging entries where
 no meaningful word overlap existed between the polity name and the matched polygon
 source name (after filtering known colonial→modern name changes).
 
-### 8.3 All Fixes
+### 11.3 All Fixes
 
 | File | Change | Entities fixed |
 |------|--------|---------------|
@@ -389,7 +493,7 @@ source name (after filtering known colonial→modern name changes).
 | `build_polygons.py` | Added `SKIP_COW_MATCHING` set with guard logic | 9 entities |
 | `build_polygons.py` | Extended guard to GADM ISO fallback | 2 entities |
 
-### 8.4 Post-Fix Polygon Count
+### 11.4 Post-Fix Polygon Count
 
 | Metric | Before fix | After fix |
 |--------|-----------|-----------|
@@ -404,7 +508,7 @@ and is now correctly reported as unmatched.
 
 ---
 
-## 9. Summary of Severity
+## 12. Summary of Severity
 
 | Entity | Period | Severity | Error magnitude | Root cause | Status |
 |--------|--------|----------|-----------------|------------|--------|
@@ -412,14 +516,21 @@ and is now correctly reported as unmatched.
 | NOR/PER/CHE/SWE/JAM/CAN/SAR/GER | Various | CRITICAL | Wrong continent | ISO code collision | **FIXED** |
 | DMA/LCA/VCT | Caribbean | CRITICAL | Wrong island | COW/CShapes discrepancy | **FIXED** |
 | **Historical territory inaccuracies** | | | | | |
+| OTT-1800-1912 | Ottoman Empire | CRITICAL | ~80% underestimation | Polygon covers only Anatolia/Levant | Known |
 | ETH-1800-1889 | Pre-Menelik Ethiopia | CRITICAL | 2-3x too large | Post-expansion polygon back-projected | Known |
 | EGY-1800-1899 | Egypt without Sudan | CRITICAL | Missing 60% territory (1820-1882) | Post-Mahdist polygon back-projected | Known |
 | ZAN-1800-1890 | Zanzibar islands only | CRITICAL | Missing ~90% territory | Mainland coastal empire not captured | Known |
+| CHN-1800-1912 | Qing China | MAJOR | ~10-15% (Outer Mongolia missing) | Qing tributary not in polygon | Known |
 | MOR-1800-1904 | Morocco fixed borders | MAJOR | Conceptual — fixed borders anachronistic | Bled al-makhzen/es-siba distinction | Known |
 | MAD-1800-1830 | Madagascar whole-island | MODERATE | 25-90% too large (decreasing) | Merina Kingdom was smaller | Known |
 | ERI-1800-1889 | Pre-colonial "Eritrea" | MODERATE | Conceptual — entity anachronistic | No "Eritrea" before Italy | Known |
 | KHI/KOK/BUK | Central Asian khanates | MODERATE | Polygon source weak; nomadic borders fluid | Need specialized GIS | Known |
 | German states | Pre-1871 | MODERATE | Modern Länder ≠ historical states | Territorial fragmentation | Known |
 | FWA internal | French West Africa | MODERATE | Pre-1904 boundaries unreliable | Colonial admin boundaries fluid | Known |
+| MNG 1911-1921 | Mongolia independence gap | MODERATE | No polygon for 10-year period | CShapes starts Mongolia at 1921 | Known |
+| Baltic states | Pre-1940 vs post-1991 | MINOR | ~5% boundary shifts | Petseri/Abrene/Vilnius transfers | Known |
 | German Kamerun | Neukamerun 1911-1916 | MINOR | Well-captured by CShapes | | Known |
 | Congo Free State | DRC/Congo border | MINOR | ~98% accuracy | Uti possidetis applies well | Known |
+| **Missing interwar entities** | | | | | |
+| Saar Territory | 1920-1935 | MODERATE | Not in database | League of Nations mandate | Missing |
+| Memel Territory | 1920-1923 | MINOR | Not in database | League/French administration | Missing |
