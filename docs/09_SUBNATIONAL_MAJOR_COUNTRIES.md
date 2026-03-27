@@ -552,7 +552,7 @@ are NOT replaceable by GADM modern boundaries.
 | GADM 3.6 (level0) | 256 countries | Country-level comparison |
 | CShapes 2.0 | 805 historical state periods | Temporal polygon comparison |
 | CShapes-Europe | 46 pre-1886 European states | Historical European boundaries |
-| polities_database.csv | 1,026 entries (incl. 216 subnational) | Current polity inventory |
+| polities_database.csv | 1,099 entries (incl. 242 subnational) | Current polity inventory |
 
 ---
 

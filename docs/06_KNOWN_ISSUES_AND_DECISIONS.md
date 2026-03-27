@@ -214,7 +214,7 @@
   6 entries (Ashanti, Sokoto, Zulu, Bornu, Wadai, Darfur with time-stepped boundaries)
 - **Note**: Pre-colonial boundary uncertainty ~25-100 km. See docs/12 Section 3.8
   for full discussion of fundamental challenges with African historical boundaries.
-- **Database count**: 1,030 → 1,073 entries
+- **Database count**: 1,026 → 1,073 entries
 
 ---
 

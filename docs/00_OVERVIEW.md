@@ -158,7 +158,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `08_POLYGON_ACCURACY_AUDIT.md` | Deep audit: 12 problem zones, 18 severity entries, external GIS sources |
 | `09_SUBNATIONAL_MAJOR_COUNTRIES.md` | GADM admin-1 for 19 countries: stability ratings, 374 potential entries |
 | `10_VALIDATION_SUMMARY.md` | Data quality scorecard: 31 tests, polygon cross-validation, known issues |
-| `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 1,900 edges, usage examples |
+| `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 1,930 edges, usage examples |
 | `12_HISTORICAL_MAP_SOURCES.md` | 28 historical map/GIS sources for pre-1886 boundary gaps |
 
 ---

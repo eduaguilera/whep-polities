@@ -27,20 +27,20 @@ Full report: `data/analysis/exhaustive_gap_report.csv`
 
 | Metric | Value |
 |--------|-------|
-| Total polity entries | 1,073 |
-| Unique polity codes | 1,073 (100% unique) |
+| Total polity entries | 1,099 |
+| Unique polity codes | 1,099 (100% unique) |
 | Sovereign states (active 2025) | 194 (193 UN + Vatican) |
-| Historical entities | 339 |
+| Historical entities | 386 |
 | Colonial entities | 47 |
 | Dependencies/territories | 75 |
 | Trade aggregates | 60 |
 | Mandates | 13 |
 | Statistical regions | 77 |
-| Subnational entries | 216 |
+| Subnational entries | 242 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
-| Verified entries | 699 (68%) |
-| Verified + region + fixed | 817 (80%) |
+| Verified entries | 699 (64%) |
+| Verified + region + fixed | 817 (74%) |
 | Earliest start year | 1800 |
 | Latest end year | 2025 |
 
@@ -102,7 +102,7 @@ All are intentional — the territories are covered by parent entities during th
 
 ## 3. Geographic Coverage
 
-### 3.1 Africa (217 entries)
+### 3.1 Africa (260 entries)
 
 **Sovereign states**: All 54 current African Union members are represented.
 **Historical coverage**: Includes pre-colonial periods for major entities, all colonial
@@ -110,7 +110,7 @@ territories, all decolonization events.
 **Gap analysis**: Pre-colonial African kingdoms (Zulu, Ashanti, Sokoto, etc.) are NOT
 tracked due to lack of standardized trade data.
 
-### 3.2 Asia (162 entries)
+### 3.2 Asia (163 entries)
 
 **Sovereign states**: All 48 Asian UN member states represented.
 **Historical depth**: China 8 periods, Thailand 5 periods, India 6 periods, Indonesia
@@ -118,7 +118,7 @@ tracked due to lack of standardized trade data.
 **Colonial tracking**: British India, French Indochina, Dutch East Indies, Japanese
 acquisitions (Taiwan, Korea, Manchukuo, Sakhalin).
 
-### 3.3 Europe (183 entries)
+### 3.3 Europe (186 entries)
 
 **Sovereign states**: All 44 European UN member states plus Kosovo.
 **Historical depth**: 39 pre-unification German states, 11 pre-unification Italian
@@ -157,10 +157,11 @@ Pacific island protectorates.
 | Oceania | 63 | 68 | 92.6% |
 | Antarctica | 3 | 4 | 75.0% |
 
-**10 non-region polities without polygons**: Canton & Enderbury, Johnston Island,
-Midway, Wake Island, US misc. Pacific, US settlement Oceania (all tiny Pacific
-atolls), Dronning Maud Land (Antarctic claim), Danish India (trading posts),
-Neutral Zone (abolished), Sark (tiny Channel Island).
+**0 non-region polities without polygons** (as of v1.7). All 1,022 non-region
+polities have polygon coverage from CShapes, GADM, Paine et al., Cliopatria,
+or CHGIS sources. Previously 10 polities used GADM proxy polygons; 4 formerly
+missing polities (IRN-1800-1828, AUH-1800-1867, SWE-1800-1809, SWE-1809-1814)
+now have Cliopatria polygons.
 
 ---
 
@@ -457,8 +458,8 @@ Yugoslavia → North Macedonia, Italy pre/post-1919, Russia/Ukraine pre/post-201
 | Empire dissolutions covered | 100% | Empire dissolutions dataset |
 | FAOSTAT entities covered | 100% | FAOSTAT regions dataset |
 | Timeline continuity (no unexplained gaps) | YES | Internal analysis |
-| Unique polity codes | 1,026/1,026 (100%) | Code uniqueness check |
-| Unique polity names | 1,026/1,026 (100%) | Name uniqueness check |
+| Unique polity codes | 1,099/1,099 (100%) | Code uniqueness check |
+| Unique polity names | 1,099/1,099 (100%) | Name uniqueness check |
 
 ---
 

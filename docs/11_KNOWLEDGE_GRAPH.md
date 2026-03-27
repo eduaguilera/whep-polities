@@ -6,18 +6,18 @@
 
 The WHEP polities knowledge graph models **relations between political entities** as a
 directed graph. It captures temporal succession, territorial hierarchy, colonial control,
-regional membership, and other structural relationships between the 1,026 polities in the
+regional membership, and other structural relationships between the 1,099 polities in the
 database.
 
 ### Graph Statistics
 
 | Metric | Value |
 |--------|-------|
-| Nodes | 1,034 (1,026 polities + 8 continent nodes) |
-| Edges | 1,900 |
+| Nodes | 1,107 (1,099 polities + 8 continent nodes) |
+| Edges | 1,930 |
 | Relation types | 9 |
 | Connected components | 53 |
-| Largest component | 982 nodes |
+| Largest component | ~1,050 nodes |
 | Isolated nodes | 52 (specialized FAOSTAT regions) |
 
 ---
@@ -52,7 +52,7 @@ subset). These represent the post-Soviet successor states.
 **Direction**: child → parent
 
 Two sources:
-- **Subnational entries** (216 edges): Present-day admin-1 units → parent sovereign state.
+- **Subnational entries** (242 edges): Admin-1 units (present-day + Qing China) → parent state.
   Extracted from the `notes` field `Parent: XXX-YYYY-ZZZZ`.
 - **M49 region hierarchy** (21 edges): Region → parent region (e.g., Eastern Africa →
   Africa → World).
@@ -108,7 +108,7 @@ and macro-region polities (where those exist in the database as FAOSTAT region e
 
 ---
 
-### 8. `located_in_continent` (949 edges)
+### 8. `located_in_continent` (1,022 edges)
 
 **Direction**: polity → continent pseudo-node
 
@@ -159,7 +159,7 @@ one classified as sovereign and the other as colonial.
 1. **Russia is the most connected polity** (87 edges) due to its 83 subnational units
    plus sovereign/temporal edges.
 
-2. **The largest connected component contains 982 of 1,034 nodes** (95%), showing that
+2. **The largest connected component contains ~1,050 of 1,107 nodes** (~95%), showing that
    the polities database is highly interconnected through temporal, territorial, and
    hierarchical relations.
 

@@ -6,13 +6,13 @@
 
 | Metric | Value |
 |--------|-------|
-| Total entries | 1,026 |
-| Non-region entries | 949 |
-| Subnational entries | 216 |
+| Total entries | 1,099 |
+| Non-region entries | 1,022 |
+| Subnational entries | 242 |
 | Statistical regions | 77 |
-| Entries with polygons | 939/949 non-region (98.9%) |
-| Verified entries | 699/1,026 (68%) |
-| Unique polity codes | 1,026 (100% unique) |
+| Entries with polygons | 1,022/1,022 non-region (100%) |
+| Verified entries | 699/1,099 (64%) |
+| Unique polity codes | 1,099 (100% unique) |
 | ISO3 codes assigned | 920 entries |
 | COW codes matched | 207/209 external COW states |
 
@@ -25,15 +25,15 @@
 2. No nulls in required fields
 3. Valid polity types (10 used, incl. subnational)
 4. Valid continents (8 used)
-6. Code uniqueness (1,026 unique)
+6. Code uniqueness (1,099 unique)
 7. start_year <= end_year
 8. duration_years consistency
 9. Code dates match column dates
 10. Dates within 1800-2025
 14. ISO3 code format (704 valid)
 16. COW codes match external system (207 matched, 2 COW-only)
-17. Polygon coverage rate (98.9% of non-region entries)
-18. All polygon geometries valid (939 OK)
+17. Polygon coverage rate (100% of non-region entries)
+18. All polygon geometries valid (1,022 OK)
 19. No empty geometries
 20. CRS is EPSG:4326
 23. Data source labels valid
@@ -187,11 +187,11 @@ geographic/territorial analysis rather than direct trade data linkage.
 
 ## Polygon Geometry Quality
 
-All 939 polygons pass validity checks. Key metrics:
+All 1,022 polygons pass validity checks. Key metrics:
 
 | Metric | Value |
 |--------|-------|
-| Valid geometries | 939/939 (100%) |
+| Valid geometries | 1,022/1,022 (100%) |
 | MultiPolygons | 408 (56%) |
 | With holes | 33 (5%) |
 | Median area | 14.38 deg² |
@@ -229,12 +229,13 @@ Source quality comparison (median vertices): CShapes 2.0 > GADM > CShapes-Europe
 3. **8 asymmetric predecessor/successor links** — forward link exists, reciprocal missing
 4. **29 polygon source mismatches** — entities getting GADM when CShapes was expected
    (15 aggregates + 14 small/missing entries)
-5. **10 unmatched non-region polities** — tiny islands/atolls with no GADM coverage
-   (Canton & Enderbury, Johnston, Midway, Wake, etc.)
+5. **0 unmatched non-region polities** — all 1,022 non-region polities now have polygons
+   (previously 10 tiny islands; 4 formerly missing polities filled via Cliopatria)
 6. **20 ISO prefix collision groups** — inherent to 3-letter system, all polygon bugs fixed
 7. **4 temporal gaps** (same ISO + type) — all intentional (territories covered by parent)
 8. **43 centroid-continent mismatches** — all transcontinental/island entities (expected)
-9. **209 unverified polities** — mostly African historical; based on CShapes (peer-reviewed)
+9. **235 unverified polities** — includes 43 pre-colonial African kingdoms and 26 Qing
+   provinces added from external sources (Paine et al., CHGIS)
 
 None of these issues affect the core data quality for trade data analysis or
 geographic territory mapping.
