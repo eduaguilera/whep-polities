@@ -515,7 +515,7 @@ the addition of 216 GADM admin-1 polygons for the 6 largest countries (v1.4).
 | NOR/PER/CHE/SWE/JAM/CAN/SAR/GER | Various | CRITICAL | Wrong continent | ISO code collision | **FIXED** |
 | DMA/LCA/VCT | Caribbean | CRITICAL | Wrong island | COW/CShapes discrepancy | **FIXED** |
 | **Historical territory inaccuracies** | | | | | |
-| OTT-1800-1912 | Ottoman Empire | MODERATE | OTT=small polygon, TUR=correct | CShapes-Europe matched first for OTT | Known |
+| OTT-1800-1912 | Ottoman Empire | MODERATE | OTT=small polygon, TUR=correct | CShapes-Europe matched first for OTT | **FIXED v2.2** |
 | ETH-1800-1889 | Pre-Menelik Ethiopia | CRITICAL | 2-3x too large | Post-expansion polygon back-projected | Known |
 | EGY-1800-1899 | Egypt without Sudan | CRITICAL | Missing 60% territory (1820-1882) | Post-Mahdist polygon back-projected | Known |
 | ZAN-1800-1890 | Zanzibar islands only | CRITICAL | Missing ~90% territory | Mainland coastal empire not captured | Known |
@@ -526,10 +526,10 @@ the addition of 216 GADM admin-1 polygons for the 6 largest countries (v1.4).
 | KHI/KOK/BUK | Central Asian khanates | MODERATE | Polygon source weak; nomadic borders fluid | Need specialized GIS | Known |
 | German states | Pre-1871 | MODERATE | Modern Länder ≠ historical states | Territorial fragmentation | Known |
 | FWA internal | French West Africa | MODERATE | Pre-1904 boundaries unreliable | Colonial admin boundaries fluid | Known |
-| MNG 1911-1921 | Mongolia independence gap | MODERATE | No polygon for 10-year period | CShapes starts Mongolia at 1921 | Known |
+| MNG 1911-1921 | Mongolia independence gap | MODERATE | No polygon for 10-year period | CShapes starts Mongolia at 1921 | **FIXED v2.2** |
 | Baltic states | Pre-1940 vs post-1991 | MINOR | ~5% boundary shifts | Petseri/Abrene/Vilnius transfers | Known |
 | German Kamerun | Neukamerun 1911-1916 | MINOR | Well-captured by CShapes | | Known |
 | Congo Free State | DRC/Congo border | MINOR | ~98% accuracy | Uti possidetis applies well | Known |
 | **Missing interwar entities** | | | | | |
-| Saar Territory | 1920-1935 | MODERATE | Not in database | League of Nations mandate | Missing |
-| Memel Territory | 1920-1923 | MINOR | Not in database | League/French administration | Missing |
+| Saar Territory | 1920-1935 | MODERATE | Not in database | League of Nations mandate | **FIXED v2.2** |
+| Memel Territory | 1920-1923 | MINOR | Not in database | League/French administration | **FIXED v2.2** |

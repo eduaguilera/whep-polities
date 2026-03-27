@@ -94,7 +94,7 @@ Changes below these thresholds are documented but do not create new periods.
 ### Examples of supra-threshold changes (CREATING new periods):
 | Event | Area change | % of total | New polity |
 |-------|-----------|------------|------------|
-| Denmark loses Schleswig-Holstein (1864) | -18,603 km2 | 33% | Should split (known limitation) |
+| Denmark loses Schleswig-Holstein (1864) | -18,603 km2 | 33% | DNK-1800-1864 / DNK-1864-1920 (FIXED in v2.1) |
 | Bulgaria after Balkan Wars (1913) | +34,775 km2 | 56% | BGR-1913-1918 |
 | Finland loses Karelia (1940) | -40,000 km2 | 12% | FIN-1940-2025 |
 | Hungary loses 2/3 territory (1920) | -189,000 km2 | 67% | HUN-1920-1938 |

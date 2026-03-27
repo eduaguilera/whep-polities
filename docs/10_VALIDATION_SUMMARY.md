@@ -6,14 +6,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total entries | 1,228 |
-| Non-region entries | 1,151 |
+| Total entries | 1,236 |
+| Non-region entries | 1,159 |
 | Subnational entries | 371 |
 | Statistical regions | 77 |
-| Entries with polygons | 1,141/1,151 non-region (99.1%) |
-| Unified GeoPackage | `data/final/polities_database.gpkg` (1,228 rows) |
-| Verified entries | 843/1,228 (68.6%) |
-| Unique polity codes | 1,228 (100% unique) |
+| Entries with polygons | 1,153/1,159 non-region (99.5%) |
+| Unified GeoPackage | `data/final/polities_database.gpkg` (1,236 rows) |
+| Verified entries | 843/1,236 (68.1%) |
+| Unique polity codes | 1,236 (100% unique) |
 | ISO3 codes assigned | 920 entries |
 | COW codes matched | 207/209 external COW states |
 
@@ -26,14 +26,14 @@
 2. No nulls in required fields
 3. Valid polity types (10 used, incl. subnational)
 4. Valid continents (8 used)
-6. Code uniqueness (1,228 unique)
+6. Code uniqueness (1,236 unique)
 7. start_year <= end_year
 8. duration_years consistency
 9. Code dates match column dates
 10. Dates within 1800-2025
 14. ISO3 code format (704 valid)
 16. COW codes match external system (207 matched, 2 COW-only)
-17. Polygon coverage rate (99.1% of non-region entries; 10 minor territories missing)
+17. Polygon coverage rate (99.5% of non-region entries; 6 minor territories missing)
 18. All polygon geometries valid (1,022 OK)
 19. No empty geometries
 20. CRS is EPSG:4326

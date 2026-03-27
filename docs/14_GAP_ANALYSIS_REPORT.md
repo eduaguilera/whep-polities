@@ -46,8 +46,8 @@ countries most important for historical trade and agricultural production analys
 
 | Country | Issue | Trade importance |
 |---------|-------|-----------------|
-| **Japan** | Only 1 entry for 226 years; no Empire period; no subnational | 4th-largest economy; major silk/tea exporter 19C |
-| **United Kingdom** | 2 entries + aggregate added in v2.1; no subnational; no colonial links | Center of global trade 1800-1950 |
+| **Japan** | ~~No subnational~~ 47 prefectures added v2.2; still no Empire period differentiation | 4th-largest economy; major silk/tea exporter 19C |
+| **United Kingdom** | ~~No subnational~~ 4 nations added v2.2; still no colonial links | Center of global trade 1800-1950 |
 | **Mexico** | Single entry, 226 years; no territorial changes | Silver, oil, agriculture |
 | **Cuba** | Single entry; no Spanish colonial differentiation | World's largest sugar exporter, 19C |
 | **South Africa** | Missing 1800-1827; aggregate added in v2.1 | Gold, diamonds, wool |
@@ -313,11 +313,11 @@ Fixed: Indonesia entries renamed from `IND-1800-1889` / `IND-1889-1949` to
 | Brazil | 53 | 1872-2025 (via geobr + GADM) |
 | Canada | 13 | 1999-2025 only |
 | Australia | 11 | 1901-2025 only |
-| **UK** | **0** | -- |
+| **UK** | **4** | **1800-2025 (4 nations, added v2.2)** |
 | **France** | **0** | -- |
 | **Germany** | **0** | -- |
 | **India** | **0** | -- |
-| **Japan** | **0** | -- |
+| **Japan** | **47** | **1888-2025 (prefectures, added v2.2)** |
 | **Argentina** | **0** | -- |
 
 ---
@@ -334,33 +334,41 @@ Fixed: Indonesia entries renamed from `IND-1800-1889` / `IND-1889-1949` to
 - ~~Resolve IND prefix collision~~ → Indonesia renamed to IDN-
 - ~~Fill 4 easy polygon gaps~~ → Midway, Wake, Johnston, Sark
 
+### Completed in v2.2
+- ~~Fill 2 easy polygon gaps~~ → DRO-1800-1982, NEU-1800-1982 polygons created
+- ~~Fix OTT-1800-1912 polygon~~ → Replaced with full CShapes 2.0 via TUR-1800-1912
+- ~~Add Japan subnational~~ → 47 prefectures (1888-2025) added
+- ~~Add UK subnational~~ → 4 nations (England, Scotland, Wales, NI) added
+- ~~Add interwar entities~~ → Saar (1920-35), Memel (1920-23), Fiume (1920-24) added
+- ~~Fill Mongolia 1911-1921 gap~~ → MNG-1911-1921 Bogd Khanate added
+- ~~Add India aggregate~~ → IND-1800-2025 added
+- ~~Fix Italian predecessor codes~~ → VERIFIED: already correct (full format)
+- ~~Fix BRA-1822-2025 KG reference~~ → VERIFIED: does not exist (false positive)
+- ~~Fix KG node CSV misalignment~~ → VERIFIED: no misalignment (false positive)
+
 ### HIGH PRIORITY (remaining)
 
 1. **Verify African entries**: 137 UNVERIFIED African polities, mostly
    historical/colonial. Prioritize trade-relevant: Nigeria, Egypt, South Africa.
 
-2. **Fix BRA-1822-2025 KG reference** to point to `BRA-1909-2025`.
-
-3. **Fix KG node CSV format** for 155 subnational entries with misaligned
-   columns.
+2. **Integrate HGIS Germany** for ~15 pre-unification German states (1820-1914).
+   Currently use inaccurate GADM modern Lander proxies. Requires manual download
+   from NYU (geo.nyu.edu, search "ghgis") or email Harvard.
 
 ### MEDIUM PRIORITY
 
-4. **Add Japan Empire period differentiation** (1895-1945 with colonial
+3. **Add Japan Empire period differentiation** (1895-1945 with colonial
    territories vs. home islands).
 
-5. **Fill 2 easy polygon gaps**: Dronning Maud Land (Antarctic claim sector),
-   Neutral Zone (well-documented boundary).
+4. **Add France, Germany, India subnational** -- primarily for geographic
+   analysis rather than trade data linkage.
 
-6. **Fix Italian pre-unification predecessor references** (6 codes in shorter
-   format than actual polity codes).
+5. **Nigeria pre-1899 coverage** -- biggest trade-critical temporal gap
+   (palm oil, groundnuts, cocoa).
 
 ### LOW PRIORITY (nice to have)
 
-7. **Add subnational for UK, France, Germany, India** -- primarily for
-   geographic analysis rather than trade data linkage.
-
-8. **Fill 4 difficult polygon gaps**: Danish India, Canton & Enderbury, US Misc.
+6. **Fill 4 difficult polygon gaps**: Danish India, Canton & Enderbury, US Misc.
    Pacific Islands, US Settlement Oceania.
 
 ---
@@ -371,6 +379,7 @@ Fixed: Indonesia entries renamed from `IND-1800-1889` / `IND-1889-1949` to
 |--------|---------|
 | `R/15_build_unified_polygons.R` | Build unified GeoPackage from all sources |
 | `R/16_data_integrity_fixes.R` | Fix pred/succ links, add aggregates, fill temporal gaps, resolve IND collision |
+| `R/17_add_new_polygons.R` | v2.2: Japan/UK subnational, interwar entities, OTT/DRO/NEU polygon fixes |
 | `R/08_stress_test.R` | 31 automated integrity checks |
 | `R/07_build_knowledge_graph.R` | Build knowledge graph (9 relation types) |
 | `R/10_analysis_plots.R` | Generate analysis visualizations |
