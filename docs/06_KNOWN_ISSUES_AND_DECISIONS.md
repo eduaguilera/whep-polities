@@ -48,17 +48,73 @@
 - **Fix applied**: Merged into single entry ORA-1848-1910. Start year corrected
   from 1800 to 1848 (actual founding of Orange Free State).
 
+### FIXED: Austria-Hungary 1800 Placeholder Split
+- **Code**: AUH-1800-1908 -> AUH-1800-1867 + AUH-1867-1908
+- **Severity**: IMPORTANT
+- **Root cause**: "Austria-Hungary" didn't exist until the Ausgleich (Compromise)
+  of 1867. The entry labelled 1800-1908 conflated the Austrian Empire (Habsburg
+  Monarchy) with the later Austro-Hungarian dual monarchy.
+- **Historical fact**: The Austrian Empire was proclaimed in 1804. The dual monarchy
+  of Austria-Hungary was created by the Austro-Hungarian Compromise of 1867.
+- **Fix applied**: Split into AUH-1800-1867 "Austrian Empire" and AUH-1867-1908
+  "Austria-Hungary". Updated predecessor/successor chains and knowledge graph.
+- **Polygon note**: AUH-1800-1867 lacks a dedicated polygon (CShapes starts 1886).
+  Potential sources: Cliopatria (Seshat), HistoGIS (Austrian Empire Crownlands 1848).
+
+### FIXED: Greece 1800 Placeholder
+- **Code**: GRC-1800-1913 -> GRC-1830-1913
+- **Severity**: IMPORTANT
+- **Root cause**: Greece was Ottoman territory in 1800. Greek independence was 1830.
+- **Fix applied**: Start year corrected from 1800 to 1830.
+- **Polygon note**: CShapes polygon (63,711 km2 from 1886) overestimates early
+  Greece (~47,000 km2 in 1830). Cliopatria has more accurate boundaries.
+
+### FIXED: Serbia 1800 Duplicate Removed
+- **Code**: SER-1800-1913 deleted (superseded by SER-1816-1913)
+- **Severity**: MINOR
+- **Root cause**: SER-1816-1913 (VERIFIED, WHEP-fix) already corrected the start
+  date. SER-1800-1913 (UNVERIFIED) was a duplicate legacy entry.
+
+### FIXED: Bosnia and Herzegovina 1800 Placeholder
+- **Codes**: BOS-1800-1908 -> BOS-1878-1908; HER-1800-1908 -> HER-1878-1908
+- **Severity**: IMPORTANT
+- **Root cause**: Bosnia and Herzegovina were Ottoman vilayets until the Congress
+  of Berlin (1878) assigned them to Austro-Hungarian occupation.
+- **Fix applied**: Start dates corrected from 1800 to 1878.
+
+### FIXED: Denmark 1864 Schleswig-Holstein Split
+- **Code**: DNK-1800-1920 -> DNK-1800-1864 + DNK-1864-1920
+- **Severity**: IMPORTANT
+- **Root cause**: Previously documented as known limitation. Denmark lost
+  Schleswig-Holstein in the Second Schleswig War (1864), a -33% territory loss.
+- **Fix applied**: Split into DNK-1800-1864 "Denmark (with Schleswig-Holstein)"
+  and DNK-1864-1920 "Denmark (to 1920)". CShapes-Europe has pre-1864 polygon.
+
+### FIXED: Iran 1800-2025 Single Entry Split
+- **Code**: IRN-1800-2025 -> IRN-1800-1828 + IRN-1828-2025
+- **Severity**: IMPORTANT
+- **Root cause**: Qajar Iran lost the South Caucasus (modern Azerbaijan, Armenia,
+  eastern Georgia) to Russia via Treaty of Gulistan (1813) and Treaty of
+  Turkmenchay (1828), totalling ~170,000+ km2 (~10% of territory).
+- **Fix applied**: Split at 1828. IRN-1800-1828 "Persia (Qajar)" lacks polygon;
+  Cliopatria has Qajar boundaries.
+
+### FIXED: Sweden 1800-1905 Single Entry Split
+- **Code**: SWE-1800-1905 -> SWE-1800-1809 + SWE-1809-1814 + SWE-1814-1905
+- **Severity**: IMPORTANT
+- **Root cause**: Sweden lost Finland to Russia (Treaty of Fredrikshamn 1809,
+  -42% territory ~338,000 km2) and gained Norway (Treaty of Kiel 1814,
+  personal union +318,000 km2). These massive changes were not reflected.
+- **Fix applied**: Split into three periods. SWE-1800-1809 and SWE-1809-1814
+  lack dedicated polygons; Cliopatria and histmaps R package have boundaries.
+  SWE-1814-1905 uses CShapes 2.0 polygon (valid for 1886-1905).
+
 ---
 
 ## 2. Known Limitations (Unresolved)
 
-### Denmark 1864 Period Split
-- **Impact**: DNK-1800-1920 doesn't capture the loss of Schleswig-Holstein in 1864
-- **Territory loss**: 33% (57,086 km2 to 38,483 km2)
-- **Why not fixed**: Requires team discussion. Changes needed in common_names.csv,
-  polity_codes.csv, and potentially rename_cshapes.csv. CShapes starts at 1886
-  so it doesn't contain the 1864 change directly.
-- **Recommendation**: Split into DNK-1800-1864 and DNK-1864-1920
+### ~~Denmark 1864 Period Split~~ (RESOLVED)
+- **Status**: FIXED — see Section 1 above. Split into DNK-1800-1864 and DNK-1864-1920.
 
 ### Afghanistan 1888-1919 Gap
 - **Impact**: 31-year gap between AFG-1800-1888 and AFG-1919-2025
@@ -66,11 +122,11 @@
   buffer state between 1888-1919 with limited sovereignty.
 - **Recommendation**: Document, don't fix
 
-### Sweden Semantic Inconsistency
-- **Issue**: SWE-1800-2025 has post-1905 geometry (443,303 km2) but claims to cover
-  1800-2025. Actual 1800-1905 territory included Norway (761,932 km2).
-- **Why kept**: Breaking this would disrupt FAOSTAT data linkage
-- **Recommendation**: Document the inconsistency for users
+### Sweden Semantic Inconsistency (Partially Resolved)
+- **Issue**: SWE-1800-2025 (aggregate) still has post-1905 geometry but claims 1800-2025.
+- **Resolved**: The period-specific entries are now correctly split:
+  SWE-1800-1809 (with Finland), SWE-1809-1814, SWE-1814-1905 (with Norway).
+- **Remaining**: SWE-1800-2025 aggregate kept for FAOSTAT data linkage (uses wrong polygon)
 
 ### Post-2019 CShapes Gap
 - **Issue**: CShapes 2.0 ends in 2019. All post-2019 changes are from whep_fixes only.

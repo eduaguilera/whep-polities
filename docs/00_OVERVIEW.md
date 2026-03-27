@@ -9,7 +9,7 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,026 political entities ("polities")** spanning
+A comprehensive database of **1,030 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
 Includes **216 present-day subnational entries** for the 6 largest countries by area.
@@ -23,7 +23,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,026 |
+| Total entries | 1,030 |
 | Sovereign states | 194 |
 | Historical entities | 339 |
 | Colonial entities | 47 |
@@ -176,7 +176,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
 
 ### Knowledge Graph
-- **1,034 nodes** (1,026 polities + 8 continent nodes), **1,900 edges**, **9 relation types**
+- **1,034 nodes** (1,030 polities + 8 continent nodes), **1,900 edges**, **9 relation types**
 - Exports: CSV, GraphML (Gephi/Cytoscape/igraph compatible)
 
 ### Polygon Cross-Validation

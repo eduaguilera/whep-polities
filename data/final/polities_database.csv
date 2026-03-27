@@ -222,7 +222,8 @@ DRO-1800-1982,Dronning Maud Land,1800,1982,183,dependency,Antarctica,DRO,,GADM 4
 ATF-1800-2025,French Southern Territories,1800,2025,226,dependency,Antarctica,ATF,,GADM 4.1,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 BHR-1800-2025,Bahrain,1800,2025,226,sovereign,Asia,BHR,692.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 BTN-1800-2025,Bhutan,1800,2025,226,sovereign,Asia,BTN,,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
-IRN-1800-2025,Iran,1800,2025,226,sovereign,Asia,IRN,630.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
+IRN-1800-1828,Persia (Qajar to 1828),1800,1828,29,historical,Asia,IRN,630.0,None (pre-CShapes; Cliopatria available),,IRN-1828-2025,FT,FIXED,Split from IRN-1800-2025. Qajar Iran including South Caucasus (modern Azerbaijan Armenia eastern Georgia). Lost to Russia via Treaty of Gulistan (1813) and Treaty of Turkmenchay (1828) ~170000+ km2. Cliopatria has Qajar boundaries.
+IRN-1828-2025,Iran,1828,2025,198,sovereign,Asia,IRN,630.0,CShapes 2.0,IRN-1800-1828,,FT; FAOSTAT; M49; CShapes,FIXED,Split from IRN-1800-2025. Post-Turkmenchay borders. CShapes polygon (1622521 km2) approximately matches modern Iran.
 JPN-1800-2025,Japan,1800,2025,226,sovereign,Asia,JPN,740.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 KWT-1800-2025,Kuwait,1800,2025,226,sovereign,Asia,KWT,690.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 MDV-1800-2025,Maldives,1800,2025,226,sovereign,Asia,MDV,781.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
@@ -427,18 +428,20 @@ MNE-2006-2025,Montenegro,2006,2025,20,sovereign,Europe,MNE,341.0,CShapes 2.0,SCG
 SRB-2008-2025,Serbia,2008,2025,18,sovereign,Europe,SRB,345.0,CShapes 2.0,SER-2006-2008,,FAOSTAT; M49; CShapes,VERIFIED,
 RUS-2014-2025,Russia,2014,2025,12,sovereign,Europe,RUS,365.0,CShapes 2.0,RUS-1991-2014,,FAOSTAT; M49; CShapes,VERIFIED,
 UKR-2014-2025,Ukraine,2014,2025,12,sovereign,Europe,UKR,369.0,CShapes 2.0,UKR-1991-2014,,FAOSTAT; M49; CShapes,VERIFIED,
-AUH-1800-1908,Austria-Hungary (to 1908),1800,1908,109,historical,Europe,AUH,300.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,VERIFIED,
+AUH-1800-1867,Austrian Empire (to 1867),1800,1867,68,historical,Europe,AUH,300.0,None (pre-CShapes; Cliopatria/HistoGIS available),,AUH-1867-1908,FT; CShapes,FIXED,Split from AUH-1800-1908. Habsburg/Austrian Empire before Ausgleich 1867. Polygon back-projected from CShapes 1886; accurate polygons available in Cliopatria and HistoGIS (Austrian Empire Crownlands 1848).
+AUH-1867-1908,Austria-Hungary (to 1908),1867,1908,42,historical,Europe,AUH,300.0,CShapes 2.0 + CShapes-Europe,AUH-1800-1867,AUH-1908-1918,FT; CShapes,FIXED,Split from AUH-1800-1908. Dual monarchy established by Ausgleich 1867. CShapes 2.0 polygon (from 1886) is valid for this period.
 BAV-1800-1871,Bavaria,1800,1871,72,historical,Europe,BAV,245.0,CShapes-Europe,,,FT; WHEP-fix,UNVERIFIED,
-BOS-1800-1908,Bosnia (to 1908),1800,1908,109,historical,Europe,BOS,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
+BOS-1878-1908,Bosnia (1878-1908),1878,1908,31,historical,Europe,BOS,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman vilayet (Bosnia Vilayet) before 1878.
 BRE-1800-1871,Bremen (city-state),1800,1871,72,historical,Europe,BRE,,GADM 4.1 or Natural Earth,,,FT; WHEP-fix,UNVERIFIED,
-DNK-1800-1920,Denmark (to 1920),1800,1920,121,historical,Europe,DNK,390.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,VERIFIED,KNOWN LIMITATION: missing 1864 Schleswig-Holstein loss (-33%)
+DNK-1800-1864,Denmark (with Schleswig-Holstein),1800,1864,65,historical,Europe,DNK,390.0,CShapes-Europe,,DNK-1864-1920,FT; CShapes,FIXED,Split from DNK-1800-1920. Pre-1864 Denmark including Schleswig-Holstein (~57086 km2). CShapes-Europe has pre-1864 polygon. Resolves documented known limitation.
+DNK-1864-1920,Denmark (to 1920),1864,1920,57,historical,Europe,DNK,390.0,CShapes 2.0 + CShapes-Europe,DNK-1800-1864,DNK-1920-2025,FT; CShapes,FIXED,Split from DNK-1800-1920. Post-Second Schleswig War Denmark without Schleswig-Holstein (-33% territory ~38496 km2).
 DMO-1800-1860,Duchy Modena,1800,1860,61,historical,Europe,DMO,332.0,CShapes-Europe,,ITA-1861-1919,FT,VERIFIED,
 DPA-1800-1860,Duchy Parma,1800,1860,61,historical,Europe,DPA,335.0,CShapes-Europe,,ITA-1861-1919,FT,VERIFIED,
 FRA-1800-1919,France (to 1919),1800,1919,120,historical,Europe,FRA,220.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,REGION,
 DEU-1800-1919,Germany (to 1919),1800,1919,120,historical,Europe,DEU,260.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,VERIFIED,
-GRC-1800-1913,Greece (to 1913),1800,1913,114,historical,Europe,GRC,350.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,VERIFIED,
+GRC-1830-1913,Greece (to 1913),1830,1913,84,historical,Europe,GRC,350.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).
 HAN-1800-1866,Hanover,1800,1866,67,historical,Europe,HAN,240.0,CShapes-Europe,,,FT; WHEP-fix,UNVERIFIED,
-HER-1800-1908,Herzegovina (to 1908),1800,1908,109,historical,Europe,HER,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
+HER-1878-1908,Herzegovina (1878-1908),1878,1908,31,historical,Europe,HER,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman territory before 1878.
 HES-1800-1871,Hesse,1800,1871,72,historical,Europe,HES,275.0,GADM 4.1 or Natural Earth,,,FT; WHEP-fix,UNVERIFIED,
 MEK-1800-1871,Mecklenburg,1800,1871,72,historical,Europe,MEK,280.0,GADM 4.1 or Natural Earth,,,FT; WHEP-fix,UNVERIFIED,
 OLD-1800-1871,Oldenburg,1800,1871,72,historical,Europe,OLD,,GADM 4.1 or Natural Earth,,,FT; WHEP-fix,UNVERIFIED,
@@ -446,8 +449,9 @@ PAP-1800-1870,Papal States,1800,1870,71,historical,Europe,PAP,327.0,CShapes-Euro
 SAR-1800-1860,Sardinia,1800,1860,61,historical,Europe,SAR,338.0,CShapes-Europe,,ITA-1861-1919,FT,VERIFIED,
 SAX-1800-1871,Saxony,1800,1871,72,historical,Europe,SAX,269.0,CShapes-Europe,,,FT; WHEP-fix,UNVERIFIED,
 SHL-1800-1866,Schleswig-Holstein,1800,1866,67,historical,Europe,SHL,,GADM 4.1 or Natural Earth,,,FT; WHEP-fix,UNVERIFIED,
-SER-1800-1913,Serbia (to 1913),1800,1913,114,historical,Europe,SER,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
-SWE-1800-1905,Sweden (to 1905),1800,1905,106,historical,Europe,SWE,380.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,VERIFIED,
+SWE-1800-1809,Sweden (with Finland to 1809),1800,1809,10,historical,Europe,SWE,380.0,None (pre-CShapes; Cliopatria available),,SWE-1809-1814,FT; CShapes,FIXED,Split from SWE-1800-1905. Sweden including Finland (~800000 km2). Lost Finland to Russia in Treaty of Fredrikshamn 1809 (-42% territory). Cliopatria and histmaps R package have boundaries.
+SWE-1809-1814,Sweden (1809-1814),1809,1814,6,historical,Europe,SWE,380.0,None (pre-CShapes; Cliopatria available),SWE-1800-1809,SWE-1814-1905,FT; CShapes,FIXED,Split from SWE-1800-1905. Sweden without Finland before gaining Norway. ~443000 km2.
+SWE-1814-1905,Sweden-Norway (1814-1905),1814,1905,92,historical,Europe,SWE,380.0,CShapes 2.0 + CShapes-Europe,SWE-1809-1814,,FT; CShapes,FIXED,Split from SWE-1800-1905. Personal union with Norway (Treaty of Kiel 1814). CShapes 2.0 polygon (761932 km2) valid for 1886-1905 portion.
 THU-1800-1871,Thuringia,1800,1871,72,historical,Europe,THU,,GADM 4.1 or Natural Earth,,,FT; WHEP-fix,UNVERIFIED,
 TUS-1800-1860,Tuscany,1800,1860,61,historical,Europe,TUS,337.0,CShapes-Europe,,ITA-1861-1919,FT,VERIFIED,
 TWO-1800-1860,Two Sicilies,1800,1860,61,historical,Europe,TWO,329.0,CShapes-Europe,,ITA-1861-1919,FT; WHEP-fix,"FIXED: merged duplicate ""Kingdom Two sicilies""",
@@ -489,7 +493,7 @@ BGR-1878-1913,Bulgaria (to 1913),1878,1913,36,historical,Europe,BGR,355.0,CShape
 MNE-1878-1913,Montenegro (to 1913),1878,1913,36,historical,Europe,MNE,341.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,VERIFIED,
 CRE-1898-1913,Crete,1898,1913,16,historical,Europe,CRE,,CShapes 2.0,,,FT; CShapes,VERIFIED,
 F228-1905-1914,USSR (1905-1914),1905,1914,10,historical,Europe,,365.0,CShapes 2.0,,,FT; CShapes,REGION,
-AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,historical,Europe,AUH,300.0,CShapes 2.0,,AUT-1918-2025; HUN-1918-1919,FT; CShapes,VERIFIED,
+AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,historical,Europe,AUH,300.0,CShapes 2.0,AUH-1867-1908,AUT-1918-2025; HUN-1918-1919,FT; CShapes,VERIFIED,
 BGR-1913-1918,Bulgaria (1913-1918),1913,1918,6,historical,Europe,BGR,355.0,CShapes 2.0,,,FT; CShapes,VERIFIED,
 GRC-1913-1919,Greece (1913-1919),1913,1919,7,historical,Europe,GRC,350.0,CShapes 2.0,,,FT; CShapes,VERIFIED,
 MNE-1913-1915,Montenegro (1913-1915),1913,1915,3,historical,Europe,MNE,341.0,CShapes 2.0,,,FT; CShapes,VERIFIED,

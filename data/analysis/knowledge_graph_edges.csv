@@ -430,9 +430,10 @@ PER-1909-1922,PER-1922-1942,temporal_next,"same ISO3 (PER), gap=0y",1922,1922
 PER-1922-1942,PER-1942-2025,temporal_next,"same ISO3 (PER), gap=0y",1942,1942
 TIB-1913-1914,TIB-1914-1950,temporal_next,"same ISO3 (TIB), gap=0y",1914,1914
 UNF-1800-1909,UNF-1909-1946,temporal_next,"same ISO3 (UNF), gap=0y",1909,1909
-GRC-1800-1913,GRC-1913-1919,temporal_next,"same ISO3 (GRC), gap=0y",1913,1913
+GRC-1830-1913,GRC-1913-1919,temporal_next,"same ISO3 (GRC), gap=0y",1913,1913
 GRC-1913-1919,GRC-1919-2025,temporal_next,"same ISO3 (GRC), gap=0y",1919,1919
-DNK-1800-1920,DNK-1920-2025,temporal_next,"same ISO3 (DNK), gap=0y",1920,1920
+DNK-1800-1864,DNK-1864-1920,temporal_next,"same ISO3 (DNK), gap=0y",1864,1864
+DNK-1864-1920,DNK-1920-2025,temporal_next,"same ISO3 (DNK), gap=0y",1920,1920
 TUR-1800-1912,TUR-1913-1914,temporal_next,"same ISO3 (TUR), gap=1y",1912,1913
 TUR-1913-1914,TUR-1914-1918,temporal_next,"same ISO3 (TUR), gap=0y",1914,1914
 TUR-1914-1918,TUR-1918-1920,temporal_next,"same ISO3 (TUR), gap=0y",1918,1918
@@ -464,7 +465,8 @@ CZE-1947-1992,CZE-1993-2025,temporal_next,"same ISO3 (CZE), gap=1y",1992,1993
 MNE-1878-1913,MNE-1913-1915,temporal_next,"same ISO3 (MNE), gap=0y",1913,1913
 RUS-1991-2014,RUS-2014-2025,temporal_next,"same ISO3 (RUS), gap=0y",2014,2014
 UKR-1991-2014,UKR-2014-2025,temporal_next,"same ISO3 (UKR), gap=0y",2014,2014
-AUH-1800-1908,AUH-1908-1918,temporal_next,"same ISO3 (AUH), gap=0y",1908,1908
+AUH-1800-1867,AUH-1867-1908,temporal_next,"same ISO3 (AUH), gap=0y",1867,1867
+AUH-1867-1908,AUH-1908-1918,temporal_next,"same ISO3 (AUH), gap=0y",1908,1908
 SER-1816-1913,SER-1913-1915,temporal_next,"same ISO3 (SER), gap=0y",1913,1913
 SER-1913-1915,SER-1913-1918,temporal_next,"same ISO3 (SER), gap=-2y",1915,1913
 USA-1800-1959,USA-1959-2025,temporal_next,"same ISO3 (USA), gap=0y",1959,1959
@@ -689,7 +691,8 @@ F5300-1800-2025,AFG-1919-2025,region_contains,M49 code 142,1919,2025
 F5300-1800-2025,BGD-1971-2025,region_contains,M49 code 142,1971,2025
 F5300-1800-2025,BTN-1800-2025,region_contains,M49 code 142,1800,2025
 F5300-1800-2025,IND-1949-2025,region_contains,M49 code 142,1949,2025
-F5300-1800-2025,IRN-1800-2025,region_contains,M49 code 142,1800,2025
+F5300-1800-2025,IRN-1800-1828,region_contains,M49 code 142,1800,1828
+F5300-1800-2025,IRN-1828-2025,region_contains,M49 code 142,1828,2025
 F5300-1800-2025,MDV-1800-2025,region_contains,M49 code 142,1800,2025
 F5300-1800-2025,NPL-1800-2025,region_contains,M49 code 142,1800,2025
 F5300-1800-2025,PAK-1971-2025,region_contains,M49 code 142,1971,2025
@@ -1083,7 +1086,9 @@ DRO-1800-1982,Antarctica,located_in_continent,continent column,1800,1982
 ATF-1800-2025,Antarctica,located_in_continent,continent column,1800,2025
 BHR-1800-2025,Asia,located_in_continent,continent column,1800,2025
 BTN-1800-2025,Asia,located_in_continent,continent column,1800,2025
-IRN-1800-2025,Asia,located_in_continent,continent column,1800,2025
+IRN-1800-1828,Asia,located_in_continent,continent column,1800,1828
+IRN-1800-1828,IRN-1828-2025,temporal_next,"same ISO3 (IRN), gap=0y",1828,1828
+IRN-1828-2025,Asia,located_in_continent,continent column,1828,2025
 JPN-1800-2025,Asia,located_in_continent,continent column,1800,2025
 KWT-1800-2025,Asia,located_in_continent,continent column,1800,2025
 MDV-1800-2025,Asia,located_in_continent,continent column,1800,2025
@@ -1288,18 +1293,20 @@ MNE-2006-2025,Europe,located_in_continent,continent column,2006,2025
 SRB-2008-2025,Europe,located_in_continent,continent column,2008,2025
 RUS-2014-2025,Europe,located_in_continent,continent column,2014,2025
 UKR-2014-2025,Europe,located_in_continent,continent column,2014,2025
-AUH-1800-1908,Europe,located_in_continent,continent column,1800,1908
+AUH-1800-1867,Europe,located_in_continent,continent column,1800,1867
+AUH-1867-1908,Europe,located_in_continent,continent column,1867,1908
 BAV-1800-1871,Europe,located_in_continent,continent column,1800,1871
-BOS-1800-1908,Europe,located_in_continent,continent column,1800,1908
+BOS-1878-1908,Europe,located_in_continent,continent column,1878,1908
 BRE-1800-1871,Europe,located_in_continent,continent column,1800,1871
-DNK-1800-1920,Europe,located_in_continent,continent column,1800,1920
+DNK-1800-1864,Europe,located_in_continent,continent column,1800,1864
+DNK-1864-1920,Europe,located_in_continent,continent column,1864,1920
 DMO-1800-1860,Europe,located_in_continent,continent column,1800,1860
 DPA-1800-1860,Europe,located_in_continent,continent column,1800,1860
 FRA-1800-1919,Europe,located_in_continent,continent column,1800,1919
 DEU-1800-1919,Europe,located_in_continent,continent column,1800,1919
-GRC-1800-1913,Europe,located_in_continent,continent column,1800,1913
+GRC-1830-1913,Europe,located_in_continent,continent column,1830,1913
 HAN-1800-1866,Europe,located_in_continent,continent column,1800,1866
-HER-1800-1908,Europe,located_in_continent,continent column,1800,1908
+HER-1878-1908,Europe,located_in_continent,continent column,1878,1908
 HES-1800-1871,Europe,located_in_continent,continent column,1800,1871
 MEK-1800-1871,Europe,located_in_continent,continent column,1800,1871
 OLD-1800-1871,Europe,located_in_continent,continent column,1800,1871
@@ -1307,8 +1314,11 @@ PAP-1800-1870,Europe,located_in_continent,continent column,1800,1870
 SAR-1800-1860,Europe,located_in_continent,continent column,1800,1860
 SAX-1800-1871,Europe,located_in_continent,continent column,1800,1871
 SHL-1800-1866,Europe,located_in_continent,continent column,1800,1866
-SER-1800-1913,Europe,located_in_continent,continent column,1800,1913
-SWE-1800-1905,Europe,located_in_continent,continent column,1800,1905
+SWE-1800-1809,SWE-1809-1814,temporal_next,"same ISO3 (SWE), gap=0y",1809,1809
+SWE-1809-1814,SWE-1814-1905,temporal_next,"same ISO3 (SWE), gap=0y",1814,1814
+SWE-1800-1809,Europe,located_in_continent,continent column,1800,1809
+SWE-1809-1814,Europe,located_in_continent,continent column,1809,1814
+SWE-1814-1905,Europe,located_in_continent,continent column,1814,1905
 THU-1800-1871,Europe,located_in_continent,continent column,1800,1871
 TUS-1800-1860,Europe,located_in_continent,continent column,1800,1860
 TWO-1800-1860,Europe,located_in_continent,continent column,1800,1860

@@ -222,7 +222,8 @@ DRO-1800-1982,Dronning Maud Land,dependency,Antarctica,1800,1982,DRO,polity,0,1,
 ATF-1800-2025,French Southern Territories,dependency,Antarctica,1800,2025,ATF,polity,1,1,2
 BHR-1800-2025,Bahrain,sovereign,Asia,1800,2025,BHR,polity,2,1,3
 BTN-1800-2025,Bhutan,sovereign,Asia,1800,2025,BTN,polity,1,1,2
-IRN-1800-2025,Iran,sovereign,Asia,1800,2025,IRN,polity,1,1,2
+IRN-1800-1828,Persia (Qajar to 1828),historical,Asia,1800,1828,IRN,polity,1,2,3
+IRN-1828-2025,Iran,sovereign,Asia,1828,2025,IRN,polity,2,1,3
 JPN-1800-2025,Japan,sovereign,Asia,1800,2025,JPN,polity,2,1,3
 KWT-1800-2025,Kuwait,sovereign,Asia,1800,2025,KWT,polity,2,1,3
 MDV-1800-2025,Maldives,sovereign,Asia,1800,2025,MDV,polity,1,1,2
@@ -427,18 +428,20 @@ MNE-2006-2025,Montenegro,sovereign,Europe,2006,2025,MNE,polity,4,1,5
 SRB-2008-2025,Serbia,sovereign,Europe,2008,2025,SRB,polity,4,1,5
 RUS-2014-2025,Russia,sovereign,Europe,2014,2025,RUS,polity,87,1,88
 UKR-2014-2025,Ukraine,sovereign,Europe,2014,2025,UKR,polity,4,1,5
-AUH-1800-1908,Austria-Hungary (to 1908),historical,Europe,1800,1908,AUH,polity,0,2,2
+AUH-1800-1867,Austrian Empire (to 1867),historical,Europe,1800,1867,AUH,polity,0,2,2
+AUH-1867-1908,Austria-Hungary (to 1908),historical,Europe,1867,1908,AUH,polity,1,2,3
 BAV-1800-1871,Bavaria,historical,Europe,1800,1871,BAV,polity,0,1,1
-BOS-1800-1908,Bosnia (to 1908),historical,Europe,1800,1908,BOS,polity,0,1,1
+BOS-1878-1908,Bosnia (1878-1908),historical,Europe,1878,1908,BOS,polity,0,1,1
 BRE-1800-1871,Bremen (city-state),historical,Europe,1800,1871,BRE,polity,0,1,1
-DNK-1800-1920,Denmark (to 1920),historical,Europe,1800,1920,DNK,polity,0,2,2
+DNK-1800-1864,Denmark (with Schleswig-Holstein),historical,Europe,1800,1864,DNK,polity,0,2,2
+DNK-1864-1920,Denmark (to 1920),historical,Europe,1864,1920,DNK,polity,1,2,3
 DMO-1800-1860,Duchy Modena,historical,Europe,1800,1860,DMO,polity,0,3,3
 DPA-1800-1860,Duchy Parma,historical,Europe,1800,1860,DPA,polity,0,3,3
 FRA-1800-1919,France (to 1919),historical,Europe,1800,1919,FRA,polity,1,9,10
 DEU-1800-1919,Germany (to 1919),historical,Europe,1800,1919,DEU,polity,0,9,9
-GRC-1800-1913,Greece (to 1913),historical,Europe,1800,1913,GRC,polity,0,2,2
+GRC-1830-1913,Greece (to 1913),historical,Europe,1830,1913,GRC,polity,0,2,2
 HAN-1800-1866,Hanover,historical,Europe,1800,1866,HAN,polity,0,1,1
-HER-1800-1908,Herzegovina (to 1908),historical,Europe,1800,1908,HER,polity,0,1,1
+HER-1878-1908,Herzegovina (1878-1908),historical,Europe,1878,1908,HER,polity,0,1,1
 HES-1800-1871,Hesse,historical,Europe,1800,1871,HES,polity,0,1,1
 MEK-1800-1871,Mecklenburg,historical,Europe,1800,1871,MEK,polity,0,1,1
 OLD-1800-1871,Oldenburg,historical,Europe,1800,1871,OLD,polity,0,1,1
@@ -446,8 +449,9 @@ PAP-1800-1870,Papal States,historical,Europe,1800,1870,PAP,polity,0,3,3
 SAR-1800-1860,Sardinia,historical,Europe,1800,1860,SAR,polity,0,3,3
 SAX-1800-1871,Saxony,historical,Europe,1800,1871,SAX,polity,0,1,1
 SHL-1800-1866,Schleswig-Holstein,historical,Europe,1800,1866,SHL,polity,0,1,1
-SER-1800-1913,Serbia (to 1913),historical,Europe,1800,1913,SER,polity,0,1,1
-SWE-1800-1905,Sweden (to 1905),historical,Europe,1800,1905,SWE,polity,0,1,1
+SWE-1800-1809,Sweden (with Finland to 1809),historical,Europe,1800,1809,SWE,polity,0,2,2
+SWE-1809-1814,Sweden (1809-1814),historical,Europe,1809,1814,SWE,polity,1,2,3
+SWE-1814-1905,Sweden-Norway (1814-1905),historical,Europe,1814,1905,SWE,polity,1,1,2
 THU-1800-1871,Thuringia,historical,Europe,1800,1871,THU,polity,0,1,1
 TUS-1800-1860,Tuscany,historical,Europe,1800,1860,TUS,polity,0,3,3
 TWO-1800-1860,Two Sicilies,historical,Europe,1800,1860,TWO,polity,0,3,3
