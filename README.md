@@ -86,6 +86,7 @@ Run sequentially. Each script sources `00_setup.R` for paths and packages.
 | `15_build_unified_polygons.R` | Merge all polygon sources into unified GeoPackage | `polities_database.gpkg` |
 | `16_data_integrity_fixes.R` | Fix pred/succ links, add aggregates, fill temporal gaps, rename IDN | Updated CSV + GeoPackage |
 | `17_add_new_polygons.R` | Add Japan/UK subnational, interwar entities, easy polygon fills | Updated CSV + GeoPackage |
+| `18_improve_african_coverage.R` | Verify Paine/CShapes entries, add predecessor/successor chains, polygon warnings | Updated CSV |
 
 ### External data (not redistributable)
 
