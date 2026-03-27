@@ -24,3 +24,4 @@ data/analysis/*.png
 # External input data (not redistributable; see docs/12_HISTORICAL_MAP_SOURCES.md)
 inputs/*
 !inputs/README.md
+*.gpkg
