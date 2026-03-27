@@ -10,7 +10,7 @@ ZAF-1828-2025,South Africa,sovereign,Africa,1828,2025,ZAF,polity,1,1,2
 DZA-1831-2025,Algeria,sovereign,Africa,1831,2025,DZA,polity,1,1,2
 LBR-1847-2025,Liberia,sovereign,Africa,1847,2025,LBR,polity,1,1,2
 GNB-1879-2025,Guinea-Bissau,sovereign,Africa,1879,2025,GNB,polity,1,1,2
-TUN-1881-2025,Tunisia,sovereign,Africa,1881,2025,TUN,polity,1,1,2
+TUN-1881-2025,Tunisia,sovereign,Africa,1881,2025,TUN,polity,2,1,3
 ERI-1882-2025,Eritrea,sovereign,Africa,1882,2025,ERI,polity,1,1,2
 MDG-1882-2025,Madagascar,sovereign,Africa,1882,2025,MDG,polity,1,1,2
 NAM-1884-2025,Namibia,sovereign,Africa,1884,2025,NAM,polity,1,1,2
@@ -85,7 +85,7 @@ KEN-1891-1894,Kenya (1891-1894),historical,Africa,1891,1894,KEN,polity,1,2,3
 ZIM-1891-1900,Zimbabwe (1891-1900),historical,Africa,1891,1900,ZIM,polity,1,1,2
 CON-1894-1910,Democratic Republic of the Congo (1894-1910),historical,Africa,1894,1910,CON,polity,1,1,2
 KEN-1894-1902,Kenya (1894-1902),historical,Africa,1894,1902,KEN,polity,1,2,3
-UGA-1894-1902,Uganda (1894-1902),historical,Africa,1894,1902,UGA,polity,3,2,5
+UGA-1894-1902,Uganda (1894-1902),historical,Africa,1894,1902,UGA,polity,4,2,6
 BEN-1895-1898,Benin (1895-1898),historical,Africa,1895,1898,BEN,polity,2,1,3
 ETH-1897-1902,Ethiopia (1897-1902),historical,Africa,1897,1902,ETH,polity,2,2,4
 CON-1898-1900,Congo (1898-1900),historical,Africa,1898,1900,CON,polity,0,2,2
@@ -1029,7 +1029,7 @@ RUYN-1993-2025,Yamal-Nenets (Autonomous Province),subnational,Europe,1993,2025,R
 RUYS-1993-2025,Yaroslavl' (Region),subnational,Europe,1993,2025,RUS,polity,0,2,2
 RUYV-1993-2025,Yevrey (Autonomous Region),subnational,Europe,1993,2025,RUS,polity,0,2,2
 RUZB-1993-2025,Zabaykal'ye (Territory),subnational,Europe,1993,2025,RUS,polity,0,2,2
-Africa,Africa,continent,Africa,1800,2025,,continent,237,0,237
+Africa,Africa,continent,Africa,1800,2025,,continent,260,0,260
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
 Asia,Asia,continent,Asia,1800,2025,,continent,194,0,194
 Europe,Europe,continent,Europe,1800,2025,,continent,269,0,269
@@ -1038,7 +1038,7 @@ North America,North America,continent,North America,1800,2025,,continent,128,0,1
 Oceania,Oceania,continent,Oceania,1800,2025,,continent,79,0,79
 South America,South America,continent,South America,1800,2025,,continent,62,0,62
 ASH-1800-1896,Ashanti Empire,historical,Africa,1800,1896,,polity,0,1,1
-SOK-1804-1903,Sokoto Caliphate,historical,Africa,1804,1903,,polity,0,2,2
+SOK-1804-1903,Sokoto Caliphate,historical,Africa,1804,1903,,polity,1,2,3
 DHY-1800-1894,Kingdom of Dahomey,historical,Africa,1800,1894,,polity,0,3,3
 ZUL-1816-1879,Zulu Kingdom,historical,Africa,1816,1879,,polity,0,3,3
 BNU-1800-1893,Bornu Empire,historical,Africa,1800,1893,,polity,0,1,1
@@ -1052,8 +1052,31 @@ LND-1800-1887,Lunda Empire,historical,Africa,1800,1887,,polity,0,1,1
 FTJ-1800-1896,Imamate of Futa Jallon,historical,Africa,1800,1896,,polity,0,1,1
 NDB-1823-1894,Ndebele Kingdom,historical,Africa,1823,1894,,polity,0,3,3
 GZE-1824-1895,Gaza Empire,historical,Africa,1824,1895,,polity,0,1,1
-OYO-1800-1836,Oyo Empire,historical,Africa,1800,1836,,polity,0,1,1
+OYO-1800-1836,Oyo Empire,historical,Africa,1800,1836,,polity,1,1,2
 RWK-1800-1890,Kingdom of Rwanda,historical,Africa,1800,1890,,polity,0,2,2
 BDK-1800-1890,Kingdom of Burundi,historical,Africa,1800,1890,,polity,0,2,2
 LST-1822-1868,Basotho Kingdom,historical,Africa,1822,1868,,polity,0,2,2
 SWK-1800-1894,Swazi Kingdom,historical,Africa,1800,1894,,polity,0,3,3
+LZI-1800-1890,Lozi Kingdom (Barotseland),historical,Africa,1800,1890,,polity,0,1,1
+BRG-1800-1897,Borgu Confederacy,historical,Africa,1800,1897,,polity,0,1,1
+DGM-1800-1899,Kingdom of Dagbon (Dagomba),historical,Africa,1800,1899,,polity,0,1,1
+MOS-1800-1897,Mossi Kingdoms,historical,Africa,1800,1897,,polity,0,1,1
+DMG-1800-1899,Sultanate of Damagaram,historical,Africa,1800,1899,,polity,0,1,1
+GOB-1800-1808,Kingdom of Gobir,historical,Africa,1800,1808,,polity,0,2,2
+PNV-1800-1882,Kingdom of Porto-Novo,historical,Africa,1800,1882,,polity,0,1,1
+BND-1800-1887,Kingdom of Bundu,historical,Africa,1800,1887,,polity,0,1,1
+FTT-1800-1862,Imamate of Futa Toro,historical,Africa,1800,1862,,polity,0,1,1
+IGL-1800-1901,Igala Kingdom,historical,Africa,1800,1901,,polity,0,1,1
+WLO-1800-1855,Kingdom of Waalo,historical,Africa,1800,1855,,polity,0,1,1
+CAY-1800-1886,Kingdom of Cayor,historical,Africa,1800,1886,,polity,0,1,1
+SNE-1800-1887,Kingdom of Sine,historical,Africa,1800,1887,,polity,0,1,1
+JOL-1800-1890,Kingdom of Jolof,historical,Africa,1800,1890,,polity,0,1,1
+SLM-1800-1887,Kingdom of Saloum,historical,Africa,1800,1887,,polity,0,1,1
+NKR-1800-1901,Kingdom of Nkore (Ankole),historical,Africa,1800,1901,,polity,0,2,2
+KSJ-1800-1911,Kingdom of Kasanje,historical,Africa,1800,1911,,polity,0,1,1
+TUN-1800-1881,Beylik of Tunis,historical,Africa,1800,1881,,polity,0,2,2
+BMB-1800-1899,Bemba Kingdom,historical,Africa,1800,1899,,polity,0,1,1
+IBD-1829-1893,Ibadan City-State,historical,Africa,1829,1893,,polity,0,2,2
+EGB-1830-1914,Egba United Government (Abeokuta),historical,Africa,1830,1914,,polity,0,1,1
+IJB-1800-1892,Ijebu Kingdom,historical,Africa,1800,1892,,polity,0,1,1
+KZM-1800-1899,Kingdom of Kazembe,historical,Africa,1800,1899,,polity,0,1,1

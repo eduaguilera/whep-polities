@@ -10,7 +10,7 @@ ZAF-1828-2025,South Africa,1828,2025,198,sovereign,Africa,ZAF,560.0,CShapes 2.0,
 DZA-1831-2025,Algeria,1831,2025,195,sovereign,Africa,DZA,615.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 LBR-1847-2025,Liberia,1847,2025,179,sovereign,Africa,LBR,450.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 GNB-1879-2025,Guinea-Bissau,1879,2025,147,sovereign,Africa,GNB,,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
-TUN-1881-2025,Tunisia,1881,2025,145,sovereign,Africa,TUN,616.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
+TUN-1881-2025,Tunisia,1881,2025,145,sovereign,Africa,TUN,616.0,CShapes 2.0,TUN-1800-1881,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 ERI-1882-2025,Eritrea,1882,2025,144,sovereign,Africa,ERI,531.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 MDG-1882-2025,Madagascar,1882,2025,144,sovereign,Africa,MDG,580.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 NAM-1884-2025,Namibia,1884,2025,142,sovereign,Africa,NAM,565.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
@@ -85,7 +85,7 @@ KEN-1891-1894,Kenya (1891-1894),1891,1894,4,historical,Africa,KEN,501.0,CShapes 
 ZIM-1891-1900,Zimbabwe (1891-1900),1891,1900,10,historical,Africa,ZIM,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 CON-1894-1910,Democratic Republic of the Congo (1894-1910),1894,1910,17,historical,Africa,CON,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 KEN-1894-1902,Kenya (1894-1902),1894,1902,9,historical,Africa,KEN,501.0,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
-UGA-1894-1902,Uganda (1894-1902),1894,1902,9,historical,Africa,UGA,500.0,CShapes 2.0,BGA-1800-1894; BNY-1800-1899,,FT; CShapes,UNVERIFIED,
+UGA-1894-1902,Uganda (1894-1902),1894,1902,9,historical,Africa,UGA,500.0,CShapes 2.0,BGA-1800-1894; BNY-1800-1899; NKR-1800-1901,,FT; CShapes,UNVERIFIED,
 BEN-1895-1898,Benin (1895-1898),1895,1898,4,historical,Africa,BEN,434.0,CShapes 2.0,DHY-1800-1894,,FT; CShapes,UNVERIFIED,
 ETH-1897-1902,Ethiopia (1897-1902),1897,1902,6,historical,Africa,ETH,530.0,CShapes 2.0,,,FT; CShapes,VERIFIED,
 CON-1898-1900,Congo (1898-1900),1898,1900,3,historical,Africa,CON,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
@@ -1049,3 +1049,26 @@ RWK-1800-1890,Kingdom of Rwanda,1800,1890,91,historical,Africa,,,Paine et al. (2
 BDK-1800-1890,Kingdom of Burundi,1800,1890,91,historical,Africa,,,Paine et al. (2024),,RWA-1920-1962,WHEP-fix,UNVERIFIED,Pre-colonial kingdom. Existed from c.17th century. Came under German East Africa sphere c.1890. Continued as monarchy under colonial rule. Paired with Rwanda as Ruanda-Urundi mandate.
 LST-1822-1868,Basotho Kingdom,1822,1868,47,historical,Africa,,,Paine et al. (2024),,LSO-1966-2025,WHEP-fix,UNVERIFIED,Pre-colonial kingdom founded by Moshoeshoe I. Unified Sotho peoples against Zulu/Ndebele pressure. Became British protectorate Basutoland 1868 at Moshoeshoe's request to avoid Boer expansion. Modern Lesotho.
 SWK-1800-1894,Swazi Kingdom,1800,1894,95,historical,Africa,,,Paine et al. (2024),,SWZ-1894-2025,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in modern Eswatini. Founded c.1750. Came under joint Boer-British administration 1894. Modern Eswatini preserves the monarchy.
+LZI-1800-1890,Lozi Kingdom (Barotseland),1800,1890,91,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in western Zambia (Barotseland). Founded c.17th century. Became British protectorate under BSAC 1890 (Lochner Concession).
+BRG-1800-1897,Borgu Confederacy,1800,1897,98,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Confederation of states (Bussa, Nikki, Illo, Kaiama) on Nigeria-Benin border. Partitioned between British and French 1897-98."
+DGM-1800-1899,Kingdom of Dagbon (Dagomba),1800,1899,100,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Pre-colonial kingdom in northern Ghana. Founded c.1400s. German protectorate 1899, then British after WWI."
+MOS-1800-1897,Mossi Kingdoms,1800,1897,98,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Mossi states (Ouagadougou, Yatenga, Tenkodogo) in modern Burkina Faso. Founded c.15th century. Conquered by France 1896-97."
+DMG-1800-1899,Sultanate of Damagaram,1800,1899,100,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Sultanate centered on Zinder, modern Niger. Founded c.1736. Conquered by France 1899 (Battle of Tirmini)."
+GOB-1800-1808,Kingdom of Gobir,1800,1808,9,historical,Africa,,,Paine et al. (2024),,SOK-1804-1903,WHEP-fix,UNVERIFIED,Hausa state in northern Nigeria. One of the original Hausa Bakwai. Conquered by Sokoto Caliphate 1808 during Usman dan Fodio's jihad. Continued resistance from exile at Tsibiri.
+PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,83,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Gbe kingdom on the coast of modern Benin (capital of modern Benin). Founded c.16th century. French protectorate from 1863, formally 1882."
+BND-1800-1887,Kingdom of Bundu,1800,1887,88,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Fula Islamic state on Senegal-Mali border (Faleme River valley). Founded c.1690s. Conquered by France ~1887.
+FTT-1800-1862,Imamate of Futa Toro,1800,1862,63,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Fula Islamic state along middle Senegal River (northern Senegal). Founded 1776. French conquest began 1855, effective control 1859-62."
+IGL-1800-1901,Igala Kingdom,1800,1901,102,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Pre-colonial kingdom at Niger-Benue confluence (Kogi State, Nigeria). Founded c.16th century. Came under British Royal Niger Company 1901."
+WLO-1800-1855,Kingdom of Waalo,1800,1855,56,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Wolof kingdom at the mouth of the Senegal River (Saint-Louis area). One of the oldest Wolof states. Conquered by France 1855 (Governor Faidherbe).
+CAY-1800-1886,Kingdom of Cayor,1800,1886,87,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Wolof kingdom in western Senegal (between Dakar and Saint-Louis). Founded c.1549. Last Damel Lat Dior killed 1886 resisting French railway construction.
+SNE-1800-1887,Kingdom of Sine,1800,1887,88,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Serer kingdom in Sine-Saloum region, Senegal. Founded c.14th century. French protectorate 1887."
+JOL-1800-1890,Kingdom of Jolof,1800,1890,91,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Wolof kingdom in interior Senegal. Rump of the former Jolof Empire (fragmented c.1550). Conquered by France ~1890.
+SLM-1800-1887,Kingdom of Saloum,1800,1887,88,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Serer kingdom in Sine-Saloum region, Senegal (paired with Sine). Founded c.14th century. French protectorate 1887."
+NKR-1800-1901,Kingdom of Nkore (Ankole),1800,1901,102,historical,Africa,,,Paine et al. (2024),,UGA-1894-1902,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in southwestern Uganda. Founded c.15th century. Incorporated into Uganda Protectorate 1901.
+KSJ-1800-1911,Kingdom of Kasanje,1800,1911,112,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,"Imbangala kingdom in the Kwango valley, Angola. Founded c.1620. Major slave trade hub. Effectively subjugated by Portuguese by early 1900s, fully absorbed ~1911."
+TUN-1800-1881,Beylik of Tunis,1800,1881,82,historical,Africa,TUN,616.0,Paine et al. (2024),,TUN-1881-2025,WHEP-fix,UNVERIFIED,Autonomous Ottoman beylik in modern Tunisia. Husainid dynasty from 1705. French protectorate (Treaty of Bardo) 1881.
+BMB-1800-1899,Bemba Kingdom,1800,1899,100,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in northern Zambia (Chitimukulu paramount). Founded c.17th century. BSAC control 1899.
+IBD-1829-1893,Ibadan City-State,1829,1893,65,historical,Africa,,,Paine et al. (2024),OYO-1800-1836,,WHEP-fix,UNVERIFIED,Yoruba military republic and successor to Oyo Empire hegemony. Founded ~1829 by warriors fleeing Fulani advance. Dominant Yoruba power by 1840s. British treaty 1893.
+EGB-1830-1914,Egba United Government (Abeokuta),1830,1914,85,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Yoruba state centered on Abeokuta. Founded ~1830 by Egba refugees from the Oyo collapse. Had formal self-government; recognized as independent by Britain until 1914.
+IJB-1800-1892,Ijebu Kingdom,1800,1892,93,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Yoruba kingdom in southwestern Nigeria. Major trade power controlling access to Lagos lagoon. Conquered by Britain 1892 (Ijebu Expedition).
+KZM-1800-1899,Kingdom of Kazembe,1800,1899,100,historical,Africa,,,Paine et al. (2024),,,WHEP-fix,UNVERIFIED,Eastern Lunda kingdom in Luapula valley (Zambia/DRC border). Offshoot of Lunda Empire (Mwata Kazembe). Major copper and salt trade. BSAC control ~1899.

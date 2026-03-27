@@ -60,6 +60,7 @@ cat("CRS:", st_crs(pcs)$input, "\n\n")
 
 # --- 2. Map PCS names to WHEP polity codes ---
 pcs_to_whep <- c(
+  # --- 20 new kingdoms (first batch) ---
   "Asante"     = "ASH-1800-1896",
   "Sokoto"     = "SOK-1804-1903",
   "Dahomey"    = "DHY-1800-1894",
@@ -80,7 +81,31 @@ pcs_to_whep <- c(
   "Burundi"    = "BDK-1800-1890",
   "Lesotho"    = "LST-1822-1868",
   "Swazi"      = "SWK-1800-1894",
-  # Existing polities that also get Paine polygons:
+  # --- 23 remaining PCS states ---
+  "Lozi"       = "LZI-1800-1890",
+  "Borgu"      = "BRG-1800-1897",
+  "Dagomba"    = "DGM-1800-1899",
+  "Mossi"      = "MOS-1800-1897",
+  "Damagaram"  = "DMG-1800-1899",
+  "Gobir"      = "GOB-1800-1808",
+  "Porto Novo" = "PNV-1800-1882",
+  "Bundu"      = "BND-1800-1887",
+  "Futa Toro"  = "FTT-1800-1862",
+  "Igala"      = "IGL-1800-1901",
+  "Walo"       = "WLO-1800-1855",
+  "Cayor"      = "CAY-1800-1886",
+  "Sine"       = "SNE-1800-1887",
+  "Jolof"      = "JOL-1800-1890",
+  "Salum"      = "SLM-1800-1887",
+  "Nkore"      = "NKR-1800-1901",
+  "Kasanje"    = "KSJ-1800-1911",
+  "Tunis"      = "TUN-1800-1881",
+  "Bemba"      = "BMB-1800-1899",
+  "Ibadan"     = "IBD-1829-1893",
+  "Egba"       = "EGB-1830-1914",
+  "Ijebu"      = "IJB-1800-1892",
+  "Kazembe"    = "KZM-1800-1899",
+  # --- Existing polities that also get Paine polygons ---
   "Ethiopia"   = "ETH-1800-1889",
   "Egypt"      = "EGY-1800-1899",
   "Morocco"    = "MOR-1800-1904"

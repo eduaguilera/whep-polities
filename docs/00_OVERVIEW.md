@@ -9,7 +9,7 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,050 political entities ("polities")** spanning
+A comprehensive database of **1,073 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
 Includes **216 present-day subnational entries** for the 6 largest countries by area.
@@ -23,9 +23,9 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,050 |
+| Total entries | 1,073 |
 | Sovereign states | 194 |
-| Historical entities | 363 |
+| Historical entities | 386 |
 | Colonial entities | 47 |
 | Dependencies/territories | 75 |
 | Trade aggregates | 60 |
@@ -49,7 +49,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Geographic Distribution (non-subnational)
 | Continent | Entries |
 |-----------|---------|
-| Africa | 237 |
+| Africa | 260 |
 | Europe | 186 |
 | Asia | 163 |
 | Global (regions) | 76 |
@@ -132,7 +132,7 @@ Each polity is assigned a polygon source indicating where its geographic boundar
 | CShapes-Europe | 21 | Pre-1886 European states |
 | GADM 4.1 (subnational) | 7 | Historical sub-national units |
 | GADM 3.6 (subnational) | 216 | Present-day admin-1 for top 6 countries |
-| Paine et al. (2024) | 20 | Pre-colonial African states |
+| Paine et al. (2024) | 37 | Pre-colonial African states |
 | Paine et al. (2024) + Cliopatria | 6 | Pre-colonial African states (dual source) |
 | None (statistical aggregate) | 77 | Regions (no geometry needed) |
 
@@ -178,7 +178,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
 
 ### Knowledge Graph
-- **1,058 nodes** (1,050 polities + 8 continent nodes), **1,877 edges**, **9 relation types**
+- **1,081 nodes** (1,073 polities + 8 continent nodes), **1,904 edges**, **9 relation types**
 - Exports: CSV, GraphML (Gephi/Cytoscape/igraph compatible)
 
 ### Polygon Cross-Validation
