@@ -1106,3 +1106,132 @@ NA,NA,NA,Asia,1820,1912,NA,NA,NA,NA,NA,CNJX-1820-1912,Jiangxi (Province),subnati
 NA,NA,NA,Asia,1820,1912,NA,NA,NA,NA,NA,CNGX-1820-1912,Guangxi (Province),subnational,1
 NA,NA,NA,Asia,1820,1912,NA,NA,NA,NA,NA,CNSD-1820-1912,Shandong (Province),subnational,1
 NA,NA,NA,Asia,1820,1912,NA,NA,NA,NA,NA,CNJS-1820-1912,Jiangsu (Province),subnational,1
+NA,NA,NA,North America,1920,1958,NA,NA,NA,NA,NA,USAK-1920-1958,Alaska Territory (Territory),subnational,2
+NA,NA,NA,North America,1820,1958,NA,NA,NA,NA,NA,USAL-1820-1958,Alabama (State),subnational,2
+NA,NA,NA,North America,1850,1958,NA,NA,NA,NA,NA,USAR-1850-1958,Arkansas (State),subnational,2
+NA,NA,NA,North America,1912,1958,NA,NA,NA,NA,NA,USAZ-1912-1958,Arizona (State),subnational,2
+NA,NA,NA,North America,1870,1958,NA,NA,NA,NA,NA,USCA-1870-1958,California (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USCO-1900-1958,Colorado (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USCT-1800-1958,Connecticut (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USDC-1800-1958,District of Columbia (Territory),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USDE-1800-1958,Delaware (State),subnational,2
+NA,NA,NA,North America,1850,1958,NA,NA,NA,NA,NA,USFL-1850-1958,Florida (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USGA-1800-1958,Georgia (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USHI-1900-1958,Hawaii Territory (Territory),subnational,2
+NA,NA,NA,North America,1850,1958,NA,NA,NA,NA,NA,USIA-1850-1958,Iowa (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USID-1900-1958,Idaho (State),subnational,2
+NA,NA,NA,North America,1820,1958,NA,NA,NA,NA,NA,USIL-1820-1958,Illinois (State),subnational,2
+NA,NA,NA,North America,1820,1958,NA,NA,NA,NA,NA,USIN-1820-1958,Indiana (State),subnational,2
+NA,NA,NA,North America,1870,1958,NA,NA,NA,NA,NA,USKS-1870-1958,Kansas (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USKY-1800-1958,Kentucky (State),subnational,2
+NA,NA,NA,North America,1820,1958,NA,NA,NA,NA,NA,USLA-1820-1958,Louisiana (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USMA-1800-1958,Massachusetts (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USMD-1800-1958,Maryland (State),subnational,2
+NA,NA,NA,North America,1820,1958,NA,NA,NA,NA,NA,USME-1820-1958,Maine (State),subnational,2
+NA,NA,NA,North America,1850,1958,NA,NA,NA,NA,NA,USMI-1850-1958,Michigan (State),subnational,2
+NA,NA,NA,North America,1870,1958,NA,NA,NA,NA,NA,USMN-1870-1958,Minnesota (State),subnational,2
+NA,NA,NA,North America,1850,1958,NA,NA,NA,NA,NA,USMO-1850-1958,Missouri (State),subnational,2
+NA,NA,NA,North America,1820,1958,NA,NA,NA,NA,NA,USMS-1820-1958,Mississippi (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USMT-1900-1958,Montana (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USNC-1800-1958,North Carolina (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USND-1900-1958,North Dakota (State),subnational,2
+NA,NA,NA,North America,1870,1958,NA,NA,NA,NA,NA,USNE-1870-1958,Nebraska (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USNH-1800-1958,New Hampshire (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USNJ-1800-1958,New Jersey (State),subnational,2
+NA,NA,NA,North America,1912,1958,NA,NA,NA,NA,NA,USNM-1912-1958,New Mexico (State),subnational,2
+NA,NA,NA,North America,1870,1958,NA,NA,NA,NA,NA,USNV-1870-1958,Nevada (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USNY-1800-1958,New York (State),subnational,2
+NA,NA,NA,North America,1820,1958,NA,NA,NA,NA,NA,USOH-1820-1958,Ohio (State),subnational,2
+NA,NA,NA,North America,1912,1958,NA,NA,NA,NA,NA,USOK-1912-1958,Oklahoma (State),subnational,2
+NA,NA,NA,North America,1870,1958,NA,NA,NA,NA,NA,USOR-1870-1958,Oregon (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USPA-1800-1958,Pennsylvania (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USRI-1800-1958,Rhode Island (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USSC-1800-1958,South Carolina (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USSD-1900-1958,South Dakota (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USTN-1800-1958,Tennessee (State),subnational,2
+NA,NA,NA,North America,1850,1958,NA,NA,NA,NA,NA,USTX-1850-1958,Texas (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USUT-1900-1958,Utah (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USVA-1800-1958,Virginia (State),subnational,2
+NA,NA,NA,North America,1800,1958,NA,NA,NA,NA,NA,USVT-1800-1958,Vermont (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USWA-1900-1958,Washington (State),subnational,2
+NA,NA,NA,North America,1850,1958,NA,NA,NA,NA,NA,USWI-1850-1958,Wisconsin (State),subnational,2
+NA,NA,NA,North America,1870,1958,NA,NA,NA,NA,NA,USWV-1870-1958,West Virginia (State),subnational,2
+NA,NA,NA,North America,1900,1958,NA,NA,NA,NA,NA,USWY-1900-1958,Wyoming (State),subnational,2
+NA,NA,NA,South America,1980,1987,NA,NA,NA,NA,NA,BRAC-1980-1987,Acre (State),subnational,2
+NA,NA,NA,South America,1900,1987,NA,NA,NA,NA,NA,BRAL-1900-1987,Alagoas (State),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRAM-1872-1987,Amazonas (Province),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRBA-1872-1987,Bahia (Province),subnational,2
+NA,NA,NA,South America,1980,1987,NA,NA,NA,NA,NA,BRDF-1980-1987,Brasília (State),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRCE-1872-1987,Ceará (Province),subnational,2
+NA,NA,NA,South America,1940,1987,NA,NA,NA,NA,NA,BRES-1940-1987,Espírito Santo (State),subnational,2
+NA,NA,NA,South America,1940,1987,NA,NA,NA,NA,NA,BRGO-1940-1987,Goiás (State),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRMA-1872-1987,Maranhão (Province),subnational,2
+NA,NA,NA,South America,1940,1987,NA,NA,NA,NA,NA,BRMT-1940-1987,Mato Grosso (State),subnational,2
+NA,NA,NA,South America,1980,1987,NA,NA,NA,NA,NA,BRMS-1980-1987,Mato Grosso do Sul (State),subnational,2
+NA,NA,NA,South America,1940,1987,NA,NA,NA,NA,NA,BRMG-1940-1987,Minas Gerais (State),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRPA-1872-1987,Pará (Province),subnational,2
+NA,NA,NA,South America,1940,1987,NA,NA,NA,NA,NA,BRPB-1940-1987,Paraíba (State),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRPR-1872-1987,Paraná (Province),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRPE-1872-1987,Pernambuco (Province),subnational,2
+NA,NA,NA,South America,1940,1987,NA,NA,NA,NA,NA,BRPI-1940-1987,Piauí (State),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRRJ-1872-1987,Rio de Janeiro (Province),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRRN-1872-1987,Rio Grande do Norte (Province),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRRS-1872-1987,Rio Grande do Sul (Province),subnational,2
+NA,NA,NA,South America,1940,1987,NA,NA,NA,NA,NA,BRSC-1940-1987,Santa Catarina (State),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRSP-1872-1987,São Paulo (Province),subnational,2
+NA,NA,NA,South America,1872,1987,NA,NA,NA,NA,NA,BRSE-1872-1987,Sergipe (Province),subnational,2
+NA,NA,NA,South America,1980,1987,NA,NA,NA,NA,NA,BRRO-1980-1987,Território de Rondônia (State),subnational,2
+NA,NA,NA,South America,1960,1987,NA,NA,NA,NA,NA,BRRR-1960-1987,Território de Roraima (State),subnational,2
+NA,NA,NA,South America,1960,1987,NA,NA,NA,NA,NA,BRAP-1960-1987,Território do Amapá (State),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES04-1833-2025,Almería (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES11-1833-2025,Cádiz (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES14-1833-2025,Córdoba (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES18-1833-2025,Granada (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES21-1833-2025,Huelva (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES23-1833-2025,Jaén (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES29-1833-2025,Málaga (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES41-1833-2025,Sevilla (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES22-1833-2025,Huesca (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES44-1833-2025,Teruel (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES50-1833-2025,Zaragoza (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES33-1833-2025,Asturias (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES07-1833-2025,Baleares (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES35-1833-2025,Las Palmas (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES38-1833-2025,Santa Cruz de Tenerife (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES39-1833-2025,Cantabria (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES05-1833-2025,Ávila (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES09-1833-2025,Burgos (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES24-1833-2025,León (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES34-1833-2025,Palencia (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES37-1833-2025,Salamanca (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES40-1833-2025,Segovia (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES42-1833-2025,Soria (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES47-1833-2025,Valladolid (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES49-1833-2025,Zamora (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES02-1833-2025,Albacete (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES13-1833-2025,Ciudad Real (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES16-1833-2025,Cuenca (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES19-1833-2025,Guadalajara (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES45-1833-2025,Toledo (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES08-1833-2025,Barcelona (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES17-1833-2025,Gerona (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES25-1833-2025,Lérida (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES43-1833-2025,Tarragona (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES03-1833-2025,Alicante (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES12-1833-2025,Castellón (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES46-1833-2025,Valencia (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES06-1833-2025,Badajoz (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES10-1833-2025,Cáceres (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES15-1833-2025,La Coruña (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES27-1833-2025,Lugo (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES32-1833-2025,Orense (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES36-1833-2025,Pontevedra (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES28-1833-2025,Madrid (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES30-1833-2025,Murcia (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES31-1833-2025,Navarra (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES01-1833-2025,Álava (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES20-1833-2025,Guipúzcoa (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES48-1833-2025,Vizcaya (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES26-1833-2025,La Rioja (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES51-1833-2025,Ceuta (Province),subnational,2
+NA,NA,NA,Europe,1833,2025,NA,NA,NA,NA,NA,ES52-1833-2025,Melilla (Province),subnational,2
