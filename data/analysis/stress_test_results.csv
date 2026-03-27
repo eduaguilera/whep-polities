@@ -4,29 +4,29 @@ test_id,name,status,detail
 3,Valid polity types,PASS,10 types used
 4,Valid continents,PASS,8 used
 5,Code format (XXX-yyyy-YYYY),PASS,all codes valid
-6,Code uniqueness,PASS,1026 unique
+6,Code uniqueness,PASS,1241 unique
 7,start_year <= end_year,PASS,all valid
 8,duration_years consistency,PASS,all consistent
 9,Code dates match column dates,PASS,all match
 10,Dates within 1800-2025,PASS,all in range
-11,Predecessor codes exist,WARN,15 broken refs
+11,Predecessor codes exist,PASS,all refs valid
 12,Successor codes exist,PASS,all refs valid
-13,Bidirectional predecessor<->successor,WARN,2 asymmetric links
-14,ISO3 code format,PASS,920 valid ISO3 codes
-15,ISO3 code uniqueness across names,WARN,124 ISO codes shared by different names
-16,COW codes match external system,PASS,392 COW codes assigned
-17,Polygon coverage rate,PASS,939/949 (98.9%)
-18,All polygon geometries valid,PASS,906 OK (33 needed st_make_valid)
-19,No empty geometries,PASS,none empty
+13,Bidirectional predecessor<->successor,WARN,106 asymmetric links
+14,ISO3 code format,PASS,1090 valid ISO3 codes
+15,ISO3 code uniqueness across names,WARN,130 ISO codes shared by different names
+16,COW codes match external system,PASS,398 COW codes assigned
+17,Polygon coverage rate,PASS,920/1164 (79.0%)
+18,All polygon geometries valid,PASS,910 OK (33 needed st_make_valid)
+19,No empty geometries,FAIL,4 empty
 20,CRS is EPSG:4326,PASS,EPSG:4326
-21,Polygon centroids match continent,PASS,checked 939 polygons
-22,Overlapping non-aggregate entries per ISO,WARN,401 overlapping pairs
+21,Polygon centroids match continent,PASS,checked 920 polygons
+22,Overlapping non-aggregate entries per ISO,WARN,1503 overlapping pairs
 23,Data source labels valid,PASS,checked
-24,Verification coverage,PASS,68% verified
-25,No empty decades,PASS,min 227 in decade starting 1800
+24,Verification coverage,PASS,83% verified
+25,No empty decades,PASS,min 268 in decade starting 1800
 26,No sudden drops in active count,PASS,max drop: 14
-27,No suspiciously tiny polygons,PASS,0 very tiny polygons
+27,No suspiciously tiny polygons,PASS,4 very tiny polygons
 28,Large polygon check,PASS,checked
-29,FAOSTAT entries have ISO3,PASS,381/472 FAOSTAT entries have ISO3
+29,FAOSTAT entries have ISO3,PASS,382/473 FAOSTAT entries have ISO3
 30,Decolonization event coverage,PASS,checked (see cross_reference analysis)
 31,Polygon source matches claim,PASS,checked

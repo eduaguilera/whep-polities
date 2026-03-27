@@ -1,15 +1,46 @@
 source,target,relation,evidence,start_year,end_year
+ZUL-1816-1879,ZAF-1828-2025,predecessor_of,predecessor column,1828,2025
 TUN-1800-1881,TUN-1881-2025,predecessor_of,predecessor column,1881,2025
+NDB-1823-1894,ZWE-1890-2025,predecessor_of,predecessor column,1890,2025
 SWK-1800-1894,SWZ-1894-2025,predecessor_of,predecessor column,1894,2025
+GHA-1898-1956,GHA-1957-2025,predecessor_of,predecessor column,1957,2025
+FTJ-1800-1896,GIN-1958-2025,predecessor_of,predecessor column,1958,2025
+DHY-1800-1894,BEN-1960-2025,predecessor_of,predecessor column,1960,2025
+MOS-1800-1897,BFA-1960-2025,predecessor_of,predecessor column,1960,2025
+WAD-1800-1912,TCD-1960-2025,predecessor_of,predecessor column,1960,2025
+LBA-1800-1885,COD-1960-2025,predecessor_of,predecessor column,1960,2025
+CAY-1800-1886,SEN-1960-2025,predecessor_of,predecessor column,1960,2025
+NIG-1914-1961,NGA-1961-2025,predecessor_of,predecessor column,1961,2025
+BDK-1800-1890,BDI-1962-2025,predecessor_of,predecessor column,1962,2025
+RWK-1800-1890,RWA-1962-2025,predecessor_of,predecessor column,1962,2025
+BGA-1800-1894,UGA-1962-2025,predecessor_of,predecessor column,1962,2025
+BMB-1800-1899,ZMB-1964-2025,predecessor_of,predecessor column,1964,2025
+LST-1822-1868,LSO-1966-2025,predecessor_of,predecessor column,1966,2025
 SUD-1956-2011,SSD-2011-2025,predecessor_of,predecessor column,2011,2025
 SUD-1956-2011,SDN-2011-2025,predecessor_of,predecessor column,2011,2025
 LBA-1800-1885,CON-1885-1891,predecessor_of,predecessor column,1885,1891
 LND-1800-1887,CON-1885-1891,predecessor_of,predecessor column,1885,1891
+EGY-1800-1899,EGY-1899-1925,successor_of,successor column,1800,1899
+MAD-1800-1912,MAD-1912-1946,successor_of,successor column,1800,1912
+MOR-1800-1904,MOR-1904-1956,successor_of,successor column,1800,1904
 NDB-1823-1894,ZIM-1889-1891,predecessor_of,predecessor column,1889,1891
 BGA-1800-1894,UGA-1894-1902,predecessor_of,predecessor column,1894,1902
 BNY-1800-1899,UGA-1894-1902,predecessor_of,predecessor column,1894,1902
 NKR-1800-1901,UGA-1894-1902,predecessor_of,predecessor column,1894,1902
 DHY-1800-1894,BEN-1895-1898,predecessor_of,predecessor column,1895,1898
+ASH-1800-1896,GHA-1898-1956,predecessor_of,predecessor column,1898,1956
+GHA-1898-1956,GHA-1957-2025,successor_of,successor column,1898,1956
+EGY-1800-1899,EGY-1899-1925,predecessor_of,predecessor column,1899,1925
+SOK-1804-1903,NOR-1899-1904,predecessor_of,predecessor column,1899,1904
+BNU-1800-1893,NOR-1899-1904,predecessor_of,predecessor column,1899,1904
+MOR-1800-1904,MOR-1904-1956,predecessor_of,predecessor column,1904,1956
+NOR-1904-1913,NIG-1914-1961,successor_of,successor column,1904,1913
+SOU-1906-1913,NIG-1914-1961,successor_of,successor column,1906,1913
+MAD-1800-1912,MAD-1912-1946,predecessor_of,predecessor column,1912,1946
+NOR-1904-1913,NIG-1914-1961,predecessor_of,predecessor column,1914,1961
+SOU-1906-1913,NIG-1914-1961,predecessor_of,predecessor column,1914,1961
+NIG-1914-1961,NGA-1961-2025,successor_of,successor column,1914,1961
+MOR-1956-1958,MAR-1979-2025,successor_of,successor column,1956,1958
 SUD-1956-2011,SDN-2011-2025,successor_of,successor column,1956,2011
 SUD-1956-2011,SSD-2011-2025,successor_of,successor column,1956,2011
 ZUL-1816-1879,NAT-1843-1895,predecessor_of,predecessor column,1843,1895
@@ -149,23 +180,60 @@ BRA-1800-1903,BRA-1903-1909,predecessor_of,predecessor column,1903,1909
 BRA-1903-1909,BRA-1909-2025,successor_of,successor column,1903,1909
 COL-1800-1903,COL-1903-1922,predecessor_of,predecessor column,1903,1922
 COL-1903-1922,COL-1922-2025,successor_of,successor column,1903,1922
+ASH-1800-1896,GHA-1898-1956,successor_of,successor column,1800,1896
 SOK-1804-1903,NOR-1899-1904,successor_of,successor column,1804,1903
 DHY-1800-1894,BEN-1895-1898,successor_of,successor column,1800,1894
+DHY-1800-1894,BEN-1960-2025,successor_of,successor column,1800,1894
 ZUL-1816-1879,NAT-1843-1895,successor_of,successor column,1816,1879
+ZUL-1816-1879,ZAF-1828-2025,successor_of,successor column,1816,1879
+BNU-1800-1893,NOR-1899-1904,successor_of,successor column,1800,1893
 WAD-1800-1912,CHA-1900-1912,successor_of,successor column,1800,1912
+WAD-1800-1912,TCD-1960-2025,successor_of,successor column,1800,1912
 DFR-1800-1874,SUD-1899-1902,successor_of,successor column,1800,1874
 BGA-1800-1894,UGA-1894-1902,successor_of,successor column,1800,1894
+BGA-1800-1894,UGA-1962-2025,successor_of,successor column,1800,1894
 BNY-1800-1899,UGA-1894-1902,successor_of,successor column,1800,1899
+BNY-1800-1899,UGA-1962-2025,successor_of,successor column,1800,1899
+BKN-1800-1897,SOU-1899-1906,successor_of,successor column,1800,1897
 LBA-1800-1885,CON-1885-1891,successor_of,successor column,1800,1885
+LBA-1800-1885,COD-1960-2025,successor_of,successor column,1800,1885
+LND-1800-1887,COD-1960-2025,successor_of,successor column,1800,1887
+FTJ-1800-1896,GIN-1958-2025,successor_of,successor column,1800,1896
 NDB-1823-1894,ZIM-1889-1891,successor_of,successor column,1823,1894
+NDB-1823-1894,ZWE-1890-2025,successor_of,successor column,1823,1894
+GZE-1824-1895,MOZ-1816-2025,successor_of,successor column,1824,1895
+OYO-1800-1836,IBD-1829-1893,successor_of,successor column,1800,1836
 RWK-1800-1890,RWA-1920-1962,successor_of,successor column,1800,1890
+RWK-1800-1890,RWA-1962-2025,successor_of,successor column,1800,1890
 BDK-1800-1890,RWA-1920-1962,successor_of,successor column,1800,1890
+BDK-1800-1890,BDI-1962-2025,successor_of,successor column,1800,1890
 LST-1822-1868,LSO-1966-2025,successor_of,successor column,1822,1868
 SWK-1800-1894,SWZ-1894-2025,successor_of,successor column,1800,1894
+LZI-1800-1890,ZMB-1964-2025,successor_of,successor column,1800,1890
+BRG-1800-1897,NIG-1914-1961,successor_of,successor column,1800,1897
+DGM-1800-1899,GHA-1898-1956,successor_of,successor column,1800,1899
+MOS-1800-1897,BFA-1960-2025,successor_of,successor column,1800,1897
+DMG-1800-1899,NER-1960-2025,successor_of,successor column,1800,1899
 GOB-1800-1808,SOK-1804-1903,successor_of,successor column,1800,1808
+PNV-1800-1882,BEN-1960-2025,successor_of,successor column,1800,1882
+BND-1800-1887,SEN-1960-2025,successor_of,successor column,1800,1887
+FTT-1800-1862,SEN-1960-2025,successor_of,successor column,1800,1862
+IGL-1800-1901,NOR-1899-1904,successor_of,successor column,1800,1901
+WLO-1800-1855,SEN-1960-2025,successor_of,successor column,1800,1855
+CAY-1800-1886,SEN-1960-2025,successor_of,successor column,1800,1886
+SNE-1800-1887,SEN-1960-2025,successor_of,successor column,1800,1887
+JOL-1800-1890,SEN-1960-2025,successor_of,successor column,1800,1890
+SLM-1800-1887,SEN-1960-2025,successor_of,successor column,1800,1887
 NKR-1800-1901,UGA-1894-1902,successor_of,successor column,1800,1901
+NKR-1800-1901,UGA-1962-2025,successor_of,successor column,1800,1901
+KSJ-1800-1911,AGO-1816-2025,successor_of,successor column,1800,1911
 TUN-1800-1881,TUN-1881-2025,successor_of,successor column,1800,1881
+BMB-1800-1899,ZMB-1964-2025,successor_of,successor column,1800,1899
 OYO-1800-1836,IBD-1829-1893,predecessor_of,predecessor column,1829,1893
+IBD-1829-1893,SOU-1899-1906,successor_of,successor column,1829,1893
+EGB-1830-1914,NGA-1961-2025,successor_of,successor column,1830,1914
+IJB-1800-1892,SOU-1899-1906,successor_of,successor column,1800,1892
+KZM-1800-1899,ZMB-1964-2025,successor_of,successor column,1800,1899
 USAK-1920-1958,USAK-1959-2025,successor_of,successor column,1920,1958
 USAL-1820-1958,USAL-1959-2025,successor_of,successor column,1820,1958
 USAR-1850-1958,USAR-1959-2025,successor_of,successor column,1850,1958
@@ -653,6 +721,13 @@ USA-1800-2025,USA-1800-1959,aggregate_covers,"same ISO3 (USA), date range contai
 RUS-1800-2025,RUS-2014-2025,aggregate_covers,"same ISO3 (RUS), date range contained",2014,2025
 RUS-1800-2025,RUS-1991-2014,aggregate_covers,"same ISO3 (RUS), date range contained",1991,2014
 ZAF-1800-2025,ZAF-1828-2025,aggregate_covers,"same ISO3 (ZAF), date range contained",1828,2025
+IND-1800-2025,IND-1949-2025,aggregate_covers,"same ISO3 (IND), date range contained",1949,2025
+IND-1800-2025,IND-1800-1893,aggregate_covers,"same ISO3 (IND), date range contained",1800,1893
+IND-1800-2025,IND-1800-1947,aggregate_covers,"same ISO3 (IND), date range contained",1800,1947
+IND-1800-2025,IND-1893-1914,aggregate_covers,"same ISO3 (IND), date range contained",1893,1914
+IND-1800-2025,IND-1914-1937,aggregate_covers,"same ISO3 (IND), date range contained",1914,1937
+IND-1800-2025,IND-1937-1947,aggregate_covers,"same ISO3 (IND), date range contained",1937,1947
+IND-1800-2025,IND-1947-1949,aggregate_covers,"same ISO3 (IND), date range contained",1947,1949
 TUN-1800-1881,TUN-1881-2025,temporal_next,"same ISO3 (TUN), gap=0y",1881,1881
 GHA-1821-1888,GHA-1888-1898,temporal_next,"same ISO3 (GHA), gap=0y",1888,1888
 GHA-1888-1898,GHA-1898-1956,temporal_next,"same ISO3 (GHA), gap=0y",1898,1898
@@ -2363,6 +2438,11 @@ ZAF-1800-2025,Africa,located_in_continent,continent column,1800,2025
 NZL-1840-1907,Oceania,located_in_continent,continent column,1840,1907
 CAN-1800-1866,North America,located_in_continent,continent column,1800,1866
 CHN-1950-2025,Asia,located_in_continent,continent column,1950,2025
+SAA-1920-1935,Europe,located_in_continent,continent column,1920,1935
+MEM-1920-1923,Europe,located_in_continent,continent column,1920,1923
+FIU-1920-1924,Europe,located_in_continent,continent column,1920,1924
+MNG-1911-1921,Asia,located_in_continent,continent column,1911,1921
+IND-1800-2025,Asia,located_in_continent,continent column,1800,2025
 RWA-1962-2025,RWA-1920-1962,same_territory,"same ISO3 (RWA), temporal overlap",1962,1962
 TZA-1964-2025,TZA-1961-1964,same_territory,"same ISO3 (TZA), temporal overlap",1964,1964
 CHA-1900-1912,CHA-1800-2023,same_territory,"same ISO3 (CHA), temporal overlap",1900,1912

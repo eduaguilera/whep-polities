@@ -1,0 +1,9 @@
+action,polity_code,detail
+FIX,OTT-1800-1912,Replaced small CShapes-Europe polygon with full CShapes 2.0 from TUR-1800-1912
+FIX,DRO-1800-1982,"Created Antarctic sector polygon (20W-44.6E, 60S-90S)"
+FIX,NEU-1800-1982,Created Neutral Zone polygon (Uqair Protocol boundaries)
+ADD,SAA-1920-1935,Saar Territory (no polygon - GADM not available)
+ADD,MEM-1920-1923,Memel Territory (no polygon - GADM not available)
+ADD,FIU-1920-1924,Free City of Fiume (~28 km2 buffer)
+ADD,MNG-1911-1921,Bogd Khanate with CShapes Mongolia polygon
+ADD,IND-1800-2025,India aggregate (no polygon found)
