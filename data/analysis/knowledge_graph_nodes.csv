@@ -53,23 +53,23 @@ MAR-1979-2025,Morocco,sovereign,Africa,1979,2025,MAR,polity,2,1,3
 ETH-1993-2025,Ethiopia,sovereign,Africa,1993,2025,ETH,polity,3,1,4
 SSD-2011-2025,South Sudan,sovereign,Africa,2011,2025,SSD,polity,3,1,4
 SDN-2011-2025,Sudan,sovereign,Africa,2011,2025,SDN,polity,3,1,4
-ALG-1800-1902,Algeria (to 1902),historical,Africa,1800,1902,ALG,polity,0,2,2
+ALG-1830-1902,Algeria (to 1902),historical,Africa,1830,1902,ALG,polity,0,2,2
 ANG-1800-1890,Angola (to 1890),historical,Africa,1800,1890,ANG,polity,0,2,2
-BOT-1800-1890,Botswana (to 1890),historical,Africa,1800,1890,BOT,polity,0,2,2
-CON-1800-1898,Congo (to 1898),historical,Africa,1800,1898,CON,polity,0,1,1
-CON-1800-1891,Democratic Republic of the Congo (to 1891),historical,Africa,1800,1891,CON,polity,0,2,2
+BOT-1885-1890,Botswana (to 1890),historical,Africa,1885,1890,BOT,polity,0,2,2
+CON-1882-1898,Congo (to 1898),historical,Africa,1882,1898,CON,polity,0,1,1
+CON-1885-1891,Democratic Republic of the Congo (to 1891),historical,Africa,1885,1891,CON,polity,0,2,2
 EGY-1800-1899,Egypt (to 1899),historical,Africa,1800,1899,EGY,polity,0,1,1
 EGY-1800-1922,Egypt (to 1922),historical,Africa,1800,1922,EGY,polity,0,1,1
-ERI-1800-1889,Eritrea (to 1889),historical,Africa,1800,1889,ERI,polity,0,1,1
+ERI-1882-1889,Eritrea (to 1889),historical,Africa,1882,1889,ERI,polity,0,1,1
 ETH-1800-1889,Ethiopia (to 1889),historical,Africa,1800,1889,ETH,polity,1,2,3
-GAB-1800-1912,Gabon (to 1912),historical,Africa,1800,1912,GAB,polity,0,2,2
-GHA-1800-1888,Ghana (to 1888),historical,Africa,1800,1888,GHA,polity,0,2,2
-LAG-1800-1906,Lagos (to 1906),historical,Africa,1800,1906,LAG,polity,0,1,1
+GAB-1839-1912,Gabon (to 1912),historical,Africa,1839,1912,GAB,polity,0,2,2
+GHA-1821-1888,Ghana (to 1888),historical,Africa,1821,1888,GHA,polity,0,2,2
+LAG-1861-1906,Lagos (to 1906),historical,Africa,1861,1906,LAG,polity,0,1,1
 MAD-1800-1912,Madagascar (to 1912),historical,Africa,1800,1912,MAD,polity,0,2,2
 MOR-1800-1904,Morocco (to 1904),historical,Africa,1800,1904,MOR,polity,0,2,2
 MOZ-1800-1891,Mozambique (to 1891),historical,Africa,1800,1891,MOZ,polity,0,1,1
 SIE-1800-1889,Sierra Leone (to 1889),historical,Africa,1800,1889,SIE,polity,0,1,1
-ZAN-1800-1964,Zanzibar,historical,Africa,1800,1964,ZAN,polity,0,1,1
+ZAN-1856-1964,Zanzibar,historical,Africa,1856,1964,ZAN,polity,0,1,1
 ORA-1848-1910,Orange Free State (to 1910),historical,Africa,1848,1910,ORA,polity,0,1,1
 GHA-1888-1898,Ghana (1888-1898),historical,Africa,1888,1898,GHA,polity,1,2,3
 KEN-1888-1891,Kenya (1888-1891),historical,Africa,1888,1891,KEN,polity,0,2,2
@@ -150,14 +150,14 @@ NGA-1960-1961,Nigeria (1960-1961),historical,Africa,1960,1961,NGA,polity,1,2,3
 EGY-1967-1979,Egypt (1967-1979),historical,Africa,1967,1979,EGY,polity,1,2,3
 MRT-1975-1979,Mauritania (1975-1979),historical,Africa,1975,1979,MRT,polity,1,2,3
 MAR-1975-1979,Morocco (1975-1979),historical,Africa,1975,1979,MAR,polity,1,2,3
-BRI-1800-1895,British Bechuanaland (to 1895),colonial,Africa,1800,1895,BRI,polity,1,1,2
-BRI-1800-1960,British Protectorate (British Somaliland) (to 1960),colonial,Africa,1800,1960,BRI,polity,1,1,2
-KAM-1800-1912,Cameroon (Kamerun) (to 1912),colonial,Africa,1800,1912,KAM,polity,0,2,2
+BRI-1885-1895,British Bechuanaland (to 1895),colonial,Africa,1885,1895,BRI,polity,1,1,2
+BRI-1884-1960,British Protectorate (British Somaliland) (to 1960),colonial,Africa,1884,1960,BRI,polity,1,1,2
+KAM-1884-1912,Cameroon (Kamerun) (to 1912),colonial,Africa,1884,1912,KAM,polity,0,2,2
 CAP-1800-1895,Cape Colony (to 1895),colonial,Africa,1800,1895,CAP,polity,0,2,2
-NAT-1800-1895,Natal (to 1895),colonial,Africa,1800,1895,NAT,polity,0,2,2
-OIL-1800-1898,Oil Rivers Protectorate (to 1898),colonial,Africa,1800,1898,OIL,polity,0,1,1
+NAT-1843-1895,Natal (to 1895),colonial,Africa,1843,1895,NAT,polity,0,2,2
+OIL-1884-1898,Oil Rivers Protectorate (to 1898),colonial,Africa,1884,1898,OIL,polity,0,1,1
 SPA-1800-1982,Spanish North Africa,colonial,Africa,1800,1982,SPA,polity,2,1,3
-SPA-1800-1912,Spanish West Africa (to 1912),colonial,Africa,1800,1912,SPA,polity,1,2,3
+SPA-1884-1912,Spanish West Africa (to 1912),colonial,Africa,1884,1912,SPA,polity,1,2,3
 TRA-1856-1910,Transvaal (to 1910),colonial,Africa,1856,1910,TRA,polity,0,1,1
 FSO-1884-1977,French Somalia,colonial,Africa,1884,1977,FSO,polity,2,1,3
 GWA-1884-1914,German West Africa,colonial,Africa,1884,1914,GWA,polity,1,1,2

@@ -109,6 +109,35 @@
   lack dedicated polygons; Cliopatria and histmaps R package have boundaries.
   SWE-1814-1905 uses CShapes 2.0 polygon (valid for 1886-1905).
 
+### FIXED: 15 African Colonial Entries with Placeholder 1800 Start Dates
+- **Severity**: IMPORTANT (batch fix)
+- **Root cause**: CShapes uses `NA` for start_year (meaning "existed at dataset
+  start, 1886"), which was converted to 1800 in the polities database. For most
+  African colonial entries, the colonial entity did not exist in 1800 — the
+  territory was controlled by pre-colonial African kingdoms and polities.
+- **Entries corrected** (old start → new start):
+  - ALG-1830-1902: 1800→1830 (French invasion; was Regency of Algiers/Ottoman)
+  - BOT-1885-1890: 1800→1885 (Bechuanaland Protectorate; was Tswana kingdoms)
+  - BRI-1885-1895: 1800→1885 (British Bechuanaland Crown Colony)
+  - BRI-1884-1960: 1800→1884 (British Somaliland; was Somali clan societies)
+  - CON-1885-1891: 1800→1885 (Congo Free State; was Luba/Lunda/Kongo kingdoms)
+  - CON-1882-1898: 1800→1882 (French Congo; was Loango/Teke kingdoms)
+  - ERI-1882-1889: 1800→1882 (Italian Eritrea; was Ethiopian highlands/Ottoman coast)
+  - GAB-1839-1912: 1800→1839 (French Gabon; was Mpongwe coastal polities)
+  - GHA-1821-1888: 1800→1821 (British Gold Coast; Ashanti Empire dominated in 1800)
+  - KAM-1884-1912: 1800→1884 (German Kamerun; was Bamoun/Fulani/Duala polities)
+  - LAG-1861-1906: 1800→1861 (Lagos Colony; was Yoruba kingdom of Lagos)
+  - NAT-1843-1895: 1800→1843 (Natal Colony; was Nguni peoples/Zulu Kingdom)
+  - OIL-1884-1898: 1800→1884 (Oil Rivers Protectorate; was Niger Delta city-states)
+  - SPA-1884-1912: 1800→1884 (Spanish West Africa; was Sahrawi tribal territories)
+  - ZAN-1856-1964: 1800→1856 (Sultanate of Zanzibar; was part of Oman before 1856)
+- **Polygon sources for pre-colonial entities**: Paine, Qiu & Ricart-Huguet (2024)
+  has 46 pre-colonial African state polygons (Harvard Dataverse). Cliopatria (Seshat)
+  has 28+ African polities with temporal variation. See docs/12_HISTORICAL_MAP_SOURCES.md.
+- **Note**: Pre-colonial African boundaries represent zones of influence rather
+  than hard borders. Any polygon is a scholarly approximation with ~25-100 km
+  uncertainty (Paine et al. use 0.25° buffers for robustness checks).
+
 ---
 
 ## 2. Known Limitations (Unresolved)

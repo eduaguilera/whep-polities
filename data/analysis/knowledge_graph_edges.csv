@@ -318,10 +318,10 @@ GER-1884-2025,GER-1887-1888,aggregate_covers,"same ISO3 (GER), date range contai
 GER-1884-2025,GER-1888-1896,aggregate_covers,"same ISO3 (GER), date range contained",1888,1896
 GER-1884-2025,GER-1897-1919,aggregate_covers,"same ISO3 (GER), date range contained",1897,1919
 GER-1884-2025,GER-1919-1922,aggregate_covers,"same ISO3 (GER), date range contained",1919,1922
-GHA-1800-1888,GHA-1888-1898,temporal_next,"same ISO3 (GHA), gap=0y",1888,1888
+GHA-1821-1888,GHA-1888-1898,temporal_next,"same ISO3 (GHA), gap=0y",1888,1888
 GHA-1888-1898,GHA-1898-1956,temporal_next,"same ISO3 (GHA), gap=0y",1898,1898
 GHA-1898-1956,GHA-1957-2025,temporal_next,"same ISO3 (GHA), gap=1y",1956,1957
-GAB-1800-1912,GAB-1912-1919,temporal_next,"same ISO3 (GAB), gap=0y",1912,1912
+GAB-1839-1912,GAB-1912-1919,temporal_next,"same ISO3 (GAB), gap=0y",1912,1912
 CMR-1960-1961,CMR-1961-2025,temporal_next,"same ISO3 (CMR), gap=0y",1961,1961
 NGA-1960-1961,NGA-1961-2025,temporal_next,"same ISO3 (NGA), gap=0y",1961,1961
 RWA-1920-1962,RWA-1962-2025,temporal_next,"same ISO3 (RWA), gap=0y",1962,1962
@@ -347,11 +347,11 @@ ETH-1897-1902,ETH-1902-1907,temporal_next,"same ISO3 (ETH), gap=0y",1902,1902
 ETH-1902-1907,ETH-1907-1952,temporal_next,"same ISO3 (ETH), gap=0y",1907,1907
 ETH-1907-1952,ETH-1952-1993,temporal_next,"same ISO3 (ETH), gap=0y",1952,1952
 ETH-1952-1993,ETH-1993-2025,temporal_next,"same ISO3 (ETH), gap=0y",1993,1993
-ALG-1800-1902,ALG-1902-1919,temporal_next,"same ISO3 (ALG), gap=0y",1902,1902
+ALG-1830-1902,ALG-1902-1919,temporal_next,"same ISO3 (ALG), gap=0y",1902,1902
 ANG-1800-1890,ANG-1890-1891,temporal_next,"same ISO3 (ANG), gap=0y",1890,1890
 ANG-1890-1891,ANG-1891-1905,temporal_next,"same ISO3 (ANG), gap=0y",1891,1891
-BOT-1800-1890,BOT-1890-1895,temporal_next,"same ISO3 (BOT), gap=0y",1890,1890
-CON-1800-1891,CON-1891-1894,temporal_next,"same ISO3 (CON), gap=0y",1891,1891
+BOT-1885-1890,BOT-1890-1895,temporal_next,"same ISO3 (BOT), gap=0y",1890,1890
+CON-1885-1891,CON-1891-1894,temporal_next,"same ISO3 (CON), gap=0y",1891,1891
 CON-1891-1894,CON-1894-1910,temporal_next,"same ISO3 (CON), gap=0y",1894,1894
 CON-1898-1900,CON-1900-1906,temporal_next,"same ISO3 (CON), gap=0y",1900,1900
 CON-1900-1906,CON-1906-1912,temporal_next,"same ISO3 (CON), gap=0y",1906,1906
@@ -378,11 +378,11 @@ MAL-1947-1959,MAL-1959-1960,temporal_next,"same ISO3 (MAL), gap=0y",1959,1959
 CEN-1906-1912,CEN-1912-1919,temporal_next,"same ISO3 (CEN), gap=0y",1912,1912
 LIB-1912-1919,LIB-1919-1925,temporal_next,"same ISO3 (LIB), gap=0y",1919,1919
 LIB-1919-1925,LIB-1925-1934,temporal_next,"same ISO3 (LIB), gap=0y",1925,1925
-SPA-1800-1912,SPA-1912-1956,temporal_next,"same ISO3 (SPA), gap=0y",1912,1912
+SPA-1884-1912,SPA-1912-1956,temporal_next,"same ISO3 (SPA), gap=0y",1912,1912
 SPA-1912-1958,SPA-1958-1975,temporal_next,"same ISO3 (SPA), gap=0y",1958,1958
-KAM-1800-1912,KAM-1912-1919,temporal_next,"same ISO3 (KAM), gap=0y",1912,1912
+KAM-1884-1912,KAM-1912-1919,temporal_next,"same ISO3 (KAM), gap=0y",1912,1912
 CAP-1800-1895,CAP-1895-1910,temporal_next,"same ISO3 (CAP), gap=0y",1895,1895
-NAT-1800-1895,NAT-1895-1910,temporal_next,"same ISO3 (NAT), gap=0y",1895,1895
+NAT-1843-1895,NAT-1895-1910,temporal_next,"same ISO3 (NAT), gap=0y",1895,1895
 GER-1887-1888,GER-1888-1896,temporal_next,"same ISO3 (GER), gap=0y",1888,1888
 GER-1888-1896,GER-1897-1919,temporal_next,"same ISO3 (GER), gap=1y",1896,1897
 GER-1897-1919,GER-1919-1922,temporal_next,"same ISO3 (GER), gap=0y",1919,1919
@@ -483,10 +483,10 @@ BOL-1903-1909,BOL-1909-1938,temporal_next,"same ISO3 (BOL), gap=0y",1909,1909
 BOL-1909-1938,BOL-1938-2025,temporal_next,"same ISO3 (BOL), gap=0y",1938,1938
 PRY-1811-1938,PRY-1938-2025,temporal_next,"same ISO3 (PRY), gap=0y",1938,1938
 ECU-1800-1942,ECU-1942-2025,temporal_next,"same ISO3 (ECU), gap=0y",1942,1942
-GBR-1800-1921,BRI-1800-1895,colonial_ruler_of,name contains 'British',1800,1895
-GBR-1800-1921,BRI-1800-1960,colonial_ruler_of,name contains 'British',1800,1921
+GBR-1800-1921,BRI-1885-1895,colonial_ruler_of,name contains 'British',1800,1895
+GBR-1800-1921,BRI-1884-1960,colonial_ruler_of,name contains 'British',1800,1921
 ESP-1800-2025,SPA-1800-1982,colonial_ruler_of,name contains 'Spanish',1800,1982
-ESP-1800-2025,SPA-1800-1912,colonial_ruler_of,name contains 'Spanish',1800,1912
+ESP-1800-2025,SPA-1884-1912,colonial_ruler_of,name contains 'Spanish',1800,1912
 FRA-1800-1919,FSO-1884-1977,colonial_ruler_of,name contains 'French',1884,1919
 DEU-1800-1919,GWA-1884-1914,colonial_ruler_of,name contains 'German',1884,1914
 GBR-1800-1921,BBE-1885-1895,colonial_ruler_of,name contains 'British',1885,1895
@@ -917,23 +917,23 @@ MAR-1979-2025,Africa,located_in_continent,continent column,1979,2025
 ETH-1993-2025,Africa,located_in_continent,continent column,1993,2025
 SSD-2011-2025,Africa,located_in_continent,continent column,2011,2025
 SDN-2011-2025,Africa,located_in_continent,continent column,2011,2025
-ALG-1800-1902,Africa,located_in_continent,continent column,1800,1902
+ALG-1830-1902,Africa,located_in_continent,continent column,1830,1902
 ANG-1800-1890,Africa,located_in_continent,continent column,1800,1890
-BOT-1800-1890,Africa,located_in_continent,continent column,1800,1890
-CON-1800-1898,Africa,located_in_continent,continent column,1800,1898
-CON-1800-1891,Africa,located_in_continent,continent column,1800,1891
+BOT-1885-1890,Africa,located_in_continent,continent column,1885,1890
+CON-1882-1898,Africa,located_in_continent,continent column,1882,1898
+CON-1885-1891,Africa,located_in_continent,continent column,1885,1891
 EGY-1800-1899,Africa,located_in_continent,continent column,1800,1899
 EGY-1800-1922,Africa,located_in_continent,continent column,1800,1922
-ERI-1800-1889,Africa,located_in_continent,continent column,1800,1889
+ERI-1882-1889,Africa,located_in_continent,continent column,1882,1889
 ETH-1800-1889,Africa,located_in_continent,continent column,1800,1889
-GAB-1800-1912,Africa,located_in_continent,continent column,1800,1912
-GHA-1800-1888,Africa,located_in_continent,continent column,1800,1888
-LAG-1800-1906,Africa,located_in_continent,continent column,1800,1906
+GAB-1839-1912,Africa,located_in_continent,continent column,1839,1912
+GHA-1821-1888,Africa,located_in_continent,continent column,1821,1888
+LAG-1861-1906,Africa,located_in_continent,continent column,1861,1906
 MAD-1800-1912,Africa,located_in_continent,continent column,1800,1912
 MOR-1800-1904,Africa,located_in_continent,continent column,1800,1904
 MOZ-1800-1891,Africa,located_in_continent,continent column,1800,1891
 SIE-1800-1889,Africa,located_in_continent,continent column,1800,1889
-ZAN-1800-1964,Africa,located_in_continent,continent column,1800,1964
+ZAN-1856-1964,Africa,located_in_continent,continent column,1856,1964
 ORA-1848-1910,Africa,located_in_continent,continent column,1848,1910
 GHA-1888-1898,Africa,located_in_continent,continent column,1888,1898
 KEN-1888-1891,Africa,located_in_continent,continent column,1888,1891
@@ -1014,14 +1014,14 @@ NGA-1960-1961,Africa,located_in_continent,continent column,1960,1961
 EGY-1967-1979,Africa,located_in_continent,continent column,1967,1979
 MRT-1975-1979,Africa,located_in_continent,continent column,1975,1979
 MAR-1975-1979,Africa,located_in_continent,continent column,1975,1979
-BRI-1800-1895,Africa,located_in_continent,continent column,1800,1895
-BRI-1800-1960,Africa,located_in_continent,continent column,1800,1960
-KAM-1800-1912,Africa,located_in_continent,continent column,1800,1912
+BRI-1885-1895,Africa,located_in_continent,continent column,1885,1895
+BRI-1884-1960,Africa,located_in_continent,continent column,1884,1960
+KAM-1884-1912,Africa,located_in_continent,continent column,1884,1912
 CAP-1800-1895,Africa,located_in_continent,continent column,1800,1895
-NAT-1800-1895,Africa,located_in_continent,continent column,1800,1895
-OIL-1800-1898,Africa,located_in_continent,continent column,1800,1898
+NAT-1843-1895,Africa,located_in_continent,continent column,1843,1895
+OIL-1884-1898,Africa,located_in_continent,continent column,1884,1898
 SPA-1800-1982,Africa,located_in_continent,continent column,1800,1982
-SPA-1800-1912,Africa,located_in_continent,continent column,1800,1912
+SPA-1884-1912,Africa,located_in_continent,continent column,1884,1912
 TRA-1856-1910,Africa,located_in_continent,continent column,1856,1910
 FSO-1884-1977,Africa,located_in_continent,continent column,1884,1977
 GWA-1884-1914,Africa,located_in_continent,continent column,1884,1914
