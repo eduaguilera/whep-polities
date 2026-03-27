@@ -1,9 +1,10 @@
-# WHEP Polities Database v1.4 -- Overview
+# WHEP Polities Database v2.0 -- Overview
 
 **Project**: Who Has Eaten the Planet (WHEP)
 **Funded by**: European Research Council (ERC)
-**Date**: 2026-03-26
+**Date**: 2026-03-27
 **Database file**: `data/final/polities_database.csv`
+**Unified GeoPackage**: `data/final/polities_database.gpkg`
 
 ---
 
@@ -39,7 +40,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 1,022/1,022 non-region (100%) |
+| Polities with polygons | 1,141/1,151 non-region (99.1%) |
 | Subnational polygons (9 countries + Qing) | 371/371 (100%) |
 | Historical subnational polygons | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
@@ -168,6 +169,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 2,188 edges, usage examples |
 | `12_HISTORICAL_MAP_SOURCES.md` | 28 historical map/GIS sources for pre-1886 boundary gaps |
 | `13_SUBNATIONAL_HISTORICAL_SOURCES.md` | Historical subnational polygon sources for 11 major countries |
+| `14_GAP_ANALYSIS_REPORT.md` | Comprehensive gap analysis: trade-critical countries, polygon gaps, verification |
 
 ---
 
@@ -181,7 +183,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **100%** coverage of tracked decolonization events (96)
 - **100%** coverage of tracked empire dissolutions (17)
 - **5 fixes** applied from exhaustive cross-referencing
-- **699 polities** individually verified against multiple sources
+- **843 polities** individually verified against multiple sources
 
 ### Automated Stress Testing (31 tests)
 - **23 PASS**: Schema, types, dates, code uniqueness, duration, polygon validity, CRS, etc.
@@ -216,7 +218,16 @@ Filter by `end_year = 2025` and `polity_type = "sovereign"` to get current state
 
 ### For subnational data:
 Filter by `polity_type = "subnational"` to get admin-1 units for Russia, Canada, USA,
-China, Brazil, and Australia. The `notes` field contains the parent polity code.
+China, Brazil, Australia, Spain, and historical entries for USA (1800-1958), Brazil
+(1872-1987), and Qing China (1820-1912). The `notes` field contains the parent polity code.
+
+### For loading with geometries:
+```r
+library(sf)
+polities <- st_read("data/final/polities_database.gpkg")
+```
+This single file contains all 1,228 polities with geometries attached (1,141 have
+actual geometry; 87 have empty geometry -- 77 regions + 10 minor territories).
 
 ### For joining with other datasets:
 Use `iso3_code` for ISO-based datasets, `cow_code` for COW-based datasets.
@@ -244,6 +255,7 @@ All analysis is in R (managed by `renv`). Run `renv::restore()` to install depen
 | `R/12_integrate_cliopatria_polygons.R` | Integrate Cliopatria (Seshat) polygons for 4 pre-CShapes polities |
 | `R/13_integrate_chgis_provinces.R` | Integrate CHGIS v6 Qing province polygons as subnational entries |
 | `R/14_integrate_historical_subnational.R` | Integrate USA (1800-1958), Brazil (1872-1987), Spain (1833-2025) subnational |
+| `R/15_build_unified_polygons.R` | Build unified GeoPackage merging all polygon sources |
 
 ---
 

@@ -24,7 +24,7 @@ database.
 
 ## Relation Types
 
-### 1. `predecessor_of` (13 edges)
+### 1. `predecessor_of` (45 edges)
 
 **Direction**: predecessor → successor polity
 
@@ -37,7 +37,7 @@ subset). These represent the post-Soviet successor states.
 
 ---
 
-### 2. `successor_of` (14 edges)
+### 2. `successor_of` (25 edges)
 
 **Direction**: polity → successor polity
 
@@ -47,13 +47,14 @@ subset). These represent the post-Soviet successor states.
 
 ---
 
-### 3. `subregion_of` (237 edges)
+### 3. `subregion_of` (359 edges)
 
 **Direction**: child → parent
 
 Two sources:
-- **Subnational entries** (242 edges): Admin-1 units (present-day + Qing China) → parent state.
-  Extracted from the `notes` field `Parent: XXX-YYYY-ZZZZ`.
+- **Subnational entries** (338 edges): Admin-1 units (present-day + Qing China +
+  historical USA/Brazil/Spain) → parent state. Extracted from the `notes` field
+  `Parent: XXX-YYYY-ZZZZ`.
 - **M49 region hierarchy** (21 edges): Region → parent region (e.g., Eastern Africa →
   Africa → World).
 
@@ -72,7 +73,7 @@ for the same ISO3 code whose date ranges fall within the aggregate's range.
 
 ---
 
-### 5. `temporal_next` (163 edges)
+### 5. `temporal_next` (174 edges)
 
 **Direction**: earlier period → later period
 
@@ -84,7 +85,7 @@ political evolution.
 
 ---
 
-### 6. `colonial_ruler_of` (36 edges)
+### 6. `colonial_ruler_of` (38 edges)
 
 **Direction**: metropole → colony/mandate/dependency
 
@@ -97,7 +98,7 @@ in the same period.
 
 ---
 
-### 7. `region_contains` (420 edges)
+### 7. `region_contains` (328 edges)
 
 **Direction**: M49 region polity → country polity
 
@@ -108,7 +109,7 @@ and macro-region polities (where those exist in the database as FAOSTAT region e
 
 ---
 
-### 8. `located_in_continent` (1,022 edges)
+### 8. `located_in_continent` (1,151 edges)
 
 **Direction**: polity → continent pseudo-node
 
@@ -156,21 +157,21 @@ one classified as sovereign and the other as colonial.
 
 ## Key Findings
 
-1. **Russia is the most connected polity** (87 edges) due to its 83 subnational units
+1. **Russia is the most connected polity** (88 edges) due to its 83 subnational units
    plus sovereign/temporal edges.
 
-2. **The largest connected component contains ~1,050 of 1,236 nodes** (~85%), showing that
+2. **The largest connected component contains ~1,027 of 1,236 nodes** (~83%), showing that
    the polities database is highly interconnected through temporal, territorial, and
    hierarchical relations.
 
-3. **52 isolated nodes** are specialized FAOSTAT statistical regions (fishing areas,
+3. **55 isolated nodes** are specialized FAOSTAT statistical regions (fishing areas,
    economic groupings like "Annex I countries", "European Union") that don't participate
    in the M49 geographic hierarchy.
 
-4. **163 temporal_next edges** trace the complete territorial evolution of countries
+4. **174 temporal_next edges** trace the complete territorial evolution of countries
    through their period-specific entries.
 
-5. **36 colonial relationships** were automatically inferred from polity naming patterns,
+5. **38 colonial relationships** were automatically inferred from polity naming patterns,
    capturing the major colonial empires (British, French, German, Spanish, Portuguese,
    Dutch, Italian, Belgian, Japanese).
 

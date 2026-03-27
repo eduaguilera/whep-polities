@@ -310,6 +310,23 @@
 
 ## 4. Changelog
 
+### Version 2.0 (2026-03-27)
+- Built unified GeoPackage (`data/final/polities_database.gpkg`) combining all
+  polygon sources into a single SF object joined with the polities database CSV
+- Merged 7 polygon source files + recovered 23 previously missing polygons from
+  CShapes raw data (COW code matching + name matching)
+- Script: R/15_build_unified_polygons.R
+- Polygon coverage: 1,141/1,151 non-region polities (99.1%); 10 remaining gaps
+  are tiny Pacific atolls and minor historical territories
+- Comprehensive gap analysis report: docs/14_GAP_ANALYSIS_REPORT.md
+- Updated all documentation to reflect current state (v2.0)
+- Identified trade-critical country gaps: New Zealand (missing 1800-1906),
+  Nigeria (missing 1800-1898), Canada (missing 1800-1865), China (no PRC
+  sovereign entry), UK/Japan/Mexico/Cuba (single-entry coverage)
+- Knowledge graph: edge counts updated (located_in_continent 1,151,
+  subregion_of 359, temporal_next 174, colonial_ruler_of 38,
+  predecessor_of 45, successor_of 25, region_contains 328)
+
 ### Version 1.9 (2026-03-27)
 - Integrated historical subnational polygons for 3 countries:
   - USA: 51 states/territories (1800-1958) from USAboundaries/Newberry Library

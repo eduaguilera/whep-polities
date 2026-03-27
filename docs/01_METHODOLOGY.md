@@ -1,7 +1,7 @@
 # Polities Database: Methodology and Definitions
 
 **Project**: Who Has Eaten the Planet (WHEP)
-**Database version**: 1.0 (2026-03-26)
+**Database version**: 2.0 (2026-03-27)
 **Temporal scope**: 1800-2025 (optimized for 1850-present)
 **Funded by**: European Research Council (ERC)
 
@@ -230,8 +230,9 @@ The following deliberate choices shape the database:
 4. **Post-2019 boundaries**: CShapes 2.0 ends in 2019. Post-2019 boundaries are
    extrapolated from the last known CShapes state.
 
-5. **Pre-colonial African states**: Entities like the Zulu Kingdom, Ashanti Empire,
-   and Sokoto Caliphate are not tracked because they lack standardized trade data.
+5. **Pre-colonial African states**: 43 pre-colonial African kingdoms (Zulu, Ashanti,
+   Sokoto, etc.) were added in v1.5 from Paine et al. (2024) with polygons.
+   They lack standardized trade data but provide territorial context.
 
 6. **WWII puppet states**: First Slovak Republic (1939-1945), Independent State of
    Croatia (1941-1945), and Italian Social Republic (1943-1945) are not tracked

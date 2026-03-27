@@ -15,7 +15,7 @@ A systematic search across all external reference systems identifies 68 gaps in
 |--------|-------|----------|-------------|
 | Polygon source mismatch | 29 | Low | Claims CShapes but gets GADM fallback |
 | COW state system | 15 | Low | COW codes not matched (see Section 4) |
-| Missing polygons | 10 | Medium | Non-region polities without any polygon |
+| Missing polygons | 10 | Low | Non-region polities without polygon (tiny atolls) |
 | Predecessor/successor chain | 10 | Low | Broken refs (all to USSR region code) |
 | Temporal gaps | 4 | Medium | Same-ISO same-type gaps > 1 year |
 
@@ -27,8 +27,8 @@ Full report: `data/analysis/exhaustive_gap_report.csv`
 
 | Metric | Value |
 |--------|-------|
-| Total polity entries | 1,099 |
-| Unique polity codes | 1,099 (100% unique) |
+| Total polity entries | 1,228 |
+| Unique polity codes | 1,228 (100% unique) |
 | Sovereign states (active 2025) | 194 (193 UN + Vatican) |
 | Historical entities | 386 |
 | Colonial entities | 47 |
@@ -36,13 +36,15 @@ Full report: `data/analysis/exhaustive_gap_report.csv`
 | Trade aggregates | 60 |
 | Mandates | 13 |
 | Statistical regions | 77 |
-| Subnational entries | 242 |
+| Subnational entries | 371 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
-| Verified entries | 699 (64%) |
-| Verified + region + fixed | 817 (74%) |
+| Verified entries | 843 (68.6%) |
+| Verified + region + fixed | 988 (80.5%) |
 | Earliest start year | 1800 |
 | Latest end year | 2025 |
+| Non-region with geometry | 1,141/1,151 (99.1%) |
+| Unified GeoPackage | `data/final/polities_database.gpkg` |
 
 ---
 
@@ -157,7 +159,7 @@ Pacific island protectorates.
 | Oceania | 63 | 68 | 92.6% |
 | Antarctica | 3 | 4 | 75.0% |
 
-**0 non-region polities without polygons** (as of v1.7). All 1,022 non-region
+**10 non-region polities without polygons** (as of v2.0). Of 1,151 non-region
 polities have polygon coverage from CShapes, GADM, Paine et al., Cliopatria,
 or CHGIS sources. Previously 10 polities used GADM proxy polygons; 4 formerly
 missing polities (IRN-1800-1828, AUH-1800-1867, SWE-1800-1809, SWE-1809-1814)
@@ -458,8 +460,8 @@ Yugoslavia → North Macedonia, Italy pre/post-1919, Russia/Ukraine pre/post-201
 | Empire dissolutions covered | 100% | Empire dissolutions dataset |
 | FAOSTAT entities covered | 100% | FAOSTAT regions dataset |
 | Timeline continuity (no unexplained gaps) | YES | Internal analysis |
-| Unique polity codes | 1,099/1,099 (100%) | Code uniqueness check |
-| Unique polity names | 1,099/1,099 (100%) | Name uniqueness check |
+| Unique polity codes | 1,228/1,228 (100%) | Code uniqueness check |
+| Unique polity names | 1,228/1,228 (100%) | Name uniqueness check |
 
 ---
 
