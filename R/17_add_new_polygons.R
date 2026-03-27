@@ -616,6 +616,11 @@ cat("\n--- Saving results ---\n")
 # Combine new entries with database
 if (length(new_entries) > 0) {
   new_df <- bind_rows(new_entries)
+  # Ensure type compatibility (cow_code is numeric in existing DB)
+  new_df$cow_code <- as.numeric(new_df$cow_code)
+  new_df$start_year <- as.integer(new_df$start_year)
+  new_df$end_year <- as.integer(new_df$end_year)
+  new_df$duration_years <- as.integer(new_df$duration_years)
   db <- bind_rows(db, new_df)
   cat(sprintf("  Added %d new entries (total: %d)\n", nrow(new_df), nrow(db)))
 } else {
