@@ -240,8 +240,10 @@ are not directly merged into the pipeline.
   - Explicitly demonstrates that Murdock ethnographic map should NOT be used
     as proxy for state boundaries
 - **License**: Free (Harvard Dataverse)
-- **Citation**: Paine, J., Qiu, Y., & Ricart-Huguet, J. (2024). "Pre-Colonial
-  Ethnic Institutions and Contemporary African Development." APSR.
+- **Citation**: Paine, J., Qiu, Y., & Ricart-Huguet, J. (2024). "Endogenous
+  Colonial Borders: Precolonial States and Geography in the Partition of
+  Africa." American Political Science Review, 119(1), 1-20.
+- **Key file**: `PCS.shp` (929 KB) in `Shapefiles/Precolonial states/` directory
 
 ### 2.12 Cliopatria (Seshat Global History Databank)
 

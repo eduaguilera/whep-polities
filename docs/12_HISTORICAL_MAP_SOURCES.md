@@ -107,10 +107,14 @@ priority ratings.
 - **Coverage**: 46 digitized pre-colonial African state polygons, derived from
   Ajayi & Crowder (1985). Covers states existing on the eve of European
   colonization (~1880s).
-- **Format**: Shapefiles (replication data package)
-- **Coordinate system**: Likely WGS 84 (standard for political science datasets)
-- **License**: APSR Dataverse replication data -- free for academic use with
-  citation
+- **Format**: Shapefile (`PCS.shp`, 929 KB) in `Shapefiles/Precolonial states/`
+  directory. 7 files total (.shp, .dbf, .shx, .prj, .cpg, .sbn, .sbx).
+  Attributes: PCS (state name), Source (reference map), Index, Legend.
+  No login required to download.
+- **Coordinate system**: WGS 84
+- **License**: Harvard Dataverse -- free download, no login required. Terms state
+  "not to be distributed/posted outside of Harvard Dataverse" (downloads must
+  come directly from Dataverse)
 - **Quality**: Peer-reviewed (APSR is top-tier). Digitized by trained researchers
   from the most authoritative source (Ajayi & Crowder). Authors use 0.25-degree
   buffers (~25 km) around boundaries for robustness checks, acknowledging
