@@ -169,6 +169,11 @@ priority ratings.
 - **WHEP integration status**: Not yet integrated. German states currently use
   GADM/CShapes proxies. Downloading the 1820 state boundary shapefile from NYU
   would be the next step if replacing these proxies is desired.
+- **Download status (2026-03-27)**: Harvard GeoServer proxy (`geodata-proxy.lib.harvard.edu`)
+  is decommissioned (no DNS A record). All programmatic download attempts fail.
+  NYU requires email-based request. Harvard HGL behind AWS WAF bot protection.
+  Manual browser download or email request to Harvard (`hgl_ref@hulmail.harvard.edu`)
+  or NYU is required.
 
 ### 2.3 CHGIS -- China Historical GIS (Harvard/Fudan) -- INTEGRATED (provinces)
 
@@ -485,12 +490,14 @@ priority ratings.
   which has Ottoman boundaries at 0.1-year resolution, or georeference
   Kiepert maps from Rumsey collection.
 
-### 3.2 Qing Dynasty / China -- CHGIS Assessed, Not Suitable
+### 3.2 Qing Dynasty / China -- CHGIS INTEGRATED (provinces)
 
-CHGIS v6 was downloaded and assessed (2026-03-27). Contains 3,830 prefecture-level
-polygons (subnational admin divisions), not sovereign outer boundaries. Not suitable
-for polity-level analysis. CHN entries already covered by CShapes. See Section 2.3.
+CHGIS v6 was downloaded and assessed (2026-03-27). Contains province-level
+polygons (26 administered provinces from 1820 snapshot) integrated as subnational
+entries (1820-1912). Also contains 3,830 prefecture-level polygons (too granular).
+CHN sovereign entries already covered by CShapes. See Section 2.3.
 Cliopatria provides Qing outer boundary data (31 time-steps, ~12.5M km2 at peak).
+For the 1912-1997 gap in Chinese subnational coverage, see doc 13 Section 11.
 
 ### 3.3 Japanese Historical GIS -- SEE Section 2.11
 
@@ -974,6 +981,18 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 - Centennia Research Edition: http://historicalatlas.com/CRE/
 - Clockwork Mapping: https://www.clockwk.com/
 - Mapire/Arcanum: https://maps.arcanum.com/
+
+### Subnational Historical Sources (see also doc 13)
+- USAboundaries R package (USA 1783-2000): https://github.com/ropensci/USAboundaries
+- Newberry Library AHCB (USA 1783-2000): https://publications.newberry.org/ahcb/
+- NHGIS (USA 1790-present): https://www.nhgis.org/gis-files
+- geobr R package (Brazil 1872-2020): https://github.com/ipeaGIT/geobr
+- IBGE FTP (Brazil 1872-2010): https://geoftp.ibge.gov.br/organizacao_do_territorio/
+- Transcultural Empire GIS (Russia 1897+1926): https://heidata.uni-heidelberg.de/dataset.xhtml?persistentId=doi:10.11588/data/10064
+- ORNL DAAC FSU (Russia ~1998): https://doi.org/10.3334/ORNLDAAC/699
+- mapSpain R package (Spain provinces): https://ropenspain.github.io/mapSpain/
+- CNIG/IGN Spain: https://centrodedescargas.cnig.es/
+- FAO GAUL 2015 (global 1990-2014): https://data.apps.fao.org/catalog/dataset/global-administrative-unit-layers-gaul-2015
 
 ### Regional Projects
 - Digital Ottoman Studies: https://www.digitalottomanstudies.com/gis

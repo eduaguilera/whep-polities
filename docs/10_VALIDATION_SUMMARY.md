@@ -6,13 +6,13 @@
 
 | Metric | Value |
 |--------|-------|
-| Total entries | 1,099 |
-| Non-region entries | 1,022 |
-| Subnational entries | 242 |
+| Total entries | 1,228 |
+| Non-region entries | 1,151 |
+| Subnational entries | 371 |
 | Statistical regions | 77 |
 | Entries with polygons | 1,022/1,022 non-region (100%) |
-| Verified entries | 699/1,099 (64%) |
-| Unique polity codes | 1,099 (100% unique) |
+| Verified entries | 699/1,228 (57%) |
+| Unique polity codes | 1,228 (100% unique) |
 | ISO3 codes assigned | 920 entries |
 | COW codes matched | 207/209 external COW states |
 
@@ -25,7 +25,7 @@
 2. No nulls in required fields
 3. Valid polity types (10 used, incl. subnational)
 4. Valid continents (8 used)
-6. Code uniqueness (1,099 unique)
+6. Code uniqueness (1,228 unique)
 7. start_year <= end_year
 8. duration_years consistency
 9. Code dates match column dates

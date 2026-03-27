@@ -310,6 +310,29 @@
 
 ## 4. Changelog
 
+### Version 1.9 (2026-03-27)
+- Integrated historical subnational polygons for 3 countries:
+  - USA: 51 states/territories (1800-1958) from USAboundaries/Newberry Library
+  - Brazil: 26 states/provinces (1872-1987) from geobr/IBGE
+  - Spain: 52 provinces (1833-2025) from mapSpain/IGN
+- Script: R/14_integrate_historical_subnational.R
+- Database expanded from 1,099 to 1,228 entries; subnational 242 → 371
+- Knowledge graph: 1,236 nodes, 2,188 edges
+- GeoPackages: us_historical_states.gpkg, brazil_historical_states.gpkg,
+  spain_provinces.gpkg
+
+### Version 1.8 (2026-03-27)
+- Comprehensive research survey of historical subnational polygon sources for
+  11 major countries: China, USA, India, Brazil, Russia, Indonesia, France,
+  Germany, Canada, Australia, Spain
+- Identified freely available datasets for USA (1783-2000), Brazil (1872-2020),
+  France (1790-1940), Germany (1820-1914), Russia (1820s/1897/1926/~1998),
+  Spain (stable since 1833)
+- Key R packages identified: USAboundaries (USA), geobr (Brazil), mapSpain (Spain)
+- Documented remaining gaps: Russia 1927-1989, Indonesia 1945-1990, China 1912-1997,
+  India 1800-1941 (partial), Germany 1914-1990
+- Added docs/13_SUBNATIONAL_HISTORICAL_SOURCES.md (comprehensive research report)
+
 ### Version 1.7 (2026-03-27)
 - Added 26 Qing Dynasty province subnational entries (1820-1912)
   from CHGIS v6 (doi:10.7910/DVN/ST5KKM, Harvard/Fudan University)

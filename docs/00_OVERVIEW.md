@@ -9,10 +9,11 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,099 political entities ("polities")** spanning
+A comprehensive database of **1,228 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
-Includes **242 subnational entries** (216 present-day + 26 Qing China historical provinces).
+Includes **371 subnational entries** (216 present-day GADM + 26 Qing China + 51 US
+historical + 26 Brazil historical + 52 Spain provinces).
 
 Each polity represents a **fixed territory over a continuous period of time**. When
 territory changes significantly (>10% area), a new polity entry is created.
@@ -23,7 +24,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,099 |
+| Total entries | 1,228 |
 | Sovereign states | 194 |
 | Historical entities | 386 |
 | Colonial entities | 47 |
@@ -33,13 +34,13 @@ territory changes significantly (>10% area), a new polity entry is created.
 | Statistical regions | 77 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
-| **Subnational entries** | **242** |
+| **Subnational entries** | **371** |
 
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
 | Polities with polygons | 1,022/1,022 non-region (100%) |
-| Subnational polygons (top 6 countries + Qing) | 242/242 (100%) |
+| Subnational polygons (9 countries + Qing) | 371/371 (100%) |
 | Historical subnational polygons | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
 | COW State System coverage | 207/209 (99.0%) |
@@ -62,10 +63,13 @@ territory changes significantly (>10% area), a new polity entry is created.
 | Country | Admin-1 units | Period | Source |
 |---------|---------------|--------|--------|
 | Russia | 83 | 1993-2025 | GADM 3.6 |
-| USA | 51 | 1959-2025 | GADM 3.6 |
+| Spain | 52 | 1833-2025 | mapSpain/IGN |
+| USA (modern) | 51 | 1959-2025 | GADM 3.6 |
+| USA (historical) | 51 | 1800-1958 | USAboundaries/Newberry |
 | China (modern) | 31 | 1997-2025 | GADM 3.6 |
+| Brazil (modern) | 27 | 1988-2025 | GADM 3.6 |
+| Brazil (historical) | 26 | 1872-1987 | geobr/IBGE |
 | China (Qing) | 26 | 1820-1912 | CHGIS v6 |
-| Brazil | 27 | 1988-2025 | GADM 3.6 |
 | Canada | 13 | 1999-2025 | GADM 3.6 |
 | Australia | 11 | 1901-2025 | GADM 3.6 |
 
@@ -137,6 +141,9 @@ Each polity is assigned a polygon source indicating where its geographic boundar
 | Paine et al. (2024) + Cliopatria | 6 | Pre-colonial African states (dual source) |
 | Cliopatria (Seshat) | 4 | Pre-CShapes European/Asian states |
 | CHGIS v6 (subnational) | 26 | Qing China provinces (1820 snapshot) |
+| USAboundaries/Newberry (subnational) | 51 | US historical states/territories 1800-1958 |
+| geobr/IBGE (subnational) | 26 | Brazil historical states 1872-1987 |
+| mapSpain/IGN (subnational) | 52 | Spain provinces 1833-2025 |
 | none (statistical aggregate) | 77 | Regions (no geometry needed) |
 
 All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
@@ -158,8 +165,9 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `08_POLYGON_ACCURACY_AUDIT.md` | Deep audit: 12 problem zones, 18 severity entries, external GIS sources |
 | `09_SUBNATIONAL_MAJOR_COUNTRIES.md` | GADM admin-1 for 19 countries: stability ratings, 374 potential entries |
 | `10_VALIDATION_SUMMARY.md` | Data quality scorecard: 31 tests, polygon cross-validation, known issues |
-| `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 1,930 edges, usage examples |
+| `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 2,188 edges, usage examples |
 | `12_HISTORICAL_MAP_SOURCES.md` | 28 historical map/GIS sources for pre-1886 boundary gaps |
+| `13_SUBNATIONAL_HISTORICAL_SOURCES.md` | Historical subnational polygon sources for 11 major countries |
 
 ---
 
@@ -182,7 +190,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
 
 ### Knowledge Graph
-- **1,107 nodes** (1,099 polities + 8 continent nodes), **1,930 edges**, **9 relation types**
+- **1,236 nodes** (1,228 polities + 8 continent nodes), **2,188 edges**, **9 relation types**
 - Exports: CSV, GraphML (Gephi/Cytoscape/igraph compatible)
 
 ### Polygon Cross-Validation
@@ -235,6 +243,7 @@ All analysis is in R (managed by `renv`). Run `renv::restore()` to install depen
 | `R/11_integrate_precolonial_polygons.R` | Integrate Paine et al. (2024) pre-colonial African state polygons |
 | `R/12_integrate_cliopatria_polygons.R` | Integrate Cliopatria (Seshat) polygons for 4 pre-CShapes polities |
 | `R/13_integrate_chgis_provinces.R` | Integrate CHGIS v6 Qing province polygons as subnational entries |
+| `R/14_integrate_historical_subnational.R` | Integrate USA (1800-1958), Brazil (1872-1987), Spain (1833-2025) subnational |
 
 ---
 

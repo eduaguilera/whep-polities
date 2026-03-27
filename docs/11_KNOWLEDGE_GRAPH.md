@@ -6,15 +6,15 @@
 
 The WHEP polities knowledge graph models **relations between political entities** as a
 directed graph. It captures temporal succession, territorial hierarchy, colonial control,
-regional membership, and other structural relationships between the 1,099 polities in the
+regional membership, and other structural relationships between the 1,228 polities in the
 database.
 
 ### Graph Statistics
 
 | Metric | Value |
 |--------|-------|
-| Nodes | 1,107 (1,099 polities + 8 continent nodes) |
-| Edges | 1,930 |
+| Nodes | 1,236 (1,228 polities + 8 continent nodes) |
+| Edges | 2,188 |
 | Relation types | 9 |
 | Connected components | 53 |
 | Largest component | ~1,050 nodes |
@@ -159,7 +159,7 @@ one classified as sovereign and the other as colonial.
 1. **Russia is the most connected polity** (87 edges) due to its 83 subnational units
    plus sovereign/temporal edges.
 
-2. **The largest connected component contains ~1,050 of 1,107 nodes** (~95%), showing that
+2. **The largest connected component contains ~1,050 of 1,236 nodes** (~85%), showing that
    the polities database is highly interconnected through temporal, territorial, and
    hierarchical relations.
 
