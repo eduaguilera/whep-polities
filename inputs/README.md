@@ -35,11 +35,16 @@ Users must download these files themselves from the original sources.
 ### chgis.zip
 
 - **Source**: China Historical GIS (CHGIS) v6, Harvard & Fudan University
-- **Download**: https://sites.fas.harvard.edu/~chgis/
-- **License**: Academic use
-- **Contents**: Prefecture-level (rank 3) polygon shapefiles for Chinese historical
-  administrative divisions (3,830 records). Available in WGS84 and Xian80 projections,
-  GBK and UTF-8 encodings.
-- **WHEP assessment**: Too granular for polity-level use. Contains subnational admin
-  divisions within China, not sovereign state outer boundaries. China entries already
-  covered by CShapes 2.0 + CShapes-Europe. Not currently used by any R script.
+- **Paper**: "CHGIS, Version: 6. (c) Fairbank Center for Chinese Studies, Harvard
+  University and Center for Historical Geographical Studies, Fudan University, 2016."
+- **Download**: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ST5KKM
+  (Dataset: "1820 Layers UTF8 Encoding" in CHGIS v6 Dataverse)
+- **License**: Free for academic use, no commercial use or redistribution.
+- **Contents**: 1820 Qing Dynasty spatial layers (UTF-8 encoding):
+  - `v6_1820_prov_pgn_utf.zip` — **Province polygons** (32 records, 26 used)
+  - `v6_1820_pref_pgn_utf.zip` — Prefecture polygons (not used)
+  - `v6_1820_cnty_pts_utf.zip` — County points (not used)
+  - Plus rivers, lakes, towns, and points layers
+- **Used by**: `R/13_integrate_chgis_provinces.R`
+- **WHEP usage**: 26 Qing province polygons added as subnational entries (1820-1912).
+  Excluded 5 South China Sea island claims and 1 treaty-disputed area (Nibuchu).

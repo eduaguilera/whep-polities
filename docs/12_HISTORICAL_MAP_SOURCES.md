@@ -170,7 +170,7 @@ priority ratings.
   GADM/CShapes proxies. Downloading the 1820 state boundary shapefile from NYU
   would be the next step if replacing these proxies is desired.
 
-### 2.3 CHGIS -- China Historical GIS (Harvard/Fudan) -- ASSESSED, NOT SUITABLE
+### 2.3 CHGIS -- China Historical GIS (Harvard/Fudan) -- INTEGRATED (provinces)
 
 - **URL**: https://chgis.fas.harvard.edu/
 - **Download**: https://dataverse.harvard.edu/dataverse/chgis_v6
@@ -188,12 +188,18 @@ priority ratings.
 - **Quality**: Premier scholarly resource for Chinese historical geography.
   Joint Harvard-Fudan project. Provinces, prefectures, counties all digitized.
 - **Assessment (2026-03-27)**: Downloaded and examined v6 data (`inputs/chgis.zip`).
-  Contains 3,830 prefecture-level (rank 3) polygon records — subnational admin
-  divisions within China, not sovereign state outer boundaries. No top-level "Qing
-  Empire" boundary polygon available. All WHEP China entries (CHN-1800-1895 etc.)
-  already have CShapes 2.0 + CShapes-Europe polygons. Cliopatria provides better
-  Qing outer boundary data (31 time-stepped records, ~12.5M km2 at peak).
-  **Verdict: Not suitable for WHEP polity-level analysis.**
+  Contains two useful levels:
+  - **Province polygons (`v6_1820_prov_pgn_utf`)**: 32 records, 26 administered
+    provinces (excl. 5 SCS island claims + 1 treaty-disputed area). Total area
+    13.1M km2. **INTEGRATED** as subnational entries (1820-1912).
+  - **Prefecture polygons (`v6_time_pref_pgn`)**: 3,830 records, too granular for
+    polity-level analysis.
+  No top-level "Qing Empire" outer boundary polygon; sovereign CHN entries already
+  covered by CShapes. Cliopatria has Qing outer boundary (31 time-steps, ~12.5M km2).
+- **WHEP integration (2026-03-27)**: 26 Qing province polygons added as subnational
+  entries. Script: `R/13_integrate_chgis_provinces.R`.
+  Output: `data/geodata/chgis_qing_provinces.gpkg`.
+  Data file: `inputs/chgis.zip` (not committed; download doi:10.7910/DVN/ST5KKM).
 
 ### 2.4 HGIS de las Indias -- Colonial Spanish America -- MODERATE PRIORITY
 
@@ -849,7 +855,7 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 | ETH-1800-1889 (pre-Menelik Ethiopia) | CRITICAL | Paine et al. (2024) + Cliopatria (2 time-steps, ~240,357 km2) | Available now |
 | EGY-1800-1899 (Egypt without Sudan) | CRITICAL | Paine et al. + Cliopatria (Khedivate, multiple entries) + Centennia CRE | Available now |
 | ZAN-1800-1890 (Zanzibar islands only) | CRITICAL | Paine et al. + Cliopatria (2 time-steps, ~28,255 km2) | Available now |
-| CHN-1800-1895 (Qing + Outer Mongolia) | ~~MAJOR~~ | ~~CHGIS v6~~ | Already has CShapes polygon; CHGIS assessed as unsuitable (prefecture-level only) |
+| CHN-1800-1895 (Qing + Outer Mongolia) | ~~MAJOR~~ | CHGIS v6 province polygons | **DONE**: 26 Qing provinces added as subnational entries (1820-1912). Sovereign polygon unchanged (CShapes). |
 | MOR-1800-1904 (Morocco fixed borders) | MAJOR | Paine et al. + Cliopatria (5 time-steps, ~386,205 km2) | Available now |
 | MAD-1800-1912 (Madagascar whole island) | MODERATE | Paine et al. + Cliopatria (Merina, 10 time-steps, ~426,715 km2) | Available now |
 | Ashanti Empire (1797-1894) | MODERATE | Cliopatria (20 time-steps, ~154,508 km2) | Available now |
@@ -881,9 +887,10 @@ Cross-referencing against the polygon accuracy audit (doc 08):
    polygon from any other source.~~ **DONE** (2026-03-27). 4 polities filled
    (IRN-1800-1828, AUH-1800-1867, SWE-1800-1809, SWE-1809-1814).
    Script: R/12_integrate_cliopatria_polygons.R.
-3. ~~Download **CHGIS v6** and create proper Qing China polygon.~~
-   **ASSESSED, NOT SUITABLE** (2026-03-27). Contains prefecture-level data only,
-   not sovereign boundaries. CHN entries already covered by CShapes.
+3. ~~Download **CHGIS v6** and integrate Qing China provinces.~~
+   **DONE** (2026-03-27). 26 Qing province polygons (1820 snapshot) added as
+   subnational entries (1820-1912). Script: R/13_integrate_chgis_provinces.R.
+   Sovereign CHN polygon unchanged (CShapes already covers it).
 4. Download **HGIS Germany** shapefiles from NYU Spatial Data Repository
    (https://geo.nyu.edu/, search "ghgis") and replace GADM-proxied German states.
    Available as Shapefile and GeoJSON, no authentication required.

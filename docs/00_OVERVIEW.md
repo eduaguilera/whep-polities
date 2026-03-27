@@ -9,10 +9,10 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,073 political entities ("polities")** spanning
+A comprehensive database of **1,099 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
-Includes **216 present-day subnational entries** for the 6 largest countries by area.
+Includes **242 subnational entries** (216 present-day + 26 Qing China historical provinces).
 
 Each polity represents a **fixed territory over a continuous period of time**. When
 territory changes significantly (>10% area), a new polity entry is created.
@@ -23,7 +23,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,073 |
+| Total entries | 1,099 |
 | Sovereign states | 194 |
 | Historical entities | 386 |
 | Colonial entities | 47 |
@@ -33,13 +33,13 @@ territory changes significantly (>10% area), a new polity entry is created.
 | Statistical regions | 77 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
-| **Subnational entries** | **216** |
+| **Subnational entries** | **242** |
 
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 996/996 non-region (100%) |
-| Subnational polygons (top 6 countries) | 216/216 (100%) |
+| Polities with polygons | 1,022/1,022 non-region (100%) |
+| Subnational polygons (top 6 countries + Qing) | 242/242 (100%) |
 | Historical subnational polygons | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
 | COW State System coverage | 207/209 (99.0%) |
@@ -58,15 +58,16 @@ territory changes significantly (>10% area), a new polity entry is created.
 | South America | 35 |
 | Antarctica | 4 |
 
-### Subnational Coverage (6 largest countries by area)
-| Country | Admin-1 units | Start year | Source |
-|---------|---------------|------------|--------|
-| Russia | 83 | 1993 | GADM 3.6 |
-| USA | 51 | 1959 | GADM 3.6 |
-| China | 31 | 1997 | GADM 3.6 |
-| Brazil | 27 | 1988 | GADM 3.6 |
-| Canada | 13 | 1999 | GADM 3.6 |
-| Australia | 11 | 1901 | GADM 3.6 |
+### Subnational Coverage
+| Country | Admin-1 units | Period | Source |
+|---------|---------------|--------|--------|
+| Russia | 83 | 1993-2025 | GADM 3.6 |
+| USA | 51 | 1959-2025 | GADM 3.6 |
+| China (modern) | 31 | 1997-2025 | GADM 3.6 |
+| China (Qing) | 26 | 1820-1912 | CHGIS v6 |
+| Brazil | 27 | 1988-2025 | GADM 3.6 |
+| Canada | 13 | 1999-2025 | GADM 3.6 |
+| Australia | 11 | 1901-2025 | GADM 3.6 |
 
 ### Temporal Coverage
 - **Earliest start**: 1800
@@ -135,6 +136,7 @@ Each polity is assigned a polygon source indicating where its geographic boundar
 | Paine et al. (2024) | 37 | Pre-colonial African states |
 | Paine et al. (2024) + Cliopatria | 6 | Pre-colonial African states (dual source) |
 | Cliopatria (Seshat) | 4 | Pre-CShapes European/Asian states |
+| CHGIS v6 (subnational) | 26 | Qing China provinces (1820 snapshot) |
 | none (statistical aggregate) | 77 | Regions (no geometry needed) |
 
 All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
@@ -180,7 +182,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
 
 ### Knowledge Graph
-- **1,081 nodes** (1,073 polities + 8 continent nodes), **1,904 edges**, **9 relation types**
+- **1,107 nodes** (1,099 polities + 8 continent nodes), **1,930 edges**, **9 relation types**
 - Exports: CSV, GraphML (Gephi/Cytoscape/igraph compatible)
 
 ### Polygon Cross-Validation
@@ -232,6 +234,7 @@ All analysis is in R (managed by `renv`). Run `renv::restore()` to install depen
 | `R/10_analysis_plots.R` | Consolidated analysis: temporal, polygon quality, ISO, coverage (12 plots) |
 | `R/11_integrate_precolonial_polygons.R` | Integrate Paine et al. (2024) pre-colonial African state polygons |
 | `R/12_integrate_cliopatria_polygons.R` | Integrate Cliopatria (Seshat) polygons for 4 pre-CShapes polities |
+| `R/13_integrate_chgis_provinces.R` | Integrate CHGIS v6 Qing province polygons as subnational entries |
 
 ---
 

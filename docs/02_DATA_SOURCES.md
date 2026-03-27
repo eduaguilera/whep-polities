@@ -280,7 +280,7 @@ are not directly merged into the pipeline.
 | Wimmer & Min | 1816-2001 | State formation data | Consulted for dates |
 | IBAD | 1816-2001 | Border agreement records | Consulted for border change dates |
 | HGIS Germany | 1820-1914 | German state boundaries (vector) | Potential pre-1886 source |
-| CHGIS v6 | Qing dynasty | 3,830 prefecture-level (rank 3) polygons | Assessed: too granular (subnational admin, not sovereign boundaries). CHN entries already covered by CShapes. |
+| CHGIS v6 | Qing dynasty | Province polygons (26 provinces, 1820 snapshot) + 3,830 prefectures | **INTEGRATED**: 26 Qing province polygons added as subnational entries (1820-1912). Script: R/13_integrate_chgis_provinces.R. doi:10.7910/DVN/ST5KKM |
 | HistoGIS | Austrian Empire 1848 | Crownland boundaries (vector) | Potential pre-1886 source |
 | Imperiia Project | Russian Empire 1820s | Provincial boundaries (vector) | Potential pre-1886 source |
 | Centennia CRE | 1000-2003 | Europe+ME boundaries (commercial) | Not used ($3,125 license) |

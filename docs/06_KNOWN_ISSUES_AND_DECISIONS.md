@@ -310,6 +310,32 @@
 
 ## 4. Changelog
 
+### Version 1.7 (2026-03-27)
+- Added 26 Qing Dynasty province subnational entries (1820-1912)
+  from CHGIS v6 (doi:10.7910/DVN/ST5KKM, Harvard/Fudan University)
+- Provinces include 18 core provinces, 3 Manchuria, 5 frontier regions
+  (Xinjiang, Tibet, Inner Mongolia, Outer Mongolia, Qinghai)
+- Excluded 5 South China Sea island claims and 1 treaty-disputed area (Nibuchu)
+- Parent polity: CHN-1800-1895; polygon source: CHGIS v6 (subnational)
+- Script: R/13_integrate_chgis_provinces.R
+- Database expanded from 1,073 to 1,099 entries; subnational 216 → 242
+- Knowledge graph: 1,107 nodes, 1,930 edges
+
+### Version 1.6 (2026-03-27)
+- Integrated Cliopatria (Seshat) polygons for 4 polities with no prior polygon:
+  IRN-1800-1828 (Qajar), AUH-1800-1867 (Austrian Empire),
+  SWE-1800-1809 (Swedish Empire + Finland), SWE-1809-1814 (Sweden post-Finland)
+- Non-region polygon coverage: 996/996 (100%)
+- Script: R/12_integrate_cliopatria_polygons.R
+
+### Version 1.5 (2026-03-27)
+- Fixed 8 European/Asian polities with placeholder 1800 start dates
+- Corrected 15 African colonial entries with placeholder 1800 start dates
+- Added 43 pre-colonial African kingdom entries from Paine et al. (2024)
+  (Harvard Dataverse doi:10.7910/DVN/9QJVJ1, 46 PCS polygons)
+- Script: R/11_integrate_precolonial_polygons.R
+- Database expanded from 1,026 to 1,073 entries; historical 339 → 386
+
 ### Version 1.1 (2026-03-26)
 - Reclassified polity types for accuracy:
   - Marshall Islands: colonial → sovereign (independent since 1986)
