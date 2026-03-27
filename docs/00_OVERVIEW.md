@@ -132,6 +132,8 @@ Each polity is assigned a polygon source indicating where its geographic boundar
 | CShapes-Europe | 21 | Pre-1886 European states |
 | GADM 4.1 (subnational) | 7 | Historical sub-national units |
 | GADM 3.6 (subnational) | 216 | Present-day admin-1 for top 6 countries |
+| Paine et al. (2024) | 20 | Pre-colonial African states |
+| Paine et al. (2024) + Cliopatria | 6 | Pre-colonial African states (dual source) |
 | None (statistical aggregate) | 77 | Regions (no geometry needed) |
 
 All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
@@ -226,6 +228,7 @@ All analysis is in R (managed by `renv`). Run `renv::restore()` to install depen
 | `R/08_stress_test.R` | 31 automated integrity checks |
 | `R/09_visualize_knowledge_graph.R` | Knowledge graph visualizations (6 plots) |
 | `R/10_analysis_plots.R` | Consolidated analysis: temporal, polygon quality, ISO, coverage (12 plots) |
+| `R/11_integrate_precolonial_polygons.R` | Integrate Paine et al. (2024) pre-colonial African state polygons |
 
 ---
 
