@@ -38,7 +38,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 939/949 non-region (98.9%) |
+| Polities with polygons | 996/996 non-region (100%) |
 | Subnational polygons (top 6 countries) | 216/216 (100%) |
 | Historical subnational polygons | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
@@ -125,16 +125,17 @@ Each polity is assigned a polygon source indicating where its geographic boundar
 | Source | N polities | Description |
 |--------|-----------|-------------|
 | CShapes 2.0 | 425 | Historical boundaries 1886-2019 |
-| CShapes 2.0 + CShapes-Europe | 85 | Combined historical coverage |
+| CShapes 2.0 + CShapes-Europe | 84 | Combined historical coverage |
 | CShapes 2.0 (dependencies=TRUE) | 84 | Colonial territory boundaries |
 | GADM 4.1 | 75 | Modern boundaries |
 | GADM 4.1 or Natural Earth | 36 | Fallback for remaining |
-| CShapes-Europe | 21 | Pre-1886 European states |
+| CShapes-Europe | 22 | Pre-1886 European states |
 | GADM 4.1 (subnational) | 7 | Historical sub-national units |
 | GADM 3.6 (subnational) | 216 | Present-day admin-1 for top 6 countries |
 | Paine et al. (2024) | 37 | Pre-colonial African states |
 | Paine et al. (2024) + Cliopatria | 6 | Pre-colonial African states (dual source) |
-| None (statistical aggregate) | 77 | Regions (no geometry needed) |
+| Cliopatria (Seshat) | 4 | Pre-CShapes European/Asian states |
+| none (statistical aggregate) | 77 | Regions (no geometry needed) |
 
 All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 
@@ -156,6 +157,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `09_SUBNATIONAL_MAJOR_COUNTRIES.md` | GADM admin-1 for 19 countries: stability ratings, 374 potential entries |
 | `10_VALIDATION_SUMMARY.md` | Data quality scorecard: 31 tests, polygon cross-validation, known issues |
 | `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 1,900 edges, usage examples |
+| `12_HISTORICAL_MAP_SOURCES.md` | 28 historical map/GIS sources for pre-1886 boundary gaps |
 
 ---
 
@@ -229,6 +231,7 @@ All analysis is in R (managed by `renv`). Run `renv::restore()` to install depen
 | `R/09_visualize_knowledge_graph.R` | Knowledge graph visualizations (6 plots) |
 | `R/10_analysis_plots.R` | Consolidated analysis: temporal, polygon quality, ISO, coverage (12 plots) |
 | `R/11_integrate_precolonial_polygons.R` | Integrate Paine et al. (2024) pre-colonial African state polygons |
+| `R/12_integrate_cliopatria_polygons.R` | Integrate Cliopatria (Seshat) polygons for 4 pre-CShapes polities |
 
 ---
 

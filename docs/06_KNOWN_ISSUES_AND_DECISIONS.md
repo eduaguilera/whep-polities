@@ -58,8 +58,8 @@
   of Austria-Hungary was created by the Austro-Hungarian Compromise of 1867.
 - **Fix applied**: Split into AUH-1800-1867 "Austrian Empire" and AUH-1867-1908
   "Austria-Hungary". Updated predecessor/successor chains and knowledge graph.
-- **Polygon note**: AUH-1800-1867 lacks a dedicated polygon (CShapes starts 1886).
-  Potential sources: Cliopatria (Seshat), HistoGIS (Austrian Empire Crownlands 1848).
+- **Polygon note**: AUH-1800-1867 now has a Cliopatria (Seshat) polygon: "Austrian
+  Empire" 1815-1819 time step (691,595 km2). Integrated via R/12_integrate_cliopatria_polygons.R.
 
 ### FIXED: Greece 1800 Placeholder
 - **Code**: GRC-1800-1913 -> GRC-1830-1913
@@ -96,8 +96,9 @@
 - **Root cause**: Qajar Iran lost the South Caucasus (modern Azerbaijan, Armenia,
   eastern Georgia) to Russia via Treaty of Gulistan (1813) and Treaty of
   Turkmenchay (1828), totalling ~170,000+ km2 (~10% of territory).
-- **Fix applied**: Split at 1828. IRN-1800-1828 "Persia (Qajar)" lacks polygon;
-  Cliopatria has Qajar boundaries.
+- **Fix applied**: Split at 1828. IRN-1800-1828 "Persia (Qajar)" now has a Cliopatria
+  polygon: "Qajar Dynasty" 1800-1804 time step (1,743,611 km2, including South Caucasus).
+  Integrated via R/12_integrate_cliopatria_polygons.R.
 
 ### FIXED: Sweden 1800-1905 Single Entry Split
 - **Code**: SWE-1800-1905 -> SWE-1800-1809 + SWE-1809-1814 + SWE-1814-1905
@@ -105,9 +106,11 @@
 - **Root cause**: Sweden lost Finland to Russia (Treaty of Fredrikshamn 1809,
   -42% territory ~338,000 km2) and gained Norway (Treaty of Kiel 1814,
   personal union +318,000 km2). These massive changes were not reflected.
-- **Fix applied**: Split into three periods. SWE-1800-1809 and SWE-1809-1814
-  lack dedicated polygons; Cliopatria and histmaps R package have boundaries.
+- **Fix applied**: Split into three periods. SWE-1800-1809 now has Cliopatria polygon
+  "Swedish Empire" 1763-1808 (790,005 km2, incl. Finland). SWE-1809-1814 has Cliopatria
+  polygon "Swedish Empire" 1809-1811 (463,631 km2, without Finland).
   SWE-1814-1905 uses CShapes 2.0 polygon (valid for 1886-1905).
+  All integrated via R/12_integrate_cliopatria_polygons.R.
 
 ### FIXED: 15 African Colonial Entries with Placeholder 1800 Start Dates
 - **Severity**: IMPORTANT (batch fix)

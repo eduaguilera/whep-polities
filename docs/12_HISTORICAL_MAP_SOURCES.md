@@ -137,19 +137,27 @@ priority ratings.
   - Paine et al. explicitly demonstrate that the Murdock ethnographic map (843
     ethnic groups) should NOT be used as a proxy for state boundaries
 
-### 2.2 HGIS Germany (1820-1914) -- PRIORITY HIGH
+### 2.2 HGIS Germany (1820-1914) -- PRIORITY HIGH, NOT YET INTEGRATED
 
-- **URL**: http://www.digihist.de/html/hgisg/index.htm
-- **Download**: https://hgl.harvard.edu/ (search "hgis germany") and
-  https://geo.nyu.edu/catalog/harvard-ghgis1914germany
-- **Coverage**: All German states from 1820 to 1914 at three administrative
-  levels: state (41 polygons in 1820), province, and district. Records ALL
-  visible boundary changes per year.
-- **Format**: Shapefiles
-- **Coordinate system**: Standard geographic (WGS 84)
-- **License**: Free for non-commercial academic research
+- **Main page**: http://www.digihist.de/html/hgisg/index.htm (interactive maps only,
+  no direct downloads; HTTPS certificate broken, use HTTP)
+- **Download (recommended)**: NYU Spatial Data Repository — search for "ghgis" at
+  https://geo.nyu.edu/. Individual datasets follow the pattern:
+  `https://geo.nyu.edu/catalog/harvard-ghgisYYYYcore` (state boundaries)
+  `https://geo.nyu.edu/catalog/harvard-ghgisYYYYdistricts` (districts)
+  `https://geo.nyu.edu/catalog/harvard-ghgisYYYYprovinces` (provinces)
+- **Alternative mirrors**: Stanford EarthWorks (https://earthworks.stanford.edu/?q=hgis+germany),
+  Harvard Geospatial Library (https://hgl.harvard.edu, has WAF challenge in browser)
+- **Available time slices** (state boundaries / Bundesstaaten): 1820, 1826, 1830,
+  1834, 1839, 1848, 1850, 1867, 1871, 1890, 1914
+- **Also available**: Provincial boundaries (1820-1914), district boundaries (1820-1914),
+  state capitals, German Empire boundary 1871, railways (1835-1885), canals and roads
+- **NOTE**: The early period (1648-1812 Imperial States) and 20th century (1921-1993)
+  appear available only as interactive web maps on digihist.de, NOT as downloadable shapefiles.
+- **Format**: Shapefile and GeoJSON, EPSG:4326 (WGS 84)
+- **License**: Free for non-commercial academic research. No authentication required.
 - **Quality**: Created by Andreas Kunz and Leonhard Dietze at Institut fuer
-  Europaeische Geschichte, Mainz. Professional-grade historical GIS.
+  Europaeische Geschichte (IEG), Mainz. Professional-grade historical GIS.
 - **Specific relevance**:
   - **ALL pre-1871 German states**: BAV, SAX, HAN, WUR, BAD, HES, OLD, MEK,
     THU, BRE, SHL, and all the micro-states (Anhalt, Nassau, Reuss, Waldeck,
@@ -158,8 +166,11 @@ priority ratings.
     are known to be inaccurate proxies (see Section 4 of polygon audit)
   - HGIS Germany would replace ALL of these with accurate historical polygons
   - **38 of 41 German Confederation states in 1820 are included**
+- **WHEP integration status**: Not yet integrated. German states currently use
+  GADM/CShapes proxies. Downloading the 1820 state boundary shapefile from NYU
+  would be the next step if replacing these proxies is desired.
 
-### 2.3 CHGIS -- China Historical GIS (Harvard/Fudan) -- PRIORITY HIGH
+### 2.3 CHGIS -- China Historical GIS (Harvard/Fudan) -- ASSESSED, NOT SUITABLE
 
 - **URL**: https://chgis.fas.harvard.edu/
 - **Download**: https://dataverse.harvard.edu/dataverse/chgis_v6
@@ -176,14 +187,13 @@ priority ratings.
   University, 2016."
 - **Quality**: Premier scholarly resource for Chinese historical geography.
   Joint Harvard-Fudan project. Provinces, prefectures, counties all digitized.
-- **Specific relevance**:
-  - **CHN-1800-1895**: The 1820 Qing administrative boundaries would show the
-    empire at peak extent including Outer Mongolia, Xinjiang, Tibet. This
-    directly addresses the MAJOR issue (10-15% territory missing for Outer
-    Mongolia noted in polygon audit).
-  - The 1911 time-slice captures the late Qing contraction.
-  - Provides intermediate boundaries (prefectures) useful for understanding
-    Qing territorial evolution.
+- **Assessment (2026-03-27)**: Downloaded and examined v6 data (`inputs/chgis.zip`).
+  Contains 3,830 prefecture-level (rank 3) polygon records — subnational admin
+  divisions within China, not sovereign state outer boundaries. No top-level "Qing
+  Empire" boundary polygon available. All WHEP China entries (CHN-1800-1895 etc.)
+  already have CShapes 2.0 + CShapes-Europe polygons. Cliopatria provides better
+  Qing outer boundary data (31 time-stepped records, ~12.5M km2 at peak).
+  **Verdict: Not suitable for WHEP polity-level analysis.**
 
 ### 2.4 HGIS de las Indias -- Colonial Spanish America -- MODERATE PRIORITY
 
@@ -416,8 +426,16 @@ priority ratings.
 - **Specific relevance**: **The most comprehensive open-source global polygon source
   for the pre-1886 gap.** Covers Ottoman Empire, Qing Dynasty, Russian Empire,
   Qajar Iran, African kingdoms (Ashanti, Sokoto, Merina, Zululand, etc.),
-  Southeast Asian states, and many more. Primary candidate for filling polygon
-  gaps in polities that currently have "None (pre-CShapes)" as polygon_source.
+  Southeast Asian states, and many more.
+- **WHEP integration status**: **INTEGRATED** (2026-03-27). 4 polygons extracted for
+  polities that had no polygon from any other source:
+  - IRN-1800-1828: Qajar Dynasty 1800-1804 (1,743,611 km2)
+  - AUH-1800-1867: Austrian Empire 1815-1819 (691,595 km2)
+  - SWE-1800-1809: Swedish Empire 1763-1808 (790,005 km2, incl. Finland)
+  - SWE-1809-1814: Swedish Empire 1809-1811 (463,631 km2, without Finland)
+  Script: `R/12_integrate_cliopatria_polygons.R`. Output: `data/geodata/cliopatria_polygons.gpkg`.
+  Additional Cliopatria polygons were NOT extracted for polities already covered by
+  CShapes, GADM, or other sources, per project policy.
 
 ### 2.18 Historical Atlas of the Low Countries (1350-1800) -- LOW PRIORITY
 
@@ -461,10 +479,12 @@ priority ratings.
   which has Ottoman boundaries at 0.1-year resolution, or georeference
   Kiepert maps from Rumsey collection.
 
-### 3.2 Qing Dynasty / China -- SEE CHGIS (Section 2.3)
+### 3.2 Qing Dynasty / China -- CHGIS Assessed, Not Suitable
 
-CHGIS at Harvard is the definitive source. No other project comes close for
-Chinese historical boundaries.
+CHGIS v6 was downloaded and assessed (2026-03-27). Contains 3,830 prefecture-level
+polygons (subnational admin divisions), not sovereign outer boundaries. Not suitable
+for polity-level analysis. CHN entries already covered by CShapes. See Section 2.3.
+Cliopatria provides Qing outer boundary data (31 time-steps, ~12.5M km2 at peak).
 
 ### 3.3 Japanese Historical GIS -- SEE Section 2.11
 
@@ -829,7 +849,7 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 | ETH-1800-1889 (pre-Menelik Ethiopia) | CRITICAL | Paine et al. (2024) + Cliopatria (2 time-steps, ~240,357 km2) | Available now |
 | EGY-1800-1899 (Egypt without Sudan) | CRITICAL | Paine et al. + Cliopatria (Khedivate, multiple entries) + Centennia CRE | Available now |
 | ZAN-1800-1890 (Zanzibar islands only) | CRITICAL | Paine et al. + Cliopatria (2 time-steps, ~28,255 km2) | Available now |
-| CHN-1800-1895 (Qing + Outer Mongolia) | MAJOR | CHGIS v6 (1820 time-slice) + Cliopatria (31 records) | Available now |
+| CHN-1800-1895 (Qing + Outer Mongolia) | ~~MAJOR~~ | ~~CHGIS v6~~ | Already has CShapes polygon; CHGIS assessed as unsuitable (prefecture-level only) |
 | MOR-1800-1904 (Morocco fixed borders) | MAJOR | Paine et al. + Cliopatria (5 time-steps, ~386,205 km2) | Available now |
 | MAD-1800-1912 (Madagascar whole island) | MODERATE | Paine et al. + Cliopatria (Merina, 10 time-steps, ~426,715 km2) | Available now |
 | Ashanti Empire (1797-1894) | MODERATE | Cliopatria (20 time-steps, ~154,508 km2) | Available now |
@@ -842,10 +862,10 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 | KHI/KOK/BUK (Central Asian khanates) | MODERATE | No vector source found | Manual work needed |
 | OTT-1800-1886 (Ottoman pre-contraction) | MODERATE | Cliopatria (33 records) + Centennia CRE ($75+) | Available now / Commercial |
 | IND-1800-1893 (British India) | MODERATE | Appraising Risk (1872+) | In progress |
-| IRN-1800 (Qajar Persia) | MODERATE | Cliopatria (12 records) | Available now |
+| IRN-1800-1828 (Qajar Persia) | ~~MODERATE~~ | ~~Cliopatria~~ | **DONE** (Cliopatria polygon integrated) |
 | Lat. American states (1800-1886) | MODERATE | HGIS de las Indias (to 1808) | Partial |
 | FRA-1800-1919 (France Alsace-Lorraine) | MINOR | TRF-GIS + French HGIS | Available now |
-| AUH-1800-1908 (Austria-Hungary) | MINOR | HistoGIS (1848 crownlands) | Available now |
+| AUH-1800-1867 (Austrian Empire) | ~~MINOR~~ | ~~Cliopatria/HistoGIS~~ | **DONE** (Cliopatria polygon integrated) |
 | Dahomey, Buganda | MINOR | Paine et al. only (NOT in Cliopatria by name) | Partial |
 
 ---
@@ -854,14 +874,22 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 
 ### Phase 1: Quick wins (free, immediate)
 
-1. Download **Aourednik world_1800.geojson and world_1880.geojson** and overlay
+1. ~~Download **Paine et al. (2024)** replication data from Harvard Dataverse
+   and extract pre-colonial African state polygons.~~ **DONE** (2026-03-27).
+   43 new polity entries + 3 updated. Script: R/11_integrate_precolonial_polygons.R.
+2. ~~Download **Cliopatria** from Seshat GitHub and fill polities with no
+   polygon from any other source.~~ **DONE** (2026-03-27). 4 polities filled
+   (IRN-1800-1828, AUH-1800-1867, SWE-1800-1809, SWE-1809-1814).
+   Script: R/12_integrate_cliopatria_polygons.R.
+3. ~~Download **CHGIS v6** and create proper Qing China polygon.~~
+   **ASSESSED, NOT SUITABLE** (2026-03-27). Contains prefecture-level data only,
+   not sovereign boundaries. CHN entries already covered by CShapes.
+4. Download **HGIS Germany** shapefiles from NYU Spatial Data Repository
+   (https://geo.nyu.edu/, search "ghgis") and replace GADM-proxied German states.
+   Available as Shapefile and GeoJSON, no authentication required.
+   Key dataset: `harvard-ghgis1820core` (1820 state boundaries).
+5. Download **Aourednik world_1800.geojson and world_1880.geojson** and overlay
    with current WHEP polygons to identify the biggest discrepancies globally.
-2. Download **HGIS Germany** shapefiles from Harvard Geospatial Library and
-   replace all GADM-proxied German states.
-3. Download **CHGIS v6** 1820 time-slice and create proper Qing China polygon
-   including Outer Mongolia.
-4. Download **Paine et al. (2024)** replication data from Harvard Dataverse
-   and extract pre-colonial African state polygons.
 
 ### Phase 2: Medium effort (free, requires processing)
 
@@ -906,7 +934,9 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 
 ### Academic Vector Datasets
 - Paine et al. (2024) APSR Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/9QJVJ1
-- HGIS Germany: http://www.digihist.de/html/hgisg/index.htm
+- HGIS Germany (main page): http://www.digihist.de/html/hgisg/index.htm
+- HGIS Germany at NYU (recommended download): https://geo.nyu.edu/catalog/harvard-ghgis1820core
+- HGIS Germany at Stanford: https://earthworks.stanford.edu/?q=hgis+germany
 - HGIS Germany at Harvard: https://hgl.harvard.edu/catalog/harvard-ghgis1820core
 - CHGIS: https://chgis.fas.harvard.edu/
 - CHGIS v6 Dataverse: https://dataverse.harvard.edu/dataverse/chgis_v6

@@ -263,6 +263,12 @@ are not directly merged into the pipeline.
   - Limitation: treats some empires as monolithic (e.g., "British Africa")
 - **License**: CC BY 4.0
 - **Source**: https://seshatdatabank.info/
+- **WHEP integration**: 4 polygons extracted for polities that had no polygon from
+  any other source (IRN-1800-1828 Qajar Dynasty, AUH-1800-1867 Austrian Empire,
+  SWE-1800-1809 Swedish Empire incl. Finland, SWE-1809-1814 Sweden post-Finland).
+  Script: `R/12_integrate_cliopatria_polygons.R`.
+  Output: `data/geodata/cliopatria_polygons.gpkg`.
+  Data file: `inputs/cliopatria.geojson.zip` (not committed; download from GitHub).
 
 ### 2.13 Additional Databases Surveyed
 
@@ -274,7 +280,7 @@ are not directly merged into the pipeline.
 | Wimmer & Min | 1816-2001 | State formation data | Consulted for dates |
 | IBAD | 1816-2001 | Border agreement records | Consulted for border change dates |
 | HGIS Germany | 1820-1914 | German state boundaries (vector) | Potential pre-1886 source |
-| CHGIS | Qing dynasty | Chinese historical boundaries (vector) | Potential pre-1886 source |
+| CHGIS v6 | Qing dynasty | 3,830 prefecture-level (rank 3) polygons | Assessed: too granular (subnational admin, not sovereign boundaries). CHN entries already covered by CShapes. |
 | HistoGIS | Austrian Empire 1848 | Crownland boundaries (vector) | Potential pre-1886 source |
 | Imperiia Project | Russian Empire 1820s | Provincial boundaries (vector) | Potential pre-1886 source |
 | Centennia CRE | 1000-2003 | Europe+ME boundaries (commercial) | Not used ($3,125 license) |
