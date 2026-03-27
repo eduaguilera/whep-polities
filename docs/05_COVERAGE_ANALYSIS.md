@@ -27,8 +27,8 @@ Full report: `data/analysis/exhaustive_gap_report.csv`
 
 | Metric | Value |
 |--------|-------|
-| Total polity entries | 1,026 |
-| Unique polity codes | 1,026 (100% unique) |
+| Total polity entries | 1,073 |
+| Unique polity codes | 1,073 (100% unique) |
 | Sovereign states (active 2025) | 194 (193 UN + Vatican) |
 | Historical entities | 339 |
 | Colonial entities | 47 |
