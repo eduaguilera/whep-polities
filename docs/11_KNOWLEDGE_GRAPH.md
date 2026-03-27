@@ -13,12 +13,12 @@ database.
 
 | Metric | Value |
 |--------|-------|
-| Nodes | 1,236 (1,228 polities + 8 continent nodes) |
-| Edges | 2,188 |
+| Nodes | 1,244 (1,236 polities + 8 continent nodes) |
+| Edges | 2,383 |
 | Relation types | 9 |
-| Connected components | 53 |
-| Largest component | ~1,050 nodes |
-| Isolated nodes | 52 (specialized FAOSTAT regions) |
+| Connected components | 55 |
+| Largest component | ~1,190 nodes |
+| Isolated nodes | 54 (specialized FAOSTAT regions) |
 
 ---
 

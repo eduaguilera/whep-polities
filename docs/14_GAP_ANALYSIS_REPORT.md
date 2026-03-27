@@ -1,29 +1,29 @@
-# Gap Analysis Report (v2.0)
+# Gap Analysis Report (v2.1)
 
 **Date**: 2026-03-27
-**Database version**: 2.0 (unified GeoPackage)
-**Database file**: `data/final/polities_database.csv` (1,228 entries)
-**Unified GeoPackage**: `data/final/polities_database.gpkg` (1,228 rows, 1,141 with geometry)
+**Database version**: 2.1 (data integrity fixes)
+**Database file**: `data/final/polities_database.csv` (1,236 entries)
+**Unified GeoPackage**: `data/final/polities_database.gpkg` (1,236 rows, 1,153 with geometry)
 
 ---
 
 ## Executive Summary
 
-The WHEP polities database contains 1,228 entries covering 1800-2025 with 99.1%
+The WHEP polities database contains 1,236 entries covering 1800-2025 with 99.5%
 polygon coverage. This report identifies remaining gaps with emphasis on the ~30
 countries most important for historical trade and agricultural production analysis.
 
 **Key metrics:**
 | Metric | Value |
 |--------|-------|
-| Total polities | 1,228 |
-| Non-region polities | 1,151 |
-| With geometry | 1,141 / 1,151 (99.1%) |
-| Verified | 843 / 1,228 (68.6%) |
-| ISO3 coverage | 1,080 / 1,228 (87.9%) |
-| COW coverage | 398 / 1,228 (32.4%) |
-| Predecessor/successor linked | 162 / 1,228 (13.2%) |
-| Knowledge graph | 1,236 nodes, 2,188 edges |
+| Total polities | 1,236 |
+| Non-region polities | 1,159 |
+| With geometry | 1,153 / 1,159 (99.5%) |
+| Verified | 843 / 1,236 (68.1%) |
+| ISO3 coverage | 1,088 / 1,236 (88.0%) |
+| COW coverage | 398 / 1,236 (32.2%) |
+| Predecessor/successor linked | ~200 / 1,236 (16.2%) |
+| Knowledge graph | 1,244 nodes, 2,383 edges |
 
 ---
 
@@ -35,30 +35,32 @@ countries most important for historical trade and agricultural production analys
 
 | Country | Temporal coverage | Entries | Key gap | Trade importance |
 |---------|------------------|---------|---------|-----------------|
-| **New Zealand** | 52.7% (1907-2025 only) | 1 | Missing 1800-1906 | Major wool/meat exporter from 1850s |
 | **Nigeria** | 56.2% (1899-2025) | 8 | Missing 1800-1898 pre-colonial | Palm oil, groundnuts, cocoa |
-| **China (PRC)** | No sovereign entry 1949-2025 | 71 total | Aggregate covers it, but no `sovereign` type entry for PRC | World's largest modern exporter |
-| **Canada** | 70.8% (1866-2025) | 15 | Missing 1800-1865 pre-Confederation | Timber, furs, wheat |
+
+**Resolved in v2.1:**
+- ~~New Zealand~~ → Added `NZL-1840-1907` (colony entry with CShapes polygon)
+- ~~China (PRC)~~ → Added `CHN-1950-2025` sovereign entry
+- ~~Canada~~ → Added `CAN-1800-1866` pre-Confederation entry with CShapes polygon
 
 #### TIER 2 -- Structural Weaknesses
 
 | Country | Issue | Trade importance |
 |---------|-------|-----------------|
 | **Japan** | Only 1 entry for 226 years; no Empire period; no subnational | 4th-largest economy; major silk/tea exporter 19C |
-| **United Kingdom** | Only 2 entries; no aggregate; no subnational; no colonial links | Center of global trade 1800-1950 |
+| **United Kingdom** | 2 entries + aggregate added in v2.1; no subnational; no colonial links | Center of global trade 1800-1950 |
 | **Mexico** | Single entry, 226 years; no territorial changes | Silver, oil, agriculture |
 | **Cuba** | Single entry; no Spanish colonial differentiation | World's largest sugar exporter, 19C |
-| **South Africa** | Missing 1800-1827; colonial entries unlinked | Gold, diamonds, wool |
-| **Argentina** | 3 entries; no aggregate; no subnational | Top-5 agricultural exporter c.1900 |
+| **South Africa** | Missing 1800-1827; aggregate added in v2.1 | Gold, diamonds, wool |
+| **Argentina** | 3 entries + aggregate added in v2.1; no subnational | Top-5 agricultural exporter c.1900 |
 
 #### TIER 3 -- Adequate but Improvable
 
 | Country | Issue |
 |---------|-------|
 | **Germany** | 3-year gap 1946-1948 (occupation); many UNVERIFIED |
-| **India** | IND prefix collision with Indonesia; no subnational; many UNVERIFIED |
+| **India** | No subnational; many UNVERIFIED |
 | **Egypt** | Overlapping entries need rationalization |
-| **Indonesia** | IND prefix collision with India; no subnational |
+| **Indonesia** | No subnational (IND prefix collision resolved in v2.1 → IDN-) |
 | **Australia** | Pre-1901 gap (colonial entries exist separately) |
 
 #### TIER 4 -- Strong Coverage (model examples)
@@ -81,24 +83,25 @@ countries most important for historical trade and agricultural production analys
 ## 2. Missing Aggregate Entries
 
 Aggregate entries enable continuous trade data linkage across the full 1800-2025
-period, even when sovereign/historical entries split at boundary changes. The
-following important trading nations **lack aggregate entries**:
+period, even when sovereign/historical entries split at boundary changes.
+
+**Added in v2.1**: `GBR-1800-2025`, `ARG-1800-2025`, `RUS-1800-2025`,
+`USA-1800-2025`, `ZAF-1800-2025`.
+
+**Remaining trading nations without aggregates:**
 
 | Country | Current entries | Recommended aggregate |
 |---------|----------------|----------------------|
-| **United Kingdom** | GBR-1800-1921, GBR-1921-2025 | `GBR-1800-2025` |
-| **Japan** | JPN-1800-2025 (single entry) | Not needed (already continuous) |
-| **Argentina** | ARG-1800-1899, ARG-1899-1902, ARG-1902-2025 | `ARG-1800-2025` |
-| **Russia/USSR** | 9 F228 periods + RUS entries | `RUS-1800-2025` |
-| **United States** | USA-1800-1959, USA-1959-2025 | `USA-1800-2025` |
 | **India** | Multiple IND entries | `IND-1800-2025` |
+| **Japan** | JPN-1800-2025 (single entry) | Not needed (already continuous) |
 | **Cuba** | CUB-1800-2025 (single entry) | Not needed (already continuous) |
 | **Mexico** | MEX-1800-2025 (single entry) | Not needed (already continuous) |
-| **South Africa** | ZAF-1828-2025 | `ZAF-1800-2025` |
 
-Countries that already have good aggregates: Germany (`GER-1800-2025`), China
+Countries with good aggregates: Germany (`GER-1800-2025`), China
 (`CHN-1800-2025`), Netherlands (`DEI-1800-2025`), France (`FRA-1800-1982`),
-Denmark (`DAN-1800-2025`), Indonesia (`DEI-1800-2025`).
+Denmark (`DAN-1800-2025`), Indonesia (`DEI-1800-2025`), and (new) UK
+(`GBR-1800-2025`), Argentina (`ARG-1800-2025`), Russia (`RUS-1800-2025`),
+USA (`USA-1800-2025`), South Africa (`ZAF-1800-2025`).
 
 ---
 
@@ -111,10 +114,10 @@ Denmark (`DAN-1800-2025`), Indonesia (`DEI-1800-2025`).
 - **52.7% UNVERIFIED** (137/260) -- worst continent for verification.
 
 ### Asia (220 entries including subnational)
-- **China 1949-2025**: No `sovereign`-type entry for PRC. Covered by aggregate
-  `F351-1950-2025` and `CHN-1800-2025` for trade linkage.
-- **India/Indonesia prefix collision**: Pre-1949 entries for both use `IND-`
-  prefix, creating data linkage confusion.
+- **China 1949-2025**: ~~No `sovereign`-type entry for PRC~~ → Fixed in v2.1:
+  `CHN-1950-2025` sovereign entry added.
+- **India/Indonesia prefix collision**: ~~Pre-1949 entries for both use `IND-`~~
+  → Fixed in v2.1: Indonesia entries renamed to `IDN-` prefix.
 - **Japan**: No territorial changes reflected (Empire 1895-1945 with Korea,
   Taiwan, Manchuria not differentiated from home islands).
 
@@ -125,17 +128,18 @@ Denmark (`DAN-1800-2025`), Indonesia (`DEI-1800-2025`).
 - Generally the best-covered continent.
 
 ### North America (179 entries including subnational)
-- **Canada 1800-1865**: No pre-Confederation entity.
+- **Canada 1800-1865**: ~~No pre-Confederation entity~~ → Fixed in v2.1:
+  `CAN-1800-1866` added.
 - **Cuba, Mexico**: Single-entry coverage, no period differentiation.
 - **USA**: Excellent -- 108 entries, 100% verified.
 
 ### South America (88 entries including subnational)
-- **Argentina**: No aggregate despite 3 period entries.
+- **Argentina**: ~~No aggregate~~ → Fixed in v2.1: `ARG-1800-2025` added.
 - **Brazil**: Excellent with 65 entries and historical subnational.
 - **1800-1820**: Independence-era coverage is thin.
 
 ### Oceania (80 entries)
-- **New Zealand 1800-1906**: Major gap. No colonial-period entry.
+- **New Zealand 1800-1906**: ~~Major gap~~ → Fixed in v2.1: `NZL-1840-1907` added.
 - **Australia pre-1901**: Federation gap (colonial entries exist separately).
 - **Pacific island chieftaincies**: Largely absent before colonization.
 
@@ -143,22 +147,24 @@ Denmark (`DAN-1800-2025`), Indonesia (`DEI-1800-2025`).
 
 ## 4. Polygon/Geometry Gaps
 
-### 10 Remaining Non-Region Polities Without Geometry
+### 6 Remaining Non-Region Polities Without Geometry
 
 | Polity | Type | Region | Fillable? |
 |--------|------|--------|-----------|
 | DRO-1800-1982 Dronning Maud Land | dependency | Antarctica | YES -- Antarctic claim sector |
-| NEU-1800-1982 Neutral Zone | dependency | Asia | YES -- well-documented boundary |
-| F285-2011-2023 Sark | dependency | Europe | YES -- sub-admin of Guernsey |
-| MID-1859-1982 Midway Islands | dependency | Oceania | YES -- well-known atoll |
-| WAK-1898-1982 Wake Island | dependency | Oceania | YES -- well-known atoll |
 | DAN-1800-1845 Danish India | historical | Asia | MODERATE -- tiny trading posts |
+| NEU-1800-1982 Neutral Zone | dependency | Asia | YES -- well-documented boundary |
 | CAN-1800-1982 Canton & Enderbury | historical | Oceania | MODERATE -- tiny atolls |
-| JTN-1800-1982 Johnston Island | dependency | Oceania | MODERATE -- tiny atoll |
 | UNI-1800-1982 US Misc. Pacific Islands | dependency | Oceania | DIFFICULT -- scattered islets |
 | USS-1859-2025 US Settlement Oceania | dependency | Oceania | DIFFICULT -- composite territory |
 
-All 10 are minor territories. None affect trade data analysis for major countries.
+**Resolved in v2.1** (4 gaps filled):
+- ~~MID-1859-1982 Midway Islands~~ → Natural Earth map_units polygon
+- ~~WAK-1898-1982 Wake Island~~ → Natural Earth map_units polygon
+- ~~JTN-1800-1982 Johnston Island~~ → Natural Earth map_units polygon
+- ~~F285-2011-2023 Sark~~ → GADM admin-1 polygon (Guernsey subdivision)
+
+All 6 remaining are minor territories. None affect trade data analysis for major countries.
 
 ### Polygon Source Distribution
 
@@ -218,12 +224,12 @@ mandates (38).
 ### Statistics
 | Metric | Value |
 |--------|-------|
-| Nodes | 1,236 (1,228 polities + 8 continents) |
-| Edges | 2,188 |
+| Nodes | 1,244 (1,236 polities + 8 continents) |
+| Edges | 2,383 |
 | Edge types | 9 |
-| Connected components | 56 |
-| Largest component | 1,027 nodes |
-| Isolated nodes | 55 (all statistical regions) |
+| Connected components | 55 |
+| Largest component | ~1,190 nodes |
+| Isolated nodes | 54 (specialized FAOSTAT regions) |
 
 ### Edge type distribution (current)
 | Relation | Edges |
@@ -243,52 +249,52 @@ mandates (38).
    point to `BRA-1822-2025`, but the database entry is `BRA-1909-2025`.
 2. **Node CSV format bug**: 155 subnational nodes have data in alternative
    columns (`id`, `label`, `type`, `degree`) instead of primary columns.
-3. **Broken predecessor references**: 28 entries reference non-existent codes,
-   primarily `F228-1940-1991` (USSR region code) used by 12 post-Soviet states.
-4. **Sparse predecessor/successor links**: 86.8% of polities have neither.
+
+**Resolved in v2.1:**
+- ~~Broken F228 predecessor references~~ → 15 entries corrected from
+  `F228-1940-1991` to `F228-1945-1991`
+- ~~Sparse predecessor/successor links~~ → ~40 new links added for UK, France,
+  Argentina, Brazil, Colombia, Canada, Russia/F228 chain
 
 ---
 
 ## 7. Predecessor/Successor Chain Gaps
 
-### Overall coverage
-| Status | Count | % |
-|--------|-------|---|
-| Has predecessor | 52 | 4.2% |
-| Has successor | 116 | 9.4% |
-| Has both | 6 | 0.5% |
-| Has neither | 1,066 | 86.8% |
+### Overall coverage (improved in v2.1)
 
-### Important missing links for trade-critical countries
+~40 new predecessor/successor links were added in v2.1 for trade-critical
+countries: UK, France, Argentina, Brazil, Colombia, Canada, and the full
+Russia/F228 chain (11 entries linked).
+
+### Remaining missing links
 
 | Country | Missing link |
 |---------|-------------|
-| UK | GBR-1800-1921 ↔ GBR-1921-2025 (no pred/succ) |
-| France | FRA-1800-1919 ↔ FRA-1919-2025 (no pred/succ) |
-| Argentina | ARG-1800-1899 → ARG-1899-1902 → ARG-1902-2025 (no chain) |
-| Colombia | COL-1800-1903 → COL-1903-1922 → COL-1922-2025 (no chain) |
-| Brazil | BRA-1800-1903 → BRA-1903-1909 → BRA-1909-2025 (no chain) |
-| Russia | F228 chain entries lack mutual links |
 | South Africa | Cape Colony → ZAF (not linked as predecessor) |
 
-### Broken references (28 total)
-- **12 post-Soviet states** → `F228-1940-1991` (code not in non-region subset)
+### Remaining broken references
 - **Italy (to 1919)** → 6 predecessor codes (SAR, TWO, PAP, TUS, DMO, DPA)
   that use shorter formats than actual polity codes
 - **F77/F78** (East/West Germany) → referenced by unified Germany but codes
   don't exist in database as formatted
 
+**Resolved in v2.1:**
+- ~~UK~~ → GBR-1800-1921 ↔ GBR-1921-2025 now linked
+- ~~France~~ → FRA-1800-1919 ↔ FRA-1919-2025 now linked
+- ~~Argentina~~ → Full chain ARG-1800-1899 → ARG-1899-1902 → ARG-1902-2025 linked
+- ~~Colombia~~ → Full chain COL-1800-1903 → COL-1903-1922 → COL-1922-2025 linked
+- ~~Brazil~~ → Full chain BRA-1800-1903 → BRA-1903-1909 → BRA-1909-2025 linked
+- ~~Russia~~ → Complete F228/RUS chain (11 entries) mutually linked
+- ~~F228 broken references~~ → 15 post-Soviet states corrected to F228-1945-1991
+
 ---
 
 ## 8. Cross-Cutting Data Quality Issues
 
-### IND Prefix Collision
-Pre-1949 entries for both India and Indonesia use the `IND-` prefix:
-- `IND-1800-1893`, `IND-1893-1914`, etc. → India
-- `IND-1800-1889`, `IND-1889-1949` → Indonesia
-
-This creates confusion in code-based lookups. Modern entries correctly
-differentiate: India uses `IND-1947-2025`, Indonesia uses `IDN-1945-2025`.
+### IND Prefix Collision — RESOLVED in v2.1
+~~Pre-1949 entries for both India and Indonesia used the `IND-` prefix.~~
+Fixed: Indonesia entries renamed from `IND-1800-1889` / `IND-1889-1949` to
+`IDN-1800-1889` / `IDN-1889-1949`. All `IND-` entries now refer to India only.
 
 ### Overlapping Same-ISO Entries
 282 pairs of entries share the same ISO3 code with overlapping date ranges:
@@ -318,50 +324,44 @@ differentiate: India uses `IND-1947-2025`, Indonesia uses `IDN-1945-2025`.
 
 ## 9. Recommended Priority Actions
 
-### HIGH PRIORITY (for trade data analysis)
+### Completed in v2.1
+- ~~Add NZ colonial entry~~ → `NZL-1840-1907` added
+- ~~Add Canada pre-Confederation~~ → `CAN-1800-1866` added
+- ~~Add PRC sovereign~~ → `CHN-1950-2025` added
+- ~~Add missing aggregates~~ → GBR, ARG, RUS, USA, ZAF -1800-2025 added
+- ~~Fix F228 predecessor references~~ → 15 entries corrected
+- ~~Add pred/succ links~~ → ~40 links for UK, France, Argentina, Brazil, Colombia, Canada, Russia
+- ~~Resolve IND prefix collision~~ → Indonesia renamed to IDN-
+- ~~Fill 4 easy polygon gaps~~ → Midway, Wake, Johnston, Sark
 
-1. **Add New Zealand colonial entry** (`NZL-1840-1907` or similar) to fill the
-   1800-1906 gap. Critical for 19th-century wool/meat trade data.
+### HIGH PRIORITY (remaining)
 
-2. **Add Canada pre-Confederation entry** (`CAN-1800-1866` or similar) to fill
-   the 1800-1865 gap. Critical for timber/fur trade data.
-
-3. **Add PRC sovereign entry** (`CHN-1949-2025` or `CHN-1950-2025` sovereign).
-   The aggregate exists but a sovereign-type entry is structurally expected.
-
-4. **Add missing aggregate entries** for UK (`GBR-1800-2025`), Argentina
-   (`ARG-1800-2025`), Russia (`RUS-1800-2025`), USA (`USA-1800-2025`).
-
-5. **Fix BRA-1822-2025 KG reference** to point to `BRA-1909-2025`.
-
-### MEDIUM PRIORITY (data quality)
-
-6. **Verify African entries**: 137 UNVERIFIED African polities, mostly
+1. **Verify African entries**: 137 UNVERIFIED African polities, mostly
    historical/colonial. Prioritize trade-relevant: Nigeria, Egypt, South Africa.
 
-7. **Fix broken predecessor/successor references** (28 entries), particularly
-   the F228 (USSR) and Italian pre-unification chain.
+2. **Fix BRA-1822-2025 KG reference** to point to `BRA-1909-2025`.
 
-8. **Add predecessor/successor links** for trade-critical countries (UK, France,
-   Argentina, Brazil, Colombia, Russia).
+3. **Fix KG node CSV format** for 155 subnational entries with misaligned
+   columns.
 
-9. **Resolve IND prefix collision**: Consider renaming pre-1949 Indonesia
-   entries from `IND-` to `IDN-` prefix for consistency.
+### MEDIUM PRIORITY
+
+4. **Add Japan Empire period differentiation** (1895-1945 with colonial
+   territories vs. home islands).
+
+5. **Fill 2 easy polygon gaps**: Dronning Maud Land (Antarctic claim sector),
+   Neutral Zone (well-documented boundary).
+
+6. **Fix Italian pre-unification predecessor references** (6 codes in shorter
+   format than actual polity codes).
 
 ### LOW PRIORITY (nice to have)
 
-10. **Fill 5 easy polygon gaps**: Dronning Maud Land, Neutral Zone, Sark,
-    Midway, Wake Island (all well-documented territories).
+7. **Add subnational for UK, France, Germany, India** -- primarily for
+   geographic analysis rather than trade data linkage.
 
-11. **Add Japan Empire period differentiation** (1895-1945 with colonial
-    territories vs. home islands).
-
-12. **Add subnational for UK, France, Germany, India** -- but these primarily
-    serve geographic analysis rather than trade data linkage (per
-    `cleaning_geography.xlsx` analysis, few subnational trade mentions exist).
-
-13. **Fix KG node CSV format** for 155 subnational entries with misaligned
-    columns.
+8. **Fill 4 difficult polygon gaps**: Danish India, Canton & Enderbury, US Misc.
+   Pacific Islands, US Settlement Oceania.
 
 ---
 
@@ -370,6 +370,7 @@ differentiate: India uses `IND-1947-2025`, Indonesia uses `IDN-1945-2025`.
 | Script | Purpose |
 |--------|---------|
 | `R/15_build_unified_polygons.R` | Build unified GeoPackage from all sources |
+| `R/16_data_integrity_fixes.R` | Fix pred/succ links, add aggregates, fill temporal gaps, resolve IND collision |
 | `R/08_stress_test.R` | 31 automated integrity checks |
 | `R/07_build_knowledge_graph.R` | Build knowledge graph (9 relation types) |
 | `R/10_analysis_plots.R` | Generate analysis visualizations |

@@ -10,7 +10,7 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,228 political entities ("polities")** spanning
+A comprehensive database of **1,236 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
 Includes **371 subnational entries** (216 present-day GADM + 26 Qing China + 51 US
@@ -25,12 +25,12 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,228 |
-| Sovereign states | 194 |
-| Historical entities | 386 |
+| Total entries | 1,236 |
+| Sovereign states | 195 |
+| Historical entities | 388 |
 | Colonial entities | 47 |
 | Dependencies/territories | 75 |
-| Trade aggregates | 60 |
+| Trade aggregates | 65 |
 | Mandates | 13 |
 | Statistical regions | 77 |
 | Disputed entities | 4 |
@@ -40,7 +40,7 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 1,141/1,151 non-region (99.1%) |
+| Polities with polygons | 1,153/1,159 non-region (99.5%) |
 | Subnational polygons (9 countries + Qing) | 371/371 (100%) |
 | Historical subnational polygons | 91/110 (82.7%) |
 | Excel data regions with polygons | 390/409 (95.4%) |
@@ -166,7 +166,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 | `08_POLYGON_ACCURACY_AUDIT.md` | Deep audit: 12 problem zones, 18 severity entries, external GIS sources |
 | `09_SUBNATIONAL_MAJOR_COUNTRIES.md` | GADM admin-1 for 19 countries: stability ratings, 374 potential entries |
 | `10_VALIDATION_SUMMARY.md` | Data quality scorecard: 31 tests, polygon cross-validation, known issues |
-| `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 2,188 edges, usage examples |
+| `11_KNOWLEDGE_GRAPH.md` | Knowledge graph: 9 relation types, 2,383 edges, usage examples |
 | `12_HISTORICAL_MAP_SOURCES.md` | 28 historical map/GIS sources for pre-1886 boundary gaps |
 | `13_SUBNATIONAL_HISTORICAL_SOURCES.md` | Historical subnational polygon sources for 11 major countries |
 | `14_GAP_ANALYSIS_REPORT.md` | Comprehensive gap analysis: trade-critical countries, polygon gaps, verification |
@@ -192,7 +192,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
 
 ### Knowledge Graph
-- **1,236 nodes** (1,228 polities + 8 continent nodes), **2,188 edges**, **9 relation types**
+- **1,244 nodes** (1,236 polities + 8 continent nodes), **2,383 edges**, **9 relation types**
 - Exports: CSV, GraphML (Gephi/Cytoscape/igraph compatible)
 
 ### Polygon Cross-Validation
@@ -226,7 +226,7 @@ China, Brazil, Australia, Spain, and historical entries for USA (1800-1958), Bra
 library(sf)
 polities <- st_read("data/final/polities_database.gpkg")
 ```
-This single file contains all 1,228 polities with geometries attached (1,141 have
+This single file contains all 1,236 polities with geometries attached (1,141 have
 actual geometry; 87 have empty geometry -- 77 regions + 10 minor territories).
 
 ### For joining with other datasets:
@@ -256,6 +256,7 @@ All analysis is in R (managed by `renv`). Run `renv::restore()` to install depen
 | `R/13_integrate_chgis_provinces.R` | Integrate CHGIS v6 Qing province polygons as subnational entries |
 | `R/14_integrate_historical_subnational.R` | Integrate USA (1800-1958), Brazil (1872-1987), Spain (1833-2025) subnational |
 | `R/15_build_unified_polygons.R` | Build unified GeoPackage merging all polygon sources |
+| `R/16_data_integrity_fixes.R` | Fix pred/succ links, add aggregates, fill temporal gaps |
 
 ---
 
