@@ -112,13 +112,26 @@ priority ratings.
 - **License**: APSR Dataverse replication data -- free for academic use with
   citation
 - **Quality**: Peer-reviewed (APSR is top-tier). Digitized by trained researchers
-  from the most authoritative source (Ajayi & Crowder).
+  from the most authoritative source (Ajayi & Crowder). Authors use 0.25-degree
+  buffers (~25 km) around boundaries for robustness checks, acknowledging
+  inherent uncertainty in pre-colonial boundary placement.
+- **Complete list of 46 states**:
+  - **Core states (all sources agree)**: Asante, Benin Kingdom, Borno, Buganda,
+    Bunyoro, Burundi, Cayor, Dahomey, Darfur, Ethiopia, Futa Jalon, Jolof,
+    Kazembe/Lunda East, Lesotho, Luba, Mwata Yamvo/Lunda West, Nkore (Ankole),
+    Rwanda, Sokoto, Wadai, Walo, Zulu
+  - **Additional**: Bemba, Bundu, Kasanje, Lozi, Ndebele, Porto Novo, Salum, Sine
+  - **North African**: Egypt, Morocco, Tunis
+  - **Case-by-case inclusion**: Borgu, Dagomba, Damagaram, Futa Toro, Gaza,
+    Gobir, Igala, Mossi, Swazi, Egba, Ibadan, Ijebu, Oyo
 - **Specific relevance**:
   - **ETH-1800-1889**: Includes pre-Menelik Ethiopia (CRITICAL fix, 2-3x oversize)
   - **ZAN-1800-1890**: May include Zanzibar Sultanate mainland (CRITICAL fix)
   - **MOR-1800-1904**: May include Morocco (MAJOR fix, bled al-makhzen)
   - **MAD-1800-1912**: May include Merina Kingdom (MODERATE fix)
   - Also relevant to EGY, various West African entities
+  - Paine et al. explicitly demonstrate that the Murdock ethnographic map (843
+    ethnic groups) should NOT be used as a proxy for state boundaries
 
 ### 2.2 HGIS Germany (1820-1914) -- PRIORITY HIGH
 
@@ -365,14 +378,37 @@ priority ratings.
 - **URL**: https://github.com/Seshat-Global-History-Databank/cliopatria
 - **Zenodo**: https://zenodo.org/records/14714684
 - **Paper**: Bennett et al. (2025), Nature Scientific Data
-- **Coverage**: **3400 BCE to 2024 CE**, worldwide, ~1,600 polities, ~15,690
-  GeoJSON features. For 1800-1886: 1,945 features covering 290+ polities.
+- **Coverage**: **3400 BCE to 2024 CE**, worldwide. 15,690 GeoJSON features
+  covering 1,600+ polities. For 1800-1886: 1,945 features covering 290+
+  polities.
 - **Format**: GeoJSON (single file ~198 MB), EPSG:4326 (WGS 84)
 - **License**: **CC BY 4.0** (open)
 - **Temporal resolution**: Variable. 19th century: often yearly for major polities
   (Ottoman Empire: 33 records; Russian Empire: 34; Qing Dynasty: 31; Qajar Iran: 12).
-- **Quality**: Hand-traced from reference atlases. Moderate spatial precision
-  (schematic, not survey-grade). R-squared ~0.90 vs Taagepera area measurements.
+- **Spatial accuracy**: Hand-traced from reference atlases. Moderate precision
+  (~hundreds of vertices per polygon). R-squared ~0.90 vs Taagepera area
+  measurements. The project acknowledges "currently unquantified uncertainty"
+  in all boundary placements.
+- **African polities specifically covered** (with time-steps and approximate areas):
+  - **Ashanti Empire**: 1797-1894, 20 time-steps, ~154,508 km2
+  - **Sokoto Caliphate**: 1805-1894, 6 time-steps, ~792,706 km2
+  - **Ethiopian Empire**: 1769-1894, 2 time-steps, ~240,357 km2
+  - **Merina Kingdom** (Madagascar): 1796-1894, 10 time-steps, ~426,715 km2
+  - **Bornu Empire**: 1636-1894, 8 time-steps, ~227,106 km2
+  - **Zululand**: 1820-1894, 5 time-steps, ~25,464 km2
+  - **Morocco**: 1769-1904, 5 time-steps, ~386,205 km2
+  - **Zanzibar**: 1856-1889, 2 time-steps, ~28,255 km2
+  - **Regency of Algiers**: 1792-1845, 6 time-steps, ~163,203 km2
+  - **Khedivate of Egypt / Muhammad Ali dynasty**: multiple entries
+  - **Sultanate of Darfur**: 1636-1876, 3 time-steps
+  - **Wadai Empire**: 1636-1894, 2 time-steps
+  - **Also present**: Majeerteen Sultanate, Sultanate of Hobyo, Mahdist State,
+    and others
+  - **NOT found by name**: Dahomey and Buganda are not present as named entries
+    in the dataset
+- **Limitation**: Treats some empires as monolithic aggregates (e.g., "British
+  Africa") -- these aggregate entries are unsuitable for per-territory analysis
+  of individual colonial possessions.
 - **Specific relevance**: **The most comprehensive open-source global polygon source
   for the pre-1886 gap.** Covers Ottoman Empire, Qing Dynasty, Russian Empire,
   Qajar Iran, African kingdoms (Ashanti, Sokoto, Merina, Zululand, etc.),
@@ -485,6 +521,53 @@ Harvard Japan HGIS covers Tokugawa and Meiji periods.
   1800-era entries using CShapes back-projection. The War of the Pacific
   boundaries (Bolivia losing its coast) are a notable inaccuracy for
   BOL-1825-1903 and CHL-1810-1899.
+
+### 3.8 Pre-Colonial African Boundaries -- Fundamental Challenges
+
+The digitization of pre-colonial African polity boundaries faces challenges
+qualitatively different from those of European or East Asian historical GIS
+work. These must be understood when using sources like Paine et al. (2024) or
+Cliopatria.
+
+- **Zones of influence vs. hard borders**: Pre-colonial African polities
+  typically exercised graduated sovereignty radiating outward from a core,
+  rather than maintaining fixed linear borders. Peripheral areas were zones of
+  shared or contested influence, not demarcated frontiers.
+- **Scale of political fragmentation**: Circa 1880, Africa contained an
+  estimated ~45,000 independent polities, of which only ~46 were organized as
+  centralized states (those captured by Paine et al.). The vast majority were
+  acephalous societies, chieftaincies, or segmentary lineage systems that did
+  not map onto the Westphalian state model.
+- **Overlapping sovereignty**: Tribute systems created hierarchies of
+  overlapping claims. A polity paying tribute to Sokoto, for example, might
+  simultaneously owe allegiance to a local Hausa emir and conduct independent
+  diplomacy. Drawing a single polygon boundary necessarily simplifies these
+  layered relationships.
+- **Temporal instability**: Many pre-colonial African state boundaries shifted
+  rapidly with military campaigns, succession crises, and seasonal patterns of
+  raiding. A polygon valid for one decade may be seriously wrong for the next.
+- **Boundaries not recorded by the polities themselves**: Unlike European or
+  Chinese states, pre-colonial African polities generally did not produce
+  boundary maps or treaty-delimited borders. All boundary reconstructions rely
+  on European travelers' accounts, oral traditions collected later, or
+  inference from archaeological and linguistic evidence.
+- **Robustness strategies**:
+  - Paine et al. (2024) use 0.25-degree buffers (~25 km) around all digitized
+    boundaries for robustness checks, demonstrating that their results hold
+    regardless of exact boundary placement within this margin.
+  - Cliopatria acknowledges "currently unquantified uncertainty" in all its
+    historical boundary data.
+- **Practical implication for WHEP**: Any polygon representing a pre-colonial
+  African polity is a scholarly approximation carrying ~25-100 km uncertainty
+  at the boundary. This uncertainty should be documented in polygon metadata,
+  and analysis should avoid relying on precise boundary placement.
+- **Murdock ethnographic map**: The Murdock (1959) map of 843 ethnic groups is
+  widely available as a shapefile and is sometimes used as a proxy for
+  pre-colonial political boundaries. This is methodologically incorrect.
+  Paine et al. (2024) demonstrate explicitly that ethnic group territories do
+  not correspond to state boundaries -- many states spanned multiple ethnic
+  groups, and many ethnic groups were split across states. The Murdock map
+  should NOT be used as a substitute for state boundary data.
 
 ---
 
@@ -698,6 +781,7 @@ Harvard Japan HGIS covers Tokugawa and Meiji periods.
 | **HGIS Germany** | German states | 38 pre-1871 states, 1820-1914 | SHP | Free | Low (direct use) |
 | **CHGIS v6** | China/Qing | CHN-1800-1895 + Outer Mongolia | SHP | Free | Low-Medium |
 | **Paine et al. (2024)** | Africa | 46 pre-colonial states | SHP | Free | Medium |
+| **Cliopatria** | Global (incl. Africa) | 290+ polities 1800-1886; African kingdoms (Ashanti, Sokoto, Merina, Bornu, Zululand, Ethiopia, Morocco, Zanzibar, etc.) | GeoJSON | Free (CC BY 4.0) | Low-Medium |
 | **Aourednik basemaps** | Global | Quick validation of 1800 & 1880 | GeoJSON | Free | Low |
 
 ### Tier 2: High Value, Moderate Effort or Cost
@@ -738,20 +822,27 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 
 | Problem Polity | Severity | Best Source(s) | Status |
 |----------------|----------|---------------|--------|
-| ETH-1800-1889 (pre-Menelik Ethiopia) | CRITICAL | Paine et al. (2024) | Available now |
-| EGY-1800-1899 (Egypt without Sudan) | CRITICAL | Paine et al. + Centennia CRE | Available now |
-| ZAN-1800-1890 (Zanzibar islands only) | CRITICAL | Paine et al. (2024) | Available now |
-| CHN-1800-1895 (Qing + Outer Mongolia) | MAJOR | CHGIS v6 (1820 time-slice) | Available now |
-| MOR-1800-1904 (Morocco fixed borders) | MAJOR | Paine et al. (2024) | Available now |
-| MAD-1800-1912 (Madagascar whole island) | MODERATE | Paine et al. (2024) | Available now |
+| ETH-1800-1889 (pre-Menelik Ethiopia) | CRITICAL | Paine et al. (2024) + Cliopatria (2 time-steps, ~240,357 km2) | Available now |
+| EGY-1800-1899 (Egypt without Sudan) | CRITICAL | Paine et al. + Cliopatria (Khedivate, multiple entries) + Centennia CRE | Available now |
+| ZAN-1800-1890 (Zanzibar islands only) | CRITICAL | Paine et al. + Cliopatria (2 time-steps, ~28,255 km2) | Available now |
+| CHN-1800-1895 (Qing + Outer Mongolia) | MAJOR | CHGIS v6 (1820 time-slice) + Cliopatria (31 records) | Available now |
+| MOR-1800-1904 (Morocco fixed borders) | MAJOR | Paine et al. + Cliopatria (5 time-steps, ~386,205 km2) | Available now |
+| MAD-1800-1912 (Madagascar whole island) | MODERATE | Paine et al. + Cliopatria (Merina, 10 time-steps, ~426,715 km2) | Available now |
+| Ashanti Empire (1797-1894) | MODERATE | Cliopatria (20 time-steps, ~154,508 km2) | Available now |
+| Sokoto Caliphate (1805-1894) | MODERATE | Paine et al. + Cliopatria (6 time-steps, ~792,706 km2) | Available now |
+| Bornu Empire (1636-1894) | MODERATE | Paine et al. + Cliopatria (8 time-steps, ~227,106 km2) | Available now |
+| Zululand (1820-1894) | MODERATE | Paine et al. + Cliopatria (5 time-steps, ~25,464 km2) | Available now |
+| Regency of Algiers (1792-1845) | MODERATE | Cliopatria (6 time-steps, ~163,203 km2) | Available now |
+| Darfur / Wadai | MODERATE | Paine et al. + Cliopatria (Darfur: 3 time-steps; Wadai: 2 time-steps) | Available now |
 | German states (38 entities pre-1871) | MODERATE | HGIS Germany (1820-1914) | Available now |
 | KHI/KOK/BUK (Central Asian khanates) | MODERATE | No vector source found | Manual work needed |
-| OTT-1800-1886 (Ottoman pre-contraction) | MODERATE | Centennia CRE ($75+) | Commercial |
+| OTT-1800-1886 (Ottoman pre-contraction) | MODERATE | Cliopatria (33 records) + Centennia CRE ($75+) | Available now / Commercial |
 | IND-1800-1893 (British India) | MODERATE | Appraising Risk (1872+) | In progress |
-| IRN-1800 (Qajar Persia) | MODERATE | No vector source found | Manual work needed |
+| IRN-1800 (Qajar Persia) | MODERATE | Cliopatria (12 records) | Available now |
 | Lat. American states (1800-1886) | MODERATE | HGIS de las Indias (to 1808) | Partial |
 | FRA-1800-1919 (France Alsace-Lorraine) | MINOR | TRF-GIS + French HGIS | Available now |
 | AUH-1800-1908 (Austria-Hungary) | MINOR | HistoGIS (1848 crownlands) | Available now |
+| Dahomey, Buganda | MINOR | Paine et al. only (NOT in Cliopatria by name) | Partial |
 
 ---
 
@@ -824,6 +915,8 @@ Cross-referencing against the polygon accuracy audit (doc 08):
 - Japan HGIS: https://dataverse.harvard.edu/dataverse/japan_hgis
 - Historical Atlas of the Low Countries: https://datasets.iisg.amsterdam/dataset.xhtml?persistentId=hdl:10622/PGFYTM
 - Appraising Risk India: https://www.appraisingrisk.com/2020/10/23/digitization-of-indian-census-districts-1872-to-present/
+- Cliopatria (Seshat): https://github.com/Seshat-Global-History-Databank/cliopatria
+- Cliopatria Zenodo: https://zenodo.org/records/14714684
 - Murdock ethnic map R package: https://github.com/sboysel/murdock
 
 ### Community/Open Source

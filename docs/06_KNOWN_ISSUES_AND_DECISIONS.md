@@ -138,6 +138,44 @@
   than hard borders. Any polygon is a scholarly approximation with ~25-100 km
   uncertainty (Paine et al. use 0.25° buffers for robustness checks).
 
+### ADDED: 20 Pre-Colonial African Kingdom Entries
+- **Severity**: ENHANCEMENT
+- **Rationale**: The database had no entries for pre-colonial African states that
+  controlled territory before European colonization. All African "historical" entries
+  were colonial constructs. This left a systematic gap in coverage, especially for
+  the pre-1886 period where trade data exists but no polity entries represented the
+  actual political entities.
+- **Selection criteria**: Organized states (not ethnic groups) with polygon data
+  available from Paine et al. (2024) or Cliopatria, that existed during 1800-1886.
+- **Entries added**:
+  - ASH-1800-1896: Ashanti Empire (modern Ghana, ~154,508 km²)
+  - SOK-1804-1903: Sokoto Caliphate (N. Nigeria/Niger, ~792,706 km²)
+  - DHY-1800-1894: Kingdom of Dahomey (modern Benin)
+  - ZUL-1816-1879: Zulu Kingdom (KwaZulu-Natal, ~25,464 km²)
+  - BNU-1800-1893: Bornu Empire (NE Nigeria/Chad, ~227,106 km²)
+  - WAD-1800-1912: Wadai Empire (E. Chad)
+  - DFR-1800-1874: Sultanate of Darfur (W. Sudan)
+  - BGA-1800-1894: Kingdom of Buganda (central Uganda)
+  - BNY-1800-1899: Kingdom of Bunyoro (western Uganda)
+  - BKN-1800-1897: Kingdom of Benin (Edo State, Nigeria)
+  - LBA-1800-1885: Luba Empire (Katanga, DRC)
+  - LND-1800-1887: Lunda Empire (DRC/Angola/Zambia)
+  - FTJ-1800-1896: Imamate of Futa Jallon (Guinea)
+  - NDB-1823-1894: Ndebele Kingdom (Matabeleland, Zimbabwe)
+  - GZE-1824-1895: Gaza Empire (S. Mozambique)
+  - OYO-1800-1836: Oyo Empire (SW Nigeria)
+  - RWK-1800-1890: Kingdom of Rwanda
+  - BDK-1800-1890: Kingdom of Burundi
+  - LST-1822-1868: Basotho Kingdom (Lesotho)
+  - SWK-1800-1894: Swazi Kingdom (Eswatini)
+- **Predecessor/successor links created**: Successor colonial entries updated with
+  predecessor references (e.g., UGA-1894-1902 ← BGA + BNY, NAT-1843-1895 ← ZUL)
+- **Polygon sources**: Paine et al. (2024) for all 20; Cliopatria as co-source for
+  8 entries (Ashanti, Sokoto, Zulu, Bornu, Wadai, Darfur + others with time-steps)
+- **Note**: Pre-colonial boundary uncertainty ~25-100 km. See docs/12 Section 3.8
+  for full discussion of fundamental challenges with African historical boundaries.
+- **Database count**: 1,030 → 1,050 entries
+
 ---
 
 ## 2. Known Limitations (Unresolved)

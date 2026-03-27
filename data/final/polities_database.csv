@@ -15,7 +15,7 @@ ERI-1882-2025,Eritrea,1882,2025,144,sovereign,Africa,ERI,531.0,CShapes 2.0,,,FT;
 MDG-1882-2025,Madagascar,1882,2025,144,sovereign,Africa,MDG,580.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 NAM-1884-2025,Namibia,1884,2025,142,sovereign,Africa,NAM,565.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 ZWE-1890-2025,Zimbabwe,1890,2025,136,sovereign,Africa,ZWE,552.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
-SWZ-1894-2025,Eswatini,1894,2025,132,sovereign,Africa,SWZ,572.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
+SWZ-1894-2025,Eswatini,1894,2025,132,sovereign,Africa,SWZ,572.0,CShapes 2.0,SWK-1800-1894,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 SYC-1903-2025,Seychelles,1903,2025,123,sovereign,Africa,SYC,591.0,CShapes 2.0,,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 LBY-1951-2025,Libya,1951,2025,75,sovereign,Africa,LBY,620.0,CShapes 2.0,,,FAOSTAT; M49; CShapes,VERIFIED,
 GHA-1957-2025,Ghana,1957,2025,69,sovereign,Africa,GHA,452.0,CShapes 2.0,,,FAOSTAT; M49; CShapes,VERIFIED,
@@ -57,7 +57,7 @@ ALG-1830-1902,Algeria (to 1902),1830,1902,73,historical,Africa,ALG,,CShapes 2.0 
 ANG-1800-1890,Angola (to 1890),1800,1890,91,historical,Africa,ANG,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
 BOT-1885-1890,Botswana (to 1890),1885,1890,6,historical,Africa,BOT,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Bechuanaland Protectorate established). Independent Tswana kingdoms before 1885.
 CON-1882-1898,Congo (to 1898),1882,1898,17,historical,Africa,CON,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (French Parliament ratified Brazza treaties). Loango and Teke kingdoms before 1882.
-CON-1885-1891,Democratic Republic of the Congo (to 1891),1885,1891,7,historical,Africa,CON,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Congo Free State recognized at Berlin Conference). Luba Lunda and Kongo kingdoms before 1885. Paine et al. (2024) has pre-colonial state polygons.
+CON-1885-1891,Democratic Republic of the Congo (to 1891),1885,1891,7,historical,Africa,CON,,CShapes 2.0 + CShapes-Europe,LBA-1800-1885; LND-1800-1887,,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Congo Free State recognized at Berlin Conference). Luba Lunda and Kongo kingdoms before 1885. Paine et al. (2024) has pre-colonial state polygons.
 EGY-1800-1899,Egypt (to 1899),1800,1899,100,historical,Africa,EGY,651.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
 EGY-1800-1922,Egypt (to 1922),1800,1922,123,historical,Africa,EGY,651.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,VERIFIED,
 ERI-1882-1889,Eritrea (to 1889),1882,1889,8,historical,Africa,ERI,531.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (Italy purchased Assab). Was Ethiopian Empire highlands and Ottoman coast before 1882.
@@ -65,8 +65,8 @@ ETH-1800-1889,Ethiopia (to 1889),1800,1889,90,historical,Africa,ETH,530.0,CShape
 GAB-1839-1912,Gabon (to 1912),1839,1912,74,historical,Africa,GAB,481.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start corrected from 1800 to 1839 (first French treaty with King Denis at Gabon Estuary). Mpongwe and Orungu coastal polities before 1839.
 GHA-1821-1888,Ghana (to 1888),1821,1888,68,historical,Africa,GHA,452.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start corrected from 1800 to 1821 (British Crown took over forts). Ashanti Empire dominated the region in 1800. Paine et al. (2024) has Ashanti polygon.
 LAG-1861-1906,Lagos (to 1906),1861,1906,46,historical,Africa,LAG,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,FIXED,Start corrected from 1800 to 1861 (British annexation 6 Aug 1861). Yoruba kingdom of Lagos before 1861.
-MAD-1800-1912,Madagascar (to 1912),1800,1912,113,historical,Africa,MAD,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
-MOR-1800-1904,Morocco (to 1904),1800,1904,105,historical,Africa,MOR,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
+MAD-1800-1912,Madagascar (to 1912),1800,1912,113,historical,Africa,MAD,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,Merina Kingdom period. Cliopatria has 10 time-steps 1796-1894 (~426715 km2). French conquest 1897.
+MOR-1800-1904,Morocco (to 1904),1800,1904,105,historical,Africa,MOR,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,Alaouite dynasty. Cliopatria has 5 time-steps 1769-1904 (~386205 km2).
 MOZ-1800-1891,Mozambique (to 1891),1800,1891,92,historical,Africa,MOZ,541.0,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
 SIE-1800-1889,Sierra Leone (to 1889),1800,1889,90,historical,Africa,SIE,,CShapes 2.0 + CShapes-Europe,,,FT; CShapes,UNVERIFIED,
 ZAN-1856-1964,Zanzibar,1856,1964,109,historical,Africa,ZAN,,CShapes 2.0 + CShapes-Europe,,,FT; FAOSTAT; CShapes; WHEP-fix,FIXED,Start corrected from 1800 to 1856 (separation from Sultanate of Oman upon death of Said bin Sultan). Part of Oman before 1856. Cliopatria has Zanzibar Sultanate polygons.
@@ -75,7 +75,7 @@ GHA-1888-1898,Ghana (1888-1898),1888,1898,11,historical,Africa,GHA,452.0,CShapes
 KEN-1888-1891,Kenya (1888-1891),1888,1891,4,historical,Africa,KEN,501.0,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 COT-1889-1932,Côte d'Ivoire (1889-1932),1889,1932,44,historical,Africa,COT,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 ETH-1889-1897,Ethiopia (1889-1897),1889,1897,9,historical,Africa,ETH,530.0,CShapes 2.0,,,FT; CShapes,VERIFIED,
-ZIM-1889-1891,Zimbabwe (1889-1891),1889,1891,3,historical,Africa,ZIM,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
+ZIM-1889-1891,Zimbabwe (1889-1891),1889,1891,3,historical,Africa,ZIM,,CShapes 2.0,NDB-1823-1894,,FT; CShapes,UNVERIFIED,
 ANG-1890-1891,Angola (1890-1891),1890,1891,2,historical,Africa,ANG,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 BOT-1890-1895,Botswana (1890-1895),1890,1895,6,historical,Africa,BOT,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 ZAN-1890-1964,Zanzibar (1890-1964),1890,1964,75,historical,Africa,ZAN,,CShapes 2.0,,,FT; FAOSTAT; CShapes; WHEP-fix,UNVERIFIED,
@@ -85,8 +85,8 @@ KEN-1891-1894,Kenya (1891-1894),1891,1894,4,historical,Africa,KEN,501.0,CShapes 
 ZIM-1891-1900,Zimbabwe (1891-1900),1891,1900,10,historical,Africa,ZIM,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 CON-1894-1910,Democratic Republic of the Congo (1894-1910),1894,1910,17,historical,Africa,CON,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 KEN-1894-1902,Kenya (1894-1902),1894,1902,9,historical,Africa,KEN,501.0,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
-UGA-1894-1902,Uganda (1894-1902),1894,1902,9,historical,Africa,UGA,500.0,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
-BEN-1895-1898,Benin (1895-1898),1895,1898,4,historical,Africa,BEN,434.0,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
+UGA-1894-1902,Uganda (1894-1902),1894,1902,9,historical,Africa,UGA,500.0,CShapes 2.0,BGA-1800-1894; BNY-1800-1899,,FT; CShapes,UNVERIFIED,
+BEN-1895-1898,Benin (1895-1898),1895,1898,4,historical,Africa,BEN,434.0,CShapes 2.0,DHY-1800-1894,,FT; CShapes,UNVERIFIED,
 ETH-1897-1902,Ethiopia (1897-1902),1897,1902,6,historical,Africa,ETH,530.0,CShapes 2.0,,,FT; CShapes,VERIFIED,
 CON-1898-1900,Congo (1898-1900),1898,1900,3,historical,Africa,CON,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 GHA-1898-1956,Ghana (1898-1956),1898,1956,59,historical,Africa,GHA,452.0,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
@@ -154,7 +154,7 @@ BRI-1885-1895,British Bechuanaland (to 1895),1885,1895,11,colonial,Africa,BRI,,C
 BRI-1884-1960,British Protectorate (British Somaliland) (to 1960),1884,1960,77,colonial,Africa,BRI,,CShapes 2.0 (dependencies=TRUE),,,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (first British treaties with Somali clans). Somali clan societies and sultanates before 1884.
 KAM-1884-1912,Cameroon (Kamerun) (to 1912),1884,1912,29,colonial,Africa,KAM,,CShapes 2.0 (dependencies=TRUE),,,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (Nachtigal signed treaties 5 Jul 1884). Bamoun Kingdom Fulani lamidates and Duala polities before 1884.
 CAP-1800-1895,Cape Colony (to 1895),1800,1895,96,colonial,Africa,CAP,,CShapes 2.0 (dependencies=TRUE),,,FT; CShapes,UNVERIFIED,
-NAT-1843-1895,Natal (to 1895),1843,1895,53,colonial,Africa,NAT,,CShapes 2.0 (dependencies=TRUE),,,FT; CShapes,FIXED,Start corrected from 1800 to 1843 (British annexation 4 May 1843). Nguni peoples and Zulu Kingdom before 1843. Paine et al. (2024) has Zulu polygon.
+NAT-1843-1895,Natal (to 1895),1843,1895,53,colonial,Africa,NAT,,CShapes 2.0 (dependencies=TRUE),ZUL-1816-1879,,FT; CShapes,FIXED,Start corrected from 1800 to 1843 (British annexation 4 May 1843). Nguni peoples and Zulu Kingdom before 1843. Paine et al. (2024) has Zulu polygon.
 OIL-1884-1898,Oil Rivers Protectorate (to 1898),1884,1898,15,colonial,Africa,OIL,,CShapes 2.0 (dependencies=TRUE),,,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (protectorate proclaimed). Niger Delta city-states (Bonny Brass Calabar) before 1884.
 SPA-1800-1982,Spanish North Africa,1800,1982,183,colonial,Africa,SPA,,CShapes 2.0 (dependencies=TRUE),,,FT; FAOSTAT; M49; CShapes,VERIFIED,
 SPA-1884-1912,Spanish West Africa (to 1912),1884,1912,29,colonial,Africa,SPA,,CShapes 2.0 (dependencies=TRUE),,,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (Bonelli treaty 28 Nov 1884). Sahrawi tribal territories before 1884.
@@ -190,7 +190,7 @@ GEA-1884-2025,German East Africa (Tanganyika),1884,2025,142,mandate,Africa,GEA,,
 TAN-1891-1920,Tanzania (1891-1920),1891,1920,30,mandate,Africa,TAN,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 BRI-1919-1961,British Cameroon (1919-1961),1919,1961,43,mandate,Africa,BRI,,CShapes 2.0 (dependencies=TRUE),,,FT; FAOSTAT; CShapes,UNVERIFIED,
 CAM-1919-1961,Cameroon (1919-1961),1919,1961,43,mandate,Africa,CAM,,CShapes 2.0,,,FT; FAOSTAT; CShapes,UNVERIFIED,
-RWA-1920-1962,Rwanda and Burundi (1920-1962),1920,1962,43,mandate,Africa,RWA,517.0,CShapes 2.0 (dependencies=TRUE),,,FT; FAOSTAT; CShapes,UNVERIFIED,
+RWA-1920-1962,Rwanda and Burundi (1920-1962),1920,1962,43,mandate,Africa,RWA,517.0,CShapes 2.0 (dependencies=TRUE),RWK-1800-1890; BDK-1800-1890,,FT; FAOSTAT; CShapes,UNVERIFIED,
 TAN-1920-1922,Tanzania (1920-1922),1920,1922,3,mandate,Africa,TAN,,CShapes 2.0,,,FT; CShapes,UNVERIFIED,
 TAN-1922-1964,Tanzania (1922-1964),1922,1964,43,mandate,Africa,TAN,,CShapes 2.0,,,FT; FAOSTAT; CShapes,UNVERIFIED,
 TZA-1961-1964,Tanzania (1961-1964),1961,1964,4,mandate,Africa,TZA,510.0,CShapes 2.0,,,FAOSTAT; CShapes,VERIFIED,
@@ -1029,3 +1029,23 @@ RUYN-1993-2025,Yamal-Nenets (Autonomous Province),1993,2025,33,subnational,Europ
 RUYS-1993-2025,Yaroslavl' (Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.81_1
 RUYV-1993-2025,Yevrey (Autonomous Region),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.82_1
 RUZB-1993-2025,Zabaykal'ye (Territory),1993,2025,33,subnational,Europe,RUS,,GADM 3.6 (subnational),,,GADM,VERIFIED,Parent: RUS-2014-2025; GADM GID: RUS.83_1
+ASH-1800-1896,Ashanti Empire,1800,1896,97,historical,Africa,,,Paine et al. (2024) + Cliopatria [not yet integrated],,,WHEP-fix,UNVERIFIED,"Pre-colonial kingdom in modern Ghana interior. ~154,508 km². Founded c.1670. Defeated by British 1896 (4th Anglo-Ashanti War). Cliopatria: 20 time-steps 1797-1894."
+SOK-1804-1903,Sokoto Caliphate,1804,1903,100,historical,Africa,,,Paine et al. (2024) + Cliopatria [not yet integrated],,NOR-1899-1904,WHEP-fix,UNVERIFIED,"Largest state in 19th-century Africa. ~792,706 km². Founded by Usman dan Fodio's jihad 1804. Conquered by British 1903. Modern northern Nigeria/Niger/Cameroon. Cliopatria: 6 time-steps."
+DHY-1800-1894,Kingdom of Dahomey,1800,1894,95,historical,Africa,,,Paine et al. (2024) [not yet integrated],,BEN-1895-1898,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in modern Benin. Founded c.1600. Conquered by France 1894 (Second Franco-Dahomean War). Not in Cliopatria by name.
+ZUL-1816-1879,Zulu Kingdom,1816,1879,64,historical,Africa,,,Paine et al. (2024) + Cliopatria [not yet integrated],,NAT-1843-1895,WHEP-fix,UNVERIFIED,"Pre-colonial kingdom in modern KwaZulu-Natal, South Africa. ~25,464 km². Founded by Shaka kaSenzangakhona. Defeated at Battle of Ulundi 1879 (Anglo-Zulu War). Cliopatria: 5 time-steps 1820-1894."
+BNU-1800-1893,Bornu Empire,1800,1893,94,historical,Africa,,,Paine et al. (2024) + Cliopatria [not yet integrated],,,WHEP-fix,UNVERIFIED,"Pre-colonial empire in NE Nigeria/Chad/Niger. ~227,106 km². Successor to Kanem-Bornu (founded c.1380). Conquered by Rabih az-Zubayr 1893. Cliopatria: 8 time-steps 1636-1894."
+WAD-1800-1912,Wadai Empire,1800,1912,113,historical,Africa,,,Paine et al. (2024) + Cliopatria [not yet integrated],,CHA-1900-1912,WHEP-fix,UNVERIFIED,Pre-colonial empire in eastern Chad. Founded c.1501. Conquered by France 1912. Cliopatria: 2 time-steps 1636-1894.
+DFR-1800-1874,Sultanate of Darfur,1800,1874,75,historical,Africa,,,Paine et al. (2024) + Cliopatria [not yet integrated],,SUD-1899-1902,WHEP-fix,UNVERIFIED,Pre-colonial sultanate in western Sudan. Founded c.1603. Conquered by Khedivate of Egypt 1874. Briefly re-independent 1898-1916 under Ali Dinar. Cliopatria: 3 time-steps 1636-1876.
+BGA-1800-1894,Kingdom of Buganda,1800,1894,95,historical,Africa,,,Paine et al. (2024) [not yet integrated],,UGA-1894-1902,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in central Uganda. Founded c.1300. British protectorate established 1894. Core of modern Uganda (name derived from Buganda).
+BNY-1800-1899,Kingdom of Bunyoro,1800,1899,100,historical,Africa,,,Paine et al. (2024) [not yet integrated],,UGA-1894-1902,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in western Uganda. Founded c.1300. Once the dominant power in the Great Lakes region. Conquered by British 1899.
+BKN-1800-1897,Kingdom of Benin,1800,1897,98,historical,Africa,,,Paine et al. (2024) [not yet integrated],,,WHEP-fix,UNVERIFIED,"Pre-colonial kingdom in modern Edo State, Nigeria (NOT modern Republic of Benin). Founded c.1180. Famous for Benin Bronzes. Conquered by British 1897 (Punitive Expedition)."
+LBA-1800-1885,Luba Empire,1800,1885,86,historical,Africa,,,Paine et al. (2024) [not yet integrated],,CON-1885-1891,WHEP-fix,UNVERIFIED,"Pre-colonial empire in Katanga region, modern DRC. Founded c.1585. Absorbed into Congo Free State 1885."
+LND-1800-1887,Lunda Empire,1800,1887,88,historical,Africa,,,Paine et al. (2024) [not yet integrated],,,WHEP-fix,UNVERIFIED,"Pre-colonial empire spanning modern DRC, Angola, and Zambia. Founded c.1665. Split between Belgian, Portuguese, and British colonial territories by 1887."
+FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,97,historical,Africa,,,Paine et al. (2024) [not yet integrated],,,WHEP-fix,UNVERIFIED,Pre-colonial Fula theocratic state in Guinea highlands. Founded 1727. Conquered by France 1896. One of the first jihad states in West Africa.
+NDB-1823-1894,Ndebele Kingdom,1823,1894,72,historical,Africa,,,Paine et al. (2024) [not yet integrated],,ZIM-1889-1891,WHEP-fix,UNVERIFIED,"Pre-colonial kingdom in Matabeleland, modern Zimbabwe. Founded by Mzilikazi after fleeing Shaka's Zulu Kingdom. Conquered by Cecil Rhodes' BSAC 1893-94 (First Matabele War)."
+GZE-1824-1895,Gaza Empire,1824,1895,72,historical,Africa,,,Paine et al. (2024) [not yet integrated],,,WHEP-fix,UNVERIFIED,Pre-colonial Nguni kingdom in southern Mozambique. Founded by Soshangane after the Mfecane. Conquered by Portugal 1895. Last king Ngungunhane exiled to Azores.
+OYO-1800-1836,Oyo Empire,1800,1836,37,historical,Africa,,,Paine et al. (2024) [not yet integrated],,,WHEP-fix,UNVERIFIED,Pre-colonial Yoruba empire in southwestern Nigeria. At peak controlled much of Yorubaland and Dahomey. Collapsed by 1836 from Fulani jihad and internal revolt. Capital Old Oyo abandoned.
+RWK-1800-1890,Kingdom of Rwanda,1800,1890,91,historical,Africa,,,Paine et al. (2024) [not yet integrated],,RWA-1920-1962,WHEP-fix,UNVERIFIED,Pre-colonial kingdom. Existed from c.15th century. Came under German East Africa sphere c.1890. Continued as monarchy under colonial rule until 1961.
+BDK-1800-1890,Kingdom of Burundi,1800,1890,91,historical,Africa,,,Paine et al. (2024) [not yet integrated],,RWA-1920-1962,WHEP-fix,UNVERIFIED,Pre-colonial kingdom. Existed from c.17th century. Came under German East Africa sphere c.1890. Continued as monarchy under colonial rule. Paired with Rwanda as Ruanda-Urundi mandate.
+LST-1822-1868,Basotho Kingdom,1822,1868,47,historical,Africa,,,Paine et al. (2024) [not yet integrated],,LSO-1966-2025,WHEP-fix,UNVERIFIED,Pre-colonial kingdom founded by Moshoeshoe I. Unified Sotho peoples against Zulu/Ndebele pressure. Became British protectorate Basutoland 1868 at Moshoeshoe's request to avoid Boer expansion. Modern Lesotho.
+SWK-1800-1894,Swazi Kingdom,1800,1894,95,historical,Africa,,,Paine et al. (2024) [not yet integrated],,SWZ-1894-2025,WHEP-fix,UNVERIFIED,Pre-colonial kingdom in modern Eswatini. Founded c.1750. Came under joint Boer-British administration 1894. Modern Eswatini preserves the monarchy.

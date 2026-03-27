@@ -1837,3 +1837,42 @@ BAD-1800-1873,BAD-1800-1871,same_territory,"same ISO3 (BAD), temporal overlap",1
 NEW-1800-1948,NEW-1920-1949,same_territory,"same ISO3 (NEW), temporal overlap",1920,1948
 NEW-1800-1920,NEW-1920-1949,same_territory,"same ISO3 (NEW), temporal overlap",1920,1920
 PRI-1800-1866,PRI-1800-2025,same_territory,"same ISO3 (PRI), temporal overlap",1800,1866
+ASH-1800-1896,Africa,located_in_continent,continent column,1800,1896
+SOK-1804-1903,Africa,located_in_continent,continent column,1804,1903
+DHY-1800-1894,Africa,located_in_continent,continent column,1800,1894
+ZUL-1816-1879,Africa,located_in_continent,continent column,1816,1879
+BNU-1800-1893,Africa,located_in_continent,continent column,1800,1893
+WAD-1800-1912,Africa,located_in_continent,continent column,1800,1912
+DFR-1800-1874,Africa,located_in_continent,continent column,1800,1874
+BGA-1800-1894,Africa,located_in_continent,continent column,1800,1894
+BNY-1800-1899,Africa,located_in_continent,continent column,1800,1899
+BKN-1800-1897,Africa,located_in_continent,continent column,1800,1897
+LBA-1800-1885,Africa,located_in_continent,continent column,1800,1885
+LND-1800-1887,Africa,located_in_continent,continent column,1800,1887
+FTJ-1800-1896,Africa,located_in_continent,continent column,1800,1896
+NDB-1823-1894,Africa,located_in_continent,continent column,1823,1894
+GZE-1824-1895,Africa,located_in_continent,continent column,1824,1895
+OYO-1800-1836,Africa,located_in_continent,continent column,1800,1836
+RWK-1800-1890,Africa,located_in_continent,continent column,1800,1890
+BDK-1800-1890,Africa,located_in_continent,continent column,1800,1890
+LST-1822-1868,Africa,located_in_continent,continent column,1822,1868
+SWK-1800-1894,Africa,located_in_continent,continent column,1800,1894
+SOK-1804-1903,NOR-1899-1904,predecessor_of,successor column,1899,1904
+DHY-1800-1894,BEN-1895-1898,predecessor_of,successor column,1895,1898
+ZUL-1816-1879,NAT-1843-1895,predecessor_of,successor column,1843,1895
+WAD-1800-1912,CHA-1900-1912,predecessor_of,successor column,1900,1912
+DFR-1800-1874,SUD-1899-1902,predecessor_of,successor column,1899,1902
+BGA-1800-1894,UGA-1894-1902,predecessor_of,successor column,1894,1902
+BNY-1800-1899,UGA-1894-1902,predecessor_of,successor column,1894,1902
+LBA-1800-1885,CON-1885-1891,predecessor_of,successor column,1885,1891
+NDB-1823-1894,ZIM-1889-1891,predecessor_of,successor column,1889,1891
+RWK-1800-1890,RWA-1920-1962,predecessor_of,successor column,1920,1962
+BDK-1800-1890,RWA-1920-1962,predecessor_of,successor column,1920,1962
+LST-1822-1868,LSO-1966-2025,predecessor_of,successor column,1966,2025
+SWK-1800-1894,SWZ-1894-2025,predecessor_of,successor column,1894,2025
+ZUL-1816-1879,NAT-1843-1895,temporal_next,chronological succession,1843,1895
+DHY-1800-1894,BEN-1895-1898,temporal_next,chronological succession,1895,1898
+BGA-1800-1894,UGA-1894-1902,temporal_next,chronological succession,1894,1902
+SWK-1800-1894,SWZ-1894-2025,temporal_next,chronological succession,1894,2025
+LBA-1800-1885,CON-1885-1891,temporal_next,chronological succession,1885,1891
+NDB-1823-1894,ZIM-1889-1891,temporal_next,chronological succession,1889,1891

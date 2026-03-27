@@ -15,7 +15,7 @@ ERI-1882-2025,Eritrea,sovereign,Africa,1882,2025,ERI,polity,1,1,2
 MDG-1882-2025,Madagascar,sovereign,Africa,1882,2025,MDG,polity,1,1,2
 NAM-1884-2025,Namibia,sovereign,Africa,1884,2025,NAM,polity,1,1,2
 ZWE-1890-2025,Zimbabwe,sovereign,Africa,1890,2025,ZWE,polity,1,1,2
-SWZ-1894-2025,Eswatini,sovereign,Africa,1894,2025,SWZ,polity,1,1,2
+SWZ-1894-2025,Eswatini,sovereign,Africa,1894,2025,SWZ,polity,3,1,4
 SYC-1903-2025,Seychelles,sovereign,Africa,1903,2025,SYC,polity,1,1,2
 LBY-1951-2025,Libya,sovereign,Africa,1951,2025,LBY,polity,1,1,2
 GHA-1957-2025,Ghana,sovereign,Africa,1957,2025,GHA,polity,2,1,3
@@ -43,7 +43,7 @@ MWI-1964-2025,Malawi,sovereign,Africa,1964,2025,MWI,polity,1,1,2
 TZA-1964-2025,Tanzania,sovereign,Africa,1964,2025,TZA,polity,2,2,4
 ZMB-1964-2025,Zambia,sovereign,Africa,1964,2025,ZMB,polity,1,1,2
 BWA-1966-2025,Botswana,sovereign,Africa,1966,2025,BWA,polity,1,1,2
-LSO-1966-2025,Lesotho,sovereign,Africa,1966,2025,LSO,polity,1,1,2
+LSO-1966-2025,Lesotho,sovereign,Africa,1966,2025,LSO,polity,2,1,3
 GNQ-1968-2025,Equatorial Guinea,sovereign,Africa,1968,2025,GNQ,polity,1,1,2
 COM-1975-2025,Comoros,sovereign,Africa,1975,2025,COM,polity,1,1,2
 DJI-1977-2025,Djibouti,sovereign,Africa,1977,2025,DJI,polity,1,1,2
@@ -57,7 +57,7 @@ ALG-1830-1902,Algeria (to 1902),historical,Africa,1830,1902,ALG,polity,0,2,2
 ANG-1800-1890,Angola (to 1890),historical,Africa,1800,1890,ANG,polity,0,2,2
 BOT-1885-1890,Botswana (to 1890),historical,Africa,1885,1890,BOT,polity,0,2,2
 CON-1882-1898,Congo (to 1898),historical,Africa,1882,1898,CON,polity,0,1,1
-CON-1885-1891,Democratic Republic of the Congo (to 1891),historical,Africa,1885,1891,CON,polity,0,2,2
+CON-1885-1891,Democratic Republic of the Congo (to 1891),historical,Africa,1885,1891,CON,polity,2,2,4
 EGY-1800-1899,Egypt (to 1899),historical,Africa,1800,1899,EGY,polity,0,1,1
 EGY-1800-1922,Egypt (to 1922),historical,Africa,1800,1922,EGY,polity,0,1,1
 ERI-1882-1889,Eritrea (to 1889),historical,Africa,1882,1889,ERI,polity,0,1,1
@@ -75,7 +75,7 @@ GHA-1888-1898,Ghana (1888-1898),historical,Africa,1888,1898,GHA,polity,1,2,3
 KEN-1888-1891,Kenya (1888-1891),historical,Africa,1888,1891,KEN,polity,0,2,2
 COT-1889-1932,Côte d'Ivoire (1889-1932),historical,Africa,1889,1932,COT,polity,0,2,2
 ETH-1889-1897,Ethiopia (1889-1897),historical,Africa,1889,1897,ETH,polity,2,2,4
-ZIM-1889-1891,Zimbabwe (1889-1891),historical,Africa,1889,1891,ZIM,polity,0,2,2
+ZIM-1889-1891,Zimbabwe (1889-1891),historical,Africa,1889,1891,ZIM,polity,2,2,4
 ANG-1890-1891,Angola (1890-1891),historical,Africa,1890,1891,ANG,polity,1,2,3
 BOT-1890-1895,Botswana (1890-1895),historical,Africa,1890,1895,BOT,polity,1,1,2
 ZAN-1890-1964,Zanzibar (1890-1964),historical,Africa,1890,1964,ZAN,polity,0,1,1
@@ -85,16 +85,16 @@ KEN-1891-1894,Kenya (1891-1894),historical,Africa,1891,1894,KEN,polity,1,2,3
 ZIM-1891-1900,Zimbabwe (1891-1900),historical,Africa,1891,1900,ZIM,polity,1,1,2
 CON-1894-1910,Democratic Republic of the Congo (1894-1910),historical,Africa,1894,1910,CON,polity,1,1,2
 KEN-1894-1902,Kenya (1894-1902),historical,Africa,1894,1902,KEN,polity,1,2,3
-UGA-1894-1902,Uganda (1894-1902),historical,Africa,1894,1902,UGA,polity,0,2,2
-BEN-1895-1898,Benin (1895-1898),historical,Africa,1895,1898,BEN,polity,0,1,1
+UGA-1894-1902,Uganda (1894-1902),historical,Africa,1894,1902,UGA,polity,3,2,5
+BEN-1895-1898,Benin (1895-1898),historical,Africa,1895,1898,BEN,polity,2,1,3
 ETH-1897-1902,Ethiopia (1897-1902),historical,Africa,1897,1902,ETH,polity,2,2,4
 CON-1898-1900,Congo (1898-1900),historical,Africa,1898,1900,CON,polity,0,2,2
 GHA-1898-1956,Ghana (1898-1956),historical,Africa,1898,1956,GHA,polity,1,2,3
 EGY-1899-1925,Egypt (1899-1925),historical,Africa,1899,1925,EGY,polity,0,1,1
-NOR-1899-1904,Northern Nigeria (1899-1904),historical,Africa,1899,1904,NOR,polity,0,1,1
+NOR-1899-1904,Northern Nigeria (1899-1904),historical,Africa,1899,1904,NOR,polity,1,1,2
 SOU-1899-1906,Southern Nigeria (1899-1906),historical,Africa,1899,1906,SOU,polity,1,2,3
-SUD-1899-1902,Sudan (1899-1902),historical,Africa,1899,1902,SUD,polity,1,2,3
-CHA-1900-1912,Chad (1900-1912),historical,Africa,1900,1912,CHA,polity,0,3,3
+SUD-1899-1902,Sudan (1899-1902),historical,Africa,1899,1902,SUD,polity,2,2,4
+CHA-1900-1912,Chad (1900-1912),historical,Africa,1900,1912,CHA,polity,1,3,4
 CON-1900-1906,Congo (1900-1906),historical,Africa,1900,1906,CON,polity,1,2,3
 NOR-1900-1911,Northeastern Rhodesia (1900-1911),historical,Africa,1900,1911,NOR,polity,0,1,1
 NOR-1900-1905,Northwestern Rhodesia (1900-1905),historical,Africa,1900,1905,NOR,polity,0,2,2
@@ -154,7 +154,7 @@ BRI-1885-1895,British Bechuanaland (to 1895),colonial,Africa,1885,1895,BRI,polit
 BRI-1884-1960,British Protectorate (British Somaliland) (to 1960),colonial,Africa,1884,1960,BRI,polity,1,1,2
 KAM-1884-1912,Cameroon (Kamerun) (to 1912),colonial,Africa,1884,1912,KAM,polity,0,2,2
 CAP-1800-1895,Cape Colony (to 1895),colonial,Africa,1800,1895,CAP,polity,0,2,2
-NAT-1843-1895,Natal (to 1895),colonial,Africa,1843,1895,NAT,polity,0,2,2
+NAT-1843-1895,Natal (to 1895),colonial,Africa,1843,1895,NAT,polity,2,2,4
 OIL-1884-1898,Oil Rivers Protectorate (to 1898),colonial,Africa,1884,1898,OIL,polity,0,1,1
 SPA-1800-1982,Spanish North Africa,colonial,Africa,1800,1982,SPA,polity,2,1,3
 SPA-1884-1912,Spanish West Africa (to 1912),colonial,Africa,1884,1912,SPA,polity,1,2,3
@@ -190,7 +190,7 @@ GEA-1884-2025,German East Africa (Tanganyika),mandate,Africa,1884,2025,GEA,polit
 TAN-1891-1920,Tanzania (1891-1920),mandate,Africa,1891,1920,TAN,polity,0,2,2
 BRI-1919-1961,British Cameroon (1919-1961),mandate,Africa,1919,1961,BRI,polity,1,1,2
 CAM-1919-1961,Cameroon (1919-1961),mandate,Africa,1919,1961,CAM,polity,0,1,1
-RWA-1920-1962,Rwanda and Burundi (1920-1962),mandate,Africa,1920,1962,RWA,polity,1,2,3
+RWA-1920-1962,Rwanda and Burundi (1920-1962),mandate,Africa,1920,1962,RWA,polity,3,2,5
 TAN-1920-1922,Tanzania (1920-1922),mandate,Africa,1920,1922,TAN,polity,1,2,3
 TAN-1922-1964,Tanzania (1922-1964),mandate,Africa,1922,1964,TAN,polity,1,1,2
 TZA-1961-1964,Tanzania (1961-1964),mandate,Africa,1961,1964,TZA,polity,1,2,3
@@ -573,7 +573,7 @@ X06-1800-2025,Africa,region,Global,1800,2025,,polity,0,0,0
 X21-1800-2025,Americas,region,Global,1800,2025,,polity,0,0,0
 F5848-1800-2025,Annex I countries,region,Global,1800,2025,,polity,0,0,0
 F5600-1800-2025,Antarctic Region,region,Global,1800,2025,,polity,0,0,0
-F5300-1800-2025,Asia,region,Global,1800,2025,,polity,3,47,50
+F5300-1800-2025,Asia,region,Global,1800,2025,,polity,3,48,51
 F5501-1800-2025,Australia and New Zealand,region,Global,1800,2025,,polity,0,3,3
 F5206-1800-2025,Caribbean,region,Global,1800,2025,,polity,0,17,17
 F5857-1800-2025,Caucasus and Central Asia,region,Global,1800,2025,,polity,0,0,0
@@ -1029,11 +1029,31 @@ RUYN-1993-2025,Yamal-Nenets (Autonomous Province),subnational,Europe,1993,2025,R
 RUYS-1993-2025,Yaroslavl' (Region),subnational,Europe,1993,2025,RUS,polity,0,2,2
 RUYV-1993-2025,Yevrey (Autonomous Region),subnational,Europe,1993,2025,RUS,polity,0,2,2
 RUZB-1993-2025,Zabaykal'ye (Territory),subnational,Europe,1993,2025,RUS,polity,0,2,2
-Africa,Africa,continent,Africa,1800,2025,,continent,217,0,217
+Africa,Africa,continent,Africa,1800,2025,,continent,237,0,237
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
-Asia,Asia,continent,Asia,1800,2025,,continent,193,0,193
-Europe,Europe,continent,Europe,1800,2025,,continent,266,0,266
+Asia,Asia,continent,Asia,1800,2025,,continent,194,0,194
+Europe,Europe,continent,Europe,1800,2025,,continent,269,0,269
 Global,Global,continent,Global,1800,2025,,continent,0,0,0
 North America,North America,continent,North America,1800,2025,,continent,128,0,128
 Oceania,Oceania,continent,Oceania,1800,2025,,continent,79,0,79
 South America,South America,continent,South America,1800,2025,,continent,62,0,62
+ASH-1800-1896,Ashanti Empire,historical,Africa,1800,1896,,polity,0,1,1
+SOK-1804-1903,Sokoto Caliphate,historical,Africa,1804,1903,,polity,0,2,2
+DHY-1800-1894,Kingdom of Dahomey,historical,Africa,1800,1894,,polity,0,3,3
+ZUL-1816-1879,Zulu Kingdom,historical,Africa,1816,1879,,polity,0,3,3
+BNU-1800-1893,Bornu Empire,historical,Africa,1800,1893,,polity,0,1,1
+WAD-1800-1912,Wadai Empire,historical,Africa,1800,1912,,polity,0,2,2
+DFR-1800-1874,Sultanate of Darfur,historical,Africa,1800,1874,,polity,0,2,2
+BGA-1800-1894,Kingdom of Buganda,historical,Africa,1800,1894,,polity,0,3,3
+BNY-1800-1899,Kingdom of Bunyoro,historical,Africa,1800,1899,,polity,0,2,2
+BKN-1800-1897,Kingdom of Benin,historical,Africa,1800,1897,,polity,0,1,1
+LBA-1800-1885,Luba Empire,historical,Africa,1800,1885,,polity,0,3,3
+LND-1800-1887,Lunda Empire,historical,Africa,1800,1887,,polity,0,1,1
+FTJ-1800-1896,Imamate of Futa Jallon,historical,Africa,1800,1896,,polity,0,1,1
+NDB-1823-1894,Ndebele Kingdom,historical,Africa,1823,1894,,polity,0,3,3
+GZE-1824-1895,Gaza Empire,historical,Africa,1824,1895,,polity,0,1,1
+OYO-1800-1836,Oyo Empire,historical,Africa,1800,1836,,polity,0,1,1
+RWK-1800-1890,Kingdom of Rwanda,historical,Africa,1800,1890,,polity,0,2,2
+BDK-1800-1890,Kingdom of Burundi,historical,Africa,1800,1890,,polity,0,2,2
+LST-1822-1868,Basotho Kingdom,historical,Africa,1822,1868,,polity,0,2,2
+SWK-1800-1894,Swazi Kingdom,historical,Africa,1800,1894,,polity,0,3,3

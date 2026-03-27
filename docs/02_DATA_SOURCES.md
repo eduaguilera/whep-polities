@@ -220,7 +220,49 @@ are not directly merged into the pipeline.
   - `Colonies_ft_cshapes` (~1,000 colonial period mappings)
   - British/French/Ottoman empire-specific sheets
 
-### 2.11 Additional Databases Surveyed
+### 2.11 Paine, Qiu & Ricart-Huguet (2024) -- Pre-Colonial African States
+
+- **Entries**: 46 pre-colonial African polities
+- **Coverage**: Pre-1885 (pre-Scramble for Africa)
+- **Content**: Vector boundaries (Shapefile) for African states, digitized from
+  Murdock (1959), Herbst (2000), and other historical sources
+- **Role**: Only systematic source of pre-colonial African state boundaries with
+  consistent methodology and replication data
+- **Key characteristics**:
+  - Published in American Political Science Review (APSR 2024)
+  - Replication data on Harvard Dataverse (doi:10.7910/DVN/9QJVJ1)
+  - Uses 0.25-degree buffers (~25 km) for robustness checks, acknowledging
+    boundary uncertainty
+  - Core states include: Asante, Benin Kingdom, Borno, Buganda, Bunyoro,
+    Burundi, Cayor, Dahomey, Darfur, Ethiopia, Futa Jalon, Jolof, Kazembe,
+    Lesotho, Luba, Lunda, Nkore, Rwanda, Sokoto, Wadai, Walo, Zulu, Egypt,
+    Morocco, Tunis, and ~20 others
+  - Explicitly demonstrates that Murdock ethnographic map should NOT be used
+    as proxy for state boundaries
+- **License**: Free (Harvard Dataverse)
+- **Citation**: Paine, J., Qiu, Y., & Ricart-Huguet, J. (2024). "Pre-Colonial
+  Ethnic Institutions and Contemporary African Development." APSR.
+
+### 2.12 Cliopatria (Seshat Global History Databank)
+
+- **Entries**: 1,600+ polities worldwide (15,690 GeoJSON features)
+- **Coverage**: 3400 BCE to 2024 CE
+- **Content**: Polygons for historical polities, hand-traced from reference atlases
+- **Role**: Best single source for pre-1886 global polygon coverage
+- **Key characteristics**:
+  - For 1800-1886: 1,945 features covering 290+ polities
+  - Variable temporal resolution (Ottoman: 33 records, Russian Empire: 34,
+    Qing China: 31, Qajar Iran: 12, Ashanti: 20 time-steps)
+  - African polities: Ashanti Empire, Sokoto Caliphate, Ethiopian Empire,
+    Merina Kingdom, Bornu Empire, Zululand, Morocco, Zanzibar, Regency of
+    Algiers, Khedivate of Egypt, Sultanate of Darfur, Wadai Empire, and others
+  - Moderate spatial precision (~hundreds of vertices per polygon, ~25-100 km
+    uncertainty)
+  - Limitation: treats some empires as monolithic (e.g., "British Africa")
+- **License**: CC BY 4.0
+- **Source**: https://seshatdatabank.info/
+
+### 2.13 Additional Databases Surveyed
 
 | Database | Coverage | Content | Used? |
 |----------|----------|---------|-------|
@@ -229,7 +271,12 @@ are not directly merged into the pipeline.
 | IPE Data Resource | 1800-2018 | 951 variables, concordance table | Consulted for code mapping |
 | Wimmer & Min | 1816-2001 | State formation data | Consulted for dates |
 | IBAD | 1816-2001 | Border agreement records | Consulted for border change dates |
-| Euratlas | 1 CE-2000 | Historical shapefiles | Not used (commercial license) |
+| HGIS Germany | 1820-1914 | German state boundaries (vector) | Potential pre-1886 source |
+| CHGIS | Qing dynasty | Chinese historical boundaries (vector) | Potential pre-1886 source |
+| HistoGIS | Austrian Empire 1848 | Crownland boundaries (vector) | Potential pre-1886 source |
+| Imperiia Project | Russian Empire 1820s | Provincial boundaries (vector) | Potential pre-1886 source |
+| Centennia CRE | 1000-2003 | Europe+ME boundaries (commercial) | Not used ($3,125 license) |
+| Euratlas | 1 CE-2000 | Historical shapefiles | Not used (€150/century license) |
 | Thenmap API | 1945-present | GeoJSON via REST | Consulted for post-WWII |
 | MPIDR Census Mosaic | Europe 1860-2003 | Census boundary shapefiles | Potential pre-1886 source |
 | Aourednik | 800 BCE-2010 | GeoJSON snapshots | Consulted (empire-level polygons only) |
@@ -237,6 +284,9 @@ are not directly merged into the pipeline.
 | Geo-Larhra | Italy 1815-1866 | Shapefiles | Potential for Italian states |
 | geoBoundaries | Global current | Open-source boundaries | Fallback option |
 | FEWS NET | Food-insecure regions | Admin boundaries | Not relevant |
+
+See `docs/12_HISTORICAL_MAP_SOURCES.md` for a comprehensive catalog of 28+
+historical polygon sources with detailed assessments and priority ratings.
 
 ---
 
@@ -267,7 +317,8 @@ between COW, ISO, M49, G&W, and other coding systems.
 | FAOSTAT | Modern coverage, standard codes, regions | No historical data pre-1961 |
 | UN M49 | Standard codes, UN recognition basis | No geometry, starts 1970 |
 | COW | Detailed transfers, area data | Different naming, 1816 start |
-| Cliopatria | Deep historical coverage | Date precision issues, no ISO |
+| Cliopatria | Deepest historical coverage (3400 BCE+), 290+ polities 1800-1886 | ~25-100 km boundary uncertainty, no ISO codes |
+| Paine et al. | Only systematic pre-colonial African state polygons (46 states) | Single time snapshot, ~25 km uncertainty |
 | GADM | Very detailed geometry, all admin levels | Current snapshot only |
 | Natural Earth | Public domain, good disputed areas | Current only, coarser resolution |
 | V-Dem | Longest coverage (1789+), rich indicators | Regime data only, no territory |
