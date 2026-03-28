@@ -1,6 +1,6 @@
 #!/bin/bash
 # Build the web site data files from the database.
-# Run from the project root: bash docs/site/build.sh
+# Run from the project root: bash site/build.sh
 #
 # Requires: ogr2ogr (GDAL), python3
 #
@@ -13,8 +13,8 @@
 
 set -e
 
-PROJ_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-SITE_DIR="$PROJ_ROOT/docs/site"
+PROJ_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+SITE_DIR="$PROJ_ROOT/site"
 GPKG="$PROJ_ROOT/data/final/polities_database.gpkg"
 CSV="$PROJ_ROOT/data/final/polities_database.csv"
 
