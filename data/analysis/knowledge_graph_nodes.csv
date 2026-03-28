@@ -439,7 +439,7 @@ DMO-1800-1860,Duchy Modena,historical,Europe,1800,1860,DMO,polity,0,3,3
 DPA-1800-1860,Duchy Parma,historical,Europe,1800,1860,DPA,polity,0,3,3
 FRA-1800-1919,France (to 1919),historical,Europe,1800,1919,FRA,polity,1,11,12
 DEU-1800-1919,Germany (to 1919),historical,Europe,1800,1919,DEU,polity,0,9,9
-GRC-1830-1913,Greece (to 1913),historical,Europe,1830,1913,GRC,polity,0,2,2
+GRC-1830-1913,Greece (to 1913),historical,Europe,1830,1913,GRC,polity,0,4,4
 HAN-1800-1866,Hanover,historical,Europe,1800,1866,HAN,polity,0,1,1
 HER-1878-1908,Herzegovina (1878-1908),historical,Europe,1878,1908,HER,polity,0,1,1
 HES-1800-1871,Hesse,historical,Europe,1800,1871,HES,polity,0,1,1
@@ -495,7 +495,7 @@ CRE-1898-1913,Crete,historical,Europe,1898,1913,CRE,polity,0,1,1
 F228-1905-1914,USSR (1905-1914),historical,Europe,1905,1914,,polity,2,3,5
 AUH-1908-1918,Austria-Hungary (1908-1918),historical,Europe,1908,1918,AUH,polity,3,6,9
 BGR-1913-1918,Bulgaria (1913-1918),historical,Europe,1913,1918,BGR,polity,3,2,5
-GRC-1913-1919,Greece (1913-1919),historical,Europe,1913,1919,GRC,polity,1,2,3
+GRC-1913-1919,Greece (1913-1919),historical,Europe,1913,1919,GRC,polity,3,2,5
 MNE-1913-1915,Montenegro (1913-1915),historical,Europe,1913,1915,MNE,polity,1,1,2
 MON-1913-1918,Montenegro (1913-1918),historical,Europe,1913,1918,MON,polity,0,1,1
 ROU-1913-1918,Romania (1913-1918),historical,Europe,1913,1918,ROU,polity,1,2,3
@@ -525,7 +525,7 @@ POL-1919-1920,Poland (1919-1920),historical,Europe,1919,1920,POL,polity,1,2,3
 ROU-1919-1920,Romania (1919-1920),historical,Europe,1919,1920,ROU,polity,1,2,3
 F248-1919-1920,Yugoslavia (1919-1920),historical,Europe,1919,1920,,polity,0,1,1
 DEU-1920-1938,Germany (1920-1938),historical,Europe,1920,1938,DEU,polity,1,2,3
-HUN-1920-1938,Hungary (1920-1938),historical,Europe,1920,1938,HUN,polity,1,2,3
+HUN-1920-1938,Hungary (1920-1938),historical,Europe,1920,1938,HUN,polity,1,4,5
 LTU-1920-1940,Lithuania (1920-1940),historical,Europe,1920,1940,LTU,polity,1,1,2
 POL-1920-1921,Poland (1920-1921),historical,Europe,1920,1921,POL,polity,1,2,3
 ROU-1920-1940,Romania (1920-1940),historical,Europe,1920,1940,ROU,polity,1,2,3
@@ -535,7 +535,7 @@ POL-1921-1945,Poland (1921-1945),historical,Europe,1921,1945,POL,polity,1,2,3
 F228-1921-1940,USSR (1921-1940),historical,Europe,1921,1940,,polity,2,3,5
 F51-1938-1945,Czechoslovakia (1938-1945),historical,Europe,1938,1945,,polity,0,1,1
 DEU-1938-1945,Germany (1938-1945),historical,Europe,1938,1945,DEU,polity,1,1,2
-HUN-1938-1947,Hungary (1938-1947),historical,Europe,1938,1947,HUN,polity,1,2,3
+HUN-1938-1947,Hungary (1938-1947),historical,Europe,1938,1947,HUN,polity,3,2,5
 F228-1940-1945,USSR (1940-1945),historical,Europe,1940,1945,,polity,2,3,5
 F51-1945-1947,Czechoslovakia (1945-1947),historical,Europe,1945,1947,,polity,0,1,1
 F228-1945-1991,USSR (1945-1991),historical,Europe,1945,1991,,polity,2,31,33
@@ -656,7 +656,7 @@ DOM-1800-2025,Dominican Republic,sovereign,North America,1800,2025,DOM,polity,2,
 HTI-1800-2025,Haiti,sovereign,North America,1800,2025,HTI,polity,2,1,3
 HND-1800-2025,Honduras,sovereign,North America,1800,2025,HND,polity,2,1,3
 JAM-1800-2025,Jamaica,sovereign,North America,1800,2025,JAM,polity,2,1,3
-MEX-1800-2025,Mexico,sovereign,North America,1800,2025,MEX,polity,2,1,3
+MEX-1800-2025,Mexico,aggregate,North America,1800,2025,MEX,polity,0,3,3
 NIC-1800-2025,Nicaragua,sovereign,North America,1800,2025,NIC,polity,2,1,3
 KNA-1800-2025,Saint Kitts and Nevis,sovereign,North America,1800,2025,KNA,polity,2,1,3
 LCA-1800-2025,Saint Lucia,sovereign,North America,1800,2025,LCA,polity,2,1,3
@@ -1291,18 +1291,20 @@ MEM-1920-1923,Memel Territory,mandate,Europe,1920,1923,,polity,0,1,1
 FIU-1920-1924,Free City of Fiume,historical,Europe,1920,1924,,polity,0,1,1
 MNG-1911-1921,Bogd Khanate of Mongolia,historical,Asia,1911,1921,MNG,polity,0,1,1
 IND-1800-2025,India (old),aggregate,Asia,1800,2025,IND,polity,0,8,8
-JPN-1800-1895,Japan (to 1895),historical,Asia,1800,1895,JPN,polity,1,2,3
-JPN-1895-1945,Japanese Empire,historical,Asia,1895,1945,JPN,polity,2,2,4
-JPN-1945-1952,Japan (occupied),historical,Asia,1945,1952,JPN,polity,2,2,4
-JPN-1952-2025,Japan,sovereign,Asia,1952,2025,JPN,polity,4,1,5
+JPN-1800-1895,Japan (to 1895),historical,Asia,1800,1895,JPN,polity,1,4,5
+JPN-1895-1945,Japanese Empire,historical,Asia,1895,1945,JPN,polity,4,4,8
+JPN-1945-1952,Japan (occupied),historical,Asia,1945,1952,JPN,polity,4,4,8
+JPN-1952-2025,Japan,sovereign,Asia,1952,2025,JPN,polity,6,1,7
 NDD-1800-1884,Niger Delta City-States,historical,Africa,1800,1884,NGA,polity,1,3,4
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),historical,Africa,1800,1897,NGA,polity,1,3,4
 NGA-1800-1899,Nigeria (pre-colonial),aggregate,Africa,1800,1899,NGA,polity,0,5,5
+MEX-1800-1848,Mexico (to 1848),historical,North America,1800,1848,MEX,polity,1,4,5
+MEX-1848-2025,Mexico,sovereign,North America,1848,2025,MEX,polity,6,1,7
 Africa,Africa,continent,Africa,1800,2025,,continent,264,0,264
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
 Asia,Asia,continent,Asia,1800,2025,,continent,274,0,274
 Europe,Europe,continent,Europe,1800,2025,,continent,330,0,330
 Global,Global,continent,Global,1800,2025,,continent,0,0,0
-North America,North America,continent,North America,1800,2025,,continent,181,0,181
+North America,North America,continent,North America,1800,2025,,continent,183,0,183
 Oceania,Oceania,continent,Oceania,1800,2025,,continent,80,0,80
 South America,South America,continent,South America,1800,2025,,continent,89,0,89
