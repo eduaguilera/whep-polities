@@ -456,7 +456,7 @@ THU-1800-1871,Thuringia,historical,Europe,1800,1871,THU,polity,0,1,1
 TUS-1800-1860,Tuscany,historical,Europe,1800,1860,TUS,polity,0,3,3
 TWO-1800-1860,Two Sicilies,historical,Europe,1800,1860,TWO,polity,0,3,3
 TUR-1800-1912,Türkiye (to 1912),historical,Europe,1800,1912,TUR,polity,0,2,2
-F228-1800-1905,USSR (to 1905),historical,Europe,1800,1905,,polity,0,3,3
+F228-1800-1905,USSR (to 1905),aggregate,Europe,1800,1905,,polity,0,3,3
 GBR-1800-1921,United Kingdom (to 1921),historical,Europe,1800,1921,GBR,polity,1,11,12
 WUR-1800-1871,Württemberg,historical,Europe,1800,1871,WUR,polity,0,1,1
 ION-1815-1864,Ionian islands,historical,Europe,1815,1864,ION,polity,0,1,1
@@ -492,7 +492,7 @@ ANH-1864-1870,Anhalt,historical,Europe,1864,1870,ANH,polity,0,1,1
 BGR-1878-1913,Bulgaria (to 1913),historical,Europe,1878,1913,BGR,polity,0,4,4
 MNE-1878-1913,Montenegro (to 1913),historical,Europe,1878,1913,MNE,polity,0,2,2
 CRE-1898-1913,Crete,historical,Europe,1898,1913,CRE,polity,0,1,1
-F228-1905-1914,USSR (1905-1914),historical,Europe,1905,1914,,polity,2,3,5
+F228-1905-1914,USSR (1905-1914),historical,Europe,1905,1914,,polity,3,3,6
 AUH-1908-1918,Austria-Hungary (1908-1918),historical,Europe,1908,1918,AUH,polity,3,6,9
 BGR-1913-1918,Bulgaria (1913-1918),historical,Europe,1913,1918,BGR,polity,3,2,5
 GRC-1913-1919,Greece (1913-1919),historical,Europe,1913,1919,GRC,polity,3,2,5
@@ -666,7 +666,7 @@ SLV-1821-2025,El Salvador,sovereign,North America,1821,2025,SLV,polity,2,1,3
 GTM-1821-2025,Guatemala,sovereign,North America,1821,2025,GTM,polity,2,1,3
 PAN-1903-2025,Panama,sovereign,North America,1903,2025,PAN,polity,2,1,3
 CAN-1948-2025,Canada,sovereign,North America,1948,2025,CAN,polity,16,2,18
-USA-1959-2025,United States of America,sovereign,North America,1959,2025,USA,polity,54,1,55
+USA-1959-2025,United States of America,sovereign,North America,1959,2025,USA,polity,56,1,57
 BLM-2007-2025,Saint Barthélemy,sovereign,North America,2007,2025,BLM,polity,2,1,3
 CUW-2010-2025,Curaçao,sovereign,North America,2010,2025,CUW,polity,2,1,3
 ALA-1800-1959,Alaska (to 1959),historical,North America,1800,1959,ALA,polity,2,1,3
@@ -681,7 +681,7 @@ PAN-1800-1979,Panama (before Canal Zone),historical,North America,1800,1979,PAN,
 PRI-1800-1866,Prince Edward Island,historical,North America,1800,1866,PRI,polity,2,2,4
 ST.-1800-1838,St. Lucía,historical,North America,1800,1838,,polity,0,1,1
 ST.-1800-1833,St. Vincent,historical,North America,1800,1833,,polity,0,1,1
-USA-1800-1959,United States of America (to 1959),historical,North America,1800,1959,USA,polity,52,3,55
+USA-1800-1959,United States of America (to 1959),aggregate,North America,1800,1959,USA,polity,51,5,56
 STM-1816-1878,St Martin and St Barthélemy,historical,North America,1816,1878,STM,polity,0,1,1
 VAN-1849-1866,Vancouver's Island,historical,North America,1849,1866,VAN,polity,0,1,1
 CAN-1866-1948,Canada (to 1948),historical,North America,1866,1948,CAN,polity,3,4,7
@@ -1229,8 +1229,8 @@ ES51-1833-2025,Ceuta (Province),subnational,Europe,1833,2025,ESP,polity,0,2,2
 ES52-1833-2025,Melilla (Province),subnational,Europe,1833,2025,ESP,polity,0,2,2
 GBR-1800-2025,United Kingdom (old),aggregate,Europe,1800,2025,GBR,polity,0,3,3
 ARG-1800-2025,Argentina (old),aggregate,South America,1800,2025,ARG,polity,0,4,4
-USA-1800-2025,United States (old),aggregate,North America,1800,2025,USA,polity,0,3,3
-RUS-1800-2025,Russia/USSR (old),aggregate,Europe,1800,2025,RUS,polity,0,3,3
+USA-1800-2025,United States (old),aggregate,North America,1800,2025,USA,polity,0,6,6
+RUS-1800-2025,Russia/USSR (old),aggregate,Europe,1800,2025,RUS,polity,0,5,5
 ZAF-1800-2025,South Africa (old),aggregate,Africa,1800,2025,ZAF,polity,0,2,2
 NZL-1840-1907,New Zealand (colony),historical,Oceania,1840,1907,NZL,polity,0,4,4
 CAN-1800-1866,Canada (pre-Confederation),historical,North America,1800,1866,CAN,polity,0,5,5
@@ -1308,11 +1308,17 @@ OMN-1800-1856,Omani Empire,historical,Asia,1800,1856,OMN,polity,1,4,5
 OMN-1856-2025,Sultanate of Oman,sovereign,Asia,1856,2025,OMN,polity,6,1,7
 COL-1800-1830,Gran Colombia,historical,South America,1800,1830,COL,polity,1,4,5
 COL-1830-1903,Colombia (to 1903),historical,South America,1830,1903,COL,polity,4,3,7
+USA-1800-1803,United States (original),historical,North America,1800,1803,USA,polity,2,4,6
+USA-1803-1848,United States (1803-1848),historical,North America,1803,1848,USA,polity,5,4,9
+USA-1848-1867,United States (1848-1867),historical,North America,1848,1867,USA,polity,5,4,9
+USA-1867-1959,United States (1867-1959),historical,North America,1867,1959,USA,polity,5,5,10
+F228-1800-1856,Russian Empire (to 1856),historical,Europe,1800,1856,RUS,polity,1,4,5
+F228-1856-1905,Russian Empire (1856-1905),historical,Europe,1856,1905,RUS,polity,4,2,6
 Africa,Africa,continent,Africa,1800,2025,,continent,264,0,264
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
 Asia,Asia,continent,Asia,1800,2025,,continent,278,0,278
-Europe,Europe,continent,Europe,1800,2025,,continent,332,0,332
+Europe,Europe,continent,Europe,1800,2025,,continent,334,0,334
 Global,Global,continent,Global,1800,2025,,continent,0,0,0
-North America,North America,continent,North America,1800,2025,,continent,183,0,183
+North America,North America,continent,North America,1800,2025,,continent,187,0,187
 Oceania,Oceania,continent,Oceania,1800,2025,,continent,80,0,80
 South America,South America,continent,South America,1800,2025,,continent,91,0,91

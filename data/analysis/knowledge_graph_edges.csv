@@ -184,6 +184,7 @@ SER-2006-2008,SRB-2008-2025,successor_of,successor column,2006,2008
 SER-2006-2008,KOS-2008-2025,successor_of,successor column,2006,2008
 SER-2006-2008,KOS-2008-2025,predecessor_of,predecessor column,2008,2025
 CAN-1866-1948,CAN-1948-2025,predecessor_of,predecessor column,1948,2025
+USA-1867-1959,USA-1959-2025,predecessor_of,predecessor column,1959,2025
 CAN-1800-1866,CAN-1866-1948,predecessor_of,predecessor column,1866,1948
 CAN-1866-1948,CAN-1948-2025,successor_of,successor column,1866,1948
 NZL-1840-1907,NZL-1907-2025,predecessor_of,predecessor column,1907,2025
@@ -353,6 +354,16 @@ OMN-1800-1856,OMN-1856-2025,successor_of,successor column,1800,1856
 OMN-1800-1856,OMN-1856-2025,predecessor_of,predecessor column,1856,2025
 COL-1800-1830,COL-1830-1903,successor_of,successor column,1800,1830
 COL-1800-1830,COL-1830-1903,predecessor_of,predecessor column,1830,1903
+USA-1800-1803,USA-1803-1848,successor_of,successor column,1800,1803
+USA-1800-1803,USA-1803-1848,predecessor_of,predecessor column,1803,1848
+USA-1803-1848,USA-1848-1867,successor_of,successor column,1803,1848
+USA-1803-1848,USA-1848-1867,predecessor_of,predecessor column,1848,1867
+USA-1848-1867,USA-1867-1959,successor_of,successor column,1848,1867
+USA-1848-1867,USA-1867-1959,predecessor_of,predecessor column,1867,1959
+USA-1867-1959,USA-1959-2025,successor_of,successor column,1867,1959
+F228-1800-1856,F228-1856-1905,successor_of,successor column,1800,1856
+F228-1800-1856,F228-1856-1905,predecessor_of,predecessor column,1856,1905
+F228-1856-1905,F228-1905-1914,successor_of,successor column,1856,1905
 USAL-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
 USAK-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
 USAZ-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
@@ -806,6 +817,10 @@ GER-1800-2025,GER-1885-1899,aggregate_covers,"same ISO3 (GER), date range contai
 NET-1800-2025,NET-1800-1986,aggregate_covers,"same ISO3 (NET), date range contained",1800,1986
 MEX-1800-2025,MEX-1800-1848,aggregate_covers,"same ISO3 (MEX), date range contained",1800,1848
 MEX-1800-2025,MEX-1848-2025,aggregate_covers,"same ISO3 (MEX), date range contained",1848,2025
+USA-1800-1959,USA-1800-1803,aggregate_covers,"same ISO3 (USA), date range contained",1800,1803
+USA-1800-1959,USA-1803-1848,aggregate_covers,"same ISO3 (USA), date range contained",1803,1848
+USA-1800-1959,USA-1848-1867,aggregate_covers,"same ISO3 (USA), date range contained",1848,1867
+USA-1800-1959,USA-1867-1959,aggregate_covers,"same ISO3 (USA), date range contained",1867,1959
 DAN-1800-2025,DAN-1800-1845,aggregate_covers,"same ISO3 (DAN), date range contained",1800,1845
 DAN-1800-2025,DAN-1919-1938,aggregate_covers,"same ISO3 (DAN), date range contained",1919,1938
 FSO-1844-2025,FSO-1884-1977,aggregate_covers,"same ISO3 (FSO), date range contained",1884,1977
@@ -822,9 +837,14 @@ ARG-1800-2025,ARG-1902-2025,aggregate_covers,"same ISO3 (ARG), date range contai
 ARG-1800-2025,ARG-1800-1899,aggregate_covers,"same ISO3 (ARG), date range contained",1800,1899
 ARG-1800-2025,ARG-1899-1902,aggregate_covers,"same ISO3 (ARG), date range contained",1899,1902
 USA-1800-2025,USA-1959-2025,aggregate_covers,"same ISO3 (USA), date range contained",1959,2025
-USA-1800-2025,USA-1800-1959,aggregate_covers,"same ISO3 (USA), date range contained",1800,1959
+USA-1800-2025,USA-1800-1803,aggregate_covers,"same ISO3 (USA), date range contained",1800,1803
+USA-1800-2025,USA-1803-1848,aggregate_covers,"same ISO3 (USA), date range contained",1803,1848
+USA-1800-2025,USA-1848-1867,aggregate_covers,"same ISO3 (USA), date range contained",1848,1867
+USA-1800-2025,USA-1867-1959,aggregate_covers,"same ISO3 (USA), date range contained",1867,1959
 RUS-1800-2025,RUS-2014-2025,aggregate_covers,"same ISO3 (RUS), date range contained",2014,2025
 RUS-1800-2025,RUS-1991-2014,aggregate_covers,"same ISO3 (RUS), date range contained",1991,2014
+RUS-1800-2025,F228-1800-1856,aggregate_covers,"same ISO3 (RUS), date range contained",1800,1856
+RUS-1800-2025,F228-1856-1905,aggregate_covers,"same ISO3 (RUS), date range contained",1856,1905
 ZAF-1800-2025,ZAF-1828-2025,aggregate_covers,"same ISO3 (ZAF), date range contained",1828,2025
 IND-1800-2025,IND-1949-2025,aggregate_covers,"same ISO3 (IND), date range contained",1949,2025
 IND-1800-2025,IND-1800-1893,aggregate_covers,"same ISO3 (IND), date range contained",1800,1893
@@ -985,13 +1005,17 @@ DEU-1920-1938,DEU-1938-1945,temporal_next,"same ISO3 (DEU), gap=0y",1938,1938
 LTU-1918-1920,LTU-1920-1940,temporal_next,"same ISO3 (LTU), gap=0y",1920,1920
 CZE-1947-1992,CZE-1993-2025,temporal_next,"same ISO3 (CZE), gap=1y",1992,1993
 MNE-1878-1913,MNE-1913-1915,temporal_next,"same ISO3 (MNE), gap=0y",1913,1913
+F228-1800-1856,F228-1856-1905,temporal_next,"same ISO3 (RUS), gap=0y",1856,1856
 RUS-1991-2014,RUS-2014-2025,temporal_next,"same ISO3 (RUS), gap=0y",2014,2014
 UKR-1991-2014,UKR-2014-2025,temporal_next,"same ISO3 (UKR), gap=0y",2014,2014
 AUH-1800-1867,AUH-1867-1908,temporal_next,"same ISO3 (AUH), gap=0y",1867,1867
 AUH-1867-1908,AUH-1908-1918,temporal_next,"same ISO3 (AUH), gap=0y",1908,1908
 SER-1816-1913,SER-1913-1915,temporal_next,"same ISO3 (SER), gap=0y",1913,1913
 SER-1913-1915,SER-1913-1918,temporal_next,"same ISO3 (SER), gap=-2y",1915,1913
-USA-1800-1959,USA-1959-2025,temporal_next,"same ISO3 (USA), gap=0y",1959,1959
+USA-1800-1803,USA-1803-1848,temporal_next,"same ISO3 (USA), gap=0y",1803,1803
+USA-1803-1848,USA-1848-1867,temporal_next,"same ISO3 (USA), gap=0y",1848,1848
+USA-1848-1867,USA-1867-1959,temporal_next,"same ISO3 (USA), gap=0y",1867,1867
+USA-1867-1959,USA-1959-2025,temporal_next,"same ISO3 (USA), gap=0y",1959,1959
 NEW-1884-1920,NEW-1920-1949,temporal_next,"same ISO3 (NEW), gap=0y",1920,1920
 NZL-1840-1907,NZL-1907-2025,temporal_next,"same ISO3 (NZL), gap=0y",1907,1907
 ARG-1800-1899,ARG-1899-1902,temporal_next,"same ISO3 (ARG), gap=0y",1899,1899
@@ -1049,7 +1073,7 @@ NLD-1830-2025,SXM-2010-2025,colonial_ruler_of,name contains 'Dutch',2010,2025
 DEU-1800-1919,GER-1885-1899,colonial_ruler_of,name contains 'German',1885,1899
 NLD-1830-2025,WES-1949-1969,colonial_ruler_of,name contains 'Dutch',1949,1969
 FRA-1800-1919,PYF-1800-2025,colonial_ruler_of,name contains 'French',1800,1919
-USA-1800-1959,ASM-1900-2025,colonial_ruler_of,name contains 'American',1900,1959
+USA-1867-1959,ASM-1900-2025,colonial_ruler_of,name contains 'American',1900,1959
 FRA-1800-1919,GUF-1800-2025,colonial_ruler_of,name contains 'French',1800,1919
 FRA-1800-1919,FRE-1800-1930,colonial_ruler_of,name contains 'French',1800,1919
 FRA-1919-2025,FRE-1930-1946,colonial_ruler_of,name contains 'French',1930,1946
@@ -2626,6 +2650,12 @@ OMN-1800-1856,Asia,located_in_continent,continent column,1800,1856
 OMN-1856-2025,Asia,located_in_continent,continent column,1856,2025
 COL-1800-1830,South America,located_in_continent,continent column,1800,1830
 COL-1830-1903,South America,located_in_continent,continent column,1830,1903
+USA-1800-1803,North America,located_in_continent,continent column,1800,1803
+USA-1803-1848,North America,located_in_continent,continent column,1803,1848
+USA-1848-1867,North America,located_in_continent,continent column,1848,1867
+USA-1867-1959,North America,located_in_continent,continent column,1867,1959
+F228-1800-1856,Europe,located_in_continent,continent column,1800,1856
+F228-1856-1905,Europe,located_in_continent,continent column,1856,1905
 RWA-1962-2025,RWA-1920-1962,same_territory,"same ISO3 (RWA), temporal overlap",1962,1962
 TZA-1964-2025,TZA-1961-1964,same_territory,"same ISO3 (TZA), temporal overlap",1964,1964
 CHA-1900-1912,CHA-1800-2023,same_territory,"same ISO3 (CHA), temporal overlap",1900,1912

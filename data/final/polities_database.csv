@@ -456,7 +456,7 @@ THU-1800-1871,Thuringia,1800,1871,72,historical,Europe,THU,NA,GADM 4.1 or Natura
 TUS-1800-1860,Tuscany,1800,1860,61,historical,Europe,TUS,337,CShapes-Europe,NA,ITA-1861-1919,FT,VERIFIED,NA
 TWO-1800-1860,Two Sicilies,1800,1860,61,historical,Europe,TWO,329,CShapes-Europe,NA,ITA-1861-1919,FT; WHEP-fix,"FIXED: merged duplicate ""Kingdom Two sicilies""",NA
 TUR-1800-1912,Türkiye (to 1912),1800,1912,113,historical,Europe,TUR,640,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-F228-1800-1905,USSR (to 1905),1800,1905,106,historical,Europe,NA,365,CShapes 2.0 + CShapes-Europe,NA,F228-1905-1914,FT; CShapes,REGION,NA
+F228-1800-1905,USSR (to 1905),1800,1905,106,aggregate,Europe,NA,365,CShapes 2.0 + CShapes-Europe,NA,F228-1905-1914,FT; CShapes,REGION,Aggregate for continuous trade data linkage. Split into 2 territorial periods at Crimean War.
 GBR-1800-1921,United Kingdom (to 1921),1800,1921,122,historical,Europe,GBR,200,CShapes 2.0 + CShapes-Europe,NA,GBR-1921-2025,FT; CShapes,VERIFIED,NA
 WUR-1800-1871,Württemberg,1800,1871,72,historical,Europe,WUR,271,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 ION-1815-1864,Ionian islands,1815,1864,50,historical,Europe,ION,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,FIXED: end 1862->1864,NA
@@ -666,7 +666,7 @@ SLV-1821-2025,El Salvador,1821,2025,205,sovereign,North America,SLV,92,CShapes 2
 GTM-1821-2025,Guatemala,1821,2025,205,sovereign,North America,GTM,90,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 PAN-1903-2025,Panama,1903,2025,123,sovereign,North America,PAN,95,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CAN-1948-2025,Canada,1948,2025,78,sovereign,North America,CAN,20,CShapes 2.0,CAN-1866-1948,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-USA-1959-2025,United States of America,1959,2025,67,sovereign,North America,USA,2,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+USA-1959-2025,United States of America,1959,2025,67,sovereign,North America,USA,2,CShapes 2.0,USA-1867-1959,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 BLM-2007-2025,Saint Barthélemy,2007,2025,19,sovereign,North America,BLM,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 CUW-2010-2025,Curaçao,2010,2025,16,sovereign,North America,CUW,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ALA-1800-1959,Alaska (to 1959),1800,1959,160,historical,North America,ALA,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
@@ -681,7 +681,7 @@ PAN-1800-1979,Panama (before Canal Zone),1800,1979,180,historical,North America,
 PRI-1800-1866,Prince Edward Island,1800,1866,67,historical,North America,PRI,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
 ST.-1800-1838,St. Lucía,1800,1838,39,historical,North America,NA,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 ST.-1800-1833,St. Vincent,1800,1833,34,historical,North America,NA,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-USA-1800-1959,United States of America (to 1959),1800,1959,160,historical,North America,USA,2,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+USA-1800-1959,United States of America (to 1959),1800,1959,160,aggregate,North America,USA,2,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split into 4 territorial periods.
 STM-1816-1878,St Martin and St Barthélemy,1816,1878,63,historical,North America,STM,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 VAN-1849-1866,Vancouver's Island,1849,1866,18,historical,North America,VAN,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 CAN-1866-1948,Canada (to 1948),1866,1948,83,historical,North America,CAN,20,CShapes 2.0 + CShapes-Europe,CAN-1800-1866,CAN-1948-2025,FT; CShapes,VERIFIED,NA
@@ -1308,3 +1308,9 @@ OMN-1800-1856,Omani Empire,1800,1856,57,historical,Asia,OMN,NA,Cliopatria (Sulta
 OMN-1856-2025,Sultanate of Oman,1856,2025,170,sovereign,Asia,OMN,NA,Cliopatria (Sultanate of Oman 1856-1858),OMN-1800-1856,NA,CShapes; Cliopatria; research,VERIFIED,Sultanate of Oman (Muscat) after separation from Zanzibar 1856. ~80-310K km2 (varying with interior tribal control). Zanzibar tracked separately as ZAN-1856-1964.
 COL-1800-1830,Gran Colombia,1800,1830,31,historical,South America,COL,NA,Cliopatria (Gran Colombia 1822-1823),NA,COL-1830-1903,CShapes; Cliopatria; research,VERIFIED,Includes Gran Colombia period (1819-1830): Colombia + Venezuela + Ecuador + Panama. ~4.3M km2 at peak. Dissolved 1830: Venezuela and Ecuador seceded. -34% loss.
 COL-1830-1903,Colombia (to 1903),1830,1903,74,historical,South America,COL,NA,Cliopatria (Gran Colombia 1830-1833),COL-1800-1830,NA,CShapes; Cliopatria; research,VERIFIED,Republic of New Granada / Colombia after Gran Colombia. ~2.8M km2. Lost Panama 1903.
+USA-1800-1803,United States (original),1800,1803,4,historical,North America,USA,NA,Cliopatria (United States of America 1800-1802),NA,USA-1803-1848,CShapes; Cliopatria; research,VERIFIED,"Original 13 states + early territories (Ohio, Kentucky, Tennessee, Vermont). ~1.2M km2. Louisiana Purchase (1803) doubles territory."
+USA-1803-1848,United States (1803-1848),1803,1848,46,historical,North America,USA,NA,Cliopatria (United States of America 1842-1845),USA-1800-1803,USA-1848-1867,CShapes; Cliopatria; research,VERIFIED,"Post-Louisiana Purchase (1803, +2.1M km2). Florida (Adams-Onis 1819). Texas annexation (1845). Oregon Treaty (1846). ~3.5M km2 by 1845. Treaty of Guadalupe Hidalgo (1848) triggers next split."
+USA-1848-1867,United States (1848-1867),1848,1867,20,historical,North America,USA,NA,Cliopatria (United States of America 1859-1860),USA-1803-1848,USA-1867-1959,CShapes; Cliopatria; research,VERIFIED,"Post-Mexican Cession (Guadalupe Hidalgo 1848, +1.4M km2). Gadsden Purchase (1854). Civil War (1861-1865). ~4.3M km2 pre-Alaska. Alaska Purchase (1867) triggers next split."
+USA-1867-1959,United States (1867-1959),1867,1959,93,historical,North America,USA,NA,Cliopatria (United States of America 1877-1879),USA-1848-1867,USA-1959-2025,CShapes; Cliopatria; research,VERIFIED,"Alaska Purchase (1867, +1.7M km2). Territory stable at ~9.4M km2. Hawaii Territory (1898). Admitted as 49th and 50th states 1959."
+F228-1800-1856,Russian Empire (to 1856),1800,1856,57,historical,Europe,RUS,NA,Cliopatria (Russian Empire 1815-1823),NA,F228-1856-1905,CShapes; Cliopatria; research,VERIFIED,"Russian Empire pre-Crimean War. ~17.4M km2. Acquisitions: Georgia (1801), Finland (1809), Bessarabia (1812), Congress Poland (1815). Caucasus conquest ongoing. Crimean War (1853-56) ends this period."
+F228-1856-1905,Russian Empire (1856-1905),1856,1905,50,historical,Europe,RUS,NA,Cliopatria (Russian Empire 1885-1894),F228-1800-1856,F228-1905-1914,CShapes; Cliopatria; research,VERIFIED,"Russian Empire post-Crimean War. Massive Central Asian expansion: Tashkent (1865), Bukhara protectorate (1868), Khiva (1873), Kokand (1876), Merv (1884). Far East: Amur/Ussuri (1858-60), Sakhalin (1875). ~22M km2 by 1900. Russo-Japanese War (1904-05) triggers next period."
