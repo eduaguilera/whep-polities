@@ -229,9 +229,13 @@ function buildTypeFilters() {
     container.appendChild(row);
   });
 
-  document.getElementById('filter-toggle').onclick = () => {
-    container.classList.toggle('open');
-  };
+  const toggleBtn = document.getElementById('filter-toggle');
+  toggleBtn.onclick = () => container.classList.toggle('open');
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+      container.classList.remove('open');
+    }
+  });
   updateFilterSummary();
 }
 
