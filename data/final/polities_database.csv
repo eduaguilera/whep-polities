@@ -282,7 +282,7 @@ KHI-1800-1873,Khiva,1800,1873,74,historical,Asia,KHI,NA,GADM 4.1 or Natural Eart
 KHI-1800-1920,Khiva (to 1920),1800,1920,121,aggregate,Asia,KHI,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 KOK-1800-1876,Kokand,1800,1876,77,historical,Asia,KOK,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,FIXED: end 1883->1876,NA
 OKO-1800-1910,Korea (to 1910),1800,1910,111,historical,Asia,OKO,730,CShapes 2.0,NA,NA,FT; CShapes; WHEP-fix,VERIFIED,NA
-OTT-1800-1912,Ottoman Empire,1800,1912,113,historical,Asia,OTT,640,"Cliopatria (Ottoman Empire 1800-1802, 2.66M km2)",NA,TUR-1800-1912,FT; CShapes; WHEP-fix,VERIFIED,Ottoman Empire at 1800 extent (2.66M km2). Cliopatria has 47 time steps showing gradual contraction from 2.66M (1800) to 724K km2 (1922). This polygon represents the early-period maximum.
+OTT-1800-1912,Ottoman Empire,1800,1912,113,historical,Asia,OTT,640,"Cliopatria (Ottoman Empire 1800-1802, 2.66M km2)",NA,TUR-1800-1912; SAU-1924-1932,FT; CShapes; WHEP-fix,VERIFIED,Ottoman Empire at 1800 extent (2.66M km2). Cliopatria has 47 time steps showing gradual contraction from 2.66M (1800) to 724K km2 (1922). This polygon represents the early-period maximum.
 PEK-1800-1896,Perak (to 1896),1800,1896,97,historical,Asia,PEK,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 SEL-1800-1896,Selangore (to 1896),1800,1896,97,historical,Asia,SEL,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 THA-1800-1893,Thailand (to 1893),1800,1893,94,historical,Asia,THA,800,CShapes 2.0,NA,THA-1893-1904,FT; CShapes,VERIFIED,NA
@@ -310,7 +310,7 @@ F246-1918-1990,North Yemen,1918,1990,73,historical,Asia,NA,679,CShapes 2.0,NA,NA
 JOR-1920-1923,Jordan (1920-1923),1920,1923,4,historical,Asia,JOR,663,CShapes 2.0,NA,JOR-1925-1946,FT; CShapes,VERIFIED,NA
 SYR-1920-1967,Syrian Arab Republic (1920-1967),1920,1967,48,aggregate,Asia,SYR,652,CShapes 2.0,NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 CHN-1921-1945,China (1921-1945),1921,1945,25,historical,Asia,CHN,710,CShapes 2.0,CHN-1914-1921,CHN-1945-1947,FT; CShapes,VERIFIED,NA
-SAU-1924-1932,Saudi Arabia (1924-1932),1924,1932,9,historical,Asia,SAU,670,CShapes 2.0,NA,SAU-1932-2000,FT; CShapes,VERIFIED,NA
+SAU-1924-1932,Saudi Arabia (1924-1932),1924,1932,9,historical,Asia,SAU,670,CShapes 2.0,OTT-1800-1912,SAU-1932-2000,FT; CShapes,VERIFIED,"Pre-1924 Arabian interior (Nejd, Hejaz, Asir) has no polygon source. CShapes starts Saudi at 1927. The Hejaz coast was Ottoman until 1916 (Arab Revolt), then Kingdom of Hejaz 1916-1925. Nejd (interior) was the Emirate of Nejd under Ibn Saud from 1902. No freely available GIS boundary data exists for these pre-unification entities."
 SAU-1932-2000,Saudi Arabia (1932-2000),1932,2000,69,historical,Asia,SAU,670,CShapes 2.0,SAU-1924-1932,SAU-2000-2025,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 IND-1937-1947,India (1937-1947),1937,1947,11,historical,Asia,IND,750,CShapes 2.0,IND-1914-1937,IND-1947-1949,FT; CShapes,VERIFIED,NA
 CHN-1945-1947,China (1945-1947),1945,1947,3,historical,Asia,CHN,710,CShapes 2.0,CHN-1921-1945,CHN-1947-1949,CShapes,VERIFIED,NA
