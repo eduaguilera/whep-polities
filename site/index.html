@@ -38,7 +38,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .filter-btn.active { background: rgba(100,180,255,0.2); color: #7cb8ff; border-color: rgba(100,180,255,0.4); }
 .filter-btn:hover { border-color: rgba(255,255,255,0.3); }
 
-#year-display { font-size: 28px; font-weight: 700; color: #fff; text-align: center; margin: 8px 0 2px; }
+#year-display {
+  font-size: 28px; font-weight: 700; color: #fff; text-align: center; margin: 8px 0 2px;
+  background: transparent; border: none; width: 100%; outline: none; font-family: inherit;
+  border-bottom: 2px solid transparent; transition: border-color 0.15s;
+}
+#year-display:focus { border-bottom-color: #5a9eff; }
 #year-range { width: 100%; margin-bottom: 4px; accent-color: #5a9eff; }
 .slider-labels { display: flex; justify-content: space-between; font-size: 10px; color: #555; margin-bottom: 10px; }
 
@@ -87,7 +92,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
   <div class="filters" id="type-filters"></div>
 
-  <div id="year-display">1900</div>
+  <input type="text" id="year-display" value="1900" inputmode="numeric" />
   <input type="range" id="year-range" min="1800" max="2025" value="1900" step="1" />
   <div class="slider-labels"><span>1800</span><span>1900</span><span>2025</span></div>
 
@@ -254,12 +259,27 @@ document.getElementById('search').addEventListener('input', (e) => {
   `).join('');
 });
 
-// Year slider
+// Year slider + text input
 const slider = document.getElementById('year-range');
-slider.addEventListener('input', () => {
-  selectedYear = parseInt(slider.value);
-  document.getElementById('year-display').textContent = selectedYear;
+const yearInput = document.getElementById('year-display');
+
+function setYear(y) {
+  y = Math.max(1800, Math.min(2025, y));
+  selectedYear = y;
+  slider.value = y;
+  yearInput.value = y;
   updateMap();
+}
+
+slider.addEventListener('input', () => setYear(parseInt(slider.value)));
+
+yearInput.addEventListener('change', () => {
+  const v = parseInt(yearInput.value);
+  if (!isNaN(v)) setYear(v);
+  else yearInput.value = selectedYear;
+});
+yearInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { yearInput.blur(); }
 });
 
 // Init
