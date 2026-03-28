@@ -120,6 +120,7 @@ let geoData = null;
 let activeTypes = new Set(Object.keys(TYPE_COLORS));
 activeTypes.delete('region');
 let selectedYear = 1900;
+let selectedCode = null;
 let map;
 
 // CSV parser
@@ -210,12 +211,62 @@ function updateMap() {
   if (!map || !geoData) return;
   const filtered = buildFilteredGeoJSON();
   map.getSource('polities').setData(filtered);
+  updateHighlight();
   updateStats();
+}
+
+function updateHighlight() {
+  if (!map || !geoData || !map.getSource('highlight')) return;
+  if (!selectedCode) {
+    map.getSource('highlight').setData({ type: 'FeatureCollection', features: [] });
+    return;
+  }
+  const feat = geoData._index[selectedCode];
+  if (feat) {
+    map.getSource('highlight').setData({ type: 'FeatureCollection', features: [feat] });
+  } else {
+    map.getSource('highlight').setData({ type: 'FeatureCollection', features: [] });
+  }
 }
 
 function showInfo(code) {
   const p = polities.find(x => x.polity_code === code);
   if (!p) return;
+
+  // Jump year if the current year is outside the polity's range
+  if (selectedYear < p.start_year || selectedYear > p.end_year) {
+    // Pick the midpoint, clamped to the polity's range
+    const target = Math.min(p.end_year, Math.max(p.start_year, selectedYear));
+    setYear(target === selectedYear ? p.start_year : target);
+  }
+
+  // Ensure the polity type is visible
+  if (!activeTypes.has(p.polity_type)) {
+    activeTypes.add(p.polity_type);
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      if (btn.textContent === p.polity_type) btn.classList.add('active');
+    });
+    updateMap();
+  }
+
+  // Highlight this polity on the map
+  selectedCode = code;
+  updateHighlight();
+
+  // Zoom to the polity's bounds
+  const feat = geoData && geoData._index[code];
+  if (feat && feat.geometry && map) {
+    const bounds = new maplibregl.LngLatBounds();
+    const addCoords = (coords) => {
+      if (typeof coords[0] === 'number') { bounds.extend(coords); return; }
+      coords.forEach(addCoords);
+    };
+    addCoords(feat.geometry.coordinates);
+    if (!bounds.isEmpty()) {
+      map.fitBounds(bounds, { padding: 80, maxZoom: 6, duration: 600 });
+    }
+  }
+
   document.getElementById('info').style.display = 'block';
   document.getElementById('info-name').textContent = p.polity_name;
 
@@ -342,10 +393,33 @@ async function init() {
       }
     });
 
+    map.addSource('highlight', {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: [] }
+    });
+
+    map.addLayer({
+      id: 'highlight-fill',
+      type: 'fill',
+      source: 'highlight',
+      paint: { 'fill-color': '#ffffff', 'fill-opacity': 0.25 }
+    });
+
+    map.addLayer({
+      id: 'highlight-outline',
+      type: 'line',
+      source: 'highlight',
+      paint: { 'line-color': '#ffffff', 'line-width': 2.5, 'line-opacity': 0.9 }
+    });
+
     map.on('click', 'polities-fill', (e) => {
       if (e.features && e.features.length > 0) {
         showInfo(e.features[0].properties.polity_code);
       }
+    });
+    map.on('click', (e) => {
+      const features = map.queryRenderedFeatures(e.point, { layers: ['polities-fill'] });
+      if (!features.length) { selectedCode = null; updateHighlight(); }
     });
     map.on('mouseenter', 'polities-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'polities-fill', () => { map.getCanvas().style.cursor = ''; });
