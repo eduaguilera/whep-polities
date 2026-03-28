@@ -228,8 +228,8 @@ JPN-1800-2025,Japan,aggregate,Asia,1800,2025,JPN,polity,47,5,52
 KWT-1800-2025,Kuwait,sovereign,Asia,1800,2025,KWT,polity,2,1,3
 MDV-1800-2025,Maldives,sovereign,Asia,1800,2025,MDV,polity,1,1,2
 MMR-1800-2025,Myanmar,sovereign,Asia,1800,2025,MMR,polity,2,1,3
-NPL-1800-2025,Nepal,sovereign,Asia,1800,2025,NPL,polity,1,1,2
-OMN-1800-2025,Oman,sovereign,Asia,1800,2025,OMN,polity,2,1,3
+NPL-1800-2025,Nepal,aggregate,Asia,1800,2025,NPL,polity,0,3,3
+OMN-1800-2025,Oman,aggregate,Asia,1800,2025,OMN,polity,0,3,3
 PHL-1800-2025,Philippines,sovereign,Asia,1800,2025,PHL,polity,2,1,3
 QAT-1800-2025,Qatar,sovereign,Asia,1800,2025,QAT,polity,2,1,3
 LKA-1800-2025,Sri Lanka,sovereign,Asia,1800,2025,LKA,polity,1,1,2
@@ -351,8 +351,8 @@ FED-1909-1946,Federated Malay States (1909-1946),colonial,Asia,1909,1946,FED,pol
 UNF-1909-1946,Unfederated Malay States (1909-1946),colonial,Asia,1909,1946,UNF,polity,1,1,2
 ADE-1937-1962,Aden (1937-1962),colonial,Asia,1937,1962,ADE,polity,0,1,1
 EAS-1937-1962,East Aden Protectorate (1937-1962),colonial,Asia,1937,1962,EAS,polity,0,1,1
-IOT-1800-2025,British Indian Ocean Territory,dependency,Asia,1800,2025,IOT,polity,1,1,2
-GAZ-1800-1982,Gaza Strip,dependency,Asia,1800,1982,GAZ,polity,0,1,1
+IOT-1965-2025,British Indian Ocean Territory,dependency,Asia,1965,2025,IOT,polity,1,1,2
+GAZ-1948-1982,Gaza Strip,dependency,Asia,1948,1982,GAZ,polity,0,1,1
 MAC-1800-2025,Macao,dependency,Asia,1800,2025,MAC,polity,0,1,1
 NEU-1800-1982,Neutral Zone,dependency,Asia,1800,1982,NEU,polity,0,1,1
 RYU-1800-1982,Ryukyu Islands,dependency,Asia,1800,1982,RYU,polity,0,1,1
@@ -389,7 +389,7 @@ ISL-1800-2025,Iceland,sovereign,Europe,1800,2025,ISL,polity,2,1,3
 LIE-1800-2025,Liechtenstein,sovereign,Europe,1800,2025,LIE,polity,2,1,3
 MLT-1800-2025,Malta,sovereign,Europe,1800,2025,MLT,polity,2,1,3
 MCO-1800-2025,Monaco,sovereign,Europe,1800,2025,MCO,polity,2,1,3
-NLD-1800-2025,Netherlands,sovereign,Europe,1800,2025,NLD,polity,2,5,7
+NLD-1800-2025,Netherlands,aggregate,Europe,1800,2025,NLD,polity,0,3,3
 NOR-1800-2025,Norway,sovereign,Europe,1800,2025,NOR,polity,2,1,3
 PRT-1800-2025,Portugal,sovereign,Europe,1800,2025,PRT,polity,2,1,3
 SMR-1800-2025,San Marino,sovereign,Europe,1800,2025,SMR,polity,2,1,3
@@ -405,7 +405,7 @@ ITA-1919-2025,Italy,sovereign,Europe,1919,2025,ITA,polity,4,5,9
 DNK-1920-2025,Denmark,sovereign,Europe,1920,2025,DNK,polity,4,1,5
 TUR-1920-2025,Türkiye,sovereign,Europe,1920,2025,TUR,polity,3,1,4
 IRL-1921-2025,Ireland,sovereign,Europe,1921,2025,IRL,polity,2,1,3
-GBR-1921-2025,United Kingdom,sovereign,Europe,1921,2025,GBR,polity,10,2,12
+GBR-1921-2025,United Kingdom,sovereign,Europe,1921,2025,GBR,polity,10,3,13
 BGR-1940-2025,Bulgaria,sovereign,Europe,1940,2025,BGR,polity,3,1,4
 FIN-1940-2025,Finland,sovereign,Europe,1940,2025,FIN,polity,3,1,4
 ROU-1940-2025,Romania,sovereign,Europe,1940,2025,ROU,polity,3,1,4
@@ -457,7 +457,7 @@ TUS-1800-1860,Tuscany,historical,Europe,1800,1860,TUS,polity,0,3,3
 TWO-1800-1860,Two Sicilies,historical,Europe,1800,1860,TWO,polity,0,3,3
 TUR-1800-1912,Türkiye (to 1912),historical,Europe,1800,1912,TUR,polity,0,2,2
 F228-1800-1905,USSR (to 1905),historical,Europe,1800,1905,,polity,0,3,3
-GBR-1800-1921,United Kingdom (to 1921),historical,Europe,1800,1921,GBR,polity,1,12,13
+GBR-1800-1921,United Kingdom (to 1921),historical,Europe,1800,1921,GBR,polity,1,11,12
 WUR-1800-1871,Württemberg,historical,Europe,1800,1871,WUR,polity,0,1,1
 ION-1815-1864,Ionian islands,historical,Europe,1815,1864,ION,polity,0,1,1
 ANB-1816-1864,Anhalt-Bernburg,historical,Europe,1816,1864,ANB,polity,0,1,1
@@ -551,13 +551,13 @@ YUG-1992-2006,Yugoslavia (1992-2006),historical,Europe,1992,2006,YUG,polity,0,1,
 SER-2006-2008,Serbia (2006-2008),historical,Europe,2006,2008,SER,polity,2,5,7
 BAD-1800-1871,Baden,colonial,Europe,1800,1871,BAD,polity,1,1,2
 CHA-1800-2023,Channel Islands,dependency,Europe,1800,2023,CHA,polity,2,1,3
-GEB-1800-1982,East Berlin,dependency,Europe,1800,1982,GEB,polity,0,1,1
+GEB-1949-1982,East Berlin,dependency,Europe,1949,1982,GEB,polity,0,1,1
 FRO-1800-2025,Faroe Islands,dependency,Europe,1800,2025,FRO,polity,0,1,1
 GIB-1800-2025,Gibraltar,dependency,Europe,1800,2025,GIB,polity,0,1,1
 GRL-1800-2025,Greenland,dependency,Europe,1800,2025,GRL,polity,0,1,1
 IMN-1800-2025,Isle of Man,dependency,Europe,1800,2025,IMN,polity,0,1,1
 SJM-1800-2025,Svalbard and Jan Mayen,dependency,Europe,1800,2025,SJM,polity,0,1,1
-GWB-1800-1982,West Berlin,dependency,Europe,1800,1982,GWB,polity,0,1,1
+GWB-1949-1982,West Berlin,dependency,Europe,1949,1982,GWB,polity,0,1,1
 GGY-2005-2025,Guernsey,dependency,Europe,2005,2025,GGY,polity,0,1,1
 JEY-2005-2025,Jersey,dependency,Europe,2005,2025,JEY,polity,0,1,1
 F285-2011-2023,Sark,dependency,Europe,2011,2023,,polity,0,1,1
@@ -665,12 +665,12 @@ TTO-1800-2025,Trinidad and Tobago,sovereign,North America,1800,2025,TTO,polity,2
 SLV-1821-2025,El Salvador,sovereign,North America,1821,2025,SLV,polity,2,1,3
 GTM-1821-2025,Guatemala,sovereign,North America,1821,2025,GTM,polity,2,1,3
 PAN-1903-2025,Panama,sovereign,North America,1903,2025,PAN,polity,2,1,3
-CAN-1948-2025,Canada,sovereign,North America,1948,2025,CAN,polity,17,2,19
+CAN-1948-2025,Canada,sovereign,North America,1948,2025,CAN,polity,16,2,18
 USA-1959-2025,United States of America,sovereign,North America,1959,2025,USA,polity,54,1,55
 BLM-2007-2025,Saint Barthélemy,sovereign,North America,2007,2025,BLM,polity,2,1,3
 CUW-2010-2025,Curaçao,sovereign,North America,2010,2025,CUW,polity,2,1,3
 ALA-1800-1959,Alaska (to 1959),historical,North America,1800,1959,ALA,polity,2,1,3
-CAN-1800-1982,Canton and Enderbury Islands,historical,North America,1800,1982,CAN,polity,0,2,2
+CAN-1938-1982,Canton and Enderbury Islands,historical,North America,1938,1982,CAN,polity,0,2,2
 GRD-1800-1833,Grenada,historical,North America,1800,1833,GRD,polity,2,1,3
 LOW-1800-1866,Lower Quebec,historical,North America,1800,1866,LOW,polity,0,1,1
 NBW-1800-1866,New Brunswick,historical,North America,1800,1866,NBW,polity,0,1,1
@@ -684,7 +684,7 @@ ST.-1800-1833,St. Vincent,historical,North America,1800,1833,,polity,0,1,1
 USA-1800-1959,United States of America (to 1959),historical,North America,1800,1959,USA,polity,52,3,55
 STM-1816-1878,St Martin and St Barthélemy,historical,North America,1816,1878,STM,polity,0,1,1
 VAN-1849-1866,Vancouver's Island,historical,North America,1849,1866,VAN,polity,0,1,1
-CAN-1866-1948,Canada (to 1948),historical,North America,1866,1948,CAN,polity,3,5,8
+CAN-1866-1948,Canada (to 1948),historical,North America,1866,1948,CAN,polity,3,4,7
 BCO-1858-1866,British Columbia,colonial,North America,1858,1866,BCO,polity,1,1,2
 AIA-1800-2025,Anguilla,dependency,North America,1800,2025,AIA,polity,0,1,1
 BMU-1800-2025,Bermuda,dependency,North America,1800,2025,BMU,polity,0,1,1
@@ -699,7 +699,7 @@ PRI-1800-2025,Puerto Rico,dependency,North America,1800,2025,PRI,polity,1,1,2
 SAI-1800-1982,Saint Kitts-Nevis-Anguilla,dependency,North America,1800,1982,SAI,polity,0,1,1
 SPM-1800-2025,Saint Pierre and Miquelon,dependency,North America,1800,2025,SPM,polity,0,1,1
 TCA-1800-2025,Turks and Caicos Islands,dependency,North America,1800,2025,TCA,polity,0,1,1
-VIR-1800-2025,United States Virgin Islands,dependency,North America,1800,2025,VIR,polity,0,1,1
+VIR-1917-2025,United States Virgin Islands,dependency,North America,1917,2025,VIR,polity,0,1,1
 ABW-1986-2025,Aruba,dependency,North America,1986,2025,ABW,polity,0,1,1
 ANT-1986-2010,Netherlands Antilles,dependency,North America,1986,2010,ANT,polity,1,1,2
 ALA-2003-2025,Åland Islands,dependency,North America,2003,2025,ALA,polity,0,1,1
@@ -723,14 +723,14 @@ NZL-1907-2025,New Zealand,sovereign,Oceania,1907,2025,NZL,polity,5,1,6
 PNG-1975-2025,Papua New Guinea,sovereign,Oceania,1975,2025,PNG,polity,2,1,3
 FSM-1991-2025,Micronesia,sovereign,Oceania,1991,2025,FSM,polity,3,1,4
 PLW-1991-2025,Palau,sovereign,Oceania,1991,2025,PLW,polity,2,1,3
-NEW-1800-1920,New Guinea (to 1920),historical,Oceania,1800,1920,NEW,polity,0,2,2
+NEW-1884-1920,New Guinea (to 1920),historical,Oceania,1884,1920,NEW,polity,0,3,3
 NEW-1800-1900,New South Wales (to 1900),historical,Oceania,1800,1900,NEW,polity,0,1,1
 PAP-1800-1949,Papua (to 1949),historical,Oceania,1800,1949,PAP,polity,0,1,1
-QUE-1800-1900,Queensland (to 1900),historical,Oceania,1800,1900,QUE,polity,0,1,1
-SOU-1800-1900,South Australia (to 1900),historical,Oceania,1800,1900,SOU,polity,0,1,1
-TAS-1800-1900,Van Diemen's Land (Tasmania) (to 1900),historical,Oceania,1800,1900,TAS,polity,0,1,1
-VIC-1800-1900,Victoria (to 1900),historical,Oceania,1800,1900,VIC,polity,0,1,1
-WES-1800-1900,Western Australia (to 1900),historical,Oceania,1800,1900,WES,polity,0,1,1
+QUE-1859-1900,Queensland (to 1900),historical,Oceania,1859,1900,QUE,polity,0,2,2
+SOU-1836-1900,South Australia (to 1900),historical,Oceania,1836,1900,SOU,polity,0,1,1
+TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),historical,Oceania,1825,1900,TAS,polity,0,1,1
+VIC-1851-1900,Victoria (to 1900),historical,Oceania,1851,1900,VIC,polity,0,1,1
+WES-1829-1900,Western Australia (to 1900),historical,Oceania,1829,1900,WES,polity,0,1,1
 VAN-1828-1900,Van Diemen's Land (Tasmania),historical,Oceania,1828,1900,VAN,polity,0,1,1
 SOU-1838-1900,South Australia,historical,Oceania,1838,1900,SOU,polity,0,2,2
 WES-1838-1900,Western Australia,historical,Oceania,1838,1900,WES,polity,0,1,1
@@ -738,18 +738,18 @@ MRQ-1844-1903,Marquesas Island,historical,Oceania,1844,1903,MRQ,polity,0,1,1
 SOC-1844-1903,Society Islands  (Tahiti),historical,Oceania,1844,1903,SOC,polity,0,1,1
 BON-1846-1873,Bonin island,historical,Oceania,1846,1873,BON,polity,0,1,1
 VIC-1853-1900,Victoria,historical,Oceania,1853,1900,VIC,polity,0,1,1
-QUE-1859-1900,Queensland,historical,Oceania,1859,1900,QUE,polity,0,1,1
+QUE-1859-1900,Queensland,historical,Oceania,1859,1900,QUE,polity,0,0,0
 GAM-1881-1903,Gambier Island,historical,Oceania,1881,1903,GAM,polity,0,1,1
 PAL-1889-1912,Palmyra Island,historical,Oceania,1889,1912,PAL,polity,0,1,1
 SOL-1893-1899,Solomon Islands (1893-1899),historical,Oceania,1893,1899,SOL,polity,0,1,1
 HAW-1898-1959,Hawaii (1898-1959),historical,Oceania,1898,1959,HAW,polity,0,1,1
-GER-1800-1899,German Solomon Islands (to 1899),colonial,Oceania,1800,1899,GER,polity,2,1,3
+GER-1885-1899,German Solomon Islands (to 1899),colonial,Oceania,1885,1899,GER,polity,3,1,4
 WES-1949-1969,Dutch new Guinea (1949-1969),colonial,Oceania,1949,1969,WES,polity,1,1,2
-CXR-1800-2025,Christmas Island,dependency,Oceania,1800,2025,CXR,polity,0,1,1
-CCK-1800-2025,Cocos (Keeling) Islands,dependency,Oceania,1800,2025,CCK,polity,0,1,1
+CXR-1888-2025,Christmas Island,dependency,Oceania,1888,2025,CXR,polity,0,1,1
+CCK-1826-2025,Cocos (Keeling) Islands,dependency,Oceania,1826,2025,CCK,polity,0,1,1
 PYF-1800-2025,French Polynesia,dependency,Oceania,1800,2025,PYF,polity,1,1,2
 GUM-1800-2025,Guam,dependency,Oceania,1800,2025,GUM,polity,0,1,1
-HMD-1800-2025,Heard Island and McDonald Islands,dependency,Oceania,1800,2025,HMD,polity,0,1,1
+HMD-1833-2025,Heard Island and McDonald Islands,dependency,Oceania,1833,2025,HMD,polity,0,1,1
 JTN-1800-1982,Johnston Island,dependency,Oceania,1800,1982,JTN,polity,0,1,1
 NFK-1800-1901,Norfolk Island,dependency,Oceania,1800,1901,NFK,polity,0,1,1
 UMI-1800-2025,United States Minor Outlying Islands,dependency,Oceania,1800,2025,UMI,polity,0,1,1
@@ -765,13 +765,13 @@ WAK-1898-1982,Wake Island,dependency,Oceania,1898,1982,WAK,polity,0,1,1
 ASM-1900-2025,American Samoa,dependency,Oceania,1900,2025,ASM,polity,1,1,2
 NIU-1900-2025,Niue,dependency,Oceania,1900,2025,NIU,polity,0,1,1
 MNP-1991-2025,Northern Mariana Islands,dependency,Oceania,1991,2025,MNP,polity,0,1,1
-F164-1800-1990,Pacific Islands Trust Territory,mandate,Oceania,1800,1990,,polity,0,1,1
-NEW-1920-1949,New Guinea (1920-1949),mandate,Oceania,1920,1949,NEW,polity,2,1,3
+F164-1920-1990,Pacific Islands Trust Territory,mandate,Oceania,1920,1990,,polity,0,1,1
+NEW-1920-1949,New Guinea (1920-1949),mandate,Oceania,1920,1949,NEW,polity,3,1,4
 MRI-1800-2025,Mariana Island,aggregate,Oceania,1800,2025,MRI,polity,0,1,1
 BOC-1839-2025,British settlement Oceania,aggregate,Oceania,1839,2025,BOC,polity,0,1,1
 FSO-1844-2025,French Settlements in Oceania,aggregate,Oceania,1844,2025,FSO,polity,0,2,2
 BNG-1884-2025,British New Guinea,aggregate,Oceania,1884,2025,BNG,polity,0,1,1
-GER-1884-2025,German colonies Oceania,aggregate,Oceania,1884,2025,GER,polity,0,5,5
+GER-1884-2025,German colonies Oceania,aggregate,Oceania,1884,2025,GER,polity,0,6,6
 NGN-1884-2025,New Guinea,aggregate,Oceania,1884,2025,NGN,polity,0,1,1
 CAR-1885-2025,Caroline Island,aggregate,Oceania,1885,2025,CAR,polity,0,1,1
 GIL-1892-2025,Gilbert and Ellice Island,aggregate,Oceania,1892,2025,GIL,polity,0,1,1
@@ -792,7 +792,7 @@ PER-1942-2025,Peru,sovereign,South America,1942,2025,PER,polity,3,1,4
 SUR-1975-2025,Suriname,sovereign,South America,1975,2025,SUR,polity,2,1,3
 ARG-1800-1899,Argentina (to 1899),historical,South America,1800,1899,ARG,polity,1,4,5
 BRA-1800-1903,Brazil (to 1903),historical,South America,1800,1903,BRA,polity,0,4,4
-COL-1800-1903,Colombia (to 1903),historical,South America,1800,1903,COL,polity,0,4,4
+COL-1800-1903,Colombia (to 1903),aggregate,South America,1800,1903,COL,polity,0,4,4
 ECU-1800-1942,Ecuador (to 1942),historical,South America,1800,1942,ECU,polity,0,2,2
 CHL-1810-1899,Chile (to 1899),historical,South America,1810,1899,CHL,polity,0,2,2
 PRY-1811-1938,Paraguay (to 1938),historical,South America,1811,1938,PRY,polity,0,2,2
@@ -1300,11 +1300,19 @@ NUP-1800-1897,Nupe Kingdom (Bida Emirate),historical,Africa,1800,1897,NGA,polity
 NGA-1800-1899,Nigeria (pre-colonial),aggregate,Africa,1800,1899,NGA,polity,0,5,5
 MEX-1800-1848,Mexico (to 1848),historical,North America,1800,1848,MEX,polity,1,4,5
 MEX-1848-2025,Mexico,sovereign,North America,1848,2025,MEX,polity,6,1,7
+NLD-1800-1830,United Kingdom of the Netherlands,historical,Europe,1800,1830,NLD,polity,1,4,5
+NLD-1830-2025,Netherlands,sovereign,Europe,1830,2025,NLD,polity,6,5,11
+NPL-1800-1816,Greater Nepal,historical,Asia,1800,1816,NPL,polity,1,4,5
+NPL-1816-2025,Nepal,sovereign,Asia,1816,2025,NPL,polity,5,1,6
+OMN-1800-1856,Omani Empire,historical,Asia,1800,1856,OMN,polity,1,4,5
+OMN-1856-2025,Sultanate of Oman,sovereign,Asia,1856,2025,OMN,polity,6,1,7
+COL-1800-1830,Gran Colombia,historical,South America,1800,1830,COL,polity,1,4,5
+COL-1830-1903,Colombia (to 1903),historical,South America,1830,1903,COL,polity,4,3,7
 Africa,Africa,continent,Africa,1800,2025,,continent,264,0,264
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
-Asia,Asia,continent,Asia,1800,2025,,continent,274,0,274
-Europe,Europe,continent,Europe,1800,2025,,continent,330,0,330
+Asia,Asia,continent,Asia,1800,2025,,continent,278,0,278
+Europe,Europe,continent,Europe,1800,2025,,continent,332,0,332
 Global,Global,continent,Global,1800,2025,,continent,0,0,0
 North America,North America,continent,North America,1800,2025,,continent,183,0,183
 Oceania,Oceania,continent,Oceania,1800,2025,,continent,80,0,80
-South America,South America,continent,South America,1800,2025,,continent,89,0,89
+South America,South America,continent,South America,1800,2025,,continent,91,0,91

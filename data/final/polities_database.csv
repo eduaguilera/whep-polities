@@ -228,8 +228,8 @@ JPN-1800-2025,Japan,1800,2025,226,aggregate,Asia,JPN,740,CShapes 2.0,NA,NA,FT; F
 KWT-1800-2025,Kuwait,1800,2025,226,sovereign,Asia,KWT,690,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MDV-1800-2025,Maldives,1800,2025,226,sovereign,Asia,MDV,781,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MMR-1800-2025,Myanmar,1800,2025,226,sovereign,Asia,MMR,775,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-NPL-1800-2025,Nepal,1800,2025,226,sovereign,Asia,NPL,790,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-OMN-1800-2025,Oman,1800,2025,226,sovereign,Asia,OMN,698,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+NPL-1800-2025,Nepal,1800,2025,226,aggregate,Asia,NPL,790,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1816.
+OMN-1800-2025,Oman,1800,2025,226,aggregate,Asia,OMN,698,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1856.
 PHL-1800-2025,Philippines,1800,2025,226,sovereign,Asia,PHL,840,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 QAT-1800-2025,Qatar,1800,2025,226,sovereign,Asia,QAT,694,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 LKA-1800-2025,Sri Lanka,1800,2025,226,sovereign,Asia,LKA,780,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -389,7 +389,7 @@ ISL-1800-2025,Iceland,1800,2025,226,sovereign,Europe,ISL,395,CShapes 2.0,NA,NA,F
 LIE-1800-2025,Liechtenstein,1800,2025,226,sovereign,Europe,LIE,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MLT-1800-2025,Malta,1800,2025,226,sovereign,Europe,MLT,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MCO-1800-2025,Monaco,1800,2025,226,sovereign,Europe,MCO,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-NLD-1800-2025,Netherlands,1800,2025,226,sovereign,Europe,NLD,210,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+NLD-1800-2025,Netherlands,1800,2025,226,aggregate,Europe,NLD,210,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1830.
 NOR-1800-2025,Norway,1800,2025,226,sovereign,Europe,NOR,385,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 PRT-1800-2025,Portugal,1800,2025,226,sovereign,Europe,PRT,235,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SMR-1800-2025,San Marino,1800,2025,226,sovereign,Europe,SMR,339,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -792,7 +792,7 @@ PER-1942-2025,Peru,1942,2025,84,sovereign,South America,PER,135,CShapes 2.0,NA,N
 SUR-1975-2025,Suriname,1975,2025,51,sovereign,South America,SUR,115,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ARG-1800-1899,Argentina (to 1899),1800,1899,100,historical,South America,ARG,160,CShapes 2.0 + CShapes-Europe,NA,ARG-1899-1902,FT; CShapes,VERIFIED,NA
 BRA-1800-1903,Brazil (to 1903),1800,1903,104,historical,South America,BRA,140,CShapes 2.0 + CShapes-Europe,NA,BRA-1903-1909,FT; CShapes,VERIFIED,NA
-COL-1800-1903,Colombia (to 1903),1800,1903,104,historical,South America,COL,100,CShapes 2.0 + CShapes-Europe,NA,COL-1903-1922,FT; CShapes,VERIFIED,NA
+COL-1800-1903,Colombia (to 1903),1800,1903,104,aggregate,South America,COL,100,CShapes 2.0 + CShapes-Europe,NA,COL-1903-1922,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1830.
 ECU-1800-1942,Ecuador (to 1942),1800,1942,143,historical,South America,ECU,130,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 CHL-1810-1899,Chile (to 1899),1810,1899,90,historical,South America,CHL,155,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 PRY-1811-1938,Paraguay (to 1938),1811,1938,128,historical,South America,PRY,150,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
@@ -802,7 +802,7 @@ ARG-1899-1902,Argentina (1899-1902),1899,1902,4,historical,South America,ARG,160
 CHL-1899-1902,Chile (1899-1902),1899,1902,4,historical,South America,CHL,155,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 BOL-1903-1909,Bolivia (1903-1909),1903,1909,7,historical,South America,BOL,145,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 BRA-1903-1909,Brazil (1903-1909),1903,1909,7,historical,South America,BRA,140,CShapes 2.0,BRA-1800-1903,BRA-1909-2025,FT; CShapes,VERIFIED,NA
-COL-1903-1922,Colombia (1903-1922),1903,1922,20,historical,South America,COL,100,CShapes 2.0,COL-1800-1903,COL-1922-2025,FT; CShapes,VERIFIED,NA
+COL-1903-1922,Colombia (1903-1922),1903,1922,20,historical,South America,COL,100,CShapes 2.0,COL-1830-1903,COL-1922-2025,FT; CShapes,VERIFIED,NA
 BOL-1909-1938,Bolivia (1909-1938),1909,1938,30,historical,South America,BOL,145,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 PER-1909-1922,Peru (1909-1922),1909,1922,14,historical,South America,PER,135,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 PER-1922-1942,Peru (1922-1942),1922,1942,21,historical,South America,PER,135,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
@@ -1300,3 +1300,11 @@ NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,98,historical,Africa,NGA,NA,
 NGA-1800-1899,Nigeria (pre-colonial),1800,1899,100,aggregate,Africa,NGA,NA,CShapes 2.0 (modern Nigeria proxy),NA,NOR-1899-1904; SOU-1899-1906,research,VERIFIED,"Pre-colonial aggregate for Nigerian trade data linkage. Includes Sokoto Caliphate (incl. Kano and Katsina emirates, largest constituent ~644k km2), Bornu Empire, Oyo successor states (Ibadan, Ijebu, Egba), Kingdom of Benin, Niger Delta city-states (Bonny, Calabar, Brass), Nupe/Bida, Igala, Borgu. Uses modern Nigeria polygon as proxy."
 MEX-1800-1848,Mexico (to 1848),1800,1848,49,historical,North America,MEX,NA,"Cliopatria (Federated Republic of Mexico 1825-1835, 3.19M km2)",NA,MEX-1848-2025,CShapes; Cliopatria; research,VERIFIED,"Pre-Treaty of Guadalupe Hidalgo. Included Central America until 1823 (~4.4M km2), then ~3.2M km2. Lost Texas de facto 1836. Treaty of Guadalupe Hidalgo (1848-02-02) ceded California, Nevada, Utah, Arizona, New Mexico to US (~55% loss)."
 MEX-1848-2025,Mexico,1848,2025,178,sovereign,North America,MEX,NA,CShapes 2.0,MEX-1800-1848,NA,CShapes; research,VERIFIED,"Post-Treaty of Guadalupe Hidalgo. Gadsden Purchase (1854, -77K km2) is sub-threshold (-3.9%). Territory stable at ~1.96M km2 since 1854."
+NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,31,historical,Europe,NLD,NA,Cliopatria (Netherlands 1815-1819),NA,NLD-1830-2025,CShapes; Cliopatria; research,VERIFIED,United Kingdom of Netherlands (1815-1830) including Belgium and Luxembourg. ~71K km2. Belgian Revolution 1830 led to -42% territory loss.
+NLD-1830-2025,Netherlands,1830,2025,196,sovereign,Europe,NLD,NA,Cliopatria (Netherlands 1834-1839),NLD-1800-1830,NA,CShapes; Cliopatria; research,VERIFIED,Netherlands after Belgian secession. ~41K km2. Luxembourg personal union until 1890.
+NPL-1800-1816,Greater Nepal,1800,1816,17,historical,Asia,NPL,NA,Cliopatria (Nepal 1800-1802),NA,NPL-1816-2025,CShapes; Cliopatria; research,VERIFIED,"Greater Nepal under Prithvi Narayan Shah's successors. ~227K km2 at peak (1814). Treaty of Sugauli (1816) ceded Sikkim, Kumaon, Garhwal, western Terai to British India. -34% territory loss."
+NPL-1816-2025,Nepal,1816,2025,210,sovereign,Asia,NPL,NA,Cliopatria (Nepal 1820-1835),NPL-1800-1816,NA,CShapes; Cliopatria; research,VERIFIED,Nepal post-Sugauli Treaty. ~149K km2. Borders largely stable since 1816.
+OMN-1800-1856,Omani Empire,1800,1856,57,historical,Asia,OMN,NA,Cliopatria (Sultanate of Oman 1840-1855),NA,OMN-1856-2025,CShapes; Cliopatria; research,VERIFIED,"Omani Empire including East African coast (Zanzibar, Pemba, mainland strip). Said bin Sultan ruled from Zanzibar (moved capital 1840). ~176K km2 at peak. Split on his death 1856: Zanzibar and Oman became separate sultanates."
+OMN-1856-2025,Sultanate of Oman,1856,2025,170,sovereign,Asia,OMN,NA,Cliopatria (Sultanate of Oman 1856-1858),OMN-1800-1856,NA,CShapes; Cliopatria; research,VERIFIED,Sultanate of Oman (Muscat) after separation from Zanzibar 1856. ~80-310K km2 (varying with interior tribal control). Zanzibar tracked separately as ZAN-1856-1964.
+COL-1800-1830,Gran Colombia,1800,1830,31,historical,South America,COL,NA,Cliopatria (Gran Colombia 1822-1823),NA,COL-1830-1903,CShapes; Cliopatria; research,VERIFIED,Includes Gran Colombia period (1819-1830): Colombia + Venezuela + Ecuador + Panama. ~4.3M km2 at peak. Dissolved 1830: Venezuela and Ecuador seceded. -34% loss.
+COL-1830-1903,Colombia (to 1903),1830,1903,74,historical,South America,COL,NA,Cliopatria (Gran Colombia 1830-1833),COL-1800-1830,NA,CShapes; Cliopatria; research,VERIFIED,Republic of New Granada / Colombia after Gran Colombia. ~2.8M km2. Lost Panama 1903.
