@@ -31,8 +31,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 #panel.minimized { width: auto; min-width: 200px; }
 #panel.minimized .subtitle { display: none; }
 @media (max-width: 600px) {
-  #panel { width: calc(100% - 20px); max-height: 45vh; }
-  #panel.minimized { max-height: none; }
+  #panel { width: calc(100% - 20px); }
 }
 
 #search {
@@ -372,13 +371,17 @@ document.getElementById('search').addEventListener('input', (e) => {
 });
 
 // Panel minimize toggle
-document.getElementById('panel-minimize').addEventListener('click', () => {
+function togglePanel(forceMinimize) {
   const panel = document.getElementById('panel');
   const btn = document.getElementById('panel-minimize');
-  panel.classList.toggle('minimized');
-  btn.innerHTML = panel.classList.contains('minimized') ? '&#x002B;' : '&#x2212;';
-  btn.title = panel.classList.contains('minimized') ? 'Expand panel' : 'Minimize panel';
-});
+  if (forceMinimize === true) panel.classList.add('minimized');
+  else if (forceMinimize === false) panel.classList.remove('minimized');
+  else panel.classList.toggle('minimized');
+  const min = panel.classList.contains('minimized');
+  btn.innerHTML = min ? '&#x002B;' : '&#x2212;';
+  btn.title = min ? 'Expand panel' : 'Minimize panel';
+}
+document.getElementById('panel-minimize').addEventListener('click', () => togglePanel());
 
 // Year slider + text input
 const slider = document.getElementById('year-range');
@@ -489,7 +492,11 @@ async function init() {
     });
     map.on('click', (e) => {
       const features = map.queryRenderedFeatures(e.point, { layers: ['polities-fill'] });
-      if (!features.length) { selectedCode = null; updateHighlight(); }
+      if (!features.length) {
+        selectedCode = null;
+        updateHighlight();
+        togglePanel(true);
+      }
     });
     map.on('mouseenter', 'polities-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'polities-fill', () => { map.getCanvas().style.cursor = ''; });
