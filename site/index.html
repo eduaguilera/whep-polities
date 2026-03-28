@@ -377,6 +377,10 @@ function togglePanel(forceMinimize) {
   if (forceMinimize === true) panel.classList.add('minimized');
   else if (forceMinimize === false) panel.classList.remove('minimized');
   else panel.classList.toggle('minimized');
+  if (panel.classList.contains('minimized')) {
+    document.getElementById('search').value = '';
+    document.getElementById('results').innerHTML = '';
+  }
   const min = panel.classList.contains('minimized');
   btn.innerHTML = min ? '&#x002B;' : '&#x2212;';
   btn.title = min ? 'Expand panel' : 'Minimize panel';
