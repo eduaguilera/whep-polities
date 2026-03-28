@@ -8,7 +8,7 @@ what external datasets are required, and where to obtain them.
 ## Quick start (using the release)
 
 The simplest way to use the database is to download the pre-built files from the
-[GitHub Release](https://github.com/catalin-2003/whep-polities/releases/tag/v1.0):
+[GitHub Release](https://github.com/lbm364dl/whep-polities/releases/tag/v1.0):
 
 - `polities_database.csv` -- the full database (1,317 entries, 15 columns)
 - `polities_database.gpkg` -- GeoPackage with polygon geometries for all entries
@@ -43,7 +43,7 @@ The Cliopatria (Seshat) dataset is included in the repository at
 
 ```bash
 # Clone the repository
-git clone https://github.com/catalin-2003/whep-polities.git
+git clone https://github.com/lbm364dl/whep-polities.git
 cd whep-polities
 
 # Install system dependencies (Ubuntu/Debian)

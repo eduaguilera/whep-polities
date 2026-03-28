@@ -9,7 +9,7 @@ Research-level database of historical polities for the [Who Has Eaten the Planet
 | Total polities | 1,317 |
 | Non-region polities | 1,240 |
 | With polygon geometry | 1,139 / 1,240 (91.9%) |
-| Subnational entries | 424 |
+| Subnational entries | 422 |
 | Verified entries | 1,317 / 1,317 (100%) |
 | Knowledge graph | 1,325 nodes, 2,696 edges (9 relation types) |
 | Temporal coverage | 1800-2025 |
