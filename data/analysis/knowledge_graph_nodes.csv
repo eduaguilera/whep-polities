@@ -277,8 +277,8 @@ CAM-1800-1904,Cambodia (to 1904),historical,Asia,1800,1904,CAM,polity,0,2,2
 CHN-1800-1895,China (to 1895),historical,Asia,1800,1895,CHN,polity,27,2,29
 DAN-1800-1845,Danish India,historical,Asia,1800,1845,DAN,polity,1,1,2
 HER-1800-1862,Herat,historical,Asia,1800,1862,HER,polity,0,1,1
-IND-1800-1893,India (to 1893),historical,Asia,1800,1893,IND,polity,1,1,2
-IND-1800-1947,India (to 1947),historical,Asia,1800,1947,IND,polity,1,1,2
+IND-1800-1893,India (to 1893),historical,Asia,1800,1893,IND,polity,1,3,4
+IND-1800-1947,India (to 1947),historical,Asia,1800,1947,IND,polity,1,3,4
 IDN-1800-1889,Indonesia (to 1889),historical,Asia,1800,1889,IDN,polity,0,4,4
 KHI-1800-1873,Khiva,historical,Asia,1800,1873,KHI,polity,0,1,1
 KHI-1800-1920,Khiva (to 1920),historical,Asia,1800,1920,KHI,polity,0,1,1
@@ -295,7 +295,7 @@ CIR-1816-1861,Circassia,historical,Asia,1816,1861,CIR,polity,0,1,1
 YUN-1856-1871,Yunnan,historical,Asia,1856,1871,YUN,polity,0,1,1
 PAH-1888-1896,Pahang (1888-1896),historical,Asia,1888,1896,PAH,polity,0,1,1
 IDN-1889-1949,Indonesia (1889-1949),historical,Asia,1889,1949,IDN,polity,3,3,6
-IND-1893-1914,India (1893-1914),historical,Asia,1893,1914,IND,polity,1,2,3
+IND-1893-1914,India (1893-1914),historical,Asia,1893,1914,IND,polity,1,4,5
 THA-1893-1904,Thailand (1893-1904),historical,Asia,1893,1904,THA,polity,1,2,3
 VIE-1893-1954,Vietnam (1893-1954),historical,Asia,1893,1954,VIE,polity,0,1,1
 CHN-1895-1912,China (1895-1912),historical,Asia,1895,1912,CHN,polity,2,2,4
@@ -306,7 +306,7 @@ THA-1907-1909,Thailand (1907-1909),historical,Asia,1907,1909,THA,polity,1,2,3
 CHN-1913-1914,China (1913-1914),historical,Asia,1913,1914,CHN,polity,2,2,4
 TIB-1913-1914,Tibet (1913-1914),historical,Asia,1913,1914,TIB,polity,1,2,3
 CHN-1914-1921,China (1914-1921),historical,Asia,1914,1921,CHN,polity,2,2,4
-IND-1914-1937,India (1914-1937),historical,Asia,1914,1937,IND,polity,2,2,4
+IND-1914-1937,India (1914-1937),historical,Asia,1914,1937,IND,polity,2,4,6
 TIB-1914-1950,Tibet (1914-1950),historical,Asia,1914,1950,TIB,polity,2,1,3
 F246-1918-1990,North Yemen,historical,Asia,1918,1990,,polity,0,1,1
 JOR-1920-1923,Jordan (1920-1923),historical,Asia,1920,1923,JOR,polity,0,1,1
@@ -314,13 +314,13 @@ SYR-1920-1967,Syrian Arab Republic (1920-1967),historical,Asia,1920,1967,SYR,pol
 CHN-1921-1945,China (1921-1945),historical,Asia,1921,1945,CHN,polity,2,2,4
 SAU-1924-1932,Saudi Arabia (1924-1932),historical,Asia,1924,1932,SAU,polity,0,2,2
 SAU-1932-2000,Saudi Arabia (1932-2000),historical,Asia,1932,2000,SAU,polity,1,2,3
-IND-1937-1947,India (1937-1947),historical,Asia,1937,1947,IND,polity,2,2,4
+IND-1937-1947,India (1937-1947),historical,Asia,1937,1947,IND,polity,2,4,6
 CHN-1945-1947,China (1945-1947),historical,Asia,1945,1947,CHN,polity,2,2,4
 IDN-1945-1949,Indonesia (1945-1949),historical,Asia,1945,1949,IDN,polity,2,2,4
 MAL-1946-1963,Malaysia (1946-1963),historical,Asia,1946,1963,MAL,polity,1,1,2
 SYR-1946-1967,Syrian Arab Republic (1946-1967),historical,Asia,1946,1967,SYR,polity,1,2,3
 CHN-1947-1949,China (1947-1949),historical,Asia,1947,1949,CHN,polity,2,2,4
-IND-1947-1949,India (1947-1949),historical,Asia,1947,1949,IND,polity,2,2,4
+IND-1947-1949,India (1947-1949),historical,Asia,1947,1949,IND,polity,4,4,8
 JAM-1947-1949,Jammu and Kashmir (1947-1949),historical,Asia,1947,1949,JAM,polity,0,1,1
 KAS-1947-1949,Kashmir (North Azad) (1947-1949),historical,Asia,1947,1949,KAS,polity,0,1,1
 PAK-1947-1949,Pakistan (1947-1949),historical,Asia,1947,1949,PAK,polity,0,2,2
@@ -457,7 +457,7 @@ TUS-1800-1860,Tuscany,historical,Europe,1800,1860,TUS,polity,0,3,3
 TWO-1800-1860,Two Sicilies,historical,Europe,1800,1860,TWO,polity,0,3,3
 TUR-1800-1912,Türkiye (to 1912),historical,Europe,1800,1912,TUR,polity,0,2,2
 F228-1800-1905,USSR (to 1905),aggregate,Europe,1800,1905,,polity,0,3,3
-GBR-1800-1921,United Kingdom (to 1921),historical,Europe,1800,1921,GBR,polity,1,11,12
+GBR-1800-1921,United Kingdom (to 1921),historical,Europe,1800,1921,GBR,polity,1,13,14
 WUR-1800-1871,Württemberg,historical,Europe,1800,1871,WUR,polity,0,1,1
 ION-1815-1864,Ionian islands,historical,Europe,1815,1864,ION,polity,0,1,1
 ANB-1816-1864,Anhalt-Bernburg,historical,Europe,1816,1864,ANB,polity,0,1,1
@@ -1290,7 +1290,7 @@ SAA-1920-1935,Saar Territory (League of Nations),mandate,Europe,1920,1935,,polit
 MEM-1920-1923,Memel Territory,mandate,Europe,1920,1923,,polity,0,1,1
 FIU-1920-1924,Free City of Fiume,historical,Europe,1920,1924,,polity,0,1,1
 MNG-1911-1921,Bogd Khanate of Mongolia,historical,Asia,1911,1921,MNG,polity,0,1,1
-IND-1800-2025,India (old),aggregate,Asia,1800,2025,IND,polity,0,8,8
+IND-1800-2025,India (old),aggregate,Asia,1800,2025,IND,polity,0,10,10
 JPN-1800-1895,Japan (to 1895),historical,Asia,1800,1895,JPN,polity,1,4,5
 JPN-1895-1945,Japanese Empire,historical,Asia,1895,1945,JPN,polity,4,4,8
 JPN-1945-1952,Japan (occupied),historical,Asia,1945,1952,JPN,polity,4,4,8
@@ -1314,9 +1314,11 @@ USA-1848-1867,United States (1848-1867),historical,North America,1848,1867,USA,p
 USA-1867-1959,United States (1867-1959),historical,North America,1867,1959,USA,polity,5,5,10
 F228-1800-1856,Russian Empire (to 1856),historical,Europe,1800,1856,RUS,polity,1,4,5
 F228-1856-1905,Russian Empire (1856-1905),historical,Europe,1856,1905,RUS,polity,4,2,6
+ICP-1858-1947,British India: Crown Provinces,colonial,Asia,1858,1947,IND,polity,8,2,10
+IPS-1858-1947,British India: Princely States,dependency,Asia,1858,1947,IND,polity,8,2,10
 Africa,Africa,continent,Africa,1800,2025,,continent,264,0,264
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
-Asia,Asia,continent,Asia,1800,2025,,continent,278,0,278
+Asia,Asia,continent,Asia,1800,2025,,continent,280,0,280
 Europe,Europe,continent,Europe,1800,2025,,continent,334,0,334
 Global,Global,continent,Global,1800,2025,,continent,0,0,0
 North America,North America,continent,North America,1800,2025,,continent,187,0,187

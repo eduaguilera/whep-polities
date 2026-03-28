@@ -364,6 +364,8 @@ USA-1867-1959,USA-1959-2025,successor_of,successor column,1867,1959
 F228-1800-1856,F228-1856-1905,successor_of,successor column,1800,1856
 F228-1800-1856,F228-1856-1905,predecessor_of,predecessor column,1856,1905
 F228-1856-1905,F228-1905-1914,successor_of,successor column,1856,1905
+ICP-1858-1947,IND-1947-1949,successor_of,successor column,1858,1947
+IPS-1858-1947,IND-1947-1949,successor_of,successor column,1858,1947
 USAL-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
 USAK-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
 USAZ-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
@@ -853,6 +855,8 @@ IND-1800-2025,IND-1893-1914,aggregate_covers,"same ISO3 (IND), date range contai
 IND-1800-2025,IND-1914-1937,aggregate_covers,"same ISO3 (IND), date range contained",1914,1937
 IND-1800-2025,IND-1937-1947,aggregate_covers,"same ISO3 (IND), date range contained",1937,1947
 IND-1800-2025,IND-1947-1949,aggregate_covers,"same ISO3 (IND), date range contained",1947,1949
+IND-1800-2025,ICP-1858-1947,aggregate_covers,"same ISO3 (IND), date range contained",1858,1947
+IND-1800-2025,IPS-1858-1947,aggregate_covers,"same ISO3 (IND), date range contained",1858,1947
 NGA-1800-1899,NDD-1800-1884,aggregate_covers,"same ISO3 (NGA), date range contained",1800,1884
 NGA-1800-1899,NUP-1800-1897,aggregate_covers,"same ISO3 (NGA), date range contained",1800,1897
 TUN-1800-1881,TUN-1881-2025,temporal_next,"same ISO3 (TUN), gap=0y",1881,1881
@@ -1077,6 +1081,8 @@ USA-1867-1959,ASM-1900-2025,colonial_ruler_of,name contains 'American',1900,1959
 FRA-1800-1919,GUF-1800-2025,colonial_ruler_of,name contains 'French',1800,1919
 FRA-1800-1919,FRE-1800-1930,colonial_ruler_of,name contains 'French',1800,1919
 FRA-1919-2025,FRE-1930-1946,colonial_ruler_of,name contains 'French',1930,1946
+GBR-1800-1921,ICP-1858-1947,colonial_ruler_of,name contains 'British',1858,1921
+GBR-1800-1921,IPS-1858-1947,colonial_ruler_of,name contains 'British',1858,1921
 F5103-1800-2025,DZA-1831-2025,region_contains,M49 code 015,1831,2025
 F5103-1800-2025,EGY-1979-2025,region_contains,M49 code 015,1979,2025
 F5103-1800-2025,LBY-1951-2025,region_contains,M49 code 015,1951,2025
@@ -2656,6 +2662,8 @@ USA-1848-1867,North America,located_in_continent,continent column,1848,1867
 USA-1867-1959,North America,located_in_continent,continent column,1867,1959
 F228-1800-1856,Europe,located_in_continent,continent column,1800,1856
 F228-1856-1905,Europe,located_in_continent,continent column,1856,1905
+ICP-1858-1947,Asia,located_in_continent,continent column,1858,1947
+IPS-1858-1947,Asia,located_in_continent,continent column,1858,1947
 RWA-1962-2025,RWA-1920-1962,same_territory,"same ISO3 (RWA), temporal overlap",1962,1962
 TZA-1964-2025,TZA-1961-1964,same_territory,"same ISO3 (TZA), temporal overlap",1964,1964
 CHA-1900-1912,CHA-1800-2023,same_territory,"same ISO3 (CHA), temporal overlap",1900,1912
@@ -2671,6 +2679,18 @@ CAN-1938-1982,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1
 CAN-1866-1948,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1866,1948
 CAN-1800-1866,CAN-1800-2025,same_territory,"same ISO3 (CAN), temporal overlap",1800,1866
 REU-1816-1870,REU-1816-2025,same_territory,"same ISO3 (REU), temporal overlap",1816,1870
+IND-1800-1893,ICP-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1858,1893
+IND-1800-1893,IPS-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1858,1893
+IND-1800-1947,ICP-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1858,1947
+IND-1800-1947,IPS-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1858,1947
+IND-1893-1914,ICP-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1893,1914
+IND-1893-1914,IPS-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1893,1914
+IND-1914-1937,ICP-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1914,1937
+IND-1914-1937,IPS-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1914,1937
+IND-1937-1947,ICP-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1937,1947
+IND-1937-1947,IPS-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1937,1947
+IND-1947-1949,ICP-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1947,1947
+IND-1947-1949,IPS-1858-1947,same_territory,"same ISO3 (IND), temporal overlap",1947,1947
 BAD-1800-1873,BAD-1800-1871,same_territory,"same ISO3 (BAD), temporal overlap",1800,1871
 NEW-1800-1948,NEW-1920-1949,same_territory,"same ISO3 (NEW), temporal overlap",1920,1948
 NEW-1884-1920,NEW-1920-1949,same_territory,"same ISO3 (NEW), temporal overlap",1920,1920

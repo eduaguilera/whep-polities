@@ -435,26 +435,26 @@ BOS-1878-1908,Bosnia (1878-1908),1878,1908,31,historical,Europe,BOS,NA,CShapes 2
 BRE-1800-1871,Bremen (city-state),1800,1871,72,historical,Europe,BRE,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
 DNK-1800-1864,Denmark (with Schleswig-Holstein),1800,1864,65,historical,Europe,DNK,390,CShapes-Europe,NA,DNK-1864-1920,FT; CShapes,FIXED,Split from DNK-1800-1920. Pre-1864 Denmark including Schleswig-Holstein (~57086 km2). CShapes-Europe has pre-1864 polygon. Resolves documented known limitation.
 DNK-1864-1920,Denmark (to 1920),1864,1920,57,historical,Europe,DNK,390,CShapes 2.0 + CShapes-Europe,DNK-1800-1864,DNK-1920-2025,FT; CShapes,FIXED,Split from DNK-1800-1920. Post-Second Schleswig War Denmark without Schleswig-Holstein (-33% territory ~38496 km2).
-DMO-1800-1860,Duchy Modena,1800,1860,61,historical,Europe,DMO,332,CShapes-Europe,NA,ITA-1861-1919,FT,VERIFIED,NA
-DPA-1800-1860,Duchy Parma,1800,1860,61,historical,Europe,DPA,335,CShapes-Europe,NA,ITA-1861-1919,FT,VERIFIED,NA
+DMO-1800-1860,Duchy Modena,1800,1860,61,historical,Europe,DMO,332,Cliopatria (Duchy of Modena and Reggio 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
+DPA-1800-1860,Duchy Parma,1800,1860,61,historical,Europe,DPA,335,Cliopatria (Duchy of Parma and Piacenza 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
 FRA-1800-1919,France (to 1919),1800,1919,120,historical,Europe,FRA,220,CShapes 2.0 + CShapes-Europe,NA,FRA-1919-2025,FT; CShapes,REGION,NA
 DEU-1800-1919,Germany (to 1919),1800,1919,120,historical,Europe,DEU,260,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 GRC-1830-1913,Greece (to 1913),1830,1913,84,historical,Europe,GRC,350,CShapes 2.0 + CShapes-Europe,NA,GRC-1913-1919,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).
-HAN-1800-1866,Hanover,1800,1866,67,historical,Europe,HAN,240,CShapes-Europe,NA,NA,FT; WHEP-fix,VERIFIED,NA
+HAN-1800-1866,Hanover,1800,1866,67,historical,Europe,HAN,240,Cliopatria (Electorate of Hanover 1800-1802),NA,NA,FT; WHEP-fix,VERIFIED,NA
 HER-1878-1908,Herzegovina (1878-1908),1878,1908,31,historical,Europe,HER,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman territory before 1878.
 HES-1800-1871,Hesse,1800,1871,72,historical,Europe,HES,275,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
 MEK-1800-1871,Mecklenburg,1800,1871,72,historical,Europe,MEK,280,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
 OLD-1800-1871,Oldenburg,1800,1871,72,historical,Europe,OLD,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
-PAP-1800-1870,Papal States,1800,1870,71,historical,Europe,PAP,327,CShapes-Europe,NA,ITA-1861-1919,FT,VERIFIED,NA
-SAR-1800-1860,Sardinia,1800,1860,61,historical,Europe,SAR,338,CShapes-Europe,NA,ITA-1861-1919,FT,VERIFIED,NA
-SAX-1800-1871,Saxony,1800,1871,72,historical,Europe,SAX,269,CShapes-Europe,NA,NA,FT; WHEP-fix,VERIFIED,NA
+PAP-1800-1870,Papal States,1800,1870,71,historical,Europe,PAP,327,Cliopatria (Papal States 1800-1802),NA,ITA-1861-1919,FT,VERIFIED,NA
+SAR-1800-1860,Sardinia,1800,1860,61,historical,Europe,SAR,338,Cliopatria (Kingdom of Sardinia 1800-1813),NA,ITA-1861-1919,FT,VERIFIED,NA
+SAX-1800-1871,Saxony,1800,1871,72,historical,Europe,SAX,269,Cliopatria (Electorate of Saxony 1800-1802),NA,NA,FT; WHEP-fix,VERIFIED,NA
 SHL-1800-1866,Schleswig-Holstein,1800,1866,67,historical,Europe,SHL,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
 SWE-1800-1809,Sweden (with Finland to 1809),1800,1809,10,historical,Europe,SWE,380,Cliopatria (Seshat),NA,SWE-1809-1814,FT; CShapes,FIXED,"Split from SWE-1800-1905. Sweden including Finland (~800000 km2). Lost Finland to Russia in Treaty of Fredrikshamn 1809 (-42% territory). Cliopatria and histmaps R package have boundaries. Cliopatria polygon: Swedish Empire 1763-1808. Swedish Empire including Finland, pre-Treaty of Fredrikshamn."
 SWE-1809-1814,Sweden (1809-1814),1809,1814,6,historical,Europe,SWE,380,Cliopatria (Seshat),SWE-1800-1809,SWE-1814-1905,FT; CShapes,FIXED,"Split from SWE-1800-1905. Sweden without Finland before gaining Norway. ~443000 km2. Cliopatria polygon: Swedish Empire 1809-1811. Sweden without Finland, before union with Norway."
 SWE-1814-1905,Sweden-Norway (1814-1905),1814,1905,92,historical,Europe,SWE,380,CShapes 2.0 + CShapes-Europe,SWE-1809-1814,NA,FT; CShapes,FIXED,Split from SWE-1800-1905. Personal union with Norway (Treaty of Kiel 1814). CShapes 2.0 polygon (761932 km2) valid for 1886-1905 portion.
 THU-1800-1871,Thuringia,1800,1871,72,historical,Europe,THU,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
-TUS-1800-1860,Tuscany,1800,1860,61,historical,Europe,TUS,337,CShapes-Europe,NA,ITA-1861-1919,FT,VERIFIED,NA
-TWO-1800-1860,Two Sicilies,1800,1860,61,historical,Europe,TWO,329,CShapes-Europe,NA,ITA-1861-1919,FT; WHEP-fix,"FIXED: merged duplicate ""Kingdom Two sicilies""",NA
+TUS-1800-1860,Tuscany,1800,1860,61,historical,Europe,TUS,337,Cliopatria (Grand Duchy of Tuscany 1800-1802),NA,ITA-1861-1919,FT,VERIFIED,NA
+TWO-1800-1860,Two Sicilies,1800,1860,61,historical,Europe,TWO,329,Cliopatria (Kingdom of the Two Sicilies 1815-1819),NA,ITA-1861-1919,FT; WHEP-fix,"FIXED: merged duplicate ""Kingdom Two sicilies""",NA
 TUR-1800-1912,Türkiye (to 1912),1800,1912,113,historical,Europe,TUR,640,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 F228-1800-1905,USSR (to 1905),1800,1905,106,aggregate,Europe,NA,365,CShapes 2.0 + CShapes-Europe,NA,F228-1905-1914,FT; CShapes,REGION,Aggregate for continuous trade data linkage. Split into 2 territorial periods at Crimean War.
 GBR-1800-1921,United Kingdom (to 1921),1800,1921,122,historical,Europe,GBR,200,CShapes 2.0 + CShapes-Europe,NA,GBR-1921-2025,FT; CShapes,VERIFIED,NA
@@ -472,9 +472,9 @@ NAP-1816-1861,Kingdom of Naples,1816,1861,46,historical,Europe,NAP,329,CShapes-E
 LIP-1816-1870,Lippe-Detmold,1816,1870,55,historical,Europe,LIP,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 LUC-1816-1847,Lucca,1816,1847,32,historical,Europe,LUC,NA,CShapes-Europe,NA,NA,FT,VERIFIED,NA
 MAS-1816-1829,Massa,1816,1829,14,historical,Europe,MAS,NA,CShapes-Europe,NA,NA,FT,VERIFIED,NA
-NAS-1816-1866,Nassau,1816,1866,51,historical,Europe,NAS,NA,CShapes-Europe,NA,NA,FT,VERIFIED,NA
+NAS-1816-1866,Nassau,1816,1866,51,historical,Europe,NAS,NA,Cliopatria (Duchy of Nassau 1815-1819),NA,NA,FT,VERIFIED,NA
 PIE-1816-1861,Piedmont,1816,1861,46,historical,Europe,PIE,338,CShapes-Europe,NA,NA,FT,VERIFIED,NA
-REU-1816-1870,Reuss,1816,1870,55,historical,Europe,REU,NA,CShapes-Europe,NA,NA,FT,VERIFIED,NA
+REU-1816-1870,Reuss,1816,1870,55,historical,Europe,REU,NA,Cliopatria (Principality of Reuss-Gera 1815-1819),NA,NA,FT,VERIFIED,NA
 SCS-1816-1826,Saxe-Coburg-Saalfeld,1816,1826,11,historical,Europe,SCS,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SGA-1816-1826,Saxe-Gotha-Altenberg,1816,1826,11,historical,Europe,SGA,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SHI-1816-1826,Saxe-Hildburgchausen,1816,1826,11,historical,Europe,SHI,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
@@ -482,13 +482,13 @@ SME-1816-1870,Saxe-Meiningen,1816,1870,55,historical,Europe,SME,NA,GADM 4.1 or N
 SWE-1816-1870,Saxe-Weimar,1816,1870,55,historical,Europe,SWE,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SCL-1816-1870,Schaumburg-Lippe,1816,1870,55,historical,Europe,SCL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SER-1816-1913,Serbia (1816-1913),1816,1913,98,historical,Europe,SER,NA,CShapes 2.0 + CShapes-Europe,NA,SER-1913-1918,FT; CShapes; WHEP-fix,VERIFIED,NA
-WAL-1816-1870,Waldeck,1816,1870,55,historical,Europe,WAL,NA,CShapes-Europe,NA,NA,FT,VERIFIED,NA
+WAL-1816-1870,Waldeck,1816,1870,55,historical,Europe,WAL,NA,Cliopatria (Principality of Waldeck and Pyrmont 1814-1819),NA,NA,FT,VERIFIED,NA
 WOL-1816-1870,Wolfenbüttel,1816,1870,55,historical,Europe,WOL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SAL-1827-1870,Saxe-Altenburg,1827,1870,44,historical,Europe,SAL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SCG-1827-1870,Saxe-Coburg-Gotha,1827,1870,44,historical,Europe,SCG,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 ROU-1859-1913,Romania (to 1913),1859,1913,55,historical,Europe,ROU,360,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 ITA-1861-1919,Italy (to 1919),1861,1919,59,historical,Europe,ITA,325,CShapes 2.0 + CShapes-Europe,SAR-1800-1860; TWO-1800-1860; PAP-1800-1870; TUS-1800-1860; DMO-1800-1860; DPA-1800-1860,ITA-1919-2025,FT; CShapes,VERIFIED,NA
-ANH-1864-1870,Anhalt,1864,1870,7,historical,Europe,ANH,NA,CShapes-Europe,NA,NA,FT,VERIFIED,NA
+ANH-1864-1870,Anhalt,1864,1870,7,historical,Europe,ANH,NA,Cliopatria (Duchy of Anhalt 1864-1865),NA,NA,FT,VERIFIED,NA
 BGR-1878-1913,Bulgaria (to 1913),1878,1913,36,historical,Europe,BGR,355,CShapes 2.0 + CShapes-Europe,NA,BGR-1913-1918,FT; CShapes,VERIFIED,NA
 MNE-1878-1913,Montenegro (to 1913),1878,1913,36,historical,Europe,MNE,341,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 CRE-1898-1913,Crete,1898,1913,16,historical,Europe,CRE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
@@ -1314,3 +1314,5 @@ USA-1848-1867,United States (1848-1867),1848,1867,20,historical,North America,US
 USA-1867-1959,United States (1867-1959),1867,1959,93,historical,North America,USA,NA,Cliopatria (United States of America 1877-1879),USA-1848-1867,USA-1959-2025,CShapes; Cliopatria; research,VERIFIED,"Alaska Purchase (1867, +1.7M km2). Territory stable at ~9.4M km2. Hawaii Territory (1898). Admitted as 49th and 50th states 1959."
 F228-1800-1856,Russian Empire (to 1856),1800,1856,57,historical,Europe,RUS,NA,Cliopatria (Russian Empire 1815-1823),NA,F228-1856-1905,CShapes; Cliopatria; research,VERIFIED,"Russian Empire pre-Crimean War. ~17.4M km2. Acquisitions: Georgia (1801), Finland (1809), Bessarabia (1812), Congress Poland (1815). Caucasus conquest ongoing. Crimean War (1853-56) ends this period."
 F228-1856-1905,Russian Empire (1856-1905),1856,1905,50,historical,Europe,RUS,NA,Cliopatria (Russian Empire 1885-1894),F228-1800-1856,F228-1905-1914,CShapes; Cliopatria; research,VERIFIED,"Russian Empire post-Crimean War. Massive Central Asian expansion: Tashkent (1865), Bukhara protectorate (1868), Khiva (1873), Kokand (1876), Merv (1884). Far East: Amur/Ussuri (1858-60), Sakhalin (1875). ~22M km2 by 1900. Russo-Japanese War (1904-05) triggers next period."
+ICP-1858-1947,British India: Crown Provinces,1858,1947,90,colonial,Asia,IND,,CShapes 2.0 (British India proxy),,IND-1947-1949,research,VERIFIED,"Directly administered British Crown provinces of India (Bengal, Madras, Bombay, Punjab, United Provinces, Central Provinces, Bihar, Orissa, Assam, NWFP, Sind, Burma until 1937). ~60% of British India territory. Government of India Act 1858 established Crown rule. No separate polygon available; uses full British India extent as proxy. Parent: IND-1800-1947."
+IPS-1858-1947,British India: Princely States,1858,1947,90,dependency,Asia,IND,,CShapes 2.0 (British India proxy),,IND-1947-1949,research,VERIFIED,"Semi-autonomous princely states under British paramountcy (Hyderabad, Mysore, Baroda, Kashmir, Travancore, Gwalior, Rajputana states, etc.). ~565 states covering ~40% of British India territory. Internal sovereignty retained; British controlled defense and foreign affairs. No separate polygon; uses full British India extent as proxy. Parent: IND-1800-1947."
