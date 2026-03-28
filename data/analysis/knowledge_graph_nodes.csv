@@ -34,7 +34,7 @@ SEN-1960-2025,Senegal,sovereign,Africa,1960,2025,SEN,polity,9,1,10
 SOM-1960-2025,Somalia,sovereign,Africa,1960,2025,SOM,polity,1,1,2
 TGO-1960-2025,Togo,sovereign,Africa,1960,2025,TGO,polity,1,1,2
 CMR-1961-2025,Cameroon,sovereign,Africa,1961,2025,CMR,polity,3,1,4
-NGA-1961-2025,Nigeria,sovereign,Africa,1961,2025,NGA,polity,6,1,7
+NGA-1961-2025,Nigeria,sovereign,Africa,1961,2025,NGA,polity,7,1,8
 BDI-1962-2025,Burundi,sovereign,Africa,1962,2025,BDI,polity,3,1,4
 RWA-1962-2025,Rwanda,sovereign,Africa,1962,2025,RWA,polity,4,2,6
 UGA-1962-2025,Uganda,sovereign,Africa,1962,2025,UGA,polity,5,1,6
@@ -91,8 +91,8 @@ ETH-1897-1902,Ethiopia (1897-1902),historical,Africa,1897,1902,ETH,polity,2,2,4
 CON-1898-1900,Congo (1898-1900),historical,Africa,1898,1900,CON,polity,0,2,2
 GHA-1898-1956,Ghana (1898-1956),historical,Africa,1898,1956,GHA,polity,4,4,8
 EGY-1899-1925,Egypt (1899-1925),historical,Africa,1899,1925,EGY,polity,2,1,3
-NOR-1899-1904,Northern Nigeria (1899-1904),historical,Africa,1899,1904,NOR,polity,5,1,6
-SOU-1899-1906,Southern Nigeria (1899-1906),historical,Africa,1899,1906,SOU,polity,4,2,6
+NOR-1899-1904,Northern Nigeria (1899-1904),historical,Africa,1899,1904,NOR,polity,5,3,8
+SOU-1899-1906,Southern Nigeria (1899-1906),historical,Africa,1899,1906,SOU,polity,5,4,9
 SUD-1899-1902,Sudan (1899-1902),historical,Africa,1899,1902,SUD,polity,2,2,4
 CHA-1900-1912,Chad (1900-1912),historical,Africa,1900,1912,CHA,polity,1,3,4
 CON-1900-1906,Congo (1900-1906),historical,Africa,1900,1906,CON,polity,1,2,3
@@ -105,13 +105,13 @@ SUD-1902-1910,Sudan (1902-1910),historical,Africa,1902,1910,SUD,polity,2,2,4
 UGA-1902-1910,Uganda (1902-1910),historical,Africa,1902,1910,UGA,polity,1,2,3
 MAU-1904-1912,Mauritania (1904-1912),historical,Africa,1904,1912,MAU,polity,0,2,2
 MOR-1904-1956,Morocco (1904-1956),historical,Africa,1904,1956,MOR,polity,3,2,5
-NOR-1904-1913,Northern Nigeria (1904-1913),historical,Africa,1904,1913,NOR,polity,1,3,4
+NOR-1904-1913,Northern Nigeria (1904-1913),historical,Africa,1904,1913,NOR,polity,3,3,6
 MAL-1905-1919,Mali (1905-1919),historical,Africa,1905,1919,MAL,polity,0,2,2
 NIG-1905-1932,Niger (1905-1932),historical,Africa,1905,1932,NIG,polity,0,1,1
 NOR-1905-1911,Northwestern Rhodesia (1905-1911),historical,Africa,1905,1911,NOR,polity,0,1,1
 CEN-1906-1912,Central African Republic (1906-1912),historical,Africa,1906,1912,CEN,polity,0,2,2
 CON-1906-1912,Congo (1906-1912),historical,Africa,1906,1912,CON,polity,1,2,3
-SOU-1906-1913,Southern Nigeria (1906-1913),historical,Africa,1906,1913,SOU,polity,0,3,3
+SOU-1906-1913,Southern Nigeria (1906-1913),historical,Africa,1906,1913,SOU,polity,2,3,5
 ETH-1907-1952,Ethiopia (1907-1952),historical,Africa,1907,1952,ETH,polity,2,2,4
 KEN-1907-1924,Kenya (1907-1924),historical,Africa,1907,1924,KEN,polity,1,2,3
 SUD-1910-1934,Sudan (1910-1934),historical,Africa,1910,1934,SUD,polity,2,2,4
@@ -124,7 +124,7 @@ GAB-1912-1919,Gabon (1912-1919),historical,Africa,1912,1919,GAB,polity,1,1,2
 LIB-1912-1919,Libya (1912-1919),historical,Africa,1912,1919,LIB,polity,0,2,2
 MAD-1912-1946,Madagascar (1912-1946),historical,Africa,1912,1946,MAD,polity,3,1,4
 MAU-1912-1944,Mauritania (1912-1944),historical,Africa,1912,1944,MAU,polity,1,2,3
-NIG-1914-1961,Nigeria (1914-1961),historical,Africa,1914,1961,NIG,polity,5,3,8
+NIG-1914-1961,Nigeria (1914-1961),historical,Africa,1914,1961,NIG,polity,5,5,10
 LIB-1919-1925,Libya (1919-1925),historical,Africa,1919,1925,LIB,polity,1,2,3
 MAL-1919-1932,Mali (1919-1932),historical,Africa,1919,1932,MAL,polity,1,2,3
 EGY-1922-1925,Egypt (1922-1925),historical,Africa,1922,1925,EGY,polity,0,2,2
@@ -146,7 +146,7 @@ SPA-1958-1975,Western Sahara (1958-1975),historical,Africa,1958,1975,SPA,polity,
 MAL-1959-1960,Mali (1959-1960),historical,Africa,1959,1960,MAL,polity,1,1,2
 CMR-1960-1961,Cameroon (1960-1961),historical,Africa,1960,1961,CMR,polity,1,2,3
 MRT-1960-1975,Mauritania (1960-1975),historical,Africa,1960,1975,MRT,polity,0,2,2
-NGA-1960-1961,Nigeria (1960-1961),historical,Africa,1960,1961,NGA,polity,1,2,3
+NGA-1960-1961,Nigeria (1960-1961),historical,Africa,1960,1961,NGA,polity,3,3,6
 EGY-1967-1979,Egypt (1967-1979),historical,Africa,1967,1979,EGY,polity,1,2,3
 MRT-1975-1979,Mauritania (1975-1979),historical,Africa,1975,1979,MRT,polity,1,2,3
 MAR-1975-1979,Morocco (1975-1979),historical,Africa,1975,1979,MAR,polity,1,2,3
@@ -401,7 +401,7 @@ ALB-1913-2025,Albania,sovereign,Europe,1913,2025,ALB,polity,2,1,3
 AUT-1918-2025,Austria,sovereign,Europe,1918,2025,AUT,polity,4,1,5
 FRA-1919-2025,France,sovereign,Europe,1919,2025,FRA,polity,4,3,7
 GRC-1919-2025,Greece,sovereign,Europe,1919,2025,GRC,polity,3,1,4
-ITA-1919-2025,Italy,sovereign,Europe,1919,2025,ITA,polity,3,5,8
+ITA-1919-2025,Italy,sovereign,Europe,1919,2025,ITA,polity,4,5,9
 DNK-1920-2025,Denmark,sovereign,Europe,1920,2025,DNK,polity,4,1,5
 TUR-1920-2025,Türkiye,sovereign,Europe,1920,2025,TUR,polity,3,1,4
 IRL-1921-2025,Ireland,sovereign,Europe,1921,2025,IRL,polity,2,1,3
@@ -481,26 +481,26 @@ SHI-1816-1826,Saxe-Hildburgchausen,historical,Europe,1816,1826,SHI,polity,0,1,1
 SME-1816-1870,Saxe-Meiningen,historical,Europe,1816,1870,SME,polity,0,1,1
 SWE-1816-1870,Saxe-Weimar,historical,Europe,1816,1870,SWE,polity,0,1,1
 SCL-1816-1870,Schaumburg-Lippe,historical,Europe,1816,1870,SCL,polity,0,1,1
-SER-1816-1913,Serbia (1816-1913),historical,Europe,1816,1913,SER,polity,0,2,2
+SER-1816-1913,Serbia (1816-1913),historical,Europe,1816,1913,SER,polity,0,4,4
 WAL-1816-1870,Waldeck,historical,Europe,1816,1870,WAL,polity,0,1,1
 WOL-1816-1870,Wolfenbüttel,historical,Europe,1816,1870,WOL,polity,0,1,1
 SAL-1827-1870,Saxe-Altenburg,historical,Europe,1827,1870,SAL,polity,0,1,1
 SCG-1827-1870,Saxe-Coburg-Gotha,historical,Europe,1827,1870,SCG,polity,0,1,1
 ROU-1859-1913,Romania (to 1913),historical,Europe,1859,1913,ROU,polity,0,2,2
-ITA-1861-1919,Italy (to 1919),historical,Europe,1861,1919,ITA,polity,12,3,15
+ITA-1861-1919,Italy (to 1919),historical,Europe,1861,1919,ITA,polity,12,4,16
 ANH-1864-1870,Anhalt,historical,Europe,1864,1870,ANH,polity,0,1,1
-BGR-1878-1913,Bulgaria (to 1913),historical,Europe,1878,1913,BGR,polity,0,2,2
+BGR-1878-1913,Bulgaria (to 1913),historical,Europe,1878,1913,BGR,polity,0,4,4
 MNE-1878-1913,Montenegro (to 1913),historical,Europe,1878,1913,MNE,polity,0,2,2
 CRE-1898-1913,Crete,historical,Europe,1898,1913,CRE,polity,0,1,1
 F228-1905-1914,USSR (1905-1914),historical,Europe,1905,1914,,polity,2,3,5
 AUH-1908-1918,Austria-Hungary (1908-1918),historical,Europe,1908,1918,AUH,polity,3,6,9
-BGR-1913-1918,Bulgaria (1913-1918),historical,Europe,1913,1918,BGR,polity,1,2,3
+BGR-1913-1918,Bulgaria (1913-1918),historical,Europe,1913,1918,BGR,polity,3,2,5
 GRC-1913-1919,Greece (1913-1919),historical,Europe,1913,1919,GRC,polity,1,2,3
 MNE-1913-1915,Montenegro (1913-1915),historical,Europe,1913,1915,MNE,polity,1,1,2
 MON-1913-1918,Montenegro (1913-1918),historical,Europe,1913,1918,MON,polity,0,1,1
 ROU-1913-1918,Romania (1913-1918),historical,Europe,1913,1918,ROU,polity,1,2,3
 SER-1913-1915,Serbia (1913-1915),historical,Europe,1913,1915,SER,polity,1,2,3
-SER-1913-1918,Serbia (1913-1918),historical,Europe,1913,1918,SER,polity,1,1,2
+SER-1913-1918,Serbia (1913-1918),historical,Europe,1913,1918,SER,polity,3,1,4
 TUR-1913-1914,Türkiye (1913-1914),historical,Europe,1913,1914,TUR,polity,1,2,3
 TUR-1914-1918,Türkiye (1914-1918),historical,Europe,1914,1918,TUR,polity,1,2,3
 F228-1914-1917,USSR (1914-1917),historical,Europe,1914,1917,,polity,2,3,5
@@ -1038,7 +1038,7 @@ WAD-1800-1912,Wadai Empire,historical,Africa,1800,1912,,polity,0,4,4
 DFR-1800-1874,Sultanate of Darfur,historical,Africa,1800,1874,,polity,0,2,2
 BGA-1800-1894,Kingdom of Buganda,historical,Africa,1800,1894,,polity,0,5,5
 BNY-1800-1899,Kingdom of Bunyoro,historical,Africa,1800,1899,,polity,0,4,4
-BKN-1800-1897,Kingdom of Benin,historical,Africa,1800,1897,,polity,0,2,2
+BKN-1800-1897,Kingdom of Benin,historical,Africa,1800,1897,,polity,0,3,3
 LBA-1800-1885,Luba Empire,historical,Africa,1800,1885,,polity,0,5,5
 LND-1800-1887,Lunda Empire,historical,Africa,1800,1887,,polity,0,3,3
 FTJ-1800-1896,Imamate of Futa Jallon,historical,Africa,1800,1896,,polity,0,3,3
