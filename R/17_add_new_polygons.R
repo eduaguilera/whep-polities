@@ -22,6 +22,10 @@
 
 source("R/00_setup.R")
 
+# Disable s2 spherical geometry - GADM 4.1 has complex coastlines that trigger
+# edge-crossing errors with s2. All our data is in WGS84 planar coordinates.
+sf_use_s2(FALSE)
+
 cat("=== v2.2 Polygon Additions and Fixes ===\n\n")
 
 # ==============================================================================
@@ -158,75 +162,124 @@ if (neu_code %in% existing_codes) {
 
 cat("\n--- ADD 4: Japan 47 prefectures ---\n")
 
-gadm_available <- file.exists(gadm_path)
+gadm_available <- file.exists(gadm41_path)
+if (!gadm_available) gadm_available <- file.exists(gadm_path)
+gadm_use_path <- ifelse(file.exists(gadm41_path), gadm41_path, gadm_path)
+
+# Helper: load admin-1 polygons for a country from GADM 4.1 (flat) or 3.6 (layered)
+load_gadm_admin1 <- function(iso3) {
+  if (file.exists(gadm41_path)) {
+    # GADM 4.1 flat format: get distinct admin-1 metadata first (no geometry)
+    meta <- st_read(gadm41_path,
+      query = sprintf(
+        'SELECT DISTINCT GID_1, NAME_1, ENGTYPE_1, HASC_1 FROM gadm_410 WHERE GID_0 = "%s"',
+        iso3),
+      quiet = TRUE)
+    if (nrow(meta) == 0) return(NULL)
+    # meta is a regular data.frame (no geometry from DISTINCT query)
+    if (inherits(meta, "sf")) meta <- st_drop_geometry(meta)
+
+    # Dissolve geometry one admin-1 at a time to control memory
+    # Disable s2 globally for this function - complex coastlines cause edge errors
+    old_s2 <- sf_use_s2()
+    sf_use_s2(FALSE)
+    results <- list()
+    for (k in seq_len(nrow(meta))) {
+      gid1 <- meta$GID_1[k]
+      chunk <- st_read(gadm41_path,
+        query = sprintf(
+          'SELECT geom FROM gadm_410 WHERE GID_1 = "%s"', gid1),
+        quiet = TRUE)
+      chunk <- st_set_crs(chunk, 4326)
+      dissolved <- st_union(chunk) %>% st_make_valid()
+      results[[k]] <- st_sf(
+        GID_1 = meta$GID_1[k],
+        NAME_1 = meta$NAME_1[k],
+        ENGTYPE_1 = meta$ENGTYPE_1[k],
+        HASC_1 = meta$HASC_1[k],
+        GID_0 = iso3,
+        geometry = dissolved
+      )
+      rm(chunk); gc(verbose = FALSE)
+    }
+    sf_use_s2(old_s2)
+    admin1 <- bind_rows(results) %>% st_set_crs(4326)
+    return(admin1)
+  } else if (file.exists(gadm_path)) {
+    # GADM 3.6 layered format
+    gadm <- st_read(gadm_path, layer = "level1", quiet = TRUE)
+    return(gadm %>% filter(GID_0 == iso3))
+  }
+  return(NULL)
+}
 
 if (gadm_available) {
-  gadm <- st_read(gadm_path, layer = "level1", quiet = TRUE)
+  jpn_gadm <- load_gadm_admin1("JPN")
 
-  jpn_gadm <- gadm %>%
-    filter(GID_0 == "JPN") %>%
-    arrange(NAME_1)
+  if (!is.null(jpn_gadm) && nrow(jpn_gadm) > 0) {
+    jpn_gadm <- jpn_gadm %>% arrange(NAME_1)
+    cat(sprintf("  GADM Japan admin-1: %d units\n", nrow(jpn_gadm)))
 
-  cat(sprintf("  GADM Japan admin-1: %d units\n", nrow(jpn_gadm)))
+    jpn_parent <- "JPN-1800-2025"
+    jpn_start <- 1888L
 
-  jpn_parent <- "JPN-1800-2025"
-  jpn_start <- 1888L
+    for (j in seq_len(nrow(jpn_gadm))) {
+      row <- jpn_gadm[j, ]
+      name <- row$NAME_1
+      eng_type <- row$ENGTYPE_1
+      hasc <- row$HASC_1
 
-  for (j in seq_len(nrow(jpn_gadm))) {
-    row <- jpn_gadm[j, ]
-    name <- row$NAME_1
-    eng_type <- row$ENGTYPE_1
-    hasc <- row$HASC_1
+      if (is.na(hasc) || hasc == "") {
+        gid_num <- str_extract(row$GID_1, "(?<=\\.)[0-9]+")
+        hasc <- paste0("JP.", gid_num)
+        cat(sprintf("    WARNING: No HASC for %s, using %s\n", name, hasc))
+      }
 
-    if (is.na(hasc)) {
-      gid_num <- str_extract(row$GID_1, "(?<=\\.)[0-9]+")
-      hasc <- paste0("JP.", gid_num)
-      cat(sprintf("    WARNING: No HASC for %s, using %s\n", name, hasc))
-    }
+      code_prefix <- str_replace(hasc, "\\.", "")
+      polity_code <- sprintf("%s-%d-2025", code_prefix, jpn_start)
 
-    code_prefix <- str_replace(hasc, "\\.", "")
-    polity_code <- sprintf("%s-%d-2025", code_prefix, jpn_start)
+      if (polity_code %in% existing_codes) {
+        cat(sprintf("    COLLISION: %s (%s) -- skipping\n", polity_code, name))
+        next
+      }
 
-    if (polity_code %in% existing_codes) {
-      cat(sprintf("    COLLISION: %s (%s) -- skipping\n", polity_code, name))
-      next
-    }
+      polity_name <- sprintf("%s (%s)", name, eng_type)
 
-    polity_name <- sprintf("%s (%s)", name, eng_type)
-
-    new_entries[[length(new_entries) + 1]] <- tibble(
-      polity_code = polity_code,
-      polity_name = polity_name,
-      start_year = jpn_start,
-      end_year = 2025L,
-      duration_years = 2025L - jpn_start + 1L,
-      polity_type = "subnational",
-      continent = "Asia",
-      iso3_code = "JPN",
-      cow_code = NA_character_,
-      polygon_source = "GADM 3.6 (subnational)",
-      predecessor = NA_character_,
-      successor = NA_character_,
-      data_sources = "GADM",
-      verification_status = "VERIFIED",
-      notes = sprintf("Parent: %s; GADM GID: %s; Boundaries stable since 1888 Meiji reforms",
-                       jpn_parent, row$GID_1)
-    )
-
-    existing_codes <- c(existing_codes, polity_code)
-
-    geom <- st_geometry(row)
-    if (!st_is_empty(geom)) {
-      new_polys[[length(new_polys) + 1]] <- st_sf(
-        polity_code = polity_code, geometry = geom
+      new_entries[[length(new_entries) + 1]] <- tibble(
+        polity_code = polity_code,
+        polity_name = polity_name,
+        start_year = jpn_start,
+        end_year = 2025L,
+        duration_years = 2025L - jpn_start + 1L,
+        polity_type = "subnational",
+        continent = "Asia",
+        iso3_code = "JPN",
+        cow_code = NA_character_,
+        polygon_source = "GADM 4.1 (subnational)",
+        predecessor = NA_character_,
+        successor = NA_character_,
+        data_sources = "GADM",
+        verification_status = "VERIFIED",
+        notes = sprintf("Parent: %s; GADM GID: %s; Boundaries stable since 1888 Meiji reforms",
+                         jpn_parent, row$GID_1)
       )
-    }
 
-    log_fix("ADD", polity_code, polity_name)
+      existing_codes <- c(existing_codes, polity_code)
+
+      geom <- st_geometry(row)
+      if (!st_is_empty(geom)) {
+        new_polys[[length(new_polys) + 1]] <- st_sf(
+          polity_code = polity_code, geometry = geom
+        )
+      }
+
+      log_fix("ADD", polity_code, polity_name)
+    }
+  } else {
+    cat("  SKIP: No Japan admin-1 data found in GADM\n")
   }
 } else {
-  cat("  SKIP: GADM file not found at:", gadm_path, "\n")
-  cat("  To add Japan prefectures, ensure GADM 3.6 GeoPackage is available.\n")
+  cat("  SKIP: No GADM file found\n")
 }
 
 # ==============================================================================
@@ -238,96 +291,79 @@ if (gadm_available) {
 cat("\n--- ADD 5: UK 4 nations ---\n")
 
 if (gadm_available) {
-  gbr_gadm <- gadm %>%
-    filter(GID_0 == "GBR") %>%
-    arrange(NAME_1)
+  # GADM 4.1 has UK admin-1 as Constituent Countries (England, Scotland, Wales, NI)
+  gbr_gadm <- load_gadm_admin1("GBR")
 
-  cat(sprintf("  GADM UK admin-1: %d units\n", nrow(gbr_gadm)))
-
-  # UK has many admin-1 units in GADM (counties, regions). We want the 4 nations.
-  # GADM groups these at different levels depending on version.
-  # Strategy: group GADM admin-1 units by nation using ENGTYPE_1 or NAME_1 patterns
-
-  # Define nation groupings based on GADM NAME_1 prefixes
-  # First check what we have
-  cat("  Available UK admin-1 types:\n")
-  uk_types <- gbr_gadm %>% st_drop_geometry() %>% count(ENGTYPE_1)
-  for (t in seq_len(nrow(uk_types))) {
-    cat(sprintf("    %s: %d\n", uk_types$ENGTYPE_1[t], uk_types$n[t]))
-  }
-
-  # Define the 4 nations with their GADM grouping
-  uk_nations <- tribble(
-    ~nation_name, ~polity_code, ~engtype_filter,
-    "England",          "GBENG-1800-2025",  "Metropolitan County|London Borough|Unitary Authority \\(Eng\\)|Ceremonial County|Greater London",
-    "Scotland",         "GBSCT-1800-2025",  "Council Area",
-    "Wales",            "GBWLS-1800-2025",  "Unitary Authority \\(Wal\\)",
-    "Northern Ireland", "GBNIR-1921-2025",  "District"
-  )
-
-  gbr_parent <- "GBR-1921-2025"
-
-  for (n in seq_len(nrow(uk_nations))) {
-    nation <- uk_nations[n, ]
-
-    if (nation$polity_code %in% existing_codes) {
-      cat(sprintf("  COLLISION: %s -- skipping\n", nation$polity_code))
-      next
+  if (!is.null(gbr_gadm) && nrow(gbr_gadm) > 0) {
+    cat(sprintf("  GADM UK admin-1: %d units\n", nrow(gbr_gadm)))
+    cat("  Nations found:\n")
+    uk_names <- gbr_gadm %>% st_drop_geometry() %>% count(NAME_1)
+    for (t in seq_len(nrow(uk_names))) {
+      cat(sprintf("    %s\n", uk_names$NAME_1[t]))
     }
 
-    # Try to filter by ENGTYPE_1
-    matched_units <- gbr_gadm %>%
-      filter(grepl(nation$engtype_filter, ENGTYPE_1))
-
-    if (nrow(matched_units) == 0) {
-      # Fallback: try NAME_1 matching
-      matched_units <- gbr_gadm %>%
-        filter(grepl(nation$nation_name, NAME_1, ignore.case = TRUE))
-    }
-
-    if (nrow(matched_units) == 0) {
-      cat(sprintf("  MISS: Could not identify %s units in GADM\n", nation$nation_name))
-      next
-    }
-
-    cat(sprintf("  %s: %d GADM units matched\n", nation$nation_name, nrow(matched_units)))
-
-    # Dissolve (union) all units into a single nation polygon
-    nation_geom <- st_union(matched_units) %>% st_make_valid()
-
-    start_yr <- ifelse(nation$nation_name == "Northern Ireland", 1921L, 1800L)
-
-    new_entries[[length(new_entries) + 1]] <- tibble(
-      polity_code = nation$polity_code,
-      polity_name = sprintf("%s (Country)", nation$nation_name),
-      start_year = start_yr,
-      end_year = 2025L,
-      duration_years = 2025L - start_yr + 1L,
-      polity_type = "subnational",
-      continent = "Europe",
-      iso3_code = "GBR",
-      cow_code = NA_character_,
-      polygon_source = "GADM 3.6 (dissolved subnational)",
-      predecessor = NA_character_,
-      successor = NA_character_,
-      data_sources = "GADM",
-      verification_status = "VERIFIED",
-      notes = sprintf("Parent: %s; Dissolved from %d GADM admin-1 units",
-                       gbr_parent, nrow(matched_units))
+    # Map NAME_1 to polity codes
+    uk_nations <- tribble(
+      ~nation_name, ~polity_code, ~start_yr,
+      "England",          "GBENG-1800-2025", 1800L,
+      "Scotland",         "GBSCT-1800-2025", 1800L,
+      "Wales",            "GBWLS-1800-2025", 1800L,
+      "Northern Ireland", "GBNIR-1921-2025", 1921L
     )
 
-    existing_codes <- c(existing_codes, nation$polity_code)
+    gbr_parent <- "GBR-1921-2025"
 
-    new_polys[[length(new_polys) + 1]] <- st_sf(
-      polity_code = nation$polity_code,
-      geometry = nation_geom
-    )
+    for (n in seq_len(nrow(uk_nations))) {
+      nation <- uk_nations[n, ]
 
-    log_fix("ADD", nation$polity_code, sprintf("%s (Country) - %d units dissolved",
-                                                nation$nation_name, nrow(matched_units)))
+      if (nation$polity_code %in% existing_codes) {
+        cat(sprintf("  COLLISION: %s -- skipping\n", nation$polity_code))
+        next
+      }
+
+      matched <- gbr_gadm %>% filter(NAME_1 == nation$nation_name)
+
+      if (nrow(matched) == 0) {
+        cat(sprintf("  MISS: %s not found in GADM\n", nation$nation_name))
+        next
+      }
+
+      # Union/dissolve into single polygon
+      nation_geom <- st_union(matched) %>% st_make_valid()
+
+      new_entries[[length(new_entries) + 1]] <- tibble(
+        polity_code = nation$polity_code,
+        polity_name = sprintf("%s (Country)", nation$nation_name),
+        start_year = nation$start_yr,
+        end_year = 2025L,
+        duration_years = 2025L - nation$start_yr + 1L,
+        polity_type = "subnational",
+        continent = "Europe",
+        iso3_code = "GBR",
+        cow_code = NA_character_,
+        polygon_source = "GADM 4.1 (dissolved subnational)",
+        predecessor = NA_character_,
+        successor = NA_character_,
+        data_sources = "GADM",
+        verification_status = "VERIFIED",
+        notes = sprintf("Parent: %s; Dissolved from GADM admin-1 %s",
+                         gbr_parent, nation$nation_name)
+      )
+
+      existing_codes <- c(existing_codes, nation$polity_code)
+
+      new_polys[[length(new_polys) + 1]] <- st_sf(
+        polity_code = nation$polity_code,
+        geometry = nation_geom
+      )
+
+      log_fix("ADD", nation$polity_code, sprintf("%s (Country)", nation$nation_name))
+    }
+  } else {
+    cat("  SKIP: No UK admin-1 data found in GADM\n")
   }
 } else {
-  cat("  SKIP: GADM file not found. UK nations require GADM 3.6.\n")
+  cat("  SKIP: No GADM file found. UK nations require GADM.\n")
 }
 
 # ==============================================================================
@@ -361,16 +397,17 @@ if (!saar_code %in% existing_codes) {
 
   # Try to get Saarland polygon from GADM
   if (gadm_available) {
-    deu_gadm <- gadm %>% filter(GID_0 == "DEU")
+    deu_gadm <- load_gadm_admin1("DEU")
     saarland <- deu_gadm %>% filter(grepl("Saarland", NAME_1))
     if (nrow(saarland) > 0) {
+      saar_geom <- st_union(saarland) %>% st_make_valid()
       new_polys[[length(new_polys) + 1]] <- st_sf(
         polity_code = saar_code,
-        geometry = st_geometry(saarland[1, ])
+        geometry = saar_geom
       )
       db_idx <- which(sapply(new_entries, function(x) x$polity_code[1]) == saar_code)
       if (length(db_idx) > 0) {
-        new_entries[[db_idx]]$polygon_source <- "GADM 3.6 (Saarland proxy)"
+        new_entries[[db_idx]]$polygon_source <- "GADM 4.1 (Saarland proxy)"
       }
       log_fix("ADD", saar_code, "Saar Territory with GADM Saarland polygon")
     } else {
@@ -413,16 +450,17 @@ if (!mem_code %in% existing_codes) {
   existing_codes <- c(existing_codes, mem_code)
 
   if (gadm_available) {
-    ltu_gadm <- gadm %>% filter(GID_0 == "LTU")
+    ltu_gadm <- load_gadm_admin1("LTU")
     klaipeda <- ltu_gadm %>% filter(grepl("Klaip", NAME_1))
     if (nrow(klaipeda) > 0) {
+      klai_geom <- st_union(klaipeda) %>% st_make_valid()
       new_polys[[length(new_polys) + 1]] <- st_sf(
         polity_code = mem_code,
-        geometry = st_geometry(klaipeda[1, ])
+        geometry = klai_geom
       )
       db_idx <- which(sapply(new_entries, function(x) x$polity_code[1]) == mem_code)
       if (length(db_idx) > 0) {
-        new_entries[[db_idx]]$polygon_source <- "GADM 3.6 (Klaipeda County proxy)"
+        new_entries[[db_idx]]$polygon_source <- "GADM 4.1 (Klaipeda County proxy)"
       }
       log_fix("ADD", mem_code, "Memel Territory with GADM Klaipeda polygon")
     } else {

@@ -47,6 +47,7 @@ plot_dir <- file.path(analysis_dir, "plots")
 report_dir <- file.path(output_dir, "reports")
 
 gadm_path <- "/home/usuario/LandInG/gadm/gadm36_levels.gpkg"
+gadm41_path <- file.path(proj_root, "inputs", "gadm_410.gpkg")
 
 for (d in c(
   compiled_dir,

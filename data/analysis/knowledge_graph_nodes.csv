@@ -224,7 +224,7 @@ BHR-1800-2025,Bahrain,sovereign,Asia,1800,2025,BHR,polity,2,1,3
 BTN-1800-2025,Bhutan,sovereign,Asia,1800,2025,BTN,polity,1,1,2
 IRN-1800-1828,Persia (Qajar to 1828),historical,Asia,1800,1828,IRN,polity,0,4,4
 IRN-1828-2025,Iran,sovereign,Asia,1828,2025,IRN,polity,4,1,5
-JPN-1800-2025,Japan,sovereign,Asia,1800,2025,JPN,polity,2,1,3
+JPN-1800-2025,Japan,sovereign,Asia,1800,2025,JPN,polity,49,1,50
 KWT-1800-2025,Kuwait,sovereign,Asia,1800,2025,KWT,polity,2,1,3
 MDV-1800-2025,Maldives,sovereign,Asia,1800,2025,MDV,polity,1,1,2
 MMR-1800-2025,Myanmar,sovereign,Asia,1800,2025,MMR,polity,2,1,3
@@ -405,7 +405,7 @@ ITA-1919-2025,Italy,sovereign,Europe,1919,2025,ITA,polity,3,5,8
 DNK-1920-2025,Denmark,sovereign,Europe,1920,2025,DNK,polity,4,1,5
 TUR-1920-2025,Türkiye,sovereign,Europe,1920,2025,TUR,polity,3,1,4
 IRL-1921-2025,Ireland,sovereign,Europe,1921,2025,IRL,polity,2,1,3
-GBR-1921-2025,United Kingdom,sovereign,Europe,1921,2025,GBR,polity,6,2,8
+GBR-1921-2025,United Kingdom,sovereign,Europe,1921,2025,GBR,polity,10,2,12
 BGR-1940-2025,Bulgaria,sovereign,Europe,1940,2025,BGR,polity,3,1,4
 FIN-1940-2025,Finland,sovereign,Europe,1940,2025,FIN,polity,3,1,4
 ROU-1940-2025,Romania,sovereign,Europe,1940,2025,ROU,polity,3,1,4
@@ -1235,6 +1235,57 @@ ZAF-1800-2025,South Africa (old),aggregate,Africa,1800,2025,ZAF,polity,0,2,2
 NZL-1840-1907,New Zealand (colony),historical,Oceania,1840,1907,NZL,polity,0,4,4
 CAN-1800-1866,Canada (pre-Confederation),historical,North America,1800,1866,CAN,polity,0,5,5
 CHN-1950-2025,China (PRC),sovereign,Asia,1950,2025,CHN,polity,6,1,7
+JPAI-1888-2025,Aichi (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPAK-1888-2025,Akita (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPAO-1888-2025,Aomori (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPCH-1888-2025,Chiba (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPEH-1888-2025,Ehime (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPFI-1888-2025,Fukui (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPFO-1888-2025,Fukuoka (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPFS-1888-2025,Fukushima (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPGF-1888-2025,Gifu (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPGM-1888-2025,Gunma (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPHS-1888-2025,Hiroshima (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPHK-1888-2025,Hokkaido (Circuit),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPHG-1888-2025,Hyōgo (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPIB-1888-2025,Ibaraki (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPIS-1888-2025,Ishikawa (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPIW-1888-2025,Iwate (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPKG-1888-2025,Kagawa (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPKS-1888-2025,Kagoshima (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPKN-1888-2025,Kanagawa (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPKC-1888-2025,Kochi (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPKM-1888-2025,Kumamoto (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPKY-1888-2025,Kyoto (Urban Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPME-1888-2025,Mie (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPMG-1888-2025,Miyagi (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPMZ-1888-2025,Miyazaki (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPNN-1888-2025,Nagano (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPNS-1888-2025,Naoasaki (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPNR-1888-2025,Nara (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPNI-1888-2025,Niigata (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPOT-1888-2025,Oita (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPOY-1888-2025,Okayama (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPON-1888-2025,Okinawa (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPOS-1888-2025,Osaka (Urban Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPSG-1888-2025,Saga (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPST-1888-2025,Saitama (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPSH-1888-2025,Shiga (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPSM-1888-2025,Shimane (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPSZ-1888-2025,Shizuoka (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPTC-1888-2025,Tochigi (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPTS-1888-2025,Tokushima (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPTK-1888-2025,Tokyo (Metropolis),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPTT-1888-2025,Tottori (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPTY-1888-2025,Toyama (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPWK-1888-2025,Wakayama (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPYT-1888-2025,Yamagata (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPYC-1888-2025,Yamaguchi (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+JPYN-1888-2025,Yamanashi (Prefecture),subnational,Asia,1888,2025,JPN,polity,0,2,2
+GBENG-1800-2025,England (Country),subnational,Europe,1800,2025,GBR,polity,0,2,2
+GBSCT-1800-2025,Scotland (Country),subnational,Europe,1800,2025,GBR,polity,0,2,2
+GBWLS-1800-2025,Wales (Country),subnational,Europe,1800,2025,GBR,polity,0,2,2
+GBNIR-1921-2025,Northern Ireland (Country),subnational,Europe,1921,2025,GBR,polity,0,2,2
 SAA-1920-1935,Saar Territory (League of Nations),mandate,Europe,1920,1935,,polity,0,1,1
 MEM-1920-1923,Memel Territory,mandate,Europe,1920,1923,,polity,0,1,1
 FIU-1920-1924,Free City of Fiume,historical,Europe,1920,1924,,polity,0,1,1
@@ -1242,8 +1293,8 @@ MNG-1911-1921,Bogd Khanate of Mongolia,historical,Asia,1911,1921,MNG,polity,0,1,
 IND-1800-2025,India (old),aggregate,Asia,1800,2025,IND,polity,0,8,8
 Africa,Africa,continent,Africa,1800,2025,,continent,261,0,261
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
-Asia,Asia,continent,Asia,1800,2025,,continent,223,0,223
-Europe,Europe,continent,Europe,1800,2025,,continent,326,0,326
+Asia,Asia,continent,Asia,1800,2025,,continent,270,0,270
+Europe,Europe,continent,Europe,1800,2025,,continent,330,0,330
 Global,Global,continent,Global,1800,2025,,continent,0,0,0
 North America,North America,continent,North America,1800,2025,,continent,181,0,181
 Oceania,Oceania,continent,Oceania,1800,2025,,continent,80,0,80
