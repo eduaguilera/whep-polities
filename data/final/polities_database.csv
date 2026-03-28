@@ -439,7 +439,7 @@ DMO-1800-1860,Duchy Modena,1800,1860,61,historical,Europe,DMO,332,CShapes-Europe
 DPA-1800-1860,Duchy Parma,1800,1860,61,historical,Europe,DPA,335,CShapes-Europe,NA,ITA-1861-1919,FT,VERIFIED,NA
 FRA-1800-1919,France (to 1919),1800,1919,120,historical,Europe,FRA,220,CShapes 2.0 + CShapes-Europe,NA,FRA-1919-2025,FT; CShapes,REGION,NA
 DEU-1800-1919,Germany (to 1919),1800,1919,120,historical,Europe,DEU,260,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-GRC-1830-1913,Greece (to 1913),1830,1913,84,historical,Europe,GRC,350,CShapes 2.0 + CShapes-Europe,NA,GRC-1913-1920,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).
+GRC-1830-1913,Greece (to 1913),1830,1913,84,historical,Europe,GRC,350,CShapes 2.0 + CShapes-Europe,NA,GRC-1913-1919,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).
 HAN-1800-1866,Hanover,1800,1866,67,historical,Europe,HAN,240,CShapes-Europe,NA,NA,FT; WHEP-fix,VERIFIED,NA
 HER-1878-1908,Herzegovina (1878-1908),1878,1908,31,historical,Europe,HER,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman territory before 1878.
 HES-1800-1871,Hesse,1800,1871,72,historical,Europe,HES,275,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
@@ -495,7 +495,7 @@ CRE-1898-1913,Crete,1898,1913,16,historical,Europe,CRE,NA,CShapes 2.0,NA,NA,FT; 
 F228-1905-1914,USSR (1905-1914),1905,1914,10,historical,Europe,NA,365,CShapes 2.0,F228-1800-1905,F228-1914-1917,FT; CShapes,REGION,NA
 AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,historical,Europe,AUH,300,CShapes 2.0,AUH-1867-1908,AUT-1918-2025; HUN-1918-1919,FT; CShapes,VERIFIED,NA
 BGR-1913-1918,Bulgaria (1913-1918),1913,1918,6,historical,Europe,BGR,355,CShapes 2.0,BGR-1878-1913,NA,FT; CShapes,VERIFIED,NA
-GRC-1913-1919,Greece (1913-1919),1913,1919,7,historical,Europe,GRC,350,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+GRC-1913-1919,Greece (1913-1919),1913,1919,7,historical,Europe,GRC,350,CShapes 2.0,GRC-1830-1913,NA,FT; CShapes,VERIFIED,NA
 MNE-1913-1915,Montenegro (1913-1915),1913,1915,3,historical,Europe,MNE,341,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 MON-1913-1918,Montenegro (1913-1918),1913,1918,6,historical,Europe,MON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 ROU-1913-1918,Romania (1913-1918),1913,1918,6,historical,Europe,ROU,360,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
@@ -525,7 +525,7 @@ POL-1919-1920,Poland (1919-1920),1919,1920,2,historical,Europe,POL,290,CShapes 2
 ROU-1919-1920,Romania (1919-1920),1919,1920,2,historical,Europe,ROU,360,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 F248-1919-1920,Yugoslavia (1919-1920),1919,1920,2,historical,Europe,NA,345,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
 DEU-1920-1938,Germany (1920-1938),1920,1938,19,historical,Europe,DEU,260,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-HUN-1920-1938,Hungary (1920-1938),1920,1938,19,historical,Europe,HUN,310,CShapes 2.0,NA,HUN-1938-1940,FT; CShapes,VERIFIED,NA
+HUN-1920-1938,Hungary (1920-1938),1920,1938,19,historical,Europe,HUN,310,CShapes 2.0,NA,HUN-1938-1947,FT; CShapes,VERIFIED,NA
 LTU-1920-1940,Lithuania (1920-1940),1920,1940,21,historical,Europe,LTU,368,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 POL-1920-1921,Poland (1920-1921),1920,1921,2,historical,Europe,POL,290,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 ROU-1920-1940,Romania (1920-1940),1920,1940,21,historical,Europe,ROU,360,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
@@ -535,7 +535,7 @@ POL-1921-1945,Poland (1921-1945),1921,1945,25,historical,Europe,POL,290,CShapes 
 F228-1921-1940,USSR (1921-1940),1921,1940,20,historical,Europe,NA,365,CShapes 2.0,F228-1920-1921,F228-1940-1945,FT; CShapes,REGION,NA
 F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,8,historical,Europe,NA,315,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
 DEU-1938-1945,Germany (1938-1945),1938,1945,8,historical,Europe,DEU,260,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-HUN-1938-1947,Hungary (1938-1947),1938,1947,10,historical,Europe,HUN,310,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+HUN-1938-1947,Hungary (1938-1947),1938,1947,10,historical,Europe,HUN,310,CShapes 2.0,HUN-1920-1938,NA,FT; CShapes,VERIFIED,NA
 F228-1940-1945,USSR (1940-1945),1940,1945,6,historical,Europe,NA,365,CShapes 2.0,F228-1921-1940,F228-1945-1991,CShapes,REGION,NA
 F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,3,historical,Europe,NA,315,CShapes 2.0,NA,NA,CShapes,REGION,NA
 F228-1945-1991,USSR (1945-1991),1945,1991,47,historical,Europe,NA,365,CShapes 2.0,F228-1940-1945,RUS-1991-2014; ARM-1991-2025; AZE-1991-2025; BLR-1991-2025; EST-1991-2025; GEO-1991-2025; KAZ-1991-2025; KGZ-1991-2025; LTU-1991-2025; LVA-1991-2025; MDA-1991-2025; TJK-1991-2025; TKM-1991-2025; UKR-1991-2014; UZB-1991-2025,FAOSTAT; M49; CShapes,REGION,NA
@@ -718,7 +718,7 @@ MHL-1874-2025,Marshall Islands,1874,2025,152,sovereign,Oceania,MHL,983,CShapes 2
 SLB-1885-2025,Solomon Islands,1885,2025,141,sovereign,Oceania,SLB,940,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NRU-1888-2025,Nauru,1888,2025,138,sovereign,Oceania,NRU,970,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 WSM-1900-2025,Samoa,1900,2025,126,sovereign,Oceania,WSM,990,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-AUS-1901-2025,Australia,1901,2025,125,sovereign,Oceania,AUS,900,CShapes 2.0,AUS-1855-1901,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+AUS-1901-2025,Australia,1901,2025,125,sovereign,Oceania,AUS,900,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NZL-1907-2025,New Zealand,1907,2025,119,sovereign,Oceania,NZL,920,CShapes 2.0,NZL-1840-1907,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 PNG-1975-2025,Papua New Guinea,1975,2025,51,sovereign,Oceania,PNG,910,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 FSM-1991-2025,Micronesia,1991,2025,35,sovereign,Oceania,FSM,987,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,REGION,NA
@@ -1291,10 +1291,10 @@ MEM-1920-1923,Memel Territory,1920,1923,4,mandate,Europe,NA,NA,GADM 4.1 (Klaiped
 FIU-1920-1924,Free City of Fiume,1920,1924,5,historical,Europe,NA,NA,Constructed (point buffer ~28 km2),NA,NA,research,VERIFIED,Treaty of Rapallo 1920; Italian annexation 1924 (Treaty of Rome). Rijeka/Fiume. ~28 km2.
 MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,11,historical,Asia,MNG,NA,CShapes 2.0 (earliest Mongolia polygon),NA,NA,research,VERIFIED,Bogd Khan declared independence from Qing China Dec 1911. De facto independent until 1921 Soviet-backed revolution. Predecessor of Mongolian People's Republic.
 IND-1800-2025,India (old),1800,2025,226,aggregate,Asia,IND,NA,NA,NA,NA,research,VERIFIED,Aggregate entry for continuous trade data linkage across British India and modern India periods
-JPN-1800-1895,Japan (to 1895),1800,1895,96,historical,Asia,JPN,NA,CShapes 2.0,NA,NA,CShapes; research,VERIFIED,"Pre-imperial Japan. Home islands only (~370,776 km2). Treaty of Shimonoseki (1895) marks beginning of colonial expansion."
-JPN-1895-1945,Japanese Empire,1895,1945,51,historical,Asia,JPN,NA,CShapes 2.0 (union: Japan + Taiwan + Korea + S. Sakhalin),NA,NA,CShapes; research,VERIFIED,"Empire period. +Taiwan (Treaty of Shimonoseki 1895), +S. Sakhalin (Treaty of Portsmouth 1905), +Korea (annexed 1910). ~658,000 km2 at peak. Manchukuo (1932-45) tracked separately as MAN-1932-1945."
-JPN-1945-1952,Japan (occupied),1945,1952,8,historical,Asia,JPN,NA,CShapes 2.0,NA,NA,CShapes; research,VERIFIED,US occupation (SCAP). All colonies stripped. Treaty of San Francisco (1952-04-28) restores sovereignty.
-JPN-1952-2025,Japan,1952,2025,74,sovereign,Asia,JPN,NA,CShapes 2.0,NA,NA,CShapes; research,VERIFIED,Post-occupation. Okinawa reverted 1972. Kuril Islands dispute with Russia unresolved.
+JPN-1800-1895,Japan (to 1895),1800,1895,96,historical,Asia,JPN,NA,CShapes 2.0,NA,JPN-1895-1945,CShapes; research,VERIFIED,"Pre-imperial Japan. Home islands only (~370,776 km2). Treaty of Shimonoseki (1895) marks beginning of colonial expansion."
+JPN-1895-1945,Japanese Empire,1895,1945,51,historical,Asia,JPN,NA,CShapes 2.0 (union: Japan + Taiwan + Korea + S. Sakhalin),JPN-1800-1895,JPN-1945-1952,CShapes; research,VERIFIED,"Empire period. +Taiwan (Treaty of Shimonoseki 1895), +S. Sakhalin (Treaty of Portsmouth 1905), +Korea (annexed 1910). ~658,000 km2 at peak. Manchukuo (1932-45) tracked separately as MAN-1932-1945."
+JPN-1945-1952,Japan (occupied),1945,1952,8,historical,Asia,JPN,NA,CShapes 2.0,JPN-1895-1945,JPN-1952-2025,CShapes; research,VERIFIED,US occupation (SCAP). All colonies stripped. Treaty of San Francisco (1952-04-28) restores sovereignty.
+JPN-1952-2025,Japan,1952,2025,74,sovereign,Asia,JPN,NA,CShapes 2.0,JPN-1945-1952,NA,CShapes; research,VERIFIED,Post-occupation. Okinawa reverted 1972. Kuril Islands dispute with Russia unresolved.
 NDD-1800-1884,Niger Delta City-States,1800,1884,85,historical,Africa,NGA,NA,NA,NA,OIL-1884-1898,research,VERIFIED,"Composite: Bonny, Opobo (1870-1887), New Calabar (Kalabari), Brass (Nembe), Old Calabar (Efik). World's largest palm oil exporters. Predecessor to Oil Rivers Protectorate. Territory: Niger Delta mangrove coast, Cross River estuary."
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,98,historical,Africa,NGA,NA,NA,NA,NOR-1899-1904,research,VERIFIED,"Middle Niger River trade hub. Famous for brass and glass bead manufacture, cloth production. Nominally under Sokoto/Gwandu but operationally autonomous. Conquered by Royal Niger Company Jan 1897 (Bida fell Jan 29). Capital: Bida (6.01E, 9.08N)."
 NGA-1800-1899,Nigeria (pre-colonial),1800,1899,100,aggregate,Africa,NGA,NA,CShapes 2.0 (modern Nigeria proxy),NA,NOR-1899-1904; SOU-1899-1906,research,VERIFIED,"Pre-colonial aggregate for Nigerian trade data linkage. Includes Sokoto Caliphate (incl. Kano and Katsina emirates, largest constituent ~644k km2), Bornu Empire, Oyo successor states (Ibadan, Ijebu, Egba), Kingdom of Benin, Niger Delta city-states (Bonny, Calabar, Brass), Nupe/Bida, Igala, Borgu. Uses modern Nigeria polygon as proxy."
