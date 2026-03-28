@@ -76,7 +76,7 @@
   date. SER-1800-1913 (UNVERIFIED) was a duplicate legacy entry.
 
 ### FIXED: Bosnia and Herzegovina 1800 Placeholder
-- **Codes**: BOS-1800-1908 -> BOS-1878-1908; HER-1800-1908 -> HER-1878-1908
+- **Codes**: BOS-1800-1908 -> BOS-1878-1908; HER-1800-1908 -> HZG-1878-1908
 - **Severity**: IMPORTANT
 - **Root cause**: Bosnia and Herzegovina were Ottoman vilayets until the Congress
   of Berlin (1878) assigned them to Austro-Hungarian occupation.
@@ -121,10 +121,10 @@
 - **Entries corrected** (old start → new start):
   - ALG-1830-1902: 1800→1830 (French invasion; was Regency of Algiers/Ottoman)
   - BOT-1885-1890: 1800→1885 (Bechuanaland Protectorate; was Tswana kingdoms)
-  - BRI-1885-1895: 1800→1885 (British Bechuanaland Crown Colony)
-  - BRI-1884-1960: 1800→1884 (British Somaliland; was Somali clan societies)
-  - CON-1885-1891: 1800→1885 (Congo Free State; was Luba/Lunda/Kongo kingdoms)
-  - CON-1882-1898: 1800→1882 (French Congo; was Loango/Teke kingdoms)
+  - BBE-1885-1895: 1800→1885 (British Bechuanaland Crown Colony)
+  - BSO-1884-1960: 1800→1884 (British Somaliland; was Somali clan societies)
+  - COD-1885-1891: 1800→1885 (Congo Free State; was Luba/Lunda/Kongo kingdoms)
+  - COG-1882-1898: 1800→1882 (French Congo; was Loango/Teke kingdoms)
   - ERI-1882-1889: 1800→1882 (Italian Eritrea; was Ethiopian highlands/Ottoman coast)
   - GAB-1839-1912: 1800→1839 (French Gabon; was Mpongwe coastal polities)
   - GHA-1821-1888: 1800→1821 (British Gold Coast; Ashanti Empire dominated in 1800)
@@ -132,7 +132,7 @@
   - LAG-1861-1906: 1800→1861 (Lagos Colony; was Yoruba kingdom of Lagos)
   - NAT-1843-1895: 1800→1843 (Natal Colony; was Nguni peoples/Zulu Kingdom)
   - OIL-1884-1898: 1800→1884 (Oil Rivers Protectorate; was Niger Delta city-states)
-  - SPA-1884-1912: 1800→1884 (Spanish West Africa; was Sahrawi tribal territories)
+  - SWA-1884-1912: 1800→1884 (Spanish West Africa; was Sahrawi tribal territories)
   - ZAN-1856-1964: 1800→1856 (Sultanate of Zanzibar; was part of Oman before 1856)
 - **Polygon sources for pre-colonial entities**: Paine, Qiu & Ricart-Huguet (2024)
   has 46 pre-colonial African state polygons (Harvard Dataverse). Cliopatria (Seshat)
@@ -309,6 +309,35 @@
 ---
 
 ## 4. Changelog
+
+### Version 2.3 (2026-03-28)
+- Revised polity code prefixes to resolve 39 collision groups where unrelated
+  polities shared the same 3-letter prefix. ISO 3166-1 alpha-3 codes take
+  priority in all conflicts; non-ISO entities receive new unique prefixes.
+- 100 polity codes renamed, 2 true duplicates removed (BRI-1885-1895, ST.-1800-2025)
+- All predecessor/successor references, iso3_code fields, R scripts, GeoPackages,
+  and documentation updated to reflect new codes.
+- Key prefix resolutions (39 conflict groups):
+  - **ISO holders keep prefix**: BEL (Belgium not Belgian Congo→BCG),
+    CAN (Canada not Canary Islands→ICN), CHE (Switzerland not Chechnya→CCH),
+    FRA (France not Frankfurt→FFK), FSM (Micronesia not French Somaliland→FRS),
+    ITA (Italy not Italian Somaliland→ISM), JAM (Jamaica not J&K→JKS),
+    NOR (Norway not Northern Nigeria→NNI), PER (Peru not Perak→PEK),
+    PRI (Puerto Rico not Prince Edward Island→PEI), REU (Réunion not Reuss→RSU),
+    SCG (Serbia-Montenegro not Saxe-Coburg-Gotha→SCK), SWE (Sweden not Saxe-Weimar→SWM)
+  - **Moved to real ISO codes**: Cambodia CAM→KHM, Chad CHA→TCD, Congo CON→COG/COD,
+    Mali MAL→MLI, Malaysia MAL→MYS, Niger NIG→NER, Nigeria NIG→NGA,
+    Western Sahara SPA→ESH, Netherlands Antilles NET→ANT
+  - **Split multi-entity prefixes**: BRI (4 British colonies→BSO/BCA/BTO),
+    CON (Congo vs DRC→COG/COD), DAN (3 entities→DNI/DVI/DZG),
+    DUT (2→DWI/DNG), FED (3 federations→FED/FRN/FSA), FRE (2→GUF/FWA),
+    FSO (2→FOC/FRS), GER (Zollverein vs colonies→GCO/GSI/GTO),
+    HER (Herat/Herzegovina→HRT/HZG), NEW (3→NSW/NFL/NGN),
+    SOU (4→AUSA/SNI/SKH/SZM), SPA (5 Spanish colonies→SNA/SGN/SWA/SMO/ESH),
+    ST. (3→VCT/LCA removed), VAN (2→TAS/VCI), WES (3→AUWA/WBK/DNG)
+  - **Other**: Alaska ALA→ALK, Anhalt-Dessau AND→ANH, Badakhshan BAD→BKH,
+    Papal States keeps PAP (Papua→PUA), Sardinia keeps SAR (Sarawak→SRW)
+- Database: 1,320 → 1,318 entries (2 duplicates removed)
 
 ### Version 2.0 (2026-03-27)
 - Built unified GeoPackage (`data/final/polities_database.gpkg`) combining all

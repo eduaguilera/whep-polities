@@ -264,7 +264,7 @@ if (!nup_code %in% existing_codes) {
     polity_type = "historical",
     continent = "Africa", iso3_code = "NGA", cow_code = NA_character_,
     polygon_source = NA_character_,
-    predecessor = NA_character_, successor = "NOR-1899-1904",
+    predecessor = NA_character_, successor = "NNI-1899-1904",
     data_sources = "research",
     verification_status = "VERIFIED",
     notes = "Middle Niger River trade hub. Famous for brass and glass bead manufacture, cloth production. Nominally under Sokoto/Gwandu but operationally autonomous. Conquered by Royal Niger Company Jan 1897 (Bida fell Jan 29). Capital: Bida (6.01E, 9.08N)."
@@ -273,7 +273,7 @@ if (!nup_code %in% existing_codes) {
 
   # No polygon available - Nupe falls within Sokoto polygon but was distinct
   cat(sprintf("  ADD: %s (no dedicated polygon)\n", nup_code))
-  set_pred("NOR-1899-1904", nup_code)
+  set_pred("NNI-1899-1904", nup_code)
   changes <- changes + 1
 }
 
@@ -288,7 +288,7 @@ if (!nga_agg_code %in% existing_codes) {
     continent = "Africa", iso3_code = "NGA", cow_code = NA_character_,
     polygon_source = NA_character_,
     predecessor = NA_character_,
-    successor = "NOR-1899-1904; SOU-1899-1906",
+    successor = "NNI-1899-1904; SNI-1899-1906",
     data_sources = "research",
     verification_status = "VERIFIED",
     notes = "Pre-colonial aggregate for Nigerian trade data linkage. Includes Sokoto Caliphate (incl. Kano and Katsina emirates, largest constituent ~644k km2), Bornu Empire, Oyo successor states (Ibadan, Ijebu, Egba), Kingdom of Benin, Niger Delta city-states (Bonny, Calabar, Brass), Nupe/Bida, Igala, Borgu. Uses modern Nigeria polygon as proxy."

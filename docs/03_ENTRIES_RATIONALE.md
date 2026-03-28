@@ -66,15 +66,15 @@ Federico-Tena aggregates German trade under "Germany/Zollverein":
 | BRE-1800-1871 | Bremen (city-state) | 1800-1871 | Free Hanseatic City. Joined German Empire. |
 | OLD-1800-1871 | Oldenburg | 1800-1871 | Grand Duchy. Joined German Empire. |
 | NAS-1816-1866 | Nassau | 1816-1866 | Duchy. Annexed by Prussia 1866. |
-| FRA-1816-1866 | Frankfurt (Free City) | 1816-1866 | Free City. Annexed by Prussia 1866. COW Frankfurt. |
+| FFK-1816-1866 | Frankfurt (Free City) | 1816-1866 | Free City. Annexed by Prussia 1866. COW Frankfurt. |
 | CRA-1816-1846 | Cracow (Free City) | 1816-1846 | Free city under joint Austrian/Prussian/Russian control. Annexed by Austria 1846. |
 
 **Additional small German states** (all CShapes-Europe, ended 1866-1871):
-ANH-1864-1870 (Anhalt), ANB-1816-1864 (Anhalt-Bernburg), AND-1816-1863 (Anhalt-Dessau),
-LIP-1816-1870 (Lippe-Detmold), REU-1816-1870 (Reuss), SAL-1827-1870 (Saxe-Altenburg),
-SCG-1827-1870 (Saxe-Coburg-Gotha), SCS-1816-1826 (Saxe-Coburg-Saalfeld),
+ANH-1864-1870 (Anhalt), ANB-1816-1864 (Anhalt-Bernburg), ANH-1816-1863 (Anhalt-Dessau),
+LIP-1816-1870 (Lippe-Detmold), RSU-1816-1870 (Reuss), SAL-1827-1870 (Saxe-Altenburg),
+SCK-1827-1870 (Saxe-Coburg-Gotha), SCS-1816-1826 (Saxe-Coburg-Saalfeld),
 SGA-1816-1826 (Saxe-Gotha-Altenberg), SHI-1816-1826 (Saxe-Hildburghausen),
-SME-1816-1870 (Saxe-Meiningen), SWE-1816-1870 (Saxe-Weimar), SCL-1816-1870 (Schaumburg-Lippe),
+SME-1816-1870 (Saxe-Meiningen), SWM-1816-1870 (Saxe-Weimar), SCL-1816-1870 (Schaumburg-Lippe),
 WAL-1816-1870 (Waldeck), WOL-1816-1870 (Wolfenbuttel), HHE-1816-1850 (Hohenzollern-Hechingen),
 HSI-1816-1850 (Hohenzollern-Sigmaringen), HOG-1816-1818 (Hohengeroldseck),
 HHO-1816-1866 (Hesse-Homburg).
@@ -200,8 +200,8 @@ Germany is tracked at two levels:
 |------|------|-------|-----------|
 | FWA-1895-2025 | French West Africa | 1895-2025 | Federation of 8 territories. FT trade aggregate. |
 | FEA-1910-2025 | French Equatorial Africa | 1910-2025 | Federation of 4 territories (Gabon, Congo, CAR, Chad). FT data. |
-| FSM-1887-2025 | French Somaliland | 1887-2025 | Became Djibouti 1977. |
-| FSO-1884-1977 | French Somalia | 1884-1977 | Alternate tracking for French Somaliland. |
+| FRS-1887-2025 | French Somaliland | 1887-2025 | Became Djibouti 1977. |
+| FRS-1884-1977 | French Somalia | 1884-1977 | Alternate tracking for French Somaliland. |
 
 ### German Colonial Africa
 
@@ -215,7 +215,7 @@ Germany is tracked at two levels:
 
 | Code | Name | Dates | Rationale |
 |------|------|-------|-----------|
-| BEL-1885-2025 | Belgian Congo | 1885-2025 | Congo Free State (1885-1908) -> Belgian Congo -> DRC. FT aggregate. |
+| BCG-1885-2025 | Belgian Congo | 1885-2025 | Congo Free State (1885-1908) -> Belgian Congo -> DRC. FT aggregate. |
 
 ### South Africa
 
@@ -280,11 +280,11 @@ British cession:
 
 | Code | Name | Dates | Rationale |
 |------|------|-------|-----------|
-| BAD-1800-1873 | Badakhshan | 1800-1873 | Central Asian khanate, conquered by Afghanistan. |
+| BKH-1800-1873 | Badakhshan | 1800-1873 | Central Asian khanate, conquered by Afghanistan. |
 | BUK-1800-1920 | Bukhara | 1800-1920 | Emirate of Bukhara. Russian protectorate 1868. Dissolved 1920. FT data. |
 | KHI-1800-1873 | Khiva | 1800-1873 | Khanate of Khiva. Russian protectorate 1873. |
 | KOK-1800-1876 | Kokand | 1800-1876 | Khanate of Kokand. Conquered by Russia Feb 1876. FIX: end corrected from 1883 to 1876. |
-| HER-1800-1862 | Herat | 1800-1862 | Semi-independent khanate. Conquered by Afghanistan 1863. |
+| HRT-1800-1862 | Herat | 1800-1862 | Semi-independent khanate. Conquered by Afghanistan 1863. |
 
 ### Other Asian Entries
 

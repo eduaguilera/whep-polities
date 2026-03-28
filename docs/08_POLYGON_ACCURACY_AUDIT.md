@@ -198,7 +198,7 @@ established the Bukharan People's Soviet Republic.
 **Our polygon**: Matched to CShapes "Bokhara" entry. CShapes uses the older
 transliteration.
 
-### 3.4 Chechnya (CHE-1816-1857) — BUG FIXED
+### 3.4 Chechnya (CCH-1816-1857) — BUG FIXED
 
 **Historical reality**: The Chechen resistance under Imam Shamil (Caucasian
 Imamate) controlled highland areas of the northeastern Caucasus, not a well-defined
@@ -235,7 +235,7 @@ pre-unification states. For example:
 - Modern Hessen ≠ Hesse-Kassel + Hesse-Darmstadt (Rheinhessen now in Rhineland-Palatinate)
 - Modern Thuringia ≠ any single historical state (composed of ~20 Thuringian states)
 
-### 4.2 Saxe-Weimar (SWE-1816-1870) — BUG FIXED
+### 4.2 Saxe-Weimar (SWM-1816-1870) — BUG FIXED
 
 **Previous bug**: Matched to **Sweden's polygon** due to ISO code collision
 (SWE = Sweden in ISO 3166-1). The Grand Duchy of Saxe-Weimar-Eisenach was a
@@ -276,17 +276,17 @@ bypassing the COW code matching step entirely.
 
 | Polity code | Entity | Previously matched to | Root cause |
 |-------------|--------|----------------------|------------|
-| NOR-1900-1911 | Northeastern Rhodesia | Norway | NOR = Norway ISO |
-| NOR-1900-1905 | Northwestern Rhodesia | Norway | NOR = Norway ISO |
-| NOR-1905-1911 | Northwestern Rhodesia | Norway | NOR = Norway ISO |
-| PER-1800-1896 | Perak (Malay State) | Peru | PER = Peru ISO |
-| CHE-1816-1857 | Chechnya | Switzerland | CHE = Switzerland ISO |
-| SWE-1816-1870 | Saxe-Weimar | Sweden | SWE = Sweden ISO |
-| JAM-1947-1949 | Jammu & Kashmir | Jamaica | JAM = Jamaica ISO |
+| NRH-1900-1911 | Northeastern Rhodesia | Norway | NOR = Norway ISO |
+| NWR-1900-1905 | Northwestern Rhodesia | Norway | NOR = Norway ISO |
+| NWR-1905-1911 | Northwestern Rhodesia | Norway | NOR = Norway ISO |
+| PEK-1800-1896 | Perak (Malay State) | Peru | PER = Peru ISO |
+| CCH-1816-1857 | Chechnya | Switzerland | CHE = Switzerland ISO |
+| SWM-1816-1870 | Saxe-Weimar | Sweden | SWE = Sweden ISO |
+| JKS-1947-1949 | Jammu & Kashmir | Jamaica | JAM = Jamaica ISO |
 | CAN-1800-1982 | Canton & Enderbury Is. | Canada | CAN = Canada ISO |
 | SAR-1800-1860 | Sardinia | Malta | COW 338 = Malta in CShapes |
 | GER-1800-1899 | German Solomon Is. | Germany (Prussia) | GER = Germany code |
-| GER-1884-2025 | German colonies Oceania | Germany (Prussia) | GER = Germany code |
+| GCO-1884-2025 | German colonies Oceania | Germany (Prussia) | GER = Germany code |
 
 **Root cause**: The `R/01_build_master_db.R` script assigned COW codes based on ISO3
 prefix lookup. When a historical entity's polity code prefix (e.g., "NOR" for
@@ -423,7 +423,7 @@ incarnations compared to post-1991:
 CShapes captures these changes through period splits. The magnitude of difference
 is small (~5% of territory) for Estonia and Latvia, larger for Lithuania.
 
-### 9.4 Danzig Free City (DAN-1919-1938)
+### 9.4 Danzig Free City (DZG-1919-1938)
 
 CShapes has a Danzig entry. The polygon correctly represents the Free City territory
 (~1,966 km2 including the city and surrounding rural districts). This is well-captured.

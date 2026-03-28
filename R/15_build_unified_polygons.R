@@ -193,7 +193,7 @@ if (nrow(gadm_missing) > 0 && file.exists(gadm_path)) {
     "MID-1859-1982" = NA_character_,       # Midway — tiny atoll
     "USS-1859-2025" = NA_character_,       # US settlement Oceania — no GADM
     "WAK-1898-1982" = NA_character_,       # Wake Island — tiny atoll
-    "DAN-1800-1845" = NA_character_        # Danish India — tiny trading posts
+    "DNI-1800-1845" = NA_character_        # Danish India — tiny trading posts
   )
 
   for (i in seq_len(nrow(gadm_missing))) {

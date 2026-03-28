@@ -138,26 +138,26 @@ chain_count <- 0
 
 # Nigeria chain
 # Sokoto Caliphate → Northern Nigeria → unified Nigeria → modern
-if (set_succ("SOK-1804-1903", "NOR-1899-1904")) chain_count <- chain_count + 1
-if (set_pred("NOR-1899-1904", "SOK-1804-1903")) chain_count <- chain_count + 1
-if (set_succ("BNU-1800-1893", "NOR-1899-1904")) chain_count <- chain_count + 1
-if (set_pred("NOR-1899-1904", "BNU-1800-1893")) chain_count <- chain_count + 1
+if (set_succ("SOK-1804-1903", "NNI-1899-1904")) chain_count <- chain_count + 1
+if (set_pred("NNI-1899-1904", "SOK-1804-1903")) chain_count <- chain_count + 1
+if (set_succ("BNU-1800-1893", "NNI-1899-1904")) chain_count <- chain_count + 1
+if (set_pred("NNI-1899-1904", "BNU-1800-1893")) chain_count <- chain_count + 1
 # Gobir absorbed by Sokoto
 if (set_succ("GOB-1800-1808", "SOK-1804-1903")) chain_count <- chain_count + 1
 # Oyo → Ibadan/Ijebu/Egba period → Southern Nigeria
 if (set_succ("OYO-1800-1836", "IBD-1829-1893")) chain_count <- chain_count + 1
-if (set_succ("BKN-1800-1897", "SOU-1899-1906")) chain_count <- chain_count + 1
-if (set_succ("IBD-1829-1893", "SOU-1899-1906")) chain_count <- chain_count + 1
-if (set_succ("IJB-1800-1892", "SOU-1899-1906")) chain_count <- chain_count + 1
+if (set_succ("BKN-1800-1897", "SNI-1899-1906")) chain_count <- chain_count + 1
+if (set_succ("IBD-1829-1893", "SNI-1899-1906")) chain_count <- chain_count + 1
+if (set_succ("IJB-1800-1892", "SNI-1899-1906")) chain_count <- chain_count + 1
 if (set_succ("EGB-1830-1914", "NGA-1961-2025")) chain_count <- chain_count + 1
-if (set_succ("IGL-1800-1901", "NOR-1899-1904")) chain_count <- chain_count + 1
+if (set_succ("IGL-1800-1901", "NNI-1899-1904")) chain_count <- chain_count + 1
 # Northern/Southern Nigeria → unified Nigeria
-if (set_succ("NOR-1904-1913", "NIG-1914-1961")) chain_count <- chain_count + 1
-if (set_succ("SOU-1906-1913", "NIG-1914-1961")) chain_count <- chain_count + 1
-if (set_pred("NIG-1914-1961", "NOR-1904-1913")) chain_count <- chain_count + 1
-if (set_pred("NIG-1914-1961", "SOU-1906-1913")) chain_count <- chain_count + 1
-if (set_succ("NIG-1914-1961", "NGA-1961-2025")) chain_count <- chain_count + 1
-if (set_pred("NGA-1961-2025", "NIG-1914-1961")) chain_count <- chain_count + 1
+if (set_succ("NNI-1904-1913", "NGA-1914-1961")) chain_count <- chain_count + 1
+if (set_succ("SNI-1906-1913", "NGA-1914-1961")) chain_count <- chain_count + 1
+if (set_pred("NGA-1914-1961", "NNI-1904-1913")) chain_count <- chain_count + 1
+if (set_pred("NGA-1914-1961", "SNI-1906-1913")) chain_count <- chain_count + 1
+if (set_succ("NGA-1914-1961", "NGA-1961-2025")) chain_count <- chain_count + 1
+if (set_pred("NGA-1961-2025", "NGA-1914-1961")) chain_count <- chain_count + 1
 
 # Ghana chain: Ashanti/Dagomba → Gold Coast → Ghana
 if (set_succ("ASH-1800-1896", "GHA-1898-1956")) chain_count <- chain_count + 1
@@ -172,7 +172,7 @@ if (set_pred("BEN-1960-2025", "DHY-1800-1894")) chain_count <- chain_count + 1
 # Porto-Novo → Benin
 if (set_succ("PNV-1800-1882", "BEN-1960-2025")) chain_count <- chain_count + 1
 # Borgu → split between Nigeria/Benin/Togo
-if (set_succ("BRG-1800-1897", "NIG-1914-1961")) chain_count <- chain_count + 1
+if (set_succ("BRG-1800-1897", "NGA-1914-1961")) chain_count <- chain_count + 1
 
 # Senegal Valley kingdoms → French West Africa → Senegal
 if (set_succ("CAY-1800-1886", "SEN-1960-2025")) chain_count <- chain_count + 1

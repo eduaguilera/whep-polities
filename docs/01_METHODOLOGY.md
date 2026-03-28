@@ -50,30 +50,15 @@ Where:
 | `X06-1800-2025` | Africa (FAOSTAT regional aggregate) |
 | `TWO-1800-1860` | Kingdom of the Two Sicilies (historical Italian state) |
 
-### Prefix collisions
+### Prefix collisions (resolved in v2.3)
 
-Approximately 17 prefixes are shared by different polities. This is unavoidable given
-the 3-letter constraint, but **full codes are always unique**:
+As of v2.3, all 39 prefix collision groups between unrelated polities have been
+resolved. ISO 3166-1 alpha-3 codes take priority; non-ISO entities received new
+unique prefixes. Same-lineage entities (e.g. AUH for Austrian Empire → Austria-Hungary,
+CZE for Czechoslovakia → Czechia) intentionally share prefixes.
 
-| Prefix | Polities sharing it |
-|--------|-------------------|
-| `BEL` | Belgium (BEL-1831-2025), Belgian Congo (BEL-1885-2025) |
-| `CAN` | Canada periods, Canary Islands, Canton-Enderbury Islands |
-| `SAR` | Sardinia (SAR-1800-1860), Sarawak (SAR-1841-2025) |
-| `PAL` | Palestine (PAL-1920-1948), Palmyra Island (PAL-1889-1912) |
-| `DAN` | Danish India, Danish Virgin Islands, Danzig |
-| `CON` | Congo periods, Democratic Republic of Congo periods |
-| `NOR` | Norway, Northern Nigeria periods, Northwestern Rhodesia periods |
-| `SOU` | South Australia, Southern Nigeria, Southern Sakhalin, Southern Morocco zone |
-| `NEW` | New Guinea periods, New South Wales, Newfoundland |
-| `IND` | India periods, Indonesia periods |
-| `BRI` | British Bechuanaland, British Cameroon, British Somaliland, British Togoland |
-| `FRE` | French Guiana periods, French West Africa periods |
-| `VAN` | Van Diemen's Land (Tasmania), Vancouver's Island |
-| `SPA` | Spanish Guinea, Spanish Morocco, Spanish North Africa, Spanish West Africa |
-| `GER` | Germany/Zollverein, German Solomon Islands, German Togoland, German colonies |
-| `WES` | West Irian (Dutch New Guinea), West Bank, Western Australia |
-| `GAB` | Gabon, Gabon historical period |
+Prefixes shared by same-lineage entities are expected and by design. No prefix is
+now shared by genuinely unrelated polities.
 
 ## 3. Area Threshold for Period Splits
 

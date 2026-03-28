@@ -312,7 +312,7 @@ and deliberately excluded:
 
 | Entity | Dates | Reason for exclusion |
 |--------|-------|---------------------|
-| Free City of Danzig | 1920-1939 | DAN-1919-1938 covers this (slightly different dates) |
+| Free City of Danzig | 1920-1939 | DZG-1919-1938 covers this (slightly different dates) |
 | Saar Territory / Saar Basin | 1920-1935 | Under French customs union; trade in French data |
 | Saar Protectorate | 1947-1956 | Under French economic union; trade in French data |
 | Free Territory of Trieste | 1947-1954 | Transit port; no independent trade data |

@@ -74,7 +74,7 @@ replacements <- list(
        fy = 1815, ty = 1819, desc = "Duchy of Nassau"),
   list(code = "WAL-1816-1870", name = "Principality of Waldeck and Pyrmont",
        fy = 1814, ty = 1819, desc = "Principality of Waldeck and Pyrmont"),
-  list(code = "REU-1816-1870", name = "Principality of Reuss-Gera",
+  list(code = "RSU-1816-1870", name = "Principality of Reuss-Gera",
        fy = 1815, ty = 1819, desc = "Principality of Reuss-Gera"),
   list(code = "ANH-1864-1870", name = "Duchy of Anhalt",
        fy = 1864, ty = 1865, desc = "Duchy of Anhalt")

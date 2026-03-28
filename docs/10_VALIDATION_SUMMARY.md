@@ -58,9 +58,10 @@
     the forward link exists but the backward link was not explicitly added. These are
     documentation gaps, not data errors.
 
-15. **ISO3 code uniqueness across names**: 123 ISO codes shared by different entity names.
-    Most are period splits of the same country (e.g., AFG = Afghanistan, Afghanistan
-    (to 1888), Afghanistan (to 1893)). ~20 are true ISO prefix collisions (see below).
+15. **ISO3 code uniqueness across names**: ISO codes shared by different entity names.
+    All are period splits of the same country (e.g., AFG = Afghanistan, Afghanistan
+    (to 1888), Afghanistan (to 1893)). Prefix collisions between unrelated polities
+    were resolved in v2.3.
 
 21. **Polygon centroids match continent**: 7 exceptions:
     - Turkey (4 entries): centroid in Anatolia (lat ~33°), classified as Europe.
@@ -73,7 +74,7 @@
     - 173 boundary transitions (1-year overlap at era boundaries — by design)
     - 72 different-type dual entries (colonial + sovereign overlapping — by design)
     - 58 same-entity period splits (different periods of same country)
-    - 53 ISO prefix collisions (different entities sharing code prefix)
+    - ISO prefix collisions between unrelated entities: 0 (resolved in v2.3)
 
 31. **Polygon source matches claim**: 29 mismatches where the database claims CShapes but
     the actual polygon comes from GADM. Breakdown:
@@ -82,9 +83,9 @@
 
 ### FAILED (1 test)
 5. **Code format (XXX-yyyy-YYYY)**: 3 codes contain dots:
-   - ST.-1800-2025 (St. Helena)
-   - ST.-1800-1838 (St. Lucía)
-   - ST.-1800-1833 (St. Vincent)
+   - SHN-1800-2025 (St. Helena)
+   - LCA-1800-1838 (St. Lucía)
+   - VCT-1800-1833 (St. Vincent)
 
    These are inherited from the source data. The dots in "St." break the assumed
    `[A-Z0-9]+` prefix pattern. Impact: minimal — codes are still unique and parseable.
@@ -227,14 +228,14 @@ Source quality comparison (median vertices): CShapes 2.0 > GADM > CShapes-Europe
 
 ## Known Remaining Issues
 
-1. **3 polity codes with dots** (ST. prefix) — cosmetic, non-breaking
+1. ~~3 polity codes with dots (ST. prefix)~~ — resolved in v2.3 (ST. entries renamed to VCT/LCA/SHN)
 2. **15 broken predecessor references** to USSR region code F228 — documentation gap
 3. **8 asymmetric predecessor/successor links** — forward link exists, reciprocal missing
 4. **29 polygon source mismatches** — entities getting GADM when CShapes was expected
    (15 aggregates + 14 small/missing entries)
 5. **10 unmatched non-region polities** — 1,141/1,151 non-region polities have polygons
    (10 remaining: tiny Pacific atolls, Dronning Maud Land, Danish India, Neutral Zone, Sark)
-6. **20 ISO prefix collision groups** — inherent to 3-letter system, all polygon bugs fixed
+6. ~~20 ISO prefix collision groups~~ — resolved in v2.3 (all 39 groups deduplicated)
 7. **4 temporal gaps** (same ISO + type) — all intentional (territories covered by parent)
 8. **43 centroid-continent mismatches** — all transcontinental/island entities (expected)
 9. **235 unverified polities** — includes 43 pre-colonial African kingdoms, 26 Qing

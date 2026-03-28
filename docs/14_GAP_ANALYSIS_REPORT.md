@@ -99,7 +99,7 @@ period, even when sovereign/historical entries split at boundary changes.
 
 Countries with good aggregates: Germany (`GER-1800-2025`), China
 (`CHN-1800-2025`), Netherlands (`DEI-1800-2025`), France (`FRA-1800-1982`),
-Denmark (`DAN-1800-2025`), Indonesia (`DEI-1800-2025`), and (new) UK
+Denmark (`DVI-1800-2025`), Indonesia (`DEI-1800-2025`), and (new) UK
 (`GBR-1800-2025`), Argentina (`ARG-1800-2025`), Russia (`RUS-1800-2025`),
 USA (`USA-1800-2025`), South Africa (`ZAF-1800-2025`).
 
@@ -152,7 +152,7 @@ USA (`USA-1800-2025`), South Africa (`ZAF-1800-2025`).
 | Polity | Type | Region | Fillable? |
 |--------|------|--------|-----------|
 | DRO-1800-1982 Dronning Maud Land | dependency | Antarctica | YES -- Antarctic claim sector |
-| DAN-1800-1845 Danish India | historical | Asia | MODERATE -- tiny trading posts |
+| DNI-1800-1845 Danish India | historical | Asia | MODERATE -- tiny trading posts |
 | NEU-1800-1982 Neutral Zone | dependency | Asia | YES -- well-documented boundary |
 | CAN-1800-1982 Canton & Enderbury | historical | Oceania | MODERATE -- tiny atolls |
 | UNI-1800-1982 US Misc. Pacific Islands | dependency | Oceania | DIFFICULT -- scattered islets |
@@ -301,7 +301,7 @@ Fixed: Indonesia entries renamed from `IND-1800-1889` / `IND-1889-1949` to
 - 173 boundary transitions (1-year overlap at era boundaries -- by design)
 - 72 different-type dual entries (colonial + sovereign -- by design)
 - 58 same-entity period splits
-- 53 ISO prefix collisions (different entities sharing code prefix)
+- ISO prefix collisions: 0 (resolved in v2.3)
 
 ### Subnational Coverage Asymmetry
 | Country | Subnational entries | Historical coverage |

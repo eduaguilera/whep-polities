@@ -98,20 +98,20 @@ cat("\n--- 2. Fixing Nigeria chain gaps ---\n")
 chain_count <- 0
 
 # Northern Nigeria internal chain
-if (set_succ("NOR-1899-1904", "NOR-1904-1913")) chain_count <- chain_count + 1
-if (set_pred("NOR-1904-1913", "NOR-1899-1904")) chain_count <- chain_count + 1
+if (set_succ("NNI-1899-1904", "NNI-1904-1913")) chain_count <- chain_count + 1
+if (set_pred("NNI-1904-1913", "NNI-1899-1904")) chain_count <- chain_count + 1
 
 # Southern Nigeria internal chain
-if (set_succ("SOU-1899-1906", "SOU-1906-1913")) chain_count <- chain_count + 1
-if (set_pred("SOU-1906-1913", "SOU-1899-1906")) chain_count <- chain_count + 1
+if (set_succ("SNI-1899-1906", "SNI-1906-1913")) chain_count <- chain_count + 1
+if (set_pred("SNI-1906-1913", "SNI-1899-1906")) chain_count <- chain_count + 1
 
 # NGA-1960-1961 -> NGA-1961-2025
 if (set_succ("NGA-1960-1961", "NGA-1961-2025")) chain_count <- chain_count + 1
-if (set_pred("NGA-1960-1961", "NIG-1914-1961")) chain_count <- chain_count + 1
-if (set_succ("NIG-1914-1961", "NGA-1960-1961")) chain_count <- chain_count + 1
+if (set_pred("NGA-1960-1961", "NGA-1914-1961")) chain_count <- chain_count + 1
+if (set_succ("NGA-1914-1961", "NGA-1960-1961")) chain_count <- chain_count + 1
 
 # Benin Kingdom -> Southern Nigeria
-if (set_pred("SOU-1899-1906", "BKN-1800-1897")) chain_count <- chain_count + 1
+if (set_pred("SNI-1899-1906", "BKN-1800-1897")) chain_count <- chain_count + 1
 
 cat(sprintf("  Added %d Nigeria chain links\n", chain_count))
 changes <- changes + chain_count

@@ -187,7 +187,7 @@ All polygon sources use **WGS84 (EPSG:4326)** and are directly compatible.
 - **23 PASS**: Schema, types, dates, code uniqueness, duration, polygon validity, CRS, etc.
 - **7 WARN**: ISO code sharing (by design), predecessor chain gaps (region codes), centroid
   exceptions (Turkey, Greenland — transcontinental entities), date overlaps (by design)
-- **1 FAIL**: 3 polity codes use dots (ST.-1800-2025, ST.-1800-1838, ST.-1800-1833)
+- **1 FAIL**: 3 polity codes use dots (SHN-1800-2025, LCA-1800-1838, VCT-1800-1833)
 
 ### Knowledge Graph
 - **1,244 nodes** (1,236 polities + 8 continent nodes), **2,383 edges**, **9 relation types**
