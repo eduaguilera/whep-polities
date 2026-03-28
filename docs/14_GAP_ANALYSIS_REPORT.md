@@ -1,9 +1,9 @@
 # Gap Analysis Report (v1.0)
 
 **Date**: 2026-03-27
-**Database version**: 1.0 (data integrity fixes)
-**Database file**: `data/final/polities_database.csv` (1,236 entries)
-**Unified GeoPackage**: `data/final/polities_database.gpkg` (1,236 rows, 1,153 with geometry)
+**Database version**: 1.0
+**Database file**: `data/final/polities_database.csv` (1,317 entries)
+**Unified GeoPackage**: `data/final/polities_database.gpkg` (1,317 rows)
 
 ---
 
@@ -16,14 +16,14 @@ countries most important for historical trade and agricultural production analys
 **Key metrics:**
 | Metric | Value |
 |--------|-------|
-| Total polities | 1,236 |
-| Non-region polities | 1,159 |
-| With geometry | 1,153 / 1,159 (99.5%) |
-| Verified | 843 / 1,236 (68.1%) |
-| ISO3 coverage | 1,088 / 1,236 (88.0%) |
-| COW coverage | 398 / 1,236 (32.2%) |
-| Predecessor/successor linked | ~200 / 1,236 (16.2%) |
-| Knowledge graph | 1,244 nodes, 2,383 edges |
+| Total polities | 1,317 |
+| Non-region polities | 1,240 |
+| With polygon source | 1,237 / 1,240 (99.8%) |
+| Verified | 1,317 / 1,317 (100%) |
+| ISO3 coverage | ~1,141 / 1,317 |
+| COW coverage | ~398 / 1,317 |
+| Predecessor/successor linked | ~319 / 1,317 |
+| Knowledge graph | 1,325 nodes, 2,696 edges |
 
 ---
 

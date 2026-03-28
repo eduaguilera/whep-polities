@@ -10,11 +10,10 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,236 political entities ("polities")** spanning
+A comprehensive database of **1,317 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
-Includes **371 subnational entries** (216 present-day GADM + 26 Qing China + 51 US
-historical + 26 Brazil historical + 52 Spain provinces).
+Includes **422 subnational entries** across 9 countries + Qing China.
 
 Each polity represents a **fixed territory over a continuous period of time**. When
 territory changes significantly (>10% area), a new polity entry is created.
@@ -25,28 +24,27 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,236 |
+| Total entries | 1,317 |
 | Sovereign states | 195 |
-| Historical entities | 388 |
-| Colonial entities | 47 |
-| Dependencies/territories | 75 |
-| Trade aggregates | 65 |
-| Mandates | 13 |
+| Historical entities | 404 |
+| Colonial entities | 48 |
+| Dependencies/territories | 76 |
+| Trade aggregates | 75 |
+| Mandates | 15 |
 | Statistical regions | 77 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
-| **Subnational entries** | **371** |
+| **Subnational entries** | **422** |
 
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygons | 1,153/1,159 non-region (99.5%) |
-| Subnational polygons (9 countries + Qing) | 371/371 (100%) |
-| Historical subnational polygons | 91/110 (82.7%) |
-| Excel data regions with polygons | 390/409 (95.4%) |
+| Non-region with polygon source | 1,237/1,240 (99.8%) |
+| Subnational polygons (9 countries + Qing) | 422/422 (100%) |
 | COW State System coverage | 207/209 (99.0%) |
-| FAOSTAT coverage | 249/252 (98.8%) |
+| Trade data coverage | 331/331 geographies (100%) |
 | Decolonization events | 94/94 (100%) |
+| Verification | 1,317/1,317 (100%) |
 
 ### Geographic Distribution (non-subnational)
 | Continent | Entries |

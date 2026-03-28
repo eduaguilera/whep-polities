@@ -6,15 +6,15 @@
 
 | Metric | Value |
 |--------|-------|
-| Total entries | 1,236 |
-| Non-region entries | 1,159 |
-| Subnational entries | 371 |
+| Total entries | 1,317 |
+| Non-region entries | 1,240 |
+| Subnational entries | 422 |
 | Statistical regions | 77 |
-| Entries with polygons | 1,153/1,159 non-region (99.5%) |
-| Unified GeoPackage | `data/final/polities_database.gpkg` (1,236 rows) |
-| Verified entries | 843/1,236 (68.1%) |
-| Unique polity codes | 1,236 (100% unique) |
-| ISO3 codes assigned | 920 entries |
+| Non-region with polygon source | 1,237/1,240 (99.8%) |
+| Unified GeoPackage | `data/final/polities_database.gpkg` (1,317 rows) |
+| Verified entries | 1,317/1,317 (100%) |
+| Unique polity codes | 1,317 (100% unique) |
+| ISO3 codes assigned | ~1,141 entries |
 | COW codes matched | 207/209 external COW states |
 
 ---

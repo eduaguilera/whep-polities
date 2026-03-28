@@ -41,11 +41,11 @@ data/
   compiled/               # Intermediate (gitignored)
     polities_master.csv         Enriched base database (811 entries, run 01)
   final/                  # Main output
-    polities_database.csv       Final database (1,236 entries, 15 columns)
+    polities_database.csv       Final database (1,317 entries, 15 columns)
     polities_database.gpkg      Unified GeoPackage with all geometries
   geodata/                # Polygon source files (gitignored, large)
-    polities_polygons.gpkg      Main polygon collection (~939 polities)
-    subnational_polygons.gpkg   Admin-1 boundaries (371 entries)
+    polities_polygons.gpkg      Main polygon collection (~1,018 polities)
+    subnational_polygons.gpkg   Admin-1 boundaries (422 entries)
     precolonial_polygons.gpkg   Paine et al. (2024) 46 African states
     cliopatria_polygons.gpkg    Seshat/Cliopatria 4 historical polities
     chgis_qing_provinces.gpkg   CHGIS v6 Qing provinces (26 entries)
@@ -55,8 +55,8 @@ data/
     cshapes2_full.gpkg          CShapes 2.0 complete (1886-2019)
     cshapes2_sovereign.gpkg     CShapes 2.0 sovereign only
   analysis/               # Reports and plots
-    knowledge_graph_edges.csv   2,383 edges (9 relation types)
-    knowledge_graph_nodes.csv   1,244 nodes
+    knowledge_graph_edges.csv   2,696 edges (9 relation types)
+    knowledge_graph_nodes.csv   1,325 nodes
     knowledge_graph.graphml     GraphML for Gephi/Cytoscape
     polygon_quality_report.csv  Geometry validation results
     stress_test_results.csv     31 automated integrity checks
@@ -76,7 +76,7 @@ Run sequentially. Each script sources `00_setup.R` for paths and packages.
 | `04_map_analysis.R` | World maps: coverage, earliest year, territorial complexity, empires | 5 maps |
 | `05_cross_reference.R` | COW state system comparison, Natural Earth cross-reference | 1 plot + report |
 | `06_add_subnational.R` | Add GADM admin-1 entries for 6 countries (USA, CAN, BRA, AUS, CHN, RUS) | Updated CSV + GeoPackage |
-| `07_build_knowledge_graph.R` | Build 9-relation knowledge graph (1,244 nodes, 2,383 edges) | CSV + GraphML |
+| `07_build_knowledge_graph.R` | Build 9-relation knowledge graph | CSV + GraphML |
 | `08_stress_test.R` | 31 automated integrity checks | `stress_test_results.csv` |
 | `09_visualize_knowledge_graph.R` | Knowledge graph visualizations | 6 plots |
 | `10_analysis_plots.R` | Consolidated analysis: temporal, quality, coverage | 12 plots |
@@ -86,8 +86,14 @@ Run sequentially. Each script sources `00_setup.R` for paths and packages.
 | `14_integrate_historical_subnational.R` | Add 129 historical subnational (US, Brazil, Spain) | 3 GeoPackage files |
 | `15_build_unified_polygons.R` | Merge all polygon sources into unified GeoPackage | `polities_database.gpkg` |
 | `16_data_integrity_fixes.R` | Fix pred/succ links, add aggregates, fill temporal gaps, rename IDN | Updated CSV + GeoPackage |
-| `17_add_new_polygons.R` | Add Japan/UK subnational, interwar entities, easy polygon fills | Updated CSV + GeoPackage |
-| `18_improve_african_coverage.R` | Verify Paine/CShapes entries, add predecessor/successor chains, polygon warnings | Updated CSV |
+| `17_add_new_polygons.R` | Add Japan/UK subnational, interwar entities, polygon fixes | Updated CSV + GeoPackage |
+| `18_improve_african_coverage.R` | Verify African entries, add predecessor/successor chains | Updated CSV |
+| `19_verify_remaining_and_fix_chains.R` | Verify all remaining entries, fix chain gaps globally | Updated CSV |
+| `20_japan_empire_and_nigeria.R` | Japan 4-period split, Nigeria pre-colonial entries | Updated CSV + GeoPackage |
+| `21_cliopatria_polygon_fixes_and_mexico.R` | Replace 6 inaccurate polygons via Cliopatria, Mexico split | Updated CSV + GeoPackage |
+| `22_territorial_splits.R` | Netherlands, Nepal, Oman, Colombia territorial splits | Updated CSV + GeoPackage |
+| `23_usa_russia_splits.R` | USA 4-period and Russia 2-period territorial splits | Updated CSV + GeoPackage |
+| `24_cliopatria_broad_pass.R` | Replace 12 Italian/German pre-1886 polygons via Cliopatria | Updated CSV + GeoPackage |
 
 ### External data (not redistributable)
 
