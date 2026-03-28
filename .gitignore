@@ -25,3 +25,4 @@ data/analysis/*.png
 inputs/*
 !inputs/README.md
 *.gpkg
+data/source/cliopatria/cliopatria_polities_only.geojson
