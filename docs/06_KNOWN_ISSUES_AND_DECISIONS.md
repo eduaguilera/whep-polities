@@ -310,6 +310,31 @@
 
 ## 4. Changelog
 
+### Version 2.4 (2026-03-28)
+- Comprehensive data integrity audit and fixes:
+  - **Australian colonies**: 4 duplicate colony entries (TAS-1828-1900, AUSA-1838-1900,
+    AUWA-1838-1900, VIC-1853-1900) linked to AUS-1901-2025 as successors; AUS
+    predecessor list updated. Fixed 4-char iso3_codes (AUSA/AUWA → AUS).
+  - **Portuguese colonies**: AGO, MOZ, GNB, CPV, STP long-spanning "sovereign" entries
+    reclassified as aggregate (these span colonial + independent periods). ANG chain
+    (3 entries) retyped colonial with corrected polygon_source. Chain linked ANG→AGO,
+    MOZ historical→MOZ aggregate.
+  - **US states**: 51 post-1959 entries gained predecessor back-links to pre-1959 entries.
+  - **Brazilian states**: 26 post-1988 entries gained predecessor back-links.
+  - **Asymmetric links**: 35 missing predecessor/successor back-links added across
+    the database (African kingdoms, Yugoslav successors, etc.).
+  - **Type reclassifications**: 48 entries spanning colonial periods reclassified from
+    sovereign/historical/colonial → aggregate (Gambia, Mauritius, Philippines, Jamaica,
+    Fiji, Myanmar, and 42 others). 14 overlapping entries reclassified as aggregate
+    (EGY-1800-1922, PAN-1800-1979, AFG-1800-1893, IND-1800-1947, etc.).
+  - **Mandates**: GEA-1884-2025 and PAL-1918-2025 reclassified mandate → aggregate.
+  - **Ottoman**: Fixed free-text successor to valid code TUR-1800-1912.
+  - **Madagascar**: Added polygon mismatch caveat to MAD-1800-1912 notes (Merina Kingdom
+    1840 polygon applied to 1800-1912 entry; 2-5x overstatement before 1840).
+- Remaining known polygon-date mismatches documented but unfixable with current sources:
+  Ottoman (2% coverage), Egypt (16%), Zanzibar (26%), Russian Empire (14-18%),
+  Mexico (21%), Gran Colombia (3%), USA 1803-1848 (7%), Konbaung Burma (8%).
+
 ### Version 2.3 (2026-03-28)
 - Revised polity code prefixes to resolve 39 collision groups where unrelated
   polities shared the same 3-letter prefix. ISO 3166-1 alpha-3 codes take
