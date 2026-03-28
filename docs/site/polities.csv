@@ -53,24 +53,24 @@ MAR-1979-2025,Morocco,1979,2025,47,sovereign,Africa,MAR,600,CShapes 2.0,MAR-1975
 ETH-1993-2025,Ethiopia,1993,2025,33,sovereign,Africa,ETH,530,CShapes 2.0,ETH-1952-1993,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SSD-2011-2025,South Sudan,2011,2025,15,sovereign,Africa,SSD,626,CShapes 2.0,SUD-1956-2011,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SDN-2011-2025,Sudan,2011,2025,15,sovereign,Africa,SDN,625,CShapes 2.0,SUD-1956-2011,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ALG-1830-1902,Algeria (to 1902),1830,1902,73,historical,Africa,ALG,NA,CShapes 2.0 + CShapes-Europe,NA,ALG-1902-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1830 (French invasion). Was Regency of Algiers (Ottoman) before 1830. Cliopatria has Regency of Algiers polygons.
-ANG-1800-1890,Angola (to 1890),1800,1890,91,historical,Africa,ANG,NA,CShapes 2.0 + CShapes-Europe,NA,ANG-1890-1891,FT; CShapes,VERIFIED,NA
-BOT-1885-1890,Botswana (to 1890),1885,1890,6,historical,Africa,BOT,NA,CShapes 2.0 + CShapes-Europe,NA,BOT-1890-1895,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Bechuanaland Protectorate established). Independent Tswana kingdoms before 1885.
-CON-1882-1898,Congo (to 1898),1882,1898,17,historical,Africa,CON,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (French Parliament ratified Brazza treaties). Loango and Teke kingdoms before 1882.
-CON-1885-1891,Democratic Republic of the Congo (to 1891),1885,1891,7,historical,Africa,CON,NA,CShapes 2.0 + CShapes-Europe,LBA-1800-1885; LND-1800-1887,CON-1891-1894,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Congo Free State recognized at Berlin Conference). Luba Lunda and Kongo kingdoms before 1885. Paine et al. (2024) has pre-colonial state polygons.
+ALG-1830-1902,Algeria (to 1902),1830,1902,73,historical,Africa,ALG,NA,CShapes 2.0,NA,ALG-1902-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1830 (French invasion). Was Regency of Algiers (Ottoman) before 1830. Cliopatria has Regency of Algiers polygons.
+ANG-1800-1890,Angola (to 1890),1800,1890,91,historical,Africa,ANG,NA,CShapes 2.0,NA,ANG-1890-1891,FT; CShapes,VERIFIED,NA
+BOT-1885-1890,Botswana (to 1890),1885,1890,6,historical,Africa,BOT,NA,CShapes 2.0,NA,BOT-1890-1895,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Bechuanaland Protectorate established). Independent Tswana kingdoms before 1885.
+CON-1882-1898,Congo (to 1898),1882,1898,17,historical,Africa,CON,NA,CShapes 2.0,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (French Parliament ratified Brazza treaties). Loango and Teke kingdoms before 1882.
+CON-1885-1891,Democratic Republic of the Congo (to 1891),1885,1891,7,historical,Africa,CON,NA,CShapes 2.0,LBA-1800-1885; LND-1800-1887,CON-1891-1894,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Congo Free State recognized at Berlin Conference). Luba Lunda and Kongo kingdoms before 1885. Paine et al. (2024) has pre-colonial state polygons.
 EGY-1800-1899,Egypt (to 1899),1800,1899,100,historical,Africa,EGY,651,"Cliopatria (Muhammad Ali dynasty 1848-1864, 1.83M km2)",NA,EGY-1899-1925,FT; CShapes,VERIFIED,Khedivate of Egypt including Sudan (conquered 1820-24) and Equatoria. Cliopatria polygon represents mid-century extent (~1.83M km2). Egypt lost Sudan to Mahdist revolt by 1885. Pre-1820: Egypt proper only (~1M km2).
-EGY-1800-1922,Egypt (to 1922),1800,1922,123,historical,Africa,EGY,651,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-ERI-1882-1889,Eritrea (to 1889),1882,1889,8,historical,Africa,ERI,531,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (Italy purchased Assab). Was Ethiopian Empire highlands and Ottoman coast before 1882.
+EGY-1800-1922,Egypt (to 1922),1800,1922,123,historical,Africa,EGY,651,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+ERI-1882-1889,Eritrea (to 1889),1882,1889,8,historical,Africa,ERI,531,CShapes 2.0,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (Italy purchased Assab). Was Ethiopian Empire highlands and Ottoman coast before 1882.
 ETH-1800-1889,Ethiopia (to 1889),1800,1889,90,historical,Africa,ETH,530,"Cliopatria (Ethiopian Empire 1769-1889, 240K km2)",NA,ETH-1889-1897,FT; CShapes,VERIFIED,"Pre-Menelik Ethiopia. Zemene Mesafint (Era of Princes). Highland core only: Gondar, Gojjam, Shewa, Tigray, Wello. ~240,000 km2. Cliopatria polygon replaces back-projected CShapes which was 2-3x too large."
-GAB-1839-1912,Gabon (to 1912),1839,1912,74,historical,Africa,GAB,481,CShapes 2.0 + CShapes-Europe,NA,GAB-1912-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1839 (first French treaty with King Denis at Gabon Estuary). Mpongwe and Orungu coastal polities before 1839.
-GHA-1821-1888,Ghana (to 1888),1821,1888,68,historical,Africa,GHA,452,CShapes 2.0 + CShapes-Europe,NA,GHA-1888-1898,FT; CShapes,FIXED,Start corrected from 1800 to 1821 (British Crown took over forts). Ashanti Empire dominated the region in 1800. Paine et al. (2024) has Ashanti polygon.
-LAG-1861-1906,Lagos (to 1906),1861,1906,46,historical,Africa,LAG,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1861 (British annexation 6 Aug 1861). Yoruba kingdom of Lagos before 1861.
+GAB-1839-1912,Gabon (to 1912),1839,1912,74,historical,Africa,GAB,481,CShapes 2.0,NA,GAB-1912-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1839 (first French treaty with King Denis at Gabon Estuary). Mpongwe and Orungu coastal polities before 1839.
+GHA-1821-1888,Ghana (to 1888),1821,1888,68,historical,Africa,GHA,452,CShapes 2.0,NA,GHA-1888-1898,FT; CShapes,FIXED,Start corrected from 1800 to 1821 (British Crown took over forts). Ashanti Empire dominated the region in 1800. Paine et al. (2024) has Ashanti polygon.
+LAG-1861-1906,Lagos (to 1906),1861,1906,46,historical,Africa,LAG,NA,CShapes 2.0,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1861 (British annexation 6 Aug 1861). Yoruba kingdom of Lagos before 1861.
 MAD-1800-1912,Madagascar (to 1912),1800,1912,113,historical,Africa,MAD,NA,"Cliopatria (Merina Kingdom 1840-1894, 427K km2)",NA,MAD-1912-1946,FT; CShapes,VERIFIED,Merina Kingdom. Expanded from central highlands: 85K km2 (1796) -> 113K (1803) -> 173K (1820) -> 245K (1822) -> 375K (1825) -> 427K (1840-1894). Cliopatria polygon uses 1840 extent (~75% of island). Western Sakalava never fully subjugated. French colonization 1896.
 MOR-1800-1904,Morocco (to 1904),1800,1904,105,historical,Africa,MOR,NA,"Cliopatria (Morocco 1769-1860, 388K km2)",NA,MOR-1904-1956,FT; CShapes,VERIFIED,"Alaouite Morocco. Cliopatria polygon (388K km2). Note: fixed borders remain conceptually anachronistic. Historical Morocco had Bled al-makhzen (governed territory) vs Bled es-siba (nominal allegiance only, Rif/Atlas). Southern border was non-existent."
-MOZ-1800-1891,Mozambique (to 1891),1800,1891,92,historical,Africa,MOZ,541,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-SIE-1800-1889,Sierra Leone (to 1889),1800,1889,90,historical,Africa,SIE,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+MOZ-1800-1891,Mozambique (to 1891),1800,1891,92,historical,Africa,MOZ,541,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+SIE-1800-1889,Sierra Leone (to 1889),1800,1889,90,historical,Africa,SIE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 ZAN-1856-1964,Zanzibar,1856,1964,109,historical,Africa,ZAN,NA,"Cliopatria (Zanzibar Sultanate 1856-1884, 28K km2 mainland)",NA,NA,FT; FAOSTAT; CShapes; WHEP-fix,FIXED,"Zanzibar Sultanate including mainland coastal strip (Cape Delgado to near Mogadishu, 1500km). Cliopatria polygon includes mainland (28K km2). Mainland lost 1886-1890 via Anglo-German treaties. Post-1890: islands only."
-ORA-1848-1910,Orange Free State (to 1910),1848,1910,63,historical,Africa,ORA,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes; WHEP-fix,"FIXED: merged duplicate, code ORA-1800-1910->ORA-1848-1910",NA
+ORA-1848-1910,Orange Free State (to 1910),1848,1910,63,historical,Africa,ORA,NA,CShapes 2.0,NA,NA,FT; CShapes; WHEP-fix,"FIXED: merged duplicate, code ORA-1800-1910->ORA-1848-1910",NA
 GHA-1888-1898,Ghana (1888-1898),1888,1898,11,historical,Africa,GHA,452,CShapes 2.0,GHA-1821-1888,GHA-1898-1956,FT; CShapes,VERIFIED,NA
 KEN-1888-1891,Kenya (1888-1891),1888,1891,4,historical,Africa,KEN,501,CShapes 2.0,NA,KEN-1891-1894,FT; CShapes,VERIFIED,NA
 COT-1889-1932,Côte d'Ivoire (1889-1932),1889,1932,44,historical,Africa,COT,NA,CShapes 2.0,NA,COT-1932-1947,FT; CShapes,VERIFIED,NA
@@ -266,30 +266,30 @@ UZB-1991-2025,Uzbekistan,1991,2025,35,sovereign,Asia,UZB,704,CShapes 2.0,F228-19
 SAU-2000-2025,Saudi Arabia,2000,2025,26,sovereign,Asia,SAU,670,CShapes 2.0,SAU-1932-2000,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 YEM-2000-2025,Yemen,2000,2025,26,sovereign,Asia,YEM,678,CShapes 2.0,YEM-1990-2000,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 IDN-2002-2025,Indonesia,2002,2025,24,sovereign,Asia,IDN,850,CShapes 2.0,IDN-1976-2002,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ABU-1800-1971,Abu Dhabi,1800,1971,172,historical,Asia,ABU,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-AFG-1800-1888,Afghanistan (to 1888),1800,1888,89,historical,Asia,AFG,700,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes; WHEP-fix,VERIFIED,NA
-AFG-1800-1893,Afghanistan (to 1893),1800,1893,94,historical,Asia,AFG,700,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-AJM-1800-1971,Ajman,1800,1971,172,historical,Asia,AJM,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+ABU-1800-1971,Abu Dhabi,1800,1971,172,historical,Asia,ABU,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+AFG-1800-1888,Afghanistan (to 1888),1800,1888,89,historical,Asia,AFG,700,CShapes 2.0,NA,NA,FT; CShapes; WHEP-fix,VERIFIED,NA
+AFG-1800-1893,Afghanistan (to 1893),1800,1893,94,historical,Asia,AFG,700,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+AJM-1800-1971,Ajman,1800,1971,172,historical,Asia,AJM,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BAD-1800-1873,Badakhshan,1800,1873,74,historical,Asia,BAD,267,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-BUK-1800-1920,Bukhara,1800,1920,121,historical,Asia,BUK,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-BOK-1800-1920,Bukhara (to 1920),1800,1920,121,historical,Asia,BOK,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-CAM-1800-1904,Cambodia (to 1904),1800,1904,105,historical,Asia,CAM,NA,CShapes 2.0 + CShapes-Europe,NA,CAM-1904-1907,FT; CShapes,VERIFIED,NA
-CHN-1800-1895,China (to 1895),1800,1895,96,historical,Asia,CHN,710,CShapes 2.0 + CShapes-Europe,NA,CHN-1895-1912,FT; CShapes,VERIFIED,NA
+BUK-1800-1920,Bukhara,1800,1920,121,historical,Asia,BUK,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+BOK-1800-1920,Bukhara (to 1920),1800,1920,121,historical,Asia,BOK,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+CAM-1800-1904,Cambodia (to 1904),1800,1904,105,historical,Asia,CAM,NA,CShapes 2.0,NA,CAM-1904-1907,FT; CShapes,VERIFIED,NA
+CHN-1800-1895,China (to 1895),1800,1895,96,historical,Asia,CHN,710,CShapes 2.0,NA,CHN-1895-1912,FT; CShapes,VERIFIED,NA
 DAN-1800-1845,Danish India,1800,1845,46,historical,Asia,DAN,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 HER-1800-1862,Herat,1800,1862,63,historical,Asia,HER,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-IND-1800-1893,India (to 1893),1800,1893,94,historical,Asia,IND,750,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-IND-1800-1947,India (to 1947),1800,1947,148,historical,Asia,IND,750,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-IDN-1800-1889,Indonesia (to 1889),1800,1889,90,historical,Asia,IDN,750,CShapes 2.0 + CShapes-Europe,NA,IDN-1889-1949,FT; CShapes,VERIFIED,NA
+IND-1800-1893,India (to 1893),1800,1893,94,historical,Asia,IND,750,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+IND-1800-1947,India (to 1947),1800,1947,148,historical,Asia,IND,750,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+IDN-1800-1889,Indonesia (to 1889),1800,1889,90,historical,Asia,IDN,750,CShapes 2.0,NA,IDN-1889-1949,FT; CShapes,VERIFIED,NA
 KHI-1800-1873,Khiva,1800,1873,74,historical,Asia,KHI,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-KHI-1800-1920,Khiva (to 1920),1800,1920,121,historical,Asia,KHI,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+KHI-1800-1920,Khiva (to 1920),1800,1920,121,historical,Asia,KHI,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 KOK-1800-1876,Kokand,1800,1876,77,historical,Asia,KOK,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,FIXED: end 1883->1876,NA
-OKO-1800-1910,Korea (to 1910),1800,1910,111,historical,Asia,OKO,730,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes; WHEP-fix,VERIFIED,NA
+OKO-1800-1910,Korea (to 1910),1800,1910,111,historical,Asia,OKO,730,CShapes 2.0,NA,NA,FT; CShapes; WHEP-fix,VERIFIED,NA
 OTT-1800-1912,Ottoman Empire,1800,1912,113,historical,Asia,OTT,640,"Cliopatria (Ottoman Empire 1800-1802, 2.66M km2)",NA,TUR-1920-2025 + successor states,FT; CShapes; WHEP-fix,VERIFIED,Ottoman Empire at 1800 extent (2.66M km2). Cliopatria has 47 time steps showing gradual contraction from 2.66M (1800) to 724K km2 (1922). This polygon represents the early-period maximum.
-PER-1800-1896,Perak (to 1896),1800,1896,97,historical,Asia,PER,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-SEL-1800-1896,Selangore (to 1896),1800,1896,97,historical,Asia,SEL,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-THA-1800-1893,Thailand (to 1893),1800,1893,94,historical,Asia,THA,800,CShapes 2.0 + CShapes-Europe,NA,THA-1893-1904,FT; CShapes,VERIFIED,NA
-VNM-1800-1893,Vietnam (to 1893),1800,1893,94,historical,Asia,VNM,816,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-BRN-1816-1888,Brunei (greater),1816,1888,73,historical,Asia,BRN,835,CShapes 2.0 + CShapes-Europe,NA,BRN-1888-2025,FT; CShapes,VERIFIED,NA
+PER-1800-1896,Perak (to 1896),1800,1896,97,historical,Asia,PER,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+SEL-1800-1896,Selangore (to 1896),1800,1896,97,historical,Asia,SEL,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+THA-1800-1893,Thailand (to 1893),1800,1893,94,historical,Asia,THA,800,CShapes 2.0,NA,THA-1893-1904,FT; CShapes,VERIFIED,NA
+VNM-1800-1893,Vietnam (to 1893),1800,1893,94,historical,Asia,VNM,816,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+BRN-1816-1888,Brunei (greater),1816,1888,73,historical,Asia,BRN,835,CShapes 2.0,NA,BRN-1888-2025,FT; CShapes,VERIFIED,NA
 CHE-1816-1857,Chechnya,1816,1857,42,historical,Asia,CHE,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 CIR-1816-1861,Circassia,1816,1861,46,historical,Asia,CIR,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 YUN-1856-1871,Yunnan,1856,1871,16,historical,Asia,YUN,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
@@ -669,22 +669,22 @@ CAN-1948-2025,Canada,1948,2025,78,sovereign,North America,CAN,20,CShapes 2.0,CAN
 USA-1959-2025,United States of America,1959,2025,67,sovereign,North America,USA,2,CShapes 2.0,USA-1867-1959,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 BLM-2007-2025,Saint Barthélemy,2007,2025,19,sovereign,North America,BLM,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 CUW-2010-2025,Curaçao,2010,2025,16,sovereign,North America,CUW,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ALA-1800-1959,Alaska (to 1959),1800,1959,160,historical,North America,ALA,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-CAN-1938-1982,Canton and Enderbury Islands,1938,1982,45,historical,North America,CAN,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Start year corrected: 1800 -> 1938 (Canton & Enderbury jointly claimed US/UK 1938)
+ALA-1800-1959,Alaska (to 1959),1800,1959,160,historical,North America,ALA,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+CAN-1938-1982,Canton and Enderbury Islands,1938,1982,45,historical,North America,CAN,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Start year corrected: 1800 -> 1938 (Canton & Enderbury jointly claimed US/UK 1938)
 GRD-1800-1833,Grenada,1800,1833,34,historical,North America,GRD,55,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 LOW-1800-1866,Lower Quebec,1800,1866,67,historical,North America,LOW,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
 NBW-1800-1866,New Brunswick,1800,1866,67,historical,North America,NBW,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
-NEW-1800-1948,Newfoundland (to 1948),1800,1948,149,historical,North America,NEW,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+NEW-1800-1948,Newfoundland (to 1948),1800,1948,149,historical,North America,NEW,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 NOV-1800-1866,Nova Scotia  Cape Breton Isl.,1800,1866,67,historical,North America,NOV,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
 ONT-1800-1866,Ontario,1800,1866,67,historical,North America,ONT,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
-PAN-1800-1979,Panama (before Canal Zone),1800,1979,180,historical,North America,PAN,95,CShapes 2.0 + CShapes-Europe,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+PAN-1800-1979,Panama (before Canal Zone),1800,1979,180,historical,North America,PAN,95,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 PRI-1800-1866,Prince Edward Island,1800,1866,67,historical,North America,PRI,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
 ST.-1800-1838,St. Lucía,1800,1838,39,historical,North America,NA,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 ST.-1800-1833,St. Vincent,1800,1833,34,historical,North America,NA,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-USA-1800-1959,United States of America (to 1959),1800,1959,160,aggregate,North America,USA,2,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split into 4 territorial periods.
+USA-1800-1959,United States of America (to 1959),1800,1959,160,aggregate,North America,USA,2,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split into 4 territorial periods.
 STM-1816-1878,St Martin and St Barthélemy,1816,1878,63,historical,North America,STM,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 VAN-1849-1866,Vancouver's Island,1849,1866,18,historical,North America,VAN,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-CAN-1866-1948,Canada (to 1948),1866,1948,83,historical,North America,CAN,20,CShapes 2.0 + CShapes-Europe,CAN-1800-1866,CAN-1948-2025,FT; CShapes,VERIFIED,NA
+CAN-1866-1948,Canada (to 1948),1866,1948,83,historical,North America,CAN,20,CShapes 2.0,CAN-1800-1866,CAN-1948-2025,FT; CShapes,VERIFIED,NA
 BCO-1858-1866,British Columbia,1858,1866,9,colonial,North America,BCO,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
 AIA-1800-2025,Anguilla,1800,2025,226,dependency,North America,AIA,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BMU-1800-2025,Bermuda,1800,2025,226,dependency,North America,BMU,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -723,23 +723,23 @@ NZL-1907-2025,New Zealand,1907,2025,119,sovereign,Oceania,NZL,920,CShapes 2.0,NZ
 PNG-1975-2025,Papua New Guinea,1975,2025,51,sovereign,Oceania,PNG,910,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 FSM-1991-2025,Micronesia,1991,2025,35,sovereign,Oceania,FSM,987,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,REGION,NA
 PLW-1991-2025,Palau,1991,2025,35,sovereign,Oceania,PLW,986,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-NEW-1884-1920,New Guinea (to 1920),1884,1920,37,historical,Oceania,NEW,NA,CShapes 2.0 + CShapes-Europe,NA,NEW-1920-1949,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1884 (German New Guinea / British New Guinea from 1884)
-NEW-1800-1900,New South Wales (to 1900),1800,1900,101,historical,Oceania,NEW,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-PAP-1800-1949,Papua (to 1949),1800,1949,150,historical,Oceania,PAP,327,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-QUE-1859-1900,Queensland (to 1900),1859,1900,42,historical,Oceania,QUE,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1859 (Queensland separated from NSW 1859)
-SOU-1836-1900,South Australia (to 1900),1836,1900,65,historical,Oceania,SOU,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1836 (South Australia proclaimed 1836)
-TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,76,historical,Oceania,TAS,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1825 (Van Diemen's Land separated from NSW 1825)
-VIC-1851-1900,Victoria (to 1900),1851,1900,50,historical,Oceania,VIC,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1851 (Victoria separated from NSW 1851)
-WES-1829-1900,Western Australia (to 1900),1829,1900,72,historical,Oceania,WES,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1829 (Western Australia proclaimed 1829)
-VAN-1828-1900,Van Diemen's Land (Tasmania),1828,1900,73,historical,Oceania,VAN,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-SOU-1838-1900,South Australia,1838,1900,63,historical,Oceania,SOU,NA,CShapes 2.0 + CShapes-Europe,NA,SOU-1899-1906,FT; CShapes,VERIFIED,NA
-WES-1838-1900,Western Australia,1838,1900,63,historical,Oceania,WES,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-MRQ-1844-1903,Marquesas Island,1844,1903,60,historical,Oceania,MRQ,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-SOC-1844-1903,Society Islands  (Tahiti),1844,1903,60,historical,Oceania,SOC,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+NEW-1884-1920,New Guinea (to 1920),1884,1920,37,historical,Oceania,NEW,NA,CShapes 2.0,NA,NEW-1920-1949,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1884 (German New Guinea / British New Guinea from 1884)
+NEW-1800-1900,New South Wales (to 1900),1800,1900,101,historical,Oceania,NEW,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+PAP-1800-1949,Papua (to 1949),1800,1949,150,historical,Oceania,PAP,327,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+QUE-1859-1900,Queensland (to 1900),1859,1900,42,historical,Oceania,QUE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1859 (Queensland separated from NSW 1859)
+SOU-1836-1900,South Australia (to 1900),1836,1900,65,historical,Oceania,SOU,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1836 (South Australia proclaimed 1836)
+TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,76,historical,Oceania,TAS,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1825 (Van Diemen's Land separated from NSW 1825)
+VIC-1851-1900,Victoria (to 1900),1851,1900,50,historical,Oceania,VIC,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1851 (Victoria separated from NSW 1851)
+WES-1829-1900,Western Australia (to 1900),1829,1900,72,historical,Oceania,WES,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1829 (Western Australia proclaimed 1829)
+VAN-1828-1900,Van Diemen's Land (Tasmania),1828,1900,73,historical,Oceania,VAN,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+SOU-1838-1900,South Australia,1838,1900,63,historical,Oceania,SOU,NA,CShapes 2.0,NA,SOU-1899-1906,FT; CShapes,VERIFIED,NA
+WES-1838-1900,Western Australia,1838,1900,63,historical,Oceania,WES,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+MRQ-1844-1903,Marquesas Island,1844,1903,60,historical,Oceania,MRQ,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+SOC-1844-1903,Society Islands  (Tahiti),1844,1903,60,historical,Oceania,SOC,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 BON-1846-1873,Bonin island,1846,1873,28,historical,Oceania,BON,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-VIC-1853-1900,Victoria,1853,1900,48,historical,Oceania,VIC,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-QUE-1859-1900,Queensland,1859,1900,42,historical,Oceania,QUE,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-GAM-1881-1903,Gambier Island,1881,1903,23,historical,Oceania,GAM,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+VIC-1853-1900,Victoria,1853,1900,48,historical,Oceania,VIC,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+QUE-1859-1900,Queensland,1859,1900,42,historical,Oceania,QUE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+GAM-1881-1903,Gambier Island,1881,1903,23,historical,Oceania,GAM,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 PAL-1889-1912,Palmyra Island,1889,1912,24,historical,Oceania,PAL,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 SOL-1893-1899,Solomon Islands (1893-1899),1893,1899,7,historical,Oceania,SOL,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 HAW-1898-1959,Hawaii (1898-1959),1898,1959,62,historical,Oceania,HAW,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
@@ -765,7 +765,7 @@ WAK-1898-1982,Wake Island,1898,1982,85,dependency,Oceania,WAK,NA,GADM 4.1,NA,NA,
 ASM-1900-2025,American Samoa,1900,2025,126,dependency,Oceania,ASM,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NIU-1900-2025,Niue,1900,2025,126,dependency,Oceania,NIU,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MNP-1991-2025,Northern Mariana Islands,1991,2025,35,dependency,Oceania,MNP,NA,GADM 4.1,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-F164-1920-1990,Pacific Islands Trust Territory,1920,1990,71,mandate,Oceania,NA,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,Start year corrected: 1800 -> 1920 (League of Nations mandate from 1920)
+F164-1920-1990,Pacific Islands Trust Territory,1920,1990,71,mandate,Oceania,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,Start year corrected: 1800 -> 1920 (League of Nations mandate from 1920)
 NEW-1920-1949,New Guinea (1920-1949),1920,1949,30,mandate,Oceania,NEW,NA,CShapes 2.0,NEW-1884-1920,NA,FT; CShapes,VERIFIED,NA
 MRI-1800-2025,Mariana Island,1800,2025,226,aggregate,Oceania,MRI,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BOC-1839-2025,British settlement Oceania,1839,2025,187,aggregate,Oceania,BOC,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -790,14 +790,14 @@ PRY-1938-2025,Paraguay,1938,2025,88,sovereign,South America,PRY,150,CShapes 2.0,
 ECU-1942-2025,Ecuador,1942,2025,84,sovereign,South America,ECU,130,CShapes 2.0,ECU-1800-1942,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 PER-1942-2025,Peru,1942,2025,84,sovereign,South America,PER,135,CShapes 2.0,PER-1922-1942,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SUR-1975-2025,Suriname,1975,2025,51,sovereign,South America,SUR,115,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ARG-1800-1899,Argentina (to 1899),1800,1899,100,historical,South America,ARG,160,CShapes 2.0 + CShapes-Europe,NA,ARG-1899-1902,FT; CShapes,VERIFIED,NA
-BRA-1800-1903,Brazil (to 1903),1800,1903,104,historical,South America,BRA,140,CShapes 2.0 + CShapes-Europe,NA,BRA-1903-1909,FT; CShapes,VERIFIED,NA
-COL-1800-1903,Colombia (to 1903),1800,1903,104,aggregate,South America,COL,100,CShapes 2.0 + CShapes-Europe,NA,COL-1903-1922,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1830.
-ECU-1800-1942,Ecuador (to 1942),1800,1942,143,historical,South America,ECU,130,CShapes 2.0 + CShapes-Europe,NA,ECU-1942-2025,FT; CShapes,VERIFIED,NA
-CHL-1810-1899,Chile (to 1899),1810,1899,90,historical,South America,CHL,155,CShapes 2.0 + CShapes-Europe,NA,CHL-1899-1902,FT; CShapes,VERIFIED,NA
-PRY-1811-1938,Paraguay (to 1938),1811,1938,128,historical,South America,PRY,150,CShapes 2.0 + CShapes-Europe,NA,PRY-1938-2025,FT; CShapes,VERIFIED,NA
-BOL-1825-1903,Bolivia (to 1903),1825,1903,79,historical,South America,BOL,145,CShapes 2.0 + CShapes-Europe,NA,BOL-1903-1909,FT; CShapes,VERIFIED,NA
-PER-1825-1909,Peru (to 1909),1825,1909,85,historical,South America,PER,135,CShapes 2.0 + CShapes-Europe,NA,PER-1909-1922,FT; CShapes,VERIFIED,NA
+ARG-1800-1899,Argentina (to 1899),1800,1899,100,historical,South America,ARG,160,CShapes 2.0,NA,ARG-1899-1902,FT; CShapes,VERIFIED,NA
+BRA-1800-1903,Brazil (to 1903),1800,1903,104,historical,South America,BRA,140,CShapes 2.0,NA,BRA-1903-1909,FT; CShapes,VERIFIED,NA
+COL-1800-1903,Colombia (to 1903),1800,1903,104,aggregate,South America,COL,100,CShapes 2.0,NA,COL-1903-1922,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1830.
+ECU-1800-1942,Ecuador (to 1942),1800,1942,143,historical,South America,ECU,130,CShapes 2.0,NA,ECU-1942-2025,FT; CShapes,VERIFIED,NA
+CHL-1810-1899,Chile (to 1899),1810,1899,90,historical,South America,CHL,155,CShapes 2.0,NA,CHL-1899-1902,FT; CShapes,VERIFIED,NA
+PRY-1811-1938,Paraguay (to 1938),1811,1938,128,historical,South America,PRY,150,CShapes 2.0,NA,PRY-1938-2025,FT; CShapes,VERIFIED,NA
+BOL-1825-1903,Bolivia (to 1903),1825,1903,79,historical,South America,BOL,145,CShapes 2.0,NA,BOL-1903-1909,FT; CShapes,VERIFIED,NA
+PER-1825-1909,Peru (to 1909),1825,1909,85,historical,South America,PER,135,CShapes 2.0,NA,PER-1909-1922,FT; CShapes,VERIFIED,NA
 ARG-1899-1902,Argentina (1899-1902),1899,1902,4,historical,South America,ARG,160,CShapes 2.0,ARG-1800-1899,ARG-1902-2025,FT; CShapes,VERIFIED,NA
 CHL-1899-1902,Chile (1899-1902),1899,1902,4,historical,South America,CHL,155,CShapes 2.0,CHL-1810-1899,CHL-1902-2025,FT; CShapes,VERIFIED,NA
 BOL-1903-1909,Bolivia (1903-1909),1903,1909,7,historical,South America,BOL,145,CShapes 2.0,BOL-1825-1903,BOL-1909-1938,FT; CShapes,VERIFIED,NA
