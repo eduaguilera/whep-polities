@@ -3,13 +3,6 @@
 # Run from the project root: bash site/build.sh
 #
 # Requires: ogr2ogr (GDAL), python3
-#
-# Steps:
-#   1. Convert GeoPackage to GeoJSON with geometry simplification
-#   2. Fix antimeridian-crossing polygons (Cliopatria Russia entries)
-#   3. Remove CHGIS entries with wrong CRS (known bug in R/13)
-#   4. Drop tiny island polygons for web performance
-#   5. Copy CSV
 
 set -e
 
@@ -20,14 +13,16 @@ CSV="$PROJ_ROOT/data/final/polities_database.csv"
 
 echo "Building web site data..."
 
-# Step 1: Convert to GeoJSON with simplification
+# Step 1: Convert GeoPackage to GeoJSON with simplification
 echo "  Converting GeoPackage to GeoJSON..."
 ogr2ogr -f GeoJSON /tmp/polities_raw.geojson "$GPKG" -simplify 0.01 -lco RFC7946=YES 2>/dev/null
 
-# Step 2-4: Fix issues and simplify for web
+# Step 2: Fix geometries and simplify for web
 echo "  Fixing geometries for web display..."
-python3 << 'PYEOF'
+python3 - "$SITE_DIR" << 'PYEOF'
 import json, sys
+
+site_dir = sys.argv[1]
 
 with open('/tmp/polities_raw.geojson') as f:
     data = json.load(f)
@@ -89,19 +84,12 @@ for feat in data['features']:
     features.append(feat)
 
 data['features'] = features
-with open('SITE_DIR/polities.geojson'.replace('SITE_DIR', sys.argv[1]), 'w') as f:
+out_path = f"{site_dir}/polities.geojson"
+with open(out_path, 'w') as f:
     json.dump(data, f)
-print(f"  {len(features)} features written")
+print(f"  {len(features)} features written to {out_path}")
 PYEOF
 
-python3 -c "
-import sys
-exec(open('/dev/stdin').read())
-" "$SITE_DIR" < /dev/null 2>&1 || true
-
-# The python script above has the path hardcoded, so let's just copy what we already built
-cp /tmp/polities_raw.geojson /tmp/polities_build.geojson 2>/dev/null || true
-
-# Step 5: Copy CSV
+# Step 3: Copy CSV
 cp "$CSV" "$SITE_DIR/polities.csv"
 echo "  Done. Files in $SITE_DIR"
