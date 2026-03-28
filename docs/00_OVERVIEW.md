@@ -1,4 +1,4 @@
-# WHEP Polities Database v2.1 -- Overview
+# WHEP Polities Database v1.0 -- Overview
 
 **Project**: Who Has Eaten the Planet (WHEP)
 **Funded by**: European Research Council (ERC)

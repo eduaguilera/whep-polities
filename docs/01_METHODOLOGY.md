@@ -1,7 +1,7 @@
 # Polities Database: Methodology and Definitions
 
 **Project**: Who Has Eaten the Planet (WHEP)
-**Database version**: 2.0 (2026-03-27)
+**Database version**: 1.0 (2026-03-27)
 **Temporal scope**: 1800-2025 (optimized for 1850-present)
 **Funded by**: European Research Council (ERC)
 

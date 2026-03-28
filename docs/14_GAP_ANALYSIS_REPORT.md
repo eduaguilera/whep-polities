@@ -1,7 +1,7 @@
-# Gap Analysis Report (v2.1)
+# Gap Analysis Report (v1.0)
 
 **Date**: 2026-03-27
-**Database version**: 2.1 (data integrity fixes)
+**Database version**: 1.0 (data integrity fixes)
 **Database file**: `data/final/polities_database.csv` (1,236 entries)
 **Unified GeoPackage**: `data/final/polities_database.gpkg` (1,236 rows, 1,153 with geometry)
 
