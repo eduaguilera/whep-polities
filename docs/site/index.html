@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WHEP Polities Database</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; }
+
+#map { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+
+#panel {
+  position: absolute; top: 10px; left: 10px; z-index: 10;
+  background: rgba(15,15,25,0.92); border-radius: 10px; padding: 16px;
+  width: 340px; max-height: calc(100vh - 20px); overflow-y: auto;
+  backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+#panel h1 { font-size: 16px; font-weight: 600; margin-bottom: 4px; color: #fff; }
+#panel .subtitle { font-size: 11px; color: #888; margin-bottom: 12px; }
+
+#search {
+  width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06); color: #fff; font-size: 13px; outline: none;
+  margin-bottom: 8px;
+}
+#search:focus { border-color: rgba(100,180,255,0.4); }
+#search::placeholder { color: #666; }
+
+.filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.filter-btn {
+  padding: 4px 10px; border-radius: 14px; font-size: 11px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.15); background: transparent; color: #aaa;
+  transition: all 0.15s;
+}
+.filter-btn.active { background: rgba(100,180,255,0.2); color: #7cb8ff; border-color: rgba(100,180,255,0.4); }
+.filter-btn:hover { border-color: rgba(255,255,255,0.3); }
+
+#year-display { font-size: 28px; font-weight: 700; color: #fff; text-align: center; margin: 8px 0 2px; }
+#year-range { width: 100%; margin-bottom: 4px; accent-color: #5a9eff; }
+.slider-labels { display: flex; justify-content: space-between; font-size: 10px; color: #555; margin-bottom: 10px; }
+
+#stats { font-size: 11px; color: #777; margin-bottom: 10px; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 6px; }
+
+#info {
+  display: none; margin-top: 10px; padding: 12px; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+}
+#info h2 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+#info .meta { font-size: 12px; line-height: 1.7; color: #bbb; }
+#info .meta span { color: #5a9eff; }
+#info .chain { margin-top: 8px; font-size: 11px; }
+#info .chain a { color: #5a9eff; cursor: pointer; text-decoration: none; }
+#info .chain a:hover { text-decoration: underline; }
+
+#results { max-height: 200px; overflow-y: auto; margin-top: 6px; }
+.result-item {
+  padding: 6px 8px; font-size: 12px; cursor: pointer; border-radius: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.result-item:hover { background: rgba(100,180,255,0.1); }
+.result-item .code { color: #666; font-size: 10px; }
+
+.type-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px;
+  font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px;
+}
+
+#loading {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  z-index: 100; color: #888; font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<div id="loading">Loading polities data...</div>
+<div id="map"></div>
+
+<div id="panel">
+  <h1>WHEP Polities Database</h1>
+  <div class="subtitle">Historical political entities, 1800-2025</div>
+
+  <input type="text" id="search" placeholder="Search polities..." />
+
+  <div class="filters" id="type-filters"></div>
+
+  <div id="year-display">1900</div>
+  <input type="range" id="year-range" min="1800" max="2025" value="1900" step="1" />
+  <div class="slider-labels"><span>1800</span><span>1900</span><span>2025</span></div>
+
+  <div id="stats"></div>
+
+  <div id="results"></div>
+
+  <div id="info">
+    <h2 id="info-name"></h2>
+    <div class="meta" id="info-meta"></div>
+    <div class="chain" id="info-chain"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+const TYPE_COLORS = {
+  sovereign: '#2196F3', historical: '#FF9800', colonial: '#F44336',
+  dependency: '#9C27B0', mandate: '#E91E63', aggregate: '#607D8B',
+  region: '#795548', disputed: '#FF5722', puppet: '#9E9E9E', subnational: '#4CAF50'
+};
+
+let polities = [];
+let geoData = null;
+let activeTypes = new Set(Object.keys(TYPE_COLORS));
+activeTypes.delete('region');
+let selectedYear = 1900;
+let map;
+
+// CSV parser
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { inQuotes = !inQuotes; }
+    else if (ch === ',' && !inQuotes) { result.push(current); current = ''; }
+    else { current += ch; }
+  }
+  result.push(current);
+  return result;
+}
+
+async function loadCSV() {
+  const res = await fetch('polities.csv');
+  const text = await res.text();
+  const lines = text.trim().split('\n');
+  const headers = parseCSVLine(lines[0]);
+  polities = lines.slice(1).map(line => {
+    const vals = parseCSVLine(line);
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = vals[i] || '');
+    obj.start_year = parseInt(obj.start_year) || 1800;
+    obj.end_year = parseInt(obj.end_year) || 2025;
+    return obj;
+  });
+}
+
+async function loadGeoJSON() {
+  const res = await fetch('polities.geojson');
+  geoData = await res.json();
+  // Index features by polity_code for fast lookup
+  geoData._index = {};
+  geoData.features.forEach(f => {
+    if (f.properties && f.properties.polity_code) {
+      geoData._index[f.properties.polity_code] = f;
+    }
+  });
+}
+
+function buildTypeFilters() {
+  const container = document.getElementById('type-filters');
+  const types = [...new Set(polities.map(p => p.polity_type))].sort();
+  types.forEach(type => {
+    if (type === 'region') return;
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (activeTypes.has(type) ? ' active' : '');
+    btn.textContent = type;
+    btn.style.borderColor = TYPE_COLORS[type] || '#666';
+    btn.onclick = () => {
+      if (activeTypes.has(type)) { activeTypes.delete(type); btn.classList.remove('active'); }
+      else { activeTypes.add(type); btn.classList.add('active'); }
+      updateMap();
+    };
+    container.appendChild(btn);
+  });
+}
+
+function getActivePolities() {
+  return polities.filter(p =>
+    p.start_year <= selectedYear &&
+    p.end_year >= selectedYear &&
+    activeTypes.has(p.polity_type)
+  );
+}
+
+function updateStats() {
+  const active = getActivePolities();
+  document.getElementById('stats').innerHTML =
+    `<b>${active.length}</b> active polities in <b>${selectedYear}</b> &middot; ${polities.length} total in database`;
+}
+
+function buildFilteredGeoJSON() {
+  const activeCodes = new Set(getActivePolities().map(p => p.polity_code));
+  return {
+    type: 'FeatureCollection',
+    features: geoData.features.filter(f =>
+      f.properties && activeCodes.has(f.properties.polity_code)
+    )
+  };
+}
+
+function updateMap() {
+  if (!map || !geoData) return;
+  const filtered = buildFilteredGeoJSON();
+  map.getSource('polities').setData(filtered);
+  updateStats();
+}
+
+function showInfo(code) {
+  const p = polities.find(x => x.polity_code === code);
+  if (!p) return;
+  document.getElementById('info').style.display = 'block';
+  document.getElementById('info-name').textContent = p.polity_name;
+
+  const color = TYPE_COLORS[p.polity_type] || '#888';
+  let html = `
+    <span class="type-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${p.polity_type}</span><br>
+    <b>Code:</b> <span>${p.polity_code}</span><br>
+    <b>Period:</b> <span>${p.start_year} - ${p.end_year}</span> (${p.end_year - p.start_year + 1} years)<br>
+    <b>Continent:</b> ${p.continent}<br>
+  `;
+  if (p.iso3_code && p.iso3_code !== 'NA') html += `<b>ISO3:</b> <span>${p.iso3_code}</span><br>`;
+  if (p.polygon_source && p.polygon_source !== 'NA') html += `<b>Polygon:</b> ${p.polygon_source}<br>`;
+  if (p.notes && p.notes !== 'NA') html += `<b>Notes:</b> <span style="color:#999">${p.notes.substring(0, 300)}${p.notes.length > 300 ? '...' : ''}</span><br>`;
+  document.getElementById('info-meta').innerHTML = html;
+
+  let chain = '';
+  if (p.predecessor && p.predecessor !== 'NA') {
+    const preds = p.predecessor.split(';').map(s => s.trim());
+    chain += 'Predecessor: ' + preds.map(c => `<a onclick="showInfo('${c}')">${c}</a>`).join(', ') + '<br>';
+  }
+  if (p.successor && p.successor !== 'NA') {
+    const succs = p.successor.split(';').map(s => s.trim());
+    chain += 'Successor: ' + succs.map(c => `<a onclick="showInfo('${c}')">${c}</a>`).join(', ');
+  }
+  document.getElementById('info-chain').innerHTML = chain;
+}
+
+// Search
+document.getElementById('search').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  const resultsEl = document.getElementById('results');
+  if (q.length < 2) { resultsEl.innerHTML = ''; return; }
+  const matches = polities.filter(p =>
+    p.polity_name.toLowerCase().includes(q) ||
+    p.polity_code.toLowerCase().includes(q)
+  ).slice(0, 20);
+  resultsEl.innerHTML = matches.map(p => `
+    <div class="result-item" onclick="showInfo('${p.polity_code}')">
+      ${p.polity_name} <span class="code">${p.polity_code} (${p.start_year}-${p.end_year})</span>
+    </div>
+  `).join('');
+});
+
+// Year slider
+const slider = document.getElementById('year-range');
+slider.addEventListener('input', () => {
+  selectedYear = parseInt(slider.value);
+  document.getElementById('year-display').textContent = selectedYear;
+  updateMap();
+});
+
+// Init
+async function init() {
+  await Promise.all([loadCSV(), loadGeoJSON()]);
+  document.getElementById('loading').style.display = 'none';
+
+  buildTypeFilters();
+
+  // Color expression
+  const colorExpr = ['match', ['get', 'polity_type']];
+  for (const [type, color] of Object.entries(TYPE_COLORS)) {
+    colorExpr.push(type, color);
+  }
+  colorExpr.push('#888');
+
+  map = new maplibregl.Map({
+    container: 'map',
+    style: {
+      version: 8,
+      sources: {
+        'carto': {
+          type: 'raster',
+          tiles: ['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
+          tileSize: 256,
+          attribution: '&copy; CARTO, &copy; OSM contributors'
+        }
+      },
+      layers: [{ id: 'carto', type: 'raster', source: 'carto' }]
+    },
+    center: [20, 30],
+    zoom: 2,
+    maxZoom: 8
+  });
+
+  map.on('load', () => {
+    map.addSource('polities', {
+      type: 'geojson',
+      data: buildFilteredGeoJSON()
+    });
+
+    map.addLayer({
+      id: 'polities-fill',
+      type: 'fill',
+      source: 'polities',
+      paint: {
+        'fill-color': colorExpr,
+        'fill-opacity': 0.45
+      }
+    });
+
+    map.addLayer({
+      id: 'polities-outline',
+      type: 'line',
+      source: 'polities',
+      paint: {
+        'line-color': colorExpr,
+        'line-width': 1,
+        'line-opacity': 0.6
+      }
+    });
+
+    map.on('click', 'polities-fill', (e) => {
+      if (e.features && e.features.length > 0) {
+        showInfo(e.features[0].properties.polity_code);
+      }
+    });
+    map.on('mouseenter', 'polities-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'polities-fill', () => { map.getCanvas().style.cursor = ''; });
+
+    updateStats();
+  });
+}
+
+init();
+</script>
+</body>
+</html>
