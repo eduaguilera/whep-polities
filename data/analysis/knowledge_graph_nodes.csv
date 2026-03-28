@@ -91,8 +91,8 @@ ETH-1897-1902,Ethiopia (1897-1902),historical,Africa,1897,1902,ETH,polity,2,2,4
 CON-1898-1900,Congo (1898-1900),historical,Africa,1898,1900,CON,polity,0,2,2
 GHA-1898-1956,Ghana (1898-1956),historical,Africa,1898,1956,GHA,polity,4,4,8
 EGY-1899-1925,Egypt (1899-1925),historical,Africa,1899,1925,EGY,polity,2,1,3
-NOR-1899-1904,Northern Nigeria (1899-1904),historical,Africa,1899,1904,NOR,polity,5,3,8
-SOU-1899-1906,Southern Nigeria (1899-1906),historical,Africa,1899,1906,SOU,polity,5,4,9
+NOR-1899-1904,Northern Nigeria (1899-1904),historical,Africa,1899,1904,NOR,polity,8,3,11
+SOU-1899-1906,Southern Nigeria (1899-1906),historical,Africa,1899,1906,SOU,polity,6,4,10
 SUD-1899-1902,Sudan (1899-1902),historical,Africa,1899,1902,SUD,polity,2,2,4
 CHA-1900-1912,Chad (1900-1912),historical,Africa,1900,1912,CHA,polity,1,3,4
 CON-1900-1906,Congo (1900-1906),historical,Africa,1900,1906,CON,polity,1,2,3
@@ -155,7 +155,7 @@ BRI-1884-1960,British Protectorate (British Somaliland) (to 1960),colonial,Afric
 KAM-1884-1912,Cameroon (Kamerun) (to 1912),colonial,Africa,1884,1912,KAM,polity,0,2,2
 CAP-1800-1895,Cape Colony (to 1895),colonial,Africa,1800,1895,CAP,polity,0,2,2
 NAT-1843-1895,Natal (to 1895),colonial,Africa,1843,1895,NAT,polity,2,2,4
-OIL-1884-1898,Oil Rivers Protectorate (to 1898),colonial,Africa,1884,1898,OIL,polity,0,1,1
+OIL-1884-1898,Oil Rivers Protectorate (to 1898),colonial,Africa,1884,1898,OIL,polity,2,1,3
 SPA-1800-1982,Spanish North Africa,colonial,Africa,1800,1982,SPA,polity,2,1,3
 SPA-1884-1912,Spanish West Africa (to 1912),colonial,Africa,1884,1912,SPA,polity,2,2,4
 TRA-1856-1910,Transvaal (to 1910),colonial,Africa,1856,1910,TRA,polity,0,1,1
@@ -224,7 +224,7 @@ BHR-1800-2025,Bahrain,sovereign,Asia,1800,2025,BHR,polity,2,1,3
 BTN-1800-2025,Bhutan,sovereign,Asia,1800,2025,BTN,polity,1,1,2
 IRN-1800-1828,Persia (Qajar to 1828),historical,Asia,1800,1828,IRN,polity,0,4,4
 IRN-1828-2025,Iran,sovereign,Asia,1828,2025,IRN,polity,4,1,5
-JPN-1800-2025,Japan,sovereign,Asia,1800,2025,JPN,polity,49,1,50
+JPN-1800-2025,Japan,aggregate,Asia,1800,2025,JPN,polity,47,5,52
 KWT-1800-2025,Kuwait,sovereign,Asia,1800,2025,KWT,polity,2,1,3
 MDV-1800-2025,Maldives,sovereign,Asia,1800,2025,MDV,polity,1,1,2
 MMR-1800-2025,Myanmar,sovereign,Asia,1800,2025,MMR,polity,2,1,3
@@ -1291,9 +1291,16 @@ MEM-1920-1923,Memel Territory,mandate,Europe,1920,1923,,polity,0,1,1
 FIU-1920-1924,Free City of Fiume,historical,Europe,1920,1924,,polity,0,1,1
 MNG-1911-1921,Bogd Khanate of Mongolia,historical,Asia,1911,1921,MNG,polity,0,1,1
 IND-1800-2025,India (old),aggregate,Asia,1800,2025,IND,polity,0,8,8
-Africa,Africa,continent,Africa,1800,2025,,continent,261,0,261
+JPN-1800-1895,Japan (to 1895),historical,Asia,1800,1895,JPN,polity,1,2,3
+JPN-1895-1945,Japanese Empire,historical,Asia,1895,1945,JPN,polity,2,2,4
+JPN-1945-1952,Japan (occupied),historical,Asia,1945,1952,JPN,polity,2,2,4
+JPN-1952-2025,Japan,sovereign,Asia,1952,2025,JPN,polity,4,1,5
+NDD-1800-1884,Niger Delta City-States,historical,Africa,1800,1884,NGA,polity,1,3,4
+NUP-1800-1897,Nupe Kingdom (Bida Emirate),historical,Africa,1800,1897,NGA,polity,1,3,4
+NGA-1800-1899,Nigeria (pre-colonial),aggregate,Africa,1800,1899,NGA,polity,0,5,5
+Africa,Africa,continent,Africa,1800,2025,,continent,264,0,264
 Antarctica,Antarctica,continent,Antarctica,1800,2025,,continent,4,0,4
-Asia,Asia,continent,Asia,1800,2025,,continent,270,0,270
+Asia,Asia,continent,Asia,1800,2025,,continent,274,0,274
 Europe,Europe,continent,Europe,1800,2025,,continent,330,0,330
 Global,Global,continent,Global,1800,2025,,continent,0,0,0
 North America,North America,continent,North America,1800,2025,,continent,181,0,181

@@ -33,6 +33,7 @@ GHA-1898-1956,GHA-1957-2025,successor_of,successor column,1898,1956
 EGY-1800-1899,EGY-1899-1925,predecessor_of,predecessor column,1899,1925
 SOK-1804-1903,NOR-1899-1904,predecessor_of,predecessor column,1899,1904
 BNU-1800-1893,NOR-1899-1904,predecessor_of,predecessor column,1899,1904
+NUP-1800-1897,NOR-1899-1904,predecessor_of,predecessor column,1899,1904
 NOR-1899-1904,NOR-1904-1913,successor_of,successor column,1899,1904
 BKN-1800-1897,SOU-1899-1906,predecessor_of,predecessor column,1899,1906
 SOU-1899-1906,SOU-1906-1913,successor_of,successor column,1899,1906
@@ -52,6 +53,7 @@ SUD-1956-2011,SSD-2011-2025,successor_of,successor column,1956,2011
 NIG-1914-1961,NGA-1960-1961,predecessor_of,predecessor column,1960,1961
 NGA-1960-1961,NGA-1961-2025,successor_of,successor column,1960,1961
 ZUL-1816-1879,NAT-1843-1895,predecessor_of,predecessor column,1843,1895
+NDD-1800-1884,OIL-1884-1898,predecessor_of,predecessor column,1884,1898
 RWK-1800-1890,RWA-1920-1962,predecessor_of,predecessor column,1920,1962
 BDK-1800-1890,RWA-1920-1962,predecessor_of,predecessor column,1920,1962
 IRN-1800-1828,IRN-1828-2025,successor_of,successor column,1800,1828
@@ -327,6 +329,10 @@ BRAP-1960-1987,BRAP-1988-2025,successor_of,successor column,1960,1987
 NZL-1840-1907,NZL-1907-2025,successor_of,successor column,1840,1907
 CAN-1800-1866,CAN-1866-1948,successor_of,successor column,1800,1866
 CHN-1949-1950,CHN-1950-2025,predecessor_of,predecessor column,1950,2025
+NDD-1800-1884,OIL-1884-1898,successor_of,successor column,1800,1884
+NUP-1800-1897,NOR-1899-1904,successor_of,successor column,1800,1897
+NGA-1800-1899,NOR-1899-1904,successor_of,successor column,1800,1899
+NGA-1800-1899,SOU-1899-1906,successor_of,successor column,1800,1899
 USAL-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
 USAK-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
 USAZ-1959-2025,USA-1959-2025,subregion_of,notes field (Parent),1959,2025
@@ -744,6 +750,10 @@ SUD-1882-2025,SUD-1956-2011,aggregate_covers,"same ISO3 (SUD), date range contai
 CMR-1884-2025,CMR-1961-2025,aggregate_covers,"same ISO3 (CMR), date range contained",1961,2025
 CMR-1884-2025,CMR-1960-1961,aggregate_covers,"same ISO3 (CMR), date range contained",1960,1961
 FSM-1887-2025,FSM-1991-2025,aggregate_covers,"same ISO3 (FSM), date range contained",1991,2025
+JPN-1800-2025,JPN-1800-1895,aggregate_covers,"same ISO3 (JPN), date range contained",1800,1895
+JPN-1800-2025,JPN-1895-1945,aggregate_covers,"same ISO3 (JPN), date range contained",1895,1945
+JPN-1800-2025,JPN-1945-1952,aggregate_covers,"same ISO3 (JPN), date range contained",1945,1952
+JPN-1800-2025,JPN-1952-2025,aggregate_covers,"same ISO3 (JPN), date range contained",1952,2025
 CHN-1800-2025,CHN-1800-1895,aggregate_covers,"same ISO3 (CHN), date range contained",1800,1895
 CHN-1800-2025,CHN-1895-1912,aggregate_covers,"same ISO3 (CHN), date range contained",1895,1912
 CHN-1800-2025,CHN-1913-1914,aggregate_covers,"same ISO3 (CHN), date range contained",1913,1914
@@ -792,6 +802,8 @@ IND-1800-2025,IND-1893-1914,aggregate_covers,"same ISO3 (IND), date range contai
 IND-1800-2025,IND-1914-1937,aggregate_covers,"same ISO3 (IND), date range contained",1914,1937
 IND-1800-2025,IND-1937-1947,aggregate_covers,"same ISO3 (IND), date range contained",1937,1947
 IND-1800-2025,IND-1947-1949,aggregate_covers,"same ISO3 (IND), date range contained",1947,1949
+NGA-1800-1899,NDD-1800-1884,aggregate_covers,"same ISO3 (NGA), date range contained",1800,1884
+NGA-1800-1899,NUP-1800-1897,aggregate_covers,"same ISO3 (NGA), date range contained",1800,1897
 TUN-1800-1881,TUN-1881-2025,temporal_next,"same ISO3 (TUN), gap=0y",1881,1881
 GHA-1821-1888,GHA-1888-1898,temporal_next,"same ISO3 (GHA), gap=0y",1888,1888
 GHA-1888-1898,GHA-1898-1956,temporal_next,"same ISO3 (GHA), gap=0y",1898,1898
@@ -964,6 +976,9 @@ BOL-1903-1909,BOL-1909-1938,temporal_next,"same ISO3 (BOL), gap=0y",1909,1909
 BOL-1909-1938,BOL-1938-2025,temporal_next,"same ISO3 (BOL), gap=0y",1938,1938
 PRY-1811-1938,PRY-1938-2025,temporal_next,"same ISO3 (PRY), gap=0y",1938,1938
 ECU-1800-1942,ECU-1942-2025,temporal_next,"same ISO3 (ECU), gap=0y",1942,1942
+JPN-1800-1895,JPN-1895-1945,temporal_next,"same ISO3 (JPN), gap=0y",1895,1895
+JPN-1895-1945,JPN-1945-1952,temporal_next,"same ISO3 (JPN), gap=0y",1945,1945
+JPN-1945-1952,JPN-1952-2025,temporal_next,"same ISO3 (JPN), gap=0y",1952,1952
 GBR-1800-1921,BRI-1885-1895,colonial_ruler_of,name contains 'British',1885,1895
 GBR-1800-1921,BRI-1884-1960,colonial_ruler_of,name contains 'British',1884,1921
 ESP-1800-2025,SPA-1800-1982,colonial_ruler_of,name contains 'Spanish',1800,1982
@@ -1140,8 +1155,8 @@ F5302-1800-2025,CHN-1950-2025,region_contains,M49 code 030,1950,2025
 F5300-1800-2025,CHN-1950-2025,region_contains,M49 code 142,1950,2025
 F5302-1800-2025,PRK-1948-2025,region_contains,M49 code 030,1948,2025
 F5300-1800-2025,PRK-1948-2025,region_contains,M49 code 142,1948,2025
-F5302-1800-2025,JPN-1800-2025,region_contains,M49 code 030,1800,2025
-F5300-1800-2025,JPN-1800-2025,region_contains,M49 code 142,1800,2025
+F5302-1800-2025,JPN-1952-2025,region_contains,M49 code 030,1952,2025
+F5300-1800-2025,JPN-1952-2025,region_contains,M49 code 142,1952,2025
 F5302-1800-2025,MNG-1911-2025,region_contains,M49 code 030,1911,2025
 F5300-1800-2025,MNG-1911-2025,region_contains,M49 code 142,1911,2025
 F5302-1800-2025,KOR-1948-2025,region_contains,M49 code 030,1948,2025
@@ -2558,6 +2573,13 @@ MEM-1920-1923,Europe,located_in_continent,continent column,1920,1923
 FIU-1920-1924,Europe,located_in_continent,continent column,1920,1924
 MNG-1911-1921,Asia,located_in_continent,continent column,1911,1921
 IND-1800-2025,Asia,located_in_continent,continent column,1800,2025
+JPN-1800-1895,Asia,located_in_continent,continent column,1800,1895
+JPN-1895-1945,Asia,located_in_continent,continent column,1895,1945
+JPN-1945-1952,Asia,located_in_continent,continent column,1945,1952
+JPN-1952-2025,Asia,located_in_continent,continent column,1952,2025
+NDD-1800-1884,Africa,located_in_continent,continent column,1800,1884
+NUP-1800-1897,Africa,located_in_continent,continent column,1800,1897
+NGA-1800-1899,Africa,located_in_continent,continent column,1800,1899
 RWA-1962-2025,RWA-1920-1962,same_territory,"same ISO3 (RWA), temporal overlap",1962,1962
 TZA-1964-2025,TZA-1961-1964,same_territory,"same ISO3 (TZA), temporal overlap",1964,1964
 CHA-1900-1912,CHA-1800-2023,same_territory,"same ISO3 (CHA), temporal overlap",1900,1912
