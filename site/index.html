@@ -135,7 +135,7 @@ const TYPE_COLORS = {
 
 let polities = [];
 let geoData = null;
-const HIDDEN_BY_DEFAULT = new Set(['region', 'aggregate']);
+const HIDDEN_BY_DEFAULT = new Set(['region', 'aggregate', 'subnational']);
 let activeTypes = new Set(Object.keys(TYPE_COLORS).filter(t => !HIDDEN_BY_DEFAULT.has(t)));
 let selectedYear = 1900;
 let selectedCode = null;
