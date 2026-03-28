@@ -1,8 +1,8 @@
-# WHEP Polities Database v1.0 -- Overview
+# WHEP Polities Database v2.5 -- Overview
 
 **Project**: Who Has Eaten the Planet (WHEP)
 **Funded by**: European Research Council (ERC)
-**Date**: 2026-03-27
+**Date**: 2026-03-28
 **Database file**: `data/final/polities_database.csv`
 **Unified GeoPackage**: `data/final/polities_database.gpkg`
 
@@ -10,7 +10,7 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,317 political entities ("polities")** spanning
+A comprehensive database of **1,420 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
 Includes **422 subnational entries** across 9 countries + Qing China.
@@ -24,13 +24,13 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,317 |
-| Sovereign states | 195 |
-| Historical entities | 404 |
-| Colonial entities | 48 |
-| Dependencies/territories | 76 |
-| Trade aggregates | 75 |
-| Mandates | 15 |
+| Total entries | 1,420 |
+| Sovereign states | 154 |
+| Historical entities | 399 |
+| Colonial entities | 139 |
+| Dependencies/territories | 74 |
+| Trade aggregates | 132 |
+| Mandates | 18 |
 | Statistical regions | 77 |
 | Disputed entities | 4 |
 | Puppet states | 1 |
@@ -39,12 +39,12 @@ territory changes significantly (>10% area), a new polity entry is created.
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Non-region with polygon source | 1,237/1,240 (99.8%) |
+| Non-region with polygon source | 1,340/1,343 (99.8%) |
 | Subnational polygons (9 countries + Qing) | 422/422 (100%) |
 | COW State System coverage | 207/209 (99.0%) |
 | Trade data coverage | 331/331 geographies (100%) |
 | Decolonization events | 94/94 (100%) |
-| Verification | 1,317/1,317 (100%) |
+| Verification | 1,420/1,420 (100%) |
 
 ### Geographic Distribution (non-subnational)
 | Continent | Entries |

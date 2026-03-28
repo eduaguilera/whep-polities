@@ -1,4 +1,4 @@
-# WHEP Polities Research (v1.0)
+# WHEP Polities Research (v2.5)
 
 Research-level database of historical polities for the [Who Has Eaten the Planet?](https://www.whep.eu/) (WHEP) project. Covers political entities from 1800 to 2025 with territorial boundaries, cross-referenced against multiple external datasets.
 
@@ -6,11 +6,11 @@ Research-level database of historical polities for the [Who Has Eaten the Planet
 
 | Metric | Value |
 |--------|-------|
-| Total polities | 1,317 |
-| Non-region polities | 1,240 |
-| With polygon geometry | 1,139 / 1,240 (91.9%) |
+| Total polities | 1,420 |
+| Non-region polities | 1,343 |
+| With polygon geometry | 1,340 / 1,343 (99.8%) |
 | Subnational entries | 422 |
-| Verified entries | 1,317 / 1,317 (100%) |
+| Verified entries | 1,420 / 1,420 (100%) |
 | Knowledge graph | 1,325 nodes, 2,696 edges (9 relation types) |
 | Temporal coverage | 1800-2025 |
 | Trade data coverage | 331 / 331 geographies matched (100%) |
@@ -41,7 +41,7 @@ data/
   compiled/               # Intermediate (gitignored)
     polities_master.csv         Enriched base database (811 entries, run 01)
   final/                  # Main output
-    polities_database.csv       Final database (1,317 entries, 15 columns)
+    polities_database.csv       Final database (1,420 entries, 15 columns)
     polities_database.gpkg      Unified GeoPackage with all geometries
   geodata/                # Polygon source files (gitignored, large)
     polities_polygons.gpkg      Main polygon collection (~1,018 polities)

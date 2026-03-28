@@ -8,9 +8,9 @@ what external datasets are required, and where to obtain them.
 ## Quick start (using the release)
 
 The simplest way to use the database is to download the pre-built files from the
-[GitHub Release](https://github.com/lbm364dl/whep-polities/releases/tag/v1.0):
+[GitHub Release](https://github.com/lbm364dl/whep-polities/releases/tag/v2.5):
 
-- `polities_database.csv` -- the full database (1,317 entries, 15 columns)
+- `polities_database.csv` -- the full database (1,420 entries, 15 columns)
 - `polities_database.gpkg` -- GeoPackage with polygon geometries for all entries
 
 The CSV is also included in the git repository at `data/final/polities_database.csv`.
@@ -138,7 +138,7 @@ Rscript R/10_analysis_plots.R
 |------|-------------|
 | `data/whep-source/*.csv` | 11 source CSVs from the WHEP R package |
 | `data/external/*.csv` | 5 manually compiled reference datasets |
-| `data/final/polities_database.csv` | Final database (1,317 entries) |
+| `data/final/polities_database.csv` | Final database (1,420 entries) |
 | `data/analysis/*.csv` | 16 analysis and validation reports |
 | `data/source/cliopatria/cliopatria.geojson.zip` | Cliopatria v0.1.3 (52 MB) |
 | `R/*.R` | 24 R scripts (full pipeline) |
@@ -146,7 +146,7 @@ Rscript R/10_analysis_plots.R
 | `renv.lock` | R package version lock file |
 | `inputs/README.md` | Instructions for obtaining external datasets |
 
-### In the GitHub Release (v1.0)
+### In the GitHub Release (v2.5)
 
 | File | Size | Description |
 |------|------|-------------|

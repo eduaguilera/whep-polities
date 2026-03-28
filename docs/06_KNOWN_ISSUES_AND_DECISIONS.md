@@ -310,6 +310,24 @@
 
 ## 4. Changelog
 
+### Version 2.5 (2026-03-28)
+- Added 99 missing colonial-period entries from CShapes 2.0 dependencies, filling
+  map gaps where territories only appeared at independence. Key additions: Botswana
+  (protectorate 1895-1966), Angola (colony 1905-1975), Mozambique (1891-1975),
+  Zambia (1911-1953), Kenya (1926-1963), Madagascar (1886-1960), Namibia (1886-1990),
+  Sri Lanka (1886-1948), Korea (1910-1945), Laos (1896-1953), Syria/Lebanon/Jordan
+  mandates, and 80+ more across Africa, Asia, Americas, and Oceania.
+  121 predecessor/successor links added for new entries.
+- Split Ottoman Empire into 3 period entries with distinct CShapes polygons:
+  OTT-1800-1886 (Cliopatria 2.66M km2), OTT-1886-1908 (CShapes post-1878),
+  OTT-1908-1912 (CShapes post-Bosnia annexation). OTT-1800-1912 → aggregate.
+- Linked Ottoman→Saudi chain (OTT as predecessor of SAU-1924-1932). Documented
+  the 1912-1924 Arabian gap (no GIS data for Hejaz/Nejd).
+- Interactive web map improvements: search highlights polity on map with auto-year
+  navigation, collapsible panel with minimize button, animated filter dropdown,
+  editable year input field, mobile-responsive layout.
+- Database: 1,420 entries (1,343 non-region). Updated all documentation to v2.5.
+
 ### Version 2.4 (2026-03-28)
 - Comprehensive data integrity audit and fixes:
   - **Australian colonies**: 4 duplicate colony entries (TAS-1828-1900, AUSA-1838-1900,
