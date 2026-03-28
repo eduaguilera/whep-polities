@@ -33,37 +33,37 @@ NER-1960-2025,Niger,1960,2025,66,sovereign,Africa,NER,436,CShapes 2.0,NA,NA,FAOS
 SEN-1960-2025,Senegal,1960,2025,66,sovereign,Africa,SEN,433,CShapes 2.0,CAY-1800-1886,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SOM-1960-2025,Somalia,1960,2025,66,sovereign,Africa,SOM,520,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 TGO-1960-2025,Togo,1960,2025,66,sovereign,Africa,TGO,461,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-CMR-1961-2025,Cameroon,1961,2025,65,sovereign,Africa,CMR,471,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-NGA-1961-2025,Nigeria,1961,2025,65,sovereign,Africa,NGA,475,CShapes 2.0,NIG-1914-1961,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+CMR-1961-2025,Cameroon,1961,2025,65,sovereign,Africa,CMR,471,CShapes 2.0,CMR-1960-1961,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+NGA-1961-2025,Nigeria,1961,2025,65,sovereign,Africa,NGA,475,CShapes 2.0,NIG-1914-1961; NGA-1960-1961,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 BDI-1962-2025,Burundi,1962,2025,64,sovereign,Africa,BDI,516,CShapes 2.0,BDK-1800-1890,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-RWA-1962-2025,Rwanda,1962,2025,64,sovereign,Africa,RWA,517,CShapes 2.0,RWK-1800-1890,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+RWA-1962-2025,Rwanda,1962,2025,64,sovereign,Africa,RWA,517,CShapes 2.0,RWK-1800-1890; RWA-1920-1962,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 UGA-1962-2025,Uganda,1962,2025,64,sovereign,Africa,UGA,500,CShapes 2.0,BGA-1800-1894,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 KEN-1963-2025,Kenya,1963,2025,63,sovereign,Africa,KEN,501,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 MWI-1964-2025,Malawi,1964,2025,62,sovereign,Africa,MWI,553,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-TZA-1964-2025,Tanzania,1964,2025,62,sovereign,Africa,TZA,510,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+TZA-1964-2025,Tanzania,1964,2025,62,sovereign,Africa,TZA,510,CShapes 2.0,TZA-1961-1964,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ZMB-1964-2025,Zambia,1964,2025,62,sovereign,Africa,ZMB,551,CShapes 2.0,BMB-1800-1899,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 BWA-1966-2025,Botswana,1966,2025,60,sovereign,Africa,BWA,571,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 LSO-1966-2025,Lesotho,1966,2025,60,sovereign,Africa,LSO,570,CShapes 2.0,LST-1822-1868,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 GNQ-1968-2025,Equatorial Guinea,1968,2025,58,sovereign,Africa,GNQ,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 COM-1975-2025,Comoros,1975,2025,51,sovereign,Africa,COM,403,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 DJI-1977-2025,Djibouti,1977,2025,49,sovereign,Africa,DJI,522,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-EGY-1979-2025,Egypt,1979,2025,47,sovereign,Africa,EGY,651,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MRT-1979-2025,Mauritania,1979,2025,47,sovereign,Africa,MRT,435,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MAR-1979-2025,Morocco,1979,2025,47,sovereign,Africa,MAR,600,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ETH-1993-2025,Ethiopia,1993,2025,33,sovereign,Africa,ETH,530,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+EGY-1979-2025,Egypt,1979,2025,47,sovereign,Africa,EGY,651,CShapes 2.0,EGY-1967-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+MRT-1979-2025,Mauritania,1979,2025,47,sovereign,Africa,MRT,435,CShapes 2.0,MRT-1975-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+MAR-1979-2025,Morocco,1979,2025,47,sovereign,Africa,MAR,600,CShapes 2.0,MAR-1975-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+ETH-1993-2025,Ethiopia,1993,2025,33,sovereign,Africa,ETH,530,CShapes 2.0,ETH-1952-1993,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SSD-2011-2025,South Sudan,2011,2025,15,sovereign,Africa,SSD,626,CShapes 2.0,SUD-1956-2011,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SDN-2011-2025,Sudan,2011,2025,15,sovereign,Africa,SDN,625,CShapes 2.0,SUD-1956-2011,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ALG-1830-1902,Algeria (to 1902),1830,1902,73,historical,Africa,ALG,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1830 (French invasion). Was Regency of Algiers (Ottoman) before 1830. Cliopatria has Regency of Algiers polygons.
-ANG-1800-1890,Angola (to 1890),1800,1890,91,historical,Africa,ANG,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-BOT-1885-1890,Botswana (to 1890),1885,1890,6,historical,Africa,BOT,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Bechuanaland Protectorate established). Independent Tswana kingdoms before 1885.
+ALG-1830-1902,Algeria (to 1902),1830,1902,73,historical,Africa,ALG,NA,CShapes 2.0 + CShapes-Europe,NA,ALG-1902-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1830 (French invasion). Was Regency of Algiers (Ottoman) before 1830. Cliopatria has Regency of Algiers polygons.
+ANG-1800-1890,Angola (to 1890),1800,1890,91,historical,Africa,ANG,NA,CShapes 2.0 + CShapes-Europe,NA,ANG-1890-1891,FT; CShapes,VERIFIED,NA
+BOT-1885-1890,Botswana (to 1890),1885,1890,6,historical,Africa,BOT,NA,CShapes 2.0 + CShapes-Europe,NA,BOT-1890-1895,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Bechuanaland Protectorate established). Independent Tswana kingdoms before 1885.
 CON-1882-1898,Congo (to 1898),1882,1898,17,historical,Africa,CON,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (French Parliament ratified Brazza treaties). Loango and Teke kingdoms before 1882.
-CON-1885-1891,Democratic Republic of the Congo (to 1891),1885,1891,7,historical,Africa,CON,NA,CShapes 2.0 + CShapes-Europe,LBA-1800-1885; LND-1800-1887,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Congo Free State recognized at Berlin Conference). Luba Lunda and Kongo kingdoms before 1885. Paine et al. (2024) has pre-colonial state polygons.
+CON-1885-1891,Democratic Republic of the Congo (to 1891),1885,1891,7,historical,Africa,CON,NA,CShapes 2.0 + CShapes-Europe,LBA-1800-1885; LND-1800-1887,CON-1891-1894,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Congo Free State recognized at Berlin Conference). Luba Lunda and Kongo kingdoms before 1885. Paine et al. (2024) has pre-colonial state polygons.
 EGY-1800-1899,Egypt (to 1899),1800,1899,100,historical,Africa,EGY,651,"Cliopatria (Muhammad Ali dynasty 1848-1864, 1.83M km2)",NA,EGY-1899-1925,FT; CShapes,VERIFIED,Khedivate of Egypt including Sudan (conquered 1820-24) and Equatoria. Cliopatria polygon represents mid-century extent (~1.83M km2). Egypt lost Sudan to Mahdist revolt by 1885. Pre-1820: Egypt proper only (~1M km2).
 EGY-1800-1922,Egypt (to 1922),1800,1922,123,historical,Africa,EGY,651,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 ERI-1882-1889,Eritrea (to 1889),1882,1889,8,historical,Africa,ERI,531,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (Italy purchased Assab). Was Ethiopian Empire highlands and Ottoman coast before 1882.
-ETH-1800-1889,Ethiopia (to 1889),1800,1889,90,historical,Africa,ETH,530,"Cliopatria (Ethiopian Empire 1769-1889, 240K km2)",NA,NA,FT; CShapes,VERIFIED,"Pre-Menelik Ethiopia. Zemene Mesafint (Era of Princes). Highland core only: Gondar, Gojjam, Shewa, Tigray, Wello. ~240,000 km2. Cliopatria polygon replaces back-projected CShapes which was 2-3x too large."
-GAB-1839-1912,Gabon (to 1912),1839,1912,74,historical,Africa,GAB,481,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1839 (first French treaty with King Denis at Gabon Estuary). Mpongwe and Orungu coastal polities before 1839.
-GHA-1821-1888,Ghana (to 1888),1821,1888,68,historical,Africa,GHA,452,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1821 (British Crown took over forts). Ashanti Empire dominated the region in 1800. Paine et al. (2024) has Ashanti polygon.
+ETH-1800-1889,Ethiopia (to 1889),1800,1889,90,historical,Africa,ETH,530,"Cliopatria (Ethiopian Empire 1769-1889, 240K km2)",NA,ETH-1889-1897,FT; CShapes,VERIFIED,"Pre-Menelik Ethiopia. Zemene Mesafint (Era of Princes). Highland core only: Gondar, Gojjam, Shewa, Tigray, Wello. ~240,000 km2. Cliopatria polygon replaces back-projected CShapes which was 2-3x too large."
+GAB-1839-1912,Gabon (to 1912),1839,1912,74,historical,Africa,GAB,481,CShapes 2.0 + CShapes-Europe,NA,GAB-1912-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1839 (first French treaty with King Denis at Gabon Estuary). Mpongwe and Orungu coastal polities before 1839.
+GHA-1821-1888,Ghana (to 1888),1821,1888,68,historical,Africa,GHA,452,CShapes 2.0 + CShapes-Europe,NA,GHA-1888-1898,FT; CShapes,FIXED,Start corrected from 1800 to 1821 (British Crown took over forts). Ashanti Empire dominated the region in 1800. Paine et al. (2024) has Ashanti polygon.
 LAG-1861-1906,Lagos (to 1906),1861,1906,46,historical,Africa,LAG,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1861 (British annexation 6 Aug 1861). Yoruba kingdom of Lagos before 1861.
 MAD-1800-1912,Madagascar (to 1912),1800,1912,113,historical,Africa,MAD,NA,"Cliopatria (Merina Kingdom 1840-1894, 427K km2)",NA,MAD-1912-1946,FT; CShapes,VERIFIED,Merina Kingdom. Expanded from central highlands: 85K km2 (1796) -> 113K (1803) -> 173K (1820) -> 245K (1822) -> 375K (1825) -> 427K (1840-1894). Cliopatria polygon uses 1840 extent (~75% of island). Western Sakalava never fully subjugated. French colonization 1896.
 MOR-1800-1904,Morocco (to 1904),1800,1904,105,historical,Africa,MOR,NA,"Cliopatria (Morocco 1769-1860, 388K km2)",NA,MOR-1904-1956,FT; CShapes,VERIFIED,"Alaouite Morocco. Cliopatria polygon (388K km2). Note: fixed borders remain conceptually anachronistic. Historical Morocco had Bled al-makhzen (governed territory) vs Bled es-siba (nominal allegiance only, Rif/Atlas). Southern border was non-existent."
@@ -71,113 +71,113 @@ MOZ-1800-1891,Mozambique (to 1891),1800,1891,92,historical,Africa,MOZ,541,CShape
 SIE-1800-1889,Sierra Leone (to 1889),1800,1889,90,historical,Africa,SIE,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 ZAN-1856-1964,Zanzibar,1856,1964,109,historical,Africa,ZAN,NA,"Cliopatria (Zanzibar Sultanate 1856-1884, 28K km2 mainland)",NA,NA,FT; FAOSTAT; CShapes; WHEP-fix,FIXED,"Zanzibar Sultanate including mainland coastal strip (Cape Delgado to near Mogadishu, 1500km). Cliopatria polygon includes mainland (28K km2). Mainland lost 1886-1890 via Anglo-German treaties. Post-1890: islands only."
 ORA-1848-1910,Orange Free State (to 1910),1848,1910,63,historical,Africa,ORA,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes; WHEP-fix,"FIXED: merged duplicate, code ORA-1800-1910->ORA-1848-1910",NA
-GHA-1888-1898,Ghana (1888-1898),1888,1898,11,historical,Africa,GHA,452,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-KEN-1888-1891,Kenya (1888-1891),1888,1891,4,historical,Africa,KEN,501,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-COT-1889-1932,Côte d'Ivoire (1889-1932),1889,1932,44,historical,Africa,COT,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ETH-1889-1897,Ethiopia (1889-1897),1889,1897,9,historical,Africa,ETH,530,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ZIM-1889-1891,Zimbabwe (1889-1891),1889,1891,3,historical,Africa,ZIM,NA,CShapes 2.0,NDB-1823-1894,NA,FT; CShapes,VERIFIED,NA
-ANG-1890-1891,Angola (1890-1891),1890,1891,2,historical,Africa,ANG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-BOT-1890-1895,Botswana (1890-1895),1890,1895,6,historical,Africa,BOT,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+GHA-1888-1898,Ghana (1888-1898),1888,1898,11,historical,Africa,GHA,452,CShapes 2.0,GHA-1821-1888,GHA-1898-1956,FT; CShapes,VERIFIED,NA
+KEN-1888-1891,Kenya (1888-1891),1888,1891,4,historical,Africa,KEN,501,CShapes 2.0,NA,KEN-1891-1894,FT; CShapes,VERIFIED,NA
+COT-1889-1932,Côte d'Ivoire (1889-1932),1889,1932,44,historical,Africa,COT,NA,CShapes 2.0,NA,COT-1932-1947,FT; CShapes,VERIFIED,NA
+ETH-1889-1897,Ethiopia (1889-1897),1889,1897,9,historical,Africa,ETH,530,CShapes 2.0,ETH-1800-1889,ETH-1897-1902,FT; CShapes,VERIFIED,NA
+ZIM-1889-1891,Zimbabwe (1889-1891),1889,1891,3,historical,Africa,ZIM,NA,CShapes 2.0,NDB-1823-1894,ZIM-1891-1900,FT; CShapes,VERIFIED,NA
+ANG-1890-1891,Angola (1890-1891),1890,1891,2,historical,Africa,ANG,NA,CShapes 2.0,ANG-1800-1890,ANG-1891-1905,FT; CShapes,VERIFIED,NA
+BOT-1890-1895,Botswana (1890-1895),1890,1895,6,historical,Africa,BOT,NA,CShapes 2.0,BOT-1885-1890,NA,FT; CShapes,VERIFIED,NA
 ZAN-1890-1964,Zanzibar (1890-1964),1890,1964,75,historical,Africa,ZAN,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; CShapes; WHEP-fix,VERIFIED,NA
-ANG-1891-1905,Angola (1891-1905),1891,1905,15,historical,Africa,ANG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CON-1891-1894,Democratic Republic of the Congo (1891-1894),1891,1894,4,historical,Africa,CON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-KEN-1891-1894,Kenya (1891-1894),1891,1894,4,historical,Africa,KEN,501,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ZIM-1891-1900,Zimbabwe (1891-1900),1891,1900,10,historical,Africa,ZIM,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CON-1894-1910,Democratic Republic of the Congo (1894-1910),1894,1910,17,historical,Africa,CON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-KEN-1894-1902,Kenya (1894-1902),1894,1902,9,historical,Africa,KEN,501,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-UGA-1894-1902,Uganda (1894-1902),1894,1902,9,historical,Africa,UGA,500,CShapes 2.0,BGA-1800-1894; BNY-1800-1899; NKR-1800-1901,NA,FT; CShapes,VERIFIED,NA
+ANG-1891-1905,Angola (1891-1905),1891,1905,15,historical,Africa,ANG,NA,CShapes 2.0,ANG-1890-1891,NA,FT; CShapes,VERIFIED,NA
+CON-1891-1894,Democratic Republic of the Congo (1891-1894),1891,1894,4,historical,Africa,CON,NA,CShapes 2.0,CON-1885-1891,CON-1894-1910,FT; CShapes,VERIFIED,NA
+KEN-1891-1894,Kenya (1891-1894),1891,1894,4,historical,Africa,KEN,501,CShapes 2.0,KEN-1888-1891,KEN-1894-1902,FT; CShapes,VERIFIED,NA
+ZIM-1891-1900,Zimbabwe (1891-1900),1891,1900,10,historical,Africa,ZIM,NA,CShapes 2.0,ZIM-1889-1891,NA,FT; CShapes,VERIFIED,NA
+CON-1894-1910,Democratic Republic of the Congo (1894-1910),1894,1910,17,historical,Africa,CON,NA,CShapes 2.0,CON-1891-1894,NA,FT; CShapes,VERIFIED,NA
+KEN-1894-1902,Kenya (1894-1902),1894,1902,9,historical,Africa,KEN,501,CShapes 2.0,KEN-1891-1894,KEN-1902-1906,FT; CShapes,VERIFIED,NA
+UGA-1894-1902,Uganda (1894-1902),1894,1902,9,historical,Africa,UGA,500,CShapes 2.0,BGA-1800-1894; BNY-1800-1899; NKR-1800-1901,UGA-1902-1910,FT; CShapes,VERIFIED,NA
 BEN-1895-1898,Benin (1895-1898),1895,1898,4,historical,Africa,BEN,434,CShapes 2.0,DHY-1800-1894,NA,FT; CShapes,VERIFIED,NA
-ETH-1897-1902,Ethiopia (1897-1902),1897,1902,6,historical,Africa,ETH,530,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CON-1898-1900,Congo (1898-1900),1898,1900,3,historical,Africa,CON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-GHA-1898-1956,Ghana (1898-1956),1898,1956,59,historical,Africa,GHA,452,CShapes 2.0,ASH-1800-1896,GHA-1957-2025,FT; CShapes,VERIFIED,NA
+ETH-1897-1902,Ethiopia (1897-1902),1897,1902,6,historical,Africa,ETH,530,CShapes 2.0,ETH-1889-1897,ETH-1902-1907,FT; CShapes,VERIFIED,NA
+CON-1898-1900,Congo (1898-1900),1898,1900,3,historical,Africa,CON,NA,CShapes 2.0,NA,CON-1900-1906,FT; CShapes,VERIFIED,NA
+GHA-1898-1956,Ghana (1898-1956),1898,1956,59,historical,Africa,GHA,452,CShapes 2.0,ASH-1800-1896; GHA-1888-1898,GHA-1957-2025,FT; CShapes,VERIFIED,NA
 EGY-1899-1925,Egypt (1899-1925),1899,1925,27,historical,Africa,EGY,651,CShapes 2.0,EGY-1800-1899,NA,FT; CShapes,VERIFIED,NA
 NOR-1899-1904,Northern Nigeria (1899-1904),1899,1904,6,historical,Africa,NOR,385,CShapes 2.0,SOK-1804-1903; BNU-1800-1893; NUP-1800-1897,NOR-1904-1913,FT; CShapes,VERIFIED,NA
-SOU-1899-1906,Southern Nigeria (1899-1906),1899,1906,8,historical,Africa,SOU,NA,CShapes 2.0,BKN-1800-1897,SOU-1906-1913,FT; CShapes,VERIFIED,NA
-SUD-1899-1902,Sudan (1899-1902),1899,1902,4,historical,Africa,SUD,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CHA-1900-1912,Chad (1900-1912),1900,1912,13,historical,Africa,CHA,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CON-1900-1906,Congo (1900-1906),1900,1906,7,historical,Africa,CON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+SOU-1899-1906,Southern Nigeria (1899-1906),1899,1906,8,historical,Africa,SOU,NA,CShapes 2.0,BKN-1800-1897; SOU-1838-1900,SOU-1906-1913; SOU-1905-1945,FT; CShapes,VERIFIED,NA
+SUD-1899-1902,Sudan (1899-1902),1899,1902,4,historical,Africa,SUD,NA,CShapes 2.0,NA,SUD-1902-1910,FT; CShapes,VERIFIED,NA
+CHA-1900-1912,Chad (1900-1912),1900,1912,13,historical,Africa,CHA,NA,CShapes 2.0,NA,CHA-1912-1919,FT; CShapes,VERIFIED,NA
+CON-1900-1906,Congo (1900-1906),1900,1906,7,historical,Africa,CON,NA,CShapes 2.0,CON-1898-1900,CON-1906-1912,FT; CShapes,VERIFIED,NA
 NOR-1900-1911,Northeastern Rhodesia (1900-1911),1900,1911,12,historical,Africa,NOR,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-NOR-1900-1905,Northwestern Rhodesia (1900-1905),1900,1905,6,historical,Africa,NOR,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ALG-1902-1919,Algeria (1902-1919),1902,1919,18,historical,Africa,ALG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ETH-1902-1907,Ethiopia (1902-1907),1902,1907,6,historical,Africa,ETH,530,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-KEN-1902-1906,Kenya (1902-1906),1902,1906,5,historical,Africa,KEN,501,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SUD-1902-1910,Sudan (1902-1910),1902,1910,9,historical,Africa,SUD,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-UGA-1902-1910,Uganda (1902-1910),1902,1910,9,historical,Africa,UGA,500,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-MAU-1904-1912,Mauritania (1904-1912),1904,1912,9,historical,Africa,MAU,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-MOR-1904-1956,Morocco (1904-1956),1904,1956,53,historical,Africa,MOR,NA,CShapes 2.0,MOR-1800-1904,NA,FT; CShapes,VERIFIED,NA
-NOR-1904-1913,Northern Nigeria (1904-1913),1904,1913,10,historical,Africa,NOR,385,CShapes 2.0,NOR-1899-1904,NIG-1914-1961,FT; CShapes,VERIFIED,NA
-MAL-1905-1919,Mali (1905-1919),1905,1919,15,historical,Africa,MAL,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+NOR-1900-1905,Northwestern Rhodesia (1900-1905),1900,1905,6,historical,Africa,NOR,NA,CShapes 2.0,NA,NOR-1904-1913,FT; CShapes,VERIFIED,NA
+ALG-1902-1919,Algeria (1902-1919),1902,1919,18,historical,Africa,ALG,NA,CShapes 2.0,ALG-1830-1902,NA,FT; CShapes,VERIFIED,NA
+ETH-1902-1907,Ethiopia (1902-1907),1902,1907,6,historical,Africa,ETH,530,CShapes 2.0,ETH-1897-1902,ETH-1907-1952,FT; CShapes,VERIFIED,NA
+KEN-1902-1906,Kenya (1902-1906),1902,1906,5,historical,Africa,KEN,501,CShapes 2.0,KEN-1894-1902,KEN-1907-1924,FT; CShapes,VERIFIED,NA
+SUD-1902-1910,Sudan (1902-1910),1902,1910,9,historical,Africa,SUD,NA,CShapes 2.0,SUD-1899-1902,SUD-1910-1934,FT; CShapes,VERIFIED,NA
+UGA-1902-1910,Uganda (1902-1910),1902,1910,9,historical,Africa,UGA,500,CShapes 2.0,UGA-1894-1902,UGA-1910-1926,FT; CShapes,VERIFIED,NA
+MAU-1904-1912,Mauritania (1904-1912),1904,1912,9,historical,Africa,MAU,NA,CShapes 2.0,NA,MAU-1912-1944,FT; CShapes,VERIFIED,NA
+MOR-1904-1956,Morocco (1904-1956),1904,1956,53,historical,Africa,MOR,NA,CShapes 2.0,MOR-1800-1904,MOR-1956-1958,FT; CShapes,VERIFIED,NA
+NOR-1904-1913,Northern Nigeria (1904-1913),1904,1913,10,historical,Africa,NOR,385,CShapes 2.0,NOR-1899-1904; NOR-1900-1905,NIG-1914-1961,FT; CShapes,VERIFIED,NA
+MAL-1905-1919,Mali (1905-1919),1905,1919,15,historical,Africa,MAL,NA,CShapes 2.0,NA,MAL-1919-1932,FT; CShapes,VERIFIED,NA
 NIG-1905-1932,Niger (1905-1932),1905,1932,28,historical,Africa,NIG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 NOR-1905-1911,Northwestern Rhodesia (1905-1911),1905,1911,7,historical,Africa,NOR,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CEN-1906-1912,Central African Republic (1906-1912),1906,1912,7,historical,Africa,CEN,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CON-1906-1912,Congo (1906-1912),1906,1912,7,historical,Africa,CON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+CEN-1906-1912,Central African Republic (1906-1912),1906,1912,7,historical,Africa,CEN,NA,CShapes 2.0,NA,CEN-1912-1919,FT; CShapes,VERIFIED,NA
+CON-1906-1912,Congo (1906-1912),1906,1912,7,historical,Africa,CON,NA,CShapes 2.0,CON-1900-1906,CON-1912-1919,FT; CShapes,VERIFIED,NA
 SOU-1906-1913,Southern Nigeria (1906-1913),1906,1913,8,historical,Africa,SOU,NA,CShapes 2.0,SOU-1899-1906,NIG-1914-1961,FT; CShapes,VERIFIED,NA
-ETH-1907-1952,Ethiopia (1907-1952),1907,1952,46,historical,Africa,ETH,530,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-KEN-1907-1924,Kenya (1907-1924),1907,1924,18,historical,Africa,KEN,501,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SUD-1910-1934,Sudan (1910-1934),1910,1934,25,historical,Africa,SUD,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-UGA-1910-1926,Uganda (1910-1926),1910,1926,17,historical,Africa,UGA,500,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-MAR-1911-1958,Morocco (to 1958),1911,1958,48,historical,Africa,MAR,600,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CEN-1912-1919,Central African Republic (1912-1919),1912,1919,8,historical,Africa,CEN,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CHA-1912-1919,Chad (1912-1919),1912,1919,8,historical,Africa,CHA,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CON-1912-1919,Congo (1912-1919),1912,1919,8,historical,Africa,CON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-GAB-1912-1919,Gabon (1912-1919),1912,1919,8,historical,Africa,GAB,481,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-LIB-1912-1919,Libya (1912-1919),1912,1919,8,historical,Africa,LIB,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+ETH-1907-1952,Ethiopia (1907-1952),1907,1952,46,historical,Africa,ETH,530,CShapes 2.0,ETH-1902-1907,ETH-1952-1993,FT; CShapes,VERIFIED,NA
+KEN-1907-1924,Kenya (1907-1924),1907,1924,18,historical,Africa,KEN,501,CShapes 2.0,KEN-1902-1906,KEN-1924-1926,FT; CShapes,VERIFIED,NA
+SUD-1910-1934,Sudan (1910-1934),1910,1934,25,historical,Africa,SUD,NA,CShapes 2.0,SUD-1902-1910,SUD-1934-2011,FT; CShapes,VERIFIED,NA
+UGA-1910-1926,Uganda (1910-1926),1910,1926,17,historical,Africa,UGA,500,CShapes 2.0,UGA-1902-1910,NA,FT; CShapes,VERIFIED,NA
+MAR-1911-1958,Morocco (to 1958),1911,1958,48,historical,Africa,MAR,600,CShapes 2.0,NA,MAR-1958-1975,FT; CShapes,VERIFIED,NA
+CEN-1912-1919,Central African Republic (1912-1919),1912,1919,8,historical,Africa,CEN,NA,CShapes 2.0,CEN-1906-1912,NA,FT; CShapes,VERIFIED,NA
+CHA-1912-1919,Chad (1912-1919),1912,1919,8,historical,Africa,CHA,NA,CShapes 2.0,CHA-1900-1912,NA,FT; CShapes,VERIFIED,NA
+CON-1912-1919,Congo (1912-1919),1912,1919,8,historical,Africa,CON,NA,CShapes 2.0,CON-1906-1912,NA,FT; CShapes,VERIFIED,NA
+GAB-1912-1919,Gabon (1912-1919),1912,1919,8,historical,Africa,GAB,481,CShapes 2.0,GAB-1839-1912,NA,FT; CShapes,VERIFIED,NA
+LIB-1912-1919,Libya (1912-1919),1912,1919,8,historical,Africa,LIB,NA,CShapes 2.0,NA,LIB-1919-1925,FT; CShapes,VERIFIED,NA
 MAD-1912-1946,Madagascar (1912-1946),1912,1946,35,historical,Africa,MAD,NA,CShapes 2.0,MAD-1800-1912,NA,FT; CShapes,VERIFIED,NA
-MAU-1912-1944,Mauritania (1912-1944),1912,1944,33,historical,Africa,MAU,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+MAU-1912-1944,Mauritania (1912-1944),1912,1944,33,historical,Africa,MAU,NA,CShapes 2.0,MAU-1904-1912,MAU-1944-1975,FT; CShapes,VERIFIED,NA
 NIG-1914-1961,Nigeria (1914-1961),1914,1961,48,historical,Africa,NIG,NA,CShapes 2.0,NOR-1904-1913; SOU-1906-1913,NGA-1961-2025; NGA-1960-1961,FT; FAOSTAT; CShapes,VERIFIED,NA
-LIB-1919-1925,Libya (1919-1925),1919,1925,7,historical,Africa,LIB,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-MAL-1919-1932,Mali (1919-1932),1919,1932,14,historical,Africa,MAL,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-EGY-1922-1925,Egypt (1922-1925),1922,1925,4,historical,Africa,EGY,651,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-KEN-1924-1926,Kenya (1924-1926),1924,1926,3,historical,Africa,KEN,501,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-EGY-1925-1967,Egypt (1925-1967),1925,1967,43,historical,Africa,EGY,651,CShapes 2.0,NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
-LIB-1925-1934,Libya (1925-1934),1925,1934,10,historical,Africa,LIB,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-COT-1932-1947,Côte d'Ivoire (1932-1947),1932,1947,16,historical,Africa,COT,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-MAL-1932-1944,Mali (1932-1944),1932,1944,13,historical,Africa,MAL,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+LIB-1919-1925,Libya (1919-1925),1919,1925,7,historical,Africa,LIB,NA,CShapes 2.0,LIB-1912-1919,LIB-1925-1934,FT; CShapes,VERIFIED,NA
+MAL-1919-1932,Mali (1919-1932),1919,1932,14,historical,Africa,MAL,NA,CShapes 2.0,MAL-1905-1919,MAL-1932-1944,FT; CShapes,VERIFIED,NA
+EGY-1922-1925,Egypt (1922-1925),1922,1925,4,historical,Africa,EGY,651,CShapes 2.0,NA,EGY-1925-1967,FT; CShapes,VERIFIED,NA
+KEN-1924-1926,Kenya (1924-1926),1924,1926,3,historical,Africa,KEN,501,CShapes 2.0,KEN-1907-1924,NA,FT; CShapes,VERIFIED,NA
+EGY-1925-1967,Egypt (1925-1967),1925,1967,43,historical,Africa,EGY,651,CShapes 2.0,EGY-1922-1925,EGY-1967-1979,FT; FAOSTAT; CShapes,VERIFIED,NA
+LIB-1925-1934,Libya (1925-1934),1925,1934,10,historical,Africa,LIB,NA,CShapes 2.0,LIB-1919-1925,NA,FT; CShapes,VERIFIED,NA
+COT-1932-1947,Côte d'Ivoire (1932-1947),1932,1947,16,historical,Africa,COT,NA,CShapes 2.0,COT-1889-1932,NA,FT; CShapes,VERIFIED,NA
+MAL-1932-1944,Mali (1932-1944),1932,1944,13,historical,Africa,MAL,NA,CShapes 2.0,MAL-1919-1932,MAL-1944-1947,FT; CShapes,VERIFIED,NA
 NIG-1932-1947,Niger (1932-1947),1932,1947,16,historical,Africa,NIG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SUD-1934-2011,Sudan (1934-2011),1934,2011,78,historical,Africa,SUD,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-MAL-1944-1947,Mali (1944-1947),1944,1947,4,historical,Africa,MAL,NA,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
-MAU-1944-1975,Mauritania (1944-1975),1944,1975,32,historical,Africa,MAU,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MAL-1947-1959,Mali (1947-1959),1947,1959,13,historical,Africa,MAL,NA,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
-ETH-1952-1993,Ethiopia (1952-1993),1952,1993,42,historical,Africa,ETH,530,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MOR-1956-1958,Morocco (1956-1958),1956,1958,3,historical,Africa,MOR,NA,CShapes 2.0,NA,MAR-1979-2025,CShapes,VERIFIED,NA
+SUD-1934-2011,Sudan (1934-2011),1934,2011,78,historical,Africa,SUD,NA,CShapes 2.0,SUD-1910-1934,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+MAL-1944-1947,Mali (1944-1947),1944,1947,4,historical,Africa,MAL,NA,CShapes 2.0,MAL-1932-1944,MAL-1946-1963,CShapes,VERIFIED,NA
+MAU-1944-1975,Mauritania (1944-1975),1944,1975,32,historical,Africa,MAU,NA,CShapes 2.0,MAU-1912-1944,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+MAL-1947-1959,Mali (1947-1959),1947,1959,13,historical,Africa,MAL,NA,CShapes 2.0,NA,MAL-1959-1960,CShapes,VERIFIED,NA
+ETH-1952-1993,Ethiopia (1952-1993),1952,1993,42,historical,Africa,ETH,530,CShapes 2.0,ETH-1907-1952,ETH-1993-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
+MOR-1956-1958,Morocco (1956-1958),1956,1958,3,historical,Africa,MOR,NA,CShapes 2.0,MOR-1904-1956,MAR-1979-2025,CShapes,VERIFIED,NA
 SUD-1956-2011,Sudan (1956-2011),1956,2011,56,historical,Africa,SUD,NA,CShapes 2.0,NA,SDN-2011-2025; SSD-2011-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
-MAR-1958-1975,Morocco (1958-1975),1958,1975,18,historical,Africa,MAR,600,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-SPA-1958-1975,Western Sahara (1958-1975),1958,1975,18,historical,Africa,SPA,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MAL-1959-1960,Mali (1959-1960),1959,1960,2,historical,Africa,MAL,NA,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
-CMR-1960-1961,Cameroon (1960-1961),1960,1961,2,historical,Africa,CMR,471,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-MRT-1960-1975,Mauritania (1960-1975),1960,1975,16,historical,Africa,MRT,435,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+MAR-1958-1975,Morocco (1958-1975),1958,1975,18,historical,Africa,MAR,600,CShapes 2.0,MAR-1911-1958,MAR-1975-1979,FAOSTAT; M49; CShapes,VERIFIED,NA
+SPA-1958-1975,Western Sahara (1958-1975),1958,1975,18,historical,Africa,SPA,NA,CShapes 2.0,SPA-1912-1958,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+MAL-1959-1960,Mali (1959-1960),1959,1960,2,historical,Africa,MAL,NA,CShapes 2.0,MAL-1947-1959,NA,CShapes,VERIFIED,NA
+CMR-1960-1961,Cameroon (1960-1961),1960,1961,2,historical,Africa,CMR,471,CShapes 2.0,NA,CMR-1961-2025,FAOSTAT; CShapes,VERIFIED,NA
+MRT-1960-1975,Mauritania (1960-1975),1960,1975,16,historical,Africa,MRT,435,CShapes 2.0,NA,MRT-1975-1979,FAOSTAT; M49; CShapes,VERIFIED,NA
 NGA-1960-1961,Nigeria (1960-1961),1960,1961,2,historical,Africa,NGA,475,CShapes 2.0,NIG-1914-1961,NGA-1961-2025,FAOSTAT; CShapes,VERIFIED,NA
-EGY-1967-1979,Egypt (1967-1979),1967,1979,13,historical,Africa,EGY,651,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MRT-1975-1979,Mauritania (1975-1979),1975,1979,5,historical,Africa,MRT,435,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MAR-1975-1979,Morocco (1975-1979),1975,1979,5,historical,Africa,MAR,600,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+EGY-1967-1979,Egypt (1967-1979),1967,1979,13,historical,Africa,EGY,651,CShapes 2.0,EGY-1925-1967,EGY-1979-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
+MRT-1975-1979,Mauritania (1975-1979),1975,1979,5,historical,Africa,MRT,435,CShapes 2.0,MRT-1960-1975,MRT-1979-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
+MAR-1975-1979,Morocco (1975-1979),1975,1979,5,historical,Africa,MAR,600,CShapes 2.0,MAR-1958-1975,MAR-1979-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 BRI-1885-1895,British Bechuanaland (to 1895),1885,1895,11,colonial,Africa,BRI,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Crown Colony established 30 Sep 1885). Independent Tswana peoples before 1885.
 BRI-1884-1960,British Protectorate (British Somaliland) (to 1960),1884,1960,77,colonial,Africa,BRI,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (first British treaties with Somali clans). Somali clan societies and sultanates before 1884.
-KAM-1884-1912,Cameroon (Kamerun) (to 1912),1884,1912,29,colonial,Africa,KAM,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (Nachtigal signed treaties 5 Jul 1884). Bamoun Kingdom Fulani lamidates and Duala polities before 1884.
-CAP-1800-1895,Cape Colony (to 1895),1800,1895,96,colonial,Africa,CAP,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-NAT-1843-1895,Natal (to 1895),1843,1895,53,colonial,Africa,NAT,NA,CShapes 2.0 (dependencies=TRUE),ZUL-1816-1879,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1843 (British annexation 4 May 1843). Nguni peoples and Zulu Kingdom before 1843. Paine et al. (2024) has Zulu polygon.
+KAM-1884-1912,Cameroon (Kamerun) (to 1912),1884,1912,29,colonial,Africa,KAM,NA,CShapes 2.0 (dependencies=TRUE),NA,KAM-1912-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (Nachtigal signed treaties 5 Jul 1884). Bamoun Kingdom Fulani lamidates and Duala polities before 1884.
+CAP-1800-1895,Cape Colony (to 1895),1800,1895,96,colonial,Africa,CAP,NA,CShapes 2.0 (dependencies=TRUE),NA,CAP-1895-1910,FT; CShapes,VERIFIED,NA
+NAT-1843-1895,Natal (to 1895),1843,1895,53,colonial,Africa,NAT,NA,CShapes 2.0 (dependencies=TRUE),ZUL-1816-1879,NAT-1895-1910,FT; CShapes,FIXED,Start corrected from 1800 to 1843 (British annexation 4 May 1843). Nguni peoples and Zulu Kingdom before 1843. Paine et al. (2024) has Zulu polygon.
 OIL-1884-1898,Oil Rivers Protectorate (to 1898),1884,1898,15,colonial,Africa,OIL,NA,CShapes 2.0 (dependencies=TRUE),NDD-1800-1884,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (protectorate proclaimed). Niger Delta city-states (Bonny Brass Calabar) before 1884.
 SPA-1800-1982,Spanish North Africa,1800,1982,183,colonial,Africa,SPA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-SPA-1884-1912,Spanish West Africa (to 1912),1884,1912,29,colonial,Africa,SPA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (Bonelli treaty 28 Nov 1884). Sahrawi tribal territories before 1884.
+SPA-1884-1912,Spanish West Africa (to 1912),1884,1912,29,colonial,Africa,SPA,NA,CShapes 2.0 (dependencies=TRUE),NA,SPA-1912-1956,FT; CShapes,FIXED,Start corrected from 1800 to 1884 (Bonelli treaty 28 Nov 1884). Sahrawi tribal territories before 1884.
 TRA-1856-1910,Transvaal (to 1910),1856,1910,55,colonial,Africa,TRA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
 FSO-1884-1977,French Somalia,1884,1977,94,colonial,Africa,FSO,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes; WHEP-fix,VERIFIED,NA
 GWA-1884-1914,German West Africa,1884,1914,31,colonial,Africa,GWA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
 BBE-1885-1895,British Bechuanaland,1885,1895,11,colonial,Africa,BBE,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-GER-1887-1888,German Togoland (1887-1888),1887,1888,2,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-GER-1888-1896,German Togoland (1888-1896),1888,1896,9,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
+GER-1887-1888,German Togoland (1887-1888),1887,1888,2,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),NA,GER-1888-1896,FT; CShapes,VERIFIED,NA
+GER-1888-1896,German Togoland (1888-1896),1888,1896,9,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),GER-1887-1888,GER-1897-1919,FT; CShapes,VERIFIED,NA
 ITA-1889-1924,Italian Somaliland (1889-1924),1889,1924,36,colonial,Africa,ITA,325,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-CAP-1895-1910,Cape Colony (1895-1910),1895,1910,16,colonial,Africa,CAP,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-FRE-1895-1898,French West Africa (1895-1898),1895,1898,4,colonial,Africa,FRE,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-NAT-1895-1910,Natal (1895-1910),1895,1910,16,colonial,Africa,NAT,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-GER-1897-1919,German Togoland (1897-1919),1897,1919,23,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-FRE-1898-1902,French West Africa (1898-1902),1898,1902,5,colonial,Africa,FRE,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-FRE-1902-1904,French West Africa (1902-1904),1902,1904,3,colonial,Africa,FRE,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-KAM-1912-1919,Cameroon (Kamerun) (1912-1919),1912,1919,8,colonial,Africa,KAM,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-SPA-1912-1956,Spanish Morocco (1912-1956),1912,1956,45,colonial,Africa,SPA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-SPA-1912-1958,Spanish West Africa (1912-1958),1912,1958,47,colonial,Africa,SPA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-GER-1919-1922,German Togoland (1919-1922),1919,1922,4,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
+CAP-1895-1910,Cape Colony (1895-1910),1895,1910,16,colonial,Africa,CAP,NA,CShapes 2.0 (dependencies=TRUE),CAP-1800-1895,NA,FT; CShapes,VERIFIED,NA
+FRE-1895-1898,French West Africa (1895-1898),1895,1898,4,colonial,Africa,FRE,NA,CShapes 2.0 (dependencies=TRUE),NA,FRE-1898-1902,FT; CShapes,VERIFIED,NA
+NAT-1895-1910,Natal (1895-1910),1895,1910,16,colonial,Africa,NAT,NA,CShapes 2.0 (dependencies=TRUE),NAT-1843-1895,NA,FT; CShapes,VERIFIED,NA
+GER-1897-1919,German Togoland (1897-1919),1897,1919,23,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),GER-1888-1896,GER-1919-1922,FT; CShapes,VERIFIED,NA
+FRE-1898-1902,French West Africa (1898-1902),1898,1902,5,colonial,Africa,FRE,NA,CShapes 2.0 (dependencies=TRUE),FRE-1895-1898,FRE-1902-1904,FT; CShapes,VERIFIED,NA
+FRE-1902-1904,French West Africa (1902-1904),1902,1904,3,colonial,Africa,FRE,NA,CShapes 2.0 (dependencies=TRUE),FRE-1898-1902,NA,FT; CShapes,VERIFIED,NA
+KAM-1912-1919,Cameroon (Kamerun) (1912-1919),1912,1919,8,colonial,Africa,KAM,NA,CShapes 2.0 (dependencies=TRUE),KAM-1884-1912,NA,FT; CShapes,VERIFIED,NA
+SPA-1912-1956,Spanish Morocco (1912-1956),1912,1956,45,colonial,Africa,SPA,NA,CShapes 2.0 (dependencies=TRUE),SPA-1884-1912,NA,FT; CShapes,VERIFIED,NA
+SPA-1912-1958,Spanish West Africa (1912-1958),1912,1958,47,colonial,Africa,SPA,NA,CShapes 2.0 (dependencies=TRUE),NA,SPA-1958-1975,FT; CShapes,VERIFIED,NA
+GER-1919-1922,German Togoland (1919-1922),1919,1922,4,colonial,Africa,GER,255,CShapes 2.0 (dependencies=TRUE),GER-1897-1919,NA,FT; CShapes,VERIFIED,NA
 BRI-1922-1955,British Togoland (1922-1955),1922,1955,34,colonial,Africa,BRI,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
 ITA-1924-1960,Italian Somaliland (1924-1960),1924,1960,37,colonial,Africa,ITA,325,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-FED-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,12,colonial,Africa,FED,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FAOSTAT; CShapes,VERIFIED,NA
+FED-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,12,colonial,Africa,FED,NA,CShapes 2.0 (dependencies=TRUE),NA,FED-1962-1967,FAOSTAT; CShapes,VERIFIED,NA
 SOU-1956-1958,Southern zone of Spanish Morocco (1956-1958),1956,1958,3,colonial,Africa,SOU,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,NA
 CAN-1800-2025,Canary Islands,1800,2025,226,dependency,Africa,CAN,20,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CEU-1800-2025,Ceuta Y Melilla,1800,2025,226,dependency,Africa,CEU,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -187,13 +187,13 @@ REU-1816-2025,Réunion,1816,2025,210,dependency,Africa,REU,NA,GADM 4.1,NA,NA,FT;
 MYT-1843-1914,Mayotte and Noissi-be,1843,1914,72,dependency,Africa,MYT,NA,GADM 4.1,NA,NA,FT; CShapes,VERIFIED,NA
 MYT-2002-2025,Mayotte,2002,2025,24,dependency,Africa,MYT,NA,GADM 4.1,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 GEA-1884-2025,German East Africa (Tanganyika),1884,2025,142,mandate,Africa,GEA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-TAN-1891-1920,Tanzania (1891-1920),1891,1920,30,mandate,Africa,TAN,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+TAN-1891-1920,Tanzania (1891-1920),1891,1920,30,mandate,Africa,TAN,NA,CShapes 2.0,NA,TAN-1920-1922,FT; CShapes,VERIFIED,NA
 BRI-1919-1961,British Cameroon (1919-1961),1919,1961,43,mandate,Africa,BRI,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 CAM-1919-1961,Cameroon (1919-1961),1919,1961,43,mandate,Africa,CAM,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
-RWA-1920-1962,Rwanda and Burundi (1920-1962),1920,1962,43,mandate,Africa,RWA,517,CShapes 2.0 (dependencies=TRUE),RWK-1800-1890; BDK-1800-1890,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
-TAN-1920-1922,Tanzania (1920-1922),1920,1922,3,mandate,Africa,TAN,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-TAN-1922-1964,Tanzania (1922-1964),1922,1964,43,mandate,Africa,TAN,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
-TZA-1961-1964,Tanzania (1961-1964),1961,1964,4,mandate,Africa,TZA,510,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
+RWA-1920-1962,Rwanda and Burundi (1920-1962),1920,1962,43,mandate,Africa,RWA,517,CShapes 2.0 (dependencies=TRUE),RWK-1800-1890; BDK-1800-1890,RWA-1962-2025,FT; FAOSTAT; CShapes,VERIFIED,NA
+TAN-1920-1922,Tanzania (1920-1922),1920,1922,3,mandate,Africa,TAN,NA,CShapes 2.0,TAN-1891-1920,TAN-1922-1964,FT; CShapes,VERIFIED,NA
+TAN-1922-1964,Tanzania (1922-1964),1922,1964,43,mandate,Africa,TAN,NA,CShapes 2.0,TAN-1920-1922,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
+TZA-1961-1964,Tanzania (1961-1964),1961,1964,4,mandate,Africa,TZA,510,CShapes 2.0,NA,TZA-1964-2025,FAOSTAT; CShapes,VERIFIED,NA
 ESH-1800-2025,Western Sahara,1800,2025,226,disputed,Africa,ESH,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ETH-1800-2025,Ethiopia (old),1800,2025,226,aggregate,Africa,ETH,530,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 F62-1800-1993,Ethiopia PDR,1800,1993,194,aggregate,Africa,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
@@ -227,7 +227,7 @@ IRN-1828-2025,Iran,1828,2025,198,sovereign,Asia,IRN,630,CShapes 2.0,IRN-1800-182
 JPN-1800-2025,Japan,1800,2025,226,aggregate,Asia,JPN,740,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate entry for continuous trade data linkage across empire/post-war periods
 KWT-1800-2025,Kuwait,1800,2025,226,sovereign,Asia,KWT,690,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MDV-1800-2025,Maldives,1800,2025,226,sovereign,Asia,MDV,781,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-MMR-1800-2025,Myanmar,1800,2025,226,sovereign,Asia,MMR,775,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+MMR-1800-2025,Myanmar,1800,2025,226,aggregate,Asia,MMR,775,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1826 and 1852 (Anglo-Burmese Wars).
 NPL-1800-2025,Nepal,1800,2025,226,aggregate,Asia,NPL,790,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1816.
 OMN-1800-2025,Oman,1800,2025,226,aggregate,Asia,OMN,698,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1856.
 PHL-1800-2025,Philippines,1800,2025,226,sovereign,Asia,PHL,840,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -235,8 +235,8 @@ QAT-1800-2025,Qatar,1800,2025,226,sovereign,Asia,QAT,694,CShapes 2.0,NA,NA,FT; F
 LKA-1800-2025,Sri Lanka,1800,2025,226,sovereign,Asia,LKA,780,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 TLS-1800-2025,Timor-Leste,1800,2025,226,sovereign,Asia,TLS,860,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CYP-1879-2025,Cyprus,1879,2025,147,sovereign,Asia,CYP,352,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BRN-1888-2025,Brunei Darussalam,1888,2025,138,sovereign,Asia,BRN,835,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-THA-1909-2025,Thailand,1909,2025,117,sovereign,Asia,THA,800,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+BRN-1888-2025,Brunei Darussalam,1888,2025,138,sovereign,Asia,BRN,835,CShapes 2.0,BRN-1816-1888,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+THA-1909-2025,Thailand,1909,2025,117,sovereign,Asia,THA,800,CShapes 2.0,THA-1907-1909,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MNG-1911-2025,Mongolia,1911,2025,115,sovereign,Asia,MNG,712,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 JOR-1918-2025,Jordan,1918,2025,108,sovereign,Asia,JOR,663,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 AFG-1919-2025,Afghanistan,1919,2025,107,sovereign,Asia,AFG,700,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -244,17 +244,17 @@ IRQ-1921-2025,Iraq,1921,2025,105,sovereign,Asia,IRQ,645,CShapes 2.0,NA,NA,FT; FA
 LBN-1944-2025,Lebanon,1944,2025,82,sovereign,Asia,LBN,660,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 PRK-1948-2025,North Korea,1948,2025,78,sovereign,Asia,PRK,731,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 KOR-1948-2025,South Korea,1948,2025,78,sovereign,Asia,KOR,732,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-IND-1949-2025,India,1949,2025,77,sovereign,Asia,IND,750,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+IND-1949-2025,India,1949,2025,77,sovereign,Asia,IND,750,CShapes 2.0,IND-1947-1949,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 KHM-1953-2025,Cambodia,1953,2025,73,sovereign,Asia,KHM,811,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 LAO-1954-2025,Laos,1954,2025,72,sovereign,Asia,LAO,812,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MYS-1965-2025,Malaysia,1965,2025,61,sovereign,Asia,MYS,820,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+MYS-1965-2025,Malaysia,1965,2025,61,sovereign,Asia,MYS,820,CShapes 2.0,MYS-1963-1965,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SGP-1965-2025,Singapore,1965,2025,61,sovereign,Asia,SGP,830,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-SYR-1967-2025,Syrian Arab Republic,1967,2025,59,sovereign,Asia,SYR,652,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+SYR-1967-2025,Syrian Arab Republic,1967,2025,59,sovereign,Asia,SYR,652,CShapes 2.0,SYR-1946-1967,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 BGD-1971-2025,Bangladesh,1971,2025,55,sovereign,Asia,BGD,771,CShapes 2.0,PAK-1949-1971,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-PAK-1971-2025,Pakistan,1971,2025,55,sovereign,Asia,PAK,770,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+PAK-1971-2025,Pakistan,1971,2025,55,sovereign,Asia,PAK,770,CShapes 2.0,PAK-1949-1971,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ARE-1971-2025,United Arab Emirates,1971,2025,55,sovereign,Asia,ARE,696,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 VNM-1975-2025,Vietnam,1975,2025,51,sovereign,Asia,VNM,816,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ISR-1979-2025,Israel,1979,2025,47,sovereign,Asia,ISR,666,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+ISR-1979-2025,Israel,1979,2025,47,sovereign,Asia,ISR,666,CShapes 2.0,ISR-1967-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ARM-1991-2025,Armenia,1991,2025,35,sovereign,Asia,ARM,371,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 AZE-1991-2025,Azerbaijan,1991,2025,35,sovereign,Asia,AZE,373,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 GEO-1991-2025,Georgia,1991,2025,35,sovereign,Asia,GEO,372,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -263,9 +263,9 @@ KGZ-1991-2025,Kyrgyzstan,1991,2025,35,sovereign,Asia,KGZ,703,CShapes 2.0,F228-19
 TJK-1991-2025,Tajikistan,1991,2025,35,sovereign,Asia,TJK,702,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 TKM-1991-2025,Turkmenistan,1991,2025,35,sovereign,Asia,TKM,701,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 UZB-1991-2025,Uzbekistan,1991,2025,35,sovereign,Asia,UZB,704,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-SAU-2000-2025,Saudi Arabia,2000,2025,26,sovereign,Asia,SAU,670,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-YEM-2000-2025,Yemen,2000,2025,26,sovereign,Asia,YEM,678,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-IDN-2002-2025,Indonesia,2002,2025,24,sovereign,Asia,IDN,850,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+SAU-2000-2025,Saudi Arabia,2000,2025,26,sovereign,Asia,SAU,670,CShapes 2.0,SAU-1932-2000,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+YEM-2000-2025,Yemen,2000,2025,26,sovereign,Asia,YEM,678,CShapes 2.0,YEM-1990-2000,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+IDN-2002-2025,Indonesia,2002,2025,24,sovereign,Asia,IDN,850,CShapes 2.0,IDN-1976-2002,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ABU-1800-1971,Abu Dhabi,1800,1971,172,historical,Asia,ABU,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 AFG-1800-1888,Afghanistan (to 1888),1800,1888,89,historical,Asia,AFG,700,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes; WHEP-fix,VERIFIED,NA
 AFG-1800-1893,Afghanistan (to 1893),1800,1893,94,historical,Asia,AFG,700,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
@@ -273,8 +273,8 @@ AJM-1800-1971,Ajman,1800,1971,172,historical,Asia,AJM,NA,CShapes 2.0 + CShapes-E
 BAD-1800-1873,Badakhshan,1800,1873,74,historical,Asia,BAD,267,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 BUK-1800-1920,Bukhara,1800,1920,121,historical,Asia,BUK,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 BOK-1800-1920,Bukhara (to 1920),1800,1920,121,historical,Asia,BOK,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-CAM-1800-1904,Cambodia (to 1904),1800,1904,105,historical,Asia,CAM,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-CHN-1800-1895,China (to 1895),1800,1895,96,historical,Asia,CHN,710,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+CAM-1800-1904,Cambodia (to 1904),1800,1904,105,historical,Asia,CAM,NA,CShapes 2.0 + CShapes-Europe,NA,CAM-1904-1907,FT; CShapes,VERIFIED,NA
+CHN-1800-1895,China (to 1895),1800,1895,96,historical,Asia,CHN,710,CShapes 2.0 + CShapes-Europe,NA,CHN-1895-1912,FT; CShapes,VERIFIED,NA
 DAN-1800-1845,Danish India,1800,1845,46,historical,Asia,DAN,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 HER-1800-1862,Herat,1800,1862,63,historical,Asia,HER,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 IND-1800-1893,India (to 1893),1800,1893,94,historical,Asia,IND,750,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
@@ -287,68 +287,68 @@ OKO-1800-1910,Korea (to 1910),1800,1910,111,historical,Asia,OKO,730,CShapes 2.0 
 OTT-1800-1912,Ottoman Empire,1800,1912,113,historical,Asia,OTT,640,"Cliopatria (Ottoman Empire 1800-1802, 2.66M km2)",NA,TUR-1920-2025 + successor states,FT; CShapes; WHEP-fix,VERIFIED,Ottoman Empire at 1800 extent (2.66M km2). Cliopatria has 47 time steps showing gradual contraction from 2.66M (1800) to 724K km2 (1922). This polygon represents the early-period maximum.
 PER-1800-1896,Perak (to 1896),1800,1896,97,historical,Asia,PER,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 SEL-1800-1896,Selangore (to 1896),1800,1896,97,historical,Asia,SEL,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-THA-1800-1893,Thailand (to 1893),1800,1893,94,historical,Asia,THA,800,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+THA-1800-1893,Thailand (to 1893),1800,1893,94,historical,Asia,THA,800,CShapes 2.0 + CShapes-Europe,NA,THA-1893-1904,FT; CShapes,VERIFIED,NA
 VNM-1800-1893,Vietnam (to 1893),1800,1893,94,historical,Asia,VNM,816,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-BRN-1816-1888,Brunei (greater),1816,1888,73,historical,Asia,BRN,835,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+BRN-1816-1888,Brunei (greater),1816,1888,73,historical,Asia,BRN,835,CShapes 2.0 + CShapes-Europe,NA,BRN-1888-2025,FT; CShapes,VERIFIED,NA
 CHE-1816-1857,Chechnya,1816,1857,42,historical,Asia,CHE,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 CIR-1816-1861,Circassia,1816,1861,46,historical,Asia,CIR,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 YUN-1856-1871,Yunnan,1856,1871,16,historical,Asia,YUN,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
 PAH-1888-1896,Pahang (1888-1896),1888,1896,9,historical,Asia,PAH,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 IDN-1889-1949,Indonesia (1889-1949),1889,1949,61,historical,Asia,IDN,750,CShapes 2.0,IDN-1800-1889,IDN-1945-1949,FT; CShapes,VERIFIED,NA
-IND-1893-1914,India (1893-1914),1893,1914,22,historical,Asia,IND,750,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-THA-1893-1904,Thailand (1893-1904),1893,1904,12,historical,Asia,THA,800,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+IND-1893-1914,India (1893-1914),1893,1914,22,historical,Asia,IND,750,CShapes 2.0,NA,IND-1914-1937,FT; CShapes,VERIFIED,NA
+THA-1893-1904,Thailand (1893-1904),1893,1904,12,historical,Asia,THA,800,CShapes 2.0,THA-1800-1893,THA-1904-1907,FT; CShapes,VERIFIED,NA
 VIE-1893-1954,Vietnam (1893-1954),1893,1954,62,historical,Asia,VIE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CHN-1895-1912,China (1895-1912),1895,1912,18,historical,Asia,CHN,710,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CAM-1904-1907,Cambodia (1904-1907),1904,1907,4,historical,Asia,CAM,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-THA-1904-1907,Thailand (1904-1907),1904,1907,4,historical,Asia,THA,800,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SOU-1905-1945,Southern Sakhalin Island (1905-1945),1905,1945,41,historical,Asia,SOU,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-THA-1907-1909,Thailand (1907-1909),1907,1909,3,historical,Asia,THA,800,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CHN-1913-1914,China (1913-1914),1913,1914,2,historical,Asia,CHN,710,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-TIB-1913-1914,Tibet (1913-1914),1913,1914,2,historical,Asia,TIB,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CHN-1914-1921,China (1914-1921),1914,1921,8,historical,Asia,CHN,710,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-IND-1914-1937,India (1914-1937),1914,1937,24,historical,Asia,IND,750,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-TIB-1914-1950,Tibet (1914-1950),1914,1950,37,historical,Asia,TIB,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+CHN-1895-1912,China (1895-1912),1895,1912,18,historical,Asia,CHN,710,CShapes 2.0,CHN-1800-1895,CHN-1913-1914,FT; CShapes,VERIFIED,NA
+CAM-1904-1907,Cambodia (1904-1907),1904,1907,4,historical,Asia,CAM,NA,CShapes 2.0,CAM-1800-1904,NA,FT; CShapes,VERIFIED,NA
+THA-1904-1907,Thailand (1904-1907),1904,1907,4,historical,Asia,THA,800,CShapes 2.0,THA-1893-1904,THA-1907-1909,FT; CShapes,VERIFIED,NA
+SOU-1905-1945,Southern Sakhalin Island (1905-1945),1905,1945,41,historical,Asia,SOU,NA,CShapes 2.0,SOU-1899-1906,NA,FT; CShapes,VERIFIED,NA
+THA-1907-1909,Thailand (1907-1909),1907,1909,3,historical,Asia,THA,800,CShapes 2.0,THA-1904-1907,THA-1909-2025,FT; CShapes,VERIFIED,NA
+CHN-1913-1914,China (1913-1914),1913,1914,2,historical,Asia,CHN,710,CShapes 2.0,CHN-1895-1912,CHN-1914-1921,FT; CShapes,VERIFIED,NA
+TIB-1913-1914,Tibet (1913-1914),1913,1914,2,historical,Asia,TIB,NA,CShapes 2.0,NA,TIB-1914-1950,FT; CShapes,VERIFIED,NA
+CHN-1914-1921,China (1914-1921),1914,1921,8,historical,Asia,CHN,710,CShapes 2.0,CHN-1913-1914,CHN-1921-1945,FT; CShapes,VERIFIED,NA
+IND-1914-1937,India (1914-1937),1914,1937,24,historical,Asia,IND,750,CShapes 2.0,IND-1893-1914,IND-1937-1947,FT; CShapes,VERIFIED,NA
+TIB-1914-1950,Tibet (1914-1950),1914,1950,37,historical,Asia,TIB,NA,CShapes 2.0,TIB-1913-1914,NA,FT; CShapes,VERIFIED,NA
 F246-1918-1990,North Yemen,1918,1990,73,historical,Asia,NA,679,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 JOR-1920-1923,Jordan (1920-1923),1920,1923,4,historical,Asia,JOR,663,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 SYR-1920-1967,Syrian Arab Republic (1920-1967),1920,1967,48,historical,Asia,SYR,652,CShapes 2.0,NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
-CHN-1921-1945,China (1921-1945),1921,1945,25,historical,Asia,CHN,710,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SAU-1924-1932,Saudi Arabia (1924-1932),1924,1932,9,historical,Asia,SAU,670,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SAU-1932-2000,Saudi Arabia (1932-2000),1932,2000,69,historical,Asia,SAU,670,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-IND-1937-1947,India (1937-1947),1937,1947,11,historical,Asia,IND,750,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-CHN-1945-1947,China (1945-1947),1945,1947,3,historical,Asia,CHN,710,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
-IDN-1945-1949,Indonesia (1945-1949),1945,1949,5,historical,Asia,IDN,850,CShapes 2.0,IDN-1889-1949,NA,CShapes,VERIFIED,NA
-MAL-1946-1963,Malaysia (1946-1963),1946,1963,18,historical,Asia,MAL,NA,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,22,historical,Asia,SYR,652,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-CHN-1947-1949,China (1947-1949),1947,1949,3,historical,Asia,CHN,710,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
-IND-1947-1949,India (1947-1949),1947,1949,3,historical,Asia,IND,750,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
+CHN-1921-1945,China (1921-1945),1921,1945,25,historical,Asia,CHN,710,CShapes 2.0,CHN-1914-1921,CHN-1945-1947,FT; CShapes,VERIFIED,NA
+SAU-1924-1932,Saudi Arabia (1924-1932),1924,1932,9,historical,Asia,SAU,670,CShapes 2.0,NA,SAU-1932-2000,FT; CShapes,VERIFIED,NA
+SAU-1932-2000,Saudi Arabia (1932-2000),1932,2000,69,historical,Asia,SAU,670,CShapes 2.0,SAU-1924-1932,SAU-2000-2025,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+IND-1937-1947,India (1937-1947),1937,1947,11,historical,Asia,IND,750,CShapes 2.0,IND-1914-1937,IND-1947-1949,FT; CShapes,VERIFIED,NA
+CHN-1945-1947,China (1945-1947),1945,1947,3,historical,Asia,CHN,710,CShapes 2.0,CHN-1921-1945,CHN-1947-1949,CShapes,VERIFIED,NA
+IDN-1945-1949,Indonesia (1945-1949),1945,1949,5,historical,Asia,IDN,850,CShapes 2.0,IDN-1889-1949,IDN-1949-1969,CShapes,VERIFIED,NA
+MAL-1946-1963,Malaysia (1946-1963),1946,1963,18,historical,Asia,MAL,NA,CShapes 2.0,MAL-1944-1947,NA,FAOSTAT; CShapes,VERIFIED,NA
+SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,22,historical,Asia,SYR,652,CShapes 2.0,NA,SYR-1967-2025,FAOSTAT; CShapes,VERIFIED,NA
+CHN-1947-1949,China (1947-1949),1947,1949,3,historical,Asia,CHN,710,CShapes 2.0,CHN-1945-1947,CHN-1949-1950,CShapes,VERIFIED,NA
+IND-1947-1949,India (1947-1949),1947,1949,3,historical,Asia,IND,750,CShapes 2.0,IND-1937-1947,IND-1949-2025,CShapes,VERIFIED,NA
 JAM-1947-1949,Jammu and Kashmir (1947-1949),1947,1949,3,historical,Asia,JAM,NA,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
 KAS-1947-1949,Kashmir (North Azad) (1947-1949),1947,1949,3,historical,Asia,KAS,NA,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
-PAK-1947-1949,Pakistan (1947-1949),1947,1949,3,historical,Asia,PAK,770,CShapes 2.0,NA,NA,CShapes,VERIFIED,NA
-ISR-1948-1967,Israel (1948-1967),1948,1967,20,historical,Asia,ISR,666,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-CHN-1949-1950,China (1949-1950),1949,1950,2,historical,Asia,CHN,710,CShapes 2.0,NA,CHN-1950-2025,CShapes,VERIFIED,NA
-IDN-1949-1969,Indonesia (1949-1969),1949,1969,21,historical,Asia,IDN,850,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-PAK-1949-1971,Pakistan (1949-1971),1949,1971,23,historical,Asia,PAK,770,CShapes 2.0,NA,PAK-1971-2025; BGD-1971-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
+PAK-1947-1949,Pakistan (1947-1949),1947,1949,3,historical,Asia,PAK,770,CShapes 2.0,NA,PAK-1949-1971,CShapes,VERIFIED,NA
+ISR-1948-1967,Israel (1948-1967),1948,1967,20,historical,Asia,ISR,666,CShapes 2.0,NA,ISR-1967-1979,FAOSTAT; CShapes,VERIFIED,NA
+CHN-1949-1950,China (1949-1950),1949,1950,2,historical,Asia,CHN,710,CShapes 2.0,CHN-1947-1949,CHN-1950-2025,CShapes,VERIFIED,NA
+IDN-1949-1969,Indonesia (1949-1969),1949,1969,21,historical,Asia,IDN,850,CShapes 2.0,IDN-1945-1949,IDN-1969-1976,FAOSTAT; CShapes,VERIFIED,NA
+PAK-1949-1971,Pakistan (1949-1971),1949,1971,23,historical,Asia,PAK,770,CShapes 2.0,PAK-1947-1949,PAK-1971-2025; BGD-1971-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 NVI-1954-1975,North Vietnam,1954,1975,22,historical,Asia,NVI,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SVI-1954-1975,South Vietnam,1954,1975,22,historical,Asia,SVI,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-MYS-1957-1963,Malaysia (1957-1963),1957,1963,7,historical,Asia,MYS,820,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-FED-1962-1967,Federation of South Arabia (1962-1967),1962,1967,6,historical,Asia,FED,NA,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-MYS-1963-1965,Malaysia (1963-1965),1963,1965,3,historical,Asia,MYS,820,CShapes 2.0,NA,NA,FAOSTAT; CShapes,VERIFIED,NA
-ISR-1967-1979,Israel (1967-1979),1967,1979,13,historical,Asia,ISR,666,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+MYS-1957-1963,Malaysia (1957-1963),1957,1963,7,historical,Asia,MYS,820,CShapes 2.0,NA,MYS-1963-1965,FAOSTAT; CShapes,VERIFIED,NA
+FED-1962-1967,Federation of South Arabia (1962-1967),1962,1967,6,historical,Asia,FED,NA,CShapes 2.0,FED-1953-1964,NA,FAOSTAT; CShapes,VERIFIED,NA
+MYS-1963-1965,Malaysia (1963-1965),1963,1965,3,historical,Asia,MYS,820,CShapes 2.0,MYS-1957-1963,MYS-1965-2025,FAOSTAT; CShapes,VERIFIED,NA
+ISR-1967-1979,Israel (1967-1979),1967,1979,13,historical,Asia,ISR,666,CShapes 2.0,ISR-1948-1967,ISR-1979-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 F247-1967-1990,South Yemen,1967,1990,24,historical,Asia,NA,680,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,REGION,NA
-IDN-1969-1976,Indonesia (1969-1976),1969,1976,8,historical,Asia,IDN,850,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-IDN-1976-2002,Indonesia (1976-2002),1976,2002,27,historical,Asia,IDN,850,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-YEM-1990-2000,Yemen (1990-2000),1990,2000,11,historical,Asia,YEM,678,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+IDN-1969-1976,Indonesia (1969-1976),1969,1976,8,historical,Asia,IDN,850,CShapes 2.0,IDN-1949-1969,IDN-1976-2002,FAOSTAT; M49; CShapes,VERIFIED,NA
+IDN-1976-2002,Indonesia (1976-2002),1976,2002,27,historical,Asia,IDN,850,CShapes 2.0,IDN-1969-1976,IDN-2002-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
+YEM-1990-2000,Yemen (1990-2000),1990,2000,11,historical,Asia,YEM,678,CShapes 2.0,NA,YEM-2000-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 STR-1800-1946,Straits Settlement (to 1946),1800,1946,147,colonial,Asia,STR,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-UNF-1800-1909,Unfederated Malay States (to 1909),1800,1909,110,colonial,Asia,UNF,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
+UNF-1800-1909,Unfederated Malay States (to 1909),1800,1909,110,colonial,Asia,UNF,NA,CShapes 2.0 (dependencies=TRUE),NA,UNF-1909-1946,FT; CShapes,VERIFIED,NA
 STR-1826-1922,Straits Settlement,1826,1922,97,colonial,Asia,STR,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
 ADE-1839-1967,Aden,1839,1967,129,colonial,Asia,ADE,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 SAB-1888-1963,Sabah (British Borneo) (1888-1963),1888,1963,76,colonial,Asia,SAB,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 SAR-1888-1963,Sarawak (1888-1963),1888,1963,76,colonial,Asia,SAR,338,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 FED-1895-1922,Federated Malay States,1895,1922,28,colonial,Asia,FED,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,REGION,NA
-FED-1896-1909,Federated Malay States (1896-1909),1896,1909,14,colonial,Asia,FED,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
+FED-1896-1909,Federated Malay States (1896-1909),1896,1909,14,colonial,Asia,FED,NA,CShapes 2.0 (dependencies=TRUE),NA,FED-1909-1946,FT; CShapes,VERIFIED,NA
 KIA-1898-1922,Kiautchou,1898,1922,25,colonial,Asia,KIA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-FED-1909-1946,Federated Malay States (1909-1946),1909,1946,38,colonial,Asia,FED,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
-UNF-1909-1946,Unfederated Malay States (1909-1946),1909,1946,38,colonial,Asia,UNF,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
+FED-1909-1946,Federated Malay States (1909-1946),1909,1946,38,colonial,Asia,FED,NA,CShapes 2.0 (dependencies=TRUE),FED-1896-1909,NA,FT; CShapes,VERIFIED,NA
+UNF-1909-1946,Unfederated Malay States (1909-1946),1909,1946,38,colonial,Asia,UNF,NA,CShapes 2.0 (dependencies=TRUE),UNF-1800-1909,NA,FT; CShapes,VERIFIED,NA
 ADE-1937-1962,Aden (1937-1962),1937,1962,26,colonial,Asia,ADE,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 EAS-1937-1962,East Aden Protectorate (1937-1962),1937,1962,26,colonial,Asia,EAS,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 IOT-1965-2025,British Indian Ocean Territory,1965,2025,61,dependency,Asia,IOT,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Start year corrected: 1800 -> 1965 (BIOT created 1965 from Mauritius/Seychelles)
@@ -400,17 +400,17 @@ BEL-1831-2025,Belgium,1831,2025,195,sovereign,Europe,BEL,211,CShapes 2.0,NA,NA,F
 ALB-1913-2025,Albania,1913,2025,113,sovereign,Europe,ALB,400,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 AUT-1918-2025,Austria,1918,2025,108,sovereign,Europe,AUT,305,CShapes 2.0,AUH-1908-1918,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FRA-1919-2025,France,1919,2025,107,sovereign,Europe,FRA,220,CShapes 2.0,FRA-1800-1919,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-GRC-1919-2025,Greece,1919,2025,107,sovereign,Europe,GRC,350,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+GRC-1919-2025,Greece,1919,2025,107,sovereign,Europe,GRC,350,CShapes 2.0,GRC-1913-1919,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ITA-1919-2025,Italy,1919,2025,107,sovereign,Europe,ITA,325,CShapes 2.0,ITA-1861-1919,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-DNK-1920-2025,Denmark,1920,2025,106,sovereign,Europe,DNK,390,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-TUR-1920-2025,Türkiye,1920,2025,106,sovereign,Europe,TUR,640,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+DNK-1920-2025,Denmark,1920,2025,106,sovereign,Europe,DNK,390,CShapes 2.0,DNK-1864-1920,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+TUR-1920-2025,Türkiye,1920,2025,106,sovereign,Europe,TUR,640,CShapes 2.0,TUR-1918-1920,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 IRL-1921-2025,Ireland,1921,2025,105,sovereign,Europe,IRL,205,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 GBR-1921-2025,United Kingdom,1921,2025,105,sovereign,Europe,GBR,200,CShapes 2.0,GBR-1800-1921,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BGR-1940-2025,Bulgaria,1940,2025,86,sovereign,Europe,BGR,355,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-FIN-1940-2025,Finland,1940,2025,86,sovereign,Europe,FIN,375,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,REGION,NA
-ROU-1940-2025,Romania,1940,2025,86,sovereign,Europe,ROU,360,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-POL-1945-2025,Poland,1945,2025,81,sovereign,Europe,POL,290,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-HUN-1947-2025,Hungary,1947,2025,79,sovereign,Europe,HUN,310,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+BGR-1940-2025,Bulgaria,1940,2025,86,sovereign,Europe,BGR,355,CShapes 2.0,BGR-1919-1940,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+FIN-1940-2025,Finland,1940,2025,86,sovereign,Europe,FIN,375,CShapes 2.0,FIN-1917-1940,NA,FAOSTAT; M49; CShapes,REGION,NA
+ROU-1940-2025,Romania,1940,2025,86,sovereign,Europe,ROU,360,CShapes 2.0,ROU-1920-1940,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+POL-1945-2025,Poland,1945,2025,81,sovereign,Europe,POL,290,CShapes 2.0,POL-1921-1945,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+HUN-1947-2025,Hungary,1947,2025,79,sovereign,Europe,HUN,310,CShapes 2.0,HUN-1938-1947,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 DEU-1990-2025,Germany,1990,2025,36,sovereign,Europe,DEU,260,CShapes 2.0,F78-1949-1990; F77-1949-1990,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 BLR-1991-2025,Belarus,1991,2025,35,sovereign,Europe,BLR,370,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 EST-1991-2025,Estonia,1991,2025,35,sovereign,Europe,EST,366,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -421,7 +421,7 @@ MKD-1991-2025,North Macedonia,1991,2025,35,sovereign,Europe,MKD,343,CShapes 2.0,
 BIH-1992-2025,Bosnia and Herzegovina,1992,2025,34,sovereign,Europe,BIH,346,CShapes 2.0,F248-1991-1992,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 HRV-1992-2025,Croatia,1992,2025,34,sovereign,Europe,HRV,344,CShapes 2.0,F248-1991-1992,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SVN-1992-2025,Slovenia,1992,2025,34,sovereign,Europe,SVN,349,CShapes 2.0,F248-1991-1992,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-CZE-1993-2025,Czechia,1993,2025,33,sovereign,Europe,CZE,316,CShapes 2.0,F51-1947-1993,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+CZE-1993-2025,Czechia,1993,2025,33,sovereign,Europe,CZE,316,CShapes 2.0,F51-1947-1993; CZE-1947-1992,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SVK-1993-2025,Slovakia,1993,2025,33,sovereign,Europe,SVK,317,CShapes 2.0,F51-1947-1993,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 LUX-2000-2025,Luxembourg,2000,2025,26,sovereign,Europe,LUX,212,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 MNE-2006-2025,Montenegro,2006,2025,20,sovereign,Europe,MNE,341,CShapes 2.0,SCG-1992-2006,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -438,7 +438,7 @@ DNK-1864-1920,Denmark (to 1920),1864,1920,57,historical,Europe,DNK,390,CShapes 2
 DMO-1800-1860,Duchy Modena,1800,1860,61,historical,Europe,DMO,332,Cliopatria (Duchy of Modena and Reggio 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
 DPA-1800-1860,Duchy Parma,1800,1860,61,historical,Europe,DPA,335,Cliopatria (Duchy of Parma and Piacenza 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
 FRA-1800-1919,France (to 1919),1800,1919,120,historical,Europe,FRA,220,CShapes 2.0 + CShapes-Europe,NA,FRA-1919-2025,FT; CShapes,REGION,NA
-DEU-1800-1919,Germany (to 1919),1800,1919,120,historical,Europe,DEU,260,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+DEU-1800-1919,Germany (to 1919),1800,1919,120,historical,Europe,DEU,260,CShapes 2.0 + CShapes-Europe,NA,DEU-1919-1920,FT; CShapes,VERIFIED,NA
 GRC-1830-1913,Greece (to 1913),1830,1913,84,historical,Europe,GRC,350,CShapes 2.0 + CShapes-Europe,NA,GRC-1913-1919,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).
 HAN-1800-1866,Hanover,1800,1866,67,historical,Europe,HAN,240,Cliopatria (Electorate of Hanover 1800-1802),NA,NA,FT; WHEP-fix,VERIFIED,NA
 HER-1878-1908,Herzegovina (1878-1908),1878,1908,31,historical,Europe,HER,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman territory before 1878.
@@ -455,7 +455,7 @@ SWE-1814-1905,Sweden-Norway (1814-1905),1814,1905,92,historical,Europe,SWE,380,C
 THU-1800-1871,Thuringia,1800,1871,72,historical,Europe,THU,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
 TUS-1800-1860,Tuscany,1800,1860,61,historical,Europe,TUS,337,Cliopatria (Grand Duchy of Tuscany 1800-1802),NA,ITA-1861-1919,FT,VERIFIED,NA
 TWO-1800-1860,Two Sicilies,1800,1860,61,historical,Europe,TWO,329,Cliopatria (Kingdom of the Two Sicilies 1815-1819),NA,ITA-1861-1919,FT; WHEP-fix,"FIXED: merged duplicate ""Kingdom Two sicilies""",NA
-TUR-1800-1912,Türkiye (to 1912),1800,1912,113,historical,Europe,TUR,640,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+TUR-1800-1912,Türkiye (to 1912),1800,1912,113,historical,Europe,TUR,640,CShapes 2.0 + CShapes-Europe,NA,TUR-1913-1914,FT; CShapes,VERIFIED,NA
 F228-1800-1905,USSR (to 1905),1800,1905,106,aggregate,Europe,NA,365,CShapes 2.0 + CShapes-Europe,NA,F228-1905-1914,FT; CShapes,REGION,Aggregate for continuous trade data linkage. Split into 2 territorial periods at Crimean War.
 GBR-1800-1921,United Kingdom (to 1921),1800,1921,122,historical,Europe,GBR,200,CShapes 2.0 + CShapes-Europe,NA,GBR-1921-2025,FT; CShapes,VERIFIED,NA
 WUR-1800-1871,Württemberg,1800,1871,72,historical,Europe,WUR,271,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
@@ -481,70 +481,70 @@ SHI-1816-1826,Saxe-Hildburgchausen,1816,1826,11,historical,Europe,SHI,NA,GADM 4.
 SME-1816-1870,Saxe-Meiningen,1816,1870,55,historical,Europe,SME,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SWE-1816-1870,Saxe-Weimar,1816,1870,55,historical,Europe,SWE,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SCL-1816-1870,Schaumburg-Lippe,1816,1870,55,historical,Europe,SCL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-SER-1816-1913,Serbia (1816-1913),1816,1913,98,historical,Europe,SER,NA,CShapes 2.0 + CShapes-Europe,NA,SER-1913-1918,FT; CShapes; WHEP-fix,VERIFIED,NA
+SER-1816-1913,Serbia (1816-1913),1816,1913,98,historical,Europe,SER,NA,CShapes 2.0 + CShapes-Europe,NA,SER-1913-1918; SER-1913-1915,FT; CShapes; WHEP-fix,VERIFIED,NA
 WAL-1816-1870,Waldeck,1816,1870,55,historical,Europe,WAL,NA,Cliopatria (Principality of Waldeck and Pyrmont 1814-1819),NA,NA,FT,VERIFIED,NA
 WOL-1816-1870,Wolfenbüttel,1816,1870,55,historical,Europe,WOL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SAL-1827-1870,Saxe-Altenburg,1827,1870,44,historical,Europe,SAL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SCG-1827-1870,Saxe-Coburg-Gotha,1827,1870,44,historical,Europe,SCG,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-ROU-1859-1913,Romania (to 1913),1859,1913,55,historical,Europe,ROU,360,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+ROU-1859-1913,Romania (to 1913),1859,1913,55,historical,Europe,ROU,360,CShapes 2.0 + CShapes-Europe,NA,ROU-1913-1918,FT; CShapes,VERIFIED,NA
 ITA-1861-1919,Italy (to 1919),1861,1919,59,historical,Europe,ITA,325,CShapes 2.0 + CShapes-Europe,SAR-1800-1860; TWO-1800-1860; PAP-1800-1870; TUS-1800-1860; DMO-1800-1860; DPA-1800-1860,ITA-1919-2025,FT; CShapes,VERIFIED,NA
 ANH-1864-1870,Anhalt,1864,1870,7,historical,Europe,ANH,NA,Cliopatria (Duchy of Anhalt 1864-1865),NA,NA,FT,VERIFIED,NA
 BGR-1878-1913,Bulgaria (to 1913),1878,1913,36,historical,Europe,BGR,355,CShapes 2.0 + CShapes-Europe,NA,BGR-1913-1918,FT; CShapes,VERIFIED,NA
-MNE-1878-1913,Montenegro (to 1913),1878,1913,36,historical,Europe,MNE,341,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+MNE-1878-1913,Montenegro (to 1913),1878,1913,36,historical,Europe,MNE,341,CShapes 2.0 + CShapes-Europe,NA,MNE-1913-1915,FT; CShapes,VERIFIED,NA
 CRE-1898-1913,Crete,1898,1913,16,historical,Europe,CRE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 F228-1905-1914,USSR (1905-1914),1905,1914,10,historical,Europe,NA,365,CShapes 2.0,F228-1800-1905,F228-1914-1917,FT; CShapes,REGION,NA
 AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,historical,Europe,AUH,300,CShapes 2.0,AUH-1867-1908,AUT-1918-2025; HUN-1918-1919,FT; CShapes,VERIFIED,NA
-BGR-1913-1918,Bulgaria (1913-1918),1913,1918,6,historical,Europe,BGR,355,CShapes 2.0,BGR-1878-1913,NA,FT; CShapes,VERIFIED,NA
-GRC-1913-1919,Greece (1913-1919),1913,1919,7,historical,Europe,GRC,350,CShapes 2.0,GRC-1830-1913,NA,FT; CShapes,VERIFIED,NA
-MNE-1913-1915,Montenegro (1913-1915),1913,1915,3,historical,Europe,MNE,341,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+BGR-1913-1918,Bulgaria (1913-1918),1913,1918,6,historical,Europe,BGR,355,CShapes 2.0,BGR-1878-1913,BGR-1918-1919,FT; CShapes,VERIFIED,NA
+GRC-1913-1919,Greece (1913-1919),1913,1919,7,historical,Europe,GRC,350,CShapes 2.0,GRC-1830-1913,GRC-1919-2025,FT; CShapes,VERIFIED,NA
+MNE-1913-1915,Montenegro (1913-1915),1913,1915,3,historical,Europe,MNE,341,CShapes 2.0,MNE-1878-1913,NA,FT; CShapes,VERIFIED,NA
 MON-1913-1918,Montenegro (1913-1918),1913,1918,6,historical,Europe,MON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ROU-1913-1918,Romania (1913-1918),1913,1918,6,historical,Europe,ROU,360,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SER-1913-1915,Serbia (1913-1915),1913,1915,3,historical,Europe,SER,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-SER-1913-1918,Serbia (1913-1918),1913,1918,6,historical,Europe,SER,NA,CShapes 2.0,SER-1816-1913,NA,FT; CShapes,VERIFIED,NA
-TUR-1913-1914,Türkiye (1913-1914),1913,1914,2,historical,Europe,TUR,640,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-TUR-1914-1918,Türkiye (1914-1918),1914,1918,5,historical,Europe,TUR,640,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+ROU-1913-1918,Romania (1913-1918),1913,1918,6,historical,Europe,ROU,360,CShapes 2.0,ROU-1859-1913,ROU-1918-1919,FT; CShapes,VERIFIED,NA
+SER-1913-1915,Serbia (1913-1915),1913,1915,3,historical,Europe,SER,NA,CShapes 2.0,SER-1816-1913,SER-1913-1918,FT; CShapes,VERIFIED,NA
+SER-1913-1918,Serbia (1913-1918),1913,1918,6,historical,Europe,SER,NA,CShapes 2.0,SER-1816-1913; SER-1913-1915,NA,FT; CShapes,VERIFIED,NA
+TUR-1913-1914,Türkiye (1913-1914),1913,1914,2,historical,Europe,TUR,640,CShapes 2.0,TUR-1800-1912,TUR-1914-1918,FT; CShapes,VERIFIED,NA
+TUR-1914-1918,Türkiye (1914-1918),1914,1918,5,historical,Europe,TUR,640,CShapes 2.0,TUR-1913-1914,TUR-1918-1920,FT; CShapes,VERIFIED,NA
 F228-1914-1917,USSR (1914-1917),1914,1917,4,historical,Europe,NA,365,CShapes 2.0,F228-1905-1914,F228-1917-1918,FT; CShapes,REGION,NA
-FIN-1917-1940,Finland (1917-1940),1917,1940,24,historical,Europe,FIN,375,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
+FIN-1917-1940,Finland (1917-1940),1917,1940,24,historical,Europe,FIN,375,CShapes 2.0,NA,FIN-1940-2025,FT; CShapes,REGION,NA
 F228-1917-1918,USSR (1917-1918),1917,1918,2,historical,Europe,NA,365,CShapes 2.0,F228-1914-1917,F228-1918-1920,FT; CShapes,REGION,NA
 AUT-1918-1919,Austria (1918-1919),1918,1919,2,historical,Europe,AUT,305,CShapes 2.0,AUH-1908-1918,NA,FT; CShapes,VERIFIED,NA
-BGR-1918-1919,Bulgaria (1918-1919),1918,1919,2,historical,Europe,BGR,355,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+BGR-1918-1919,Bulgaria (1918-1919),1918,1919,2,historical,Europe,BGR,355,CShapes 2.0,BGR-1913-1918,BGR-1919-1940,FT; CShapes,VERIFIED,NA
 F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,21,historical,Europe,NA,315,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
 EST-1918-1940,Estonia (1918-1940),1918,1940,23,historical,Europe,EST,366,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-HUN-1918-1919,Hungary (1918-1919),1918,1919,2,historical,Europe,HUN,310,CShapes 2.0,AUH-1908-1918,NA,FT; CShapes,VERIFIED,NA
+HUN-1918-1919,Hungary (1918-1919),1918,1919,2,historical,Europe,HUN,310,CShapes 2.0,AUH-1908-1918,HUN-1919-1920,FT; CShapes,VERIFIED,NA
 LVA-1918-1940,Latvia (1918-1940),1918,1940,23,historical,Europe,LVA,367,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-LTU-1918-1920,Lithuania (1918-1920),1918,1920,3,historical,Europe,LTU,368,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-POL-1918-1919,Poland (1918-1919),1918,1919,2,historical,Europe,POL,290,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ROU-1918-1919,Romania (1918-1919),1918,1919,2,historical,Europe,ROU,360,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-TUR-1918-1920,Türkiye (1918-1920),1918,1920,3,historical,Europe,TUR,640,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+LTU-1918-1920,Lithuania (1918-1920),1918,1920,3,historical,Europe,LTU,368,CShapes 2.0,NA,LTU-1920-1940,FT; CShapes,VERIFIED,NA
+POL-1918-1919,Poland (1918-1919),1918,1919,2,historical,Europe,POL,290,CShapes 2.0,NA,POL-1919-1920,FT; CShapes,VERIFIED,NA
+ROU-1918-1919,Romania (1918-1919),1918,1919,2,historical,Europe,ROU,360,CShapes 2.0,ROU-1913-1918,ROU-1919-1920,FT; CShapes,VERIFIED,NA
+TUR-1918-1920,Türkiye (1918-1920),1918,1920,3,historical,Europe,TUR,640,CShapes 2.0,TUR-1914-1918,TUR-1920-2025,FT; CShapes,VERIFIED,NA
 F228-1918-1920,USSR (1918-1920),1918,1920,3,historical,Europe,NA,365,CShapes 2.0,F228-1917-1918,F228-1920-1921,FT; CShapes,REGION,NA
 F248-1918-1919,Yugoslavia (1918-1919),1918,1919,2,historical,Europe,NA,345,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
-BGR-1919-1940,Bulgaria (1919-1940),1919,1940,22,historical,Europe,BGR,355,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-DEU-1919-1920,Germany (1919-1920),1919,1920,2,historical,Europe,DEU,260,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-HUN-1919-1920,Hungary (1919-1920),1919,1920,2,historical,Europe,HUN,310,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-POL-1919-1920,Poland (1919-1920),1919,1920,2,historical,Europe,POL,290,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ROU-1919-1920,Romania (1919-1920),1919,1920,2,historical,Europe,ROU,360,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+BGR-1919-1940,Bulgaria (1919-1940),1919,1940,22,historical,Europe,BGR,355,CShapes 2.0,BGR-1918-1919,BGR-1940-2025,FT; CShapes,VERIFIED,NA
+DEU-1919-1920,Germany (1919-1920),1919,1920,2,historical,Europe,DEU,260,CShapes 2.0,DEU-1800-1919,DEU-1920-1938,FT; CShapes,VERIFIED,NA
+HUN-1919-1920,Hungary (1919-1920),1919,1920,2,historical,Europe,HUN,310,CShapes 2.0,HUN-1918-1919,HUN-1920-1938,FT; CShapes,VERIFIED,NA
+POL-1919-1920,Poland (1919-1920),1919,1920,2,historical,Europe,POL,290,CShapes 2.0,POL-1918-1919,POL-1920-1921,FT; CShapes,VERIFIED,NA
+ROU-1919-1920,Romania (1919-1920),1919,1920,2,historical,Europe,ROU,360,CShapes 2.0,ROU-1918-1919,ROU-1920-1940,FT; CShapes,VERIFIED,NA
 F248-1919-1920,Yugoslavia (1919-1920),1919,1920,2,historical,Europe,NA,345,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
-DEU-1920-1938,Germany (1920-1938),1920,1938,19,historical,Europe,DEU,260,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-HUN-1920-1938,Hungary (1920-1938),1920,1938,19,historical,Europe,HUN,310,CShapes 2.0,NA,HUN-1938-1947,FT; CShapes,VERIFIED,NA
-LTU-1920-1940,Lithuania (1920-1940),1920,1940,21,historical,Europe,LTU,368,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-POL-1920-1921,Poland (1920-1921),1920,1921,2,historical,Europe,POL,290,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ROU-1920-1940,Romania (1920-1940),1920,1940,21,historical,Europe,ROU,360,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+DEU-1920-1938,Germany (1920-1938),1920,1938,19,historical,Europe,DEU,260,CShapes 2.0,DEU-1919-1920,DEU-1938-1945,FT; CShapes,VERIFIED,NA
+HUN-1920-1938,Hungary (1920-1938),1920,1938,19,historical,Europe,HUN,310,CShapes 2.0,HUN-1919-1920,HUN-1938-1947,FT; CShapes,VERIFIED,NA
+LTU-1920-1940,Lithuania (1920-1940),1920,1940,21,historical,Europe,LTU,368,CShapes 2.0,LTU-1918-1920,NA,FT; CShapes,VERIFIED,NA
+POL-1920-1921,Poland (1920-1921),1920,1921,2,historical,Europe,POL,290,CShapes 2.0,POL-1919-1920,POL-1921-1945,FT; CShapes,VERIFIED,NA
+ROU-1920-1940,Romania (1920-1940),1920,1940,21,historical,Europe,ROU,360,CShapes 2.0,ROU-1919-1920,ROU-1940-2025,FT; CShapes,VERIFIED,NA
 F228-1920-1921,USSR (1920-1921),1920,1921,2,historical,Europe,NA,365,CShapes 2.0,F228-1918-1920,F228-1921-1940,FT; CShapes,REGION,NA
 F248-1920-1991,Yugoslavia (1920-1991),1920,1991,72,historical,Europe,NA,345,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-POL-1921-1945,Poland (1921-1945),1921,1945,25,historical,Europe,POL,290,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+POL-1921-1945,Poland (1921-1945),1921,1945,25,historical,Europe,POL,290,CShapes 2.0,POL-1920-1921,POL-1945-2025,FT; CShapes,VERIFIED,NA
 F228-1921-1940,USSR (1921-1940),1921,1940,20,historical,Europe,NA,365,CShapes 2.0,F228-1920-1921,F228-1940-1945,FT; CShapes,REGION,NA
 F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,8,historical,Europe,NA,315,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
-DEU-1938-1945,Germany (1938-1945),1938,1945,8,historical,Europe,DEU,260,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-HUN-1938-1947,Hungary (1938-1947),1938,1947,10,historical,Europe,HUN,310,CShapes 2.0,HUN-1920-1938,NA,FT; CShapes,VERIFIED,NA
+DEU-1938-1945,Germany (1938-1945),1938,1945,8,historical,Europe,DEU,260,CShapes 2.0,DEU-1920-1938,NA,FT; CShapes,VERIFIED,NA
+HUN-1938-1947,Hungary (1938-1947),1938,1947,10,historical,Europe,HUN,310,CShapes 2.0,HUN-1920-1938,HUN-1947-2025,FT; CShapes,VERIFIED,NA
 F228-1940-1945,USSR (1940-1945),1940,1945,6,historical,Europe,NA,365,CShapes 2.0,F228-1921-1940,F228-1945-1991,CShapes,REGION,NA
 F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,3,historical,Europe,NA,315,CShapes 2.0,NA,NA,CShapes,REGION,NA
 F228-1945-1991,USSR (1945-1991),1945,1991,47,historical,Europe,NA,365,CShapes 2.0,F228-1940-1945,RUS-1991-2014; ARM-1991-2025; AZE-1991-2025; BLR-1991-2025; EST-1991-2025; GEO-1991-2025; KAZ-1991-2025; KGZ-1991-2025; LTU-1991-2025; LVA-1991-2025; MDA-1991-2025; TJK-1991-2025; TKM-1991-2025; UKR-1991-2014; UZB-1991-2025,FAOSTAT; M49; CShapes,REGION,NA
-CZE-1947-1992,Czechoslovakia (1947-1992),1947,1992,46,historical,Europe,CZE,316,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+CZE-1947-1992,Czechoslovakia (1947-1992),1947,1992,46,historical,Europe,CZE,316,CShapes 2.0,NA,CZE-1993-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,47,historical,Europe,NA,315,CShapes 2.0,NA,CZE-1993-2025; SVK-1993-2025,FAOSTAT; M49; CShapes,REGION,NA
 F77-1949-1990,East Germany,1949,1990,42,historical,Europe,NA,265,CShapes 2.0,NA,DEU-1990-2025,FAOSTAT; M49; CShapes,REGION,NA
 F78-1949-1990,West Germany,1949,1990,42,historical,Europe,NA,260,CShapes 2.0,NA,DEU-1990-2025,FAOSTAT; M49; CShapes,REGION,NA
 RUS-1991-2014,Russia (1991-2014),1991,2014,24,historical,Europe,RUS,365,CShapes 2.0,F228-1945-1991,RUS-2014-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
-UKR-1991-2014,Ukraine (1991-2014),1991,2014,24,historical,Europe,UKR,369,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+UKR-1991-2014,Ukraine (1991-2014),1991,2014,24,historical,Europe,UKR,369,CShapes 2.0,F228-1945-1991,UKR-2014-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 F248-1991-1992,Yugoslavia (1991-1992),1991,1992,2,historical,Europe,NA,345,CShapes 2.0,NA,SVN-1992-2025; HRV-1992-2025; BIH-1992-2025; SCG-1992-2006; MKD-1991-2025,FAOSTAT; M49; CShapes,REGION,NA
 SCG-1992-2006,Serbia and Montenegro,1992,2006,15,historical,Europe,SCG,NA,CShapes 2.0,F248-1991-1992,SER-2006-2008; MNE-2006-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 YUG-1992-2006,Yugoslavia (1992-2006),1992,2006,15,historical,Europe,YUG,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -723,7 +723,7 @@ NZL-1907-2025,New Zealand,1907,2025,119,sovereign,Oceania,NZL,920,CShapes 2.0,NZ
 PNG-1975-2025,Papua New Guinea,1975,2025,51,sovereign,Oceania,PNG,910,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 FSM-1991-2025,Micronesia,1991,2025,35,sovereign,Oceania,FSM,987,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,REGION,NA
 PLW-1991-2025,Palau,1991,2025,35,sovereign,Oceania,PLW,986,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-NEW-1884-1920,New Guinea (to 1920),1884,1920,37,historical,Oceania,NEW,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1884 (German New Guinea / British New Guinea from 1884)
+NEW-1884-1920,New Guinea (to 1920),1884,1920,37,historical,Oceania,NEW,NA,CShapes 2.0 + CShapes-Europe,NA,NEW-1920-1949,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1884 (German New Guinea / British New Guinea from 1884)
 NEW-1800-1900,New South Wales (to 1900),1800,1900,101,historical,Oceania,NEW,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 PAP-1800-1949,Papua (to 1949),1800,1949,150,historical,Oceania,PAP,327,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 QUE-1859-1900,Queensland (to 1900),1859,1900,42,historical,Oceania,QUE,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1859 (Queensland separated from NSW 1859)
@@ -732,7 +732,7 @@ TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,76,historical,Oce
 VIC-1851-1900,Victoria (to 1900),1851,1900,50,historical,Oceania,VIC,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1851 (Victoria separated from NSW 1851)
 WES-1829-1900,Western Australia (to 1900),1829,1900,72,historical,Oceania,WES,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,Start year corrected: 1800 -> 1829 (Western Australia proclaimed 1829)
 VAN-1828-1900,Van Diemen's Land (Tasmania),1828,1900,73,historical,Oceania,VAN,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-SOU-1838-1900,South Australia,1838,1900,63,historical,Oceania,SOU,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+SOU-1838-1900,South Australia,1838,1900,63,historical,Oceania,SOU,NA,CShapes 2.0 + CShapes-Europe,NA,SOU-1899-1906,FT; CShapes,VERIFIED,NA
 WES-1838-1900,Western Australia,1838,1900,63,historical,Oceania,WES,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 MRQ-1844-1903,Marquesas Island,1844,1903,60,historical,Oceania,MRQ,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
 SOC-1844-1903,Society Islands  (Tahiti),1844,1903,60,historical,Oceania,SOC,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
@@ -766,7 +766,7 @@ ASM-1900-2025,American Samoa,1900,2025,126,dependency,Oceania,ASM,NA,GADM 4.1,NA
 NIU-1900-2025,Niue,1900,2025,126,dependency,Oceania,NIU,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MNP-1991-2025,Northern Mariana Islands,1991,2025,35,dependency,Oceania,MNP,NA,GADM 4.1,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 F164-1920-1990,Pacific Islands Trust Territory,1920,1990,71,mandate,Oceania,NA,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,Start year corrected: 1800 -> 1920 (League of Nations mandate from 1920)
-NEW-1920-1949,New Guinea (1920-1949),1920,1949,30,mandate,Oceania,NEW,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+NEW-1920-1949,New Guinea (1920-1949),1920,1949,30,mandate,Oceania,NEW,NA,CShapes 2.0,NEW-1884-1920,NA,FT; CShapes,VERIFIED,NA
 MRI-1800-2025,Mariana Island,1800,2025,226,aggregate,Oceania,MRI,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BOC-1839-2025,British settlement Oceania,1839,2025,187,aggregate,Oceania,BOC,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FSO-1844-2025,French Settlements in Oceania,1844,2025,182,aggregate,Oceania,FSO,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
@@ -782,30 +782,30 @@ GUY-1800-2025,Guyana,1800,2025,226,sovereign,South America,GUY,110,CShapes 2.0,N
 VEN-1821-2025,Venezuela,1821,2025,205,sovereign,South America,VEN,101,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 URY-1828-2025,Uruguay,1828,2025,198,sovereign,South America,URY,165,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ARG-1902-2025,Argentina,1902,2025,124,sovereign,South America,ARG,160,CShapes 2.0,ARG-1899-1902,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-CHL-1902-2025,Chile,1902,2025,124,sovereign,South America,CHL,155,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+CHL-1902-2025,Chile,1902,2025,124,sovereign,South America,CHL,155,CShapes 2.0,CHL-1899-1902,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BRA-1909-2025,Brazil,1909,2025,117,sovereign,South America,BRA,140,CShapes 2.0,BRA-1903-1909,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 COL-1922-2025,Colombia,1922,2025,104,sovereign,South America,COL,100,CShapes 2.0,COL-1903-1922,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BOL-1938-2025,Bolivia,1938,2025,88,sovereign,South America,BOL,145,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-PRY-1938-2025,Paraguay,1938,2025,88,sovereign,South America,PRY,150,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-ECU-1942-2025,Ecuador,1942,2025,84,sovereign,South America,ECU,130,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-PER-1942-2025,Peru,1942,2025,84,sovereign,South America,PER,135,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+BOL-1938-2025,Bolivia,1938,2025,88,sovereign,South America,BOL,145,CShapes 2.0,BOL-1909-1938,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+PRY-1938-2025,Paraguay,1938,2025,88,sovereign,South America,PRY,150,CShapes 2.0,PRY-1811-1938,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+ECU-1942-2025,Ecuador,1942,2025,84,sovereign,South America,ECU,130,CShapes 2.0,ECU-1800-1942,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+PER-1942-2025,Peru,1942,2025,84,sovereign,South America,PER,135,CShapes 2.0,PER-1922-1942,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SUR-1975-2025,Suriname,1975,2025,51,sovereign,South America,SUR,115,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ARG-1800-1899,Argentina (to 1899),1800,1899,100,historical,South America,ARG,160,CShapes 2.0 + CShapes-Europe,NA,ARG-1899-1902,FT; CShapes,VERIFIED,NA
 BRA-1800-1903,Brazil (to 1903),1800,1903,104,historical,South America,BRA,140,CShapes 2.0 + CShapes-Europe,NA,BRA-1903-1909,FT; CShapes,VERIFIED,NA
 COL-1800-1903,Colombia (to 1903),1800,1903,104,aggregate,South America,COL,100,CShapes 2.0 + CShapes-Europe,NA,COL-1903-1922,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1830.
-ECU-1800-1942,Ecuador (to 1942),1800,1942,143,historical,South America,ECU,130,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-CHL-1810-1899,Chile (to 1899),1810,1899,90,historical,South America,CHL,155,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-PRY-1811-1938,Paraguay (to 1938),1811,1938,128,historical,South America,PRY,150,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-BOL-1825-1903,Bolivia (to 1903),1825,1903,79,historical,South America,BOL,145,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
-PER-1825-1909,Peru (to 1909),1825,1909,85,historical,South America,PER,135,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,VERIFIED,NA
+ECU-1800-1942,Ecuador (to 1942),1800,1942,143,historical,South America,ECU,130,CShapes 2.0 + CShapes-Europe,NA,ECU-1942-2025,FT; CShapes,VERIFIED,NA
+CHL-1810-1899,Chile (to 1899),1810,1899,90,historical,South America,CHL,155,CShapes 2.0 + CShapes-Europe,NA,CHL-1899-1902,FT; CShapes,VERIFIED,NA
+PRY-1811-1938,Paraguay (to 1938),1811,1938,128,historical,South America,PRY,150,CShapes 2.0 + CShapes-Europe,NA,PRY-1938-2025,FT; CShapes,VERIFIED,NA
+BOL-1825-1903,Bolivia (to 1903),1825,1903,79,historical,South America,BOL,145,CShapes 2.0 + CShapes-Europe,NA,BOL-1903-1909,FT; CShapes,VERIFIED,NA
+PER-1825-1909,Peru (to 1909),1825,1909,85,historical,South America,PER,135,CShapes 2.0 + CShapes-Europe,NA,PER-1909-1922,FT; CShapes,VERIFIED,NA
 ARG-1899-1902,Argentina (1899-1902),1899,1902,4,historical,South America,ARG,160,CShapes 2.0,ARG-1800-1899,ARG-1902-2025,FT; CShapes,VERIFIED,NA
-CHL-1899-1902,Chile (1899-1902),1899,1902,4,historical,South America,CHL,155,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-BOL-1903-1909,Bolivia (1903-1909),1903,1909,7,historical,South America,BOL,145,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+CHL-1899-1902,Chile (1899-1902),1899,1902,4,historical,South America,CHL,155,CShapes 2.0,CHL-1810-1899,CHL-1902-2025,FT; CShapes,VERIFIED,NA
+BOL-1903-1909,Bolivia (1903-1909),1903,1909,7,historical,South America,BOL,145,CShapes 2.0,BOL-1825-1903,BOL-1909-1938,FT; CShapes,VERIFIED,NA
 BRA-1903-1909,Brazil (1903-1909),1903,1909,7,historical,South America,BRA,140,CShapes 2.0,BRA-1800-1903,BRA-1909-2025,FT; CShapes,VERIFIED,NA
 COL-1903-1922,Colombia (1903-1922),1903,1922,20,historical,South America,COL,100,CShapes 2.0,COL-1830-1903,COL-1922-2025,FT; CShapes,VERIFIED,NA
-BOL-1909-1938,Bolivia (1909-1938),1909,1938,30,historical,South America,BOL,145,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-PER-1909-1922,Peru (1909-1922),1909,1922,14,historical,South America,PER,135,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-PER-1922-1942,Peru (1922-1942),1922,1942,21,historical,South America,PER,135,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
+BOL-1909-1938,Bolivia (1909-1938),1909,1938,30,historical,South America,BOL,145,CShapes 2.0,BOL-1903-1909,BOL-1938-2025,FT; CShapes,VERIFIED,NA
+PER-1909-1922,Peru (1909-1922),1909,1922,14,historical,South America,PER,135,CShapes 2.0,PER-1825-1909,PER-1922-1942,FT; CShapes,VERIFIED,NA
+PER-1922-1942,Peru (1922-1942),1922,1942,21,historical,South America,PER,135,CShapes 2.0,PER-1909-1922,PER-1942-2025,FT; CShapes,VERIFIED,NA
 INI-1930-1946,Inini (1930-1946),1930,1946,17,colonial,South America,INI,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; CShapes,VERIFIED,NA
 GUF-1800-2025,French Guiana,1800,2025,226,dependency,South America,GUF,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FRE-1800-1930,French Guiana (to 1930),1800,1930,131,dependency,South America,FRE,NA,GADM 4.1,NA,NA,FT; CShapes,VERIFIED,NA
@@ -1290,7 +1290,7 @@ SAA-1920-1935,Saar Territory (League of Nations),1920,1935,16,mandate,Europe,NA,
 MEM-1920-1923,Memel Territory,1920,1923,4,mandate,Europe,NA,NA,GADM 4.1 (Klaipeda County proxy),NA,NA,research,VERIFIED,French-administered League mandate; seized by Lithuania Jan 1923; Klaipeda Convention 1924
 FIU-1920-1924,Free City of Fiume,1920,1924,5,historical,Europe,NA,NA,Constructed (point buffer ~28 km2),NA,NA,research,VERIFIED,Treaty of Rapallo 1920; Italian annexation 1924 (Treaty of Rome). Rijeka/Fiume. ~28 km2.
 MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,11,historical,Asia,MNG,NA,CShapes 2.0 (earliest Mongolia polygon),NA,NA,research,VERIFIED,Bogd Khan declared independence from Qing China Dec 1911. De facto independent until 1921 Soviet-backed revolution. Predecessor of Mongolian People's Republic.
-IND-1800-2025,India (old),1800,2025,226,aggregate,Asia,IND,NA,NA,NA,NA,research,VERIFIED,Aggregate entry for continuous trade data linkage across British India and modern India periods
+IND-1800-2025,India (old),1800,2025,226,aggregate,Asia,IND,NA,CShapes 2.0 (modern India sovereign polygon),NA,NA,research,VERIFIED,Aggregate entry for continuous trade data linkage across British India and modern India periods
 JPN-1800-1895,Japan (to 1895),1800,1895,96,historical,Asia,JPN,NA,CShapes 2.0,NA,JPN-1895-1945,CShapes; research,VERIFIED,"Pre-imperial Japan. Home islands only (~370,776 km2). Treaty of Shimonoseki (1895) marks beginning of colonial expansion."
 JPN-1895-1945,Japanese Empire,1895,1945,51,historical,Asia,JPN,NA,CShapes 2.0 (union: Japan + Taiwan + Korea + S. Sakhalin),JPN-1800-1895,JPN-1945-1952,CShapes; research,VERIFIED,"Empire period. +Taiwan (Treaty of Shimonoseki 1895), +S. Sakhalin (Treaty of Portsmouth 1905), +Korea (annexed 1910). ~658,000 km2 at peak. Manchukuo (1932-45) tracked separately as MAN-1932-1945."
 JPN-1945-1952,Japan (occupied),1945,1952,8,historical,Asia,JPN,NA,CShapes 2.0,JPN-1895-1945,JPN-1952-2025,CShapes; research,VERIFIED,US occupation (SCAP). All colonies stripped. Treaty of San Francisco (1952-04-28) restores sovereignty.
@@ -1307,12 +1307,16 @@ NPL-1816-2025,Nepal,1816,2025,210,sovereign,Asia,NPL,NA,Cliopatria (Nepal 1820-1
 OMN-1800-1856,Omani Empire,1800,1856,57,historical,Asia,OMN,NA,Cliopatria (Sultanate of Oman 1840-1855),NA,OMN-1856-2025,CShapes; Cliopatria; research,VERIFIED,"Omani Empire including East African coast (Zanzibar, Pemba, mainland strip). Said bin Sultan ruled from Zanzibar (moved capital 1840). ~176K km2 at peak. Split on his death 1856: Zanzibar and Oman became separate sultanates."
 OMN-1856-2025,Sultanate of Oman,1856,2025,170,sovereign,Asia,OMN,NA,Cliopatria (Sultanate of Oman 1856-1858),OMN-1800-1856,NA,CShapes; Cliopatria; research,VERIFIED,Sultanate of Oman (Muscat) after separation from Zanzibar 1856. ~80-310K km2 (varying with interior tribal control). Zanzibar tracked separately as ZAN-1856-1964.
 COL-1800-1830,Gran Colombia,1800,1830,31,historical,South America,COL,NA,Cliopatria (Gran Colombia 1822-1823),NA,COL-1830-1903,CShapes; Cliopatria; research,VERIFIED,Includes Gran Colombia period (1819-1830): Colombia + Venezuela + Ecuador + Panama. ~4.3M km2 at peak. Dissolved 1830: Venezuela and Ecuador seceded. -34% loss.
-COL-1830-1903,Colombia (to 1903),1830,1903,74,historical,South America,COL,NA,Cliopatria (Gran Colombia 1830-1833),COL-1800-1830,NA,CShapes; Cliopatria; research,VERIFIED,Republic of New Granada / Colombia after Gran Colombia. ~2.8M km2. Lost Panama 1903.
+COL-1830-1903,Colombia (to 1903),1830,1903,74,historical,South America,COL,NA,Cliopatria (Gran Colombia 1830-1833),COL-1800-1830,COL-1903-1922,CShapes; Cliopatria; research,VERIFIED,Republic of New Granada / Colombia after Gran Colombia. ~2.8M km2. Lost Panama 1903.
 USA-1800-1803,United States (original),1800,1803,4,historical,North America,USA,NA,Cliopatria (United States of America 1800-1802),NA,USA-1803-1848,CShapes; Cliopatria; research,VERIFIED,"Original 13 states + early territories (Ohio, Kentucky, Tennessee, Vermont). ~1.2M km2. Louisiana Purchase (1803) doubles territory."
 USA-1803-1848,United States (1803-1848),1803,1848,46,historical,North America,USA,NA,Cliopatria (United States of America 1842-1845),USA-1800-1803,USA-1848-1867,CShapes; Cliopatria; research,VERIFIED,"Post-Louisiana Purchase (1803, +2.1M km2). Florida (Adams-Onis 1819). Texas annexation (1845). Oregon Treaty (1846). ~3.5M km2 by 1845. Treaty of Guadalupe Hidalgo (1848) triggers next split."
 USA-1848-1867,United States (1848-1867),1848,1867,20,historical,North America,USA,NA,Cliopatria (United States of America 1859-1860),USA-1803-1848,USA-1867-1959,CShapes; Cliopatria; research,VERIFIED,"Post-Mexican Cession (Guadalupe Hidalgo 1848, +1.4M km2). Gadsden Purchase (1854). Civil War (1861-1865). ~4.3M km2 pre-Alaska. Alaska Purchase (1867) triggers next split."
 USA-1867-1959,United States (1867-1959),1867,1959,93,historical,North America,USA,NA,Cliopatria (United States of America 1877-1879),USA-1848-1867,USA-1959-2025,CShapes; Cliopatria; research,VERIFIED,"Alaska Purchase (1867, +1.7M km2). Territory stable at ~9.4M km2. Hawaii Territory (1898). Admitted as 49th and 50th states 1959."
 F228-1800-1856,Russian Empire (to 1856),1800,1856,57,historical,Europe,RUS,NA,Cliopatria (Russian Empire 1815-1823),NA,F228-1856-1905,CShapes; Cliopatria; research,VERIFIED,"Russian Empire pre-Crimean War. ~17.4M km2. Acquisitions: Georgia (1801), Finland (1809), Bessarabia (1812), Congress Poland (1815). Caucasus conquest ongoing. Crimean War (1853-56) ends this period."
 F228-1856-1905,Russian Empire (1856-1905),1856,1905,50,historical,Europe,RUS,NA,Cliopatria (Russian Empire 1885-1894),F228-1800-1856,F228-1905-1914,CShapes; Cliopatria; research,VERIFIED,"Russian Empire post-Crimean War. Massive Central Asian expansion: Tashkent (1865), Bukhara protectorate (1868), Khiva (1873), Kokand (1876), Merv (1884). Far East: Amur/Ussuri (1858-60), Sakhalin (1875). ~22M km2 by 1900. Russo-Japanese War (1904-05) triggers next period."
-ICP-1858-1947,British India: Crown Provinces,1858,1947,90,colonial,Asia,IND,,CShapes 2.0 (British India proxy),,IND-1947-1949,research,VERIFIED,"Directly administered British Crown provinces of India (Bengal, Madras, Bombay, Punjab, United Provinces, Central Provinces, Bihar, Orissa, Assam, NWFP, Sind, Burma until 1937). ~60% of British India territory. Government of India Act 1858 established Crown rule. No separate polygon available; uses full British India extent as proxy. Parent: IND-1800-1947."
-IPS-1858-1947,British India: Princely States,1858,1947,90,dependency,Asia,IND,,CShapes 2.0 (British India proxy),,IND-1947-1949,research,VERIFIED,"Semi-autonomous princely states under British paramountcy (Hyderabad, Mysore, Baroda, Kashmir, Travancore, Gwalior, Rajputana states, etc.). ~565 states covering ~40% of British India territory. Internal sovereignty retained; British controlled defense and foreign affairs. No separate polygon; uses full British India extent as proxy. Parent: IND-1800-1947."
+ICP-1858-1947,British India: Crown Provinces,1858,1947,90,colonial,Asia,IND,NA,CShapes 2.0 (British India proxy),NA,IND-1947-1949,research,VERIFIED,"Directly administered British Crown provinces of India (Bengal, Madras, Bombay, Punjab, United Provinces, Central Provinces, Bihar, Orissa, Assam, NWFP, Sind, Burma until 1937). ~60% of British India territory. Government of India Act 1858 established Crown rule. No separate polygon available; uses full British India extent as proxy. Parent: IND-1800-1947."
+IPS-1858-1947,British India: Princely States,1858,1947,90,dependency,Asia,IND,NA,CShapes 2.0 (British India proxy),NA,IND-1947-1949,research,VERIFIED,"Semi-autonomous princely states under British paramountcy (Hyderabad, Mysore, Baroda, Kashmir, Travancore, Gwalior, Rajputana states, etc.). ~565 states covering ~40% of British India territory. Internal sovereignty retained; British controlled defense and foreign affairs. No separate polygon; uses full British India extent as proxy. Parent: IND-1800-1947."
+MMR-1800-1826,Konbaung Burma (to 1826),1800,1826,27,historical,Asia,MMR,NA,Cliopatria (Burma 1822-1824),NA,MMR-1826-1852,CShapes; Cliopatria; research,VERIFIED,"Konbaung Dynasty at peak. ~798K km2 including Arakan, Manipur, Assam. First Anglo-Burmese War (1824-26) ends with Treaty of Yandabo: lost Arakan, Tenasserim, Assam, Manipur. -31% territory."
+MMR-1826-1852,Burma (1826-1852),1826,1852,27,historical,Asia,MMR,NA,Cliopatria (Burma 1828-1833),MMR-1800-1826,MMR-1852-1885,CShapes; Cliopatria; research,VERIFIED,Post-First Anglo-Burmese War. ~553K km2. Second Anglo-Burmese War (1852): Britain seizes Lower Burma (Pegu). -21% territory.
+MMR-1852-1885,Upper Burma (1852-1885),1852,1885,34,historical,Asia,MMR,NA,Cliopatria (Burma 1853-1858),MMR-1826-1852,MMR-1885-2025,CShapes; Cliopatria; research,VERIFIED,Upper Burma only. ~437K km2. Third Anglo-Burmese War (1885): Britain conquers Upper Burma. Kingdom abolished 1 Jan 1886.
+MMR-1885-2025,Myanmar,1885,2025,141,sovereign,Asia,MMR,NA,Cliopatria (Burma 1948-1962),MMR-1852-1885,NA,CShapes; Cliopatria; research,VERIFIED,British Burma 1886-1948. Independence 1948. Military rule 1962-2011. Name changed to Myanmar 1989.
