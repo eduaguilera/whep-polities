@@ -29,14 +29,31 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 #search:focus { border-color: rgba(100,180,255,0.4); }
 #search::placeholder { color: #666; }
 
-.filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-.filter-btn {
-  padding: 4px 10px; border-radius: 14px; font-size: 11px; cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.15); background: transparent; color: #aaa;
-  transition: all 0.15s;
+.filter-toggle {
+  width: 100%; padding: 7px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06);
+  color: #aaa; text-align: left; margin-bottom: 2px; display: flex; justify-content: space-between;
 }
-.filter-btn.active { background: rgba(100,180,255,0.2); color: #7cb8ff; border-color: rgba(100,180,255,0.4); }
-.filter-btn:hover { border-color: rgba(255,255,255,0.3); }
+.filter-toggle:hover { border-color: rgba(255,255,255,0.25); }
+.filter-dropdown {
+  display: none; margin-bottom: 8px; padding: 6px 0;
+  border: 1px solid rgba(255,255,255,0.08); border-top: none;
+  border-radius: 0 0 6px 6px; background: rgba(20,20,35,0.95);
+}
+.filter-dropdown.open { display: block; }
+.filter-row {
+  display: flex; align-items: center; gap: 8px; padding: 5px 12px; cursor: pointer;
+  font-size: 12px; color: #999; transition: background 0.1s;
+}
+.filter-row:hover { background: rgba(255,255,255,0.04); }
+.filter-row input[type="checkbox"] { display: none; }
+.filter-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid currentColor; transition: all 0.1s;
+}
+.filter-row.active .filter-dot { background: currentColor; }
+.filter-row.active { color: #ddd; }
+.filter-count { margin-left: auto; font-size: 10px; color: #555; }
 
 #year-display {
   font-size: 28px; font-weight: 700; color: #fff; text-align: center; margin: 8px 0 2px;
@@ -90,7 +107,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
   <input type="text" id="search" placeholder="Search polities..." />
 
-  <div class="filters" id="type-filters"></div>
+  <button class="filter-toggle" id="filter-toggle">Filter types <span id="filter-summary"></span></button>
+  <div class="filter-dropdown" id="type-filters"></div>
 
   <input type="text" id="year-display" value="1900" inputmode="numeric" />
   <input type="range" id="year-range" min="1800" max="2025" value="1900" step="1" />
@@ -117,8 +135,8 @@ const TYPE_COLORS = {
 
 let polities = [];
 let geoData = null;
-let activeTypes = new Set(Object.keys(TYPE_COLORS));
-activeTypes.delete('region');
+const HIDDEN_BY_DEFAULT = new Set(['region', 'aggregate']);
+let activeTypes = new Set(Object.keys(TYPE_COLORS).filter(t => !HIDDEN_BY_DEFAULT.has(t)));
 let selectedYear = 1900;
 let selectedCode = null;
 let map;
@@ -165,22 +183,37 @@ async function loadGeoJSON() {
   });
 }
 
+function updateFilterSummary() {
+  const total = Object.keys(TYPE_COLORS).length;
+  const on = activeTypes.size;
+  document.getElementById('filter-summary').textContent = `${on}/${total}`;
+}
+
 function buildTypeFilters() {
   const container = document.getElementById('type-filters');
-  const types = [...new Set(polities.map(p => p.polity_type))].sort();
+  const typeCounts = {};
+  polities.forEach(p => { typeCounts[p.polity_type] = (typeCounts[p.polity_type] || 0) + 1; });
+  const types = Object.keys(TYPE_COLORS).sort((a, b) => (typeCounts[b] || 0) - (typeCounts[a] || 0));
+
   types.forEach(type => {
-    if (type === 'region') return;
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn' + (activeTypes.has(type) ? ' active' : '');
-    btn.textContent = type;
-    btn.style.borderColor = TYPE_COLORS[type] || '#666';
-    btn.onclick = () => {
-      if (activeTypes.has(type)) { activeTypes.delete(type); btn.classList.remove('active'); }
-      else { activeTypes.add(type); btn.classList.add('active'); }
+    const row = document.createElement('div');
+    row.className = 'filter-row' + (activeTypes.has(type) ? ' active' : '');
+    const color = TYPE_COLORS[type] || '#888';
+    row.style.color = activeTypes.has(type) ? color : '#666';
+    row.innerHTML = `<span class="filter-dot" style="color:${color}"></span>${type}<span class="filter-count">${typeCounts[type] || 0}</span>`;
+    row.onclick = () => {
+      if (activeTypes.has(type)) { activeTypes.delete(type); row.classList.remove('active'); row.style.color = '#666'; }
+      else { activeTypes.add(type); row.classList.add('active'); row.style.color = color; }
+      updateFilterSummary();
       updateMap();
     };
-    container.appendChild(btn);
+    container.appendChild(row);
   });
+
+  document.getElementById('filter-toggle').onclick = () => {
+    container.classList.toggle('open');
+  };
+  updateFilterSummary();
 }
 
 function getActivePolities() {
@@ -243,9 +276,14 @@ function showInfo(code) {
   // Ensure the polity type is visible
   if (!activeTypes.has(p.polity_type)) {
     activeTypes.add(p.polity_type);
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      if (btn.textContent === p.polity_type) btn.classList.add('active');
+    const color = TYPE_COLORS[p.polity_type] || '#888';
+    document.querySelectorAll('.filter-row').forEach(row => {
+      if (row.textContent.includes(p.polity_type)) {
+        row.classList.add('active');
+        row.style.color = color;
+      }
     });
+    updateFilterSummary();
     updateMap();
   }
 
