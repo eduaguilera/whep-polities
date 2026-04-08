@@ -220,8 +220,28 @@
 
 ## 2. Known Limitations (Unresolved)
 
-### ~~Denmark 1864 Period Split~~ (RESOLVED)
-- **Status**: FIXED — see Section 1 above. Split into DNK-1800-1864 and DNK-1864-1920.
+### Polygon-Territory Mismatches
+Several polities use proxy polygons that don't accurately reflect their actual territory
+at the time. These are inherent to available source data and not easily fixable:
+
+- **NLD-1800-1830** (United Kingdom of the Netherlands): Polygon from Cliopatria
+  "Netherlands 1815-1819" only covers the modern Netherlands, not Belgium or Luxembourg
+  which were part of the United Kingdom. Actual territory was ~71K km2 (NL+BE+LU);
+  polygon shows ~41K km2 (NL only).
+- **Ottoman entries** (OTT-1800-1886 etc.): Cliopatria polygon from one time-step
+  applied across periods with significant territorial change (~2% temporal coverage).
+- **Egypt** (EGY-1800-1899): Polygon from 1886 applied to 1800-1899 (~16% coverage).
+- **Zanzibar** (ZAN-1856-1964): 1856 mainland+island polygon applied to full period
+  (~26% coverage; Zanzibar lost mainland territories over time).
+- **Russian Empire**: CShapes polygon from 1886 applied across 19th century
+  (~14-18% coverage).
+- **Mexico** (MEX-1800-1848): Uses post-1848 polygon as proxy; actual territory
+  included Texas, California, New Mexico, etc. (~21% overstatement).
+- **Gran Colombia** (COL-1800-1830): CShapes polygon from later period (~3% coverage).
+- **USA 1803-1848**: Polygon underestimates actual territory after Louisiana Purchase.
+- **Konbaung Burma** (MMR-1800-1826): CShapes proxy (~8% coverage).
+- **Madagascar** (MAD-1800-1912): Merina Kingdom 1840 polygon applied to full period;
+  2-5x overstatement before 1840.
 
 ### Afghanistan 1888-1919 Gap
 - **Impact**: 31-year gap between AFG-1800-1888 and AFG-1919-2025
@@ -229,36 +249,38 @@
   buffer state between 1888-1919 with limited sovereignty.
 - **Recommendation**: Document, don't fix
 
-### Sweden Semantic Inconsistency (Partially Resolved)
-- **Issue**: SWE-1800-2025 (aggregate) still has post-1905 geometry but claims 1800-2025.
-- **Resolved**: The period-specific entries are now correctly split:
-  SWE-1800-1809 (with Finland), SWE-1809-1814, SWE-1814-1905 (with Norway).
-- **Remaining**: SWE-1800-2025 aggregate kept for FAOSTAT data linkage (uses wrong polygon)
-
 ### Post-2019 CShapes Gap
 - **Issue**: CShapes 2.0 ends in 2019. All post-2019 changes are from whep_fixes only.
 - **Impact**: Post-2019 territorial changes may be missed
 - **Covered**: Crimea 2014 (via whep_fixes), South Sudan 2011
 - **Not covered**: 2022 Ukraine-Russia changes (intentional)
 
+### Missing Polygons in Web Map (27 entries)
+The following polities have polygon sources listed but their geometries are not
+in the site geojson (they may exist in the GeoPackage but were not exported):
+Zanzibar, Dronning Maud Land, Danish India, British Indian Ocean Territory,
+Gaza Strip, Neutral Zone, East/West Berlin, Sark, Canton and Enderbury Islands,
+US Virgin Islands, Van Diemen's Land, Christmas Island, Cocos Islands,
+Heard Island, Johnston Island, US misc. Pacific Islands, Midway Islands,
+US settlement Oceania, Wake Island, and others.
+
 ---
 
 ## 3. Design Decisions
 
-### Decision 1: FT Trade Aggregates Span Full Periods
-- **What**: 60 entities classified as "aggregate" span full or extended periods.
-  These include:
-  - Trade accounting aggregates (GER-1800-2025 Germany/Zollverein, CHN-1800-2025 China)
-  - Dissolved colonial territories with FT end_year=NA→2025 (Belgian Congo, British
-    East Africa, French Indochina, etc.)
-  - Historical sub-national entities (UAE emirates, Newfoundland, Sikkim, etc.)
-  - FT reporting entities (Syria and Lebanon, Nigeria (old), Tibet (old))
-- **Why**: FT trade data uses these as continuous entities for trade accounting.
-  Colonial-era aggregates have end_year=2025 because FT uses NA for end dates.
-- **Trade-off**: These coexist with period-specific entries, which may confuse users.
-  No colonial entities actually exist in 2025 — the end date is an FT artifact.
-- **Recommendation**: Users should use period-specific entries for territorial analysis
-  and aggregate entries for trade data linkage
+### Decision 1: Simplified Polity Typology (v2.6)
+- **What**: Polity types reduced from 10 (sovereign, historical, colonial, dependency,
+  mandate, occupation, puppet, aggregate, region, disputed) to 3: `national`,
+  `subnational`, and `aggregate`.
+- **Why**: The granular typology was confusing and hard to maintain consistently.
+  The distinction between e.g. "colonial" vs "dependency" vs "mandate" is better
+  captured by the polity's dates, predecessor/successor links, and notes.
+- **Aggregate type**: Reserved exclusively for FAOSTAT/UN statistical groupings
+  (Africa, OECD, Eastern Europe, etc.). Hidden by default in the web map UI.
+- **False aggregates removed**: Entries like "Netherlands (old)", "Russia/USSR (old)",
+  "United States (old)" that were FAOSTAT data-linkage artefacts duplicating real
+  polities with proper time splits have been deleted. FAOSTAT data should be linked
+  to the actual polity at each point in time, not to phantom full-span entries.
 
 ### Decision 2: Pre-Unification German States Are Minimal
 - **What**: Individual German states are tracked but FT aggregates all under Zollverein
@@ -297,9 +319,10 @@
 - **Consistent with**: Polity definition (territory-based, not sovereignty-based)
 
 ### Decision 8: FAOSTAT Aggregate Regions Preserved
-- **What**: 146 regional aggregates (Africa, OECD, LDCs, etc.)
-- **Why**: FAOSTAT publishes aggregate data for these
-- **Trade-off**: Inflates total polity count; regions don't have geometry
+- **What**: 77 statistical aggregates (Africa, OECD, LDCs, etc.) kept as type `aggregate`
+- **Why**: FAOSTAT publishes aggregate data for these groupings
+- **Trade-off**: Inflates total polity count; aggregates have no geometry
+- **UI**: Hidden by default in web map; togglable via filter dropdown
 
 ### Decision 9: Sub-National Entities When Historically Significant
 - **What**: Australian colonies, Canadian provinces, UAE emirates, etc.
@@ -309,6 +332,26 @@
 ---
 
 ## 4. Changelog
+
+### Version 2.6 (2026-04-08)
+- **Typology simplification**: Reduced polity types from 10 to 3 (national, subnational,
+  aggregate). All former sovereign/historical/colonial/dependency/mandate/disputed/puppet
+  entries are now `national`. Statistical regions (Africa, OECD, etc.) are `aggregate`.
+- **Removed 23 false aggregate entries**: "Netherlands (old)", "Russia/USSR (old)",
+  "United States (old)", "India (old)", and similar FAOSTAT data-linkage artefacts that
+  duplicated real polities with proper time splits. FAOSTAT data should be linked to
+  the actual polity at each point in time.
+- **Fixed Luxembourg**: Extended from 2000-2025 to 1839-2025 (actual independence).
+  Previously only appeared when FAOSTAT started tracking it separately from Belgium.
+  Belgium-Luxembourg (F15-1800-1999) kept as aggregate.
+- **Polygon reassignment**: Polygons from removed aggregate entries reassigned to their
+  real period-specific polities (Japan, USA, Mexico, Myanmar, Nepal, Oman, Colombia,
+  Netherlands, Nigeria — 22 features total).
+- **Diverse map coloring**: Replaced single-color-per-type with hash-based 30-color
+  palette for political-map style visualization.
+- **Known limitations documented**: Consolidated polygon-territory mismatches (10 entries),
+  missing web map polygons (27 entries).
+- Database: 1,397 entries (898 national, 422 subnational, 77 aggregate).
 
 ### Version 2.5 (2026-03-28)
 - Added 99 missing colonial-period entries from CShapes 2.0 dependencies, filling
@@ -326,7 +369,7 @@
 - Interactive web map improvements: search highlights polity on map with auto-year
   navigation, collapsible panel with minimize button, animated filter dropdown,
   editable year input field, mobile-responsive layout.
-- Database: 1,397 entries (1,343 non-region). Updated all documentation to v2.5.
+- Database: 1,420 entries at time of release. Updated all documentation to v2.5.
 
 ### Version 2.4 (2026-03-28)
 - Comprehensive data integrity audit and fixes:
