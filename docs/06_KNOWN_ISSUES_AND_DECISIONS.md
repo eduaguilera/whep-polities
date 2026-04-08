@@ -255,6 +255,15 @@ at the time. These are inherent to available source data and not easily fixable:
 - **Covered**: Crimea 2014 (via whep_fixes), South Sudan 2011
 - **Not covered**: 2022 Ukraine-Russia changes (intentional)
 
+### Overlapping Entries (102 pairs)
+Some ISO3 codes have entries whose date ranges overlap by more than 1 year. This
+happens when a "main" entry (e.g., `MOZ-1816-2025` Mozambique) provides full
+coverage while CShapes period-specific entries (e.g., `MOZ-1891-1975`) provide
+more accurate polygons for sub-periods. The main entry cannot be removed without
+creating coverage gaps (e.g., Mozambique 1976-2025 has no other entry). The proper
+fix would be to trim main entries to only cover gap periods, but this requires
+careful manual review of ~56 countries.
+
 ### Missing Polygons in Web Map (27 entries)
 The following polities have polygon sources listed but their geometries are not
 in the site geojson (they may exist in the GeoPackage but were not exported):
@@ -351,7 +360,7 @@ US settlement Oceania, Wake Island, and others.
   palette for political-map style visualization.
 - **Known limitations documented**: Consolidated polygon-territory mismatches (10 entries),
   missing web map polygons (27 entries).
-- Database: 1,397 entries (898 national, 422 subnational, 77 aggregate).
+- Database: 1,386 entries (898 national, 422 subnational, 77 aggregate).
 
 ### Version 2.5 (2026-03-28)
 - Added 99 missing colonial-period entries from CShapes 2.0 dependencies, filling
@@ -423,7 +432,7 @@ US settlement Oceania, Wake Island, and others.
     ST. (3→VCT/LCA removed), VAN (2→TAS/VCI), WES (3→AUWA/WBK/DNG)
   - **Other**: Alaska ALA→ALK, Anhalt-Dessau AND→ANH, Badakhshan BAD→BKH,
     Papal States keeps PAP (Papua→PUA), Sardinia keeps SAR (Sarawak→SRW)
-- Database: 1,397 → 1,318 entries (2 duplicates removed)
+- Database: 1,386 → 1,318 entries (2 duplicates removed)
 
 ### Version 2.0 (2026-03-27)
 - Built unified GeoPackage (`data/final/polities_database.gpkg`) combining all

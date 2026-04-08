@@ -10,7 +10,7 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,397 political entities ("polities")** spanning
+A comprehensive database of **1,386 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
 Includes **422 subnational entries** across 9 countries + Qing China.
@@ -24,20 +24,20 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,397 |
-| National | 898 |
+| Total entries | 1,386 |
+| National | 886 |
 | Subnational | 422 |
-| Aggregate (statistical regions) | 77 |
+| Aggregate (statistical regions) | 78 |
 
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Polities with polygon source | 1,397/1,397 (100%) |
+| Polities with polygon source | 1,386/1,386 (100%) |
 | Subnational polygons (9 countries + Qing) | 422/422 (100%) |
 | COW State System coverage | 207/209 (99.0%) |
 | Trade data coverage | 331/331 geographies (100%) |
 | Decolonization events | 94/94 (100%) |
-| Verification | 1,397/1,397 (100%) |
+| Verification | 1,386/1,386 (100%) |
 
 ### Geographic Distribution (non-subnational)
 | Continent | Entries |
