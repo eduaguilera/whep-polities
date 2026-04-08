@@ -21,7 +21,7 @@ world <- ne_countries(scale = "medium", returnclass = "sf") %>%
 
 # Match WHEP polities to Natural Earth by ISO3
 whep_modern <- master %>%
-  filter(end_year >= 2020, !polity_type %in% c("region", "aggregate")) %>%
+  filter(end_year >= 2020, polity_type == "national") %>%
   select(polity_name, iso3_code, polity_type, n_sources, start_year) %>%
   distinct(iso3_code, .keep_all = TRUE)
 
@@ -78,7 +78,7 @@ ggsave(
 world_startyear <- world %>%
   left_join(
     master %>%
-      filter(end_year >= 2020, !polity_type %in% c("region", "aggregate")) %>%
+      filter(end_year >= 2020, polity_type == "national") %>%
       group_by(iso3_code) %>%
       summarise(
         earliest_start = min(start_year, na.rm = TRUE),
@@ -120,7 +120,7 @@ ggsave(
 # ==============================================================================
 
 period_counts <- master %>%
-  filter(!polity_type %in% c("region", "aggregate")) %>%
+  filter(polity_type == "national") %>%
   count(prefix, name = "n_periods") %>%
   filter(n_periods > 1)
 
@@ -172,7 +172,7 @@ ggsave(
 # ==============================================================================
 
 empire_map_data <- master %>%
-  filter(!is.na(empire), !polity_type %in% c("region")) %>%
+  filter(!is.na(empire), polity_type == "national") %>%
   distinct(iso3_code, empire) %>%
   filter(!is.na(iso3_code))
 
@@ -207,7 +207,7 @@ ggsave(
 # ==============================================================================
 
 continent_type_data <- master %>%
-  filter(!polity_type %in% c("region"), !is.na(continent)) %>%
+  filter(polity_type == "national", !is.na(continent)) %>%
   count(continent, polity_type)
 
 p_cont_type <- ggplot(

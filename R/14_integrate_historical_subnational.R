@@ -433,7 +433,7 @@ esp_polys <- list()
 # Determine parent polity
 # Spain sovereign entries - find the one active in 1833-2025
 esp_parent <- db |>
-  filter(iso3_code == "ESP", polity_type == "sovereign", end_year == 2025) |>
+  filter(iso3_code == "ESP", polity_type == "national", end_year == 2025) |>
   pull(polity_code) |>
   first()
 if (is.na(esp_parent) || length(esp_parent) == 0) {

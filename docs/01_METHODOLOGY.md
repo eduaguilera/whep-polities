@@ -104,21 +104,12 @@ and should be updated as the project progresses.
 
 ## 5. Polity Type Classification
 
-Each polity is classified into one of these types:
+Each polity is classified into one of two types:
 
 | Type | Definition | Examples |
 |------|-----------|----------|
-| `sovereign` | Independent state recognized by international community | France, Japan, Brazil |
-| `historical` | Sovereign state that no longer exists | Ottoman Empire, Two Sicilies, Papal States |
-| `colonial` | Territory administered by a colonial power | Belgian Congo, British East Africa |
-| `dependency` | Non-sovereign territory with distinct administration | Hong Kong, Bermuda, Greenland |
-| `mandate` | League of Nations or UN mandate/trust territory | Palestine mandate, Tanganyika trust |
-| `occupation` | Territory under military occupation | Southern Sakhalin (Japan, 1905-1945) |
-| `aggregate` | Multi-state entity tracked for trade data continuity | Germany/Zollverein, China mainland |
-| `region` | FAOSTAT/UN statistical aggregate | Africa, Eastern Europe, OECD |
-| `disputed` | Entity with contested sovereignty | Kosovo, Taiwan, Western Sahara |
-| `puppet` | Client/puppet state of another power | Manchukuo (1932-1945) |
-| `subnational` | Present-day admin-1 subdivision of a large country | California, São Paulo, Guangdong |
+| `national` | Any polity that is not a subnational division | France, Ottoman Empire, Belgian Congo, Africa (region) |
+| `subnational` | Admin-1 subdivision of a large country, explicitly added | California, São Paulo, Guangdong |
 
 ## 6. Continent Assignment
 

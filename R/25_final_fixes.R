@@ -78,7 +78,7 @@ cat("\n--- PRIORITY 3: Myanmar territorial splits ---\n")
 mmr_idx <- which(db$polity_code == "MMR-1800-2025")
 if (length(mmr_idx) == 1) {
   # Reclassify as aggregate
-  db$polity_type[mmr_idx] <- "aggregate"
+  db$polity_type[mmr_idx] <- "national"
   db$notes[mmr_idx] <- "Aggregate for continuous trade data linkage. Split at 1826 and 1852 (Anglo-Burmese Wars)."
   cat("  MMR-1800-2025 reclassified as aggregate\n")
 
@@ -104,19 +104,19 @@ if (length(mmr_idx) == 1) {
 
   mmr_periods <- list(
     list(code = "MMR-1800-1826", name = "Konbaung Burma (to 1826)",
-         start = 1800L, end = 1826L, type = "historical",
+         start = 1800L, end = 1826L, type = "national",
          clio_name = "Burma", clio_fy = 1822, clio_ty = 1824,
          notes = "Konbaung Dynasty at peak. ~798K km2 including Arakan, Manipur, Assam. First Anglo-Burmese War (1824-26) ends with Treaty of Yandabo: lost Arakan, Tenasserim, Assam, Manipur. -31% territory."),
     list(code = "MMR-1826-1852", name = "Burma (1826-1852)",
-         start = 1826L, end = 1852L, type = "historical",
+         start = 1826L, end = 1852L, type = "national",
          clio_name = "Burma", clio_fy = 1828, clio_ty = 1833,
          notes = "Post-First Anglo-Burmese War. ~553K km2. Second Anglo-Burmese War (1852): Britain seizes Lower Burma (Pegu). -21% territory."),
     list(code = "MMR-1852-1885", name = "Upper Burma (1852-1885)",
-         start = 1852L, end = 1885L, type = "historical",
+         start = 1852L, end = 1885L, type = "national",
          clio_name = "Burma", clio_fy = 1853, clio_ty = 1858,
          notes = "Upper Burma only. ~437K km2. Third Anglo-Burmese War (1885): Britain conquers Upper Burma. Kingdom abolished 1 Jan 1886."),
     list(code = "MMR-1885-2025", name = "Myanmar",
-         start = 1885L, end = 2025L, type = "sovereign",
+         start = 1885L, end = 2025L, type = "national",
          clio_name = "Burma", clio_fy = 1948, clio_ty = 1962,
          notes = "British Burma 1886-1948. Independence 1948. Military rule 1962-2011. Name changed to Myanmar 1989.")
   )
@@ -176,7 +176,7 @@ cat("\n--- PRIORITY 4: Auto-chain historical entries ---\n")
 chain_count <- 0
 
 # Group non-aggregate, non-subnational, non-region entries by ISO3
-chainable_types <- c("historical", "colonial", "mandate", "sovereign")
+chainable_types <- c("national")
 candidates <- db %>%
   filter(polity_type %in% chainable_types,
          !is.na(iso3_code), iso3_code != "NA") %>%
@@ -251,7 +251,7 @@ cat(sprintf("  Saved: polities_polygons.gpkg (%d polygons)\n", nrow(polys)))
 
 # Report
 no_links <- db %>%
-  filter(polity_type == "historical",
+  filter(polity_type == "national",
          (is.na(predecessor) | predecessor == "NA"),
          (is.na(successor) | successor == "NA"))
 cat(sprintf("\n  Historical entries still without any links: %d (was 267)\n", nrow(no_links)))

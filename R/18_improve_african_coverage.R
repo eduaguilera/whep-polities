@@ -108,7 +108,7 @@ cshapes_verify <- db %>%
   filter(
     continent == "Africa",
     verification_status == "UNVERIFIED",
-    polity_type %in% c("colonial", "historical", "mandate", "dependency"),
+    polity_type %in% c("national"),
     !is.na(polygon_source),
     grepl("CShapes 2.0", polygon_source)
   )

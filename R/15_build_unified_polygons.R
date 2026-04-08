@@ -29,8 +29,8 @@ cat("=== Building Unified Polities GeoPackage ===\n\n")
 
 db <- read_csv(file.path(final_dir, "polities_database.csv"), show_col_types = FALSE)
 cat("Loaded polities database:", nrow(db), "entries\n")
-cat("  Non-region:", sum(db$polity_type != "region"), "\n")
-cat("  Regions:", sum(db$polity_type == "region"), "\n\n")
+cat("  National:", sum(db$polity_type == "national"), "\n")
+cat("  Regions:", sum(db$polity_type == "national"), "\n\n")
 
 # ==============================================================================
 # 2. Load all existing polygon sources
@@ -74,7 +74,7 @@ cat(sprintf("\nCombined: %d unique polygons from existing sources\n", nrow(all_p
 # 3. Identify missing polities
 # ==============================================================================
 
-non_region <- db[db$polity_type != "region", ]
+non_region <- db[db$polity_type == "national", ]
 missing <- non_region[!non_region$polity_code %in% all_polys$polity_code, ]
 cat(sprintf("Missing polygons: %d of %d non-region polities\n\n",
             nrow(missing), nrow(non_region)))
@@ -307,4 +307,4 @@ cat("\n=== Done ===\n")
 cat("Load in R with:\n")
 cat('  library(sf)\n')
 cat('  polities <- st_read("data/final/polities_database.gpkg")\n')
-cat('  plot(polities[polities$polity_type == "sovereign" & polities$end_year == 2025, "continent"])\n')
+cat('  plot(polities[polities$polity_type == "national" & polities$end_year == 2025, "continent"])\n')

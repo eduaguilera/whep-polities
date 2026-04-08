@@ -147,14 +147,34 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
 const TYPE_COLORS = {
-  sovereign: '#2196F3', historical: '#FF9800', colonial: '#F44336',
-  dependency: '#9C27B0', mandate: '#E91E63', aggregate: '#607D8B',
-  region: '#795548', disputed: '#FF5722', puppet: '#9E9E9E', subnational: '#4CAF50'
+  national: '#2196F3', subnational: '#4CAF50'
 };
+
+// Diverse palette for political-map style coloring
+const MAP_PALETTE = [
+  '#e6194b', '#3cb44b', '#4363d8', '#f58231', '#42d4f4',
+  '#f032e6', '#fabed4', '#469990', '#dcbeff', '#9A6324',
+  '#ffe119', '#aaffc3', '#808000', '#ffd8b1', '#000075',
+  '#a9a9a9', '#e6beff', '#800000', '#fffac8', '#bfef45',
+  '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe',
+  '#008080', '#e6194b', '#aa6e28', '#808080', '#0082c8'
+];
+
+function hashCode(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) {
+    h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+  }
+  return Math.abs(h);
+}
+
+function polityColor(code) {
+  return MAP_PALETTE[hashCode(code) % MAP_PALETTE.length];
+}
 
 let polities = [];
 let geoData = null;
-const HIDDEN_BY_DEFAULT = new Set(['region', 'aggregate', 'subnational']);
+const HIDDEN_BY_DEFAULT = new Set(['subnational']);
 let activeTypes = new Set(Object.keys(TYPE_COLORS).filter(t => !HIDDEN_BY_DEFAULT.has(t)));
 let selectedYear = 1900;
 let selectedCode = null;
@@ -257,9 +277,12 @@ function buildFilteredGeoJSON() {
   const activeCodes = new Set(getActivePolities().map(p => p.polity_code));
   return {
     type: 'FeatureCollection',
-    features: geoData.features.filter(f =>
-      f.properties && activeCodes.has(f.properties.polity_code)
-    )
+    features: geoData.features
+      .filter(f => f.properties && activeCodes.has(f.properties.polity_code))
+      .map(f => ({
+        ...f,
+        properties: { ...f.properties, _color: polityColor(f.properties.polity_code) }
+      }))
   };
 }
 
@@ -331,7 +354,7 @@ function showInfo(code) {
   document.getElementById('info').style.display = 'block';
   document.getElementById('info-name').textContent = p.polity_name;
 
-  const color = TYPE_COLORS[p.polity_type] || '#888';
+  const color = polityColor(p.polity_code);
   let html = `
     <span class="type-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${p.polity_type}</span><br>
     <b>Code:</b> <span>${p.polity_code}</span><br>
@@ -418,12 +441,7 @@ async function init() {
 
   buildTypeFilters();
 
-  // Color expression
-  const colorExpr = ['match', ['get', 'polity_type']];
-  for (const [type, color] of Object.entries(TYPE_COLORS)) {
-    colorExpr.push(type, color);
-  }
-  colorExpr.push('#888');
+  const colorExpr = ['coalesce', ['get', '_color'], '#888'];
 
   map = new maplibregl.Map({
     container: 'map',

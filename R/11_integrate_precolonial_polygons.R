@@ -178,7 +178,7 @@ p <- ggplot() +
     size = 2.2,
     fontface = "bold"
   ) +
-  scale_fill_manual(values = c("historical" = "#E74C3C")) +
+  scale_fill_manual(values = c("national" = "#E74C3C")) +
   coord_sf(xlim = c(-20, 55), ylim = c(-37, 38)) +
   labs(
     title = "Pre-Colonial African States with Paine et al. (2024) Polygons",

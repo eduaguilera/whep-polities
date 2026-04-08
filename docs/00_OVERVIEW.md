@@ -91,7 +91,7 @@ The final database (`data/final/polities_database.csv`) has 15 columns:
 | `start_year` | Integer | Start year (inclusive) |
 | `end_year` | Integer | End year (inclusive; 2025 = still exists) |
 | `duration_years` | Integer | end_year - start_year + 1 |
-| `polity_type` | String | sovereign/historical/colonial/dependency/mandate/occupation/puppet/aggregate/region/disputed/subnational |
+| `polity_type` | String | national/subnational |
 | `continent` | String | Africa/Asia/Europe/North America/South America/Oceania/Antarctica/Global |
 | `iso3_code` | String | ISO 3166-1 alpha-3 code (if applicable) |
 | `cow_code` | String | Correlates of War numeric code (if applicable) |

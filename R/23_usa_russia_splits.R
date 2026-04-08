@@ -93,7 +93,7 @@ cat("--- PART 1: USA territorial splits ---\n")
 # Reclassify USA-1800-1959 as aggregate
 usa_idx <- which(db$polity_code == "USA-1800-1959")
 if (length(usa_idx) == 1) {
-  db$polity_type[usa_idx] <- "aggregate"
+  db$polity_type[usa_idx] <- "national"
   db$notes[usa_idx] <- "Aggregate for continuous trade data linkage. Split into 4 territorial periods."
   cat("  USA-1800-1959 reclassified as aggregate\n")
   changes <- changes + 1
@@ -101,28 +101,28 @@ if (length(usa_idx) == 1) {
 
 # Period 1: Original states (1800-1803)
 add_entry("USA-1800-1803", "United States (original)", 1800, 1803,
-  "historical", "North America", "USA",
+  "national", "North America", "USA",
   NA_character_, NULL, "USA-1803-1848",
   "Original 13 states + early territories (Ohio, Kentucky, Tennessee, Vermont). ~1.2M km2. Louisiana Purchase (1803) doubles territory.",
   "United States of America", c(1800, 1802))
 
 # Period 2: Louisiana Purchase era (1803-1848)
 add_entry("USA-1803-1848", "United States (1803-1848)", 1803, 1848,
-  "historical", "North America", "USA",
+  "national", "North America", "USA",
   NA_character_, "USA-1800-1803", "USA-1848-1867",
   "Post-Louisiana Purchase (1803, +2.1M km2). Florida (Adams-Onis 1819). Texas annexation (1845). Oregon Treaty (1846). ~3.5M km2 by 1845. Treaty of Guadalupe Hidalgo (1848) triggers next split.",
   "United States of America", c(1842, 1845))
 
 # Period 3: Mexican Cession to pre-Alaska (1848-1867)
 add_entry("USA-1848-1867", "United States (1848-1867)", 1848, 1867,
-  "historical", "North America", "USA",
+  "national", "North America", "USA",
   NA_character_, "USA-1803-1848", "USA-1867-1959",
   "Post-Mexican Cession (Guadalupe Hidalgo 1848, +1.4M km2). Gadsden Purchase (1854). Civil War (1861-1865). ~4.3M km2 pre-Alaska. Alaska Purchase (1867) triggers next split.",
   "United States of America", c(1859, 1860))
 
 # Period 4: Alaska onward (1867-1959)
 add_entry("USA-1867-1959", "United States (1867-1959)", 1867, 1959,
-  "historical", "North America", "USA",
+  "national", "North America", "USA",
   NA_character_, "USA-1848-1867", "USA-1959-2025",
   "Alaska Purchase (1867, +1.7M km2). Territory stable at ~9.4M km2. Hawaii Territory (1898). Admitted as 49th and 50th states 1959.",
   "United States of America", c(1877, 1879))
@@ -144,7 +144,7 @@ cat("\n--- PART 2: Russia territorial splits ---\n")
 # Reclassify F228-1800-1905 as aggregate
 rus_idx <- which(db$polity_code == "F228-1800-1905")
 if (length(rus_idx) == 1) {
-  db$polity_type[rus_idx] <- "aggregate"
+  db$polity_type[rus_idx] <- "national"
   db$notes[rus_idx] <- "Aggregate for continuous trade data linkage. Split into 2 territorial periods at Crimean War."
   cat("  F228-1800-1905 reclassified as aggregate\n")
   changes <- changes + 1
@@ -152,14 +152,14 @@ if (length(rus_idx) == 1) {
 
 # Period 1: Pre-Crimean War (1800-1856)
 add_entry("F228-1800-1856", "Russian Empire (to 1856)", 1800, 1856,
-  "historical", "Europe", "RUS",
+  "national", "Europe", "RUS",
   NA_character_, NULL, "F228-1856-1905",
   "Russian Empire pre-Crimean War. ~17.4M km2. Acquisitions: Georgia (1801), Finland (1809), Bessarabia (1812), Congress Poland (1815). Caucasus conquest ongoing. Crimean War (1853-56) ends this period.",
   "Russian Empire", c(1815, 1823))
 
 # Period 2: Post-Crimean + Central Asian expansion (1856-1905)
 add_entry("F228-1856-1905", "Russian Empire (1856-1905)", 1856, 1905,
-  "historical", "Europe", "RUS",
+  "national", "Europe", "RUS",
   NA_character_, "F228-1800-1856", "F228-1905-1914",
   "Russian Empire post-Crimean War. Massive Central Asian expansion: Tashkent (1865), Bukhara protectorate (1868), Khiva (1873), Kokand (1876), Merv (1884). Far East: Amur/Ussuri (1858-60), Sakhalin (1875). ~22M km2 by 1900. Russo-Japanese War (1904-05) triggers next period.",
   "Russian Empire", c(1885, 1894))

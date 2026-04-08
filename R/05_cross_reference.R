@@ -1077,7 +1077,7 @@ write_csv(cow_states, file.path(ext_dir, "cow_state_system.csv"))
 # ==============================================================================
 
 whep_sovereign <- master %>%
-  filter(polity_type == "sovereign", end_year >= 2020) %>%
+  filter(polity_type == "national", end_year >= 2020) %>%
   distinct(iso3_code, polity_name)
 
 cow_modern <- cow_states %>%
@@ -1153,7 +1153,7 @@ comparison_countries <- c(
 whep_timeline <- master %>%
   filter(
     iso3_code %in% comparison_countries,
-    !polity_type %in% c("region", "aggregate")
+    polity_type == "national"
   ) %>%
   mutate(source_db = "WHEP")
 
@@ -1225,7 +1225,7 @@ cat("1. Database Sizes:\n")
 cat("   WHEP total entries:", nrow(master), "\n")
 cat(
   "   WHEP non-region entries:",
-  nrow(master %>% filter(polity_type != "region")),
+  nrow(master %>% filter(polity_type != "national")),
   "\n"
 )
 cat("   COW state system:", nrow(cow_states), "\n")

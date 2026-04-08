@@ -72,7 +72,7 @@ split_entry <- function(old_code, split_year, pre_name, post_name, pre_type, pos
   post_code <- sprintf("%s-%d-%d", prefix, split_year, end_year)
 
   # Reclassify old entry as aggregate
-  db$polity_type[old_idx] <<- "aggregate"
+  db$polity_type[old_idx] <<- "national"
   db$notes[old_idx] <<- sprintf("Aggregate for continuous trade data linkage. Split at %d.", split_year)
 
   # Create pre-split entry
@@ -172,7 +172,7 @@ cat("--- 1. Netherlands: Belgium secession 1830 ---\n")
 split_entry(
   "NLD-1800-2025", 1830,
   "United Kingdom of the Netherlands", "Netherlands",
-  "historical", "sovereign",
+  "national", "national",
   "United Kingdom of Netherlands (1815-1830) including Belgium and Luxembourg. ~71K km2. Belgian Revolution 1830 led to -42% territory loss.",
   "Netherlands after Belgian secession. ~41K km2. Luxembourg personal union until 1890.",
   "Netherlands", c(1815, 1819),
@@ -186,7 +186,7 @@ cat("\n--- 2. Nepal: Sugauli Treaty 1816 ---\n")
 split_entry(
   "NPL-1800-2025", 1816,
   "Greater Nepal", "Nepal",
-  "historical", "sovereign",
+  "national", "national",
   "Greater Nepal under Prithvi Narayan Shah's successors. ~227K km2 at peak (1814). Treaty of Sugauli (1816) ceded Sikkim, Kumaon, Garhwal, western Terai to British India. -34% territory loss.",
   "Nepal post-Sugauli Treaty. ~149K km2. Borders largely stable since 1816.",
   "Nepal", c(1800, 1802),
@@ -200,7 +200,7 @@ cat("\n--- 3. Oman: Zanzibar separation 1856 ---\n")
 split_entry(
   "OMN-1800-2025", 1856,
   "Omani Empire", "Sultanate of Oman",
-  "historical", "sovereign",
+  "national", "national",
   "Omani Empire including East African coast (Zanzibar, Pemba, mainland strip). Said bin Sultan ruled from Zanzibar (moved capital 1840). ~176K km2 at peak. Split on his death 1856: Zanzibar and Oman became separate sultanates.",
   "Sultanate of Oman (Muscat) after separation from Zanzibar 1856. ~80-310K km2 (varying with interior tribal control). Zanzibar tracked separately as ZAN-1856-1964.",
   "Sultanate of Oman", c(1840, 1855),
@@ -214,7 +214,7 @@ cat("\n--- 4. Colombia: Gran Colombia dissolution 1830 ---\n")
 split_entry(
   "COL-1800-1903", 1830,
   "Gran Colombia", "Colombia (to 1903)",
-  "historical", "historical",
+  "national", "national",
   "Includes Gran Colombia period (1819-1830): Colombia + Venezuela + Ecuador + Panama. ~4.3M km2 at peak. Dissolved 1830: Venezuela and Ecuador seceded. -34% loss.",
   "Republic of New Granada / Colombia after Gran Colombia. ~2.8M km2. Lost Panama 1903.",
   "Gran Colombia", c(1822, 1823),

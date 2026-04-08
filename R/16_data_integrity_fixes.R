@@ -181,7 +181,7 @@ new_aggregates <- tribble(
 new_aggregates <- new_aggregates %>%
   mutate(
     duration_years = end_year - start_year + 1L,
-    polity_type = "aggregate",
+    polity_type = "national",
     predecessor = NA_character_,
     successor = NA_character_,
     data_sources = "WHEP-fix",
@@ -212,9 +212,9 @@ cat("--- 6. Adding missing temporal entries ---\n")
 
 new_entries <- tribble(
   ~polity_code, ~polity_name, ~start_year, ~end_year, ~polity_type, ~continent, ~iso3_code, ~cow_code, ~polygon_source, ~successor, ~predecessor, ~data_sources, ~verification_status, ~notes,
-  "NZL-1840-1907", "New Zealand (colony)", 1840L, 1907L, "historical", "Oceania", "NZL", NA_character_, "CShapes 2.0", "NZL-1907-2025", NA_character_, "CShapes; WHEP-fix", "VERIFIED", "British crown colony 1840; dominion from 1907",
-  "CAN-1800-1866", "Canada (pre-Confederation)", 1800L, 1866L, "historical", "North America", "CAN", NA_character_, "CShapes 2.0", "CAN-1866-1948", NA_character_, "CShapes; WHEP-fix", "VERIFIED", "British North America; Confederation 1867",
-  "CHN-1950-2025", "China (PRC)", 1950L, 2025L, "sovereign", "Asia", "CHN", NA_character_, "CShapes 2.0", NA_character_, "CHN-1949-1950", "CShapes; FAOSTAT; M49; WHEP-fix", "VERIFIED", "People's Republic of China"
+  "NZL-1840-1907", "New Zealand (colony)", 1840L, 1907L, "national", "Oceania", "NZL", NA_character_, "CShapes 2.0", "NZL-1907-2025", NA_character_, "CShapes; WHEP-fix", "VERIFIED", "British crown colony 1840; dominion from 1907",
+  "CAN-1800-1866", "Canada (pre-Confederation)", 1800L, 1866L, "national", "North America", "CAN", NA_character_, "CShapes 2.0", "CAN-1866-1948", NA_character_, "CShapes; WHEP-fix", "VERIFIED", "British North America; Confederation 1867",
+  "CHN-1950-2025", "China (PRC)", 1950L, 2025L, "national", "Asia", "CHN", NA_character_, "CShapes 2.0", NA_character_, "CHN-1949-1950", "CShapes; FAOSTAT; M49; WHEP-fix", "VERIFIED", "People's Republic of China"
 )
 
 new_entries <- new_entries %>%
@@ -283,7 +283,7 @@ for (agg_code in c("GBR-1800-2025", "ARG-1800-2025", "USA-1800-2025",
                     "RUS-1800-2025", "ZAF-1800-2025")) {
   iso <- sub("-.*", "", agg_code)
   # Find modern sovereign entry polygon
-  modern_codes <- db$polity_code[db$iso3_code == iso & db$polity_type == "sovereign" &
+  modern_codes <- db$polity_code[db$iso3_code == iso & db$polity_type == "national" &
                                    db$end_year == 2025 & !is.na(db$iso3_code)]
   matched <- unified[unified$polity_code %in% modern_codes & !st_is_empty(unified), ]
   if (nrow(matched) > 0) {
@@ -396,7 +396,7 @@ all_polys <- all_polys[!duplicated(all_polys$polity_code), ]
 cat(sprintf("  Base polygons: %d\n", nrow(all_polys)))
 
 # CShapes recovery for polities still missing (same logic as R/15)
-non_region <- db[db$polity_type != "region", ]
+non_region <- db[db$polity_type == "national", ]
 still_missing <- non_region[!non_region$polity_code %in% all_polys$polity_code &
                               !is.na(non_region$polygon_source) &
                               grepl("CShapes", non_region$polygon_source), ]
@@ -455,7 +455,7 @@ all_polys <- st_make_valid(all_polys)
 cat(sprintf("  With new polygons: %d\n", nrow(all_polys)))
 
 # Join with database
-non_region <- db[db$polity_type != "region", ]
+non_region <- db[db$polity_type == "national", ]
 has_poly <- sum(non_region$polity_code %in% all_polys$polity_code)
 cat(sprintf("  Non-region with polygon: %d / %d (%.1f%%)\n",
             has_poly, nrow(non_region), 100 * has_poly / nrow(non_region)))

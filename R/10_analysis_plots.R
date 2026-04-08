@@ -32,7 +32,7 @@ cat("\n--- Temporal Evolution ---\n")
 
 # Active polities per year
 years <- 1800:2025
-non_sub <- df %>% filter(!polity_type %in% c("region", "subnational"))
+non_sub <- df %>% # No type filter needed
 
 active_counts <- tibble(year = years) %>%
   rowwise() %>%
@@ -278,7 +278,7 @@ if (has_polys) {
 cat("\n--- ISO Collision Analysis ---\n")
 
 iso_shared <- df %>%
-  filter(!is.na(iso3_code), !polity_type %in% c("region", "subnational")) %>%
+  filter(!is.na(iso3_code)) %>%
   group_by(iso3_code) %>%
   summarise(
     n_entries = n(),
@@ -291,7 +291,7 @@ iso_shared <- df %>%
 
 # Prefix collision groups
 prefix_groups <- df %>%
-  filter(!is.na(iso3_code), !polity_type %in% c("region", "subnational")) %>%
+  filter(!is.na(iso3_code)) %>%
   mutate(prefix = str_extract(polity_code, "^[^-]+")) %>%
   group_by(prefix) %>%
   summarise(
@@ -387,7 +387,7 @@ ggsave(
 
 # Polygon source distribution
 poly_sources <- df %>%
-  filter(!polity_type %in% c("region")) %>%
+  # All types included %>%
   count(
     polygon_source = str_trunc(replace_na(polygon_source, "None"), 30),
     sort = TRUE

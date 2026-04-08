@@ -118,7 +118,7 @@ interesting_isos <- c("DEU", "CHN", "RUS", "ITA", "PAK", "SDN", "YUG", "ETH")
 chain_data <- polities %>%
   filter(
     iso3_code %in% interesting_isos,
-    polity_type %in% c("sovereign", "historical")
+    polity_type %in% c("national")
   ) %>%
   arrange(iso3_code, start_year) %>%
   mutate(

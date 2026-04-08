@@ -63,7 +63,7 @@ cat("--- PART 1: Japan Empire period splits ---\n")
 # Step 1: Reclassify JPN-1800-2025 as aggregate
 jpn_idx <- which(db$polity_code == "JPN-1800-2025")
 if (length(jpn_idx) == 1) {
-  db$polity_type[jpn_idx] <- "aggregate"
+  db$polity_type[jpn_idx] <- "national"
   db$notes[jpn_idx] <- "Aggregate entry for continuous trade data linkage across empire/post-war periods"
   db$polygon_source[jpn_idx] <- "CShapes 2.0"
   cat("  JPN-1800-2025 reclassified as aggregate\n")
@@ -145,14 +145,14 @@ if (cs_available) {
 # Step 3: Create period entries
 jpn_periods <- tribble(
   ~code, ~name, ~start, ~end, ~type, ~polygon_src, ~notes,
-  "JPN-1800-1895", "Japan (to 1895)", 1800L, 1895L, "historical",
+  "JPN-1800-1895", "Japan (to 1895)", 1800L, 1895L, "national",
     "CShapes 2.0", "Pre-imperial Japan. Home islands only (~370,776 km2). Treaty of Shimonoseki (1895) marks beginning of colonial expansion.",
-  "JPN-1895-1945", "Japanese Empire", 1895L, 1945L, "historical",
+  "JPN-1895-1945", "Japanese Empire", 1895L, 1945L, "national",
     "CShapes 2.0 (union: Japan + Taiwan + Korea + S. Sakhalin)",
     "Empire period. +Taiwan (Treaty of Shimonoseki 1895), +S. Sakhalin (Treaty of Portsmouth 1905), +Korea (annexed 1910). ~658,000 km2 at peak. Manchukuo (1932-45) tracked separately as MAN-1932-1945.",
-  "JPN-1945-1952", "Japan (occupied)", 1945L, 1952L, "historical",
+  "JPN-1945-1952", "Japan (occupied)", 1945L, 1952L, "national",
     "CShapes 2.0", "US occupation (SCAP). All colonies stripped. Treaty of San Francisco (1952-04-28) restores sovereignty.",
-  "JPN-1952-2025", "Japan", 1952L, 2025L, "sovereign",
+  "JPN-1952-2025", "Japan", 1952L, 2025L, "national",
     "CShapes 2.0", "Post-occupation. Okinawa reverted 1972. Kuril Islands dispute with Russia unresolved."
 )
 
@@ -227,7 +227,7 @@ if (!ndd_code %in% existing_codes) {
     polity_code = ndd_code,
     polity_name = "Niger Delta City-States",
     start_year = 1800L, end_year = 1884L, duration_years = 85L,
-    polity_type = "historical",
+    polity_type = "national",
     continent = "Africa", iso3_code = "NGA", cow_code = NA_character_,
     polygon_source = NA_character_,
     predecessor = NA_character_, successor = "OIL-1884-1898",
@@ -261,7 +261,7 @@ if (!nup_code %in% existing_codes) {
     polity_code = nup_code,
     polity_name = "Nupe Kingdom (Bida Emirate)",
     start_year = 1800L, end_year = 1897L, duration_years = 98L,
-    polity_type = "historical",
+    polity_type = "national",
     continent = "Africa", iso3_code = "NGA", cow_code = NA_character_,
     polygon_source = NA_character_,
     predecessor = NA_character_, successor = "NNI-1899-1904",
@@ -284,7 +284,7 @@ if (!nga_agg_code %in% existing_codes) {
     polity_code = nga_agg_code,
     polity_name = "Nigeria (pre-colonial)",
     start_year = 1800L, end_year = 1899L, duration_years = 100L,
-    polity_type = "aggregate",
+    polity_type = "national",
     continent = "Africa", iso3_code = "NGA", cow_code = NA_character_,
     polygon_source = NA_character_,
     predecessor = NA_character_,

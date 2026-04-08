@@ -99,19 +99,7 @@ run_test(2, "No nulls in required fields", {
 })
 
 run_test(3, "Valid polity types", {
-  valid <- c(
-    "sovereign",
-    "historical",
-    "colonial",
-    "dependency",
-    "mandate",
-    "occupation",
-    "aggregate",
-    "region",
-    "disputed",
-    "puppet",
-    "subnational"
-  )
+  valid <- c("national", "subnational")
   used <- unique(df$polity_type)
   invalid <- setdiff(used, valid)
   if (length(invalid) == 0) {
@@ -310,7 +298,7 @@ run_test(16, "COW codes match external system", {
 # === Polygon tests ===
 
 if (has_polys) {
-  non_region <- df %>% filter(polity_type != "region")
+  non_region <- df %>% filter(polity_type == "national")
 
   run_test(17, "Polygon coverage rate", {
     matched <- sum(non_region$polity_code %in% polys$polity_code)
@@ -394,12 +382,12 @@ run_test(21, "Polygon centroids match continent", {
 
 # === Temporal tests ===
 
-run_test(22, "Overlapping non-aggregate entries per ISO", {
-  non_agg <- df %>%
-    filter(!polity_type %in% c("aggregate", "region", "subnational"))
-  overlaps <- non_agg %>%
+run_test(22, "Overlapping entries per ISO", {
+  non_sub <- df %>%
+    filter(polity_type == "national")
+  overlaps <- non_sub %>%
     inner_join(
-      non_agg,
+      non_sub,
       by = "iso3_code",
       suffix = c("_a", "_b"),
       relationship = "many-to-many"
@@ -434,7 +422,7 @@ run_test(24, "Verification coverage", {
 
 run_test(25, "No empty decades", {
   decade_counts <- sapply(seq(1800, 2020, by = 10), function(yr) {
-    sum(df$start_year <= yr & df$end_year >= yr & df$polity_type != "region")
+    sum(df$start_year <= yr & df$end_year >= yr & df$polity_type == "national")
   })
   min_count <- min(decade_counts)
   list(
@@ -448,7 +436,7 @@ run_test(26, "No sudden drops in active count", {
     sum(
       df$start_year <= yr &
         df$end_year >= yr &
-        !df$polity_type %in% c("region", "subnational")
+        df$polity_type == "national"
     )
   })
   max_drop <- max(diff(yearly) * -1, na.rm = TRUE)

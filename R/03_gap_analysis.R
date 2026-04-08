@@ -12,7 +12,7 @@ master <- read_csv(
   show_col_types = FALSE
 )
 
-entities <- master %>% filter(!polity_type %in% c("region"))
+entities <- master %>% # All polities included
 
 # ==============================================================================
 # 1. Timeline Gap Analysis by Prefix
@@ -69,7 +69,7 @@ cat("\n=== Source Coverage by Polity Type ===\n")
 print(source_matrix)
 
 p_sources <- master %>%
-  filter(!is.na(n_sources), !polity_type %in% c("region")) %>%
+  filter(!is.na(n_sources)) %>%
   ggplot(aes(x = factor(n_sources), fill = polity_type)) +
   geom_bar(alpha = 0.8) +
   scale_fill_brewer(palette = "Set2") +

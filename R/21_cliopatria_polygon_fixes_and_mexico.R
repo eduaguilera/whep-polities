@@ -231,7 +231,7 @@ cat("\n--- 7. Mexico period split ---\n")
 mex_idx <- which(db$polity_code == "MEX-1800-2025")
 if (length(mex_idx) == 1) {
   # Reclassify as aggregate
-  db$polity_type[mex_idx] <- "aggregate"
+  db$polity_type[mex_idx] <- "national"
   db$notes[mex_idx] <- "Aggregate entry for continuous trade data linkage. Pre-1848: included territory lost in Treaty of Guadalupe Hidalgo (~55% area loss)."
   cat("  MEX-1800-2025 reclassified as aggregate\n")
 
@@ -242,7 +242,7 @@ if (length(mex_idx) == 1) {
       polity_code = mex_pre,
       polity_name = "Mexico (to 1848)",
       start_year = 1800L, end_year = 1848L, duration_years = 49L,
-      polity_type = "historical",
+      polity_type = "national",
       continent = "North America", iso3_code = "MEX", cow_code = NA_character_,
       polygon_source = NA_character_,
       predecessor = NA_character_,
@@ -275,7 +275,7 @@ if (length(mex_idx) == 1) {
       polity_code = mex_post,
       polity_name = "Mexico",
       start_year = 1848L, end_year = 2025L, duration_years = 178L,
-      polity_type = "sovereign",
+      polity_type = "national",
       continent = "North America", iso3_code = "MEX", cow_code = NA_character_,
       polygon_source = "CShapes 2.0",
       predecessor = "MEX-1800-1848",

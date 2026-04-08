@@ -178,7 +178,7 @@ cat("  subregion_of edges:", sub_count, "\n")
 
 cat("\n3. Extracting aggregate_covers relations...\n")
 agg_count <- 0L
-aggregates <- df %>% filter(polity_type == "aggregate", !is.na(iso3_code))
+aggregates <- df %>% filter(polity_type == "national", !is.na(iso3_code))
 
 for (i in seq_len(nrow(aggregates))) {
   agg <- aggregates[i, ]
@@ -186,7 +186,7 @@ for (i in seq_len(nrow(aggregates))) {
     filter(
       iso3_code == agg$iso3_code,
       polity_type %in%
-        c("sovereign", "historical", "colonial", "dependency", "mandate"),
+        c("national"),
       start_year >= agg$start_year,
       end_year <= agg$end_year
     )
@@ -212,7 +212,7 @@ temp_count <- 0L
 core <- df %>%
   filter(
     polity_type %in%
-      c("sovereign", "historical", "colonial", "dependency", "mandate")
+      c("national")
   )
 
 for (iso in unique(na.omit(core$iso3_code))) {
@@ -270,7 +270,7 @@ colonial_powers <- c(
 )
 
 colonial_entries <- df %>%
-  filter(polity_type %in% c("colonial", "mandate", "dependency", "puppet"))
+  filter(polity_type %in% c("national"))
 col_count <- 0L
 
 for (i in seq_len(nrow(colonial_entries))) {
@@ -285,7 +285,7 @@ for (i in seq_len(nrow(colonial_entries))) {
       candidates <- df %>%
         filter(
           iso3_code == metro_iso,
-          polity_type %in% c("sovereign", "historical"),
+          polity_type %in% c("national"),
           start_year <= row$end_year,
           end_year >= row$start_year
         )
@@ -349,7 +349,7 @@ for (i in seq_len(nrow(m49))) {
   country_polities <- df %>%
     filter(
       iso3_code == country_iso3,
-      polity_type %in% c("sovereign", "historical")
+      polity_type %in% c("national")
     )
   if (nrow(country_polities) == 0) {
     next
@@ -428,7 +428,7 @@ cat("  Region hierarchy edges:", hier_count, "\n")
 
 cat("\n7. Extracting located_in_continent relations...\n")
 cont_count <- 0L
-non_region <- df %>% filter(polity_type != "region")
+non_region <- df %>% # All polities included
 
 for (i in seq_len(nrow(non_region))) {
   cont <- non_region$continent[i]
@@ -450,8 +450,8 @@ cat("  located_in_continent edges:", cont_count, "\n")
 
 cat("\n8. Extracting same_territory relations...\n")
 same_count <- 0L
-sov_types <- c("sovereign", "historical")
-col_types <- c("colonial", "mandate", "dependency", "puppet", "occupation")
+sov_types <- c("national")
+col_types <- c("national")
 
 for (iso in unique(na.omit(df$iso3_code))) {
   grp <- df %>% filter(iso3_code == iso)

@@ -13,7 +13,7 @@ master <- read_csv(
 )
 
 # Filter out regions for most analyses
-entities <- master %>% filter(!polity_type %in% c("region"))
+entities <- master %>% # All polities included (no region/aggregate type distinction)
 
 # ==============================================================================
 # Plot 1: Formation and Dissolution Events Over Time
@@ -78,25 +78,25 @@ active_counts <- tibble(year = years) %>%
     n_sovereign = sum(
       entities$start_year <= year &
         entities$end_year >= year &
-        entities$polity_type == "sovereign",
+        entities$polity_type == "national",
       na.rm = TRUE
     ),
     n_historical = sum(
       entities$start_year <= year &
         entities$end_year >= year &
-        entities$polity_type == "historical",
+        entities$polity_type == "national",
       na.rm = TRUE
     ),
     n_colonial = sum(
       entities$start_year <= year &
         entities$end_year >= year &
-        entities$polity_type == "colonial",
+        entities$polity_type == "national",
       na.rm = TRUE
     ),
     n_aggregate = sum(
       entities$start_year <= year &
         entities$end_year >= year &
-        entities$polity_type == "aggregate",
+        entities$polity_type == "national",
       na.rm = TRUE
     )
   ) %>%
@@ -354,7 +354,7 @@ ggsave(
 # ==============================================================================
 
 top_long <- entities %>%
-  filter(polity_type == "sovereign", !is.na(duration)) %>%
+  filter(polity_type == "national", !is.na(duration)) %>%
   slice_max(duration, n = 30) %>%
   mutate(polity_name = fct_reorder(polity_name, duration))
 
@@ -392,7 +392,7 @@ short_lived <- entities %>%
     !is.na(duration),
     duration > 0,
     duration <= 25,
-    polity_type != "aggregate"
+    polity_type == "national"
   ) %>%
   arrange(duration) %>%
   mutate(

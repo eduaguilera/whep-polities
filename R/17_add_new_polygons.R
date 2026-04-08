@@ -382,7 +382,7 @@ if (!saar_code %in% existing_codes) {
     start_year = 1920L,
     end_year = 1935L,
     duration_years = 16L,
-    polity_type = "mandate",
+    polity_type = "national",
     continent = "Europe",
     iso3_code = NA_character_,
     cow_code = NA_character_,
@@ -436,7 +436,7 @@ if (!mem_code %in% existing_codes) {
     start_year = 1920L,
     end_year = 1923L,
     duration_years = 4L,
-    polity_type = "mandate",
+    polity_type = "national",
     continent = "Europe",
     iso3_code = NA_character_,
     cow_code = NA_character_,
@@ -488,7 +488,7 @@ if (!fiu_code %in% existing_codes) {
     start_year = 1920L,
     end_year = 1924L,
     duration_years = 5L,
-    polity_type = "historical",
+    polity_type = "national",
     continent = "Europe",
     iso3_code = NA_character_,
     cow_code = NA_character_,
@@ -534,7 +534,7 @@ if (!mng_code %in% existing_codes) {
     start_year = 1911L,
     end_year = 1921L,
     duration_years = 11L,
-    polity_type = "historical",
+    polity_type = "national",
     continent = "Asia",
     iso3_code = "MNG",
     cow_code = NA_character_,
@@ -610,7 +610,7 @@ if (!ind_agg_code %in% existing_codes) {
     start_year = 1800L,
     end_year = 2025L,
     duration_years = 226L,
-    polity_type = "aggregate",
+    polity_type = "national",
     continent = "Asia",
     iso3_code = "IND",
     cow_code = NA_character_,
@@ -707,7 +707,7 @@ if (length(fix_log) > 0) {
   cat("  Report: data/analysis/v2.2_changes_report.csv\n")
 }
 
-cat(sprintf("\n  Non-region polities: %d\n", sum(db$polity_type != "region")))
+cat(sprintf("\n  Non-region polities: %d\n", sum(db$polity_type == "national")))
 cat(sprintf("  Subnational: %d\n", sum(db$polity_type == "subnational")))
 
 cat("\n=== Done ===\n")
