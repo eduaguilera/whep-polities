@@ -104,12 +104,13 @@ and should be updated as the project progresses.
 
 ## 5. Polity Type Classification
 
-Each polity is classified into one of two types:
+Each polity is classified into one of three types:
 
 | Type | Definition | Examples |
 |------|-----------|----------|
-| `national` | Any polity that is not a subnational division | France, Ottoman Empire, Belgian Congo, Africa (region) |
+| `national` | Any polity that is not a subnational division or statistical aggregate | France, Ottoman Empire, Belgian Congo |
 | `subnational` | Admin-1 subdivision of a large country, explicitly added | California, São Paulo, Guangdong |
+| `aggregate` | FAOSTAT/UN statistical grouping (hidden by default in UI) | Africa, OECD, Eastern Europe |
 
 ## 6. Continent Assignment
 

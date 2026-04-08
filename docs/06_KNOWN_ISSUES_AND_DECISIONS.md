@@ -326,7 +326,7 @@
 - Interactive web map improvements: search highlights polity on map with auto-year
   navigation, collapsible panel with minimize button, animated filter dropdown,
   editable year input field, mobile-responsive layout.
-- Database: 1,420 entries (1,343 non-region). Updated all documentation to v2.5.
+- Database: 1,397 entries (1,343 non-region). Updated all documentation to v2.5.
 
 ### Version 2.4 (2026-03-28)
 - Comprehensive data integrity audit and fixes:
@@ -380,7 +380,7 @@
     ST. (3→VCT/LCA removed), VAN (2→TAS/VCI), WES (3→AUWA/WBK/DNG)
   - **Other**: Alaska ALA→ALK, Anhalt-Dessau AND→ANH, Badakhshan BAD→BKH,
     Papal States keeps PAP (Papua→PUA), Sardinia keeps SAR (Sarawak→SRW)
-- Database: 1,320 → 1,318 entries (2 duplicates removed)
+- Database: 1,397 → 1,318 entries (2 duplicates removed)
 
 ### Version 2.0 (2026-03-27)
 - Built unified GeoPackage (`data/final/polities_database.gpkg`) combining all

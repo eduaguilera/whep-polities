@@ -99,7 +99,7 @@ run_test(2, "No nulls in required fields", {
 })
 
 run_test(3, "Valid polity types", {
-  valid <- c("national", "subnational")
+  valid <- c("national", "subnational", "aggregate")
   used <- unique(df$polity_type)
   invalid <- setdiff(used, valid)
   if (length(invalid) == 0) {

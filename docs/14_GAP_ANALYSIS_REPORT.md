@@ -2,27 +2,27 @@
 
 **Date**: 2026-03-27
 **Database version**: 2.5
-**Database file**: `data/final/polities_database.csv` (1,420 entries)
-**Unified GeoPackage**: `data/final/polities_database.gpkg` (1,420 rows)
+**Database file**: `data/final/polities_database.csv` (1,397 entries)
+**Unified GeoPackage**: `data/final/polities_database.gpkg` (1,397 rows)
 
 ---
 
 ## Executive Summary
 
-The WHEP polities database contains 1,420 entries covering 1800-2025 with 99.5%
+The WHEP polities database contains 1,397 entries covering 1800-2025 with 99.5%
 polygon coverage. This report identifies remaining gaps with emphasis on the ~30
 countries most important for historical trade and agricultural production analysis.
 
 **Key metrics:**
 | Metric | Value |
 |--------|-------|
-| Total polities | 1,420 |
+| Total polities | 1,397 |
 | Non-region polities | 1,343 |
 | With polygon source | 1,340 / 1,343 (99.8%) |
-| Verified | 1,420 / 1,420 (100%) |
-| ISO3 coverage | ~1,243 / 1,420 |
-| COW coverage | ~498 / 1,420 |
-| Predecessor/successor linked | ~440 / 1,420 |
+| Verified | 1,397 / 1,397 (100%) |
+| ISO3 coverage | ~1,243 / 1,397 |
+| COW coverage | ~498 / 1,397 |
+| Predecessor/successor linked | ~440 / 1,397 |
 | Knowledge graph | 1,325 nodes, 2,696 edges |
 
 ---

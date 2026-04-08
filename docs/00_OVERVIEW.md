@@ -10,7 +10,7 @@
 
 ## What Is This Database?
 
-A comprehensive database of **1,420 political entities ("polities")** spanning
+A comprehensive database of **1,397 political entities ("polities")** spanning
 **1800-2025**, designed to link historical trade data to geographic territories for the
 WHEP project studying the environmental impacts of food systems since 1850.
 Includes **422 subnational entries** across 9 countries + Qing China.
@@ -24,27 +24,20 @@ territory changes significantly (>10% area), a new polity entry is created.
 
 | Category | Count |
 |----------|-------|
-| Total entries | 1,420 |
-| Sovereign states | 154 |
-| Historical entities | 399 |
-| Colonial entities | 139 |
-| Dependencies/territories | 74 |
-| Trade aggregates | 132 |
-| Mandates | 18 |
-| Statistical regions | 77 |
-| Disputed entities | 4 |
-| Puppet states | 1 |
-| **Subnational entries** | **422** |
+| Total entries | 1,397 |
+| National | 898 |
+| Subnational | 422 |
+| Aggregate (statistical regions) | 77 |
 
 ### Polygon Coverage
 | Category | Count |
 |----------|-------|
-| Non-region with polygon source | 1,340/1,343 (99.8%) |
+| Polities with polygon source | 1,397/1,397 (100%) |
 | Subnational polygons (9 countries + Qing) | 422/422 (100%) |
 | COW State System coverage | 207/209 (99.0%) |
 | Trade data coverage | 331/331 geographies (100%) |
 | Decolonization events | 94/94 (100%) |
-| Verification | 1,420/1,420 (100%) |
+| Verification | 1,397/1,397 (100%) |
 
 ### Geographic Distribution (non-subnational)
 | Continent | Entries |
@@ -52,7 +45,6 @@ territory changes significantly (>10% area), a new polity entry is created.
 | Africa | 260 |
 | Europe | 186 |
 | Asia | 163 |
-| Global (regions) | 76 |
 | Oceania | 69 |
 | North America | 64 |
 | South America | 35 |
@@ -91,7 +83,7 @@ The final database (`data/final/polities_database.csv`) has 15 columns:
 | `start_year` | Integer | Start year (inclusive) |
 | `end_year` | Integer | End year (inclusive; 2025 = still exists) |
 | `duration_years` | Integer | end_year - start_year + 1 |
-| `polity_type` | String | national/subnational |
+| `polity_type` | String | national/subnational/aggregate |
 | `continent` | String | Africa/Asia/Europe/North America/South America/Oceania/Antarctica/Global |
 | `iso3_code` | String | ISO 3166-1 alpha-3 code (if applicable) |
 | `cow_code` | String | Correlates of War numeric code (if applicable) |

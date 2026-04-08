@@ -91,8 +91,8 @@ ETH-1897-1902,Ethiopia (1897-1902),1897,1902,6,national,Africa,ETH,530,CShapes 2
 COG-1898-1900,Congo (1898-1900),1898,1900,3,national,Africa,COG,NA,CShapes 2.0,NA,COG-1900-1906,FT; CShapes,VERIFIED,NA
 GHA-1898-1956,Ghana (1898-1956),1898,1956,59,national,Africa,GHA,452,CShapes 2.0,ASH-1800-1896; GHA-1888-1898; DGM-1800-1899,GHA-1957-2025,FT; CShapes,VERIFIED,NA
 EGY-1899-1925,Egypt (1899-1925),1899,1925,27,national,Africa,EGY,651,CShapes 2.0,EGY-1800-1899,NA,FT; CShapes,VERIFIED,NA
-NNI-1899-1904,Northern Nigeria (1899-1904),1899,1904,6,national,Africa,NNI,385,CShapes 2.0,SOK-1804-1903; BNU-1800-1893; NUP-1800-1897; IGL-1800-1901; NGA-1800-1899,NNI-1904-1913,FT; CShapes,VERIFIED,NA
-SNI-1899-1906,Southern Nigeria (1899-1906),1899,1906,8,national,Africa,SNI,NA,CShapes 2.0,BKN-1800-1897; IBD-1829-1893; IJB-1800-1892; NGA-1800-1899,SNI-1906-1913,FT; CShapes,VERIFIED,NA
+NNI-1899-1904,Northern Nigeria (1899-1904),1899,1904,6,national,Africa,NNI,385,CShapes 2.0,SOK-1804-1903; BNU-1800-1893; NUP-1800-1897; IGL-1800-1901,NNI-1904-1913,FT; CShapes,VERIFIED,NA
+SNI-1899-1906,Southern Nigeria (1899-1906),1899,1906,8,national,Africa,SNI,NA,CShapes 2.0,BKN-1800-1897; IBD-1829-1893; IJB-1800-1892,SNI-1906-1913,FT; CShapes,VERIFIED,NA
 SUD-1899-1902,Sudan (1899-1902),1899,1902,4,national,Africa,SUD,NA,CShapes 2.0,DFR-1800-1874,SUD-1902-1910,FT; CShapes,VERIFIED,NA
 TCD-1900-1912,Chad (1900-1912),1900,1912,13,national,Africa,TCD,NA,CShapes 2.0,WAD-1800-1912,TCD-1912-1919,FT; CShapes,VERIFIED,NA
 COG-1900-1906,Congo (1900-1906),1900,1906,7,national,Africa,COG,NA,CShapes 2.0,COG-1898-1900,COG-1906-1912,FT; CShapes,VERIFIED,NA
@@ -193,12 +193,9 @@ TAN-1920-1922,Tanzania (1920-1922),1920,1922,3,national,Africa,TAN,NA,CShapes 2.
 TAN-1922-1964,Tanzania (1922-1964),1922,1964,43,national,Africa,TAN,NA,CShapes 2.0,TAN-1920-1922,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 TZA-1961-1964,Tanzania (1961-1964),1961,1964,4,national,Africa,TZA,510,CShapes 2.0,NA,TZA-1964-2025,FAOSTAT; CShapes,VERIFIED,NA
 ESH-1800-2025,Western Sahara,1800,2025,226,national,Africa,ESH,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-ETH-1800-2025,Ethiopia (old),1800,2025,226,national,Africa,ETH,530,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 F62-1800-1993,Ethiopia PDR,1800,1993,194,national,Africa,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F206-1800-2011,Sudan (old),1800,2011,212,national,Africa,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 GOL-1843-2025,Gold Coast,1843,2025,183,national,Africa,GOL,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SGN-1858-2025,Spanish Guinea,1858,2025,168,national,Africa,SGN,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-NGA-1861-2025,Nigeria (old),1861,2025,165,national,Africa,NGA,475,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SUD-1882-2025,Sudan (Anglo-Egyptian),1882,2025,144,national,Africa,SUD,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BAS-1884-2025,Basutoland,1884,2025,142,national,Africa,BAS,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BSO-1884-2025,British Protectorate (British Somaliland),1884,2025,142,national,Africa,BSO,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -222,12 +219,8 @@ BHR-1800-2025,Bahrain,1800,2025,226,national,Asia,BHR,692,CShapes 2.0,NA,NA,FT; 
 BTN-1800-2025,Bhutan,1800,2025,226,national,Asia,BTN,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 IRN-1800-1828,Persia (Qajar to 1828),1800,1828,29,national,Asia,IRN,630,Cliopatria (Seshat),NA,IRN-1828-2025,FT,FIXED,"Split from IRN-1800-2025. Qajar Iran including South Caucasus (modern Azerbaijan Armenia eastern Georgia). Lost to Russia via Treaty of Gulistan (1813) and Treaty of Turkmenchay (1828) ~170000+ km2. Cliopatria has Qajar boundaries. Cliopatria polygon: Qajar Dynasty 1800-1804. Qajar Iran including South Caucasus, pre-Treaty of Turkmenchay."
 IRN-1828-2025,Iran,1828,2025,198,national,Asia,IRN,630,CShapes 2.0,IRN-1800-1828,NA,FT; FAOSTAT; M49; CShapes,FIXED,Split from IRN-1800-2025. Post-Turkmenchay borders. CShapes polygon (1622521 km2) approximately matches modern Iran.
-JPN-1800-2025,Japan,1800,2025,226,national,Asia,JPN,740,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate entry for continuous trade data linkage across empire/post-war periods
 KWT-1800-2025,Kuwait,1800,2025,226,national,Asia,KWT,690,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MDV-1800-2025,Maldives,1800,2025,226,national,Asia,MDV,781,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-MMR-1800-2025,Myanmar,1800,2025,226,national,Asia,MMR,775,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1826 and 1852 (Anglo-Burmese Wars).
-NPL-1800-2025,Nepal,1800,2025,226,national,Asia,NPL,790,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1816.
-OMN-1800-2025,Oman,1800,2025,226,national,Asia,OMN,698,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1856.
 PHL-1800-2025,Philippines,1800,2025,226,national,Asia,PHL,840,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 QAT-1800-2025,Qatar,1800,2025,226,national,Asia,QAT,694,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 LKA-1800-2025,Sri Lanka,1800,2025,226,national,Asia,LKA,780,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -365,11 +358,9 @@ PSE-1999-2025,Palestine,1999,2025,27,national,Asia,PSE,NA,CShapes 2.0,NA,NA,FAOS
 CHN-1800-2025,"China, mainland",1800,2025,226,national,Asia,CHN,710,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 DEI-1800-2025,Dutch East Indies (Indonesia),1800,2025,226,national,Asia,DEI,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FRI-1800-2025,French India,1800,2025,226,national,Asia,FRI,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-KOR-1800-1945,Korea (old) (to 1945),1800,1945,146,national,Asia,KOR,732,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 POR-1800-2025,Portuguese India,1800,2025,226,national,Asia,POR,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SHA-1800-2025,Sharjah,1800,2025,226,national,Asia,SHA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SIK-1800-2025,Sikkim,1800,2025,226,national,Asia,SIK,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-TIB-1800-2025,Tibet (old),1800,2025,226,national,Asia,TIB,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SRW-1841-2025,Sarawak,1841,2025,185,national,Asia,SRW,338,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FUJ-1886-2025,Fujairah,1886,2025,140,national,Asia,FUJ,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 FID-1887-2025,French Indochina,1887,2025,139,national,Asia,FID,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
@@ -387,7 +378,6 @@ ISL-1800-2025,Iceland,1800,2025,226,national,Europe,ISL,395,CShapes 2.0,NA,NA,FT
 LIE-1800-2025,Liechtenstein,1800,2025,226,national,Europe,LIE,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MLT-1800-2025,Malta,1800,2025,226,national,Europe,MLT,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MCO-1800-2025,Monaco,1800,2025,226,national,Europe,MCO,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-NLD-1800-2025,Netherlands,1800,2025,226,national,Europe,NLD,210,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1830.
 NOR-1800-2025,Norway,1800,2025,226,national,Europe,NOR,385,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 PRT-1800-2025,Portugal,1800,2025,226,national,Europe,PRT,235,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SMR-1800-2025,San Marino,1800,2025,226,national,Europe,SMR,339,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -421,7 +411,7 @@ HRV-1992-2025,Croatia,1992,2025,34,national,Europe,HRV,344,CShapes 2.0,F248-1991
 SVN-1992-2025,Slovenia,1992,2025,34,national,Europe,SVN,349,CShapes 2.0,F248-1991-1992,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 CZE-1993-2025,Czechia,1993,2025,33,national,Europe,CZE,316,CShapes 2.0,F51-1947-1993; CZE-1947-1992,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SVK-1993-2025,Slovakia,1993,2025,33,national,Europe,SVK,317,CShapes 2.0,F51-1947-1993,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-LUX-2000-2025,Luxembourg,2000,2025,26,national,Europe,LUX,212,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+LUX-1839-2025,Luxembourg,1839,2025,187,national,Europe,LUX,212,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes; research,VERIFIED,Independent from Netherlands 1839. Personal union with Netherlands until 1890. FAOSTAT tracked as Belgium-Luxembourg until 1999.
 MNE-2006-2025,Montenegro,2006,2025,20,national,Europe,MNE,341,CShapes 2.0,SCG-1992-2006,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SRB-2008-2025,Serbia,2008,2025,18,national,Europe,SRB,345,CShapes 2.0,SER-2006-2008,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 RUS-2014-2025,Russia,2014,2025,12,national,Europe,RUS,365,CShapes 2.0,RUS-1991-2014,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -454,7 +444,6 @@ THU-1800-1871,Thuringia,1800,1871,72,national,Europe,THU,NA,GADM 4.1 or Natural 
 TUS-1800-1860,Tuscany,1800,1860,61,national,Europe,TUS,337,Cliopatria (Grand Duchy of Tuscany 1800-1802),NA,ITA-1861-1919,FT,VERIFIED,NA
 TWO-1800-1860,Two Sicilies,1800,1860,61,national,Europe,TWO,329,Cliopatria (Kingdom of the Two Sicilies 1815-1819),NA,ITA-1861-1919,FT; WHEP-fix,"FIXED: merged duplicate ""Kingdom Two sicilies""",NA
 TUR-1800-1912,Türkiye (to 1912),1800,1912,113,national,Europe,TUR,640,CShapes 2.0 + CShapes-Europe,OTT-1800-1912,TUR-1913-1914,FT; CShapes,VERIFIED,NA
-F228-1800-1905,USSR (to 1905),1800,1905,106,national,Europe,NA,365,CShapes 2.0 + CShapes-Europe,NA,F228-1905-1914,FT; CShapes,REGION,Aggregate for continuous trade data linkage. Split into 2 territorial periods at Crimean War.
 GBR-1800-1921,United Kingdom (to 1921),1800,1921,122,national,Europe,GBR,200,CShapes 2.0 + CShapes-Europe,NA,GBR-1921-2025,FT; CShapes,VERIFIED,NA
 WUR-1800-1871,Württemberg,1800,1871,72,national,Europe,WUR,271,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 ION-1815-1864,Ionian islands,1815,1864,50,national,Europe,ION,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,FIXED: end 1862->1864,NA
@@ -490,7 +479,7 @@ ANH-1864-1870,Anhalt,1864,1870,7,national,Europe,ANH,NA,Cliopatria (Duchy of Anh
 BGR-1878-1913,Bulgaria (to 1913),1878,1913,36,national,Europe,BGR,355,CShapes 2.0 + CShapes-Europe,NA,BGR-1913-1918,FT; CShapes,VERIFIED,NA
 MNE-1878-1913,Montenegro (to 1913),1878,1913,36,national,Europe,MNE,341,CShapes 2.0 + CShapes-Europe,NA,MNE-1913-1915,FT; CShapes,VERIFIED,NA
 CRE-1898-1913,Crete,1898,1913,16,national,Europe,CRE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-F228-1905-1914,USSR (1905-1914),1905,1914,10,national,Europe,NA,365,CShapes 2.0,F228-1800-1905; F228-1856-1905,F228-1914-1917,FT; CShapes,REGION,NA
+F228-1905-1914,USSR (1905-1914),1905,1914,10,national,Europe,NA,365,CShapes 2.0,F228-1856-1905,F228-1914-1917,FT; CShapes,REGION,NA
 AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,national,Europe,AUH,300,CShapes 2.0,AUH-1867-1908,AUT-1918-2025; HUN-1918-1919; AUT-1918-1919,FT; CShapes,VERIFIED,NA
 BGR-1913-1918,Bulgaria (1913-1918),1913,1918,6,national,Europe,BGR,355,CShapes 2.0,BGR-1878-1913,BGR-1918-1919,FT; CShapes,VERIFIED,NA
 GRC-1913-1919,Greece (1913-1919),1913,1919,7,national,Europe,GRC,350,CShapes 2.0,GRC-1830-1913,GRC-1919-2025,FT; CShapes,VERIFIED,NA
@@ -561,88 +550,10 @@ JEY-2005-2025,Jersey,2005,2025,21,national,Europe,JEY,NA,GADM 4.1,NA,NA,FAOSTAT;
 F285-2011-2023,Sark,2011,2023,13,national,Europe,NA,NA,GADM 4.1,NA,NA,FAOSTAT; M49; CShapes,REGION,NA
 DZG-1919-1938,Danzig (1919-1938),1919,1938,20,national,Europe,DZG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 KOS-2008-2025,Kosovo,2008,2025,18,national,Europe,KOS,347,CShapes 2.0,SER-2006-2008,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-F15-1800-1999,Belgium-Luxembourg,1800,1999,200,national,Europe,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F15-1800-1999,Belgium-Luxembourg,1800,1999,200,aggregate,Europe,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 FRA-1800-1982,"France, Metropolitan",1800,1982,183,national,Europe,FRA,220,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 GER-1800-2025,Germany/Zollverein,1800,2025,226,national,Europe,GER,255,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-LUO-1800-2025,Luxembourg (old),1800,2025,226,national,Europe,LUO,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-NET-1800-2025,Netherlands (old),1800,2025,226,national,Europe,NET,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 DOD-1912-2025,Dodecanese Is.,1912,2025,114,national,Europe,DOD,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-X06-1800-2025,Africa,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-X21-1800-2025,Americas,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5848-1800-2025,Annex I countries,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5600-1800-2025,Antarctic Region,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5300-1800-2025,Asia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5501-1800-2025,Australia and New Zealand,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5206-1800-2025,Caribbean,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5857-1800-2025,Caucasus and Central Asia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5204-1800-2025,Central America,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5101-1800-2025,Eastern Africa,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5302-1800-2025,Eastern Asia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5829-1800-2025,Eastern Asia (excluding Japan and China),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5307-1800-2025,Eastern Asia and South-eastern Asia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5401-1800-2025,Eastern Europe,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5400-1800-2025,Europe,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-EUR-1800-2025,"Europe, Northern America, Australia and New Zealand",1800,2025,226,national,Global,EUR,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-F5707-1800-2025,European Union (27),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99029-1800-2025,"FAO Major Fishing Area: Atlantic, Eastern Central (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99024-1800-2025,"FAO Major Fishing Area: Atlantic, Northeast (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99023-1800-2025,"FAO Major Fishing Area: Atlantic, Northwest (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99026-1800-2025,"FAO Major Fishing Area: Atlantic, Southeast (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99030-1800-2025,"FAO Major Fishing Area: Atlantic, Southwest (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99028-1800-2025,"FAO Major Fishing Area: Atlantic, Western Central (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99025-1800-2025,"FAO Major Fishing Area: Indian Ocean, Eastern (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99027-1800-2025,"FAO Major Fishing Area: Indian Ocean, Western (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99032-1800-2025,FAO Major Fishing Area: Mediterranean and Black Sea (14.4.1),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99018-1800-2025,"FAO Major Fishing Area: Pacific, Eastern Central (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99019-1800-2025,"FAO Major Fishing Area: Pacific, Northeast (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99020-1800-2025,"FAO Major Fishing Area: Pacific, Northwest (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99031-1800-2025,"FAO Major Fishing Area: Pacific, Southeast (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99022-1800-2025,"FAO Major Fishing Area: Pacific, Southwest (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F99021-1800-2025,"FAO Major Fishing Area: Pacific, Western Central (14.4.1)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F9010-1800-2025,High-income economies,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5823-1800-2025,International Centres (FAO) (2.5.1.a),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5802-1800-2025,Land Locked Developing Countries (LLDCs),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F348-1800-2025,Latin America,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5205-1800-2025,Latin America and the Caribbean,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5801-1800-2025,Least Developed Countries (LDCs),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5815-1800-2025,Low Income Food Deficit Countries (LIFDCs),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5858-1800-2025,Low-income economies,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5859-1800-2025,Lower-middle-income economies,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5502-1800-2025,Melanesia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5102-1800-2025,Middle Africa,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5817-1800-2025,Net Food Importing Developing Countries (NFIDCs),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5849-1800-2025,Non-Annex I countries,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F336-1800-2025,North and Central America,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5103-1800-2025,Northern Africa,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F429-1800-2025,Northern Africa (excluding Sudan),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5203-1800-2025,Northern America,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5208-1800-2025,Northern America and Europe,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5402-1800-2025,Northern Europe,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5873-1800-2025,OECD,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5500-1800-2025,Oceania,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5807-1800-2025,Oceania excluding Australia and New Zealand,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5504-1800-2025,Polynesia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5822-1800-2025,Regional Centres (FAO) (2.5.1.a),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5803-1800-2025,Small Island Developing States (SIDS),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5207-1800-2025,South America,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5306-1800-2005,South-Central Asia,1800,2005,206,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5304-1800-2025,South-eastern Asia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5104-1800-2025,Southern Africa,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5855-1800-2025,Southern Asia (excluding India),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5403-1800-2025,Southern Europe,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5810-1800-2025,Sub-Saharan Africa (including Sudan),1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F9011-1800-2025,Upper-middle-income economies,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5105-1800-2025,Western Africa,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5305-1800-2025,Western Asia,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5828-1800-2025,"Western Asia (exc. Armenia, Azerbaijan, Cyprus, Israel and Georgia)",1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5308-1800-2025,Western Asia and Northern Africa,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5404-1800-2025,Western Europe,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-X01-1800-2025,World,1800,2025,226,national,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-F5301-2005-2025,Central Asia,2005,2025,21,national,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49; CShapes,REGION,NA
-F5303-2005-2025,Southern Asia,2005,2025,21,national,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49; CShapes,REGION,NA
-F420-2017-2025,Sub-Saharan Africa,2017,2025,9,national,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49; CShapes,REGION,NA
-DEDREG-2021-2025,Developed regions,2021,2025,5,national,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49,VERIFIED,NA
-DNGREG-2021-2025,Developing regions,2021,2025,5,national,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49,VERIFIED,NA
 ATG-1800-2025,Antigua and Barbuda,1800,2025,226,national,North America,ATG,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BHS-1800-2025,Bahamas,1800,2025,226,national,North America,BHS,31,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BRB-1800-2025,Barbados,1800,2025,226,national,North America,BRB,53,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -654,7 +565,6 @@ DOM-1800-2025,Dominican Republic,1800,2025,226,national,North America,DOM,42,CSh
 HTI-1800-2025,Haiti,1800,2025,226,national,North America,HTI,41,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 HND-1800-2025,Honduras,1800,2025,226,national,North America,HND,91,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 JAM-1800-2025,Jamaica,1800,2025,226,national,North America,JAM,51,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-MEX-1800-2025,Mexico,1800,2025,226,national,North America,MEX,70,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Aggregate entry for continuous trade data linkage. Pre-1848: included territory lost in Treaty of Guadalupe Hidalgo (~55% area loss).
 NIC-1800-2025,Nicaragua,1800,2025,226,national,North America,NIC,93,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 KNA-1800-2025,Saint Kitts and Nevis,1800,2025,226,national,North America,KNA,60,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 LCA-1800-2025,Saint Lucia,1800,2025,226,national,North America,LCA,57,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -679,7 +589,6 @@ PAN-1800-1979,Panama (before Canal Zone),1800,1979,180,national,North America,PA
 PEI-1800-1866,Prince Edward Island,1800,1866,67,national,North America,PEI,NA,GADM 4.1 (subnational),NA,NA,FT,VERIFIED,NA
 LCA-1800-1838,St. Lucía,1800,1838,39,national,North America,NA,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 VCT-1800-1833,St. Vincent,1800,1833,34,national,North America,NA,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-USA-1800-1959,United States of America (to 1959),1800,1959,160,national,North America,USA,2,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split into 4 territorial periods.
 STM-1816-1878,St Martin and St Barthélemy,1816,1878,63,national,North America,STM,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 VCI-1849-1866,Vancouver's Island,1849,1866,18,national,North America,VCI,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 CAN-1866-1948,Canada (to 1948),1866,1948,83,national,North America,CAN,20,CShapes 2.0,CAN-1800-1866,CAN-1948-2025,FT; CShapes,VERIFIED,NA
@@ -774,7 +683,6 @@ CAR-1885-2025,Caroline Island,1885,2025,141,national,Oceania,CAR,NA,CShapes 2.0,
 GIL-1892-2025,Gilbert and Ellice Island,1892,2025,134,national,Oceania,GIL,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 DNG-1898-2025,Dutch new Guinea,1898,2025,128,national,Oceania,DNG,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NHB-1906-2025,New Hebrides,1906,2025,120,national,Oceania,NHB,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-F5503-1800-2025,Micronesia (Oceania region),1800,2025,226,national,Oceania,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 GUY-1800-2025,Guyana,1800,2025,226,national,South America,GUY,110,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 VEN-1821-2025,Venezuela,1821,2025,205,national,South America,VEN,101,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 URY-1828-2025,Uruguay,1828,2025,198,national,South America,URY,165,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -789,7 +697,6 @@ PER-1942-2025,Peru,1942,2025,84,national,South America,PER,135,CShapes 2.0,PER-1
 SUR-1975-2025,Suriname,1975,2025,51,national,South America,SUR,115,CShapes 2.0,SUR-1954-1975,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ARG-1800-1899,Argentina (to 1899),1800,1899,100,national,South America,ARG,160,CShapes 2.0,NA,ARG-1899-1902,FT; CShapes,VERIFIED,NA
 BRA-1800-1903,Brazil (to 1903),1800,1903,104,national,South America,BRA,140,CShapes 2.0,NA,BRA-1903-1909,FT; CShapes,VERIFIED,NA
-COL-1800-1903,Colombia (to 1903),1800,1903,104,national,South America,COL,100,CShapes 2.0,NA,COL-1903-1922,FT; CShapes,VERIFIED,Aggregate for continuous trade data linkage. Split at 1830.
 ECU-1800-1942,Ecuador (to 1942),1800,1942,143,national,South America,ECU,130,CShapes 2.0,NA,ECU-1942-2025,FT; CShapes,VERIFIED,NA
 CHL-1810-1899,Chile (to 1899),1810,1899,90,national,South America,CHL,155,CShapes 2.0,NA,CHL-1899-1902,FT; CShapes,VERIFIED,NA
 PRY-1811-1938,Paraguay (to 1938),1811,1938,128,national,South America,PRY,150,CShapes 2.0,NA,PRY-1938-2025,FT; CShapes,VERIFIED,NA
@@ -799,7 +706,7 @@ ARG-1899-1902,Argentina (1899-1902),1899,1902,4,national,South America,ARG,160,C
 CHL-1899-1902,Chile (1899-1902),1899,1902,4,national,South America,CHL,155,CShapes 2.0,CHL-1810-1899,CHL-1902-2025,FT; CShapes,VERIFIED,NA
 BOL-1903-1909,Bolivia (1903-1909),1903,1909,7,national,South America,BOL,145,CShapes 2.0,BOL-1825-1903,BOL-1909-1938,FT; CShapes,VERIFIED,NA
 BRA-1903-1909,Brazil (1903-1909),1903,1909,7,national,South America,BRA,140,CShapes 2.0,BRA-1800-1903,BRA-1909-2025,FT; CShapes,VERIFIED,NA
-COL-1903-1922,Colombia (1903-1922),1903,1922,20,national,South America,COL,100,CShapes 2.0,COL-1830-1903; COL-1800-1903,COL-1922-2025,FT; CShapes,VERIFIED,NA
+COL-1903-1922,Colombia (1903-1922),1903,1922,20,national,South America,COL,100,CShapes 2.0,COL-1830-1903,COL-1922-2025,FT; CShapes,VERIFIED,NA
 BOL-1909-1938,Bolivia (1909-1938),1909,1938,30,national,South America,BOL,145,CShapes 2.0,BOL-1903-1909,BOL-1938-2025,FT; CShapes,VERIFIED,NA
 PER-1909-1922,Peru (1909-1922),1909,1922,14,national,South America,PER,135,CShapes 2.0,PER-1825-1909,PER-1922-1942,FT; CShapes,VERIFIED,NA
 PER-1922-1942,Peru (1922-1942),1922,1942,21,national,South America,PER,135,CShapes 2.0,PER-1909-1922,PER-1942-2025,FT; CShapes,VERIFIED,NA
@@ -1224,11 +1131,6 @@ ES48-1833-2025,Vizcaya (Province),1833,2025,193,subnational,Europe,ESP,NA,mapSpa
 ES26-1833-2025,La Rioja (Province),1833,2025,193,subnational,Europe,ESP,NA,mapSpain/IGN (subnational),NA,NA,mapSpain,VERIFIED,Parent: ESP-1800-2025; Source: IGN SIANE via mapSpain; INE code: 26; CCAA: La Rioja; Provinces stable since 1833 Burgos reform
 ES51-1833-2025,Ceuta (Province),1833,2025,193,subnational,Europe,ESP,NA,mapSpain/IGN (subnational),NA,NA,mapSpain,VERIFIED,Parent: ESP-1800-2025; Source: IGN SIANE via mapSpain; INE code: 51; CCAA: Ciudad de Ceuta; Provinces stable since 1833 Burgos reform
 ES52-1833-2025,Melilla (Province),1833,2025,193,subnational,Europe,ESP,NA,mapSpain/IGN (subnational),NA,NA,mapSpain,VERIFIED,Parent: ESP-1800-2025; Source: IGN SIANE via mapSpain; INE code: 52; CCAA: Ciudad de Melilla; Provinces stable since 1833 Burgos reform
-GBR-1800-2025,United Kingdom (old),1800,2025,226,national,Europe,GBR,NA,CShapes 2.0,NA,NA,WHEP-fix,VERIFIED,Aggregate entry for continuous trade data linkage
-ARG-1800-2025,Argentina (old),1800,2025,226,national,South America,ARG,NA,CShapes 2.0,NA,NA,WHEP-fix,VERIFIED,Aggregate entry for continuous trade data linkage
-USA-1800-2025,United States (old),1800,2025,226,national,North America,USA,NA,CShapes 2.0,NA,NA,WHEP-fix,VERIFIED,Aggregate entry for continuous trade data linkage
-RUS-1800-2025,Russia/USSR (old),1800,2025,226,national,Europe,RUS,NA,CShapes 2.0,NA,NA,WHEP-fix,VERIFIED,Aggregate entry for continuous trade data linkage
-ZAF-1800-2025,South Africa (old),1800,2025,226,national,Africa,ZAF,NA,CShapes 2.0,NA,NA,WHEP-fix,VERIFIED,Aggregate entry for continuous trade data linkage
 NZL-1840-1907,New Zealand (colony),1840,1907,68,national,Oceania,NZL,NA,CShapes 2.0,NA,NZL-1907-2025,CShapes; WHEP-fix,VERIFIED,British crown colony 1840; dominion from 1907
 CAN-1800-1866,Canada (pre-Confederation),1800,1866,67,national,North America,CAN,NA,CShapes 2.0,NA,CAN-1866-1948,CShapes; WHEP-fix,VERIFIED,British North America; Confederation 1867
 CHN-1950-2025,China (PRC),1950,2025,76,national,Asia,CHN,NA,CShapes 2.0,CHN-1949-1950,NA,CShapes; FAOSTAT; M49; WHEP-fix,VERIFIED,People's Republic of China
@@ -1287,14 +1189,12 @@ SAA-1920-1935,Saar Territory (League of Nations),1920,1935,16,national,Europe,NA
 MEM-1920-1923,Memel Territory,1920,1923,4,national,Europe,NA,NA,GADM 4.1 (Klaipeda County proxy),NA,NA,research,VERIFIED,French-administered League mandate; seized by Lithuania Jan 1923; Klaipeda Convention 1924
 FIU-1920-1924,Free City of Fiume,1920,1924,5,national,Europe,NA,NA,Constructed (point buffer ~28 km2),NA,NA,research,VERIFIED,Treaty of Rapallo 1920; Italian annexation 1924 (Treaty of Rome). Rijeka/Fiume. ~28 km2.
 MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,11,national,Asia,MNG,NA,CShapes 2.0 (earliest Mongolia polygon),NA,NA,research,VERIFIED,Bogd Khan declared independence from Qing China Dec 1911. De facto independent until 1921 Soviet-backed revolution. Predecessor of Mongolian People's Republic.
-IND-1800-2025,India (old),1800,2025,226,national,Asia,IND,NA,CShapes 2.0 (modern India sovereign polygon),NA,NA,research,VERIFIED,Aggregate entry for continuous trade data linkage across British India and modern India periods
 JPN-1800-1895,Japan (to 1895),1800,1895,96,national,Asia,JPN,NA,CShapes 2.0,NA,JPN-1895-1945,CShapes; research,VERIFIED,"Pre-imperial Japan. Home islands only (~370,776 km2). Treaty of Shimonoseki (1895) marks beginning of colonial expansion."
 JPN-1895-1945,Japanese Empire,1895,1945,51,national,Asia,JPN,NA,CShapes 2.0 (union: Japan + Taiwan + Korea + S. Sakhalin),JPN-1800-1895,JPN-1945-1952,CShapes; research,VERIFIED,"Empire period. +Taiwan (Treaty of Shimonoseki 1895), +S. Sakhalin (Treaty of Portsmouth 1905), +Korea (annexed 1910). ~658,000 km2 at peak. Manchukuo (1932-45) tracked separately as MAN-1932-1945."
 JPN-1945-1952,Japan (occupied),1945,1952,8,national,Asia,JPN,NA,CShapes 2.0,JPN-1895-1945,JPN-1952-2025,CShapes; research,VERIFIED,US occupation (SCAP). All colonies stripped. Treaty of San Francisco (1952-04-28) restores sovereignty.
 JPN-1952-2025,Japan,1952,2025,74,national,Asia,JPN,NA,CShapes 2.0,JPN-1945-1952,NA,CShapes; research,VERIFIED,Post-occupation. Okinawa reverted 1972. Kuril Islands dispute with Russia unresolved.
 NDD-1800-1884,Niger Delta City-States,1800,1884,85,national,Africa,NGA,NA,NA,NA,OIL-1884-1898,research,VERIFIED,"Composite: Bonny, Opobo (1870-1887), New Calabar (Kalabari), Brass (Nembe), Old Calabar (Efik). World's largest palm oil exporters. Predecessor to Oil Rivers Protectorate. Territory: Niger Delta mangrove coast, Cross River estuary."
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,98,national,Africa,NGA,NA,NA,NA,NNI-1899-1904,research,VERIFIED,"Middle Niger River trade hub. Famous for brass and glass bead manufacture, cloth production. Nominally under Sokoto/Gwandu but operationally autonomous. Conquered by Royal Niger Company Jan 1897 (Bida fell Jan 29). Capital: Bida (6.01E, 9.08N)."
-NGA-1800-1899,Nigeria (pre-colonial),1800,1899,100,national,Africa,NGA,NA,CShapes 2.0 (modern Nigeria proxy),NA,NNI-1899-1904; SNI-1899-1906,research,VERIFIED,"Pre-colonial aggregate for Nigerian trade data linkage. Includes Sokoto Caliphate (incl. Kano and Katsina emirates, largest constituent ~644k km2), Bornu Empire, Oyo successor states (Ibadan, Ijebu, Egba), Kingdom of Benin, Niger Delta city-states (Bonny, Calabar, Brass), Nupe/Bida, Igala, Borgu. Uses modern Nigeria polygon as proxy."
 MEX-1800-1848,Mexico (to 1848),1800,1848,49,national,North America,MEX,NA,"Cliopatria (Federated Republic of Mexico 1825-1835, 3.19M km2)",NA,MEX-1848-2025,CShapes; Cliopatria; research,VERIFIED,"Pre-Treaty of Guadalupe Hidalgo. Included Central America until 1823 (~4.4M km2), then ~3.2M km2. Lost Texas de facto 1836. Treaty of Guadalupe Hidalgo (1848-02-02) ceded California, Nevada, Utah, Arizona, New Mexico to US (~55% loss)."
 MEX-1848-2025,Mexico,1848,2025,178,national,North America,MEX,NA,CShapes 2.0,MEX-1800-1848,NA,CShapes; research,VERIFIED,"Post-Treaty of Guadalupe Hidalgo. Gadsden Purchase (1854, -77K km2) is sub-threshold (-3.9%). Territory stable at ~1.96M km2 since 1854."
 NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,31,national,Europe,NLD,NA,Cliopatria (Netherlands 1815-1819),NA,NLD-1830-2025,CShapes; Cliopatria; research,VERIFIED,United Kingdom of Netherlands (1815-1830) including Belgium and Luxembourg. ~71K km2. Belgian Revolution 1830 led to -42% territory loss.
@@ -1419,3 +1319,80 @@ FJI-1886-1970,Fiji (1886-1970),1886,1970,85,national,Oceania,FJI,950,CShapes 2.0
 OTT-1800-1886,Ottoman Empire (to 1886),1800,1886,87,national,Europe,OTT,640,"Cliopatria (Ottoman Empire 1800-1802, 2.66M km2)",NA,OTT-1886-1908,FT; CShapes,VERIFIED,"Ottoman Empire at near-maximum extent. Lost Greece (1832), parts of Caucasus to Russia, Algeria to France (1830). Cliopatria polygon represents 1800 extent (~2.66M km2). Actual territory contracted significantly during this period."
 OTT-1886-1908,Ottoman Empire (1886-1908),1886,1908,23,national,Europe,OTT,640,CShapes 2.0,OTT-1800-1886,OTT-1908-1912,FT; CShapes,VERIFIED,"Ottoman Empire post-1878 losses (Romania, Serbia, Montenegro, Bulgaria autonomous). Still holds Bosnia (occupied by Austria-Hungary), Libya, Hejaz, Mesopotamia, Levant."
 OTT-1908-1912,Ottoman Empire (1908-1912),1908,1912,5,national,Europe,OTT,640,CShapes 2.0,OTT-1886-1908,TUR-1913-1914; SAU-1924-1932,FT; CShapes,VERIFIED,Ottoman Empire after Bosnia formally annexed by Austria-Hungary (1908). Lost Libya to Italy (1911-12). Balkan Wars (1912-13) cost most remaining European territory. Collapse led to modern Turkey and Arab states.
+X06-1800-2025,Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+X21-1800-2025,Americas,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5848-1800-2025,Annex I countries,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5600-1800-2025,Antarctic Region,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5300-1800-2025,Asia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5501-1800-2025,Australia and New Zealand,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5206-1800-2025,Caribbean,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5857-1800-2025,Caucasus and Central Asia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5204-1800-2025,Central America,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5101-1800-2025,Eastern Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5302-1800-2025,Eastern Asia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5829-1800-2025,Eastern Asia (excluding Japan and China),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5307-1800-2025,Eastern Asia and South-eastern Asia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5401-1800-2025,Eastern Europe,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5400-1800-2025,Europe,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+EUR-1800-2025,"Europe, Northern America, Australia and New Zealand",1800,2025,226,aggregate,Global,EUR,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+F5707-1800-2025,European Union (27),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99029-1800-2025,"FAO Major Fishing Area: Atlantic, Eastern Central (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99024-1800-2025,"FAO Major Fishing Area: Atlantic, Northeast (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99023-1800-2025,"FAO Major Fishing Area: Atlantic, Northwest (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99026-1800-2025,"FAO Major Fishing Area: Atlantic, Southeast (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99030-1800-2025,"FAO Major Fishing Area: Atlantic, Southwest (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99028-1800-2025,"FAO Major Fishing Area: Atlantic, Western Central (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99025-1800-2025,"FAO Major Fishing Area: Indian Ocean, Eastern (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99027-1800-2025,"FAO Major Fishing Area: Indian Ocean, Western (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99032-1800-2025,FAO Major Fishing Area: Mediterranean and Black Sea (14.4.1),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99018-1800-2025,"FAO Major Fishing Area: Pacific, Eastern Central (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99019-1800-2025,"FAO Major Fishing Area: Pacific, Northeast (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99020-1800-2025,"FAO Major Fishing Area: Pacific, Northwest (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99031-1800-2025,"FAO Major Fishing Area: Pacific, Southeast (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99022-1800-2025,"FAO Major Fishing Area: Pacific, Southwest (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F99021-1800-2025,"FAO Major Fishing Area: Pacific, Western Central (14.4.1)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F9010-1800-2025,High-income economies,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5823-1800-2025,International Centres (FAO) (2.5.1.a),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5802-1800-2025,Land Locked Developing Countries (LLDCs),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F348-1800-2025,Latin America,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5205-1800-2025,Latin America and the Caribbean,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5801-1800-2025,Least Developed Countries (LDCs),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5815-1800-2025,Low Income Food Deficit Countries (LIFDCs),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5858-1800-2025,Low-income economies,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5859-1800-2025,Lower-middle-income economies,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5502-1800-2025,Melanesia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5102-1800-2025,Middle Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5817-1800-2025,Net Food Importing Developing Countries (NFIDCs),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5849-1800-2025,Non-Annex I countries,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F336-1800-2025,North and Central America,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5103-1800-2025,Northern Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F429-1800-2025,Northern Africa (excluding Sudan),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5203-1800-2025,Northern America,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5208-1800-2025,Northern America and Europe,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5402-1800-2025,Northern Europe,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5873-1800-2025,OECD,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5500-1800-2025,Oceania,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5807-1800-2025,Oceania excluding Australia and New Zealand,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5504-1800-2025,Polynesia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5822-1800-2025,Regional Centres (FAO) (2.5.1.a),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5803-1800-2025,Small Island Developing States (SIDS),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5207-1800-2025,South America,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5306-1800-2005,South-Central Asia,1800,2005,206,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5304-1800-2025,South-eastern Asia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5104-1800-2025,Southern Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5855-1800-2025,Southern Asia (excluding India),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5403-1800-2025,Southern Europe,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5810-1800-2025,Sub-Saharan Africa (including Sudan),1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F9011-1800-2025,Upper-middle-income economies,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5105-1800-2025,Western Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5305-1800-2025,Western Asia,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5828-1800-2025,"Western Asia (exc. Armenia, Azerbaijan, Cyprus, Israel and Georgia)",1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5308-1800-2025,Western Asia and Northern Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5404-1800-2025,Western Europe,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+X01-1800-2025,World,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+F5301-2005-2025,Central Asia,2005,2025,21,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49; CShapes,REGION,NA
+F5303-2005-2025,Southern Asia,2005,2025,21,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49; CShapes,REGION,NA
+F420-2017-2025,Sub-Saharan Africa,2017,2025,9,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49; CShapes,REGION,NA
+DEDREG-2021-2025,Developed regions,2021,2025,5,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49,VERIFIED,NA
+DNGREG-2021-2025,Developing regions,2021,2025,5,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49,VERIFIED,NA
+F5503-1800-2025,Micronesia (Oceania region),1800,2025,226,aggregate,Oceania,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
