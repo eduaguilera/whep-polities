@@ -25,6 +25,141 @@ Kinds:
 
 ---
 
+## 2026-04-11 — ottoman-first-ingest
+**Touched:** OTT-1800-1886, OTT-1886-1908, OTT-1908-1912
+**Source:** cliopatria-v0.1.3 (new), wikipedia-ottoman-2026-04-11 (new), cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+First Ottoman batch ingest. Creates three polity pages and two new
+source files.
+
+**New sources:**
+
+- `wiki/sources/cliopatria-v0.1.3.md` — docs-derived source file for
+  Cliopatria v0.1.3 (Seshat Global History Databank), CC BY 4.0,
+  ~1,600 polities, 15,690 features, 3400 BCE–2024 CE. Records the
+  single-time-step extraction pattern the WHEP pipeline uses
+  (`docs/06 §Ottoman entries` literally says "~2% temporal
+  coverage"), the ~25–100 km spatial precision, and the list of
+  10 WHEP rows that currently use Cliopatria polygons.
+- `wiki/sources/wikipedia-ottoman-2026-04-11.md` — combined
+  snapshot of two Wikipedia articles:
+  `Decline_and_modernization_of_the_Ottoman_Empire` (1800–1908)
+  and `Dissolution_of_the_Ottoman_Empire` (1908–1923). Verbatim
+  quotes for 1821, 1829, 1831–1833, 1853–1856, 1877–1878, 1878
+  (Congress of Berlin), 1908, 1911–1912 (Libya), 1912–1913
+  (Balkan Wars), 1913, 1920 (Sèvres), 1922 (sultanate
+  abolition). Several 19th-century dates (1830 Greek/Algeria,
+  1881 Tunisia, 1882 Egypt, 1885 Eastern Rumelia) could not be
+  pinned to verbatim quotes in the current Wikipedia snapshots
+  and are listed under the source's *Known limitations* for a
+  future ingest.
+
+**New polity pages:**
+
+- `wiki/polities/ott-1800-1886.md` — the anchoring page. Uses
+  Cliopatria as polygon source (single 1800 time-step applied
+  across 87 years) and CShapes is explicitly outside its
+  coverage window. Flags the most important audit finding of
+  this ingest: the 1886 split with OTT-1886-1908 is a
+  **polygon-source boundary, not a territorial event** — see
+  `oq-1886-split-is-polygon-not-territory`. Also flags the
+  possibility of further splits at 1830 and 1878 under a strict
+  reading of `decision-whep-polity-definition`.
+- `wiki/polities/ott-1886-1908.md` — CShapes polygon, captures
+  the post-1878 Berlin Congress configuration. Ends at 1908
+  (Austro-Hungarian formal annexation of Bosnia + Bulgarian
+  independence + Cretan union with Greece — three real events
+  on 5 October 1908). Flags `oq-bosnia-double-count`: is Bosnia
+  in or out of the Ottoman polygon for 1886–1908, given that a
+  separate `BOS-1878-1908` WHEP row also has a polygon?
+- `wiki/polities/ott-1908-1912.md` — short four-year terminal
+  row. Both endpoints are real events (1908 Bosnia annexation,
+  1912 Treaty of Ouchy / Italo-Turkish War end). Flags
+  `oq-libya-mid-row-change`: the Libya loss of November 1912
+  falls inside the row, which should trigger a split under a
+  strict WHEP rule — but the row is short enough that the repo
+  apparently chose not to. Also flags `oq-1912-1920-gap`: there
+  is no OTT-* row between 1912 and the TUR-* chain; the Balkan
+  Wars through WWI to the Republic of Türkiye are all carried
+  under TUR codes. The OTT→TUR rename at 1913 is not a
+  split-under-the-rule; it should be justified in a separate
+  `decision` entry.
+
+**COW finding on this ingest.** COW's `statelist2024.csv` has a
+**single continuous tenure row** for `TUR, 640, 1816-01-01 →
+2024-12-31`. COW makes no distinction between the Ottoman Empire
+and modern Türkiye, and no split at 1886, 1908, 1912, 1922, or
+1923. WHEP carries **seven** rows for the same territorial
+entity (OTT-1800-1886, OTT-1886-1908, OTT-1908-1912, TUR-1913-1914,
+TUR-1914-1918, TUR-1918-1920, TUR-1920-2025) plus a duplicate
+`TUR-1800-1912` (see the separate proposal entry). The contrast
+is sharp: COW sees one continuous state for 209 years; WHEP sees
+seven (eight with the duplicate) in the same window. Under
+`decision-whep-polity-definition` the WHEP approach is correct
+*in principle* — WHEP's unit of analysis is territorial-economic,
+not state-system — but the individual split dates need to be
+audited against real territorial change, which this ingest has
+now made possible.
+
+Status: all three pages `draft` pending (a) a proper academic
+source for the 19th-century events Wikipedia did not give
+verbatim quotes for and (b) resolution of the
+`oq-1886-split-is-polygon-not-territory` question, which is
+bigger than Luxembourg's draft→reviewed blocker because it
+affects the split dates themselves, not just the narrative layer.
+
+## 2026-04-11 — proposal-tur-1800-1912-duplication
+**Touched:** TUR-1800-1912 (CSV), OTT-1800-1886, OTT-1886-1908, OTT-1908-1912
+**Source:** none
+**Kind:** proposal
+
+The CSV contains a row `TUR-1800-1912, Türkiye (to 1912)`
+spanning exactly the same entity and time range as the three
+`OTT-*` rows that were added when `OTT-1800-1912` was converted
+to an aggregate (see `docs/06 §Split Ottoman Empire`). The TUR
+row was not removed at that time.
+
+**Observed in the CSV today (`data/final/polities_database.csv`):**
+
+| row | start | end | polity_type | polygon source |
+|---|---|---|---|---|
+| `OTT-1800-1886` | 1800 | 1886 | national | Cliopatria (1800-1802, 2.66M km²) |
+| `OTT-1886-1908` | 1886 | 1908 | national | CShapes 2.0 |
+| `OTT-1908-1912` | 1908 | 1912 | national | CShapes 2.0 |
+| `TUR-1800-1912` | 1800 | 1912 | national | CShapes 2.0 + CShapes-Europe |
+
+All four rows have `cow=640`. The three OTT rows carry
+substantive notes; TUR-1800-1912 has `notes = NA`. The OTT
+chain's predecessor/successor links (`NA` → `OTT-1800-1886` →
+`OTT-1886-1908` → `OTT-1908-1912` → `TUR-1913-1914;SAU-1924-1932`)
+do **not** pass through `TUR-1800-1912` at all — it's a
+disconnected node.
+
+**Under the WHEP polity definition**
+`[log 2026-04-11 decision-whep-polity-definition]`, the same
+territory + same (COW-continuous) entity should be represented
+by exactly one polity for any given year. 1800–1912 is currently
+represented by **two parallel WHEP polities** — the OTT chain
+and the orphan TUR row — which is a direct integrity violation.
+
+**Recommendation (for the user to apply):**
+
+Remove `TUR-1800-1912` from the CSV. The OTT chain is clearly
+the live representation (substantive notes, proper
+predecessor/successor links, more recent changes). Any references
+to `TUR-1800-1912` elsewhere in the CSV or in downstream scripts
+need to be repointed at the correct OTT row for the year in
+question — a quick grep on `TUR-1800-1912` across `R/`,
+`data/whep-source/`, and `data/analysis/` should enumerate them.
+
+The wiki cannot make this change (wiki never edits
+`data/final/polities_database.csv` directly per the rules in
+`wiki/README.md`). This entry is filed so a human sees it next
+time they look at the log.
+
+---
+
 ## 2026-04-11 — schema-stable-oq-ids-and-lint-relaxation
 **Touched:** wiki/README.md, wiki/prompts/lint.md, wiki/polities/_template.md
 **Source:** none
