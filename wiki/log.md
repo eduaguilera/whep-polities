@@ -25,6 +25,100 @@ Kinds:
 
 ---
 
+<a id="biger-1995-luxembourg-ingest"></a>
+## 2026-04-11 — biger-1995-luxembourg-ingest
+**Touched:** LUX-1839-2025
+**Source:** biger-1995 (new)
+**Kind:** ingest
+
+User added Biger 1995 (*The Encyclopedia of International
+Boundaries*, Facts on File, ISBN 0-8160-3233-5) to
+`wiki/sources/pdfs/` under institutional / fair-use access.
+552-page reference work; alphabetical by present-day state;
+"includes only contemporary international land boundaries" with
+historical background sections per boundary. Stricter copyright
+than all prior wiki sources — full **all rights reserved**
+notice on the copyright page — so the source file and polity
+page use sentence-level fair-use quotes only, each with page
+citation.
+
+Created `wiki/sources/biger-1995.md` as the primary-source file
+(copyright discipline documented up front, structure section on
+how the book is organized, then a `§luxembourg` subsection
+compiling quotes from the relevant cross-referenced entries).
+
+Targeted read of three sections:
+
+- **LUXEMBOURG** (p.365) — summary entry, medieval background,
+  Grand Duchy creation in 1815, post-1830 split, Nassau-Weilburg
+  succession.
+- **BELGIUM** + **BELGIUM—NETHERLANDS** historical background
+  (pp.67–70) — the precise 1831-01-20, 1831-11-15, 1838 dates
+  and, most importantly, **"The limits of Eastern Duchy of
+  Luxembourg (998 sq. miles [2,584 sq. km.] out of 2,700 sq.
+  miles [7,000 sq. km.]) were established by the Treaty of 19
+  April 1839"** (p.70).
+- **GERMANY—LUXEMBOURG** historical background (pp.238–239) —
+  1797 French cession, 1815 Vienna Treaty, 1830 revolt, **"The
+  area became independent in its own right in 1848"** (p.239,
+  new datum not in Wikipedia), 1867 severance of German
+  Confederation ties, and the direct territorial-stability
+  statement **"Since 1867 no changes in the boundary line were
+  made... one of the most peaceful boundaries in the world
+  today"** (p.239).
+
+**Two open questions on `lux-1839-2025` resolved:**
+
+1. `oq-academic-corroboration` — Biger (Tel Aviv University +
+   Durham International Boundaries Research Unit) provides exact
+   dates and area numbers and is the reference-work citation the
+   polity page was waiting for. Status moved from `draft` to
+   `reviewed`.
+2. `oq-territorial-stability` — Biger's direct 1867→1995
+   "no changes in the boundary line" statement (p.239) is the
+   academic confirmation of territorial continuity the WHEP
+   polity-definition rule requires. The 1839–1867 period is
+   covered by the 1839 treaty itself. The WWI and WWII
+   occupations interrupted sovereignty but did not alter borders,
+   which is why the row remains unbroken.
+
+**Three new facts added to the polity page:**
+
+1. **Exact date of the partition: 19 April 1839** (Biger p.70).
+   Previously the page had only the year.
+2. **Area numbers: 998 / 2,700 sq mi** — Luxembourg retained ~37%
+   of its prior territory. Previously the page had only
+   Wikipedia's "geographically larger western part".
+3. **1848 as "independent in its own right"** (Biger p.239). A
+   novel date not in Wikipedia or COW. Biger places Luxembourg's
+   full legal independence at the 1848 constitutional settlement,
+   distinct from 1839 (territorial partition) and 1867
+   (international-boundary status). Under the WHEP polity
+   definition this is a regime change, not a territorial change,
+   and does not trigger a split — but it is worth citing.
+
+**One loose-dating note to flag:** Biger writes "severance of
+the German Confederation in 1867" (p.239), but the German
+Confederation was formally dissolved on 23 August 1866 by the
+Peace of Prague; the 1867 event was the Treaty of London (the
+Luxembourg Crisis resolution) that withdrew the Prussian garrison
+and guaranteed neutrality. Biger's year-level claim is close but
+slightly loose on mechanism. Recorded on the polity page and in
+the Biger source file's known-limitations section so future
+citations are cautious with Biger's narrative phrasing.
+
+**Open questions still open:** `oq-polygon-provenance` (pre-1886
+polygon source), `oq-cshapes-1893-start` (CShapes package
+internals), `oq-bleu-faostat` (FAOSTAT aggregate convention).
+Biger does not address any of these directly; they need
+different sources (polygon pipeline inspection, cshapes R
+package code, FAOSTAT documentation).
+
+**Status change:** `lux-1839-2025` is now the first and only
+page in the wiki at `status: reviewed`.
+
+---
+
 <a id="github-clickable-links"></a>
 ## 2026-04-11 — github-clickable-links
 **Touched:** wiki/README.md, wiki/polities/_template.md, wiki/prompts/lint.md

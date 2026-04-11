@@ -9,17 +9,17 @@ lint fails if the index is stale.
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
 | Polity pages | 4 |
-| Sources ingested | 5 |
-| Pages with `status: reviewed` | 0 |
+| Sources ingested | 6 |
+| Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | 14 |
+| Open questions across wiki | 12 |
 
 ## Polities by continent
 
 ### Europe
 
-- [Luxembourg](polities/lux-1839-2025.md) — `LUX-1839-2025`, draft,
-  5 open questions.
+- [Luxembourg](polities/lux-1839-2025.md) — `LUX-1839-2025`,
+  **reviewed**, 3 open questions.
 - [Ottoman Empire (to 1886)](polities/ott-1800-1886.md) —
   `OTT-1800-1886`, draft, 4 open questions. Cliopatria polygon.
 - [Ottoman Empire (1886–1908)](polities/ott-1886-1908.md) —
@@ -72,6 +72,12 @@ _(none yet)_
   [ott-1800-1886](polities/ott-1800-1886.md),
   [ott-1886-1908](polities/ott-1886-1908.md),
   [ott-1908-1912](polities/ott-1908-1912.md).
+- [biger-1995](sources/biger-1995.md) — Biger, Gideon (ed.),
+  *The Encyclopedia of International Boundaries*, Facts on File,
+  1995 (ISBN 0-8160-3233-5), in collaboration with the Durham
+  International Boundaries Research Unit. Strict all-rights-reserved;
+  fair-use short-quote citation only. PDF gitignored, SHA-256
+  recorded. Cited by: [lux-1839-2025](polities/lux-1839-2025.md).
 
 ## Aggregates and unions
 
