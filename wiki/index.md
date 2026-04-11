@@ -8,12 +8,12 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 7 |
-| Sources ingested | 7 |
+| Polity pages | 8 |
+| Sources ingested | 8 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~23 (11 prior + ~12 new on AUH chain, pre-audit) |
-| Open `proposal`-kind log entries | 2 (tur-1800-1912-duplication, auh-chain-audit) |
+| Open questions across wiki | ~28 (prior + 5 new on F228-1856-1905) |
+| Open `proposal`-kind log entries | 3 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism) |
 
 ## Polities by continent
 
@@ -37,6 +37,11 @@ lint fails if the index is stale.
   `AUH-1908-1918`, draft, 4 open questions. Flagged by audit
   Findings 1 (successor list incomplete — major) and 4
   (1908 start).
+- [Russian Empire (1856–1905)](polities/f228-1856-1905.md) —
+  `F228-1856-1905`, draft, 5 open questions. Alexander II/III
+  reform and expansion era: Crimean War end → Portsmouth.
+  The last correctly labeled F228 row before the 5-row
+  "USSR" anachronism block.
 
 ### Africa
 _(none yet)_
@@ -108,6 +113,17 @@ _(none yet)_
   [auh-1800-1867](polities/auh-1800-1867.md),
   [auh-1867-1908](polities/auh-1867-1908.md),
   [auh-1908-1918](polities/auh-1908-1918.md).
+- [wikipedia-russian-empire-2026-04-11](sources/wikipedia-russian-empire-2026-04-11.md)
+  — Snapshot of the *Russian Empire* Wikipedia article with
+  dates for the 1856 Treaty of Paris, 1858/1860 Aigun/Peking
+  Far East gains, 1861 serf emancipation, 1865–1884 Central
+  Asian conquests (Tashkent, Bukhara, Khiva, Kokand, Merv),
+  1867 Alaska sale, 1875 Sakhalin/Kurils exchange, 1878
+  Congress of Berlin Russian side, 1897 census, 1904–1905
+  Russo-Japanese War, 1905 Treaty of Portsmouth and
+  Revolution. Canonical citation target for the "USSR did not
+  exist until 30 December 1922" claim. Cited by:
+  [f228-1856-1905](polities/f228-1856-1905.md).
 
 ## Aggregates and unions
 

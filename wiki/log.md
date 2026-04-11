@@ -25,6 +25,247 @@ Kinds:
 
 ---
 
+<a id="russian-empire-first-ingest"></a>
+## 2026-04-11 — russian-empire-first-ingest
+**Touched:** F228-1856-1905
+**Source:** wikipedia-russian-empire-2026-04-11 (new), docs/ cross-reference
+**Kind:** ingest
+
+Iteration 2 of the autonomous European-empires research pass. Creates
+one polity page (`f228-1856-1905.md`, Russian Empire Alexander II/III
+era) as a worked example, and files a separate proposal entry
+(`proposal-f228-ussr-anachronism` below) covering the CSV audit
+findings that the same phase 1 surfaced.
+
+Scope was deliberately narrowed after phase 1 inventory: reading the
+full Biger RUSSIA entry in this iteration would have required another
+15–20 PDF pages of context, and the main value of the iteration is
+the anachronism proposal, not a full set of Russian Empire polity
+pages. Future iterations will add pages for F228-1800-1856 (early
+Russian Empire), F228-1905-1914 (post-Russo-Japanese-War Empire),
+F228-1914-1917 (WWI Empire), and the subsequent Soviet-era chain.
+
+**New source file:** `wikipedia-russian-empire-2026-04-11.md`. One
+Wikipedia snapshot covering 1800–1917.
+
+**New Biger section:** deliberately skipped in this iteration — Biger
+RUSSIA entry not yet read. Flagged as [oq-biger-russia] on the new
+polity page.
+
+**New polity page:** `f228-1856-1905.md` — Russian Empire,
+1856 (Treaty of Paris ending Crimean War) to 1905 (Treaty of
+Portsmouth ending Russo-Japanese War). Uses the CSV's rich notes
+field as a starting point but hedges everywhere the current CSV
+labeling conflicts with history under the new critical-stance rule.
+
+**CSV audit findings surfaced during phase 1** (detailed in the
+proposal entry below):
+
+1. **MAJOR — Five rows mislabeled "USSR" pre-1922.** The USSR was
+   formed 30 December 1922. `F228-1905-1914`, `F228-1914-1917`,
+   `F228-1917-1918`, `F228-1918-1920`, and `F228-1920-1921` all
+   have `polity_name = "USSR (YYYY-YYYY)"` despite predating the
+   USSR's existence by up to 17 years.
+2. **MEDIUM — F228 chain refactor history is visible in docs/.**
+   docs/03 §411–417 describes an old F228 split structure (1800-1886,
+   1886-1919, 1919-1920, 1920-1924, 1924-1926, 1926-1939, 1939-1940)
+   that does not match the current CSV (1800-1856, 1856-1905,
+   1905-1914, 1914-1917, 1917-1918, 1918-1920, 1920-1921, 1921-1940,
+   1940-1945, 1945-1991). Docs/10, docs/11, docs/14 reference
+   "F228-1940-1991" as a row that no longer exists. 15 broken
+   predecessor references were fixed per docs/14 by repointing from
+   F228-1940-1991 to F228-1945-1991.
+3. **POSITIVE — F228-1945-1991 successor list is complete.** All 15
+   USSR constituent republics are correctly listed. Counter-example
+   to AUH-1908-1918 Finding 1.
+
+<a id="proposal-f228-ussr-anachronism"></a>
+## 2026-04-11 — proposal-f228-ussr-anachronism
+**Touched:** F228-1905-1914, F228-1914-1917, F228-1917-1918, F228-1918-1920, F228-1920-1921, F228-1921-1940
+**Source:** wikipedia-russian-empire-2026-04-11 (for dates), docs/03 cross-reference
+**Kind:** proposal
+
+Second proposal filed under the critical-stance rule from
+`[log decision-csv-is-evidence-not-authority]`. The canonical
+example the rule was named for: five F228 rows are labeled "USSR"
+despite predating the USSR's existence, plus a sixth row with a
+partial anachronism.
+
+### Finding 1 (MAJOR) — Five F228 rows mislabeled "USSR" pre-1922
+
+**Observed:** the following rows have `polity_name` starting with
+"USSR":
+
+| polity_code | polity_name | time range | actual entity |
+|---|---|---|---|
+| F228-1905-1914 | USSR (1905-1914) | 1905–1914 | **Russian Empire** |
+| F228-1914-1917 | USSR (1914-1917) | 1914–1917 | **Russian Empire** (through Feb 1917) |
+| F228-1917-1918 | USSR (1917-1918) | 1917–1918 | **Russian Republic** (Feb–Oct 1917) → **RSFSR** (Oct 1917–) |
+| F228-1918-1920 | USSR (1918-1920) | 1918–1920 | **RSFSR** + various short-lived Soviet republics during Civil War |
+| F228-1920-1921 | USSR (1920-1921) | 1920–1921 | **RSFSR** |
+| F228-1921-1940 | USSR (1921-1940) | 1921–1940 | **RSFSR** (1921–1922-12-30) → **USSR** (1922-12-30–) |
+
+**The USSR was formed on 30 December 1922** when the Treaty on the
+Creation of the USSR was signed by the RSFSR, Ukrainian SSR,
+Byelorussian SSR, and Transcaucasian SFSR. Anything before that date
+labeled "USSR" is anachronistic.
+
+Five full rows (F228-1905 through F228-1920-1921) are entirely
+anachronistic — all 17 years of their combined coverage predate the
+USSR. The sixth row (F228-1921-1940) has a 1.5-year partial
+anachronism at its start (1921-01-01 to 1922-12-29 was still RSFSR,
+not USSR).
+
+**Historical labeling that WHEP should use** (based on canonical
+Wikipedia date boundaries, not yet sourced to Biger or academic
+history):
+
+- 1905 → Feb 1917: Russian Empire (ruled by Nicholas II)
+- Feb 1917 → Oct 1917: Russian Republic (Provisional Government)
+- Oct 1917 → 30 Dec 1922: RSFSR (Russian Soviet Federative Socialist
+  Republic), as the dominant but not sole Soviet republic during
+  the Civil War period
+- 30 Dec 1922 →: USSR (Soviet Union proper)
+
+**Recommendation:** rename the `polity_name` field on the five fully
+anachronistic rows:
+
+- `F228-1905-1914`: "USSR (1905-1914)" → "Russian Empire (1905-1914)"
+- `F228-1914-1917`: "USSR (1914-1917)" → "Russian Empire (1914-1917)"
+- `F228-1917-1918`: "USSR (1917-1918)" → "Russian Republic / RSFSR
+  (1917-1918)"
+- `F228-1918-1920`: "USSR (1918-1920)" → "RSFSR (1918-1920)"
+- `F228-1920-1921`: "USSR (1920-1921)" → "RSFSR (1920-1921)"
+
+The partial-anachronism row `F228-1921-1940` could either be:
+- left as is ("USSR (1921-1940)"), accepting a 1.5-year label
+  imprecision, or
+- renamed "RSFSR / USSR (1921-1940)", or
+- split into `F228-1921-1922` ("RSFSR") + `F228-1922-1940` ("USSR
+  (1922-1940)"), creating a new split at the 1922-12-30 Union Treaty
+  date.
+
+The last option is the cleanest historically but involves creating a
+new row and repointing predecessor/successor chains. Recommended
+only if the current splits are going to be re-audited anyway.
+
+Severity: MAJOR. This is the canonical critical-stance finding the
+meta-rule was named for. The labels are wrong on the face of the
+CSV and have been wrong for the entire lifetime of these rows. No
+human has caught it because the CSV is big and the label is a free-text
+field nobody audits.
+
+### Finding 2 (MEDIUM) — F228 chain refactor history visible in docs/
+
+**Observed:** `docs/03_ENTRIES_RATIONALE.md` §411–417 describes an
+**old** F228 split structure that does not match the current CSV:
+
+Docs/03 version (no longer current):
+```
+F228-1800-1886  Russian Empire pre-CShapes
+F228-1886-1919  Russian Empire (CShapes coverage)
+F228-1919-1920  Post-WWI border changes
+F228-1920-1924  Soviet Russia formation period
+F228-1924-1926  Early USSR
+F228-1926-1939  Interwar USSR
+F228-1939-1940  Molotov-Ribbentrop expansion
+```
+
+Current CSV version:
+```
+F228-1800-1856  Russian Empire (to 1856)
+F228-1856-1905  Russian Empire (1856-1905)
+F228-1905-1914  USSR (1905-1914)    [anachronism, see Finding 1]
+F228-1914-1917  USSR (1914-1917)    [anachronism]
+F228-1917-1918  USSR (1917-1918)    [anachronism]
+F228-1918-1920  USSR (1918-1920)    [anachronism]
+F228-1920-1921  USSR (1920-1921)    [anachronism]
+F228-1921-1940  USSR (1921-1940)    [partial anachronism]
+F228-1940-1945  USSR (1940-1945)
+F228-1945-1991  USSR (1945-1991)
+```
+
+**Key divergences:**
+- docs/03 splits at 1886 (CShapes floor), 1919 (Versailles), 1920
+  (post-Civil-War), 1924 (death of Lenin? or Treaty on Creation of
+  USSR?), 1926, 1939 (Molotov-Ribbentrop), 1940. Seven split points.
+- Current CSV splits at 1856 (Treaty of Paris), 1905 (Portsmouth),
+  1914 (WWI), 1917 (February Revolution? / October Revolution?),
+  1918, 1920, 1921 (end of Civil War), 1940 (Molotov-Ribbentrop
+  gains), 1945 (post-WWII). Nine split points — a much finer
+  structure.
+- The docs/03 split structure has much closer alignment to Biger's
+  1919 dismemberment narrative for Austria-Hungary; the current CSV
+  introduces 1905 as a split point (territorial: South Sakhalin
+  loss to Japan via Treaty of Portsmouth) which is defensible but
+  represents a different set of editorial choices.
+- `docs/10_VALIDATION_SUMMARY.md` line 50 and `docs/14_GAP_ANALYSIS`
+  lines 254–255 reference **"F228-1940-1991"** as a row that
+  existed when those docs were written — a consolidated USSR row
+  that has since been split into `F228-1940-1945 + F228-1945-1991`.
+  15 post-Soviet state rows originally had
+  `predecessor = F228-1940-1991` and were repointed to
+  `F228-1945-1991` per the fix recorded in docs/14.
+
+**Implication:** the F228 chain has been refactored **at least once**
+since `docs/03` was written, and docs/03's rationales for the splits
+(e.g. "Post-WWI border changes" for F228-1919-1920) do not apply to
+the current rows. Under the critical-stance rule, **any polity page
+that cites docs/03 for an F228 split rationale is citing stale
+documentation.** Polity pages for the F228 chain should cite the
+current CSV notes field (if present) or file open questions for
+missing rationale, not re-use docs/03 prose.
+
+Severity: MEDIUM. Documentation drift, not a direct CSV error. The
+fix is to update `docs/03` to match the current split structure, or
+to add a "version notes" header to docs/03 saying it reflects an
+earlier CSV vintage.
+
+### Finding 3 (MINOR) — iso3_code inconsistency on F228 chain
+
+**Observed:** `iso3_code` is `RUS` on F228-1800-1856 and
+F228-1856-1905 but `NA` on all F228 rows from 1905 onward (through
+1991). Then `RUS-1991-2014` and `RUS-2014-2025` use iso3 `RUS`
+again.
+
+Possible explanations:
+- The FAOSTAT / UN M49 convention treats the USSR as a separate
+  entity from the Russian Federation, and the F228-1905 → F228-1991
+  rows are meant to represent "USSR as a trade entity", which
+  doesn't have an ISO 3166-1 code of its own (historical code `SUN`
+  exists but is not in common use). Under that reading, the NA is
+  correct for the post-USSR-formation rows.
+- But the NA starts at 1905, not 1922. So for F228-1905-1914
+  through F228-1921-1940 (pre-USSR Russian Empire / Russian
+  Republic / RSFSR), the iso3 NA is also anachronistic — these
+  rows represent the Russian Empire or RSFSR, which could
+  arguably use iso3 RUS.
+
+**Recommendation:** revisit alongside Finding 1. If those rows are
+relabeled to "Russian Empire" / "Russian Republic" / "RSFSR", the
+iso3 probably should be RUS for the Russian Empire rows (1905-1917)
+and NA for the Civil War / RSFSR rows (1917-1922), and NA for USSR
+proper (1922-1991). Or consistently NA for everything between Empire
+and Federation. Either way the current split at 1905 makes no sense.
+
+Severity: MINOR. Symptom of Finding 1, not a separate issue.
+
+### Summary of F228 audit
+
+| Finding | Severity | Action |
+|---|---|---|
+| 1. USSR anachronism on 5+ rows | MAJOR | CSV rename (polity_name field on 5 rows) |
+| 2. docs/03 describes old split structure | MEDIUM | docs/03 update or version-note header |
+| 3. iso3 inconsistency | MINOR | CSV edit alongside Finding 1 |
+
+All three findings are Tier X (require human action). Finding 1 is
+the canonical case the critical-stance rule was named for. The polity
+page `f228-1856-1905.md` created in this iteration cites this
+proposal by slug and explicitly avoids inheriting any claim from the
+mislabeled rows.
+
+---
+
 <a id="auh-first-ingest"></a>
 ## 2026-04-11 — auh-first-ingest
 **Touched:** AUH-1800-1867, AUH-1867-1908, AUH-1908-1918
