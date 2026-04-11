@@ -25,6 +25,49 @@ Kinds:
 
 ---
 
+## 2026-04-11 — cow-state-system-v2024-ingest
+**Touched:** LUX-1839-2025
+**Source:** cow-state-system-v2024 (new)
+**Kind:** ingest
+
+Downloaded the Correlates of War State System Membership List v2024
+directly from correlatesofwar.org (no authentication needed; public
+academic dataset distributed under a citation request, not a
+no-redistribute clause). Created `wiki/sources/cow-state-system-v2024.md`
+and committed the two core CSVs (`statelist2024.csv`, `system2024.csv`)
+under `wiki/sources/data/cow-v2024/` so the wiki is self-contained for
+COW claims. Codebook PDF goes to `wiki/sources/pdfs/` which is
+gitignored.
+
+Used COW to upgrade three claims on `lux-1839-2025.md`:
+
+1. **Direct citation for Luxembourg's COW state-system dates** (two
+   tenure rows, 1920-11-15→1940-05-10 and 1944-09-10→2024-12-31),
+   rather than inferring them via CShapes.
+2. **Confirms the COW/CShapes alignment** — CShapes's two
+   `independent` windows for Luxembourg match COW's two tenure rows
+   to the day, which is exactly what the CShapes paper says should
+   happen since `useGW=FALSE` loads COW membership as the
+   independence criterion.
+3. **Narrows (but does not resolve) open question 4** about the
+   1893-01-01 CShapes row start. COW does not list Luxembourg until
+   1920, so the 1893 row start is NOT a COW membership transition
+   (my earlier guess was wrong). It must come from CShapes's
+   dependency-tracking sources — the Territorial Change Dataset,
+   Biger 1995, or Brownlie & Burns 1979. Full resolution would need
+   another source ingest or inspection of the cshapes package
+   internals.
+
+Also recorded a small but useful finding for any future COW citation:
+COW has revised start dates between vintages (the codebook p.3–4
+lists a v2004.1 change moving Brazil's start from 1826-01-01 to
+1822-09-07, Afghanistan from 1920 to 1919, Panama from 1920 to 1903).
+Any wiki page citing `[cow-state-system-v2024]` is citing v2024
+specifically — later COW vintages are a new source file, not an
+edit.
+
+---
+
 ## 2026-04-11 — cshapes-reproducibility-verified
 **Touched:** (none — verification only)
 **Source:** cshapes-2.0
