@@ -25,6 +25,280 @@ Kinds:
 
 ---
 
+<a id="deu-first-ingest"></a>
+## 2026-04-11 — deu-first-ingest
+**Touched:** DEU-1800-1919
+**Source:** wikipedia-german-empire-2026-04-11 (new), docs/03 cross-reference
+**Kind:** ingest
+
+Iteration 3 of the autonomous European-empires research pass.
+Creates one polity page (`deu-1800-1919.md`, the 120-year
+Prussia / German Empire row from the database floor to the Treaty
+of Versailles) and files a separate proposal entry
+(`proposal-deu-ger-chain-audit`) covering the CSV audit findings
+that phase 1 surfaced. Biger GERMANY entry deliberately deferred
+(context budget); flagged as an open question on the polity page.
+
+**Key audit outcome:** docs/03 explicitly documents GER-1800-2025
+as a **trade aggregate** row while the CSV has it as
+`polity_type = national`. This is a direct docs-vs-CSV contradiction
+that the critical-stance rule is designed to catch. The filed
+proposal recommends changing GER-1800-2025.polity_type to match
+the docs. docs/03:115 also acknowledges the 1871 German
+unification as an event within DEU-1800-1919 but the CSV doesn't
+split on it.
+
+New polity page `deu-1800-1919.md` covers Prussia 1800–1871 →
+German Empire 1871–1918 → armistice to Versailles 1918–1919 in
+one row, per the current CSV structure, but hedges the 1871
+unification as a candidate mid-row split under the WHEP
+territorial-change rule. All 1866 (Austro-Prussian War), 1871
+(unification), 1884-85 (Berlin Conference / colonial empire
+acquisition), 1914 (WWI entry), 1918-11-09 (abdication), and
+1919-06-28 (Versailles) events are cited to the new Wikipedia
+source. Biger's 1866 finding from the Austria entry (1866 was
+"the real territorial-political turning point") is
+cross-referenced.
+
+<a id="proposal-deu-ger-chain-audit"></a>
+## 2026-04-11 — proposal-deu-ger-chain-audit
+**Touched:** DEU-1800-1919, DEU-1919-1920, DEU-1920-1938, DEU-1938-1945, DEU-1990-2025, GER-1800-2025, (missing) PRU-*
+**Source:** docs/03_ENTRIES_RATIONALE.md, docs/00_OVERVIEW.md, docs/01_METHODOLOGY.md
+**Kind:** proposal
+
+Third proposal filed under the critical-stance rule. Five audit
+findings for the DEU / GER chain. Several of them — unlike the
+AUH and F228 audits — are **documented in docs/** but contradicted
+by the CSV, so the fix is partly a docs-vs-CSV reconciliation.
+
+### Finding 1 (MAJOR, DOCS-VS-CSV CONTRADICTION) — GER-1800-2025 is marked `national` in the CSV but `aggregate` in the docs
+
+**Observed in CSV:**
+```
+GER-1800-2025,Germany/Zollverein,1800,2025,226,national,Europe,GER,255,...
+```
+
+**Observed in docs:**
+
+- `docs/00_OVERVIEW.md:199`: "Use `polity_type = 'aggregate'`
+  entries (GER-1800-2025, CHN-1800-2025, etc.) for..."
+- `docs/01_METHODOLOGY.md:49`: "`GER-1800-2025` | Germany/Zollverein
+  trade aggregate (full history)"
+- `docs/01_METHODOLOGY.md:170–172`: "Trade aggregates preserved:
+  Entities like 'Germany/Zollverein' (GER-1800-2025)... These
+  coexist with period-specific entries (DEU-1800-1919,
+  DEU-1919-1920, etc.)."
+- `docs/03_ENTRIES_RATIONALE.md:487`: "GER-1800-2025 |
+  Germany/Zollverein | FT trade aggregate for all German trade
+  1800-2025. Encompasses pre-unification states, Empire, Weimar,
+  Nazi, divided, reunified."
+- `docs/11_KNOWLEDGE_GRAPH.md:69`: "An aggregate entry (e.g.,
+  `GER-1800-2025` for Germany) covers all period-specific
+  entries..."
+- `docs/06_KNOWN_ISSUES_AND_DECISIONS.md:298`: "Recommendation:
+  Use GER-1800-2025 for trade; individual states for geographic
+  analysis."
+
+**Six separate docs files** explicitly describe GER-1800-2025 as
+an aggregate trade row, but the CSV has
+`polity_type = national`. This is a direct contradiction.
+
+**Recommendation:** change the `polity_type` field on row
+`GER-1800-2025` from `national` to `aggregate`. This is a
+one-column-edit fix that reconciles CSV with docs. No other fields
+need to change.
+
+Severity: MAJOR. Docs-vs-CSV contradictions are worse than
+docs-vs-nothing gaps because they mean downstream consumers who
+read the docs and trust them will get wrong results from the CSV.
+
+### Finding 2 (MEDIUM) — DEU-1938-1945 successor graph is broken forward
+
+**Observed:** `DEU-1938-1945.successor = NA`. Nazi Germany has
+no recorded successor.
+
+**Context:** DEU-1990-2025 (reunified Germany) has
+`predecessor = "F78-1949-1990; F77-1949-1990"` (West + East
+Germany), which is correct for the 1990 reunification. F77 and
+F78 themselves have `predecessor` pointing back to... need to
+check, but probably to DEU-1938-1945 or to nothing.
+
+**The actual 1945–1949 period** is the Allied occupation of
+Germany (4-zone division), which is not represented as a WHEP
+polity row. Under the critical-stance rule this is a gap in the
+graph: Nazi Germany (DEU-1938-1945) dissolves at the 1945
+armistice / Potsdam Conference but the CSV does not record
+where it goes.
+
+**Recommendation:** either (a) create a new polity row
+DEU-1945-1949 or F-OCC-1945-1949 representing the Allied
+occupation, and set DEU-1938-1945.successor to point at it; or
+(b) set DEU-1938-1945.successor directly to
+"F77-1949-1990; F78-1949-1990" (skipping the 1945-1949 period
+as unrepresented); or (c) treat the Nazi Germany → West/East
+Germany transition as a genuine end-point with no legal
+successor and leave the NA but document the rationale in a
+`decision`-kind log entry.
+
+Severity: MEDIUM. Related to the broken-successor-graph class
+of issues, similar to the AUH-1908-1918 case. Not as bad
+because here the backward graph works (DEU-1990-2025 correctly
+links back to F77+F78), only the forward from 1945 is broken.
+
+### Finding 3 (MEDIUM) — No Prussia (PRU) row despite multiple sibling pre-1871 German state rows
+
+**Observed:** the CSV has rows for BAD (Baden), BAV (Bavaria),
+HAN (Hanover), HES (Hesse), HHO (Hesse-Homburg), MEK
+(Mecklenburg), OLD (Oldenburg), SAX (Saxony), SHL
+(Schleswig-Holstein), WUR (Württemberg) — ten pre-1871 German
+states plus the Denmark-Schleswig-Holstein row. **No PRU
+(Prussia) row.** Prussia was the largest and most important
+pre-1871 German state, leading the North German Confederation
+from 1867, and was the core around which the 1871 German
+Empire was built.
+
+**Possible explanations for the absence:**
+
+- (a) Prussia is implicitly represented by `DEU-1800-1919`,
+  which covers 1800–1919 with a continuous border. This would
+  treat "Prussia" and "Germany" as the same polity entity
+  across the 1871 unification. Problem: DEU has COW code 260
+  (modern FRG), not 255 (historical Prussia). COW explicitly
+  distinguishes them.
+- (b) Prussia is implicitly represented by `GER-1800-2025`
+  (COW 255, matching COW's "Germany/Prussia" entry). This
+  makes more sense given the COW code alignment. Problem:
+  docs describe GER as an aggregate (see Finding 1), not as a
+  primary polity row. If GER is the Prussia proxy, it should
+  not be an aggregate; if it's an aggregate, Prussia has no
+  primary-polity representation.
+- (c) Prussia is a gap — nobody has added a PRU row and
+  there's no conscious decision documented anywhere.
+
+Under the critical-stance rule, (c) is the default assumption
+unless (a) or (b) is supported by documented evidence. Searching
+`docs/` and `wiki/log.md` did not turn up a clear rationale for
+the absence.
+
+**Recommendation:** add a `PRU-1800-1871` row to the CSV
+representing the Kingdom of Prussia from 1800 to the 1871
+unification. Alternatively, document the design decision
+explicitly in a `decision`-kind log entry saying "Prussia is
+intentionally represented as part of DEU-1800-1919 because of
+the territorial-economic continuity across the 1871 unification"
+or similar.
+
+Severity: MEDIUM. Biggest-missing-state-in-Europe issue.
+
+### Finding 4 (MEDIUM, POLICY) — DEU-1800-1919 has no mid-row split at 1871 despite docs acknowledging the unification as an event within the row
+
+**Observed:** `DEU-1800-1919` is a single row from 1800 to 1919.
+`docs/03_ENTRIES_RATIONALE.md:115` explicitly describes the row
+as "German states → Empire (1871) → loss of Alsace-Lorraine
+(1919)". So docs acknowledge that 1871 is an event *within* the
+row. But the CSV does not split there.
+
+**The 1871 unification was:**
+
+- A major territorial-economic consolidation. The Zollverein
+  (1834) had already established a Prussian-led customs union,
+  but the 1871 Empire added Bavaria, Württemberg, Baden, and
+  Hesse-Darmstadt (the four southern German states that had
+  stayed outside the 1867 North German Confederation) into a
+  single political and economic unit, PLUS the newly-annexed
+  Alsace-Lorraine (~14,500 km² transferred from France per
+  [wikipedia-german-empire-2026-04-11 §1871-alsace-lorraine]).
+- Arguably the largest single-event territorial-economic
+  consolidation in 19th-century Europe.
+- Proclaimed on **18 January 1871** at the Hall of Mirrors at
+  Versailles [wikipedia-german-empire-2026-04-11 §1871-01-18].
+- Formalized constitutionally on **16 April 1871**
+  [wikipedia-german-empire-2026-04-11 §1871-04-16].
+
+**Under the WHEP polity-definition rule**
+[log decision-whep-polity-definition], substantial territorial
+change triggers a split. Is 1871 a substantial territorial
+change?
+
+- *Yes* — Alsace-Lorraine was annexed (clear territorial gain)
+- *Yes* — four southern German states joined a single political
+  and trade entity with the Prussian-led north
+- *Yes* — the resulting polity has a different shape, name,
+  capital (Berlin, formerly also the Prussian capital), and
+  legal regime than pre-1871 Prussia
+- *Not entirely* — many of the Zollverein customs-union
+  relationships predated 1871
+
+The verdict depends on whether a "political unification with
+customs-union integration" counts as a single territorial
+event. Biger's Austria entry describes 1866 (not 1867) as "the
+real territorial-political turning point" [biger-1995 §austria],
+and describes the 1871 German unification as the event that
+"overwhelmed the remaining opposition to unified Germany"
+[wikipedia-german-empire-2026-04-11 §1870-1871]. Both suggest
+1866–1871 is a multi-step process with several candidate split
+dates.
+
+**Recommendation:** under the strict WHEP rule, DEU-1800-1919
+should probably be split at at least 1871-01-18. Candidate
+sub-split dates: 1866 (Austro-Prussian War → Peace of Prague),
+1867 (North German Confederation), 1871-01-18 (Empire
+proclamation). Joint with the 1867 Ausgleich question from
+AUH audit Finding 3 — both are "when did a legal-political
+reorganization become a territorial event for WHEP purposes?"
+questions.
+
+Severity: MEDIUM. Policy question, not a silent error.
+
+### Finding 5 (MINOR) — All DEU/GER rows have `notes = NA`
+
+**Observed:** every row in the DEU + GER chain has
+`notes = NA`:
+
+| polity_code | notes |
+|---|---|
+| DEU-1800-1919 | NA |
+| DEU-1919-1920 | NA |
+| DEU-1920-1938 | NA |
+| DEU-1938-1945 | NA |
+| DEU-1990-2025 | NA |
+| GER-1800-2025 | NA |
+
+By contrast, the AUH chain and the F228 chain both have
+substantive notes (especially F228-1856-1905 which has a 200-word
+summary of Central Asian expansion). The DEU chain has none.
+
+**Context:** the docs describe the DEU chain's splits
+(`docs/03:115`, `docs/11:198`) so the rationale *exists*, but it
+wasn't copied into the CSV notes field. Possible explanations:
+automated row creation without notes backfill, or manual row
+creation that skipped notes as optional.
+
+**Recommendation:** backfill the `notes` field on all DEU and
+GER rows with brief summaries from `docs/03` and from this
+proposal. Not critical but improves CSV self-documentation.
+
+Severity: MINOR. The data are correct, just poorly annotated.
+
+### Summary of DEU/GER audit
+
+| Finding | Severity | Action |
+|---|---|---|
+| 1. GER-1800-2025 docs-vs-CSV contradiction on polity_type | MAJOR | CSV column edit (national → aggregate) |
+| 2. DEU-1938-1945 successor graph broken forward | MEDIUM | CSV edit (successor field) or decision entry |
+| 3. No Prussia row | MEDIUM | CSV edit (add row) or decision entry |
+| 4. 1871 unification not a split | MEDIUM (policy) | Decision entry joint with AUH Finding 3 |
+| 5. All DEU/GER rows have notes=NA | MINOR | CSV edit (notes backfill) |
+
+Findings 1, 2, 3, and 5 can be applied without repo-rule changes.
+Finding 4 is a policy question joint with the AUH Ausgleich issue
+and the F228 ongoing questions. Overall the DEU chain has at
+least as many CSV issues as AUH or F228 — about one major finding
+per iteration is the pattern emerging from the critical-stance
+audits.
+
+---
+
 <a id="russian-empire-first-ingest"></a>
 ## 2026-04-11 — russian-empire-first-ingest
 **Touched:** F228-1856-1905

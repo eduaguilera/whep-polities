@@ -8,12 +8,12 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 8 |
-| Sources ingested | 8 |
+| Polity pages | 9 |
+| Sources ingested | 9 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~28 (prior + 5 new on F228-1856-1905) |
-| Open `proposal`-kind log entries | 3 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism) |
+| Open questions across wiki | ~34 (prior + 6 new on DEU-1800-1919) |
+| Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
 
@@ -42,6 +42,15 @@ lint fails if the index is stale.
   reform and expansion era: Crimean War end → Portsmouth.
   The last correctly labeled F228 row before the 5-row
   "USSR" anachronism block.
+- [Germany (to 1919)](polities/deu-1800-1919.md) —
+  `DEU-1800-1919`, draft, 6 open questions. A 120-year row
+  covering Prussia 1800 → German Empire 1871 → Versailles
+  1919. The 1871 unification is acknowledged in docs/03 as a
+  mid-row event but not a CSV split. Flagged by audit
+  Findings 1 (docs-vs-CSV contradiction on GER polity_type),
+  2 (DEU-1938-1945 broken forward graph), 3 (no Prussia
+  row), 4 (1871 not a split), and 5 (notes = NA on every
+  row in the chain).
 
 ### Africa
 _(none yet)_
@@ -124,6 +133,16 @@ _(none yet)_
   Revolution. Canonical citation target for the "USSR did not
   exist until 30 December 1922" claim. Cited by:
   [f228-1856-1905](polities/f228-1856-1905.md).
+- [wikipedia-german-empire-2026-04-11](sources/wikipedia-german-empire-2026-04-11.md)
+  — Snapshot of the *German Empire* Wikipedia article with
+  dates for the 1834 Zollverein, 1864 Second Schleswig War,
+  1866 Austro-Prussian War, 1867 North German Confederation,
+  1870–1871 Franco-Prussian War, 1871-01-18 Empire
+  proclamation at Versailles, 1871-04-16 Constitution, 1871
+  Alsace-Lorraine annexation, 1884–1885 Berlin Conference,
+  1914-07-28 WWI entry, 1918-11-09 abdication, 1918-11-11
+  armistice, 1919-06-28 Versailles. Cited by:
+  [deu-1800-1919](polities/deu-1800-1919.md).
 
 ## Aggregates and unions
 
