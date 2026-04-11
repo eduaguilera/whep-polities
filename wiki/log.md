@@ -25,6 +25,172 @@ Kinds:
 
 ---
 
+## 2026-04-11 — schema-stable-oq-ids-and-lint-relaxation
+**Touched:** wiki/README.md, wiki/prompts/lint.md, wiki/polities/_template.md
+**Source:** none
+**Kind:** decision
+
+Two meta-changes to the wiki itself, motivated by findings in the
+first lint run (`lint-luxembourg`):
+
+1. **Open questions now use stable slug IDs.** Previously numbered
+   (`open question 5`), which broke every cross-reference whenever
+   a question was resolved and the list renumbered. New rule (in
+   `wiki/README.md §Page schema`): each open question starts with
+   `**oq-<short-kebab-case>**` and cross-references anywhere on the
+   page must use the slug, e.g. "see [oq-polygon-provenance]".
+   Resolved questions are struck through and left in place as
+   stable anchors rather than deleted.
+2. **Lint rule is now split into allowed/forbidden lists.** The
+   previous rule ("do not edit polity page content during a lint
+   run, lint fixes frontmatter, the index, and the log — not
+   claims") was too coarse: it blocked obvious navigation repairs
+   like "see open question 6" pointing at a question that doesn't
+   exist, and it blocked typo fixes. New rule (in
+   `wiki/prompts/lint.md §What lint is allowed to edit`):
+   - **Allowed:** frontmatter, index, log, typos, broken internal
+     cross-references (repoint or TODO-comment + flag).
+   - **Forbidden:** adding/rewording *Sourced claims*, editing
+     *Summary*/*Territorial extent*/*Contradictions*/*Decisions*
+     body text, changing `sources:`, editing source files, editing
+     README.md or any prompt.
+   - The dividing line: lint repairs **navigation, formatting,
+     indexing**; only ingest changes **what the page claims**.
+
+Template updated (`wiki/polities/_template.md`) to show the new
+open-question format with an example slug. Existing Luxembourg
+page will be migrated to the new format in the immediately-following
+`lux-post-lint-cleanup` ingest.
+
+## 2026-04-11 — lux-post-lint-cleanup
+**Touched:** LUX-1839-2025
+**Source:** none (claim updates draw on sources already ingested)
+**Kind:** ingest
+
+Applies the findings of the `lint-luxembourg` run. Everything lint
+flagged but was forbidden from touching.
+
+**Navigation / typo fixes** (would now be allowed under the relaxed
+lint rule, but bundled here for atomicity):
+
+- Fixed typo `"CShapES"` → `"CShapes"` in *Territorial extent*.
+- Migrated *Open questions* from the old 1–5 numbered format to
+  stable slug IDs: `oq-polygon-provenance`,
+  `oq-territorial-stability`, `oq-academic-corroboration`,
+  `oq-cshapes-1893-start`, `oq-bleu-faostat`. Renamed
+  "CShapes 1886–1892 gap narrowed" to the less misleading "Why
+  CShapes's first Luxembourg row starts 1893-01-01".
+- Repointed the two broken cross-references in *Territorial extent*:
+  the 1839–1885 polygon note now points at
+  `[oq-polygon-provenance]`, and the old "see open question 6"
+  pointer is gone entirely (its content is now a sourced-claim
+  statement of resolution, not an open question).
+
+**Claim updates** (these are why this is an `ingest`, not a `lint`):
+
+- Rewrote the *CShapes version coding* paragraph in *Territorial
+  extent*. The old text said WHEP "does not record which CShapes
+  version was loaded" and framed the COW/GW choice as an open
+  question. The new text states the resolution: WHEP loads the
+  COW variant, confirmed by schema inspection and by bit-equivalent
+  regeneration from `cshp(useGW = FALSE, dependencies = TRUE)`,
+  with forward references to the two `log.md` entries that
+  established it (`decision-cshapes-is-cow-based` and
+  `cshapes-reproducibility-verified`).
+- Rebuilt the *Decisions* section. Previously a single stub entry
+  for the first ingest; now lists all eight `log.md` entries that
+  touched this page or established a rule affecting it, newest
+  first, with ★ marking the two repo-wide `decision`-kind rules.
+  The new rationale for keeping the page at `status: draft` is
+  linked to `[oq-academic-corroboration]` — needs at least one
+  academic or reference-work source for the 1839 territorial
+  event before it can move to `reviewed`.
+
+No changes to `sources:`, frontmatter (other than already-current
+`last_ingest`), or any source file. Status stays `draft`.
+
+---
+
+## 2026-04-11 — lint-luxembourg
+**Touched:** LUX-1839-2025 (report only), wiki/index.md (auto-applied)
+**Source:** none
+**Kind:** lint
+
+First lint run on the wiki, scoped to the single Luxembourg page plus
+the shared infrastructure it depends on. Executed `wiki/prompts/lint.md`.
+
+**Summary:**
+
+| check | result |
+|---|---|
+| Schema conformance | PASS — all 10 required frontmatter fields and all 7 required H2 sections present. |
+| CSV ↔ wiki parity | PASS — `LUX-1839-2025` exists in `data/final/polities_database.csv:410`. `F15-1800-1999` (Belgium-Luxembourg aggregate) exists and is correctly flagged on the page as a separate row that must not be conflated. No orphan polity pages. |
+| Citation health | PASS — 10 `Sourced claims` bullets, every one cited. 1 pure `[database]` bullet (10%), far below the 50% threshold that would flag the page for re-ingest. |
+| Contradiction backlog | PASS — section is empty by design with an explanatory note; nothing sitting >90 days. |
+| Staleness | PASS — `last_ingest: 2026-04-11` is today. |
+| Index freshness | Auto-fixed (see below). |
+| Source reachability | PASS — all 3 sources (`cshapes-2.0`, `cow-state-system-v2024`, `wikipedia-luxembourg-2026-04-11`) are cited by Luxembourg; no zero-citation sources. |
+
+**Must fix (body-text issues, not auto-applied per lint rule):**
+
+1. **Broken internal cross-reference, line 52**: *Territorial extent*
+   says "See open question 5" for pre-1886 polygon provenance, but
+   that question is now **open question 1** after a renumbering. The
+   reference points at the wrong bullet (currently BLEU vs F15).
+2. **Broken internal cross-reference, line 76**: *Territorial
+   extent* says "see open question 6", but there is no open question
+   6 (the list has only 5 entries after the same renumbering).
+3. **Typo, line 64**: `"silently absent from CShapES."` — should be
+   `"CShapes"`. Inside a lint rule, so grep will find it.
+
+**Should review (claim-level drift, not auto-applied):**
+
+4. **Stale "COW vs GW coding" paragraph, lines 71–76.** The page
+   text says "The repo's CSV records COW code 212 for Luxembourg
+   but does not record which CShapes version was loaded" and tells
+   the reader to see open question 6. Both halves are outdated:
+   `log.md 2026-04-11 decision-cshapes-is-cow-based` and
+   `cshapes-reproducibility-verified` resolved this definitively
+   (COW, bit-equivalent to `cshp(useGW=FALSE, dependencies=TRUE)`),
+   and `R/00b_fetch_cshapes.R` now records the convention in code.
+   The paragraph should be rewritten to state the resolution
+   instead of asking the question.
+5. **Decisions section is under-populated.** Currently lists only
+   `lux-first-ingest`. Should also reference, in rough order of
+   relevance to this page:
+   - `log 2026-04-11 — decision-whep-polity-definition` (the rule
+     that lets Luxembourg start in 1839)
+   - `log 2026-04-11 — decision-cshapes-is-cow-based` (the rule
+     behind which CShapes timeline applies)
+   - `log 2026-04-11 — cshapes-primary-source-upgrade`
+   - `log 2026-04-11 — cshapes-reproducibility-verified`
+   - `log 2026-04-11 — cow-state-system-v2024-ingest`
+6. **Decisions rationale is stale.** The `lux-first-ingest` entry
+   says "Status remains `draft` because the narrative layer rests
+   on a single tertiary source." Still true (Wikipedia is the only
+   narrative source), but the entry doesn't mention that two more
+   ingests happened the same day. A fresh rationale: "Remains
+   `draft` pending at least one academic or reference-work source
+   (Britannica, national history) to corroborate the 1839
+   territorial event — see open question 3."
+
+**Auto-applied:**
+
+- `wiki/index.md` — replaced the placeholder
+  `"(run \`wc -l data/final/polities_database.csv\`)"` with the
+  real row count `1386 (as of 2026-04-11 lint)` under *Coverage →
+  Polities in CSV*.
+- This log entry.
+
+**Recommendation.** Issues 1–6 are all on the Luxembourg page body,
+which the lint rule forbids editing. Apply them manually, or run a
+short touch-up ingest that bundles the six fixes into a single
+`ingest`-kind log entry (since fix 4 is a claim update, not just a
+cross-reference repair, it's better as a real ingest than as a
+lint).
+
+---
+
 ## 2026-04-11 — cow-state-system-v2024-ingest
 **Touched:** LUX-1839-2025
 **Source:** cow-state-system-v2024 (new)

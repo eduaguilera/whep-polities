@@ -51,5 +51,31 @@ Output format:
 - **Auto-applied** — list every edit you made (index refresh, missing
   log entries added) with a one-line justification each.
 
-Do not edit polity page content during a lint run. Lint fixes
-frontmatter, the index, and the log — not claims.
+## What lint is allowed to edit
+
+**Always allowed:**
+- Frontmatter on any page
+- `wiki/index.md` (coverage numbers, continent lists, source list)
+- `wiki/log.md` (append `lint`-kind entries)
+- Typos: case, spelling, whitespace (e.g. `CShapES` → `CShapes`)
+- **Broken internal cross-references**: when a page says
+  `see [oq-foo]` or `see [[some-slug]]` and the target does not
+  exist on the page or in the wiki, lint may (a) repoint it to the
+  correct stable slug if unambiguous, or (b) replace it with a
+  `<!-- TODO: broken ref, was "see open question 6" -->` comment
+  and flag it in the report.
+
+**Never allowed during a lint run** — these belong in an
+`ingest`-kind operation, not lint:
+- Adding, removing, or rewording a *Sourced claims* bullet
+- Changing the `Summary`, `Territorial extent`, `Contradictions`,
+  or `Decisions` body text (even to "update" a stale paragraph)
+- Adding or removing sources from a page's `sources:` frontmatter
+- Editing any file in `wiki/sources/`
+- Editing `wiki/README.md` (schema changes are human decisions)
+- Editing `wiki/prompts/*` (meta-changes are human decisions)
+
+The dividing line: lint may repair **navigation, formatting, and
+indexing**; only ingest may change **what the page claims**. If
+you're unsure which side a fix falls on, put it under "Should
+review" in the report and do not touch the file.

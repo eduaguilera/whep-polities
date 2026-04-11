@@ -47,4 +47,11 @@ database currently follows and why. Never silently pick.>
 
 ## Open questions
 
-- Thing the next ingest should try to resolve.
+Each question has a stable `oq-<slug>` ID. Cross-references elsewhere
+on the page must use the slug, not a number. When a question is
+resolved, strike through the title and point to the resolving
+`log.md` entry — do not delete (the slug stays a stable anchor).
+
+- **oq-example-slug** — Short title for the open question. Body
+  explaining what the next ingest should try to resolve, why it
+  matters, and what source or investigation would answer it.

@@ -7,7 +7,7 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | (run `wc -l data/final/polities_database.csv`) |
+| Polities in CSV | 1386 (as of 2026-04-11 lint) |
 | Polity pages | 1 |
 | Sources ingested | 3 |
 | Pages with `status: reviewed` | 0 |

@@ -100,7 +100,22 @@ Link to `log.md` entries that affected this polity
 (`[log 2026-04-11 luxembourg-readd]`).
 
 ## Open questions
-Things the next ingest should try to resolve.
+Things the next ingest should try to resolve. Each question **MUST**
+start with a stable slug of the form `oq-<short-kebab-case>` in
+bold, followed by a short title and the question body:
+
+    - **oq-polygon-provenance** — Pre-1886 polygon provenance.
+      The 1839–1885 window is fully outside CShapes' scope ...
+
+Cross-references from elsewhere on the page MUST use the slug, not
+a position number: *"see [oq-polygon-provenance]"*, not *"see open
+question 3"*. Numbers shift whenever a question is resolved or a
+new one is added; slugs survive.
+
+When an open question is resolved, do not renumber or delete —
+replace the body with a strikethrough title and a one-line pointer
+to the `log.md` entry that resolved it. This preserves the slug as
+a stable anchor for older cross-references.
 ```
 
 ## Source schema
