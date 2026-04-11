@@ -198,6 +198,15 @@ Prompts for each workflow live in `wiki/prompts/`:
 - **Lint** (`prompts/lint.md`) — health check: missing citations, orphan
   pages, stale `last_ingest`, contradictions never resolved, polities in
   the CSV with no wiki page (and vice versa).
+- **Autonomous-next** (`prompts/autonomous-next.md`) — self-paced
+  meta-prompt used with the `/loop` skill. Inventories the wiki state,
+  classifies every open question into priority tiers, picks ONE task,
+  delegates execution to one of the other three prompts, commits, and
+  decides whether to continue. Does not replace the other prompts —
+  *chooses among them*. Has explicit Tier-X and never-autonomously
+  guardrails (no CSV edits, no `decision`-kind log entries, no
+  `git push`, no closed-access source acquisition, no `draft → reviewed`
+  status changes unless schema requirements are met).
 
 ## Rules for the agent
 

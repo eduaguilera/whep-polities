@@ -25,6 +25,102 @@ Kinds:
 
 ---
 
+<a id="autonomous-next-prompt-added"></a>
+## 2026-04-11 — autonomous-next-prompt-added
+**Touched:** wiki/prompts/autonomous-next.md (new), wiki/README.md
+**Source:** none
+**Kind:** decision
+
+User requested a self-paced autonomous mode for the wiki where the
+agent picks its own next task from the current state rather than
+waiting for per-step human direction, inspired by Karpathy's
+autoresearch pattern ([user question in conversation, 2026-04-11]).
+
+Added `wiki/prompts/autonomous-next.md` as a documentation-only
+change. **No loop has been run yet** — the prompt is stage 1 of a
+two-stage rollout:
+
+1. **Stage 1 (this entry)** — write the prompt, commit, let the user
+   review the priority rules and guardrails before anything executes.
+2. **Stage 2 (future)** — kick off `/loop autonomous-next` with a
+   deliberately-low `max_iterations` cap (default: 3 on first run),
+   review the iterations, raise the cap only after the user has seen
+   it behave.
+
+The prompt encodes a four-phase cycle per iteration (state inventory
+→ classify open questions into tiers → pick ONE task → execute,
+commit, decide whether to continue) and has explicit hard stop
+conditions and a never-autonomously guardrail list.
+
+**Hard guardrails** (not priority penalties — absolute prohibitions):
+
+- No edits to `data/final/polities_database.csv`. Only `proposal`
+  log entries.
+- No `decision`-kind log entries that establish a repo-wide rule.
+  The agent may *draft* a decision and surface it in the iteration
+  report, but the entry itself is human-owned.
+- No `git push`, no force push, no branch deletion, no
+  `--no-verify`.
+- No edits to `renv.lock`, `.gitignore`, `wiki/README.md`, or
+  anything in `wiki/prompts/`.
+- No closed-access source acquisition.
+- No `draft → reviewed` status change unless schema requirements
+  are met (academic corroboration beyond Wikipedia, no unresolved
+  Contradictions, every Sourced claims bullet cited).
+
+**Stop conditions** (any one ends the loop):
+
+- Priority exhausted — only Tier X (user-decision / missing source)
+  work remains.
+- Iteration cap reached.
+- Proposal accumulation — if the loop generates 2+ new `proposal`
+  entries without the user having reviewed them, stop for review.
+- Repeated failure on the same task.
+- New contradiction surfaced.
+- Commit failure.
+
+**Priority tiers:**
+
+- Tier 1 — Easy wins (single action + already-available source).
+  The Biger Ottoman batch is the canonical example of what this
+  tier looks like after a fresh ingest opens up source-expansion
+  opportunities.
+- Tier 2 — Source expansion (fixed-cost-already-paid ingests).
+- Tier 3 — New polity page creation for dangling refs or
+  frequently-cited missing polities.
+- Tier 4 — Deep work (multi-iteration projects).
+- Tier X — Cannot be done autonomously. If the highest-priority
+  question is Tier X, skip and move on.
+
+Within a tier, ties are broken by: number of polity pages affected,
+recency of the blocking source, proximity to a status change.
+
+**Iteration report format:** every iteration emits an H2 entry of
+`kind: autonomous` to `wiki/log.md` with a full audit trail
+(inventory, classification, selection, execution, outcome, stop
+decision). This is the mechanism against drift — the user can read
+the log and see which tier was chosen, why, and whether the loop
+was gaming the metric.
+
+**Immediately-executable Tier 1 candidates** the loop would pick up
+on its first run (listed here for user reference — not yet
+resolved):
+
+- `oq-bosnia-double-count` on `ott-1886-1908`: a single `ogrinfo`
+  SQL query on `data/geodata/cshapes2_full.gpkg` for `cowcode=640`
+  during 1886–1908 vs the `BOS-1878-1908` polygon, compared via
+  `st_intersects`.
+- The five remaining partially-resolved open questions where Biger
+  content already on disk has sections (BULGARIA, GREECE, SERBIA,
+  EGYPT) not yet read that could fully resolve `oq-1830-events`
+  and related questions.
+- Stale `wiki/index.md` counters if any of the recent ingests
+  have drifted them.
+
+Not yet wired to `/loop` — the user will trigger stage 2 manually.
+
+---
+
 <a id="biger-ottoman-batch-ingest"></a>
 ## 2026-04-11 — biger-ottoman-batch-ingest
 **Touched:** OTT-1800-1886, OTT-1886-1908, OTT-1908-1912; wiki/sources/biger-1995.md

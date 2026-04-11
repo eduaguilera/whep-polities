@@ -94,3 +94,6 @@ federations — live in `wiki/polities/_aggregates/`)_
 - [log.md](log.md) — append-only decision trail
 - [README.md](README.md) — wiki schema and link conventions
 - [prompts/ingest.md](prompts/ingest.md), [prompts/query.md](prompts/query.md), [prompts/lint.md](prompts/lint.md)
+- [prompts/autonomous-next.md](prompts/autonomous-next.md) —
+  self-paced meta-prompt for running the wiki in autonomous mode
+  via the `/loop` skill (not yet wired; documentation only).
