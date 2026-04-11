@@ -229,6 +229,188 @@ substantial territorial change.
    fragile for borderline cases (e.g. Macedonia/FYROM in the 1995
    vintage).
 
+<a id="algeria"></a>
+### §algeria — Algerian boundary history and the 1830 French conquest
+
+Compiled from the ALGERIA main entry (p.22) and four
+boundary-subsection historical backgrounds (ALGERIA–LIBYA p.24,
+ALGERIA–MALI p.25, ALGERIA–MOROCCO p.27, ALGERIA–TUNISIA p.28).
+
+- **Pre-1830 Ottoman province.** "Algeria became an Ottoman
+  province and a corsairs' den whose lords grew rich from
+  ransoming Christian prisoners. After 1671 Algiers was a
+  quasi-independent backwater." (p.22)
+- **1830 French conquest.** "In 1830 military intervention by
+  the French led to the conquest of Algiers, provoking the fall
+  of Ottoman overlordship throughout the whole of Algeria."
+  (p.22) Corroborated on p.24: "The French established
+  themselves on the Mediterranean coast of Algeria in 1830" and
+  again on p.28: "Until 1830 Algeria was under Turkish Ottoman
+  rule."
+- **1830–1847 progressive occupation.** "by 1847 [the French]
+  controlled the whole northern territory of Algeria" (p.24).
+- **1848 — three French départements.** "[Northern Algeria] was
+  divided into the three French districts in 1848" (p.24).
+- **1881 integration.** "[Algeria was] integrated with France
+  in 1881" (p.24).
+- **1845-03-18 Morocco–Ottoman boundary.** "on 18 March 1845
+  Morocco and France adopted the Morocco–Ottoman Empire
+  boundary that stretched from the Mediterranean Sea to
+  Teniet-al-Sassi (Morocco) as their common international
+  boundary in the Treaty of Lalla Marnia" (p.27). This is a
+  rarely-cited exact date for a formal Franco-Ottoman
+  territorial settlement in northwest Africa, and it
+  establishes that the French (in Algeria) and the Ottomans (in
+  Morocco-adjacent territories) were drawing international
+  lines with each other as early as 1845.
+- **1902-12-24 Sahara annexation.** "The Sahara region of
+  Algeria became a military zone, formally annexed by France on
+  24 December 1902" (p.24).
+- **1910-05-19 Franco-Ottoman boundary convention.** "France and
+  the Ottoman Turkish Empire signed a convention on 19 May
+  1910, defining by the present boundary between Fort-Saint and
+  Ghadames as a section of the entire boundary between the
+  French and the Turkish possessions in northern Africa" (p.24).
+  Load-bearing: the Ottoman Empire and France were still formally
+  delimiting territorial boundaries as late as 1910, less than
+  two years before Libya was lost to Italy.
+
+<a id="bosnia"></a>
+### §bosnia — Bosnia-Herzegovina boundary history
+
+Compiled from BOSNIA (AND HERZEGOVINA) (pp.85–86) and the
+BOSNIA–SERBIA subsection (p.87).
+
+- **1461–1483 Ottoman conquest.** "[Ottoman] conquest of the
+  country (1461–1483) and its incorporation into the empire"
+  (p.85). The Ottoman period ran from the late 15th century to
+  1878.
+- **Pre-1878 gradual boundary.** BOSNIA–SERBIA: "The boundary
+  divided Bosnia and the Principality of Serbia, gradually
+  developing between 1815 and 1833" (p.87).
+- **1875–1878 Balkan crisis.** "The last of these revolts
+  sparked off the great Balkan crisis of 1875–1878, following
+  which Bosnia-Herzegovina was put under Austro-Hungarian
+  administration" (p.85).
+- **1878 — Berlin Congress effect on Bosnia.** BOSNIA–SERBIA:
+  "[the boundary] remained unchanged after the Congress of
+  Berlin (1878), when Bosnia came under the influence of
+  Austria-Hungary and Serbia was recognized as an independent
+  state" (p.87).
+- **1878–1918 Austro-Hungarian rule.** "During the period of
+  Austro-Hungarian rule (1878–1918)" (p.85).
+
+**Biger limitation on the 1908 formal annexation date.** Biger
+treats 1878–1918 as a single continuous "period of
+Austro-Hungarian rule" and does *not* distinguish the 1878 de
+facto occupation from the **5 October 1908 formal annexation**.
+Other wiki sources ([wikipedia-ottoman-2026-04-11 §1908]) do
+make this distinction explicitly. Polity pages that need the
+1908 date should cite Wikipedia; Biger corroborates only the
+outer bounds of the Austro-Hungarian period (1878 start, 1918
+end).
+
+Similarly, Biger does not separately cite the 1914 assassination
+of Franz Ferdinand in Sarajevo or any WWI-specific Bosnian
+event. Those belong to different sources.
+
+<a id="libya"></a>
+### §libya — Libyan boundary history and the 1911–1912 Italian takeover
+
+Compiled from LIBYA (pp.359–360), LIBYA–CHAD historical
+background (p.360), LIBYA–SUDAN (p.361), LIBYA–TUNISIA (p.361).
+Note that Biger uses both "1911" and "1912" in different
+paragraphs to refer to the Italian takeover — these are not
+inconsistent, they refer to different phases of the 1911–1912
+Italo-Turkish War.
+
+- **16th century — Ottoman province.** "An object of
+  Spanish-Ottoman rivalry, Libya became a Turkish province in
+  the sixteenth century" (p.359).
+- **18th century — Karamanli autonomy.** "The Karamanli dynasty
+  unified Tripoli, Cyrenaica and Fezzan in the eighteenth
+  century, and became hereditary rulers under Ottoman
+  suzerainty" (p.359).
+- **1835 — Ottoman direct rule restored.** "the Ottoman Empire
+  restored direct rule in 1835" (p.359). This is the end of the
+  Karamanli autonomous period.
+- **1890 — Sanussi vs Ottoman Turks.** "In 1890 his successors
+  [of the Sanussi national-religious movement] beat off the
+  Ottoman Turks but were unable to stall off Italian ambitions"
+  (p.359). Notable: **Biger says the Ottoman Turks were beaten
+  in 1890** — i.e. the Sanussi won a local autonomy against
+  Istanbul before the Italian invasion. This is a gloss not
+  present in the Wikipedia source.
+- **1911 — Italian takeover begins.** LIBYA–CHAD: "In 1911, the
+  Cyrenaica, Fezzan and Tripolitania regions of northern
+  central Africa were passed from Ottoman to Italian control"
+  (p.360). LIBYA–SUDAN: "[Italy] established itself in Libya in
+  1911 and claimed all of the Turkish Ottoman possessions in
+  the area" (p.361).
+- **1912 — Italy "captured" Libya.** "In 1912 Italy captured
+  Libya and proceeded to destroy its tribal foundation" (p.359).
+  The two dates (1911 and 1912) are consistent: 1911 = Italian
+  invasion (Sept 29, 1911) and annexation declaration
+  (Nov 5, 1911); 1912 = Treaty of Ouchy (Oct 18, 1912) ending
+  the Italo-Turkish War.
+- **1910-05-19 Franco-Turkish boundary convention.**
+  LIBYA–TUNISIA: "on 19 May 1910, a Franco-Turkish convention
+  delimited most of the present-day Libya–Tunisia boundary,
+  which was then demarcated with pillars by a joint commission
+  during 1910–1911" (p.361). Same convention as cited from
+  ALGERIA–LIBYA p.24. The practical implication is that the
+  Franco-Ottoman border in North Africa was being formally
+  demarcated on the ground in 1910–1911, in the immediate
+  run-up to the Italo-Turkish War that then transferred the
+  Ottoman side to Italy.
+- **1934 — "Libya" as a name.** "[these regions] were together
+  renamed Libya in 1934" (p.360). Prior to 1934 "Libya" did not
+  exist as a single administrative name under Italian rule —
+  there were the three regions Cyrenaica, Fezzan, Tripolitania.
+- **1951-12-24 independence.** "on 24 December 1951, Libya
+  declared its independence" (p.360 / p.362).
+
+**Implication for WHEP `OTT-1908-1912`:** Biger confirms the
+Libya loss was *in progress* throughout 1911 and *formalized* in
+1912. Under the WHEP polity-definition rule a substantial
+territorial change (Libya was ~1.76 million km²) should trigger
+a split, which is exactly the subject of
+[oq-libya-mid-row-change] on the `ott-1908-1912` polity page.
+Biger's two-phase framing (1911 invasion → 1912 treaty) is
+consistent with the view that the change straddles the
+1908–1912 row boundary and should probably have been split, but
+Biger does not himself make that case — he's just providing
+dates.
+
+<a id="tunisia"></a>
+### §tunisia — Tunisian boundary history and the 1881 French protectorate
+
+Compiled from ALGERIA–TUNISIA (p.28), LIBYA–TUNISIA (p.361), and
+the TUNISIA main entry (p.494).
+
+- **1564 Ottoman province.** "from 1564 it was an Ottoman
+  province ruled by Mamelukes" (p.494). Tunisia entered the
+  Ottoman Empire in 1564. It was an autonomous beylik from the
+  17th century onward.
+- **17th century semi-autonomy.** "In the seventeenth century
+  Tunisia became semi-autonomous" (p.494).
+- **1881-05-12 Treaty of Bardo — French protectorate
+  (exact date).** "Tunisia was likewise a province of the
+  Ottoman Empire in the nineteenth century, until French
+  protection was imposed by force by a treaty signed on 12 May
+  1881" (p.28). This is the exact date for the Treaty of Bardo
+  (`Traité du Bardo`), which established the French
+  protectorate. It **resolves `oq-tunisia-boundary`** on the
+  `ott-1886-1908` polity page: Tunisia left the Ottoman Empire
+  on 12 May 1881, five years before the CShapes temporal floor.
+  Corroborated in more general terms on p.361 ("In 1881 Tunisia
+  was occupied by France and was proclaimed a French
+  protectorate") and p.494 ("in 1881, [...] the establishment
+  of a French protectorate").
+- **1956 Tunisia independence.** "full independence followed in
+  1956" (p.494).
+
+<a id="license"></a>
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
@@ -239,4 +421,7 @@ permitted under standard academic-quotation norms.
 <!-- Reference-style link definitions. Sorted. -->
 
 [cshapes-2.0 §coding-changes]: cshapes-2.0.md#coding-changes
+[oq-libya-mid-row-change]: ../polities/ott-1908-1912.md#oq-libya-mid-row-change
+[oq-tunisia-boundary]: ../polities/ott-1886-1908.md#oq-tunisia-boundary
 [wikipedia-luxembourg-2026-04-11 §1890]: wikipedia-luxembourg-2026-04-11.md#1890
+[wikipedia-ottoman-2026-04-11 §1908]: wikipedia-ottoman-2026-04-11.md#1908

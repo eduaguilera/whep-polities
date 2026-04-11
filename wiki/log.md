@@ -25,6 +25,117 @@ Kinds:
 
 ---
 
+<a id="biger-ottoman-batch-ingest"></a>
+## 2026-04-11 — biger-ottoman-batch-ingest
+**Touched:** OTT-1800-1886, OTT-1886-1908, OTT-1908-1912; wiki/sources/biger-1995.md
+**Source:** biger-1995 (existing)
+**Kind:** ingest
+
+Second pass through Biger 1995 after the Luxembourg ingest, this
+time targeted at the Ottoman successor states that directly
+appear on the three OTT polity pages. Four entries read:
+
+- **ALGERIA** (pp.22–28) — 1830 French conquest, 1847 full
+  northern control, 1848 three départements, 1881 integration
+  with France, 1902-12-24 Sahara annexation, plus the
+  1845-03-18 Morocco–Ottoman treaty and the 1910-05-19
+  Franco-Ottoman boundary convention (both rarely-cited
+  specific dates for formal Franco-Ottoman territorial
+  agreements).
+- **BOSNIA AND HERZEGOVINA** (pp.85–87) — 1461–1483 Ottoman
+  conquest, 1875–1878 Balkan crisis, 1878 start of
+  Austro-Hungarian administration, 1878–1918 as a continuous
+  "period of Austro-Hungarian rule". **Biger limitation:** he
+  does not distinguish the 1878 de facto occupation from the
+  1908 formal annexation — recorded in the source file's
+  limitations section and flagged on the polity pages.
+- **LIBYA** (pp.359–362) — 1835 Ottoman direct rule restored,
+  1890 Sanussi vs Ottoman Turks, 1911 Italian invasion,
+  1912 Treaty of Ouchy, 1934 "Libya" as a name, 1951-12-24
+  independence.
+- **TUNISIA** (pp.28, 361, 494) — **exact treaty date for the
+  Treaty of Bardo: 12 May 1881** (ALGERIA–TUNISIA, p.28).
+  Corroborated in LIBYA–TUNISIA (p.361) and the TUNISIA main
+  entry (p.494). Tunisia was an Ottoman province from 1564
+  and semi-autonomous from the 17th century.
+
+**Updated `wiki/sources/biger-1995.md`** with four new sections:
+`§algeria`, `§bosnia`, `§libya`, `§tunisia`. The existing
+`§luxembourg` section is unchanged. All quotes are
+sentence-level fair-use under Biger's strict all-rights-reserved
+notice.
+
+**Three Ottoman polity pages updated:**
+
+- `ott-1800-1886.md`:
+  - **[oq-1830-events] partially resolved.** Biger directly
+    corroborates the 1830 French conquest of Algeria with
+    multi-page cross-references. The Greek War of Independence
+    date range (1821–1829) is confirmed via the GREECE entry
+    snapshot already in Wikipedia. The exact 1830 London
+    Protocol date for Greek independence and 1830 Serbian
+    autonomy mechanism remain not-verbatim-quoted — would need
+    a GREECE or SERBIA focused Biger read or a dedicated source.
+  - **[oq-further-splits-1830-1878] substantially
+    strengthened.** Biger now provides academic anchor dates
+    for both candidate split points (1830 and 1878). The
+    historical case for splitting this row is solid; the
+    remaining blocker is pipeline cost (extracting more
+    Cliopatria time-steps for one polity).
+  - New sourced claim: the 1830 Algeria loss quote from Biger
+    p.22, replacing the earlier Wikipedia-only framing.
+
+- `ott-1886-1908.md`:
+  - **[oq-tunisia-boundary] RESOLVED.** Exact date: Treaty of
+    Bardo signed 12 May 1881, five years before this row's
+    1886 start. The CShapes Ottoman polygon for 1886 onward
+    correctly excludes Tunisia; the issue is in the
+    predecessor row.
+  - 1878 Berlin Congress claim now has dual corroboration
+    (Wikipedia + Biger).
+
+- `ott-1908-1912.md`:
+  - **[oq-libya-mid-row-change] partially resolved.** Biger
+    gives a clean two-phase 1911/1912 framing: Italy
+    "established itself in Libya in 1911" (LIBYA–SUDAN, p.361)
+    and "In 1912 Italy captured Libya" (LIBYA main, p.359).
+    These are consistent with 1911 = Italian invasion + 5
+    November 1911 annexation declaration, 1912 = 18 October
+    1912 Treaty of Ouchy. The Libya transfer is confirmed as
+    a real, >1.5 million km², rapid territorial change
+    *inside* this row's window — far above any plausible
+    "substantial change" threshold. The remaining question is
+    a repo-wide rule (end-of-row grace period, explicit
+    sub-split, or polygon-source override) that a human must
+    decide.
+  - Bonus finding: the 1910-05-19 Franco-Ottoman boundary
+    convention was still being demarcated on the ground by a
+    joint commission in 1910–1911, immediately before the
+    Italian takeover. This strengthens the case that the
+    Libya loss was a real rapid change, not a
+    polygon-availability artefact.
+
+**Summary of open questions across OTT pages after this ingest:**
+
+- Resolved: `oq-tunisia-boundary` (full), `oq-1830-events`
+  (partial, 1830 Algeria confirmed, Greek/Serbian verbatim
+  still needed), `oq-libya-mid-row-change` (partial,
+  historical facts confirmed, repo-rule decision still
+  needed), `oq-further-splits-1830-1878` (historical case
+  solid, pipeline cost unresolved).
+- Still fully open: `oq-1886-split-is-polygon-not-territory`
+  (repo-rule decision), `oq-bosnia-double-count` (needs
+  `ogrinfo` query), `oq-1912-1920-gap` (repo-rule decision),
+  `oq-muhammad-ali-egypt-1831` (future EGY-* ingest),
+  `oq-arab-revolt-1916` (future SAU-* ingest).
+
+**Biger coverage not yet ingested** (for future passes):
+BULGARIA, EGYPT, GREECE, IRAQ, LEBANON, SAUDI ARABIA, SERBIA,
+SYRIA, YEMEN. These would be relevant when we create polity
+pages for those successor states.
+
+---
+
 <a id="biger-1995-luxembourg-ingest"></a>
 ## 2026-04-11 — biger-1995-luxembourg-ingest
 **Touched:** LUX-1839-2025

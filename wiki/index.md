@@ -12,7 +12,7 @@ lint fails if the index is stale.
 | Sources ingested | 6 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | 12 |
+| Open questions across wiki | 11 (1 fully resolved, 3 partially resolved by Biger Ottoman batch ingest) |
 
 ## Polities by continent
 
@@ -77,7 +77,12 @@ _(none yet)_
   1995 (ISBN 0-8160-3233-5), in collaboration with the Durham
   International Boundaries Research Unit. Strict all-rights-reserved;
   fair-use short-quote citation only. PDF gitignored, SHA-256
-  recorded. Cited by: [lux-1839-2025](polities/lux-1839-2025.md).
+  recorded. Five `§`-sections so far (luxembourg, algeria,
+  bosnia, libya, tunisia). Cited by:
+  [lux-1839-2025](polities/lux-1839-2025.md),
+  [ott-1800-1886](polities/ott-1800-1886.md),
+  [ott-1886-1908](polities/ott-1886-1908.md),
+  [ott-1908-1912](polities/ott-1908-1912.md).
 
 ## Aggregates and unions
 
