@@ -43,6 +43,35 @@ Check, in order:
    how many polity pages cite it. Zero-citation sources are
    candidates for deletion — flag, do not delete.
 
+8. **CSV oddity detection** (critical-stance audit, see
+   `wiki/README.md`). Scan `data/final/polities_database.csv` for:
+   - **Row labels that contain entity names incompatible with their
+     time range.** Example pattern: the row labeled `USSR
+     (1905-1914)` — USSR did not exist until 1922. Look for entity
+     names (USSR, Yugoslavia, Czechoslovakia, German Democratic
+     Republic, etc.) that appear in row labels or `polity_name`
+     columns with start dates that predate the entity's known
+     founding year.
+   - **Overlapping rows for the same entity.** Group by the
+     three-letter prefix of `polity_code` (or the entity name if
+     distinct prefixes refer to the same entity, like OTT and TUR,
+     or DEU and GER). Flag any overlap in `start_year` / `end_year`
+     ranges.
+   - **Orphan rows** not reached by any predecessor / successor
+     chain. A row whose `predecessor` is `NA`, whose `polity_code`
+     does not appear in any other row's `successor` column, and
+     whose `start_year` is after the database floor of 1800 is
+     suspect.
+   - **Rows with `notes = NA`** where sibling rows in the same
+     entity chain have substantive notes.
+   - **Entities referenced in `predecessor` / `successor` columns
+     that don't exist as rows** in the CSV.
+
+   For each finding: list the specific `polity_code`(s), explain
+   the oddity in one sentence, and recommend a `proposal`-kind
+   log entry for human review. Do NOT auto-fix — this is read-only
+   auditing.
+
 Output format:
 - **Summary** — counts for each check.
 - **Must fix** — schema violations, CSV/wiki parity breaks.

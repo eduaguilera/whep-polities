@@ -25,6 +25,101 @@ Kinds:
 
 ---
 
+<a id="decision-csv-is-evidence-not-authority"></a>
+## 2026-04-11 — decision-csv-is-evidence-not-authority
+**Touched:** wiki/README.md, wiki/prompts/ingest.md, wiki/prompts/lint.md, wiki/prompts/autonomous-next.md
+**Source:** none (stated by the project maintainer in conversation)
+**Kind:** decision
+
+User feedback interrupted an Austria-Hungary research iteration:
+"*dont take any of my decisions as a source of truth. dont just read
+my current data and say 'this was a conscious decision'. consider
+everything might be wrong. do update prompts to keep that in mind.
+you can think autonomously*" (2026-04-11).
+
+This is a **meta-rule** about how the wiki treats existing WHEP state.
+The rule is simple: **the CSV is evidence, not authority.** Nothing
+in `data/final/polities_database.csv`, the `docs/` tree, the R
+pipeline, or prior log entries should be treated as correct by
+default. Every artifact was produced by fallible humans and
+automated processes, and may contain errors, mislabellings,
+orphaned rows, stale decisions, or unreviewed oversights.
+
+The rule existed implicitly in the wiki before this entry — the
+very first Ottoman ingest found the `TUR-1800-1912` duplication and
+filed a proposal entry for it — but the prompts and README did not
+make it explicit, and the agent had drifted into rationalizing
+oddities rather than auditing them. Three examples from the
+session that prompted this decision:
+
+1. **`F228-1905-1914 USSR (1905-1914)`** — the CSV labels this
+   row "USSR" but the USSR did not exist until 30 December 1922.
+   Either the label is wrong (should be "Russian Empire") or the
+   time range is wrong. Both are possible. The agent earlier this
+   session called this "mislabeled" without pressing on which
+   side of the mislabeling was at fault.
+2. **`DEU-1800-1919` and `GER-1800-2025 Germany/Zollverein`**
+   overlap entirely across 1800–1919. The agent earlier this
+   session speculated "probably an aggregate row for the trade
+   regime" without evidence. Under the new rule, speculation is
+   forbidden — either cite evidence or file a proposal.
+3. **No `PRU` (Prussia) row in the CSV** despite Prussia being
+   the core German state 1815–1871. The agent earlier this
+   session called this "a design choice worth surfacing". Under
+   the new rule, it is a candidate oversight to be documented as
+   a proposal unless `docs/` or `log.md` contains evidence that
+   Prussia was deliberately absorbed into `DEU`.
+
+**Applied in this entry:**
+
+- **`wiki/README.md`**: added rules #6 and #7 to the "Rules for
+  the agent" section (CSV is evidence, not authority; do not
+  attribute intent to state without evidence), plus a new
+  top-level section *Critical stance: audit, don't deferentially
+  cite* with a typology of CSV oddities (row labels vs time
+  range, overlapping rows, missing rows, splits at data-source
+  cutoffs, orphan rows, `notes = NA`, wrong polity_type).
+- **`wiki/prompts/ingest.md`**: inserted a CSV audit substep
+  inside phase 2 (identify affected polity pages). The ingest
+  flow now cannot silently proceed past a CSV oddity — the agent
+  must either cite documented evidence or file a proposal.
+- **`wiki/prompts/lint.md`**: added a new check #8, *CSV oddity
+  detection*, that scans for the oddity typology described in
+  `wiki/README.md` and recommends proposal entries. Read-only;
+  does not auto-fix the CSV.
+- **`wiki/prompts/autonomous-next.md`**: added CSV oddity
+  detection to the phase 1 inventory checklist, and added "a CSV
+  oddity that a single `proposal`-kind log entry can document"
+  to the Tier 1 (easy wins) list. The Russian Empire / USSR
+  labeling issue is named as the canonical example.
+
+**How this changes polity-page writing style:**
+
+Before: "WHEP carries a separate row for X because Y. The repo's
+convention is Z."
+
+After: "The current CSV tracks X as row Y. No rationale for this
+is documented in `docs/` or `log.md`; see
+[log proposal-...] for the audit finding."
+
+Hedging in the body and flagging in the log is strictly better
+than speculation in the body and nothing in the log.
+
+**Not touched:** the existing polity pages (Luxembourg, the three
+Ottoman rows). Those will be re-audited opportunistically in
+future ingests under the new rule. The Ottoman pages already do a
+reasonable job at flagging the 1886 split as polygon-source
+artifact; the Luxembourg page uses cleaner sourced-claims
+language. No immediate rewrites needed.
+
+**Next action:** resume autonomous research on European empires
+1850–present, starting with Austria-Hungary, applying the new
+critical stance from iteration 1 forward. Specifically: audit
+the AUH chain for CSV oddities during phase 1 before any Biger
+reads.
+
+---
+
 <a id="autonomous-next-prompt-added"></a>
 ## 2026-04-11 — autonomous-next-prompt-added
 **Touched:** wiki/prompts/autonomous-next.md (new), wiki/README.md

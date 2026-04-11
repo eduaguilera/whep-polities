@@ -19,6 +19,29 @@ for the schema and rules. Then:
    that has no CSV row, do NOT create a page; instead add an entry to
    `wiki/log.md` of kind `proposal` with the rationale for adding it.
 
+   While you are cross-checking the CSV, **audit the rows you are
+   about to cite**. Under the critical-stance rule in `wiki/README.md`,
+   the CSV is evidence, not authority. Watch for:
+
+   - Row labels that contradict their time range (e.g.
+     `F228-1905-1914 USSR (1905-1914)` — the USSR did not exist
+     until 1922).
+   - Overlapping rows for the same entity across the period your
+     source covers.
+   - Missing rows for entities that your source clearly describes
+     (e.g. a major state referenced by the source that has no CSV
+     counterpart).
+   - Splits at dates that don't match a historical event in your
+     source.
+   - `notes = NA` on rows where your source has substantive content.
+
+   For each audit finding: check `docs/` and `wiki/log.md` for a
+   prior rationale. If you find one, cite it. If you don't, add a
+   `proposal`-kind log entry before proceeding with the ingest. Do
+   not rationalize the finding in the polity page body — hedge
+   explicitly that the CSV labeling is suspect and flag the proposal
+   by slug.
+
 3. **Update each affected polity page.** For each one:
    - Append new facts to *Sourced claims* with inline
      `[<source-slug> §<section>]` citations.

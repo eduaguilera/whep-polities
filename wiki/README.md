@@ -222,3 +222,82 @@ Prompts for each workflow live in `wiki/prompts/`:
    source slug, and a one-line rationale.
 5. **Never edit `data/final/polities_database.csv` from a wiki workflow.**
    The wiki proposes changes in `log.md`; humans apply them.
+6. **The CSV is evidence, not authority.** Nothing in the existing WHEP
+   state — the CSV, the `docs/` tree, the R pipeline, prior log entries,
+   even this wiki's own polity pages — should be treated as correct by
+   default. Every artifact was produced by fallible humans and automated
+   processes, and may contain errors, mislabellings, orphaned rows,
+   stale decisions, or unreviewed oversights. See *Critical stance*
+   below. When in doubt, audit first and cite second.
+7. **Do not attribute intent to state.** Never write prose that presumes
+   a WHEP state — a row, a split, a polygon source, a column value — was
+   the result of a conscious design choice unless you can point at
+   concrete evidence (a `docs/` section that explains it, a `log.md`
+   entry of `kind: decision`, a commit message with rationale). If no
+   evidence exists, say so explicitly on the polity page and flag it as
+   a candidate oddity.
+
+## Critical stance: audit, don't deferentially cite
+
+The CSV in `data/final/polities_database.csv` is a ~1,400-row dataset
+built over several WHEP versions by multiple humans and automated
+processes. It contains known errors, legacy artifacts, unreviewed
+merges, and oddities that no one has gotten around to fixing. Any
+polity page that cites the CSV is citing *one version of one dataset*,
+not the ground truth.
+
+When you encounter something that looks off, **treat it as a candidate
+bug first**, not a "decision worth surfacing." Things that should
+trigger audit mode include:
+
+- **Row labels that contradict their time range.** The canonical
+  example from this session: `F228-1905-1914 USSR (1905-1914)` — the
+  USSR did not exist in 1905; it was not proclaimed until 30 December
+  1922. Either the row label is wrong (should be "Russian Empire") or
+  the time range is wrong. Both are possible. Audit.
+- **Overlapping rows for the same entity.** `TUR-1800-1912` exists as
+  a national row alongside the three `OTT-*` rows covering the same
+  period. `DEU-1800-1919` exists alongside `GER-1800-2025
+  Germany/Zollverein` covering the same period. Overlap is a signal,
+  not a convention.
+- **Missing rows for entities that should exist.** There is no `PRU`
+  row in the CSV despite Prussia being the largest and most important
+  German state from 1815 to 1871 and the leading force behind German
+  unification. Either (a) Prussia is deliberately absorbed into `DEU`
+  for some defensible reason documented somewhere, or (b) it is an
+  oversight. Do not assume (a) without evidence.
+- **Splits at dates that match a data-source cutoff rather than a
+  historical event.** The `OTT-1800-1886 → OTT-1886-1908` split is at
+  1886 because CShapes temporal coverage starts in 1886, not because
+  anything happened to the Ottoman Empire on 1886-01-01. Under the
+  WHEP polity-definition rule this is inconsistent, and calling it a
+  "pragmatic choice" without evidence of that being a deliberate
+  exception is rationalization.
+- **Orphaned rows** not reached by any predecessor / successor chain.
+- **`notes = NA`** on rows where every sibling has substantive notes.
+- **Row types (`national` vs `aggregate` vs `subnational`) that don't
+  match the entity.** E.g. something labeled `national` that is
+  clearly an aggregate.
+
+For each audit finding:
+
+1. **Check `docs/` and `wiki/log.md`** for any human-signed rationale.
+   If you find one, cite it on the polity page as the justification.
+2. **If no justification exists**, do NOT rationalize it. Add a
+   `proposal`-kind log entry naming the specific row(s) or column(s)
+   and describing the oddity, with a recommendation and a "for human
+   review" note.
+3. **Do not silently propagate oddities.** A weird row label is a
+   signal, not a fact to be cited verbatim on a polity page. If you
+   have to cite it, hedge explicitly: "the current CSV labels this
+   row `USSR (1905-1914)`, which is an anachronism — the USSR did
+   not exist until 1922 — and has been flagged in
+   [log proposal-...]."
+4. **Maintain a `contradictions` entry when CSV and external sources
+   disagree.** A territorial event that Biger or Wikipedia places in
+   1866 but the CSV splits at 1871 is a contradiction, not a
+   convenience.
+
+The grading standard: a polity page that reads "WHEP tracks this as
+X because of Y (doc reference)" is good. A polity page that reads
+"the CSV does X" followed by a paragraph inferring intent is bad.

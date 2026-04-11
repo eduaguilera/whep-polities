@@ -50,6 +50,16 @@ tool calls now prevent bad decisions later. Record at least:
 7. **Dangling polity refs:** grep for
    `<!-- TODO: page not yet created -->` across polity pages. These
    are concrete candidates for new polity pages.
+8. **CSV oddities** (critical-stance audit, see `wiki/README.md`).
+   Scan the CSV for row labels that contradict their time range,
+   overlapping rows, orphan rows, missing-entity-row gaps, and
+   `notes = NA` on rows whose siblings have content. Do not
+   rationalize findings. Each finding is either (a) already
+   documented in `docs/` or `wiki/log.md` with a rationale and you
+   cite that, or (b) undocumented and becomes a `proposal`-kind
+   entry for human review. The Russian Empire / USSR labeling
+   issue in `F228-1905-1914` is a canonical example of the kind
+   of thing this step catches.
 
 Write the inventory to your own working memory, not to a file. It's
 an input to phase 2, not a deliverable.
@@ -80,6 +90,13 @@ Examples of what qualifies:
   a commit message, log entry, or source file and just needs to be
   pulled into the polity page's *Sourced claims* or *Open questions*
   resolution marker.
+- **A CSV oddity that a single `proposal`-kind log entry can
+  document.** The Russian Empire / USSR labeling issue, the
+  `TUR-1800-1912` duplication, the missing Prussia row, the
+  DEU/GER overlap — each of these should become a proposal entry
+  the moment it's discovered in a phase 1 inventory. These are
+  never "decisions to surface"; they are candidate bugs to
+  document. Do not attempt to fix the CSV itself.
 
 ### Tier 2 — Source expansion
 
