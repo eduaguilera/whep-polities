@@ -17,7 +17,9 @@ sources: []
 
 <One paragraph. What this polity is, why it's a distinct row, what the
 start and end years mean — legal creation, de facto sovereignty,
-database truncation, etc.>
+database truncation, etc. Use reference-style citations throughout,
+e.g. [source-slug §section], and define the targets at the bottom
+of the file.>
 
 ## Territorial extent
 
@@ -27,14 +29,14 @@ back-projected.>
 
 ## Predecessors and successors
 
-- **Predecessor:** [[other-polity-slug]] — nature of the transition
-- **Successor:** [[other-polity-slug]] — nature of the transition
+- **Predecessor:** [other-polity-slug] — nature of the transition
+- **Successor:** [other-polity-slug] — nature of the transition
 
 ## Sourced claims
 
-- Claim one. `[source-slug §section]`
-- Claim two. `[source-slug §section]`
-- Claim from the CSV with no deeper source yet. `[database]`
+- Claim one. [source-slug §section]
+- Claim two. [source-slug §section]
+- Claim from the CSV with no deeper source yet. [database]
 
 ## Contradictions
 
@@ -43,15 +45,30 @@ database currently follows and why. Never silently pick.>
 
 ## Decisions
 
-- [log YYYY-MM-DD — slug] one-line summary
+- [log slug] one-line summary
 
 ## Open questions
 
-Each question has a stable `oq-<slug>` ID. Cross-references elsewhere
-on the page must use the slug, not a number. When a question is
-resolved, strike through the title and point to the resolving
-`log.md` entry — do not delete (the slug stays a stable anchor).
+Each question is an H3 heading `### oq-<slug>`. GitHub auto-generates
+the anchor from the heading text, so cross-references elsewhere on
+the page resolve. When a question is resolved, do not delete —
+replace the body with a pointer to the resolving `log.md` entry so
+the slug stays a stable anchor.
 
-- **oq-example-slug** — Short title for the open question. Body
-  explaining what the next ingest should try to resolve, why it
-  matters, and what source or investigation would answer it.
+### oq-example-slug
+
+Short title for the open question, then body explaining what the
+next ingest should try to resolve, why it matters, and what source
+or investigation would answer it.
+
+<!--
+Reference-style link definitions. Add one line per citation used
+above. Same-page anchors use `#oq-...`; cross-page anchors use
+`path.md#anchor`.
+-->
+
+[source-slug §section]: ../sources/source-slug.md#section
+[other-polity-slug]: other-polity-slug.md
+[database]: ../../data/final/polities_database.csv
+[log slug]: ../log.md#slug
+[oq-example-slug]: #oq-example-slug

@@ -25,6 +25,96 @@ Kinds:
 
 ---
 
+<a id="github-clickable-links"></a>
+## 2026-04-11 — github-clickable-links
+**Touched:** wiki/README.md, wiki/polities/_template.md, wiki/prompts/lint.md
+  (prior), all polity pages, all source files, wiki/log.md, wiki/index.md
+**Source:** none
+**Kind:** decision
+
+User feedback: `[[wikilinks]]`, bare `[oq-slug]`, and backticked
+citations like `` `[cshapes-2.0 §scope]` `` do not render as
+clickable links on GitHub. The first is Obsidian-specific syntax;
+the second is a markdown reference link with no definition
+(renders as literal text); the third is a code span that breaks
+the link machinery entirely.
+
+**Decision:** the wiki now uses **reference-style** markdown links
+throughout. Citation identifiers keep the same `[source-slug
+§section]` inline form — so grep-based search and lint still
+match them — but each file has a reference-definitions block at
+the bottom mapping every label to a real URL. Stable IDs
+(log-entry slugs, source-file section anchors) are created with
+explicit `<a id="slug"></a>` anchors so the URL targets don't
+depend on GitHub's heading slugifier, which mangles em-dashes and
+other characters. Open questions are now H3 headings
+(`### oq-slug`) because GitHub's auto-generated anchor from clean
+kebab-case heading text is already good.
+
+**Applied in this touch-up:**
+
+1. **Schema** (`wiki/README.md`): added a *Cross-reference
+   conventions* section describing the reference-style pattern,
+   the `<a id>` anchor convention, and the rule that citations
+   must never be wrapped in backticks.
+2. **Template** (`wiki/polities/_template.md`): rewritten to show
+   the new pattern end-to-end, including a reference-definitions
+   block at the bottom.
+3. **Source files** (5 files): added `<a id="slug"></a>` before
+   every `### §section` heading so cross-source and
+   polity-to-source links can target them. Wikipedia source files
+   (`wikipedia-luxembourg-2026-04-11`, `wikipedia-ottoman-2026-04-11`)
+   also got inline `<a id="YEAR"></a>` anchors before each
+   `§YEAR` bullet so polity pages can cite `§1878`, `§1908`, etc.
+   as clickable fragments. Year-range anchors use ASCII hyphens
+   (`1877-1878`) even when the bullet text shows an en-dash
+   (`§1877–1878`), because anchor IDs must be ASCII.
+4. **Log file** (`wiki/log.md`): added `<a id="slug"></a>` before
+   every `## YYYY-MM-DD — slug` entry heading. 12 entries
+   anchored.
+5. **Polity pages** (4 files, Luxembourg + 3 Ottoman):
+   - Removed backticks from inline citations.
+   - Converted `[[slug]]` wikilinks to `[slug]` reference form.
+   - Normalized log refs `[log YYYY-MM-DD — slug]` →
+     `[log slug]` (the date is noise — the slug is stable).
+   - Converted *Open questions* section from bullets with bold
+     prefixes to H3 subheadings (`### oq-slug`) so GitHub
+     auto-generates a clean anchor per question.
+   - Appended a reference-definitions block at the bottom of
+     each file, sorted, with one line per cited label.
+   - Dangling refs (polity pages that don't exist yet:
+     `nld-1800-1830`, `tur-1913-1914`, `sau-1924-1932`) are
+     defined as clickable links to their future file paths. On
+     GitHub these render as clickable 404s, which is better than
+     literal `[text]` because the reader can see where the link
+     *will* go.
+6. **Index** (`wiki/index.md`): every polity and source entry is
+   now a proper `[name](path.md)` inline link; source list
+   entries include "Cited by:" lists with links to each citing
+   polity page.
+
+**Verification:** a script walked every polity and source file,
+extracted all `[label]` bracket patterns, and checked each
+against the corresponding `[label]: url` definitions. All
+reference-style links resolve. The only remaining bracket
+patterns with no definition are literal polity codes like
+`[BOS-1878-1908]`, which are deliberately not links (they are
+CSV identifiers, not wiki references).
+
+**Not converted, intentionally:**
+
+- `log.md` body text still has inline `` `slug` `` backticked
+  references to other log entries. These are meta (the log
+  talking about itself) and aren't expected to be clickable.
+  If they ever need to be, a follow-up pass can add a
+  reference-definitions block at the bottom of `log.md`.
+- `wiki/prompts/*` and `wiki/README.md` don't use citations
+  at all — they describe the system, they don't participate in
+  it. No conversion needed.
+
+---
+
+<a id="ottoman-first-ingest"></a>
 ## 2026-04-11 — ottoman-first-ingest
 **Touched:** OTT-1800-1886, OTT-1886-1908, OTT-1908-1912
 **Source:** cliopatria-v0.1.3 (new), wikipedia-ottoman-2026-04-11 (new), cshapes-2.0, cow-state-system-v2024
@@ -109,6 +199,7 @@ verbatim quotes for and (b) resolution of the
 bigger than Luxembourg's draft→reviewed blocker because it
 affects the split dates themselves, not just the narrative layer.
 
+<a id="proposal-tur-1800-1912-duplication"></a>
 ## 2026-04-11 — proposal-tur-1800-1912-duplication
 **Touched:** TUR-1800-1912 (CSV), OTT-1800-1886, OTT-1886-1908, OTT-1908-1912
 **Source:** none
@@ -160,6 +251,7 @@ time they look at the log.
 
 ---
 
+<a id="schema-stable-oq-ids-and-lint-relaxation"></a>
 ## 2026-04-11 — schema-stable-oq-ids-and-lint-relaxation
 **Touched:** wiki/README.md, wiki/prompts/lint.md, wiki/polities/_template.md
 **Source:** none
@@ -197,6 +289,7 @@ open-question format with an example slug. Existing Luxembourg
 page will be migrated to the new format in the immediately-following
 `lux-post-lint-cleanup` ingest.
 
+<a id="lux-post-lint-cleanup"></a>
 ## 2026-04-11 — lux-post-lint-cleanup
 **Touched:** LUX-1839-2025
 **Source:** none (claim updates draw on sources already ingested)
@@ -246,6 +339,7 @@ No changes to `sources:`, frontmatter (other than already-current
 
 ---
 
+<a id="lint-luxembourg"></a>
 ## 2026-04-11 — lint-luxembourg
 **Touched:** LUX-1839-2025 (report only), wiki/index.md (auto-applied)
 **Source:** none
@@ -326,6 +420,7 @@ lint).
 
 ---
 
+<a id="cow-state-system-v2024-ingest"></a>
 ## 2026-04-11 — cow-state-system-v2024-ingest
 **Touched:** LUX-1839-2025
 **Source:** cow-state-system-v2024 (new)
@@ -369,6 +464,7 @@ edit.
 
 ---
 
+<a id="cshapes-reproducibility-verified"></a>
 ## 2026-04-11 — cshapes-reproducibility-verified
 **Touched:** (none — verification only)
 **Source:** cshapes-2.0
@@ -409,6 +505,7 @@ st_write(cs, file.path(geodata_dir, "cshapes2_full.gpkg"),
 and correct `REPRODUCIBILITY.md:162` to point at it. Also add
 `cshapes` to `renv.lock`.
 
+<a id="decision-whep-polity-definition"></a>
 ## 2026-04-11 — decision-whep-polity-definition
 **Touched:** (repo-wide; the definition of what a WHEP polity is)
 **Source:** none (stated by the project maintainer in conversation)
@@ -478,6 +575,7 @@ threshold. A future `decision` entry should pick a WHEP-specific
 threshold or explicitly defer to case-by-case judgement. For now,
 existing splits in the CSV stand as precedent.
 
+<a id="decision-cshapes-is-cow-based"></a>
 ## 2026-04-11 — decision-cshapes-is-cow-based
 **Touched:** (repo-wide; applies to every CShapes-citing polity)
 **Source:** cshapes-2.0
@@ -520,6 +618,7 @@ possibly Tibet and Orange Free State which GW includes and COW does
 not), the page must either note this in Contradictions or justify
 the WHEP start year from a non-CShapes source.
 
+<a id="cshapes-primary-source-upgrade"></a>
 ## 2026-04-11 — cshapes-primary-source-upgrade
 **Touched:** LUX-1839-2025
 **Source:** cshapes-2.0 (upgraded)
@@ -566,6 +665,7 @@ instead of generic `[cshapes-2.0]` tags, and added a sixth open
 question about which CShapes version (COW or GW) the repo loads.
 Status remains `draft`.
 
+<a id="lux-first-ingest"></a>
 ## 2026-04-11 — lux-first-ingest
 **Touched:** LUX-1839-2025
 **Source:** cshapes-2.0, wikipedia-luxembourg-2026-04-11
@@ -588,6 +688,7 @@ as an independent polity from 1839 despite the personal union with the
 Netherlands lasting until 1890. This is a cross-polity question and should
 be resolved via a `decision`-kind log entry, not on the Luxembourg page alone.
 
+<a id="wiki-bootstrap"></a>
 ## 2026-04-11 — wiki-bootstrap
 **Touched:** (none)
 **Source:** none

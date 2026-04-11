@@ -28,12 +28,13 @@ is gitignored; verify with `sha256sum` against `pdf_sha256`.
 
 CShapes 2.0 is the primary polygon source for ~480 of the ~1,220 rows
 in `data/final/polities_database.csv`. Without a first-class source
-file, every polity page citing CShapes is a `[database]` stub. This
+file, every polity page citing CShapes is a [database] stub. This
 ingest lets polity pages cite specific paper sections and inherit the
 paper's own caveats.
 
 ## What it adds
 
+<a id="scope"></a>
 ### §scope — what CShapes covers (p.144 abstract, p.147)
 
 - "CShapes 2.0, a GIS dataset that maps the borders of states and
@@ -52,6 +53,7 @@ paper's own caveats.
   date of each territorial change. Other datasets are coarser:
   Euratlas 100 years, Centennia 0.1 year.
 
+<a id="coding-states"></a>
 ### §coding-states — independent-state definition and the COW/GW split (p.147–148)
 
 - CShapes codes independence using two different authorities and
@@ -75,6 +77,7 @@ paper's own caveats.
   this is an open lint question flagged in `docs/06` as a source of
   column-mismatch bugs.
 
+<a id="coding-dependencies"></a>
 ### §coding-dependencies — colonies, protectorates, mandates (p.148)
 
 - CShapes defines dependent territories as "those units that are
@@ -97,6 +100,7 @@ paper's own caveats.
   (p.148). I.e. post-1993 new-dependency creation is not covered, but
   by construction this window is empty.
 
+<a id="coding-borders"></a>
 ### §coding-borders — how polygons are drawn (p.148–150)
 
 - "we code a state's territory primarily based on its internationally
@@ -117,6 +121,7 @@ paper's own caveats.
   citing CShapes for an early date should check whether the dummy
   flag is set; if so, the polygon is provisional, not observed.
 
+<a id="coding-changes"></a>
 ### §coding-changes — what counts as a territorial change (p.149–151)
 
 - Three types of change: (1) creation/dissolution of political units,
@@ -141,6 +146,7 @@ paper's own caveats.
   Boundaries*) "to address" the Territorial Change Dataset's
   COW-independent-states-only limitation (p.151).
 
+<a id="geocoding"></a>
 ### §geocoding — how the maps were drawn (p.151)
 
 - Border changes were coded "in reverse chronological order. In other
@@ -195,8 +201,8 @@ is the **COW-based** distribution. Two pieces of evidence:
 1. The `cshapes` layer has `cowcode` but no `gwcode` column.
 2. Canada (`cowcode=20`) is coded as `colony` from 1886-01-01 to
    1920-01-09 and `independent` from 1920-01-10, matching COW's
-   explicit 1920 independence date `[§coding-states]`. Under GW the
-   date would be 1867.
+   explicit 1920 independence date — see the [coding-states] section
+   above. Under GW the date would be 1867.
 
 See `wiki/log.md` 2026-04-11 `decision-cshapes-is-cow-based`. Every
 polity page in this wiki that cites CShapes 2.0 inherits COW's
@@ -242,3 +248,9 @@ update `REPRODUCIBILITY.md` to point at it. Tracked in
 - Dataset: "CShapes 2.0 is freely available for academic and other
   non-commercial purposes" (p.147).
 - The local PDF is not redistributed; see `wiki/sources/pdfs/README.md`.
+
+
+<!-- Reference-style link definitions. Sorted. -->
+
+[coding-states]: #coding-states
+[database]: ../../data/final/polities_database.csv

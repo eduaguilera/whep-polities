@@ -32,14 +32,15 @@ Derived from `docs/02_DATA_SOURCES.md §2.12`,
 `docs/06_KNOWN_ISSUES_AND_DECISIONS.md`. No external fetch yet — a
 future ingest should pull the Seshat paper directly if one exists.
 
+<a id="scope"></a>
 ### §scope — what Cliopatria covers
 
 - **~1,600 polities, 15,690 GeoJSON features** (hand-traced from
-  reference atlases). `[docs/02 §2.12]`
+  reference atlases). [docs/02 §2.12](../../docs/02_DATA_SOURCES.md)
 - **Temporal range**: 3400 BCE to 2024 CE. Variable resolution: some
   polities have dense time-step coverage, others have one or two.
 - **1800–1886 window**: 1,945 features covering 290+ polities.
-  `[docs/02 §2.12]`
+  [docs/02 §2.12](../../docs/02_DATA_SOURCES.md)
 - **Per-polity time-step counts for WHEP-relevant cases:**
   - Ottoman Empire: **33 records**
   - Russian Empire: 34 records
@@ -47,10 +48,11 @@ future ingest should pull the Seshat paper directly if one exists.
   - Qajar Iran: 12 records
   - Ashanti Empire: 20 records
 - **Spatial precision**: "~hundreds of vertices per polygon,
-  ~25–100 km uncertainty" `[docs/02 §2.12]`.
+  ~25–100 km uncertainty" [docs/02 §2.12](../../docs/02_DATA_SOURCES.md).
 - **License**: CC BY 4.0 (citation required, redistribution
   permitted).
 
+<a id="wheps-use"></a>
 ### §wheps-use — how WHEP loads it
 
 - Pipeline script: `R/12_integrate_cliopatria_polygons.R`.
@@ -68,6 +70,7 @@ future ingest should pull the Seshat paper directly if one exists.
   replacing a "small subset" polygon with a "Cliopatria 2.66M km2
   full Ottoman" polygon.
 
+<a id="single-time-step"></a>
 ### §single-time-step — the simplification WHEP makes
 
 This is the most important caveat for lint. Cliopatria provides
@@ -106,7 +109,7 @@ polygon-date mismatches` for the full list.
    polygon" (e.g. "British Africa" rather than the discrete
    colonies). This is a coding convention for certain polities,
    not a universal rule.
-4. **No ISO codes** `[docs/02 §2.13]`. Matching Cliopatria rows to
+4. **No ISO codes** [docs/02 §2.13](../../docs/02_DATA_SOURCES.md). Matching Cliopatria rows to
    WHEP polity codes goes through name matching, which is
    fragile.
 5. **Variable quality across time periods.** Pre-1800 polygons are

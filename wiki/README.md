@@ -100,23 +100,66 @@ Link to `log.md` entries that affected this polity
 (`[log 2026-04-11 luxembourg-readd]`).
 
 ## Open questions
-Things the next ingest should try to resolve. Each question **MUST**
-start with a stable slug of the form `oq-<short-kebab-case>` in
-bold, followed by a short title and the question body:
+Things the next ingest should try to resolve. Each question is an
+H3 heading of the form `### oq-<short-kebab-case>`, followed by a
+short title and the question body:
 
-    - **oq-polygon-provenance** — Pre-1886 polygon provenance.
-      The 1839–1885 window is fully outside CShapes' scope ...
+    ### oq-polygon-provenance
 
-Cross-references from elsewhere on the page MUST use the slug, not
-a position number: *"see [oq-polygon-provenance]"*, not *"see open
-question 3"*. Numbers shift whenever a question is resolved or a
-new one is added; slugs survive.
+    Pre-1886 polygon provenance. The 1839–1885 window is fully
+    outside CShapes' scope ...
 
-When an open question is resolved, do not renumber or delete —
-replace the body with a strikethrough title and a one-line pointer
-to the `log.md` entry that resolved it. This preserves the slug as
-a stable anchor for older cross-references.
+GitHub auto-generates the anchor `#oq-polygon-provenance` from the
+heading text, so cross-references elsewhere on the page resolve to
+that anchor. When an open question is resolved, do not delete —
+replace the body with a one-line pointer to the `log.md` entry
+that resolved it. This preserves the slug as a stable anchor for
+older cross-references.
 ```
+
+## Cross-reference conventions
+
+All inter-file references MUST be real markdown links so GitHub
+renders them as clickable. Use **reference-style** links, defined
+once in a block at the bottom of each file. This keeps inline text
+scannable (`[cshapes-2.0 §scope]` reads as a citation marker) and
+centralizes the URL targets.
+
+```markdown
+    The 1878 Congress of Berlin [cshapes-2.0 §coding-changes]
+    is the single biggest territorial change in the row ...
+
+    ...
+
+    [cshapes-2.0 §scope]: ../sources/cshapes-2.0.md#scope
+    [cshapes-2.0 §coding-changes]: ../sources/cshapes-2.0.md#coding-changes
+    [oq-polygon-provenance]: #oq-polygon-provenance
+    [log decision-cshapes-is-cow-based]: ../log.md#decision-cshapes-is-cow-based
+    [database]: ../../data/final/polities_database.csv
+    [ott-1800-1886]: ott-1800-1886.md
+```
+
+Conventions:
+
+- Citation identifiers use the literal `source-slug §section` form
+  inside square brackets, WITHOUT backticks around them. Backticks
+  render the whole thing as code and break the link.
+- Same-page open-question references use `#oq-slug`.
+- Cross-page polity references use `polity-slug.md` (no slash
+  prefix — paths are relative to the current file's directory).
+- Log references use `../log.md#slug`. Every log entry has an
+  explicit `<a id="slug"></a>` anchor *above* the `## YYYY-MM-DD —
+  slug` heading so the target slug stays clean even though the
+  heading contains dates and em-dashes.
+- Source section references use `../sources/source-slug.md#section`.
+  Every `### §section` heading in a source file has an explicit
+  `<a id="section"></a>` anchor above it for the same reason.
+- `[database]` points at the final CSV so readers can jump to
+  the row directly.
+
+When adding a new reference, append its definition to the bottom
+block rather than editing inline. The block is what lint and
+query prompts inspect to understand what the page depends on.
 
 ## Source schema
 
