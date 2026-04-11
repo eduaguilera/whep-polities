@@ -67,6 +67,7 @@ The pipeline has two phases: base build (R/01-R/16) and enrichment (R/17-R/24).
 **Phase 1: Base build** (generates intermediate geodata files):
 
 ```bash
+Rscript R/00b_fetch_cshapes.R             # Fetch CShapes 2.0 (COW, deps=TRUE) -> cshapes2_full.gpkg
 Rscript R/01_build_master_db.R            # Build enriched base database
 Rscript R/06_add_subnational.R            # Add GADM admin-1 subnational entries
 Rscript R/11_integrate_precolonial_polygons.R  # Paine et al. African states
@@ -115,10 +116,16 @@ Rscript R/10_analysis_plots.R
    check for existing entries before adding and skip duplicates. Running them on
    the already-complete CSV will not corrupt it.
 
-2. **CShapes data is downloaded at runtime** by the `cshapes` R package (v2.0,
-   Schvitz et al. 2022). If the ETH Zurich server or package changes, results
-   may differ. The generated `data/geodata/cshapes2_full.gpkg` captures the exact
-   version used.
+2. **CShapes data is fetched by** `R/00b_fetch_cshapes.R`, which calls
+   `cshapes::cshp(useGW = FALSE, dependencies = TRUE)` (v2.0, Schvitz et al.
+   2022) and writes `data/geodata/cshapes2_full.gpkg`. Note that WHEP uses the
+   **COW-based** distribution (the R package defaults to `useGW = TRUE`, which
+   is *not* what WHEP loads) — the choice is load-bearing because COW and GW
+   differ on pre-1945 independence dates (see
+   `wiki/log.md § 2026-04-11 decision-cshapes-is-cow-based` for the evidence
+   and `wiki/sources/cshapes-2.0.md` for the reproducibility proof). If the
+   ETH Zurich server or package changes, results may differ; the file in
+   `data/geodata/` captures the exact version used.
 
 3. **GADM path**: R/00_setup.R defines two GADM paths. Update `gadm41_path` to
    point to your local GADM 4.1 GeoPackage. If GADM is unavailable, R/17 will
@@ -159,7 +166,7 @@ Rscript R/10_analysis_plots.R
 |------|------|-------------|
 | `data/geodata/polities_polygons.gpkg` | 191 MB | R/01 + R/06 + R/11-14 + R/17 |
 | `data/geodata/subnational_polygons.gpkg` | 164 MB | R/06 |
-| `data/geodata/cshapes2_full.gpkg` | 21 MB | R/01 (from cshapes R package) |
+| `data/geodata/cshapes2_full.gpkg` | 21 MB | R/00b_fetch_cshapes.R (cshapes::cshp useGW=FALSE deps=TRUE) |
 | `data/geodata/cshapes2_sovereign.gpkg` | 17 MB | R/01 |
 | `data/geodata/precolonial_polygons.gpkg` | 2 MB | R/11 |
 | `data/geodata/cliopatria_polygons.gpkg` | 116 KB | R/12 |
