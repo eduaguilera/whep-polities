@@ -25,6 +25,300 @@ Kinds:
 
 ---
 
+<a id="auh-first-ingest"></a>
+## 2026-04-11 — auh-first-ingest
+**Touched:** AUH-1800-1867, AUH-1867-1908, AUH-1908-1918
+**Source:** biger-1995 (existing, new §austria section), wikipedia-austria-hungary-2026-04-11 (new)
+**Kind:** ingest
+
+First pass at the Austrian Empire / Austria-Hungary chain as part
+of the autonomous-research extension to European empires
+1850–present. Creates three new polity pages and one new source
+file, adds a new section to the Biger source file.
+
+**Applied the critical-stance rule from
+`[log decision-csv-is-evidence-not-authority]` during phase 1
+inventory.** Five CSV audit findings were collected for the AUH
+chain **before** any source reads. Those findings are filed in a
+separate proposal entry (`proposal-auh-chain-audit` below) and
+are cited by the polity pages with explicit hedging. This ingest
+is the first to run end-to-end under the new rule.
+
+**New source file:** `wikipedia-austria-hungary-2026-04-11.md`.
+Snapshot of the Wikipedia *Austria-Hungary* article covering
+1804–1920. Gives exact dates for the 1804-08-11 proclamation of
+the Austrian Empire, the 1859 loss of Lombardy, the 1866
+Austro-Prussian War and loss of Venetia, the 1867-03-30 Ausgleich,
+the 1878 Bosnia occupation, the 1908-10-06 Bosnia formal
+annexation, the 1914-06-28 Sarajevo assassination, the
+1918-10-31 dissolution, the 1918-11-03 Villa Giusti armistice,
+the 1919-09-10 Treaty of Saint-Germain, and the 1920-06-04
+Treaty of Trianon. Plus the list of seven successor states.
+
+**New Biger section:** `biger-1995.md#austria`. Compiled from the
+AUSTRIA main entry (pp.47–48) and the AUSTRIA–CZECH REPUBLIC,
+AUSTRIA–GERMANY, AUSTRIA–HUNGARY, AUSTRIA–ITALY boundary
+subsections (pp.48–51). Load-bearing finding from Biger: the
+boundary between present-day Austria and the Czech Republic
+"originates from the defeat of Austria at Hradec Králové
+(Königgrätz) in 1866" (p.50), and **in the Treaty of Versailles
+the boundaries of 1866 were restored and Austria was declared an
+independent republic**. Biger explicitly treats 1866 as the
+territorial turning point and 1867 as a constitutional change
+without territory movement — supporting the critical-stance
+audit finding that the WHEP 1867 split is a legal, not
+territorial, boundary.
+
+**Three new polity pages:**
+
+- `wiki/polities/auh-1800-1867.md` — Austrian Empire, 1800–1867.
+  Cites the 1804 Empire proclamation as the "real" start date
+  (row has a 4-year anachronistic span 1800–1804); cites the
+  real territorial events within the row (1859 Lombardy, 1866
+  Venetia + exclusion from German affairs); hedges the 1867
+  end-of-row as a constitutional not territorial event per the
+  proposal entry.
+- `wiki/polities/auh-1867-1908.md` — Austria-Hungary pre-1908.
+  Hedges both endpoints (1867 start and 1908 end) as
+  constitutional / sovereignty events per the proposal entry.
+  Notes that under the strict WHEP polity-definition rule the
+  whole AUH 1800–1918 period should arguably be a single row,
+  or an explicit exception for fundamental constitutional
+  changes should be documented in a decision entry.
+- `wiki/polities/auh-1908-1918.md` — Austria-Hungary, 1908–1918.
+  The 1918 end date *is* a real territorial event (dissolution
+  into seven successor states), which is consistent with the
+  WHEP rule. The 1908 start-of-row is hedged per above. Successor
+  list is explicitly the seven entities from Wikipedia, NOT the
+  two in the current CSV successor field, flagged with the audit
+  proposal slug.
+
+All three pages are `status: draft` pending (a) resolution of the
+proposal-kind audit findings by a human and (b) additional
+academic sourcing. Biger + Wikipedia are sufficient for draft
+but the Trianon and Saint-Germain treaty specifics would
+strengthen the page significantly.
+
+**Open questions created** across the three AUH pages (not yet
+numbered — filed in the pages themselves):
+
+- **auh-1800-1867**: pre-1804 status (4-year anachronism),
+  pre-1859 territorial extent (Lombardy + Venetia in, "eight
+  times the size" per Biger), 1848 revolutions and their
+  territorial impact (temporary only but worth a claim).
+- **auh-1867-1908**: whether to split further at 1866 (the real
+  turning point) or treat the whole 1800–1908 period as one row.
+- **auh-1908-1918**: whether the 1918 end date should be
+  refined to a specific day (1918-10-31, 1918-11-03,
+  1919-09-10, or 1920-06-04).
+
+<a id="proposal-auh-chain-audit"></a>
+## 2026-04-11 — proposal-auh-chain-audit
+**Touched:** AUH-1800-1867, AUH-1867-1908, AUH-1908-1918, AUT-1918-1919, AUT-1918-2025, F51-1918-1938, F248-1918-1919, POL-1918-1919
+**Source:** biger-1995 §austria, wikipedia-austria-hungary-2026-04-11
+**Kind:** proposal
+
+First ingest to run under the critical-stance rule from
+`[log decision-csv-is-evidence-not-authority]`. CSV audit of the
+AUH chain surfaced five candidate issues. None are silently
+rationalized on polity page prose — this entry documents them for
+human review and decides whether the CSV should be changed.
+
+### Finding 1 (MAJOR) — AUH-1908-1918 successor list is catastrophically incomplete
+
+**Observed:** `AUH-1908-1918.successor = "AUT-1918-2025; HUN-1918-1919; AUT-1918-1919"`.
+
+Austria-Hungary dissolved in 1918–1919 into (at least) **seven**
+successor entities (verified by
+`[wikipedia-austria-hungary-2026-04-11 §successor-states]`):
+
+1. **Republic of German-Austria → First Austrian Republic** — WHEP
+   AUT-1918-2025 ✓
+2. **First Hungarian Republic** — WHEP HUN-1918-1919 ✓
+3. **First Czechoslovak Republic** — WHEP F51-1918-1938 **not
+   linked** (current CSV: `predecessor = NA`)
+4. **Kingdom of Yugoslavia / SHS** — WHEP F248-1918-1919 **not
+   linked** (current CSV: `predecessor = NA`)
+5. **Second Polish Republic** (gained Galicia) — WHEP
+   POL-1918-1919 **not linked** (current CSV: `predecessor = NA`)
+6. **Kingdom of Romania** (gained Transylvania) — WHEP
+   ROU-1918-1919 **not linked** (current CSV:
+   `predecessor = ROU-1913-1918`, which is correct for Romania's
+   own continuity but does not capture the Transylvania transfer
+   from A-H)
+7. **Kingdom of Italy** (gained Trentino, Trieste, Istria, South
+   Tyrol) — WHEP ITA-1919-2025, no 1918–1919 transition row. The
+   territorial transfer is not captured anywhere in the
+   predecessor/successor graph.
+
+The consequence: **the single most consequential territorial
+event in early-20th-century Europe is invisible in the WHEP
+predecessor/successor graph**. Any analysis that walks the graph
+backward from modern Czechia, Slovakia, Slovenia, Croatia, Bosnia,
+or western Poland will hit a `predecessor: NA` wall and never
+reach the Austro-Hungarian parent.
+
+**Recommendation:** update `AUH-1908-1918.successor` to list all
+seven successor entities, and update the `predecessor` fields of
+F51-1918-1938, F248-1918-1919, POL-1918-1919 to include
+`AUH-1908-1918`. Decide separately (see the ROU case) whether to
+record the Transylvania transfer from A-H to ROU and the
+Trentino/Trieste/Istria transfer from A-H to ITA as additional
+`successor` links even though those states existed before 1918.
+
+Severity: MAJOR. Wiki cannot silently accept this. Polity pages
+for the AUH chain cite this proposal directly.
+
+### Finding 2 (MEDIUM) — AUT-1918-1919 / AUT-1918-2025 overlap
+
+**Observed:** two rows both starting 1918, both with
+`cow_code = 305`, both with `predecessor = AUH-1908-1918`, both
+with `successor = NA`, and no chain link between them.
+
+```
+AUT-1918-2025  Austria            1918-2025  AUH-1908-1918  NA
+AUT-1918-1919  Austria (1918-1919) 1918-1919  AUH-1908-1918  NA
+```
+
+Both rows claim to represent "Austria starting in 1918". Pattern
+matches `TUR-1800-1912` (the Ottoman duplicate flagged in an
+earlier proposal). This is a straight duplication.
+
+**Recommendation:** either (a) remove AUT-1918-1919 entirely (it
+is a 1-year orphan that duplicates the opening window of the
+main Austria row), or (b) keep it as a transition row
+representing the "Republic of German-Austria" 1918-11-12 →
+1919-10-21 and make AUT-1918-2025 start in 1919-10-22 with
+`predecessor = AUT-1918-1919` to establish the chain.
+
+Option (b) is historically more accurate — the Republic of
+German-Austria (Deutschösterreich) was a distinct legal entity
+from the post-Saint-Germain First Austrian Republic — but option
+(a) is simpler and matches the WHEP pattern of treating 1918 as
+the Austrian start without sub-1919 precision.
+
+Severity: MEDIUM. Same pattern as `TUR-1800-1912`, which is
+still unresolved.
+
+### Finding 3 (MEDIUM — policy question) — The 1867 Ausgleich split is inconsistent with the WHEP polity-definition rule
+
+**Observed:** the CSV splits the AUH chain at 1867 (Ausgleich)
+despite the Ausgleich being a constitutional / legal change, not
+a territorial change. Biger explicitly treats 1867 as a
+constitutional change: "In 1867 the Habsburg Empire became the
+dual monarchy of Austria-Hungary" (p.50). Wikipedia's date is
+1867-03-30. No territory was added to or removed from the polity
+by the Ausgleich itself.
+
+Under the WHEP polity-definition rule as currently written
+(`[log decision-whep-polity-definition]`): *"A new polity row is
+created when the territory undergoes a substantial territorial
+change. The triggering event is the territorial change itself,
+not the legal/diplomatic status of the unit before or after."*
+
+By this rule, the Austrian Empire → Austria-Hungary transition
+in 1867 is a non-splitting event, exactly like Luxembourg's 1848
+"independent in its own right" constitutional settlement (which
+is correctly treated as non-splitting on the `lux-1839-2025`
+page).
+
+**Two possible resolutions:**
+
+- (a) **Un-split.** Merge AUH-1800-1867 and AUH-1867-1908 (and
+  AUH-1908-1918 if Finding 4 below is also resolved by merging)
+  into a single row spanning the whole Austrian Empire /
+  Austria-Hungary period (1800 or 1804 to 1918).
+- (b) **Document an exception to the rule.** Add a new
+  `decision`-kind log entry stating that "fundamental
+  constitutional changes that alter the polity's internal
+  governance of trade and production" are a valid split trigger
+  even without territorial change, and cite 1867 Ausgleich as
+  the canonical example.
+
+Both are defensible. The wiki does not have the authority to
+pick one — this is a repo-rule decision. Tier X per
+`wiki/prompts/autonomous-next.md`.
+
+Severity: MEDIUM. The polity pages for the three AUH rows will
+hedge explicitly: "The current CSV splits this row at 1867 /
+1908, but the split events are constitutional rather than
+territorial, which is inconsistent with
+`[log decision-whep-polity-definition]`. See
+`[log proposal-auh-chain-audit]` for the audit finding."
+
+### Finding 4 (MEDIUM — policy question) — The 1908 Bosnia-annexation split shares Finding 3's issue
+
+**Observed:** the CSV splits AUH at 1908-10-06 (formal annexation
+of Bosnia-Herzegovina). From Austria-Hungary's perspective, Bosnia
+had been:
+
+- Austro-Hungarian-administered since 1878
+  (`[wikipedia-austria-hungary-2026-04-11 §1878]`,
+  `[biger-1995 §bosnia]`)
+- In the Austro-Hungarian customs union since 1879 (standard
+  historical fact, not yet cited to a specific source)
+
+The 1908 event changed de jure sovereignty but not de facto
+control, trade regime, or economic integration. Under the strict
+WHEP rule, this is not a split trigger.
+
+The Ottoman side of the 1908 event *is* a legitimate split for
+the Ottoman chain (`[ott-1886-1908]` → `[ott-1908-1912]`)
+because the Ottoman Empire lost legal sovereignty over Bosnia in
+1908 (and lost its customs-union foothold for that period, if
+Bosnia was in fact in the A-H customs union from 1879). But
+**the symmetry is broken**: the Ottoman row splits at 1908
+because of a legal loss, while the A-H row splits at 1908
+because of... what? Under the critical-stance rule, this
+asymmetry is itself a signal that one of the two splits is
+unjustified.
+
+**Recommendation:** resolve jointly with Finding 3 — either both
+sides un-split at 1908 (the Ottoman row runs 1886–1912 as one
+row; the AUH row runs 1867–1918 or 1800–1918 as one row), or an
+explicit exception is documented for legal sovereignty transfers
+as splitting events.
+
+Severity: MEDIUM. Same class as Finding 3.
+
+### Finding 5 (MINOR) — AUH-1800-1867 label anachronism
+
+**Observed:** `AUH-1800-1867.polity_name = "Austrian Empire
+(to 1867)"` for the time range 1800–1867. The Austrian Empire
+was proclaimed on 1804-08-11 by Franz II
+(`[wikipedia-austria-hungary-2026-04-11 §1804-08-11]`). Pre-1804,
+the Habsburg state was the Archduchy of Austria and associated
+lands under the (still-existing) Holy Roman Empire.
+
+The 1800–1804 window in this row is therefore pre-Empire, and
+labeling it "Austrian Empire" is a 4-year anachronism.
+
+**Recommendation:** either (a) change `start_year` to 1804, or
+(b) rename to something like "Habsburg Monarchy / Austrian
+Empire" to cover the pre-1804 period. Option (a) is cleaner but
+loses 4 years of data (FT trade data etc.); option (b) is more
+accurate historically.
+
+Severity: MINOR. Much smaller scale than the USSR-1905 label
+issue (which is 17 years of anachronism). The WHEP database
+floor is 1800, so pre-1804 content has to be labeled *something*.
+
+### Summary of AUH audit
+
+| Finding | Severity | Requires | Blocks |
+|---|---|---|---|
+| 1. Successor list incomplete | MAJOR | CSV edit (successor + predecessor fields on ~5 rows) | Graph traversal through the A-H dissolution |
+| 2. AUT-1918-1919/AUT-1918-2025 overlap | MEDIUM | CSV edit (row removal or chain fix) | Clean Austria page |
+| 3. 1867 Ausgleich split | MEDIUM (policy) | `decision`-kind log entry | The WHEP rule's consistency across the wiki |
+| 4. 1908 Bosnia split | MEDIUM (policy) | `decision`-kind log entry (joint with Finding 3) | Rule consistency (Ottoman side affected too) |
+| 5. Label anachronism | MINOR | CSV edit (start_year or polity_name) | Nothing load-bearing |
+
+All five are Tier X under the autonomous-next prompt — the wiki
+cannot resolve any of them without human action. They are filed
+here so a human review can see them together and decide.
+
+---
+
 <a id="decision-csv-is-evidence-not-authority"></a>
 ## 2026-04-11 — decision-csv-is-evidence-not-authority
 **Touched:** wiki/README.md, wiki/prompts/ingest.md, wiki/prompts/lint.md, wiki/prompts/autonomous-next.md

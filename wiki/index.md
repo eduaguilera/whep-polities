@@ -8,11 +8,12 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 4 |
-| Sources ingested | 6 |
+| Polity pages | 7 |
+| Sources ingested | 7 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | 11 (1 fully resolved, 3 partially resolved by Biger Ottoman batch ingest) |
+| Open questions across wiki | ~23 (11 prior + ~12 new on AUH chain, pre-audit) |
+| Open `proposal`-kind log entries | 2 (tur-1800-1912-duplication, auh-chain-audit) |
 
 ## Polities by continent
 
@@ -26,6 +27,16 @@ lint fails if the index is stale.
   `OTT-1886-1908`, draft, 2 open questions.
 - [Ottoman Empire (1908–1912)](polities/ott-1908-1912.md) —
   `OTT-1908-1912`, draft, 3 open questions.
+- [Austrian Empire (to 1867)](polities/auh-1800-1867.md) —
+  `AUH-1800-1867`, draft, 5 open questions. Flagged by
+  audit Findings 3 (1867 split) and 5 (label anachronism).
+- [Austria-Hungary (to 1908)](polities/auh-1867-1908.md) —
+  `AUH-1867-1908`, draft, 4 open questions. Flagged by audit
+  Findings 3 (1867 split) and 4 (1908 split).
+- [Austria-Hungary (1908–1918)](polities/auh-1908-1918.md) —
+  `AUH-1908-1918`, draft, 4 open questions. Flagged by audit
+  Findings 1 (successor list incomplete — major) and 4
+  (1908 start).
 
 ### Africa
 _(none yet)_
@@ -77,12 +88,26 @@ _(none yet)_
   1995 (ISBN 0-8160-3233-5), in collaboration with the Durham
   International Boundaries Research Unit. Strict all-rights-reserved;
   fair-use short-quote citation only. PDF gitignored, SHA-256
-  recorded. Five `§`-sections so far (luxembourg, algeria,
-  bosnia, libya, tunisia). Cited by:
+  recorded. Six `§`-sections so far (luxembourg, austria,
+  algeria, bosnia, libya, tunisia). Cited by:
   [lux-1839-2025](polities/lux-1839-2025.md),
   [ott-1800-1886](polities/ott-1800-1886.md),
   [ott-1886-1908](polities/ott-1886-1908.md),
-  [ott-1908-1912](polities/ott-1908-1912.md).
+  [ott-1908-1912](polities/ott-1908-1912.md),
+  [auh-1800-1867](polities/auh-1800-1867.md),
+  [auh-1867-1908](polities/auh-1867-1908.md),
+  [auh-1908-1918](polities/auh-1908-1918.md).
+- [wikipedia-austria-hungary-2026-04-11](sources/wikipedia-austria-hungary-2026-04-11.md)
+  — Snapshot of the *Austria-Hungary* Wikipedia article
+  covering 1804–1920. Verbatim dates for the 1804 Empire
+  proclamation, 1859 Lombardy loss, 1866 Venetia loss, 1867
+  Ausgleich, 1878 Bosnia occupation, 1908-10-06 Bosnia
+  annexation, 1914 WWI entry, 1918-10-31 dissolution, 1919
+  Saint-Germain, 1920 Trianon, plus the list of seven
+  successor states. Cited by:
+  [auh-1800-1867](polities/auh-1800-1867.md),
+  [auh-1867-1908](polities/auh-1867-1908.md),
+  [auh-1908-1918](polities/auh-1908-1918.md).
 
 ## Aggregates and unions
 

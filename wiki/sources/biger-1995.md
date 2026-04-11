@@ -229,6 +229,163 @@ substantial territorial change.
    fragile for borderline cases (e.g. Macedonia/FYROM in the 1995
    vintage).
 
+<a id="austria"></a>
+### §austria — Austrian / Austro-Hungarian boundary history
+
+Compiled from the AUSTRIA main entry (pp.47–48), AUSTRIA–CZECH
+REPUBLIC (pp.48–49), AUSTRIA–GERMANY (p.49), AUSTRIA–HUNGARY
+(pp.50–51), AUSTRIA–ITALY (p.51). Also draws on the HUNGARY main
+entry and HUNGARY–AUSTRIA-related subsections (pp.266–272, already
+quoted in `§bosnia` above in a different context).
+
+**Pre-1804 Habsburg background** (p.47):
+
+- "From the thirteenth century Austria developed territorially
+  from an ill-defined collection of original Habsburg regions;
+  yet no Austrian nation as such existed before the twentieth
+  century." (p.47)
+- "The Austrian empire proper came into its own after the
+  splitting of the Habsburg family estate among the Spanish and
+  German branches in 1555." (p.47). Biger does not give the
+  exact 11 August 1804 proclamation date of the Austrian Empire;
+  use `[wikipedia-austria-hungary-2026-04-11 §1804-08-11]` for
+  that.
+
+**Scale of the nineteenth-century empire** (p.48):
+
+- "By the nineteenth century Austria had grown into the center
+  of a sprawling multinational empire, eight times the size of
+  its current territory, and ruling over Czechs, Slovaks,
+  Hungarians, Croats, Serbs, Slovenes, Poles, Ruthenians, Jews,
+  Bosnians, Romanians and many others. But 'Austrians' as such
+  did not yet exist." (p.48)
+- "Culturally, the Austrian (after 1866, Austro-Hungarian)
+  Empire contributed to baroque art and classical music." (p.48)
+  **Note:** Biger uses "after 1866" for the transition to the
+  dual monarchy, which is a one-year loose gloss for the 1867
+  Ausgleich. Biger's narrative prose is not date-precise in this
+  entry — the 1867 date itself is confirmed on p.50.
+
+**1866 Austro-Prussian War** (p.50, AUSTRIA–CZECH REPUBLIC
+Historical Background):
+
+- "The Austria–Czech boundary originates from the defeat of
+  Austria at Hradec Králové (Königgrätz) in 1866, ending the
+  six-week Austro-Prussian war over the control of Germany."
+  (p.50)
+- "The subsequent formation of the North German Confederation of
+  German states under Prussian leadership excluded Austria and
+  allowed the southern German states to define their own
+  relationships with the confederation." (p.50)
+- This is the **real** territorial-political event behind the
+  transformation from the Austrian Empire to Austria-Hungary.
+  Austria was excluded from German affairs, lost Venetia to
+  Italy as part of the peace settlement (Italy was Prussia's
+  ally), and had to reorganize internally to accommodate
+  Hungarian demands for autonomy — leading directly to the
+  Ausgleich a year later. Biger's framing makes it clear that
+  1866, not 1867, was the territorial/political turning point.
+
+**1867 Ausgleich (constitutional change)** (p.50):
+
+- "In 1867 the Habsburg Empire became the dual monarchy of
+  Austria-Hungary, although it did not unite the Slav and
+  German components strongly enough to prevent the growth of
+  nationalist movements. Austrians considered themselves part
+  of the German nation and after World War I wanted to be
+  attached to Germany." (p.50)
+- Biger frames 1867 as a constitutional / nationalist /
+  sovereignty moment, not a territorial one. "The Habsburg
+  Empire became the dual monarchy" — the territory is unchanged,
+  the internal organization is reorganized.
+
+**1878 Bosnia occupation** (referenced in §bosnia above):
+"following [the great Balkan crisis of 1875–1878]
+Bosnia-Herzegovina was put under Austro-Hungarian administration"
+(p.85, BOSNIA main entry).
+
+**1919 dissolution** (pp.47, 49, 51):
+
+- "The empire's dismemberment in 1919 left modern Austria a more
+  homogeneous Germanic and Catholic state." (p.48). **Biger uses
+  "1919", not "1918"**, for the dissolution — consistent with
+  the Treaty of Saint-Germain (10 September 1919) rather than
+  the armistice (3 November 1918) or the Hungarian declaration
+  of independence (31 October 1918). The WHEP CSV uses 1918;
+  Biger uses 1919. This is a date-precision difference, not a
+  contradiction.
+- "The borders of the Czech Republic originate from the Treaty
+  of Versailles (1919), when the Habsburg Empire was abolished
+  following World War I. The last emperor of the
+  Austro-Hungarian Empire, Charles I, had tried to salvage his
+  empire by transforming it into a federation of states.
+  However, the conflict between the German nationalists and
+  Slavs in Austria prevented this solution. Moreover, the Peace
+  Commissioners at Versailles would not condone anything less
+  than the destruction of the empire which they blamed for
+  starting the Great War." (p.49)
+- "In the Lana Agreement of 16 December 1921, Austria finally
+  renounced all claim on the Sudetenland to Czechoslovakia."
+  (p.49) — a 1921 formal renunciation post-dissolution, worth
+  noting for trade-data continuity.
+
+**Austria post-1919** (p.51, AUSTRIA–HUNGARY):
+
+- "After World War I Hungary consistently canvassed for a
+  revision of the Treaty of Trianon. Allied with Germany and
+  Italy during much of World War II, Hungary regained almost
+  40% of the area in the Vienna Award of 30 August 1940."
+  (partial quote from HUN-related section, p.272). Relevant for
+  the HUN-1938-1947 WHEP row, not directly for AUH rows.
+- "In the Treaty of Versailles (1919), the boundaries of 1866
+  were restored and Austria was declared an independent
+  republic and compelled to renounce all hopes of annexation
+  with Germany. Furthermore, Germany was required to recognize
+  Austria's independence." (p.50). **Load-bearing**: the
+  post-1919 Austrian borders are essentially the 1866 borders
+  (i.e. the borders Austria had immediately after losing
+  Venetia and being excluded from Germany). This is a clean
+  statement that the 1919 Austria is the "pre-Hungarian"
+  Austrian core plus nothing, rolled back to the post-1866
+  configuration.
+
+**Italy relation** (p.51, AUSTRIA–ITALY):
+
+- "The western section of the boundary runs along the principal
+  Alpine crests, along the southern border of the German-speaking
+  Tirol region and was demarcated in 1911 and 1912. Italy had
+  raised claims for the 'natural boundary' in this area, based
+  on the Austrian (later Austro-Hungarian) Empire and no
+  international boundary existed in that area. Italy acceded
+  and became an independent country in 1861 and the boundary
+  with Austria was established five years later, at the Vienna
+  Peace Treaty between Austria and Italy, signed on 3 October
+  1866." (p.51)
+- Key dates: **1861 Italian independence**, **3 October 1866
+  Vienna Peace Treaty** (Austria ceding Venetia to Italy via
+  French mediation — specifically, Austria ceded Venetia to
+  France, which then transferred it to Italy). Independent
+  Austrian confirmation of the 1866 territorial event.
+
+**Load-bearing for AUH chain audit:**
+
+- The real territorial events for the Austrian Empire in the
+  19th century are **1859 (Lombardy to Sardinia-Piedmont) and
+  1866 (Venetia to Italy, exclusion from German affairs)**. The
+  1867 Ausgleich is a constitutional change without a
+  territorial change — Biger explicitly treats it as such.
+- The 1908 Bosnia annexation is a de jure sovereignty change
+  without a de facto territorial change — Bosnia had been
+  Austro-Hungarian-administered since 1878 (`[§bosnia]`). Biger
+  says Austria "occupied" in 1878 and does not separately
+  highlight 1908; the 1908 date is Wikipedia's.
+- The real end date of the Austrian Empire / Austria-Hungary
+  depends on which event you pick: 1918-10-31 (Hungarian
+  separation), 1918-11-03 (Villa Giusti armistice), 1919-09-10
+  (Saint-Germain for Austria), 1920-06-04 (Trianon for
+  Hungary). Biger uses "1919" in narrative prose; the CSV uses
+  "1918".
+
 <a id="algeria"></a>
 ### §algeria — Algerian boundary history and the 1830 French conquest
 
