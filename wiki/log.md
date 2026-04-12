@@ -26,6 +26,24 @@ Kinds:
 
 ---
 
+## autonomous-7-f228-1800-1856
+**Date:** 2026-04-12
+**Touched:** F228-1800-1856, F228-1856-1905
+**Source:** wikipedia-russian-empire-2026-04-11 (existing), cow-state-system-v2024, cliopatria-v0.1.3
+**Kind:** ingest
+
+Autonomous iteration 7. Creates the F228-1800-1856 polity page —
+the 57-year Russian Empire pre-Crimean War row. Covers Georgia
+(1801), Finland (1809), Bessarabia (1812), Congress Poland (1815),
+Caucasus conquests, and the Crimean War (1853-56). Closes the
+predecessor gap on F228-1856-1905. No new source file needed — the
+existing wikipedia-russian-empire-2026-04-11 covers pre-1856 events.
+
+4 open questions (oq-biger-russia, oq-pre-1801-georgia-date,
+oq-finnish-war-1809, oq-caucasus-conquest-timeline).
+
+---
+
 ## lint-2026-04-12
 **Date:** 2026-04-12
 **Touched:** wiki/index.md

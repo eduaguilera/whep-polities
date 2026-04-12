@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 12 |
+| Polity pages | 13 |
 | Sources ingested | 12 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -51,6 +51,10 @@ lint fails if the index is stale.
   `AUH-1908-1918`, draft, 4 open questions. Flagged by audit
   Findings 1 (successor list incomplete — major) and 4
   (1908 start).
+- [Russian Empire (to 1856)](polities/f228-1800-1856.md) —
+  `F228-1800-1856`, draft, 4 open questions. Pre-Crimean War
+  era: Georgia, Finland, Bessarabia, Congress Poland acquisitions.
+  ~17.4M km². Predecessor gap on F228-1856-1905 now closed.
 - [Russian Empire (1856–1905)](polities/f228-1856-1905.md) —
   `F228-1856-1905`, draft, 4 open questions. Alexander II/III
   reform and expansion era: Crimean War end → Portsmouth.
