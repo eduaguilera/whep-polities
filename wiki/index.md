@@ -12,7 +12,7 @@ lint fails if the index is stale.
 | Sources ingested | 9 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~33 (prior − 1 resolved on OTT-1886-1908) |
+| Open questions across wiki | ~32 (prior − 2 resolved: OTT-1886-1908, AUH-1800-1867) |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
@@ -28,7 +28,7 @@ lint fails if the index is stale.
 - [Ottoman Empire (1908–1912)](polities/ott-1908-1912.md) —
   `OTT-1908-1912`, draft, 3 open questions.
 - [Austrian Empire (to 1867)](polities/auh-1800-1867.md) —
-  `AUH-1800-1867`, draft, 5 open questions. Flagged by
+  `AUH-1800-1867`, draft, 4 open questions. Flagged by
   audit Findings 3 (1867 split) and 5 (label anachronism).
 - [Austria-Hungary (to 1908)](polities/auh-1867-1908.md) —
   `AUH-1867-1908`, draft, 4 open questions. Flagged by audit

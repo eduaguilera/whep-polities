@@ -25,6 +25,40 @@ Kinds:
 
 ---
 
+<a id="autonomous-2-cow-auh-dates"></a>
+## 2026-04-12 — autonomous-2-cow-auh-dates
+**Touched:** AUH-1800-1867
+**Source:** cow-state-system-v2024 (statelist2024.csv)
+**Kind:** autonomous
+
+**Phase 1 (inventory):** Iteration 2. State carried forward from
+iteration 1; OTT-1886-1908 now at 0 unresolved OQs. Remaining
+Tier 1 items: 3 COW queries (oq-cow-auh-dates, oq-cow-russia-
+early-empire, oq-cow-code-255-vs-260).
+
+**Phase 2 (classification):** Same tier structure as iteration 1,
+minus the resolved oq-bosnia-double-count.
+
+**Phase 3 (selection):** `oq-cow-auh-dates` on `auh-1800-1867`.
+Tier 1, single grep on already-committed COW data. Tiebreaker:
+AUH chain is the most cross-referenced (3 pages), and resolving
+the COW dates here informs all three.
+
+**Phase 4 (execution):** Extracted from
+`wiki/sources/data/cow-v2024/statelist2024.csv`: Austria-Hungary
+(`AUH`, `ccode=300`) has a single continuous COW tenure from
+1816-01-01 to 1918-11-12. No splits at 1867 (Ausgleich) or 1908
+(Bosnia). Successor entries: Austria `ccode=305` (1919-09-10 to
+1938-03-13; 1955-07-27 onward), Hungary `ccode=310` (1918-11-16
+onward). Updated the sourced claim and resolved the OQ.
+
+**Outcome:** `oq-cow-auh-dates` resolved. AUH-1800-1867 goes from
+5 to 4 unresolved open questions.
+
+**Stop decision:** continue (iteration 2 of 3)
+
+---
+
 <a id="autonomous-1-bosnia-double-count"></a>
 ## 2026-04-12 — autonomous-1-bosnia-double-count
 **Touched:** OTT-1886-1908
