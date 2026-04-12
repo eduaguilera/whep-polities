@@ -89,6 +89,10 @@ Then:
 6. **Update `wiki/index.md`** if any new polity pages were created or
    the source list changed.
 
+7. **Rebuild the visualization site** if the CSV was edited: run
+   `bash site/build.sh` from the project root. This updates
+   `site/polities.csv` and `site/polities.geojson`.
+
 **Constraints:**
 - The agent maintains `data/final/polities_database.csv` directly when
   the wiki's sourced findings require changes. Log each CSV edit in

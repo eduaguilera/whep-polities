@@ -78,6 +78,28 @@ For scientific context on why these territorial decisions matter:
 - `~/whep-wiki/wiki/data-whep-polities.md` — Technical overview of this database from the project perspective
 - `~/whep-wiki/wiki/topic-polities-wiki-bridge.md` — Full bridge reference between both wikis
 
+## Visualization site
+
+The project includes an interactive web visualization at `site/index.html`
+(MapLibre GL JS map with year slider, search, and type filters). It reads
+from `site/polities.csv` and `site/polities.geojson`.
+
+**Rebuilding:** After any CSV edit, run `bash site/build.sh` from the
+project root to regenerate the site data files. Requires `ogr2ogr` (GDAL)
+and `python3`. The build script:
+1. Converts `data/final/polities_database.gpkg` to simplified GeoJSON
+2. Fixes antimeridian-spanning geometries (Cliopatria Russia)
+3. Copies the CSV to `site/polities.csv`
+
+**Known limitations:**
+- The GeoJSON comes from the GeoPackage, which is built by the R pipeline.
+  When the agent adds new CSV rows, they won't have polygons in the GeoJSON
+  until the GeoPackage is rebuilt. The site will show the row in search/list
+  but not on the map.
+- Some Cliopatria polygons (pre-1886) are single-time-step approximations
+  that overstate or understate territory for parts of their date range.
+- Chinese CHGIS polygons are skipped (wrong CRS, known bug).
+
 ## Layers
 
 1. **Raw sources** — `wiki/sources/*.md`, one per external reference
