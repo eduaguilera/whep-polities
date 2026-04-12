@@ -93,6 +93,11 @@ Then:
    `bash site/build.sh` from the project root. This updates
    `site/polities.csv` and `site/polities.geojson`.
 
+**Quality gate:** Every polity page must contain at least one sourced
+claim from an external source beyond `[database]`. Never bulk-generate
+pages from CSV metadata alone — that creates empty shells that violate
+the wiki's role as the primary source of truth.
+
 **Constraints:**
 - The agent maintains `data/final/polities_database.csv` directly when
   the wiki's sourced findings require changes. Log each CSV edit in

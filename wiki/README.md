@@ -266,6 +266,14 @@ Prompts for each workflow live in `wiki/prompts/`:
 1. **Never invent citations.** If a claim has no source in `wiki/sources/`,
    either cite `[database]` (meaning: it came from the CSV and has no
    deeper source yet) or move it to *Open questions*.
+1b. **Never create skeleton pages from CSV metadata alone.** Every polity
+   page must contain at least one sourced claim from an external source
+   (Biger, CShapes, COW, Wikipedia, or another academic source) beyond
+   just citing `[database]`. A page that only echoes CSV data adds
+   nothing — the CSV already exists. Pages are created through the
+   ingest workflow with real research, not bulk-generated from the CSV.
+   Quality over quantity: 220 sourced pages are worth more than 1386
+   empty shells.
 2. **Sources are immutable.** Correcting an old source means adding a new
    source that supersedes it and updating the affected polity pages.
 3. **Record contradictions, don't resolve them silently.** If a new source

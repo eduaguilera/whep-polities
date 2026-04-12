@@ -122,6 +122,15 @@ already paid" ingests — opening the PDF is free the second time.
 - A new CLI or scraped claim from the source that can resolve
   multiple open questions at once.
 
+### Quality gate for new pages
+
+**Never bulk-generate pages from CSV metadata.** Every new polity
+page must be created through proper research: read at least one
+external source (Biger, CShapes query, COW data, Wikipedia, or
+another academic source), write real sourced claims, and cross-
+reference with existing pages. A page that only cites `[database]`
+is trash — delete it. Quality over quantity.
+
 ### Tier 3 — New polity page creation
 
 Questions or structural gaps that resolve by creating a new polity
