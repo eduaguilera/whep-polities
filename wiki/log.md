@@ -26,6 +26,48 @@ Kinds:
 
 ---
 
+## autonomous-25-post-dissolution
+**Date:** 2026-04-12
+**Touched:** RUS-1991-2014, RUS-2014-2025, UKR-1991-2014, UKR-2014-2025, BLR-1991-2025, EST-1991-2025, LVA-1991-2025, LTU-1991-2025, MDA-1991-2025, CZE-1993-2025, SVK-1993-2025, F248-1991-1992, SVN-1992-2025, HRV-1992-2025, BIH-1992-2025, MKD-1991-2025, SCG-1992-2006, MNE-2006-2025, F51-1947-1993, F248-1920-1991, F228-1945-1991
+**Source:** cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Autonomous iteration 25. Creates 18 polity pages for modern
+post-dissolution states and updates 3 existing pages:
+
+**Post-Soviet European (9 pages + 2 continuations):**
+- **RUS-1991-2014** and **RUS-2014-2025** -- Russia split at 2014
+  Crimea annexation. Post-Soviet Federation, CIS, Chechen Wars, Putin.
+- **UKR-1991-2014** and **UKR-2014-2025** -- Ukraine split at 2014
+  Crimea loss. Orange Revolution, Euromaidan, 2022 invasion.
+- **BLR-1991-2025** -- Belarus. Lukashenko since 1994.
+- **EST-1991-2025**, **LVA-1991-2025**, **LTU-1991-2025** -- Baltic
+  states. All EU/NATO 2004.
+- **MDA-1991-2025** -- Moldova. Transnistria conflict.
+
+**Czech/Slovak (2 pages):**
+- **CZE-1993-2025** and **SVK-1993-2025** -- Velvet Divorce successors.
+
+**Yugoslav successors (7 pages):**
+- **F248-1991-1992** -- 2-year transitional dissolution row.
+- **SVN-1992-2025**, **HRV-1992-2025**, **BIH-1992-2025** -- Slovenia,
+  Croatia, Bosnia.
+- **MKD-1991-2025** -- North Macedonia (dual predecessor).
+- **SCG-1992-2006** -- Serbia and Montenegro (FRY then State Union).
+- **MNE-2006-2025** -- Montenegro (2006 independence).
+
+**Updated existing pages:**
+- [f51-1947-1993](polities/f51-1947-1993.md): removed TODO from CZE/SVK
+  successor links (now live). Resolved oq-velvet-divorce-successors.
+- [f248-1920-1991](polities/f248-1920-1991.md): linked to
+  f248-1991-1992 and mkd-1991-2025. Partially resolved
+  oq-dissolution-successor-gap.
+- [f228-1945-1991](polities/f228-1945-1991.md): linked 9 European
+  successor pages. Partially resolved oq-15-successor-pages (6
+  Central Asian/Caucasus successors still needed).
+
+---
+
 ## autonomous-24-f228-ser
 **Date:** 2026-04-12
 **Touched:** F228-1945-1991, SER-1913-1915, SER-1913-1918, F228-1940-1945, SER-1816-1913
