@@ -147,40 +147,38 @@ older cross-references.
 
 ## Cross-reference conventions
 
-All inter-file references MUST be **inline markdown links** so both
-GitHub and Obsidian render them as clickable and navigable. Use the
-form `[display text](relative/path.md#anchor)`.
+All inter-file references MUST be **inline markdown links**. Use
+**filename-only paths** (no directory prefixes like `../sources/`)
+so Obsidian resolves them by shortest-path lookup. GitHub links to
+cross-directory files will not navigate, but display text remains
+readable.
 
 ```markdown
     The 1878 Congress of Berlin
-    [cshapes-2.0 §coding-changes](../sources/cshapes-2.0.md#coding-changes)
+    [cshapes-2.0 §coding-changes](cshapes-2.0.md#coding-changes)
     is the single biggest territorial change in the row ...
 
     See [ott-1800-1886](ott-1800-1886.md) for the predecessor.
-    Check [database](../../data/final/polities_database.csv).
+    Logged at [log decision-foo](log.md#decision-foo).
 ```
 
 Conventions:
 
-- Citation display text uses `source-slug §section` inside square
-  brackets: `[biger-1995 §austria](../sources/biger-1995.md#austria)`.
-  The `§` is display-only — the heading in the source file is just
-  `### austria` (no `§` prefix), so both renderers auto-generate
-  `#austria` as the anchor.
-- Same-page open-question references:
+- **Source citations**: `[biger-1995 §austria](biger-1995.md#austria)`.
+  Use the source filename only — no `../sources/` prefix. The `§`
+  is display-only; the heading in the source file is `### austria`.
+- **Same-page anchors**:
   `[oq-polygon-provenance](#oq-polygon-provenance)`.
-- Cross-page polity references use relative paths:
+- **Cross-page polity references** (same directory):
   `[ott-1800-1886](ott-1800-1886.md)`.
-- Log references: `[log slug](../log.md#slug)`. Log entry headings
-  are `## slug` (the slug alone, no date prefix), so both GitHub
-  and Obsidian auto-generate `#slug`. The date goes on a
-  `**Date:** YYYY-MM-DD` line inside the entry body.
-- Source section references:
-  `[source §section](../sources/source.md#section)`. Source file
-  section headings are `### section` or `#### section` (no `§`).
-- Database link: `[database](../../data/final/polities_database.csv)`.
-- **Do not use reference-style links** (`[text][ref]` + `[ref]: url`
-  at the bottom). Obsidian cannot navigate them reliably.
+- **Log references**: `[log slug](log.md#slug)` — no `../` prefix.
+  Log entry headings are `## slug` (slug alone, no date prefix),
+  so both renderers auto-generate `#slug`.
+- **Database link**: `[database](../../data/final/polities_database.csv)`.
+  This is outside the Obsidian vault and won't navigate in Obsidian
+  — it's kept for GitHub and as documentation.
+- **Do not use** reference-style links (`[text][ref]` + `[ref]: url`)
+  or `../` directory prefixes. Neither works reliably in Obsidian.
 
 ## Source schema
 

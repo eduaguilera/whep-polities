@@ -10,11 +10,16 @@ for the schema, rules, and the **coverage goal** (complete
 spatiotemporal coverage — every km², every year, no gaps).
 
 **Markdown dual-compatibility rule.** The wiki renders in both GitHub
-and Obsidian. Never use `<a id="...">` HTML anchors. Heading text must
-equal the target slug so both platforms auto-generate the same anchor:
-- Log entries: `## slug` (date on a `**Date:**` line inside the body)
+and Obsidian. Key constraints:
+- Never use `<a id="...">` HTML anchors — Obsidian ignores them.
+- Never use `../` directory prefixes in links — Obsidian can't resolve
+  them. Use filename-only paths: `(cshapes-2.0.md#scope)` not
+  `(../sources/cshapes-2.0.md#scope)`.
+- Never use reference-style link definitions — Obsidian can't navigate
+  them. Use inline links: `[text](file.md#anchor)`.
+- Log entries: `## slug` (date on a `**Date:**` line inside the body).
 - Source sections: `### section-name` (no `§` prefix in the heading;
-  `§` is display-only in inline citations like `[source §section]`)
+  `§` is display-only in inline citations like `[source §section]`).
 
 Then:
 

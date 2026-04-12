@@ -39,8 +39,8 @@ bugs — flag them as open questions.
 
 ## Sourced claims
 
-- Claim one. [source-slug §section](../sources/source-slug.md#section)
-- Claim two. [source-slug §section](../sources/source-slug.md#section)
+- Claim one. [source-slug §section](source-slug.md#section)
+- Claim two. [source-slug §section](source-slug.md#section)
 - Claim from the CSV with no deeper source yet. [database](../../data/final/polities_database.csv)
 
 ## Contradictions
@@ -50,7 +50,7 @@ database currently follows and why. Never silently pick.>
 
 ## Decisions
 
-- [log slug](../log.md#slug) one-line summary
+- [log slug](log.md#slug) one-line summary
 
 ## Open questions
 
