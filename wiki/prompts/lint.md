@@ -87,9 +87,16 @@ Check, in order:
    - CSV rows that are not reachable via any predecessor/successor
      chain from an existing wiki page.
 
-10. **Obsidian compatibility.** Check for `<a id="...">` HTML anchors
-    in any wiki file (log, sources, polities). These break Obsidian
-    section navigation. Flag them as must-fix.
+10. **Obsidian compatibility.** The wiki must render and navigate
+    correctly in Obsidian. Check for:
+    - `<a id="...">` HTML anchors — Obsidian ignores them.
+    - `../` directory prefixes in link URLs — Obsidian can't resolve
+      them. All cross-directory links must use filename-only paths
+      (e.g. `(cshapes-2.0.md#scope)` not `(../sources/cshapes-2.0.md#scope)`).
+    - Reference-style link definitions (`[ref]: url` at the bottom
+      of a file) — Obsidian can't navigate them. All links must be
+      inline: `[text](file.md#anchor)`.
+    Flag any violations as must-fix.
 
 Output format:
 - **Summary** — counts for each check.

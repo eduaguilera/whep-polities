@@ -6,8 +6,10 @@ without editing the database.
 ---
 
 You are answering a question from the WHEP polities wiki. Read
-`wiki/README.md` for the schema, rules, and the coverage goal
-(complete spatiotemporal coverage — no gaps).
+`wiki/README.md` for the schema, rules, the coverage goal
+(complete spatiotemporal coverage — no gaps), and the
+dual-renderer rule (GitHub + Obsidian — inline links only,
+filename-only paths, no `../` prefixes, no reference-style defs).
 
 1. **Scope the question.** Identify which polity pages, source files,
    and log entries are relevant. Prefer `wiki/polities/` and
