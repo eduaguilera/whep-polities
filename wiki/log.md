@@ -26,6 +26,36 @@ Kinds:
 
 ---
 
+## autonomous-24-f228-ser
+**Date:** 2026-04-12
+**Touched:** F228-1945-1991, SER-1913-1915, SER-1913-1918, F228-1940-1945, SER-1816-1913
+**Source:** cshapes-2.0, cow-state-system-v2024, wikipedia-russian-empire-2026-04-11, biger-1995
+**Kind:** ingest
+
+Autonomous iteration 24. Creates 3 polity pages and updates 2:
+
+- **F228-1945-1991** -- 47-year row. Final row in the F228 chain
+  (11 rows, 191 years). Soviet superpower era. Cold War. Gorbachev
+  reforms. Dissolved 26 December 1991 into 15 successor republics
+  -- the largest dissolution event in the wiki. None of the 15
+  successor pages exist yet (massive coverage gap). Biger §russia
+  confirms 15 republics and 25 million Russian diaspora.
+- **SER-1913-1915** -- 3-year row. Post-Balkan Wars Serbia through
+  WWI occupation. Gained Kosovo and Macedonia. Assassination of
+  Archduke Franz Ferdinand. Overrun by Central Powers late 1915.
+- **SER-1913-1918** -- 6-year row overlapping with SER-1913-1915.
+  Dual predecessor (unusual). Represents Serbia's continued legal
+  existence including government-in-exile on Corfu. CSV successor=NA
+  but historically became core of Yugoslavia (F248) -- reciprocal
+  gap with f248-1918-1919's predecessor=NA bug.
+
+Updated [f228-1940-1945](polities/f228-1940-1945.md): removed TODO
+from successor link (now live). Updated
+[ser-1816-1913](polities/ser-1816-1913.md): removed TODO from
+successor links (now live).
+
+---
+
 ## autonomous-22-fin-alb-f51-f248
 **Date:** 2026-04-12
 **Touched:** FIN-1917-1940, FIN-1940-2025, ALB-1913-2025, F51-1938-1945, F51-1945-1947, F51-1947-1993, F248-1920-1991

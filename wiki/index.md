@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 85 |
+| Polity pages | 88 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -132,6 +132,9 @@ lint fails if the index is stale.
 - [Poland (1918-1919)](polities/pol-1918-1919.md) —
   `POL-1918-1919`, draft, 2 open questions. Reconstituted from
   triple partition. Borders fluid 1918-1921.
+- [USSR (1945-1991)](polities/f228-1945-1991.md) — `F228-1945-1991`, draft. Soviet superpower era. 15 successor states. F228 chain complete (11 rows, 1800→1991).
+- [Serbia (1913-1918)](polities/ser-1913-1918.md) — `SER-1913-1918`, draft. Dual predecessor. Yugoslavia successor gap.
+- [Serbia (1913-1915)](polities/ser-1913-1915.md) — `SER-1913-1915`, draft. WWI occupation.
 - [USSR (1940-1945)](polities/f228-1940-1945.md) — `F228-1940-1945`, draft. WWII. Correctly labeled.
 - [USSR (1921-1940)](polities/f228-1921-1940.md) — `F228-1921-1940`, draft. Partial anachronism (USSR from Dec 1922).
 - [USSR (1920-1921)](polities/f228-1920-1921.md) — `F228-1920-1921`, draft. RSFSR, Treaty of Riga. Mislabeled.
