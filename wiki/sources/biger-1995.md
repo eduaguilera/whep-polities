@@ -770,6 +770,239 @@ and very costly war), central Asia and the Russian Far East." →
 republics. "25,000,000 Russians found themselves living outside
 Russia, including 11,000,000 in the Ukraine alone."
 
+### albania
+*Albanian boundary history (pp.19–22).*
+
+Albania (Shqipëri): area 11,101 sq mi [28,752 sq km]; population
+3,400,000 [1994]. Capital: Tirana. Bounded by Serbia (178 mi;
+287 km), Macedonia (94 mi; 151 km), Greece (175 mi; 282 km),
+and the Adriatic Sea.
+
+- "The Albanians never formed a state of their own until the
+  twentieth century." (p.19)
+- "The creation of Albania in 1913 was more the result of Italian
+  and Austro-Hungarian efforts" (p.19) — i.e. great-power
+  sponsorship, not organic state formation.
+- Albanian nationalism first formulated 1878: "Albanian League
+  for the Defense of the Rights of the Albanian People" (p.19).
+- "After World War I Albania's independence was recognized" (p.19).
+- "In 1924 Ahmed Zog seized power… proclaimed Albania a republic
+  and declared himself president. In 1928 he proclaimed Albania
+  a monarchy" (p.19).
+- "in 1939 Mussolini conquered the country" (p.19).
+- "Following World War II a Communist regime headed by Enver Hoxha
+  was established in Albania." (p.19)
+
+**Albania–Greece boundary** (pp.19–21): 175 miles (282 km).
+- "During the First Balkan War of 1912–1913, the joint armies of
+  Greece, Montenegro and Serbia occupied the entire Adriatic coast,
+  attempting to divide the Albanian territory between them." (p.20)
+- Conference of Ambassadors November 1921 confirmed boundary.
+- "the final treaty was signed on 30 July 1926" (p.21).
+
+**Albania–Serbia boundary** (pp.22): 178 miles (287 km).
+- Boundary established in 19th century under Ottoman rule, modified
+  after Balkan Wars of 1912–1913.
+- "In 1989 Serbia dissolved the Autonomous Province of Kosovo and
+  placed the territory under martial law." (p.19)
+
+### argentina
+*Argentine boundary history (pp.36–43).*
+
+Argentina: area 1,068,298 sq mi [2,766,890 sq km]; population
+33,500,000 [1994]. Capital: Buenos Aires. Bounded by Bolivia
+(517 mi; 832 km), Paraguay (1,165 mi; 1,880 km), Brazil (761 mi;
+1,224 km), Uruguay (360 mi; 579 km), Chile (3,201 mi; 5,150 km),
+and the Atlantic Ocean.
+
+- "Argentina gained independence in 1816 but civil unrest marked
+  the years 1829–1862." (p.36)
+- "A liberal oligarchical regime succeeded in developing the
+  economy, and soon the country was known as one of the most
+  modernized nationals in Latin America." (p.36)
+- "By 1930 it led the continent in gross national product per
+  capita" (p.36).
+- Since 1930: "sporadic and military intervention and dictatorship
+  have been frequent." (p.37)
+- Military regime "from 1976 to 1983" (p.37).
+- "The restoration of democracy in 1983 has paved the way for
+  changes in civilian political organizations" (p.37).
+
+**Argentina–Chile boundary** (pp.40–42): 3,201 miles (5,150 km),
+"the longest South American boundary" (p.40).
+- 1855 treaty based on uti possidetis principle.
+- Beagle Channel dispute settled by "Treaty of Peace and Friendship
+  of 29 November 1984" (p.42).
+- "The last outstanding boundary dispute, from Monte Fitzroy
+  (Cerro Chaltén) northward to the Laguna del Desierto, was
+  settled by an arbitral tribunal on 21 October 1994" (p.42).
+
+**Argentina–Uruguay boundary** (p.43): water boundary along
+Uruguay River, 360 miles (579 km).
+- "The peace convention between Argentina and Uruguay, signed on
+  27 August 1828, placed the boundary between the newly created
+  independent countries in the Uruguay River" (p.43).
+
+### belarus
+*Belarusian boundary history (pp.62–66).*
+
+Belarus: landlocked state in Eastern Europe. Bounded by Latvia
+(88 mi; 141 km), Lithuania (312 mi; 502 km), Poland (376 mi;
+605 km), Russia (596 mi; 959 km), Ukraine (554 mi; 891 km).
+
+- "Belarus declared its independence on 28 March 1918, but was
+  occupied by the Red Army on 1 January 1919" (p.66).
+- "The Polish-Soviet Union war over Byelorussian territory
+  (1919–1920) was ended with the Riga Peace Treaty (18 March
+  1921)" (p.66).
+- "Belarus declared its independence in August 1991." (p.66)
+- "Belarus was never an independent state, until 28 March 1918,
+  when it became the independent Republic of Byelorussia. This
+  independence was short lived." (p.63)
+- Boundary with Poland: "the Curzon Line, acquired its name after
+  Lord Curzon, the British foreign secretary who proposed it on
+  8 December 1919." (p.65)
+
+### belgium
+*Belgian boundary history (pp.67–71).*
+
+Belgium (Belgique/België): area 11,783 sq mi [30,518 sq km];
+population 10,050,000 [1994]. Capital: Brussels. Bounded by
+Netherlands (280 mi; 450 km), Germany (104 mi; 167 km),
+Luxembourg (92 mi; 148 km), France (386 mi; 620 km).
+
+- "Belgium achieved independence on 4 October 1830" (p.69) — from
+  the Kingdom of the Netherlands.
+- "the Treaty of London of 15 November 1831 defined the
+  boundaries" (p.71).
+- "Netherlands finally recognized Belgium's independence" in 1838
+  (p.71).
+
+**Belgium–France boundary** (pp.68–69): 386 miles (620 km).
+- "The Congress of Vienna established Belgium's southern boundary
+  with France along the line that had been agreed upon in a treaty
+  between Austria and the king of Netherlands, which had been
+  signed on 31 May 1815 in Vienna." (p.68)
+- "Since 1815 no changes were made in the boundary's alignment"
+  (p.69).
+
+**Belgium–Germany boundary** (p.69): 104 miles (167 km).
+- "After World War I, created an entirely new boundary by detaching
+  Eupen, Malmedy and Moresnet from Germany and placing them in
+  Belgium." (p.69) — Treaty of Versailles, 28 June 1919.
+- "In September 1949, seven parcels of German territory, covering
+  about 8 sq. miles [20 sq. km.] and with a population of about
+  500, were transferred to Belgian administration." (p.69)
+
+**Belgium–Netherlands boundary** (pp.70–71): 280 miles (450 km).
+- "Since 1838 the boundary between the Low Countries has not
+  changed." (p.71)
+
+### bolivia
+*Bolivian boundary history (pp.78–85).*
+
+Bolivia: area 424,165 sq mi [1,098,587 sq km]; population
+8,010,000 [1994]. Capital: La Paz. Landlocked.
+
+- "Bolivia's troubled political history did not provide much ground
+  for social, economic and national integration" (p.78).
+- "The revolution of April 1952 brought the Movement of National
+  Revolution (MNR) and Victor Paz Estenssoro to power." (p.78)
+- "In 1964 a military coup took over and military governments were
+  in power in Bolivia until 1982." (p.78)
+
+**Bolivia–Chile boundary** (pp.80–82): 535 miles (861 km).
+- "When Bolivia became independent from Spain in 1825 it claimed
+  the entire maritime territory westward, from the Andes to the
+  Pacific Ocean" (p.81).
+- "Chile on 4 April 1884 Bolivia lost its Pacific littoral area
+  south of the 23°S parallel" (p.82) — aftermath of War of the
+  Pacific (1879).
+- "Bolivia continues its aspirations for a territorial outlet to
+  the Pacific Ocean." (p.82)
+
+**Bolivia–Paraguay boundary** (pp.82–83): 466 miles (746 km).
+- "The Chaco War between Paraguay and Bolivia broke out and only
+  after three years of fighting and the loss of some 60,000
+  Bolivian lives, Paraguay gained most of the disputed area."
+  (p.83) — war 1932–1935.
+- Treaty of Peace signed "21 July 1938" (p.83).
+
+### brazil
+*Brazilian boundary history (pp.91+).*
+
+Brazil: area 3,285,650 sq mi [8,509,833 sq km]; population
+159,100,000 [1994]. Capital: Brasília. "The largest country of
+South America" (p.91).
+
+- Bounded by French Guiana (418 mi; 673 km), Suriname (371 mi;
+  597 km), Guyana (695 mi; 1,119 km), Venezuela (1,367 mi;
+  2,200 km), Colombia (1,022 mi; 1,644 km), Peru (970 mi;
+  1,560 km), Bolivia (2,113 mi; 3,400 km), Paraguay (802 mi;
+  1,290 km), Argentina (761 mi; 1,224 km), Uruguay (612 mi;
+  985 km).
+- "Brazil became an independent kingdom in 1822" (p.80 — context
+  from Bolivia–Brazil section).
+
+### canada
+*Canadian boundary history (pp.139–144).*
+
+Canada: area 3,851,791 sq mi [9,976,140 sq km]; population
+28,100,000 [1994]. Capital: Ottawa. "The largest country on the
+American continent" (p.139).
+
+- "Independence was achieved through a lengthy process in 1867."
+  (p.139)
+- Canada–United States boundary: 3,987 miles (6,416 km) in the
+  south, plus Alaska boundary of 1,538 miles (2,477 km). "The
+  longest land boundary between any two countries in the world"
+  (p.140).
+- "Since 1905 the boundaries between Canada and the United States
+  have been well maintained." (p.144)
+- Alaska purchased from Russia in 1867, boundary with Canada
+  "defined in the convention of 1825 between Russia and Great
+  Britain" (p.143).
+
+### chile
+*Chilean boundary history (pp.151–153).*
+
+Chile: area 292,135 sq mi [756,630 sq km]; population 13,800,000
+[1994]. Capital: Santiago. On the southwestern coast of South
+America.
+
+- War of independence (1810–1818).
+- "the wars against the Peruvian-Bolivian confederation
+  (1836–1839) and the Pacific War between Bolivia, Chile and Peru
+  (1879–1884)" (p.151).
+- Chile "won the war and in accordance with the terms of the Treaty
+  of Ancón (20 October 1883), Peru ceded unconditionally to Chile
+  the littoral province of Tarapaca" (p.153).
+- "A treaty signed on 3 June 1929 delimited the international
+  boundary between Chile and Peru" (p.153).
+- Military dictatorship in the 1970s. "Redemocratization in the
+  1990s is being carried out on the basis of national reconciliation
+  and social development." (p.152)
+
+### china
+*Chinese boundary history (pp.153–166).*
+
+China (Zhongguo): area 3,689,631 sq mi [9,556,144 sq km];
+population 1,185,000,000 [1994]. Capital: Beijing.
+
+- "bounded by more countries than any other country in the world"
+  (p.153).
+- "the total length of its land boundaries (13,772 miles; 22,159
+  km.) is the longest in the world" (p.153).
+- "The Communists — who came to power under the leadership of Mao
+  Zhedong in 1949" (p.154).
+- "Manchurian Qing (1644–1911)" dynasty (p.154).
+- China–Kazakhstan boundary: 953 miles (1,533 km). "Between 1917
+  and 1920 the local Kazakh people established an independent
+  republic, which was occupied by the Red Army in 1920." (p.159)
+- China–Russia boundary: 2,265 miles (3,645 km). "Treaty of
+  Nerchinsk (27 August 1689) created the first boundary between
+  the Russian and Manchu empires" (p.166).
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
