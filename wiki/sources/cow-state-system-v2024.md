@@ -23,7 +23,7 @@ system_sha256: 1186f0c30fe549967bb5d33d0084ca47d6ab8215e298ec5ad83d34b6dbb04ea8
 
 Because WHEP's polity definition is territorial-economic, not
 state-system-membership
-[log decision-whep-polity-definition](log.md#decision-whep-polity-definition), COW is not WHEP's
+[log decision-whep-polity-definition](../log.md#decision-whep-polity-definition), COW is not WHEP's
 primary source for start/end dates. But COW *is* the definition that
 CShapes 2.0 uses (`useGW=FALSE`), so every claim about CShapes's
 dating implicitly cites COW. Having COW as a first-class source lets
@@ -146,7 +146,7 @@ important for WHEP:
    Luxembourg 1839–1919, most colonial dependencies, Tibet, the
    Orange Free State, the Papal States post-1870, pre-1822 Brazil,
    and many others. Under the WHEP polity definition
-   [log decision-whep-polity-definition](log.md#decision-whep-polity-definition) this is not a
+   [log decision-whep-polity-definition](../log.md#decision-whep-polity-definition) this is not a
    defect; it simply means COW cannot justify or refute a WHEP
    start/end year on its own.
 2. **Changing vintages.** Start/end dates can and do change between

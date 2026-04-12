@@ -12,11 +12,10 @@ spatiotemporal coverage — every km², every year, no gaps).
 **Markdown dual-compatibility rule.** The wiki renders in both GitHub
 and Obsidian. Key constraints:
 - Never use `<a id="...">` HTML anchors — Obsidian ignores them.
-- Never use `../` directory prefixes in links — Obsidian can't resolve
-  them. Use filename-only paths: `(cshapes-2.0.md#scope)` not
-  `(../sources/cshapes-2.0.md#scope)`.
-- Never use reference-style link definitions — Obsidian can't navigate
-  them. Use inline links: `[text](file.md#anchor)`.
+- Never use reference-style link definitions (`[ref]: url` at the
+  bottom) — Obsidian can't navigate them. Use inline links only:
+  `[text](../sources/file.md#anchor)`.
+- Standard `../` relative paths are fine in inline links.
 - Log entries: `## slug` (date on a `**Date:**` line inside the body).
 - Source sections: `### section-name` (no `§` prefix in the heading;
   `§` is display-only in inline citations like `[source §section]`).

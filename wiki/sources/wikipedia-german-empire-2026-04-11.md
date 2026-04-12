@@ -28,7 +28,7 @@ polity page narrative.
 #### 1834
 *Zollverein customs union established.*
 
-The Prussian-led customs union that preceded the German Empire. Foundational to the "Germany/Zollverein" CSV framing (see [log proposal-deu-ger-chain-audit](log.md#proposal-deu-ger-chain-audit)).
+The Prussian-led customs union that preceded the German Empire. Foundational to the "Germany/Zollverein" CSV framing (see [log proposal-deu-ger-chain-audit](../log.md#proposal-deu-ger-chain-audit)).
 
 #### 1864
 *Second Schleswig War.*
@@ -63,7 +63,7 @@ The Prussian-led customs union that preceded the German Empire. Foundational to 
 #### 1871-alsace-lorraine
 *Annexation of Alsace-Lorraine.*
 
-The Treaty of Frankfurt (10 May 1871) transferred Alsace and most of Lorraine from France to the new German Empire. The territory was organized as the "Imperial Territory of Alsace-Lorraine" under direct imperial administration rather than as a constituent state. ~14,500 km2 transferred. Load-bearing for WHEP: the French side ([fra-1800-1919](fra-1800-1919.md), not yet a polity page) should record the matching territorial loss.
+The Treaty of Frankfurt (10 May 1871) transferred Alsace and most of Lorraine from France to the new German Empire. The territory was organized as the "Imperial Territory of Alsace-Lorraine" under direct imperial administration rather than as a constituent state. ~14,500 km2 transferred. Load-bearing for WHEP: the French side ([fra-1800-1919](../polities/fra-1800-1919.md), not yet a polity page) should record the matching territorial loss.
 
 #### 1884-1885
 *Berlin Conference and colonial acquisitions.*

@@ -532,7 +532,7 @@ Libya loss was *in progress* throughout 1911 and *formalized* in
 1912. Under the WHEP polity-definition rule a substantial
 territorial change (Libya was ~1.76 million km²) should trigger
 a split, which is exactly the subject of
-[oq-libya-mid-row-change](ott-1908-1912.md#oq-libya-mid-row-change) on the `ott-1908-1912` polity page.
+[oq-libya-mid-row-change](../polities/ott-1908-1912.md#oq-libya-mid-row-change) on the `ott-1908-1912` polity page.
 Biger's two-phase framing (1911 invasion → 1912 treaty) is
 consistent with the view that the change straddles the
 1908–1912 row boundary and should probably have been split, but

@@ -15,10 +15,10 @@ You are maintaining the WHEP polities wiki in autonomous mode. Read
 `wiki/README.md` first for the schema, rules, the **coverage goal**
 (complete spatiotemporal coverage — every km², every year, no gaps),
 and the **dual-renderer rule** (GitHub + Obsidian). Key link rules:
-no `<a id>` HTML anchors, no `../` directory prefixes in links
-(use filename-only paths), no reference-style link definitions
-(use inline `[text](file.md#anchor)` only), heading text = target
-slug. Then execute the four-phase cycle below. Each iteration is ONE cycle and produces
+no `<a id>` HTML anchors, no reference-style link definitions (use
+inline `[text](path.md#anchor)` only with standard `../` relative
+paths), heading text = target slug. Then execute the four-phase
+cycle below. Each iteration is ONE cycle and produces
 exactly ONE git commit (or ends without a commit if the stop
 conditions fire).
 

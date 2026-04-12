@@ -147,38 +147,37 @@ older cross-references.
 
 ## Cross-reference conventions
 
-All inter-file references MUST be **inline markdown links**. Use
-**filename-only paths** (no directory prefixes like `../sources/`)
-so Obsidian resolves them by shortest-path lookup. GitHub links to
-cross-directory files will not navigate, but display text remains
-readable.
+All inter-file references MUST be **inline markdown links** using
+standard relative paths. Both GitHub and Obsidian navigate these
+correctly.
 
 ```markdown
     The 1878 Congress of Berlin
-    [cshapes-2.0 §coding-changes](cshapes-2.0.md#coding-changes)
+    [cshapes-2.0 §coding-changes](../sources/cshapes-2.0.md#coding-changes)
     is the single biggest territorial change in the row ...
 
     See [ott-1800-1886](ott-1800-1886.md) for the predecessor.
-    Logged at [log decision-foo](log.md#decision-foo).
+    Logged at [log decision-foo](../log.md#decision-foo).
 ```
 
 Conventions:
 
-- **Source citations**: `[biger-1995 §austria](biger-1995.md#austria)`.
-  Use the source filename only — no `../sources/` prefix. The `§`
-  is display-only; the heading in the source file is `### austria`.
+- **Source citations** from polity pages:
+  `[biger-1995 §austria](../sources/biger-1995.md#austria)`.
+  The `§` is display-only; the heading in the source file is
+  `### austria` (no `§` prefix).
 - **Same-page anchors**:
   `[oq-polygon-provenance](#oq-polygon-provenance)`.
 - **Cross-page polity references** (same directory):
   `[ott-1800-1886](ott-1800-1886.md)`.
-- **Log references**: `[log slug](log.md#slug)` — no `../` prefix.
-  Log entry headings are `## slug` (slug alone, no date prefix),
-  so both renderers auto-generate `#slug`.
+- **Log references** from polity pages:
+  `[log slug](../log.md#slug)`. Log entry headings are `## slug`
+  (slug alone, no date prefix), so both renderers auto-generate
+  `#slug`. The date goes on a `**Date:**` line inside the body.
 - **Database link**: `[database](../../data/final/polities_database.csv)`.
-  This is outside the Obsidian vault and won't navigate in Obsidian
-  — it's kept for GitHub and as documentation.
-- **Do not use** reference-style links (`[text][ref]` + `[ref]: url`)
-  or `../` directory prefixes. Neither works reliably in Obsidian.
+- **Do not use reference-style links** (`[text][ref]` +
+  `[ref]: url` at the bottom of a file). Obsidian cannot navigate
+  them. Always use inline `[text](path)` format.
 
 ## Source schema
 

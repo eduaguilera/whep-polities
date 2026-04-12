@@ -90,12 +90,10 @@ Check, in order:
 10. **Obsidian compatibility.** The wiki must render and navigate
     correctly in Obsidian. Check for:
     - `<a id="...">` HTML anchors — Obsidian ignores them.
-    - `../` directory prefixes in link URLs — Obsidian can't resolve
-      them. All cross-directory links must use filename-only paths
-      (e.g. `(cshapes-2.0.md#scope)` not `(../sources/cshapes-2.0.md#scope)`).
     - Reference-style link definitions (`[ref]: url` at the bottom
       of a file) — Obsidian can't navigate them. All links must be
-      inline: `[text](file.md#anchor)`.
+      inline: `[text](path.md#anchor)`.
+    Standard `../` relative paths in inline links are fine.
     Flag any violations as must-fix.
 
 Output format:
