@@ -727,6 +727,34 @@ Congress of Vienna (United Kingdom of Netherlands) → 1830 Belgian
 Revolution → Dutch "pillar" system. "The 1970s saw the influx of
 500,000 foreign workers."
 
+### spain
+*Spanish boundary history (p.476–477).*
+
+Spain: area 194,934 sq miles [504,880 sq km]; population 39,200,000
+[1994]. Bounded by France (387 miles; 623 km), Andorra (40 miles;
+64 km), Gibraltar (0.75 miles; 1.2 km), Portugal (755 miles;
+1,214 km). Two small areas on the Moroccan coast, Ceuta and Melilla,
+are under Spanish administration.
+
+Historical overview: Phoenician/Greek/Celtic settlers → Roman
+Hispania → Visigothic kingdom → Moorish conquest (711) → Reconquista
+→ 1492 fall of Granada, unification under Ferdinand and Isabella →
+Habsburg global power → "Spain first lost its European dominions and
+then, in the nineteenth century, its American empire." The 19th
+century "was an unstable era for Spain, plagued by a series of
+military coups and by the struggle between absolutists and liberals."
+Second Republic (1931–1936) → "the traumatic Civil War (1936–1939),
+part Catholic crusade, part reassertion of centralism against
+regionalists." Franco dictatorship until 1975. Democratic transition:
+"In the 1980s regional decentralization was begun, and Spain moved
+to become a growing industrial power."
+
+Note: Biger has no separate SPAIN boundary bilateral entries relevant
+to 1800–2025 territorial changes — the France–Spain boundary is
+covered under §france-spain (unchanged since 1659), and SPAIN–
+PORTUGAL and SPAIN–GIBRALTAR entries deal with stable modern
+boundaries. See also MOROCCO–SPAIN for the Ceuta/Melilla enclaves.
+
 ### russia
 *Russian boundary history (p.451–452).*
 

@@ -26,6 +26,27 @@ Kinds:
 
 ---
 
+## biger-batch-europe-ingest-3
+**Date:** 2026-04-12
+**Touched:** ESP-1800-2025
+**Source:** biger-1995 (1 new §-section: spain)
+**Kind:** ingest
+
+Third and final Biger batch ingest for this session. Read PDF
+pages 476-477 (SPAIN main entry). Area: 194,934 sq mi. Key quote:
+"Spain first lost its European dominions and then, in the
+nineteenth century, its American empire." No UK main entry found
+in Biger — the book has no standalone UNITED KINGDOM entry (UK
+is an island with only the Ireland land boundary, covered under
+IRELAND–UNITED KINGDOM at p.312). oq-biger-spain resolved.
+
+Biger ingest summary for this session: 12 new §-sections added
+(france, france-germany, france-italy, france-spain, germany,
+italy, ireland, netherlands, russia, spain). Total §-sections
+now: 19. All 8 oq-biger-* OQs resolved across 8 polity pages.
+
+---
+
 ## biger-batch-europe-ingest-2
 **Date:** 2026-04-12
 **Touched:** ITA-1861-1919, GBR-1800-1921, F228-1856-1905, F228-1800-1856, NLD-1800-1830
