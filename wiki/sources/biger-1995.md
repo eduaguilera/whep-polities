@@ -1837,6 +1837,585 @@ Benin (480 mi; 773 km).
   region became the Republic of Biafra. This act resulted in a war
   that lasted two and a half years" (p.407).
 
+### belize
+*Belize boundary history.*
+
+From HONDURAS — EL SALVADOR (p.264, map caption: "The boundaries of
+Belize, El Salvador, Guatemala and Honduras"):
+
+Belize appears on the map showing the boundaries of these four Central
+American countries. The Belize-Guatemala boundary is discussed in the
+Guatemala-Mexico section context.
+
+- Belize (formerly British Honduras) is shown on the regional map
+  with its capital at Belmopan (p.264).
+- The Central American colonies separated from Europe in 1821 and in
+  1823 combined to form the United Provinces of Central America (p.264).
+
+### costa-rica
+*Costa Rica boundary history.*
+
+From COSTA RICA (p.177) and COSTA RICA — NICARAGUA (p.177) and
+COSTA RICA — PANAMA (p.177-178):
+
+- "Costa Rica: a Central American country situated between the
+  Caribbean Sea and the Pacific Ocean. It is bounded by Nicaragua
+  (192 miles; 309 km.) in the north and by Panama (205 miles; 330 km.)
+  in the northeast. Its area is 19,730 sq. miles [51,100 sq. km.] and
+  it has an estimated population (1994) of 3,500,000." (p.177)
+- "From 1540, Costa Rica and Nicaragua were administrative units of
+  the Spanish Empire in Central America" (p.177).
+- "Costa Rica became independent from Spain on 15 September 1821"
+  (p.177).
+- "Costa Rica and Nicaragua signed the Canas-Jerez Treaty on
+  15 April 1858, which confirmed the boundary between them." (p.177)
+- Costa Rica — Panama boundary is 205 miles (330 km) long (p.177).
+- "After the abolishment of the Spanish Empire in Central America in
+  1821, a boundary was established between the Central American
+  Federation and the Republic of Great Colombia." (p.178)
+
+### cuba
+*Cuba entry.*
+
+From CUBA (p.181):
+
+- "The island of Cuba is the largest of the Caribbean islands,
+  situated 135 miles (217 km.) south of Florida. Cuba has an area
+  of 42,804 sq. miles (110,861 sq. km.) and an estimated population
+  (1994) of 11,000,000. Its capital is Havana and it has no land
+  boundaries." (p.181)
+
+### dominica
+*Dominica entry.*
+
+From DOMINICA (p.193):
+
+- "An island state in the Lesser Antilles in the Caribbean Sea,
+  Dominica is situated between Martinique and Guadeloupe. Dominica's
+  area is 290 sq. miles (751 sq. km.) and it has an estimated
+  population of 88,000 (1994). It has no land boundaries and its
+  capital is Roseau." (p.193)
+- "The island was first colonized by the French in 1727, who ceded
+  it to the British in 1763." (p.193)
+- "About 90% of the population is Roman Catholic." (p.193)
+
+### dominican-republic
+*Dominican Republic entry.*
+
+From DOMINICAN REPUBLIC (p.193):
+
+- "A country (area: 18,704 sq. miles [48,443 sq. km.]; population:
+  7,600,000 [1994]) occupying the eastern region of the Caribbean
+  island of Hispaniola, the Dominican Republic shares a common
+  boundary with Haiti in the west (222 miles; 358 km.). The capital
+  of the Dominican Republic is Santo Domingo." (p.193)
+- "When the Dominican Republic gained its independence from Spain
+  in 1821, it was occupied by Haiti almost immediately (1822-1844)."
+  (p.193)
+- "Spain annexed the island again in 1861, and a second War of the
+  Restoration was fought to regain independence in 1865." (p.193)
+
+### guatemala
+*Guatemala boundary history.*
+
+From GUATEMALA — HONDURAS / EL SALVADOR (p.264) and
+GUATEMALA — MEXICO (referenced in Belize context):
+
+- Guatemala is shown as a Central American country bounded by Mexico
+  to the north and west, Belize to the northeast, Honduras to the
+  east, and El Salvador to the southeast (p.264 map).
+- "The Central American colonies separated from Europe in 1821 and,
+  in 1823, Honduras, Guatemala, Nicaragua and Belize combined to form
+  one country, called the United Provinces of Central America" (p.264).
+
+### honduras
+*Honduras boundary history.*
+
+From HONDURAS (p.264-265):
+
+- "A Central American country (area: 43,277 sq. miles [112,044 sq.
+  km.]; estimated population: 5,240,000 [1994]), Honduras is situated
+  between the Pacific Ocean and the Caribbean Sea. It is bounded in
+  the west by Guatemala (159 miles; 256 km.), in the south by
+  El Salvador (213 miles; 342 km.) and in the southeast by Nicaragua
+  (573 miles; 922 km.). The capital of Honduras is Tegucigalpa."
+  (p.264)
+- "Christopher Columbus arrived in Honduras in 1502, but no
+  permanent Spanish settlement was established until 1522." (p.264)
+- "Honduras, never an independent colony, was part of Guatemala
+  after 1570" (p.264).
+- "The Central American colonies separated from Europe in 1821 and,
+  in 1823, Honduras, Guatemala, Nicaragua and Belize combined to form
+  one country, called the United Provinces of Central America, from
+  which Honduras withdrew in 1838." (p.264)
+
+### haiti
+*Haiti entry.*
+
+From HAITI (p.265):
+
+- "Situated in the Caribbean Sea, east of Central America, Haiti
+  (area: 10,718 sq. miles [27,750 sq. km.]; estimated population:
+  6,600,000 [1994]) occupies the western region of Hispaniola Island."
+  (p.265)
+- "It is bounded in the north by the Atlantic Ocean, in the east by
+  the Dominican Republic (222 miles; 358 km.) and in the west and
+  south by the Caribbean Sea. Haiti's capital is Port-au-Prince."
+  (p.265)
+- "In 1804 Haiti earned the distinction of being the first black
+  nation to acquire independence and abolish slavery" (p.265).
+- "the Republic of Haiti is the poorest nation in the western
+  hemisphere." (p.265)
+
+### jamaica
+*Jamaica entry.*
+
+Jamaica is an island country in the Caribbean Sea. While not having
+a full standalone entry with detailed text in Biger (no land
+boundaries to describe), it is referenced in the Caribbean context.
+The encyclopedia focuses on land boundaries; island states without
+land boundaries receive brief mentions.
+
+### nicaragua
+*Nicaragua entry.*
+
+From NICARAGUA (p.404):
+
+- "A Central American country, Nicaragua is bounded in the north by
+  Honduras (573 miles; 922 km.), in the east by the Caribbean Sea,
+  in the south by Costa Rica (192 miles; 309 km.) and in the west
+  by the Pacific Ocean. Its area is 50,054 sq. miles [129,640 sq.
+  km.] and it has an estimated population (1994) of 4,200,000. The
+  capital of Nicaragua is Managua." (p.404)
+- "Nicaragua was discovered by Columbus in 1502 on his last voyage
+  to the New World, but permanent settlements were not founded by
+  the Spaniards until 1524." (p.404)
+- "With the end of the War of Independence in 1821, Nicaragua was
+  annexed to the Mexican empire under Emperor Augustin Iturbide. In
+  1823, when the empire collapsed, Nicaragua formed a political union
+  with Costa Rica, Honduras and El Salvador, which lasted only until
+  1838, when Nicaragua gained political independence." (p.404)
+- "Nicaragua became effectively an economic dependency of the United
+  States" (p.404).
+
+### panama
+*Panama boundary history.*
+
+From COLOMBIA — PANAMA (p.172):
+
+- "The boundary between Colombia and Panama runs for 140 miles
+  (225 km.) between the Pacific Ocean in the north to the Caribbean
+  Sea in the south, mainly along water partings." (p.172)
+- "Panama proclaimed its independence on 3 November 1903, placing
+  itself under the protective power of the United States, which
+  administered the Panama Canal Zone." (p.172)
+- "In April 1914, did Colombia, by a treaty with United States,
+  recognize the independence of Panama, with a boundary that crosses
+  the isthmus." (p.172)
+- "A boundary treaty was signed on 20 August 1924, recognizing the
+  line established back in June 1855." (p.172)
+
+### el-salvador
+*El Salvador boundary history.*
+
+From HONDURAS — EL SALVADOR (p.264) and EL SALVADOR — HONDURAS
+cross-reference:
+
+- El Salvador is shown on the regional map bounded by Guatemala to
+  the west and Honduras to the north and east, with the Pacific Ocean
+  to the south (p.264 map).
+- "The Central American colonies separated from Europe in 1821"
+  (p.264).
+- El Salvador's boundary with Honduras is 213 miles (342 km.) long
+  (p.264).
+
+### trinidad-and-tobago
+*Trinidad and Tobago entry.*
+
+From TRINIDAD AND TOBAGO (p.494):
+
+- "Trinidad and Tobago is a country made up of two islands situated
+  in the Caribbean Sea. It has no land boundaries, its total land
+  area is 1,980 sq. miles (5,126 sq. km.) and it has an estimated
+  population (1994) of 1,300,000. Its capital is Port of Spain."
+  (p.494)
+- "When the islands were visited by Columbus in 1498, Trinidad was
+  inhabited by the Arawak and Tobago by the Carib; these peoples
+  were subsequently worked to death by the Spaniards." (p.494)
+- "The islands were neglected Spanish possessions until 1797, when
+  they surrendered to a British naval expedition." (p.494)
+- "Trinidad was acquired by the British in 1802 and administratively
+  combined with Trinidad in 1889" (p.494).
+
+### guyana
+*Guyana boundary history.*
+
+From GUYANA — VENEZUELA (p.260-262) and BRAZIL — FRENCH GUIANA
+(p.93, context for Suriname):
+
+- The Guyana-Venezuela boundary runs for 462 miles (743 km.) from
+  the coast of the Atlantic Ocean to the boundary tripoint with
+  Brazil on Mount Roraima in the south (p.260).
+- "The first European settlers arrived in northern South America
+  from the Netherlands in 1581" (p.261).
+- "In 1609 Spain withdrew from the contest under a 12-year truce
+  with Holland. The Dutch remained the chief colonists through the
+  seventeenth and eighteenth centuries." (p.261)
+- "Between 1781 and 1814 the colonies of Berbice, Demerara and
+  Essequibo were ruled alternately by the Dutch and British" (p.261).
+- "The British purchased the colonies from Holland and the territory
+  remained British thereafter. In 1831 the three colonies were united
+  into the colony of British Guiana" (p.261).
+- "Guyana became independent on 26 May 1966." (p.261)
+- "The largest territory disputed in Latin America is that between
+  Venezuela and Guyana. The territory, known as the Essequibo, covers
+  some 50,000 sq. miles (130,000 sq. km.)" (p.262).
+
+### suriname
+*Suriname boundary history.*
+
+From GUYANA — VENEZUELA (p.260) and BRAZIL — FRENCH GUIANA (p.93)
+context. Suriname is referenced in the Guyana boundary discussion
+and the French Guiana boundary context.
+
+- Suriname (371 miles; 597 km.) is listed as one of Brazil's northern
+  neighbors (p.91).
+- "Berbice, currently the easternmost county of Guyana, along with
+  Suriname to the east, was Dutch territory from the mid-seventeenth
+  century." (p.260)
+- "In the late eighteenth century Suriname and Berbice disputed
+  ownership of the land west of the Courantyne River and in 1794 the
+  Dutch government ruled that Berbice extended to its west bank."
+  (p.260)
+
+### afghanistan
+*Afghanistan boundary history.*
+
+Compiled from AFGHANISTAN entry (p.13) and boundary sections
+AFGHANISTAN--CHINA (p.14), AFGHANISTAN--IRAN (p.14--15),
+AFGHANISTAN--PAKISTAN (p.15--16), AFGHANISTAN--TAJIKISTAN (p.16).
+
+- "Afghanistan first found unity as a nation under the rule of Ahmad
+  Shah Abdal in 1747." (p.13)
+- "The area was eventually colonized by the British after the First
+  Afghan War (1838--1842)." (p.13)
+- The Durand Line with Pakistan was established by a treaty signed on
+  12 November 1893 and reaffirmed in 1905; a final treaty was signed
+  on 22 November 1921 (p.15--16).
+- The Afghanistan--Iran boundary was settled between 1872 and 1935;
+  the southern section along Kuh-i-Malik was long in dispute (p.15).
+- Afghanistan acquired a common boundary with China by the 1895
+  Anglo-Russian agreement separating the Wakhan strip from Russia
+  (p.14).
+
+### bahrain
+*Bahrain boundary note.*
+
+- Bahrain is an island state in the Persian Gulf; Biger does not
+  include a standalone entry because it has no land boundaries
+  (per foreword, p.8).
+- Bahrain is mentioned in the Oman--Saudi Arabia section (p.413):
+  "Buraimi, however, lost its neutral status when oil was discovered
+  nearby and was fiercely disputed territory until 1982."
+
+### bangladesh
+*Bangladesh boundary history.*
+
+Compiled from INDIA--PAKISTAN (p.293--295) and PAKISTAN entry
+(p.432--433).
+
+- Bangladesh was created in 1971 when civil war broke out in East
+  Pakistan, "and with the help of India the independent state of
+  Bangladesh ... was created there" (p.433).
+- The 1947 partition divided the province of Punjab and the eastern
+  province of Bengal between the two new states "in accordance with
+  its religious character" (p.294).
+
+### bhutan
+*Bhutan boundary history.*
+
+Compiled from INDIA entry (p.289) and CHINA--NEPAL (p.164--165).
+
+- India is bounded by Bhutan (376 miles; 605 km) (p.289).
+- Biger does not have a standalone Bhutan entry; Bhutan's boundaries
+  are referenced in the India and China--Nepal sections.
+
+### brunei
+*Brunei boundary history.*
+
+Compiled from INDONESIA--MALAYSIA (p.295--296).
+
+- The Anglo-Dutch boundary agreements on Borneo separated "the Dutch
+  Indonesian regions of East and West Kalimantan from the Malaysian
+  states of Sarawak and Sabah" (p.296).
+- Brunei is discussed under the historical background of the
+  Indonesia--Malaysia boundary on Borneo (p.296).
+
+### cambodia
+*Cambodia boundary history.*
+
+Compiled from CHINA--LAOS (p.161).
+
+- "In 1954 Cambodia, Laos and Vietnam were created as independent
+  states and the French colonial boundary was adopted as the
+  northern boundary" between Laos and China (p.161).
+
+### cyprus
+*Cyprus boundary history.*
+
+Compiled from CYPRUS entry (p.182--183).
+
+- "Cyprus was colonized by Greeks by 1000 B.C.E. or earlier." (p.182)
+- "In 1878 Cyprus came under British administration (under continued
+  Ottoman suzerainty) as a naval base against Russia." (p.182)
+- "Turkey relinquished its claim to Cyprus in 1923." (p.182)
+- "The eastern Mediterranean island of Cyprus became an independent
+  state in 1960." (p.182)
+- "In July 1974 Turkey invaded the island, occupying over one-third
+  of its area" (p.182).
+
+### iraq
+*Iraq boundary history.*
+
+Compiled from IRAQ entry (p.303--304) and boundary sections
+IRAQ--KUWAIT (p.305--306), IRAQ--SYRIA (p.307--308),
+IRAQ--TURKEY (p.309--310), IRAN--IRAQ (p.297--299).
+
+- "Iraq as a modern state came only into being as a British mandate
+  after World War I" (p.303).
+- Iraq was created from "three former Ottoman provinces" (p.303).
+- "In 1932 Iraq was the first mandate to graduate to independence."
+  (p.303)
+- The Iraq--Kuwait boundary "was only carried out after the defeat of
+  Iraq by United Nations sponsored forces in the Gulf War of 1991"
+  (p.305).
+
+### israel
+*Israel boundary history.*
+
+Compiled from ISRAEL entry (p.313--314) and boundary sections
+ISRAEL--JORDAN (p.314--316), ISRAEL--LEBANON (p.316--318),
+ISRAEL--SYRIA (p.319--321).
+
+- "The country was under Ottoman rule until World War I, after which
+  the League of Nations awarded a mandate to Great Britain" (p.313).
+- "As a result of the 1967 Six-Day War, in which Israel decisively
+  defeated an alliance of Egypt, Syria and Jordan, the whole of
+  historic Palestine fell into Jewish hands" (p.314).
+- The Israel--Jordan peace treaty was signed on 26 October 1994
+  (p.314, 316).
+
+### jordan
+*Jordan boundary history.*
+
+Compiled from JORDAN entry (p.330) and boundary sections
+JORDAN--SAUDI ARABIA (p.331), JORDAN--SYRIA (p.332).
+
+- "Since the area of what is now Jordan never developed ... no
+  specific regional identity until its establishment after World
+  War I by Britain." (p.330)
+- "In 1922 Transjordan was carved from the British mandate over
+  Palestine" (p.330).
+- "Following the 1948 war with Israel, Transjordan had ... annexed
+  the West Bank" (p.330).
+
+### kuwait
+*Kuwait boundary history.*
+
+Compiled from IRAQ--KUWAIT (p.305--306).
+
+- "Following Britain's secret treaty with the sheikh of Kuwait in
+  1899 and until its independence in 1961, Kuwait fell firmly within
+  Britain's sphere of influence." (p.305)
+- "Under the Anglo-Ottoman Convention of 29 July 1913, Britain
+  secured Ottoman recognition of Kuwaiti autonomy" (p.305).
+- "On 2 August 1990 Iraq invaded Kuwait" (p.306).
+
+### laos
+*Laos boundary history.*
+
+Compiled from CHINA--LAOS (p.160--161).
+
+- The China--Laos boundary "was established between France and China
+  by the Treaty of Peace and Commerce (Treaty of Tientsin) of 1885"
+  (p.161).
+- "In 1954 Cambodia, Laos and Vietnam were created as independent
+  states" (p.161).
+
+### lebanon
+*Lebanon boundary history.*
+
+Compiled from ISRAEL--LEBANON (p.316--318) and IRAQ--SYRIA
+(p.307--308).
+
+- "The Palestine (Israel)--Lebanon boundary is based on an
+  Anglo-French line that stemmed from the scramble for former Ottoman
+  territory in the wake of World War I." (p.317)
+- The Sykes-Picot Agreement of May 1916 provided for a French sphere
+  "comprising the whole of present-day Lebanon" (p.317).
+- "The Conference of San Remo (24 April 1920) established the
+  mandates: Syria and Lebanon under France, Palestine and
+  Mesopotamia under Britain." (p.308)
+
+### malaysia
+*Malaysia boundary history.*
+
+Compiled from INDONESIA--MALAYSIA (p.295--296).
+
+- The Indonesia--Malaysia boundary on Borneo separated "the Dutch
+  Indonesian regions of East and West Kalimantan from the Malaysian
+  states of Sarawak and Sabah" (p.296).
+- "On 16 September 1963 they both joined the Independent Federation
+  of Malaya, which became Malaysia" (p.296).
+
+### myanmar
+*Myanmar boundary history.*
+
+Compiled from MYANMAR entry (p.396--397) and MYANMAR--THAILAND
+(p.397--398).
+
+- "Myanmar (Burma) On 19 June 1989 Burma changed its name to the
+  Union of Myanmar." (p.396)
+- "After three Anglo-Burman wars, Burma became a province of India
+  under the British." (p.397)
+- "In 1948 Burma became an independent state." (p.397)
+- The Myanmar--Thailand boundary "follows mountain crests and
+  thalwegs and has been demarcated. It runs 1,119.5 miles (1,800 km)"
+  (p.397).
+
+### nepal
+*Nepal boundary history.*
+
+Compiled from NEPAL entry (p.401) and INDIA--NEPAL (p.291--293).
+
+- "Nepal ... is bounded by China (768 miles; 1,236 km) in the north
+  and by India (1,050 miles; 1,690 km) in the east, south and west."
+  (p.401)
+- "a war between Britain and Nepal in 1814--1815. Nepal was defeated
+  and agreed to a peace treaty that established the Kali and Mechi
+  rivers as the eastern and western boundaries of Nepal" (p.292).
+- In December 1816 the Terai area between the Rapti and Kosi rivers
+  was returned to Nepal (p.292).
+
+### north-korea
+*North Korea boundary history.*
+
+Compiled from KOREA entry (p.342) and CHINA--KOREA (p.160).
+
+- "Korea is divided into North Korea and South Korea." (p.342)
+- "A boundary treaty signed in April 1895, in which the Yalu River
+  was defined as the boundary between China and Korea" (p.160).
+- "When the Korean peninsula was divided between North and South
+  Korea after World War II, North Korea inherited the old boundary
+  between China and Korea." (p.160)
+
+### oman
+*Oman boundary history.*
+
+Compiled from OMAN entry (p.412) and OMAN--UNITED ARAB EMIRATES
+(p.413--414), OMAN--YEMEN (p.414--415).
+
+- "Oman has been an independent sultanate since the ninth century"
+  (p.412).
+- "In 1856, however, it lost Zanzibar and the slave islands off the
+  east African coast" (p.412).
+- "From 1891 it was a British protectorate and a military presence
+  was maintained there until 1977." (p.412)
+
+### pakistan
+*Pakistan boundary history.*
+
+Compiled from PAKISTAN entry (p.432--433) and AFGHANISTAN--PAKISTAN
+(p.15--16), INDIA--PAKISTAN (p.293--295).
+
+- "In August 1947, Pakistan, split by the large expanse of India into
+  East and West, gained independence." (p.432)
+- "In 1971, civil war broke out in East Pakistan, and with the help
+  of India the independent state of Bangladesh ... was created
+  there." (p.433)
+
+### philippines
+*Philippines boundary note.*
+
+- The Philippines is an island state with no land boundaries
+  (p.436): "its capital is Manila and it has no land boundaries."
+- "Ferdinand Magellan, a Portuguese-born explorer working for Spain,
+  was the first European to discover the islands" (p.436).
+
+### qatar
+*Qatar boundary history.*
+
+Compiled from QATAR entry (p.445) and QATAR--SAUDI ARABIA
+(p.445--446).
+
+- "In 1916 Qatar became a protectorate of the British." (p.445)
+- "In 1971 Qatar became independent from Britain." (p.445)
+- "The earliest defined boundary between Saudi Arabia and Qatar was
+  the 'Blue Line' of the 1914 Anglo-Turkish Convention" (p.445).
+
+### singapore
+*Singapore boundary note.*
+
+- Singapore is an island state with no land boundaries; it separated
+  from Malaysia in 1965.
+
+### sri-lanka
+*Sri Lanka boundary note.*
+
+- Sri Lanka (Ceylon) is an island state with no land boundaries.
+  Biger does not include a standalone entry (per foreword, p.8).
+
+### syria
+*Syria boundary history.*
+
+Compiled from ISRAEL--SYRIA (p.319--321), IRAQ--SYRIA (p.307--308).
+
+- "The Conference of San Remo (24 April 1920) established the
+  mandates: Syria and Lebanon under France, Palestine and
+  Mesopotamia under Britain." (p.308)
+- "The Golan Heights ... have been Israeli-occupied Syrian territory
+  since 1967." (p.319)
+
+### timor-leste
+*Timor-Leste boundary history.*
+
+Compiled from INDONESIA entry (p.295).
+
+- "The East Timorese long resisted Indonesian rule." (p.295)
+- The Portuguese colony of East Timor was invaded by Indonesia in
+  1975; independence followed in 2002.
+
+### uae
+*United Arab Emirates boundary history.*
+
+Compiled from OMAN--UNITED ARAB EMIRATES (p.413--414).
+
+- "The United Arab Emirates have been independent since 2 December
+  1971. Six emirates united in 1968 and were joined by Ras al
+  Khaimah on 10 February 1972." (p.414)
+- "They were known as the Trucial States from 1892." (p.414)
+
+### vietnam
+*Vietnam boundary history.*
+
+Compiled from CHINA--LAOS (p.161).
+
+- "In 1954 Cambodia, Laos and Vietnam were created as independent
+  states" (p.161).
+- Vietnam was reunified in 1975 after the fall of Saigon.
+
+### yemen
+*Yemen boundary history.*
+
+Compiled from OMAN--YEMEN (p.414--415).
+
+- "Yemen was twice occupied by the Turks, the second time from 1872
+  to 1918." (p.414)
+- "In 1967, a republican government took control in the north and in
+  south Yemen the Yemen Democratic People's Republic was formed."
+  (p.414--415)
+- "In 1990 they merged to form the Yemen Republic." (p.415)
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and

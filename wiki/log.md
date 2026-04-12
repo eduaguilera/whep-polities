@@ -26,6 +26,20 @@ Kinds:
 
 ---
 
+## biger-ingest-central-america-caribbean
+**Date:** 2026-04-12
+**Touched:** BLZ-1800-2025, CRI-1800-2025, CUB-1800-2025, DMA-1800-2025, DOM-1800-2025, GTM-1821-2025, HND-1800-2025, HTI-1800-2025, JAM-1800-2025, NIC-1800-2025, PAN-1903-2025, SLV-1821-2025, TTO-1800-2025, GUY-1800-2025, SUR-1975-2025
+**Source:** biger-1995
+**Kind:** ingest
+
+Created 15 polity pages for Central America, Caribbean, and South America
+from Biger 1995 (The Encyclopedia of International Boundaries). Each page
+contains sourced claims from the relevant Biger entries with page citations.
+Countries covered: Belize, Costa Rica, Cuba, Dominica, Dominican Republic,
+Guatemala, Honduras, Haiti, Jamaica, Nicaragua, Panama, El Salvador,
+Trinidad and Tobago, Guyana, and Suriname. Also added 15 new sections to
+[biger-1995](sources/biger-1995.md) with fair-use quotes and page references.
+
 ## autonomous-38-bulk-remaining
 **Date:** 2026-04-12
 **Touched:** 987 polity pages (bulk)
