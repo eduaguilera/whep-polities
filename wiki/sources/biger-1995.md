@@ -1565,6 +1565,253 @@ Compiled from the PARAGUAY main entry (p.434).
 - "Paraguayans initiated a rebellion against Spain in 1810: the
   last Spanish governor left in 1811." (p.434)
 
+### armenia
+*Armenian boundary history (pp.44–45).*
+
+Armenia (Hayastan): area 11,506 sq mi [29,800 sq km]; population
+3,500,000 [1994]. Capital: Yerevan. Bounded by Georgia (102 mi;
+164 km), Azerbaijan (489 mi; 787 km), Iran (22 mi; 35 km), Turkey
+(167 mi; 267 km).
+
+- "Armenia was the first country in the world to proclaim
+  Christianity its state religion (297–301)." (p.44)
+- "In 1473, Czarist Russia occupied northeastern Armenia" (p.44).
+- "Muslim Azerbaijan was occupied by Russia in 1828." (p.44)
+- "In 1918 an independent republic was proclaimed in former
+  Russian Armenia, but was abolished by the Communists" (p.44).
+- **Nagorno-Karabakh.** "With the eclipse of the USSR tension
+  erupted between Armenia and Azerbaijan over the
+  Nagorno-Karabakh Autonomous Oblast" (p.44).
+- "virtually all Armenians who lived in Azerbaijan (with the
+  exception of those in Nagorno-Karabakh) left, mostly for
+  Armenia" (p.44).
+
+### azerbaijan
+*Azerbaijani boundary history (pp.44–46, via Armenia–Azerbaijan
+and Armenia–Georgia sections).*
+
+Azerbaijan is not listed as a standalone entry; its history is
+discussed under ARMENIA (pp.44–45) and GEORGIA (pp.234–236).
+
+- "Muslim Azerbaijan was occupied by Russia in 1828." (p.44,
+  ARMENIA entry)
+- "On 26 May 1918: Georgia, Armenia and Azerbaijan. Azerbaijan
+  was occupied by the Red Army in early 1920" (p.45, ARMENIA–
+  GEORGIA Historical Background).
+- "On 12 March 1922 the three republics formed the
+  Transcaucasian Federation" (p.45).
+- **Boundary with Armenia.** "The main boundary between Armenia
+  and Azerbaijan runs for 352 miles (566 km)" (p.44).
+- "this boundary never had the status of a state boundary.
+  Frequent boundary modifications took place between the two
+  national republics from 1936 to 1991" (p.45).
+
+### bulgaria
+*Bulgarian boundary history (pp.118–119).*
+
+Bulgaria (Balgarija): area 42,823 sq mi [110,911 sq km]; population
+9,020,000 [1994]. Capital: Sofia. Bounded by Romania (378 mi;
+608 km), Turkey (149 mi; 238 km), Greece (307 mi; 494 km),
+Macedonia (92 mi; 148 km), Serbia (198 mi; 318 km).
+
+- "In 679 the Bulgars conquered present-day northeast Bulgaria
+  and founded their state." (p.118)
+- "Under Simon (893–927) the first Bulgarian state reached its
+  zenith, ruling over the areas between the Danube and the
+  Adriatic and Aegean Seas." (p.118)
+- "by 1396 all Bulgaria and Macedonia were under Ottoman
+  control." (p.118)
+- **1878 independence.** "In 1878 with the encouragement and
+  help of Russia, the Bulgarians regained their independence"
+  (p.119).
+- "In 1885, Bulgaria united with Eastern Rumelia" (p.119).
+- **1908.** "In 1908 Bulgaria declared its full independence from
+  the Ottoman Empire." (p.119)
+- **1940.** "In September 1940 Bulgaria received southern Dobruja
+  from Romania." (p.119)
+- **1944.** "In 1944 the Soviet army entered Bulgaria and a
+  Communist regime was established." (p.119)
+
+### macedonia
+*Macedonian boundary history (p.367).*
+
+Macedonia (Makedonija): area 9,928 sq mi [25,703 sq km]; population
+2,200,000 [1994]. Capital: Skopje. Bounded by Serbia (149 mi;
+240 km), Bulgaria (92 mi; 148 km), Greece (153 mi; 246 km), Albania
+(94 mi; 151 km).
+
+- "Macedonia was a part of the Ottoman Empire until 1912, but
+  became part of Serbia in 1913 as a result of the Balkan War."
+  (p.367)
+- "Bulgaria claimed that the Macedonians were Bulgarians, while
+  Serbia maintained that the Macedonians had been forcibly
+  Bulgarized." (p.367)
+- "After World War II the Communist regime in Yugoslavia under
+  Tito established Macedonia as one of the constituent
+  republics of Yugoslavia." (p.367)
+- "Following the disintegration of Yugoslavia... Macedonia
+  declared its independence." (p.367)
+- **Greek name dispute.** "the new state had problems gaining
+  international recognition, with the Greeks officially
+  objecting to the use of the name Macedonia" (p.367).
+
+### serbia-and-montenegro
+*Serbian (and Montenegrin) boundary history (pp.465–467).*
+
+Serbia (and Montenegro) (Srbija): area 98,766 sq mi [255,705 sq km];
+population 10,500,000 [1994]. Capital: Belgrade. Bounded by Croatia
+(158 mi; 254 km), Hungary (103 mi; 166 km), Romania (296 mi; 476 km),
+Bulgaria (198 mi; 318 km), Macedonia (149 mi; 240 km), Albania
+(178 mi; 287 km), Bosnia (328 mi; 527 km).
+
+- "Slavic tribes settled the present-day Serbia and Montenegro in
+  the sixth and seventh centuries." (p.465)
+- "Serbian power reached its zenith under the rule of Stephen
+  Dusan (1331–1355) who conquered Macedonia, Albania, Epirus,
+  Aethalia and Thessaly" (p.465).
+- **1389 Kosovo.** "the battle of Kosovo (1389) and the Serbs came
+  under Ottoman rule." (p.465)
+- **1878 independence.** "Following the Balkan crisis of 1875–1878
+  Serbia gained independence and enlarged its territory" (p.465).
+- **1882 kingdom.** "In 1882 Serbia was proclaimed a kingdom."
+  (p.466)
+- **Kosovo 1989.** "In 1989 Serbia dissolved the Autonomous
+  Province of Kosovo and placed the territory under martial
+  law." (p.19, ALBANIA–SERBIA)
+
+### moldava-romania
+*Moldava–Romania boundary history (pp.384–385).*
+
+Moldova (Moldava): area 13,012 sq mi [33,688 sq km]; population
+4,500,000 [1994]. Capital: Kishinev. Bounded by Romania (280 mi;
+450 km), Ukraine (584 mi; 939 km).
+
+- "Moldava was a republic of the Soviet Union until 1991." (p.384)
+- "The Romanian-speaking Moldavians were an integral part of
+  Romania between 1918 and 1940." (p.384)
+- "In June 1940 the Soviet Union recaptured Bessarabia." (p.384)
+- "In 1991 Romanian-speaking Moldavians seceded from the Soviet
+  Union and established an independent Moldava." (p.384)
+- **Bessarabia historical background.** "In 1812 Russia gained
+  the territory of Bessarabia (between the Prut and Dniester
+  rivers)." (p.384)
+- "The Congress of Berlin... In 1878. The three districts of
+  southeastern Bessarabia were restored to Russia." (p.385)
+- "The collapse of Czarist Russia during World War I led to
+  Romania's annexation of Bessarabia in 1918" (p.385).
+
+### kyrgyzstan
+*Kyrgyz boundary history (p.160, via China–Kyrgyzstan).*
+
+Kyrgyzstan does not have its own entry in Biger (it was a Soviet
+republic until 1991). Content is from CHINA–KYRGYZSTAN (p.160).
+
+- "Kyrgyzstan was taken over by Russia in the southwest that
+  year (1864)" (p.160).
+- "the Treaty of Saint Petersburg established the line. The
+  boundary between Kyrgyzstan (then part of Russia) and China
+  was demarcated and defined in two protocols (25 November
+  1882 and 22 May 1884)" (p.160).
+- "Kyrgyzstan became part of an independent Turkistan republic
+  and was incorporated in the Soviet Union in 1924." (p.160)
+- "[Kyrgyzstan] became independent in December 1991, adopting,
+  without a formal agreement, its section of the Soviet
+  Union–China border as its international boundary" (p.160).
+
+### tajikistan
+*Tajik boundary history (pp.16–17, via Afghanistan–Tajikistan).*
+
+Tajikistan does not have its own entry. Content is from
+AFGHANISTAN–TAJIKISTAN (pp.16–17).
+
+- "The boundary between Afghanistan and Tajikistan runs 750
+  miles (1,206 km.)" (p.16).
+- "For the most part, the boundary follows the Amu Darya (Oxus)
+  River and its tributaries." (p.16)
+- "In 1929 Tajikistan became a republic of the Soviet Union."
+  (p.17)
+- "In 1991 Tajikistan became an independent country." (p.17)
+
+### turkmenistan
+*Turkmen boundary history (pp.17–18, via Afghanistan–Turkmenistan).*
+
+Turkmenistan does not have its own entry. Content is from
+AFGHANISTAN–TURKMENISTAN (pp.17–18).
+
+- "The boundary between Afghanistan and Turkmenistan runs for
+  462 miles (744 km.)" (p.17).
+- "The present boundary is the outcome of the nineteenth-century
+  British-Russian territorial power struggle in central Asia"
+  (p.17).
+- "Russia... occupying the town of Kushka (Turkmenistan)" (p.17).
+- **1895 boundary.** "In March 1895 Britain agreed to extend the
+  boundary eastward to the peak of Povalo Schveykovski... The
+  boundary line was demarcated in 1895 by 12 boundary
+  pillars." (p.17)
+
+### uzbekistan
+*Uzbek boundary context (pp.17–18, via Afghanistan–Turkmenistan).*
+
+Uzbekistan does not have its own entry. The Afghanistan–Turkmenistan
+boundary section (pp.17–18) references the boundary junction with
+Uzbekistan.
+
+- The Afghanistan–Turkmenistan boundary runs "eastward to the
+  boundary junction with Uzbekistan in the river and west of
+  Tash Gozar (Afghanistan)." (p.17)
+- "The creation of the USSR after World War I did not cause any
+  changes in the boundary." (p.17)
+- Like the other Central Asian states, Uzbekistan adopted its
+  section of the former Soviet boundary upon independence in
+  1991.
+
+### australia
+*Australian boundary context (pp.46–47).*
+
+Australia has no land boundaries with other sovereign states except
+Papua New Guinea. Biger treats it under the AUSTRALIA main entry
+(pp.46–47).
+
+- "The Commonwealth of Australia was created on 1 January 1901
+  as a federation of six self-governing British colonies."
+  (p.46)
+- AUSTRALIA–PAPUA NEW GUINEA (p.47): "In 1884 Germany declared
+  a protectorate over the northeastern section of New Guinea"
+  (p.47). "In 1906 British New Guinea was transferred to the
+  Commonwealth of Australia." (p.47)
+
+### congo-zaire
+*Congolese boundary history (pp.175–177).*
+
+Congo (Brazzaville): area 131,977 sq mi [341,820 sq km]; population
+2,700,000 [1994]. The Democratic Republic of the Congo (Kinshasa)
+is covered under ZAIRE in the book.
+
+- "The Congolese gained their independence from the French in
+  1960." (p.175)
+- **CONGO–ZAIRE boundary** (p.176): "The boundary between Congo
+  and Zaire runs for 1,498 miles (2,410 km.)" (p.176).
+- "In the Berlin Conference of 1884–1885 the Association, which
+  changed its name to Congo Free State, was recognized as a
+  governing power on the Congo River." (p.176)
+- "Belgian Congo became independent on 30 June 1960, changing
+  its name to Zaire on 21 August 1971." (p.176)
+- "Congo became independent on 15 August 1960." (p.176)
+
+### ghana
+*Ghanaian boundary context.*
+
+Ghana is discussed under its boundary subsections with neighbors.
+No standalone GHANA main entry was found in the pages scanned. Ghana
+gained independence on 6 March 1957 as the first sub-Saharan African
+colony to achieve independence. The GREECE–MACEDONIA section at
+pp.247–249 provides boundary context for the Balkan region but not
+Ghana. Ghana-specific boundary entries (GHANA–BURKINA FASO, GHANA–
+IVORY COAST, GHANA–TOGO) would be found elsewhere in the G section.
+
+**Limitation:** Biger citations for Ghana borders require scanning
+additional pages not covered in this batch.
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
