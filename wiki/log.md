@@ -26,6 +26,51 @@ Kinds:
 
 ---
 
+## lint-2026-04-13
+**Date:** 2026-04-13
+**Touched:** (index only)
+**Source:** none
+**Kind:** lint
+
+Post-Biger-final-batch lint. 345 polity pages, 1386 CSV rows (25%
+coverage). Schema conformance: all 345 pages pass. Obsidian
+compatibility: all pass (no HTML anchors, no reference-style links).
+Citation health: 140 pages (41%) have at least one unsupported
+bullet — mostly bulk-generated pages from autonomous iterations.
+5 China chain pages have >50% database-only citations. 32 pages
+have non-empty Contradictions sections, all recent (<3 days old).
+No staleness (all last_ingest within last 3 days). No orphan pages,
+no unreachable sources. Index coverage numbers updated.
+
+## biger-ingest-final-batch
+**Date:** 2026-04-13
+**Touched:** BWA-1966-2025, COG-1960-2025, ERI-1882-2025, GAB-1960-2025, GMB-1800-2025, GEO-1991-2025, GNB-1879-2025, LSO-1966-2025, LBR-1847-2025, LIE-1800-2025, MNG-1911-2025, NAM-1884-2025, NER-1960-2025, NOR-1800-2025, PRT-1800-2025, SMR-1800-2025, SLE-1800-2025, SOM-1960-2025, SWE-1800-1809, CHE-1800-2025, TZA-1964-2025, TGO-1960-2025, ZWE-1890-2025, ESH-1800-2025
+**Source:** biger-1995
+**Kind:** ingest
+
+Final comprehensive sweep of Biger 1995 to extract all remaining
+country entries not previously ingested. Added 36 new §-sections to
+[biger-1995](sources/biger-1995.md): botswana, congo, eritrea, gabon,
+gambia, georgia, guinea-bissau, lesotho, liberia, liechtenstein,
+mongolia, namibia, niger, norway, portugal, san-marino, sierra-leone,
+somalia, sweden, switzerland, tanzania, togo, zimbabwe, western-sahara,
+iceland, fiji, tonga, vatican-city, sao-tome-and-principe,
+antigua-and-barbuda, grenada, kiribati, saint-kitts-and-nevis,
+saint-lucia, saint-vincent.
+Also added 14 dependency/territory sections (anguilla, greenland,
+guadeloupe, guam, american-samoa, faeroe-islands, falkland-islands,
+christmas-island, cocos-islands, saint-helena, saint-pierre-and-miquelon,
+macao, saint-martin, cook-islands) plus island state sections (iceland,
+fiji, tonga, vatican-city, sao-tome-and-principe, antigua-and-barbuda,
+grenada, kiribati, saint-kitts-and-nevis, saint-lucia, saint-vincent).
+Created 6 new polity pages (ERI-1882-2025, GAB-1960-2025, LIE-1800-2025,
+MNG-1911-2025, SMR-1800-2025, ESH-1800-2025) and updated 18 existing
+pages with Biger citations. Source file now has 203 §-sections.
+All mainland countries, island states, and dependencies with entries
+fully extracted. Confirmed no entries for: Bahamas, Barbados, Maldives,
+Seychelles. Biger 1995 is now fully extracted. Polity page propagation
+for island/dependency entries deferred (minimal Biger content).
+
 ## biger-ingest-central-america-caribbean
 **Date:** 2026-04-12
 **Touched:** BLZ-1800-2025, CRI-1800-2025, CUB-1800-2025, DMA-1800-2025, DOM-1800-2025, GTM-1821-2025, HND-1800-2025, HTI-1800-2025, JAM-1800-2025, NIC-1800-2025, PAN-1903-2025, SLV-1821-2025, TTO-1800-2025, GUY-1800-2025, SUR-1975-2025

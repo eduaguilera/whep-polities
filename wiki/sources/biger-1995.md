@@ -2945,6 +2945,644 @@ does not have its own standalone entry in Biger.
   and Burundi) and Britain administering Tanganyika until its
   independence in 1961." (p.490)
 
+### botswana
+*Botswana boundary history (pp.87–91).*
+
+Botswana is a landlocked southern African country (area: 224,606
+sq. miles [581,730 sq. km.]; estimated population: 1,400,000
+[1994]), with desert covering more than three quarters of its area.
+It is bounded by Namibia (845 miles; 1,360 km.), by Zambia at a
+junction point and Zimbabwe (505 miles; 813 km.), and by South
+Africa (1,144 miles; 1,840 km.). Capital: Gaborone.
+
+- "In Botswana, the British ruled the Tswana indirectly through
+  rural committees." (p.87)
+- Botswana gained independence in 1966; the government recommended
+  major changes in administration and "became a multi-party
+  democracy after independence" (p.87).
+- Boundary with Namibia (pp.87–89): historical background covers
+  German South-West Africa colonisation from 1884.
+- Boundary with South Africa (pp.89–90): covers Bechuanaland
+  Protectorate establishment.
+- Boundary with Zimbabwe (pp.90–91): colonial boundary as common
+  boundary between the two countries.
+
+### congo
+*Congo (Republic / Brazzaville) boundary history (pp.175–176).*
+
+Congo is a country on the equator (area: 131,977 sq. miles
+[341,820 sq. km.]; estimated population: 2,700,000 [1994]).
+Bounded by Cameroon (325 km.), Central African Republic
+(290.5 miles; 467 km.), Zaire (1,010 miles; 1,625 km.), Angola
+(125 miles; 201 km.) and the Atlantic Ocean, and Gabon
+(1,183 miles; 1,903 km.). Capital: Brazzaville.
+
+- "The Congolese gained their independence from the French
+  in the 1960." (p.175)
+- Europeans first made contact with the Congolese in the
+  fifteenth century; Portuguese traded and attempted conversion
+  to Catholicism (p.175).
+- Simon Kimbangu founded an independent church regarded as the
+  largest and most important independent church in Africa (p.175).
+- Since independence, politics characterized by ethnic divisions
+  between northern and southern peoples (p.175).
+
+### eritrea
+*Eritrea boundary history (pp.208–210).*
+
+Eritrea (area: 36,177 sq. miles [93,662 sq. km.]; estimated
+population: 3,500,000 [1994]) was a northern province of Ethiopia
+until 1993. Bounded by the Red Sea, Djibouti (68 miles; 110 km.),
+Ethiopia (651 miles; 1,047 km.), and Sudan (345 miles; 555 km.).
+Capital: Asmara.
+
+- "Eritrea only became an Ethiopian province in 1962; however,
+  the Muslim and Tigrinya-speaking majorities did not
+  acquiesce." (p.208)
+- A distinct Eritrean entity emerged during Italian colonization
+  (1885–1942); created as Italian colony in 1889 from parts of
+  Tigre and Ottoman/Egyptian coastal lowlands (p.209).
+- Italians attempted expansion but defeated by Ethiopia at Adwa
+  in 1896 (p.209).
+- After WWII, UN-administered territory; federated with Ethiopia
+  in 1952; province in 1960 (p.209).
+- EPLF fought 30-year war; massive Ethiopian offensives 1977–1978
+  caused over 500,000 Eritreans to flee to Sudan (p.208).
+- 1991: EPLF and TPLF agreed on de facto independence; recognized
+  after 1993 referendum (p.208).
+
+### gabon
+*Gabon boundary history (p.233).*
+
+Gabon is a country in western Central Africa (area: 103,346
+sq. miles [267,667 sq. km.]; estimated population: 1,210,000
+[1994]). Capital: Libreville.
+
+- Biger's Gabon entry is brief, listing only cross-references to
+  CAMEROON–GABON, CONGO–GABON, and EQUATORIAL GUINEA–GABON.
+- Independence date from EQUATORIAL GUINEA–GABON boundary entry
+  (p.208): "On 17 August 1960 Gabon became independent."
+- Bounded by Equatorial Guinea (217.5 miles; 350 km.), Cameroon
+  (185 miles; 298 km.), and Congo (1,183 miles; 1,903 km.) (p.233).
+
+### gambia
+*Gambia boundary history (pp.233–234).*
+
+The Gambia is a west African country on the River Gambia
+(area: 4,127 sq. miles [10,689 sq. km.]; estimated population:
+920,000 [1994]). Capital: Banjul.
+
+- "The Gambia is one of Africa's smallest states. It is a
+  semi-enclave in Senegal." (p.233)
+- Consists of a strip of territory on both banks of the river,
+  widest area no more than 6 miles (10 km.); bounded on all sides
+  by Senegal (460 miles; 740 km.) but open to the Atlantic in the
+  west (p.233).
+- British established a station at the mouth of the Gambia River
+  in 1588; founded Bathurst in 1826 (p.234).
+- French and British boundary commissions demarcated the line in
+  1895–1896, 1898–1899, and 1904–1905 (p.234).
+- Gained independence from Britain in February 1965 (p.234).
+
+### georgia
+*Georgia boundary history (pp.234–235).*
+
+Georgia (Sakartvelo) is situated in the western Transcaucasian
+area on the Black Sea (area: 26,911 sq. miles [69,700 sq. km.];
+estimated population: 5,600,000 [1994]). Bounded by Turkey
+(156.5 miles; 252 km.), Armenia (102 miles; 164 km.), Azerbaijan
+(200 miles; 322 km.), and Russia (450 miles; 723 km.).
+Capital: T'bilisi.
+
+- "In 1801 the east Georgian kingdom was abolished and Georgia
+  was included in the Russian empire." (p.234)
+- In the fifteenth century the Georgian kingdom divided into
+  several political units (p.234).
+- Other parts of Georgia came under Russian rule between 1803
+  and 1878 (p.234).
+- Independence restored 1917–1921 after the Russian revolution;
+  in 1922 became part of Transcaucasian SFSR; from 1936 a Soviet
+  Socialist Republic (p.235).
+- In 1991 Georgia declared its independence (p.235).
+
+### guinea-bissau
+*Guinea-Bissau boundary history (p.258).*
+
+Formerly Portuguese Guinea, Guinea-Bissau is one of the
+westernmost African countries (area: 13,948 sq. miles
+[36,111 sq. km.]; estimated population: 1,050,000 [1994]).
+Bounded by Senegal (210 miles; 338 km.) and Guinea
+(240 miles; 386 km.). Capital: Bissau.
+
+- "Guinea-Bissau gained its independence from the Portuguese
+  in 1974." (p.258)
+- One of the poorest nations of the world (p.258).
+- During colonial period, Portuguese brought Cape Verdeans as
+  work inspectors; Cape Verdean dominance continued after
+  independence until 1980 military coup (p.258).
+
+### lesotho
+*Lesotho boundary history (p.357).*
+
+Lesotho is a landlocked southern African country surrounded on
+all sides by South Africa (area: 11,725 sq. miles
+[30,355 sq. km.]; estimated population: 1,900,000 [1994]).
+An enclave within southern South Africa; common boundary
+565 miles (909 km.). Capital: Maseru.
+
+- Dutch ceded Cape of Good Hope to Britain in 1814; Afrikaner
+  farmers moved northward during the Great Trek (p.357).
+- Basuto people lived in upper Orange River basin; clashes with
+  British forces led to recognition of independence of
+  Basutoland on 23 February 1854 (p.357).
+- British Commission abolished 1 August 1964; Basutoland became
+  independent as Lesotho on 4 October 1966 (p.357).
+
+### liberia
+*Liberia boundary history (p.358).*
+
+Liberia is a west African country (area: 38,265 sq. miles
+[99,067 sq. km.]; estimated population: 2,700,000 [1994]).
+Bounded by Sierra Leone (190 miles; 306 km.), Guinea
+(350 miles; 563 km.), and Ivory Coast (445 miles; 716 km.).
+Capital: Monrovia.
+
+- "Liberia was founded in 1847 by freed black slaves from the
+  southern United States of America." (p.358)
+- Americo-Liberians, descendants of original settlers, now
+  constitute fewer than 2% of the population (p.358).
+- More than 20% live around the capital, Monrovia (p.358).
+
+### liechtenstein
+*Liechtenstein boundary history (p.362).*
+
+Liechtenstein is a Central European country between Austria and
+Switzerland (area: 62 sq. miles [160 sq. km.]; estimated
+population: 30,000 [1994]). Bounded by Austria (23 miles;
+37 km.) and Switzerland (25.5 miles; 41 km.). Capital: Vaduz.
+
+- History as sovereign state begins in 1342 when County of Vaduz
+  became a separate territory (p.362).
+- Counties of Vaduz and Schellenberg united in 1719, named the
+  Imperial Principality of Liechtenstein (p.362).
+- Political independence established after Coalition War of
+  1806 (p.362).
+- Between 1815 and 1867 joined the German Federation (p.362).
+- "It is one of the most peaceful boundaries in the world and
+  no dispute concerning the undemarcated line has ever been
+  known since its creation." (p.362)
+
+### mongolia
+*Mongolia boundary history (pp.386–387).*
+
+Mongolia is a landlocked eastern Asian country (area: 604,829
+sq. miles [1,566,500 sq. km.]; estimated population: 2,360,000
+[1994]). Bounded by Russia to the north and China to the south
+and west. Capital: Ulan Bator.
+
+- "Under the leadership of Genghis Khan, the Mongol tribes were
+  united and reached their zenith of power." (p.386)
+- Earliest inhabitants were the Huns, who created a nomadic
+  empire (p.386).
+- After Manchu conquered China and founded the Qing dynasty
+  (1644–1911), Mongolia was under Chinese rule (p.386).
+- 1911 Chinese Revolution: Outer Mongolia declared
+  independence (p.387).
+- 1924: Mongolian People's Republic declared with Soviet
+  support (p.387).
+
+### namibia
+*Namibia boundary history (p.399).*
+
+Namibia is a southwestern African country (area: 317,939
+sq. miles [823,144 sq. km.]; estimated population: 1,550,000
+[1994]). Bounded by Angola and Zambia in the north, Botswana
+in the east, South Africa in the east and south. Capital: Windhoek.
+
+- Until WWI called South-West Africa, under German colonial
+  rule (p.399).
+- In 1920 became a mandate of the Union of South Africa (p.399).
+- After WWII the UN contested South Africa's continued
+  control (p.399).
+- "After a lengthy guerrilla war Namibia became independent
+  in 1990." (p.399)
+- SWAPO won multi-party elections and formed the new
+  government (p.399).
+
+### niger
+*Niger boundary history (p.405).*
+
+Niger is a landlocked west African country (area: 494,920
+sq. miles [1,281,350 sq. km.]; estimated population: 8,500,000
+[1994]). Bounded by Algeria and Libya in the north, Chad in the
+east, Nigeria in the south, Burkina Faso in the southwest, Mali
+in the west. Capital: Niamey.
+
+- "The people of Niger gained independence from the French in
+  August 1960." (p.405)
+- During decolonization two main parties competed; Hamani Diori
+  gained control and banned all opposition parties (p.405).
+- Diori overthrown in a 1974 military coup (p.405).
+- Since independence, ethnic incidents in Tuareg region in the
+  north (p.405).
+
+### norway
+*Norway boundary history (pp.408–409).*
+
+Norway is a northern European country (area: 149,469 sq. miles
+[386,975 sq. km.]; estimated population: 4,300,000 [1994]).
+Bounded by Russia and Finland in the northeast, Sweden in the
+east. Capital: Oslo.
+
+- In the eighth century, petty kings and peasant-landowners
+  colonized mountainous coastal Scandinavia; first unified
+  monarchy established in the ninth century (p.408).
+- Viking expeditions followed; in 1030 Norway officially
+  adopted Christianity (p.408).
+- Union of Kalmar (1397): Norway united with Sweden and
+  Denmark (p.408).
+- Kingdom of Norway proclaimed in 1905 after peaceful separation
+  from Sweden (p.409).
+- Norway occupied by Nazi Germany in 1940 (p.409).
+- After WWII built vast social-democratic welfare state enriched
+  by North Sea oil (p.409).
+
+### portugal
+*Portugal boundary history (pp.442–443).*
+
+Portugal is in southwestern Europe (area: 35,516 sq. miles
+[91,950 sq. km.]; estimated population: 10,450,000 [1994]).
+Only land boundary with Spain (755 miles; 1,214 km.).
+Capital: Lisbon.
+
+- Portuguese descend from Lusitan tribe; country overrun by
+  Suevi and Visigoths, then conquered by Muslim Moors in
+  711 (p.442).
+- Reconquista completed by mid-thirteenth century, making
+  Portugal Europe's oldest nation-state (p.442).
+- "The Portuguese nation was the era of exploration and the
+  establishment of the first worldwide seaborne empire." (p.442)
+- Spanish occupied Portugal 1578–1640 (p.442).
+- 1926 fascist coup led to Salazar dictatorship (p.443).
+- 1974 Revolution of Carnations brought parliamentary
+  democracy (p.443).
+
+### san-marino
+*San Marino boundary history (p.460).*
+
+San Marino is a tiny landlocked European country in the Italian
+peninsula (area: 24 sq. miles [61 sq. km.]; estimated population:
+24,000 [1994]). Bounded on all sides by Italy (24 miles; 39 km.).
+Capital: San Marino.
+
+- Biger's entry is very brief: intro line plus cross-reference
+  to ITALY–SAN MARINO boundary.
+- No standalone historical background paragraph (p.460).
+
+### sierra-leone
+*Sierra Leone boundary history (pp.467–468).*
+
+Sierra Leone is a west African country (area: 27,925 sq. miles
+[72,300 sq. km.]; estimated population: 4,400,000 [1994]).
+Capital: Freetown.
+
+- "Sierra Leone became independent from British colonial rule
+  in 1961." (p.467)
+- Political life highly unstable since independence, characterized
+  by ethnic struggle between Temne and Mende (p.467).
+- At beginning of 1990s, popular demands for political reforms
+  raised; Sierra Leone became involved in Liberian civil war
+  (1990) (p.468).
+
+### somalia
+*Somalia boundary history (pp.471–472).*
+
+Somalia (Somaliya) (area: 246,201 sq. miles [637,414 sq. km.];
+estimated population: 8,000,000 [1994]). Capital: Mogadishu.
+
+- "The independent Somali Democratic Republic was formed in
+  1958." (p.471) [Note: the de facto date is 1960 when British
+  and Italian Somaliland merged.]
+- Unification with Djibouti (former French Somaliland), southern
+  Ethiopia, and northern Kenya was a long strategic aim (p.471).
+- This encouraged wars with Ethiopia (1963, 1977–1978) and
+  continuous guerrilla activities (p.471).
+- After fall of Siad Barre (1969–1990), de facto division of
+  Somalia; self-proclamation of northern Somaliland republic
+  in 1991 (p.472).
+
+### sweden
+*Sweden boundary history (pp.480–482).*
+
+Sweden (Sverige) is a northern European country (area: 173,732
+sq. miles [449,964 sq. km.]; estimated population: 8,700,000
+[1994]). Bounded by Finland (364.5 miles; 586 km.) and Norway
+(1,006 miles; 1,619 km.). Capital: Stockholm.
+
+- Swedes participated in Viking expeditions; "Viking traders
+  (vareger) established merchant colonies in Letland." (p.480)
+- 1397 Union of Kalmar united Sweden with Norway and
+  Denmark (p.480).
+- Under Vasa dynasty (1520s), Sweden became Lutheran monarchy
+  and great power 1611–1721 (p.480).
+- Defeat in Napoleonic Wars: loss of Finland in 1808, compensated
+  by union with Norway (lasting until 1905) (p.481).
+- Nineteenth century: constitutional monarchy and
+  neutralism (p.481).
+- From 1930s social-democrats built welfare state (p.482).
+
+### switzerland
+*Switzerland boundary history (pp.482–483).*
+
+Switzerland is a Central European country (area: 15,943 sq. miles
+[41,292 sq. km.]; estimated population: 7,000,000 [1994]).
+Bounded by Germany (208 miles; 334 km.), Austria (102 miles;
+164 km.), Liechtenstein (25.5 miles; 41 km.), Italy (460 miles;
+740 km.), France (356 miles; 570 km.). Capital: Bern.
+
+- Helveti, a Celtic tribe conquered by Julius Caesar in 59 BCE,
+  were first inhabitants (p.482).
+- On 1 August 1291 the "eternal alliance" between three forest
+  cantons marked first step toward Swiss Confederation (p.482).
+- "Switzerland remained neutral in both World Wars and ever
+  since." (p.482)
+- Mid-nineteenth century: power passed to liberal bourgeoisie;
+  Switzerland became a liberal democracy (p.483).
+- Famous as location for international organizations and refuge
+  for politically and religiously proscribed (p.483).
+
+### tanzania
+*Tanzania boundary history (pp.489–490).*
+
+Tanzania (area: 364,900 sq. miles [944,726 sq. km.]; estimated
+population: 28,200,000 [1994]). Capital: Dar es Salaam.
+Bounded by Uganda (246 miles; 396 km.), Kenya (478 miles;
+769 km.), Mozambique (295 miles; 475 km.), Malawi (210 miles;
+338 km.), Zambia, Zaire (305 miles; 490 km.), Burundi
+(280 miles; 451 km.), Rwanda (135 miles; 217 km.).
+
+- "The country was formed in 1964 as a result of the union of
+  mainland Tanganyika." (p.489) — and the former sultanate of
+  Zanzibar (independent 1963).
+- Tanganyika was a British mandate then trustee territory;
+  independent in 1961 (p.489).
+- Zanzibar was a British colony 1860–1963 (p.489).
+
+### togo
+*Togo boundary history (pp.492–493).*
+
+Togo is a west African country (area: 21,925 sq. miles
+[56,764 sq. km.]; estimated population: 4,100,000 [1994]).
+Bounded by Burkina Faso (78 miles; 126 km.), Benin (400 miles;
+644 km.), Gulf of Guinea, and Ghana (545 miles; 877 km.).
+Capital: Lome.
+
+- "The territory of Togo was ruled by the Germans until World
+  War I." (p.492)
+- After German defeat, divided between France and Britain as
+  mandate; larger eastern part to France, western part to
+  Britain (p.492).
+- British part joined Ghana at independence in 1957 (p.492).
+- French Togoland gained independence in April 1960 (p.492).
+- 1963: Olympio overthrown in military coup by Eyadema (p.493).
+
+### zimbabwe
+*Zimbabwe boundary history (pp.519–520).*
+
+Zimbabwe is a landlocked southern African country (area: 150,873
+sq. miles [390,610 sq. km.]; estimated population: 10,700,000
+[1994]). Bounded by Zambia (495 miles; 796 km.), Mozambique
+(760 miles; 1,223 km.), South Africa (140 miles; 225 km.),
+Botswana (505 miles; 813 km.). Capital: Harare.
+
+- "In 1923 Southern Rhodesia became a white-dominated,
+  self-governing colony." (p.520)
+- 1965: Ian Smith proclaimed UDI; Rhodesia independent of
+  Britain under white minority government (p.520).
+- African liberation movements: ZAPU (Nkomo, Ndebele) and
+  ZANU (Mugabe, Shona) launched guerrilla war (p.520).
+- 1980: ZAPU and ZANU won free elections; Smith regime
+  ended (p.520).
+- December 1987 merger agreement between ZAPU and ZANU ratified
+  in 1988 (p.520).
+
+### iceland
+*Iceland entry (p.289).*
+
+Iceland (Island) is an island in the North Atlantic (area: 39,769
+sq. miles [102,962 sq. km.]; estimated population: 270,000
+[1994]). It has no land boundaries. Capital: Reykjavik.
+
+- First discovered in the eighth century by Celtic monks;
+  colonized by Norse Vikings from 872 (p.289).
+- Passed under Norwegian then Danish sovereignty (p.289).
+- Total independence in 1944 as a result of World War II (p.289).
+
+### fiji
+*Fiji entry (p.217).*
+
+Fiji is an independent archipelago of some 332 islands (110
+inhabited) in the South Pacific Ocean (area: 7,078 sq. miles
+[18,325 sq. km.]; estimated population: 800,000 [1994]). It has
+no land boundaries. Capital: Suva.
+
+- First settled approximately 3,500 years ago (p.217).
+- Became independent from Britain in 1970 (p.217).
+- Significant ethnic tensions between native Fijians (48%)
+  and Indians (46%) (p.217).
+
+### tonga
+*Tonga entry (p.494).*
+
+Tonga is an islands country in the South Pacific Ocean
+(area: 290 sq. miles [750 sq. km.]; estimated population:
+105,600 [1994]). It has no land boundaries. Capital: Nuku'alofa.
+
+- A kingdom that became independent from Britain in 1970 (p.494).
+- Agriculture is traditional and principal economic activity;
+  tourism increasing (p.494).
+
+### vatican-city
+*Vatican City entry (p.510).*
+
+Vatican City (Citta del Vaticano) is an independent country
+under the ruling of the Catholic pope, located within the
+Italian city of Rome (area: 0.17 sq. miles [0.44 sq. km.];
+estimated population: 1,000 [1994]).
+
+- Italy's encompassing boundary with Vatican City measures
+  2 miles (3.2 km.) (p.510).
+- Cross-reference to ITALY–VATICAN CITY boundary entry (p.510).
+
+### sao-tome-and-principe
+*São Tomé and Príncipe entry (p.460).*
+
+São Tomé and Príncipe is a republic of two islands in the
+Gulf of Guinea (area: 372 sq. miles [964 sq. km.]; estimated
+population: 130,000 [1994]). It has no land boundaries.
+Capital: São Tomé.
+
+- Became independent from Portugal in 1975 (p.460).
+- Since mid-1980s government inclined toward democratization
+  and capitalism; 1991 multi-party elections held (p.460).
+
+### antigua-and-barbuda
+*Antigua and Barbuda entry (p.36).*
+
+Antigua and Barbuda is a Caribbean island state. It has no
+land boundaries. Brief entry in Biger with cross-references
+only (p.36).
+
+### grenada
+*Grenada entry (p.250).*
+
+Grenada is a Caribbean island state. It has no land boundaries.
+Brief entry in Biger (p.250).
+
+### kiribati
+*Kiribati entry (p.342).*
+
+Kiribati is an island state in the Pacific. It has no land
+boundaries. Brief entry in Biger (p.342).
+
+### saint-kitts-and-nevis
+*Saint Kitts and Nevis entry (p.458).*
+
+Saint Kitts and Nevis is an islands state in the West Indies
+(area: 104 sq. miles [269 sq. km.]; estimated population:
+44,000 [1994]). It has no land boundaries. Capital: Basseterre.
+Brief entry in Biger (p.458).
+
+### saint-lucia
+*Saint Lucia entry (p.458).*
+
+Saint Lucia is an island country in the Caribbean (area: 238
+sq. miles [616 sq. km.]; estimated population: 160,000 [1994]).
+It has no land boundaries. Brief entry in Biger (p.458).
+
+### saint-vincent
+*Saint Vincent and the Grenadines entry (p.459).*
+
+Saint Vincent and the Grenadines is an islands country in the
+Caribbean (area: 150 sq. miles [388 sq. km.]; estimated
+population: 115,000 [1994]). It has no land boundaries.
+Brief entry in Biger (p.459).
+
+### anguilla
+*Anguilla entry (p.36).*
+
+Anguilla is a British dependency in the Caribbean. It has no
+land boundaries. Brief entry in Biger (p.36).
+
+### greenland
+*Greenland entry (p.250).*
+
+Greenland is a self-governing island region of Denmark in the
+North Atlantic. It has no land boundaries. Brief entry in
+Biger (p.250).
+
+### guadeloupe
+*Guadeloupe entry (p.250).*
+
+Guadeloupe is a French overseas department in the Caribbean.
+It has no land boundaries. Brief entry in Biger (p.250).
+
+### guam
+*Guam entry (p.250).*
+
+Guam is a US unincorporated territory in the western Pacific.
+It has no land boundaries. Brief entry in Biger (p.250).
+
+### american-samoa
+*American Samoa entry (p.30).*
+
+American Samoa is an unincorporated/unorganized territory of
+the United States (area: 76 sq. miles [197 sq. km.]; estimated
+population: 53,000 [1994]). It has no land boundaries.
+Capital: Pago Pago (p.30).
+
+### faeroe-islands
+*Faeroe Islands entry (p.217).*
+
+The Faeroe Islands (Foroyar) are a self-governing island region
+of Denmark in the North Atlantic (area: 540 sq. miles
+[1,399 sq. km.]; estimated population: 49,000 [1994]). It has
+no land boundaries. Capital: Torshavn (p.217).
+
+### falkland-islands
+*Falkland Islands entry (p.217).*
+
+The Falkland Islands are a UK crown colony in the South Atlantic
+(area: 4,702 sq. miles [12,173 sq. km.]; estimated population:
+2,000 [1994]). It has no land boundaries. Capital: Stanley
+(p.217).
+
+### christmas-island
+*Christmas Island entry (p.169).*
+
+Christmas Island is an external territory of Australia
+(area: 52 sq. miles [135 sq. km.]; estimated population: 2,300
+[1994]). It has no land boundaries (p.169).
+
+### cocos-islands
+*Cocos (Keeling) Islands entry (p.169).*
+
+The Cocos (Keeling) Islands are an external territory of
+Australia (area: 5 sq. miles [14 sq. km.]; estimated population:
+700 [1994]). No land boundaries (p.169).
+
+### saint-helena
+*Saint Helena entry (p.458).*
+
+Saint Helena is a dependent territory of the UK in the South
+Atlantic (area: 121 sq. miles [314 sq. km.]; estimated
+population: 8,000 [1994]). No land boundaries (p.458).
+
+### saint-pierre-and-miquelon
+*Saint Pierre and Miquelon entry (p.459).*
+
+Saint Pierre and Miquelon is a French territorial collectivity
+south of Newfoundland (area: 93 sq. miles [242 sq. km.];
+estimated population: 6,750 [1994]). No land boundaries (p.459).
+
+### macao
+*Macao entry (p.366).*
+
+Macao is an overseas territory of Portugal, scheduled to become
+Chinese territory in 1999 (area: 6.6 sq. miles [17 sq. km.];
+estimated population: 510,000 [1994]). Its only land boundary
+is with China (0.21 miles) (p.366).
+
+### saint-martin
+*Saint Martin / Sint Maarten entry (p.458).*
+
+Saint Martin is a partitioned Caribbean island shared between
+France and the Netherlands. It has an international boundary
+between the two halves. Entry in Biger cross-references boundary
+description (p.458).
+
+### cook-islands
+*Cook Islands — not found as standalone entry in Biger.*
+
+The Cook Islands were mentioned by a subagent as appearing in
+the text sequence near Congo entries but no standalone country
+entry was confirmed. If present, it would be a brief island
+entry with no land boundaries.
+
+### western-sahara
+*Western Sahara brief entry (p.512).*
+
+Western Sahara (area: 102,703 sq. miles [265,898 sq. km.];
+estimated population: 200,000 [1994]). Bounded by Morocco
+(275 miles; 443 km.), Algeria (26 miles; 42 km.), Mauritania
+(970 miles; 1,561 km.). Capital: El Aaiun.
+
+- "Western Sahara's sovereignty is undetermined at
+  present." (p.512)
+- No standalone historical background section; Biger
+  cross-references ALGERIA–WESTERN SAHARA, MAURITANIA–WESTERN
+  SAHARA, and MOROCCO–WESTERN SAHARA boundary entries.
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and

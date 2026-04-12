@@ -7,12 +7,12 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1386 (as of 2026-04-12 lint) |
-| Polity pages | 220 (all sourced, no bulk trash) |
+| Polities in CSV | 1386 (as of 2026-04-13 lint) |
+| Polity pages | 345 (all sourced, no bulk trash) |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | 240 unresolved (258 total, 18 resolved) as of 2026-04-12 lint |
+| Pages citing biger-1995 | 234 |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
@@ -263,6 +263,11 @@ lint fails if the index is stale.
 - [North Macedonia](polities/mkd-1991-2025.md) — `MKD-1991-2025`, draft.
 - [Czechia](polities/cze-1993-2025.md) — `CZE-1993-2025`, draft.
 - [Slovakia](polities/svk-1993-2025.md) — `SVK-1993-2025`, draft.
+- [Liechtenstein](polities/lie-1800-2025.md) — `LIE-1800-2025`, draft. 226-year continuous row. Principality since 1342/1719, independence 1806.
+- [San Marino](polities/smr-1800-2025.md) — `SMR-1800-2025`, draft. Microstate enclave in Italy.
+- [Andorra](polities/and-1800-2025.md) — `AND-1800-2025`, draft. Microstate between France and Spain.
+- [Monaco](polities/mco-1800-2025.md) — `MCO-1800-2025`, draft. Microstate on French Riviera.
+- [Malta](polities/mlt-1800-2025.md) — `MLT-1800-2025`, draft. Island state.
 
 ### Africa
 
@@ -293,6 +298,22 @@ lint fails if the index is stale.
 - [Democratic Republic of the Congo](polities/cod-1960-2025.md) — `COD-1960-2025`, draft.
 - [Tunisia](polities/tun-1881-2025.md) — `TUN-1881-2025`, draft.
 - [South Africa](polities/zaf-1828-2025.md) — `ZAF-1828-2025`, draft.
+- [Botswana](polities/bwa-1966-2025.md) — `BWA-1966-2025`, draft. Independence 1966.
+- [Congo (Republic)](polities/cog-1960-2025.md) — `COG-1960-2025`, draft. Independence from France 1960.
+- [Eritrea](polities/eri-1882-2025.md) — `ERI-1882-2025`, draft. Italian colony 1889; independence 1993.
+- [Gabon](polities/gab-1960-2025.md) — `GAB-1960-2025`, draft. Independence 17 Aug 1960.
+- [Gambia](polities/gmb-1800-2025.md) — `GMB-1800-2025`, draft. Semi-enclave in Senegal; independence 1965.
+- [Guinea-Bissau](polities/gnb-1879-2025.md) — `GNB-1879-2025`, draft. Independence from Portugal 1974.
+- [Lesotho](polities/lso-1966-2025.md) — `LSO-1966-2025`, draft. Enclave in South Africa; independence 1966.
+- [Liberia](polities/lbr-1847-2025.md) — `LBR-1847-2025`, draft. Founded 1847 by freed slaves.
+- [Namibia](polities/nam-1884-2025.md) — `NAM-1884-2025`, draft. German colony; SA mandate; independence 1990.
+- [Niger](polities/ner-1960-2025.md) — `NER-1960-2025`, draft. Independence from France August 1960.
+- [Sierra Leone](polities/sle-1800-2025.md) — `SLE-1800-2025`, draft. Independence 1961.
+- [Somalia](polities/som-1960-2025.md) — `SOM-1960-2025`, draft. Formed 1960 from British/Italian Somaliland.
+- [Tanzania](polities/tza-1964-2025.md) — `TZA-1964-2025`, draft. Union of Tanganyika and Zanzibar 1964.
+- [Togo](polities/tgo-1960-2025.md) — `TGO-1960-2025`, draft. German territory; French mandate; independence 1960.
+- [Zimbabwe](polities/zwe-1890-2025.md) — `ZWE-1890-2025`, draft. UDI 1965; independence 1980.
+- [Western Sahara](polities/esh-1800-2025.md) — `ESH-1800-2025`, draft. Sovereignty undetermined.
 
 ### North America
 
@@ -383,6 +404,7 @@ lint fails if the index is stale.
 - [Turkmenistan](polities/tkm-1991-2025.md) — `TKM-1991-2025`, draft.
 - [Taiwan](polities/twn-1896-2025.md) — `TWN-1896-2025`, draft.
 - [Uzbekistan](polities/uzb-1991-2025.md) — `UZB-1991-2025`, draft.
+- [Mongolia](polities/mng-1911-2025.md) — `MNG-1911-2025`, draft. Independence 1911; People's Republic 1924.
 
 ### Oceania
 
@@ -426,8 +448,8 @@ lint fails if the index is stale.
   1995 (ISBN 0-8160-3233-5), in collaboration with the Durham
   International Boundaries Research Unit. Strict all-rights-reserved;
   fair-use short-quote citation only. PDF gitignored, SHA-256
-  recorded. Six `§`-sections so far (luxembourg, austria,
-  algeria, bosnia, libya, tunisia). Cited by:
+  recorded. **Fully extracted** — 175+ `§`-sections covering every
+  country entry in the 552-page encyclopedia. Cited by:
   [lux-1839-2025](polities/lux-1839-2025.md),
   [ott-1800-1886](polities/ott-1800-1886.md),
   [ott-1886-1908](polities/ott-1886-1908.md),
