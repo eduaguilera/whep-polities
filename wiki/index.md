@@ -12,7 +12,7 @@ lint fails if the index is stale.
 | Sources ingested | 12 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~47 (prior + 5 FRA + 5 GBR + 6 ITA) |
+| Open questions across wiki | 49 unresolved (54 total, 5 resolved) as of 2026-04-12 lint |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
@@ -34,7 +34,7 @@ lint fails if the index is stale.
   splits at 1860 (Nice/Savoy) or 1871 (Alsace-Lorraine) — both
   flagged as candidate split points.
 - [Luxembourg](polities/lux-1839-2025.md) — `LUX-1839-2025`,
-  **reviewed**, 3 open questions.
+  **reviewed**, 4 unresolved open questions (1 resolved).
 - [Ottoman Empire (to 1886)](polities/ott-1800-1886.md) —
   `OTT-1800-1886`, draft, 4 open questions. Cliopatria polygon.
 - [Ottoman Empire (1886–1908)](polities/ott-1886-1908.md) —

@@ -26,6 +26,32 @@ Kinds:
 
 ---
 
+## lint-2026-04-12
+**Date:** 2026-04-12
+**Touched:** wiki/index.md
+**Source:** none
+**Kind:** lint
+
+Post-session lint across all 12 polity pages, 12 sources, log,
+and index. 10 checks run.
+
+**Auto-applied:** Index OQ count corrected from "~47" to "49
+unresolved (54 total, 5 resolved)". Luxembourg OQ count corrected
+from "3" to "4 unresolved (1 resolved)".
+
+**Should review (not auto-fixed):**
+1. `ott-1886-1908.md` line ~112: uncited sourced claim "1885:
+   Bulgarian unification with Eastern Rumelia" — ends with "Not
+   captured in the current Wikipedia snapshot" rather than a
+   citation. Blocks `reviewed` status (every Sourced claims bullet
+   must be cited). Needs an ingest, not a lint fix.
+2. 16 dangling `<!-- TODO: page not yet created -->` refs across
+   8 files — these are known coverage gaps, not bugs. Highest
+   priority: AUH-1908-1918 successors (6 missing pages),
+   ITA-1861-1919 predecessors (2 missing).
+
+---
+
 ## autonomous-6-ita-first-ingest
 **Date:** 2026-04-12
 **Touched:** ITA-1861-1919
