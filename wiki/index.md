@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 40 |
+| Polity pages | 44 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -65,6 +65,16 @@ lint fails if the index is stale.
   `DNK-1800-1864`, draft, 3 open questions. Pre-1864 Denmark
   including Schleswig-Holstein (~57K km²). 1864 Second Schleswig
   War splits to DNK-1864-1920. Connects to German chain.
+- [Sweden (with Finland)](polities/swe-1800-1809.md) —
+  `SWE-1800-1809`, draft, 1 OQ. ~800K km². Finland lost 1809.
+- [Sweden (1809-1814)](polities/swe-1809-1814.md) —
+  `SWE-1809-1814`, draft, 1 OQ. Transitional, ~443K km².
+- [Sweden-Norway (1814-1905)](polities/swe-1814-1905.md) —
+  `SWE-1814-1905`, draft, 2 OQs. Personal union, 762K km².
+  Dissolved 1905.
+- [Serbia (1816-1913)](polities/ser-1816-1913.md) —
+  `SER-1816-1913`, draft, 3 OQs. Ottoman autonomy to Balkan
+  Wars. COW 345 continuity to Yugoslavia.
 - [Norway](polities/nor-1800-2025.md) —
   `NOR-1800-2025`, draft, 4 open questions. 226-year continuous
   row. 1814 Treaty of Kiel (Danish→Swedish) and 1905

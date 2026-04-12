@@ -26,6 +26,37 @@ Kinds:
 
 ---
 
+## autonomous-17-swe-ser
+**Date:** 2026-04-12
+**Touched:** SWE-1800-1809, SWE-1809-1814, SWE-1814-1905, SER-1816-1913
+**Source:** cshapes-2.0, cow-state-system-v2024, biger-1995, wikipedia-ottoman-2026-04-11
+**Kind:** ingest
+
+Autonomous iteration 17. Creates 4 polity pages:
+
+- **SWE-1800-1809** -- 10-year row covering the last years of the
+  Swedish-Finnish union (~800,000 km²). Finland had been part of Sweden
+  since the 12th century. The Finnish War (1808-1809) ended with the
+  Treaty of Fredrikshamn, ceding Finland to Russia (-42% territory).
+  Cross-references [f228-1800-1856](polities/f228-1800-1856.md) for the
+  Russian acquisition side.
+- **SWE-1809-1814** -- 6-year transitional row. Sweden without Finland
+  before gaining Norway (~443,000 km²). Revolution of 1809 replaced
+  Gustav IV Adolf.
+- **SWE-1814-1905** -- 92-year row covering the Sweden-Norway personal
+  union. Treaty of Kiel (1814) to dissolution (1905). CShapes polygon
+  761,932 km². Key OQs: oq-1905-dissolution-date (7 June vs 26 October),
+  oq-swe-aggregate-overlap (SWE-1800-2025 exists alongside split rows).
+- **SER-1816-1913** -- 98-year row from Serbian autonomy to Balkan Wars.
+  Ottoman vassal gaining independence at Congress of Berlin (1878).
+  CShapes cowcode=345 but CSV has cow=NA (oq-cow-code-na). Dual
+  successors SER-1913-1918 and SER-1913-1915 (oq-dual-successor).
+
+The three Swedish pages form a complete chain: swe-1800-1809 ->
+swe-1809-1814 -> swe-1814-1905 with live cross-links.
+
+---
+
 ## autonomous-16-deu-balkans
 **Date:** 2026-04-12
 **Touched:** DEU-1938-1945, DEU-1990-2025, GRC-1830-1913, ROU-1859-1913, BGR-1878-1913, DEU-1920-1938
