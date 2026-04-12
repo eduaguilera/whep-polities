@@ -26,6 +26,43 @@ Kinds:
 
 ---
 
+## autonomous-26-final-successors
+**Date:** 2026-04-12
+**Touched:** SER-2006-2008, SRB-2008-2025, KOS-2008-2025, ARM-1991-2025, AZE-1991-2025, GEO-1991-2025, KAZ-1991-2025, KGZ-1991-2025, TJK-1991-2025, TKM-1991-2025, UZB-1991-2025, SCG-1992-2006, F228-1945-1991
+**Source:** cshapes-2.0, cow-state-system-v2024, biger-1995
+**Kind:** ingest
+
+Autonomous iteration 26. Creates 11 polity pages for final successor
+states and updates 2 existing pages:
+
+**Serbian chain (3 pages):**
+- **SER-2006-2008** -- Transitional Serbia (Montenegro independence to
+  Kosovo independence). 3-year row.
+- **SRB-2008-2025** -- Modern Serbia (~77,474 km², excluding Kosovo).
+- **KOS-2008-2025** -- Kosovo (independence 17 February 2008, ~10,887 km²).
+
+**Post-Soviet Caucasus (3 pages):**
+- **ARM-1991-2025** -- Armenia. Nagorno-Karabakh conflict, 2020/2023 wars.
+- **AZE-1991-2025** -- Azerbaijan. Oil-rich Caspian state, Karabakh recapture.
+- **GEO-1991-2025** -- Georgia. Abkhazia/South Ossetia, 2008 war. Biger source.
+
+**Post-Soviet Central Asia (5 pages):**
+- **KAZ-1991-2025** -- Kazakhstan (~2.7M km², 9th largest country).
+- **KGZ-1991-2025** -- Kyrgyzstan. 2005/2010 revolutions.
+- **TJK-1991-2025** -- Tajikistan. Civil War 1992-1997.
+- **TKM-1991-2025** -- Turkmenistan. Gas-rich, authoritarian.
+- **UZB-1991-2025** -- Uzbekistan. Most populous Central Asian state.
+
+**Updated existing pages:**
+- [scg-1992-2006](polities/scg-1992-2006.md): removed TODO from
+  SER-2006-2008 successor link (now live). Resolved
+  oq-serbia-successor-page.
+- [f228-1945-1991](polities/f228-1945-1991.md): linked all 8
+  Caucasus/Central Asian successor pages. Resolved
+  oq-15-successor-pages (all 15 now have pages).
+
+---
+
 ## autonomous-25-post-dissolution
 **Date:** 2026-04-12
 **Touched:** RUS-1991-2014, RUS-2014-2025, UKR-1991-2014, UKR-2014-2025, BLR-1991-2025, EST-1991-2025, LVA-1991-2025, LTU-1991-2025, MDA-1991-2025, CZE-1993-2025, SVK-1993-2025, F248-1991-1992, SVN-1992-2025, HRV-1992-2025, BIH-1992-2025, MKD-1991-2025, SCG-1992-2006, MNE-2006-2025, F51-1947-1993, F248-1920-1991, F228-1945-1991
