@@ -2573,6 +2573,211 @@ line is demarcated by 14 meridian monuments." (p.296)
 - "It was a United Nations Trust Territory, under the administration
   of New Zealand, until achieving its independence in 1962." (p.513)
 
+### angola
+*Angolan boundary history (pp.31–35).*
+
+Angola: area 481,231 sq mi [1,246,388 sq km]; population
+10,900,000 [1994]. Capital: Luanda. Bounded by Congo/Cabinda
+(125 mi; 201 km), Zaire (1,560 mi; 2,511 km), Zambia
+(690 mi; 1,110 km), Namibia (855 mi; 1,376 km), and the
+Atlantic Ocean.
+
+- "The Angolans achieved their independence from the
+  Portuguese on 11 November 1975." (p.32)
+- Angola's boundaries include the Cabinda exclave in
+  the north, separated from the main territory by a
+  strip of Zairean territory (p.32).
+
+### cape-verde
+*Cape Verde boundary history (pp.144–145).*
+
+Cape Verde Islands: area 1,557 sq mi [4,033 sq km];
+population 390,000 [1994]. No land boundaries.
+
+- "The Portuguese arrived in the uninhabited archipelago
+  in the fifteenth century and the islands later became
+  a station in the Atlantic slave-trade." (p.144)
+- "Following independence in 1975 the PAICV dominated
+  the country and converted it into a single-party
+  state." (p.144–145)
+
+### cameroon
+*Cameroon boundary history (pp.135–136).*
+
+Cameroon: area 183,568 sq mi [475,441 sq km]; population
+12,800,000 [1994]. Capital: Yaounde.
+
+- "Cameroon was a German colony until World War I.
+  Following Germany's defeat it was divided as a mandate
+  between France and Britain." (p.135)
+- "Today's Cameroon was originally the German protectorate
+  Kamerun, which was proclaimed on 12 July 1884." (p.136)
+
+### central-african-republic
+*Central African Republic boundary history (pp.145–148).*
+
+CAR: area 240,324 sq mi [622,439 sq km]; population
+3,200,000 [1994]. Capital: Bangui.
+
+- "The Central African Republic and Chad constituted a
+  French colony known as Oubangui-Chari-Tchad when they
+  were united in 1906." (p.146)
+- "Both territories became self-governing units within
+  French Equatorial Africa, achieving full independence
+  in August 1960." (p.146)
+
+### chad
+*Chad boundary history (pp.148–149).*
+
+Chad: area 495,753 sq mi [1,284,000 sq km]; population
+6,100,000 [1994]. Capital: N'Djamena.
+
+- "Chad is one of the poorest and least developed countries
+  in Africa." (p.148)
+- "In 1920 Chad and the Central African Republic were
+  separated." (p.146)
+
+### comoros
+*Comoros boundary history (p.175).*
+
+Comoros: area 863 sq mi [2,235 sq km]; population
+510,000 [1994]. Capital: Moroni. No land boundaries.
+
+- "The Comorians voted for independence from France in a
+  referendum conducted in 1974." (p.175)
+- "Independence was declared unilaterally in 1975 for all
+  the islands. Mayotte, however, is still governed by
+  France." (p.175)
+
+### djibouti
+*Djibouti boundary history (pp.191–192).*
+
+Djibouti: area 8,958 sq mi [23,192 sq km]; population
+410,000 [1994]. Capital: Djibouti.
+
+- "Colonization efforts by the French only began in 1862,
+  continuing until 1900." (p.191)
+- "In 1977 it became the last country in continental Africa
+  to achieve independence." (p.191)
+
+### madagascar
+*Madagascar boundary history (p.368).*
+
+Madagascar: area 226,658 sq mi [586,818 sq km]; population
+13,000,000 [1994]. Capital: Antananarivo. No land boundaries.
+
+- "Madagascar became a French protectorate of the French
+  in 1885 and a colony in 1896." (p.368)
+- "The predominant population of Madagascar, first migrated
+  from Indonesia some 2,000 years ago." (p.368)
+
+### malawi
+*Malawi boundary history (pp.368–371).*
+
+Malawi: area 45,747 sq mi [118,484 sq km]; population
+9,700,000 [1994]. Capital: Lilongwe.
+
+- "Malawi, which was a protectorate of the British, became
+  independent in 1964 under the leadership of Dr. Hastings
+  Kamuzu Banda." (p.369)
+- The Malawi-Mozambique boundary "is delimited in accordance
+  with the Anglo-Portuguese treaty of 11 June 1891." (p.369)
+
+### mali
+*Mali boundary history (pp.374–377).*
+
+Mali: area 478,767 sq mi [1,240,000 sq km]; population
+8,750,000 [1994]. Capital: Bamako.
+
+- "The Malians gained their independence from the French
+  in 1960 after a short-lived federation with the Senegalese,
+  called the Mali Federation." (p.374)
+- "Mali was organized as the French colony of French Sudan
+  in 1891." (p.375)
+
+### mauritania
+*Mauritania boundary history (pp.378–380).*
+
+Mauritania: area 395,956 sq mi [1,025,130 sq km]; population
+2,280,000 [1994]. Capital: Nouakchott.
+
+- "The Mauritanians became independent from colonial rule
+  by the French in November 1960." (p.378)
+- "In 1976 Spain handed its Spanish Sahara territory over
+  to Morocco and Mauritania." (p.380)
+
+### mauritius
+*Mauritius boundary history (p.380).*
+
+Mauritius: area 788 sq mi [2,040 sq km]; population
+1,100,000 [1994]. Capital: Port Louis. No land boundaries.
+
+- "The Dutch discovered Mauritius in 1598 and introduced
+  sugarcane." (p.380)
+- "The French gained control in 1715. In 1810 the British
+  captured Mauritius. Independence was granted in 1968."
+  (p.380)
+
+### mozambique
+*Mozambique boundary history (pp.391–396).*
+
+Mozambique: area 308,642 sq mi [799,074 sq km]; population
+16,600,000 [1994]. Capital: Maputo.
+
+- "Portugal established trading posts along the coast of
+  Mozambique in the sixteenth century." (p.391)
+- "Three concessionary companies were formed during
+  1888–1893. Mozambique remained an overseas province or
+  colony of Portugal until its independence on 25 June
+  1975." (p.392)
+
+### rwanda
+*Rwanda boundary history (pp.453–457).*
+
+Rwanda: area 10,169 sq mi [26,327 sq km]; population
+7,700,000 [1993]. Capital: Kigali.
+
+- "Colonized by the Germans in the late nineteenth century,
+  the region, along with neighboring Burundi, was conquered
+  by the Belgians in World War I." (p.453)
+- "Ruanda-Urundi became independent as two separate nations
+  on 1 July 1962." (p.457)
+
+### senegal
+*Senegal boundary history (pp.464–465).*
+
+Senegal: area 75,951 sq mi [196,637 sq km]; population
+7,900,000 [1994]. Capital: Dakar.
+
+- "Senegal became independent in 1960." (p.465)
+- "On 16 June 1895, France oversaw the federation of French
+  West Africa, which included Senegal, French Sudan, Ivory
+  Coast and French Guinea." (p.377)
+
+### swaziland
+*Swaziland boundary history (pp.392–393).*
+
+Swaziland (now Eswatini). Bounded by South Africa and
+Mozambique.
+
+- "The Kingdom of Swaziland was subject to expansionist
+  interest from Transvaal throughout the nineteenth
+  century." (p.392)
+- "A further convention in 1894 gave the South African
+  Republic powers of protection and administration for
+  Swaziland." (p.392–393)
+
+### zambia
+*Zambia boundary history (pp.517–518).*
+
+Zambia: area 290,586 sq mi [752,327 sq km]; population
+9,000,000 [1994]. Capital: Lusaka.
+
+- "Zambian independence from Britain was officially declared
+  in 1964." (p.518)
+- "The central part of Africa remained free of European
+  occupation until the 1880s." (p.517)
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
