@@ -30,3 +30,4 @@ data/source/cliopatria/cliopatria_polities_only.geojson
 # Wiki source PDFs (copyrighted; stored locally, not redistributed)
 wiki/sources/pdfs/*.pdf
 !wiki/sources/pdfs/README.md
+wiki/.obsidian/
