@@ -26,6 +26,43 @@ Kinds:
 
 ---
 
+## autonomous-21-close-chains
+**Date:** 2026-04-12
+**Touched:** POL-1921-1945, POL-1945-2025, HUN-1938-1947, HUN-1947-2025, BGR-1919-1940, BGR-1940-2025, ROU-1919-1920, ROU-1920-1940, ROU-1940-2025
+**Source:** cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Autonomous iteration 21. Creates 9 polity pages closing 4 chains to
+2025:
+
+- **POL-1921-1945** -- 25-year row. Interwar Poland (Second Polish
+  Republic), borders settled by Treaty of Riga 1921 (~389,000 km²).
+  September 1939 invasion. COW gap 1939-1945.
+- **POL-1945-2025** -- 81-year row. Post-WWII Poland, borders shifted
+  westward (Oder-Neisse line). Communist period, 1989 transition, EU
+  2004. ~312,700 km².
+- **HUN-1938-1947** -- 10-year row. Vienna Awards expansion then
+  contraction. Treaty of Paris (1947) restored Trianon borders.
+- **HUN-1947-2025** -- 79-year row. Post-WWII Hungary at Trianon
+  borders (~93,000 km²). 1956 Revolution, 1989 transition, EU 2004.
+- **BGR-1919-1940** -- 22-year row. Post-Neuilly interwar Bulgaria.
+  Treaty of Craiova (1940) returned Southern Dobruja.
+- **BGR-1940-2025** -- 86-year row. WWII Axis, communist period, 1989
+  transition, EU 2007. ~111,000 km².
+- **ROU-1919-1920** -- 2-year transitional row. Treaties of
+  Saint-Germain and Trianon formalizing Greater Romania borders.
+- **ROU-1920-1940** -- 21-year row. Greater Romania at maximum extent
+  (~295,000 km²). Three simultaneous territorial losses in 1940.
+- **ROU-1940-2025** -- 86-year row. Reduced Romania, regained northern
+  Transylvania (1947) but lost Bessarabia permanently. 1989 Revolution,
+  EU 2007. ~238,000 km².
+
+Also updated 4 predecessor pages (pol-1920-1921, hun-1920-1938,
+bgr-1918-1919, rou-1918-1919) replacing TODO successor links with live
+inline links.
+
+---
+
 ## autonomous-17-swe-ser
 **Date:** 2026-04-12
 **Touched:** SWE-1800-1809, SWE-1809-1814, SWE-1814-1905, SER-1816-1913

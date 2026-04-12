@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 62 |
+| Polity pages | 71 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -161,6 +161,15 @@ lint fails if the index is stale.
   `BGR-1918-1919`, draft, 1 OQ. Treaty of Neuilly.
 - [Romania (1918-1919)](polities/rou-1918-1919.md) —
   `ROU-1918-1919`, draft, 1 OQ. Greater Romania formation.
+- [Poland](polities/pol-1945-2025.md) — `POL-1945-2025`, draft. Modern Poland. Chain complete 1918→2025.
+- [Poland (1921-1945)](polities/pol-1921-1945.md) — `POL-1921-1945`, draft. Interwar + WWII.
+- [Hungary](polities/hun-1947-2025.md) — `HUN-1947-2025`, draft. Modern Hungary. Chain complete 1918→2025.
+- [Hungary (1938-1947)](polities/hun-1938-1947.md) — `HUN-1938-1947`, draft. Vienna Awards + WWII.
+- [Bulgaria](polities/bgr-1940-2025.md) — `BGR-1940-2025`, draft. Modern Bulgaria. Chain complete 1878→2025.
+- [Bulgaria (1919-1940)](polities/bgr-1919-1940.md) — `BGR-1919-1940`, draft. Post-Neuilly interwar.
+- [Romania](polities/rou-1940-2025.md) — `ROU-1940-2025`, draft. Modern Romania. Chain complete 1859→2025.
+- [Romania (1920-1940)](polities/rou-1920-1940.md) — `ROU-1920-1940`, draft. Greater Romania at maximum extent.
+- [Romania (1919-1920)](polities/rou-1919-1920.md) — `ROU-1919-1920`, draft. Transitional.
 - [Hungary (1920-1938)](polities/hun-1920-1938.md) —
   `HUN-1920-1938`, draft, 1 OQ. Post-Trianon interwar.
 - [Poland (1920-1921)](polities/pol-1920-1921.md) —
