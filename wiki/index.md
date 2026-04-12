@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 78 |
+| Polity pages | 85 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -132,6 +132,13 @@ lint fails if the index is stale.
 - [Poland (1918-1919)](polities/pol-1918-1919.md) —
   `POL-1918-1919`, draft, 2 open questions. Reconstituted from
   triple partition. Borders fluid 1918-1921.
+- [USSR (1940-1945)](polities/f228-1940-1945.md) — `F228-1940-1945`, draft. WWII. Correctly labeled.
+- [USSR (1921-1940)](polities/f228-1921-1940.md) — `F228-1921-1940`, draft. Partial anachronism (USSR from Dec 1922).
+- [USSR (1920-1921)](polities/f228-1920-1921.md) — `F228-1920-1921`, draft. RSFSR, Treaty of Riga. Mislabeled.
+- [USSR (1918-1920)](polities/f228-1918-1920.md) — `F228-1918-1920`, draft. RSFSR Civil War. Mislabeled.
+- [USSR (1917-1918)](polities/f228-1917-1918.md) — `F228-1917-1918`, draft. October Revolution. Mislabeled.
+- [USSR (1914-1917)](polities/f228-1914-1917.md) — `F228-1914-1917`, draft. Russian Empire WWI. Mislabeled.
+- [USSR (1905-1914)](polities/f228-1905-1914.md) — `F228-1905-1914`, draft. Russian Empire post-Portsmouth. Mislabeled.
 - [Russian Empire (to 1856)](polities/f228-1800-1856.md) —
   `F228-1800-1856`, draft, 4 open questions. Pre-Crimean War
   era: Georgia, Finland, Bessarabia, Congress Poland acquisitions.
