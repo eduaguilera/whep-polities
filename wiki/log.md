@@ -25,6 +25,37 @@ Kinds:
 
 ---
 
+<a id="autonomous-6-ita-first-ingest"></a>
+## 2026-04-12 — autonomous-6-ita-first-ingest
+**Touched:** ITA-1861-1919
+**Source:** wikipedia-italy-2026-04-12 (new), cshapes-2.0, cow-state-system-v2024, biger-1995 §austria (cross-reference)
+**Kind:** ingest
+
+Autonomous iteration 6 (final in this loop). Creates the
+ITA-1861-1919 polity page — a 59-year row from Italian
+unification (17 March 1861) to the Treaty of Saint-Germain
+(10 September 1919). Unlike France and UK, this row starts at a
+real historical event. Has 6 predecessor entities in the CSV.
+
+Two major mid-row territorial gains (Venetia 1866, Rome 1870)
+are not CSV splits — both flagged as candidate split points,
+consistent with the same pattern seen on France (1860, 1871),
+Germany (1871), Austria (1866/1867), and Russia (1867, 1878).
+The accumulation of these same-pattern questions across 5
+separate European empires is now a strong signal that the split-
+rule question needs a unified human decision.
+
+CShapes confirms: Italy polygon 31.25 sq degrees to 1919-09-09,
+then 33.05 (Trentino/Trieste/Istria gains). The CSV split at
+1919 matches CShapes.
+
+New source file: `wikipedia-italy-2026-04-12.md`. 6 open
+questions (oq-biger-italy, oq-1866-venetia-split-candidate,
+oq-1870-rome-split-candidate, oq-colonial-libya-1911,
+oq-cow-325-from-1816, oq-notes-na).
+
+---
+
 <a id="autonomous-5-gbr-first-ingest"></a>
 ## 2026-04-12 — autonomous-5-gbr-first-ingest
 **Touched:** GBR-1800-1921

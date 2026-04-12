@@ -8,17 +8,22 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 11 |
-| Sources ingested | 11 |
+| Polity pages | 12 |
+| Sources ingested | 12 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~41 (prior + 5 FRA-1800-1919 + 5 GBR-1800-1921) |
+| Open questions across wiki | ~47 (prior + 5 FRA + 5 GBR + 6 ITA) |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
 
 ### Europe
 
+- [Italy (to 1919)](polities/ita-1861-1919.md) —
+  `ITA-1861-1919`, draft, 6 open questions. 59-year row from
+  unification (1861-03-17) to Saint-Germain (1919-09-10). 6
+  predecessor entities. No mid-row splits at 1866 (Venetia) or
+  1870 (Rome) — both flagged.
 - [United Kingdom (to 1921)](polities/gbr-1800-1921.md) —
   `GBR-1800-1921`, draft, 5 open questions. 122-year row;
   metropolitan territory stable throughout. Split at 1921
@@ -142,6 +147,12 @@ _(none yet)_
   Revolution. Canonical citation target for the "USSR did not
   exist until 30 December 1922" claim. Cited by:
   [f228-1856-1905](polities/f228-1856-1905.md).
+- [wikipedia-italy-2026-04-12](sources/wikipedia-italy-2026-04-12.md)
+  — Snapshot of *Kingdom of Italy* Wikipedia article with dates
+  for 1861-03-17 unification, 1866 Venetia, 1870-09-20 Rome
+  capture, 1882-05-20 Triple Alliance, 1919-09-10 Treaty of
+  Saint-Germain. Cited by:
+  [ita-1861-1919](polities/ita-1861-1919.md).
 - [wikipedia-uk-2026-04-12](sources/wikipedia-uk-2026-04-12.md)
   — Snapshots of *History of the United Kingdom* and
   *Anglo-Irish Treaty* Wikipedia articles with dates for the
