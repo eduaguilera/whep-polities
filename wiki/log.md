@@ -26,6 +26,39 @@ Kinds:
 
 ---
 
+## biger-batch-europe-ingest-2
+**Date:** 2026-04-12
+**Touched:** ITA-1861-1919, GBR-1800-1921, F228-1856-1905, F228-1800-1856, NLD-1800-1830
+**Source:** biger-1995 (5 new §-sections: italy, ireland, netherlands, russia)
+**Kind:** ingest
+
+Second Biger batch ingest. Read PDF pages 310-312 (IRELAND),
+317-323 (ITALY + ITALY-SLOVENIA), 397-402 (NETHERLANDS), 451-452
+(RUSSIA). Added 5 new §-sections to biger-1995.md.
+
+Key findings:
+- **ITALY**: "Italian unity... only finally achieved in the 1860s."
+  Treaty of Saint-Germain (September 1919): "Italy gained Goriza,
+  Trieste and the Istera peninsula populated with over 250,000
+  Slavs." London Agreement date: 26 April 1915.
+- **IRELAND**: "In 1800 Ireland was annexed to Britain." Partition
+  "formed in 1920." Border: 224 miles (360 km). Relevant for
+  GBR-1800-1921.
+- **NETHERLANDS**: 16,139 sq mi [41,785 sq km]. Covers Dutch Republic
+  through Belgian Revolution.
+- **RUSSIA**: 6,592,849 sq mi [17,068,886 sq km]. "Rounded off their
+  empire by conquering the Caucasus... central Asia and the Russian
+  Far East." 1991 dissolution: "25,000,000 Russians found themselves
+  living outside Russia."
+
+Resolved: oq-biger-italy, oq-biger-uk, oq-biger-russia (on both
+F228 pages), oq-biger-netherlands. 5 OQs resolved.
+
+Still pending: SPAIN, UNITED KINGDOM main entries, and all
+bilateral boundary entries for Russia, Italy, Spain.
+
+---
+
 ## biger-batch-europe-ingest
 **Date:** 2026-04-12
 **Touched:** FRA-1800-1919, DEU-1800-1919, ITA-1861-1919

@@ -666,6 +666,82 @@ from Poland in its prewar borders, 2,000,000 Sudeten Germans from
 Czechoslovakia, 200,000 from Hungary, 140,000 from Yugoslavia,
 123,000 from Romania/Transylvania, 400,000 from the Soviet Union."
 
+### italy
+*Italian boundary history (p.321–323).*
+
+Italy: area 116,324 sq miles [301,163 sq km]; population 58,100,000
+[1994]. "Italian unity and self-determination was only finally achieved
+in the 1860s, under the kingdom of Sardinia, by a combination of
+astute diplomacy and popular action, particularly Giuseppe Garibaldi's
+Expedition of the Thousand, which defeated the French Bourbon and
+papal forces. Plebiscites ratified the unification and established a
+monarchy."
+
+The ITALY–SLOVENIA subsection (p.323) gives the key WWI date:
+"During World War I Italy signed the London Agreement of 26 April
+1915, in which France, Great Britain and the Russian Empire agreed
+that Italy would receive the areas of Trieste, Gorizia, Istra and
+the Dalmatian coast down to Cape Palanka." And: "In the Peace Treaty
+with Austria signed in Saint Germain in September 1919, Italy gained
+Goriza, Trieste and the Istera peninsula populated with over 250,000
+Slavs."
+
+Between 1860 and World War I, over 2,000,000 Italians migrated to
+the Americas and North Africa. After World War II, 4,000,000 moved
+to Switzerland, Germany, France, Belgium. See §france-italy for the
+Nice/Savoy cession (Treaty of Turin, 24 March 1860) and the post-
+WWII 268 sq mi transfer to France.
+
+### ireland
+*Irish boundary history (p.310–312).*
+
+Ireland: area 27,137 sq miles [70,257 sq km]; population 3,600,000
+[1994]. "In 1800 Ireland was annexed to Britain." Key dates:
+- 1845–1847: "The potato famine harvests of 1845 to 1847 led to
+  catastrophe: famine killed 1,500,000 Irish, and millions more
+  escaped to Britain and the United States."
+- "Since 1850 over 3,000,000 Irish have left Ireland."
+- 1916: "the Bloody Easter revolt broke out in Dublin, followed by
+  a full-scale war of independence."
+- "Britain recognized the Irish Free State as an autonomous dominion
+  within the British Empire, but imposed partition and negotiated a
+  separate status for Northern Ireland."
+
+IRELAND–UNITED KINGDOM boundary (p.312–313): 224 miles (360 km),
+"formed in 1920 when Ireland was partitioned in an effort to balance
+the aspirations of Catholic Irish nationalists for a free independent
+Ireland, and Protestant Ulster unionists, who wanted to remain
+British." "This border has never been accepted by the Republic of
+Ireland, which includes in its constitution a determination to
+reunite the island."
+
+### netherlands
+*Dutch boundary history (p.401–402).*
+
+Netherlands: area 16,139 sq miles [41,785 sq km]; population
+15,200,000 [1994]. Bounded by Germany (359 miles; 577 km), Belgium
+(280 miles; 450 km). Historical overview: Germanic peoples →
+Burgundian territories → Habsburg rule → 1579 Union of Utrecht →
+Dutch Republic → Golden Age → colonial empire → French occupation →
+Congress of Vienna (United Kingdom of Netherlands) → 1830 Belgian
+Revolution → Dutch "pillar" system. "The 1970s saw the influx of
+500,000 foreign workers."
+
+### russia
+*Russian boundary history (p.451–452).*
+
+Russia: area 6,592,849 sq miles [17,068,886 sq km]; population
+150,000,000 [1994]. Historical overview: Vladimir (972–1015) →
+Kievan Rus → Mongol invasion → Moscow principality → "Peter the
+Great conquered the Baltic provinces" → "Catherine the Great
+completed the 'regathering of the Russian lands' in the eighteenth
+century by acquiring Lithuania and parts of Poland" → 19th century:
+"rounded off their empire by conquering the Caucasus (in a lengthy
+and very costly war), central Asia and the Russian Far East." →
+1917 Revolution → Soviet Union → 1991 dissolution into 15
+republics. "25,000,000 Russians found themselves living outside
+Russia, including 11,000,000 in the Ukraine alone."
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
