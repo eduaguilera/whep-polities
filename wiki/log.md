@@ -26,6 +26,20 @@ Kinds:
 
 ---
 
+## autonomous-37-bulk-single-rows
+**Date:** 2026-04-12
+**Touched:** 179 polity pages (bulk)
+**Source:** polities_database.csv
+**Kind:** ingest
+
+Bulk creation of 179 single-row continuous polity pages — states
+with predecessor=NA, successor=NA, end_year=2025, type=national.
+Generated programmatically from CSV metadata. Covers small island
+states, micro-states, dependencies, and remaining medium states.
+Wiki now has ~399 pages (~29% of CSV).
+
+---
+
 ## autonomous-35-world-states
 **Date:** 2026-04-12
 **Touched:** CAN-1866-1948, CAN-1948-2025, AUS-1901-2025, THA-1800-1893, THA-1893-1904, THA-1904-1907, THA-1907-1909, THA-1909-2025, KOR-1948-2025, TWN-1896-2025, SAU-1932-2000, SAU-2000-2025, SAU-1924-1932
