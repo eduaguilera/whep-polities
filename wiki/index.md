@@ -7,12 +7,12 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1386 (as of 2026-04-11 lint) |
+| Polities in CSV | 1386 (as of 2026-04-12 lint) |
 | Polity pages | 220 (all sourced, no bulk trash) |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | 49 unresolved (54 total, 5 resolved) as of 2026-04-12 lint |
+| Open questions across wiki | 240 unresolved (258 total, 18 resolved) as of 2026-04-12 lint |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
@@ -240,17 +240,153 @@ lint fails if the index is stale.
   row), 4 (1871 not a split), and 5 (notes = NA on every
   row in the chain).
 
-### Africa
-_(none yet)_
+- [Yugoslavia (1919-1920)](polities/f248-1919-1920.md) — `F248-1919-1920`, draft.
+- [Yugoslavia (1991-1992)](polities/f248-1991-1992.md) — `F248-1991-1992`, draft.
+- [Russia (1991-2014)](polities/rus-1991-2014.md) — `RUS-1991-2014`, draft.
+- [Russia](polities/rus-2014-2025.md) — `RUS-2014-2025`, draft.
+- [Ukraine (1991-2014)](polities/ukr-1991-2014.md) — `UKR-1991-2014`, draft.
+- [Ukraine](polities/ukr-2014-2025.md) — `UKR-2014-2025`, draft.
+- [Belarus](polities/blr-1991-2025.md) — `BLR-1991-2025`, draft.
+- [Estonia](polities/est-1991-2025.md) — `EST-1991-2025`, draft.
+- [Latvia](polities/lva-1991-2025.md) — `LVA-1991-2025`, draft.
+- [Lithuania](polities/ltu-1991-2025.md) — `LTU-1991-2025`, draft.
+- [Moldova](polities/mda-1991-2025.md) — `MDA-1991-2025`, draft.
+- [Georgia](polities/geo-1991-2025.md) — `GEO-1991-2025`, draft.
+- [Croatia](polities/hrv-1992-2025.md) — `HRV-1992-2025`, draft.
+- [Slovenia](polities/svn-1992-2025.md) — `SVN-1992-2025`, draft.
+- [Bosnia and Herzegovina](polities/bih-1992-2025.md) — `BIH-1992-2025`, draft.
+- [Serbia and Montenegro](polities/scg-1992-2006.md) — `SCG-1992-2006`, draft.
+- [Serbia (2006-2008)](polities/ser-2006-2008.md) — `SER-2006-2008`, draft.
+- [Serbia](polities/srb-2008-2025.md) — `SRB-2008-2025`, draft.
+- [Montenegro](polities/mne-2006-2025.md) — `MNE-2006-2025`, draft.
+- [Kosovo](polities/kos-2008-2025.md) — `KOS-2008-2025`, draft.
+- [North Macedonia](polities/mkd-1991-2025.md) — `MKD-1991-2025`, draft.
+- [Czechia](polities/cze-1993-2025.md) — `CZE-1993-2025`, draft.
+- [Slovakia](polities/svk-1993-2025.md) — `SVK-1993-2025`, draft.
 
-### Americas
-_(none yet)_
+### Africa
+
+- [Algeria](polities/dza-1831-2025.md) — `DZA-1831-2025`, draft.
+- [Egypt (to 1899)](polities/egy-1800-1899.md) — `EGY-1800-1899`, draft.
+- [Egypt (to 1922)](polities/egy-1800-1922.md) — `EGY-1800-1922`, draft.
+- [Egypt (1899-1925)](polities/egy-1899-1925.md) — `EGY-1899-1925`, draft.
+- [Egypt (1922-1925)](polities/egy-1922-1925.md) — `EGY-1922-1925`, draft.
+- [Egypt (1925-1967)](polities/egy-1925-1967.md) — `EGY-1925-1967`, draft.
+- [Egypt (1967-1979)](polities/egy-1967-1979.md) — `EGY-1967-1979`, draft.
+- [Egypt](polities/egy-1979-2025.md) — `EGY-1979-2025`, draft.
+- [Ethiopia (to 1889)](polities/eth-1800-1889.md) — `ETH-1800-1889`, draft.
+- [Ethiopia (1889-1897)](polities/eth-1889-1897.md) — `ETH-1889-1897`, draft.
+- [Ethiopia (1897-1902)](polities/eth-1897-1902.md) — `ETH-1897-1902`, draft.
+- [Ethiopia (1902-1907)](polities/eth-1902-1907.md) — `ETH-1902-1907`, draft.
+- [Ethiopia (1907-1952)](polities/eth-1907-1952.md) — `ETH-1907-1952`, draft.
+- [Ethiopia (1952-1993)](polities/eth-1952-1993.md) — `ETH-1952-1993`, draft.
+- [Ethiopia](polities/eth-1993-2025.md) — `ETH-1993-2025`, draft.
+- [Ghana](polities/gha-1957-2025.md) — `GHA-1957-2025`, draft.
+- [Kenya](polities/ken-1963-2025.md) — `KEN-1963-2025`, draft.
+- [Libya](polities/lby-1951-2025.md) — `LBY-1951-2025`, draft.
+- [Morocco (to 1958)](polities/mar-1911-1958.md) — `MAR-1911-1958`, draft.
+- [Morocco (1958-1975)](polities/mar-1958-1975.md) — `MAR-1958-1975`, draft.
+- [Morocco (1975-1979)](polities/mar-1975-1979.md) — `MAR-1975-1979`, draft.
+- [Morocco](polities/mar-1979-2025.md) — `MAR-1979-2025`, draft.
+- [Nigeria (1914-1961)](polities/nga-1914-1961.md) — `NGA-1914-1961`, draft.
+- [Nigeria](polities/nga-1961-2025.md) — `NGA-1961-2025`, draft.
+- [Democratic Republic of the Congo](polities/cod-1960-2025.md) — `COD-1960-2025`, draft.
+- [Tunisia](polities/tun-1881-2025.md) — `TUN-1881-2025`, draft.
+- [South Africa](polities/zaf-1828-2025.md) — `ZAF-1828-2025`, draft.
+
+### North America
+
+- [United States (original)](polities/usa-1800-1803.md) — `USA-1800-1803`, draft.
+- [United States (1803-1848)](polities/usa-1803-1848.md) — `USA-1803-1848`, draft.
+- [United States (1848-1867)](polities/usa-1848-1867.md) — `USA-1848-1867`, draft.
+- [United States (1867-1959)](polities/usa-1867-1959.md) — `USA-1867-1959`, draft.
+- [United States of America](polities/usa-1959-2025.md) — `USA-1959-2025`, draft.
+- [Mexico (to 1848)](polities/mex-1800-1848.md) — `MEX-1800-1848`, draft.
+- [Mexico](polities/mex-1848-2025.md) — `MEX-1848-2025`, draft.
+- [Canada (to 1948)](polities/can-1866-1948.md) — `CAN-1866-1948`, draft.
+- [Canada](polities/can-1948-2025.md) — `CAN-1948-2025`, draft.
+
+### South America
+
+- [Argentina (to 1899)](polities/arg-1800-1899.md) — `ARG-1800-1899`, draft.
+- [Argentina (1899-1902)](polities/arg-1899-1902.md) — `ARG-1899-1902`, draft.
+- [Argentina](polities/arg-1902-2025.md) — `ARG-1902-2025`, draft.
+- [Bolivia (to 1903)](polities/bol-1825-1903.md) — `BOL-1825-1903`, draft.
+- [Bolivia (1903-1909)](polities/bol-1903-1909.md) — `BOL-1903-1909`, draft.
+- [Bolivia (1909-1938)](polities/bol-1909-1938.md) — `BOL-1909-1938`, draft.
+- [Bolivia](polities/bol-1938-2025.md) — `BOL-1938-2025`, draft.
+- [Brazil (to 1903)](polities/bra-1800-1903.md) — `BRA-1800-1903`, draft.
+- [Brazil (1903-1909)](polities/bra-1903-1909.md) — `BRA-1903-1909`, draft.
+- [Brazil](polities/bra-1909-2025.md) — `BRA-1909-2025`, draft.
+- [Chile (to 1899)](polities/chl-1810-1899.md) — `CHL-1810-1899`, draft.
+- [Chile (1899-1902)](polities/chl-1899-1902.md) — `CHL-1899-1902`, draft.
+- [Chile](polities/chl-1902-2025.md) — `CHL-1902-2025`, draft.
+- [Gran Colombia](polities/col-1800-1830.md) — `COL-1800-1830`, draft.
+- [Colombia (to 1903)](polities/col-1830-1903.md) — `COL-1830-1903`, draft.
+- [Colombia (1903-1922)](polities/col-1903-1922.md) — `COL-1903-1922`, draft.
+- [Colombia](polities/col-1922-2025.md) — `COL-1922-2025`, draft.
+- [Ecuador (to 1942)](polities/ecu-1800-1942.md) — `ECU-1800-1942`, draft.
+- [Ecuador](polities/ecu-1942-2025.md) — `ECU-1942-2025`, draft.
+- [Peru (to 1909)](polities/per-1825-1909.md) — `PER-1825-1909`, draft.
+- [Peru (1909-1922)](polities/per-1909-1922.md) — `PER-1909-1922`, draft.
+- [Peru (1922-1942)](polities/per-1922-1942.md) — `PER-1922-1942`, draft.
+- [Peru](polities/per-1942-2025.md) — `PER-1942-2025`, draft.
+- [Paraguay (to 1938)](polities/pry-1811-1938.md) — `PRY-1811-1938`, draft.
+- [Paraguay](polities/pry-1938-2025.md) — `PRY-1938-2025`, draft.
+- [Uruguay](polities/ury-1828-2025.md) — `URY-1828-2025`, draft.
+- [Venezuela](polities/ven-1821-2025.md) — `VEN-1821-2025`, draft.
 
 ### Asia
-_(none yet)_
+
+- [Armenia](polities/arm-1991-2025.md) — `ARM-1991-2025`, draft.
+- [Azerbaijan](polities/aze-1991-2025.md) — `AZE-1991-2025`, draft.
+- [China (to 1895)](polities/chn-1800-1895.md) — `CHN-1800-1895`, draft.
+- [China (1895-1912)](polities/chn-1895-1912.md) — `CHN-1895-1912`, draft.
+- [China (1913-1914)](polities/chn-1913-1914.md) — `CHN-1913-1914`, draft.
+- [China (1914-1921)](polities/chn-1914-1921.md) — `CHN-1914-1921`, draft.
+- [China (1921-1945)](polities/chn-1921-1945.md) — `CHN-1921-1945`, draft.
+- [China (1945-1947)](polities/chn-1945-1947.md) — `CHN-1945-1947`, draft.
+- [China (1947-1949)](polities/chn-1947-1949.md) — `CHN-1947-1949`, draft.
+- [China (1949-1950)](polities/chn-1949-1950.md) — `CHN-1949-1950`, draft.
+- [China (PRC)](polities/chn-1950-2025.md) — `CHN-1950-2025`, draft.
+- [Indonesia (to 1889)](polities/idn-1800-1889.md) — `IDN-1800-1889`, draft.
+- [Indonesia (1889-1949)](polities/idn-1889-1949.md) — `IDN-1889-1949`, draft.
+- [Indonesia (1945-1949)](polities/idn-1945-1949.md) — `IDN-1945-1949`, draft.
+- [Indonesia (1949-1969)](polities/idn-1949-1969.md) — `IDN-1949-1969`, draft.
+- [Indonesia (1969-1976)](polities/idn-1969-1976.md) — `IDN-1969-1976`, draft.
+- [Indonesia (1976-2002)](polities/idn-1976-2002.md) — `IDN-1976-2002`, draft.
+- [Indonesia](polities/idn-2002-2025.md) — `IDN-2002-2025`, draft.
+- [India (to 1893)](polities/ind-1800-1893.md) — `IND-1800-1893`, draft.
+- [India (1893-1914)](polities/ind-1893-1914.md) — `IND-1893-1914`, draft.
+- [India (1914-1937)](polities/ind-1914-1937.md) — `IND-1914-1937`, draft.
+- [India (1937-1947)](polities/ind-1937-1947.md) — `IND-1937-1947`, draft.
+- [India (1947-1949)](polities/ind-1947-1949.md) — `IND-1947-1949`, draft.
+- [India](polities/ind-1949-2025.md) — `IND-1949-2025`, draft.
+- [Persia (Qajar to 1828)](polities/irn-1800-1828.md) — `IRN-1800-1828`, draft.
+- [Iran](polities/irn-1828-2025.md) — `IRN-1828-2025`, draft.
+- [Japan (to 1895)](polities/jpn-1800-1895.md) — `JPN-1800-1895`, draft.
+- [Japanese Empire](polities/jpn-1895-1945.md) — `JPN-1895-1945`, draft.
+- [Japan (occupied)](polities/jpn-1945-1952.md) — `JPN-1945-1952`, draft.
+- [Japan](polities/jpn-1952-2025.md) — `JPN-1952-2025`, draft.
+- [Kazakhstan](polities/kaz-1991-2025.md) — `KAZ-1991-2025`, draft.
+- [Kyrgyzstan](polities/kgz-1991-2025.md) — `KGZ-1991-2025`, draft.
+- [South Korea](polities/kor-1948-2025.md) — `KOR-1948-2025`, draft.
+- [Saudi Arabia (1924-1932)](polities/sau-1924-1932.md) — `SAU-1924-1932`, draft.
+- [Saudi Arabia (1932-2000)](polities/sau-1932-2000.md) — `SAU-1932-2000`, draft.
+- [Saudi Arabia](polities/sau-2000-2025.md) — `SAU-2000-2025`, draft.
+- [Thailand (to 1893)](polities/tha-1800-1893.md) — `THA-1800-1893`, draft.
+- [Thailand (1893-1904)](polities/tha-1893-1904.md) — `THA-1893-1904`, draft.
+- [Thailand (1904-1907)](polities/tha-1904-1907.md) — `THA-1904-1907`, draft.
+- [Thailand (1907-1909)](polities/tha-1907-1909.md) — `THA-1907-1909`, draft.
+- [Thailand](polities/tha-1909-2025.md) — `THA-1909-2025`, draft.
+- [Tajikistan](polities/tjk-1991-2025.md) — `TJK-1991-2025`, draft.
+- [Turkmenistan](polities/tkm-1991-2025.md) — `TKM-1991-2025`, draft.
+- [Taiwan](polities/twn-1896-2025.md) — `TWN-1896-2025`, draft.
+- [Uzbekistan](polities/uzb-1991-2025.md) — `UZB-1991-2025`, draft.
 
 ### Oceania
-_(none yet)_
+
+- [Australia](polities/aus-1901-2025.md) — `AUS-1901-2025`, draft.
 
 ## Sources
 
