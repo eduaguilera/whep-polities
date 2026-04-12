@@ -26,6 +26,51 @@ Kinds:
 
 ---
 
+## proposal-wiki-vs-csv-audit-2026-04-12
+**Date:** 2026-04-12
+**Touched:** (audit only — no files modified)
+**Source:** all wiki sources cross-referenced against CSV
+**Kind:** proposal
+
+Systematic audit of all 119 wiki pages against the CSV. The wiki
+is the primary source of truth (built on Biger, CShapes, COW,
+Wikipedia). Every finding is a CSV error per sourced evidence.
+
+### 1. MISLABELED ROWS (5 rows)
+F228-1905-1914 through F228-1920-1921 labeled "USSR" but USSR
+didn't exist until 30 Dec 1922. Should be "Russian Empire" or
+"RSFSR." See proposal-f228-ussr-anachronism.
+
+### 2. MISSING PREDECESSOR/SUCCESSOR LINKS (16 broken)
+12 predecessor=NA bugs: F51 chain (3), F248 chain (4), POL,
+BEL, FIN, F77, F78. 4 successor=NA bugs: DEU-1938-1945, SER,
+F51 chain, NLD-1800-1830 (missing BEL/LUX as successors).
+
+### 3. WRONG COW CODES (10 rows)
+DEU-1800-1919 (260→255), F228-1800-1856 (NA→365), F228-1856-1905
+(NA→365), NLD-1800-1830 (NA→210), NLD-1830-2025 (NA→210),
+SER-1816-1913 (NA→345), SER-1913-1915 (NA→345), SER-1913-1918
+(NA→345), SCG-1992-2006 (NA→345), SER-2006-2008 (NA→345).
+
+### 4. POLITY_TYPE ERROR (1 row)
+GER-1800-2025: CSV says "national" but 6 docs/ files say
+"aggregate." See proposal-deu-ger-chain-audit Finding 1.
+
+### 5. NOTES=NA GAPS
+102/119 wiki rows (85%) have notes=NA. Most egregious: DEU,
+F228-1905+, F51, F248, POL, BGR, HUN, ROU chains.
+
+### 6. SPLIT DATE INCONSISTENCIES (3 confirmed)
+- AUH 1867: constitutional not territorial (Biger: 1866 was the
+  real turning point)
+- OTT 1886: CShapes temporal floor, not a historical event
+- OTT 1912 end: Ottoman Empire continued to 1918
+
+**Priority**: Apply Findings 1-4 to CSV. Finding 5 backfill from
+wiki. Finding 6 needs human split-policy decisions.
+
+---
+
 ## autonomous-26-final-successors
 **Date:** 2026-04-12
 **Touched:** SER-2006-2008, SRB-2008-2025, KOS-2008-2025, ARM-1991-2025, AZE-1991-2025, GEO-1991-2025, KAZ-1991-2025, KGZ-1991-2025, TJK-1991-2025, TKM-1991-2025, UZB-1991-2025, SCG-1992-2006, F228-1945-1991
