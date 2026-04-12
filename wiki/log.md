@@ -25,6 +25,34 @@ Kinds:
 
 ---
 
+<a id="autonomous-4-fra-first-ingest"></a>
+## 2026-04-12 — autonomous-4-fra-first-ingest
+**Touched:** FRA-1800-1919
+**Source:** wikipedia-france-2026-04-12 (new), cshapes-2.0, cow-state-system-v2024, docs/03 cross-reference
+**Kind:** ingest
+
+Autonomous iteration 4 (new loop, cap reset to 3). Creates the
+FRA-1800-1919 polity page — a 120-year row covering Napoleonic
+France through the Treaty of Versailles (1919-06-28). Six regime
+changes within the row, none triggering a WHEP split. The sole
+split at 1919 is a real territorial event (Alsace-Lorraine
+return, +1.92 sq degrees in CShapes).
+
+CSV audit of FRA chain surfaced two candidate split questions:
+the 1860 Nice/Savoy gain (8,261 km², docs/03:99) and the 1871
+Alsace-Lorraine loss (~14,500 km² estimated). Neither is split
+in the CSV; neither has a documented rationale for not splitting.
+Both flagged as open questions (Tier X: require human split-
+policy decision). Also noted: `notes = NA` on both FRA rows
+despite France being a major European state, and
+`verification_status = REGION` rather than VERIFIED.
+
+New source file: `wikipedia-france-2026-04-12.md` — snapshot of
+*France in the long nineteenth century* and *French colonial
+empire* Wikipedia articles.
+
+---
+
 <a id="autonomous-3-cow-russia-dates"></a>
 ## 2026-04-12 — autonomous-3-cow-russia-dates
 **Touched:** F228-1856-1905

@@ -8,17 +8,22 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 9 |
-| Sources ingested | 9 |
+| Polity pages | 10 |
+| Sources ingested | 10 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~31 (prior − 3 resolved: OTT-1886-1908, AUH-1800-1867, F228-1856-1905) |
+| Open questions across wiki | ~36 (prior − 3 resolved + 5 new on FRA-1800-1919) |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
 
 ### Europe
 
+- [France (to 1919)](polities/fra-1800-1919.md) —
+  `FRA-1800-1919`, draft, 5 open questions. 120-year row
+  covering Napoleonic France through Versailles. No mid-row
+  splits at 1860 (Nice/Savoy) or 1871 (Alsace-Lorraine) — both
+  flagged as candidate split points.
 - [Luxembourg](polities/lux-1839-2025.md) — `LUX-1839-2025`,
   **reviewed**, 3 open questions.
 - [Ottoman Empire (to 1886)](polities/ott-1800-1886.md) —
@@ -133,6 +138,13 @@ _(none yet)_
   Revolution. Canonical citation target for the "USSR did not
   exist until 30 December 1922" claim. Cited by:
   [f228-1856-1905](polities/f228-1856-1905.md).
+- [wikipedia-france-2026-04-12](sources/wikipedia-france-2026-04-12.md)
+  — Snapshots of *France in the long nineteenth century* and
+  *French colonial empire* Wikipedia articles with dates for the
+  1815 Vienna settlement, 1830 Algeria invasion, 1860 Nice/Savoy
+  annexation, 1871 Treaty of Frankfurt (Alsace-Lorraine loss),
+  1881 Tunisia protectorate, 1919 Versailles. Cited by:
+  [fra-1800-1919](polities/fra-1800-1919.md).
 - [wikipedia-german-empire-2026-04-11](sources/wikipedia-german-empire-2026-04-11.md)
   — Snapshot of the *German Empire* Wikipedia article with
   dates for the 1834 Zollverein, 1864 Second Schleswig War,
