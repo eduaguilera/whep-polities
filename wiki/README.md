@@ -147,49 +147,40 @@ older cross-references.
 
 ## Cross-reference conventions
 
-All inter-file references MUST be real markdown links so GitHub
-renders them as clickable. Use **reference-style** links, defined
-once in a block at the bottom of each file. This keeps inline text
-scannable (`[cshapes-2.0 §scope]` reads as a citation marker) and
-centralizes the URL targets.
+All inter-file references MUST be **inline markdown links** so both
+GitHub and Obsidian render them as clickable and navigable. Use the
+form `[display text](relative/path.md#anchor)`.
 
 ```markdown
-    The 1878 Congress of Berlin [cshapes-2.0 §coding-changes]
+    The 1878 Congress of Berlin
+    [cshapes-2.0 §coding-changes](../sources/cshapes-2.0.md#coding-changes)
     is the single biggest territorial change in the row ...
 
-    ...
-
-    [cshapes-2.0 §scope]: ../sources/cshapes-2.0.md#scope
-    [cshapes-2.0 §coding-changes]: ../sources/cshapes-2.0.md#coding-changes
-    [oq-polygon-provenance]: #oq-polygon-provenance
-    [log decision-cshapes-is-cow-based]: ../log.md#decision-cshapes-is-cow-based
-    [database]: ../../data/final/polities_database.csv
-    [ott-1800-1886]: ott-1800-1886.md
+    See [ott-1800-1886](ott-1800-1886.md) for the predecessor.
+    Check [database](../../data/final/polities_database.csv).
 ```
 
 Conventions:
 
-- Citation identifiers use the literal `source-slug §section` form
-  inside square brackets, WITHOUT backticks around them. Backticks
-  render the whole thing as code and break the link.
-- Same-page open-question references use `#oq-slug`.
-- Cross-page polity references use `polity-slug.md` (no slash
-  prefix — paths are relative to the current file's directory).
-- Log references use `../log.md#slug`. Log entry headings are
-  `## slug` (the slug alone, no date prefix), so both GitHub and
-  Obsidian auto-generate the `#slug` anchor from the heading text.
-  The date goes on a `**Date:** YYYY-MM-DD` line inside the entry.
-- Source section references use `../sources/source-slug.md#section`.
-  Source file section headings are `### section` (no `§` prefix),
-  so both GitHub and Obsidian auto-generate the `#section` anchor.
-  The `§` character is used only in inline citation display text
-  (`[biger-1995 §austria]`), not in the actual heading.
-- `[database]` points at the final CSV so readers can jump to
-  the row directly.
-
-When adding a new reference, append its definition to the bottom
-block rather than editing inline. The block is what lint and
-query prompts inspect to understand what the page depends on.
+- Citation display text uses `source-slug §section` inside square
+  brackets: `[biger-1995 §austria](../sources/biger-1995.md#austria)`.
+  The `§` is display-only — the heading in the source file is just
+  `### austria` (no `§` prefix), so both renderers auto-generate
+  `#austria` as the anchor.
+- Same-page open-question references:
+  `[oq-polygon-provenance](#oq-polygon-provenance)`.
+- Cross-page polity references use relative paths:
+  `[ott-1800-1886](ott-1800-1886.md)`.
+- Log references: `[log slug](../log.md#slug)`. Log entry headings
+  are `## slug` (the slug alone, no date prefix), so both GitHub
+  and Obsidian auto-generate `#slug`. The date goes on a
+  `**Date:** YYYY-MM-DD` line inside the entry body.
+- Source section references:
+  `[source §section](../sources/source.md#section)`. Source file
+  section headings are `### section` or `#### section` (no `§`).
+- Database link: `[database](../../data/final/polities_database.csv)`.
+- **Do not use reference-style links** (`[text][ref]` + `[ref]: url`
+  at the bottom). Obsidian cannot navigate them reliably.
 
 ## Source schema
 

@@ -34,14 +34,14 @@ ends, successors must cover all its territory. When it begins,
 predecessors must explain where the territory came from. Gaps are
 bugs — flag them as open questions.
 
-- **Predecessor:** [other-polity-slug] — nature of the transition
-- **Successor:** [other-polity-slug] — nature of the transition
+- **Predecessor:** [other-polity-slug](other-polity-slug.md) — nature of the transition
+- **Successor:** [other-polity-slug](other-polity-slug.md) — nature of the transition
 
 ## Sourced claims
 
-- Claim one. [source-slug §section]
-- Claim two. [source-slug §section]
-- Claim from the CSV with no deeper source yet. [database]
+- Claim one. [source-slug §section](../sources/source-slug.md#section)
+- Claim two. [source-slug §section](../sources/source-slug.md#section)
+- Claim from the CSV with no deeper source yet. [database](../../data/final/polities_database.csv)
 
 ## Contradictions
 
@@ -50,7 +50,7 @@ database currently follows and why. Never silently pick.>
 
 ## Decisions
 
-- [log slug] one-line summary
+- [log slug](../log.md#slug) one-line summary
 
 ## Open questions
 
@@ -67,13 +67,7 @@ next ingest should try to resolve, why it matters, and what source
 or investigation would answer it.
 
 <!--
-Reference-style link definitions. Add one line per citation used
-above. Same-page anchors use `#oq-...`; cross-page anchors use
-`path.md#anchor`.
+All links use inline markdown format for GitHub + Obsidian
+compatibility: [display text](relative/path.md#anchor).
+Do NOT use reference-style link definitions.
 -->
-
-[source-slug §section]: ../sources/source-slug.md#section
-[other-polity-slug]: other-polity-slug.md
-[database]: ../../data/final/polities_database.csv
-[log slug]: ../log.md#slug
-[oq-example-slug]: #oq-example-slug
