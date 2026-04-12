@@ -1088,6 +1088,317 @@ Ecuador: area 109,483 sq mi [283,451 sq km]; population
   dictatorships, military interventions, political turmoil and
   limited democracy during most of the past century." (p.195)
 
+### japan
+*JAPAN (Nihon) — island state, no land boundaries.* (p.329)
+
+- "Japan is located in the northern Pacific Ocean. It consists of
+  four large islands (Hokkaido, Honshu, Shikoku and Kyushu) and many
+  smaller islands." (p.329)
+- "Japan's total land area is 145,870 sq. miles [377,657 sq. km.]
+  and its estimated population (1994) is 124,900,000. It has no land
+  boundaries and its capital is Tokyo." (p.329)
+- "Japan's participation in World War II was ended by the
+  destruction of Hiroshima and Nagasaki by US atomic bombs in 1945;
+  this ushered in the Atomic Era." (p.329)
+
+### kazakhstan
+*KAZAKHSTAN — former Soviet republic in central Asia.* (pp.333--335)
+
+- "A landlocked republic in central Asia and a former republic of
+  the Soviet Union, Kazakhstan (area: 1,049,156 sq. miles [2,717,300
+  sq. km.]; estimated population: 17,200,000 [1994]) is bounded in
+  the northwest by Russia (4,255 miles; 6,846 km.)." (p.333)
+- "In 1936 it was given the status of a Soviet Socialist Republic
+  (SSR). In 1991 Kazakhstan became an independent state within the
+  framework of the Commonwealth of Independent States." (p.334)
+- "The boundary has been a full international border since the
+  Alma-Ata Declaration of 21 December 1991 which formally
+  established the Commonwealth of Independent States." (p.335)
+
+### kenya
+*KENYA — East African country, former British colony.* (pp.337--341)
+
+- "An east African country and formerly a British colony, Kenya
+  (area: 224,961 sq. km.]; estimated population: 27,900,000 [1994])
+  is bounded in the northwest by Sudan (144 miles; 232 km.)." (p.337)
+- "Kenya was declared a British protectorate in 1895." (p.337)
+- "KANU won the elections and Kenyatta led Kenya to independence in
+  December 1963." (p.337)
+- "Kenya belonged to the British East Africa Protectorate but
+  achieved independence on 12 December 1963." (p.340)
+
+### korea
+*KOREA — covered under CHINA-KOREA, NORTH.* (pp.159--160)
+
+- "The boundary between China and North Korea runs for 880 miles
+  (1,416 km.) between the Sea of Japan and Korea Bay in the Yellow
+  Sea." (p.159)
+- "After the war of 1894--1895 between Japan and China (won by
+  Japan), China agreed to grant Korea its independence." (p.159)
+- "When the Korean peninsula was divided between North and South
+  Korea after World War II, North Korea inherited the old boundary
+  between China and Korea." (p.160)
+
+### libya
+*LIBYA — North African country.* (pp.359--361)
+
+- "A north African country, Libya (area: 679,184 sq. miles
+  [1,759,086 sq. km.]; estimated population: 4,000,000 [1994]),
+  is bounded in the north by the Mediterranean Sea." (p.359)
+- "In 1912 Italy conquered Libya and proceeded to destroy its
+  tribal society." (p.359)
+- "Starting in the 1960s, massive oil revenues enabled Libya to
+  become independent from foreign aid and turned the country into
+  a wealthy state." (p.359)
+
+### lithuania
+*LITHUANIA — Baltic state, historical background under LATVIA-LITHUANIA.* (pp.353--354)
+
+- "Lithuania was established as an independent state in 1253 and
+  during the Middle Ages (between the thirteenth and fifteenth
+  centuries) controlled a large area in Eastern Europe, between the
+  Baltic Sea and the Black Sea." (p.353)
+- "As Latvia and Lithuania became fully independent in 1920, their
+  common boundary was established by the Riga Treaty of September
+  1920 in accordance with the ethnic character of the border area."
+  (p.354)
+- "Latvia and Lithuania achieved independence from the USSR in
+  August 1991, adopting their 70-year-old boundary line as their
+  common international boundary without a formal agreement." (p.354)
+
+### latvia
+*LATVIA (Latvija) — northern European Baltic state.* (pp.352--354)
+
+- "A northern European country (area: 24,595 sq. miles [63,700 sq.
+  km.]; estimated population: 2,750,000 [1994]), Latvia was a
+  republic of the Soviet Union until 1991." (p.352)
+- "The demand for a separate Latvian state was first made following
+  1905. In the wake of the 1917 revolutions Latvia proclaimed its
+  independence." (p.353)
+- "Following the Ribbentrop-Molotov agreement, Latvia was forced to
+  grant bases to the Soviet Union and was then annexed to it in
+  August 1940 as one of the Union republics." (p.353)
+
+### morocco
+*MOROCCO (Al-Magrib) — North African country.* (pp.388--391)
+
+- "A north African country (area: 172,414 sq. miles [446,380 sq.
+  km.]; estimated population: 27,000,000 [1994]), Morocco is bounded
+  in the north by the Mediterranean Sea." (p.388)
+- "France granted Morocco independence in 1956." (p.389)
+- "February 1976 saw Spain hand the territory of Western Sahara,
+  formerly Spanish Sahara, to Morocco and Mauritania, which arranged
+  a partition between them." (p.391)
+- "The unstable political situation between Morocco and Western
+  Sahara has not been resolved." (p.391)
+
+### mexico
+*MEXICO — Central American country.* (pp.381--383)
+
+- "A Central American country (area: 756,066 sq. miles [1,957,455
+  sq. km.]; estimated population: 91,600,000 [1994]), Mexico is
+  bounded in the north by the United States of America." (p.381)
+- "The Texas annexation in 1845, the Mexican Cession of 1848 and
+  the Gadsden Purchase from Mexico in 1853, provided the immediate
+  historical backdrop for the determination of the United
+  States-Mexico boundary as it now exists." (p.382)
+- "The United States-Mexico international boundary is the
+  responsibility of an agency known as the International Boundary and
+  Water Commission, United States and Mexico (IBWC)." (p.383)
+
+### peru
+*PERU — South American country.* (pp.434--436)
+
+- "A South American country (area: 496,098 sq. miles [1,284,893 sq.
+  km.]; estimated population: 22,900,001 [1994]), Peru is bounded in
+  the north by Ecuador (883 miles; 1,420 km.) and Colombia (1,802
+  miles; 2,900 km.)." (p.434)
+- "The country was conquered by the Spaniards in 1531. This brought
+  about the destruction of the Inca Empire." (p.435)
+- "Peru fought, together with Bolivia, two wars against Chile
+  (1836--1839 and 1879--1884), losing both." (p.435)
+
+### poland
+*POLAND (Polska) — Eastern European country.* (pp.436--441)
+
+- "An Eastern European country (area: 120,628 sq. miles [312,683
+  sq. km.]; estimated population: 38,500,000 [1994]), Poland is
+  bounded by the Baltic Sea and the Russian Oblast of Kaliningrad
+  (269 miles; 432 km.) in the north." (pp.436--437)
+- "Poland was finally partitioned among Russia, Prussia and Austria
+  in 1772, 1793 and 1795." (p.438)
+- "After the war Poland's borders underwent a drastic change. The
+  eastern territories inhabited mainly by Ukrainians, Byelorussians
+  and Lithuanians were annexed to the Soviet Union." (p.439)
+- "The Russian region of Kaliningrad (Konigsberg) covers about
+  5,790 sq. miles (15,000 sq. km.) and is populated by approximately
+  871,000 people." (p.440)
+
+### egypt
+*Egyptian boundary history (pp.199--204).*
+
+Egypt (Misr): area 386,560 sq mi [1,001,190 sq km]; population
+56,430,000 [1994]. Capital: Cairo. Bounded by Israel (165 mi;
+266 km), the Gulf of 'Aqaba and the Red Sea, Sudan (791 mi;
+1,273 km), and Libya (690 mi; 1,100 km).
+
+- "Since the unification of Upper and Lower Egypt (c. 3100 B.C.E.)
+  the country was ruled by a succession of 30 dynasties." (p.199)
+- "In 1956 Nasser nationalized the Suez Canal, provoking a
+  three-pronged attack by France, Britain and Israel." (p.200)
+- "Egypt and Israel on 26 March 1979" signed a peace treaty;
+  "Article I of the treaty stated that Israel would withdraw its
+  forces to the international boundary between Egypt and mandated
+  Palestine." (p.202)
+- Egypt--Sudan boundary: "the international boundary follows the
+  22nd parallel for 791 miles (1,273 km.)" (p.203)
+
+### estonia
+*Estonian boundary history (pp.210--212).*
+
+Estonia (Eesti): area 17,413 sq mi [45,082 sq km]; population
+1,620,000 [1994]. Capital: Tallinn. Bounded by Russia (180 mi;
+290 km), Latvia (166 mi; 267 km), and the Baltic Sea.
+
+- "In the liberal atmosphere of Mikhail Gorbachev's policies of
+  perestroika and glasnost, Estonian nationalists struggled for
+  secession from the Soviet Union and complete independence." (p.210)
+- "Independence was achieved in 1991, upon the dissolution of the
+  USSR." (p.210)
+- Estonia--Latvia boundary: "166 miles (267 km.) and runs from the
+  boundary tripoint with Russia in the east to the Gulf of Riga
+  in the Baltic Sea in the west." (p.211)
+
+### ethiopia
+*Ethiopian boundary history (pp.212--216).*
+
+Ethiopia (Ityopiya): area 471,800 sq mi [1,221,500 sq km];
+population 52,500,000 [1994]. Capital: Addis Ababa. A landlocked
+east African country bounded by Eritrea (651 mi; 1,047 km),
+Djibouti (217 mi; 349 km), Somalia (994 mi; 1,600 km), Kenya
+(535 mi; 861 km), and Sudan (1,380 mi; 2,221 km).
+
+- "the state of Ethiopia as shaped during the reign of Emperor
+  Menelik II (1889--1913)" (p.212)
+- "In 1991, after 30 years of guerrilla and civil war, a new
+  Ethiopian government acquiesced to Eritrean independence." (p.212)
+- "A coalition of many of these groups ousted Mariam in June 1991.
+  The new Ethiopian government is currently claiming to favor
+  decentralization." (p.213)
+
+### finland
+*Finnish boundary history (pp.218--220).*
+
+Finland (Suomi): area 130,552 sq mi [338,000 sq km]; population
+5,020,000 [1994]. Capital: Helsinki. Bounded by Norway (453 mi;
+729 km), Russia (616 mi; 1,313 km), and Sweden (364.5 mi; 586 km).
+
+- "In the post-World War I reshuffling of borders, Finland lost
+  part of Karelia to the Soviet Union." (p.219)
+- "Since 1917 they have lost 10% of their original territory,
+  suffered massive destruction and loss of life, and were forced
+  to absorb 500,000 Karelian refugees." (p.219)
+- Finland--Russia: "Today's Finnish-Russian boundary is the former
+  Finnish-Soviet Union line, which stretches 816 miles (1,313 km.)
+  from the Russia-Norway-Finland boundary tripoint in the north to
+  the Gulf of Finland in the Baltic Sea in the south." (p.220)
+
+### greece
+*Greek boundary history (pp.246--250).*
+
+Greece (Ellas): area 50,949 sq mi [131,938 sq km]; population
+10,300,000 [1994]. Capital: Athens. Bounded by Albania (175 mi;
+282 km), Macedonia (153 mi; 246 km), Bulgaria (307 mi; 494 km),
+Turkey (128 mi; 206 km), and the Aegean and Ionian Seas.
+
+- "The marginalization of Greece was completed under the Roman
+  Empire. With the partition of the Roman Empire, the eastern half
+  gradually moved away from Latin to Greek." (p.246)
+- Greece--Turkey boundary: "runs 128 miles (206 km.) in the
+  southeastern extremity of the Balkan Peninsula." (p.249)
+- "As a result of the First Balkan War (1912--1913), it was forced
+  to accept a boundary line with Bulgaria." (p.249)
+- "after three years of war (1919--1922) with Greece, Turkey managed
+  to eject the Greek army from Asia Minor and Eastern Thrace." (p.250)
+
+### hungary
+*Hungarian boundary history (pp.266--268).*
+
+Hungary (Magyarorszag): area 35,934 sq mi [93,033 sq km];
+population 10,560,000 [1994]. Capital: Budapest. A landlocked
+country in Central Europe bounded by Slovakia (420 mi; 676 km),
+Ukraine (64 mi; 103 km), Romania (275 mi; 443 km), Serbia
+(103 mi; 166 km), Croatia (204 mi; 329 km), Slovenia (63 mi;
+102 km), and Austria (227 mi; 366 km).
+
+- "Hungary was forced to cede large territories to Czechoslovakia,
+  Romania, Yugoslavia and even to Austria, where great numbers of
+  Hungarians lived." (p.267)
+- "out of 10,000,000 Hungarians, 1,700,000 found themselves in
+  Romania, 1,000,000 in Czechoslovakia, over 500,000 in Yugoslavia
+  and 25,000 in Austria." (p.267)
+- "the Treaty of Peace with Hungary, signed on 10 February 1947,
+  declared the Vienna Award null and void and the Trianon boundary
+  was reinstated." (p.268)
+
+### india
+*Indian boundary history (pp.289--295).*
+
+India (Bharat): area 1,269,212 sq mi [3,285,989 sq km]; population
+903,000,000 [1994]. Capital: New Delhi. Bounded by China (2,101 mi;
+3,380 km), Nepal (1,050 mi; 1,690 km), Bhutan (376 mi; 605 km),
+Myanmar (909 mi; 1,463 km), Bangladesh (2,519 mi; 4,053 km),
+the Indian Ocean, the Arabian Sea, and Pakistan (1,810 mi; 2,912 km).
+
+- "India has been a single governmental entity for a relatively short
+  time dating from the consolidation of British colonial rule in the
+  first half of the nineteenth century." (p.289)
+- "Since it gained independence from Britain in 1947, India has been
+  a sovereign democratic republic, currently divided into 22 states
+  and nine union territories." (p.290)
+- India--Pakistan: "The boundary in the Jammu and Kashmir region,
+  however, is still in dispute." (p.294)
+
+### iran
+*Iranian boundary history (pp.297--301).*
+
+Iran: area 636,293 sq mi [1,647,362 sq km]; population 61,660,000
+[1994]. Capital: Tehran. Bounded by Armenia (22 mi; 35 km),
+Azerbaijan (380 mi; 611 km), Turkmenistan (617 mi; 992 km),
+Afghanistan (582 mi; 936 km), Pakistan (565 mi; 909 km), the
+Persian (Arabian) Gulf, Iraq (906 mi; 1,458 km), and Turkey
+(310 mi; 499 km).
+
+- "Reza Shah Pahlavi (1925--1941) enforced European-style dress
+  including a modified French military kepi known as kulah-e
+  Pahlavi (the Pahlavi head dress)." (p.297)
+- "This tendency was reversed by the 1979 Islamic revolution." (p.297)
+- Iran--Turkey: "one of the oldest and most stabilized boundaries
+  in the world. Its roots were set in a 1639 Treaty of Peace and
+  Frontiers." (p.300)
+- "In the 1639 Zohab Treaty of Peace and Demarcation of Frontiers,
+  Iran (Persia) and the Ottoman Empire... delimited a common boundary
+  in the territory between the Zagros Mountains and the Tigris
+  River." (p.299)
+
+### indonesia
+*Indonesian boundary history (pp.295--297).*
+
+Indonesia: area 752,410 sq mi [1,947,999 sq km]; population
+188,000,000 [1994]. Capital: Djakarta (Jakarta). An archipelago
+in Southeast Asia located between the Indian Ocean and the
+Pacific Ocean. Land boundary with Malaysia (1,108 mi; 1,782 km)
+on Borneo, and with Papua New Guinea (510 mi; 820 km).
+
+- "Independence was finally granted in 1949." (p.295)
+- "Indonesia has expanded to include western Iran, formerly western
+  New Guinea (1963) and the former Portuguese colony of East Timor
+  (1955)." (p.295) [Note: Biger's "1955" appears to be a typo for
+  1975, the actual date of Indonesia's East Timor invasion.]
+- "The East Timorese long resisted Indonesian rule. The Central
+  Moluccas also attempted to establish an independent state but
+  the revolt was quelled." (p.295)
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
