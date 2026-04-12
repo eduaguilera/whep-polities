@@ -26,6 +26,39 @@ Kinds:
 
 ---
 
+## autonomous-22-fin-alb-f51-f248
+**Date:** 2026-04-12
+**Touched:** FIN-1917-1940, FIN-1940-2025, ALB-1913-2025, F51-1938-1945, F51-1945-1947, F51-1947-1993, F248-1920-1991
+**Source:** cshapes-2.0, cow-state-system-v2024, biger-1995
+**Kind:** ingest
+
+Autonomous iteration 22. Creates 7 polity pages:
+
+- **FIN-1917-1940** -- 24-year row. Finnish independence from Russia
+  (1917). Civil War 1918. Treaty of Tartu 1920. Winter War ends with
+  Moscow Peace Treaty (1940), ~10% territory lost.
+- **FIN-1940-2025** -- 86-year row. Post-Winter-War Finland.
+  Continuation War 1941-1944. Paris Peace Treaty 1947. EU 1995. NATO
+  2023. ~338,000 km².
+- **ALB-1913-2025** -- 113-year continuous row. Independence from Ottoman
+  Empire. Treaty of London 1913. Italian occupation 1939-1943. Hoxha
+  communist regime 1944-1985. ~28,748 km².
+- **F51-1938-1945** -- 8-year row. Munich Agreement, First Vienna Award,
+  German occupation. COW gap 1939-1945.
+- **F51-1945-1947** -- 3-year row. Restored Czechoslovakia. Benes
+  decrees. Ruthenia ceded to USSR.
+- **F51-1947-1993** -- 47-year row. Communist Czechoslovakia. Prague
+  Spring 1968. Velvet Revolution 1989. Velvet Divorce 1993 into CZE
+  and SVK (successor pages TODO).
+- **F248-1920-1991** -- 72-year row. Kingdom of Yugoslavia / Tito's
+  Yugoslavia. COW gap 1941-1945. Dissolution began 1991. CSV only lists
+  MKD as successor (major gap -- 6+ successor states).
+
+Also updated 2 predecessor pages (f51-1918-1938, f248-1918-1919)
+replacing plain-text successor references with live inline links.
+
+---
+
 ## autonomous-21-close-chains
 **Date:** 2026-04-12
 **Touched:** POL-1921-1945, POL-1945-2025, HUN-1938-1947, HUN-1947-2025, BGR-1919-1940, BGR-1940-2025, ROU-1919-1920, ROU-1920-1940, ROU-1940-2025

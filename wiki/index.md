@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 71 |
+| Polity pages | 78 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -108,6 +108,13 @@ lint fails if the index is stale.
   `AUH-1908-1918`, draft, 4 open questions. Flagged by audit
   Findings 1 (successor list incomplete — major) and 4
   (1908 start).
+- [Finland](polities/fin-1940-2025.md) — `FIN-1940-2025`, draft. Modern Finland. Chain complete 1917→2025.
+- [Finland (1917-1940)](polities/fin-1917-1940.md) — `FIN-1917-1940`, draft. Independence to Winter War.
+- [Albania](polities/alb-1913-2025.md) — `ALB-1913-2025`, draft. 113-year continuous row from Ottoman independence.
+- [Czechoslovakia (1947-1993)](polities/f51-1947-1993.md) — `F51-1947-1993`, draft. Communist era to Velvet Divorce 1993.
+- [Czechoslovakia (1945-1947)](polities/f51-1945-1947.md) — `F51-1945-1947`, draft. Restored, Ruthenia ceded to USSR.
+- [Czechoslovakia (1938-1945)](polities/f51-1938-1945.md) — `F51-1938-1945`, draft. Munich to WWII.
+- [Yugoslavia (1920-1991)](polities/f248-1920-1991.md) — `F248-1920-1991`, draft. 72-year row, Kingdom→Communist→dissolution.
 - [Austria](polities/aut-1918-2025.md) —
   `AUT-1918-2025`, draft, 2 open questions. Post-AUH Austria.
   Saint-Germain reduced area from 25.5 to 10.0 sq deg. COW gap
