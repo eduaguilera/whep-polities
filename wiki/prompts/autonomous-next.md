@@ -319,8 +319,8 @@ changes; new open questions created>
 The following are never done autonomously, no matter how the
 priority ranking ends up. This list overrides phase 3.
 
-- No edits to `data/final/polities_database.csv`. Changes to the CSV
-  are `proposal`-kind log entries only.
+- The agent may edit `data/final/polities_database.csv` to apply
+  sourced wiki findings. Log each CSV change in `log.md`.
 - No `decision`-kind log entries that establish a repo-wide rule.
   The agent may *draft* a decision and surface it in the iteration
   report, but the entry must be added by a human with the

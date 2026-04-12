@@ -251,8 +251,12 @@ Prompts for each workflow live in `wiki/prompts/`:
    A human decides which to follow.
 4. **Every edit appends to `log.md`** with date, polity codes touched,
    source slug, and a one-line rationale.
-5. **Never edit `data/final/polities_database.csv` from a wiki workflow.**
-   The wiki proposes changes in `log.md`; humans apply them.
+5. **The agent maintains `data/final/polities_database.csv` directly.**
+   When the wiki's sourced findings require CSV changes, the agent
+   applies them and logs each change in `log.md`. The R pipeline
+   (`R/01_build_master_db.R`) that originally generated the CSV is
+   obsolete — the wiki is now the authoritative source and the agent
+   is the maintainer.
 6. **The wiki is the primary source of truth; the CSV must conform to
    it.** This wiki is built on cited academic sources (Biger, CShapes,
    COW, historical atlases). The CSV in `data/final/polities_database.csv`

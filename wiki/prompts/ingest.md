@@ -90,8 +90,9 @@ Then:
    the source list changed.
 
 **Constraints:**
-- Never edit `data/final/polities_database.csv`. Changes to the CSV go
-  through a `proposal`-kind log entry that a human applies later.
+- The agent maintains `data/final/polities_database.csv` directly when
+  the wiki's sourced findings require changes. Log each CSV edit in
+  `log.md`.
 - Never invent a citation. If a claim has no source, mark it `[database]`
   or move it to *Open questions*.
 - Sources are immutable. If the source itself is wrong, add a new source
