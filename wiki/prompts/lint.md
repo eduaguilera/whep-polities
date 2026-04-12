@@ -94,7 +94,30 @@ Check, in order:
    - CSV rows that are not reachable via any predecessor/successor
      chain from an existing wiki page.
 
-10. **Obsidian compatibility.** The wiki must render and navigate
+10. **Polygon validation.** Cross-check the GeoPackage polygons against
+    wiki-sourced area claims. Use `ogrinfo` SQL queries on both
+    `data/final/polities_database.gpkg` and the source GeoPackages
+    (`data/geodata/cshapes2_full.gpkg`, etc.). Check:
+    - **Missing polygons:** rows in the CSV that have no geometry in
+      the GeoPackage (ST_Area returns NULL). Flag these — they won't
+      appear on the map.
+    - **Area consistency:** for CShapes-sourced rows, the GeoPackage
+      polygon area (in sq degrees) should match the CShapes source
+      polygon area exactly. Any mismatch signals a stale GeoPackage.
+    - **Cliopatria antimeridian issues:** Cliopatria polygons for
+      Russia and other transcontinental states may span the
+      antimeridian, producing NULL ST_Area or absurd values. Flag
+      these for manual inspection.
+    - **Area vs wiki km²:** where the wiki documents a km² area from
+      Biger or another source, spot-check that the GeoPackage polygon
+      is in the right ballpark (rough conversion: 1 sq degree ≈
+      8,000-12,000 km² at European latitudes).
+    - **Temporal mismatch:** the GeoPackage stores one polygon per
+      row, but CShapes may have multiple time-steps for the same
+      cowcode. Verify the GeoPackage uses the polygon matching the
+      row's date range, not an adjacent time-step.
+
+11. **Obsidian compatibility.** The wiki must render and navigate
     correctly in Obsidian. Check for:
     - `<a id="...">` HTML anchors — Obsidian ignores them.
     - Reference-style link definitions (`[ref]: url` at the bottom
