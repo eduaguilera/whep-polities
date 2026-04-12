@@ -12,7 +12,7 @@ lint fails if the index is stale.
 | Sources ingested | 9 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~34 (prior + 6 new on DEU-1800-1919) |
+| Open questions across wiki | ~33 (prior − 1 resolved on OTT-1886-1908) |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
@@ -24,7 +24,7 @@ lint fails if the index is stale.
 - [Ottoman Empire (to 1886)](polities/ott-1800-1886.md) —
   `OTT-1800-1886`, draft, 4 open questions. Cliopatria polygon.
 - [Ottoman Empire (1886–1908)](polities/ott-1886-1908.md) —
-  `OTT-1886-1908`, draft, 2 open questions.
+  `OTT-1886-1908`, draft, 0 unresolved open questions.
 - [Ottoman Empire (1908–1912)](polities/ott-1908-1912.md) —
   `OTT-1908-1912`, draft, 3 open questions.
 - [Austrian Empire (to 1867)](polities/auh-1800-1867.md) —

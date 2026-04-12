@@ -25,6 +25,48 @@ Kinds:
 
 ---
 
+<a id="autonomous-1-bosnia-double-count"></a>
+## 2026-04-12 — autonomous-1-bosnia-double-count
+**Touched:** OTT-1886-1908
+**Source:** cshapes-2.0 (ogrinfo on cshapes2_full.gpkg)
+**Kind:** autonomous
+
+**Phase 1 (inventory):** 9 polity pages, ~38 open questions across
+wiki, 4 pending proposals. Focus on European polities per user
+instruction.
+
+**Phase 2 (classification):** Tier 1: 4 (COW queries + Bosnia
+ogrinfo). Tier 2: 2 (Biger Germany + Russia). Tier 3: 12
+(dangling page refs). Tier X: ~18 (split decisions, end-date
+precision, proposal-dependent items).
+
+**Phase 3 (selection):** `oq-bosnia-double-count` on
+`ott-1886-1908`. Tier 1, single CLI query on gpkg data on disk.
+Tiebreaker: this page has only 1 unresolved OQ (the other,
+`oq-tunisia-boundary`, was resolved 2026-04-11) — resolving it
+brings the page to 0 unresolved OQs, closest to status change.
+
+**Phase 4 (execution):** `ogrinfo` SQL queries on
+`data/geodata/cshapes2_full.gpkg` for `cowcode=640` (Ottoman),
+`cowcode=3461` (Bosnia), `cowcode=3462` (Herzegovina),
+`cowcode=300` (Austria-Hungary), and `cowcode=355` (Bulgaria).
+Results: CShapes codes Bosnia and Herzegovina as **separate
+polygons** (`status: occupied`, `owner: 300`) — they are NOT part
+of the Ottoman sovereign polygon. The Ottoman polygon's 10.28
+sq-degree area drop at 1908-10-05 matches Bulgaria's independence
+polygon exactly. Austria-Hungary's polygon grows by exactly 5.80
+sq degrees at annexation, matching Bosnia (4.68) + Herzegovina
+(1.12). No double-counting in WHEP.
+
+**Outcome:** `oq-bosnia-double-count` resolved. 0 unresolved open
+questions remain on `ott-1886-1908`. Page updated with CShapes
+polygon convention sourced claim and territorial extent
+clarification.
+
+**Stop decision:** continue (iteration 1 of 3)
+
+---
+
 <a id="deu-first-ingest"></a>
 ## 2026-04-11 — deu-first-ingest
 **Touched:** DEU-1800-1919
