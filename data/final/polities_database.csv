@@ -380,7 +380,7 @@ SMR-1800-2025,San Marino,1800,2025,226,national,Europe,SMR,339,CShapes 2.0,NA,NA
 ESP-1800-2025,Spain,1800,2025,226,national,Europe,ESP,230,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SWE-1800-2025,Sweden,1800,2025,226,national,Europe,SWE,380,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CHE-1800-2025,Switzerland,1800,2025,226,national,Europe,CHE,225,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BEL-1831-2025,Belgium,1831,2025,195,national,Europe,BEL,211,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+BEL-1831-2025,Belgium,1831,2025,195,national,Europe,BEL,211,CShapes 2.0,NLD-1800-1830,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ALB-1913-2025,Albania,1913,2025,113,national,Europe,ALB,400,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 AUT-1918-2025,Austria,1918,2025,108,national,Europe,AUT,305,CShapes 2.0,AUH-1908-1918,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FRA-1919-2025,France,1919,2025,107,national,Europe,FRA,220,CShapes 2.0,FRA-1800-1919,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
@@ -422,7 +422,7 @@ DNK-1864-1920,Denmark (to 1920),1864,1920,57,national,Europe,DNK,390,CShapes 2.0
 DMO-1800-1860,Duchy Modena,1800,1860,61,national,Europe,DMO,332,Cliopatria (Duchy of Modena and Reggio 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
 DPA-1800-1860,Duchy Parma,1800,1860,61,national,Europe,DPA,335,Cliopatria (Duchy of Parma and Piacenza 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
 FRA-1800-1919,France (to 1919),1800,1919,120,national,Europe,FRA,220,CShapes 2.0 + CShapes-Europe,NA,FRA-1919-2025,FT; CShapes,REGION,NA
-DEU-1800-1919,Germany (to 1919),1800,1919,120,national,Europe,DEU,260,CShapes 2.0 + CShapes-Europe,NA,DEU-1919-1920,FT; CShapes,VERIFIED,NA
+DEU-1800-1919,Germany (to 1919),1800,1919,120,national,Europe,DEU,255,CShapes 2.0 + CShapes-Europe,NA,DEU-1919-1920,FT; CShapes,VERIFIED,NA
 GRC-1830-1913,Greece (to 1913),1830,1913,84,national,Europe,GRC,350,CShapes 2.0 + CShapes-Europe,NA,GRC-1913-1919,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).
 HAN-1800-1866,Hanover,1800,1866,67,national,Europe,HAN,240,Cliopatria (Electorate of Hanover 1800-1802),NA,NA,FT; WHEP-fix,VERIFIED,NA
 HZG-1878-1908,Herzegovina (1878-1908),1878,1908,31,national,Europe,HZG,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman territory before 1878.
@@ -464,7 +464,7 @@ SHI-1816-1826,Saxe-Hildburgchausen,1816,1826,11,national,Europe,SHI,NA,GADM 4.1 
 SME-1816-1870,Saxe-Meiningen,1816,1870,55,national,Europe,SME,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SWM-1816-1870,Saxe-Weimar,1816,1870,55,national,Europe,SWM,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SCL-1816-1870,Schaumburg-Lippe,1816,1870,55,national,Europe,SCL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
-SER-1816-1913,Serbia (1816-1913),1816,1913,98,national,Europe,SER,NA,CShapes 2.0 + CShapes-Europe,NA,SER-1913-1918; SER-1913-1915,FT; CShapes; WHEP-fix,VERIFIED,NA
+SER-1816-1913,Serbia (1816-1913),1816,1913,98,national,Europe,SER,345,CShapes 2.0 + CShapes-Europe,NA,SER-1913-1918; SER-1913-1915,FT; CShapes; WHEP-fix,VERIFIED,NA
 WAL-1816-1870,Waldeck,1816,1870,55,national,Europe,WAL,NA,Cliopatria (Principality of Waldeck and Pyrmont 1814-1819),NA,NA,FT,VERIFIED,NA
 WOL-1816-1870,Wolfenbüttel,1816,1870,55,national,Europe,WOL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 SAL-1827-1870,Saxe-Altenburg,1827,1870,44,national,Europe,SAL,NA,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
@@ -475,63 +475,63 @@ ANH-1864-1870,Anhalt,1864,1870,7,national,Europe,ANH,NA,Cliopatria (Duchy of Anh
 BGR-1878-1913,Bulgaria (to 1913),1878,1913,36,national,Europe,BGR,355,CShapes 2.0 + CShapes-Europe,NA,BGR-1913-1918,FT; CShapes,VERIFIED,NA
 MNE-1878-1913,Montenegro (to 1913),1878,1913,36,national,Europe,MNE,341,CShapes 2.0 + CShapes-Europe,NA,MNE-1913-1915,FT; CShapes,VERIFIED,NA
 CRE-1898-1913,Crete,1898,1913,16,national,Europe,CRE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-F228-1905-1914,USSR (1905-1914),1905,1914,10,national,Europe,NA,365,CShapes 2.0,F228-1856-1905,F228-1914-1917,FT; CShapes,REGION,NA
+F228-1905-1914,Russian Empire (1905-1914),1905,1914,10,national,Europe,NA,365,CShapes 2.0,F228-1856-1905,F228-1914-1917,FT; CShapes,REGION,NA
 AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,national,Europe,AUH,300,CShapes 2.0,AUH-1867-1908,AUT-1918-2025; HUN-1918-1919; AUT-1918-1919,FT; CShapes,VERIFIED,NA
 BGR-1913-1918,Bulgaria (1913-1918),1913,1918,6,national,Europe,BGR,355,CShapes 2.0,BGR-1878-1913,BGR-1918-1919,FT; CShapes,VERIFIED,NA
 GRC-1913-1919,Greece (1913-1919),1913,1919,7,national,Europe,GRC,350,CShapes 2.0,GRC-1830-1913,GRC-1919-2025,FT; CShapes,VERIFIED,NA
 MNE-1913-1915,Montenegro (1913-1915),1913,1915,3,national,Europe,MNE,341,CShapes 2.0,MNE-1878-1913,NA,FT; CShapes,VERIFIED,NA
 MON-1913-1918,Montenegro (1913-1918),1913,1918,6,national,Europe,MON,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 ROU-1913-1918,Romania (1913-1918),1913,1918,6,national,Europe,ROU,360,CShapes 2.0,ROU-1859-1913,ROU-1918-1919,FT; CShapes,VERIFIED,NA
-SER-1913-1915,Serbia (1913-1915),1913,1915,3,national,Europe,SER,NA,CShapes 2.0,SER-1816-1913,SER-1913-1918,FT; CShapes,VERIFIED,NA
-SER-1913-1918,Serbia (1913-1918),1913,1918,6,national,Europe,SER,NA,CShapes 2.0,SER-1816-1913; SER-1913-1915,NA,FT; CShapes,VERIFIED,NA
+SER-1913-1915,Serbia (1913-1915),1913,1915,3,national,Europe,SER,345,CShapes 2.0,SER-1816-1913,SER-1913-1918,FT; CShapes,VERIFIED,NA
+SER-1913-1918,Serbia (1913-1918),1913,1918,6,national,Europe,SER,345,CShapes 2.0,SER-1816-1913; SER-1913-1915,F248-1918-1919,FT; CShapes,VERIFIED,NA
 TUR-1913-1914,Türkiye (1913-1914),1913,1914,2,national,Europe,TUR,640,CShapes 2.0,TUR-1800-1912,TUR-1914-1918,FT; CShapes,VERIFIED,NA
 TUR-1914-1918,Türkiye (1914-1918),1914,1918,5,national,Europe,TUR,640,CShapes 2.0,TUR-1913-1914,TUR-1918-1920,FT; CShapes,VERIFIED,NA
-F228-1914-1917,USSR (1914-1917),1914,1917,4,national,Europe,NA,365,CShapes 2.0,F228-1905-1914,F228-1917-1918,FT; CShapes,REGION,NA
-FIN-1917-1940,Finland (1917-1940),1917,1940,24,national,Europe,FIN,375,CShapes 2.0,NA,FIN-1940-2025,FT; CShapes,REGION,NA
-F228-1917-1918,USSR (1917-1918),1917,1918,2,national,Europe,NA,365,CShapes 2.0,F228-1914-1917,F228-1918-1920,FT; CShapes,REGION,NA
+F228-1914-1917,Russian Empire (1914-1917),1914,1917,4,national,Europe,NA,365,CShapes 2.0,F228-1905-1914,F228-1917-1918,FT; CShapes,REGION,NA
+FIN-1917-1940,Finland (1917-1940),1917,1940,24,national,Europe,FIN,375,CShapes 2.0,F228-1914-1917,FIN-1940-2025,FT; CShapes,REGION,NA
+F228-1917-1918,Russia (1917-1918),1917,1918,2,national,Europe,NA,365,CShapes 2.0,F228-1914-1917,F228-1918-1920,FT; CShapes,REGION,NA
 AUT-1918-1919,Austria (1918-1919),1918,1919,2,national,Europe,AUT,305,CShapes 2.0,AUH-1908-1918,NA,FT; CShapes,VERIFIED,NA
 BGR-1918-1919,Bulgaria (1918-1919),1918,1919,2,national,Europe,BGR,355,CShapes 2.0,BGR-1913-1918,BGR-1919-1940,FT; CShapes,VERIFIED,NA
-F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,21,national,Europe,NA,315,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
+F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,21,national,Europe,NA,315,CShapes 2.0,AUH-1908-1918,F51-1938-1945,FT; CShapes,REGION,NA
 EST-1918-1940,Estonia (1918-1940),1918,1940,23,national,Europe,EST,366,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 HUN-1918-1919,Hungary (1918-1919),1918,1919,2,national,Europe,HUN,310,CShapes 2.0,AUH-1908-1918,HUN-1919-1920,FT; CShapes,VERIFIED,NA
 LVA-1918-1940,Latvia (1918-1940),1918,1940,23,national,Europe,LVA,367,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 LTU-1918-1920,Lithuania (1918-1920),1918,1920,3,national,Europe,LTU,368,CShapes 2.0,NA,LTU-1920-1940,FT; CShapes,VERIFIED,NA
-POL-1918-1919,Poland (1918-1919),1918,1919,2,national,Europe,POL,290,CShapes 2.0,NA,POL-1919-1920,FT; CShapes,VERIFIED,NA
+POL-1918-1919,Poland (1918-1919),1918,1919,2,national,Europe,POL,290,CShapes 2.0,AUH-1908-1918; F228-1917-1918; DEU-1800-1919,POL-1919-1920,FT; CShapes,VERIFIED,NA
 ROU-1918-1919,Romania (1918-1919),1918,1919,2,national,Europe,ROU,360,CShapes 2.0,ROU-1913-1918,ROU-1919-1920,FT; CShapes,VERIFIED,NA
 TUR-1918-1920,Türkiye (1918-1920),1918,1920,3,national,Europe,TUR,640,CShapes 2.0,TUR-1914-1918,TUR-1920-2025,FT; CShapes,VERIFIED,NA
-F228-1918-1920,USSR (1918-1920),1918,1920,3,national,Europe,NA,365,CShapes 2.0,F228-1917-1918,F228-1920-1921,FT; CShapes,REGION,NA
-F248-1918-1919,Yugoslavia (1918-1919),1918,1919,2,national,Europe,NA,345,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
+F228-1918-1920,RSFSR (1918-1920),1918,1920,3,national,Europe,NA,365,CShapes 2.0,F228-1917-1918,F228-1920-1921,FT; CShapes,REGION,NA
+F248-1918-1919,Yugoslavia (1918-1919),1918,1919,2,national,Europe,NA,345,CShapes 2.0,AUH-1908-1918; SER-1913-1918,F248-1919-1920,FT; CShapes,REGION,NA
 BGR-1919-1940,Bulgaria (1919-1940),1919,1940,22,national,Europe,BGR,355,CShapes 2.0,BGR-1918-1919,BGR-1940-2025,FT; CShapes,VERIFIED,NA
 DEU-1919-1920,Germany (1919-1920),1919,1920,2,national,Europe,DEU,260,CShapes 2.0,DEU-1800-1919,DEU-1920-1938,FT; CShapes,VERIFIED,NA
 HUN-1919-1920,Hungary (1919-1920),1919,1920,2,national,Europe,HUN,310,CShapes 2.0,HUN-1918-1919,HUN-1920-1938,FT; CShapes,VERIFIED,NA
 POL-1919-1920,Poland (1919-1920),1919,1920,2,national,Europe,POL,290,CShapes 2.0,POL-1918-1919,POL-1920-1921,FT; CShapes,VERIFIED,NA
 ROU-1919-1920,Romania (1919-1920),1919,1920,2,national,Europe,ROU,360,CShapes 2.0,ROU-1918-1919,ROU-1920-1940,FT; CShapes,VERIFIED,NA
-F248-1919-1920,Yugoslavia (1919-1920),1919,1920,2,national,Europe,NA,345,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
+F248-1919-1920,Yugoslavia (1919-1920),1919,1920,2,national,Europe,NA,345,CShapes 2.0,F248-1918-1919,F248-1920-1991,FT; CShapes,REGION,NA
 DEU-1920-1938,Germany (1920-1938),1920,1938,19,national,Europe,DEU,260,CShapes 2.0,DEU-1919-1920,DEU-1938-1945,FT; CShapes,VERIFIED,NA
 HUN-1920-1938,Hungary (1920-1938),1920,1938,19,national,Europe,HUN,310,CShapes 2.0,HUN-1919-1920,HUN-1938-1947,FT; CShapes,VERIFIED,NA
 LTU-1920-1940,Lithuania (1920-1940),1920,1940,21,national,Europe,LTU,368,CShapes 2.0,LTU-1918-1920,NA,FT; CShapes,VERIFIED,NA
 POL-1920-1921,Poland (1920-1921),1920,1921,2,national,Europe,POL,290,CShapes 2.0,POL-1919-1920,POL-1921-1945,FT; CShapes,VERIFIED,NA
 ROU-1920-1940,Romania (1920-1940),1920,1940,21,national,Europe,ROU,360,CShapes 2.0,ROU-1919-1920,ROU-1940-2025,FT; CShapes,VERIFIED,NA
-F228-1920-1921,USSR (1920-1921),1920,1921,2,national,Europe,NA,365,CShapes 2.0,F228-1918-1920,F228-1921-1940,FT; CShapes,REGION,NA
-F248-1920-1991,Yugoslavia (1920-1991),1920,1991,72,national,Europe,NA,345,CShapes 2.0,NA,MKD-1991-2025,FT; FAOSTAT; M49; CShapes,REGION,NA
+F228-1920-1921,RSFSR (1920-1921),1920,1921,2,national,Europe,NA,365,CShapes 2.0,F228-1918-1920,F228-1921-1940,FT; CShapes,REGION,NA
+F248-1920-1991,Yugoslavia (1920-1991),1920,1991,72,national,Europe,NA,345,CShapes 2.0,F248-1919-1920,MKD-1991-2025,FT; FAOSTAT; M49; CShapes,REGION,NA
 POL-1921-1945,Poland (1921-1945),1921,1945,25,national,Europe,POL,290,CShapes 2.0,POL-1920-1921,POL-1945-2025,FT; CShapes,VERIFIED,NA
 F228-1921-1940,USSR (1921-1940),1921,1940,20,national,Europe,NA,365,CShapes 2.0,F228-1920-1921,F228-1940-1945,FT; CShapes,REGION,NA
-F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,8,national,Europe,NA,315,CShapes 2.0,NA,NA,FT; CShapes,REGION,NA
-DEU-1938-1945,Germany (1938-1945),1938,1945,8,national,Europe,DEU,260,CShapes 2.0,DEU-1920-1938,NA,FT; CShapes,VERIFIED,NA
+F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,8,national,Europe,NA,315,CShapes 2.0,F51-1918-1938,F51-1945-1947,FT; CShapes,REGION,NA
+DEU-1938-1945,Germany (1938-1945),1938,1945,8,national,Europe,DEU,260,CShapes 2.0,DEU-1920-1938,F77-1949-1990; F78-1949-1990,FT; CShapes,VERIFIED,NA
 HUN-1938-1947,Hungary (1938-1947),1938,1947,10,national,Europe,HUN,310,CShapes 2.0,HUN-1920-1938,HUN-1947-2025,FT; CShapes,VERIFIED,NA
 F228-1940-1945,USSR (1940-1945),1940,1945,6,national,Europe,NA,365,CShapes 2.0,F228-1921-1940,F228-1945-1991,CShapes,REGION,NA
-F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,3,national,Europe,NA,315,CShapes 2.0,NA,NA,CShapes,REGION,NA
+F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,3,national,Europe,NA,315,CShapes 2.0,F51-1938-1945,F51-1947-1993,CShapes,REGION,NA
 F228-1945-1991,USSR (1945-1991),1945,1991,47,national,Europe,NA,365,CShapes 2.0,F228-1940-1945,RUS-1991-2014; BLR-1991-2025; EST-1991-2025; LTU-1991-2025; LVA-1991-2025; MDA-1991-2025; UKR-1991-2014; ARM-1991-2025; AZE-1991-2025; GEO-1991-2025; KAZ-1991-2025; KGZ-1991-2025; TJK-1991-2025; TKM-1991-2025; UZB-1991-2025,FAOSTAT; M49; CShapes,REGION,NA
 CZE-1947-1992,Czechoslovakia (1947-1992),1947,1992,46,national,Europe,CZE,316,CShapes 2.0,NA,CZE-1993-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,47,national,Europe,NA,315,CShapes 2.0,NA,CZE-1993-2025; SVK-1993-2025,FAOSTAT; M49; CShapes,REGION,NA
-F77-1949-1990,East Germany,1949,1990,42,national,Europe,NA,265,CShapes 2.0,NA,DEU-1990-2025,FAOSTAT; M49; CShapes,REGION,NA
-F78-1949-1990,West Germany,1949,1990,42,national,Europe,NA,260,CShapes 2.0,NA,DEU-1990-2025,FAOSTAT; M49; CShapes,REGION,NA
+F77-1949-1990,East Germany,1949,1990,42,national,Europe,NA,265,CShapes 2.0,DEU-1938-1945,DEU-1990-2025,FAOSTAT; M49; CShapes,REGION,NA
+F78-1949-1990,West Germany,1949,1990,42,national,Europe,NA,260,CShapes 2.0,DEU-1938-1945,DEU-1990-2025,FAOSTAT; M49; CShapes,REGION,NA
 RUS-1991-2014,Russia (1991-2014),1991,2014,24,national,Europe,RUS,365,CShapes 2.0,F228-1945-1991,RUS-2014-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 UKR-1991-2014,Ukraine (1991-2014),1991,2014,24,national,Europe,UKR,369,CShapes 2.0,F228-1945-1991,UKR-2014-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
-F248-1991-1992,Yugoslavia (1991-1992),1991,1992,2,national,Europe,NA,345,CShapes 2.0,NA,SVN-1992-2025; HRV-1992-2025; BIH-1992-2025; SCG-1992-2006; MKD-1991-2025,FAOSTAT; M49; CShapes,REGION,NA
-SCG-1992-2006,Serbia and Montenegro,1992,2006,15,national,Europe,SCG,NA,CShapes 2.0,F248-1991-1992,SER-2006-2008; MNE-2006-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
+F248-1991-1992,Yugoslavia (1991-1992),1991,1992,2,national,Europe,NA,345,CShapes 2.0,F248-1920-1991,SVN-1992-2025; HRV-1992-2025; BIH-1992-2025; SCG-1992-2006; MKD-1991-2025,FAOSTAT; M49; CShapes,REGION,NA
+SCG-1992-2006,Serbia and Montenegro,1992,2006,15,national,Europe,SCG,345,CShapes 2.0,F248-1991-1992,SER-2006-2008; MNE-2006-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 YUG-1992-2006,Yugoslavia (1992-2006),1992,2006,15,national,Europe,YUG,NA,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-SER-2006-2008,Serbia (2006-2008),2006,2008,3,national,Europe,SER,NA,CShapes 2.0,SCG-1992-2006,SRB-2008-2025; KOS-2008-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
+SER-2006-2008,Serbia (2006-2008),2006,2008,3,national,Europe,SER,345,CShapes 2.0,SCG-1992-2006,SRB-2008-2025; KOS-2008-2025,FAOSTAT; M49; CShapes,VERIFIED,NA
 BAD-1800-1871,Baden,1800,1871,72,national,Europe,BAD,267,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
 CHI-1800-2023,Channel Islands,1800,2023,224,national,Europe,CHI,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 GEB-1949-1982,East Berlin,1949,1982,34,national,Europe,GEB,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Start year corrected: 1800 -> 1949 (East Berlin created with DDR 1949)
@@ -547,7 +547,7 @@ F285-2011-2023,Sark,2011,2023,13,national,Europe,NA,NA,GADM 4.1,NA,NA,FAOSTAT; M
 DZG-1919-1938,Danzig (1919-1938),1919,1938,20,national,Europe,DZG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 KOS-2008-2025,Kosovo,2008,2025,18,national,Europe,KOS,347,CShapes 2.0,SER-2006-2008,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 F15-1800-1999,Belgium-Luxembourg,1800,1999,200,aggregate,Europe,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-GER-1800-2025,Germany/Zollverein,1800,2025,226,national,Europe,GER,255,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+GER-1800-2025,Germany/Zollverein,1800,2025,226,aggregate,Europe,GER,255,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 DOD-1912-2025,Dodecanese Is.,1912,2025,114,national,Europe,DOD,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ATG-1800-2025,Antigua and Barbuda,1800,2025,226,national,North America,ATG,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BHS-1800-2025,Bahamas,1800,2025,226,national,North America,BHS,31,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -1188,8 +1188,8 @@ NDD-1800-1884,Niger Delta City-States,1800,1884,85,national,Africa,NGA,NA,NA,NA,
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,98,national,Africa,NGA,NA,NA,NA,NNI-1899-1904,research,VERIFIED,"Middle Niger River trade hub. Famous for brass and glass bead manufacture, cloth production. Nominally under Sokoto/Gwandu but operationally autonomous. Conquered by Royal Niger Company Jan 1897 (Bida fell Jan 29). Capital: Bida (6.01E, 9.08N)."
 MEX-1800-1848,Mexico (to 1848),1800,1848,49,national,North America,MEX,NA,"Cliopatria (Federated Republic of Mexico 1825-1835, 3.19M km2)",NA,MEX-1848-2025,CShapes; Cliopatria; research,VERIFIED,"Pre-Treaty of Guadalupe Hidalgo. Included Central America until 1823 (~4.4M km2), then ~3.2M km2. Lost Texas de facto 1836. Treaty of Guadalupe Hidalgo (1848-02-02) ceded California, Nevada, Utah, Arizona, New Mexico to US (~55% loss)."
 MEX-1848-2025,Mexico,1848,2025,178,national,North America,MEX,NA,CShapes 2.0,MEX-1800-1848,NA,CShapes; research,VERIFIED,"Post-Treaty of Guadalupe Hidalgo. Gadsden Purchase (1854, -77K km2) is sub-threshold (-3.9%). Territory stable at ~1.96M km2 since 1854."
-NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,31,national,Europe,NLD,NA,Cliopatria (Netherlands 1815-1819),NA,NLD-1830-2025,CShapes; Cliopatria; research,VERIFIED,United Kingdom of Netherlands (1815-1830) including Belgium and Luxembourg. ~71K km2. Belgian Revolution 1830 led to -42% territory loss.
-NLD-1830-2025,Netherlands,1830,2025,196,national,Europe,NLD,NA,Cliopatria (Netherlands 1834-1839),NLD-1800-1830,NA,CShapes; Cliopatria; research,VERIFIED,Netherlands after Belgian secession. ~41K km2. Luxembourg personal union until 1890.
+NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,31,national,Europe,NLD,210,Cliopatria (Netherlands 1815-1819),NA,NLD-1830-2025; BEL-1831-2025; LUX-1839-2025,CShapes; Cliopatria; research,VERIFIED,United Kingdom of Netherlands (1815-1830) including Belgium and Luxembourg. ~71K km2. Belgian Revolution 1830 led to -42% territory loss.
+NLD-1830-2025,Netherlands,1830,2025,196,national,Europe,NLD,210,Cliopatria (Netherlands 1834-1839),NLD-1800-1830,NA,CShapes; Cliopatria; research,VERIFIED,Netherlands after Belgian secession. ~41K km2. Luxembourg personal union until 1890.
 NPL-1800-1816,Greater Nepal,1800,1816,17,national,Asia,NPL,NA,Cliopatria (Nepal 1800-1802),NA,NPL-1816-2025,CShapes; Cliopatria; research,VERIFIED,"Greater Nepal under Prithvi Narayan Shah's successors. ~227K km2 at peak (1814). Treaty of Sugauli (1816) ceded Sikkim, Kumaon, Garhwal, western Terai to British India. -34% territory loss."
 NPL-1816-2025,Nepal,1816,2025,210,national,Asia,NPL,NA,Cliopatria (Nepal 1820-1835),NPL-1800-1816,NA,CShapes; Cliopatria; research,VERIFIED,Nepal post-Sugauli Treaty. ~149K km2. Borders largely stable since 1816.
 OMN-1800-1856,Omani Empire,1800,1856,57,national,Asia,OMN,NA,Cliopatria (Sultanate of Oman 1840-1855),NA,OMN-1856-2025,CShapes; Cliopatria; research,VERIFIED,"Omani Empire including East African coast (Zanzibar, Pemba, mainland strip). Said bin Sultan ruled from Zanzibar (moved capital 1840). ~176K km2 at peak. Split on his death 1856: Zanzibar and Oman became separate sultanates."
@@ -1200,8 +1200,8 @@ USA-1800-1803,United States (original),1800,1803,4,national,North America,USA,NA
 USA-1803-1848,United States (1803-1848),1803,1848,46,national,North America,USA,NA,Cliopatria (United States of America 1842-1845),USA-1800-1803,USA-1848-1867,CShapes; Cliopatria; research,VERIFIED,"Post-Louisiana Purchase (1803, +2.1M km2). Florida (Adams-Onis 1819). Texas annexation (1845). Oregon Treaty (1846). ~3.5M km2 by 1845. Treaty of Guadalupe Hidalgo (1848) triggers next split."
 USA-1848-1867,United States (1848-1867),1848,1867,20,national,North America,USA,NA,Cliopatria (United States of America 1859-1860),USA-1803-1848,USA-1867-1959,CShapes; Cliopatria; research,VERIFIED,"Post-Mexican Cession (Guadalupe Hidalgo 1848, +1.4M km2). Gadsden Purchase (1854). Civil War (1861-1865). ~4.3M km2 pre-Alaska. Alaska Purchase (1867) triggers next split."
 USA-1867-1959,United States (1867-1959),1867,1959,93,national,North America,USA,NA,Cliopatria (United States of America 1877-1879),USA-1848-1867,USA-1959-2025,CShapes; Cliopatria; research,VERIFIED,"Alaska Purchase (1867, +1.7M km2). Territory stable at ~9.4M km2. Hawaii Territory (1898). Admitted as 49th and 50th states 1959."
-F228-1800-1856,Russian Empire (to 1856),1800,1856,57,national,Europe,RUS,NA,Cliopatria (Russian Empire 1815-1823),NA,F228-1856-1905,CShapes; Cliopatria; research,VERIFIED,"Russian Empire pre-Crimean War. ~17.4M km2. Acquisitions: Georgia (1801), Finland (1809), Bessarabia (1812), Congress Poland (1815). Caucasus conquest ongoing. Crimean War (1853-56) ends this period."
-F228-1856-1905,Russian Empire (1856-1905),1856,1905,50,national,Europe,RUS,NA,Cliopatria (Russian Empire 1885-1894),F228-1800-1856,F228-1905-1914,CShapes; Cliopatria; research,VERIFIED,"Russian Empire post-Crimean War. Massive Central Asian expansion: Tashkent (1865), Bukhara protectorate (1868), Khiva (1873), Kokand (1876), Merv (1884). Far East: Amur/Ussuri (1858-60), Sakhalin (1875). ~22M km2 by 1900. Russo-Japanese War (1904-05) triggers next period."
+F228-1800-1856,Russian Empire (to 1856),1800,1856,57,national,Europe,RUS,365,Cliopatria (Russian Empire 1815-1823),NA,F228-1856-1905,CShapes; Cliopatria; research,VERIFIED,"Russian Empire pre-Crimean War. ~17.4M km2. Acquisitions: Georgia (1801), Finland (1809), Bessarabia (1812), Congress Poland (1815). Caucasus conquest ongoing. Crimean War (1853-56) ends this period."
+F228-1856-1905,Russian Empire (1856-1905),1856,1905,50,national,Europe,RUS,365,Cliopatria (Russian Empire 1885-1894),F228-1800-1856,F228-1905-1914,CShapes; Cliopatria; research,VERIFIED,"Russian Empire post-Crimean War. Massive Central Asian expansion: Tashkent (1865), Bukhara protectorate (1868), Khiva (1873), Kokand (1876), Merv (1884). Far East: Amur/Ussuri (1858-60), Sakhalin (1875). ~22M km2 by 1900. Russo-Japanese War (1904-05) triggers next period."
 MMR-1800-1826,Konbaung Burma (to 1826),1800,1826,27,national,Asia,MMR,NA,Cliopatria (Burma 1822-1824),NA,MMR-1826-1852,CShapes; Cliopatria; research,VERIFIED,"Konbaung Dynasty at peak. ~798K km2 including Arakan, Manipur, Assam. First Anglo-Burmese War (1824-26) ends with Treaty of Yandabo: lost Arakan, Tenasserim, Assam, Manipur. -31% territory."
 MMR-1826-1852,Burma (1826-1852),1826,1852,27,national,Asia,MMR,NA,Cliopatria (Burma 1828-1833),MMR-1800-1826,MMR-1852-1885,CShapes; Cliopatria; research,VERIFIED,Post-First Anglo-Burmese War. ~553K km2. Second Anglo-Burmese War (1852): Britain seizes Lower Burma (Pegu). -21% territory.
 MMR-1852-1885,Upper Burma (1852-1885),1852,1885,34,national,Asia,MMR,NA,Cliopatria (Burma 1853-1858),MMR-1826-1852,MMR-1885-2025,CShapes; Cliopatria; research,VERIFIED,Upper Burma only. ~437K km2. Third Anglo-Burmese War (1885): Britain conquers Upper Burma. Kingdom abolished 1 Jan 1886.

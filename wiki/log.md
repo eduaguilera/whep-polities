@@ -26,6 +26,32 @@ Kinds:
 
 ---
 
+## csv-fix-audit-findings-1-4
+**Date:** 2026-04-12
+**Touched:** data/final/polities_database.csv
+**Source:** wiki audit (proposal-wiki-vs-csv-audit-2026-04-12)
+**Kind:** ingest
+
+Applied 36 CSV fixes from the wiki-vs-CSV audit:
+
+**Finding 1 (5 fixes):** Renamed mislabeled F228 rows: "USSR"
+→ "Russian Empire" (1905-1917), "Russia" (1917-1918), "RSFSR"
+(1918-1921). Per wikipedia-russian-empire-2026-04-11.
+
+**Finding 2 (20 fixes):** Fixed 12 predecessor=NA bugs and 8
+successor=NA bugs. Complete chain graphs now exist for:
+F51 (Czechoslovakia), F248 (Yugoslavia), POL (Poland), BEL
+(Belgium), FIN (Finland), DEU-1938→F77/F78 (Germany WWII→
+occupation), SER→F248 (Serbia→Yugoslavia), NLD→BEL+LUX.
+
+**Finding 3 (10 fixes):** Corrected COW codes: DEU 260→255,
+F228-pre-1905 NA→365, NLD NA→210, SER/SCG NA→345.
+
+**Finding 4 (1 fix):** GER-1800-2025 polity_type national →
+aggregate. Per 6 docs/ files documenting it as trade aggregate.
+
+---
+
 ## proposal-wiki-vs-csv-audit-2026-04-12
 **Date:** 2026-04-12
 **Touched:** (audit only — no files modified)
