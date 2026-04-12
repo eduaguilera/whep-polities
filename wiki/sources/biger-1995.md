@@ -1399,6 +1399,172 @@ on Borneo, and with Papua New Guinea (510 mi; 820 km).
   Moluccas also attempted to establish an independent state but
   the revolt was quelled." (p.295)
 
+### romania
+*Romanian boundary history.*
+
+Compiled from the ROMANIA main entry (pp.447-448), ROMANIA-UKRAINE
+(pp.449-451), ROMANIA-SERBIA (p.449).
+
+- "Romania is bounded in the north and east by Ukraine (330 miles;
+  531 km.), east by Moldava (280 miles; 450 km.) and the Black Sea,
+  south by Bulgaria (378 miles; 608 km.), southwest by Serbia
+  (296 miles; 476 km.) and west by Hungary (275 miles; 443 km.)."
+  (p.447)
+- "The Congress of Berlin, following the Russo-Ottoman War of
+  1877-1878, granted the Romanians independence and in 1881 they
+  formed a kingdom." (p.447)
+- "In 1944 Romania was occupied by Soviet forces." (p.448)
+
+### saudi-arabia
+*Saudi Arabian boundary history.*
+
+Compiled from the SAUDI ARABIA main entry (p.460) and SAUDI
+ARABIA-YEMEN (pp.462-464).
+
+- "A Middle Eastern country (area: 830,716 sq. miles [2,149,690
+  sq. km.]; estimated population: 17,500,000 [1994]) in the
+  Arabian Peninsula." (p.460)
+- "In 1932 the kingdom of Hejaz and Nejd was renamed Saudi
+  Arabia." (p.460)
+- "In 1938 oil was discovered and production started." (p.460)
+
+### slovakia
+*Slovak boundary history.*
+
+Compiled from the SLOVAKIA main entry (pp.468-469).
+
+- "Until 1993, Slovakia (area: 18,919 sq. miles [49,000 sq. km.];
+  estimated population: 5,334,000 [1994]), a landlocked country,
+  was an eastern constituent republic of the former Czechoslovakia."
+  (p.468)
+- "In 1992 the two component republics of Czechoslovakia reached
+  an agreement on separation, and on 1 January 1993, Slovakia
+  became an independent, sovereign state." (p.469)
+
+### slovenia
+*Slovenian boundary history.*
+
+Compiled from the SLOVENIA main entry (pp.470-471).
+
+- "Until 1991, Slovenia (area: 7,819 sq. miles [20,243 sq. km.];
+  estimated population: 2,000,000 [1994]), a Central European
+  country, was a constituent republic of the former Yugoslavia."
+  (p.470)
+- "In 1991, following an electoral victory of the nationalists,
+  Slovenia proclaimed its independence from Yugoslavia, which was
+  achieved almost without bloodshed." (p.471)
+
+### thailand
+*Thai (Siamese) boundary history.*
+
+Compiled from the THAILAND (Prathet Thai) main entry (p.492).
+
+- "A Southeast Asian country (area: 198,115 sq. miles [513,115
+  sq. km.]; estimated population: 58,300,000 [1994]) is bounded
+  in the northeast by Laos (1,009 miles; 1,754 km.)." (p.492)
+- "Thailand was open to western influence. It was, however, the
+  only country in the region not subject to colonial rule." (p.492)
+
+### turkey
+*Turkish boundary history.*
+
+Compiled from the TURKEY main entry (pp.495-496).
+
+- "Turkey (area: 300,870 sq. miles [779,253 sq. km.]; estimated
+  population: 60,900,000 [1994]) is situated in two continents --
+  Asia and Europe." (p.495)
+- "The Turkish war of independence in 1922-1923 resulted in the
+  establishment of a republic." (p.496)
+- "The significance of Mustafa Kemal Ataturk ... in restoring
+  pride to his people and in forcing upon them drastic
+  modernization cannot be overstated." (p.496)
+
+### taiwan
+*Taiwan entry -- island state, no land boundaries.* (p.487)
+
+- "An Asian island country, Taiwan is situated in the Pacific
+  Ocean, east of China. The area of Taiwan is 13,900 sq. miles
+  (35,987 sq. km.) and it has an estimated population (1994) of
+  21,000,000. Taiwan's capital is Taipei. It has no land
+  boundaries." (p.487)
+
+### ukraine
+*Ukrainian boundary history.*
+
+Compiled from the UKRAINE main entry (pp.502-504) and RUSSIA-
+UKRAINE (p.452).
+
+- "An Eastern European country (area: 233,090 sq. miles
+  [603,700 sq. km.]; estimated population: 52,000,000 [1994]),
+  Ukraine was a republic of the Soviet Union until 1991." (p.502)
+- "Following the dissolution of the Soviet Union the Ukraine
+  became a fully independent state." (p.504)
+- "In 1954 the Crimea was annexed to the Ukraine as part of the
+  celebration of the tricentennial of the 'unification of the
+  Ukraine and Russia.'" (p.504)
+
+### uruguay
+*Uruguayan boundary history.*
+
+Compiled from the URUGUAY main entry (pp.508-509).
+
+- "A South American country (area: 68,500 sq. miles [177,415
+  sq. km.]; estimated population: 3,200,000 [1994]), Uruguay is
+  bounded in the north and northeast by Brazil (612 miles;
+  985 km.)." (p.508)
+- "The Uruguayan republic soon became the most stable and
+  democratic state in Latin America." (p.508)
+
+### united-states
+*United States boundary history.*
+
+Compiled from the UNITED STATES OF AMERICA main entry
+(pp.505-507) and CANADA-UNITED STATES (pp.140-141).
+
+- "A North American country, the United States (area: 3,787,425
+  sq. miles [9,805,643 sq. km.]; estimated population:
+  257,000,000 [1994]) is bounded in the north by Canada
+  (5,525 miles; 8,893 km.)." (p.505)
+- "This is the longest land boundary in the world." (p.505)
+
+### venezuela
+*Venezuelan boundary history.*
+
+Compiled from the VENEZUELA main entry (p.510) and COLOMBIA-
+VENEZUELA (pp.174-175).
+
+- "A South American country (area: 352,279 sq. miles [912,050
+  sq. km.]; estimated population: 20,700,000 [1994]), Venezuela
+  is situated in the northern part of the continent." (p.510)
+- "In 1932 both states accepted the demarcation of the land
+  boundary and following that there were no more land boundary
+  disputes." (p.175) -- Colombia-Venezuela boundary.
+
+### south-africa
+*South African boundary history.*
+
+Compiled from the SOUTH AFRICA main entry (pp.472-473).
+
+- "The southernmost African country, South Africa (area: 435,380
+  sq. miles [1,127,200 sq. km.]; estimated population: 42,500,000
+  [1994])." (p.472)
+- "White settlement in South Africa began in 1652 at the
+  refreshment station at the Cape under the Dutch East India
+  Company." (p.472)
+- "South Africa's history is one of alternating periods of
+  conflict and cooperation between its various peoples." (p.472)
+
+### paraguay
+*Paraguayan boundary history.*
+
+Compiled from the PARAGUAY main entry (p.434).
+
+- "A landlocked country in central South America, Paraguay
+  (area: 157,107 sq. miles [406,752 sq. km.]; estimated
+  population: 4,600,000 [1994])." (p.434)
+- "Paraguayans initiated a rebellion against Spain in 1810: the
+  last Spanish governor left in 1811." (p.434)
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
