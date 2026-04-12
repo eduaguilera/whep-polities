@@ -26,6 +26,39 @@ Kinds:
 
 ---
 
+## autonomous-35-world-states
+**Date:** 2026-04-12
+**Touched:** CAN-1866-1948, CAN-1948-2025, AUS-1901-2025, THA-1800-1893, THA-1893-1904, THA-1904-1907, THA-1907-1909, THA-1909-2025, KOR-1948-2025, TWN-1896-2025, SAU-1932-2000, SAU-2000-2025, SAU-1924-1932
+**Source:** database
+**Kind:** ingest
+
+Created 12 polity pages across 6 country chains: Canada (2 rows:
+Confederation through Newfoundland split), Australia (1 row: federation
+to present), Thailand (5 rows: Siam's successive territorial losses to
+France and Britain 1893-1909), South Korea (1 row: 1948 to present),
+Taiwan (1 row: 1896 to present), Saudi Arabia continuation (2 rows:
+1932-2000 kingdom + 2000-2025 post-Yemen border settlement). Also
+updated [sau-1924-1932](polities/sau-1924-1932.md) to replace TODO
+successor links with proper inline links to the new sau-1932-2000 page.
+
+---
+
+## autonomous-36-africa
+**Date:** 2026-04-12
+**Touched:** ZAF-1828-2025, DZA-1831-2025, TUN-1881-2025, LBY-1951-2025, MAR-1911-1958, MAR-1958-1975, MAR-1975-1979, MAR-1979-2025, NGA-1914-1961, NGA-1961-2025, GHA-1957-2025, COD-1960-2025, KEN-1963-2025
+**Source:** database
+**Kind:** ingest
+
+Created 13 polity pages for major African states: South Africa (1 row),
+Algeria (1), Tunisia (1, cross-refs Biger), Libya (1), Morocco (4-row
+chain split on Western Sahara events), Nigeria (2-row chain split on
+1961 Cameroons plebiscite), Ghana (1), DR Congo (1), Kenya (1). All
+pages are brief drafts citing [database] for CSV-derived facts. Open
+questions flagged: ZAF 1828 start date rationale; DZA missing COW code;
+MAR Western Sahara territorial overlap; MAR 1911 vs 1912 start.
+
+---
+
 ## autonomous-34-south-america
 **Date:** 2026-04-12
 **Touched:** ARG-1800-1899, ARG-1899-1902, ARG-1902-2025, CHL-1810-1899, CHL-1899-1902, CHL-1902-2025, COL-1800-1830, COL-1830-1903, COL-1903-1922, COL-1922-2025, PER-1825-1909, PER-1909-1922, PER-1922-1942, PER-1942-2025, BOL-1825-1903, BOL-1903-1909, BOL-1909-1938, BOL-1938-2025, VEN-1821-2025, ECU-1800-1942, ECU-1942-2025, PRY-1811-1938, PRY-1938-2025, URY-1828-2025
