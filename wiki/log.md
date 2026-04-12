@@ -26,6 +26,24 @@ Kinds:
 
 ---
 
+## autonomous-9-esp-first-ingest
+**Date:** 2026-04-12
+**Touched:** ESP-1800-2025
+**Source:** wikipedia-spain-2026-04-12 (new), cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Autonomous iteration 9. Creates the ESP-1800-2025 polity page —
+a 226-year continuous row for Spain. Metropolitan borders unchanged
+since 1815 despite massive colonial losses (Latin America 1810s–20s,
+Cuba/Philippines 1898). CShapes confirms: single static polygon
+across entire 1886–2019 coverage. Colonial territories tracked as
+separate WHEP rows.
+
+4 open questions (oq-biger-spain, oq-colonial-loss-split-candidates,
+oq-civil-war-1936, oq-notes-na).
+
+---
+
 ## autonomous-8-nld-1800-1830
 **Date:** 2026-04-12
 **Touched:** NLD-1800-1830, LUX-1839-2025
