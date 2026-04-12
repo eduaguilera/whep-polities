@@ -26,6 +26,32 @@ Kinds:
 
 ---
 
+## autonomous-14-deu-dnk-sar
+**Date:** 2026-04-12
+**Touched:** DEU-1919-1920, DNK-1864-1920, SAR-1800-1860, DEU-1800-1919, DNK-1800-1864, ITA-1861-1919
+**Source:** wikipedia-german-empire-2026-04-11, cshapes-2.0, cow-state-system-v2024, biger-1995
+**Kind:** ingest
+
+Autonomous iteration 14. Creates 3 polity pages:
+
+- **DEU-1919-1920** -- 2-year transitional row covering post-Versailles
+  Germany (~65,000 km² metropolitan territory lost). Split date at 1920
+  is ambiguous: Treaty of Versailles entered into force 10 January 1920
+  is the best candidate (oq-1919-vs-1920-split-date).
+- **DNK-1864-1920** -- 57-year row covering reduced Denmark without
+  Schleswig-Holstein (~38,496 km²). Biger confirms 40% territory loss
+  at 1864 and partial northern Schleswig return after WWI plebiscite.
+- **SAR-1800-1860** -- Kingdom of Sardinia, legal continuator of Italian
+  unification. COW code 338 shared with PIE-1816-1861 (44-year overlap,
+  candidate duplicate: oq-sar-pie-overlap). CSV ends at 1860, Italy
+  starts at 1861 (oq-1860-vs-1861).
+
+TODO comments removed from predecessor pages: DEU-1800-1919 (2 links),
+DNK-1800-1864 (2 links), ITA-1861-1919 (2 links for SAR only; PAP
+TODO remains).
+
+---
+
 ## autonomous-13-auh-successors
 **Date:** 2026-04-12
 **Touched:** AUT-1918-2025, HUN-1918-1919, F51-1918-1938, F248-1918-1919, POL-1918-1919, AUH-1908-1918

@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 29 |
+| Polity pages | 32 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -55,6 +55,9 @@ lint fails if the index is stale.
   row. Metropolitan borders unchanged since 1815. Colonial losses
   (Latin America 1810s–20s, Cuba/Philippines 1898) tracked as
   separate rows.
+- [Denmark (to 1920)](polities/dnk-1864-1920.md) —
+  `DNK-1864-1920`, draft, 2 open questions. Post-Schleswig War
+  Denmark (~38K km²). 1920 Northern Schleswig plebiscite.
 - [Denmark (with Schleswig-Holstein)](polities/dnk-1800-1864.md) —
   `DNK-1800-1864`, draft, 3 open questions. Pre-1864 Denmark
   including Schleswig-Holstein (~57K km²). 1864 Second Schleswig
@@ -118,6 +121,12 @@ lint fails if the index is stale.
   reform and expansion era: Crimean War end → Portsmouth.
   The last correctly labeled F228 row before the 5-row
   "USSR" anachronism block.
+- [Germany (1919-1920)](polities/deu-1919-1920.md) —
+  `DEU-1919-1920`, draft, 1 open question. Post-Versailles
+  transitional row. ~65K km² lost.
+- [Kingdom of Sardinia](polities/sar-1800-1860.md) —
+  `SAR-1800-1860`, draft, 3 open questions. Legal continuator
+  of Italian unification. Nice/Savoy ceded to France 1860.
 - [Germany (to 1919)](polities/deu-1800-1919.md) —
   `DEU-1800-1919`, draft, 6 open questions. A 120-year row
   covering Prussia 1800 → German Empire 1871 → Versailles
