@@ -26,6 +26,24 @@ Kinds:
 
 ---
 
+## autonomous-8-nld-1800-1830
+**Date:** 2026-04-12
+**Touched:** NLD-1800-1830, LUX-1839-2025
+**Source:** wikipedia-netherlands-2026-04-12 (new), cow-state-system-v2024
+**Kind:** ingest
+
+Autonomous iteration 8. Creates the NLD-1800-1830 polity page —
+the United Kingdom of the Netherlands from database floor to the
+Belgian Revolution (1830). 68,095 km², 5.6M population. Three-way
+dissolution: Netherlands + Belgium + Luxembourg. Closes the
+predecessor gap on lux-1839-2025. New source file:
+wikipedia-netherlands-2026-04-12.md.
+
+4 open questions (oq-pre-1815-entities, oq-biger-netherlands,
+oq-cow-code-na, oq-three-way-succession).
+
+---
+
 ## autonomous-7-f228-1800-1856
 **Date:** 2026-04-12
 **Touched:** F228-1800-1856, F228-1856-1905

@@ -8,8 +8,8 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 13 |
-| Sources ingested | 12 |
+| Polity pages | 14 |
+| Sources ingested | 13 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
 | Open questions across wiki | 49 unresolved (54 total, 5 resolved) as of 2026-04-12 lint |
@@ -33,6 +33,10 @@ lint fails if the index is stale.
   covering Napoleonic France through Versailles. No mid-row
   splits at 1860 (Nice/Savoy) or 1871 (Alsace-Lorraine) — both
   flagged as candidate split points.
+- [United Kingdom of the Netherlands](polities/nld-1800-1830.md) —
+  `NLD-1800-1830`, draft, 4 open questions. 1800–1830, includes
+  Belgium and Luxembourg. Belgian Revolution 1830 splits into 3
+  successor entities.
 - [Luxembourg](polities/lux-1839-2025.md) — `LUX-1839-2025`,
   **reviewed**, 4 unresolved open questions (1 resolved).
 - [Ottoman Empire (to 1886)](polities/ott-1800-1886.md) —
