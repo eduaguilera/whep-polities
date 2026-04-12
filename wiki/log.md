@@ -26,6 +26,119 @@ Kinds:
 
 ---
 
+## autonomous-33-egy-eth
+**Date:** 2026-04-12
+**Touched:** EGY-1800-1899, EGY-1800-1922, EGY-1899-1925, EGY-1922-1925, EGY-1925-1967, EGY-1967-1979, EGY-1979-2025, ETH-1800-1889, ETH-1889-1897, ETH-1897-1902, ETH-1902-1907, ETH-1907-1952, ETH-1952-1993, ETH-1993-2025
+**Source:** database
+**Kind:** ingest
+
+Created 14 polity pages: 7 for the Egypt chain and 7 for the Ethiopia
+chain. CSV bugs flagged for Egypt: (1) Two overlapping chains --
+EGY-1800-1899 and EGY-1800-1922 coexist with the same start year,
+similar to the OTT/TUR overlap pattern; EGY-1800-1922 is a dead-end
+row (succ=NA); (2) Broken chain link -- EGY-1899-1925 has succ=NA and
+EGY-1922-1925 has pred=NA despite contiguous dates and matching
+cow/iso3; these should be linked. Ethiopia chain is clean with no
+broken links. Italian occupation (1936-1941) within ETH-1907-1952
+flagged as an open question regarding CShapes continuity coding.
+
+---
+
+## autonomous-32-ind-idn
+**Date:** 2026-04-12
+**Touched:** IND-1800-1893, IND-1893-1914, IND-1914-1937, IND-1937-1947, IND-1947-1949, IND-1949-2025, IDN-1800-1889, IDN-1889-1949, IDN-1945-1949, IDN-1949-1969, IDN-1969-1976, IDN-1976-2002, IDN-2002-2025
+**Source:** database
+**Kind:** ingest
+
+Created 13 polity pages: 6 for the India chain (British India
+through Republic of India) and 7 for the Indonesia chain (Dutch
+East Indies through modern Indonesia). CSV bugs flagged: (1) IND
+chain break — IND-1800-1893 has successor=NA and IND-1893-1914 has
+predecessor=NA despite contiguous dates and matching cow/iso3;
+(2) cow=750 shared between early Indonesia rows (IDN-1800-1889,
+IDN-1889-1949) and all India rows — likely a CSV error (independent
+Indonesia uses cow=850); (3) IDN-1889-1949 and IDN-1945-1949 have
+overlapping date ranges reflecting the colonial-to-independent
+transition.
+
+---
+
+## autonomous-31-jpn-irn
+**Date:** 2026-04-12
+**Touched:** JPN-1800-1895, JPN-1895-1945, JPN-1945-1952, JPN-1952-2025, IRN-1800-1828, IRN-1828-2025
+**Source:** database
+**Kind:** ingest
+
+Created 6 polity pages: 4 for the Japan chain (pre-imperial through
+modern) and 2 for the Iran/Persia chain (Qajar pre-Turkmenchay and
+post-Turkmenchay). All sourced from CSV notes. Japan pages cross-ref
+[f228-1856-1905](polities/f228-1856-1905.md) for the Treaty of
+Portsmouth (1905). Iran pages cross-ref
+[f228-1800-1856](polities/f228-1800-1856.md) for the Russian side of
+the Caucasus conquest. Open questions flagged: COW code NA across all 4
+JPN rows (likely 740), Gulistan (1813) as mid-row split candidate for
+IRN, and Iran's 198-year single row.
+
+---
+
+## autonomous-30-china
+**Date:** 2026-04-12
+**Touched:** CHN-1800-1895, CHN-1895-1912, CHN-1913-1914, CHN-1914-1921, CHN-1921-1945, CHN-1945-1947, CHN-1947-1949, CHN-1949-1950, CHN-1950-2025
+**Source:** cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Created nine polity pages for the complete China chain (1800-2025). The chain
+has two content-rich rows -- CHN-1800-1895 (96-year Qing Dynasty, Opium Wars
+through Treaty of Shimonoseki) and CHN-1950-2025 (76-year PRC, Hong Kong and
+Macau returns) -- and seven shorter transitional rows corresponding to CShapes
+polygon changes from concession areas, Japanese occupation zones, warlord-era
+fragmentation, and Civil War territorial shifts. Key open questions flagged:
+oq-cow-code-na on CHN-1950-2025 (CSV has cow=NA, should be 710), oq-taiwan-status
+(ROC/PRC territorial dispute affecting polygon coverage), oq-opium-war-split-candidate
+(1842/1860 treaties as candidate mid-row splits in the 96-year Qing row), and
+several oq-*-split-event questions on the transitional rows where the specific
+CShapes polygon-change driver is not yet documented. All pages draft status,
+inline links only.
+
+## autonomous-29-mex-bra
+**Date:** 2026-04-12
+**Touched:** MEX-1800-1848, MEX-1848-2025, BRA-1800-1903, BRA-1903-1909, BRA-1909-2025
+**Source:** cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Created five polity pages: two for Mexico (split at 1848 Treaty of Guadalupe
+Hidalgo) and three for Brazil (splits at 1903 and 1909). Mexico chain covers
+Spanish colonial era through independence (1821), massive territorial loss to
+the US (~55% at Guadalupe Hidalgo), Gadsden Purchase (sub-threshold), and
+modern stable borders. Brazil chain covers Portuguese colony through
+independence (1822), Empire, Republic, Acre acquisition (Treaty of Petropolis
+1903), and modern Brazil. Key open questions: the 1909 Brazil split event is
+unknown (oq-1909-split-event), and both chains have independence events
+mid-row rather than as CSV splits (oq-independence-1821, oq-independence-1822).
+All pages draft status, inline links only.
+
+## autonomous-28-usa
+**Date:** 2026-04-12
+**Touched:** USA-1800-1803, USA-1803-1848, USA-1848-1867, USA-1867-1959, USA-1959-2025
+**Source:** cshapes-2.0, cow-state-system-v2024, cliopatria-v0.1.3
+**Kind:** ingest
+
+Created 5 polity pages for the complete USA chain (1800-2025).
+The chain splits on major territorial acquisitions: Louisiana
+Purchase (1803), Treaty of Guadalupe Hidalgo (1848), Alaska
+Purchase (1867), and Alaska/Hawaii statehood (1959). CSV notes
+are rich and directly cited as [database]. COW code 2 confirmed
+from `cow_state_system.csv` (continuous from 1816-01-01). Noted
+that only the final row (USA-1959-2025) has `cow_code = 2` in
+the CSV; the four predecessor rows have NA — same pipeline
+omission as F228 pre-1886 rows. Cross-referenced
+[f228-1856-1905](polities/f228-1856-1905.md) for the Russian
+side of the 1867 Alaska sale and
+[esp-1800-2025](polities/esp-1800-2025.md) for the Spanish side
+of the 1898 war.
+
+---
+
 ## csv-fix-audit-findings-1-4
 **Date:** 2026-04-12
 **Touched:** data/final/polities_database.csv
