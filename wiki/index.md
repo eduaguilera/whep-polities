@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 35 |
+| Polity pages | 40 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -127,6 +127,21 @@ lint fails if the index is stale.
 - [Germany (1919-1920)](polities/deu-1919-1920.md) —
   `DEU-1919-1920`, draft, 1 open question. Post-Versailles
   transitional row. ~65K km² lost.
+- [Germany](polities/deu-1990-2025.md) —
+  `DEU-1990-2025`, draft, 2 open questions. Reunified Germany
+  from 1990. FRG+GDR predecessor pages still missing.
+- [Germany (1938-1945)](polities/deu-1938-1945.md) —
+  `DEU-1938-1945`, draft, 2 open questions. Nazi period,
+  Anschluss to surrender. CSV successor=NA (chain gap).
+- [Greece (to 1913)](polities/grc-1830-1913.md) —
+  `GRC-1830-1913`, draft, 2 open questions. Independence to
+  Balkan Wars. Ottoman predecessor gap.
+- [Romania (to 1913)](polities/rou-1859-1913.md) —
+  `ROU-1859-1913`, draft, 2 open questions. Unification to
+  Balkan Wars. Congress of Berlin territorial exchange.
+- [Bulgaria (to 1913)](polities/bgr-1878-1913.md) —
+  `BGR-1878-1913`, draft, 2 open questions. Congress of Berlin
+  to Balkan Wars. 1908 independence = OTT split event.
 - [Papal States](polities/pap-1800-1870.md) —
   `PAP-1800-1870`, draft, 1 open question. Central Italian
   state, 71 years. Rome captured 20 Sept 1870. Italian

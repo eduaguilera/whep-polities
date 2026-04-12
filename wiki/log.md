@@ -26,6 +26,39 @@ Kinds:
 
 ---
 
+## autonomous-16-deu-balkans
+**Date:** 2026-04-12
+**Touched:** DEU-1938-1945, DEU-1990-2025, GRC-1830-1913, ROU-1859-1913, BGR-1878-1913, DEU-1920-1938
+**Source:** cshapes-2.0, cow-state-system-v2024, biger-1995, wikipedia-ottoman-2026-04-11
+**Kind:** ingest
+
+Autonomous iteration 16. Creates 5 polity pages and updates 1:
+
+- **DEU-1938-1945** -- 8-year row covering Nazi Germany from Anschluss to
+  unconditional surrender. CSV has successor=NA, which is a chain gap
+  (territory continued through occupation zones to FRG/GDR and eventually
+  DEU-1990-2025). Key OQs: oq-successor-chain-gap,
+  oq-territorial-expansion-1938-1942.
+- **DEU-1990-2025** -- 36-year row covering reunified Germany. Stable
+  borders since 1990 (~357,000 km²). Predecessors F78 (West) and F77
+  (East) pages not yet created (oq-predecessor-pages-missing).
+- **GRC-1830-1913** -- 84-year row from Greek independence to Balkan Wars.
+  CSV predecessor=NA but Greece was Ottoman territory (oq-ottoman-predecessor).
+  Nearly doubled in area with no mid-row splits (oq-territorial-expansion).
+- **ROU-1859-1913** -- 55-year row from Romanian unification to Balkan Wars.
+  Congress of Berlin (1878) involved territorial exchange: gained Dobruja,
+  lost Bessarabia (oq-1878-congress-of-berlin). Ottoman vassal predecessor
+  gap (oq-ottoman-predecessor).
+- **BGR-1878-1913** -- 36-year row from Congress of Berlin to Balkan Wars.
+  Autonomous principality 1878-1908, independent kingdom 1908-1913. The
+  10.28 sq deg CShapes polygon at 1908-10-05 matches the Ottoman area drop
+  exactly (cross-ref: autonomous-1-bosnia-double-count). Eastern Rumelia
+  unification 1885 is a candidate mid-row split (oq-1885-eastern-rumelia).
+- **DEU-1920-1938** updated: successor TODO links replaced with live links
+  to [deu-1938-1945](polities/deu-1938-1945.md).
+
+---
+
 ## autonomous-14-deu-dnk-sar
 **Date:** 2026-04-12
 **Touched:** DEU-1919-1920, DNK-1864-1920, SAR-1800-1860, DEU-1800-1919, DNK-1800-1864, ITA-1861-1919
