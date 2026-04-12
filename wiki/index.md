@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 56 |
+| Polity pages | 62 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -150,8 +150,21 @@ lint fails if the index is stale.
 - [Greece](polities/grc-1919-2025.md) —
   `GRC-1919-2025`, draft, 1 OQ. Modern Greece. Chain complete
   1830→2025.
+- [Türkiye](polities/tur-1920-2025.md) —
+  `TUR-1920-2025`, draft, 1 OQ. Modern Turkey from Lausanne.
+  Ottoman/Turkey chain complete: 1800→2025 (8 rows).
+- [Türkiye (1918-1920)](polities/tur-1918-1920.md) —
+  `TUR-1918-1920`, draft, 1 OQ. Mudros to Sèvres/independence war.
 - [Türkiye (1914-1918)](polities/tur-1914-1918.md) —
   `TUR-1914-1918`, draft, 1 OQ. Ottoman Empire during WWI.
+- [Bulgaria (1918-1919)](polities/bgr-1918-1919.md) —
+  `BGR-1918-1919`, draft, 1 OQ. Treaty of Neuilly.
+- [Romania (1918-1919)](polities/rou-1918-1919.md) —
+  `ROU-1918-1919`, draft, 1 OQ. Greater Romania formation.
+- [Hungary (1920-1938)](polities/hun-1920-1938.md) —
+  `HUN-1920-1938`, draft, 1 OQ. Post-Trianon interwar.
+- [Poland (1920-1921)](polities/pol-1920-1921.md) —
+  `POL-1920-1921`, draft, 1 OQ. Treaty of Riga.
 - [Bulgaria (1913-1918)](polities/bgr-1913-1918.md) —
   `BGR-1913-1918`, draft, 1 OQ. Post-Balkan Wars through WWI.
 - [Romania (1913-1918)](polities/rou-1913-1918.md) —
