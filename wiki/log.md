@@ -26,6 +26,31 @@ Kinds:
 
 ---
 
+## autonomous-11-nld-dnk-nor
+**Date:** 2026-04-12
+**Touched:** NLD-1830-2025, DNK-1800-1864, NOR-1800-2025, NLD-1800-1830
+**Source:** cshapes-2.0, cow-state-system-v2024, biger-1995 (existing)
+**Kind:** ingest
+
+Autonomous iteration 11. Creates 3 more European polity pages:
+
+- **NLD-1830-2025**: Rump Netherlands after Belgian secession. Closes
+  successor gap on NLD-1800-1830 (TODO comment removed). Flags
+  cow_code=NA (should be 210).
+- **DNK-1800-1864**: Denmark with Schleswig-Holstein. Critical
+  connector to the German chain — 1864 Second Schleswig War is
+  the split event (Biger: "Denmark lost the whole of Schleswig-
+  Holstein representing 40% of its territory"). Flags 1814 Norway
+  loss as major untracked mid-row event.
+- **NOR-1800-2025**: Norway continuous row. 1814 Treaty of Kiel
+  (Danish → Swedish rule) and 1905 independence both within the
+  row — neither triggers a WHEP split because metropolitan borders
+  unchanged.
+
+Wiki now has 21 polity pages covering 10 European states.
+
+---
+
 ## autonomous-10-prt-bel-che
 **Date:** 2026-04-12
 **Touched:** PRT-1800-2025, BEL-1831-2025, CHE-1800-2025

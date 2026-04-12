@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 18 |
+| Polity pages | 21 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -44,6 +44,18 @@ lint fails if the index is stale.
   row. Metropolitan borders unchanged since 1815. Colonial losses
   (Latin America 1810s–20s, Cuba/Philippines 1898) tracked as
   separate rows.
+- [Denmark (with Schleswig-Holstein)](polities/dnk-1800-1864.md) —
+  `DNK-1800-1864`, draft, 3 open questions. Pre-1864 Denmark
+  including Schleswig-Holstein (~57K km²). 1864 Second Schleswig
+  War splits to DNK-1864-1920. Connects to German chain.
+- [Norway](polities/nor-1800-2025.md) —
+  `NOR-1800-2025`, draft, 4 open questions. 226-year continuous
+  row. 1814 Treaty of Kiel (Danish→Swedish) and 1905
+  independence both within the row.
+- [Netherlands](polities/nld-1830-2025.md) —
+  `NLD-1830-2025`, draft, 2 open questions. Rump Netherlands
+  after 1830 Belgian secession. ~41K km². Successor of
+  NLD-1800-1830.
 - [Switzerland](polities/che-1800-2025.md) —
   `CHE-1800-2025`, draft, 2 open questions. 226-year continuous
   row. Borders unchanged since 1815. Perpetual neutrality.
