@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 32 |
+| Polity pages | 35 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -55,6 +55,9 @@ lint fails if the index is stale.
   row. Metropolitan borders unchanged since 1815. Colonial losses
   (Latin America 1810s–20s, Cuba/Philippines 1898) tracked as
   separate rows.
+- [Denmark](polities/dnk-1920-2025.md) —
+  `DNK-1920-2025`, draft, 1 open question. Modern Denmark from
+  1920 Schleswig plebiscite. Chain complete: 1800→2025.
 - [Denmark (to 1920)](polities/dnk-1864-1920.md) —
   `DNK-1864-1920`, draft, 2 open questions. Post-Schleswig War
   Denmark (~38K km²). 1920 Northern Schleswig plebiscite.
@@ -124,6 +127,13 @@ lint fails if the index is stale.
 - [Germany (1919-1920)](polities/deu-1919-1920.md) —
   `DEU-1919-1920`, draft, 1 open question. Post-Versailles
   transitional row. ~65K km² lost.
+- [Papal States](polities/pap-1800-1870.md) —
+  `PAP-1800-1870`, draft, 1 open question. Central Italian
+  state, 71 years. Rome captured 20 Sept 1870. Italian
+  predecessor.
+- [Germany (1920-1938)](polities/deu-1920-1938.md) —
+  `DEU-1920-1938`, draft, 1 open question. Weimar Republic +
+  early Nazi period. Ends at 1938 Anschluss.
 - [Kingdom of Sardinia](polities/sar-1800-1860.md) —
   `SAR-1800-1860`, draft, 3 open questions. Legal continuator
   of Italian unification. Nice/Savoy ceded to France 1860.
