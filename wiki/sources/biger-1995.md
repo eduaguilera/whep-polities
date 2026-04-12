@@ -1003,6 +1003,91 @@ population 1,185,000,000 [1994]. Capital: Beijing.
   Nerchinsk (27 August 1689) created the first boundary between
   the Russian and Manchu empires" (p.166).
 
+### colombia
+*Colombian boundary history (pp.169–175).*
+
+Colombia: area 439,733 sq mi [1,138,908 sq km]; population
+34,900,000 [1994]. Capital: Bogotá. Bounded by Panama (140 mi;
+225 km), Venezuela (1,274 mi; 2,050 km), Brazil (1,022 mi;
+1,644 km), Peru (1,802 mi; 2,900 km), Ecuador (367 mi; 590 km).
+
+- "On 20 July 1810 Colombia declared its independence from Spain,
+  becoming Great Colombia" (p.171).
+- "In 1830 Great Colombia split up into the states of Venezuela,
+  Ecuador and the republic of Great Colombia." (p.171)
+- Panama proclaimed independence 3 November 1903 (p.172).
+- "Continuing conflict between the Liberal and Conservative
+  parties… an 'alternating governments' agreement, restored in
+  1958." (p.169)
+
+### croatia
+*Croatian boundary history (pp.178–181).*
+
+Croatia (Hrvatska): area 21,829 sq mi [56,538 sq km]; population
+4,850,000 [1994]. Capital: Zagreb.
+
+- "In 1102 Croatia became part of the kingdom of Hungary by a
+  personal union, but retained its autonomy under its own Ban
+  (ruler)." (p.178)
+- "1991 Croatia proclaimed its complete independence and seceded
+  from Yugoslavia." (p.179)
+- "The Serbs reacted by force, starting a war which led the major
+  powers to recognize independent Croatia. In 1992, the Coast of
+  Bosnia-Herzegovina became involved in a civil war between Croats,
+  Serbs and Bosnian Muslims." (p.179)
+- Croatia–Slovenia boundary: 283 miles (455 km). "Until 1991 it
+  was the boundary between two federal republics of the former
+  Yugoslavia and after the dissolution of Yugoslavia it was
+  recognized as an international boundary." (p.181)
+
+### czech-republic
+*Czech Republic boundary history (pp.184–188).*
+
+Czech Republic: area 30,502 sq mi [78,970 sq km]; population
+10,426,000 [1994]. Capital: Prague. Landlocked.
+
+- "The area of today's Czech Republic (Bohemia) lost its
+  independence in 1620 and only regained it in 1918." (p.186)
+- "The separation of the Czech Republic and Slovakia on 1 January
+  1993 left the Czech Republic with the western part of the former
+  Czechoslovakia." (p.184)
+- Bounded by Poland (382 mi; 615 km), Slovakia (122 mi; 197 km),
+  Austria (285 mi; 456 km), Germany (507 mi; 815 km).
+- Czech Republic–Germany boundary: 507 miles (815 km). Boundary
+  "dates to the establishment of the new map of Europe after
+  World War I" (p.186). "present boundary was traced to the line
+  that existed on 3 August 1914" (p.186).
+
+### denmark
+*Danish boundary history (pp.189–190).*
+
+Denmark (Danmark): area 16,633 sq mi [43,079 sq km]; population
+5,200,000 [1994]. Capital: Copenhagen. "has only one land boundary,
+with Germany (42.5 miles; 68 km.)" (p.189).
+
+- "In 1864 Denmark lost the whole of Schleswig-Holstein
+  (representing 40% of its territory) to Prussia." (p.189)
+- "After World War I only the Danish-populated zones of northern
+  Schleswig reverted to Denmark after a referendum; Southern
+  Schleswig joined Germany." (p.189)
+- Denmark–Germany boundary: 42.5 miles (68 km). "According to the
+  Peace Treaty of Versailles, signed on 28 June 1919, Holstein was
+  retained by Germany, while Schleswig was divided into two zones
+  whose future status were to be decided by plebiscite." (p.190)
+
+### ecuador
+*Ecuadorian boundary history (pp.195–196).*
+
+Ecuador: area 109,483 sq mi [283,451 sq km]; population
+11,000,000 [1994]. Capital: Quito. Bounded by Colombia (367 mi;
+590 km), Peru (883 mi; 1,420 km), and the Pacific Ocean.
+
+- "In 1830 it seceded and became the republic of Ecuador." (p.195)
+  — seceded from Gran Colombia.
+- "Since then the Ecuadorians have suffered from a series of
+  dictatorships, military interventions, political turmoil and
+  limited democracy during most of the past century." (p.195)
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
