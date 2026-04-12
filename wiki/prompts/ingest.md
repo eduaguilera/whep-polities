@@ -9,6 +9,13 @@ You are maintaining the WHEP polities wiki. Read `wiki/README.md` first
 for the schema, rules, and the **coverage goal** (complete
 spatiotemporal coverage — every km², every year, no gaps).
 
+**The wiki is the primary source of truth.** It is built on cited
+academic sources. The CSV (`data/final/polities_database.csv`) must
+conform to the wiki's findings, not the other way around. When your
+sourced research contradicts the CSV, file a `proposal`-kind log entry
+recommending the CSV be updated. Do not adapt the wiki to match CSV
+errors.
+
 **Markdown dual-compatibility rule.** The wiki renders in both GitHub
 and Obsidian. Key constraints:
 - Never use `<a id="...">` HTML anchors — Obsidian ignores them.

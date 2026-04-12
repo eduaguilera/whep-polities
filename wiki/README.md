@@ -65,6 +65,19 @@ Ingest implication: CShapes, Euratlas, Cliopatria, and historical atlases
 polity. COW, GW, Polity V, V-Dem (state-system-membership sources) can
 inform regime/status notes but **must not** drive start or end years.
 
+## Sister Wiki — WHEP Project Wiki
+
+This polities wiki is one of two LLM wikis in the WHEP project:
+
+- **This wiki** (`~/whep-polities/wiki/`) — Territorial decisions, boundary evidence, political entity chains
+- **WHEP project wiki** (`~/whep-wiki/wiki/`) — Full project scope: environmental impacts, trade, planetary boundaries, methods, datasets, literature (37+ ingested papers)
+
+For scientific context on why these territorial decisions matter:
+- `~/whep-wiki/wiki/concept-trade-displacement.md` — Why territorial accuracy matters for trade
+- `~/whep-wiki/wiki/project-wp3.md` — How trade reconstruction uses polities
+- `~/whep-wiki/wiki/data-whep-polities.md` — Technical overview of this database from the project perspective
+- `~/whep-wiki/wiki/topic-polities-wiki-bridge.md` — Full bridge reference between both wikis
+
 ## Layers
 
 1. **Raw sources** — `wiki/sources/*.md`, one per external reference
@@ -240,13 +253,17 @@ Prompts for each workflow live in `wiki/prompts/`:
    source slug, and a one-line rationale.
 5. **Never edit `data/final/polities_database.csv` from a wiki workflow.**
    The wiki proposes changes in `log.md`; humans apply them.
-6. **The CSV is evidence, not authority.** Nothing in the existing WHEP
-   state — the CSV, the `docs/` tree, the R pipeline, prior log entries,
-   even this wiki's own polity pages — should be treated as correct by
+6. **The wiki is the primary source of truth; the CSV must conform to
+   it.** This wiki is built on cited academic sources (Biger, CShapes,
+   COW, historical atlases). The CSV in `data/final/polities_database.csv`
+   was built by automated processes and contains known errors. When the
+   wiki's sourced findings contradict the CSV, the CSV is wrong and
+   should be updated — not the other way around. The wiki proposes
+   changes via `proposal`-kind log entries; humans apply them to the CSV.
+   Nothing in the existing WHEP state — the CSV, the `docs/` tree, the
+   R pipeline, prior log entries — should be treated as correct by
    default. Every artifact was produced by fallible humans and automated
-   processes, and may contain errors, mislabellings, orphaned rows,
-   stale decisions, or unreviewed oversights. See *Critical stance*
-   below. When in doubt, audit first and cite second.
+   processes. See *Critical stance* below.
 7. **Do not attribute intent to state.** Never write prose that presumes
    a WHEP state — a row, a split, a polygon source, a column value — was
    the result of a conscious design choice unless you can point at

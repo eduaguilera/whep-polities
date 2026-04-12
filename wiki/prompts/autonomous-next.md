@@ -14,7 +14,14 @@ them, it *chooses* among them and then delegates.
 You are maintaining the WHEP polities wiki in autonomous mode. Read
 `wiki/README.md` first for the schema, rules, the **coverage goal**
 (complete spatiotemporal coverage — every km², every year, no gaps),
-and the **dual-renderer rule** (GitHub + Obsidian). Key link rules:
+and the **dual-renderer rule** (GitHub + Obsidian).
+
+**The wiki is the primary source of truth.** It is built on cited
+academic sources and drives corrections to the CSV, not the reverse.
+When sourced findings contradict the CSV, file `proposal`-kind log
+entries. The CSV conforms to the wiki, not the wiki to the CSV.
+
+Key link rules:
 no `<a id>` HTML anchors, no reference-style link definitions (use
 inline `[text](path.md#anchor)` only with standard `../` relative
 paths), heading text = target slug. Then execute the four-phase

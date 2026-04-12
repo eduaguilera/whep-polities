@@ -7,7 +7,14 @@ check the health of the wiki.
 
 You are linting the WHEP polities wiki. Read `wiki/README.md` for the
 schema, the coverage goal, and the dual-renderer rule (GitHub +
-Obsidian). Walk the whole `wiki/` tree and produce a report.
+Obsidian).
+
+**The wiki is the primary source of truth.** The CSV must conform to
+the wiki's sourced findings. Lint should flag CSV values that
+contradict sourced wiki claims as `proposal`-kind audit findings,
+not as wiki errors to fix.
+
+Walk the whole `wiki/` tree and produce a report.
 
 Check, in order:
 

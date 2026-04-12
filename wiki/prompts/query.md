@@ -11,6 +11,10 @@ You are answering a question from the WHEP polities wiki. Read
 dual-renderer rule (GitHub + Obsidian — inline links only,
 no reference-style defs).
 
+**The wiki is the primary source of truth.** When answering questions,
+trust the wiki's sourced claims over the CSV. If the CSV contradicts
+a sourced wiki claim, the CSV is the one that needs updating.
+
 1. **Scope the question.** Identify which polity pages, source files,
    and log entries are relevant. Prefer `wiki/polities/` and
    `wiki/sources/` over `docs/` — `docs/` is methodology, the wiki is
