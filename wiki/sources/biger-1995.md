@@ -2778,6 +2778,173 @@ Zambia: area 290,586 sq mi [752,327 sq km]; population
 - "The central part of Africa remained free of European
   occupation until the 1880s." (p.517)
 
+### benin
+*Benin boundary history (pp.73–76).*
+
+Benin (formerly Dahomey): area 43,473 sq mi [112,595 sq km];
+population 5,160,000 [1994]. Capital: Porto-Novo. Bounded by
+Togo (400 mi; 644 km), Niger (165 mi; 266 km), Burkina Faso
+(190 mi; 306 km), Nigeria (480 mi; 773 km).
+
+- "The Beninese were ruled by the French from the beginning of
+  the twentieth century, at which time the country was called
+  Dahomey after the great kingdom that controlled the area in
+  precolonial times." (p.73)
+- "Dahomey gained independence on 1 August 1960, followed by
+  Upper Volta four days later, on 5 August 1960." (p.74)
+- "The colony of Benin was created from the Etablissements
+  dues Golfe de Guinee (the name given to the French
+  protectorates along the Bight of Benin in 1883), and was
+  renamed Dahomey one year later. A French decree of March
+  1901 specified a boundary." (p.74)
+
+### burkina-faso
+*Burkina Faso boundary history (pp.73–75, 87–91).*
+
+Burkina Faso (formerly Upper Volta) is referenced in the Benin
+boundary sections and in several boundary entries with its
+neighbors.
+
+- "In 1919 a decree was passed establishing the colony of
+  Upper Volta by detaching a number of regions from Haut
+  Senegal and Niger. On 5 September 1932 Upper Volta was
+  dissolved and divided among the surrounding colonies.
+  However, on 4 September 1947 it was reconstituted and
+  became a French territory of the French Union." (p.74)
+- "Dahomey gained independence on 1 August 1960, followed
+  by Upper Volta four days later, on 5 August 1960." (p.74)
+- "On 4 September 1947 Upper Volta was reconstituted along
+  the former colony boundaries in accordance with the limits
+  set in the 1938 statute, thus establishing the present
+  tripoint with Burkina Faso." (p.74)
+
+### equatorial-guinea
+*Equatorial Guinea boundary history (pp.137–138).*
+
+Equatorial Guinea: bounded by Cameroon (118 mi; 189 km) and
+Gabon.
+
+- "The French established themselves on the coast of central
+  Africa in the late nineteenth century and Cameroon was
+  established as a German protectorate (Kamerun) on 12 July
+  1884. France and Germany first established a boundary
+  between their spheres of influence in central Africa on
+  24 December 1885." (p.137)
+- "The Franco-Spanish Convention of 27 June 1900, German
+  Kamerun became the French mandate of Cameroon following
+  World War I. It achieved independence on 1 January 1960.
+  Spanish Guinea became the independent republic of
+  Equatorial Guinea on 12 October 1968." (p.138)
+- "The boundary was formulated in the Franco-German
+  agreements of 1885 and 1894 that outlined the European
+  powers' spheres of influence in Africa." (p.138)
+
+### guinea
+*Guinea boundary history (pp.253–255).*
+
+Guinea (area: 94,926 sq mi [245,763 sq km]; population
+7,700,000 [1994]). Capital: Conakry. Bounded by Guinea-Bissau
+(240 mi; 386 km), Senegal (205 mi; 330 km), Mali (533 mi;
+858 km), Ivory Coast (379 mi; 610 km), Liberia (350 mi;
+563 km), Sierra Leone (405 mi; 652 km).
+
+- "The Guineans gained their independence from the French
+  in 1958." (p.253)
+- "France established themselves in Guinea in 1849 when
+  they proclaimed the Boke region a French protectorate
+  and then began its expansion eastward." (p.254)
+- "Guinea became independent on 2 October 1958. Portuguese
+  Guinea became independent as Guinea-Bissau on
+  24 September 1974." (p.255)
+- "The shape of Ivory Coast as a French colony was generally
+  fixed by the French decree of 17 October 1899, breaking
+  up the former French Sudan." (p.327)
+
+### ivory-coast
+*Ivory Coast (Cote d'Ivoire) boundary history (pp.326–328).*
+
+Ivory Coast: area 124,518 sq mi [322,377 sq km]; population
+13,500,000 [1994]. Capital: Abidjan. Bounded by Mali (331 mi),
+Burkina Faso (360 mi; 584 km), Ghana (415 mi; 668 km), Liberia
+(445 mi; 716 km), Guinea (379 mi; 610 km).
+
+- "The Cote d'Ivoire gained independence from the French in
+  August 1960." (p.326)
+- "During the decolonization period, which started after the
+  end of World War II, the Baule were the most active ethnic
+  group in politics. A Baule chief named Felix Houphouet-Boigny
+  founded in 1946 the PDCI." (p.326)
+- "After independence, which was gained peacefully,
+  Houphouet-Boigny became president, with the PDCI as the
+  only party." (p.326)
+- "Cote d'Ivoire and Mali were both units within French West
+  Africa, which was established in 1895." (p.328)
+
+### sudan
+*Sudan boundary history (pp.477--479).*
+
+Sudan (As-Sudan): area 967,500 sq mi [2,505,813 sq km];
+population 29,250,000 [1994]. Capital: Khartoum. Bounded by
+Egypt (791 mi; 1,273 km), Eritrea (345 mi; 555 km), Ethiopia
+(1,380 mi; 2,221 km), Kenya (144 mi; 232 km), Uganda (270 mi;
+435 km), Zaire (305 mi; 490 km), Central African Republic
+(724 mi; 1,165 km), Chad (845 mi; 1,360 km), Libya (238 mi;
+383 km).
+
+- "Since the late nineteenth century Sudan was nominally
+  an Anglo-Egyptian territory, but the British character
+  of the regime became evident when in 1924 all Egyptians
+  were evacuated from Sudan. The British ruled the Sudanese
+  indirectly through sheiks and chiefs." (p.477)
+- "Sudan became independent in 1956. Since then Sudanese
+  political life has been very unstable." (p.477)
+- "The war between the south and the north had started
+  even before independence, as a result of the political
+  frustrations of the southern population." (p.477)
+- The Sudan--Uganda boundary is 270 miles (435 km) long
+  and has tripoints with Kenya and Zaire (p.478). On 1
+  January 1956 Sudan became independent as the Republic
+  of Sudan (p.479).
+
+### uganda
+*Uganda boundary history (pp.489--490, TANZANIA--UGANDA).*
+
+Uganda is discussed in the TANZANIA--UGANDA boundary section
+(pp.489--490) and in the SUDAN--UGANDA section (pp.478--479).
+
+- "The Protectorate of Uganda, which largely consisted of the
+  Kingdom of Burundi and other client kingdoms and attached
+  territories, dates from 1894. Britain was anxious to protect
+  its trade through the vital Suez Canal and future markets in
+  Africa." (p.490)
+- "In 1894 the British government was persuaded to make Uganda
+  a protectorate. Uganda became independent on 8 September
+  1967." (p.490)
+- "In 1886, the British and German spheres of influence in
+  East Africa lay respectively to the north and south of a
+  line which ran from Vanga, on the coast of the Indian Ocean,
+  to the eastern shore of Lake Victoria." (p.490)
+
+### burundi
+*Burundi boundary history (pp.489--490, TANZANIA--UGANDA).*
+
+Burundi is referenced in the TANZANIA--UGANDA section (p.490)
+in the context of the East African colonial partition. Burundi
+does not have its own standalone entry in Biger.
+
+- "The Protectorate of Uganda, which largely consisted of the
+  Kingdom of Burundi and other client kingdoms and attached
+  territories, dates from 1894." (p.490) Note: Biger here
+  appears to conflate the broader East African protectorate
+  system; Burundi was part of German East Africa, later the
+  Ruanda-Urundi mandate under Belgium.
+- "After World War I, German East Africa, consisting of
+  Rwanda-Urundi and Tanganyika, was administered under League
+  of Nations mandates with Belgium responsible for Ruanda-Urundi
+  (later to become the two separate independent states of Rwanda
+  and Burundi) and Britain administering Tanganyika until its
+  independence in 1961." (p.490)
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
