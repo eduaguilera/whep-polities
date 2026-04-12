@@ -28,7 +28,7 @@ polity page narrative.
 #### 1834
 *Zollverein customs union established.*
 
-The Prussian-led customs union that preceded the German Empire. Foundational to the "Germany/Zollverein" CSV framing (see [log proposal-deu-ger-chain-audit]).
+The Prussian-led customs union that preceded the German Empire. Foundational to the "Germany/Zollverein" CSV framing (see [log proposal-deu-ger-chain-audit](log.md#proposal-deu-ger-chain-audit)).
 
 #### 1864
 *Second Schleswig War.*
@@ -38,7 +38,7 @@ The Prussian-led customs union that preceded the German Empire. Foundational to 
 #### 1866
 *Austro-Prussian War and German Confederation dissolution.*
 
-"The Austro-Prussian War in 1866." The war ended with the Peace of Prague (23 August 1866) — the German Confederation was dissolved and the northern German states were reorganized under Prussian leadership. Real territorial event: Prussia annexed Hanover, Hesse-Kassel, Nassau, Frankfurt, and Schleswig-Holstein. Counterparted in [biger-1995 §austria] (p.50), which treats 1866 as "the real territorial-political turning point".
+"The Austro-Prussian War in 1866." The war ended with the Peace of Prague (23 August 1866) — the German Confederation was dissolved and the northern German states were reorganized under Prussian leadership. Real territorial event: Prussia annexed Hanover, Hesse-Kassel, Nassau, Frankfurt, and Schleswig-Holstein. Counterparted in [biger-1995 §austria](biger-1995.md#austria) (p.50), which treats 1866 as "the real territorial-political turning point".
 
 #### 1867
 *North German Confederation founded.*
@@ -63,7 +63,7 @@ The Prussian-led customs union that preceded the German Empire. Foundational to 
 #### 1871-alsace-lorraine
 *Annexation of Alsace-Lorraine.*
 
-The Treaty of Frankfurt (10 May 1871) transferred Alsace and most of Lorraine from France to the new German Empire. The territory was organized as the "Imperial Territory of Alsace-Lorraine" under direct imperial administration rather than as a constituent state. ~14,500 km2 transferred. Load-bearing for WHEP: the French side ([fra-1800-1919], not yet a polity page) should record the matching territorial loss.
+The Treaty of Frankfurt (10 May 1871) transferred Alsace and most of Lorraine from France to the new German Empire. The territory was organized as the "Imperial Territory of Alsace-Lorraine" under direct imperial administration rather than as a constituent state. ~14,500 km2 transferred. Load-bearing for WHEP: the French side ([fra-1800-1919](fra-1800-1919.md), not yet a polity page) should record the matching territorial loss.
 
 #### 1884-1885
 *Berlin Conference and colonial acquisitions.*
@@ -113,9 +113,3 @@ The Treaty of Versailles was signed on 28 June 1919 and took effect on 10 Januar
    in 1866 (annexation of Hanover etc.) or the 1919 losses
    (Alsace-Lorraine etc.). Flagged on the polity page as open
    questions.
-
-<!-- Reference-style link definitions. Sorted. -->
-
-[biger-1995 §austria]: biger-1995.md#austria
-[fra-1800-1919]: ../polities/fra-1800-1919.md
-[log proposal-deu-ger-chain-audit]: ../log.md#proposal-deu-ger-chain-audit

@@ -48,7 +48,7 @@ Per this notice:
 ## Why it was ingested
 
 CShapes 2.0 cites Biger 1995 as a key source for non-COW border
-changes in the 19th/20th century (see `[cshapes-2.0 §coding-changes]`).
+changes in the 19th/20th century (see [cshapes-2.0 §coding-changes](cshapes-2.0.md#coding-changes)).
 Having Biger as a first-class wiki source lets polity pages cite
 him directly rather than routing through CShapes. It is also the
 most authoritative academic reference work in the wiki's current
@@ -190,7 +190,7 @@ year-block and does not trigger a polity split.
 Biger does not give an exact year for this transition in the
 LUXEMBOURG summary entry, but "later in the nineteenth century"
 plus context matches the 1890 Nassau-Weilburg succession cited in
-`[wikipedia-luxembourg-2026-04-11 §1890]`.
+[wikipedia-luxembourg-2026-04-11 §1890](wikipedia-luxembourg-2026-04-11.md#1890).
 
 **Territorial stability since 1867 — directly corroborated**:
 
@@ -248,7 +248,7 @@ quoted in `§bosnia` above in a different context).
   splitting of the Habsburg family estate among the Spanish and
   German branches in 1555." (p.47). Biger does not give the
   exact 11 August 1804 proclamation date of the Austrian Empire;
-  use `[wikipedia-austria-hungary-2026-04-11 §1804-08-11]` for
+  use [wikipedia-austria-hungary-2026-04-11 §1804-08-11](wikipedia-austria-hungary-2026-04-11.md#1804-08-11) for
   that.
 
 **Scale of the nineteenth-century empire** (p.48):
@@ -376,7 +376,7 @@ Bosnia-Herzegovina was put under Austro-Hungarian administration"
   territorial change — Biger explicitly treats it as such.
 - The 1908 Bosnia annexation is a de jure sovereignty change
   without a de facto territorial change — Bosnia had been
-  Austro-Hungarian-administered since 1878 (`[§bosnia]`). Biger
+  Austro-Hungarian-administered since 1878 ([§bosnia](#bosnia)). Biger
   says Austria "occupied" in 1878 and does not separately
   highlight 1908; the 1908 date is Wikipedia's.
 - The real end date of the Austrian Empire / Austria-Hungary
@@ -461,7 +461,7 @@ BOSNIA–SERBIA subsection (p.87).
 treats 1878–1918 as a single continuous "period of
 Austro-Hungarian rule" and does *not* distinguish the 1878 de
 facto occupation from the **5 October 1908 formal annexation**.
-Other wiki sources ([wikipedia-ottoman-2026-04-11 §1908]) do
+Other wiki sources ([wikipedia-ottoman-2026-04-11 §1908](wikipedia-ottoman-2026-04-11.md#1908)) do
 make this distinction explicitly. Polity pages that need the
 1908 date should cite Wikipedia; Biger corroborates only the
 outer bounds of the Austro-Hungarian period (1878 start, 1918
@@ -532,7 +532,7 @@ Libya loss was *in progress* throughout 1911 and *formalized* in
 1912. Under the WHEP polity-definition rule a substantial
 territorial change (Libya was ~1.76 million km²) should trigger
 a split, which is exactly the subject of
-[oq-libya-mid-row-change] on the `ott-1908-1912` polity page.
+[oq-libya-mid-row-change](ott-1908-1912.md#oq-libya-mid-row-change) on the `ott-1908-1912` polity page.
 Biger's two-phase framing (1911 invasion → 1912 treaty) is
 consistent with the view that the change straddles the
 1908–1912 row boundary and should probably have been split, but
@@ -573,11 +573,3 @@ All rights reserved. The PDF is not in the WHEP git repository and
 is not redistributed; its SHA-256 is recorded in frontmatter for
 future verification. Fair-use short quotations (this file) are
 permitted under standard academic-quotation norms.
-
-<!-- Reference-style link definitions. Sorted. -->
-
-[cshapes-2.0 §coding-changes]: cshapes-2.0.md#coding-changes
-[oq-libya-mid-row-change]: ../polities/ott-1908-1912.md#oq-libya-mid-row-change
-[oq-tunisia-boundary]: ../polities/ott-1886-1908.md#oq-tunisia-boundary
-[wikipedia-luxembourg-2026-04-11 §1890]: wikipedia-luxembourg-2026-04-11.md#1890
-[wikipedia-ottoman-2026-04-11 §1908]: wikipedia-ottoman-2026-04-11.md#1908

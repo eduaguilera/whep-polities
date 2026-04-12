@@ -23,7 +23,7 @@ system_sha256: 1186f0c30fe549967bb5d33d0084ca47d6ab8215e298ec5ad83d34b6dbb04ea8
 
 Because WHEP's polity definition is territorial-economic, not
 state-system-membership
-[log decision-whep-polity-definition], COW is not WHEP's
+[log decision-whep-polity-definition](log.md#decision-whep-polity-definition), COW is not WHEP's
 primary source for start/end dates. But COW *is* the definition that
 CShapes 2.0 uses (`useGW=FALSE`), so every claim about CShapes's
 dating implicitly cites COW. Having COW as a first-class source lets
@@ -77,7 +77,7 @@ definition rule.
 The codebook itself does not restate the membership criteria (it is
 a schema/version reference, not a conceptual overview). The criteria
 are stated in the founding papers and re-stated in
-[cshapes-2.0 §coding-states]:
+[cshapes-2.0 §coding-states](cshapes-2.0.md#coding-states):
 
 - Before 1920: "diplomatic recognition by Britain or France" and a
   population above 500,000.
@@ -109,7 +109,7 @@ Any of these can be cited as [cow-state-system-v2024 §key-dates]:
 - **Canada (CAN, ccode=20)**: `1920-01-10 → 2024-12-31`. Single
   tenure row starting 1920-01-10, which is the acid-test date the
   CShapes paper names for distinguishing COW (1920) from GW (1867)
-  [cshapes-2.0 §coding-states].
+  [cshapes-2.0 §coding-states](cshapes-2.0.md#coding-states).
 - **Cuba (CUB, ccode=40)**: `1902-05-20 → 1906-09-25` and
   `1909-01-23 → 2024-12-31`. The 1906–1909 gap is the Second U.S.
   Occupation.
@@ -146,12 +146,12 @@ important for WHEP:
    Luxembourg 1839–1919, most colonial dependencies, Tibet, the
    Orange Free State, the Papal States post-1870, pre-1822 Brazil,
    and many others. Under the WHEP polity definition
-   [log decision-whep-polity-definition] this is not a
+   [log decision-whep-polity-definition](log.md#decision-whep-polity-definition) this is not a
    defect; it simply means COW cannot justify or refute a WHEP
    start/end year on its own.
 2. **Changing vintages.** Start/end dates can and do change between
    COW versions (see §version-history). Any page citing
-   [cow-state-system-v2024] is citing v2024 specifically; a later
+   [cow-state-system-v2024](cow-state-system-v2024.md) is citing v2024 specifically; a later
    vintage may supersede it and will need its own source file, not
    an edit of this one.
 3. **Day precision is uneven.** Many rows use `1` for `stmonth` and
@@ -174,10 +174,3 @@ as follows..." (codebook p.1). The two CSVs are committed to the
 repo at `wiki/sources/data/cow-v2024/` so the wiki is self-contained;
 the codebook PDF is under `wiki/sources/pdfs/` (gitignored,
 re-fetchable from the URL above).
-
-
-<!-- Reference-style link definitions. Sorted. -->
-
-[cow-state-system-v2024]: cow-state-system-v2024.md
-[cshapes-2.0 §coding-states]: cshapes-2.0.md#coding-states
-[log decision-whep-polity-definition]: ../log.md#decision-whep-polity-definition

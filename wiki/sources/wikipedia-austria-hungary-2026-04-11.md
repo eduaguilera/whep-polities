@@ -131,8 +131,3 @@ Officially settled Hungary's status as successor state. Hungary lost approximate
    German-Austria" (12 November 1918 — 21 October 1919), which
    is the entity that probably corresponds to WHEP's
    `AUT-1918-1919` row.
-
-<!-- Reference-style link definitions. Sorted. -->
-
-[biger-1995 §austria]: biger-1995.md#austria
-[biger-1995 §bosnia]: biger-1995.md#bosnia

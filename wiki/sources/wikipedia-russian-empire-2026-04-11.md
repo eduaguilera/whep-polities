@@ -20,7 +20,7 @@ To back polity pages for the F228 chain representing the Russian
 Empire / RSFSR / USSR / Russia entity. The current CSV has five
 rows mislabeled "USSR" despite predating 1922 — this source file
 provides the dates needed to relabel them correctly and to file
-[log proposal-f228-ussr-anachronism]. Also provides the Russian
+[log proposal-f228-ussr-anachronism](log.md#proposal-f228-ussr-anachronism). Also provides the Russian
 Empire territorial event dates needed for polity pages covering
 1800–1917.
 
@@ -118,7 +118,7 @@ The USSR was not created until **30 December 1922**, when the Treaty on the Crea
 - October 1917 - 30 December 1922: **Russian SFSR** (RSFSR), as the dominant but not sole Soviet republic during the Civil War period
 - 30 December 1922 onward: **USSR**
 
-**This is the canonical citation target for [log proposal-f228-ussr-anachronism].** Any WHEP row labeled "USSR" with a start or end year before 1922 is anachronistic relative to this date.
+**This is the canonical citation target for [log proposal-f228-ussr-anachronism](log.md#proposal-f228-ussr-anachronism).** Any WHEP row labeled "USSR" with a start or end year before 1922 is anachronistic relative to this date.
 
 ## Known limitations
 
@@ -127,7 +127,7 @@ The USSR was not created until **30 December 1922**, when the Treaty on the Crea
    stronger. The dates here are from the Wikipedia *Russian
    Empire* main article (one article, one access) and should be
    cross-checked against Biger's RUSSIA entry in a later
-   ingest — see [oq-biger-russia] on the f228-1856-1905 polity
+   ingest — see [oq-biger-russia](f228-1856-1905.md#oq-biger-russia) on the f228-1856-1905 polity
    page.
 2. **Territorial gains from Central Asian conquests are not
    quantified here.** The article gives years for Tashkent,
@@ -151,8 +151,3 @@ The USSR was not created until **30 December 1922**, when the Treaty on the Crea
    since Russia initiated the sale. Under WHEP's
    territorial-economic definition it is a polity-territory
    reduction either way.
-
-<!-- Reference-style link definitions. Sorted. -->
-
-[log proposal-f228-ussr-anachronism]: ../log.md#proposal-f228-ussr-anachronism
-[oq-biger-russia]: ../polities/f228-1856-1905.md#oq-biger-russia

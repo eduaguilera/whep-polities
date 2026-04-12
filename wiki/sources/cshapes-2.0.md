@@ -28,7 +28,7 @@ is gitignored; verify with `sha256sum` against `pdf_sha256`.
 
 CShapes 2.0 is the primary polygon source for ~480 of the ~1,220 rows
 in `data/final/polities_database.csv`. Without a first-class source
-file, every polity page citing CShapes is a [database] stub. This
+file, every polity page citing CShapes is a [database](../../data/final/polities_database.csv) stub. This
 ingest lets polity pages cite specific paper sections and inherit the
 paper's own caveats.
 
@@ -201,7 +201,7 @@ is the **COW-based** distribution. Two pieces of evidence:
 1. The `cshapes` layer has `cowcode` but no `gwcode` column.
 2. Canada (`cowcode=20`) is coded as `colony` from 1886-01-01 to
    1920-01-09 and `independent` from 1920-01-10, matching COW's
-   explicit 1920 independence date — see the [coding-states] section
+   explicit 1920 independence date — see the [coding-states](#coding-states) section
    above. Under GW the date would be 1867.
 
 See `wiki/log.md` 2026-04-11 `decision-cshapes-is-cow-based`. Every
@@ -248,9 +248,3 @@ update `REPRODUCIBILITY.md` to point at it. Tracked in
 - Dataset: "CShapes 2.0 is freely available for academic and other
   non-commercial purposes" (p.147).
 - The local PDF is not redistributed; see `wiki/sources/pdfs/README.md`.
-
-
-<!-- Reference-style link definitions. Sorted. -->
-
-[coding-states]: #coding-states
-[database]: ../../data/final/polities_database.csv
