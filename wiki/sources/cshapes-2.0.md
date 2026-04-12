@@ -34,8 +34,8 @@ paper's own caveats.
 
 ## What it adds
 
-<a id="scope"></a>
-### §scope — what CShapes covers (p.144 abstract, p.147)
+### scope
+*what CShapes covers (p.144 abstract, p.147).*
 
 - "CShapes 2.0, a GIS dataset that maps the borders of states and
   dependent territories from 1886 through 2019" (p.144).
@@ -53,8 +53,8 @@ paper's own caveats.
   date of each territorial change. Other datasets are coarser:
   Euratlas 100 years, Centennia 0.1 year.
 
-<a id="coding-states"></a>
-### §coding-states — independent-state definition and the COW/GW split (p.147–148)
+### coding-states
+*independent-state definition and the COW/GW split (p.147–148).*
 
 - CShapes codes independence using two different authorities and
   ships **two versions**: "we provide two separate versions CShapes
@@ -77,8 +77,8 @@ paper's own caveats.
   this is an open lint question flagged in `docs/06` as a source of
   column-mismatch bugs.
 
-<a id="coding-dependencies"></a>
-### §coding-dependencies — colonies, protectorates, mandates (p.148)
+### coding-dependencies
+*colonies, protectorates, mandates (p.148).*
 
 - CShapes defines dependent territories as "those units that are
   under the control of an independent state, but that are not
@@ -100,8 +100,8 @@ paper's own caveats.
   (p.148). I.e. post-1993 new-dependency creation is not covered, but
   by construction this window is empty.
 
-<a id="coding-borders"></a>
-### §coding-borders — how polygons are drawn (p.148–150)
+### coding-borders
+*how polygons are drawn (p.148–150).*
 
 - "we code a state's territory primarily based on its internationally
   recognized boundaries" (p.148).
@@ -121,8 +121,8 @@ paper's own caveats.
   citing CShapes for an early date should check whether the dummy
   flag is set; if so, the polygon is provisional, not observed.
 
-<a id="coding-changes"></a>
-### §coding-changes — what counts as a territorial change (p.149–151)
+### coding-changes
+*what counts as a territorial change (p.149–151).*
 
 - Three types of change: (1) creation/dissolution of political units,
   (2) transfers of sovereignty over dependent territories, (3) border
@@ -146,8 +146,8 @@ paper's own caveats.
   Boundaries*) "to address" the Territorial Change Dataset's
   COW-independent-states-only limitation (p.151).
 
-<a id="geocoding"></a>
-### §geocoding — how the maps were drawn (p.151)
+### geocoding
+*how the maps were drawn (p.151).*
 
 - Border changes were coded "in reverse chronological order. In other
   words, we started with the earliest observation in the original

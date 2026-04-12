@@ -6,7 +6,8 @@ Each entry is a dated H2 heading. Newest on top.
 Entry format:
 
 ```markdown
-## YYYY-MM-DD — <slug>
+## <slug>
+**Date:** YYYY-MM-DD
 **Touched:** polity-code-1, polity-code-2
 **Source:** <source-slug or "none">
 **Kind:** ingest | decision | contradiction | proposal | lint
@@ -25,8 +26,8 @@ Kinds:
 
 ---
 
-<a id="autonomous-6-ita-first-ingest"></a>
-## 2026-04-12 — autonomous-6-ita-first-ingest
+## autonomous-6-ita-first-ingest
+**Date:** 2026-04-12
 **Touched:** ITA-1861-1919
 **Source:** wikipedia-italy-2026-04-12 (new), cshapes-2.0, cow-state-system-v2024, biger-1995 §austria (cross-reference)
 **Kind:** ingest
@@ -56,8 +57,8 @@ oq-cow-325-from-1816, oq-notes-na).
 
 ---
 
-<a id="autonomous-5-gbr-first-ingest"></a>
-## 2026-04-12 — autonomous-5-gbr-first-ingest
+## autonomous-5-gbr-first-ingest
+**Date:** 2026-04-12
 **Touched:** GBR-1800-1921
 **Source:** wikipedia-uk-2026-04-12 (new), cshapes-2.0, cow-state-system-v2024
 **Kind:** ingest
@@ -81,8 +82,8 @@ oq-heligoland-1890, oq-notes-na).
 
 ---
 
-<a id="autonomous-4-fra-first-ingest"></a>
-## 2026-04-12 — autonomous-4-fra-first-ingest
+## autonomous-4-fra-first-ingest
+**Date:** 2026-04-12
 **Touched:** FRA-1800-1919
 **Source:** wikipedia-france-2026-04-12 (new), cshapes-2.0, cow-state-system-v2024, docs/03 cross-reference
 **Kind:** ingest
@@ -109,8 +110,8 @@ empire* Wikipedia articles.
 
 ---
 
-<a id="autonomous-3-cow-russia-dates"></a>
-## 2026-04-12 — autonomous-3-cow-russia-dates
+## autonomous-3-cow-russia-dates
+**Date:** 2026-04-12
 **Touched:** F228-1856-1905
 **Source:** cow-state-system-v2024 (statelist2024.csv)
 **Kind:** autonomous
@@ -140,8 +141,8 @@ goes from 5 to 4 unresolved open questions.
 
 ---
 
-<a id="autonomous-2-cow-auh-dates"></a>
-## 2026-04-12 — autonomous-2-cow-auh-dates
+## autonomous-2-cow-auh-dates
+**Date:** 2026-04-12
 **Touched:** AUH-1800-1867
 **Source:** cow-state-system-v2024 (statelist2024.csv)
 **Kind:** autonomous
@@ -174,8 +175,8 @@ onward). Updated the sourced claim and resolved the OQ.
 
 ---
 
-<a id="autonomous-1-bosnia-double-count"></a>
-## 2026-04-12 — autonomous-1-bosnia-double-count
+## autonomous-1-bosnia-double-count
+**Date:** 2026-04-12
 **Touched:** OTT-1886-1908
 **Source:** cshapes-2.0 (ogrinfo on cshapes2_full.gpkg)
 **Kind:** autonomous
@@ -216,8 +217,8 @@ clarification.
 
 ---
 
-<a id="deu-first-ingest"></a>
-## 2026-04-11 — deu-first-ingest
+## deu-first-ingest
+**Date:** 2026-04-11
 **Touched:** DEU-1800-1919
 **Source:** wikipedia-german-empire-2026-04-11 (new), docs/03 cross-reference
 **Kind:** ingest
@@ -251,8 +252,8 @@ source. Biger's 1866 finding from the Austria entry (1866 was
 "the real territorial-political turning point") is
 cross-referenced.
 
-<a id="proposal-deu-ger-chain-audit"></a>
-## 2026-04-11 — proposal-deu-ger-chain-audit
+## proposal-deu-ger-chain-audit
+**Date:** 2026-04-11
 **Touched:** DEU-1800-1919, DEU-1919-1920, DEU-1920-1938, DEU-1938-1945, DEU-1990-2025, GER-1800-2025, (missing) PRU-*
 **Source:** docs/03_ENTRIES_RATIONALE.md, docs/00_OVERVIEW.md, docs/01_METHODOLOGY.md
 **Kind:** proposal
@@ -490,8 +491,8 @@ audits.
 
 ---
 
-<a id="russian-empire-first-ingest"></a>
-## 2026-04-11 — russian-empire-first-ingest
+## russian-empire-first-ingest
+**Date:** 2026-04-11
 **Touched:** F228-1856-1905
 **Source:** wikipedia-russian-empire-2026-04-11 (new), docs/ cross-reference
 **Kind:** ingest
@@ -544,8 +545,8 @@ proposal entry below):
    USSR constituent republics are correctly listed. Counter-example
    to AUH-1908-1918 Finding 1.
 
-<a id="proposal-f228-ussr-anachronism"></a>
-## 2026-04-11 — proposal-f228-ussr-anachronism
+## proposal-f228-ussr-anachronism
+**Date:** 2026-04-11
 **Touched:** F228-1905-1914, F228-1914-1917, F228-1917-1918, F228-1918-1920, F228-1920-1921, F228-1921-1940
 **Source:** wikipedia-russian-empire-2026-04-11 (for dates), docs/03 cross-reference
 **Kind:** proposal
@@ -731,8 +732,8 @@ mislabeled rows.
 
 ---
 
-<a id="auh-first-ingest"></a>
-## 2026-04-11 — auh-first-ingest
+## auh-first-ingest
+**Date:** 2026-04-11
 **Touched:** AUH-1800-1867, AUH-1867-1908, AUH-1908-1918
 **Source:** biger-1995 (existing, new §austria section), wikipedia-austria-hungary-2026-04-11 (new)
 **Kind:** ingest
@@ -818,8 +819,8 @@ numbered — filed in the pages themselves):
   refined to a specific day (1918-10-31, 1918-11-03,
   1919-09-10, or 1920-06-04).
 
-<a id="proposal-auh-chain-audit"></a>
-## 2026-04-11 — proposal-auh-chain-audit
+## proposal-auh-chain-audit
+**Date:** 2026-04-11
 **Touched:** AUH-1800-1867, AUH-1867-1908, AUH-1908-1918, AUT-1918-1919, AUT-1918-2025, F51-1918-1938, F248-1918-1919, POL-1918-1919
 **Source:** biger-1995 §austria, wikipedia-austria-hungary-2026-04-11
 **Kind:** proposal
@@ -1025,8 +1026,8 @@ here so a human review can see them together and decide.
 
 ---
 
-<a id="decision-csv-is-evidence-not-authority"></a>
-## 2026-04-11 — decision-csv-is-evidence-not-authority
+## decision-csv-is-evidence-not-authority
+**Date:** 2026-04-11
 **Touched:** wiki/README.md, wiki/prompts/ingest.md, wiki/prompts/lint.md, wiki/prompts/autonomous-next.md
 **Source:** none (stated by the project maintainer in conversation)
 **Kind:** decision
@@ -1120,8 +1121,8 @@ reads.
 
 ---
 
-<a id="autonomous-next-prompt-added"></a>
-## 2026-04-11 — autonomous-next-prompt-added
+## autonomous-next-prompt-added
+**Date:** 2026-04-11
 **Touched:** wiki/prompts/autonomous-next.md (new), wiki/README.md
 **Source:** none
 **Kind:** decision
@@ -1216,8 +1217,8 @@ Not yet wired to `/loop` — the user will trigger stage 2 manually.
 
 ---
 
-<a id="biger-ottoman-batch-ingest"></a>
-## 2026-04-11 — biger-ottoman-batch-ingest
+## biger-ottoman-batch-ingest
+**Date:** 2026-04-11
 **Touched:** OTT-1800-1886, OTT-1886-1908, OTT-1908-1912; wiki/sources/biger-1995.md
 **Source:** biger-1995 (existing)
 **Kind:** ingest
@@ -1327,8 +1328,8 @@ pages for those successor states.
 
 ---
 
-<a id="biger-1995-luxembourg-ingest"></a>
-## 2026-04-11 — biger-1995-luxembourg-ingest
+## biger-1995-luxembourg-ingest
+**Date:** 2026-04-11
 **Touched:** LUX-1839-2025
 **Source:** biger-1995 (new)
 **Kind:** ingest
@@ -1421,8 +1422,8 @@ page in the wiki at `status: reviewed`.
 
 ---
 
-<a id="github-clickable-links"></a>
-## 2026-04-11 — github-clickable-links
+## github-clickable-links
+**Date:** 2026-04-11
 **Touched:** wiki/README.md, wiki/polities/_template.md, wiki/prompts/lint.md
   (prior), all polity pages, all source files, wiki/log.md, wiki/index.md
 **Source:** none
@@ -1510,8 +1511,8 @@ CSV identifiers, not wiki references).
 
 ---
 
-<a id="ottoman-first-ingest"></a>
-## 2026-04-11 — ottoman-first-ingest
+## ottoman-first-ingest
+**Date:** 2026-04-11
 **Touched:** OTT-1800-1886, OTT-1886-1908, OTT-1908-1912
 **Source:** cliopatria-v0.1.3 (new), wikipedia-ottoman-2026-04-11 (new), cshapes-2.0, cow-state-system-v2024
 **Kind:** ingest
@@ -1595,8 +1596,8 @@ verbatim quotes for and (b) resolution of the
 bigger than Luxembourg's draft→reviewed blocker because it
 affects the split dates themselves, not just the narrative layer.
 
-<a id="proposal-tur-1800-1912-duplication"></a>
-## 2026-04-11 — proposal-tur-1800-1912-duplication
+## proposal-tur-1800-1912-duplication
+**Date:** 2026-04-11
 **Touched:** TUR-1800-1912 (CSV), OTT-1800-1886, OTT-1886-1908, OTT-1908-1912
 **Source:** none
 **Kind:** proposal
@@ -1647,8 +1648,8 @@ time they look at the log.
 
 ---
 
-<a id="schema-stable-oq-ids-and-lint-relaxation"></a>
-## 2026-04-11 — schema-stable-oq-ids-and-lint-relaxation
+## schema-stable-oq-ids-and-lint-relaxation
+**Date:** 2026-04-11
 **Touched:** wiki/README.md, wiki/prompts/lint.md, wiki/polities/_template.md
 **Source:** none
 **Kind:** decision
@@ -1685,8 +1686,8 @@ open-question format with an example slug. Existing Luxembourg
 page will be migrated to the new format in the immediately-following
 `lux-post-lint-cleanup` ingest.
 
-<a id="lux-post-lint-cleanup"></a>
-## 2026-04-11 — lux-post-lint-cleanup
+## lux-post-lint-cleanup
+**Date:** 2026-04-11
 **Touched:** LUX-1839-2025
 **Source:** none (claim updates draw on sources already ingested)
 **Kind:** ingest
@@ -1735,8 +1736,8 @@ No changes to `sources:`, frontmatter (other than already-current
 
 ---
 
-<a id="lint-luxembourg"></a>
-## 2026-04-11 — lint-luxembourg
+## lint-luxembourg
+**Date:** 2026-04-11
 **Touched:** LUX-1839-2025 (report only), wiki/index.md (auto-applied)
 **Source:** none
 **Kind:** lint
@@ -1816,8 +1817,8 @@ lint).
 
 ---
 
-<a id="cow-state-system-v2024-ingest"></a>
-## 2026-04-11 — cow-state-system-v2024-ingest
+## cow-state-system-v2024-ingest
+**Date:** 2026-04-11
 **Touched:** LUX-1839-2025
 **Source:** cow-state-system-v2024 (new)
 **Kind:** ingest
@@ -1860,8 +1861,8 @@ edit.
 
 ---
 
-<a id="cshapes-reproducibility-verified"></a>
-## 2026-04-11 — cshapes-reproducibility-verified
+## cshapes-reproducibility-verified
+**Date:** 2026-04-11
 **Touched:** (none — verification only)
 **Source:** cshapes-2.0
 **Kind:** lint
@@ -1901,8 +1902,8 @@ st_write(cs, file.path(geodata_dir, "cshapes2_full.gpkg"),
 and correct `REPRODUCIBILITY.md:162` to point at it. Also add
 `cshapes` to `renv.lock`.
 
-<a id="decision-whep-polity-definition"></a>
-## 2026-04-11 — decision-whep-polity-definition
+## decision-whep-polity-definition
+**Date:** 2026-04-11
 **Touched:** (repo-wide; the definition of what a WHEP polity is)
 **Source:** none (stated by the project maintainer in conversation)
 **Kind:** decision
@@ -1971,8 +1972,8 @@ threshold. A future `decision` entry should pick a WHEP-specific
 threshold or explicitly defer to case-by-case judgement. For now,
 existing splits in the CSV stand as precedent.
 
-<a id="decision-cshapes-is-cow-based"></a>
-## 2026-04-11 — decision-cshapes-is-cow-based
+## decision-cshapes-is-cow-based
+**Date:** 2026-04-11
 **Touched:** (repo-wide; applies to every CShapes-citing polity)
 **Source:** cshapes-2.0
 **Kind:** decision
@@ -2014,8 +2015,8 @@ possibly Tibet and Orange Free State which GW includes and COW does
 not), the page must either note this in Contradictions or justify
 the WHEP start year from a non-CShapes source.
 
-<a id="cshapes-primary-source-upgrade"></a>
-## 2026-04-11 — cshapes-primary-source-upgrade
+## cshapes-primary-source-upgrade
+**Date:** 2026-04-11
 **Touched:** LUX-1839-2025
 **Source:** cshapes-2.0 (upgraded)
 **Kind:** ingest
@@ -2061,8 +2062,8 @@ instead of generic `[cshapes-2.0]` tags, and added a sixth open
 question about which CShapes version (COW or GW) the repo loads.
 Status remains `draft`.
 
-<a id="lux-first-ingest"></a>
-## 2026-04-11 — lux-first-ingest
+## lux-first-ingest
+**Date:** 2026-04-11
 **Touched:** LUX-1839-2025
 **Source:** cshapes-2.0, wikipedia-luxembourg-2026-04-11
 **Kind:** ingest
@@ -2084,8 +2085,8 @@ as an independent polity from 1839 despite the personal union with the
 Netherlands lasting until 1890. This is a cross-polity question and should
 be resolved via a `decision`-kind log entry, not on the Luxembourg page alone.
 
-<a id="wiki-bootstrap"></a>
-## 2026-04-11 — wiki-bootstrap
+## wiki-bootstrap
+**Date:** 2026-04-11
 **Touched:** (none)
 **Source:** none
 **Kind:** decision

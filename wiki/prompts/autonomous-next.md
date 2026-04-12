@@ -12,8 +12,11 @@ them, it *chooses* among them and then delegates.
 ---
 
 You are maintaining the WHEP polities wiki in autonomous mode. Read
-`wiki/README.md` first for the schema and rules. Then execute the
-four-phase cycle below. Each iteration is ONE cycle and produces
+`wiki/README.md` first for the schema, rules, the **coverage goal**
+(complete spatiotemporal coverage — every km², every year, no gaps),
+and the **dual-renderer rule** (GitHub + Obsidian — no `<a id>`
+anchors; heading text = target slug). Then execute the four-phase
+cycle below. Each iteration is ONE cycle and produces
 exactly ONE git commit (or ends without a commit if the stop
 conditions fire).
 
@@ -261,6 +264,12 @@ available:
   already-draft page.
 - **Coverage breadth.** Adding the first polity page in an empty
   continent outranks adding the eleventh European page.
+- **Coverage chain completeness.** Creating a page that closes a
+  predecessor/successor gap (a dangling `<!-- TODO: page not yet
+  created -->` ref) outranks creating a page that stands alone.
+  The wiki's coverage goal requires complete chains — when one
+  polity ends, its successor must exist and account for the
+  territory.
 - **Source efficiency.** Actions that apply one source read to
   multiple polities outrank actions that apply one source read to
   one polity.
@@ -274,8 +283,8 @@ At the end of each iteration, append one H2 entry to `wiki/log.md`
 with kind `autonomous`:
 
 ```markdown
-<a id="autonomous-<N>-<short-slug>"></a>
-## YYYY-MM-DD — autonomous-<N>-<short-slug>
+## autonomous-<N>-<short-slug>
+**Date:** YYYY-MM-DD
 **Touched:** <polity codes or "none">
 **Source:** <source slug or "none">
 **Kind:** autonomous

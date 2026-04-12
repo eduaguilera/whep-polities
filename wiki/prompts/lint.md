@@ -6,7 +6,8 @@ check the health of the wiki.
 ---
 
 You are linting the WHEP polities wiki. Read `wiki/README.md` for the
-schema. Walk the whole `wiki/` tree and produce a report.
+schema, the coverage goal, and the dual-renderer rule (GitHub +
+Obsidian). Walk the whole `wiki/` tree and produce a report.
 
 Check, in order:
 
@@ -71,6 +72,24 @@ Check, in order:
    the oddity in one sentence, and recommend a `proposal`-kind
    log entry for human review. Do NOT auto-fix — this is read-only
    auditing.
+
+9. **Coverage-gap detection.** Check for spatiotemporal gaps:
+   - Polity pages whose *Predecessors and successors* section has
+     `<!-- TODO: page not yet created -->` dangling refs. Count and
+     list them — these represent known gaps in the coverage chain.
+   - Polity pages with `predecessor: NA` whose `start_year` is after
+     1800 (the database floor) — where did the territory come from?
+   - Polity pages whose successor is `NA` but whose `end_year` is
+     before 2025 — where did the territory go?
+   - Dissolution events (e.g. Austria-Hungary, Ottoman Empire, USSR)
+     where the sum of successor states' territory does not plausibly
+     account for the parent's territory.
+   - CSV rows that are not reachable via any predecessor/successor
+     chain from an existing wiki page.
+
+10. **Obsidian compatibility.** Check for `<a id="...">` HTML anchors
+    in any wiki file (log, sources, polities). These break Obsidian
+    section navigation. Flag them as must-fix.
 
 Output format:
 - **Summary** — counts for each check.

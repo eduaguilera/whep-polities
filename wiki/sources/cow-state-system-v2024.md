@@ -34,8 +34,8 @@ definition rule.
 
 ## What it adds
 
-<a id="overview"></a>
-### §overview — what the dataset is (codebook p.1)
+### overview
+*what the dataset is (codebook p.1).*
 
 - "This data set contains the list of states in the international
   system as updated and distributed by the Correlates of War
@@ -54,8 +54,8 @@ definition rule.
 - The other four distribution files (`majors2024`, `nondirected...`,
   `directed...`, codebook, FAQ) are not currently ingested.
 
-<a id="schema"></a>
-### §schema — column definitions (codebook p.2)
+### schema
+*column definitions (codebook p.2).*
 
 `statelist2024.csv` columns:
 
@@ -71,8 +71,8 @@ definition rule.
 `system2024.csv` columns: `ccode`, `stateabb`, `statenme`, `year`,
 `version`.
 
-<a id="inclusion"></a>
-### §inclusion — how COW decides who is in
+### inclusion
+*how COW decides who is in.*
 
 The codebook itself does not restate the membership criteria (it is
 a schema/version reference, not a conceptual overview). The criteria
@@ -92,8 +92,8 @@ entities are absent entirely. These are features of COW's purpose
 (interstate conflict analysis), not defects — but they mean COW is
 wrong to cite as a general polity list.
 
-<a id="key-dates"></a>
-### §key-dates — directly-citable dates
+### key-dates
+*directly-citable dates.*
 
 A few dates that are load-bearing for WHEP polity pages and came out
 of direct inspection of `wiki/sources/data/cow-v2024/statelist2024.csv`.
@@ -117,8 +117,8 @@ Any of these can be cited as [cow-state-system-v2024 §key-dates]:
   `1934-08-15 → 2024-12-31`. The gap is the U.S. occupation of
   Haiti 1915–1934.
 
-<a id="version-history"></a>
-### §version-history — what changed (codebook p.3–4)
+### version-history
+*what changed (codebook p.3–4).*
 
 The codebook records dated revisions from earlier versions, most
 important for WHEP:

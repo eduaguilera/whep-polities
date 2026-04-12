@@ -25,32 +25,35 @@ on 2026-04-11. Each is quoted verbatim; the `§` anchor is the year the
 claim concerns. If Wikipedia is later edited, this file remains the
 authoritative record of what was read.
 
-<a id="1815"></a>
-- **§1815** — Congress of Vienna: "gave formal autonomy to Luxembourg",
-  establishing grand duchy status in personal union with the
-  Netherlands.
-<a id="1839"></a>
-- **§1839** — Treaty of London partitioned the duchy: "the predominantly
-  Oil-speaking geographically larger western part of the duchy was
-  ceded to Belgium." Luxembourg emerged as a formally independent grand
-  duchy with roughly half its prior territory, now predominantly
-  German-speaking.
-<a id="1842"></a>
-- **§1842** — Luxembourg "integrated it into the German Zollverein",
-  joining the German Customs Union to offset the economic effects of
-  the 1839 partition.
-<a id="1867"></a>
-- **§1867** — Second Treaty of London "guaranteed the perpetual
-  independence and neutrality of the state"; the Prussian garrison
-  withdrew and the fortress was demolished.
-<a id="1890"></a>
-- **§1890** — On the death of William III of the Netherlands, the
-  "grand duchy passed to the House of Nassau-Weilburg", ending the
-  personal union with the Netherlands (Salic succession).
-<a id="1921"></a>
-- **§1921** — After World War I, Luxembourg "entered into an economic
-  and monetary union with Belgium" (the Belgium-Luxembourg Economic
-  Union, BLEU).
+#### 1815
+*Congress of Vienna.*
+
+"gave formal autonomy to Luxembourg", establishing grand duchy status in personal union with the Netherlands.
+
+#### 1839
+*Treaty of London partitioned the duchy.*
+
+"the predominantly Oil-speaking geographically larger western part of the duchy was ceded to Belgium." Luxembourg emerged as a formally independent grand duchy with roughly half its prior territory, now predominantly German-speaking.
+
+#### 1842
+*Luxembourg joined the German Zollverein.*
+
+Luxembourg "integrated it into the German Zollverein", joining the German Customs Union to offset the economic effects of the 1839 partition.
+
+#### 1867
+*Second Treaty of London.*
+
+"guaranteed the perpetual independence and neutrality of the state"; the Prussian garrison withdrew and the fortress was demolished.
+
+#### 1890
+*Personal union with the Netherlands ended.*
+
+On the death of William III of the Netherlands, the "grand duchy passed to the House of Nassau-Weilburg", ending the personal union with the Netherlands (Salic succession).
+
+#### 1921
+*Economic union with Belgium.*
+
+After World War I, Luxembourg "entered into an economic and monetary union with Belgium" (the Belgium-Luxembourg Economic Union, BLEU).
 
 ## Known limitations
 

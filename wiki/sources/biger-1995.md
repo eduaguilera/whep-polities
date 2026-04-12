@@ -26,8 +26,8 @@ citation-only like COW. Only short sentence-level verbatim quotes
 with page numbers are reproduced here, strictly as fair-use
 citation. The PDF itself is gitignored; verify with `sha256sum`.
 
-<a id="copyright-notice"></a>
-## §copyright-notice — quoting discipline
+## copyright-notice
+*quoting discipline.*
 
 Copyright page: *"All rights reserved. No part of this book may be
 reproduced or utilized in any form or by any means, electronic or
@@ -59,8 +59,8 @@ Boundaries Research Unit — and therefore the intended
 
 ## What it adds
 
-<a id="structure"></a>
-### §structure — how the book is organized
+### structure
+*how the book is organized.*
 
 From the Foreword (p.8):
 
@@ -89,8 +89,8 @@ of a 1995 border. The 1839 partition of Luxembourg is therefore
 discussed under BELGIUM (the gaining side), GERMANY—LUXEMBOURG
 (the border that emerged), and LUXEMBOURG (the summary).
 
-<a id="luxembourg"></a>
-### §luxembourg — Luxembourg boundary history
+### luxembourg
+*Luxembourg boundary history.*
 
 Compiled from three sections: LUXEMBOURG (p.365), BELGIUM historical
 background and BELGIUM—NETHERLANDS historical background (pp.67–70),
@@ -229,8 +229,8 @@ substantial territorial change.
    fragile for borderline cases (e.g. Macedonia/FYROM in the 1995
    vintage).
 
-<a id="austria"></a>
-### §austria — Austrian / Austro-Hungarian boundary history
+### austria
+*Austrian / Austro-Hungarian boundary history.*
 
 Compiled from the AUSTRIA main entry (pp.47–48), AUSTRIA–CZECH
 REPUBLIC (pp.48–49), AUSTRIA–GERMANY (p.49), AUSTRIA–HUNGARY
@@ -386,8 +386,8 @@ Bosnia-Herzegovina was put under Austro-Hungarian administration"
   Hungary). Biger uses "1919" in narrative prose; the CSV uses
   "1918".
 
-<a id="algeria"></a>
-### §algeria — Algerian boundary history and the 1830 French conquest
+### algeria
+*Algerian boundary history and the 1830 French conquest.*
 
 Compiled from the ALGERIA main entry (p.22) and four
 boundary-subsection historical backgrounds (ALGERIA–LIBYA p.24,
@@ -432,8 +432,8 @@ ALGERIA–MALI p.25, ALGERIA–MOROCCO p.27, ALGERIA–TUNISIA p.28).
   delimiting territorial boundaries as late as 1910, less than
   two years before Libya was lost to Italy.
 
-<a id="bosnia"></a>
-### §bosnia — Bosnia-Herzegovina boundary history
+### bosnia
+*Bosnia-Herzegovina boundary history.*
 
 Compiled from BOSNIA (AND HERZEGOVINA) (pp.85–86) and the
 BOSNIA–SERBIA subsection (p.87).
@@ -471,8 +471,8 @@ Similarly, Biger does not separately cite the 1914 assassination
 of Franz Ferdinand in Sarajevo or any WWI-specific Bosnian
 event. Those belong to different sources.
 
-<a id="libya"></a>
-### §libya — Libyan boundary history and the 1911–1912 Italian takeover
+### libya
+*Libyan boundary history and the 1911–1912 Italian takeover.*
 
 Compiled from LIBYA (pp.359–360), LIBYA–CHAD historical
 background (p.360), LIBYA–SUDAN (p.361), LIBYA–TUNISIA (p.361).
@@ -539,8 +539,8 @@ consistent with the view that the change straddles the
 Biger does not himself make that case — he's just providing
 dates.
 
-<a id="tunisia"></a>
-### §tunisia — Tunisian boundary history and the 1881 French protectorate
+### tunisia
+*Tunisian boundary history and the 1881 French protectorate.*
 
 Compiled from ALGERIA–TUNISIA (p.28), LIBYA–TUNISIA (p.361), and
 the TUNISIA main entry (p.494).
@@ -567,7 +567,6 @@ the TUNISIA main entry (p.494).
 - **1956 Tunisia independence.** "full independence followed in
   1956" (p.494).
 
-<a id="license"></a>
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and

@@ -18,24 +18,24 @@ page. Initial Wikipedia baseline for a draft page.
 
 ## What it adds
 
-<a id="1801-union"></a>
-### §1801-union — Act of Union with Ireland
+### 1801-union
+*Act of Union with Ireland.*
 
 "On 1 January 1801, the Great Britain and Ireland joined to form
 the United Kingdom of Great Britain and Ireland." Ireland sent
 approximately 100 MPs to the House of Commons and 28
 representative peers to the House of Lords.
 
-<a id="1921-treaty"></a>
-### §1921-treaty — Anglo-Irish Treaty
+### 1921-treaty
+*Anglo-Irish Treaty.*
 
 The Anglo-Irish Treaty was signed on **6 December 1921** at
 10 Downing Street, London. Ratified by the Dáil on
 **7 January 1922** by a vote of 64 to 57. The treaty created
 the Irish Free State from 26 counties.
 
-<a id="1922-free-state"></a>
-### §1922-free-state — Irish Free State establishment
+### 1922-free-state
+*Irish Free State establishment.*
 
 The Irish Free State formally came into existence on
 **6 December 1922** when the constitution became law via royal
@@ -44,8 +44,8 @@ proclamation. Article 12 of the treaty provided Northern Ireland
 of the Treaty coming into effect," which "was exercised by the
 Parliament of Northern Ireland."
 
-<a id="1927-name"></a>
-### §1927-name — Name change
+### 1927-name
+*Name change.*
 
 "In 1927, the United Kingdom changed its formal title to the
 United Kingdom of Great Britain and Northern Ireland."

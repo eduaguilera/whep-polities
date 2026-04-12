@@ -34,57 +34,68 @@ of what was read on 2026-04-11.
 
 ### From `decline-and-modernization` (1800–1908)
 
-<a id="1821"></a>
-- **§1821** — Greek War of Independence begins. "The first of these
-  revolts began on 6 March 1821 in the Danubian Principalities."
-<a id="1829"></a>
-- **§1829** — Treaty of Adrianople ends Russo-Turkish War; Serbia
-  gains autonomy.
-<a id="1831"></a>
-- **§1831** — Muhammad Ali of Egypt seizes Syria and Arabia; by the
-  war's end in 1833 Egypt controlled Syrian territory.
-<a id="1853-1856"></a>
-- **§1853–1856** — Crimean War. "Britain and France successfully
-  defended the Ottoman Empire against Russia."
-<a id="1877-1878"></a>
-- **§1877–1878** — Russo-Turkish War results in major Balkan
-  losses. Romania, Serbia, and Montenegro "each...formally
-  proclaimed independence".
-<a id="1878"></a>
-- **§1878** — Congress of Berlin redistributes Ottoman territories:
-  "Austria-Hungary to occupy Bosnia and Herzegovina" and "Great
-  Britain to take over Cyprus". Romania, Serbia, and Montenegro
-  are formally recognized as independent; Bulgaria becomes
-  autonomous under Ottoman suzerainty.
+#### 1821
+*Greek War of Independence begins.*
+
+"The first of these revolts began on 6 March 1821 in the Danubian Principalities."
+
+#### 1829
+*Treaty of Adrianople ends Russo-Turkish War; Serbia gains autonomy.*
+
+#### 1831
+*Muhammad Ali of Egypt seizes Syria and Arabia.*
+
+By the war's end in 1833 Egypt controlled Syrian territory.
+
+#### 1853-1856
+*Crimean War.*
+
+"Britain and France successfully defended the Ottoman Empire against Russia."
+
+#### 1877-1878
+*Russo-Turkish War results in major Balkan losses.*
+
+Romania, Serbia, and Montenegro "each...formally proclaimed independence".
+
+#### 1878
+*Congress of Berlin redistributes Ottoman territories.*
+
+"Austria-Hungary to occupy Bosnia and Herzegovina" and "Great Britain to take over Cyprus". Romania, Serbia, and Montenegro are formally recognized as independent; Bulgaria becomes autonomous under Ottoman suzerainty.
 
 ### From `dissolution` (1908–1923)
 
-<a id="1908"></a>
-- **§1908** — Three simultaneous events: "Bulgarian Declaration of
-  Independence on 5 October", Austria-Hungary formally annexed
-  Bosnia-Herzegovina, and Crete declared union with Greece. The
-  1878 de facto settlement became the 1908 de jure partition.
-<a id="1911-1912"></a>
-- **§1911–1912** — Italo-Turkish War. Italy defeated the Ottomans
-  and took Libya and the Dodecanese; "Italian forces took those
-  areas on 5 November".
-<a id="1912-1913"></a>
-- **§1912–1913** — Balkan Wars. The Ottoman Empire suffered "loss
-  of 83 percent of their European territory and almost 70 percent
-  of their European population".
-<a id="1913"></a>
-- **§1913** — Albania and Kuwait declare independence. "Albania
-  declared independence on 28 November".
-<a id="1914"></a>
-- **§1914** — Ottoman entry into World War I (noted in the article
-  but not itself a territorial event — Ottoman borders at entry
-  were those that remained after the Balkan Wars).
-<a id="1920"></a>
-- **§1920** — Treaty of Sèvres partitioned remaining Ottoman
-  territories after WWI.
-<a id="1922"></a>
-- **§1922** — "formal abolition of the Ottoman Sultanate was
-  performed...on 1 November 1922".
+#### 1908
+*Three simultaneous events.*
+
+"Bulgarian Declaration of Independence on 5 October", Austria-Hungary formally annexed Bosnia-Herzegovina, and Crete declared union with Greece. The 1878 de facto settlement became the 1908 de jure partition.
+
+#### 1911-1912
+*Italo-Turkish War.*
+
+Italy defeated the Ottomans and took Libya and the Dodecanese; "Italian forces took those areas on 5 November".
+
+#### 1912-1913
+*Balkan Wars.*
+
+The Ottoman Empire suffered "loss of 83 percent of their European territory and almost 70 percent of their European population".
+
+#### 1913
+*Albania and Kuwait declare independence.*
+
+"Albania declared independence on 28 November".
+
+#### 1914
+*Ottoman entry into World War I.*
+
+Noted in the article but not itself a territorial event — Ottoman borders at entry were those that remained after the Balkan Wars.
+
+#### 1920
+*Treaty of Sevres partitioned remaining Ottoman territories after WWI.*
+
+#### 1922
+*Formal abolition of the Ottoman Sultanate.*
+
+"formal abolition of the Ottoman Sultanate was performed...on 1 November 1922".
 
 ## Known limitations
 

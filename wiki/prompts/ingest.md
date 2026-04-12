@@ -6,7 +6,17 @@ gazetteer) should be added to the wiki.
 ---
 
 You are maintaining the WHEP polities wiki. Read `wiki/README.md` first
-for the schema and rules. Then:
+for the schema, rules, and the **coverage goal** (complete
+spatiotemporal coverage — every km², every year, no gaps).
+
+**Markdown dual-compatibility rule.** The wiki renders in both GitHub
+and Obsidian. Never use `<a id="...">` HTML anchors. Heading text must
+equal the target slug so both platforms auto-generate the same anchor:
+- Log entries: `## slug` (date on a `**Date:**` line inside the body)
+- Source sections: `### section-name` (no `§` prefix in the heading;
+  `§` is display-only in inline citations like `[source §section]`)
+
+Then:
 
 1. **Create the source file.** Copy `wiki/sources/_template.md` to
    `wiki/sources/<source-slug>.md` and fill the frontmatter and all
@@ -42,7 +52,17 @@ for the schema and rules. Then:
    explicitly that the CSV labeling is suspect and flag the proposal
    by slug.
 
-3. **Update each affected polity page.** For each one:
+3. **Check predecessor/successor completeness.** For every polity
+   page you create or update, verify that its predecessors and
+   successors form a closed chain — all territory must be accounted
+   for. If a predecessor or successor row exists in the CSV but has
+   no wiki page, add a `<!-- TODO: page not yet created -->` reference
+   link and note it as a dangling ref in the log entry. If a
+   predecessor or successor *doesn't exist in the CSV at all* despite
+   being expected (e.g. a dissolution that should produce 5 successor
+   states but the CSV only has 3), add a `proposal`-kind log entry.
+
+4. **Update each affected polity page.** For each one:
    - Append new facts to *Sourced claims* with inline
      `[<source-slug> §<section>]` citations.
    - If the new source disagrees with an existing claim, add both
@@ -51,11 +71,11 @@ for the schema and rules. Then:
    - If a page doesn't exist yet for a polity in the CSV that this
      source covers, create it from `_template.md` with status `draft`.
 
-4. **Append a log entry.** In `wiki/log.md`, add a new H2 of kind
+5. **Append a log entry.** In `wiki/log.md`, add a new H2 of kind
    `ingest` listing every polity code touched and one or two
    sentences on what the source contributed and any open contradictions.
 
-5. **Update `wiki/index.md`** if any new polity pages were created or
+6. **Update `wiki/index.md`** if any new polity pages were created or
    the source list changed.
 
 **Constraints:**

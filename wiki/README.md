@@ -7,6 +7,34 @@ agent against the rules in this file.
 This wiki is **not** methodology documentation — that lives in `docs/`. It is
 the evidence and reasoning trail behind individual polity decisions.
 
+This wiki is rendered in both **GitHub** (online review, PR diffs) and
+**Obsidian** (local research, graph view). All markdown must work in
+both renderers. The key constraint: no `<a id="...">` HTML anchors
+(Obsidian ignores them). Instead, keep heading text equal to the target
+slug so both platforms auto-generate the same `#slug` anchor.
+
+## Coverage goal
+
+The wiki aims for **complete spatiotemporal coverage**: every km² of
+land surface, for every year from 1800 to 2025, should be accounted
+for by at least one WHEP polity row. Polity pages must therefore be
+deeply intertwined — when one polity ends, its successor(s) must
+account for all of its territory, and when a polity begins, its
+predecessor(s) must be documented. Gaps are bugs.
+
+In practice this means:
+- Every polity page's *Predecessors and successors* section must be
+  complete: if the territory went somewhere, the successor row must
+  exist and link back.
+- Dissolution events (Ottoman Empire, Austria-Hungary, USSR) need
+  *all* successor states documented, not just the obvious ones.
+- Colonial acquisitions by European empires correspond to the *end*
+  of a local polity — both sides of the transition must have pages.
+- The index should track coverage by continent and flag regions with
+  no wiki pages despite having CSV rows.
+- Open questions about missing predecessor/successor links are high
+  priority — they represent gaps in the spatial coverage model.
+
 ## What a WHEP polity is
 
 Before reading anything else in this file, understand this: a WHEP polity is
@@ -147,13 +175,15 @@ Conventions:
 - Same-page open-question references use `#oq-slug`.
 - Cross-page polity references use `polity-slug.md` (no slash
   prefix — paths are relative to the current file's directory).
-- Log references use `../log.md#slug`. Every log entry has an
-  explicit `<a id="slug"></a>` anchor *above* the `## YYYY-MM-DD —
-  slug` heading so the target slug stays clean even though the
-  heading contains dates and em-dashes.
+- Log references use `../log.md#slug`. Log entry headings are
+  `## slug` (the slug alone, no date prefix), so both GitHub and
+  Obsidian auto-generate the `#slug` anchor from the heading text.
+  The date goes on a `**Date:** YYYY-MM-DD` line inside the entry.
 - Source section references use `../sources/source-slug.md#section`.
-  Every `### §section` heading in a source file has an explicit
-  `<a id="section"></a>` anchor above it for the same reason.
+  Source file section headings are `### section` (no `§` prefix),
+  so both GitHub and Obsidian auto-generate the `#section` anchor.
+  The `§` character is used only in inline citation display text
+  (`[biger-1995 §austria]`), not in the actual heading.
 - `[database]` points at the final CSV so readers can jump to
   the row directly.
 

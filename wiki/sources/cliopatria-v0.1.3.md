@@ -32,8 +32,8 @@ Derived from `docs/02_DATA_SOURCES.md §2.12`,
 `docs/06_KNOWN_ISSUES_AND_DECISIONS.md`. No external fetch yet — a
 future ingest should pull the Seshat paper directly if one exists.
 
-<a id="scope"></a>
-### §scope — what Cliopatria covers
+### scope
+*what Cliopatria covers.*
 
 - **~1,600 polities, 15,690 GeoJSON features** (hand-traced from
   reference atlases). [docs/02 §2.12](../../docs/02_DATA_SOURCES.md)
@@ -52,8 +52,8 @@ future ingest should pull the Seshat paper directly if one exists.
 - **License**: CC BY 4.0 (citation required, redistribution
   permitted).
 
-<a id="wheps-use"></a>
-### §wheps-use — how WHEP loads it
+### wheps-use
+*how WHEP loads it.*
 
 - Pipeline script: `R/12_integrate_cliopatria_polygons.R`.
 - Input: `inputs/cliopatria.geojson.zip` (not committed to WHEP
@@ -70,8 +70,8 @@ future ingest should pull the Seshat paper directly if one exists.
   replacing a "small subset" polygon with a "Cliopatria 2.66M km2
   full Ottoman" polygon.
 
-<a id="single-time-step"></a>
-### §single-time-step — the simplification WHEP makes
+### single-time-step
+*the simplification WHEP makes.*
 
 This is the most important caveat for lint. Cliopatria provides
 **many** time-steps for long-lived polities (33 for the Ottoman

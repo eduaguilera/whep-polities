@@ -29,6 +29,11 @@ back-projected.>
 
 ## Predecessors and successors
 
+Coverage goal: every km² must be accounted for. When this polity
+ends, successors must cover all its territory. When it begins,
+predecessors must explain where the territory came from. Gaps are
+bugs — flag them as open questions.
+
 - **Predecessor:** [other-polity-slug] — nature of the transition
 - **Successor:** [other-polity-slug] — nature of the transition
 
