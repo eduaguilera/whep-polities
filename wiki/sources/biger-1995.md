@@ -1809,8 +1809,33 @@ pp.247–249 provides boundary context for the Balkan region but not
 Ghana. Ghana-specific boundary entries (GHANA–BURKINA FASO, GHANA–
 IVORY COAST, GHANA–TOGO) would be found elsewhere in the G section.
 
-**Limitation:** Biger citations for Ghana borders require scanning
-additional pages not covered in this batch.
+### ghana
+*Ghanaian boundary history (pp.243–244).*
+
+Ghana: area 92,098 sq mi [238,533 sq km]; population 16,700,000
+[1994]. Capital: Accra. Bounded by Ivory Coast (415 mi; 668 km),
+Burkina Faso (341 mi; 549 km), Togo (545 mi; 877 km).
+
+- "The Ghanaians were the first people in sub-Saharan Africa to
+  become independent from colonial rule when they gained
+  independence from the British in 1957." (p.243)
+- "Gold Coast became an independent state on 6 March 1957, adopting
+  the name Ghana." (p.244)
+
+### nigeria
+*Nigerian boundary history (pp.407–408).*
+
+Nigeria: area 356,669 sq mi [923,416 sq km]; population
+92,800,000 [1994]. "The most populated African country" (p.407).
+Capital: Abuja (formerly Lagos). Bounded by Niger (930 mi;
+1,497 km), Chad (54 mi; 87 km), Cameroon (1,050 mi; 1,690 km),
+Benin (480 mi; 773 km).
+
+- "The Nigerians have been independent from British colonial rule
+  in October 1960." (p.407)
+- "In May 1967 the Ibo declared independence from Nigeria and their
+  region became the Republic of Biafra. This act resulted in a war
+  that lasted two and a half years" (p.407).
 
 ## License and redistribution
 
