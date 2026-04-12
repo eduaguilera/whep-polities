@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 44 |
+| Polity pages | 49 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -137,12 +137,24 @@ lint fails if the index is stale.
 - [Germany (1919-1920)](polities/deu-1919-1920.md) —
   `DEU-1919-1920`, draft, 1 open question. Post-Versailles
   transitional row. ~65K km² lost.
+- [West Germany](polities/f78-1949-1990.md) —
+  `F78-1949-1990`, draft, 2 OQs. FRG 1949-1990. COW 260.
+- [East Germany](polities/f77-1949-1990.md) —
+  `F77-1949-1990`, draft, 2 OQs. GDR 1949-1990. COW 265.
 - [Germany](polities/deu-1990-2025.md) —
   `DEU-1990-2025`, draft, 2 open questions. Reunified Germany
   from 1990. FRG+GDR predecessor pages still missing.
 - [Germany (1938-1945)](polities/deu-1938-1945.md) —
   `DEU-1938-1945`, draft, 2 open questions. Nazi period,
   Anschluss to surrender. CSV successor=NA (chain gap).
+- [Greece (1913-1919)](polities/grc-1913-1919.md) —
+  `GRC-1913-1919`, draft, 1 OQ. Post-Balkan Wars through WWI.
+- [Türkiye (1913-1914)](polities/tur-1913-1914.md) —
+  `TUR-1913-1914`, draft, 1 OQ. Ottoman/Turkey post-Balkan Wars.
+  TUR/OTT naming overlap.
+- [Montenegro (to 1913)](polities/mne-1878-1913.md) —
+  `MNE-1878-1913`, draft, 2 OQs. Congress of Berlin to Balkan
+  Wars. Ottoman predecessor gap.
 - [Greece (to 1913)](polities/grc-1830-1913.md) —
   `GRC-1830-1913`, draft, 2 open questions. Independence to
   Balkan Wars. Ottoman predecessor gap.
