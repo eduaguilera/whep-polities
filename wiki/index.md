@@ -12,7 +12,7 @@ lint fails if the index is stale.
 | Sources ingested | 9 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~32 (prior − 2 resolved: OTT-1886-1908, AUH-1800-1867) |
+| Open questions across wiki | ~31 (prior − 3 resolved: OTT-1886-1908, AUH-1800-1867, F228-1856-1905) |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
@@ -38,7 +38,7 @@ lint fails if the index is stale.
   Findings 1 (successor list incomplete — major) and 4
   (1908 start).
 - [Russian Empire (1856–1905)](polities/f228-1856-1905.md) —
-  `F228-1856-1905`, draft, 5 open questions. Alexander II/III
+  `F228-1856-1905`, draft, 4 open questions. Alexander II/III
   reform and expansion era: Crimean War end → Portsmouth.
   The last correctly labeled F228 row before the 5-row
   "USSR" anachronism block.

@@ -25,6 +25,37 @@ Kinds:
 
 ---
 
+<a id="autonomous-3-cow-russia-dates"></a>
+## 2026-04-12 — autonomous-3-cow-russia-dates
+**Touched:** F228-1856-1905
+**Source:** cow-state-system-v2024 (statelist2024.csv)
+**Kind:** autonomous
+
+**Phase 1 (inventory):** Iteration 3 (final). Two OQs resolved
+in iterations 1–2 (oq-bosnia-double-count, oq-cow-auh-dates).
+Remaining Tier 1: 2 COW queries.
+
+**Phase 2 (classification):** Unchanged from iteration 2.
+
+**Phase 3 (selection):** `oq-cow-russia-early-empire` on
+`f228-1856-1905`. Tier 1, single grep on COW data.
+
+**Phase 4 (execution):** COW `statelist2024.csv` records Russia
+(`RUS`, `ccode=365`) with a single continuous tenure from
+1816-01-01 to 2024-12-31 — no breaks. The `cow_code = NA` on
+F228-1800-1856 and F228-1856-1905 is an omission: later F228
+rows (1905+) correctly use `cow_code = 365`. The NA likely arose
+because COW codes were populated from CShapes 2.0 (starts 1886)
+and not backfilled to Cliopatria-based pre-1886 rows. Updated
+the sourced claim and resolved the OQ.
+
+**Outcome:** `oq-cow-russia-early-empire` resolved. F228-1856-1905
+goes from 5 to 4 unresolved open questions.
+
+**Stop decision:** stop — iteration cap (3/3) reached.
+
+---
+
 <a id="autonomous-2-cow-auh-dates"></a>
 ## 2026-04-12 — autonomous-2-cow-auh-dates
 **Touched:** AUH-1800-1867
