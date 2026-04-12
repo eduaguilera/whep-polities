@@ -26,6 +26,29 @@ Kinds:
 
 ---
 
+## autonomous-13-auh-successors
+**Date:** 2026-04-12
+**Touched:** AUT-1918-2025, HUN-1918-1919, F51-1918-1938, F248-1918-1919, POL-1918-1919, AUH-1908-1918
+**Source:** wikipedia-austria-hungary-2026-04-11 (existing), cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Autonomous iteration 13. Creates all 5 Austria-Hungary successor
+state pages, closing the biggest coverage gap in the wiki. CShapes
+data reveals the dramatic territorial reshaping: Austria shrank
+from 25.5 to 10.0 sq deg at Saint-Germain; Hungary from 37.6 to
+11.0 at Trianon; Czechoslovakia formed at 17.3 sq deg; Yugoslavia
+grew from Serbia's 10.0 to 28.7; Poland grew from 17.0 to 50.7.
+
+Three CSV predecessor=NA bugs documented:
+- F51-1918-1938 (Czechoslovakia) — should reference AUH
+- F248-1918-1919 (Yugoslavia) — should reference AUH + Serbia
+- POL-1918-1919 (Poland) — triple-partition predecessor (AUH + F228 + DEU)
+
+TODO comments removed from all 6 successor links on
+AUH-1908-1918. Wiki now has 29 polity pages.
+
+---
+
 ## autonomous-12-modern-successors
 **Date:** 2026-04-12
 **Touched:** FRA-1919-2025, GBR-1921-2025, ITA-1919-2025, FRA-1800-1919, GBR-1800-1921, ITA-1861-1919

@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 24 |
+| Polity pages | 29 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -92,6 +92,23 @@ lint fails if the index is stale.
   `AUH-1908-1918`, draft, 4 open questions. Flagged by audit
   Findings 1 (successor list incomplete — major) and 4
   (1908 start).
+- [Austria](polities/aut-1918-2025.md) —
+  `AUT-1918-2025`, draft, 2 open questions. Post-AUH Austria.
+  Saint-Germain reduced area from 25.5 to 10.0 sq deg. COW gap
+  1938-1955 (Anschluss).
+- [Hungary (1918-1919)](polities/hun-1918-1919.md) —
+  `HUN-1918-1919`, draft, 1 open question. Transitional row
+  post-AUH dissolution. Trianon devastation on successor row.
+- [Czechoslovakia (1918-1938)](polities/f51-1918-1938.md) —
+  `F51-1918-1938`, draft, 2 open questions. First Republic,
+  21 years. CSV predecessor=NA bug (should be AUH). Ends at
+  Munich Agreement.
+- [Yugoslavia (1918-1919)](polities/f248-1918-1919.md) —
+  `F248-1918-1919`, draft, 2 open questions. Kingdom of SCS.
+  COW treats as Serbian continuity (cowcode=345).
+- [Poland (1918-1919)](polities/pol-1918-1919.md) —
+  `POL-1918-1919`, draft, 2 open questions. Reconstituted from
+  triple partition. Borders fluid 1918-1921.
 - [Russian Empire (to 1856)](polities/f228-1800-1856.md) —
   `F228-1800-1856`, draft, 4 open questions. Pre-Crimean War
   era: Georgia, Finland, Bessarabia, Congress Poland acquisitions.
