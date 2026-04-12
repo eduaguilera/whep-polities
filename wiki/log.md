@@ -26,6 +26,28 @@ Kinds:
 
 ---
 
+## autonomous-38-bulk-remaining
+**Date:** 2026-04-12
+**Touched:** 987 polity pages (bulk)
+**Source:** polities_database.csv
+**Kind:** ingest
+
+Bulk creation of ALL remaining polity pages from CSV metadata:
+486 national multi-row chain rows + 501 subnational/aggregate rows.
+Generated programmatically with predecessor/successor inline links
+and CSV notes where available.
+
+**Wiki now has 1386 polity pages — 100% CSV coverage.** Every row
+in data/final/polities_database.csv has a corresponding wiki page.
+
+Pages created in this bulk pass have minimal content (CSV-derived
+only). The ~220 hand-crafted pages from earlier iterations have
+richer sourced content from Biger, CShapes, COW, and Wikipedia.
+Future ingests should deepen the auto-generated pages with actual
+source citations.
+
+---
+
 ## autonomous-37-bulk-single-rows
 **Date:** 2026-04-12
 **Touched:** 179 polity pages (bulk)
