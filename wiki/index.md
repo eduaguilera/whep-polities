@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 49 |
+| Polity pages | 56 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -147,6 +147,23 @@ lint fails if the index is stale.
 - [Germany (1938-1945)](polities/deu-1938-1945.md) —
   `DEU-1938-1945`, draft, 2 open questions. Nazi period,
   Anschluss to surrender. CSV successor=NA (chain gap).
+- [Greece](polities/grc-1919-2025.md) —
+  `GRC-1919-2025`, draft, 1 OQ. Modern Greece. Chain complete
+  1830→2025.
+- [Türkiye (1914-1918)](polities/tur-1914-1918.md) —
+  `TUR-1914-1918`, draft, 1 OQ. Ottoman Empire during WWI.
+- [Bulgaria (1913-1918)](polities/bgr-1913-1918.md) —
+  `BGR-1913-1918`, draft, 1 OQ. Post-Balkan Wars through WWI.
+- [Romania (1913-1918)](polities/rou-1913-1918.md) —
+  `ROU-1913-1918`, draft, 1 OQ. Post-Balkan Wars through WWI.
+- [Montenegro (1913-1915)](polities/mne-1913-1915.md) —
+  `MNE-1913-1915`, draft, 1 OQ. Overrun 1916, absorbed into
+  Yugoslavia 1918.
+- [Hungary (1919-1920)](polities/hun-1919-1920.md) —
+  `HUN-1919-1920`, draft, 1 OQ. Treaty of Trianon: -63% area.
+- [Poland (1919-1920)](polities/pol-1919-1920.md) —
+  `POL-1919-1920`, draft, 1 OQ. Border-settling, Polish-Soviet
+  War.
 - [Greece (1913-1919)](polities/grc-1913-1919.md) —
   `GRC-1913-1919`, draft, 1 OQ. Post-Balkan Wars through WWI.
 - [Türkiye (1913-1914)](polities/tur-1913-1914.md) —
