@@ -567,6 +567,105 @@ the TUNISIA main entry (p.494).
 - **1956 Tunisia independence.** "full independence followed in
   1956" (p.494).
 
+### france
+*French boundary history (p.222–223).*
+
+France: area 212,860 sq miles [551,307 sq km]; population 57,600,000
+[1994]. Bounded by Belgium (386 miles; 620 km), Germany (280 miles;
+451 km), Luxembourg (45 miles; 73 km), Switzerland (356 miles; 570 km),
+Italy (303 miles; 488 km), Spain (387 miles; 623 km), Andorra
+(37.5 miles; 60 km), Monaco (2.7 miles; 4.4 km).
+
+Biger's historical summary covers the Hundred Years' War, French
+Revolution, Napoleon ("The Empire of Napoleon Bonaparte (1804–1815)
+revolutionized the whole of Europe"), the "catastrophic Franco-Prussian
+War (1870)" and "the loss of Alsace-Lorraine," then WWI, WWII, and
+post-war decolonization. Metropolitan French borders are stable since
+1945 (with the minor Dappes valley exchange of 8 December 1862 with
+Switzerland, and minor post-WWII adjustments with Italy).
+
+### france-germany
+*France–Germany boundary (p.223–224).*
+
+"The history of this boundary line marks the history of the last
+1,000 years of French-German relations." Key dates:
+
+- 843: Verdun Agreement established first boundary on the Rhine River.
+- 880: Lotharingia (Lorraine) "became a German possession."
+- 1648: Peace of Westphalia "placed the area of Alsace in French
+  hands."
+- 1681: France occupied "all of Alsace up to the town of Strasbourg."
+- 1738: Aachen Peace of 1748 "determined most of the present boundary
+  between France and Germany."
+- 1792: Congress of Vienna "reestablishing the boundary line as it had
+  stood between France and the German states of Baden, Bavaria and
+  Prussia in 1792."
+- **1870–1871**: "the 1870–1871 war, World War I and World War II) placed
+  the region of Alsace-Lorraine in the hands of the victorious Germany
+  in 1871."
+- **1919**: "the Treaty of Versailles of 1919 placed the boundary on
+  the July 1870 line."
+- **1945**: "France gained control over it in 1918 and in 1945."
+  Post-WWII: "The French ruled the German Saar district from 1945 and
+  only on 1 January 1957 did they withdraw from it."
+
+### france-italy
+*France–Italy boundary (p.224–225).*
+
+Boundary runs 303 miles (488 km). Key date: **Treaty of Turin,
+signed 24 March 1860** — "the historic Italian region of Savoy and
+the town of Nice were given to France, which helped the Italians in
+their war of independence against the Austrian Empire." Subsequent
+convention of 7 March 1861 "created a boundary that departed from the
+details of the originally projected alignment."
+
+Post-WWII: "Italy occupied an area in southeastern France" but at
+war's end "France took the opportunity to modify its boundary... to
+incorporate the changes long desired by France. Five areas, amounting
+to 268 sq. miles (694 sq. km.), were transferred from Italy to France
+in the Little Saint Bernard Pass, Mount Cenis plateau, Mount Thabor,
+Chaberton and the upper valleys of the Tinée, Vésubie and Roya rivers."
+
+### france-spain
+*France–Spain boundary (p.227–229).*
+
+"The boundary line between France and Spain runs along the Pyrenees
+mountains for a total of 387 miles (623 km.) in two sectors that are
+divided by Andorra." Established by the Treaty of the Pyrenees
+(7 November 1659). "Over the next 335 years, despite the major changes
+that formed and reformed the European nations in general and the
+political histories of France and Spain in particular, no changes in
+the location of the boundary line were made."
+
+### germany
+*German boundary history (p.237–238).*
+
+Germany: area 137,818 sq miles [356,950 sq km]; population 80,800,000
+[1994]. Bounded by Denmark (42.5 miles; 68 km), Poland (234 miles;
+456 km), Czech Republic (507 miles; 815 km), Austria (487 miles;
+780 km), Switzerland (208 miles; 334 km), France (280 miles; 451 km),
+Luxembourg (86 miles; 138 km), Belgium (104 miles; 167 km), Netherlands
+(359 miles; 577 km).
+
+Historical summary: Charlemagne's empire → HRE → Hanseatic towns →
+fragmentation after Thirty Years' War (1618–1648). "Mid-nineteenth
+century attempts to unify Germans by means of a liberal revolution fell
+through. It took another generation before Prussian chancellor Otto von
+Bismarck succeeded, around 1870, in imposing unity and welding together
+the different German regions (except for the Habsburg-dominated Austrian
+territories) into one empire." WWI "resulted in defeat, territorial
+losses and revolution." Weimar → Nazi → WWII → occupation → FRG/GDR →
+reunification 1990.
+
+Post-WWII ethnic expulsions: "10,000,000 ethnic Germans—often
+centuries-old communities—were expelled from Central and Eastern
+Europe, throwing back the ethnic border between the Germans and the
+Slavs to the Oder-Neisse line: 7,000,000 from Posen, Silesia,
+Pomerania and East Prussia (now part of Poland), and another 350,000
+from Poland in its prewar borders, 2,000,000 Sudeten Germans from
+Czechoslovakia, 200,000 from Hungary, 140,000 from Yugoslavia,
+123,000 from Romania/Transylvania, 400,000 from the Soviet Union."
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and

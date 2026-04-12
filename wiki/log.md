@@ -26,6 +26,34 @@ Kinds:
 
 ---
 
+## biger-batch-europe-ingest
+**Date:** 2026-04-12
+**Touched:** FRA-1800-1919, DEU-1800-1919, ITA-1861-1919
+**Source:** biger-1995 (6 new §-sections: france, france-germany, france-italy, france-spain, germany)
+**Kind:** ingest
+
+Batch Biger 1995 ingest for major European states. Read PDF pages
+222–243 covering FRANCE (main + 4 bilateral entries) and GERMANY
+(main entry). Added 6 new §-sections to biger-1995.md source file.
+
+Key findings propagated to polity pages:
+- **FRA-1800-1919**: Treaty of Turin exact date (24 March 1860)
+  for Nice/Savoy cession. Alsace-Lorraine: Biger confirms "Treaty
+  of Versailles of 1919 placed the boundary on the July 1870
+  line." France–Spain: boundary unchanged since 1659.
+  oq-biger-france resolved.
+- **DEU-1800-1919**: Biger confirms Bismarck unification "around
+  1870." Post-WWII ethnic German expulsions quantified (10M).
+  oq-biger-germany resolved.
+- **ITA-1861-1919**: Biger §france-italy confirms Treaty of Turin
+  (24 March 1860) and post-WWII 268 sq mi transfer to France.
+  Cross-references the existing §austria section for Venetia.
+
+UNITED KINGDOM entry not found under "GREAT BRITAIN" — Biger
+uses "UNITED KINGDOM" in the U section. Deferred to next read.
+
+---
+
 ## autonomous-9-esp-first-ingest
 **Date:** 2026-04-12
 **Touched:** ESP-1800-2025
