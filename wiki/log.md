@@ -26,6 +26,29 @@ Kinds:
 
 ---
 
+## autonomous-12-modern-successors
+**Date:** 2026-04-12
+**Touched:** FRA-1919-2025, GBR-1921-2025, ITA-1919-2025, FRA-1800-1919, GBR-1800-1921, ITA-1861-1919
+**Source:** cshapes-2.0, cow-state-system-v2024, biger-1995 (existing)
+**Kind:** ingest
+
+Autonomous iteration 12. Creates 3 modern European successor pages
+— all stable-border states post-WWI. Closes predecessor→successor
+chains on France, UK, and Italy.
+
+- **FRA-1919-2025**: Post-Versailles France. COW gap 1942-1944
+  (Vichy). Post-WWII 268 sq mi gained from Italy per Biger.
+- **GBR-1921-2025**: Post-Irish-Treaty UK. 1927 name change.
+  Northern Ireland opt-out noted.
+- **ITA-1919-2025**: Post-Saint-Germain Italy. Post-WWII losses
+  (Istria to Yugoslavia, small areas to France) flagged as
+  candidate mid-row changes.
+
+TODO comments removed from 3 predecessor pages. Wiki now has
+24 polity pages.
+
+---
+
 ## autonomous-11-nld-dnk-nor
 **Date:** 2026-04-12
 **Touched:** NLD-1830-2025, DNK-1800-1864, NOR-1800-2025, NLD-1800-1830

@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 21 |
+| Polity pages | 24 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -19,15 +19,26 @@ lint fails if the index is stale.
 
 ### Europe
 
+- [Italy](polities/ita-1919-2025.md) —
+  `ITA-1919-2025`, draft, 2 open questions. Modern Italy from
+  Saint-Germain (1919) to present. Post-WWII Istria/Dalmatia
+  losses flagged.
 - [Italy (to 1919)](polities/ita-1861-1919.md) —
   `ITA-1861-1919`, draft, 6 open questions. 59-year row from
   unification (1861-03-17) to Saint-Germain (1919-09-10). 6
   predecessor entities. No mid-row splits at 1866 (Venetia) or
   1870 (Rome) — both flagged.
+- [United Kingdom](polities/gbr-1921-2025.md) —
+  `GBR-1921-2025`, draft, 2 open questions. Modern UK from
+  Anglo-Irish Treaty (1921) to present.
 - [United Kingdom (to 1921)](polities/gbr-1800-1921.md) —
   `GBR-1800-1921`, draft, 5 open questions. 122-year row;
   metropolitan territory stable throughout. Split at 1921
   Anglo-Irish Treaty (Irish Free State secession).
+- [France](polities/fra-1919-2025.md) —
+  `FRA-1919-2025`, draft, 3 open questions. Modern France from
+  Versailles (1919) to present. Stable borders. COW gap during
+  Vichy 1942-44.
 - [France (to 1919)](polities/fra-1800-1919.md) —
   `FRA-1800-1919`, draft, 5 open questions. 120-year row
   covering Napoleonic France through Versailles. No mid-row
