@@ -2416,6 +2416,163 @@ Compiled from OMAN--YEMEN (p.414--415).
   (p.414--415)
 - "In 1990 they merged to form the Yemen Republic." (p.415)
 
+### andorra
+*Andorra country description and boundaries (pp.30–31).*
+
+Andorra: "Since 1278 Andorra has been a co-principality, ruled by
+the president (formerly the king) of France and the bishop of Urgel
+(Spain). It is a landlocked country (area: 175 sq. miles [453 sq.
+km.]; estimated population: 58,000 [1994]) situated in the eastern
+Pyrenees." (p.30)
+
+- Capital is Andorra la Vella (p.30).
+- "The 58,000 inhabitants of the small principality are Roman
+  Catholics and speak Catalan, Spanish and French." (p.30)
+- Andorra-France boundary runs for 37.5 miles (60 km) along the
+  Pyrenee Mountains (p.30).
+- Andorra-Spain boundary runs 40 miles (64 km) from the eastern
+  boundary junction with France (p.31).
+- "The boundaries of Andorra are the oldest existing boundaries in
+  the world, going back to the thirteenth century." (p.30)
+- "The existence of independent Andorra dates back to the Middle
+  Ages. In a treaty contracted in 1278 to calm the French-Spanish
+  border area, the country of the Valleys and Suzerainties was
+  established as a joint principality" (p.31).
+- No boundary disputes with either France or Spain (pp.31).
+
+### monaco
+*Monaco country description and France-Monaco boundary (pp.222, 226–227).*
+
+From the France country description (p.222): France "shares a
+common boundary with Monaco (2.7 miles; 4.4 km.)."
+
+France-Monaco: "This semicircular boundary between France and
+Monaco runs for 2.7 miles (4.4 km.) running between two points
+located on the Mediterranean coast in southeastern France, near
+the Italian border." (pp.226–227)
+
+- "Monaco is surrounded on three sides by the French department
+  of Alpes-Maritimes, about 10 miles (16 km.) east of the French
+  city of Nice." (p.227)
+- "within it there are three small towns, those of Monaco, Monte
+  Carlo and La Condamin." (p.227)
+- "The Principality of Monaco (its name comes from the local temple
+  built by the Greek to Herakles Monoykos), was established in 1070
+  under the Grimaldis. In 1297 it came under the patronage of Genoa
+  and between 1524 and 1641 was under Spain." (p.227)
+- "From 1641 Monaco remained under French suzerainty and was taken
+  by the French Republic in 1793." (p.227)
+- "In 1814 Monaco was given back to the Grimaldi family and was
+  placed under the Kingdom of Sardinia. In 1861 it was placed under
+  France again on the condition that it would be incorporated into
+  France should the ruling prince have no children." (p.227)
+- "There are no disputes concerning the alignment of the boundary,
+  which is recognized by both states." (p.227)
+
+### malta
+*Malta country description (p.377).*
+
+- "The island of Malta is situated in the Mediterranean Sea, between
+  Italy and Libya. Its area is 122 sq. miles (316 sq. km.) with no
+  land boundaries. Malta has an estimated population (1994) of
+  380,000 and its capital is Valletta." (p.377)
+- "Malta was colonized by, successively, Phoenicians, Greeks,
+  Carthaginians and Romans. In 870 Arabs from Tunis occupied the
+  island, and converted its Christian population." (p.377)
+- "The Sicilian Normans conquered it in 1090" (p.377).
+- "In 1530 Charles V gave Malta to the order, henceforth known as
+  the Knights of Malta." (p.377)
+- "In the nineteenth century, Britain turned Malta into a major
+  naval base. Malta trade became more significant after the opening
+  of the Suez Canal." (p.377)
+- "After World War II the Maltese obtained autonomy and, in 1964,
+  full independence. In 1974 Malta became a parliamentary democratic
+  republic." (p.377)
+
+### new-zealand
+*New Zealand country description (p.404).*
+
+- "A country in the South Pacific Ocean, New Zealand has an area
+  of 103,562 sq. miles (268,122 sq. km.) and an estimated population
+  (1994) of 3,400,000. Its capital is Wellington. New Zealand has
+  no land boundaries." (p.404)
+- "New Zealand underwent various waves of settlement before
+  officially becoming part of the British Empire in the 1840s."
+  (p.404)
+- "The 1840 Treaty of Waitangi between the British and most major
+  Maori chiefs acknowledged, without really protecting, Maori land
+  rights." (p.404)
+- "New Zealand played an increasingly important role in the South
+  Pacific Islands after joining the South Pacific Commission as a
+  founder member in 1947." (p.404)
+- "It administered the United Nations Trust Territory of Western
+  Samoa until the latter's independence in 1962" (p.404).
+
+### papua-new-guinea
+*Papua New Guinea — Indonesia-Papua New Guinea boundary (pp.295–297).*
+
+Indonesia country description (p.295): "Indonesia — An archipelago
+in Southeast Asia (area: 752,410 sq. miles [1,947,989 sq. km.];
+estimated population: 188,000,000 [1994]). ... on the island of
+New Guinea it has a boundary with Papua New Guinea (510 miles;
+820 km.)."
+
+Indonesia-Papua New Guinea boundary: "This 510-mile (820-km.)
+boundary runs from north to south across the island of New Guinea.
+It follows two meridians and the thalweg of the Fly River. The
+line is demarcated by 14 meridian monuments." (p.296)
+
+- "The Portuguese set up trading posts in what is now Indonesian
+  territory during the sixteenth century" (p.296).
+- "In 1828 a declaration claimed the northwestern area of the
+  island of New Guinea for the Dutch crown and it became a
+  dependency of Tidore." (p.296)
+- "In 1884 Britain established a protectorate along the southeastern
+  coast of New Guinea" (p.296).
+- "The London Agreement of 1885 determined the border between the
+  German and British lands by a series of lines from the north coast
+  near Mitre Rock to the intersection of 5°S with 141°E." (p.297)
+- "Following the Papua Act of 1905, British New Guinea became the
+  Territory of Papua and was placed under Australian
+  administration." (p.297)
+- "The state of Papua New Guinea became fully independent on 16
+  September 1975, adopting the 1973 line as its land boundary with
+  Indonesia." (p.297)
+- "There are no disputes concerning this border." (p.297)
+
+### vanuatu
+*Vanuatu country description (p.510).*
+
+- "A country consisting of a chain of islands, Vanuatu is situated
+  in the South Pacific Ocean, east of Australia. Formerly known as
+  New Hebrides, its total land area is 4,706 sq. miles (12,184 sq.
+  km.) with an estimated population of 200,000 (1994). Its capital
+  is Port-Vila and it has no land boundaries." (p.510)
+- "Until 1980 Vanuatu was jointly governed by an Anglo-French
+  condominium established in 1906." (p.510)
+- "The islanders achieved independence in 1980" (p.510).
+- "In March 1988, Vanuatu signed an agreement with Papua New Guinea
+  and the Solomon Islands to form the 'Spearhead Group,' which aimed
+  to preserve Melanesian cultural traditions and to campaign for New
+  Caledonian independence." (p.510)
+
+### western-samoa
+*Western Samoa (Samoa) country description (pp.512–513).*
+
+- "A group of islands in the South Pacific Ocean, Western Samoa's
+  total land area is 1,093 sq. miles (2,831 sq. km.). It has an
+  estimated population (1994) of 200,000 and its capital is Apia.
+  Western Samoa has no land boundaries." (pp.512–513)
+- "Western Samoa was administered by Germany from 1899, and New
+  Zealand from 1919." (p.513)
+- "It became the independent State of Western Somoa in 1962."
+  (p.513)
+- "The population of Western Samoa is on two main islands: Upolu,
+  with the capital, Apia and Savi'i and about 20 small islands."
+  (p.513)
+- "It was a United Nations Trust Territory, under the administration
+  of New Zealand, until achieving its independence in 1962." (p.513)
+
 ## License and redistribution
 
 All rights reserved. The PDF is not in the WHEP git repository and
