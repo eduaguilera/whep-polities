@@ -25,6 +25,31 @@ Kinds:
 
 ---
 
+<a id="autonomous-5-gbr-first-ingest"></a>
+## 2026-04-12 — autonomous-5-gbr-first-ingest
+**Touched:** GBR-1800-1921
+**Source:** wikipedia-uk-2026-04-12 (new), cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Autonomous iteration 5. Creates the GBR-1800-1921 polity page —
+a 122-year row covering the UK from the database floor to the
+Anglo-Irish Treaty (6 December 1921). Metropolitan territory was
+remarkably stable throughout the period — the only significant
+change is the 1921 Irish partition itself. The 1800 start
+precedes the 1801 Act of Union by 1 year (minor label
+anachronism, comparable to AUH 1800–1804).
+
+CShapes confirms: UK polygon is 42.95 sq degrees through
+1922-12-05, then drops to 33.59 at 1922-12-06 (Irish Free State
+constitutional establishment). The CSV's 1921 split matches the
+treaty signing date in CShapes.
+
+New source file: `wikipedia-uk-2026-04-12.md`. 5 open questions
+(oq-biger-uk, oq-1921-vs-1922-end-date, oq-colonial-empire-scope,
+oq-heligoland-1890, oq-notes-na).
+
+---
+
 <a id="autonomous-4-fra-first-ingest"></a>
 ## 2026-04-12 — autonomous-4-fra-first-ingest
 **Touched:** FRA-1800-1919

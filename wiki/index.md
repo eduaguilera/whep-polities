@@ -8,17 +8,21 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 10 |
-| Sources ingested | 10 |
+| Polity pages | 11 |
+| Sources ingested | 11 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
-| Open questions across wiki | ~36 (prior − 3 resolved + 5 new on FRA-1800-1919) |
+| Open questions across wiki | ~41 (prior + 5 FRA-1800-1919 + 5 GBR-1800-1921) |
 | Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
 
 ## Polities by continent
 
 ### Europe
 
+- [United Kingdom (to 1921)](polities/gbr-1800-1921.md) —
+  `GBR-1800-1921`, draft, 5 open questions. 122-year row;
+  metropolitan territory stable throughout. Split at 1921
+  Anglo-Irish Treaty (Irish Free State secession).
 - [France (to 1919)](polities/fra-1800-1919.md) —
   `FRA-1800-1919`, draft, 5 open questions. 120-year row
   covering Napoleonic France through Versailles. No mid-row
@@ -138,6 +142,12 @@ _(none yet)_
   Revolution. Canonical citation target for the "USSR did not
   exist until 30 December 1922" claim. Cited by:
   [f228-1856-1905](polities/f228-1856-1905.md).
+- [wikipedia-uk-2026-04-12](sources/wikipedia-uk-2026-04-12.md)
+  — Snapshots of *History of the United Kingdom* and
+  *Anglo-Irish Treaty* Wikipedia articles with dates for the
+  1801 Act of Union, 1921-12-06 Anglo-Irish Treaty, 1922-12-06
+  Irish Free State establishment. Cited by:
+  [gbr-1800-1921](polities/gbr-1800-1921.md).
 - [wikipedia-france-2026-04-12](sources/wikipedia-france-2026-04-12.md)
   — Snapshots of *France in the long nineteenth century* and
   *French colonial empire* Wikipedia articles with dates for the
