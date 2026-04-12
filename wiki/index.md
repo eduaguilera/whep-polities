@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1386 (as of 2026-04-11 lint) |
-| Polity pages | 15 |
+| Polity pages | 18 |
 | Sources ingested | 14 |
 | Pages with `status: reviewed` | 1 |
 | Pages with `status: contested` | 0 |
@@ -33,11 +33,20 @@ lint fails if the index is stale.
   covering Napoleonic France through Versailles. No mid-row
   splits at 1860 (Nice/Savoy) or 1871 (Alsace-Lorraine) — both
   flagged as candidate split points.
+- [Belgium](polities/bel-1831-2025.md) —
+  `BEL-1831-2025`, draft, 4 open questions. 195-year row from
+  Belgian Revolution (1830). Successor of NLD-1800-1830.
+- [Portugal](polities/prt-1800-2025.md) —
+  `PRT-1800-2025`, draft, 3 open questions. 226-year continuous
+  row. Metropolitan borders unchanged since 1297.
 - [Spain](polities/esp-1800-2025.md) —
   `ESP-1800-2025`, draft, 4 open questions. 226-year continuous
   row. Metropolitan borders unchanged since 1815. Colonial losses
   (Latin America 1810s–20s, Cuba/Philippines 1898) tracked as
   separate rows.
+- [Switzerland](polities/che-1800-2025.md) —
+  `CHE-1800-2025`, draft, 2 open questions. 226-year continuous
+  row. Borders unchanged since 1815. Perpetual neutrality.
 - [United Kingdom of the Netherlands](polities/nld-1800-1830.md) —
   `NLD-1800-1830`, draft, 4 open questions. 1800–1830, includes
   Belgium and Luxembourg. Belgian Revolution 1830 splits into 3

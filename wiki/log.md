@@ -26,6 +26,27 @@ Kinds:
 
 ---
 
+## autonomous-10-prt-bel-che
+**Date:** 2026-04-12
+**Touched:** PRT-1800-2025, BEL-1831-2025, CHE-1800-2025
+**Source:** cshapes-2.0, cow-state-system-v2024, biger-1995 (existing §-sections)
+**Kind:** ingest
+
+Autonomous iteration 10. Creates 3 new European polity pages in a
+single batch — all stable-border states requiring no new sources:
+
+- **PRT-1800-2025**: Portugal, 226-year continuous row. Metropolitan
+  borders unchanged since 1297 Treaty of Alcañices. Colonial losses
+  (Brazil 1822, Africa 1974-75) tracked as separate rows. 3 OQs.
+- **BEL-1831-2025**: Belgium, 195-year row from Belgian Revolution.
+  Flags CSV predecessor=NA oddity (should be NLD-1800-1830). COW
+  has WWII occupation gap (1940-1945). Eupen-Malmedy gain (1919)
+  noted as minor untracked territorial change. 4 OQs.
+- **CHE-1800-2025**: Switzerland, 226-year continuous row. Borders
+  unchanged since 1815 per Biger. Perpetual neutrality. 2 OQs.
+
+---
+
 ## biger-batch-europe-ingest-3
 **Date:** 2026-04-12
 **Touched:** ESP-1800-2025
