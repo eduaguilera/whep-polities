@@ -26,6 +26,24 @@ Kinds:
 
 ---
 
+## autonomous-34-south-america
+**Date:** 2026-04-12
+**Touched:** ARG-1800-1899, ARG-1899-1902, ARG-1902-2025, CHL-1810-1899, CHL-1899-1902, CHL-1902-2025, COL-1800-1830, COL-1830-1903, COL-1903-1922, COL-1922-2025, PER-1825-1909, PER-1909-1922, PER-1922-1942, PER-1942-2025, BOL-1825-1903, BOL-1903-1909, BOL-1909-1938, BOL-1938-2025, VEN-1821-2025, ECU-1800-1942, ECU-1942-2025, PRY-1811-1938, PRY-1938-2025, URY-1828-2025
+**Source:** database
+**Kind:** ingest
+
+Created 24 polity pages for 8 South American national chains:
+Argentina (3 rows), Chile (3), Colombia (4), Peru (4), Bolivia (4),
+Venezuela (1), Ecuador (2), Paraguay (2), Uruguay (1). Colombia
+chain has CSV notes for Gran Colombia and post-Gran Colombia periods;
+all other rows have notes=NA. Cross-links between chains: Bolivia
+1903 split = Treaty of Petropolis (Acre to Brazil, matching
+BRA-1800-1903 end); Peru/Ecuador 1942 split = Protocol of Rio de
+Janeiro; Bolivia/Paraguay 1938 split = Chaco War settlement.
+Venezuela and Uruguay are single continuous rows with stable borders.
+
+---
+
 ## autonomous-33-egy-eth
 **Date:** 2026-04-12
 **Touched:** EGY-1800-1899, EGY-1800-1922, EGY-1899-1925, EGY-1922-1925, EGY-1925-1967, EGY-1967-1979, EGY-1979-2025, ETH-1800-1889, ETH-1889-1897, ETH-1897-1902, ETH-1902-1907, ETH-1907-1952, ETH-1952-1993, ETH-1993-2025
