@@ -26,6 +26,40 @@ Kinds:
 
 ---
 
+## decision-egy-phl-jor-esh-chain-restructure
+**Date:** 2026-04-13
+**Touched:** EGY-1800-1899, EGY-1800-1922 (deleted), EGY-1899-1925, EGY-1922-1925 (deleted), EGY-1925-1967, EGY-1967-1979, EGY-1979-2025, PHL-1800-2025 (renamed PHL-1800-1886), PHL-1886-1898, PHL-1898-1946, PHL-1946-2025 (new), JOR-1918-2025 (renamed JOR-1918-1920), JOR-1920-1923, JOR-1925-1946 (renamed JOR-1923-1946), JOR-1946-2025 (new), ESH-1800-2025 (renamed ESH-1975-2025), ESH-1958-1975 (new page)
+**Source:** cshapes-2.0, biger-1995
+**Kind:** decision
+
+Wiki-driven chain restructure for Egypt, Philippines, Jordan, and
+Western Sahara. Methodology: query CShapes for area time-steps, split
+only at real territorial changes, merge same-area splits.
+
+**Egypt (COW 651):** 10 CShapes time-steps with 4 real area changes
+(1899, 1925, 1967, 1979). Deleted redundant umbrellas EGY-1800-1922 and
+EGY-1922-1925. Fixed chain: EGY-1800-1899 -> EGY-1899-1925 ->
+EGY-1925-1967 -> EGY-1967-1979 -> EGY-1979-2025 (5 rows, no overlaps).
+Sourced claims from deleted pages merged into EGY-1899-1925.
+
+**Philippines (COW 840):** 5 CShapes time-steps, all same area (24.27 sq
+deg). Umbrella PHL-1800-2025 trimmed to PHL-1800-1886 (pre-CShapes).
+Created PHL-1946-2025 for independent period. Chain: PHL-1800-1886 ->
+PHL-1886-1898 -> PHL-1898-1946 -> PHL-1946-2025.
+
+**Jordan (COW 663):** 6 CShapes time-steps, area doubles at 1923
+(4.26 -> 8.45 sq deg). Umbrella JOR-1918-2025 trimmed to JOR-1918-1920.
+JOR-1925-1946 extended to JOR-1923-1946 to cover gap. Created
+JOR-1946-2025. Chain: JOR-1918-1920 -> JOR-1920-1923 -> JOR-1923-1946
+-> JOR-1946-2025.
+
+**Western Sahara (no COW):** Umbrella ESH-1800-2025 trimmed to
+ESH-1975-2025 (post-Spanish withdrawal). Created wiki page for existing
+ESH-1958-1975 row. Chain: SWA-1912-1958 -> ESH-1958-1975 ->
+ESH-1975-2025.
+
+---
+
 ## chain-restructure-2026-04-13
 **Date:** 2026-04-13
 **Touched:** BLZ-1800-1886, BLZ-1886-1970, BLZ-1970-1981, BLZ-1981-2025, CPV-1800-1886, CPV-1886-1975, CPV-1975-2025, GMB-1800-1889, GMB-1889-1965, GMB-1965-2025, GUY-1800-1886, GUY-1886-1966, GUY-1966-2025, JAM-1800-1886, JAM-1886-1962, JAM-1962-2025, LKA-1800-1886, LKA-1886-1948, LKA-1948-2025, MUS-1800-1886, MUS-1886-1968, MUS-1968-2025, TTO-1800-1886, TTO-1886-1962, TTO-1962-2025
