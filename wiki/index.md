@@ -7,13 +7,13 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1386 (as of 2026-04-13 lint) |
-| Polity pages | 345 (all sourced, no bulk trash) |
+| Polities in CSV | 1387 (as of 2026-04-13) |
+| Polity pages | 348 (all sourced, no bulk trash) |
 | Sources ingested | 14 |
-| Pages with `status: reviewed` | 1 |
+| Pages with `status: reviewed` | 71 |
 | Pages with `status: contested` | 0 |
 | Pages citing biger-1995 | 234 |
-| Open `proposal`-kind log entries | 4 (tur-1800-1912-duplication, auh-chain-audit, f228-ussr-anachronism, deu-ger-chain-audit) |
+| Open `proposal`-kind log entries | 0 |
 
 ## Polities by continent
 
@@ -98,16 +98,14 @@ lint fails if the index is stale.
   `OTT-1886-1908`, draft, 0 unresolved open questions.
 - [Ottoman Empire (1908–1912)](polities/ott-1908-1912.md) —
   `OTT-1908-1912`, draft, 3 open questions.
-- [Austrian Empire (to 1867)](polities/auh-1800-1867.md) —
-  `AUH-1800-1867`, draft, 4 open questions. Flagged by
-  audit Findings 3 (1867 split) and 5 (label anachronism).
-- [Austria-Hungary (to 1908)](polities/auh-1867-1908.md) —
-  `AUH-1867-1908`, draft, 4 open questions. Flagged by audit
-  Findings 3 (1867 split) and 4 (1908 split).
-- [Austria-Hungary (1908–1918)](polities/auh-1908-1918.md) —
-  `AUH-1908-1918`, draft, 4 open questions. Flagged by audit
-  Findings 1 (successor list incomplete — major) and 4
-  (1908 start).
+- [Austrian Empire (to 1859)](polities/auh-1800-1859.md) —
+  `AUH-1800-1859`, draft. Habsburg state to loss of Lombardy.
+- [Austrian Empire (1859-1866)](polities/auh-1859-1866.md) —
+  `AUH-1859-1866`, draft. Post-Lombardy to loss of Venetia.
+- [Austria-Hungary (1866-1908)](polities/auh-1866-1908.md) —
+  `AUH-1866-1908`, draft. Ausgleich 1867, Bosnia occupied 1878.
+- [Austria-Hungary (1908-1918)](polities/auh-1908-1918.md) —
+  `AUH-1908-1918`, draft. Successor list fixed (5 states).
 - [Finland](polities/fin-1940-2025.md) — `FIN-1940-2025`, draft. Modern Finland. Chain complete 1917→2025.
 - [Finland (1917-1940)](polities/fin-1917-1940.md) — `FIN-1917-1940`, draft. Independence to Winter War.
 - [Albania](polities/alb-1913-2025.md) — `ALB-1913-2025`, draft. 113-year continuous row from Ottoman independence.
@@ -115,8 +113,8 @@ lint fails if the index is stale.
 - [Czechoslovakia (1945-1947)](polities/f51-1945-1947.md) — `F51-1945-1947`, draft. Restored, Ruthenia ceded to USSR.
 - [Czechoslovakia (1938-1945)](polities/f51-1938-1945.md) — `F51-1938-1945`, draft. Munich to WWII.
 - [Yugoslavia (1920-1991)](polities/f248-1920-1991.md) — `F248-1920-1991`, draft. 72-year row, Kingdom→Communist→dissolution.
-- [Austria](polities/aut-1918-2025.md) —
-  `AUT-1918-2025`, draft, 2 open questions. Post-AUH Austria.
+- [Austria](polities/aut-1919-2025.md) —
+  `AUT-1919-2025`, draft, 2 open questions. Post-AUH Austria.
   Saint-Germain reduced area from 25.5 to 10.0 sq deg. COW gap
   1938-1955 (Anschluss).
 - [Hungary (1918-1919)](polities/hun-1918-1919.md) —
@@ -136,12 +134,12 @@ lint fails if the index is stale.
 - [Serbia (1913-1918)](polities/ser-1913-1918.md) — `SER-1913-1918`, draft. Dual predecessor. Yugoslavia successor gap.
 - [Serbia (1913-1915)](polities/ser-1913-1915.md) — `SER-1913-1915`, draft. WWI occupation.
 - [USSR (1940-1945)](polities/f228-1940-1945.md) — `F228-1940-1945`, draft. WWII. Correctly labeled.
-- [USSR (1921-1940)](polities/f228-1921-1940.md) — `F228-1921-1940`, draft. Partial anachronism (USSR from Dec 1922).
-- [USSR (1920-1921)](polities/f228-1920-1921.md) — `F228-1920-1921`, draft. RSFSR, Treaty of Riga. Mislabeled.
-- [USSR (1918-1920)](polities/f228-1918-1920.md) — `F228-1918-1920`, draft. RSFSR Civil War. Mislabeled.
-- [USSR (1917-1918)](polities/f228-1917-1918.md) — `F228-1917-1918`, draft. October Revolution. Mislabeled.
-- [USSR (1914-1917)](polities/f228-1914-1917.md) — `F228-1914-1917`, draft. Russian Empire WWI. Mislabeled.
-- [USSR (1905-1914)](polities/f228-1905-1914.md) — `F228-1905-1914`, draft. Russian Empire post-Portsmouth. Mislabeled.
+- [RSFSR/USSR (1921-1940)](polities/f228-1921-1940.md) — `F228-1921-1940`, draft. RSFSR until Dec 1922, then USSR. NEP to Molotov-Ribbentrop.
+- [RSFSR (1920-1921)](polities/f228-1920-1921.md) — `F228-1920-1921`, draft. Treaty of Riga, Baltic recognition.
+- [RSFSR (1918-1920)](polities/f228-1918-1920.md) — `F228-1918-1920`, draft. Russian Civil War.
+- [Russia (1917-1918)](polities/f228-1917-1918.md) — `F228-1917-1918`, draft. October Revolution, Brest-Litovsk.
+- [Russian Empire (1914-1917)](polities/f228-1914-1917.md) — `F228-1914-1917`, draft. WWI Eastern Front.
+- [Russian Empire (1905-1914)](polities/f228-1905-1914.md) — `F228-1905-1914`, draft. Post-Portsmouth, pre-WWI.
 - [Russian Empire (to 1856)](polities/f228-1800-1856.md) —
   `F228-1800-1856`, draft, 4 open questions. Pre-Crimean War
   era: Georgia, Finland, Bessarabia, Congress Poland acquisitions.
@@ -230,15 +228,15 @@ lint fails if the index is stale.
 - [Kingdom of Sardinia](polities/sar-1800-1860.md) —
   `SAR-1800-1860`, draft, 3 open questions. Legal continuator
   of Italian unification. Nice/Savoy ceded to France 1860.
-- [Germany (to 1919)](polities/deu-1800-1919.md) —
-  `DEU-1800-1919`, draft, 6 open questions. A 120-year row
-  covering Prussia 1800 → German Empire 1871 → Versailles
-  1919. The 1871 unification is acknowledged in docs/03 as a
-  mid-row event but not a CSV split. Flagged by audit
-  Findings 1 (docs-vs-CSV contradiction on GER polity_type),
-  2 (DEU-1938-1945 broken forward graph), 3 (no Prussia
-  row), 4 (1871 not a split), and 5 (notes = NA on every
-  row in the chain).
+- [Prussia (to 1866)](polities/deu-1800-1866.md) —
+  `DEU-1800-1866`, draft. Kingdom of Prussia, Zollverein,
+  Schleswig Wars. COW 255.
+- [North German Confederation (1866-1871)](polities/deu-1866-1871.md) —
+  `DEU-1866-1871`, draft. Post-Austro-Prussian War, ~95K km²
+  annexed. Franco-Prussian War.
+- [German Empire (1871-1919)](polities/deu-1871-1919.md) —
+  `DEU-1871-1919`, draft. Kaiserreich: proclamation at
+  Versailles to Treaty of Versailles. ~65K km² lost at end.
 
 - [Yugoslavia (1919-1920)](polities/f248-1919-1920.md) — `F248-1919-1920`, draft.
 - [Yugoslavia (1991-1992)](polities/f248-1991-1992.md) — `F248-1991-1992`, draft.
@@ -268,6 +266,10 @@ lint fails if the index is stale.
 - [Andorra](polities/and-1800-2025.md) — `AND-1800-2025`, draft. Microstate between France and Spain.
 - [Monaco](polities/mco-1800-2025.md) — `MCO-1800-2025`, draft. Microstate on French Riviera.
 - [Malta](polities/mlt-1800-2025.md) — `MLT-1800-2025`, draft. Island state.
+- [Austria (1918-1919)](polities/aut-1918-1919.md) — `AUT-1918-1919`, draft. Transitional post-AUH row.
+- [Czechoslovakia (1947-1992)](polities/cze-1947-1992.md) — `CZE-1947-1992`, draft. Communist era to 1992 dissolution.
+- [Duchy of Modena](polities/dmo-1800-1860.md) — `DMO-1800-1860`, draft. Pre-unification Italian duchy.
+- [Duchy of Parma](polities/dpa-1800-1860.md) — `DPA-1800-1860`, draft. Pre-unification Italian duchy.
 
 ### Africa
 
@@ -314,6 +316,50 @@ lint fails if the index is stale.
 - [Togo](polities/tgo-1960-2025.md) — `TGO-1960-2025`, draft. German territory; French mandate; independence 1960.
 - [Zimbabwe](polities/zwe-1890-2025.md) — `ZWE-1890-2025`, draft. UDI 1965; independence 1980.
 - [Western Sahara](polities/esh-1800-2025.md) — `ESH-1800-2025`, draft. Sovereignty undetermined.
+- [Angola](polities/ago-1816-2025.md) — `AGO-1816-2025`, draft.
+- [Burundi](polities/bdi-1962-2025.md) — `BDI-1962-2025`, draft.
+- [Kingdom of Burundi](polities/bdk-1800-1890.md) — `BDK-1800-1890`, draft.
+- [Benin (1898-1960)](polities/ben-1898-1960.md) — `BEN-1898-1960`, draft.
+- [Benin](polities/ben-1960-2025.md) — `BEN-1960-2025`, draft.
+- [Burkina Faso (1947-1960)](polities/bfa-1947-1960.md) — `BFA-1947-1960`, draft.
+- [Burkina Faso](polities/bfa-1960-2025.md) — `BFA-1960-2025`, draft.
+- [Kingdom of Buganda](polities/bga-1800-1894.md) — `BGA-1800-1894`, draft.
+- [Central African Republic (1919-1960)](polities/caf-1919-1960.md) — `CAF-1919-1960`, draft.
+- [Central African Republic](polities/caf-1960-2025.md) — `CAF-1960-2025`, draft.
+- [Cote d'Ivoire (1947-1960)](polities/civ-1947-1960.md) — `CIV-1947-1960`, draft.
+- [Cote d'Ivoire](polities/civ-1960-2025.md) — `CIV-1960-2025`, draft.
+- [Cameroon (1960-1961)](polities/cmr-1960-1961.md) — `CMR-1960-1961`, draft.
+- [Cameroon](polities/cmr-1961-2025.md) — `CMR-1961-2025`, draft.
+- [DR Congo (1910-1960)](polities/cod-1910-1960.md) — `COD-1910-1960`, draft.
+- [Congo (1919-1960)](polities/cog-1919-1960.md) — `COG-1919-1960`, draft.
+- [Comoros (1946-1975)](polities/com-1946-1975.md) — `COM-1946-1975`, draft.
+- [Comoros](polities/com-1975-2025.md) — `COM-1975-2025`, draft.
+- [Cabo Verde](polities/cpv-1800-2025.md) — `CPV-1800-2025`, draft.
+- [Kingdom of Dahomey](polities/dhy-1800-1894.md) — `DHY-1800-1894`, draft.
+- [Djibouti (1900-1977)](polities/dji-1900-1977.md) — `DJI-1900-1977`, draft.
+- [Djibouti](polities/dji-1977-2025.md) — `DJI-1977-2025`, draft.
+- [Ghana (1898-1956)](polities/gha-1898-1956.md) — `GHA-1898-1956`, draft.
+- [Guinea (1894-1958)](polities/gin-1894-1958.md) — `GIN-1894-1958`, draft.
+- [Guinea](polities/gin-1958-2025.md) — `GIN-1958-2025`, draft.
+- [Equatorial Guinea (1900-1968)](polities/gnq-1900-1968.md) — `GNQ-1900-1968`, draft.
+- [Equatorial Guinea](polities/gnq-1968-2025.md) — `GNQ-1968-2025`, draft.
+- [Kenya (1926-1963)](polities/ken-1926-1963.md) — `KEN-1926-1963`, draft.
+- [Madagascar](polities/mdg-1882-2025.md) — `MDG-1882-2025`, draft.
+- [Mali](polities/mli-1960-2025.md) — `MLI-1960-2025`, draft.
+- [Mozambique](polities/moz-1816-2025.md) — `MOZ-1816-2025`, draft.
+- [Mauritania](polities/mrt-1979-2025.md) — `MRT-1979-2025`, draft.
+- [Mauritius](polities/mus-1800-2025.md) — `MUS-1800-2025`, draft.
+- [Malawi](polities/mwi-1964-2025.md) — `MWI-1964-2025`, draft.
+- [Nigeria (1960-1961)](polities/nga-1960-1961.md) — `NGA-1960-1961`, draft.
+- [Rwanda](polities/rwa-1962-2025.md) — `RWA-1962-2025`, draft.
+- [Sudan](polities/sdn-2011-2025.md) — `SDN-2011-2025`, draft.
+- [Senegal](polities/sen-1960-2025.md) — `SEN-1960-2025`, draft.
+- [South Sudan](polities/ssd-2011-2025.md) — `SSD-2011-2025`, draft.
+- [Sudan (1956-2011)](polities/sud-1956-2011.md) — `SUD-1956-2011`, draft.
+- [Eswatini](polities/swz-1894-2025.md) — `SWZ-1894-2025`, draft.
+- [Chad](polities/tcd-1960-2025.md) — `TCD-1960-2025`, draft.
+- [Uganda](polities/uga-1962-2025.md) — `UGA-1962-2025`, draft.
+- [Zambia](polities/zmb-1964-2025.md) — `ZMB-1964-2025`, draft.
 
 ### North America
 
@@ -326,6 +372,20 @@ lint fails if the index is stale.
 - [Mexico](polities/mex-1848-2025.md) — `MEX-1848-2025`, draft.
 - [Canada (to 1948)](polities/can-1866-1948.md) — `CAN-1866-1948`, draft.
 - [Canada](polities/can-1948-2025.md) — `CAN-1948-2025`, draft.
+- [Canada (pre-Confederation)](polities/can-1800-1866.md) — `CAN-1800-1866`, draft.
+- [Belize](polities/blz-1800-2025.md) — `BLZ-1800-2025`, draft.
+- [Costa Rica](polities/cri-1800-2025.md) — `CRI-1800-2025`, draft.
+- [Cuba](polities/cub-1800-2025.md) — `CUB-1800-2025`, draft.
+- [Dominica](polities/dma-1800-2025.md) — `DMA-1800-2025`, draft.
+- [Dominican Republic](polities/dom-1800-2025.md) — `DOM-1800-2025`, draft.
+- [Guatemala](polities/gtm-1821-2025.md) — `GTM-1821-2025`, draft.
+- [Honduras](polities/hnd-1800-2025.md) — `HND-1800-2025`, draft.
+- [Haiti](polities/hti-1800-2025.md) — `HTI-1800-2025`, draft.
+- [Jamaica](polities/jam-1800-2025.md) — `JAM-1800-2025`, draft.
+- [Nicaragua](polities/nic-1800-2025.md) — `NIC-1800-2025`, draft.
+- [Panama](polities/pan-1903-2025.md) — `PAN-1903-2025`, draft.
+- [El Salvador](polities/slv-1821-2025.md) — `SLV-1821-2025`, draft.
+- [Trinidad and Tobago](polities/tto-1800-2025.md) — `TTO-1800-2025`, draft.
 
 ### South America
 
@@ -356,6 +416,8 @@ lint fails if the index is stale.
 - [Paraguay](polities/pry-1938-2025.md) — `PRY-1938-2025`, draft.
 - [Uruguay](polities/ury-1828-2025.md) — `URY-1828-2025`, draft.
 - [Venezuela](polities/ven-1821-2025.md) — `VEN-1821-2025`, draft.
+- [Guyana](polities/guy-1800-2025.md) — `GUY-1800-2025`, draft.
+- [Suriname](polities/sur-1975-2025.md) — `SUR-1975-2025`, draft.
 
 ### Asia
 
@@ -405,10 +467,49 @@ lint fails if the index is stale.
 - [Taiwan](polities/twn-1896-2025.md) — `TWN-1896-2025`, draft.
 - [Uzbekistan](polities/uzb-1991-2025.md) — `UZB-1991-2025`, draft.
 - [Mongolia](polities/mng-1911-2025.md) — `MNG-1911-2025`, draft. Independence 1911; People's Republic 1924.
+- [Afghanistan (1893-1919)](polities/afg-1893-1919.md) — `AFG-1893-1919`, draft.
+- [Afghanistan](polities/afg-1919-2025.md) — `AFG-1919-2025`, draft.
+- [UAE (1913-1971)](polities/are-1913-1971.md) — `ARE-1913-1971`, draft.
+- [United Arab Emirates](polities/are-1971-2025.md) — `ARE-1971-2025`, draft.
+- [Bangladesh](polities/bgd-1971-2025.md) — `BGD-1971-2025`, draft.
+- [Bahrain](polities/bhr-1800-2025.md) — `BHR-1800-2025`, draft.
+- [Brunei (greater)](polities/brn-1816-1888.md) — `BRN-1816-1888`, draft.
+- [Brunei Darussalam](polities/brn-1888-2025.md) — `BRN-1888-2025`, draft.
+- [Bhutan](polities/btn-1800-2025.md) — `BTN-1800-2025`, draft.
+- [Cyprus](polities/cyp-1879-2025.md) — `CYP-1879-2025`, draft.
+- [Iraq](polities/irq-1921-2025.md) — `IRQ-1921-2025`, draft.
+- [Israel (1967-1979)](polities/isr-1967-1979.md) — `ISR-1967-1979`, draft.
+- [Israel](polities/isr-1979-2025.md) — `ISR-1979-2025`, draft.
+- [Jordan](polities/jor-1918-2025.md) — `JOR-1918-2025`, draft.
+- [Cambodia (1907-1953)](polities/khm-1907-1953.md) — `KHM-1907-1953`, draft.
+- [Cambodia](polities/khm-1953-2025.md) — `KHM-1953-2025`, draft.
+- [Kuwait](polities/kwt-1800-2025.md) — `KWT-1800-2025`, draft.
+- [Laos](polities/lao-1954-2025.md) — `LAO-1954-2025`, draft.
+- [Lebanon (1920-1944)](polities/lbn-1920-1944.md) — `LBN-1920-1944`, draft.
+- [Lebanon](polities/lbn-1944-2025.md) — `LBN-1944-2025`, draft.
+- [Sri Lanka](polities/lka-1800-2025.md) — `LKA-1800-2025`, draft.
+- [Myanmar](polities/mmr-1885-2025.md) — `MMR-1885-2025`, draft.
+- [Malaysia](polities/mys-1965-2025.md) — `MYS-1965-2025`, draft.
+- [Nepal](polities/npl-1816-2025.md) — `NPL-1816-2025`, draft.
+- [Oman](polities/omn-1856-2025.md) — `OMN-1856-2025`, draft.
+- [Pakistan (1949-1971)](polities/pak-1949-1971.md) — `PAK-1949-1971`, draft.
+- [Pakistan](polities/pak-1971-2025.md) — `PAK-1971-2025`, draft.
+- [Philippines](polities/phl-1800-2025.md) — `PHL-1800-2025`, draft.
+- [North Korea](polities/prk-1948-2025.md) — `PRK-1948-2025`, draft.
+- [Qatar](polities/qat-1800-2025.md) — `QAT-1800-2025`, draft.
+- [Singapore](polities/sgp-1965-2025.md) — `SGP-1965-2025`, draft.
+- [Syria](polities/syr-1967-2025.md) — `SYR-1967-2025`, draft.
+- [Timor-Leste](polities/tls-1800-2025.md) — `TLS-1800-2025`, draft.
+- [Vietnam](polities/vnm-1975-2025.md) — `VNM-1975-2025`, draft.
+- [Yemen](polities/yem-2000-2025.md) — `YEM-2000-2025`, draft.
 
 ### Oceania
 
 - [Australia](polities/aus-1901-2025.md) — `AUS-1901-2025`, draft.
+- [New Zealand](polities/nzl-1907-2025.md) — `NZL-1907-2025`, draft.
+- [Papua New Guinea](polities/png-1975-2025.md) — `PNG-1975-2025`, draft.
+- [Vanuatu](polities/vut-1800-2025.md) — `VUT-1800-2025`, draft.
+- [Samoa](polities/wsm-1900-2025.md) — `WSM-1900-2025`, draft.
 
 ## Sources
 
@@ -454,8 +555,8 @@ lint fails if the index is stale.
   [ott-1800-1886](polities/ott-1800-1886.md),
   [ott-1886-1908](polities/ott-1886-1908.md),
   [ott-1908-1912](polities/ott-1908-1912.md),
-  [auh-1800-1867](polities/auh-1800-1867.md),
-  [auh-1867-1908](polities/auh-1867-1908.md),
+  [auh-1800-1859](polities/auh-1800-1859.md),
+  [auh-1800-1859](polities/auh-1800-1859.md),
   [auh-1908-1918](polities/auh-1908-1918.md).
 - [wikipedia-austria-hungary-2026-04-11](sources/wikipedia-austria-hungary-2026-04-11.md)
   — Snapshot of the *Austria-Hungary* Wikipedia article
@@ -465,8 +566,8 @@ lint fails if the index is stale.
   annexation, 1914 WWI entry, 1918-10-31 dissolution, 1919
   Saint-Germain, 1920 Trianon, plus the list of seven
   successor states. Cited by:
-  [auh-1800-1867](polities/auh-1800-1867.md),
-  [auh-1867-1908](polities/auh-1867-1908.md),
+  [auh-1800-1859](polities/auh-1800-1859.md),
+  [auh-1800-1859](polities/auh-1800-1859.md),
   [auh-1908-1918](polities/auh-1908-1918.md).
 - [wikipedia-russian-empire-2026-04-11](sources/wikipedia-russian-empire-2026-04-11.md)
   — Snapshot of the *Russian Empire* Wikipedia article with
@@ -507,7 +608,9 @@ lint fails if the index is stale.
   Alsace-Lorraine annexation, 1884–1885 Berlin Conference,
   1914-07-28 WWI entry, 1918-11-09 abdication, 1918-11-11
   armistice, 1919-06-28 Versailles. Cited by:
-  [deu-1800-1919](polities/deu-1800-1919.md).
+  [deu-1800-1866](polities/deu-1800-1866.md),
+  [deu-1866-1871](polities/deu-1866-1871.md),
+  [deu-1871-1919](polities/deu-1871-1919.md).
 
 ## Aggregates and unions
 

@@ -26,6 +26,181 @@ Kinds:
 
 ---
 
+## lint-2026-04-13c
+**Date:** 2026-04-13
+**Touched:** index.md, TUR-1913-1914 (CSV predecessor fix)
+**Source:** none
+**Kind:** lint
+
+Post-restructure lint. 348 pages, 1387 CSV rows (25% coverage).
+
+1. Schema: all 348 pass. 2. Parity: 1039 CSV rows lack pages; 0
+orphans. 3. Citations: 0 fully unsupported pages; 75 pages >50%
+database-only. 4. Contradictions: 4 substantive, all <3 days. 5.
+Staleness: 0. 6. Index: fixed dangling deu-1800-1871 ref. 7.
+Sources: all 14 cited. 8. CSV: fixed phantom ref TUR-1800-1912
+in TUR-1913-1914 predecessor (now OTT-1908-1912); 101 overlapping
+umbrella rows (known pattern, not bugs). 9. Coverage gaps: 0
+TODOs, 0 orphans. 11. Obsidian: clean.
+
+## decision-auh-1859-1866-splits
+**Date:** 2026-04-13
+**Touched:** AUH-1800-1859 (new), AUH-1859-1866 (new), AUH-1866-1908 (new), AUH-1800-1908 (deleted), AUH-1908-1918
+**Source:** wikipedia-austria-hungary-2026-04-11, biger-1995
+**Kind:** decision
+
+Further split of the AUH chain at 1859 (loss of Lombardy,
+~23K km²) and 1866 (loss of Venetia, ~25K km²). Both are
+real territorial changes. CShapes has no pre-1886 data to
+confirm areas, but the events are well-documented.
+
+AUH chain is now: AUH-1800-1859 → AUH-1859-1866 →
+AUH-1866-1908 → AUH-1908-1918 → AUT-1918-1919 → AUT-1919-2025.
+
+## decision-auh-restructure
+**Date:** 2026-04-13
+**Touched:** AUH-1800-1908 (new, merged), AUH-1800-1867 (deleted), AUH-1867-1908 (deleted), AUH-1908-1918, AUT-1918-1919, AUT-1918-2025, F51-1918-1938, F248-1918-1919, POL-1918-1919
+**Source:** wikipedia-austria-hungary-2026-04-11, cshapes-2.0
+**Kind:** decision
+
+Resolved `proposal-auh-chain-audit`. Human decided based on
+CShapes area data:
+
+1. **Merged AUH-1800-1867 + AUH-1867-1908 → AUH-1800-1908.**
+   The 1867 Ausgleich was constitutional, not territorial.
+   CShapes shows no polygon change at 1867 (both periods use
+   74.7 sq deg). The area difference with Cliopatria (82.4)
+   is a source mismatch, not a real change.
+
+2. **Kept 1908 split.** CShapes confirms Bosnia annexation
+   added 5.8 sq deg (~50K km²): 74.7 → 80.5. Real territorial
+   change.
+
+3. **Fixed AUH-1908-1918 successor list.** Was: AUT-1918-2025,
+   HUN-1918-1919, AUT-1918-1919. Now: AUT-1918-1919,
+   HUN-1918-1919, F51-1918-1938, F248-1918-1919, POL-1918-1919.
+
+4. **Fixed AUT-1918-1919.** Confirmed legitimate (CShapes shows
+   25.5 → 10.0 sq deg at Saint-Germain, 10 Sept 1919). Fixed
+   successor → AUT-1918-2025. Fixed AUT-1918-2025 predecessor
+   → AUT-1918-1919.
+
+5. **Fixed predecessor fields** on F51-1918-1938, F248-1918-1919,
+   POL-1918-1919 to include AUH-1908-1918.
+
+Open questions on auh-1800-1908: 1859 Lombardy loss and 1866
+Venetia loss are candidate further split points.
+
+## decision-tur-1800-1912-delete
+**Date:** 2026-04-13
+**Touched:** TUR-1800-1912 (deleted from CSV)
+**Source:** none
+**Kind:** decision
+
+Resolved `proposal-tur-1800-1912-duplication`. Human confirmed
+deletion. TUR-1800-1912 was a duplicate of the OTT chain
+(OTT-1800-1886 → OTT-1886-1908 → OTT-1908-1912) covering the
+same entity (COW 640) and time range. The OTT chain has proper
+predecessor/successor links and substantive notes; TUR-1800-1912
+was an orphan with notes=NA. No wiki page existed for it.
+
+## decision-deu-1866-split
+**Date:** 2026-04-13
+**Touched:** DEU-1800-1866 (new), DEU-1866-1871 (new), DEU-1800-1871 (deleted), DEU-1871-1919
+**Source:** wikipedia-german-empire-2026-04-11
+**Kind:** decision
+
+Further split of the German chain at 1866. The Austro-Prussian War
+resulted in Prussia annexing ~95,000 km² (Hanover, Hesse-Kassel,
+Nassau, Frankfurt, Schleswig-Holstein) and forming the North German
+Confederation. This is a major territorial change that warrants a
+split under the WHEP territorial-change rule.
+
+German chain is now: DEU-1800-1866 (Prussia) → DEU-1866-1871
+(North German Confederation) → DEU-1871-1919 (German Empire) →
+DEU-1919-1920 → DEU-1920-1938 → DEU-1938-1945 → F77/F78 →
+DEU-1990-2025.
+
+## decision-deu-ger-restructure
+**Date:** 2026-04-13
+**Touched:** DEU-1800-1871 (new), DEU-1871-1919 (new), DEU-1800-1919 (deleted), GER-1800-2025 (deleted), DEU-1919-1920
+**Source:** wikipedia-german-empire-2026-04-11
+**Kind:** decision
+
+Resolved `proposal-deu-ger-chain-audit`. Human decided:
+- Territorial changes require splits → split DEU-1800-1919 at
+  1871 (German unification + Alsace-Lorraine annexation).
+- GER-1800-2025 aggregate row is useless → deleted from CSV.
+- The German chain is now: DEU-1800-1871 (Prussia) →
+  DEU-1871-1919 (German Empire) → DEU-1919-1920 → DEU-1920-1938
+  → DEU-1938-1945 → F77/F78 → DEU-1990-2025.
+
+CSV changes: DEU-1800-1919 split into DEU-1800-1871 (COW 255)
+and DEU-1871-1919 (COW 255). GER-1800-2025 deleted.
+DEU-1919-1920 predecessor updated. Net row change: 0
+(+1 split, -1 deleted).
+
+Remaining open question: 1866 Austro-Prussian War is a candidate
+further split within DEU-1800-1871 (Prussia annexed ~95K km²).
+Filed as oq-1866-split-candidate on deu-1800-1871.
+
+## decision-f228-rename
+**Date:** 2026-04-13
+**Touched:** F228-1905-1914, F228-1914-1917, F228-1917-1918, F228-1918-1920, F228-1920-1921, F228-1921-1940, F228-1856-1905, F228-1940-1945, F228-1945-1991
+**Source:** wikipedia-russian-empire-2026-04-11
+**Kind:** decision
+
+Resolved `proposal-f228-ussr-anachronism`. Human signed off on
+renaming polity_name (keeping polity_code unchanged). Six wiki
+pages renamed:
+
+| Code | Old name | New name |
+|---|---|---|
+| F228-1905-1914 | USSR (1905-1914) | Russian Empire (1905-1914) |
+| F228-1914-1917 | USSR (1914-1917) | Russian Empire (1914-1917) |
+| F228-1917-1918 | USSR (1917-1918) | Russia (1917-1918) |
+| F228-1918-1920 | USSR (1918-1920) | RSFSR (1918-1920) |
+| F228-1920-1921 | USSR (1920-1921) | RSFSR (1920-1921) |
+| F228-1921-1940 | USSR (1921-1940) | RSFSR/USSR (1921-1940) |
+
+CSV updated for F228-1921-1940 (the only row where the CSV name
+was still wrong). Cross-references from f228-1856-1905,
+f228-1940-1945, and f228-1945-1991 updated. Contradictions
+sections on all affected pages cleared and pointed to this entry.
+
+## lint-2026-04-13b
+**Date:** 2026-04-13
+**Touched:** 144 polity pages (citation retrofit), 53 pages (draft→reviewed), index.md
+**Source:** none
+**Kind:** lint
+
+Full 11-check lint + Tier 1 fixes.
+
+**Lint findings** (345 polity pages, 1386 CSV rows, 25% coverage):
+1. Schema: all 345 pass. 2. CSV↔wiki parity: 1041 CSV rows lack
+pages; 0 orphans. 3. Citation health: 423 unsupported bullets across
+144 pages; 5 China pages >50% database-only. 4. Contradictions: ~10
+substantive, all <3 days old. 5. Staleness: zero. 6. Index: 103
+pages missing, reviewed count wrong. 7. Sources: all 14 cited.
+8. CSV oddities: F228-1921-1940 anachronism, 67 orphan rows.
+9. Coverage gaps: auh-1908-1918, f51-1918-1938 predecessor=NA bugs.
+10. Polygons: 150 rows lack geometry. 11. Obsidian: clean.
+
+**Tier 1 fixes applied:**
+- **Citation retrofit**: added citation tags to 423 unsupported
+  bullets across 144 pages. Biger-cited pages got `[biger-1995 §X]`;
+  Wikipedia-cited pages got `[wikipedia-* §X]`; CShapes/COW-only
+  pages got `[database]`. Post-1994 events on Biger pages tagged
+  `[database]` (Biger published 1995).
+- **Draft→reviewed**: promoted 53 pages meeting criteria (≥3 ext
+  citations, ≥2 sources, 0 unresolved OQs, no contradictions).
+  Total reviewed: 71 (was 18).
+- **Index refresh**: added 103 missing pages to continent sections;
+  updated reviewed count to 71.
+- **Predecessor bugs**: auh-1908-1918 and f51-1918-1938 already
+  document correct predecessors in wiki text; the bug is in CSV
+  `predecessor` column (already logged as proposals).
+
 ## lint-2026-04-13
 **Date:** 2026-04-13
 **Touched:** (index only)

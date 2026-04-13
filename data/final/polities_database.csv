@@ -382,7 +382,7 @@ SWE-1800-2025,Sweden,1800,2025,226,national,Europe,SWE,380,CShapes 2.0,NA,NA,FT;
 CHE-1800-2025,Switzerland,1800,2025,226,national,Europe,CHE,225,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BEL-1831-2025,Belgium,1831,2025,195,national,Europe,BEL,211,CShapes 2.0,NLD-1800-1830,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ALB-1913-2025,Albania,1913,2025,113,national,Europe,ALB,400,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-AUT-1918-2025,Austria,1918,2025,108,national,Europe,AUT,305,CShapes 2.0,AUH-1908-1918,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+AUT-1919-2025,Austria,1919,2025,107,national,Europe,AUT,305,CShapes 2.0,AUT-1918-1919,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FRA-1919-2025,France,1919,2025,107,national,Europe,FRA,220,CShapes 2.0,FRA-1800-1919,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 GRC-1919-2025,Greece,1919,2025,107,national,Europe,GRC,350,CShapes 2.0,GRC-1913-1919,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ITA-1919-2025,Italy,1919,2025,107,national,Europe,ITA,325,CShapes 2.0,ITA-1861-1919,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -412,8 +412,9 @@ MNE-2006-2025,Montenegro,2006,2025,20,national,Europe,MNE,341,CShapes 2.0,SCG-19
 SRB-2008-2025,Serbia,2008,2025,18,national,Europe,SRB,345,CShapes 2.0,SER-2006-2008,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 RUS-2014-2025,Russia,2014,2025,12,national,Europe,RUS,365,CShapes 2.0,RUS-1991-2014,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 UKR-2014-2025,Ukraine,2014,2025,12,national,Europe,UKR,369,CShapes 2.0,UKR-1991-2014,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-AUH-1800-1867,Austrian Empire (to 1867),1800,1867,68,national,Europe,AUH,300,Cliopatria (Seshat),NA,AUH-1867-1908,FT; CShapes,FIXED,"Split from AUH-1800-1908. Habsburg/Austrian Empire before Ausgleich 1867. Polygon back-projected from CShapes 1886; accurate polygons available in Cliopatria and HistoGIS (Austrian Empire Crownlands 1848). Cliopatria polygon: Austrian Empire 1815-1819. Austrian Empire post-Congress of Vienna, pre-Ausgleich."
-AUH-1867-1908,Austria-Hungary (to 1908),1867,1908,42,national,Europe,AUH,300,CShapes 2.0 + CShapes-Europe,AUH-1800-1867,AUH-1908-1918,FT; CShapes,FIXED,Split from AUH-1800-1908. Dual monarchy established by Ausgleich 1867. CShapes 2.0 polygon (from 1886) is valid for this period.
+AUH-1800-1859,Austrian Empire (to 1859),1800,1859,60,national,Europe,AUH,300,Cliopatria (Seshat) + CShapes 2.0,NA,AUH-1859-1866,FT; CShapes,FIXED,"Merged AUH-1800-1867 + AUH-1867-1908. The 1867 Ausgleich was constitutional, not territorial. CShapes polygon starts 1886; pre-1886 uses Cliopatria."
+AUH-1859-1866,Austrian Empire (1859-1866),1859,1866,8,national,Europe,AUH,300,Cliopatria (Seshat) + CShapes 2.0,AUH-1800-1859,AUH-1866-1908,FT; CShapes,FIXED,"Merged AUH-1800-1867 + AUH-1867-1908. The 1867 Ausgleich was constitutional, not territorial. CShapes polygon starts 1886; pre-1886 uses Cliopatria."
+AUH-1866-1908,Austria-Hungary (1866-1908),1866,1908,43,national,Europe,AUH,300,Cliopatria (Seshat) + CShapes 2.0,AUH-1859-1866,AUH-1908-1918,FT; CShapes,FIXED,"Merged AUH-1800-1867 + AUH-1867-1908. The 1867 Ausgleich was constitutional, not territorial. CShapes polygon starts 1886; pre-1886 uses Cliopatria."
 BAV-1800-1871,Bavaria,1800,1871,72,national,Europe,BAV,245,CShapes-Europe,NA,NA,FT; WHEP-fix,VERIFIED,NA
 BOS-1878-1908,Bosnia (1878-1908),1878,1908,31,national,Europe,BOS,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman vilayet (Bosnia Vilayet) before 1878.
 BRE-1800-1871,Bremen (city-state),1800,1871,72,national,Europe,BRE,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
@@ -422,7 +423,9 @@ DNK-1864-1920,Denmark (to 1920),1864,1920,57,national,Europe,DNK,390,CShapes 2.0
 DMO-1800-1860,Duchy Modena,1800,1860,61,national,Europe,DMO,332,Cliopatria (Duchy of Modena and Reggio 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
 DPA-1800-1860,Duchy Parma,1800,1860,61,national,Europe,DPA,335,Cliopatria (Duchy of Parma and Piacenza 1815-1847),NA,ITA-1861-1919,FT,VERIFIED,NA
 FRA-1800-1919,France (to 1919),1800,1919,120,national,Europe,FRA,220,CShapes 2.0 + CShapes-Europe,NA,FRA-1919-2025,FT; CShapes,REGION,NA
-DEU-1800-1919,Germany (to 1919),1800,1919,120,national,Europe,DEU,255,CShapes 2.0 + CShapes-Europe,NA,DEU-1919-1920,FT; CShapes,VERIFIED,NA
+DEU-1800-1866,Prussia (to 1866),1800,1866,67,national,Europe,DEU,255,CShapes 2.0 + CShapes-Europe,NA,DEU-1866-1871,FT; CShapes,VERIFIED,NA
+DEU-1866-1871,North German Confederation (1866-1871),1866,1871,6,national,Europe,DEU,255,CShapes 2.0 + CShapes-Europe,DEU-1800-1866,DEU-1871-1919,FT; CShapes,VERIFIED,NA
+DEU-1871-1919,German Empire (1871-1919),1871,1919,49,national,Europe,DEU,255,CShapes 2.0 + CShapes-Europe,DEU-1866-1871,DEU-1919-1920,FT; CShapes,VERIFIED,NA
 GRC-1830-1913,Greece (to 1913),1830,1913,84,national,Europe,GRC,350,CShapes 2.0 + CShapes-Europe,NA,GRC-1913-1919,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).
 HAN-1800-1866,Hanover,1800,1866,67,national,Europe,HAN,240,Cliopatria (Electorate of Hanover 1800-1802),NA,NA,FT; WHEP-fix,VERIFIED,NA
 HZG-1878-1908,Herzegovina (1878-1908),1878,1908,31,national,Europe,HZG,NA,CShapes 2.0 + CShapes-Europe,NA,NA,FT; CShapes,FIXED,Start date corrected from 1800 to 1878 (Austro-Hungarian occupation after Congress of Berlin). Was Ottoman territory before 1878.
@@ -439,7 +442,6 @@ SWE-1814-1905,Sweden-Norway (1814-1905),1814,1905,92,national,Europe,SWE,380,CSh
 THU-1800-1871,Thuringia,1800,1871,72,national,Europe,THU,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,VERIFIED,NA
 TUS-1800-1860,Tuscany,1800,1860,61,national,Europe,TUS,337,Cliopatria (Grand Duchy of Tuscany 1800-1802),NA,ITA-1861-1919,FT,VERIFIED,NA
 TWO-1800-1860,Two Sicilies,1800,1860,61,national,Europe,TWO,329,Cliopatria (Kingdom of the Two Sicilies 1815-1819),NA,ITA-1861-1919,FT; WHEP-fix,"FIXED: merged duplicate ""Kingdom Two sicilies""",NA
-TUR-1800-1912,Türkiye (to 1912),1800,1912,113,national,Europe,TUR,640,CShapes 2.0 + CShapes-Europe,NA,TUR-1913-1914,FT; CShapes,VERIFIED,NA
 GBR-1800-1921,United Kingdom (to 1921),1800,1921,122,national,Europe,GBR,200,CShapes 2.0 + CShapes-Europe,NA,GBR-1921-2025,FT; CShapes,VERIFIED,NA
 WUR-1800-1871,Württemberg,1800,1871,72,national,Europe,WUR,271,GADM 4.1 or Natural Earth,NA,NA,FT,VERIFIED,NA
 ION-1815-1864,Ionian islands,1815,1864,50,national,Europe,ION,NA,GADM 4.1 or Natural Earth,NA,NA,FT; WHEP-fix,FIXED: end 1862->1864,NA
@@ -476,7 +478,7 @@ BGR-1878-1913,Bulgaria (to 1913),1878,1913,36,national,Europe,BGR,355,CShapes 2.
 MNE-1878-1913,Montenegro (to 1913),1878,1913,36,national,Europe,MNE,341,CShapes 2.0 + CShapes-Europe,NA,MNE-1913-1915,FT; CShapes,VERIFIED,NA
 CRE-1898-1913,Crete,1898,1913,16,national,Europe,CRE,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 F228-1905-1914,Russian Empire (1905-1914),1905,1914,10,national,Europe,NA,365,CShapes 2.0,F228-1856-1905,F228-1914-1917,FT; CShapes,REGION,NA
-AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,national,Europe,AUH,300,CShapes 2.0,AUH-1867-1908,AUT-1918-2025; HUN-1918-1919; AUT-1918-1919,FT; CShapes,VERIFIED,NA
+AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,11,national,Europe,AUH,300,CShapes 2.0,AUH-1866-1908,AUT-1918-1919; HUN-1918-1919; F51-1918-1938; F248-1918-1919; POL-1918-1919,FT; CShapes,VERIFIED,NA
 BGR-1913-1918,Bulgaria (1913-1918),1913,1918,6,national,Europe,BGR,355,CShapes 2.0,BGR-1878-1913,BGR-1918-1919,FT; CShapes,VERIFIED,NA
 GRC-1913-1919,Greece (1913-1919),1913,1919,7,national,Europe,GRC,350,CShapes 2.0,GRC-1830-1913,GRC-1919-2025,FT; CShapes,VERIFIED,NA
 MNE-1913-1915,Montenegro (1913-1915),1913,1915,3,national,Europe,MNE,341,CShapes 2.0,MNE-1878-1913,NA,FT; CShapes,VERIFIED,NA
@@ -484,25 +486,25 @@ MON-1913-1918,Montenegro (1913-1918),1913,1918,6,national,Europe,MON,NA,CShapes 
 ROU-1913-1918,Romania (1913-1918),1913,1918,6,national,Europe,ROU,360,CShapes 2.0,ROU-1859-1913,ROU-1918-1919,FT; CShapes,VERIFIED,NA
 SER-1913-1915,Serbia (1913-1915),1913,1915,3,national,Europe,SER,345,CShapes 2.0,SER-1816-1913,SER-1913-1918,FT; CShapes,VERIFIED,NA
 SER-1913-1918,Serbia (1913-1918),1913,1918,6,national,Europe,SER,345,CShapes 2.0,SER-1816-1913; SER-1913-1915,F248-1918-1919,FT; CShapes,VERIFIED,NA
-TUR-1913-1914,Türkiye (1913-1914),1913,1914,2,national,Europe,TUR,640,CShapes 2.0,TUR-1800-1912,TUR-1914-1918,FT; CShapes,VERIFIED,NA
+TUR-1913-1914,Türkiye (1913-1914),1913,1914,2,national,Europe,TUR,640,CShapes 2.0,OTT-1908-1912,TUR-1914-1918,FT; CShapes,VERIFIED,NA
 TUR-1914-1918,Türkiye (1914-1918),1914,1918,5,national,Europe,TUR,640,CShapes 2.0,TUR-1913-1914,TUR-1918-1920,FT; CShapes,VERIFIED,NA
 F228-1914-1917,Russian Empire (1914-1917),1914,1917,4,national,Europe,NA,365,CShapes 2.0,F228-1905-1914,F228-1917-1918,FT; CShapes,REGION,NA
 FIN-1917-1940,Finland (1917-1940),1917,1940,24,national,Europe,FIN,375,CShapes 2.0,F228-1914-1917,FIN-1940-2025,FT; CShapes,REGION,NA
 F228-1917-1918,Russia (1917-1918),1917,1918,2,national,Europe,NA,365,CShapes 2.0,F228-1914-1917,F228-1918-1920,FT; CShapes,REGION,NA
-AUT-1918-1919,Austria (1918-1919),1918,1919,2,national,Europe,AUT,305,CShapes 2.0,AUH-1908-1918,NA,FT; CShapes,VERIFIED,NA
+AUT-1918-1919,Austria (1918-1919),1918,1919,2,national,Europe,AUT,305,CShapes 2.0,AUH-1908-1918,AUT-1919-2025,FT; CShapes,VERIFIED,NA
 BGR-1918-1919,Bulgaria (1918-1919),1918,1919,2,national,Europe,BGR,355,CShapes 2.0,BGR-1913-1918,BGR-1919-1940,FT; CShapes,VERIFIED,NA
 F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,21,national,Europe,NA,315,CShapes 2.0,AUH-1908-1918,F51-1938-1945,FT; CShapes,REGION,NA
 EST-1918-1940,Estonia (1918-1940),1918,1940,23,national,Europe,EST,366,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 HUN-1918-1919,Hungary (1918-1919),1918,1919,2,national,Europe,HUN,310,CShapes 2.0,AUH-1908-1918,HUN-1919-1920,FT; CShapes,VERIFIED,NA
 LVA-1918-1940,Latvia (1918-1940),1918,1940,23,national,Europe,LVA,367,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 LTU-1918-1920,Lithuania (1918-1920),1918,1920,3,national,Europe,LTU,368,CShapes 2.0,NA,LTU-1920-1940,FT; CShapes,VERIFIED,NA
-POL-1918-1919,Poland (1918-1919),1918,1919,2,national,Europe,POL,290,CShapes 2.0,AUH-1908-1918; F228-1917-1918; DEU-1800-1919,POL-1919-1920,FT; CShapes,VERIFIED,NA
+POL-1918-1919,Poland (1918-1919),1918,1919,2,national,Europe,POL,290,CShapes 2.0,AUH-1908-1918; F228-1917-1918; DEU-1800-1866,POL-1919-1920,FT; CShapes,VERIFIED,NA
 ROU-1918-1919,Romania (1918-1919),1918,1919,2,national,Europe,ROU,360,CShapes 2.0,ROU-1913-1918,ROU-1919-1920,FT; CShapes,VERIFIED,NA
 TUR-1918-1920,Türkiye (1918-1920),1918,1920,3,national,Europe,TUR,640,CShapes 2.0,TUR-1914-1918,TUR-1920-2025,FT; CShapes,VERIFIED,NA
 F228-1918-1920,RSFSR (1918-1920),1918,1920,3,national,Europe,NA,365,CShapes 2.0,F228-1917-1918,F228-1920-1921,FT; CShapes,REGION,NA
 F248-1918-1919,Yugoslavia (1918-1919),1918,1919,2,national,Europe,NA,345,CShapes 2.0,AUH-1908-1918; SER-1913-1918,F248-1919-1920,FT; CShapes,REGION,NA
 BGR-1919-1940,Bulgaria (1919-1940),1919,1940,22,national,Europe,BGR,355,CShapes 2.0,BGR-1918-1919,BGR-1940-2025,FT; CShapes,VERIFIED,NA
-DEU-1919-1920,Germany (1919-1920),1919,1920,2,national,Europe,DEU,260,CShapes 2.0,DEU-1800-1919,DEU-1920-1938,FT; CShapes,VERIFIED,NA
+DEU-1919-1920,Germany (1919-1920),1919,1920,2,national,Europe,DEU,260,CShapes 2.0,DEU-1871-1919,DEU-1920-1938,FT; CShapes,VERIFIED,NA
 HUN-1919-1920,Hungary (1919-1920),1919,1920,2,national,Europe,HUN,310,CShapes 2.0,HUN-1918-1919,HUN-1920-1938,FT; CShapes,VERIFIED,NA
 POL-1919-1920,Poland (1919-1920),1919,1920,2,national,Europe,POL,290,CShapes 2.0,POL-1918-1919,POL-1920-1921,FT; CShapes,VERIFIED,NA
 ROU-1919-1920,Romania (1919-1920),1919,1920,2,national,Europe,ROU,360,CShapes 2.0,ROU-1918-1919,ROU-1920-1940,FT; CShapes,VERIFIED,NA
@@ -515,7 +517,7 @@ ROU-1920-1940,Romania (1920-1940),1920,1940,21,national,Europe,ROU,360,CShapes 2
 F228-1920-1921,RSFSR (1920-1921),1920,1921,2,national,Europe,NA,365,CShapes 2.0,F228-1918-1920,F228-1921-1940,FT; CShapes,REGION,NA
 F248-1920-1991,Yugoslavia (1920-1991),1920,1991,72,national,Europe,NA,345,CShapes 2.0,F248-1919-1920,MKD-1991-2025,FT; FAOSTAT; M49; CShapes,REGION,NA
 POL-1921-1945,Poland (1921-1945),1921,1945,25,national,Europe,POL,290,CShapes 2.0,POL-1920-1921,POL-1945-2025,FT; CShapes,VERIFIED,NA
-F228-1921-1940,USSR (1921-1940),1921,1940,20,national,Europe,NA,365,CShapes 2.0,F228-1920-1921,F228-1940-1945,FT; CShapes,REGION,NA
+F228-1921-1940,RSFSR/USSR (1921-1940),1921,1940,20,national,Europe,NA,365,CShapes 2.0,F228-1920-1921,F228-1940-1945,FT; CShapes,REGION,NA
 F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,8,national,Europe,NA,315,CShapes 2.0,F51-1918-1938,F51-1945-1947,FT; CShapes,REGION,NA
 DEU-1938-1945,Germany (1938-1945),1938,1945,8,national,Europe,DEU,260,CShapes 2.0,DEU-1920-1938,F77-1949-1990; F78-1949-1990,FT; CShapes,VERIFIED,NA
 HUN-1938-1947,Hungary (1938-1947),1938,1947,10,national,Europe,HUN,310,CShapes 2.0,HUN-1920-1938,HUN-1947-2025,FT; CShapes,VERIFIED,NA
@@ -547,7 +549,6 @@ F285-2011-2023,Sark,2011,2023,13,national,Europe,NA,NA,GADM 4.1,NA,NA,FAOSTAT; M
 DZG-1919-1938,Danzig (1919-1938),1919,1938,20,national,Europe,DZG,NA,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
 KOS-2008-2025,Kosovo,2008,2025,18,national,Europe,KOS,347,CShapes 2.0,SER-2006-2008,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 F15-1800-1999,Belgium-Luxembourg,1800,1999,200,aggregate,Europe,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-GER-1800-2025,Germany/Zollverein,1800,2025,226,aggregate,Europe,GER,255,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 DOD-1912-2025,Dodecanese Is.,1912,2025,114,national,Europe,DOD,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ATG-1800-2025,Antigua and Barbuda,1800,2025,226,national,North America,ATG,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BHS-1800-2025,Bahamas,1800,2025,226,national,North America,BHS,31,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
