@@ -103,28 +103,16 @@ PYEOF
 echo "  Converting GeoPackage to GeoJSON (wiki-filtered)..."
 ogr2ogr -f GeoJSON /tmp/polities_raw.geojson "$GPKG" -simplify 0.01 -lco RFC7946=YES 2>/dev/null
 
-# Step 3: Filter and fix geometries
-echo "  Filtering to wiki polities and fixing geometries..."
+# Step 3: Filter, remap codes, and fix geometries
+echo "  Remapping GeoPackage codes to wiki codes and fixing geometries..."
 python3 - "$SITE_DIR" "$WIKI_DIR" << 'PYEOF'
-import json, sys, os
+import json, sys, os, re
 
 site_dir = sys.argv[1]
 wiki_dir = sys.argv[2]
 
-# Get wiki polity codes
-wiki_codes = set()
-for fname in os.listdir(wiki_dir):
-    if not fname.endswith('.md') or fname == '_template.md' or fname.startswith('_'):
-        continue
-    with open(os.path.join(wiki_dir, fname)) as f:
-        for line in f:
-            if line.strip() == '---':
-                break
-            if line.startswith('polity_code:'):
-                wiki_codes.add(line.split(':', 1)[1].strip())
-
-# Need to read past first --- to get to frontmatter
-wiki_codes = set()
+# Parse wiki polity codes with date ranges
+wiki_polities = {}
 for fname in os.listdir(wiki_dir):
     if not fname.endswith('.md') or fname == '_template.md' or fname.startswith('_'):
         continue
@@ -132,16 +120,65 @@ for fname in os.listdir(wiki_dir):
         lines = f.readlines()
     if not lines or lines[0].strip() != '---':
         continue
+    fm = {}
     for line in lines[1:]:
         if line.strip() == '---':
             break
-        if line.startswith('polity_code:'):
-            wiki_codes.add(line.split(':', 1)[1].strip())
+        if ':' in line:
+            k, v = line.split(':', 1)
+            fm[k.strip()] = v.strip()
+    code = fm.get('polity_code', '').strip()
+    if code:
+        try:
+            wiki_polities[code] = {
+                'start': int(fm.get('start_year', 0)),
+                'end': int(fm.get('end_year', 9999))
+            }
+        except ValueError:
+            pass
 
+wiki_codes = set(wiki_polities.keys())
 print(f"  {len(wiki_codes)} wiki polity codes found")
 
 with open('/tmp/polities_raw.geojson') as f:
     data = json.load(f)
+
+# Build a mapping from GeoPackage codes to wiki codes.
+# The GeoPackage was built before CSV restructuring, so codes differ.
+# Strategy: for each GeoPackage feature, if its code isn't in wiki,
+# find a wiki code with the same prefix whose date range overlaps.
+def parse_years(code):
+    """Extract start/end years from a polity code like 'BRA-1800-1903'."""
+    m = re.findall(r'(\d{4})', code)
+    if len(m) >= 2:
+        return int(m[-2]), int(m[-1])
+    return None, None
+
+def find_wiki_match(geo_code):
+    """Find the best wiki code for a GeoPackage code."""
+    if geo_code in wiki_codes:
+        return geo_code
+
+    prefix = geo_code.split('-')[0]
+    gs, ge = parse_years(geo_code)
+    if gs is None:
+        return None
+
+    # Find wiki codes with same prefix and overlapping date range
+    best = None
+    best_overlap = 0
+    for wc, wr in wiki_polities.items():
+        if not wc.startswith(prefix + '-'):
+            continue
+        # Compute overlap
+        overlap_start = max(gs, wr['start'])
+        overlap_end = min(ge, wr['end'])
+        overlap = max(0, overlap_end - overlap_start)
+        if overlap > best_overlap:
+            best_overlap = overlap
+            best = wc
+
+    return best
 
 def ring_area(ring):
     n = len(ring)
@@ -157,21 +194,69 @@ def simplify_ring(ring, max_pts=80):
     if r[0] != r[-1]: r.append(r[0])
     return r
 
-features = []
-skipped = 0
+# Index GeoPackage features by prefix and date range
+import copy
+geo_by_prefix = {}  # prefix -> [(start, end, area, feature)]
 for feat in data['features']:
     g = feat.get('geometry')
     if not g or g.get('type') not in ('Polygon', 'MultiPolygon'):
         continue
-    pc = feat['properties'].get('polity_code', '')
-
-    # Only include wiki-verified polities
-    if pc not in wiki_codes:
-        skipped += 1
+    geo_code = feat['properties'].get('polity_code', '')
+    prefix = geo_code.split('-')[0]
+    gs, ge = parse_years(geo_code)
+    if gs is None:
         continue
+    if g['type'] == 'MultiPolygon':
+        area = sum(ring_area(poly[0]) for poly in g['coordinates'])
+    else:
+        area = ring_area(g['coordinates'][0])
+    if prefix not in geo_by_prefix:
+        geo_by_prefix[prefix] = []
+    geo_by_prefix[prefix].append((gs, ge, area, feat))
+
+# For each wiki polity, find the best matching GeoPackage polygon.
+# Allow the same geo polygon to be reused for multiple wiki codes
+# (e.g. JPN-1800-2025 geo polygon used for JPN-1800-1895, JPN-1895-1945, etc.)
+features = []
+remapped = 0
+matched_wiki = set()
+skipped = 0
+for wiki_code in sorted(wiki_polities.keys()):
+    wr = wiki_polities[wiki_code]
+    prefix = wiki_code.split('-')[0]
+
+    # Direct match first
+    direct = [e for e in geo_by_prefix.get(prefix, [])
+              if f"{prefix}-{e[0]}-{e[1]}" == wiki_code]
+    if direct:
+        best = max(direct, key=lambda x: x[2])
+        feat = copy.deepcopy(best[3])
+        feat['properties']['polity_code'] = wiki_code
+        matched_wiki.add(wiki_code)
+    else:
+        # Find geo polygon with best overlap to this wiki code's date range
+        candidates = geo_by_prefix.get(prefix, [])
+        if not candidates:
+            continue
+        best = None
+        best_score = -1
+        for gs, ge, area, gfeat in candidates:
+            overlap = max(0, min(ge, wr['end']) - max(gs, wr['start']))
+            if overlap > best_score:
+                best_score = overlap
+                best = (gs, ge, area, gfeat)
+        if best and best_score > 0:
+            feat = copy.deepcopy(best[3])
+            feat['properties']['polity_code'] = wiki_code
+            matched_wiki.add(wiki_code)
+            remapped += 1
+        else:
+            continue
+
+    g = feat['geometry']
 
     # Skip CHGIS (wrong CRS)
-    if pc.startswith('CN') and '1820' in pc:
+    if wiki_code.startswith('CN') and '1820' in wiki_code:
         continue
 
     # Fix antimeridian-spanning polygons
@@ -209,7 +294,8 @@ data['features'] = features
 out_path = f"{site_dir}/polities.geojson"
 with open(out_path, 'w') as f:
     json.dump(data, f)
-print(f"  {len(features)} wiki-verified features written ({skipped} non-wiki skipped)")
+no_polygon = len(wiki_codes) - len(matched_wiki)
+print(f"  {len(features)} wiki-verified features written ({remapped} remapped from old codes, {no_polygon} wiki polities with no polygon)")
 PYEOF
 
 echo "  Done. Site data in $SITE_DIR (wiki-sourced only)"
