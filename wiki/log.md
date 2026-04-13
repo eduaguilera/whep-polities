@@ -26,6 +26,29 @@ Kinds:
 
 ---
 
+## decision-colonial-umbrella-cleanup
+**Date:** 2026-04-13
+**Touched:** GOL-1843-2025 (deleted), SGN-1858-2025 (deleted), BAS-1884-2025 (deleted), BCG-1885-2025 (deleted), BEA-1895-2025 (deleted), FEA-1910-2025 (deleted), ITL-1911-2025 (deleted), BEC-1885-2025 (renamed BEC-1885-1966, successor→BWA-1966-2025), ITS-1908-2025 (renamed ITS-1908-1960, successor→SOM-1960-2025), BWA-1966-2025 (predecessor→BEC-1885-1966), SOM-1960-2025 (predecessor→ITS-1908-1960)
+**Source:** cshapes-2.0
+**Kind:** decision
+
+Deleted 7 colonial-era umbrella rows with `end_year=2025` imported
+from CShapes `dependencies=TRUE` layer. All were orphaned (no
+predecessor/successor links), overlapping proper national chains:
+GOL (Gold Coast, covered by GHA chain), SGN (Spanish Guinea, by GNQ),
+BAS (Basutoland, by LSO), BCG (Belgian Congo, by COD), BEA (British
+East Africa, by KEN), FEA (French Equatorial Africa, by CAF/COG/GAB/
+TCD), ITL (Italian Libya, by LBY).
+
+Fixed 2 colonial rows that had no national-chain equivalent:
+BEC-1885-2025→BEC-1885-1966 (Bechuanaland, wired as BWA predecessor),
+ITS-1908-2025→ITS-1908-1960 (Italian Somaliland, wired as SOM
+predecessor). Created wiki pages for both. CSV: 1332→1325.
+
+Note: ITS-1908-1960 may overlap ISM-1889-1924 / ISM-1924-1960
+(same Italian Somaliland entity, different code prefix). Flagged
+for future review.
+
 ## decision-delete-gea
 **Date:** 2026-04-13
 **Touched:** GEA-1884-2025 (deleted), TAN-1922-1964 (successor→TZA-1961-1964), TZA-1961-1964 (predecessor→TAN-1922-1964)

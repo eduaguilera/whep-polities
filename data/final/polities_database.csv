@@ -29,7 +29,7 @@ GAB-1960-2025,Gabon,1960,2025,66,national,Africa,GAB,481,CShapes 2.0,GAB-1919-19
 MLI-1960-2025,Mali,1960,2025,66,national,Africa,MLI,432,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 NER-1960-2025,Niger,1960,2025,66,national,Africa,NER,436,CShapes 2.0,DMG-1800-1899,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 SEN-1960-2025,Senegal,1960,2025,66,national,Africa,SEN,433,CShapes 2.0,CAY-1800-1886; BND-1800-1887; FTT-1800-1862; WLO-1800-1855; SNE-1800-1887; JOL-1800-1890; SLM-1800-1887; SEN-1886-1959,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-SOM-1960-2025,Somalia,1960,2025,66,national,Africa,SOM,520,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+SOM-1960-2025,Somalia,1960,2025,66,national,Africa,SOM,520,CShapes 2.0,ITS-1908-1960,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 TGO-1960-2025,Togo,1960,2025,66,national,Africa,TGO,461,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 CMR-1961-2025,Cameroon,1961,2025,65,national,Africa,CMR,471,CShapes 2.0,CMR-1960-1961,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 NGA-1961-2025,Nigeria,1961,2025,65,national,Africa,NGA,475,CShapes 2.0,NGA-1960-1961; EGB-1830-1914,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -40,7 +40,7 @@ KEN-1963-2025,Kenya,1963,2025,63,national,Africa,KEN,501,CShapes 2.0,KEN-1926-19
 MWI-1964-2025,Malawi,1964,2025,62,national,Africa,MWI,553,CShapes 2.0,FRN-1953-1964,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 TZA-1964-2025,Tanzania,1964,2025,62,national,Africa,TZA,510,CShapes 2.0,TZA-1961-1964,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ZMB-1964-2025,Zambia,1964,2025,62,national,Africa,ZMB,551,CShapes 2.0,BMB-1800-1899; LZI-1800-1890; KZM-1800-1899; FRN-1953-1964,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-BWA-1966-2025,Botswana,1966,2025,60,national,Africa,BWA,571,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+BWA-1966-2025,Botswana,1966,2025,60,national,Africa,BWA,571,CShapes 2.0,BEC-1885-1966,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 LSO-1966-2025,Lesotho,1966,2025,60,national,Africa,LSO,570,CShapes 2.0,LST-1822-1868; LSO-1886-1966,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 GNQ-1968-2025,Equatorial Guinea,1968,2025,58,national,Africa,GNQ,NA,CShapes 2.0,GNQ-1886-1968,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 COM-1975-2025,Comoros,1975,2025,51,national,Africa,COM,403,CShapes 2.0,COM-1946-1975,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -176,19 +176,12 @@ TAN-1922-1964,Tanzania (1922-1964),1922,1964,43,national,Africa,TAN,NA,CShapes 2
 TZA-1961-1964,Tanzania (1961-1964),1961,1964,4,national,Africa,TZA,510,CShapes 2.0,TAN-1922-1964,TZA-1964-2025,FAOSTAT; CShapes,VERIFIED,NA
 ESH-1975-2025,Western Sahara,1975,2025,51,national,Africa,ESH,NA,CShapes 2.0,ESH-1958-1975,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Sovereignty disputed since Spanish withdrawal (1975). Morocco controls most territory; Polisario Front (SADR) claims remainder.
 F62-1800-1993,Ethiopia PDR,1800,1993,194,national,Africa,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-GOL-1843-2025,Gold Coast,1843,2025,183,national,Africa,GOL,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-SGN-1858-2025,Spanish Guinea,1858,2025,168,national,Africa,SGN,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SUD-1882-1899,Sudan (Anglo-Egyptian),1882,1899,18,national,Africa,SUD,NA,CShapes 2.0 (dependencies=TRUE),NA,SUD-1899-1902,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BAS-1884-2025,Basutoland,1884,2025,142,national,Africa,BAS,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BSO-1960-2025,British Protectorate (British Somaliland),1960,2025,66,national,Africa,BSO,NA,CShapes 2.0 (dependencies=TRUE),BSO-1884-1960,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BEC-1885-2025,Bechuanaland Protectorate,1885,2025,141,national,Africa,BEC,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BCG-1885-2025,Belgian Congo,1885,2025,141,national,Africa,BCG,211,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+BEC-1885-1966,Bechuanaland Protectorate (1885-1966),1885,1966,82,national,Africa,BEC,NA,CShapes 2.0 (dependencies=TRUE),NA,BWA-1966-2025,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,49,national,Africa,FRS,987,CShapes 2.0 (dependencies=TRUE),FRS-1884-1977,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-BEA-1895-2025,British East Africa,1895,2025,131,national,Africa,BEA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 FWA-1904-2025,French West Africa,1904,2025,122,national,Africa,FWA,NA,CShapes 2.0 (dependencies=TRUE),FWA-1902-1904,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-ITS-1908-2025,Italian Somaliland,1908,2025,118,national,Africa,ITS,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-FEA-1910-2025,French Equatorial Africa,1910,2025,116,national,Africa,FEA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
-ITL-1911-2025,Italian Libia Cyrenaica (Lybia),1911,2025,115,national,Africa,ITL,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,53,national,Africa,ITS,NA,CShapes 2.0 (dependencies=TRUE),NA,SOM-1960-2025,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BCA-1914-1919,British Cameroon,1914,1919,6,national,Africa,BCA,NA,CShapes 2.0 (dependencies=TRUE),NA,BCA-1919-1961,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 RWB-1919-1922,Rwanda and Burundi,1919,1922,4,national,Africa,RWB,NA,CShapes 2.0 (dependencies=TRUE),TAN-1891-1920,RWB-1922-1962,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ATA-1800-2025,Antarctica,1800,2025,226,national,Antarctica,ATA,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA

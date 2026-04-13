@@ -7,12 +7,12 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1332 (as of 2026-04-13) |
-| Polity pages | 446 (all sourced, no bulk trash) |
+| Polities in CSV | 1325 (as of 2026-04-13) |
+| Polity pages | 448 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
 | Pages with `status: reviewed` | 68 |
 | Pages with `status: contested` | 0 |
-| Pages citing biger-1995 | 255 |
+| Pages citing biger-1995 | 257 |
 | Open `proposal`-kind log entries | 0 |
 
 ## Polities by continent
@@ -310,6 +310,7 @@ lint fails if the index is stale.
   changes (CShapes same area throughout). TUN-1886-1955 sub-row deleted.
 - [South Africa](polities/zaf-1828-2025.md) — `ZAF-1828-2025`, draft.
 - [Botswana](polities/bwa-1966-2025.md) — `BWA-1966-2025`, draft. Independence 1966.
+- [Bechuanaland Protectorate](polities/bec-1885-1966.md) — `BEC-1885-1966`, draft, 2 open questions. British protectorate 1885; independent as Botswana 1966. Successor: BWA-1966-2025.
 - [Congo (Republic)](polities/cog-1960-2025.md) — `COG-1960-2025`, draft. Independence from France 1960.
 - [Eritrea (Italian coastal)](polities/eri-1885-1889.md) — `ERI-1885-1889`, draft. Massawa 1885; coastal strip only.
 - [Eritrea (colony/admin)](polities/eri-1889-1952.md) — `ERI-1889-1952`, draft. Colony 1889; British admin 1941; federated with Ethiopia 1952.
@@ -333,6 +334,7 @@ lint fails if the index is stale.
 - [Sierra Leone (1889-1961)](polities/sle-1889-1961.md) — `SLE-1889-1961`, draft. Expanded colony; protectorate declared 1896.
 - [Sierra Leone (1961-2025)](polities/sle-1961-2025.md) — `SLE-1961-2025`, draft. Independent Sierra Leone from 27 April 1961.
 - [Somalia](polities/som-1960-2025.md) — `SOM-1960-2025`, draft. Formed 1960 from British/Italian Somaliland.
+- [Italian Somaliland (1908-1960)](polities/its-1908-1960.md) — `ITS-1908-1960`, draft, 3 open questions. Italian colony; UN trusteeship 1950; merged with British Somaliland to form Somalia 1960. Successor: SOM-1960-2025.
 - [Tanzania (1891-1920)](polities/tan-1891-1920.md) — `TAN-1891-1920`, draft. German East Africa; WWI conquest, League mandate 1920.
 - [Tanzania (1961-1964)](polities/tza-1961-1964.md) — `TZA-1961-1964`, draft. Tanganyika independent 1961; union with Zanzibar 1964.
 - [Tanzania](polities/tza-1964-2025.md) — `TZA-1964-2025`, draft. Union of Tanganyika and Zanzibar 1964.
