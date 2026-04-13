@@ -120,7 +120,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
     <h1>WHEP Polities Database</h1>
     <button id="panel-minimize" title="Minimize panel">&#x2212;</button>
   </div>
-  <div class="subtitle">Historical political entities, 1800-2025</div>
+  <div class="subtitle">Wiki-sourced political entities, 1800-2025</div>
 
   <input type="text" id="year-display" value="1900" inputmode="numeric" />
   <input type="range" id="year-range" min="1800" max="2025" value="1900" step="1" />
@@ -356,7 +356,8 @@ function showInfo(code) {
 
   const color = polityColor(p.polity_code);
   let html = `
-    <span class="type-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${p.polity_type}</span><br>
+    <span class="type-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${p.polity_type}</span>
+    ${p.wiki_status ? `<span class="type-badge" style="background:${p.wiki_status === 'reviewed' ? '#4CAF5022' : '#FF980022'};color:${p.wiki_status === 'reviewed' ? '#4CAF50' : '#FF9800'};border:1px solid ${p.wiki_status === 'reviewed' ? '#4CAF5044' : '#FF980044'};margin-left:4px">${p.wiki_status}</span>` : ''}<br>
     <b>Code:</b> <span>${p.polity_code}</span><br>
     <b>Period:</b> <span>${p.start_year} - ${p.end_year}</span> (${p.end_year - p.start_year + 1} years)<br>
     <b>Continent:</b> ${p.continent}<br>
