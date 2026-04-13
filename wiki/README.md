@@ -292,8 +292,11 @@ Prompts for each workflow live in `wiki/prompts/`:
    COW, historical atlases). The CSV in `data/final/polities_database.csv`
    was built by automated processes and contains known errors. When the
    wiki's sourced findings contradict the CSV, the CSV is wrong and
-   should be updated — not the other way around. The wiki proposes
-   changes via `proposal`-kind log entries; humans apply them to the CSV.
+   should be updated — not the other way around. The agent applies
+   CSV changes directly (splits, merges, renames, new rows, deletions)
+   when backed by sourced wiki findings, and logs each change.
+   Structural decisions (new chain architecture, polity-definition
+   edge cases) use `decision`-kind log entries.
    Nothing in the existing WHEP state — the CSV, the `docs/` tree, the
    R pipeline, prior log entries — should be treated as correct by
    default. Every artifact was produced by fallible humans and automated

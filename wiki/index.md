@@ -7,9 +7,9 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1387 (as of 2026-04-13) |
-| Polity pages | 348 (all sourced, no bulk trash) |
-| Sources ingested | 14 |
+| Polities in CSV | 1385 (as of 2026-04-13) |
+| Polity pages | 350 (all sourced, no bulk trash) |
+| Sources ingested | 15 |
 | Pages with `status: reviewed` | 71 |
 | Pages with `status: contested` | 0 |
 | Pages citing biger-1995 | 234 |
@@ -302,7 +302,9 @@ lint fails if the index is stale.
 - [South Africa](polities/zaf-1828-2025.md) — `ZAF-1828-2025`, draft.
 - [Botswana](polities/bwa-1966-2025.md) — `BWA-1966-2025`, draft. Independence 1966.
 - [Congo (Republic)](polities/cog-1960-2025.md) — `COG-1960-2025`, draft. Independence from France 1960.
-- [Eritrea](polities/eri-1882-2025.md) — `ERI-1882-2025`, draft. Italian colony 1889; independence 1993.
+- [Eritrea (Italian coastal)](polities/eri-1885-1889.md) — `ERI-1885-1889`, draft. Massawa 1885; coastal strip only.
+- [Eritrea (colony/admin)](polities/eri-1889-1952.md) — `ERI-1889-1952`, draft. Colony 1889; British admin 1941; federated with Ethiopia 1952.
+- [Eritrea](polities/eri-1993-2025.md) — `ERI-1993-2025`, draft. Independence 1993.
 - [Gabon](polities/gab-1960-2025.md) — `GAB-1960-2025`, draft. Independence 17 Aug 1960.
 - [Gambia](polities/gmb-1800-2025.md) — `GMB-1800-2025`, draft. Semi-enclave in Senegal; independence 1965.
 - [Guinea-Bissau](polities/gnb-1879-2025.md) — `GNB-1879-2025`, draft. Independence from Portugal 1974.

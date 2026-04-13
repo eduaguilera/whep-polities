@@ -131,6 +131,14 @@ another academic source), write real sourced claims, and cross-
 reference with existing pages. A page that only cites `[database]`
 is trash — delete it. Quality over quantity.
 
+**The wiki drives the CSV, not the reverse.** When sourced research
+establishes that a polity existed with specific dates and territory,
+create both the wiki page and the CSV row — do not wait for the CSV
+to have a matching row first. When sources show the CSV's chain
+structure is wrong (umbrella rows that should be split, overlapping
+rows, wrong dates), fix the CSV to match the sourced findings.
+The CSV is a downstream artifact of the wiki's research.
+
 ### Tier 3 — New polity page creation
 
 Questions or structural gaps that resolve by creating a new polity

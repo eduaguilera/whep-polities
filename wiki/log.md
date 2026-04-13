@@ -26,6 +26,32 @@ Kinds:
 
 ---
 
+## decision-eri-chain-restructure
+**Date:** 2026-04-13
+**Touched:** ERI-1885-1889 (new), ERI-1889-1952 (new), ERI-1993-2025 (new), ERI-1882-2025 (deleted), ERI-1882-1889 (deleted), ERI-1889-1900 (deleted), ERI-1900-1941 (deleted), ERI-1941-1952 (deleted)
+**Source:** cshapes-2.0, biger-1995, wikipedia-eritrea-2026-04-13
+**Kind:** decision
+
+First wiki-driven chain restructure: built the Eritrea chain from
+sources rather than adapting wiki to CSV. Methodology:
+
+1. Queried CShapes for time-steps: 5 entries, area jumps from
+   1.59 (coastal) to 10.18 sq deg (inland) at 1889-05-02,
+   then gap 1952-09-15 to 1993-05-24 (part of Ethiopia).
+2. Cross-referenced Biger §eritrea: colony created 1889, Adwa
+   1896, EPLF war, 1993 referendum.
+3. Fetched Wikipedia (Eritrea, Italian Eritrea, Federation):
+   exact dates for Massawa (1885-02-05), Wuchale (1889-05-02),
+   colony proclamation (1890-01-01), British capture
+   (1941-05-19), federation (1952-09-15), annexation
+   (1962-11-14), independence (1993-05-24).
+
+Result: 5 old CSV rows (umbrella + 4 sub-rows) replaced by 3
+sourced rows. The 1900 and 1941 CShapes splits were
+administrative (same area), not territorial — merged into
+ERI-1889-1952. The 1952-1993 gap is real: Eritrea was an
+Ethiopian province, part of the ETH chain.
+
 ## lint-2026-04-13c
 **Date:** 2026-04-13
 **Touched:** index.md, TUR-1913-1914 (CSV predecessor fix)

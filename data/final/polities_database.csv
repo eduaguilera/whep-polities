@@ -11,7 +11,6 @@ DZA-1831-2025,Algeria,1831,2025,195,national,Africa,DZA,615,CShapes 2.0,NA,NA,FT
 LBR-1847-2025,Liberia,1847,2025,179,national,Africa,LBR,450,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 GNB-1879-2025,Guinea-Bissau,1879,2025,147,national,Africa,GNB,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 TUN-1881-2025,Tunisia,1881,2025,145,national,Africa,TUN,616,CShapes 2.0,TUN-1800-1881,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-ERI-1882-2025,Eritrea,1882,2025,144,national,Africa,ERI,531,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MDG-1882-2025,Madagascar,1882,2025,144,national,Africa,MDG,580,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NAM-1884-2025,Namibia,1884,2025,142,national,Africa,NAM,565,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ZWE-1890-2025,Zimbabwe,1890,2025,136,national,Africa,ZWE,552,CShapes 2.0,NDB-1823-1894,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -60,7 +59,6 @@ COG-1882-1898,Congo (to 1898),1882,1898,17,national,Africa,COG,NA,CShapes 2.0,NA
 COD-1885-1891,Democratic Republic of the Congo (to 1891),1885,1891,7,national,Africa,COD,NA,CShapes 2.0,LBA-1800-1885; LND-1800-1887,COD-1891-1894,FT; CShapes,FIXED,Start corrected from 1800 to 1885 (Congo Free State recognized at Berlin Conference). Luba Lunda and Kongo kingdoms before 1885. Paine et al. (2024) has pre-colonial state polygons.
 EGY-1800-1899,Egypt (to 1899),1800,1899,100,national,Africa,EGY,651,"Cliopatria (Muhammad Ali dynasty 1848-1864, 1.83M km2)",NA,EGY-1899-1925,FT; CShapes,VERIFIED,Khedivate of Egypt including Sudan (conquered 1820-24) and Equatoria. Cliopatria polygon represents mid-century extent (~1.83M km2). Egypt lost Sudan to Mahdist revolt by 1885. Pre-1820: Egypt proper only (~1M km2).
 EGY-1800-1922,Egypt (to 1922),1800,1922,123,national,Africa,EGY,651,CShapes 2.0,NA,NA,FT; CShapes,VERIFIED,NA
-ERI-1882-1889,Eritrea (to 1889),1882,1889,8,national,Africa,ERI,531,CShapes 2.0,NA,ERI-1889-1900,FT; CShapes,FIXED,Start corrected from 1800 to 1882 (Italy purchased Assab). Was Ethiopian Empire highlands and Ottoman coast before 1882.
 ETH-1800-1889,Ethiopia (to 1889),1800,1889,90,national,Africa,ETH,530,"Cliopatria (Ethiopian Empire 1769-1889, 240K km2)",NA,ETH-1889-1897,FT; CShapes,VERIFIED,"Pre-Menelik Ethiopia. Zemene Mesafint (Era of Princes). Highland core only: Gondar, Gojjam, Shewa, Tigray, Wello. ~240,000 km2. Cliopatria polygon replaces back-projected CShapes which was 2-3x too large."
 GAB-1839-1912,Gabon (to 1912),1839,1912,74,national,Africa,GAB,481,CShapes 2.0,NA,GAB-1912-1919,FT; CShapes,FIXED,Start corrected from 1800 to 1839 (first French treaty with King Denis at Gabon Estuary). Mpongwe and Orungu coastal polities before 1839.
 GHA-1821-1888,Ghana (to 1888),1821,1888,68,national,Africa,GHA,452,CShapes 2.0,NA,GHA-1888-1898,FT; CShapes,FIXED,Start corrected from 1800 to 1821 (British Crown took over forts). Ashanti Empire dominated the region in 1800. Paine et al. (2024) has Ashanti polygon.
@@ -1247,9 +1245,6 @@ KEN-1926-1963,Kenya (1926-1963),1926,1963,38,national,Africa,KEN,501,CShapes 2.0
 RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,41,national,Africa,RWB,515,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=mandate, ruler=BEL."
 DJI-1886-1900,Djibouti (1886-1900),1886,1900,15,national,Africa,DJI,522,CShapes 2.0 (dependencies=TRUE),NA,DJI-1900-1977,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 DJI-1900-1977,Djibouti (1900-1977),1900,1977,78,national,Africa,DJI,522,CShapes 2.0 (dependencies=TRUE),DJI-1886-1900,DJI-1977-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
-ERI-1889-1900,Eritrea (1889-1900),1889,1900,12,national,Africa,ERI,531,CShapes 2.0 (dependencies=TRUE),ERI-1882-1889,ERI-1900-1941,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=ITA."
-ERI-1900-1941,Eritrea (1900-1941),1900,1941,42,national,Africa,ERI,531,CShapes 2.0 (dependencies=TRUE),ERI-1889-1900,ERI-1941-1952,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=ITA."
-ERI-1941-1952,Eritrea (1941-1952),1941,1952,12,national,Africa,ERI,531,CShapes 2.0 (dependencies=TRUE),ERI-1900-1941,NA,CShapes,VERIFIED,"Colonial period. CShapes status=occupied, ruler=ITA."
 ANG-1905-1975,Angola (1905-1975),1905,1975,71,national,Africa,ANG,540,CShapes 2.0 (dependencies=TRUE),ANG-1891-1905,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=PRT."
 MOZ-1891-1975,Mozambique (1891-1975),1891,1975,85,national,Africa,MOZ,541,CShapes 2.0 (dependencies=TRUE),MOZ-1800-1891,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=PRT."
 ZMB-1911-1953,Zambia (1911-1953),1911,1953,43,national,Africa,ZMB,551,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
@@ -1386,3 +1381,6 @@ F420-2017-2025,Sub-Saharan Africa,2017,2025,9,aggregate,Global,NA,NA,none (stati
 DEDREG-2021-2025,Developed regions,2021,2025,5,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49,VERIFIED,NA
 DNGREG-2021-2025,Developing regions,2021,2025,5,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FAOSTAT; M49,VERIFIED,NA
 F5503-1800-2025,Micronesia (Oceania region),1800,2025,226,aggregate,Oceania,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
+ERI-1885-1889,"Eritrea (Italian coastal, 1885-1889)",1885,1889,5,national,Africa,ERI,531,CShapes 2.0,NA,ERI-1889-1952,FT; FAOSTAT; M49; CShapes,VERIFIED,Italian presence at Massawa from Feb 1885. CShapes area 1.59 sq deg (~14K km2). Coastal strip only.
+ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",1889,1952,64,national,Africa,ERI,531,CShapes 2.0,ERI-1885-1889,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,"Colony of Eritrea proclaimed 1 Jan 1890 (Treaty of Wuchale 2 May 1889). CShapes area 10.18 sq deg (~90K km2). Italian colony 1889-1941, British admin 1941-1952. Federated with Ethiopia 15 Sept 1952."
+ERI-1993-2025,Eritrea,1993,2025,33,national,Africa,ERI,531,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Independence referendum 24 May 1993. Same territory as colonial-era Eritrea (10.18 sq deg). Predecessor is ETH chain (Eritrea was Ethiopian province 1962-1993).

@@ -36,9 +36,13 @@ Then:
 
 2. **Identify affected polity pages.** From the source, list the
    polity codes whose pages should be updated. Cross-check against
-   `data/final/polities_database.csv` — if the source names a polity
-   that has no CSV row, do NOT create a page; instead add an entry to
-   `wiki/log.md` of kind `proposal` with the rationale for adding it.
+   `data/final/polities_database.csv`. If the source establishes that
+   a polity existed (with sourced territorial extent and dates) but
+   the CSV has no matching row, **create both the wiki page and the
+   CSV row** — the wiki drives the CSV, not the reverse. Log the new
+   row in `log.md`. If the source's dates or chain structure contradict
+   the CSV's existing rows, the source wins: split, merge, or rename
+   CSV rows to match the sourced findings and log each change.
 
    While you are cross-checking the CSV, **audit the rows you are
    about to cite**. Under the critical-stance rule in `wiki/README.md`,
@@ -97,6 +101,21 @@ Then:
 claim from an external source beyond `[database]`. Never bulk-generate
 pages from CSV metadata alone — that creates empty shells that violate
 the wiki's role as the primary source of truth.
+
+**Chain restructure methodology** (for umbrella rows and legacy chains):
+1. Query CShapes for the polity's time-steps (`ogrinfo -sql` on
+   `cshapes2_full.gpkg` by cowcode). This gives exact dates and areas
+   for every boundary change.
+2. Cross-reference with Biger (already ingested) for historical context,
+   treaty names, and boundary descriptions.
+3. Fetch Wikipedia for exact dates CShapes or Biger don't provide.
+   Create a `wikipedia-<country>-<date>.md` source file.
+4. Build the chain from sourced findings: split only at real territorial
+   changes (area changes in CShapes), not at regime changes (same area).
+   Merge administrative CShapes splits that show no area change.
+5. Delete old CSV rows (umbrella + legacy sub-rows), create new rows
+   matching the sourced chain. Update predecessor/successor fields.
+6. Create wiki pages for each new row. Delete old pages.
 
 **Constraints:**
 - The agent maintains `data/final/polities_database.csv` directly when
