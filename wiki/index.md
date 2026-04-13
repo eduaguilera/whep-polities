@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1333 (as of 2026-04-13) |
-| Polity pages | 413 (all sourced, no bulk trash) |
+| Polity pages | 446 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
 | Pages with `status: reviewed` | 68 |
 | Pages with `status: contested` | 0 |
@@ -357,7 +357,7 @@ lint fails if the index is stale.
 - [Burkina Faso (1947-1960)](polities/bfa-1947-1960.md) — `BFA-1947-1960`, draft.
 - [Burkina Faso](polities/bfa-1960-2025.md) — `BFA-1960-2025`, draft.
 - [Kingdom of Buganda](polities/bga-1800-1894.md) — `BGA-1800-1894`, draft.
-- [Cote d'Ivoire (1933-1947)](polities/civ-1933-1947.md) — `CIV-1933-1947`, draft. French colony; area changed 1933 absorption of Upper Volta.
+- [Cote d'Ivoire (1932-1947)](polities/civ-1932-1947.md) — `CIV-1932-1947`, draft. French colony; area changed 1932 absorption of Upper Volta.
 - [Central African Republic (1919-1960)](polities/caf-1919-1960.md) — `CAF-1919-1960`, draft.
 - [Central African Republic](polities/caf-1960-2025.md) — `CAF-1960-2025`, draft.
 - [DR Congo (1894-1910)](polities/cod-1894-1910.md) — `COD-1894-1910`, draft. Congo Free State / Belgian Congo; boundaries settled 1894.
@@ -422,6 +422,34 @@ lint fails if the index is stale.
 - [Kingdom of Porto-Novo](polities/pnv-1800-1882.md) — `PNV-1800-1882`, draft, 3 open questions. Gbe coastal kingdom on the Bight of Benin; French protectorate formally 1882.
 - [Ndebele Kingdom](polities/ndb-1823-1894.md) — `NDB-1823-1894`, draft. Matabele kingdom in modern Zimbabwe; British BSAC subjugation 1893-1894.
 - [Wadai Empire](polities/wad-1800-1912.md) — `WAD-1800-1912`, draft. Muslim sultanate in Chad basin; French conquest completed 1912.
+- [Angola (1890-1891)](polities/ang-1890-1891.md) — `ANG-1890-1891`, draft. Portuguese colony; transitional boundary period before Anglo-Portuguese Treaty 1891.
+- [Kingdom of Bundu](polities/bnd-1800-1887.md) — `BND-1800-1887`, draft. Fula Islamic state on Senegal-Mali border; conquered by France ~1887.
+- [Kingdom of Bunyoro](polities/bny-1800-1899.md) — `BNY-1800-1899`, draft. Pre-colonial kingdom in western Uganda; British conquest 1899.
+- [Central African Republic (1906-1912)](polities/caf-1906-1912.md) — `CAF-1906-1912`, draft. Oubangui-Chari-Tchad; united French colony from 1906.
+- [Cote d'Ivoire (1902-1932)](polities/civ-1902-1932.md) — `CIV-1902-1932`, draft. French colony; pre-Upper Volta dissolution.
+- [DR Congo (1891-1894)](polities/cod-1891-1894.md) — `COD-1891-1894`, draft. Congo Free State; boundary delimitation period.
+- [Congo (1906-1912)](polities/cog-1906-1912.md) — `COG-1906-1912`, draft. French Congo (Moyen-Congo); AEF reorganisation period.
+- [Imamate of Futa Toro](polities/ftt-1800-1862.md) — `FTT-1800-1862`, draft. Fula Islamic state on middle Senegal River; conquered by France ~1862.
+- [Gabon (1912-1919)](polities/gab-1912-1919.md) — `GAB-1912-1919`, draft. French Gabon reduced by Neukamerun cession 1912; restored 1919.
+- [Ghana (to 1888)](polities/gha-1821-1888.md) — `GHA-1821-1888`, draft. British Gold Coast, earliest configuration; coastal forts from 1821.
+- [Kingdom of Jolof](polities/jol-1800-1890.md) — `JOL-1800-1890`, draft. Wolof kingdom in interior Senegal; conquered by France ~1890.
+- [Kenya (1907-1924)](polities/ken-1907-1924.md) — `KEN-1907-1924`, draft. British protectorate/colony; Eastern Province transfer from Uganda.
+- [Kenya (1924-1926)](polities/ken-1924-1926.md) — `KEN-1924-1926`, draft. Colony; post-Jubaland transfer to Italy.
+- [Mauritania (1960-1975)](polities/mrt-1960-1975.md) — `MRT-1960-1975`, draft. Independent Mauritania; pre-Western Sahara partition.
+- [Kingdom of Nkore (Ankole)](polities/nkr-1800-1901.md) — `NKR-1800-1901`, draft. Pre-colonial kingdom in southwestern Uganda; incorporated 1901.
+- [Northern Nigeria (1899-1904)](polities/nni-1899-1904.md) — `NNI-1899-1904`, draft. British protectorate; initial configuration after Royal Niger Company revocation.
+- [Northwestern Rhodesia](polities/nwr-1900-1905.md) — `NWR-1900-1905`, draft. BSAC territory in modern Zambia; pre-Northern Rhodesia merger.
+- [Kingdom of Saloum](polities/slm-1800-1887.md) — `SLM-1800-1887`, draft. Serer kingdom in Sine-Saloum, Senegal; French protectorate 1887.
+- [Kingdom of Sine](polities/sne-1800-1887.md) — `SNE-1800-1887`, draft. Serer kingdom in Sine-Saloum, Senegal; French protectorate 1887.
+- [Southern Nigeria (1899-1906)](polities/sni-1899-1906.md) — `SNI-1899-1906`, draft. British territories; pre-amalgamation into Colony and Protectorate.
+- [Spanish West Africa (to 1912)](polities/swa-1884-1912.md) — `SWA-1884-1912`, draft. Spanish colonial territory; Bonelli treaty 1884 to Treaty of Fez 1912.
+- [Tanzania (1920-1922)](polities/tan-1920-1922.md) — `TAN-1920-1922`, draft. Tanganyika under British military administration post-WWI.
+- [Tanzania (1922-1964)](polities/tan-1922-1964.md) — `TAN-1922-1964`, draft. Tanganyika under League of Nations / UN mandate; independent 1961.
+- [Chad (1900-1912)](polities/tcd-1900-1912.md) — `TCD-1900-1912`, draft. French Chad; initial military territory.
+- [Chad (1912-1919)](polities/tcd-1912-1919.md) — `TCD-1912-1919`, draft. French Chad; post-AEF reorganisation.
+- [Uganda (1902-1910)](polities/uga-1902-1910.md) — `UGA-1902-1910`, draft. Protectorate after Eastern Province transfer to Kenya.
+- [Uganda (1910-1926)](polities/uga-1910-1926.md) — `UGA-1910-1926`, draft. Protectorate; boundary adjustment 1910; reduced 1926.
+- [Kingdom of Waalo](polities/wlo-1800-1855.md) — `WLO-1800-1855`, draft. Wolof kingdom at mouth of Senegal River; conquered by France 1855.
 
 ### North America
 
@@ -545,6 +573,7 @@ lint fails if the index is stale.
 - [Jordan (1920-1923)](polities/jor-1920-1923.md) — `JOR-1920-1923`, draft. Early mandate, area ~4.26 sq deg.
 - [Jordan (1923-1946)](polities/jor-1923-1946.md) — `JOR-1923-1946`, draft. Mandate period, area doubled to ~8.45 sq deg.
 - [Jordan](polities/jor-1946-2025.md) — `JOR-1946-2025`, draft. Independent Hashemite Kingdom.
+- [Cambodia (to 1904)](polities/khm-1800-1904.md) — `KHM-1800-1904`, draft. Kingdom of Cambodia; French protectorate from 1863; pre-western provinces return.
 - [Cambodia (1904-1907)](polities/khm-1904-1907.md) — `KHM-1904-1907`, draft. French Indochina; Siam cedes western provinces 1907.
 - [Cambodia (1907-1953)](polities/khm-1907-1953.md) — `KHM-1907-1953`, draft.
 - [Cambodia](polities/khm-1953-2025.md) — `KHM-1953-2025`, draft.
@@ -554,14 +583,17 @@ lint fails if the index is stale.
 - [Lebanon (1920-1944)](polities/lbn-1920-1944.md) — `LBN-1920-1944`, draft.
 - [Lebanon](polities/lbn-1944-2025.md) — `LBN-1944-2025`, draft.
 - [Sri Lanka](polities/lka-1800-2025.md) — `LKA-1800-2025`, draft, 1 open question. From database floor; British Ceylon colony; independence 4 Feb 1948.
+- [Burma (1826-1852)](polities/mmr-1826-1852.md) — `MMR-1826-1852`, draft. Post-First Anglo-Burmese War Konbaung Burma; ~553K km2; Lower Burma lost 1852.
 - [Upper Burma (1852-1885)](polities/mmr-1852-1885.md) — `MMR-1852-1885`, draft. Kingdom of Burma; British annexed Lower Burma 1852, Upper 1885.
 - [Myanmar](polities/mmr-1885-2025.md) — `MMR-1885-2025`, draft.
+- [Federation of Malaya (1957-1963)](polities/mys-1957-1963.md) — `MYS-1957-1963`, draft. Independent Malaya; pre-Malaysia formation with Sabah/Sarawak.
 - [Malaysia (1963-1965)](polities/mys-1963-1965.md) — `MYS-1963-1965`, draft. Federation including Singapore; Singapore expelled 1965.
 - [Malaysia](polities/mys-1965-2025.md) — `MYS-1965-2025`, draft.
 - [Greater Nepal (to 1816)](polities/npl-1800-1816.md) — `NPL-1800-1816`, draft. Expanded Gurkha kingdom; Sugauli Treaty 1816 reduced territory.
 - [Nepal](polities/npl-1816-2025.md) — `NPL-1816-2025`, draft.
 - [Omani Empire (to 1856)](polities/omn-1800-1856.md) — `OMN-1800-1856`, draft. Maritime empire; split into Oman and Zanzibar 1856.
 - [Oman](polities/omn-1856-2025.md) — `OMN-1856-2025`, draft.
+- [Palestine (1920-1948)](polities/pal-1920-1948.md) — `PAL-1920-1948`, draft. British Mandate; San Remo 1920 to Israeli independence 1948.
 - [Pakistan (1947-1949)](polities/pak-1947-1949.md) — `PAK-1947-1949`, draft. Partition of India; Junagadh/Kashmir disputes settled 1949.
 - [Pakistan (1949-1971)](polities/pak-1949-1971.md) — `PAK-1949-1971`, draft.
 - [Pakistan](polities/pak-1971-2025.md) — `PAK-1971-2025`, draft.
@@ -569,6 +601,7 @@ lint fails if the index is stale.
 - [North Korea](polities/prk-1948-2025.md) — `PRK-1948-2025`, draft.
 - [Qatar](polities/qat-1800-2025.md) — `QAT-1800-2025`, draft.
 - [Singapore](polities/sgp-1965-2025.md) — `SGP-1965-2025`, draft.
+- [Syria (1922-1945)](polities/syr-1922-1945.md) — `SYR-1922-1945`, draft. French Mandate; San Remo 1920; independence 1946.
 - [Syrian Arab Republic (1946-1967)](polities/syr-1946-1967.md) — `SYR-1946-1967`, draft. Independence 1946; Golan Heights lost in Six-Day War 1967.
 - [Syria](polities/syr-1967-2025.md) — `SYR-1967-2025`, draft.
 - [Timor-Leste](polities/tls-1800-2025.md) — `TLS-1800-2025`, draft.
