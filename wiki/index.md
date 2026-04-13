@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1325 (as of 2026-04-13) |
-| Polity pages | 451 (all sourced, no bulk trash) |
+| Polity pages | 467 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
 | Pages with `status: reviewed` | 68 |
 | Pages with `status: contested` | 0 |
@@ -391,6 +391,10 @@ lint fails if the index is stale.
 - [Cabo Verde](polities/cpv-1800-2025.md) — `CPV-1800-2025`, draft, 0 open questions. From database floor; Portuguese colony; independence 5 Jul 1975.
 - [Kingdom of Dahomey](polities/dhy-1800-1894.md) — `DHY-1800-1894`, draft.
 - [Djibouti](polities/dji-1886-2025.md) — `DJI-1886-2025`, draft, 1 open question. French Somaliland; independence 26 Jun 1977.
+- [Djibouti (post-independence)](polities/frs-1977-2025.md) — `FRS-1977-2025`, draft, 2 open questions. Independent Djibouti from 1977; last country in continental Africa to gain independence. CSV cow_code=987 is wrong (should be 522); chain overlap with DJI-1886-2025 flagged.
+- [Canary Islands](polities/icn-1800-2025.md) — `ICN-1800-2025`, draft, 2 open questions. Spanish archipelago off northwest Africa; GADM polygon; cow_code=20 conflicts with Canada COW code.
+- [Sao Tome and Principe](polities/stp-1800-2025.md) — `STP-1800-2025`, draft, 1 open question. Two-island republic in Gulf of Guinea; independent from Portugal 1975. CSV cow_code=411 is wrong (should be 403); polygon verification needed.
+- [Seychelles](polities/syc-1903-2025.md) — `SYC-1903-2025`, draft, 2 open questions. Indian Ocean archipelago; separate Crown Colony from 1903; independent 1976. CShapes single time-step from 1976-06-29.
 - [Ghana (1888-1898)](polities/gha-1888-1898.md) — `GHA-1888-1898`, draft. British Gold Coast; boundary settlements 1888-1898.
 - [Ghana (1898-1956)](polities/gha-1898-1956.md) — `GHA-1898-1956`, draft.
 - [Guinea (1894-1958)](polities/gin-1894-1958.md) — `GIN-1894-1958`, draft.
@@ -493,6 +497,9 @@ lint fails if the index is stale.
 - [Panama](polities/pan-1979-2025.md) — `PAN-1979-2025`, draft, 0 open questions. Post-Canal Zone; independence from Colombia 1903.
 - [El Salvador](polities/slv-1821-2025.md) — `SLV-1821-2025`, draft.
 - [Trinidad and Tobago](polities/tto-1800-2025.md) — `TTO-1800-2025`, draft, 0 open questions. From database floor; British colony; independence 31 Aug 1962.
+- [Saint Kitts and Nevis](polities/kna-1800-2025.md) — `KNA-1800-2025`, draft, 1 open question. Caribbean Leeward Islands; British colony; independent 1983. CShapes single time-step from 1983-09-19.
+- [Saint Lucia](polities/lca-1838-2025.md) — `LCA-1838-2025`, draft, 2 open questions. Caribbean Windward Islands; British colony; independent 1979. CSV cow_code=57 is wrong (should be 56; likely St Vincent polygon used).
+- [Saint Vincent and the Grenadines](polities/vct-1833-2025.md) — `VCT-1833-2025`, draft, 2 open questions. Caribbean Windward Islands; British colony; independent 1979. CSV cow_code=58 is wrong (should be 57; likely Antigua polygon used).
 
 ### South America
 
@@ -624,6 +631,7 @@ lint fails if the index is stale.
 - [Timor-Leste](polities/tls-1800-2025.md) — `TLS-1800-2025`, draft.
 - [Vietnam](polities/vnm-1975-2025.md) — `VNM-1975-2025`, draft.
 - [Yemen (1990-2025)](polities/yem-1990-2025.md) — `YEM-1990-2025`, draft. Unified Republic; 1994 civil war; area change 2000.
+- [Maldives](polities/mdv-1800-2025.md) — `MDV-1800-2025`, draft, 1 open question. Indian Ocean archipelago; British protectorate 1887–1965; independent 1965. CShapes constant area across all time-steps confirms no territorial change.
 
 ### Oceania
 
@@ -632,6 +640,14 @@ lint fails if the index is stale.
 - [Papua New Guinea](polities/png-1975-2025.md) — `PNG-1975-2025`, draft.
 - [Vanuatu](polities/vut-1800-2025.md) — `VUT-1800-2025`, draft.
 - [Samoa](polities/wsm-1900-2025.md) — `WSM-1900-2025`, draft.
+- [Kiribati](polities/kir-1800-2025.md) — `KIR-1800-2025`, draft, 2 open questions. Pacific Gilbert Islands; British colony; independent 1979. COW batch entry 1999. Formerly joined with Tuvalu.
+- [Tuvalu](polities/tuv-1800-2025.md) — `TUV-1800-2025`, draft, 2 open questions. Pacific Ellice Islands; British colony; independent 1978. COW batch entry 2000. Formerly joined with Kiribati.
+- [Tonga](polities/ton-1800-2025.md) — `TON-1800-2025`, draft, 1 open question. Polynesian kingdom; never colonized; British protected state 1900–1970. COW batch entry 1999.
+- [Marshall Islands](polities/mhl-1874-2025.md) — `MHL-1874-2025`, draft, 2 open questions. German protectorate 1885; Japanese mandate 1919; US Trust Territory 1947; independent 1986. COW entry 1991.
+- [Nauru](polities/nru-1888-2025.md) — `NRU-1888-2025`, draft, 2 open questions. German annexation 1888; Australian administration after WWI; independent 1968. COW batch entry 1999.
+- [Micronesia (Federated States of)](polities/fsm-1991-2025.md) — `FSM-1991-2025`, draft, 1 open question. US Trust Territory until Compact of Free Association 1986; COW/UN entry 1991.
+- [Palau](polities/plw-1991-2025.md) — `PLW-1991-2025`, draft, 2 open questions. Last US Trust Territory component; Compact of Free Association 1994; COW entry 1994. WHEP start year 1991 inconsistent.
+- [German colonies Oceania](polities/gco-1884-2025.md) — `GCO-1884-2025`, draft, 1 open question. **Candidate error row**: end_year=2025 is historically impossible (Germany lost Pacific colonies 1914–1919). Requires deletion or correction.
 
 ## Sources
 
