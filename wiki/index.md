@@ -7,7 +7,7 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1333 (as of 2026-04-13) |
+| Polities in CSV | 1332 (as of 2026-04-13) |
 | Polity pages | 446 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
 | Pages with `status: reviewed` | 68 |

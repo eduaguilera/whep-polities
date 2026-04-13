@@ -26,6 +26,19 @@ Kinds:
 
 ---
 
+## decision-delete-gea
+**Date:** 2026-04-13
+**Touched:** GEA-1884-2025 (deleted), TAN-1922-1964 (successor→TZA-1961-1964), TZA-1961-1964 (predecessor→TAN-1922-1964)
+**Source:** cshapes-2.0
+**Kind:** decision
+
+Deleted GEA-1884-2025 (German East Africa, end_year=2025). CShapes has
+no separate GEA entity — cowcode 510 (Tanzania/Tanganyika) starting
+1891-01-01 IS the German colony including Ruanda-Urundi territory
+(area 81.05 sq deg). The GEA row was a fabricated umbrella with no
+CShapes backing, overlapping the entire TAN chain. Also fixed the
+broken TAN-1922-1964 ↔ TZA-1961-1964 chain link. CSV: 1333→1332.
+
 ## decision-merge-7-same-area-pairs
 **Date:** 2026-04-13
 **Touched:** AFG-1800-1888 (deleted, merged into AFG-1800-1893), AFG-1888-1893 (renamed AFG-1800-1893), LAO-1893-1896 (deleted, merged into LAO-1893-1953), LAO-1896-1953 (renamed LAO-1893-1953), GNQ-1886-1900 (renamed GNQ-1886-1968), GNQ-1900-1968 (deleted), NAM-1920-1966 (renamed NAM-1920-1990), NAM-1966-1990 (deleted), SLE-1889-1895 (renamed SLE-1889-1961), SLE-1895-1961 (deleted), YEM-1990-2000 (renamed YEM-1990-2025), YEM-2000-2025 (deleted), NZL-1840-1907 (renamed NZL-1840-2025), NZL-1907-2025 (deleted)

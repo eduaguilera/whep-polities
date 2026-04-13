@@ -169,12 +169,11 @@ SHN-1800-2025,"Saint Helena, Ascension and Tristan da Cunha",1800,2025,226,natio
 REU-1816-2025,Réunion,1816,2025,210,national,Africa,REU,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MYT-1843-1914,Mayotte and Noissi-be,1843,1914,72,national,Africa,MYT,NA,GADM 4.1,NA,NA,FT; CShapes,VERIFIED,NA
 MYT-2002-2025,Mayotte,2002,2025,24,national,Africa,MYT,NA,GADM 4.1,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-GEA-1884-2025,German East Africa (Tanganyika),1884,2025,142,national,Africa,GEA,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 TAN-1891-1920,Tanzania (1891-1920),1891,1920,30,national,Africa,TAN,NA,CShapes 2.0,NA,TAN-1920-1922,FT; CShapes,VERIFIED,NA
 BCA-1919-1961,British Cameroon (1919-1961),1919,1961,43,national,Africa,BCA,NA,CShapes 2.0 (dependencies=TRUE),BCA-1914-1919,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
 TAN-1920-1922,Tanzania (1920-1922),1920,1922,3,national,Africa,TAN,NA,CShapes 2.0,TAN-1891-1920,TAN-1922-1964,FT; CShapes,VERIFIED,NA
-TAN-1922-1964,Tanzania (1922-1964),1922,1964,43,national,Africa,TAN,NA,CShapes 2.0,TAN-1920-1922,NA,FT; FAOSTAT; CShapes,VERIFIED,NA
-TZA-1961-1964,Tanzania (1961-1964),1961,1964,4,national,Africa,TZA,510,CShapes 2.0,NA,TZA-1964-2025,FAOSTAT; CShapes,VERIFIED,NA
+TAN-1922-1964,Tanzania (1922-1964),1922,1964,43,national,Africa,TAN,NA,CShapes 2.0,TAN-1920-1922,TZA-1961-1964,FT; FAOSTAT; CShapes,VERIFIED,NA
+TZA-1961-1964,Tanzania (1961-1964),1961,1964,4,national,Africa,TZA,510,CShapes 2.0,TAN-1922-1964,TZA-1964-2025,FAOSTAT; CShapes,VERIFIED,NA
 ESH-1975-2025,Western Sahara,1975,2025,51,national,Africa,ESH,NA,CShapes 2.0,ESH-1958-1975,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Sovereignty disputed since Spanish withdrawal (1975). Morocco controls most territory; Polisario Front (SADR) claims remainder.
 F62-1800-1993,Ethiopia PDR,1800,1993,194,national,Africa,NA,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 GOL-1843-2025,Gold Coast,1843,2025,183,national,Africa,GOL,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
