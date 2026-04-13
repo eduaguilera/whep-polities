@@ -7,12 +7,12 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1397 (as of 2026-04-13) |
-| Polity pages | 393 (all sourced, no bulk trash) |
+| Polities in CSV | 1340 (as of 2026-04-13) |
+| Polity pages | 360 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
-| Pages with `status: reviewed` | 71 |
+| Pages with `status: reviewed` | 68 |
 | Pages with `status: contested` | 0 |
-| Pages citing biger-1995 | 234 |
+| Pages citing biger-1995 | 255 |
 | Open `proposal`-kind log entries | 0 |
 
 ## Polities by continent
@@ -275,7 +275,7 @@ lint fails if the index is stale.
 
 ### Africa
 
-- [Algeria](polities/dza-1831-2025.md) — `DZA-1831-2025`, draft. Umbrella; sub-chain: DZA-1886-1902 -> DZA-1902-1919 -> DZA-1919-1962 -> DZA-1962-2025.
+- [Algeria (to 1886)](polities/dza-1831-1886.md) — `DZA-1831-1886`, draft, 1 open question. French conquest 1830; pre-CShapes coverage.
 - [Algeria (1886-1902)](polities/dza-1886-1902.md) — `DZA-1886-1902`, draft. French colony, pre-Sahara annexation.
 - [Algeria (1902-1919)](polities/dza-1902-1919.md) — `DZA-1902-1919`, draft. French colony, post-Sahara annexation.
 - [Algeria (1919-1962)](polities/dza-1919-1962.md) — `DZA-1919-1962`, draft. French colony, final colonial period.
@@ -312,25 +312,23 @@ lint fails if the index is stale.
 - [Eritrea (colony/admin)](polities/eri-1889-1952.md) — `ERI-1889-1952`, draft. Colony 1889; British admin 1941; federated with Ethiopia 1952.
 - [Eritrea](polities/eri-1993-2025.md) — `ERI-1993-2025`, draft. Independence 1993.
 - [Gabon](polities/gab-1960-2025.md) — `GAB-1960-2025`, draft. Independence 17 Aug 1960.
-- [Gambia (to 1889)](polities/gmb-1800-1889.md) — `GMB-1800-1889`, draft. Pre-CShapes coverage.
-- [Gambia (1889-1965)](polities/gmb-1889-1965.md) — `GMB-1889-1965`, draft. British colony.
-- [Gambia](polities/gmb-1965-2025.md) — `GMB-1965-2025`, draft. Independence 18 Feb 1965.
-- [Guinea-Bissau](polities/gnb-1879-2025.md) — `GNB-1879-2025`, draft. Umbrella; sub-chain: GNB-1886-1974 -> GNB-1974-2025.
+- [Gambia](polities/gmb-1800-2025.md) — `GMB-1800-2025`, draft, 1 open question. From database floor; British colony; independence 18 Feb 1965.
+- [Guinea-Bissau (to 1886)](polities/gnb-1879-1886.md) — `GNB-1879-1886`, draft, 1 open question. Portuguese Guinea from 1879; pre-CShapes coverage.
 - [Guinea-Bissau (1886-1974)](polities/gnb-1886-1974.md) — `GNB-1886-1974`, draft. Portuguese colony (merged, same area).
 - [Guinea-Bissau (1974-2025)](polities/gnb-1974-2025.md) — `GNB-1974-2025`, draft. Independent Guinea-Bissau from 10 Sept 1974.
 - [Lesotho](polities/lso-1966-2025.md) — `LSO-1966-2025`, draft. Enclave in South Africa; independence 1966.
 - [Liberia](polities/lbr-1847-2025.md) — `LBR-1847-2025`, draft. Founded 1847 by freed slaves.
-- [Namibia](polities/nam-1884-2025.md) — `NAM-1884-2025`, draft. German colony; SA mandate; independence 1990.
+- [Namibia (to 1886)](polities/nam-1884-1886.md) — `NAM-1884-1886`, draft, 1 open question. German protectorate proclaimed 1884; pre-CShapes coverage.
 - [Namibia (1966-1990)](polities/nam-1966-1990.md) — `NAM-1966-1990`, draft. SA mandate to independence.
 - [Namibia (1990-2025)](polities/nam-1990-2025.md) — `NAM-1990-2025`, draft. Independent Namibia from 21 March 1990.
 - [Niger](polities/ner-1960-2025.md) — `NER-1960-2025`, draft. Independence from France August 1960.
+- [Sierra Leone (to 1886)](polities/sle-1800-1886.md) — `SLE-1800-1886`, draft. Pre-CShapes coverage; British settlement.
 - [Sierra Leone (1895-1961)](polities/sle-1895-1961.md) — `SLE-1895-1961`, draft. British colony/protectorate.
-- [Sierra Leone](polities/sle-1800-2025.md) — `SLE-1800-2025`, draft. Independence 1961.
 - [Sierra Leone (1961-2025)](polities/sle-1961-2025.md) — `SLE-1961-2025`, draft. Independent Sierra Leone from 27 April 1961.
 - [Somalia](polities/som-1960-2025.md) — `SOM-1960-2025`, draft. Formed 1960 from British/Italian Somaliland.
 - [Tanzania](polities/tza-1964-2025.md) — `TZA-1964-2025`, draft. Union of Tanganyika and Zanzibar 1964.
 - [Togo](polities/tgo-1960-2025.md) — `TGO-1960-2025`, draft. German territory; French mandate; independence 1960.
-- [Zimbabwe](polities/zwe-1890-2025.md) — `ZWE-1890-2025`, draft. UDI 1965; independence 1980.
+- [Zimbabwe (to 1891)](polities/zwe-1890-1891.md) — `ZWE-1890-1891`, draft, 1 open question. BSAC administration from 1890; pre-CShapes coverage.
 - [Fed. Rhodesia & Nyasaland](polities/frn-1953-1964.md) — `FRN-1953-1964`, draft. Federation 1953-1963.
 - [Zimbabwe (1964-1980)](polities/zwe-1964-1980.md) — `ZWE-1964-1980`, draft. Post-Federation colony; UDI Rhodesia 1965-1980.
 - [Zimbabwe (1980-2025)](polities/zwe-1980-2025.md) — `ZWE-1980-2025`, draft. Independent Zimbabwe from April 1980.
@@ -354,30 +352,22 @@ lint fails if the index is stale.
 - [Congo (1919-1960)](polities/cog-1919-1960.md) — `COG-1919-1960`, draft.
 - [Comoros (1946-1975)](polities/com-1946-1975.md) — `COM-1946-1975`, draft.
 - [Comoros](polities/com-1975-2025.md) — `COM-1975-2025`, draft.
-- [Cabo Verde (to 1886)](polities/cpv-1800-1886.md) — `CPV-1800-1886`, draft. Pre-CShapes coverage.
-- [Cape Verde (1886-1975)](polities/cpv-1886-1975.md) — `CPV-1886-1975`, draft. Portuguese colony.
-- [Cabo Verde](polities/cpv-1975-2025.md) — `CPV-1975-2025`, draft. Independence 5 Jul 1975.
+- [Cabo Verde](polities/cpv-1800-2025.md) — `CPV-1800-2025`, draft, 0 open questions. From database floor; Portuguese colony; independence 5 Jul 1975.
 - [Kingdom of Dahomey](polities/dhy-1800-1894.md) — `DHY-1800-1894`, draft.
-- [Djibouti (1900-1977)](polities/dji-1900-1977.md) — `DJI-1900-1977`, draft.
-- [Djibouti](polities/dji-1977-2025.md) — `DJI-1977-2025`, draft.
+- [Djibouti](polities/dji-1886-2025.md) — `DJI-1886-2025`, draft, 1 open question. French Somaliland; independence 26 Jun 1977.
 - [Ghana (1898-1956)](polities/gha-1898-1956.md) — `GHA-1898-1956`, draft.
 - [Guinea (1894-1958)](polities/gin-1894-1958.md) — `GIN-1894-1958`, draft.
 - [Guinea](polities/gin-1958-2025.md) — `GIN-1958-2025`, draft.
 - [Equatorial Guinea (1900-1968)](polities/gnq-1900-1968.md) — `GNQ-1900-1968`, draft.
 - [Equatorial Guinea](polities/gnq-1968-2025.md) — `GNQ-1968-2025`, draft.
 - [Kenya (1926-1963)](polities/ken-1926-1963.md) — `KEN-1926-1963`, draft.
-- [Madagascar](polities/mdg-1882-2025.md) — `MDG-1882-2025`, draft.
-- [Madagascar (1946-1960)](polities/mdg-1946-1960.md) — `MDG-1946-1960`, draft. French overseas territory.
-- [Madagascar (1960-2025)](polities/mdg-1960-2025.md) — `MDG-1960-2025`, draft. Independent Madagascar from 26 June 1960.
+- [Madagascar](polities/mdg-1882-2025.md) — `MDG-1882-2025`, draft, 1 open question. From 1882 (French involvement); independent 26 June 1960.
 - [Mali](polities/mli-1960-2025.md) — `MLI-1960-2025`, draft.
-- [Mozambique](polities/moz-1816-2025.md) — `MOZ-1816-2025`, draft. Umbrella; sub-chain: MOZ-1800-1891 -> MOZ-1891-1975 -> MOZ-1975-2025.
 - [Mozambique (to 1891)](polities/moz-1800-1891.md) — `MOZ-1800-1891`, draft. Portuguese colony, smaller extent.
 - [Mozambique (1891-1975)](polities/moz-1891-1975.md) — `MOZ-1891-1975`, draft. Portuguese colony, expanded territory.
 - [Mozambique (1975-2025)](polities/moz-1975-2025.md) — `MOZ-1975-2025`, draft. Independent Mozambique from 25 June 1975.
 - [Mauritania](polities/mrt-1979-2025.md) — `MRT-1979-2025`, draft.
-- [Mauritius (to 1886)](polities/mus-1800-1886.md) — `MUS-1800-1886`, draft. Pre-CShapes coverage.
-- [Mauritius (1886-1968)](polities/mus-1886-1968.md) — `MUS-1886-1968`, draft. British colony.
-- [Mauritius](polities/mus-1968-2025.md) — `MUS-1968-2025`, draft. Independence 12 Mar 1968.
+- [Mauritius](polities/mus-1800-2025.md) — `MUS-1800-2025`, draft, 1 open question. From database floor; British colony; independence 12 Mar 1968.
 - [Malawi](polities/mwi-1964-2025.md) — `MWI-1964-2025`, draft.
 - [Nigeria (1960-1961)](polities/nga-1960-1961.md) — `NGA-1960-1961`, draft.
 - [Rwanda](polities/rwa-1962-2025.md) — `RWA-1962-2025`, draft.
@@ -385,9 +375,7 @@ lint fails if the index is stale.
 - [Senegal](polities/sen-1960-2025.md) — `SEN-1960-2025`, draft.
 - [South Sudan](polities/ssd-2011-2025.md) — `SSD-2011-2025`, draft.
 - [Sudan (1956-2011)](polities/sud-1956-2011.md) — `SUD-1956-2011`, draft.
-- [Eswatini](polities/swz-1894-2025.md) — `SWZ-1894-2025`, draft. Umbrella; sub-chain: SWZ-1895-1968 -> SWZ-1968-2025.
-- [Eswatini (1895-1968)](polities/swz-1895-1968.md) — `SWZ-1895-1968`, draft. Colonial Swaziland (merged, same area).
-- [Eswatini (1968-2025)](polities/swz-1968-2025.md) — `SWZ-1968-2025`, draft. Independent Eswatini from 6 Sept 1968.
+- [Eswatini](polities/swz-1894-2025.md) — `SWZ-1894-2025`, draft, 1 open question. Colonial Swaziland (SAR 1895, British 1902); independence 6 Sep 1968.
 - [Chad](polities/tcd-1960-2025.md) — `TCD-1960-2025`, draft.
 - [Uganda](polities/uga-1962-2025.md) — `UGA-1962-2025`, draft.
 - [Zambia](polities/zmb-1964-2025.md) — `ZMB-1964-2025`, draft.
@@ -404,10 +392,7 @@ lint fails if the index is stale.
 - [Canada (to 1948)](polities/can-1866-1948.md) — `CAN-1866-1948`, draft.
 - [Canada](polities/can-1948-2025.md) — `CAN-1948-2025`, draft.
 - [Canada (pre-Confederation)](polities/can-1800-1866.md) — `CAN-1800-1866`, draft.
-- [Belize (to 1886)](polities/blz-1800-1886.md) — `BLZ-1800-1886`, draft. Pre-CShapes coverage.
-- [Belize (1886-1970)](polities/blz-1886-1970.md) — `BLZ-1886-1970`, draft. British Honduras colony.
-- [Belize (1970-1981)](polities/blz-1970-1981.md) — `BLZ-1970-1981`, draft. Self-governing, renamed 1973.
-- [Belize](polities/blz-1981-2025.md) — `BLZ-1981-2025`, draft. Independence 21 Sep 1981.
+- [Belize](polities/blz-1800-2025.md) — `BLZ-1800-2025`, draft, 0 open questions. From database floor; British Honduras colony; independence 21 Sep 1981.
 - [Costa Rica](polities/cri-1800-2025.md) — `CRI-1800-2025`, draft.
 - [Cuba](polities/cub-1800-2025.md) — `CUB-1800-2025`, draft.
 - [Dominica](polities/dma-1800-2025.md) — `DMA-1800-2025`, draft.
@@ -415,28 +400,20 @@ lint fails if the index is stale.
 - [Guatemala](polities/gtm-1821-2025.md) — `GTM-1821-2025`, draft.
 - [Honduras](polities/hnd-1800-2025.md) — `HND-1800-2025`, draft.
 - [Haiti](polities/hti-1800-2025.md) — `HTI-1800-2025`, draft.
-- [Jamaica (to 1886)](polities/jam-1800-1886.md) — `JAM-1800-1886`, draft. Pre-CShapes coverage.
-- [Jamaica (1886-1962)](polities/jam-1886-1962.md) — `JAM-1886-1962`, draft. British colony.
-- [Jamaica](polities/jam-1962-2025.md) — `JAM-1962-2025`, draft. Independence 6 Aug 1962.
+- [Jamaica](polities/jam-1800-2025.md) — `JAM-1800-2025`, draft, 1 open question. From database floor; British colony; independence 6 Aug 1962.
 - [Nicaragua](polities/nic-1800-2025.md) — `NIC-1800-2025`, draft.
-- [Panama](polities/pan-1903-2025.md) — `PAN-1903-2025`, draft.
+- [Panama](polities/pan-1979-2025.md) — `PAN-1979-2025`, draft, 0 open questions. Post-Canal Zone; independence from Colombia 1903.
 - [El Salvador](polities/slv-1821-2025.md) — `SLV-1821-2025`, draft.
-- [Trinidad and Tobago (to 1886)](polities/tto-1800-1886.md) — `TTO-1800-1886`, draft. Pre-CShapes coverage.
-- [Trinidad and Tobago (1886-1962)](polities/tto-1886-1962.md) — `TTO-1886-1962`, draft. British colony.
-- [Trinidad and Tobago](polities/tto-1962-2025.md) — `TTO-1962-2025`, draft. Independence 31 Aug 1962.
+- [Trinidad and Tobago](polities/tto-1800-2025.md) — `TTO-1800-2025`, draft, 0 open questions. From database floor; British colony; independence 31 Aug 1962.
 
 ### South America
 
-- [Argentina (to 1899)](polities/arg-1800-1899.md) — `ARG-1800-1899`, draft.
-- [Argentina (1899-1902)](polities/arg-1899-1902.md) — `ARG-1899-1902`, draft.
-- [Argentina](polities/arg-1902-2025.md) — `ARG-1902-2025`, draft.
+- [Argentina](polities/arg-1800-2025.md) — `ARG-1800-2025`, reviewed, 1 open question. 226-year continuous row. Stable borders. COW: ARG, ccode=160.
 - [Bolivia (to 1903)](polities/bol-1825-1903.md) — `BOL-1825-1903`, draft.
 - [Bolivia (1903-1909)](polities/bol-1903-1909.md) — `BOL-1903-1909`, draft.
 - [Bolivia (1909-1938)](polities/bol-1909-1938.md) — `BOL-1909-1938`, draft.
 - [Bolivia](polities/bol-1938-2025.md) — `BOL-1938-2025`, draft.
-- [Brazil (to 1903)](polities/bra-1800-1903.md) — `BRA-1800-1903`, draft.
-- [Brazil (1903-1909)](polities/bra-1903-1909.md) — `BRA-1903-1909`, draft.
-- [Brazil](polities/bra-1909-2025.md) — `BRA-1909-2025`, draft.
+- [Brazil](polities/bra-1800-2025.md) — `BRA-1800-2025`, draft, 2 open questions. 226-year row from database floor. Independence 1822. COW: BRA, ccode=140.
 - [Chile (to 1899)](polities/chl-1810-1899.md) — `CHL-1810-1899`, draft.
 - [Chile (1899-1902)](polities/chl-1899-1902.md) — `CHL-1899-1902`, draft.
 - [Chile](polities/chl-1902-2025.md) — `CHL-1902-2025`, draft.
@@ -454,10 +431,8 @@ lint fails if the index is stale.
 - [Paraguay](polities/pry-1938-2025.md) — `PRY-1938-2025`, draft.
 - [Uruguay](polities/ury-1828-2025.md) — `URY-1828-2025`, draft.
 - [Venezuela](polities/ven-1821-2025.md) — `VEN-1821-2025`, draft.
-- [Guyana (to 1886)](polities/guy-1800-1886.md) — `GUY-1800-1886`, draft. Pre-CShapes coverage.
-- [Guyana (1886-1966)](polities/guy-1886-1966.md) — `GUY-1886-1966`, draft. British Guiana colony.
-- [Guyana](polities/guy-1966-2025.md) — `GUY-1966-2025`, draft. Independence 26 May 1966.
-- [Suriname](polities/sur-1975-2025.md) — `SUR-1975-2025`, draft.
+- [Guyana](polities/guy-1800-2025.md) — `GUY-1800-2025`, draft, 0 open questions. From database floor; British Guiana colony; independence 26 May 1966.
+- [Suriname](polities/sur-1886-2025.md) — `SUR-1886-2025`, draft, 0 open questions. Dutch colony; independence 1975.
 
 ### Asia
 
@@ -494,9 +469,7 @@ lint fails if the index is stale.
 - [Kazakhstan](polities/kaz-1991-2025.md) — `KAZ-1991-2025`, draft.
 - [Kyrgyzstan](polities/kgz-1991-2025.md) — `KGZ-1991-2025`, draft.
 - [South Korea](polities/kor-1948-2025.md) — `KOR-1948-2025`, draft.
-- [Saudi Arabia (1924-1932)](polities/sau-1924-1932.md) — `SAU-1924-1932`, draft.
-- [Saudi Arabia (1932-2000)](polities/sau-1932-2000.md) — `SAU-1932-2000`, draft.
-- [Saudi Arabia](polities/sau-2000-2025.md) — `SAU-2000-2025`, draft.
+- [Saudi Arabia](polities/sau-1924-2025.md) — `SAU-1924-2025`, draft, 2 open questions. Ibn Saud conquest 1924; Kingdom proclaimed 23 Sep 1932.
 - [Thailand (to 1893)](polities/tha-1800-1893.md) — `THA-1800-1893`, draft.
 - [Thailand (1893-1904)](polities/tha-1893-1904.md) — `THA-1893-1904`, draft.
 - [Thailand (1904-1907)](polities/tha-1904-1907.md) — `THA-1904-1907`, draft.
@@ -513,8 +486,7 @@ lint fails if the index is stale.
   Republic 1924. Chain complete 1911-2025.
 - [Afghanistan (1893-1919)](polities/afg-1893-1919.md) — `AFG-1893-1919`, draft.
 - [Afghanistan](polities/afg-1919-2025.md) — `AFG-1919-2025`, draft.
-- [UAE (1913-1971)](polities/are-1913-1971.md) — `ARE-1913-1971`, draft.
-- [United Arab Emirates](polities/are-1971-2025.md) — `ARE-1971-2025`, draft.
+- [United Arab Emirates](polities/are-1892-2025.md) — `ARE-1892-2025`, draft, 1 open question. Trucial States from 1892; independence 2 Dec 1971.
 - [Bangladesh](polities/bgd-1971-2025.md) — `BGD-1971-2025`, draft.
 - [Bahrain](polities/bhr-1800-2025.md) — `BHR-1800-2025`, draft.
 - [Brunei (greater)](polities/brn-1816-1888.md) — `BRN-1816-1888`, draft.
@@ -534,19 +506,14 @@ lint fails if the index is stale.
 - [Laos](polities/lao-1954-2025.md) — `LAO-1954-2025`, draft.
 - [Lebanon (1920-1944)](polities/lbn-1920-1944.md) — `LBN-1920-1944`, draft.
 - [Lebanon](polities/lbn-1944-2025.md) — `LBN-1944-2025`, draft.
-- [Sri Lanka (to 1886)](polities/lka-1800-1886.md) — `LKA-1800-1886`, draft. Pre-CShapes coverage.
-- [Sri Lanka (1886-1948)](polities/lka-1886-1948.md) — `LKA-1886-1948`, draft. British Ceylon colony.
-- [Sri Lanka](polities/lka-1948-2025.md) — `LKA-1948-2025`, draft. Independence 4 Feb 1948.
+- [Sri Lanka](polities/lka-1800-2025.md) — `LKA-1800-2025`, draft, 1 open question. From database floor; British Ceylon colony; independence 4 Feb 1948.
 - [Myanmar](polities/mmr-1885-2025.md) — `MMR-1885-2025`, draft.
 - [Malaysia](polities/mys-1965-2025.md) — `MYS-1965-2025`, draft.
 - [Nepal](polities/npl-1816-2025.md) — `NPL-1816-2025`, draft.
 - [Oman](polities/omn-1856-2025.md) — `OMN-1856-2025`, draft.
 - [Pakistan (1949-1971)](polities/pak-1949-1971.md) — `PAK-1949-1971`, draft.
 - [Pakistan](polities/pak-1971-2025.md) — `PAK-1971-2025`, draft.
-- [Philippines (to 1886)](polities/phl-1800-1886.md) — `PHL-1800-1886`, draft. Chain: PHL-1800-1886 -> PHL-1886-1898 -> PHL-1898-1946 -> PHL-1946-2025.
-- [Philippines (1886-1898)](polities/phl-1886-1898.md) — `PHL-1886-1898`, draft. Spanish colony.
-- [Philippines (1898-1946)](polities/phl-1898-1946.md) — `PHL-1898-1946`, draft. American colony.
-- [Philippines](polities/phl-1946-2025.md) — `PHL-1946-2025`, draft. Independent republic.
+- [Philippines](polities/phl-1800-2025.md) — `PHL-1800-2025`, draft, 0 open questions. From database floor; Spanish then American colony; independence 4 Jul 1946.
 - [North Korea](polities/prk-1948-2025.md) — `PRK-1948-2025`, draft.
 - [Qatar](polities/qat-1800-2025.md) — `QAT-1800-2025`, draft.
 - [Singapore](polities/sgp-1965-2025.md) — `SGP-1965-2025`, draft.
@@ -663,6 +630,19 @@ lint fails if the index is stale.
   [deu-1800-1866](polities/deu-1800-1866.md),
   [deu-1866-1871](polities/deu-1866-1871.md),
   [deu-1871-1919](polities/deu-1871-1919.md).
+- [wikipedia-eritrea-2026-04-13](sources/wikipedia-eritrea-2026-04-13.md)
+  — Wikipedia snapshot on Eritrea's history, covering
+  Italian colonization (1889), British administration
+  (1941), federation with Ethiopia (1952), and independence
+  (1993).
+- [wikipedia-netherlands-2026-04-12](sources/wikipedia-netherlands-2026-04-12.md)
+  — Wikipedia snapshot on the history of the Netherlands,
+  covering the United Kingdom of the Netherlands (1815–1830)
+  and the Belgian Revolution (1830).
+- [wikipedia-spain-2026-04-12](sources/wikipedia-spain-2026-04-12.md)
+  — Wikipedia snapshot on the history of Spain, covering
+  the 1815 Vienna settlement and subsequent territorial
+  history.
 
 ## Aggregates and unions
 

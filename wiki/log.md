@@ -26,6 +26,86 @@ Kinds:
 
 ---
 
+## lint-2026-04-13
+**Date:** 2026-04-13
+**Touched:** (index, multiple CSV rows)
+**Source:** none
+**Kind:** lint
+
+Full wiki lint run (11 checks). Key findings:
+
+**Auto-applied:** Fixed `wiki/index.md` — corrected coverage counts
+(1354 CSV rows not 1397, 360 pages not 393, 68 reviewed not 71,
+255 biger-citing not 234), replaced 33 phantom links to non-existent
+split-row files with links to actual merged files, added 21 unlisted
+pages, added 3 missing source entries.
+
+**Must review:**
+- **Duplicate CSV chains (proposal-level):** LBY/LIB (3 exact duplicate
+  row pairs 1912–1934), CMR-1884-1919 vs KAM series, ALG/DZA dual chains,
+  CAF/CEN duplicates, ZIM/ZWE and MNE/MON overlaps, RWA/RWB overlaps,
+  CZE-1947-1992 vs F51-1947-1993.
+- **22 broken back-links + 12 broken forward-links** in predecessor/
+  successor chains across the CSV.
+- **84 dangling cross-references** in wiki pages to polity pages that
+  don't exist yet.
+- **1,062 uncited bullets** across 241 pages (70% of all pages). Top
+  offenders: f228-1856-1905 (16), lux-1839-2025 (14), alb-1913-2025 (12).
+- **5 China pages** are >50% `[database]`-only citations — candidates for
+  next ingest.
+- **F228-1921-1940** labeled "RSFSR/USSR" before USSR existed (Dec 1922).
+- **NYA-1891-2025** has `end_year=2025` but Nyasaland ended 1964.
+- **pap-1800-1870** contradiction (Cliopatria polygon overstatement) has
+  no formal log entry.
+- **994 CSV rows** have no wiki page (expected — wiki covers 360/1354).
+- **654 CSV rows** are unreachable from any wiki page's predecessor/
+  successor chain.
+
+**No issues found:** Schema conformance (360/360 pass), staleness
+(all pages ingested within 2 days), source reachability (all 15 sources
+cited), Obsidian compatibility (no HTML anchors or reference-style links),
+polygon coverage (1236/1236 rows have geometry), phantom CSV references
+(all predecessor/successor codes exist as rows).
+
+## decision-lint-duplicate-chains-and-chain-fixes
+**Date:** 2026-04-13
+**Touched:** LIB-1912-1919 (deleted), LIB-1919-1925 (deleted), LIB-1925-1934 (deleted), CEN-1906-1912 (deleted), CEN-1912-1919 (deleted), ZIM-1889-1891 (deleted), ZIM-1891-1900 (deleted), ALG-1830-1902 (deleted), ALG-1902-1919 (deleted), CMR-1884-1919 (deleted), MON-1913-1918 (deleted), NYA-1891-2025 (deleted), CZE-1947-1992 (deleted), RWA-1920-1962 (deleted), KAM-1884-1912 (renamed CMR-1884-1912), KAM-1912-1919 (renamed CMR-1912-1919), MNE-1913-1915 (end_year 1915→1918, renamed MNE-1913-1918), MWI-1891-1953 (successor→FRN-1953-1964), RWB-1919-1922 (predecessor→TAN-1891-1920), RWB-1922-1962 (predecessor→RWB-1919-1922, successor→RWA-1962-2025;BDI-1962-2025), RWK-1800-1890 (successor→TAN-1891-1920), BDK-1800-1890 (successor→TAN-1891-1920), RWA-1962-2025 (predecessor→RWB-1922-1962), BDI-1962-2025 (predecessor→RWB-1922-1962), NDB-1823-1894 (successor: removed ZIM-1889-1891 ref), CZE-1993-2025 (predecessor: removed CZE-1947-1992 ref), MNE-1878-1913 (successor→MNE-1913-1918), DZA-1886-1902, GNB-1886-1974, NAM-1886-1915, ZWE-1891-1900, ZAN-1890-1964, SUD-1899-1902, BCA-1919-1961, MYS-1957-1963, SWZ-1894-2025, SAU-1924-2025, SLE-1886-1889, BSO-1884-1960, FWA-1902-1904, GAZ-1948-1967, SAB-1888-1963, LCA-1800-1838, VCT-1800-1833, NGN-1920-1949, GUF-1930-1946
+**Source:** cshapes-2.0
+**Kind:** decision
+
+Lint found duplicate CSV chains and broken chain links. Human reviewed
+and approved all changes.
+
+**14 rows deleted** (duplicate code series for same entity/period):
+LIB×3 (duplicate of LBY Libya chain), CEN×2 (duplicate of CAF),
+ZIM×2 (duplicate of ZWE), ALG×2 (duplicate of DZA), MON-1913-1918
+(duplicate of MNE), NYA-1891-2025 (duplicate of MWI chain, end_year
+2025 was nonsensical), CZE-1947-1992 (duplicate of F51 Czechoslovakia
+chain, used post-dissolution Czech codes anachronistically),
+CMR-1884-1919 (single-row duplicate of KAM split chain),
+RWA-1920-1962 (overlap bridge node, replaced by proper RWB chain).
+
+**2 rows renamed** (KAM→CMR prefix to match ISO3, with cow_code=471
+added). The 1912 Neukamerun territorial split is real (+57% area per
+CShapes) and correctly preserved.
+
+**MNE-1913-1915→MNE-1913-1918**: end_year corrected from 1915 to 1918.
+Montenegro's sovereignty ended at the Podgorica Assembly (26 Nov 1918),
+not at the start of Austrian occupation (1916). Military occupation
+does not end sovereignty under WHEP rules.
+
+**RWA/RWB chain restructured**: Eliminated overlap. New gapless chain:
+RWK/BDK (pre-colonial) → TAN-1891-1920 (German East Africa) →
+RWB-1919-1922 → RWB-1922-1962 (Belgian mandate) → RWA-1962-2025 +
+BDI-1962-2025 (independence).
+
+**MWI chain fixed**: MWI-1891-1953 successor set to FRN-1953-1964.
+
+**19 broken chain links fixed**: 11 missing back-links (predecessor
+fields) and 8 missing forward-links (successor fields) across DZA,
+GNB, NAM, ZWE, ZAN, SUD, BCA, MYS, SWZ, SAU, SLE, BSO, FWA, GAZ,
+SAB, LCA, VCT, NGN, GUF chains.
+
 ## decision-egy-phl-jor-esh-chain-restructure
 **Date:** 2026-04-13
 **Touched:** EGY-1800-1899, EGY-1800-1922 (deleted), EGY-1899-1925, EGY-1922-1925 (deleted), EGY-1925-1967, EGY-1967-1979, EGY-1979-2025, PHL-1800-2025 (renamed PHL-1800-1886), PHL-1886-1898, PHL-1898-1946, PHL-1946-2025 (new), JOR-1918-2025 (renamed JOR-1918-1920), JOR-1920-1923, JOR-1925-1946 (renamed JOR-1923-1946), JOR-1946-2025 (new), ESH-1800-2025 (renamed ESH-1975-2025), ESH-1958-1975 (new page)
