@@ -52,6 +52,19 @@ load-bearing rule in the wiki. In short:
 - A colony with its own trade statistics is a WHEP polity. A legally
   independent state under military occupation whose borders did not move
   is the same WHEP polity before and after.
+- **CShapes splits are not automatically WHEP splits.** CShapes records
+  multiple time-steps for administrative changes (independence dates,
+  regime changes, colonial transfers) that do not alter territory. The
+  test is whether `ST_Area(geom)` changes between CShapes time-steps.
+  Same area = same WHEP polity = one row. Different area = territorial
+  change = new row. When CShapes has no polygon for a period (pre-1886),
+  use Biger, Wikipedia, or other sources to determine whether the
+  territory actually changed.
+- **No overlapping rows.** Every km² must be assigned to exactly one
+  WHEP polity for any given year. If two rows for the same entity have
+  overlapping date ranges, one is wrong — either merge them (if same
+  territory) or fix the dates (if genuine split). "Umbrella" rows that
+  span the full period alongside a sub-chain are never acceptable.
 
 This means WHEP start/end years **will routinely differ** from COW, GW, or
 CShapes independence dates. This is **not** a contradiction. Record the

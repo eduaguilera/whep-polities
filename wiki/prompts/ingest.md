@@ -112,10 +112,18 @@ the wiki's role as the primary source of truth.
    Create a `wikipedia-<country>-<date>.md` source file.
 4. Build the chain from sourced findings: split only at real territorial
    changes (area changes in CShapes), not at regime changes (same area).
-   Merge administrative CShapes splits that show no area change.
-5. Delete old CSV rows (umbrella + legacy sub-rows), create new rows
+   Merge administrative CShapes splits that show no area change. If all
+   CShapes time-steps have the same `ST_Area(geom)` and the polity
+   existed continuously, the correct result is **one row** for the
+   entire period — regardless of how many CShapes entries exist.
+5. **No overlapping rows.** Never create an "umbrella" row alongside
+   sub-rows. Every km² belongs to exactly one row for any given year.
+   If the sub-chain doesn't cover the full period, either extend a
+   sub-row or create a new row for the gap — do not keep a broad
+   umbrella row that overlaps.
+6. Delete old CSV rows (umbrella + legacy sub-rows), create new rows
    matching the sourced chain. Update predecessor/successor fields.
-6. Create wiki pages for each new row. Delete old pages.
+7. Create wiki pages for each new row. Delete old pages.
 
 **Constraints:**
 - The agent maintains `data/final/polities_database.csv` directly when
