@@ -26,6 +26,93 @@ Kinds:
 
 ---
 
+## chain-restructure-2026-04-13
+**Date:** 2026-04-13
+**Touched:** BLZ-1800-1886, BLZ-1886-1970, BLZ-1970-1981, BLZ-1981-2025, CPV-1800-1886, CPV-1886-1975, CPV-1975-2025, GMB-1800-1889, GMB-1889-1965, GMB-1965-2025, GUY-1800-1886, GUY-1886-1966, GUY-1966-2025, JAM-1800-1886, JAM-1886-1962, JAM-1962-2025, LKA-1800-1886, LKA-1886-1948, LKA-1948-2025, MUS-1800-1886, MUS-1886-1968, MUS-1968-2025, TTO-1800-1886, TTO-1886-1962, TTO-1962-2025
+**Source:** CShapes 2.0, biger-1995
+**Kind:** decision
+
+Restructured 8 polity chains (BLZ, CPV, GMB, GUY, JAM, LKA, MUS, TTO) from umbrella-only
+rows into proper 3-row chains (pre-CShapes + colonial + independence). For each:
+
+1. Trimmed the 1800-2025 umbrella row to end where CShapes coverage begins (1886 for most,
+   1889 for Gambia), preserving pre-CShapes coverage.
+2. Created wiki pages for existing colonial-period CSV sub-rows (which had no wiki pages).
+3. Created new post-independence rows and wiki pages.
+4. Linked predecessor/successor chains throughout.
+
+All 8 polities have constant territory (CShapes same area across all splits), so the chain
+splits track sovereignty changes (colony -> independence) not territorial changes. Fixed
+CPV umbrella COW code from 404 (Guinea-Bissau) to 402 (Cape Verde).
+
+**Belize:** 4-row chain: BLZ-1800-1886 -> BLZ-1886-1970 -> BLZ-1970-1981 -> BLZ-1981-2025.
+Independence 21 Sep 1981.
+
+**Cabo Verde:** CPV-1800-1886 -> CPV-1886-1975 -> CPV-1975-2025. Independence 5 Jul 1975.
+
+**Gambia:** GMB-1800-1889 -> GMB-1889-1965 -> GMB-1965-2025. Independence 18 Feb 1965.
+
+**Guyana:** GUY-1800-1886 -> GUY-1886-1966 -> GUY-1966-2025. Independence 26 May 1966.
+
+**Jamaica:** JAM-1800-1886 -> JAM-1886-1962 -> JAM-1962-2025. Independence 6 Aug 1962.
+
+**Sri Lanka:** LKA-1800-1886 -> LKA-1886-1948 -> LKA-1948-2025. Independence 4 Feb 1948.
+
+**Mauritius:** MUS-1800-1886 -> MUS-1886-1968 -> MUS-1968-2025. Independence 12 Mar 1968.
+
+**Trinidad and Tobago:** TTO-1800-1886 -> TTO-1886-1962 -> TTO-1962-2025. Independence 31 Aug 1962.
+
+## decision-chain-restructure-dza-gnb-swz-moz
+**Date:** 2026-04-13
+**Touched:** DZA-1831-2025, DZA-1886-1902, DZA-1902-1919, DZA-1919-1962, DZA-1962-2025, GNB-1879-2025, GNB-1886-1974, GNB-1974-2025, SWZ-1894-2025, SWZ-1895-1968, SWZ-1968-2025, MOZ-1816-2025, MOZ-1800-1891, MOZ-1891-1975, MOZ-1975-2025
+**Source:** CShapes 2.0, biger-1995
+**Kind:** decision
+
+Restructured four African polity chains to add missing independence rows and merge
+colonial sub-rows where CShapes shows no territorial change (same area).
+
+**Algeria (DZA):** Merged DZA-1886-1901 into DZA-1886-1902 (CShapes area 63.52 unchanged
+across the 1901 split). Kept DZA-1902-1919 (area 224.74, Sahara annexation) and
+DZA-1919-1962 (area 213.51, post-WWI adjustment). Added DZA-1962-2025 (independent,
+5 July 1962). Fixed COW code to 615 on umbrella.
+
+**Guinea-Bissau (GNB):** Merged GNB-1886-1942 and GNB-1942-1974 into GNB-1886-1974
+(CShapes area 2.76 unchanged throughout colonial period). Deleted GNB-1942-1974.
+Added GNB-1974-2025 (independent, 10 September 1974).
+
+**Eswatini (SWZ):** Merged SWZ-1895-1902 and SWZ-1902-1968 into SWZ-1895-1968
+(CShapes area 1.55 unchanged; ruler change SAR->Britain is administrative only).
+Deleted SWZ-1902-1968. Added SWZ-1968-2025 (independent, 6 September 1968).
+
+**Mozambique (MOZ):** Existing sub-rows MOZ-1800-1891 and MOZ-1891-1975 kept (real
+area change 54.21->66.97 at 1891). Added MOZ-1975-2025 (independent, 25 June 1975).
+Updated successor chain on MOZ-1891-1975.
+
+---
+
+## decision-swe-mng-tun-restructure
+**Date:** 2026-04-13
+**Touched:** SWE-1905-2025 (new), SWE-1800-2025 (deleted), SWE-1814-1905 (updated successor), MNG-1921-2025 (new), MNG-1911-2025 (deleted), MNG-1911-1921 (updated successor, new wiki page), TUN-1881-2025 (updated predecessor/notes), TUN-1886-1955 (deleted)
+**Source:** cshapes-2.0, biger-1995
+**Kind:** decision
+
+Wiki-driven chain restructure for three polities: Sweden, Mongolia, Tunisia.
+
+**Sweden (COW 380).** CShapes shows real territorial change at 1905-06-07:
+area drops from ~138.5 to ~78.6 sq deg (Norway independence). Deleted
+SWE-1800-2025 umbrella, created SWE-1905-2025 as chain terminus.
+Chain: SWE-1800-1809 -> SWE-1809-1814 -> SWE-1814-1905 -> SWE-1905-2025.
+
+**Mongolia (COW 712).** CShapes has single entry starting 1921-03-13. No
+area changes. Deleted MNG-1911-2025 umbrella, created MNG-1921-2025.
+Chain: MNG-1911-1921 (Bogd Khanate) -> MNG-1921-2025.
+
+**Tunisia (COW 616).** CShapes has three entries 1886-2019, all with
+identical area (~15.19 sq deg). The 1956 splits are administrative
+(independence), not territorial. Deleted TUN-1886-1955 legacy sub-row
+as redundant. Updated TUN-1881-2025 predecessor to TUN-1800-1881.
+Chain: TUN-1800-1881 -> TUN-1881-2025.
+
 ## decision-eri-chain-restructure
 **Date:** 2026-04-13
 **Touched:** ERI-1885-1889 (new), ERI-1889-1952 (new), ERI-1993-2025 (new), ERI-1882-2025 (deleted), ERI-1882-1889 (deleted), ERI-1889-1900 (deleted), ERI-1900-1941 (deleted), ERI-1941-1952 (deleted)
