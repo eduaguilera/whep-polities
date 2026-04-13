@@ -8,7 +8,7 @@ lint fails if the index is stale.
 | Metric | Value |
 |---|---|
 | Polities in CSV | 1325 (as of 2026-04-13) |
-| Polity pages | 448 (all sourced, no bulk trash) |
+| Polity pages | 451 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
 | Pages with `status: reviewed` | 68 |
 | Pages with `status: contested` | 0 |
@@ -65,6 +65,21 @@ lint fails if the index is stale.
   `DNK-1800-1864`, draft, 3 open questions. Pre-1864 Denmark
   including Schleswig-Holstein (~57K km²). 1864 Second Schleswig
   War splits to DNK-1864-1920. Connects to German chain.
+- [Iceland](polities/isl-1800-2025.md) —
+  `ISL-1800-2025`, draft, 2 open questions. 226-year single row.
+  Danish colony to 1944 independence; CShapes shows 4 time-steps
+  at identical area (19.56 sq deg) confirming no territorial change.
+  COW entry 1944-06-17.
+- [Ireland](polities/irl-1921-2025.md) —
+  `IRL-1921-2025`, draft, 3 open questions. 105-year row from
+  Anglo-Irish Treaty (1921). Predecessor: GBR-1800-1921. CShapes
+  single time-step from 1922-12-06 at 9.35 sq deg; territory
+  stable since partition. COW entry 1922-12-06.
+- [Greenland](polities/grl-1800-2025.md) —
+  `GRL-1800-2025`, draft, 3 open questions. 226-year single row.
+  Danish territory throughout; polygon from GADM 4.1 (CShapes
+  excludes Greenland — population below 250k threshold). No COW
+  entry. Separate from DNK chain.
 - [Sweden (with Finland)](polities/swe-1800-1809.md) —
   `SWE-1800-1809`, draft, 1 OQ. ~800K km². Finland lost 1809.
 - [Sweden (1809-1814)](polities/swe-1809-1814.md) —

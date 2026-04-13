@@ -191,6 +191,7 @@ GNQ-1968-2025,Equatorial Guinea,1968,2025,58,national,Africa,GNQ,NA,CShapes 2.0,
 GRC-1830-1913,Greece (to 1913),1830,1913,84,national,Europe,GRC,350,CShapes 2.0 + CShapes-Europe,NA,GRC-1913-1919,FT; CShapes,FIXED,Start date corrected from 1800 to 1830 (Greek independence). Greece was Ottoman territory before 1830. Polygon back-projected from CShapes 1886 (63711 km2); Cliopatria has more accurate 1830-era boundaries (~47000 km2).,draft
 GRC-1913-1919,Greece (1913-1919),1913,1919,7,national,Europe,GRC,350,CShapes 2.0,GRC-1830-1913,GRC-1919-2025,FT; CShapes,VERIFIED,NA,draft
 GRC-1919-2025,Greece,1919,2025,107,national,Europe,GRC,350,CShapes 2.0,GRC-1913-1919,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
+GRL-1800-2025,Greenland,1800,2025,226,national,Europe,GRL,NA,GADM 4.1,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
 GTM-1821-2025,Guatemala,1821,2025,205,national,North America,GTM,90,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
 GUY-1800-2025,Guyana,1800,2025,226,national,South America,GUY,110,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
 HND-1800-2025,Honduras,1800,2025,226,national,North America,HND,91,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
@@ -214,9 +215,11 @@ IND-1914-1937,India (1914-1937),1914,1937,24,national,Asia,IND,750,CShapes 2.0,I
 IND-1937-1947,India (1937-1947),1937,1947,11,national,Asia,IND,750,CShapes 2.0,IND-1914-1937,IND-1947-1949,FT; CShapes,VERIFIED,NA,reviewed
 IND-1947-1949,India (1947-1949),1947,1949,3,national,Asia,IND,750,CShapes 2.0,IND-1937-1947,IND-1949-2025,CShapes,VERIFIED,NA,reviewed
 IND-1949-2025,India,1949,2025,77,national,Asia,IND,750,CShapes 2.0,IND-1947-1949,NA,FAOSTAT; M49; CShapes,VERIFIED,NA,draft
+IRL-1921-2025,Ireland,1921,2025,105,national,Europe,IRL,205,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
 IRN-1800-1828,Persia (Qajar to 1828),1800,1828,29,national,Asia,IRN,630,Cliopatria (Seshat),NA,IRN-1828-2025,FT,FIXED,"Split from IRN-1800-2025. Qajar Iran including South Caucasus (modern Azerbaijan Armenia eastern Georgia). Lost to Russia via Treaty of Gulistan (1813) and Treaty of Turkmenchay (1828) ~170000+ km2. Cliopatria has Qajar boundaries. Cliopatria polygon: Qajar Dynasty 1800-1804. Qajar Iran including South Caucasus, pre-Treaty of Turkmenchay.",draft
 IRN-1828-2025,Iran,1828,2025,198,national,Asia,IRN,630,CShapes 2.0,IRN-1800-1828,NA,FT; FAOSTAT; M49; CShapes,FIXED,Split from IRN-1800-2025. Post-Turkmenchay borders. CShapes polygon (1622521 km2) approximately matches modern Iran.,draft
 IRQ-1921-2025,Iraq,1921,2025,105,national,Asia,IRQ,645,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
+ISL-1800-2025,Iceland,1800,2025,226,national,Europe,ISL,395,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA,draft
 ISR-1948-1967,Israel (1948-1967),1948,1967,20,national,Asia,ISR,666,CShapes 2.0,NA,ISR-1967-1979,FAOSTAT; CShapes,VERIFIED,NA,draft
 ISR-1967-1979,Israel (1967-1979),1967,1979,13,national,Asia,ISR,666,CShapes 2.0,ISR-1948-1967,ISR-1979-2025,FAOSTAT; M49; CShapes,VERIFIED,NA,draft
 ISR-1979-2025,Israel,1979,2025,47,national,Asia,ISR,666,CShapes 2.0,ISR-1967-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA,draft
