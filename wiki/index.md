@@ -7,8 +7,8 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1399 (as of 2026-04-13) |
-| Polity pages | 390 (all sourced, no bulk trash) |
+| Polities in CSV | 1397 (as of 2026-04-13) |
+| Polity pages | 393 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
 | Pages with `status: reviewed` | 71 |
 | Pages with `status: contested` | 0 |
@@ -321,14 +321,17 @@ lint fails if the index is stale.
 - [Lesotho](polities/lso-1966-2025.md) — `LSO-1966-2025`, draft. Enclave in South Africa; independence 1966.
 - [Liberia](polities/lbr-1847-2025.md) — `LBR-1847-2025`, draft. Founded 1847 by freed slaves.
 - [Namibia](polities/nam-1884-2025.md) — `NAM-1884-2025`, draft. German colony; SA mandate; independence 1990.
+- [Namibia (1966-1990)](polities/nam-1966-1990.md) — `NAM-1966-1990`, draft. SA mandate to independence.
 - [Namibia (1990-2025)](polities/nam-1990-2025.md) — `NAM-1990-2025`, draft. Independent Namibia from 21 March 1990.
 - [Niger](polities/ner-1960-2025.md) — `NER-1960-2025`, draft. Independence from France August 1960.
+- [Sierra Leone (1895-1961)](polities/sle-1895-1961.md) — `SLE-1895-1961`, draft. British colony/protectorate.
 - [Sierra Leone](polities/sle-1800-2025.md) — `SLE-1800-2025`, draft. Independence 1961.
 - [Sierra Leone (1961-2025)](polities/sle-1961-2025.md) — `SLE-1961-2025`, draft. Independent Sierra Leone from 27 April 1961.
 - [Somalia](polities/som-1960-2025.md) — `SOM-1960-2025`, draft. Formed 1960 from British/Italian Somaliland.
 - [Tanzania](polities/tza-1964-2025.md) — `TZA-1964-2025`, draft. Union of Tanganyika and Zanzibar 1964.
 - [Togo](polities/tgo-1960-2025.md) — `TGO-1960-2025`, draft. German territory; French mandate; independence 1960.
 - [Zimbabwe](polities/zwe-1890-2025.md) — `ZWE-1890-2025`, draft. UDI 1965; independence 1980.
+- [Fed. Rhodesia & Nyasaland](polities/frn-1953-1964.md) — `FRN-1953-1964`, draft. Federation 1953-1963.
 - [Zimbabwe (1964-1980)](polities/zwe-1964-1980.md) — `ZWE-1964-1980`, draft. Post-Federation colony; UDI Rhodesia 1965-1980.
 - [Zimbabwe (1980-2025)](polities/zwe-1980-2025.md) — `ZWE-1980-2025`, draft. Independent Zimbabwe from April 1980.
 - [Western Sahara (1958-1975)](polities/esh-1958-1975.md) — `ESH-1958-1975`, draft. Spanish Sahara as separate territory.
@@ -364,6 +367,7 @@ lint fails if the index is stale.
 - [Equatorial Guinea](polities/gnq-1968-2025.md) — `GNQ-1968-2025`, draft.
 - [Kenya (1926-1963)](polities/ken-1926-1963.md) — `KEN-1926-1963`, draft.
 - [Madagascar](polities/mdg-1882-2025.md) — `MDG-1882-2025`, draft.
+- [Madagascar (1946-1960)](polities/mdg-1946-1960.md) — `MDG-1946-1960`, draft. French overseas territory.
 - [Madagascar (1960-2025)](polities/mdg-1960-2025.md) — `MDG-1960-2025`, draft. Independent Madagascar from 26 June 1960.
 - [Mali](polities/mli-1960-2025.md) — `MLI-1960-2025`, draft.
 - [Mozambique](polities/moz-1816-2025.md) — `MOZ-1816-2025`, draft. Umbrella; sub-chain: MOZ-1800-1891 -> MOZ-1891-1975 -> MOZ-1975-2025.
