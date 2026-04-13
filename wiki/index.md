@@ -7,8 +7,8 @@ lint fails if the index is stale.
 
 | Metric | Value |
 |---|---|
-| Polities in CSV | 1340 (as of 2026-04-13) |
-| Polity pages | 418 (all sourced, no bulk trash) |
+| Polities in CSV | 1333 (as of 2026-04-13) |
+| Polity pages | 413 (all sourced, no bulk trash) |
 | Sources ingested | 15 |
 | Pages with `status: reviewed` | 68 |
 | Pages with `status: contested` | 0 |
@@ -325,14 +325,12 @@ lint fails if the index is stale.
 - [Namibia (to 1886)](polities/nam-1884-1886.md) — `NAM-1884-1886`, draft, 1 open question. German protectorate proclaimed 1884; pre-CShapes coverage.
 - [Namibia (1886-1915)](polities/nam-1886-1915.md) — `NAM-1886-1915`, draft. German South West Africa; WWI conquest by South Africa 1915.
 - [Namibia (1915-1920)](polities/nam-1915-1920.md) — `NAM-1915-1920`, draft. South African military administration post-WWI.
-- [Namibia (1920-1966)](polities/nam-1920-1966.md) — `NAM-1920-1966`, draft. League of Nations mandate under South Africa.
-- [Namibia (1966-1990)](polities/nam-1966-1990.md) — `NAM-1966-1990`, draft. SA mandate to independence.
+- [Namibia (1920-1990)](polities/nam-1920-1990.md) — `NAM-1920-1990`, draft. League of Nations mandate under South Africa.
 - [Namibia (1990-2025)](polities/nam-1990-2025.md) — `NAM-1990-2025`, draft. Independent Namibia from 21 March 1990.
 - [Niger](polities/ner-1960-2025.md) — `NER-1960-2025`, draft. Independence from France August 1960.
 - [Sierra Leone (to 1886)](polities/sle-1800-1886.md) — `SLE-1800-1886`, draft. Pre-CShapes coverage; British settlement.
 - [Sierra Leone (1886-1889)](polities/sle-1886-1889.md) — `SLE-1886-1889`, draft. CShapes era; British colony.
-- [Sierra Leone (1889-1895)](polities/sle-1889-1895.md) — `SLE-1889-1895`, draft. Expanded colony; protectorate declared 1896.
-- [Sierra Leone (1895-1961)](polities/sle-1895-1961.md) — `SLE-1895-1961`, draft. British colony/protectorate.
+- [Sierra Leone (1889-1961)](polities/sle-1889-1961.md) — `SLE-1889-1961`, draft. Expanded colony; protectorate declared 1896.
 - [Sierra Leone (1961-2025)](polities/sle-1961-2025.md) — `SLE-1961-2025`, draft. Independent Sierra Leone from 27 April 1961.
 - [Somalia](polities/som-1960-2025.md) — `SOM-1960-2025`, draft. Formed 1960 from British/Italian Somaliland.
 - [Tanzania (1891-1920)](polities/tan-1891-1920.md) — `TAN-1891-1920`, draft. German East Africa; WWI conquest, League mandate 1920.
@@ -380,8 +378,7 @@ lint fails if the index is stale.
 - [Ghana (1898-1956)](polities/gha-1898-1956.md) — `GHA-1898-1956`, draft.
 - [Guinea (1894-1958)](polities/gin-1894-1958.md) — `GIN-1894-1958`, draft.
 - [Guinea](polities/gin-1958-2025.md) — `GIN-1958-2025`, draft.
-- [Equatorial Guinea (1886-1900)](polities/gnq-1886-1900.md) — `GNQ-1886-1900`, draft. Spanish Guinea; boundary settled 1900.
-- [Equatorial Guinea (1900-1968)](polities/gnq-1900-1968.md) — `GNQ-1900-1968`, draft.
+- [Equatorial Guinea (1886-1968)](polities/gnq-1886-1968.md) — `GNQ-1886-1968`, draft. Spanish Guinea; boundary settled 1900.
 - [Equatorial Guinea](polities/gnq-1968-2025.md) — `GNQ-1968-2025`, draft.
 - [Kenya (1926-1963)](polities/ken-1926-1963.md) — `KEN-1926-1963`, draft.
 - [Madagascar](polities/mdg-1882-2025.md) — `MDG-1882-2025`, draft, 1 open question. From 1882 (French involvement); independent 26 June 1960.
@@ -530,7 +527,7 @@ lint fails if the index is stale.
 - [Mongolia](polities/mng-1921-2025.md) —
   `MNG-1921-2025`, draft, 2 OQs. From 1921 revolution. People's
   Republic 1924. Chain complete 1911-2025.
-- [Afghanistan (1888-1893)](polities/afg-1888-1893.md) — `AFG-1888-1893`, draft. Emirate; Durand Line boundary 1893.
+- [Afghanistan (to 1893)](polities/afg-1800-1893.md) — `AFG-1800-1893`, draft. Emirate; Durand Line boundary 1893.
 - [Afghanistan (1893-1919)](polities/afg-1893-1919.md) — `AFG-1893-1919`, draft.
 - [Afghanistan](polities/afg-1919-2025.md) — `AFG-1919-2025`, draft.
 - [United Arab Emirates](polities/are-1892-2025.md) — `ARE-1892-2025`, draft, 1 open question. Trucial States from 1892; independence 2 Dec 1971.
@@ -552,7 +549,7 @@ lint fails if the index is stale.
 - [Cambodia (1907-1953)](polities/khm-1907-1953.md) — `KHM-1907-1953`, draft.
 - [Cambodia](polities/khm-1953-2025.md) — `KHM-1953-2025`, draft.
 - [Kuwait](polities/kwt-1800-2025.md) — `KWT-1800-2025`, draft.
-- [Laos (1896-1953)](polities/lao-1896-1953.md) — `LAO-1896-1953`, draft. French Laos; Mekong left-bank boundary 1896; independence 1953.
+- [Laos (1893-1953)](polities/lao-1893-1953.md) — `LAO-1893-1953`, draft. French Laos; Mekong left-bank boundary 1896; independence 1953.
 - [Laos](polities/lao-1954-2025.md) — `LAO-1954-2025`, draft.
 - [Lebanon (1920-1944)](polities/lbn-1920-1944.md) — `LBN-1920-1944`, draft.
 - [Lebanon](polities/lbn-1944-2025.md) — `LBN-1944-2025`, draft.
@@ -576,14 +573,12 @@ lint fails if the index is stale.
 - [Syria](polities/syr-1967-2025.md) — `SYR-1967-2025`, draft.
 - [Timor-Leste](polities/tls-1800-2025.md) — `TLS-1800-2025`, draft.
 - [Vietnam](polities/vnm-1975-2025.md) — `VNM-1975-2025`, draft.
-- [Yemen (1990-2000)](polities/yem-1990-2000.md) — `YEM-1990-2000`, draft. Unified Republic; 1994 civil war; area change 2000.
-- [Yemen](polities/yem-2000-2025.md) — `YEM-2000-2025`, draft.
+- [Yemen (1990-2025)](polities/yem-1990-2025.md) — `YEM-1990-2025`, draft. Unified Republic; 1994 civil war; area change 2000.
 
 ### Oceania
 
 - [Australia](polities/aus-1901-2025.md) — `AUS-1901-2025`, draft.
-- [New Zealand (colony)](polities/nzl-1840-1907.md) — `NZL-1840-1907`, draft. British colony from Treaty of Waitangi; Dominion status 1907.
-- [New Zealand](polities/nzl-1907-2025.md) — `NZL-1907-2025`, draft.
+- [New Zealand](polities/nzl-1840-2025.md) — `NZL-1840-2025`, draft. British colony from Treaty of Waitangi; Dominion status 1907.
 - [Papua New Guinea](polities/png-1975-2025.md) — `PNG-1975-2025`, draft.
 - [Vanuatu](polities/vut-1800-2025.md) — `VUT-1800-2025`, draft.
 - [Samoa](polities/wsm-1900-2025.md) — `WSM-1900-2025`, draft.

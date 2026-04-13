@@ -26,6 +26,22 @@ Kinds:
 
 ---
 
+## decision-merge-7-same-area-pairs
+**Date:** 2026-04-13
+**Touched:** AFG-1800-1888 (deleted, merged into AFG-1800-1893), AFG-1888-1893 (renamed AFG-1800-1893), LAO-1893-1896 (deleted, merged into LAO-1893-1953), LAO-1896-1953 (renamed LAO-1893-1953), GNQ-1886-1900 (renamed GNQ-1886-1968), GNQ-1900-1968 (deleted), NAM-1920-1966 (renamed NAM-1920-1990), NAM-1966-1990 (deleted), SLE-1889-1895 (renamed SLE-1889-1961), SLE-1895-1961 (deleted), YEM-1990-2000 (renamed YEM-1990-2025), YEM-2000-2025 (deleted), NZL-1840-1907 (renamed NZL-1840-2025), NZL-1907-2025 (deleted)
+**Source:** cshapes-2.0
+**Kind:** decision
+
+Merged 7 pairs of CSV rows where CShapes shows identical polygon
+areas across the split point, meaning no territorial change occurred.
+Human reviewed and approved. CSV rows: 1340→1333. Wiki pages: 418→413.
+
+Clear merges (no event at split date): AFG 1888, LAO 1896, NAM 1966,
+NZL 1907, SLE 1895. Provisional merges (real treaty at split date but
+CShapes shows no area change — could be reversed with better polygon
+data): GNQ 1900 (Franco-Spanish Convention), YEM 2000 (Treaty of
+Jeddah).
+
 ## ingest-dangling-refs-batch
 **Date:** 2026-04-13
 **Touched:** ASH-1800-1896, BMB-1800-1899, BRG-1800-1897, CAY-1800-1886, DGM-1800-1899, DMG-1800-1899, FTJ-1800-1896, KSJ-1800-1911, KZM-1800-1899, LST-1822-1868, LZI-1800-1890, MOS-1800-1897, PNV-1800-1882, ANG-1891-1905, BEN-1895-1898, CAF-1912-1919, CIV-1933-1947, COD-1894-1910, COG-1912-1919, GAB-1919-1960, GHA-1888-1898, GNQ-1886-1900, LSO-1886-1966, NAM-1886-1915, NAM-1915-1920, NAM-1920-1966, SEN-1886-1959, SLE-1886-1889, SLE-1889-1895, TCD-1920-1960, UGA-1894-1902, UGA-1926-1962, NDB-1823-1894, RWK-1800-1890, TZA-1961-1964, WAD-1800-1912, ZWE-1891-1900, ZWE-1900-1953, MRT-1975-1979, RWB-1922-1962, TAN-1891-1920, RWB-1919-1922, AFG-1888-1893, KHM-1904-1907, LAO-1896-1953, MMR-1852-1885, MYS-1963-1965, NPL-1800-1816, OMN-1800-1856, PAK-1947-1949, SWA-1912-1958, SYR-1946-1967, ISR-1948-1967, TUN-1800-1881, YEM-1990-2000, NZL-1840-1907, NNI-1904-1913, SNI-1906-1913
