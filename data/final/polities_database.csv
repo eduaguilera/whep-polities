@@ -1,7 +1,7 @@
 polity_code,polity_name,start_year,end_year,duration_years,polity_type,continent,iso3_code,cow_code,polygon_source,predecessor,successor,data_sources,verification_status,notes
-CPV-1800-1886,Cabo Verde (to 1886),1800,1886,86,national,Africa,CPV,402,CShapes 2.0,NA,CPV-1886-1975,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-GMB-1800-1889,Gambia (to 1889),1800,1889,89,national,Africa,GMB,420,CShapes 2.0,NA,GMB-1889-1965,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-MUS-1800-1886,Mauritius (to 1886),1800,1886,86,national,Africa,MUS,590,CShapes 2.0,NA,MUS-1886-1968,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+CPV-1800-2025,Cabo Verde,1800,2025,226,national,Africa,CPV,402,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+GMB-1800-2025,Gambia,1800,2025,226,national,Africa,GMB,420,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+MUS-1800-2025,Mauritius,1800,2025,226,national,Africa,MUS,590,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 STP-1800-2025,Sao Tome and Principe,1800,2025,226,national,Africa,STP,411,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SLE-1800-1886,Sierra Leone,1800,1886,87,national,Africa,SLE,451,CShapes 2.0,NA,SLE-1886-1889,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 AGO-1816-2025,Angola,1816,2025,210,national,Africa,AGO,540,CShapes 2.0,ANG-1891-1905; KSJ-1800-1911,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -10,10 +10,10 @@ DZA-1831-1886,Algeria,1831,1886,56,national,Africa,DZA,615,CShapes 2.0,NA,DZA-18
 LBR-1847-2025,Liberia,1847,2025,179,national,Africa,LBR,450,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 GNB-1879-1886,Guinea-Bissau,1879,1886,8,national,Africa,GNB,NA,CShapes 2.0,NA,GNB-1886-1974,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 TUN-1881-2025,Tunisia,1881,2025,145,national,Africa,TUN,616,CShapes 2.0,TUN-1800-1881,NA,FT; FAOSTAT; M49; CShapes,FIXED,Tunisia from French protectorate (Treaty of Bardo 12 May 1881) to present. Independent 20 March 1956. CShapes shows no area change across period (~15.19 sq deg). Single continuous row.
-MDG-1882-1886,Madagascar,1882,1886,5,national,Africa,MDG,580,CShapes 2.0,NA,MDG-1886-1896,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+MDG-1882-2025,Madagascar,1882,2025,144,national,Africa,MDG,580,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NAM-1884-1886,Namibia,1884,1886,3,national,Africa,NAM,565,CShapes 2.0,NA,NAM-1886-1915,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ZWE-1890-1891,Zimbabwe,1890,1891,2,national,Africa,ZWE,552,CShapes 2.0,NDB-1823-1894,ZWE-1891-1900,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-SWZ-1894-1895,Eswatini,1894,1895,2,national,Africa,SWZ,572,CShapes 2.0,SWK-1800-1894,SWZ-1895-1968,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+SWZ-1894-2025,Eswatini,1894,2025,132,national,Africa,SWZ,572,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SYC-1903-2025,Seychelles,1903,2025,123,national,Africa,SYC,591,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 LBY-1951-2025,Libya,1951,2025,75,national,Africa,LBY,620,CShapes 2.0,LBY-1943-1949,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 GHA-1957-2025,Ghana,1957,2025,69,national,Africa,GHA,452,CShapes 2.0,GHA-1898-1956,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -44,7 +44,7 @@ BWA-1966-2025,Botswana,1966,2025,60,national,Africa,BWA,571,CShapes 2.0,NA,NA,FA
 LSO-1966-2025,Lesotho,1966,2025,60,national,Africa,LSO,570,CShapes 2.0,LST-1822-1868; LSO-1886-1966,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 GNQ-1968-2025,Equatorial Guinea,1968,2025,58,national,Africa,GNQ,NA,CShapes 2.0,GNQ-1900-1968,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 COM-1975-2025,Comoros,1975,2025,51,national,Africa,COM,403,CShapes 2.0,COM-1946-1975,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-DJI-1977-2025,Djibouti,1977,2025,49,national,Africa,DJI,522,CShapes 2.0,DJI-1900-1977,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+DJI-1886-2025,Djibouti,1886,2025,140,national,Africa,DJI,522,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 EGY-1979-2025,Egypt,1979,2025,47,national,Africa,EGY,651,CShapes 2.0,EGY-1967-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 MRT-1979-2025,Mauritania,1979,2025,47,national,Africa,MRT,435,CShapes 2.0,MRT-1975-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 MAR-1979-2025,Morocco,1979,2025,47,national,Africa,MAR,600,CShapes 2.0,MAR-1975-1979; MOR-1956-1958,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -214,9 +214,9 @@ IRN-1800-1828,Persia (Qajar to 1828),1800,1828,29,national,Asia,IRN,630,Cliopatr
 IRN-1828-2025,Iran,1828,2025,198,national,Asia,IRN,630,CShapes 2.0,IRN-1800-1828,NA,FT; FAOSTAT; M49; CShapes,FIXED,Split from IRN-1800-2025. Post-Turkmenchay borders. CShapes polygon (1622521 km2) approximately matches modern Iran.
 KWT-1800-2025,Kuwait,1800,2025,226,national,Asia,KWT,690,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 MDV-1800-2025,Maldives,1800,2025,226,national,Asia,MDV,781,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-PHL-1800-1886,Philippines (to 1886),1800,1886,87,national,Asia,PHL,840,CShapes 2.0,NA,PHL-1886-1898,FT; FAOSTAT; M49; CShapes,VERIFIED,Pre-CShapes period. Spanish colonial Philippines before COW system entry.
+PHL-1800-2025,Philippines,1800,2025,226,national,Asia,PHL,840,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Pre-CShapes period. Spanish colonial Philippines before COW system entry.
 QAT-1800-2025,Qatar,1800,2025,226,national,Asia,QAT,694,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-LKA-1800-1886,Sri Lanka (to 1886),1800,1886,86,national,Asia,LKA,780,CShapes 2.0,NA,LKA-1886-1948,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+LKA-1800-2025,Sri Lanka,1800,2025,226,national,Asia,LKA,780,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 TLS-1800-2025,Timor-Leste,1800,2025,226,national,Asia,TLS,860,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CYP-1879-2025,Cyprus,1879,2025,147,national,Asia,CYP,352,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BRN-1888-2025,Brunei Darussalam,1888,2025,138,national,Asia,BRN,835,CShapes 2.0,BRN-1816-1888,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -235,7 +235,7 @@ SGP-1965-2025,Singapore,1965,2025,61,national,Asia,SGP,830,CShapes 2.0,NA,NA,FAO
 SYR-1967-2025,Syrian Arab Republic,1967,2025,59,national,Asia,SYR,652,CShapes 2.0,SYR-1946-1967,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 BGD-1971-2025,Bangladesh,1971,2025,55,national,Asia,BGD,771,CShapes 2.0,PAK-1949-1971,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 PAK-1971-2025,Pakistan,1971,2025,55,national,Asia,PAK,770,CShapes 2.0,PAK-1949-1971,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ARE-1971-2025,United Arab Emirates,1971,2025,55,national,Asia,ARE,696,CShapes 2.0,ARE-1913-1971,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+ARE-1892-2025,United Arab Emirates,1892,2025,134,national,Asia,ARE,696,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 VNM-1975-2025,Vietnam,1975,2025,51,national,Asia,VNM,816,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ISR-1979-2025,Israel,1979,2025,47,national,Asia,ISR,666,CShapes 2.0,ISR-1967-1979,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ARM-1991-2025,Armenia,1991,2025,35,national,Asia,ARM,371,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -246,7 +246,7 @@ KGZ-1991-2025,Kyrgyzstan,1991,2025,35,national,Asia,KGZ,703,CShapes 2.0,F228-194
 TJK-1991-2025,Tajikistan,1991,2025,35,national,Asia,TJK,702,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 TKM-1991-2025,Turkmenistan,1991,2025,35,national,Asia,TKM,701,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 UZB-1991-2025,Uzbekistan,1991,2025,35,national,Asia,UZB,704,CShapes 2.0,F228-1945-1991,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-SAU-2000-2025,Saudi Arabia,2000,2025,26,national,Asia,SAU,670,CShapes 2.0,SAU-1932-2000,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
+SAU-1924-2025,Saudi Arabia,1924,2025,102,national,Asia,SAU,670,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 YEM-2000-2025,Yemen,2000,2025,26,national,Asia,YEM,678,CShapes 2.0,YEM-1990-2000,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 IDN-2002-2025,Indonesia,2002,2025,24,national,Asia,IDN,850,CShapes 2.0,IDN-1976-2002,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ABU-1800-1971,Abu Dhabi,1800,1971,172,national,Asia,ABU,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -291,8 +291,6 @@ TIB-1914-1950,Tibet (1914-1950),1914,1950,37,national,Asia,TIB,NA,CShapes 2.0,TI
 F246-1918-1990,North Yemen,1918,1990,73,national,Asia,NA,679,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 JOR-1920-1923,Jordan (1920-1923),1920,1923,4,national,Asia,JOR,663,CShapes 2.0,JOR-1918-1920,JOR-1923-1946,FT; CShapes,VERIFIED,Emirate of Transjordan under British mandate. Area ~4.26 sq deg.
 CHN-1921-1945,China (1921-1945),1921,1945,25,national,Asia,CHN,710,CShapes 2.0,CHN-1914-1921,CHN-1945-1947,FT; CShapes,VERIFIED,NA
-SAU-1924-1932,Saudi Arabia (1924-1932),1924,1932,9,national,Asia,SAU,670,CShapes 2.0,OTT-1908-1912,SAU-1932-2000,FT; CShapes,VERIFIED,"Pre-1924 Arabian interior (Nejd, Hejaz, Asir) has no polygon source. CShapes starts Saudi at 1927. The Hejaz coast was Ottoman until 1916 (Arab Revolt), then Kingdom of Hejaz 1916-1925. Nejd (interior) was the Emirate of Nejd under Ibn Saud from 1902. No freely available GIS boundary data exists for these pre-unification entities."
-SAU-1932-2000,Saudi Arabia (1932-2000),1932,2000,69,national,Asia,SAU,670,CShapes 2.0,SAU-1924-1932,SAU-2000-2025,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 IND-1937-1947,India (1937-1947),1937,1947,11,national,Asia,IND,750,CShapes 2.0,IND-1914-1937,IND-1947-1949,FT; CShapes,VERIFIED,NA
 CHN-1945-1947,China (1945-1947),1945,1947,3,national,Asia,CHN,710,CShapes 2.0,CHN-1921-1945,CHN-1947-1949,CShapes,VERIFIED,NA
 IDN-1945-1949,Indonesia (1945-1949),1945,1949,5,national,Asia,IDN,850,CShapes 2.0,IDN-1889-1945,IDN-1949-1969,CShapes,VERIFIED,NA
@@ -543,19 +541,19 @@ DOD-1912-2025,Dodecanese Is.,1912,2025,114,national,Europe,DOD,NA,CShapes 2.0 (d
 ATG-1800-2025,Antigua and Barbuda,1800,2025,226,national,North America,ATG,NA,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BHS-1800-1886,Bahamas,1800,1886,87,national,North America,BHS,31,CShapes 2.0,NA,BHS-1886-1973,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BRB-1800-1886,Barbados,1800,1886,87,national,North America,BRB,53,CShapes 2.0,NA,BRB-1886-1966,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BLZ-1800-1886,Belize (to 1886),1800,1886,86,national,North America,BLZ,80,CShapes 2.0,NA,BLZ-1886-1970,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+BLZ-1800-2025,Belize,1800,2025,226,national,North America,BLZ,80,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CRI-1800-2025,Costa Rica,1800,2025,226,national,North America,CRI,94,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CUB-1800-2025,Cuba,1800,2025,226,national,North America,CUB,40,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Island territory constant at ~109K km2 (no >10% area change). Political transitions: Spanish colony to 1898; US occupation 1899-1902; Republic (Platt Amendment) 1902; full sovereignty 1934; Cuban Revolution 1959. CShapes has 5 status periods. Not split because territory did not change.
 DMA-1800-2025,Dominica,1800,2025,226,national,North America,DMA,56,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 DOM-1800-2025,Dominican Republic,1800,2025,226,national,North America,DOM,42,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 HTI-1800-2025,Haiti,1800,2025,226,national,North America,HTI,41,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 HND-1800-2025,Honduras,1800,2025,226,national,North America,HND,91,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-JAM-1800-1886,Jamaica (to 1886),1800,1886,86,national,North America,JAM,51,CShapes 2.0,NA,JAM-1886-1962,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+JAM-1800-2025,Jamaica,1800,2025,226,national,North America,JAM,51,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NIC-1800-2025,Nicaragua,1800,2025,226,national,North America,NIC,93,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 KNA-1800-2025,Saint Kitts and Nevis,1800,2025,226,national,North America,KNA,60,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 LCA-1838-2025,Saint Lucia,1838,2025,188,national,North America,LCA,57,CShapes 2.0,LCA-1800-1838,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 VCT-1833-2025,Saint Vincent and the Grenadines,1833,2025,193,national,North America,VCT,58,CShapes 2.0,VCT-1800-1833,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-TTO-1800-1886,Trinidad and Tobago (to 1886),1800,1886,86,national,North America,TTO,52,CShapes 2.0,NA,TTO-1886-1962,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+TTO-1800-2025,Trinidad and Tobago,1800,2025,226,national,North America,TTO,52,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 SLV-1821-2025,El Salvador,1821,2025,205,national,North America,SLV,92,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 GTM-1821-2025,Guatemala,1821,2025,205,national,North America,GTM,90,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 PAN-1979-2025,Panama (post-Canal Zone),1979,2025,47,national,North America,PAN,95,CShapes 2.0,PAN-1800-1979,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
@@ -665,29 +663,25 @@ CAR-1885-2025,Caroline Island,1885,2025,141,national,Oceania,CAR,NA,CShapes 2.0,
 GIL-1892-2025,Gilbert and Ellice Island,1892,2025,134,national,Oceania,GIL,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 DNG-1898-1949,Dutch new Guinea,1898,1949,52,national,Oceania,DNG,NA,CShapes 2.0 (dependencies=TRUE),NA,DNG-1949-1969,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 NHB-1906-2025,New Hebrides,1906,2025,120,national,Oceania,NHB,NA,CShapes 2.0 (dependencies=TRUE),NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-GUY-1800-1886,Guyana (to 1886),1800,1886,86,national,South America,GUY,110,CShapes 2.0,NA,GUY-1886-1966,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+GUY-1800-2025,Guyana,1800,2025,226,national,South America,GUY,110,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 VEN-1821-2025,Venezuela,1821,2025,205,national,South America,VEN,101,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 URY-1828-2025,Uruguay,1828,2025,198,national,South America,URY,165,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-ARG-1902-2025,Argentina,1902,2025,124,national,South America,ARG,160,CShapes 2.0,ARG-1899-1902,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+ARG-1800-2025,Argentina,1800,2025,226,national,South America,ARG,160,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 CHL-1902-2025,Chile,1902,2025,124,national,South America,CHL,155,CShapes 2.0,CHL-1899-1902,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
-BRA-1909-2025,Brazil,1909,2025,117,national,South America,BRA,140,CShapes 2.0,BRA-1903-1909,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
+BRA-1800-2025,Brazil,1800,2025,226,national,South America,BRA,140,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 COL-1922-2025,Colombia,1922,2025,104,national,South America,COL,100,CShapes 2.0,COL-1903-1922,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 BOL-1938-2025,Bolivia,1938,2025,88,national,South America,BOL,145,CShapes 2.0,BOL-1909-1938,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 PRY-1938-2025,Paraguay,1938,2025,88,national,South America,PRY,150,CShapes 2.0,PRY-1811-1938,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,NA
 ECU-1942-2025,Ecuador,1942,2025,84,national,South America,ECU,130,CShapes 2.0,ECU-1800-1942,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 PER-1942-2025,Peru,1942,2025,84,national,South America,PER,135,CShapes 2.0,PER-1922-1942,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-SUR-1975-2025,Suriname,1975,2025,51,national,South America,SUR,115,CShapes 2.0,SUR-1954-1975,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
-ARG-1800-1899,Argentina (to 1899),1800,1899,100,national,South America,ARG,160,CShapes 2.0,NA,ARG-1899-1902,FT; CShapes,VERIFIED,NA
-BRA-1800-1903,Brazil (to 1903),1800,1903,104,national,South America,BRA,140,CShapes 2.0,NA,BRA-1903-1909,FT; CShapes,VERIFIED,NA
+SUR-1886-2025,Suriname,1886,2025,140,national,South America,SUR,115,CShapes 2.0,NA,NA,FAOSTAT; M49; CShapes,VERIFIED,NA
 ECU-1800-1942,Ecuador (to 1942),1800,1942,143,national,South America,ECU,130,CShapes 2.0,NA,ECU-1942-2025,FT; CShapes,VERIFIED,NA
 CHL-1810-1899,Chile (to 1899),1810,1899,90,national,South America,CHL,155,CShapes 2.0,NA,CHL-1899-1902,FT; CShapes,VERIFIED,NA
 PRY-1811-1938,Paraguay (to 1938),1811,1938,128,national,South America,PRY,150,CShapes 2.0,NA,PRY-1938-2025,FT; CShapes,VERIFIED,NA
 BOL-1825-1903,Bolivia (to 1903),1825,1903,79,national,South America,BOL,145,CShapes 2.0,NA,BOL-1903-1909,FT; CShapes,VERIFIED,NA
 PER-1825-1909,Peru (to 1909),1825,1909,85,national,South America,PER,135,CShapes 2.0,NA,PER-1909-1922,FT; CShapes,VERIFIED,NA
-ARG-1899-1902,Argentina (1899-1902),1899,1902,4,national,South America,ARG,160,CShapes 2.0,ARG-1800-1899,ARG-1902-2025,FT; CShapes,VERIFIED,NA
 CHL-1899-1902,Chile (1899-1902),1899,1902,4,national,South America,CHL,155,CShapes 2.0,CHL-1810-1899,CHL-1902-2025,FT; CShapes,VERIFIED,NA
 BOL-1903-1909,Bolivia (1903-1909),1903,1909,7,national,South America,BOL,145,CShapes 2.0,BOL-1825-1903,BOL-1909-1938,FT; CShapes,VERIFIED,NA
-BRA-1903-1909,Brazil (1903-1909),1903,1909,7,national,South America,BRA,140,CShapes 2.0,BRA-1800-1903,BRA-1909-2025,FT; CShapes,VERIFIED,NA
 COL-1903-1922,Colombia (1903-1922),1903,1922,20,national,South America,COL,100,CShapes 2.0,COL-1830-1903,COL-1922-2025,FT; CShapes,VERIFIED,NA
 BOL-1909-1938,Bolivia (1909-1938),1909,1938,30,national,South America,BOL,145,CShapes 2.0,BOL-1903-1909,BOL-1938-2025,FT; CShapes,VERIFIED,NA
 PER-1909-1922,Peru (1909-1922),1909,1922,14,national,South America,PER,135,CShapes 2.0,PER-1825-1909,PER-1922-1942,FT; CShapes,VERIFIED,NA
@@ -934,7 +928,7 @@ OYO-1800-1836,Oyo Empire,1800,1836,37,national,Africa,NA,NA,Paine et al. (2024),
 RWK-1800-1890,Kingdom of Rwanda,1800,1890,91,national,Africa,NA,NA,Paine et al. (2024),NA,RWA-1920-1962; RWA-1962-2025,WHEP-fix,VERIFIED,Pre-colonial kingdom. Existed from c.15th century. Came under German East Africa sphere c.1890. Continued as monarchy under colonial rule until 1961.
 BDK-1800-1890,Kingdom of Burundi,1800,1890,91,national,Africa,NA,NA,Paine et al. (2024),NA,RWA-1920-1962; BDI-1962-2025,WHEP-fix,VERIFIED,Pre-colonial kingdom. Existed from c.17th century. Came under German East Africa sphere c.1890. Continued as monarchy under colonial rule. Paired with Rwanda as Ruanda-Urundi mandate.
 LST-1822-1868,Basotho Kingdom,1822,1868,47,national,Africa,NA,NA,Paine et al. (2024),NA,LSO-1966-2025,WHEP-fix,VERIFIED,Pre-colonial kingdom founded by Moshoeshoe I. Unified Sotho peoples against Zulu/Ndebele pressure. Became British protectorate Basutoland 1868 at Moshoeshoe's request to avoid Boer expansion. Modern Lesotho.
-SWK-1800-1894,Swazi Kingdom,1800,1894,95,national,Africa,NA,NA,Paine et al. (2024),NA,SWZ-1894-1895,WHEP-fix,VERIFIED,Pre-colonial kingdom in modern Eswatini. Founded c.1750. Came under joint Boer-British administration 1894. Modern Eswatini preserves the monarchy.
+SWK-1800-1894,Swazi Kingdom,1800,1894,95,national,Africa,NA,NA,Paine et al. (2024),NA,SWZ-1894-2025,WHEP-fix,VERIFIED,Pre-colonial kingdom in modern Eswatini. Founded c.1750. Came under joint Boer-British administration 1894. Modern Eswatini preserves the monarchy.
 LZI-1800-1890,Lozi Kingdom (Barotseland),1800,1890,91,national,Africa,NA,NA,Paine et al. (2024),NA,ZMB-1964-2025,WHEP-fix,VERIFIED,Pre-colonial kingdom in western Zambia (Barotseland). Founded c.17th century. Became British protectorate under BSAC 1890 (Lochner Concession).
 BRG-1800-1897,Borgu Confederacy,1800,1897,98,national,Africa,NA,NA,Paine et al. (2024),NA,NGA-1914-1960,WHEP-fix,VERIFIED,"Confederation of states (Bussa, Nikki, Illo, Kaiama) on Nigeria-Benin border. Partitioned between British and French 1897-98."
 DGM-1800-1899,Kingdom of Dagbon (Dagomba),1800,1899,100,national,Africa,NA,NA,Paine et al. (2024),NA,GHA-1898-1956,WHEP-fix,VERIFIED,"Pre-colonial kingdom in northern Ghana. Founded c.1400s. German protectorate 1899, then British after WWI."
@@ -1199,18 +1193,9 @@ MMR-1826-1852,Burma (1826-1852),1826,1852,27,national,Asia,MMR,NA,Cliopatria (Bu
 MMR-1852-1885,Upper Burma (1852-1885),1852,1885,34,national,Asia,MMR,NA,Cliopatria (Burma 1853-1858),MMR-1826-1852,MMR-1885-2025,CShapes; Cliopatria; research,VERIFIED,Upper Burma only. ~437K km2. Third Anglo-Burmese War (1885): Britain conquers Upper Burma. Kingdom abolished 1 Jan 1886.
 MMR-1885-2025,Myanmar,1885,2025,141,national,Asia,MMR,NA,Cliopatria (Burma 1948-1962),MMR-1852-1885,NA,CShapes; Cliopatria; research,VERIFIED,British Burma 1886-1948. Independence 1948. Military rule 1962-2011. Name changed to Myanmar 1989.
 BHS-1886-1973,Bahamas (1886-1973),1886,1973,88,national,North America,BHS,31,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
-JAM-1886-1962,Jamaica (1886-1962),1886,1962,77,national,North America,JAM,51,CShapes 2.0 (dependencies=TRUE),JAM-1800-1886,JAM-1962-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
-TTO-1886-1962,Trinidad and Tobago (1886-1962),1886,1962,77,national,North America,TTO,52,CShapes 2.0 (dependencies=TRUE),TTO-1800-1886,TTO-1962-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
 BRB-1886-1966,Barbados (1886-1966),1886,1966,81,national,North America,BRB,53,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
-BLZ-1886-1970,Belize (1886-1970),1886,1970,85,national,North America,BLZ,80,CShapes 2.0 (dependencies=TRUE),BLZ-1800-1886,BLZ-1970-1981,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
-BLZ-1970-1981,Belize (1970-1981),1970,1981,12,national,North America,BLZ,80,CShapes 2.0 (dependencies=TRUE),BLZ-1886-1970,BLZ-1981-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
-GUY-1886-1966,Guyana (1886-1966),1886,1966,81,national,South America,GUY,110,CShapes 2.0 (dependencies=TRUE),GUY-1800-1886,GUY-1966-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
-SUR-1886-1954,Suriname (1886-1954),1886,1954,69,national,South America,SUR,115,CShapes 2.0 (dependencies=TRUE),NA,SUR-1954-1975,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=NLD."
-SUR-1954-1975,Suriname (1954-1975),1954,1975,22,national,South America,SUR,115,CShapes 2.0 (dependencies=TRUE),SUR-1886-1954,SUR-1975-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=NLD."
-CPV-1886-1975,Cape Verde (1886-1975),1886,1975,90,national,Africa,CPV,402,CShapes 2.0 (dependencies=TRUE),CPV-1800-1886,CPV-1975-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=PRT."
 GNQ-1886-1900,Equatorial Guinea (1886-1900),1886,1900,15,national,Africa,GNQ,411,CShapes 2.0 (dependencies=TRUE),NA,GNQ-1900-1968,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=ESP."
 GNQ-1900-1968,Equatorial Guinea (1900-1968),1900,1968,69,national,Africa,GNQ,411,CShapes 2.0 (dependencies=TRUE),GNQ-1886-1900,GNQ-1968-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=ESP."
-GMB-1889-1965,Gambia (1889-1965),1889,1965,77,national,Africa,GMB,420,CShapes 2.0 (dependencies=TRUE),GMB-1800-1889,GMB-1965-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
 SEN-1886-1959,Senegal (1886-1959),1886,1959,74,national,Africa,SEN,433,CShapes 2.0 (dependencies=TRUE),NA,SEN-1960-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 BEN-1898-1960,Benin (1898-1960),1898,1960,63,national,Africa,BEN,434,CShapes 2.0 (dependencies=TRUE),BEN-1895-1898,BEN-1960-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 CIV-1889-1893,Côte d'Ivoire (1889-1893),1889,1893,5,national,Africa,CIV,437,CShapes 2.0 (dependencies=TRUE),NA,CIV-1893-1900,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=FRA."
@@ -1235,8 +1220,6 @@ COD-1910-1960,DR Congo (1910-1960),1910,1960,51,national,Africa,COD,490,CShapes 
 UGA-1926-1962,Uganda (1926-1962),1926,1962,37,national,Africa,UGA,500,CShapes 2.0 (dependencies=TRUE),UGA-1910-1926,UGA-1962-2025,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
 KEN-1926-1963,Kenya (1926-1963),1926,1963,38,national,Africa,KEN,501,CShapes 2.0 (dependencies=TRUE),KEN-1907-1924; KEN-1924-1926,KEN-1963-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
 RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,41,national,Africa,RWB,515,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=mandate, ruler=BEL."
-DJI-1886-1900,Djibouti (1886-1900),1886,1900,15,national,Africa,DJI,522,CShapes 2.0 (dependencies=TRUE),NA,DJI-1900-1977,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
-DJI-1900-1977,Djibouti (1900-1977),1900,1977,78,national,Africa,DJI,522,CShapes 2.0 (dependencies=TRUE),DJI-1886-1900,DJI-1977-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 ANG-1905-1975,Angola (1905-1975),1905,1975,71,national,Africa,ANG,540,CShapes 2.0 (dependencies=TRUE),ANG-1891-1905,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=PRT."
 MOZ-1891-1975,Mozambique (1891-1975),1891,1975,85,national,Africa,MOZ,541,CShapes 2.0 (dependencies=TRUE),MOZ-1800-1891,MOZ-1975-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=PRT."
 ZMB-1911-1953,Zambia (1911-1953),1911,1953,43,national,Africa,ZMB,551,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
@@ -1252,13 +1235,7 @@ NAM-1966-1990,Namibia (1966-1990),1966,1990,25,national,Africa,NAM,565,CShapes 2
 NAM-1990-2025,Namibia (1990-2025),1990,2025,36,national,Africa,NAM,565,CShapes 2.0,NAM-1966-1990,NA,CShapes,VERIFIED,"Independent Namibia. CShapes status=independent, owner=NAM."
 LSO-1886-1966,Lesotho (1886-1966),1886,1966,81,national,Africa,LSO,570,CShapes 2.0 (dependencies=TRUE),NA,LSO-1966-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
 BOT-1895-1966,Botswana (1895-1966),1895,1966,72,national,Africa,BOT,571,CShapes 2.0 (dependencies=TRUE),BOT-1890-1895,NA,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
-MDG-1886-1896,Madagascar (1886-1896),1886,1896,11,national,Africa,MDG,580,CShapes 2.0 (dependencies=TRUE),NA,MDG-1896-1912,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=FRA."
-MDG-1896-1912,Madagascar (1896-1912),1896,1912,17,national,Africa,MDG,580,CShapes 2.0 (dependencies=TRUE),MDG-1886-1896,MDG-1912-1946,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
-MDG-1912-1946,Madagascar (1912-1946),1912,1946,35,national,Africa,MDG,580,CShapes 2.0 (dependencies=TRUE),MDG-1896-1912,MDG-1946-1960,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
-MDG-1946-1960,Madagascar (1946-1960),1946,1960,15,national,Africa,MDG,580,CShapes 2.0 (dependencies=TRUE),MDG-1912-1946,MDG-1960-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
-MDG-1960-2025,Madagascar (1960-2025),1960,2025,66,national,Africa,MDG,580,CShapes 2.0,MDG-1946-1960,NA,CShapes,VERIFIED,Independent Madagascar (Malagasy Republic). CShapes status=independent.
 COM-1946-1975,Comoros (1946-1975),1946,1975,30,national,Africa,COM,581,CShapes 2.0 (dependencies=TRUE),NA,COM-1975-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
-MUS-1886-1968,Mauritius (1886-1968),1886,1968,83,national,Africa,MUS,590,CShapes 2.0 (dependencies=TRUE),MUS-1800-1886,MUS-1968-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
 DZA-1902-1919,Algeria (1902-1919),1902,1919,18,national,Africa,DZA,615,CShapes 2.0 (dependencies=TRUE),DZA-1886-1902,DZA-1919-1962,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 DZA-1919-1962,Algeria (1919-1962),1919,1962,44,national,Africa,DZA,615,CShapes 2.0 (dependencies=TRUE),DZA-1902-1919,DZA-1962-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 LBY-1912-1919,Libya (1912-1919),1912,1919,8,national,Africa,LBY,620,CShapes 2.0 (dependencies=TRUE),NA,LBY-1919-1925,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=ITA."
@@ -1275,28 +1252,22 @@ SYR-1922-1945,Syria (1922-1945),1922,1945,24,national,Asia,SYR,652,CShapes 2.0 (
 LBN-1920-1944,Lebanon (1920-1944),1920,1944,25,national,Asia,LBN,660,CShapes 2.0 (dependencies=TRUE),NA,LBN-1944-2025,CShapes,VERIFIED,"Colonial period. CShapes status=mandate, ruler=FRA."
 JOR-1923-1946,Jordan (1923-1946),1923,1946,24,national,Asia,JOR,663,CShapes 2.0 (dependencies=TRUE),JOR-1920-1923,JOR-1946-2025,CShapes,VERIFIED,"Mandate period. Area doubled (~8.45 sq deg) at 1923 boundary revision. CShapes status=mandate, ruler=GBR."
 JOR-1946-2025,Jordan,1946,2025,80,national,Asia,JOR,663,CShapes 2.0,JOR-1923-1946,NA,FAOSTAT; M49; CShapes,VERIFIED,Independent Hashemite Kingdom from 1946-05-25. Area ~8.45 sq deg.
-ARE-1892-1913,UAE (1892-1913),1892,1913,22,national,Asia,ARE,696,CShapes 2.0 (dependencies=TRUE),NA,ARE-1913-1971,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
-ARE-1913-1971,UAE (1913-1971),1913,1971,59,national,Asia,ARE,696,CShapes 2.0 (dependencies=TRUE),ARE-1892-1913,ARE-1971-2025,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
 AFG-1888-1893,Afghanistan (1888-1893),1888,1893,6,national,Asia,AFG,700,CShapes 2.0 (dependencies=TRUE),AFG-1800-1888,AFG-1893-1919,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
 AFG-1893-1919,Afghanistan (1893-1919),1893,1919,27,national,Asia,AFG,700,CShapes 2.0 (dependencies=TRUE),AFG-1888-1893,AFG-1919-2025,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
 KOR-1905-1910,Korea (1905-1910),1905,1910,6,national,Asia,KOR,730,CShapes 2.0 (dependencies=TRUE),NA,KOR-1910-1945,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=JPN."
 KOR-1910-1945,Korea (1910-1945),1910,1945,36,national,Asia,KOR,730,CShapes 2.0 (dependencies=TRUE),KOR-1905-1910,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=JPN."
-LKA-1886-1948,Sri Lanka (1886-1948),1886,1948,63,national,Asia,LKA,780,CShapes 2.0 (dependencies=TRUE),LKA-1800-1886,LKA-1948-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
 KHM-1907-1953,Cambodia (1907-1953),1907,1953,47,national,Asia,KHM,811,CShapes 2.0 (dependencies=TRUE),KHM-1904-1907,KHM-1953-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 LAO-1893-1896,Laos (1893-1896),1893,1896,4,national,Asia,LAO,812,CShapes 2.0 (dependencies=TRUE),NA,LAO-1896-1953,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 LAO-1896-1953,Laos (1896-1953),1896,1953,58,national,Asia,LAO,812,CShapes 2.0 (dependencies=TRUE),LAO-1893-1896,LAO-1954-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 VNM-1893-1954,Vietnam (1893-1954),1893,1954,62,national,Asia,VNM,815,CShapes 2.0 (dependencies=TRUE),VNM-1800-1893,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=FRA."
 SGP-1946-1962,Singapore (1946-1962),1946,1962,17,national,Asia,SGP,830,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
-PHL-1886-1898,Philippines (1886-1898),1886,1898,13,national,Asia,PHL,840,CShapes 2.0 (dependencies=TRUE),PHL-1800-1886,PHL-1898-1946,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=ESP."
-PHL-1898-1946,Philippines (1898-1946),1898,1946,49,national,Asia,PHL,840,CShapes 2.0 (dependencies=TRUE),PHL-1886-1898,PHL-1946-2025,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=USA (from 1898-12-10 Treaty of Paris)."
-PHL-1946-2025,Philippines,1946,2025,80,national,Asia,PHL,840,CShapes 2.0,PHL-1898-1946,NA,FAOSTAT; M49; CShapes,VERIFIED,Independent republic from 1946-07-04.
 SLB-1893-1899,Solomon Islands (1893-1899),1893,1899,7,national,Oceania,SLB,940,CShapes 2.0 (dependencies=TRUE),NA,SLB-1899-1951,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
 SLB-1899-1951,Solomon Islands (1899-1951),1899,1951,53,national,Oceania,SLB,940,CShapes 2.0 (dependencies=TRUE),SLB-1893-1899,SLB-1952-1978,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
 SLB-1952-1978,Solomon Islands (1952-1978),1952,1978,27,national,Oceania,SLB,940,CShapes 2.0 (dependencies=TRUE),SLB-1899-1951,NA,CShapes,VERIFIED,"Colonial period. CShapes status=protectorate, ruler=GBR."
 FJI-1886-1970,Fiji (1886-1970),1886,1970,85,national,Oceania,FJI,950,CShapes 2.0 (dependencies=TRUE),NA,NA,CShapes,VERIFIED,"Colonial period. CShapes status=colony, ruler=GBR."
 OTT-1800-1886,Ottoman Empire (to 1886),1800,1886,87,national,Europe,OTT,640,"Cliopatria (Ottoman Empire 1800-1802, 2.66M km2)",NA,OTT-1886-1908,FT; CShapes,VERIFIED,"Ottoman Empire at near-maximum extent. Lost Greece (1832), parts of Caucasus to Russia, Algeria to France (1830). Cliopatria polygon represents 1800 extent (~2.66M km2). Actual territory contracted significantly during this period."
 OTT-1886-1908,Ottoman Empire (1886-1908),1886,1908,23,national,Europe,OTT,640,CShapes 2.0,OTT-1800-1886,OTT-1908-1912,FT; CShapes,VERIFIED,"Ottoman Empire post-1878 losses (Romania, Serbia, Montenegro, Bulgaria autonomous). Still holds Bosnia (occupied by Austria-Hungary), Libya, Hejaz, Mesopotamia, Levant."
-OTT-1908-1912,Ottoman Empire (1908-1912),1908,1912,5,national,Europe,OTT,640,CShapes 2.0,OTT-1886-1908,TUR-1913-1914; SAU-1924-1932,FT; CShapes,VERIFIED,Ottoman Empire after Bosnia formally annexed by Austria-Hungary (1908). Lost Libya to Italy (1911-12). Balkan Wars (1912-13) cost most remaining European territory. Collapse led to modern Turkey and Arab states.
+OTT-1908-1912,Ottoman Empire (1908-1912),1908,1912,5,national,Europe,OTT,640,CShapes 2.0,OTT-1886-1908,TUR-1913-1914; SAU-1924-2025,FT; CShapes,VERIFIED,Ottoman Empire after Bosnia formally annexed by Austria-Hungary (1908). Lost Libya to Italy (1911-12). Balkan Wars (1912-13) cost most remaining European territory. Collapse led to modern Turkey and Arab states.
 X06-1800-2025,Africa,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 X21-1800-2025,Americas,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
 F5848-1800-2025,Annex I countries,1800,2025,226,aggregate,Global,NA,NA,none (statistical aggregate),NA,NA,FT; FAOSTAT; M49; CShapes,REGION,NA
@@ -1377,18 +1348,8 @@ F5503-1800-2025,Micronesia (Oceania region),1800,2025,226,aggregate,Oceania,NA,N
 ERI-1885-1889,"Eritrea (Italian coastal, 1885-1889)",1885,1889,5,national,Africa,ERI,531,CShapes 2.0,NA,ERI-1889-1952,FT; FAOSTAT; M49; CShapes,VERIFIED,Italian presence at Massawa from Feb 1885. CShapes area 1.59 sq deg (~14K km2). Coastal strip only.
 ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",1889,1952,64,national,Africa,ERI,531,CShapes 2.0,ERI-1885-1889,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,"Colony of Eritrea proclaimed 1 Jan 1890 (Treaty of Wuchale 2 May 1889). CShapes area 10.18 sq deg (~90K km2). Italian colony 1889-1941, British admin 1941-1952. Federated with Ethiopia 15 Sept 1952."
 ERI-1993-2025,Eritrea,1993,2025,33,national,Africa,ERI,531,CShapes 2.0,NA,NA,FT; FAOSTAT; M49; CShapes,VERIFIED,Independence referendum 24 May 1993. Same territory as colonial-era Eritrea (10.18 sq deg). Predecessor is ETH chain (Eritrea was Ethiopian province 1962-1993).
-BLZ-1981-2025,Belize,1981,2025,44,national,North America,BLZ,80,CShapes 2.0,BLZ-1970-1981,NA,CShapes; biger-1995,VERIFIED,Independent Belize from 21 September 1981.
-CPV-1975-2025,Cabo Verde,1975,2025,50,national,Africa,CPV,402,CShapes 2.0,CPV-1886-1975,NA,CShapes; biger-1995,VERIFIED,Independent Cabo Verde from 5 July 1975.
-GMB-1965-2025,Gambia,1965,2025,60,national,Africa,GMB,420,CShapes 2.0,GMB-1889-1965,NA,CShapes; biger-1995,VERIFIED,Independent Gambia from 18 February 1965.
-GUY-1966-2025,Guyana,1966,2025,59,national,South America,GUY,110,CShapes 2.0,GUY-1886-1966,NA,CShapes; biger-1995,VERIFIED,Independent Guyana from 26 May 1966.
-JAM-1962-2025,Jamaica,1962,2025,63,national,North America,JAM,51,CShapes 2.0,JAM-1886-1962,NA,CShapes; biger-1995,VERIFIED,Independent Jamaica from 6 August 1962.
-LKA-1948-2025,Sri Lanka,1948,2025,77,national,Asia,LKA,780,CShapes 2.0,LKA-1886-1948,NA,CShapes; biger-1995,VERIFIED,Independent Sri Lanka (Ceylon) from 4 February 1948.
-MUS-1968-2025,Mauritius,1968,2025,57,national,Africa,MUS,590,CShapes 2.0,MUS-1886-1968,NA,CShapes; biger-1995,VERIFIED,Independent Mauritius from 12 March 1968.
-TTO-1962-2025,Trinidad and Tobago,1962,2025,63,national,North America,TTO,52,CShapes 2.0,TTO-1886-1962,NA,CShapes; biger-1995,VERIFIED,Independent Trinidad and Tobago from 31 August 1962.
 DZA-1886-1902,Algeria (1886-1902),1886,1902,17,national,Africa,DZA,615,CShapes 2.0 (dependencies=TRUE),NA,DZA-1902-1919,CShapes; biger-1995,VERIFIED,"Colonial period (merged 1886-1901 + 1901-1902). CShapes status=colony, ruler=FRA. Same area."
 DZA-1962-2025,Algeria (1962-2025),1962,2025,64,national,Africa,DZA,615,CShapes 2.0,DZA-1919-1962,NA,CShapes; biger-1995,VERIFIED,Independent Algeria. Independence 5 July 1962.
 GNB-1886-1974,Guinea-Bissau (1886-1974),1886,1974,89,national,Africa,GNB,404,CShapes 2.0 (dependencies=TRUE),NA,GNB-1974-2025,CShapes; biger-1995,VERIFIED,"Colonial period (merged). CShapes status=colony, ruler=PRT. Same area throughout."
 GNB-1974-2025,Guinea-Bissau (1974-2025),1974,2025,52,national,Africa,GNB,404,CShapes 2.0,GNB-1886-1974,NA,CShapes; biger-1995,VERIFIED,Independent Guinea-Bissau. Independence 10 September 1974 (Portuguese recognition).
-SWZ-1895-1968,Eswatini (1895-1968),1895,1968,74,national,Africa,SWZ,572,CShapes 2.0 (dependencies=TRUE),NA,SWZ-1968-2025,CShapes; biger-1995,VERIFIED,"Colonial period (merged). SAR 1894-1902, then British 1902-1968. Same area throughout."
-SWZ-1968-2025,Eswatini (1968-2025),1968,2025,58,national,Africa,SWZ,572,CShapes 2.0,SWZ-1895-1968,NA,CShapes; biger-1995,VERIFIED,Independent Eswatini (Swaziland). Independence 6 September 1968. Renamed 2018.
 MOZ-1975-2025,Mozambique (1975-2025),1975,2025,51,national,Africa,MOZ,541,CShapes 2.0,MOZ-1891-1975,NA,CShapes; biger-1995,VERIFIED,Independent Mozambique. Independence 25 June 1975.
