@@ -6,6 +6,7 @@
 <title>WHEP Polities Database</title>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
 <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; }
@@ -64,6 +65,65 @@ body:not(.graph-mode) .graph-only { display: none; }
 #graph-tooltip .tt-name { color: #fff; font-weight: 600; margin-bottom: 2px; }
 #graph-tooltip .tt-code { color: #888; font-size: 10px; }
 #graph-tooltip .tt-warn { color: #f66; margin-top: 3px; }
+
+/* Wiki reader modal */
+#wiki-modal {
+  position: fixed; inset: 0; z-index: 200; display: none;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+}
+#wiki-modal.open { display: flex; }
+#wiki-modal-inner {
+  background: #111222; color: #ddd;
+  width: min(860px, calc(100vw - 40px));
+  height: min(80vh, calc(100vh - 60px));
+  border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+  display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+#wiki-modal-header {
+  padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+}
+#wiki-modal-back, #wiki-modal-close {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: #ccc; border-radius: 5px; padding: 4px 9px; font-size: 12px;
+  font-family: inherit; cursor: pointer;
+}
+#wiki-modal-back:hover, #wiki-modal-close:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+#wiki-modal-back[disabled] { opacity: 0.35; cursor: default; }
+#wiki-modal-title { flex: 1; font-size: 13px; color: #999; font-family: ui-monospace, SFMono-Regular, monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#wiki-modal-body {
+  padding: 18px 24px; overflow-y: auto; flex: 1;
+  font-size: 14px; line-height: 1.6; color: #d8d8d8;
+}
+#wiki-modal-body h1 { font-size: 22px; color: #fff; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px; }
+#wiki-modal-body h2 { font-size: 16px; color: #fff; margin: 18px 0 8px; }
+#wiki-modal-body h3 { font-size: 14px; color: #ddd; margin: 14px 0 6px; }
+#wiki-modal-body p { margin-bottom: 10px; }
+#wiki-modal-body ul, #wiki-modal-body ol { margin: 0 0 10px 22px; }
+#wiki-modal-body li { margin-bottom: 4px; }
+#wiki-modal-body code { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px; font-size: 12px; font-family: ui-monospace, SFMono-Regular, monospace; color: #ffd166; }
+#wiki-modal-body a { color: #5a9eff; text-decoration: none; }
+#wiki-modal-body a:hover { text-decoration: underline; }
+#wiki-modal-body blockquote { border-left: 3px solid rgba(100,180,255,0.3); padding: 2px 12px; color: #bbb; margin: 8px 0; }
+#wiki-modal-body hr { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 16px 0; }
+#wiki-modal-body .wiki-frontmatter {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px; padding: 10px 14px; margin-bottom: 16px;
+  font-size: 11px; color: #aaa; font-family: ui-monospace, SFMono-Regular, monospace;
+}
+#wiki-modal-body .wiki-frontmatter b { color: #ddd; }
+#wiki-modal-body .wiki-error { color: #f66; padding: 30px 0; text-align: center; }
+
+#info .read-wiki-btn {
+  display: inline-block; margin-top: 8px; padding: 5px 10px;
+  background: rgba(100,180,255,0.12); border: 1px solid rgba(100,180,255,0.35);
+  color: #5a9eff; border-radius: 5px; font-size: 11px; cursor: pointer;
+  font-family: inherit;
+}
+#info .read-wiki-btn:hover { background: rgba(100,180,255,0.22); }
 
 #panel {
   position: absolute; top: 10px; left: 10px; z-index: 10;
@@ -170,6 +230,17 @@ body:not(.graph-mode) .graph-only { display: none; }
 <div id="map"></div>
 <div id="graph"><svg></svg></div>
 <div id="graph-tooltip"></div>
+
+<div id="wiki-modal">
+  <div id="wiki-modal-inner">
+    <div id="wiki-modal-header">
+      <button id="wiki-modal-back" disabled title="Back">&#x2190;</button>
+      <div id="wiki-modal-title"></div>
+      <button id="wiki-modal-close" title="Close (Esc)">&#x2715;</button>
+    </div>
+    <div id="wiki-modal-body"></div>
+  </div>
+</div>
 
 <div id="panel">
   <div id="panel-header">
@@ -476,6 +547,7 @@ function showInfo(code) {
   if (p.iso3_code && p.iso3_code !== 'NA') html += `<b>ISO3:</b> <span>${p.iso3_code}</span><br>`;
   if (p.polygon_source && p.polygon_source !== 'NA') html += `<b>Polygon:</b> ${p.polygon_source}<br>`;
   if (p.notes && p.notes !== 'NA') html += `<b>Notes:</b> <span style="color:#999">${p.notes.substring(0, 300)}${p.notes.length > 300 ? '...' : ''}</span><br>`;
+  html += `<button class="read-wiki-btn" onclick="openWikiModal('${p.polity_code}')">Read wiki page &rarr;</button>`;
   document.getElementById('info-meta').innerHTML = html;
 
   let chain = '';
@@ -550,6 +622,103 @@ yearInput.addEventListener('change', () => {
 });
 yearInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') { yearInput.blur(); }
+});
+
+// ----- Wiki reader modal -----
+const wikiHistory = [];
+let wikiCurrent = null;
+
+async function loadWikiPath(relPath, pushHistory = true) {
+  const modal = document.getElementById('wiki-modal');
+  const body = document.getElementById('wiki-modal-body');
+  const title = document.getElementById('wiki-modal-title');
+  modal.classList.add('open');
+  body.scrollTop = 0;
+  body.innerHTML = '<div style="color:#888;padding:20px">Loading…</div>';
+  title.textContent = relPath;
+
+  // Update history *before* the fetch so Back works even on a 404.
+  if (pushHistory && wikiCurrent && wikiCurrent !== relPath) {
+    wikiHistory.push(wikiCurrent);
+  }
+  wikiCurrent = relPath;
+  document.getElementById('wiki-modal-back').disabled = wikiHistory.length === 0;
+
+  try {
+    const res = await fetch(relPath + '?v=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text = await res.text();
+    renderWikiMarkdown(text, relPath);
+  } catch (err) {
+    body.innerHTML = `<div class="wiki-error">Could not load <code>${relPath}</code><br><span style="color:#888;font-size:12px">${err.message}</span></div>`;
+  }
+}
+
+function renderWikiMarkdown(text, relPath) {
+  // Split out YAML frontmatter so we can render it as a styled block.
+  let frontmatter = null;
+  let md = text;
+  if (text.startsWith('---\n')) {
+    const end = text.indexOf('\n---', 4);
+    if (end !== -1) {
+      frontmatter = text.slice(4, end).trim();
+      md = text.slice(end + 4).replace(/^\s*\n/, '');
+    }
+  }
+  const fmHtml = frontmatter
+    ? `<div class="wiki-frontmatter">${
+        frontmatter.split('\n').map(line => {
+          const [k, ...rest] = line.split(':');
+          return `<div><b>${k.trim()}</b>: ${rest.join(':').trim()}</div>`;
+        }).join('')
+      }</div>` : '';
+
+  const baseDir = relPath.substring(0, relPath.lastIndexOf('/') + 1);
+  const rendered = marked.parse(md);
+  document.getElementById('wiki-modal-body').innerHTML = fmHtml + rendered;
+
+  // Rewrite internal links to fetch via the modal instead of navigating away.
+  document.querySelectorAll('#wiki-modal-body a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('http') || href.startsWith('#')) return; // external or in-page anchor
+    a.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      // Resolve relative path against the current page's directory.
+      const [pathPart, hash] = href.split('#');
+      let target = pathPart ? new URL(pathPart, location.origin + '/' + baseDir).pathname.replace(/^\/+/, '') : relPath;
+      loadWikiPath(target);
+    });
+  });
+  document.getElementById('wiki-modal-title').textContent = relPath;
+}
+
+function openWikiModal(code) {
+  wikiHistory.length = 0;
+  wikiCurrent = null;
+  loadWikiPath('wiki/polities/' + code.toLowerCase() + '.md');
+}
+window.openWikiModal = openWikiModal;
+
+function closeWikiModal() {
+  document.getElementById('wiki-modal').classList.remove('open');
+  wikiHistory.length = 0;
+  wikiCurrent = null;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('wiki-modal');
+  if (!modal) return;
+  document.getElementById('wiki-modal-close').addEventListener('click', closeWikiModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeWikiModal(); });
+  document.getElementById('wiki-modal-back').addEventListener('click', () => {
+    if (wikiHistory.length) {
+      const prev = wikiHistory.pop();
+      loadWikiPath(prev, false);
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeWikiModal();
+  });
 });
 
 // ----- Graph view -----

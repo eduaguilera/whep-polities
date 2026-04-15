@@ -298,4 +298,13 @@ no_polygon = len(wiki_codes) - len(matched_wiki)
 print(f"  {len(features)} wiki-verified features written ({remapped} remapped from old codes, {no_polygon} wiki polities with no polygon)")
 PYEOF
 
+# Step 4: Copy wiki markdown so the site can render pages in-browser.
+echo "  Copying wiki markdown for in-browser reader..."
+rm -rf "$SITE_DIR/wiki"
+mkdir -p "$SITE_DIR/wiki/polities" "$SITE_DIR/wiki/sources"
+cp "$WIKI_DIR"/*.md "$SITE_DIR/wiki/polities/" 2>/dev/null || true
+cp "$PROJ_ROOT/wiki/sources"/*.md "$SITE_DIR/wiki/sources/" 2>/dev/null || true
+[ -f "$PROJ_ROOT/wiki/log.md" ] && cp "$PROJ_ROOT/wiki/log.md" "$SITE_DIR/wiki/"
+[ -f "$PROJ_ROOT/wiki/README.md" ] && cp "$PROJ_ROOT/wiki/README.md" "$SITE_DIR/wiki/"
+
 echo "  Done. Site data in $SITE_DIR (wiki-sourced only)"
