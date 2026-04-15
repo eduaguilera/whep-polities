@@ -11,12 +11,54 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; }
 
-#map, #graph { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
-#graph { display: none; background: #0a0a14; }
+#map, #graph, #data-map { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+#graph, #data-map { display: none; background: #0a0a14; }
 #graph svg { width: 100%; height: 100%; display: block; cursor: grab; }
 #graph svg:active { cursor: grabbing; }
-body.graph-mode #map { display: none; }
+body.graph-mode #map, body.graph-mode #data-map { display: none; }
 body.graph-mode #graph { display: block; }
+body.data-mode #map, body.data-mode #graph { display: none; }
+body.data-mode #data-map { display: block; }
+body:not(.graph-mode):not(.data-mode) #map { display: block; }
+body:not(.graph-mode):not(.data-mode) #graph { display: none; }
+body:not(.graph-mode):not(.data-mode) #data-map { display: none; }
+
+.data-only { display: block; }
+body:not(.data-mode) .data-only { display: none; }
+
+#data-legend {
+  position: absolute; right: 16px; bottom: 16px; z-index: 10;
+  background: rgba(15,15,25,0.92); color: #ddd; padding: 10px 12px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+  font-size: 11px; max-width: 260px;
+  backdrop-filter: blur(10px);
+}
+#data-legend .dl-title { font-weight: 600; color: #fff; margin-bottom: 4px; }
+#data-legend .dl-sub { color: #999; font-size: 10px; margin-bottom: 6px; }
+#data-legend .dl-gradient { height: 10px; border-radius: 3px; margin: 6px 0 4px; }
+#data-legend .dl-row { display: flex; justify-content: space-between; color: #bbb; font-size: 10px; }
+
+#data-unmatched {
+  position: absolute; right: 16px; top: 16px; z-index: 10;
+  background: rgba(15,15,25,0.92); color: #ddd; padding: 10px 12px;
+  border-radius: 8px; border: 1px solid rgba(255,120,120,0.25);
+  font-size: 11px; max-width: 280px; max-height: 50vh; overflow-y: auto;
+  backdrop-filter: blur(10px); display: none;
+}
+#data-unmatched .du-title {
+  font-weight: 600; color: #ff8080; margin-bottom: 3px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+#data-unmatched .du-sub { color: #999; font-size: 10px; margin-bottom: 6px; }
+#data-unmatched .du-row {
+  display: flex; justify-content: space-between; gap: 8px;
+  padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 11px;
+}
+#data-unmatched .du-row:first-of-type { border-top: none; }
+#data-unmatched .du-name { color: #ccc; }
+#data-unmatched .du-iso { color: #888; font-size: 10px; margin-left: 4px; }
+#data-unmatched .du-val { color: #ffd166; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 #tabs {
   display: flex; gap: 4px; margin-bottom: 10px;
@@ -228,6 +270,9 @@ body:not(.graph-mode) .graph-only { display: none; }
 
 <div id="loading">Loading polities data...</div>
 <div id="map"></div>
+<div id="data-map"></div>
+<div id="data-legend" style="display:none"></div>
+<div id="data-unmatched"></div>
 <div id="graph"><svg></svg></div>
 <div id="graph-tooltip"></div>
 
@@ -252,6 +297,7 @@ body:not(.graph-mode) .graph-only { display: none; }
   <div id="tabs">
     <button class="tab-btn active" data-view="map">Map</button>
     <button class="tab-btn" data-view="graph">Graph</button>
+    <button class="tab-btn" data-view="data">Data</button>
   </div>
 
   <input type="text" id="year-display" value="1900" inputmode="numeric" />
@@ -264,6 +310,17 @@ body:not(.graph-mode) .graph-only { display: none; }
     <div class="map-only">
       <button class="filter-toggle" id="filter-toggle">Filter types <span id="filter-summary"></span></button>
       <div class="filter-dropdown" id="type-filters"></div>
+    </div>
+
+    <div class="data-only">
+      <div class="ctrl-group">
+        <label>Item</label>
+        <select id="data-item"></select>
+      </div>
+      <div class="ctrl-group">
+        <label>Source pref (per pipeline): mean of juan + mitchell when both present</label>
+      </div>
+      <div id="data-info" style="font-size:11px;color:#999;margin-bottom:8px"></div>
     </div>
 
     <div class="graph-only">
@@ -600,11 +657,17 @@ const slider = document.getElementById('year-range');
 const yearInput = document.getElementById('year-display');
 
 function setYear(y) {
-  y = Math.max(1800, Math.min(2025, y));
+  const lo = parseInt(slider.min) || 1800;
+  const hi = parseInt(slider.max) || 2025;
+  y = Math.max(lo, Math.min(hi, y));
   selectedYear = y;
   slider.value = y;
   yearInput.value = y;
   updateMap();
+  if (currentView === 'data') {
+    dataYear = y;
+    renderDataMap();
+  }
   if (currentView === 'graph') {
     d3.selectAll('.graph-node').attr('opacity', d => {
       if (!d || !d.data) return 1;
@@ -720,6 +783,201 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && modal.classList.contains('open')) closeWikiModal();
   });
 });
+
+// ----- Data (pre-1961 crosslinked) view -----
+let dataMap = null;
+let dataItemIndex = null;   // { items: [...] }
+let dataItemCache = {};     // slug -> loaded item json
+let dataActiveItem = null;  // loaded item json currently shown
+let dataYear = null;        // year being displayed
+
+// Viridis-ish color ramp (6 stops).
+const DATA_PALETTE = ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'];
+
+async function initDataIndex() {
+  if (dataItemIndex) return dataItemIndex;
+  const res = await fetch('pre1961/by_item_index.json?v=' + Date.now());
+  dataItemIndex = await res.json();
+  const sel = document.getElementById('data-item');
+  if (sel) {
+    sel.innerHTML = dataItemIndex.items.map(it =>
+      `<option value="${it.slug}">${it.item} (${it.polities} polities, ${it.year_min}–${it.year_max})</option>`
+    ).join('');
+  }
+  return dataItemIndex;
+}
+
+async function loadDataItem(slug) {
+  if (dataItemCache[slug]) return dataItemCache[slug];
+  const res = await fetch(`pre1961/by_item/${slug}.json?v=` + Date.now());
+  const json = await res.json();
+  dataItemCache[slug] = json;
+  return json;
+}
+
+function dataColorFor(value, minLog, maxLog) {
+  if (value === null || value === undefined || isNaN(value) || value <= 0) return '#333';
+  const t = Math.max(0, Math.min(1, (Math.log10(value) - minLog) / (maxLog - minLog || 1)));
+  // Piecewise-linear interpolate along DATA_PALETTE.
+  const pos = t * (DATA_PALETTE.length - 1);
+  const i = Math.min(Math.floor(pos), DATA_PALETTE.length - 2);
+  const f = pos - i;
+  const mix = (a, b) => {
+    const ah = a.match(/\w\w/g).map(h => parseInt(h, 16));
+    const bh = b.match(/\w\w/g).map(h => parseInt(h, 16));
+    const r = ah.map((v, k) => Math.round(v + (bh[k] - v) * f));
+    return '#' + r.map(v => v.toString(16).padStart(2, '0')).join('');
+  };
+  return mix(DATA_PALETTE[i].slice(1), DATA_PALETTE[i + 1].slice(1));
+}
+
+function buildDataGeoJSON(item, year) {
+  const yearKey = String(year);
+  const yearData = (item.by_year || {})[yearKey] || {};
+  const values = Object.values(yearData).filter(v => v > 0);
+  if (!values.length) return { geo: { type: 'FeatureCollection', features: [] }, minLog: 0, maxLog: 1 };
+  const logs = values.map(v => Math.log10(v));
+  const minLog = Math.min(...logs);
+  const maxLog = Math.max(...logs);
+  const features = geoData.features
+    .filter(f => yearData[f.properties.polity_code] !== undefined)
+    .map(f => {
+      const v = yearData[f.properties.polity_code];
+      return {
+        ...f,
+        properties: {
+          ...f.properties,
+          _data_value: v,
+          _data_color: dataColorFor(v, minLog, maxLog)
+        }
+      };
+    });
+  return { geo: { type: 'FeatureCollection', features }, minLog, maxLog };
+}
+
+function updateDataLegend(item, year, minLog, maxLog, featuresCount) {
+  const el = document.getElementById('data-legend');
+  if (!item) { el.style.display = 'none'; return; }
+  el.style.display = 'block';
+  const grad = `linear-gradient(to right, ${DATA_PALETTE.join(', ')})`;
+  const fmt = v => v >= 1000 ? v.toExponential(1) : v.toFixed(1);
+  el.innerHTML =
+    `<div class="dl-title">${item.item}</div>
+     <div class="dl-sub">${year} &middot; ${featuresCount} polities &middot; ${item.unit}</div>
+     <div class="dl-gradient" style="background:${grad}"></div>
+     <div class="dl-row"><span>${fmt(Math.pow(10, minLog))}</span><span>${fmt(Math.pow(10, maxLog))}</span></div>`;
+  document.getElementById('data-info').textContent =
+    `${featuresCount} polities with ${item.item.toLowerCase()} data for ${year}`;
+}
+
+function renderDataMap() {
+  if (!dataMap || !dataActiveItem || dataYear === null) return;
+  const src = dataMap.getSource && dataMap.getSource('data-polities');
+  if (!src) return; // Map not finished loading; its 'load' handler will call us.
+  const { geo, minLog, maxLog } = buildDataGeoJSON(dataActiveItem, dataYear);
+  src.setData(geo);
+  updateDataLegend(dataActiveItem, dataYear, minLog, maxLog, geo.features.length);
+  updateUnmatchedPanel(dataActiveItem, dataYear);
+}
+
+function updateUnmatchedPanel(item, year) {
+  const el = document.getElementById('data-unmatched');
+  if (!el) return;
+  const list = ((item.unmatched_by_year || {})[String(year)]) || [];
+  if (!list.length) { el.style.display = 'none'; return; }
+  const sorted = list.slice().sort((a, b) => (b.value || 0) - (a.value || 0));
+  const fmt = v => (v >= 1e6 ? (v / 1e6).toFixed(2) + 'M' :
+                    v >= 1e3 ? (v / 1e3).toFixed(1) + 'k' :
+                    Number(v).toFixed(0));
+  const total = sorted.reduce((s, r) => s + (r.value || 0), 0);
+  el.innerHTML =
+    `<div class="du-title"><span>Unmatched (${list.length})</span><span style="color:#999;font-weight:400;font-size:10px">${fmt(total)} ${item.unit}</span></div>
+     <div class="du-sub">${item.item} &middot; ${year} &middot; not placed on the map</div>` +
+    sorted.map(r =>
+      `<div class="du-row"><span class="du-name">${r.name || r.country}<span class="du-iso">${r.iso3c || ''}</span></span><span class="du-val">${fmt(r.value)}</span></div>`
+    ).join('');
+  el.style.display = 'block';
+}
+
+function initDataMap() {
+  if (dataMap) return;
+  dataMap = new maplibregl.Map({
+    container: 'data-map',
+    style: {
+      version: 8,
+      sources: {
+        carto: {
+          type: 'raster',
+          tiles: ['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
+          tileSize: 256,
+          attribution: '&copy; CARTO, &copy; OSM contributors'
+        }
+      },
+      layers: [{ id: 'carto', type: 'raster', source: 'carto' }]
+    },
+    center: [20, 30],
+    zoom: 2,
+    maxZoom: 8
+  });
+  dataMap.on('load', () => {
+    dataMap.addSource('data-polities', {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: [] }
+    });
+    dataMap.addLayer({
+      id: 'data-fill',
+      type: 'fill',
+      source: 'data-polities',
+      paint: { 'fill-color': ['coalesce', ['get', '_data_color'], '#333'], 'fill-opacity': 0.7 }
+    });
+    dataMap.addLayer({
+      id: 'data-outline',
+      type: 'line',
+      source: 'data-polities',
+      paint: { 'line-color': '#fff', 'line-width': 0.4, 'line-opacity': 0.5 }
+    });
+    dataMap.on('click', 'data-fill', (e) => {
+      if (e.features && e.features.length > 0) {
+        const props = e.features[0].properties;
+        const val = props._data_value;
+        new maplibregl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(`<div style="color:#111;font-size:12px"><b>${props.polity_code}</b><br>${Number(val).toLocaleString()} ${dataActiveItem.unit}</div>`)
+          .addTo(dataMap);
+      }
+    });
+    dataMap.on('mouseenter', 'data-fill', () => { dataMap.getCanvas().style.cursor = 'pointer'; });
+    dataMap.on('mouseleave', 'data-fill', () => { dataMap.getCanvas().style.cursor = ''; });
+    renderDataMap();
+  });
+}
+
+async function onDataItemChange(slug) {
+  const item = await loadDataItem(slug);
+  dataActiveItem = item;
+  // Constrain the global year slider to the item's coverage.
+  slider.min = item.year_min;
+  slider.max = item.year_max;
+  if (selectedYear < item.year_min || selectedYear > item.year_max) {
+    setYear(Math.round((item.year_min + item.year_max) / 2));
+  } else {
+    dataYear = selectedYear;
+    renderDataMap();
+  }
+  dataYear = selectedYear;
+  renderDataMap();
+}
+
+async function activateDataView() {
+  await initDataIndex();
+  initDataMap();
+  const sel = document.getElementById('data-item');
+  if (sel && !dataActiveItem) {
+    await onDataItemChange(sel.value);
+  }
+  // Small timeout so the container has layout before map sizes itself.
+  requestAnimationFrame(() => dataMap && dataMap.resize());
+}
 
 // ----- Graph view -----
 const CONTINENT_COLORS = {
@@ -1040,11 +1298,19 @@ function switchView(view) {
   currentView = view;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
   document.body.classList.toggle('graph-mode', view === 'graph');
+  document.body.classList.toggle('data-mode', view === 'data');
+  const legend = document.getElementById('data-legend');
+  if (legend) legend.style.display = (view === 'data' && dataActiveItem) ? 'block' : 'none';
+  const um = document.getElementById('data-unmatched');
+  if (um && view !== 'data') um.style.display = 'none';
   if (view === 'graph') {
-    // defer to let layout settle so svg has dimensions
     requestAnimationFrame(() => renderGraph());
+  } else if (view === 'data') {
+    activateDataView();
   } else if (map) {
     map.resize();
+    // Restore the year slider's full range when leaving Data view.
+    slider.min = 1800; slider.max = 2025;
   }
 }
 
@@ -1113,8 +1379,16 @@ function initGraphControls() {
     b.addEventListener('click', () => switchView(b.dataset.view));
   });
 
-  window.addEventListener('resize', () => { if (currentView === 'graph') renderGraph(); });
+  window.addEventListener('resize', () => {
+    if (currentView === 'graph') renderGraph();
+    if (currentView === 'data' && dataMap) dataMap.resize();
+  });
   updateGraphControlsVisibility();
+
+  const dataItemSel = document.getElementById('data-item');
+  if (dataItemSel) {
+    dataItemSel.addEventListener('change', () => onDataItemChange(dataItemSel.value));
+  }
 }
 
 // Init

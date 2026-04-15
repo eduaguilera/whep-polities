@@ -298,7 +298,18 @@ no_polygon = len(wiki_codes) - len(matched_wiki)
 print(f"  {len(features)} wiki-verified features written ({remapped} remapped from old codes, {no_polygon} wiki polities with no polygon)")
 PYEOF
 
-# Step 4: Copy wiki markdown so the site can render pages in-browser.
+# Step 4: Copy auxiliary datasets (pre-1961 crosslink outputs).
+if [ -d "$PROJ_ROOT/data/compiled/pre1961" ]; then
+  rm -rf "$SITE_DIR/pre1961"
+  mkdir -p "$SITE_DIR/pre1961"
+  cp "$PROJ_ROOT/data/compiled/pre1961/summary_by_polity.json" "$SITE_DIR/pre1961/" 2>/dev/null || true
+  cp "$PROJ_ROOT/data/compiled/pre1961/by_item_index.json" "$SITE_DIR/pre1961/" 2>/dev/null || true
+  mkdir -p "$SITE_DIR/pre1961/by_item"
+  cp "$PROJ_ROOT/data/compiled/pre1961/by_item/"*.json "$SITE_DIR/pre1961/by_item/" 2>/dev/null || true
+  echo "  Copied pre1961 crosslink data -> site/pre1961/ ($(ls $SITE_DIR/pre1961/by_item/ | wc -l) items)"
+fi
+
+# Step 5: Copy wiki markdown so the site can render pages in-browser.
 echo "  Copying wiki markdown for in-browser reader..."
 rm -rf "$SITE_DIR/wiki"
 mkdir -p "$SITE_DIR/wiki/polities" "$SITE_DIR/wiki/sources"
