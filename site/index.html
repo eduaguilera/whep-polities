@@ -5,11 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>WHEP Polities Database</title>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+<script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; }
 
-#map { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+#map, #graph { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+#graph { display: none; background: #0a0a14; }
+#graph svg { width: 100%; height: 100%; display: block; cursor: grab; }
+#graph svg:active { cursor: grabbing; }
+body.graph-mode #map { display: none; }
+body.graph-mode #graph { display: block; }
+
+#tabs {
+  display: flex; gap: 4px; margin-bottom: 10px;
+  background: rgba(0,0,0,0.3); border-radius: 6px; padding: 3px;
+}
+.tab-btn {
+  flex: 1; padding: 6px 10px; border-radius: 4px; font-size: 12px;
+  background: transparent; color: #888; border: none; cursor: pointer;
+  font-family: inherit; font-weight: 500;
+}
+.tab-btn.active { background: rgba(100,158,255,0.18); color: #5a9eff; }
+.tab-btn:hover:not(.active) { color: #bbb; }
+
+.graph-only, .map-only { display: block; }
+body.graph-mode .map-only { display: none; }
+body:not(.graph-mode) .graph-only { display: none; }
+
+.ctrl-group { margin-bottom: 8px; }
+.ctrl-group label { font-size: 11px; color: #888; display: block; margin-bottom: 3px; }
+.ctrl-group select, .ctrl-group input[type="text"], .ctrl-group input[type="number"] {
+  width: 100%; padding: 6px 10px; border-radius: 5px; font-size: 12px; outline: none;
+  border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: #fff;
+  font-family: inherit;
+}
+.ctrl-group select:focus, .ctrl-group input:focus { border-color: rgba(100,180,255,0.4); }
+.ctrl-group select option { background: #1a1a2a; color: #fff; }
+#graph-focus-results {
+  max-height: 180px; overflow-y: auto; margin-top: 4px;
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 5px;
+  background: rgba(20,20,35,0.95); display: none;
+}
+#graph-focus-results.open { display: block; }
+#graph-focus-results .result-item { padding: 6px 8px; font-size: 12px; cursor: pointer; }
+#graph-focus-results .result-item:hover, #graph-focus-results .result-item.active { background: rgba(100,180,255,0.15); }
+#graph-focus-results .result-item .code { color: #666; font-size: 10px; }
+
+.graph-legend { font-size: 10px; color: #777; margin-top: 6px; line-height: 1.6; }
+.graph-legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin-right: 4px; }
+
+#graph-tooltip {
+  position: absolute; pointer-events: none; z-index: 20;
+  background: rgba(15,15,25,0.95); border: 1px solid rgba(255,255,255,0.15);
+  padding: 6px 10px; border-radius: 5px; font-size: 11px; color: #ddd;
+  display: none; max-width: 260px; line-height: 1.4;
+}
+#graph-tooltip .tt-name { color: #fff; font-weight: 600; margin-bottom: 2px; }
+#graph-tooltip .tt-code { color: #888; font-size: 10px; }
+#graph-tooltip .tt-warn { color: #f66; margin-top: 3px; }
 
 #panel {
   position: absolute; top: 10px; left: 10px; z-index: 10;
@@ -114,6 +168,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 <div id="loading">Loading polities data...</div>
 <div id="map"></div>
+<div id="graph"><svg></svg></div>
+<div id="graph-tooltip"></div>
 
 <div id="panel">
   <div id="panel-header">
@@ -122,6 +178,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
   </div>
   <div class="subtitle">Wiki-sourced political entities, 1800-2025</div>
 
+  <div id="tabs">
+    <button class="tab-btn active" data-view="map">Map</button>
+    <button class="tab-btn" data-view="graph">Graph</button>
+  </div>
+
   <input type="text" id="year-display" value="1900" inputmode="numeric" />
   <input type="range" id="year-range" min="1800" max="2025" value="1900" step="1" />
   <div class="slider-labels"><span>1800</span><span>1900</span><span>2025</span></div>
@@ -129,8 +190,45 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
   <div class="panel-body">
     <input type="text" id="search" placeholder="Search polities..." />
 
-    <button class="filter-toggle" id="filter-toggle">Filter types <span id="filter-summary"></span></button>
-    <div class="filter-dropdown" id="type-filters"></div>
+    <div class="map-only">
+      <button class="filter-toggle" id="filter-toggle">Filter types <span id="filter-summary"></span></button>
+      <div class="filter-dropdown" id="type-filters"></div>
+    </div>
+
+    <div class="graph-only">
+      <div class="ctrl-group">
+        <label>Scope</label>
+        <select id="graph-scope">
+          <option value="continent">Entire continent</option>
+          <option value="focus">Focus polity (k-hop neighborhood)</option>
+          <option value="all">All polities (heavy)</option>
+          <option value="orphans">Orphans &amp; broken refs only</option>
+        </select>
+      </div>
+      <div class="ctrl-group" id="graph-focus-group">
+        <label>Focus polity (type to search, click a match)</label>
+        <input type="text" id="graph-focus" autocomplete="off" placeholder="search name or code..." />
+        <div id="graph-focus-results"></div>
+      </div>
+      <div class="ctrl-group" id="graph-hops-group">
+        <label>Hops: <span id="graph-hops-val">5</span></label>
+        <input type="range" id="graph-hops" min="1" max="5" value="5" step="1" style="width:100%" />
+      </div>
+      <div class="ctrl-group" id="graph-continent-group" style="display:none">
+        <label>Continent</label>
+        <select id="graph-continent"></select>
+      </div>
+      <div class="ctrl-group">
+        <label>Color by</label>
+        <select id="graph-color">
+          <option value="type">Polity type</option>
+          <option value="continent">Continent</option>
+          <option value="wiki_status">Wiki status</option>
+          <option value="polygon">Has polygon</option>
+        </select>
+      </div>
+      <div class="graph-legend" id="graph-legend"></div>
+    </div>
 
     <div id="stats"></div>
 
@@ -196,7 +294,7 @@ function parseCSVLine(line) {
 }
 
 async function loadCSV() {
-  const res = await fetch('polities.csv');
+  const res = await fetch('polities.csv?v=' + Date.now());
   const text = await res.text();
   const lines = text.trim().split('\n');
   const headers = parseCSVLine(lines[0]);
@@ -211,7 +309,7 @@ async function loadCSV() {
 }
 
 async function loadGeoJSON() {
-  const res = await fetch('polities.geojson');
+  const res = await fetch('polities.geojson?v=' + Date.now());
   geoData = await res.json();
   // Index features by polity_code for fast lookup
   geoData._index = {};
@@ -351,6 +449,19 @@ function showInfo(code) {
     }
   }
 
+  // Keep graph focus input synced so switching to graph view centers on this polity
+  const focusInput = document.getElementById('graph-focus');
+  if (focusInput) focusInput.value = code;
+  // If we're in the graph tab with focus scope, reset hops to max and rerender.
+  if (currentView === 'graph' && document.getElementById('graph-scope').value === 'focus') {
+    const hopsSlider = document.getElementById('graph-hops');
+    if (hopsSlider) {
+      hopsSlider.value = hopsSlider.max;
+      document.getElementById('graph-hops-val').textContent = hopsSlider.max;
+    }
+    renderGraph();
+  }
+
   document.getElementById('info').style.display = 'block';
   document.getElementById('info-name').textContent = p.polity_name;
 
@@ -422,6 +533,12 @@ function setYear(y) {
   slider.value = y;
   yearInput.value = y;
   updateMap();
+  if (currentView === 'graph') {
+    d3.selectAll('.graph-node').attr('opacity', d => {
+      if (!d || !d.data) return 1;
+      return (d.data.start_year <= selectedYear && d.data.end_year >= selectedYear) ? 1 : 0.35;
+    });
+  }
 }
 
 slider.addEventListener('input', () => setYear(parseInt(slider.value)));
@@ -435,12 +552,410 @@ yearInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') { yearInput.blur(); }
 });
 
+// ----- Graph view -----
+const CONTINENT_COLORS = {
+  Africa: '#e6194b', Asia: '#f58231', Europe: '#4363d8',
+  'North America': '#3cb44b', 'South America': '#42d4f4',
+  Oceania: '#f032e6', Antarctica: '#a9a9a9'
+};
+const STATUS_COLORS = { reviewed: '#4CAF50', draft: '#FF9800', pending: '#FF9800', '': '#888', NA: '#888' };
+
+let polityIndex = {};
+let graphSim = null;
+let graphZoom = null;
+let currentView = 'map';
+
+function buildPolityIndex() {
+  polityIndex = {};
+  polities.forEach(p => { polityIndex[p.polity_code] = p; });
+}
+
+function getNeighbors(code) {
+  const p = polityIndex[code];
+  if (!p) return [];
+  const out = [];
+  ['predecessor', 'successor'].forEach(field => {
+    if (p[field] && p[field] !== 'NA') {
+      p[field].split(';').map(s => s.trim()).filter(Boolean).forEach(c => out.push(c));
+    }
+  });
+  return out;
+}
+
+function collectGraph(scope) {
+  const nodes = new Map(); // code -> {data, missing}
+  const edges = []; // {source, target, kind}
+  const addNode = (code) => {
+    if (nodes.has(code)) return nodes.get(code);
+    const p = polityIndex[code];
+    const n = { id: code, data: p || null, missing: !p };
+    nodes.set(code, n);
+    return n;
+  };
+  const addEdgesFor = (code) => {
+    const p = polityIndex[code];
+    if (!p) return;
+    if (p.predecessor && p.predecessor !== 'NA') {
+      p.predecessor.split(';').map(s => s.trim()).filter(Boolean).forEach(pre => {
+        addNode(pre);
+        const dup = edges.find(e => e.source === pre && e.target === code);
+        if (!dup) edges.push({ source: pre, target: code, kind: 'succession' });
+      });
+    }
+    if (p.successor && p.successor !== 'NA') {
+      p.successor.split(';').map(s => s.trim()).filter(Boolean).forEach(suc => {
+        addNode(suc);
+        // avoid duplicating if the successor also names this as predecessor
+        const dup = edges.find(e => e.source === code && e.target === suc);
+        if (!dup) edges.push({ source: code, target: suc, kind: 'succession' });
+      });
+    }
+  };
+
+  if (scope.mode === 'focus') {
+    const start = scope.focus;
+    if (!start || !polityIndex[start]) return { nodes: [], edges: [], warning: start ? `Code "${start}" not in database` : 'Enter a polity code' };
+    const visited = new Set();
+    const queue = [[start, 0]];
+    while (queue.length) {
+      const [c, d] = queue.shift();
+      if (visited.has(c)) continue;
+      visited.add(c);
+      if (d < scope.hops) {
+        getNeighbors(c).forEach(n => { if (!visited.has(n)) queue.push([n, d + 1]); });
+      }
+    }
+    // Add only the BFS-visited nodes (addEdgesFor would otherwise leak depth+1 nodes).
+    visited.forEach(c => addNode(c));
+    visited.forEach(c => addEdgesFor(c));
+    // Keep only edges whose endpoints are both in the visited set.
+    const trimmedEdges = edges.filter(e => visited.has(e.source) && visited.has(e.target));
+    // Drop any extra nodes that addEdgesFor may have added beyond the visited set.
+    const trimmedNodes = [...nodes.values()].filter(n => visited.has(n.id));
+    return { nodes: trimmedNodes, edges: trimmedEdges };
+  }
+
+  if (scope.mode === 'continent') {
+    const keep = polities.filter(p => p.continent === scope.continent);
+    keep.forEach(p => addNode(p.polity_code));
+    keep.forEach(p => addEdgesFor(p.polity_code));
+    return { nodes: [...nodes.values()], edges };
+  }
+
+  if (scope.mode === 'all') {
+    polities.forEach(p => addNode(p.polity_code));
+    polities.forEach(p => addEdgesFor(p.polity_code));
+    return { nodes: [...nodes.values()], edges };
+  }
+
+  if (scope.mode === 'orphans') {
+    // Nodes that are either isolated (no pred & no succ and nothing references them)
+    // or reference missing codes (broken refs).
+    const referencedBy = {};
+    polities.forEach(p => {
+      getNeighbors(p.polity_code).forEach(n => {
+        referencedBy[n] = referencedBy[n] || new Set();
+        referencedBy[n].add(p.polity_code);
+      });
+    });
+    polities.forEach(p => {
+      const neigh = getNeighbors(p.polity_code);
+      const incoming = referencedBy[p.polity_code] ? referencedBy[p.polity_code].size : 0;
+      const hasBroken = neigh.some(n => !polityIndex[n]);
+      const isolated = neigh.length === 0 && incoming === 0;
+      if (isolated || hasBroken) {
+        addNode(p.polity_code);
+        if (hasBroken) addEdgesFor(p.polity_code);
+      }
+    });
+    return { nodes: [...nodes.values()], edges };
+  }
+  return { nodes: [], edges: [] };
+}
+
+function nodeColor(node, colorBy) {
+  if (node.missing) return '#ff3b3b';
+  const p = node.data;
+  if (colorBy === 'type') return TYPE_COLORS[p.polity_type] || '#888';
+  if (colorBy === 'continent') return CONTINENT_COLORS[p.continent] || '#888';
+  if (colorBy === 'wiki_status') return STATUS_COLORS[p.wiki_status] || '#888';
+  if (colorBy === 'polygon') return (p.polygon_source && p.polygon_source !== 'NA') ? '#4CAF50' : '#FF9800';
+  return '#888';
+}
+
+function renderLegend(colorBy, graphData) {
+  const el = document.getElementById('graph-legend');
+  const entries = [];
+  if (colorBy === 'type') {
+    Object.entries(TYPE_COLORS).forEach(([k, c]) => entries.push([k, c]));
+  } else if (colorBy === 'continent') {
+    Object.entries(CONTINENT_COLORS).forEach(([k, c]) => entries.push([k, c]));
+  } else if (colorBy === 'wiki_status') {
+    entries.push(['reviewed', '#4CAF50'], ['draft/pending', '#FF9800'], ['unknown', '#888']);
+  } else {
+    entries.push(['has polygon', '#4CAF50'], ['no polygon', '#FF9800']);
+  }
+  entries.push(['missing / broken ref', '#ff3b3b']);
+  const noPoly = graphData.nodes.filter(n => n.data && !(geoData && geoData._index && geoData._index[n.id])).length;
+  const counts = { nodes: graphData.nodes.length, edges: graphData.edges.length,
+    missing: graphData.nodes.filter(n => n.missing).length, noPoly };
+  el.innerHTML =
+    `<div style="margin-bottom:4px;color:#999"><b>${counts.nodes}</b> nodes &middot; <b>${counts.edges}</b> edges${counts.missing ? ` &middot; <span style="color:#f66">${counts.missing} broken</span>` : ''}${counts.noPoly ? ` &middot; <span style="color:#ffd166">${counts.noPoly} no-polygon</span>` : ''}</div>` +
+    entries.map(([k, c]) => `<span style="margin-right:8px;white-space:nowrap"><span class="swatch" style="background:${c}"></span>${k}</span>`).join('') +
+    `<div style="margin-top:4px;color:#aaa"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px dashed #ffd166;vertical-align:middle;margin-right:4px"></span>dashed = no polygon yet</div>`;
+}
+
+function currentScope() {
+  const mode = document.getElementById('graph-scope').value;
+  return {
+    mode,
+    focus: document.getElementById('graph-focus').value.trim(),
+    hops: parseInt(document.getElementById('graph-hops').value) || 2,
+    continent: document.getElementById('graph-continent').value,
+    colorBy: document.getElementById('graph-color').value
+  };
+}
+
+function updateGraphControlsVisibility() {
+  const mode = document.getElementById('graph-scope').value;
+  document.getElementById('graph-focus-group').style.display = mode === 'focus' ? '' : 'none';
+  document.getElementById('graph-hops-group').style.display = mode === 'focus' ? '' : 'none';
+  document.getElementById('graph-continent-group').style.display = mode === 'continent' ? '' : 'none';
+}
+
+function renderGraph() {
+  const scope = currentScope();
+  const data = collectGraph(scope);
+  const svgEl = document.querySelector('#graph svg');
+  const svg = d3.select(svgEl);
+  svg.selectAll('*').remove();
+  if (graphSim) graphSim.stop();
+
+  renderLegend(scope.colorBy, data);
+
+  if (data.warning) {
+    svg.append('text')
+      .attr('x', '50%').attr('y', '50%').attr('text-anchor', 'middle')
+      .attr('fill', '#888').attr('font-size', '14px')
+      .text(data.warning);
+    return;
+  }
+  if (!data.nodes.length) {
+    svg.append('text')
+      .attr('x', '50%').attr('y', '50%').attr('text-anchor', 'middle')
+      .attr('fill', '#666').attr('font-size', '14px').text('No nodes to show');
+    return;
+  }
+
+  const width = svgEl.clientWidth;
+  const height = svgEl.clientHeight;
+
+  // defs: arrowhead
+  svg.append('defs').append('marker')
+    .attr('id', 'arrow').attr('viewBox', '0 -5 10 10')
+    .attr('refX', 14).attr('refY', 0)
+    .attr('markerWidth', 6).attr('markerHeight', 6).attr('orient', 'auto')
+    .append('path').attr('d', 'M0,-5L10,0L0,5').attr('fill', '#666');
+
+  const rootG = svg.append('g').attr('class', 'root');
+  graphZoom = d3.zoom().scaleExtent([0.1, 6]).on('zoom', (ev) => rootG.attr('transform', ev.transform));
+  svg.call(graphZoom);
+
+  const nodes = data.nodes.map(n => ({ ...n }));
+  const links = data.edges.map(e => ({ ...e }));
+
+  const sizeFor = (n) => n.missing ? 4 : (selectedCode === n.id ? 9 : 6);
+  // Label style scales with graph density.
+  const dense = nodes.length > 300;
+  const medium = nodes.length > 120;
+  const labelFont = dense ? 8 : (medium ? 9 : 10);
+  const labelMax = dense ? 14 : (medium ? 20 : 32);
+  const shortLabel = (n) => {
+    if (!n.data) return n.id;
+    // For dense graphs, prefer the short code; otherwise show the name.
+    const src = dense ? n.id : n.data.polity_name;
+    return src.length > labelMax ? src.slice(0, labelMax - 1) + '…' : src;
+  };
+
+  const link = rootG.append('g').attr('stroke', '#666').attr('stroke-opacity', 0.55)
+    .selectAll('line').data(links).enter().append('line')
+    .attr('stroke-width', 1.2).attr('marker-end', 'url(#arrow)');
+
+  const node = rootG.append('g').attr('class', 'nodes').selectAll('g').data(nodes).enter().append('g')
+    .attr('class', 'graph-node').style('cursor', 'pointer');
+
+  const hasPolygon = (d) => !d.missing && geoData && geoData._index && geoData._index[d.id];
+
+  node.append('circle')
+    .attr('r', d => sizeFor(d))
+    .attr('fill', d => nodeColor(d, scope.colorBy))
+    .attr('fill-opacity', d => hasPolygon(d) ? 1 : 0.35)
+    .attr('stroke', d => d.id === selectedCode ? '#fff' : (d.missing ? '#ffb3b3' : (hasPolygon(d) ? 'rgba(255,255,255,0.25)' : '#ffd166')))
+    .attr('stroke-width', d => d.id === selectedCode ? 2.5 : (hasPolygon(d) ? 1 : 1.5))
+    .attr('stroke-dasharray', d => (d.missing || hasPolygon(d)) ? null : '3,2');
+
+  const labels = node.append('text')
+    .attr('dx', d => sizeFor(d) + 3).attr('dy', 3)
+    .attr('font-size', labelFont)
+    .attr('fill', d => d.missing ? '#ff8080' : '#ddd')
+    .attr('stroke', '#0a0a14').attr('stroke-width', 2.5).attr('paint-order', 'stroke')
+    .attr('pointer-events', 'none')
+    .text(shortLabel);
+
+  // Year-based dimming
+  const activeForYear = (n) => {
+    if (n.missing) return true;
+    return n.data.start_year <= selectedYear && n.data.end_year >= selectedYear;
+  };
+  node.attr('opacity', d => activeForYear(d) ? 1 : 0.35);
+
+  const tooltip = document.getElementById('graph-tooltip');
+  node.on('mouseenter', (ev, d) => {
+      const p = d.data;
+      const polyNote = p
+        ? (hasPolygon(d) ? '' : '<div style="color:#ffd166;margin-top:3px">No polygon (not on map)</div>')
+        : '';
+      tooltip.innerHTML = p
+        ? `<div class="tt-name">${p.polity_name}</div>
+           <div class="tt-code">${p.polity_code} &middot; ${p.start_year}–${p.end_year} &middot; ${p.polity_type}</div>
+           <div style="color:#aaa">${p.continent}${p.wiki_status ? ' &middot; ' + p.wiki_status : ''}</div>${polyNote}`
+        : `<div class="tt-name" style="color:#f66">Missing: ${d.id}</div><div class="tt-warn">Referenced but not in database</div>`;
+      tooltip.style.display = 'block';
+    })
+    .on('mousemove', (ev) => {
+      tooltip.style.left = (ev.clientX + 12) + 'px';
+      tooltip.style.top = (ev.clientY + 12) + 'px';
+    })
+    .on('mouseleave', () => { tooltip.style.display = 'none'; })
+    .on('click', (ev, d) => {
+      ev.stopPropagation();
+      if (d.missing) return;
+      selectedCode = d.id;
+      node.select('circle')
+        .attr('stroke', n => n.id === selectedCode ? '#fff' : (n.missing ? '#ffb3b3' : 'rgba(255,255,255,0.25)'))
+        .attr('stroke-width', n => n.id === selectedCode ? 2.5 : 1)
+        .attr('r', n => sizeFor(n));
+      showInfo(d.id);
+    });
+
+  // Approximate label width so collide radius keeps text from overlapping.
+  const approxLabelWidth = (d) => shortLabel(d).length * labelFont * 0.55;
+  const collideRadius = (d) => sizeFor(d) + 6 + approxLabelWidth(d) * 0.5;
+
+  const linkDistance = dense ? 110 : (medium ? 160 : 220);
+  const charge = dense ? -400 : (medium ? -900 : -1600);
+
+  graphSim = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(d => d.id).distance(linkDistance).strength(0.35))
+    .force('charge', d3.forceManyBody().strength(charge).distanceMax(1400).theta(0.9))
+    .force('collide', d3.forceCollide().radius(collideRadius).strength(1).iterations(2))
+    .force('x', d3.forceX(width / 2).strength(0.015))
+    .force('y', d3.forceY(height / 2).strength(0.015))
+    .alphaDecay(0.015)
+    .velocityDecay(0.35)
+    .on('tick', () => {
+      link
+        .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+      node.attr('transform', d => `translate(${d.x},${d.y})`);
+    });
+
+  const drag = d3.drag()
+    .on('start', (ev, d) => { if (!ev.active) graphSim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on('drag', (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
+    .on('end', (ev, d) => { if (!ev.active) graphSim.alphaTarget(0); d.fx = null; d.fy = null; });
+  node.call(drag);
+}
+
+function switchView(view) {
+  currentView = view;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  document.body.classList.toggle('graph-mode', view === 'graph');
+  if (view === 'graph') {
+    // defer to let layout settle so svg has dimensions
+    requestAnimationFrame(() => renderGraph());
+  } else if (map) {
+    map.resize();
+  }
+}
+
+function initGraphControls() {
+  const continents = [...new Set(polities.map(p => p.continent).filter(Boolean))].sort();
+  const cSel = document.getElementById('graph-continent');
+  cSel.innerHTML = continents.map(c => `<option value="${c}">${c}</option>`).join('');
+  // Default to the continent with the most polities so the first render is meaningful.
+  const counts = {};
+  polities.forEach(p => { counts[p.continent] = (counts[p.continent] || 0) + 1; });
+  const defaultContinent = continents.sort((a, b) => (counts[b] || 0) - (counts[a] || 0))[0];
+  if (defaultContinent) cSel.value = defaultContinent;
+
+  const rerender = () => { if (currentView === 'graph') renderGraph(); };
+  document.getElementById('graph-scope').addEventListener('change', () => { updateGraphControlsVisibility(); rerender(); });
+  document.getElementById('graph-focus').addEventListener('change', rerender);
+
+  // Typeahead dropdown for the focus polity field.
+  const focusInput = document.getElementById('graph-focus');
+  const focusResults = document.getElementById('graph-focus-results');
+  const pickFocus = (code) => {
+    focusInput.value = code;
+    focusResults.classList.remove('open');
+    focusResults.innerHTML = '';
+    // Default to max hops when a new polity is picked so users see the whole chain.
+    const hopsSlider = document.getElementById('graph-hops');
+    hopsSlider.value = hopsSlider.max;
+    document.getElementById('graph-hops-val').textContent = hopsSlider.max;
+    rerender();
+  };
+  focusInput.addEventListener('input', () => {
+    const q = focusInput.value.trim().toLowerCase();
+    if (q.length < 2) { focusResults.classList.remove('open'); focusResults.innerHTML = ''; return; }
+    const matches = polities.filter(p =>
+      p.polity_name.toLowerCase().includes(q) || p.polity_code.toLowerCase().includes(q)
+    ).slice(0, 12);
+    if (!matches.length) { focusResults.classList.remove('open'); focusResults.innerHTML = ''; return; }
+    focusResults.innerHTML = matches.map(p =>
+      `<div class="result-item" data-code="${p.polity_code}">${p.polity_name} <span class="code">${p.polity_code} (${p.start_year}-${p.end_year})</span></div>`
+    ).join('');
+    focusResults.classList.add('open');
+    focusResults.querySelectorAll('.result-item').forEach(el => {
+      el.addEventListener('click', () => pickFocus(el.dataset.code));
+    });
+  });
+  focusInput.addEventListener('blur', () => {
+    // Delay so clicks on items register before hiding.
+    setTimeout(() => focusResults.classList.remove('open'), 150);
+  });
+  focusInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = focusResults.querySelector('.result-item');
+      if (first) { e.preventDefault(); pickFocus(first.dataset.code); }
+    } else if (e.key === 'Escape') {
+      focusResults.classList.remove('open');
+    }
+  });
+  document.getElementById('graph-hops').addEventListener('input', (e) => {
+    document.getElementById('graph-hops-val').textContent = e.target.value;
+  });
+  document.getElementById('graph-hops').addEventListener('change', rerender);
+  document.getElementById('graph-continent').addEventListener('change', rerender);
+  document.getElementById('graph-color').addEventListener('change', rerender);
+
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.addEventListener('click', () => switchView(b.dataset.view));
+  });
+
+  window.addEventListener('resize', () => { if (currentView === 'graph') renderGraph(); });
+  updateGraphControlsVisibility();
+}
+
 // Init
 async function init() {
   await Promise.all([loadCSV(), loadGeoJSON()]);
   document.getElementById('loading').style.display = 'none';
 
+  buildPolityIndex();
   buildTypeFilters();
+  initGraphControls();
 
   const colorExpr = ['coalesce', ['get', '_color'], '#888'];
 
