@@ -26,6 +26,33 @@ Kinds:
 
 ---
 
+## dangling-refs-audit-2026-04-15
+**Date:** 2026-04-15
+**Touched:** ANG-1800-1890, ANG-1905-1975, AUSA-1836-1900, AUWA-1829-1900, BKN-1800-1897, BNU-1800-1893, CIV-1893-1900, COD-1885-1891, COG-1900-1906, EGB-1830-1914, FRS-1884-1977, GAB-1839-1912, IBD-1829-1893, IGL-1800-1901, IJB-1800-1892, KEN-1902-1906, LBA-1800-1885, LBY-1943-1949, LCA-1800-1838, LND-1800-1887, MMR-1800-1826, MNE-1913-1918, MOR-1956-1958, MYS-1946-1957, NSW-1800-1900, NUP-1800-1897, PAN-1800-1979, QUE-1859-1900, SMO-1912-1956, SOK-1804-1903, SWK-1800-1894, TAS-1825-1900, TUS-1800-1860, TWO-1800-1860, VCT-1800-1833, VIC-1851-1900, ZUL-1816-1879
+**Source:** paine-et-al-2024, wikipedia-australian-colonies-2026-04-15, wikipedia-african-precolonial-2026-04-15, wikipedia-african-colonial-2026-04-15, wikipedia-europe-asia-gaps-2026-04-15, wikipedia-self-ref-chain-2026-04-15
+**Kind:** ingest
+
+Created wiki pages for all 37 polity codes that were dangling references in the wiki-built site CSV (cited as predecessor/successor in the 468 existing wiki pages but had no corresponding wiki page of their own). All 37 codes already had CSV rows in `data/final/polities_database.csv` with research-grade notes; the task was to convert that information into wiki-format pages with at least one external-source citation per page (per README rule 1b). Added 6 new source files: `paine-et-al-2024.md` (a source already cited by dozens of existing pages but with no source file), `wikipedia-australian-colonies-2026-04-15.md`, `wikipedia-african-precolonial-2026-04-15.md`, `wikipedia-african-colonial-2026-04-15.md`, `wikipedia-europe-asia-gaps-2026-04-15.md`, `wikipedia-self-ref-chain-2026-04-15.md`. Wiki pages total 468 → 505.
+
+Discovered several candidate CSV fixes during the research (flagged in each page's *Contradictions* or *Open questions* section, and recorded in the top-level audit file `DANGLING_REFS_AUDIT.md`). Not applied in this session — they are too substantial to ship without human review:
+
+- `TWO-1800-1860`: start_year=1800 historically wrong. Kingdom of the Two Sicilies did not exist until 8 December 1816. Either rename the row or split off pre-1816 Naples/Sicily rows.
+- `LCA-1800-1838` / `VCT-1800-1833`: WHEP split at emancipation timeline, not a territorial event. Candidate merge into single LCA-1800-2025 / VCT-1800-2025 rows per the territorial-economic-unit rule.
+- `SMO-1912-1956`: predecessor `SWA-1884-1912` (Spanish West Africa / Saharan) is factually wrong — Spanish West Africa's successor territory is Western Sahara, not Spanish Morocco.
+- `MOR-1956-1958` → `MAR-1979-2025`: 21-year gap in the Morocco chain covering Tarfaya (1958), Ifni (1969), and Western Sahara (1975) territorial acquisitions. Also, inconsistent MOR/MAR code prefix.
+- `BNU-1800-1893`: the 1893–1899 Rabih period is not captured by any WHEP row. Candidate RAB-1893-1900 or extend BNU end_year.
+- `LND-1800-1887`: successor chain is COD-only, missing the Angolan and Zambian shares of the 1884 colonial partition.
+- `EGB-1830-1914`: successor field skips 1914–1960 British Nigeria rows and jumps directly to NGA-1961-2025.
+- `MNE-1913-1918`: successor=NA; correct successor is the post-1918 Kingdom of Serbs, Croats and Slovenes (SCS-* or YUG-* row).
+- `ZUL-1816-1879` vs `LBA-1800-1885`: end-year choices (legal vs territorial) are debatable.
+- `FRS-*` vs `DJI-1886-2025`: pre-existing Djibouti chain overlap flagged in [frs-1977-2025 oq-chain-overlap](polities/frs-1977-2025.md#oq-chain-overlap); not resolved in this session.
+
+Biger 1995 was not available in this session; pages cite Wikipedia snapshots + Paine et al. 2024 + CShapes 2.0 + Cliopatria 0.1.3. Some secondary-source citations would be desirable on the African pre-colonial pages (the CSV notes already reference Paine but finer scholarship exists for many of these polities).
+
+Audit doc: see `/DANGLING_REFS_AUDIT.md` at the project root for the full case-by-case record.
+
+---
+
 ## decision-colonial-umbrella-cleanup
 **Date:** 2026-04-13
 **Touched:** GOL-1843-2025 (deleted), SGN-1858-2025 (deleted), BAS-1884-2025 (deleted), BCG-1885-2025 (deleted), BEA-1895-2025 (deleted), FEA-1910-2025 (deleted), ITL-1911-2025 (deleted), BEC-1885-2025 (renamed BEC-1885-1966, successor→BWA-1966-2025), ITS-1908-2025 (renamed ITS-1908-1960, successor→SOM-1960-2025), BWA-1966-2025 (predecessor→BEC-1885-1966), SOM-1960-2025 (predecessor→ITS-1908-1960)
