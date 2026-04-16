@@ -73,24 +73,90 @@ pre <- read_csv(input_path, show_col_types = FALSE) |>
 # mismatches surface.
 normalise_iso <- function(iso, year, polity_name = NA_character_) {
   if (is.na(iso) || iso == "NA") return(NA_character_)
+  y <- if (!is.na(year)) year else NA_integer_
 
-  if (iso == "SRB" && !is.na(year) && year < 1920) return("SER")
+  # --- Europe: pre-independence / composite entities -------------------------
+  # PRINCIPLE: if the data reports a country separately, it gets its own polity.
+  # We only rewrite ISOs when the input name is retroactive (e.g. "Yugoslav SFR"
+  # for pre-1918) or the input uses a modern ISO for a genuinely different entity.
 
-  if (iso == "IRL" && !is.na(year) && year < 1921) return("GBR")
-  if (iso == "FIN" && !is.na(year) && year < 1917) return("F228")
-  if (iso %in% c("POL", "EST", "LVA", "LTU") &&
-      !is.na(year) && year < 1918) return("F228")
-  if (iso == "TUR" && !is.na(year) && year < 1913) return("OTT")
-  if (iso %in% c("ISR", "PSE") && !is.na(year) && year < 1948) return("PAL")
+  # Serbia pre-1920 → Kingdom of Serbia (SER)
+  if (iso == "SRB" && !is.na(y) && y < 1920) return("SER")
+
+  # Finland, Ireland, Austria, Hungary, Baltics, Poland: data reports these
+  # separately from their empires → they have their own WHEP polity entries
+  # (FIN-1809-1917, IRL-1800-1921, AUT-1800-1918, HUN-1800-1918,
+  # EST/LVA/LTU/POL-1800-1918, EST/LVA/LTU-1940-1991). No routing needed —
+  # iso codes match directly.
+
+  # Turkey pre-1913 → Ottoman Empire (OTT)
+  # ("Turkey" in pre-1913 sources = the Ottoman Empire itself, not a sub-unit)
+  if (iso == "TUR" && !is.na(y) && y < 1913) return("OTT")
+  # Israel/Palestine pre-1948 → British Mandate Palestine (PAL)
+  if (iso %in% c("ISR", "PSE") && !is.na(y) && y < 1948) return("PAL")
+
+  # Yugoslavia: pre-1918 → Serbia (continuity state); 1918+ → F248
+  # ("Yugoslav SFR" is a retroactive name — the territory was Serbia)
   if (iso == "YUG") {
-    if (!is.na(year) && year < 1945) return("F51") else return("F248")
+    if (!is.na(y) && y < 1918) return("SER") else return("F248")
   }
-  if (iso == "CSK") return("F77")
+  # Czechoslovakia: pre-1918 → AUH (retroactive name for AH territory);
+  #                 1918+ → F51 (Czechoslovakia). NOT F77 (East Germany).
+  if (iso == "CSK") {
+    if (!is.na(y) && y < 1918) return("AUH") else return("F51")
+  }
+
+  # Czech Republic pre-1993 → Czechoslovakia (F51)
+  if (iso == "CZE" && !is.na(y) && y < 1993) return("F51")
+
+  # Germany 1949-1990 → West Germany (F78)
+  # 1946-1948 Allied occupation correctly remains unmatched
+  if (iso == "DEU" && !is.na(y) && y >= 1949 && y < 1990) return("F78")
+
+  # Russia/USSR pre-1991 → Russian Empire/USSR chain (F228)
+  if (iso == "RUS" && !is.na(y) && y < 1991) return("F228")
+
+  # --- Africa: colonial-era routings -----------------------------------------
+
+  # Tanzania pre-1964 → Tanganyika (TAN)
+  if (iso == "TZA" && !is.na(y) && y < 1964) return("TAN")
+  # Botswana pre-1966 → Bechuanaland Protectorate (BEC)
+  if (iso == "BWA" && !is.na(y) && y < 1966) return("BEC")
+  # Mauritania pre-1960 → colonial Mauritania (MAU)
+  if (iso == "MRT" && !is.na(y) && y < 1960) return("MAU")
+  # Somalia pre-1960 → Italian Somaliland (ITS)
+  if (iso == "SOM" && !is.na(y) && y < 1960) return("ITS")
+  # Sudan: WHEP uses SUD (not SDN) for pre-2011 unified Sudan
+  if (iso == "SDN" && !is.na(y) && y < 2011) return("SUD")
+  # Malawi/Zimbabwe/Zambia 1953-1964 → Federation of Rhodesia & Nyasaland (FRN)
+  if (iso == "MWI" && !is.na(y) && y >= 1953 && y < 1964) return("FRN")
+  if (iso == "ZWE" && !is.na(y) && y >= 1953 && y < 1964) return("FRN")
+  if (iso == "ZMB" && !is.na(y) && y >= 1953 && y < 1964) return("FRN")
+  # Libya pre-1912 → Ottoman Empire (OTT)
+  if (iso == "LBY" && !is.na(y) && y < 1912) return("OTT")
+  # Rwanda pre-1962 → Ruanda-Urundi (RWB)
+  if (iso == "RWA" && !is.na(y) && y < 1962) return("RWB")
+
+  # --- Asia: colonial/pre-independence routings ------------------------------
+
+  # Malaysia: pre-1922 → Federated Malay States (FED); 1922-1946 → British Malaya (BMA)
+  if (iso == "MYS" && !is.na(y) && y < 1922) return("FED")
+  if (iso == "MYS" && !is.na(y) && y >= 1922 && y < 1946) return("BMA")
+  # Pakistan pre-1947 → British India (IND)
+  if (iso == "PAK" && !is.na(y) && y < 1947) return("IND")
+  # Bangladesh pre-1971 → Pakistan (PAK) — was East Pakistan
+  if (iso == "BGD" && !is.na(y) && y < 1971) return("PAK")
+  # Vietnam 1954-1975 → South Vietnam (SVI)
+  if (iso == "VNM" && !is.na(y) && y >= 1954 && y <= 1975) return("SVI")
+  # North Korea pre-1948 → Korea (occupied) — pre-division
+  if (iso == "PRK" && !is.na(y) && y < 1948) return("KOR")
+  # Zambia pre-1911 → Northwestern Rhodesia (NWR)
+  if (iso == "ZMB" && !is.na(y) && y < 1911) return("NWR")
 
   iso
 }
 
-# iso3c is NA in the input — fall back to polity_name.
+# iso3c is NA in the input — fall back to polity_name or country.
 name_override <- c(
   "Korea"                        = "KOR",
   "Republic of Korea"            = "KOR",
@@ -98,16 +164,32 @@ name_override <- c(
   "Cape Natal"                   = "NAT",
   "Rwanda and Burundi"           = "RWB",
   "Israel/Palestine"             = "PAL",
-  "Indochina"                    = NA_character_,
-  "China, Manchuria Province of" = NA_character_,
-  "Cape Province"                = NA_character_,
-  "Cape of Good Hope"            = NA_character_
+  "Indochina"                    = "FID",
+  "China, Manchuria Province of" = "MAN",
+  "Cape Province"                = "CAP",
+  "Cape of Good Hope"            = "CAP"
 )
 
-resolve_iso <- function(iso3c, polity_name, year) {
+resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
   iso <- normalise_iso(iso3c, year, polity_name)
   if (is.na(iso) || iso == "NA") {
-    iso <- unname(name_override[polity_name])
+    # Try polity_name first, then country column
+    if (!is.na(polity_name) && polity_name %in% names(name_override)) {
+      iso <- unname(name_override[polity_name])
+    } else if (!is.na(country) && country %in% names(name_override)) {
+      iso <- unname(name_override[country])
+    }
+  }
+  # Post-resolution time-dependent adjustments for name_override results
+  if (!is.na(iso) && iso != "NA") {
+    # Natal → South Africa after Union (1910)
+    if (iso == "NAT" && !is.na(year) && year > 1910) iso <- "ZAF"
+    # Cape Colony → South Africa after Union (1910)
+    if (iso == "CAP" && !is.na(year) && year > 1910) iso <- "ZAF"
+    # Manchuria: only Manchukuo (MAN) 1932-1945; otherwise China (CHN)
+    if (iso == "MAN" && !is.na(year) && (year < 1932 || year > 1945)) iso <- "CHN"
+    # Palestine → Israel after May 1948
+    if (iso == "PAL" && !is.na(year) && year >= 1948) iso <- "ISR"
   }
   iso
 }
@@ -122,6 +204,7 @@ whep_by_iso <- split(whep, whep$iso3_code)
 # too (to avoid rejecting correct but renamed matches like Japan ↔ Japanese
 # Empire or Ivory Coast ↔ Côte d'Ivoire).
 name_equiv <- list(
+  # Direct iso matches — historical/modern name pairs
   JPN = c("japanese empire"),
   TUR = c("t\u00fcrkiye", "ottoman"),
   DEU = c("german", "prussia", "north german confederation"),
@@ -136,11 +219,51 @@ name_equiv <- list(
   THA = c("siam"),
   IDN = c("dutch east indies", "indonesia"),
   ETH = c("abyssinia", "ethiopia"),
-  ZAF = c("south africa"),
+  ZAF = c("south africa", "natal", "cape"),
   EGY = c("egypt"),
   RUS = c("russian empire", "soviet"),
   KOR = c("korea"),
-  COD = c("congo")
+  COD = c("congo"),
+  CMR = c("cameroon", "cameroun", "kamerun"),
+  TGO = c("togo", "togoland"),
+  # Rewrite-target codes — aliases that confirm the WHEP polity is valid
+  GBR  = c("united kingdom", "great britain", "britain"),
+  AUH  = c("austria", "hungary", "austrian", "austro"),
+  F228 = c("russia", "russian", "soviet", "ussr", "rsfsr",
+           "finland", "poland", "estonia", "latvia", "lithuania"),
+  F248 = c("yugoslavia", "yugoslav", "serb", "croat", "slovene"),
+  F51  = c("czech", "czechoslovakia", "slovaki"),
+  F78  = c("germany", "west germany", "federal republic"),
+  OTT  = c("ottoman", "turkey", "libya", "levant"),
+  PAL  = c("palestine", "israel", "jordan"),
+  TAN  = c("tanzania", "tanganyika"),
+  BEC  = c("botswana", "bechuanaland", "tswana"),
+  MAU  = c("mauritania"),
+  BMA  = c("malaysia", "malaya", "malay"),
+  ITS  = c("somali", "somalia"),
+  FRN  = c("malawi", "nyasaland", "rhodesia", "zimbabwe", "zambia"),
+  SUD  = c("sudan"),
+  IND  = c("india", "pakistan", "bengal"),
+  PAK  = c("pakistan", "bangladesh", "east pakistan"),
+  RWB  = c("ruanda", "urundi", "rwanda", "burundi"),
+  MAN  = c("manchuria", "manchukuo", "china"),
+  FID  = c("indochina", "french indochina", "cochinchina"),
+  CAP  = c("cape colony", "cape province", "cape of good hope"),
+  SVI  = c("vietnam", "viet nam", "south vietnam"),
+  FED  = c("malaysia", "malaya", "malay", "federated"),
+  NWR  = c("zambia", "northern rhodesia", "northwestern rhodesia"),
+  FCC  = c("indochina", "cochinchina"),
+  LSO  = c("lesotho", "basutoland", "basotho"),
+  SER  = c("serbia", "yugoslav", "serb"),
+  # Direct-iso entries for pre-independence polities (guard: "Finland" ↔ "Grand Duchy of Finland")
+  FIN  = c("finland", "grand duchy"),
+  AUT  = c("austria", "cisleithania"),
+  HUN  = c("hungary", "transleithania", "kingdom"),
+  IRL  = c("ireland", "united kingdom"),
+  EST  = c("estonia", "estonian", "governorate"),
+  LVA  = c("latvia", "livonia", "courland", "latvian"),
+  LTU  = c("lithuania", "lithuanian", "governorate"),
+  POL  = c("poland", "congress", "kongresowka")
 )
 
 known_equivalent <- function(iso, whep_name) {
@@ -163,7 +286,7 @@ match_one <- function(iso_lookup, year, input_country = NA_character_) {
     # Avoids matching NGA 1889-1897 to NUP-1800-1897 (Nupe Kingdom) just
     # because Nupe happens to carry iso3_code=NGA.
     if (!is.na(input_country) && nchar(input_country) > 0) {
-      tokens_in <- tolower(strsplit(gsub("[^A-Za-z ]", "", input_country), "\\s+")[[1]])
+      tokens_in <- tolower(strsplit(gsub("[^A-Za-z ]", " ", input_country), "\\s+")[[1]])
       tokens_in <- tokens_in[nchar(tokens_in) >= 4]
       wn <- tolower(nat$polity_name[[1]])
       overlap <- any(vapply(tokens_in, function(t) grepl(t, wn, fixed = TRUE), logical(1)))
@@ -178,7 +301,7 @@ match_one <- function(iso_lookup, year, input_country = NA_character_) {
   # the Nupe Kingdom row just because Nupe's iso3_code is also NGA).
   if (nrow(nat) > 1) {
     if (!is.na(input_country) && nchar(input_country) > 0) {
-      tokens_in <- tolower(strsplit(gsub("[^A-Za-z ]", "", input_country), "\\s+")[[1]])
+      tokens_in <- tolower(strsplit(gsub("[^A-Za-z ]", " ", input_country), "\\s+")[[1]])
       tokens_in <- tokens_in[nchar(tokens_in) >= 4]
       name_matches <- vapply(seq_len(nrow(nat)), function(k) {
         wn <- tolower(nat$polity_name[[k]])
@@ -199,7 +322,7 @@ match_one <- function(iso_lookup, year, input_country = NA_character_) {
 }
 
 pre <- pre |>
-  mutate(iso_lookup = mapply(resolve_iso, iso3c, polity_name, year,
+  mutate(iso_lookup = mapply(resolve_iso, iso3c, polity_name, year, country,
                              USE.NAMES = FALSE))
 
 results <- vector("list", nrow(pre))
@@ -244,20 +367,67 @@ token_match <- function(input_str, whep_name) {
 # know the mapping is correct).
 trusted_rewrite <- function(input_iso, input_name, year, whep_code, whep_iso) {
   if (is.na(whep_code)) return(FALSE)
-  # IRL pre-1921 -> GBR
-  if (input_iso == "IRL" && !is.na(year) && year < 1921 && whep_code == "GBR-1800-1921") return(TRUE)
-  # Pre-1917 FIN/POL/EST/LVA/LTU -> Russian Empire (F228 chain)
-  if (input_iso %in% c("FIN", "POL", "EST", "LVA", "LTU") && !is.na(year) && year < 1918 && grepl("^F228", whep_code)) return(TRUE)
-  # Pre-1913 TUR -> Ottoman
-  if (input_iso == "TUR" && !is.na(year) && year < 1913 && grepl("^OTT", whep_code)) return(TRUE)
-  # Pre-1948 ISR/PSE -> PAL
-  if (input_iso %in% c("ISR", "PSE") && !is.na(year) && year < 1948 && grepl("^PAL", whep_code)) return(TRUE)
-  # Pre-1920 SRB -> SER
-  if (input_iso == "SRB" && !is.na(year) && year < 1920 && grepl("^SER", whep_code)) return(TRUE)
-  # YUG rewrites (both pre- and post-1945)
-  if (input_iso == "YUG" && (grepl("^F51", whep_code) || grepl("^F248", whep_code))) return(TRUE)
-  # CSK -> F77
-  if (input_iso == "CSK" && grepl("^F77", whep_code)) return(TRUE)
+  y <- if (!is.na(year)) year else NA_integer_
+
+  # --- ISO-based rewrites (input_iso not NA) ---
+  if (!is.na(input_iso)) {
+
+  # --- Europe ---
+  # (IRL→GBR, FIN→F228, AUT/HUN→AUH, Baltics→F228 REMOVED: these countries
+  # now have their own pre-independence WHEP entries and match directly via iso.)
+  if (input_iso == "TUR" && !is.na(y) && y < 1913 && grepl("^OTT", whep_code)) return(TRUE)
+  if (input_iso %in% c("ISR", "PSE") && !is.na(y) && y < 1948 && grepl("^PAL", whep_code)) return(TRUE)
+  if (input_iso == "SRB" && !is.na(y) && y < 1920 && grepl("^SER", whep_code)) return(TRUE)
+  if (input_iso == "YUG" && grepl("^F248", whep_code)) return(TRUE)
+  if (input_iso == "CSK" && grepl("^F51", whep_code)) return(TRUE)
+  if (input_iso == "CSK" && !is.na(y) && y < 1918 && grepl("^AUH", whep_code)) return(TRUE)
+  if (input_iso == "CZE" && !is.na(y) && y < 1993 && grepl("^F51", whep_code)) return(TRUE)
+  if (input_iso == "DEU" && !is.na(y) && y >= 1949 && y < 1990 && grepl("^F78", whep_code)) return(TRUE)
+  if (input_iso == "RUS" && !is.na(y) && y < 1991 && grepl("^F228", whep_code)) return(TRUE)
+
+  # --- Africa ---
+  if (input_iso == "TZA" && !is.na(y) && y < 1964 && grepl("^TAN", whep_code)) return(TRUE)
+  if (input_iso == "BWA" && !is.na(y) && y < 1966 && grepl("^BEC", whep_code)) return(TRUE)
+  if (input_iso == "MRT" && !is.na(y) && y < 1960 && grepl("^MAU", whep_code)) return(TRUE)
+  if (input_iso == "SOM" && !is.na(y) && y < 1960 && grepl("^ITS", whep_code)) return(TRUE)
+  if (input_iso == "SDN" && !is.na(y) && y < 2011 && grepl("^SUD", whep_code)) return(TRUE)
+  if (input_iso %in% c("MWI", "ZWE", "ZMB") && !is.na(y) && y >= 1953 && y < 1964 && grepl("^FRN", whep_code)) return(TRUE)
+  if (input_iso == "LBY" && !is.na(y) && y < 1912 && grepl("^OTT", whep_code)) return(TRUE)
+  if (input_iso == "RWA" && !is.na(y) && y < 1962 && grepl("^RWB", whep_code)) return(TRUE)
+  if (input_iso == "CSK" && !is.na(y) && y < 1918 && grepl("^AUH", whep_code)) return(TRUE)
+
+  # --- Asia ---
+  if (input_iso == "MYS" && !is.na(y) && y < 1946 && grepl("^BMA", whep_code)) return(TRUE)
+  if (input_iso == "PAK" && !is.na(y) && y < 1947 && grepl("^IND", whep_code)) return(TRUE)
+  if (input_iso == "BGD" && !is.na(y) && y < 1971 && grepl("^PAK", whep_code)) return(TRUE)
+  if (input_iso == "VNM" && !is.na(y) && y >= 1954 && y <= 1975 && grepl("^SVI", whep_code)) return(TRUE)
+  if (input_iso == "PRK" && !is.na(y) && y < 1948 && grepl("^KOR", whep_code)) return(TRUE)
+  if (input_iso == "ZMB" && !is.na(y) && y < 1911 && grepl("^NWR", whep_code)) return(TRUE)
+  if (input_iso == "YUG" && !is.na(y) && y < 1918 && grepl("^SER", whep_code)) return(TRUE)
+  if (input_iso == "MYS" && !is.na(y) && y < 1922 && grepl("^FED", whep_code)) return(TRUE)
+
+  } # end !is.na(input_iso)
+
+  # --- Name-override resolved codes (input iso is NA) ---
+  # Natal/Cape → ZAF post-1910
+  if (is.na(input_iso) && grepl("^ZAF", whep_code) &&
+      !is.na(input_name) && grepl("natal|cape", tolower(input_name))) return(TRUE)
+  # Manchuria → MAN or CHN
+  if (is.na(input_iso) && !is.na(input_name) && grepl("manchuria", tolower(input_name)) &&
+      (grepl("^MAN", whep_code) || grepl("^CHN", whep_code))) return(TRUE)
+  # Indochina → FID or FCC (pre-1887 Cochinchina)
+  if (is.na(input_iso) && !is.na(input_name) && grepl("indochina", tolower(input_name)) &&
+      (grepl("^FID", whep_code) || grepl("^FCC", whep_code))) return(TRUE)
+  # Korea → KOR
+  if (is.na(input_iso) && !is.na(input_name) && grepl("korea", tolower(input_name)) &&
+      (grepl("^KOR", whep_code) || grepl("^OKO", whep_code))) return(TRUE)
+  # Rwanda and Burundi → RWB
+  if (is.na(input_iso) && !is.na(input_name) && grepl("rwanda|burundi", tolower(input_name)) &&
+      grepl("^RWB", whep_code)) return(TRUE)
+  # Israel/Palestine → PAL or ISR (post-1948 rerouted to ISR)
+  if (is.na(input_iso) && !is.na(input_name) && grepl("israel|palestine", tolower(input_name)) &&
+      (grepl("^PAL", whep_code) || grepl("^ISR", whep_code))) return(TRUE)
+
   FALSE
 }
 
@@ -283,7 +453,8 @@ for (i in which(iso_equal)) {
 }
 # Non-iso-equal rows: rewrites + name fallbacks.
 for (i in which(confidence == "suspect" & !is.na(pre$whep_polity_code))) {
-  if (trusted_rewrite(pre$iso3c[i], pre$polity_name[i],
+  tr_name <- if (!is.na(pre$polity_name[i])) pre$polity_name[i] else pre$country[i]
+  if (trusted_rewrite(pre$iso3c[i], tr_name,
                        pre$year[i], pre$whep_polity_code[i],
                        whep_iso_of[i])) {
     confidence[i] <- "trusted-rewrite"
@@ -388,20 +559,81 @@ items <- matched_only |>
   arrange(desc(rows))
 items$slug <- vapply(items$item, slugify, character(1))
 
+# ---- no-polygon detection ---------------------------------------------------
+`%||%` <- function(a, b) if (is.null(a) || length(a) == 0) b else a
+# Check which matched polity codes lack a polygon in the site GeoJSON.
+geojson_path <- file.path(proj_root, "site", "polities.geojson")
+has_polygon <- character(0)
+if (file.exists(geojson_path)) {
+  gj <- fromJSON(geojson_path, simplifyVector = FALSE)
+  has_polygon <- unique(vapply(gj$features, function(f)
+    f$properties$polity_code %||% "", character(1)))
+  has_polygon <- has_polygon[nchar(has_polygon) > 0]
+  cat(sprintf("[polygon] %d polity codes have geometry in site GeoJSON\n",
+              length(has_polygon)))
+}
+
+matched_codes <- unique(matched_only$whep_polity_code)
+no_poly_codes <- setdiff(matched_codes, has_polygon)
+if (length(no_poly_codes) > 0 && length(has_polygon) > 0) {
+  cat(sprintf("[polygon] %d matched polity codes have NO polygon\n",
+              length(no_poly_codes)))
+  # Emit per-polity summary
+  np_summary <- matched_only |>
+    filter(whep_polity_code %in% no_poly_codes) |>
+    group_by(whep_polity_code) |>
+    summarise(rows = n(),
+              year_min = min(year, na.rm = TRUE),
+              year_max = max(year, na.rm = TRUE),
+              items = n_distinct(item),
+              .groups = "drop") |>
+    mutate(whep_name = whep_name_by_code[whep_polity_code]) |>
+    arrange(desc(rows))
+  np_obj <- lapply(seq_len(nrow(np_summary)), function(i) list(
+    whep_polity_code = np_summary$whep_polity_code[[i]],
+    whep_polity_name = np_summary$whep_name[[i]],
+    rows = np_summary$rows[[i]],
+    year_min = np_summary$year_min[[i]],
+    year_max = np_summary$year_max[[i]],
+    items = np_summary$items[[i]]
+  ))
+  np_path <- file.path(out_dir, "no_polygon.json")
+  write(toJSON(np_obj, auto_unbox = TRUE, pretty = FALSE), np_path)
+  cat("[out] ", np_path, "\n")
+} else {
+  np_path <- file.path(out_dir, "no_polygon.json")
+  write("[]", np_path)
+}
+
 cat(sprintf("[out] writing %d per-item JSON files...\n", nrow(items)))
 unmatched_all <- pre |> filter(match_status == "none", !is.na(value))
 for (i in seq_len(nrow(items))) {
   it_name <- items$item[[i]]
   sub <- matched_only |>
     filter(item == it_name, !is.na(value)) |>
-    select(year, whep_polity_code, value)
+    select(year, whep_polity_code, value, country, iso3c)
   # Collapse duplicates (e.g., juan + mitchell for same polity/year): mean.
+  # Keep original country/iso for provenance.
   sub <- sub |>
-    group_by(year, whep_polity_code) |>
+    group_by(year, whep_polity_code, country, iso3c) |>
     summarise(value = mean(value, na.rm = TRUE), .groups = "drop")
-  by_year <- split(sub, sub$year)
+  # If multiple input countries map to the same polity/year, pick one and sum.
+  sub_agg <- sub |>
+    group_by(year, whep_polity_code) |>
+    summarise(value = sum(value, na.rm = TRUE),
+              country = paste(unique(country), collapse = "; "),
+              iso3c = paste(unique(na.omit(iso3c)), collapse = "; "),
+              .groups = "drop")
+  by_year <- split(sub_agg, sub_agg$year)
   by_year_obj <- lapply(by_year, function(df) {
-    setNames(as.list(df$value), df$whep_polity_code)
+    setNames(
+      lapply(seq_len(nrow(df)), function(k) list(
+        v = df$value[[k]],
+        c = df$country[[k]],
+        i = if (nchar(df$iso3c[[k]]) > 0) df$iso3c[[k]] else NULL
+      )),
+      df$whep_polity_code
+    )
   })
 
   # Unmatched rows for this item, by year, listing (iso3c, country, value).
@@ -420,6 +652,22 @@ for (i in seq_len(nrow(items))) {
     ))
   })
 
+  # No-polygon rows: matched but polity has no geometry on the map.
+  np_sub_data <- matched_only |>
+    filter(item == it_name, !is.na(value),
+           whep_polity_code %in% no_poly_codes) |>
+    select(year, whep_polity_code, country, value) |>
+    group_by(year, whep_polity_code, country) |>
+    summarise(value = mean(value, na.rm = TRUE), .groups = "drop")
+  np_by_year <- split(np_sub_data, np_sub_data$year)
+  np_by_year_obj <- lapply(np_by_year, function(df) {
+    lapply(seq_len(nrow(df)), function(k) list(
+      polity_code = df$whep_polity_code[[k]],
+      country     = df$country[[k]],
+      value       = df$value[[k]]
+    ))
+  })
+
   obj <- list(
     item = it_name,
     unit = items$unit[[i]],
@@ -427,7 +675,8 @@ for (i in seq_len(nrow(items))) {
     year_max = items$year_max[[i]],
     polity_count = items$polities[[i]],
     by_year = by_year_obj,
-    unmatched_by_year = um_by_year_obj
+    unmatched_by_year = um_by_year_obj,
+    no_polygon_by_year = np_by_year_obj
   )
   write(toJSON(obj, auto_unbox = TRUE, pretty = FALSE),
         file.path(by_item_dir, paste0(items$slug[[i]], ".json")))
@@ -491,7 +740,7 @@ report_lines <- c(
           format(n_total, big.mark = ","),
           100 * n_match / n_total),
   "",
-  "Preference rule: when multiple WHEP polities cover the input year under the same iso3c, pick the `polity_type == 'national'` one (this collapses the subnational ES01-ES52 / US-state / BR-state rows). The `normalise_iso()` helper rewrites known non-ISO-3166 inputs (YUG, CSK, SRB, pre-1948 ISR/PSE) to the appropriate WHEP-internal codes (F51/F248, F77, SER, PAL) before matching, and routes pre-independence years for IRL/FIN/POL/EST/LVA/LTU/TUR through the appropriate imperial chain. Extend these rules in `pipelines/pre1961-matching/match.R` when new mismatches surface.",
+  "Preference rule: when multiple WHEP polities cover the input year under the same iso3c, pick the `polity_type == 'national'` one (this collapses the subnational ES01-ES52 / US-state / BR-state rows). The `normalise_iso()` helper rewrites ~30 modern ISO3 codes to their historical WHEP equivalents: YUG\u2192F248, CSK\u2192F51, AUT/HUN<1918\u2192AUH, DEU 1949-1990\u2192F78, TZA<1964\u2192TAN, BWA<1966\u2192BEC, etc. The `name_override` table resolves entries with missing ISO codes (Korea, Natal, Cape, Indochina, Manchuria, Rwanda-Burundi). Extend these rules in `pipelines/pre1961-matching/match.R` when new mismatches surface.",
   "",
   "## Unmatched, top 60",
   "",
@@ -511,7 +760,7 @@ report_lines <- c(
 - `known-equivalent` — iso3c matches, name differs, but the difference is a known historical/modern pair (Japan ↔ Japanese Empire, Turkey ↔ Türkiye, Ivory Coast ↔ Côte d'Ivoire, etc.). Extend the `name_equiv` table in `match.R`.
 - `iso-equal-name-mismatch` — iso3c matches but the WHEP polity_name shares no tokens with the input and isn't in the known-equivalents list. **These are the rows most likely to be silent false positives** (e.g., NGA being matched to the Nupe Kingdom because Nupe's WHEP row also carries iso=NGA).",
   "- `name-overlap` — input country / polity_name shares a 3+-char token with the WHEP polity_name.",
-  "- `trusted-rewrite` — the input was rewritten by an explicit rule (IRL<1921→GBR, pre-1917 FIN→F228, YUG→F51/F248, CSK→F77, etc.); listed in `trusted_rewrite()` in `match.R`.",
+  "- `trusted-rewrite` — the input was rewritten by an explicit rule (IRL<1921\u2192GBR, FIN<1917\u2192F228, YUG\u2192F248, CSK\u2192F51, AUT/HUN<1918\u2192AUH, DEU 1949-1990\u2192F78, TZA<1964\u2192TAN, etc.); listed in `trusted_rewrite()` in `match.R`.",
   "- `suspect` — matched but none of the above trust rules fired. These are the false-positive candidates you should audit.",
   "- `none` — unmatched (the panel already shows these).",
   "",
