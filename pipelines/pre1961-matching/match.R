@@ -89,9 +89,11 @@ normalise_iso <- function(iso, year, polity_name = NA_character_) {
   # EST/LVA/LTU/POL-1800-1918, EST/LVA/LTU-1940-1991). No routing needed —
   # iso codes match directly.
 
-  # Turkey pre-1913 → Ottoman Empire (OTT)
-  # ("Turkey" in pre-1913 sources = the Ottoman Empire itself, not a sub-unit)
-  if (iso == "TUR" && !is.na(y) && y < 1913) return("OTT")
+  # Turkey pre-1913: data reports "Turkey" covering Anatolian territory
+  # (~780k km2), NOT the full Ottoman Empire (~2.66M km2). Mitchell and
+  # FAOSTAT use "Turkey" for the present-day borders retroactively (Pamuk
+  # confirms). TUR-1800-1913 captures this; OTT captures the full empire.
+  # No routing needed — TUR iso matches TUR-1800-1913 directly.
   # Israel/Palestine pre-1948 → British Mandate Palestine (PAL)
   if (iso %in% c("ISR", "PSE") && !is.na(y) && y < 1948) return("PAL")
 
@@ -142,10 +144,11 @@ normalise_iso <- function(iso, year, polity_name = NA_character_) {
   # Malaysia: pre-1922 → Federated Malay States (FED); 1922-1946 → British Malaya (BMA)
   if (iso == "MYS" && !is.na(y) && y < 1922) return("FED")
   if (iso == "MYS" && !is.na(y) && y >= 1922 && y < 1946) return("BMA")
-  # Pakistan pre-1947 → British India (IND)
-  if (iso == "PAK" && !is.na(y) && y < 1947) return("IND")
-  # Bangladesh pre-1971 → Pakistan (PAK) — was East Pakistan
-  if (iso == "BGD" && !is.na(y) && y < 1971) return("PAK")
+  # (PAK pre-1947 routing removed — PAK-1800-1947 now exists as own polity)
+  # Pakistan pre-1947 and Bangladesh pre-1971: data reports these
+  # separately from India/Pakistan → they have their own WHEP entries
+  # (PAK-1800-1947, BGD-1947-1971). Same principle as Finland/Ireland.
+  # No routing needed — iso codes match directly.
   # Vietnam 1954-1975 → South Vietnam (SVI)
   if (iso == "VNM" && !is.na(y) && y >= 1954 && y <= 1975) return("SVI")
   # North Korea pre-1948 → Korea (occupied) — pre-division
@@ -263,7 +266,9 @@ name_equiv <- list(
   EST  = c("estonia", "estonian", "governorate"),
   LVA  = c("latvia", "livonia", "courland", "latvian"),
   LTU  = c("lithuania", "lithuanian", "governorate"),
-  POL  = c("poland", "congress", "kongresowka")
+  POL  = c("poland", "congress", "kongresowka"),
+  TUR  = c("turkey", "anatolia", "ottoman"),
+  BGD  = c("bangladesh", "east pakistan", "east bengal")
 )
 
 known_equivalent <- function(iso, whep_name) {
@@ -375,7 +380,7 @@ trusted_rewrite <- function(input_iso, input_name, year, whep_code, whep_iso) {
   # --- Europe ---
   # (IRL→GBR, FIN→F228, AUT/HUN→AUH, Baltics→F228 REMOVED: these countries
   # now have their own pre-independence WHEP entries and match directly via iso.)
-  if (input_iso == "TUR" && !is.na(y) && y < 1913 && grepl("^OTT", whep_code)) return(TRUE)
+  # (TUR→OTT removed — TUR-1800-1913 now exists as own polity)
   if (input_iso %in% c("ISR", "PSE") && !is.na(y) && y < 1948 && grepl("^PAL", whep_code)) return(TRUE)
   if (input_iso == "SRB" && !is.na(y) && y < 1920 && grepl("^SER", whep_code)) return(TRUE)
   if (input_iso == "YUG" && grepl("^F248", whep_code)) return(TRUE)
@@ -398,8 +403,7 @@ trusted_rewrite <- function(input_iso, input_name, year, whep_code, whep_iso) {
 
   # --- Asia ---
   if (input_iso == "MYS" && !is.na(y) && y < 1946 && grepl("^BMA", whep_code)) return(TRUE)
-  if (input_iso == "PAK" && !is.na(y) && y < 1947 && grepl("^IND", whep_code)) return(TRUE)
-  if (input_iso == "BGD" && !is.na(y) && y < 1971 && grepl("^PAK", whep_code)) return(TRUE)
+  # (PAK→IND and BGD→PAK removed — these now have own polities)
   if (input_iso == "VNM" && !is.na(y) && y >= 1954 && y <= 1975 && grepl("^SVI", whep_code)) return(TRUE)
   if (input_iso == "PRK" && !is.na(y) && y < 1948 && grepl("^KOR", whep_code)) return(TRUE)
   if (input_iso == "ZMB" && !is.na(y) && y < 1911 && grepl("^NWR", whep_code)) return(TRUE)
@@ -760,7 +764,7 @@ report_lines <- c(
 - `known-equivalent` — iso3c matches, name differs, but the difference is a known historical/modern pair (Japan ↔ Japanese Empire, Turkey ↔ Türkiye, Ivory Coast ↔ Côte d'Ivoire, etc.). Extend the `name_equiv` table in `match.R`.
 - `iso-equal-name-mismatch` — iso3c matches but the WHEP polity_name shares no tokens with the input and isn't in the known-equivalents list. **These are the rows most likely to be silent false positives** (e.g., NGA being matched to the Nupe Kingdom because Nupe's WHEP row also carries iso=NGA).",
   "- `name-overlap` — input country / polity_name shares a 3+-char token with the WHEP polity_name.",
-  "- `trusted-rewrite` — the input was rewritten by an explicit rule (IRL<1921\u2192GBR, FIN<1917\u2192F228, YUG\u2192F248, CSK\u2192F51, AUT/HUN<1918\u2192AUH, DEU 1949-1990\u2192F78, TZA<1964\u2192TAN, etc.); listed in `trusted_rewrite()` in `match.R`.",
+  "- `trusted-rewrite` — the input was rewritten by an explicit rule (YUG\u2192F248, CSK\u2192F51/AUH, DEU 1949-1990\u2192F78, TZA<1964\u2192TAN, BWA<1966\u2192BEC, SDN<2011\u2192SUD, etc.); listed in `trusted_rewrite()` in `match.R`. Note: many former rewrites (IRL\u2192GBR, FIN\u2192F228, AUT/HUN\u2192AUH, TUR\u2192OTT, PAK\u2192IND) were replaced with direct-match polities following the principle that separately-reported data gets its own polity.",
   "- `suspect` — matched but none of the above trust rules fired. These are the false-positive candidates you should audit.",
   "- `none` — unmatched (the panel already shows these).",
   "",
@@ -788,6 +792,15 @@ report_lines <- c(
                 head(suspects$year_max, 30),
                 format(head(suspects$rows, 30), big.mark = ",")),
         collapse = "\n"),
+  "",
+  "## Data caveats",
+  "",
+  "Known limitations of the matching identified by audit (2026-04-16):",
+  "",
+  "- **India/Pakistan overlap 1940-1946:** Both 'India' (undivided British India) and 'Pakistan' have data rows for the same years and commodities. The 'India' rows for 1940-1946 likely include the Pakistan territory. Risk of double-counting when aggregating.",
+  "- **Japan empire polygon 1895-1945:** Data matched to JPN-1895-1945 represents metropolitan Japan only (~370k km\u00b2), but the WHEP polygon covers the full Japanese Empire (~658k km\u00b2 including Korea, Taiwan, S. Sakhalin). Korea and Taiwan are tracked separately — no double-counting, but the polygon overstates geographic coverage.",
+  "- **Russia/F228 1896-1960:** Data labeled 'Russian Federation' covers European Russia / RSFSR, not the full Russian Empire/USSR. The F228 polygon includes all Soviet republics. This is a known territorial overstatement.",
+  "- **South Africa pre-1910:** Data labeled 'South Africa' for 1852-1910 coexists with separate 'Cape Province' and 'Natal' entries. The 'South Africa' rows may be aggregates that include Cape/Natal — risk of double-counting when summing.",
   "",
   "## Outputs",
   "",
