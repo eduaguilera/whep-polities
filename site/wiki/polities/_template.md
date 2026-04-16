@@ -23,9 +23,27 @@ of the file.>
 
 ## Territorial extent
 
-<Borders over time. Cite the polygon source from the CSV. Note years
-where the polygon is approximate, inherited from a neighbor, or
-back-projected.>
+**Polygon:** <State the polygon status — one of:>
+- `Copied from [CODE](code.md) (justification why this proxy is valid,
+  e.g. "territory unchanged at independence")` — when a polygon from
+  a neighboring period of the same polity was reused.
+- `<Source> (e.g. CShapes 2.0, Cliopatria, GADM)` — when the polygon
+  comes directly from a spatial dataset.
+- `Not yet assigned. **Proxy deliberately not copied** because
+  <reason, with km² numbers showing the territory mismatch>.` — when
+  available polygons were considered and rejected.
+- `Not yet assigned. No polygon available in the GeoPackage for this
+  entity or period.`
+
+**Why this entry exists:** <What input data does this polity capture?
+What was it previously matched to, and why was that wrong? What
+historical source confirms this was a distinct entity? Include the
+data country name, ISO code, year range, and approximate row count.>
+
+<Then describe borders over time. Cite the polygon source from the
+CSV. Note years where the polygon is approximate, inherited from a
+neighbor, or back-projected. Give approximate km² and describe the
+territory in terms a reader can locate on a modern map.>
 
 ## Predecessors and successors
 
