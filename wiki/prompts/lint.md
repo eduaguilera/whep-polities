@@ -117,7 +117,22 @@ Check, in order:
       cowcode. Verify the GeoPackage uses the polygon matching the
       row's date range, not an adjacent time-step.
 
-11. **Obsidian compatibility.** The wiki must render and navigate
+11. **Polygon documentation completeness.** Every polity page must
+    document its polygon status in `## Territorial extent` following
+    the template. Check for:
+    - Pages whose Territorial extent section contains boilerplate like
+      "No polygon assigned yet" or "No polygon" WITHOUT a justification
+      for why no proxy was copied. These are undocumented decisions.
+    - Pages that say a polygon was "Copied from [CODE]" but don't
+      explain why the proxy is valid (territory unchanged, etc.).
+    - Pages that lack a "Why this entry exists" paragraph entirely.
+    - Pages where a proxy WAS copied in the GeoPackage (the code
+      appears in `polities.geojson`) but the wiki still says "Not yet
+      assigned". These are stale docs — the page must be updated to
+      reflect the actual polygon source.
+    Flag all of these as must-fix.
+
+12. **Obsidian compatibility.** The wiki must render and navigate
     correctly in Obsidian. Check for:
     - `<a id="...">` HTML anchors — Obsidian ignores them.
     - Reference-style link definitions (`[ref]: url` at the bottom

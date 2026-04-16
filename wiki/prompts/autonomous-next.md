@@ -151,6 +151,14 @@ page from `_template.md`.
 - A dangling `[slug]` reference with a `<!-- TODO: page not yet
   created -->` marker and at least one citing page.
 
+**Every new page must document its polygon decision** in
+`## Territorial extent` (see `_template.md` and the polygon
+documentation gate in `ingest.md`). If a proxy polygon was copied
+from another period, state which one and why it's valid. If a
+proxy was deliberately rejected, state why with km² comparisons.
+If no polygon is available at all, say so. Boilerplate like
+"No polygon assigned yet" without reasoning is unacceptable.
+
 ### Tier 4 — Deep work
 
 Large structural changes that take multiple iterations to complete.

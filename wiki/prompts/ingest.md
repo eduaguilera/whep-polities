@@ -102,6 +102,27 @@ claim from an external source beyond `[database]`. Never bulk-generate
 pages from CSV metadata alone — that creates empty shells that violate
 the wiki's role as the primary source of truth.
 
+**Polygon documentation gate:** Every polity page must document its
+polygon status in `## Territorial extent` following the template in
+`_template.md`. This means:
+
+1. **State the polygon source or proxy explicitly.** If a polygon was
+   copied from another period of the same polity (e.g., using the
+   post-independence boundary for the pre-independence entity because
+   territory was unchanged), say so with a justification.
+2. **If a proxy was deliberately NOT copied**, explain why with
+   territory size comparisons (e.g., "post-Trianon Hungary is ~93k km²
+   vs Transleithania ~325k km² — a 71% loss"). This prevents future
+   maintainers from "helpfully" copying an incorrect polygon.
+3. **State "Why this entry exists"** — what data drove its creation,
+   what the data was previously matched to (and why that was wrong),
+   and what external source (e.g., Federico-Tena trading polities)
+   confirms the entity was distinct. This is mandatory for every new
+   polity page, not optional context.
+
+Boilerplate like "No polygon assigned yet" without reasoning is
+unacceptable. The wiki must record *decisions*, not just *status*.
+
 **Chain restructure methodology** (for umbrella rows and legacy chains):
 1. Query CShapes for the polity's time-steps (`ogrinfo -sql` on
    `cshapes2_full.gpkg` by cowcode). This gives exact dates and areas

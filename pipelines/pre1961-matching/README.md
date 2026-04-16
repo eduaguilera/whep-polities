@@ -20,13 +20,22 @@ Required R packages: `readr`, `dplyr`, `tidyr`, `jsonlite`.
 ## What it does
 
 1. **Loads** the WHEP polity registry and the pre-1961 input.
-2. **Normalises ISO3 codes** (`normalise_iso`) so non-ISO-3166 inputs map to
-   WHEP's internal codes (YUG → F51/F248, CSK → F77, pre-1920 SRB → SER,
-   pre-1948 ISR/PSE → PAL), and pre-independence years are routed to the
-   appropriate imperial chain (pre-1921 IRL → GBR, pre-1917 FIN/POL/EST/
-   LVA/LTU → F228 Russian Empire, pre-1913 TUR → OTT Ottoman).
-3. **Falls back to name-based mapping** (`name_override`) for rows where
-   `iso3c == NA` (Korea, Natal, Rwanda-and-Burundi, etc.).
+2. **Normalises ISO3 codes** (`normalise_iso`) with ~30 rewrite rules:
+   - **Composite entities:** YUG → F248 (Yugoslavia), CSK → F51 (Czechoslovakia)
+   - **Pre-independence routing:** AUT/HUN < 1918 → AUH (Austria-Hungary),
+     IRL < 1921 → GBR, FIN < 1917 → F228 (Russian Empire),
+     TUR < 1913 → OTT (Ottoman), DEU 1949-1990 → F78 (West Germany)
+   - **Colonial routing:** TZA < 1964 → TAN (Tanganyika),
+     BWA < 1966 → BEC (Bechuanaland), MRT < 1960 → MAU,
+     SOM < 1960 → ITS (Italian Somaliland), SDN < 2011 → SUD,
+     MWI/ZWE/ZMB 1953-1964 → FRN (Central African Federation),
+     MYS < 1946 → BMA (British Malaya), RWA < 1962 → RWB (Ruanda-Urundi),
+     PAK < 1947 → IND (British India), BGD < 1971 → PAK
+3. **Falls back to name-based mapping** (`name_override` + `country` column)
+   for rows where `iso3c == NA` (Korea, Natal, Cape Colony, Indochina,
+   Manchuria, Rwanda-Burundi, Israel/Palestine). Post-resolution rules
+   adjust time-dependent entities (Natal/Cape → ZAF after 1910 Union,
+   Manchuria → MAN for 1932-45 Manchukuo / CHN otherwise).
 4. **Matches** each (iso3c, year) to a WHEP polity whose
    `[start_year, end_year]` contains `year`. When several candidates
    qualify, prefers `polity_type == "national"` over subnational
@@ -106,3 +115,46 @@ bash site/build_wiki.sh
 The UI picks up the new per-item JSON files automatically (the year
 slider in the Data tab drives re-rendering) and the unmatched panel
 updates to reflect the new state.
+
+## Creating new polity entries
+
+When no existing WHEP polity matches the input data, create one. Every
+new polity needs three things: a CSV row, a wiki page, and a polygon
+decision. The wiki page is the primary documentation — it must record
+the reasoning, not just the metadata.
+
+### Wiki page requirements
+
+Every wiki page **must** include in its `## Territorial extent` section:
+
+1. **Polygon status** — one of:
+   - `Copied from [CODE](code.md) (reason why this proxy is valid)`
+   - `Not yet assigned. **Proxy deliberately not copied** because
+     [reason the available polygon is wrong, with km² numbers]`
+   - `Not yet assigned. No polygon available in the GeoPackage for
+     this period.`
+
+2. **Why this entry exists** — answering:
+   - What input data does this polity capture? (country name, iso,
+     year range, row count)
+   - What was this data previously matched to, and why was that wrong?
+   - What historical source confirms this entity was distinct?
+     (e.g., Federico-Tena treats it as a separate trading polity)
+
+3. **Territory description** — what area does this polity cover, in
+   terms a reader can locate on a modern map? Include approximate
+   km² if known.
+
+### Polygon proxy rules
+
+When copying a polygon from another period of the same polity:
+
+- **Copy if** the territory is essentially unchanged (e.g., Finland
+  at independence 1917 ≈ Grand Duchy of Finland 1809-1917).
+- **Do NOT copy if** the territory changed dramatically (e.g.,
+  post-Trianon Hungary is 71% smaller than Transleithania; post-1918
+  Poland is 3x larger than Congress Poland). Document why the proxy
+  was rejected and what a correct polygon would look like.
+- **Note approximations** (e.g., "post-1921 Ireland polygon excludes
+  Northern Ireland; pre-1921 data covers the whole island — ~15%
+  larger").
