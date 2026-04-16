@@ -180,12 +180,19 @@ are footnoted but data is not recalculated. Key cases:
 | Greece | Expanding contemporaneous borders | Modern Greece |
 
 ### Juan's team (WHEP project)
-Uses **present-day borders** retroactively applied (FAOSTAT convention).
-Compiled from national statistical yearbooks approximating modern
-territory. When Juan's team reports "Austria", it means modern Austria.
+Also uses **contemporaneous/historical borders**, despite using FAOSTAT
+area codes as identifiers. This was verified by comparing data values
+against known historical figures:
+- Austria wheat area ~970k-1M ha (1870s) ≈ Cisleithania (1.2M ha in 1913),
+  NOT modern Austria (~270k ha)
+- Hungary wheat area ~2.0-2.6M ha (1870s) ≈ Transleithania (3.5M ha in 1913),
+  NOT modern Hungary (~1M ha)
+- Germany wheat area ~1.8-2.3M ha (1855-1883) ≈ German Empire/Zollverein,
+  NOT modern Germany (~3M ha)
+- Ireland wheat area 245k ha (1850) ≈ whole island (32 counties),
+  NOT Republic of Ireland (~45k ha today)
 
 ### Overlap
 Only 42 data points overlap between sources (UK Cattle, a units issue).
-The two sources generally cover different items for the same country, so
-no territory-mixing occurs. However, within the same polity, different
-items may represent different geographic extents depending on source.
+Both sources use the same territorial conventions (contemporaneous
+borders), so no territory-mixing occurs.
