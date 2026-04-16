@@ -1,1 +1,1 @@
-{"item":"Pistachios","unit":"ha, tonnes","year_min":1929,"year_max":1929,"polity_count":1,"by_year":{"1929":{"ITA-1919-2025":3620.85}},"unmatched_by_year":{}}
+{"item":"Pistachios","unit":"ha, tonnes","year_min":1929,"year_max":1929,"polity_count":1,"by_year":{"1929":{"ITA-1919-2025":{"v":3620.85,"c":"Italy","i":"ITA"}}},"unmatched_by_year":{},"no_polygon_by_year":{}}
