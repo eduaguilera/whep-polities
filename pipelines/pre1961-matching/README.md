@@ -158,3 +158,34 @@ When copying a polygon from another period of the same polity:
 - **Note approximations** (e.g., "post-1921 Ireland polygon excludes
   Northern Ireland; pre-1921 data covers the whole island — ~15%
   larger").
+
+## Source boundary definitions
+
+The input dataset has two sources with **fundamentally different
+territorial conventions**. This is critical for polygon selection.
+
+### Mitchell (*International Historical Statistics*)
+Uses **contemporaneous borders** — data reflects the territory the
+country controlled when statistics were collected. Boundary changes
+are footnoted but data is not recalculated. Key cases:
+
+| Country | Mitchell's territory | NOT |
+|---------|---------------------|-----|
+| Austria pre-1918 | Cisleithania (~300k km²) | Modern Austria (~84k km²) |
+| Hungary pre-1918 | Transleithania (~325k km²) | Modern Hungary (~93k km²) |
+| Germany pre-1918 | German Empire incl. Alsace-Lorraine, E. Prussia | Modern Germany |
+| India pre-1947 | Undivided British India (incl. Pakistan, Bangladesh) | Modern India |
+| Russia | Full Empire pre-1917; full USSR post-1917 | Russian Federation |
+| Romania pre-1918 | Old Kingdom (~130k km²) | Greater Romania (~295k km²) |
+| Greece | Expanding contemporaneous borders | Modern Greece |
+
+### Juan's team (WHEP project)
+Uses **present-day borders** retroactively applied (FAOSTAT convention).
+Compiled from national statistical yearbooks approximating modern
+territory. When Juan's team reports "Austria", it means modern Austria.
+
+### Overlap
+Only 42 data points overlap between sources (UK Cattle, a units issue).
+The two sources generally cover different items for the same country, so
+no territory-mixing occurs. However, within the same polity, different
+items may represent different geographic extents depending on source.
