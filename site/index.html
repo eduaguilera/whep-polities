@@ -60,6 +60,27 @@ body:not(.data-mode) .data-only { display: none; }
 #data-unmatched .du-iso { color: #888; font-size: 10px; margin-left: 4px; }
 #data-unmatched .du-val { color: #ffd166; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
+#data-no-polygon {
+  position: absolute; right: 16px; z-index: 9;
+  background: rgba(15,15,25,0.92); color: #ddd; padding: 10px 12px;
+  border-radius: 8px; border: 1px solid rgba(255,180,60,0.25);
+  font-size: 11px; max-width: 280px; max-height: 35vh; overflow-y: auto;
+  backdrop-filter: blur(10px); display: none;
+}
+#data-no-polygon .np-title {
+  font-weight: 600; color: #ffb844; margin-bottom: 3px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+#data-no-polygon .np-sub { color: #999; font-size: 10px; margin-bottom: 6px; }
+#data-no-polygon .np-row {
+  display: flex; justify-content: space-between; gap: 8px;
+  padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 11px;
+}
+#data-no-polygon .np-row:first-of-type { border-top: none; }
+#data-no-polygon .np-code { color: #aaa; font-size: 10px; }
+#data-no-polygon .np-val { color: #ffb844; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
 #tabs {
   display: flex; gap: 4px; margin-bottom: 10px;
   background: rgba(0,0,0,0.3); border-radius: 6px; padding: 3px;
@@ -273,6 +294,7 @@ body:not(.graph-mode) .graph-only { display: none; }
 <div id="data-map"></div>
 <div id="data-legend" style="display:none"></div>
 <div id="data-unmatched"></div>
+<div id="data-no-polygon"></div>
 <div id="graph"><svg></svg></div>
 <div id="graph-tooltip"></div>
 
@@ -545,8 +567,8 @@ function showInfo(code) {
     setYear(target === selectedYear ? p.start_year : target);
   }
 
-  // Ensure the polity type is visible
-  if (!activeTypes.has(p.polity_type)) {
+  // Ensure the polity type is visible (only relevant in map tab)
+  if (currentView === 'map' && !activeTypes.has(p.polity_type)) {
     activeTypes.add(p.polity_type);
     const color = TYPE_COLORS[p.polity_type] || '#888';
     document.querySelectorAll('.filter-row').forEach(row => {
@@ -559,13 +581,13 @@ function showInfo(code) {
     updateMap();
   }
 
-  // Highlight this polity on the map
+  // Highlight this polity on the map (polities map or data map)
   selectedCode = code;
   updateHighlight();
 
-  // Zoom to the polity's bounds
+  // Zoom to the polity's bounds on the active map
   const feat = geoData && geoData._index[code];
-  if (feat && feat.geometry && map) {
+  if (feat && feat.geometry) {
     const bounds = new maplibregl.LngLatBounds();
     const addCoords = (coords) => {
       if (typeof coords[0] === 'number') { bounds.extend(coords); return; }
@@ -573,7 +595,10 @@ function showInfo(code) {
     };
     addCoords(feat.geometry.coordinates);
     if (!bounds.isEmpty()) {
-      map.fitBounds(bounds, { padding: 80, maxZoom: 6, duration: 600 });
+      const targetMap = currentView === 'data' ? dataMap : map;
+      if (targetMap) {
+        targetMap.fitBounds(bounds, { padding: 80, maxZoom: 6, duration: 600 });
+      }
     }
   }
 
@@ -834,21 +859,27 @@ function dataColorFor(value, minLog, maxLog) {
 function buildDataGeoJSON(item, year) {
   const yearKey = String(year);
   const yearData = (item.by_year || {})[yearKey] || {};
-  const values = Object.values(yearData).filter(v => v > 0);
-  if (!values.length) return { geo: { type: 'FeatureCollection', features: [] }, minLog: 0, maxLog: 1 };
-  const logs = values.map(v => Math.log10(v));
+  // Values can be plain numbers (legacy) or {v, c, i} objects (new format).
+  const vals = Object.values(yearData).map(e => typeof e === 'object' ? e.v : e).filter(v => v > 0);
+  if (!vals.length) return { geo: { type: 'FeatureCollection', features: [] }, minLog: 0, maxLog: 1 };
+  const logs = vals.map(v => Math.log10(v));
   const minLog = Math.min(...logs);
   const maxLog = Math.max(...logs);
   const features = geoData.features
     .filter(f => yearData[f.properties.polity_code] !== undefined)
     .map(f => {
-      const v = yearData[f.properties.polity_code];
+      const entry = yearData[f.properties.polity_code];
+      const v = typeof entry === 'object' ? entry.v : entry;
+      const inputCountry = typeof entry === 'object' ? (entry.c || '') : '';
+      const inputIso = typeof entry === 'object' ? (entry.i || '') : '';
       return {
         ...f,
         properties: {
           ...f.properties,
           _data_value: v,
-          _data_color: dataColorFor(v, minLog, maxLog)
+          _data_color: dataColorFor(v, minLog, maxLog),
+          _input_country: inputCountry,
+          _input_iso: inputIso
         }
       };
     });
@@ -878,6 +909,7 @@ function renderDataMap() {
   src.setData(geo);
   updateDataLegend(dataActiveItem, dataYear, minLog, maxLog, geo.features.length);
   updateUnmatchedPanel(dataActiveItem, dataYear);
+  updateNoPolygonPanel(dataActiveItem, dataYear);
 }
 
 function updateUnmatchedPanel(item, year) {
@@ -895,6 +927,29 @@ function updateUnmatchedPanel(item, year) {
      <div class="du-sub">${item.item} &middot; ${year} &middot; not placed on the map</div>` +
     sorted.map(r =>
       `<div class="du-row"><span class="du-name">${r.name || r.country}<span class="du-iso">${r.iso3c || ''}</span></span><span class="du-val">${fmt(r.value)}</span></div>`
+    ).join('');
+  el.style.display = 'block';
+}
+
+function updateNoPolygonPanel(item, year) {
+  const el = document.getElementById('data-no-polygon');
+  if (!el) return;
+  const list = ((item.no_polygon_by_year || {})[String(year)]) || [];
+  if (!list.length) { el.style.display = 'none'; return; }
+  // Position below unmatched panel
+  const um = document.getElementById('data-unmatched');
+  const umBottom = um && um.style.display !== 'none' ? um.offsetTop + um.offsetHeight + 8 : 16;
+  el.style.top = umBottom + 'px';
+  const sorted = list.slice().sort((a, b) => (b.value || 0) - (a.value || 0));
+  const fmt = v => (v >= 1e6 ? (v / 1e6).toFixed(2) + 'M' :
+                    v >= 1e3 ? (v / 1e3).toFixed(1) + 'k' :
+                    Number(v).toFixed(0));
+  const total = sorted.reduce((s, r) => s + (r.value || 0), 0);
+  el.innerHTML =
+    `<div class="np-title"><span>No polygon (${list.length})</span><span style="color:#999;font-weight:400;font-size:10px">${fmt(total)} ${item.unit}</span></div>
+     <div class="np-sub">${item.item} &middot; ${year} &middot; matched but missing map geometry</div>` +
+    sorted.map(r =>
+      `<div class="np-row"><span>${r.country}<span class="np-code"> → ${r.polity_code}</span></span><span class="np-val">${fmt(r.value)}</span></div>`
     ).join('');
   el.style.display = 'block';
 }
@@ -940,10 +995,14 @@ function initDataMap() {
       if (e.features && e.features.length > 0) {
         const props = e.features[0].properties;
         const val = props._data_value;
+        const src = props._input_country || '';
+        const iso = props._input_iso || '';
+        const srcLine = src ? `<br><span style="opacity:0.7">Source: ${src}${iso ? ' [' + iso + ']' : ''}</span>` : '';
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(`<div style="color:#111;font-size:12px"><b>${props.polity_code}</b><br>${Number(val).toLocaleString()} ${dataActiveItem.unit}</div>`)
+          .setHTML(`<div style="color:#111;font-size:12px"><b>${props.polity_code}</b><br>${Number(val).toLocaleString()} ${dataActiveItem.unit}${srcLine}</div>`)
           .addTo(dataMap);
+        showInfo(props.polity_code);
       }
     });
     dataMap.on('mouseenter', 'data-fill', () => { dataMap.getCanvas().style.cursor = 'pointer'; });
@@ -1303,6 +1362,8 @@ function switchView(view) {
   if (legend) legend.style.display = (view === 'data' && dataActiveItem) ? 'block' : 'none';
   const um = document.getElementById('data-unmatched');
   if (um && view !== 'data') um.style.display = 'none';
+  const np = document.getElementById('data-no-polygon');
+  if (np && view !== 'data') np.style.display = 'none';
   if (view === 'graph') {
     requestAnimationFrame(() => renderGraph());
   } else if (view === 'data') {
