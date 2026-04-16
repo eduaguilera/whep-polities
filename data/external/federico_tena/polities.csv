@@ -1,0 +1,244 @@
+continent,polity_name,imports_start,imports_end,exports_start,exports_end,population_start,population_end,population_estimate,notes
+Africa,Algeria,1831,1938,1830,1938,1830,,,1800-1830 Ottoman Empire
+Africa,Angola,1816,1938,1850,1938,1828,,,
+Africa,Basutoland,1884,1938,,,,,,present-day Lesotho
+Africa,Bechuanaland Protectorate,1885,1938,,,,,,present-day Botswana
+Africa,Belgian Congo,1885,1938,1850,1938,1850,,,
+Africa,British Bechuanaland,1885,1895,,,,,,1896-1938 annexed to  South Africa
+Africa,British Cameroon,1914,1938,,,,,,"population in 1921; Before 1914 part of German Kameroon, then divided between Nigeria and Cameroon; estimate jointly with Nigeria"
+Africa,British East Africa,1895,1938,1850,1938,1828,,,Present day Kenya and Uganda
+Africa,British Protectorate (British Somaliland),1884,1938,1850,1938,1850,,,
+Africa,Canary Islands,1800,1938,1850,1938,1826,,,
+Africa,Cameroon (Kamerun),1884,1938,1850,1938,1850,,,"German colony until 1914, French mandate thereafter"
+Africa,CapoVerde,1800,1938,1850,1938,1850,,,
+Africa,Ceuta Y Melilla,1800,1938,1850,1938,1826,,,
+Africa,Egypt,1800,1938,1850,1938,1850,,,
+Africa,Eritrea,1882,1938,1850,1938,1850,,,
+Africa,Ethiopia,1800,1938,1850,1938,1850,,,Since 1936 Italian colony
+Africa,French Equatorial Africa,1910,1938,1850,1938,1850,,,"Includes present-day Central African republic (colony 1906-1910), Chad (1891-1910), Gabon (protectorate 1839-1885, colony 1885-1910), French Congo (1882-1910)"
+Africa,French Somaliland,1887,1938,1850,1938,1850,,,
+Africa,French West Africa,1895,1938,1850,1938,1830,,,"Includes present-day Mauritania, Dahomey (or Benin), French Guinea, Ivory Coast (protectorate since mid 19th century, colony 1889), Mali, Niger  Senegal (colony since mid 19th century), French Sudan, Upper Volta (now Burkina Faso), Niger and Togo (independent polity as German West Africa  until 1914)"
+Africa,Gambia,1800,1938,1850,1938,1817,,,
+Africa,German East Africa (Tanganyika),1884,1938,1850,1938,1828,,,After 1919   British mandate; present-day  Tanzania
+Africa,German South West Africa,1884,1938,1850,1938,1850,,,After 1919 South African mandate; present day Namibia
+Africa,German West Africa,1884,1914,1850,1914,1850,,,After 1919 part of  French West Africa; present-day Togo
+Africa,Gold Coast,1843,1938,1850,1938,1817,,,1821-1843 and  1866-1874 part of Sierra Leone; present-day Ghana
+Africa,Guinea Bisau (Portuguese Guinea),1879,1938,1850,1938,1850,,,Present-day Guinea Bissau
+Africa,Italian Libia Cyrenaica (Lybia),1911,1938,1850,1938,1850,,,1800-1910 Ottoman Empire
+Africa,Italian Somaliland,1908,1938,1850,1938,1850,,,
+Africa,Liberia,1847,1938,1850,1938,1850,,,
+Africa,Madagascar,1882,1938,1850,1938,1850,,,
+Africa,Mauritius,1800,1938,1850,1938,1828,,,
+Africa,Mayotte and Noissi-be,1843,1914,,,,,,1914-1938 annexed to Madagascar; estimated jointly with Magadascar
+Africa,Morocco (French),1911,1938,1850,1938,1827,,,
+Africa,Mozambique,1816,1938,1850,1938,1828,,,
+Africa,Nigeria,1861,1938,1850,1938,1817,,,"Includes Lagos (separate colony 1861-1906), Southern Nigeria (protectorate 1899-1914) and Northern Nigeria (protectorate 1900-1914)"
+Africa,Nyasaland Protectorate (Malawi),1891,1938,1850,1938,1828,,,present day Malawi
+Africa,Orange Free State,1848,1900,,,,,,After 1900 South Africa; jointly estimated South Africa
+Africa,Reunion,1816,1938,1850,1938,1838,,,
+Africa,Rhodesia,1890,1938,1850,1938,1850,,,"Includes Southern Rhodesia (colony 1901 - present-day Zimbabwe), North-Western  Rhodesia (protectorate 1890- present-day Zambia) and North Eastern Rhodesia (protectorate  ca 1900 - present-day Zambia)"
+Africa,Rwanda and Burundi,1919,1938,1850,1938,1850,,,Until 1918 part of German East Africa; thereafter of British East Africa
+Africa,Sao Tome and Principe,1800,1938,1850,1938,1850,,,
+Africa,Seychelles,1903,1938,1850,1938,1828,,,1816-1903 belonged to  Mauritius
+Africa,Sierra Leone,1800,1938,1850,1938,1817,,,
+Africa,South Africa,1828,1938,1826,1938,1826,,,"includes Cape Good Hope (since 1828), Natal (since 1897)"
+Africa,Spanish Guinea,1858,1938,,,,,,present-day Equatorial Guinea
+Africa,St. Helena,1800,1938,,,,,,
+Africa,Sudan (Anglo-Egyptian),1882,1938,1850,1938,1850,,,Until 1881 formally  belonged to Egypt
+Africa,Swaziland,1894,1938,,,,,,
+Africa,Transvaal,1856,1902,,,,,,After 1900 South Africa; jointly estimated South Africa
+Africa,Tunisia,1881,1938,1850,1938,1830,,,
+Africa,Zanzibar,1800,1938,1850,1938,1828,,,British protectorate 1890; present-day Tanzania
+Americas,Argentina,1800,1938,1820,1938,1820,,,until 1811 Spanish colony (Viceroyalty Plata); Argentina
+Americas,Bahamas,1800,1938,1827,1938,1816,,,Bahamas
+Americas,Barbados,1800,1938,1827,1938,1816,,,Barbados
+Americas,Bermuda,1800,1938,1850,1938,1816,,,Bermuda
+Americas,Bolivia,1825,1938,1850,1938,1820,,,until 1825 Spanish colony (Viceroyalty de la Plata); Bolivia
+Americas,Brazil,1800,1938,1820,1938,1820,,,Brazil
+Americas,British Guiana,1800,1938,1827,1938,1816,,,"Including Berbice, Demerara and Essequebio (independent colonies 1802-1831); now Guyana; British Guiana"
+Americas,British Honduras (Belize),1800,1938,1827,1938,1816,,,"quasi independent  until 1862, then British colony. Present-day Belize; British Honduras (Belize)"
+Americas,Canada,1866,1938,1828,1938,1816,,,"Sum of Canada (Ports of Quebec and Montreal), Nova Scotia and Cape Breton, New Brunswick and Prince Edward Island from 1827-1867.; Canada"
+Americas,British Columbia,1858,1866,,,,,,Joint estimate with Canada
+Americas,Chile,1810,1938,1810,1938,1810,,,Until 1810 Spanish colony (viceroyalty de Peru); Chile
+Americas,Colombia,1800,1938,1830,1938,1820,,,until 1811 spanish colony (Viceroyalty New Granada); Colombia
+Americas,Costa Rica,1800,1938,1830,1938,1820,,,until 1821 Spanish colony; 1821-1823(nominal)  Mexico; 1823-1841 part of  (very loose) Federal Republic Central America; Costa Rica
+Americas,Cuba,1800,1938,1830,1938,1820,,,Cuba
+Americas,Danish Virgin Islands,1800,1938,1820,1938,1820,,,Danish Virgin Island
+Americas,Dominican Republic,1800,1938,1850,1938,1820,,,Dominican Republic
+Americas,Dutch Guayana,1800,1938,1850,1938,1820,,,present-day Suriname; Dutch Guiana (Suriname)
+Americas,Dutch West Indies (Netherland Antilles),1800,1938,1820,1938,1820,,,"Islands Aruba, Bonaire and Curacao and minor ones; Dutch West Indies (Netherlands Antilles)"
+Americas,Ecuador,1800,1938,1830,1938,1820,,,Ecuador
+Americas,El Salvador,1821,1938,1839,1938,1818,,,until 1821 Spanish colony; 1821-1823(nominal)  Mexico; 1823-1841 part of  (very loose) Federal Republic Central America; El Salvador
+Americas,Falkland Islands,1833,1938,1830,1938,1820,,,1816-1833 Argentina; Falkland Islands (Malvinas)
+Americas,French Guiana,1800,1938,1820,1938,1820,,,French Guiana
+Americas,Grenada,1800,1833,1827,1938,1816,,,British Windward colony after 1833; Grenada
+Americas,Guadeloupe,1800,1938,1820,1938,1820,,,Guadeloupe
+Americas,Guatemala,1821,1938,1839,1938,1818,,,until 1821 Spanish colony; 1821-1823(nominal)  Mexico; 1823-1841 part of  (very loose) Federal Republic Central America; Guatemala
+Americas,Haiti,1800,1938,1820,1938,1820,,,Haiti
+Americas,Honduras,1800,1938,1845,1938,1818,,,until 1821 Spanish colony; 1821-1823(nominal)  Mexico; 1823-1841 part of  (very loose) Federal Republic Central America; Honduras
+Americas,Jamaica,1800,1938,1830,1938,1816,,,Including Cayman islands; Jamaica
+Americas,"Leeward Islands (Antigua, Dominica, St.Christopher, Montserrat, Nevis, Virgin Island)",1800,1938,1827,1938,1816,,,"in 1816 it was divided in two, with Antigua, Barbuda and Montserrat in one colony, and Saint Christopher, Nevis, Anguilla, and the Virgin Islands in another; Leeward Islands"
+Americas,Lower Quebec,1800,1866,,,,,,Joint estimate with Canada
+Americas,Martinique,1800,1938,1820,1938,1820,,,Martinique
+Americas,Mexico,1800,1938,1800,1938,1800,,,Mexico
+Americas,New Brunswick,1800,1866,,,,,,Joint estimate with Canada
+Americas,Newfoundland,1816,1938,1850,1938,1816,,,Newfoundland
+Americas,Nicaragua,1800,1938,1839,1938,1818,,,until 1821 Spanish colony; 1821-1823(nominal)  Mexico; 1823-1841 part of  (very loose) Federal Republic Central America; Nicaragua
+Americas,Nova Scotia  Cape Breton Isl.,1800,1866,,,,,,Joint estimate with Canada
+Americas,Ontario,1800,1866,,,,,,Joint estimate with Canada
+Americas,Panama,1906,1938,1906,1938,1906,,,until 1821 Spanish colony; until 1905 part of Colombia; Panama
+Americas,Paraguay,1811,1938,1820,1938,1820,,,Paraguay
+Americas,Peru,1825,1938,1820,1938,1820,,,until 1824 Spanish colony (viceroyalty of Peru)
+Americas,Prince Edward Island,1800,1866,,,,,,Joint estimate with Canada; Peru
+Americas,Puerto Rico,1800,1938,1830,1938,1820,,,since 1901 trade of Porto Rico is included in the United States  statistics.; Puerto Rico
+Americas,St. Lucía,1800,1838,1828,1938,1816,,,British Windward colony after 1833; Saint Lucia
+Americas,St Martin and St Barthélemy,1816,1878,1820,1870,1820,,,population 1870; 1878-1938 part of Guadaloupe; Saint Martin and Saint-Barthélemy
+Americas,St Pierre & Miquelon,1800,1938,1850,1938,1820,,,Saint Pierre and Miquelon
+Americas,St. Vincent,1800,1833,1827,1938,1816,,,British Windward colony after 1833; Saint Vincent
+Americas,Trinidad and Tobago,1800,1938,1827,1938,1816,,,Tobago independent colony until 1889; Trinidad and Tobago
+Americas,Turks and Caicos Islands,1800,1938,1827,1938,1816,,,Turks and Caicos Islands
+Americas,United States,1800,1938,1830,1938,1820,,,United States
+Americas,Vancouver´s Island,1849,1866,,,,,,Joint estimate with Canada
+Americas,Uruguay,1828,1938,1830,1938,1820,,,until 1814 Spanish colony (Viceroyalty Rio de la Plata); 1816-1825 Brazil;; Uruguay
+Americas,Venezuela,1821,1938,1830,1938,1820,,,until 1821 Spanish colony (viceroyalty New granada); Venezuela
+Asia,Abu Dhabi,1800,1938,,,,,,
+Asia,Aden,1839,1938,,,,,,
+Asia,Afghanistan,1800,1938,1850,1938,1850,,,
+Asia,Ajman,1800,1938,,,,,,
+Asia,Badakhshan,1800,1873,,,,,,1873-1938 Afghanistan; joint estimate with Afghanistan
+Asia,Bahrain,1800,1938,,,,,,
+Asia,Bhutan,1800,1938,,,,,,
+Asia,Bonin island,1846,1873,,,,,,1876-1938 Japan; joint estimate with Japan
+Asia,British Malaya,1922,1938,1850,1938,1850,,,"Created 1922 unifying Strait Settlements, Federated Malay states and Unfederated Malay States (all Briish colonies or protectorates)"
+Asia,Brunei,1800,1938,1850,1938,1850,,,
+Asia,Bukhara,1800,1920,,,,,,1920-1938 USSR
+Asia,Burma (Myammar),1800,1938,,,,,,Joint estimate with India
+Asia,Ceylon (Sri Lanka),1800,1938,1850,1938,1825,,,
+Asia,China,1800,1938,1850,1938,1830,,,
+Asia,Danish India,1800,1845,,,,,,1846-1938 British India
+Asia,Dutch East Indies (Indonesia),1800,1938,1822,1938,1822,,,
+Asia,Federated Malay States,1895,1922,,,,,,1922-1938 British Malaya; Joint estimate with British Malaya
+Asia,Formosa (Taiwan),1896,1938,1896,1938,1896,,,1800-1895 China
+Asia,French India,1800,1938,1830,1938,1830,,,
+Asia,French Indochina,1887,1938,1850,1938,1850,,,
+Asia,Fujairah,1886,1938,,,,,,1816-1886 Sharjah
+Asia,Herat,1800,1862,,,,,,1863-1938 Afghanistan; joint estimate with Afghanistan
+Asia,Hong-Kong,1841,1938,,,,,,1816-1839 China
+Asia,India,1800,1938,1800,1938,1800,,,
+Asia,Iraq,1921,1938,1921,1938,1921,,,1800-1918 Ottoman Empire
+Asia,Japan,1800,1938,1860,1938,1860,,,
+Asia,Jordan,1918,1938,,,,,,1800-1918 Ottoman Empire; joint estimate with Palestine
+Asia,Khiva,1800,1873,,,,,,1873-1938 Russia and Soviet Union
+Asia,Kiautchou,1898,1922,,,,,,1800-1898 and 1922-1938 China; joint estimate with China
+Asia,Kokand,1800,1883,,,,,,1873-1938 Russia and Soviet Union
+Asia,Korea,1800,1938,1876,1938,1876,,,
+Asia,Kuwait,1800,1938,,,,,,population in 1920
+Asia,Kwang-Chou-Wan,1898,1938,,,,,,population in 1926; 1800-1898 and 1922-1938 China; joint estimate with China
+Asia,Kwantung (Port Arthur),1898,1938,,,,,,"1800-1898  China, 1898-1905 Russia, 1905-1938 Japan"
+Asia,Maldive,1800,1938,,,,,,
+Asia,Manchukuo,1932,1938,1932,1938,1932,,,NA; 1800-1932 China
+Asia,Mongolia,1911,1938,,,,,,1800-1911 China
+Asia,Nepal,1800,1938,1850,1938,1850,,,
+Asia,North Yemen,1918,1938,1918,1938,1918,,,1871-1918 Ottoman Empire; 1918-1938 Included with Saudi Arabia
+Asia,Oman,1800,1938,,,,,,
+Asia,Ottoman Empire/Turkey,1800,1938,1850,1938,1830,,,
+Asia,Palestine/Jordan,1918,1938,1920,1938,1920,,,population in 1920; 1800-1918 Ottoman Empire
+Asia,Persia (Iran),1800,1938,1850,1938,1850,,,
+Asia,Philippines,1800,1938,1810,1938,1810,,,
+Asia,Portuguese India,1800,1938,1850,1938,1850,,,
+Asia,Quatar,1800,1938,,,,,,1871-1916 Ottoman Empire
+Asia,Ras al Khaimah,1919,1938,,,,,,1900-1919 Sharjah
+Asia,Sabah (British Borneo),1888,1938,1850,1938,1850,,,1816-1888 Brunei
+Asia,Sarawak,1841,1938,1850,1938,1850,,,
+Asia,Saudi Arabia,1924,1938,1918,1938,1918,,,1800-1918 Ottoman Empire
+Asia,Sharjah,1800,1938,,,,,,
+Asia,Siam (Thailand),1800,1938,1850,1938,1850,,,
+Asia,Sikkim,1800,1938,,,,,,
+Asia,Straits Settlement,1826,1922,,,,,,1922-1938 British Malaya; joint estimate with British Malaya
+Asia,Syria and Lebanon,1918,1938,1921,1938,1921,,,population 1919; 1800-1918 Ottoman Empire
+Asia,Tibet,1800,1938,,,,,,Estimated inside China
+Asia,Timor,1800,1938,,,,,,
+Asia,Umm al Qawain,1892,1938,,,,,,
+Asia,Yunnan,1856,1871,,,,,,1800-1857 and 1872-1938 China; joint estimate with China
+Europe,Albania,1913,1938,1913,1938,1913,,,1800-1913 Ottoman Empire
+Europe,Andorra,1800,1938,,,,,,
+Europe,Austria,1918,1938,1920,1937,1920,,,1800-1918 Austria-Hungary
+Europe,Austria-Hungary,1800,1918,1830,1918,1830,,,
+Europe,Belgium,1831,1938,1830,1938,1830,,,
+Europe,Bulgaria,1878,1938,1879,1938,1879,,,1800-1878 Ottoman Empire
+Europe,Crete,1898,1913,1898,1913,1898,,,1800-1897 Ottoman Empire; 1914-1938 Greece
+Europe,Cyprus,1879,1938,1878,1938,1878,,,"1800-1878 Ottoman Empire, then British colony"
+Europe,Czechoslovakia,1918,1937,1920,1937,1920,,,1800-1918 Austria-Hungary
+Europe,Denmark,1800,1938,1841,1938,1818,,,
+Europe,Dodecanese Is.,1912,1938,,,,,,"1800-1912 Ottoman Empire, then Italian colony"
+Europe,Duchy Modena,1800,1860,,,,,,1861-1938 Italy; joint estimation with Italy
+Europe,Duchy Parma,1800,1860,,,,,,1861-1938 Italy; joint estimation with Italy
+Europe,Estonia,1918,1938,1920,1938,1920,,,1800-1918 Russia
+Europe,Faroe Is,1800,1938,,,,,,
+Europe,Finland,1917,1938,1850,1938,1812,,,1800-1812 Russia
+Europe,France,1800,1938,1800,1938,1800,,,
+Europe,Germany/Zollverein,1800,1938,1836,1938,1821,,,
+Europe,Gibraltar,1800,1938,,,,,,
+Europe,Iceland,1800,1938,1849,1938,1849,,,
+Europe,Ionian islands,1815,1862,1850,1862,1850,,,1864-1938 Greece
+Europe,Ireland,1921,1938,1922,1938,1922,,,1800-1921 United Kingdom
+Europe,Italy,1861,1938,1850,1938,1823,,,
+Europe,Kingdom Two sicilies,1800,1860,,,,,,1861-1938 Italy; joint estimation with Italy
+Europe,Latvia,1918,1938,1920,1938,1920,,,1800-1918 Russia
+Europe,Lithuania,1918,1938,1920,1938,1920,,,1800-1918 Russia
+Europe,Luxembourg,1800,1938,,,,,,
+Europe,Malta,1800,1938,1850,1938,1850,,,
+Europe,Monaco,1800,1938,,,,,,
+Europe,Montenegro,1878,1918,,,,,,1800-1878 Ottoman Empire; 1918-1938 Yugoslavia
+Europe,Netherlands,1800,1938,1800,1938,1800,,,
+Europe,Norway,1800,1938,1830,1938,1830,,,
+Europe,Papal States,1800,1870,,,,,,1871-1938 Italy; joint estimation with Italy
+Europe,Poland,1918,1938,1922,1938,1922,,,"1800-1918 divided between  Russia,  Austria-Hungary and  Germany"
+Europe,Portugal,1800,1938,1800,1938,1800,,,
+Europe,Romania,1859,1938,1859,1938,1859,,,1800-1876 Ottoman Empire
+Europe,Russia/USSR,1800,1938,1850,1938,1800,,,
+Europe,Sardinia,1800,1860,,,,,,1861-1938 Italy; joint estimation with Italy
+Europe,Serbia/Yugoslavia,1816,1938,1850,1938,1830,,,1800-1815 Ottoman Empire
+Europe,Spain,1800,1938,1821,1938,1821,,,
+Europe,Sweden,1800,1938,1800,1938,1800,,,
+Europe,Switzerland,1800,1938,1850,1938,1830,,,
+Europe,Tuscany,1800,1860,,,,,,1861-1938 Italy; joint estimation with Italy
+Europe,Two Sicilies,1800,1860,,,,,,1861-1938 Italy; joint estimation with Italy
+Europe,United Kingdom,1800,1938,1800,1938,1800,,,
+Oceania,American Samoa,1900,1938,,,,,,Joint estimate US settlement Oceania
+Oceania,Australia Commonwealth,1901,1940,1826,1938,1826,,,
+Oceania,British New Guinea,1884,1938,,,,,,Joint estimation british settlement Oceania; since 1905 administered by Australia; now Papua New Guinea
+Oceania,British settlement Oceania,1839,1938,1850,1938,1850,,,
+Oceania,Caroline Island,1885,1938,,,,,,Spanish colony 1885-1899; German 1899-1914; Japan mandate 1914-1938; joint estimation with German colonies Oceania
+Oceania,Cook Island,1893,1901,,,,,,1901-1938 New Zealand; Joint estimation New Zealand
+Oceania,Dutch new Guinea,1898,1938,,,,,,Present-day Indonesia
+Oceania,Fiji,1874,1938,,,,,,Joint estimation British settlement Oceania
+Oceania,French Settlements in Oceania,1844,1938,1850,1938,1850,,,"Polities included: New Caledonia, Polynesia"
+Oceania,Gambier Island,1881,1903,,,,,,Joint estimation French Settlements Oceania
+Oceania,German colonies Oceania,1884,1938,1850,1938,1850,,,1915-1938 mandate Ldn (different colonial powers(
+Oceania,Gilbert and Ellice Island,1892,1938,,,,,,Joint estimation British settlement Oceania
+Oceania,Mariana Island,1800,1938,,,,,,Spanish colony 1800-1898; German colony 1898-1914;Japanese mandate 1914-1938; joint estimate with German colonies Oceania
+Oceania,Marquesas Island,1844,1903,,,,,,Joint estimation with French settlements Oceania
+Oceania,Marshall Island,1874,1938,,,,,,Spanish colony 1870-1898; German colony 1898-1914;Japanese mandate 1914-1938; joint estimate with German colonies Oceania
+Oceania,Midway Island,1859,1938,,,,,,Joint estimation with US Settlement Oceania
+Oceania,Nauru,1888,1938,,,,,,British-Australian mandate 1914-1938; Joint estimation with German colonies Oceania
+Oceania,New Caledonia,1853,1938,,,,,,Joint estimation with French settlements Oceania
+Oceania,New Guinea,1884,1938,,,,,,German colony 1884; Australian mandate 1914-1938; Joint estimation with German colonies Oceania
+Oceania,New Hebrides,1906,1938,,,,,,British-French condominium;  joint estimates British settlement Oceania; present-day Vanuatu
+Oceania,Niue Island,1900,1901,,,,,,annexed to New Zealand 1901-1938; Joint estimation New Zealand
+Oceania,Norfolk Island,1800,1901,,,,,,annexed to Australia; joint estimate with Australia
+Oceania,Palmyra Island,1889,1912,,,,,,1862-1898 Hawaii then USA; joint estimate with Hawaii
+Oceania,Pitcairn Island,1839,1938,,,,,,UK colony; joint estimation British settlement Oceania
+Oceania,Queensland,1859,1900,,,,,,Joint estimation with Australia; 1800-1858 part of New South Wales
+Oceania,Society Islands  (Tahiti),1844,1903,,,,,,independent Kingdom to 1844; French protectorate 1844-1881; then French colony joint estimate with French settlement Oceania
+Oceania,Solomon Islands,1885,1938,,,,,,German colony 1885-1900; British 1900-1938; Joint estimation with British settlement Oceania
+Oceania,South Australia,1838,1900,,,,,,Joint estimation with Australia
+Oceania,Tokelau Island,1877,1938,,,,,,British colony; administered New Zealand after 1926 Joint estimation with British Settlement Oceania
+Oceania,Tongan Islands,1800,1938,,,,,,Quasi independent kingdom; joit estimate with British settlment Oceania
+Oceania,US settlement Oceania,1859,1938,,,,,,
+Oceania,Van Diemen's Land (Tasmania),1828,1900,,,,,,Joint estimation with Australia; 1800-1825 New South Wales;
+Oceania,Victoria,1853,1900,,,,,,Joint estimation with Australia; 1800-1852 New South Wales;
+Oceania,Wake Island,1898,1938,,,,,,Joint estimation with US settlement Oceania
+Oceania,Wallis and Futuna Island,1842,1938,,,,,,Joint estimation with French Polinesia
+Oceania,Western Australia,1838,1900,,,,,,Joint estimation with Australia
+Oceania,Western Samoa,1900,1938,,,,,,German colony 1899-1915; New Zealand mandate; joint estimate with German colonies Oceania
