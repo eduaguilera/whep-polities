@@ -103,17 +103,17 @@ Target steady state: zero suspect buckets, with a documented reason
 ## Extending the mapping
 
 When new countries end up unmatched (the `none` bucket), edit
-`normalise_iso()` or the `name_override` table in `match.R`. Re-run
-to regenerate all outputs:
+`normalise_iso()` or the `name_override` table in `match.R`. Then
+rebuild everything with the canonical entry point:
 
 ```bash
-Rscript pipelines/pre1961-matching/match.R
-bash site/build_wiki.sh
+bash scripts/rebuild.sh
 ```
 
-The UI picks up the new per-item JSON files automatically (the year
-slider in the Data tab drives re-rendering) and the unmatched panel
-updates to reflect the new state.
+which invokes `match.R` as part of its pipeline and re-propagates the
+refreshed per-item JSON files into `site/pre1961/`. The UI picks up the
+new files automatically (the year slider in the Data tab drives
+re-rendering) and the unmatched panel updates to reflect the new state.
 
 ## Creating new polity entries
 

@@ -4,32 +4,29 @@ Historical polities database for the [Who Has Eaten the Planet?](https://www.whe
 
 ## Architecture
 
-**The wiki is the source of truth.** Every polity has a curated page at `wiki/polities/<code>.md` with YAML frontmatter that declares its identity, status, and the provenance of its polygon. The CSV and GeoPackage under `data/final/` are derived artifacts, rebuilt by `scripts/build_database.py`.
+**The wiki is the source of truth.** Every polity has a curated page at `wiki/polities/<code>.md` with YAML frontmatter that declares its identity, status, and the provenance of its polygon. Everything else is a derived artifact — rebuilt from the wiki and the polygon sources by a single command: `bash scripts/rebuild.sh`.
 
 ```
  wiki/polities/*.md          ← you edit this (source of truth)
        │
        ▼
- scripts/build_database.py   ← joins wiki + raw polygon sources
+ bash scripts/rebuild.sh
        │
-       ▼
- data/final/
-   polities_database.csv     ← committed (~60 KB)
-   polities_database.gpkg    ← committed (~7 MB, 500+ polygons)
-       │
-       ▼
- site/build_wiki.sh          ← simplifies for web
-       │
-       ▼
- site/polities.{csv, geojson}   +   site/wiki/ (rendered markdown)
+       ├── scripts/sources/constructed/build.py   (dissolves/unions from cshapes, gadm, ...)
+       ├── scripts/build_database.py              → data/final/polities_database.{csv,gpkg}
+       ├── site/build_wiki.sh                     → site/polities.{csv,geojson} + site/wiki/
+       ├── pipelines/pre1961-matching/match.R     → data/compiled/pre1961/*  (optional, needs R)
+       └── site/build_wiki.sh (second pass)       → site/pre1961/*
 ```
+
+`scripts/rebuild.sh` is the only command a human runs. The pieces it calls aren't separately user-facing.
 
 ## Rebuilding from scratch
 
 Raw polygon inputs (CShapes, GADM, Cliopatria, …) live under `data/geodata/<slug>/` and are **gitignored**. Each source has a fetch script that re-downloads it from its original location:
 
 ```bash
-# 1. Fetch raw polygons (pick the sources you need)
+# 1. Fetch the raw sources you need
 bash scripts/sources/cshapes-2.0/fetch.sh
 bash scripts/sources/cshapes-europe/fetch.sh
 bash scripts/sources/cliopatria/fetch.sh
@@ -37,21 +34,11 @@ bash scripts/sources/paine-2024/fetch.sh
 bash scripts/sources/histogis-1860-habsburg/fetch.sh
 bash scripts/sources/gadm-4.1/fetch.sh
 
-# 2. Rebuild every derived artifact in one command:
-#    - data/final/polities_database.{csv,gpkg}
-#    - site/polities.{csv,geojson}
-#    - site/wiki/ (markdown copy for the in-browser reader)
+# 2. Rebuild every derived artifact in one command
 bash scripts/rebuild.sh
 ```
 
-`scripts/rebuild.sh` wraps the full pipeline: it runs
-`python3 scripts/build_database.py`, then `bash site/build_wiki.sh`,
-then (if `Rscript` + `data/external/before_1961.csv` are available)
-`Rscript pipelines/pre1961-matching/match.R` to refresh the pre-1961
-agricultural crosslink against the just-built `site/polities.geojson`,
-then re-propagates the refreshed `data/compiled/pre1961/` into
-`site/pre1961/`. If R isn't installed it skips the pre-1961 step and
-warns.
+If R isn't installed, step 1 skips the R-package sources (USAboundaries, mapSpain, geobr) and `rebuild.sh` skips the pre-1961 crosslink with a warning.
 
 You don't have to run the fetches if you only want to consume the committed `data/final/polities_database.gpkg` — it's self-contained.
 
@@ -64,35 +51,37 @@ You don't have to run the fetches if you only want to consume the committed `dat
 | `wiki/README.md` | Wiki schema, link conventions, polygon frontmatter fields |
 | `wiki/prompts/` | Agent workflow prompts (ingest, lint, query, autonomous-next) |
 | `wiki/log.md` | Chronological record of decisions and open questions |
-| `scripts/rebuild.sh` | One-shot rebuild of every derived artifact (runs `build_database.py` + `site/build_wiki.sh`) |
+| `scripts/rebuild.sh` | **The** rebuild command. Orchestrates everything below. |
 | `scripts/build_database.py` | Builds `data/final/polities_database.{csv,gpkg}` from wiki + `scripts/sources.yaml` |
 | `scripts/sources.yaml` | Per-source registry: file path, id column, temporal columns |
 | `scripts/sources/<slug>/fetch.{sh,R}` | Fetches the raw source |
-| `scripts/sources/<slug>/build.py` | Optional per-source processing step for derived sources (e.g. `histogis-1860-habsburg` dissolves crownlands into Cisleithania/Transleithania) |
+| `scripts/sources/<slug>/build.py` | Optional per-source processing step for derived sources |
+| `site/build_wiki.sh` | Simplifies the master GPKG for web display (called by `rebuild.sh`) |
+| `pipelines/pre1961-matching/match.R` | Crosslinks pre-1961 agricultural data to polity codes (called by `rebuild.sh`) |
 | `data/final/` | Committed master database (CSV + GeoPackage) |
 | `data/external/` | External reference datasets (COW state system, decolonization events, pre-1961 ag data) |
 | `data/geodata/` | Raw polygon sources (gitignored; populated by fetch scripts) |
-| `pipelines/pre1961-matching/` | R pipeline that crosslinks pre-1961 agricultural data against the polity database |
-| `site/` | MapLibre GL JS visualization |
+| `data/compiled/` | Pipeline intermediates (gitignored) |
+| `site/` | MapLibre GL JS visualization + copy of the wiki for in-browser reading |
 
 ## Polygon sources
 
 Declared in `scripts/sources.yaml`:
 
-| Slug | Source | Native ID |
-|------|--------|-----------|
-| `cshapes-2.0` | [ETH Zürich ICR](https://icr.ethz.ch/data/cshapes/) | `gwcode` + year |
-| `cshapes-europe` | ETH Zürich ICR (pre-1886 extension) | `Id` + year |
-| `gadm-4.1-adm0` / `gadm-4.1-adm1` | [GADM 4.1](https://gadm.org/) | `GID_0` / `GID_1` |
-| `gadm-3.6` | GADM 3.6 (legacy subnational) | `GID_1` |
-| `paine-2024` | [Paine, Qiu & Ricart-Huguet (APSR 2024)](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/9QJVJ1) | `PCS` |
-| `cliopatria` | [Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria) | `Name` + year |
-| `histogis-1860-habsburg` | [HistoGIS ACDH-CH](https://histogis.acdh.oeaw.ac.at/) (dissolved crownlands) | `polity_code` |
-| `chgis-v6` | [CHGIS v6](https://dataverse.harvard.edu/dataverse/chgis) Qing provinces | `NAME_PY` + year |
-| `usaboundaries-newberry` | Newberry Atlas via R `USAboundaries` | `state_abbr` + year |
-| `mapspain-ign` | IGN Spain via R `mapSpain` | `cpro` |
-| `geobr-ibge` | IBGE via R `geobr` | `abbrev_state` + year |
-| `constructed` | Hand-authored (Antarctic sector, Uqair, point buffers) | `polity_code` |
+| Slug | Source | Native ID | Notes |
+|------|--------|-----------|-------|
+| `cshapes-2.0` | [ETH Zürich ICR](https://icr.ethz.ch/data/cshapes/) | `gwcode` + year | Primary source for 1886+ state boundaries |
+| `cshapes-europe` | ETH Zürich ICR (pre-1886 extension) | `Id` + year | European pre-1886 |
+| `gadm-4.1-adm0` / `gadm-4.1-adm1` | [GADM 4.1](https://gadm.org/) | `GID_0` / `GID_1` | Per-country fetch, two levels |
+| `gadm-3.6` | GADM 3.6 (legacy subnational) | `GID_1` | Placeholder; no current wiki citations |
+| `paine-2024` | [Paine, Qiu & Ricart-Huguet (APSR 2024)](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/9QJVJ1) | `PCS` | Pre-colonial African states |
+| `cliopatria` | [Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria) | `Name` + year | Broad historical coverage |
+| `histogis-1860-habsburg` | [HistoGIS ACDH-CH](https://histogis.acdh.oeaw.ac.at/) (dissolved crownlands) | `polity_code` | Derived source (has `build.py`) |
+| `chgis-v6` | [CHGIS v6](https://dataverse.harvard.edu/dataverse/chgis) Qing provinces | `NAME_PY` + year | Placeholder |
+| `usaboundaries-newberry` | Newberry Atlas via R `USAboundaries` | `state_abbr` + year | Placeholder |
+| `mapspain-ign` | IGN Spain via R `mapSpain` | `cpro` | Placeholder |
+| `geobr-ibge` | IBGE via R `geobr` | `abbrev_state` + year | Placeholder |
+| `constructed` | Union / dissolve of features from other fetched sources | `polity_code` | Derived source (has `build.py`); currently holds: Allied-occupied Germany, divided Germany 1949-1990, Japanese Empire 1895-1945, Korea to 1945, Manchukuo 1932-1945 |
 
 ## Adding a new polygon source
 
@@ -106,3 +95,12 @@ Declared in `scripts/sources.yaml`:
    polygon_status: assigned
    ```
 4. Run `bash scripts/rebuild.sh`. Missing raw files are reported but don't abort the build.
+
+## Adding a constructed (derived) polygon
+
+For polities that have no single external-source match — unions of CShapes halves, dissolves of GADM provinces, etc. — edit `scripts/sources/constructed/build.py`:
+
+1. Write a `build_<polity_code_lowercased>()` function that returns an `ogr.Geometry` in WGS84.
+2. Register it in the `BUILDERS` list with a provenance note.
+3. Set the wiki page's frontmatter: `polygon_source: constructed`, `polygon_feature_id: <THE-POLITY-CODE>`.
+4. Run `bash scripts/rebuild.sh`. `build.py` is called early and writes `data/geodata/constructed/constructed.geojson`, which `build_database.py` then picks up.

@@ -95,12 +95,15 @@ Then:
 
 7. **Rebuild derived artifacts** if any frontmatter was edited:
    ```bash
-   bash scripts/rebuild.sh   # → data/final/ + site/
+   bash scripts/rebuild.sh   # → data/final/ + site/ + site/pre1961/
    ```
-   (Wraps `python3 scripts/build_database.py` + `bash site/build_wiki.sh`.)
-   If a polity page cites a `polygon_source` whose raw file isn't on
-   disk yet, first run the matching `scripts/sources/<slug>/fetch.*`.
-   The builder logs missing sources/features but doesn't abort.
+   This is the single entry point. Internally it regenerates the
+   `constructed` polygons, builds the master CSV + GeoPackage, the
+   site GeoJSON/CSV + wiki copy, and (if R is available) the pre-1961
+   agricultural crosslink. If a polity page cites a `polygon_source`
+   whose raw file isn't on disk yet, first run the matching
+   `scripts/sources/<slug>/fetch.*`. The builder logs missing
+   sources/features but doesn't abort.
 
 **Quality gate:** Every polity page must contain at least one sourced
 claim from an external source beyond `[database]`. Never bulk-generate
