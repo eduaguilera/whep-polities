@@ -6,8 +6,7 @@
 # WHEP polity database (`data/final/polities_database.csv`) and emits the
 # inputs the web UI's "Data" tab consumes.
 #
-# No dependence on the legacy `R-legacy/` scripts — everything this
-# pipeline needs is declared in-file. Run from the project root:
+# Everything this pipeline needs is declared in-file. Run from the project root:
 #
 #   Rscript pipelines/pre1961-matching/match.R
 #

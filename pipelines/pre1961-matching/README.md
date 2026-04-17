@@ -4,8 +4,7 @@ Self-contained, reproducible R pipeline that crosslinks the pre-1961
 agricultural / livestock dataset `data/external/before_1961.csv` with the
 WHEP polity database `data/final/polities_database.csv`.
 
-No dependency on `R-legacy/`. Everything this pipeline needs is declared in
-`match.R`.
+Everything this pipeline needs is declared in `match.R`.
 
 ## Run
 
