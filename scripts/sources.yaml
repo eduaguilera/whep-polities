@@ -1,0 +1,131 @@
+# Polygon source registry.
+#
+# Each source has:
+#   file        — path (relative to repo root) to the raw source file
+#                 downloaded by scripts/sources/<slug>/fetch.{sh,py,R}
+#   layer       — layer name (for multi-layer GPKGs). Omit for single-layer
+#                 files or non-GPKG formats.
+#   id_column   — the column in the source that uniquely identifies features.
+#                 Wiki frontmatter's `polygon_feature_id` matches against this.
+#   id_type     — int | str. How to cast the wiki value before comparison.
+#   temporal    — present for sources with multiple time-steps per id.
+#     start_column, end_column — integer year columns (or full dates).
+#     match_year — how to use wiki's `polygon_feature_year`:
+#                  "within" → start <= year <= end
+#                  "exact_start" → start == year
+#
+# Raw source files are all gitignored. Fetch them with the corresponding
+# scripts/sources/<slug>/fetch.* before running scripts/build_database.py.
+
+sources:
+  cshapes-2.0:
+    url: https://icr.ethz.ch/data/cshapes/CShapes-2.0.gpkg
+    file: data/geodata/cshapes-2.0/CShapes-2.0.gpkg
+    id_column: cowcode
+    id_type: int
+    temporal:
+      start_column: gwsyear
+      end_column: gweyear
+      match_year: within
+
+  cshapes-europe:
+    url: https://icr.ethz.ch/data/cshapes/CShapes-europe.gpkg
+    file: data/geodata/cshapes-europe/CShapes-europe.gpkg
+    id_column: cowcode
+    id_type: int
+    temporal:
+      start_column: gwsyear
+      end_column: gweyear
+      match_year: within
+
+  gadm-4.1:
+    url: https://geodata.ucdavis.edu/gadm/gadm4.1/gadm_410-levels.gpkg
+    file: data/geodata/gadm-4.1/gadm_410-levels.gpkg
+    layer: ADM_0
+    id_column: GID_0
+    id_type: str
+
+  gadm-3.6:
+    # Discontinued by GADM. The R-pipeline legacy CSV references it for
+    # ~216 subnational entries. Follow-up session: decide whether to
+    # remap these onto gadm-4.1 or fetch the GADM 3.6 archive.
+    url: https://biogeo.ucdavis.edu/data/gadm3.6/gadm36_levels_gpkg.zip
+    file: data/geodata/gadm-3.6/gadm36_levels.gpkg
+    layer: level1
+    id_column: GID_1
+    id_type: str
+
+  paine-2024:
+    url: https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/9QJVJ1/Y5QZG6
+    file: data/geodata/paine-2024/PCS.shp
+    id_column: PCS
+    id_type: str
+
+  cliopatria:
+    # Seshat-linked; hosted as a GitHub release.
+    url: https://github.com/majkshkurti/cliopatria/releases/download/v0.1.3/cliopatria.geojson
+    file: data/geodata/cliopatria/cliopatria.geojson
+    id_column: PolID
+    id_type: str
+    temporal:
+      start_column: StartYear
+      end_column: EndYear
+      match_year: within
+
+  chgis-v6:
+    url: https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/FYWHEE
+    file: data/geodata/chgis-v6/v6_1820_pref_pgn_utf.shp
+    id_column: NAME_PY
+    id_type: str
+    temporal:
+      start_column: BEG_YR
+      end_column: END_YR
+      match_year: within
+
+  usaboundaries-newberry:
+    # Fetched via the R package USAboundaries. The fetch script writes a
+    # GPKG snapshot keyed by (state_abbr, start_date).
+    url: https://github.com/ropensci/USAboundaries  # R package
+    file: data/geodata/usaboundaries-newberry/states.gpkg
+    id_column: state_abbr
+    id_type: str
+    temporal:
+      start_column: start_year
+      end_column: end_year
+      match_year: within
+
+  mapspain-ign:
+    # Fetched via the R package mapSpain.
+    url: https://github.com/rOpenSpain/mapSpain  # R package
+    file: data/geodata/mapspain-ign/provinces.gpkg
+    id_column: cpro          # 2-digit province code
+    id_type: str
+
+  geobr-ibge:
+    # Fetched via the R package geobr.
+    url: https://github.com/ipeaGIT/geobr  # R package
+    file: data/geodata/geobr-ibge/states.gpkg
+    id_column: abbrev_state  # state abbreviation (e.g., "SP")
+    id_type: str
+    temporal:
+      start_column: year
+      end_column: year
+      match_year: exact_start
+
+  histogis-1860-habsburg:
+    # This is a derived source: the ad-hoc script scripts/histogis_habsburg.py
+    # dissolves the raw HistoGIS 1860 crownlands shapefile into Cisleithania
+    # and Transleithania polygons. The raw shapefile is fetched separately;
+    # the build step runs the dissolve script.
+    url: https://shared.acdh.oeaw.ac.at/histogis/austrian_empire_adm2_crownlands_1860.zip
+    file: data/geodata/histogis-1860-habsburg/habsburg_cisleithania_transleithania.gpkg
+    layer: habsburg_halves
+    id_column: polity_code
+    id_type: str
+
+  constructed:
+    # Manual polygons (Antarctic sector claims, Uqair Protocol, point buffers).
+    # Maintained as a single hand-edited GeoJSON file in this repo.
+    file: data/geodata/constructed/constructed.geojson
+    id_column: polity_code
+    id_type: str

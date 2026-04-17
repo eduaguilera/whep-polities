@@ -24,8 +24,8 @@ and the 1867-1918 Dual Monarchy period, with these exceptions:
 import sys
 from osgeo import ogr, osr
 
-SHP = "data/geodata/histogis/crownlands_1860/austrian_empire_adm2_crownlands_1860.shp"
-OUT_GPKG = "data/geodata/histogis/habsburg_cisleithania_transleithania.gpkg"
+SHP = "data/geodata/histogis-1860-habsburg/crownlands_1860/austrian_empire_adm2_crownlands_1860.shp"
+OUT_GPKG = "data/geodata/histogis-1860-habsburg/habsburg_cisleithania_transleithania.gpkg"
 
 # Crownland index → half assignment
 # 'C' = Cisleithania, 'T' = Transleithania, 'X' = exclude
