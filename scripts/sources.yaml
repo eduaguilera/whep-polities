@@ -19,9 +19,12 @@
 
 sources:
   cshapes-2.0:
-    url: https://icr.ethz.ch/data/cshapes/CShapes-2.0.gpkg
-    file: data/geodata/cshapes-2.0/CShapes-2.0.gpkg
-    id_column: cowcode
+    # CShapes 2.0 uses Gleditsch-Ward codes only (the COW coding was dropped
+    # in v2.0). For most countries G-W == COW; when they differ, the wiki's
+    # polygon_feature_id must use the G-W code.
+    url: https://icr.ethz.ch/data/cshapes/CShapes-2.0.zip
+    file: data/geodata/cshapes-2.0/CShapes-2.0.shp
+    id_column: gwcode
     id_type: int
     temporal:
       start_column: gwsyear
@@ -29,9 +32,9 @@ sources:
       match_year: within
 
   cshapes-europe:
-    url: https://icr.ethz.ch/data/cshapes/CShapes-europe.gpkg
-    file: data/geodata/cshapes-europe/CShapes-europe.gpkg
-    id_column: cowcode
+    url: https://icr.ethz.ch/data/cshapes/CShapes-Europe.geojson
+    file: data/geodata/cshapes-europe/CShapes-Europe.geojson
+    id_column: gwcode
     id_type: int
     temporal:
       start_column: gwsyear
