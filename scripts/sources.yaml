@@ -34,11 +34,11 @@ sources:
   cshapes-europe:
     url: https://icr.ethz.ch/data/cshapes/CShapes-Europe.geojson
     file: data/geodata/cshapes-europe/CShapes-Europe.geojson
-    id_column: gwcode
+    id_column: Id
     id_type: int
     temporal:
-      start_column: gwsyear
-      end_column: gweyear
+      start_column: From
+      end_column: To
       match_year: within
 
   gadm-4.1:
