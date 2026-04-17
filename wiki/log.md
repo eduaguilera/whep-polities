@@ -26,6 +26,78 @@ Kinds:
 
 ---
 
+## lint-2026-04-17
+**Date:** 2026-04-17
+**Touched:** (audit only; no wiki pages edited)
+**Source:** none
+**Kind:** lint
+
+First full lint pass against the wiki-driven architecture established
+in commits `68fff3e` … `8e1d29b`. Ran all 12 checks from
+`wiki/prompts/lint.md` and finished with `bash scripts/rebuild.sh`.
+
+### Summary
+
+- **Pages scanned:** 547
+- **Schema conformance (check 1):** all 547 pages have the required
+  frontmatter fields and H2 sections. No YAML errors, no duplicate
+  `polity_code`s.
+- **CSV ↔ wiki parity (check 2):** 547 rows == 547 pages; no
+  `only_in_csv` or `only_in_wiki` codes.
+- **Obsidian compatibility (check 12):** no `<a id>` HTML anchors, no
+  reference-style link definitions.
+- **Zero-citation sources (check 7):** 0.
+- **Staleness (check 5):** 0 pages with `last_ingest` older than one
+  year.
+- **Full rebuild (check 10):** master GPKG + site built clean —
+  `Rows written: 547 ✓`, `Geometries attached: 505`, no
+  `source not fetched` / `unknown source slug` / `feature not found`.
+
+### Must fix — polygon frontmatter vs prose drift (check 11)
+
+4 pages have `polygon_status: missing` + `polygon_source: none` in
+frontmatter, but their `## Territorial extent` prose asserts a CShapes
+polygon. The CSV and GeoPackage correctly reflect the frontmatter
+(no geometry attached); the prose is stale. Either the page should be
+re-sourced to a polygon the builder can resolve, or the prose should
+drop the CShapes claim. Either change is an *ingest*-kind action
+(changes what the page claims), not lint — flagged here for a
+follow-up ingest pass.
+
+- [esh-1958-1975](polities/esh-1958-1975.md) (Western Sahara)
+- [frs-1884-1977](polities/frs-1884-1977.md) (French Somaliland)
+- [mys-1946-1957](polities/mys-1946-1957.md) (Malayan Union / Federation of Malaya)
+- [tas-1825-1900](polities/tas-1825-1900.md) (Van Diemen's Land / Tasmania)
+
+All four were in the 42-polity "still missing" cohort from commit
+`c41643e` — their `cow_code` values didn't map to a CShapes `gwcode`
+in either matching pass. An ingest should attempt one of:
+- Match by CShapes `cntry_name` for the relevant period (ESH may
+  be "Western Sahara"; MYS may be "Malaya" with `gwcode=820`).
+- Assign a proxy from a successor/predecessor row with explicit
+  justification in the prose.
+- Formally accept `polygon_status: missing` and delete the stale
+  CShapes claim from the prose.
+
+### Should review — coverage-gap markers (check 9)
+
+12 pages carry `<!-- TODO: page not yet created -->` dangling
+predecessor/successor refs. Each is a concrete gap in the
+spatiotemporal coverage chain. No new gaps introduced vs the
+previous baseline.
+
+Affected: `ang-1891-1905`, `bec-1885-1966`, `caf-1912-1919`,
+`civ-1932-1947`, `cod-1894-1910`, `cog-1912-1919`, `gab-1919-1960`,
+`gha-1888-1898`, `ndb-1823-1894`, `omn-1800-1856`, `rwk-1800-1890`,
+`tan-1891-1920`.
+
+### Auto-applied
+
+- None beyond running `bash scripts/rebuild.sh`. No wiki pages
+  edited.
+
+---
+
 ## dangling-refs-audit-2026-04-15
 **Date:** 2026-04-15
 **Touched:** ANG-1800-1890, ANG-1905-1975, AUSA-1836-1900, AUWA-1829-1900, BKN-1800-1897, BNU-1800-1893, CIV-1893-1900, COD-1885-1891, COG-1900-1906, EGB-1830-1914, FRS-1884-1977, GAB-1839-1912, IBD-1829-1893, IGL-1800-1901, IJB-1800-1892, KEN-1902-1906, LBA-1800-1885, LBY-1943-1949, LCA-1800-1838, LND-1800-1887, MMR-1800-1826, MNE-1913-1918, MOR-1956-1958, MYS-1946-1957, NSW-1800-1900, NUP-1800-1897, PAN-1800-1979, QUE-1859-1900, SMO-1912-1956, SOK-1804-1903, SWK-1800-1894, TAS-1825-1900, TUS-1800-1860, TWO-1800-1860, VCT-1800-1833, VIC-1851-1900, ZUL-1816-1879
