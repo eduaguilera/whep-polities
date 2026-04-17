@@ -6,15 +6,16 @@
 # every polity row, geometry attached where available.
 #
 # Polygon sources (in priority order):
-#   1. precolonial_polygons.gpkg      (46 Paine et al. pre-colonial kingdoms)
-#   2. cliopatria_polygons.gpkg       (4 Seshat/Cliopatria polities)
-#   3. chgis_qing_provinces.gpkg      (26 Qing China provinces)
-#   4. us_historical_states.gpkg      (51 US states/territories 1800-1958)
-#   5. brazil_historical_states.gpkg  (26 Brazil states 1872-1987)
-#   6. spain_provinces.gpkg           (52 Spain provinces 1833-2025)
-#   7. polities_polygons.gpkg         (939 main build: CShapes + GADM admin-1)
-#   8. CShapes recovery               (missing polities recovered from raw CShapes)
-#   9. GADM recovery                   (missing polities recovered from GADM 3.6)
+#   1. precolonial_polygons.gpkg                          (46 Paine et al. pre-colonial kingdoms)
+#   2. cliopatria_polygons.gpkg                           (4 Seshat/Cliopatria polities)
+#   3. chgis_qing_provinces.gpkg                          (26 Qing China provinces)
+#   4. us_historical_states.gpkg                          (51 US states/territories 1800-1958)
+#   5. brazil_historical_states.gpkg                      (26 Brazil states 1872-1987)
+#   6. spain_provinces.gpkg                               (52 Spain provinces 1833-2025)
+#   7. histogis/habsburg_cisleithania_transleithania.gpkg (2: AUT-1800-1918, HUN-1800-1918)
+#   8. polities_polygons.gpkg                             (939 main build: CShapes + GADM admin-1)
+#   9. CShapes recovery               (missing polities recovered from raw CShapes)
+#  10. GADM recovery                  (missing polities recovered from GADM 3.6)
 #
 # Output: data/final/polities_database.gpkg
 # ==============================================================================
@@ -53,6 +54,23 @@ load_gpkg <- function(filename, label) {
   sf
 }
 
+load_gpkg_layer <- function(filename, label, layer = NULL) {
+  path <- file.path(geodata_dir, filename)
+  if (!file.exists(path)) {
+    cat(sprintf("  SKIP: %s (file not found)\n", filename))
+    return(NULL)
+  }
+  sf <- if (is.null(layer)) st_read(path, quiet = TRUE) else
+    st_read(path, layer = layer, quiet = TRUE)
+  sf <- sf[, "polity_code"]
+  sf <- st_set_crs(sf, 4326)
+  # Rename geometry column to "geometry" if needed
+  geom_col <- attr(sf, "sf_column")
+  if (geom_col != "geometry") sf <- st_rename_geometry(sf, "geometry")
+  cat(sprintf("  %s: %d polygons (%s)\n", label, nrow(sf), filename))
+  sf
+}
+
 sources <- list(
   load_gpkg("precolonial_polygons.gpkg", "Pre-colonial"),
   load_gpkg("cliopatria_polygons.gpkg", "Cliopatria"),
@@ -60,6 +78,8 @@ sources <- list(
   load_gpkg("us_historical_states.gpkg", "US historical"),
   load_gpkg("brazil_historical_states.gpkg", "Brazil historical"),
   load_gpkg("spain_provinces.gpkg", "Spain provinces"),
+  load_gpkg_layer("histogis/habsburg_cisleithania_transleithania.gpkg",
+                  "HistoGIS Habsburg", layer = "habsburg_halves"),
   load_gpkg("polities_polygons.gpkg", "Main build")
 )
 
