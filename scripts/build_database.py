@@ -123,6 +123,12 @@ class SourceReader:
         else:
             fid_val = str(feature_id)
 
+        # Collect all features that match the id (and temporal window),
+        # then break ties by preferring the feature whose start-year equals
+        # the queried year. This disambiguates cases like CShapes where two
+        # adjacent time-steps share a boundary year (e.g. gwcode 380 has
+        # both 1886-1905 and 1905-2019; for year=1905 we want the 1905-one).
+        candidates = []
         lyr.ResetReading()
         for feat in lyr:
             v = feat.GetField(id_col)
@@ -138,12 +144,12 @@ class SourceReader:
                 if str(v) != fid_val:
                     continue
 
+            s_year = e_year = None
             if temporal is not None and feature_year is not None:
                 s = feat.GetField(temporal["start_column"])
                 e = feat.GetField(temporal["end_column"])
                 if s is None or e is None:
                     continue
-                # Allow date strings: take the year prefix.
                 s_year = int(str(s)[:4])
                 e_year = int(str(e)[:4])
                 match = temporal.get("match_year", "within")
@@ -153,8 +159,16 @@ class SourceReader:
                 elif match == "exact_start":
                     if s_year != feature_year:
                         continue
-            return feat.Clone()
-        return None
+            candidates.append((feat.Clone(), s_year))
+
+        if not candidates:
+            return None
+        # Prefer features where start_year == queried year.
+        if feature_year is not None:
+            exact = [f for f, s in candidates if s == feature_year]
+            if exact:
+                return exact[0]
+        return candidates[0][0]
 
 
 # ---------------------------------------------------------------------------
