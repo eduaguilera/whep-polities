@@ -108,10 +108,18 @@ Check, in order:
      account for the parent's territory.
 
 10. **Full rebuild.** Run `bash scripts/rebuild.sh` and inspect the
-    report. This rebuilds `data/final/polities_database.{csv,gpkg}`
-    and `site/polities.{csv,geojson}` + `site/wiki/` in one step, so
-    the derived artifacts always track the current wiki state by the
-    end of a lint run.
+    report. This rebuilds every derived artifact from the wiki in one
+    shot:
+    - `data/final/polities_database.{csv,gpkg}` (master database)
+    - `site/polities.{csv,geojson}` + `site/wiki/` (map + in-browser wiki)
+    - `data/compiled/pre1961/*` → `site/pre1961/*` (agricultural
+      crosslink, incl. the per-item `no_polygon_by_year` lists the
+      site's Data tab shows as "No polygon" — requires Rscript and
+      `data/external/before_1961.csv`; skipped with a warning otherwise)
+
+    Everything must be regenerated at the end of a lint run so the
+    site and downstream consumers match the current wiki state.
+    Points to inspect in the `build_database.py` report:
     - `source not fetched:` lists source slugs whose raw files are
       missing from `data/geodata/`. This isn't a wiki bug — flag for
       the human to run the matching `scripts/sources/<slug>/fetch.*`.
@@ -125,6 +133,20 @@ Check, in order:
       changed upstream. Must-fix after investigation.
     - Count wiki pages with `polygon_status: assigned` vs pages where
       the builder actually attached geometry. Any drop is a data bug.
+
+    Points to inspect for the pre-1961 crosslink:
+    - `[polygon] N matched polity codes have NO polygon` — each code
+      in this list will appear in the site's "No polygon" UI panel.
+      Verify each is genuinely missing geometry (its wiki page has
+      `polygon_status: missing` or `excluded`). If any code in the
+      list has `polygon_status: assigned` in wiki frontmatter, the
+      pipelines are inconsistent — either rebuild is stale or the
+      builder silently dropped the polygon; investigate before
+      reporting the lint as green.
+    - If R isn't installed on the machine, the pre-1961 step is
+      skipped. That's acceptable for a lint run but must be mentioned
+      in the report so the user knows `site/pre1961/*` wasn't
+      verified against the current wiki.
 
 11. **Polygon frontmatter completeness.** Every polity page's YAML
     frontmatter must contain the polygon binding fields

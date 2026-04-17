@@ -25,9 +25,15 @@ echo "Building site/ from wiki + master GeoPackage..."
 cp "$DB_CSV" "$SITE_DIR/polities.csv"
 echo "  $(wc -l < "$SITE_DIR/polities.csv") rows → site/polities.csv"
 
-# 2) Convert the master GeoPackage to simplified GeoJSON. Fix antimeridian
-#    for polygons crossing ±180° (CShapes Russia / USA).
-ogr2ogr -f GeoJSON /tmp/polities_raw.geojson "$GPKG" -simplify 0.01 -lco RFC7946=YES 2>/dev/null
+# 2) Convert the master GeoPackage to GeoJSON. Avoid two pitfalls:
+#    * The master is already simplified by scripts/build_database.py, so
+#      chaining another -simplify here would degrade small features into
+#      GeometryCollections.
+#    * RFC7946's ring-winding enforcement can rewrite degenerate rings as
+#      LineStrings and wrap the feature in a GeometryCollection. Skip it.
+#    Antimeridian crossings (CShapes Russia / USA) are handled by the
+#    Python block below.
+ogr2ogr -f GeoJSON /tmp/polities_raw.geojson "$GPKG" 2>/dev/null
 
 python3 - "$SITE_DIR" << 'PYEOF'
 import json, sys
@@ -52,9 +58,13 @@ with open('/tmp/polities_raw.geojson') as f:
     data = json.load(f)
 
 kept = []
+dropped = []
 for feat in data['features']:
     g = feat.get('geometry')
-    if not g or g.get('type') not in ('Polygon', 'MultiPolygon'):
+    if not g:
+        continue
+    if g.get('type') not in ('Polygon', 'MultiPolygon'):
+        dropped.append((feat['properties'].get('polity_code'), g.get('type')))
         continue
 
     # Fix antimeridian-spanning single polygons (e.g. Russia, USA).
@@ -94,6 +104,10 @@ data['features'] = kept
 with open(f"{site_dir}/polities.geojson", 'w') as f:
     json.dump(data, f)
 print(f"  {len(kept)} features → site/polities.geojson")
+if dropped:
+    print(f"  WARN: dropped {len(dropped)} non-polygonal geometries:")
+    for pc, t in dropped[:10]:
+        print(f"    {pc}: {t}")
 PYEOF
 
 # 3) Copy pre-1961 crosslink outputs if present.
