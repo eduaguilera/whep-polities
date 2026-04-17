@@ -41,17 +41,28 @@ sources:
       end_column: To
       match_year: within
 
-  gadm-4.1:
-    url: https://geodata.ucdavis.edu/gadm/gadm4.1/gadm_410-levels.gpkg
-    file: data/geodata/gadm-4.1/gadm_410-levels.gpkg
-    layer: ADM_0
-    id_column: GID_0
+  # GADM 4.1 split by admin level. Fetch script builds both per-level
+  # combined GeoPackages by dowloading per-country files (cheaper than
+  # the 1.4 GB world file) and selecting only the countries cited in
+  # the wiki.
+  gadm-4.1-adm0:
+    url: https://gadm.org/
+    file: data/geodata/gadm-4.1/gadm41_adm0.gpkg
+    layer: polygons
+    id_column: GID_0          # ISO3 country code
+    id_type: str
+
+  gadm-4.1-adm1:
+    url: https://gadm.org/
+    file: data/geodata/gadm-4.1/gadm41_adm1.gpkg
+    layer: polygons
+    id_column: GID_1          # e.g. "ESP.6_1" (Canarias)
     id_type: str
 
   gadm-3.6:
-    # Discontinued by GADM. The R-pipeline legacy CSV references it for
-    # ~216 subnational entries. Follow-up session: decide whether to
-    # remap these onto gadm-4.1 or fetch the GADM 3.6 archive.
+    # GADM 3.6 was used by the old R pipeline for ~216 subnational
+    # entries that don't yet have wiki pages. Not needed until those
+    # pages exist — keep this entry as a placeholder.
     url: https://biogeo.ucdavis.edu/data/gadm3.6/gadm36_levels_gpkg.zip
     file: data/geodata/gadm-3.6/gadm36_levels.gpkg
     layer: level1
