@@ -29,6 +29,15 @@ polygon_feature_id: ""
 polygon_feature_year: null
 polygon_status: missing
 polygon_area_km2: null
+
+# Chain links (read by scripts/build_database.py; used by the site's
+# Graph tab to build predecessor/successor edges). Lists of UPPERCASE
+# polity_codes — use [] for 'none'. Every code listed here should also
+# have its own wiki page. The ## Predecessors and successors prose
+# section below documents the *nature* of each transition; these fields
+# are the machine-readable references.
+predecessor: []
+successor: []
 ---
 
 # <polity_name>

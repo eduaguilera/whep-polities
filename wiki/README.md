@@ -104,12 +104,19 @@ source files on disk.
   (e.g. `cshapes-2.0`, `gadm-4.1`, `paine-2024`, `histogis-1860-habsburg`,
   `cliopatria`, `constructed`, `none`).
 - `polygon_feature_id` — value to match against the source's declared
-  `id_column` (e.g. cowcode `305` for CShapes, `AUT` for GADM, `Asante`
+  `id_column` (e.g. gwcode `305` for CShapes, `AUT` for GADM, `Asante`
   for Paine).
 - `polygon_feature_year` — only for sources with a `temporal` block in
   `sources.yaml`; picks a specific time-step.
 - `polygon_status` — `assigned` | `proxy` | `missing` | `excluded`.
 - `polygon_area_km2` — optional sanity-check.
+- `predecessor`, `successor` — YAML lists of UPPERCASE `polity_code`s
+  (`[]` for none). Drives the site's Graph tab edges and the coverage-
+  chain integrity checks in lint. Every code listed here should also
+  have its own wiki page; lint flags orphan references. The
+  `## Predecessors and successors` prose section documents the *nature*
+  of each transition (treaty, annexation, dissolution, etc.); the
+  frontmatter is the machine-readable reference.
 
 **Source data (`data/geodata/<slug>/`) is never committed.** Each source
 has a fetch script under `scripts/sources/<slug>/fetch.{sh,R}` that

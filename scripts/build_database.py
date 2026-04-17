@@ -28,6 +28,7 @@ size is controlled by the simplification step (--simplify-tolerance).
 
 from __future__ import annotations
 import argparse
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -194,6 +195,8 @@ CSV_COLUMN_TO_FM_KEY = {
     "polygon_feature_year": "polygon_feature_year",
     "polygon_status":       "polygon_status",
     "polygon_area_km2":     "polygon_area_km2",
+    "predecessor":          "predecessor",
+    "successor":            "successor",
 }
 CSV_COLUMNS = list(CSV_COLUMN_TO_FM_KEY.keys())
 

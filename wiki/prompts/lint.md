@@ -88,6 +88,16 @@ Check, in order:
        assigned`.
      - `polygon_status: missing` with no prose justification in
        `## Territorial extent`.
+   - **Chain frontmatter issues:**
+     - `predecessor` or `successor` referencing a polity_code that
+       doesn't exist in the wiki (orphan reference).
+     - `predecessor` or `successor` referencing the page's own
+       polity_code (self-loop).
+     - `predecessor` is `[]` but `start_year > 1800` (where did the
+       territory come from?).
+     - `successor` is `[]` but `end_year < 2025` (where did it go?).
+     - Links in the `## Predecessors and successors` prose that aren't
+       reflected in the frontmatter list (drift).
 
    For each finding: list the specific `polity_code`(s), explain
    the oddity in one sentence, and recommend a `proposal`-kind
