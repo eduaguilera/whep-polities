@@ -53,9 +53,15 @@ ASSIGNMENTS = {
 }
 
 def reproject_to_wgs84(geom, src_srs):
+    # Force traditional GIS axis order (lon, lat) for both source and target.
+    # Without this, EPSG:4326 uses authority-compliant (lat, lon) which
+    # produces swapped coordinates when read by most GIS tools (including R sf).
+    src_srs_trad = src_srs.Clone()
+    src_srs_trad.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
     tgt_srs = osr.SpatialReference()
     tgt_srs.ImportFromEPSG(4326)
-    transform = osr.CoordinateTransformation(src_srs, tgt_srs)
+    tgt_srs.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+    transform = osr.CoordinateTransformation(src_srs_trad, tgt_srs)
     geom.Transform(transform)
     return geom
 
@@ -110,6 +116,7 @@ def main():
     out_ds = gpkg_drv.CreateDataSource(OUT_GPKG)
     wgs84 = osr.SpatialReference()
     wgs84.ImportFromEPSG(4326)
+    wgs84.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
 
     layer = out_ds.CreateLayer("habsburg_halves", wgs84, ogr.wkbMultiPolygon)
     layer.CreateField(ogr.FieldDefn("polity_code", ogr.OFTString))

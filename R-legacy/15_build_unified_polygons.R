@@ -64,9 +64,12 @@ load_gpkg_layer <- function(filename, label, layer = NULL) {
     st_read(path, layer = layer, quiet = TRUE)
   sf <- sf[, "polity_code"]
   sf <- st_set_crs(sf, 4326)
-  # Rename geometry column to "geometry" if needed
+  # Rename geometry column to "geometry" if needed (GDAL GPKGs use "geom")
   geom_col <- attr(sf, "sf_column")
-  if (geom_col != "geometry") sf <- st_rename_geometry(sf, "geometry")
+  if (geom_col != "geometry") {
+    names(sf)[names(sf) == geom_col] <- "geometry"
+    st_geometry(sf) <- "geometry"
+  }
   cat(sprintf("  %s: %d polygons (%s)\n", label, nrow(sf), filename))
   sf
 }
