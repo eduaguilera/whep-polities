@@ -44,8 +44,15 @@ bash scripts/sources/gadm-4.1/fetch.sh
 bash scripts/rebuild.sh
 ```
 
-`scripts/rebuild.sh` is a thin wrapper that runs
-`python3 scripts/build_database.py` then `bash site/build_wiki.sh`.
+`scripts/rebuild.sh` wraps the full pipeline: it runs
+`python3 scripts/build_database.py`, then `bash site/build_wiki.sh`,
+then (if `Rscript` + `data/external/before_1961.csv` are available)
+`Rscript pipelines/pre1961-matching/match.R` to refresh the pre-1961
+agricultural crosslink against the just-built `site/polities.geojson`,
+then re-propagates the refreshed `data/compiled/pre1961/` into
+`site/pre1961/`. If R isn't installed it skips the pre-1961 step and
+warns.
+
 You don't have to run the fetches if you only want to consume the committed `data/final/polities_database.gpkg` — it's self-contained.
 
 ## Layout
