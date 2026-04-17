@@ -51,15 +51,43 @@ def _cshapes2_feature(gwcode: int, year: int) -> ogr.Geometry:
     raise LookupError(f"CShapes 2.0 has no feature for gwcode={gwcode}, year={year}")
 
 
+def _union(*geoms: ogr.Geometry) -> ogr.Geometry:
+    acc = geoms[0].Clone()
+    for g in geoms[1:]:
+        acc = acc.Union(g)
+    if acc.GetGeometryType() != ogr.wkbMultiPolygon:
+        acc = ogr.ForceToMultiPolygon(acc)
+    return acc
+
+
 def build_deu_1945_1949() -> ogr.Geometry:
     """Allied-occupied Germany = West (gwcode 260) ∪ East (gwcode 265)
     for 1945-1949."""
-    west = _cshapes2_feature(260, 1945)
-    east = _cshapes2_feature(265, 1945)
-    union = west.Union(east)
-    if union.GetGeometryType() != ogr.wkbMultiPolygon:
-        union = ogr.ForceToMultiPolygon(union)
-    return union
+    return _union(_cshapes2_feature(260, 1945),
+                  _cshapes2_feature(265, 1945))
+
+
+def build_jpn_1895_1945() -> ogr.Geometry:
+    """Japanese Empire 1895-1945 = Japan metropole ∪ Taiwan ∪ Korea peninsula.
+    CShapes 2.0 has no pre-1945 Korea feature, so we approximate with the
+    post-1945 North Korea (gwcode 731) + South Korea (gwcode 732) polygons
+    which together cover the peninsula. Does NOT include Manchukuo (not in
+    CShapes 2.0) or southern Sakhalin."""
+    return _union(
+        _cshapes2_feature(740, 1895),   # Japan metropole
+        _cshapes2_feature(713, 1895),   # Taiwan
+        _cshapes2_feature(731, 1945),   # North Korea (post-liberation polygon)
+        _cshapes2_feature(732, 1945),   # South Korea
+    )
+
+
+def build_kor_1800_1945() -> ogr.Geometry:
+    """Korea before independence 1800-1945 = North Korea (gwcode 731)
+    ∪ South Korea (gwcode 732), post-1945 polygons. Same territorial
+    extent as the unified Korean peninsula throughout 1800-1945 (Korean
+    Empire then Japanese colony Chōsen)."""
+    return _union(_cshapes2_feature(731, 1945),
+                  _cshapes2_feature(732, 1945))
 
 
 # (polity_code, polity_name, builder-callable, provenance note)
@@ -72,6 +100,27 @@ BUILDERS = [
         "gwcode 265 (Soviet zone / GDR) for 1945-1949. CShapes records "
         "the two zones as separate features; the WHEP row refers to the "
         "combined Allied-occupied territory.",
+    ),
+    (
+        "JPN-1895-1945",
+        "Japanese Empire",
+        build_jpn_1895_1945,
+        "Partial union of CShapes 2.0 features: Japan metropole (740), "
+        "Taiwan (713, 1895-1945), and the combined Korean peninsula using "
+        "post-1945 North Korea (731) + South Korea (732) as a proxy for "
+        "colonial-era Chōsen. Does NOT include Manchukuo or S. Sakhalin — "
+        "neither is present in CShapes 2.0. Captures ~95% of the Empire's "
+        "population base and the bulk of its agricultural territory.",
+    ),
+    (
+        "KOR-1800-1945",
+        "Korea (to 1945)",
+        build_kor_1800_1945,
+        "Union of CShapes 2.0 gwcode 731 (North Korea) and 732 (South "
+        "Korea) using the 1945-onward polygons as a proxy for the unified "
+        "Korean peninsula under the Korean Empire (1800-1910) and Japanese "
+        "colonial rule (1910-1945). The peninsula's boundaries were "
+        "effectively unchanged across this whole period.",
     ),
 ]
 
