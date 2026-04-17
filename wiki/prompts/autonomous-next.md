@@ -16,10 +16,11 @@ You are maintaining the WHEP polities wiki in autonomous mode. Read
 (complete spatiotemporal coverage — every km², every year, no gaps),
 and the **dual-renderer rule** (GitHub + Obsidian).
 
-**The wiki is the primary source of truth.** It is built on cited
-academic sources and drives corrections to the CSV, not the reverse.
-When sourced findings contradict the CSV, file `proposal`-kind log
-entries. The CSV conforms to the wiki, not the wiki to the CSV.
+**The wiki is the primary source of truth.** The CSV and GeoPackage
+under `data/final/` are derived artifacts rebuilt by
+`scripts/build_database.py` from wiki frontmatter. Never hand-edit them.
+When a derived artifact looks inconsistent with the wiki, the fix is
+almost always to re-run the builder, not to edit the output.
 
 Key link rules:
 no `<a id>` HTML anchors, no reference-style link definitions (use
@@ -52,9 +53,9 @@ tool calls now prevent bad decisions later. Record at least:
    wiki has proposed to the CSV or the R pipeline that a human has
    not applied yet. They are a drift signal if they accumulate.
 5. **CSV ↔ wiki parity snapshot:** `wc -l data/final/polities_database.csv`
-   minus 1 for the header. Compare against the polity-page count and
-   the `Polities in CSV` line in `wiki/index.md`. Does
-   `wiki/index.md` match reality? If not, note for phase 2.
+   minus 1 for the header. It should equal the polity-page count (the
+   CSV is regenerated from the wiki). Drift means the build wasn't
+   re-run — note for phase 2.
 6. **PDFs on disk:** `ls wiki/sources/pdfs/` vs the `pdf_local:`
    frontmatter fields in existing source files. Unused PDFs are an
    opportunity; source files pointing at missing PDFs are a
@@ -62,16 +63,16 @@ tool calls now prevent bad decisions later. Record at least:
 7. **Dangling polity refs:** grep for
    `<!-- TODO: page not yet created -->` across polity pages. These
    are concrete candidates for new polity pages.
-8. **CSV oddities** (critical-stance audit, see `wiki/README.md`).
-   Scan the CSV for row labels that contradict their time range,
-   overlapping rows, orphan rows, missing-entity-row gaps, and
-   `notes = NA` on rows whose siblings have content. Do not
-   rationalize findings. Each finding is either (a) already
-   documented in `docs/` or `wiki/log.md` with a rationale and you
-   cite that, or (b) undocumented and becomes a `proposal`-kind
-   entry for human review. The Russian Empire / USSR labeling
-   issue in `F228-1905-1914` is a canonical example of the kind
-   of thing this step catches.
+8. **Wiki oddities** (critical-stance audit, see `wiki/README.md`).
+   Scan wiki frontmatter for page labels that contradict their time
+   range, overlapping date ranges within the same entity chain, orphan
+   pages, missing-entity-page gaps, and pages whose polygon frontmatter
+   is incomplete (`polygon_source: none` with no justification in the
+   prose, or a `polygon_source` slug that isn't registered in
+   `scripts/sources.yaml`). Do not rationalize findings. Each is either
+   (a) already documented in `wiki/log.md` with a rationale and you
+   cite that, or (b) undocumented and becomes a `proposal`-kind entry
+   for human review.
 
 Write the inventory to your own working memory, not to a file. It's
 an input to phase 2, not a deliverable.
@@ -94,7 +95,8 @@ Examples of what qualifies:
   Biger was already on disk after the Luxembourg ingest; applying
   it to Tunisia took one read of p.28 and one polity-page edit.)
 - A question that a **single CLI command** can answer: `ogrinfo`
-  SQL queries on `cshapes2_full.gpkg`, `grep` on a CSV column,
+  SQL queries on `data/geodata/cshapes-2.0/CShapes-2.0.shp` (or another
+  fetched source under `data/geodata/`), `grep` on a CSV column,
   `awk` on a COW statelist, etc.
 - A question the `lint` prompt would handle (typos, broken internal
   references, stale counters in `wiki/index.md`).
@@ -102,13 +104,12 @@ Examples of what qualifies:
   a commit message, log entry, or source file and just needs to be
   pulled into the polity page's *Sourced claims* or *Open questions*
   resolution marker.
-- **A CSV oddity that a single `proposal`-kind log entry can
-  document.** The Russian Empire / USSR labeling issue, the
-  `TUR-1800-1912` duplication, the missing Prussia row, the
-  DEU/GER overlap — each of these should become a proposal entry
-  the moment it's discovered in a phase 1 inventory. These are
-  never "decisions to surface"; they are candidate bugs to
-  document. Do not attempt to fix the CSV itself.
+- **A wiki oddity that a single `proposal`-kind log entry can
+  document.** Labeling mismatches, date-range overlaps in the same
+  entity chain, missing predecessor/successor targets, incomplete
+  polygon frontmatter — each of these should become a proposal entry
+  the moment it's discovered in a phase 1 inventory. These are never
+  "decisions to surface"; they are candidate bugs to document.
 
 ### Tier 2 — Source expansion
 
@@ -144,20 +145,20 @@ The CSV is a downstream artifact of the wiki's research.
 Questions or structural gaps that resolve by creating a new polity
 page from `_template.md`.
 
-- A CSV row with no wiki page whose polity code is referenced by
-  multiple existing pages as predecessor / successor / contradiction
-  subject. Count how many existing pages cite it — that is the
-  tiebreaker.
+- A polity code referenced by multiple existing pages as predecessor /
+  successor / contradiction subject but lacking its own wiki page.
+  Count how many existing pages cite it — that is the tiebreaker.
 - A dangling `[slug]` reference with a `<!-- TODO: page not yet
   created -->` marker and at least one citing page.
 
-**Every new page must document its polygon decision** in
-`## Territorial extent` (see `_template.md` and the polygon
-documentation gate in `ingest.md`). If a proxy polygon was copied
-from another period, state which one and why it's valid. If a
-proxy was deliberately rejected, state why with km² comparisons.
-If no polygon is available at all, say so. Boilerplate like
-"No polygon assigned yet" without reasoning is unacceptable.
+**Every new page must set its polygon frontmatter** (`polygon_source`,
+`polygon_feature_id`, `polygon_feature_year` if temporal,
+`polygon_status`) and back it up with prose in `## Territorial extent`
+(see `_template.md` and the polygon binding gate in `ingest.md`).
+If the source slug isn't yet in `scripts/sources.yaml`, adding it
+qualifies as a script change — bump to Tier X or pair with a matching
+script-update commit. If no polygon is available, set
+`polygon_status: missing` and justify in prose.
 
 ### Tier 4 — Deep work
 
@@ -177,20 +178,16 @@ next-highest-priority question is in Tier X, **skip it** and move on
 to the next one (logging the skip in the iteration report).
 
 - Questions tagged as `decision`-kind in their own text or whose
-  resolution requires a repo-rule choice only a human can make
-  (examples in the current wiki: `oq-1886-split-is-polygon-not-territory`
-  on `ott-1800-1886`; `oq-1912-1920-gap` and the "grace period" part
-  of `oq-libya-mid-row-change` on `ott-1908-1912`).
+  resolution requires a repo-rule choice only a human can make.
 - Questions whose resolution requires a closed-access source the
   agent cannot download (paywalled PDFs without institutional auth;
   archival material).
-- Questions that require editing `data/final/polities_database.csv`
-  (e.g. the `TUR-1800-1912` duplication proposal).
-- Questions that require editing `R/` pipeline code when the user
-  has previously indicated the R environment is not in a known-good
-  state.
-- Anything that touches `renv.lock`, `.gitignore`, or
-  `wiki/README.md`.
+- Questions that require changes to `scripts/build_database.py`,
+  `scripts/sources.yaml`, or any fetch script under
+  `scripts/sources/`. Edits to the build pipeline are human work
+  (autonomous mode can still *propose* them in a log entry).
+- Anything that touches `renv.lock`, `.gitignore`,
+  `wiki/README.md`, or `wiki/prompts/*`.
 
 ## Phase 3 — Pick ONE task
 
@@ -266,7 +263,7 @@ next iteration and return to phase 1.
 Non-negotiable. If any of these hold after an iteration, stop:
 
 1. **Priority exhausted.** Every remaining open question is in
-   Tier X (decision-kind / missing source / CSV edit / R-pipeline /
+   Tier X (decision-kind / missing source / pipeline edit /
    closed-access). The wiki has nothing left the loop can do
    without user input.
 2. **Iteration cap.** The loop has run for `max_iterations` cycles
@@ -344,8 +341,10 @@ changes; new open questions created>
 The following are never done autonomously, no matter how the
 priority ranking ends up. This list overrides phase 3.
 
-- The agent may edit `data/final/polities_database.csv` to apply
-  sourced wiki findings. Log each CSV change in `log.md`.
+- The agent never hand-edits `data/final/polities_database.csv` or
+  `data/final/polities_database.gpkg`. Apply sourced wiki findings by
+  editing wiki frontmatter/body and re-running
+  `scripts/build_database.py`; log each rebuild in `log.md`.
 - No `decision`-kind log entries that establish a repo-wide rule.
   The agent may *draft* a decision and surface it in the iteration
   report, but the entry must be added by a human with the

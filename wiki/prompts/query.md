@@ -12,13 +12,13 @@ dual-renderer rule (GitHub + Obsidian — inline links only,
 no reference-style defs).
 
 **The wiki is the primary source of truth.** When answering questions,
-trust the wiki's sourced claims over the CSV. If the CSV contradicts
-a sourced wiki claim, the CSV is the one that needs updating.
+trust the wiki's sourced claims over the CSV — the CSV is a derived
+artifact rebuilt from the wiki. If the two disagree, re-running
+`scripts/build_database.py` will usually reconcile them.
 
 1. **Scope the question.** Identify which polity pages, source files,
-   and log entries are relevant. Prefer `wiki/polities/` and
-   `wiki/sources/` over `docs/` — `docs/` is methodology, the wiki is
-   evidence.
+   and log entries are relevant. All evidence lives in `wiki/polities/`
+   and `wiki/sources/`.
 
 2. **Synthesize from sourced claims only.** Every factual sentence in
    your answer must trace to a `[source-slug §...]` or `[database]`

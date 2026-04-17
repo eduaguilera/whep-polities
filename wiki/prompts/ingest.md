@@ -35,18 +35,19 @@ Then:
    source itself.
 
 2. **Identify affected polity pages.** From the source, list the
-   polity codes whose pages should be updated. Cross-check against
-   `data/final/polities_database.csv`. If the source establishes that
-   a polity existed (with sourced territorial extent and dates) but
-   the CSV has no matching row, **create both the wiki page and the
-   CSV row** — the wiki drives the CSV, not the reverse. Log the new
-   row in `log.md`. If the source's dates or chain structure contradict
-   the CSV's existing rows, the source wins: split, merge, or rename
-   CSV rows to match the sourced findings and log each change.
+   polity codes whose pages should be updated. The CSV at
+   `data/final/polities_database.csv` is a **derived artifact** rebuilt
+   by `scripts/build_database.py` from the wiki's frontmatter — never
+   hand-edit it. If the source establishes a polity that has no wiki
+   page yet, create the page and re-run the builder. If the source's
+   dates or chain structure contradict an existing wiki page, the source
+   wins: update the page, rename/split/merge as needed, and log each
+   change in `log.md`.
 
-   While you are cross-checking the CSV, **audit the rows you are
-   about to cite**. Under the critical-stance rule in `wiki/README.md`,
-   the CSV is evidence, not authority. Watch for:
+   While you are cross-checking against the current CSV, **audit the
+   rows you are about to cite**. Under the critical-stance rule in
+   `wiki/README.md`, any derived artifact is evidence, not authority.
+   Watch for:
 
    - Row labels that contradict their time range (e.g.
      `F228-1905-1914 USSR (1905-1914)` — the USSR did not exist
@@ -60,12 +61,11 @@ Then:
      source.
    - `notes = NA` on rows where your source has substantive content.
 
-   For each audit finding: check `docs/` and `wiki/log.md` for a
-   prior rationale. If you find one, cite it. If you don't, add a
-   `proposal`-kind log entry before proceeding with the ingest. Do
-   not rationalize the finding in the polity page body — hedge
-   explicitly that the CSV labeling is suspect and flag the proposal
-   by slug.
+   For each audit finding: check `wiki/log.md` for a prior rationale.
+   If you find one, cite it. If you don't, add a `proposal`-kind log
+   entry before proceeding with the ingest. Do not rationalize the
+   finding in the polity page body — hedge explicitly that the labeling
+   is suspect and flag the proposal by slug.
 
 3. **Check predecessor/successor completeness.** For every polity
    page you create or update, verify that its predecessors and
@@ -93,40 +93,69 @@ Then:
 6. **Update `wiki/index.md`** if any new polity pages were created or
    the source list changed.
 
-7. **Rebuild the visualization site** if the CSV was edited: run
-   `bash site/build.sh` from the project root. This updates
-   `site/polities.csv` and `site/polities.geojson`.
+7. **Rebuild derived artifacts** if any frontmatter was edited:
+   ```bash
+   python3 scripts/build_database.py   # wiki → data/final/polities_database.{csv,gpkg}
+   bash site/build_wiki.sh             # → site/polities.{csv,geojson} + site/wiki/
+   ```
+   If a polity page cites a `polygon_source` whose raw file isn't on
+   disk yet, first run the matching `scripts/sources/<slug>/fetch.*`.
+   The builder logs missing sources/features but doesn't abort.
 
 **Quality gate:** Every polity page must contain at least one sourced
 claim from an external source beyond `[database]`. Never bulk-generate
 pages from CSV metadata alone — that creates empty shells that violate
 the wiki's role as the primary source of truth.
 
-**Polygon documentation gate:** Every polity page must document its
-polygon status in `## Territorial extent` following the template in
-`_template.md`. This means:
+**Polygon binding gate:** Every polity page has two coupled pieces
+of polygon information — machine-readable frontmatter (consumed by
+`scripts/build_database.py`) and human-readable prose (in
+`## Territorial extent`). Both must be kept in sync. See
+`wiki/polities/_template.md` for the exact field list and
+`wiki/README.md` → "Polygon workflow" for semantics.
 
-1. **State the polygon source or proxy explicitly.** If a polygon was
-   copied from another period of the same polity (e.g., using the
-   post-independence boundary for the pre-independence entity because
-   territory was unchanged), say so with a justification.
-2. **If a proxy was deliberately NOT copied**, explain why with
-   territory size comparisons (e.g., "post-Trianon Hungary is ~93k km²
-   vs Transleithania ~325k km² — a 71% loss"). This prevents future
-   maintainers from "helpfully" copying an incorrect polygon.
-3. **State "Why this entry exists"** — what data drove its creation,
-   what the data was previously matched to (and why that was wrong),
-   and what external source (e.g., Federico-Tena trading polities)
-   confirms the entity was distinct. This is mandatory for every new
-   polity page, not optional context.
+**Frontmatter fields** (required on every page):
+```yaml
+polygon_source:       <slug registered in scripts/sources.yaml, or `none`>
+polygon_feature_id:   <value matching that source's id_column>
+polygon_feature_year: <int, only if the source has a temporal block>
+polygon_status:       assigned | proxy | missing | excluded
+polygon_area_km2:     <int, optional; ETRS89 LAEA for Europe, equivalent equal-area elsewhere>
+```
+
+If `polygon_source` names a slug that isn't in `sources.yaml`, the
+ingest must add the source first (new `scripts/sources.yaml` entry +
+`scripts/sources/<slug>/fetch.{sh,R}` + description on the page's
+source). That kind of change is script-editing work — treat it as a
+script update, not a wiki-only ingest, and include it in the same
+commit.
+
+**Prose in `## Territorial extent`** must back up the frontmatter with:
+
+1. **Which features are included**, and **which were deliberately
+   excluded** (and why). For dissolve-style sources like
+   `histogis-1860-habsburg`, enumerate the crownlands.
+2. **If a proxy was deliberately NOT used**, explain why with km²
+   numbers showing the territory mismatch (e.g., "post-Trianon Hungary
+   is ~93k km² vs Transleithania ~325k km² — a 71% loss"). Prevents
+   a future maintainer from "helpfully" copying the wrong polygon.
+3. **"Why this entry exists"** — what data drove its creation, what it
+   was previously matched to and why that was wrong, and what external
+   source confirms the entity was distinct.
 
 Boilerplate like "No polygon assigned yet" without reasoning is
-unacceptable. The wiki must record *decisions*, not just *status*.
+unacceptable; prefer `polygon_status: missing` in frontmatter plus a
+prose paragraph explaining the gap. The wiki must record *decisions*,
+not just *status*.
 
 **Chain restructure methodology** (for umbrella rows and legacy chains):
-1. Query CShapes for the polity's time-steps (`ogrinfo -sql` on
-   `cshapes2_full.gpkg` by cowcode). This gives exact dates and areas
-   for every boundary change.
+1. Fetch CShapes 2.0 if not on disk:
+   `bash scripts/sources/cshapes-2.0/fetch.sh`. Then query for the
+   polity's time-steps:
+   `ogrinfo -sql "SELECT gwcode,gwsyear,gweyear,cntry_name,area FROM \"CShapes-2.0\" WHERE gwcode=<N>" data/geodata/cshapes-2.0/CShapes-2.0.shp`.
+   This gives exact dates and areas for every boundary change.
+   (CShapes 2.0 uses Gleditsch-Ward codes only; for most countries
+   G-W == COW, but verify when they differ.)
 2. Cross-reference with Biger (already ingested) for historical context,
    treaty names, and boundary descriptions.
 3. Fetch Wikipedia for exact dates CShapes or Biger don't provide.
@@ -134,22 +163,25 @@ unacceptable. The wiki must record *decisions*, not just *status*.
 4. Build the chain from sourced findings: split only at real territorial
    changes (area changes in CShapes), not at regime changes (same area).
    Merge administrative CShapes splits that show no area change. If all
-   CShapes time-steps have the same `ST_Area(geom)` and the polity
-   existed continuously, the correct result is **one row** for the
-   entire period — regardless of how many CShapes entries exist.
+   CShapes time-steps have the same area and the polity existed
+   continuously, the correct result is **one row** for the entire
+   period — regardless of how many CShapes entries exist.
 5. **No overlapping rows.** Never create an "umbrella" row alongside
    sub-rows. Every km² belongs to exactly one row for any given year.
    If the sub-chain doesn't cover the full period, either extend a
    sub-row or create a new row for the gap — do not keep a broad
    umbrella row that overlaps.
-6. Delete old CSV rows (umbrella + legacy sub-rows), create new rows
-   matching the sourced chain. Update predecessor/successor fields.
-7. Create wiki pages for each new row. Delete old pages.
+6. Create/modify wiki pages for each row in the new chain. Set
+   `polygon_feature_id` to the matching gwcode and `polygon_feature_year`
+   to the CShapes time-step's `gwsyear`. Update predecessor/successor
+   frontmatter and prose. Delete obsolete pages.
+7. Rerun `python3 scripts/build_database.py` to propagate the chain
+   through to `data/final/polities_database.{csv,gpkg}`.
 
 **Constraints:**
-- The agent maintains `data/final/polities_database.csv` directly when
-  the wiki's sourced findings require changes. Log each CSV edit in
-  `log.md`.
+- `data/final/polities_database.csv` is **never hand-edited** — it is
+  regenerated by `scripts/build_database.py` from the wiki. Drive
+  changes by editing wiki frontmatter/body and rerunning the builder.
 - Never invent a citation. If a claim has no source, mark it `[database]`
   or move it to *Open questions*.
 - Sources are immutable. If the source itself is wrong, add a new source

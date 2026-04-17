@@ -9,10 +9,10 @@ You are linting the WHEP polities wiki. Read `wiki/README.md` for the
 schema, the coverage goal, and the dual-renderer rule (GitHub +
 Obsidian).
 
-**The wiki is the primary source of truth.** The CSV must conform to
-the wiki's sourced findings. Lint should flag CSV values that
-contradict sourced wiki claims as `proposal`-kind audit findings,
-not as wiki errors to fix.
+**The wiki is the primary source of truth.** The CSV and GeoPackage
+under `data/final/` are derived artifacts rebuilt by
+`scripts/build_database.py`. Lint never hand-edits them; if they drift
+from the wiki, the fix is to re-run the builder, which lint may do.
 
 Walk the whole `wiki/` tree and produce a report.
 
@@ -22,12 +22,13 @@ Check, in order:
    `_template.md` and `_aggregates/`) must have the required
    frontmatter fields and the required H2 sections. List violations.
 
-2. **CSV ↔ wiki parity.**
-   - For every `polity_code` in `data/final/polities_database.csv`,
-     is there a matching `wiki/polities/<slug>.md`? List missing pages.
-   - For every polity page, does the `polity_code` still appear in
-     the CSV? List orphans (the CSV row may have been removed,
-     renamed, or merged — each orphan needs human review).
+2. **CSV ↔ wiki parity.** The CSV is regenerated from the wiki, so
+   perfect parity is the expected state.
+   - If `wc -l data/final/polities_database.csv` minus 1 ≠ the count
+     of polity pages, the builder wasn't re-run. Run
+     `python3 scripts/build_database.py` and re-check.
+   - If any `polity_code` appears in only one side after a rebuild,
+     that's an actual bug — list it for human review.
 
 3. **Citation health.** Every bullet in a *Sourced claims* section
    should end with `[<slug> §...]` or `[database]`. List unsupported
@@ -51,29 +52,29 @@ Check, in order:
    how many polity pages cite it. Zero-citation sources are
    candidates for deletion — flag, do not delete.
 
-8. **CSV oddity detection** (critical-stance audit, see
-   `wiki/README.md`). Scan `data/final/polities_database.csv` for:
-   - **Row labels that contain entity names incompatible with their
-     time range.** Example pattern: the row labeled `USSR
-     (1905-1914)` — USSR did not exist until 1922. Look for entity
-     names (USSR, Yugoslavia, Czechoslovakia, German Democratic
-     Republic, etc.) that appear in row labels or `polity_name`
-     columns with start dates that predate the entity's known
-     founding year.
-   - **Overlapping rows for the same entity.** Group by the
-     three-letter prefix of `polity_code` (or the entity name if
-     distinct prefixes refer to the same entity, like OTT and TUR,
-     or DEU and GER). Flag any overlap in `start_year` / `end_year`
-     ranges.
-   - **Orphan rows** not reached by any predecessor / successor
-     chain. A row whose `predecessor` is `NA`, whose `polity_code`
-     does not appear in any other row's `successor` column, and
-     whose `start_year` is after the database floor of 1800 is
-     suspect.
-   - **Rows with `notes = NA`** where sibling rows in the same
-     entity chain have substantive notes.
-   - **Entities referenced in `predecessor` / `successor` columns
-     that don't exist as rows** in the CSV.
+8. **Wiki oddity detection** (critical-stance audit, see
+   `wiki/README.md`). Scan the wiki's frontmatter and bodies for:
+   - **Page labels with entity names incompatible with their time
+     range.** Example: a page labeled `USSR (1905-1914)` — USSR did
+     not exist until 1922. Look for entity names (USSR, Yugoslavia,
+     Czechoslovakia, GDR, etc.) appearing in `polity_name` with
+     start dates that predate the entity's founding year.
+   - **Overlapping date ranges in the same entity chain.** Group by
+     the three-letter prefix of `polity_code` (or by the entity name
+     where distinct prefixes refer to the same entity — OTT/TUR,
+     DEU/GER). Flag any overlap in `start_year` / `end_year`.
+   - **Orphan pages** not reached by any predecessor / successor
+     chain: `predecessor: NA` AND no other page lists this code as
+     `successor`, AND `start_year > 1800`. Suspect.
+   - **Predecessor / successor references to codes with no wiki page.**
+   - **Polygon frontmatter issues:**
+     - `polygon_source` slug not registered in `scripts/sources.yaml`.
+     - `polygon_feature_year` missing on a page whose source has a
+       `temporal` block in `sources.yaml`.
+     - `polygon_feature_id` missing or empty while `polygon_status:
+       assigned`.
+     - `polygon_status: missing` with no prose justification in
+       `## Territorial extent`.
 
    For each finding: list the specific `polity_code`(s), explain
    the oddity in one sentence, and recommend a `proposal`-kind
@@ -84,52 +85,46 @@ Check, in order:
    - Polity pages whose *Predecessors and successors* section has
      `<!-- TODO: page not yet created -->` dangling refs. Count and
      list them — these represent known gaps in the coverage chain.
-   - Polity pages with `predecessor: NA` whose `start_year` is after
-     1800 (the database floor) — where did the territory come from?
+   - Polity pages with `predecessor: NA` in the prose whose
+     `start_year` is after 1800 (the database floor) — where did the
+     territory come from?
    - Polity pages whose successor is `NA` but whose `end_year` is
      before 2025 — where did the territory go?
    - Dissolution events (e.g. Austria-Hungary, Ottoman Empire, USSR)
      where the sum of successor states' territory does not plausibly
      account for the parent's territory.
-   - CSV rows that are not reachable via any predecessor/successor
-     chain from an existing wiki page.
 
-10. **Polygon validation.** Cross-check the GeoPackage polygons against
-    wiki-sourced area claims. Use `ogrinfo` SQL queries on both
-    `data/final/polities_database.gpkg` and the source GeoPackages
-    (`data/geodata/cshapes2_full.gpkg`, etc.). Check:
-    - **Missing polygons:** rows in the CSV that have no geometry in
-      the GeoPackage (ST_Area returns NULL). Flag these — they won't
-      appear on the map.
-    - **Area consistency:** for CShapes-sourced rows, the GeoPackage
-      polygon area (in sq degrees) should match the CShapes source
-      polygon area exactly. Any mismatch signals a stale GeoPackage.
-    - **Cliopatria antimeridian issues:** Cliopatria polygons for
-      Russia and other transcontinental states may span the
-      antimeridian, producing NULL ST_Area or absurd values. Flag
-      these for manual inspection.
-    - **Area vs wiki km²:** where the wiki documents a km² area from
-      Biger or another source, spot-check that the GeoPackage polygon
-      is in the right ballpark (rough conversion: 1 sq degree ≈
-      8,000-12,000 km² at European latitudes).
-    - **Temporal mismatch:** the GeoPackage stores one polygon per
-      row, but CShapes may have multiple time-steps for the same
-      cowcode. Verify the GeoPackage uses the polygon matching the
-      row's date range, not an adjacent time-step.
+10. **Polygon build sanity.** Run
+    `python3 scripts/build_database.py` and inspect the report:
+    - `source not fetched:` lists source slugs whose raw files are
+      missing from `data/geodata/`. This isn't a wiki bug — flag
+      for human to run the matching `scripts/sources/<slug>/fetch.*`.
+    - `unknown source slug:` points at wiki pages whose
+      `polygon_source` isn't in `scripts/sources.yaml`. Must-fix: either
+      correct the slug or add the source to `sources.yaml` (the latter
+      is script-editing work; log, don't attempt).
+    - `feature not found:` points at wiki pages where the declared
+      `polygon_feature_id` / `polygon_feature_year` doesn't resolve
+      in the raw source. Either the frontmatter is wrong or the source
+      changed upstream. Must-fix after investigation.
+    - Count wiki pages with `polygon_status: assigned` vs pages where
+      the builder actually attached geometry. Any drop is a data bug.
 
-11. **Polygon documentation completeness.** Every polity page must
-    document its polygon status in `## Territorial extent` following
-    the template. Check for:
-    - Pages whose Territorial extent section contains boilerplate like
-      "No polygon assigned yet" or "No polygon" WITHOUT a justification
-      for why no proxy was copied. These are undocumented decisions.
-    - Pages that say a polygon was "Copied from [CODE]" but don't
+11. **Polygon frontmatter completeness.** Every polity page's YAML
+    frontmatter must contain the polygon binding fields
+    (`polygon_source`, `polygon_feature_id`, `polygon_feature_year`,
+    `polygon_status`, `polygon_area_km2`) and the prose in
+    `## Territorial extent` must back them up. Check for:
+    - Pages missing any of the five polygon fields. Frontmatter
+      schema violations — must-fix.
+    - Pages with `polygon_status: assigned` whose
+      `## Territorial extent` has boilerplate like "No polygon"
+      (contradiction — either frontmatter or prose is wrong).
+    - Pages where a proxy polygon is used but the prose doesn't
       explain why the proxy is valid (territory unchanged, etc.).
     - Pages that lack a "Why this entry exists" paragraph entirely.
-    - Pages where a proxy WAS copied in the GeoPackage (the code
-      appears in `polities.geojson`) but the wiki still says "Not yet
-      assigned". These are stale docs — the page must be updated to
-      reflect the actual polygon source.
+    - Pages with `polygon_status: missing` and no prose justifying
+      the gap.
     Flag all of these as must-fix.
 
 12. **Obsidian compatibility.** The wiki must render and navigate
