@@ -82,6 +82,16 @@ def build_deu_1945_1949() -> ogr.Geometry:
                   _cshapes2_feature(265, 1945))
 
 
+def build_deu_1949_1990() -> ogr.Geometry:
+    """Divided Germany 1949-1990 = FRG (gwcode 260) ∪ GDR (gwcode 265),
+    using the post-1949 time-step polygons. Used for input data that
+    reports 'Germany' as a single undifferentiated aggregate for the
+    divided-state period (as all 1949-1961 rows in the WHEP pre-1961
+    dataset do)."""
+    return _union(_cshapes2_feature(260, 1949),
+                  _cshapes2_feature(265, 1949))
+
+
 def build_jpn_1895_1945() -> ogr.Geometry:
     """Japanese Empire 1895-1945 = Japan metropole ∪ Taiwan ∪ Korea peninsula.
     CShapes 2.0 has no pre-1945 Korea feature, so we approximate with the
@@ -126,6 +136,16 @@ BUILDERS = [
         "gwcode 265 (Soviet zone / GDR) for 1945-1949. CShapes records "
         "the two zones as separate features; the WHEP row refers to the "
         "combined Allied-occupied territory.",
+    ),
+    (
+        "DEU-1949-1990",
+        "Germany (divided, 1949-1990)",
+        build_deu_1949_1990,
+        "Union of CShapes 2.0 gwcode 260 (FRG / West Germany) and gwcode "
+        "265 (GDR / East Germany) for 1949-1990. The companion rows "
+        "F77-1949-1990 and F78-1949-1990 carry the two halves separately "
+        "for datasets that distinguish them; this combined row holds "
+        "data reported under a single undifferentiated 'Germany' label.",
     ),
     (
         "JPN-1895-1945",

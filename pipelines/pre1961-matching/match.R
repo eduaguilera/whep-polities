@@ -110,9 +110,12 @@ normalise_iso <- function(iso, year, polity_name = NA_character_) {
   # Czech Republic pre-1993 → Czechoslovakia (F51)
   if (iso == "CZE" && !is.na(y) && y < 1993) return("F51")
 
-  # Germany 1949-1990 → West Germany (F78)
-  # 1946-1948 Allied occupation correctly remains unmatched
-  if (iso == "DEU" && !is.na(y) && y >= 1949 && y < 1990) return("F78")
+  # Germany 1949-1990 stays as DEU (→ DEU-1949-1990, the combined
+  # FRG+GDR statistical aggregate for datasets that report a single
+  # 'Germany' stream). Separate FRG/GDR data (not present in the pre-1961
+  # input) would use iso3c=FRG / DDR and normalise_iso passes those
+  # through unchanged; downstream they match F78 / F77 as before.
+  # 1945-1948 Allied occupation resolves directly to DEU → DEU-1945-1949.
 
   # Russia/USSR pre-1991 → Russian Empire/USSR chain (F228)
   if (iso == "RUS" && !is.na(y) && y < 1991) return("F228")
