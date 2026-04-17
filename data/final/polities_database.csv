@@ -152,6 +152,7 @@ ESH-1958-1975,Western Sahara (1958-1975),1958,1975,national,ESH,NA,,draft,2026-0
 ESH-1975-2025,Western Sahara,1975,2025,national,ESH,NA,,draft,2026-04-13,none,,,missing,
 ESP-1800-2025,Spain,1800,2025,national,ESP,230,,draft,2026-04-12,cshapes-2.0,230,1886,assigned,
 EST-1800-1918,Estonia (Governorate),1800,1918,national,EST,366,,draft,2026-04-16,cshapes-2.0,366,1918,assigned,
+EST-1918-1940,Estonia (interwar republic),1918,1940,national,EST,366,,draft,2026-04-17,cshapes-2.0,366,1918,assigned,49295
 EST-1940-1991,Estonian SSR,1940,1991,national,EST,366,,draft,2026-04-16,cshapes-2.0,366,1918,assigned,
 EST-1991-2025,Estonia,1991,2025,national,EST,366,,reviewed,2026-04-12,cshapes-2.0,366,1991,assigned,
 ETH-1800-1889,Ethiopia (to 1889),1800,1889,national,ETH,530,,draft,2026-04-12,cliopatria,Ethiopian Empire,1769,assigned,
@@ -314,10 +315,12 @@ LSO-1886-1966,Lesotho (1886-1966),1886,1966,national,LSO,570,,draft,2026-04-13,c
 LSO-1966-2025,Lesotho,1966,2025,national,LSO,570,,draft,2026-04-13,cshapes-2.0,570,1966,assigned,
 LST-1822-1868,Basotho Kingdom,1822,1868,national,NA,NA,,draft,2026-04-13,paine-2024,Lesotho,,assigned,
 LTU-1800-1918,Lithuania (Russian governorate),1800,1918,national,LTU,368,,draft,2026-04-16,cshapes-2.0,368,1918,assigned,
+LTU-1918-1940,Lithuania (interwar republic),1918,1940,national,LTU,368,,draft,2026-04-17,cshapes-2.0,368,1922,assigned,55858
 LTU-1940-1991,Lithuanian SSR,1940,1991,national,LTU,368,,draft,2026-04-16,cshapes-2.0,368,1939,assigned,
 LTU-1991-2025,Lithuania,1991,2025,national,LTU,368,,reviewed,2026-04-12,cshapes-2.0,368,1991,assigned,
 LUX-1839-2025,Luxembourg,1839,2025,national,LUX,212,,reviewed,2026-04-11,cshapes-2.0,212,1886,assigned,
 LVA-1800-1918,Latvia (Livonia and Courland),1800,1918,national,LVA,367,,draft,2026-04-16,cshapes-2.0,367,1918,assigned,
+LVA-1918-1940,Latvia (interwar republic),1918,1940,national,LVA,367,,draft,2026-04-17,cshapes-2.0,367,1918,assigned,65966
 LVA-1940-1991,Latvian SSR,1940,1991,national,LVA,367,,draft,2026-04-16,cshapes-2.0,367,1918,assigned,
 LVA-1991-2025,Latvia,1991,2025,national,LVA,367,,reviewed,2026-04-12,cshapes-2.0,367,1991,assigned,
 LZI-1800-1890,Lozi Kingdom (Barotseland),1800,1890,national,NA,NA,,draft,2026-04-13,paine-2024,Lozi,,assigned,
