@@ -17,10 +17,6 @@ data/geodata/**
 # Compiled / temporary pipeline outputs
 data/compiled/
 
-# External input data (not redistributable)
-inputs/*
-!inputs/README.md
-
 # Wiki source PDFs (copyrighted; stored locally, not redistributed)
 wiki/sources/pdfs/*.pdf
 !wiki/sources/pdfs/README.md

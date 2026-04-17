@@ -1,172 +1,98 @@
-# WHEP Polities Research (v2.5)
+# WHEP Polities
 
-Research-level database of historical polities for the [Who Has Eaten the Planet?](https://www.whep.eu/) (WHEP) project. Covers political entities from 1800 to 2025 with territorial boundaries, cross-referenced against multiple external datasets.
+Historical polities database for the [Who Has Eaten the Planet?](https://www.whep.eu/) (WHEP) project. Each polity is a territorial-economic unit with a defined extent over a continuous time period from 1800 to 2025.
 
-## Key statistics
+## Architecture
 
-| Metric | Value |
-|--------|-------|
-| Total polities | 1,420 |
-| Non-region polities | 1,343 |
-| With polygon geometry | 1,340 / 1,343 (99.8%) |
-| Subnational entries | 422 |
-| Verified entries | 1,420 / 1,420 (100%) |
-| Knowledge graph | 1,325 nodes, 2,696 edges (9 relation types) |
-| Temporal coverage | 1800-2025 |
-| Trade data coverage | 331 / 331 geographies matched (100%) |
-
-## What's here
-
-### Data
+**The wiki is the source of truth.** Every polity has a curated page at `wiki/polities/<code>.md` with YAML frontmatter that declares its identity, status, and the provenance of its polygon. The CSV and GeoPackage under `data/final/` are derived artifacts, rebuilt by `scripts/build_database.py`.
 
 ```
-data/
-  whep-source/            # Raw CSVs from WHEP refactor/polities branch
-    polity_codes.csv        811 polity code definitions (XXX-yyyy-YYYY format)
-    polities_database_verified.csv   602 verified entries with status
-    common_names.csv        1,687 source-to-common-name mappings
-    cshapes.csv             472 territorial boundaries with areas (1886-2019)
-    faostat_regions.csv     343 FAO country/region definitions
-    federico_tena_polities.csv   243 historical trade polities (1800-1938)
-    historical_m49.csv      285 UN M49 historical codes
-    whep_fixes.csv          116 manual overrides
-    unstats_m49.csv         248 current UN M49 codes
-    polities.csv            412-row output from get_polities()
-  external/               # Manually compiled reference datasets
-    decolonization_events.csv   96 independence events with exact dates
-    empire_dissolutions.csv     17 major geopolitical transitions
-    disputed_states.csv         10 disputed/unrecognized entities
-    microstates.csv             10 micro-states with sovereignty dates
-    cow_state_system.csv        209 COW state system entries
-  compiled/               # Intermediate (gitignored)
-    polities_master.csv         Enriched base database (811 entries, run 01)
-  final/                  # Main output
-    polities_database.csv       Final database (1,420 entries, 15 columns)
-    polities_database.gpkg      Unified GeoPackage with all geometries
-  geodata/                # Polygon source files (gitignored, large)
-    polities_polygons.gpkg      Main polygon collection (~1,018 polities)
-    subnational_polygons.gpkg   Admin-1 boundaries (422 entries)
-    precolonial_polygons.gpkg   Paine et al. (2024) 46 African states
-    cliopatria_polygons.gpkg    Seshat/Cliopatria 4 historical polities
-    chgis_qing_provinces.gpkg   CHGIS v6 Qing provinces (26 entries)
-    us_historical_states.gpkg   US states 1800-1958 (51 entries)
-    brazil_historical_states.gpkg  Brazil states 1872-1987 (26 entries)
-    spain_provinces.gpkg        Spain provinces 1833-2025 (52 entries)
-    cshapes2_full.gpkg          CShapes 2.0 complete (1886-2019)
-    cshapes2_sovereign.gpkg     CShapes 2.0 sovereign only
-  analysis/               # Reports and plots
-    knowledge_graph_edges.csv   2,696 edges (9 relation types)
-    knowledge_graph_nodes.csv   1,325 nodes
-    knowledge_graph.graphml     GraphML for Gephi/Cytoscape
-    polygon_quality_report.csv  Geometry validation results
-    stress_test_results.csv     31 automated integrity checks
-    plots/                      72 PNG analysis visualizations
+ wiki/polities/*.md          ← you edit this (source of truth)
+       │
+       ▼
+ scripts/build_database.py   ← joins wiki + raw polygon sources
+       │
+       ▼
+ data/final/
+   polities_database.csv     ← committed (~60 KB)
+   polities_database.gpkg    ← committed (~7 MB, 500+ polygons)
+       │
+       ▼
+ site/build_wiki.sh          ← simplifies for web
+       │
+       ▼
+ site/polities.{csv, geojson}   +   site/wiki/ (rendered markdown)
 ```
 
-### R scripts
+## Rebuilding from scratch
 
-Run sequentially. Each script sources `00_setup.R` for paths and packages.
-
-| Script | Purpose | Key outputs |
-|--------|---------|-------------|
-| `00_setup.R` | Load packages, define project paths | - |
-| `01_build_master_db.R` | Enrich 811 polities with type, continent, empire, ISO codes, areas, predecessor/successor | `data/compiled/polities_master.csv` |
-| `02_temporal_analysis.R` | Formation/dissolution events, active polities over time, lifespan distribution | 7 plots |
-| `03_gap_analysis.R` | Timeline gaps/overlaps, source coverage, area completeness | 5 plots + report |
-| `04_map_analysis.R` | World maps: coverage, earliest year, territorial complexity, empires | 5 maps |
-| `05_cross_reference.R` | COW state system comparison, Natural Earth cross-reference | 1 plot + report |
-| `06_add_subnational.R` | Add GADM admin-1 entries for 6 countries (USA, CAN, BRA, AUS, CHN, RUS) | Updated CSV + GeoPackage |
-| `07_build_knowledge_graph.R` | Build 9-relation knowledge graph | CSV + GraphML |
-| `08_stress_test.R` | 31 automated integrity checks | `stress_test_results.csv` |
-| `09_visualize_knowledge_graph.R` | Knowledge graph visualizations | 6 plots |
-| `10_analysis_plots.R` | Consolidated analysis: temporal, quality, coverage | 12 plots |
-| `11_integrate_precolonial_polygons.R` | Integrate 46 Paine et al. (2024) pre-colonial African states | `precolonial_polygons.gpkg` |
-| `12_integrate_cliopatria_polygons.R` | Integrate 4 Cliopatria (Seshat) historical polities | `cliopatria_polygons.gpkg` |
-| `13_integrate_chgis_provinces.R` | Integrate 26 Qing Dynasty province boundaries (CHGIS v6) | `chgis_qing_provinces.gpkg` |
-| `14_integrate_historical_subnational.R` | Add 129 historical subnational (US, Brazil, Spain) | 3 GeoPackage files |
-| `15_build_unified_polygons.R` | Merge all polygon sources into unified GeoPackage | `polities_database.gpkg` |
-| `16_data_integrity_fixes.R` | Fix pred/succ links, add aggregates, fill temporal gaps, rename IDN | Updated CSV + GeoPackage |
-| `17_add_new_polygons.R` | Add Japan/UK subnational, interwar entities, polygon fixes | Updated CSV + GeoPackage |
-| `18_improve_african_coverage.R` | Verify African entries, add predecessor/successor chains | Updated CSV |
-| `19_verify_remaining_and_fix_chains.R` | Verify all remaining entries, fix chain gaps globally | Updated CSV |
-| `20_japan_empire_and_nigeria.R` | Japan 4-period split, Nigeria pre-colonial entries | Updated CSV + GeoPackage |
-| `21_cliopatria_polygon_fixes_and_mexico.R` | Replace 6 inaccurate polygons via Cliopatria, Mexico split | Updated CSV + GeoPackage |
-| `22_territorial_splits.R` | Netherlands, Nepal, Oman, Colombia territorial splits | Updated CSV + GeoPackage |
-| `23_usa_russia_splits.R` | USA 4-period and Russia 2-period territorial splits | Updated CSV + GeoPackage |
-| `24_cliopatria_broad_pass.R` | Replace 12 Italian/German pre-1886 polygons via Cliopatria | Updated CSV + GeoPackage |
-
-### External data (not redistributable)
-
-Download into `inputs/` before running scripts 11-13:
-
-| File | Source | Used by |
-|------|--------|---------|
-| `paine_et_al.zip` | [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/9QJVJ1) | Script 11 |
-| `cliopatria.geojson.zip` | Seshat GitHub / Cliopatria GeoJSON | Script 12 |
-| `chgis.zip` | [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ST5KKM) | Script 13 |
-
-### Documentation
-
-See `docs/` for 15 comprehensive documents covering methodology, data sources, polygon accuracy, known issues, gap analysis, and knowledge graph design.
-
-## Setup
-
-Requires R >= 4.5. Package management via [renv](https://rstudio.github.io/renv/).
+Raw polygon inputs (CShapes, GADM, Cliopatria, …) live under `data/geodata/<slug>/` and are **gitignored**. Each source has a fetch script that re-downloads it from its original location:
 
 ```bash
-# System dependencies for sf (Ubuntu/Debian)
-sudo apt install libgdal-dev libgeos-dev libproj-dev libudunits2-dev
+# Fetch raw polygons (pick the sources you need)
+bash scripts/sources/cshapes-2.0/fetch.sh
+bash scripts/sources/cshapes-europe/fetch.sh
+bash scripts/sources/cliopatria/fetch.sh
+bash scripts/sources/paine-2024/fetch.sh
+bash scripts/sources/histogis-1860-habsburg/fetch.sh
+bash scripts/sources/gadm-4.1/fetch.sh
 
-# Install R packages
-cd whep-polities
-Rscript -e 'renv::restore()'
+# Rebuild the master database from wiki + fetched sources
+python3 scripts/build_database.py
+
+# Rebuild the web visualization data
+bash site/build_wiki.sh
 ```
 
-## Run
+You don't have to run the fetches if you only want to consume the committed `data/final/polities_database.gpkg` — it's self-contained.
 
-```bash
-# Core pipeline (build from source data)
-Rscript R/01_build_master_db.R
-Rscript R/02_temporal_analysis.R
-Rscript R/03_gap_analysis.R
-Rscript R/04_map_analysis.R
-Rscript R/05_cross_reference.R
+## Layout
 
-# Subnational and polygon integration
-Rscript R/06_add_subnational.R
-Rscript R/11_integrate_precolonial_polygons.R
-Rscript R/12_integrate_cliopatria_polygons.R
-Rscript R/13_integrate_chgis_provinces.R
-Rscript R/14_integrate_historical_subnational.R
+| Path | What |
+|------|------|
+| `wiki/polities/` | One markdown page per polity (source of truth) |
+| `wiki/sources/` | One page per external data source (immutable once ingested) |
+| `wiki/README.md` | Wiki schema, link conventions, polygon frontmatter fields |
+| `wiki/prompts/` | Agent workflow prompts (ingest, lint, query, autonomous-next) |
+| `wiki/log.md` | Chronological record of decisions and open questions |
+| `scripts/build_database.py` | Builds `data/final/polities_database.{csv,gpkg}` from wiki + `scripts/sources.yaml` |
+| `scripts/sources.yaml` | Per-source registry: file path, id column, temporal columns |
+| `scripts/sources/<slug>/fetch.{sh,R}` | Fetches the raw source |
+| `scripts/histogis_habsburg.py` | Ad-hoc derived-source builder (dissolves HistoGIS crownlands into Cisleithania/Transleithania) |
+| `data/final/` | Committed master database (CSV + GeoPackage) |
+| `data/external/` | External reference datasets (COW state system, decolonization events, pre-1961 ag data) |
+| `data/geodata/` | Raw polygon sources (gitignored; populated by fetch scripts) |
+| `pipelines/pre1961-matching/` | R pipeline that crosslinks pre-1961 agricultural data against the polity database |
+| `site/` | MapLibre GL JS visualization |
 
-# Build unified output and apply fixes
-Rscript R/15_build_unified_polygons.R
-Rscript R/16_data_integrity_fixes.R
-Rscript R/17_add_new_polygons.R
+## Polygon sources
 
-# Analysis and validation
-Rscript R/07_build_knowledge_graph.R
-Rscript R/08_stress_test.R
-Rscript R/09_visualize_knowledge_graph.R
-Rscript R/10_analysis_plots.R
-```
+Declared in `scripts/sources.yaml`:
 
-Plots go to `data/analysis/plots/`, reports to `output/reports/`.
+| Slug | Source | Native ID |
+|------|--------|-----------|
+| `cshapes-2.0` | [ETH Zürich ICR](https://icr.ethz.ch/data/cshapes/) | `gwcode` + year |
+| `cshapes-europe` | ETH Zürich ICR (pre-1886 extension) | `Id` + year |
+| `gadm-4.1-adm0` / `gadm-4.1-adm1` | [GADM 4.1](https://gadm.org/) | `GID_0` / `GID_1` |
+| `gadm-3.6` | GADM 3.6 (legacy subnational) | `GID_1` |
+| `paine-2024` | [Paine, Qiu & Ricart-Huguet (APSR 2024)](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/9QJVJ1) | `PCS` |
+| `cliopatria` | [Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria) | `Name` + year |
+| `histogis-1860-habsburg` | [HistoGIS ACDH-CH](https://histogis.acdh.oeaw.ac.at/) (dissolved crownlands) | `polity_code` |
+| `chgis-v6` | [CHGIS v6](https://dataverse.harvard.edu/dataverse/chgis) Qing provinces | `NAME_PY` + year |
+| `usaboundaries-newberry` | Newberry Atlas via R `USAboundaries` | `state_abbr` + year |
+| `mapspain-ign` | IGN Spain via R `mapSpain` | `cpro` |
+| `geobr-ibge` | IBGE via R `geobr` | `abbrev_state` + year |
+| `constructed` | Hand-authored (Antarctic sector, Uqair, point buffers) | `polity_code` |
 
-## Data sources
+## Adding a new polygon source
 
-The WHEP polities pipeline integrates 7 primary sources: Federico-Tena (1800-1938), FAOSTAT, UN M49, CShapes 2.0 (1886-2019), CShapes-Europe (1806-2023), GADM 4.1, and manual WHEP fixes. Additional polygon sources: Paine et al. (2024) pre-colonial African states, Cliopatria/Seshat historical polities, CHGIS v6 Qing provinces, USAboundaries/Newberry, geobr/IBGE, and mapSpain/IGN.
-
-Cross-referenced against COW, Natural Earth, Gleditsch-Ward, V-Dem, Polity5, Maddison, and Penn World Tables.
-
-## Known issues
-
-- Afghanistan 1888-1919 gap (intentional, no CShapes data for this period)
-- ~17 prefix collisions (e.g. SAR = Sardinia + Sarawak); full polity codes are unique
-- 235 entries UNVERIFIED (primarily African historical/colonial)
-- Pre-1886 polygon accuracy limitations (CShapes starts at 1886; earlier polygons are back-projected)
-- See `docs/06_KNOWN_ISSUES_AND_DECISIONS.md` and `docs/08_POLYGON_ACCURACY_AUDIT.md` for details
-
-## License
-
-Research use. WHEP project funded by the European Research Council.
+1. Create `scripts/sources/<slug>/fetch.{sh,R}` — downloads raw file(s) into `data/geodata/<slug>/`.
+2. Add an entry to `scripts/sources.yaml`: `file`, optional `layer`, `id_column`, `id_type`, optional `temporal`.
+3. For polities where this source applies, set the wiki frontmatter:
+   ```yaml
+   polygon_source: <slug>
+   polygon_feature_id: <value matching id_column>
+   polygon_feature_year: <year, for temporal sources>
+   polygon_status: assigned
+   ```
+4. Run `python3 scripts/build_database.py`. Missing raw files are reported but don't abort the build.
