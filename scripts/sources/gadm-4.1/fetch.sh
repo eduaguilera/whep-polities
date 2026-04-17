@@ -9,7 +9,7 @@ OUT_DIR="$(cd "$(dirname "$0")/../../.." && pwd)/data/geodata/gadm-4.1"
 mkdir -p "$OUT_DIR"
 
 # Countries currently cited by the wiki. Extend as more polities use GADM.
-COUNTRIES=(GRL ESP LCA VCT SWE)
+COUNTRIES=(GRL ESP LCA VCT SWE CHN)
 
 ADM0="$OUT_DIR/gadm41_adm0.gpkg"
 ADM1="$OUT_DIR/gadm41_adm1.gpkg"

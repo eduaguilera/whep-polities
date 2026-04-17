@@ -25,6 +25,7 @@ osr.UseExceptions()
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CSHAPES2 = REPO_ROOT / "data/geodata/cshapes-2.0/CShapes-2.0.shp"
+GADM41_ADM1 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm1.gpkg"
 OUT = REPO_ROOT / "data/geodata/constructed/constructed.geojson"
 
 
@@ -49,6 +50,20 @@ def _cshapes2_feature(gwcode: int, year: int) -> ogr.Geometry:
         if f.GetField("gwsyear") <= year <= f.GetField("gweyear"):
             return f.GetGeometryRef().Clone()
     raise LookupError(f"CShapes 2.0 has no feature for gwcode={gwcode}, year={year}")
+
+
+def _gadm_adm1(gid_1: str) -> ogr.Geometry:
+    """Return the geometry of the GADM 4.1 admin-1 feature with the given GID_1."""
+    if not GADM41_ADM1.exists():
+        raise FileNotFoundError(
+            f"{GADM41_ADM1} missing — run scripts/sources/gadm-4.1/fetch.sh first."
+        )
+    ds = ogr.Open(str(GADM41_ADM1))
+    lyr = ds.GetLayer()
+    for f in lyr:
+        if f.GetField("GID_1") == gid_1:
+            return f.GetGeometryRef().Clone()
+    raise LookupError(f"GADM 4.1 adm1 has no feature with GID_1={gid_1!r}")
 
 
 def _union(*geoms: ogr.Geometry) -> ogr.Geometry:
@@ -90,6 +105,17 @@ def build_kor_1800_1945() -> ogr.Geometry:
                   _cshapes2_feature(732, 1945))
 
 
+def build_man_1932_1945() -> ogr.Geometry:
+    """Manchukuo 1932-1945 ≈ union of modern Chinese provinces
+    Heilongjiang, Jilin, and Liaoning (GADM 4.1 adm-1). Historical
+    Manchukuo also included parts of Inner Mongolia (Rehe/Jehol); the
+    3-province approximation captures ~90% of territory and the bulk of
+    the population base."""
+    return _union(_gadm_adm1("CHN.11_1"),   # Heilongjiang
+                  _gadm_adm1("CHN.17_1"),   # Jilin
+                  _gadm_adm1("CHN.18_1"))   # Liaoning
+
+
 # (polity_code, polity_name, builder-callable, provenance note)
 BUILDERS = [
     (
@@ -121,6 +147,16 @@ BUILDERS = [
         "Korean peninsula under the Korean Empire (1800-1910) and Japanese "
         "colonial rule (1910-1945). The peninsula's boundaries were "
         "effectively unchanged across this whole period.",
+    ),
+    (
+        "MAN-1932-1945",
+        "Manchukuo (1932-1945)",
+        build_man_1932_1945,
+        "Union of GADM 4.1 Chinese provinces Heilongjiang (CHN.11_1), "
+        "Jilin (CHN.17_1), and Liaoning (CHN.18_1) — a close approximation "
+        "of the Japanese puppet state Manchukuo's territory. Historical "
+        "Manchukuo also annexed Rehe/Jehol from Inner Mongolia (1933); "
+        "the 3-province polygon captures ~90% of the state's area.",
     ),
 ]
 
