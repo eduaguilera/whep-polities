@@ -286,14 +286,25 @@ def main() -> int:
     n_feature_not_found = 0
 
     missing_sources: set[str] = set()
+    skipped_pages: list[tuple[str, str]] = []  # (page name, reason)
+    seen_codes: dict[str, Path] = {}            # detect duplicates
 
     for page in pages:
         fm = parse_frontmatter(page)
         if fm is None:
+            skipped_pages.append((page.name, "unreadable frontmatter"))
             continue
         pc = fm.get("polity_code")
         if not pc:
+            skipped_pages.append((page.name, "no polity_code in frontmatter"))
             continue
+        if pc in seen_codes:
+            skipped_pages.append(
+                (page.name,
+                 f"duplicate polity_code {pc!r} (also in {seen_codes[pc].name})")
+            )
+            continue
+        seen_codes[pc] = page
 
         rows.append(flatten_row(fm))
 
@@ -333,7 +344,13 @@ def main() -> int:
     write_gpkg(rows, geometries, gpkg_path, args.simplify_tolerance)
 
     print()
-    print(f"Rows written:           {len(rows)}")
+    print(f"Wiki pages scanned:     {len(pages)}")
+    print(f"Rows written:           {len(rows)}"
+          + ("  ✓" if len(rows) == len(pages) else "  ✗ ROW COUNT MISMATCH"))
+    if skipped_pages:
+        print(f"Pages skipped:          {len(skipped_pages)}")
+        for name, reason in skipped_pages:
+            print(f"  - {name}: {reason}", file=sys.stderr)
     print(f"Geometries attached:    {n_assigned}")
     print(f"  source not fetched:   {n_source_not_fetched}"
           f"  (run scripts/sources/<slug>/fetch.*)")

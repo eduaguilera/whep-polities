@@ -22,13 +22,26 @@ Check, in order:
    `_template.md` and `_aggregates/`) must have the required
    frontmatter fields and the required H2 sections. List violations.
 
-2. **CSV ↔ wiki parity.** The CSV is regenerated from the wiki, so
-   perfect parity is the expected state.
-   - If `wc -l data/final/polities_database.csv` minus 1 ≠ the count
-     of polity pages, the builder wasn't re-run. Run
-     `python3 scripts/build_database.py` and re-check.
-   - If any `polity_code` appears in only one side after a rebuild,
-     that's an actual bug — list it for human review.
+2. **CSV ↔ wiki parity (per-code).** The CSV is regenerated from the
+   wiki, so every wiki page must produce exactly one CSV row, matched
+   by `polity_code`. The builder already detects count mismatches and
+   prints a `✗ ROW COUNT MISMATCH` banner with per-file reasons
+   (unreadable YAML frontmatter, missing `polity_code`, duplicate code
+   across two files). Lint must:
+   - Run `bash scripts/rebuild.sh` and confirm the builder reports
+     `Rows written == Wiki pages scanned ✓`.
+   - For extra assurance, diff the two code sets explicitly
+     (underscore-prefixed files like `_template.md` are excluded by
+     the builder and shouldn't be grepped):
+     ```bash
+     comm -3 \
+       <(awk -F, 'NR>1 {print $1}' data/final/polities_database.csv | sort -u) \
+       <(grep -h '^polity_code:' wiki/polities/[a-z]*.md | awk '{print $2}' | sort -u)
+     ```
+     Empty output = clean. Any line in the output is a bug: either a
+     CSV row with no wiki page, or a wiki page that failed to produce
+     a row. List each code in the report and stop before touching
+     other checks — this is the most serious parity violation.
 
 3. **Citation health.** Every bullet in a *Sourced claims* section
    should end with `[<slug> §...]` or `[database]`. List unsupported
