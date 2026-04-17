@@ -94,11 +94,14 @@ Check, in order:
      where the sum of successor states' territory does not plausibly
      account for the parent's territory.
 
-10. **Polygon build sanity.** Run
-    `python3 scripts/build_database.py` and inspect the report:
+10. **Full rebuild.** Run `bash scripts/rebuild.sh` and inspect the
+    report. This rebuilds `data/final/polities_database.{csv,gpkg}`
+    and `site/polities.{csv,geojson}` + `site/wiki/` in one step, so
+    the derived artifacts always track the current wiki state by the
+    end of a lint run.
     - `source not fetched:` lists source slugs whose raw files are
-      missing from `data/geodata/`. This isn't a wiki bug — flag
-      for human to run the matching `scripts/sources/<slug>/fetch.*`.
+      missing from `data/geodata/`. This isn't a wiki bug — flag for
+      the human to run the matching `scripts/sources/<slug>/fetch.*`.
     - `unknown source slug:` points at wiki pages whose
       `polygon_source` isn't in `scripts/sources.yaml`. Must-fix: either
       correct the slug or add the source to `sources.yaml` (the latter
@@ -157,6 +160,10 @@ Output format:
   correct stable slug if unambiguous, or (b) replace it with a
   `<!-- TODO: broken ref, was "see open question 6" -->` comment
   and flag it in the report.
+- Running `bash scripts/rebuild.sh` at the end of the lint run so
+  `data/final/` and `site/` match the post-lint wiki state. This is
+  part of check 10 and should be the final action of every lint
+  session that made any frontmatter change.
 
 **Never allowed during a lint run** — these belong in an
 `ingest`-kind operation, not lint:

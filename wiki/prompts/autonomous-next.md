@@ -343,8 +343,9 @@ priority ranking ends up. This list overrides phase 3.
 
 - The agent never hand-edits `data/final/polities_database.csv` or
   `data/final/polities_database.gpkg`. Apply sourced wiki findings by
-  editing wiki frontmatter/body and re-running
-  `scripts/build_database.py`; log each rebuild in `log.md`.
+  editing wiki frontmatter/body and re-running `bash scripts/rebuild.sh`
+  (which rebuilds both the master DB and the site); log each rebuild
+  in `log.md`.
 - No `decision`-kind log entries that establish a repo-wide rule.
   The agent may *draft* a decision and surface it in the iteration
   report, but the entry must be added by a human with the

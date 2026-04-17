@@ -29,7 +29,7 @@ Historical polities database for the [Who Has Eaten the Planet?](https://www.whe
 Raw polygon inputs (CShapes, GADM, Cliopatria, …) live under `data/geodata/<slug>/` and are **gitignored**. Each source has a fetch script that re-downloads it from its original location:
 
 ```bash
-# Fetch raw polygons (pick the sources you need)
+# 1. Fetch raw polygons (pick the sources you need)
 bash scripts/sources/cshapes-2.0/fetch.sh
 bash scripts/sources/cshapes-europe/fetch.sh
 bash scripts/sources/cliopatria/fetch.sh
@@ -37,13 +37,15 @@ bash scripts/sources/paine-2024/fetch.sh
 bash scripts/sources/histogis-1860-habsburg/fetch.sh
 bash scripts/sources/gadm-4.1/fetch.sh
 
-# Rebuild the master database from wiki + fetched sources
-python3 scripts/build_database.py
-
-# Rebuild the web visualization data
-bash site/build_wiki.sh
+# 2. Rebuild every derived artifact in one command:
+#    - data/final/polities_database.{csv,gpkg}
+#    - site/polities.{csv,geojson}
+#    - site/wiki/ (markdown copy for the in-browser reader)
+bash scripts/rebuild.sh
 ```
 
+`scripts/rebuild.sh` is a thin wrapper that runs
+`python3 scripts/build_database.py` then `bash site/build_wiki.sh`.
 You don't have to run the fetches if you only want to consume the committed `data/final/polities_database.gpkg` — it's self-contained.
 
 ## Layout
@@ -55,6 +57,7 @@ You don't have to run the fetches if you only want to consume the committed `dat
 | `wiki/README.md` | Wiki schema, link conventions, polygon frontmatter fields |
 | `wiki/prompts/` | Agent workflow prompts (ingest, lint, query, autonomous-next) |
 | `wiki/log.md` | Chronological record of decisions and open questions |
+| `scripts/rebuild.sh` | One-shot rebuild of every derived artifact (runs `build_database.py` + `site/build_wiki.sh`) |
 | `scripts/build_database.py` | Builds `data/final/polities_database.{csv,gpkg}` from wiki + `scripts/sources.yaml` |
 | `scripts/sources.yaml` | Per-source registry: file path, id column, temporal columns |
 | `scripts/sources/<slug>/fetch.{sh,R}` | Fetches the raw source |
@@ -95,4 +98,4 @@ Declared in `scripts/sources.yaml`:
    polygon_feature_year: <year, for temporal sources>
    polygon_status: assigned
    ```
-4. Run `python3 scripts/build_database.py`. Missing raw files are reported but don't abort the build.
+4. Run `bash scripts/rebuild.sh`. Missing raw files are reported but don't abort the build.
