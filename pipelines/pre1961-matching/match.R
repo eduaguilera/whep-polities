@@ -200,7 +200,16 @@ resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
 cat(sprintf("[match] %d rows against %d WHEP polities...\n",
             nrow(pre), nrow(whep)))
 
-whep_by_iso <- split(whep, whep$iso3_code)
+# Lookup key: prefer iso3_code; fall back to the three-letter prefix of
+# polity_code (e.g. "F51" for F51-1918-1938, "OTT" for OTT-1800-1886, "TAN"
+# for TAN-1891-1920). normalise_iso() above returns these WHEP-internal
+# codes for dissolved/renamed entities (CSK → F51, RUS pre-1991 → F228,
+# TZA pre-1964 → TAN, etc.); we need those codes to resolve into the
+# `whep_by_iso` index too, not just real ISO3 codes.
+whep$lookup_key <- ifelse(is.na(whep$iso3_code) | whep$iso3_code == "",
+                          sub("-.*", "", whep$polity_code),
+                          whep$iso3_code)
+whep_by_iso <- split(whep, whep$lookup_key)
 
 # Known historical/modern name pairs — kept here so `match_one` can use them
 # too (to avoid rejecting correct but renamed matches like Japan ↔ Japanese
