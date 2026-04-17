@@ -18,6 +18,16 @@ set -euo pipefail
 PROJ_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJ_ROOT"
 
+# Step 0: rebuild derived `constructed` polygons from whatever raw upstream
+# sources are already fetched (e.g. cshapes-2.0). Cheap and deterministic;
+# keeps constructed.geojson in sync so build_database.py downstream
+# picks up any new / updated entries.
+if [ -f data/geodata/cshapes-2.0/CShapes-2.0.shp ]; then
+  echo "Rebuilding derived 'constructed' polygons..."
+  python3 scripts/sources/constructed/build.py
+  echo
+fi
+
 # Steps 1-3: master DB + site.
 python3 scripts/build_database.py "$@"
 bash site/build_wiki.sh

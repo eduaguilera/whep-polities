@@ -1,17 +1,15 @@
 #!/bin/bash
-# Constructed polygons (hand-authored: Antarctic sector claims, Uqair Protocol,
-# point buffers). Stored in-repo under data/geodata/constructed/constructed.geojson.
+# Build the 'constructed' polygons.
 #
-# This fetch script is a stub — there's no external source to download.
-# To populate, hand-edit data/geodata/constructed/constructed.geojson directly.
+# This source is **derived** from other fetched sources — no external file
+# to download. It runs scripts/sources/constructed/build.py, which unions
+# / intersects / dissolves features from cshapes-2.0 and similar to
+# produce polygons for WHEP rows that don't map cleanly to a single
+# external feature.
+#
+# Prerequisite: upstream raw sources (e.g. cshapes-2.0) must be fetched
+# first. See scripts/sources.yaml for the dependency set.
 set -euo pipefail
-OUT_DIR="$(cd "$(dirname "$0")/../../.." && pwd)/data/geodata/constructed"
-mkdir -p "$OUT_DIR"
-if [ ! -f "$OUT_DIR/constructed.geojson" ]; then
-  cat > "$OUT_DIR/constructed.geojson" <<'EOF'
-{"type": "FeatureCollection", "features": []}
-EOF
-  echo "Seeded empty: $OUT_DIR/constructed.geojson"
-else
-  echo "Already exists: $OUT_DIR/constructed.geojson"
-fi
+PROJ_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
+cd "$PROJ_ROOT"
+python3 scripts/sources/constructed/build.py
