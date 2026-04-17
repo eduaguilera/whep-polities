@@ -9,6 +9,26 @@ cow: NA
 status: draft
 last_ingest: YYYY-MM-DD
 sources: []
+
+# Polygon binding (read by scripts/build_database.py).
+# Values are validated against scripts/sources.yaml.
+#
+#   polygon_source      — slug of the source registered in sources.yaml,
+#                         or `none` for aggregates / no-polygon entries.
+#   polygon_feature_id  — value to match against the source's `id_column`.
+#                         Use quotes for IDs that look numeric or that
+#                         contain hyphens / spaces.
+#   polygon_feature_year — for sources with a `temporal` block, the year
+#                          used to disambiguate time-steps. Omit when the
+#                          source has no time dimension.
+#   polygon_status      — assigned | proxy | missing | excluded
+#   polygon_area_km2    — optional sanity-check value (ETRS89 LAEA / source's
+#                          native equal-area CRS). Not required.
+polygon_source: none
+polygon_feature_id: ""
+polygon_feature_year: null
+polygon_status: missing
+polygon_area_km2: null
 ---
 
 # <polity_name>
@@ -23,27 +43,21 @@ of the file.>
 
 ## Territorial extent
 
-**Polygon:** <State the polygon status — one of:>
-- `Copied from [CODE](code.md) (justification why this proxy is valid,
-  e.g. "territory unchanged at independence")` — when a polygon from
-  a neighboring period of the same polity was reused.
-- `<Source> (e.g. CShapes 2.0, Cliopatria, GADM)` — when the polygon
-  comes directly from a spatial dataset.
-- `Not yet assigned. **Proxy deliberately not copied** because
-  <reason, with km² numbers showing the territory mismatch>.` — when
-  available polygons were considered and rejected.
-- `Not yet assigned. No polygon available in the GeoPackage for this
-  entity or period.`
+**Polygon:** <Prose description of the polygon assignment — which source,
+which feature, what caveats. This is the human-readable version of the
+frontmatter `polygon_*` fields. If a proxy was deliberately rejected,
+state why with km² comparisons. If no polygon is available at all, say
+so — `polygon_status: missing` in frontmatter.>
 
 **Why this entry exists:** <What input data does this polity capture?
 What was it previously matched to, and why was that wrong? What
 historical source confirms this was a distinct entity? Include the
 data country name, ISO code, year range, and approximate row count.>
 
-<Then describe borders over time. Cite the polygon source from the
-CSV. Note years where the polygon is approximate, inherited from a
-neighbor, or back-projected. Give approximate km² and describe the
-territory in terms a reader can locate on a modern map.>
+<Then describe borders over time. Note years where the polygon is
+approximate, inherited from a neighbor, or back-projected. Give
+approximate km² and describe the territory in terms a reader can
+locate on a modern map.>
 
 ## Predecessors and successors
 

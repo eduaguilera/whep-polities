@@ -173,7 +173,7 @@ CSV_COLUMN_TO_FM_KEY = {
     "iso3_code":   "iso3",
     "cow_code":    "cow",
     "continent":   "continent",
-    "status":      "status",
+    "wiki_status": "status",
     "last_ingest": "last_ingest",
     "polygon_source":       "polygon_source",
     "polygon_feature_id":   "polygon_feature_id",

@@ -1,4 +1,4 @@
-polity_code,polity_name,start_year,end_year,polity_type,iso3_code,cow_code,continent,status,last_ingest,polygon_source,polygon_feature_id,polygon_feature_year,polygon_status,polygon_area_km2
+polity_code,polity_name,start_year,end_year,polity_type,iso3_code,cow_code,continent,wiki_status,last_ingest,polygon_source,polygon_feature_id,polygon_feature_year,polygon_status,polygon_area_km2
 AFG-1800-1893,Afghanistan (to 1893),1800,1893,national,AFG,700,,draft,2026-04-13,cshapes-2.0,700,1888,assigned,
 AFG-1893-1919,Afghanistan (1893-1919),1893,1919,national,AFG,700,,draft,2026-04-12,cshapes-2.0,700,1893,assigned,
 AFG-1919-2025,Afghanistan,1919,2025,national,AFG,700,,draft,2026-04-12,cshapes-2.0,700,1919,assigned,
