@@ -61,7 +61,7 @@ You don't have to run the fetches if you only want to consume the committed `dat
 | `scripts/build_database.py` | Builds `data/final/polities_database.{csv,gpkg}` from wiki + `scripts/sources.yaml` |
 | `scripts/sources.yaml` | Per-source registry: file path, id column, temporal columns |
 | `scripts/sources/<slug>/fetch.{sh,R}` | Fetches the raw source |
-| `scripts/histogis_habsburg.py` | Ad-hoc derived-source builder (dissolves HistoGIS crownlands into Cisleithania/Transleithania) |
+| `scripts/sources/<slug>/build.py` | Optional per-source processing step for derived sources (e.g. `histogis-1860-habsburg` dissolves crownlands into Cisleithania/Transleithania) |
 | `data/final/` | Committed master database (CSV + GeoPackage) |
 | `data/external/` | External reference datasets (COW state system, decolonization events, pre-1961 ag data) |
 | `data/geodata/` | Raw polygon sources (gitignored; populated by fetch scripts) |

@@ -129,10 +129,10 @@ sources:
       match_year: exact_start
 
   histogis-1860-habsburg:
-    # This is a derived source: the ad-hoc script scripts/histogis_habsburg.py
-    # dissolves the raw HistoGIS 1860 crownlands shapefile into Cisleithania
-    # and Transleithania polygons. The raw shapefile is fetched separately;
-    # the build step runs the dissolve script.
+    # Derived source: scripts/sources/histogis-1860-habsburg/build.py
+    # dissolves the raw HistoGIS 1860 crownlands shapefile (fetched by
+    # fetch.sh in the same directory) into Cisleithania and Transleithania
+    # polygons keyed by polity_code.
     url: https://shared.acdh.oeaw.ac.at/histogis/austrian_empire_adm2_crownlands_1860.zip
     file: data/geodata/histogis-1860-habsburg/habsburg_cisleithania_transleithania.gpkg
     layer: habsburg_halves

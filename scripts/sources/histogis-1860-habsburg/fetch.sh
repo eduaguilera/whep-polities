@@ -14,9 +14,8 @@ curl -fL -o "$ZIP" \
   "https://shared.acdh.oeaw.ac.at/histogis/austrian_empire_adm2_crownlands_1860.zip"
 (cd "$OUT_DIR" && unzip -o austrian_empire_adm2_crownlands_1860.zip -d crownlands_1860)
 
-# 2. Run the dissolve script to produce the Cisleithania/Transleithania GPKG.
-#    (scripts/histogis_habsburg.py expects the raw shapefile at
-#    data/geodata/histogis-1860-habsburg/crownlands_1860/*.shp)
+# 2. Run the dissolve script (build.py in this directory) to produce the
+#    Cisleithania/Transleithania GPKG from the raw crownlands shapefile.
 cd "$PROJ_ROOT"
-python3 scripts/histogis_habsburg.py
+python3 scripts/sources/histogis-1860-habsburg/build.py
 echo "Fetched and processed: $OUT_DIR/habsburg_cisleithania_transleithania.gpkg"
