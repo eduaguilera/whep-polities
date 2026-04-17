@@ -275,24 +275,32 @@ priority ratings.
   - The 1872 boundary shows India BEFORE the Second Afghan War and BEFORE
     the annexation of Upper Burma (1886).
 
-### 2.8 HistoGIS (ACDH-CH Austria) -- MODERATE PRIORITY
+### 2.8 HistoGIS (ACDH-CH Austria) -- **INTEGRATED (2026-04-17)**
 
 - **URL**: https://histogis.acdh.oeaw.ac.at/
+- **Direct download (1860 crownlands)**: https://shared.acdh.oeaw.ac.at/histogis/austrian_empire_adm2_crownlands_1860.zip
 - **Coverage**: Habsburg Empire / Austria-Hungary administrative boundaries.
   Includes:
-  - Austrian Empire Crownlands 1848
+  - Austrian Empire Crownlands 1860 (directly downloaded and integrated)
   - Austro-Hungarian Empire court districts 1910
   - Albania municipal level 1918
   - Serbia districts
 - **Format**: Shapefiles (GeoDjango-based platform)
-- **License**: Academic (ACDH-CH, Austrian Centre for Digital Humanities)
+- **License**: Open access (ACDH-CH, Austrian Academy of Sciences)
 - **Quality**: Institutional academic project. Good for Habsburg internal
-  boundaries.
+  boundaries. Digitized from Floder 1835 + multiple Rumsey Collection maps.
+- **Status**: **INTEGRATED** for AUT-1800-1918 and HUN-1800-1918.
+  - Downloaded: `data/geodata/histogis/austrian_empire_adm2_crownlands_1860.zip`
+  - Script: `R-legacy/25_integrate_histogis_habsburg.py`
+  - Output: `data/geodata/histogis/habsburg_cisleithania_transleithania.gpkg`
+  - Cisleithania polygon (AUT-1800-1918): 14 crownlands dissolved (excl. Venetia)
+  - Transleithania polygon (HUN-1800-1918): 5 crownlands dissolved (Hungary,
+    Transylvania, Croatia-Slavonia, Banat, Military Frontier)
 - **Specific relevance**:
-  - **AUH-1800-1908**: The 1848 Crownlands dataset directly helps with
-    Austria-Hungary's internal structure during our gap period.
+  - **AUT-1800-1918** (Cisleithania): Polygon now assigned from this source.
+  - **HUN-1800-1918** (Transleithania): Polygon now assigned from this source.
   - The 1910 court-district dataset gives the finest-grained Habsburg
-    boundaries ever produced.
+    boundaries ever produced (not yet integrated).
 
 ### 2.9 CensusMosaic / MPIDR Population History GIS -- MODERATE PRIORITY
 
@@ -827,7 +835,7 @@ Cliopatria.
 |--------|--------|-------------|--------|------|--------|
 | **Centennia CRE** | Europe+ME | All European+Ottoman 1800-1886 | KML | $75-$3,125 | Low |
 | **Appraising Risk** | India | British India+Princely States 1872+ | SHP | Free | Medium |
-| **HistoGIS/MPIDR** | Habsburg | AUH crownlands 1848, districts 1910 | SHP | Free | Medium |
+| **HistoGIS/MPIDR** | Habsburg | AUH crownlands 1860 **INTEGRATED** for AUT-1800-1918 + HUN-1800-1918; districts 1910 available | SHP | Free | **DONE** |
 | **HGIS de las Indias** | Lat. America | Spanish America baselines 1800-1808 | GPKG | Free | Medium |
 | **TRF-GIS / French HGIS** | France | French admin boundaries 1790-1940 | SHP | Free | Medium |
 | **Euratlas 1800** | Europe | European snapshot at 1800 | SHP | 150 EUR | Low |
@@ -911,8 +919,11 @@ Cross-referencing against the polygon accuracy audit (doc 08):
    territorial baselines.
 6. Download **TRF-GIS / French HGIS** and create proper pre/post-1871 French
    boundaries.
-7. Download **HistoGIS** Austrian Empire Crownlands 1848 and match to
-   AUH-1800-1908.
+7. ~~Download **HistoGIS** Austrian Empire Crownlands 1848 and match to
+   AUH-1800-1908.~~ **DONE (2026-04-17)**: Downloaded 1860 crownlands shapefile,
+   dissolved into Cisleithania (AUT-1800-1918) and Transleithania (HUN-1800-1918).
+   Script: `R-legacy/25_integrate_histogis_habsburg.py`. Output:
+   `data/geodata/histogis/habsburg_cisleithania_transleithania.gpkg`.
 8. Contact **Appraising Risk** project about availability of 1872/1881 Indian
    census district shapefiles.
 9. Download **Japan HGIS** Tokugawa data for JPN-1800 baseline.
