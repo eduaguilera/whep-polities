@@ -65,14 +65,16 @@ sources:
     id_type: str
 
   cliopatria:
-    # Seshat-linked; hosted as a GitHub release.
-    url: https://github.com/majkshkurti/cliopatria/releases/download/v0.1.3/cliopatria.geojson
-    file: data/geodata/cliopatria/cliopatria.geojson
-    id_column: PolID
+    # Seshat Global History Databank polities. Fetched from the main GitHub
+    # repo (single 198 MB GeoJSON containing ~15k polity time-steps from
+    # 3400 BCE to 2024 CE).
+    url: https://github.com/Seshat-Global-History-Databank/cliopatria/raw/main/cliopatria.geojson.zip
+    file: data/geodata/cliopatria/cliopatria_polities_only.geojson
+    id_column: Name
     id_type: str
     temporal:
-      start_column: StartYear
-      end_column: EndYear
+      start_column: FromYear
+      end_column: ToYear
       match_year: within
 
   chgis-v6:
