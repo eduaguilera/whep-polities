@@ -306,7 +306,11 @@ def main() -> int:
     skipped_pages: list[tuple[str, str]] = []  # (page name, reason)
     seen_codes: dict[str, Path] = {}            # detect duplicates
 
-    for page in pages:
+    n_total = len(pages)
+    for i, page in enumerate(pages, 1):
+        if i % 50 == 0 or i == n_total:
+            print(f"  [{i}/{n_total}] processing pages... ({n_assigned} polygons so far)")
+
         fm = parse_frontmatter(page)
         if fm is None:
             skipped_pages.append((page.name, "unreadable frontmatter"))
@@ -357,8 +361,11 @@ def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     csv_path = OUT_DIR / "polities_database.csv"
     gpkg_path = OUT_DIR / "polities_database.gpkg"
+    print(f"Writing CSV ({len(rows)} rows)...")
     write_csv(rows, csv_path)
+    print(f"Writing GeoPackage ({len(geometries)} geometries, simplify={args.simplify_tolerance})...")
     write_gpkg(rows, geometries, gpkg_path, args.simplify_tolerance)
+    print("Done writing outputs.")
 
     print()
     print(f"Wiki pages scanned:     {len(pages)}")
