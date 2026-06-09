@@ -336,11 +336,16 @@ body:not(.graph-mode) .graph-only { display: none; }
 
     <div class="data-only">
       <div class="ctrl-group">
-        <label>Item</label>
-        <select id="data-item"></select>
+        <label>Dataset</label>
+        <select id="data-dataset"></select>
       </div>
       <div class="ctrl-group">
-        <label>Source pref (per pipeline): mean of juan + mitchell when both present</label>
+        <label id="data-metric-label">Measure</label>
+        <select id="data-metric"></select>
+      </div>
+      <div class="ctrl-group">
+        <label>Item</label>
+        <select id="data-item"></select>
       </div>
       <div id="data-info" style="font-size:11px;color:#999;margin-bottom:8px"></div>
     </div>
@@ -809,34 +814,126 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ----- Data (pre-1961 crosslinked) view -----
+// ----- Data view -----
 let dataMap = null;
-let dataItemIndex = null;   // { items: [...] }
-let dataItemCache = {};     // slug -> loaded item json
+let dataCatalog = null;
+let dataDatasetIndexCache = {}; // dataset id -> index json
+let dataItemCache = {};         // dataset/metric/slug -> loaded item json
+let dataActiveDataset = null;   // catalog dataset currently shown
+let dataActiveMetric = null;    // metric/element currently shown
 let dataActiveItem = null;  // loaded item json currently shown
 let dataYear = null;        // year being displayed
 
 // Viridis-ish color ramp (6 stops).
 const DATA_PALETTE = ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'];
 
-async function initDataIndex() {
-  if (dataItemIndex) return dataItemIndex;
-  const res = await fetch('pre1961/by_item_index.json?v=' + Date.now());
-  dataItemIndex = await res.json();
-  const sel = document.getElementById('data-item');
+const FALLBACK_DATA_CATALOG = {
+  datasets: [{
+    id: 'pre1961',
+    label: 'Pre-1961 production test data',
+    description: 'Historical production test dataset already bundled with the site.',
+    index: 'pre1961/by_item_index.json',
+    itemPath: 'pre1961/by_item/{slug}.json',
+    metricLabel: 'Measure'
+  }]
+};
+
+async function initDataCatalog() {
+  if (dataCatalog) return dataCatalog;
+  try {
+    const res = await fetch('data/catalog.json?v=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    dataCatalog = await res.json();
+  } catch (err) {
+    dataCatalog = FALLBACK_DATA_CATALOG;
+  }
+  const sel = document.getElementById('data-dataset');
   if (sel) {
-    sel.innerHTML = dataItemIndex.items.map(it =>
-      `<option value="${it.slug}">${it.item} (${it.polities} polities, ${it.year_min}–${it.year_max})</option>`
+    sel.innerHTML = dataCatalog.datasets.map(ds =>
+      `<option value="${ds.id}">${ds.label}</option>`
     ).join('');
   }
-  return dataItemIndex;
+  return dataCatalog;
+}
+
+async function loadDatasetIndex(dataset) {
+  if (dataDatasetIndexCache[dataset.id]) return dataDatasetIndexCache[dataset.id];
+  const res = await fetch(dataset.index + '?v=' + Date.now());
+  if (!res.ok) throw new Error(`Could not load ${dataset.index}`);
+  const json = await res.json();
+  dataDatasetIndexCache[dataset.id] = json;
+  return json;
+}
+
+function metricsForDatasetIndex(index) {
+  if (Array.isArray(index.metrics) && index.metrics.length) {
+    return index.metrics;
+  }
+  return [{
+    id: 'value',
+    label: 'value',
+    items: index.items || []
+  }];
+}
+
+function itemPathFor(dataset, metric, item) {
+  if (item.path) return item.path;
+  return (dataset.itemPath || '')
+    .replace('{metric}', metric.id)
+    .replace('{slug}', item.slug);
+}
+
+function itemOptionLabel(item) {
+  const polities = item.polities || item.polity_count || '';
+  const polityText = polities ? `, ${polities} polities` : '';
+  return `${item.item} (${item.year_min}–${item.year_max}${polityText})`;
+}
+
+async function onDataDatasetChange(datasetId) {
+  const catalog = await initDataCatalog();
+  const dataset = catalog.datasets.find(ds => ds.id === datasetId) || catalog.datasets[0];
+  dataActiveDataset = dataset;
+  dataActiveItem = null;
+
+  const index = await loadDatasetIndex(dataset);
+  const metrics = metricsForDatasetIndex(index);
+  const metricSel = document.getElementById('data-metric');
+  const metricLabel = document.getElementById('data-metric-label');
+  if (metricLabel) metricLabel.textContent = dataset.metricLabel || 'Measure';
+  if (metricSel) {
+    metricSel.innerHTML = metrics.map(metric =>
+      `<option value="${metric.id}">${metric.label}</option>`
+    ).join('');
+  }
+  await onDataMetricChange(metrics[0] ? metrics[0].id : null);
+}
+
+async function onDataMetricChange(metricId) {
+  if (!dataActiveDataset) return;
+  const index = await loadDatasetIndex(dataActiveDataset);
+  const metrics = metricsForDatasetIndex(index);
+  dataActiveMetric = metrics.find(metric => metric.id === metricId) || metrics[0] || null;
+  const itemSel = document.getElementById('data-item');
+  if (!dataActiveMetric || !itemSel) return;
+  itemSel.innerHTML = (dataActiveMetric.items || []).map(item =>
+    `<option value="${item.slug}">${itemOptionLabel(item)}</option>`
+  ).join('');
+  await onDataItemChange(itemSel.value);
 }
 
 async function loadDataItem(slug) {
-  if (dataItemCache[slug]) return dataItemCache[slug];
-  const res = await fetch(`pre1961/by_item/${slug}.json?v=` + Date.now());
+  if (!dataActiveDataset || !dataActiveMetric || !slug) return null;
+  const index = await loadDatasetIndex(dataActiveDataset);
+  const metrics = metricsForDatasetIndex(index);
+  const metric = metrics.find(m => m.id === dataActiveMetric.id) || dataActiveMetric;
+  const item = (metric.items || []).find(it => it.slug === slug);
+  if (!item) return null;
+  const key = `${dataActiveDataset.id}/${metric.id}/${slug}`;
+  if (dataItemCache[key]) return dataItemCache[key];
+  const res = await fetch(itemPathFor(dataActiveDataset, metric, item) + '?v=' + Date.now());
+  if (!res.ok) throw new Error(`Could not load ${slug}`);
   const json = await res.json();
-  dataItemCache[slug] = json;
+  dataItemCache[key] = json;
   return json;
 }
 
@@ -891,14 +988,24 @@ function updateDataLegend(item, year, minLog, maxLog, featuresCount) {
   if (!item) { el.style.display = 'none'; return; }
   el.style.display = 'block';
   const grad = `linear-gradient(to right, ${DATA_PALETTE.join(', ')})`;
-  const fmt = v => v >= 1000 ? v.toExponential(1) : v.toFixed(1);
+  const fmt = v => {
+    const digits = v >= 100 ? 0 : v >= 10 ? 1 : 2;
+    return new Intl.NumberFormat('en-US', {
+      notation: v >= 1e6 ? 'compact' : 'standard',
+      maximumFractionDigits: digits
+    }).format(v);
+  };
+  const datasetLabel = item.dataset_label || (dataActiveDataset && dataActiveDataset.label) || '';
+  const metricLabel = item.metric_label || (dataActiveMetric && dataActiveMetric.label) || '';
+  const metricText = metricLabel && metricLabel !== 'value' ? ` &middot; ${metricLabel}` : '';
+  const unitText = item.unit && item.unit !== metricLabel ? ` &middot; ${item.unit}` : '';
   el.innerHTML =
     `<div class="dl-title">${item.item}</div>
-     <div class="dl-sub">${year} &middot; ${featuresCount} polities &middot; ${item.unit}</div>
+     <div class="dl-sub">${datasetLabel}${metricText} &middot; ${year} &middot; ${featuresCount} polities${unitText}</div>
      <div class="dl-gradient" style="background:${grad}"></div>
      <div class="dl-row"><span>${fmt(Math.pow(10, minLog))}</span><span>${fmt(Math.pow(10, maxLog))}</span></div>`;
   document.getElementById('data-info').textContent =
-    `${featuresCount} polities with ${item.item.toLowerCase()} data for ${year}`;
+    `${featuresCount} polities with ${item.item.toLowerCase()} data for ${year}${item.positive_values_only ? ' · positive values only' : ''}`;
 }
 
 function renderDataMap() {
@@ -925,9 +1032,12 @@ function updateUnmatchedPanel(item, year) {
   el.innerHTML =
     `<div class="du-title"><span>Unmatched (${list.length})</span><span style="color:#999;font-weight:400;font-size:10px">${fmt(total)} ${item.unit}</span></div>
      <div class="du-sub">${item.item} &middot; ${year} &middot; not placed on the map</div>` +
-    sorted.map(r =>
-      `<div class="du-row"><span class="du-name">${r.name || r.country}<span class="du-iso">${r.iso3c || ''}</span></span><span class="du-val">${fmt(r.value)}</span></div>`
-    ).join('');
+    sorted.map(r => {
+      const name = r.name || r.country || (r.area_code ? `Area ${r.area_code}` : 'Unknown area');
+      const rawCode = r.iso3c || r.area_code || '';
+      const code = rawCode && !String(name).includes(String(rawCode)) ? rawCode : '';
+      return `<div class="du-row"><span class="du-name">${name}<span class="du-iso">${code}</span></span><span class="du-val">${fmt(r.value)}</span></div>`;
+    }).join('');
   el.style.display = 'block';
 }
 
@@ -1013,6 +1123,11 @@ function initDataMap() {
 
 async function onDataItemChange(slug) {
   const item = await loadDataItem(slug);
+  if (!item) {
+    dataActiveItem = null;
+    document.getElementById('data-info').textContent = 'No items available for this dataset/metric.';
+    return;
+  }
   dataActiveItem = item;
   // Constrain the global year slider to the item's coverage.
   slider.min = item.year_min;
@@ -1028,11 +1143,16 @@ async function onDataItemChange(slug) {
 }
 
 async function activateDataView() {
-  await initDataIndex();
+  await initDataCatalog();
   initDataMap();
-  const sel = document.getElementById('data-item');
-  if (sel && !dataActiveItem) {
-    await onDataItemChange(sel.value);
+  const datasetSel = document.getElementById('data-dataset');
+  if (datasetSel && !dataActiveDataset) {
+    await onDataDatasetChange(datasetSel.value);
+  } else {
+    const sel = document.getElementById('data-item');
+    if (sel && !dataActiveItem) {
+      await onDataItemChange(sel.value);
+    }
   }
   // Small timeout so the container has layout before map sizes itself.
   requestAnimationFrame(() => dataMap && dataMap.resize());
@@ -1446,6 +1566,14 @@ function initGraphControls() {
   });
   updateGraphControlsVisibility();
 
+  const dataDatasetSel = document.getElementById('data-dataset');
+  if (dataDatasetSel) {
+    dataDatasetSel.addEventListener('change', () => onDataDatasetChange(dataDatasetSel.value));
+  }
+  const dataMetricSel = document.getElementById('data-metric');
+  if (dataMetricSel) {
+    dataMetricSel.addEventListener('change', () => onDataMetricChange(dataMetricSel.value));
+  }
   const dataItemSel = document.getElementById('data-item');
   if (dataItemSel) {
     dataItemSel.addEventListener('change', () => onDataItemChange(dataItemSel.value));
