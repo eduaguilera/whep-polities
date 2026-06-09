@@ -266,7 +266,7 @@ def write_gpkg(
 def write_csv(rows: list[dict[str, Any]], out_path: Path) -> None:
     import csv
     with open(out_path, "w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=CSV_COLUMNS)
+        w = csv.DictWriter(fh, fieldnames=CSV_COLUMNS, lineterminator="\n")
         w.writeheader()
         for r in rows:
             w.writerow(r)
