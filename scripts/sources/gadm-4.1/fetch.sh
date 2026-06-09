@@ -8,8 +8,14 @@ set -euo pipefail
 OUT_DIR="$(cd "$(dirname "$0")/../../.." && pwd)/data/geodata/gadm-4.1"
 mkdir -p "$OUT_DIR"
 
-# Countries currently cited by the wiki. Extend as more polities use GADM.
-COUNTRIES=(ATG BHS BRB CHN ESP FJI GRD GRL NCL PRI PYF SLB LCA SWE VCT)
+# Countries and territories currently cited by the wiki or by derived
+# reporting-area polygons. Extend as more polities use GADM.
+COUNTRIES=(
+  ABW AIA AND ASM ATF ATG BEL BES BHS BMU BRB BVT CCK CHN COK CUW CYM CXR
+  ESH ESP FJI FLK FRO FSM GIB GLP GRD GRL GUM HMD IOT KIR LCA LIE LUX MAF
+  MCO MHL MNP MSR MTQ MYT NCL NFK NIU PCN PLW PRI PYF REU SGS SHN SJM SLB
+  SMR SPM SWE SXM TCA TKL UMI VAT VCT VGB VIR WLF
+)
 
 ADM0="$OUT_DIR/gadm41_adm0.gpkg"
 ADM1="$OUT_DIR/gadm41_adm1.gpkg"
@@ -18,8 +24,13 @@ rm -f "$ADM0" "$ADM1"
 for iso in "${COUNTRIES[@]}"; do
   CFILE="$OUT_DIR/gadm41_${iso}.gpkg"
   if [ ! -f "$CFILE" ]; then
-    curl -fL -o "$CFILE" "https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_${iso}.gpkg"
-    echo "Fetched: $CFILE"
+    if curl -fL -o "$CFILE" "https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_${iso}.gpkg"; then
+      echo "Fetched: $CFILE"
+    else
+      rm -f "$CFILE"
+      echo "WARN: GADM 4.1 has no fetchable file for ${iso}; skipping." >&2
+      continue
+    fi
   fi
   # Level 0 (country outline)
   if ogrinfo -q "$CFILE" 2>/dev/null | grep -q 'ADM_ADM_0'; then

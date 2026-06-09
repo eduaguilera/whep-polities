@@ -145,3 +145,12 @@ sources:
     file: data/geodata/constructed/constructed.geojson
     id_column: polity_code
     id_type: str
+
+  reporting-areas:
+    # Derived WHEP reporting-area aggregate polygons, keyed by polity_code.
+    # Built by scripts/sources/reporting-areas/build.py from GADM 4.1
+    # component polygons.
+    file: data/geodata/reporting-areas/reporting_areas.gpkg
+    layer: reporting_areas
+    id_column: polity_code
+    id_type: str

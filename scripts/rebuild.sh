@@ -28,6 +28,12 @@ if [ -f data/geodata/cshapes-2.0/CShapes-2.0.shp ]; then
   echo
 fi
 
+if [ -f data/geodata/gadm-4.1/gadm41_adm0.gpkg ]; then
+  echo "Rebuilding derived 'reporting-areas' polygons..."
+  python3 scripts/sources/reporting-areas/build.py
+  echo
+fi
+
 # Steps 1-3: master DB + site.
 python3 scripts/build_database.py "$@"
 bash site/build_wiki.sh
