@@ -9,7 +9,7 @@ ANG-1800-1890,Angola (to 1890),1800,1890,national,ANG,NA,Africa,draft,2026-04-15
 ANG-1890-1891,Angola (1890-1891),1890,1891,national,ANG,NA,Africa,draft,2026-04-13,cshapes-2.0,540,1886,assigned,,,ANG-1891-1905
 ANG-1891-1905,Angola (1891-1905),1891,1905,national,ANG,NA,Africa,draft,2026-04-13,cshapes-2.0,540,1890,assigned,,ANG-1890-1891,AGO-1816-2025
 ANG-1905-1975,Angola (1905-1975),1905,1975,national,ANG,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,
-ANT-1800-2025,Netherlands Antilles,1800,2025,aggregate,ANT,,North America,draft,2026-06-09,reporting-areas,ANT-1800-2025,,derived,,,
+ANT-1961-2010,Netherlands Antilles,1961,2010,aggregate,ANT,,North America,draft,2026-06-11,reporting-areas,ANT-1961-2010,,derived,,,
 ARE-1892-2025,United Arab Emirates,1892,2025,national,ARE,696,Asia,draft,2026-04-12,cshapes-2.0,696,1913,assigned,,,
 ARG-1800-2025,Argentina,1800,2025,national,ARG,160,South America,reviewed,2026-04-12,cshapes-2.0,160,1902,assigned,,,
 ARM-1991-2025,Armenia,1991,2025,national,ARM,371,Asia,reviewed,2026-04-12,cshapes-2.0,371,1991,assigned,,F228-1945-1991,
@@ -49,7 +49,7 @@ BHS-1800-2025,Bahamas,1800,2025,national,BHS,31,North America,draft,2026-06-09,g
 BIH-1992-2025,Bosnia and Herzegovina,1992,2025,national,BIH,346,Europe,reviewed,2026-04-12,cshapes-2.0,346,1992,assigned,,F248-1991-1992,
 BKN-1800-1897,Kingdom of Benin,1800,1897,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Benin,,assigned,,,SNI-1899-1906
 BLR-1991-2025,Belarus,1991,2025,national,BLR,370,Europe,reviewed,2026-04-12,cshapes-2.0,370,1991,assigned,,F228-1945-1991,
-BLX-1800-2025,Belgium-Luxembourg,1800,2025,aggregate,BLX,,Europe,draft,2026-06-09,reporting-areas,BLX-1800-2025,,derived,,,
+BLX-1850-1999,Belgium-Luxembourg,1850,1999,aggregate,BLX,,Europe,draft,2026-06-11,reporting-areas,BLX-1850-1999,,derived,,,
 BLZ-1800-2025,Belize,1800,2025,national,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,,,
 BMB-1800-1899,Bemba Kingdom,1800,1899,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Bemba,,assigned,,,ZMB-1964-2025
 BND-1800-1887,Kingdom of Bundu,1800,1887,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Bundu,,assigned,,,SEN-1960-2025
@@ -444,19 +444,19 @@ PRY-1938-2025,Paraguay,1938,2025,national,PRY,150,South America,draft,2026-04-12
 PYF-1800-2025,French Polynesia,1800,2025,national,PYF,NA,Oceania,draft,2026-06-09,gadm-4.1-adm0,PYF,,proxy,,,
 QAT-1800-2025,Qatar,1800,2025,national,QAT,694,Asia,draft,2026-04-12,cshapes-2.0,694,1916,assigned,,,
 QUE-1859-1900,Queensland (to 1900),1859,1900,national,QUE,NA,Oceania,draft,2026-04-15,cshapes-2.0,905,1886,assigned,,NSW-1800-1900,AUS-1901-2025
-RAFR-1800-2025,Africa Other,1800,2025,aggregate,RAFR,,Africa,draft,2026-06-09,reporting-areas,RAFR-1800-2025,,derived,,,
-RASI-1800-2025,Asia Other,1800,2025,aggregate,RASI,,Asia,draft,2026-06-09,reporting-areas,RASI-1800-2025,,derived,,,
-REUR-1800-2025,Europe Other,1800,2025,aggregate,REUR,,Europe,draft,2026-06-09,reporting-areas,REUR-1800-2025,,derived,,,
-RLAM-1800-2025,Latin America Other,1800,2025,aggregate,RLAM,,South America,draft,2026-06-09,reporting-areas,RLAM-1800-2025,,derived,,,
-RNAM-1800-2025,North America Other,1800,2025,aggregate,RNAM,,North America,draft,2026-06-09,reporting-areas,RNAM-1800-2025,,derived,,,
-ROCE-1800-2025,Oceania Other,1800,2025,aggregate,ROCE,,Oceania,draft,2026-06-09,reporting-areas,ROCE-1800-2025,,derived,,,
+RAFR-1850-2021,Africa Other,1850,2021,aggregate,RAFR,,Africa,draft,2026-06-11,reporting-areas,RAFR-1850-2021,,derived,,,
+RASI-1850-2021,Asia Other,1850,2021,aggregate,RASI,,Asia,draft,2026-06-11,reporting-areas,RASI-1850-2021,,derived,,,
+REUR-1850-2021,Europe Other,1850,2021,aggregate,REUR,,Europe,draft,2026-06-11,reporting-areas,REUR-1850-2021,,derived,,,
+RLAM-1850-2013,Latin America Other,1850,2013,aggregate,RLAM,,South America,draft,2026-06-11,reporting-areas,RLAM-1850-2013,,derived,,,
+RNAM-1850-2021,North America Other,1850,2021,aggregate,RNAM,,North America,draft,2026-06-11,reporting-areas,RNAM-1850-2021,,derived,,,
+ROCE-1850-2021,Oceania Other,1850,2021,aggregate,ROCE,,Oceania,draft,2026-06-11,reporting-areas,ROCE-1850-2021,,derived,,,
 ROU-1859-1913,Romania (to 1913),1859,1913,national,ROU,360,Europe,draft,2026-04-12,cshapes-europe,360,1886,assigned,,,ROU-1913-1918
 ROU-1913-1918,Romania (1913-1918),1913,1918,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1913,assigned,,ROU-1859-1913,ROU-1918-1919
 ROU-1918-1919,Romania (1918-1919),1918,1919,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1918,assigned,,ROU-1913-1918,ROU-1919-1920
 ROU-1919-1920,Romania (1919-1920),1919,1920,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1919,assigned,,ROU-1918-1919,ROU-1920-1940
 ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1920,assigned,,ROU-1919-1920,ROU-1940-2025
 ROU-1940-2025,Romania (1940-2025),1940,2025,national,ROU,360,Europe,reviewed,2026-04-12,cshapes-2.0,360,1940,assigned,,ROU-1920-1940,
-ROW-1800-2025,Rest of World,1800,2025,aggregate,ROW,,World,draft,2026-06-09,reporting-areas,ROW-1800-2025,,derived,,,
+ROW-1850-2023,Rest of World,1850,2023,aggregate,ROW,,World,draft,2026-06-11,reporting-areas,ROW-1850-2023,,derived,,,
 RUS-1991-2014,Russia (1991-2014),1991,2014,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,1991,assigned,,F228-1945-1991,RUS-2014-2025
 RUS-2014-2025,Russia,2014,2025,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,2014,assigned,,RUS-1991-2014,
 RWA-1962-2025,Rwanda,1962,2025,national,RWA,517,Africa,draft,2026-04-12,cshapes-2.0,517,1962,assigned,,RWK-1800-1890; RWB-1922-1962,

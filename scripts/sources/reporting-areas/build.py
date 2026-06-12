@@ -29,32 +29,32 @@ OUT = REPO_ROOT / "data/geodata/reporting-areas/reporting_areas.gpkg"
 
 
 REPORTING_AREAS = {
-    "BLX-1800-2025": {
+    "BLX-1850-1999": {
         "name": "Belgium-Luxembourg",
         "components": ["BEL", "LUX"],
         "note": "Union of Belgium and Luxembourg current GADM 4.1 adm0 polygons.",
     },
-    "ANT-1800-2025": {
+    "ANT-1961-2010": {
         "name": "Netherlands Antilles",
         "components": ["BES", "CUW", "SXM"],
         "note": "Proxy union of Bonaire/Sint Eustatius/Saba, Curacao, and Sint Maarten current GADM 4.1 adm0 polygons.",
     },
-    "RAFR-1800-2025": {
+    "RAFR-1850-2021": {
         "name": "Africa Other",
         "components": ["ESH", "MYT", "REU", "SHN"],
         "note": "Union of WHEP Africa Other component territories from regions_full.csv.",
     },
-    "RASI-1800-2025": {
+    "RASI-1850-2021": {
         "name": "Asia Other",
         "components": ["FSM", "IOT", "MHL", "MNP", "PLW"],
         "note": "Union of WHEP Asia Other component territories; Pacific Islands Trust Territory is proxied by FSM, MHL, MNP, and PLW.",
     },
-    "REUR-1800-2025": {
+    "REUR-1850-2021": {
         "name": "Europe Other",
         "components": ["AND", "FRO", "GIB", "GRL", "LIE", "MCO", "SJM", "SMR", "VAT"],
         "note": "Union of WHEP Europe Other component territories from regions_full.csv.",
     },
-    "RLAM-1800-2025": {
+    "RLAM-1850-2013": {
         "name": "Latin America Other",
         "components": [
             "ABW", "AIA", "BES", "BMU", "BVT", "CUW", "CYM", "FLK",
@@ -62,12 +62,12 @@ REPORTING_AREAS = {
         ],
         "note": "Union of WHEP Latin America Other component territories from regions_full.csv; Netherlands Antilles is represented by its current successor island polygons.",
     },
-    "RNAM-1800-2025": {
+    "RNAM-1850-2021": {
         "name": "North America Other",
         "components": ["SPM", "UMI"],
         "note": "Union of WHEP North America Other component territories from regions_full.csv.",
     },
-    "ROCE-1800-2025": {
+    "ROCE-1850-2021": {
         "name": "Oceania Other",
         "components": [
             "ASM", "ATF", "CCK", "COK", "CXR", "GUM", "HMD", "KIR",
@@ -80,7 +80,7 @@ REPORTING_AREAS = {
 
 ROW_COMPONENTS = [
     code for code in REPORTING_AREAS
-    if code not in {"ROW-1800-2025"}
+    if code not in {"ROW-1850-2023"}
 ]
 
 
@@ -123,13 +123,13 @@ def main() -> int:
 
     row_geom = make_valid(unary_union([geometries[code] for code in ROW_COMPONENTS]))
     rows.append({
-        "polity_code": "ROW-1800-2025",
+        "polity_code": "ROW-1850-2023",
         "polity_name": "Rest of World",
         "components": ";".join(ROW_COMPONENTS),
         "provenance": "Union of WHEP aggregate reporting-area polygons BLX, ANT, RAFR, RASI, REUR, RLAM, RNAM, and ROCE.",
         "geometry": row_geom,
     })
-    print("  OK   ROW-1800-2025: Rest of World")
+    print("  OK   ROW-1850-2023: Rest of World")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     if OUT.exists():
