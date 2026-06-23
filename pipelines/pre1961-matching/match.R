@@ -176,6 +176,7 @@ name_override <- c(
   "China, Manchuria Province of" = "MAN",
   "Cape Province"                = "CAP",
   "Cape of Good Hope"            = "CAP",
+  "Germany Western"              = "F78",
   "French Morocco"               = "MOR"
 )
 
