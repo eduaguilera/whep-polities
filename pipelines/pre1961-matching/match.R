@@ -182,11 +182,14 @@ name_override <- c(
 resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
   iso <- normalise_iso(iso3c, year, polity_name)
   if (is.na(iso) || iso == "NA") {
-    # Try polity_name first, then country column
-    if (!is.na(polity_name) && polity_name %in% names(name_override)) {
-      iso <- unname(name_override[polity_name])
-    } else if (!is.na(country) && country %in% names(name_override)) {
-      iso <- unname(name_override[country])
+    # Case-insensitive name_override lookup: lowercase both input and keys
+    pn_lower  <- tolower(polity_name)
+    cty_lower <- tolower(country)
+    no_lower  <- setNames(name_override, tolower(names(name_override)))
+    if (!is.na(pn_lower) && pn_lower %in% names(no_lower)) {
+      iso <- unname(no_lower[pn_lower])
+    } else if (!is.na(cty_lower) && cty_lower %in% names(no_lower)) {
+      iso <- unname(no_lower[cty_lower])
     }
   }
   # Post-resolution time-dependent adjustments for name_override results
@@ -199,6 +202,8 @@ resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
     if (iso == "MAN" && !is.na(year) && (year < 1932 || year > 1945)) iso <- "CHN"
     # Palestine → Israel after May 1948
     if (iso == "PAL" && !is.na(year) && year >= 1948) iso <- "ISR"
+    # French Indochina pre-federation: FID + year < 1887 → FCC (French Cochinchina)
+    if (iso == "FID" && !is.na(year) && year < 1887) iso <- "FCC"
   }
   iso
 }
