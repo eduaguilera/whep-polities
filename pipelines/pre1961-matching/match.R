@@ -175,7 +175,8 @@ name_override <- c(
   "Indochina"                    = "FID",
   "China, Manchuria Province of" = "MAN",
   "Cape Province"                = "CAP",
-  "Cape of Good Hope"            = "CAP"
+  "Cape of Good Hope"            = "CAP",
+  "French Morocco"               = "MOR"
 )
 
 resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
@@ -281,7 +282,8 @@ name_equiv <- list(
   LVA  = c("latvia", "livonia", "courland", "latvian"),
   LTU  = c("lithuania", "lithuanian", "governorate"),
   POL  = c("poland", "congress", "kongresowka"),
-  BGD  = c("bangladesh", "east pakistan", "east bengal")
+  BGD  = c("bangladesh", "east pakistan", "east bengal"),
+  MOR  = c("french morocco", "morocco protectorate", "protectorate of morocco")
 )
 
 known_equivalent <- function(iso, whep_name) {
