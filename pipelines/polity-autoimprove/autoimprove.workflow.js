@@ -104,7 +104,9 @@ for (const cs of changesets) {
 phase('Verify')
 const VERIFY = { type:'object', additionalProperties:false, required:['unresolved_keys'],
   properties:{ unresolved_keys:{type:'array', items:{type:'string'}} } }
-const harmKey = h => (h.subject_polity || h.subject_label || h.issue_id)
+// key match-units by the DATA LABEL (findings are label-keyed, so Verify/ledger-gating must match on it);
+// fall back to polity_code for pure polity-unit issues that carry no data label.
+const harmKey = h => (h.subject_label || h.subject_polity || h.issue_id)
 const ver = await agent(
   `Re-run the WHEP matcher and report which fixes did NOT resolve. Run: cd ${repo} && python3 pipelines/polity-autoimprove/01_match_and_findings.py (it now reads the just-committed applied_aliases.csv). ` +
   `Then read pipelines/polity-autoimprove/state/findings.json. For each of these subject keys, return it in unresolved_keys IF it STILL appears as a finding entity (i.e. the fix did not route its data): ${JSON.stringify(harmonized.map(harmKey))}`,
@@ -116,7 +118,7 @@ log(`Verify: ${harmonized.length - unresolved.size}/${harmonized.length} fixes c
 phase('Cleanup')
 const ledgerRows = [
   ...correctUnits.map(u => ({ unit_kind:u.kind, key:u.key, status:'correct' })),
-  ...harmonized.map(h => ({ unit_kind: h.subject_polity ? 'polity':'match', key: harmKey(h),
+  ...harmonized.map(h => ({ unit_kind: h.subject_label ? 'match':'polity', key: harmKey(h),
                             status: unresolved.has(harmKey(h)) ? 'issue' : 'fixed' })),
 ]
 await agent(
