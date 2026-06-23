@@ -88,11 +88,14 @@ normalise_iso <- function(iso, year, polity_name = NA_character_) {
   # EST/LVA/LTU/POL-1800-1918, EST/LVA/LTU-1940-1991). No routing needed —
   # iso codes match directly.
 
-  # Turkey pre-1913: data reports "Turkey" covering Anatolian territory
-  # (~780k km2), NOT the full Ottoman Empire (~2.66M km2). Mitchell and
-  # FAOSTAT use "Turkey" for the present-day borders retroactively (Pamuk
-  # confirms). TUR-1800-1913 captures this; OTT captures the full empire.
-  # No routing needed — TUR iso matches TUR-1800-1913 directly.
+  # Turkey: data may report "Turkey" for any period. Two WHEP entries share
+  # iso TUR: TUR-1800-1913 (Anatolian territory, ~780k km2; Mitchell/FAOSTAT
+  # use present-day borders retroactively per Pamuk) and TUR-1920-2025
+  # (Türkiye). Year-based disambiguation is handled by match_one's
+  # year-bounded pool lookup (start_year <= year <= end_year), NOT by an iso
+  # rewrite here. known_equivalent resolves ASCII "Turkey" input to either
+  # entry via the "turkey" alias now merged into the canonical TUR name_equiv
+  # entry. No normalise_iso routing needed.
   # Israel/Palestine pre-1948 → British Mandate Palestine (PAL)
   if (iso %in% c("ISR", "PSE") && !is.na(y) && y < 1948) return("PAL")
 
@@ -220,7 +223,7 @@ whep_by_iso <- split(whep, whep$lookup_key)
 name_equiv <- list(
   # Direct iso matches — historical/modern name pairs
   JPN = c("japanese empire"),
-  TUR = c("t\u00fcrkiye", "ottoman"),
+  TUR = c("t\u00fcrkiye", "turkey", "anatolia", "ottoman"),  # merged from duplicate at old line 281
   DEU = c("german", "prussia", "north german confederation"),
   SWE = c("sweden-norway"),
   SYR = c("syria", "syria and lebanon"),
@@ -278,7 +281,6 @@ name_equiv <- list(
   LVA  = c("latvia", "livonia", "courland", "latvian"),
   LTU  = c("lithuania", "lithuanian", "governorate"),
   POL  = c("poland", "congress", "kongresowka"),
-  TUR  = c("turkey", "anatolia", "ottoman"),
   BGD  = c("bangladesh", "east pakistan", "east bengal")
 )
 
