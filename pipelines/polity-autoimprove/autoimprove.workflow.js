@@ -10,18 +10,20 @@ export const meta = {
   ],
 }
 // v1 implementation of pipelines/polity-autoimprove/README.md. Validate with a real run before relying on it.
-// args = { repo, findings_path, flagged_path, polities_csv, n_findings, n_flags, max_issues }
-const repo          = (args && args.repo) || '/home/usuario/whep-polities'
-const findings_path = (args && args.findings_path) || `${repo}/pipelines/polity-autoimprove/state/findings.json`
-const flagged_path  = (args && args.flagged_path)  || `${repo}/pipelines/polity-autoimprove/state/territorial_flagged.json`
-const polities_csv  = (args && args.polities_csv)  || `${repo}/data/final/polities_database.csv`
-const n_findings    = Number(args && args.n_findings) || 0
-const n_flags       = Number(args && args.n_flags) || 0
-const max_issues    = Number(args && args.max_issues) || 40
-const max_audit     = Number(args && args.max_audit) || (n_findings + n_flags)  // bound per-run audit; default = all remaining
+// args = { repo, findings_path, flagged_path, polities_csv, n_findings, n_flags, max_audit, max_issues }
+// NOTE: the Workflow runtime delivers `args` as a JSON STRING, not an object — parse it.
+const A = (typeof args === 'string') ? JSON.parse(args) : (args || {})
+const repo          = A.repo || '/home/usuario/whep-polities'
+const findings_path = A.findings_path || `${repo}/pipelines/polity-autoimprove/state/findings.json`
+const flagged_path  = A.flagged_path  || `${repo}/pipelines/polity-autoimprove/state/territorial_flagged.json`
+const polities_csv  = A.polities_csv  || `${repo}/data/final/polities_database.csv`
+const n_findings    = Number(A.n_findings) || 0
+const n_flags       = Number(A.n_flags) || 0
+const max_issues    = Number(A.max_issues) || 40
+const max_audit     = Number(A.max_audit) || (n_findings + n_flags)  // bound per-run audit; default = all remaining
 const M = { model: 'sonnet', effort: 'medium' }
 
-const RULES = `WHEP rules: wiki is the SOURCE OF TRUTH (polity changes go wiki->DB->polygon). Aggregate polygons (undivided Germany, Japanese Empire, full USSR) are FIRST-CLASS and kept; fix territory by routing data to the polity whose polygon fits / adding a granular polity, NEVER by editing an aggregate. Settle territorial scope from data magnitudes + spatial-containment evidence, not convention.`
+const RULES = `WHEP rules: wiki is the SOURCE OF TRUTH (polity changes go wiki->DB->polygon). Aggregate polygons (undivided Germany, Japanese Empire, full USSR) are FIRST-CLASS and kept; fix territory by routing data to the polity whose polygon fits / adding a granular polity, NEVER by editing an aggregate. Settle territorial scope from data magnitudes + spatial-containment evidence, not convention. A polygon represents ONLY its vintage year: NEVER assume a polity's territory was identical in other years of its span. If borders changed within the span (annexations/cessions — e.g. Cape Colony expanded through the 1800s), recommend SPLITTING the polity at the border-change years (each period its own polygon), or, if no polygon is available, DOCUMENT the approximation on the wiki page (direction + rough magnitude). A polygon_vintage_drift flag means data is matched far from the polygon's vintage — treat as a real extent question, not 'correct'.`
 
 const ISSUE = { type:'object', additionalProperties:false, required:['verdict','unit_key','unit_kind'],
   properties:{ verdict:{type:'string', enum:['correct','issue']},

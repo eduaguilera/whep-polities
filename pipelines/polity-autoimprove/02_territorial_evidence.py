@@ -59,6 +59,38 @@ for code in sorted(risk|KNOWN):
         "n_data_rows":int((mm.whep_code==code).sum()),
         "family_periods":[f"{p.polity_code} {int(p.start_year)}-{int(p.end_year)}" for _,p in fam.iterrows()],
         "evidence":stepev.get(code,[])[:5],"flag_reasons":reasons})
+
+# --- intra-span polygon-vintage drift: a single polygon (one vintage) cannot
+#     represent a long-lived polity whose borders changed within its span.
+#     Flag polities serving data far from their polygon's vintage year. ---
+SPAN_MIN, TOL = 25, 15
+have={f["polity_code"] for f in flagged}
+for code,grp in mm.groupby("whep_code"):
+    if code not in polmeta or code in have: continue
+    r=polmeta[code]
+    fy=r.get("polygon_feature_year")
+    if pd.isna(fy): continue
+    fy=int(fy); pspan=int(r.end_year)-int(r.start_year)
+    iso=code2iso.get(code)
+    # only single-record families: multi-period isos (USA, Italy...) already route data to
+    # the period whose polygon vintage fits; a lone long-span record (e.g. CAP-1800-1910) cannot.
+    nper=int((pol.iso3_code==iso).sum()) if isinstance(iso,str) and iso not in ("nan","","NA") else 1
+    if nper>1: continue
+    y=pd.to_numeric(grp.year,errors="coerce").dropna()
+    if not len(y): continue
+    dmin,dmax=int(y.min()),int(y.max())
+    drift=max(fy-dmin, dmax-fy)
+    if pspan>=SPAN_MIN and drift>=TOL:
+        fam=pol[pol.iso3_code==iso].sort_values("start_year") if isinstance(iso,str) else pd.DataFrame()
+        flagged.append({"polity_code":code,"polity_name":r.polity_name,"kind":"existing",
+            "period":f"{int(r.start_year)}-{int(r.end_year)}","polygon_source":str(r.get('polygon_source')),
+            "polygon_feature_year":fy,"polygon_area_km2":(float(r.polygon_area_km2) if pd.notna(r.get('polygon_area_km2')) else None),
+            "n_data_rows":int(len(grp)),
+            "family_periods":[f"{p.polity_code} {int(p.start_year)}-{int(p.end_year)}" for _,p in fam.iterrows()],
+            "evidence":[f"polygon vintage {fy} but data spans {dmin}-{dmax} (drift {drift}y over a {pspan}y polity span) -> the single polygon cannot represent border changes within the span"],
+            "flag_reasons":["polygon_vintage_drift: do NOT assume territorial stasis across the polygon vintage"]})
+print(f"  + {len([f for f in flagged if any('vintage_drift' in r for r in f['flag_reasons'])])} polygon-vintage-drift flags")
+
 # ledger gating: drop polities a prior run already resolved (status correct/fixed)
 import csv as _csv
 LEDGER=os.path.join(H,"review_ledger.csv"); resolved=set()

@@ -168,6 +168,18 @@ data's* territory, using the deterministic evidence from `02_territorial_evidenc
 
 Remedy is always **re-route or add a granular polity** — never edit an aggregate.
 
+**Intra-span vintage drift (the Cape Colony case).** A polity record carries a
+single polygon at one *vintage year*; that polygon represents only that year. A
+long-lived polity whose borders changed within its span (e.g. `CAP-1800-1910`,
+one polygon vintage 1886, but Cape Colony expanded through the 1800s) cannot be
+represented by one polygon. `02_territorial_evidence.py` flags
+`polygon_vintage_drift` when data is matched ≥15y from the polygon's vintage over
+a ≥25y span. **An agent must never assume territorial stasis across the vintage.**
+Remedy: split the polity at the border-change years (each period its own
+polygon), or — if no period polygon is available — document the approximation on
+the wiki page (direction + rough magnitude), per the `pre1961-matching`
+"Note approximations" rule.
+
 ---
 
 ## Running
