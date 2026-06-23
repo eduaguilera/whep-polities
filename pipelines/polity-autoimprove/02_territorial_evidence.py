@@ -59,7 +59,16 @@ for code in sorted(risk|KNOWN):
         "n_data_rows":int((mm.whep_code==code).sum()),
         "family_periods":[f"{p.polity_code} {int(p.start_year)}-{int(p.end_year)}" for _,p in fam.iterrows()],
         "evidence":stepev.get(code,[])[:5],"flag_reasons":reasons})
-print(f"flagged {len(flagged)} territorially-sensitive existing polities (magnitude-step + known)")
+# ledger gating: drop polities a prior run already resolved (status correct/fixed)
+import csv as _csv
+LEDGER=os.path.join(H,"review_ledger.csv"); resolved=set()
+if os.path.exists(LEDGER):
+    for r in _csv.DictReader(open(LEDGER)):
+        if (r.get("status") or "").strip() in ("correct","fixed") and r.get("key"):
+            resolved.add(r["key"].strip())
+_b=len(flagged); flagged=[f for f in flagged if f["polity_code"] not in resolved]
+print(f"flagged {len(flagged)} territorially-sensitive existing polities (magnitude-step + known)"
+      + (f"; ledger skipped {_b-len(flagged)}" if _b!=len(flagged) else ""))
 
 STAPLES=["rice","wheat","maize","cattle","sugar"]
 def staples(code):

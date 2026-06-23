@@ -182,7 +182,26 @@ python pipelines/polity-autoimprove/02_territorial_evidence.py   # attach numeri
 ```
 
 Workflow agents default to **Sonnet / medium effort** (large fan-out; cost; avoids
-session limits). Re-run until `state/run_report.md` shows zero open issues.
+session limits). Re-run until the ledger has no `unreviewed`/open units.
+
+### Cost control — two independent knobs (and why there's no waste)
+
+The agents **never** audit the 190k data points — stages 01/02 resolve those
+deterministically for free. Agents only see the **residual uncertain set**
+(findings + territorial flags) that 01/02 could not settle, and the **ledger
+removes anything already resolved** before the workflow runs. So:
+
+- `max_audit` — caps how many residual units are **audited** this run (default =
+  all remaining). The audit set **shrinks every run** because resolved units are
+  ledger-skipped, so you never re-audit a unit that was already confirmed
+  `correct`. For a cheap validation run, set `max_audit` small — it audits a
+  slice **end-to-end** (audit→fix→commit→ledger), not "audit everything then
+  discard".
+- `max_issues` — caps how many issues are **fixed/committed** this run.
+
+A run's cost ≈ `min(max_audit, remaining residual units)` audit agents +
+`min(max_issues, issues found)` fix/integrate agents. Across runs the residual
+set converges to empty.
 
 ---
 

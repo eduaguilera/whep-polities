@@ -6,6 +6,7 @@ export const meta = {
     { title: 'Reconcile', detail: 'dedupe/merge issue reports into harmonized issues', model: 'sonnet' },
     { title: 'Fix',       detail: 'one agent per harmonized issue (worktree-isolated): wiki-first change-set', model: 'sonnet' },
     { title: 'Integrate', detail: 'serial: apply each change-set, verify, one commit per issue', model: 'sonnet' },
+    { title: 'Cleanup',   detail: 'write verdicts to the review ledger so resolved units are skipped next run', model: 'sonnet' },
   ],
 }
 // v1 implementation of pipelines/polity-autoimprove/README.md. Validate with a real run before relying on it.
@@ -17,12 +18,15 @@ const polities_csv  = (args && args.polities_csv)  || `${repo}/data/final/politi
 const n_findings    = Number(args && args.n_findings) || 0
 const n_flags       = Number(args && args.n_flags) || 0
 const max_issues    = Number(args && args.max_issues) || 40
+const max_audit     = Number(args && args.max_audit) || (n_findings + n_flags)  // bound per-run audit; default = all remaining
 const M = { model: 'sonnet', effort: 'medium' }
 
 const RULES = `WHEP rules: wiki is the SOURCE OF TRUTH (polity changes go wiki->DB->polygon). Aggregate polygons (undivided Germany, Japanese Empire, full USSR) are FIRST-CLASS and kept; fix territory by routing data to the polity whose polygon fits / adding a granular polity, NEVER by editing an aggregate. Settle territorial scope from data magnitudes + spatial-containment evidence, not convention.`
 
-const ISSUE = { type:'object', additionalProperties:false, required:['verdict'],
+const ISSUE = { type:'object', additionalProperties:false, required:['verdict','unit_key','unit_kind'],
   properties:{ verdict:{type:'string', enum:['correct','issue']},
+    unit_key:{type:'string', description:'the audited unit identifier: polity_code (territorial flag) or data label (finding)'},
+    unit_kind:{type:'string', enum:['polity','match']},
     issue:{ type:'object', additionalProperties:false,
       properties:{ issue_id:{type:'string'}, type:{type:'string', enum:['rematch_alias','polity_dates','polity_extent_polygon','missing_polity','double_count','data_error']},
         subject_polity:{type:'string'}, subject_label:{type:'string'}, period:{type:'string'},
@@ -44,16 +48,19 @@ const auditOne = (src, i) => {
   return agent(
     `Audit one WHEP review unit. ${RULES}\nRead the JSON array at ${src} and take element index ${i}. ` +
     `Read ${polities_csv} as needed. Decide: is this data->polity match (and the polity's territory for the period) CORRECT? ` +
-    `If yes -> verdict "correct". If not -> verdict "issue" with a typed issue report (issue_id = stable kebab of subject+type, choose type, describe, propose a fix). Use the numeric evidence fields (staple_magnitudes, contained_with_concurrent_data) when present.`,
+    `Set unit_key = the polity_code (territorial flag) or the data label (finding), and unit_kind accordingly. ` +
+    `If correct -> verdict "correct". If not -> verdict "issue" with a typed issue report (issue_id = stable kebab of subject+type, choose type, describe, propose a fix). Use the numeric evidence fields (staple_magnitudes, contained_with_concurrent_data) when present.`,
     { ...M, label:`audit:${src.includes('flagged')?'terr':'find'}:${i}`, phase:'Audit', schema:ISSUE })
 }
+// bound the per-run audit to max_audit (findings first, then flags). 01/02 already dropped ledger-resolved units.
 const auditCalls = [
   ...Array.from({length:n_findings}, (_,i)=>()=>auditOne(findings_path, i)),
   ...Array.from({length:n_flags},   (_,i)=>()=>auditOne(flagged_path, i)),
-]
+].slice(0, max_audit)
 const audited = (await parallel(auditCalls)).filter(Boolean)
 const issues = audited.filter(a=>a.verdict==='issue' && a.issue).map(a=>a.issue)
-log(`Audit: ${audited.length} units, ${issues.length} issues, ${audited.length-issues.length} correct`)
+const correctUnits = audited.filter(a=>a.verdict==='correct').map(a=>({key:a.unit_key, kind:a.unit_kind}))
+log(`Audit: ${audited.length}/${n_findings+n_flags} units audited, ${issues.length} issues, ${correctUnits.length} correct`)
 
 // ---------- Reconcile ----------
 phase('Reconcile')
@@ -84,12 +91,27 @@ for (const cs of changesets) {
     { ...M, label:`integrate:${cs.issue_id}`, phase:'Integrate' })
   applied.push({ issue_id: cs.issue_id, result: res })
 }
+
+// ---------- Cleanup: write verdicts to the ledger so resolved units are skipped next run ----------
+phase('Cleanup')
+const ledgerRows = [
+  ...correctUnits.map(u => ({ unit_kind:u.kind, key:u.key, status:'correct' })),
+  ...harmonized.map(h => ({ unit_kind: h.subject_polity ? 'polity':'match',
+                            key: h.subject_polity || h.subject_label || h.issue_id, status:'fixed' })),
+]
+await agent(
+  `Update the WHEP review ledger so resolved units are skipped on the next run. Append these rows to ${repo}/pipelines/polity-autoimprove/state/review_ledger.csv ` +
+  `(header: unit_kind,key,status,issue_id,evidence_hash,last_run,last_commit; fill last_run with today's date, leave evidence_hash/last_commit blank if unknown). ` +
+  `Do NOT duplicate keys already present (update their status instead). Then commit ONLY review_ledger.csv with message "autoimprove: update review ledger". Rows:\n${JSON.stringify(ledgerRows).slice(0,60000)}`,
+  { ...M, label:'cleanup-ledger', phase:'Cleanup' })
+
 return {
   units_audited: audited.length,
-  correct: audited.length - issues.length,
+  audit_universe: n_findings + n_flags,
+  correct: correctUnits.length,
   issues: issues.length,
   harmonized: harmonized.length,
-  changesets: changesets.length,
   committed: applied.length,
-  note: 'After this: re-run 01/02 to verify fixes resolved their issues, then update state/review_ledger.csv.',
+  ledger_rows_written: ledgerRows.length,
+  note: 'Re-run 01/02 then this workflow to continue; ledger-resolved units are skipped, so each run\'s audit set shrinks.',
 }

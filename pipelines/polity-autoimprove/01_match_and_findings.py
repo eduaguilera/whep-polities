@@ -20,6 +20,13 @@ LB           = os.environ.get("WHEP_LAYERB", "/home/usuario/Nextcloud/whep/layer
 COMMON_NAMES = os.environ.get("WHEP_COMMON_NAMES",
     "/home/usuario/Nextcloud/WHEP_ERC 2025/Sources/datasets/unclassified_datasets/Other polities/data/whep-source/common_names.csv")
 os.makedirs(OUT, exist_ok=True)
+# ledger gating: never re-surface units a prior run already resolved (status correct/fixed)
+LEDGER = os.path.join(OUT, "review_ledger.csv")
+resolved_keys = set()
+if os.path.exists(LEDGER):
+    for r in csv.DictReader(open(LEDGER)):
+        if (r.get("status") or "").strip() in ("correct","fixed") and r.get("key"):
+            resolved_keys.add(r["key"].strip().lower())
 
 def norm(s):
     if s is None or (isinstance(s,float) and np.isnan(s)): return ""
@@ -159,7 +166,11 @@ for (country, iso, method), grp in un.groupby([un.country, un.iso3c.fillna(""), 
         ev["finding_type"] = "other"
     findings.append(ev)
 
-# ---------- Stage 2: triage + report ----------
+# ---------- Stage 2: triage + report (ledger-gated) ----------
+_before = len(findings)
+findings = [f for f in findings if f["entity"].strip().lower() not in resolved_keys]
+if _before != len(findings):
+    print(f"  ledger: skipped {_before-len(findings)} findings already resolved in prior runs")
 findings.sort(key=lambda f: (-f["rows"]))
 for ft in ("name_unresolved","coverage_gap","other"):
     bucket=[f for f in findings if f["finding_type"]==ft]
