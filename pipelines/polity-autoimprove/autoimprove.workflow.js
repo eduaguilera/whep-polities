@@ -5,8 +5,9 @@ export const meta = {
     { title: 'Audit',     detail: 'one agent per unresolved unit: verdict correct, or emit a typed issue report', model: 'sonnet' },
     { title: 'Reconcile', detail: 'dedupe/merge issue reports into harmonized issues', model: 'sonnet' },
     { title: 'Fix',       detail: 'one agent per harmonized issue (worktree-isolated): wiki-first change-set', model: 'sonnet' },
-    { title: 'Integrate', detail: 'serial: apply each change-set, verify, one commit per issue', model: 'sonnet' },
-    { title: 'Cleanup',   detail: 'write verdicts to the review ledger so resolved units are skipped next run', model: 'sonnet' },
+    { title: 'Integrate', detail: 'serial: apply each change-set, one commit per issue', model: 'sonnet' },
+    { title: 'Verify',    detail: 're-run the matcher; confirm which fixes actually resolved', model: 'sonnet' },
+    { title: 'Cleanup',   detail: 'ledger: mark only VERIFIED-resolved fixed; others stay open for retry', model: 'sonnet' },
   ],
 }
 // v1 implementation of pipelines/polity-autoimprove/README.md. Validate with a real run before relying on it.
@@ -40,7 +41,9 @@ const CHANGESET = { type:'object', additionalProperties:false, required:['issue_
     wiki_path:{type:'string'}, wiki_content:{type:'string'},
     csv_row:{type:'string', description:'a full polities_database.csv row to add, or empty'},
     csv_edit:{type:'string', description:'description of an edit to an existing row, or empty'},
-    match_rule_patch:{type:'string', description:'line(s) to add to common_names / match.R, or empty'},
+    alias_row:{type:'object', additionalProperties:false, description:'for rematch_alias: append to state/applied_aliases.csv (the file the 01 matcher reads)',
+      properties:{ original_name:{type:'string'}, common_name:{type:'string'}, target_polity_code:{type:'string'} } },
+    match_rule_patch:{type:'string', description:'OPTIONAL: equivalent rule for the legacy pre1961-matching/match.R, or empty'},
     polygon_decision:{type:'string'}, commit_message:{type:'string'} } }
 
 // ---------- Audit ----------
@@ -78,7 +81,10 @@ const changesets = (await parallel(harmonized.map(h => () => {
   if (budget.total && budget.remaining() < 30_000) return null
   return agent(
     `You are fixing ONE WHEP issue, wiki-first. ${RULES}\nIssue: ${JSON.stringify(h)}\n` +
-    `Research the entity, then produce a CHANGE-SET (do NOT commit, do NOT run git): for a polity change, the wiki page content (wiki/polities/<code>.md per the repo's Territorial-extent requirements) + the CSV row/edit + polygon_decision; for rematch_alias, the match_rule_patch only; for data_error, summary only. Provide a one-line commit_message.`,
+    `Research the entity, then produce a CHANGE-SET (do NOT commit, do NOT run git): ` +
+    `for rematch_alias, emit alias_row {original_name (the verbatim data label), common_name, target_polity_code} — this is appended to state/applied_aliases.csv, the file the 01 matcher actually reads (optionally also match_rule_patch for the legacy match.R); ` +
+    `for a polity change (dates/extent/missing), the wiki page content (wiki/polities/<code>.md per the repo's Territorial-extent requirements) + the CSV row/edit + polygon_decision; ` +
+    `for data_error, summary only. Provide a one-line commit_message.`,
     { ...M, label:`fix:${h.issue_id}`, phase:'Fix', isolation:'worktree', schema:CHANGESET })
 }))).filter(Boolean)
 log(`Fix: ${changesets.length} change-sets`)
@@ -89,21 +95,34 @@ const applied = []
 for (const cs of changesets) {
   const res = await agent(
     `Apply ONE change-set to ${repo} and commit it, then STOP. ${RULES}\nChange-set: ${JSON.stringify(cs)}\n` +
-    `Steps: (1) write wiki_content to wiki_path if present; (2) apply csv_row/csv_edit to data/final/polities_database.csv; (3) apply match_rule_patch if present; (4) git add the touched files and 'git commit -m "<commit_message>"' (end the message with the repo's required Co-Authored-By + Claude-Session trailers). Do NOT push. Report the commit hash and files changed. Leave no untracked stray files.`,
+    `Steps: (1) if alias_row present, append it to pipelines/polity-autoimprove/state/applied_aliases.csv (create with header 'original_name,common_name,target_polity_code,confidence,rows' if missing); (2) write wiki_content to wiki_path if present; (3) apply csv_row/csv_edit to data/final/polities_database.csv; (4) apply match_rule_patch to pre1961-matching/match.R only if present; (5) git add the touched files and 'git commit -m "<commit_message>"' (end the message with the repo's required Co-Authored-By + Claude-Session trailers). Do NOT push. Report the commit hash and files changed. Leave no untracked stray files.`,
     { ...M, label:`integrate:${cs.issue_id}`, phase:'Integrate' })
   applied.push({ issue_id: cs.issue_id, result: res })
 }
 
-// ---------- Cleanup: write verdicts to the ledger so resolved units are skipped next run ----------
+// ---------- Verify: re-run the matcher and see which fixes actually resolved ----------
+phase('Verify')
+const VERIFY = { type:'object', additionalProperties:false, required:['unresolved_keys'],
+  properties:{ unresolved_keys:{type:'array', items:{type:'string'}} } }
+const harmKey = h => (h.subject_polity || h.subject_label || h.issue_id)
+const ver = await agent(
+  `Re-run the WHEP matcher and report which fixes did NOT resolve. Run: cd ${repo} && python3 pipelines/polity-autoimprove/01_match_and_findings.py (it now reads the just-committed applied_aliases.csv). ` +
+  `Then read pipelines/polity-autoimprove/state/findings.json. For each of these subject keys, return it in unresolved_keys IF it STILL appears as a finding entity (i.e. the fix did not route its data): ${JSON.stringify(harmonized.map(harmKey))}`,
+  { ...M, label:'verify-rematch', phase:'Verify', schema:VERIFY })
+const unresolved = new Set((ver && ver.unresolved_keys) || [])
+log(`Verify: ${harmonized.length - unresolved.size}/${harmonized.length} fixes confirmed resolved`)
+
+// ---------- Cleanup: ledger — fixed only the VERIFIED-resolved; others stay open for retry ----------
 phase('Cleanup')
 const ledgerRows = [
   ...correctUnits.map(u => ({ unit_kind:u.kind, key:u.key, status:'correct' })),
-  ...harmonized.map(h => ({ unit_kind: h.subject_polity ? 'polity':'match',
-                            key: h.subject_polity || h.subject_label || h.issue_id, status:'fixed' })),
+  ...harmonized.map(h => ({ unit_kind: h.subject_polity ? 'polity':'match', key: harmKey(h),
+                            status: unresolved.has(harmKey(h)) ? 'issue' : 'fixed' })),
 ]
 await agent(
-  `Update the WHEP review ledger so resolved units are skipped on the next run. Append these rows to ${repo}/pipelines/polity-autoimprove/state/review_ledger.csv ` +
-  `(header: unit_kind,key,status,issue_id,evidence_hash,last_run,last_commit; fill last_run with today's date, leave evidence_hash/last_commit blank if unknown). ` +
+  `Update the WHEP review ledger so resolved units are skipped on the next run. Append/merge these rows into ${repo}/pipelines/polity-autoimprove/state/review_ledger.csv ` +
+  `(header: unit_kind,key,status,issue_id,evidence_hash,last_run,last_commit; fill last_run with today's date). ` +
+  `Rows with status 'fixed' are confirmed resolved; status 'issue' means the fix did NOT resolve and should be retried next run (do not mark those correct/fixed). ` +
   `Do NOT duplicate keys already present (update their status instead). Then commit ONLY review_ledger.csv with message "autoimprove: update review ledger". Rows:\n${JSON.stringify(ledgerRows).slice(0,60000)}`,
   { ...M, label:'cleanup-ledger', phase:'Cleanup' })
 

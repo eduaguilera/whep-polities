@@ -138,7 +138,7 @@ one commit.
 
 | fix_type | what the fix agent does | touches |
 |---|---|---|
-| `rematch_alias` | data label routes to the wrong/none polity but the **right polity exists** → add an alias / `normalise_iso` / `name_override` rule. No entity change. | `data/final/.../common_names.csv`, `pre1961-matching/match.R` |
+| `rematch_alias` | data label routes to the wrong/none polity but the **right polity exists** → append an `alias_row` to **`state/applied_aliases.csv`** (the file `01_match_and_findings.py` actually reads). No entity change. Optionally also patch the legacy `pre1961-matching/match.R`. | `state/applied_aliases.csv` (+ optional `match.R`) |
 | `polity_dates` | a polity's start/end is wrong for the data → **wiki first** (research + update the page's dates & rationale), then the CSV row, then predecessor/successor links. | `wiki/polities/<code>.md` → CSV |
 | `polity_extent_polygon` | polygon is wrong-extent for the data it serves → **wiki first** (document the contemporaneous territory + km²), then choose/generate the polygon (CShapes/GADM/Cliopatria/Paine/CHGIS, union, or constructed). Aggregates are kept; route granular data to a granular polity instead. | `wiki/polities/<code>.md` → CSV + polygon |
 | `missing_polity` | data has no covering polity → create the wiki page (per `pre1961-matching` "Wiki page requirements"), then CSV row, then polygon. | new `wiki/polities/<code>.md` → CSV + polygon |
