@@ -1,1 +1,4 @@
 unit_kind,key,status,issue_id,evidence_hash,last_run,last_commit
+polity,TUR-1920-2025,fixed,,,2026-06-23,
+polity,MOR-1904-1956,fixed,,,2026-06-23,
+polity,FID-1887-1954,fixed,,,2026-06-23,
