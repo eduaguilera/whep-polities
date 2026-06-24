@@ -135,9 +135,11 @@ normalise_iso <- function(iso, year, polity_name = NA_character_) {
   if (iso == "SOM" && !is.na(y) && y < 1960) return("ITS")
   # Sudan: WHEP uses SUD (not SDN) for pre-2011 unified Sudan
   if (iso == "SDN" && !is.na(y) && y < 2011) return("SUD")
-  # Malawi/Zimbabwe/Zambia 1953-1964 → Federation of Rhodesia & Nyasaland (FRN)
+  # Malawi/Zambia 1953-1964 → Federation of Rhodesia & Nyasaland (FRN)
+  # Zimbabwe/ZWE 1953-1964 → SRH (Southern Rhodesia within Federation, ~390610 km²)
+  # Routing ZWE to FRN (~1260000 km²) would overstate ~3×; SRH is the correct granular polity
   if (iso == "MWI" && !is.na(y) && y >= 1953 && y < 1964) return("FRN")
-  if (iso == "ZWE" && !is.na(y) && y >= 1953 && y < 1964) return("FRN")
+  if (iso == "ZWE" && !is.na(y) && y >= 1953 && y < 1964) return("SRH")
   if (iso == "ZMB" && !is.na(y) && y >= 1953 && y < 1964) return("FRN")
   # Libya pre-1912 → Ottoman Empire (OTT)
   if (iso == "LBY" && !is.na(y) && y < 1912) return("OTT")
@@ -266,7 +268,8 @@ name_equiv <- list(
   MAU  = c("mauritania"),
   BMA  = c("malaysia", "malaya", "malay"),
   ITS  = c("somali", "somalia"),
-  FRN  = c("malawi", "nyasaland", "rhodesia", "zimbabwe", "zambia"),
+  FRN  = c("malawi", "nyasaland", "rhodesia", "zambia"),
+  SRH  = c("southern rhodesia", "zimbabwe"),
   SUD  = c("sudan"),
   IND  = c("india", "pakistan", "bengal"),
   PAK  = c("pakistan", "bangladesh", "east pakistan"),
@@ -418,7 +421,8 @@ trusted_rewrite <- function(input_iso, input_name, year, whep_code, whep_iso) {
   if (input_iso == "MRT" && !is.na(y) && y < 1960 && grepl("^MAU", whep_code)) return(TRUE)
   if (input_iso == "SOM" && !is.na(y) && y < 1960 && grepl("^ITS", whep_code)) return(TRUE)
   if (input_iso == "SDN" && !is.na(y) && y < 2011 && grepl("^SUD", whep_code)) return(TRUE)
-  if (input_iso %in% c("MWI", "ZWE", "ZMB") && !is.na(y) && y >= 1953 && y < 1964 && grepl("^FRN", whep_code)) return(TRUE)
+  if (input_iso %in% c("MWI", "ZMB") && !is.na(y) && y >= 1953 && y < 1964 && grepl("^FRN", whep_code)) return(TRUE)
+  if (input_iso == "ZWE" && !is.na(y) && y >= 1953 && y < 1964 && grepl("^SRH", whep_code)) return(TRUE)
   if (input_iso == "LBY" && !is.na(y) && y < 1912 && grepl("^OTT", whep_code)) return(TRUE)
   if (input_iso == "RWA" && !is.na(y) && y < 1962 && grepl("^RWB", whep_code)) return(TRUE)
   if (input_iso == "CSK" && !is.na(y) && y < 1918 && grepl("^AUH", whep_code)) return(TRUE)
