@@ -52,3 +52,11 @@ Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed,
 czech republic,,1919,1938,,F51-1918-1938,high,year-ranged alias: interwar Czechoslovakia covers 1919-1938 Czech data,603
 czech republic,,1938,1945,,F51-1938-1945,high,year-ranged alias: WWII-period Czechoslovakia covers 1938-1945 Czech data,603
 czech republic,,1945,1947,,F51-1945-1947,high,year-ranged alias: postwar Czechoslovakia covers 1945-1947 Czech data,603
+russian federation,,1906,1914,Russian Empire (1905-1914),F228-1905-1914,high,data labelled 'russian federation' pre-1917 measures Russian Empire territory; modern RF did not exist until 1991,
+russian federation,,1914,1917,Russian Empire (1914-1917),F228-1914-1917,high,data labelled 'russian federation' 1914-1917 measures wartime Russian Empire; modern RF did not exist until 1991,
+russian federation,,1917,1918,Russia (1917-1918),F228-1917-1918,high,provisional state after February Revolution; RF did not exist until 1991,
+russian federation,,1918,1920,RSFSR (1918-1920),F228-1918-1920,high,RSFSR is direct territorial predecessor of modern RF; RF did not exist until 1991,
+russian federation,,1920,1921,RSFSR (1920-1921),F228-1920-1921,high,RSFSR is direct territorial predecessor of modern RF; RF did not exist until 1991,
+russian federation,,1921,1940,RSFSR/USSR (1921-1940),F228-1921-1940,high,data measures Russian core of USSR; RF did not exist until 1991,
+russian federation,,1940,1945,USSR (1940-1945),F228-1940-1945,high,data measures Russian core of USSR; RF did not exist until 1991,
+russian federation,,1945,1960,USSR (1945-1991),F228-1945-1991,high,data measures Russian core of USSR; RF did not exist until 1991,
