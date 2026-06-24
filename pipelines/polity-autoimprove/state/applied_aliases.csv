@@ -96,3 +96,8 @@ romania,,1918,1919,Romania,ROU-1918-1919,high,iso rou + year-ranged dispatch to 
 romania,,1919,1920,Romania,ROU-1919-1920,high,iso rou + year-ranged dispatch to ROU family,
 romania,,1920,1940,Romania,ROU-1920-1940,high,iso rou + year-ranged dispatch to ROU family,
 romania,,1940,2025,Romania,ROU-1940-2025,high,iso rou + year-ranged dispatch to ROU family,
+algeria,,1831,1886,Algeria,DZA-1831-1886,high,name-equivalence; French colonial Algeria pre-CShapes baseline,
+algeria,,1886,1902,Algeria,DZA-1886-1902,high,name-equivalence; French colonial Algeria 1886-1902,
+algeria,,1902,1919,Algeria,DZA-1902-1919,high,name-equivalence; French colonial Algeria post-Sahara annexation,
+algeria,,1919,1962,Algeria,DZA-1919-1962,high,name-equivalence; French colonial Algeria IIA period (1905-1945 active),
+algeria,,1962,2025,Algeria,DZA-1962-2025,high,name-equivalence; independent Algeria,
