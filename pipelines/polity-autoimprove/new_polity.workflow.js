@@ -36,13 +36,15 @@ const SPEC = { type:'object', additionalProperties:false,
     polygon_feature_id:{type:'string'}, polygon_feature_year:{type:'string'},
     polygon_confidence:{type:'string', enum:['high','medium','low']}, polygon_notes:{type:'string'},
     wiki_markdown:{type:'string', description:'full wiki/polities/<code>.md incl frontmatter + ## Territorial extent with provenance'},
-    csv_row:{type:'string', description:'one polities_database.csv row matching its 17-column header, using this spec'} } }
+    csv_row:{type:'string', description:'one polities_database.csv row matching its 17-column header, using this spec'},
+    aliases:{type:'array', description:'verbatim DATA LABELS that must route to this polity (essential when the label carries no iso). Each: original_name + the year sub-range that maps here.',
+      items:{type:'object', additionalProperties:false, properties:{ original_name:{type:'string'}, year_start:{type:'integer'}, year_end:{type:'integer'} }}} } }
 
 phase('Design')
 const specs = (await parallel(polities.map((p,i) => () =>
   agent(`Create a NEW WHEP historical polity. Entity: "${p.label}" (iso ${p.iso||'?'}), period ${p.period}. Context: ${p.note||''}.\n` +
     `Read ${POLDB} for the 17-column schema, existing predecessor/successor codes, and to avoid code collisions. ${HIER}\n` +
-    `Produce the full spec: polity_code (e.g. ${p.iso||'XXX'}-START-END), name, iso3, years, type=national, predecessor/successor (existing WHEP codes), the polygon decision per the hierarchy, the wiki_markdown, and the csv_row.`,
+    `Produce the full spec: polity_code (e.g. ${p.iso||'XXX'}-START-END), name, iso3, years, type=national, predecessor/successor (existing WHEP codes), the polygon decision per the hierarchy, the wiki_markdown, the csv_row, and \`aliases\`: the verbatim data label(s) for this entity (e.g. "${p.label}") with the year sub-range that should route here — REQUIRED so the data matches even if the label carries no iso.`,
     { ...M, label:`design:${p.label}`, phase:'Design', schema:SPEC })
 ))).filter(Boolean)
 log(`Designed ${specs.length} polities`)
@@ -53,7 +55,8 @@ for (const s of specs) {
   const r = await agent(`Create this polity in ${repo}, then STOP. Spec: ${JSON.stringify(s)}\n` +
     `Steps: (1) write the wiki_markdown to wiki/polities/${s.polity_code.toLowerCase()}.md (wiki filenames are LOWERCASE by convention; the polity_code inside the frontmatter stays uppercase); (2) append the csv_row to data/final/polities_database.csv (verify it has the same number of columns as the header); ` +
     `(3) if polygon_method is composed_union/constructed_estimate AND you can build the geometry cheaply (geopandas), write it to data/geodata/constructed/constructed.geojson and set polygon_status=assigned; if exact_historical/period_proxy, the csv_row should already name the source/feature (polygon_status=assigned if you confirmed it, else recommended); ` +
-    `(4) git add the touched files and commit "new polity: ${s.polity_code} (${s.polity_name})" with the repo's required trailers. Do NOT push. Report files changed, commit hash, polygon_method+confidence. No stray files.`,
+    `(4) for each entry in aliases (${JSON.stringify(s.aliases||[])}), append a row to pipelines/polity-autoimprove/state/applied_aliases.csv (header original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows) with target_polity_code=${s.polity_code}, so the data label routes to this polity; ` +
+    `(5) git add the touched files (wiki, polities_database.csv, applied_aliases.csv) and commit "new polity: ${s.polity_code} (${s.polity_name})" with the repo's required trailers. Do NOT push. Report files changed, commit hash, polygon_method+confidence. No stray files.`,
     { ...M, label:`integrate:${s.polity_code}`, phase:'Integrate' })
   done.push({ code: s.polity_code, method: s.polygon_method, confidence: s.polygon_confidence, result: r })
 }

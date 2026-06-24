@@ -45,3 +45,7 @@ tanzania,,1922,1964,,TAN-1922-1964,medium,reused from stopped run wf_62a587d4 au
 indochina cambodia,,1907,1953,,KHM-1907-1953,medium,reused from stopped run wf_62a587d4 audit,
 russian federation,,1991,2014,,RUS-1991-2014,medium,reused from stopped run wf_62a587d4 audit,
 russian federation,,2014,2025,,RUS-2014-2025,medium,reused from stopped run wf_62a587d4 audit,
+hawaii,,1898,1959,Territory of Hawaii,HAWI-1898-1959,high,new polity routed; label carries no iso,
+Germany Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed; Saar protectorate 1947-57 (pre-1947 Saar=Germany),
+France Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed,
+Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed,
