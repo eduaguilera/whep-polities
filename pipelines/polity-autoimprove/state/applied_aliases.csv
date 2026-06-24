@@ -60,3 +60,13 @@ russian federation,,1920,1921,RSFSR (1920-1921),F228-1920-1921,high,RSFSR is dir
 russian federation,,1921,1940,RSFSR/USSR (1921-1940),F228-1921-1940,high,data measures Russian core of USSR; RF did not exist until 1991,
 russian federation,,1940,1945,USSR (1940-1945),F228-1940-1945,high,data measures Russian core of USSR; RF did not exist until 1991,
 russian federation,,1945,1960,USSR (1945-1991),F228-1945-1991,high,data measures Russian core of USSR; RF did not exist until 1991,
+united states of america,,1800,1803,United States of America,USA-1800-1803,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
+united states of america,,1803,1848,United States of America,USA-1803-1848,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
+united states of america,,1848,1867,United States of America,USA-1848-1867,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
+united states of america,,1867,1959,United States of America,USA-1867-1959,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
+united states of america,,1959,2025,United States of America,USA-1959-2025,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
+united states of america,iia,1800,1803,United States of America,USA-1800-1803,high,source-restricted iia alias; year-ranged USA family,141
+united states of america,iia,1803,1848,United States of America,USA-1803-1848,high,source-restricted iia alias; year-ranged USA family,141
+united states of america,iia,1848,1867,United States of America,USA-1848-1867,high,source-restricted iia alias; year-ranged USA family,141
+united states of america,iia,1867,1959,United States of America,USA-1867-1959,high,source-restricted iia alias; year-ranged USA family,141
+united states of america,iia,1959,2025,United States of America,USA-1959-2025,high,source-restricted iia alias; year-ranged USA family,141
