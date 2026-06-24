@@ -24,7 +24,7 @@ const max_issues    = Number(A.max_issues) || 40
 const max_audit     = Number(A.max_audit) || (n_findings + n_flags)  // bound per-run audit; default = all remaining
 const M = { model: 'sonnet', effort: 'medium' }
 
-const RULES = `WHEP rules: wiki is the SOURCE OF TRUTH (polity changes go wiki->DB->polygon). Aggregate polygons (undivided Germany, Japanese Empire, full USSR) are FIRST-CLASS and kept; fix territory by routing data to the polity whose polygon fits / adding a granular polity, NEVER by editing an aggregate. Settle territorial scope from data magnitudes + spatial-containment evidence, not convention. A polygon represents ONLY its vintage year: NEVER assume a polity's territory was identical in other years of its span. If borders changed within the span (annexations/cessions — e.g. Cape Colony expanded through the 1800s), recommend SPLITTING the polity at the border-change years (each period its own polygon), or, if no polygon is available, DOCUMENT the approximation on the wiki page (direction + rough magnitude). A polygon_vintage_drift flag means data is matched far from the polygon's vintage — treat as a real extent question, not 'correct'.`
+const RULES = `WHEP rules: wiki is the SOURCE OF TRUTH (polity changes go wiki->DB->polygon). Aggregate polygons (undivided Germany, Japanese Empire, full USSR) are FIRST-CLASS and kept; fix territory by routing data to the polity whose polygon fits / adding a granular polity, NEVER by editing an aggregate. Settle territorial scope from data magnitudes + spatial-containment evidence, not convention. A polygon represents ONLY its vintage year: NEVER assume a polity's territory was identical in other years of its span. If borders changed within the span (annexations/cessions — e.g. Cape Colony expanded through the 1800s), recommend SPLITTING the polity at the border-change years (each period its own polygon), or, if no polygon is available, DOCUMENT the approximation on the wiki page (direction + rough magnitude). A polygon_vintage_drift flag means data is matched far from the polygon's vintage — treat as a real extent question, not 'correct'. CRITICAL: a SUB-TERRITORY's data must NOT be matched UP to its parent empire/aggregate polity. E.g. 'czech republic'/Bohemia 1910 is a CROWNLAND of Austria-Hungary (~80k km2), NOT the whole empire (~600k km2) — mapping it to the AUH polity overstates ~7x; likewise Slovakia/Croatia/Galicia are NOT all of Austria-Hungary, and Finland/Poland/Baltics are NOT all of the Russian Empire. Match each label to the polity whose territory EQUALS what the data measures; the magnitudes are the tell (a crownland's production is a small fraction of the empire total). If no polity matches that sub-territory, it is a coverage_gap -> create the granular polity (e.g. 'Czech Lands within Austria-Hungary'), do NOT fold it into the empire.`
 
 const ISSUE = { type:'object', additionalProperties:false, required:['verdict','unit_key','unit_kind'],
   properties:{ verdict:{type:'string', enum:['correct','issue']},
@@ -67,13 +67,26 @@ const issues = audited.filter(a=>a.verdict==='issue' && a.issue).map(a=>a.issue)
 const correctUnits = audited.filter(a=>a.verdict==='correct').map(a=>({key:a.unit_key, kind:a.unit_kind}))
 log(`Audit: ${audited.length}/${n_findings+n_flags} units audited, ${issues.length} issues, ${correctUnits.length} correct`)
 
-// ---------- Reconcile ----------
+// ---------- Reconcile (DETERMINISTIC: group issues by subject — no agent) ----------
 phase('Reconcile')
-const recon = await agent(
-  `Reconcile these WHEP issue reports into harmonized work units. Merge duplicates and issues touching the same subject; union their evidence; pick ONE fix_type per unit; record supersedes:[ids]. ${RULES}\n\nISSUES:\n${JSON.stringify(issues).slice(0,120000)}`,
-  { ...M, label:'reconcile', phase:'Reconcile', schema:HARM })
-let harmonized = ((recon && recon.harmonized) || []).slice(0, max_issues)
-log(`Reconcile: ${issues.length} issues -> ${harmonized.length} harmonized`)
+const rnorm = s => (s||"").toString().toLowerCase().replace(/\(.*?\)/g," ").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim()
+const groups = new Map()
+for (const it of issues) {
+  const key = (it.subject_polity && it.subject_polity.trim()) || rnorm(it.subject_label) || it.issue_id
+  if (!groups.has(key)) groups.set(key, [])
+  groups.get(key).push(it)
+}
+let harmonized = [...groups.values()].map(grp => {
+  const tc = {}; for (const g of grp) tc[g.type] = (tc[g.type]||0)+1
+  const type = Object.entries(tc).sort((a,b)=>b[1]-a[1])[0][0]
+  const a = grp[0]
+  return { issue_id:a.issue_id, type, subject_polity:a.subject_polity, subject_label:a.subject_label,
+           period:a.period, confidence:a.confidence,
+           description: grp.map(g=>g.description).filter(Boolean).join(" | ").slice(0,1500),
+           proposed_fix: grp.map(g=>g.proposed_fix).filter(Boolean).join(" | ").slice(0,800),
+           supersedes: grp.map(g=>g.issue_id) }
+}).slice(0, max_issues)   // issues arrive row-ordered; keep the highest-impact
+log(`Reconcile (deterministic): ${issues.length} issues -> ${harmonized.length} harmonized`)
 
 // ---------- Fix (worktree-isolated; emit change-sets, do NOT commit) ----------
 phase('Fix')
