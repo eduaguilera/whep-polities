@@ -65,6 +65,7 @@ BRB-1800-2025,Barbados,1800,2025,national,BRB,53,North America,draft,2026-06-09,
 BRG-1800-1897,Borgu Confederacy,1800,1897,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Borgu,,assigned,,,NGA-1914-1960; BEN-1960-2025
 BRN-1816-1888,Brunei (greater),1816,1888,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,,BRN-1888-2025
 BRN-1888-2025,Brunei Darussalam,1888,2025,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,BRN-1816-1888,
+BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,national,BSS,NA,Africa,draft,2026-06-24,cshapes-2.0,521,1886,assigned,,,SOM-1960-2025
 BTN-1800-2025,Bhutan,1800,2025,national,BTN,NA,Asia,draft,2026-04-12,cshapes-2.0,760,1886,assigned,,,
 BWA-1966-2025,Botswana,1966,2025,national,BWA,571,Africa,draft,2026-04-13,cshapes-2.0,571,1966,assigned,,,
 CAF-1906-1912,Central African Republic (1906-1912),1906,1912,national,CAF,482,Africa,draft,2026-04-13,cshapes-2.0,482,1906,assigned,,,CAF-1912-1919
@@ -492,7 +493,7 @@ SNI-1899-1906,Southern Nigeria (1899-1906),1899,1906,national,SNI,NA,Africa,draf
 SNI-1906-1913,Southern Nigeria (1906-1913),1906,1913,national,SNI,NA,Africa,draft,2026-04-13,cshapes-2.0,4783,1899,assigned,,SNI-1899-1906,NGA-1914-1960
 SNW-1814-1905,"Sweden-Norway (Union, 1814-1905)",1814,1905,national,SNW,380,Europe,draft,2026-04-12,cshapes-europe,380,1816,assigned,,SWE-1809-1814,SWE-1905-2025; NOR-1800-2025
 SOK-1804-1903,Sokoto Caliphate,1804,1903,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Sokoto,,assigned,,GOB-1800-1808,NNI-1899-1904
-SOM-1960-2025,Somalia,1960,2025,national,SOM,520,Africa,draft,2026-04-13,cshapes-2.0,520,1960,assigned,,,
+SOM-1960-2025,Somalia,1960,2025,national,SOM,520,Africa,draft,2026-04-13,cshapes-2.0,520,1960,assigned,,ITS-1908-1960; BSS-1884-1960,
 SRB-2008-2025,Serbia,2008,2025,national,SRB,345,Europe,reviewed,2026-04-12,cshapes-2.0,340,2006,assigned,,SER-2006-2008,
 SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,cshapes-2.0,626,2011,assigned,,SUD-1956-2011,
 STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026-04-13,cshapes-2.0,411,1900,assigned,,,
