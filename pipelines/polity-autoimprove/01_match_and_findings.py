@@ -4,7 +4,8 @@
 Goal: one data point -> one polity. Resolve every non-aggregate row in
 consolidated_layer_b to a WHEP polity; classify the unresolved into findings.
 
-Stage 0  resolve+match   (trust prior polity_code; else iso->year, else name->year)
+Stage 0  resolve+match   (trust prior ONLY if it's a real period polity_code; bare-iso
+                          stubs and the rest -> iso->year-containment, name->year, alias)
 Stage 1  detect findings (D2 name_unresolved, D1 coverage_gap, D7 range_violation)
 Stage 2  triage+report    (rank; coverage% before/after; findings.json + report.md)
 """
@@ -126,8 +127,15 @@ def resolve_family(name, iso):
 # ---------- Stage 0: match ----------
 df = pd.read_parquet(LB)
 work = df[~df.is_aggregate].copy()
-work["whep_code"] = work["polity_code"]            # trust prior matches
-work["match_method"] = np.where(work["polity_code"].notna(), "prior", "")
+# trust a prior polity_code ONLY if it is a real period-specific WHEP polity_code.
+# bare-iso stubs (deu, gbr, jpn) carry no period/territory -> do NOT trust them; send
+# them to the resolver so iso+year-containment resolves each to its period polity.
+valid_codes = set(pol["polity_code"])
+trusted = work["polity_code"].where(work["polity_code"].isin(valid_codes))
+work["whep_code"] = trusted
+work["match_method"] = np.where(trusted.notna(), "prior", "")
+_bare = int(work["polity_code"].notna().sum() - trusted.notna().sum())
+print(f"bare-iso stubs NOT trusted (sent to resolver): {_bare:,}")
 
 todo = work[work.whep_code.isna()]
 # resolve per distinct (country, iso) to avoid recomputing
