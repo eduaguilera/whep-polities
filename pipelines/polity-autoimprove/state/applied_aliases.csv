@@ -1,12 +1,12 @@
-original_name,common_name,target_polity_code,confidence,rows
-Turkey,Türkiye,TUR-1920-2025,high,323
-French Morocco,Morocco,MOR-1904-1956,high,261
-indochina,French Indochina,FID-1887-1954,high,259
-Germany Western,West Germany,F78-1949-1990,high,254
-Cape of Good Hope,Cape Colony,CAP-1800-1910,high,195
-Belgian Congo,Belgian Congo,COD-1910-1960,high,180
-Belgian Congo (fao1952),Belgian Congo,COD-1910-1960,high,180
-Syria,Syrian Arab Republic,SYR-1946-1967,high,162
-rwanda and burundi,Ruanda-Urundi,RWB-1922-1962,high,155
-French West Africa,French West Africa (AOF),AOF-1895-1960,high,150
-French W Africa,French West Africa (AOF),AOF-1895-1960,high,12
+original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows
+Turkey,,,,Türkiye,TUR-1920-2025,high,name-equivalence,323
+French Morocco,,,,Morocco,MOR-1904-1956,high,name-equivalence,261
+indochina,,,,French Indochina,FID-1887-1954,high,name-equivalence,259
+Cape of Good Hope,,,,Cape Colony,CAP-1800-1910,high,name-equivalence; extent approximation documented on wiki,195
+Belgian Congo,,,,Belgian Congo,COD-1910-1960,high,name-equivalence,180
+Belgian Congo (fao1952),,,,Belgian Congo,COD-1910-1960,high,name-equivalence,180
+Syria,,,,Syrian Arab Republic,SYR-1946-1967,high,name-equivalence,162
+rwanda and burundi,,,,Ruanda-Urundi,RWB-1922-1962,high,name-equivalence,155
+French West Africa,,,,French West Africa (AOF),AOF-1895-1960,high,federation-level reporting unit,150
+French W Africa,,,,French West Africa (AOF),AOF-1895-1960,high,federation-level reporting unit,12
+Germany Western,fao1952,1949,1951,West Germany,F78-1949-1990,low,"assumed post-1949 only; 1937-48 left UNRESOLVED pending source footnotes + magnitude analysis (label's true extent unknown)",47

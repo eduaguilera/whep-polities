@@ -145,6 +145,37 @@ one commit.
 | `double_count` | a parent polity's polygon contains sub-territories that report separately → **do not edit the aggregate**; re-route the granular data to the contained polities and document the aggregate's scope on its wiki page. | matching + wiki note |
 | `data_error` | a value/unit looks wrong (not a territory issue) → flag in a report; **never silently edit source data.** | report only |
 
+### The alias table: `(name, source, year-range) → polity`
+
+`state/applied_aliases.csv` columns: `original_name, source, year_start, year_end,
+common_name, target_polity_code, confidence, basis, rows`. A single label can route
+to **different polities by year and/or source** — empty `source`/`year_*` = applies
+to all. `01_match_and_findings.py` picks the most specific matching rule per data row
+(year- and source-qualified rules beat blanket ones). Example: `Germany Western`
+resolves to West Germany **only for 1949–1951**; its 1937–48 rows stay an open finding.
+
+### What a source label actually means (avoid false precision)
+
+A label like "Germany Western" is **the source's own reporting unit**, with the
+source's (often stable, possibly idiosyncratic) territorial definition — it need
+**not** correspond to our period splits (Reich / occupied / FRG). Forcing it onto
+our boundaries can be *false precision*: the reporter may have meant one consistent
+thing across all its years (e.g. some occupied+unoccupied conception), not our
+1945/1949 entities. **Do not assume the label maps to our ontology.** Determine what
+territory it actually covers by:
+
+- **(a) Source footnotes / explanatory notes.** Not yet wired in, but the Nextcloud
+  `Sources/datasets/textracted_footnotes/` tree (~1,642 extracted footnote dirs) is a
+  concrete future input — read the source's own definition of the unit.
+- **(b) Data-magnitude analysis.** Compare the label's reported staple magnitudes
+  against candidate territories' expected figures to *infer* the extent (the method
+  that settled "Japan = metropolitan, not empire"; see `02_territorial_evidence.py`).
+
+Until a label's extent is established, prefer a **low-confidence / `assumed` basis**
+alias (or leave it an open finding) over a confident mapping. When the source's unit
+matches **no** existing WHEP polity, that is a signal to create a polity matching the
+**source's** definition — not to shoehorn the data into a polity it doesn't fit.
+
 **The fix agent must research** (web/sources) before changing a wiki page, and
 the wiki page edit must satisfy the `## Territorial extent` requirements already
 defined in [`pre1961-matching/README.md`](../pre1961-matching/README.md#wiki-page-requirements):

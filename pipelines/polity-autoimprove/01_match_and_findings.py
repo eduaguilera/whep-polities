@@ -63,15 +63,34 @@ for _,r in cn.iterrows():
     o, c = norm(r["original_name"]), norm(r["common_name"])
     if o and c: alias.setdefault(o, c)
 
-# APPLIED proposed aliases: norm(original_name) -> target_polity_code (stage-3/4 output)
+# APPLIED aliases: (original_name [, source] [, year_start-year_end]) -> target_polity_code.
+# A label can resolve to DIFFERENT polities by year/source — the SOURCE's reporting unit
+# need not match our period splits (see README "What a source label actually means").
 code_row = {p.polity_code: (p.polity_code,p.polity_name,p.iso3_code,p.s,p.e,p.polity_type) for _,p in pol.iterrows()}
-override = {}
-PA = os.path.join(OUT, "applied_aliases.csv")   # aliases confirmed by prior runs (status=correct)
+def _yr(v):
+    v = str(v or "").strip()
+    return int(v) if v.lstrip("-").isdigit() else None
+override_rules = []
+PA = os.path.join(OUT, "applied_aliases.csv")   # aliases confirmed by prior runs
 if os.path.exists(PA):
     for r in csv.DictReader(open(PA)):
         tc = (r.get("target_polity_code") or "").strip()
-        if tc in code_row: override[norm(r["original_name"])] = tc
-print(f"applied aliases loaded: {len(override)}")
+        if tc not in code_row: continue
+        override_rules.append({"n":norm(r["original_name"]), "src":(r.get("source") or "").strip() or None,
+                               "y0":_yr(r.get("year_start")), "y1":_yr(r.get("year_end")), "code":tc})
+blanket_override = {ru["n"]:ru["code"] for ru in override_rules if ru["y0"] is None and ru["src"] is None}
+print(f"applied aliases loaded: {len(override_rules)} rules ({len(blanket_override)} blanket)")
+
+def match_alias(name, source, year):
+    """best applied-alias target for (name, source, year); prefer year- then source-specific rules."""
+    n = norm(name); src = (source or ""); best=None; score=-1
+    for ru in override_rules:
+        if ru["n"] != n: continue
+        if ru["src"] is not None and ru["src"] != src: continue
+        if ru["y0"] is not None and (year is None or not (ru["y0"] <= year <= ru["y1"])): continue
+        s = (2 if ru["y0"] is not None else 0) + (1 if ru["src"] is not None else 0)
+        if s > score: best, score = ru["code"], s
+    return best
 
 def pick_by_year(fam, year):
     """from a polity family, pick the row whose [s,e] contains year; prefer national."""
@@ -91,8 +110,8 @@ def resolve_family(name, iso):
     """return (family, how). High-precision only: applied-alias override, iso,
     exact name, token-set equality, or alias-table."""
     n = norm(name)
-    if n in override:                                   # stage-3/4 applied alias
-        return fam_for_code(override[n]), "applied_alias"
+    if n in blanket_override:                            # year/source-independent applied alias
+        return fam_for_code(blanket_override[n]), "applied_alias"
     if isinstance(iso,str) and iso.strip().upper() in iso_fam:
         return iso_fam[iso.strip().upper()], "iso"
     if n in name_fam: return name_fam[n], "name"
@@ -126,9 +145,14 @@ def eff_year(row):
     return np.nan
 
 def assign(row):
+    ey = eff_year(row)
+    ac = match_alias(row.country, getattr(row, "source", None), ey)   # year/source-conditional alias first
+    if ac:
+        rec, st = pick_by_year(fam_for_code(ac), ey)
+        if rec is not None: return (rec[0], "matched", "applied_alias")
     fam, how = fam_cache.get((row.country, row.iso3c if isinstance(row.iso3c,str) else None), (None,"none"))
     if fam is None: return (None, "unresolved", how)
-    rec, st = pick_by_year(fam, eff_year(row))
+    rec, st = pick_by_year(fam, ey)
     if rec is None: return (None, st, how)            # year_uncovered / no_year
     return (rec[0], "matched", how)
 
