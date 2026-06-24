@@ -26,6 +26,37 @@ Kinds:
 
 ---
 
+## hungary-iia-no-year-data-error-2026-06-24
+**Date:** 2026-06-24
+**Touched:** HUN-1800-1918, HUN-1920-1938
+**Source:** mitchell-iia (mitchell_juan_iia.csv)
+**Kind:** proposal
+
+Root-cause diagnosis of the 94 Hungary IIA rows that appear with null
+years in the matching pipeline. The IIA publication uses 5-year period
+labels (e.g. 1909–1913, 1925–1929, 1928–1932, 1934–1938) rather than
+single calendar years; these range strings are present in
+`mitchell_juan_iia.csv` (year column, dtype object). The consolidation
+script `layer_b/consolidate_layer_b.py` line 122 runs
+`pd.to_numeric(full["year"], errors="coerce")`, which silently coerces
+all range strings to NaN. Line 43 sets `period=None` for the entire
+core block, discarding the range information entirely. The matching
+pipeline's `eff_year()` function (01_match_and_findings.py lines
+147–153) can recover a year from the `period` field, but `period` is
+never populated for these rows.
+
+**Proposed fix (not yet applied):** in `consolidate_layer_b.py` core
+block (lines 33–48), detect range strings via regex
+`\d{4}\s*[-–]\s*\d{4}` before numeric coercion; route matched strings
+into the `period` column and set `year=None` for those rows, leaving
+single-year strings unchanged. With `period` populated, `eff_year()`
+yields the range-end year: 1913 → HUN-1800-1918; 1929/1932/1938 →
+HUN-1920-1938. No new polity or alias needed. The same bug likely
+affects ~23.5% of IIA rows across all countries (6,163 of 26,175 null
+years).
+
+---
+
 ## lint-2026-04-17
 **Date:** 2026-04-17
 **Touched:** (audit only; no wiki pages edited)
