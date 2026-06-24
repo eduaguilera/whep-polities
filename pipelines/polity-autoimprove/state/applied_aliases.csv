@@ -119,3 +119,4 @@ somalia,iia,1920,1959,British Somaliland Protectorate,BSS-1884-1960,medium,pre-1
 belgium,iia,,,Belgium,BEL-1831-2025,high,null-year IIA rows unmatched by year-containment router; BEL-1831-2025 territorially sound (~30500 km²; CShapes cowcode=211); no year bounds set so alias applies only to source=iia rows with year=NA,78
 Malaya Federation of,fao1952,1939,1945,British Malaya,GBM-1895-1946,high,FAO retroactive label for British Malaya territory; matched by territorial extent (~132040 km2) and contiguous successor chain,
 Malaya Federation of,fao1952,1946,1951,Malayan Union / Federation of Malaya,MYS-1946-1957,high,Direct name match to Malayan Union/Federation of Malaya polity,
+Zanzibar and Pemba,fao1952,1890,1963,Zanzibar Protectorate,ZNZ-1890-1963,high,island identity; categorically distinct from TAN (~942k km²) vs ZNZ (~2650 km²),71

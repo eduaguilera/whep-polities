@@ -177,7 +177,8 @@ name_override <- c(
   "Cape Province"                = "CAP",
   "Cape of Good Hope"            = "CAP",
   "Germany Western"              = "F78",
-  "French Morocco"               = "MOR"
+  "French Morocco"               = "MOR",
+  "Zanzibar and Pemba"           = "ZNZ"
 )
 
 resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
