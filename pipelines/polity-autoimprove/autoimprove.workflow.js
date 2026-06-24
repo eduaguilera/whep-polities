@@ -54,7 +54,7 @@ const auditOne = (src, i) => {
     `Audit one WHEP review unit. ${RULES}\nRead the JSON array at ${src} and take element index ${i}. ` +
     `Read ${polities_csv} as needed. Decide: is this data->polity match (and the polity's territory for the period) CORRECT? ` +
     `Set unit_key = the polity_code (territorial flag) or the data label (finding), and unit_kind accordingly. ` +
-    `If correct -> verdict "correct". If not -> verdict "issue" with a typed issue report (issue_id = stable kebab of subject+type, choose type, describe, propose a fix). Use the numeric evidence fields (staple_magnitudes, contained_with_concurrent_data) when present.`,
+    `If correct -> verdict "correct". If not -> verdict "issue" with a typed issue report (issue_id = stable kebab of subject+type, choose type, describe, propose a fix). Use the evidence fields when present: staple_magnitudes, contained_with_concurrent_data, and source_notes (the source's OWN footnotes on this entity's territorial scope, e.g. "trade with japanese korea" / "1937 vs 1945 boundaries" — primary evidence for what territory the label actually covers).`,
     { ...M, label:`audit:${src.includes('flagged')?'terr':'find'}:${i}`, phase:'Audit', schema:ISSUE })
 }
 // bound the per-run audit to max_audit (findings first, then flags). 01/02 already dropped ledger-resolved units.

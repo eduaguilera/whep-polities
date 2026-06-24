@@ -117,6 +117,29 @@ def yrs(code):
     return (int(y.min()),int(y.max())) if len(y) else None
 def has_data(code): return int((mm.whep_code==code).sum())
 
+# IIA source-footnote evidence: territorial/boundary notes (state/iia_territorial_notes.csv)
+# attached to the polities whose matched IIA data labels carry them.
+NOTES=os.path.join(H,"iia_territorial_notes.csv"); notes_by_country={}
+if os.path.exists(NOTES):
+    for r in _csv.DictReader(open(NOTES)):
+        c=(r.get("country") or "").strip().lower()
+        if c: notes_by_country.setdefault(c,[]).append(
+            f"{r['note']} [{str(r.get('year_min') or '')}-{str(r.get('year_max') or '')}, {r.get('n_rows')}r]")
+# bridge note country-labels -> ISO (matched_rows carries lowercase-iso whep_codes for core
+# rows, so join on ISO not code), then attach to flagged polities by their iso3_code.
+lab2iso={}
+for lbl,gg in mm.groupby(mm.country.astype(str).str.lower()):
+    isos=gg.iso3c.dropna()
+    if len(isos): lab2iso[lbl]=str(isos.mode().iloc[0]).upper()
+notes_by_iso=defaultdict(list)
+for lbl,ns in notes_by_country.items():
+    iso=lab2iso.get(lbl)
+    if iso:
+        for n in ns: notes_by_iso[iso].append(f"'{lbl}': {n}")
+def source_notes(code):
+    iso=str(code2iso.get(code,"")).upper()
+    return notes_by_iso.get(iso,[])[:8]
+
 print("loading polygons...")
 g=gpd.read_file(GPKG, layer="polities")
 g=g.dissolve(by="polity_code", as_index=False)
@@ -135,6 +158,8 @@ for f in flagged:
     f.pop("contained_with_concurrent_data",None)      # idempotent: clear stale evidence
     f["flag_reasons"]=[r for r in f.get("flag_reasons",[]) if "spatially contains" not in r]
     f["staple_magnitudes"]=staples(code)
+    sn=source_notes(code)
+    if sn: f["source_notes"]=sn                        # IIA footnote evidence (boundary/territorial scope)
     if code not in gidx: continue
     P=gidx[code]; Pper=span.get(code,(0,9999))
     # candidate intersectors via spatial index
