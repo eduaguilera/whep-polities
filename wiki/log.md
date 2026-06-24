@@ -38,6 +38,20 @@ Resolution: MOR-1904-1956 retired (wiki_status=superseded, successor=MAR-1911-19
 
 ---
 
+## india-iia-null-year-rows
+**Date:** 2026-06-24
+**Touched:** IND-1893-1914, IND-1914-1937, IND-1937-1947
+**Source:** iia
+**Kind:** proposal
+
+Root-cause diagnosis of the 60 null-year India IIA rows in the matching pipeline. These rows are IIA publication summary statistics (multi-year period averages printed as reference context alongside annual series), not individual annual observations. Period identity is verified by exact arithmetic: jute area null=1,198,946 ha matches the 1909–1913 annual mean of 1,198,945.6 ha; jute production null=1,528,062.4 t matches the 1909–1913 mean of 1,528,062.4 t exactly; cotton lint area null=9,102,104 ha matches the 1909–1913 mean of 9,102,148 ha (within rounding); sugar raw centrifugal null=2,403,560 t matches the 1909–1913 mean of 2,403,561 t. A second set of null values with larger magnitudes (cotton lint tonnes, cotton seed tonnes, coffee tonnes, groundnuts tonnes, linseed tonnes, fertilizer) likely corresponds to a later reference period (~1923–1927), but insufficient annual IIA coverage for those items prevents exact identification.
+
+This is distinct from the Hungary/Austria/Brazil range-string issue (where IIA year fields carry strings like "1909–1913" that `pd.to_numeric` coerces to NaN). For India, the null rows appear to be true summary averages with no period string in the source — no year field exists that could route them. No alias can fix a null year field; no polity change is needed. The IND polity family (IND-1800-1893 through IND-1949-2025) is correctly structured; the 333 dated IIA rows route correctly to IND-1893-1914, IND-1914-1937, and IND-1937-1947.
+
+**Proposed pipeline action:** before excluding all 60 rows, check `consolidated_layer_b` for a `period` column on these rows. If a period string (e.g. "1909–1913") is present for any, `eff_year()` inference would already recover a routing year and those rows could be matched. Rows confirmed to lack any period string should be flagged `undatable_source` and excluded from the matched dataset. Classification corrected from `coverage_gap` to `data_error/undatable_source` in the pipeline findings.
+
+---
+
 ## hungary-iia-no-year-data-error-2026-06-24
 **Date:** 2026-06-24
 **Touched:** HUN-1800-1918, HUN-1920-1938
