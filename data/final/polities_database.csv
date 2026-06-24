@@ -122,7 +122,7 @@ CPV-1800-2025,Cabo Verde,1800,2025,national,CPV,402,Africa,draft,2026-04-13,csha
 CRI-1800-2025,Costa Rica,1800,2025,national,CRI,94,North America,draft,2026-04-12,cshapes-2.0,94,1886,assigned,,,
 CUB-1800-2025,Cuba,1800,2025,national,CUB,40,North America,draft,2026-04-12,cshapes-2.0,40,1902,assigned,,,
 CYP-1879-2025,Cyprus,1879,2025,national,CYP,352,Asia,draft,2026-04-12,cshapes-2.0,352,1960,assigned,,,
-CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,,,,Europe,,2026-06-24,,,,,,AUH-1800-1859,F51-1918-1938
+CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,national,CZE,,Europe,draft,2026-06-24,constructed,CZE-1804-1918,1860,assigned,79349,AUH-1800-1859,F51-1918-1938
 CZE-1947-1992,Czechoslovakia (1947-1992),1947,1992,national,CZE,316,Europe,draft,2026-04-12,cshapes-2.0,315,1945,assigned,,,CZE-1993-2025
 CZE-1993-2025,Czechia,1993,2025,national,CZE,316,Europe,reviewed,2026-04-12,cshapes-2.0,316,1993,assigned,,F51-1947-1993,
 DEU-1800-1866,Prussia (to 1866),1800,1866,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1851,assigned,,,DEU-1866-1871
