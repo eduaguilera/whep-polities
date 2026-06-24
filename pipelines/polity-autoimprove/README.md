@@ -214,6 +214,33 @@ polygon), or — if no period polygon is available — document the approximatio
 the wiki page (direction + rough magnitude), per the `pre1961-matching`
 "Note approximations" rule.
 
+## Territory basis (stage 4) — the "assumed-constant border" sweep
+
+`04_territory_basis.py` makes the vintage-drift concern systematic and
+DB-wide, answering: *for the years a polity serves, does its polygon
+faithfully represent that period's territory, or is it an assumption?* It
+compares each polity's polygon vintage (`polygon_feature_year`) to its own
+period `[start_year, end_year]` and emits a graded `territory_basis`:
+
+| basis | meaning |
+|-------|---------|
+| `measured` | vintage falls inside the period and the span is short enough that one polygon is defensible. |
+| `assumed_constant` | a single vintage held across a long span (≥25y) — borders may have changed within it. The bulk of historical data sits here. |
+| `back_projected` | vintage is **outside** the period (a later/modern, or earlier, border applied to this period) — the clearest "not the real territory" case. Also any `modern_proxy`/`constructed_estimate` polygon. |
+| `unassigned` | no polygon — an **honest gap**, never a false territory (policy: never back-project a modern border; `polygon_status=unassigned`). |
+
+Output: `state/territory_basis.csv` (one row per polity). A polity is
+`priority_review` when it is `assumed_constant`/`back_projected` **and**
+independently flagged by stage 02 (magnitude step-change vs sibling period,
+README-known mismatch, vintage drift, or aggregate-contains-concurrent-data)
+— i.e. there is real evidence its single polygon misrepresents the territory,
+as opposed to a long span whose border was genuinely stable. The
+`priority_review` set is the input to the periodize/assign-vintage-polygon
+remedy (split at border-change years, each period its own polygon).
+
+The default window is **1860–1961** (`WIN_LO`/`WIN_HI`), the span where WHEP
+back-projects modern country borders onto historical production/trade data.
+
 ---
 
 ## Running
@@ -222,6 +249,7 @@ the wiki page (direction + rough magnitude), per the `pre1961-matching`
 # deterministic prep (no agents)
 python pipelines/polity-autoimprove/01_match_and_findings.py     # match + review units, filtered by ledger
 python pipelines/polity-autoimprove/02_territorial_evidence.py   # attach numeric territorial evidence
+python pipelines/polity-autoimprove/04_territory_basis.py        # classify each polity's territory_basis (1860-1961 sweep)
 
 # the agent loop (Workflow tool) — audit -> reconcile -> fix -> integrate -> cleanup
 #   Workflow({ scriptPath: "pipelines/polity-autoimprove/autoimprove.workflow.js", args: {...} })
