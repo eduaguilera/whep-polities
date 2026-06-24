@@ -139,6 +139,7 @@ DNK-1800-1864,Denmark (with Schleswig-Holstein),1800,1864,national,DNK,390,Europ
 DNK-1864-1920,Denmark (to 1920),1864,1920,national,DNK,390,Europe,draft,2026-04-12,cshapes-europe,390,1886,assigned,,DNK-1800-1864,DNK-1920-2025
 DNK-1920-2025,Denmark,1920,2025,national,DNK,390,Europe,reviewed,2026-04-12,cshapes-2.0,390,1920,assigned,,DNK-1864-1920,
 DOM-1800-2025,Dominican Republic,1800,2025,national,DOM,42,North America,draft,2026-04-12,cshapes-2.0,42,1886,assigned,,,
+DRV-1954-1975,Democratic Republic of Vietnam (North Vietnam),1954,1975,national,NA,816,Asia,draft,2026-06-24,cshapes-2.0,816,1960,assigned,,FID-1887-1954,VNM-1975-2025
 DPA-1800-1860,Duchy Parma,1800,1860,national,DPA,335,Europe,draft,2026-04-12,cliopatria,Duchy of Parma and Piacenza,1815,assigned,,,ITA-1861-1919
 DZA-1831-1886,Algeria,1831,1886,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1962,assigned,,,DZA-1886-1902
 DZA-1886-1902,Algeria (1886-1902),1886,1902,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1886,assigned,,DZA-1831-1886,DZA-1902-1919
@@ -192,7 +193,7 @@ F77-1949-1990,East Germany,1949,1990,national,NA,265,Europe,draft,2026-04-12,csh
 F78-1949-1990,West Germany,1949,1990,national,NA,260,Europe,draft,2026-04-12,cshapes-2.0,260,1949,assigned,,DEU-1938-1945,DEU-1990-2025
 FCC-1862-1887,French Cochinchina,1862,1887,national,FID,NA,Asia,draft,2026-04-16,none,,,missing,,,FID-1887-2025
 FCM-1920-1960,French Cameroon (1920-1960),1920,1960,national,CMR,NA,Africa,draft,2026-04-16,none,,,missing,,CMR-1912-1919,CMR-1960-1961
-FID-1887-1954,French Indochina,1887,1954,national,FID,NA,Asia,draft,2026-04-17,cliopatria,French Indochina,1900,assigned,,,KHM-1953-2025; LAO-1954-2025
+FID-1887-1954,French Indochina,1887,1954,national,FID,NA,Asia,draft,2026-04-17,cliopatria,French Indochina,1900,assigned,,,KHM-1953-2025; LAO-1954-2025; RVN-1954-1975; DRV-1954-1975
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,national,FIN,375,Europe,draft,2026-04-16,cshapes-2.0,375,1917,assigned,,,FIN-1917-1940
 FIN-1917-1940,Finland (1917-1940),1917,1940,national,FIN,375,Europe,draft,2026-04-12,cshapes-2.0,375,1917,assigned,,,FIN-1940-2025
 FIN-1940-2025,Finland (1940-2025),1940,2025,national,FIN,375,Europe,draft,2026-04-12,cshapes-2.0,375,1940,assigned,,FIN-1917-1940,
@@ -461,6 +462,7 @@ ROW-1850-2023,Rest of World,1850,2023,aggregate,ROW,,World,draft,2026-06-11,repo
 RSFSR-1917-1991,Russian SFSR (1917-1991),1917,1991,national,RUS,365,Europe,draft,2026-06-24,cshapes-2.0,365,1991,proxy,17098242,F228-1914-1917,RUS-1991-2014
 RUS-1991-2014,Russia (1991-2014),1991,2014,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,1991,assigned,,F228-1945-1991,RUS-2014-2025
 RUS-2014-2025,Russia,2014,2025,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,2014,assigned,,RUS-1991-2014,
+RVN-1954-1975,Republic of Vietnam (South Vietnam),1954,1975,national,NA,817,Asia,draft,2026-06-24,cshapes-2.0,817,1960,assigned,,FID-1887-1954,VNM-1975-2025
 RWA-1962-2025,Rwanda,1962,2025,national,RWA,517,Africa,draft,2026-04-12,cshapes-2.0,517,1962,assigned,,RWK-1800-1890; RWB-1922-1962,
 RWB-1919-1922,Rwanda and Burundi,1919,1922,national,RWB,NA,Africa,draft,2026-04-13,none,,,missing,,TAN-1891-1920,RWB-1922-1962
 RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,national,RWB,515,Africa,draft,2026-04-13,cshapes-2.0,515,1922,assigned,,RWB-1919-1922,RWA-1962-2025; BDI-1962-2025
@@ -563,7 +565,7 @@ VCT-1800-1833,Saint Vincent (to 1833),1800,1833,national,NA,NA,North America,dra
 VCT-1833-2025,Saint Vincent and the Grenadines,1833,2025,national,VCT,57,North America,draft,2026-04-13,gadm-4.1-adm0,VCT,,assigned,,VCT-1800-1833,
 VEN-1821-2025,Venezuela,1821,2025,national,VEN,101,South America,draft,2026-04-12,cshapes-2.0,101,1886,assigned,,,
 VIC-1851-1900,Victoria (to 1900),1851,1900,national,VIC,NA,Oceania,draft,2026-04-15,cshapes-2.0,904,1886,assigned,,NSW-1800-1900,AUS-1901-2025
-VNM-1975-2025,Vietnam,1975,2025,national,VNM,816,Asia,draft,2026-04-12,cshapes-2.0,816,1975,assigned,,,
+VNM-1975-2025,Vietnam,1975,2025,national,VNM,816,Asia,draft,2026-04-12,cshapes-2.0,816,1975,assigned,,RVN-1954-1975; DRV-1954-1975,
 VUT-1800-2025,Vanuatu,1800,2025,national,VUT,935,Oceania,draft,2026-04-12,gadm-4.1-adm0,VUT,,assigned,,,
 WAD-1800-1912,Wadai Empire,1800,1912,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Wadai,,assigned,,,TCD-1900-1912; TCD-1960-2025
 WLO-1800-1855,Kingdom of Waalo,1800,1855,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Walo,,assigned,,,SEN-1960-2025
