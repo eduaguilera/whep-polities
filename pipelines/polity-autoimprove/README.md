@@ -164,9 +164,12 @@ thing across all its years (e.g. some occupied+unoccupied conception), not our
 1945/1949 entities. **Do not assume the label maps to our ontology.** Determine what
 territory it actually covers by:
 
-- **(a) Source footnotes / explanatory notes.** Not yet wired in, but the Nextcloud
-  `Sources/datasets/textracted_footnotes/` tree (~1,642 extracted footnote dirs) is a
-  concrete future input — read the source's own definition of the unit.
+- **(a) Source footnotes / explanatory notes** — a **corroborating hint, never authoritative.**
+  Extracted footnotes can be OCR-garbled, matched to the wrong row, or mis-attributed, so
+  they support or question a verdict but never decide it alone; always weigh them against the
+  data. Wired in as `source_notes` (from `state/iia_territorial_notes.csv`, ISO-joined). The
+  Nextcloud `Sources/datasets/textracted_footnotes/` tree (~1,642 dirs, currently unsynced)
+  is a richer future input.
 - **(b) Data-magnitude analysis.** Compare the label's reported staple magnitudes
   against candidate territories' expected figures to *infer* the extent (the method
   that settled "Japan = metropolitan, not empire"; see `02_territorial_evidence.py`).
