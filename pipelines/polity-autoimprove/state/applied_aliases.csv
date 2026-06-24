@@ -110,3 +110,6 @@ china 22 provinces,fao1952,1945,1947,China,CHN-1945-1947,high,name-variant: FAO 
 china 22 provinces,fao1952,1947,1949,China,CHN-1947-1949,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
 china 22 provinces,fao1952,1949,1950,China,CHN-1949-1950,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
 china 22 provinces,fao1952,1950,1951,China,CHN-1950-2025,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
+czech republic,,1919,1938,Czechoslovakia (1918-1938),F51-1918-1938,high,IIA data (flax/hops/wheat/rye tens-of-thousands ha) matches Bohemia-Moravia scale ~79k km2; not full Czechoslovakia ~140k km2 but closest polity for Czech Lands 1919-1938,
+czech republic,,1939,1945,Czechoslovakia (1938-1945),F51-1938-1945,medium,German occupation period; Czech Lands agricultural data recorded under Protectorate of Bohemia-Moravia geography; output magnitudes consistent with pre-war Czech Lands,
+czech republic,,1946,1947,Czechoslovakia (1945-1947),F51-1945-1947,high,Restored Czechoslovakia post-WWII; Czech Lands reintegrated; borders near-identical to pre-Munich configuration minus Ruthenia (ceded to USSR 1945),
