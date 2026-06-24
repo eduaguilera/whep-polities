@@ -26,6 +26,20 @@ Kinds:
 
 ---
 
+## peru-iia-no-year-data-error
+**Date:** 2026-06-24
+**Touched:** PER-1909-1922, PER-1922-1942
+**Source:** iia
+**Kind:** proposal
+
+Root-cause diagnosis of the 58 null-year Peru IIA rows in the matching pipeline. The IIA agricultural yearbooks (iia_1925, iia_1929, iia_1933, iia_1938, iia_1939) report 5-year period averages rather than single calendar years; the raw IIA normalized data at `iia_data_normalize.xlsx` records these in the 'year' column as period strings: "1909-1913", "1921-1925", "1925-1929", "1928-1932", "1934-1938". During consolidation into `consolidated_layer_b.parquet`, the script runs `pd.to_numeric(full["year"], errors="coerce")` which silently coerces all period strings to NaN, while `period` is set to `None` for the entire core block — discarding the period information entirely.
+
+The matching pipeline's `eff_year()` function (01_match_and_findings.py lines 147–153) can already recover a routing year from the `period` field: end-year extraction would yield 1913 → PER-1909-1922; 1925/1929/1932/1938 → PER-1922-1942. The Peru polity family (PER-1825-1909, PER-1909-1922, PER-1922-1942, PER-1942-2025) is complete and correctly structured; no polity definition change or alias is needed.
+
+**Proposed fix (not yet applied):** in `consolidate_layer_b.py` core block, detect period strings via regex `\d{4}\s*[-–]\s*\d{4}` before numeric coercion; route matched strings into the `period` column and set `year=None` for those rows. This is the same fix diagnosed for Hungary (see `hungary-iia-no-year-data-error-2026-06-24`). The bug affects 6,163 IIA null-year rows across all countries (~23.5% of all IIA rows); the Peru case is one instance of this systemic pipeline defect.
+
+---
+
 ## morocco-mar-mor-double-count
 **Date:** 2026-06-24
 **Touched:** MOR-1904-1956, MAR-1911-1958, MOR-1800-1904
