@@ -88,3 +88,4 @@ france,,1919,2025,France,FRA-1919-2025,high,year-ranged split at 1919 Alsace-Lor
 russian federation,,1917,1991,Russian SFSR,RSFSR-1917-1991,medium,sub-territory IIA iso=rus pre-1991 rows routed to RSFSR core (~17.1M km²) not F228 aggregate,
 australia,,1800,1900,,AUS-1800-1901,high,year-ranged aggregate routing for pre-Federation Australia,118
 australia,,1901,2025,,AUS-1901-2025,high,year-ranged aggregate routing for post-Federation Australia,118
+French Equat Africa,,1939,1951,French Equatorial Africa (AEF),AEF-1910-1960,high,standard abbreviation; fao1952 source; data years within polity span,110
