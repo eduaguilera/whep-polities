@@ -51,7 +51,7 @@ phase('Integrate')
 const done = []
 for (const s of specs) {
   const r = await agent(`Create this polity in ${repo}, then STOP. Spec: ${JSON.stringify(s)}\n` +
-    `Steps: (1) write the wiki_markdown to wiki/polities/${s.polity_code}.md; (2) append the csv_row to data/final/polities_database.csv (verify it has the same number of columns as the header); ` +
+    `Steps: (1) write the wiki_markdown to wiki/polities/${s.polity_code.toLowerCase()}.md (wiki filenames are LOWERCASE by convention; the polity_code inside the frontmatter stays uppercase); (2) append the csv_row to data/final/polities_database.csv (verify it has the same number of columns as the header); ` +
     `(3) if polygon_method is composed_union/constructed_estimate AND you can build the geometry cheaply (geopandas), write it to data/geodata/constructed/constructed.geojson and set polygon_status=assigned; if exact_historical/period_proxy, the csv_row should already name the source/feature (polygon_status=assigned if you confirmed it, else recommended); ` +
     `(4) git add the touched files and commit "new polity: ${s.polity_code} (${s.polity_name})" with the repo's required trailers. Do NOT push. Report files changed, commit hash, polygon_method+confidence. No stray files.`,
     { ...M, label:`integrate:${s.polity_code}`, phase:'Integrate' })
