@@ -156,6 +156,8 @@ normalise_iso <- function(iso, year, polity_name = NA_character_) {
   # separately from India/Pakistan → they have their own WHEP entries
   # (PAK-1800-1947, BGD-1947-1971). Same principle as Finland/Ireland.
   # No routing needed — iso codes match directly.
+  # Vietnam pre-1954 → VNM-1887-1954 (Vietnam within French Indochina)
+  if (iso == "VNM" && !is.na(y) && y < 1954) return("VNM")  # routes to VNM-1887-1954 (Vietnam within French Indochina)
   # Vietnam 1954-1975 → South Vietnam (SVI)
   if (iso == "VNM" && !is.na(y) && y >= 1954 && y <= 1975) return("SVI")
   # North Korea pre-1948 → Korea (occupied) — pre-division
