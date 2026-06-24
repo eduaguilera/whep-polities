@@ -109,7 +109,7 @@ for (const cs of changesets) {
   const res = await agent(
     `Apply ONE change-set to ${repo} and commit it, then STOP. ${RULES}\nChange-set: ${JSON.stringify(cs)}\n` +
     `Steps: (1) if alias_row present, append it to pipelines/polity-autoimprove/state/applied_aliases.csv (create with header 'original_name,common_name,target_polity_code,confidence,rows' if missing); (2) write wiki_content to wiki_path if present; (3) apply csv_row/csv_edit to data/final/polities_database.csv; (4) apply match_rule_patch to pre1961-matching/match.R only if present; (5) git add the touched files and 'git commit -m "<commit_message>"' (end the message with the repo's required Co-Authored-By + Claude-Session trailers). Do NOT push. Report the commit hash and files changed. Leave no untracked stray files.`,
-    { ...M, label:`integrate:${cs.issue_id}`, phase:'Integrate' })
+    { ...M, effort:'low', label:`integrate:${cs.issue_id}`, phase:'Integrate' })
   applied.push({ issue_id: cs.issue_id, result: res })
 }
 
