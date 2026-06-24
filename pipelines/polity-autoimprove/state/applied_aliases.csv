@@ -49,3 +49,6 @@ hawaii,,1898,1959,Territory of Hawaii,HAWI-1898-1959,high,new polity routed; lab
 Germany Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed; Saar protectorate 1947-57 (pre-1947 Saar=Germany),
 France Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed,
 Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed,
+czech republic,,1919,1938,,F51-1918-1938,high,year-ranged alias: interwar Czechoslovakia covers 1919-1938 Czech data,603
+czech republic,,1938,1945,,F51-1938-1945,high,year-ranged alias: WWII-period Czechoslovakia covers 1938-1945 Czech data,603
+czech republic,,1945,1947,,F51-1945-1947,high,year-ranged alias: postwar Czechoslovakia covers 1945-1947 Czech data,603
