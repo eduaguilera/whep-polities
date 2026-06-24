@@ -122,3 +122,5 @@ belgium,iia,,,Belgium,BEL-1831-2025,high,null-year IIA rows unmatched by year-co
 Malaya Federation of,fao1952,1939,1945,British Malaya,GBM-1895-1946,high,FAO retroactive label for British Malaya territory; matched by territorial extent (~132040 km2) and contiguous successor chain,
 Malaya Federation of,fao1952,1946,1951,Malayan Union / Federation of Malaya,MYS-1946-1957,high,Direct name match to Malayan Union/Federation of Malaya polity,
 Zanzibar and Pemba,fao1952,1890,1963,Zanzibar Protectorate,ZNZ-1890-1963,high,island identity; categorically distinct from TAN (~942k km²) vs ZNZ (~2650 km²),71
+Anglo-Egypt Sudan,fao1952,1934,1956,Sudan (Anglo-Egyptian Condominium),SUD-1934-1956,high,name-equivalence for spelled-out Anglo-Egyptian Condominium variant; 1949-1951 data years within polity span; SUD-1934-1956 covers ~2.49M km2 (modern Sudan + South Sudan); bare 'sudan' alias (row 36) only captured lowercase label,63
+Anglo-Egyptian Sudan,,1934,1956,Sudan (Anglo-Egyptian Condominium),SUD-1934-1956,high,full-name variant catch-all for future sources; name-equivalence; SUD-1934-1956 covers ~2.49M km2 (modern Sudan + South Sudan),
