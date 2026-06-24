@@ -136,3 +136,4 @@ reunion,,1816,1946,Réunion,REU-1816-1946,high,name-equivalence,
 "china, mainland",,1949,1950,China (mainland),CHN-1949-1950,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1950,2025,China (mainland),CHN-1950-2025,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 zimbabwe,,1953,1964,Southern Rhodesia (within Federation 1953-1964),SRH-1953-1964,high,ISO zwe data 1953-1964 measures Southern Rhodesia alone (~390610 km²); routing to FRN (~1260000 km²) would overstate ~3×,
+"indochina laos",,1936,1951,Laos (1893-1953),LAO-1893-1953,high,FAO label for Lao sub-territory within French Indochina (~196820 km²); routing to FID-1887-1954 (~740000 km²) would overstate ~3x,59
