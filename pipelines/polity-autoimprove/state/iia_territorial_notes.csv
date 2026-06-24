@@ -1,0 +1,56 @@
+country,note,year_min,year_max,n_rows
+egypt,trade with british-egyptian sudan,1909,1938,853
+egypt,trade without british-egyptian sudan,1921,1938,671
+usa,trade with us hawaii,1921,1938,635
+us hawaii,trade with the usa,1909,1938,609
+us puerto rico,trade with the usa,1909,1938,597
+japanese korea,trade with japan,1909,1938,567
+usa,trade with us puerto rico,1921,1938,566
+japan,trade with japanese korea,1909,1938,524
+japanese taiwan,trade with japan,1909,1938,504
+japan,trade with japanese taiwan,1921,1938,468
+usa,trade with us alaska,1921,1938,451
+union of south africa,trade with the rhodesias and south west africa,1925,1935,385
+us alaska,trade with the usa,1921,1938,353
+total world excluding the ussr,1937 boundaries,1934,1945,198
+total world excluding the ussr,1945 boundaries,1934,1945,198
+total europe,1937 boundaries,1934,1945,168
+total europe,1945 boundaries,1934,1945,168
+british nyasaland,owned by natives,1922,1945,152
+british nyasaland,owned by europeans,1900,1945,139
+total north hemisphere excluding the ussr,1937 boundaries,1934,1945,128
+total north hemisphere excluding the ussr,1945 boundaries,1934,1945,128
+dutch east indies,owned by europeans,1909,1938,95
+british kenya,owned by europeans,1921,1945,81
+ussr,1937 boundaries,1934,1945,59
+dutch java and madura,owned by natives,1925,1944,49
+ussr,1945 boundaries,1934,1941,45
+usa,trade with us virgin islands,1935,1938,44
+french morocco,owned by natives,1928,1945,44
+french morocco,owned by europeans,1928,1945,44
+british south rhodesia,owned by europeans,1939,1945,42
+total europe excluding the ussr,1945 boundaries,1934,1945,40
+total europe excluding the ussr,1937 boundaries,1934,1945,37
+us virgin islands,trade with the usa,1935,1938,36
+british south rhodesia,owned by natives,1939,1944,36
+dutch east indies,owned by natives,1909,1938,36
+british kenya,owned by natives,1921,1945,35
+french tunisia,owned by europeans,1928,1945,33
+dutch java and madura,owned by europeans,1934,1945,25
+new zealand,trade with cook islands,1928,1938,21
+usa,trade with us philippines,1921,1929,20
+france,owned by europeans,1909,1929,20
+french tunisia,owned by natives,1928,1945,18
+us philippines,trade with the usa,1921,1929,16
+us puerto rico,trade with us puerto rico,1928,1938,14
+dutch east outer provinces,owned by europeans,1934,1944,12
+japan,trade with japan,1909,1925,10
+british north borneo,owned by europeans,1921,1929,10
+dutch east outer provinces,owned by natives,1934,1944,9
+dutch bali and lombok,owned by natives,1934,1940,6
+dutch sumatra,owned by europeans,1934,1940,6
+us hawaii,reported in bunches (50b = 1mt); trade with the usa,1921,1929,5
+union of south africa,owned by europeans; rural areas,1939,1939,2
+union of south africa,owned by natives; rural areas,1939,1939,2
+union of south africa,owned by europeans,1939,1939,1
+union of south africa,owned by natives,1939,1939,1
