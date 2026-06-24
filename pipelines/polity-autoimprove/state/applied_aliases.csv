@@ -104,3 +104,4 @@ algeria,,1962,2025,Algeria,DZA-1962-2025,high,name-equivalence; independent Alge
 viet nam,,1955,1974,Republic of Vietnam,RVN-1954-1975,high,Mitchell western stats used "viet nam" exclusively for South Vietnam 1955-1974,
 south africa,iia,1828,2025,South Africa,ZAF-1828-2025,high,name-equivalence; iso zaf + label south africa = Union/Republic of South Africa; territorial scope matches CShapes 1910 polygon,90
 U of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1828-2025,high,abbreviation of Union of South Africa; existing alias maps full form; no polygon_vintage_drift for 1948-1951 data,65
+argentina,iia,1909,1945,Argentina,ARG-1800-2025,high,name-equivalence; iso match (arg); full IIA data range 1909-1945 within ARG-1800-2025 span (1800-2025); 88 rows flagged but 84 already matched via iso — residual 88 unmatched rows have year=NA (data-quality gap not a routing gap),88
