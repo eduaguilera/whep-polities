@@ -1,4 +1,5 @@
 original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows
+cyprus,iia,1879,2025,Cyprus,CYP-1879-2025,high,island identity; 1960 CShapes polygon valid for 1879-1974; post-1974 rows carry polygon_vintage_drift (~57% overstatement vs. RoC-controlled area) documented on wiki,97
 Turkey,,,,Türkiye,TUR-1920-2025,high,name-equivalence,323
 French Morocco,,,,Morocco,MOR-1904-1956,high,name-equivalence,261
 indochina,,,,French Indochina,FID-1887-1954,high,name-equivalence,259
