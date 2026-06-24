@@ -137,3 +137,5 @@ reunion,,1816,1946,Réunion,REU-1816-1946,high,name-equivalence,
 "china, mainland",,1950,2025,China (mainland),CHN-1950-2025,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 zimbabwe,,1953,1964,Southern Rhodesia (within Federation 1953-1964),SRH-1953-1964,high,ISO zwe data 1953-1964 measures Southern Rhodesia alone (~390610 km²); routing to FRN (~1260000 km²) would overstate ~3×,
 "indochina laos",,1936,1951,Laos (1893-1953),LAO-1893-1953,high,FAO label for Lao sub-territory within French Indochina (~196820 km²); routing to FID-1887-1954 (~740000 km²) would overstate ~3x,59
+burundi,iia,1922,1961,Ruanda-Urundi,RWB-1922-1962,high,IIA bare label 'burundi' covers southern constituent territory of Belgian Ruanda-Urundi mandate; no separate Burundi-only administrative statistics before 1962 independence; polygon covers full mandate (~54172 km²) — see dec-burundi-iia-routing on wiki,
+burundi,iia,1919,1921,Ruanda-Urundi (occupation),RWB-1919-1922,high,IIA bare label 'burundi' pre-mandate occupation period; routes to Belgian occupation polity covering same combined territory,
