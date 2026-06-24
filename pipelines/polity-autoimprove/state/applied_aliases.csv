@@ -72,3 +72,8 @@ united states of america,iia,1867,1959,United States of America,USA-1867-1959,hi
 united states of america,iia,1959,2025,United States of America,USA-1959-2025,high,source-restricted iia alias; year-ranged USA family,141
 italy,iia,,1860,Kingdom of Sardinia (pre-unification Italy),SAR-1800-1860,high,year-ranged alias: IIA 'italy'/ita rows pre-1861 measure Sardinian/pre-unification aggregate; SAR-1800-1860 has Cliopatria polygon assigned,
 japan,,1945,1952,Japan (occupied),JPN-1945-1952,high,polity exists in DB; omitted from resolver resolved_family,
+bulgaria,,1878,1912,,BGR-1878-1913,high,name-equivalence year-ranged BGR chain,137
+bulgaria,,1913,1917,,BGR-1913-1918,high,name-equivalence year-ranged BGR chain,137
+bulgaria,,1918,1918,,BGR-1918-1919,high,name-equivalence year-ranged BGR chain,137
+bulgaria,,1919,1939,,BGR-1919-1940,high,name-equivalence year-ranged BGR chain,137
+bulgaria,,1940,2025,,BGR-1940-2025,high,name-equivalence year-ranged BGR chain + catch-all for years=null,137
