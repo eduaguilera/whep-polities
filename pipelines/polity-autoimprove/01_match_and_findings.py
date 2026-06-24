@@ -188,7 +188,16 @@ for (country, iso, method), grp in un.groupby([un.country, un.iso3c.fillna(""), 
     if method == "unresolved" or fam is None:
         ev["finding_type"] = "name_unresolved"           # D2: needs alias OR new polity
         ev["nearest_guess"] = None
-    elif method in ("year_uncovered","no_year"):
+    elif method == "no_year":
+        # entity known (family found) but rows carry null year values — source data quality issue,
+        # NOT a temporal coverage gap. eff_year() already attempts period-column recovery;
+        # if period is also null these rows are permanently undatable.
+        fam_span = f"{min(r[3] for r in fam if not pd.isna(r[3]))}-{max(r[4] for r in fam if not pd.isna(r[4]))}"
+        ev["finding_type"] = "data_error"                # undatable source records
+        ev["resolved_family"] = sorted({r[0] for r in fam})
+        ev["family_span"] = fam_span
+        ev["note"] = "rows lack year values in source; excluded from coverage-gap accounting"
+    elif method == "year_uncovered":
         # entity known (family found) but no polity covers these years -> gap / range issue
         fam_span = f"{min(r[3] for r in fam if not pd.isna(r[3]))}-{max(r[4] for r in fam if not pd.isna(r[4]))}"
         ev["finding_type"] = "coverage_gap"              # D1/D7
@@ -204,7 +213,7 @@ findings = [f for f in findings if f["entity"].strip().lower() not in resolved_k
 if _before != len(findings):
     print(f"  ledger: skipped {_before-len(findings)} findings already resolved in prior runs")
 findings.sort(key=lambda f: (-f["rows"]))
-for ft in ("name_unresolved","coverage_gap","other"):
+for ft in ("name_unresolved","coverage_gap","data_error","other"):
     bucket=[f for f in findings if f["finding_type"]==ft]
     print(f"  {ft}: {len(bucket)} distinct entities, {sum(f['rows'] for f in bucket):,} rows")
 
