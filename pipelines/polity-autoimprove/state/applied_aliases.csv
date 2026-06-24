@@ -102,3 +102,5 @@ algeria,,1902,1919,Algeria,DZA-1902-1919,high,name-equivalence; French colonial 
 algeria,,1919,1962,Algeria,DZA-1919-1962,high,name-equivalence; French colonial Algeria IIA period (1905-1945 active),
 algeria,,1962,2025,Algeria,DZA-1962-2025,high,name-equivalence; independent Algeria,
 viet nam,,1955,1974,Republic of Vietnam,RVN-1954-1975,high,Mitchell western stats used "viet nam" exclusively for South Vietnam 1955-1974,
+south africa,iia,1828,2025,South Africa,ZAF-1828-2025,high,name-equivalence; iso zaf + label south africa = Union/Republic of South Africa; territorial scope matches CShapes 1910 polygon,90
+U of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1828-2025,high,abbreviation of Union of South Africa; existing alias maps full form; no polygon_vintage_drift for 1948-1951 data,65
