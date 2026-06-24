@@ -89,3 +89,9 @@ russian federation,,1917,1991,Russian SFSR,RSFSR-1917-1991,medium,sub-territory 
 australia,,1800,1900,,AUS-1800-1901,high,year-ranged aggregate routing for pre-Federation Australia,118
 australia,,1901,2025,,AUS-1901-2025,high,year-ranged aggregate routing for post-Federation Australia,118
 French Equat Africa,,1939,1951,French Equatorial Africa (AEF),AEF-1910-1960,high,standard abbreviation; fao1952 source; data years within polity span,110
+romania,,1859,1913,Romania,ROU-1859-1913,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1913,1918,Romania,ROU-1913-1918,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1918,1919,Romania,ROU-1918-1919,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1919,1920,Romania,ROU-1919-1920,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1920,1940,Romania,ROU-1920-1940,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1940,2025,Romania,ROU-1940-2025,high,iso rou + year-ranged dispatch to ROU family,
