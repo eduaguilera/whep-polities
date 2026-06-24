@@ -270,3 +270,38 @@ Methodology authored 2026-06-23. The deterministic detectors and the
 resolve/territorial-audit workflows were prototyped under
 `scratchpad/layerb_harness` and are being ported here. See the project's
 data-source inventory and consolidated layer-B build for the input side.
+
+## New-polity creation (dedicated workflow) + polygon provenance
+
+New-polity creation is **split into its own workflow** (heavier than rematch:
+research → wiki → polygon sourcing → DB row; mutates `polities_database.csv` and
+writes files, so it uses worktree isolation + serial-integrate). The rematch/audit
+loop stays fast and separate.
+
+### Polygon source priority (try in order; never skip ahead without recording why)
+1. **Exact historical polygon** — a GIS source with the *actual* territory for that
+   entity+period. Check these before anything else:
+   - CShapes 2.0 (states + colonial dependencies, 1886+)
+   - **Cliopatria / Seshat** (1,618 polities, 3400 BCE–2024 — largely UNTAPPED)
+   - CHGIS (China), Paine et al. (precolonial Africa), GHGIS (German historical regions)
+   - the repo's existing `data/geodata/polities_polygons.gpkg`
+2. **Composed** — union of constituent sub-units' historical polygons (e.g. AOF =
+   union of its colonies; a trust territory = union of its islands).
+3. **Period proxy** — copy an adjacent-period polygon of the *same* entity, only if
+   the territory was essentially unchanged; document the difference.
+4. **Modern proxy / constructed estimate** — LAST RESORT, only after confirming 1–3
+   don't exist.
+
+### Mandatory provenance (recorded on EVERY new polity — never silent)
+- `polygon_source`: database + feature id + vintage year actually used.
+- `polygon_method` ∈ {`exact_historical`, `composed_union`, `period_proxy`,
+  `modern_proxy`, `constructed_estimate`}.
+- `polygon_confidence` ∈ {high, medium, low}.
+- Wiki `## Territorial extent`: state exactly what was used and why; for a
+  proxy/estimate, give the direction + rough km² difference from the true territory
+  and mark it **"ESTIMATE — not authoritative"**.
+
+**Rule:** an estimate is acceptable *only* after confirming a real historical
+polygon (steps 1–2) doesn't exist, and it must be flagged loudly so it is never
+mistaken for ground truth. Prefer leaving `polygon_status=unassigned` with a
+documented reason over a silent modern-borders guess.
