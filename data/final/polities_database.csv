@@ -82,9 +82,9 @@ CHL-1810-1883,Chile (to 1883),1810,1883,national,CHL,155,South America,draft,202
 CHL-1884-1899,Chile (1884-1899),1884,1899,national,CHL,155,South America,draft,2026-06-24,cshapes-2.0,155,1886,assigned,,CHL-1810-1883,CHL-1899-1902
 CHL-1899-1902,Chile (1899-1902),1899,1902,national,CHL,155,South America,reviewed,2026-04-12,cshapes-2.0,155,1899,assigned,,CHL-1884-1899,CHL-1902-2025
 CHL-1902-2025,Chile,1902,2025,national,CHL,155,South America,reviewed,2026-04-12,cshapes-2.0,155,1902,assigned,,CHL-1899-1902,
-CHN-1800-1895,China (to 1895),1800,1895,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1886,assigned,,,CHN-1895-1912
-CHN-1895-1912,China (1895-1912),1895,1912,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1899,assigned,,CHN-1800-1895,CHN-1913-1914
-CHN-1913-1914,China (1913-1914),1913,1914,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1913,assigned,,CHN-1895-1912,CHN-1914-1921
+CHN-1800-1895,China (to 1895),1800,1895,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1886,assigned,,,CHN-1895-1913
+CHN-1895-1913,China (1895-1913),1895,1913,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1899,assigned,,CHN-1800-1895,CHN-1913-1914
+CHN-1913-1914,China (1913-1914),1913,1914,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1913,assigned,,CHN-1895-1913,CHN-1914-1921
 CHN-1914-1921,China (1914-1921),1914,1921,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1914,assigned,,CHN-1913-1914,CHN-1921-1945
 CHN-1921-1945,China (1921-1945),1921,1945,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1921,assigned,,CHN-1914-1921,CHN-1945-1947
 CHN-1945-1947,China (1945-1947),1945,1947,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1945,assigned,,CHN-1921-1945,CHN-1947-1949
