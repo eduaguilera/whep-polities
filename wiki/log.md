@@ -26,6 +26,18 @@ Kinds:
 
 ---
 
+## morocco-mar-mor-double-count
+**Date:** 2026-06-24
+**Touched:** MOR-1904-1956, MAR-1911-1958, MOR-1800-1904
+**Source:** cshapes-2.0
+**Kind:** decision
+
+MOR-1904-1956 was a duplicate of MAR-1911-1958. Both rows referenced CShapes 2.0 feature 600 (French Protectorate Morocco) and overlapped 1911–1956. MAR-1911-1958 is the canonical polity (CoW code 600, continuous MAR chain, 708 matched rows). MOR-1904-1956 had no independent polygon and was created as a second-order gap fill without recognizing the existing MAR entry.
+
+Resolution: MOR-1904-1956 retired (wiki_status=superseded, successor=MAR-1911-1958). MAR-1911-1958 predecessor set to MOR-1800-1904, resolving the broken chain. MOR-1800-1904 successor updated from MOR-1904-1956 to MAR-1911-1958. The "French Morocco" alias in applied_aliases.csv retargeted from MOR-1904-1956 to MAR-1911-1958 (year-ranged 1904–1956). No polygon change: MAR-1911-1958 retains CShapes 2.0 feature 600 (vintage 1912).
+
+---
+
 ## hungary-iia-no-year-data-error-2026-06-24
 **Date:** 2026-06-24
 **Touched:** HUN-1800-1918, HUN-1920-1938

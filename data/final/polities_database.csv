@@ -341,7 +341,7 @@ LVA-1991-2025,Latvia,1991,2025,national,LVA,367,Europe,reviewed,2026-04-12,cshap
 LZI-1800-1890,Lozi Kingdom (Barotseland),1800,1890,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Lozi,,assigned,,,ZMB-1964-2025
 MAC-1800-2025,"China, Macao SAR",1800,2025,national,MAC,NA,Asia,draft,2026-06-09,gadm-4.1-adm1,CHN.MAC,,proxy,,,
 MAN-1932-1945,Manchukuo (1932-1945),1932,1945,national,MAN,NA,Asia,draft,2026-04-17,constructed,MAN-1932-1945,,assigned,,CHN-1921-1945,CHN-1945-1947; CHN-1947-1949; CHN-1950-2025
-MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1912,assigned,,,MAR-1958-1975
+MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1912,assigned,,MOR-1800-1904,MAR-1958-1975
 MAR-1958-1975,Morocco (1958-1975),1958,1975,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1958,assigned,,MAR-1911-1958,MAR-1975-1979
 MAR-1975-1979,Morocco (1975-1979),1975,1979,national,MAR,600,Africa,reviewed,2026-04-12,cshapes-2.0,600,1975,assigned,,MAR-1958-1975,MAR-1979-2025
 MAR-1979-2025,Morocco,1979,2025,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1979,assigned,,MAR-1975-1979,
@@ -365,8 +365,8 @@ MNE-1913-1918,Montenegro (1913-1918),1913,1918,national,MNE,341,Europe,draft,202
 MNE-2006-2025,Montenegro,2006,2025,national,MNE,341,Europe,draft,2026-04-12,cshapes-2.0,341,2006,assigned,,SCG-1992-2006,
 MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,national,MNG,NA,Asia,draft,2026-04-13,cshapes-2.0,712,1921,assigned,,,MNG-1921-2025
 MNG-1921-2025,Mongolia,1921,2025,national,MNG,712,Asia,draft,2026-04-13,cshapes-2.0,712,1921,assigned,,MNG-1911-1921,
-MOR-1800-1904,Morocco (to 1904),1800,1904,national,MOR,NA,Africa,draft,2026-04-15,cliopatria,Morocco,1769,assigned,,,MOR-1904-1956
-MOR-1904-1956,Morocco (1904-1956),1904,1956,national,MOR,NA,Africa,draft,2026-04-15,cshapes-2.0,600,1902,assigned,,,MOR-1956-1958
+MOR-1800-1904,Morocco (to 1904),1800,1904,national,MOR,NA,Africa,draft,2026-04-15,cliopatria,Morocco,1769,assigned,,,MAR-1911-1958
+MOR-1904-1956,Morocco (1904-1956) [superseded],1904,1956,national,MOR,NA,Africa,superseded,2026-06-24,cshapes-2.0,600,1902,assigned,,,MAR-1911-1958
 MOR-1956-1958,Morocco (1956-1958),1956,1958,national,MOR,NA,Africa,draft,2026-04-15,cshapes-2.0,600,1912,assigned,,,MAR-1979-2025
 MOS-1800-1897,Mossi Kingdoms,1800,1897,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Mossi,,assigned,,,BFA-1960-2025; BFA-1947-1960
 MOZ-1800-1891,Mozambique (to 1891),1800,1891,national,MOZ,541,Africa,draft,2026-04-13,cshapes-2.0,541,1886,assigned,,,MOZ-1891-1975
