@@ -587,3 +587,4 @@ NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft
 NRH-1911-1953,Northern Rhodesia (1911-1953),1911,1953,national,ZMB,NA,Africa,draft,2026-06-24,cshapes-2.0,551,1911,assigned,751924,NWR-1900-1905,FRN-1953-1964
 MTQ-1816-2025,Martinique,1816,2025,national,MTQ,66,North America,draft,2026-06-24,cshapes-2.0,66,1886,assigned,1234,,
 SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,NA,Europe,draft,2026-06-24,none,,,missing,,DEU-1945-1949,F78-1949-1990
+CZE-1804-1918,"Czech Lands (Crownlands of Bohemia 1804-1918)",1804,1918,national,CZE,NA,Europe,draft,2026-06-24,histogis-1860-habsburg,"id=7 (Königreich Böhmen); id=15 (Markgrafschaft Mähren); id=5 (Herzogtum Ober- und Niederschlesien)",1860,assigned,79349,AUH-1800-1859,F51-1918-1938
