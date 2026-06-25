@@ -481,7 +481,8 @@ QAT-1800-2025,Qatar,1800,2025,national,QAT,694,Asia,draft,2026-04-12,cshapes-2.0
 QUE-1859-1900,Queensland (to 1900),1859,1900,national,QUE,NA,Oceania,draft,2026-04-15,cshapes-2.0,905,1886,assigned,,NSW-1800-1900,AUS-1901-2025
 RAFR-1850-2021,Africa Other,1850,2021,aggregate,RAFR,,Africa,draft,2026-06-11,reporting-areas,RAFR-1850-2021,,derived,,,
 RASI-1850-2021,Asia Other,1850,2021,aggregate,RASI,,Asia,draft,2026-06-11,reporting-areas,RASI-1850-2021,,derived,,,
-REU-1816-1946,Réunion (French Colony),1816,1946,,,,Africa,,2026-06-24,cshapes-2.0,585,1886,assigned,2642,,
+REU-1816-1946,Réunion (French Colony),1816,1946,,,,Africa,,2026-06-24,cshapes-2.0,585,1886,assigned,2642,,REU-1946-2025
+REU-1946-2025,Réunion (French Overseas Department),1946,2025,national,REU,585,Africa,draft,2026-06-26,cshapes-2.0,585,1886,assigned,2642,REU-1816-1946,
 REUR-1850-2021,Europe Other,1850,2021,aggregate,REUR,,Europe,draft,2026-06-11,reporting-areas,REUR-1850-2021,,derived,,,
 RLAM-1850-2013,Latin America Other,1850,2013,aggregate,RLAM,,South America,draft,2026-06-11,reporting-areas,RLAM-1850-2013,,derived,,,
 RNAM-1850-2021,North America Other,1850,2021,aggregate,RNAM,,North America,draft,2026-06-11,reporting-areas,RNAM-1850-2021,,derived,,,
