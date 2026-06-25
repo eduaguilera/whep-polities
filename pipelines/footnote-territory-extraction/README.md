@@ -90,6 +90,15 @@ provenance-traceable (per wiki-page standards).
   coverage-caveat, 71 exclusion, 64 inclusion). Run via a Claude Code
   multi-agent workflow (Sonnet/medium, one agent per batch, StructuredOutput
   schema). Re-runnable; see git history / session workflow script.
-- [~] Step 4 linkage + mapping — named-territory claims resolvable now;
-  boundary-vintage + generic numbered markers need the marked data tables.
-- [ ] Steps 5–6 polity-DB actions + autoimprove integration
+- [x] Step 4 mapping — 216 named-claim proposals (host country resolved, polity
+  codes matched) via a Sonnet/medium workflow →
+  `footnote_polity_proposals.{csv,parquet}`.
+- [x] Step 5 validate + categorize (`validate_proposals.py`): 121 kept
+  (conf >= 0.85, self-referential dropped) → `footnote_proposals_validated.csv`;
+  19-territory creation backlog → `footnote_territory_gaps.csv`; boundary-vintage
+  vs classifier → `footnote_territory_basis_crosscheck.csv` (surfaced e.g. West
+  Germany `F78-1949-1990` flagged "Bizone only" 1950 while the classifier had
+  `assumed_constant`).
+- [ ] Step 6 apply: create the 19 gap polities / compose unions / aliases (each
+  needs a wiki page per standards) and feed `polity-autoimprove`. Boundary-vintage
+  for generic numbered markers still needs the marked data tables.
