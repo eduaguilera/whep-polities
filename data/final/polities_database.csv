@@ -459,7 +459,10 @@ PER-1922-1942,Peru (1922-1942),1922,1942,national,PER,135,South America,draft,20
 PER-1942-2025,Peru,1942,2025,national,PER,135,South America,reviewed,2026-04-12,cshapes-2.0,135,1942,assigned,,PER-1922-1942,
 PHL-1800-2025,Philippines,1800,2025,national,PHL,840,Asia,draft,2026-04-13,cshapes-2.0,840,1898,assigned,,,
 PLW-1991-2025,Palau,1991,2025,national,PLW,986,Oceania,draft,2026-04-13,none,,,missing,,,
-PNG-1949-1975,Territory of Papua and New Guinea,1949,1975,national,PNG,NA,Oceania,draft,2026-04-16,cshapes-2.0,910,1949,assigned,,,PNG-1975-2025
+GNGU-1884-1914,German New Guinea,1884,1914,colonial,PNG,912,Oceania,draft,2026-06-26,cshapes-2.0,744,1910,assigned,228080,,TNGU-1920-1949
+TPAP-1906-1949,Territory of Papua,1906,1949,colonial,PNG,911,Oceania,draft,2026-06-26,cshapes-2.0,740,1920,assigned,224148,,PNG-1949-1975
+TNGU-1920-1949,Territory of New Guinea,1920,1949,colonial,PNG,912,Oceania,draft,2026-06-26,cshapes-2.0,746,1920,assigned,237536,GNGU-1884-1914,PNG-1949-1975
+PNG-1949-1975,Territory of Papua and New Guinea,1949,1975,national,PNG,NA,Oceania,draft,2026-04-16,cshapes-2.0,910,1949,assigned,,"TPAP-1906-1949; TNGU-1920-1949",PNG-1975-2025
 PNG-1975-2025,Papua New Guinea,1975,2025,national,PNG,910,Oceania,draft,2026-04-12,cshapes-2.0,910,1975,assigned,,,
 PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Porto Novo,,assigned,,,BEN-1960-2025; BEN-1898-1960
 POL-1815-1918,Congress Poland (1815-1918),1815,1918,national,POL,290,Europe,draft,2026-04-16,cshapes-2.0,290,1918,assigned,,,POL-1918-1919

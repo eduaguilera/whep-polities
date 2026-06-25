@@ -146,3 +146,4 @@ British Borneo North Borneo,,1937,1951,British North Borneo,BNB-1881-1963,high,"
 Japan,fao1952,1895,1945,Japanese Empire,JPN-1895-1945,high,name-equivalence,57
 burkina faso,iia,1919,1932,Upper Volta (1919-1932),BFA-1919-1932,high,year-ranged alias: Upper Volta first colonial period; routing to AOF-1895-1960 would overstate territory ~17x (~272k km2 vs ~4.77M km2),68
 British Borneo Brunei,,,,,BRN-1888-2025,high,FAO 1952 sub-entry pattern; Brunei suffix unambiguously identifies Brunei Protectorate (~5765 km²); full data range 1937-1951,
+papua new guinea,iia,1910,1940,Territory of Papua,TPAP-1906-1949,medium,plantation data (cacao/rubber/tobacco) consistent with Territory of Papua established sector; German New Guinea primary export was copra (absent from data); uncertainty documented on TPAP wiki page if IIA aggregated both territories,54
