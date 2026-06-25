@@ -54,6 +54,7 @@ BIH-1992-2025,Bosnia and Herzegovina,1992,2025,national,BIH,346,Europe,reviewed,
 BKN-1800-1897,Kingdom of Benin,1800,1897,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Benin,,assigned,,,SNI-1899-1906
 BLR-1991-2025,Belarus,1991,2025,national,BLR,370,Europe,reviewed,2026-04-12,cshapes-2.0,370,1991,assigned,,F228-1945-1991,
 BLX-1850-1999,Belgium-Luxembourg,1850,1999,aggregate,BLX,,Europe,draft,2026-06-11,reporting-areas,BLX-1850-1999,,derived,,,
+BLX-1921-1999,Belgium-Luxembourg Economic Union,1921,1999,national,BEL,,Europe,draft,2026-06-25,constructed,BLX-1921-1999,,assigned,33223,,
 BLZ-1800-2025,Belize,1800,2025,national,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,,,
 BMB-1800-1899,Bemba Kingdom,1800,1899,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Bemba,,assigned,,,ZMB-1964-2025
 BNB-1881-1963,British North Borneo,1881,1963,national,MYS,823,Asia,draft,2026-06-24,cshapes-2.0,823,1889,assigned,72620,,MYS-1963-1965
@@ -108,6 +109,7 @@ COD-1891-1894,Democratic Republic of the Congo (1891-1894),1891,1894,national,CO
 COD-1894-1910,Democratic Republic of the Congo (1894-1910),1894,1910,national,COD,NA,Africa,draft,2026-04-13,cshapes-2.0,490,1894,assigned,,COD-1891-1894,COD-1910-1960
 COD-1910-1960,DR Congo (1910-1960),1910,1960,national,COD,490,Africa,draft,2026-04-12,cshapes-2.0,490,1910,assigned,,COD-1894-1910,COD-1960-2025
 COD-1960-2025,Democratic Republic of the Congo,1960,2025,national,COD,490,Africa,reviewed,2026-04-12,cshapes-2.0,490,1960,assigned,,,
+CODRU-1922-1960,Belgian Congo and Ruanda-Urundi,1922,1960,national,COD,,Africa,draft,2026-06-25,constructed,CODRU-1922-1960,,assigned,2378962,,
 COG-1898-1900,Congo (1898-1900),1898,1900,national,COG,NA,Africa,draft,2026-04-15,cshapes-2.0,484,1886,assigned,,,COG-1900-1906
 COG-1900-1906,Congo (1900-1906),1900,1906,national,COG,NA,Africa,draft,2026-04-15,cshapes-2.0,484,1898,assigned,,,COG-1906-1912
 COG-1906-1912,Congo (1906-1912),1906,1912,national,COG,NA,Africa,draft,2026-04-13,cshapes-2.0,484,1900,assigned,,,COG-1912-1919
@@ -163,6 +165,7 @@ EGY-1899-1925,Egypt (1899-1925),1899,1925,national,EGY,651,Africa,draft,2026-04-
 EGY-1925-1967,Egypt (1925-1967),1925,1967,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1925,assigned,,EGY-1899-1925,EGY-1967-1979
 EGY-1967-1979,Egypt (1967-1979),1967,1979,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1967,assigned,,EGY-1925-1967,EGY-1979-2025
 EGY-1979-2025,Egypt,1979,2025,national,EGY,651,Africa,reviewed,2026-04-12,cshapes-2.0,651,1979,assigned,,EGY-1967-1979,
+EGYSUD-1934-1956,Egypt and Anglo-Egyptian Sudan,1934,1956,national,EGY,,Africa,draft,2026-06-25,constructed,EGYSUD-1934-1956,,assigned,3485332,,
 ERI-1885-1889,"Eritrea (Italian coastal, 1885-1889)",1885,1889,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1886,assigned,,,ERI-1889-1952
 ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",1889,1952,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1900,assigned,,ERI-1885-1889,ERI-1993-2025
 ERI-1993-2025,Eritrea,1993,2025,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1993,assigned,,ERI-1889-1952; ETH-1952-1993,
@@ -361,6 +364,7 @@ MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-
 MAR-1958-1975,Morocco (1958-1975),1958,1975,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1958,assigned,,MAR-1911-1958,MAR-1975-1979
 MAR-1975-1979,Morocco (1975-1979),1975,1979,national,MAR,600,Africa,reviewed,2026-04-12,cshapes-2.0,600,1975,assigned,,MAR-1958-1975,MAR-1979-2025
 MAR-1979-2025,Morocco,1979,2025,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1979,assigned,,MAR-1975-1979,
+MASG-1946-1963,Malaya and Singapore,1946,1963,national,MYS,,Asia,draft,2026-06-25,constructed,MASG-1946-1963,,assigned,132040,,
 MCO-1800-2025,Monaco,1800,2025,national,MCO,NA,Europe,reviewed,2026-04-12,cshapes-europe,221,1861,assigned,,,
 MDA-1991-2025,Moldova,1991,2025,national,MDA,359,Europe,reviewed,2026-04-12,cshapes-2.0,359,1991,assigned,,F228-1945-1991,
 MDG-1882-2025,Madagascar,1882,2025,national,MDG,580,Africa,draft,2026-04-13,cshapes-2.0,580,1960,assigned,,,

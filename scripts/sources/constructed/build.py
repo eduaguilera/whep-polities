@@ -126,6 +126,37 @@ def build_man_1932_1945() -> ogr.Geometry:
                   _gadm_adm1("CHN.18_1"))   # Liaoning
 
 
+def build_egysud_1934_1956() -> ogr.Geometry:
+    """Egypt + Anglo-Egyptian Sudan = CShapes Egypt (651) ∪ Sudan (625).
+    The Anglo-Egyptian condominium (1899-1956); FAO/IIA agricultural series
+    are frequently reported for Egypt with Sudan folded in (e.g. livestock
+    'cattle received from Anglo-Egyptian Sudan'). Holds data reported under a
+    combined Egypt-incl-Sudan label."""
+    return _union(_cshapes2_feature(651, 1950), _cshapes2_feature(625, 1950))
+
+
+def build_codru_1922_1960() -> ogr.Geometry:
+    """Belgian Congo + Ruanda-Urundi = CShapes Congo/Zaire (490) ∪
+    Ruanda-Urundi (515). Belgium administered Ruanda-Urundi as a League/UN
+    mandate alongside the Congo; colonial agricultural returns commonly
+    combine the two."""
+    return _union(_cshapes2_feature(490, 1950), _cshapes2_feature(515, 1950))
+
+
+def build_blx_1921_1999() -> ogr.Geometry:
+    """Belgium-Luxembourg Economic Union (BLEU, from 1921) = CShapes Belgium
+    (211) ∪ Luxembourg (212). Many interwar/post-war trade and production
+    series report the two as a single customs unit."""
+    return _union(_cshapes2_feature(211, 1950), _cshapes2_feature(212, 1950))
+
+
+def build_masg_1946_1963() -> ogr.Geometry:
+    """Malaya + Singapore = CShapes Malaya/Malaysia (820) ∪ Singapore (830).
+    FAO footnotes report the Federation of Malaya figure as including
+    Singapore for 1949-1960; this union holds that combined-label data."""
+    return _union(_cshapes2_feature(820, 1953), _cshapes2_feature(830, 1953))
+
+
 # (polity_code, polity_name, builder-callable, provenance note)
 BUILDERS = [
     (
@@ -177,6 +208,42 @@ BUILDERS = [
         "of the Japanese puppet state Manchukuo's territory. Historical "
         "Manchukuo also annexed Rehe/Jehol from Inner Mongolia (1933); "
         "the 3-province polygon captures ~90% of the state's area.",
+    ),
+    (
+        "EGYSUD-1934-1956",
+        "Egypt and Anglo-Egyptian Sudan",
+        build_egysud_1934_1956,
+        "Union of CShapes 2.0 Egypt (gwcode 651) and Sudan (gwcode 625). "
+        "Composed-union row for FAO/IIA series reported under Egypt with "
+        "Anglo-Egyptian Sudan folded in; the constituents EGY-1925-1967 and "
+        "SUD-1934-1956 carry the two separately.",
+    ),
+    (
+        "CODRU-1922-1960",
+        "Belgian Congo and Ruanda-Urundi",
+        build_codru_1922_1960,
+        "Union of CShapes 2.0 Belgian Congo (gwcode 490) and Ruanda-Urundi "
+        "(gwcode 515). Composed-union row for colonial returns combining the "
+        "two; constituents COD-1910-1960 and RWB-1922-1962 carry them apart.",
+    ),
+    (
+        "BLX-1921-1999",
+        "Belgium-Luxembourg Economic Union",
+        build_blx_1921_1999,
+        "Union of CShapes 2.0 Belgium (gwcode 211) and Luxembourg (gwcode "
+        "212). BLEU customs union (1921-1999); composed-union row for series "
+        "reporting the two as one unit. Constituents BEL-1831-2025 and "
+        "LUX-1839-2025 carry them apart.",
+    ),
+    (
+        "MASG-1946-1963",
+        "Malaya and Singapore",
+        build_masg_1946_1963,
+        "Union of CShapes 2.0 Malaya/Malaysia (gwcode 820) and Singapore "
+        "(gwcode 830). Composed-union row for FAO series reporting the "
+        "Federation of Malaya figure as including Singapore (1949-1960); "
+        "constituents MYS-1946-1957/MYS-1957-1963 and SGP-1946-1963 carry "
+        "them apart.",
     ),
 ]
 
