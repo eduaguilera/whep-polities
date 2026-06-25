@@ -1,6 +1,7 @@
 original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows
 cyprus,iia,1879,2025,Cyprus,CYP-1879-2025,high,island identity; 1960 CShapes polygon valid for 1879-1974; post-1974 rows carry polygon_vintage_drift (~57% overstatement vs. RoC-controlled area) documented on wiki,97
 Turkey,,,,Türkiye,TUR-1920-2025,high,name-equivalence,323
+British West Indies Trinidad and Tobago,fao1952,1937,1951,Trinidad and Tobago,TTO-1800-2025,high,colonial-era FAO prefix; scale consistent with ~5126 km2 island territory,
 French Morocco,,1904,1956,Morocco,MAR-1911-1958,high,name-equivalence; redirected from MOR-1904-1956 (duplicate retired 2026-06-24),261
 indochina,,,,French Indochina,FID-1887-1954,high,name-equivalence,259
 French Oceania,fao1952,1937,1951,French Polynesia,PYF-1800-2025,high,historical English name for Établissements français de l'Océanie; same archipelagos (Society/Tuamotu/Marquesas/Gambier/Austral) before and after 1945; renamed French Polynesia 1957,50
