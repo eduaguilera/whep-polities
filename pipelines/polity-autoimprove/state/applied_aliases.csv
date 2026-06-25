@@ -152,3 +152,7 @@ papua new guinea,iia,1910,1940,Territory of Papua,TPAP-1906-1949,medium,plantati
 USSR,,1921,1940,RSFSR/USSR (1921-1940),F228-1921-1940,high,whole-USSR aggregate label; sampled commodities (butter/sugar/cotton lint) confirm no sub-territory ambiguity; F228-1921-1940 is the correct aggregate polity,
 USSR,,1940,1945,USSR (1940-1945),F228-1940-1945,high,whole-USSR aggregate label; wartime period including Baltic annexations; F228-1940-1945 is the correct aggregate polity,
 USSR,,1945,1991,USSR (1945-1991),F228-1945-1991,high,whole-USSR aggregate label; post-WWII Soviet period through dissolution; F228-1945-1991 is the correct aggregate polity,
+French Guiana,iia,1816,1945,French Guiana (Colony),GUF-1816-1946,high,year-ranged alias for IIA/fao1952 data 1909-1945; colonial period,85
+french guiana,iia,1816,1945,French Guiana (Colony),GUF-1816-1946,high,year-ranged alias lowercase for IIA/fao1952 data 1909-1945; colonial period,85
+French Guiana,fao1952,1946,2025,French Guiana (Overseas Department),GUF-1946-2025,high,year-ranged alias for fao1952 data 1946-1951; post-DOM transition,
+french guiana,,1946,2025,French Guiana (Overseas Department),GUF-1946-2025,high,year-ranged alias lowercase for post-1946 data; post-DOM transition,
