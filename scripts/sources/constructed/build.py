@@ -14,6 +14,15 @@ Current entries:
 
 Add new entries by appending to the BUILDERS list below, with a function
 that returns an ogr.Geometry in WGS84 (lon,lat axis order).
+
+IMPORTANT — this script REWRITES constructed.geojson from scratch every run
+(it unlinks the file, then writes exactly the features in BUILDERS). So:
+  * EVERY polity whose wiki page sets `polygon_source: constructed` MUST have
+    an entry in BUILDERS here. If it doesn't, a re-run silently drops its
+    polygon and `scripts/build_database.py` then logs it as feature-not-found.
+  * NEVER hand-edit constructed.geojson directly — those edits are lost on the
+    next run. The BUILDERS list is the single source of truth; this file is a
+    derived artifact (gitignored). Add the recipe here instead.
 """
 from __future__ import annotations
 import sys
@@ -26,6 +35,11 @@ osr.UseExceptions()
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CSHAPES2 = REPO_ROOT / "data/geodata/cshapes-2.0/CShapes-2.0.shp"
 GADM41_ADM1 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm1.gpkg"
+CROWNLANDS = (
+    REPO_ROOT
+    / "data/geodata/histogis-1860-habsburg/crownlands_1860"
+    / "austrian_empire_adm2_crownlands_1860.shp"
+)
 OUT = REPO_ROOT / "data/geodata/constructed/constructed.geojson"
 
 
@@ -64,6 +78,30 @@ def _gadm_adm1(gid_1: str) -> ogr.Geometry:
         if f.GetField("GID_1") == gid_1:
             return f.GetGeometryRef().Clone()
     raise LookupError(f"GADM 4.1 adm1 has no feature with GID_1={gid_1!r}")
+
+
+def _crownland(feature_id: str) -> ogr.Geometry:
+    """Return the geometry of the Histogis 1860 Habsburg crownland with `id`,
+    reprojected to WGS84 (the source shapefile is EPSG:3857 Web Mercator)."""
+    if not CROWNLANDS.exists():
+        raise FileNotFoundError(
+            f"{CROWNLANDS} missing — fetch the Histogis crownlands shapefile first."
+        )
+    ds = ogr.Open(str(CROWNLANDS))
+    lyr = ds.GetLayer()
+    src_srs = lyr.GetSpatialRef()
+    transform = (
+        osr.CoordinateTransformation(src_srs, wgs84_lonlat())
+        if src_srs is not None
+        else None
+    )
+    for f in lyr:
+        if str(f.GetField("id")) == str(feature_id):
+            g = f.GetGeometryRef().Clone()
+            if transform is not None:
+                g.Transform(transform)
+            return g
+    raise LookupError(f"crownlands shapefile has no feature id={feature_id!r}")
 
 
 def _union(*geoms: ogr.Geometry) -> ogr.Geometry:
@@ -157,6 +195,27 @@ def build_masg_1946_1963() -> ogr.Geometry:
     return _union(_cshapes2_feature(820, 1953), _cshapes2_feature(830, 1953))
 
 
+def build_aof_1895_1960() -> ogr.Geometry:
+    """French West Africa (AOF) 1895-1960 ≈ union of CShapes 2.0 constituent
+    colonies at vintage 1938: gwcodes 432 (French Sudan/Mali), 433 (Senegal),
+    434 (Dahomey/Benin), 435 (Mauritania), 436 (Niger), 437 (Cote d'Ivoire),
+    438 (Guinea). CShapes drops the federation-level aggregate (gwcode 430)
+    after 1904; the 1938 vintage excludes Upper Volta (dissolved 1932,
+    reconstituted 1947). See wiki/polities/aof-1895-1960.md for the drift note."""
+    return _union(*[
+        _cshapes2_feature(gw, 1938)
+        for gw in (432, 433, 434, 435, 436, 437, 438)
+    ])
+
+
+def build_cze_1804_1918() -> ogr.Geometry:
+    """Czech Lands 1804-1918 = Bohemia (id 7) ∪ Moravia (id 15) ∪ Austrian
+    Silesia (id 5) from the Histogis 1860 Habsburg crownlands shapefile. The
+    three crownlands' borders were administratively stable across the period;
+    see wiki/polities/cze-1804-1918.md."""
+    return _union(_crownland("7"), _crownland("15"), _crownland("5"))
+
+
 # (polity_code, polity_name, builder-callable, provenance note)
 BUILDERS = [
     (
@@ -244,6 +303,24 @@ BUILDERS = [
         "Federation of Malaya figure as including Singapore (1949-1960); "
         "constituents MYS-1946-1957/MYS-1957-1963 and SGP-1946-1963 carry "
         "them apart.",
+    ),
+    (
+        "AOF-1895-1960",
+        "French West Africa (AOF)",
+        build_aof_1895_1960,
+        "Union of CShapes 2.0 constituent colonies at vintage 1938 (gwcodes "
+        "432, 433, 434, 435, 436, 437, 438). CShapes drops the federation "
+        "aggregate (gwcode 430) after 1904; 1938 excludes Upper Volta "
+        "(dissolved 1932-1947). See wiki/polities/aof-1895-1960.md.",
+    ),
+    (
+        "CZE-1804-1918",
+        "Czech Lands (Crownlands of Bohemia, 1804-1918)",
+        build_cze_1804_1918,
+        "Union of Histogis 1860 Habsburg crownlands Bohemia (id 7), Moravia "
+        "(id 15), and Austrian Silesia (id 5). The only vector source with "
+        "individual crownland polygons for this sub-imperial unit. See "
+        "wiki/polities/cze-1804-1918.md.",
     ),
 ]
 
