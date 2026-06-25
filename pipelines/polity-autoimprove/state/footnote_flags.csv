@@ -1,0 +1,29 @@
+polity_code,n_footnotes,actions,territories,sample_footnote
+BEL-1831-2025,3,composed_union,Luxembourg,Luxembourg included under Belgium
+CAN-1948-2025,5,composed_union|separate_entity,Newfoundland,Including Newfoundland.
+CHN-1921-1945,3,separate_entity,Manchuria,Manchuria's exports for 1938.
+CHN-1950-2025,4,composed_union|separate_entity,Manchuria; Taiwan,Including Manchuria.
+COD-1910-1960,3,composed_union,Ruanda-Urundi,Includes Ruanda-Urundi.
+DEU-1920-1938,2,separate_entity,Saar,Excludes the Saar.
+DEU-1945-1949,8,territory_basis,Germany (Bizone),Bizone only.
+DEU-1949-1990,2,composed_union|territory_basis,Eastern Germany; Germany Western Zones,Includes estimate for imports of Eastern Germany.
+EGY-1925-1967,1,composed_union,Anglo-Egyptian Sudan,Includes cattle received from Anglo-Egyptian Sudan.
+F78-1949-1990,13,territory_basis,Bizone; Germany (Bizone); Germany (Trizone); Western Germany,Western Germany only.
+FRA-1919-2025,1,separate_entity,Chandernagor,Excludes Chandernagor which became part of India after the plebiscite 
+GRC-1919-2025,2,composed_union,Dodecanese,Includes the Dodecanese ceded by Italy in 1947.
+HUN-1947-2025,2,territory_basis,Bratislava Bridgehead,"Excluding Bratislava Bridgehead ceded by Hungary in 1947, with a popul"
+IND-1949-2025,15,composed_union|separate_entity|territory_basis,"Andaman and Nicobar; Burma; Hyderabad; Kashmir; Kashmir, Jammu, tribal areas of Assam, Mahe, Pondicherry, Karikal, Yanao",Pakistan included under India.
+ITA-1919-2025,2,territory_basis,territories ceded by Italy in 1947,Excludes territories (708 square kilometres) ceded by Italy in 1947.
+JOR-1946-2025,1,composed_union,West Jordan,"Includes West Jordan (i.e., that part of Arab Palestine annexed 24 Apr"
+JPN-1952-2025,4,composed_union|separate_entity,"Amami Islands, Togara Archipelago; Okinawa and certain other Ryukyuan areas","Including Amami Islands and the Togara Archipelago, but excluding Okin"
+LBY-1951-2025,1,composed_union,Cyrenaica,Includes Cyrenaica.
+MYS-1946-1957,3,composed_union,Singapore,1949 and 1950. Includes Federation of Malaya and Singapore.
+MYS-1957-1963,1,composed_union,Singapore,Including Singapore.
+NGA-1914-1960,1,composed_union,British Cameroons,Includes British Cameroons.
+NZL-1840-2025,1,composed_union,Niue and Tokelau,Includes Niue and Tokelau
+PAK-1949-1971,1,separate_entity,"Kashmir, Jammu, Gilgit, Baltistan, Junagadh, Manavadar, Northwest Frontier","Excluding Kashmir, Jammu, Gilgit, Baltistan, Junagadh, Manavadar and N"
+PAN-1800-1979,2,separate_entity,Canal Zone,Excluding Canal Zone.
+RYU-1945-1972,1,separate_entity,"Amami Islands, Togara Archipelago",Excluding Amami Islands and the Togara Archipelago.
+SYR-1946-1967,4,composed_union|separate_entity,Sanjak of Alexandretta; Syria and Lebanon,"Up to March 1950, figures refer to the customs union of Syria and Leba"
+TWN-1945-2025,1,composed_union,Pescadores,Includes the Pescadores.
+USA-1867-1959,5,composed_union|separate_entity,Hawaii,Including Hawaii.

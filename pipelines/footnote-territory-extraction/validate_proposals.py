@@ -121,10 +121,37 @@ def main():
             w.writeheader()
             w.writerows(cc)
 
+    # committed flag file consumed by polity-autoimprove stage 4
+    # (04_territory_basis.py unions these host polities into priority_review).
+    flag_actions = {"composed_union", "separate_entity", "territory_basis",
+                    "new_polity"}
+    flags = {}
+    for p in kept:
+        hp = p["host_polity_code"].strip()
+        if not hp or p["action"] not in flag_actions:
+            continue
+        f = flags.setdefault(hp, {"n": 0, "actions": set(), "terr": set(), "text": ""})
+        f["n"] += 1
+        f["actions"].add(p["action"])
+        if p["territory"]:
+            f["terr"].add(p["territory"])
+        if not f["text"]:
+            f["text"] = p["text_en"][:70]
+    flags_path = os.path.join(HERE, "..", "polity-autoimprove", "state",
+                              "footnote_flags.csv")
+    with open(flags_path, "w", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["polity_code", "n_footnotes", "actions", "territories",
+                    "sample_footnote"])
+        for code, f in sorted(flags.items()):
+            w.writerow([code, f["n"], "|".join(sorted(f["actions"])),
+                        "; ".join(sorted(f["terr"]))[:120], f["text"]])
+
     print(f"proposals={len(props)} kept(conf>={MIN_CONF},non-selfref)={len(kept)}")
     print("kept by action:", dict(Counter(p["action"] for p in kept)))
     print(f"territory gaps (not in DB): {len(gaps)}")
     print(f"territory_basis cross-check rows: {len(cc)}")
+    print(f"footnote_flags.csv: {len(flags)} polities -> {flags_path}")
 
 
 if __name__ == "__main__":

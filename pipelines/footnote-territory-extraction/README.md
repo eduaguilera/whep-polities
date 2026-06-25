@@ -99,6 +99,12 @@ provenance-traceable (per wiki-page standards).
   vs classifier → `footnote_territory_basis_crosscheck.csv` (surfaced e.g. West
   Germany `F78-1949-1990` flagged "Bizone only" 1950 while the classifier had
   `assumed_constant`).
-- [ ] Step 6 apply: create the 19 gap polities / compose unions / aliases (each
-  needs a wiki page per standards) and feed `polity-autoimprove`. Boundary-vintage
-  for generic numbered markers still needs the marked data tables.
+- [~] Step 6 apply:
+  - [x] **priority_review wiring** — flagged hosts written to
+    `../polity-autoimprove/state/footnote_flags.csv` (28 polities), which
+    `04_territory_basis.py` now unions into `priority_review` (durable across
+    classifier re-runs; bypasses the polygon-vintage gate since a footnote is
+    direct coverage evidence). Adds e.g. West Germany Bizone, Syria⊃Lebanon.
+  - [ ] create the 19 gap polities / compose unions / aliases (each needs a wiki
+    page per standards). Boundary-vintage for generic numbered markers still
+    needs the marked data tables.

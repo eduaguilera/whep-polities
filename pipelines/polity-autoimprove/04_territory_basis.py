@@ -61,6 +61,16 @@ tf = os.path.join(H, "territorial_flagged.json")
 if os.path.exists(tf):
     flagged_02 = {f["polity_code"] for f in json.load(open(tf))}
 
+# footnote-derived territorial coverage flags (committed; persists across runs,
+# unlike the per-run stage-02 flags). Polities whose published figures carry a
+# documented coverage caveat from FAO/IIA yearbook footnotes (inclusion/exclusion/
+# boundary-vintage) — direct evidence the nominal territory differs from the
+# reported one, so always a priority review regardless of polygon vintage.
+footnote_flagged = set()
+ff = os.path.join(H, "footnote_flags.csv")
+if os.path.exists(ff):
+    footnote_flagged = set(pd.read_csv(ff)["polity_code"].dropna())
+
 # layer-B data magnitude per polity (optional hint)
 rows_by_code = {}
 mp = os.path.join(H, "matched_rows.parquet")
@@ -99,6 +109,10 @@ for _, r in pol.iterrows():
     s, e = int(r.start_year), int(r.end_year)
     overlaps = (s <= WIN_HI) and (e >= WIN_LO)
     basis, reason = classify(r)
+    fn = r.polity_code in footnote_flagged
+    is_prio = ((basis in ("assumed_constant", "back_projected")) and (r.polity_code in flagged_02)) or fn
+    if fn:
+        reason = reason + "; footnote coverage caveat (FAO/IIA yearbook)"
     recs.append({
         "polity_code": r.polity_code, "polity_name": r.polity_name,
         "start_year": s, "end_year": e,
@@ -107,7 +121,7 @@ for _, r in pol.iterrows():
         "polygon_status": r.get("polygon_status"),
         "overlaps_1860_1961": overlaps,
         "territory_basis": basis, "territory_assumed": basis != "measured",
-        "priority_review": (basis in ("assumed_constant", "back_projected")) and (r.polity_code in flagged_02),
+        "priority_review": is_prio,
         "basis_reason": reason, "layerb_data_rows": int(rows_by_code.get(r.polity_code, 0)),
     })
 
@@ -129,6 +143,7 @@ for b in ORDER:
 
 prio = win[win.priority_review].sort_values("layerb_data_rows", ascending=False)
 print(f"\n=== {len(prio)} window polities are PRIORITY_REVIEW "
-      f"(assumed/back-projected AND independently flagged by stage 02) ===")
+      f"(assumed/back-projected AND flagged by stage 02, OR footnote coverage caveat) ===")
+print(f"    ({len(footnote_flagged)} polities carry FAO/IIA footnote coverage flags)")
 for _, r in prio.head(30).iterrows():
     print(f"  {r.polity_code:18s} {r.territory_basis:16s} {r.basis_reason[:60]:60s} [{r.layerb_data_rows}r]")
