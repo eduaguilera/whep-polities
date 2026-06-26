@@ -15,7 +15,7 @@ Syria,,,,Syrian Arab Republic,SYR-1946-1967,high,name-equivalence,162
 rwanda and burundi,,,,Ruanda-Urundi,RWB-1922-1962,high,name-equivalence,155
 French West Africa,,,,French West Africa (AOF),AOF-1895-1960,high,federation-level reporting unit,150
 French W Africa,,,,French West Africa (AOF),AOF-1895-1960,high,federation-level reporting unit,12
-Germany Western,fao1952,1949,1951,West Germany,F78-1949-1990,low,assumed post-1949 only; 1937-48 left UNRESOLVED pending source footnotes + magnitude analysis (label's true extent unknown),47
+Germany Western,fao1952,1937,1951,West Germany,F78-1949-1990,high,FAO 1952 'Germany Western' = US/UK/French occupation zones geographic area (~248000 km²); matches F78-1949-1990 CShapes polygon (~249000 km²); routing to DEU-1938-1945 (~470000 km²) would overstate ~2×; polygon_vintage_drift for 1937-1948 is temporal only — geographic scope is correct; FAO applied western-zone frame retrospectively to pre-war and occupation-period statistics,45
 cape province,,1800,1910,,CAP-1800-1910,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,1816,1913,,SER-1816-1913,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,1913,1918,,SER-1913-1918,medium,reused from stopped run wf_62a587d4 audit,
