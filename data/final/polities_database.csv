@@ -656,3 +656,4 @@ GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,colonial,GHA
 ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,colonial,NA,NA,Asia,draft,2026-06-26,cshapes-2.0,680,1967,unassigned,290000,,
 GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,,Oceania,draft,2026-06-26,gadm-4.1,GUM,2023,assigned,550,GUM-1898-1950,
 TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,NA,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM+MHL+MNP+PLW,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025
+IDN-OTH-1949-1951,Other islands (within Indonesia 1949-1951),1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN-complement-JVM-BLB,,proxy,1757495,,
