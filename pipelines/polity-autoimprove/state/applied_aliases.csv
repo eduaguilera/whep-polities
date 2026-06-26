@@ -211,3 +211,5 @@ Netherlands Antilles,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,
 netherlands antilles,,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,lowercase general-purpose alias for Dutch Caribbean pre-1961 data from any source,
 yemen,iia,1918,1962,Mutawakkilite Kingdom of Yemen,MKY-1918-1962,high,IIA 'yemen' coffee data 1922-1945 measures Mutawakkilite Kingdom of Yemen; only independent Yemeni state 1918-1962; no prior WHEP Yemen polity covered this period,21
 Falkland Islands,fao1952,1937,1951,Falkland Islands,FLK-1833-2025,high,boundary stable since 1833; GADM-4.1 proxy valid for 1937-1951 data; ~12397 km2 vs GBR ~242000 km2 (~20x overstatement avoided),19
+Korea South,fao1952,1948,1951,South Korea,KOR-1948-2025,high,routing gap fix; existing KRS-1910-1945 alias only covers 1910-1945; KOR-1948-2025 is the correct post-independence polity (~100k km2); magnitudes consistent with RoK territory,
+Korea,fao1952,1949,1951,South Korea,KOR-1948-2025,high,unqualified label refers to RoK for this source/period; North Korea was inaccessible to FAO compilers; magnitudes consistent with ~100k km2 RoK territory,
