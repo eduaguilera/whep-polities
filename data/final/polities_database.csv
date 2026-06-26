@@ -55,6 +55,7 @@ BHR-1800-2025,Bahrain,1800,2025,national,BHR,692,Asia,draft,2026-04-12,cshapes-2
 BHS-1800-2025,Bahamas,1800,2025,national,BHS,31,North America,draft,2026-06-09,gadm-4.1-adm0,BHS,,proxy,,,
 BIH-1992-2025,Bosnia and Herzegovina,1992,2025,national,BIH,346,Europe,reviewed,2026-04-12,cshapes-2.0,346,1992,assigned,,F248-1991-1992,
 BKN-1800-1897,Kingdom of Benin,1800,1897,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Benin,,assigned,,,SNI-1899-1906
+BLI-1833-1960,British Leeward Islands Colony,1833,1960,colonial,BLI,NA,North America,draft,2026-06-26,gadm-4.1-adm0,gadm-union-ATG+KNA+MSR+DMA+VGB,,unassigned,1716,,ATG-1800-2025; KNA-1800-2025; MSR-1800-2025; DMA-1800-2025; VGB-1800-2025
 BLR-1991-2025,Belarus,1991,2025,national,BLR,370,Europe,reviewed,2026-04-12,cshapes-2.0,370,1991,assigned,,F228-1945-1991,
 BLX-1850-1999,Belgium-Luxembourg,1850,1999,aggregate,BLX,,Europe,draft,2026-06-11,reporting-areas,BLX-1850-1999,,derived,,,
 BLX-1921-1999,Belgium-Luxembourg Economic Union,1921,1999,national,BEL,,Europe,draft,2026-06-25,constructed,BLX-1921-1999,,assigned,33223,,
