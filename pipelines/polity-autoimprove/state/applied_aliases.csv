@@ -3,6 +3,10 @@ Virgin Islands US,fao1952,1917,2025,United States Virgin Islands,VIR-1917-2025,h
 Virgin Is US,fao1952,1917,2025,United States Virgin Islands,VIR-1917-2025,high,abbreviated FAO label for US Virgin Islands; same territory as 'Virgin Islands US',
 cyprus,iia,1879,2025,Cyprus,CYP-1879-2025,high,island identity; 1960 CShapes polygon valid for 1879-1974; post-1974 rows carry polygon_vintage_drift (~57% overstatement vs. RoC-controlled area) documented on wiki,97
 Turkey,,,,Türkiye,TUR-1920-2025,high,name-equivalence,323
+Br Solomon Islands,fao1952,1893,1978,British Solomon Islands Protectorate,SLB-1800-2025,high,BSIP administered identical ~28400 km2 archipelago 1893-1978; no sub-territory/empire routing risk,
+British Solomon Islands,fao1952,1893,1978,British Solomon Islands Protectorate,SLB-1800-2025,high,variant of Br Solomon Islands; same territory,
+Br Solomon Is,fao1952,1893,1978,British Solomon Islands Protectorate,SLB-1800-2025,high,abbreviated variant of Br Solomon Islands; same territory,
+British Solomon Is,fao1952,1893,1978,British Solomon Islands Protectorate,SLB-1800-2025,high,abbreviated variant of British Solomon Islands; same territory,
 Br West Indies Jamaica,,,,Jamaica,JAM-1800-2025,high,abbreviated FAO label; Jamaica qualifier unambiguously identifies the island,
 EI Salvador,,,,El Salvador,SLV-1821-2025,high,OCR I/l variant,
 British West Indies Trinidad and Tobago,fao1952,1937,1951,Trinidad and Tobago,TTO-1800-2025,high,colonial-era FAO prefix; scale consistent with ~5126 km2 island territory,
