@@ -204,3 +204,8 @@ Malaya Fed of,fao1952,1949,1951,Malayan Union / Federation of Malaya,MYS-1946-19
 israel/palestine,,1925,1948,British Mandate Palestine,PAL-1920-1948,high,slash-form label for British Mandate Palestine 1925-1948; ~26k km2 consistent with wheat data magnitude,
 israel/palestine,,1949,1949,Israel,ISR-1948-1967,medium,post-Mandate year 1949 routes to Israel (independence May 1948); same label different period,
 British West Indies,fao1952,1937,1951,British West Indies (colonial aggregate),BWI-1833-1962,high,FAO 1952 group-level rows (24 rows cotton/groundnuts/population); no island qualifier; cannot route to single island polity,24
+Netherlands W Indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,FAO 1952 label for Dutch Caribbean islands (Curaçao/Aruba/Bonaire/Sint Maarten/Sint Eustatius/Saba); 21 rows 1936-1951; island territory ~960 km²; routed to ANT-1816-1960 not ANT-1961-2010 (which starts 1961),21
+netherlands w indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,lowercase variant of Netherlands W Indies FAO 1952 label,21
+Dutch Caribbean,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,common-name variant for Dutch Caribbean colonial territory 1816-1960,
+Netherlands Antilles,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,alternate name variant for Dutch Caribbean colonial territory; formal name used post-1954 Charter; routes to ANT-1816-1960 for pre-1961 data,
+netherlands antilles,,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,lowercase general-purpose alias for Dutch Caribbean pre-1961 data from any source,
