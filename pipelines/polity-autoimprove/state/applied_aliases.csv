@@ -1,4 +1,6 @@
 original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows
+Virgin Islands US,fao1952,1917,2025,United States Virgin Islands,VIR-1917-2025,high,unambiguous FAO label for US Virgin Islands (~346 km2); data years 1936-1951 within polity span; consistent with existing 'united states virgin islands' alias,
+Virgin Is US,fao1952,1917,2025,United States Virgin Islands,VIR-1917-2025,high,abbreviated FAO label for US Virgin Islands; same territory as 'Virgin Islands US',
 cyprus,iia,1879,2025,Cyprus,CYP-1879-2025,high,island identity; 1960 CShapes polygon valid for 1879-1974; post-1974 rows carry polygon_vintage_drift (~57% overstatement vs. RoC-controlled area) documented on wiki,97
 Turkey,,,,Türkiye,TUR-1920-2025,high,name-equivalence,323
 Br West Indies Jamaica,,,,Jamaica,JAM-1800-2025,high,abbreviated FAO label; Jamaica qualifier unambiguously identifies the island,
