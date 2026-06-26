@@ -238,3 +238,7 @@ neth west indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high
 Netherlands West Indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,full spelling variant of 'Netherlands W Indies'; same ~960 km2 Dutch Caribbean island group,
 netherlands west indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,lowercase full spelling variant; same routing as Netherlands West Indies,
 st helena,fao1952,1931,1951,Saint Helena,SHN-1834-1967,high,unambiguous FAO label for Saint Helena island (~122 km2); 15 data rows 1931-1951 for livestock and agricultural commodities scale to small island economy; Ascension and Tristan da Cunha reported separately,
+Trieste UK-US,fao1952,1947,1954,Free Territory of Trieste,TRS-1947-1954,high,UK-US qualifier denotes Anglo-American administration of Zone A of FTT; same ~737 km2 territory as existing 'Trieste' alias; data years 1949-1951 within polity span 1947-1954,
+Trieste uk us,fao1952,1947,1954,Free Territory of Trieste,TRS-1947-1954,high,lowercase variant of 'Trieste UK-US'; same Zone A FTT territory,
+Trieste UK ans US,fao1952,1947,1954,Free Territory of Trieste,TRS-1947-1954,high,typographic variant of 'Trieste UK-US' ('ans' for 'and'); same Zone A FTT territory,
+Trieste us uk,fao1952,1947,1954,Free Territory of Trieste,TRS-1947-1954,high,reversed-qualifier variant of 'Trieste UK-US'; same Zone A FTT territory,
