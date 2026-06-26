@@ -200,3 +200,5 @@ azerbaijan,iia-tea,1920,1990,Azerbaijan SSR,AZE-SSR-1920-1991,high,IIA tea data 
 micronesia (federated states of),iia,1920,1945,Caroline Islands (Japanese Mandate),CAR-1920-1945,high,anachronistic modern FSM label applied to Caroline Islands under Japanese mandate 1920-1945; routed to CAR-1920-1945 to prevent back-extension of FSM-1991-2025,
 American Samoa,,,,Territory of American Samoa,ASM-1900-2025,high,FAO 1952 label for US-administered eastern Samoan islands (~199 km²); distinct from WSM-1900-2025 (~2831 km²),
 Malaya Fed of,fao1952,1949,1951,Malayan Union / Federation of Malaya,MYS-1946-1957,high,Abbreviated form of 'Malaya Federation of'; same territory (~132040 km2 peninsular Malaya excl. Singapore) already aliased under full name,25
+israel/palestine,,1925,1948,British Mandate Palestine,PAL-1920-1948,high,slash-form label for British Mandate Palestine 1925-1948; ~26k km2 consistent with wheat data magnitude,
+israel/palestine,,1949,1949,Israel,ISR-1948-1967,medium,post-Mandate year 1949 routes to Israel (independence May 1948); same label different period,
