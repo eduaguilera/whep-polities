@@ -1,6 +1,7 @@
 original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows
 cyprus,iia,1879,2025,Cyprus,CYP-1879-2025,high,island identity; 1960 CShapes polygon valid for 1879-1974; post-1974 rows carry polygon_vintage_drift (~57% overstatement vs. RoC-controlled area) documented on wiki,97
 Turkey,,,,Türkiye,TUR-1920-2025,high,name-equivalence,323
+Br West Indies Jamaica,,,,Jamaica,JAM-1800-2025,high,abbreviated FAO label; Jamaica qualifier unambiguously identifies the island,
 EI Salvador,,,,El Salvador,SLV-1821-2025,high,OCR I/l variant,
 British West Indies Trinidad and Tobago,fao1952,1937,1951,Trinidad and Tobago,TTO-1800-2025,high,colonial-era FAO prefix; scale consistent with ~5126 km2 island territory,
 rwanda,mitchell,1953,1960,Ruanda-Urundi,RWB-1922-1962,high,Mitchell label refers to Rwanda portion of Belgian UN Trust Territory of Ruanda-Urundi; RWB-1922-1962 span covers 1953-1960; sub-territory approximation: Rwanda-only data (~26327 km2) routed to combined mandate polygon (~54172 km2) documented on wiki dec-rwanda-mitchell-routing,
