@@ -170,3 +170,4 @@ Germany Berlin,fao1952,1945,1948,Berlin (Allied Occupation),BRL-1945-1949,high,F
 Germany Berlin,fao1952,1949,1951,West Berlin,WBL-1949-1990,high,post-1949 FAO 'Germany Berlin' refers to Western-bloc West Berlin (~480 km2); ~520x smaller than F78-1949-1990 (~249000 km2); sub-territory rule requires separate polity,
 Bermuda,fao1952,1937,1951,Bermuda,BMU-1684-1968,high,island identity; fixed ~54 km2 Crown Colony territory unambiguous; no matching WHEP polity existed,41
 bermuda,iia,1930,1945,Bermuda,BMU-1684-1968,high,island identity; same territory as fao1952 Bermuda label; lowercase variant,17
+Alaska,fao1952,1867,1959,Territory of Alaska,ALK-1867-1959,high,US sub-territory; FAO 1952 data labelled Alaska (1937-1951); ~1518800 km2 vs parent USA-1867-1959 ~9.4M km2; sub-territory rule applies,39
