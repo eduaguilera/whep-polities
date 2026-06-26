@@ -1,4 +1,6 @@
 original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows
+British West Indies St Vincent,fao1952,1939,1951,Saint Vincent and the Grenadines,VCT-1833-2025,high,colonial-era FAO prefix; island qualifier identifies Saint Vincent alone (~389 km2); routing to BWI aggregate (~34766 km2) would overstate ~90x; matches BWI-prefixed pattern already resolved for TTO and BRB,13
+Br West Indies St Vincent,fao1952,1949,1951,Saint Vincent and the Grenadines,VCT-1833-2025,high,abbreviated colonial-era FAO prefix; island qualifier identifies Saint Vincent alone (~389 km2); same basis as British West Indies St Vincent alias; tractor-count data 12 rows,12
 Virgin Islands US,fao1952,1917,2025,United States Virgin Islands,VIR-1917-2025,high,unambiguous FAO label for US Virgin Islands (~346 km2); data years 1936-1951 within polity span; consistent with existing 'united states virgin islands' alias,
 Virgin Is US,fao1952,1917,2025,United States Virgin Islands,VIR-1917-2025,high,abbreviated FAO label for US Virgin Islands; same territory as 'Virgin Islands US',
 cyprus,iia,1879,2025,Cyprus,CYP-1879-2025,high,island identity; 1960 CShapes polygon valid for 1879-1974; post-1974 rows carry polygon_vintage_drift (~57% overstatement vs. RoC-controlled area) documented on wiki,97
