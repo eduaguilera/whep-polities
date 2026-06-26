@@ -171,3 +171,6 @@ Germany Berlin,fao1952,1949,1951,West Berlin,WBL-1949-1990,high,post-1949 FAO 'G
 Bermuda,fao1952,1937,1951,Bermuda,BMU-1684-1968,high,island identity; fixed ~54 km2 Crown Colony territory unambiguous; no matching WHEP polity existed,41
 bermuda,iia,1930,1945,Bermuda,BMU-1684-1968,high,island identity; same territory as fao1952 Bermuda label; lowercase variant,17
 Alaska,fao1952,1867,1959,Territory of Alaska,ALK-1867-1959,high,US sub-territory; FAO 1952 data labelled Alaska (1937-1951); ~1518800 km2 vs parent USA-1867-1959 ~9.4M km2; sub-territory rule applies,39
+Libya Tripolitania,fao1952,1943,1951,British Military Administration of Tripolitania,TRP-1943-1951,high,FAO 1952 label for western Libyan province; ~330-400k km2 vs all-Libya ~1.6M km2 (~4x overstatement if routed to LBY aggregate); 37 rows 1948-1951,37
+Tripolitania,fao1952,1943,1951,British Military Administration of Tripolitania,TRP-1943-1951,high,FAO 1952 short-form label for western Libyan province; same territory as Libya Tripolitania; 2 rows 1949-1951,2
+Libya Cyrenaica,fao1952,1949,1951,Emirate of Cyrenaica,CYR-1949-1951,high,FAO 1952 label for eastern Libyan province; ~850-900k km2 vs all-Libya ~1.6M km2; 8 rows 1948-1950,8
