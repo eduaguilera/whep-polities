@@ -402,7 +402,8 @@ MRT-1979-2025,Mauritania,1979,2025,national,MRT,435,Africa,draft,2026-04-12,csha
 MSR-1800-2025,Montserrat,1800,2025,national,MSR,,North America,draft,2026-06-24,gadm-4.1-adm0,MSR,,assigned,100.6,,
 MTQ-1816-2025,Martinique,1816,2025,national,MTQ,66,North America,draft,2026-06-24,cshapes-2.0,66,1886,assigned,1234,,
 MUS-1800-2025,Mauritius,1800,2025,national,MUS,590,Africa,draft,2026-04-13,cshapes-2.0,590,1886,assigned,,,
-MWI-1891-1953,Nyasaland (1891-1953),1891,1953,national,MWI,553,Africa,draft,2026-06-24,cshapes-2.0,553,1891,assigned,118483,,FRN-1953-1964; MWI-1964-2025
+MWI-1891-1953,Nyasaland (1891-1953),1891,1953,national,MWI,553,Africa,draft,2026-06-24,cshapes-2.0,553,1891,assigned,118483,,MWI-1953-1964
+MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,1953,1964,national,MWI,553,Africa,draft,2026-06-26,cshapes-2.0,553,1891,assigned,118483,MWI-1891-1953,MWI-1964-2025
 MWI-1964-2025,Malawi,1964,2025,national,MWI,553,Africa,draft,2026-04-12,cshapes-2.0,553,1964,assigned,,,
 MYS-1946-1957,Malayan Union / Federation of Malaya (1946-1957),1946,1957,national,MYS,NA,Asia,draft,2026-04-15,cshapes-2.0,820,1946,assigned,,,MYS-1957-1963
 MYS-1957-1963,Malaysia (1957-1963),1957,1963,national,MYS,820,Asia,draft,2026-04-13,cshapes-2.0,820,1957,assigned,,,MYS-1963-1965

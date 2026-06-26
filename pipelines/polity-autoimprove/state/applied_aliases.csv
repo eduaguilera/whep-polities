@@ -185,3 +185,4 @@ united states virgin islands,iia,1909,1916,Danish West Indies,DWI-1800-1917,high
 united states virgin islands,iia,1917,1945,United States Virgin Islands,VIR-1917-2025,high,year-ranged: IIA label post-transfer 1917; GADM VIR assigned,
 Indonesia Java and Madura,fao1952,1949,1951,Java and Madura (within Indonesia),IDN-JVM-1949-1951,high,FAO 1952 island-group sub-national label; ~132000 km2 vs ~1900000 km2 whole Indonesia; 14x overstatement if routed to IDN-1949-1969,
 Indonesia Bali and Lombok,fao1952,1949,1951,Bali and Lombok (within Indonesia),IDN-BLB-1949-1951,high,FAO 1952 island-group sub-national label; ~10505 km2 vs ~1900000 km2 whole Indonesia; 180x overstatement if routed to IDN-1949-1969,
+malawi,,1954,1963,Nyasaland within Federation of Rhodesia and Nyasaland,MWI-1953-1964,high,sub-territorial gap: Nyasaland ~118k km² vs FRN ~1.26M km²; boundary-stable proxy polygon,
