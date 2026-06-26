@@ -634,3 +634,4 @@ BRL-1945-1949,Berlin (Allied Occupation),1945,1949,city-territory,NA,NA,Europe,d
 WBL-1949-1990,West Berlin,1949,1990,city-territory,NA,NA,Europe,draft,2026-06-26,cshapes-2.0,west-berlin-sectors,1949,unassigned,480,BRL-1945-1949,DEU-1990-2025
 BMU-1684-1968,British Crown Colony of Bermuda,1684,1968,national,BMU,NA,North America,draft,2026-06-26,gadm-4.1-adm0,BMU,,proxy,54,,
 ALK-1867-1959,Territory of Alaska,1867,1959,national,USA,,North America,draft,2026-06-26,gadm-level1,USA.2_1,2020,assigned,1518800,F228-1856-1905,USA-1959-2025
+SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,national,NA,265,Europe,draft,2026-06-26,cshapes-2.0,265,1949,assigned,109272,DEU-1938-1945,F77-1949-1990
