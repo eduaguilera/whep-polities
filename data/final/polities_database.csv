@@ -653,3 +653,4 @@ FLK-1833-2025,Falkland Islands,1833,2025,colonial,FLK,NA,South America,draft,202
 GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,colonial,GHA,462,Africa,draft,2026-06-26,cshapes-2.0,"composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION cowcode=462 row 1922-07-20/1955-12-31",1938,assigned,240056,GHA-1898-1956,GHA-1957-2025
 ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,colonial,NA,NA,Asia,draft,2026-06-26,cshapes-2.0,680,1967,unassigned,290000,,
 GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,,Oceania,draft,2026-06-26,gadm-4.1,GUM,2023,assigned,550,GUM-1898-1950,
+TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,NA,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM+MHL+MNP+PLW,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025
