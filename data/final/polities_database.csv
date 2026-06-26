@@ -619,7 +619,8 @@ WAD-1800-1912,Wadai Empire,1800,1912,national,NA,NA,Africa,draft,2026-04-13,pain
 WBK-1950-1967,West Bank (Jordanian-annexed),1950,1967,colonial,JOR,6631,Asia,draft,2026-06-25,cshapes-2.0,6631,1953,assigned,5871,PAL-1920-1948,ISR-1967-1979
 WLO-1800-1855,Kingdom of Waalo,1800,1855,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Walo,,assigned,,,SEN-1960-2025
 WSM-1900-2025,Samoa,1900,2025,national,WSM,990,Oceania,draft,2026-04-12,gadm-4.1-adm0,WSM,,assigned,,,
-YEM-1990-2025,Yemen (1990-2025),1990,2025,national,YEM,678,Asia,draft,2026-04-13,cshapes-2.0,678,2000,assigned,,,
+MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,national,NA,679,Asia,draft,2026-06-26,cshapes-2.0,679,1920,assigned,,,YEM-1990-2025
+YEM-1990-2025,Yemen (1990-2025),1990,2025,national,YEM,678,Asia,draft,2026-04-13,cshapes-2.0,678,2000,assigned,,MKY-1918-1962,
 ZAF-1828-2025,South Africa,1828,2025,national,ZAF,560,Africa,draft,2026-04-12,cshapes-2.0,560,1910,assigned,,,
 ZMB-1964-2025,Zambia,1964,2025,national,ZMB,551,Africa,draft,2026-04-12,cshapes-2.0,551,1964,assigned,,BMB-1800-1899; LZI-1800-1890; KZM-1800-1899,
 ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,national,ZNZ,NA,Africa,draft,2026-06-24,cshapes-2.0,,,unassigned,2650,,TZA-1964-2025
