@@ -637,3 +637,5 @@ ALK-1867-1959,Territory of Alaska,1867,1959,national,USA,,North America,draft,20
 SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,national,NA,265,Europe,draft,2026-06-26,cshapes-2.0,265,1949,assigned,109272,DEU-1938-1945,F77-1949-1990
 DWI-1800-1917,Danish West Indies,1800,1917,colonial,VIR,,North America,draft,2026-06-26,gadm-4.1-adm0,VIR,,proxy,346,,VIR-1917-2025
 VIR-1917-2025,United States Virgin Islands,1917,2025,colonial,VIR,,North America,draft,2026-06-26,gadm-4.1-adm0,VIR,,assigned,346,DWI-1800-1917,
+IDN-JVM-1949-1951,Java and Madura (within Indonesia 1949-1951),1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1,,proxy,132000,,
+IDN-BLB-1949-1951,Bali and Lombok (within Indonesia 1949-1951),1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN.1_1+IDN.20_1,,proxy,10505,,

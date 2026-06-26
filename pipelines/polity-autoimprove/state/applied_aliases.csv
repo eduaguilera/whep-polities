@@ -183,3 +183,5 @@ Germany Eastern,fao1952,1938,1948,Eastern Germany / Soviet Occupation Zone,SBZ-1
 Gold Coast,fao1952,1821,1956,Gold Coast Colony,GHA-1898-1956,high,British Crown Colony of the Gold Coast (~238533 km²); CShapes 2.0 polygon vintage 1898; fao1952 data years 1937-1951 fall within polity span 1898-1956; 'Gold Coast and Br Togoland' is a separate unresolved coverage gap,36
 united states virgin islands,iia,1909,1916,Danish West Indies,DWI-1800-1917,high,year-ranged: IIA label pre-transfer; island identity; GADM VIR proxy exact in extent,
 united states virgin islands,iia,1917,1945,United States Virgin Islands,VIR-1917-2025,high,year-ranged: IIA label post-transfer 1917; GADM VIR assigned,
+Indonesia Java and Madura,fao1952,1949,1951,Java and Madura (within Indonesia),IDN-JVM-1949-1951,high,FAO 1952 island-group sub-national label; ~132000 km2 vs ~1900000 km2 whole Indonesia; 14x overstatement if routed to IDN-1949-1969,
+Indonesia Bali and Lombok,fao1952,1949,1951,Bali and Lombok (within Indonesia),IDN-BLB-1949-1951,high,FAO 1952 island-group sub-national label; ~10505 km2 vs ~1900000 km2 whole Indonesia; 180x overstatement if routed to IDN-1949-1969,
