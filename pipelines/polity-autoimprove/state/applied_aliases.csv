@@ -174,3 +174,8 @@ Alaska,fao1952,1867,1959,Territory of Alaska,ALK-1867-1959,high,US sub-territory
 Libya Tripolitania,fao1952,1943,1951,British Military Administration of Tripolitania,TRP-1943-1951,high,FAO 1952 label for western Libyan province; ~330-400k km2 vs all-Libya ~1.6M km2 (~4x overstatement if routed to LBY aggregate); 37 rows 1948-1951,37
 Tripolitania,fao1952,1943,1951,British Military Administration of Tripolitania,TRP-1943-1951,high,FAO 1952 short-form label for western Libyan province; same territory as Libya Tripolitania; 2 rows 1949-1951,2
 Libya Cyrenaica,fao1952,1949,1951,Emirate of Cyrenaica,CYR-1949-1951,high,FAO 1952 label for eastern Libyan province; ~850-900k km2 vs all-Libya ~1.6M km2; 8 rows 1948-1950,8
+China Manchuria,fao1952,1937,1945,Manchukuo,MAN-1932-1945,high,FAO 1952 label for Manchuria region; 1937-1945 = Manchukuo period; CShapes CHN polygon already excludes Manchukuo from 1932; routing to CHN would understate Chinese territory and overstate scope of Manchukuo data,
+China Manchuria,fao1952,1945,1947,China (1945-1947),CHN-1945-1947,high,FAO 1952 label for Manchuria; post-Manchukuo reintegration into Republic of China August 1945; CHN-1945-1947 polygon covers Manchuria,
+China Manchuria,fao1952,1947,1949,China (1947-1949),CHN-1947-1949,high,FAO 1952 label for Manchuria; ROC period 1947-1949; CHN-1947-1949 polygon covers Manchuria,
+China Manchuria,fao1952,1949,1950,China (1949-1950),CHN-1949-1950,high,FAO 1952 label for Manchuria; PRC period from October 1949; CHN-1949-1950 polygon covers Manchuria,
+China Manchuria,fao1952,1950,2025,China (1950-2025),CHN-1950-2025,high,FAO 1952 label for Manchuria; PRC period from 1950 onward; CHN-1950-2025 polygon covers Manchuria,
