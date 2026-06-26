@@ -83,6 +83,7 @@ CAN-1800-1866,Canada (pre-Confederation),1800,1866,national,CAN,NA,North America
 CAN-1866-1948,Canada (to 1948),1866,1948,national,CAN,20,North America,draft,2026-04-12,cshapes-2.0,20,1886,assigned,,CAN-1800-1866,CAN-1948-2025
 CAN-1948-2025,Canada,1948,2025,national,CAN,20,North America,reviewed,2026-04-12,cshapes-2.0,20,1948,assigned,,CAN-1866-1948,
 CAP-1800-1910,Cape Colony (to 1910),1800,1910,national,CAP,NA,Africa,draft,2026-04-17,cshapes-2.0,561,1886,assigned,600802,,ZAF-1910-2025
+CAR-1920-1945,Caroline Islands (Japanese Mandate),1920,1945,colonial,NA,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM,,proxy,702,JPN-1895-1945,FSM-1991-2025
 CAY-1800-1886,Kingdom of Cayor,1800,1886,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Cayor,,assigned,,,SEN-1960-2025
 CHE-1800-2025,Switzerland,1800,2025,national,CHE,225,Europe,draft,2026-04-13,cshapes-2.0,225,1886,assigned,,,
 CHL-1810-1883,Chile (to 1883),1810,1883,national,CHL,155,South America,draft,2026-06-24,none,,,unassigned,,,CHL-1884-1899
@@ -219,7 +220,7 @@ FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,co
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,national,FRN,NA,Africa,draft,2026-04-13,cshapes-2.0,550,1953,assigned,,ZWE-1900-1953,ZWE-1964-1980; ZMB-1964-2025; MWI-1964-2025
 FRS-1884-1977,French Somaliland,1884,1977,national,FRS,NA,Africa,draft,2026-04-15,none,,,missing,,,FRS-1977-2025
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,FRS,987,Africa,draft,2026-04-13,cshapes-2.0,522,1900,assigned,,DJI-1886-2025,
-FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,,
+FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,,CAR-1920-1945
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Futa Jalon,,assigned,,,GIN-1958-2025; GIN-1894-1958
 FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,NA,Africa,draft,2026-04-16,none,,,missing,,GTO-1919-1922,TGO-1960-2025
 FTT-1800-1862,Imamate of Futa Toro,1800,1862,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Futa Toro,,assigned,,,SEN-1960-2025
