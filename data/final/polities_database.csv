@@ -29,7 +29,8 @@ AUT-1800-1918,Austria (Cisleithania),1800,1918,national,AUT,305,Europe,draft,202
 AUT-1918-1919,Austria (1918-1919),1918,1919,national,AUT,305,Europe,draft,2026-04-12,cshapes-2.0,305,1918,assigned,,AUH-1908-1918,AUT-1919-2025
 AUT-1919-2025,Austria,1919,2025,national,AUT,305,Europe,draft,2026-04-12,cshapes-2.0,305,1919,assigned,,AUH-1908-1918,
 AUWA-1829-1900,Western Australia (to 1900),1829,1900,national,AUS,NA,Oceania,draft,2026-04-15,cshapes-2.0,902,1886,assigned,,,AUS-1901-2025
-AZE-1991-2025,Azerbaijan,1991,2025,national,AZE,373,Asia,reviewed,2026-04-12,cshapes-2.0,373,1991,assigned,,F228-1945-1991,
+AZE-SSR-1920-1991,Azerbaijan SSR,1920,1991,national,AZE,373,Asia,draft,2026-06-26,cshapes-2.0,373,1991,proxy,87000,F228-1920-1921,AZE-1991-2025
+AZE-1991-2025,Azerbaijan,1991,2025,national,AZE,373,Asia,reviewed,2026-04-12,cshapes-2.0,373,1991,assigned,,AZE-SSR-1920-1991,
 BCM-1916-1961,British Cameroons,1916,1961,colonial,CMR,472,Africa,draft,2026-06-25,cshapes-2.0,472,1953,assigned,87489,,NGA-1961-2025; CMR-1961-2025
 BDI-1962-2025,Burundi,1962,2025,national,BDI,516,Africa,draft,2026-04-12,cshapes-2.0,516,1962,assigned,,BDK-1800-1890; RWB-1922-1962,
 BDK-1800-1890,Kingdom of Burundi,1800,1890,national,NA,NA,Africa,draft,2026-04-12,paine-2024,Burundi,,assigned,,,TAN-1891-1920; BDI-1962-2025
