@@ -32,7 +32,7 @@ AUT-1919-2025,Austria,1919,2025,national,AUT,305,Europe,draft,2026-04-12,cshapes
 AUWA-1829-1900,Western Australia (to 1900),1829,1900,national,AUS,NA,Oceania,draft,2026-04-15,cshapes-2.0,902,1886,assigned,,,AUS-1901-2025
 AZE-SSR-1920-1991,Azerbaijan SSR,1920,1991,national,AZE,373,Asia,draft,2026-06-26,cshapes-2.0,373,1991,proxy,87000,F228-1920-1921,AZE-1991-2025
 AZE-1991-2025,Azerbaijan,1991,2025,national,AZE,373,Asia,reviewed,2026-04-12,cshapes-2.0,373,1991,assigned,,AZE-SSR-1920-1991,
-BCM-1916-1961,British Cameroons,1916,1961,colonial,CMR,472,Africa,draft,2026-06-25,cshapes-2.0,472,1953,assigned,87489,,NGA-1961-2025; CMR-1961-2025
+BCM-1916-1961,British Cameroons,1916,1961,colonial,CMR,472,Africa,draft,2026-06-25,cshapes-2.0,472,1953,assigned,87489,GKM-1884-1916,NGA-1961-2025; CMR-1961-2025
 BDI-1962-2025,Burundi,1962,2025,national,BDI,516,Africa,draft,2026-04-12,cshapes-2.0,516,1962,assigned,,BDK-1800-1890; RWB-1922-1962,
 BDK-1800-1890,Kingdom of Burundi,1800,1890,national,NA,NA,Africa,draft,2026-04-12,paine-2024,Burundi,,assigned,,,TAN-1891-1920; BDI-1962-2025
 BEC-1885-1966,Bechuanaland Protectorate (1885-1966),1885,1966,national,BEC,NA,Africa,draft,2026-04-13,none,,,missing,,,BWA-1966-2025
@@ -209,7 +209,7 @@ F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,national,NA,315,Europe,draft,
 F77-1949-1990,East Germany,1949,1990,national,NA,265,Europe,draft,2026-04-12,cshapes-2.0,265,1949,assigned,,DEU-1938-1945,DEU-1990-2025
 F78-1949-1990,West Germany,1949,1990,national,NA,260,Europe,draft,2026-04-12,cshapes-2.0,260,1949,assigned,,DEU-1938-1945,DEU-1990-2025
 FCC-1862-1887,French Cochinchina,1862,1887,national,FID,NA,Asia,draft,2026-04-16,none,,,missing,,,FID-1887-2025
-FCM-1920-1960,French Cameroon (1920-1960),1920,1960,national,CMR,NA,Africa,draft,2026-04-16,none,,,missing,,CMR-1912-1919,CMR-1960-1961
+FCM-1920-1960,French Cameroon (1920-1960),1920,1960,national,CMR,NA,Africa,draft,2026-04-16,none,,,missing,,GKM-1884-1916,CMR-1960-1961
 FID-1887-1954,French Indochina,1887,1954,national,FID,NA,Asia,draft,2026-04-17,cliopatria,French Indochina,1900,assigned,,,KHM-1953-2025; LAO-1954-2025
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,national,FIN,375,Europe,draft,2026-04-16,cshapes-2.0,375,1917,assigned,,,FIN-1917-1940
 FIN-1917-1940,Finland (1917-1940),1917,1940,national,FIN,375,Europe,draft,2026-04-12,cshapes-2.0,375,1917,assigned,,,FIN-1940-2025
@@ -240,6 +240,7 @@ GHA-1898-1956,Ghana (1898-1956),1898,1956,national,GHA,452,Africa,draft,2026-04-
 GHA-1957-2025,Ghana,1957,2025,national,GHA,452,Africa,draft,2026-04-12,cshapes-2.0,452,1957,assigned,,,
 GIN-1894-1958,Guinea (1894-1958),1894,1958,national,GIN,438,Africa,draft,2026-04-12,cshapes-2.0,438,1894,assigned,,,GIN-1958-2025
 GIN-1958-2025,Guinea,1958,2025,national,GIN,438,Africa,draft,2026-04-12,cshapes-2.0,438,1958,assigned,,FTJ-1800-1896; GIN-1894-1958,
+GKM-1884-1916,German Kamerun,1884,1916,colonial,CMR,470,Africa,draft,2026-06-26,cshapes-2.0,352,1912,assigned,799953,,BCM-1916-1961; FCM-1920-1960
 GLP-1816-2025,Guadeloupe,1816,2025,national,GLP,65,North America,draft,2026-06-24,cshapes-2.0,65,1886,assigned,1652,,
 GMB-1800-2025,Gambia,1800,2025,national,GMB,420,Africa,draft,2026-04-13,cshapes-2.0,420,1889,assigned,,,
 GNB-1879-1886,Guinea-Bissau,1879,1886,national,GNB,NA,Africa,draft,2026-04-13,cshapes-2.0,404,1886,assigned,,,GNB-1886-1974
