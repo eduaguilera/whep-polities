@@ -180,3 +180,4 @@ China Manchuria,fao1952,1947,1949,China (1947-1949),CHN-1947-1949,high,FAO 1952 
 China Manchuria,fao1952,1949,1950,China (1949-1950),CHN-1949-1950,high,FAO 1952 label for Manchuria; PRC period from October 1949; CHN-1949-1950 polygon covers Manchuria,
 China Manchuria,fao1952,1950,2025,China (1950-2025),CHN-1950-2025,high,FAO 1952 label for Manchuria; PRC period from 1950 onward; CHN-1950-2025 polygon covers Manchuria,
 Germany Eastern,fao1952,1938,1948,Eastern Germany / Soviet Occupation Zone,SBZ-1938-1949,high,year-ranged alias for FAO 1952 Germany Eastern pre-1949 data,
+Gold Coast,fao1952,1821,1956,Gold Coast Colony,GHA-1898-1956,high,British Crown Colony of the Gold Coast (~238533 km²); CShapes 2.0 polygon vintage 1898; fao1952 data years 1937-1951 fall within polity span 1898-1956; 'Gold Coast and Br Togoland' is a separate unresolved coverage gap,36
