@@ -658,3 +658,4 @@ GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,,Oceania,draft,2026-06
 TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,NA,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM+MHL+MNP+PLW,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025
 IDN-OTH-1949-1951,Other islands (within Indonesia 1949-1951),1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN-complement-JVM-BLB,,proxy,1757495,,
 SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,colonial,SHN,,Africa,draft,2026-06-26,gadm-4.1,SHN.2_1,2024,proxy,123,,
+GCAR-1899-1914,German Caroline Islands (Karolinen),1899,1914,colonial,NA,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,PLW,,proxy,459,DEU-1871-1919,JPN-1895-1945
