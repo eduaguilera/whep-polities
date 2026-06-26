@@ -186,3 +186,5 @@ united states virgin islands,iia,1917,1945,United States Virgin Islands,VIR-1917
 Indonesia Java and Madura,fao1952,1949,1951,Java and Madura (within Indonesia),IDN-JVM-1949-1951,high,FAO 1952 island-group sub-national label; ~132000 km2 vs ~1900000 km2 whole Indonesia; 14x overstatement if routed to IDN-1949-1969,
 Indonesia Bali and Lombok,fao1952,1949,1951,Bali and Lombok (within Indonesia),IDN-BLB-1949-1951,high,FAO 1952 island-group sub-national label; ~10505 km2 vs ~1900000 km2 whole Indonesia; 180x overstatement if routed to IDN-1949-1969,
 malawi,,1954,1963,Nyasaland within Federation of Rhodesia and Nyasaland,MWI-1953-1964,high,sub-territorial gap: Nyasaland ~118k km² vs FRN ~1.26M km²; boundary-stable proxy polygon,
+Union of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1828-2025,high,name-alias only; no territory mismatch; Union of South Africa = ZAF 1910-1961,
+cape natal,mitchell,1918,1957,Cape and Natal provinces (South Africa),ZAF-1828-2025,medium,combined Cape+Natal provincial sub-total; may undercount national cattle figures; routed to national polity with undercount caveat,
