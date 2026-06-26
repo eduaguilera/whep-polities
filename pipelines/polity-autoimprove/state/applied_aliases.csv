@@ -3,6 +3,7 @@ cyprus,iia,1879,2025,Cyprus,CYP-1879-2025,high,island identity; 1960 CShapes pol
 Turkey,,,,Türkiye,TUR-1920-2025,high,name-equivalence,323
 EI Salvador,,,,El Salvador,SLV-1821-2025,high,OCR I/l variant,
 British West Indies Trinidad and Tobago,fao1952,1937,1951,Trinidad and Tobago,TTO-1800-2025,high,colonial-era FAO prefix; scale consistent with ~5126 km2 island territory,
+Basutoland,fao1952,1886,1966,Basutoland,LSO-1886-1966,high,official colonial name for Lesotho 1886-1966; fao1952 data labelled Basutoland for 1937-1951 routes here; territory equals CShapes polygon (30355 km2),
 French Morocco,,1904,1956,Morocco,MAR-1911-1958,high,name-equivalence; redirected from MOR-1904-1956 (duplicate retired 2026-06-24),261
 British West Indies Barbados,fao1952,1935,1951,Barbados,BRB-1800-2025,high,colonial-era FAO prefix; scale consistent with ~430 km2 island territory,
 Bechuanaland,fao1952,1937,1951,Bechuanaland Protectorate,BEC-1885-1966,high,colonial-era short form used in fao1952 data,
