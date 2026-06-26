@@ -233,3 +233,7 @@ Br West Indies Leeward Islands,fao1952,1937,1951,British Leeward Islands Colony,
 British West Indies  Leeward Islands,fao1952,1937,1951,British Leeward Islands Colony,BLI-1833-1960,high,double-space FAO 1952 label variant; same routing as British West Indies Leeward Islands,
 French Equat Africa,,,,French Equatorial Africa (AEF),AEF-1910-1960,high,boundless fallback for null-year fao1952 rows,16
 Indonesia Other islands,fao1952,1949,1951,Other islands (within Indonesia),IDN-OTH-1949-1951,high,FAO 1952 island-group sub-national label; ~1757495 km2; double-count risk if routed to IDN-1949-1969 alongside already-matched JVM+BLB entries,
+Neth West Indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,abbreviation variant of 'Netherlands W Indies'; same ~960 km2 Dutch Caribbean island group; data years 1937-1951 within ANT-1816-1960 span,
+neth west indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,lowercase variant of 'Neth West Indies'; same routing as Netherlands W Indies,
+Netherlands West Indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,full spelling variant of 'Netherlands W Indies'; same ~960 km2 Dutch Caribbean island group,
+netherlands west indies,fao1952,1816,1960,Dutch Caribbean (colonial),ANT-1816-1960,high,lowercase full spelling variant; same routing as Netherlands West Indies,
