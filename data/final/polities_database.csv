@@ -651,3 +651,4 @@ ASM-1900-2025,Territory of American Samoa,1900,2025,colonial,ASM,,Oceania,draft,
 BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,national,BWI,NA,North America,draft,2026-06-26,gadm-4.1-adm0,gadm-union-JAM+TTO+BRB+BHS+ATG+GRD+VCT+DMA+LCA+KNA+MSR,,unassigned,34766,,JAM-1800-2025; TTO-1800-2025; BRB-1800-2025; BHS-1800-2025; ATG-1800-2025; GRD-1800-2025; VCT-1833-2025; DMA-1800-2025; LCA-1838-2025; KNA-1800-2025; MSR-1800-2025
 FLK-1833-2025,Falkland Islands,1833,2025,colonial,FLK,NA,South America,draft,2026-06-26,gadm-4.1-adm0,FLK,,proxy,12397,,
 GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,colonial,GHA,462,Africa,draft,2026-06-26,cshapes-2.0,"composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION cowcode=462 row 1922-07-20/1955-12-31",1938,assigned,240056,GHA-1898-1956,GHA-1957-2025
+ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,colonial,NA,NA,Asia,draft,2026-06-26,cshapes-2.0,680,1967,unassigned,290000,,
