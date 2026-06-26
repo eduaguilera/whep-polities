@@ -163,3 +163,5 @@ french guiana,,1946,2025,French Guiana (Overseas Department),GUF-1946-2025,high,
 Guam,fao1952,1898,1950,Territory of Guam,GUM-1898-1950,high,year-ranged alias for fao1952 Guam data 1937-1951,
 reunion,fao1952,1946,2025,Réunion,REU-1946-2025,high,post-1946 FAO data routes to DOM successor polity; island territory unchanged at 1946 administrative transition,47
 British Borneo Sarawak,fao1952,1937,1951,Sarawak (Brooke Raj / Crown Colony),BSW-1841-1963,high,FAO 1952 sub-entry for Brooke Raj / Crown Colony of Sarawak; northwest Borneo ~124276 km²; distinct from BNB-1881-1963 (northeast Borneo ~72620 km²) and BRN-1888-2025,
+Trieste,fao1952,1947,1951,Free Territory of Trieste,TRS-1947-1954,high,FAO separate reporting entity; FTT not Italian territory 1947-1954; ~737 km² vs ~300000 km² Italy,
+Trieste,fao1952,1937,1946,Province of Trieste (pre-FTT),TRS-1947-1954,medium,Province of Trieste ~700 km² footprint ≈ FTT; cannot attribute to all-Italy ~300000 km²; closest territorial match,
