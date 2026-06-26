@@ -127,7 +127,8 @@ COL-1903-1922,Colombia (1903-1922),1903,1922,national,COL,100,South America,revi
 COL-1922-2025,Colombia,1922,2025,national,COL,100,South America,reviewed,2026-04-12,cshapes-2.0,100,1922,assigned,,COL-1903-1922,
 COM-1946-1975,Comoros (1946-1975),1946,1975,national,COM,581,Africa,draft,2026-04-12,cshapes-2.0,581,1946,assigned,,,COM-1975-2025
 COM-1975-2025,Comoros,1975,2025,national,COM,403,Africa,draft,2026-04-12,cshapes-2.0,581,1946,assigned,,COM-1946-1975,
-CPV-1800-2025,Cabo Verde,1800,2025,national,CPV,402,Africa,draft,2026-04-13,cshapes-2.0,402,1886,assigned,,,
+CPV-1886-1975,Cape Verde (Portuguese colony),1886,1975,colonial,CPV,402,Africa,draft,2026-06-26,cshapes-2.0,402,1886,assigned,4033,,CPV-1975-2025
+CPV-1975-2025,Cabo Verde,1975,2025,national,CPV,402,Africa,draft,2026-06-26,cshapes-2.0,402,1886,assigned,4033,CPV-1886-1975,
 CRI-1800-2025,Costa Rica,1800,2025,national,CRI,94,North America,draft,2026-04-12,cshapes-2.0,94,1886,assigned,,,
 CUB-1800-2025,Cuba,1800,2025,national,CUB,40,North America,draft,2026-04-12,cshapes-2.0,40,1902,assigned,,,
 CYP-1879-2025,Cyprus,1879,2025,national,CYP,352,Asia,draft,2026-04-12,cshapes-2.0,352,1960,assigned,,,
