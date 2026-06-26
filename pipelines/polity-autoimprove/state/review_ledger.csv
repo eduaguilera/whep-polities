@@ -2,7 +2,7 @@ unit_kind,key,status,issue_id,evidence_hash,last_run,last_commit
 polity,TUR-1920-2025,fixed,,,2026-06-23,
 polity,MOR-1904-1956,fixed,,,2026-06-23,
 polity,FID-1887-1954,fixed,,,2026-06-23,
-match,Germany Western,issue,,,2026-06-26,
+match,Germany Western,fixed,western-fao-aggregate-not-a-polity,,2026-06-26,
 polity,CAP-1800-1910,fixed,,,2026-06-23,
 polity,COD-1910-1960,fixed,,,2026-06-23,
 polity,SYR-1946-1967,fixed,,,2026-06-23,

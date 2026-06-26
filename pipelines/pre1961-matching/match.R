@@ -65,6 +65,20 @@ cat(sprintf("[load] pre-1961 input (%.1f MB)...\n",
 pre <- read_csv(input_path, show_col_types = FALSE) |>
   mutate(year = as.integer(year))
 
+# ---- fao1952 aggregate-row stoplist -----------------------------------------
+# FAO 1952 yearbook used 'Western', 'Eastern', 'Total', and 'World' as internal
+# sub-aggregate summary rows alongside individual country rows. These are NOT
+# polities. Flag and exclude them from matching to prevent false routing and
+# double-counting.
+FAO1952_AGGREGATE_LABELS <- c("western", "eastern", "total", "world")
+pre <- pre |>
+  mutate(
+    is_fao_aggregate = tolower(trimws(country)) %in% FAO1952_AGGREGATE_LABELS &
+                       tolower(trimws(source)) == "fao1952"
+  )
+pre_matchable <- pre |> filter(!is_fao_aggregate)
+# (use pre_matchable in place of pre for iso_lookup resolution and matching below)
+
 # ---- iso3c normalisation -----------------------------------------------------
 # WHEP uses some non-ISO-3166 codes for composite / historical entities.
 # Pre-independence years of modern ISO3 codes are also routed to the
