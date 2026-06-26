@@ -12,6 +12,19 @@ export const meta = {
 }
 // v1 implementation of pipelines/polity-autoimprove/README.md. Validate with a real run before relying on it.
 // args = { repo, findings_path, flagged_path, polities_csv, n_findings, n_flags, max_audit, max_issues }
+//
+// USAGE (learned from real convergence runs, 2026-06):
+//   * n_findings / n_flags MUST be passed — they are the row counts of
+//     state/findings.json and state/territorial_flagged.json (this sandbox has no
+//     filesystem, so the script can't count them itself). They default to 0, so an
+//     arg-less run is a SILENT NO-OP. Compute the counts before launching.
+//   * To push COVERAGE (one data point -> one polity), pass n_flags=0 and audit only
+//     findings (name_unresolved / coverage_gap -> aliases & new polities). Territorial
+//     flags fix EXTENT, not coverage% — run those in a separate pass.
+//   * Keep max_audit CLOSE TO max_issues. Auditing many more than you fix just
+//     re-audits the deferred issues on the next run (wasted tokens); only `correct`
+//     verdicts get banked in the ledger. A clean chunk is ~ max_audit 50 / max_issues 35,
+//     repeated (each run's audit set shrinks as the ledger marks units resolved).
 // NOTE: the Workflow runtime delivers `args` as a JSON STRING, not an object — parse it.
 const A = (typeof args === 'string') ? JSON.parse(args) : (args || {})
 const repo          = A.repo || '/home/usuario/whep-polities'
@@ -62,6 +75,10 @@ const auditCalls = [
   ...Array.from({length:n_findings}, (_,i)=>()=>auditOne(findings_path, i)),
   ...Array.from({length:n_flags},   (_,i)=>()=>auditOne(flagged_path, i)),
 ].slice(0, max_audit)
+if (auditCalls.length === 0) {
+  log('WARNING: 0 units to audit — n_findings + n_flags is 0 (or everything is ledger-resolved). '
+    + 'Pass the current counts of state/findings.json + state/territorial_flagged.json; an arg-less run is a no-op.')
+}
 const audited = (await parallel(auditCalls)).filter(Boolean)
 const issues = audited.filter(a=>a.verdict==='issue' && a.issue).map(a=>a.issue)
 const correctUnits = audited.filter(a=>a.verdict==='correct').map(a=>({key:a.unit_key, kind:a.unit_kind}))
