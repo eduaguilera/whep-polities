@@ -631,3 +631,4 @@ BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,national,MYS,824,Asi
 TRS-1947-1954,Free Territory of Trieste,1947,1954,national,NA,NA,Europe,draft,2026-06-26,constructed,NA,1947,estimate,737,ITA-1919-2025,ITA-1919-2025
 BRL-1945-1949,Berlin (Allied Occupation),1945,1949,city-territory,NA,NA,Europe,draft,2026-06-26,cshapes-2.0,greater-berlin-1920,1945,unassigned,892,DEU-1945-1949,WBL-1949-1990; EBL-1949-1990
 WBL-1949-1990,West Berlin,1949,1990,city-territory,NA,NA,Europe,draft,2026-06-26,cshapes-2.0,west-berlin-sectors,1949,unassigned,480,BRL-1945-1949,DEU-1990-2025
+BMU-1684-1968,British Crown Colony of Bermuda,1684,1968,national,BMU,NA,North America,draft,2026-06-26,gadm-4.1-adm0,BMU,,proxy,54,,

@@ -168,3 +168,5 @@ Trieste,fao1952,1937,1946,Province of Trieste (pre-FTT),TRS-1947-1954,medium,Pro
 Germany Berlin,fao1952,1937,1937,Germany (1920-1938),DEU-1920-1938,high,single 1937 data year under FAO 'Germany Berlin' label predates partition; routes to pre-war Germany national polity; ~892 km2 Berlin city well within DEU-1920-1938 (~471000 km2),
 Germany Berlin,fao1952,1945,1948,Berlin (Allied Occupation),BRL-1945-1949,high,FAO 1952 separate reporting unit for occupied Berlin 1945-1948; ~892 km2 city-territory is ~400x smaller than DEU-1945-1949 (~357000 km2); sub-territory rule requires separate polity,
 Germany Berlin,fao1952,1949,1951,West Berlin,WBL-1949-1990,high,post-1949 FAO 'Germany Berlin' refers to Western-bloc West Berlin (~480 km2); ~520x smaller than F78-1949-1990 (~249000 km2); sub-territory rule requires separate polity,
+Bermuda,fao1952,1937,1951,Bermuda,BMU-1684-1968,high,island identity; fixed ~54 km2 Crown Colony territory unambiguous; no matching WHEP polity existed,41
+bermuda,iia,1930,1945,Bermuda,BMU-1684-1968,high,island identity; same territory as fao1952 Bermuda label; lowercase variant,17
