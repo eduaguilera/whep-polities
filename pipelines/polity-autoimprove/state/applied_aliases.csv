@@ -229,3 +229,4 @@ cameroon,,1884,1915,German Kamerun,GKM-1884-1916,high,name-equivalence; CShapes 
 British West Indies Leeward Islands,fao1952,1937,1951,British Leeward Islands Colony,BLI-1833-1960,high,FAO 1952 label for the British Leeward Islands Colony administrative unit (ATG+KNA+MSR+DMA+VGB ~1716 km²); routing to BWI-1833-1962 (~34766 km²) would overstate territory ~20×,
 Br West Indies Leeward Islands,fao1952,1937,1951,British Leeward Islands Colony,BLI-1833-1960,high,abbreviated FAO 1952 label variant; same routing as British West Indies Leeward Islands,
 British West Indies  Leeward Islands,fao1952,1937,1951,British Leeward Islands Colony,BLI-1833-1960,high,double-space FAO 1952 label variant; same routing as British West Indies Leeward Islands,
+French Equat Africa,,,,French Equatorial Africa (AEF),AEF-1910-1960,high,boundless fallback for null-year fao1952 rows,16
