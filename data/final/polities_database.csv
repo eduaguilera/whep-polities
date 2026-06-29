@@ -124,7 +124,7 @@ COG-1912-1919,Congo (1912-1919),1912,1919,national,COG,NA,Africa,draft,2026-04-1
 COG-1919-1960,Congo (1919-1960),1919,1960,national,COG,484,Africa,draft,2026-04-12,cshapes-2.0,484,1919,assigned,,COG-1912-1919,COG-1960-2025
 COG-1960-2025,Congo,1960,2025,national,COG,484,Africa,draft,2026-04-13,cshapes-2.0,484,1960,assigned,,COG-1919-1960,
 COL-1800-1830,Gran Colombia,1800,1830,national,COL,NA,South America,draft,2026-04-12,cliopatria,Gran Colombia,1825,assigned,,,COL-1830-1903
-COL-1830-1903,Colombia (to 1903),1830,1903,national,COL,NA,South America,draft,2026-04-12,cliopatria,Gran Colombia,1830,assigned,,COL-1800-1830,COL-1903-1922
+COL-1830-1903,Colombia (to 1903),1830,1903,national,COL,NA,South America,draft,2026-04-12,cshapes-2.0,100,1886,assigned,1167415,COL-1800-1830,COL-1903-1922
 COL-1903-1922,Colombia (1903-1922),1903,1922,national,COL,100,South America,reviewed,2026-04-12,cshapes-2.0,100,1903,assigned,,COL-1830-1903,COL-1922-2025
 COL-1922-2025,Colombia,1922,2025,national,COL,100,South America,reviewed,2026-04-12,cshapes-2.0,100,1922,assigned,,COL-1903-1922,
 COM-1946-1975,Comoros (1946-1975),1946,1975,national,COM,581,Africa,draft,2026-04-12,cshapes-2.0,581,1946,assigned,,,COM-1975-2025
