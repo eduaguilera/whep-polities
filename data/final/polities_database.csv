@@ -171,8 +171,10 @@ DZA-1962-2025,Algeria (1962-2025),1962,2025,national,DZA,615,Africa,draft,2026-0
 ECU-1800-1942,Ecuador (to 1942),1800,1942,national,ECU,130,South America,draft,2026-04-12,cshapes-2.0,130,1886,assigned,,,ECU-1942-2025
 ECU-1942-2025,Ecuador,1942,2025,national,ECU,130,South America,reviewed,2026-04-12,cshapes-2.0,130,1942,assigned,,ECU-1800-1942,
 EGB-1830-1914,Egba United Government (Abeokuta),1830,1914,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Egba,,assigned,,,NGA-1961-2025
-EGY-1800-1899,Egypt (to 1899),1800,1899,national,EGY,651,Africa,draft,2026-04-12,cliopatria,Muhammad Ali dynasty,1848,assigned,,,EGY-1899-1925
-EGY-1899-1925,Egypt (1899-1925),1899,1925,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1899,assigned,,EGY-1800-1899,EGY-1925-1967
+EGY-1800-1820,Egypt (to 1820),1800,1820,national,EGY,651,Africa,draft,2026-06-29,cliopatria,Muhammad Ali dynasty,1811,assigned,604513,,EGY-1820-1885
+EGY-1820-1885,Egypt with Sudan (1820-1885),1820,1885,national,EGY,651,Africa,draft,2026-06-29,cliopatria,Muhammad Ali dynasty,1848,assigned,1834433,EGY-1800-1820,EGY-1885-1899
+EGY-1885-1899,Egypt (1885-1899),1885,1899,national,EGY,651,Africa,draft,2026-06-29,cshapes-2.0,651,1886,assigned,,EGY-1820-1885,EGY-1899-1925
+EGY-1899-1925,Egypt (1899-1925),1899,1925,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1899,assigned,,EGY-1885-1899,EGY-1925-1967
 EGY-1925-1967,Egypt (1925-1967),1925,1967,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1925,assigned,,EGY-1899-1925,EGY-1967-1979
 EGY-1967-1979,Egypt (1967-1979),1967,1979,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1967,assigned,,EGY-1925-1967,EGY-1979-2025
 EGY-1979-2025,Egypt,1979,2025,national,EGY,651,Africa,reviewed,2026-04-12,cshapes-2.0,651,1979,assigned,,EGY-1967-1979,
