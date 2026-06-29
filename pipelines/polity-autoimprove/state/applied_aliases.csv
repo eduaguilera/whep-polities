@@ -278,3 +278,7 @@ egypt,mitchell,1866,1884,Egypt with Sudan (1820-1885),EGY-1820-1885,high,year-ra
 Egypt,mitchell,1866,1884,Egypt with Sudan (1820-1885),EGY-1820-1885,high,title-case variant of egypt alias for Mitchell 1866-1884; same routing and basis,19
 egypt,mitchell,1885,1899,Egypt (1885-1899),EGY-1885-1899,high,year-ranged alias: Mitchell label "egypt" 1885-1899 routes to EGY-1885-1899 (Egypt proper post-Mahdist loss); 65 data rows; CShapes 2.0 COW 651 1886 polygon,65
 Egypt,mitchell,1885,1899,Egypt (1885-1899),EGY-1885-1899,high,title-case variant of egypt alias for Mitchell 1885-1899; same routing and basis,65
+Italian East Africa,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,unambiguous label for AOI aggregate 1936-1941; ~1700000 km2; routes aggregate Horn of Africa data to AOI polity not sovereign Ethiopia,
+Africa Orientale Italiana,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,Italian-language name for AOI aggregate 1936-1941; same territory as Italian East Africa alias,
+Abyssinia,,1800,1936,Ethiopia (pre-1936),ETH,high,historical exonym for Ethiopia used in European sources; year-ranged to pre-1936 to avoid routing occupation-era data to ETH sovereign polities; routes to ETH chain per year,
+Ethiopia,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,year-ranged alias: label Ethiopia 1936-1941 in data reflecting AOI-aggregate territorial scope (>1.5x pre-1936 ETH series magnitude); routes to AOI-1936-1941 to prevent ~70% territorial overstatement,
