@@ -262,8 +262,9 @@ GNB-1974-2025,Guinea-Bissau (1974-2025),1974,2025,national,GNB,404,Africa,draft,
 GNQ-1886-1968,Equatorial Guinea (1886-1968),1886,1968,national,GNQ,411,Africa,draft,2026-04-13,cshapes-2.0,411,1900,assigned,,,GNQ-1968-2025
 GNQ-1968-2025,Equatorial Guinea,1968,2025,national,GNQ,NA,Africa,draft,2026-04-12,cshapes-2.0,411,1900,assigned,,GNQ-1886-1968,
 GOB-1800-1808,Kingdom of Gobir,1800,1808,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Gobir,,assigned,,,SOK-1804-1903
-GRC-1830-1913,Greece (to 1913),1830,1913,national,GRC,350,Europe,draft,2026-04-12,cshapes-europe,350,1835,assigned,,,GRC-1913-1919
-GRC-1913-1919,Greece (1913-1919),1913,1919,national,GRC,350,Europe,draft,2026-04-12,cshapes-2.0,350,1913,assigned,,GRC-1830-1913,GRC-1919-2025
+GRC-1830-1881,Greece (1830-1881),1830,1881,national,GRC,350,Europe,draft,2026-06-29,cliopatria,,,assigned,47000,,GRC-1881-1913
+GRC-1881-1913,Greece (1881-1913),1881,1913,national,GRC,350,Europe,draft,2026-06-29,cshapes-europe,350,1886,assigned,63711,GRC-1830-1881,GRC-1913-1919
+GRC-1913-1919,Greece (1913-1919),1913,1919,national,GRC,350,Europe,draft,2026-04-12,cshapes-2.0,350,1913,assigned,,GRC-1881-1913,GRC-1919-2025
 GRC-1919-2025,Greece,1919,2025,national,GRC,350,Europe,draft,2026-04-12,cshapes-2.0,350,1919,assigned,,GRC-1913-1919,
 GRD-1800-2025,Grenada,1800,2025,national,GRD,55,North America,draft,2026-06-09,gadm-4.1-adm0,GRD,,proxy,,,
 GRL-1800-2025,Greenland,1800,2025,national,GRL,NA,North America,draft,2026-04-13,gadm-4.1-adm0,GRL,,assigned,,,DNK-1800-1864; DNK-1864-1920; DNK-1920-2025; ISL-1800-2025

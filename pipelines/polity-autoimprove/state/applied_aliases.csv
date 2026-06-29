@@ -284,3 +284,5 @@ Italian East Africa,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,hig
 Africa Orientale Italiana,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,Italian-language name for AOI aggregate 1936-1941; same territory as Italian East Africa alias,
 Abyssinia,,1800,1936,Ethiopia (pre-1936),ETH,high,historical exonym for Ethiopia used in European sources; year-ranged to pre-1936 to avoid routing occupation-era data to ETH sovereign polities; routes to ETH chain per year,
 Ethiopia,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,year-ranged alias: label Ethiopia 1936-1941 in data reflecting AOI-aggregate territorial scope (>1.5x pre-1936 ETH series magnitude); routes to AOI-1936-1941 to prevent ~70% territorial overstatement,
+greece,,1830,1881,Greece,GRC-1830-1881,high,split of GRC-1830-1913 at 1881 Thessaly cession; routes pre-1881 data to ~47000 km2 Cliopatria polygon,
+greece,,1881,1913,Greece,GRC-1881-1913,high,split of GRC-1830-1913 at 1881 Thessaly cession; routes post-1881 data to CShapes 1886 polygon 63711 km2,
