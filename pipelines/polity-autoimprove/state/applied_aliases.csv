@@ -286,3 +286,5 @@ Abyssinia,,1800,1936,Ethiopia (pre-1936),ETH,high,historical exonym for Ethiopia
 Ethiopia,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,year-ranged alias: label Ethiopia 1936-1941 in data reflecting AOI-aggregate territorial scope (>1.5x pre-1936 ETH series magnitude); routes to AOI-1936-1941 to prevent ~70% territorial overstatement,
 greece,,1830,1881,Greece,GRC-1830-1881,high,split of GRC-1830-1913 at 1881 Thessaly cession; routes pre-1881 data to ~47000 km2 Cliopatria polygon,
 greece,,1881,1913,Greece,GRC-1881-1913,high,split of GRC-1830-1913 at 1881 Thessaly cession; routes post-1881 data to CShapes 1886 polygon 63711 km2,
+greece,whep-split-2026-06-29,1919,1946,Greece,GRC-1919-1947,high,year-ranged routing: Greece pre-Dodecanese (1919-1946); split from GRC-1919-2025 at 1947 Dodecanese acquisition,
+greece,whep-split-2026-06-29,1947,2025,Greece,GRC-1947-2025,high,year-ranged routing: Greece post-Dodecanese (1947-2025); split from GRC-1919-2025 at 1947 Dodecanese acquisition,

@@ -264,8 +264,9 @@ GNQ-1968-2025,Equatorial Guinea,1968,2025,national,GNQ,NA,Africa,draft,2026-04-1
 GOB-1800-1808,Kingdom of Gobir,1800,1808,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Gobir,,assigned,,,SOK-1804-1903
 GRC-1830-1881,Greece (1830-1881),1830,1881,national,GRC,350,Europe,draft,2026-06-29,cliopatria,,,assigned,47000,,GRC-1881-1913
 GRC-1881-1913,Greece (1881-1913),1881,1913,national,GRC,350,Europe,draft,2026-06-29,cshapes-europe,350,1886,assigned,63711,GRC-1830-1881,GRC-1913-1919
-GRC-1913-1919,Greece (1913-1919),1913,1919,national,GRC,350,Europe,draft,2026-04-12,cshapes-2.0,350,1913,assigned,,GRC-1881-1913,GRC-1919-2025
-GRC-1919-2025,Greece,1919,2025,national,GRC,350,Europe,draft,2026-04-12,cshapes-2.0,350,1919,assigned,,GRC-1913-1919,
+GRC-1913-1919,Greece (1913-1919),1913,1919,national,GRC,350,Europe,draft,2026-04-12,cshapes-2.0,350,1913,assigned,,GRC-1881-1913,GRC-1919-1947
+GRC-1919-1947,Greece (1919-1947),1919,1947,national,GRC,350,Europe,draft,2026-06-29,cshapes-2.0,350,1919,assigned,129479,GRC-1913-1919,GRC-1947-2025
+GRC-1947-2025,Greece (1947-2025),1947,2025,national,GRC,350,Europe,draft,2026-06-29,cshapes-2.0,350,1944,assigned,129479,GRC-1919-1947,
 GRD-1800-2025,Grenada,1800,2025,national,GRD,55,North America,draft,2026-06-09,gadm-4.1-adm0,GRD,,proxy,,,
 GRL-1800-2025,Greenland,1800,2025,national,GRL,NA,North America,draft,2026-04-13,gadm-4.1-adm0,GRL,,assigned,,,DNK-1800-1864; DNK-1864-1920; DNK-1920-2025; ISL-1800-2025
 GTM-1821-2025,Guatemala,1821,2025,national,GTM,90,North America,draft,2026-04-12,cshapes-2.0,90,1886,assigned,,,
@@ -311,7 +312,7 @@ ISR-1967-1979,Israel (1967-1979),1967,1979,national,ISR,666,Asia,draft,2026-04-1
 ISR-1979-2025,Israel,1979,2025,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1979,assigned,,ISR-1967-1979,
 ITA-1861-1919,Italy (to 1919),1861,1919,national,ITA,325,Europe,draft,2026-04-12,cshapes-europe,325,1886,assigned,,SAR-1800-1860; PAP-1800-1870,ITA-1919-2025
 ITA-1919-2025,Italy,1919,2025,national,ITA,325,Europe,draft,2026-04-12,cshapes-2.0,325,1919,assigned,,ITA-1861-1919,
-ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,colonial,ITA,325,Europe,draft,2026-06-25,,,,unassigned,,OTT-1908-1912,GRC-1919-2025
+ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,colonial,ITA,325,Europe,draft,2026-06-25,,,,unassigned,,OTT-1908-1912,GRC-1947-2025
 ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,national,ITS,NA,Africa,draft,2026-04-13,cshapes-2.0,5200,1897,assigned,,,SOM-1960-2025
 JAM-1800-2025,Jamaica,1800,2025,national,JAM,51,North America,draft,2026-04-13,cshapes-2.0,51,1886,assigned,,,
 JOL-1800-1890,Kingdom of Jolof,1800,1890,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Jolof,,assigned,,,SEN-1960-2025
