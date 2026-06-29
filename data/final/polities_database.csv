@@ -163,7 +163,7 @@ DNK-1920-2025,Denmark,1920,2025,national,DNK,390,Europe,reviewed,2026-04-12,csha
 DOM-1800-2025,Dominican Republic,1800,2025,national,DOM,42,North America,draft,2026-04-12,cshapes-2.0,42,1886,assigned,,,
 DPA-1800-1860,Duchy Parma,1800,1860,national,DPA,335,Europe,draft,2026-04-12,cliopatria,Duchy of Parma and Piacenza,1815,assigned,,,ITA-1861-1919
 DRV-1954-1975,Democratic Republic of Vietnam (North Vietnam),1954,1975,national,NA,816,Asia,draft,2026-06-24,cshapes-2.0,816,1960,assigned,,FID-1887-1954,VNM-1975-2025
-DZA-1831-1886,Algeria,1831,1886,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1962,assigned,,,DZA-1886-1902
+DZA-1831-1886,Algeria,1831,1886,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1886,assigned,655481,,DZA-1886-1902
 DZA-1886-1902,Algeria (1886-1902),1886,1902,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1886,assigned,,DZA-1831-1886,DZA-1902-1919
 DZA-1902-1919,Algeria (1902-1919),1902,1919,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1902,assigned,,DZA-1886-1902,DZA-1919-1962
 DZA-1919-1962,Algeria (1919-1962),1919,1962,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1919,assigned,,DZA-1902-1919,DZA-1962-2025
