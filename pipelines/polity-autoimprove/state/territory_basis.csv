@@ -219,7 +219,7 @@ FIN-1940-2025,Finland (1940-2025),1940,2025,cshapes-2.0,1940.0,assigned,True,ass
 FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,520
 FRA-1800-1919,France (to 1919),1800,1919,cshapes-europe,1816.0,assigned,True,assumed_constant,True,True,single 1816 polygon held across a 119y span (1800-1919); borders may have changed,2728
 FRA-1919-2025,France,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4044
-FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),14
+FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,gadm-4.1+osm,2024,estimate,True,composed_union_estimate,False,False,ESTIMATE: composed-union of modern GADM 4.1/OSM boundaries for five French Indian enclaves (Puducherry UT districts ~293+161+9+30 km² + Chandernagore ~19 km² = ~512 km² recorded as 510); FRA iso3 causes spurious step-change ratios vs metropolitan France — pipeline family-grouping artefact not territorial error,14
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,cshapes-2.0,1953.0,assigned,True,measured,False,False,vintage 1953 faithful to period 1953-1964,0
 FRS-1884-1977,French Somaliland,1884,1977,none,,missing,True,unassigned,True,False,no polygon (honest gap; never a false territory),37
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,cshapes-2.0,1900.0,assigned,False,back_projected,True,False,polygon vintage 1900 is BEFORE the period starts (1977),0
