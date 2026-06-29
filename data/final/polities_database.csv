@@ -147,7 +147,7 @@ DEU-1866-1871,North German Confederation (1866-1871),1866,1871,national,DEU,255,
 DEU-1871-1919,German Empire (1871-1919),1871,1919,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1886,assigned,,DEU-1866-1871,DEU-1919-1920
 DEU-1919-1920,Germany (1919-1920),1919,1920,national,DEU,260,Europe,draft,2026-04-12,cshapes-2.0,255,1919,assigned,,DEU-1871-1919,DEU-1920-1938
 DEU-1920-1938,Germany (1920-1938),1920,1938,national,DEU,260,Europe,draft,2026-04-12,cshapes-2.0,255,1920,assigned,,DEU-1919-1920,DEU-1938-1945; AUT-1919-2025
-DEU-1938-1945,Germany (1938-1945),1938,1945,national,DEU,260,Europe,draft,2026-04-12,cshapes-2.0,255,1938,assigned,,DEU-1920-1938; AUT-1919-2025,DEU-1990-2025
+DEU-1938-1945,Germany (1938-1945),1938,1945,national,DEU,260,Europe,draft,2026-04-12,cshapes-2.0,255,1938,assigned,541000,DEU-1920-1938; AUT-1919-2025,DEU-1945-1949
 DEU-1945-1949,Allied-occupied Germany,1945,1949,national,DEU,260,Europe,draft,2026-04-16,constructed,DEU-1945-1949,,assigned,,DEU-1938-1945,F77-1949-1990; F78-1949-1990
 DEU-1949-1990,"Germany (divided, 1949-1990)",1949,1990,national,DEU,255,Europe,draft,2026-04-17,constructed,DEU-1949-1990,,assigned,,DEU-1945-1949,DEU-1990-2025
 DEU-1990-2025,Germany,1990,2025,national,DEU,260,Europe,reviewed,2026-04-12,cshapes-2.0,260,1990,assigned,,F78-1949-1990; F77-1949-1990,

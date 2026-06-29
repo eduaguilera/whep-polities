@@ -143,7 +143,7 @@ DEU-1866-1871,North German Confederation (1866-1871),1866,1871,cshapes-europe,18
 DEU-1871-1919,German Empire (1871-1919),1871,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 48y span (1871-1919); borders may have changed,902
 DEU-1919-1920,Germany (1919-1920),1919,1920,cshapes-2.0,1919.0,assigned,True,measured,False,False,vintage 1919 faithful to period 1919-1920,29
 DEU-1920-1938,Germany (1920-1938),1920,1938,cshapes-2.0,1920.0,assigned,True,measured,False,True,vintage 1920 faithful to period 1920-1938; footnote coverage caveat (FAO/IIA yearbook),864
-DEU-1938-1945,Germany (1938-1945),1938,1945,cshapes-2.0,1938.0,assigned,True,measured,False,False,vintage 1938 faithful to period 1938-1945,266
+DEU-1938-1945,Germany (1938-1945),1938,1945,cshapes-2.0,1938.0,assigned,True,measured,False,True,CShapes excludes wartime changes: 1939-1942 under-coverage ~100-200k km2 (expansion phase); 1943-1945 over-coverage (contraction phase); split deferred pending composed-union polygon for 1939-1942 phase,266
 DEU-1945-1949,Allied-occupied Germany,1945,1949,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year; footnote coverage caveat (FAO/IIA yearbook),186
 DEU-1949-1990,"Germany (divided, 1949-1990)",1949,1990,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year; footnote coverage caveat (FAO/IIA yearbook),689
 DEU-1990-2025,Germany,1990,2025,cshapes-2.0,1990.0,assigned,False,assumed_constant,True,False,single 1990 polygon held across a 35y span (1990-2025); borders may have changed,0
