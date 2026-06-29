@@ -107,7 +107,8 @@ bulgaria,,1913,1917,,BGR-1913-1918,high,name-equivalence year-ranged BGR chain,1
 bulgaria,,1918,1918,,BGR-1918-1919,high,name-equivalence year-ranged BGR chain,137
 bulgaria,,1919,1939,,BGR-1919-1940,high,name-equivalence year-ranged BGR chain,137
 bulgaria,,1940,2025,,BGR-1940-2025,high,name-equivalence year-ranged BGR chain + catch-all for years=null,137
-france,,1800,1918,France,FRA-1800-1919,high,year-ranged split at 1919 Alsace-Lorraine reintegration,
+france,,1800,1870,France,FRA-1800-1871,high,year-ranged split at 1871 Treaty of Frankfurt (Alsace-Lorraine cession) and 1919 Treaty of Versailles,
+france,,1871,1918,France,FRA-1871-1919,high,year-ranged split at 1871 Treaty of Frankfurt (Alsace-Lorraine cession) and 1919 Treaty of Versailles,
 france,,1919,2025,France,FRA-1919-2025,high,year-ranged split at 1919 Alsace-Lorraine reintegration,
 russian federation,,1917,1991,Russian SFSR,RSFSR-1917-1991,medium,sub-territory IIA iso=rus pre-1991 rows routed to RSFSR core (~17.1M km²) not F228 aggregate,
 australia,,1800,1900,,AUS-1800-1901,high,year-ranged aggregate routing for pre-Federation Australia,118

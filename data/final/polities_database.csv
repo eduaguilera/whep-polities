@@ -225,8 +225,9 @@ FIN-1809-1917,Grand Duchy of Finland,1809,1917,national,FIN,375,Europe,draft,202
 FIN-1917-1940,Finland (1917-1940),1917,1940,national,FIN,375,Europe,draft,2026-04-12,cshapes-2.0,375,1917,assigned,,,FIN-1940-2025
 FIN-1940-2025,Finland (1940-2025),1940,2025,national,FIN,375,Europe,draft,2026-04-12,cshapes-2.0,375,1940,assigned,,FIN-1917-1940,
 FJI-1800-2025,Fiji,1800,2025,national,FJI,950,Oceania,draft,2026-06-09,gadm-4.1-adm0,FJI,,proxy,,,
-FRA-1800-1919,France (to 1919),1800,1919,national,FRA,220,Europe,draft,2026-04-12,cshapes-europe,220,1816,assigned,,,FRA-1919-2025
-FRA-1919-2025,France,1919,2025,national,FRA,220,Europe,draft,2026-04-12,cshapes-2.0,220,1919,assigned,,FRA-1800-1919,
+FRA-1800-1871,France (with Alsace-Lorraine, to 1871),1800,1871,national,FRA,220,Europe,draft,2026-06-29,cshapes-europe,220,1816,assigned,,,FRA-1871-1919
+FRA-1871-1919,France (without Alsace-Lorraine, 1871-1919),1871,1919,national,FRA,220,Europe,draft,2026-06-29,cshapes-2.0,220,1886,assigned,,FRA-1800-1871,FRA-1919-2025
+FRA-1919-2025,France,1919,2025,national,FRA,220,Europe,draft,2026-04-12,cshapes-2.0,220,1919,assigned,,FRA-1871-1919,
 FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,colonial,FRA,220,Asia,draft,2026-06-25,,,,unassigned,,,IND-1949-2025
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,national,FRN,NA,Africa,draft,2026-04-13,cshapes-2.0,550,1953,assigned,,ZWE-1900-1953,ZWE-1964-1980; ZMB-1964-2025; MWI-1964-2025
 FRS-1884-1977,French Somaliland,1884,1977,national,FRS,NA,Africa,draft,2026-04-15,none,,,missing,,,FRS-1977-2025
