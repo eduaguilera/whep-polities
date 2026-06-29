@@ -211,7 +211,7 @@ F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,cshapes-2.0,1947.0,assigned,T
 F77-1949-1990,East Germany,1949,1990,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,False,single 1949 polygon held across a 41y span (1949-1990); borders may have changed,76
 F78-1949-1990,West Germany,1949,1990,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,True,single 1949 polygon held across a 41y span (1949-1990); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),212
 FCC-1862-1887,French Cochinchina,1862,1887,none,,missing,True,unassigned,True,False,no polygon (honest gap; never a false territory),21
-FCM-1920-1960,French Cameroon (1920-1960),1920,1960,none,,missing,True,unassigned,True,False,no polygon (honest gap; never a false territory),575
+FCM-1920-1960,French Cameroon (1920-1960),1920,1960,cshapes-2.0,1940,assigned,True,exact_historical,False,False,CShapes 2.0 FID 355 cowcode=471 mandate 1922-1959 area=423069 km2,575
 FID-1887-1954,French Indochina,1887,1954,cliopatria,1900.0,assigned,True,assumed_constant,True,False,single 1900 polygon held across a 67y span (1887-1954); borders may have changed,373
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,cshapes-2.0,1917.0,assigned,True,assumed_constant,True,True,single 1917 polygon held across a 108y span (1809-1917); borders may have changed,424
 FIN-1917-1940,Finland (1917-1940),1917,1940,cshapes-2.0,1917.0,assigned,True,measured,False,False,vintage 1917 faithful to period 1917-1940,647
