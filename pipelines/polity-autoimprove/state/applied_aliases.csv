@@ -290,3 +290,4 @@ greece,whep-split-2026-06-29,1919,1946,Greece,GRC-1919-1947,high,year-ranged rou
 greece,whep-split-2026-06-29,1947,2025,Greece,GRC-1947-2025,high,year-ranged routing: Greece post-Dodecanese (1947-2025); split from GRC-1919-2025 at 1947 Dodecanese acquisition,
 united states of america,juan,1898,1959,United States of America,USA-1867-1959,high,belt-and-suspenders: source=juan year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
 united states of america,mitchell,1898,1959,United States of America,USA-1867-1959,high,belt-and-suspenders: source=mitchell year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
+italy,,1870,1919,Italy (1870-1919),ITA-1870-1919,high,year-ranged routing: Italy 1870-1919 (post-Rome capture to Treaty of Saint-Germain); split from ITA-1861-1919,

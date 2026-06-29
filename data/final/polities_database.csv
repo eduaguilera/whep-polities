@@ -309,8 +309,10 @@ ISL-1800-2025,Iceland,1800,2025,national,ISL,395,Europe,draft,2026-04-13,cshapes
 ISR-1948-1967,Israel (1948-1967),1948,1967,national,ISR,666,Asia,draft,2026-04-13,cshapes-2.0,666,1948,assigned,,PAL-1920-1948,ISR-1967-1979
 ISR-1967-1979,Israel (1967-1979),1967,1979,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1967,assigned,,ISR-1948-1967,ISR-1979-2025
 ISR-1979-2025,Israel,1979,2025,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1979,assigned,,ISR-1967-1979,
-ITA-1861-1919,Italy (to 1919),1861,1919,national,ITA,325,Europe,draft,2026-04-12,cshapes-europe,325,1886,assigned,,SAR-1800-1860; PAP-1800-1870,ITA-1919-2025
-ITA-1919-2025,Italy,1919,2025,national,ITA,325,Europe,draft,2026-04-12,cshapes-2.0,325,1919,assigned,,ITA-1861-1919,
+ITA-1861-1866,Italy (1861-1866),1861,1866,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,SAR-1800-1860; PAP-1800-1870,ITA-1866-1870
+ITA-1866-1870,Italy (1866-1870),1866,1870,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,ITA-1861-1866,ITA-1870-1919
+ITA-1870-1919,Italy (1870-1919),1870,1919,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,ITA-1866-1870,ITA-1919-2025
+ITA-1919-2025,Italy,1919,2025,national,ITA,325,Europe,draft,2026-04-12,cshapes-2.0,325,1919,assigned,,ITA-1870-1919,
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,colonial,ITA,325,Europe,draft,2026-06-25,,,,unassigned,,OTT-1908-1912,GRC-1947-2025
 ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,national,ITS,NA,Africa,draft,2026-04-13,cshapes-2.0,5200,1897,assigned,,,SOM-1960-2025
 JAM-1800-2025,Jamaica,1800,2025,national,JAM,51,North America,draft,2026-04-13,cshapes-2.0,51,1886,assigned,,,

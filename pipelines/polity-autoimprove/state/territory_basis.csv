@@ -297,7 +297,9 @@ ISL-1800-2025,Iceland,1800,2025,cshapes-2.0,1944.0,assigned,True,assumed_constan
 ISR-1948-1967,Israel (1948-1967),1948,1967,cshapes-2.0,1948.0,assigned,True,measured,False,False,vintage 1948 faithful to period 1948-1967,226
 ISR-1967-1979,Israel (1967-1979),1967,1979,cshapes-2.0,1967.0,assigned,False,measured,False,False,vintage 1967 faithful to period 1967-1979,0
 ISR-1979-2025,Israel,1979,2025,cshapes-2.0,1979.0,assigned,False,assumed_constant,True,False,single 1979 polygon held across a 46y span (1979-2025); borders may have changed,0
-ITA-1861-1919,Italy (to 1919),1861,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 58y span (1861-1919); borders may have changed,2164
+ITA-1861-1866,Italy (1861-1866),1861,1866,cshapes-europe,1886.0,assigned,True,ESTIMATE,True,True,1886 polygon overstates 1861-1866 territory by ~30000 km2 (~12%): Venetia (~18k km2) and Rome/Lazio (~12k km2) included in polygon but not yet Italian; GIS-constructed polygon needed,
+ITA-1866-1870,Italy (1866-1870),1866,1870,cshapes-europe,1886.0,assigned,True,ESTIMATE,True,True,1886 polygon overstates 1866-1870 territory by ~12000 km2 (~4-5%): Rome/Lazio included in polygon but not yet Italian; GIS-constructed polygon needed,
+ITA-1870-1919,Italy (1870-1919),1870,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,False,1886 polygon is faithful to post-1870 Italy (Venetia+Rome included; Trentino/Trieste excluded); no European border changes between 1870 and 1919,2164
 ITA-1919-2025,Italy,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4943
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,cshapes-2.0,1897.0,assigned,True,back_projected,True,True,polygon vintage 1897 is BEFORE the period starts (1908),103
