@@ -195,7 +195,7 @@ ETH-1897-1902,Ethiopia (1897-1902),1897,1902,national,ETH,530,Africa,draft,2026-
 ETH-1902-1907,Ethiopia (1902-1907),1902,1907,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1902,assigned,,ETH-1897-1902,ETH-1907-1936
 ETH-1907-1936,Ethiopia (1907-1936),1907,1936,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1907,assigned,,ETH-1902-1907,ETH-1941-1952
 AOI-1936-1941,Italian East Africa (1936-1941),1936,1941,aggregate,AOI,NA,Africa,draft,2026-06-29,constructed,,,missing,1700000,,
-ETH-1941-1952,Ethiopia (1941-1952),1941,1952,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1907,proxy,,ETH-1907-1936,ETH-1952-1993
+ETH-1941-1952,Ethiopia (1941-1952),1941,1952,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1941,assigned,,ETH-1907-1936,ETH-1952-1993
 ETH-1952-1993,Ethiopia (1952-1993),1952,1993,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1952,assigned,,ETH-1941-1952,ETH-1993-2025
 ETH-1993-2025,Ethiopia,1993,2025,national,ETH,530,Africa,reviewed,2026-04-12,cshapes-2.0,530,1993,assigned,,ETH-1952-1993,
 F228-1800-1856,Russian Empire (to 1856),1800,1856,national,RUS,NA,Europe,draft,2026-04-12,cliopatria,Russian Empire,1815,assigned,,,F228-1856-1905
@@ -225,8 +225,8 @@ FIN-1809-1917,Grand Duchy of Finland,1809,1917,national,FIN,375,Europe,draft,202
 FIN-1917-1940,Finland (1917-1940),1917,1940,national,FIN,375,Europe,draft,2026-04-12,cshapes-2.0,375,1917,assigned,,,FIN-1940-2025
 FIN-1940-2025,Finland (1940-2025),1940,2025,national,FIN,375,Europe,draft,2026-04-12,cshapes-2.0,375,1940,assigned,,FIN-1917-1940,
 FJI-1800-2025,Fiji,1800,2025,national,FJI,950,Oceania,draft,2026-06-09,gadm-4.1-adm0,FJI,,proxy,,,
-FRA-1800-1871,France (with Alsace-Lorraine, to 1871),1800,1871,national,FRA,220,Europe,draft,2026-06-29,cshapes-europe,220,1816,assigned,,,FRA-1871-1919
-FRA-1871-1919,France (without Alsace-Lorraine, 1871-1919),1871,1919,national,FRA,220,Europe,draft,2026-06-29,cshapes-2.0,220,1886,assigned,,FRA-1800-1871,FRA-1919-2025
+FRA-1800-1871,"France (with Alsace-Lorraine, to 1871)",1800,1871,national,FRA,220,Europe,draft,2026-06-29,cshapes-europe,220,1816,assigned,,,FRA-1871-1919
+FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",1871,1919,national,FRA,220,Europe,draft,2026-06-29,cshapes-2.0,220,1886,assigned,,FRA-1800-1871,FRA-1919-2025
 FRA-1919-2025,France,1919,2025,national,FRA,220,Europe,draft,2026-04-12,cshapes-2.0,220,1919,assigned,,FRA-1871-1919,
 FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,colonial,FRA,220,Asia,draft,2026-06-29,gadm-4.1+osm,composed-union-puducherry-karikal-mahe-yanam-chandernagore,2024,estimate,510,,IND-1949-2025
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,national,FRN,NA,Africa,draft,2026-04-13,cshapes-2.0,550,1953,assigned,,ZWE-1900-1953,ZWE-1964-1980; ZMB-1964-2025; MWI-1964-2025
