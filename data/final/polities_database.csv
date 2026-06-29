@@ -96,9 +96,10 @@ CHL-1902-2025,Chile,1902,2025,national,CHL,155,South America,reviewed,2026-04-12
 CHN-1800-1895,China (to 1895),1800,1895,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1886,assigned,,,CHN-1895-1912
 CHN-1895-1913,China (1895-1913),1895,1913,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1899,assigned,,CHN-1800-1895,CHN-1913-1914
 CHN-1913-1914,China (1913-1914),1913,1914,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1913,assigned,,CHN-1895-1912,CHN-1914-1921
-CHN-1914-1921,China (1914-1921),1914,1921,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1914,assigned,,CHN-1913-1914,CHN-1921-1945
-CHN-1921-1945,China (1921-1945),1921,1945,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1921,assigned,,CHN-1914-1921,CHN-1945-1947
-CHN-1945-1947,China (1945-1947),1945,1947,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1945,assigned,,CHN-1921-1945,CHN-1947-1949
+CHN-1914-1921,China (1914-1921),1914,1921,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1914,assigned,,CHN-1913-1914,CHN-1921-1932
+CHN-1921-1932,China (1921-1932),1921,1932,national,CHN,710,Asia,draft,2026-06-29,cshapes-2.0,710,1921,assigned,7496578,CHN-1914-1921,CHN-1932-1945
+CHN-1932-1945,China (1932-1945),1932,1945,national,CHN,710,Asia,draft,2026-06-29,composed-difference,cshapes-710-1921-minus-MAN-1932-1945,,assigned,6710264,CHN-1921-1932,CHN-1945-1947
+CHN-1945-1947,China (1945-1947),1945,1947,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1945,assigned,,CHN-1932-1945,CHN-1947-1949
 CHN-1947-1949,China (1947-1949),1947,1949,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1947,assigned,,CHN-1945-1947,CHN-1949-1950
 CHN-1949-1950,China (1949-1950),1949,1950,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1949,assigned,,CHN-1947-1949,CHN-1950-2025
 CHN-1950-2025,China (PRC),1950,2025,national,CHN,NA,Asia,draft,2026-04-12,cshapes-2.0,710,1949,assigned,,CHN-1949-1950,
@@ -369,7 +370,7 @@ LVA-1940-1991,Latvian SSR,1940,1991,national,LVA,367,Europe,draft,2026-04-16,csh
 LVA-1991-2025,Latvia,1991,2025,national,LVA,367,Europe,reviewed,2026-04-12,cshapes-2.0,367,1991,assigned,,F228-1945-1991,
 LZI-1800-1890,Lozi Kingdom (Barotseland),1800,1890,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Lozi,,assigned,,,ZMB-1964-2025
 MAC-1800-2025,"China, Macao SAR",1800,2025,national,MAC,NA,Asia,draft,2026-06-09,gadm-4.1-adm1,CHN.MAC,,proxy,,,
-MAN-1932-1945,Manchukuo (1932-1945),1932,1945,national,MAN,NA,Asia,draft,2026-04-17,constructed,MAN-1932-1945,,assigned,,CHN-1921-1945,CHN-1945-1947; CHN-1947-1949; CHN-1950-2025
+MAN-1932-1945,Manchukuo (1932-1945),1932,1945,national,MAN,NA,Asia,draft,2026-04-17,constructed,MAN-1932-1945,,assigned,,CHN-1921-1932,CHN-1945-1947; CHN-1947-1949; CHN-1950-2025
 MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1912,assigned,,MOR-1800-1904,MAR-1958-1975
 MAR-1958-1975,Morocco (1958-1975),1958,1975,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1958,assigned,,MAR-1911-1958,MAR-1975-1979
 MAR-1975-1979,Morocco (1975-1979),1975,1979,national,MAR,600,Africa,reviewed,2026-04-12,cshapes-2.0,600,1975,assigned,,MAR-1958-1975,MAR-1979-2025

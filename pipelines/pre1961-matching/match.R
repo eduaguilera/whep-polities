@@ -220,6 +220,10 @@ resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
     if (iso == "CAP" && !is.na(year) && year > 1910) iso <- "ZAF"
     # Manchuria: only Manchukuo (MAN) 1932-1945; otherwise China (CHN)
     if (iso == "MAN" && !is.na(year) && (year < 1932 || year > 1945)) iso <- "CHN"
+    # China polity split at 1932: CHN iso3c routes to CHN-1921-1932 (1921-1931)
+    # or CHN-1932-1945 (1932-1945) automatically via year-span lookup in the
+    # polities DB. Labels "china" / "china, mainland" in years 1921-1945 are
+    # handled by this split; no explicit override needed beyond the DB rows.
     # Palestine → Israel after May 1948
     if (iso == "PAL" && !is.na(year) && year >= 1948) iso <- "ISR"
     # French Indochina pre-federation: FID + year < 1887 → FCC (French Cochinchina)

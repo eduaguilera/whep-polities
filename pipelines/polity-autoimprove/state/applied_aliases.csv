@@ -61,7 +61,7 @@ viet nam,,1887,1954,,VNM-1887-1954,high,sub-territory: Vietnam component of Fren
 viet nam,,1975,2025,,VNM-1975-2025,medium,reused from stopped run wf_62a587d4 audit,
 british west indies jamaica,,1800,2025,,JAM-1800-2025,medium,reused from stopped run wf_62a587d4 audit,
 southern rhodesia,,1900,1953,,ZWE-1900-1953,medium,reused from stopped run wf_62a587d4 audit,
-"china, manchuria province of",,1921,1945,,CHN-1921-1945,medium,reused from stopped run wf_62a587d4 audit,
+"china, manchuria province of",,1921,1932,,CHN-1921-1932,medium,split from CHN-1921-1945 at 1932; Manchuria was Chinese 1921-1932,
 "china, manchuria province of",,1932,1945,,MAN-1932-1945,medium,reused from stopped run wf_62a587d4 audit,
 "china, manchuria province of",,1945,1947,,CHN-1945-1947,medium,reused from stopped run wf_62a587d4 audit,
 "china, manchuria province of",,1947,1949,,CHN-1947-1949,medium,reused from stopped run wf_62a587d4 audit,
@@ -127,7 +127,7 @@ viet nam,,1955,1974,Republic of Vietnam,RVN-1954-1975,high,Mitchell western stat
 south africa,iia,1828,2025,South Africa,ZAF-1828-2025,high,name-equivalence; iso zaf + label south africa = Union/Republic of South Africa; territorial scope matches CShapes 1910 polygon,90
 U of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1828-2025,high,abbreviation of Union of South Africa; existing alias maps full form; no polygon_vintage_drift for 1948-1951 data,65
 argentina,iia,1909,1945,Argentina,ARG-1800-2025,high,name-equivalence; iso match (arg); full IIA data range 1909-1945 within ARG-1800-2025 span (1800-2025); 88 rows flagged but 84 already matched via iso — residual 88 unmatched rows have year=NA (data-quality gap not a routing gap),88
-china 22 provinces,fao1952,1937,1945,China,CHN-1921-1945,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
+china 22 provinces,fao1952,1937,1945,China,CHN-1932-1945,high,name-variant: FAO designation for China proper excl. Manchuria; re-routed from CHN-1921-1945 (superseded) to CHN-1932-1945 (composed-difference polygon excludes Manchukuo),87
 china 22 provinces,fao1952,1945,1947,China,CHN-1945-1947,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
 china 22 provinces,fao1952,1947,1949,China,CHN-1947-1949,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
 china 22 provinces,fao1952,1949,1950,China,CHN-1949-1950,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
@@ -150,7 +150,8 @@ reunion,,1816,1946,Réunion,REU-1816-1946,high,name-equivalence,
 "china, mainland",,1895,1913,China (mainland),CHN-1895-1913,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1913,1914,China (mainland),CHN-1913-1914,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1914,1921,China (mainland),CHN-1914-1921,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
-"china, mainland",,1921,1945,China (mainland),CHN-1921-1945,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
+"china, mainland",,1921,1932,China (mainland),CHN-1921-1932,high,FAO/IIA label for China excl. Taiwan; split at 1932 (Manchukuo); routes to all CHN slots,
+"china, mainland",,1932,1945,China (mainland),CHN-1932-1945,high,FAO/IIA label for China excl. Taiwan; split at 1932 (Manchukuo); routes to all CHN slots,
 "china, mainland",,1945,1947,China (mainland),CHN-1945-1947,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1947,1949,China (mainland),CHN-1947-1949,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1949,1950,China (mainland),CHN-1949-1950,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
