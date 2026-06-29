@@ -300,7 +300,7 @@ IND-1914-1937,India (1914-1937),1914,1937,national,IND,750,Asia,reviewed,2026-04
 IND-1937-1947,India (1937-1947),1937,1947,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1937,assigned,4227508,IND-1914-1937,IND-1947-1949
 IND-1947-1949,India (1947-1949),1947,1949,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1947,assigned,,IND-1937-1947,IND-1949-2025
 IND-1949-2025,India,1949,2025,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1949,assigned,,IND-1947-1949,
-IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,draft,2026-04-16,cshapes-2.0,205,1921,assigned,,,IRL-1921-2025
+IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,draft,2026-04-16,gadm-composed-union,gadm-IRL+GBR-NIR,2024,assigned,84421,,IRL-1921-2025
 IRL-1921-2025,Ireland,1921,2025,national,IRL,205,Europe,draft,2026-04-13,cshapes-2.0,205,1921,assigned,,GBR-1800-1921,
 IRN-1800-1828,Persia (Qajar to 1828),1800,1828,national,IRN,630,Asia,draft,2026-04-12,cliopatria,United States of America,1815,assigned,,,IRN-1828-2025
 IRN-1828-2025,Iran,1828,2025,national,IRN,630,Asia,draft,2026-04-12,cshapes-2.0,630,1886,assigned,,IRN-1800-1828,
