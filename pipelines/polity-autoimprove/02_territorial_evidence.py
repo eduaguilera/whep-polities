@@ -110,7 +110,12 @@ def staples(code):
         v=gg.v.dropna()
         if len(v):
             u=str(gg.unit.mode().iloc[0]) if len(gg.unit.mode()) else "tonnes"
-            out.append(f"{s}={v.median():,.0f} {u} (n{len(v)})")
+            med=v.median()
+            # scale "1000 tonnes" / "1000 metric tons" units so the displayed value is in tonnes
+            if "1000" in u:
+                med=med*1000
+                u=u.replace("1000 ","").replace("1,000 ","").strip()
+            out.append(f"{s}={med:,.0f} {u} (n{len(v)})")
     return out
 def yrs(code):
     y=mm[mm.whep_code==code].year.dropna()
