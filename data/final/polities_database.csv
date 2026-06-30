@@ -443,7 +443,7 @@ NAT-1895-1910,Natal (1895-1910),1895,1910,national,NAT,NA,Africa,reviewed,2026-0
 NCL-1800-2025,New Caledonia,1800,2025,national,NCL,NA,Oceania,draft,2026-06-09,gadm-4.1-adm0,NCL,,proxy,,,
 NDB-1823-1894,Ndebele Kingdom,1823,1894,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Ndebele,,assigned,,,ZWE-1890-1891
 NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft,2026-06-24,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1947-1960
-NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-04-16,cshapes-2.0,436,1947,assigned,,NER-1932-1947,NER-1960-2025
+NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-04-16,cshapes-2.0,436,1947,assigned,1182017,NER-1922-1947,NER-1960-2025
 NER-1960-2025,Niger,1960,2025,national,NER,436,Africa,draft,2026-04-13,cshapes-2.0,436,1960,assigned,,DMG-1800-1899,
 NFL-1907-1949,Dominion of Newfoundland,1907,1949,national,CAN,21,North America,draft,2026-06-25,cshapes-2.0,21,1920,assigned,398416,,CAN-1948-2025
 NGA-1886-1914,Colonial Nigeria,1886,1914,national,NGA,NA,Africa,draft,2026-04-16,cshapes-2.0,475,1914,assigned,,,NGA-1914-1960
