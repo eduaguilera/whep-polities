@@ -296,3 +296,4 @@ hungary,,1920,1920,Hungary (1920-1938),HUN-1920-1938,high,year-ranged alias: har
 
 italy,,1861,1866,Italy (1861-1866),ITA-1861-1866,high,year-ranged routing: Italy 1861-1866 (proclamation to Vienna Peace Treaty/Venetia cession); polygon_status=estimate (CShapes 1886 overstates ~30k km2),
 italy,,1866,1870,Italy (1866-1870),ITA-1866-1870,high,year-ranged routing: Italy 1866-1870 (Venetia acquisition to capture of Rome); polygon_status=estimate (CShapes 1886 overstates ~12k km2),
+Libya,fao1952,1943,1949,Libya (1943-1949),LBY-1943-1949,high,plain FAO 1952 all-Libya aggregate label (distinct from sub-provincial Libya Tripolitania/Libya Cyrenaica/Libya Fezzan labels); livestock magnitudes confirm all-Libya scope: 1949 horses+mules+asses=152k vs Tripolitania-only 33k; CShapes all-Libya polygon ~1617537 km2,
