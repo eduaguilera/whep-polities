@@ -438,8 +438,8 @@ NAM-1886-1915,Namibia (1886-1915),1886,1915,national,NAM,565,Africa,draft,2026-0
 NAM-1915-1920,Namibia (1915-1920),1915,1920,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1915,assigned,,NAM-1886-1915,NAM-1920-1990
 NAM-1920-1990,Namibia (1920-1990),1920,1990,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1920,assigned,,NAM-1915-1920,NAM-1990-2025
 NAM-1990-2025,Namibia (1990-2025),1990,2025,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1990,assigned,,NAM-1920-1990,
-NAT-1843-1895,Natal (to 1895),1843,1895,national,NAT,NA,Africa,draft,2026-04-15,cshapes-2.0,562,1886,assigned,,ZUL-1816-1879,
-NAT-1895-1910,Natal (1895-1910),1895,1910,national,NAT,NA,Africa,draft,2026-04-15,cshapes-2.0,562,1886,assigned,,NAT-1843-1895,ZAF-1828-2025
+NAT-1843-1895,Natal (to 1895),1843,1895,national,NAT,NA,Africa,reviewed,2026-06-30,cshapes-2.0,562,1886,assigned,43663,ZUL-1816-1879,NAT-1895-1910
+NAT-1895-1910,Natal (1895-1910),1895,1910,national,NAT,NA,Africa,reviewed,2026-06-30,cshapes-2.0,562,1895,assigned,72516,NAT-1843-1895,ZAF-1828-2025
 NCL-1800-2025,New Caledonia,1800,2025,national,NCL,NA,Oceania,draft,2026-06-09,gadm-4.1-adm0,NCL,,proxy,,,
 NDB-1823-1894,Ndebele Kingdom,1823,1894,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Ndebele,,assigned,,,ZWE-1890-1891
 NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft,2026-06-24,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1947-1960
