@@ -373,7 +373,7 @@ LSO-1868-1886,Basutoland,1868,1886,national,LSO,NA,Africa,draft,2026-04-16,cshap
 LSO-1886-1966,Lesotho (1886-1966),1886,1966,national,LSO,570,Africa,draft,2026-04-13,cshapes-2.0,570,1886,assigned,,,LSO-1966-2025
 LSO-1966-2025,Lesotho,1966,2025,national,LSO,570,Africa,draft,2026-04-13,cshapes-2.0,570,1966,assigned,,LST-1822-1868; LSO-1886-1966,
 LST-1822-1868,Basotho Kingdom,1822,1868,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Lesotho,,assigned,,,LSO-1966-2025
-LTU-1800-1918,Lithuania (Russian governorate),1800,1918,national,LTU,368,Europe,draft,2026-04-16,cshapes-2.0,368,1918,assigned,,,LTU-1918-1920
+LTU-1800-1918,Lithuania (Russian governorate),1800,1918,national,LTU,368,Europe,draft,2026-04-16,cshapes-2.0,368,1918,assigned,83882,,LTU-1918-1940
 LTU-1918-1940,Lithuania (interwar republic),1918,1940,national,LTU,368,Europe,draft,2026-04-17,cshapes-2.0,368,1922,assigned,55858,LTU-1800-1918,LTU-1940-1991
 LTU-1940-1991,Lithuanian SSR,1940,1991,national,LTU,368,Europe,draft,2026-04-16,cshapes-2.0,368,1939,assigned,,LTU-1920-1940,LTU-1991-2025
 LTU-1991-2025,Lithuania,1991,2025,national,LTU,368,Europe,reviewed,2026-04-12,cshapes-2.0,368,1991,assigned,,F228-1945-1991,
