@@ -141,7 +141,7 @@ TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,national
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,national,CZE,,Europe,draft,2026-06-24,constructed,CZE-1804-1918,1860,assigned,79349,AUH-1800-1859,F51-1918-1938
 CZE-1947-1992,Czechoslovakia (1947-1992) [superseded],1947,1992,national,NA,NA,Europe,superseded,2026-06-29,cshapes-2.0,315,1945,assigned,,,F51-1947-1993
 CZE-1993-2025,Czechia,1993,2025,national,CZE,316,Europe,reviewed,2026-04-12,cshapes-2.0,316,1993,assigned,,F51-1947-1993,
-CZN-1903-1979,Panama Canal Zone (US-administered),1903,1979,colonial,PAN,,North America,draft,2026-06-25,,,,unassigned,,PAN-1800-1979,PAN-1979-2025
+CZN-1903-1979,Panama Canal Zone (US-administered),1903,1979,colonial,PAN,,North America,draft,2026-06-25,,,,unassigned,,PAN-1903-1979,PAN-1979-2025
 DEU-1800-1866,Prussia (to 1866),1800,1866,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1851,assigned,,,DEU-1866-1871
 DEU-1866-1871,North German Confederation (1866-1871),1866,1871,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1867,assigned,,DEU-1800-1866,DEU-1871-1919
 DEU-1871-1919,German Empire (1871-1919),1871,1919,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1886,assigned,,DEU-1866-1871,DEU-1919-1920
@@ -476,8 +476,8 @@ PAK-1947-1949,Pakistan (1947-1949),1947,1949,national,PAK,770,Asia,draft,2026-04
 PAK-1949-1971,Pakistan (1949-1971),1949,1971,national,PAK,770,Asia,draft,2026-04-12,cshapes-2.0,770,1949,assigned,,PAK-1947-1949,PAK-1971-2025; BGD-1971-2025
 PAK-1971-2025,Pakistan,1971,2025,national,PAK,770,Asia,draft,2026-04-12,cshapes-2.0,770,1971,assigned,,PAK-1949-1971,
 PAL-1920-1948,Palestine (1920-1948),1920,1948,national,PAL,NA,Asia,draft,2026-04-13,cshapes-2.0,665,1920,assigned,,,ISR-1948-1967
-PAN-1800-1979,Panama (before Canal Zone return),1800,1979,national,PAN,95,North America,draft,2026-04-15,cshapes-2.0,95,1903,assigned,,,PAN-1979-2025
-PAN-1979-2025,Panama (post-Canal Zone),1979,2025,national,PAN,95,North America,draft,2026-04-12,cshapes-2.0,95,1903,assigned,,COL-1830-1903,
+PAN-1903-1979,Panama (1903-1979, before Canal Zone return),1903,1979,national,PAN,95,North America,draft,2026-06-30,cshapes-2.0,95,1903,assigned,75517,COL-1830-1903,PAN-1979-2025
+PAN-1979-2025,Panama (post-Canal Zone),1979,2025,national,PAN,95,North America,draft,2026-04-12,cshapes-2.0,95,1903,assigned,,PAN-1903-1979,
 PAP-1800-1870,Papal States,1800,1870,national,PAP,327,Europe,draft,2026-04-12,cliopatria,Papal States,1814,assigned,,,ITA-1861-1919
 PER-1825-1909,Peru (to 1909),1825,1909,national,PER,135,South America,draft,2026-04-12,cshapes-2.0,135,1886,assigned,,,PER-1909-1922
 PER-1909-1922,Peru (1909-1922),1909,1922,national,PER,135,South America,reviewed,2026-04-12,cshapes-2.0,135,1909,assigned,,PER-1825-1909,PER-1922-1942
