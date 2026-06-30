@@ -311,8 +311,8 @@ ISL-1800-2025,Iceland,1800,2025,national,ISL,395,Europe,draft,2026-04-13,cshapes
 ISR-1948-1967,Israel (1948-1967),1948,1967,national,ISR,666,Asia,draft,2026-04-13,cshapes-2.0,666,1948,assigned,,PAL-1920-1948,ISR-1967-1979
 ISR-1967-1979,Israel (1967-1979),1967,1979,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1967,assigned,,ISR-1948-1967,ISR-1979-2025
 ISR-1979-2025,Israel,1979,2025,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1979,assigned,,ISR-1967-1979,
-ITA-1861-1866,Italy (1861-1866),1861,1866,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,SAR-1800-1860; PAP-1800-1870,ITA-1866-1870
-ITA-1866-1870,Italy (1866-1870),1866,1870,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,ITA-1861-1866,ITA-1870-1919
+ITA-1861-1866,Italy (1861-1866),1861,1866,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,estimate,,SAR-1800-1860; PAP-1800-1870,ITA-1866-1870
+ITA-1866-1870,Italy (1866-1870),1866,1870,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,estimate,,ITA-1861-1866,ITA-1870-1919
 ITA-1870-1919,Italy (1870-1919),1870,1919,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,ITA-1866-1870,ITA-1919-2025
 ITA-1919-2025,Italy,1919,2025,national,ITA,325,Europe,draft,2026-04-12,cshapes-2.0,325,1919,assigned,,ITA-1870-1919,
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,colonial,ITA,325,Europe,draft,2026-06-25,,,,unassigned,,OTT-1908-1912,GRC-1947-2025
@@ -487,7 +487,7 @@ PLW-1991-2025,Palau,1991,2025,national,PLW,986,Oceania,draft,2026-04-13,none,,,m
 GNGU-1884-1914,German New Guinea,1884,1914,colonial,PNG,912,Oceania,draft,2026-06-26,cshapes-2.0,744,1910,assigned,228080,,TNGU-1920-1949
 TPAP-1906-1949,Territory of Papua,1906,1949,colonial,PNG,911,Oceania,draft,2026-06-26,cshapes-2.0,740,1920,assigned,224148,,PNG-1949-1975
 TNGU-1920-1949,Territory of New Guinea,1920,1949,colonial,PNG,912,Oceania,draft,2026-06-26,cshapes-2.0,746,1920,assigned,237536,GNGU-1884-1914,PNG-1949-1975
-PNG-1949-1975,Territory of Papua and New Guinea,1949,1975,national,PNG,NA,Oceania,draft,2026-04-16,cshapes-2.0,910,1949,assigned,,"TPAP-1906-1949; TNGU-1920-1949",PNG-1975-2025
+PNG-1949-1975,Territory of Papua and New Guinea,1949,1975,national,PNG,NA,Oceania,draft,2026-04-16,cshapes-2.0,910,1949,assigned,,TPAP-1906-1949; TNGU-1920-1949,PNG-1975-2025
 PNG-1975-2025,Papua New Guinea,1975,2025,national,PNG,910,Oceania,draft,2026-04-12,cshapes-2.0,910,1975,assigned,,,
 PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Porto Novo,,assigned,,,BEN-1960-2025; BEN-1898-1960
 POL-1815-1918,Congress Poland (1815-1918),1815,1918,national,POL,290,Europe,draft,2026-04-16,cshapes-2.0,290,1918,assigned,,,POL-1918-1919
@@ -671,7 +671,7 @@ KRS-1910-1945,Korea South (within Japanese Chosen),1910,1945,colonial,KOR,NA,Asi
 ASM-1900-2025,Territory of American Samoa,1900,2025,colonial,ASM,,Oceania,draft,2026-06-26,gadm-4.1,ASM,2023,assigned,199,,
 BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,national,BWI,NA,North America,draft,2026-06-26,gadm-4.1-adm0,gadm-union-JAM+TTO+BRB+BHS+ATG+GRD+VCT+DMA+LCA+KNA+MSR,,unassigned,34766,,JAM-1800-2025; TTO-1800-2025; BRB-1800-2025; BHS-1800-2025; ATG-1800-2025; GRD-1800-2025; VCT-1833-2025; DMA-1800-2025; LCA-1838-2025; KNA-1800-2025; MSR-1800-2025
 FLK-1833-2025,Falkland Islands,1833,2025,colonial,FLK,NA,South America,draft,2026-06-26,gadm-4.1-adm0,FLK,,proxy,12397,,
-GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,colonial,GHA,462,Africa,draft,2026-06-26,cshapes-2.0,"composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION cowcode=462 row 1922-07-20/1955-12-31",1938,assigned,240056,GHA-1898-1956,GHA-1957-2025
+GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,colonial,GHA,462,Africa,draft,2026-06-26,cshapes-2.0,composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION cowcode=462 row 1922-07-20/1955-12-31,1938,assigned,240056,GHA-1898-1956,GHA-1957-2025
 ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,colonial,NA,NA,Asia,draft,2026-06-26,cshapes-2.0,680,1967,unassigned,290000,,
 GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,,Oceania,draft,2026-06-26,gadm-4.1,GUM,2023,assigned,550,GUM-1898-1950,
 TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,NA,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM+MHL+MNP+PLW,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025

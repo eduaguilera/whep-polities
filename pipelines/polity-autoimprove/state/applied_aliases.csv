@@ -293,3 +293,6 @@ united states of america,juan,1898,1959,United States of America,USA-1867-1959,h
 united states of america,mitchell,1898,1959,United States of America,USA-1867-1959,high,belt-and-suspenders: source=mitchell year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
 italy,,1870,1919,Italy (1870-1919),ITA-1870-1919,high,year-ranged routing: Italy 1870-1919 (post-Rome capture to Treaty of Saint-Germain); split from ITA-1861-1919,
 hungary,,1920,1920,Hungary (1920-1938),HUN-1920-1938,high,year-ranged alias: harvest-year 1920 post-Trianon rump (~93000 km2); prevents misrouting to HUN-1918-1919 pre-Trianon polygon (~325421 km2),
+
+italy,,1861,1866,Italy (1861-1866),ITA-1861-1866,high,year-ranged routing: Italy 1861-1866 (proclamation to Vienna Peace Treaty/Venetia cession); polygon_status=estimate (CShapes 1886 overstates ~30k km2),
+italy,,1866,1870,Italy (1866-1870),ITA-1866-1870,high,year-ranged routing: Italy 1866-1870 (Venetia acquisition to capture of Rome); polygon_status=estimate (CShapes 1886 overstates ~12k km2),
