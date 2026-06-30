@@ -259,7 +259,10 @@ name_equiv <- list(
   SYR = c("syria", "syria and lebanon"),
   CIV = c("c\u00f4te d'ivoire", "cote d'ivoire"),
   VNM = c("vietnam", "annam", "tonkin"),
-  MMR = c("upper burma", "lower burma", "burma", "konbaung"),
+  # "lower burma" removed: routed to MMR-LWR-1852-1885 via applied_aliases.csv
+  # (alias: burma,mitchell,1852,1885 → MMR-LWR-1852-1885). If "lower burma"
+  # appears outside mitchell/1852-1885 context it should be added back.
+  MMR = c("upper burma", "burma", "konbaung"),
   LAO = c("laos"),
   NGA = c("nigeria", "northern nigeria", "southern nigeria"),
   IRN = c("persia", "iran"),

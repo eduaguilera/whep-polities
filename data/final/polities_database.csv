@@ -404,6 +404,7 @@ MLT-1800-2025,Malta,1800,2025,national,MLT,NA,Europe,reviewed,2026-04-12,cshapes
 MMR-1800-1826,Konbaung Burma (to 1826),1800,1826,national,MMR,NA,Asia,draft,2026-04-15,cliopatria,Burma,1822,assigned,,,MMR-1826-1852
 MMR-1826-1852,Burma (1826-1852),1826,1852,national,MMR,NA,Asia,draft,2026-04-13,cliopatria,Burma,1842,assigned,,,MMR-1852-1885
 MMR-1852-1885,Upper Burma (1852-1885),1852,1885,national,MMR,NA,Asia,draft,2026-04-13,cliopatria,Burma,1859,assigned,,MMR-1826-1852,MMR-1885-2025
+MMR-LWR-1852-1885,British Lower Burma (1852-1885),1852,1885,colonial,MMR,,Asia,draft,2026-06-30,gadm-4.1,MMR.2_1+MMR.13_1+MMR.15_1,,unassigned,116000,MMR-1826-1852,MMR-1885-2025
 MMR-1885-2025,Myanmar,1885,2025,national,MMR,NA,Asia,draft,2026-04-12,cliopatria,Burma,1967,assigned,,MMR-1852-1885,
 MNE-1878-1913,Montenegro (to 1913),1878,1913,national,MNE,341,Europe,draft,2026-04-12,cshapes-europe,341,1886,assigned,,,MNE-1913-1915
 MNE-1913-1915,Montenegro (1913-1915),1913,1915,national,MNE,341,Europe,draft,2026-04-12,cshapes-2.0,341,1886,assigned,,MNE-1878-1913,F248-1918-1919
