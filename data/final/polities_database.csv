@@ -279,9 +279,11 @@ HRV-1992-2025,Croatia,1992,2025,national,HRV,344,Europe,reviewed,2026-04-12,csha
 HTI-1800-2025,Haiti,1800,2025,national,HTI,41,North America,draft,2026-04-12,cshapes-2.0,41,1934,assigned,,,
 HUN-1800-1918,Kingdom of Hungary (Transleithania),1800,1918,national,HUN,310,Europe,draft,2026-04-17,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,,HUN-1918-1919
 HUN-1918-1919,Hungary (1918-1919),1918,1919,national,HUN,310,Europe,draft,2026-06-30,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,AUH-1908-1918,HUN-1920-1938
-HUN-1920-1938,Hungary (1920-1938),1920,1938,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1920,assigned,,HUN-1918-1919,HUN-1938-1947
-HUN-1938-1947,Hungary (1938-1947),1938,1947,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1938,assigned,108785,HUN-1920-1938,HUN-1947-2025
-HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,2026-04-12,cshapes-2.0,310,1947,assigned,,HUN-1938-1947,
+HUN-1920-1938,Hungary (1920-1938),1920,1938,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1920,assigned,,HUN-1918-1919,HUN-1938-1940
+HUN-1938-1940,Hungary (1938-1940),1938,1940,national,HUN,310,Europe,draft,2026-06-30,cshapes-2.0,310,1938,assigned,108785,HUN-1920-1938,HUN-1940-1944
+HUN-1940-1944,Hungary (1940-1944),1940,1944,national,HUN,310,Europe,draft,2026-06-30,,,,missing,172277,HUN-1938-1940,HUN-1944-1947
+HUN-1944-1947,Hungary (1944-1947),1944,1947,national,HUN,310,Europe,draft,2026-06-30,cshapes-2.0,310,1947,assigned,93033,HUN-1940-1944,HUN-1947-2025
+HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,2026-04-12,cshapes-2.0,310,1947,assigned,,HUN-1944-1947,
 HYD-1724-1948,Hyderabad State,1724,1948,colonial,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
 IBD-1829-1893,Ibadan City-State,1829,1893,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Ibadan,,assigned,,,SNI-1899-1906
 ICN-1800-2025,Canary Islands,1800,2025,national,ICN,20,Africa,draft,2026-04-13,gadm-4.1-adm1,ESP.14_1,,assigned,,,
