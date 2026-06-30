@@ -22,7 +22,7 @@ ATG-1800-2025,Antigua and Barbuda,1800,2025,national,ATG,58,North America,draft,
 AUH-1800-1859,Austrian Empire (to 1859),1800,1859,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austrian Empire,1820,assigned,,,AUH-1859-1866
 AUH-1859-1866,Austrian Empire (1859-1866),1859,1866,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austrian Empire,1860,assigned,,AUH-1800-1859,AUH-1866-1908
 AUH-1866-1908,Austria-Hungary (1866-1908),1866,1908,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austria-Hungary,1880,assigned,,AUH-1859-1866,AUH-1908-1918
-AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,national,AUH,300,Europe,draft,2026-04-11,cshapes-2.0,300,1908,assigned,,AUH-1866-1908,AUT-1918-1919; HUN-1918-1920; F51-1918-1938; F248-1918-1919; POL-1918-1919
+AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,national,AUH,300,Europe,draft,2026-04-11,cshapes-2.0,300,1908,assigned,,AUH-1866-1908,AUT-1918-1919; HUN-1918-1919; F51-1918-1938; F248-1918-1919; POL-1918-1919
 AUS-1800-1901,Australian Colonies (to 1901),1800,1901,national,AUS,NA,Oceania,draft,2026-04-16,cshapes-2.0,900,1901,proxy,7686693,,AUS-1901-2025
 AUS-1901-2025,Australia,1901,2025,national,AUS,900,Oceania,reviewed,2026-04-12,cshapes-2.0,900,1927,assigned,,,
 AUSA-1836-1900,South Australia (to 1900),1836,1900,national,AUS,NA,Oceania,draft,2026-04-15,cshapes-2.0,903,1886,assigned,,,AUS-1901-2025
@@ -277,9 +277,9 @@ HKG-1842-2025,Hong Kong,1842,2025,national,HKG,NA,Asia,draft,2026-04-17,gadm-4.1
 HND-1800-2025,Honduras,1800,2025,national,HND,91,North America,draft,2026-04-12,cshapes-2.0,91,1886,assigned,,,
 HRV-1992-2025,Croatia,1992,2025,national,HRV,344,Europe,reviewed,2026-04-12,cshapes-2.0,344,1992,assigned,,F248-1991-1992,
 HTI-1800-2025,Haiti,1800,2025,national,HTI,41,North America,draft,2026-04-12,cshapes-2.0,41,1934,assigned,,,
-HUN-1800-1918,Kingdom of Hungary (Transleithania),1800,1918,national,HUN,310,Europe,draft,2026-04-17,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,,HUN-1918-1920
-HUN-1918-1920,Hungary (1918-1920),1918,1920,national,HUN,310,Europe,draft,2026-06-29,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,AUH-1908-1918,HUN-1920-1938
-HUN-1920-1938,Hungary (1920-1938),1920,1938,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1920,assigned,,HUN-1918-1920,HUN-1938-1947
+HUN-1800-1918,Kingdom of Hungary (Transleithania),1800,1918,national,HUN,310,Europe,draft,2026-04-17,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,,HUN-1918-1919
+HUN-1918-1919,Hungary (1918-1919),1918,1919,national,HUN,310,Europe,draft,2026-06-30,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,AUH-1908-1918,HUN-1920-1938
+HUN-1920-1938,Hungary (1920-1938),1920,1938,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1920,assigned,,HUN-1918-1919,HUN-1938-1947
 HUN-1938-1947,Hungary (1938-1947),1938,1947,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1938,assigned,108785,HUN-1920-1938,HUN-1947-2025
 HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,2026-04-12,cshapes-2.0,310,1947,assigned,,HUN-1938-1947,
 HYD-1724-1948,Hyderabad State,1724,1948,colonial,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
