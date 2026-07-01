@@ -578,7 +578,9 @@ STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,NA,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
 SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,NA,Africa,draft,2026-04-16,cshapes-2.0,625,1914,assigned,,SUD-1899-1934,SUD-1956-2011
 SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SUD,NA,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
-SUR-1886-2025,Suriname,1886,2025,national,SUR,115,South America,draft,2026-04-12,cshapes-2.0,115,1886,assigned,,,
+SUR-1886-1954,Dutch Guiana,1886,1954,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,55,1886,assigned,144985,,SUR-1954-1975
+SUR-1954-1975,Surinam (Autonomous),1954,1975,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,56,1954,assigned,144985,SUR-1886-1954,SUR-1975-2025
+SUR-1975-2025,Suriname,1975,2025,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,57,1975,assigned,144985,SUR-1954-1975,
 SVK-1993-2025,Slovakia,1993,2025,national,SVK,317,Europe,reviewed,2026-04-12,cshapes-2.0,317,1993,assigned,,F51-1947-1993,
 SVN-1992-2025,Slovenia,1992,2025,national,SVN,349,Europe,reviewed,2026-04-12,cshapes-2.0,349,1992,assigned,,F248-1991-1992,
 SWA-1884-1912,Spanish West Africa (to 1912),1884,1912,national,SWA,NA,Africa,draft,2026-04-13,cshapes-2.0,610,1886,assigned,,,SWA-1912-1958
