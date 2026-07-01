@@ -609,7 +609,7 @@ TON-1800-2025,Tonga,1800,2025,national,TON,955,Oceania,draft,2026-04-13,gadm-4.1
 TTO-1800-2025,Trinidad and Tobago,1800,2025,national,TTO,52,North America,draft,2026-04-13,cshapes-2.0,52,1886,assigned,,,
 TUN-1800-1881,Beylik of Tunis,1800,1881,national,TUN,616,Africa,draft,2026-04-13,paine-2024,Tunis,,assigned,,,TUN-1881-2025
 TUN-1881-2025,Tunisia,1881,2025,national,TUN,616,Africa,draft,2026-04-13,cshapes-2.0,616,1886,assigned,,TUN-1800-1881,
-TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,national,TUR,640,Asia,draft,2026-04-16,cshapes-2.0,640,1886,assigned,,,TUR-1913-1914
+TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,national,TUR,640,Asia,draft,2026-04-16,none,,,unassigned,,,TUR-1913-1914
 TUR-1913-1914,Türkiye (1913-1914),1913,1914,national,TUR,640,Asia,draft,2026-04-12,cshapes-2.0,640,1913,assigned,,OTT-1908-1912,TUR-1914-1918
 TUR-1914-1918,Türkiye (1914-1918),1914,1918,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1914,assigned,,TUR-1913-1914,TUR-1918-1920
 TUR-1918-1920,Türkiye (1918-1920),1918,1920,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1918,assigned,,TUR-1914-1918,TUR-1920-2025
