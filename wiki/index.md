@@ -90,9 +90,10 @@ lint fails if the index is stale.
 - [Sweden](polities/swe-1905-2025.md) —
   `SWE-1905-2025`, draft, 1 OQ. Modern Sweden post-1905
   dissolution. ~450K km². Chain complete 1800-2025.
-- [Serbia (1816-1913)](polities/ser-1816-1913.md) —
-  `SER-1816-1913`, draft, 3 OQs. Ottoman autonomy to Balkan
-  Wars. COW 345 continuity to Yugoslavia.
+- [Principality of Serbia (1816-1878)](polities/ser-1816-1878.md) —
+  `SER-1816-1878`, draft. Ottoman autonomous principality, ~38,000 km². polygon_status=unassigned (Cliopatria).
+- [Kingdom of Serbia (1878-1913)](polities/ser-1878-1913.md) —
+  `SER-1878-1913`, draft. Independent kingdom post-Berlin Congress, ~48,000 km². CShapes feature 340.
 - [Norway](polities/nor-1800-2025.md) —
   `NOR-1800-2025`, draft, 4 open questions. 226-year continuous
   row. 1814 Treaty of Kiel (Danish→Swedish) and 1905
