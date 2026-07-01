@@ -520,8 +520,9 @@ ROU-1859-1913,Romania (to 1913),1859,1913,national,ROU,360,Europe,draft,2026-04-
 ROU-1913-1918,Romania (1913-1918),1913,1918,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1913,assigned,,ROU-1859-1913,ROU-1918-1919
 ROU-1918-1919,Romania (1918-1919),1918,1919,national,ROU,360,Europe,draft,2026-07-01,cshapes-2.0,360,1920,assigned,295000,ROU-1913-1918,ROU-1919-1920
 ROU-1919-1920,Romania (1919-1920),1919,1920,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1919,assigned,,ROU-1918-1919,ROU-1920-1940
-ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1920,assigned,,ROU-1919-1920,ROU-1940-2025
-ROU-1940-2025,Romania (1940-2025),1940,2025,national,ROU,360,Europe,reviewed,2026-04-12,cshapes-2.0,360,1940,assigned,,ROU-1920-1940,
+ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1920,assigned,,ROU-1919-1920,ROU-1940-1947
+ROU-1940-1947,Romania (1940-1947),1940,1947,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1940,assigned,194000,ROU-1920-1940,ROU-1947-2025
+ROU-1947-2025,Romania (1947-2025),1947,2025,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1946,assigned,238000,ROU-1940-1947,
 ROW-1850-2023,Rest of World,1850,2023,aggregate,ROW,,World,draft,2026-06-11,reporting-areas,ROW-1850-2023,,derived,,,
 RSFSR-1917-1991,Russian SFSR (1917-1991),1917,1991,national,RUS,365,Europe,draft,2026-06-24,cshapes-2.0,365,1991,proxy,17098242,F228-1914-1917,RUS-1991-2014
 RUS-1991-2014,Russia (1991-2014),1991,2014,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,1991,assigned,,F228-1945-1991,RUS-2014-2025
