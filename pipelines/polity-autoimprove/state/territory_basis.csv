@@ -466,7 +466,8 @@ PAL-1920-1948,Palestine (1920-1948),1920,1948,cshapes-2.0,1920.0,assigned,True,a
 PAN-1800-1979,Panama (before Canal Zone return),1800,1979,cshapes-2.0,1903.0,assigned,True,assumed_constant,True,True,single 1903 polygon held across a 179y span (1800-1979); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),604
 PAN-1979-2025,Panama (post-Canal Zone),1979,2025,cshapes-2.0,1903.0,assigned,False,back_projected,True,False,polygon vintage 1903 is BEFORE the period starts (1979),0
 PAP-1800-1870,Papal States,1800,1870,cliopatria,1814.0,assigned,True,assumed_constant,True,False,single 1814 polygon held across a 70y span (1800-1870); borders may have changed,0
-PER-1825-1909,Peru (to 1909),1825,1909,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 84y span (1825-1909); borders may have changed,56
+PER-1825-1884,Peru (to 1884),1825,1884,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,1886 polygon excludes Tarapacá (~59k km² ~4-5%); pre-1884 polygon unavailable in CShapes; underestimate documented,56
+PER-1884-1909,Peru (1884-1909),1884,1909,cshapes-2.0,1886.0,assigned,True,measured,False,False,vintage 1886 faithful to post-Ancón period 1884-1909; drift ~2y negligible,56
 PER-1909-1922,Peru (1909-1922),1909,1922,cshapes-2.0,1909.0,assigned,True,measured,False,False,vintage 1909 faithful to period 1909-1922,189
 PER-1922-1942,Peru (1922-1942),1922,1942,cshapes-2.0,1922.0,assigned,True,measured,False,False,vintage 1922 faithful to period 1922-1942,451
 PER-1942-2025,Peru,1942,2025,cshapes-2.0,1942.0,assigned,True,assumed_constant,True,True,single 1942 polygon held across a 83y span (1942-2025); borders may have changed,1082

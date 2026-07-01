@@ -479,8 +479,9 @@ PAL-1920-1948,Palestine (1920-1948),1920,1948,national,PAL,NA,Asia,draft,2026-04
 PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",1903,1979,national,PAN,95,North America,draft,2026-06-30,cshapes-2.0,95,1903,assigned,75517,COL-1830-1903,PAN-1979-2025
 PAN-1979-2025,Panama (post-Canal Zone),1979,2025,national,PAN,95,North America,draft,2026-04-12,cshapes-2.0,95,1903,assigned,,PAN-1903-1979,
 PAP-1800-1870,Papal States,1800,1870,national,PAP,327,Europe,draft,2026-04-12,cliopatria,Papal States,1814,assigned,,,ITA-1861-1919
-PER-1825-1909,Peru (to 1909),1825,1909,national,PER,135,South America,draft,2026-04-12,cshapes-2.0,135,1886,assigned,,,PER-1909-1922
-PER-1909-1922,Peru (1909-1922),1909,1922,national,PER,135,South America,reviewed,2026-04-12,cshapes-2.0,135,1909,assigned,,PER-1825-1909,PER-1922-1942
+PER-1825-1884,Peru (to 1884),1825,1884,national,PER,135,South America,draft,2026-07-01,cshapes-2.0,135,1886,assigned,,,PER-1884-1909
+PER-1884-1909,Peru (1884-1909),1884,1909,national,PER,135,South America,draft,2026-07-01,cshapes-2.0,135,1886,assigned,,PER-1825-1884,PER-1909-1922
+PER-1909-1922,Peru (1909-1922),1909,1922,national,PER,135,South America,reviewed,2026-04-12,cshapes-2.0,135,1909,assigned,,PER-1884-1909,PER-1922-1942
 PER-1922-1942,Peru (1922-1942),1922,1942,national,PER,135,South America,draft,2026-04-12,cshapes-2.0,135,1922,assigned,,PER-1909-1922,PER-1942-2025
 PER-1942-2025,Peru,1942,2025,national,PER,135,South America,reviewed,2026-04-12,cshapes-2.0,135,1942,assigned,,PER-1922-1942,
 PHL-1800-2025,Philippines,1800,2025,national,PHL,840,Asia,draft,2026-04-13,cshapes-2.0,840,1898,assigned,,,
