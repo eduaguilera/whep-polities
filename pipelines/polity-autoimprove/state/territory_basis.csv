@@ -294,7 +294,8 @@ IRL-1800-1921,Ireland (within United Kingdom),1800,1921,cshapes-2.0,1921.0,assig
 IRL-1921-2025,Ireland,1921,2025,cshapes-2.0,1921.0,assigned,True,assumed_constant,True,True,single 1921 polygon held across a 104y span (1921-2025); borders may have changed,1350
 IRN-1800-1828,Persia (Qajar to 1828),1800,1828,cliopatria,1815.0,assigned,False,assumed_constant,True,False,single 1815 polygon held across a 28y span (1800-1828); borders may have changed,0
 IRN-1828-2025,Iran,1828,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 197y span (1828-2025); borders may have changed,626
-IRQ-1921-2025,Iraq,1921,2025,cshapes-2.0,1932.0,assigned,True,assumed_constant,True,True,single 1932 polygon held across a 104y span (1921-2025); borders may have changed,389
+IRQ-1921-1932,Iraq (British Mandate for Mesopotamia),1921,1932,cshapes-2.0,1932.0,assigned,True,period_proxy,False,False,1932 polygon used as proxy for mandate period; Mosul vilayet (~100k km2) disputed 1922-1925 but under British administration throughout; polygon overstates undisputed territory slightly for 1922-1925 only,389
+IRQ-1932-2025,Iraq,1932,2025,cshapes-2.0,1932.0,assigned,True,assumed_constant,True,False,1932 polygon is exact-vintage match for independence year (drift=0); single polygon held across 1932-2025 span,389
 ISL-1800-2025,Iceland,1800,2025,cshapes-2.0,1944.0,assigned,True,assumed_constant,True,True,single 1944 polygon held across a 225y span (1800-2025); borders may have changed,905
 ISR-1948-1967,Israel (1948-1967),1948,1967,cshapes-2.0,1948.0,assigned,True,measured,False,False,vintage 1948 faithful to period 1948-1967,226
 ISR-1967-1979,Israel (1967-1979),1967,1979,cshapes-2.0,1967.0,assigned,False,measured,False,False,vintage 1967 faithful to period 1967-1979,0

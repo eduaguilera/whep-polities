@@ -311,7 +311,8 @@ IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,
 IRL-1921-2025,Ireland,1921,2025,national,IRL,205,Europe,draft,2026-04-13,cshapes-2.0,205,1921,assigned,,GBR-1800-1921,
 IRN-1800-1828,Persia (Qajar to 1828),1800,1828,national,IRN,630,Asia,draft,2026-04-12,cliopatria,United States of America,1815,assigned,,,IRN-1828-2025
 IRN-1828-2025,Iran,1828,2025,national,IRN,630,Asia,draft,2026-04-12,cshapes-2.0,630,1886,assigned,,IRN-1800-1828,
-IRQ-1921-2025,Iraq,1921,2025,national,IRQ,645,Asia,draft,2026-04-12,cshapes-2.0,645,1932,assigned,,,
+IRQ-1921-1932,Iraq (British Mandate for Mesopotamia),1921,1932,national,IRQ,645,Asia,draft,2026-04-12,cshapes-2.0,645,1932,assigned,,,IRQ-1932-2025
+IRQ-1932-2025,Iraq,1932,2025,national,IRQ,645,Asia,draft,2026-04-12,cshapes-2.0,645,1932,assigned,,IRQ-1921-1932,
 ISL-1800-2025,Iceland,1800,2025,national,ISL,395,Europe,draft,2026-04-13,cshapes-2.0,395,1944,assigned,,,DNK-1800-1864; DNK-1864-1920; DNK-1920-2025; GRL-1800-2025
 ISR-1948-1967,Israel (1948-1967),1948,1967,national,ISR,666,Asia,draft,2026-04-13,cshapes-2.0,666,1948,assigned,,PAL-1920-1948,ISR-1967-1979
 ISR-1967-1979,Israel (1967-1979),1967,1979,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1967,assigned,,ISR-1948-1967,ISR-1979-2025
