@@ -631,7 +631,7 @@ WLO-1800-1855,Kingdom of Waalo,1800,1855,paine-2024,,assigned,False,assumed_cons
 WSM-1900-2025,Samoa,1900,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,59
 MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,cshapes-2.0,1920.0,assigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),20
 YEM-1990-2025,Yemen (1990-2025),1990,2025,cshapes-2.0,2000.0,assigned,False,assumed_constant,True,False,single 2000 polygon held across a 35y span (1990-2025); borders may have changed,0
-ZAF-1828-2025,South Africa,1828,2025,cshapes-2.0,1910.0,assigned,True,assumed_constant,True,True,single 1910 polygon held across a 197y span (1828-2025); borders may have changed,1796
+ZAF-1910-2025,South Africa (Union and Republic),1910,2025,cshapes-2.0,1910.0,assigned,True,assumed_constant,True,False,single 1910 polygon held across a 115y span (1910-2025); polygon vintage matches start year exactly,1796
 ZMB-1964-2025,Zambia,1964,2025,cshapes-2.0,1964.0,assigned,False,assumed_constant,True,False,single 1964 polygon held across a 61y span (1964-2025); borders may have changed,0
 ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,cshapes-2.0,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),71
 ZUL-1816-1879,Zulu Kingdom,1816,1879,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0

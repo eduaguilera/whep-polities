@@ -324,7 +324,7 @@ lint fails if the index is stale.
 - [Tunisia](polities/tun-1881-2025.md) — `TUN-1881-2025`, draft,
   2 OQs. French protectorate 1881, independent 1956. No territorial
   changes (CShapes same area throughout). TUN-1886-1955 sub-row deleted.
-- [South Africa](polities/zaf-1828-2025.md) — `ZAF-1828-2025`, draft.
+- [South Africa (Union and Republic)](polities/zaf-1910-2025.md) — `ZAF-1910-2025`, reviewed.
 - [Botswana](polities/bwa-1966-2025.md) — `BWA-1966-2025`, draft. Independence 1966.
 - [Bechuanaland Protectorate](polities/bec-1885-1966.md) — `BEC-1885-1966`, draft, 2 open questions. British protectorate 1885; independent as Botswana 1966. Successor: BWA-1966-2025.
 - [Congo (Republic)](polities/cog-1960-2025.md) — `COG-1960-2025`, draft. Independence from France 1960.

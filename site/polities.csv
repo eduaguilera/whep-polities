@@ -384,7 +384,7 @@ NAM-1915-1920,Namibia (1915-1920),1915,1920,national,NAM,565,Africa,draft,2026-0
 NAM-1920-1990,Namibia (1920-1990),1920,1990,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1920,assigned,,NAM-1915-1920,NAM-1990-2025
 NAM-1990-2025,Namibia (1990-2025),1990,2025,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1990,assigned,,NAM-1920-1990,
 NAT-1843-1895,Natal (to 1895),1843,1895,national,NAT,NA,Africa,draft,2026-04-15,cshapes-2.0,562,1886,assigned,,ZUL-1816-1879,
-NAT-1895-1910,Natal (1895-1910),1895,1910,national,NAT,NA,Africa,draft,2026-04-15,cshapes-2.0,562,1886,assigned,,NAT-1843-1895,ZAF-1828-2025
+NAT-1895-1910,Natal (1895-1910),1895,1910,national,NAT,NA,Africa,draft,2026-04-15,cshapes-2.0,562,1886,assigned,,NAT-1843-1895,ZAF-1910-2025
 NCL-1800-2025,New Caledonia,1800,2025,national,NCL,NA,Oceania,draft,2026-06-09,gadm-4.1-adm0,NCL,,proxy,,,
 NDB-1823-1894,Ndebele Kingdom,1823,1894,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Ndebele,,assigned,,,ZWE-1890-1891
 NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-04-16,cshapes-2.0,436,1947,assigned,,NER-1932-1947,NER-1960-2025
@@ -568,9 +568,9 @@ WAD-1800-1912,Wadai Empire,1800,1912,national,NA,NA,Africa,draft,2026-04-13,pain
 WLO-1800-1855,Kingdom of Waalo,1800,1855,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Walo,,assigned,,,SEN-1960-2025
 WSM-1900-2025,Samoa,1900,2025,national,WSM,990,Oceania,draft,2026-04-12,gadm-4.1-adm0,WSM,,assigned,,,
 YEM-1990-2025,Yemen (1990-2025),1990,2025,national,YEM,678,Asia,draft,2026-04-13,cshapes-2.0,678,2000,assigned,,,
-ZAF-1828-2025,South Africa,1828,2025,national,ZAF,560,Africa,draft,2026-04-12,cshapes-2.0,560,1910,assigned,,,
+ZAF-1910-2025,South Africa (Union and Republic),1910,2025,national,ZAF,560,Africa,reviewed,2026-07-01,cshapes-2.0,560,1910,assigned,1221037,CAP-1800-1910; NAT-1895-1910,
 ZMB-1964-2025,Zambia,1964,2025,national,ZMB,551,Africa,draft,2026-04-12,cshapes-2.0,551,1964,assigned,,BMB-1800-1899; LZI-1800-1890; KZM-1800-1899,
-ZUL-1816-1879,Zulu Kingdom,1816,1879,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Zulu,,assigned,,,NAT-1843-1895; ZAF-1828-2025
+ZUL-1816-1879,Zulu Kingdom,1816,1879,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Zulu,,assigned,,,NAT-1843-1895; ZAF-1910-2025
 ZWE-1890-1891,Zimbabwe,1890,1891,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1965,assigned,,NDB-1823-1894,ZWE-1891-1900
 ZWE-1891-1900,Zimbabwe (1891-1900),1891,1900,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1891,assigned,,NDB-1823-1894; ZWE-1890-1891,ZWE-1900-1953
 ZWE-1900-1953,Zimbabwe (1900-1953),1900,1953,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1900,assigned,,ZWE-1891-1900,FRN-1953-1964

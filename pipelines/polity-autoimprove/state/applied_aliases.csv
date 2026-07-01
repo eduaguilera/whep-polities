@@ -59,7 +59,7 @@ sudan,,1899,1934,,SUD-1899-1934,medium,reused from stopped run wf_62a587d4 audit
 sudan,,1934,1956,,SUD-1934-1956,medium,reused from stopped run wf_62a587d4 audit,
 sudan,,1956,2011,,SUD-1956-2011,medium,reused from stopped run wf_62a587d4 audit,
 sudan,,2011,2025,,SDN-2011-2025,medium,reused from stopped run wf_62a587d4 audit,
-union of south africa,,1828,2025,,ZAF-1828-2025,medium,reused from stopped run wf_62a587d4 audit,
+union of south africa,,1910,2025,,ZAF-1910-2025,medium,reused from stopped run wf_62a587d4 audit,
 viet nam,,1887,1954,,VNM-1887-1954,high,sub-territory: Vietnam component of French Indochina (~326k km2); IIA+Mitchell "viet nam" labels measure Vietnam only not full federation,
 viet nam,,1975,2025,,VNM-1975-2025,medium,reused from stopped run wf_62a587d4 audit,
 british west indies jamaica,,1800,2025,,JAM-1800-2025,medium,reused from stopped run wf_62a587d4 audit,
@@ -129,8 +129,8 @@ algeria,,1902,1919,Algeria,DZA-1902-1919,high,name-equivalence; French colonial 
 algeria,,1919,1962,Algeria,DZA-1919-1962,high,name-equivalence; French colonial Algeria IIA period (1905-1945 active),
 algeria,,1962,2025,Algeria,DZA-1962-2025,high,name-equivalence; independent Algeria,
 viet nam,,1955,1974,Republic of Vietnam,RVN-1954-1975,high,Mitchell western stats used "viet nam" exclusively for South Vietnam 1955-1974,
-south africa,iia,1828,2025,South Africa,ZAF-1828-2025,high,name-equivalence; iso zaf + label south africa = Union/Republic of South Africa; territorial scope matches CShapes 1910 polygon,90
-U of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1828-2025,high,abbreviation of Union of South Africa; existing alias maps full form; no polygon_vintage_drift for 1948-1951 data,65
+south africa,iia,1910,2025,South Africa,ZAF-1910-2025,high,name-equivalence; iso zaf + label south africa = Union/Republic of South Africa; territorial scope matches CShapes 1910 polygon,90
+U of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1910-2025,high,abbreviation of Union of South Africa; existing alias maps full form; no polygon_vintage_drift for 1948-1951 data,65
 argentina,iia,1909,1945,Argentina,ARG-1800-2025,high,name-equivalence; iso match (arg); full IIA data range 1909-1945 within ARG-1800-2025 span (1800-2025); 88 rows flagged but 84 already matched via iso — residual 88 unmatched rows have year=NA (data-quality gap not a routing gap),88
 china 22 provinces,fao1952,1937,1945,China,CHN-1932-1945,high,name-variant: FAO designation for China proper excl. Manchuria; re-routed from CHN-1921-1945 (superseded) to CHN-1932-1945 (composed-difference polygon excludes Manchukuo),87
 china 22 provinces,fao1952,1945,1947,China,CHN-1945-1947,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
@@ -207,8 +207,8 @@ united states virgin islands,iia,1917,1945,United States Virgin Islands,VIR-1917
 Indonesia Java and Madura,fao1952,1949,1951,Java and Madura (within Indonesia),IDN-JVM-1949-1951,high,FAO 1952 island-group sub-national label; ~132000 km2 vs ~1900000 km2 whole Indonesia; 14x overstatement if routed to IDN-1949-1969,
 Indonesia Bali and Lombok,fao1952,1949,1951,Bali and Lombok (within Indonesia),IDN-BLB-1949-1951,high,FAO 1952 island-group sub-national label; ~10505 km2 vs ~1900000 km2 whole Indonesia; 180x overstatement if routed to IDN-1949-1969,
 malawi,,1954,1963,Nyasaland within Federation of Rhodesia and Nyasaland,MWI-1953-1964,high,sub-territorial gap: Nyasaland ~118k km² vs FRN ~1.26M km²; boundary-stable proxy polygon,
-Union of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1828-2025,high,name-alias only; no territory mismatch; Union of South Africa = ZAF 1910-1961,
-cape natal,mitchell,1918,1957,Cape and Natal provinces (South Africa),ZAF-1828-2025,medium,combined Cape+Natal provincial sub-total; may undercount national cattle figures; routed to national polity with undercount caveat,
+Union of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1910-2025,high,name-alias only; no territory mismatch; Union of South Africa = ZAF 1910-1961,
+cape natal,mitchell,1918,1957,Cape and Natal provinces (South Africa),ZAF-1910-2025,medium,combined Cape+Natal provincial sub-total; may undercount national cattle figures; routed to national polity with undercount caveat,
 united states and dependent territories,fao1952,1867,1959,United States and dependent territories,USA-1867-1959,high,FAO 1952 aggregate label for continental US + minor overseas territories (excl. Alaska reported separately by FAO); production data dominated by continental US; dependent territories (~12k km2) negligible relative to 9.8M km2 USA; no double-count with HAWI-1898-1959 or PRI-1800-2025,32
 somalia,mitchell,1920,1959,Italian Somaliland,ITS-1908-1960,high,Mitchell IHS Africa/Asia volumes label Italian-administered southern territory as 'Somalia'; ITS (~627k km2 ~78% of combined area) is the primary economic reporting unit for pastoral livestock data; BSS-1884-1960 remains for data explicitly scoped to British Somaliland,
 Dominican Rep,fao1952,1800,2025,Dominican Republic,DOM-1800-2025,high,abbreviated FAO 1952 form; borders stable since 1844 independence; polygon vintage drift (~63 years) not a territorial concern; commodities (bananas/cassava/rice paddy/sweet potatoes/yams) consistent with Dominican Republic agriculture 1949-1951,
@@ -304,3 +304,4 @@ italy,,1866,1870,Italy (1866-1870),ITA-1866-1870,high,year-ranged routing: Italy
 Libya,fao1952,1943,1949,Libya (1943-1949),LBY-1943-1949,high,plain FAO 1952 all-Libya aggregate label (distinct from sub-provincial Libya Tripolitania/Libya Cyrenaica/Libya Fezzan labels); livestock magnitudes confirm all-Libya scope: 1949 horses+mules+asses=152k vs Tripolitania-only 33k; CShapes all-Libya polygon ~1617537 km2,
 burma,mitchell,1852,1885,British Lower Burma (1852-1885),MMR-LWR-1852-1885,high,Mitchell rice-paddy series 1852-1885 records ~4M tonnes from Irrawaddy delta; impossible for Upper Burma rump (~437k km2 uplands); consistent with British Lower Burma delta economy (world leading rice exporter); routing to MMR-1852-1885 would overstate ~4.8x; Cliopatria area diff confirms ~116k km2 ceded to Britain in 1852,
 panama canal zone,fao1952,1903,1979,Panama Canal Zone,CZN-1903-1979,high,FAO 1952 verbatim label for US-administered Canal Zone (~1432 km2); 5 rows year 1951; land-area ratio of 51.8x in FAO data matches actual ratio Panama/Canal Zone (~52.7x) confirming sub-territory scope; routing to PAN-1903-1979 (~75517 km2) would overstate ~52x,5
+south africa,,1910,2025,South Africa (Union and Republic),ZAF-1910-2025,high,polity-dates fix 2026-07-01; ZAF-1828-2025 renamed to ZAF-1910-2025,
