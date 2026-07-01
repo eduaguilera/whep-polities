@@ -590,7 +590,7 @@ SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,national,SYR,652,Asia,d
 SYR-1967-2025,Syrian Arab Republic,1967,2025,national,SYR,652,Asia,draft,2026-04-12,cshapes-2.0,652,1967,assigned,,SYR-1946-1967,
 TAN-1891-1920,Tanzania (1891-1920),1891,1920,national,TAN,NA,Africa,draft,2026-04-13,none,,,missing,,RWK-1800-1890,TAN-1920-1922
 TAN-1920-1922,Tanzania (1920-1922),1920,1922,national,TAN,NA,Africa,draft,2026-04-13,none,,,missing,,TAN-1891-1920,TAN-1922-1964
-TAN-1922-1964,Tanzania (1922-1964),1922,1964,national,TAN,NA,Africa,draft,2026-04-13,none,,,missing,,TAN-1920-1922,TZA-1961-1964; TZA-1964-2025
+TAN-1922-1964,Tanzania (1922-1964),1922,1961,national,TAN,NA,Africa,draft,2026-04-13,cshapes-2.0,510,1946,assigned,945087,TAN-1920-1922,TZA-1961-1964
 TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,national,TAS,NA,Oceania,draft,2026-04-15,none,,,missing,,NSW-1800-1900,AUS-1901-2025
 TCD-1900-1912,Chad (1900-1912),1900,1912,national,TCD,NA,Africa,draft,2026-04-13,cshapes-2.0,483,1900,assigned,,WAD-1800-1912,TCD-1912-1919
 TCD-1912-1919,Chad (1912-1919),1912,1919,national,TCD,NA,Africa,draft,2026-04-13,cshapes-2.0,483,1900,assigned,,TCD-1900-1912,TCD-1920-1960
