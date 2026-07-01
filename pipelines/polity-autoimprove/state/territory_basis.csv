@@ -481,7 +481,7 @@ PNG-1975-2025,Papua New Guinea,1975,2025,cshapes-2.0,1975.0,assigned,False,assum
 PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 POL-1815-1918,Congress Poland (1815-1918),1815,1918,cshapes-2.0,1918.0,assigned,True,assumed_constant,True,True,single 1918 polygon held across a 103y span (1815-1918); borders may have changed,17
 POL-1918-1919,Poland (1918-1919),1918,1919,cshapes-2.0,1918.0,assigned,True,measured,False,False,vintage 1918 faithful to period 1918-1919,19
-POL-1919-1920,Poland (1919-1920),1919,1920,cshapes-2.0,1919.0,assigned,True,measured,False,False,vintage 1919 faithful to period 1919-1920,27
+POL-1919-1920,Poland (1919-1920),1919,1920,cshapes-2.0,1919.0,polygon_vintage_drift,True,measured,False,True,post-Saint-Germain polygon (1919-09-10 ~256573km2) used; residual ~11% understatement for Oct-Dec 1920 data (pre-expansion),27
 POL-1920-1921,Poland (1920-1921),1920,1921,cshapes-2.0,1920.0,assigned,True,measured,False,False,vintage 1920 faithful to period 1920-1921,32
 POL-1921-1945,Poland (1921-1945),1921,1945,cshapes-2.0,1921.0,assigned,True,measured,False,False,vintage 1921 faithful to period 1921-1945,852
 POL-1945-2025,Poland (1945-2025),1945,2025,cshapes-2.0,1945.0,assigned,True,assumed_constant,True,True,single 1945 polygon held across a 80y span (1945-2025); borders may have changed,617
