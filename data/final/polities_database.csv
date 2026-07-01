@@ -508,7 +508,7 @@ PRT-1800-2025,Portugal,1800,2025,national,PRT,235,Europe,draft,2026-04-13,cshape
 PRY-1811-1870,Paraguay (pre-Triple Alliance),1811,1870,national,PRY,150,South America,draft,2026-06-25,ESTIMATE,,,unassigned,392000,,PRY-1870-1932
 PRY-1870-1932,Paraguay (post-Triple Alliance),1870,1932,national,PRY,150,South America,draft,2026-06-25,cshapes-2.0,150,1886,assigned,,PRY-1811-1870,PRY-1932-1938
 PRY-1932-1938,Paraguay (Chaco War period),1932,1938,national,PRY,150,South America,draft,2026-06-25,cshapes-2.0,150,1886,assigned,293510,PRY-1870-1932,PRY-1938-2025
-PRY-1938-2025,Paraguay,1938,2025,national,PRY,150,South America,draft,2026-04-12,cshapes-2.0,150,1938,assigned,,PRY-1932-1938,
+PRY-1938-2025,Paraguay,1938,2025,national,PRY,150,South America,draft,2026-04-12,cshapes-2.0,150,1938,assigned,398810,PRY-1932-1938,
 PYF-1800-2025,French Polynesia,1800,2025,national,PYF,NA,Oceania,draft,2026-06-09,gadm-4.1-adm0,PYF,,proxy,,,
 QAT-1800-2025,Qatar,1800,2025,national,QAT,694,Asia,draft,2026-04-12,cshapes-2.0,694,1916,assigned,,,
 QUE-1859-1900,Queensland (to 1900),1859,1900,national,QUE,NA,Oceania,draft,2026-04-15,cshapes-2.0,905,1886,assigned,,NSW-1800-1900,AUS-1901-2025
