@@ -158,7 +158,6 @@ DEU-1949-1990,"Germany (divided, 1949-1990)",1949,1990,national,DEU,255,Europe,d
 DEU-1990-2025,Germany,1990,2025,national,DEU,260,Europe,reviewed,2026-04-12,cshapes-2.0,260,1990,assigned,,F78-1949-1990; F77-1949-1990,
 DGM-1800-1899,Kingdom of Dagbon (Dagomba),1800,1899,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Dagomba,,assigned,,,GHA-1898-1956
 DHY-1800-1894,Kingdom of Dahomey,1800,1894,national,NA,NA,Africa,draft,2026-04-12,paine-2024,Dahomey,,assigned,,,BEN-1895-1898; BEN-1960-2025
-DJI-1886-2025,Djibouti,1886,2025,national,DJI,522,Africa,draft,2026-04-12,cshapes-2.0,522,1900,assigned,,,
 DMA-1800-2025,Dominica,1800,2025,national,DMA,54,North America,draft,2026-04-12,gadm-4.1-adm0,DMA,,assigned,,,
 DMG-1800-1899,Sultanate of Damagaram,1800,1899,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Damagaram,,assigned,,,NER-1960-2025
 DMO-1800-1860,Duchy Modena,1800,1860,national,DMO,332,Europe,draft,2026-04-12,cliopatria,Duchy of Modena and Reggio,1815,assigned,,,ITA-1861-1919
@@ -235,8 +234,8 @@ FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",1871,1919,national,F
 FRA-1919-2025,France,1919,2025,national,FRA,220,Europe,draft,2026-04-12,cshapes-2.0,220,1919,assigned,,FRA-1871-1919,
 FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,colonial,FRA,220,Asia,draft,2026-06-29,gadm-4.1+osm,composed-union-puducherry-karikal-mahe-yanam-chandernagore,2024,estimate,510,,IND-1949-2025
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,national,FRN,NA,Africa,draft,2026-04-13,cshapes-2.0,550,1953,assigned,,ZWE-1900-1953,ZWE-1964-1980; ZMB-1964-2025; MWI-1964-2025
-FRS-1884-1977,French Somaliland,1884,1977,national,FRS,NA,Africa,draft,2026-04-15,none,,,missing,,,FRS-1977-2025
-FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,FRS,987,Africa,draft,2026-04-13,cshapes-2.0,522,1900,assigned,,DJI-1886-2025,
+FRS-1884-1977,French Somaliland,1884,1977,national,FRS,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,,FRS-1977-2025
+FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,FRS,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,FRS-1884-1977,
 FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,,CAR-1920-1945
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Futa Jalon,,assigned,,,GIN-1958-2025; GIN-1894-1958
 FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,NA,Africa,draft,2026-04-16,none,,,missing,,GTO-1919-1922,TGO-1960-2025

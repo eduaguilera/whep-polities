@@ -310,3 +310,4 @@ Argentine Republic,mitchell,1870,1898,Argentina (to 1899),ARG-1800-1899,high,mit
 Argentina,mitchell,1899,1901,Argentina (1899-1902),ARG-1899-1902,high,mitchell data 1899-1901; transitional row post-Puna arbitration; routed to ARG-1899-1902 (CShapes gwcode=160 vintage-1899); split from ARG-1800-2025 2026-07-01,
 Argentine Republic,mitchell,1899,1901,Argentina (1899-1902),ARG-1899-1902,high,mitchell alternate label for Argentina 1899-1901; same routing as 'Argentina' mitchell alias for this period; split from ARG-1800-2025 2026-07-01,
 british honduras,,1886,1970,British Honduras,BLZ-1886-1970,high,colonial-era name for Belize 1886-1970; CShapes feature 80 (~22966 km2); data years 1909-1951 route here; BLZ chain-restructure 2026-07-01,
+djibouti,iia,1884,1977,French Somaliland,FRS-1884-1977,high,IIA colonial-era label; same territory as French Somaliland ~23192 km²; DJI-1886-2025 retired duplicate; routes colonial-era data to correct FRS chain,
