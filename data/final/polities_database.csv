@@ -61,7 +61,10 @@ BLI-1833-1960,British Leeward Islands Colony,1833,1960,colonial,BLI,NA,North Ame
 BLR-1991-2025,Belarus,1991,2025,national,BLR,370,Europe,reviewed,2026-04-12,cshapes-2.0,370,1991,assigned,,F228-1945-1991,
 BLX-1850-1999,Belgium-Luxembourg,1850,1999,aggregate,BLX,,Europe,draft,2026-06-11,reporting-areas,BLX-1850-1999,,derived,,,
 BLX-1921-1999,Belgium-Luxembourg Economic Union,1921,1999,national,BEL,,Europe,draft,2026-06-25,constructed,BLX-1921-1999,,assigned,33223,,
-BLZ-1800-2025,Belize,1800,2025,national,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,,,
+BLZ-1800-1886,Belize (to 1886),1800,1886,colonial,BLZ,80,North America,draft,2026-04-13,none,,,unassigned,,,BLZ-1886-1970
+BLZ-1886-1970,British Honduras,1886,1970,colonial,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,22966,BLZ-1800-1886,BLZ-1970-1981
+BLZ-1970-1981,Belize (pre-independence),1970,1981,colonial,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,22966,BLZ-1886-1970,BLZ-1981-2025
+BLZ-1981-2025,Belize,1981,2025,national,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,22966,BLZ-1970-1981,
 BMB-1800-1899,Bemba Kingdom,1800,1899,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Bemba,,assigned,,,ZMB-1964-2025
 BNB-1881-1963,British North Borneo,1881,1963,national,MYS,823,Asia,draft,2026-06-24,cshapes-2.0,823,1889,assigned,72620,,MYS-1963-1965
 BND-1800-1887,Kingdom of Bundu,1800,1887,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Bundu,,assigned,,,SEN-1960-2025
