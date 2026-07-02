@@ -459,7 +459,7 @@ OTT-1800-1886,Ottoman Empire (to 1886),1800,1886,cliopatria,1857.0,assigned,True
 OTT-1886-1908,Ottoman Empire (1886–1908),1886,1908,cshapes-2.0,1886.0,assigned,True,measured,False,False,vintage 1886 faithful to period 1886-1908,0
 OTT-1908-1912,Ottoman Empire (1908–1912),1908,1912,cshapes-2.0,1886.0,assigned,True,back_projected,True,False,polygon vintage 1886 is BEFORE the period starts (1908),0
 OYO-1800-1836,Oyo Empire,1800,1836,paine-2024,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
-PAK-1940-1947,Pakistan (territory within British India, 1940–1947),1940,1947,cshapes-2.0,1947.0,assigned,True,measured,False,False,1947 polygon faithful for 1940-1946 data; full territory under British India since 1893; vintage drift only 7 years,40
+PAK-1937-1947,Pakistan (territory within British India, 1937–1947),1937,1947,cshapes-2.0,1947.0,assigned,True,measured,False,False,1947 polygon faithful for 1937-1946 data; full territory under British India since 1893; vintage drift max 10 years,59
 PAK-1947-1949,Pakistan (1947-1949),1947,1949,cshapes-2.0,1947.0,assigned,True,measured,False,False,vintage 1947 faithful to period 1947-1949,75
 PAK-1949-1971,Pakistan (1949-1971),1949,1971,cshapes-2.0,1949.0,assigned,True,measured,False,True,vintage 1949 faithful to period 1949-1971; footnote coverage caveat (FAO/IIA yearbook),313
 PAK-1971-2025,Pakistan,1971,2025,cshapes-2.0,1971.0,assigned,False,assumed_constant,True,False,single 1971 polygon held across a 54y span (1971-2025); borders may have changed,0

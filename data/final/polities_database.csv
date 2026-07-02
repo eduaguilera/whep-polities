@@ -46,7 +46,7 @@ BFA-1919-1932,Upper Volta (1919-1932),1919,1932,national,BFA,439,Africa,draft,20
 BFA-1947-1960,Burkina Faso (1947-1960),1947,1960,national,BFA,439,Africa,draft,2026-04-12,cshapes-2.0,439,1947,assigned,,,BFA-1960-2025
 BFA-1960-2025,Burkina Faso,1960,2025,national,BFA,439,Africa,draft,2026-04-12,cshapes-2.0,439,1960,assigned,,MOS-1800-1897; BFA-1947-1960,
 BGA-1800-1894,Kingdom of Buganda,1800,1894,national,NA,NA,Africa,draft,2026-04-12,paine-2024,Buganda,,assigned,,,UGA-1894-1902; UGA-1962-2025
-BGD-1947-1971,East Pakistan (1947-1971),1947,1971,national,BGD,771,Asia,draft,2026-04-16,cshapes-2.0,771,1971,assigned,,PAK-1940-1947,BGD-1971-2025
+BGD-1947-1971,East Pakistan (1947-1971),1947,1971,national,BGD,771,Asia,draft,2026-04-16,cshapes-2.0,771,1971,assigned,,PAK-1937-1947,BGD-1971-2025
 BGD-1971-2025,Bangladesh,1971,2025,national,BGD,771,Asia,draft,2026-04-12,cshapes-2.0,771,1971,assigned,,PAK-1949-1971,
 BGR-1878-1913,Bulgaria (to 1913),1878,1913,national,BGR,355,Europe,draft,2026-04-12,cshapes-europe,355,1886,assigned,,,BGR-1913-1918
 BGR-1913-1918,Bulgaria (1913-1918),1913,1918,national,BGR,355,Europe,draft,2026-04-12,cshapes-2.0,355,1913,assigned,,BGR-1878-1913,BGR-1918-1919
@@ -478,7 +478,7 @@ OTT-1800-1886,Ottoman Empire (to 1886),1800,1886,national,OTT,640,Asia,draft,202
 OTT-1886-1908,Ottoman Empire (1886–1908),1886,1908,national,OTT,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1886,assigned,,OTT-1800-1886,OTT-1908-1912
 OTT-1908-1912,Ottoman Empire (1908–1912),1908,1912,national,OTT,640,Asia,draft,2026-04-11,cshapes-2.0,640,1886,assigned,,OTT-1886-1908,TUR-1913-1914; SAU-1924-2025
 OYO-1800-1836,Oyo Empire,1800,1836,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Oyo,,assigned,,,IBD-1829-1893
-PAK-1940-1947,"Pakistan (territory within British India, 1940–1947)",1940,1947,national,PAK,770,Asia,draft,2026-06-30,cshapes-2.0,770,1947,assigned,,,PAK-1947-1949
+PAK-1937-1947,"Pakistan (territory within British India, 1937–1947)",1937,1947,national,PAK,770,Asia,draft,2026-07-01,cshapes-2.0,770,1947,assigned,,,PAK-1947-1949
 PAK-1947-1949,Pakistan (1947-1949),1947,1949,national,PAK,770,Asia,draft,2026-04-13,cshapes-2.0,770,1947,assigned,,,PAK-1949-1971
 PAK-1949-1971,Pakistan (1949-1971),1949,1971,national,PAK,770,Asia,draft,2026-04-12,cshapes-2.0,770,1949,assigned,,PAK-1947-1949,PAK-1971-2025; BGD-1971-2025
 PAK-1971-2025,Pakistan,1971,2025,national,PAK,770,Asia,draft,2026-04-12,cshapes-2.0,770,1971,assigned,,PAK-1949-1971,
