@@ -207,6 +207,63 @@ for (country, iso, method), grp in un.groupby([un.country, un.iso3c.fillna(""), 
         ev["finding_type"] = "other"
     findings.append(ev)
 
+# ---------- Stage 1b: FAOSTAT-era findings (faostat-era-matching state) ----------
+# pipelines/faostat-era-matching crosslinks the FAOSTAT (1961+) reporting
+# universe by numeric area code and leaves its residual queue in state CSVs.
+# Ingest that queue here so the autoimprove loop works FAOSTAT-era gaps the
+# same way as Layer-B ones (same finding shapes, same ledger gating).
+FAOSTAT_STATE = os.path.join(REPO, "pipelines/faostat-era-matching/state")
+def _faostat_era_findings():
+    out = []
+    unm = os.path.join(FAOSTAT_STATE, "unmatched.csv")
+    if os.path.exists(unm):
+        for r in csv.DictReader(open(unm)):
+            out.append({
+                "entity": r["area_name"], "iso_in_data": r.get("iso3") or None,
+                "rows": int(float(r.get("n_rows") or 0)),
+                "years": f"{r['year_start']}-{r['year_end']}",
+                "sources": ["faostat"], "items_sample": [],
+                "finding_type": "name_unresolved", "nearest_guess": None,
+                "note": f"faostat-era-matching: no polity for FAOSTAT area "
+                        f"{r['area_code']}; {r.get('note') or ''}".strip(),
+            })
+    amb = os.path.join(FAOSTAT_STATE, "ambiguous.csv")
+    if os.path.exists(amb):
+        by_area = defaultdict(list)
+        for r in csv.DictReader(open(amb)):
+            by_area[(r["area_code"], r["original_name"])].append(r)
+        for (code, name), rs in by_area.items():
+            out.append({
+                "entity": name, "iso_in_data": rs[0].get("iso3") or None,
+                "rows": int(float(rs[0].get("rows") or 0)),
+                "years": f"{min(r['year_start'] for r in rs)}-{max(r['year_end'] for r in rs)}",
+                "sources": ["faostat"], "items_sample": [],
+                "finding_type": "coverage_gap",
+                "resolved_family": sorted({r["target_polity_code"] for r in rs}),
+                "note": f"faostat-era-matching: overlapping polity periods for "
+                        f"FAOSTAT area {code}; settle from data magnitudes and add "
+                        f"a manual span route in pipelines/faostat-era-matching/match.R",
+            })
+    fal = os.path.join(FAOSTAT_STATE, "faostat_aliases.csv")
+    if os.path.exists(fal):
+        seen = set()
+        for r in csv.DictReader(open(fal)):
+            basis = r.get("basis") or ""
+            if "no covering polity period" in basis and r["area_code"] not in seen:
+                seen.add(r["area_code"])
+                out.append({
+                    "entity": r["original_name"], "iso_in_data": r.get("iso3") or None,
+                    "rows": int(float(r.get("rows") or 0)),
+                    "years": f"{r['year_start']}-{r['year_end']}",
+                    "sources": ["faostat"], "items_sample": [],
+                    "finding_type": "coverage_gap",
+                    "note": "faostat-era-matching: " + basis,
+                })
+    return out
+_fao_findings = _faostat_era_findings()
+print(f"Stage 1b: +{len(_fao_findings)} FAOSTAT-era findings (faostat-era-matching state)")
+findings.extend(_fao_findings)
+
 # ---------- Stage 2: triage + report (ledger-gated) ----------
 _before = len(findings)
 findings = [f for f in findings if f["entity"].strip().lower() not in resolved_keys]

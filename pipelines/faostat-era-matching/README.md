@@ -80,9 +80,13 @@ Requires an accessible WHEP checkout (pins cache + area registry); set
 
 ## Review loop
 
-Rows with `confidence = "review"` and everything in `state/unmatched.csv`
-are meant to be worked through the
-[`polity-autoimprove`](../polity-autoimprove/README.md) loop (wiki-first;
-one commit per fix): missing pre-1990 Yemen polities, the Serbia 2006–2008
-gap, and similar findings surface here as evidence-backed issues rather
-than being resolved by convention.
+The residual queue (`state/unmatched.csv`, `state/ambiguous.csv`, and
+coverage-gap notes on alias rows) is ingested automatically by
+`pipelines/polity-autoimprove/01_match_and_findings.py` (Stage 1b) as
+`name_unresolved` / `coverage_gap` findings, so the autoimprove loop
+works FAOSTAT-era items exactly like Layer-B ones (wiki-first; one commit
+per fix). As of 2026-07-02 the queue is empty: 212 observed reporting
+areas resolve to 264 aliases with no gaps, no ambiguity, and no unmatched
+areas (that pass created 12 polities — COK, NIU, GUF, REU, PSE, BMU-1968,
+SGP-1963, BDI/RWA-1922, F237, F249, SRB-2006 — and settled Malaysia
+1961-1962 from rubber-production magnitudes).
