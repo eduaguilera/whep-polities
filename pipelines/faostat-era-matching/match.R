@@ -357,25 +357,29 @@ match_area <- function(row) {
           match_status = "uncovered"
         ))
       }
+      if (seg_start == seg_end && nrow(covering) > 1L) {
+        # Adjacent WHEP periods share their transition year (predecessor
+        # ends the year the successor starts). Mirror the pre-1961 rules
+        # ("SDN < 2011 -> SUD"): the shared boundary year routes to the
+        # successor, before any type or specificity preference. Only
+        # applies when every candidate either starts or ends exactly on
+        # this year — anything else is real ambiguity.
+        starters <- covering |> filter(start_year == seg_start)
+        enders <- covering |>
+          filter(end_year == seg_end, start_year < seg_start)
+        if (
+          nrow(starters) > 0L &&
+            nrow(starters) + nrow(enders) == nrow(covering)
+        ) {
+          covering <- starters
+        }
+      }
       best <- covering |>
         filter(
           .polity_type_rank(polity_type) ==
             min(.polity_type_rank(covering$polity_type))
         )
       prefixes <- unique(sub("-.*", "", best$polity_code))
-      if (length(prefixes) > 1L && seg_start == seg_end) {
-        # Adjacent WHEP periods share their transition year (predecessor
-        # ends the year the successor starts). Mirror the pre-1961 rules
-        # ("SDN < 2011 -> SUD"): the shared boundary year routes to the
-        # successor. Only applies when every candidate either starts or
-        # ends exactly on this year — anything else is real ambiguity.
-        starters <- best |> filter(start_year == seg_start)
-        enders <- best |> filter(end_year == seg_end, start_year < seg_start)
-        if (nrow(starters) > 0L && nrow(starters) + nrow(enders) == nrow(best)) {
-          best <- starters
-          prefixes <- unique(sub("-.*", "", best$polity_code))
-        }
-      }
       if (length(prefixes) == 1L) {
         best <- best |>
           arrange(end_year - start_year) |>
@@ -434,10 +438,60 @@ match_area <- function(row) {
   paste(ranges, collapse = ", ")
 }
 
+# Curated routes for spans the deterministic matcher must leave ambiguous,
+# each resolved from data magnitudes (recorded in the basis). Kept here —
+# not as hand rows in applied_aliases.csv — because the faostat merge is
+# replace-by-source and would wipe hand rows on the next run.
+manual_span_routes <- tibble::tribble(
+  ~area_code,
+  ~year_start,
+  ~year_end,
+  ~target_polity_code,
+  ~route_basis,
+  131L,
+  1961L,
+  1962L,
+  "MYS-1957-1963",
+  paste(
+    "FAOSTAT Malaysia pre-1963 is the Federation of Malaya (peninsula):",
+    "natural-rubber production jumps ~23% between 1962 and 1963 when",
+    "Sabah and Sarawak accede - a territorial step, not organic growth",
+    "for a tree crop"
+  )
+)
+
+.apply_span_routes <- function(matches, routes, polities) {
+  for (i in seq_len(nrow(routes))) {
+    r <- routes[i, ]
+    hit <- matches$area_code == r$area_code &
+      matches$match_status == "ambiguous" &
+      matches$year_start >= r$year_start &
+      matches$year_end <= r$year_end
+    if (!any(hit)) {
+      next
+    }
+    resolved <- matches[which(hit)[1L], ] |>
+      mutate(
+        year_start = r$year_start,
+        year_end = r$year_end,
+        target_polity_code = r$target_polity_code,
+        common_name = polities$polity_name[
+          polities$polity_code == r$target_polity_code
+        ][1L],
+        match_route = "manual-span",
+        match_status = "matched",
+        note = r$route_basis
+      )
+    matches <- bind_rows(matches[!hit, ], resolved)
+  }
+  matches
+}
+
 matches <- inventory |>
   group_split(area_code) |>
   map(\(g) match_area(as.list(g[1, ]))) |>
   bind_rows() |>
+  .apply_span_routes(manual_span_routes, polities) |>
   left_join(
     inventory |> select(area_code, n_rows, pins),
     by = "area_code"
@@ -477,7 +531,9 @@ alias_base <- matches |>
 
 aliases <- alias_base |> filter(match_status == "matched")
 ambiguous <- alias_base |> filter(match_status == "ambiguous")
-gaps <- aliases |> filter(!is.na(note)) |> distinct(area_code, .keep_all = TRUE)
+gaps <- aliases |>
+  filter(!is.na(note), match_route != "manual-span") |>
+  distinct(area_code, .keep_all = TRUE)
 
 unmatched <- matches |>
   filter(is.na(target_polity_code)) |>
