@@ -467,7 +467,8 @@ NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,national,NNI,385,Africa,dra
 NOR-1800-2025,Norway,1800,2025,national,NOR,385,Europe,draft,2026-04-13,cshapes-2.0,385,1905,assigned,,,
 NPL-1800-1816,Greater Nepal,1800,1816,national,NPL,NA,Asia,draft,2026-04-13,cliopatria,Nepal,1800,assigned,,,NPL-1816-2025
 NPL-1816-2025,Nepal,1816,2025,national,NPL,NA,Asia,draft,2026-04-12,cliopatria,Nepal,1929,assigned,,NPL-1800-1816,
-NRH-1911-1953,Northern Rhodesia (1911-1953),1911,1953,,ZMB,,,,,,,,assigned,,NWR-1900-1905,FRN-1953-1964
+NRH-1911-1953,Northern Rhodesia (1911-1953),1911,1953,national,ZMB,551,Africa,draft,2026-07-01,cshapes-2.0,551,1911,assigned,751924,NWR-1900-1905,NRH-1953-1964
+NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland,1953,1964,national,ZMB,551,Africa,draft,2026-07-02,cshapes-2.0,551,1953,assigned,751924,NRH-1911-1953,ZMB-1964-2025
 NRU-1888-2025,Nauru,1888,2025,national,NRU,970,Oceania,draft,2026-04-13,gadm-4.1-adm0,NRU,,assigned,,,
 NSW-1800-1900,New South Wales (to 1900),1800,1900,national,NSW,NA,Oceania,draft,2026-04-15,cshapes-2.0,901,1886,assigned,,,AUS-1901-2025
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,national,NGA,NA,Africa,draft,2026-04-15,none,,,missing,,,NNI-1899-1904
