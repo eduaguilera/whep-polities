@@ -1,0 +1,76 @@
+area_code,area_name,year_first,year_last,n_rows,pins,iso3
+261,European Union (12) (excluding intra-trade),1994,1994,1866,faostat-trade-totals,NA
+265,China (excluding intra-trade),1986,2024,71806,faostat-trade-totals,NA
+266,European Union (15) (excluding intra-trade),1995,2003,16952,faostat-trade-totals,NA
+268,European Union (25) (excluding intra-trade),2004,2006,5710,faostat-trade-totals,NA
+269,European Union (27) (excluding Croatia) (excluding intra-trade),2007,2012,11170,faostat-trade-totals,NA
+351,China,1961,2024,244464,faostat-cbs-new;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5000,World,1961,2024,366718,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5100,Africa,1961,2024,330591,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5101,Eastern Africa,1961,2024,300847,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5102,Middle Africa,1961,2024,258752,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5103,Northern Africa,1961,2024,293894,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5104,Southern Africa,1961,2024,275095,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5105,Western Africa,1961,2024,275632,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5200,Americas,1961,2024,337627,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5203,Northern America,1961,2024,293130,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5204,Central America,1961,2024,297448,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5206,Caribbean,1961,2024,275441,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5207,South America,1961,2024,315072,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5300,Asia,1961,2024,349810,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5301,Central Asia,1992,2024,135535,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5302,Eastern Asia,1961,2024,320268,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5303,Southern Asia,1961,2024,305502,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5304,South-eastern Asia,1961,2024,309136,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5305,Western Asia,1961,2024,318064,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5400,Europe,1961,2024,334186,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5401,Eastern Europe,1961,2024,298703,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5402,Northern Europe,1961,2024,291442,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5403,Southern Europe,1961,2024,315943,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5404,Western Europe,1961,2024,303948,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5500,Oceania,1961,2024,299387,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5501,Australia and New Zealand,1961,2024,275015,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5502,Melanesia,1961,2024,233566,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5503,Micronesia,1961,2024,117552,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5504,Polynesia,1961,2024,195191,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5706,European Union,1961,2013,148630,faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-old,NA
+5707,European Union (27),1961,2024,182834,faostat-cbs-new;faostat-fbs-new;faostat-production;faostat-trade-totals,NA
+5801,Least Developed Countries,1961,2024,316199,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5802,Land Locked Developing Countries,1961,2024,317043,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5803,Small Island Developing States,1961,2024,304767,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5815,Low Income Food Deficit Countries,1961,2024,326465,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+5817,Net Food Importing Developing Countries,1961,2024,343068,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals,NA
+51000,Africa (excluding intra-trade),1986,2024,79284,faostat-trade-totals,NA
+51010,Eastern Africa (excluding intra-trade),1986,2024,70342,faostat-trade-totals,NA
+51020,Middle Africa (excluding intra-trade),1986,2024,58397,faostat-trade-totals,NA
+51030,Northern Africa (excluding intra-trade),1986,2024,67452,faostat-trade-totals,NA
+51040,Southern Africa (excluding intra-trade),1986,2024,66398,faostat-trade-totals,NA
+51050,Western Africa (excluding intra-trade),1986,2024,67816,faostat-trade-totals,NA
+52000,Americas (excluding intra-trade),1986,2024,80365,faostat-trade-totals,NA
+52030,Northern America (excluding intra-trade),1986,2024,72715,faostat-trade-totals,NA
+52040,Central America (excluding intra-trade),1986,2024,68487,faostat-trade-totals,NA
+52060,Caribbean (excluding intra-trade),1986,2024,68286,faostat-trade-totals,NA
+52070,South America (excluding intra-trade),1986,2024,72797,faostat-trade-totals,NA
+53000,Asia (excluding intra-trade),1986,2024,83856,faostat-trade-totals,NA
+53010,Central Asia (excluding intra-trade),1992,2024,51515,faostat-trade-totals,NA
+53020,Eastern Asia (excluding intra-trade),1986,2024,74518,faostat-trade-totals,NA
+53030,Southern Asia (excluding intra-trade),1986,2024,71085,faostat-trade-totals,NA
+53040,South-Eastern Asia (excluding intra-trade),1986,2024,75661,faostat-trade-totals,NA
+53050,Western Asia (excluding intra-trade),1986,2024,77700,faostat-trade-totals,NA
+54000,Europe (excluding intra-trade),1986,2024,82458,faostat-trade-totals,NA
+54010,Eastern Europe (excluding intra-trade),1986,2024,74229,faostat-trade-totals,NA
+54020,Northern Europe (excluding intra-trade),1986,2024,76654,faostat-trade-totals,NA
+54030,Southern Europe (excluding intra-trade),1986,2024,77347,faostat-trade-totals,NA
+54040,Western Europe (excluding intra-trade),1986,2024,79898,faostat-trade-totals,NA
+55000,Oceania (excluding intra-trade),1986,2024,70918,faostat-trade-totals,NA
+55010,Australia and New Zealand (excluding intra-trade),1986,2024,66043,faostat-trade-totals,NA
+55020,Melanesia (excluding intra-trade),1986,2018,40275,faostat-trade-totals,NA
+55030,Micronesia (excluding intra-trade),1986,2024,27213,faostat-trade-totals,NA
+55040,Polynesia (excluding intra-trade),1986,2024,45936,faostat-trade-totals,NA
+57060,European Union (28) (excluding intra-trade),2013,2018,11702,faostat-trade-totals,NA
+57070,European Union (27) (excluding intra-trade),2020,2024,10086,faostat-trade-totals,NA
+58010,Least Developed Countries (excluding intra-trade),1986,2024,76394,faostat-trade-totals,NA
+58020,Land Locked Developing Countries (excluding intra-trade),1986,2024,75238,faostat-trade-totals,NA
+58030,Small Island Developing States (excluding intra-trade),1986,2024,76235,faostat-trade-totals,NA
+58150,Low Income Food Deficit Countries (excluding intra-trade),1986,2024,77253,faostat-trade-totals,NA
+58170,Net Food Importing Developing Countries (excluding intra-trade),1986,2024,83023,faostat-trade-totals,NA
