@@ -699,3 +699,4 @@ BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,NA,Africa,draf
 CXR-1946-1958,Christmas Island (under Singapore administration),1946,1958,colonial,CXR,NA,Asia,draft,2026-07-01,gadm-4.1,CXR,2023,assigned,139.7,GBM-1895-1946,
 SPM-1816-2025,Saint Pierre and Miquelon,1816,2025,colonial,SPM,,North America,draft,2026-07-02,gadm-4.1-adm0,SPM,2024,proxy,242,,
 SYL-1944-1953,Syria and Lebanon (combined statistical unit),1944,1953,aggregate,NA,NA,Asia,draft,2026-07-02,cshapes-2.0,"composed-union: cowcode=652 row 1946-04-17/1967-06-09 UNION cowcode=660 row 1944-01-01/2025-12-31",1949,assigned,195632,,SYR-1946-1967; LBN-1944-2025
+NER-1911-1922,Niger (Military Territory, 1911-1922),1911,1922,national,NER,436,Africa,draft,2026-07-01,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1922-1947
