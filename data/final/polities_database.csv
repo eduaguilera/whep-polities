@@ -731,3 +731,4 @@ BDI-1922-1962,Burundi (within Ruanda-Urundi),1922,1962,subnational,BDI,NA,Africa
 RWA-1922-1962,Rwanda (within Ruanda-Urundi),1922,1962,subnational,RWA,NA,Africa,draft,2026-07-02,cshapes-2.0,517,1962,assigned,25250,,RWA-1962-2025
 F237-1954-1975,Vietnam (combined reporting: DRV and RVN),1954,1975,aggregate,VNM,NA,Asia,draft,2026-07-02,cshapes-2.0,816,1976,estimate,325295,VNM-1887-1954,VNM-1975-2025
 F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),1918,1990,aggregate,YEM,NA,Asia,draft,2026-07-02,cshapes-2.0,679,1990,estimate,425263,,YEM-1990-2025
+SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,2026-07-02,cshapes-2.0,345,2007,assigned,87745,SCG-1992-2006,SRB-2008-2025
