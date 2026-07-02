@@ -222,7 +222,8 @@ F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,national,NA,315,Europe,draft,
 F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,national,NA,315,Europe,draft,2026-04-12,cshapes-2.0,315,1945,assigned,,F51-1938-1945,F51-1947-1993
 F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,national,NA,315,Europe,draft,2026-04-12,cshapes-2.0,315,1947,assigned,,F51-1945-1947,CZE-1993-2025; SVK-1993-2025
 F77-1949-1990,East Germany,1949,1990,national,NA,265,Europe,draft,2026-04-12,cshapes-2.0,265,1949,assigned,,DEU-1938-1945,DEU-1990-2025
-F78-1949-1990,West Germany,1949,1990,national,NA,260,Europe,draft,2026-04-12,cshapes-2.0,260,1949,assigned,,DEU-1938-1945,DEU-1990-2025
+F78-1949-1990,West Germany,1949,1990,national,NA,260,Europe,draft,2026-04-12,cshapes-2.0,260,1949,assigned,,WZO-1938-1949,DEU-1990-2025
+WZO-1938-1949,Western Germany / Western Occupation Zones,1938,1949,national,NA,260,Europe,draft,2026-07-01,cshapes-2.0,260,1949,assigned,248000,DEU-1938-1945,F78-1949-1990
 FCC-1862-1887,French Cochinchina,1862,1887,national,FID,NA,Asia,draft,2026-04-16,none,,,missing,,,FID-1887-2025
 FCM-1920-1960,French Cameroon (1920-1960),1920,1960,national,CMR,471,Africa,draft,2026-04-16,cshapes-2.0,355,1940,assigned,423069,GKM-1912-1916,CMR-1960-1961
 FID-1887-1954,French Indochina,1887,1954,national,FID,NA,Asia,draft,2026-04-17,cliopatria,French Indochina,1900,assigned,,,KHM-1953-2025; LAO-1954-2025
