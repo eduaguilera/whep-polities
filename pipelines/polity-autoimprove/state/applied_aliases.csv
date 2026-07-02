@@ -38,7 +38,9 @@ serbia,,1913,1918,,SER-1913-1918,medium,reused from stopped run wf_62a587d4 audi
 serbia,,2008,2025,,SRB-2008-2025,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,1918,1919,Serbia within Kingdom of Serbs Croats and Slovenes (1918-1919),F248-1918-1919,medium,year-ranged predecessor chain,
 serbia,,1919,1920,Serbia within Kingdom of Serbs Croats and Slovenes (1919-1920),F248-1919-1920,medium,year-ranged predecessor chain,
-serbia,,1920,1991,Serbia within Yugoslavia (1920-1991),F248-1920-1991,medium,year-ranged predecessor chain,
+serbia,,1920,1945,Serbia within Yugoslavia (1920-1945),SER-1918-1945,high,IIA/Mitchell data labelled 'serbia' 1921-1945 covers Serbian sub-territory (~88000 km2); routing to F248-1920-1947 (~255000 km2) would overstate ~3x,568
+serbia,,1945,1947,Yugoslavia (1945-1947) — serbia sub-territory data approximation,F248-1920-1947,low,no granular Serbia-within-SFRY polity exists; approximation pending SER-1945-1991 creation,
+serbia,,1947,1991,Yugoslavia (1947-1991) — serbia sub-territory data approximation,F248-1947-1991,low,no granular Serbia-within-SFRY polity exists; approximation pending SER-1945-1991 creation,
 serbia,,1991,1992,Serbia within Yugoslavia/SFR dissolution (1991-1992),F248-1991-1992,medium,year-ranged predecessor chain,
 serbia,,1992,2006,Serbia within Federal Republic of Yugoslavia / Serbia and Montenegro,SCG-1992-2006,medium,year-ranged predecessor chain,
 serbia,,2006,2008,Serbia (2006-2008 pre-independence),SER-2006-2008,medium,year-ranged predecessor chain,
