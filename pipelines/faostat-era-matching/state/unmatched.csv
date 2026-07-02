@@ -1,5 +1,6 @@
 area_code,area_name,iso3,year_start,year_end,note,n_rows,pins
 47,Cook Islands,COK,1961,2024,no polity family for this reporting area,42137,faostat-production;faostat-trade-totals
-72,Djibouti,DJI,1961,2024,no polity family for this reporting area,140634,faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals
+69,French Guiana,GUF,1961,2006,no polity family for this reporting area,8934,faostat-production;faostat-trade-totals
 160,Niue,NIU,1961,2024,no polity family for this reporting area,22055,faostat-production;faostat-trade-totals
+182,Réunion,REU,1961,2006,no polity family for this reporting area,13083,faostat-production;faostat-trade-totals
 299,Palestine,PSE,1961,2024,no polity family for this reporting area,32534,faostat-production;faostat-trade-totals

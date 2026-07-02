@@ -190,12 +190,22 @@ if (nrow(malformed_polities) > 0L) {
   polities <- polities |> anti_join(malformed_polities, by = "polity_code")
 }
 
-# FAOSTAT composite reporting areas whose family is not their ISO3 family:
-# dissolved-state reporting areas route to the WHEP composite polities, and
-# "Sudan (former)" (206, iso3 SDN) reports the pre-2011 undivided Sudan (SUD),
-# not the post-2011 rump state.
+# Retired/superseded rows are kept in the DB for provenance but must never
+# receive data (e.g. DJI-1886-2025 is retired in favour of the FRS chain).
+polities <- polities |>
+  filter(!wiki_status %in% c("retired", "superseded"))
+
+# FAOSTAT reporting areas whose polity chain is not (only) their ISO3
+# family: dissolved-state reporting areas route to WHEP composite polities,
+# "Sudan (former)" (206, iso3 SDN) reports the pre-2011 undivided Sudan
+# (SUD), and pre-independence chains carry their own prefixes (Portuguese
+# Angola ANG, Bechuanaland BEC, French Somaliland FRS). The manual prefix
+# EXTENDS the ISO3 family, so post-independence periods still match.
 manual_prefix <- c(
+  "7" = "ANG", # Angola (Portuguese, to 1975)
+  "20" = "BEC", # Botswana (Bechuanaland Protectorate, to 1966)
   "51" = "F51", # Czechoslovakia
+  "72" = "FRS", # Djibouti (French Somaliland chain)
   "206" = "SUD", # Sudan (former)
   "228" = "F228", # USSR
   "248" = "F248" # Yugoslav SFR
@@ -205,15 +215,37 @@ polity_prefix <- sub("-.*", "", polities$polity_code)
 
 family_for <- function(area_code, iso3) {
   key <- as.character(area_code)
-  if (key %in% names(manual_prefix)) {
-    fam <- polities[polity_prefix == manual_prefix[[key]], ]
-    return(list(fam = fam, route = "manual-route"))
-  }
+  fam <- polities[0, ]
+  route <- "no-family"
   if (!is.na(iso3) && iso3 %in% polities$iso3_code) {
     fam <- polities[!is.na(polities$iso3_code) & polities$iso3_code == iso3, ]
-    return(list(fam = fam, route = "iso-equal"))
+    route <- "iso-equal"
   }
-  list(fam = polities[0, ], route = "no-family")
+  if (key %in% names(manual_prefix)) {
+    fam <- bind_rows(
+      fam,
+      polities[polity_prefix == manual_prefix[[key]], ]
+    ) |>
+      distinct(polity_code, .keep_all = TRUE)
+    route <- "manual-route"
+  }
+  list(fam = fam, route = route)
+}
+
+# Preference order when several polity periods cover the same years.
+.polity_type_rank <- function(type) {
+  rank <- c(
+    national = 1,
+    colonial = 2,
+    territory = 3,
+    "city-territory" = 3,
+    disputed = 4,
+    aggregate = 5,
+    statistical = 6
+  )
+  out <- unname(rank[type])
+  out[is.na(out)] <- 7
+  out
 }
 
 # -- 4. Match each area's observed span to polity periods ----------------------
@@ -239,10 +271,6 @@ match_area <- function(row) {
     ))
   }
 
-  national <- fam[fam$polity_type == "national", ]
-  if (nrow(national) > 0L) {
-    fam <- national
-  }
   fam <- fam |>
     filter(start_year <= span1, end_year >= span0) |>
     arrange(start_year)
@@ -262,45 +290,137 @@ match_area <- function(row) {
     ))
   }
 
-  pieces <- fam |>
-    mutate(
-      year_start = pmax(start_year, span0),
-      year_end = pmin(end_year, span1)
-    )
-  # Adjacent WHEP periods share their boundary year (ESP-1800-2025 style
-  # spans); a shared endpoint is not an ambiguity. Real overlaps are.
-  overlapping <- nrow(pieces) > 1L &&
-    any(pieces$year_start[-1L] < pieces$year_end[-nrow(pieces)])
-  covered_years <- unique(unlist(
-    Map(seq.int, pieces$year_start, pieces$year_end)
-  ))
-  uncovered <- setdiff(seq.int(span0, span1), covered_years)
-  gap_note <- if (length(uncovered) > 0L) {
+  pieces <- .match_span(fam, span0, span1)
+  uncovered <- pieces |> filter(is.na(target_polity_code))
+  gap_note <- if (nrow(uncovered) > 0L) {
     sprintf(
       "no covering polity period for observed years %s",
-      .format_year_ranges(uncovered)
+      .format_year_ranges(unlist(
+        Map(seq.int, uncovered$year_start, uncovered$year_end)
+      ))
     )
   } else {
     NA_character_
   }
 
   pieces |>
+    filter(!is.na(target_polity_code)) |>
     transmute(
       area_code = row$area_code,
       area_name = row$area_name,
       iso3 = row$iso3,
       year_start,
       year_end,
-      target_polity_code = polity_code,
-      common_name = polity_name,
+      target_polity_code,
+      common_name,
       match_route = res$route,
-      match_status = if_else(overlapping, "ambiguous", "matched"),
+      match_status,
       note = if_else(
-        overlapping,
+        match_status == "ambiguous",
         "overlapping polity periods for this span",
         gap_note
       )
     )
+}
+
+# Split [span0, span1] at every period boundary; per segment pick the
+# covering period, preferring national > colonial > territory. Several
+# best-ranked candidates from the SAME polity prefix mean blanket +
+# periodized modelling of one chain: the most specific (shortest) period
+# wins. Candidates from DIFFERENT prefixes are genuinely simultaneous
+# entities (e.g. Malaya vs Sarawak vs North Borneo for FAOSTAT "Malaysia"
+# 1961-1963): all are emitted as ambiguous, never silently picked.
+# Uncovered segments come back with NA target so the caller can flag them.
+.match_span <- function(fam, span0, span1) {
+  bounds <- sort(unique(c(
+    span0,
+    span1 + 1L,
+    pmax(fam$start_year, span0),
+    pmin(fam$end_year, span1) + 1L
+  )))
+  segments <- tibble(
+    seg_start = bounds[-length(bounds)],
+    seg_end = bounds[-1L] - 1L
+  ) |>
+    filter(seg_start <= seg_end)
+
+  pieces <- segments |>
+    pmap(function(seg_start, seg_end) {
+      covering <- fam |>
+        filter(start_year <= seg_start, end_year >= seg_end)
+      if (nrow(covering) == 0L) {
+        return(tibble(
+          year_start = seg_start,
+          year_end = seg_end,
+          target_polity_code = NA_character_,
+          common_name = NA_character_,
+          match_status = "uncovered"
+        ))
+      }
+      best <- covering |>
+        filter(
+          .polity_type_rank(polity_type) ==
+            min(.polity_type_rank(covering$polity_type))
+        )
+      prefixes <- unique(sub("-.*", "", best$polity_code))
+      if (length(prefixes) > 1L && seg_start == seg_end) {
+        # Adjacent WHEP periods share their transition year (predecessor
+        # ends the year the successor starts). Mirror the pre-1961 rules
+        # ("SDN < 2011 -> SUD"): the shared boundary year routes to the
+        # successor. Only applies when every candidate either starts or
+        # ends exactly on this year — anything else is real ambiguity.
+        starters <- best |> filter(start_year == seg_start)
+        enders <- best |> filter(end_year == seg_end, start_year < seg_start)
+        if (nrow(starters) > 0L && nrow(starters) + nrow(enders) == nrow(best)) {
+          best <- starters
+          prefixes <- unique(sub("-.*", "", best$polity_code))
+        }
+      }
+      if (length(prefixes) == 1L) {
+        best <- best |>
+          arrange(end_year - start_year) |>
+          slice(1L)
+      }
+      best |>
+        transmute(
+          year_start = seg_start,
+          year_end = seg_end,
+          target_polity_code = polity_code,
+          common_name = polity_name,
+          match_status = if_else(
+            length(prefixes) == 1L,
+            "matched",
+            "ambiguous"
+          )
+        )
+    }) |>
+    bind_rows()
+
+  # Merge runs of adjacent segments resolved to the same polity (a blanket
+  # period can win several consecutive segments). Ambiguous rows are kept
+  # as-is: one row per candidate.
+  resolved <- pieces |>
+    filter(match_status != "ambiguous") |>
+    arrange(year_start) |>
+    mutate(
+      run_key = coalesce(target_polity_code, "<uncovered>"),
+      run = cumsum(coalesce(
+        run_key != lag(run_key) | year_start != lag(year_end) + 1L,
+        TRUE
+      ))
+    ) |>
+    summarise(
+      year_start = min(year_start),
+      year_end = max(year_end),
+      target_polity_code = target_polity_code[1L],
+      common_name = common_name[1L],
+      match_status = match_status[1L],
+      .by = run
+    ) |>
+    select(-run)
+
+  bind_rows(resolved, filter(pieces, match_status == "ambiguous")) |>
+    arrange(year_start)
 }
 
 .format_year_ranges <- function(years) {
@@ -411,14 +531,17 @@ message("Wrote state files under ", state_dir)
 # -- 6. Merge into applied_aliases.csv (idempotent) ----------------------------
 
 if (apply_aliases) {
-  # The alias file is curated by hand and by agents; a few historical rows
-  # are malformed (extra/short columns) and the python matcher reads them
-  # leniently. Never rewrite existing lines — append only.
-  applied_keys <- suppressWarnings(read_csv(
-    applied_path,
-    col_types = cols(.default = col_character())
-  )) |>
-    select(original_name, source, year_start, year_end)
+  # source = "faostat" rows are wholly machine-generated by this pipeline,
+  # so the merge is replace-by-source: drop every existing faostat row and
+  # append the fresh set. Rows from other sources are kept byte-identical
+  # (a few historical hand-appended rows are malformed and must never be
+  # re-serialised through a CSV parser).
+  existing_lines <- readLines(applied_path, encoding = "UTF-8", warn = FALSE)
+  kept <- existing_lines[
+    !grepl(",faostat,", existing_lines, fixed = TRUE, useBytes = TRUE)
+  ]
+  dropped <- length(existing_lines) - length(kept)
+
   canonical <- aliases |>
     select(
       original_name,
@@ -431,43 +554,19 @@ if (apply_aliases) {
       basis,
       rows
     )
-  new_rows <- canonical |>
-    mutate(
-      year_start_chr = as.character(year_start),
-      year_end_chr = as.character(year_end)
-    ) |>
-    anti_join(
-      applied_keys,
-      by = c(
-        "original_name",
-        "source",
-        "year_start_chr" = "year_start",
-        "year_end_chr" = "year_end"
-      )
-    ) |>
-    select(-year_start_chr, -year_end_chr)
-  if (nrow(new_rows) > 0L) {
-    existing <- readBin(
-      applied_path,
-      what = "raw",
-      n = file.size(applied_path)
-    )
-    needs_newline <- length(existing) > 0L &&
-      existing[length(existing)] != as.raw(10L)
-    lines <- format_csv(new_rows)
-    lines <- sub("^[^\n]*\n", "", lines, useBytes = TRUE) # drop header
-    # Byte-level append: keeps existing lines untouched and sidesteps any
-    # locale translation of non-ASCII area names (e.g. Türkiye).
-    con <- file(applied_path, open = "ab")
-    if (needs_newline) {
-      writeBin(charToRaw("\n"), con)
-    }
-    writeBin(charToRaw(enc2utf8(lines)), con)
-    close(con)
-  }
+  new_lines <- format_csv(canonical)
+  new_lines <- sub("^[^\n]*\n", "", new_lines, useBytes = TRUE) # drop header
+
+  con <- file(applied_path, open = "wb")
+  writeBin(charToRaw(enc2utf8(paste0(
+    paste(kept, collapse = "\n"),
+    "\n",
+    new_lines
+  ))), con)
+  close(con)
   message(
-    "Appended ", nrow(new_rows), " new rows to ", applied_path,
-    " (", nrow(canonical) - nrow(new_rows), " already present)"
+    "Replaced ", dropped, " faostat rows with ", nrow(canonical),
+    " in ", applied_path
   )
 } else {
   message("--no-apply: skipped merge into ", applied_path)
