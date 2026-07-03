@@ -14,7 +14,7 @@ ANG-1800-1890,Angola (to 1890),1800,1890,national,ANG,NA,Africa,draft,2026-04-15
 ANG-1890-1891,Angola (1890-1891),1890,1891,national,ANG,NA,Africa,draft,2026-04-13,cshapes-2.0,540,1886,assigned,,,ANG-1891-1905
 ANG-1891-1905,Angola (1891-1905),1891,1905,national,ANG,NA,Africa,draft,2026-04-13,cshapes-2.0,540,1890,assigned,,ANG-1890-1891,AGO-1816-2025
 ANG-1905-1975,Angola (1905-1975),1905,1975,national,ANG,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,
-ANT-1816-1960,Dutch Caribbean (colonial),1816,1960,colonial,ANT,,North America,draft,2026-06-26,gadm-4.1,ANT-1816-1960,2024,assigned,960,,ANT-1961-2010
+ANT-1816-1960,Dutch Caribbean (colonial),1816,1960,colonial,ANT,,North America,draft,2026-06-26,reporting-areas,ANT-1961-2010,,proxy,960,,ANT-1961-2010
 ANT-1961-2010,Netherlands Antilles,1961,2010,aggregate,ANT,,North America,draft,2026-06-11,reporting-areas,ANT-1961-2010,,derived,,,
 AOF-1895-1960,French West Africa (AOF),1895,1960,national,AOF,430,Africa,draft,2026-06-23,constructed,AOF-1895-1960,1938,assigned,4774865,,SEN-1960-2025; GIN-1958-2025; CIV-1960-2025; BEN-1960-2025; NER-1960-2025; BFA-1960-2025; MLI-1960-2025; MRT-1960-1975
 AOI-1936-1941,Italian East Africa (1936-1941),1936,1941,aggregate,AOI,NA,Africa,draft,2026-06-29,constructed,,,missing,1700000,,
@@ -44,7 +44,7 @@ BCM-1916-1961,British Cameroons,1916,1961,colonial,CMR,472,Africa,draft,2026-06-
 BDI-1922-1962,Burundi (within Ruanda-Urundi),1922,1962,subnational,BDI,NA,Africa,draft,2026-07-02,cshapes-2.0,516,1962,assigned,27308,,BDI-1962-2025
 BDI-1962-2025,Burundi,1962,2025,national,BDI,516,Africa,draft,2026-04-12,cshapes-2.0,516,1962,assigned,,BDK-1800-1890; RWB-1922-1962,
 BDK-1800-1890,Kingdom of Burundi,1800,1890,national,NA,NA,Africa,draft,2026-04-12,paine-2024,Burundi,,assigned,,,TAN-1891-1920; BDI-1962-2025
-BEC-1885-1966,Bechuanaland Protectorate (1885-1966),1885,1966,national,BEC,NA,Africa,draft,2026-04-13,none,,,missing,,,BWA-1966-2025
+BEC-1885-1966,Bechuanaland Protectorate (1885-1966),1885,1966,national,BEC,NA,Africa,draft,2026-04-13,cshapes-2.0,571,1938,assigned,,,BWA-1966-2025
 BEL-1831-2025,Belgium,1831,2025,national,BEL,211,Europe,draft,2026-04-12,cshapes-2.0,211,1886,assigned,,NLD-1800-1830,
 BEN-1895-1898,Benin (1895-1898),1895,1898,national,BEN,434,Africa,draft,2026-04-13,cshapes-2.0,434,1895,assigned,,DHY-1800-1894,BEN-1898-1960
 BEN-1898-1960,Benin (1898-1960),1898,1960,national,BEN,434,Africa,draft,2026-04-12,cshapes-2.0,434,1898,assigned,,BEN-1895-1898,BEN-1960-2025
@@ -206,8 +206,8 @@ EGYSUD-1934-1956,Egypt and Anglo-Egyptian Sudan,1934,1956,national,EGY,,Africa,d
 ERI-1885-1889,"Eritrea (Italian coastal, 1885-1889)",1885,1889,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1886,assigned,,,ERI-1889-1952
 ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",1889,1952,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1900,assigned,,ERI-1885-1889,ERI-1993-2025
 ERI-1993-2025,Eritrea,1993,2025,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1993,assigned,,ERI-1889-1952; ETH-1952-1993,
-ESH-1958-1975,Western Sahara (1958-1975),1958,1975,national,ESH,NA,Africa,draft,2026-04-13,none,,,missing,,SWA-1912-1958,ESH-1975-2025
-ESH-1975-2025,Western Sahara,1975,2025,national,ESH,NA,Africa,draft,2026-04-13,none,,,missing,,ESH-1958-1975,
+ESH-1958-1975,Western Sahara (1958-1975),1958,1975,national,ESH,NA,Africa,draft,2026-04-13,gadm-4.1-adm0,ESH,,proxy,,SWA-1912-1958,ESH-1975-2025
+ESH-1975-2025,Western Sahara,1975,2025,national,ESH,NA,Africa,draft,2026-04-13,gadm-4.1-adm0,ESH,,assigned,,ESH-1958-1975,
 ESP-1800-2025,Spain,1800,2025,national,ESP,230,Europe,draft,2026-04-12,cshapes-2.0,230,1886,assigned,,,
 EST-1800-1918,Estonia (Governorate),1800,1918,national,EST,366,Europe,draft,2026-04-16,cshapes-2.0,366,1918,assigned,,,EST-1918-1940
 EST-1918-1940,Estonia (interwar republic),1918,1940,national,EST,366,Europe,draft,2026-04-17,cshapes-2.0,366,1918,assigned,49295,EST-1800-1918,EST-1940-1991
@@ -538,7 +538,7 @@ PER-1909-1922,Peru (1909-1922),1909,1922,national,PER,135,South America,reviewed
 PER-1922-1942,Peru (1922-1942),1922,1942,national,PER,135,South America,draft,2026-04-12,cshapes-2.0,135,1922,assigned,,PER-1909-1922,PER-1942-2025
 PER-1942-2025,Peru,1942,2025,national,PER,135,South America,reviewed,2026-04-12,cshapes-2.0,135,1942,assigned,,PER-1922-1942,
 PHL-1800-2025,Philippines,1800,2025,national,PHL,840,Asia,draft,2026-04-13,cshapes-2.0,840,1898,assigned,,,
-PLW-1991-2025,Palau,1991,2025,national,PLW,986,Oceania,draft,2026-04-13,none,,,missing,,,
+PLW-1991-2025,Palau,1991,2025,national,PLW,986,Oceania,draft,2026-04-13,gadm-4.1-adm0,PLW,,assigned,,,
 PNG-1949-1975,Territory of Papua and New Guinea,1949,1975,national,PNG,NA,Oceania,draft,2026-04-16,cshapes-2.0,910,1949,assigned,,TPAP-1906-1949; TNGU-1920-1949,PNG-1975-2025
 PNG-1975-2025,Papua New Guinea,1975,2025,national,PNG,910,Oceania,draft,2026-04-12,cshapes-2.0,910,1975,assigned,,,
 PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Porto Novo,,assigned,,,BEN-1960-2025; BEN-1898-1960
@@ -609,7 +609,7 @@ SER-2006-2008,Serbia (2006-2008),2006,2008,national,SER,NA,Europe,draft,2026-04-
 SGP-1946-1963,Singapore (Crown Colony),1946,1963,colonial,SGP,830,Asia,draft,2026-06-25,cshapes-2.0,830,1953,assigned,544.72,GBM-1895-1946,MYS-1963-1965; SGP-1965-2025
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,subnational,SGP,NA,Asia,draft,2026-07-02,cshapes-2.0,830,1962,assigned,547,SGP-1946-1963,SGP-1965-2025
 SGP-1965-2025,Singapore,1965,2025,national,SGP,830,Asia,draft,2026-04-12,cshapes-2.0,830,1965,assigned,,,
-SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,colonial,SHN,,Africa,draft,2026-06-26,gadm-4.1,SHN.2_1,2024,proxy,123,,
+SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,colonial,SHN,,Africa,draft,2026-06-26,gadm-4.1-adm1,SHN.2_1,2024,proxy,123,,
 SLB-1800-2025,Solomon Islands,1800,2025,national,SLB,940,Oceania,draft,2026-06-09,gadm-4.1-adm0,SLB,,proxy,,,
 SLE-1800-1886,Sierra Leone,1800,1886,national,SLE,451,Africa,draft,2026-04-13,cshapes-2.0,451,1895,assigned,,,SLE-1886-1889
 SLE-1886-1889,Sierra Leone (1886-1889),1886,1889,national,SLE,451,Africa,draft,2026-04-13,cshapes-2.0,451,1886,assigned,,SLE-1800-1886,SLE-1889-1961
@@ -634,9 +634,9 @@ STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,NA,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
 SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,NA,Africa,draft,2026-04-16,cshapes-2.0,625,1914,assigned,,SUD-1899-1934,SUD-1956-2011
 SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SUD,NA,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
-SUR-1886-1954,Dutch Guiana,1886,1954,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,55,1886,assigned,144985,,SUR-1954-1975
-SUR-1954-1975,Surinam (Autonomous),1954,1975,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,56,1954,assigned,144985,SUR-1886-1954,SUR-1975-2025
-SUR-1975-2025,Suriname,1975,2025,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,57,1975,assigned,144985,SUR-1954-1975,
+SUR-1886-1954,Dutch Guiana,1886,1954,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1886,assigned,144985,,SUR-1954-1975
+SUR-1954-1975,Surinam (Autonomous),1954,1975,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1954,assigned,144985,SUR-1886-1954,SUR-1975-2025
+SUR-1975-2025,Suriname,1975,2025,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1975,assigned,144985,SUR-1954-1975,
 SVK-1993-2025,Slovakia,1993,2025,national,SVK,317,Europe,reviewed,2026-04-12,cshapes-2.0,317,1993,assigned,,F51-1947-1993,
 SVN-1992-2025,Slovenia,1992,2025,national,SVN,349,Europe,reviewed,2026-04-12,cshapes-2.0,349,1992,assigned,,F248-1991-1992,
 SWA-1884-1912,Spanish West Africa (to 1912),1884,1912,national,SWA,NA,Africa,draft,2026-04-13,cshapes-2.0,610,1886,assigned,,,SWA-1912-1958
