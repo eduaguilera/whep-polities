@@ -167,7 +167,32 @@ aggregates <- inventory |>
       grepl("excluding intra-trade", area_name, fixed = TRUE)
   )
 inventory <- inventory |>
-  anti_join(aggregates, by = "area_code")
+  anti_join(aggregates, by = "area_code") |>
+  mutate(has_data = TRUE)
+
+# Registry completeness: WHEP's PROCESSED production imputes rows for
+# reporting areas that carry no data in the RAW pins (micro-states like
+# Andorra, dependent territories). The alias table must map those too, or a
+# straight swap in WHEP's crosswalk would drop their polity. Add every
+# crosswalk area we did NOT observe and that isn't an aggregate, excluding
+# the 900+ WHEP-internal codes (999 RoW, 901-906 "X Other") which are
+# FABIO-collapse TARGETS, not raw FAOSTAT reporting areas.
+registry <- crosswalk_env$polity_area_crosswalk |>
+  as_tibble() |>
+  filter(!is.na(area_code), area_code < 900L) |>
+  distinct(area_code, area_name, iso3 = area_iso3c)
+nodata <- registry |>
+  anti_join(inventory, by = "area_code") |>
+  anti_join(aggregates, by = "area_code") |>
+  mutate(
+    year_first = NA_integer_,
+    year_last = NA_integer_,
+    n_rows = 0L,
+    pins = "(no data in scanned pins)",
+    has_data = FALSE
+  )
+inventory <- bind_rows(inventory, nodata)
+message("  + ", nrow(nodata), " no-data registry areas for completeness")
 
 # -- 3. Polity families --------------------------------------------------------
 
@@ -251,10 +276,19 @@ family_for <- function(area_code, iso3) {
 # -- 4. Match each area's observed span to polity periods ----------------------
 
 match_area <- function(row) {
-  span0 <- max(row$year_first, faostat_era_start)
-  span1 <- row$year_last
   res <- family_for(row$area_code, row$iso3)
   fam <- res$fam
+
+  # No-data registry areas: no observed span to split. Emit the family's
+  # periods so WHEP can map the area at any year; if there is no family it
+  # is a genuine non-country (Antarctica, "Unspecified", uninhabited isle)
+  # and stays unmapped WITHOUT becoming an actionable finding.
+  if (!isTRUE(row$has_data)) {
+    return(.match_registry(row, fam, res$route))
+  }
+
+  span0 <- max(row$year_first, faostat_era_start)
+  span1 <- row$year_last
 
   if (nrow(fam) == 0L) {
     return(tibble(
@@ -321,6 +355,47 @@ match_area <- function(row) {
         gap_note
       )
     )
+}
+
+# No-data registry area -> one alias row per family period (best type rank),
+# clamped to WHEP's [1850, 2025] range. No observed data, so never a
+# coverage gap or ambiguity finding; areas with no family are marked
+# 'registry_unmapped' (informational, not an actionable finding).
+.match_registry <- function(row, fam, route) {
+  base <- tibble(
+    area_code = row$area_code,
+    area_name = row$area_name,
+    iso3 = row$iso3
+  )
+  if (nrow(fam) == 0L) {
+    return(base |>
+      mutate(
+        year_start = 1850L,
+        year_end = 2025L,
+        target_polity_code = NA_character_,
+        common_name = NA_character_,
+        match_route = "registry",
+        match_status = "registry_unmapped",
+        note = "registry area with no polity family (non-country/aggregate)"
+      ))
+  }
+  fam |>
+    filter(
+      .polity_type_rank(polity_type) == min(.polity_type_rank(fam$polity_type))
+    ) |>
+    transmute(
+      area_code = row$area_code,
+      area_name = row$area_name,
+      iso3 = row$iso3,
+      year_start = pmax(start_year, 1850L),
+      year_end = pmin(end_year, 2025L),
+      target_polity_code = polity_code,
+      common_name = polity_name,
+      match_route = "registry",
+      match_status = "matched",
+      note = NA_character_
+    ) |>
+    filter(year_start <= year_end)
 }
 
 # Split [span0, span1] at every period boundary; per segment pick the
@@ -504,12 +579,17 @@ alias_base <- matches |>
   mutate(
     source = "faostat",
     confidence = "high",
-    basis = sprintf(
-      paste0(
-        "FAOSTAT area code %d; observed %d-%d in pins %s; %s period match%s"
+    basis = if_else(
+      match_route == "registry",
+      sprintf(
+        "FAOSTAT area code %d; no data in scanned pins; registry map to %s (%d-%d)",
+        area_code, target_polity_code, year_start, year_end
       ),
-      area_code, year_start, year_end, pins, match_route,
-      if_else(is.na(note), "", paste0("; ", note))
+      sprintf(
+        "FAOSTAT area code %d; observed %d-%d in pins %s; %s period match%s",
+        area_code, year_start, year_end, pins, match_route,
+        if_else(is.na(note), "", paste0("; ", note))
+      )
     )
   ) |>
   select(
@@ -535,13 +615,22 @@ gaps <- aliases |>
   filter(!is.na(note), match_route != "manual-span") |>
   distinct(area_code, .keep_all = TRUE)
 
+# Data-bearing areas with no polity family are ACTIONABLE (create a polity);
+# no-data registry areas with no family are genuine non-countries and only
+# informational.
 unmatched <- matches |>
-  filter(is.na(target_polity_code)) |>
+  filter(is.na(target_polity_code), match_status == "unmatched") |>
   select(area_code, area_name, iso3, year_start, year_end, note, n_rows, pins)
+registry_unmapped <- matches |>
+  filter(match_status == "registry_unmapped") |>
+  select(area_code, area_name, iso3, note) |>
+  arrange(area_code)
 
+registry_matched <- aliases |> filter(match_route == "registry")
 write_csv(select(aliases, -note), file.path(state_dir, "faostat_aliases.csv"))
 write_csv(ambiguous, file.path(state_dir, "ambiguous.csv"))
 write_csv(unmatched, file.path(state_dir, "unmatched.csv"))
+write_csv(registry_unmapped, file.path(state_dir, "registry_unmapped.csv"))
 write_csv(aggregates, file.path(state_dir, "aggregates.csv"))
 
 .report_lines <- function(df, fmt_fn) {
@@ -553,12 +642,17 @@ report <- c(
   "",
   sprintf(
     "- Observed reporting areas (1961+): %d (+%d statistical aggregates, intentionally unrouted)",
-    nrow(inventory), nrow(aggregates)
+    sum(inventory$has_data), nrow(aggregates)
   ),
-  sprintf("- Alias rows emitted: %d", nrow(aliases)),
+  sprintf(
+    "- No-data registry areas (for WHEP crosswalk completeness): %d matched, %d unmapped non-countries",
+    n_distinct(registry_matched$area_code), nrow(registry_unmapped)
+  ),
+  sprintf("- Alias rows emitted: %d (of which %d registry/no-data)",
+    nrow(aliases), nrow(registry_matched)),
   sprintf("- Areas with coverage gaps (early years without a polity period): %d", nrow(gaps)),
   sprintf("- Ambiguous areas (overlapping polity periods, not applied): %d", n_distinct(ambiguous$area_code)),
-  sprintf("- Unmatched areas: %d", nrow(unmatched)),
+  sprintf("- Data-bearing unmatched areas: %d", nrow(unmatched)),
   "",
   "## Coverage gaps (autoimprove queue)",
   "",
@@ -574,11 +668,17 @@ report <- c(
     df$target_polity_code
   )),
   "",
-  "## Unmatched areas (autoimprove queue)",
+  "## Data-bearing unmatched areas (autoimprove queue)",
   "",
   .report_lines(unmatched, \(df) sprintf(
     "- %s (%d) %d-%d: %s [%d rows]",
     df$area_name, df$area_code, df$year_start, df$year_end, df$note, df$n_rows
+  )),
+  "",
+  "## No-data registry areas with no polity family (informational, not a finding)",
+  "",
+  .report_lines(registry_unmapped, \(df) sprintf(
+    "- %s (%d): %s", df$area_name, df$area_code, df$note
   ))
 )
 writeLines(report, file.path(state_dir, "report.md"))

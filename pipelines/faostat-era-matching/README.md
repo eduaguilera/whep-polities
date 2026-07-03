@@ -34,6 +34,22 @@ Requires an accessible WHEP checkout (pins cache + area registry); set
    `(area_code, area_name, first_year, last_year, n_rows)`. This — not a
    registry listing — is the completeness target: every code that reports
    data must resolve to a polity.
+1b. **No-data registry areas.** WHEP's *processed* production imputes rows
+   for reporting areas that carry no data in the raw pins (micro-states like
+   Andorra, dependent territories). To keep the alias table complete enough
+   for WHEP's crosswalk (a swap that dropped them would silently un-map
+   them), every crosswalk area below code 900 that was not observed and is
+   not an aggregate is added as a no-data area, matched by iso3 family over
+   its polity periods (route `registry`, `rows = 0`). No observed data means
+   these never produce a coverage-gap or ambiguity finding; a no-data area
+   with no polity family at all is a genuine non-country (Antarctica,
+   "Unspecified", uninhabited isles, and dependencies the polities DB has
+   not yet modelled — Aruba, Gibraltar, Cayman, …) and is written to
+   `state/registry_unmapped.csv` as informational, NOT an actionable finding.
+   Note: the current WHEP crosswalk folds these into `ROW-1850-2023` via
+   `fabio_code == 999`; keeping per-country identity here and deferring the
+   RoW collapse is the whep issue #120 intent — the FABIO collapse still
+   happens downstream from `fabio_code`, orthogonally to this polity map.
 2. **ISO3 attribution.** Takes each area's ISO3 from the WHEP area registry
    (`polity_area_crosswalk`); this is FAOSTAT registry metadata, not a
    polity decision.
