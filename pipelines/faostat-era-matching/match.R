@@ -226,11 +226,16 @@ polities <- polities |>
 # (SUD), and pre-independence chains carry their own prefixes (Portuguese
 # Angola ANG, Bechuanaland BEC, French Somaliland FRS). The manual prefix
 # EXTENDS the ISO3 family, so post-independence periods still match.
+# French overseas départements (GUF, REU) have polity chains whose rows
+# carry iso3_code = NA in the built DB, so an iso3 match misses them; route
+# by prefix explicitly.
 manual_prefix <- c(
   "7" = "ANG", # Angola (Portuguese, to 1975)
   "20" = "BEC", # Botswana (Bechuanaland Protectorate, to 1966)
   "51" = "F51", # Czechoslovakia
+  "69" = "GUF", # French Guiana (iso3 NA on GUF polity rows)
   "72" = "FRS", # Djibouti (French Somaliland chain)
+  "182" = "REU", # Réunion (iso3 NA on REU polity rows)
   "206" = "SUD", # Sudan (former)
   "228" = "F228", # USSR
   "248" = "F248" # Yugoslav SFR
