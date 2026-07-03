@@ -5,7 +5,7 @@ export const meta = {
     { title: 'Audit',     detail: 'one agent per unresolved unit: verdict correct, or emit a typed issue report', model: 'sonnet' },
     { title: 'Reconcile', detail: 'dedupe/merge issue reports into harmonized issues', model: 'sonnet' },
     { title: 'Fix',       detail: 'one agent per harmonized issue (worktree-isolated): wiki-first change-set', model: 'sonnet' },
-    { title: 'Integrate', detail: 'serial: apply each change-set, one commit per issue', model: 'sonnet' },
+    { title: 'Integrate', detail: 'serial: apply each change-set, one commit per issue; then regenerate FAOSTAT routing if any fix was FAOSTAT-origin', model: 'sonnet' },
     { title: 'Verify',    detail: 're-run the matcher; confirm which fixes actually resolved', model: 'sonnet' },
     { title: 'Cleanup',   detail: 'ledger: mark only VERIFIED-resolved fixed; others stay open for retry', model: 'sonnet' },
   ],
@@ -25,6 +25,12 @@ export const meta = {
 //     re-audits the deferred issues on the next run (wasted tokens); only `correct`
 //     verdicts get banked in the ledger. A clean chunk is ~ max_audit 50 / max_issues 35,
 //     repeated (each run's audit set shrinks as the ledger marks units resolved).
+//   * FAOSTAT-era findings (origin 'faostat', from pipelines/faostat-era-matching
+//     via 01's Stage 1b) are audited alongside Layer-B ones. They are fixed by a
+//     NEW POLITY (wiki+CSV) or a match.R route (manual_prefix / manual_span_routes),
+//     NEVER by an applied_aliases.csv row. Integrate re-runs faostat-era-matching/
+//     match.R to regenerate routing, so Verify needs the WHEP pins cache (WHEP_REPO)
+//     to confirm FAOSTAT fixes; without pins those fixes stay open for the next run.
 // NOTE: the Workflow runtime delivers `args` as a JSON STRING, not an object — parse it.
 const A = (typeof args === 'string') ? JSON.parse(args) : (args || {})
 const repo          = A.repo || '/home/usuario/whep-polities'
@@ -37,6 +43,12 @@ const max_issues    = Number(A.max_issues) || 40
 const max_audit     = Number(A.max_audit) || (n_findings + n_flags)  // bound per-run audit; default = all remaining
 const M = { model: 'sonnet', effort: 'medium' }
 
+// How to fix a FAOSTAT-era finding (origin 'faostat'). These are area-code
+// driven: pipelines/faostat-era-matching/match.R regenerates every
+// source=faostat row in applied_aliases.csv (replace-by-source) and ignores
+// hand-added aliases, so NEVER fix one by appending an alias_row.
+const FAOSTAT_FIX = `FAOSTAT-era fix rules (origin 'faostat'): do NOT emit alias_row and do NOT touch applied_aliases.csv — match.R regenerates all source=faostat rows and would wipe it. Fix it one of two ways: (missing_polity) add the polity wiki page + CSV row as usual — match.R's iso3-family lookup routes the area automatically; (faostat_route) emit match_r_patch: either a manual_prefix entry "<area_code>" = "<POLITY_PREFIX>" (when an existing polity chain under a different prefix should own the area, e.g. 7->ANG) OR a manual_span_routes row (area_code, year_start, year_end, target_polity_code, route_basis) to disambiguate OVERLAPPING polity periods, with route_basis grounded in DATA MAGNITUDES (e.g. a production step-change at accession), added to pipelines/faostat-era-matching/match.R.`
+
 const RULES = `WHEP rules: wiki is the SOURCE OF TRUTH (polity changes go wiki->DB->polygon). Aggregate polygons (undivided Germany, Japanese Empire, full USSR) are FIRST-CLASS and kept; fix territory by routing data to the polity whose polygon fits / adding a granular polity, NEVER by editing an aggregate. Settle territorial scope from data magnitudes + spatial-containment evidence, not convention. A polygon represents ONLY its vintage year: NEVER assume a polity's territory was identical in other years of its span. If borders changed within the span (annexations/cessions — e.g. Cape Colony expanded through the 1800s), recommend SPLITTING the polity at the border-change years (each period its own polygon), or, if no polygon is available, DOCUMENT the approximation on the wiki page (direction + rough magnitude). A polygon_vintage_drift flag means data is matched far from the polygon's vintage — treat as a real extent question, not 'correct'. CRITICAL: a SUB-TERRITORY's data must NOT be matched UP to its parent empire/aggregate polity. E.g. 'czech republic'/Bohemia 1910 is a CROWNLAND of Austria-Hungary (~80k km2), NOT the whole empire (~600k km2) — mapping it to the AUH polity overstates ~7x; likewise Slovakia/Croatia/Galicia are NOT all of Austria-Hungary, and Finland/Poland/Baltics are NOT all of the Russian Empire. Match each label to the polity whose territory EQUALS what the data measures; the magnitudes are the tell (a crownland's production is a small fraction of the empire total). If no polity matches that sub-territory, it is a coverage_gap -> create the granular polity (e.g. 'Czech Lands within Austria-Hungary'), do NOT fold it into the empire. When CREATING a polity, source its polygon by PRIORITY: exact historical GIS (CShapes/Cliopatria/CHGIS/Paine/GHGIS) > composed union > period proxy > modern/constructed estimate (LAST resort, flagged "ESTIMATE"); record polygon_source/method/confidence; prefer polygon_status=unassigned with a reason over a silent modern-borders guess. Also emit a routing alias (label->code, year-ranged) into applied_aliases.csv so name-only data routes. Data extending BEFORE a country's earliest WHEP polity (e.g. 'italy' pre-1861, 'australia' pre-1901) is either a date-extension of an existing polity or a missing PREDECESSOR polity (Kingdom of Sardinia, Australian colonies) — decide per the data's territory.`
 
 const ISSUE = { type:'object', additionalProperties:false, required:['verdict','unit_key','unit_kind'],
@@ -44,7 +56,8 @@ const ISSUE = { type:'object', additionalProperties:false, required:['verdict','
     unit_key:{type:'string', description:'the audited unit identifier: polity_code (territorial flag) or data label (finding)'},
     unit_kind:{type:'string', enum:['polity','match']},
     issue:{ type:'object', additionalProperties:false,
-      properties:{ issue_id:{type:'string'}, type:{type:'string', enum:['rematch_alias','polity_dates','polity_extent_polygon','missing_polity','double_count','data_error']},
+      properties:{ issue_id:{type:'string'}, type:{type:'string', enum:['rematch_alias','faostat_route','polity_dates','polity_extent_polygon','missing_polity','double_count','data_error']},
+        origin:{type:'string', enum:['faostat','layerb'], description:'faostat if the audited finding came from faostat-era-matching (its sources==["faostat"] or note starts "faostat-era-matching:"), else layerb'},
         subject_polity:{type:'string'}, subject_label:{type:'string'}, period:{type:'string'},
         description:{type:'string'}, proposed_fix:{type:'string'}, confidence:{type:'string', enum:['high','medium','low']} } } } }
 const HARM = { type:'object', additionalProperties:false, required:['harmonized'],
@@ -54,9 +67,10 @@ const CHANGESET = { type:'object', additionalProperties:false, required:['issue_
     wiki_path:{type:'string'}, wiki_content:{type:'string'},
     csv_row:{type:'string', description:'a full polities_database.csv row to add, or empty'},
     csv_edit:{type:'string', description:'description of an edit to an existing row, or empty'},
-    alias_row:{type:'object', additionalProperties:false, description:'for rematch_alias: append to state/applied_aliases.csv (the file the 01 matcher reads)',
+    alias_row:{type:'object', additionalProperties:false, description:'for rematch_alias (LAYER-B only): append to state/applied_aliases.csv (the file the 01 matcher reads). NEVER for faostat-origin issues.',
       properties:{ original_name:{type:'string'}, common_name:{type:'string'}, target_polity_code:{type:'string'} } },
     match_rule_patch:{type:'string', description:'OPTIONAL: equivalent rule for the legacy pre1961-matching/match.R, or empty'},
+    match_r_patch:{type:'string', description:'for faostat_route: the manual_prefix entry or manual_span_routes row to add to pipelines/faostat-era-matching/match.R, or empty'},
     polygon_decision:{type:'string'}, commit_message:{type:'string'} } }
 
 // ---------- Audit ----------
@@ -67,6 +81,8 @@ const auditOne = (src, i) => {
     `Audit one WHEP review unit. ${RULES}\nRead the JSON array at ${src} and take element index ${i}. ` +
     `Read ${polities_csv} as needed. Decide: is this data->polity match (and the polity's territory for the period) CORRECT? ` +
     `Set unit_key = the polity_code (territorial flag) or the data label (finding), and unit_kind accordingly. ` +
+    `Set issue.origin = "faostat" when the finding came from faostat-era-matching (its sources array is ["faostat"], or its note starts with "faostat-era-matching:"), else "layerb". ` +
+    `For a FAOSTAT finding choose issue.type = "missing_polity" when no polity covers the area at all, or "faostat_route" when the note says overlapping/ambiguous polity periods (it needs a match.R route, not an alias). ` +
     `If correct -> verdict "correct". If not -> verdict "issue" with a typed issue report (issue_id = stable kebab of subject+type, choose type, describe, propose a fix). Use the evidence fields when present: staple_magnitudes and contained_with_concurrent_data (the primary, data-grounded evidence), plus source_notes as a HINT ONLY — the source's own footnotes (e.g. "trade with japanese korea" / "1937 vs 1945 boundaries") can be OCR-garbled, mis-matched to the wrong row, or mis-attributed, so use them to corroborate or raise questions, NEVER decide on a footnote alone; weigh them against the data magnitudes and your own reasoning.`,
     { ...M, label:`audit:${src.includes('flagged')?'terr':'find'}:${i}`, phase:'Audit', schema:ISSUE })
 }
@@ -97,7 +113,8 @@ let harmonized = [...groups.values()].map(grp => {
   const tc = {}; for (const g of grp) tc[g.type] = (tc[g.type]||0)+1
   const type = Object.entries(tc).sort((a,b)=>b[1]-a[1])[0][0]
   const a = grp[0]
-  return { issue_id:a.issue_id, type, subject_polity:a.subject_polity, subject_label:a.subject_label,
+  const origin = grp.map(g=>g.origin).find(o=>o==='faostat') || 'layerb'
+  return { issue_id:a.issue_id, type, origin, subject_polity:a.subject_polity, subject_label:a.subject_label,
            period:a.period, confidence:a.confidence,
            description: grp.map(g=>g.description).filter(Boolean).join(" | ").slice(0,1500),
            proposed_fix: grp.map(g=>g.proposed_fix).filter(Boolean).join(" | ").slice(0,800),
@@ -109,11 +126,16 @@ log(`Reconcile (deterministic): ${issues.length} issues -> ${harmonized.length} 
 phase('Fix')
 const changesets = (await parallel(harmonized.map(h => () => {
   if (budget.total && budget.remaining() < 30_000) return null
+  const isFaostat = h.origin === 'faostat'
   return agent(
-    `You are fixing ONE WHEP issue, wiki-first. ${RULES}\nIssue: ${JSON.stringify(h)}\n` +
+    `You are fixing ONE WHEP issue, wiki-first. ${RULES}\n` +
+    (isFaostat ? `THIS IS A FAOSTAT-ERA ISSUE. ${FAOSTAT_FIX}\n` : ``) +
+    `Issue: ${JSON.stringify(h)}\n` +
     `Research the entity, then produce a CHANGE-SET (do NOT commit, do NOT run git): ` +
-    `for rematch_alias, emit alias_row {original_name (the verbatim data label), common_name, target_polity_code} — this is appended to state/applied_aliases.csv, the file the 01 matcher actually reads (optionally also match_rule_patch for the legacy match.R); ` +
-    `for a polity change (dates/extent/missing), the wiki page content (wiki/polities/<code>.md per the repo's Territorial-extent requirements) + the CSV row/edit + polygon_decision; ` +
+    (isFaostat
+      ? `for faostat_route, emit match_r_patch (manual_prefix or manual_span_routes entry) — NOT alias_row; for missing_polity, the wiki page content (wiki/polities/<code>.md per the repo's Territorial-extent requirements) + the CSV row + polygon_decision (match.R will route the area via its iso3 family). `
+      : `for rematch_alias, emit alias_row {original_name (the verbatim data label), common_name, target_polity_code} — this is appended to state/applied_aliases.csv, the file the 01 matcher actually reads (optionally also match_rule_patch for the legacy match.R); ` +
+        `for a polity change (dates/extent/missing), the wiki page content (wiki/polities/<code>.md per the repo's Territorial-extent requirements) + the CSV row/edit + polygon_decision; `) +
     `for data_error, summary only. Provide a one-line commit_message.`,
     { ...M, label:`fix:${h.issue_id}`, phase:'Fix', isolation:'worktree', schema:CHANGESET })
 }))).filter(Boolean)
@@ -125,9 +147,22 @@ const applied = []
 for (const cs of changesets) {
   const res = await agent(
     `Apply ONE change-set to ${repo} and commit it, then STOP. ${RULES}\nChange-set: ${JSON.stringify(cs)}\n` +
-    `Steps: (1) if alias_row present, append it to pipelines/polity-autoimprove/state/applied_aliases.csv (create with header 'original_name,common_name,target_polity_code,confidence,rows' if missing); (2) write wiki_content to wiki_path if present; (3) apply csv_row/csv_edit to data/final/polities_database.csv; (4) apply match_rule_patch to pre1961-matching/match.R only if present; (5) git add the touched files and 'git commit -m "<commit_message>"' (end the message with the repo's required Co-Authored-By + Claude-Session trailers). Do NOT push. Report the commit hash and files changed. Leave no untracked stray files.`,
+    `Steps: (1) if alias_row present, append it to pipelines/polity-autoimprove/state/applied_aliases.csv (create with header 'original_name,common_name,target_polity_code,confidence,rows' if missing) — but NEVER for a faostat-origin change-set; (2) write wiki_content to wiki_path if present; (3) apply csv_row/csv_edit to data/final/polities_database.csv; (4) apply match_rule_patch to pre1961-matching/match.R only if present; (4b) if match_r_patch present, apply it to pipelines/faostat-era-matching/match.R by adding the entry to the manual_prefix vector or the manual_span_routes tribble (do not append to applied_aliases.csv — match.R regenerates those); (5) git add the touched files and 'git commit -m "<commit_message>"' (end the message with the repo's required Co-Authored-By + Claude-Session trailers). Do NOT push. Report the commit hash and files changed. Leave no untracked stray files.`,
     { ...M, effort:'low', label:`integrate:${cs.issue_id}`, phase:'Integrate' })
   applied.push({ issue_id: cs.issue_id, result: res })
+}
+
+// If any fix was FAOSTAT-origin (new polity or a match.R route), regenerate
+// the area-code -> polity routing so Verify sees the effect. The FAOSTAT
+// matcher is replace-by-source, so hand-edits to applied_aliases.csv don't
+// apply — routing MUST be re-derived by re-running match.R.
+const faostatTouched = harmonized.some(h => h.origin === 'faostat')
+if (faostatTouched) {
+  await agent(
+    `Regenerate FAOSTAT-era routing after polity/route fixes, then commit. Run: cd ${repo} && Rscript --vanilla pipelines/faostat-era-matching/match.R ` +
+    `(it needs a WHEP checkout's pins cache via WHEP_REPO; if it errors because pins are unavailable in this environment, report that plainly and STOP without failing the run). ` +
+    `If it succeeds and left pipelines/polity-autoimprove/state/applied_aliases.csv or pipelines/faostat-era-matching/state/* modified, git add those files and commit with message "faostat-era-matching: regenerate routing after polity/route fixes" (end with the repo's required Co-Authored-By + Claude-Session trailers). Do NOT push. Report what changed.`,
+    { ...M, effort:'low', label:'integrate:faostat-regen', phase:'Integrate' })
 }
 
 // ---------- Verify: re-run the matcher and see which fixes actually resolved ----------

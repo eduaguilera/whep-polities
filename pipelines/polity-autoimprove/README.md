@@ -97,6 +97,26 @@ matched, the agent should skip it next run"* — and it self-heals when inputs c
       run_report.md; ensure working tree is clean for next run.
 ```
 
+### FAOSTAT-era findings (origin `faostat`)
+
+Stage 0 (`01_match_and_findings.py`, Stage 1b) also ingests the residual
+queue of [`pipelines/faostat-era-matching`](../faostat-era-matching/README.md)
+— the FAOSTAT (1961+) reporting universe matched by numeric area code — into
+`findings.json`, tagged `sources: ["faostat"]`. These are audited and fixed by
+the same loop, with two FAOSTAT-specific rules the workflow enforces:
+
+- **Never fix a FAOSTAT finding with an `applied_aliases.csv` row.** That file's
+  `source=faostat` rows are regenerated (replace-by-source) by
+  `faostat-era-matching/match.R`, which routes by area code and ignores
+  hand-added aliases. Fix instead with a **new polity** (wiki + CSV — `match.R`'s
+  iso3-family lookup then routes the area) or a **`match.R` route**
+  (`manual_prefix` for a different-prefix chain, `manual_span_routes` for
+  overlapping periods, grounded in data magnitudes).
+- **Integrate re-runs `match.R`** whenever a FAOSTAT-origin fix was applied, so
+  the regenerated routing (and `findings.json` via Stage 1b) reflects it before
+  Verify checks resolution. This needs the WHEP pins cache (`WHEP_REPO`); without
+  it, FAOSTAT fixes stay open for the next run rather than being falsely banked.
+
 ### Why change-sets + a serial integrator (not parallel commits)
 
 Fix agents run concurrently, but `polities_database.csv` is a **single shared
