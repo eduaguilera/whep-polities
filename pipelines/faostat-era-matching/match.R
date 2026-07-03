@@ -220,31 +220,45 @@ if (nrow(malformed_polities) > 0L) {
 polities <- polities |>
   filter(!wiki_status %in% c("retired", "superseded"))
 
-# FAOSTAT reporting areas whose polity chain is not (only) their ISO3
-# family: dissolved-state reporting areas route to WHEP composite polities,
-# "Sudan (former)" (206, iso3 SDN) reports the pre-2011 undivided Sudan
-# (SUD), and pre-independence chains carry their own prefixes (Portuguese
-# Angola ANG, Bechuanaland BEC, French Somaliland FRS). The manual prefix
-# EXTENDS the ISO3 family, so post-independence periods still match.
-# French overseas départements (GUF, REU) have polity chains whose rows
-# carry iso3_code = NA in the built DB, so an iso3 match misses them; route
-# by prefix explicitly.
+# EXTEND routes: the manual prefix is added ON TOP of the ISO3 family, so
+# post-independence periods still match via iso3. Pre-independence colonial
+# chains (Portuguese Angola ANG, Bechuanaland BEC, French Somaliland FRS) and
+# French overseas départements (GUF/REU, whose polity rows carry iso3_code=NA
+# so an iso3 match alone misses them) sit here.
 manual_prefix <- c(
-  "7" = "ANG", # Angola (Portuguese, to 1975)
-  "20" = "BEC", # Botswana (Bechuanaland Protectorate, to 1966)
-  "51" = "F51", # Czechoslovakia
+  "7" = "ANG", # Angola (Portuguese, to 1975) + modern AGO via iso3
+  "20" = "BEC", # Botswana (Bechuanaland Protectorate) + modern BWA via iso3
   "69" = "GUF", # French Guiana (iso3 NA on GUF polity rows)
-  "72" = "FRS", # Djibouti (French Somaliland chain)
-  "182" = "REU", # Réunion (iso3 NA on REU polity rows)
-  "206" = "SUD", # Sudan (former)
-  "228" = "F228", # USSR
-  "248" = "F248" # Yugoslav SFR
+  "72" = "FRS", # Djibouti (French Somaliland chain) + modern DJI via iso3
+  "182" = "REU" # Réunion (iso3 NA on REU polity rows)
+)
+
+# REPLACE routes: a FORMER-entity reporting code whose successor(s) report
+# under their OWN code. Its data ALWAYS represents the former polity's
+# territory, so the ISO3 family is REPLACED (not extended) — otherwise a
+# successor whose iso3 the former code happens to carry leaks into the
+# candidate set. Critical for 206 "Sudan (former)", whose crosswalk iso3 is
+# SDN (the rump successor): without this, undivided-Sudan data at the shared
+# 2011 boundary year is mis-assigned to rump SDN (a ~25%-smaller territory,
+# dropping South Sudan's share) and collides with area 276. The dissolved
+# states (51/228/248) map to their WHEP composite F-polities the same way.
+manual_prefix_replace <- c(
+  "51" = "F51", # Czechoslovakia (successors CZE 167 / SVK 199)
+  "206" = "SUD", # undivided Sudan (rump Sudan reports under 276)
+  "228" = "F228", # USSR (successor republics have own codes)
+  "248" = "F248" # Yugoslav SFR (successor republics have own codes)
 )
 
 polity_prefix <- sub("-.*", "", polities$polity_code)
 
 family_for <- function(area_code, iso3) {
   key <- as.character(area_code)
+  if (key %in% names(manual_prefix_replace)) {
+    return(list(
+      fam = polities[polity_prefix == manual_prefix_replace[[key]], ],
+      route = "manual-replace"
+    ))
+  }
   fam <- polities[0, ]
   route <- "no-family"
   if (!is.na(iso3) && iso3 %in% polities$iso3_code) {

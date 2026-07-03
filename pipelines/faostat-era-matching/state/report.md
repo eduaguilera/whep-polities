@@ -2,7 +2,7 @@
 
 - Observed reporting areas (1961+): 212 (+75 statistical aggregates, intentionally unrouted)
 - No-data registry areas (for WHEP crosswalk completeness): 16 matched, 30 unmapped non-countries
-- Alias rows emitted: 282 (of which 18 registry/no-data)
+- Alias rows emitted: 281 (of which 18 registry/no-data)
 - Areas with coverage gaps (early years without a polity period): 0
 - Ambiguous areas (overlapping polity periods, not applied): 0
 - Data-bearing unmatched areas: 0
