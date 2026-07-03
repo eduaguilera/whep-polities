@@ -25,7 +25,7 @@ ARG-1899-1902,Argentina (1899-1902),1899,1902,national,ARG,160,South America,dra
 ARG-1902-2025,Argentina,1902,2025,national,ARG,160,South America,draft,2026-07-01,cshapes-2.0,160,1902,assigned,,ARG-1899-1902,
 ARM-1991-2025,Armenia,1991,2025,national,ARM,371,Asia,reviewed,2026-04-12,cshapes-2.0,371,1991,assigned,,F228-1945-1991,
 ASH-1800-1896,Ashanti Empire,1800,1896,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Asante,,assigned,,,GHA-1898-1956
-ASM-1900-2025,Territory of American Samoa,1900,2025,colonial,ASM,NA,Oceania,draft,2026-06-26,gadm-4.1,ASM,2023,assigned,199,,
+ASM-1900-2025,Territory of American Samoa,1900,2025,colonial,ASM,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,ASM,2023,assigned,199,,
 ATG-1800-2025,Antigua and Barbuda,1800,2025,national,ATG,58,North America,draft,2026-06-09,gadm-4.1-adm0,ATG,,proxy,,,
 AUH-1800-1859,Austrian Empire (to 1859),1800,1859,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austrian Empire,1820,assigned,,,AUH-1859-1866
 AUH-1859-1866,Austrian Empire (1859-1866),1859,1866,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austrian Empire,1860,assigned,,AUH-1800-1859,AUH-1866-1908
@@ -157,7 +157,7 @@ CPV-1886-1975,Cape Verde (Portuguese colony),1886,1975,colonial,CPV,402,Africa,d
 CPV-1975-2025,Cabo Verde,1975,2025,national,CPV,402,Africa,draft,2026-06-26,cshapes-2.0,402,1886,assigned,4033,CPV-1886-1975,
 CRI-1800-2025,Costa Rica,1800,2025,national,CRI,94,North America,draft,2026-04-12,cshapes-2.0,94,1886,assigned,,,
 CUB-1800-2025,Cuba,1800,2025,national,CUB,40,North America,draft,2026-04-12,cshapes-2.0,40,1902,assigned,,,
-CXR-1946-1958,Christmas Island (under Singapore administration),1946,1958,colonial,CXR,NA,Asia,draft,2026-07-01,gadm-4.1,CXR,2023,assigned,139.7,GBM-1895-1946,
+CXR-1946-1958,Christmas Island (under Singapore administration),1946,1958,colonial,CXR,NA,Asia,draft,2026-07-01,gadm-4.1-adm0,CXR,2023,assigned,139.7,GBM-1895-1946,
 CYP-1879-2025,Cyprus,1879,2025,national,CYP,352,Asia,draft,2026-04-12,cshapes-2.0,352,1960,assigned,,,
 CYR-1949-1951,Emirate of Cyrenaica,1949,1951,national,LBY,620,Africa,draft,2026-06-25,,,,unassigned,,LBY-1943-1949,LBY-1951-2025
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,national,CZE,,Europe,draft,2026-06-24,constructed,CZE-1804-1918,1860,assigned,79349,AUH-1800-1859,F51-1918-1938
@@ -239,7 +239,7 @@ F248-1920-1947,Yugoslavia (1920-1947),1920,1947,national,NA,345,Europe,draft,202
 F248-1920-1991,Yugoslavia (1920-1991),1920,1991,national,NA,345,Europe,retired,2026-04-12,cshapes-2.0,345,1920,assigned,,F248-1919-1920; F248-1918-1919,MKD-1991-2025; F248-1991-1992
 F248-1947-1991,Yugoslavia (1947-1991),1947,1991,national,NA,345,Europe,draft,2026-07-01,cshapes-2.0,345,1920,estimate,~255000,F248-1920-1947,MKD-1991-2025; F248-1991-1992
 F248-1991-1992,Yugoslavia (1991-1992),1991,1992,national,NA,345,Europe,draft,2026-04-12,cshapes-2.0,345,1991,assigned,,F248-1920-1991,SVN-1992-2025; HRV-1992-2025; BIH-1992-2025; SCG-1992-2006; MKD-1991-2025
-F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),1918,1990,aggregate,YEM,NA,Asia,draft,2026-07-02,cshapes-2.0,679,1990,estimate,425263,,YEM-1990-2025
+F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),1918,1990,aggregate,YEM,NA,Asia,draft,2026-07-02,cshapes-2.0,678,1990,estimate,425263,,YEM-1990-2025
 F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,national,NA,315,Europe,draft,2026-04-12,cshapes-2.0,315,1918,assigned,,AUH-1908-1918,F51-1938-1945
 F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,national,NA,315,Europe,draft,2026-04-12,cshapes-2.0,315,1938,assigned,,F51-1918-1938,F51-1945-1947
 F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,national,NA,315,Europe,draft,2026-04-12,cshapes-2.0,315,1945,assigned,,F51-1938-1945,F51-1947-1993
@@ -307,8 +307,8 @@ GRL-1800-2025,Greenland,1800,2025,national,GRL,NA,North America,draft,2026-04-13
 GTM-1821-2025,Guatemala,1821,2025,national,GTM,90,North America,draft,2026-04-12,cshapes-2.0,90,1886,assigned,,,
 GUF-1816-1946,French Guiana (Colony),1816,1946,,,,South America,,2026-06-26,cshapes-2.0,120,1886,assigned,83711,,GUF-1946-2025
 GUF-1946-2025,French Guiana (Overseas Department),1946,2025,,,,South America,,2026-06-26,cshapes-2.0,120,1946,assigned,83711,GUF-1816-1946,
-GUM-1898-1950,Territory of Guam,1898,1950,colonial,GUM,NA,Oceania,draft,2026-06-26,gadm-4.1,GUM,2023,assigned,550,,GUM-1950-2025
-GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,NA,Oceania,draft,2026-06-26,gadm-4.1,GUM,2023,assigned,550,GUM-1898-1950,
+GUM-1898-1950,Territory of Guam,1898,1950,colonial,GUM,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,GUM,2023,assigned,550,,GUM-1950-2025
+GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,GUM,2023,assigned,550,GUM-1898-1950,
 GUY-1800-2025,Guyana,1800,2025,national,GUY,110,South America,draft,2026-04-13,cshapes-2.0,110,1886,assigned,,,
 HATAY-1938-1939,Sanjak of Alexandretta / Hatay State,1938,1939,colonial,TUR,,Asia,draft,2026-06-25,,,,unassigned,,SYR-1922-1945,TUR-1920-2025
 HAWI-1898-1959,Territory of Hawaii,1898,1959,national,,4,Oceania,draft,2026-06-24,cshapes-2.0,4,1898,assigned,16686,,USA-1959-2025
@@ -494,7 +494,7 @@ NER-1911-1922,"Niger (Military Territory, 1911-1922)",1911,1922,national,NER,436
 NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft,2026-06-24,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1947-1960
 NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-04-16,cshapes-2.0,436,1947,assigned,1182017,NER-1922-1947,NER-1960-2025
 NER-1960-2025,Niger,1960,2025,national,NER,436,Africa,draft,2026-04-13,cshapes-2.0,436,1960,assigned,,DMG-1800-1899,
-NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,territory,NFK,NA,Oceania,draft,2026-07-01,gadm-4.1,NFK,2023,assigned,35,,
+NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,territory,NFK,NA,Oceania,draft,2026-07-01,gadm-4.1-adm0,NFK,2023,assigned,35,,
 NFL-1907-1949,Dominion of Newfoundland,1907,1949,national,CAN,21,North America,draft,2026-06-25,cshapes-2.0,21,1920,assigned,398416,,CAN-1948-2025
 NGA-1886-1914,Colonial Nigeria,1886,1914,national,NGA,NA,Africa,draft,2026-04-16,cshapes-2.0,475,1914,assigned,,,NGA-1914-1960
 NGA-1914-1960,Nigeria (1914-1960),1914,1960,national,NGA,475,Africa,reviewed,2026-04-13,cshapes-2.0,475,1914,assigned,,NNI-1904-1913; SNI-1906-1913; BRG-1800-1897,NGA-1960-1961
@@ -626,7 +626,7 @@ SNW-1814-1905,"Sweden-Norway (Union, 1814-1905)",1814,1905,national,SNW,380,Euro
 SOK-1804-1903,Sokoto Caliphate,1804,1903,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Sokoto,,assigned,,GOB-1800-1808,NNI-1899-1904
 SOM-1960-2025,Somalia,1960,2025,national,SOM,520,Africa,draft,2026-04-13,cshapes-2.0,520,1960,assigned,,,
 SPM-1816-2025,Saint Pierre and Miquelon,1816,2025,colonial,SPM,,North America,draft,2026-07-02,gadm-4.1-adm0,SPM,2024,proxy,242,,
-SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,2026-07-02,cshapes-2.0,345,2007,assigned,87745,SCG-1992-2006,SRB-2008-2025
+SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,2026-07-02,cshapes-2.0,340,2007,assigned,87745,SCG-1992-2006,SRB-2008-2025
 SRB-2008-2025,Serbia,2008,2025,national,SRB,345,Europe,reviewed,2026-04-12,cshapes-2.0,340,2006,assigned,,SER-2006-2008,
 SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,national,ZWE,552,Africa,draft,2026-06-24,cshapes-2.0,552,1953,assigned,390610,ZWE-1900-1953,ZWE-1964-1980
 SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,cshapes-2.0,626,2011,assigned,,SUD-1956-2011,
