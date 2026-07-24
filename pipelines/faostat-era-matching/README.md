@@ -21,7 +21,20 @@ From the project root:
 ```bash
 Rscript --vanilla pipelines/faostat-era-matching/match.R           # match + merge
 Rscript --vanilla pipelines/faostat-era-matching/match.R --no-apply # match only
+Rscript --vanilla pipelines/faostat-era-matching/match.R --accept-diff # see below
 ```
+
+The merge into `applied_aliases.csv` is replace-by-source (every
+`source = "faostat"` row is regenerated), and it is **guarded**: if an existing
+faostat row would be dropped or re-targeted by the fresh run, the script aborts
+and lists the rows instead of silently wiping them. That state means either
+
+- a **hand-edit** in the CSV — never do that; encode the decision as a
+  `manual_prefix` / `manual_prefix_replace` / `manual_span_routes` entry in
+  `match.R` — or
+- an **intentional `match.R` route change** — re-run with `--accept-diff`
+  (or `WHEP_FAOSTAT_ACCEPT_DIFF=1`) to accept the listed diff once. Steady-state
+  re-runs (only new rows, or no changes) never need the flag.
 
 Requires an accessible WHEP checkout (pins cache + area registry); set
 `WHEP_REPO` (default `/home/usuario/WHEP`). R packages: `dplyr`, `readr`,
