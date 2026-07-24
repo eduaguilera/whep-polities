@@ -7,7 +7,7 @@ AFG-1919-2025,Afghanistan,1919,2025,national,AFG,700,Asia,draft,2026-04-12,cshap
 AGO-1816-2025,Angola,1816,2025,national,AGO,540,Africa,retired,2026-04-12,cshapes-2.0,540,1905,assigned,,ANG-1891-1905; KSJ-1800-1911,
 AGO-1975-2025,"Angola (independent, 1975–2025)",1975,2025,national,AGO,540,Africa,draft,2026-07-01,cshapes-2.0,540,1975,assigned,1246700,ANG-1905-1975,
 ALB-1913-2025,Albania (1913-2025),1913,2025,national,ALB,400,Europe,draft,2026-04-12,cshapes-2.0,339,1913,assigned,,,
-ALK-1867-1959,Territory of Alaska,1867,1959,national,USA,,North America,draft,2026-06-26,gadm-level1,USA.2_1,2020,assigned,1518800,F228-1856-1905,USA-1959-2025
+ALK-1867-1959,Territory of Alaska,1867,1959,subnational,USA,,North America,draft,2026-06-26,gadm-level1,USA.2_1,2020,assigned,1518800,F228-1856-1905,USA-1959-2025
 AMI-1946-1953,Amami Islands (US-administered),1946,1953,colonial,NA,NA,Asia,draft,2026-06-25,,,,unassigned,,RYU-1937-1945,JPN-1952-2025
 AND-1800-2025,Andorra,1800,2025,national,AND,NA,Europe,reviewed,2026-04-12,cshapes-europe,232,1816,assigned,,,
 ANG-1800-1890,Angola (to 1890),1800,1890,national,ANG,NA,Africa,draft,2026-04-15,cshapes-2.0,540,1886,assigned,,,ANG-1890-1891

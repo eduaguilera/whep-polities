@@ -26,6 +26,28 @@ Kinds:
 
 ---
 
+## alk-reclassify-subnational
+**Date:** 2026-07-24
+**Touched:** ALK-1867-1959
+**Source:** none
+**Kind:** decision
+
+Reclassified `ALK-1867-1959` (Territory of Alaska) from `type: national` to
+`type: subnational`. Alaska 1867-1959 was a non-contiguous US territory
+(customs/military district, then organized territory from the 1884/1912
+Organic Acts), never an independent polity — the same class as the FAO-1952
+island-group units (e.g. `IDN-BLB-1949-1951`). The page was created to absorb
+a narrow FAO(1952) "Alaska" reporting row and was typed `national` by mistake.
+
+The mistype had a real routing consequence: sharing `iso3: USA`, the same span
+as `USA-1867-1959`, and `national` rank, it shadowed the mainland-USA polity in
+the matcher's family re-pick and absorbed ~7,600 layer-B rows of mainland US
+data (caught by assertion verification; the matcher-side bug is fixed in
+`matchlib.py`, this reclassification removes the remaining tie in
+`pick_by_year`'s national-first ordering).
+
+Signed off by: Catalin Covaci.
+
 ## polygon-area-km2-frontmatter-normalization
 **Date:** 2026-07-24
 **Touched:** F248-1920-1947, F248-1947-1991, SAC-1935-1947, SER-1918-1945, AMI-1946-1953, CYR-1949-1951, ITAEG-1912-1947
