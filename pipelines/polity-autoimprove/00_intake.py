@@ -151,8 +151,15 @@ for (label, src, code), grp in mm.groupby(["label", "source", "code"]):
             "polygon_status": pm.get("polygon_status"),
             "wiki": f"wiki/polities/{str(code).lower()}.md"},
     }
+    # hash covers the DATA evidence *and* the family structure the verdict was
+    # judged against (candidate period + the label's other segments): adding or
+    # re-dating a polity in the family changes the hash and REOPENS the banked
+    # verdict — essential for "best_available" confirms that deferred to the
+    # absence of a better-fitting polity
     ev["evidence_hash"] = _hash([ev["candidate"], ev["rows"], ev["years_observed"],
-                                 ev["items_sample"], ev["staple_magnitudes"]])
+                                 ev["items_sample"], ev["staple_magnitudes"],
+                                 ev["candidate_meta"]["period"] if ev["candidate_meta"] else None,
+                                 sorted(ev["neighbor_segments"].items())])
     # ledger: full assertion key first, then legacy bare-label key
     row = banked.get(key.lower()) or banked.get(norm(label))
     if row is not None and (row.get("evidence_hash") or "").strip() == ev["evidence_hash"]:

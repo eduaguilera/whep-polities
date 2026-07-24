@@ -21,6 +21,7 @@ export const meta = {
 const A = (typeof args === 'string') ? JSON.parse(args) : (args || {})
 const repo = A.repo || '/home/usuario/whep-polities'
 const keys = Array.isArray(A.keys) ? A.keys : []
+const reviewSample = Number(A.review_sample) || 5   // spot-review every Nth confident confirm; 1 = review everything
 const ASSERTIONS = `${repo}/pipelines/polity-autoimprove/state/assertions.json`
 const POLDB = `${repo}/data/final/polities_database.csv`
 const M = { model: 'sonnet', effort: 'medium' }
@@ -31,45 +32,71 @@ const VERDICT = { type:'object', additionalProperties:false,
   required:['key','verdict','confidence','basis'],
   properties:{
     key:{type:'string'},
-    verdict:{type:'string', enum:['confirm','reroute','new_polity','not_a_polity','uncertain']},
+    verdict:{type:'string', enum:['confirm','reroute','split_reroute','new_polity','not_a_polity','uncertain']},
     polity_code:{type:'string', description:'REQUIRED for confirm (echo candidate) and reroute (the different existing polity); empty otherwise'},
+    split_segments:{type:'array', description:'for split_reroute: the observed span tiled into sub-ranges, each routed to an EXISTING polity (use when the source\'s reporting basis is misaligned with our period splits, e.g. data on pre-war borders published for years our DB assigns to the post-war polity). Segments must cover the whole observed span, in order, without overlap.',
+      items:{type:'object', additionalProperties:false, required:['year_start','year_end','polity_code'],
+        properties:{ year_start:{type:'integer'}, year_end:{type:'integer'}, polity_code:{type:'string'} } } },
     new_polity_proposal:{type:'object', additionalProperties:false,
       properties:{ name:{type:'string'}, start_year:{type:'integer'}, end_year:{type:'integer'},
         iso3:{type:'string'}, territory_description:{type:'string'},
         predecessor:{type:'string'}, successor:{type:'string'} } },
     confidence:{type:'string', enum:['high','medium','low']},
+    confirm_kind:{type:'string', enum:['verified_equal','best_available'], description:'for confirm only: verified_equal = the reporting territory demonstrably equals the candidate\'s; best_available = the match is imperfect but no existing polity fits better (e.g. an occupation/transition span with no dedicated polity) — these are systematically revisited when the polity family changes'},
+    wiki_note:{type:'string', description:'anything your research established that the candidate\'s WIKI PAGE should record but does not: an answer to one of its open questions, a source reporting convention you verified, a quantified approximation. One or two sentences, empty string if nothing. This is how verification research accumulates instead of being discarded.'},
     basis:{type:'string', description:'one paragraph: what was checked, what decided it'},
     checks:{type:'array', items:{type:'string', enum:['scope','vintage','combined_reporting','split_basis','magnitude_continuity','wiki_territory','web_research']}} } }
 
-const REVIEW = { type:'object', additionalProperties:false, required:['key','agree','reason'],
-  properties:{ key:{type:'string'}, agree:{type:'boolean'},
-    own_verdict:{type:'string', enum:['confirm','reroute','new_polity','not_a_polity','uncertain']},
-    own_polity_code:{type:'string'}, reason:{type:'string'} } }
+// blind review: the reviewer NEVER sees the first verdict (anchoring would make
+// agreement meaningless) — it produces its own full VERDICT from the same
+// evidence, and the comparison is done in code below.
+const sameTarget = (a, b) => {
+  if (a.verdict !== b.verdict) return false
+  // confirm: both endorse the bundle's candidate by definition (polity_code may
+  // be an empty echo); reroute: the named targets must match exactly
+  if (a.verdict === 'reroute')
+    return (a.polity_code || '') === (b.polity_code || '')
+  if (a.verdict === 'split_reroute') {
+    const seg = v => JSON.stringify((v.split_segments || []).map(s => [s.year_start, s.year_end, s.polity_code]))
+    return seg(a) === seg(b)
+  }
+  return true   // new_polity / not_a_polity / uncertain: same verdict class suffices
+}
 
 if (keys.length === 0) {
   log('WARNING: no assertion keys passed — compute pending keys from state/assertions.json and pass args.keys; this run is a no-op.')
 }
 
 phase('Verify')
-const needsReview = v => v && (v.verdict !== 'confirm' || v.confidence === 'low')
+// review every non-confirm / low-confidence verdict, PLUS a deterministic 1-in-5
+// sample of confident confirms — a confident-wrong confirm is the failure mode
+// this pipeline fears most, and without sampling it would never be reviewed
+const needsReview = (v, i) => v && (v.verdict !== 'confirm' || v.confidence === 'low' || i % reviewSample === 0)
 const results = await pipeline(keys,
   key => agent(
     `${HISTORIAN}\nVerify ONE assertion. Read ${ASSERTIONS} and find the assertion object whose "key" equals ${JSON.stringify(key)} (use python3/jq to extract just that object — do not load the whole file into your context). ` +
     `Read the candidate's wiki page (candidate_meta.wiki, repo-relative under ${repo}) and, if useful, the polity family in ${POLDB}. ` +
-    `Decide: confirm (reporting territory = candidate's territory) | reroute (a DIFFERENT existing polity matches; give polity_code) | new_polity (no existing polity has this territory; give a proposal) | not_a_polity (aggregate/non-territorial label) | uncertain. ` +
-    `Echo the key verbatim. Ground the basis in the evidence bundle's magnitudes and the wiki territory.`,
+    `Decide: confirm (reporting territory = candidate's territory for the WHOLE observed span) | reroute (a DIFFERENT existing polity matches the whole span; give polity_code) | split_reroute (the span must be TILED across two or more existing polities — use when the source's reporting basis is misaligned with our period splits, e.g. it keeps publishing on pre-war borders for years our DB assigns to the post-war polity; give split_segments covering the whole observed span in order, no overlaps, each to an EXISTING polity code) | new_polity (no existing polity has this territory; give a proposal) | not_a_polity (aggregate/non-territorial label) | uncertain. ` +
+    `Echo the key verbatim. Ground the basis in the evidence bundle's magnitudes and the wiki territory. ` +
+    `For confirm, set confirm_kind: verified_equal (territory demonstrably equals) vs best_available (imperfect but nothing fits better). ` +
+    `Set wiki_note to anything you established that the candidate's wiki page should record but doesn't (answers to its open questions, verified source conventions, quantified approximations) — empty if nothing.`,
     { ...M, label:`verify:${key.slice(0,40)}`, phase:'Verify', schema:VERDICT }),
-  (v, key) => {
+  (v, key, i) => {
     if (!v) return null
-    if (!needsReview(v)) return { verdict: v, review: null, quarantined: false }
+    if (!needsReview(v, i)) return { verdict: v, review: null, quarantined: false }
+    // BLIND second verification: same evidence, zero knowledge of the first
+    // verdict. The verify prompt is deliberately worded differently so the two
+    // agents don't converge by prompt echo alone.
     return agent(
-      `${HISTORIAN}\nYou are an INDEPENDENT REVIEWER. Another agent verified an assertion and returned this verdict — your job is to try to REFUTE it. ` +
-      `Read ${ASSERTIONS} and extract the assertion whose "key" equals ${JSON.stringify(key)} (surgically — python3/jq). Re-derive your own conclusion from the evidence bundle, the wiki page, and (if needed) web research on the source's conventions. ` +
-      `Verdict under review: ${JSON.stringify(v)}. ` +
-      `Set agree=true ONLY if you independently reach the SAME verdict AND the same target (same polity_code, or materially the same new-polity territory). Default to agree=false when uncertain.`,
-      { ...M, label:`review:${key.slice(0,40)}`, phase:'Review', schema:REVIEW })
-      .then(r => ({ verdict: v, review: r,
-                    quarantined: !(r && r.agree === true) }))
+      `${HISTORIAN}\nIndependently verify ONE assertion (you are the second, blind verifier — decide from scratch). ` +
+      `Read ${ASSERTIONS} and extract ONLY the assertion object whose "key" equals ${JSON.stringify(key)} (python3/jq — do not load the whole file). ` +
+      `Study the candidate's wiki page (candidate_meta.wiki under ${repo}), the family in ${POLDB} if useful, and the web for the source's reporting conventions when in doubt. ` +
+      `Return your own verdict (same decision space: confirm/reroute/split_reroute/new_polity/not_a_polity/uncertain), echoing the key verbatim and citing the evidence that decided it.`,
+      { ...M, label:`review:${key.slice(0,40)}`, phase:'Review', schema:VERDICT })
+      .then(r => {
+        const agrees = r ? sameTarget(v, r) : false
+        return { verdict: v, review: r, review_agrees: agrees, quarantined: !agrees }
+      })
   })
 const verdicts = results.filter(Boolean)
 const nQ = verdicts.filter(x => x.quarantined).length

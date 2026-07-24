@@ -31,6 +31,8 @@ ALIASES = os.path.join(H, "applied_aliases.csv")
 IGNORED = os.path.join(H, "ignored_labels.csv")
 QUARANTINE = os.path.join(H, "quarantine.csv")
 PROPOSALS = os.path.join(H, "new_polity_proposals.json")
+ARCHIVE = os.path.join(H, "verdicts_applied.jsonl")     # append-only decision log
+WIKI_NOTES = os.path.join(H, "wiki_notes_queue.csv")    # research to fold into wiki pages
 TODAY = datetime.date.today().isoformat()
 LEDGER_FIELDS = ["unit_kind", "key", "status", "issue_id", "evidence_hash", "last_run", "last_commit"]
 
@@ -62,8 +64,8 @@ def append_dedup(path, fields, row):
     return True
 
 # ---------- apply ----------
-stats = {"confirm": 0, "reroute": 0, "not_a_polity": 0, "new_polity": 0,
-         "uncertain": 0, "quarantined": 0, "skipped_no_bundle": 0}
+stats = {"confirm": 0, "reroute": 0, "split_reroute": 0, "not_a_polity": 0,
+         "new_polity": 0, "uncertain": 0, "quarantined": 0, "skipped_no_bundle": 0}
 proposals = json.load(open(PROPOSALS)) if os.path.exists(PROPOSALS) else []
 prop_keys = {p["key"] for p in proposals}
 
@@ -92,6 +94,27 @@ for item in verdicts:
             quarantined = True
             reviewer = {**reviewer, "reason": (reviewer.get("reason") or "") +
                         " [contract: reroute target equals the candidate — should be confirm]"}
+    if v["verdict"] == "split_reroute":
+        segs = v.get("split_segments") or []
+        y0, y1 = (int(x) for x in b["years_observed"].split("-"))
+        bad = None
+        if len(segs) < 2:
+            bad = "needs >=2 segments (one segment is a plain reroute/confirm)"
+        elif any(s["polity_code"] not in valid_codes for s in segs):
+            bad = "segment target(s) not in polities DB: " + \
+                  ",".join(s["polity_code"] for s in segs if s["polity_code"] not in valid_codes)
+        else:
+            segs = sorted(segs, key=lambda s: s["year_start"])
+            if segs[0]["year_start"] != y0 or segs[-1]["year_end"] != y1:
+                bad = f"segments must tile the observed span {y0}-{y1}"
+            elif any(s["year_start"] > s["year_end"] for s in segs):
+                bad = "segment with year_start > year_end"
+            elif any(segs[i + 1]["year_start"] != segs[i]["year_end"] + 1 for i in range(len(segs) - 1)):
+                bad = "segments must be contiguous and non-overlapping"
+        if bad:
+            quarantined = True
+            reviewer = {**reviewer, "reason": (reviewer.get("reason") or "") +
+                        f" [contract: split_reroute {bad}]"}
     # faostat reroutes cannot be alias rows (replace-by-source would wipe them):
     # they need a match.R route -> send to quarantine with the pointer.
     if v["verdict"] == "reroute" and b["source"] == "faostat":
@@ -126,6 +149,22 @@ for item in verdicts:
              "rows": b["rows"]})
         bank(key, "fixed")   # no hash: next intake re-derives the assertion under
         stats["reroute"] += 1  # the new candidate and it verifies/banks fresh
+    elif v["verdict"] == "split_reroute":
+        # one year/source-scoped alias row per segment; year-scoped rules beat
+        # blanket ones in matchlib, so re-intake re-derives one assertion per
+        # segment, each verifying/banking independently
+        for s in sorted(v["split_segments"], key=lambda s: s["year_start"]):
+            append_dedup(ALIASES,
+                ["original_name", "source", "year_start", "year_end", "common_name",
+                 "target_polity_code", "confidence", "basis", "rows"],
+                {"original_name": b["label_raw"], "source": b["source"],
+                 "year_start": s["year_start"], "year_end": s["year_end"],
+                 "common_name": b["label_raw"].lower(),
+                 "target_polity_code": s["polity_code"], "confidence": v["confidence"],
+                 "basis": f"assertion-verification (split_reroute): {v['basis'][:280]}",
+                 "rows": ""})
+        bank(key, "fixed")
+        stats["split_reroute"] += 1
     elif v["verdict"] == "not_a_polity":
         append_dedup(IGNORED,
             ["label", "source", "reason", "decided_by", "date"],
@@ -148,6 +187,31 @@ with open(LEDGER, "w", newline="") as fh:
     w.writeheader(); w.writerows(ledger)
 if proposals:
     json.dump(proposals, open(PROPOSALS, "w"), indent=1)
+
+# archive every applied verdict (append-only; full basis + review survive here,
+# the ledger only holds the outcome) and queue wiki-worthy research
+# dedup on (key, basis) so re-running the same verdicts file is a no-op, but a
+# later RE-verification of a reopened assertion still archives its new verdict
+archived = set()
+if os.path.exists(ARCHIVE):
+    for l in open(ARCHIVE):
+        j = json.loads(l)["verdict"]; archived.add((j["key"], j.get("basis") or ""))
+with open(ARCHIVE, "a") as fh:
+    for item in verdicts:
+        j = item["verdict"]
+        if (j["key"], j.get("basis") or "") in archived: continue
+        fh.write(json.dumps({"applied": TODAY, **item}) + "\n")
+n_notes = 0
+for item in verdicts:
+    v = item["verdict"]; b = bundles.get(v["key"])
+    note = (v.get("wiki_note") or "").strip()
+    if note and b:
+        n_notes += append_dedup(WIKI_NOTES,
+            ["polity_code", "assertion_key", "note", "date"],
+            {"polity_code": b["candidate"], "assertion_key": v["key"],
+             "note": note, "date": TODAY})
+if n_notes:
+    print(f"wiki notes queued: {n_notes} -> {WIKI_NOTES} (fold into wiki pages, then clear)")
 print(f"applied {len(verdicts)} verdicts: " +
       ", ".join(f"{k}={n}" for k, n in stats.items() if n))
 print(f"ledger: {len(ledger)} rows; quarantine/proposals updated where applicable")
