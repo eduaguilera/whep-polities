@@ -76,6 +76,45 @@ matched, the agent should skip it next run"* — and it self-heals when inputs c
 
 ---
 
+## Assertion verification (source onboarding)
+
+The deterministic pass only ROUTES a label to a candidate polity (alias → iso →
+name + year containment); it cannot know whether the source's *reporting
+territory* under that label equals the polity's territory (union/empire scope,
+boundary vintage, combined reporting, wrong split basis). That judgment is done
+**once per assertion** — a distinct `(label, source, year_segment) → polity`
+claim — and banked. 190k layer-B rows collapse to ~1,040 assertions.
+
+```
+00_intake.py           any table (label+year[+iso+value+item]) -> deterministic
+                       pass (matchlib.py, shared with 01) -> state/assertions.json:
+                       one EVIDENCE BUNDLE per assertion (magnitudes, neighbor
+                       segments, candidate meta, evidence_hash, ledger status)
+verify_assertions      one economic-historian agent per pending assertion ->
+  .workflow.js         verdict {confirm|reroute|new_polity|not_a_polity|uncertain}
+                       + confidence + basis; independent REVIEWER re-derives every
+                       non-confirm / low-confidence verdict; disagreement -> quarantine.
+                       Writes state/verdicts_pending.json (nothing applied).
+apply_verdicts.py      deterministic execution with contract validation (reroute
+                       target must EXIST in the DB; confirm must echo the candidate;
+                       faostat reroutes -> quarantine, they need a match.R route):
+                       confirm -> ledger correct+hash · reroute -> year/source-scoped
+                       alias row + ledger fixed · not_a_polity -> ignored_labels.csv ·
+                       new_polity -> new_polity_proposals.json (feed new_polity
+                       .workflow.js) · uncertain/disagreement -> quarantine.csv
+```
+
+Onboarding a NEW dataset = run `00_intake.py` on it (`--source-tag mydata`),
+chunk the pending keys (~100/run) through the verify workflow, inspect
+`verdicts_pending.json`, run `apply_verdicts.py`. Re-runs cost nothing for
+banked assertions; an assertion reopens only when its evidence hash changes.
+
+The workflow needs `args.keys` (compute from assertions.json status
+pending/reopened); the agent verdicts are DECISIONS — apply_verdicts.py never
+re-derives them, it only validates executability and records them.
+
+---
+
 ## Pipeline stages
 
 ```
