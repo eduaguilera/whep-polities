@@ -92,15 +92,48 @@ for code,grp in mm.groupby("whep_code"):
 print(f"  + {len([f for f in flagged if any('vintage_drift' in r for r in f['flag_reasons'])])} polygon-vintage-drift flags")
 
 # ledger gating: drop polities a prior run already resolved (status correct/fixed)
-import csv as _csv
-LEDGER=os.path.join(H,"review_ledger.csv"); resolved=set()
+# — but ONLY while the flag evidence is unchanged: skip requires the ledger's
+# evidence_hash to match the hash of the polity's CURRENT flags; mismatch or
+# missing hash reopens the polity. Every flag carries its evidence_hash so the
+# Cleanup phase can copy it into review_ledger.csv when banking.
+import csv as _csv, hashlib as _hashlib
+LEDGER=os.path.join(H,"review_ledger.csv"); _banked={}
 if os.path.exists(LEDGER):
     for r in _csv.DictReader(open(LEDGER)):
         if (r.get("status") or "").strip() in ("correct","fixed") and r.get("key"):
-            resolved.add(r["key"].strip())
-_b=len(flagged); flagged=[f for f in flagged if f["polity_code"] not in resolved]
+            _banked[r["key"].strip()]=r
+def _fhash(fs):
+    ev=sorted((tuple(f.get("flag_reasons") or []), tuple(f.get("evidence") or [])) for f in fs)
+    return _hashlib.sha256(json.dumps(ev,sort_keys=True).encode()).hexdigest()[:16]
+# WHEP_LEDGER_BACKFILL=1: bootstrap mode — see 01_match_and_findings.py (same rule).
+_bootstrap=bool(os.environ.get("WHEP_LEDGER_BACKFILL"))
+_b=len(flagged); _byc={}
+for f in flagged: _byc.setdefault(f["polity_code"],[]).append(f)
+_keep=[]; _re=0; _bf=0
+for _code,_fs in _byc.items():
+    _h=_fhash(_fs)
+    for f in _fs: f["evidence_hash"]=_h                 # for ledger banking on resolve
+    _row=_banked.get(_code)
+    if _row is None: _keep.extend(_fs); continue
+    _old=(_row.get("evidence_hash") or "").strip()
+    if _old==_h: continue                               # banked + unchanged -> skip
+    if _bootstrap and not _old:
+        _row["evidence_hash"]=_h; _bf+=1; continue
+    _re+=1
+    for f in _fs: f["flag_reasons"]=list(f.get("flag_reasons") or [])+["reopened: flag evidence changed since banked (or banked without hash)"]
+    _keep.extend(_fs)
+flagged=_keep
+if _bf:
+    _rows=list(_csv.DictReader(open(LEDGER)))
+    for r in _rows:
+        b=_banked.get((r.get("key") or "").strip())
+        if b is not None and b.get("evidence_hash"): r["evidence_hash"]=b["evidence_hash"]
+    with open(LEDGER,"w",newline="") as _fh:
+        _w=_csv.DictWriter(_fh,fieldnames=list(_rows[0].keys())); _w.writeheader(); _w.writerows(_rows)
 print(f"flagged {len(flagged)} territorially-sensitive existing polities (magnitude-step + known)"
-      + (f"; ledger skipped {_b-len(flagged)}" if _b!=len(flagged) else ""))
+      + (f"; ledger skipped {_b-len(flagged)}" if _b!=len(flagged) else "")
+      + (f"; backfilled {_bf} evidence hashes (WHEP_LEDGER_BACKFILL)" if _bf else "")
+      + (f"; REOPENED {_re} polities (evidence changed or hash missing)" if _re else ""))
 
 STAPLES=["rice","wheat","maize","cattle","sugar"]
 def staples(code):

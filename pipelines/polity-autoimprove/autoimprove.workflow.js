@@ -55,6 +55,7 @@ const ISSUE = { type:'object', additionalProperties:false, required:['verdict','
   properties:{ verdict:{type:'string', enum:['correct','issue']},
     unit_key:{type:'string', description:'the audited unit identifier: polity_code (territorial flag) or data label (finding)'},
     unit_kind:{type:'string', enum:['polity','match']},
+    evidence_hash:{type:'string', description:'copy the audited unit\'s evidence_hash field VERBATIM (empty string if the unit has none) — the ledger uses it to skip the unit only while its evidence is unchanged'},
     issue:{ type:'object', additionalProperties:false,
       properties:{ issue_id:{type:'string'}, type:{type:'string', enum:['rematch_alias','faostat_route','polity_dates','polity_extent_polygon','missing_polity','double_count','data_error']},
         origin:{type:'string', enum:['faostat','layerb'], description:'faostat if the audited finding came from faostat-era-matching (its sources==["faostat"] or note starts "faostat-era-matching:"), else layerb'},
@@ -81,6 +82,7 @@ const auditOne = (src, i) => {
     `Audit one WHEP review unit. ${RULES}\nRead the JSON array at ${src} and take element index ${i}. ` +
     `Read ${polities_csv} as needed. Decide: is this data->polity match (and the polity's territory for the period) CORRECT? ` +
     `Set unit_key = the polity_code (territorial flag) or the data label (finding), and unit_kind accordingly. ` +
+    `Set evidence_hash = the unit's evidence_hash field copied verbatim (empty string if absent). ` +
     `Set issue.origin = "faostat" when the finding came from faostat-era-matching (its sources array is ["faostat"], or its note starts with "faostat-era-matching:"), else "layerb". ` +
     `For a FAOSTAT finding choose issue.type = "missing_polity" when no polity covers the area at all, or "faostat_route" when the note says overlapping/ambiguous polity periods (it needs a match.R route, not an alias). ` +
     `If correct -> verdict "correct". If not -> verdict "issue" with a typed issue report (issue_id = stable kebab of subject+type, choose type, describe, propose a fix). Use the evidence fields when present: staple_magnitudes and contained_with_concurrent_data (the primary, data-grounded evidence), plus source_notes as a HINT ONLY — the source's own footnotes (e.g. "trade with japanese korea" / "1937 vs 1945 boundaries") can be OCR-garbled, mis-matched to the wrong row, or mis-attributed, so use them to corroborate or raise questions, NEVER decide on a footnote alone; weigh them against the data magnitudes and your own reasoning.`,
@@ -97,7 +99,7 @@ if (auditCalls.length === 0) {
 }
 const audited = (await parallel(auditCalls)).filter(Boolean)
 const issues = audited.filter(a=>a.verdict==='issue' && a.issue).map(a=>a.issue)
-const correctUnits = audited.filter(a=>a.verdict==='correct').map(a=>({key:a.unit_key, kind:a.unit_kind}))
+const correctUnits = audited.filter(a=>a.verdict==='correct').map(a=>({key:a.unit_key, kind:a.unit_kind, evidence_hash:a.evidence_hash||''}))
 log(`Audit: ${audited.length}/${n_findings+n_flags} units audited, ${issues.length} issues, ${correctUnits.length} correct`)
 
 // ---------- Reconcile (DETERMINISTIC: group issues by subject — no agent) ----------
@@ -181,16 +183,21 @@ log(`Verify: ${harmonized.length - unresolved.size}/${harmonized.length} fixes c
 
 // ---------- Cleanup: ledger — fixed only the VERIFIED-resolved; others stay open for retry ----------
 phase('Cleanup')
+// 'correct' rows bank WITH the unit's evidence_hash (a banked row is skipped only
+// while its hash matches the unit's current evidence; empty hash = reopens if the
+// unit resurfaces). 'fixed' rows bank WITHOUT a hash on purpose: the finding should
+// be gone after the fix; if it ever resurfaces (data change / incomplete fix) the
+// missing hash reopens it for one re-audit, which re-banks it with a fresh hash.
 const ledgerRows = [
-  ...correctUnits.map(u => ({ unit_kind:u.kind, key:u.key, status:'correct' })),
+  ...correctUnits.map(u => ({ unit_kind:u.kind, key:u.key, status:'correct', evidence_hash:u.evidence_hash })),
   ...harmonized.map(h => ({ unit_kind: h.subject_label ? 'match':'polity', key: harmKey(h),
-                            status: unresolved.has(harmKey(h)) ? 'issue' : 'fixed' })),
+                            status: unresolved.has(harmKey(h)) ? 'issue' : 'fixed', evidence_hash:'' })),
 ]
 await agent(
   `Update the WHEP review ledger so resolved units are skipped on the next run. Append/merge these rows into ${repo}/pipelines/polity-autoimprove/state/review_ledger.csv ` +
-  `(header: unit_kind,key,status,issue_id,evidence_hash,last_run,last_commit; fill last_run with today's date). ` +
+  `(header: unit_kind,key,status,issue_id,evidence_hash,last_run,last_commit; fill last_run with today's date; fill evidence_hash EXACTLY as given in each row, including empty). ` +
   `Rows with status 'fixed' are confirmed resolved; status 'issue' means the fix did NOT resolve and should be retried next run (do not mark those correct/fixed). ` +
-  `Do NOT duplicate keys already present (update their status instead). Then commit ONLY review_ledger.csv with message "autoimprove: update review ledger". Rows:\n${JSON.stringify(ledgerRows).slice(0,60000)}`,
+  `Do NOT duplicate keys already present (update their status/evidence_hash instead). Then commit ONLY review_ledger.csv with message "autoimprove: update review ledger". Rows:\n${JSON.stringify(ledgerRows).slice(0,60000)}`,
   { ...M, label:'cleanup-ledger', phase:'Cleanup' })
 
 return {

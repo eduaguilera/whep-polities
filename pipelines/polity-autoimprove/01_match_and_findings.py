@@ -9,7 +9,7 @@ Stage 0  resolve+match   (trust prior ONLY if it's a real period polity_code; ba
 Stage 1  detect findings (D2 name_unresolved, D1 coverage_gap, D7 range_violation)
 Stage 2  triage+report    (rank; coverage% before/after; findings.json + report.md)
 """
-import pandas as pd, numpy as np, json, re, unicodedata, csv, os
+import pandas as pd, numpy as np, json, re, unicodedata, csv, os, hashlib
 from collections import defaultdict
 
 # --- config (repo-relative; external inputs overridable via env) ---
@@ -22,12 +22,14 @@ COMMON_NAMES = os.environ.get("WHEP_COMMON_NAMES",
     "/home/usuario/Nextcloud/WHEP_ERC 2025/Sources/datasets/unclassified_datasets/Other polities/data/whep-source/common_names.csv")
 os.makedirs(OUT, exist_ok=True)
 # ledger gating: never re-surface units a prior run already resolved (status correct/fixed)
+# — but ONLY while the unit's observable evidence is unchanged (see Stage 2:
+# evidence_hash mismatch or missing hash reopens the unit).
 LEDGER = os.path.join(OUT, "review_ledger.csv")
-resolved_keys = set()
+banked = {}      # lowercased key -> its ledger row (correct/fixed)
 if os.path.exists(LEDGER):
     for r in csv.DictReader(open(LEDGER)):
         if (r.get("status") or "").strip() in ("correct","fixed") and r.get("key"):
-            resolved_keys.add(r["key"].strip().lower())
+            banked[r["key"].strip().lower()] = r
 
 def norm(s):
     if s is None or (isinstance(s,float) and np.isnan(s)): return ""
@@ -264,11 +266,56 @@ _fao_findings = _faostat_era_findings()
 print(f"Stage 1b: +{len(_fao_findings)} FAOSTAT-era findings (faostat-era-matching state)")
 findings.extend(_fao_findings)
 
-# ---------- Stage 2: triage + report (ledger-gated) ----------
+# ---------- Stage 2: triage + report (ledger-gated, evidence-hash aware) ----------
+# A banked unit (status correct/fixed) is skipped ONLY while the ledger's
+# evidence_hash matches the unit's CURRENT evidence (all findings for the key:
+# types, row counts, year spans, sources). Mismatch OR missing hash -> the
+# unit reopens (findings resurface, noted) until re-banked WITH the hash:
+# every finding carries its evidence_hash so the Cleanup phase can copy it
+# into review_ledger.csv when banking.
+def _ev_hash(fs):
+    ev = sorted((f["finding_type"], f["rows"], f.get("years") or "",
+                 ",".join(f.get("sources") or [])) for f in fs)
+    return hashlib.sha256(json.dumps(ev, sort_keys=True).encode()).hexdigest()[:16]
+
+# WHEP_LEDGER_BACKFILL=1: bootstrap mode — banked rows with an EMPTY hash get the
+# unit's current hash written into the ledger (and stay skipped) instead of
+# reopening. Only for trusted states (e.g. rows banked before hashing existed,
+# right after their review); default is reopen, so stale bankings never hide.
+_bootstrap = bool(os.environ.get("WHEP_LEDGER_BACKFILL"))
 _before = len(findings)
-findings = [f for f in findings if f["entity"].strip().lower() not in resolved_keys]
-if _before != len(findings):
-    print(f"  ledger: skipped {_before-len(findings)} findings already resolved in prior runs")
+_by_key = defaultdict(list)
+for f in findings: _by_key[f["entity"].strip().lower()].append(f)
+_keep, _reopened, _backfilled = [], 0, 0
+for _key, _fs in _by_key.items():
+    _h = _ev_hash(_fs)
+    for f in _fs: f["evidence_hash"] = _h           # for ledger banking on resolve
+    _row = banked.get(_key)
+    if _row is None:
+        _keep.extend(_fs); continue
+    _old = (_row.get("evidence_hash") or "").strip()
+    if _old == _h:
+        continue                                    # banked + evidence unchanged -> skip
+    if _bootstrap and not _old:
+        _row["evidence_hash"] = _h; _backfilled += 1; continue
+    _reopened += 1
+    for f in _fs:
+        f["note"] = ((f.get("note") or "") + " [reopened: evidence changed since banked "
+                     f"(ledger last_run {_row.get('last_run') or 'n/a'})]").strip()
+    _keep.extend(_fs)
+findings = _keep
+if _before != len(findings) or _reopened or _backfilled:
+    print(f"  ledger: skipped {_before-len(findings)} findings already resolved in prior runs"
+          + (f"; backfilled {_backfilled} evidence hashes (WHEP_LEDGER_BACKFILL)" if _backfilled else "")
+          + (f"; REOPENED {_reopened} units (evidence changed or hash missing)" if _reopened else ""))
+if _backfilled:
+    _rows = list(csv.DictReader(open(LEDGER)))
+    for r in _rows:
+        b = banked.get((r.get("key") or "").strip().lower())
+        if b is not None and b.get("evidence_hash"): r["evidence_hash"] = b["evidence_hash"]
+    with open(LEDGER, "w", newline="") as _fh:
+        _w = csv.DictWriter(_fh, fieldnames=list(_rows[0].keys()))
+        _w.writeheader(); _w.writerows(_rows)
 findings.sort(key=lambda f: (-f["rows"]))
 for ft in ("name_unresolved","coverage_gap","data_error","other"):
     bucket=[f for f in findings if f["finding_type"]==ft]

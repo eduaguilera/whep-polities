@@ -54,9 +54,22 @@ Columns: `unit_kind, key, status, issue_id, evidence_hash, last_run, last_commit
 
 - A run **only processes** `unreviewed` units and `issue` units whose fix is not
   yet verified. It **skips** `correct` and `fixed`.
-- `evidence_hash` = hash of the deterministic evidence for that unit. If the
-  underlying data changes (new source ingested, evidence_hash differs), the unit
-  is automatically re-opened to `unreviewed` even if previously `correct`.
+- `evidence_hash` = hash of the deterministic evidence for that unit (all its
+  current findings/flags: types, row counts, year spans, sources — computed by
+  `01_`/`02_` and stamped onto every finding/flag they emit). A banked
+  `correct`/`fixed` unit is skipped **only while the ledger's hash matches the
+  unit's current evidence**. If the underlying data changes (hash differs) —
+  or the row was banked without a hash — the unit is automatically re-opened
+  and resurfaces with a `reopened:` note.
+- Banking rules: `correct` verdicts are banked **with** the unit's
+  `evidence_hash` (the Cleanup phase copies it from the audited finding/flag);
+  `fixed` rows are banked **without** one on purpose — the finding should be
+  gone after the fix, and if it ever resurfaces the missing hash reopens it for
+  one re-audit, which re-banks it with a fresh hash.
+- `WHEP_LEDGER_BACKFILL=1` (env, both `01_` and `02_`): bootstrap mode — banked
+  rows with an *empty* hash get the unit's current hash written into the ledger
+  instead of reopening. Only for trusted states (rows banked right after their
+  review, before hashing existed).
 
 This is what implements your requirement: *"if a row was identified as correctly
 matched, the agent should skip it next run"* — and it self-heals when inputs change.
