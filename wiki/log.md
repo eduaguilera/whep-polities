@@ -26,6 +26,22 @@ Kinds:
 
 ---
 
+## polygon-area-km2-frontmatter-normalization
+**Date:** 2026-07-24
+**Touched:** F248-1920-1947, F248-1947-1991, SAC-1935-1947, SER-1918-1945, AMI-1946-1953, CYR-1949-1951, ITAEG-1912-1947
+**Source:** none
+**Kind:** lint
+
+Normalized malformed `polygon_area_km2` frontmatter values that crashed the
+deterministic territorial-evidence step (`02_territorial_evidence.py` float
+coercion). Four pages carried tilde-prefixed approximations (`~255000` twice,
+`~88000`, `~1912`) — the tilde was dropped, keeping the numeric value; the
+approximate/estimate character of each figure was already documented in the
+pages' polygon-decision prose and `polygon_status: estimate`, so no information
+was lost. Three pages carried an empty value — set to `null`. The field is now
+always numeric or null, as the database build expects. Rebuilt
+`polities_database.{csv,gpkg}` from the wiki afterwards.
+
 ## peru-iia-no-year-data-error
 **Date:** 2026-06-24
 **Touched:** PER-1909-1922, PER-1922-1942

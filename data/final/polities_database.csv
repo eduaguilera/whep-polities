@@ -235,9 +235,9 @@ F228-1945-1991,USSR (1945-1991),1945,1991,national,NA,365,Europe,draft,2026-04-1
 F237-1954-1975,Vietnam (combined reporting: DRV and RVN),1954,1975,aggregate,VNM,NA,Asia,draft,2026-07-02,cshapes-2.0,816,1976,estimate,325295,VNM-1887-1954,VNM-1975-2025
 F248-1918-1919,Yugoslavia (1918-1919),1918,1919,national,NA,345,Europe,draft,2026-04-12,cshapes-2.0,345,1918,assigned,,AUH-1908-1918,F248-1919-1920; F248-1920-1991
 F248-1919-1920,Yugoslavia (1919-1920),1919,1920,national,NA,345,Europe,draft,2026-04-12,cshapes-2.0,345,1919,assigned,,F248-1918-1919,F248-1920-1991
-F248-1920-1947,Yugoslavia (1920-1947),1920,1947,national,NA,345,Europe,draft,2026-07-01,cshapes-2.0,345,1920,assigned,~255000,F248-1919-1920; F248-1918-1919,F248-1947-1991
+F248-1920-1947,Yugoslavia (1920-1947),1920,1947,national,NA,345,Europe,draft,2026-07-01,cshapes-2.0,345,1920,assigned,255000,F248-1919-1920; F248-1918-1919,F248-1947-1991
 F248-1920-1991,Yugoslavia (1920-1991),1920,1991,national,NA,345,Europe,retired,2026-04-12,cshapes-2.0,345,1920,assigned,,F248-1919-1920; F248-1918-1919,MKD-1991-2025; F248-1991-1992
-F248-1947-1991,Yugoslavia (1947-1991),1947,1991,national,NA,345,Europe,draft,2026-07-01,cshapes-2.0,345,1920,estimate,~255000,F248-1920-1947,MKD-1991-2025; F248-1991-1992
+F248-1947-1991,Yugoslavia (1947-1991),1947,1991,national,NA,345,Europe,draft,2026-07-01,cshapes-2.0,345,1920,estimate,255000,F248-1920-1947,MKD-1991-2025; F248-1991-1992
 F248-1991-1992,Yugoslavia (1991-1992),1991,1992,national,NA,345,Europe,draft,2026-04-12,cshapes-2.0,345,1991,assigned,,F248-1920-1991,SVN-1992-2025; HRV-1992-2025; BIH-1992-2025; SCG-1992-2006; MKD-1991-2025
 F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),1918,1990,aggregate,YEM,NA,Asia,draft,2026-07-02,cshapes-2.0,678,1990,estimate,425263,,YEM-1990-2025
 F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,national,NA,315,Europe,draft,2026-04-12,cshapes-2.0,315,1918,assigned,,AUH-1908-1918,F51-1938-1945
@@ -591,7 +591,7 @@ RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,national,
 RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,national,NA,NA,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.38_1,,proxy,2271,RYU-1937-1945,JPN-1952-2025
 SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,NA,Europe,draft,2026-06-24,none,,,missing,,SAC-1935-1947,F78-1949-1990
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,colonial,SAB,,Europe,draft,2026-06-25,,,,unassigned,,DEU-1919-1920,SAC-1935-1947
-SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,Europe,draft,2026-06-26,none,,,unassigned,~1912,SAB-1920-1935,SAA-1947-1957
+SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,Europe,draft,2026-06-26,none,,,unassigned,1912,SAB-1920-1935,SAA-1947-1957
 SAR-1800-1860,Sardinia,1800,1860,national,SAR,338,Europe,draft,2026-04-12,cliopatria,Kingdom of Sardinia,1815,assigned,,,ITA-1861-1919
 SAU-1924-2025,Saudi Arabia,1924,2025,national,SAU,670,Asia,draft,2026-04-12,cshapes-2.0,670,1935,assigned,,OTT-1908-1912,
 SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,national,NA,265,Europe,draft,2026-06-26,cshapes-2.0,265,1949,assigned,109272,DEU-1938-1945,F77-1949-1990
@@ -604,7 +604,7 @@ SER-1816-1878,Principality of Serbia (1816-1878),1816,1878,national,SER,NA,Europ
 SER-1816-1913,Serbia (1816-1913),1816,1913,national,SER,NA,Europe,retired,2026-04-12,cshapes-2.0,340,1886,assigned,,OTT-1800-1886,SER-1913-1918
 SER-1878-1913,Kingdom of Serbia (1878-1913),1878,1913,national,SER,345,Europe,draft,2026-07-01,cshapes-2.0,340,1886,assigned,48000,SER-1816-1878,SER-1913-1918
 SER-1913-1918,Serbia (1913-1918),1913,1918,national,SER,NA,Europe,draft,2026-04-12,cshapes-2.0,345,1918,assigned,,SER-1878-1913,F248-1918-1919
-SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,sub-national,SER,NA,Europe,draft,2026-07-01,composed-estimate,NA,1920,estimate,~88000,SER-1913-1918,SER-2006-2008
+SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,sub-national,SER,NA,Europe,draft,2026-07-01,composed-estimate,NA,1920,estimate,88000,SER-1913-1918,SER-2006-2008
 SER-2006-2008,Serbia (2006-2008),2006,2008,national,SER,NA,Europe,draft,2026-04-12,cshapes-2.0,345,1992,assigned,,SCG-1992-2006,SRB-2008-2025; KOS-2008-2025
 SGP-1946-1963,Singapore (Crown Colony),1946,1963,colonial,SGP,830,Asia,draft,2026-06-25,cshapes-2.0,830,1953,assigned,544.72,GBM-1895-1946,MYS-1963-1965; SGP-1965-2025
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,subnational,SGP,NA,Asia,draft,2026-07-02,cshapes-2.0,830,1962,assigned,547,SGP-1946-1963,SGP-1965-2025
