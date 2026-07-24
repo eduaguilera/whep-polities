@@ -31,100 +31,18 @@ if os.path.exists(LEDGER):
         if (r.get("status") or "").strip() in ("correct","fixed") and r.get("key"):
             banked[r["key"].strip().lower()] = r
 
-def norm(s):
-    if s is None or (isinstance(s,float) and np.isnan(s)): return ""
-    s = str(s).strip().lower()
-    s = unicodedata.normalize("NFKD", s).encode("ascii","ignore").decode()
-    s = re.sub(r"\s*\(.*?\)\s*", " ", s)          # drop "(to 1919)" etc.
-    s = re.sub(r"^the\s+", "", s)
-    s = re.sub(r"[^a-z0-9 ]", " ", s)
-    return re.sub(r"\s+", " ", s).strip()
+# ---------- matching core (shared): see matchlib.py ----------
+# The deterministic pass only proposes CANDIDATES (alias/iso/name routing +
+# year containment); assertion-level verification is agent work downstream.
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from matchlib import Matcher, norm, toks, eff_year as _eff_year
 
-# ---------- load reference ----------
-pol = pd.read_csv(POLDB)   # source of truth: the repo polities database
-pol["base"] = pol["polity_name"].map(norm)
-pol["s"] = pd.to_numeric(pol["start_year"], errors="coerce")
-pol["e"] = pd.to_numeric(pol["end_year"],   errors="coerce")
-
-def toks(s):
-    """singularized token set, for order-insensitive name matching."""
-    return frozenset(t[:-1] if len(t) > 3 and t.endswith("s") else t for t in norm(s).split() if t)
-
-iso_fam, name_fam, tok_fam = defaultdict(list), defaultdict(list), defaultdict(list)
-for _,p in pol.iterrows():
-    rec = (p.polity_code, p.polity_name, p.iso3_code, p.s, p.e, p.polity_type)
-    if isinstance(p.iso3_code,str) and p.iso3_code.strip():
-        iso_fam[p.iso3_code.strip().upper()].append(rec)
-    name_fam[p.base].append(rec)
-    t = toks(p.polity_name)
-    if t: tok_fam[t].append(rec)
-
-# alias table: norm(original_name) -> norm(common_name); link to a polity family by base name
-cn = pd.read_csv(COMMON_NAMES)
-alias = {}
-for _,r in cn.iterrows():
-    o, c = norm(r["original_name"]), norm(r["common_name"])
-    if o and c: alias.setdefault(o, c)
-
-# APPLIED aliases: (original_name [, source] [, year_start-year_end]) -> target_polity_code.
-# A label can resolve to DIFFERENT polities by year/source — the SOURCE's reporting unit
-# need not match our period splits (see README "What a source label actually means").
-code_row = {p.polity_code: (p.polity_code,p.polity_name,p.iso3_code,p.s,p.e,p.polity_type) for _,p in pol.iterrows()}
-def _yr(v):
-    v = str(v or "").strip()
-    return int(v) if v.lstrip("-").isdigit() else None
-override_rules = []
 PA = os.path.join(OUT, "applied_aliases.csv")   # aliases confirmed by prior runs
-if os.path.exists(PA):
-    for r in csv.DictReader(open(PA)):
-        tc = (r.get("target_polity_code") or "").strip()
-        if tc not in code_row: continue
-        override_rules.append({"n":norm(r["original_name"]), "src":(r.get("source") or "").strip() or None,
-                               "y0":_yr(r.get("year_start")), "y1":_yr(r.get("year_end")), "code":tc})
-blanket_override = {ru["n"]:ru["code"] for ru in override_rules if ru["y0"] is None and ru["src"] is None}
-print(f"applied aliases loaded: {len(override_rules)} rules ({len(blanket_override)} blanket)")
-
-def match_alias(name, source, year):
-    """best applied-alias target for (name, source, year); prefer year- then source-specific rules."""
-    n = norm(name); src = (source or ""); best=None; score=-1
-    for ru in override_rules:
-        if ru["n"] != n: continue
-        if ru["src"] is not None and ru["src"] != src: continue
-        if ru["y0"] is not None and (year is None or not (ru["y0"] <= year <= ru["y1"])): continue
-        s = (2 if ru["y0"] is not None else 0) + (1 if ru["src"] is not None else 0)
-        if s > score: best, score = ru["code"], s
-    return best
-
-def pick_by_year(fam, year):
-    """from a polity family, pick the row whose [s,e] contains year; prefer national."""
-    if pd.isna(year): return None, "no_year"
-    cands = [r for r in fam if not pd.isna(r[3]) and not pd.isna(r[4]) and r[3] <= year <= r[4]]
-    if not cands: return None, "year_uncovered"
-    cands.sort(key=lambda r: 0 if r[5]=="national" else 1)
-    return cands[0], "ok"
-
-def fam_for_code(code):
-    rec = code_row[code]; iso = rec[2]
-    if isinstance(iso,str) and iso.strip().upper() in iso_fam: return iso_fam[iso.strip().upper()]
-    if rec[1] and norm(rec[1]) in name_fam: return name_fam[norm(rec[1])]
-    return [rec]
-
-def resolve_family(name, iso):
-    """return (family, how). High-precision only: applied-alias override, iso,
-    exact name, token-set equality, or alias-table."""
-    n = norm(name)
-    if n in blanket_override:                            # year/source-independent applied alias
-        return fam_for_code(blanket_override[n]), "applied_alias"
-    if isinstance(iso,str) and iso.strip().upper() in iso_fam:
-        return iso_fam[iso.strip().upper()], "iso"
-    if n in name_fam: return name_fam[n], "name"
-    t = toks(name)
-    if t in tok_fam: return tok_fam[t], "tokenset"      # "Korea South" == "South Korea"
-    if n in alias:                                       # spelling alias -> canonical
-        a = alias[n]
-        if a in name_fam: return name_fam[a], "alias"
-        if toks(a) in tok_fam: return tok_fam[toks(a)], "alias"
-    return None, "none"
+M = Matcher(POLDB, applied_aliases_csv=PA, common_names_csv=COMMON_NAMES)
+pol = M.pol
+resolve_family, match_alias = M.resolve_family, M.match_alias
+pick_by_year, fam_for_code = M.pick_by_year, M.fam_for_code
 
 # ---------- Stage 0: match ----------
 df = pd.read_parquet(LB)
@@ -148,23 +66,11 @@ for _,k in keys.iterrows():
 
 def eff_year(row):
     """row year, or the END year of a period-average label like '1934-1938'."""
-    if pd.notna(row.year): return row.year
-    if isinstance(row.period, str):
-        yy = re.findall(r"\d{4}", row.period)
-        if yy: return int(yy[-1])
-    return np.nan
+    return _eff_year(row.year, getattr(row, "period", None))
 
 def assign(row):
-    ey = eff_year(row)
-    ac = match_alias(row.country, getattr(row, "source", None), ey)   # year/source-conditional alias first
-    if ac:
-        rec, st = pick_by_year(fam_for_code(ac), ey)
-        if rec is not None: return (rec[0], "matched", "applied_alias")
-    fam, how = fam_cache.get((row.country, row.iso3c if isinstance(row.iso3c,str) else None), (None,"none"))
-    if fam is None: return (None, "unresolved", how)
-    rec, st = pick_by_year(fam, ey)
-    if rec is None: return (None, st, how)            # year_uncovered / no_year
-    return (rec[0], "matched", how)
+    return M.assign(row.country, row.iso3c if isinstance(row.iso3c, str) else None,
+                    getattr(row, "source", None), eff_year(row), fam_cache)
 
 res = todo.apply(assign, axis=1, result_type="expand")
 res.columns = ["code2","status2","how2"]
