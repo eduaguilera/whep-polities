@@ -285,6 +285,15 @@ def main() -> int:
         help="Douglas-Peucker tolerance in degrees (0 to disable). "
              "Default 0.01 ≈ 1 km at equator; keeps the master GPKG under 5 MB.",
     )
+    ap.add_argument(
+        "--check",
+        action="store_true",
+        help="do not write anything: rebuild the CSV in memory from the wiki and "
+             "compare it against the committed data/final/polities_database.csv, "
+             "exiting non-zero on any difference. Catches a wiki edit that was "
+             "never propagated to the database. Needs no polygon sources, so it "
+             "runs in CI where data/geodata is absent.",
+    )
     args = ap.parse_args()
 
     sources_cfg = load_sources_config()
@@ -361,6 +370,43 @@ def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     csv_path = OUT_DIR / "polities_database.csv"
     gpkg_path = OUT_DIR / "polities_database.gpkg"
+
+    if args.check:
+        # Compare the wiki-derived rows against the committed CSV without writing.
+        # Only the CSV is checked: the GeoPackage needs the polygon sources under
+        # data/geodata, which are gitignored, so it cannot be verified in CI.
+        import csv, io
+        buf = io.StringIO()
+        w = csv.DictWriter(buf, fieldnames=CSV_COLUMNS, lineterminator="\n")
+        w.writeheader()
+        for r in rows:
+            w.writerow({c: r.get(c, "") for c in CSV_COLUMNS})
+        expected = buf.getvalue()
+        actual = csv_path.read_text(encoding="utf-8") if csv_path.exists() else ""
+        if expected == actual:
+            print(f"--check: PASS — the committed CSV matches the wiki "
+                  f"({len(rows)} rows from {len(pages)} pages)")
+            return 0
+        exp_lines, act_lines = expected.splitlines(), actual.splitlines()
+        print(f"--check: FAIL — the committed CSV does NOT match the wiki")
+        print(f"  wiki-derived rows: {len(exp_lines)-1}, committed rows: {len(act_lines)-1}")
+        exp_codes = {l.split(",")[0] for l in exp_lines[1:]}
+        act_codes = {l.split(",")[0] for l in act_lines[1:]}
+        for label, codes in (("only in the wiki", exp_codes - act_codes),
+                             ("only in the CSV", act_codes - exp_codes)):
+            if codes:
+                print(f"  {label}: {', '.join(sorted(codes)[:12])}"
+                      + (" ..." if len(codes) > 12 else ""))
+        if exp_codes == act_codes:
+            import difflib
+            diff = list(difflib.unified_diff(act_lines, exp_lines,
+                                             "committed", "wiki-derived", lineterm="", n=0))
+            print("  same rows, differing content:")
+            for line in diff[2:14]:
+                print(f"    {line}")
+        print("\n  Fix: run scripts/build_database.py and commit data/final/.")
+        return 1
+
     print(f"Writing CSV ({len(rows)} rows)...")
     write_csv(rows, csv_path)
     print(f"Writing GeoPackage ({len(geometries)} geometries, simplify={args.simplify_tolerance})...")

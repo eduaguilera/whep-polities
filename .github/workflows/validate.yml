@@ -1,0 +1,92 @@
+name: Validate database
+
+# The wiki is the source of truth and data/final is derived from it, so a page
+# edit that is never propagated, or a polygon binding that resolves to the wrong
+# country, is a correctness bug. Each check below exists because that class of
+# error was found in the database, not hypothesised:
+#
+#   build_database --check   a wiki edit never propagated to the committed CSV
+#   validate_polygons        8 polities carried ANOTHER COUNTRY'S polygon (San
+#                            Marino had Albania's, 470x too large; Indonesia had
+#                            India's); 28 declared a polygon the build never
+#                            attached; 13 pages claimed wiki_status "reviewed"
+#                            with no source citations
+#   validate_citations       17 citations pointed at source files that were
+#                            never ingested
+#   audit_family_shadowing   Alaska outranked the United States and absorbed
+#                            ~7,600 rows of mainland data; Hyderabad took
+#                            India-labelled data
+#
+# These need only what the repo commits (wiki/, data/final/). The MATCHERS are
+# deliberately absent: they need the layer-B parquet and the FAOSTAT pins cache,
+# which live outside the repo — see issue #17.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - 'data/final/**'
+      - 'scripts/**'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    paths:
+      - 'wiki/**'
+      - 'data/final/**'
+      - 'scripts/**'
+      - '.github/workflows/validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      # GDAL is needed twice over: build_database.py imports osgeo.ogr, and
+      # geopandas reads the committed GeoPackage. The apt python3-gdal build is
+      # used rather than a pip GDAL because the pip package must match the system
+      # library version exactly, which is brittle on runners.
+      - name: Install GDAL and Python dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gdal-bin libgdal-dev python3-gdal
+          python -m pip install --upgrade pip
+          pip install pandas geopandas pyyaml
+          # expose the apt-installed osgeo bindings to the setup-python interpreter
+          echo "PYTHONPATH=/usr/lib/python3/dist-packages" >> "$GITHUB_ENV"
+
+      - name: Report versions
+        run: |
+          python -c "import sys, pandas, geopandas; print(sys.version); print('pandas', pandas.__version__, '| geopandas', geopandas.__version__)"
+          python -c "from osgeo import gdal; print('gdal', gdal.__version__)"
+
+      # Each check runs even if an earlier one failed, so one push surfaces every
+      # problem rather than only the first.
+      - name: Citations resolve to real sources and anchors
+        if: '!cancelled()'
+        run: python3 scripts/validate_citations.py
+
+      - name: Committed CSV matches the wiki
+        if: '!cancelled()'
+        run: python3 scripts/build_database.py --check
+
+      - name: Polygons — area agreement, claimed-but-absent, reviewed-means-documented
+        if: '!cancelled()'
+        run: python3 scripts/validate_polygons.py
+
+      - name: No polity can shadow a sibling via family ordering
+        if: '!cancelled()'
+        run: python3 scripts/audit_family_shadowing.py
