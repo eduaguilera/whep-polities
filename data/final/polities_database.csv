@@ -218,6 +218,7 @@ ETH-1889-1897,Ethiopia (1889-1897),1889,1897,national,ETH,530,Africa,draft,2026-
 ETH-1897-1902,Ethiopia (1897-1902),1897,1902,national,ETH,530,Africa,draft,2026-04-12,cshapes-2.0,530,1897,assigned,,ETH-1889-1897,ETH-1902-1907
 ETH-1902-1907,Ethiopia (1902-1907),1902,1907,national,ETH,530,Africa,draft,2026-04-12,cshapes-2.0,530,1902,assigned,,ETH-1897-1902,ETH-1907-1936
 ETH-1907-1936,Ethiopia (1907-1936),1907,1936,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1907,assigned,,ETH-1902-1907,ETH-1941-1952
+ETH-1936-1941,"Ethiopia (Italian occupation, proper territory, 1936-1941)",1936,1941,national,ETH,530,Africa,draft,2026-07-27,cshapes-2.0,530,1907,assigned,1000000,ETH-1907-1936,ETH-1941-1952
 ETH-1907-1952,Ethiopia (1907-1952),1907,1952,national,ETH,530,Africa,superseded,2026-06-29,cshapes-2.0,530,1907,assigned,,ETH-1902-1907,ETH-1952-1993
 ETH-1941-1952,Ethiopia (1941-1952),1941,1952,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1941,assigned,,ETH-1907-1936,ETH-1952-1993
 ETH-1952-1993,Ethiopia (1952-1993),1952,1993,national,ETH,530,Africa,draft,2026-04-12,cshapes-2.0,530,1952,assigned,,ETH-1941-1952,ETH-1993-2025
