@@ -20,6 +20,10 @@ Three independent tests:
      nothing can resolve). Known cases are baselined in
      scripts/validate_polygons_baseline.txt so the gate catches NEW ones.
 
+  D. REVIEWED MEANS DOCUMENTED — a page flagged wiki_status=reviewed must carry
+     at least one source citation and no unfilled sections, since the
+     verification pipeline treats `reviewed` as settled.
+
   B. IDENTITY — for cshapes-bound polities, look up the feature the id resolves
      to and compare its country name against the polity. An unrelated country
      is a mis-binding. Historical/modern synonyms (Bechuanaland/Botswana,
@@ -102,6 +106,27 @@ for r in new_claim_no_geom.itertuples():
     print(f"   FAIL {r.polity_code:18s} status='{r.st}' but no geometry attached  "
           f"({r.polygon_source}/{fid[:52]}{'...' if len(fid) > 52 else ''})")
 
+# ---------- D: `reviewed` must mean documented ----------
+# `reviewed` asserts a human checked the page's claims against sources, and the
+# verification pipeline leans on that. A reviewed page with no source citations
+# invites unsourced assertions to be treated as settled — 10 of 72 were in that
+# state (the whole IND and IDN chains). Fail so the label stays meaningful.
+import glob
+undoc = []
+for _, r in pd.read_csv(CSV).iterrows():
+    if str(r.get("wiki_status")) != "reviewed": continue
+    fp = os.path.join(REPO, "wiki/polities", f"{str(r.polity_code).lower()}.md")
+    if not os.path.exists(fp): continue
+    txt = open(fp).read()
+    cites = len(re.findall(r"\]\(\.\./sources/", txt))
+    if cites == 0 or "(to be documented)" in txt:
+        undoc.append((r.polity_code, len(txt), cites, "(to be documented)" in txt))
+print(f"\nD. REVIEWED MEANS DOCUMENTED — {len(undoc)} page(s) flagged wiki_status=reviewed "
+      f"with no source citations or unfilled sections")
+for c, n, ci, td in undoc:
+    print(f"   FAIL {c:18s} {n:6d} bytes, {ci} source citations"
+          + (", has '(to be documented)'" if td else ""))
+
 # ---------- B: identity of cshapes bindings ----------
 mismatch = []
 if os.path.exists(CSHAPES):
@@ -126,8 +151,8 @@ if os.path.exists(CSHAPES):
 else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
-fail = len(bad_area) > 0 or len(new_claim_no_geom) > 0 or (A.strict and mismatch)
+fail = len(bad_area) > 0 or len(new_claim_no_geom) > 0 or len(undoc) > 0 or (A.strict and mismatch)
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s), "
-      f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s)"
+      f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
 sys.exit(1 if fail else 0)

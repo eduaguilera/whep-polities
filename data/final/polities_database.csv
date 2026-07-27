@@ -84,7 +84,10 @@ BOL-1825-1903,Bolivia (to 1903),1825,1903,national,BOL,145,South America,draft,2
 BOL-1903-1909,Bolivia (1903-1909),1903,1909,national,BOL,145,South America,draft,2026-04-12,cshapes-2.0,145,1903,assigned,,BOL-1825-1903,BOL-1909-1938
 BOL-1909-1938,Bolivia (1909-1938),1909,1938,national,BOL,145,South America,draft,2026-04-12,cshapes-2.0,145,1909,assigned,,BOL-1903-1909,BOL-1938-2025
 BOL-1938-2025,Bolivia,1938,2025,national,BOL,145,South America,reviewed,2026-04-12,cshapes-2.0,145,1938,assigned,,BOL-1909-1938,
-BRA-1800-2025,Brazil,1800,2025,national,BRA,140,South America,draft,2026-04-12,cshapes-2.0,140,1960,assigned,,,
+BRA-1800-1903,Brazil (to 1903),1800,1903,national,BRA,140,South America,draft,2026-07-24,cshapes-2.0,140,1890,polygon_vintage_drift,8311721,,BRA-1903-1909
+BRA-1800-2025,Brazil,1800,2025,national,BRA,140,South America,superseded,2026-04-12,cshapes-2.0,140,1960,unassigned,,,
+BRA-1903-1909,Brazil (1903-1909),1903,1909,national,BRA,140,South America,draft,2026-07-24,cshapes-2.0,140,1905,assigned,8437289,BRA-1800-1903,BRA-1909-2025
+BRA-1909-2025,Brazil,1909,2025,national,BRA,140,South America,draft,2026-07-24,cshapes-2.0,140,1930,assigned,8472100,BRA-1903-1909,
 BRB-1800-2025,Barbados,1800,2025,national,BRB,53,North America,draft,2026-06-09,gadm-4.1-adm0,BRB,,proxy,,,
 BRG-1800-1897,Borgu Confederacy,1800,1897,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Borgu,,assigned,,,NGA-1914-1960; BEN-1960-2025
 BRL-1938-1945,Greater Berlin (1938-1945),1938,1945,city-territory,NA,NA,Europe,draft,2026-06-26,cshapes-2.0,greater-berlin-1920,1938,unassigned,892,BRL-1920-1938,BRL-1945-1949
@@ -117,8 +120,8 @@ CHL-1899-1902,Chile (1899-1902),1899,1902,national,CHL,155,South America,reviewe
 CHL-1902-2025,Chile,1902,2025,national,CHL,155,South America,reviewed,2026-04-12,cshapes-2.0,155,1902,assigned,,CHL-1899-1902,
 CHN-1800-1895,China (to 1895),1800,1895,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1886,assigned,,,CHN-1895-1912
 CHN-1895-1913,China (1895-1913),1895,1913,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1899,assigned,,CHN-1800-1895,CHN-1913-1914
-CHN-1913-1914,China (1913-1914),1913,1914,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1913,assigned,,CHN-1895-1912,CHN-1914-1921
-CHN-1914-1921,China (1914-1921),1914,1921,national,CHN,710,Asia,reviewed,2026-04-12,cshapes-2.0,710,1914,assigned,,CHN-1913-1914,CHN-1921-1945
+CHN-1913-1914,China (1913-1914),1913,1914,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1913,assigned,,CHN-1895-1912,CHN-1914-1921
+CHN-1914-1921,China (1914-1921),1914,1921,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1914,assigned,,CHN-1913-1914,CHN-1921-1945
 CHN-1921-1932,China (1921-1932),1921,1932,national,CHN,710,Asia,draft,2026-06-29,cshapes-2.0,710,1921,assigned,7496578,CHN-1914-1921,CHN-1932-1945
 CHN-1921-1945,China (1921-1945),1921,1945,national,CHN,710,Asia,superseded,2026-04-12,cshapes-2.0,710,1921,assigned,,CHN-1914-1921,CHN-1945-1947
 CHN-1932-1945,China (1932-1945),1932,1945,national,CHN,710,Asia,draft,2026-06-29,constructed,CHN-1932-1945,,assigned,6710264,CHN-1921-1932,CHN-1945-1947
@@ -328,23 +331,23 @@ HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,202
 HYD-1724-1948,Hyderabad State,1724,1948,colonial,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
 IBD-1829-1893,Ibadan City-State,1829,1893,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Ibadan,,assigned,,,SNI-1899-1906
 ICN-1800-2025,Canary Islands,1800,2025,national,ICN,20,Africa,draft,2026-04-13,gadm-4.1-adm1,ESP.14_1,,assigned,,,
-IDN-1800-1889,Indonesia (to 1889),1800,1889,national,IDN,750,Asia,reviewed,2026-04-12,cshapes-2.0,850,1886,assigned,1877243,,IDN-1889-1945
-IDN-1889-1945,Indonesia (1889-1945),1889,1945,national,IDN,750,Asia,reviewed,2026-04-13,cshapes-2.0,850,1900,assigned,1877243,IDN-1800-1889,IDN-1945-1949
-IDN-1945-1949,Indonesia (1945-1949),1945,1949,national,IDN,850,Asia,reviewed,2026-04-12,cshapes-2.0,850,1945,assigned,,IDN-1889-1945,IDN-1949-1969
-IDN-1949-1969,Indonesia (1949-1969),1949,1969,national,IDN,850,Asia,reviewed,2026-04-12,cshapes-2.0,850,1949,assigned,,IDN-1945-1949,IDN-1969-1976
-IDN-1969-1976,Indonesia (1969-1976),1969,1976,national,IDN,850,Asia,reviewed,2026-04-12,cshapes-2.0,850,1969,assigned,,IDN-1949-1969,IDN-1976-2002
-IDN-1976-2002,Indonesia (1976-2002),1976,2002,national,IDN,850,Asia,reviewed,2026-04-12,cshapes-2.0,850,1976,assigned,,IDN-1969-1976,IDN-2002-2025
+IDN-1800-1889,Indonesia (to 1889),1800,1889,national,IDN,750,Asia,draft,2026-04-12,cshapes-2.0,850,1886,assigned,1877243,,IDN-1889-1945
+IDN-1889-1945,Indonesia (1889-1945),1889,1945,national,IDN,750,Asia,draft,2026-04-13,cshapes-2.0,850,1900,assigned,1877243,IDN-1800-1889,IDN-1945-1949
+IDN-1945-1949,Indonesia (1945-1949),1945,1949,national,IDN,850,Asia,draft,2026-04-12,cshapes-2.0,850,1945,assigned,,IDN-1889-1945,IDN-1949-1969
+IDN-1949-1969,Indonesia (1949-1969),1949,1969,national,IDN,850,Asia,draft,2026-04-12,cshapes-2.0,850,1949,assigned,,IDN-1945-1949,IDN-1969-1976
+IDN-1969-1976,Indonesia (1969-1976),1969,1976,national,IDN,850,Asia,draft,2026-04-12,cshapes-2.0,850,1969,assigned,,IDN-1949-1969,IDN-1976-2002
+IDN-1976-2002,Indonesia (1976-2002),1976,2002,national,IDN,850,Asia,draft,2026-04-12,cshapes-2.0,850,1976,assigned,,IDN-1969-1976,IDN-2002-2025
 IDN-2002-2025,Indonesia,2002,2025,national,IDN,850,Asia,reviewed,2026-04-12,cshapes-2.0,850,2002,assigned,,IDN-1976-2002,
 IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN.1_1+IDN.20_1,,proxy,10505,,
 IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1,,proxy,132000,,
 IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN-complement-JVM-BLB,,proxy,1757495,,
 IGL-1800-1901,Igala Kingdom,1800,1901,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Igala,,assigned,,,NNI-1899-1904
 IJB-1800-1892,Ijebu Kingdom,1800,1892,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Ijebu,,assigned,,,SNI-1899-1906
-IND-1800-1893,India (to 1893),1800,1893,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1886,assigned,,,IND-1893-1914
-IND-1893-1914,India (1893-1914),1893,1914,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1899,assigned,,IND-1800-1893,IND-1914-1937
-IND-1914-1937,India (1914-1937),1914,1937,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1914,assigned,,IND-1893-1914,IND-1937-1947
-IND-1937-1947,India (1937-1947),1937,1947,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1937,assigned,4227508,IND-1914-1937,IND-1947-1949
-IND-1947-1949,India (1947-1949),1947,1949,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1947,assigned,,IND-1937-1947,IND-1949-2025
+IND-1800-1893,India (to 1893),1800,1893,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1886,assigned,,,IND-1893-1914
+IND-1893-1914,India (1893-1914),1893,1914,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1899,assigned,,IND-1800-1893,IND-1914-1937
+IND-1914-1937,India (1914-1937),1914,1937,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1914,assigned,,IND-1893-1914,IND-1937-1947
+IND-1937-1947,India (1937-1947),1937,1947,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1937,assigned,4227508,IND-1914-1937,IND-1947-1949
+IND-1947-1949,India (1947-1949),1947,1949,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1947,assigned,,IND-1937-1947,IND-1949-2025
 IND-1949-2025,India,1949,2025,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1949,assigned,,IND-1947-1949,
 IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,draft,2026-04-16,constructed,IRL-1800-1921,2024,assigned,84433,,IRL-1921-2025
 IRL-1921-2025,Ireland,1921,2025,national,IRL,205,Europe,draft,2026-04-13,cshapes-2.0,205,1921,assigned,,GBR-1800-1921,

@@ -26,6 +26,83 @@ Kinds:
 
 ---
 
+## decision-apply-brazil-acre-split
+**Date:** 2026-07-24
+**Touched:** BRA-1800-2025, BRA-1800-1903, BRA-1903-1909, BRA-1909-2025
+**Source:** cshapes-2.0
+**Kind:** decision
+
+**Applied the Brazil split that [bra-1800-2025](polities/bra-1800-2025.md)'s own
+body had described but the database never received** (see
+[chunk2-verification-page-suspect-fires](log.md#chunk2-verification-page-suspect-fires)
+for how the contradiction surfaced).
+
+CShapes 2.0 gwcode 140 supports a **three-way** periodisation, not the two-way
+one the old page assumed:
+
+| row | span | polygon | area | step |
+|---|---|---|---|---|
+| [bra-1800-1903](polities/bra-1800-1903.md) | 1800-1903 | 140 @1890 | 8,311,721 km² | — |
+| [bra-1903-1909](polities/bra-1903-1909.md) | 1903-1909 | 140 @1905 | 8,437,289 km² | **+125,568** (Acre) |
+| [bra-1909-2025](polities/bra-1909-2025.md) | 1909-2025 | 140 @1930 | 8,472,100 km² | +34,811 (1909 settlements) |
+
+The 1903 boundary is the **Treaty of Petrópolis** (17 November 1903), by which
+Bolivia ceded Acre during the rubber boom — Brazil's largest single territorial
+acquisition since independence. The 1909 boundary is the settlement of the
+remaining Amazonian frontiers. CShapes records identical geometry for 1909-1960
+and 1960-2019, so the third row's borders are genuinely constant and its
+`polygon_status: assigned` is exact rather than approximate.
+
+`BRA-1800-1903` is deliberately `polygon_vintage_drift` rather than `assigned`:
+CShapes coverage begins in 1886, so for 1800-1886 its polygon is a
+back-projection, and Brazil's earlier Amazonian frontiers (deriving from the 1750
+Madrid and 1777 San Ildefonso lines) were not identical to the 1886 boundary.
+That approximation is stated on the page rather than implied.
+
+`BRA-1800-2025` is `superseded`. All 3,484 layer-B rows re-routed cleanly by year
+containment — **34 / 36 / 3,414** across the three rows, summing exactly to the
+old total, with the overall match count unchanged at 189,691. The STALE guard in
+`matchlib` correctly caught the one FAOSTAT alias still pointing at the dead row.
+
+Signed off by: Catalin Covaci.
+
+## decision-reviewed-status-audit
+**Date:** 2026-07-24
+**Touched:** CHN-1913-1914, CHN-1914-1921, IDN-1800-1889, IDN-1889-1945, IDN-1945-1949, IDN-1949-1969, IDN-1969-1976, IDN-1976-2002, IND-1800-1893, IND-1893-1914, IND-1914-1937, IND-1937-1947, IND-1947-1949
+**Source:** none
+**Kind:** decision
+
+**Thirteen pages were flagged `wiki_status: reviewed` while carrying no source
+citations at all.** All are downgraded to `draft`.
+
+`reviewed` is supposed to mean a human checked the page's claims against sources,
+and it is load-bearing: the assertion-verification pipeline was explicitly told
+that draft pages are a prior agent's hypothesis while `reviewed` pages are
+settled enough to lean on. A reviewed-but-unsourced page therefore invited
+unsourced assertions to be treated as verified — the exact circularity that rule
+was written to prevent.
+
+Affected: the whole **IND** chain (1800-1893, 1893-1914, 1914-1937, 1937-1947,
+1947-1949), the whole **IDN** chain (1800-1889, 1889-1945, 1945-1949, 1949-1969,
+1969-1976, 1976-2002), and **CHN-1913-1914** and **CHN-1914-1921**. Nothing about
+their data or polygons changed — only the honesty of the label.
+
+The rule is now enforced rather than audited by hand: `scripts/validate_polygons.py`
+gained **check D**, which fails when a `reviewed` page has zero source citations
+or unfilled "(to be documented)" sections. Encoding it immediately found **three
+pages the initial hand audit had missed** (it had used a page-size threshold),
+which is why the count is thirteen rather than ten.
+
+To earn `reviewed` back, each page needs **Territorial extent** and **Sourced
+claims** filled from real sources — Biger 1995, CShapes 2.0, the COW
+state-system list — with inline citations, and the territorial changes inside its
+span identified. Until then the verification pipeline treats them as drafts and
+corroborates their claims independently, which is also why the evidence bundle
+now carries each page's measurable depth rather than just its status label.
+
+Signed off by: Catalin Covaci.
+
+
 ## chunk2-verification-page-suspect-fires
 **Date:** 2026-07-24
 **Touched:** BRA-1800-2025, JAM-1800-2025, MAR-1911-1958, IND-1914-1937, SYR-1922-1945, ALB-1913-2025, AUT-1919-2025
