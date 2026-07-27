@@ -26,6 +26,56 @@ Kinds:
 
 ---
 
+## assertion-verification-probe-findings
+**Date:** 2026-07-24
+**Touched:** AOI-1936-1941, CHN-1947-1949, BRL-1945-1949, PSE-1948-2025, F51-1945-1947, SAC-1935-1947, SER-1918-1945, TUR-1920-2025
+**Source:** none
+**Kind:** proposal
+
+Second batch of assertion-verification research folded in, from two adversarial
+probes (the `banked_legacy` tier with war/transition spans, and the
+evidence-starved single-row tail). Kind is *proposal* because two entries raise
+structural questions that need a human decision and are recorded, not applied.
+
+**Two coverage gaps found, both instances of the sub-territory-must-not-fold-up
+rule:**
+
+1. **[oq-ethiopia-proper-1936-1941](polities/aoi-1936-1941.md#oq-ethiopia-proper-1936-1941).**
+   The AOI page's own magnitude test has now been run against two sources and
+   both FAIL it: `iia` keeps *Ethiopie* and *Erythrée* as separate country
+   lines 1934-1945 (green coffee continuous across 1936 and 1941: 22,400 →
+   19,800 → 14,500 → 16,300 t, no ~70% step), and `fao1952` reports Eritrea and
+   Italian Somaliland separately throughout the occupation. So "Ethiopia"
+   1936-1941 in these sources means Ethiopia *proper* (~1.0M km²), and routing
+   it to the AOI aggregate (~1.7M km²) overstates by ~70%. No polity covers
+   Ethiopia proper during the occupation. Proposed remedy: a new polity
+   *Ethiopia (Italian occupation, proper territory, 1936-1941)*. Both
+   assertions quarantined pending the decision.
+
+2. **[oq-manchuria-region-1945-1950](polities/chn-1947-1949.md#oq-manchuria-region-1945-1950).**
+   Mitchell's "China, Manchuria province of" series runs 1928-1952 at regional
+   scale (wheat ~300k-1.4M t vs whole-China ~18-20M t) and is routed to
+   whichever polity held sovereignty; but for 1945-1949 no Manchuria-region
+   polity exists, so it folds up into the national row. Proposed remedy: a
+   Manchuria-region polity for 1945-1950, mirroring MAN-1932-1945.
+
+**A registered source convention was CORRECTED by a later probe.** The
+FAO-1952 population series was recorded as reading ~⅓ of true totals
+(agricultural population). The Saar 1937 figure (821,000) matches the true
+total (~812,000 at the 1935 plebiscite), so the series is *not* uniformly one
+measure. Both observations, and the fact that the split between them is
+uncharacterised, are now in `state/source_conventions.csv` and noted on
+[sac-1935-1947](polities/sac-1935-1947.md) and
+[f248-1920-1947](polities/f248-1920-1947.md).
+
+Smaller findings: `fao1952`'s "Germany Berlin" label extends into 1949 (widen
+the alias range); its residual "Palestine" label means the non-Israel Arab
+remainder, confirmed against the separately-reported "Israel" series; Mitchell's
+"czech republic" for 1946 is the whole restored Czechoslovak state
+(retrospective naming); Mitchell shows no visible 1939 Hatay step in Turkish
+crop areas; and SER-1918-1945 shows no reporting-basis discontinuity at the
+1929 banovina reorganisation.
+
 ## assertion-verification-source-conventions
 **Date:** 2026-07-24
 **Touched:** FIN-1940-2025, POL-1921-1945, F228-1921-1940, DEU-1949-1990, F248-1920-1947, KOR-1800-1945
