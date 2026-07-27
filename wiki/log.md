@@ -26,6 +26,51 @@ Kinds:
 
 ---
 
+## proposal-india-chain-source-conflict
+**Date:** 2026-07-24
+**Touched:** IND-1800-1893, IND-1893-1914
+**Source:** cshapes-2.0, cliopatria-v0.1.3
+**Kind:** contradiction
+
+Went to split `IND-1800-1893` on the Cliopatria evidence and **stopped
+deliberately**: the two sources disagree about the same event badly enough that
+picking one is a research decision, not an implementation detail.
+
+| source | step year | before | after | step |
+|---|---|---|---|---|
+| **CShapes 2.0** (currently bound) | **1893** | 4,652,138 km² | 4,819,227 km² | +167,089 |
+| **Cliopatria v0.1.3** | **1885** | 4,209,917 km² | 4,816,534 km² | +606,617 |
+
+They differ **3.6× on the magnitude**, **eight years on the date**, and **9.5% on
+the pre-annexation area of British India itself**.
+
+**Cliopatria has the better date.** Upper Burma was annexed 1 January 1886 after
+the Third Anglo-Burmese War of November 1885. CShapes places that change at 1893,
+eight years late — and a Cliopatria-based chain would additionally make the
+existing 1893 boundary nearly redundant, since Cliopatria's 1890-94 figure
+(4,823,859 km²) is within **0.06%** of the CShapes figure
+[ind-1893-1914](polities/ind-1893-1914.md) already uses.
+
+**Why nothing was applied.** Splitting this row on Cliopatria while its
+neighbours remain on CShapes would bind adjacent rows to sources disagreeing by
+9.5% about the same territory, **manufacturing a spurious territorial step at the
+junction** — an artefact of source-mixing rather than of history. This is a
+general lesson worth stating: *a chain cannot be re-split using a different
+polygon source than its neighbours without inventing a boundary change.* Doing it
+properly means deciding whether the **whole India chain** moves to Cliopatria — a
+preference between two references in the same priority tier, affecting every India
+assertion already verified.
+
+Also worth noting what Cliopatria does **not** have: no British India or East
+India Company feature before **1859**, so the conquest-era expansions inside this
+row (Anglo-Maratha 1803-1818, Sugauli 1816, Yandabo 1826, Sindh 1843, Anglo-Sikh
+1845-1849) cannot be split on it either. Whatever is decided about Burma, the
+1800-1859 portion of this row stays a back-projection.
+
+Left for a human decision, with the measurements recorded so it can be settled on
+evidence.
+
+
 ## decision-create-nng-1949-1963
 **Date:** 2026-07-24
 **Touched:** NNG-1949-1963, IDN-1949-1969, IDN-1800-1889, IND-1800-1893
