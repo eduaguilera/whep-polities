@@ -49,17 +49,28 @@ class Matcher:
     start_year, end_year, polity_type) — same as 01's `rec`.
     """
 
+    # wiki_status values whose polities must NEVER receive data: 'retired'
+    # (row withdrawn) and 'superseded' (split into finer rows, carries
+    # superseded_by). Both remain in the DB for provenance, and a collapsed
+    # dead row typically spans ALL years with type=national — so left in the
+    # families it silently outranks its own live successors.
+    DEAD_STATUS = ("retired", "superseded")
+
     def __init__(self, polities_csv, applied_aliases_csv=None, common_names_csv=None,
-                 verbose=True):
+                 verbose=True, dead_status=DEAD_STATUS):
         pol = pd.read_csv(polities_csv)   # source of truth: the repo polities database
         pol["base"] = pol["polity_name"].map(norm)
         pol["s"] = pd.to_numeric(pol["start_year"], errors="coerce")
         pol["e"] = pd.to_numeric(pol["end_year"],   errors="coerce")
-        self.pol = pol
-        self.valid_codes = set(pol["polity_code"])
+        self.pol = pol                    # full table (metadata lookups)
+        status = pol.get("wiki_status")
+        self.dead_codes = set() if status is None else \
+            set(pol.loc[status.isin(dead_status), "polity_code"])
+        live = pol[~pol["polity_code"].isin(self.dead_codes)]
+        self.valid_codes = set(live["polity_code"])   # matchable codes only
 
         self.iso_fam, self.name_fam, self.tok_fam = defaultdict(list), defaultdict(list), defaultdict(list)
-        for _, p in pol.iterrows():
+        for _, p in live.iterrows():
             rec = (p.polity_code, p.polity_name, p.iso3_code, p.s, p.e, p.polity_type)
             if isinstance(p.iso3_code, str) and p.iso3_code.strip():
                 self.iso_fam[p.iso3_code.strip().upper()].append(rec)
@@ -67,7 +78,10 @@ class Matcher:
             t = toks(p.polity_name)
             if t: self.tok_fam[t].append(rec)
         self.code_row = {p.polity_code: (p.polity_code, p.polity_name, p.iso3_code, p.s, p.e, p.polity_type)
-                         for _, p in pol.iterrows()}
+                         for _, p in live.iterrows()}
+        if verbose and self.dead_codes:
+            print(f"excluded from matching: {len(self.dead_codes)} dead polities "
+                  f"({'/'.join(dead_status)}): {', '.join(sorted(self.dead_codes))}")
 
         # spelling-alias table: norm(original_name) -> norm(common_name)
         self.alias = {}
@@ -81,9 +95,15 @@ class Matcher:
         # A label can resolve to DIFFERENT polities by year/source — the SOURCE's reporting
         # unit need not match our period splits.
         self.override_rules = []
+        self.stale_alias_targets = defaultdict(int)   # alias rows aimed at dead polities
         if applied_aliases_csv and os.path.exists(applied_aliases_csv):
             for r in csv.DictReader(open(applied_aliases_csv)):
                 tc = (r.get("target_polity_code") or "").strip()
+                if tc in self.dead_codes:
+                    # the alias itself is stale: let the label fall through to
+                    # family resolution (which now sees only live polities)
+                    self.stale_alias_targets[tc] += 1
+                    continue
                 if tc not in self.code_row: continue
                 self.override_rules.append({
                     "n": norm(r["original_name"]),
@@ -95,6 +115,10 @@ class Matcher:
         if verbose:
             print(f"applied aliases loaded: {len(self.override_rules)} rules "
                   f"({len(self.blanket_override)} blanket)")
+            if self.stale_alias_targets:
+                n = sum(self.stale_alias_targets.values())
+                print(f"  STALE: {n} alias rule(s) target dead polities, ignored -> "
+                      f"{dict(self.stale_alias_targets)}; rewrite them to the live successor")
 
     def match_alias(self, name, source, year):
         """best applied-alias target for (name, source, year); prefer year- then source-specific rules."""
@@ -113,6 +137,16 @@ class Matcher:
         if pd.isna(year): return None, "no_year"
         cands = [r for r in fam if not pd.isna(r[3]) and not pd.isna(r[4]) and r[3] <= year <= r[4]]
         if not cands: return None, "year_uncovered"
+        if len(cands) > 1:
+            # Adjacent WHEP periods SHARE their transition year (predecessor ends
+            # the year the successor starts). Route the shared year to the
+            # SUCCESSOR, matching pipelines/faostat-era-matching/match.R so the
+            # two matchers agree. Only when every candidate starts or ends
+            # exactly on this year — anything else is real ambiguity (an
+            # aggregate overlapping a period), left to the type preference.
+            if all(r[3] == year or r[4] == year for r in cands):
+                starters = [r for r in cands if r[3] == year]
+                if len(starters) == 1: return starters[0], "ok"
         cands.sort(key=lambda r: 0 if r[5] == "national" else 1)
         return cands[0], "ok"
 

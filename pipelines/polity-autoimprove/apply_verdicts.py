@@ -24,7 +24,10 @@ import json, csv, os, sys, datetime
 H = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state")
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 POLDB = os.path.join(REPO, "data/final/polities_database.csv")
-VERDICTS = os.path.join(H, "verdicts_pending.json")
+# optional arg: verdicts file (name under state/, or a path) — the verify
+# workflow can write a distinct file per run so concurrent runs don't clobber
+_v = sys.argv[1] if len(sys.argv) > 1 else "verdicts_pending.json"
+VERDICTS = _v if os.path.sep in _v else os.path.join(H, _v)
 ASSERTIONS = os.path.join(H, "assertions.json")
 LEDGER = os.path.join(H, "review_ledger.csv")
 ALIASES = os.path.join(H, "applied_aliases.csv")
@@ -39,7 +42,15 @@ LEDGER_FIELDS = ["unit_kind", "key", "status", "issue_id", "evidence_hash", "las
 
 verdicts = json.load(open(VERDICTS))
 bundles = {a["key"]: a for a in json.load(open(ASSERTIONS))["assertions"]}
-valid_codes = {r["polity_code"] for r in csv.DictReader(open(POLDB))}
+# matchable targets only: dead (retired/superseded) polities must never receive
+# data, so a verdict routing to one is a contract violation, not a fix.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from matchlib import Matcher
+_pol = list(csv.DictReader(open(POLDB)))
+dead_codes = {r["polity_code"] for r in _pol if r.get("wiki_status") in Matcher.DEAD_STATUS}
+valid_codes = {r["polity_code"] for r in _pol} - dead_codes
+span_of = {r["polity_code"]: (int(r["start_year"]), int(r["end_year"]))
+           for r in _pol if (r.get("start_year") or "").strip().isdigit()}
 
 # ---------- ledger upsert helpers ----------
 ledger = list(csv.DictReader(open(LEDGER))) if os.path.exists(LEDGER) else []
@@ -66,7 +77,8 @@ def append_dedup(path, fields, row):
 
 # ---------- apply ----------
 stats = {"confirm": 0, "reroute": 0, "split_reroute": 0, "not_a_polity": 0,
-         "new_polity": 0, "uncertain": 0, "quarantined": 0, "skipped_no_bundle": 0}
+         "new_polity": 0, "uncertain": 0, "quarantined": 0, "skipped_no_bundle": 0,
+         "skipped_stale": 0}
 proposals = json.load(open(PROPOSALS)) if os.path.exists(PROPOSALS) else []
 prop_keys = {p["key"] for p in proposals}
 
@@ -75,6 +87,15 @@ for item in verdicts:
     if b is None:
         stats["skipped_no_bundle"] += 1
         print(f"  WARN: no evidence bundle for {key} (stale verdicts file?) — skipped")
+        continue
+    # STALE GUARD: the verdict pins the evidence_hash it judged. If routing has
+    # changed since (a matcher fix, a new polity, re-ingested data), the verdict
+    # is about a candidate the agent never saw — refuse it and re-verify.
+    vh = (v.get("verified_evidence_hash") or "").strip()
+    if vh and vh != b["evidence_hash"]:
+        stats["skipped_stale"] += 1
+        print(f"  STALE: {key} was verified against evidence {vh} but the bundle is now "
+              f"{b['evidence_hash']} (candidate {b['candidate']}) — re-verify, not applied")
         continue
     reviewer = (item.get("review") or {})
     quarantined = bool(item.get("quarantined")) or v["verdict"] == "uncertain"
@@ -87,14 +108,25 @@ for item in verdicts:
         reviewer = {**reviewer, "reason": (reviewer.get("reason") or "") +
                     f" [contract: confirm echoed {pc} but candidate is {b['candidate']}]"}
     if v["verdict"] == "reroute":
+        oy0, oy1 = (int(x) for x in b["years_observed"].split("-"))
+        ts, te = span_of.get(pc, (None, None))
         if pc not in valid_codes:
             quarantined = True
+            why = "is retired/superseded — data must never route there" \
+                if pc in dead_codes else "not in polities DB"
             reviewer = {**reviewer, "reason": (reviewer.get("reason") or "") +
-                        f" [contract: reroute target {pc or '(empty)'} not in polities DB]"}
+                        f" [contract: reroute target {pc or '(empty)'} {why}]"}
         elif pc == b["candidate"]:
             quarantined = True
             reviewer = {**reviewer, "reason": (reviewer.get("reason") or "") +
                         " [contract: reroute target equals the candidate — should be confirm]"}
+        elif ts is not None and not (ts <= oy0 and oy1 <= te):
+            # the target must cover the WHOLE observed span; partial cover means
+            # the right answer is split_reroute (tile it) or new_polity (gap)
+            quarantined = True
+            reviewer = {**reviewer, "reason": (reviewer.get("reason") or "") +
+                        f" [contract: reroute target {pc} spans {ts}-{te} but the data "
+                        f"spans {oy0}-{oy1} — use split_reroute or new_polity]"}
     if v["verdict"] == "split_reroute":
         segs = v.get("split_segments") or []
         y0, y1 = (int(x) for x in b["years_observed"].split("-"))
@@ -124,12 +156,21 @@ for item in verdicts:
                     " [faostat reroute must be a match.R route, not an alias row]"}
 
     if quarantined:
+        # record BOTH positions: the second (blind) verifier's counter-verdict is
+        # often the better answer, and adjudication needs it side by side
+        rp = reviewer.get("new_polity_proposal") or {}
         append_dedup(QUARANTINE,
             ["key", "candidate", "verdict", "polity_code", "confidence", "basis",
+             "review_verdict", "review_polity_code", "review_basis", "review_proposal",
              "review_reason", "date"],
             {"key": key, "candidate": b["candidate"], "verdict": v["verdict"],
              "polity_code": v.get("polity_code") or "", "confidence": v["confidence"],
-             "basis": v["basis"], "review_reason": reviewer.get("reason") or "",
+             "basis": v["basis"],
+             "review_verdict": reviewer.get("verdict") or "",
+             "review_polity_code": reviewer.get("polity_code") or "",
+             "review_basis": reviewer.get("basis") or "",
+             "review_proposal": json.dumps(rp) if rp else "",
+             "review_reason": reviewer.get("reason") or "",
              "date": TODAY})
         bank(key, "issue")
         stats["quarantined" if item.get("quarantined") else "uncertain"] += 1

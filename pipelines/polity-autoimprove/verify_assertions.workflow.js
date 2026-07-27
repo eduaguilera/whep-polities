@@ -22,6 +22,8 @@ const A = (typeof args === 'string') ? JSON.parse(args) : (args || {})
 const repo = A.repo || '/home/usuario/whep-polities'
 const keys = Array.isArray(A.keys) ? A.keys : []
 const reviewSample = Number(A.review_sample) || 5   // spot-review every Nth confident confirm; 1 = review everything
+// distinct out file per run so concurrent runs don't clobber each other
+const outFile = A.out || 'verdicts_pending.json'
 const ASSERTIONS = `${repo}/pipelines/polity-autoimprove/state/assertions.json`
 const POLDB = `${repo}/data/final/polities_database.csv`
 const M = { model: 'sonnet', effort: 'medium' }
@@ -32,6 +34,7 @@ const VERDICT = { type:'object', additionalProperties:false,
   required:['key','verdict','confidence','basis'],
   properties:{
     key:{type:'string'},
+    verified_evidence_hash:{type:'string', description:'copy the bundle\'s evidence_hash VERBATIM — it pins which candidate/evidence you judged, so a verdict cannot be applied after the routing changed underneath it'},
     verdict:{type:'string', enum:['confirm','reroute','split_reroute','new_polity','not_a_polity','uncertain']},
     polity_code:{type:'string', description:'REQUIRED for confirm (echo candidate) and reroute (the different existing polity); empty otherwise'},
     split_segments:{type:'array', description:'for split_reroute: the observed span tiled into sub-ranges, each routed to an EXISTING polity (use when the source\'s reporting basis is misaligned with our period splits, e.g. data on pre-war borders published for years our DB assigns to the post-war polity). Segments must cover the whole observed span, in order, without overlap.',
@@ -81,7 +84,7 @@ const results = await pipeline(keys,
     `${HISTORIAN}\nVerify ONE assertion. Read ${ASSERTIONS} and find the assertion object whose "key" equals ${JSON.stringify(key)} (use python3/jq to extract just that object — do not load the whole file into your context). ` +
     `Read the candidate's wiki page (candidate_meta.wiki, repo-relative under ${repo}) and, if useful, the polity family in ${POLDB}. ` +
     `Decide: confirm (reporting territory = candidate's territory for the WHOLE observed span) | reroute (a DIFFERENT existing polity matches the whole span; give polity_code) | split_reroute (the span must be TILED across two or more existing polities — use when the source's reporting basis is misaligned with our period splits, e.g. it keeps publishing on pre-war borders for years our DB assigns to the post-war polity; give split_segments covering the whole observed span in order, no overlaps, each to an EXISTING polity code) | new_polity (no existing polity has this territory; give a proposal) | not_a_polity (aggregate/non-territorial label) | uncertain. ` +
-    `Echo the key verbatim. Ground the basis in the evidence bundle's magnitudes and the wiki territory. ` +
+    `Echo the key AND the bundle's evidence_hash (as verified_evidence_hash) verbatim. Ground the basis in the evidence bundle's magnitudes and the wiki territory. ` +
     `For confirm, set confirm_kind: verified_equal (territory demonstrably equals) vs best_available (imperfect but nothing fits better). ` +
     `The bundle's source_conventions field carries what EARLIER verifications established about this source's labels and series — treat those as verified starting points, not guesses. ` +
     `Set wiki_note to anything you established that the candidate's wiki page should record but doesn't (answers to its open questions, quantified approximations, corroboration of its design) — empty if nothing. ` +
@@ -97,7 +100,7 @@ const results = await pipeline(keys,
       `${HISTORIAN}\nIndependently verify ONE assertion (you are the second, blind verifier — decide from scratch). ` +
       `Read ${ASSERTIONS} and extract ONLY the assertion object whose "key" equals ${JSON.stringify(key)} (python3/jq — do not load the whole file). ` +
       `Study the candidate's wiki page (candidate_meta.wiki under ${repo}), the family in ${POLDB} if useful, and the web for the source's reporting conventions when in doubt. ` +
-      `Return your own verdict (same decision space: confirm/reroute/split_reroute/new_polity/not_a_polity/uncertain), echoing the key verbatim and citing the evidence that decided it.`,
+      `Return your own verdict (same decision space: confirm/reroute/split_reroute/new_polity/not_a_polity/uncertain), echoing the key and the bundle's evidence_hash (as verified_evidence_hash) verbatim, and citing the evidence that decided it.`,
       { ...M, label:`review:${key.slice(0,40)}`, phase:'Review', schema:VERDICT })
       .then(r => {
         const agrees = r ? sameTarget(v, r) : false
@@ -110,7 +113,7 @@ log(`Verify: ${verdicts.length}/${keys.length} verdicts (${nQ} quarantined by re
 
 phase('Save')
 await agent(
-  `Write this JSON array to ${repo}/pipelines/polity-autoimprove/state/verdicts_pending.json (overwrite; pretty-print). Do NOT commit, do NOT touch any other file. ` +
+  `Write this JSON array to ${repo}/pipelines/polity-autoimprove/state/${outFile} (overwrite; pretty-print). Do NOT commit, do NOT touch any other file. ` +
   `Then print a 3-line summary of verdict counts.\n${JSON.stringify(verdicts).slice(0, 400000)}`,
   { ...M, effort:'low', label:'save-verdicts', phase:'Save' })
 
@@ -118,5 +121,5 @@ return {
   verified: verdicts.length,
   quarantined: nQ,
   by_verdict: verdicts.reduce((m, x) => { const k = x.verdict.verdict; m[k] = (m[k] || 0) + 1; return m }, {}),
-  note: 'Verdicts are in state/verdicts_pending.json — inspect, then run apply_verdicts.py to bank/apply them.',
+  note: `Verdicts are in state/${outFile} — inspect, then run apply_verdicts.py [${outFile}] to bank/apply them.`,
 }
