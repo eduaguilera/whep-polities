@@ -1,0 +1,38 @@
+# Polities that declare a polygon_status asserting a polygon exists, but whose
+# polygon_feature_id the build cannot resolve, so nothing is attached.
+#
+# This is a TRACKED BACKLOG, not an exemption. Each needs either a real builder
+# in scripts/sources/constructed/build.py (most are composed unions/differences
+# described in prose, which nothing can resolve) or an honest downgrade to
+# polygon_status: unassigned with the reason recorded on the page.
+#
+# Baselined 2026-07-24 so scripts/validate_polygons.py fails on NEW occurrences
+# rather than staying permanently red. Remove a line as you fix it.
+AEF-1910-1960   # assigned: cshapes-idx-366+370+375+382
+ALK-1867-1959   # assigned: USA.2_1
+BTL-1920-1957   # assigned: GHA-1957-2025 minus GHA-1898-1956
+CAN-1800-1866   # proxy: gadm-ON+QC+NB+NS+PE
+CAN-1866-1870   # estimate: NA
+CHN-1932-1945   # assigned: cshapes-710-1921-minus-MAN-1932-1945
+FRIN-1816-1954   # estimate: composed-union-puducherry-karikal-mahe-yanam-chandernagore
+GBM-1895-1946   # assigned: cowcodes 827+821+822 (1909-1946 versions)
+GCT-1919-1956   # assigned: composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION 
+GKM-1884-1912   # assigned: 295
+GKM-1912-1916   # assigned: 296
+GRC-1830-1881   # assigned: None
+HUN-1940-1944   # assigned: cshapes-HUN310-1938+cshapes-ROU360-1920minus1940
+IDN-BLB-1949-1951   # proxy: IDN.1_1+IDN.20_1
+IDN-JVM-1949-1951   # proxy: IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1
+IDN-OTH-1949-1951   # proxy: IDN-complement-JVM-BLB
+IRL-1800-1921   # assigned: gadm-IRL+GBR-NIR
+ITS-1908-1960   # assigned: 782
+MKY-1918-1962   # assigned: 679
+NRH-1911-1953   # assigned: None
+PTIND-1816-1961   # estimate: None
+RYU-1937-1945   # proxy: JPN.38_1
+RYU-1945-1972   # proxy: JPN.38_1
+SER-1918-1945   # estimate: NA
+SYL-1944-1953   # assigned: composed-union: cowcode=652 row 1946-04-17/1967-06-09 UNION 
+TNGU-1920-1949   # assigned: 746
+TRS-1947-1954   # estimate: NA
+TTPI-1947-1994   # proxy: FSM+MHL+MNP+PLW

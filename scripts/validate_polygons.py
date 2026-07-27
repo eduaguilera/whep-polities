@@ -8,11 +8,17 @@ recorded as a row index or a guessed number rather than the Gleditsch-Ward code
 that scripts/sources.yaml actually resolves. Nothing checked the result, so the
 errors sat in the database silently. This script is that check.
 
-Two independent tests:
+Three independent tests:
 
   A. AREA AGREEMENT — measure the attached geometry in an equal-area projection
      and compare against the page's own polygon_area_km2. A large divergence
      means one of them is wrong.
+
+  C. CLAIMED BUT ABSENT — a polygon_status of assigned/proxy/estimate asserts a
+     polygon exists; fail if the build attached none (e.g. polygon_feature_id
+     written as prose, "composed-union: cowcode=452 UNION cowcode=462", which
+     nothing can resolve). Known cases are baselined in
+     scripts/validate_polygons_baseline.txt so the gate catches NEW ones.
 
   B. IDENTITY — for cshapes-bound polities, look up the feature the id resolves
      to and compare its country name against the polity. An unrelated country
@@ -69,6 +75,33 @@ for r in documented.itertuples():
     print(f"   ok   {r.divergence*100:6.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2 vs "
           f"{r.measured_km2:>12,.0f} km2 — declared '{r.polygon_status}', divergence documented")
 
+# ---------- C: status claims a polygon that was never attached ----------
+# `assigned`/`proxy`/`estimate` all assert a polygon exists. When the build
+# cannot resolve polygon_feature_id it attaches nothing and says so only in a
+# summary line, so a page can claim an exact polygon while carrying none —
+# e.g. an id written as prose ("composed-union: cowcode=452 UNION cowcode=462")
+# instead of a resolvable value. That is a direct contradiction, not a gap.
+CLAIMS_POLYGON = {"assigned", "proxy", "estimate", "polygon_vintage_drift"}
+missing = g[g.geometry.isna() | g.geometry.is_empty].copy()
+missing["st"] = missing.get("polygon_status").astype(str)
+claim_no_geom = missing[missing.st.isin(CLAIMS_POLYGON)]
+# Baseline: polities already known to claim a polygon they don't have. They are a
+# tracked backlog (each needs a real builder in scripts/sources/constructed/build.py
+# or an honest downgrade to unassigned); baselining keeps the gate meaningful for
+# NEW regressions instead of leaving it permanently red.
+BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "validate_polygons_baseline.txt")
+baseline = set()
+if os.path.exists(BASELINE):
+    baseline = {l.split("#")[0].strip() for l in open(BASELINE) if l.split("#")[0].strip()}
+new_claim_no_geom = claim_no_geom[~claim_no_geom.polity_code.isin(baseline)]
+print(f"\nC. CLAIMED BUT ABSENT — {len(missing)} polities have no geometry; "
+      f"{len(claim_no_geom)} declare a polygon_status that asserts one "
+      f"({len(baseline)} baselined, {len(new_claim_no_geom)} new)")
+for r in new_claim_no_geom.itertuples():
+    fid = str(r.polygon_feature_id)
+    print(f"   FAIL {r.polity_code:18s} status='{r.st}' but no geometry attached  "
+          f"({r.polygon_source}/{fid[:52]}{'...' if len(fid) > 52 else ''})")
+
 # ---------- B: identity of cshapes bindings ----------
 mismatch = []
 if os.path.exists(CSHAPES):
@@ -93,7 +126,8 @@ if os.path.exists(CSHAPES):
 else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
-fail = len(bad_area) > 0 or (A.strict and mismatch)
-print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s)"
+fail = len(bad_area) > 0 or len(new_claim_no_geom) > 0 or (A.strict and mismatch)
+print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s), "
+      f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s)"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
 sys.exit(1 if fail else 0)

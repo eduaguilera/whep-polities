@@ -112,23 +112,64 @@ class Matcher:
                     "code": tc})
         self.blanket_override = {ru["n"]: ru["code"] for ru in self.override_rules
                                  if ru["y0"] is None and ru["src"] is None}
+        # AMBIGUITY GUARD: match_alias breaks ties by file order (`if s > score`
+        # keeps the first rule at a given specificity). Two rules with the SAME
+        # specificity, overlapping years and DIFFERENT targets therefore resolve
+        # silently by position in the CSV — which is how a broad medium-confidence
+        # "russian federation 1917-1991 -> RSFSR" rule sat unnoticed behind six
+        # finer high-confidence rules pointing at the F228 chain. Report them.
+        self.ambiguous_alias_pairs = []
+        by_label = defaultdict(list)
+        for ru in self.override_rules:
+            by_label[(ru["n"], ru["src"])].append(ru)
+        for (name, src), rules in by_label.items():
+            for i, a in enumerate(rules):
+                for b in rules[i + 1:]:
+                    if a["code"] == b["code"]: continue
+                    if (a["y0"] is None) != (b["y0"] is None): continue   # different specificity
+                    if a["y0"] is None:                                    # both blanket
+                        self.ambiguous_alias_pairs.append((name, src, a["code"], b["code"], "blanket"))
+                    elif a["y0"] <= b["y1"] and b["y0"] <= a["y1"]:        # year ranges overlap
+                        lo, hi = max(a["y0"], b["y0"]), min(a["y1"], b["y1"])
+                        # a ONE-year overlap is the shared transition year of two
+                        # adjacent periods (inclusive ranges always touch there) and
+                        # is resolved by the successor convention — not ambiguity.
+                        if hi - lo < 1: continue
+                        self.ambiguous_alias_pairs.append(
+                            (name, src, a["code"], b["code"], f"{lo}-{hi}"))
         if verbose:
             print(f"applied aliases loaded: {len(self.override_rules)} rules "
                   f"({len(self.blanket_override)} blanket)")
+            if self.ambiguous_alias_pairs:
+                print(f"  AMBIGUOUS: {len(self.ambiguous_alias_pairs)} equal-specificity alias "
+                      f"pair(s) overlap with different targets — resolved by CSV order, not by rule:")
+                for name, src, c1, c2, where in self.ambiguous_alias_pairs[:10]:
+                    print(f"    '{name}' [{src or 'any source'}] {where}: {c1} vs {c2}")
             if self.stale_alias_targets:
                 n = sum(self.stale_alias_targets.values())
                 print(f"  STALE: {n} alias rule(s) target dead polities, ignored -> "
                       f"{dict(self.stale_alias_targets)}; rewrite them to the live successor")
 
     def match_alias(self, name, source, year):
-        """best applied-alias target for (name, source, year); prefer year- then source-specific rules."""
-        n = norm(name); src = (source or ""); best = None; score = -1
+        """best applied-alias target for (name, source, year).
+
+        Preference order: year-scoped over blanket, then source-scoped, then —
+        among equally-scoped rules — the NARROWER year range. That last
+        tie-break matters: without it two year-scoped rules covering the same
+        year scored identically and the winner was decided by position in the
+        CSV, so a broad 1919-1956 rule silently beat a specific 1949-1951 one.
+        """
+        n = norm(name); src = (source or "")
+        best, best_rank = None, None
         for ru in self.override_rules:
             if ru["n"] != n: continue
             if ru["src"] is not None and ru["src"] != src: continue
             if ru["y0"] is not None and (year is None or not (ru["y0"] <= year <= ru["y1"])): continue
-            s = (2 if ru["y0"] is not None else 0) + (1 if ru["src"] is not None else 0)
-            if s > score: best, score = ru["code"], s
+            span = (ru["y1"] - ru["y0"]) if ru["y0"] is not None else 10**6
+            rank = ((2 if ru["y0"] is not None else 0) + (1 if ru["src"] is not None else 0),
+                    -span)                              # higher score, then narrower range
+            if best_rank is None or rank > best_rank:
+                best, best_rank = ru["code"], rank
         return best
 
     @staticmethod

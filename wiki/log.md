@@ -26,6 +26,71 @@ Kinds:
 
 ---
 
+## decision-retire-rsfsr
+**Date:** 2026-07-24
+**Touched:** RSFSR-1917-1991, GCT-1919-1956, GHA-1898-1956
+**Source:** none
+**Kind:** decision
+
+**Retired `RSFSR-1917-1991`.** Three converging reasons, verified before acting:
+
+1. **It received no data.** Zero layer-B rows, zero assertions. Every
+   `russian federation` label for 1917-1991 was already routed to the
+   [f228-*](polities/f228-1945-1991.md) chain by six finer high-confidence alias
+   rules; this row's own rule was a broader, medium-confidence duplicate that
+   only ever lost to them on file order.
+2. **Its polygon was a different entity.** CShapes gwcode 365 returns the whole
+   Soviet Union (~21.8M km²) for these years, not the republic (~17.1M km²) —
+   CShapes models the USSR as one state with no constituent-republic features.
+3. **It duplicated the F228 chain**, which covers 1917-1991 in seven
+   period-accurate rows rather than one 74-year span.
+
+Its redundant alias rule was removed. Routing is byte-identical afterwards
+(189,691 matched rows, unchanged per-polity distribution). If a source ever
+needs the RSFSR *as distinct from* the USSR, the answer is a new polity with a
+composed polygon (the union minus the other fourteen republics), not this row.
+
+Signed off by: Catalin Covaci.
+
+**A silent tie-break was found and fixed while verifying this.** `match_alias`
+scored a rule by whether it was year-scoped and source-scoped, with no notion of
+range *width* — so two year-scoped rules covering the same year tied and the
+winner was decided by position in the CSV. That is how the RSFSR rule sat
+unnoticed behind the F228 rules, and it was also silently resolving a real
+conflict: `Gold Coast and British Togoland` had rules pointing at both
+[gct-1919-1956](polities/gct-1919-1956.md) (the composite, 1919-1956) and
+[gha-1898-1956](polities/gha-1898-1956.md) (the Gold Coast colony alone,
+1949-1951), and the broader rule won by file order.
+
+`match_alias` now prefers the **narrower year range** among equally-scoped
+rules, and `matchlib` reports any remaining equal-specificity overlap with
+conflicting targets (one-year overlaps at chain boundaries are excluded — those
+are the shared transition year, resolved by the successor convention). 83 raw
+overlaps reduce to zero genuine ambiguities after the fix.
+
+The Gold Coast conflict was then settled on the merits: the label names the
+**composite** territory, so it routes to GCT-1919-1956; the five rules pointing
+at GHA-1898-1956 understated it by the British Togoland share and were removed.
+Two label variants existed only in the removed set and gained GCT rules, keeping
+the match count whole. GCT now carries 55 rows.
+
+The narrower-range preference also reassigned boundary-year rows across ~40
+polities (CHN, ROU, F51, ITA, F228, SER chains) — the intended effect, since a
+specific year-ranged rule exists precisely to override the general case.
+
+**`scripts/validate_polygons.py` gained a third test** as a result of this work:
+a `polygon_status` of assigned/proxy/estimate asserts a polygon exists, so it
+now fails when the build attached none. That caught **28 polities claiming a
+polygon they do not have** — mostly composed unions whose `polygon_feature_id`
+is prose ("composed-union: cowcode=452 row … UNION cowcode=462 row …"), which
+nothing can resolve. GCT-1919-1956 is one of them: it is the correct target for
+the Gold Coast composite label and receives 55 rows, but has no geometry. These
+are recorded in `scripts/validate_polygons_baseline.txt` as a tracked backlog —
+each needs a real builder in `scripts/sources/constructed/build.py` or an honest
+downgrade to `unassigned` — so the gate fails on new occurrences rather than
+staying permanently red.
+
+
 ## decision-polygon-misbindings-eight-polities
 **Date:** 2026-07-24
 **Touched:** SMR-1800-2025, IDN-1800-1889, IDN-1889-1945, FCM-1920-1960, STP-1800-2025, TPAP-1906-1949, NNI-1904-1913, GKM-1884-1916
