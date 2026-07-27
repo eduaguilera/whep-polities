@@ -16,20 +16,15 @@ CAN-1866-1870   # estimate: NA
 FRIN-1816-1954   # estimate: composed-union-puducherry-karikal-mahe-yanam-chandernagore
 GBM-1895-1946   # assigned: cowcodes 827+821+822 (1909-1946 versions)
 GCT-1919-1956   # assigned: composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION 
-GKM-1884-1912   # assigned: 295
-GKM-1912-1916   # assigned: 296
 GRC-1830-1881   # assigned: None
 IDN-BLB-1949-1951   # proxy: IDN.1_1+IDN.20_1
 IDN-JVM-1949-1951   # proxy: IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1
 IDN-OTH-1949-1951   # proxy: IDN-complement-JVM-BLB
-ITS-1908-1960   # assigned: 782
-MKY-1918-1962   # assigned: 679
 NRH-1911-1953   # assigned: None
 PTIND-1816-1961   # estimate: None
 RYU-1937-1945   # proxy: JPN.38_1
 RYU-1945-1972   # proxy: JPN.38_1
 SER-1918-1945   # estimate: NA
 SYL-1944-1953   # assigned: composed-union: cowcode=652 row 1946-04-17/1967-06-09 UNION 
-TNGU-1920-1949   # assigned: 746
 TRS-1947-1954   # estimate: NA
 TTPI-1947-1994   # proxy: FSM+MHL+MNP+PLW

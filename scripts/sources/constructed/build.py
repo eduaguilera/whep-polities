@@ -35,6 +35,7 @@ osr.UseExceptions()
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CSHAPES2 = REPO_ROOT / "data/geodata/cshapes-2.0/CShapes-2.0.shp"
 GADM41_ADM1 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm1.gpkg"
+GADM41_ADM0 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm0.gpkg"
 CROWNLANDS = (
     REPO_ROOT
     / "data/geodata/histogis-1860-habsburg/crownlands_1860"
@@ -78,6 +79,20 @@ def _gadm_adm1(gid_1: str) -> ogr.Geometry:
         if f.GetField("GID_1") == gid_1:
             return f.GetGeometryRef().Clone()
     raise LookupError(f"GADM 4.1 adm1 has no feature with GID_1={gid_1!r}")
+
+
+def _gadm_adm0(gid_0: str) -> ogr.Geometry:
+    """Return the geometry of the GADM 4.1 country feature with the given GID_0."""
+    if not GADM41_ADM0.exists():
+        raise FileNotFoundError(
+            f"{GADM41_ADM0} missing — run scripts/sources/gadm-4.1/fetch.sh first."
+        )
+    ds = ogr.Open(str(GADM41_ADM0))
+    lyr = ds.GetLayer()
+    for f in lyr:
+        if f.GetField("GID_0") == gid_0:
+            return f.GetGeometryRef().Clone()
+    raise LookupError(f"GADM 4.1 adm0 has no feature with GID_0={gid_0!r}")
 
 
 def _crownland(feature_id: str) -> ogr.Geometry:
@@ -227,6 +242,19 @@ def build_cze_1804_1918() -> ogr.Geometry:
     return _union(_crownland("7"), _crownland("15"), _crownland("5"))
 
 
+def build_irl_1800_1921() -> ogr.Geometry:
+    """All-Ireland (32 counties), 1800-1921 = GADM 4.1 Ireland (GID_0 IRL, the
+    26 counties) union Northern Ireland (GID_1 GBR.2_1).
+
+    Neither CShapes nor a single GADM feature can supply pre-partition Ireland:
+    CShapes gwcode 205 begins in 1921 at 26 counties, and gwcode 200 (United
+    Kingdom, 1886-1921) fuses Great Britain with all Ireland inseparably. Modern
+    borders are an acceptable proxy here because the island's coastline is the
+    boundary and the internal 1921 partition line is exactly what the union
+    dissolves."""
+    return _union(_gadm_adm0("IRL"), _gadm_adm1("GBR.2_1"))
+
+
 def build_chn_1932_1945() -> ogr.Geometry:
     """China excluding Manchukuo, 1932-1945 = CShapes 2.0 gwcode 710 (the
     1921-1945 feature, i.e. post-Mongolian-independence China, which still
@@ -241,6 +269,19 @@ def build_chn_1932_1945() -> ogr.Geometry:
 
 # (polity_code, polity_name, builder-callable, provenance note)
 BUILDERS = [
+    (
+        "IRL-1800-1921",
+        "Ireland (all-island, 1800-1921)",
+        build_irl_1800_1921,
+        "Union of GADM 4.1 adm0 IRL (26 counties, 70,266 km2) and adm1 "
+        "GBR.2_1 Northern Ireland (14,167 km2) = 84,433 km2, matching the "
+        "~84,421 km2 all-island figure. Used because no historical source in "
+        "the priority stack carries pre-partition Ireland as one feature: "
+        "CShapes gwcode 205 starts in 1921 at 26 counties and gwcode 200 "
+        "fuses Great Britain with all Ireland. Modern coastline is a sound "
+        "proxy; the only internal change is the 1921 partition, which this "
+        "union reverses.",
+    ),
     (
         "CHN-1932-1945",
         "China (excluding Manchukuo, 1932-1945)",

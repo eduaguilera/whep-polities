@@ -26,6 +26,53 @@ Kinds:
 
 ---
 
+## polygon-backlog-eight-resolved
+**Date:** 2026-07-24
+**Touched:** IRL-1800-1921, STP-1800-2025, TNGU-1920-1949, MKY-1918-1962, GKM-1884-1912, GKM-1912-1916, ITS-1908-1960, CHN-1932-1945
+**Source:** cshapes-2.0, gadm-4.1
+**Kind:** ingest
+
+Worked the polygon backlog down from 28 to 20. Every measured area agrees with
+the page's stated figure to within 1%.
+
+**Fetched GADM 4.1 for `IRL`, `GBR` and `STP`** (added to
+`scripts/sources/gadm-4.1/fetch.sh`), which unblocked two rows:
+
+- **[irl-1800-1921](polities/irl-1800-1921.md)** — the largest polity in the
+  backlog at **1,049 layer-B rows**. New `build_irl_1800_1921` composes
+  all-Ireland as GADM adm0 `IRL` (26 counties, 70,266 km²) ∪ adm1 `GBR.2_1`
+  Northern Ireland (14,167 km²) = **84,433 km²**, matching the ~84,421 km²
+  all-island figure the page already documented. Modern borders are sound here:
+  the island's coastline is the boundary throughout, and the only internal
+  change in the span is the 1921 partition, which the union reverses.
+- **[stp-1800-2025](polities/stp-1800-2025.md)** — São Tomé and Príncipe is
+  absent from CShapes entirely and had been left `unassigned` earlier today
+  because GADM had not been fetched for it. Now bound as a `proxy` (1,002 km²).
+
+**Four more index-vs-Gleditsch-Ward mis-bindings** of the kind found earlier
+today, all declaring `assigned` while resolving to no CShapes feature at all:
+
+| polity | was | now | area |
+|---|---|---|---|
+| TNGU-1920-1949 | 746 | **912** @1930 | 237,536 km² — exactly the page's stated figure |
+| MKY-1918-1962 | 679 | **678** @1930 | 136,555 km² |
+| GKM-1884-1912 | 295 | **470** @1905 | 510,512 km² (pre-Neukamerun) |
+| GKM-1912-1916 | 296 | **470** @1913 | 799,953 km² (with Neukamerun) |
+
+**[its-1908-1960](polities/its-1908-1960.md)** was bound to a non-existent id
+782. CShapes has **no pre-1960 feature for Italian Somaliland** — its only
+Somali feature (gwcode 520) starts in 1960 at 636,242 km², the whole of
+independent Somalia, i.e. Italian Somaliland *plus* British Somaliland after
+their 1 July 1960 union. Bound to it as a `proxy`, not `assigned`, with the
+**~137,000 km² (≈21%) overstatement documented** on the page for the 103 rows
+matched there.
+
+**[chn-1932-1945](polities/chn-1932-1945.md)** was built earlier in the day (see
+[chn-1932-1945-polygon-built-hun-irl-blocked](log.md#chn-1932-1945-polygon-built-hun-irl-blocked)).
+
+Match count unchanged at 189,691; zero alias ambiguities; validator green.
+
+
 ## chn-1932-1945-polygon-built-hun-irl-blocked
 **Date:** 2026-07-24
 **Touched:** CHN-1932-1945, MAN-1932-1945, HUN-1940-1944, IRL-1800-1921

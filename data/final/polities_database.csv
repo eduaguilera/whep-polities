@@ -285,9 +285,9 @@ GHA-1898-1956,Ghana (1898-1956),1898,1956,national,GHA,452,Africa,draft,2026-04-
 GHA-1957-2025,Ghana,1957,2025,national,GHA,452,Africa,draft,2026-04-12,cshapes-2.0,452,1957,assigned,,,
 GIN-1894-1958,Guinea (1894-1958),1894,1958,national,GIN,438,Africa,draft,2026-04-12,cshapes-2.0,438,1894,assigned,,,GIN-1958-2025
 GIN-1958-2025,Guinea,1958,2025,national,GIN,438,Africa,draft,2026-04-12,cshapes-2.0,438,1958,assigned,,FTJ-1800-1896; GIN-1894-1958,
-GKM-1884-1912,German Kamerun (1884-1912),1884,1912,colonial,CMR,470,Africa,draft,2026-06-29,cshapes-2.0,295,1901,assigned,510559,,GKM-1912-1916
+GKM-1884-1912,German Kamerun (1884-1912),1884,1912,colonial,CMR,470,Africa,draft,2026-06-29,cshapes-2.0,470,1905,assigned,510512,,GKM-1912-1916
 GKM-1884-1916,German Kamerun,1884,1916,colonial,CMR,470,Africa,superseded,2026-06-29,cshapes-2.0,470,1912,assigned,799953,,BCM-1916-1961; FCM-1920-1960
-GKM-1912-1916,German Kamerun (1912-1916),1912,1916,colonial,CMR,470,Africa,draft,2026-06-29,cshapes-2.0,296,1912,assigned,799999,GKM-1884-1912,BCM-1916-1961; FCM-1920-1960
+GKM-1912-1916,German Kamerun (1912-1916),1912,1916,colonial,CMR,470,Africa,draft,2026-06-29,cshapes-2.0,470,1913,assigned,799953,GKM-1884-1912,BCM-1916-1961; FCM-1920-1960
 GLP-1816-2025,Guadeloupe,1816,2025,national,GLP,65,North America,draft,2026-06-24,cshapes-2.0,65,1886,assigned,1652,,
 GMB-1800-2025,Gambia,1800,2025,national,GMB,420,Africa,draft,2026-04-13,cshapes-2.0,420,1889,assigned,,,
 GNB-1879-1886,Guinea-Bissau,1879,1886,national,GNB,NA,Africa,draft,2026-04-13,cshapes-2.0,404,1886,assigned,,,GNB-1886-1974
@@ -346,7 +346,7 @@ IND-1914-1937,India (1914-1937),1914,1937,national,IND,750,Asia,reviewed,2026-04
 IND-1937-1947,India (1937-1947),1937,1947,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1937,assigned,4227508,IND-1914-1937,IND-1947-1949
 IND-1947-1949,India (1947-1949),1947,1949,national,IND,750,Asia,reviewed,2026-04-12,cshapes-2.0,750,1947,assigned,,IND-1937-1947,IND-1949-2025
 IND-1949-2025,India,1949,2025,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1949,assigned,,IND-1947-1949,
-IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,draft,2026-04-16,gadm-composed-union,gadm-IRL+GBR-NIR,2024,unassigned,84421,,IRL-1921-2025
+IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,draft,2026-04-16,constructed,IRL-1800-1921,2024,assigned,84433,,IRL-1921-2025
 IRL-1921-2025,Ireland,1921,2025,national,IRL,205,Europe,draft,2026-04-13,cshapes-2.0,205,1921,assigned,,GBR-1800-1921,
 IRN-1800-1828,Persia (Qajar to 1828),1800,1828,national,IRN,630,Asia,draft,2026-04-12,cliopatria,United States of America,1815,assigned,,,IRN-1828-2025
 IRN-1828-2025,Iran,1828,2025,national,IRN,630,Asia,draft,2026-04-12,cshapes-2.0,630,1886,assigned,,IRN-1800-1828,
@@ -363,7 +363,7 @@ ITA-1866-1870,Italy (1866-1870),1866,1870,national,ITA,325,Europe,draft,2026-06-
 ITA-1870-1919,Italy (1870-1919),1870,1919,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,ITA-1866-1870,ITA-1919-2025
 ITA-1919-2025,Italy,1919,2025,national,ITA,325,Europe,draft,2026-04-12,cshapes-2.0,325,1919,assigned,,ITA-1861-1919,
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,colonial,ITA,325,Europe,draft,2026-06-25,,,,unassigned,,OTT-1908-1912,GRC-1947-2025
-ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,national,ITS,NA,Africa,draft,2026-04-13,cshapes-2.0,782,1924,assigned,464743,,SOM-1960-2025
+ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,national,ITS,NA,Africa,draft,2026-04-13,cshapes-2.0,520,1960,proxy,636242,,SOM-1960-2025
 JAM-1800-2025,Jamaica,1800,2025,national,JAM,51,North America,draft,2026-04-13,cshapes-2.0,51,1886,assigned,,,
 JOL-1800-1890,Kingdom of Jolof,1800,1890,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Jolof,,assigned,,,SEN-1960-2025
 JOR-1918-1920,Jordan (to 1920),1918,1920,national,JOR,663,Asia,draft,2026-04-13,cshapes-2.0,663,1920,assigned,,,JOR-1920-1923
@@ -447,7 +447,7 @@ MEX-1800-1848,Mexico (to 1848),1800,1848,national,MEX,NA,North America,draft,202
 MEX-1848-2025,Mexico,1848,2025,national,MEX,NA,North America,draft,2026-04-12,cshapes-2.0,70,1886,assigned,,MEX-1800-1848,
 MHL-1874-2025,Marshall Islands,1874,2025,national,MHL,983,Oceania,draft,2026-04-13,gadm-4.1-adm0,MHL,,assigned,,,
 MKD-1991-2025,North Macedonia,1991,2025,national,MKD,343,Europe,reviewed,2026-04-12,cshapes-2.0,343,1991,assigned,,F248-1920-1991; F248-1991-1992,
-MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,national,NA,679,Asia,draft,2026-06-26,cshapes-2.0,679,1920,assigned,,,YEM-1990-2025
+MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,national,NA,679,Asia,draft,2026-06-26,cshapes-2.0,678,1930,assigned,136555,,YEM-1990-2025
 MLI-1890-1960,French Sudan (1890-1960),1890,1960,national,MLI,432,Africa,draft,2026-06-24,cshapes-2.0,432,1905,assigned,1736746,,MLI-1960-2025
 MLI-1960-2025,Mali,1960,2025,national,MLI,432,Africa,draft,2026-04-12,cshapes-2.0,432,1960,assigned,,,
 MLT-1800-2025,Malta,1800,2025,national,MLT,NA,Europe,reviewed,2026-04-12,cshapes-2.0,338,1886,assigned,,,
@@ -632,7 +632,7 @@ SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,
 SRB-2008-2025,Serbia,2008,2025,national,SRB,345,Europe,reviewed,2026-04-12,cshapes-2.0,340,2006,assigned,,SER-2006-2008,
 SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,national,ZWE,552,Africa,draft,2026-06-24,cshapes-2.0,552,1953,assigned,390610,ZWE-1900-1953,ZWE-1964-1980
 SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,cshapes-2.0,626,2011,assigned,,SUD-1956-2011,
-STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026-04-13,,,,unassigned,,,
+STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,NA,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
 SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,NA,Africa,draft,2026-04-16,cshapes-2.0,625,1914,assigned,,SUD-1899-1934,SUD-1956-2011
 SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SUD,NA,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
@@ -672,7 +672,7 @@ THA-1909-2025,Thailand,1909,2025,national,THA,800,Asia,reviewed,2026-04-12,cshap
 TJK-1991-2025,Tajikistan,1991,2025,national,TJK,702,Asia,reviewed,2026-04-12,cshapes-2.0,702,1991,assigned,,F228-1945-1991,
 TKM-1991-2025,Turkmenistan,1991,2025,national,TKM,701,Asia,reviewed,2026-04-12,cshapes-2.0,701,1991,assigned,,F228-1945-1991,
 TLS-1800-2025,Timor-Leste,1800,2025,national,TLS,860,Asia,draft,2026-04-12,cshapes-2.0,860,1886,assigned,,,
-TNGU-1920-1949,Territory of New Guinea,1920,1949,colonial,PNG,912,Oceania,draft,2026-06-26,cshapes-2.0,746,1920,assigned,237536,GNGU-1884-1914,PNG-1949-1975
+TNGU-1920-1949,Territory of New Guinea,1920,1949,colonial,PNG,912,Oceania,draft,2026-06-26,cshapes-2.0,912,1930,assigned,237536,GNGU-1884-1914,PNG-1949-1975
 TON-1800-2025,Tonga,1800,2025,national,TON,955,Oceania,draft,2026-04-13,gadm-4.1-adm0,TON,,assigned,,,
 TPAP-1906-1949,Territory of Papua,1906,1949,colonial,PNG,911,Oceania,draft,2026-07-01,cshapes-2.0,911,1910,assigned,224148,,PNG-1949-1975
 TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,national,LBY,620,Africa,draft,2026-06-26,none,,,unassigned,,LBY-1934-1943,LBY-1951-2025
