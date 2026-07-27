@@ -26,6 +26,63 @@ Kinds:
 
 ---
 
+## document-13-stub-pages
+**Date:** 2026-07-24
+**Touched:** IND-1800-1893, IND-1893-1914, IND-1914-1937, IND-1937-1947, IND-1947-1949, IDN-1800-1889, IDN-1889-1945, IDN-1945-1949, IDN-1949-1969, IDN-1969-1976, IDN-1976-2002, CHN-1913-1914, CHN-1914-1921
+**Source:** biger-1995, cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Documented the 13 pages downgraded in
+[decision-reviewed-status-audit](log.md#decision-reviewed-status-audit). Each went
+from a 1.5-2.9 KB stub with **zero** source citations to an 8-12 KB page with
+real ones — **145 citations added**, and `scripts/validate_citations.py` passes,
+so none is fabricated. That check mattered: it had already found 17 citations in
+the existing wiki pointing at sources never ingested.
+
+**They remain `draft`, deliberately.** They are now *documented*, but `reviewed`
+means a human checked the claims, and an agent writing a page does not make that
+true. Promoting them would repeat exactly the error the audit corrected.
+
+Four pages report a territorial change **inside** their span — the thing that
+decides whether a row should be split, and the reason this pass was worth doing:
+
+**1. `IDN-1949-1969` spans the West New Guinea transfer, and WHEP has no polity
+for the territory at all.** The arithmetic is exact: CShapes gwcode 850 measures
+1,877,243 km² for the Dutch East Indies and **1,466,882 km²** for independent
+Indonesia 1949-1969 — a difference of **410,361 km², precisely the area of
+CShapes gwcode 851 (West Irian / Dutch New Guinea)**. CShapes carries that
+territory as its own entity with three sub-periods (1949-1962 Dutch, 1962-1963
+UNTEA, 1963-1969 Indonesian administration), while Biger 1995 dates the handover
+to 1963 and CShapes closes the Indonesian row at 1969 (the Act of Free Choice).
+So the sources disagree on the date by six years, and for 1963-1969 Indonesian
+data may include a territory this row's polygon excludes.
+
+Concretely actionable: the layer-B data contains a **"Netherlands New Guinea"**
+label (3 fao1952 rows, 1949-1951) which is currently **unmatched**, and CShapes
+has the exact feature for it. A polity for the Dutch period would close a real
+coverage gap. **Proposed, not applied** — a new polity needs sign-off.
+
+**2. `IDN-1800-1889`'s end year may rest on a factual error.** The page's own
+successor note justifies the 1889 boundary with an "1889 Anglo-Dutch boundary
+treaty", but the Anglo-Dutch Borneo convention was signed in **1891**, and
+neither an ingested source nor any CShapes feature year lines up with 1889. If
+the 1889 boundary has no event behind it, the split point itself is arbitrary.
+Recorded on the page; needs a decision.
+
+**3. `IND-1800-1893` covers the entire British conquest of India with one
+polygon.** CShapes confirms a change at 1893 (4,652,712 → 4,819,795 km², the
+Durand Line), validating the row's end — but inside the span sit the Anglo-Maratha
+Wars (1803-1818), the 1816 Sugauli cession, the 1826 Treaty of Yandabo (Arakan,
+Manipur, Assam, Tenasserim), the 1843 conquest of Sindh and the 1845-49
+Anglo-Sikh wars. A 93-year row with a single vintage, and CShapes has no
+intermediate features to split on. The approximation is now documented rather
+than implied.
+
+**4. `IDN-1976-2002`** — the East Timor annexation (1976) and independence (2002)
+are already the row's own boundaries, so nothing further is needed. A useful
+negative result.
+
+
 ## decision-apply-brazil-acre-split
 **Date:** 2026-07-24
 **Touched:** BRA-1800-2025, BRA-1800-1903, BRA-1903-1909, BRA-1909-2025
