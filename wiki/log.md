@@ -26,6 +26,59 @@ Kinds:
 
 ---
 
+## decision-create-nng-1949-1963
+**Date:** 2026-07-24
+**Touched:** NNG-1949-1963, IDN-1949-1969, IDN-1800-1889, IND-1800-1893
+**Source:** cshapes-2.0, cliopatria-v0.1.3
+**Kind:** decision
+
+Acted on the three findings from
+[document-13-stub-pages](log.md#document-13-stub-pages).
+
+**Created [nng-1949-1963](polities/nng-1949-1963.md) — Netherlands New Guinea.**
+Three independent things pointed at the same missing polity: an **unmatched**
+`fao1952` label ("Netherlands New Guinea", 3 rows, 1949-1951); a hole in the
+Indonesian chain of exactly **410,361 km²** (CShapes 850 measures 1,877,243 km²
+for the Dutch East Indies but 1,466,882 km² for independent Indonesia 1949-1969);
+and CShapes carrying that territory as its **own entity**, gwcode **851**, with
+time-steps for Dutch administration, the UNTEA interregnum and Indonesian
+administration. Bound to that exact historical feature — measured **410,399 km²**
+against the stated 410,361 — `type: colonial`, predecessor IDN-1945-1949. The
+label now routes here, and total matched rows rose 189,691 → **189,694**.
+
+Recorded [oq-1963-to-1969-attribution](polities/nng-1949-1963.md#oq-1963-to-1969-attribution):
+Biger dates the handover to 1963, CShapes only enlarges Indonesia's polygon at
+1969 (the Act of Free Choice). This row ends at 1963, so for **1963-1969**
+Indonesia administered territory that IDN-1949-1969's polygon excludes — 28% of
+that row's area, held by no polity. Needs a decision.
+
+Signed off by: Catalin Covaci.
+
+**Corrected `IDN-1800-1889`: the 1889 split has no territorial basis.** The page
+justified it with an "1889 Anglo-Dutch boundary treaty" that does not exist — the
+Anglo-Dutch Borneo convention was **1891**. What sits at 1889 is a CShapes
+time-step at `1889/06/19 → 1889/06/20` whose geometry is **identical on both
+sides** (1,877,243 km²): a Gleditsch-Ward status change, not a boundary change.
+Under the territorial-change rule this row and
+[idn-1889-1945](polities/idn-1889-1945.md) are therefore redundant — same
+territory, same polygon, no event between them. Merging them is the logical
+conclusion but would re-route data, so it is recorded for a decision rather than
+applied.
+
+**`IND-1800-1893`: a split IS feasible, contrary to the earlier conclusion.**
+That assumption rested on CShapes having no intermediate features, which is true
+of CShapes but not of the priority stack: **Cliopatria v0.1.3**, already fetched,
+carries **British Raj** features at 3-5 year resolution across the span —
+4,188,571 km² (1873-76), 4,209,917 (1880-84), **4,816,534 (1885-89)**, 4,823,859
+(1890-94). The **+606,617 km²** step at 1885 is the annexation of **Upper Burma**,
+so the largest territorial change inside the row is directly observable in a
+source we already hold. Doing the split properly is a project — several sub-rows,
+each needing a page and binding, plus checking Cliopatria's pre-1873 features
+before choosing years for the Anglo-Maratha, Sugauli, Yandabo, Sindh and
+Anglo-Sikh expansions — so it is recorded with the evidence rather than
+half-done.
+
+
 ## document-13-stub-pages
 **Date:** 2026-07-24
 **Touched:** IND-1800-1893, IND-1893-1914, IND-1914-1937, IND-1937-1947, IND-1947-1949, IDN-1800-1889, IDN-1889-1945, IDN-1945-1949, IDN-1949-1969, IDN-1969-1976, IDN-1976-2002, CHN-1913-1914, CHN-1914-1921
