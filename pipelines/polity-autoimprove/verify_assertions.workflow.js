@@ -112,9 +112,17 @@ const nQ = verdicts.filter(x => x.quarantined).length
 log(`Verify: ${verdicts.length}/${keys.length} verdicts (${nQ} quarantined by reviewer disagreement)`)
 
 phase('Save')
+// Save, then STAMP each verdict with the bundle's real evidence_hash read from
+// assertions.json BY SCRIPT. Agents echo the hash too, but an LLM transcribing a
+// 16-hex string is unreliable (observed: one character-level slip that tripped
+// the stale guard as a false positive), so the script-derived value is
+// authoritative and the echo is advisory only.
 await agent(
-  `Write this JSON array to ${repo}/pipelines/polity-autoimprove/state/${outFile} (overwrite; pretty-print). Do NOT commit, do NOT touch any other file. ` +
-  `Then print a 3-line summary of verdict counts.\n${JSON.stringify(verdicts).slice(0, 400000)}`,
+  `Write this JSON array to ${repo}/pipelines/polity-autoimprove/state/${outFile} (overwrite; pretty-print), then stamp the true evidence hashes into it by RUNNING this exact python (do not hand-edit hashes):\n` +
+  "```\n" +
+  `python3 - <<'PY'\nimport json\nH="${repo}/pipelines/polity-autoimprove/state"\nV=json.load(open(f"{H}/${outFile}"))\nA={a["key"]:a for a in json.load(open(f"{H}/assertions.json"))["assertions"]}\nn=0\nfor x in V:\n    v=x["verdict"]; b=A.get(v["key"])\n    if not b: continue\n    if v.get("verified_evidence_hash") != b["evidence_hash"]: n+=1\n    v["echoed_evidence_hash"]=v.get("verified_evidence_hash")\n    v["verified_evidence_hash"]=b["evidence_hash"]\njson.dump(V, open(f"{H}/${outFile}","w"), indent=1)\nprint(f"stamped {len(V)} verdicts; corrected {n} echoed hashes")\nPY\n` +
+  "```\n" +
+  `Do NOT commit and do NOT touch any other file. Then print the python's output plus a 2-line summary of verdict counts.\n${JSON.stringify(verdicts).slice(0, 400000)}`,
   { ...M, effort:'low', label:'save-verdicts', phase:'Save' })
 
 return {
