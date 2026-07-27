@@ -26,6 +26,52 @@ Kinds:
 
 ---
 
+## chn-1932-1945-polygon-built-hun-irl-blocked
+**Date:** 2026-07-24
+**Touched:** CHN-1932-1945, MAN-1932-1945, HUN-1940-1944, IRL-1800-1921
+**Source:** cshapes-2.0
+**Kind:** ingest
+
+Started on the 28-polity backlog of rows that declared a polygon while carrying
+none (see [decision-retire-rsfsr](log.md#decision-retire-rsfsr) for how the
+backlog was found). Worked in order of how much data each row actually receives.
+
+**Built: `CHN-1932-1945`** (361 layer-B rows). Added a `_difference` helper and
+`build_chn_1932_1945` to `scripts/sources/constructed/build.py`: CShapes gwcode
+710's 1921-1945 feature **minus** the existing constructed Manchukuo polygon.
+The CShapes feature still includes Manchuria — its drop from the 1914-1921
+feature is Outer Mongolia, not the northeast — so without the subtraction this
+row and [man-1932-1945](polities/man-1932-1945.md) double-count the three
+northeastern provinces. Result measures **6,710,144 km²** against the page's
+long-standing claim of 6,710,264 km² (0.002% agreement), and 6,710,144 +
+791,708 recovers the full China feature to within 0.07%, confirming the
+subtraction is clean. MAN's own measured area (791,708 km²) was recorded, having
+been blank.
+
+**Blocked, and downgraded to `unassigned` rather than left claiming a polygon:**
+
+- **`HUN-1940-1944`** (201 rows). Its `polygon_feature_id` held the recipe
+  `cshapes-HUN310-1938 + cshapes-ROU360-1920minus1940`, which is not resolvable
+  *and* is wrong. Hungary's 1938-1947 feature is 108,785 km² — Trianon plus the
+  First Vienna Award, without northern Transylvania — while the Romania
+  difference (296,087 − 237,379 ≈ 58,708 km²) is Bessarabia, northern Bukovina
+  and southern Dobruja, since the 1940-2019 feature already includes northern
+  Transylvania (returned 1947). CShapes never models the 1940-44 Hungarian
+  holding, the same gap recorded on [rou-1940-1947](polities/rou-1940-1947.md),
+  so this row's ~167,492 km² cannot be composed from it.
+- **`IRL-1800-1921`** (**1,049 rows — the largest of any polity without
+  geometry**). Recipe `gadm-IRL+GBR-NIR` cannot be executed: the fetched GADM
+  4.1 admin-1 file covers only 61 countries and contains neither `GBR` nor
+  `IRL`. CShapes cannot substitute either — gwcode 205 (Ireland) starts in 1921
+  and covers 26 counties, while gwcode 200 (United Kingdom, 1886-1921) fuses
+  Great Britain with all Ireland inseparably. Fixing it needs GADM fetched for
+  `IRL` and `GBR` plus a union builder, or a historical source carrying
+  pre-partition Ireland.
+
+Backlog now 25, all baselined; the validator gate stays green on new
+occurrences. Match count unchanged at 189,691 and zero alias ambiguities.
+
+
 ## decision-retire-rsfsr
 **Date:** 2026-07-24
 **Touched:** RSFSR-1917-1991, GCT-1919-1956, GHA-1898-1956

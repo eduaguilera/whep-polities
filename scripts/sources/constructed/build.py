@@ -104,6 +104,17 @@ def _crownland(feature_id: str) -> ogr.Geometry:
     raise LookupError(f"crownlands shapefile has no feature id={feature_id!r}")
 
 
+def _difference(base: ogr.Geometry, *subtract: ogr.Geometry) -> ogr.Geometry:
+    """base minus each of `subtract` — for polities defined as a parent territory
+    with a breakaway/occupied region removed (e.g. China without Manchukuo)."""
+    acc = base.Clone()
+    for g in subtract:
+        acc = acc.Difference(g)
+    if acc.GetGeometryType() != ogr.wkbMultiPolygon:
+        acc = ogr.ForceToMultiPolygon(acc)
+    return acc
+
+
 def _union(*geoms: ogr.Geometry) -> ogr.Geometry:
     acc = geoms[0].Clone()
     for g in geoms[1:]:
@@ -216,8 +227,29 @@ def build_cze_1804_1918() -> ogr.Geometry:
     return _union(_crownland("7"), _crownland("15"), _crownland("5"))
 
 
+def build_chn_1932_1945() -> ogr.Geometry:
+    """China excluding Manchukuo, 1932-1945 = CShapes 2.0 gwcode 710 (the
+    1921-1945 feature, i.e. post-Mongolian-independence China, which still
+    INCLUDES Manchuria) minus the Manchukuo polygon built above.
+
+    Without this subtraction, data labelled as China proper for 1932-1945 is
+    matched to a territory that includes the three northeastern provinces,
+    which Manchukuo held and which MAN-1932-1945 already covers — so the two
+    rows would double-count that area."""
+    return _difference(_cshapes2_feature(710, 1932), build_man_1932_1945())
+
+
 # (polity_code, polity_name, builder-callable, provenance note)
 BUILDERS = [
+    (
+        "CHN-1932-1945",
+        "China (excluding Manchukuo, 1932-1945)",
+        build_chn_1932_1945,
+        "CShapes 2.0 gwcode 710 (1921-1945 feature) MINUS the constructed "
+        "MAN-1932-1945 Manchukuo polygon. The CShapes feature still includes "
+        "Manchuria, so subtracting Manchukuo is what prevents this row and "
+        "MAN-1932-1945 from double-counting the three northeastern provinces.",
+    ),
     (
         "DEU-1945-1949",
         "Allied-occupied Germany",
