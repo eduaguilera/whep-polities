@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+"""Validate that every polity's ATTACHED geometry is the territory it claims.
+
+Why this exists: eight polities were found carrying a completely different
+country's polygon — San Marino (61 km2) had Albania's (28,624 km2), Indonesia
+had India's, French Cameroun had Bulgaria's — because `polygon_feature_id` was
+recorded as a row index or a guessed number rather than the Gleditsch-Ward code
+that scripts/sources.yaml actually resolves. Nothing checked the result, so the
+errors sat in the database silently. This script is that check.
+
+Two independent tests:
+
+  A. AREA AGREEMENT — measure the attached geometry in an equal-area projection
+     and compare against the page's own polygon_area_km2. A large divergence
+     means one of them is wrong.
+
+  B. IDENTITY — for cshapes-bound polities, look up the feature the id resolves
+     to and compare its country name against the polity. An unrelated country
+     is a mis-binding. Historical/modern synonyms (Bechuanaland/Botswana,
+     Rumania/Romania) are expected, so this test reports for review rather than
+     failing; use --strict in CI once the known-synonym list is settled.
+
+Exit code 1 if any test-A failure exceeds the tolerance, so it can gate CI.
+
+Usage:
+  python3 scripts/validate_polygons.py [--tolerance 0.25] [--strict]
+"""
+import geopandas as gpd, pandas as pd, argparse, os, sys, re, warnings
+warnings.filterwarnings("ignore")
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
+CSV = os.path.join(REPO, "data/final/polities_database.csv")
+CSHAPES = os.path.join(REPO, "data/geodata/cshapes-2.0/CShapes-2.0.shp")
+EQUAL_AREA = "ESRI:54034"
+
+ap = argparse.ArgumentParser()
+ap.add_argument("--tolerance", type=float, default=0.25,
+                help="fractional area divergence tolerated between geometry and frontmatter")
+ap.add_argument("--min-km2", type=float, default=200.0,
+                help="skip area check below this size (projection artifacts dominate microstates)")
+ap.add_argument("--strict", action="store_true", help="also fail on identity mismatches")
+A = ap.parse_args()
+
+g = gpd.read_file(GPKG)
+have = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
+have["measured_km2"] = have.to_crs(EQUAL_AREA).geometry.area / 1e6
+print(f"{len(have)} polities with geometry (of {len(g)} rows)")
+
+# ---------- A: area agreement ----------
+have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
+chk = have[have.claimed.notna() & (have.claimed >= A.min_km2)].copy()
+chk["divergence"] = (chk.measured_km2 - chk.claimed).abs() / chk.claimed
+bad_area = chk[chk.divergence > A.tolerance].sort_values("divergence", ascending=False)
+print(f"\nA. AREA AGREEMENT — {len(chk)} polities state an area; "
+      f"{len(bad_area)} diverge from their geometry by >{A.tolerance:.0%}")
+for r in bad_area.itertuples():
+    print(f"   {r.divergence*100:7.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2, "
+          f"geometry measures {r.measured_km2:>12,.0f} km2   ({r.polygon_source}/{r.polygon_feature_id})")
+
+# ---------- B: identity of cshapes bindings ----------
+mismatch = []
+if os.path.exists(CSHAPES):
+    cs = gpd.read_file(CSHAPES)
+    name_by_gw = {int(c): grp.cntry_name.iloc[0] for c, grp in cs.groupby("gwcode")}
+    pol = pd.read_csv(CSV)
+    sub = pol[pol.polygon_source.astype(str).str.contains("cshapes", na=False)]
+    def toks(s): return set(re.findall(r"[a-z]{4,}", str(s).lower()))
+    for _, r in sub.iterrows():
+        fid = str(r.polygon_feature_id).strip().replace(".0", "")
+        if not fid.isdigit(): continue
+        cn = name_by_gw.get(int(fid))
+        if cn is None:
+            mismatch.append((r.polity_code, r.polity_name, fid, "(id absent from CShapes)"))
+            continue
+        if not (toks(r.polity_name) & toks(cn)):
+            mismatch.append((r.polity_code, r.polity_name, fid, cn))
+    print(f"\nB. IDENTITY — {len(sub)} cshapes-bound polities; {len(mismatch)} whose feature name "
+          f"shares no word with the polity name (review; historical synonyms are expected)")
+    for pc, pn, fid, cn in mismatch:
+        print(f"   {pc:18s} {str(pn)[:34]:34s} id {fid:>5s} -> {cn}")
+else:
+    print("\nB. IDENTITY — skipped, CShapes source not fetched")
+
+fail = len(bad_area) > 0 or (A.strict and mismatch)
+print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s)"
+      + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
+sys.exit(1 if fail else 0)

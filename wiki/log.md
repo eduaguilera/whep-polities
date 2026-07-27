@@ -26,6 +26,76 @@ Kinds:
 
 ---
 
+## decision-polygon-misbindings-eight-polities
+**Date:** 2026-07-24
+**Touched:** SMR-1800-2025, IDN-1800-1889, IDN-1889-1945, FCM-1920-1960, STP-1800-2025, TPAP-1906-1949, NNI-1904-1913, GKM-1884-1916
+**Source:** cshapes-2.0
+**Kind:** decision
+
+**Eight polities were carrying a different country's polygon.** Found by a new
+deterministic magnitude screen
+(`pipelines/polity-autoimprove/05_magnitude_screen.py`), which flagged FAO 1952
+land-use figures for French Cameroun as physically impossible — 44,090,000 ha of
+land against a polygon measuring only 11,098,017 ha. The data was right and our
+polygon was wrong.
+
+Root cause: `scripts/sources.yaml` resolves CShapes features by **Gleditsch-Ward
+code** (`id_column: gwcode`), but these pages recorded `polygon_feature_id` as a
+shapefile row index or an adjacent guessed number. Nothing validated the result,
+so each silently attached whatever country happened to hold that code.
+
+| polity | should be | was carrying |
+|---|---|---|
+| SMR-1800-2025 | San Marino, 61 km² | **Albania**, 28,624 km² (470x) |
+| IDN-1800-1889 | Dutch East Indies, 1.88M km² | **India**, 4.65M km² |
+| IDN-1889-1945 | Dutch East Indies, 1.88M km² | **India**, 4.89M km² |
+| FCM-1920-1960 | French Cameroun, 423,069 km² | **Bulgaria**, 110,980 km² |
+| STP-1800-2025 | Sao Tome, 964 km² | **Equatorial Guinea**, 26,904 km² |
+| TPAP-1906-1949 | Territory of Papua, 224,148 km² | **Japan**, 371,147 km² |
+| NNI-1904-1913 | Northern Nigeria, 660,625 km² | **Norway**, 320,136 km² |
+| GKM-1884-1916 | German Kamerun, 799,953 km² | id resolved to **Cyprus**; no geometry |
+
+Six are now bound to their correct Gleditsch-Ward codes and verified against the
+geometry to within 0.1%: FCM to 471, GKM to 470 (the 1912-1916 feature,
+799,953 km², exactly the figure the page already claimed), IDN to 850, NNI to
+**4784** and TPAP to **911**. The last two are upgrades rather than repairs:
+CShapes carries *exact historical* features for the Northern Nigeria
+protectorate (660,625 km² for precisely 1904-1913) and for the Territory of
+Papua, so both now rest on period-accurate geometry instead of a proxy.
+
+San Marino is absent from CShapes entirely and is now bound to GADM 4.1 adm0
+(`SMR`) as a `proxy` — defensible, since its borders have not moved since 1463.
+Sao Tome is absent from both CShapes and the partially-built GADM adm0 file (79
+countries), so it is set to `polygon_status: unassigned` with this reason
+recorded, per the rule preferring a documented gap over a silent
+modern-borders guess.
+
+**A permanent guard was added:** `scripts/validate_polygons.py` measures every
+attached geometry in an equal-area projection and fails if it diverges from the
+page's own `polygon_area_km2` by more than 25%, plus reports CShapes bindings
+whose feature name is unrelated to the polity. This class of error was
+undetectable before because nothing ever compared the attached geometry to the
+claim.
+
+Signed off by: Catalin Covaci.
+
+**Four further divergences the new validator surfaced, not yet resolved:**
+
+- `RSFSR-1917-1991` claims 17,098,242 km² (correct for the RSFSR) but carries
+  the **whole USSR** at 21,824,142 km² — gwcode 365 is the union, not the
+  republic. Same scope-error class as the eight above, but the fix needs a
+  decision: no CShapes feature exists for the RSFSR *within* the USSR, and the
+  F228-* chain already covers the union. Left flagged.
+- `ROU-1940-1947` claims 194,000 km², geometry measures 245,035 km². The claim
+  is historically right (Romania after ceding Bessarabia, northern Bukovina,
+  northern Transylvania and southern Dobruja) but CShapes does not model the
+  1940-44 Hungarian occupation, so no exact feature exists.
+- `PRY-1870-1932` claims 157,000 km², geometry 293,549 km² — the geometry
+  includes Chaco Boreal territory not effectively held before the 1938 award.
+- `POL-1919-1920` claims 256,573 km², geometry 177,754 km²; the geometry looks
+  period-correct for the pre-Riga transitional window and the claim suspect.
+
+
 ## decision-eth-1936-1941-man-1945-1950
 **Date:** 2026-07-24
 **Touched:** ETH-1936-1941, MAN-1945-1950, AOI-1936-1941, CHN-1947-1949
