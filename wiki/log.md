@@ -26,6 +26,65 @@ Kinds:
 
 ---
 
+## decision-merge-idn-1889
+**Date:** 2026-07-24
+**Touched:** IDN-1800-1889, IDN-1889-1945, IDN-1800-1945, NNG-1949-1963, CAN-1948-2025, NFL-1907-1949, EGYSUD-1934-1956, AUSA-1836-1900, AUWA-1829-1900
+**Source:** cshapes-2.0
+**Kind:** decision
+
+Three approved changes, plus what the third one uncovered.
+
+**1. Merged `IDN-1800-1889` + `IDN-1889-1945` into
+[idn-1800-1945](polities/idn-1800-1945.md).** The 1889 boundary had no
+territorial basis: both rows carried the *same* geometry (1,877,243 km²), and the
+CShapes break at `1889/06/19 → 1889/06/20` is a Gleditsch-Ward status change, not
+a boundary change. The "1889 Anglo-Dutch boundary treaty" the old page cited does
+not exist — the Borneo convention was 1891. All 1,208 rows moved to the merged
+row. Renamed to **Dutch East Indies**, its actual identity, which cost 23 rows
+until an alias was added: the `fao1952` "Indonesia" rows carry **no iso3 code**
+and had been resolving by *name*, so renaming the row orphaned them. A neat
+illustration of why the alias table exists — the source's label and the polity's
+name are different things.
+
+**2. Extended `NNG-1949-1963` to 1969** and renamed it *Netherlands New Guinea /
+West Irian*. Biger dates the handover to Indonesia to 1963 (the UNTEA transfer),
+but CShapES keeps gwcode 851 distinct until 1969-09-16 and only enlarges
+Indonesia's polygon on 1969-09-17 (the Act of Free Choice). Ending at 1963 left
+1963-1969 with **no polity holding the territory**. Extending makes the polygons
+complementary with no gap and keeps the chain on one source. The 1963
+administrative handover is recorded in the page's sourced claims — it is not a
+*territorial* change, which is what row boundaries track.
+
+**3. Audited the whole database for the shadowing hazard** that bit three times
+today (Alaska outranking the USA, Hyderabad taking India-labelled data, a retired
+Argentina row beating its own successors). New
+`scripts/audit_family_shadowing.py` flags polities that share an iso3, overlap by
+more than a year, tie on the national/not-national preference, and differ ≥3× in
+area — cases where **family ordering, not polity_type, decides the match**. Five
+found, each a genuine mis-description:
+
+| polity | was | now | why |
+|---|---|---|---|
+| NFL-1907-1949 | `iso3: CAN` | **`iso3: NFL`** | a separate Dominion until 1949; it was never Canada, and sharing the code let Canada-labelled data reach a 25× smaller territory |
+| EGYSUD-1934-1956 | `national` | **`aggregate`** | Egypt *plus* Sudan; at equal rank it competed with Egypt itself for Egypt-labelled data, 3.5× larger |
+| AUSA-1836-1900 | `national` | **`colonial`** | a self-governing colony before the 1901 federation |
+| AUWA-1829-1900 | `national` | **`colonial`** | likewise |
+
+The audit now passes clean. Fixing Newfoundland then exposed a fourth issue:
+with it out of Canada's family, the shared-transition-year convention routed
+**calendar-1948** Canadian data to [can-1948-2025](polities/can-1948-2025.md),
+which *includes* Newfoundland — but the accession was **31 March 1949**, so 1948
+data belongs to the excluded territory. CShapes dates its step to the 22 July
+1948 *referendum* instead. Pinned with a year-scoped alias; the underlying fix is
+this row's start year, which should arguably be 1949 and would require renaming
+the code. Recorded, not done. That page also lists a **predecessor code that does
+not exist** (`CAN-1866-1948`), so dangling references deserve their own sweep.
+
+Match count unchanged at 189,694 throughout; 740 polities; all validators green.
+
+Signed off by: Catalin Covaci.
+
+
 ## decision-split-india-at-1886
 **Date:** 2026-07-24
 **Touched:** IND-1800-1893, IND-1800-1886, IND-1886-1893, HYD-1724-1948

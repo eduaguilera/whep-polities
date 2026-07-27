@@ -33,11 +33,11 @@ AUH-1866-1908,Austria-Hungary (1866-1908),1866,1908,national,AUH,300,Europe,draf
 AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,national,AUH,300,Europe,draft,2026-04-11,cshapes-2.0,300,1908,assigned,,AUH-1866-1908,AUT-1918-1919; HUN-1918-1919; F51-1918-1938; F248-1918-1919; POL-1918-1919
 AUS-1800-1901,Australian Colonies (to 1901),1800,1901,national,AUS,NA,Oceania,draft,2026-04-16,cshapes-2.0,900,1901,proxy,7686693,,AUS-1901-2025
 AUS-1901-2025,Australia,1901,2025,national,AUS,900,Oceania,reviewed,2026-04-12,cshapes-2.0,900,1927,assigned,,,
-AUSA-1836-1900,South Australia (to 1900),1836,1900,national,AUS,NA,Oceania,draft,2026-04-15,cshapes-2.0,903,1886,assigned,,,AUS-1901-2025
+AUSA-1836-1900,South Australia (to 1900),1836,1900,colonial,AUS,NA,Oceania,draft,2026-04-15,cshapes-2.0,903,1886,assigned,,,AUS-1901-2025
 AUT-1800-1918,Austria (Cisleithania),1800,1918,national,AUT,305,Europe,draft,2026-04-17,histogis-1860-habsburg,AUT-1800-1918,,assigned,300560,,AUT-1918-1919
 AUT-1918-1919,Austria (1918-1919),1918,1919,national,AUT,305,Europe,draft,2026-04-12,cshapes-2.0,305,1918,assigned,,AUH-1908-1918,AUT-1919-2025
 AUT-1919-2025,Austria,1919,2025,national,AUT,305,Europe,draft,2026-04-12,cshapes-2.0,305,1919,assigned,,AUH-1908-1918,
-AUWA-1829-1900,Western Australia (to 1900),1829,1900,national,AUS,NA,Oceania,draft,2026-04-15,cshapes-2.0,902,1886,assigned,,,AUS-1901-2025
+AUWA-1829-1900,Western Australia (to 1900),1829,1900,colonial,AUS,NA,Oceania,draft,2026-04-15,cshapes-2.0,902,1886,assigned,,,AUS-1901-2025
 AZE-1991-2025,Azerbaijan,1991,2025,national,AZE,373,Asia,reviewed,2026-04-12,cshapes-2.0,373,1991,assigned,,AZE-SSR-1920-1991,
 AZE-SSR-1920-1991,Azerbaijan SSR,1920,1991,national,AZE,373,Asia,draft,2026-06-26,cshapes-2.0,373,1991,proxy,87000,F228-1920-1921,AZE-1991-2025
 BCM-1916-1961,British Cameroons,1916,1961,colonial,CMR,472,Africa,draft,2026-06-25,cshapes-2.0,472,1953,assigned,87489,,NGA-1961-2025; CMR-1961-2025
@@ -205,7 +205,7 @@ EGY-1899-1925,Egypt (1899-1925),1899,1925,national,EGY,651,Africa,draft,2026-04-
 EGY-1925-1967,Egypt (1925-1967),1925,1967,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1925,assigned,,EGY-1899-1925,EGY-1967-1979
 EGY-1967-1979,Egypt (1967-1979),1967,1979,national,EGY,651,Africa,draft,2026-04-12,cshapes-2.0,651,1967,assigned,,EGY-1925-1967,EGY-1979-2025
 EGY-1979-2025,Egypt,1979,2025,national,EGY,651,Africa,reviewed,2026-04-12,cshapes-2.0,651,1979,assigned,,EGY-1967-1979,
-EGYSUD-1934-1956,Egypt and Anglo-Egyptian Sudan,1934,1956,national,EGY,,Africa,draft,2026-06-25,constructed,EGYSUD-1934-1956,,assigned,3485332,,
+EGYSUD-1934-1956,Egypt and Anglo-Egyptian Sudan,1934,1956,aggregate,EGY,,Africa,draft,2026-06-25,constructed,EGYSUD-1934-1956,,assigned,3485332,,
 ERI-1885-1889,"Eritrea (Italian coastal, 1885-1889)",1885,1889,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1886,assigned,,,ERI-1889-1952
 ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",1889,1952,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1900,assigned,,ERI-1885-1889,ERI-1993-2025
 ERI-1993-2025,Eritrea,1993,2025,national,ERI,531,Africa,draft,2026-04-13,cshapes-2.0,531,1993,assigned,,ERI-1889-1952; ETH-1952-1993,
@@ -331,8 +331,9 @@ HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,202
 HYD-1724-1948,Hyderabad State,1724,1948,subnational,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
 IBD-1829-1893,Ibadan City-State,1829,1893,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Ibadan,,assigned,,,SNI-1899-1906
 ICN-1800-2025,Canary Islands,1800,2025,national,ICN,20,Africa,draft,2026-04-13,gadm-4.1-adm1,ESP.14_1,,assigned,,,
-IDN-1800-1889,Indonesia (to 1889),1800,1889,national,IDN,750,Asia,draft,2026-04-12,cshapes-2.0,850,1886,assigned,1877243,,IDN-1889-1945
-IDN-1889-1945,Indonesia (1889-1945),1889,1945,national,IDN,750,Asia,draft,2026-04-13,cshapes-2.0,850,1900,assigned,1877243,IDN-1800-1889,IDN-1945-1949
+IDN-1800-1889,Indonesia (to 1889),1800,1889,national,IDN,750,Asia,superseded,2026-04-12,cshapes-2.0,850,1886,unassigned,1877243,,IDN-1889-1945
+IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,colonial,IDN,850,Asia,draft,2026-07-24,cshapes-2.0,850,1900,polygon_vintage_drift,1877243,,IDN-1945-1949
+IDN-1889-1945,Indonesia (1889-1945),1889,1945,national,IDN,750,Asia,superseded,2026-04-13,cshapes-2.0,850,1900,unassigned,1877243,IDN-1800-1889,IDN-1945-1949
 IDN-1945-1949,Indonesia (1945-1949),1945,1949,national,IDN,850,Asia,draft,2026-04-12,cshapes-2.0,850,1945,assigned,,IDN-1889-1945,IDN-1949-1969
 IDN-1949-1969,Indonesia (1949-1969),1949,1969,national,IDN,850,Asia,draft,2026-07-27,cshapes-2.0,850,1949,assigned,,IDN-1945-1949,IDN-1969-1976
 IDN-1969-1976,Indonesia (1969-1976),1969,1976,national,IDN,850,Asia,draft,2026-04-12,cshapes-2.0,850,1969,assigned,,IDN-1949-1969,IDN-1976-2002
@@ -502,7 +503,7 @@ NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft
 NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-04-16,cshapes-2.0,436,1947,assigned,1182017,NER-1922-1947,NER-1960-2025
 NER-1960-2025,Niger,1960,2025,national,NER,436,Africa,draft,2026-04-13,cshapes-2.0,436,1960,assigned,,DMG-1800-1899,
 NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,territory,NFK,NA,Oceania,draft,2026-07-01,gadm-4.1-adm0,NFK,2023,assigned,35,,
-NFL-1907-1949,Dominion of Newfoundland,1907,1949,national,CAN,21,North America,draft,2026-06-25,cshapes-2.0,21,1920,assigned,398416,,CAN-1948-2025
+NFL-1907-1949,Dominion of Newfoundland,1907,1949,national,NFL,21,North America,draft,2026-06-25,cshapes-2.0,21,1920,assigned,398416,,CAN-1948-2025
 NGA-1886-1914,Colonial Nigeria,1886,1914,national,NGA,NA,Africa,draft,2026-04-16,cshapes-2.0,475,1914,assigned,,,NGA-1914-1960
 NGA-1914-1960,Nigeria (1914-1960),1914,1960,national,NGA,475,Africa,reviewed,2026-04-13,cshapes-2.0,475,1914,assigned,,NNI-1904-1913; SNI-1906-1913; BRG-1800-1897,NGA-1960-1961
 NGA-1960-1961,Nigeria (1960-1961),1960,1961,national,NGA,475,Africa,draft,2026-04-12,cshapes-2.0,475,1960,assigned,,NGA-1914-1960,NGA-1961-2025
@@ -512,7 +513,7 @@ NIU-1800-2025,Niue,1800,2025,territory,NIU,NA,Oceania,draft,2026-07-02,gadm-4.1-
 NKR-1800-1901,Kingdom of Nkore (Ankole),1800,1901,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Nkore,,assigned,,,UGA-1894-1902; UGA-1962-2025
 NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,national,NLD,NA,Europe,draft,2026-04-12,cliopatria,Netherlands,1820,assigned,,,NLD-1830-2025; LUX-1839-2025
 NLD-1830-2025,Netherlands,1830,2025,national,NLD,NA,Europe,draft,2026-04-12,cliopatria,Netherlands,1950,assigned,,NLD-1800-1830,
-NNG-1949-1963,Netherlands New Guinea (1949-1963),1949,1963,colonial,IDN,,Oceania,draft,2026-07-24,cshapes-2.0,851,1955,assigned,410361,IDN-1945-1949,IDN-1949-1969
+NNG-1949-1963,Netherlands New Guinea / West Irian (1949-1969),1949,1969,colonial,IDN,,Oceania,draft,2026-07-24,cshapes-2.0,851,1955,assigned,410361,IDN-1945-1949,IDN-1949-1969
 NNI-1899-1904,Northern Nigeria (1899-1904),1899,1904,national,NNI,385,Africa,draft,2026-04-13,cshapes-2.0,4784,1899,assigned,,,NNI-1904-1913
 NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,national,NNI,385,Africa,draft,2026-04-13,cshapes-2.0,4784,1905,assigned,660625,NNI-1899-1904; NWR-1900-1905,NGA-1914-1960
 NOR-1800-2025,Norway,1800,2025,national,NOR,385,Europe,draft,2026-04-13,cshapes-2.0,385,1905,assigned,,,
