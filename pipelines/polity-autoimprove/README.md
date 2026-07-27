@@ -40,6 +40,30 @@ audit → reconcile → fix → integrate → cleanup loop.
 
 ---
 
+## Open work is tracked as GitHub issues
+
+Findings that need a decision, a source we do not have, or work that can be
+chipped away at independently live in the repo's **issue tracker**, not in
+comments or state files. Anything recorded only in a CSV or a wiki page tends to
+be rediscovered by accident later.
+
+The state files below are **queues**, and each has an issue that explains what to
+do with it:
+
+| file | holds | issue |
+|---|---|---|
+| `state/assertions.json` | pending assertions to verify | #7, #8 |
+| `state/quarantine.csv` | verdicts where two agents disagreed | #20 |
+| `state/new_polity_proposals.json` | proposed polities awaiting sign-off | — |
+| `state/suspect_wiki_pages.csv` | pages verification judged wrong or too thin | #19, #25 |
+| `state/landuse_corrections.csv` | recoverable bad cells in the FAO land-use series | #4 |
+| `state/source_conventions.csv` | what a source's labels actually measure | #24 |
+| `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack | #3 |
+
+Useful label combinations: `decision-needed` (blocked on a judgement call),
+`blocked-on-source` (needs a GIS/reference source we lack), `guard` (a check that
+stops a class of error recurring), `backlog` (multi-item, chip away).
+
 ## State model — the review ledger
 
 `state/review_ledger.csv` persists what has been reviewed, so re-runs skip
