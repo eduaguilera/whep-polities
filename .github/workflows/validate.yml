@@ -54,6 +54,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: requirements-ci.txt
 
       # GDAL is needed twice over: build_database.py imports osgeo.ogr, and
       # geopandas reads the committed GeoPackage. The apt python3-gdal build is
@@ -64,7 +65,7 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq gdal-bin libgdal-dev python3-gdal
           python -m pip install --upgrade pip
-          pip install pandas geopandas pyyaml
+          pip install -r requirements-ci.txt
           # expose the apt-installed osgeo bindings to the setup-python interpreter
           echo "PYTHONPATH=/usr/lib/python3/dist-packages" >> "$GITHUB_ENV"
 
