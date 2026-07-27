@@ -1,0 +1,390 @@
+[
+ {
+  "verdict": {
+   "basis": "The assertion covers 6 rows (1949-1951) of \"Makatea\" phosphate rock production (median 92k tonnes) routed to PYF-1800-2025 (French Polynesia). Makatea is a small island in the Tuamotu Archipelago that was, during this era, part of the \u00c9tablissements fran\u00e7ais de l'Oc\u00e9anie (French Oceania), the historical predecessor administratively continuous with what WHEP models as the single-row \"French Polynesia\" polity (1800-2025, GADM proxy polygon). Makatea was historically a major phosphate-mining site (Compagnie Fran\u00e7aise des Phosphates de l'Oc\u00e9anie), so a phosphate-rock figure of this modest magnitude (~92k tonnes/yr) reported under that label is entirely consistent with a single-island mining operation being folded into the broader French Oceania/French Polynesia territorial reporting unit \u2014 there is no reason to think this label carries a different or larger territorial scope (no union/empire ambiguity, no combined-reporting risk: Makatea was never a separate reporting sovereign). The wiki page is draft and gives no useful territorial detail beyond \"current GADM polygon used as proxy for whole span,\" so it is not being relied upon beyond noting it is unreviewed. The candidate's territory (all of French Polynesia including Makatea) did not change over the narrow 1949-1951 window, so the reporting territory equals the candidate's territory and stayed constant for the whole observed span.",
+   "checks": [
+    "scope",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "makatea|fao1952|1949-1951",
+   "page_suspect": false,
+   "polity_code": "PYF-1800-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "89f37fb905282158",
+   "wiki_note": "",
+   "echoed_evidence_hash": "89f37fb905282158"
+  },
+  "review": {
+   "key": "makatea|fao1952|1949-1951",
+   "verdict": "confirm",
+   "polity_code": "PYF-1800-2025",
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "basis": "Makatea is a small island in the Tuamotu Archipelago, part of French Polynesia (\u00c9tablissements fran\u00e7ais de l'Oc\u00e9anie) since French annexation in the 1880s, and was never administratively separate; its phosphate deposits were exploited 1908-1966 entirely under this same French Polynesian administration. There is no union/empire-scope, boundary-vintage, or combined-reporting issue: no other polity ever held or reported this territory, and French Polynesia's island composition has not changed across the observed 1949-1951 window or the whole database period. The reported magnitude (median 92 thousand tonnes of phosphate rock/year) matches the known scale of historical Makatea phosphate output, supporting that the source label genuinely refers to this island's production under French Polynesia.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity"
+   ],
+   "page_suspect": false,
+   "wiki_note": "",
+   "verified_evidence_hash": "89f37fb905282158"
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "French Polynesia's constituent archipelagos (Society, Tuamotu, Marquesas, Austral, Gambier) were all under French sovereignty and administratively unified as the \u00c9tablissements fran\u00e7ais de l'Oc\u00e9anie by 1903, six years before the observed span begins (1909). No annexation, cession, or boundary change occurred within 1909-1938, so the reporting territory for \"french polynesia\" in IIA is constant across the whole span and matches the modern/current-boundary proxy used for the candidate polity (small Pacific island group, ~4,000 km\u00b2 total). Staple magnitudes (tobacco ~22 ha, copra/product ~39,285 t, eggs 108 t, sugar 200 t) are plausible for a small island economy of that era and show no discontinuity suggesting a scope change.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "french polynesia|iia|1909-1938",
+   "page_suspect": false,
+   "polity_code": "PYF-1800-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "ea30d967f409e650",
+   "wiki_note": "The five archipelagos (Society, Tuamotu, Marquesas, Austral, Gambier) were unified as the \u00c9tablissements fran\u00e7ais de l'Oc\u00e9anie in 1903, predating the observed IIA span (1909-1938); territory was constant through this span, so the current-boundary proxy is a reasonable stand-in specifically for these years even though the page's blanket 1800-2025 proxy note is weaker for earlier, pre-unification decades.",
+   "echoed_evidence_hash": "ea30d967f409e650"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "New Caledonia is a small, geographically bounded French Pacific colony whose territory (Grande Terre + dependent islands) was stable throughout 1913-1945 \u2014 no annexations, cessions, or administrative splits affecting its extent occurred in this window. The ISO-based route (ncl) is unambiguous since IIA/FAOSTAT-style sources report New Caledonia as a distinct unit, not folded into \"France\" the way Algeria was. Staple magnitudes (coffee ~1,700 t median, minor/zero cotton) are plausible for this small island economy and show no discontinuity suggesting a scope change. The wiki page is draft and only addresses polygon-vintage precision (current GADM proxy), not territorial identity, so it isn't being relied on for the core match \u2014 the geographic/historical stability of New Caledonia's borders over this specific 32-year span is well-established general knowledge.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft"
+   ],
+   "key": "new caledonia|iia|1913-1945",
+   "verdict": "confirm",
+   "polity_code": "NCL-1800-2025",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "verified_evidence_hash": "35447779d4218214",
+   "wiki_note": "",
+   "page_suspect": false,
+   "echoed_evidence_hash": "35447779d4218214"
+  },
+  "review": {
+   "basis": "New Caledonia has been a French colonial possession with essentially unchanged core territory (Grande Terre, Loyalty Islands, Isle of Pines) since annexation in 1853, well before the observed 1913-1945 IIA reporting window. The candidate NCL-1800-2025 uses a modern GADM proxy polygon but its territorial footprint matches the historical French colony for this period \u2014 there is no competing/split polity in the DB (no separate Wallis-and-Futuna entry), and the small agricultural magnitudes reported (coffee ~1,700t, near-zero cotton, \"p\" ~4,361t) are consistent with a small Pacific island colonial economy, not a larger union or combined-reporting entity. One caveat: Wallis and Futuna was administered as a dependency of New Caledonia until 1961 and could in principle have been folded into some French colonial statistical reporting for \"Nouvelle-Cal\u00e9donie,\" but Wallis-Futuna's population/output is tiny relative to New Caledonia's and there is no separate polity to reroute it to regardless, so this does not change the routing decision. The wiki page itself is a thin draft (proxy polygon, no historical boundary discussion) and offers no independent corroboration \u2014 my verdict rests on external knowledge of French Pacific colonial administration and plausibility of the magnitudes, not on the draft's claims.",
+   "checks": [
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "web_research"
+   ],
+   "key": "new caledonia|iia|1913-1945",
+   "page_suspect": false,
+   "polity_code": "NCL-1800-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "35447779d4218214",
+   "wiki_note": "Note for future reference (not acted on here): Wallis and Futuna was administered as a dependency of New Caledonia until 1961, so pre-1961 French colonial statistics for \"Nouvelle-Cal\u00e9donie\" may in principle have bundled small Wallis-Futuna output; negligible in magnitude and there is no separate polity in the DB to route it to, so it does not affect this verdict."
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "american samoa|iia|1930-1934",
+   "verdict": "confirm",
+   "polity_code": "ASM-1900-2025",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "basis": "American Samoa is a small (~199 km\u00b2), US-administered set of eastern Samoan islands whose borders have been constant since the 1900/1904 deeds of cession (well before and through the 1930-1934 observed span), distinct from Western Samoa/Samoa. The tobacco 'unmanufactured' magnitude (median 54 ha, n=12) is a plausible small-scale figure for this tiny territory and shows no discontinuity suggesting scope change. The IIA label 'american samoa' for 1930-1934 maps cleanly to the single, unchanging US territory, so the reporting territory equals the candidate's territory for the whole span.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "verified_evidence_hash": "636a7e655ebeed5c",
+   "echoed_evidence_hash": "636a7e655ebeed5c"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "french somaliland|fao1952|1936-1951",
+   "verdict": "confirm",
+   "confidence": "medium",
+   "confirm_kind": "verified_equal",
+   "polity_code": "FRS-1884-1977",
+   "verified_evidence_hash": "68c36968fa646564",
+   "basis": "French Somaliland (colonial Djibouti) is a small territory (~23,192 km\u00b2) whose borders were fixed by the 1897 Franco-Ethiopian treaty and remained unchanged from 1884 through independence in 1977 (successor FRS-1977-2025), so there is no annexation/cession event that could bisect the 1936-1951 observed span. The FAO 1952 livestock magnitudes (camels ~3,000 head, sheep ~100,000, goats ~200,000, horses/mules/asses ~6,000) are plausible for a small arid pastoral colony of this size and are internally consistent across the 5 observed years with no discontinuity, supporting a single stable reporting territory rather than a scope change. No neighbor_segments data exists to cross-check, and the population-series caveat in source_conventions is not directly relevant here since livestock counts, not population, anchor this assertion.",
+   "checks": [
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft"
+   ],
+   "page_suspect": false,
+   "wiki_note": "",
+   "echoed_evidence_hash": "68c36968fa646564"
+  },
+  "review": {
+   "basis": "French Somaliland was a single, continuously-administered French colony throughout 1884-1977 with borders fixed by the 1897 Franco-Ethiopian treaty (per the wiki page, a draft-status claim but one that is externally corroborated: French Somaliland/Djibouti's colonial borders are well-documented in historical-boundary literature as stable from the late 19th century until independence in 1977, with no annexations, partitions, or union arrangements affecting this small coastal territory). Unlike Yemen, Sweden-Norway, or Austria-Hungary type cases, there is no plausible alternative scope (no larger French Somali empire/union, no combined reporting with a neighbor) for a FAO source labeling data simply \"French Somaliland\" in 1936-1951 \u2014 that label unambiguously denotes this one colony. The staple magnitudes (camels ~3,000 head, sheep ~100,000, goats ~200,000) are plausible orders of magnitude for a small (~23,000 km\u00b2) arid pastoral territory and show no internal discontinuity suggesting a mid-span territorial change. The source_conventions caveat about the FAO 1952 population series reading low is not applicable here since none of the sampled items are population.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "french somaliland|fao1952|1936-1951",
+   "verdict": "confirm",
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "polity_code": "FRS-1884-1977",
+   "verified_evidence_hash": "68c36968fa646564",
+   "wiki_note": "",
+   "page_suspect": false
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "French Somaliland's land border was fixed by the 1897 Franco-Ethiopian treaty and did not change across 1929-1945, so the \"djibouti\" label in IIA yearbooks maps to a constant territory matching candidate FRS-1884-1977 (23,192 km2, CShapes feature 522). The routing itself is territorially sound: no annexation/cession/occupation affected French Somaliland in this span. The eggs magnitude (54 t) is plausible for domestic production in a small colony. However the coffee, green magnitude (median 14,114 t/yr) is wildly implausible as domestic production from an arid 23,192 km2 territory with no coffee-growing agroecology \u2014 this is almost certainly Ethiopian coffee transiting the Addis Ababa-Djibouti railway and being recorded as an export \"of Djibouti\" (entrepot/transshipment reporting), a well-known feature of colonial-port trade statistics. This does not change the territorial routing verdict (the reporting entity is still French Somaliland as a customs/export territory) but it is a data-quality caveat about what the series actually measures (transit trade, not production), which the current draft wiki page does not mention.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "djibouti|iia|1929-1945",
+   "page_suspect": false,
+   "polity_code": "FRS-1884-1977",
+   "source_convention": {
+    "convention": "IIA \"coffee, green\" figures reported under \"Djibouti\" reflect the port/customs territory's recorded exports, not local production; the volumes are almost entirely Ethiopian coffee transiting the Addis Ababa-Djibouti railway (entrepot/transshipment trade), not coffee grown in French Somaliland.",
+    "evidence": "Median 14,114 t/yr of coffee reported for a 23,192 km2 arid territory with no coffee-growing zones is implausible as domestic output but consistent with known colonial-era transshipment of Ethiopian highland coffee through the Djibouti rail terminus/port.",
+    "item_pattern": "coffee, green",
+    "label_pattern": "djibouti"
+   },
+   "verdict": "confirm",
+   "verified_evidence_hash": "2b9c73fd8e9b2d1c",
+   "wiki_note": "The IIA coffee, green figures (median ~14,114 t/yr, 1929-1945) reported under \"Djibouti\" are implausible as French Somaliland's own production (23,192 km2, arid, no coffee agroecology) and almost certainly reflect Ethiopian coffee transiting the Addis Ababa-Djibouti railway/port (entrepot trade recorded under the exporting territory). The territorial routing to FRS-1884-1977 is still correct (stable 1897 border throughout the span); this is a caveat about what the coffee series measures, not a routing problem. Page currently does not mention this.",
+   "echoed_evidence_hash": "2b9c73fd8e9b2d1c"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes FAO 1952 \"New Guinea\" 1937-1949 data to TNGU-1920-1949 (Territory of New Guinea, the Australian-administered League of Nations mandate covering the NE portion of the island). This territory was administratively stable from its creation in 1920 until its 1949-07-01 administrative union with Papua to form PNG-1949-1975 \u2014 the neighbor_segments field confirms this exact seam: 1950-1951 data is already routed to PNG-1949-1975, meaning the source itself switches reporting basis right at the historical merger date, and the candidate's end_year (1949) lines up precisely with that. This is strong corroborating structural evidence independent of the wiki draft's own prose. Magnitudes are plausible: copra (\"cropa\") median 62 (1000 tonnes) fits Territory of New Guinea's copra-export economy; cacao and rubber near zero are also consistent (minor crops there); population ~1.006M for one year is a plausible order of magnitude for the mandate's area (237,536 km2) and population at the time, though the source_conventions flag that this FAO 1952 population series is sometimes ~1/3 of true totals \u2014 here it looks closer to a plausible full total, but I could not independently verify the exact census figure via external search in this pass, so I rely on continuity/routing evidence rather than the population figure alone. The wiki page (status: draft) is not itself contradicted by anything found; it correctly documents the predecessor/successor chain and the same routing decision, but since it was written by an earlier automated pass I treat its narrative as hypothesis and lean on the neighbor-segment seam and crop-magnitude plausibility instead.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "new guinea|fao1952|1937-1949",
+   "page_suspect": false,
+   "polity_code": "TNGU-1920-1949",
+   "verdict": "confirm",
+   "verified_evidence_hash": "1593880f794a923c",
+   "wiki_note": "",
+   "echoed_evidence_hash": "1593880f794a923c"
+  },
+  "review": {
+   "basis": "The assertion routes FAO 1952 \"New Guinea\" 1937-1949 data (6 rows: cropa, cacao, rubber, population) to TNGU-1920-1949 (Australian-administered Territory of New Guinea, the former German New Guinea mandate, 237,536 km\u00b2), with 1950-1951 correctly routed to the post-merger PNG-1949-1975. The main risk to check was combined reporting \u2014 whether \"New Guinea\" in FAO's series might bundle the separately-administered Territory of Papua (Australian, ~230,000 km\u00b2) with the mandated Territory of New Guinea before their 1949 administrative union. I checked this against population magnitude, since the two territories are geographically and administratively distinguishable and had different scales. Web research on 1941 census figures (contemporary to the assertion's span) shows Territory of New Guinea alone had ~684,284 counted natives plus a further ~300,000 estimated uncounted, plus ~4,100 Europeans and ~2,228 Asiatics \u2014 summing to roughly 990,000-1,000,000, which closely matches the assertion's population median of 1,006,000. Papua's population alone was only ~300,000 at the time, so had the source been combining Papua+New Guinea the total would be far higher (~1.3M+). This strongly indicates the FAO label reports TNG alone, consistent with the candidate. I also note the source_conventions caveat that this FAO 1952 population series is sometimes ~1/3 of true total (agricultural-only) elsewhere (Yugoslavia, Turkey) \u2014 here the figure instead matches the FULL population, joining Saar as a second \"equal-to-total\" case, which is worth noting as a data-quality observation but doesn't change the territorial verdict since it corroborates rather than undermines TNG-alone. The copra magnitude (~62,000 t) is also plausible for TNG's plantation economy of the era (Papua's copra output was comparatively minor). The wiki page (draft status) was NOT used as the basis for this conclusion \u2014 it merely asserts the same routing without independent support; the population-magnitude cross-check against 1941 census data is the actual decisive evidence.",
+   "checks": [
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory",
+    "web_research"
+   ],
+   "confidence": "high",
+   "key": "new guinea|fao1952|1937-1949",
+   "verdict": "confirm",
+   "confirm_kind": "verified_equal",
+   "polity_code": "TNGU-1920-1949",
+   "evidence_used": [
+    "data_magnitudes",
+    "web_research",
+    "neighbor_continuity"
+   ],
+   "verified_evidence_hash": "1593880f794a923c",
+   "wiki_note": "Independent check (1941 Australian administration census: ~684k counted + ~300k estimated uncounted natives, ~4.1k Europeans, ~2.2k Asiatics in TNG alone, vs. only ~300k in Papua) confirms the FAO 1937-1949 \"New Guinea\" population figures (median 1,006k) represent the Territory of New Guinea alone, not a Papua+New Guinea combined total \u2014 ruling out the combined-reporting risk. This also adds a second \"equal-to-total\" case (alongside Saar) to the still-uncharacterized split in the FAO 1952 population series' agricultural-vs-total behavior.",
+   "page_suspect": false
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Guam is a small, geographically fixed island (~550 km\u00b2) ceded by Spain to the US in 1898 and administered continuously as an unincorporated US territory until the 1950 Organic Act, which changed governance (civilian government, citizenship) but not territorial extent \u2014 the island's borders did not change across 1937-1950. The assertion's staple magnitudes (poultry median 36k head, cattle 4k head, small tractor counts) are consistent with a tiny island territory rather than a larger reporting scope, and there is no larger \"USA\" or regional aggregate plausible for a distinctly-labeled \"Guam\" row in FAO 1952. The neighbor segment for 1951 already routes to the successor GUM-1950-2025, confirming period boundaries are handled correctly and the 1937-1950 span sits entirely within GUM-1898-1950's documented period with no territorial change (the 1950 Organic Act was administrative, not a boundary change).",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed",
+    "prior_source_convention"
+   ],
+   "key": "guam|fao1952|1937-1950",
+   "page_suspect": false,
+   "polity_code": "GUM-1898-1950",
+   "verdict": "confirm",
+   "verified_evidence_hash": "feac4c27751dec0f",
+   "wiki_note": "",
+   "echoed_evidence_hash": "feac4c27751dec0f"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "iraq|mitchell|1923-1931",
+   "verdict": "confirm",
+   "confidence": "high",
+   "polity_code": "IRQ-1921-1932",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "verified_evidence_hash": "5f98784289644558",
+   "basis": "The observed span (1923-1931) lies entirely within candidate IRQ-1921-1932's mandate period (1921-1932), which is an ISO-routed match (iraq/irq) with no ambiguous union/empire scope issue (unlike e.g. Sweden-Norway) \u2014 Mitchell's 'Iraq' during the mandate reports on the same territory administered by Britain as Mesopotamia/Iraq. The wiki page (draft) documents that the 1932 CShapes polygon is used as a proxy since no earlier polygon exists, and flags the Mosul vilayet dispute (1922-1925) as a minor overstatement caveat only for those years \u2014 but notes Britain administered Mosul throughout regardless of the formal Turkish border dispute, so agricultural reporting territory (wheat, barley, tobacco) would not show a discontinuity from this. The neighbor_segments field shows 1932-1960 data continues under IRQ-1932-2025, and staple magnitudes (wheat ~350k t, barley ~603k ha) are plausible continuous figures for Iraq's core agricultural belt, consistent with smooth handoff to the successor polity rather than a step change. No territorial change occurs within the specific 1923-1931 window itself (the Mosul dispute predates and slightly overlaps but doesn't split the span), so verified_equal is appropriate rather than best_available.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "echoed_evidence_hash": "5f98784289644558"
+  },
+  "review": {
+   "key": "iraq|mitchell|1923-1931",
+   "verdict": "confirm",
+   "confidence": "high",
+   "polity_code": "IRQ-1921-1932",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "neighbor_continuity",
+    "data_magnitudes",
+    "wiki_draft"
+   ],
+   "basis": "The assertion routes Mitchell's \"Iraq\" crop series (wheat, barley, tobacco, 1923-1931) to IRQ-1921-1932 (British Mandate for Mesopotamia) by ISO match. There is no union/combined-reporting ambiguity here as with Sweden-Norway or Austria-Hungary: Mitchell's International Historical Statistics reports Iraq as a single territorial unit from the Mandate period straight through independence, and the neighbor segment for 1932-1960 routes to IRQ-1932-2025 with no other Iraq-labeled polity in the database for this era, indicating a single continuous reporting territory across the 1932 sovereignty transition. The only genuine territorial wrinkle is the Mosul vilayet dispute (1922-1925), but Mosul was under continuous British/Iraqi administration throughout the dispute (only international sovereignty was contested, not administrative control), so agricultural production statistics reported under \"Iraq\" in these years would already include Mosul's output \u2014 consistent administered territory, not a mid-span change. The staple magnitudes (wheat ~350k tonnes, barley ~603k ha, tobacco ~6.3k tonnes) are plausible for 1920s Iraqi agriculture at national scale and show no indication of a large discontinuity that would flag a territorial break within the 1923-1931 window. The wiki page (draft status) documents this same reasoning but I am not relying on it alone \u2014 the ISO/name match, absence of any competing Iraq polity or split candidate, and the continuous neighbor-segment routing independently corroborate the territorial match. Confidence is high but not maximal because the polygon itself is a proxy (1932 borders applied back to 1921) and the underlying wiki page has not been human-reviewed.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "verified_evidence_hash": "5f98784289644558"
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion covers FAO 1952 \"Libya\" data for 1950-1951, routed to LBY-1950-1951 (Libya under UN Transitional Administration), a bridging polity between LBY-1943-1949 and LBY-1951-2025 covering the whole Tripolitania+Cyrenaica+Fezzan territory pending independence (proclaimed Dec 24, 1951). The candidate's period (1950-1951) exactly matches the observed span, so there is no risk of a mid-span territorial change within the assertion's own window \u2014 the unified UN-administered territory was constant throughout 1950-1951. Staple magnitudes (dates ~32k tonnes, grapes ~4k tonnes, groundnuts ~2k ha) are small but plausible for Libya's limited agricultural sector at the time and don't suggest a scope mismatch (e.g. no sign of double-counting or a much larger/smaller reporting territory). The wiki page is draft status but its claim (all-Libya data, CShapes full-territory polygon) is corroborated by the source_conventions note about this FAO 1952 series' general reliability caveats (population, not relevant to these crop items) and by the plain historical fact that Libya was administered as a single unified territory 1950-1951. Confirm as verified_equal.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "libya|fao1952|1950-1951",
+   "page_suspect": false,
+   "polity_code": "LBY-1950-1951",
+   "verdict": "confirm",
+   "verified_evidence_hash": "636630dad8eb9105",
+   "wiki_note": "",
+   "echoed_evidence_hash": "636630dad8eb9105"
+  },
+  "review": null,
+  "quarantined": false
+ }
+]

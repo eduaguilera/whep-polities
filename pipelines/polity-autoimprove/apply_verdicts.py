@@ -277,18 +277,19 @@ if n_notes:
 n_sus = 0
 for item in verdicts:
     v = item["verdict"]; b = bundles.get(v["key"])
-    if not (b and v.get("page_suspect")): continue
+    if not (b and (v.get("page_suspect") or v.get("page_inadequate"))): continue
     n_sus += append_dedup(SUSPECT_PAGES,
-        ["polity_code", "wiki_status", "assertion_key", "what_looks_wrong",
+        ["polity_code", "wiki_status", "finding", "assertion_key", "what_looks_wrong",
          "evidence_used", "date"],
         {"polity_code": b["candidate"],
+         "finding": "wrong" if v.get("page_suspect") else "inadequate",
          "wiki_status": (b.get("candidate_meta") or {}).get("wiki_status") or "",
          "assertion_key": v["key"],
          "what_looks_wrong": (v.get("wiki_note") or v.get("basis") or "")[:500],
          "evidence_used": ",".join(v.get("evidence_used") or []),
          "date": TODAY})
 if n_sus:
-    print(f"SUSPECT WIKI PAGES flagged: {n_sus} -> {SUSPECT_PAGES}")
+    print(f"WIKI PAGE findings (wrong/inadequate): {n_sus} -> {SUSPECT_PAGES}")
 
 # newly established SOURCE conventions -> the registry 00_intake.py attaches to
 # future bundles. Only from verdicts that survived review (a convention
