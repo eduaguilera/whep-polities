@@ -42,6 +42,37 @@ If R isn't installed, step 1 skips the R-package sources (USAboundaries, mapSpai
 
 You don't have to run the fetches if you only want to consume the committed `data/final/polities_database.gpkg` — it's self-contained.
 
+## Validation
+
+Five checks guard the database. Each exists because that class of error was
+**found in the data**, not hypothesised, so they are worth keeping green:
+
+```bash
+python3 scripts/build_database.py --check    # the committed CSV still matches the wiki
+python3 scripts/validate_citations.py        # every citation resolves to a real source + anchor
+python3 scripts/validate_polygons.py         # area agreement · claimed-but-absent · reviewed-means-documented
+python3 scripts/audit_family_shadowing.py    # no polity can shadow a sibling in the matcher
+```
+
+| check | what it caught when first run |
+|---|---|
+| `--check` | *(new; prevents)* a wiki edit never propagated to the CSV |
+| citations | 17 citations pointing at source files that were never ingested |
+| polygons A | 8 polities carrying **another country's** polygon — San Marino had Albania's (470× too large), Indonesia had India's |
+| polygons C | 28 polities declaring a polygon the build never attached |
+| polygons D | 13 pages claiming `status: reviewed` with zero source citations |
+| shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
+
+`.github/workflows/validate.yml` runs all of them on push to `main` and on PRs.
+They need only what the repo commits, so they work without `data/geodata`.
+`scripts/validate_polygons.py` has a baseline file
+(`scripts/validate_polygons_baseline.txt`) so it fails on *new* occurrences while
+a known backlog is tracked in the issues.
+
+**Open work lives in the [issue tracker](../../issues)**, not in comments or state
+files — anything recorded only in a CSV tends to be rediscovered by accident.
+Useful labels: `decision-needed`, `blocked-on-source`, `guard`, `backlog`.
+
 ## Layout
 
 | Path | What |
@@ -58,6 +89,9 @@ You don't have to run the fetches if you only want to consume the committed `dat
 | `scripts/sources/<slug>/build.py` | Optional per-source processing step for derived sources |
 | `site/build_wiki.sh` | Simplifies the master GPKG for web display (called by `rebuild.sh`) |
 | `pipelines/pre1961-matching/match.R` | Crosslinks pre-1961 agricultural data to polity codes (called by `rebuild.sh`) |
+| `pipelines/polity-autoimprove/` | Assertion-level data→polity verification: `00_intake.py` (any dataset → evidence bundles), `verify_assertions.workflow.js` (agent verdicts), `apply_verdicts.py`, plus the shared matcher core `matchlib.py`. See its README. |
+| `pipelines/faostat-era-matching/` | Matches FAOSTAT-era (1961+) reporting areas by numeric area code |
+| `scripts/validate_*.py`, `scripts/audit_family_shadowing.py` | The validation suite (see above) |
 | `data/final/` | Committed master database (CSV + GeoPackage) |
 | `data/external/` | External reference datasets (COW state system, decolonization events, pre-1961 ag data) |
 | `data/geodata/` | Raw polygon sources (gitignored; populated by fetch scripts) |
@@ -81,7 +115,7 @@ Declared in `scripts/sources.yaml`:
 | `usaboundaries-newberry` | Newberry Atlas via R `USAboundaries` | `state_abbr` + year | Placeholder |
 | `mapspain-ign` | IGN Spain via R `mapSpain` | `cpro` | Placeholder |
 | `geobr-ibge` | IBGE via R `geobr` | `abbrev_state` + year | Placeholder |
-| `constructed` | Union / dissolve of features from other fetched sources | `polity_code` | Derived source (has `build.py`); currently holds: Allied-occupied Germany, divided Germany 1949-1990, Japanese Empire 1895-1945, Korea to 1945, Manchukuo 1932-1945 |
+| `constructed` | Union / difference / dissolve of features from other fetched sources | `polity_code` | Derived source (has `build.py`). 13 entries: `DEU-1945-1949`, `DEU-1949-1990`, `JPN-1895-1945`, `KOR-1800-1945`, `MAN-1932-1945`, `CHN-1932-1945`, `IRL-1800-1921`, `CODRU-1922-1960`, `BLX-1921-1999`, `MASG-1946-1963`, `AOF-1895-1960`, `CZE-1804-1918`, `EGYSUD-1934-1956` |
 
 ## Adding a new polygon source
 

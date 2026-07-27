@@ -108,7 +108,26 @@ source files on disk.
   for Paine).
 - `polygon_feature_year` — only for sources with a `temporal` block in
   `sources.yaml`; picks a specific time-step.
-- `polygon_status` — `assigned` | `proxy` | `missing` | `excluded`.
+- `polygon_status` — **load-bearing, not descriptive.** `scripts/validate_polygons.py`
+  keys off these values, so choosing the wrong one either hides a real error or
+  fails the build:
+
+  | value | means | validator behaviour |
+  |---|---|---|
+  | `assigned` | the polygon **is** this polity's territory for the period | check A **fails** if the geometry's measured area diverges >25% from `polygon_area_km2` |
+  | `proxy` | a stand-in from another period or entity, knowingly inexact | divergence reported, not failed — but the page must document direction and magnitude |
+  | `estimate` | approximate, no exact feature exists | same as `proxy` |
+  | `polygon_vintage_drift` | the polygon's vintage year sits outside the row's span (e.g. a back-projection) | same as `proxy` |
+  | `unassigned` | **no polygon**, with the reason documented | check C ignores it; this is the honest state when no source exists |
+
+  Check C **fails** when any of `assigned`/`proxy`/`estimate`/`polygon_vintage_drift`
+  is declared but the build attached no geometry — a page must not claim a polygon
+  it does not have. Prefer `unassigned` with a documented reason over a silent
+  modern-borders guess.
+
+  Legacy values still present in the database — `derived`, `missing`,
+  `approximate`, `excluded` — are near-synonyms of the above and predate this
+  vocabulary. Do not use them in new pages.
 - `polygon_area_km2` — optional sanity-check.
 - `predecessor`, `successor` — YAML lists of UPPERCASE `polity_code`s
   (`[]` for none). Drives the site's Graph tab edges and the coverage-
@@ -156,10 +175,10 @@ polity_code: <CSV polity_code>
 polity_name: <CSV polity_name>
 start_year: <int>
 end_year: <int>
-type: national | subnational
+type: national | colonial | aggregate | subnational | territory | city-territory | disputed | statistical
 iso3: <code or NA>
 cow: <code or NA>
-status: draft | reviewed | contested
+status: draft | reviewed | superseded | retired
 last_ingest: <YYYY-MM-DD>
 sources: [source-slug-1, source-slug-2]
 ---
@@ -207,6 +226,25 @@ replace the body with a one-line pointer to the `log.md` entry
 that resolved it. This preserves the slug as a stable anchor for
 older cross-references.
 ```
+
+## What `status` commits you to
+
+`status: reviewed` asserts that **a human checked this page's claims against
+sources**, and the assertion-verification pipeline relies on it: draft pages are
+treated as a prior agent's hypothesis and must be corroborated independently,
+whereas a `reviewed` page can be leaned on. So promoting a page is a substantive
+act, not bookkeeping.
+
+`scripts/validate_polygons.py` check D therefore **fails** if a `reviewed` page
+carries zero source citations or still contains `(to be documented)`. Thirteen
+pages were downgraded to `draft` on 2026-07-24 for exactly that reason — they
+claimed review while being unsourced stubs, which invited unsourced assertions to
+be treated as verified.
+
+`superseded` and `retired` mean the row no longer receives data (it was split,
+merged, or withdrawn). Both are excluded from matching entirely — see
+`pipelines/polity-autoimprove/matchlib.py`, `DEAD_STATUS` — so a page must not be
+left in a dead status while data still needs to route to it.
 
 ## Cross-reference conventions
 

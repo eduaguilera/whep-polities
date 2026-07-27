@@ -309,8 +309,8 @@ GRC-1947-2025,Greece (1947-2025),1947,2025,national,GRC,350,Europe,draft,2026-06
 GRD-1800-2025,Grenada,1800,2025,national,GRD,55,North America,draft,2026-06-09,gadm-4.1-adm0,GRD,,proxy,,,
 GRL-1800-2025,Greenland,1800,2025,national,GRL,NA,North America,draft,2026-04-13,gadm-4.1-adm0,GRL,,assigned,,,DNK-1800-1864; DNK-1864-1920; DNK-1920-2025; ISL-1800-2025
 GTM-1821-2025,Guatemala,1821,2025,national,GTM,90,North America,draft,2026-04-12,cshapes-2.0,90,1886,assigned,,,
-GUF-1816-1946,French Guiana (Colony),1816,1946,colonial,,,South America,,2026-06-26,cshapes-2.0,120,1886,assigned,83711,,GUF-1946-2025
-GUF-1946-2025,French Guiana (Overseas Department),1946,2025,national,,,South America,,2026-06-26,cshapes-2.0,120,1946,assigned,83711,GUF-1816-1946,
+GUF-1816-1946,French Guiana (Colony),1816,1946,colonial,GUF,120,South America,draft,2026-06-26,cshapes-2.0,120,1886,assigned,83711,,GUF-1946-2025
+GUF-1946-2025,French Guiana (Overseas Department),1946,2025,national,GUF,120,South America,draft,2026-06-26,cshapes-2.0,120,1946,assigned,83711,GUF-1816-1946,
 GUM-1898-1950,Territory of Guam,1898,1950,colonial,GUM,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,GUM,2023,assigned,550,,GUM-1950-2025
 GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,NA,Oceania,draft,2026-06-26,gadm-4.1-adm0,GUM,2023,assigned,550,GUM-1898-1950,
 GUY-1800-2025,Guyana,1800,2025,national,GUY,110,South America,draft,2026-04-13,cshapes-2.0,110,1886,assigned,,,
@@ -519,7 +519,7 @@ NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,national,NNI,385,Africa,dra
 NOR-1800-2025,Norway,1800,2025,national,NOR,385,Europe,draft,2026-04-13,cshapes-2.0,385,1905,assigned,,,
 NPL-1800-1816,Greater Nepal,1800,1816,national,NPL,NA,Asia,draft,2026-04-13,cliopatria,Nepal,1800,assigned,,,NPL-1816-2025
 NPL-1816-2025,Nepal,1816,2025,national,NPL,NA,Asia,draft,2026-04-12,cliopatria,Nepal,1929,assigned,,NPL-1800-1816,
-NRH-1911-1953,Northern Rhodesia (1911-1953),1911,1953,colonial,ZMB,,,,,,,,assigned,,NWR-1900-1905,FRN-1953-1964
+NRH-1911-1953,Northern Rhodesia (1911-1953),1911,1953,colonial,ZMB,,,draft,,,,,assigned,,NWR-1900-1905,FRN-1953-1964
 NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,national,ZMB,551,Africa,draft,2026-07-02,cshapes-2.0,551,1953,assigned,751924,NRH-1911-1953,ZMB-1964-2025
 NRU-1888-2025,Nauru,1888,2025,national,NRU,970,Oceania,draft,2026-04-13,gadm-4.1-adm0,NRU,,assigned,,,
 NSW-1800-1900,New South Wales (to 1900),1800,1900,national,NSW,NA,Oceania,draft,2026-04-15,cshapes-2.0,901,1886,assigned,,,AUS-1901-2025
@@ -566,14 +566,14 @@ PRY-1870-1932,Paraguay (post-Triple Alliance),1870,1932,national,PRY,150,South A
 PRY-1932-1938,Paraguay (Chaco War period),1932,1938,national,PRY,150,South America,draft,2026-06-25,cshapes-2.0,150,1886,assigned,293510,PRY-1870-1932,PRY-1938-2025
 PRY-1938-2025,Paraguay,1938,2025,national,PRY,150,South America,draft,2026-04-12,cshapes-2.0,150,1938,assigned,,PRY-1932-1938,
 PSE-1948-2025,Palestine (West Bank and Gaza),1948,2025,disputed,PSE,NA,Asia,draft,2026-07-02,gadm-4.1-adm0,PSE,,assigned,6225,,
-PTIND-1816-1961,Portuguese India (Estado da India Portuguesa),1816,1961,colonial,,,Asia,,,gadm-4.1,,,estimate,3812,,IND-1949-2025
+PTIND-1816-1961,Portuguese India (Estado da India Portuguesa),1816,1961,colonial,,235,Asia,draft,,gadm-4.1,,,estimate,3812,,IND-1949-2025
 PYF-1800-2025,French Polynesia,1800,2025,national,PYF,NA,Oceania,draft,2026-06-09,gadm-4.1-adm0,PYF,,proxy,,,
 QAT-1800-2025,Qatar,1800,2025,national,QAT,694,Asia,draft,2026-04-12,cshapes-2.0,694,1916,assigned,,,
 QUE-1859-1900,Queensland (to 1900),1859,1900,national,QUE,NA,Oceania,draft,2026-04-15,cshapes-2.0,905,1886,assigned,,NSW-1800-1900,AUS-1901-2025
 RAFR-1850-2021,Africa Other,1850,2021,aggregate,RAFR,,Africa,draft,2026-06-11,reporting-areas,RAFR-1850-2021,,derived,,,
 RASI-1850-2021,Asia Other,1850,2021,aggregate,RASI,,Asia,draft,2026-06-11,reporting-areas,RASI-1850-2021,,derived,,,
-REU-1816-1946,Réunion (French Colony),1816,1946,colonial,,,Africa,,2026-06-24,cshapes-2.0,585,1886,assigned,2642,,
-REU-1946-2025,Réunion (French Overseas Department),1946,2025,national,,,Africa,,2026-06-26,cshapes-2.0,585,1886,assigned,2642,REU-1816-1946,
+REU-1816-1946,Réunion (French Colony),1816,1946,colonial,REU,585,Africa,draft,2026-06-24,cshapes-2.0,585,1886,assigned,2642,,
+REU-1946-2025,Réunion (French Overseas Department),1946,2025,national,REU,585,Africa,draft,2026-06-26,cshapes-2.0,585,1886,assigned,2642,REU-1816-1946,
 REUR-1850-2021,Europe Other,1850,2021,aggregate,REUR,,Europe,draft,2026-06-11,reporting-areas,REUR-1850-2021,,derived,,,
 RLAM-1850-2013,Latin America Other,1850,2013,aggregate,RLAM,,South America,draft,2026-06-11,reporting-areas,RLAM-1850-2013,,derived,,,
 RNAM-1850-2021,North America Other,1850,2021,aggregate,RNAM,,North America,draft,2026-06-11,reporting-areas,RNAM-1850-2021,,derived,,,

@@ -37,7 +37,7 @@ tool calls now prevent bad decisions later. Record at least:
 
 1. **Polity pages:** for each file in `wiki/polities/*.md` (exclude
    `_template.md` and `_aggregates/*`): `polity_code`, `status`
-   (draft / reviewed / contested), `sources:`, count of open
+   (draft / reviewed / superseded / retired), `sources:`, count of open
    questions, count of dangling polity refs in the bottom reference
    block (marked `<!-- TODO: page not yet created -->`).
 2. **Open questions:** grep every polity page for `### oq-`. For each,

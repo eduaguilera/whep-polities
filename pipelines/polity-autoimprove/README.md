@@ -107,7 +107,7 @@ name + year containment); it cannot know whether the source's *reporting
 territory* under that label equals the polity's territory (union/empire scope,
 boundary vintage, combined reporting, wrong split basis). That judgment is done
 **once per assertion** — a distinct `(label, source, year_segment) → polity`
-claim — and banked. 190k layer-B rows collapse to ~1,040 assertions.
+claim — and banked. 190k layer-B rows collapse to ~1,030 assertions.
 
 ```
 00_intake.py           any table (label+year[+iso+value+item]) -> deterministic
@@ -115,13 +115,23 @@ claim — and banked. 190k layer-B rows collapse to ~1,040 assertions.
                        one EVIDENCE BUNDLE per assertion (magnitudes, neighbor
                        segments, candidate meta, evidence_hash, ledger status)
 verify_assertions      one economic-historian agent per pending assertion ->
-  .workflow.js         verdict {confirm|reroute|new_polity|not_a_polity|uncertain}
-                       + confidence + basis; independent REVIEWER re-derives every
-                       non-confirm / low-confidence verdict; disagreement -> quarantine.
-                       Writes state/verdicts_pending.json (nothing applied).
-apply_verdicts.py      deterministic execution with contract validation (reroute
-                       target must EXIST in the DB; confirm must echo the candidate;
-                       faostat reroutes -> quarantine, they need a match.R route):
+  .workflow.js         verdict {confirm|reroute|split_reroute|new_polity|
+                       not_a_polity|uncertain} + confidence + confirm_kind
+                       (verified_equal vs best_available) + evidence_used + basis.
+                       A BLIND second verifier re-derives every non-confirm,
+                       low-confidence verdict and a 1-in-review_sample slice of
+                       confident confirms — it never sees the first verdict, and
+                       code compares verdict+target; mismatch -> quarantine.
+                       Writes state/<args.out> (nothing applied).
+apply_verdicts.py      deterministic execution with contract validation — reroute
+                       target must EXIST, must not be retired/superseded, and must
+                       COVER the observed span; split_reroute segments must tile it
+                       contiguously; confirm must echo the candidate; faostat
+                       reroutes -> quarantine (they need a match.R route); a
+                       verified_equal resting only on an unreviewed wiki page is
+                       downgraded to best_available; a verdict whose
+                       verified_evidence_hash no longer matches is refused as
+                       STALE. Then:
                        confirm -> ledger correct+hash · reroute -> year/source-scoped
                        alias row + ledger fixed · not_a_polity -> ignored_labels.csv ·
                        new_polity -> new_polity_proposals.json (feed new_polity
