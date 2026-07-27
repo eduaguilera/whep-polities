@@ -25,7 +25,7 @@ Ledger-aware: assertions whose key (or legacy bare-label key) is banked
 correct/fixed with a matching evidence_hash get status "banked"; everything
 else is "pending" for the verification workflow.
 """
-import pandas as pd, numpy as np, json, csv, os, sys, argparse, hashlib
+import pandas as pd, numpy as np, json, csv, os, sys, argparse, hashlib, re
 from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -129,6 +129,19 @@ def conventions_for(label, source, items):
                     "verified": c.get("verified")})
     return out
 
+# ---------- wiki page substance ----------
+# wiki_status alone is not trustworthy: 10 of 72 pages flagged `reviewed` are
+# thin stubs with zero source citations (the whole IND and IDN chains). So the
+# bundle carries the page's measurable depth — size and citation count — and the
+# verifier judges substance rather than a label.
+def page_stats(code):
+    fp = os.path.join(REPO, "wiki/polities", f"{str(code).lower()}.md")
+    if not os.path.exists(fp): return {"exists": False}
+    txt = open(fp).read()
+    return {"exists": True, "bytes": len(txt),
+            "source_citations": len(re.findall(r"\]\(\.\./sources/", txt)),
+            "has_todo_markers": ("(to be documented)" in txt)}
+
 # ---------- assertions: one evidence bundle per (label, source, candidate) ----------
 polmeta = {r.polity_code: r for _, r in M.pol.iterrows()}
 def staples(grp, k=5):
@@ -185,7 +198,8 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
             "wiki_status": pm.get("wiki_status"),
             "polygon_feature_year": (None if pd.isna(pm.get("polygon_feature_year"))
                                      else str(pm.polygon_feature_year)),
-            "wiki": f"wiki/polities/{str(code).lower()}.md"},
+            "wiki": f"wiki/polities/{str(code).lower()}.md",
+            "wiki_page": page_stats(code)},
     }
     # hash covers the DATA evidence *and* the family structure the verdict was
     # judged against (candidate period + the label's other segments): adding or

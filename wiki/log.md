@@ -26,6 +26,60 @@ Kinds:
 
 ---
 
+## chunk2-verification-page-suspect-fires
+**Date:** 2026-07-24
+**Touched:** BRA-1800-2025, JAM-1800-2025, MAR-1911-1958, IND-1914-1937, SYR-1922-1945, ALB-1913-2025, AUT-1919-2025
+**Source:** none
+**Kind:** proposal
+
+Verified 50 more assertions (chunk 2, the largest remaining pending ones). All
+50 confirmed — 37 `verified_equal`, 13 `best_available` — with all 10 blind
+spot-reviews agreeing, and every verdict citing `data_magnitudes` so none rests
+on the wiki alone. **`page_suspect` fired for the first time, three times, and
+all three were genuine.**
+
+**Two pages describe splits the database never received:**
+
+- **[bra-1800-2025](polities/bra-1800-2025.md)** is titled "Brazil (to 1903)",
+  asserts the row ends in 1903 and names a successor `BRA-1903-1909` that does
+  not exist; the CSV has one row spanning 225 years. The 1903 boundary was not
+  arbitrary — the **Treaty of Petrópolis** transferred **Acre (~152,000 km²)**
+  from Bolivia that year — so the split was right and simply never executed.
+  1,148 layer-B rows are matched to a territory ~152,000 km² too large before
+  1903. Recorded as [oq-acre-split-not-applied](polities/bra-1800-2025.md#oq-acre-split-not-applied);
+  needs a decision between applying the split and documenting the approximation.
+- **[jam-1800-2025](polities/jam-1800-2025.md)** has the same shape (titled "to
+  1886", references a nonexistent `JAM-1886-1962`) but **no territorial reason
+  to split**: Jamaica's boundary is its coastline, unchanged across the span, and
+  the 1886 line was about polygon-source coverage rather than territory.
+
+**One page overstates its own scope:**
+[mar-1911-1958](polities/mar-1911-1958.md) describes itself as covering the
+French *and* Spanish protectorates, but [smo-1912-1956](polities/smo-1912-1956.md)
+exists separately and the attached polygon is the French zone. Measured: 350,268
+km² here against 52,792 km² for Spanish Morocco — complementary, not nested. So
+summing the two is legitimate and does not double-count, but reading this row
+alone as "all of Morocco" understates by ~12%. Prose corrected.
+
+**A systemic finding about `wiki_status`.** Verification of
+`india|mitchell|1915-1937` noticed that [ind-1914-1937](polities/ind-1914-1937.md)
+is flagged `reviewed` while carrying **zero source citations**. An audit found
+**10 of 72 `reviewed` pages** in that state — the whole IND chain, the whole IDN
+chain, and CHN-1914-1921. That matters because the anti-circularity rule added
+earlier today told agents that `reviewed` pages were safe to lean on directly.
+`00_intake.py` now reports each page's measurable depth (bytes, source citations,
+to-be-documented markers) in the evidence bundle, and the prompt instructs agents
+to judge pages on that rather than on the status label: a page with zero
+citations is an assertion by whoever wrote it, whatever its status says.
+
+Smaller territorial notes folded in: the **Sanjak of Alexandretta** (~5,524 km²)
+was ceded to Turkey in 1939, inside SYR-1922-1945's span; Italy annexed **Kosovo
+and parts of western Macedonia and Montenegro** into Greater Albania in
+1941-1943, which ALB-1913-2025 had not recorded; and Austrian crop areas in
+`juan` are stable straight through the 1938-1945 Anschluss, confirming that
+source reports Austria on its First-Republic basis throughout.
+
+
 ## polygon-backlog-eight-resolved
 **Date:** 2026-07-24
 **Touched:** IRL-1800-1921, STP-1800-2025, TNGU-1920-1949, MKY-1918-1962, GKM-1884-1912, GKM-1912-1916, ITS-1908-1960, CHN-1932-1945

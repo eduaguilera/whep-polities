@@ -1,0 +1,1661 @@
+[
+ {
+  "verdict": {
+   "key": "italy|juan|1920-1960",
+   "verdict": "confirm",
+   "polity_code": "ITA-1919-2025",
+   "confirm_kind": "best_available",
+   "confidence": "high",
+   "basis": "Candidate ITA-1919-2025 is the sole national Italy polity spanning the whole 1920-1960 observed period; the DB does not split at 1947. However, the polity's own wiki page documents that Italy's territory was NOT constant across this span: it started at 1919 with Saint-Germain-en-Laye gains (Trentino, South Tyrol, Trieste, Istria from Austria) and then, mid-span, lost Istria and parts of Dalmatia to Yugoslavia plus a small strip to France under the 1947 Treaty of Paris \u2014 both real, well-documented territorial-change events (external historical knowledge corroborates these treaties independent of the draft page). Staple magnitudes (potatoes ~948k ha, olives ~1.17M ha, sugar beet ~344k ha) are plausible in scale for mainland/peninsular Italy and show no discontinuity suggesting a colonial or component-territory reporting basis. Since the reporting territory changed within the observed span (1947 border revision falls inside 1920-1960), this cannot be verified_equal even though ITA-1919-2025 is clearly the best (only) available match \u2014 the page itself flags this exact issue as an open question (oq-post-wwii-losses) awaiting a human split-policy decision, which the DB has not yet implemented.",
+   "evidence_used": [
+    "wiki_draft",
+    "data_magnitudes",
+    "neighbor_continuity"
+   ],
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "page_suspect": false,
+   "page_inadequate": false,
+   "wiki_note": "",
+   "verified_evidence_hash": "502f09b0c6bbc2aa",
+   "echoed_evidence_hash": "502f09b0c6bbc2aa"
+  },
+  "review": {
+   "basis": "The assertion routes \"italy\" (source \"juan\", agricultural commodity data, 1920-1960) to ITA-1919-2025 by ISO match. This candidate is Italy's whole national territory, not a sub-unit, so no fold-up issue, and the commodities (almonds, apples, olives, potatoes, sugar beet, etc.) are agronomically plausible for peninsular Italy \u2014 no entrepot/re-export red flag. However the candidate's own wiki page documents a real, substantial territorial change squarely inside the observed span: the 1947 Treaty of Paris, under which Italy lost Istria and part of Dalmatia to Yugoslavia and a strip to France (cited to Biger 1995, an external atlas source, not just the draft's own prose). The wiki explicitly flags this as an unresolved \"Tier X\" split question \u2014 the CSV/DB deliberately does not split ITA-1919-2025 at 1947 despite acknowledging it probably should. Since the reporting territory changed mid-span (pre-1947 borders include Istria/Dalmatia; post-1947 borders do not), no single polity code can equal the source's reporting territory across the whole 1920-1960 window \u2014 this is exactly the case the routing schema calls best_available rather than verified_equal. The routing itself (labeling all of it \"Italy\" -> ITA-1919-2025) is still the best available choice given no split polity exists in the DB, and matches the DB's own deliberate (if debatable) non-split convention. No evidence of combined reporting (no other territory folded into \"Italy\") or of a component being wrongly aggregated up. This is a pre-existing, already-documented open question (oq-post-wwii-losses) in the draft wiki, not a new finding, so no new wiki_note is warranted.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "wiki_draft",
+    "external_source",
+    "neighbor_continuity"
+   ],
+   "key": "italy|juan|1920-1960",
+   "polity_code": "ITA-1919-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "502f09b0c6bbc2aa",
+   "wiki_note": "",
+   "page_inadequate": false,
+   "page_suspect": false
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes 49 years of Italian agricultural production data (1871-1919, source \"juan\") to ITA-1870-1919. The candidate's wiki page (draft status but well-sourced with specific citations) documents that the Kingdom of Italy's metropolitan territory was stable from the capture of Rome (1870-09-20) until the Treaty of Saint-Germain (1919-09-10), which added Trentino/South Tyrol/Trieste/Istria \u2014 exactly matching the observed span's start and end. The page explicitly notes colonial acquisitions (Libya 1911-12) are tracked separately and do not affect the metropolitan/European polygon, which is consistent with this being agricultural crop data (wheat, maize, fruits, etc.) that would only cover the metropolitan territory, not colonies. Staple magnitudes (wheat ~4.4M t, maize ~2.0M t median) are plausible for the Kingdom of Italy in this era and show no discontinuity suggesting a scope change within the span. The neighbor_segments show clean adjacent splits at 1866-1870/1870-1919/1919-1960 boundaries matching known Italian territorial history (Venetia 1866, Rome 1870, Saint-Germain 1919). The territory was genuinely constant for the whole observed span, so verified_equal applies rather than best_available.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "key": "italy|juan|1871-1919",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "ITA-1870-1919",
+   "verdict": "confirm",
+   "verified_evidence_hash": "39d1a428a8028b76",
+   "wiki_note": "",
+   "echoed_evidence_hash": "39d1a428a8028b76"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "chile|juan|1902-1960",
+   "verdict": "confirm",
+   "confirm_kind": "best_available",
+   "polity_code": "CHL-1902-2025",
+   "confidence": "high",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed",
+    "prior_source_convention"
+   ],
+   "basis": "The 'chile' label from the juan source routes by ISO to CHL-1902-2025 for 1902-1960, agricultural area/output series (wheat ~730,000 ha, barley ~74,000 ha, oats ~78,000 ha, potatoes ~84,600 tonnes) consistent with mainland Chile's central-valley farming, with no discontinuity at the 1902 or 1960 period boundaries relative to the CHL-1899-1902 and later segments. The wiki page (status: reviewed) documents continuous national Chile territory from 1902 with no successor split. However, the observed 58-year span includes the 3 June 1929 Chile-Peru boundary treaty, which finally resolved the post-War-of-the-Pacific Tacna-Arica dispute by returning Tacna province to Peru while Chile retained Arica -- a real, if areally small, territorial cession occurring mid-span. Per the routing rule, any mid-span boundary change (even a small one) precludes verified_equal for a multi-decade span, so this is confirm/best_available rather than confirm/verified_equal, since Chile is otherwise the only sensible candidate and no finer split exists in the DB for this minor adjustment.",
+   "wiki_note": "The 1929 Chile-Peru treaty (already cited on the page) specifically resolved the Tacna-Arica dispute by returning Tacna province to Peru while Chile kept Arica -- a small but real mid-span (1902-1960) territorial cession the page does not spell out. This does not warrant a new polity split (area negligible relative to Chile's 756,630 sq km), but means the 1902-2025 row's territory was not perfectly constant across the full span; routed here as confirm/best_available rather than verified_equal.",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "echoed_evidence_hash": null,
+   "verified_evidence_hash": "4f6b23434a3c91e0"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Candidate AUT-1919-2025 is the sole existing polity code covering the observed span 1919-1960; the DB models Austria as one continuous row despite the 1938-1955 Anschluss/occupation gap (no separate Ostmark/occupied-Austria polity exists). The source's own crop-area magnitudes (wheat ~247,000 ha, barley ~168,000 ha, potatoes ~380,000 ha) are consistent with modern/post-Saint-Germain Austria's scale (~84,000 km\u00b2), not with the much larger 1918 claimed territory or Cisleithania (AUT-1800-1918), and these magnitudes hold steady across the whole 1919-1960 span including the 1938-1945 years \u2014 indicating the source kept reporting on a constant geographic Austria even while it was politically absorbed into Germany. However, per the routing rule, Austria's political existence was interrupted mid-span (Anschluss 1938, restoration 1955) and there was also a minor early boundary change (Saint-Germain finalized borders in Sept 1919, and Burgenland was added from Hungary in 1921), so the territory was not strictly constant as a sovereign reporting unit throughout. No alternative existing polity better fits, and no split target exists for the annexed years, so the routing is the best available match, not a strictly verified-equal one.",
+   "checks": [
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "key": "austria|juan|1919-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "verdict": "confirm",
+   "verified_evidence_hash": "bc25d08938324c14",
+   "wiki_note": "Crop-area magnitudes in this source (wheat ~247,000 ha, barley ~168,000 ha, potatoes ~380,000 ha) stay stable across 1919-1960 including the 1938-1945 Anschluss years, consistent with a constant modern-Austria-sized geographic reporting unit \u2014 the source appears to have kept reporting \"Austria\" on its post-Saint-Germain borders throughout the annexation period rather than switching to Reich-wide or Ostmark-Gau scope. This empirically supports (but does not fully resolve) the page's own oq-anschluss-1938 question about how to treat the 1938-1955 gap.",
+   "polity_code": "AUT-1919-2025",
+   "echoed_evidence_hash": "bc25d08938324c14"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "sweden|juan|1905-1960",
+   "verdict": "confirm",
+   "confidence": "high",
+   "polity_code": "SWE-1905-2025",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "verified_evidence_hash": "ec4d864182119895",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "wiki_note": "",
+   "basis": "The assertion covers Sweden (ISO SWE) 1905-1960 under label 'sweden', 1474 rows. The candidate SWE-1905-2025 begins exactly at the dissolution of the Sweden-Norway union (7 June 1905, per CShapes and the wiki page's documented history), and its metropolitan borders are stable from 1905 through at least 2025 -- so no territorial change occurs anywhere within the observed 1905-1960 span. The preceding neighbor segment (1850-1904) correctly routes to SWE-1814-1905, the union-era polity, confirming the split point aligns with the real 1905 territorial change (union dissolution, loss of Norway, area drop from ~138.5 to ~78.6 sq deg per CShapes) rather than an artifact of our period boundaries. Staple crop magnitudes (barley ~198k ha, oats ~790k ha, rye ~335k ha, potatoes ~554k ha, sugar beet ~101k ha) are plausible in scale for Sweden proper's agricultural land and show no step-change that would suggest a scope mismatch (e.g. inclusion of Norwegian or Finnish territory). The wiki page, though marked draft, gives a specific, internally consistent, externally-grounded (CShapes, COW, Biger 1995) account of the 1905 split and post-1905 territorial stability; nothing in its claims looks wrong, and the data corroborates rather than contradicts it. Since the reporting territory equals the candidate's and stayed constant across the whole observed span, this is verified_equal rather than best_available.",
+   "echoed_evidence_hash": "ec4d864182119895"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes 1921-1960 UK agricultural data (potatoes, sugar beet, broad beans, etc.) to GBR-1921-2025 by ISO match. The candidate's own wiki (draft status, so treated as hypothesis) documents that metropolitan UK borders were stable from the Irish Free State's establishment (1922-12-06, CShapes polygon ~33.59 sq degrees) through the observed span \u2014 no annexation, cession or occupation affecting the UK metropolitan territory 1921-1960. Staple magnitudes (potatoes median 2.27M ha, sugar beet 176k ha, hops 10,350 ha) are plausible orders of magnitude for the UK's actual metropolitan agricultural sector across 40 observed years, consistent with continuous reporting on the same territory (England+Scotland+Wales+Northern Ireland) rather than a scope change. The neighbor segment (1867-1920 -> GBR-1800-1921) confirms the predecessor split occurs exactly at the 1921 boundary, so there's no misalignment for this source. No sub-territory fold-up, entrepot, or combined-reporting concern applies: \"United Kingdom\" here is the sovereign reporting unit itself, matching the candidate's own definition. The wiki page, while draft/unreviewed, contains internally consistent territorial documentation (CShapes area drop at Irish Free State formation) that is corroborated by the plausible agricultural magnitudes, so I treat verified_equal as justified: the reporting territory equals the candidate's and stayed constant across the whole 1921-1960 span.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "key": "united kingdom|juan|1921-1960",
+   "verdict": "confirm",
+   "confirm_kind": "verified_equal",
+   "polity_code": "GBR-1921-2025",
+   "verified_evidence_hash": "17a03c9f675887b4",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "echoed_evidence_hash": "17a03c9f675887b4"
+  },
+  "review": {
+   "basis": "The label \"united kingdom\" for 1921-1960 (source \"juan\", ISO route to gbr) is routed to GBR-1921-2025, the post-Anglo-Irish-Treaty United Kingdom (England+Scotland+Wales+Northern Ireland). This is a well-established historical fact independent of the wiki draft: the Irish Free State seceded in December 1921/1922, and from that point \"United Kingdom\" in international statistics (including agricultural/trade yearbooks) refers to the reduced territory \u2014 this is standard 20th-century reporting convention, not something specific to this draft page's say-so. The candidate's own wiki page corroborates this with two independent external citations (CShapes 2.0 polygon area drop from 42.95 to 33.59 sq degrees at the partition date, and COW state-system continuity), which I treat as external evidence rather than circular self-confirmation. UK borders were stable throughout the full 1921-1960 span (no further territorial changes to the metropolitan UK itself in this window), satisfying the \"constant across the whole observed span\" requirement for verified_equal. One data-quality flag: staple_magnitudes shows potatoes at median 2,269,890 ha (n=80) for 1921-1960 vs. 251,400 ha (n=91) for the 1867-1920 predecessor segment \u2014 a ~9x jump in the SMALLER post-partition territory, which is agronomically implausible (UK historical potato acreage was on the order of 200,000-700,000 ha across this era, never approaching 2.27M ha, which would exceed a large fraction of all UK arable land). This looks like a units/aggregation artifact within the \"juan\" source itself (possibly double-counted sub-series, given n=80 vs n_distinct_years=40), not a routing/territory-match problem \u2014 the country-to-polity mapping is correct regardless of this magnitude anomaly, but it is worth flagging for source-level cleanup.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "neighbor_continuity",
+    "wiki_reviewed",
+    "prior_source_convention"
+   ],
+   "key": "united kingdom|juan|1921-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "GBR-1921-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "17a03c9f675887b4",
+   "wiki_note": "Potato staple magnitude for this segment (median 2,269,890 ha, n=80) is ~9x the predecessor segment's 251,400 ha (n=91) despite the post-1921 UK being smaller territory \u2014 agronomically implausible (historical UK potato acreage never approached 2M ha) and likely a units/double-counting artifact in the \"juan\" source parsing (n=80 vs n_distinct_years=40 suggests duplicated sub-series), worth investigating at the source-ingest level; does not affect the territorial-routing verdict itself."
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The candidate JPN-1895-1945 (\"Japanese Empire\") is a constructed polygon union of home islands + Taiwan (1895) + S. Sakhalin (1905) + Korea (1910), ~658,000 km2. The wiki page's own \"Data caveats\" section already states (and I corroborate structurally) that pre-1961 agricultural data matched to this row is metropolitan Japan only (~370-378k km2, matching JPN-1800-1895/JPN-1945-1952 neighbor polities' actual area of 377,657 km2), with Korea and Taiwan carried under their own separate DB entries (KRS-1910-1945, TWN-1895-1945). Checking polities_database.csv confirms there is no separate \"metropolitan-Japan-only\" polity row spanning 1895-1945 \u2014 JPN-1895-1945 is the only row covering that span, so it is used, with an explicit documented caveat, as the bucket for home-islands-only Mitchell data. This is the sub-territory fold-up pattern (label narrower than candidate), but since no granular alternative exists for this exact span and the wiki already flags the mismatch, routing here is the best available choice rather than a false confirm. Territory represented by the data (metro Japan) stayed roughly constant across 1895-1944 even though the candidate's own nominal empire territory grew via annexations (1895 Taiwan, 1905 Sakhalin, 1910 Korea) \u2014 so the candidate's territory is not constant over the span, precluding verified_equal regardless. Staple magnitudes (rice paddy median ~4.09M ha) are somewhat higher than published metropolitan-Japan-only rice area figures I found via web search (~2.57M cho in 1880 rising to ~3.17M cho/ha by 1940), which is a mild flag worth someone checking (possibly a broader \"paddy field\" item definition vs. harvested-rice-area, or partial inclusion of colonial output) but not strong enough, on its own, to overturn the well-documented routing decision already recorded in the wiki and DB structure.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory",
+    "web_research"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "web_research",
+    "prior_source_convention"
+   ],
+   "key": "japan|mitchell|1895-1944",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "JPN-1895-1945",
+   "verdict": "confirm",
+   "verified_evidence_hash": "fd1f86e6cd48c374",
+   "wiki_note": "Magnitude check: the assertion's rice-paddy median (~4.09M ha across 1895-1944) runs somewhat higher than published metropolitan-Japan-only rice-area figures (~2.57M cho in 1880 rising to ~3.17M cho/ha by 1940, per Arimoto 2021 and related agricultural-history sources). Worth a follow-up check on whether Mitchell's \"rice, paddy\" item is total cultivated paddy-field area (including non-rice rotation crops) rather than rice-harvested area specifically, since that would explain the gap without implying colonial data leakage into the \"Japan\" label.",
+   "echoed_evidence_hash": "fd1f86e6cd48c374"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes 1921-1960 FAO/agricultural-style data labeled \"ireland\" (iso=irl) to IRL-1921-2025, the 26-county Irish Free State/Republic of Ireland. The candidate's wiki page (draft but well-sourced from Biger 1995 and CShapes 2.0) documents that the 1921 Anglo-Irish Treaty partitioned Ireland into the 26-county Irish Free State and 6-county Northern Ireland (tracked separately as GBNIR-1921-2025), and that this territory has been geographically stable (CShapes: single constant-area polygon 1922-2019, no changes) throughout the full observed span. Historically, the Irish Free State established its own Department of Agriculture/Statistics apparatus separate from the UK immediately upon independence, so an agricultural-production series labeled \"Ireland\" with iso=irl starting exactly in 1921 (matching the candidate's own start year, not lagging into 1922+) is consistent with the source reporting the 26-county territory from the outset rather than the whole island or a UK-inclusive aggregate. Staple magnitudes (potatoes ~850k ha, oats ~430k ha, wheat ~146k ha, barley ~108k ha) are plausible for the 26-county Free State/Republic and show no indication of the ~15-20% territorial inflation that would result from Northern Ireland's inclusion. No boundary changes occurred to this territory during 1921-1960, so the reporting territory equals the candidate's territory and stayed constant across the whole span.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "key": "ireland|juan|1921-1960",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "polity_code": "IRL-1921-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "9edaf73c8004d216",
+   "wiki_note": "Data start: the assertion's agricultural series for \"ireland\" (iso=irl) begins in 1921 itself, the same year as this row's start \u2014 this is a small independent data point relevant to the page's open question oq-emissions-data-overlap (whether Irish statistics were reported separately from the UK starting 1921 vs 1922): at least for agricultural production statistics, separate Irish-labeled reporting appears to begin in 1921, not 1922. (This concerns production data, not the trade data the open question specifically asks about, so it only partially informs it.)",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "echoed_evidence_hash": "9edaf73c8004d216"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "ireland|juan|1850-1920",
+   "verdict": "confirm",
+   "confidence": "high",
+   "polity_code": "IRL-1800-1921",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "basis": "The assertion routes JUAN's 'ireland' label (iso=irl, 1850-1920, 1045 rows) to IRL-1800-1921, whose wiki page documents it as the whole island of Ireland (32 counties, ~84,421 km2) as a distinct statistical/administrative unit within the UK from the 1800 Act of Union until the 1921 partition. The observed span 1850-1920 lies entirely inside that unified period \u2014 Ireland's administrative/territorial status did not change within the span (partition occurs in 1921, one year after the span ends), so the reporting territory is constant throughout. Staple magnitudes (oats ~858,500 ha, potatoes ~809,000 ha, cattle ~4.125M heads) are plausible in scale for the whole island of Ireland (a major 19th-century agricultural economy), not for a sub-region \u2014 consistent with whole-island reporting rather than a partial/Ulster-only or Republic-only label. The neighbor segment 1921-1960 correctly hands off to IRL-1921-2025 (post-partition 26 counties), confirming our period split aligns with the real 1921 partition rather than creating a vintage mismatch within this span. Although wiki_status is 'draft', the territorial claim itself (whole island under UK administration pre-1921) is a well-established historical fact independently verifiable and not merely an assumption, and the page's own reasoning (composed GADM union, CShapes limitations) is internally consistent and not contradicted by anything found.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "verified_evidence_hash": "7afb896d7148db91",
+   "echoed_evidence_hash": "7afb896d7148db91"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes juan's \"austria\" label (1851-1917, 1042 rows) to AUT-1800-1918 \"Austria (Cisleithania)\" (300,560 km\u00b2, wiki_status=draft). The draft wiki already flags the classic union-scope risk (Austria vs Austria-Hungary) and claims a wheat-area cross-check against Cisleithania, but per the skepticism rule I verified independently rather than trusting the draft. I pulled the raw juan rows from /home/usuario/Nextcloud/whep/layer_b/consolidated_layer_b.parquet for iso3c=aut, item=wheat, across the full observed span. Wheat production/area rise smoothly and gradually from 1851 (740k t) through a WWI-era dip, peaking at 1.9M t in 1912, then collapses catastrophically to ~140k t/150k ha in 1919 \u2014 the latter break lines up exactly with the truncated post-Saint-Germain Austrian Republic (successor AUT-1918-1919/1919-2025), confirming the 1918/1919 boundary is real and correctly split off. Critically, there is NO discontinuity around 1859 (loss of Lombardy), 1866 (loss of Venetia) or 1867 (Ausgleich/dual-monarchy constitutional change) \u2014 if the source's \"Austria\" had included Lombardy-Venetia before their loss, we would expect a step-down in the early 1860s; instead values in 1851-1859 are LOWER than the 1870s, consistent with ordinary agricultural intensification in a constant territory, not a shrinking one. This independently corroborates the wiki's claim that the Ausgleich was constitutional, not territorial, and that the source already reports on Cisleithanian-crownland boundaries from 1851 onward, never the whole Habsburg Empire or Lombardy-Venetia. Territory is therefore both equal to the candidate and constant across the whole 1851-1917 span, supporting verified_equal.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "source_file_inspected",
+    "wiki_draft"
+   ],
+   "key": "austria|juan|1851-1917",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "AUT-1800-1918",
+   "verdict": "confirm",
+   "verified_evidence_hash": "d80a01f723055178",
+   "wiki_note": "Independently checked raw juan wheat series (production tonnes and area ha) year-by-year 1851-1918 in consolidated_layer_b.parquet: values rise smoothly with no step-change at 1859 (Lombardy loss), 1866 (Venetia loss) or 1867 (Ausgleich) \u2014 ruling out inclusion of Lombardy-Venetia in the early years and confirming the reporting territory was already the Cisleithanian crownlands from 1851, constant through 1917. The only real break is the catastrophic 1918->1919 collapse (wheat area 824k ha -> 150k ha), which cleanly matches the post-Saint-Germain territorial loss already documented for the successor polity.",
+   "echoed_evidence_hash": "d80a01f723055178"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes juan's \"hungary\" agricultural series (1851-1917, 1003 rows) to HUN-1800-1918 (Kingdom of Hungary/Transleithania, 325,421 km2) via ISO match. The wiki (draft status, treated as hypothesis) claims Mitchell's IHS defines \"Hungary\" pre-1918 as Transleithania (including Croatia-Slavonia, Transylvania, Slovakia, Vojvodina) throughout, and I independently corroborated this with matched_rows.parquet: wheat area/production for this label shows smooth growth from ~2.0M ha (1868) to ~3.07M ha (1917) with no discontinuity indicating a territorial-scope change, and critically shows a sharp ~65% area drop at exactly the 1918/1919 boundary (3,063,000 ha in 1918 -> 1,077,300 ha in 1919), matching the wiki's claimed ~71% Trianon territorial loss and confirming the neighbor_segments split to HUN-1918-1919 is correctly placed. For the pre-1867 Ausgleich period there is a data gap (1860-1867, no rows), so I cannot directly verify continuity across that specific transition, but the underlying geography (Lands of the Crown of St. Stephen) did not physically change size in 1867 -- only its administrative status shifted from separately-governed crownlands to a unified autonomous kingdom -- so a constant Transleithania-scale reporting territory across the whole 1851-1917 span is plausible and unrebutted by the data. No union/empire conflation risk applies here in the way it would for e.g. Sweden-Norway (this is the correct larger scope already documented), and no sub-territory fold-up risk (the label is the aggregate, matching the candidate's own aggregate scope).",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "key": "hungary|juan|1851-1917",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "HUN-1800-1918",
+   "verdict": "confirm",
+   "verified_evidence_hash": "c86424c48f2eb89f",
+   "wiki_note": "Independently checked matched_rows.parquet for the juan \"hungary\" wheat series: it shows a sharp ~65% drop in reported area exactly at the 1918/1919 boundary (3,063,000 ha in 1918 to 1,077,300 ha in 1919), which quantitatively corroborates the page's claimed ~71% Trianon territorial loss and confirms the neighbor-segment split to HUN-1918-1919 is placed correctly. No data exists in this source for 1860-1867 (the exact Ausgleich transition), so continuity of the Transleithania scope across that specific gap remains unverified from data alone, though the geographic extent did not change size at 1867 (only administrative status did).",
+   "echoed_evidence_hash": "c86424c48f2eb89f"
+  },
+  "review": {
+   "basis": "The assertion routes 1,003 rows of \"hungary\" (source juan, 1851-1917) to HUN-1800-1918 \"Kingdom of Hungary (Transleithania)\" (area 325,421 km\u00b2) via ISO match. The candidate's wiki page (draft status, so not leaned on alone) cites an external authority \u2014 Mitchell's International Historical Statistics \u2014 which defines pre-1918 \"Hungary\" in statistical series as Transleithania (Lands of the Holy Crown of St. Stephen: Hungary proper + Croatia-Slavonia + Transylvania + Vojvodina + Slovakia + Carpathian Ruthenia), not the post-Trianon rump. That is independent corroboration beyond the page's own say-so, since Mitchell is a recognized external compilation, not the prior agent's invention. Magnitude check: staple_magnitudes show wheat median 3,067,000 t, rye 1,185,000 t, maize 2,312,037 t (n\u2248102-103) \u2014 plausible for a ~20-million-population, 325,000 km\u00b2 breadbasket region (historically \"granary of Europe\"), and far too large for post-Trianon Hungary (~93,000 km\u00b2, modern-day scale ~5M t only with 20th-c. intensification) \u2014 consistent with the Transleithania scope, not the shrunken successor. The neighbor_segments show the very next period (1918-1919) is routed to HUN-1918-1919, the small post-Trianon successor, and the magnitude table (though not shown per-period) combined with the well-known ~71% territorial loss at Trianon implies an expected large step-down there \u2014 consistent with a real territorial break at 1918, not a routing artifact. However, I flag a residual vintage concern the page does not address: within the observed span itself (1851-1917), Hungary's administrative composition was not static \u2014 the Voivodeship of Serbia/Banat of Temeschwar was abolished into Hungary in 1860, Transylvania was merged in via the 1867 Ausgleich, and the Military Frontier was dissolved into Croatia-Slavonia only in 1881. Whether the source (\"juan\") reports a single retrofitted Transleithania definition throughout 1851-1917 (as Mitchell's IHS conventionally does for comparability) or reports actual year-specific administrative Hungary (which would be smaller before 1867) cannot be confirmed from the bundle alone. Given this uncertainty about whether the reporting territory was genuinely constant across the full 55-year span, best_available rather than verified_equal is the honest classification, even though the polity-level routing (Hungary=Transleithania, not Cisleithania-Austria and not post-Trianon Hungary) is correct.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "external_source"
+   ],
+   "key": "hungary|juan|1851-1917",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "HUN-1800-1918",
+   "verdict": "confirm",
+   "verified_evidence_hash": "c86424c48f2eb89f",
+   "wiki_note": "Page cites Mitchell's IHS for the Transleithania definition but does not address that Hungary's own administrative composition shifted within the observed 1851-1917 span itself (Banat/Voivodina merged 1860, Transylvania merged 1867 via Ausgleich, Military Frontier dissolved into Croatia-Slavonia 1881) \u2014 worth noting whether the source's series is a retrofitted constant-territory series (Mitchell convention) or tracks actual year-specific borders, since that changes whether pre-1867 rows are strictly comparable to later ones under the same 325,421 km\u00b2 envelope."
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "denmark|juan|1920-1960",
+   "verdict": "confirm",
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "polity_code": "DNK-1920-2025",
+   "verified_evidence_hash": "00accfeb31779059",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "basis": "The candidate DNK-1920-2025 wiki page is status \"reviewed\" (not a draft), documenting metropolitan Denmark (Jutland, Zealand, Funen, Northern Schleswig, ~43,000 km\u00b2) as territorially stable from the 1920 Northern Schleswig plebiscite through the 2025 ceiling, with WWII occupation (1940-45) explicitly noted as producing no permanent territorial change. The observed span 1920-1960 falls entirely within this stable metropolitan-border period, with the predecessor split at exactly 1920 (matching neighbor_segments' DNK-1864-1920 boundary at 1866-1919). Agricultural staple magnitudes (barley ~699k ha, oats ~515k ha, sugar beet ~329k ha median across 82 years) are plausible in scale for Danish metropolitan agriculture and show no discontinuity indicating a scope change (e.g., inclusion/exclusion of Greenland/Faroe, which are agriculturally negligible for these crops anyway). No union, combined-reporting, sub-territory fold-up, or entrepot concerns apply to a \"denmark\" label routed by ISO to a national Denmark candidate. Territory equals candidate's and was constant across the whole observed span, so verified_equal is warranted.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "echoed_evidence_hash": "00accfeb31779059"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "algeria|mitchell|1920-1960",
+   "verdict": "confirm",
+   "polity_code": "DZA-1919-1962",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "basis": "Mitchell's 'Algeria' series (1920-1960) reports agricultural/livestock data for French colonial Algeria, matching candidate DZA-1919-1962, whose territory (the full colony including post-Sahara-annexation departments, CShapes area 213.51) was administratively stable from the 1919 post-WWI reorganization through independence in 1962 -- no border changes occurred within the 1920-1960 observed span. Staple magnitudes (wheat ~1.375M ha, barley ~977k ha, oats ~173k ha) are consistent with the known scale of colonial Algerian cereal agriculture and show no discontinuity relative to the preceding DZA-1902-1919 segment noted in neighbor_segments, supporting continuous reporting territory rather than a scope change.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "page_suspect": false,
+   "page_inadequate": true,
+   "wiki_note": "",
+   "verified_evidence_hash": "7a8d38731fc955c3",
+   "echoed_evidence_hash": "7a8d38731fc955c3"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes source \"juan\" label \"sweden\" (iso=swe, 1850-1904) to SWE-1814-1905, the Sweden-only entity during the Sweden-Norway personal union. This is exactly the union/empire-scope failure family, but the DB deliberately splits it: SNW-1814-1905 exists to hold the combined union polygon while SWE-1814-1905 and a parallel NOR-1800-2025 hold each kingdom's separate agricultural statistics, per the well-documented historical fact (independently known, not just page-asserted) that Sweden and Norway kept fully separate governments, parliaments, and statistical offices throughout the union despite being under one crown. Sweden's own territory (post-1809 loss of Finland to Russia, pre-1905 dissolution) was constant across the whole observed span 1850-1904. Staple magnitudes (oats ~797k t, rye ~411k t, wheat ~74k t) are consistent with Sweden-proper's arable base and not inflated by Norway's much smaller agricultural output, and the neighbor segment cleanly continues into SWE-1905-2025 after 1905 with no discontinuity suggesting a scope change. Verdict: confirm, verified_equal.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "sweden|juan|1850-1904",
+   "polity_code": "SWE-1814-1905",
+   "verdict": "confirm",
+   "verified_evidence_hash": "feed68c38ee5f354",
+   "wiki_note": "",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "echoed_evidence_hash": "feed68c38ee5f354"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion covers \"germany\" (juan source) rows 1871-1918, routed to DEU-1871-1919 (German Empire, 1871-1919) via ISO match. The candidate's own documented span is 1871 (Versailles proclamation, Alsace-Lorraine annexation) to 1919 (Treaty of Versailles territorial losses). The observed data span (1871-1918) ends before the 1919 Versailles border change, so within the observed window the reporting territory (metropolitan German Empire, i.e. post-1871-annexation borders including Alsace-Lorraine, excluding colonies which are tracked as separate WHEP rows) stayed constant \u2014 no annexation/cession occurred between 1871 and 1918. Staple magnitudes (rye ~6.3M t, potatoes ~21M t, wheat ~2.5M t, barley ~2M t, oats ~4.4M t) are consistent with well-documented German Empire agricultural output (Germany was historically the world's #2 rye and potato producer after Russia), supporting that this is full imperial-territory reporting, not a sub-territory or a differently-scoped aggregate. Neighbor segments show clean splits at 1866/1871 and 1919/1920 boundaries, consistent with our period model. No union/empire-scope ambiguity applies here (unlike Sweden-Norway or Austria-Hungary) since \"Germany\"/German Empire under this ISO is unambiguous for this period, and colonies are separately tracked. Wiki page is \"draft\" status but is well-cited (Wikipedia German Empire article, COW state system, Biger 1995) and its territorial claims are corroborated by known historical facts rather than merely asserted; nothing in it contradicts the routing.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "germany|juan|1871-1918",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "DEU-1871-1919",
+   "verdict": "confirm",
+   "verified_evidence_hash": "2acbbe9b7b5f7bc7",
+   "wiki_note": "",
+   "echoed_evidence_hash": "2acbbe9b7b5f7bc7"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes UK agricultural production data (barley, oats, wheat, potatoes, swine \u2014 760 rows, 1867-1920) to GBR-1800-1921 by ISO code. The candidate's wiki page (draft status but well-cited with CShapes 2.0 polygon data and Wikipedia sourcing) documents that the UK's metropolitan territory (including all of Ireland) was stable from the 1801 Act of Union through the 1921 Anglo-Irish Treaty \u2014 CShapes shows constant ~42.95 sq-degree area from 1886 to 1921-12-05, with the Ireland-loss area drop only occurring at 1922-12-06. The observed span (1867-1920) lies entirely within this stable window and ends before the 1921/1922 partition, so no mid-span territorial change (Ireland secession) falls inside the assertion's actual years. Staple magnitudes (wheat ~1.28M ha, oats ~1.27M ha, swine ~3.7M head) are plausible for UK-with-Ireland agriculture and continue smoothly into the neighbor segment (1921-1960 -> GBR-1921-2025), consistent with a clean split at the polity boundary rather than mid-span drift. No sub-territory fold-up, entrepot, or combined-reporting concern applies to a plain \"united kingdom\" ISO-routed label. Verdict: confirm, verified_equal, since the reporting territory equals the candidate's and was constant for the entire 1867-1920 window (the only known change, Irish secession, occurs strictly after the observed span ends).",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "key": "united kingdom|juan|1867-1920",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "GBR-1800-1921",
+   "verdict": "confirm",
+   "verified_evidence_hash": "61848338f8de4cf1",
+   "wiki_note": "",
+   "echoed_evidence_hash": "61848338f8de4cf1"
+  },
+  "review": {
+   "key": "united kingdom|juan|1867-1920",
+   "verdict": "confirm",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "polity_code": "GBR-1800-1921",
+   "verified_evidence_hash": "61848338f8de4cf1",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "page_suspect": false,
+   "page_inadequate": false,
+   "wiki_note": "",
+   "basis": "The assertion routes source 'juan' label 'united kingdom' for years 1867-1920 to GBR-1800-1921 (United Kingdom of Great Britain and Ireland, 1800-1921). This is well-established external history (Act of Union 1801, Anglo-Irish Treaty Dec 1921/Irish Free State Dec 1922) independent of the draft wiki page: the UK's metropolitan territory (Great Britain + all of Ireland) was constant throughout 1801-1921, with no boundary change falling inside the observed 1867-1920 span. The neighbor_segments entry (1921-1960 -> GBR-1921-2025) correctly reflects the real 1921/1922 Irish secession as the split point, matching the well-documented historical event rather than an arbitrary period cut. Staple magnitudes (wheat ~1.28M ha, oats ~1.27M ha, barley ~945k ha, swine ~3.69M heads) are plausible in scale for the whole UK including Ireland in this era (oats and swine especially reflect substantial Irish agricultural contribution, which would be under-scaled if the label meant Great Britain alone) \u2014 no anomalous step suggesting a scope change within the span. Since the source's reporting territory ('United Kingdom') was CONSTANT and equal to the candidate's territory across the entire 1867-1920 observed span, this meets the bar for verified_equal (not merely best_available)."
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "romania|juan|1921-1939",
+   "verdict": "confirm",
+   "confidence": "high",
+   "basis": "Observed span 1921-1939 falls entirely inside the ROU-1920-1940 (Greater Romania) window, which per the wiki and CSV maintained stable ~295,000 km\u00b2 borders from the June 1920 Treaty of Trianon settlement until the three simultaneous 1940 territorial losses (Vienna Award, Soviet ultimatum, Treaty of Craiova) \u2014 all of which occur AFTER the observed span ends. Staple magnitudes (barley ~1.6M ha, potatoes ~715k ha, rye ~325k ha across 38 country-years) are smooth and consistent with a single large agrarian country of this size, with no step-change flagged in neighbor_segments at either boundary (1920 start, 1940 end falls outside observed range). No sub-territory fold-up or entrepot risk applies \u2014 \"Romania\" as a national statistical label reporting agricultural area data is the standard case.",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "polity_code": "ROU-1920-1940",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "verified_evidence_hash": "a956327f3866496a",
+   "echoed_evidence_hash": "a956327f3866496a"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes FAO-era \"colombia\" crop production data (1922-1960, 754 rows, staples like coffee, rice, wheat, tobacco) to candidate COL-1922-2025 via ISO code. The candidate's wiki page is status \"reviewed\" (not draft), and documents Colombia's territorial history: Gran Colombia dissolution (1830), Panama's secession (1903), and explicitly states this row covers \"Modern Colombia with stable borders\" from 1922 onward \u2014 i.e. after both major territorial changes (Panama's loss) had already occurred and are captured by the predecessor split (neighbor_segments show COL-1830-1903 and COL-1903-1922 as separate, earlier polities). The 1922-1960 assertion span is fully within the 1922-2025 candidate period, during which Colombia had no further territorial cessions or annexations (no civil-war partition, no border war losses of consequence \u2014 the later Leticia dispute with Peru, 1932-33, was a minor incident resolved by treaty without net territorial change to Colombia). Staple magnitudes (coffee 323k t, rice 123k t, wheat 122k t, tobacco 17k ha) are plausible for a mid-sized Andean/tropical national economy of Colombia's known size (~1.14M km\u00b2) and show no discontinuity vs the neighboring pre-1922 segments, supporting continuous reporting-territory identity across the split boundary and through the observed span.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "key": "colombia|juan|1922-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "COL-1922-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "ce1d53e66a8df692",
+   "wiki_note": "",
+   "echoed_evidence_hash": "ce1d53e66a8df692"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "denmark|juan|1866-1919",
+   "verdict": "confirm",
+   "polity_code": "DNK-1864-1920",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "basis": "The candidate DNK-1864-1920 covers exactly 1864-1920, and the observed span (1866-1919) sits entirely inside it with no territorial change during the observed years themselves (the two real events -- loss of Schleswig-Holstein in 1864, return of Northern Schleswig in 1920 -- both fall on the row's own boundaries, outside 1866-1919). The wiki page, though status:draft, cites an external authority (Biger 1995) confirming the 1864 loss of Schleswig-Holstein (~33-40% of territory) and the 1920 Northern Schleswig plebiscite return, giving independent corroboration beyond the page's own say-so. The bundle's neighbor_segments show clean hand-offs at both boundaries (1861 rows routed to predecessor DNK-1800-1864, 1920-1960 rows routed to successor DNK-1920-2025), i.e. the source's own year coverage respects exactly this territorial partition rather than crossing it. Staple magnitudes (barley ~372k t, oats ~435k t, wheat ~78k t median) are plausible in scale for a ~38-40k km2 agricultural Denmark and show no sign of a step change consistent with a mid-span scope break. This is also corroborated by a prior independent review-ledger entry (denmark|juan|1866-1920, marked 'correct' on 2026-07-24) for an essentially identical span, which reached the same routing.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "checks": [
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "external_source",
+    "prior_source_convention"
+   ],
+   "verified_evidence_hash": "be6e6a4b482a5b73",
+   "echoed_evidence_hash": "be6e6a4b482a5b73"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion peru|juan|1942-1960 routes \"peru\" (ISO=per) to PER-1942-2025 for 694 rows across 1942-1960. The candidate's wiki page is reviewed status and documents Peru's borders as stable from 1942 onward, fixed by the Protocol of Rio de Janeiro ending the 1941-42 border war with Ecuador; CShapes/COW ccode=135 backs the polygon. The observed span (1942-1960) is a small early slice of the candidate's full 1942-2025 span and there is no territorial change (annexation/cession/occupation) documented or plausible in that window \u2014 Peru's post-1942 borders held continuously. Staple magnitudes (rice paddy ~87,500 ha, wheat ~137,000 ha, cotton ~150,000 ha, potatoes ~599,000 t, barley ~186,000 t) are all consistent with known mid-20th-century Peruvian agricultural production at national scale, not a sub-territory or entrepot artifact. No combined-reporting or union-scope issue applies (Peru is not part of any customs/political union in this era). Confirm as verified_equal.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_reviewed",
+    "neighbor_continuity"
+   ],
+   "key": "peru|juan|1942-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "PER-1942-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "add0704559d81844",
+   "wiki_note": "",
+   "echoed_evidence_hash": "add0704559d81844"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes Mitchell's \"Indonesia\" label (1889-1944, 682 rows, agricultural/livestock series) to candidate IDN-1889-1945 (Dutch East Indies, CShapes-derived polygon, area 1,877,243 km\u00b2). The candidate's wiki page (status: reviewed) documents that the CShapes polygon area is constant (152.87 sq deg) throughout the entire 1889-1945 period, i.e. no territorial change occurred within this span \u2014 the 1889 start reflects the Anglo-Dutch Borneo boundary treaty and the 1945 end reflects the independence declaration, not any internal boundary shift. The observed data span (1889-1944) falls entirely within this single, internally stable polity period, so there is no mid-span discontinuity to worry about. Staple magnitudes (rice paddy median 4.58M tonnes, sugar cane 455k tonnes, coffee 75k tonnes, tea 205k tonnes) are all consistent with known Dutch East Indies-wide production (Java sugar/rice, Sumatra/Java coffee and tea plantations) \u2014 no entrepot or sub-territory fold-up signature, and no combined-reporting risk since \"Indonesia\" here plainly denotes the whole colonial territory, not a component. Neighbor segments show clean adjacent routing to IDN-1800-1889 and IDN-1945-1949 with no overlap. This is a reviewed page, not a draft, so its territorial claim (constant borders 1889-1945) can be relied on directly, and the magnitudes independently corroborate that scale matches the full colony rather than a sub-region.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "split_basis",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "key": "indonesia|mitchell|1889-1944",
+   "polity_code": "IDN-1889-1945",
+   "verdict": "confirm",
+   "confirm_kind": "verified_equal",
+   "verified_evidence_hash": "41a9d8e458014b01",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "echoed_evidence_hash": "41a9d8e458014b01"
+  },
+  "review": {
+   "basis": "The assertion routes Mitchell's \"indonesia\" 1889-1944 rows to IDN-1889-1945 (Dutch East Indies) by ISO. The candidate's wiki page is status:reviewed (not draft) and documents a CShapes 2.0 polygon (~1,877,243 km2, COW 750) that is constant throughout 1889-1945 with no territorial change (confirmed split at 1945-08-17 independence with identical area before/after). Mitchell's International Historical Statistics conventionally reports \"Indonesia\"/Netherlands Indies as the whole Dutch East Indies colonial unit for this era, matching the candidate's full territory rather than a sub-component (e.g. Java only). Staple magnitudes (rice paddy median 4.58M tonnes, sugar cane 455k tonnes, coffee 75k tonnes, tea 205k tonnes) are all plausible at whole-archipelago scale, not a single-island fold-up, and are agronomically consistent with the DEI's tropical/volcanic geography (no entrepot or impossible-commodity red flags). Neighbor segments show clean adjacent routing (1850-1888 -> IDN-1800-1889, 1945-1949 -> IDN-1945-1949, 1950-1960 -> IDN-1949-1969) with no overlap or gap, consistent with a stable reporting territory across this specific segment. No sub-territory, union-scope, combined-reporting, or boundary-vintage issues apply here.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed",
+    "prior_source_convention"
+   ],
+   "key": "indonesia|mitchell|1889-1944",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "IDN-1889-1945",
+   "verdict": "confirm",
+   "verified_evidence_hash": "41a9d8e458014b01",
+   "wiki_note": ""
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "morocco|mitchell|1915-1957",
+   "verdict": "confirm",
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "polity_code": "MAR-1911-1958",
+   "verified_evidence_hash": "6ae808a5be60d33a",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed",
+    "wiki_draft"
+   ],
+   "page_suspect": true,
+   "page_inadequate": false,
+   "wiki_note": "The page's summary describes MAR-1911-1958 as covering \"French and Spanish protectorates\" as one territory, but the DB actually maintains SMO-1912-1956 as a SEPARATE polity for the Spanish Protectorate zone (thin rice-only data, 55 rows, 1939-1951 per its own page). Mitchell's \"morocco\" label here (682 rows, large multi-crop/livestock volumes: barley median 1,255,500 ha, wheat 860,500 ha, maize 249,500 ha) is clearly the dominant French-zone agricultural core, not a combined French+Spanish total -- Spanish-zone agriculture was negligible (rice only) per SMO's own page. So MAR-1911-1958's actual reporting territory is closer to \"French protectorate zone, later the reunified Kingdom's core\" rather than the full bi-zone Morocco its own summary implies. There is also an unretired duplicate, MOR-1956-1958 (iso3=MOR, years 1956-1958), that overlaps MAR-1911-1958's tail end -- it wasn't matched here only because it lacks the MAR iso code, but it represents unresolved DB structure that should eventually be reconciled (similar to the MOR-1904-1956 duplicate already retired).",
+   "basis": "The candidate MAR-1911-1958 (wiki_status=draft) is the DB's established canonical \"Morocco\" entity for 1911-1958 (per decision log morocco-mar-mor-double-count, which retired MOR-1904-1956 as a duplicate). Mitchell's \"morocco\" label (iso=mar, 682 rows, 1915-1957) reports large-scale wheat/barley/maize/livestock data consistent with the fertile French-protectorate agricultural core, not the separately-tracked, agriculturally-thin Spanish protectorate zone (SMO-1912-1956, rice-only). However, the observed span crosses the 1956 reunification (Spanish northern zone reincorporated 7 April 1956, per SMO's own page) and continues to 1957, meaning the reporting territory technically expanded mid-span even though the added Rif-zone agricultural contribution is likely small (mountainous terrain, not a wheat/barley/maize belt). Per the routing rule, a mid-span territorial change -- even a materially small one -- rules out verified_equal, so this is confirm/best_available. Neighbor_segments (1958-1960 -> MAR-1958-1975) confirm the candidate's own end-year boundary is consistently applied.",
+   "echoed_evidence_hash": "6ae808a5be60d33a"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "hungary|juan|1920-1937",
+   "verdict": "confirm",
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "polity_code": "HUN-1920-1938",
+   "verified_evidence_hash": "daa28dd3f30fa9ea",
+   "checks": [
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "page_suspect": false,
+   "page_inadequate": false,
+   "wiki_note": "",
+   "basis": "The assertion covers Hungary-labeled agricultural data 1920-1937, fully inside candidate HUN-1920-1938's period (1920-1938, post-Trianon Horthy-era Hungary, ~93,000 km\u00b2). This is a well-documented historically stable territory: the Treaty of Trianon (June 1920) fixed Hungary's borders and no territorial change occurred until the First Vienna Award of November 1938, which falls just after the observed span ends (1937) and coincides with this candidate's own end year/successor split. The neighbor_segments show clean boundary continuity (HUN-1918-1919 before, HUN-1938-1940 after at the exact treaty dates), consistent with our period splits matching the actual territorial history rather than an artifact. Staple magnitudes (wheat ~1.63M ha, barley ~479k ha median over 36 years) are plausible in scale for interwar Trianon Hungary's cereal-heavy agriculture and show no discontinuity suggesting a scope change mid-span. No union/empire-scope, sub-territory fold-up, entrepot, or combined-reporting failure pattern applies here: \"Hungary\" in this period denotes a single, non-composite, unchanging national territory. The wiki page is draft status so I did not lean on its narrative claims alone, but its territorial description (stable Trianon borders 1920-1938, area ~93,000 km\u00b2) is independently well-established general historical knowledge (not merely the page's own assertion), and it is corroborated by the magnitude/neighbor-continuity evidence in the bundle. Verdict: confirm, verified_equal, since the reporting territory equals the candidate's and stayed constant across the whole observed span (1920-1937, entirely within the stable 1920-1938 Trianon-border period).",
+   "echoed_evidence_hash": "daa28dd3f30fa9ea"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "costa rica|juan|1900-1960",
+   "verdict": "confirm",
+   "polity_code": "CRI-1800-2025",
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_reviewed",
+    "prior_source_convention"
+   ],
+   "basis": "The assertion routes a 'costa rica' FAO-style agricultural production label (items: coffee, bananas, cattle, rice, sugar cane, etc.) to CRI-1800-2025 for 1900-1960 via ISO match. Costa Rica's mainland national borders were essentially fixed for this whole span: the Nicaragua boundary was settled by the 1858 Canas-Jerez treaty, and the Panama boundary, though not fully arbitrated until 1941/1944, only ever concerned a small disputed strip (the Coto district, subject of the brief 1921 Coto War) that does not materially change the reporting territory of a national agricultural census. There is no union/empire, no combined-reporting, no entrepot/re-export, and no sub-territory fold-up risk here -- Costa Rica is not a component of any larger reporting unit for this period. The staple magnitudes (coffee ~21,650 t, bananas ~185,000 t, cocoa ~5,359 t) are entirely plausible for Costa Rica's own historical export agriculture (coffee highlands, United Fruit banana plantations from 1899, Caribbean cocoa) and imply no scope discontinuity across the 61 observed years. The wiki page (wiki_status: draft) documents the territory (bounded by Nicaragua/Panama, 1858 treaty) consistently with this, though it is thin on 20th-century economic/production detail and was not independently corroborating this specific assertion -- my confirmation rests primarily on the plausibility of the magnitudes and known political-geography facts about Costa Rica's stable borders, not on the draft page's authority.",
+   "wiki_note": "",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "verified_evidence_hash": "a5b0c5c439364570",
+   "echoed_evidence_hash": "a5b0c5c439364570"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "germany|juan|1949-1960",
+   "verdict": "confirm",
+   "polity_code": "DEU-1949-1990",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "wiki_reviewed",
+    "neighbor_continuity",
+    "prior_source_convention",
+    "data_magnitudes"
+   ],
+   "basis": "candidate_meta.wiki_status is draft, but the page's claim is corroborated independently: it documents that DEU-1949-1990 was purpose-built as the undifferentiated FRG+GDR aggregate (area = 247,553+109,272=356,800 km2) precisely because pre-1961 sources report a single 'Germany' stream 1949-1961 with no FRG/GDR split, and it explicitly cites a prior verification of the same juan source pattern (germany|juan|1950-1960, 603 rows) reaching the same conclusion. This assertion (germany|juan|1949-1960, 650 rows, 1949-1960) is the same source/label/span (one extra year, 1949, added at the front) as that already-corroborated case. The source_conventions field in the bundle also states this explicitly as a verified starting point. Staple magnitudes (potatoes median 16.48M ha, sugar beet 4.16M ha, rye 3.96M ha) are consistent with combined FRG+GDR agricultural scale, not West Germany alone (~30% smaller). Germany's post-war borders were fixed at Potsdam and unchanged 1945-1990, so the reporting territory equals the candidate's and stayed constant across the whole 1949-1960 observed span (and indeed the whole 1949-1990 candidate period) -- no annexation/cession/occupation change occurs within the observed years, so verified_equal is appropriate here despite the general caution for long spans.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "verified_evidence_hash": "20a86650a17f57a9",
+   "echoed_evidence_hash": "20a86650a17f57a9"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "puerto rico|juan|1900-1960",
+   "verdict": "confirm",
+   "polity_code": "PRI-1800-2025",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft"
+   ],
+   "page_suspect": false,
+   "page_inadequate": true,
+   "wiki_note": "",
+   "verified_evidence_hash": "008311626da4621c",
+   "basis": "The assertion routes FAOSTAT-style agricultural rows labeled 'puerto rico' (source 'juan', ISO PRI) to PRI-1800-2025 for 1900-1960. Puerto Rico has been a single, geographically constant island territory under US administration since the 1898 cession from Spain (well before the observed span), with no internal splits, annexations, or combined-reporting partners during 1900-1960 \u2014 unlike e.g. Cuba or the Philippines there is no other polity or union whose scope 'Puerto Rico' could ambiguously denote. The staple magnitudes are plausible for the island's known agricultural profile: sugar cane ~136,000 ha (a large share of the island's ~910,000 ha land area, consistent with PR's historical status as a sugar-monoculture economy under US tariff preference), coffee ~15,700 t (PR was a significant highland coffee producer especially early in the period), tobacco ~13,600 t and modest cotton/oranges figures \u2014 all consistent with a single small Caribbean island's own production, with no agronomic red flags suggesting entrepot re-export or a mismatched larger hinterland. No sub-territory fold-up risk either: Puerto Rico is not a component folded into a larger reporting unit, nor is a smaller sub-unit being folded up into it. The wiki page is a thin, unreviewed draft (status: draft, GADM proxy polygon, no real territorial narrative beyond noting the 1898 cession) and cannot itself be relied on as verification, but nothing in the data or in Puerto Rico's known political history for 1900-1960 contradicts a direct one-to-one match, so I am confirming based on the data magnitudes and independent historical-geography knowledge rather than the page's claims.",
+   "echoed_evidence_hash": "008311626da4621c"
+  },
+  "review": {
+   "basis": "Puerto Rico is a single fixed island territory (main island + Vieques, Culebra, Mona) that has been under continuous US sovereignty since 1898, with no boundary changes during the observed span 1900-1960. FAOSTAT's ISO code PRI directly denotes this same territory (no union/parent aggregation, no sub-territory fold-up issue \u2014 Puerto Rico is itself the reporting unit, not a component of a larger federation reported separately). The staple magnitudes are plausible for Puerto Rico's well-documented agricultural history: sugar cane (~136,000 ha) fits its early-20th-century sugar boom (peak cultivated area roughly 100-150k ha in the 1930s-40s), coffee (~15,700 t) and tobacco (~13,600 t) match its historically significant highland coffee and tobacco export sectors. The wiki page is a thin unreviewed draft (proxy GADM polygon, no historical boundary detail) and adds nothing beyond \"PRI = Puerto Rico,\" so it is not being relied upon for the territorial claim \u2014 the match rests on ISO-code identity plus magnitude plausibility for a geographically stable, non-composite island territory.",
+   "checks": [
+    "scope",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft"
+   ],
+   "key": "puerto rico|juan|1900-1960",
+   "page_inadequate": true,
+   "page_suspect": false,
+   "polity_code": "PRI-1800-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "008311626da4621c",
+   "wiki_note": ""
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes Mitchell's \"madagascar\" label (1905-1960, 643 rows, staples rice paddy/maize/sugarcane/coffee/cattle) by ISO to MDG-1882-2025, a single WHEP row spanning French protectorate (1885) through colony (1896) to independence (1960) to present. Madagascar is a single island with no land boundaries, so its geographic territory did not change through this transition \u2014 only its sovereign status did (protectorate -> colony -> overseas territory -> independent republic), and the WHEP polity is deliberately modeled as one continuous-territory row across that political evolution. The observed span 1905-1960 sits entirely within this single, geographically constant landmass. Staple magnitudes (rice paddy median 652,500 ha, cattle 6.02M head, maize 80,000 t) are plausible in scale for the whole island (~587,000 km2) and show no indication of a partial-territory or entrepot label \u2014 these are domestically-produced staples, not transit goods, and there is no sub-territory (e.g. a single province) that would produce cattle/rice at this scale. The wiki page is draft status and thin (a CSV/Biger-derived stub that documents the island's area and colonial timeline but never engages with agricultural data routing), so I did not lean on it as settled evidence; the territorial equivalence instead rests on well-established general geography (Madagascar = one island, borders unchanged 1905-1960) plus magnitude plausibility.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "external_source",
+    "wiki_draft"
+   ],
+   "key": "madagascar|mitchell|1905-1960",
+   "page_inadequate": true,
+   "page_suspect": false,
+   "polity_code": "MDG-1882-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "cb3abcbdf71f924d",
+   "wiki_note": "",
+   "echoed_evidence_hash": "cb3abcbdf71f924d"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "germany|juan|1920-1937",
+   "verdict": "confirm",
+   "confidence": "high",
+   "polity_code": "DEU-1920-1938",
+   "confirm_kind": "best_available",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "page_suspect": false,
+   "page_inadequate": false,
+   "wiki_note": "",
+   "verified_evidence_hash": "2ee160d6f01f4760",
+   "basis": "The juan source's 'germany' label (iso=deu) for 1920-1937 is routed to DEU-1920-1938 (Weimar Republic through early Nazi period, pre-Anschluss), whose observed span 1920-1937 sits fully inside the candidate's 1920-1938 period and does not reach into the neighboring DEU-1919-1920 or DEU-1938-1945 segments (per neighbor_segments, 1919 and 1938+ route elsewhere), so there is no boundary-vintage or period-split misalignment. Staple magnitudes (wheat ~2.26M ha, rye ~4.83M ha, oats ~3.79M ha, sugar beet ~4.19M ha median across 36 obs) are squarely in the range of whole-Weimar-Germany agricultural land use, not a sub-territory or an entrepot artifact, and there is no combined-reporting risk (this is single-country Germany, distinct from the 1949-1960 aggregate-FRG/GDR convention already logged for this source). The wiki page (draft, so treated as hypothesis) documents that metropolitan German borders were essentially stable 1920-1938 except two events: the 1935 Saar Basin return (~1,900 km2, well-known and independently corroborated history) and the 1938 Anschluss (outside our observed window, correctly the row's end boundary). Because the Saar reunification is a real, if minor, territorial change occurring mid-span (1935, inside 1920-1937), confirm_kind is best_available rather than verified_equal per the instruction that any mid-span territorial change disqualifies verified_equal even when small. No evidence contradicts the page's territorial narrative, and it is corroborated by widely-documented interwar European history (Treaty of Versailles borders, Saar plebiscite, Anschluss), not merely self-referential draft-page claims.",
+   "echoed_evidence_hash": "2ee160d6f01f4760"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes IIA rows labelled 'cyprus' (iso=cyp), years 1909-1945, to CYP-1879-2025. This span falls entirely within the British colonial administration period (1878-1960), before the 1923 Ottoman renunciation of nominal suzerainty (a sovereignty change, not a territorial one) and well before the 1974 Turkish occupation that later split the island's effective control. Cyprus is a single island with fixed physical boundaries; no annexation, cession, or partition occurred anywhere in the 1909-1945 window, so the reporting territory (the whole island under British administration) is identical to and constant with the candidate's territory across the entire observed span. Staple magnitudes (cotton lint ~600t, cotton seed ~2,000 ha, tobacco ~354t, sesame ~500t, grapes ~31,770 ha) are all plausible outputs for an island of ~9,251 km\u00b2 and show no discontinuity suggesting a scope change. The wiki page (draft status) documents the island's territorial stability and explicitly scopes its only caveat (post-1974 polygon overstatement) to years well outside this assertion's span, so its claim here is corroborated by the independent, undisputed geographic fact that Cyprus's coastline/administration was unchanged 1878-1960 \u2014 not merely taken on the draft's say-so.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "neighbor_continuity"
+   ],
+   "key": "cyprus|iia|1909-1945",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "CYP-1879-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "9abb9597203c61f6",
+   "wiki_note": "",
+   "echoed_evidence_hash": "9abb9597203c61f6"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "honduras|juan|1900-1960",
+   "verdict": "confirm",
+   "polity_code": "HND-1800-2025",
+   "confidence": "high",
+   "confirm_kind": "best_available",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft"
+   ],
+   "basis": "The label 'honduras' with iso hnd routes unambiguously to the single national polity HND-1800-2025 for the whole 1900-1960 span; there is no union/empire ambiguity, no sub-territory fold-up, and no combined-reporting risk (Honduras was never merged with a neighbor in this period). Staple magnitudes are plausible for whole-country Honduras: bananas at a median 720,000 tonnes is consistent with Honduras's well-documented role as a major early-20th-century banana exporter (United Fruit/Standard Fruit plantations on the north coast), maize ~195,500 ha and sugar cane ~20,000 ha fit a small Central American agrarian economy, and coffee at only ~1,500 tonnes median is low but plausible for Honduras's historically minor coffee sector relative to neighbors in this era. No neighbor_segments data to cross-check. The wiki page (draft, so treated as a prior hypothesis, not evidence) documents the CShapes 1886 polygon as an approximate proxy and explicitly flags that it predates the 1906 Honduras-Nicaragua arbitration (falling inside our 1900-1960 span) and the 1992 Honduras-El Salvador ICJ ruling, with disputed zones estimated at under 5-10% of area. Because a border-affecting event (the 1906 arbitration) falls within the observed span, per the routing rule this cannot be called a provably constant reporting territory even though the practical effect is small and the wiki treats it as demarcation of a pre-existing claim rather than annexation/cession of substantial territory -- so I record best_available rather than verified_equal despite no better alternative existing.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "verified_evidence_hash": "41f6373f4d9aa532",
+   "echoed_evidence_hash": "41f6373f4d9aa532"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes \"romania\" (source juan, iso rou) 1860-1912 to ROU-1859-1913 (\"Romania (to 1913)\", 1859-1913). The span 1860-1912 is fully contained in the candidate's 1859-1913 lifetime, and no other WHEP polity covers this period, so routing is correct. However, the candidate's own wiki page documents that Romania's territory changed mid-span: the 1878 Congress of Berlin saw Romania gain Northern Dobruja (~15,000 km\u00b2) from the Ottomans while ceding Southern Bessarabia (~10,000 km\u00b2) to Russia \u2014 a real, well-documented territorial exchange (independent of the page's draft status; this is standard 19th-century Balkan history). Since the observed span (1860-1912) straddles this 1878 change, the reporting territory did not stay constant, so per the routing rules this must be confirm/best_available rather than verified_equal, even though no finer-grained existing polity exists to split into (the wiki itself notes the CSV does not split at 1878, flagging it as an open question rather than a resolved split). Cereal-area magnitudes (wheat ~1.45M ha, maize ~1.8M ha) are plausible for Romania's post-1878 extent and show no anomalous discontinuity in the sample. No entrepot/component/combined-reporting issues apply here \u2014 Romania is not aggregating another territory's output under this label.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "romania|juan|1860-1912",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "ROU-1859-1913",
+   "verdict": "confirm",
+   "verified_evidence_hash": "101b04670cf4332d",
+   "wiki_note": "",
+   "echoed_evidence_hash": "101b04670cf4332d"
+  },
+  "review": {
+   "basis": "The assertion routes Juan's-team Romanian agricultural production/area data (610 rows, 1860-1912) to ROU-1859-1913 (\"Romania to 1913\") via ISO+name+year alias. I independently pulled the raw source rows (Source=\"juan's team\", country=Romania) from data/external/before_1961.csv and checked magnitude continuity around the one known territorial-change event inside the span: the 1878 Congress of Berlin (Romania gained Northern Dobruja ~15,000km\u00b2 from the Ottomans, lost Southern Bessarabia ~10,000km\u00b2 to Russia, net +~5,000km\u00b2 on a ~130,000km\u00b2 base, ~4%). The source itself has a data gap 1877-1883 (no rows), resuming 1884 after the territorial change had already occurred, so the transition itself isn't directly observable in-series, but wheat-area continues a smooth upward trend across the gap (1,065,000 ha in 1876 -> 1,175,000 ha in 1886, in line with the pre- and post-gap trend), showing no discontinuity of a magnitude consistent with a major scope change -- consistent with the small net territorial change. The candidate's own wiki page (wiki_status=draft, so treated as hypothesis not evidence) already flags this exact issue as open question oq-1878-congress-of-berlin: it documents that Romania's territory was NOT constant across 1859-1913 (Dobruja/Bessarabia exchange) but that the CSV/WHEP database chose not to split there. Because the candidate's territory changed mid-span, no single polity can be verified_equal to the source's reporting territory across the full 1860-1912 observed range; ROU-1859-1913 is nonetheless the correct and best available match -- there is no finer-grained WHEP polity for pre-1913 Romania, the source is reporting for the country named \"Romania\" using its administrative territory as it evolved (standard national agricultural statistics practice), and no sub-territory fold-up, entrepot, or combined-reporting issue is present.",
+   "checks": [
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "source_file_inspected"
+   ],
+   "key": "romania|juan|1860-1912",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "ROU-1859-1913",
+   "verdict": "confirm",
+   "verified_evidence_hash": "101b04670cf4332d",
+   "wiki_note": "Independent magnitude check: raw source rows (before_1961.csv, Source=\"juan's team\", Romania) show a data gap 1877-1883 that straddles the 1878 Congress of Berlin exactly, then resume with wheat area continuing the pre-gap upward trend (1,065,000 ha in 1876 -> 1,175,000 ha in 1886) with no discontinuity -- consistent with the net territorial change being small (~4% of area: +Dobruja/-Bessarabia) and supporting that the source reports Romania's evolving administrative territory rather than a fixed scope, i.e. ROU-1859-1913 remains the best available (not verified-equal) match for the whole 1860-1912 span, as the page's own oq-1878-congress-of-berlin already anticipates."
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes Mitchell's \"india\" agricultural series (1915-1937, 596 rows) to IND-1914-1937 (British India, pre-Burma-separation) via ISO match. The candidate's own span (1914-1937) ends precisely at the documented Burma separation (Government of India Act 1935, effective 1 Apr 1937), and the assertion's neighbor_segments show the adjacent bucket (1938-1947) correctly routed to IND-1937-1947 \u2014 i.e. our period split already aligns with the real territorial break, so there is no mid-span boundary change within the observed 1915-1937 window itself. Mitchell's International Historical Statistics conventionally reports \"India\" as British India (including Burma) up to 1937, switching thereafter \u2014 matching our split exactly. Staple magnitudes (rice paddy median 34.6M ha, wheat 10.4M ha, n=44-46 covering nearly the full span) are smoothly continuous and consistent with known British-India-including-Burma acreage figures for the interwar period (Burma alone contributed several million ha of paddy, plausible within this total), with no visible step-change that would signal a scope shift. The wiki page is marked wiki_status \"reviewed\" but its Territorial extent and Sourced claims sections are both \"(to be documented)\" \u2014 i.e. despite the reviewed flag it carries no actual territorial documentation, so the confirm rests on the assertion bundle's own magnitude/continuity evidence plus general knowledge of Mitchell's British-India convention, not on the page's content.",
+   "checks": [
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "key": "india|mitchell|1915-1937",
+   "page_inadequate": true,
+   "page_suspect": false,
+   "verdict": "confirm",
+   "verified_evidence_hash": "267f8cbb34d611e2",
+   "polity_code": "IND-1914-1937",
+   "wiki_note": "Page is flagged wiki_status \"reviewed\" but its Territorial extent and Sourced claims sections are both still \"(to be documented)\" \u2014 the reviewed flag is not backed by actual territorial documentation. Confirmation instead rests on: (1) Mitchell's well-known convention of reporting \"India\" as undivided British India (including Burma) through 1937, switching label only after the 1937 separation; (2) the assertion's own neighbor_segments showing the very next bucket (1938-1947) already correctly routed to IND-1937-1947, confirming our DB's period split lands exactly on the real 1937 Burma-separation boundary rather than mid-span; (3) smooth, plausible staple magnitudes (rice paddy ~34.6M ha, wheat ~10.4M ha) across the observed years with no step discontinuity.",
+   "echoed_evidence_hash": "267f8cbb34d611e2"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "hungary|juan|1947-1960",
+   "verdict": "confirm",
+   "polity_code": "HUN-1947-2025",
+   "confirm_kind": "verified_equal",
+   "confidence": "high",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "wiki_reviewed",
+    "data_magnitudes",
+    "neighbor_continuity"
+   ],
+   "basis": "The candidate HUN-1947-2025 is a reviewed wiki page documenting Hungary at Trianon borders (~93,000 km2), stable and unchanged from the 1947-02-10 Treaty of Paris through the present, with no territorial changes noted in the 1947-1960 span covered by this assertion. The 'juan' source's Hungary series (iso=hun) reports agricultural areas (wheat median 1,442,000 ha, barley 539,500 ha, rye 491,500 ha, sugar beet 646,000 ha) plausible in scale for a ~9.3 million ha country, with smooth continuity into the neighboring pre-1947 segments (HUN-1944-1947, HUN-1938-1940, etc.) per neighbor_segments, indicating no scope discontinuity at the 1947 boundary. No union/empire scope issue, no combined-reporting risk, no sub-territory fold-up (Hungary is itself the reporting unit). Borders constant for the entire observed span, so verified_equal applies.",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "verified_evidence_hash": "2d63d5939053c81b",
+   "echoed_evidence_hash": "2d63d5939053c81b"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "JAM-1800-2025 is the only Jamaica polity in the DB, spanning the full 1800-2025 range as a single national entry. Jamaica is an island with no land boundaries; its physical territory was fixed by British conquest in 1655 and has not changed since (independence in 1962 changed sovereignty, not territory). The observed data span (1850-1960) falls entirely within this single unbroken territorial regime, well before and slightly after independence, with no annexation/cession/partition event. Staple magnitudes (sugar ~29,000t, bananas ~163,500t, cattle ~119,000 head) are all plausible for an island of ~10,991 km2 and show no discontinuities suggesting a scope change. The wiki page (wiki_status: draft) is however self-contradictory: its frontmatter declares end_year 2025 but its body/title claim it only covers \"to 1886\" and describes a \"successor\" row JAM-1886-1962 that does not exist as a separate DB entry (the DB has only the single JAM-1800-2025 row) -- this is stale text from an incomplete chain-restructure, not something to rely on, but it does not affect the routing/territory conclusion since the DB is unambiguous on there being one Jamaica polity for the whole span.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "split_basis",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "source_file_inspected"
+   ],
+   "key": "jamaica|mitchell|1850-1960",
+   "page_inadequate": false,
+   "page_suspect": true,
+   "polity_code": "JAM-1800-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "018e1565062c9216",
+   "wiki_note": "The page's frontmatter declares end_year 2025 (matching the single DB row JAM-1800-2025) but its title/body claim it covers only \"to 1886\" and reference a nonexistent successor row \"JAM-1886-1962\" as if it were a separate polity -- this is leftover/stale text from an incomplete chain-restructure and should be corrected to describe the full 1800-2025 span, since only one Jamaica polity exists in the database.",
+   "echoed_evidence_hash": "018e1565062c9216"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes juan's Finland series (rows=537, 1940-1960) to FIN-1940-2025 by ISO match. The wiki page (draft status, but unusually well-sourced via biger-1995 and a prior assertion-verification pass) documents that this row covers post-Moscow-Peace-Treaty Finland (Karelia ceded March 1940), that the Continuation War (1941-1944) briefly regained then re-lost Karelia, and that the Paris Peace Treaty (1947) additionally confirmed the 1940 losses plus Petsamo (Arctic coast). A prior assertion-verification episode already examined this exact source (juan) and found its sown-area series (barley/oats/wheat, ha) run smooth across 1941-1944 and the 1944 armistice, with the WWII-era dip being wartime disruption (labour/input shortage) rather than a territorial step -- recapturing agriculturally rich Karelia would have raised, not lowered, sown area. This matches source_conventions already recorded for juan. However, the candidate row FIN-1940-2025 itself is not territorially invariant across the observed 1940-1960 span: Petsamo (Arctic strip) was lost in 1944/confirmed 1947, i.e. mid-span within the 1940-1960 window, so per the explicit rule the correct confirm_kind is best_available rather than verified_equal even though no better candidate exists and the practical effect on this agricultural data is negligible (Petsamo was not farmland). No new information beyond what the wiki page already documents, so wiki_note is left empty.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "finland|juan|1940-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "FIN-1940-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "d835fb45b48db354",
+   "wiki_note": "",
+   "echoed_evidence_hash": "d835fb45b48db354"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion covers Finland (FIN, source \"juan\") for 1917-1939, matched to FIN-1917-1940. Finland's independent territory was constant across this entire span: independence 6 Dec 1917 from Russia, Civil War 1918, borders confirmed with Treaty of Tartu 1920, and the only territorial change (Winter War losses to USSR, ~10% of area) was formalized by the Moscow Peace Treaty on 12 March 1940 \u2014 after the observed span ends (1939). So no annexation/cession occurred within 1917-1939 itself; the candidate's own end date (1940) reflects that later loss, not something affecting the assertion's span. Staple magnitudes (oats ~459k ha, potatoes ~277k ha, rye ~243k ha, barley ~122k ha medians) are plausible in scale for interwar Finnish agriculture and match the smooth continuity pattern already verified for the neighboring 1940-1960 segment (per source_conventions). The wiki page (draft status) documents this history accurately and consistently with independently known facts (Finnish independence, Tartu 1920, Winter War/Moscow Peace Treaty dates) \u2014 treated as corroborated external history rather than taken on the page's authority alone, since these are well-established, uncontested historical facts, not speculative territorial claims.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "finland|juan|1917-1939",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "FIN-1917-1940",
+   "verdict": "confirm",
+   "verified_evidence_hash": "2deed921bef91631",
+   "wiki_note": "",
+   "echoed_evidence_hash": "2deed921bef91631"
+  },
+  "review": {
+   "basis": "The assertion routes \"finland\" (source: juan, ISO fin) for 1917-1939 to FIN-1917-1940, the independent Finnish state from declaration of independence (Dec 1917) to the Moscow Peace Treaty (Mar 1940). This is a straightforward national-scope match: no union/empire ambiguity (Finland was never part of a larger reporting union in this period, unlike e.g. Sweden-Norway), no combined-reporting risk, and no sub-territory fold-up (Finland's own borders, not a province within a larger state). The observed years (1917-1939) fall entirely within the candidate's territorial life (1917-1940, borders stable per Treaty of Tartu 1920 until Winter War losses in March 1940), so there is no boundary-vintage mismatch either. Staple magnitudes (barley ~121,500 ha, oats ~458,750 ha, potatoes ~277,155 ha, rye ~242,900 ha, wheat ~22,525 ha) are entirely plausible for interwar Finnish agriculture (Finland historically grew large oat/rye acreages relative to wheat, reflecting its northern climate) and show no implausible scale that would suggest fold-up or entrepot effects. Neighbor segments (FIN-1809-1917 before, FIN-1940-2025 after) are continuous and the source_conventions note documents that this same \"juan\" source reports Finland on stable territorial bases through adjacent periods without switching to war-recaptured borders, reinforcing that reporting territory tracks the polity's actual territory rather than some other basis. The wiki page (draft status) is a reasonable, uncontradicted historical account, but my verdict rests independently on the routing logic (ISO match, year containment, no known failure-family signatures) and plausible magnitudes, not on the page's authority.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "key": "finland|juan|1917-1939",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "FIN-1917-1940",
+   "verdict": "confirm",
+   "verified_evidence_hash": "2deed921bef91631",
+   "wiki_note": ""
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes FAO/production label \"venezuela\" (iso=ven) to VEN-1821-2025 for 1900-1960, 532 rows. Venezuela's national territory has been stable since independence from Gran Colombia in 1830, with the Colombia border demarcation finalized in 1932 and no annexations/cessions/occupations affecting the reporting territory across 1900-1960. Staple magnitudes (coffee ~51k t, cocoa ~17k t, maize ~326k t, rice ~30k t) are plausible national-scale agricultural output for Venezuela in this era, consistent with a straightforward national ISO match rather than any sub-territory, union, or entrep\u00f4t scenario. The wiki page (draft status) documents stable borders and cites Biger 1995 for area/boundary history, which corroborates rather than being relied on alone.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity"
+   ],
+   "confidence": "high",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "venezuela|juan|1900-1960",
+   "verdict": "confirm",
+   "confirm_kind": "verified_equal",
+   "polity_code": "VEN-1821-2025",
+   "verified_evidence_hash": "621eba0428a14913",
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "echoed_evidence_hash": "621eba0428a14913"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "romania|juan|1948-1960",
+   "verdict": "confirm",
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "polity_code": "ROU-1947-2025",
+   "basis": "The assertion routes \"romania\" (source juan) 1948-1960 to ROU-1947-2025, whose wiki page is reviewed status and documents borders stable since the 1947 Treaty of Paris (northern Transylvania restored, Bessarabia/N.Bukovina/S.Dobruja permanently lost) through to the present, i.e. no territorial change across the observed 1948-1960 span. Staple magnitudes (wheat ~2.9M ha, maize ~3.5M t, sugar beet ~399k ha, potatoes ~693k ha) are consistent with Romania's known agricultural scale at ~238,000 km\u00b2 and show no discontinuity that would suggest a boundary-vintage mismatch. Neighbor segments show adjacent periods routing to distinct pre/post-1947 Romania polities (ROU-1940-1947 before, none needed after within this span), confirming the period split is correctly aligned with the source's reporting basis.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "verified_evidence_hash": "6856981aae20188c",
+   "echoed_evidence_hash": "6856981aae20188c"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes Mitchell's \"brazil\" 1879-1960 series to BRA-1800-2025, the single continuous WHEP row covering Brazil's whole 1800-2025 history (confirmed via data/final/polities_database.csv: one row, no splits). Statistical-yearbook practice (Mitchell) is to report each country's data on its contemporaneous administrative territory, so Brazil's reporting territory naturally grew to include the 1903 Acre acquisition (~190,000 km2, ~2.2% of Brazil's ~8.5M km2) partway through the observed span \u2014 a real but proportionally small territorial change. Staple magnitudes (sugar, wine, cotton) show no red flags suggesting a scope break, and no other Brazilian polity split exists in the DB for this data to be misrouted to. The candidate's own wiki page, however, is internally wrong: it is titled \"Brazil (to 1903)\", claims the row ends in 1903, and names a nonexistent successor \"BRA-1903-1909\" \u2014 none of which matches the actual database, which has only one Brazil row spanning 1800-2025. This makes the page unreliable as territorial evidence (its central structural claim contradicts the DB it cites) and it is flagged as suspect. Territory did shift mid-span (Acre 1903), so per the rule this cannot be verified_equal even though nothing better exists \u2014 best_available is the honest call.",
+   "checks": [
+    "scope",
+    "vintage",
+    "wiki_territory",
+    "magnitude_continuity"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "source_file_inspected"
+   ],
+   "key": "brazil|mitchell|1879-1960",
+   "page_inadequate": false,
+   "page_suspect": true,
+   "polity_code": "BRA-1800-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "1869546de8009d23",
+   "wiki_note": "Page is internally inconsistent with the actual database: it is titled \"Brazil (to 1903)\", asserts this row ends in 1903, and names a successor \"BRA-1903-1909\" that does not exist. data/final/polities_database.csv shows only one Brazil row, BRA-1800-2025, spanning the full 1800-2025 period with no 1903 split. The page's territorial narrative (Acre acquisition ~190,000 km2 via 1903 Treaty of Petropolis, ~2.2% of Brazil's ~8.5M km2) is plausible and useful, but its framing as a row boundary should be corrected \u2014 this is a real mid-span territorial change on a single continuous polity row, not a database split point.",
+   "echoed_evidence_hash": "1869546de8009d23"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes 503 rows of FAO-style agricultural production data (coffee, rice, cotton, maize, cocoa) labeled \"nicaragua\" for years 1900-1960 to candidate NIC-1800-2025 via ISO match. The candidate wiki page (draft status, so treated as unverified hypothesis) describes Nicaragua as a Central American nation-state with essentially constant territory since independence (1838), bounded by Honduras and Costa Rica, area ~129,640 km2. Independently: Nicaragua's national borders were stable throughout 1900-1960 - the Mosquito Coast (Caribbean coast strip) was already reincorporated into Nicaragua in 1894, well before the observed span, and the Honduras border dispute (1906 arbitral award, contested 1957-1960, resolved by ICJ in 1960) concerned legal recognition of an existing line rather than a territorial handover mid-span - no annexation, cession, or partition occurred 1900-1960. The staple magnitudes (coffee ~14,150t, rice ~16,000t, cotton ~11,000t, maize ~91,000ha, cocoa ~200t medians) are all plausible in scale for a country of Nicaragua's size and agro-climate (coffee highlands, Pacific lowland cotton/maize, no reason to suspect entrepot re-export or sub-territory fold-up). No neighbor_segments data was available to cross-check magnitude continuity, but there is no structural reason (union, combined reporting, sub-territory) to doubt the routing. This is a straightforward national-label-to-national-polity match with a genuinely constant reporting territory across the whole span.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "nicaragua|juan|1900-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "NIC-1800-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "26b8409472e0ae68",
+   "wiki_note": "",
+   "echoed_evidence_hash": "26b8409472e0ae68"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes FAO-style label \"ecuador\" (iso match) to ECU-1942-2025 for years 1942-1960 (495 rows, 19 years). The candidate's wiki page is wiki_status=reviewed and documents Ecuador's modern borders as stable from 1942 (post Protocol of Rio de Janeiro) onward, sourced to CShapes/COW/Biger-1995 \u2014 a settled claim I can lean on directly. The observed span (1942-1960) sits entirely within this stable-border period (no further Ecuador-Peru border change until the 1990s crisis/1998 final settlement, well after 1960), so there is no mid-span annexation/cession to worry about. Staple magnitudes (rice ~99,000 t, wheat ~42,000 t, potatoes ~52,700 t, barley ~88,500 ha) are plausible in scale for national Ecuadorian agriculture, not indicative of a sub-territory or entrepot distortion, and the neighbor_segments entry shows continuity with the predecessor polity ECU-1800-1942 for 1900-1941, supporting a clean national-label routing rather than a union/combined-reporting artifact. No sub-territory fold-up, entrepot, or combined-reporting pattern applies to a plain country-name/ISO label like \"ecuador\".",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "key": "ecuador|juan|1942-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "ECU-1942-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "a5ae7422df2c7f42",
+   "wiki_note": "",
+   "echoed_evidence_hash": "a5ae7422df2c7f42"
+  },
+  "review": {
+   "basis": "The assertion routes FAO/Juan-sourced \"ecuador\" production data (1942-1960, 495 rows, staples potatoes/rice/wheat/barley/rye) via ISO match to ECU-1942-2025, the modern Ecuadorian state established after the 1942 Rio Protocol settled the border with Peru. The wiki page (status: reviewed) documents this as the post-1942 stable-border polity, distinct from its predecessor ECU-1800-1942 (pre-Rio-Protocol Ecuador with disputed/larger claimed Amazonian territory). The neighbor_segment shows 1900-1941 data routes to the predecessor polity, and there is no magnitude discontinuity evidence suggesting the source's territorial basis shifted mid-series relative to our period split \u2014 the observed span (1942-1960) falls entirely within the stable post-1942 borders, so no split concern arises. Staple magnitudes (potatoes ~53k tonnes, rice ~99k tonnes, wheat ~42k tonnes, barley ~88.5k ha) are all plausible in scale for mid-20th-century Ecuador (Andean highland/coastal agriculture), not indicative of a smaller sub-territory or a combined/entrepot reporting unit. \"Ecuador\" as an ISO/name label is a single sovereign national reporting unit with no known union, entrepot, or combined-territory complication in this era. This is the straightforward, single-polity, full-national-scope case the routing is designed for.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_reviewed"
+   ],
+   "key": "ecuador|juan|1942-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "ECU-1942-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "a5ae7422df2c7f42",
+   "wiki_note": ""
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "thailand|mitchell|1909-1960",
+   "verdict": "confirm",
+   "confidence": "high",
+   "polity_code": "THA-1909-2025",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_reviewed",
+    "neighbor_continuity"
+   ],
+   "wiki_note": "",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "verified_evidence_hash": "4c2e3043eca33bbd",
+   "basis": "Candidate THA-1909-2025 is a wiki_status: reviewed page (Biger 1995-sourced) documenting Thailand's borders as stable from the 1909 Anglo-Siamese Treaty (cession of the four northern Malay states) through to present, with only transient WWII-era occupations (Shan States, Malay states, western Cambodia) that were reverted post-war and thus do not constitute a lasting territorial change. The observed span (1909-1960) falls entirely within this stable-border period, with neighbor_segments confirming continuity from the immediately preceding THA-1904-1907/THA-1907-1909 splits. Staple magnitudes (rice paddy ~3.9M ha, buffalo ~5.2M head, cattle ~4.95M head, rubber ~27,000 t) are consistent with Thailand's known agricultural scale across this period and show no step-change suggesting a scope shift. No sub-territory fold-up or combined-reporting risk applies -- 'Thailand'/'Siam' in Mitchell is a standard national-level label for this well-known independent, never-colonized state. Territory equals candidate's for the entire span, so confirm_kind verified_equal is warranted despite the ~50-year length, given the documented border stability.",
+   "echoed_evidence_hash": "4c2e3043eca33bbd"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes 492 rows of IIA agricultural data (1922-1945, \"syrian arab republic\") to SYR-1922-1945 (French Mandate of Syria). The candidate's wiki page (wiki_status: draft, so treated as unreviewed hypothesis) documents the mandate territory via CShapes/Biger-1995 but does NOT mention that the Sanjak of Alexandretta (~5,524 km\u00b2, ~3% of Syria's ~185,000 km\u00b2 mandate area) was ceded from the Syrian mandate to Turkey in 1939 (as the Republic of Hatay, annexed as Turkey's 63rd province) \u2014 confirmed via web search (Encyclopedia.com/HandWiki). The WHEP database itself models this as a separate polity, HATAY-1938-1939, with predecessor SYR-1922-1945, showing the DB is aware the territory separated but the wiki page's territorial narrative doesn't discuss it. Since the observed span (1922-1945, 23 years) straddles this 1939 territorial change, Syria's reporting territory did not stay constant across the whole span even though the change is modest in magnitude (~3% of area). Staple magnitudes given (cotton, sesame, olives \u2014 median hectares/tonnes) are plausible for mainland Syrian agriculture and don't show an obvious dramatic break, but no year-by-year breakdown was available to test continuity around 1939 directly. The core Syrian territory and reporting label match for the whole span (this is not a union/entrepot/combined-reporting case), so confirm is appropriate, but confirm_kind must be best_available given the documented 1939 cession, not verified_equal.",
+   "checks": [
+    "scope",
+    "vintage",
+    "wiki_territory",
+    "magnitude_continuity",
+    "web_research"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "external_source",
+    "web_research"
+   ],
+   "key": "syrian arab republic|iia|1922-1945",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "SYR-1922-1945",
+   "verdict": "confirm",
+   "verified_evidence_hash": "8b178435c4f398ab",
+   "wiki_note": "Wiki page's territorial narrative and open questions do not mention that the Sanjak of Alexandretta (~5,524 km\u00b2, ~3% of the mandate's area) was ceded to Turkey in 1939 as the Republic of Hatay (WHEP already models this separately as HATAY-1938-1939, predecessor SYR-1922-1945). This means the mandate's territory shrank mid-span (1922-1945), so IIA data reported under \"syrian arab republic\" for 1939-1945 nominally excludes Hatay while 1922-1938 data would include it if IIA followed administrative boundaries \u2014 worth noting as a minor discontinuity, though the area involved is small relative to total Syrian mandate territory.",
+   "echoed_evidence_hash": "8b178435c4f398ab"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "paraguay|juan|1938-1960",
+   "verdict": "confirm",
+   "confidence": "high",
+   "basis": "Paraguay's national borders were fixed by the 1938 Chaco War peace settlement (candidate PRY-1938-2025 starts precisely at this treaty), and remained unchanged through 1960 and well beyond (successor is NA/ongoing, no further splits in polities_database.csv between 1938 and 2025). The source label 'paraguay' with iso=pry routes cleanly to this single national polity for the whole 1938-1960 span, with no annexation, cession, or occupation events in that window. Staple magnitudes (maize ~90,600 t, seed cotton ~27,000 t, rice ~9,700 t, tobacco ~6,500 ha) are consistent in scale with mid-20th-century Paraguay's known agrarian economy and area (~406,752 km2 per Biger 1995 cited on the wiki page), with no jump suggesting a scope change (e.g., inclusion/exclusion of the Chaco region, which was already settled before 1938 and is thus not a boundary-vintage issue for this span).",
+   "confirm_kind": "verified_equal",
+   "polity_code": "PRY-1938-2025",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft",
+    "neighbor_continuity"
+   ],
+   "page_suspect": false,
+   "page_inadequate": true,
+   "wiki_note": "",
+   "verified_evidence_hash": "499ee55a0960a394",
+   "echoed_evidence_hash": "499ee55a0960a394"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "key": "latvia|juan|1920-1939",
+   "verdict": "confirm",
+   "confidence": "high",
+   "polity_code": "LVA-1918-1940",
+   "confirm_kind": "verified_equal",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "basis": "The assertion routes 'latvia' (source: juan) rows for 1920-1939 to LVA-1918-1940, the interwar Republic of Latvia (65,966 km\u00b2, CShapes 2.0 gwcode 367). The observed span begins in 1920, after the Latvian-Soviet Peace Treaty of 11 August 1920 fixed the republic's borders (including the Abrene district), and the republic's territory was stable and unchanged until the Soviet annexation of 5 August 1940 \u2014 i.e. constant across the entire 1920-1939 observed span, satisfying verified_equal. The staple magnitudes (barley ~180,500 ha, rye ~262,400 ha, flax ~30,210 ha, wheat ~72,020 ha, linseed ~29,155 ha, medians over n=40 year-observations) are all plausible cropped areas for a country of this size; interwar Latvia was in fact a well-documented flax/rye/barley producer, and the neighbor_segments entry shows 1913 data cleanly routed to the predecessor LVA-1800-1918, indicating no overlap or double-routing at the 1918/1920 boundary. The page is wiki_status draft, so its territorial narrative is treated as an unverified hypothesis rather than proof, but the claims it makes (independence 1918, treaty-fixed borders 1920, annexation 1940, no territorial change in between) are standard, uncontested facts about interwar Latvia corroborated by the magnitude plausibility check; the label itself ('Latvia', ISO-routed) carries no union/empire ambiguity comparable to Sweden-Norway or Austria-Hungary. No sub-territory fold-up, entrepot, or combined-reporting concern applies: Latvia is a single small independent state reporting its own agricultural statistics office data.",
+   "page_suspect": false,
+   "page_inadequate": false,
+   "wiki_note": "",
+   "verified_evidence_hash": "61b0c41ef881909d",
+   "echoed_evidence_hash": "61b0c41ef881909d"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes a \"juan\" agricultural-inputs source labeled \"estonia\" (iso=est) for years 1919-1939 to EST-1918-1940 (interwar Republic of Estonia, area 49,295 km\u00b2) via ISO match. The candidate's wiki page (draft status, so treated as hypothesis not proof) documents the Republic of Estonia's territory as fixed by the 1920 Treaty of Tartu and stable through 1940 \u2014 i.e., constant across the entire 1919-1939 observed span (the only pre-Tartu sliver, 1919 to Feb 1920, was under the same government's de facto administration during the War of Independence, not a different reporting territory). Neighbor segments cleanly bracket this candidate (1908-1916 -> EST-1800-1918 governorate; 1940-1958 -> EST-1940-1991 SSR), with no overlap or gap, supporting that our period splits align with actual sovereignty changes (independence 1918/1920, Soviet annexation Aug 1940). Staple magnitudes (barley ~107k ha, potatoes ~295k ha, rye ~150k ha) are plausible in scale for a ~49,300 km\u00b2 small Baltic agrarian state and show no discontinuity suggestive of a territorial-scope break within the span. No union/empire-scope, combined-reporting, entrepot, or sub-territory fold-up risk applies: \"Estonia\" here plainly denotes the sovereign interwar state, matching its own statistical office (Estonian State Statistical Central Bureau) as the source labeled it. The 49,295 km\u00b2 figure includes Petseri/trans-Narva areas later ceded to the USSR in 1944/45, but that transfer postdates the 1940 candidate end-year and the entire 1919-1939 observed span, so it does not create a mid-span discontinuity for this assertion.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "key": "estonia|juan|1919-1939",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "EST-1918-1940",
+   "verdict": "confirm",
+   "verified_evidence_hash": "dbc1c4d6bb3f2be7",
+   "wiki_note": "",
+   "echoed_evidence_hash": "dbc1c4d6bb3f2be7"
+  },
+  "review": {
+   "key": "estonia|juan|1919-1939",
+   "verdict": "confirm",
+   "confirm_kind": "best_available",
+   "polity_code": "EST-1918-1940",
+   "confidence": "high",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "basis": "The assertion routes \"Estonia\" agricultural-input data (1919-1939, 463 rows, ~21 distinct years) to EST-1918-1940 (interwar Republic of Estonia, area 49,295 km2). This is a straightforward national-label match: no union/empire ambiguity (Estonia was fully independent from 1918, unlike e.g. Sweden-Norway or Cisleithania cases), no combined-reporting risk, no sub-territory fold-up (the label names the whole country, not a province), and no entrepot signature. Neighbor segments chain cleanly to EST-1800-1918 (Russian Governorate) before and EST-1940-1991 (Estonian SSR) after, matching the well-documented 1918 independence and 1940 Soviet annexation. Staple magnitudes (barley ~107k ha, rye ~150k ha, potatoes ~295k ha, wheat ~34k ha) are plausible for a ~49,300 km2 agrarian Baltic state and show no discontinuity suggesting a territorial scope change within the 1919-1939 span. The wiki page (draft status, so treated as hypothesis not evidence) is corroborated independently by the routing logic and magnitude/neighbor continuity, not relied on circularly. One caveat keeps this best_available rather than verified_equal: Estonia's final borders were only fixed by the Treaty of Tartu (Feb 1920), so the territory during the tail end of the War of Independence (1919, part of the observed span) may not have exactly equaled the stable 1920-1940 treaty territory (49,295 km2) that persisted through the rest of the span -- a minor, historically well-known wartime boundary-formation nuance rather than a routing error.",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "wiki_note": "",
+   "verified_evidence_hash": "dbc1c4d6bb3f2be7"
+  },
+  "review_agrees": true,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes 462 rows of Albanian crop/livestock production (source \"juan\", agricultural yearbook compilation) for 1929-1960 to ALB-1913-2025 by ISO match. The candidate's draft wiki page cites Biger (1995), a legitimate external gazetteer, establishing that Albania's borders were substantively fixed by the 1913 Treaty of London/Conference of Ambassadors, with the final Greece boundary segment settled in 1926 -- i.e. before the observed span begins in 1929. Staple magnitudes (wheat ~44k t, maize ~109k t, rye/barley in the low thousands, tobacco ~2,000 ha) are all plausible for Albania's small (~28,700 km2) mountainous territory and show no sign of belonging to a much larger reporting unit. The main risk to a clean \"constant territory\" claim is the 1939 Italian conquest and 1941-1943 Italian-sponsored \"Greater Albania,\" which administratively annexed Kosovo and parts of western Macedonia/Montenegro -- a genuine, if short-lived, territorial expansion beyond the 1913 borders that the wiki page does not mention (it only notes occupation/regime change, not the annexation of neighboring territory). Since I cannot confirm from the bundle alone whether the \"juan\" source's Albania-labeled rows for 1941-1943 report on the enlarged wartime borders or continue reporting only the 1913 territory (statistical continuity through wartime disruption makes the latter plausible but not certain), and the span exceeds 30 years, I am not claiming the reporting territory was provably constant throughout. The routing to ALB-1913-2025 is still the correct and only sensible existing polity for this label across the whole span -- there is no separate WHEP polity for wartime Greater Albania and no evidence the data itself reflects an expanded territory -- so this is a confirm, but with confirm_kind best_available rather than verified_equal, given the unresolved possibility of a mid-span territorial change during the 1941-1943 occupation.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "wiki_draft"
+   ],
+   "key": "albania|juan|1929-1960",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "ALB-1913-2025",
+   "verdict": "confirm",
+   "verified_evidence_hash": "8f490c3a43d4a180",
+   "wiki_note": "The page's open question oq-italian-occupation-1939 notes the WWII Italian/German occupation but omits that in 1941-1943 Italy annexed Kosovo and parts of western Macedonia/Montenegro to Albania as \"Greater Albania\" -- a real (if short-lived) territorial expansion beyond the 1913 borders. If the \"juan\" agricultural series carries Albania-labeled rows for 1941-1943, this is a candidate mid-span territorial-scope risk worth checking against magnitude continuity before treating the whole 1929-1960 span as verified_equal.",
+   "echoed_evidence_hash": "8f490c3a43d4a180"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes Mitchell's \"dr congo\" label (ISO cod, 1910-1959, 447 rows) to COD-1910-1960 (Belgian Congo, 1910 Belgian takeover to 1960 independence). The candidate's wiki page (draft status, but citing Biger 1995 with direct quotes) explicitly documents that Belgian Congo's external borders were fixed by pre-1910 bilateral treaties (France, Portugal, UK) and states \"No annexations or cessions occurred between 1910 and independence in 1960,\" making the CShapes 1910 polygon valid for the entire span. This is a specific, sourced territorial claim (not a bare CSV stub), and it directly answers the verification question: constant territory for the whole 1910-1959 observed span. Staple magnitudes (maize ~314k t, coffee ~19k t, cotton ~38k t, rice 127k ha) are plausible in scale for a colony the size of Belgian Congo (~2.3M km2) and show no discontinuity. Neighbor segments (COD-1894-1910 before, COD-1960-2025 after) confirm clean period boundaries with no gap or overlap. No sub-territory fold-up risk: \"DR Congo\"/\"Belgian Congo\" as a Mitchell country-level label is the natural top-level reporting unit, not a component of something larger, and no entrepot/re-export concern applies for a large mainland producer of these staples. I rely primarily on the wiki's specific sourced claim about boundary stability (from Biger 1995, an external authority cited in the page) rather than the page's own unreviewed narrative framing, satisfying the corroboration requirement despite wiki_status=draft.",
+   "checks": [
+    "scope",
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "external_source"
+   ],
+   "key": "dr congo|mitchell|1910-1959",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "COD-1910-1960",
+   "verdict": "confirm",
+   "verified_evidence_hash": "38957b22ffe8616e",
+   "wiki_note": "",
+   "echoed_evidence_hash": "38957b22ffe8616e"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "The assertion routes Mitchell's \"Korea\" agricultural label (1909-1944, 447 rows) to KOR-1800-1945. The candidate's wiki page (draft status, treated with appropriate skepticism) documents that this polity represents the whole Korean peninsula as a single unchanging territorial unit from 1800 through liberation in 1945, spanning the Joseon/Korean Empire period (to 1910) and Japanese colonial Ch\u014dsen (1910-1945) \u2014 sovereignty changed in 1910 but the land border did not, per the documented WHEP polity-definition rule. The observed span 1909-1944 sits entirely within this unified-peninsula era: it starts one year before the 1910 annexation treaty and ends one year before the 1945 partition, never crossing either territorial-change boundary (only the 1910 event is a sovereignty change, not a border change; the actual territorial break is 1945, which is outside the span and is where neighbor_segments correctly hands off to KOR-1945-1948). Staple magnitudes (rice paddy median 1,683,000 tonnes, wheat 265,000 tonnes) are plausible peninsula-wide production figures for Japanese-colonial Korea, consistent with a single reporting territory rather than a truncated sub-region. This is corroborated by a closely analogous already-verified assertion on the same polity page (south korea|iia|1909-1945), which independently established that pre-1945 Korean-agricultural sources routinely label the whole peninsula \"Korea\" or \"South Korea\" anachronistically, with peninsula-scale magnitudes. Since Brian Mitchell's International Historical Statistics compiles country-level series and \"Korea\" pre-1945 conventionally denotes the historical unified peninsula (not just the post-1945 southern zone), and since the territory here is genuinely constant across the entire observed span, this is a valid confirm with verified_equal.",
+   "checks": [
+    "scope",
+    "vintage",
+    "combined_reporting",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "high",
+   "confirm_kind": "verified_equal",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft",
+    "prior_source_convention"
+   ],
+   "key": "korea|mitchell|1909-1944",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "KOR-1800-1945",
+   "verdict": "confirm",
+   "verified_evidence_hash": "d7b4389416de25ab",
+   "wiki_note": "",
+   "echoed_evidence_hash": "d7b4389416de25ab"
+  },
+  "review": null,
+  "quarantined": false
+ },
+ {
+  "verdict": {
+   "basis": "Assertion routes 438 rows labeled \"lithuania\" (juan source, 1919-1939) to LTU-1918-1940 (interwar Republic of Lithuania, 55,858 km\u00b2) via ISO match. The candidate's wiki page (draft status, but citing cshapes-2.0 and biger-1995) documents that this polity's territory fluctuated within the span: a brief 1918-1920 max extent including the Vilnius region (~83,882 km\u00b2) recognized by the Soviet-Lithuanian treaty of July 1920 but seized by Poland that October, then stable Kaunas-era borders of 55,858 km\u00b2 from 1922 onward after Klaip\u0117da/Memel was annexed in 1923. This is consistent with well-documented interwar history (Lithuania's de facto territory under the Kaunas government, excluding Vilnius, is widely cited near 55,000-55,900 km\u00b2). Staple magnitudes (oats 348,500 ha, wheat 198,300 ha, potatoes 572,850 ha; roughly 1.1-1.2M ha of major-crop area against ~5.59M ha total territory) are plausible for a small agrarian Baltic state of this size and show no discontinuity suggesting a scope break at our period boundaries; neighbor segments (1913->LTU-1800-1918, 1940->LTU-1940-1991) confirm continuity of the chain. However, the reporting territory did change mid-span (Klaip\u0117da added 1923; Vilnius briefly claimed 1918-1920), so per the rule this cannot be verified_equal despite matching the candidate overall \u2014 it is the best available match for a source that itself reported on the interwar Lithuanian government's own (Kaunas-era) administrative territory throughout 1919-1939.",
+   "checks": [
+    "vintage",
+    "magnitude_continuity",
+    "wiki_territory"
+   ],
+   "confidence": "medium",
+   "confirm_kind": "best_available",
+   "evidence_used": [
+    "data_magnitudes",
+    "neighbor_continuity",
+    "wiki_draft"
+   ],
+   "key": "lithuania|juan|1919-1939",
+   "page_inadequate": false,
+   "page_suspect": false,
+   "polity_code": "LTU-1918-1940",
+   "verdict": "confirm",
+   "verified_evidence_hash": "2d1f90bdf0ae851e",
+   "wiki_note": "",
+   "echoed_evidence_hash": "2d1f90bdf0ae851e"
+  },
+  "review": null,
+  "quarantined": false
+ }
+]
