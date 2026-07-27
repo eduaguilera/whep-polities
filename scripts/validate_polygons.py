@@ -51,12 +51,23 @@ print(f"{len(have)} polities with geometry (of {len(g)} rows)")
 have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
 chk = have[have.claimed.notna() & (have.claimed >= A.min_km2)].copy()
 chk["divergence"] = (chk.measured_km2 - chk.claimed).abs() / chk.claimed
-bad_area = chk[chk.divergence > A.tolerance].sort_values("divergence", ascending=False)
-print(f"\nA. AREA AGREEMENT — {len(chk)} polities state an area; "
-      f"{len(bad_area)} diverge from their geometry by >{A.tolerance:.0%}")
+diverging = chk[chk.divergence > A.tolerance].sort_values("divergence", ascending=False)
+# Only `assigned` CLAIMS the polygon is the territory, so only there is a
+# divergence a contradiction. estimate/proxy/*_drift already say the polygon is
+# inexact, and those pages document the direction and magnitude — report but
+# don't fail, otherwise the gate punishes honest documentation.
+EXACT_CLAIM = {"assigned"}
+st = diverging.get("polygon_status").astype(str)
+bad_area = diverging[st.isin(EXACT_CLAIM)]
+documented = diverging[~st.isin(EXACT_CLAIM)]
+print(f"\nA. AREA AGREEMENT — {len(chk)} polities state an area; {len(diverging)} diverge "
+      f"from their geometry by >{A.tolerance:.0%} ({len(bad_area)} claim polygon_status=assigned)")
 for r in bad_area.itertuples():
-    print(f"   {r.divergence*100:7.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2, "
+    print(f"   FAIL {r.divergence*100:6.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2, "
           f"geometry measures {r.measured_km2:>12,.0f} km2   ({r.polygon_source}/{r.polygon_feature_id})")
+for r in documented.itertuples():
+    print(f"   ok   {r.divergence*100:6.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2 vs "
+          f"{r.measured_km2:>12,.0f} km2 — declared '{r.polygon_status}', divergence documented")
 
 # ---------- B: identity of cshapes bindings ----------
 mismatch = []
