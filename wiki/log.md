@@ -26,6 +26,54 @@ Kinds:
 
 ---
 
+## decision-eth-1936-1941-man-1945-1950
+**Date:** 2026-07-24
+**Touched:** ETH-1936-1941, MAN-1945-1950, AOI-1936-1941, CHN-1947-1949
+**Source:** none
+**Kind:** decision
+
+Created two new polities to close the coverage gaps that assertion verification
+raised as [oq-ethiopia-proper-1936-1941](polities/aoi-1936-1941.md#oq-ethiopia-proper-1936-1941)
+and [oq-manchuria-region-1945-1950](polities/chn-1947-1949.md#oq-manchuria-region-1945-1950).
+Both are instances of the same rule: a sub-territory's data must not be matched
+up to its parent aggregate.
+
+**[ETH-1936-1941](polities/eth-1936-1941.md)** — Ethiopia (Italian occupation,
+proper territory), `type: national` for consistency with its AOI sibling
+constituents ERI-1889-1952 and ITS-1908-1960. Predecessor ETH-1907-1936,
+successor ETH-1941-1952. Polygon: CShapes 2.0 feature 530 @1907 as a
+`period_proxy`, `polygon_confidence: high` — justified by the geometry being
+*identical* immediately before and after the occupation (the occupation
+administered AOI as a super-structure over existing units rather than redrawing
+the Ethiopian highlands boundary), measured area **1,127,533 km²** versus the
+AOI aggregate's ~1.7M km². Routing "Ethiopia" here instead of to AOI removes a
+~70% territorial overstatement for the `iia` and `fao1952` series.
+
+**[MAN-1945-1950](polities/man-1945-1950.md)** — Manchuria (region),
+deliberately `type: subnational` so it cannot compete with the national CHN
+chain in the matcher's `pick_by_year` ranking; the data label routes here by an
+explicit year-scoped alias instead. Predecessor MAN-1932-1945, successor
+CHN-1950-2025. Polygon: the existing `constructed` MAN-1932-1945 feature reused
+as a `period_proxy` (Heilongjiang + Jilin + Liaoning), measured area
+**791,708 km²**. Its exclusion of Rehe/Jehol is *correct* here rather than
+approximate: after Japan's surrender Jehol reverted to Chinese administration
+outside the three northeastern provinces.
+
+Verified end to end: `ethiopia|fao1952|1937-1937` and `ethiopia|iia|1938-1938`
+(previously quarantined) now route to ETH-1936-1941, and
+`china manchuria province of|mitchell|1945-1950` routes to MAN-1945-1950.
+Overall match rate unchanged at 99.6%. Mitchell's own "ethiopia" 1936-1940
+series still routes to the AOI aggregate and stays pending verification — that
+source was never shown to disaggregate, so the fold-up may be correct for it.
+
+Both polygon areas were corrected after creation: `scripts/build_database.py`
+copies `polygon_area_km2` from frontmatter rather than computing it, so a
+rounded ~1,000,000 km² placeholder on ETH and an empty field on MAN were
+replaced with values measured from the attached geometry in an equal-area
+projection (ESRI:54034).
+
+Signed off by: Catalin Covaci.
+
 ## assertion-verification-probe-findings
 **Date:** 2026-07-24
 **Touched:** AOI-1936-1941, CHN-1947-1949, BRL-1945-1949, PSE-1948-2025, F51-1945-1947, SAC-1935-1947, SER-1918-1945, TUR-1920-2025

@@ -144,19 +144,27 @@ def staples(grp, k=5):
         out[str(it)] = f"median {v.median():,.0f} {u} (n={len(v)})".strip()
     return out
 
-mm = w[matched]
+mm = w[matched].copy()
+# Group on the NORMALIZED label: raw case/spacing variants of one label
+# ("China and Manchuria" vs "China and manchuria") are the SAME assertion, and
+# grouping them separately produced duplicate keys — which silently corrupts
+# banking, since a key maps to one ledger row and one evidence bundle.
+mm["label_n"] = mm["label"].map(norm)
 assertions, by_label_src = [], defaultdict(list)
-for (label, src, code), grp in mm.groupby(["label", "source", "code"]):
+for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
     yrs = grp.eff_year.dropna()
     y0, y1 = (int(yrs.min()), int(yrs.max())) if len(yrs) else (None, None)
-    by_label_src[(label, src)].append((code, y0, y1))
-for (label, src, code), grp in mm.groupby(["label", "source", "code"]):
+    by_label_src[(label_n, src)].append((code, y0, y1))
+for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
+    label = grp["label"].mode().iloc[0]          # most common raw spelling
+    variants = sorted({str(x) for x in grp["label"].unique()})
     yrs = grp.eff_year.dropna()
     y0, y1 = (int(yrs.min()), int(yrs.max())) if len(yrs) else (None, None)
-    key = f"{norm(label)}|{src}|{y0}-{y1}"
+    key = f"{label_n}|{src}|{y0}-{y1}"
     pm = polmeta.get(code)
     ev = {
         "key": key, "label_raw": str(label), "source": str(src),
+        **({"label_variants": variants} if len(variants) > 1 else {}),
         "candidate": code,
         "route": sorted(grp.how.dropna().unique().tolist()),
         "rows": int(len(grp)), "years_observed": f"{y0}-{y1}",
@@ -164,7 +172,7 @@ for (label, src, code), grp in mm.groupby(["label", "source", "code"]):
         "iso_in_data": (sorted({str(i) for i in grp.iso.dropna().unique()}) or [None])[0],
         "items_sample": sorted({str(i) for i in grp.item.dropna().unique()})[:5],
         "staple_magnitudes": staples(grp),
-        "neighbor_segments": {f"{a}-{b}": c for c, a, b in by_label_src[(label, src)] if c != code},
+        "neighbor_segments": {f"{a}-{b}": c for c, a, b in by_label_src[(label_n, src)] if c != code},
         "candidate_meta": None if pm is None else {
             "polity_name": pm.polity_name, "period": f"{pm.start_year}-{pm.end_year}",
             "polity_type": pm.polity_type,

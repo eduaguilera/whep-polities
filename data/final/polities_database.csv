@@ -218,8 +218,8 @@ ETH-1889-1897,Ethiopia (1889-1897),1889,1897,national,ETH,530,Africa,draft,2026-
 ETH-1897-1902,Ethiopia (1897-1902),1897,1902,national,ETH,530,Africa,draft,2026-04-12,cshapes-2.0,530,1897,assigned,,ETH-1889-1897,ETH-1902-1907
 ETH-1902-1907,Ethiopia (1902-1907),1902,1907,national,ETH,530,Africa,draft,2026-04-12,cshapes-2.0,530,1902,assigned,,ETH-1897-1902,ETH-1907-1936
 ETH-1907-1936,Ethiopia (1907-1936),1907,1936,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1907,assigned,,ETH-1902-1907,ETH-1941-1952
-ETH-1936-1941,"Ethiopia (Italian occupation, proper territory, 1936-1941)",1936,1941,national,ETH,530,Africa,draft,2026-07-27,cshapes-2.0,530,1907,assigned,1000000,ETH-1907-1936,ETH-1941-1952
 ETH-1907-1952,Ethiopia (1907-1952),1907,1952,national,ETH,530,Africa,superseded,2026-06-29,cshapes-2.0,530,1907,assigned,,ETH-1902-1907,ETH-1952-1993
+ETH-1936-1941,"Ethiopia (Italian occupation, proper territory, 1936-1941)",1936,1941,national,ETH,530,Africa,draft,2026-07-27,cshapes-2.0,530,1907,assigned,1127533,ETH-1907-1936,ETH-1941-1952
 ETH-1941-1952,Ethiopia (1941-1952),1941,1952,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1941,assigned,,ETH-1907-1936,ETH-1952-1993
 ETH-1952-1993,Ethiopia (1952-1993),1952,1993,national,ETH,530,Africa,draft,2026-04-12,cshapes-2.0,530,1952,assigned,,ETH-1941-1952,ETH-1993-2025
 ETH-1993-2025,Ethiopia,1993,2025,national,ETH,530,Africa,reviewed,2026-04-12,cshapes-2.0,530,1993,assigned,,ETH-1952-1993,
@@ -433,6 +433,7 @@ LVA-1991-2025,Latvia,1991,2025,national,LVA,367,Europe,reviewed,2026-04-12,cshap
 LZI-1800-1890,Lozi Kingdom (Barotseland),1800,1890,national,NA,NA,Africa,draft,2026-04-13,paine-2024,Lozi,,assigned,,,ZMB-1964-2025
 MAC-1800-2025,"China, Macao SAR",1800,2025,national,MAC,NA,Asia,draft,2026-06-09,gadm-4.1-adm1,CHN.MAC,,proxy,,,
 MAN-1932-1945,Manchukuo (1932-1945),1932,1945,national,MAN,NA,Asia,draft,2026-04-17,constructed,MAN-1932-1945,,assigned,,CHN-1921-1932,CHN-1945-1947; CHN-1947-1949; CHN-1950-2025
+MAN-1945-1950,"Manchuria (region, 1945-1950)",1945,1950,subnational,MAN,NA,Asia,draft,2026-07-27,constructed,MAN-1932-1945,,assigned,791708,MAN-1932-1945,CHN-1950-2025
 MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1912,assigned,,MOR-1800-1904,MAR-1958-1975
 MAR-1958-1975,Morocco (1958-1975),1958,1975,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1958,assigned,,MAR-1911-1958,MAR-1975-1979
 MAR-1975-1979,Morocco (1975-1979),1975,1979,national,MAR,600,Africa,reviewed,2026-04-12,cshapes-2.0,600,1975,assigned,,MAR-1958-1975,MAR-1979-2025
@@ -731,4 +732,3 @@ ZWE-1891-1900,Zimbabwe (1891-1900),1891,1900,national,ZWE,552,Africa,draft,2026-
 ZWE-1900-1953,Zimbabwe (1900-1953),1900,1953,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1900,assigned,,ZWE-1891-1900,FRN-1953-1964
 ZWE-1964-1980,Zimbabwe (1964-1980),1964,1980,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1965,assigned,,FRN-1953-1964,ZWE-1980-2025
 ZWE-1980-2025,Zimbabwe (1980-2025),1980,2025,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1965,assigned,,ZWE-1964-1980,
-MAN-1945-1950,"Manchuria (region, 1945-1950)",1945,1950,subnational,MAN,NA,Asia,draft,2026-07-27,constructed,MAN-1932-1945,,assigned,,MAN-1932-1945,CHN-1950-2025
