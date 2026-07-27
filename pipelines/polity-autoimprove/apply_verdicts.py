@@ -37,6 +37,7 @@ PROPOSALS = os.path.join(H, "new_polity_proposals.json")
 ARCHIVE = os.path.join(H, "verdicts_applied.jsonl")     # append-only decision log
 WIKI_NOTES = os.path.join(H, "wiki_notes_queue.csv")    # research to fold into wiki pages
 CONVENTIONS = os.path.join(H, "source_conventions.csv") # verified source reporting conventions
+SUSPECT_PAGES = os.path.join(H, "suspect_wiki_pages.csv")  # pages verifiers judged to be wrong
 TODAY = datetime.date.today().isoformat()
 LEDGER_FIELDS = ["unit_kind", "key", "status", "issue_id", "evidence_hash", "last_run", "last_commit"]
 
@@ -78,7 +79,8 @@ def append_dedup(path, fields, row):
 # ---------- apply ----------
 stats = {"confirm": 0, "reroute": 0, "split_reroute": 0, "not_a_polity": 0,
          "new_polity": 0, "uncertain": 0, "quarantined": 0, "skipped_no_bundle": 0,
-         "skipped_stale": 0}
+         "skipped_stale": 0,
+         "downgraded_circular": 0, "page_suspect": 0}
 proposals = json.load(open(PROPOSALS)) if os.path.exists(PROPOSALS) else []
 prop_keys = {p["key"] for p in proposals}
 
@@ -99,6 +101,21 @@ for item in verdicts:
         continue
     reviewer = (item.get("review") or {})
     quarantined = bool(item.get("quarantined")) or v["verdict"] == "uncertain"
+
+    # ---- ANTI-CIRCULARITY: a verdict resting only on an unreviewed ('draft')
+    #      wiki page is an earlier agent's hypothesis confirming itself. It may
+    #      still be the best routing available, but it must not be RECORDED as
+    #      territorially verified, so verified_equal is downgraded to
+    #      best_available (which reopens whenever the family changes). ----
+    ev_used = set(v.get("evidence_used") or [])
+    corroborating = ev_used - {"wiki_draft"}
+    if v["verdict"] == "confirm" and v.get("confirm_kind") == "verified_equal" \
+            and ev_used and not corroborating:
+        v["confirm_kind"] = "best_available"
+        v["basis"] = (v.get("basis") or "") + \
+            " [downgraded by apply_verdicts: evidence_used was wiki_draft only — " \
+            "an unreviewed page cannot establish verified_equal]"
+        stats["downgraded_circular"] += 1
 
     # ---- execution-contract validation (the agent DECIDES; code verifies the
     #      decision is executable — never trusts an unchecked ID) ----
@@ -254,6 +271,24 @@ for item in verdicts:
              "note": note, "date": TODAY})
 if n_notes:
     print(f"wiki notes queued: {n_notes} -> {WIKI_NOTES} (fold into wiki pages, then clear)")
+
+# pages the verifiers judged to contain errors of their own — a finding about the
+# DATABASE, tracked separately from routing verdicts so wiki repair can be driven
+n_sus = 0
+for item in verdicts:
+    v = item["verdict"]; b = bundles.get(v["key"])
+    if not (b and v.get("page_suspect")): continue
+    n_sus += append_dedup(SUSPECT_PAGES,
+        ["polity_code", "wiki_status", "assertion_key", "what_looks_wrong",
+         "evidence_used", "date"],
+        {"polity_code": b["candidate"],
+         "wiki_status": (b.get("candidate_meta") or {}).get("wiki_status") or "",
+         "assertion_key": v["key"],
+         "what_looks_wrong": (v.get("wiki_note") or v.get("basis") or "")[:500],
+         "evidence_used": ",".join(v.get("evidence_used") or []),
+         "date": TODAY})
+if n_sus:
+    print(f"SUSPECT WIKI PAGES flagged: {n_sus} -> {SUSPECT_PAGES}")
 
 # newly established SOURCE conventions -> the registry 00_intake.py attaches to
 # future bundles. Only from verdicts that survived review (a convention

@@ -178,6 +178,13 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
             "polity_type": pm.polity_type,
             "area_km2": (None if pd.isna(pm.get("polygon_area_km2")) else float(pm.polygon_area_km2)),
             "polygon_status": pm.get("polygon_status"),
+            # wiki_status is load-bearing for verification: 'draft' means the page
+            # was written by an earlier (often autonomous) pass and NEVER
+            # human-reviewed, so it is a prior hypothesis, not evidence. Verifying
+            # against it without external corroboration is circular.
+            "wiki_status": pm.get("wiki_status"),
+            "polygon_feature_year": (None if pd.isna(pm.get("polygon_feature_year"))
+                                     else str(pm.polygon_feature_year)),
             "wiki": f"wiki/polities/{str(code).lower()}.md"},
     }
     # hash covers the DATA evidence *and* the family structure the verdict was
