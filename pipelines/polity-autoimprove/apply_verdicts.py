@@ -33,6 +33,7 @@ QUARANTINE = os.path.join(H, "quarantine.csv")
 PROPOSALS = os.path.join(H, "new_polity_proposals.json")
 ARCHIVE = os.path.join(H, "verdicts_applied.jsonl")     # append-only decision log
 WIKI_NOTES = os.path.join(H, "wiki_notes_queue.csv")    # research to fold into wiki pages
+CONVENTIONS = os.path.join(H, "source_conventions.csv") # verified source reporting conventions
 TODAY = datetime.date.today().isoformat()
 LEDGER_FIELDS = ["unit_kind", "key", "status", "issue_id", "evidence_hash", "last_run", "last_commit"]
 
@@ -212,6 +213,23 @@ for item in verdicts:
              "note": note, "date": TODAY})
 if n_notes:
     print(f"wiki notes queued: {n_notes} -> {WIKI_NOTES} (fold into wiki pages, then clear)")
+
+# newly established SOURCE conventions -> the registry 00_intake.py attaches to
+# future bundles. Only from verdicts that survived review (a convention
+# generalizes beyond its assertion, so a disputed one must not propagate).
+n_conv = 0
+for item in verdicts:
+    if item.get("quarantined"): continue
+    v = item["verdict"]; b = bundles.get(v["key"]); sc = v.get("source_convention") or {}
+    if not (b and (sc.get("convention") or "").strip()): continue
+    n_conv += append_dedup(CONVENTIONS,
+        ["source", "label_pattern", "item_pattern", "convention", "evidence", "verified", "verified_by"],
+        {"source": b["source"], "label_pattern": sc.get("label_pattern") or "*",
+         "item_pattern": sc.get("item_pattern") or "*", "convention": sc["convention"],
+         "evidence": sc.get("evidence") or "", "verified": TODAY,
+         "verified_by": f"assertion-verification ({v['key']})"})
+if n_conv:
+    print(f"source conventions learned: {n_conv} -> {CONVENTIONS} (attached to future bundles)")
 print(f"applied {len(verdicts)} verdicts: " +
       ", ".join(f"{k}={n}" for k, n in stats.items() if n))
 print(f"ledger: {len(ledger)} rows; quarantine/proposals updated where applicable")

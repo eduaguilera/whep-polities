@@ -43,7 +43,11 @@ const VERDICT = { type:'object', additionalProperties:false,
         predecessor:{type:'string'}, successor:{type:'string'} } },
     confidence:{type:'string', enum:['high','medium','low']},
     confirm_kind:{type:'string', enum:['verified_equal','best_available'], description:'for confirm only: verified_equal = the reporting territory demonstrably equals the candidate\'s; best_available = the match is imperfect but no existing polity fits better (e.g. an occupation/transition span with no dedicated polity) — these are systematically revisited when the polity family changes'},
-    wiki_note:{type:'string', description:'anything your research established that the candidate\'s WIKI PAGE should record but does not: an answer to one of its open questions, a source reporting convention you verified, a quantified approximation. One or two sentences, empty string if nothing. This is how verification research accumulates instead of being discarded.'},
+    wiki_note:{type:'string', description:'anything your research established that the candidate\'s WIKI PAGE should record but does not: an answer to one of its open questions, a quantified approximation, corroboration of its design. One or two sentences, empty string if nothing. This is how verification research accumulates instead of being discarded.'},
+    source_convention:{type:'object', additionalProperties:false, description:'OPTIONAL: a reporting convention of the SOURCE ITSELF that you established and that is not already in the bundle\'s source_conventions — i.e. what a label or series actually measures, generalizing beyond this one assertion (e.g. "this source\'s population series is agricultural population, not total"). Omit unless you verified something genuinely new and cross-cutting.',
+      properties:{ label_pattern:{type:'string', description:'normalized label substring this applies to, or * for any label in the source'},
+        item_pattern:{type:'string', description:'item/series substring this applies to, or * for any'},
+        convention:{type:'string'}, evidence:{type:'string'} } },
     basis:{type:'string', description:'one paragraph: what was checked, what decided it'},
     checks:{type:'array', items:{type:'string', enum:['scope','vintage','combined_reporting','split_basis','magnitude_continuity','wiki_territory','web_research']}} } }
 
@@ -79,7 +83,9 @@ const results = await pipeline(keys,
     `Decide: confirm (reporting territory = candidate's territory for the WHOLE observed span) | reroute (a DIFFERENT existing polity matches the whole span; give polity_code) | split_reroute (the span must be TILED across two or more existing polities — use when the source's reporting basis is misaligned with our period splits, e.g. it keeps publishing on pre-war borders for years our DB assigns to the post-war polity; give split_segments covering the whole observed span in order, no overlaps, each to an EXISTING polity code) | new_polity (no existing polity has this territory; give a proposal) | not_a_polity (aggregate/non-territorial label) | uncertain. ` +
     `Echo the key verbatim. Ground the basis in the evidence bundle's magnitudes and the wiki territory. ` +
     `For confirm, set confirm_kind: verified_equal (territory demonstrably equals) vs best_available (imperfect but nothing fits better). ` +
-    `Set wiki_note to anything you established that the candidate's wiki page should record but doesn't (answers to its open questions, verified source conventions, quantified approximations) — empty if nothing.`,
+    `The bundle's source_conventions field carries what EARLIER verifications established about this source's labels and series — treat those as verified starting points, not guesses. ` +
+    `Set wiki_note to anything you established that the candidate's wiki page should record but doesn't (answers to its open questions, quantified approximations, corroboration of its design) — empty if nothing. ` +
+    `Set source_convention ONLY if you verified a NEW cross-cutting convention of the source itself that isn't already in source_conventions.`,
     { ...M, label:`verify:${key.slice(0,40)}`, phase:'Verify', schema:VERDICT }),
   (v, key, i) => {
     if (!v) return null

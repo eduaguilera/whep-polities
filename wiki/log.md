@@ -26,6 +26,40 @@ Kinds:
 
 ---
 
+## assertion-verification-source-conventions
+**Date:** 2026-07-24
+**Touched:** FIN-1940-2025, POL-1921-1945, F228-1921-1940, DEU-1949-1990, F248-1920-1947, KOR-1800-1945
+**Source:** none
+**Kind:** ingest
+
+Folded the first batch of assertion-verification research into the wiki
+(`state/wiki_notes_queue.csv`, now cleared). Verification agents establish
+things about source reporting conventions that were previously discarded once
+the verdict was banked; these are the six findings from the validated runs.
+
+Substantive additions: `oq-continuation-war-territory` on FIN-1940-2025 is now
+**partially resolved** — the `juan` sown-area series runs smooth through
+1941-1944 and the armistice, so that source reports the post-1940 reduced
+territory throughout (the CShapes polygon question stays open). A new open
+question `oq-wartime-reporting-basis` on POL-1921-1945 records that the
+1939-1945 territorial basis could not be confirmed (whole pre-war Poland vs
+General Government), which is why the assertion is banked `best_available`
+rather than `verified_equal`. Two new data-quality sections document
+anachronistic source labels: IIA "Russian Federation" is whole-USSR (proved
+from cotton areas impossible for the RSFSR alone) and IIA "south korea" is the
+whole peninsula pre-1945. DEU-1949-1990 gains corroboration that `juan` really
+does carry one undifferentiated "germany" label for 1950-1960.
+
+The cross-cutting finding — the FAO 1952 population series is not total
+population (~1/3 of true totals, consistent across countries; likely
+agricultural population) — is documented on F248-1920-1947 where it surfaced
+and, because it affects every fao1952 population row, registered in
+`pipelines/polity-autoimprove/state/source_conventions.csv`. The intake step
+now attaches matching conventions to assertion evidence bundles (245 of 1,040
+bundles carry one), so each verifier starts from what earlier verifiers
+established instead of re-deriving it, and verdicts can register new
+conventions of their own.
+
 ## alk-reclassify-subnational
 **Date:** 2026-07-24
 **Touched:** ALK-1867-1959

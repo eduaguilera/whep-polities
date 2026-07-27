@@ -108,6 +108,27 @@ if os.path.exists(LEDGER):
 def _hash(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True).encode()).hexdigest()[:16]
 
+# ---------- verified source reporting conventions ----------
+# Accumulated by assertion verification: what a given source's label/series
+# ACTUALLY measures (e.g. FAO-1952 "population" is not total population; IIA
+# "Russian Federation" is whole-USSR). Attached to matching bundles so each
+# verifier starts from what earlier verifiers established instead of
+# re-discovering it. Patterns are '*' (any) or a normalized substring.
+CONVENTIONS = os.path.join(OUT_DIR, "source_conventions.csv")
+conventions = list(csv.DictReader(open(CONVENTIONS))) if os.path.exists(CONVENTIONS) else []
+def conventions_for(label, source, items):
+    out = []
+    ln, items_n = norm(label), [norm(i) for i in items]
+    for c in conventions:
+        if (c.get("source") or "*") not in ("*", str(source)): continue
+        lp = norm(c.get("label_pattern") or "*")
+        if lp not in ("", "*") and lp not in ln: continue
+        ip = norm(c.get("item_pattern") or "*")
+        if ip not in ("", "*") and not any(ip in i for i in items_n): continue
+        out.append({"convention": c["convention"], "evidence": c.get("evidence"),
+                    "verified": c.get("verified")})
+    return out
+
 # ---------- assertions: one evidence bundle per (label, source, candidate) ----------
 polmeta = {r.polity_code: r for _, r in M.pol.iterrows()}
 def staples(grp, k=5):
@@ -156,6 +177,9 @@ for (label, src, code), grp in mm.groupby(["label", "source", "code"]):
     # re-dating a polity in the family changes the hash and REOPENS the banked
     # verdict — essential for "best_available" confirms that deferred to the
     # absence of a better-fitting polity
+    # what earlier verification established about this source's labels/series
+    ev["source_conventions"] = conventions_for(
+        label, src, sorted({str(i) for i in grp.item.dropna().unique()}))
     ev["evidence_hash"] = _hash([ev["candidate"], ev["rows"], ev["years_observed"],
                                  ev["items_sample"], ev["staple_magnitudes"],
                                  ev["candidate_meta"]["period"] if ev["candidate_meta"] else None,
