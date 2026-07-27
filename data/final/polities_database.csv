@@ -328,7 +328,7 @@ HUN-1938-1947,Hungary (1938-1947),1938,1947,national,HUN,310,Europe,superseded,2
 HUN-1940-1944,Hungary (1940-1944),1940,1944,national,HUN,310,Europe,draft,2026-07-01,composed-union,cshapes-HUN310-1938+cshapes-ROU360-1920minus1940,1940,unassigned,167492,HUN-1938-1940,HUN-1944-1947
 HUN-1944-1947,Hungary (1944-1947),1944,1947,national,HUN,310,Europe,draft,2026-06-30,cshapes-2.0,310,1947,assigned,93033,HUN-1940-1944,HUN-1947-2025
 HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,2026-04-12,cshapes-2.0,310,1947,assigned,,HUN-1944-1947,
-HYD-1724-1948,Hyderabad State,1724,1948,colonial,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
+HYD-1724-1948,Hyderabad State,1724,1948,subnational,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
 IBD-1829-1893,Ibadan City-State,1829,1893,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Ibadan,,assigned,,,SNI-1899-1906
 ICN-1800-2025,Canary Islands,1800,2025,national,ICN,20,Africa,draft,2026-04-13,gadm-4.1-adm1,ESP.14_1,,assigned,,,
 IDN-1800-1889,Indonesia (to 1889),1800,1889,national,IDN,750,Asia,draft,2026-04-12,cshapes-2.0,850,1886,assigned,1877243,,IDN-1889-1945
@@ -343,7 +343,9 @@ IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,subn
 IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN-complement-JVM-BLB,,proxy,1757495,,
 IGL-1800-1901,Igala Kingdom,1800,1901,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Igala,,assigned,,,NNI-1899-1904
 IJB-1800-1892,Ijebu Kingdom,1800,1892,national,NA,NA,Africa,draft,2026-04-15,paine-2024,Ijebu,,assigned,,,SNI-1899-1906
-IND-1800-1893,India (to 1893),1800,1893,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1886,assigned,,,IND-1893-1914
+IND-1800-1886,British India (to 1886),1800,1886,national,IND,750,Asia,draft,2026-07-24,cliopatria,British Raj,1880,polygon_vintage_drift,4209917,,IND-1886-1893
+IND-1800-1893,India (to 1893),1800,1893,national,IND,750,Asia,superseded,2026-04-12,cshapes-2.0,750,1886,unassigned,,,IND-1893-1914
+IND-1886-1893,British India (1886-1893),1886,1893,national,IND,750,Asia,draft,2026-07-24,cshapes-2.0,750,1890,assigned,4652712,IND-1800-1886,IND-1893-1914
 IND-1893-1914,India (1893-1914),1893,1914,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1899,assigned,,IND-1800-1893,IND-1914-1937
 IND-1914-1937,India (1914-1937),1914,1937,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1914,assigned,,IND-1893-1914,IND-1937-1947
 IND-1937-1947,India (1937-1947),1937,1947,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1937,assigned,4227508,IND-1914-1937,IND-1947-1949

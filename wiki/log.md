@@ -26,11 +26,78 @@ Kinds:
 
 ---
 
+## decision-split-india-at-1886
+**Date:** 2026-07-24
+**Touched:** IND-1800-1893, IND-1800-1886, IND-1886-1893, HYD-1724-1948
+**Source:** cshapes-2.0, cliopatria-v0.1.3
+**Kind:** decision
+
+**Corrects and supersedes
+[proposal-india-chain-source-conflict](log.md#proposal-india-chain-source-conflict),
+which was wrong.** That entry claimed CShapes and Cliopatria disagreed 3.6× about
+the Burma annexation. They do not — it compared **two different events**:
+
+- **CShapes 2.0's India coverage begins `1886-01-01`.** Its earliest feature
+  (4,652,712 km²) therefore *already includes* Upper Burma, annexed 1 January 1886
+  after the Third Anglo-Burmese War.
+- **CShapes' step at `1893-11-12`** (+167,089 km²) is the **Durand Line** of 12
+  November 1893 — the dates match exactly.
+- **Cliopatria's step at 1885** (+606,617 km²) is **Upper Burma**.
+
+Where the two overlap they agree within 3.5%. The real defect was simpler:
+**CShapes has no pre-1886 India at all**, so the old row's polygon included Upper
+Burma across its entire 1800-1893 span, overstating British India before 1886 by
+~440,000 km².
+
+**Split applied at 1886**, where a real territorial change and a source boundary
+coincide:
+
+| row | span | source | claimed | measured |
+|---|---|---|---|---|
+| [ind-1800-1886](polities/ind-1800-1886.md) | 1800-1886 | Cliopatria `British Raj` @1880 | 4,209,917 km² | 4,209,888 |
+| [ind-1886-1893](polities/ind-1886-1893.md) | 1886-1893 | CShapes 750 @1890 | 4,652,712 km² | 4,652,138 |
+
+Using Cliopatria for the earlier row is **not** source-mixing: CShapes does not
+cover those years, which is what the polygon priority stack exists for. The 1886
+junction is a genuine event. `IND-1886-1893` is `assigned` — the CShapes feature's
+own span (`1886-01-01`-`1893-11-11`) matches the row exactly. `IND-1800-1886` is
+`polygon_vintage_drift`, because Cliopatria's British Raj series itself starts in
+**1859** and neither source has an East India Company feature, so 1800-1859 stays
+a back-projection and the conquest-era expansions inside it cannot be split on
+either source. Stated on the page rather than hidden.
+
+**The split exposed a shadowing hazard.** With the old row superseded, **36 rows
+labelled plainly "india" (1885-1892) began routing to
+[hyd-1724-1948](polities/hyd-1724-1948.md) — Hyderabad State** — because it shares
+`iso3_code: IND`, spans 1724-1948, and was typed `colonial`, tying with the new
+rows on type rank so that family ordering decided the winner. Hyderabad was a
+**princely state within British India**, so it is now `subnational`, which ranks
+below `national` and closes the path. This is the same failure mode as
+[alk-1867-1959](polities/alk-1867-1959.md) (Alaska shadowing the United States)
+fixed earlier the same day; the new India rows were also re-typed `national` to
+match the rest of their chain. All 49 pre-1893 India rows now route correctly
+(3 to 1800-1886, 46 to 1886-1893), match count unchanged at 189,694.
+
+Signed off by: Catalin Covaci.
+
+
 ## proposal-india-chain-source-conflict
 **Date:** 2026-07-24
 **Touched:** IND-1800-1893, IND-1893-1914
 **Source:** cshapes-2.0, cliopatria-v0.1.3
 **Kind:** contradiction
+
+> **CORRECTED 2026-07-24, same day.** The analysis below is **wrong**: it treats
+> CShapes' 1893 step and Cliopatria's 1885 step as competing accounts of the
+> Burma annexation. They are **two different events** — CShapes' step is dated
+> `1893-11-12`, the **Durand Line**, while Cliopatria's 1885 step is Upper Burma.
+> CShapes' India coverage begins `1886-01-01`, so its earliest feature already
+> includes Burma and it has no pre-1886 India at all. There is no 3.6×
+> contradiction. See
+> [decision-split-india-at-1886](log.md#decision-split-india-at-1886) for the
+> corrected finding and the split that follows from it. Kept here rather than
+> deleted, because the log is append-only and a wrong reading is itself worth
+> recording.
 
 Went to split `IND-1800-1893` on the Cliopatria evidence and **stopped
 deliberately**: the two sources disagree about the same event badly enough that
