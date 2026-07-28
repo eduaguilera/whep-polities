@@ -53,10 +53,38 @@ ap.add_argument("--min-km2", type=float, default=200.0,
 ap.add_argument("--strict", action="store_true", help="also fail on identity mismatches")
 A = ap.parse_args()
 
+DEAD_STATUS = ("retired", "superseded")
+
 g = gpd.read_file(GPKG)
 have = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
 have["measured_km2"] = have.to_crs(EQUAL_AREA).geometry.area / 1e6
 print(f"{len(have)} polities with geometry (of {len(g)} rows)")
+
+# ---------- A0: a row that declares no polygon must not carry one ----------
+# The mirror of check C. C catches a row claiming a polygon it does not have; this
+# catches one that HAS a polygon while declaring it does not, which is just as
+# contradictory and was not checked at all.
+#
+# It found ADE-1839-1963 (Aden Protectorate) declaring `unassigned` — the status
+# meaning "no polygon is claimed" — while carrying CShapes 680 and describing it, on
+# the same page, as a "period proxy" with documented vintage drift. A consumer
+# trusting `polygon_status`, which is exactly what the manifest's
+# `claims_polygon_status` set is for, would have concluded Aden has no polygon.
+# Corrected to `proxy`.
+#
+# DEAD rows are exempt. Five superseded/retired rows still carry geometry from
+# before they were withdrawn, because build_database.py declines to rewrite the
+# GeoPackage when a run attaches fewer geometries — so the residue cannot be removed
+# without a full rebuild with the sources fetched. They receive no data either way.
+NO_CLAIM = {"unassigned", "excluded", "none", ""}
+declared_none = have[
+    have.get("polygon_status").fillna("").astype(str).isin(NO_CLAIM)
+    & ~have.get("wiki_status").isin(DEAD_STATUS)
+]
+print(f"\nA0. DECLARES NO POLYGON YET HAS ONE — {len(declared_none)} live row(s)")
+for r in declared_none.itertuples():
+    print(f"   FAIL {r.polity_code:18s} polygon_status={r.polygon_status!r} but carries "
+          f"{r.polygon_source}/{r.polygon_feature_id}")
 
 # ---------- A: area agreement ----------
 have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
@@ -163,8 +191,10 @@ if os.path.exists(CSHAPES):
 else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
-fail = len(bad_area) > 0 or len(new_claim_no_geom) > 0 or len(undoc) > 0 or (A.strict and mismatch)
+fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
+        or len(undoc) > 0 or (A.strict and mismatch))
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s), "
+      f"{len(declared_none)} declares-none-but-has-one, "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
 sys.exit(1 if fail else 0)

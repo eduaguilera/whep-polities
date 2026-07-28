@@ -1,5 +1,5 @@
 polity_code,polity_name,start_year,end_year,polity_type,iso3_code,cow_code,continent,wiki_status,last_ingest,polygon_source,polygon_feature_id,polygon_feature_year,polygon_status,polygon_area_km2,predecessor,successor
-ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,colonial,NA,NA,Asia,draft,2026-06-26,cshapes-2.0,680,1967,unassigned,290000,,
+ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,colonial,NA,NA,Asia,draft,2026-06-26,cshapes-2.0,680,1967,proxy,290000,,
 AEF-1910-1960,French Equatorial Africa (AEF),1910,1960,national,AEF,NA,Africa,draft,2026-06-24,cshapes-2.0,cshapes-idx-366+370+375+382,1938,assigned,2495219,,COG-1960-2025; GAB-1960-2025; CAF-1960-2025; TCD-1960-2025
 AFG-1800-1893,Afghanistan (to 1893),1800,1893,national,AFG,700,Asia,draft,2026-04-13,cshapes-2.0,700,1888,assigned,,,AFG-1893-1919
 AFG-1893-1919,Afghanistan (1893-1919),1893,1919,national,AFG,700,Asia,draft,2026-04-12,cshapes-2.0,700,1893,assigned,,AFG-1800-1893,AFG-1919-2025
