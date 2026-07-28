@@ -89,6 +89,23 @@ if os.path.exists(AREA_MAP):
         "areas": len({r["area_code"] for r in map_rows}),
     }
 
+# The source-label -> polity alias map, fingerprinted the same way. A consumer
+# holding data labelled "Cape Verde" or "ZAR" resolves it through this rather than
+# building its own lookup — which is how the FAOSTAT mapping acquired a second
+# authority and misattributed 118 area-years.
+ALIAS_MAP = os.path.join(REPO, "data/final/label_alias_map.csv")
+alias_map_info = None
+if os.path.exists(ALIAS_MAP):
+    raw = open(ALIAS_MAP, "rb").read()
+    alias_rows = list(csv.DictReader(open(ALIAS_MAP, encoding="utf-8")))
+    alias_map_info = {
+        "path": "data/final/label_alias_map.csv",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "aliases": len(alias_rows),
+        "labels": len({r["source_label"] for r in alias_rows}),
+        "sources": sorted({r["source"] for r in alias_rows if r["source"]}),
+    }
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -99,9 +116,10 @@ manifest = {
         "NEW gap appears without asserting an invariant we do not yet meet. "
         "`faostat_area_map` fingerprints the FAOSTAT area -> polity mapping "
         "published beside this file, which is the authority for which polity a "
-        "reporting area's data belongs to in a given year — prefer it over "
-        "rebuilding that mapping yourself. Regenerate with "
-        "scripts/write_manifest.py."
+        "reporting area's data belongs to in a given year, and "
+        "`label_alias_map` the mapping from a source's own country LABEL to a "
+        "polity — prefer both over rebuilding those mappings yourself. "
+        "Regenerate with scripts/write_manifest.py."
     ),
     "source": "data/final/polities_database.csv",
     "identity_fields": list(IDENTITY_FIELDS),
@@ -116,6 +134,7 @@ manifest = {
     "claims_polygon_status": list(CLAIMS_POLYGON),
     "polygon_gap_polity_codes": polygon_gaps,
     "faostat_area_map": area_map_info,
+    "label_alias_map": alias_map_info,
     "live_polity_codes": sorted(r["polity_code"] for r in live),
 }
 
@@ -144,6 +163,10 @@ if A.check:
             if o.get("faostat_area_map") != area_map_info:
                 print(f"  faostat_area_map changed: {o.get('faostat_area_map')} "
                       f"-> {area_map_info}")
+            if o.get("label_alias_map") != alias_map_info:
+                was = (o.get("label_alias_map") or {}).get("aliases")
+                print(f"  label_alias_map changed: {was} -> "
+                      f"{(alias_map_info or {}).get('aliases')} aliases")
             for key in ("dead_polity_codes", "live_polity_codes",
                         "polygon_gap_polity_codes"):
                 was, now = set(o.get(key) or []), set(manifest[key])

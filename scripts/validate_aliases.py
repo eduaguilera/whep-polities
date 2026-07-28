@@ -6,20 +6,27 @@ Why: an alias whose target is unusable does not fail loudly, it does NOTHING.
 broken row is indistinguishable from an absent one — the source label simply goes
 unmatched and its data falls to whatever the deterministic routes decide.
 
-Three such rows were found in the registry, all silently inert, and one had been
-that way since it was written:
+FIVE such rows were found in the registry, all silently inert, some since the day
+they were written:
 
-  `china, taiwan province of`  the label contains a comma and was written
+  `china, taiwan province of`  the LABEL contains a comma and was written
                                UNQUOTED, so every field shifted one column left
                                and the target landed in `confidence`
+  `Pakistan` (fao1952)         the same, via a comma in `common_name`
   `British Togoland`           fields written in the wrong columns; the target
                                ended up in `year_start`, leaving it empty
   `Abyssinia`                  target was the bare prefix `ETH`, which names a
                                family rather than a period
+  `papua new guinea` (iia)     target GNGU-1884-1914 does not exist (issue #42)
 
-The first two are what a CSV with unquoted prose in it does eventually. This
-script exists so the next one is caught by a gate rather than by someone
-noticing, years later, that a label never resolved.
+A sixth row was merely redundant rather than inert: `serbia` scoped to a `source`
+of "Kingdom of Serbia (independent)", the polity's own name. A correct blanket
+rule already covered the label, so nothing was lost — but the value leaked into
+the published contract's list of sources, which is why check 5 exists.
+
+Three of the five are what a CSV containing unquoted prose does eventually. This
+script exists so the next one is caught by a gate rather than by someone noticing,
+years later, that a label never resolved.
 
 Checks:
   1. `target_polity_code` names a LIVE polity in the database. Dead targets are
@@ -31,6 +38,7 @@ Checks:
      empty or four-digit years. Both are shift detectors: when a column slips,
      these are where the debris lands.
   4. `year_start <= year_end` when both are present.
+  5. `source` is a slug or empty, never prose.
 
 Usage:
   python3 scripts/validate_aliases.py
@@ -49,6 +57,14 @@ POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 DEAD_STATUS = ("retired", "superseded")
 CONFIDENCE_VALUES = {"high", "medium", "low", ""}
 CODE_RE = re.compile(r"^[A-Za-z0-9]+(-[A-Za-z0-9]+)*-[0-9]{4}-[0-9]{4}$")
+# A source is a slug naming where the label came from (`faostat`, `fao1952`,
+# `iia-cotton`, `whep-split-2026-06-29`), or empty for a rule that applies to any
+# source. Prose here means the column was filled with the wrong thing: one row had
+# `source` set to the POLITY'S NAME, "Kingdom of Serbia (independent)", which
+# scoped the alias to a source that does not exist. It happened to be harmless — a
+# correct blanket rule already covered the label — but it also leaked into the
+# published contract's list of sources.
+SOURCE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 YEAR_RE = re.compile(r"^[0-9]{4}$")
 
 polities = list(csv.DictReader(open(POLITIES, encoding="utf-8")))
@@ -86,6 +102,14 @@ for i, r in enumerate(rows, start=2):  # +2: header is line 1
     elif target not in live:
         problems.append(
             f"{where}: target {target!r} is not in the polities database"
+        )
+
+    src = (r.get("source") or "").strip()
+    if src and not SOURCE_RE.match(src):
+        problems.append(
+            f"{where}: source {src!r} is not a slug — an alias scoped to a source "
+            f"that does not exist can never match, and the value leaks into the "
+            f"published contract"
         )
 
     if conf not in CONFIDENCE_VALUES:

@@ -39,7 +39,6 @@ Germany Western,fao1952,1949,1951,West Germany,F78-1949-1990,high,FAO 1952 'Germ
 cape province,,1800,1910,,CAP-1800-1910,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,1816,1878,,SER-1816-1878,medium,split from SER-1816-1913; Principality of Serbia pre-independence,
 serbia,,1878,1913,,SER-1878-1913,medium,split from SER-1816-1913; Kingdom of Serbia post-Berlin Congress,
-serbia,Kingdom of Serbia (independent),1878,1913,Kingdom of Serbia (independent),SER-1878-1913,high,alias_row from ser-1816-1913-polity-dates-border-changes split,
 serbia,,1913,1918,,SER-1913-1918,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,2008,2025,,SRB-2008-2025,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,1918,1919,Serbia within Kingdom of Serbs Croats and Slovenes (1918-1919),F248-1918-1919,medium,year-ranged predecessor chain,
