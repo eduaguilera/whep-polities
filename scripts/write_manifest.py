@@ -31,6 +31,11 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
 MANIFEST = os.path.join(REPO, "data/final/polities_manifest.json")
 
+# Statuses that ASSERT a polygon exists. A row carrying one of these while the
+# build attached no geometry is a known gap, published so consumers can assert
+# that no NEW gap appears rather than against an invariant we do not yet meet.
+CLAIMS_POLYGON = ("assigned", "proxy", "estimate", "polygon_vintage_drift")
+
 # Statuses whose rows must NEVER receive data. Kept in the database for
 # provenance; consumers must exclude them from resolution. Mirrors
 # pipelines/polity-autoimprove/matchlib.py, Matcher.DEAD_STATUS.
@@ -50,6 +55,18 @@ rows = list(csv.DictReader(open(CSV_PATH, encoding="utf-8")))
 live = [r for r in rows if r.get("wiki_status") not in DEAD_STATUS]
 dead = [r for r in rows if r.get("wiki_status") in DEAD_STATUS]
 
+# Polities whose status asserts a polygon the GeoPackage does not carry. Read
+# from the baseline the polygon validator maintains, which is the authoritative
+# record of the tracked backlog (see scripts/validate_polygons_baseline.txt and
+# issue #3), so the manifest cannot disagree with the gate.
+BASELINE = os.path.join(REPO, "scripts/validate_polygons_baseline.txt")
+polygon_gaps = []
+if os.path.exists(BASELINE):
+    polygon_gaps = sorted(
+        l.split("#")[0].strip() for l in open(BASELINE, encoding="utf-8")
+        if l.split("#")[0].strip()
+    )
+
 payload = [[r.get(f, "") for f in IDENTITY_FIELDS]
            for r in sorted(rows, key=lambda r: r["polity_code"])]
 identity_hash = hashlib.sha256(
@@ -59,8 +76,11 @@ manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
         "`identity_sha256` against your embedded copy to detect drift; exclude "
-        "`dead_status` rows from any resolution of data to polities. Regenerate "
-        "with scripts/write_manifest.py."
+        "`dead_status` rows from any resolution of data to polities; and treat "
+        "`polygon_gap_polity_codes` as the known set of rows whose status "
+        "asserts a polygon the GeoPackage does not carry, so you can assert no "
+        "NEW gap appears without asserting an invariant we do not yet meet. "
+        "Regenerate with scripts/write_manifest.py."
     ),
     "source": "data/final/polities_database.csv",
     "identity_fields": list(IDENTITY_FIELDS),
@@ -72,6 +92,8 @@ manifest = {
     },
     "dead_status": list(DEAD_STATUS),
     "dead_polity_codes": sorted(r["polity_code"] for r in dead),
+    "claims_polygon_status": list(CLAIMS_POLYGON),
+    "polygon_gap_polity_codes": polygon_gaps,
     "live_polity_codes": sorted(r["polity_code"] for r in live),
 }
 
