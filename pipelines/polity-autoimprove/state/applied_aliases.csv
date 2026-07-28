@@ -55,7 +55,7 @@ czechoslovakia,,1947,1993,Czechoslovakia (1947-1993),F51-1947-1993,high,post-WWI
 botswana,,1885,1966,,BEC-1885-1966,medium,reused from stopped run wf_62a587d4 audit,
 botswana,,1966,2025,,BWA-1966-2025,medium,reused from stopped run wf_62a587d4 audit,
 indochina viet nam,,1887,1954,,FID-1887-1954,medium,reused from stopped run wf_62a587d4 audit,
-china, taiwan province of,,1895,1944,,TWN-1895-1945,high,colonial-period split fix,
+china, taiwan province of,,1895,1944,,TWN-1895-1945,high,colonial-period split fix
 china taiwan,,1895,1944,,TWN-1895-1945,high,FAO1952 label for Taiwan under Japanese colonial rule routes to Formosa polity,27
 china taiwan,,1945,2025,,TWN-1945-2025,high,colonial-period split fix,
 Formosa,,1895,1945,,TWN-1895-1945,high,Federico-Tena label,
@@ -68,7 +68,7 @@ sudan,,1934,1956,,SUD-1934-1956,medium,reused from stopped run wf_62a587d4 audit
 sudan,,1956,2011,,SUD-1956-2011,medium,reused from stopped run wf_62a587d4 audit,
 sudan,,2011,2025,,SDN-2011-2025,medium,reused from stopped run wf_62a587d4 audit,
 union of south africa,,1910,2025,,ZAF-1910-2025,medium,reused from stopped run wf_62a587d4 audit,
-viet nam,,1887,1954,,VNM-1887-1954,high,sub-territory: Vietnam component of French Indochina (~326k km2); IIA+Mitchell "viet nam" labels measure Vietnam only not full federation,
+viet nam,,1887,1954,,VNM-1887-1954,high,"sub-territory: Vietnam component of French Indochina (~326k km2); IIA+Mitchell ""viet nam"" labels measure Vietnam only not full federation",
 viet nam,,1975,2025,,VNM-1975-2025,medium,reused from stopped run wf_62a587d4 audit,
 british west indies jamaica,,1800,2025,,JAM-1800-2025,medium,reused from stopped run wf_62a587d4 audit,
 southern rhodesia,,1900,1953,,ZWE-1900-1953,medium,reused from stopped run wf_62a587d4 audit,
@@ -135,7 +135,7 @@ algeria,,1886,1902,Algeria,DZA-1886-1902,high,name-equivalence; French colonial 
 algeria,,1902,1919,Algeria,DZA-1902-1919,high,name-equivalence; French colonial Algeria post-Sahara annexation,
 algeria,,1919,1962,Algeria,DZA-1919-1962,high,name-equivalence; French colonial Algeria IIA period (1905-1945 active),
 algeria,,1962,2025,Algeria,DZA-1962-2025,high,name-equivalence; independent Algeria,
-viet nam,,1955,1974,Republic of Vietnam,RVN-1954-1975,high,Mitchell western stats used "viet nam" exclusively for South Vietnam 1955-1974,
+viet nam,,1955,1974,Republic of Vietnam,RVN-1954-1975,high,"Mitchell western stats used ""viet nam"" exclusively for South Vietnam 1955-1974",
 south africa,iia,1910,2025,South Africa,ZAF-1910-2025,high,name-equivalence; iso zaf + label south africa = Union/Republic of South Africa; territorial scope matches CShapes 1910 polygon,90
 U of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1910-2025,high,abbreviation of Union of South Africa; existing alias maps full form; no polygon_vintage_drift for 1948-1951 data,65
 argentina,iia,1909,1945,Argentina,ARG-1902-2025,high,name-equivalence; iso match (arg); full IIA data range 1909-1945 within ARG-1902-2025 span (1902-2025); retargeted from ARG-1800-2025 after split 2026-07-01; 88 rows flagged but 84 already matched via iso — residual 88 unmatched rows have year=NA (data-quality gap not a routing gap),88
@@ -169,11 +169,11 @@ reunion,,1816,1946,Réunion,REU-1816-1946,high,name-equivalence,
 "china, mainland",,1949,1950,China (mainland),CHN-1949-1950,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1950,2025,China (mainland),CHN-1950-2025,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 zimbabwe,,1953,1964,Southern Rhodesia (within Federation 1953-1964),SRH-1953-1964,high,ISO zwe data 1953-1964 measures Southern Rhodesia alone (~390610 km²); routing to FRN (~1260000 km²) would overstate ~3×,
-"indochina laos",,1936,1951,Laos (1893-1953),LAO-1893-1953,high,FAO label for Lao sub-territory within French Indochina (~196820 km²); routing to FID-1887-1954 (~740000 km²) would overstate ~3x,59
+indochina laos,,1936,1951,Laos (1893-1953),LAO-1893-1953,high,FAO label for Lao sub-territory within French Indochina (~196820 km²); routing to FID-1887-1954 (~740000 km²) would overstate ~3x,59
 burundi,iia,1922,1961,Ruanda-Urundi,RWB-1922-1962,high,IIA bare label 'burundi' covers southern constituent territory of Belgian Ruanda-Urundi mandate; no separate Burundi-only administrative statistics before 1962 independence; polygon covers full mandate (~54172 km²) — see dec-burundi-iia-routing on wiki,
 burundi,iia,1919,1921,Ruanda-Urundi (occupation),RWB-1919-1922,high,IIA bare label 'burundi' pre-mandate occupation period; routes to Belgian occupation polity covering same combined territory,
-"Ryukyu Islands",,1937,1944,Ryukyu Islands / Okinawa Prefecture (Japanese),RYU-1937-1945,high,new polity routed; sub-territory of JPN-1895-1945 must not fold into empire aggregate (~658000 km² vs ~2271 km²; ~290x overstatement),
-"Ryukyu Islands",,1945,1951,Ryukyu Islands (US Administration),RYU-1945-1972,high,new polity routed; distinct from JPN-1945-1952 home islands (~377000 km²); Ryukyus under US military/civil administration 1945-1972,
+Ryukyu Islands,,1937,1944,Ryukyu Islands / Okinawa Prefecture (Japanese),RYU-1937-1945,high,new polity routed; sub-territory of JPN-1895-1945 must not fold into empire aggregate (~658000 km² vs ~2271 km²; ~290x overstatement),
+Ryukyu Islands,,1945,1951,Ryukyu Islands (US Administration),RYU-1945-1972,high,new polity routed; distinct from JPN-1945-1952 home islands (~377000 km²); Ryukyus under US military/civil administration 1945-1972,
 viet nam,iia,,,Vietnam (French Indochina),VNM-1887-1954,high,sub-territory routing for IIA year=NA rows; Vietnam component of French Indochina only,58
 British Borneo North Borneo,,1937,1951,British North Borneo,BNB-1881-1963,high,"British Borneo North Borneo -> BNB-1881-1963 (years 1937-1951; FAO 1952 sub-entry for Chartered Company / Crown Colony of North Borneo, northeast Borneo ~72620 km2, now Sabah Malaysia)",
 Japan,fao1952,1895,1945,Japanese Empire,JPN-1895-1945,high,name-equivalence,57
@@ -238,9 +238,9 @@ yemen,iia,1918,1962,Mutawakkilite Kingdom of Yemen,MKY-1918-1962,high,IIA 'yemen
 Falkland Islands,fao1952,1937,1951,Falkland Islands,FLK-1833-2025,high,boundary stable since 1833; GADM-4.1 proxy valid for 1937-1951 data; ~12397 km2 vs GBR ~242000 km2 (~20x overstatement avoided),19
 Korea South,fao1952,1948,1951,South Korea,KOR-1948-2025,high,routing gap fix; existing KRS-1910-1945 alias only covers 1910-1945; KOR-1948-2025 is the correct post-independence polity (~100k km2); magnitudes consistent with RoK territory,
 Korea,fao1952,1949,1951,South Korea,KOR-1948-2025,high,unqualified label refers to RoK for this source/period; North Korea was inaccessible to FAO compilers; magnitudes consistent with ~100k km2 RoK territory,
-Gold Coast and Br Togoland,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,"FAO verbatim label; combined Gold Coast Colony + British Togoland mandate 240056 km²; see GCT-1919-1956 wiki page",32
-Gold Coast and British Togoland,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,"FAO label variant; same combined territory 240056 km²; see GCT-1919-1956 wiki page",
-Gold Coast and British togoland,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,"FAO label variant; same combined territory 240056 km²; see GCT-1919-1956 wiki page",
+Gold Coast and Br Togoland,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,FAO verbatim label; combined Gold Coast Colony + British Togoland mandate 240056 km²; see GCT-1919-1956 wiki page,32
+Gold Coast and British Togoland,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,FAO label variant; same combined territory 240056 km²; see GCT-1919-1956 wiki page,
+Gold Coast and British togoland,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,FAO label variant; same combined territory 240056 km²; see GCT-1919-1956 wiki page,
 Germany Berlin,fao1952,1938,1944,Greater Berlin (1938-1945),BRL-1938-1945,high,FAO 1952 distinct sub-territory ~892 km²; ~700x smaller than DEU-1938-1945; sub-territory rules require separate polity,
 Aden Protectorate,fao1952,1937,1951,Aden Protectorate,ADE-1839-1963,high,FAO 1952 18 rows labelled Aden Protectorate 1937-1951; distinct British territory from MKY-1918-1962 (north Yemen),18
 Guam,fao1952,1950,2025,Guam (US Territory),GUM-1950-2025,high,FAO 1952 row labelled Guam 1951; Guam Organic Act 1950 transitions from GUM-1898-1950; island boundary fixed,1
@@ -274,19 +274,19 @@ Br West Indies St Kitts-Nevis Anguilla,fao1952,1949,1967,Saint Kitts-Nevis-Angui
 Br West Indies St Lucia,fao1952,1949,1951,Saint Lucia,LCA-1838-2025,high,colonial-era FAO abbreviated prefix; island qualifier identifies Saint Lucia alone (~616 km2); routing to BWI aggregate (~34766 km2) would overstate ~56x; matches BWI-prefixed pattern already resolved for TTO/BRB/VCT,12
 British West Indies St Lucia,fao1952,1939,1951,Saint Lucia,LCA-1838-2025,high,colonial-era FAO prefix; island qualifier identifies Saint Lucia alone (~616 km2); same territory as Br West Indies St Lucia alias; routing to BWI aggregate would overstate ~56x,10
 singapore,iia,1895,1945,British Malaya (Straits Settlements/Singapore sub-territory),GBM-1895-1946,high,sub-territory of Straits Settlements (cowcode 827 3601 km2) within GBM-1895-1946 composed-union polygon (132040 km2); no separate Straits Settlements WHEP polity; aggregation documented on GBM wiki page under oq-gbm-singapore-iia-data,
-British Togoland,British Togoland,BTL-1920-1957,high,
+British Togoland,British Togoland,BTL-1920-1957,high,,,,,
 yugoslav sfr,juan,1909,1912,Kingdom of Serbia (1878-1913),SER-1878-1913,medium,Split from 1909-1913 alias; Yugoslavia formed 1918; Kingdom of Serbia is the only independent South Slav state 1909-1912; routing to any Yugoslavia polygon would overstate ~3x,
 yugoslav sfr,juan,1913,1913,Kingdom of Serbia post-Balkan Wars,SER-1913-1918,medium,Split from 1909-1913 alias; year 1913 falls in SER-1913-1918 (post-Balkan Wars expansion),
 British West Indies Grenada,fao1952,1800,1962,Grenada,GRD-1800-2025,high,colonial-era FAO prefix; island qualifier identifies Grenada alone (~344 km2); routing to BWI aggregate would overstate territory; data years 1949-1951 within polity span; upper bound at BWI dissolution 1962,10
 Cape Verde Islands,fao1952,1886,1975,Cape Verde Islands,CPV-1886-1975,high,colonial-era FAO label for Portuguese Cape Verde archipelago (~4033 km2); data years 1937-1951 within polity span 1886-1975; island identity unambiguous; routing to CPV-1975-2025 would assign colonial-era data to post-independence polity,
 France Saar,fao1952,1935,1946,Saar (German incorporation 1935-1947),SAC-1935-1947,high,year-ranged alias for FAO 1952 rows with 1938 data; Saar was under German administration 1935-1947; folding into DEU-1920-1938 (~250x territory overstatement ~476k km2 vs ~1912 km2),
-Western Australia,sa_colonial,1829,1900,Western Australia (colonial),AUWA-1829-1900,high,SA colonial statistical register is a multi-colony comparative publication; norm("Western Australia") resolves to AUWA-1829-1900 via name_fam; WA wheat 170k-865k bushels 1870-1898 consistent with WA small agricultural sector; SA wheat 2.6M-14.6M bushels confirms correct split; alias anchors routing so pipeline refactors cannot drift to AUS-1800-1901 or AUS-1901-2025,
+Western Australia,sa_colonial,1829,1900,Western Australia (colonial),AUWA-1829-1900,high,"SA colonial statistical register is a multi-colony comparative publication; norm(""Western Australia"") resolves to AUWA-1829-1900 via name_fam; WA wheat 170k-865k bushels 1870-1898 consistent with WA small agricultural sector; SA wheat 2.6M-14.6M bushels confirms correct split; alias anchors routing so pipeline refactors cannot drift to AUS-1800-1901 or AUS-1901-2025",
 canada,,1866,1869,Canada (original four provinces 1866-1870),CAN-1866-1870,high,year-ranged alias: pre-Rupert's Land Confederation (1867-1870); polygon ESTIMATE ~500000 km² composed GADM union of ON+QC+NB+NS; fixes 19× overstatement from CShapes 1886 proxy,
 canada,,1870,1885,Canada (post-Rupert's Land 1870-1886),CAN-1870-1886,high,year-ranged alias: post-Rupert's Land transfer 1870 to CPR completion 1885; CShapes 2.0 gwcode=20 gwsyear=1886 proxy ~9.55M km²; ~10% overstatement (BC 1871/PEI 1873 not yet joined) acceptable,
 canada,,1886,1886,Canada (post-CPR completion 1886),CAN-1886-1948,high,year-ranged alias: 1886 data rows route to CAN-1886-1948; year 1886 is start of CAN-1886-1948 and not covered by the 1870-1885 alias for CAN-1870-1886,
-egypt,mitchell,1866,1884,Egypt with Sudan (1820-1885),EGY-1820-1885,high,year-ranged alias: Mitchell label "egypt" 1866-1884 routes to EGY-1820-1885 (Egypt with Sudan); 19 data rows; EGY-1800-1899 split at 1820 and 1885 Sudan border changes,19
+egypt,mitchell,1866,1884,Egypt with Sudan (1820-1885),EGY-1820-1885,high,"year-ranged alias: Mitchell label ""egypt"" 1866-1884 routes to EGY-1820-1885 (Egypt with Sudan); 19 data rows; EGY-1800-1899 split at 1820 and 1885 Sudan border changes",19
 Egypt,mitchell,1866,1884,Egypt with Sudan (1820-1885),EGY-1820-1885,high,title-case variant of egypt alias for Mitchell 1866-1884; same routing and basis,19
-egypt,mitchell,1885,1899,Egypt (1885-1899),EGY-1885-1899,high,year-ranged alias: Mitchell label "egypt" 1885-1899 routes to EGY-1885-1899 (Egypt proper post-Mahdist loss); 65 data rows; CShapes 2.0 COW 651 1886 polygon,65
+egypt,mitchell,1885,1899,Egypt (1885-1899),EGY-1885-1899,high,"year-ranged alias: Mitchell label ""egypt"" 1885-1899 routes to EGY-1885-1899 (Egypt proper post-Mahdist loss); 65 data rows; CShapes 2.0 COW 651 1886 polygon",65
 Egypt,mitchell,1885,1899,Egypt (1885-1899),EGY-1885-1899,high,title-case variant of egypt alias for Mitchell 1885-1899; same routing and basis,65
 Italian East Africa,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,unambiguous label for AOI aggregate 1936-1941; ~1700000 km2; routes aggregate Horn of Africa data to AOI polity not sovereign Ethiopia,
 Africa Orientale Italiana,,1936,1941,Italian East Africa (1936-1941),AOI-1936-1941,high,Italian-language name for AOI aggregate 1936-1941; same territory as Italian East Africa alias,
@@ -300,7 +300,6 @@ united states of america,juan,1898,1959,United States of America,USA-1867-1959,h
 united states of america,mitchell,1898,1959,United States of America,USA-1867-1959,high,belt-and-suspenders: source=mitchell year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
 italy,,1870,1919,Italy (1870-1919),ITA-1870-1919,high,year-ranged routing: Italy 1870-1919 (post-Rome capture to Treaty of Saint-Germain); split from ITA-1861-1919,
 hungary,,1920,1920,Hungary (1920-1938),HUN-1920-1938,high,year-ranged alias: harvest-year 1920 post-Trianon rump (~93000 km2); prevents misrouting to HUN-1918-1919 pre-Trianon polygon (~325421 km2),
-
 italy,,1861,1866,Italy (1861-1866),ITA-1861-1866,high,year-ranged routing: Italy 1861-1866 (proclamation to Vienna Peace Treaty/Venetia cession); polygon_status=estimate (CShapes 1886 overstates ~30k km2),
 italy,,1866,1870,Italy (1866-1870),ITA-1866-1870,high,year-ranged routing: Italy 1866-1870 (Venetia acquisition to capture of Rome); polygon_status=estimate (CShapes 1886 overstates ~12k km2),
 Libya,fao1952,1943,1949,Libya (1943-1949),LBY-1943-1949,high,plain FAO 1952 all-Libya aggregate label (distinct from sub-provincial Libya Tripolitania/Libya Cyrenaica/Libya Fezzan labels); livestock magnitudes confirm all-Libya scope: 1949 horses+mules+asses=152k vs Tripolitania-only 33k; CShapes all-Libya polygon ~1617537 km2,
@@ -322,7 +321,7 @@ angola,,1905,1960,Angola (Portuguese colony 1905-1975),ANG-1905-1975,high,year-r
 south africa,,1852,1909,Cape Colony,CAP-1800-1910,high,218 rows Mitchell+IIA pre-Union data; Cape Colony was the dominant British entity in the region routinely called 'South Africa' before 1910; OFS and Transvaal absent from WHEP so no finer routing possible; approximation risk if OFS/Transvaal figures included in source aggregates,218
 natal,,1910,1957,Natal province (South Africa),ZAF-1910-2025,medium,Mitchell post-Union Natal province data; NAT polities end 1910 and have zero overlap with 1910-1957 data years; Natal province ~94361 km2 (~6% of ZAF ~1221037 km2); sub-territory approximation documented on wiki,
 Surinam,fao1952,1886,1954,Dutch Guiana,SUR-1886-1954,high,FAO spelling variant for Suriname/Dutch Guiana; territory ~144985 km² identical to Dutch Guiana throughout data period 1936-1951; year-ranged 1886-1954 prevents routing to post-autonomy SUR-1954-1975; 102 rows,102
-Pakistan,fao1952,1937,1939,Pakistan (territory within British India, 1937–1947),PAK-1937-1947,high,FAO 1952 retroactively attributed 1937-1939 agricultural data labelled "Pakistan" to the future-Pakistan sub-territory (~881625 km²); routing to IND-1937-1947 (~4.2M km²) would misstate scope ~5x under WHEP sub-territory rules; extending polity to 1937 is consistent with the same CShapes 1947 proxy already used for 1940-1946,19
+Pakistan,fao1952,1937,1939,Pakistan (territory within British India, 1937–1947),PAK-1937-1947,high,"FAO 1952 retroactively attributed 1937-1939 agricultural data labelled ""Pakistan"" to the future-Pakistan sub-territory (~881625 km²); routing to IND-1937-1947 (~4.2M km²) would misstate scope ~5x under WHEP sub-territory rules; extending polity to 1937 is consistent with the same CShapes 1947 proxy already used for 1940-1946"
 Papua,fao1952,1950,1951,Territory of Papua and New Guinea,PNG-1949-1975,high,FAO legacy label for former Territory of Papua; post-1949 administrative union means no separate entity exists; sub-territory approximation (~224148 km² vs ~462840 km² full polygon; ~2x undercount risk) documented on wiki; 11 rows does not warrant a granular polity,11
 Portuguese Timor,fao1952,1702,1975,Timor-Leste,TLS-1800-2025,high,colonial-era FAO label for East Timor under Portuguese rule; territory ~15000 km² equals TLS-1800-2025 polygon; data items (natural rubber livestock population) consistent with small agricultural colonial territory; no sub-territory ambiguity — Portuguese Timor was the colonial unit itself not a sub-division of metropolitan Portugal; year_end=1975 stops before Indonesian annexation,10
 British West Indies Bahama Islands,fao1952,1937,1951,Bahamas,BHS-1800-2025,high,colonial-era FAO prefix; island qualifier identifies the Bahamas alone (~13940 km2); routing to BWI aggregate (~34766 km2) would overstate ~2.5x; consistent with BWI-prefixed island aliases already resolved for BRB TTO GRD LCA VCT,9
@@ -641,3 +640,22 @@ Malaysia,faostat,1961,1962,Malaysia (1957-1963),MYS-1957-1963,high,"FAOSTAT area
 Netherlands New Guinea,fao1952,1949,1963,Netherlands New Guinea,NNG-1949-1963,high,"closes a previously UNMATCHED fao1952 label; CShapes gwcode 851 is an exact historical feature for the territory (410,361 km2), which is also exactly the hole in the Indonesian chain (1,877,243 - 1,466,882)",3
 canada,,1948,1948,Canada,CAN-1886-1948,high,"calendar-1948 data predates the Newfoundland accession (31 March 1949) so belongs to the Newfoundland-EXCLUDED territory; CShapes dates its step to the 22 July 1948 referendum instead, and the shared-transition-year convention would otherwise send 1948 to the post-accession row (+398,115 km2, 4%)",54
 Indonesia,fao1952,1800,1945,Dutch East Indies,IDN-1800-1945,high,"the merged row is named Dutch East Indies (its actual identity) so the source label Indonesia no longer resolves by name, and these fao1952 rows carry no iso3 code; alias restores the 23 rows the merge would otherwise orphan",23
+BZE,mueller-synthetic-n,1981,2025,Belize,BLZ-1981-2025,high,"FAO-style legacy code; ISO3 is BLZ. Rate table has no year column, so scoped to the extant polity's span.",
+COS,mueller-synthetic-n,1800,2025,Costa Rica,CRI-1800-2025,high,FAO-style legacy code; ISO3 is CRI.,
+ELS,mueller-synthetic-n,1821,2025,El Salvador,SLV-1821-2025,high,FAO-style legacy code; ISO3 is SLV.,
+GUA,mueller-synthetic-n,1821,2025,Guatemala,GTM-1821-2025,high,FAO-style legacy code; ISO3 is GTM.,
+HAI,mueller-synthetic-n,1800,2025,Haiti,HTI-1800-2025,high,FAO-style legacy code; ISO3 is HTI.,
+HON,mueller-synthetic-n,1800,2025,Honduras,HND-1800-2025,high,FAO-style legacy code; ISO3 is HND.,
+ROM,mueller-synthetic-n,1947,2025,Romania,ROU-1947-2025,high,FAO-style legacy code; ISO3 is ROU (ROM was the pre-2002 ISO3).,
+SRM,mueller-synthetic-n,1975,2025,Suriname,SUR-1975-2025,high,FAO-style legacy code; ISO3 is SUR.,
+TRI,mueller-synthetic-n,1800,2025,Trinidad and Tobago,TTO-1800-2025,high,FAO-style legacy code; ISO3 is TTO.,
+ZAR,mueller-synthetic-n,1960,2025,Democratic Republic of the Congo,COD-1960-2025,high,"FAO-style legacy code for Zaire, renamed DR Congo in 1997; ISO3 is COD.",
+Cape Verde,lassaletta-grassland-share,1961,1975,Cabo Verde,CPV-1886-1975,high,Pre-2013 English name for Cabo Verde. Split at independence: the 1961-1975 rows fall in the Portuguese colonial period.,
+Cape Verde,lassaletta-grassland-share,1975,2009,Cabo Verde,CPV-1975-2025,high,Pre-2013 English name for Cabo Verde; rows from independence onward.,
+Cote d'Ivoire,lassaletta-grassland-share,1961,2009,Cote d'Ivoire,CIV-1960-2025,high,Unaccented spelling of Cote d'Ivoire; data window falls entirely in the post-independence polity.,
+DPRepublic of Korea,lassaletta-grassland-share,1961,2009,Democratic People's Republic of Korea,PRK-1948-2025,high,Source's contracted spelling of the DPRK.,
+Occupied Palestinian Territory,lassaletta-grassland-share,1961,2009,Palestine (West Bank and Gaza),PSE-1948-2025,high,Pre-2013 UN designation for the Palestinian territories.,
+Belgium-Luxemburg,lassaletta-grassland-share,1961,1999,Belgium-Luxembourg Economic Union,BLX-1921-1999,high,"Source's spelling of the Belgium-Luxembourg reporting unit. Scoped to 1999: the source keeps reporting the pair to 2009, but the union ended in 1999 and no single polity covers it after that. The 2000-2009 rows are deliberately left unaliased pending a decision.",
+FSU,lassaletta-grassland-share,1961,1991,Soviet Union,F228-1945-1991,high,"Former Soviet Union aggregate. Scoped to the 1991 dissolution: the source reports FSU as one unit to 2009, but no polity holds that territory after 1991. The 1992-2009 rows are deliberately left unaliased pending a decision.",
+Reunion,lassaletta-grassland-share,1961,2009,Reunion (French Overseas Department),REU-1946-2025,high,"Unaccented spelling of Reunion. Needed despite existing rules: the blanket one covers 1816-1946 and the other is scoped to fao1952, so neither reaches this source's 1961-2009 window.",
+Swaziland,lassaletta-grassland-share,1961,2009,Eswatini,SWZ-1894-2025,high,"Name used before the 2018 rename to Eswatini. Needed despite an existing rule, which is scoped to source faostat and so does not apply here.",
