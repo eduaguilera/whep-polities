@@ -164,6 +164,59 @@ slider, search, and type filters) reads `site/polities.csv` and
 `cpv-1800-2025.md`, `lux-1839-2025.md`. One file per row in the database.
 Aggregate pages (continents, unions) live in `wiki/polities/_aggregates/`.
 
+## Prefix convention
+
+A polity code is `PREFIX-startyear-endyear`. The prefix names a **territory**,
+not a regime and not a name — so it is the part that answers "is this the same
+place?" while the period answers "when?" and `polity_name` carries what it was
+called at the time.
+
+This has a consequence that looks like an inconsistency until you know the rule:
+**a prefix is NOT always the modern ISO3.** 84 live prefixes differ from their
+row's `iso3_code`, and 29 ISO3 families span more than one prefix. Those are
+deliberate. A distinct prefix marks a distinct territory that later merged into,
+or split away from, the modern state:
+
+| family | prefixes | why |
+|---|---|---|
+| `USA` | `ALK`, `USA` | Alaska, acquired 1867, is its own territory |
+| `IND` | `HYD`, `IND` | Hyderabad acceded in 1948 |
+| `LBY` | `CYR`, `TRP`, `LBY` | Cyrenaica and Tripolitania before unification |
+| `MYS` | `BNB`, `BSW`, `GBM`, `MASG`, `MYS` | North Borneo, Sarawak, Malaya |
+| `GHA` | `BTL`, `GCT`, `GHA` | British Togoland, and the Gold Coast composite |
+| `SDN` | `SUD`, `SDN` | `SUD-1899-1934` is 2,579,525 km2 — Sudan INCLUDING what became South Sudan. `SDN-2011-2025` excludes it. Different territory, so a different prefix. |
+
+So when a source label needs routing, resolve it to a **period**, never to a bare
+prefix: `ETH` is a family and cannot receive data, `ETH-1907-1936` can. An alias
+targeting a bare prefix is rejected by `scripts/validate_aliases.py`.
+
+### Where the convention is not cleanly applied
+
+Four chains use separate prefixes for what is arguably the SAME territory under a
+changed regime, rather than a different territory:
+
+`ANG-1905-1975` / `AGO-1975-2025` (Portuguese Angola then Angola), `BEC-1885-1966`
+/ `BWA-1966-2025` (Bechuanaland then Botswana), `NRH-*` / `ZMB-1964-2025`, and
+`SRH-1953-1964` sitting between `ZWE-1900-1953` and `ZWE-1964-1980`.
+
+Under the rule above these would be one prefix each. They are left as they are on
+purpose:
+
+- Renaming changes `polity_code`, which is identity. It invalidates the manifest's
+  `identity_sha256`, every alias targeting those codes, the published maps, and
+  every downstream copy — for a cosmetic gain.
+- The functional problem it would have solved is already solved. A consumer whose
+  area maps to only one prefix could not reach the colonial polity, so
+  pre-independence years fell through to the modern one. The WHEP R package fixed
+  that by mapping such areas to BOTH prefixes (eduaguilera/whep#387), which needs
+  no change here.
+- `FRS-1884-1977` / `FRS-1977-2025` (French Somaliland, then Djibouti) shows the
+  opposite choice on the same question: one prefix for the whole chain, and the
+  HISTORICAL one rather than the modern ISO3 `DJI`. So there is no single
+  precedent to be consistent with.
+
+Do not "fix" these by renaming without a decision recorded here first.
+
 ## Page schema
 
 Every polity page MUST have this frontmatter and these sections. Empty
