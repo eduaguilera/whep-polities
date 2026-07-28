@@ -31,12 +31,13 @@ on:
       - 'data/final/**'
       - 'scripts/**'
       - '.github/workflows/validate.yml'
+  # NO paths filter on pull_request, deliberately. With one, a PR touching only
+  # pipelines/** reported "no checks reported" and could have merged with zero
+  # validation — the absence of a check is silent, which is the worst failure
+  # mode for a gate. The suite takes ~90s, so running it on every PR is cheap
+  # insurance. The push filter stays, since pushes to main are already covered
+  # by whichever PR introduced them.
   pull_request:
-    paths:
-      - 'wiki/**'
-      - 'data/final/**'
-      - 'scripts/**'
-      - '.github/workflows/validate.yml'
   workflow_dispatch:
 
 permissions:
