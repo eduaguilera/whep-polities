@@ -26,6 +26,39 @@ Kinds:
 
 ---
 
+## ingest-its-somaliland-composed-polygon
+**Date:** 2026-07-28
+**Touched:** ITS-1908-1960
+**Source:** cshapes-2.0
+**Kind:** ingest
+
+Gave [its-1908-1960](polities/its-1908-1960.md) a correct polygon, resolving
+issue #21. It was bound to CShapes 2.0 gwcode 520 @1960 as a `proxy` at
+**636,242 km²** — but that feature starts on 1960-07-01, so it is the whole of
+*independent Somalia*, Italian Somaliland **plus** British Somaliland after
+their union on that date. It overstated this row by ~137,000 km² (~21%), and
+103 layer-B rows are matched here.
+
+Replaced with a **composed difference**, `build_its_1908_1960()` in
+[scripts/sources/constructed/build.py](../scripts/sources/constructed/build.py):
+gwcode 520 @1960 minus gwcode 521 (British Somaliland, 171,499 km²), measuring
+**464,743 km²** in ESRI:54034. Same pattern as the `CHN-1932-1945` China-minus-
+Manchukuo builder. `polygon_source: constructed`, `polygon_feature_id:
+ITS-1908-1960`, `polygon_status: assigned`.
+
+`assigned` rather than `estimate` because the subtraction is lossless, not an
+approximation: gwcode 521 is entirely contained in 520 (their intersection
+equals 521 exactly), and the result is bit-identical — symmetric difference
+**0.0 km²** — to CShapes 2.0's own `Italian Somaliland` dependency feature
+(cowcode 5200, time-steps from 1924-07-01, 464,743 km²), which is unreachable
+because only the sovereign-state distribution is a registered polygon source.
+Britannica gives the colony as 461,585 km², within 0.7% of the measurement; the
+~500,000 km² figure sometimes quoted is the 1936–1941 Somalia Governorate
+including the annexed Ogaden. The pre-existing pre-1924 caveat is unchanged and
+still documented: 464,743 km² is the post-Jubaland extent, so the row's first 16
+years (1908–1924, actual extent 370,338 km²) remain overstated by ~94,400 km²
+pending oq-its-1924-split.
+
 ## decision-merge-idn-1889
 **Date:** 2026-07-24
 **Touched:** IDN-1800-1889, IDN-1889-1945, IDN-1800-1945, NNG-1949-1963, CAN-1948-2025, NFL-1907-1949, EGYSUD-1934-1956, AUSA-1836-1900, AUWA-1829-1900

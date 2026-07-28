@@ -267,6 +267,36 @@ def build_chn_1932_1945() -> ogr.Geometry:
     return _difference(_cshapes2_feature(710, 1932), build_man_1932_1945())
 
 
+def build_its_1908_1960() -> ogr.Geometry:
+    """Italian Somaliland 1908-1960 = CShapes 2.0 gwcode 520 (Somalia, the
+    1960-2019 feature) MINUS gwcode 521 (British Somaliland, 1897-1960).
+
+    CShapes 2.0 as distributed here (the sovereign-state shapefile) cannot
+    supply this territory directly: its only Somali polygon is gwcode 520,
+    which starts on 1960-07-01 and is therefore the whole of *independent
+    Somalia* — Italian Somaliland PLUS British Somaliland, which united on
+    that date. Binding this row to 520 as a proxy overstated it by the British
+    share (636,242 -> 464,743 km2, ~21%).
+
+    Because British Somaliland is itself a separate CShapes feature (gwcode
+    521, entirely contained in 520 — the intersection equals 521 exactly), the
+    subtraction recovers the colonial boundary rather than approximating it.
+    Verified: the result is bit-identical (symmetric difference 0.0 km2) to
+    CShapes 2.0's own `Italian Somaliland` dependency feature (cowcode 5200,
+    time-steps from 1924-07-01 onward, 464,743 km2), which lives only in the
+    dependencies=TRUE distribution that is not one of the registered polygon
+    sources. So this is the CShapes colonial polygon, reconstructed from the
+    sovereign-only distribution.
+
+    Caveat: 464,743 km2 is the POST-1924 extent, i.e. after the Jubaland /
+    Oltre Giuba transfer from British Kenya (Treaty of London, 1924). The
+    1889-1924 extent was 370,338 km2. This row spans 1908-1960, so the polygon
+    overstates its first 16 years by ~94,400 km2; see oq-its-1924-split in
+    wiki/polities/its-1908-1960.md. The row's data is 1924-1959.
+    """
+    return _difference(_cshapes2_feature(520, 1960), _cshapes2_feature(521, 1960))
+
+
 # (polity_code, polity_name, builder-callable, provenance note)
 BUILDERS = [
     (
@@ -290,6 +320,21 @@ BUILDERS = [
         "MAN-1932-1945 Manchukuo polygon. The CShapes feature still includes "
         "Manchuria, so subtracting Manchukuo is what prevents this row and "
         "MAN-1932-1945 from double-counting the three northeastern provinces.",
+    ),
+    (
+        "ITS-1908-1960",
+        "Italian Somaliland (1908-1960)",
+        build_its_1908_1960,
+        "CShapes 2.0 gwcode 520 (Somalia, 1960-2019, 636,242 km2) MINUS gwcode "
+        "521 (British Somaliland, 1897-1960, 171,499 km2) = 464,743 km2. The "
+        "only Somali feature in the sovereign-state distribution starts at the "
+        "1960-07-01 union, so it covers BOTH Somalilands; subtracting the "
+        "British protectorate recovers the Italian colony. Verified identical "
+        "(symmetric difference 0.0 km2) to CShapes 2.0's own Italian "
+        "Somaliland dependency feature (cowcode 5200, 1924-07-01 onward), "
+        "which is absent from the registered source. Post-1924 (post-Jubaland) "
+        "extent; overstates 1908-1924 by ~94,400 km2 — see "
+        "wiki/polities/its-1908-1960.md.",
     ),
     (
         "DEU-1945-1949",
