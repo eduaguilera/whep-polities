@@ -327,6 +327,17 @@ Prompts for each workflow live in `wiki/prompts/`:
   `git push`, no closed-access source acquisition, no `draft → reviewed`
   status changes unless schema requirements are met).
 
+**Splitting, merging, retiring, re-dating or creating a polity** is a
+*structural* change: it silently re-routes the data rows that match the affected
+polities, and the wiki diff shows none of that. Follow the eleven-step
+**structural-change checklist** in
+[`pipelines/polity-autoimprove/README.md`](../pipelines/polity-autoimprove/README.md#structural-change-checklist-split--merge--retire--re-date--create)
+— snapshot the per-polity row counts *before* the edit with
+`python3 scripts/structural_change_check.py --snapshot`, then `--compare` after.
+The checklist lives with the pipeline because its central check needs the matcher
+and the layer-B dataset; the human steps (writing the page, the `log.md`
+`decision` entry naming who signed off) are recorded there alongside.
+
 ## Rules for the agent
 
 1. **Never invent citations.** If a claim has no source in `wiki/sources/`,
