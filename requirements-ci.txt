@@ -1,7 +1,7 @@
 # Python dependencies for the CI validators (.github/workflows/validate.yml).
 #
-# Deliberately minimal — only what the four checks in that workflow need:
-#   pandas      all four
+# Deliberately minimal — only what the checks in that workflow need:
+#   pandas      most of them
 #   geopandas   validate_polygons.py, audit_family_shadowing.py (reads the
 #               committed GeoPackage, measures areas in an equal-area CRS)
 #   pyyaml      build_database.py (scripts/sources.yaml)
@@ -10,8 +10,12 @@
 # from the apt python3-gdal package, because a pip GDAL must match the system
 # library version exactly, which is brittle on runners.
 #
-# The analysis pipelines under pipelines/ need more (pyarrow, devtools/R, etc.)
-# but do not run in CI — they depend on data outside the repo. See issue #17.
+# One check DOES import from pipelines/: crosscheck_matchers.py loads
+# pipelines/polity-autoimprove/matchlib.py to compare the two matchers against each
+# other. That works because matchlib needs only pandas and numpy (numpy arrives
+# with pandas) plus the standard library. The MATCHERS THEMSELVES still do not run
+# in CI — they need the layer-B parquet and the FAOSTAT pins cache, which live
+# outside the repo and would pull in pyarrow and R. See issue #17.
 pandas>=2.0
 geopandas>=1.0
 pyyaml>=6.0

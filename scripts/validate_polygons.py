@@ -48,7 +48,8 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--tolerance", type=float, default=0.25,
                 help="fractional area divergence tolerated between geometry and frontmatter")
 ap.add_argument("--min-km2", type=float, default=200.0,
-                help="skip area check below this size (projection artifacts dominate microstates)")
+                help="skip the area check only when BOTH claimed and measured are "
+                     "below this size (projection artifacts dominate microstates)")
 ap.add_argument("--strict", action="store_true", help="also fail on identity mismatches")
 A = ap.parse_args()
 
@@ -59,7 +60,18 @@ print(f"{len(have)} polities with geometry (of {len(g)} rows)")
 
 # ---------- A: area agreement ----------
 have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
-chk = have[have.claimed.notna() & (have.claimed >= A.min_km2)].copy()
+# Skip only when BOTH the claimed and the measured area are small — a genuine
+# microstate, where projection noise dominates. Filtering on the CLAIMED value
+# alone made the check exempt exactly the errors it should catch loudest: a claim
+# that is wrong by being far TOO SMALL falls below the threshold and is never
+# compared. FRA-1871-1919 claimed 62.43 km2 against a geometry measuring 532,305
+# — France without Alsace-Lorraine recorded as smaller than Manhattan, almost
+# certainly a square-degrees value written into a km2 field — and this check
+# reported zero disagreements for as long as the filter used `claimed`.
+chk = have[
+    have.claimed.notna()
+    & ((have.claimed >= A.min_km2) | (have.measured_km2 >= A.min_km2))
+].copy()
 chk["divergence"] = (chk.measured_km2 - chk.claimed).abs() / chk.claimed
 diverging = chk[chk.divergence > A.tolerance].sort_values("divergence", ascending=False)
 # Only `assigned` CLAIMS the polygon is the territory, so only there is a
