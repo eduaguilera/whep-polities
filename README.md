@@ -69,6 +69,22 @@ They need only what the repo commits, so they work without `data/geodata`.
 (`scripts/validate_polygons_baseline.txt`) so it fails on *new* occurrences while
 a known backlog is tracked in the issues.
 
+### Consuming this database
+
+`data/final/polities_manifest.json` is the **contract for downstream consumers**
+(regenerate with `scripts/write_manifest.py`, CI-checked). It carries the row
+counts, an `identity_sha256` over the fields a consumer resolves against, the
+list of live polity codes, and — critically — `dead_polity_codes`: rows with
+`wiki_status` of `retired` or `superseded` that **must never receive data**.
+
+Compare the hash against your embedded copy to detect drift in one step. The
+hash deliberately excludes polygon fields, so re-measuring an area does not
+invalidate every consumer, while a changed date or status does.
+
+This exists because the WHEP R package's embedded copy had drifted to **603 rows
+against 740** here, with **24 FAOSTAT area codes routing to withdrawn
+polities** — and checking meant diffing whole tables across two repositories.
+
 **Open work lives in the [issue tracker](../../issues)**, not in comments or state
 files — anything recorded only in a CSV tends to be rediscovered by accident.
 Useful labels: `decision-needed`, `blocked-on-source`, `guard`, `backlog`.

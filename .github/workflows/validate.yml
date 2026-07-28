@@ -8,6 +8,10 @@ name: Validate database
 #   build_database --check   a wiki edit never propagated to the committed CSV
 #   update_wiki_index --check wiki/index.md's counts drifting from reality (they
 #                            had reached 1,325 polities against a real 740)
+#   write_manifest --check   the published consumer contract going stale. The WHEP
+#                            R package embeds a copy of this database and had
+#                            drifted to 603 rows against 740, routing 24 FAOSTAT
+#                            area codes to retired/superseded polities
 #   validate_polygons        8 polities carried ANOTHER COUNTRY'S polygon (San
 #                            Marino had Albania's, 470x too large; Indonesia had
 #                            India's); 28 declared a polygon the build never
@@ -86,6 +90,10 @@ jobs:
       - name: Committed CSV matches the wiki
         if: '!cancelled()'
         run: python3 scripts/build_database.py --check
+
+      - name: Consumer manifest matches the database
+        if: '!cancelled()'
+        run: python3 scripts/write_manifest.py --check
 
       - name: Wiki index coverage table is current
         if: '!cancelled()'
