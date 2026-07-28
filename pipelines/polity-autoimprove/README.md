@@ -74,7 +74,8 @@ resolved work. Two kinds of review unit:
 | **match** (a data label → polity assertion) | `source_label` + `polity_code` | `unreviewed` · `correct` · `issue` · `fixed` |
 | **polity** (wiki/extent correctness) | `polity_code` | `unreviewed` · `correct` · `issue` · `fixed` |
 
-Columns: `unit_kind, key, status, issue_id, evidence_hash, last_run, last_commit`.
+Columns: `unit_kind, key, status, issue_id, evidence_hash, protocol_version,
+last_run, last_commit`.
 
 - A run **only processes** `unreviewed` units and `issue` units whose fix is not
   yet verified. It **skips** `correct` and `fixed`.
@@ -90,6 +91,9 @@ Columns: `unit_kind, key, status, issue_id, evidence_hash, last_run, last_commit
   `fixed` rows are banked **without** one on purpose — the finding should be
   gone after the fix, and if it ever resurfaces the missing hash reopens it for
   one re-audit, which re-banks it with a fresh hash.
+- `protocol_version` = which **rules of verification** the row was banked under
+  (assertion rows only; see below). The hash reopens a row when its *data*
+  changes, the protocol version reopens it when the *rules* change.
 - `WHEP_LEDGER_BACKFILL=1` (env, both `01_` and `02_`): bootstrap mode — banked
   rows with an *empty* hash get the unit's current hash written into the ledger
   instead of reopening. Only for trusted states (rows banked right after their
@@ -141,11 +145,52 @@ apply_verdicts.py      deterministic execution with contract validation — rero
 Onboarding a NEW dataset = run `00_intake.py` on it (`--source-tag mydata`),
 chunk the pending keys (~100/run) through the verify workflow, inspect
 `verdicts_pending.json`, run `apply_verdicts.py`. Re-runs cost nothing for
-banked assertions; an assertion reopens only when its evidence hash changes.
+banked assertions; an assertion reopens only when its evidence hash changes —
+or when the verification protocol does (next section).
 
 The workflow needs `args.keys` (compute from assertions.json status
 pending/reopened); the agent verdicts are DECISIONS — apply_verdicts.py never
 re-derives them, it only validates executability and records them.
+
+### Protocol version — reopening when the RULES change
+
+The evidence hash answers "did the data change since we judged this?". It cannot
+answer "did the *rules* change since we judged this?" — and they do: `confirm_kind`
+was tightened to demand a constant territory (13 assertions had to be re-run by
+hand, 2 of 13 flipped), and the anti-circularity rule plus `evidence_used` arrived
+after ~100 assertions were already banked. Both times the debt was found by
+someone remembering it.
+
+So `verify_assertions.workflow.js` — where the substantive rules live — declares
+
+```js
+export const PROTOCOL_VERSION = 1
+```
+
+with the bump policy and a version history beside it. The version travels the same
+way the evidence hash does, **by script, never by agent echo**: the Save phase's
+stamping script (whose text the workflow generates, with the constant
+interpolated) writes `protocol_version` onto every verdict, `apply_verdicts.py`
+banks that value into the ledger, and `00_intake.py` (via `protocol.py`, which
+parses the constant out of the `.js` — the workflow sandbox has no filesystem
+access, so the dependency can only run in this direction) marks any banked row
+stamped **below** the current version as `reopened`, with a
+`[reopened: verification protocol v1 -> v2 …]` note. `apply_verdicts.py` also
+warns when it is handed a verdict stamped below the current version and banks it
+at *its own* version, so stale work reopens instead of masquerading as current.
+
+Bump it when a verdict's **meaning** changes: the VERDICT schema gains, loses or
+redefines a field; the definition of a verdict or of `confirm_kind` changes; a new
+obligation is added to the historian prompt; `apply_verdicts.py` starts deriving
+something from a field the old verdicts do not carry. Do **not** bump for wording,
+examples, models or `review_sample` — a bump costs a full re-verification of every
+banked assertion, so it has to buy something. Per-row storage (rather than folding
+the version into the hash) is deliberate: the debt is then visible row by row, and
+a bump reopens exactly the rows that predate it.
+
+`protocol_version` is empty on rows banked by `01_`/`02_` (a different review
+unit, not this protocol) and on `banked_legacy` label-level rows, which pre-date
+assertion verification entirely and are skipped by that separate mechanism.
 
 ---
 

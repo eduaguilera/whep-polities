@@ -5,8 +5,9 @@ Reads state/verdicts_pending.json (written by verify_assertions.workflow.js)
 plus state/assertions.json (for the evidence bundles), and applies each
 non-quarantined verdict:
 
-  confirm      -> ledger: correct + evidence_hash (assertion is banked; skipped
-                  until its evidence changes)
+  confirm      -> ledger: correct + evidence_hash + protocol_version (assertion
+                  is banked; skipped until its evidence OR the verification
+                  protocol changes)
   reroute      -> year/source-scoped row appended to applied_aliases.csv
                   (NEVER for source=faostat — those routes live in match.R;
                   such verdicts are quarantined instead) + ledger: fixed
@@ -39,7 +40,16 @@ WIKI_NOTES = os.path.join(H, "wiki_notes_queue.csv")    # research to fold into 
 CONVENTIONS = os.path.join(H, "source_conventions.csv") # verified source reporting conventions
 SUSPECT_PAGES = os.path.join(H, "suspect_wiki_pages.csv")  # pages verifiers judged to be wrong
 TODAY = datetime.date.today().isoformat()
-LEDGER_FIELDS = ["unit_kind", "key", "status", "issue_id", "evidence_hash", "last_run", "last_commit"]
+LEDGER_FIELDS = ["unit_kind", "key", "status", "issue_id", "evidence_hash",
+                 "protocol_version", "last_run", "last_commit"]
+
+# which RULES this verdict was judged under — read from the workflow file (the
+# declaration site), never from an agent echo. A row banked below the current
+# version is reopened by 00_intake.py, the same way a changed evidence_hash
+# reopens one. See protocol.py.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from protocol import protocol_version
+PROTOCOL = protocol_version()
 
 verdicts = json.load(open(VERDICTS))
 bundles = {a["key"]: a for a in json.load(open(ASSERTIONS))["assertions"]}
@@ -56,13 +66,16 @@ span_of = {r["polity_code"]: (int(r["start_year"]), int(r["end_year"]))
 # ---------- ledger upsert helpers ----------
 ledger = list(csv.DictReader(open(LEDGER))) if os.path.exists(LEDGER) else []
 by_key = {(r.get("key") or "").strip().lower(): r for r in ledger}
-def bank(key, status, evidence_hash=""):
+CUR_PROTOCOL = PROTOCOL   # protocol of the verdict being applied (set per item)
+def bank(key, status, evidence_hash="", protocol=None):
+    protocol = CUR_PROTOCOL if protocol is None else protocol
     row = by_key.get(key.strip().lower())
     if row is None:
         row = {f: "" for f in LEDGER_FIELDS}
         row.update({"unit_kind": "match", "key": key})
         ledger.append(row); by_key[key.strip().lower()] = row
-    row.update({"status": status, "evidence_hash": evidence_hash, "last_run": TODAY})
+    row.update({"status": status, "evidence_hash": evidence_hash,
+                "protocol_version": protocol, "last_run": TODAY})
 
 def append_dedup(path, fields, row):
     rows = list(csv.DictReader(open(path))) if os.path.exists(path) else []
@@ -79,13 +92,26 @@ def append_dedup(path, fields, row):
 # ---------- apply ----------
 stats = {"confirm": 0, "reroute": 0, "split_reroute": 0, "not_a_polity": 0,
          "new_polity": 0, "uncertain": 0, "quarantined": 0, "skipped_no_bundle": 0,
-         "skipped_stale": 0,
+         "skipped_stale": 0, "stale_protocol": 0,
          "downgraded_circular": 0, "page_suspect": 0}
 proposals = json.load(open(PROPOSALS)) if os.path.exists(PROPOSALS) else []
 prop_keys = {p["key"] for p in proposals}
 
 for item in verdicts:
     v = item["verdict"]; key = v["key"]; b = bundles.get(key)
+    # PROTOCOL: the verify workflow stamps the version it ran under into each
+    # verdict (by script, not by agent echo). Bank THAT, not the current
+    # constant — a verdict produced before a rule change must not be recorded as
+    # if it had met the new rules; stamping its own version lets 00_intake.py
+    # reopen it immediately instead of silently accepting stale work.
+    # unstamped (a verdicts file written before the stamp existed) -> assume the
+    # current version; an explicit older number is honoured, including 0
+    _pv = str(v.get("protocol_version") if v.get("protocol_version") is not None else "").strip()
+    CUR_PROTOCOL = int(_pv) if _pv.isdigit() else PROTOCOL
+    if CUR_PROTOCOL < PROTOCOL:
+        stats["stale_protocol"] += 1
+        print(f"  OLD PROTOCOL: {key} was verified under v{CUR_PROTOCOL}, current is "
+              f"v{PROTOCOL} — banked at v{CUR_PROTOCOL}, so intake will reopen it")
     if b is None:
         stats["skipped_no_bundle"] += 1
         print(f"  WARN: no evidence bundle for {key} (stale verdicts file?) — skipped")
@@ -309,4 +335,5 @@ if n_conv:
     print(f"source conventions learned: {n_conv} -> {CONVENTIONS} (attached to future bundles)")
 print(f"applied {len(verdicts)} verdicts: " +
       ", ".join(f"{k}={n}" for k, n in stats.items() if n))
-print(f"ledger: {len(ledger)} rows; quarantine/proposals updated where applicable")
+print(f"ledger: {len(ledger)} rows (banked at protocol v{PROTOCOL}); "
+      "quarantine/proposals updated where applicable")

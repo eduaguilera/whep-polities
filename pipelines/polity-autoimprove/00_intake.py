@@ -22,14 +22,17 @@ Usage:
     [--out pipelines/polity-autoimprove/state/assertions.json]
 
 Ledger-aware: assertions whose key (or legacy bare-label key) is banked
-correct/fixed with a matching evidence_hash get status "banked"; everything
-else is "pending" for the verification workflow.
+correct/fixed with a matching evidence_hash AND a protocol_version at least the
+current one get status "banked"; everything else is "pending" (never seen) or
+"reopened" (banked, but the evidence changed or the verification RULES did) for
+the verification workflow.
 """
 import pandas as pd, numpy as np, json, csv, os, sys, argparse, hashlib, re
 from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from matchlib import Matcher, norm, eff_year
+from protocol import protocol_version, ledger_protocol_version
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT_DIR = os.path.join(REPO, "pipelines/polity-autoimprove/state")
@@ -107,6 +110,15 @@ if os.path.exists(LEDGER):
 
 def _hash(obj):
     return hashlib.sha256(json.dumps(obj, sort_keys=True).encode()).hexdigest()[:16]
+
+# ---------- verification protocol ----------
+# The evidence_hash reopens a banked assertion when its DATA changes; the
+# protocol version reopens it when the RULES it was judged under change. The
+# version is declared in verify_assertions.workflow.js (where the substantive
+# rules live) and stamped into the ledger by apply_verdicts.py, so a bump there
+# reopens every row banked below it — no hand-picking of keys.
+PROTOCOL = protocol_version()
+n_proto_reopened = 0
 
 # ---------- verified source reporting conventions ----------
 # Accumulated by assertion verification: what a given source's label/series
@@ -216,13 +228,28 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
     # ledger: full assertion key first, then legacy bare-label key
     row = banked.get(key.lower()) or banked.get(norm(label))
     if row is not None and (row.get("evidence_hash") or "").strip() == ev["evidence_hash"]:
-        ev["status"] = "banked"
+        # evidence unchanged — but was it judged under the CURRENT rules? A row
+        # banked below the current protocol version is reopened exactly as a
+        # changed hash reopens one: the verdict may be right, but nothing has
+        # checked it against the rule that was added since.
+        row_pv = ledger_protocol_version(row)
+        if row_pv >= PROTOCOL:
+            ev["status"] = "banked"
+        else:
+            ev["status"] = "reopened"
+            ev["note"] = (f"[reopened: verification protocol v{row_pv or 'unstamped'} "
+                          f"-> v{PROTOCOL} since banked "
+                          f"(ledger last_run {row.get('last_run') or 'n/a'})]")
+            n_proto_reopened += 1
     elif row is not None and row is banked.get(norm(label)) and not (row.get("evidence_hash") or "").strip():
         # legacy bare-label banking without a hash: treat as banked for label-level
         # verdicts (pre-assertion era); assertion-level verification will supersede it
         ev["status"] = "banked_legacy"
     else:
         ev["status"] = "pending" if row is None else "reopened"
+        if row is not None:
+            ev["note"] = ("[reopened: evidence changed since banked "
+                          f"(ledger last_run {row.get('last_run') or 'n/a'})]")
     assertions.append(ev)
 
 # ---------- unresolved (findings-shaped, same as 01) ----------
@@ -244,6 +271,7 @@ out = {
         "input": A.input, "rows": int(len(w)), "rows_routed": int(matched.sum()),
         "route_pct": round(100 * matched.mean(), 1),
         "assertions": len(assertions), "by_status": counts,
+        "protocol_version": PROTOCOL,
         "unresolved_labels": len(unresolved),
     },
     "assertions": assertions,
@@ -251,4 +279,7 @@ out = {
 }
 json.dump(out, open(A.out, "w"), indent=1, default=str)
 print(f"assertions: {len(assertions)} ({counts}); unresolved labels: {len(unresolved)}")
+print(f"verification protocol: v{PROTOCOL}" +
+      (f"; REOPENED {n_proto_reopened} banked assertions verified under an older protocol"
+       if n_proto_reopened else ""))
 print(f"wrote {A.out}")
