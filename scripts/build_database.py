@@ -231,6 +231,112 @@ def existing_geometry_count(path: Path) -> int | None:
         return None
 
 
+
+
+def gpkg_attribute_mismatches(
+    rows: list[dict[str, Any]], gpkg_path: Path
+) -> list[tuple[str, str, Any, Any]]:
+    """Non-geometry fields where the GeoPackage disagrees with the wiki rows.
+
+    Returns (polity_code, field, in_gpkg, expected). Empty when the file is
+    absent or unreadable — a missing GeoPackage is a different problem, and
+    reporting it as attribute drift would be misleading.
+    """
+    if not gpkg_path.exists():
+        return []
+    ds = ogr.Open(str(gpkg_path))
+    if ds is None:
+        return []
+    lyr = ds.GetLayer(0)
+    by_code = {r["polity_code"]: r for r in rows}
+    fields = [lyr.GetLayerDefn().GetFieldDefn(i).GetName()
+              for i in range(lyr.GetLayerDefn().GetFieldCount())]
+    out: list[tuple[str, str, Any, Any]] = []
+    lyr.ResetReading()
+    for feat in lyr:
+        code = feat.GetField("polity_code")
+        row = by_code.get(code)
+        if row is None:
+            out.append((code, "<row>", "present in gpkg", "absent from the wiki"))
+            continue
+        for f in fields:
+            if f not in row:
+                continue
+            have, want = feat.GetField(f), row.get(f, "")
+            if f in ("start_year", "end_year"):
+                want_v = int(want) if str(want).strip() else None
+                if have != want_v:
+                    out.append((code, f, have, want_v))
+                continue
+            have_s = "" if have is None else str(have)
+            want_s = "" if want is None else str(want)
+            if have_s != want_s:
+                out.append((code, f, have_s, want_s))
+    return out
+
+
+def sync_gpkg_attributes(rows: list[dict[str, Any]], out_path: Path) -> str:
+    """Update the GeoPackage's non-geometry fields from `rows`, in place.
+
+    Only safe when both sides describe the same set of polities: if the row set
+    differs, the shape of the table has changed and a real rebuild is needed, so
+    this declines rather than guessing.
+
+    Returns a one-line summary for the caller's message.
+    """
+    if not out_path.exists():
+        return "  (no GeoPackage to sync)"
+    ds = ogr.Open(str(out_path), update=1)
+    if ds is None:
+        return "  (GeoPackage could not be opened for attribute sync)"
+    lyr = ds.GetLayer(0)
+    by_code = {r["polity_code"]: r for r in rows}
+
+    codes_in_file = set()
+    lyr.ResetReading()
+    for feat in lyr:
+        codes_in_file.add(feat.GetField("polity_code"))
+    if codes_in_file != set(by_code):
+        ds = None
+        return ("  ATTRIBUTES NOT SYNCED: the GeoPackage holds a different set of "
+                "polities than the wiki, so a full rebuild is required.")
+
+    fields = [lyr.GetLayerDefn().GetFieldDefn(i).GetName()
+              for i in range(lyr.GetLayerDefn().GetFieldCount())]
+    changed = 0
+    changed_codes: list[str] = []
+    lyr.ResetReading()
+    for feat in lyr:
+        row = by_code[feat.GetField("polity_code")]
+        dirty = False
+        for f in fields:
+            if f not in row:
+                continue
+            want = row.get(f, "")
+            have = feat.GetField(f)
+            if f in ("start_year", "end_year"):
+                want_v = int(want) if str(want).strip() else None
+                if have != want_v:
+                    feat.SetField(f, want_v) if want_v is not None else feat.SetFieldNull(f)
+                    dirty = True
+                continue
+            want_s = "" if want is None else str(want)
+            have_s = "" if have is None else str(have)
+            if have_s != want_s:
+                feat.SetField(f, want_s)
+                dirty = True
+        if dirty:
+            lyr.SetFeature(feat)
+            changed += 1
+            changed_codes.append(row["polity_code"])
+    ds = None
+    if changed == 0:
+        return "  Attributes already matched the wiki; geometries untouched."
+    return (f"  SYNCED {changed} row(s)' attributes in place (geometries "
+            f"untouched): {', '.join(sorted(changed_codes)[:8])}"
+            + (" ..." if changed > 8 else ""))
+
+
 def write_gpkg(
     rows: list[dict[str, Any]],
     geometries: dict[str, ogr.Geometry],
@@ -247,6 +353,18 @@ def write_gpkg(
     before = existing_geometry_count(out_path)
     after = len(geometries)
     if before is not None and after < before and not allow_fewer:
+        # Refusing to rewrite geometries must NOT leave the two published
+        # artifacts disagreeing. They are read by different consumers — the
+        # manifest is built from the CSV, while the WHEP R package reads the
+        # GeoPackage — so an attribute that changed in the wiki but only reached
+        # the CSV makes them contradict each other. That happened: retiring
+        # GCO-1884-2025 updated the CSV, the guard (correctly) declined the
+        # GeoPackage, and the file consumers actually read still said `draft`
+        # while the manifest said the row was dead.
+        #
+        # So sync the non-geometry fields in place first. Geometries are never
+        # touched, which is the whole point of the guard.
+        synced = sync_gpkg_attributes(rows, out_path)
         raise SystemExit(
             f"\nREFUSING to write {out_path.name}: it currently holds {before} "
             f"geometries and this run attached only {after}.\n"
@@ -256,7 +374,8 @@ def write_gpkg(
             f"  The CSV was written; only the GeoPackage is untouched, so the "
             f"committed geometries are safe.\n"
             f"  If the reduction is intended (rows superseded), re-run with "
-            f"--allow-fewer-geometries.")
+            f"--allow-fewer-geometries.\n"
+            f"{synced}")
     if out_path.exists():
         out_path.unlink()
     drv = ogr.GetDriverByName("GPKG")
@@ -428,7 +547,28 @@ def main() -> int:
         expected = buf.getvalue()
         actual = csv_path.read_text(encoding="utf-8") if csv_path.exists() else ""
         if expected == actual:
-            print(f"--check: PASS — the committed CSV matches the wiki "
+            # The CSV matching is not sufficient. The two published artifacts are
+            # read by DIFFERENT consumers — the manifest is derived from the CSV,
+            # while the WHEP R package reads the GeoPackage — so they must agree
+            # on attributes or they contradict each other downstream. Geometry
+            # cannot be verified here (the polygon sources are gitignored), but
+            # attributes can, and attribute drift is what actually bit: retiring
+            # GCO-1884-2025 reached the CSV while the GeoPackage kept saying
+            # `draft`, so the manifest called the row dead and the file consumers
+            # read called it live.
+            mismatches = gpkg_attribute_mismatches(rows, gpkg_path)
+            if mismatches:
+                print("--check: FAIL — the GeoPackage's attributes disagree with "
+                      "the wiki-derived rows")
+                for code, field, have, want in mismatches[:10]:
+                    print(f"  {code}.{field}: gpkg={have!r} expected={want!r}")
+                if len(mismatches) > 10:
+                    print(f"  ... and {len(mismatches) - 10} more")
+                print("\n  Fix: re-run scripts/build_database.py (it syncs "
+                      "attributes in place without touching geometries).")
+                return 1
+            print(f"--check: PASS — the committed CSV and the GeoPackage's "
+                  f"attributes match the wiki "
                   f"({len(rows)} rows from {len(pages)} pages)")
             return 0
         exp_lines, act_lines = expected.splitlines(), actual.splitlines()
