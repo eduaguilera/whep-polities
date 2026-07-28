@@ -131,12 +131,29 @@ if A.check:
     if old:
         try:
             o = json.loads(old)
-            print(f"  manifest says {o['counts']['total']} polities "
-                  f"({o['counts']['live']} live); database has {len(rows)} ({len(live)} live)")
+            # Report only what actually differs. Printing the counts
+            # unconditionally read as "the counts are wrong" even when they
+            # matched and the drift was elsewhere — which sent the reader looking
+            # in the wrong place, and was how a changed area-map digest got
+            # reported as a polity-count problem.
+            if (o["counts"]["total"], o["counts"]["live"]) != (len(rows), len(live)):
+                print(f"  manifest says {o['counts']['total']} polities "
+                      f"({o['counts']['live']} live); database has {len(rows)} ({len(live)} live)")
             if o.get("identity_sha256") != identity_hash:
                 print(f"  identity hash {o.get('identity_sha256','')[:16]}… -> {identity_hash[:16]}…")
-        except Exception:
-            print("  (existing manifest is unparseable)")
+            if o.get("faostat_area_map") != area_map_info:
+                print(f"  faostat_area_map changed: {o.get('faostat_area_map')} "
+                      f"-> {area_map_info}")
+            for key in ("dead_polity_codes", "live_polity_codes",
+                        "polygon_gap_polity_codes"):
+                was, now = set(o.get(key) or []), set(manifest[key])
+                if was != now:
+                    added, removed = sorted(now - was), sorted(was - now)
+                    print(f"  {key}: +{len(added)} -{len(removed)}"
+                          + (f" added {added[:5]}" if added else "")
+                          + (f" removed {removed[:5]}" if removed else ""))
+        except Exception as exc:
+            print(f"  (existing manifest is unparseable: {exc})")
     print("\n  Fix: run scripts/write_manifest.py and commit data/final/.")
     sys.exit(1)
 

@@ -99,6 +99,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/build_database.py --check
 
+      # The map is checked BEFORE the manifest, because the manifest fingerprints
+      # it: a stale map makes the manifest stale too, and the specific message
+      # ("the map does not match the pipeline state") is more useful to a reader
+      # than the general one it would also trigger.
+      - name: Published FAOSTAT area map matches the pipeline state
+        if: '!cancelled()'
+        run: python3 scripts/write_faostat_area_map.py --check
+
       - name: Consumer manifest matches the database
         if: '!cancelled()'
         run: python3 scripts/write_manifest.py --check
@@ -114,14 +122,4 @@ jobs:
       - name: No polity can shadow a sibling via family ordering
         if: '!cancelled()'
         run: python3 scripts/audit_family_shadowing.py
-      - name: Consumer manifest matches the database
-        if: '!cancelled()'
-        run: python3 scripts/write_manifest.py --check
-
-      # Runs BEFORE the manifest check would matter, because the manifest
-      # fingerprints this file: a stale map makes the manifest stale too, and the
-      # more specific message should be the one that fires.
-      - name: Published FAOSTAT area map matches the pipeline state
-        if: '!cancelled()'
-        run: python3 scripts/write_faostat_area_map.py --check
 

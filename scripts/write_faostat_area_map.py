@@ -115,8 +115,23 @@ if A.check:
         sys.exit(0)
     print("--check: FAIL — data/final/faostat_area_polity_map.csv is stale")
     if old:
-        old_rows = len(old.splitlines()) - 1
-        print(f"  committed map has {old_rows} mappings; state yields {len(rows)}")
+        old_lines = old.splitlines()
+        new_lines = new.splitlines()
+        old_rows, new_rows = len(old_lines) - 1, len(new_lines) - 1
+        if old_rows != new_rows:
+            print(f"  committed map has {old_rows} mappings; state yields {new_rows}")
+        else:
+            # Equal counts, different content — say so explicitly and name a
+            # differing line. Reporting the counts alone here reads as "the
+            # counts are the problem" when they are not, which sends the reader
+            # looking in the wrong place.
+            print(f"  same number of mappings ({new_rows}), but the content differs")
+            for k, (o, n) in enumerate(zip(old_lines, new_lines)):
+                if o != n:
+                    print(f"  first difference on line {k + 1}:")
+                    print(f"    committed: {o}")
+                    print(f"    expected:  {n}")
+                    break
     print("\n  Fix: run scripts/write_faostat_area_map.py and commit data/final/.")
     sys.exit(1)
 
