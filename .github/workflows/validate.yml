@@ -22,6 +22,11 @@ name: Validate database
 #   audit_family_shadowing   Alaska outranked the United States and absorbed
 #                            ~7,600 rows of mainland data; Hyderabad took
 #                            India-labelled data
+#   crosscheck_matchers      the two matchers in this repo (match.R and
+#                            matchlib) disagreed on 3 of 281 FAOSTAT areas, each
+#                            a real defect: Serbia 2006-2008 existing twice,
+#                            "Malaysia" resolving to British North Borneo, and
+#                            two aliases routing Viet Nam differently
 #   validate_aliases         five aliases were silently INERT — two had an
 #                            unquoted comma in a field, which shifted every
 #                            column and dropped the target; one targeted a bare
@@ -132,4 +137,8 @@ jobs:
       - name: Published label alias map matches the registry
         if: '!cancelled()'
         run: python3 scripts/write_label_alias_map.py --check
+
+      - name: The two matchers agree with each other
+        if: '!cancelled()'
+        run: python3 scripts/crosscheck_matchers.py
 
