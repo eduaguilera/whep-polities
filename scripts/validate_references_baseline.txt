@@ -1,0 +1,58 @@
+# References that do not resolve and cannot be fixed mechanically.
+#
+# Format: `<page-slug> <target>`, where target is a polity code (checks 2 and 4)
+# or a linked filename (check 4's page links). One pair per line.
+#
+# This is a TRACKED BACKLOG, not an exemption. Every line is a page asserting
+# something the database does not contain; each needs either the missing row
+# created, the reference repointed at a real row, or the prose rewritten to stop
+# claiming it. What it cannot be is silently correct.
+#
+# Baselined 2026-07-28 so scripts/validate_references.py fails on NEW occurrences
+# rather than staying permanently red. Remove a line as you fix it.
+
+# --- Referenced entity has no WHEP row at all -------------------------------
+# The prose is historically right and the row is simply missing, so repointing
+# the reference would be worse than leaving it: it needs the row, or an explicit
+# decision that WHEP will not carry it.
+brl-1938-1945  BRL-1920-1938    # Greater Berlin 1920-1938, Weimar admin unit; page says "not yet a WHEP polity"
+brl-1945-1949  EBL-1949-1990    # East Berlin; only WBL-1949-1990 (West Berlin) exists
+btl-1920-1957  GTO-1919-1922    # German Togoland under Anglo-French occupation; no GTO row
+fto-1920-1960  GTO-1919-1922    # same
+fto-1920-1960  gto-1919-1922.md # same, as a page link
+syr-1920-1922  SYR-1918-1920    # Arab Kingdom of Syria; earliest SYR row is 1920
+syr-1920-1922  syr-1918-1920.md # same, as a page link
+tngu-1920-1949 GNGU-1884-1914   # German New Guinea; no GNGU row
+its-1908-1960  ISM-1889-1924    # Italian Somaliland pre-1908 per CShapes; page notes predecessor=NA
+omn-1800-1856  ZAN-1856-1964    # Sultanate of Zanzibar; page carries its own "page not yet created" TODO
+bec-1885-1966  bbc-1885-1895.md # link to BBE-1885-1895, itself not a row
+fcm-1920-1960  bca-1919-1961.md # British Cameroons; no BCA row
+
+# --- Reference names a real entity under a code the chain no longer uses -----
+# Repointing needs a dating judgement, not a rename: no existing row shares the
+# boundary year the reference implies.
+hun-1920-1938  HUN-1919-1920    # nearest is HUN-1918-1919; leaves a 1919-1920 gap either way
+hun-1920-1938  hun-1919-1920.md # same, as a page link
+czn-1903-1979  PAN-1800-1979    # Panama is now PAN-1903-1979; Canal Zone is contemporaneous, not descended
+czn-1903-1979  pan-1800-1979.md # same, as a page link
+mky-1918-1962  YAR-1962-1990    # North Yemen 1962-1990; page links YEM-1990-2025 instead
+mor-1956-1958  MOR-1958-1969    # page itself says its recorded successor "is wrong"
+ryu-1945-1972  JPN-1972-2025    # decision prose: successor set to JPN-1952-2025, not a separate 1972 row
+tur-1913-1914  TUR-1800-1912    # "per CSV", but the CSV row is OTT-*; needs the Ottoman/Turkey chain settled
+
+# --- Body written for a split that was never applied (issue #25) -------------
+# Each of these has a "- **Successor:** XXX-yyyy-yyyy (this row)" bullet naming a
+# code that does not exist, left over from a planned split. The rows are single
+# long spans; the prose, not the database, is what is wrong. Rewriting it is a
+# per-page editorial job — issue #25 records jam-1800-2025 as needing exactly that.
+are-1892-2025  ARE-1892-1913
+are-1892-2025  ARE-1971-2025
+gmb-1800-2025  GMB-1889-1965
+jam-1800-2025  JAM-1886-1962
+lka-1800-2025  LKA-1886-1948
+mus-1800-2025  MUS-1886-1968
+phl-1800-2025  PHL-1886-1898
+phl-1800-2025  PHL-1946-2025
+sau-1924-2025  SAU-1932-2000
+swz-1894-2025  SWZ-1968-2025
+tto-1800-2025  TTO-1886-1962

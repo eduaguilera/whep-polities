@@ -18,6 +18,12 @@ name: Validate database
 #   audit_family_shadowing   Alaska outranked the United States and absorbed
 #                            ~7,600 rows of mainland data; Hyderabad took
 #                            India-labelled data
+#   validate_references      6 pages used CSV column names as frontmatter keys
+#                            (wiki_status:, iso3_code:) so the builder silently
+#                            dropped them; 18 predecessor/successor codes did not
+#                            exist (can-1948-2025 pointed at CAN-1866-1948);
+#                            pages named codes from splits never applied
+#                            (BRA-1903-1909, JAM-1886-1962)
 #
 # These need only what the repo commits (wiki/, data/final/). The MATCHERS are
 # deliberately absent: they need the layer-B parquet and the FAOSTAT pins cache,
@@ -97,3 +103,7 @@ jobs:
       - name: No polity can shadow a sibling via family ordering
         if: '!cancelled()'
         run: python3 scripts/audit_family_shadowing.py
+
+      - name: References — frontmatter keys, chain refs, codes named in page bodies
+        if: '!cancelled()'
+        run: python3 scripts/validate_references.py
