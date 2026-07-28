@@ -338,8 +338,22 @@ def sync_gpkg_attributes(rows: list[dict[str, Any]], out_path: Path) -> str:
                 continue
             want_s = "" if want is None else str(want)
             have_s = "" if have is None else str(have)
-            if have_s != want_s:
-                feat.SetField(f, want_s)
+            # An empty value stored as an empty STRING is not the same as NULL, and
+            # collapsing both to "" here hid that: the sync reported "already
+            # matched" while 79 rows held "" where they should hold NULL.
+            needs_null = want_s == "" and have is not None
+            if have_s != want_s or needs_null:
+                # An empty value must become NULL, not an empty STRING. The
+                # GeoPackage writer skips empty fields, which leaves them NULL, so
+                # writing "" here would make synced rows differ from written ones —
+                # and an empty string reads back as present. Normalising "NA" to
+                # empty upstream then syncing it as "" moved the problem rather than
+                # fixing it: sf saw 79 empty strings instead of 79 NAs, and
+                # `is.na(iso3_code)` still found only 3 of 82 missing codes.
+                if want_s == "":
+                    feat.SetFieldNull(f)
+                else:
+                    feat.SetField(f, want_s)
                 dirty = True
         if dirty:
             lyr.SetFeature(feat)
