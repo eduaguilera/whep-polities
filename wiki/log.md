@@ -26,6 +26,45 @@ Kinds:
 
 ---
 
+## lint-polygon-status-vocabulary
+**Date:** 2026-07-29
+**Touched:** ant-1961-2010, blx-1850-1999, rafr-1850-2021, rasi-1850-2021, reur-1850-2021, rlam-1850-2013, rnam-1850-2021, roce-1850-2021, row-1850-2023, hnd-1800-2025, mmr-1885-2025, aoi-1936-1941, fcc-1862-1887, fto-1920-1960, nup-1800-1897, rwb-1919-1922, saa-1947-1957, tan-1891-1920, tan-1920-1922, tas-1825-1900, gco-1884-2025
+**Source:** none
+**Kind:** lint
+
+Migrated the four legacy `polygon_status` values to the documented vocabulary.
+README.md has said since the vocabulary was written that `derived`, `missing`,
+`approximate` and `excluded` "are near-synonyms of the above and predate this
+vocabulary. Do not use them in new pages." The migration itself was never done, and
+21 rows still carried them.
+
+That was not cosmetic. `polygon_status` is what the manifest's
+`claims_polygon_status` set is built from, and consumers use it to decide which rows
+should have a polygon. Eleven rows — the nine `derived` reporting-area unions plus
+the two `approximate` ones — HAVE geometry while their status sat outside that set,
+so a consumer was told they do not claim a polygon. That is the same defect as
+ade-1839-1963 declaring `unassigned` while carrying CShapes 680, which was corrected
+the same day.
+
+Mapping, each chosen from the README's own definitions:
+
+- `derived` -> `assigned` (9). All nine are built by
+  scripts/sources/reporting-areas/build.py, which composes them from their members,
+  so the polygon IS the territory by construction. All have geometry and none
+  records an area, so check A skips them.
+- `approximate` -> `proxy` (2). hnd-1800-2025 uses the CShapes 1886 feature for the
+  full 1800-2025 span and mmr-1885-2025 a Cliopatria feature likewise: a stand-in
+  from another period, which is the README's definition of `proxy`. Both pages
+  already used the word.
+- `missing` -> `unassigned` (9) and `excluded` -> `unassigned` (1). None has any
+  geometry, which is what `unassigned` means.
+
+No geometry changed. `scripts/build_database.py --check` now also refuses any
+`polygon_status` outside the documented vocabulary, so the legacy values cannot
+return.
+
+---
+
 ## decision-merge-idn-1889
 **Date:** 2026-07-24
 **Touched:** IDN-1800-1889, IDN-1889-1945, IDN-1800-1945, NNG-1949-1963, CAN-1948-2025, NFL-1907-1949, EGYSUD-1934-1956, AUSA-1836-1900, AUWA-1829-1900

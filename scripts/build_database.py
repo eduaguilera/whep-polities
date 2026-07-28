@@ -568,6 +568,44 @@ def main() -> int:
         # Compare the wiki-derived rows against the committed CSV without writing.
         # Only the CSV is checked: the GeoPackage needs the polygon sources under
         # data/geodata, which are gitignored, so it cannot be verified in CI.
+        # `polygon_status` is load-bearing: validate_polygons.py keys off it
+        # and the manifest builds `claims_polygon_status` from it, so a value
+        # outside the documented vocabulary silently escapes both. Four legacy
+        # values (`derived`, `missing`, `approximate`, `excluded`) sat on 21 rows
+        # for exactly that reason — README said not to use them and the migration
+        # was never done, leaving 11 rows with geometry outside the claims set.
+        POLYGON_STATUS_VOCABULARY = {
+            "assigned", "proxy", "estimate", "polygon_vintage_drift",
+            "unassigned",
+        }
+        bad_status = sorted({
+            (r["polity_code"], r["polygon_status"]) for r in rows
+            if (r.get("polygon_status") or "").strip()
+            and r["polygon_status"].strip() not in POLYGON_STATUS_VOCABULARY
+        })
+        if bad_status:
+            print("--check: FAIL — polygon_status values outside the documented "
+                  "vocabulary (see wiki/README.md, Page schema)")
+            for code, st in bad_status[:10]:
+                print(f"  {code}: {st!r}")
+            print(f"\n  Allowed: {sorted(POLYGON_STATUS_VOCABULARY)}")
+            return 1
+
+        # No published column may carry the literal string "NA". It means
+        # missing, and a second spelling of missing is how a consumer ends up
+        # treating 79 absent ISO3 codes as present.
+        na_text = [
+            (r["polity_code"], c)
+            for r in rows for c in CSV_COLUMNS
+            if isinstance(r.get(c), str) and r[c].strip() == "NA"
+        ]
+        if na_text:
+            print("--check: FAIL — the literal string \"NA\" reached published "
+                  "columns; it must be empty")
+            for code, col in na_text[:10]:
+                print(f"  {code}.{col}")
+            return 1
+
         import csv, io
         buf = io.StringIO()
         w = csv.DictWriter(buf, fieldnames=CSV_COLUMNS, lineterminator="\n")
@@ -586,21 +624,6 @@ def main() -> int:
             # GCO-1884-2025 reached the CSV while the GeoPackage kept saying
             # `draft`, so the manifest called the row dead and the file consumers
             # read called it live.
-            # No published column may carry the literal string "NA". It means
-            # missing, and a second spelling of missing is how a consumer ends up
-            # treating 79 absent ISO3 codes as present.
-            na_text = [
-                (r["polity_code"], c)
-                for r in rows for c in CSV_COLUMNS
-                if isinstance(r.get(c), str) and r[c].strip() == "NA"
-            ]
-            if na_text:
-                print("--check: FAIL — the literal string \"NA\" reached published "
-                      "columns; it must be empty")
-                for code, col in na_text[:10]:
-                    print(f"  {code}.{col}")
-                return 1
-
             mismatches = gpkg_attribute_mismatches(rows, gpkg_path)
             if mismatches:
                 print("--check: FAIL — the GeoPackage's attributes disagree with "
