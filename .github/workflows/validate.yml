@@ -148,7 +148,7 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/crosscheck_matchers.py
 
-      - name: No polygon swallows a coexisting polity
+      - name: Polygons — no swallowed neighbour, no discontinuous family
         if: '!cancelled()'
         run: python3 scripts/validate_spatial_containment.py
 

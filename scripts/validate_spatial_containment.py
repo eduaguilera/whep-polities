@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Flag polygons that geometrically swallow other contemporaneous polities.
+"""Two spatial checks that need no reference data and no hand-entered value.
+
+  CONTAINMENT   a polygon that geometrically swallows other contemporaneous
+                polities, which double-counts their territory
+  CONTINUITY    successive periods of one family whose polygons do not overlap,
+                which means one of them is bound to the wrong feature
 
 Why this is a distinct check: `validate_polygons.py` compares a polygon against
 its recorded `polygon_area_km2`, so it is opt-in via a hand-entered field. Roughly
@@ -43,7 +48,7 @@ DEAD_STATUS = ("retired", "superseded")
 # member colonies, and the statistical aggregates that exist to hold small
 # territories. Enumerated because the database cannot express it — AOF-1895-1960
 # and every colony inside it are all typed `national`.
-LEGITIMATE_CONTAINERS = {
+LEGITIMATE_CONTAINERS = frozenset({
     # Statistical / reporting aggregates
     "ROW-1850-2023", "RAFR-1850-2021", "RASI-1850-2021", "REUR-1850-2021",
     "RLAM-1850-2013", "ROCE-1850-2021",
@@ -58,20 +63,35 @@ LEGITIMATE_CONTAINERS = {
     "NGA-1886-1914", "ZWE-1891-1900",
     # A federation over its pre-1901 colonies
     "AUS-1800-1901",
-}
+})
 
 # Containers that are DEFECTS, tracked so the gate stays useful while they are
 # open. Bidirectional: one that stops containing must be removed from this set, so
 # the list shrinks as the polygons are fixed.
-TRACKED_DEFECTS = {
+TRACKED_DEFECTS = frozenset({
     "RUS-1991-2014",  # issue 45: carries the USSR polygon (CShapes feature 365)
-}
+})
+
+# Family pairs whose consecutive polygons do not overlap. Tracked, not accepted.
+# frozenset(...) rather than a bare {...}: when the last entry is removed — which
+# is the goal, once issue 46 is fixed — a bare literal becomes an empty DICT, and
+# `dict - set` raises TypeError. The gate would crash precisely when the data became
+# correct. Found by actually emptying it rather than assuming.
+KNOWN_DISCONTINUOUS = frozenset({
+    # issue 46: IRN-1800-1828's polygon_feature_id is literally "United States of
+    # America". Not fixable without the Cliopatria source fetched — downgrading it
+    # here would leave the wrong geometry in the committed GeoPackage while the CSV
+    # said `unassigned`.
+    "IRN-1800-1828 / IRN-1828-2025",
+})
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--min-contained", type=int, default=3,
                 help="report a polity that contains at least this many others")
 ap.add_argument("--overlap", type=float, default=0.90,
                 help="fraction of the smaller polity that must lie inside")
+ap.add_argument("--continuity", type=float, default=0.50,
+                help="minimum overlap between consecutive periods of one family")
 A = ap.parse_args()
 
 g = gpd.read_file(GPKG)
@@ -130,6 +150,47 @@ for code in sorted((LEGITIMATE_CONTAINERS | TRACKED_DEFECTS) - observed):
     problems.append(
         f"{code} is listed as a container but no longer contains "
         f">={A.min_contained} others — remove it from the list"
+    )
+
+# ---------- CONTINUITY ----------
+# A family's consecutive periods describe the same territory at different times, so
+# their polygons must overlap heavily. When they do not, one is bound to the wrong
+# feature. This is the only check that finds a mis-binding of PLAUSIBLE SIZE:
+# IRN-1800-1828 carries Cliopatria's "United States of America" (its
+# polygon_feature_id says so literally) and sits in North America, but the USA in
+# 1815 measured ~1,586,287 km2 against Iran's ~1,621,564 — a ratio of 0.98, so
+# every area-based check passes it. Magnitude cannot detect position.
+eq["prefix"] = eq.polity_code.str.split("-").str[0]
+discontinuous = []
+for _prefix, fam in eq.groupby("prefix"):
+    if len(fam) < 2:
+        continue
+    fam = fam.sort_values("start_year")
+    codes, geos, areas = list(fam.polity_code), list(fam.geometry), list(fam.area_km2)
+    for i in range(len(fam) - 1):
+        smaller = min(areas[i], areas[i + 1])
+        if smaller <= 0:
+            continue
+        frac = geos[i].intersection(geos[i + 1]).area / (smaller * 1e6)
+        if frac < A.continuity:
+            discontinuous.append((codes[i], codes[i + 1], frac))
+
+print(f"\nconsecutive same-family periods overlapping <{A.continuity:.0%}: "
+      f"{len(discontinuous)}")
+for a, b, frac in sorted(discontinuous, key=lambda r: r[2]):
+    pair = f"{a} / {b}"
+    if pair in KNOWN_DISCONTINUOUS:
+        print(f"  TRACKED DEFECT {pair}  overlap {frac:.0%}")
+    else:
+        problems.append(
+            f"NEW discontinuity {pair}: consecutive periods of one family overlap "
+            f"only {frac:.0%} — one polygon is probably bound to the wrong feature"
+        )
+observed_pairs = {f"{a} / {b}" for a, b, _ in discontinuous}
+for pair in sorted(KNOWN_DISCONTINUOUS - observed_pairs):
+    problems.append(
+        f"{pair} is tracked as discontinuous but now overlaps — remove it from "
+        f"KNOWN_DISCONTINUOUS"
     )
 
 if problems:
