@@ -215,12 +215,48 @@ def flatten_row(fm: dict[str, Any]) -> dict[str, Any]:
 # GeoPackage writer
 # ---------------------------------------------------------------------------
 
+def existing_geometry_count(path: Path) -> int | None:
+    """How many non-empty geometries the GeoPackage at `path` already holds."""
+    if not path.exists():
+        return None
+    try:
+        ds = ogr.Open(str(path))
+        if ds is None:
+            return None
+        lyr = ds.GetLayer()
+        n = sum(1 for f in lyr
+                if (g := f.GetGeometryRef()) is not None and not g.IsEmpty())
+        return n
+    except Exception:
+        return None
+
+
 def write_gpkg(
     rows: list[dict[str, Any]],
     geometries: dict[str, ogr.Geometry],
     out_path: Path,
     simplify_tolerance: float,
+    allow_fewer: bool = False,
 ) -> None:
+    # GUARD: the raw polygon sources under data/geodata are gitignored, so a
+    # rebuild in a fresh checkout or a git worktree attaches almost nothing and
+    # would overwrite the committed GeoPackage with a near-empty one — observed
+    # shrinking it from 12.6 MB to 208 KB. `--check` only compares the CSV, so
+    # CI would not catch it either. Refuse rather than silently destroy; a
+    # legitimate reduction (rows superseded) is rare and can pass --allow-fewer.
+    before = existing_geometry_count(out_path)
+    after = len(geometries)
+    if before is not None and after < before and not allow_fewer:
+        raise SystemExit(
+            f"\nREFUSING to write {out_path.name}: it currently holds {before} "
+            f"geometries and this run attached only {after}.\n"
+            f"  Almost certainly the raw polygon sources are missing — they are "
+            f"gitignored and fetched per source:\n"
+            f"    bash scripts/sources/<slug>/fetch.sh   (see README 'Rebuilding from scratch')\n"
+            f"  The CSV was written; only the GeoPackage is untouched, so the "
+            f"committed geometries are safe.\n"
+            f"  If the reduction is intended (rows superseded), re-run with "
+            f"--allow-fewer-geometries.")
     if out_path.exists():
         out_path.unlink()
     drv = ogr.GetDriverByName("GPKG")
@@ -284,6 +320,14 @@ def main() -> int:
         default=0.01,
         help="Douglas-Peucker tolerance in degrees (0 to disable). "
              "Default 0.01 ≈ 1 km at equator; keeps the master GPKG under 5 MB.",
+    )
+    ap.add_argument(
+        "--allow-fewer-geometries",
+        action="store_true",
+        help="permit writing a GeoPackage with fewer geometries than the existing "
+             "one. Needed only when rows were legitimately superseded; without it "
+             "a rebuild missing its polygon sources refuses rather than gutting "
+             "the committed file.",
     )
     ap.add_argument(
         "--check",
@@ -410,7 +454,8 @@ def main() -> int:
     print(f"Writing CSV ({len(rows)} rows)...")
     write_csv(rows, csv_path)
     print(f"Writing GeoPackage ({len(geometries)} geometries, simplify={args.simplify_tolerance})...")
-    write_gpkg(rows, geometries, gpkg_path, args.simplify_tolerance)
+    write_gpkg(rows, geometries, gpkg_path, args.simplify_tolerance,
+               allow_fewer=args.allow_fewer_geometries)
     print("Done writing outputs.")
 
     print()
