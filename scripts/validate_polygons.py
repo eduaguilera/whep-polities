@@ -8,7 +8,15 @@ recorded as a row index or a guessed number rather than the Gleditsch-Ward code
 that scripts/sources.yaml actually resolves. Nothing checked the result, so the
 errors sat in the database silently. This script is that check.
 
-Three independent tests:
+Tests:
+
+  V. VOCABULARY — polygon_status must be one of the five documented values
+     (wiki/README.md). This exists because the field had grown to nine values
+     plus one page with none — `derived`, `missing`, `approximate` and
+     `excluded` were near-synonyms of the documented five — and any value
+     outside the set below is silently invisible to test
+     C: a page could declare `derived` and carry no polygon at all without
+     failing anything. Consolidated 2026-07-28 (GitHub issue #31).
 
   A. AREA AGREEMENT — measure the attached geometry in an equal-area projection
      and compare against the page's own polygon_area_km2. A large divergence
@@ -52,10 +60,28 @@ ap.add_argument("--min-km2", type=float, default=200.0,
 ap.add_argument("--strict", action="store_true", help="also fail on identity mismatches")
 A = ap.parse_args()
 
+# The complete polygon_status vocabulary, as documented in wiki/README.md.
+# Every value carries a validator commitment, so an unrecognised one is not a
+# harmless synonym — it drops the page out of test C. Adding a value here
+# without deciding whether it claims a polygon (VOCAB - {"unassigned"}, below)
+# re-creates the bug issue #31 fixed.
+VOCABULARY = {"assigned", "proxy", "estimate", "polygon_vintage_drift", "unassigned"}
+
 g = gpd.read_file(GPKG)
 have = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
 have["measured_km2"] = have.to_crs(EQUAL_AREA).geometry.area / 1e6
 print(f"{len(have)} polities with geometry (of {len(g)} rows)")
+
+# ---------- V: polygon_status is in the documented vocabulary ----------
+status_all = g.get("polygon_status")
+status_all = pd.Series([None] * len(g)) if status_all is None else status_all.reset_index(drop=True)
+off_vocab = g.reset_index(drop=True)[~status_all.fillna("").isin(VOCABULARY)]
+print(f"\nV. VOCABULARY — {len(off_vocab)} polit(ies) carry a polygon_status outside "
+      f"the documented set ({', '.join(sorted(VOCABULARY))})")
+for r in off_vocab.itertuples():
+    val = getattr(r, "polygon_status", None)
+    print(f"   FAIL {r.polity_code:18s} polygon_status={val!r} — not a documented value, "
+          f"so this row is invisible to test C")
 
 # ---------- A: area agreement ----------
 have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
@@ -65,7 +91,9 @@ diverging = chk[chk.divergence > A.tolerance].sort_values("divergence", ascendin
 # Only `assigned` CLAIMS the polygon is the territory, so only there is a
 # divergence a contradiction. estimate/proxy/*_drift already say the polygon is
 # inexact, and those pages document the direction and magnitude — report but
-# don't fail, otherwise the gate punishes honest documentation.
+# don't fail, otherwise the gate punishes honest documentation. The complement
+# (VOCABULARY - EXACT_CLAIM) is exactly the inexact-or-absent values, and test V
+# guarantees no page sits outside VOCABULARY.
 EXACT_CLAIM = {"assigned"}
 st = diverging.get("polygon_status").astype(str)
 bad_area = diverging[st.isin(EXACT_CLAIM)]
@@ -85,7 +113,14 @@ for r in documented.itertuples():
 # summary line, so a page can claim an exact polygon while carrying none —
 # e.g. an id written as prose ("composed-union: cowcode=452 UNION cowcode=462")
 # instead of a resolvable value. That is a direct contradiction, not a gap.
-CLAIMS_POLYGON = {"assigned", "proxy", "estimate", "polygon_vintage_drift"}
+#
+# Derived from the vocabulary rather than listed by hand: every documented value
+# except `unassigned` asserts a polygon. Before 2026-07-28 this was a hand-kept
+# list and the four legacy values (`derived`, `missing`, `approximate`,
+# `excluded`) were absent from it, so 21 pages — plus one carrying no value at
+# all — were exempt from this test without saying so; test V stops that
+# recurring.
+CLAIMS_POLYGON = VOCABULARY - {"unassigned"}
 missing = g[g.geometry.isna() | g.geometry.is_empty].copy()
 missing["st"] = missing.get("polygon_status").astype(str)
 claim_no_geom = missing[missing.st.isin(CLAIMS_POLYGON)]
@@ -151,8 +186,10 @@ if os.path.exists(CSHAPES):
 else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
-fail = len(bad_area) > 0 or len(new_claim_no_geom) > 0 or len(undoc) > 0 or (A.strict and mismatch)
-print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s), "
+fail = (len(off_vocab) > 0 or len(bad_area) > 0 or len(new_claim_no_geom) > 0
+        or len(undoc) > 0 or (A.strict and mismatch))
+print(f"\n{'FAIL' if fail else 'PASS'}: {len(off_vocab)} off-vocabulary status(es), "
+      f"{len(bad_area)} area disagreement(s), "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
 sys.exit(1 if fail else 0)

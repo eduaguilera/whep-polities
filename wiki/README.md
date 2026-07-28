@@ -125,9 +125,13 @@ source files on disk.
   it does not have. Prefer `unassigned` with a documented reason over a silent
   modern-borders guess.
 
-  Legacy values still present in the database — `derived`, `missing`,
-  `approximate`, `excluded` — are near-synonyms of the above and predate this
-  vocabulary. Do not use them in new pages.
+  These five are the whole vocabulary. The legacy near-synonyms `derived`,
+  `missing`, `approximate` and `excluded` were migrated out on 2026-07-28
+  (21 pages, plus one page that carried no value; see
+  [log lint-consolidate-polygon-status](log.md#lint-consolidate-polygon-status))
+  and `validate_polygons.py` test V now **fails** on any value outside the
+  table — an unrecognised value is not a harmless synonym, it drops the page
+  out of check C.
 - `polygon_area_km2` — optional sanity-check.
 - `predecessor`, `successor` — YAML lists of UPPERCASE `polity_code`s
   (`[]` for none). Drives the site's Graph tab edges and the coverage-

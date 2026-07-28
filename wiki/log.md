@@ -26,6 +26,46 @@ Kinds:
 
 ---
 
+## lint-consolidate-polygon-status
+**Date:** 2026-07-28
+**Touched:** ANT-1961-2010, BLX-1850-1999, RAFR-1850-2021, RASI-1850-2021, REUR-1850-2021, RLAM-1850-2013, RNAM-1850-2021, ROCE-1850-2021, ROW-1850-2023, AOI-1936-1941, FCC-1862-1887, FTO-1920-1960, NUP-1800-1897, RWB-1919-1922, SAA-1947-1957, TAN-1891-1920, TAN-1920-1922, TAS-1825-1900, GCO-1884-2025, HND-1800-2025, MMR-1885-2025, DJI-1886-2025
+**Source:** none
+**Kind:** lint
+
+`polygon_status` had grown to **nine values plus one page with none**, and the
+sprawl was a correctness hole rather than untidiness: `validate_polygons.py`
+test C fails a page that declares a polygon it does not carry, but its list of
+declaring values was hand-kept and named only four. The other four —
+`derived`, `missing`, `approximate`, `excluded` — plus the empty one were
+**exempt from that test without saying so**, so 22 rows could have claimed a
+polygon and carried nothing. Migrated to the five documented values
+([wiki/README.md](README.md)), verified page by page against
+`data/final/polities_database.gpkg` rather than by string substitution.
+
+| was | count | now | verification |
+|---|---|---|---|
+| `derived` | 9 | **`assigned`** | all nine are `reporting-areas` aggregates and all nine *do* carry geometry (795 km² for [ANT-1961-2010](polities/ant-1961-2010.md) up to 2,569,652 km² for [ROW-1850-2023](polities/row-1850-2023.md)); `derived` described how the polygon was built, not what it claims |
+| `missing` | 9 | **`unassigned`** | confirmed none carries geometry, so each is a documented gap, not a claim |
+| `approximate` | 2 | **`polygon_vintage_drift`** | [HND-1800-2025](polities/hnd-1800-2025.md), [MMR-1885-2025](polities/mmr-1885-2025.md) — see below |
+| `excluded` | 1 | **`unassigned`** | [GCO-1884-2025](polities/gco-1884-2025.md) carries no geometry; "excluded" named a scope idea the vocabulary does not track, and the row is itself a deletion candidate |
+| *(none)* | 1 | **`unassigned`** | [DJI-1886-2025](polities/dji-1886-2025.md), retired; CShapes 522 was deliberately reassigned to [FRS-1884-1977](polities/frs-1884-1977.md) on 2026-07-01, so a polygon here would double-count |
+
+Both `approximate` pages went to **`polygon_vintage_drift`, not `estimate`** as
+first proposed. Neither documents a feature that is approximate — HND's CShapes
+polygon measures 112,280 km² against Biger's 112,044 km², and MMR's Cliopatria
+polygon 675,971 km² against ~680,000 km², both fine. What each documents is a
+*vintage* mismatch: an 1886 polygon spread over 1800-2025 and predating the 1906
+and 1992 boundary awards; a 1967 snapshot back-projected to 1885, which that page
+already called an "82-year vintage drift". That is the same use as
+[BRA-1800-1903](polities/bra-1800-1903.md) and
+[IDN-1800-1945](polities/idn-1800-1945.md). Validator behaviour is identical for
+the two labels, so the more specific one was chosen.
+
+`validate_polygons.py` now derives its declaring set from a single `VOCABULARY`
+constant (`VOCABULARY - {"unassigned"}`) and adds **test V**, which fails on any
+`polygon_status` outside the five. The migration removed today's blind spots; test
+V is what stops the tenth synonym from re-opening them. `data/final/` rebuilt.
+
 ## decision-merge-idn-1889
 **Date:** 2026-07-24
 **Touched:** IDN-1800-1889, IDN-1889-1945, IDN-1800-1945, NNG-1949-1963, CAN-1948-2025, NFL-1907-1949, EGYSUD-1934-1956, AUSA-1836-1900, AUWA-1829-1900

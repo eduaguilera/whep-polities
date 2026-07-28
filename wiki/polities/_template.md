@@ -21,13 +21,16 @@ sources: []
 #   polygon_feature_year — for sources with a `temporal` block, the year
 #                          used to disambiguate time-steps. Omit when the
 #                          source has no time dimension.
-#   polygon_status      — assigned | proxy | missing | excluded
+#   polygon_status      — assigned | proxy | estimate | polygon_vintage_drift
+#                          | unassigned. The whole vocabulary; each value is
+#                          load-bearing for scripts/validate_polygons.py, which
+#                          fails on anything else. See wiki/README.md.
 #   polygon_area_km2    — optional sanity-check value (ETRS89 LAEA / source's
 #                          native equal-area CRS). Not required.
 polygon_source: none
 polygon_feature_id: ""
 polygon_feature_year: null
-polygon_status: missing
+polygon_status: unassigned
 polygon_area_km2: null
 
 # Chain links (read by scripts/build_database.py; used by the site's
