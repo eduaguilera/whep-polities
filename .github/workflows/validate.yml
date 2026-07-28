@@ -22,9 +22,11 @@ name: Validate database
 #   audit_family_shadowing   Alaska outranked the United States and absorbed
 #                            ~7,600 rows of mainland data; Hyderabad took
 #                            India-labelled data
-#   write_manifest --check   the WHEP package's embedded copy of this database
-#                            had drifted to 603 rows against 740, 24 of them
-#                            retired or superseded, and nothing detected it
+#   validate_aliases         five aliases were silently INERT — two had an
+#                            unquoted comma in a field, which shifted every
+#                            column and dropped the target; one targeted a bare
+#                            family prefix; one a polity that does not exist. A
+#                            broken alias does not fail, it just never matches.
 #   write_faostat_area_map   WHEP rebuilt the FAOSTAT area -> polity mapping
 #     --check                itself and could not reach colonial-era polities,
 #                            attributing 118 area-years to polities that did
@@ -122,4 +124,8 @@ jobs:
       - name: No polity can shadow a sibling via family ordering
         if: '!cancelled()'
         run: python3 scripts/audit_family_shadowing.py
+
+      - name: Every alias can actually route to a live polity
+        if: '!cancelled()'
+        run: python3 scripts/validate_aliases.py
 
