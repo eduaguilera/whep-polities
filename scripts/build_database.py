@@ -207,7 +207,23 @@ def flatten_row(fm: dict[str, Any]) -> dict[str, Any]:
         v = fm.get(fm_key)
         if isinstance(v, list):
             v = "; ".join(str(x) for x in v)
-        row[col] = "" if v is None else v
+        v = "" if v is None else v
+        # A frontmatter value of `NA` means missing, but YAML reads it as the
+        # STRING "NA", so it reached the published CSV as text that looks present.
+        # The database therefore carried two spellings of missing in one column:
+        # iso3_code had 79 rows of "NA" and 3 empty, cow_code 185 and 31. A
+        # consumer checking `== ""` found 3 of 82 missing ISO3 codes, and any
+        # `!is.na(iso3)` guard treated 79 rows as carrying a valid code — which the
+        # ISO3-keyed bridges in the WHEP package do (see eduaguilera/whep#382,
+        # where the same artifact had to be undone on the reading side).
+        #
+        # Normalised here rather than across 266 wiki pages: `NA` is a fine thing
+        # to write by hand, and the published artifact is where consistency
+        # matters. "NA" is not a legitimate value for any of these fields —
+        # Namibia is NAM, not NA.
+        if isinstance(v, str) and v.strip() == "NA":
+            v = ""
+        row[col] = v
     return row
 
 
@@ -556,6 +572,21 @@ def main() -> int:
             # GCO-1884-2025 reached the CSV while the GeoPackage kept saying
             # `draft`, so the manifest called the row dead and the file consumers
             # read called it live.
+            # No published column may carry the literal string "NA". It means
+            # missing, and a second spelling of missing is how a consumer ends up
+            # treating 79 absent ISO3 codes as present.
+            na_text = [
+                (r["polity_code"], c)
+                for r in rows for c in CSV_COLUMNS
+                if isinstance(r.get(c), str) and r[c].strip() == "NA"
+            ]
+            if na_text:
+                print("--check: FAIL — the literal string \"NA\" reached published "
+                      "columns; it must be empty")
+                for code, col in na_text[:10]:
+                    print(f"  {code}.{col}")
+                return 1
+
             mismatches = gpkg_attribute_mismatches(rows, gpkg_path)
             if mismatches:
                 print("--check: FAIL — the GeoPackage's attributes disagree with "
