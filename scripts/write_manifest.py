@@ -72,6 +72,23 @@ payload = [[r.get(f, "") for f in IDENTITY_FIELDS]
 identity_hash = hashlib.sha256(
     json.dumps(payload, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
+# The FAOSTAT area -> polity map published alongside this manifest, fingerprinted
+# so a consumer can pin both with one comparison. Only the digest and shape are
+# recorded, not the mapping itself: the map is 281 rows and belongs in its own
+# file, while what a consumer needs from the manifest is whether the copy it
+# holds is the current one.
+AREA_MAP = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
+area_map_info = None
+if os.path.exists(AREA_MAP):
+    raw = open(AREA_MAP, "rb").read()
+    map_rows = list(csv.DictReader(open(AREA_MAP, encoding="utf-8")))
+    area_map_info = {
+        "path": "data/final/faostat_area_polity_map.csv",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "mappings": len(map_rows),
+        "areas": len({r["area_code"] for r in map_rows}),
+    }
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -80,7 +97,11 @@ manifest = {
         "`polygon_gap_polity_codes` as the known set of rows whose status "
         "asserts a polygon the GeoPackage does not carry, so you can assert no "
         "NEW gap appears without asserting an invariant we do not yet meet. "
-        "Regenerate with scripts/write_manifest.py."
+        "`faostat_area_map` fingerprints the FAOSTAT area -> polity mapping "
+        "published beside this file, which is the authority for which polity a "
+        "reporting area's data belongs to in a given year — prefer it over "
+        "rebuilding that mapping yourself. Regenerate with "
+        "scripts/write_manifest.py."
     ),
     "source": "data/final/polities_database.csv",
     "identity_fields": list(IDENTITY_FIELDS),
@@ -94,6 +115,7 @@ manifest = {
     "dead_polity_codes": sorted(r["polity_code"] for r in dead),
     "claims_polygon_status": list(CLAIMS_POLYGON),
     "polygon_gap_polity_codes": polygon_gaps,
+    "faostat_area_map": area_map_info,
     "live_polity_codes": sorted(r["polity_code"] for r in live),
 }
 

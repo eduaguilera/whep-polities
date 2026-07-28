@@ -22,6 +22,14 @@ name: Validate database
 #   audit_family_shadowing   Alaska outranked the United States and absorbed
 #                            ~7,600 rows of mainland data; Hyderabad took
 #                            India-labelled data
+#   write_manifest --check   the WHEP package's embedded copy of this database
+#                            had drifted to 603 rows against 740, 24 of them
+#                            retired or superseded, and nothing detected it
+#   write_faostat_area_map   WHEP rebuilt the FAOSTAT area -> polity mapping
+#     --check                itself and could not reach colonial-era polities,
+#                            attributing 118 area-years to polities that did
+#                            not exist (50 of them Sudan). The map is published
+#                            so consumers read it instead of guessing.
 #
 # These need only what the repo commits (wiki/, data/final/). The MATCHERS are
 # deliberately absent: they need the layer-B parquet and the FAOSTAT pins cache,
@@ -106,3 +114,14 @@ jobs:
       - name: No polity can shadow a sibling via family ordering
         if: '!cancelled()'
         run: python3 scripts/audit_family_shadowing.py
+      - name: Consumer manifest matches the database
+        if: '!cancelled()'
+        run: python3 scripts/write_manifest.py --check
+
+      # Runs BEFORE the manifest check would matter, because the manifest
+      # fingerprints this file: a stale map makes the manifest stale too, and the
+      # more specific message should be the one that fires.
+      - name: Published FAOSTAT area map matches the pipeline state
+        if: '!cancelled()'
+        run: python3 scripts/write_faostat_area_map.py --check
+
