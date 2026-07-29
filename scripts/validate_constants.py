@@ -33,6 +33,7 @@ Usage:
   python3 scripts/validate_constants.py
 """
 import ast
+import re
 import os
 import sys
 
@@ -121,6 +122,47 @@ else:
         if extra:
             detail.append(f"claiming a polygon but not in the vocabulary: {extra}")
         problems.append("CLAIMS_POLYGON is not the vocabulary minus 'unassigned'; " + "; ".join(detail))
+
+# ---------- the FAOSTAT aggregate constants vs match.R ----------
+# write_manifest.py publishes group_code_min and deliberate_area_codes so the consumer stops
+# re-deriving them. pipelines/faostat-era-matching/match.R acts on the same two values. Two copies of
+# one fact, which is what this script exists for.
+MATCH_R = os.path.join(REPO, "pipelines/faostat-era-matching/match.R")
+manifest_min = literal_assignments(
+    os.path.join(REPO, "scripts/write_manifest.py"), "FAOSTAT_GROUP_CODE_MIN"
+)
+manifest_codes = literal_assignments(
+    os.path.join(REPO, "scripts/write_manifest.py"), "FAOSTAT_AGGREGATE_CODES"
+)
+if os.path.exists(MATCH_R) and manifest_min and manifest_codes:
+    with open(MATCH_R, encoding="utf-8") as fh:
+        match_src = fh.read()
+    # `area_code >= 5000L` and `aggregate_codes <- c(351L)` in R source.
+    r_min = re.search(r"area_code\s*>=\s*(\d+)L", match_src)
+    r_codes = re.search(r"aggregate_codes\s*<-\s*c\(([^)]*)\)", match_src)
+    print(f"\nFAOSTAT group threshold: manifest {manifest_min[0]}", end="")
+    if r_min:
+        print(f", match.R {r_min.group(1)}")
+        if int(r_min.group(1)) != int(manifest_min[0]):
+            problems.append(
+                f"FAOSTAT group threshold disagrees: write_manifest.py has "
+                f"{manifest_min[0]}, match.R has {r_min.group(1)} — the published contract would "
+                f"tell consumers a different boundary than the matcher uses"
+            )
+    else:
+        print(" (match.R threshold not found)")
+    if r_codes:
+        parsed = tuple(
+            int(x.strip().rstrip("L"))
+            for x in r_codes.group(1).split(",")
+            if x.strip()
+        )
+        print(f"deliberate aggregate codes: manifest {tuple(manifest_codes[0])}, match.R {parsed}")
+        if parsed != tuple(manifest_codes[0]):
+            problems.append(
+                f"deliberate aggregate codes disagree: write_manifest.py has "
+                f"{tuple(manifest_codes[0])}, match.R has {parsed}"
+            )
 
 # ---------- the wiki's documented vocabulary vs the enforced one ----------
 # A third copy of the same fact, in prose. wiki/README.md carries a table of polygon_status

@@ -71,6 +71,13 @@
   "SER-1918-1945",
   "TRS-1947-1954"
  ],
+ "faostat_unmapped_areas": {
+  "group_code_min": 5000,
+  "deliberate_area_codes": [
+   351
+  ],
+  "why": "Area codes at or above group_code_min are FAOSTAT's own regional groups (World, continents, income groups), never territories. The codes in deliberate_area_codes are statistical aggregates reported ALONGSIDE their own components, so routing them to a polity would double-count: 351 'China' is mainland + Hong Kong + Macao + Taiwan. Neither kind is a gap in this database."
+ },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
   "sha256": "8695753a881070c5f52b039a6422722323d69c7104a8ba5d2e33017f0e0e79db",

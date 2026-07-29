@@ -43,6 +43,12 @@ DEAD_STATUS = ("retired", "superseded")
 
 # Fields a consumer resolves against. Deliberately excludes polygon_* — a
 # re-measured area must not invalidate every downstream copy.
+# Duplicated from pipelines/faostat-era-matching/match.R, which acts on them. Kept in step by
+# scripts/validate_constants.py — the same treatment DEAD_STATUS gets, and for the same reason: a
+# constant that lives in two places will drift unless something compares them.
+FAOSTAT_GROUP_CODE_MIN = 5000
+FAOSTAT_AGGREGATE_CODES = (351,)
+
 IDENTITY_FIELDS = ("polity_code", "polity_name", "start_year", "end_year",
                    "polity_type", "iso3_code", "cow_code", "wiki_status")
 
@@ -133,6 +139,29 @@ manifest = {
     "dead_polity_codes": sorted(r["polity_code"] for r in dead),
     "claims_polygon_status": list(CLAIMS_POLYGON),
     "polygon_gap_polity_codes": polygon_gaps,
+    # What the consumer otherwise has to infer or re-derive.
+    #
+    # pipelines/faostat-era-matching/match.R states both of these in a comment and acts on them, but
+    # neither was published, so eduaguilera/whep re-derived them independently: it inferred
+    # "deliberately unmapped" from crosswalk membership, and it measured the 5000 threshold against
+    # real FAOSTAT production (34 of 34 unmapped codes are >= 5000). Two repositories holding the
+    # same fact with no link between them is what this file exists to prevent.
+    #
+    # Inference is also weaker than the fact. An area can be absent from the crosswalk for reasons
+    # other than a deliberate decision, and a consumer inferring intent from absence cannot tell the
+    # difference — which is exactly the mistake that made a downstream warning call FAOSTAT 351
+    # "China" an unknown area code.
+    "faostat_unmapped_areas": {
+        "group_code_min": FAOSTAT_GROUP_CODE_MIN,
+        "deliberate_area_codes": sorted(FAOSTAT_AGGREGATE_CODES),
+        "why": (
+            "Area codes at or above group_code_min are FAOSTAT's own regional groups "
+            "(World, continents, income groups), never territories. The codes in "
+            "deliberate_area_codes are statistical aggregates reported ALONGSIDE their own "
+            "components, so routing them to a polity would double-count: 351 'China' is "
+            "mainland + Hong Kong + Macao + Taiwan. Neither kind is a gap in this database."
+        ),
+    },
     "faostat_area_map": area_map_info,
     "label_alias_map": alias_map_info,
     "live_polity_codes": sorted(r["polity_code"] for r in live),
