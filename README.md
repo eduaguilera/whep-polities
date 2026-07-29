@@ -44,30 +44,67 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Five checks guard the database. Each exists because that class of error was
+Fifteen checks guard the database. Each exists because that class of error was
 **found in the data**, not hypothesised, so they are worth keeping green:
 
 ```bash
-python3 scripts/build_database.py --check    # the committed CSV still matches the wiki
-python3 scripts/validate_citations.py        # every citation resolves to a real source + anchor
-python3 scripts/validate_polygons.py         # area agreement · claimed-but-absent · reviewed-means-documented
-python3 scripts/audit_family_shadowing.py    # no polity can shadow a sibling in the matcher
+# the published contract still matches the wiki
+python3 scripts/build_database.py --check
+python3 scripts/write_manifest.py --check
+python3 scripts/write_faostat_area_map.py --check
+python3 scripts/write_label_alias_map.py --check
+python3 scripts/update_wiki_index.py --check
+
+# provenance and internal consistency
+python3 scripts/validate_citations.py
+python3 scripts/validate_constants.py
+python3 scripts/validate_aliases.py
+python3 scripts/crosscheck_matchers.py
+python3 scripts/audit_family_shadowing.py
+
+# identity and periodisation
+python3 scripts/validate_iso_codes.py
+python3 scripts/validate_iso_collisions.py
+python3 scripts/validate_period_overlaps.py
+python3 scripts/validate_reporting_areas.py
+
+# geometry
+python3 scripts/validate_polygons.py
+python3 scripts/validate_spatial_containment.py
+python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so local only
 ```
 
 | check | what it caught when first run |
 |---|---|
-| `--check` | *(new; prevents)* a wiki edit never propagated to the CSV |
+| `build_database.py --check` | a wiki edit never propagated to the CSV; later, `"NA"` text stored as a literal string |
+| `write_manifest.py --check` | a stale alias-map fingerprint after aliases changed |
 | citations | 17 citations pointing at source files that were never ingested |
+| constants | `DEAD_STATUS` is defined **five** times, and `CLAIMS_POLYGON` excluded four statuses that 11 rows with geometry were using |
+| aliases | five aliases silently **inert** — two had the target sitting in the `confidence` column |
+| crosscheck matchers | the two independent matchers disagreed on three FAOSTAT areas, including Serbia 2006-2008 existing **twice** |
+| shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
+| iso codes | `FRS-1977-2025` is modern Djibouti and carried `iso3: FRS`; DJI is the real code, so nothing holding a country code could reach it. Also Sudan as `SUD`, colonial Angola as `ANG` |
+| iso collisions | *(guard)* 59 pairs already share a code over overlapping years **by design**, since `iso3` groups by modern territory. The gate is that the set must not grow |
+| period overlaps | four same-family pairs cover the same years, so a year-aware matcher must guess. `PER-1825-1909` duplicates two rows that already tile its span exactly |
+| reporting areas | six GADM territories claimed by **two** aggregates each — Palau and the Northern Marianas sit in both Asia Other and Oceania Other. Hidden because the RoW union deduplicates |
 | polygons A | 8 polities carrying **another country's** polygon — San Marino had Albania's (470× too large), Indonesia had India's |
 | polygons C | 28 polities declaring a polygon the build never attached |
 | polygons D | 13 pages claiming `status: reviewed` with zero source citations |
-| shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
+| spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
+| succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
 
-`.github/workflows/validate.yml` runs all of them on push to `main` and on PRs.
-They need only what the repo commits, so they work without `data/geodata`.
-`scripts/validate_polygons.py` has a baseline file
-(`scripts/validate_polygons_baseline.txt`) so it fails on *new* occurrences while
-a known backlog is tracked in the issues.
+`.github/workflows/validate.yml` runs all of them on push to `main` and on PRs,
+except `validate_succession_geography.py`, which needs the built GeoPackage.
+The rest need only what the repo commits, so they work without `data/geodata`.
+
+Several carry a baseline so they fail on *new* occurrences while a known backlog
+stays tracked in the issues — `validate_polygons.py` has
+`scripts/validate_polygons_baseline.txt`, and the matcher, period-overlap,
+ISO-collision, reporting-area and succession checks each hold theirs inline.
+**Every baseline is bidirectional**: a new case fails, and so does a baselined
+case that has been fixed but not yet removed from the list. That second arm is
+not decoration — it is what reported that correcting three `iso3` fields had made
+two previously unresolvable FAOSTAT areas resolvable.
 
 ### Consuming this database
 
