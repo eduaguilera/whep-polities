@@ -183,7 +183,17 @@ if os.path.exists(CSHAPES):
     cs = gpd.read_file(CSHAPES)
     name_by_gw = {int(c): grp.cntry_name.iloc[0] for c, grp in cs.groupby("gwcode")}
     pol = pd.read_csv(CSV)
-    sub = pol[pol.polygon_source.astype(str).str.contains("cshapes", na=False)]
+    # EXACTLY cshapes-2.0, not any source containing "cshapes". The looser filter also
+    # caught the 21 rows bound to `cshapes-europe`, then looked their ids up in the
+    # cshapes-2.0 shapefile — a different file with a different schema (`Id`, `Holder`,
+    # `Name`, no `gwcode`). That produced three false "id absent from CShapes" reports
+    # for AND-1800-2025, LIE-1800-2025 and MCO-1800-2025, whose ids are perfectly valid
+    # in the file they are actually bound to, and made the name comparison meaningless
+    # for all 21. The 514 genuinely cshapes-2.0-bound rows have no absent ids at all.
+    #
+    # cshapes-europe bindings are therefore NOT identity-checked. Doing so needs a
+    # second lookup against that file's own id column, which is a separate change.
+    sub = pol[pol.polygon_source.astype(str).str.strip() == "cshapes-2.0"]
     def toks(s): return set(re.findall(r"[a-z]{4,}", str(s).lower()))
     for _, r in sub.iterrows():
         fid = str(r.polygon_feature_id).strip().replace(".0", "")
