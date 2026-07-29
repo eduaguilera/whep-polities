@@ -13,7 +13,7 @@ AND-1800-2025,Andorra,1800,2025,national,AND,,Europe,reviewed,2026-04-12,cshapes
 ANG-1800-1890,Angola (to 1890),1800,1890,national,ANG,,Africa,draft,2026-04-15,cshapes-2.0,540,1886,assigned,,,ANG-1890-1891
 ANG-1890-1891,Angola (1890-1891),1890,1891,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1886,assigned,,,ANG-1891-1905
 ANG-1891-1905,Angola (1891-1905),1891,1905,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1890,assigned,,ANG-1890-1891,AGO-1816-2025
-ANG-1905-1975,Angola (1905-1975),1905,1975,national,ANG,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,
+ANG-1905-1975,Angola (1905-1975),1905,1975,national,AGO,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,
 ANT-1816-1960,Dutch Caribbean (colonial),1816,1960,colonial,ANT,,North America,draft,2026-06-26,reporting-areas,ANT-1961-2010,,proxy,960,,ANT-1961-2010
 ANT-1961-2010,Netherlands Antilles,1961,2010,aggregate,ANT,,North America,draft,2026-06-11,reporting-areas,ANT-1961-2010,,assigned,,,
 AOF-1895-1960,French West Africa (AOF),1895,1960,national,AOF,430,Africa,draft,2026-06-23,constructed,AOF-1895-1960,1938,assigned,4774865,,SEN-1960-2025; GIN-1958-2025; CIV-1960-2025; BEN-1960-2025; NER-1960-2025; BFA-1960-2025; MLI-1960-2025; MRT-1960-1975
@@ -265,7 +265,7 @@ FRA-1919-2025,France,1919,2025,national,FRA,220,Europe,draft,2026-04-12,cshapes-
 FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,colonial,FRA,220,Asia,draft,2026-06-25,gadm-4.1+osm,composed-union-puducherry-karikal-mahe-yanam-chandernagore,2024,estimate,510,,IND-1949-2025
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,national,FRN,,Africa,draft,2026-04-13,cshapes-2.0,550,1953,assigned,,ZWE-1900-1953,ZWE-1964-1980; ZMB-1964-2025; MWI-1964-2025
 FRO-1800-2025,Faroe Islands,1800,2025,territory,FRO,,Europe,draft,2026-07-02,gadm-4.1-adm0,FRO,,assigned,1399,,
-FRS-1884-1977,French Somaliland,1884,1977,national,FRS,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,,FRS-1977-2025
+FRS-1884-1977,French Somaliland,1884,1977,national,DJI,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,,FRS-1977-2025
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,DJI,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,FRS-1884-1977,
 FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,,
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,national,,,Africa,draft,2026-04-13,paine-2024,Futa Jalon,,assigned,,,GIN-1958-2025; GIN-1894-1958
@@ -642,7 +642,7 @@ SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,csh
 STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
 SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,,Africa,draft,2026-04-16,cshapes-2.0,625,1914,assigned,,SUD-1899-1934,SUD-1956-2011
-SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SUD,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
+SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SDN,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
 SUR-1886-1954,Dutch Guiana,1886,1954,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1886,assigned,144985,,SUR-1954-1975
 SUR-1954-1975,Surinam (Autonomous),1954,1975,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1954,assigned,144985,SUR-1886-1954,SUR-1975-2025
 SUR-1975-2025,Suriname,1975,2025,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1975,assigned,144985,SUR-1954-1975,

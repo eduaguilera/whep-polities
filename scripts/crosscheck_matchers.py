@@ -49,29 +49,23 @@ PUBLISHED = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
 BASELINE_DIFFERENT = {131, 237, 272}
 
 # Labels matchlib cannot resolve without the faostat alias, so an explicit route is
-# REQUIRED. Not defects in either matcher, but the reason differs by area and it is
-# worth stating exactly, because the obvious explanation is wrong for two of the three.
+# REQUIRED. One area, and it is genuinely nominal: the Yugoslav SFR chain sits under
+# F248-*, a combined-reporting prefix, and the label "Yugoslav SFR" with iso3 YUG leads
+# nowhere at all — status `unresolved`, not `year_uncovered`.
 #
-#   7   Angola        TEMPORAL, not nominal. Area 7 has TWO published mappings, and the
-#   72  Djibouti      modern one resolves cleanly by ISO (AGO-1975-2025, FRS-1977-2025).
-#                     What fails is the COLONIAL row: the ISO code attaches to the
-#                     modern period, whose span starts at independence, so a
-#                     pre-independence year returns `year_uncovered`. The label reaches
-#                     the right family; the family has no ISO-bearing row covering
-#                     those years.
-#   248 Yugoslav SFR  genuinely nominal: the chain is F248-*, a combined-reporting
-#                     prefix, and the label "Yugoslav SFR" with iso3 YUG leads nowhere
-#                     — status `unresolved`, not `year_uncovered`.
+# This set used to be {7, 72, 248}, and the two that left are worth recording because the
+# stated reason for all three was wrong. The comment claimed each was "a prefix the label
+# does not lead to". For Angola and Djibouti the obstacle was TEMPORAL: both areas have two
+# published mappings, the modern one resolved fine, and the COLONIAL row returned
+# `year_uncovered` because the ISO code attached only to the post-independence polity.
+# Correcting three `iso3` fields to name the TERRITORY rather than the era —
+# ANG-1905-1975 to AGO, FRS-1884-1977 and FRS-1977-2025 to DJI, SUD-1956-2011 to SDN —
+# made both colonial rows resolve, and this baseline's bidirectional arm is what reported
+# it. The prefixes were never the problem and are unchanged.
 #
-# Two earlier readings of this set were wrong and are recorded so they are not
-# re-derived. I first guessed it would be the four China components, assuming an
-# aggregate with no ISO3 would be the hard case; those resolve fine. I then wrote that
-# all three were "a prefix the label does not lead to", which is true only of 248 —
-# and Djibouti's entry compounded it by blaming the FRS prefix, when the actual
-# obstacle was that FRS-1977-2025 carried `iso3: FRS`. That is now corrected to DJI,
-# which upgraded the modern row's resolution from a name match to an ISO match without
-# changing this baseline, since the colonial row still cannot be covered.
-BASELINE_UNRESOLVED = {7, 72, 248}
+# I also first guessed this set would be the four China components, assuming an aggregate
+# with no ISO3 would be the hard case. Those resolve fine.
+BASELINE_UNRESOLVED = {248}
 
 
 def main() -> int:

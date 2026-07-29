@@ -42,8 +42,22 @@ POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 
 DEAD_STATUS = ("retired", "superseded")
 
-# Live polities with no ISO 3166-1 alpha-3 in existence. See the docstring.
-EXEMPT = {"ICN-1800-2025", "KOS-2008-2025"}
+# Polities with no ISO 3166-1 alpha-3 available, or where the value is defensible.
+#
+#   ICN-1800-2025  Canary Islands. Part of Spain; ISO 3166-2:ES-CN, no alpha-3 exists.
+#   KOS-2008-2025  Kosovo. No official assignment; XKX is user-assigned, not ISO.
+#   SCG-1992-2006  Serbia and Montenegro. SCG WAS a real ISO 3166-1 code, withdrawn in
+#                  2006, so it is absent from a current code list but was never wrong.
+#   SER-2006-2008  Serbia (2006-2008). SRB would be correct, but SRB-2006-2008 already
+#                  exists — this row is the duplicate tracked in issue 43, and giving it
+#                  the same ISO code as its twin would create an ambiguity worse than the
+#                  non-ISO value. Fix the duplicate first.
+EXEMPT = {
+    "ICN-1800-2025",
+    "KOS-2008-2025",
+    "SCG-1992-2006",
+    "SER-2006-2008",
+}
 
 # Aggregate reporting buckets are not countries and are keyed by WHEP-internal codes.
 AGGREGATE_PREFIXES = ("ROW", "RAFR", "RASI", "REUR", "RLAM", "RNAM", "ROCE", "BLX", "ANT")
@@ -75,8 +89,15 @@ def main() -> int:
         if (r.get("wiki_status") or "").strip() in DEAD_STATUS:
             continue
         code = r["polity_code"]
+        # Any polity whose span reaches into the ISO era, not only live ones. ISO 3166
+        # was first published in 1974; before that a territory could not have had a code,
+        # so a WHEP-internal key is the only option and flagging it would be noise.
+        #
+        # Live-only was the first scoping and it was too narrow: it passed while
+        # SUD-1956-2011 carried `iso3: SUD`, so a consumer holding SDN with a pre-2011
+        # year reached nothing. The consumer-side Mueller test caught that, not this.
         end = re.search(r"-(\d{4})$", code)
-        if not end or int(end.group(1)) < 2025:
+        if not end or int(end.group(1)) < 1974:
             continue
         iso = (r.get("iso3_code") or "").strip()
         if iso in ("", "NA"):
@@ -85,8 +106,8 @@ def main() -> int:
             continue
         live.append((code, r.get("polity_name", ""), iso))
 
-    print(f"live polities carrying an iso3 value: {len(live)}")
-    print(f"exempt (no ISO code exists): {len(EXEMPT)}")
+    print(f"polities reaching the ISO era and carrying an iso3 value: {len(live)}")
+    print(f"exempt (no ISO code available, or defensible): {len(EXEMPT)}")
 
     bad = [(c, n, i) for c, n, i in live if i not in valid]
     print(f"whose iso3 is NOT ISO 3166-1 alpha-3: {len(bad)}")
@@ -95,7 +116,7 @@ def main() -> int:
 
     if bad:
         print(
-            f"\nFAIL: {len(bad)} live polity(ies) advertise a non-ISO code in `iso3`, so "
+            f"\nFAIL: {len(bad)} polity(ies) advertise a non-ISO code in `iso3`, so "
             f"a consumer holding a real country code cannot reach them\n"
         )
         print(
@@ -105,7 +126,7 @@ def main() -> int:
         )
         return 1
 
-    print("\nPASS: every live polity's iso3 is a real ISO 3166-1 alpha-3 code")
+    print("\nPASS: every ISO-era polity's iso3 is a real ISO 3166-1 alpha-3 code")
     return 0
 
 
