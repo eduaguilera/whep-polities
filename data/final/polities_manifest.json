@@ -79,8 +79,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "555e05167d26f6f69b6e097d787b9e57f4a6c652db57a241de17eaecbd628376",
-  "aliases": 672,
+  "sha256": "fa4ca5f3459b13ca2993c7205feca2f62cd09d93693b4ee1792cd7cfb7f2ec01",
+  "aliases": 673,
   "labels": 462,
   "sources": [
    "fao1952",

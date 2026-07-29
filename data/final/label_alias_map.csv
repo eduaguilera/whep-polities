@@ -571,7 +571,8 @@ Swaziland,faostat,1961,2024,SWZ-1894-2025,Eswatini,high,180663
 Swaziland,lassaletta-grassland-share,1961,2009,SWZ-1894-2025,Eswatini,high,0
 Sweden,faostat,1961,2024,SWE-1905-2025,Sweden,high,245456
 Switzerland,faostat,1961,2024,CHE-1800-2025,Switzerland,high,242756
-Syria,,,,SYR-1946-1967,Syrian Arab Republic,high,162
+Syria,,1946,1967,SYR-1946-1967,Syrian Arab Republic,high,162
+Syria,,1967,2025,SYR-1967-2025,Syrian Arab Republic,high,0
 Syria and Lebanon,fao1952,1944,1953,SYL-1944-1953,Syria and Lebanon (combined statistical unit),high,0
 Syrian Arab Republic,faostat,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-1967),high,113504
 Syrian Arab Republic,faostat,1967,2024,SYR-1967-2025,Syrian Arab Republic,high,113504

@@ -29,7 +29,7 @@ French Oceania,fao1952,1937,1951,French Polynesia,PYF-1800-2025,high,historical 
 Cape of Good Hope,,,,Cape Colony,CAP-1800-1910,high,name-equivalence; extent approximation documented on wiki,195
 Belgian Congo,,,,Belgian Congo,COD-1910-1960,high,name-equivalence,180
 Belgian Congo (fao1952),,,,Belgian Congo,COD-1910-1960,high,name-equivalence,180
-Syria,,,,Syrian Arab Republic,SYR-1946-1967,high,name-equivalence,162
+Syria,,1946,1967,Syrian Arab Republic,SYR-1946-1967,high,"Year-ranged to match its target. It previously had NO year range and no source, so every year resolved to SYR-1946-1967 — a polity that ended in 1967 — which is wrong for any modern use of the label. ""Syria"" is a current country name, unlike the other unranged aliases to ended polities (Belgian Congo, French West Africa, Cape of Good Hope), which no present-day source uses. The canonical FAOSTAT label ""Syrian Arab Republic"" was already split at 1967; this mirrors that split.",162
 rwanda and burundi,,,,Ruanda-Urundi,RWB-1922-1962,high,name-equivalence,155
 French West Africa,,,,French West Africa (AOF),AOF-1895-1960,high,federation-level reporting unit,150
 French W Africa,,,,French West Africa (AOF),AOF-1895-1960,high,federation-level reporting unit,12
@@ -671,3 +671,4 @@ South Korea,faostat,1948,2025,Republic of Korea,KOR-1948-2025,high,"short-form l
 Tanzania,faostat,1964,2025,United Republic of Tanzania,TZA-1964-2025,high,"short-form label used by WHEP harmonization tables; resolves to the same polity as the canonical FAOSTAT label 'United Republic of Tanzania', which already routes to TZA-1964-2025. Added because the label appears in regions_full/polities_cats and resolve_polity_label() returned NA for it.",0
 United Kingdom,faostat,1921,2025,United Kingdom of Great Britain and Northern Ireland,GBR-1921-2025,high,"short-form label used by WHEP harmonization tables; resolves to the same polity as the canonical FAOSTAT label 'United Kingdom of Great Britain and Northern Ireland', which already routes to GBR-1921-2025. Added because the label appears in regions_full/polities_cats and resolve_polity_label() returned NA for it.",0
 Eswatini,faostat,1894,2025,Eswatini,SWZ-1894-2025,high,"FAOSTAT renamed Swaziland to Eswatini in 2018; the label had no alias at all, so resolve_polity_label() returned NA for a country that carries its own commodity-balance data. Target SWZ-1894-2025 spans the whole chain.",0
+Syria,,1967,2025,Syrian Arab Republic,SYR-1967-2025,high,"Second half of the ""Syria"" split. Without it, a post-1967 source using the short label would resolve to nothing at all once the first alias was correctly bounded — trading a wrong answer for no answer. Mirrors the canonical ""Syrian Arab Republic"" 1967-2024 alias.",0

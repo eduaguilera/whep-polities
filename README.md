@@ -44,7 +44,7 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Seventeen checks guard the database. Each exists because that class of error was
+Eighteen checks guard the database. Each exists because that class of error was
 **found in the data**, not hypothesised, so they are worth keeping green:
 
 ```bash
@@ -59,6 +59,7 @@ python3 scripts/update_wiki_index.py --check
 python3 scripts/validate_citations.py
 python3 scripts/validate_constants.py
 python3 scripts/validate_aliases.py
+python3 scripts/validate_unranged_aliases.py
 python3 scripts/crosscheck_matchers.py
 python3 scripts/audit_family_shadowing.py
 
@@ -81,6 +82,7 @@ python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so l
 | citations | 17 citations pointing at source files that were never ingested |
 | constants | `DEAD_STATUS` is defined **five** times, and `CLAIMS_POLYGON` excluded four statuses that 11 rows with geometry were using |
 | aliases | five aliases silently **inert** — two had the target sitting in the `confidence` column |
+| unranged aliases | the `"Syria"` alias had no year range and pointed at `SYR-1946-1967`, so every year — including 2020 — resolved to a polity that ended in 1967, across 162 observed rows. Unlike an inert alias it worked; it just worked wrongly |
 | crosscheck matchers | the two independent matchers disagreed on three FAOSTAT areas, including Serbia 2006-2008 existing **twice** |
 | shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
 | iso codes | `FRS-1977-2025` is modern Djibouti and carried `iso3: FRS`; DJI is the real code, so nothing holding a country code could reach it. Also Sudan as `SUD`, colonial Angola as `ANG` |

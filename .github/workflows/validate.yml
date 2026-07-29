@@ -46,6 +46,15 @@ name: Validate database
 #                            it is not in this workflow — run it locally after
 #                            build_database.py.
 #
+#   validate_unranged_aliases
+#                            the "Syria" alias had no source and no year range and pointed at
+#                            SYR-1946-1967, so EVERY year — including 2020 — resolved to a
+#                            polity that ended in 1967, across 162 observed rows. Unlike an
+#                            inert alias this one worked; it just worked wrongly. Split at 1967
+#                            to mirror the canonical label. Twelve other unranged aliases to
+#                            ended polities are fine and baselined, because their labels
+#                            (Belgian Congo, French West Africa) are ones no modern source uses.
+#
 #   validate_iso_collisions  59 pairs of polities already share an iso3 over overlapping
 #                            years, which is BY DESIGN (iso3 groups by modern territory:
 #                            British North Borneo, Sarawak and British Malaya all carry
@@ -201,6 +210,10 @@ jobs:
       - name: No new pair shares an ISO code over the same years
         if: '!cancelled()'
         run: python3 scripts/validate_iso_collisions.py
+
+      - name: No unranged alias points at an ended polity
+        if: '!cancelled()'
+        run: python3 scripts/validate_unranged_aliases.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
