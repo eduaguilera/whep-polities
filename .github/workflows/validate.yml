@@ -42,9 +42,10 @@ name: Validate database
 #                            NWR-1900-1905 (Northwestern Rhodesia) listed its successor as
 #                            NNI-1904-1913 — Northern NIGERIA, 4,000 km away. A link can
 #                            name a real, live polity and still be wrong; comparing the two
-#                            polygons is what catches that. Needs the built GeoPackage, so
-#                            it is not in this workflow — run it locally after
-#                            build_database.py.
+#                            polygons is what catches that. It reads the COMMITTED GeoPackage,
+#                            so it runs here like everything else — I had excluded it on the
+#                            assumption that it needed the raw geodata sources, which it does
+#                            not.
 #
 #   validate_unranged_aliases
 #                            the "Syria" alias had no source and no year range and pointed at
@@ -218,6 +219,10 @@ jobs:
       - name: No unranged alias points at an ended polity
         if: '!cancelled()'
         run: python3 scripts/validate_unranged_aliases.py
+
+      - name: Succession links join territories that touch
+        if: '!cancelled()'
+        run: python3 scripts/validate_succession_geography.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'

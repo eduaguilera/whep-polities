@@ -95,9 +95,9 @@ python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so l
 | spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
 
-`.github/workflows/validate.yml` runs all of them on push to `main` and on PRs,
-except `validate_succession_geography.py`, which needs the built GeoPackage.
-The rest need only what the repo commits, so they work without `data/geodata`.
+`.github/workflows/validate.yml` runs **all eighteen** on push to `main` and on PRs.
+Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
+manifest and the wiki — so none requires the raw sources under `data/geodata`.
 
 Several carry a baseline so they fail on *new* occurrences while a known backlog
 stays tracked in the issues — `validate_polygons.py` has

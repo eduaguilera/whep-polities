@@ -51,8 +51,11 @@ two. That is a polygon-binding question rather than a succession one.
 Baselined bidirectionally: a NEW non-intersecting link fails, and a baselined one that comes
 to intersect fails until it leaves the list.
 
-Requires the built GeoPackage and skips loudly if geopandas is unavailable, rather than
-passing quietly — a check that silently does nothing is how this repo has been bitten before.
+Reads the COMMITTED data/final/polities_database.gpkg, so this runs in CI alongside every other
+gate. It was initially left out of the workflow on the assumption that it needed the raw geodata
+sources under data/geodata — it does not, and the GeoPackage is tracked. Exits non-zero rather
+than passing quietly if geopandas is unavailable: a check that silently does nothing is how this
+repo has been bitten before.
 
 Usage:
   python3 scripts/validate_succession_geography.py
