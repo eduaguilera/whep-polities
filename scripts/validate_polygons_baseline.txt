@@ -20,13 +20,14 @@
 #              (was 11; BTL-1920-1957 and TTPI-1947-1994 now have builders).
 #   [no-id]    there is no feature id at all (`None` / `NA`). A source and an id must
 #              be identified first, or the row downgraded to `unassigned` with the
-#              reason recorded. 6 rows.
+#              reason recorded. 4 rows (was 6; NRH-1911-1953 and GRC-1830-1881
+#              turned out to have faithful polygons that simply were not bound).
 #   [extract]  the id IS a single valid identifier and the slug is now correct, but
 #              the GADM copy in data/geodata/ is a curated subset (82 adm0 and 620
 #              adm1 features, small territories only) that does not contain the
 #              country. Needs a fuller GADM download, nothing else. 3 rows.
 #
-# 18 rows remain, from 20.
+# 16 rows remain, from 20.
 AEF-1910-1960   # [compose] assigned: cshapes-idx-366+370+375+382
 ALK-1867-1959   # [extract] assigned: USA.2_1
 CAN-1800-1866   # [compose] proxy: gadm-ON+QC+NB+NS+PE
@@ -34,11 +35,9 @@ CAN-1866-1870   # [no-id] estimate: NA
 FRIN-1816-1954   # [compose] estimate: composed-union-puducherry-karikal-mahe-yanam-chandernagore
 GBM-1895-1946   # [compose] assigned: cowcodes 827+821+822 (1909-1946 versions)
 GCT-1919-1956   # [compose] assigned: composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION
-GRC-1830-1881   # [no-id] assigned: None
 IDN-BLB-1949-1951   # [compose] proxy: IDN.1_1+IDN.20_1
 IDN-JVM-1949-1951   # [compose] proxy: IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1
 IDN-OTH-1949-1951   # [compose] proxy: IDN-complement-JVM-BLB
-NRH-1911-1953   # [no-id] assigned: None
 PTIND-1816-1961   # [no-id] estimate: None
 RYU-1937-1945   # [extract] proxy: JPN.38_1
 RYU-1945-1972   # [extract] proxy: JPN.38_1
