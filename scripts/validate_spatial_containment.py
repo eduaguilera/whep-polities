@@ -104,8 +104,28 @@ TRACKED_DEFECTS = frozenset()
 KNOWN_DISCONTINUOUS = frozenset()
 
 ap = argparse.ArgumentParser()
+# KNOWN LIMITATION, measured 2026-07-29. The default of 3 was chosen to keep the
+# baseline reviewable — at >=1 there are 95 containers, at >=2 there are 58, at >=3
+# there are 33 — but it means a polygon that swallows exactly ONE coexisting polity is
+# never reported, and that is arguably the commonest real error: a polygon one neighbour
+# too large.
+#
+# A confirmed instance: ITS-1908-1960 (Italian Somaliland) uses CShapes 520, all of
+# Somalia at 635,888 km2, and geometrically contains BSS-1884-1960 (British Somaliland,
+# 171,633 km2) at 100%. This check does not see it. It is fixed independently in
+# lbm364dl/whep-polities#35, which rebinds the row to 520 MINUS 521 = 464,743 km2.
+#
+# Lowering the default to 1 would require judging all 37 single-swallow cases, and most
+# ARE legitimate history — GBR-1800-1921 contains IRL-1800-1921, ESP-1800-2025 contains
+# ICN-1800-2025, IND-1947-1949 contains HYD-1724-1948, SRB-2008-2025 contains
+# KOS-2008-2025, and SLE-1886-1889 contains GMB-1800-2025 because CShapes 451 for
+# 1886-1889 is the British West African Settlements, which included Gambia until 1888.
+# Enumerating those as legitimate without verifying each would be the guessing this
+# check exists to prevent, so the threshold is left at 3 and the gap recorded here
+# rather than papered over.
 ap.add_argument("--min-contained", type=int, default=3,
-                help="report a polity that contains at least this many others")
+                help="report a polity that contains at least this many others; see the "
+                     "KNOWN LIMITATION note above about single-swallow cases")
 ap.add_argument("--overlap", type=float, default=0.90,
                 help="fraction of the smaller polity that must lie inside")
 ap.add_argument("--continuity", type=float, default=0.50,
