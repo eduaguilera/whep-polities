@@ -138,9 +138,19 @@ baseline = set()
 if os.path.exists(BASELINE):
     baseline = {l.split("#")[0].strip() for l in open(BASELINE) if l.split("#")[0].strip()}
 new_claim_no_geom = claim_no_geom[~claim_no_geom.polity_code.isin(baseline)]
+# Bidirectional, like every other baseline in this repo. Without the second
+# direction a baselined row that has since been FIXED keeps its licence forever, so
+# the gate would stay silent if the same code regressed later — and the list quietly
+# grows into a record of history rather than of open work. It is accurate today (0
+# stale), which is the moment to make it stay that way.
+stale_baseline = sorted(baseline - set(claim_no_geom.polity_code))
 print(f"\nC. CLAIMED BUT ABSENT — {len(missing)} polities have no geometry; "
       f"{len(claim_no_geom)} declare a polygon_status that asserts one "
-      f"({len(baseline)} baselined, {len(new_claim_no_geom)} new)")
+      f"({len(baseline)} baselined, {len(new_claim_no_geom)} new, "
+      f"{len(stale_baseline)} stale)")
+for code in stale_baseline:
+    print(f"   STALE {code:18s} baselined but no longer claims a polygon it lacks — "
+          f"remove it from scripts/validate_polygons_baseline.txt")
 for r in new_claim_no_geom.itertuples():
     fid = str(r.polygon_feature_id)
     print(f"   FAIL {r.polity_code:18s} status='{r.st}' but no geometry attached  "
@@ -192,7 +202,7 @@ else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
 fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
-        or len(undoc) > 0 or (A.strict and mismatch))
+        or len(stale_baseline) > 0 or len(undoc) > 0 or (A.strict and mismatch))
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s), "
       f"{len(declared_none)} declares-none-but-has-one, "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
