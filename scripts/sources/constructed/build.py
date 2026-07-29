@@ -304,7 +304,42 @@ def build_ttpi_1947_1994() -> ogr.Geometry:
     )
 
 
+def build_aef_1910_1960() -> ogr.Geometry:
+    """French Equatorial Africa (AEF) 1910-1960 = union of its four constituent
+    colonies: Gabon (481), Ubangi-Shari / CAR (482), Chad (483), Middle Congo (484).
+
+    1950 is used as the sampling year because it sits inside every one of the four
+    CShapes steps — Chad's colonial status was only confirmed in 1920, so its step
+    starts later than the others' 1919 — and none of the four changes borders again
+    before independence in 1960.
+
+    The composition is not inferred: this polity's page names all four territories
+    WITH their gwcodes and per-territory areas, and those areas sum to the 2,495,219
+    km2 the page records. The union measures 2,495,221, which is that sum to within
+    rounding.
+    """
+    return _union(
+        _cshapes2_feature(481, 1950),
+        _cshapes2_feature(482, 1950),
+        _cshapes2_feature(483, 1950),
+        _cshapes2_feature(484, 1950),
+    )
+
+
 BUILDERS = [
+    (
+        "AEF-1910-1960",
+        "French Equatorial Africa (AEF)",
+        build_aef_1910_1960,
+        "Union of CShapes 2.0 gwcodes 481 Gabon (260,681 km2), 482 Ubangi-Shari "
+        "(618,630), 483 Chad (1,271,888) and 484 Middle Congo (344,022) at 1950 = "
+        "2,495,221 km2, matching the 2,495,219 the page records as the sum of its "
+        "own constituent-territory table. The previous feature id, "
+        "'cshapes-idx-366+370+375+382', gave shapefile ROW INDICES rather than "
+        "gwcodes, which nothing could resolve; the page's table supplies both, and "
+        "the gwcodes are what the builder uses.",
+    ),
+
     (
         "BTL-1920-1957",
         "British Togoland (1920-1957)",

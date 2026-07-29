@@ -58,9 +58,15 @@ LEGITIMATE_CONTAINERS = frozenset({
     "AUH-1800-1859", "AUH-1859-1866", "AUH-1866-1908", "AUH-1908-1918",
     "OTT-1800-1886", "JPN-1895-1945",
     # Colonial federations and their groupings
-    "AOF-1895-1960", "CODRU-1922-1960", "FRN-1953-1964", "MASG-1946-1963",
+    "AOF-1895-1960", "AEF-1910-1960", "CODRU-1922-1960", "FRN-1953-1964",
+    "MASG-1946-1963",
     "MLI-1890-1960", "SEN-1854-1886", "SEN-1886-1959", "KEN-1891-1894",
     "NGA-1886-1914", "ZWE-1891-1900",
+    # AEF-1910-1960 added when its polygon was first built: French Equatorial Africa
+    # is the union of Gabon, Ubangi-Shari, Chad and Middle Congo, so it necessarily
+    # contains the 13 period-polities of those four families. Flagged as a NEW
+    # container the moment the builder landed, which is the third time this check has
+    # made a newly built polygon justify itself.
     # A federation over its pre-1901 colonies
     "AUS-1800-1901",
     # A UN trust territory over the four territories that became its successors.
