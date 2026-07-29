@@ -117,7 +117,7 @@ source files on disk.
   | `assigned` | the polygon **is** this polity's territory for the period | check A **fails** if the geometry's measured area diverges >25% from `polygon_area_km2` |
   | `proxy` | a stand-in from another period or entity, knowingly inexact | divergence reported, not failed — but the page must document direction and magnitude |
   | `estimate` | approximate, no exact feature exists | same as `proxy` |
-  | `polygon_vintage_drift` | the polygon's vintage year sits outside the row's span (e.g. a back-projection) | same as `proxy` |
+  | `polygon_vintage_drift` | the polygon's vintage is unrepresentative of much of the row's span — typically a single snapshot back-projected across a long period. The vintage is usually INSIDE the span, not outside it: every row carrying this value today has a vintage within its own dates (`BRA-1800-1903` uses an 1890 polygon, `IND-1800-1886` an 1880 one). An earlier wording said "sits outside the row's span", which is not how the value is used and led to two rows being mislabelled `proxy`. | same as `proxy` |
   | `unassigned` | **no polygon**, with the reason documented | check C ignores it; this is the honest state when no source exists |
 
   Check C **fails** when any of `assigned`/`proxy`/`estimate`/`polygon_vintage_drift`
