@@ -26,11 +26,27 @@ rather than only contiguous partition:
   NNG with IDN                Netherlands New Guinea joined Indonesia in 1963, after the
                               span of the IDN row it points at
 
-  IJB with SNI                the one that is NOT obviously fine. The Ijebu Kingdom was in
+  IJB with SNI                looked wrong and is not. The Ijebu Kingdom was in
                               south-western Nigeria and Southern Nigeria surrounded it, so
-                              these two SHOULD intersect. Baselined rather than fixed
-                              because the fault is more likely one of the polygons than the
-                              link, and diagnosing which needs a polygon decision.
+                              these two ought to intersect — but IJB's polygon comes from
+                              `paine-2024`, a precolonial polity atlas, and SNI's from
+                              `cshapes-2.0`, a colonial-state dataset. The two footprints
+                              simply do not align. Both polygons are individually correct:
+                              IJB is 6,041 km2 centred at (4.08E, 6.89N), which is Ijebu,
+                              and SNI is 130,457 km2 centred at (7.21E, 5.97N), which is
+                              southern Nigeria.
+
+SIX of the nine pairs are cross-source like that, so the report prints each link's polygon
+SOURCES alongside it: a disjointness between two different datasets is weak evidence, while
+one within a SINGLE dataset means that dataset itself says the territories do not touch.
+Only three pairs are same-source (HAWI/USA, NNG/IDN, SMO/SWA, all cshapes-2.0), and all
+three reflect real geography — Hawaii against the continental USA, West Papua outside
+Indonesia's 1949 extent, Spanish Morocco against Spanish West Africa.
+
+Worth noting separately, found while triaging this and not a link problem: SNI-1899-1906 and
+SNI-1906-1913 bind to the SAME CShapes feature 4783, so they have identical geometry. 1906 is
+when Lagos Colony merged into Southern Nigeria, so the later row should be the larger of the
+two. That is a polygon-binding question rather than a succession one.
 
 Baselined bidirectionally: a NEW non-intersecting link fails, and a baselined one that comes
 to intersect fails until it leaves the list.
@@ -88,6 +104,7 @@ def main() -> int:
 
     rows = list(csv.DictReader(open(POLITIES_CSV, encoding="utf-8")))
     known = {r["polity_code"] for r in rows}
+    source = {r["polity_code"]: (r.get("polygon_source") or "?") for r in rows}
 
     frame = gpd.read_file(POLITIES_GPKG)
     frame = frame[~frame.geometry.isna() & ~frame.geometry.is_empty]
@@ -109,8 +126,15 @@ def main() -> int:
 
     print(f"succession links with geometry on both sides: {checked}")
     print(f"whose polygons do not intersect: {len(observed)}")
+    # Print the polygon SOURCES too: a disjointness across two datasets is weak
+    # evidence about history, one within a single dataset is much stronger.
     for src, field, target in sorted(observed):
-        print(f"   {src:<18} {field:<12} -> {target}")
+        sa, sb = source.get(src, "?"), source.get(target, "?")
+        kind = "same-source" if sa == sb else "cross-source"
+        print(
+            f"   {src:<18} {field:<12} -> {target:<18} "
+            f"[{sa} + {sb}] {kind}"
+        )
 
     problems = []
     for src, field, target in sorted(observed - BASELINE):
