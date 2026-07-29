@@ -44,7 +44,7 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Eighteen checks guard the database. Each exists because that class of error was
+Nineteen checks guard the database. Each exists because that class of error was
 **found in the data**, not hypothesised, so they are worth keeping green:
 
 ```bash
@@ -66,6 +66,7 @@ python3 scripts/audit_family_shadowing.py
 # identity and periodisation
 python3 scripts/validate_iso_codes.py
 python3 scripts/validate_iso_collisions.py
+python3 scripts/validate_cow_codes.py
 python3 scripts/validate_period_overlaps.py
 python3 scripts/validate_reporting_areas.py
 
@@ -86,6 +87,7 @@ python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so l
 | crosscheck matchers | the two independent matchers disagreed on three FAOSTAT areas, including Serbia 2006-2008 existing **twice** |
 | shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
 | iso codes | `FRS-1977-2025` is modern Djibouti and carried `iso3: FRS`; DJI is the real code, so nothing holding a country code could reach it. Also Sudan as `SUD`, colonial Angola as `ANG` |
+| cow codes | `ICN-1800-2025` (Canary Islands) carried COW code **20**, which is Canada. The Canaries are not a COW state — they are part of Spain, 230 — so the value was removed rather than corrected, which would have swapped one collision for another. Its `iso3` and polygon were both fine, so no other check could see it |
 | iso collisions | *(guard)* 59 pairs already share a code over overlapping years **by design**, since `iso3` groups by modern territory. The gate is that the set must not grow |
 | period overlaps | four same-family pairs cover the same years, so a year-aware matcher must guess. `PER-1825-1909` duplicates two rows that already tile its span exactly |
 | reporting areas | six GADM territories claimed by **two** aggregates each — Palau and the Northern Marianas sit in both Asia Other and Oceania Other. Hidden because the RoW union deduplicates |
@@ -95,7 +97,7 @@ python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so l
 | spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
 
-`.github/workflows/validate.yml` runs **all eighteen** on push to `main` and on PRs.
+`.github/workflows/validate.yml` runs **all nineteen** on push to `main` and on PRs.
 Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
 manifest and the wiki — so none requires the raw sources under `data/geodata`.
 

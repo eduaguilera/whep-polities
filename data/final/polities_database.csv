@@ -330,7 +330,7 @@ HUN-1944-1947,Hungary (1944-1947),1944,1947,national,HUN,310,Europe,draft,2026-0
 HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,2026-04-12,cshapes-2.0,310,1947,assigned,,HUN-1944-1947,
 HYD-1724-1948,Hyderabad State,1724,1948,subnational,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
 IBD-1829-1893,Ibadan City-State,1829,1893,national,,,Africa,draft,2026-04-15,paine-2024,Ibadan,,assigned,,,SNI-1899-1906
-ICN-1800-2025,Canary Islands,1800,2025,national,ICN,20,Africa,draft,2026-04-13,gadm-4.1-adm1,ESP.14_1,,assigned,,,
+ICN-1800-2025,Canary Islands,1800,2025,national,ICN,,Africa,draft,2026-04-13,gadm-4.1-adm1,ESP.14_1,,assigned,,,
 IDN-1800-1889,Indonesia (to 1889),1800,1889,national,IDN,750,Asia,superseded,2026-04-12,cshapes-2.0,850,1886,unassigned,1877243,,IDN-1889-1945
 IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,colonial,IDN,850,Asia,draft,2026-07-24,cshapes-2.0,850,1900,polygon_vintage_drift,1877243,,IDN-1945-1949
 IDN-1889-1945,Indonesia (1889-1945),1889,1945,national,IDN,750,Asia,superseded,2026-04-13,cshapes-2.0,850,1900,unassigned,1877243,IDN-1800-1889,IDN-1945-1949

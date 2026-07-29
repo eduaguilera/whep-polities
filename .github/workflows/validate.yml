@@ -38,6 +38,14 @@ name: Validate database
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
 #                            two aliases routing Viet Nam differently
+#   validate_cow_codes       ICN-1800-2025 (Canary Islands) carried cow_code 20, which is CANADA.
+#                            The Canaries are not a Correlates of War state at all — they are part
+#                            of Spain, COW 230 — so the value was removed rather than corrected to
+#                            230, which would have created a collision with esp-1800-2025 instead
+#                            of fixing one. Neither an ISO check nor a polygon check could see it:
+#                            both were fine. Found by asking which cow_codes are shared by
+#                            polities whose spans overlap, which is now this gate.
+#
 #   validate_succession_geography
 #                            NWR-1900-1905 (Northwestern Rhodesia) listed its successor as
 #                            NNI-1904-1913 — Northern NIGERIA, 4,000 km away. A link can
@@ -223,6 +231,10 @@ jobs:
       - name: Succession links join territories that touch
         if: '!cancelled()'
         run: python3 scripts/validate_succession_geography.py
+
+      - name: No new pair shares a Correlates of War code
+        if: '!cancelled()'
+        run: python3 scripts/validate_cow_codes.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
