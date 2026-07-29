@@ -51,9 +51,13 @@ name: Validate database
 #                            SYR-1946-1967, so EVERY year — including 2020 — resolved to a
 #                            polity that ended in 1967, across 162 observed rows. Unlike an
 #                            inert alias this one worked; it just worked wrongly. Split at 1967
-#                            to mirror the canonical label. Twelve other unranged aliases to
-#                            ended polities are fine and baselined, because their labels
-#                            (Belgian Congo, French West Africa) are ones no modern source uses.
+#                            to mirror the canonical label. Seven other unranged aliases to ended
+#                            polities are fine and baselined, because their labels (Belgian
+#                            Congo, French West Africa) are ones no modern source uses, plus
+#                            "viet nam", which is unranged on purpose to catch year=NA rows.
+#                            The rule is about an alias's UPPER bound, not whether it has both:
+#                            "italy" ends at 1860 against a target ending 1860, which is
+#                            correct, and only looked wrong to a first version of the check.
 #
 #   validate_iso_collisions  59 pairs of polities already share an iso3 over overlapping
 #                            years, which is BY DESIGN (iso3 groups by modern territory:

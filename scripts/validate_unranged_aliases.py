@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check that an alias with no year range does not target a polity that has ended.
+"""Check that no alias can resolve a year AFTER its target polity ended.
 
 An alias with an empty `year_start`/`year_end` applies to EVERY year. If its target is a polity
 that ended, the alias silently resolves modern data to a historical entity — and unlike an inert
@@ -18,10 +18,19 @@ gate baselines rather than forbids. The distinction is whether the LABEL is stil
       historical names no present-day source writes. An unranged alias cannot mis-fire, because
       the label itself carries the era.
 
-  italy -> SAR-1800-1860, viet nam -> VNM-1887-1954
-      current names pointing at long-ended polities, which WOULD be the Syria defect — except
-      both are scoped to source `iia`, a historical source. Left alone, and flagged here so the
-      scoping is a deliberate reason rather than an accident nobody noticed.
+  viet nam -> VNM-1887-1954
+      a current name pointing at a long-ended polity, so it looks like the Syria defect. It is
+      not: its recorded basis is "sub-territory routing for IIA year=NA rows", and an alias with
+      no range is the only thing that can match a row whose year is missing. Deliberate, and
+      baselined with that as the reason.
+
+I first wrote that both this and "italy" were safe because they are scoped to source `iia`, a
+historical source. That was not the actual reason for either, and checking rather than asserting
+it is what showed the check itself was too blunt: "italy" is not unranged at all. It has
+year_end 1860 against a target ending 1860 — bounded exactly where it matters — and only tripped
+the first version of this gate because that version demanded BOTH bounds be present. The rule is
+now about the UPPER bound alone, which is what determines whether an alias can fire after its
+target stopped existing.
 
 So the rule enforced is: no NEW unranged alias may target an ended polity, and a baselined one
 that gains a year range must leave the list.
@@ -47,7 +56,6 @@ BASELINE = frozenset({
     ("French West Africa", ""),
     ("NetherlandsWest Indies", "fao1952"),
     ("indochina", ""),
-    ("italy", "iia"),
     ("netherlandswest indies", "fao1952"),
     ("rwanda and burundi", ""),
     ("viet nam", "iia"),
@@ -65,13 +73,20 @@ def main() -> int:
     observed = set()
     unranged = 0
     for r in rows:
-        y0 = (r.get("year_start") or "").strip()
         y1 = (r.get("year_end") or "").strip()
-        if y0 and y1:
+        m = CODE_END.search(r["polity_code"])
+        if not m:
+            continue
+        target_end = int(m.group(1))
+        # What matters is the UPPER bound, not whether both are present. A half-open alias
+        # with an empty start and an end at the target's own end is bounded exactly where it
+        # needs to be — "italy" ends at 1860 against SAR-1800-1860, which is correct and was
+        # a false positive in the first version of this check. The risk is an alias that can
+        # still fire AFTER its target stopped existing.
+        if y1.isdigit() and int(y1) <= target_end:
             continue
         unranged += 1
-        m = CODE_END.search(r["polity_code"])
-        if not m or int(m.group(1)) >= 2025:
+        if target_end >= 2025:
             continue
         observed.add(((r.get("source_label") or "").strip(), (r.get("source") or "").strip()))
 
