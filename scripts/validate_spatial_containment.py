@@ -68,22 +68,23 @@ LEGITIMATE_CONTAINERS = frozenset({
 # Containers that are DEFECTS, tracked so the gate stays useful while they are
 # open. Bidirectional: one that stops containing must be removed from this set, so
 # the list shrinks as the polygons are fixed.
-TRACKED_DEFECTS = frozenset({
-    "RUS-1991-2014",  # issue 45: carries the USSR polygon (CShapes feature 365)
-})
+# Empty: issue 45 is FIXED. RUS-1991-2014 carried the USSR polygon because
+# `polygon_feature_year: 1991` matched six CShapes time-steps and the winner was
+# decided by shapefile order; 1992 selects the durable 1991-2014 step and the row now
+# measures 16,882,058 km2 instead of 21,824,142. Kept as an empty frozenset rather
+# than deleted so a regression names the container.
+TRACKED_DEFECTS = frozenset()
 
 # Family pairs whose consecutive polygons do not overlap. Tracked, not accepted.
 # frozenset(...) rather than a bare {...}: when the last entry is removed — which
 # is the goal, once issue 46 is fixed — a bare literal becomes an empty DICT, and
 # `dict - set` raises TypeError. The gate would crash precisely when the data became
 # correct. Found by actually emptying it rather than assuming.
-KNOWN_DISCONTINUOUS = frozenset({
-    # issue 46: IRN-1800-1828's polygon_feature_id is literally "United States of
-    # America". Not fixable without the Cliopatria source fetched — downgrading it
-    # here would leave the wrong geometry in the committed GeoPackage while the CSV
-    # said `unassigned`.
-    "IRN-1800-1828 / IRN-1828-2025",
-})
+# Empty: issue 46 is FIXED. IRN-1800-1828 was bound to Cliopatria's "United States
+# of America" and is now bound to "Qajar Dynasty" at 1800, so the two Iran periods
+# overlap as they should. Kept as an empty frozenset rather than deleted so a
+# regression names the pair.
+KNOWN_DISCONTINUOUS = frozenset()
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--min-contained", type=int, default=3,

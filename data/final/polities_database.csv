@@ -354,7 +354,7 @@ IND-1947-1949,India (1947-1949),1947,1949,national,IND,750,Asia,draft,2026-04-12
 IND-1949-2025,India,1949,2025,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1949,assigned,,IND-1947-1949,
 IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,draft,2026-04-16,constructed,IRL-1800-1921,2024,assigned,84433,,IRL-1921-2025
 IRL-1921-2025,Ireland,1921,2025,national,IRL,205,Europe,draft,2026-04-13,cshapes-2.0,205,1921,assigned,,GBR-1800-1921,
-IRN-1800-1828,Persia (Qajar to 1828),1800,1828,national,IRN,630,Asia,draft,2026-04-12,cliopatria,United States of America,1815,assigned,,,IRN-1828-2025
+IRN-1800-1828,Persia (Qajar to 1828),1800,1828,national,IRN,630,Asia,draft,2026-04-12,cliopatria,Qajar Dynasty,1800,assigned,,,IRN-1828-2025
 IRN-1828-2025,Iran,1828,2025,national,IRN,630,Asia,draft,2026-04-12,cshapes-2.0,630,1886,assigned,,IRN-1800-1828,
 IRQ-1921-1932,Iraq (British Mandate for Mesopotamia),1921,1932,national,IRQ,645,Asia,draft,2026-04-12,cshapes-2.0,645,1932,assigned,,,IRQ-1932-2025
 IRQ-1921-2025,Iraq,1921,2025,national,IRQ,645,Asia,superseded,2026-04-12,cshapes-2.0,645,1932,assigned,,,IRQ-1921-1932; IRQ-1932-2025
@@ -588,7 +588,7 @@ ROU-1940-2025,Romania (1940-2025),1940,2025,national,ROU,360,Europe,superseded,2
 ROU-1947-2025,Romania (1947-2025),1947,2025,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1946,assigned,238000,ROU-1940-1947,
 ROW-1850-2023,Rest of World,1850,2023,aggregate,ROW,,World,draft,2026-06-11,reporting-areas,ROW-1850-2023,,assigned,,,
 RSFSR-1917-1991,Russian SFSR (1917-1991),1917,1991,national,RUS,365,Europe,retired,2026-06-24,cshapes-2.0,365,1991,unassigned,17098242,F228-1914-1917,RUS-1991-2014
-RUS-1991-2014,Russia (1991-2014),1991,2014,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,1991,assigned,,F228-1945-1991,RUS-2014-2025
+RUS-1991-2014,Russia (1991-2014),1991,2014,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,1992,assigned,,F228-1945-1991,RUS-2014-2025
 RUS-2014-2025,Russia,2014,2025,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,2014,assigned,,RUS-1991-2014,
 RVN-1954-1975,Republic of Vietnam (South Vietnam),1954,1975,national,,817,Asia,draft,2026-06-24,cshapes-2.0,817,1960,assigned,,FID-1887-1954,VNM-1975-2025
 RWA-1922-1962,Rwanda (within Ruanda-Urundi),1922,1962,subnational,RWA,,Africa,draft,2026-07-02,cshapes-2.0,517,1962,assigned,25250,,RWA-1962-2025
