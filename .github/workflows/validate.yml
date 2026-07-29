@@ -22,6 +22,11 @@ name: Validate database
 #   audit_family_shadowing   Alaska outranked the United States and absorbed
 #                            ~7,600 rows of mainland data; Hyderabad took
 #                            India-labelled data
+#   validate_constants       DEAD_STATUS is defined FIVE times and CLAIMS_POLYGON
+#                            must equal the polygon vocabulary minus `unassigned`,
+#                            with nothing linking them. Four legacy statuses once sat
+#                            outside CLAIMS_POLYGON while 11 rows carrying them HAD
+#                            geometry.
 #   validate_spatial_        RUS-1991-2014 carries the USSR polygon (CShapes
 #     containment            feature 365, 21.8M km2 against Russia's 17.1M) and
 #                            geometrically contains Kazakhstan, Ukraine, the
@@ -139,6 +144,10 @@ jobs:
       - name: Every alias can actually route to a live polity
         if: '!cancelled()'
         run: python3 scripts/validate_aliases.py
+
+      - name: Duplicated constants still agree
+        if: '!cancelled()'
+        run: python3 scripts/validate_constants.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
