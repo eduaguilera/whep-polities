@@ -44,7 +44,7 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Fifteen checks guard the database. Each exists because that class of error was
+Seventeen checks guard the database. Each exists because that class of error was
 **found in the data**, not hypothesised, so they are worth keeping green:
 
 ```bash
