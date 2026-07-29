@@ -474,6 +474,7 @@ Mexico,faostat,1961,2024,MEX-1848-2025,Mexico,high,262735
 Mexico,lassaletta-grassland-share,1961,2009,MEX-1848-2025,Mexico,high,0
 Micronesia (Federated States of),faostat,1991,2024,FSM-1991-2025,Micronesia,high,17189
 micronesia (federated states of),iia,1920,1945,CAR-1920-1945,Caroline Islands (Japanese Mandate),high,0
+MNE,crops-manure-n,1992,2005,SCG-1992-2006,Serbia and Montenegro,high,0
 Moldova,faostat,1991,2025,MDA-1991-2025,Republic of Moldova,high,0
 Monaco,faostat,1850,2025,MCO-1800-2025,Monaco,high,0
 Mongolia,faostat,1961,2024,MNG-1921-2025,Mongolia,high,138130
@@ -586,6 +587,7 @@ romania,,1920,1940,ROU-1920-1940,Romania,high,0
 romania,,1940,1947,ROU-1940-1947,Romania (1940-1947),high,0
 romania,,1947,2025,ROU-1947-2025,Romania (1947-2025),high,0
 Romania,faostat,1961,2024,ROU-1947-2025,Romania (1947-2025),high,234453
+RoW,crops-manure-n,1850,2022,ROW-1850-2023,Rest of World,high,0
 russian federation,,1906,1914,F228-1905-1914,Russian Empire (1905-1914),high,0
 russian federation,,1914,1917,F228-1914-1917,Russian Empire (1914-1917),high,0
 russian federation,,1917,1918,F228-1917-1918,Russia (1917-1918),high,0
@@ -663,9 +665,11 @@ southern rhodesia,,1900,1953,ZWE-1900-1953,,medium,0
 Spain,faostat,1961,2024,ESP-1800-2025,Spain,high,278591
 Spain,lassaletta-grassland-share,1961,2009,ESP-1800-2025,Spain,high,0
 Spanish Guinea,fao1952,1886,1968,GNQ-1886-1968,Spanish Guinea (Equatorial Guinea colonial),high,13
+SRB,crops-manure-n,1992,2005,SCG-1992-2006,Serbia and Montenegro,high,0
 Sri Lanka,faostat,1961,2024,LKA-1800-2025,Sri Lanka,high,229589
 Sri Lanka,lassaletta-grassland-share,1961,2009,LKA-1800-2025,Sri Lanka,high,0
 SRM,mueller-synthetic-n,1992,2006,SCG-1992-2006,Serbia and Montenegro,high,0
+SSD,crops-manure-n,1956,2010,SUD-1956-2011,Sudan (1956-2011),high,0
 st helena,fao1952,1931,1951,SHN-1834-1967,Saint Helena,high,0
 St Pierre and Miquelon,fao1952,1937,1951,SPM-1816-2025,Saint Pierre and Miquelon,high,8
 sudan,,1899,1934,SUD-1899-1934,,medium,0
