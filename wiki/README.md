@@ -125,9 +125,12 @@ source files on disk.
   it does not have. Prefer `unassigned` with a documented reason over a silent
   modern-borders guess.
 
-  Legacy values still present in the database — `derived`, `missing`,
-  `approximate`, `excluded` — are near-synonyms of the above and predate this
-  vocabulary. Do not use them in new pages.
+  Four legacy values — `derived`, `missing`, `approximate`, `excluded` — predate
+  this vocabulary and are **no longer present**: all rows were migrated and
+  `build_database.py --check` now rejects anything outside the five above. This
+  paragraph said they were "still present in the database" until the migration
+  landed without it being updated, which is why validate_constants.py now checks
+  this table against the enforced set.
 - `polygon_area_km2` — optional sanity-check.
 - `predecessor`, `successor` — YAML lists of UPPERCASE `polity_code`s
   (`[]` for none). Drives the site's Graph tab edges and the coverage-

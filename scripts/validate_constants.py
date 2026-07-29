@@ -122,6 +122,38 @@ else:
             detail.append(f"claiming a polygon but not in the vocabulary: {extra}")
         problems.append("CLAIMS_POLYGON is not the vocabulary minus 'unassigned'; " + "; ".join(detail))
 
+# ---------- the wiki's documented vocabulary vs the enforced one ----------
+# A third copy of the same fact, in prose. wiki/README.md carries a table of polygon_status
+# values, and build_database.py --check points readers at it by name when it rejects a value —
+# so if the two disagree, the error message sends people to the wrong list.
+#
+# It DID disagree. The table described four legacy values as "still present in the database"
+# after the migration had removed all of them, because the migration updated the data and the
+# gate but not the prose. That is the same defect this script exists for, one medium over.
+WIKI_README = os.path.join(REPO, "wiki/README.md")
+if vocab and os.path.exists(WIKI_README):
+    with open(WIKI_README, encoding="utf-8") as fh:
+        readme = fh.read()
+    documented = {
+        v for v in vocab[0]
+        if f"`{v}`" in readme
+    }
+    missing_from_readme = sorted(set(vocab[0]) - documented)
+    print(f"\npolygon_status values documented in wiki/README.md: {len(documented)} of {len(vocab[0])}")
+    if missing_from_readme:
+        problems.append(
+            f"wiki/README.md does not document these enforced polygon_status values: "
+            f"{missing_from_readme} — build_database.py --check tells readers to consult that "
+            f"table, so it has to be complete"
+        )
+    # And the removed legacy values must not be described as present.
+    for legacy in ("derived", "missing", "approximate", "excluded"):
+        if f"`{legacy}`" in readme and "no longer present" not in readme:
+            problems.append(
+                f"wiki/README.md mentions the legacy value {legacy!r} without saying it has "
+                f"been removed"
+            )
+
 if problems:
     print(f"\nFAIL: {len(problems)} constant disagreement(s)\n")
     for p in problems:
