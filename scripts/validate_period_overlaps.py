@@ -55,6 +55,26 @@ BASELINE = {
 CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
 
 
+def faostat_mapped() -> set:
+    """Polity codes a consumer can reach through the published FAOSTAT area map.
+
+    Whether a finding is LIVE or merely LATENT turns on this, and it is cheap to compute here rather
+    than by querying the consumer. Two findings on this branch were written up as live and had to be
+    downgraded after checking: the Tanzania and Morocco period overlaps, whose inert twins are
+    unmapped, and area 240's two-era mapping, which is correctly folded. Printing reachability next
+    to each case makes the distinction visible instead of remembered.
+    """
+    path = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
+    if not os.path.exists(path):
+        return set()
+    with open(path, encoding="utf-8") as fh:
+        return {
+            (r.get("polity_code") or "").strip()
+            for r in csv.DictReader(fh)
+            if (r.get("polity_code") or "").strip()
+        }
+
+
 def main() -> int:
     families = defaultdict(list)
     live = 0
@@ -83,8 +103,13 @@ def main() -> int:
     print(f"live polities: {live}")
     print(f"exact-prefix families: {len(families)}")
     print(f"overlapping same-family pairs: {len(observed)}")
+    mapped = faostat_mapped()
     for pair, (lo, hi, n) in sorted(observed.items(), key=lambda kv: -kv[1][2]):
-        print(f"   {n:>4}y  {pair[0]:<20} overlaps {pair[1]:<20} ({lo}-{hi})")
+        reach = sum(1 for c in pair if c in mapped)
+        tag = {0: "latent (neither mapped)", 1: "latent (one mapped)", 2: "LIVE (both mapped)"}[reach]
+        print(
+            f"   {n:>4}y  {pair[0]:<20} overlaps {pair[1]:<20} ({lo}-{hi})  {tag}"
+        )
 
     problems = []
     for pair in sorted(set(observed) - BASELINE):

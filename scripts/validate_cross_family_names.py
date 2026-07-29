@@ -64,6 +64,26 @@ def normalise(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", out).strip()
 
 
+def faostat_mapped() -> set:
+    """Polity codes a consumer can reach through the published FAOSTAT area map.
+
+    Whether a finding is LIVE or merely LATENT turns on this, and it is cheap to compute here rather
+    than by querying the consumer. Two findings on this branch were written up as live and had to be
+    downgraded after checking: the Tanzania and Morocco period overlaps, whose inert twins are
+    unmapped, and area 240's two-era mapping, which is correctly folded. Printing reachability next
+    to each case makes the distinction visible instead of remembered.
+    """
+    path = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
+    if not os.path.exists(path):
+        return set()
+    with open(path, encoding="utf-8") as fh:
+        return {
+            (r.get("polity_code") or "").strip()
+            for r in csv.DictReader(fh)
+            if (r.get("polity_code") or "").strip()
+        }
+
+
 def main() -> int:
     by_name = defaultdict(list)
     live = 0
@@ -93,8 +113,11 @@ def main() -> int:
     print(f"live polities: {live}")
     print(f"distinct normalised names: {len(by_name)}")
     print(f"cross-family name collisions over overlapping years: {len(observed)}")
+    mapped = faostat_mapped()
     for a, b in sorted(observed):
-        print(f"   {a:<18} + {b}")
+        reach = sum(1 for c in (a, b) if c in mapped)
+        tag = {0: "latent (neither mapped)", 1: "latent (one mapped)", 2: "LIVE (both mapped)"}[reach]
+        print(f"   {a:<18} + {b:<18} {tag}")
 
     problems = []
     for pair in sorted(observed - BASELINE):
