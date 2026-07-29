@@ -38,6 +38,13 @@ name: Validate database
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
 #                            two aliases routing Viet Nam differently
+#   validate_period_overlaps four pairs of live polities in the SAME family cover the
+#                            same years, so a year-aware matcher cannot choose between
+#                            them on history alone and falls back on tie-break order.
+#                            PER-1825-1909 is the clearest: PER-1825-1884 and
+#                            PER-1884-1909 tile its span exactly, so it is a redundant
+#                            un-split row duplicating both.
+#
 #   validate_reporting_areas six GADM territories are claimed by TWO aggregate
 #                            reporting polygons each. Palau and the Northern Mariana
 #                            Islands sit in both Asia Other and Oceania Other; the
@@ -161,6 +168,10 @@ jobs:
       - name: No territory belongs to two reporting aggregates
         if: '!cancelled()'
         run: python3 scripts/validate_reporting_areas.py
+
+      - name: No two periods of one family cover the same year
+        if: '!cancelled()'
+        run: python3 scripts/validate_period_overlaps.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
