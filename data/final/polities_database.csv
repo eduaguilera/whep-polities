@@ -96,7 +96,7 @@ BRN-1816-1888,Brunei (greater),1816,1888,national,BRN,835,Asia,draft,2026-04-12,
 BRN-1888-2025,Brunei Darussalam,1888,2025,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,BRN-1816-1888,
 BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,national,BSS,,Africa,draft,2026-06-24,cshapes-2.0,521,1886,assigned,,,SOM-1960-2025
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,national,MYS,824,Asia,draft,2026-06-26,cshapes-2.0,824,1889,assigned,124276,,MYS-1963-1965
-BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,,Africa,draft,2026-06-26,composed-difference,GHA-1957-2025 minus GHA-1898-1956,1957,assigned,26630,GTO-1919-1922,GHA-1957-2025
+BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,,Africa,draft,2026-06-26,constructed,BTL-1920-1957,1957,assigned,26630,GTO-1919-1922,GHA-1957-2025
 BTN-1800-2025,Bhutan,1800,2025,national,BTN,,Asia,draft,2026-04-12,cshapes-2.0,760,1886,assigned,,,
 BWA-1966-2025,Botswana,1966,2025,national,BWA,571,Africa,draft,2026-04-13,cshapes-2.0,571,1966,assigned,,,
 BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,national,BWI,,North America,draft,2026-06-26,gadm-4.1-adm0,gadm-union-JAM+TTO+BRB+BHS+ATG+GRD+VCT+DMA+LCA+KNA+MSR,,unassigned,34766,,JAM-1800-2025; TTO-1800-2025; BRB-1800-2025; BHS-1800-2025; ATG-1800-2025; GRD-1800-2025; VCT-1833-2025; DMA-1800-2025; LCA-1838-2025; KNA-1800-2025; MSR-1800-2025
@@ -685,7 +685,7 @@ TPAP-1906-1949,Territory of Papua,1906,1949,colonial,PNG,911,Oceania,draft,2026-
 TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,national,LBY,620,Africa,draft,2026-06-26,none,,,unassigned,,LBY-1934-1943,LBY-1951-2025
 TRS-1947-1954,Free Territory of Trieste,1947,1954,national,,,Europe,draft,2026-06-26,constructed,,1947,estimate,737,ITA-1919-2025,ITA-1919-2025
 TTO-1800-2025,Trinidad and Tobago,1800,2025,national,TTO,52,North America,draft,2026-04-13,cshapes-2.0,52,1886,assigned,,,
-TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,,,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM+MHL+MNP+PLW,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025
+TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,,,Oceania,draft,2026-06-26,constructed,TTPI-1947-1994,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025
 TUN-1800-1881,Beylik of Tunis,1800,1881,national,TUN,616,Africa,draft,2026-04-13,paine-2024,Tunis,,assigned,,,TUN-1881-2025
 TUN-1881-2025,Tunisia,1881,2025,national,TUN,616,Africa,draft,2026-04-13,cshapes-2.0,616,1886,assigned,,TUN-1800-1881,
 TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,national,TUR,640,Asia,draft,2026-04-16,cshapes-2.0,640,1923,estimate,779964,,TUR-1913-1914

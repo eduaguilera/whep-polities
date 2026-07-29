@@ -63,6 +63,13 @@ LEGITIMATE_CONTAINERS = frozenset({
     "NGA-1886-1914", "ZWE-1891-1900",
     # A federation over its pre-1901 colonies
     "AUS-1800-1901",
+    # A UN trust territory over the four territories that became its successors.
+    # Added when its polygon was first built (2026-07-29): the union of GADM FSM,
+    # MHL, MNP and PLW necessarily contains those four polities, whose spans overlap
+    # TTPI's 1947-1994. This check flagged it immediately as a NEW container, which
+    # is the behaviour wanted — a newly built polygon that swallows its neighbours
+    # has to be justified rather than assumed.
+    "TTPI-1947-1994",
 })
 
 # Containers that are DEFECTS, tracked so the gate stays useful while they are

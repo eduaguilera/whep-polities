@@ -16,7 +16,8 @@
 #
 #   [compose]  the feature id describes a union, difference or complement of several
 #              source features. Nothing can resolve it as a single id; it needs a
-#              builder in scripts/sources/constructed/build.py. 11 rows.
+#              builder in scripts/sources/constructed/build.py. 9 rows
+#              (was 11; BTL-1920-1957 and TTPI-1947-1994 now have builders).
 #   [no-id]    there is no feature id at all (`None` / `NA`). A source and an id must
 #              be identified first, or the row downgraded to `unassigned` with the
 #              reason recorded. 6 rows.
@@ -24,9 +25,10 @@
 #              the GADM copy in data/geodata/ is a curated subset (82 adm0 and 620
 #              adm1 features, small territories only) that does not contain the
 #              country. Needs a fuller GADM download, nothing else. 3 rows.
+#
+# 18 rows remain, from 20.
 AEF-1910-1960   # [compose] assigned: cshapes-idx-366+370+375+382
 ALK-1867-1959   # [extract] assigned: USA.2_1
-BTL-1920-1957   # [compose] assigned: GHA-1957-2025 minus GHA-1898-1956
 CAN-1800-1866   # [compose] proxy: gadm-ON+QC+NB+NS+PE
 CAN-1866-1870   # [no-id] estimate: NA
 FRIN-1816-1954   # [compose] estimate: composed-union-puducherry-karikal-mahe-yanam-chandernagore
@@ -43,4 +45,3 @@ RYU-1945-1972   # [extract] proxy: JPN.38_1
 SER-1918-1945   # [no-id] estimate: NA
 SYL-1944-1953   # [compose] assigned: composed-union: cowcode=652 row 1946-04-17/1967-06-09 UNION
 TRS-1947-1954   # [no-id] estimate: NA
-TTPI-1947-1994   # [compose] proxy: FSM+MHL+MNP+PLW

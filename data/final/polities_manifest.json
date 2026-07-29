@@ -59,7 +59,6 @@
  "polygon_gap_polity_codes": [
   "AEF-1910-1960",
   "ALK-1867-1959",
-  "BTL-1920-1957",
   "CAN-1800-1866",
   "CAN-1866-1870",
   "FRIN-1816-1954",
@@ -75,8 +74,7 @@
   "RYU-1945-1972",
   "SER-1918-1945",
   "SYL-1944-1953",
-  "TRS-1947-1954",
-  "TTPI-1947-1994"
+  "TRS-1947-1954"
  ],
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",

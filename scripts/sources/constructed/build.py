@@ -268,7 +268,66 @@ def build_chn_1932_1945() -> ogr.Geometry:
 
 
 # (polity_code, polity_name, builder-callable, provenance note)
+def build_btl_1920_1957() -> ogr.Geometry:
+    """British Togoland 1920-1957 = Ghana AFTER the 1956 incorporation MINUS the
+    Gold Coast before it.
+
+    CShapes gwcode 452 steps from 212,416 km2 (1898-1956, the Gold Coast) to
+    239,046 km2 (1956 onward, once British Togoland was incorporated following the
+    1956 plebiscite). The difference is the mandate territory itself.
+
+    Years are chosen to be UNAMBIGUOUS. 1956 is contained by both the 1898-1956 and
+    1956-1957 steps, and `_cshapes2_feature` returns whichever comes first in the
+    shapefile, so 1950 and 1960 are used instead: each is inside exactly one step.
+    (The 1956-1957 and 1957-2019 steps both measure 239,046 km2, so 1960 is
+    equivalent to 1956 for this purpose.)
+    """
+    return _difference(_cshapes2_feature(452, 1960), _cshapes2_feature(452, 1950))
+
+
+def build_ttpi_1947_1994() -> ogr.Geometry:
+    """Trust Territory of the Pacific Islands = the four successor states'
+    modern coastlines: Micronesia, Marshall Islands, Northern Marianas, Palau.
+
+    Guam is deliberately excluded: it was a US possession from 1898 and never part
+    of the Trust Territory.
+
+    Modern coastlines are the only available proxy — no historical source in the
+    priority stack carries the Trust Territory as one feature — and the internal
+    boundaries have not changed, so the union is the same extent the mandate had.
+    """
+    return _union(
+        _gadm_adm0("FSM"),
+        _gadm_adm0("MHL"),
+        _gadm_adm0("MNP"),
+        _gadm_adm0("PLW"),
+    )
+
+
 BUILDERS = [
+    (
+        "BTL-1920-1957",
+        "British Togoland (1920-1957)",
+        build_btl_1920_1957,
+        "CShapes 2.0 gwcode 452 at 1960 (239,046 km2, Ghana including the "
+        "incorporated mandate) MINUS gwcode 452 at 1950 (212,416 km2, the Gold "
+        "Coast alone) = 26,630 km2. That matches the figure this polity's page "
+        "already recorded from the same computation, and sits 21% below the "
+        "~33,771 km2 historical figure — a gap the page documents and attributes "
+        "to CShapes generalisation, which is why the row is `assigned` on the "
+        "geodesic value rather than the historical one.",
+    ),
+    (
+        "TTPI-1947-1994",
+        "Trust Territory of the Pacific Islands (1947-1994)",
+        build_ttpi_1947_1994,
+        "Union of GADM 4.1 adm0 FSM, MHL, MNP and PLW = ~2,063 km2 against the "
+        "~1,791 km2 the page records; GADM's coastlines include reef and lagoon "
+        "area that land-area figures exclude, which is why the row is `proxy` "
+        "rather than `assigned`. Guam is excluded deliberately: a US possession "
+        "from 1898, never part of the Trust Territory.",
+    ),
+
     (
         "IRL-1800-1921",
         "Ireland (all-island, 1800-1921)",
