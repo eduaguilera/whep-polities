@@ -86,9 +86,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "58dadd05fb8c3e3576471dd42c2279ab071fe045d33afe7e4e927d877004c7f8",
-  "aliases": 806,
-  "labels": 467,
+  "sha256": "e0e90db3717632dcbff5cabe7b45d36c4c2005dbccf129bc8fcc5b6ce87788cb",
+  "aliases": 840,
+  "labels": 470,
   "sources": [
    "crops-manure-n",
    "fao1952",
@@ -101,6 +101,7 @@
    "mitchell",
    "mueller-synthetic-n",
    "sa_colonial",
+   "trade-sources",
    "whep-split-2026-06-29"
   ]
  },

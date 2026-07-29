@@ -141,6 +141,9 @@ canada,,1886,1886,CAN-1886-1948,Canada (post-CPR completion 1886),high,
 canada,,1948,1948,CAN-1886-1948,Canada,high,54
 Canada,faostat,1961,2024,CAN-1948-2025,Canada,high,252243
 Canada,lassaletta-grassland-share,1961,2009,CAN-1948-2025,Canada,high,
+Canada,trade-sources,1867,1869,CAN-1866-1870,"Canada (original four provinces, 1866–1870)",high,
+Canada,trade-sources,1870,1885,CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),high,
+Canada,trade-sources,1886,1913,CAN-1886-1948,Canada (to 1948),high,
 cape natal,mitchell,1918,1957,ZAF-1910-2025,Cape and Natal provinces (South Africa),medium,
 Cape of Good Hope,,,,CAP-1800-1910,Cape Colony,high,195
 cape province,,1800,1910,CAP-1800-1910,,medium,
@@ -153,6 +156,16 @@ Chad,faostat,1961,2024,TCD-1960-2025,Chad,high,134061
 Chad,lassaletta-grassland-share,1961,2009,TCD-1960-2025,Chad,high,
 Chile,faostat,1961,2024,CHL-1902-2025,Chile,high,230765
 Chile,lassaletta-grassland-share,1961,2009,CHL-1902-2025,Chile,high,
+China,trade-sources,1886,1894,CHN-1800-1895,China (to 1895),high,
+China,trade-sources,1895,1912,CHN-1895-1913,China (1895-1913),high,
+China,trade-sources,1913,1913,CHN-1913-1914,China (1913-1914),high,
+China,trade-sources,1914,1920,CHN-1914-1921,China (1914-1921),high,
+China,trade-sources,1921,1931,CHN-1921-1932,China (1921-1932),high,
+China,trade-sources,1932,1944,CHN-1932-1945,China (1932-1945),high,
+China,trade-sources,1945,1946,CHN-1945-1947,China (1945-1947),high,
+China,trade-sources,1947,1948,CHN-1947-1949,China (1947-1949),high,
+China,trade-sources,1949,1949,CHN-1949-1950,China (1949-1950),high,
+China,trade-sources,1950,1996,CHN-1950-2025,China (PRC),high,
 china 22 provinces,fao1952,1937,1945,CHN-1932-1945,China,high,87
 china 22 provinces,fao1952,1945,1947,CHN-1945-1947,China,high,87
 china 22 provinces,fao1952,1947,1949,CHN-1947-1949,China,high,87
@@ -251,6 +264,7 @@ egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
 Egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
 egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
 Egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
+Egypt,trade-sources,1879,1879,EGY-1820-1885,Egypt with Sudan (1820-1885),high,
 EI Salvador,,,,SLV-1821-2025,El Salvador,high,
 El Salvador,faostat,1961,2024,SLV-1821-2025,El Salvador,high,207960
 El Salvador,lassaletta-grassland-share,1961,2009,SLV-1821-2025,El Salvador,high,
@@ -280,6 +294,9 @@ france,,1800,1870,FRA-1800-1871,France,high,
 france,,1871,1918,FRA-1871-1919,France,high,
 france,,1919,2025,FRA-1919-2025,France,high,
 France,faostat,1961,2024,FRA-1919-2025,France,high,269731
+France,trade-sources,1825,1870,FRA-1800-1871,"France (with Alsace-Lorraine, to 1871)",high,
+France,trade-sources,1871,1918,FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",high,
+France,trade-sources,1919,1926,FRA-1919-2025,France,high,
 France Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high,
 France Saar,fao1952,1935,1946,SAC-1935-1947,Saar (German incorporation 1935-1947),high,
 French Equat Africa,,,,AEF-1910-1960,French Equatorial Africa (AEF),high,16
@@ -303,6 +320,14 @@ Georgia,faostat,1992,2024,GEO-1991-2025,Georgia,high,101509
 Germany,faostat,1961,1989,DEU-1949-1990,"Germany (divided, 1949-1990)",high,266337
 Germany,faostat,1990,2024,DEU-1990-2025,Germany,high,266337
 Germany,lassaletta-grassland-share,1990,2009,DEU-1990-2025,Germany,high,
+Germany,trade-sources,1859,1865,DEU-1800-1866,Prussia (to 1866),high,
+Germany,trade-sources,1866,1870,DEU-1866-1871,North German Confederation (1866-1871),high,
+Germany,trade-sources,1871,1918,DEU-1871-1919,German Empire (1871-1919),high,
+Germany,trade-sources,1919,1919,DEU-1919-1920,Germany (1919-1920),high,
+Germany,trade-sources,1920,1937,DEU-1920-1938,Germany (1920-1938),high,
+Germany,trade-sources,1938,1944,DEU-1938-1945,Germany (1938-1945),high,
+Germany,trade-sources,1945,1948,DEU-1945-1949,Allied-occupied Germany,high,
+Germany,trade-sources,1949,1952,DEU-1949-1990,"Germany (divided, 1949-1990)",high,
 Germany Berlin,fao1952,1937,1937,DEU-1920-1938,Germany (1920-1938),high,
 Germany Berlin,fao1952,1938,1944,BRL-1938-1945,Greater Berlin (1938-1945),high,
 Germany Berlin,fao1952,1945,1948,BRL-1945-1949,Berlin (Allied Occupation),high,
@@ -357,6 +382,9 @@ Iceland,faostat,1961,2024,ISL-1800-2025,Iceland,high,170791
 Iceland,lassaletta-grassland-share,1961,2009,ISL-1800-2025,Iceland,high,
 India,faostat,1961,2024,IND-1949-2025,India,high,254312
 India,lassaletta-grassland-share,1961,2009,IND-1949-2025,India,high,
+India,trade-sources,1885,1885,IND-1800-1886,British India (to 1886),high,
+India,trade-sources,1886,1892,IND-1886-1893,British India (1886-1893),high,
+India,trade-sources,1893,1913,IND-1893-1914,India (1893-1914),high,
 indochina,,,,FID-1887-1954,French Indochina,high,259
 indochina cambodia,,1907,1953,KHM-1907-1953,,medium,
 indochina laos,,1936,1951,LAO-1893-1953,Laos (1893-1953),high,59
@@ -740,6 +768,8 @@ United Kingdom,faostat,1921,2025,GBR-1921-2025,United Kingdom of Great Britain a
 United Kingdom,lassaletta-grassland-share,1961,2009,GBR-1921-2025,United Kingdom,high,
 United Kingdom Great Britain,fao1952,1937,1951,GBR-1921-2025,United Kingdom,high,9
 United Kingdom of Great Britain and Northern Ireland,faostat,1961,2024,GBR-1921-2025,United Kingdom,high,258802
+United Kingdom of Great Britain and Northern Ireland (the),trade-sources,1809,1920,GBR-1800-1921,United Kingdom (to 1921),high,
+United Kingdom of Great Britain and Northern Ireland (the),trade-sources,1921,1964,GBR-1921-2025,United Kingdom,high,
 United Republic of Tanzania,faostat,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high,219893
 United Republic of Tanzania,faostat,1964,2024,TZA-1964-2025,Tanzania,high,219893
 united states and dependent territories,fao1952,1867,1959,USA-1867-1959,United States and dependent territories,high,32
@@ -757,6 +787,10 @@ united states of america,iia,1959,2025,USA-1959-2025,United States of America,hi
 united states of america,juan,1898,1959,USA-1867-1959,United States of America,high,
 united states of america,juan,1900,1959,USA-1867-1959,united states of america,high,6076
 united states of america,mitchell,1898,1959,USA-1867-1959,United States of America,high,
+United States of America (the),trade-sources,1827,1847,USA-1803-1848,United States (1803-1848),high,
+United States of America (the),trade-sources,1848,1866,USA-1848-1867,United States (1848-1867),high,
+United States of America (the),trade-sources,1867,1958,USA-1867-1959,United States (1867-1959),high,
+United States of America (the),trade-sources,1959,2014,USA-1959-2025,United States of America,high,
 United States Virgin Islands,faostat,1850,1917,DWI-1800-1917,Danish West Indies,high,0
 United States Virgin Islands,faostat,1917,2025,VIR-1917-2025,United States Virgin Islands,high,0
 united states virgin islands,iia,1909,1916,DWI-1800-1917,Danish West Indies,high,
