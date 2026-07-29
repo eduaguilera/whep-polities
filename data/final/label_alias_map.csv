@@ -6,9 +6,11 @@ Abyssinia,,1902,1907,ETH-1902-1907,Ethiopia (1902-1907),high,0
 Abyssinia,,1907,1936,ETH-1907-1936,Ethiopia (1907-1936),high,0
 Aden Protectorate,fao1952,1937,1951,ADE-1839-1963,Aden Protectorate,high,18
 Afghanistan,faostat,1961,2024,AFG-1919-2025,Afghanistan,high,122086
+Afghanistan,lassaletta-grassland-share,1961,2009,AFG-1919-2025,Afghanistan,high,0
 Africa Orientale Italiana,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high,0
 Alaska,fao1952,1867,1959,ALK-1867-1959,Territory of Alaska,high,39
 Albania,faostat,1961,2024,ALB-1913-2025,Albania (1913-2025),high,177572
+Albania,lassaletta-grassland-share,1961,2009,ALB-1913-2025,Albania (1913-2025),high,0
 algeria,,1831,1886,DZA-1831-1886,Algeria,high,0
 algeria,,1886,1902,DZA-1886-1902,Algeria,high,0
 algeria,,1902,1919,DZA-1902-1919,Algeria,high,0
@@ -25,9 +27,11 @@ angola,,1898,1904,ANG-1891-1905,Portuguese Angola (pre-1905),high,0
 angola,,1905,1960,ANG-1905-1975,Angola (Portuguese colony 1905-1975),high,0
 Angola,faostat,1961,1974,ANG-1905-1975,Angola (1905-1975),high,171428
 Angola,faostat,1975,2024,AGO-1975-2025,"Angola (independent, 1975–2025)",high,171428
+Angola,lassaletta-grassland-share,1961,1974,ANG-1905-1975,Angola (1905-1975),high,0
 Antigua and Barbuda,faostat,1961,2024,ATG-1800-2025,Antigua and Barbuda,high,152103
 Argentina,faostat,1961,2024,ARG-1902-2025,Argentina,high,242032
 argentina,iia,1909,1945,ARG-1902-2025,Argentina,high,88
+Argentina,lassaletta-grassland-share,1961,2009,ARG-1902-2025,Argentina,high,0
 Argentina,mitchell,1870,1898,ARG-1800-1899,Argentina (to 1899),high,0
 Argentina,mitchell,1899,1901,ARG-1899-1902,Argentina (1899-1902),high,0
 Argentine Republic,mitchell,1870,1898,ARG-1800-1899,Argentina (to 1899),high,0
@@ -37,13 +41,16 @@ australia,,1800,1900,AUS-1800-1901,,high,118
 australia,,1901,2025,AUS-1901-2025,,high,118
 Australia,faostat,1961,2024,AUS-1901-2025,Australia,high,253557
 Austria,faostat,1961,2024,AUT-1919-2025,Austria,high,255267
+Austria,lassaletta-grassland-share,1961,2009,AUT-1919-2025,Austria,high,0
 Azerbaijan,faostat,1992,2024,AZE-1991-2025,Azerbaijan,high,103326
 azerbaijan,iia-tea,1920,1990,AZE-SSR-1920-1991,Azerbaijan SSR,high,0
 Bahamas,faostat,1961,2024,BHS-1800-2025,Bahamas,high,163402
 Bahrain,faostat,1961,2024,BHR-1800-2025,Bahrain,high,77122
 Bangladesh,faostat,1961,1970,BGD-1947-1971,East Pakistan (1947-1971),high,203548
 Bangladesh,faostat,1971,2024,BGD-1971-2025,Bangladesh,high,203548
+Bangladesh,lassaletta-grassland-share,1971,2009,BGD-1971-2025,Bangladesh,high,0
 Barbados,faostat,1961,2024,BRB-1800-2025,Barbados,high,198640
+Barbados,lassaletta-grassland-share,1961,2009,BRB-1800-2025,Barbados,high,0
 Basutoland,fao1952,1886,1966,LSO-1886-1966,Basutoland,high,0
 Bechuanaland,fao1952,1937,1951,BEC-1885-1966,Bechuanaland Protectorate,high,0
 Belarus,faostat,1992,2024,BLR-1991-2025,Belarus,high,110351
@@ -56,7 +63,9 @@ Belgium-Luxemburg,lassaletta-grassland-share,1961,1999,BLX-1921-1999,Belgium-Lux
 Belize,faostat,1961,1969,BLZ-1886-1970,British Honduras,high,177780
 Belize,faostat,1970,1980,BLZ-1970-1981,Belize (pre-independence),high,177780
 Belize,faostat,1981,2024,BLZ-1981-2025,Belize,high,177780
+Belize,lassaletta-grassland-share,1981,2009,BLZ-1981-2025,Belize,high,0
 Benin,faostat,1961,2024,BEN-1960-2025,Benin,high,176976
+Benin,lassaletta-grassland-share,1961,2009,BEN-1960-2025,Benin,high,0
 Bermuda,fao1952,1937,1951,BMU-1684-1968,Bermuda,high,41
 Bermuda,faostat,1961,1967,BMU-1684-1968,British Crown Colony of Bermuda,high,67310
 Bermuda,faostat,1968,2013,BMU-1968-2025,Bermuda,high,67310
@@ -77,6 +86,7 @@ Br West Indies St Kitts-Nevis Anguilla,fao1952,1949,1967,KNA-1800-2025,Saint Kit
 Br West Indies St Lucia,fao1952,1949,1951,LCA-1838-2025,Saint Lucia,high,12
 Br West Indies St Vincent,fao1952,1949,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high,12
 Brazil,faostat,1961,2024,BRA-1909-2025,Brazil,high,255068
+Brazil,lassaletta-grassland-share,1961,2009,BRA-1909-2025,Brazil,high,0
 British Borneo Brunei,,,,BRN-1888-2025,,high,0
 British Borneo North Borneo,,1937,1951,BNB-1881-1963,British North Borneo,high,0
 British Borneo Sarawak,fao1952,1937,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,0
@@ -107,6 +117,7 @@ bulgaria,,1940,2025,BGR-1940-2025,,high,137
 Bulgaria,faostat,1961,2024,BGR-1940-2025,Bulgaria (1940-2025),high,241988
 Burkina Faso,faostat,1961,2024,BFA-1960-2025,Burkina Faso,high,173575
 burkina faso,iia,1919,1932,BFA-1919-1932,Upper Volta (1919-1932),high,68
+Burkina Faso,lassaletta-grassland-share,1961,2009,BFA-1960-2025,Burkina Faso,high,0
 burma,,1826,1852,MMR-1826-1852,,medium,0
 burma,,1885,2025,MMR-1885-2025,,medium,0
 burma,mitchell,1852,1885,MMR-LWR-1852-1885,British Lower Burma (1852-1885),high,0
@@ -114,18 +125,22 @@ Burundi,faostat,1961,1961,BDI-1922-1962,Burundi (within Ruanda-Urundi),high,6220
 Burundi,faostat,1962,2024,BDI-1962-2025,Burundi,high,62205
 burundi,iia,1919,1921,RWB-1919-1922,Ruanda-Urundi (occupation),high,0
 burundi,iia,1922,1961,RWB-1922-1962,Ruanda-Urundi,high,0
+Burundi,lassaletta-grassland-share,1962,2009,BDI-1962-2025,Burundi,high,0
 BZE,mueller-synthetic-n,1981,2025,BLZ-1981-2025,Belize,high,0
 Cabo Verde,faostat,1961,1974,CPV-1886-1975,Cape Verde (Portuguese colony),high,150407
 Cabo Verde,faostat,1975,2024,CPV-1975-2025,Cabo Verde,high,150407
 Cambodia,faostat,1961,2024,KHM-1953-2025,Cambodia,high,167371
+Cambodia,lassaletta-grassland-share,1961,2009,KHM-1953-2025,Cambodia,high,0
 cameroon,,1884,1911,GKM-1884-1912,German Kamerun (1884-1912),high,0
 cameroon,,1912,1915,GKM-1912-1916,German Kamerun (1912-1916),high,0
 Cameroon,faostat,1961,2024,CMR-1961-2025,Cameroon,high,216617
+Cameroon,lassaletta-grassland-share,1961,2009,CMR-1961-2025,Cameroon,high,0
 canada,,1866,1869,CAN-1866-1870,Canada (original four provinces 1866-1870),high,0
 canada,,1870,1885,CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),high,0
 canada,,1886,1886,CAN-1886-1948,Canada (post-CPR completion 1886),high,0
 canada,,1948,1948,CAN-1886-1948,Canada,high,54
 Canada,faostat,1961,2024,CAN-1948-2025,Canada,high,252243
+Canada,lassaletta-grassland-share,1961,2009,CAN-1948-2025,Canada,high,0
 cape natal,mitchell,1918,1957,ZAF-1910-2025,Cape and Natal provinces (South Africa),medium,0
 Cape of Good Hope,,,,CAP-1800-1910,Cape Colony,high,195
 cape province,,1800,1910,CAP-1800-1910,,medium,0
@@ -133,8 +148,11 @@ Cape Verde,lassaletta-grassland-share,1961,1975,CPV-1886-1975,Cabo Verde,high,0
 Cape Verde,lassaletta-grassland-share,1975,2009,CPV-1975-2025,Cabo Verde,high,0
 Cape Verde Islands,fao1952,1886,1975,CPV-1886-1975,Cape Verde Islands,high,0
 Central African Republic,faostat,1961,2024,CAF-1960-2025,Central African Republic,high,155872
+Central African Republic,lassaletta-grassland-share,1961,2009,CAF-1960-2025,Central African Republic,high,0
 Chad,faostat,1961,2024,TCD-1960-2025,Chad,high,134061
+Chad,lassaletta-grassland-share,1961,2009,TCD-1960-2025,Chad,high,0
 Chile,faostat,1961,2024,CHL-1902-2025,Chile,high,230765
+Chile,lassaletta-grassland-share,1961,2009,CHL-1902-2025,Chile,high,0
 china 22 provinces,fao1952,1937,1945,CHN-1932-1945,China,high,87
 china 22 provinces,fao1952,1945,1947,CHN-1945-1947,China,high,87
 china 22 provinces,fao1952,1947,1949,CHN-1947-1949,China,high,87
@@ -172,18 +190,23 @@ china taiwan,,1945,2025,TWN-1945-2025,,high,0
 "China, Taiwan Province of",faostat,1961,2024,TWN-1945-2025,Taiwan,high,252667
 Christmas Island,faostat,1946,1958,CXR-1946-1958,Christmas Island (under Singapore administration),high,0
 Colombia,faostat,1961,2024,COL-1922-2025,Colombia,high,235230
+Colombia,lassaletta-grassland-share,1961,2009,COL-1922-2025,Colombia,high,0
 Comoro Islands,fao1952,1949,1951,COM-1946-1975,Comoros (1946-1975),high,8
 Comoros,faostat,1961,1974,COM-1946-1975,Comoros (1946-1975),high,52459
 Comoros,faostat,1975,2024,COM-1975-2025,Comoros,high,52459
 Congo,faostat,1961,2024,COG-1960-2025,Congo,high,170222
+Congo,lassaletta-grassland-share,1961,2009,COG-1960-2025,Congo,high,0
 Cook Islands,faostat,1961,2024,COK-1800-2025,Cook Islands,high,42137
 COS,mueller-synthetic-n,1800,2025,CRI-1800-2025,Costa Rica,high,0
 Costa Rica,faostat,1961,2024,CRI-1800-2025,Costa Rica,high,216304
+Costa Rica,lassaletta-grassland-share,1961,2009,CRI-1800-2025,Costa Rica,high,0
 Cote d'Ivoire,lassaletta-grassland-share,1961,2009,CIV-1960-2025,Cote d'Ivoire,high,0
 Croatia,faostat,1992,2024,HRV-1992-2025,Croatia,high,122938
 Cuba,faostat,1961,2024,CUB-1800-2025,Cuba,high,171184
+Cuba,lassaletta-grassland-share,1961,2009,CUB-1800-2025,Cuba,high,0
 Cyprus,faostat,1961,2024,CYP-1879-2025,Cyprus,high,233146
 cyprus,iia,1879,2025,CYP-1879-2025,Cyprus,high,97
+Cyprus,lassaletta-grassland-share,1961,2009,CYP-1879-2025,Cyprus,high,0
 czech republic,,1919,1938,F51-1918-1938,,high,603
 czech republic,,1919,1938,F51-1918-1938,Czechoslovakia (1918-1938),high,0
 czech republic,,1938,1945,F51-1938-1945,,high,603
@@ -196,34 +219,46 @@ Czechia,faostat,1993,2024,CZE-1993-2025,Czechia,high,126408
 czechoslovakia,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high,0
 Czechoslovakia,faostat,1961,1992,F51-1947-1993,Czechoslovakia (1947-1993),high,92870
 czechoslovakia,juan,1914,1918,CZE-1804-1918,Czech Lands (Bohemia-Moravia-Silesia under Austria-Hungary),high,27
+Czechoslovakia,lassaletta-grassland-share,1961,1992,F51-1947-1993,Czechoslovakia (1947-1993),high,0
 Côte d'Ivoire,faostat,1961,2024,CIV-1960-2025,Côte d'Ivoire,high,208865
 Democratic People's Republic of Korea,faostat,1961,2024,PRK-1948-2025,North Korea,high,112014
 Democratic Republic of the Congo,faostat,1961,2024,COD-1960-2025,Democratic Republic of the Congo,high,81027
+Democratic Republic of the Congo,lassaletta-grassland-share,1961,2009,COD-1960-2025,Democratic Republic of the Congo,high,0
 Denmark,faostat,1961,2024,DNK-1920-2025,Denmark,high,255081
+Denmark,lassaletta-grassland-share,1961,2009,DNK-1920-2025,Denmark,high,0
 denmark the faeroes,fao1952,1800,2025,FRO-1800-2025,Faroe Islands,high,0
 Djibouti,faostat,1961,1976,FRS-1884-1977,French Somaliland,high,140634
 Djibouti,faostat,1977,2024,FRS-1977-2025,Djibouti (formerly French Somaliland),high,140634
 djibouti,iia,1884,1977,FRS-1884-1977,French Somaliland,high,0
 Dominica,faostat,1961,2024,DMA-1800-2025,Dominica,high,149397
+Dominica,lassaletta-grassland-share,1961,2009,DMA-1800-2025,Dominica,high,0
 Dominican Rep,fao1952,1800,2025,DOM-1800-2025,Dominican Republic,high,0
 Dominican Republic,faostat,1961,2024,DOM-1800-2025,Dominican Republic,high,181837
+Dominican Republic,lassaletta-grassland-share,1961,2009,DOM-1800-2025,Dominican Republic,high,0
 DPRepublic of Korea,lassaletta-grassland-share,1961,2009,PRK-1948-2025,Democratic People's Republic of Korea,high,0
 DR Congo,faostat,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
 Dutch Caribbean,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
 Dutch Guiana,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,0
 Ecuador,faostat,1961,2024,ECU-1942-2025,Ecuador,high,221065
+Ecuador,lassaletta-grassland-share,1961,2009,ECU-1942-2025,Ecuador,high,0
 Egypt,faostat,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,243914
 Egypt,faostat,1967,1978,EGY-1967-1979,Egypt (1967-1979),high,243914
 Egypt,faostat,1979,2024,EGY-1979-2025,Egypt,high,243914
+Egypt,lassaletta-grassland-share,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,0
+Egypt,lassaletta-grassland-share,1967,1978,EGY-1967-1979,Egypt (1967-1979),high,0
+Egypt,lassaletta-grassland-share,1979,2009,EGY-1979-2025,Egypt,high,0
 egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
 Egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
 egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
 Egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
 EI Salvador,,,,SLV-1821-2025,El Salvador,high,0
 El Salvador,faostat,1961,2024,SLV-1821-2025,El Salvador,high,207960
+El Salvador,lassaletta-grassland-share,1961,2009,SLV-1821-2025,El Salvador,high,0
 ELS,mueller-synthetic-n,1821,2025,SLV-1821-2025,El Salvador,high,0
 Equatorial Guinea,faostat,1961,1967,GNQ-1886-1968,Equatorial Guinea (1886-1968),high,23719
 Equatorial Guinea,faostat,1968,2024,GNQ-1968-2025,Equatorial Guinea,high,23719
+Equatorial Guinea,lassaletta-grassland-share,1961,1967,GNQ-1886-1968,Equatorial Guinea (1886-1968),high,0
+Equatorial Guinea,lassaletta-grassland-share,1968,2009,GNQ-1968-2025,Equatorial Guinea,high,0
 Eritrea,faostat,1993,2024,ERI-1993-2025,Eritrea,high,14746
 Estonia,faostat,1992,2024,EST-1991-2025,Estonia,high,117745
 Eswatini,faostat,1894,2025,SWZ-1894-2025,Eswatini,high,0
@@ -238,6 +273,7 @@ Faroe Islands,faostat,1961,2024,FRO-1800-2025,Faroe Islands,high,45036
 Federation of Malaya,fao1952,1946,1957,MYS-1946-1957,Malayan Union / Federation of Malaya,high,0
 Fiji,faostat,1961,2024,FJI-1800-2025,Fiji,high,203519
 Finland,faostat,1961,2024,FIN-1940-2025,Finland (1940-2025),high,229594
+Finland,lassaletta-grassland-share,1961,2009,FIN-1940-2025,Finland (1940-2025),high,0
 Formosa,,1895,1945,TWN-1895-1945,,high,0
 Fr Equat Africa,fao1952,1950,1951,AEF-1910-1960,French Equatorial Africa (AEF),high,8
 france,,1800,1870,FRA-1800-1871,France,high,0
@@ -260,10 +296,13 @@ French W Africa,,,,AOF-1895-1960,French West Africa (AOF),high,12
 French West Africa,,,,AOF-1895-1960,French West Africa (AOF),high,150
 FSU,lassaletta-grassland-share,1961,1991,F228-1945-1991,Soviet Union,high,0
 Gabon,faostat,1961,2024,GAB-1960-2025,Gabon,high,162217
+Gabon,lassaletta-grassland-share,1961,2009,GAB-1960-2025,Gabon,high,0
 Gambia,faostat,1961,2024,GMB-1800-2025,Gambia,high,141154
+Gambia,lassaletta-grassland-share,1961,2009,GMB-1800-2025,Gambia,high,0
 Georgia,faostat,1992,2024,GEO-1991-2025,Georgia,high,101509
 Germany,faostat,1961,1989,DEU-1949-1990,"Germany (divided, 1949-1990)",high,266337
 Germany,faostat,1990,2024,DEU-1990-2025,Germany,high,266337
+Germany,lassaletta-grassland-share,1990,2009,DEU-1990-2025,Germany,high,0
 Germany Berlin,fao1952,1937,1937,DEU-1920-1938,Germany (1920-1938),high,0
 Germany Berlin,fao1952,1938,1944,BRL-1938-1945,Greater Berlin (1938-1945),high,0
 Germany Berlin,fao1952,1945,1948,BRL-1945-1949,Berlin (Allied Occupation),high,0
@@ -275,6 +314,7 @@ Germany Western,fao1952,1937,1937,DEU-1920-1938,West Germany (pre-Anschluss back
 Germany Western,fao1952,1938,1948,WZO-1938-1949,Western Germany / Western Occupation Zones,high,30
 Germany Western,fao1952,1949,1951,F78-1949-1990,West Germany,high,5
 Ghana,faostat,1961,2024,GHA-1957-2025,Ghana,high,191734
+Ghana,lassaletta-grassland-share,1961,2009,GHA-1957-2025,Ghana,high,0
 Gold Coast,fao1952,1821,1956,GHA-1898-1956,Gold Coast Colony,high,36
 Gold Coast & Br Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,0
 Gold Coast and Br Tog,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,0
@@ -284,6 +324,7 @@ Gold Coast and British togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and B
 greece,,1830,1881,GRC-1830-1881,Greece,high,0
 greece,,1881,1913,GRC-1881-1913,Greece,high,0
 Greece,faostat,1961,2024,GRC-1947-2025,Greece (1947-2025),high,268331
+Greece,lassaletta-grassland-share,1961,2009,GRC-1947-2025,Greece (1947-2025),high,0
 greece,whep-split-2026-06-29,1919,1946,GRC-1919-1947,Greece,high,0
 greece,whep-split-2026-06-29,1947,2025,GRC-1947-2025,Greece,high,0
 Greenland,faostat,1850,2025,GRL-1800-2025,Greenland,high,0
@@ -294,19 +335,28 @@ Guam,fao1952,1898,1950,GUM-1898-1950,Territory of Guam,high,0
 Guam,fao1952,1950,2025,GUM-1950-2025,Guam (US Territory),high,1
 Guam,faostat,1898,1950,GUM-1898-1950,Territory of Guam,high,0
 Guatemala,faostat,1961,2024,GTM-1821-2025,Guatemala,high,224016
+Guatemala,lassaletta-grassland-share,1961,2009,GTM-1821-2025,Guatemala,high,0
 Guinea,faostat,1961,2024,GIN-1958-2025,Guinea,high,152542
+Guinea,lassaletta-grassland-share,1961,2009,GIN-1958-2025,Guinea,high,0
 Guinea-Bissau,faostat,1961,1973,GNB-1886-1974,Guinea-Bissau (1886-1974),high,127361
 Guinea-Bissau,faostat,1974,2024,GNB-1974-2025,Guinea-Bissau (1974-2025),high,127361
+Guinea-Bissau,lassaletta-grassland-share,1961,1973,GNB-1886-1974,Guinea-Bissau (1886-1974),high,0
+Guinea-Bissau,lassaletta-grassland-share,1974,2009,GNB-1974-2025,Guinea-Bissau (1974-2025),high,0
 Guyana,faostat,1961,2024,GUY-1800-2025,Guyana,high,174251
+Guyana,lassaletta-grassland-share,1961,2009,GUY-1800-2025,Guyana,high,0
 HAI,mueller-synthetic-n,1800,2025,HTI-1800-2025,Haiti,high,0
 Haiti,faostat,1961,2024,HTI-1800-2025,Haiti,high,152458
 hawaii,,1898,1959,HAWI-1898-1959,Territory of Hawaii,high,0
 HON,mueller-synthetic-n,1800,2025,HND-1800-2025,Honduras,high,0
 Honduras,faostat,1961,2024,HND-1800-2025,Honduras,high,213241
+Honduras,lassaletta-grassland-share,1961,2009,HND-1800-2025,Honduras,high,0
 hungary,,1920,1920,HUN-1920-1938,Hungary (1920-1938),high,0
 Hungary,faostat,1961,2024,HUN-1947-2025,Hungary (1947-2025),high,255854
+Hungary,lassaletta-grassland-share,1961,2009,HUN-1947-2025,Hungary (1947-2025),high,0
 Iceland,faostat,1961,2024,ISL-1800-2025,Iceland,high,170791
+Iceland,lassaletta-grassland-share,1961,2009,ISL-1800-2025,Iceland,high,0
 India,faostat,1961,2024,IND-1949-2025,India,high,254312
+India,lassaletta-grassland-share,1961,2009,IND-1949-2025,India,high,0
 indochina,,,,FID-1887-1954,French Indochina,high,259
 indochina cambodia,,1907,1953,KHM-1907-1953,,medium,0
 indochina laos,,1936,1951,LAO-1893-1953,Laos (1893-1953),high,59
@@ -316,18 +366,27 @@ Indonesia,faostat,1961,1968,IDN-1949-1969,Indonesia (1949-1969),high,251399
 Indonesia,faostat,1969,1975,IDN-1969-1976,Indonesia (1969-1976),high,251399
 Indonesia,faostat,1976,2001,IDN-1976-2002,Indonesia (1976-2002),high,251399
 Indonesia,faostat,2002,2024,IDN-2002-2025,Indonesia,high,251399
+Indonesia,lassaletta-grassland-share,1961,1968,IDN-1949-1969,Indonesia (1949-1969),high,0
+Indonesia,lassaletta-grassland-share,1969,1975,IDN-1969-1976,Indonesia (1969-1976),high,0
+Indonesia,lassaletta-grassland-share,1976,2001,IDN-1976-2002,Indonesia (1976-2002),high,0
+Indonesia,lassaletta-grassland-share,2002,2009,IDN-2002-2025,Indonesia,high,0
 Indonesia Bali and Lombok,fao1952,1949,1951,IDN-BLB-1949-1951,Bali and Lombok (within Indonesia),high,0
 Indonesia Bali and Lombok,fao1952,1950,1951,IDN-BLB-1949-1951,indonesia bali and lombok,high,16
 Indonesia Java and Madura,fao1952,1949,1951,IDN-JVM-1949-1951,Java and Madura (within Indonesia),high,0
 Indonesia Other islands,fao1952,1949,1951,IDN-OTH-1949-1951,Other islands (within Indonesia),high,0
 Iran (Islamic Republic of),faostat,1961,2024,IRN-1828-2025,Iran,high,218401
 Iraq,faostat,1961,2024,IRQ-1932-2025,Iraq,high,176958
+Iraq,lassaletta-grassland-share,1961,2009,IRQ-1932-2025,Iraq,high,0
 Ireland,faostat,1961,2024,IRL-1921-2025,Ireland,high,246559
+Ireland,lassaletta-grassland-share,1961,2009,IRL-1921-2025,Ireland,high,0
 israel,,1920,1948,PAL-1920-1948,,medium,0
 israel,,1948,1967,ISR-1948-1967,,medium,0
 Israel,faostat,1961,1966,ISR-1948-1967,Israel (1948-1967),high,234671
 Israel,faostat,1967,1978,ISR-1967-1979,Israel (1967-1979),high,234671
 Israel,faostat,1979,2024,ISR-1979-2025,Israel,high,234671
+Israel,lassaletta-grassland-share,1961,1966,ISR-1948-1967,Israel (1948-1967),high,0
+Israel,lassaletta-grassland-share,1967,1978,ISR-1967-1979,Israel (1967-1979),high,0
+Israel,lassaletta-grassland-share,1979,2009,ISR-1979-2025,Israel,high,0
 israel/palestine,,1925,1948,PAL-1920-1948,British Mandate Palestine,high,0
 israel/palestine,,1949,1949,ISR-1948-1967,Israel,medium,0
 Italian East Africa,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high,0
@@ -336,15 +395,21 @@ italy,,1866,1870,ITA-1866-1870,Italy (1866-1870),high,0
 italy,,1870,1919,ITA-1870-1919,Italy (1870-1919),high,0
 Italy,faostat,1961,2024,ITA-1919-2025,Italy,high,278124
 italy,iia,,1860,SAR-1800-1860,Kingdom of Sardinia (pre-unification Italy),high,0
+Italy,lassaletta-grassland-share,1961,2009,ITA-1919-2025,Italy,high,0
 Ivory Coast,faostat,1960,2025,CIV-1960-2025,Côte d'Ivoire,high,0
 Jamaica,faostat,1961,2024,JAM-1800-2025,Jamaica,high,199570
+Jamaica,lassaletta-grassland-share,1961,2009,JAM-1800-2025,Jamaica,high,0
 japan,,1945,1952,JPN-1945-1952,Japan (occupied),high,0
 Japan,fao1952,1895,1945,JPN-1895-1945,Japanese Empire,high,57
 Japan,faostat,1961,2024,JPN-1952-2025,Japan,high,254381
+Japan,lassaletta-grassland-share,1961,2009,JPN-1952-2025,Japan,high,0
 Jordan,faostat,1961,2024,JOR-1946-2025,Jordan,high,214926
+Jordan,lassaletta-grassland-share,1961,2009,JOR-1946-2025,Jordan,high,0
 Kazakhstan,faostat,1992,2024,KAZ-1991-2025,Kazakhstan,high,120824
 Kenya,faostat,1961,1962,KEN-1926-1963,Kenya (1926-1963),high,239879
 Kenya,faostat,1963,2024,KEN-1963-2025,Kenya,high,239879
+Kenya,lassaletta-grassland-share,1961,1962,KEN-1926-1963,Kenya (1926-1963),high,0
+Kenya,lassaletta-grassland-share,1963,2009,KEN-1963-2025,Kenya,high,0
 Kiribati,faostat,1961,2024,KIR-1800-2025,Kiribati,high,105746
 Korea,fao1952,1949,1951,KOR-1948-2025,South Korea,high,0
 korea,mitchell,1949,1960,KOR-1948-2025,South Korea,high,0
@@ -356,12 +421,17 @@ Lao,faostat,1954,2025,LAO-1954-2025,Lao People's Democratic Republic,high,0
 Lao People's Democratic Republic,faostat,1961,2024,LAO-1954-2025,Laos,high,136563
 Latvia,faostat,1992,2024,LVA-1991-2025,Latvia,high,120121
 Lebanon,faostat,1961,2024,LBN-1944-2025,Lebanon,high,225832
+Lebanon,lassaletta-grassland-share,1961,2009,LBN-1944-2025,Lebanon,high,0
 Lesotho,faostat,1961,1965,LSO-1886-1966,Lesotho (1886-1966),high,109395
 Lesotho,faostat,1966,2024,LSO-1966-2025,Lesotho,high,109395
+Lesotho,lassaletta-grassland-share,1961,1965,LSO-1886-1966,Lesotho (1886-1966),high,0
+Lesotho,lassaletta-grassland-share,1966,2009,LSO-1966-2025,Lesotho,high,0
 Liberia,faostat,1961,2024,LBR-1847-2025,Liberia,high,135600
+Liberia,lassaletta-grassland-share,1961,2009,LBR-1847-2025,Liberia,high,0
 Libya,fao1952,1943,1949,LBY-1943-1949,Libya (1943-1949),high,0
 Libya,fao1952,1950,1951,LBY-1950-1951,Libya under UN Transitional Administration (1950-1951),high,0
 Libya,faostat,1961,2024,LBY-1951-2025,Libya,high,81391
+Libya,lassaletta-grassland-share,1961,2009,LBY-1951-2025,Libya,high,0
 Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high,8
 Libya Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,37
 Liechtenstein,faostat,1850,2025,LIE-1800-2025,Liechtenstein,high,0
@@ -369,32 +439,45 @@ Lithuania,faostat,1992,2024,LTU-1991-2025,Lithuania,high,123044
 ltaly,fao1952,1949,1951,ITA-1919-2025,Italy,high,3
 Luxembourg,faostat,2000,2024,LUX-1839-2025,Luxembourg,high,94451
 Madagascar,faostat,1961,2024,MDG-1882-2025,Madagascar,high,207040
+Madagascar,lassaletta-grassland-share,1961,2009,MDG-1882-2025,Madagascar,high,0
 Makatea,fao1952,1949,1951,PYF-1800-2025,French Polynesia,high,8
 malawi,,1954,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high,0
 Malawi,faostat,1961,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high,185999
 Malawi,faostat,1964,2024,MWI-1964-2025,Malawi,high,185999
+Malawi,lassaletta-grassland-share,1964,2009,MWI-1964-2025,Malawi,high,0
 Malaya Fed of,fao1952,1949,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,25
 Malaya Federation of,fao1952,1939,1945,GBM-1895-1946,British Malaya,high,0
 Malaya Federation of,fao1952,1946,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,0
 Malaysia,faostat,1961,1962,MYS-1957-1963,Malaysia (1957-1963),high,250837
 Malaysia,faostat,1963,1964,MYS-1963-1965,Malaysia (1963-1965),high,250837
 Malaysia,faostat,1965,2024,MYS-1965-2025,Malaysia,high,250837
+Malaysia,lassaletta-grassland-share,1961,1962,MYS-1957-1963,Malaysia (1957-1963),high,0
+Malaysia,lassaletta-grassland-share,1963,1964,MYS-1963-1965,Malaysia (1963-1965),high,0
+Malaysia,lassaletta-grassland-share,1965,2009,MYS-1965-2025,Malaysia,high,0
 Maldives,faostat,1961,2024,MDV-1800-2025,Maldives,high,131539
 Mali,faostat,1961,2024,MLI-1960-2025,Mali,high,181291
+Mali,lassaletta-grassland-share,1961,2009,MLI-1960-2025,Mali,high,0
 Malta,faostat,1961,2024,MLT-1800-2025,Malta,high,207406
+Malta,lassaletta-grassland-share,1961,2009,MLT-1800-2025,Malta,high,0
 Marcinique,fao1952,1816,2025,MTQ-1816-2025,Martinique,high,0
 Marshall Islands,faostat,1991,2024,MHL-1874-2025,Marshall Islands,high,20782
 Martinique,faostat,1961,2006,MTQ-1816-2025,Martinique,high,9541
 Mauritania,faostat,1961,1974,MRT-1960-1975,Mauritania (1960-1975),high,148763
 Mauritania,faostat,1975,1978,MRT-1975-1979,Mauritania (1975-1979),high,148763
 Mauritania,faostat,1979,2024,MRT-1979-2025,Mauritania,high,148763
+Mauritania,lassaletta-grassland-share,1961,1974,MRT-1960-1975,Mauritania (1960-1975),high,0
+Mauritania,lassaletta-grassland-share,1975,1978,MRT-1975-1979,Mauritania (1975-1979),high,0
+Mauritania,lassaletta-grassland-share,1979,2009,MRT-1979-2025,Mauritania,high,0
 Mauritius,faostat,1961,2024,MUS-1800-2025,Mauritius,high,205404
+Mauritius,lassaletta-grassland-share,1961,2009,MUS-1800-2025,Mauritius,high,0
 Mexico,faostat,1961,2024,MEX-1848-2025,Mexico,high,262735
+Mexico,lassaletta-grassland-share,1961,2009,MEX-1848-2025,Mexico,high,0
 Micronesia (Federated States of),faostat,1991,2024,FSM-1991-2025,Micronesia,high,17189
 micronesia (federated states of),iia,1920,1945,CAR-1920-1945,Caroline Islands (Japanese Mandate),high,0
 Moldova,faostat,1991,2025,MDA-1991-2025,Republic of Moldova,high,0
 Monaco,faostat,1850,2025,MCO-1800-2025,Monaco,high,0
 Mongolia,faostat,1961,2024,MNG-1921-2025,Mongolia,high,138130
+Mongolia,lassaletta-grassland-share,1961,2009,MNG-1921-2025,Mongolia,high,0
 Montenegro,faostat,2006,2024,MNE-2006-2025,Montenegro,high,56042
 Montserrat,faostat,1850,2025,MSR-1800-2025,Montserrat,high,0
 Morocco,faostat,1961,1974,MAR-1958-1975,Morocco (1958-1975),high,245737
@@ -402,15 +485,22 @@ Morocco,faostat,1975,1978,MAR-1975-1979,Morocco (1975-1979),high,245737
 Morocco,faostat,1979,2024,MAR-1979-2025,Morocco,high,245737
 Mozambique,faostat,1961,1974,MOZ-1891-1975,Mozambique (1891-1975),high,181274
 Mozambique,faostat,1975,2024,MOZ-1975-2025,Mozambique (1975-2025),high,181274
+Mozambique,lassaletta-grassland-share,1961,1974,MOZ-1891-1975,Mozambique (1891-1975),high,0
+Mozambique,lassaletta-grassland-share,1975,2009,MOZ-1975-2025,Mozambique (1975-2025),high,0
 Myanmar,faostat,1961,2024,MMR-1885-2025,Myanmar,high,172477
+Myanmar,lassaletta-grassland-share,1961,2009,MMR-1885-2025,Myanmar,high,0
 Namibia,faostat,1961,1989,NAM-1920-1990,Namibia (1920-1990),high,172109
 Namibia,faostat,1990,2024,NAM-1990-2025,Namibia (1990-2025),high,172109
+Namibia,lassaletta-grassland-share,1961,1989,NAM-1920-1990,Namibia (1920-1990),high,0
+Namibia,lassaletta-grassland-share,1990,2009,NAM-1990-2025,Namibia (1990-2025),high,0
 natal,,1910,1957,ZAF-1910-2025,Natal province (South Africa),medium,0
 Nauru,faostat,1961,2024,NRU-1888-2025,Nauru,high,21491
 Necherlands,fao1952,1949,1951,NLD-1830-2025,Netherlands,high,8
 Nepal,faostat,1961,2024,NPL-1816-2025,Nepal,high,193378
+Nepal,lassaletta-grassland-share,1961,2009,NPL-1816-2025,Nepal,high,0
 Neth West Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
 neth west indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+Netherlands,lassaletta-grassland-share,1961,2009,NLD-1830-2025,Netherlands,high,0
 Netherlands (Kingdom of the),faostat,1961,2024,NLD-1830-2025,Netherlands,high,259019
 netherlands antilles,,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
 Netherlands Antilles,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
@@ -427,16 +517,21 @@ New Guinea,fao1952,1937,1949,TNGU-1920-1949,Territory of New Guinea,high,0
 New Guinea,fao1952,1950,1951,PNG-1949-1975,Papua and New Guinea (administrative union),medium,0
 New Hebrides,fao1952,1906,1979,VUT-1800-2025,New Hebrides (Vanuatu),high,0
 New Zealand,faostat,1961,2024,NZL-1840-2025,New Zealand,high,240961
+New Zealand,lassaletta-grassland-share,1961,2009,NZL-1840-2025,New Zealand,high,0
 Nicaragua,faostat,1961,2023,NIC-1800-2025,Nicaragua,high,208187
+Nicaragua,lassaletta-grassland-share,1961,2009,NIC-1800-2025,Nicaragua,high,0
 niger,,1911,1922,NER-1911-1922,Niger (Military Territory),high,0
 Niger,faostat,1961,2024,NER-1960-2025,Niger,high,180039
+Niger,lassaletta-grassland-share,1961,2009,NER-1960-2025,Niger,high,0
 Nigeria,faostat,1961,2024,NGA-1961-2025,Nigeria,high,191847
+Nigeria,lassaletta-grassland-share,1961,2009,NGA-1961-2025,Nigeria,high,0
 Niue,faostat,1961,2024,NIU-1800-2025,Niue,high,22055
 Norfolk Island,faostat,1914,2025,NFK-1914-2025,Norfolk Island (Australian Territory),high,0
 Norfolk Islands,fao1952,1914,2025,NFK-1914-2025,Norfolk Island (Australian Territory),high,9
 North Korea,faostat,1948,2025,PRK-1948-2025,Democratic People's Republic of Korea,high,0
 North Macedonia,faostat,1992,2024,MKD-1991-2025,North Macedonia,high,115222
 Norway,faostat,1961,2024,NOR-1800-2025,Norway,high,231582
+Norway,lassaletta-grassland-share,1961,2009,NOR-1800-2025,Norway,high,0
 Occupied Palestinian Territory,lassaletta-grassland-share,1961,2009,PSE-1948-2025,Palestine (West Bank and Gaza),high,0
 Oman,faostat,1961,2024,OMN-1856-2025,Sultanate of Oman,high,144474
 Pacific Is,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,0
@@ -447,6 +542,8 @@ Pacific Islands (U S,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pac
 Pakistan,fao1952,1937,1939,PAK-1937-1947,"Pakistan (territory within British India, 1937-1947)",high,0
 Pakistan,faostat,1961,1970,PAK-1949-1971,Pakistan (1949-1971),high,233714
 Pakistan,faostat,1971,2024,PAK-1971-2025,Pakistan,high,233714
+Pakistan,lassaletta-grassland-share,1961,1970,PAK-1949-1971,Pakistan (1949-1971),high,0
+Pakistan,lassaletta-grassland-share,1971,2009,PAK-1971-2025,Pakistan,high,0
 Palau,faostat,2000,2024,PLW-1991-2025,Palau,high,9051
 palau,iia,1909,1914,GCAR-1899-1914,German Caroline Islands (Karolinen),high,6
 palau,iia,1915,1919,JPN-1895-1945,Palau (Japanese military occupation),high,5
@@ -461,10 +558,15 @@ Papua New Guinea,faostat,1961,1974,PNG-1949-1975,Territory of Papua and New Guin
 Papua New Guinea,faostat,1975,2024,PNG-1975-2025,Papua New Guinea,high,87626
 papua new guinea,iia,1920,1940,TPAP-1906-1949,Territory of New Guinea / Territory of Papua (combined IIA series 1920-1940),low,0
 Paraguay,faostat,1961,2024,PRY-1938-2025,Paraguay,high,194468
+Paraguay,lassaletta-grassland-share,1961,2009,PRY-1938-2025,Paraguay,high,0
 Peru,faostat,1961,2024,PER-1942-2025,Peru,high,239266
+Peru,lassaletta-grassland-share,1961,2009,PER-1942-2025,Peru,high,0
 Philippines,faostat,1961,2024,PHL-1800-2025,Philippines,high,234546
+Philippines,lassaletta-grassland-share,1961,2009,PHL-1800-2025,Philippines,high,0
 Poland,faostat,1961,2024,POL-1945-2025,Poland (1945-2025),high,236068
+Poland,lassaletta-grassland-share,1961,2009,POL-1945-2025,Poland (1945-2025),high,0
 Portugal,faostat,1961,2024,PRT-1800-2025,Portugal,high,262025
+Portugal,lassaletta-grassland-share,1961,2009,PRT-1800-2025,Portugal,high,0
 Portuguese Guinea,fao1952,1886,1974,GNB-1886-1974,Guinea-Bissau (1886-1974),high,18
 Portuguese India,fao1952,1816,1961,PTIND-1816-1961,Portuguese India (Estado da India Portuguesa),high,0
 Portuguese Timor,fao1952,1702,1975,TLS-1800-2025,Timor-Leste,high,10
@@ -498,6 +600,7 @@ Russian Federation,faostat,1992,2013,RUS-1991-2014,Russia (1991-2014),high,12790
 Russian Federation,faostat,2014,2024,RUS-2014-2025,Russia,high,127905
 Rwanda,faostat,1961,1961,RWA-1922-1962,Rwanda (within Ruanda-Urundi),high,162034
 Rwanda,faostat,1962,2024,RWA-1962-2025,Rwanda,high,162034
+Rwanda,lassaletta-grassland-share,1962,2009,RWA-1962-2025,Rwanda,high,0
 rwanda,mitchell,1953,1960,RWB-1922-1962,Ruanda-Urundi,high,0
 rwanda and burundi,,,,RWB-1922-1962,Ruanda-Urundi,high,155
 Ryukyu Islands,,1937,1944,RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),high,0
@@ -506,6 +609,7 @@ Réunion,faostat,1961,2006,REU-1946-2025,Réunion (French Overseas Department),h
 Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high,0
 "Saint Helena, Ascension and Tristan da Cunha",faostat,1850,1967,SHN-1834-1967,Saint Helena (Crown Colony),high,0
 Saint Kitts and Nevis,faostat,1961,2024,KNA-1800-2025,Saint Kitts and Nevis,high,138883
+Saint Kitts and Nevis,lassaletta-grassland-share,1961,2009,KNA-1800-2025,Saint Kitts and Nevis,high,0
 Saint Lucia,faostat,1961,2024,LCA-1838-2025,Saint Lucia,high,166519
 Saint Pierre and Miquelon,faostat,1850,2025,SPM-1816-2025,Saint Pierre and Miquelon,high,0
 Saint Vincent and the Grenadines,faostat,1961,2024,VCT-1833-2025,Saint Vincent and the Grenadines,high,148884
@@ -513,7 +617,9 @@ Samoa,faostat,1961,2024,WSM-1900-2025,Samoa,high,141994
 San Marino,faostat,1850,2025,SMR-1800-2025,San Marino,high,0
 Sao Tome and Principe,faostat,1961,2024,STP-1800-2025,Sao Tome and Principe,high,113416
 Saudi Arabia,faostat,1961,2024,SAU-1924-2025,Saudi Arabia,high,225841
+Saudi Arabia,lassaletta-grassland-share,1961,2009,SAU-1924-2025,Saudi Arabia,high,0
 Senegal,faostat,1961,2024,SEN-1960-2025,Senegal,high,206509
+Senegal,lassaletta-grassland-share,1961,2009,SEN-1960-2025,Senegal,high,0
 serbia,,1816,1878,SER-1816-1878,,medium,0
 serbia,,1878,1913,SER-1878-1913,,medium,0
 serbia,,1913,1918,SER-1913-1918,,medium,0
@@ -531,10 +637,12 @@ Serbia,faostat,2008,2024,SRB-2008-2025,Serbia,high,68875
 Serbia and Montenegro,faostat,1992,2005,SCG-1992-2006,Serbia and Montenegro,high,46585
 Seychelles,faostat,1961,2024,SYC-1903-2025,Seychelles,high,73947
 Sierra Leone,faostat,1961,2024,SLE-1961-2025,Sierra Leone (1961-2025),high,142058
+Sierra Leone,lassaletta-grassland-share,1961,2009,SLE-1961-2025,Sierra Leone (1961-2025),high,0
 Singapore,faostat,1961,1962,SGP-1946-1963,Singapore (Crown Colony),high,100174
 Singapore,faostat,1963,1964,SGP-1963-1965,Singapore (State of Singapore in Malaysia),high,100174
 Singapore,faostat,1965,2024,SGP-1965-2025,Singapore,high,100174
 singapore,iia,1895,1945,GBM-1895-1946,British Malaya (Straits Settlements/Singapore sub-territory),high,0
+Singapore,lassaletta-grassland-share,1965,2009,SGP-1965-2025,Singapore,high,0
 Singapore Christmas Island,fao1952,1949,1951,CXR-1946-1958,Christmas Island (under Singapore administration),high,8
 Slovakia,faostat,1993,2024,SVK-1993-2025,Slovakia,high,124405
 Slovenia,faostat,1992,2024,SVN-1992-2025,Slovenia,high,127691
@@ -542,6 +650,7 @@ Solomon Islands,faostat,1961,2024,SLB-1800-2025,Solomon Islands,high,120550
 Somalia,fao1952,1939,1951,ITS-1908-1960,Italian Somaliland,high,0
 Somalia,faostat,1961,2024,SOM-1960-2025,Somalia,high,62074
 somalia,iia,1920,1959,BSS-1884-1960,British Somaliland Protectorate,medium,81
+Somalia,lassaletta-grassland-share,1961,2009,SOM-1960-2025,Somalia,high,0
 somalia,mitchell,1920,1959,ITS-1908-1960,Italian Somaliland,high,0
 south africa,,1852,1909,CAP-1800-1910,Cape Colony,high,218
 south africa,,1910,2025,ZAF-1910-2025,South Africa (Union and Republic),high,0
@@ -552,8 +661,10 @@ South Sudan,faostat,2012,2024,SSD-2011-2025,South Sudan,high,17383
 South West Africa,fao1952,1937,1951,NAM-1920-1990,Namibia (1920-1990),high,63
 southern rhodesia,,1900,1953,ZWE-1900-1953,,medium,0
 Spain,faostat,1961,2024,ESP-1800-2025,Spain,high,278591
+Spain,lassaletta-grassland-share,1961,2009,ESP-1800-2025,Spain,high,0
 Spanish Guinea,fao1952,1886,1968,GNQ-1886-1968,Spanish Guinea (Equatorial Guinea colonial),high,13
 Sri Lanka,faostat,1961,2024,LKA-1800-2025,Sri Lanka,high,229589
+Sri Lanka,lassaletta-grassland-share,1961,2009,LKA-1800-2025,Sri Lanka,high,0
 SRM,mueller-synthetic-n,1992,2006,SCG-1992-2006,Serbia and Montenegro,high,0
 st helena,fao1952,1931,1951,SHN-1834-1967,Saint Helena,high,0
 St Pierre and Miquelon,fao1952,1937,1951,SPM-1816-2025,Saint Pierre and Miquelon,high,8
@@ -566,16 +677,21 @@ Sudan (former),faostat,1961,2011,SUD-1956-2011,Sudan (1956-2011),high,139921
 Surinam,fao1952,1886,1954,SUR-1886-1954,Dutch Guiana,high,102
 Suriname,faostat,1961,1974,SUR-1954-1975,Surinam (Autonomous),high,152943
 Suriname,faostat,1975,2024,SUR-1975-2025,Suriname,high,152943
+Suriname,lassaletta-grassland-share,1975,2009,SUR-1975-2025,Suriname,high,0
 suriname,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,84
 Swaziland,faostat,1961,2024,SWZ-1894-2025,Eswatini,high,180663
 Swaziland,lassaletta-grassland-share,1961,2009,SWZ-1894-2025,Eswatini,high,0
 Sweden,faostat,1961,2024,SWE-1905-2025,Sweden,high,245456
+Sweden,lassaletta-grassland-share,1961,2009,SWE-1905-2025,Sweden,high,0
 Switzerland,faostat,1961,2024,CHE-1800-2025,Switzerland,high,242756
+Switzerland,lassaletta-grassland-share,1961,2009,CHE-1800-2025,Switzerland,high,0
 Syria,,1946,1967,SYR-1946-1967,Syrian Arab Republic,high,162
 Syria,,1967,2025,SYR-1967-2025,Syrian Arab Republic,high,0
 Syria and Lebanon,fao1952,1944,1953,SYL-1944-1953,Syria and Lebanon (combined statistical unit),high,0
 Syrian Arab Republic,faostat,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-1967),high,113504
 Syrian Arab Republic,faostat,1967,2024,SYR-1967-2025,Syrian Arab Republic,high,113504
+Syrian Arab Republic,lassaletta-grassland-share,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-1967),high,0
+Syrian Arab Republic,lassaletta-grassland-share,1967,2009,SYR-1967-2025,Syrian Arab Republic,high,0
 Tajikistan,faostat,1992,2024,TJK-1991-2025,Tajikistan,high,71520
 tanganyika,,1922,1964,TAN-1922-1964,,medium,0
 tanzania,,1891,1920,TAN-1891-1920,,medium,0
@@ -583,8 +699,10 @@ tanzania,,1920,1922,TAN-1920-1922,,medium,0
 tanzania,,1922,1964,TAN-1922-1964,,medium,0
 Tanzania,faostat,1964,2025,TZA-1964-2025,United Republic of Tanzania,high,0
 Thailand,faostat,1961,2024,THA-1909-2025,Thailand,high,252783
+Thailand,lassaletta-grassland-share,1961,2009,THA-1909-2025,Thailand,high,0
 Timor-Leste,faostat,1961,2024,TLS-1800-2025,Timor-Leste,high,109034
 Togo,faostat,1961,2024,TGO-1960-2025,Togo,high,186647
+Togo,lassaletta-grassland-share,1961,2009,TGO-1960-2025,Togo,high,0
 Tonga,faostat,1961,2024,TON-1800-2025,Tonga,high,46569
 TRI,mueller-synthetic-n,1800,2025,TTO-1800-2025,Trinidad and Tobago,high,0
 Trieste,fao1952,1937,1946,TRS-1947-1954,Province of Trieste (pre-FTT),medium,0
@@ -594,8 +712,10 @@ Trieste uk us,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,0
 Trieste UK-US,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,0
 Trieste us uk,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,0
 Trinidad and Tobago,faostat,1961,2024,TTO-1800-2025,Trinidad and Tobago,high,211626
+Trinidad and Tobago,lassaletta-grassland-share,1961,2009,TTO-1800-2025,Trinidad and Tobago,high,0
 Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,2
 Tunisia,faostat,1961,2024,TUN-1881-2025,Tunisia,high,226193
+Tunisia,lassaletta-grassland-share,1961,2009,TUN-1881-2025,Tunisia,high,0
 Turkey,,,,TUR-1920-2025,Türkiye,high,323
 turkey,,1913,1914,TUR-1913-1914,Türkiye (1913-1914),high,0
 Turkmenistan,faostat,1992,2024,TKM-1991-2025,Turkmenistan,high,63651
@@ -604,12 +724,16 @@ Türkiye,faostat,1961,2024,TUR-1920-2025,Türkiye (1920-2025),high,258437
 U of S Africa,fao1952,1910,1961,ZAF-1910-2025,Union of South Africa,high,65
 Uganda,faostat,1961,1961,UGA-1926-1962,Uganda (1926-1962),high,200589
 Uganda,faostat,1962,2024,UGA-1962-2025,Uganda,high,200589
+Uganda,lassaletta-grassland-share,1961,1961,UGA-1926-1962,Uganda (1926-1962),high,0
+Uganda,lassaletta-grassland-share,1962,2009,UGA-1962-2025,Uganda,high,0
 Ukraine,faostat,1992,2013,UKR-1991-2014,Ukraine (1991-2014),high,117919
 Ukraine,faostat,2014,2024,UKR-2014-2025,Ukraine,high,117919
 Union of S Africa,fao1952,1910,1961,ZAF-1910-2025,Union of South Africa,high,0
 union of south africa,,1910,2025,ZAF-1910-2025,,medium,0
 United Arab Emirates,faostat,1961,2024,ARE-1892-2025,United Arab Emirates,high,201802
+United Arab Emirates,lassaletta-grassland-share,1961,2009,ARE-1892-2025,United Arab Emirates,high,0
 United Kingdom,faostat,1921,2025,GBR-1921-2025,United Kingdom of Great Britain and Northern Ireland,high,0
+United Kingdom,lassaletta-grassland-share,1961,2009,GBR-1921-2025,United Kingdom,high,0
 United Kingdom Great Britain,fao1952,1937,1951,GBR-1921-2025,United Kingdom,high,9
 United Kingdom of Great Britain and Northern Ireland,faostat,1961,2024,GBR-1921-2025,United Kingdom,high,258802
 United Republic of Tanzania,faostat,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high,219893
@@ -634,6 +758,7 @@ United States Virgin Islands,faostat,1917,2025,VIR-1917-2025,United States Virgi
 united states virgin islands,iia,1909,1916,DWI-1800-1917,Danish West Indies,high,0
 united states virgin islands,iia,1917,1945,VIR-1917-2025,United States Virgin Islands,high,0
 Uruguay,faostat,1961,2024,URY-1828-2025,Uruguay,high,212716
+Uruguay,lassaletta-grassland-share,1961,2009,URY-1828-2025,Uruguay,high,0
 USSR,,1921,1940,F228-1921-1940,RSFSR/USSR (1921-1940),high,0
 USSR,,1940,1945,F228-1940-1945,USSR (1940-1945),high,0
 USSR,,1945,1991,F228-1945-1991,USSR (1945-1991),high,0
@@ -658,6 +783,7 @@ Yemen,fao1952,1918,1962,MKY-1918-1962,Mutawakkilite Kingdom of Yemen,high,8
 Yemen,faostat,1961,1989,F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),high,187189
 Yemen,faostat,1990,2024,YEM-1990-2025,Yemen (1990-2025),high,187189
 yemen,iia,1918,1962,MKY-1918-1962,Mutawakkilite Kingdom of Yemen,high,21
+Yemen,lassaletta-grassland-share,1990,2009,YEM-1990-2025,Yemen (1990-2025),high,0
 Yugoslav SFR,faostat,1961,1990,F248-1947-1991,Yugoslavia (1947-1991),high,112967
 Yugoslav SFR,faostat,1991,1991,F248-1991-1992,Yugoslavia (1991-1992),high,112967
 yugoslav sfr,juan,1909,1912,SER-1878-1913,Kingdom of Serbia (1878-1913),medium,0
@@ -665,6 +791,7 @@ yugoslav sfr,juan,1913,1913,SER-1913-1918,Kingdom of Serbia post-Balkan Wars,med
 yugoslavia,,1920,1947,F248-1920-1947,Yugoslavia (1920-1947),high,0
 Zambia,faostat,1961,1963,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),high,199421
 Zambia,faostat,1964,2024,ZMB-1964-2025,Zambia,high,199421
+Zambia,lassaletta-grassland-share,1964,2009,ZMB-1964-2025,Zambia,high,0
 zambia,mitchell,1953,1964,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland,high,0
 Zanzibar and Pemba,fao1952,1890,1963,ZNZ-1890-1963,Zanzibar Protectorate,high,71
 ZAR,mueller-synthetic-n,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
@@ -672,3 +799,5 @@ zimbabwe,,1953,1964,SRH-1953-1964,Southern Rhodesia (within Federation 1953-1964
 Zimbabwe,faostat,1961,1963,SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",high,224061
 Zimbabwe,faostat,1964,1979,ZWE-1964-1980,Zimbabwe (1964-1980),high,224061
 Zimbabwe,faostat,1980,2024,ZWE-1980-2025,Zimbabwe (1980-2025),high,224061
+Zimbabwe,lassaletta-grassland-share,1964,1979,ZWE-1964-1980,Zimbabwe (1964-1980),high,0
+Zimbabwe,lassaletta-grassland-share,1980,2009,ZWE-1980-2025,Zimbabwe (1980-2025),high,0

@@ -86,9 +86,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "fa4ca5f3459b13ca2993c7205feca2f62cd09d93693b4ee1792cd7cfb7f2ec01",
-  "aliases": 673,
-  "labels": 462,
+  "sha256": "8f53960a474fc5f7698785491eee140d47a10e5dde98e6991260fcca49cab000",
+  "aliases": 802,
+  "labels": 463,
   "sources": [
    "fao1952",
    "faostat",
