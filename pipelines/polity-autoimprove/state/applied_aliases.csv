@@ -649,7 +649,7 @@ GUA,mueller-synthetic-n,1821,2025,Guatemala,GTM-1821-2025,high,FAO-style legacy 
 HAI,mueller-synthetic-n,1800,2025,Haiti,HTI-1800-2025,high,FAO-style legacy code; ISO3 is HTI.,
 HON,mueller-synthetic-n,1800,2025,Honduras,HND-1800-2025,high,FAO-style legacy code; ISO3 is HND.,
 ROM,mueller-synthetic-n,1947,2025,Romania,ROU-1947-2025,high,FAO-style legacy code; ISO3 is ROU (ROM was the pre-2002 ISO3).,
-SRM,mueller-synthetic-n,1975,2025,Suriname,SUR-1975-2025,high,FAO-style legacy code; ISO3 is SUR.,
+SRM,mueller-synthetic-n,1992,2006,Serbia and Montenegro,SCG-1992-2006,high,"Identified by ELIMINATION, not resemblance. SRM previously pointed at SUR-1975-2025 on the reading that it was a legacy code for Suriname, but SUR appears in the same file as its own distinct code and resolves to that polity directly by ISO3 — so Suriname received two sets of rates and this entity received none. Every ex-Yugoslav republic is present (HRV, BIH, MKD, SVN) while SRB, SCG and MNE are all absent, so SRM is the federal state of Serbia and Montenegro, which is what existed while these rates were compiled.",
 TRI,mueller-synthetic-n,1800,2025,Trinidad and Tobago,TTO-1800-2025,high,FAO-style legacy code; ISO3 is TTO.,
 ZAR,mueller-synthetic-n,1960,2025,Democratic Republic of the Congo,COD-1960-2025,high,"FAO-style legacy code for Zaire, renamed DR Congo in 1997; ISO3 is COD.",
 Cape Verde,lassaletta-grassland-share,1961,1975,Cabo Verde,CPV-1886-1975,high,Pre-2013 English name for Cabo Verde. Split at independence: the 1961-1975 rows fall in the Portuguese colonial period.,

@@ -38,6 +38,12 @@ name: Validate database
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
 #                            two aliases routing Viet Nam differently
+#   validate_iso_codes       FRS-1977-2025 is modern Djibouti and carried `iso3: FRS`.
+#                            Djibouti's ISO 3166-1 alpha-3 is DJI and FRS is not an ISO
+#                            code at all, so a consumer holding a real country code could
+#                            not reach the polity and matchlib fell back to matching on
+#                            name. The polity-code PREFIX is a separate thing and stays.
+#
 #   validate_period_overlaps four pairs of live polities in the SAME family cover the
 #                            same years, so a year-aware matcher cannot choose between
 #                            them on history alone and falls back on tie-break order.
@@ -172,6 +178,10 @@ jobs:
       - name: No two periods of one family cover the same year
         if: '!cancelled()'
         run: python3 scripts/validate_period_overlaps.py
+
+      - name: Live polities carry real ISO 3166-1 codes
+        if: '!cancelled()'
+        run: python3 scripts/validate_iso_codes.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'

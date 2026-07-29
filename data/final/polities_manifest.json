@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "309655a57c885f84e8dd10286965d21076f6d9a5f6e30f138ab22a689b58a951",
+ "identity_sha256": "3e07d11414b2c46f7154688198148586de9411b54143e74f031690a515c029f7",
  "counts": {
   "total": 740,
   "live": 713,
@@ -79,7 +79,7 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "c0c5e03b01e28b38346f961bc14626540949ecd3315e98defa9ba68c8193d44e",
+  "sha256": "555e05167d26f6f69b6e097d787b9e57f4a6c652db57a241de17eaecbd628376",
   "aliases": 672,
   "labels": 462,
   "sources": [
