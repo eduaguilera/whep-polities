@@ -38,6 +38,15 @@ name: Validate database
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
 #                            two aliases routing Viet Nam differently
+#   validate_reporting_areas six GADM territories are claimed by TWO aggregate
+#                            reporting polygons each. Palau and the Northern Mariana
+#                            Islands sit in both Asia Other and Oceania Other; the
+#                            Netherlands Antilles components sit in both ANT and Latin
+#                            America Other for the 1961-2010 years the two spans share.
+#                            These aggregates receive data, so two of them claiming the
+#                            same ground puts two values on one territory — and the ROW
+#                            union hides it, because unary_union deduplicates.
+#
 #   validate_aliases         five aliases were silently INERT — two had an
 #                            unquoted comma in a field, which shifted every
 #                            column and dropped the target; one targeted a bare
@@ -148,6 +157,10 @@ jobs:
       - name: Duplicated constants still agree
         if: '!cancelled()'
         run: python3 scripts/validate_constants.py
+
+      - name: No territory belongs to two reporting aggregates
+        if: '!cancelled()'
+        run: python3 scripts/validate_reporting_areas.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
