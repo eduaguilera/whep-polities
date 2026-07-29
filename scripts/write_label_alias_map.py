@@ -46,7 +46,8 @@ COLUMNS = (
     "polity_code",    # the polity the label resolves to
     "common_name",    # a human-readable name for that polity
     "confidence",     # matcher confidence in the assignment
-    "observed_rows",  # source rows seen for this label, 0 when only mappable
+    "observed_rows",  # rows seen for this label: a count, 0 if measured and none,
+    #                   EMPTY if this source's corpus is not in this repo (see below)
 )
 
 ap = argparse.ArgumentParser()
@@ -92,7 +93,25 @@ for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
             #
             # With the count exposed, the consumer can fold only what genuinely has no
             # data, instead of guessing from a single domain's flag.
-            "observed_rows": (r.get("rows") or "0").strip() or "0",
+            # EMPTY IS PRESERVED, and is not the same fact as 0. This used to coerce
+            # both to "0", which made the column say "no data row uses this alias"
+            # about 393 aliases when only 29 had actually been measured at zero.
+            #
+            # The registry distinguishes three states and so must the contract:
+            #   a number   measured, that many rows
+            #   0          measured, genuinely none
+            #   empty      NOT MEASURED here, because this source's corpus is not in
+            #              this repository
+            #
+            # The third state is most of the non-FAOSTAT sources. All 138
+            # lassaletta-grassland-share aliases, all 10 mueller-synthetic-n and all 4
+            # crops-manure-n read empty, because those datasets live in the whep R
+            # package and this repo never sees them. Measured over there, they are
+            # anything but inert: 6,082 Lassaletta country-years resolve, 184
+            # crops_manure_n codes, 156 Mueller codes. Publishing 0 for them invited
+            # exactly the wrong conclusion, and an inert-alias check reading this
+            # column would have flagged every one of them.
+            "observed_rows": (r.get("rows") or "").strip(),
         }
     )
 
