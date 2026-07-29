@@ -1,673 +1,673 @@
-source_label,source,year_start,year_end,polity_code,common_name,confidence
-Abyssinia,,1800,1889,ETH-1800-1889,Ethiopia (1800-1889),high
-Abyssinia,,1889,1897,ETH-1889-1897,Ethiopia (1889-1897),high
-Abyssinia,,1897,1902,ETH-1897-1902,Ethiopia (1897-1902),high
-Abyssinia,,1902,1907,ETH-1902-1907,Ethiopia (1902-1907),high
-Abyssinia,,1907,1936,ETH-1907-1936,Ethiopia (1907-1936),high
-Aden Protectorate,fao1952,1937,1951,ADE-1839-1963,Aden Protectorate,high
-Afghanistan,faostat,1961,2024,AFG-1919-2025,Afghanistan,high
-Africa Orientale Italiana,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high
-Alaska,fao1952,1867,1959,ALK-1867-1959,Territory of Alaska,high
-Albania,faostat,1961,2024,ALB-1913-2025,Albania (1913-2025),high
-algeria,,1831,1886,DZA-1831-1886,Algeria,high
-algeria,,1886,1902,DZA-1886-1902,Algeria,high
-algeria,,1902,1919,DZA-1902-1919,Algeria,high
-algeria,,1919,1962,DZA-1919-1962,Algeria,high
-algeria,,1962,2025,DZA-1962-2025,Algeria,high
-Algeria,faostat,1961,1961,DZA-1919-1962,Algeria (1919-1962),high
-Algeria,faostat,1962,2024,DZA-1962-2025,Algeria (1962-2025),high
-American Samoa,,,,ASM-1900-2025,Territory of American Samoa,high
-American Samoa,faostat,1900,2025,ASM-1900-2025,Territory of American Samoa,high
-Andorra,faostat,1850,2025,AND-1800-2025,Andorra,high
-Anglo-Egypt Sudan,fao1952,1934,1956,SUD-1934-1956,Sudan (Anglo-Egyptian Condominium),high
-Anglo-Egyptian Sudan,,1934,1956,SUD-1934-1956,Sudan (Anglo-Egyptian Condominium),high
-angola,,1898,1904,ANG-1891-1905,Portuguese Angola (pre-1905),high
-angola,,1905,1960,ANG-1905-1975,Angola (Portuguese colony 1905-1975),high
-Angola,faostat,1961,1974,ANG-1905-1975,Angola (1905-1975),high
-Angola,faostat,1975,2024,AGO-1975-2025,"Angola (independent, 1975–2025)",high
-Antigua and Barbuda,faostat,1961,2024,ATG-1800-2025,Antigua and Barbuda,high
-Argentina,faostat,1961,2024,ARG-1902-2025,Argentina,high
-argentina,iia,1909,1945,ARG-1902-2025,Argentina,high
-Argentina,mitchell,1870,1898,ARG-1800-1899,Argentina (to 1899),high
-Argentina,mitchell,1899,1901,ARG-1899-1902,Argentina (1899-1902),high
-Argentine Republic,mitchell,1870,1898,ARG-1800-1899,Argentina (to 1899),high
-Argentine Republic,mitchell,1899,1901,ARG-1899-1902,Argentina (1899-1902),high
-Armenia,faostat,1992,2024,ARM-1991-2025,Armenia,high
-australia,,1800,1900,AUS-1800-1901,,high
-australia,,1901,2025,AUS-1901-2025,,high
-Australia,faostat,1961,2024,AUS-1901-2025,Australia,high
-Austria,faostat,1961,2024,AUT-1919-2025,Austria,high
-Azerbaijan,faostat,1992,2024,AZE-1991-2025,Azerbaijan,high
-azerbaijan,iia-tea,1920,1990,AZE-SSR-1920-1991,Azerbaijan SSR,high
-Bahamas,faostat,1961,2024,BHS-1800-2025,Bahamas,high
-Bahrain,faostat,1961,2024,BHR-1800-2025,Bahrain,high
-Bangladesh,faostat,1961,1970,BGD-1947-1971,East Pakistan (1947-1971),high
-Bangladesh,faostat,1971,2024,BGD-1971-2025,Bangladesh,high
-Barbados,faostat,1961,2024,BRB-1800-2025,Barbados,high
-Basutoland,fao1952,1886,1966,LSO-1886-1966,Basutoland,high
-Bechuanaland,fao1952,1937,1951,BEC-1885-1966,Bechuanaland Protectorate,high
-Belarus,faostat,1992,2024,BLR-1991-2025,Belarus,high
-Belgian Congo,,,,COD-1910-1960,Belgian Congo,high
-Belgian Congo (fao1952),,,,COD-1910-1960,Belgian Congo,high
-Belgium,faostat,2000,2024,BEL-1831-2025,Belgium,high
-belgium,iia,,,BEL-1831-2025,Belgium,high
-Belgium-Luxembourg,faostat,1961,1999,BLX-1850-1999,Belgium-Luxembourg,high
-Belgium-Luxemburg,lassaletta-grassland-share,1961,1999,BLX-1921-1999,Belgium-Luxembourg Economic Union,high
-Belize,faostat,1961,1969,BLZ-1886-1970,British Honduras,high
-Belize,faostat,1970,1980,BLZ-1970-1981,Belize (pre-independence),high
-Belize,faostat,1981,2024,BLZ-1981-2025,Belize,high
-Benin,faostat,1961,2024,BEN-1960-2025,Benin,high
-Bermuda,fao1952,1937,1951,BMU-1684-1968,Bermuda,high
-Bermuda,faostat,1961,1967,BMU-1684-1968,British Crown Colony of Bermuda,high
-Bermuda,faostat,1968,2013,BMU-1968-2025,Bermuda,high
-bermuda,iia,1930,1945,BMU-1684-1968,Bermuda,high
-Bhutan,faostat,1961,2024,BTN-1800-2025,Bhutan,high
-Bolivia (Plurinational State of),faostat,1961,2024,BOL-1938-2025,Bolivia,high
-Bosnia and Herzegovina,faostat,1992,2024,BIH-1992-2025,Bosnia and Herzegovina,high
-botswana,,1885,1966,BEC-1885-1966,,medium
-botswana,,1966,2025,BWA-1966-2025,,medium
-Botswana,faostat,1961,1965,BEC-1885-1966,Bechuanaland Protectorate (1885-1966),high
-Botswana,faostat,1966,2024,BWA-1966-2025,Botswana,high
-Br Solomon Is,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high
-Br Solomon Islands,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high
-Br West Indies Barbados,fao1952,1950,1951,BRB-1800-2025,Barbados,high
-Br West Indies Jamaica,,,,JAM-1800-2025,Jamaica,high
-Br West Indies Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high
-Br West Indies St Kitts-Nevis Anguilla,fao1952,1949,1967,KNA-1800-2025,Saint Kitts-Nevis-Anguilla (British colony),high
-Br West Indies St Lucia,fao1952,1949,1951,LCA-1838-2025,Saint Lucia,high
-Br West Indies St Vincent,fao1952,1949,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high
-Brazil,faostat,1961,2024,BRA-1909-2025,Brazil,high
-British Borneo Brunei,,,,BRN-1888-2025,,high
-British Borneo North Borneo,,1937,1951,BNB-1881-1963,British North Borneo,high
-British Borneo Sarawak,fao1952,1937,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high
-british honduras,,1886,1970,BLZ-1886-1970,British Honduras,high
-British Solomon Is,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high
-British Solomon Islands,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high
-British Somaliland,fao1952,1884,1960,BSS-1884-1960,British Somaliland Protectorate,high
-British Togoland,,1920,1957,BTL-1920-1957,British Togoland,high
-British Virgin Islands,faostat,1850,2025,VGB-1800-2025,British Virgin Islands,high
-british virgin islands,iia-cotton,1909,1925,VGB-1800-2025,British Virgin Islands,high
-British W Indies Jamaica,fao1952,1949,1951,JAM-1800-2025,Jamaica,high
-British West Indies,fao1952,1937,1951,BWI-1833-1962,British West Indies (colonial aggregate),high
-British West Indies  Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high
-British West Indies Bahama Islands,fao1952,1937,1951,BHS-1800-2025,Bahamas,high
-British West Indies Barbados,fao1952,1935,1951,BRB-1800-2025,Barbados,high
-British West Indies Grenada,fao1952,1800,1962,GRD-1800-2025,Grenada,high
-british west indies jamaica,,1800,2025,JAM-1800-2025,,medium
-British West Indies Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high
-British West Indies St Lucia,fao1952,1939,1951,LCA-1838-2025,Saint Lucia,high
-British West Indies St Vincent,fao1952,1939,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high
-British West Indies Trinidad and Tobago,fao1952,1937,1951,TTO-1800-2025,Trinidad and Tobago,high
-Brunei Darussalam,faostat,1961,2024,BRN-1888-2025,Brunei Darussalam,high
-bulgaria,,1878,1912,BGR-1878-1913,,high
-bulgaria,,1913,1917,BGR-1913-1918,,high
-bulgaria,,1918,1918,BGR-1918-1919,,high
-bulgaria,,1919,1939,BGR-1919-1940,,high
-bulgaria,,1940,2025,BGR-1940-2025,,high
-Bulgaria,faostat,1961,2024,BGR-1940-2025,Bulgaria (1940-2025),high
-Burkina Faso,faostat,1961,2024,BFA-1960-2025,Burkina Faso,high
-burkina faso,iia,1919,1932,BFA-1919-1932,Upper Volta (1919-1932),high
-burma,,1826,1852,MMR-1826-1852,,medium
-burma,,1885,2025,MMR-1885-2025,,medium
-burma,mitchell,1852,1885,MMR-LWR-1852-1885,British Lower Burma (1852-1885),high
-Burundi,faostat,1961,1961,BDI-1922-1962,Burundi (within Ruanda-Urundi),high
-Burundi,faostat,1962,2024,BDI-1962-2025,Burundi,high
-burundi,iia,1919,1921,RWB-1919-1922,Ruanda-Urundi (occupation),high
-burundi,iia,1922,1961,RWB-1922-1962,Ruanda-Urundi,high
-BZE,mueller-synthetic-n,1981,2025,BLZ-1981-2025,Belize,high
-Cabo Verde,faostat,1961,1974,CPV-1886-1975,Cape Verde (Portuguese colony),high
-Cabo Verde,faostat,1975,2024,CPV-1975-2025,Cabo Verde,high
-Cambodia,faostat,1961,2024,KHM-1953-2025,Cambodia,high
-cameroon,,1884,1911,GKM-1884-1912,German Kamerun (1884-1912),high
-cameroon,,1912,1915,GKM-1912-1916,German Kamerun (1912-1916),high
-Cameroon,faostat,1961,2024,CMR-1961-2025,Cameroon,high
-canada,,1866,1869,CAN-1866-1870,Canada (original four provinces 1866-1870),high
-canada,,1870,1885,CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),high
-canada,,1886,1886,CAN-1886-1948,Canada (post-CPR completion 1886),high
-canada,,1948,1948,CAN-1886-1948,Canada,high
-Canada,faostat,1961,2024,CAN-1948-2025,Canada,high
-cape natal,mitchell,1918,1957,ZAF-1910-2025,Cape and Natal provinces (South Africa),medium
-Cape of Good Hope,,,,CAP-1800-1910,Cape Colony,high
-cape province,,1800,1910,CAP-1800-1910,,medium
-Cape Verde,lassaletta-grassland-share,1961,1975,CPV-1886-1975,Cabo Verde,high
-Cape Verde,lassaletta-grassland-share,1975,2009,CPV-1975-2025,Cabo Verde,high
-Cape Verde Islands,fao1952,1886,1975,CPV-1886-1975,Cape Verde Islands,high
-Central African Republic,faostat,1961,2024,CAF-1960-2025,Central African Republic,high
-Chad,faostat,1961,2024,TCD-1960-2025,Chad,high
-Chile,faostat,1961,2024,CHL-1902-2025,Chile,high
-china 22 provinces,fao1952,1937,1945,CHN-1932-1945,China,high
-china 22 provinces,fao1952,1945,1947,CHN-1945-1947,China,high
-china 22 provinces,fao1952,1947,1949,CHN-1947-1949,China,high
-china 22 provinces,fao1952,1949,1950,CHN-1949-1950,China,high
-china 22 provinces,fao1952,1950,1951,CHN-1950-2025,China,high
-China and Manchuria,fao1952,1949,1949,CHN-1949-1950,China (1949-1950),high
-China and Manchuria,fao1952,1950,1952,CHN-1950-2025,China (1950-2025),high
-China Manchuria,fao1952,1937,1945,MAN-1932-1945,Manchukuo,high
-China Manchuria,fao1952,1945,1947,CHN-1945-1947,China (1945-1947),high
-China Manchuria,fao1952,1947,1949,CHN-1947-1949,China (1947-1949),high
-China Manchuria,fao1952,1949,1950,CHN-1949-1950,China (1949-1950),high
-China Manchuria,fao1952,1950,2025,CHN-1950-2025,China (1950-2025),high
-china taiwan,,1895,1944,TWN-1895-1945,,high
-china taiwan,,1945,2025,TWN-1945-2025,,high
-"China, Hong Kong SAR",faostat,1961,2024,HKG-1842-2025,Hong Kong,high
-"China, Macao SAR",faostat,1961,2024,MAC-1800-2025,"China, Macao SAR",high
-"china, mainland",,1800,1895,CHN-1800-1895,China (mainland),high
-"china, mainland",,1895,1913,CHN-1895-1913,China (mainland),high
-"china, mainland",,1913,1914,CHN-1913-1914,China (mainland),high
-"china, mainland",,1914,1921,CHN-1914-1921,China (mainland),high
-"china, mainland",,1921,1932,CHN-1921-1932,China (mainland),high
-"china, mainland",,1932,1945,CHN-1932-1945,China (mainland),high
-"china, mainland",,1945,1947,CHN-1945-1947,China (mainland),high
-"china, mainland",,1947,1949,CHN-1947-1949,China (mainland),high
-"china, mainland",,1949,1950,CHN-1949-1950,China (mainland),high
-"china, mainland",,1950,2025,CHN-1950-2025,China (mainland),high
-"China, mainland",faostat,1961,2024,CHN-1950-2025,China (PRC),high
-"china, manchuria province of",,1921,1932,CHN-1921-1932,,medium
-"china, manchuria province of",,1932,1945,MAN-1932-1945,,medium
-"china, manchuria province of",,1945,1947,CHN-1945-1947,,medium
-"china, manchuria province of",,1947,1949,CHN-1947-1949,,medium
-"china, manchuria province of",,1950,2025,CHN-1950-2025,,medium
-"China, Manchuria Province of",mitchell,1945,1950,MAN-1945-1950,manchuria,high
-"china, taiwan province of",,1895,1944,TWN-1895-1945,Taiwan,high
-"China, Taiwan Province of",faostat,1961,2024,TWN-1945-2025,Taiwan,high
-Christmas Island,faostat,1946,1958,CXR-1946-1958,Christmas Island (under Singapore administration),high
-Colombia,faostat,1961,2024,COL-1922-2025,Colombia,high
-Comoro Islands,fao1952,1949,1951,COM-1946-1975,Comoros (1946-1975),high
-Comoros,faostat,1961,1974,COM-1946-1975,Comoros (1946-1975),high
-Comoros,faostat,1975,2024,COM-1975-2025,Comoros,high
-Congo,faostat,1961,2024,COG-1960-2025,Congo,high
-Cook Islands,faostat,1961,2024,COK-1800-2025,Cook Islands,high
-COS,mueller-synthetic-n,1800,2025,CRI-1800-2025,Costa Rica,high
-Costa Rica,faostat,1961,2024,CRI-1800-2025,Costa Rica,high
-Cote d'Ivoire,lassaletta-grassland-share,1961,2009,CIV-1960-2025,Cote d'Ivoire,high
-Croatia,faostat,1992,2024,HRV-1992-2025,Croatia,high
-Cuba,faostat,1961,2024,CUB-1800-2025,Cuba,high
-Cyprus,faostat,1961,2024,CYP-1879-2025,Cyprus,high
-cyprus,iia,1879,2025,CYP-1879-2025,Cyprus,high
-czech republic,,1919,1938,F51-1918-1938,,high
-czech republic,,1919,1938,F51-1918-1938,Czechoslovakia (1918-1938),high
-czech republic,,1938,1945,F51-1938-1945,,high
-czech republic,,1939,1945,F51-1938-1945,Czechoslovakia (1938-1945),medium
-czech republic,,1945,1947,F51-1945-1947,,high
-czech republic,,1946,1947,F51-1945-1947,Czechoslovakia (1945-1947),high
-czech republic,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high
-Czech Republic,faostat,1993,2025,CZE-1993-2025,Czechia,high
-Czechia,faostat,1993,2024,CZE-1993-2025,Czechia,high
-czechoslovakia,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high
-Czechoslovakia,faostat,1961,1992,F51-1947-1993,Czechoslovakia (1947-1993),high
-czechoslovakia,juan,1914,1918,CZE-1804-1918,Czech Lands (Bohemia-Moravia-Silesia under Austria-Hungary),high
-Côte d'Ivoire,faostat,1961,2024,CIV-1960-2025,Côte d'Ivoire,high
-Democratic People's Republic of Korea,faostat,1961,2024,PRK-1948-2025,North Korea,high
-Democratic Republic of the Congo,faostat,1961,2024,COD-1960-2025,Democratic Republic of the Congo,high
-Denmark,faostat,1961,2024,DNK-1920-2025,Denmark,high
-denmark the faeroes,fao1952,1800,2025,FRO-1800-2025,Faroe Islands,high
-Djibouti,faostat,1961,1976,FRS-1884-1977,French Somaliland,high
-Djibouti,faostat,1977,2024,FRS-1977-2025,Djibouti (formerly French Somaliland),high
-djibouti,iia,1884,1977,FRS-1884-1977,French Somaliland,high
-Dominica,faostat,1961,2024,DMA-1800-2025,Dominica,high
-Dominican Rep,fao1952,1800,2025,DOM-1800-2025,Dominican Republic,high
-Dominican Republic,faostat,1961,2024,DOM-1800-2025,Dominican Republic,high
-DPRepublic of Korea,lassaletta-grassland-share,1961,2009,PRK-1948-2025,Democratic People's Republic of Korea,high
-DR Congo,faostat,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high
-Dutch Caribbean,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-Dutch Guiana,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high
-Ecuador,faostat,1961,2024,ECU-1942-2025,Ecuador,high
-Egypt,faostat,1961,1966,EGY-1925-1967,Egypt (1925-1967),high
-Egypt,faostat,1967,1978,EGY-1967-1979,Egypt (1967-1979),high
-Egypt,faostat,1979,2024,EGY-1979-2025,Egypt,high
-egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high
-Egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high
-egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high
-Egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high
-EI Salvador,,,,SLV-1821-2025,El Salvador,high
-El Salvador,faostat,1961,2024,SLV-1821-2025,El Salvador,high
-ELS,mueller-synthetic-n,1821,2025,SLV-1821-2025,El Salvador,high
-Equatorial Guinea,faostat,1961,1967,GNQ-1886-1968,Equatorial Guinea (1886-1968),high
-Equatorial Guinea,faostat,1968,2024,GNQ-1968-2025,Equatorial Guinea,high
-Eritrea,faostat,1993,2024,ERI-1993-2025,Eritrea,high
-Estonia,faostat,1992,2024,EST-1991-2025,Estonia,high
-Eswatini,faostat,1894,2025,SWZ-1894-2025,Eswatini,high
-Ethiopia,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high
-ethiopia,fao1952,1936,1941,ETH-1936-1941,ethiopia,high
-Ethiopia,faostat,1993,2024,ETH-1993-2025,Ethiopia,high
-ethiopia,iia,1936,1941,ETH-1936-1941,ethiopia,high
-Ethiopia PDR,faostat,1961,1992,ETH-1952-1993,Ethiopia (1952-1993),high
-Falkland Islands,fao1952,1937,1951,FLK-1833-2025,Falkland Islands,high
-Falkland Islands (Malvinas),faostat,1850,2025,FLK-1833-2025,Falkland Islands,high
-Faroe Islands,faostat,1961,2024,FRO-1800-2025,Faroe Islands,high
-Federation of Malaya,fao1952,1946,1957,MYS-1946-1957,Malayan Union / Federation of Malaya,high
-Fiji,faostat,1961,2024,FJI-1800-2025,Fiji,high
-Finland,faostat,1961,2024,FIN-1940-2025,Finland (1940-2025),high
-Formosa,,1895,1945,TWN-1895-1945,,high
-Fr Equat Africa,fao1952,1950,1951,AEF-1910-1960,French Equatorial Africa (AEF),high
-france,,1800,1870,FRA-1800-1871,France,high
-france,,1871,1918,FRA-1871-1919,France,high
-france,,1919,2025,FRA-1919-2025,France,high
-France,faostat,1961,2024,FRA-1919-2025,France,high
-France Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high
-France Saar,fao1952,1935,1946,SAC-1935-1947,Saar (German incorporation 1935-1947),high
-French Equat Africa,,,,AEF-1910-1960,French Equatorial Africa (AEF),high
-French Equat Africa,,1939,1951,AEF-1910-1960,French Equatorial Africa (AEF),high
-french guiana,,1946,2025,GUF-1946-2025,French Guiana (Overseas Department),high
-French Guiana,fao1952,1946,2025,GUF-1946-2025,French Guiana (Overseas Department),high
-French Guiana,faostat,1961,2006,GUF-1946-2025,French Guiana (Overseas Department),high
-French Guiana,iia,1816,1945,GUF-1816-1946,French Guiana (Colony),high
-french guiana,iia,1816,1945,GUF-1816-1946,French Guiana (Colony),high
-French Morocco,,1904,1956,MAR-1911-1958,Morocco,high
-French Oceania,fao1952,1937,1951,PYF-1800-2025,French Polynesia,high
-French Polynesia,faostat,1961,2024,PYF-1800-2025,French Polynesia,high
-French W Africa,,,,AOF-1895-1960,French West Africa (AOF),high
-French West Africa,,,,AOF-1895-1960,French West Africa (AOF),high
-FSU,lassaletta-grassland-share,1961,1991,F228-1945-1991,Soviet Union,high
-Gabon,faostat,1961,2024,GAB-1960-2025,Gabon,high
-Gambia,faostat,1961,2024,GMB-1800-2025,Gambia,high
-Georgia,faostat,1992,2024,GEO-1991-2025,Georgia,high
-Germany,faostat,1961,1989,DEU-1949-1990,"Germany (divided, 1949-1990)",high
-Germany,faostat,1990,2024,DEU-1990-2025,Germany,high
-Germany Berlin,fao1952,1937,1937,DEU-1920-1938,Germany (1920-1938),high
-Germany Berlin,fao1952,1938,1944,BRL-1938-1945,Greater Berlin (1938-1945),high
-Germany Berlin,fao1952,1945,1948,BRL-1945-1949,Berlin (Allied Occupation),high
-Germany Berlin,fao1952,1949,1951,WBL-1949-1990,West Berlin,high
-germany eastern,,1949,1990,F77-1949-1990,,medium
-Germany Eastern,fao1952,1938,1948,SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,high
-Germany Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high
-Germany Western,fao1952,1937,1937,DEU-1920-1938,West Germany (pre-Anschluss back-projection),high
-Germany Western,fao1952,1938,1948,WZO-1938-1949,Western Germany / Western Occupation Zones,high
-Germany Western,fao1952,1949,1951,F78-1949-1990,West Germany,high
-Ghana,faostat,1961,2024,GHA-1957-2025,Ghana,high
-Gold Coast,fao1952,1821,1956,GHA-1898-1956,Gold Coast Colony,high
-Gold Coast & Br Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high
-Gold Coast and Br Tog,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high
-Gold Coast and Br Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high
-Gold Coast and British Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high
-Gold Coast and British togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high
-greece,,1830,1881,GRC-1830-1881,Greece,high
-greece,,1881,1913,GRC-1881-1913,Greece,high
-Greece,faostat,1961,2024,GRC-1947-2025,Greece (1947-2025),high
-greece,whep-split-2026-06-29,1919,1946,GRC-1919-1947,Greece,high
-greece,whep-split-2026-06-29,1947,2025,GRC-1947-2025,Greece,high
-Greenland,faostat,1850,2025,GRL-1800-2025,Greenland,high
-Grenada,faostat,1961,2024,GRD-1800-2025,Grenada,high
-GUA,mueller-synthetic-n,1821,2025,GTM-1821-2025,Guatemala,high
-Guadeloupe,faostat,1961,2006,GLP-1816-2025,Guadeloupe,high
-Guam,fao1952,1898,1950,GUM-1898-1950,Territory of Guam,high
-Guam,fao1952,1950,2025,GUM-1950-2025,Guam (US Territory),high
-Guam,faostat,1898,1950,GUM-1898-1950,Territory of Guam,high
-Guatemala,faostat,1961,2024,GTM-1821-2025,Guatemala,high
-Guinea,faostat,1961,2024,GIN-1958-2025,Guinea,high
-Guinea-Bissau,faostat,1961,1973,GNB-1886-1974,Guinea-Bissau (1886-1974),high
-Guinea-Bissau,faostat,1974,2024,GNB-1974-2025,Guinea-Bissau (1974-2025),high
-Guyana,faostat,1961,2024,GUY-1800-2025,Guyana,high
-HAI,mueller-synthetic-n,1800,2025,HTI-1800-2025,Haiti,high
-Haiti,faostat,1961,2024,HTI-1800-2025,Haiti,high
-hawaii,,1898,1959,HAWI-1898-1959,Territory of Hawaii,high
-HON,mueller-synthetic-n,1800,2025,HND-1800-2025,Honduras,high
-Honduras,faostat,1961,2024,HND-1800-2025,Honduras,high
-hungary,,1920,1920,HUN-1920-1938,Hungary (1920-1938),high
-Hungary,faostat,1961,2024,HUN-1947-2025,Hungary (1947-2025),high
-Iceland,faostat,1961,2024,ISL-1800-2025,Iceland,high
-India,faostat,1961,2024,IND-1949-2025,India,high
-indochina,,,,FID-1887-1954,French Indochina,high
-indochina cambodia,,1907,1953,KHM-1907-1953,,medium
-indochina laos,,1936,1951,LAO-1893-1953,Laos (1893-1953),high
-indochina viet nam,,1887,1954,FID-1887-1954,,medium
-Indonesia,fao1952,1800,1945,IDN-1800-1945,Dutch East Indies,high
-Indonesia,faostat,1961,1968,IDN-1949-1969,Indonesia (1949-1969),high
-Indonesia,faostat,1969,1975,IDN-1969-1976,Indonesia (1969-1976),high
-Indonesia,faostat,1976,2001,IDN-1976-2002,Indonesia (1976-2002),high
-Indonesia,faostat,2002,2024,IDN-2002-2025,Indonesia,high
-Indonesia Bali and Lombok,fao1952,1949,1951,IDN-BLB-1949-1951,Bali and Lombok (within Indonesia),high
-Indonesia Bali and Lombok,fao1952,1950,1951,IDN-BLB-1949-1951,indonesia bali and lombok,high
-Indonesia Java and Madura,fao1952,1949,1951,IDN-JVM-1949-1951,Java and Madura (within Indonesia),high
-Indonesia Other islands,fao1952,1949,1951,IDN-OTH-1949-1951,Other islands (within Indonesia),high
-Iran (Islamic Republic of),faostat,1961,2024,IRN-1828-2025,Iran,high
-Iraq,faostat,1961,2024,IRQ-1932-2025,Iraq,high
-Ireland,faostat,1961,2024,IRL-1921-2025,Ireland,high
-israel,,1920,1948,PAL-1920-1948,,medium
-israel,,1948,1967,ISR-1948-1967,,medium
-Israel,faostat,1961,1966,ISR-1948-1967,Israel (1948-1967),high
-Israel,faostat,1967,1978,ISR-1967-1979,Israel (1967-1979),high
-Israel,faostat,1979,2024,ISR-1979-2025,Israel,high
-israel/palestine,,1925,1948,PAL-1920-1948,British Mandate Palestine,high
-israel/palestine,,1949,1949,ISR-1948-1967,Israel,medium
-Italian East Africa,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high
-italy,,1861,1866,ITA-1861-1866,Italy (1861-1866),high
-italy,,1866,1870,ITA-1866-1870,Italy (1866-1870),high
-italy,,1870,1919,ITA-1870-1919,Italy (1870-1919),high
-Italy,faostat,1961,2024,ITA-1919-2025,Italy,high
-italy,iia,,1860,SAR-1800-1860,Kingdom of Sardinia (pre-unification Italy),high
-Ivory Coast,faostat,1960,2025,CIV-1960-2025,Côte d'Ivoire,high
-Jamaica,faostat,1961,2024,JAM-1800-2025,Jamaica,high
-japan,,1945,1952,JPN-1945-1952,Japan (occupied),high
-Japan,fao1952,1895,1945,JPN-1895-1945,Japanese Empire,high
-Japan,faostat,1961,2024,JPN-1952-2025,Japan,high
-Jordan,faostat,1961,2024,JOR-1946-2025,Jordan,high
-Kazakhstan,faostat,1992,2024,KAZ-1991-2025,Kazakhstan,high
-Kenya,faostat,1961,1962,KEN-1926-1963,Kenya (1926-1963),high
-Kenya,faostat,1963,2024,KEN-1963-2025,Kenya,high
-Kiribati,faostat,1961,2024,KIR-1800-2025,Kiribati,high
-Korea,fao1952,1949,1951,KOR-1948-2025,South Korea,high
-korea,mitchell,1949,1960,KOR-1948-2025,South Korea,high
-Korea South,fao1952,1910,1945,KRS-1910-1945,Korea South (within Japanese Chosen),high
-Korea South,fao1952,1948,1951,KOR-1948-2025,South Korea,high
-Kuwait,faostat,1961,2024,KWT-1800-2025,Kuwait,high
-Kyrgyzstan,faostat,1992,2024,KGZ-1991-2025,Kyrgyzstan,high
-Lao,faostat,1954,2025,LAO-1954-2025,Lao People's Democratic Republic,high
-Lao People's Democratic Republic,faostat,1961,2024,LAO-1954-2025,Laos,high
-Latvia,faostat,1992,2024,LVA-1991-2025,Latvia,high
-Lebanon,faostat,1961,2024,LBN-1944-2025,Lebanon,high
-Lesotho,faostat,1961,1965,LSO-1886-1966,Lesotho (1886-1966),high
-Lesotho,faostat,1966,2024,LSO-1966-2025,Lesotho,high
-Liberia,faostat,1961,2024,LBR-1847-2025,Liberia,high
-Libya,fao1952,1943,1949,LBY-1943-1949,Libya (1943-1949),high
-Libya,fao1952,1950,1951,LBY-1950-1951,Libya under UN Transitional Administration (1950-1951),high
-Libya,faostat,1961,2024,LBY-1951-2025,Libya,high
-Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high
-Libya Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high
-Liechtenstein,faostat,1850,2025,LIE-1800-2025,Liechtenstein,high
-Lithuania,faostat,1992,2024,LTU-1991-2025,Lithuania,high
-ltaly,fao1952,1949,1951,ITA-1919-2025,Italy,high
-Luxembourg,faostat,2000,2024,LUX-1839-2025,Luxembourg,high
-Madagascar,faostat,1961,2024,MDG-1882-2025,Madagascar,high
-Makatea,fao1952,1949,1951,PYF-1800-2025,French Polynesia,high
-malawi,,1954,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high
-Malawi,faostat,1961,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high
-Malawi,faostat,1964,2024,MWI-1964-2025,Malawi,high
-Malaya Fed of,fao1952,1949,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high
-Malaya Federation of,fao1952,1939,1945,GBM-1895-1946,British Malaya,high
-Malaya Federation of,fao1952,1946,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high
-Malaysia,faostat,1961,1962,MYS-1957-1963,Malaysia (1957-1963),high
-Malaysia,faostat,1963,1964,MYS-1963-1965,Malaysia (1963-1965),high
-Malaysia,faostat,1965,2024,MYS-1965-2025,Malaysia,high
-Maldives,faostat,1961,2024,MDV-1800-2025,Maldives,high
-Mali,faostat,1961,2024,MLI-1960-2025,Mali,high
-Malta,faostat,1961,2024,MLT-1800-2025,Malta,high
-Marcinique,fao1952,1816,2025,MTQ-1816-2025,Martinique,high
-Marshall Islands,faostat,1991,2024,MHL-1874-2025,Marshall Islands,high
-Martinique,faostat,1961,2006,MTQ-1816-2025,Martinique,high
-Mauritania,faostat,1961,1974,MRT-1960-1975,Mauritania (1960-1975),high
-Mauritania,faostat,1975,1978,MRT-1975-1979,Mauritania (1975-1979),high
-Mauritania,faostat,1979,2024,MRT-1979-2025,Mauritania,high
-Mauritius,faostat,1961,2024,MUS-1800-2025,Mauritius,high
-Mexico,faostat,1961,2024,MEX-1848-2025,Mexico,high
-Micronesia (Federated States of),faostat,1991,2024,FSM-1991-2025,Micronesia,high
-micronesia (federated states of),iia,1920,1945,CAR-1920-1945,Caroline Islands (Japanese Mandate),high
-Moldova,faostat,1991,2025,MDA-1991-2025,Republic of Moldova,high
-Monaco,faostat,1850,2025,MCO-1800-2025,Monaco,high
-Mongolia,faostat,1961,2024,MNG-1921-2025,Mongolia,high
-Montenegro,faostat,2006,2024,MNE-2006-2025,Montenegro,high
-Montserrat,faostat,1850,2025,MSR-1800-2025,Montserrat,high
-Morocco,faostat,1961,1974,MAR-1958-1975,Morocco (1958-1975),high
-Morocco,faostat,1975,1978,MAR-1975-1979,Morocco (1975-1979),high
-Morocco,faostat,1979,2024,MAR-1979-2025,Morocco,high
-Mozambique,faostat,1961,1974,MOZ-1891-1975,Mozambique (1891-1975),high
-Mozambique,faostat,1975,2024,MOZ-1975-2025,Mozambique (1975-2025),high
-Myanmar,faostat,1961,2024,MMR-1885-2025,Myanmar,high
-Namibia,faostat,1961,1989,NAM-1920-1990,Namibia (1920-1990),high
-Namibia,faostat,1990,2024,NAM-1990-2025,Namibia (1990-2025),high
-natal,,1910,1957,ZAF-1910-2025,Natal province (South Africa),medium
-Nauru,faostat,1961,2024,NRU-1888-2025,Nauru,high
-Necherlands,fao1952,1949,1951,NLD-1830-2025,Netherlands,high
-Nepal,faostat,1961,2024,NPL-1816-2025,Nepal,high
-Neth West Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-neth west indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-Netherlands (Kingdom of the),faostat,1961,2024,NLD-1830-2025,Netherlands,high
-netherlands antilles,,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-Netherlands Antilles,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-Netherlands Antilles (former),faostat,1961,2010,ANT-1961-2010,Netherlands Antilles,high
-Netherlands New Guinea,fao1952,1949,1963,NNG-1949-1963,Netherlands New Guinea,high
-Netherlands W Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-netherlands w indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-Netherlands West Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-netherlands west indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high
-NetherlandsWest Indies,fao1952,,,ANT-1816-1960,Dutch Caribbean (colonial),high
-netherlandswest indies,fao1952,,,ANT-1816-1960,Dutch Caribbean (colonial),high
-New Caledonia,faostat,1961,2024,NCL-1800-2025,New Caledonia,high
-New Guinea,fao1952,1937,1949,TNGU-1920-1949,Territory of New Guinea,high
-New Guinea,fao1952,1950,1951,PNG-1949-1975,Papua and New Guinea (administrative union),medium
-New Hebrides,fao1952,1906,1979,VUT-1800-2025,New Hebrides (Vanuatu),high
-New Zealand,faostat,1961,2024,NZL-1840-2025,New Zealand,high
-Nicaragua,faostat,1961,2023,NIC-1800-2025,Nicaragua,high
-niger,,1911,1922,NER-1911-1922,Niger (Military Territory),high
-Niger,faostat,1961,2024,NER-1960-2025,Niger,high
-Nigeria,faostat,1961,2024,NGA-1961-2025,Nigeria,high
-Niue,faostat,1961,2024,NIU-1800-2025,Niue,high
-Norfolk Island,faostat,1914,2025,NFK-1914-2025,Norfolk Island (Australian Territory),high
-Norfolk Islands,fao1952,1914,2025,NFK-1914-2025,Norfolk Island (Australian Territory),high
-North Korea,faostat,1948,2025,PRK-1948-2025,Democratic People's Republic of Korea,high
-North Macedonia,faostat,1992,2024,MKD-1991-2025,North Macedonia,high
-Norway,faostat,1961,2024,NOR-1800-2025,Norway,high
-Occupied Palestinian Territory,lassaletta-grassland-share,1961,2009,PSE-1948-2025,Palestine (West Bank and Gaza),high
-Oman,faostat,1961,2024,OMN-1856-2025,Sultanate of Oman,high
-Pacific Is,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high
-Pacific Is (U S,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high
-Pacific Is US tr,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high
-pacific is us trust,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high
-Pacific Islands (U S,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high
-Pakistan,fao1952,1937,1939,PAK-1937-1947,"Pakistan (territory within British India, 1937-1947)",high
-Pakistan,faostat,1961,1970,PAK-1949-1971,Pakistan (1949-1971),high
-Pakistan,faostat,1971,2024,PAK-1971-2025,Pakistan,high
-Palau,faostat,2000,2024,PLW-1991-2025,Palau,high
-palau,iia,1909,1914,GCAR-1899-1914,German Caroline Islands (Karolinen),high
-palau,iia,1915,1919,JPN-1895-1945,Palau (Japanese military occupation),high
-palau,iia,1920,1932,CAR-1920-1945,Palau (Caroline Islands Japanese Mandate),high
-Palestine,faostat,1961,2024,PSE-1948-2025,Palestine (West Bank and Gaza),high
-Panama,faostat,1961,1978,PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",high
-Panama,faostat,1979,2024,PAN-1979-2025,Panama (post-Canal Zone),high
-panama canal zone,fao1952,1903,1979,CZN-1903-1979,Panama Canal Zone,high
-Papua,fao1952,1937,1949,TPAP-1906-1949,Territory of Papua,high
-Papua,fao1952,1950,1951,PNG-1949-1975,Territory of Papua and New Guinea,high
-Papua New Guinea,faostat,1961,1974,PNG-1949-1975,Territory of Papua and New Guinea,high
-Papua New Guinea,faostat,1975,2024,PNG-1975-2025,Papua New Guinea,high
-papua new guinea,iia,1920,1940,TPAP-1906-1949,Territory of New Guinea / Territory of Papua (combined IIA series 1920-1940),low
-Paraguay,faostat,1961,2024,PRY-1938-2025,Paraguay,high
-Peru,faostat,1961,2024,PER-1942-2025,Peru,high
-Philippines,faostat,1961,2024,PHL-1800-2025,Philippines,high
-Poland,faostat,1961,2024,POL-1945-2025,Poland (1945-2025),high
-Portugal,faostat,1961,2024,PRT-1800-2025,Portugal,high
-Portuguese Guinea,fao1952,1886,1974,GNB-1886-1974,Guinea-Bissau (1886-1974),high
-Portuguese India,fao1952,1816,1961,PTIND-1816-1961,Portuguese India (Estado da India Portuguesa),high
-Portuguese Timor,fao1952,1702,1975,TLS-1800-2025,Timor-Leste,high
-Puerto Rico,faostat,1961,2024,PRI-1800-2025,Puerto Rico,high
-Qatar,faostat,1961,2024,QAT-1800-2025,Qatar,high
-Republic of Korea,faostat,1961,2024,KOR-1948-2025,South Korea,high
-Republic of Moldova,faostat,1992,2024,MDA-1991-2025,Moldova,high
-reunion,,1816,1946,REU-1816-1946,Réunion,high
-reunion,fao1952,1946,2025,REU-1946-2025,Réunion,high
-Reunion,lassaletta-grassland-share,1961,2009,REU-1946-2025,Reunion (French Overseas Department),high
-ROM,mueller-synthetic-n,1947,2025,ROU-1947-2025,Romania,high
-romania,,1859,1913,ROU-1859-1913,Romania,high
-romania,,1913,1918,ROU-1913-1918,Romania,high
-romania,,1918,1919,ROU-1918-1919,Romania,high
-romania,,1919,1920,ROU-1919-1920,Romania,high
-romania,,1920,1940,ROU-1920-1940,Romania,high
-romania,,1940,1947,ROU-1940-1947,Romania (1940-1947),high
-romania,,1947,2025,ROU-1947-2025,Romania (1947-2025),high
-Romania,faostat,1961,2024,ROU-1947-2025,Romania (1947-2025),high
-russian federation,,1906,1914,F228-1905-1914,Russian Empire (1905-1914),high
-russian federation,,1914,1917,F228-1914-1917,Russian Empire (1914-1917),high
-russian federation,,1917,1918,F228-1917-1918,Russia (1917-1918),high
-russian federation,,1918,1920,F228-1918-1920,RSFSR (1918-1920),high
-russian federation,,1920,1921,F228-1920-1921,RSFSR (1920-1921),high
-russian federation,,1921,1940,F228-1921-1940,RSFSR/USSR (1921-1940),high
-russian federation,,1940,1945,F228-1940-1945,USSR (1940-1945),high
-russian federation,,1945,1960,F228-1945-1991,USSR (1945-1991),high
-russian federation,,1991,2014,RUS-1991-2014,,medium
-russian federation,,2014,2025,RUS-2014-2025,,medium
-Russian Federation,faostat,1992,2013,RUS-1991-2014,Russia (1991-2014),high
-Russian Federation,faostat,2014,2024,RUS-2014-2025,Russia,high
-Rwanda,faostat,1961,1961,RWA-1922-1962,Rwanda (within Ruanda-Urundi),high
-Rwanda,faostat,1962,2024,RWA-1962-2025,Rwanda,high
-rwanda,mitchell,1953,1960,RWB-1922-1962,Ruanda-Urundi,high
-rwanda and burundi,,,,RWB-1922-1962,Ruanda-Urundi,high
-Ryukyu Islands,,1937,1944,RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),high
-Ryukyu Islands,,1945,1951,RYU-1945-1972,Ryukyu Islands (US Administration),high
-Réunion,faostat,1961,2006,REU-1946-2025,Réunion (French Overseas Department),high
-Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high
-"Saint Helena, Ascension and Tristan da Cunha",faostat,1850,1967,SHN-1834-1967,Saint Helena (Crown Colony),high
-Saint Kitts and Nevis,faostat,1961,2024,KNA-1800-2025,Saint Kitts and Nevis,high
-Saint Lucia,faostat,1961,2024,LCA-1838-2025,Saint Lucia,high
-Saint Pierre and Miquelon,faostat,1850,2025,SPM-1816-2025,Saint Pierre and Miquelon,high
-Saint Vincent and the Grenadines,faostat,1961,2024,VCT-1833-2025,Saint Vincent and the Grenadines,high
-Samoa,faostat,1961,2024,WSM-1900-2025,Samoa,high
-San Marino,faostat,1850,2025,SMR-1800-2025,San Marino,high
-Sao Tome and Principe,faostat,1961,2024,STP-1800-2025,Sao Tome and Principe,high
-Saudi Arabia,faostat,1961,2024,SAU-1924-2025,Saudi Arabia,high
-Senegal,faostat,1961,2024,SEN-1960-2025,Senegal,high
-serbia,,1816,1878,SER-1816-1878,,medium
-serbia,,1878,1913,SER-1878-1913,,medium
-serbia,,1913,1918,SER-1913-1918,,medium
-serbia,,1918,1919,F248-1918-1919,Serbia within Kingdom of Serbs Croats and Slovenes (1918-1919),medium
-serbia,,1919,1920,F248-1919-1920,Serbia within Kingdom of Serbs Croats and Slovenes (1919-1920),medium
-serbia,,1920,1945,SER-1918-1945,Serbia within Yugoslavia (1920-1945),high
-serbia,,1945,1947,F248-1920-1947,Yugoslavia (1945-1947) — serbia sub-territory data approximation,low
-serbia,,1947,1991,F248-1947-1991,Yugoslavia (1947-1991) — serbia sub-territory data approximation,low
-serbia,,1991,1992,F248-1991-1992,Serbia within Yugoslavia/SFR dissolution (1991-1992),medium
-serbia,,1992,2006,SCG-1992-2006,Serbia within Federal Republic of Yugoslavia / Serbia and Montenegro,medium
-serbia,,2006,2008,SER-2006-2008,Serbia (2006-2008 pre-independence),medium
-serbia,,2008,2025,SRB-2008-2025,,medium
-Serbia,faostat,2006,2007,SRB-2006-2008,Serbia (including Kosovo),high
-Serbia,faostat,2008,2024,SRB-2008-2025,Serbia,high
-Serbia and Montenegro,faostat,1992,2005,SCG-1992-2006,Serbia and Montenegro,high
-Seychelles,faostat,1961,2024,SYC-1903-2025,Seychelles,high
-Sierra Leone,faostat,1961,2024,SLE-1961-2025,Sierra Leone (1961-2025),high
-Singapore,faostat,1961,1962,SGP-1946-1963,Singapore (Crown Colony),high
-Singapore,faostat,1963,1964,SGP-1963-1965,Singapore (State of Singapore in Malaysia),high
-Singapore,faostat,1965,2024,SGP-1965-2025,Singapore,high
-singapore,iia,1895,1945,GBM-1895-1946,British Malaya (Straits Settlements/Singapore sub-territory),high
-Singapore Christmas Island,fao1952,1949,1951,CXR-1946-1958,Christmas Island (under Singapore administration),high
-Slovakia,faostat,1993,2024,SVK-1993-2025,Slovakia,high
-Slovenia,faostat,1992,2024,SVN-1992-2025,Slovenia,high
-Solomon Islands,faostat,1961,2024,SLB-1800-2025,Solomon Islands,high
-Somalia,fao1952,1939,1951,ITS-1908-1960,Italian Somaliland,high
-Somalia,faostat,1961,2024,SOM-1960-2025,Somalia,high
-somalia,iia,1920,1959,BSS-1884-1960,British Somaliland Protectorate,medium
-somalia,mitchell,1920,1959,ITS-1908-1960,Italian Somaliland,high
-south africa,,1852,1909,CAP-1800-1910,Cape Colony,high
-south africa,,1910,2025,ZAF-1910-2025,South Africa (Union and Republic),high
-South Africa,faostat,1961,2024,ZAF-1910-2025,South Africa (Union and Republic),high
-south africa,iia,1910,2025,ZAF-1910-2025,South Africa,high
-South Korea,faostat,1948,2025,KOR-1948-2025,Republic of Korea,high
-South Sudan,faostat,2012,2024,SSD-2011-2025,South Sudan,high
-South West Africa,fao1952,1937,1951,NAM-1920-1990,Namibia (1920-1990),high
-southern rhodesia,,1900,1953,ZWE-1900-1953,,medium
-Spain,faostat,1961,2024,ESP-1800-2025,Spain,high
-Spanish Guinea,fao1952,1886,1968,GNQ-1886-1968,Spanish Guinea (Equatorial Guinea colonial),high
-Sri Lanka,faostat,1961,2024,LKA-1800-2025,Sri Lanka,high
-SRM,mueller-synthetic-n,1975,2025,SUR-1975-2025,Suriname,high
-st helena,fao1952,1931,1951,SHN-1834-1967,Saint Helena,high
-St Pierre and Miquelon,fao1952,1937,1951,SPM-1816-2025,Saint Pierre and Miquelon,high
-sudan,,1899,1934,SUD-1899-1934,,medium
-sudan,,1934,1956,SUD-1934-1956,,medium
-sudan,,1956,2011,SUD-1956-2011,,medium
-sudan,,2011,2025,SDN-2011-2025,,medium
-Sudan,faostat,2012,2024,SDN-2011-2025,Sudan,high
-Sudan (former),faostat,1961,2011,SUD-1956-2011,Sudan (1956-2011),high
-Surinam,fao1952,1886,1954,SUR-1886-1954,Dutch Guiana,high
-Suriname,faostat,1961,1974,SUR-1954-1975,Surinam (Autonomous),high
-Suriname,faostat,1975,2024,SUR-1975-2025,Suriname,high
-suriname,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high
-Swaziland,faostat,1961,2024,SWZ-1894-2025,Eswatini,high
-Swaziland,lassaletta-grassland-share,1961,2009,SWZ-1894-2025,Eswatini,high
-Sweden,faostat,1961,2024,SWE-1905-2025,Sweden,high
-Switzerland,faostat,1961,2024,CHE-1800-2025,Switzerland,high
-Syria,,,,SYR-1946-1967,Syrian Arab Republic,high
-Syria and Lebanon,fao1952,1944,1953,SYL-1944-1953,Syria and Lebanon (combined statistical unit),high
-Syrian Arab Republic,faostat,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-1967),high
-Syrian Arab Republic,faostat,1967,2024,SYR-1967-2025,Syrian Arab Republic,high
-Tajikistan,faostat,1992,2024,TJK-1991-2025,Tajikistan,high
-tanganyika,,1922,1964,TAN-1922-1964,,medium
-tanzania,,1891,1920,TAN-1891-1920,,medium
-tanzania,,1920,1922,TAN-1920-1922,,medium
-tanzania,,1922,1964,TAN-1922-1964,,medium
-Tanzania,faostat,1964,2025,TZA-1964-2025,United Republic of Tanzania,high
-Thailand,faostat,1961,2024,THA-1909-2025,Thailand,high
-Timor-Leste,faostat,1961,2024,TLS-1800-2025,Timor-Leste,high
-Togo,faostat,1961,2024,TGO-1960-2025,Togo,high
-Tonga,faostat,1961,2024,TON-1800-2025,Tonga,high
-TRI,mueller-synthetic-n,1800,2025,TTO-1800-2025,Trinidad and Tobago,high
-Trieste,fao1952,1937,1946,TRS-1947-1954,Province of Trieste (pre-FTT),medium
-Trieste,fao1952,1947,1951,TRS-1947-1954,Free Territory of Trieste,high
-Trieste UK ans US,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high
-Trieste uk us,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high
-Trieste UK-US,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high
-Trieste us uk,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high
-Trinidad and Tobago,faostat,1961,2024,TTO-1800-2025,Trinidad and Tobago,high
-Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high
-Tunisia,faostat,1961,2024,TUN-1881-2025,Tunisia,high
-Turkey,,,,TUR-1920-2025,Türkiye,high
-turkey,,1913,1914,TUR-1913-1914,Türkiye (1913-1914),high
-Turkmenistan,faostat,1992,2024,TKM-1991-2025,Turkmenistan,high
-Tuvalu,faostat,1961,2024,TUV-1800-2025,Tuvalu,high
-Türkiye,faostat,1961,2024,TUR-1920-2025,Türkiye (1920-2025),high
-U of S Africa,fao1952,1910,1961,ZAF-1910-2025,Union of South Africa,high
-Uganda,faostat,1961,1961,UGA-1926-1962,Uganda (1926-1962),high
-Uganda,faostat,1962,2024,UGA-1962-2025,Uganda,high
-Ukraine,faostat,1992,2013,UKR-1991-2014,Ukraine (1991-2014),high
-Ukraine,faostat,2014,2024,UKR-2014-2025,Ukraine,high
-Union of S Africa,fao1952,1910,1961,ZAF-1910-2025,Union of South Africa,high
-union of south africa,,1910,2025,ZAF-1910-2025,,medium
-United Arab Emirates,faostat,1961,2024,ARE-1892-2025,United Arab Emirates,high
-United Kingdom,faostat,1921,2025,GBR-1921-2025,United Kingdom of Great Britain and Northern Ireland,high
-United Kingdom Great Britain,fao1952,1937,1951,GBR-1921-2025,United Kingdom,high
-United Kingdom of Great Britain and Northern Ireland,faostat,1961,2024,GBR-1921-2025,United Kingdom,high
-United Republic of Tanzania,faostat,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high
-United Republic of Tanzania,faostat,1964,2024,TZA-1964-2025,Tanzania,high
-united states and dependent territories,fao1952,1867,1959,USA-1867-1959,United States and dependent territories,high
-united states of america,,1800,1803,USA-1800-1803,United States of America,high
-united states of america,,1803,1848,USA-1803-1848,United States of America,high
-united states of america,,1848,1867,USA-1848-1867,United States of America,high
-united states of america,,1867,1959,USA-1867-1959,United States of America,high
-united states of america,,1959,2025,USA-1959-2025,United States of America,high
-United States of America,faostat,1961,2024,USA-1959-2025,United States of America,high
-united states of america,iia,1800,1803,USA-1800-1803,United States of America,high
-united states of america,iia,1803,1848,USA-1803-1848,United States of America,high
-united states of america,iia,1848,1867,USA-1848-1867,United States of America,high
-united states of america,iia,1867,1959,USA-1867-1959,United States of America,high
-united states of america,iia,1959,2025,USA-1959-2025,United States of America,high
-united states of america,juan,1898,1959,USA-1867-1959,United States of America,high
-united states of america,juan,1900,1959,USA-1867-1959,united states of america,high
-united states of america,mitchell,1898,1959,USA-1867-1959,United States of America,high
-United States Virgin Islands,faostat,1850,1917,DWI-1800-1917,Danish West Indies,high
-United States Virgin Islands,faostat,1917,2025,VIR-1917-2025,United States Virgin Islands,high
-united states virgin islands,iia,1909,1916,DWI-1800-1917,Danish West Indies,high
-united states virgin islands,iia,1917,1945,VIR-1917-2025,United States Virgin Islands,high
-Uruguay,faostat,1961,2024,URY-1828-2025,Uruguay,high
-USSR,,1921,1940,F228-1921-1940,RSFSR/USSR (1921-1940),high
-USSR,,1940,1945,F228-1940-1945,USSR (1940-1945),high
-USSR,,1945,1991,F228-1945-1991,USSR (1945-1991),high
-USSR,faostat,1961,1991,F228-1945-1991,USSR (1945-1991),high
-Uzbekistan,faostat,1992,2024,UZB-1991-2025,Uzbekistan,high
-Vanuatu,faostat,1961,2024,VUT-1800-2025,Vanuatu,high
-Venezuela (Bolivarian Republic of),faostat,1961,2024,VEN-1821-2025,Venezuela,high
-viet nam,,1887,1954,VNM-1887-1954,,high
-viet nam,,1955,1974,RVN-1954-1975,Republic of Vietnam,high
-viet nam,,1975,2025,VNM-1975-2025,,medium
-Viet Nam,faostat,1961,1974,F237-1954-1975,Vietnam (combined reporting: DRV and RVN),high
-Viet Nam,faostat,1975,2024,VNM-1975-2025,Vietnam,high
-viet nam,iia,,,VNM-1887-1954,Vietnam (French Indochina),high
-Virgin Is US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high
-Virgin Islands US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high
-Western Australia,sa_colonial,1829,1900,AUWA-1829-1900,Western Australia (colonial),high
-Western Sahara,faostat,1958,1975,ESH-1958-1975,Western Sahara (1958-1975),high
-Western Sahara,faostat,1975,2025,ESH-1975-2025,Western Sahara,high
-Windward Islands  Grenada,fao1952,1800,2025,GRD-1800-2025,Grenada,high
-Windward Islands  St Lucia,fao1952,1838,1962,LCA-1838-2025,Saint Lucia,high
-Yemen,fao1952,1918,1962,MKY-1918-1962,Mutawakkilite Kingdom of Yemen,high
-Yemen,faostat,1961,1989,F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),high
-Yemen,faostat,1990,2024,YEM-1990-2025,Yemen (1990-2025),high
-yemen,iia,1918,1962,MKY-1918-1962,Mutawakkilite Kingdom of Yemen,high
-Yugoslav SFR,faostat,1961,1990,F248-1947-1991,Yugoslavia (1947-1991),high
-Yugoslav SFR,faostat,1991,1991,F248-1991-1992,Yugoslavia (1991-1992),high
-yugoslav sfr,juan,1909,1912,SER-1878-1913,Kingdom of Serbia (1878-1913),medium
-yugoslav sfr,juan,1913,1913,SER-1913-1918,Kingdom of Serbia post-Balkan Wars,medium
-yugoslavia,,1920,1947,F248-1920-1947,Yugoslavia (1920-1947),high
-Zambia,faostat,1961,1963,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),high
-Zambia,faostat,1964,2024,ZMB-1964-2025,Zambia,high
-zambia,mitchell,1953,1964,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland,high
-Zanzibar and Pemba,fao1952,1890,1963,ZNZ-1890-1963,Zanzibar Protectorate,high
-ZAR,mueller-synthetic-n,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high
-zimbabwe,,1953,1964,SRH-1953-1964,Southern Rhodesia (within Federation 1953-1964),high
-Zimbabwe,faostat,1961,1963,SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",high
-Zimbabwe,faostat,1964,1979,ZWE-1964-1980,Zimbabwe (1964-1980),high
-Zimbabwe,faostat,1980,2024,ZWE-1980-2025,Zimbabwe (1980-2025),high
+source_label,source,year_start,year_end,polity_code,common_name,confidence,observed_rows
+Abyssinia,,1800,1889,ETH-1800-1889,Ethiopia (1800-1889),high,0
+Abyssinia,,1889,1897,ETH-1889-1897,Ethiopia (1889-1897),high,0
+Abyssinia,,1897,1902,ETH-1897-1902,Ethiopia (1897-1902),high,0
+Abyssinia,,1902,1907,ETH-1902-1907,Ethiopia (1902-1907),high,0
+Abyssinia,,1907,1936,ETH-1907-1936,Ethiopia (1907-1936),high,0
+Aden Protectorate,fao1952,1937,1951,ADE-1839-1963,Aden Protectorate,high,18
+Afghanistan,faostat,1961,2024,AFG-1919-2025,Afghanistan,high,122086
+Africa Orientale Italiana,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high,0
+Alaska,fao1952,1867,1959,ALK-1867-1959,Territory of Alaska,high,39
+Albania,faostat,1961,2024,ALB-1913-2025,Albania (1913-2025),high,177572
+algeria,,1831,1886,DZA-1831-1886,Algeria,high,0
+algeria,,1886,1902,DZA-1886-1902,Algeria,high,0
+algeria,,1902,1919,DZA-1902-1919,Algeria,high,0
+algeria,,1919,1962,DZA-1919-1962,Algeria,high,0
+algeria,,1962,2025,DZA-1962-2025,Algeria,high,0
+Algeria,faostat,1961,1961,DZA-1919-1962,Algeria (1919-1962),high,208548
+Algeria,faostat,1962,2024,DZA-1962-2025,Algeria (1962-2025),high,208548
+American Samoa,,,,ASM-1900-2025,Territory of American Samoa,high,0
+American Samoa,faostat,1900,2025,ASM-1900-2025,Territory of American Samoa,high,0
+Andorra,faostat,1850,2025,AND-1800-2025,Andorra,high,0
+Anglo-Egypt Sudan,fao1952,1934,1956,SUD-1934-1956,Sudan (Anglo-Egyptian Condominium),high,63
+Anglo-Egyptian Sudan,,1934,1956,SUD-1934-1956,Sudan (Anglo-Egyptian Condominium),high,0
+angola,,1898,1904,ANG-1891-1905,Portuguese Angola (pre-1905),high,0
+angola,,1905,1960,ANG-1905-1975,Angola (Portuguese colony 1905-1975),high,0
+Angola,faostat,1961,1974,ANG-1905-1975,Angola (1905-1975),high,171428
+Angola,faostat,1975,2024,AGO-1975-2025,"Angola (independent, 1975–2025)",high,171428
+Antigua and Barbuda,faostat,1961,2024,ATG-1800-2025,Antigua and Barbuda,high,152103
+Argentina,faostat,1961,2024,ARG-1902-2025,Argentina,high,242032
+argentina,iia,1909,1945,ARG-1902-2025,Argentina,high,88
+Argentina,mitchell,1870,1898,ARG-1800-1899,Argentina (to 1899),high,0
+Argentina,mitchell,1899,1901,ARG-1899-1902,Argentina (1899-1902),high,0
+Argentine Republic,mitchell,1870,1898,ARG-1800-1899,Argentina (to 1899),high,0
+Argentine Republic,mitchell,1899,1901,ARG-1899-1902,Argentina (1899-1902),high,0
+Armenia,faostat,1992,2024,ARM-1991-2025,Armenia,high,96333
+australia,,1800,1900,AUS-1800-1901,,high,118
+australia,,1901,2025,AUS-1901-2025,,high,118
+Australia,faostat,1961,2024,AUS-1901-2025,Australia,high,253557
+Austria,faostat,1961,2024,AUT-1919-2025,Austria,high,255267
+Azerbaijan,faostat,1992,2024,AZE-1991-2025,Azerbaijan,high,103326
+azerbaijan,iia-tea,1920,1990,AZE-SSR-1920-1991,Azerbaijan SSR,high,0
+Bahamas,faostat,1961,2024,BHS-1800-2025,Bahamas,high,163402
+Bahrain,faostat,1961,2024,BHR-1800-2025,Bahrain,high,77122
+Bangladesh,faostat,1961,1970,BGD-1947-1971,East Pakistan (1947-1971),high,203548
+Bangladesh,faostat,1971,2024,BGD-1971-2025,Bangladesh,high,203548
+Barbados,faostat,1961,2024,BRB-1800-2025,Barbados,high,198640
+Basutoland,fao1952,1886,1966,LSO-1886-1966,Basutoland,high,0
+Bechuanaland,fao1952,1937,1951,BEC-1885-1966,Bechuanaland Protectorate,high,0
+Belarus,faostat,1992,2024,BLR-1991-2025,Belarus,high,110351
+Belgian Congo,,,,COD-1910-1960,Belgian Congo,high,180
+Belgian Congo (fao1952),,,,COD-1910-1960,Belgian Congo,high,180
+Belgium,faostat,2000,2024,BEL-1831-2025,Belgium,high,102668
+belgium,iia,,,BEL-1831-2025,Belgium,high,78
+Belgium-Luxembourg,faostat,1961,1999,BLX-1850-1999,Belgium-Luxembourg,high,156557
+Belgium-Luxemburg,lassaletta-grassland-share,1961,1999,BLX-1921-1999,Belgium-Luxembourg Economic Union,high,0
+Belize,faostat,1961,1969,BLZ-1886-1970,British Honduras,high,177780
+Belize,faostat,1970,1980,BLZ-1970-1981,Belize (pre-independence),high,177780
+Belize,faostat,1981,2024,BLZ-1981-2025,Belize,high,177780
+Benin,faostat,1961,2024,BEN-1960-2025,Benin,high,176976
+Bermuda,fao1952,1937,1951,BMU-1684-1968,Bermuda,high,41
+Bermuda,faostat,1961,1967,BMU-1684-1968,British Crown Colony of Bermuda,high,67310
+Bermuda,faostat,1968,2013,BMU-1968-2025,Bermuda,high,67310
+bermuda,iia,1930,1945,BMU-1684-1968,Bermuda,high,17
+Bhutan,faostat,1961,2024,BTN-1800-2025,Bhutan,high,46525
+Bolivia (Plurinational State of),faostat,1961,2024,BOL-1938-2025,Bolivia,high,203360
+Bosnia and Herzegovina,faostat,1992,2024,BIH-1992-2025,Bosnia and Herzegovina,high,103643
+botswana,,1885,1966,BEC-1885-1966,,medium,0
+botswana,,1966,2025,BWA-1966-2025,,medium,0
+Botswana,faostat,1961,1965,BEC-1885-1966,Bechuanaland Protectorate (1885-1966),high,211714
+Botswana,faostat,1966,2024,BWA-1966-2025,Botswana,high,211714
+Br Solomon Is,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,0
+Br Solomon Islands,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,0
+Br West Indies Barbados,fao1952,1950,1951,BRB-1800-2025,Barbados,high,0
+Br West Indies Jamaica,,,,JAM-1800-2025,Jamaica,high,0
+Br West Indies Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high,0
+Br West Indies St Kitts-Nevis Anguilla,fao1952,1949,1967,KNA-1800-2025,Saint Kitts-Nevis-Anguilla (British colony),high,0
+Br West Indies St Lucia,fao1952,1949,1951,LCA-1838-2025,Saint Lucia,high,12
+Br West Indies St Vincent,fao1952,1949,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high,12
+Brazil,faostat,1961,2024,BRA-1909-2025,Brazil,high,255068
+British Borneo Brunei,,,,BRN-1888-2025,,high,0
+British Borneo North Borneo,,1937,1951,BNB-1881-1963,British North Borneo,high,0
+British Borneo Sarawak,fao1952,1937,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,0
+british honduras,,1886,1970,BLZ-1886-1970,British Honduras,high,0
+British Solomon Is,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,0
+British Solomon Islands,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,0
+British Somaliland,fao1952,1884,1960,BSS-1884-1960,British Somaliland Protectorate,high,0
+British Togoland,,1920,1957,BTL-1920-1957,British Togoland,high,0
+British Virgin Islands,faostat,1850,2025,VGB-1800-2025,British Virgin Islands,high,0
+british virgin islands,iia-cotton,1909,1925,VGB-1800-2025,British Virgin Islands,high,29
+British W Indies Jamaica,fao1952,1949,1951,JAM-1800-2025,Jamaica,high,3
+British West Indies,fao1952,1937,1951,BWI-1833-1962,British West Indies (colonial aggregate),high,24
+British West Indies  Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high,0
+British West Indies Bahama Islands,fao1952,1937,1951,BHS-1800-2025,Bahamas,high,9
+British West Indies Barbados,fao1952,1935,1951,BRB-1800-2025,Barbados,high,0
+British West Indies Grenada,fao1952,1800,1962,GRD-1800-2025,Grenada,high,10
+british west indies jamaica,,1800,2025,JAM-1800-2025,,medium,0
+British West Indies Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high,0
+British West Indies St Lucia,fao1952,1939,1951,LCA-1838-2025,Saint Lucia,high,10
+British West Indies St Vincent,fao1952,1939,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high,13
+British West Indies Trinidad and Tobago,fao1952,1937,1951,TTO-1800-2025,Trinidad and Tobago,high,0
+Brunei Darussalam,faostat,1961,2024,BRN-1888-2025,Brunei Darussalam,high,161774
+bulgaria,,1878,1912,BGR-1878-1913,,high,137
+bulgaria,,1913,1917,BGR-1913-1918,,high,137
+bulgaria,,1918,1918,BGR-1918-1919,,high,137
+bulgaria,,1919,1939,BGR-1919-1940,,high,137
+bulgaria,,1940,2025,BGR-1940-2025,,high,137
+Bulgaria,faostat,1961,2024,BGR-1940-2025,Bulgaria (1940-2025),high,241988
+Burkina Faso,faostat,1961,2024,BFA-1960-2025,Burkina Faso,high,173575
+burkina faso,iia,1919,1932,BFA-1919-1932,Upper Volta (1919-1932),high,68
+burma,,1826,1852,MMR-1826-1852,,medium,0
+burma,,1885,2025,MMR-1885-2025,,medium,0
+burma,mitchell,1852,1885,MMR-LWR-1852-1885,British Lower Burma (1852-1885),high,0
+Burundi,faostat,1961,1961,BDI-1922-1962,Burundi (within Ruanda-Urundi),high,62205
+Burundi,faostat,1962,2024,BDI-1962-2025,Burundi,high,62205
+burundi,iia,1919,1921,RWB-1919-1922,Ruanda-Urundi (occupation),high,0
+burundi,iia,1922,1961,RWB-1922-1962,Ruanda-Urundi,high,0
+BZE,mueller-synthetic-n,1981,2025,BLZ-1981-2025,Belize,high,0
+Cabo Verde,faostat,1961,1974,CPV-1886-1975,Cape Verde (Portuguese colony),high,150407
+Cabo Verde,faostat,1975,2024,CPV-1975-2025,Cabo Verde,high,150407
+Cambodia,faostat,1961,2024,KHM-1953-2025,Cambodia,high,167371
+cameroon,,1884,1911,GKM-1884-1912,German Kamerun (1884-1912),high,0
+cameroon,,1912,1915,GKM-1912-1916,German Kamerun (1912-1916),high,0
+Cameroon,faostat,1961,2024,CMR-1961-2025,Cameroon,high,216617
+canada,,1866,1869,CAN-1866-1870,Canada (original four provinces 1866-1870),high,0
+canada,,1870,1885,CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),high,0
+canada,,1886,1886,CAN-1886-1948,Canada (post-CPR completion 1886),high,0
+canada,,1948,1948,CAN-1886-1948,Canada,high,54
+Canada,faostat,1961,2024,CAN-1948-2025,Canada,high,252243
+cape natal,mitchell,1918,1957,ZAF-1910-2025,Cape and Natal provinces (South Africa),medium,0
+Cape of Good Hope,,,,CAP-1800-1910,Cape Colony,high,195
+cape province,,1800,1910,CAP-1800-1910,,medium,0
+Cape Verde,lassaletta-grassland-share,1961,1975,CPV-1886-1975,Cabo Verde,high,0
+Cape Verde,lassaletta-grassland-share,1975,2009,CPV-1975-2025,Cabo Verde,high,0
+Cape Verde Islands,fao1952,1886,1975,CPV-1886-1975,Cape Verde Islands,high,0
+Central African Republic,faostat,1961,2024,CAF-1960-2025,Central African Republic,high,155872
+Chad,faostat,1961,2024,TCD-1960-2025,Chad,high,134061
+Chile,faostat,1961,2024,CHL-1902-2025,Chile,high,230765
+china 22 provinces,fao1952,1937,1945,CHN-1932-1945,China,high,87
+china 22 provinces,fao1952,1945,1947,CHN-1945-1947,China,high,87
+china 22 provinces,fao1952,1947,1949,CHN-1947-1949,China,high,87
+china 22 provinces,fao1952,1949,1950,CHN-1949-1950,China,high,87
+china 22 provinces,fao1952,1950,1951,CHN-1950-2025,China,high,87
+China and Manchuria,fao1952,1949,1949,CHN-1949-1950,China (1949-1950),high,0
+China and Manchuria,fao1952,1950,1952,CHN-1950-2025,China (1950-2025),high,0
+China Manchuria,fao1952,1937,1945,MAN-1932-1945,Manchukuo,high,0
+China Manchuria,fao1952,1945,1947,CHN-1945-1947,China (1945-1947),high,0
+China Manchuria,fao1952,1947,1949,CHN-1947-1949,China (1947-1949),high,0
+China Manchuria,fao1952,1949,1950,CHN-1949-1950,China (1949-1950),high,0
+China Manchuria,fao1952,1950,2025,CHN-1950-2025,China (1950-2025),high,0
+china taiwan,,1895,1944,TWN-1895-1945,,high,27
+china taiwan,,1945,2025,TWN-1945-2025,,high,0
+"China, Hong Kong SAR",faostat,1961,2024,HKG-1842-2025,Hong Kong,high,231444
+"China, Macao SAR",faostat,1961,2024,MAC-1800-2025,"China, Macao SAR",high,185164
+"china, mainland",,1800,1895,CHN-1800-1895,China (mainland),high,0
+"china, mainland",,1895,1913,CHN-1895-1913,China (mainland),high,0
+"china, mainland",,1913,1914,CHN-1913-1914,China (mainland),high,0
+"china, mainland",,1914,1921,CHN-1914-1921,China (mainland),high,0
+"china, mainland",,1921,1932,CHN-1921-1932,China (mainland),high,0
+"china, mainland",,1932,1945,CHN-1932-1945,China (mainland),high,0
+"china, mainland",,1945,1947,CHN-1945-1947,China (mainland),high,0
+"china, mainland",,1947,1949,CHN-1947-1949,China (mainland),high,0
+"china, mainland",,1949,1950,CHN-1949-1950,China (mainland),high,0
+"china, mainland",,1950,2025,CHN-1950-2025,China (mainland),high,0
+"China, mainland",faostat,1961,2024,CHN-1950-2025,China (PRC),high,269529
+"china, manchuria province of",,1921,1932,CHN-1921-1932,,medium,0
+"china, manchuria province of",,1932,1945,MAN-1932-1945,,medium,0
+"china, manchuria province of",,1945,1947,CHN-1945-1947,,medium,0
+"china, manchuria province of",,1947,1949,CHN-1947-1949,,medium,0
+"china, manchuria province of",,1950,2025,CHN-1950-2025,,medium,0
+"China, Manchuria Province of",mitchell,1945,1950,MAN-1945-1950,manchuria,high,0
+"china, taiwan province of",,1895,1944,TWN-1895-1945,Taiwan,high,0
+"China, Taiwan Province of",faostat,1961,2024,TWN-1945-2025,Taiwan,high,252667
+Christmas Island,faostat,1946,1958,CXR-1946-1958,Christmas Island (under Singapore administration),high,0
+Colombia,faostat,1961,2024,COL-1922-2025,Colombia,high,235230
+Comoro Islands,fao1952,1949,1951,COM-1946-1975,Comoros (1946-1975),high,8
+Comoros,faostat,1961,1974,COM-1946-1975,Comoros (1946-1975),high,52459
+Comoros,faostat,1975,2024,COM-1975-2025,Comoros,high,52459
+Congo,faostat,1961,2024,COG-1960-2025,Congo,high,170222
+Cook Islands,faostat,1961,2024,COK-1800-2025,Cook Islands,high,42137
+COS,mueller-synthetic-n,1800,2025,CRI-1800-2025,Costa Rica,high,0
+Costa Rica,faostat,1961,2024,CRI-1800-2025,Costa Rica,high,216304
+Cote d'Ivoire,lassaletta-grassland-share,1961,2009,CIV-1960-2025,Cote d'Ivoire,high,0
+Croatia,faostat,1992,2024,HRV-1992-2025,Croatia,high,122938
+Cuba,faostat,1961,2024,CUB-1800-2025,Cuba,high,171184
+Cyprus,faostat,1961,2024,CYP-1879-2025,Cyprus,high,233146
+cyprus,iia,1879,2025,CYP-1879-2025,Cyprus,high,97
+czech republic,,1919,1938,F51-1918-1938,,high,603
+czech republic,,1919,1938,F51-1918-1938,Czechoslovakia (1918-1938),high,0
+czech republic,,1938,1945,F51-1938-1945,,high,603
+czech republic,,1939,1945,F51-1938-1945,Czechoslovakia (1938-1945),medium,0
+czech republic,,1945,1947,F51-1945-1947,,high,603
+czech republic,,1946,1947,F51-1945-1947,Czechoslovakia (1945-1947),high,0
+czech republic,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high,0
+Czech Republic,faostat,1993,2025,CZE-1993-2025,Czechia,high,0
+Czechia,faostat,1993,2024,CZE-1993-2025,Czechia,high,126408
+czechoslovakia,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high,0
+Czechoslovakia,faostat,1961,1992,F51-1947-1993,Czechoslovakia (1947-1993),high,92870
+czechoslovakia,juan,1914,1918,CZE-1804-1918,Czech Lands (Bohemia-Moravia-Silesia under Austria-Hungary),high,27
+Côte d'Ivoire,faostat,1961,2024,CIV-1960-2025,Côte d'Ivoire,high,208865
+Democratic People's Republic of Korea,faostat,1961,2024,PRK-1948-2025,North Korea,high,112014
+Democratic Republic of the Congo,faostat,1961,2024,COD-1960-2025,Democratic Republic of the Congo,high,81027
+Denmark,faostat,1961,2024,DNK-1920-2025,Denmark,high,255081
+denmark the faeroes,fao1952,1800,2025,FRO-1800-2025,Faroe Islands,high,0
+Djibouti,faostat,1961,1976,FRS-1884-1977,French Somaliland,high,140634
+Djibouti,faostat,1977,2024,FRS-1977-2025,Djibouti (formerly French Somaliland),high,140634
+djibouti,iia,1884,1977,FRS-1884-1977,French Somaliland,high,0
+Dominica,faostat,1961,2024,DMA-1800-2025,Dominica,high,149397
+Dominican Rep,fao1952,1800,2025,DOM-1800-2025,Dominican Republic,high,0
+Dominican Republic,faostat,1961,2024,DOM-1800-2025,Dominican Republic,high,181837
+DPRepublic of Korea,lassaletta-grassland-share,1961,2009,PRK-1948-2025,Democratic People's Republic of Korea,high,0
+DR Congo,faostat,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
+Dutch Caribbean,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+Dutch Guiana,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,0
+Ecuador,faostat,1961,2024,ECU-1942-2025,Ecuador,high,221065
+Egypt,faostat,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,243914
+Egypt,faostat,1967,1978,EGY-1967-1979,Egypt (1967-1979),high,243914
+Egypt,faostat,1979,2024,EGY-1979-2025,Egypt,high,243914
+egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
+Egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
+egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
+Egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
+EI Salvador,,,,SLV-1821-2025,El Salvador,high,0
+El Salvador,faostat,1961,2024,SLV-1821-2025,El Salvador,high,207960
+ELS,mueller-synthetic-n,1821,2025,SLV-1821-2025,El Salvador,high,0
+Equatorial Guinea,faostat,1961,1967,GNQ-1886-1968,Equatorial Guinea (1886-1968),high,23719
+Equatorial Guinea,faostat,1968,2024,GNQ-1968-2025,Equatorial Guinea,high,23719
+Eritrea,faostat,1993,2024,ERI-1993-2025,Eritrea,high,14746
+Estonia,faostat,1992,2024,EST-1991-2025,Estonia,high,117745
+Eswatini,faostat,1894,2025,SWZ-1894-2025,Eswatini,high,0
+Ethiopia,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high,0
+ethiopia,fao1952,1936,1941,ETH-1936-1941,ethiopia,high,1
+Ethiopia,faostat,1993,2024,ETH-1993-2025,Ethiopia,high,102786
+ethiopia,iia,1936,1941,ETH-1936-1941,ethiopia,high,1
+Ethiopia PDR,faostat,1961,1992,ETH-1952-1993,Ethiopia (1952-1993),high,85546
+Falkland Islands,fao1952,1937,1951,FLK-1833-2025,Falkland Islands,high,19
+Falkland Islands (Malvinas),faostat,1850,2025,FLK-1833-2025,Falkland Islands,high,0
+Faroe Islands,faostat,1961,2024,FRO-1800-2025,Faroe Islands,high,45036
+Federation of Malaya,fao1952,1946,1957,MYS-1946-1957,Malayan Union / Federation of Malaya,high,0
+Fiji,faostat,1961,2024,FJI-1800-2025,Fiji,high,203519
+Finland,faostat,1961,2024,FIN-1940-2025,Finland (1940-2025),high,229594
+Formosa,,1895,1945,TWN-1895-1945,,high,0
+Fr Equat Africa,fao1952,1950,1951,AEF-1910-1960,French Equatorial Africa (AEF),high,8
+france,,1800,1870,FRA-1800-1871,France,high,0
+france,,1871,1918,FRA-1871-1919,France,high,0
+france,,1919,2025,FRA-1919-2025,France,high,0
+France,faostat,1961,2024,FRA-1919-2025,France,high,269731
+France Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high,0
+France Saar,fao1952,1935,1946,SAC-1935-1947,Saar (German incorporation 1935-1947),high,0
+French Equat Africa,,,,AEF-1910-1960,French Equatorial Africa (AEF),high,16
+French Equat Africa,,1939,1951,AEF-1910-1960,French Equatorial Africa (AEF),high,110
+french guiana,,1946,2025,GUF-1946-2025,French Guiana (Overseas Department),high,0
+French Guiana,fao1952,1946,2025,GUF-1946-2025,French Guiana (Overseas Department),high,0
+French Guiana,faostat,1961,2006,GUF-1946-2025,French Guiana (Overseas Department),high,8934
+French Guiana,iia,1816,1945,GUF-1816-1946,French Guiana (Colony),high,85
+french guiana,iia,1816,1945,GUF-1816-1946,French Guiana (Colony),high,85
+French Morocco,,1904,1956,MAR-1911-1958,Morocco,high,261
+French Oceania,fao1952,1937,1951,PYF-1800-2025,French Polynesia,high,50
+French Polynesia,faostat,1961,2024,PYF-1800-2025,French Polynesia,high,170270
+French W Africa,,,,AOF-1895-1960,French West Africa (AOF),high,12
+French West Africa,,,,AOF-1895-1960,French West Africa (AOF),high,150
+FSU,lassaletta-grassland-share,1961,1991,F228-1945-1991,Soviet Union,high,0
+Gabon,faostat,1961,2024,GAB-1960-2025,Gabon,high,162217
+Gambia,faostat,1961,2024,GMB-1800-2025,Gambia,high,141154
+Georgia,faostat,1992,2024,GEO-1991-2025,Georgia,high,101509
+Germany,faostat,1961,1989,DEU-1949-1990,"Germany (divided, 1949-1990)",high,266337
+Germany,faostat,1990,2024,DEU-1990-2025,Germany,high,266337
+Germany Berlin,fao1952,1937,1937,DEU-1920-1938,Germany (1920-1938),high,0
+Germany Berlin,fao1952,1938,1944,BRL-1938-1945,Greater Berlin (1938-1945),high,0
+Germany Berlin,fao1952,1945,1948,BRL-1945-1949,Berlin (Allied Occupation),high,0
+Germany Berlin,fao1952,1949,1951,WBL-1949-1990,West Berlin,high,0
+germany eastern,,1949,1990,F77-1949-1990,,medium,0
+Germany Eastern,fao1952,1938,1948,SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,high,0
+Germany Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high,0
+Germany Western,fao1952,1937,1937,DEU-1920-1938,West Germany (pre-Anschluss back-projection),high,10
+Germany Western,fao1952,1938,1948,WZO-1938-1949,Western Germany / Western Occupation Zones,high,30
+Germany Western,fao1952,1949,1951,F78-1949-1990,West Germany,high,5
+Ghana,faostat,1961,2024,GHA-1957-2025,Ghana,high,191734
+Gold Coast,fao1952,1821,1956,GHA-1898-1956,Gold Coast Colony,high,36
+Gold Coast & Br Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,0
+Gold Coast and Br Tog,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,0
+Gold Coast and Br Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,32
+Gold Coast and British Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,0
+Gold Coast and British togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,0
+greece,,1830,1881,GRC-1830-1881,Greece,high,0
+greece,,1881,1913,GRC-1881-1913,Greece,high,0
+Greece,faostat,1961,2024,GRC-1947-2025,Greece (1947-2025),high,268331
+greece,whep-split-2026-06-29,1919,1946,GRC-1919-1947,Greece,high,0
+greece,whep-split-2026-06-29,1947,2025,GRC-1947-2025,Greece,high,0
+Greenland,faostat,1850,2025,GRL-1800-2025,Greenland,high,0
+Grenada,faostat,1961,2024,GRD-1800-2025,Grenada,high,162962
+GUA,mueller-synthetic-n,1821,2025,GTM-1821-2025,Guatemala,high,0
+Guadeloupe,faostat,1961,2006,GLP-1816-2025,Guadeloupe,high,11766
+Guam,fao1952,1898,1950,GUM-1898-1950,Territory of Guam,high,0
+Guam,fao1952,1950,2025,GUM-1950-2025,Guam (US Territory),high,1
+Guam,faostat,1898,1950,GUM-1898-1950,Territory of Guam,high,0
+Guatemala,faostat,1961,2024,GTM-1821-2025,Guatemala,high,224016
+Guinea,faostat,1961,2024,GIN-1958-2025,Guinea,high,152542
+Guinea-Bissau,faostat,1961,1973,GNB-1886-1974,Guinea-Bissau (1886-1974),high,127361
+Guinea-Bissau,faostat,1974,2024,GNB-1974-2025,Guinea-Bissau (1974-2025),high,127361
+Guyana,faostat,1961,2024,GUY-1800-2025,Guyana,high,174251
+HAI,mueller-synthetic-n,1800,2025,HTI-1800-2025,Haiti,high,0
+Haiti,faostat,1961,2024,HTI-1800-2025,Haiti,high,152458
+hawaii,,1898,1959,HAWI-1898-1959,Territory of Hawaii,high,0
+HON,mueller-synthetic-n,1800,2025,HND-1800-2025,Honduras,high,0
+Honduras,faostat,1961,2024,HND-1800-2025,Honduras,high,213241
+hungary,,1920,1920,HUN-1920-1938,Hungary (1920-1938),high,0
+Hungary,faostat,1961,2024,HUN-1947-2025,Hungary (1947-2025),high,255854
+Iceland,faostat,1961,2024,ISL-1800-2025,Iceland,high,170791
+India,faostat,1961,2024,IND-1949-2025,India,high,254312
+indochina,,,,FID-1887-1954,French Indochina,high,259
+indochina cambodia,,1907,1953,KHM-1907-1953,,medium,0
+indochina laos,,1936,1951,LAO-1893-1953,Laos (1893-1953),high,59
+indochina viet nam,,1887,1954,FID-1887-1954,,medium,0
+Indonesia,fao1952,1800,1945,IDN-1800-1945,Dutch East Indies,high,23
+Indonesia,faostat,1961,1968,IDN-1949-1969,Indonesia (1949-1969),high,251399
+Indonesia,faostat,1969,1975,IDN-1969-1976,Indonesia (1969-1976),high,251399
+Indonesia,faostat,1976,2001,IDN-1976-2002,Indonesia (1976-2002),high,251399
+Indonesia,faostat,2002,2024,IDN-2002-2025,Indonesia,high,251399
+Indonesia Bali and Lombok,fao1952,1949,1951,IDN-BLB-1949-1951,Bali and Lombok (within Indonesia),high,0
+Indonesia Bali and Lombok,fao1952,1950,1951,IDN-BLB-1949-1951,indonesia bali and lombok,high,16
+Indonesia Java and Madura,fao1952,1949,1951,IDN-JVM-1949-1951,Java and Madura (within Indonesia),high,0
+Indonesia Other islands,fao1952,1949,1951,IDN-OTH-1949-1951,Other islands (within Indonesia),high,0
+Iran (Islamic Republic of),faostat,1961,2024,IRN-1828-2025,Iran,high,218401
+Iraq,faostat,1961,2024,IRQ-1932-2025,Iraq,high,176958
+Ireland,faostat,1961,2024,IRL-1921-2025,Ireland,high,246559
+israel,,1920,1948,PAL-1920-1948,,medium,0
+israel,,1948,1967,ISR-1948-1967,,medium,0
+Israel,faostat,1961,1966,ISR-1948-1967,Israel (1948-1967),high,234671
+Israel,faostat,1967,1978,ISR-1967-1979,Israel (1967-1979),high,234671
+Israel,faostat,1979,2024,ISR-1979-2025,Israel,high,234671
+israel/palestine,,1925,1948,PAL-1920-1948,British Mandate Palestine,high,0
+israel/palestine,,1949,1949,ISR-1948-1967,Israel,medium,0
+Italian East Africa,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high,0
+italy,,1861,1866,ITA-1861-1866,Italy (1861-1866),high,0
+italy,,1866,1870,ITA-1866-1870,Italy (1866-1870),high,0
+italy,,1870,1919,ITA-1870-1919,Italy (1870-1919),high,0
+Italy,faostat,1961,2024,ITA-1919-2025,Italy,high,278124
+italy,iia,,1860,SAR-1800-1860,Kingdom of Sardinia (pre-unification Italy),high,0
+Ivory Coast,faostat,1960,2025,CIV-1960-2025,Côte d'Ivoire,high,0
+Jamaica,faostat,1961,2024,JAM-1800-2025,Jamaica,high,199570
+japan,,1945,1952,JPN-1945-1952,Japan (occupied),high,0
+Japan,fao1952,1895,1945,JPN-1895-1945,Japanese Empire,high,57
+Japan,faostat,1961,2024,JPN-1952-2025,Japan,high,254381
+Jordan,faostat,1961,2024,JOR-1946-2025,Jordan,high,214926
+Kazakhstan,faostat,1992,2024,KAZ-1991-2025,Kazakhstan,high,120824
+Kenya,faostat,1961,1962,KEN-1926-1963,Kenya (1926-1963),high,239879
+Kenya,faostat,1963,2024,KEN-1963-2025,Kenya,high,239879
+Kiribati,faostat,1961,2024,KIR-1800-2025,Kiribati,high,105746
+Korea,fao1952,1949,1951,KOR-1948-2025,South Korea,high,0
+korea,mitchell,1949,1960,KOR-1948-2025,South Korea,high,0
+Korea South,fao1952,1910,1945,KRS-1910-1945,Korea South (within Japanese Chosen),high,0
+Korea South,fao1952,1948,1951,KOR-1948-2025,South Korea,high,0
+Kuwait,faostat,1961,2024,KWT-1800-2025,Kuwait,high,188419
+Kyrgyzstan,faostat,1992,2024,KGZ-1991-2025,Kyrgyzstan,high,103359
+Lao,faostat,1954,2025,LAO-1954-2025,Lao People's Democratic Republic,high,0
+Lao People's Democratic Republic,faostat,1961,2024,LAO-1954-2025,Laos,high,136563
+Latvia,faostat,1992,2024,LVA-1991-2025,Latvia,high,120121
+Lebanon,faostat,1961,2024,LBN-1944-2025,Lebanon,high,225832
+Lesotho,faostat,1961,1965,LSO-1886-1966,Lesotho (1886-1966),high,109395
+Lesotho,faostat,1966,2024,LSO-1966-2025,Lesotho,high,109395
+Liberia,faostat,1961,2024,LBR-1847-2025,Liberia,high,135600
+Libya,fao1952,1943,1949,LBY-1943-1949,Libya (1943-1949),high,0
+Libya,fao1952,1950,1951,LBY-1950-1951,Libya under UN Transitional Administration (1950-1951),high,0
+Libya,faostat,1961,2024,LBY-1951-2025,Libya,high,81391
+Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high,8
+Libya Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,37
+Liechtenstein,faostat,1850,2025,LIE-1800-2025,Liechtenstein,high,0
+Lithuania,faostat,1992,2024,LTU-1991-2025,Lithuania,high,123044
+ltaly,fao1952,1949,1951,ITA-1919-2025,Italy,high,3
+Luxembourg,faostat,2000,2024,LUX-1839-2025,Luxembourg,high,94451
+Madagascar,faostat,1961,2024,MDG-1882-2025,Madagascar,high,207040
+Makatea,fao1952,1949,1951,PYF-1800-2025,French Polynesia,high,8
+malawi,,1954,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high,0
+Malawi,faostat,1961,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high,185999
+Malawi,faostat,1964,2024,MWI-1964-2025,Malawi,high,185999
+Malaya Fed of,fao1952,1949,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,25
+Malaya Federation of,fao1952,1939,1945,GBM-1895-1946,British Malaya,high,0
+Malaya Federation of,fao1952,1946,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,0
+Malaysia,faostat,1961,1962,MYS-1957-1963,Malaysia (1957-1963),high,250837
+Malaysia,faostat,1963,1964,MYS-1963-1965,Malaysia (1963-1965),high,250837
+Malaysia,faostat,1965,2024,MYS-1965-2025,Malaysia,high,250837
+Maldives,faostat,1961,2024,MDV-1800-2025,Maldives,high,131539
+Mali,faostat,1961,2024,MLI-1960-2025,Mali,high,181291
+Malta,faostat,1961,2024,MLT-1800-2025,Malta,high,207406
+Marcinique,fao1952,1816,2025,MTQ-1816-2025,Martinique,high,0
+Marshall Islands,faostat,1991,2024,MHL-1874-2025,Marshall Islands,high,20782
+Martinique,faostat,1961,2006,MTQ-1816-2025,Martinique,high,9541
+Mauritania,faostat,1961,1974,MRT-1960-1975,Mauritania (1960-1975),high,148763
+Mauritania,faostat,1975,1978,MRT-1975-1979,Mauritania (1975-1979),high,148763
+Mauritania,faostat,1979,2024,MRT-1979-2025,Mauritania,high,148763
+Mauritius,faostat,1961,2024,MUS-1800-2025,Mauritius,high,205404
+Mexico,faostat,1961,2024,MEX-1848-2025,Mexico,high,262735
+Micronesia (Federated States of),faostat,1991,2024,FSM-1991-2025,Micronesia,high,17189
+micronesia (federated states of),iia,1920,1945,CAR-1920-1945,Caroline Islands (Japanese Mandate),high,0
+Moldova,faostat,1991,2025,MDA-1991-2025,Republic of Moldova,high,0
+Monaco,faostat,1850,2025,MCO-1800-2025,Monaco,high,0
+Mongolia,faostat,1961,2024,MNG-1921-2025,Mongolia,high,138130
+Montenegro,faostat,2006,2024,MNE-2006-2025,Montenegro,high,56042
+Montserrat,faostat,1850,2025,MSR-1800-2025,Montserrat,high,0
+Morocco,faostat,1961,1974,MAR-1958-1975,Morocco (1958-1975),high,245737
+Morocco,faostat,1975,1978,MAR-1975-1979,Morocco (1975-1979),high,245737
+Morocco,faostat,1979,2024,MAR-1979-2025,Morocco,high,245737
+Mozambique,faostat,1961,1974,MOZ-1891-1975,Mozambique (1891-1975),high,181274
+Mozambique,faostat,1975,2024,MOZ-1975-2025,Mozambique (1975-2025),high,181274
+Myanmar,faostat,1961,2024,MMR-1885-2025,Myanmar,high,172477
+Namibia,faostat,1961,1989,NAM-1920-1990,Namibia (1920-1990),high,172109
+Namibia,faostat,1990,2024,NAM-1990-2025,Namibia (1990-2025),high,172109
+natal,,1910,1957,ZAF-1910-2025,Natal province (South Africa),medium,0
+Nauru,faostat,1961,2024,NRU-1888-2025,Nauru,high,21491
+Necherlands,fao1952,1949,1951,NLD-1830-2025,Netherlands,high,8
+Nepal,faostat,1961,2024,NPL-1816-2025,Nepal,high,193378
+Neth West Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+neth west indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+Netherlands (Kingdom of the),faostat,1961,2024,NLD-1830-2025,Netherlands,high,259019
+netherlands antilles,,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+Netherlands Antilles,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+Netherlands Antilles (former),faostat,1961,2010,ANT-1961-2010,Netherlands Antilles,high,61441
+Netherlands New Guinea,fao1952,1949,1963,NNG-1949-1963,Netherlands New Guinea,high,3
+Netherlands W Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,21
+netherlands w indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,21
+Netherlands West Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+netherlands west indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+NetherlandsWest Indies,fao1952,,,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+netherlandswest indies,fao1952,,,ANT-1816-1960,Dutch Caribbean (colonial),high,0
+New Caledonia,faostat,1961,2024,NCL-1800-2025,New Caledonia,high,161177
+New Guinea,fao1952,1937,1949,TNGU-1920-1949,Territory of New Guinea,high,0
+New Guinea,fao1952,1950,1951,PNG-1949-1975,Papua and New Guinea (administrative union),medium,0
+New Hebrides,fao1952,1906,1979,VUT-1800-2025,New Hebrides (Vanuatu),high,0
+New Zealand,faostat,1961,2024,NZL-1840-2025,New Zealand,high,240961
+Nicaragua,faostat,1961,2023,NIC-1800-2025,Nicaragua,high,208187
+niger,,1911,1922,NER-1911-1922,Niger (Military Territory),high,0
+Niger,faostat,1961,2024,NER-1960-2025,Niger,high,180039
+Nigeria,faostat,1961,2024,NGA-1961-2025,Nigeria,high,191847
+Niue,faostat,1961,2024,NIU-1800-2025,Niue,high,22055
+Norfolk Island,faostat,1914,2025,NFK-1914-2025,Norfolk Island (Australian Territory),high,0
+Norfolk Islands,fao1952,1914,2025,NFK-1914-2025,Norfolk Island (Australian Territory),high,9
+North Korea,faostat,1948,2025,PRK-1948-2025,Democratic People's Republic of Korea,high,0
+North Macedonia,faostat,1992,2024,MKD-1991-2025,North Macedonia,high,115222
+Norway,faostat,1961,2024,NOR-1800-2025,Norway,high,231582
+Occupied Palestinian Territory,lassaletta-grassland-share,1961,2009,PSE-1948-2025,Palestine (West Bank and Gaza),high,0
+Oman,faostat,1961,2024,OMN-1856-2025,Sultanate of Oman,high,144474
+Pacific Is,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,0
+Pacific Is (U S,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,0
+Pacific Is US tr,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,0
+pacific is us trust,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,18
+Pacific Islands (U S,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,0
+Pakistan,fao1952,1937,1939,PAK-1937-1947,"Pakistan (territory within British India, 1937-1947)",high,0
+Pakistan,faostat,1961,1970,PAK-1949-1971,Pakistan (1949-1971),high,233714
+Pakistan,faostat,1971,2024,PAK-1971-2025,Pakistan,high,233714
+Palau,faostat,2000,2024,PLW-1991-2025,Palau,high,9051
+palau,iia,1909,1914,GCAR-1899-1914,German Caroline Islands (Karolinen),high,6
+palau,iia,1915,1919,JPN-1895-1945,Palau (Japanese military occupation),high,5
+palau,iia,1920,1932,CAR-1920-1945,Palau (Caroline Islands Japanese Mandate),high,4
+Palestine,faostat,1961,2024,PSE-1948-2025,Palestine (West Bank and Gaza),high,32534
+Panama,faostat,1961,1978,PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",high,196061
+Panama,faostat,1979,2024,PAN-1979-2025,Panama (post-Canal Zone),high,196061
+panama canal zone,fao1952,1903,1979,CZN-1903-1979,Panama Canal Zone,high,5
+Papua,fao1952,1937,1949,TPAP-1906-1949,Territory of Papua,high,17
+Papua,fao1952,1950,1951,PNG-1949-1975,Territory of Papua and New Guinea,high,11
+Papua New Guinea,faostat,1961,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,87626
+Papua New Guinea,faostat,1975,2024,PNG-1975-2025,Papua New Guinea,high,87626
+papua new guinea,iia,1920,1940,TPAP-1906-1949,Territory of New Guinea / Territory of Papua (combined IIA series 1920-1940),low,0
+Paraguay,faostat,1961,2024,PRY-1938-2025,Paraguay,high,194468
+Peru,faostat,1961,2024,PER-1942-2025,Peru,high,239266
+Philippines,faostat,1961,2024,PHL-1800-2025,Philippines,high,234546
+Poland,faostat,1961,2024,POL-1945-2025,Poland (1945-2025),high,236068
+Portugal,faostat,1961,2024,PRT-1800-2025,Portugal,high,262025
+Portuguese Guinea,fao1952,1886,1974,GNB-1886-1974,Guinea-Bissau (1886-1974),high,18
+Portuguese India,fao1952,1816,1961,PTIND-1816-1961,Portuguese India (Estado da India Portuguesa),high,0
+Portuguese Timor,fao1952,1702,1975,TLS-1800-2025,Timor-Leste,high,10
+Puerto Rico,faostat,1961,2024,PRI-1800-2025,Puerto Rico,high,13095
+Qatar,faostat,1961,2024,QAT-1800-2025,Qatar,high,67600
+Republic of Korea,faostat,1961,2024,KOR-1948-2025,South Korea,high,247177
+Republic of Moldova,faostat,1992,2024,MDA-1991-2025,Moldova,high,111192
+reunion,,1816,1946,REU-1816-1946,Réunion,high,0
+reunion,fao1952,1946,2025,REU-1946-2025,Réunion,high,47
+Reunion,lassaletta-grassland-share,1961,2009,REU-1946-2025,Reunion (French Overseas Department),high,0
+ROM,mueller-synthetic-n,1947,2025,ROU-1947-2025,Romania,high,0
+romania,,1859,1913,ROU-1859-1913,Romania,high,0
+romania,,1913,1918,ROU-1913-1918,Romania,high,0
+romania,,1918,1919,ROU-1918-1919,Romania,high,0
+romania,,1919,1920,ROU-1919-1920,Romania,high,0
+romania,,1920,1940,ROU-1920-1940,Romania,high,0
+romania,,1940,1947,ROU-1940-1947,Romania (1940-1947),high,0
+romania,,1947,2025,ROU-1947-2025,Romania (1947-2025),high,0
+Romania,faostat,1961,2024,ROU-1947-2025,Romania (1947-2025),high,234453
+russian federation,,1906,1914,F228-1905-1914,Russian Empire (1905-1914),high,0
+russian federation,,1914,1917,F228-1914-1917,Russian Empire (1914-1917),high,0
+russian federation,,1917,1918,F228-1917-1918,Russia (1917-1918),high,0
+russian federation,,1918,1920,F228-1918-1920,RSFSR (1918-1920),high,0
+russian federation,,1920,1921,F228-1920-1921,RSFSR (1920-1921),high,0
+russian federation,,1921,1940,F228-1921-1940,RSFSR/USSR (1921-1940),high,0
+russian federation,,1940,1945,F228-1940-1945,USSR (1940-1945),high,0
+russian federation,,1945,1960,F228-1945-1991,USSR (1945-1991),high,0
+russian federation,,1991,2014,RUS-1991-2014,,medium,0
+russian federation,,2014,2025,RUS-2014-2025,,medium,0
+Russian Federation,faostat,1992,2013,RUS-1991-2014,Russia (1991-2014),high,127905
+Russian Federation,faostat,2014,2024,RUS-2014-2025,Russia,high,127905
+Rwanda,faostat,1961,1961,RWA-1922-1962,Rwanda (within Ruanda-Urundi),high,162034
+Rwanda,faostat,1962,2024,RWA-1962-2025,Rwanda,high,162034
+rwanda,mitchell,1953,1960,RWB-1922-1962,Ruanda-Urundi,high,0
+rwanda and burundi,,,,RWB-1922-1962,Ruanda-Urundi,high,155
+Ryukyu Islands,,1937,1944,RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),high,0
+Ryukyu Islands,,1945,1951,RYU-1945-1972,Ryukyu Islands (US Administration),high,0
+Réunion,faostat,1961,2006,REU-1946-2025,Réunion (French Overseas Department),high,13083
+Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high,0
+"Saint Helena, Ascension and Tristan da Cunha",faostat,1850,1967,SHN-1834-1967,Saint Helena (Crown Colony),high,0
+Saint Kitts and Nevis,faostat,1961,2024,KNA-1800-2025,Saint Kitts and Nevis,high,138883
+Saint Lucia,faostat,1961,2024,LCA-1838-2025,Saint Lucia,high,166519
+Saint Pierre and Miquelon,faostat,1850,2025,SPM-1816-2025,Saint Pierre and Miquelon,high,0
+Saint Vincent and the Grenadines,faostat,1961,2024,VCT-1833-2025,Saint Vincent and the Grenadines,high,148884
+Samoa,faostat,1961,2024,WSM-1900-2025,Samoa,high,141994
+San Marino,faostat,1850,2025,SMR-1800-2025,San Marino,high,0
+Sao Tome and Principe,faostat,1961,2024,STP-1800-2025,Sao Tome and Principe,high,113416
+Saudi Arabia,faostat,1961,2024,SAU-1924-2025,Saudi Arabia,high,225841
+Senegal,faostat,1961,2024,SEN-1960-2025,Senegal,high,206509
+serbia,,1816,1878,SER-1816-1878,,medium,0
+serbia,,1878,1913,SER-1878-1913,,medium,0
+serbia,,1913,1918,SER-1913-1918,,medium,0
+serbia,,1918,1919,F248-1918-1919,Serbia within Kingdom of Serbs Croats and Slovenes (1918-1919),medium,0
+serbia,,1919,1920,F248-1919-1920,Serbia within Kingdom of Serbs Croats and Slovenes (1919-1920),medium,0
+serbia,,1920,1945,SER-1918-1945,Serbia within Yugoslavia (1920-1945),high,568
+serbia,,1945,1947,F248-1920-1947,Yugoslavia (1945-1947) — serbia sub-territory data approximation,low,0
+serbia,,1947,1991,F248-1947-1991,Yugoslavia (1947-1991) — serbia sub-territory data approximation,low,0
+serbia,,1991,1992,F248-1991-1992,Serbia within Yugoslavia/SFR dissolution (1991-1992),medium,0
+serbia,,1992,2006,SCG-1992-2006,Serbia within Federal Republic of Yugoslavia / Serbia and Montenegro,medium,0
+serbia,,2006,2008,SER-2006-2008,Serbia (2006-2008 pre-independence),medium,0
+serbia,,2008,2025,SRB-2008-2025,,medium,0
+Serbia,faostat,2006,2007,SRB-2006-2008,Serbia (including Kosovo),high,68875
+Serbia,faostat,2008,2024,SRB-2008-2025,Serbia,high,68875
+Serbia and Montenegro,faostat,1992,2005,SCG-1992-2006,Serbia and Montenegro,high,46585
+Seychelles,faostat,1961,2024,SYC-1903-2025,Seychelles,high,73947
+Sierra Leone,faostat,1961,2024,SLE-1961-2025,Sierra Leone (1961-2025),high,142058
+Singapore,faostat,1961,1962,SGP-1946-1963,Singapore (Crown Colony),high,100174
+Singapore,faostat,1963,1964,SGP-1963-1965,Singapore (State of Singapore in Malaysia),high,100174
+Singapore,faostat,1965,2024,SGP-1965-2025,Singapore,high,100174
+singapore,iia,1895,1945,GBM-1895-1946,British Malaya (Straits Settlements/Singapore sub-territory),high,0
+Singapore Christmas Island,fao1952,1949,1951,CXR-1946-1958,Christmas Island (under Singapore administration),high,8
+Slovakia,faostat,1993,2024,SVK-1993-2025,Slovakia,high,124405
+Slovenia,faostat,1992,2024,SVN-1992-2025,Slovenia,high,127691
+Solomon Islands,faostat,1961,2024,SLB-1800-2025,Solomon Islands,high,120550
+Somalia,fao1952,1939,1951,ITS-1908-1960,Italian Somaliland,high,0
+Somalia,faostat,1961,2024,SOM-1960-2025,Somalia,high,62074
+somalia,iia,1920,1959,BSS-1884-1960,British Somaliland Protectorate,medium,81
+somalia,mitchell,1920,1959,ITS-1908-1960,Italian Somaliland,high,0
+south africa,,1852,1909,CAP-1800-1910,Cape Colony,high,218
+south africa,,1910,2025,ZAF-1910-2025,South Africa (Union and Republic),high,0
+South Africa,faostat,1961,2024,ZAF-1910-2025,South Africa (Union and Republic),high,253610
+south africa,iia,1910,2025,ZAF-1910-2025,South Africa,high,90
+South Korea,faostat,1948,2025,KOR-1948-2025,Republic of Korea,high,0
+South Sudan,faostat,2012,2024,SSD-2011-2025,South Sudan,high,17383
+South West Africa,fao1952,1937,1951,NAM-1920-1990,Namibia (1920-1990),high,63
+southern rhodesia,,1900,1953,ZWE-1900-1953,,medium,0
+Spain,faostat,1961,2024,ESP-1800-2025,Spain,high,278591
+Spanish Guinea,fao1952,1886,1968,GNQ-1886-1968,Spanish Guinea (Equatorial Guinea colonial),high,13
+Sri Lanka,faostat,1961,2024,LKA-1800-2025,Sri Lanka,high,229589
+SRM,mueller-synthetic-n,1975,2025,SUR-1975-2025,Suriname,high,0
+st helena,fao1952,1931,1951,SHN-1834-1967,Saint Helena,high,0
+St Pierre and Miquelon,fao1952,1937,1951,SPM-1816-2025,Saint Pierre and Miquelon,high,8
+sudan,,1899,1934,SUD-1899-1934,,medium,0
+sudan,,1934,1956,SUD-1934-1956,,medium,0
+sudan,,1956,2011,SUD-1956-2011,,medium,0
+sudan,,2011,2025,SDN-2011-2025,,medium,0
+Sudan,faostat,2012,2024,SDN-2011-2025,Sudan,high,35724
+Sudan (former),faostat,1961,2011,SUD-1956-2011,Sudan (1956-2011),high,139921
+Surinam,fao1952,1886,1954,SUR-1886-1954,Dutch Guiana,high,102
+Suriname,faostat,1961,1974,SUR-1954-1975,Surinam (Autonomous),high,152943
+Suriname,faostat,1975,2024,SUR-1975-2025,Suriname,high,152943
+suriname,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,84
+Swaziland,faostat,1961,2024,SWZ-1894-2025,Eswatini,high,180663
+Swaziland,lassaletta-grassland-share,1961,2009,SWZ-1894-2025,Eswatini,high,0
+Sweden,faostat,1961,2024,SWE-1905-2025,Sweden,high,245456
+Switzerland,faostat,1961,2024,CHE-1800-2025,Switzerland,high,242756
+Syria,,,,SYR-1946-1967,Syrian Arab Republic,high,162
+Syria and Lebanon,fao1952,1944,1953,SYL-1944-1953,Syria and Lebanon (combined statistical unit),high,0
+Syrian Arab Republic,faostat,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-1967),high,113504
+Syrian Arab Republic,faostat,1967,2024,SYR-1967-2025,Syrian Arab Republic,high,113504
+Tajikistan,faostat,1992,2024,TJK-1991-2025,Tajikistan,high,71520
+tanganyika,,1922,1964,TAN-1922-1964,,medium,0
+tanzania,,1891,1920,TAN-1891-1920,,medium,0
+tanzania,,1920,1922,TAN-1920-1922,,medium,0
+tanzania,,1922,1964,TAN-1922-1964,,medium,0
+Tanzania,faostat,1964,2025,TZA-1964-2025,United Republic of Tanzania,high,0
+Thailand,faostat,1961,2024,THA-1909-2025,Thailand,high,252783
+Timor-Leste,faostat,1961,2024,TLS-1800-2025,Timor-Leste,high,109034
+Togo,faostat,1961,2024,TGO-1960-2025,Togo,high,186647
+Tonga,faostat,1961,2024,TON-1800-2025,Tonga,high,46569
+TRI,mueller-synthetic-n,1800,2025,TTO-1800-2025,Trinidad and Tobago,high,0
+Trieste,fao1952,1937,1946,TRS-1947-1954,Province of Trieste (pre-FTT),medium,0
+Trieste,fao1952,1947,1951,TRS-1947-1954,Free Territory of Trieste,high,0
+Trieste UK ans US,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,0
+Trieste uk us,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,0
+Trieste UK-US,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,0
+Trieste us uk,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,0
+Trinidad and Tobago,faostat,1961,2024,TTO-1800-2025,Trinidad and Tobago,high,211626
+Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,2
+Tunisia,faostat,1961,2024,TUN-1881-2025,Tunisia,high,226193
+Turkey,,,,TUR-1920-2025,Türkiye,high,323
+turkey,,1913,1914,TUR-1913-1914,Türkiye (1913-1914),high,0
+Turkmenistan,faostat,1992,2024,TKM-1991-2025,Turkmenistan,high,63651
+Tuvalu,faostat,1961,2024,TUV-1800-2025,Tuvalu,high,24864
+Türkiye,faostat,1961,2024,TUR-1920-2025,Türkiye (1920-2025),high,258437
+U of S Africa,fao1952,1910,1961,ZAF-1910-2025,Union of South Africa,high,65
+Uganda,faostat,1961,1961,UGA-1926-1962,Uganda (1926-1962),high,200589
+Uganda,faostat,1962,2024,UGA-1962-2025,Uganda,high,200589
+Ukraine,faostat,1992,2013,UKR-1991-2014,Ukraine (1991-2014),high,117919
+Ukraine,faostat,2014,2024,UKR-2014-2025,Ukraine,high,117919
+Union of S Africa,fao1952,1910,1961,ZAF-1910-2025,Union of South Africa,high,0
+union of south africa,,1910,2025,ZAF-1910-2025,,medium,0
+United Arab Emirates,faostat,1961,2024,ARE-1892-2025,United Arab Emirates,high,201802
+United Kingdom,faostat,1921,2025,GBR-1921-2025,United Kingdom of Great Britain and Northern Ireland,high,0
+United Kingdom Great Britain,fao1952,1937,1951,GBR-1921-2025,United Kingdom,high,9
+United Kingdom of Great Britain and Northern Ireland,faostat,1961,2024,GBR-1921-2025,United Kingdom,high,258802
+United Republic of Tanzania,faostat,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high,219893
+United Republic of Tanzania,faostat,1964,2024,TZA-1964-2025,Tanzania,high,219893
+united states and dependent territories,fao1952,1867,1959,USA-1867-1959,United States and dependent territories,high,32
+united states of america,,1800,1803,USA-1800-1803,United States of America,high,141
+united states of america,,1803,1848,USA-1803-1848,United States of America,high,141
+united states of america,,1848,1867,USA-1848-1867,United States of America,high,141
+united states of america,,1867,1959,USA-1867-1959,United States of America,high,141
+united states of america,,1959,2025,USA-1959-2025,United States of America,high,141
+United States of America,faostat,1961,2024,USA-1959-2025,United States of America,high,275022
+united states of america,iia,1800,1803,USA-1800-1803,United States of America,high,141
+united states of america,iia,1803,1848,USA-1803-1848,United States of America,high,141
+united states of america,iia,1848,1867,USA-1848-1867,United States of America,high,141
+united states of america,iia,1867,1959,USA-1867-1959,United States of America,high,141
+united states of america,iia,1959,2025,USA-1959-2025,United States of America,high,141
+united states of america,juan,1898,1959,USA-1867-1959,United States of America,high,0
+united states of america,juan,1900,1959,USA-1867-1959,united states of america,high,6076
+united states of america,mitchell,1898,1959,USA-1867-1959,United States of America,high,0
+United States Virgin Islands,faostat,1850,1917,DWI-1800-1917,Danish West Indies,high,0
+United States Virgin Islands,faostat,1917,2025,VIR-1917-2025,United States Virgin Islands,high,0
+united states virgin islands,iia,1909,1916,DWI-1800-1917,Danish West Indies,high,0
+united states virgin islands,iia,1917,1945,VIR-1917-2025,United States Virgin Islands,high,0
+Uruguay,faostat,1961,2024,URY-1828-2025,Uruguay,high,212716
+USSR,,1921,1940,F228-1921-1940,RSFSR/USSR (1921-1940),high,0
+USSR,,1940,1945,F228-1940-1945,USSR (1940-1945),high,0
+USSR,,1945,1991,F228-1945-1991,USSR (1945-1991),high,0
+USSR,faostat,1961,1991,F228-1945-1991,USSR (1945-1991),high,91616
+Uzbekistan,faostat,1992,2024,UZB-1991-2025,Uzbekistan,high,94197
+Vanuatu,faostat,1961,2024,VUT-1800-2025,Vanuatu,high,132942
+Venezuela (Bolivarian Republic of),faostat,1961,2024,VEN-1821-2025,Venezuela,high,232770
+viet nam,,1887,1954,VNM-1887-1954,,high,0
+viet nam,,1955,1974,RVN-1954-1975,Republic of Vietnam,high,0
+viet nam,,1975,2025,VNM-1975-2025,,medium,0
+Viet Nam,faostat,1961,1974,F237-1954-1975,Vietnam (combined reporting: DRV and RVN),high,170522
+Viet Nam,faostat,1975,2024,VNM-1975-2025,Vietnam,high,170522
+viet nam,iia,,,VNM-1887-1954,Vietnam (French Indochina),high,58
+Virgin Is US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high,0
+Virgin Islands US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high,0
+Western Australia,sa_colonial,1829,1900,AUWA-1829-1900,Western Australia (colonial),high,0
+Western Sahara,faostat,1958,1975,ESH-1958-1975,Western Sahara (1958-1975),high,0
+Western Sahara,faostat,1975,2025,ESH-1975-2025,Western Sahara,high,0
+Windward Islands  Grenada,fao1952,1800,2025,GRD-1800-2025,Grenada,high,7
+Windward Islands  St Lucia,fao1952,1838,1962,LCA-1838-2025,Saint Lucia,high,7
+Yemen,fao1952,1918,1962,MKY-1918-1962,Mutawakkilite Kingdom of Yemen,high,8
+Yemen,faostat,1961,1989,F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),high,187189
+Yemen,faostat,1990,2024,YEM-1990-2025,Yemen (1990-2025),high,187189
+yemen,iia,1918,1962,MKY-1918-1962,Mutawakkilite Kingdom of Yemen,high,21
+Yugoslav SFR,faostat,1961,1990,F248-1947-1991,Yugoslavia (1947-1991),high,112967
+Yugoslav SFR,faostat,1991,1991,F248-1991-1992,Yugoslavia (1991-1992),high,112967
+yugoslav sfr,juan,1909,1912,SER-1878-1913,Kingdom of Serbia (1878-1913),medium,0
+yugoslav sfr,juan,1913,1913,SER-1913-1918,Kingdom of Serbia post-Balkan Wars,medium,0
+yugoslavia,,1920,1947,F248-1920-1947,Yugoslavia (1920-1947),high,0
+Zambia,faostat,1961,1963,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),high,199421
+Zambia,faostat,1964,2024,ZMB-1964-2025,Zambia,high,199421
+zambia,mitchell,1953,1964,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland,high,0
+Zanzibar and Pemba,fao1952,1890,1963,ZNZ-1890-1963,Zanzibar Protectorate,high,71
+ZAR,mueller-synthetic-n,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
+zimbabwe,,1953,1964,SRH-1953-1964,Southern Rhodesia (within Federation 1953-1964),high,0
+Zimbabwe,faostat,1961,1963,SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",high,224061
+Zimbabwe,faostat,1964,1979,ZWE-1964-1980,Zimbabwe (1964-1980),high,224061
+Zimbabwe,faostat,1980,2024,ZWE-1980-2025,Zimbabwe (1980-2025),high,224061

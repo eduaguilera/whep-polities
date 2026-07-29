@@ -46,6 +46,7 @@ COLUMNS = (
     "polity_code",    # the polity the label resolves to
     "common_name",    # a human-readable name for that polity
     "confidence",     # matcher confidence in the assignment
+    "observed_rows",  # source rows seen for this label, 0 when only mappable
 )
 
 ap = argparse.ArgumentParser()
@@ -76,6 +77,22 @@ for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
             "polity_code": target,
             "common_name": (r.get("common_name") or "").strip(),
             "confidence": (r.get("confidence") or "").strip(),
+            # How many source rows were actually OBSERVED for this label. Published
+            # because a consumer cannot otherwise tell "this label carries data" from
+            # "this label is merely mappable", and those need different treatment.
+            #
+            # Concretely: eduaguilera/whep folds FABIO rest-of-world areas into a ROW
+            # polity, excluding only areas flagged with their own commodity balances.
+            # That excluded too little. Eleven folded areas carry substantial data in
+            # OTHER domains — Bermuda 67,310 rows, Faroe Islands 45,036, Cook Islands
+            # 42,137, Palestine 32,534, Equatorial Guinea 23,719 — so their production
+            # and trade were routed to ROW-1850-2023 while each has its own live polity
+            # that THIS map already targets for the same label. Two published contracts
+            # disagreeing about where one territory's data belongs.
+            #
+            # With the count exposed, the consumer can fold only what genuinely has no
+            # data, instead of guessing from a single domain's flag.
+            "observed_rows": (r.get("rows") or "0").strip() or "0",
         }
     )
 
