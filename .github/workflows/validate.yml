@@ -38,6 +38,15 @@ name: Validate database
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
 #                            two aliases routing Viet Nam differently
+#   validate_family_areas    check A in validate_polygons compares RECORDED against measured area
+#                            and found eight polities carrying another country's polygon — but 520
+#                            of the 684 rows claiming a polygon (76%) have no recorded area, so it
+#                            cannot run on them. Comparing a period against its own family's median
+#                            needs no external reference and covers all of them. Two anomalies
+#                            today, both legitimate and explained by a field one column away: a
+#                            polygon_feature_year of 1898 for COG-1900-1906, and the name "Eritrea
+#                            (Italian coastal)" for ERI-1885-1889.
+#
 #   validate_cross_family_names
 #                            validate_period_overlaps only sees overlaps WITHIN a prefix, and the
 #                            same territory sometimes has two — a legacy prefix and an ISO3 one.
@@ -248,6 +257,10 @@ jobs:
       - name: No two families share a name over the same years
         if: '!cancelled()'
         run: python3 scripts/validate_cross_family_names.py
+
+      - name: No period is wildly out of scale with its own family
+        if: '!cancelled()'
+        run: python3 scripts/validate_family_areas.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
