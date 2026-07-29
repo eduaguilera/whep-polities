@@ -16,9 +16,12 @@
 #
 #   [compose]  the feature id describes a union, difference or complement of several
 #              source features. Nothing can resolve it as a single id; it needs a
-#              builder in scripts/sources/constructed/build.py. 8 rows
-#              (was 11; BTL-1920-1957, TTPI-1947-1994 and AEF-1910-1960 now
-#              have builders).
+#              builder in scripts/sources/constructed/build.py. 5 rows (was
+#              11). Built so far: BTL-1920-1957, TTPI-1947-1994,
+#              AEF-1910-1960, GBM-1895-1946, SYL-1944-1953. GCT-1919-1956's
+#              recipe is verified but unregistered — see issue 47.
+#              The 5 that remain all need GADM extracts absent locally
+#              (Canada, India, Indonesia).
 #   [no-id]    there is no feature id at all (`None` / `NA`). A source and an id must
 #              be identified first, or the row downgraded to `unassigned` with the
 #              reason recorded. 4 rows (was 6; NRH-1911-1953 and GRC-1830-1881
@@ -28,13 +31,11 @@
 #              adm1 features, small territories only) that does not contain the
 #              country. Needs a fuller GADM download, nothing else. 3 rows.
 #
-# 15 rows remain, from 20.
+# 13 rows remain, from 20.
 ALK-1867-1959   # [extract] assigned: USA.2_1
 CAN-1800-1866   # [compose] proxy: gadm-ON+QC+NB+NS+PE
 CAN-1866-1870   # [no-id] estimate: NA
 FRIN-1816-1954   # [compose] estimate: composed-union-puducherry-karikal-mahe-yanam-chandernagore
-GBM-1895-1946   # [compose] assigned: cowcodes 827+821+822 (1909-1946 versions)
-GCT-1919-1956   # [compose] assigned: composed-union: cowcode=452 row 1898-06-14/1956-03-05 UNION
 IDN-BLB-1949-1951   # [compose] proxy: IDN.1_1+IDN.20_1
 IDN-JVM-1949-1951   # [compose] proxy: IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1
 IDN-OTH-1949-1951   # [compose] proxy: IDN-complement-JVM-BLB
@@ -42,5 +43,6 @@ PTIND-1816-1961   # [no-id] estimate: None
 RYU-1937-1945   # [extract] proxy: JPN.38_1
 RYU-1945-1972   # [extract] proxy: JPN.38_1
 SER-1918-1945   # [no-id] estimate: NA
-SYL-1944-1953   # [compose] assigned: composed-union: cowcode=652 row 1946-04-17/1967-06-09 UNION
 TRS-1947-1954   # [no-id] estimate: NA
+
+GCT-1919-1956   # [compose] recipe verified in build_gct_1919_1956(), unregistered pending the BTL typing question (issue 47)

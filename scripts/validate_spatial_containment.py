@@ -76,6 +76,10 @@ LEGITIMATE_CONTAINERS = frozenset({
     # is the behaviour wanted — a newly built polygon that swallows its neighbours
     # has to be justified rather than assumed.
     "TTPI-1947-1994",
+    # A joint reporting unit over the two states it combines. Added when its polygon
+    # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
+    # the SYR and LBN period-polities.
+    "SYL-1944-1953",
 })
 
 # Containers that are DEFECTS, tracked so the gate stays useful while they are
