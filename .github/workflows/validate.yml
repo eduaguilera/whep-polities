@@ -38,6 +38,21 @@ name: Validate database
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
 #                            two aliases routing Viet Nam differently
+#   validate_succession_geography
+#                            NWR-1900-1905 (Northwestern Rhodesia) listed its successor as
+#                            NNI-1904-1913 — Northern NIGERIA, 4,000 km away. A link can
+#                            name a real, live polity and still be wrong; comparing the two
+#                            polygons is what catches that. Needs the built GeoPackage, so
+#                            it is not in this workflow — run it locally after
+#                            build_database.py.
+#
+#   validate_iso_collisions  59 pairs of polities already share an iso3 over overlapping
+#                            years, which is BY DESIGN (iso3 groups by modern territory:
+#                            British North Borneo, Sarawak and British Malaya all carry
+#                            MYS). The gate is that the set must not GROW, because each
+#                            pair is a place an ISO+year lookup has to guess — the known
+#                            cause of "Malaysia" 1961 resolving to British North Borneo.
+#
 #   validate_iso_codes       FRS-1977-2025 is modern Djibouti and carried `iso3: FRS`.
 #                            Djibouti's ISO 3166-1 alpha-3 is DJI and FRS is not an ISO
 #                            code at all, so a consumer holding a real country code could
@@ -182,6 +197,10 @@ jobs:
       - name: Live polities carry real ISO 3166-1 codes
         if: '!cancelled()'
         run: python3 scripts/validate_iso_codes.py
+
+      - name: No new pair shares an ISO code over the same years
+        if: '!cancelled()'
+        run: python3 scripts/validate_iso_collisions.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
