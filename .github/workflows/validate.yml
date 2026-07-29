@@ -38,6 +38,15 @@ name: Validate database
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
 #                            two aliases routing Viet Nam differently
+#   validate_cross_family_names
+#                            validate_period_overlaps only sees overlaps WITHIN a prefix, and the
+#                            same territory sometimes has two — a legacy prefix and an ISO3 one.
+#                            Comparing normalised names across families found TAN-1922-1964
+#                            overlapping TZA-1961-1964 and MAR-1911-1958 overlapping MOR-1956-1958,
+#                            neither visible to that gate, plus independently re-deriving the known
+#                            Serbia duplicate. Not duplicates: the earlier row's END year runs past
+#                            where its successor begins.
+#
 #   validate_cow_codes       ICN-1800-2025 (Canary Islands) carried cow_code 20, which is CANADA.
 #                            The Canaries are not a Correlates of War state at all — they are part
 #                            of Spain, COW 230 — so the value was removed rather than corrected to
@@ -235,6 +244,10 @@ jobs:
       - name: No new pair shares a Correlates of War code
         if: '!cancelled()'
         run: python3 scripts/validate_cow_codes.py
+
+      - name: No two families share a name over the same years
+        if: '!cancelled()'
+        run: python3 scripts/validate_cross_family_names.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'
