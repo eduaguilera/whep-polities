@@ -18,8 +18,15 @@ rows and no mapping.
 The last two are NOT duplicates, which is the useful distinction. Tanganyika-era Tanzania and
 independent Tanzania are different entities; so are protectorate Morocco and independent Morocco.
 What is wrong is the earlier row's END year running past where its successor begins — Tanzania's
-should stop at 1961 and Morocco's at 1956. A year-aware matcher asked about 1962 currently has two
-candidates of equal specificity and picks by tie-break order.
+should stop at 1961 and Morocco's at 1956.
+
+The impact is LATENT, not live, and it is worth being precise about that because I first wrote it up as
+live. Neither inert row is mapped to a FAOSTAT area, so the consumer's add_polity_code() resolves 1962
+to TZA-1961-1964 and MAR-1958-1975 deterministically and never sees the twins. That is unlike the
+Malaysia case, which is ambiguous precisely because both candidates ARE reachable from area 131. What
+remains is that two live polities claim the same years for the same territory, so a direct query on the
+database is ambiguous, matchlib resolving by ISO/name family can reach both, and the end years are
+historically wrong regardless.
 
 Baselined rather than fixed: changing a polity's period is a data decision, and the wiki pages carry
 the historical reasoning that should decide it. Reported on the issues instead.
