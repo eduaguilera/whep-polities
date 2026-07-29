@@ -151,6 +151,44 @@ print(f"\nC. CLAIMED BUT ABSENT — {len(missing)} polities have no geometry; "
 for code in stale_baseline:
     print(f"   STALE {code:18s} baselined but no longer claims a polygon it lacks — "
           f"remove it from scripts/validate_polygons_baseline.txt")
+
+# How much the backlog actually costs, printed rather than left to be re-derived.
+#
+# A gap on a polity no consumer can reach costs nothing in any output; a gap on a
+# FAOSTAT-mapped polity costs every row that routes there. The two need different
+# priorities, and the distinction is computable from the published contracts. Measured
+# today: NONE of the 13 baselined polities is FAOSTAT-mapped, and only four are reachable
+# at all — via historical-source aliases, 655 observed rows between them. So the backlog
+# is genuinely low-impact, which is worth knowing before anyone spends a week on it.
+#
+# Two findings on this branch were written up as live and downgraded after checking
+# reachability, which is why every baseline here now reports it.
+_area_map = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "data/final/faostat_area_polity_map.csv")
+_alias_map = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                          "data/final/label_alias_map.csv")
+if baseline and os.path.exists(_area_map):
+    import csv as _csv
+    with open(_area_map, encoding="utf-8") as fh:
+        _mapped = {(r.get("polity_code") or "").strip() for r in _csv.DictReader(fh)}
+    _obs = {}
+    if os.path.exists(_alias_map):
+        with open(_alias_map, encoding="utf-8") as fh:
+            for r in _csv.DictReader(fh):
+                c = (r.get("polity_code") or "").strip()
+                try:
+                    _obs[c] = _obs.get(c, 0) + int(r.get("observed_rows") or 0)
+                except ValueError:
+                    pass
+    _live = sorted(c for c in baseline if c in _mapped)
+    _aliased = sorted(c for c in baseline if c not in _mapped and _obs.get(c, 0) > 0)
+    print(f"   reachability of the {len(baseline)} baselined gaps: "
+          f"{len(_live)} FAOSTAT-mapped, {len(_aliased)} alias-only, "
+          f"{len(baseline) - len(_live) - len(_aliased)} unreachable")
+    for c in _live:
+        print(f"     LIVE      {c:18s} reachable by FAOSTAT area — a gap here affects output")
+    for c in _aliased:
+        print(f"     alias-only {c:17s} {_obs[c]} observed rows via historical sources")
 for r in new_claim_no_geom.itertuples():
     fid = str(r.polygon_feature_id)
     print(f"   FAIL {r.polity_code:18s} status='{r.st}' but no geometry attached  "

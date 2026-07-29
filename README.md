@@ -103,6 +103,13 @@ python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so l
 Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
 manifest and the wiki — so none requires the raw sources under `data/geodata`.
 
+Baselines also report **reachability** — whether a consumer can reach the polities
+involved through the published FAOSTAT area map. That is what separates a live defect
+from a latent one, and it is not obvious: all seven baselined period overlaps are
+latent, and none of the 13 polygon gaps is FAOSTAT-mapped. Two findings on this branch
+were written up as live and downgraded after checking, which is why the gates now print
+it rather than leaving it to be re-derived.
+
 Several carry a baseline so they fail on *new* occurrences while a known backlog
 stays tracked in the issues — `validate_polygons.py` has
 `scripts/validate_polygons_baseline.txt`, and the matcher, period-overlap,
