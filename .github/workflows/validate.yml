@@ -274,3 +274,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_spatial_containment.py
 
+
+      # Last, because it is the only step that answers "can the steps above
+      # fail?". Twenty-one gates that all pass are indistinguishable, from a
+      # green summary, from twenty-one gates that cannot fail.
+      - name: Gates — prove they fail on an injected defect
+        if: '!cancelled()'
+        run: python3 scripts/selftest_gates.py

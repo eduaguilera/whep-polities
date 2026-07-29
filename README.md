@@ -44,8 +44,9 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Twenty-one checks guard the database. Each exists because that class of error was
-**found in the data**, not hypothesised, so they are worth keeping green:
+Twenty-one checks guard the database, and a twenty-second checks the checks. Each
+of the twenty-one exists because that class of error was **found in the data**,
+not hypothesised, so they are worth keeping green:
 
 ```bash
 # the published contract still matches the wiki
@@ -76,6 +77,9 @@ python3 scripts/validate_polygons.py
 python3 scripts/validate_spatial_containment.py
 python3 scripts/validate_family_areas.py
 python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so local only
+
+# and the one that asks whether the checks above can fail at all
+python3 scripts/selftest_gates.py
 ```
 
 | check | what it caught when first run |
@@ -100,8 +104,9 @@ python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so l
 | family areas | *(guard)* check A needs a **recorded** area to compare against, and 76% of rows claiming a polygon have none. Comparing a period to its own family's median needs no reference and covers all of them. Two anomalies today, both legitimate |
 | spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
+| gate self-test | *(the checks, checked)* Twenty-one gates that all pass are indistinguishable, from a green summary, from twenty-one that **cannot** fail. Mutation settles it: three geometry gates were shown to fail on an injected defect and to name it. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 
-`.github/workflows/validate.yml` runs **all twenty-one** on push to `main` and on PRs.
+`.github/workflows/validate.yml` runs **all twenty-one, plus the self-test,** on push to `main` and on PRs.
 Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
 manifest and the wiki — so none requires the raw sources under `data/geodata`.
 
