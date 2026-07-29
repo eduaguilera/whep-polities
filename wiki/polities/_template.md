@@ -21,13 +21,18 @@ sources: []
 #   polygon_feature_year — for sources with a `temporal` block, the year
 #                          used to disambiguate time-steps. Omit when the
 #                          source has no time dimension.
-#   polygon_status      — assigned | proxy | missing | excluded
+#   polygon_status      — assigned | proxy | estimate | polygon_vintage_drift |
+#                          unassigned. This is the CLOSED vocabulary documented in
+#                          wiki/README.md and enforced by
+#                          scripts/build_database.py --check; `missing`, `excluded`,
+#                          `derived` and `approximate` are legacy values that were
+#                          migrated away and will now fail the build.
 #   polygon_area_km2    — optional sanity-check value (ETRS89 LAEA / source's
 #                          native equal-area CRS). Not required.
 polygon_source: none
 polygon_feature_id: ""
 polygon_feature_year: null
-polygon_status: missing
+polygon_status: unassigned
 polygon_area_km2: null
 
 # Chain links (read by scripts/build_database.py; used by the site's
@@ -56,7 +61,7 @@ of the file.>
 which feature, what caveats. This is the human-readable version of the
 frontmatter `polygon_*` fields. If a proxy was deliberately rejected,
 state why with km² comparisons. If no polygon is available at all, say
-so — `polygon_status: missing` in frontmatter.>
+so — `polygon_status: unassigned` in frontmatter.>
 
 **Why this entry exists:** <What input data does this polity capture?
 What was it previously matched to, and why was that wrong? What
