@@ -175,6 +175,39 @@ when an earlier version coerced empty to zero and made 456 aliases read as inert
 the FAOSTAT map is measured in this repository, so it has no blanks; the alias map covers
 sources whose data lives in the consumer, so most of its rows cannot be measured here at all.
 
+**`iso3_code` is not ISO-conformant, and a consumer cannot tell which values are.** Measured
+on the published database: **56 of the 276** distinct `iso3_code` values are not ISO 3166-1
+alpha-3 codes. That is by design and the design is sound — there is no ISO code for
+Austria-Hungary, and inventing `AUH` beats leaving it blank — but it is nowhere written down,
+and the consumer discovers it by getting no match.
+
+The rule, which holds for **80 of the 81** rows carrying such a code: the local code is the
+**polity family's prefix**. `AUH-1800-1859` carries `AUH`, `OTT-1800-1886` carries `OTT`,
+`SUD-1899-1934` carries `SUD`. The single exception is consistent with the grouping rule rather
+than a mistake: `FCC-1862-1887` French Cochinchina carries `FID`, French Indochina's code,
+because it became part of it — the same "groups by modern territory" logic that makes 59 pairs
+share a code deliberately.
+
+The classes are: historical entities (`AUH`, `OTT`, `AOF`, `AEF`, `BWI`, `NFL`, `ZNZ`, `NAT`,
+`SWA`, `TAN`, `ITS`), colonies of Australia and Canada (`NSW`, `VIC`, `QUE`, `TAS`, `SAA`),
+this project's aggregates (`ROW`, `RAFR`, `RASI`, `REUR`, `RLAM`, `RNAM`, `ROCE`), real ISO
+3166-3 former codes (`ANT`, `SCG`, `BLX`), and pseudo-codes for entities that also have a modern
+one (`ANG` for colonial Angola beside `AGO`, `SUD`, `MOR`, `PAL`, `SER`).
+
+**Distinguish these from the fixed defects listed in the validation table above.** `FRS` for
+modern Djibouti was a real error and is gone — Djibouti has an ISO code and nothing holding a
+country code could reach it. `SUD` and `ANG` look like the same thing and are not: those
+entities have no ISO code, so the prefix is the answer rather than a bug awaiting a fix. Reading
+them as unfixed defects is the wrong conclusion, and the table above invites it.
+
+**Why it matters downstream.** A consumer joining `iso3_code` against an ISO-keyed external
+dataset silently matches nothing for those 56. That is exactly what blocks the WHEP package's
+LUH2 back-cast: the bridge to LUH2 land goes through ISO3, LUH2 is ISO-keyed, so four dissolved
+federations carrying **11.88% of production value at 1961** cannot reach it. The data is not
+missing; the identifier cannot be matched. Several separately-filed gaps are this one fact.
+Making the distinction publishable — a manifest field, or a separate `local_code` column — is
+tracked in [issue 55](../../issues/55).
+
 **`observed_rows` is not a licence to un-fold an area.** Worth stating because the consumer
 tried it and it cost a 13.7x error. The WHEP package derived "areas with observed data" from
 these columns and used it to promote areas that FABIO folds into its rest-of-world bucket
