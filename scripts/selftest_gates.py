@@ -220,6 +220,41 @@ def mutate_code_year_disagreement(root, gpd, make_valid, affinity):
     return "set FRA-1800-1871's start_year to 1799, contradicting its own code"
 
 
+def mutate_name_collision(root, gpd, make_valid, affinity):
+    """Rename a live polity to a name a DIFFERENT live polity already holds over the same
+    years. WHEP's resolve_polity_label() then cannot pick between them and returns NA for
+    that label — indistinguishable, on the consumer's side, from a label nobody has
+    mapped. Denmark is renamed to Norway here because both are live across the same span,
+    which is exactly the condition the gate looks for."""
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    victim = next(
+        (r for r in rows if r["polity_code"].startswith("DNK-")
+         and (r.get("wiki_status") or "") != "retired"),
+        None,
+    )
+    assert victim is not None, "no live DNK row to rename"
+    target = next(
+        (r for r in rows if r["polity_code"].startswith("NOR-")
+         and (r.get("wiki_status") or "") != "retired"
+         and int(r["start_year"]) < int(victim["end_year"])
+         and int(victim["start_year"]) < int(r["end_year"])),
+        None,
+    )
+    assert target is not None, "no live NOR row overlapping the DNK row"
+    victim["polity_name"] = target["polity_name"]
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return (
+        f"renamed {victim['polity_code']} to {target['polity_name']!r}, which "
+        f"{target['polity_code']} already holds over the same years"
+    )
+
+
 def mutate_touching_alias_chain(root, gpd, make_valid, affinity):
     """Extend one alias's year_end so it collides with the next row in its chain. The
     boundary year then resolves by whichever row the matcher reaches first."""
@@ -371,6 +406,12 @@ CASES = (
         "consecutive aliases for one label both covering a year",
     ),
     (
+        "validate_live_name_ambiguity.py",
+        mutate_name_collision,
+        "norway",
+        "two live polities sharing a name and a year, so the name resolves to neither",
+    ),
+    (
         "validate_aliases.py",
         mutate_alias_to_dead_polity,
         "AGO-1816-2025",
@@ -419,6 +460,11 @@ EXTRA_SCRIPTS = {"build_database.py": ("sources.yaml",)}
 WRITABLE = {
     "validate_code_year_agreement.py": ("polities_database.csv",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
+    # This case RENAMES a polity, so it needs a real copy of the CSV. Declaring the
+    # baseline here instead let the default symlink stand, and the mutation wrote
+    # straight through it into the repository — which two gates then correctly reported
+    # as a defect in the real data. The baseline is copied by stage() automatically.
+    "validate_live_name_ambiguity.py": ("polities_database.csv",),
     "validate_aliases.py": (
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",

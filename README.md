@@ -44,8 +44,8 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Twenty-three checks guard the database, and a twenty-fourth checks the checks. Each
-of the twenty-three exists because that class of error was **found in the data**,
+Twenty-four checks guard the database, and a twenty-fifth checks the checks. Each
+of the twenty-four exists because that class of error was **found in the data**,
 not hypothesised, so they are worth keeping green:
 
 ```bash
@@ -107,10 +107,11 @@ python3 scripts/selftest_gates.py
 | family areas | *(guard)* check A needs a **recorded** area to compare against, and 76% of rows claiming a polygon have none. Comparing a period to its own family's median needs no reference and covers all of them. Two anomalies today, both legitimate |
 | spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
 | code/year agreement | *(guard)* a polity code is documented as `PREFIX-start-end`, so consumers read years straight off the identifier rather than joining. Two codes disagree with their own columns — `TAN-1922-1964` ends 1961, `NNG-1949-1963` ends 1969 — and the consumer's aliases were written against the CODE, so two of them resolve 1962-1964 to a polity its columns say had ended. Both are historical judgement (independence vs union; transfer vs Act of Free Choice), so baselined pending a decision |
+| live name ambiguity | *(guard)* a consumer resolving a label by the polity's own NAME can only answer when one polity of that name is live in the year asked about, so a rename that collides with a live sibling turns a resolving label into `NA` — and `NA` is what an unmapped label looks like too. 17 names are ambiguous today: fifteen are a coarse period listed beside its own sub-periods (issue 49), and two cross prefix families and are tracked as issues 52 and 43 |
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
-| gate self-test | *(the checks, checked)* Twenty-one gates that all pass are indistinguishable, from a green summary, from twenty-one that **cannot** fail. Mutation settles it: three geometry gates were shown to fail on an injected defect and to name it. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
+| gate self-test | *(the checks, checked)* Gates that all pass are indistinguishable, from a green summary, from gates that **cannot** fail. Mutation settles it: ten are shown to fail on an injected defect and to name it — three geometry gates that mutate the GeoPackage, and seven that mutate the CSV, the alias map or the wiki. The tenth case earned its keep before it ever guarded anything: it declared the wrong file writable, so its mutation wrote through a symlink into the real database, and two OTHER gates caught that immediately. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 
-`.github/workflows/validate.yml` runs **all twenty-three, plus the self-test,** on push to `main` and on PRs.
+`.github/workflows/validate.yml` runs **all twenty-four, plus the self-test,** on push to `main` and on PRs.
 Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
 manifest and the wiki — so none requires the raw sources under `data/geodata`.
 

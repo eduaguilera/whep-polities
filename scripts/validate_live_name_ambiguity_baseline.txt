@@ -1,0 +1,26 @@
+# Normalised names held by two or more LIVE polities whose years overlap, so a consumer
+# resolving a label by that name cannot pick one and returns NA.
+#
+# Fifteen are a coarse period listed alongside its own finer sub-periods (same prefix) —
+# the consumer's view of issue 49. Two cross prefix families and are tracked elsewhere:
+# morocco is issue 52 (MAR-1911-1958 running past its successor) and serbia is issue 43
+# (SER-2006-2008 duplicating SRB-2006-2008).
+#
+# Bidirectional: a new entry fails, and an entry that stops overlapping must be deleted.
+belize
+brazil
+china
+egypt
+ethiopia
+france
+german kamerun
+greece
+hungary
+iraq
+italy
+montenegro
+morocco
+paraguay
+peru
+romania
+serbia
