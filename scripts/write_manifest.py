@@ -49,19 +49,33 @@ DEAD_STATUS = ("retired", "superseded")
 FAOSTAT_GROUP_CODE_MIN = 5000
 FAOSTAT_AGGREGATE_CODES = (351,)
 
-# FAOSTAT regional groups that sit BELOW group_code_min. The >= 5000 rule covers the
-# main groups (World 5000, the continents, the income bands) but is not exhaustive:
-# the emissions domains carry aggregates in the country range. Found by running a real
-# consumer build, where 420 "Sub-Saharan Africa" -- 14,427 rows, 0.6% of
-# faostat-emissions-livestock -- was reported as "an area code this project does not
-# know", because a threshold is a rule of thumb and this code breaks it.
+# FAOSTAT AGGREGATES that sit BELOW group_code_min. The >= 5000 rule covers the main
+# regional groups (World 5000, the continents, the income bands) but is not exhaustive:
+# several domains carry aggregates in the country range.
+#
+#   261  European Union (12) (excluding intra-trade)
+#   265  China (excluding intra-trade)
+#   266  European Union (15) (excluding intra-trade)
+#   268  European Union (25) (excluding intra-trade)
+#   269  European Union (27) (excluding Croatia) (excluding intra-trade)
+#   420  Sub-Saharan Africa
+#
+# Two kinds, deliberately in one list because a consumer treats them identically: 420 is
+# a regional group, and the five "(excluding intra-trade)" codes are multi-territory
+# trade totals. Neither is a territory.
+#
+# Found by running real consumer builds, one code at a time -- 420 in a production build
+# from faostat-emissions-livestock, 265 in a CBS build from faostat-trade-totals -- and
+# then enumerated properly by sweeping every readable pin for unmapped codes below the
+# threshold, which found exactly these six across nine pins. Discovering them one per
+# smoke run would have taken as many runs as there are codes.
 #
 # Published separately from deliberate_area_codes because the two are different facts.
 # 351 China is a deliberate NON-MAPPING: it is reported alongside its own components and
 # routing it anywhere would double-count. 420 is simply a regional group whose code
 # happens to be low. A consumer should report the first as a decision and the second as
 # a group, and it cannot tell them apart from the numbers alone.
-FAOSTAT_SUBTHRESHOLD_GROUP_CODES = (420,)
+FAOSTAT_SUBTHRESHOLD_GROUP_CODES = (261, 265, 266, 268, 269, 420)
 
 IDENTITY_FIELDS = ("polity_code", "polity_name", "start_year", "end_year",
                    "polity_type", "iso3_code", "cow_code", "wiki_status")
@@ -176,7 +190,8 @@ manifest = {
             "components, so routing them to a polity would double-count: 351 'China' is "
             "mainland + Hong Kong + Macao + Taiwan. subthreshold_group_codes are regional "
             "groups whose code falls BELOW group_code_min, so the threshold alone misses them: "
-            "420 'Sub-Saharan Africa' appears in the emissions domains. None of the three kinds "
+            "420 'Sub-Saharan Africa' appears in the emissions domains, and the "
+            "'(excluding intra-trade)' codes are multi-territory trade totals. None of the three kinds "
             "is a gap in this database."
         ),
     },
