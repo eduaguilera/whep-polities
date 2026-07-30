@@ -44,8 +44,8 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Twenty-one checks guard the database, and a twenty-second checks the checks. Each
-of the twenty-one exists because that class of error was **found in the data**,
+Twenty-two checks guard the database, and a twenty-third checks the checks. Each
+of the twenty-two exists because that class of error was **found in the data**,
 not hypothesised, so they are worth keeping green:
 
 ```bash
@@ -71,6 +71,7 @@ python3 scripts/validate_cow_codes.py
 python3 scripts/validate_cross_family_names.py
 python3 scripts/validate_period_overlaps.py
 python3 scripts/validate_reporting_areas.py
+python3 scripts/validate_code_year_agreement.py
 
 # geometry
 python3 scripts/validate_polygons.py
@@ -103,10 +104,11 @@ python3 scripts/selftest_gates.py
 | polygons D | 13 pages claiming `status: reviewed` with zero source citations |
 | family areas | *(guard)* check A needs a **recorded** area to compare against, and 76% of rows claiming a polygon have none. Comparing a period to its own family's median needs no reference and covers all of them. Two anomalies today, both legitimate |
 | spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
+| code/year agreement | *(guard)* a polity code is documented as `PREFIX-start-end`, so consumers read years straight off the identifier rather than joining. Two codes disagree with their own columns — `TAN-1922-1964` ends 1961, `NNG-1949-1963` ends 1969 — and the consumer's aliases were written against the CODE, so two of them resolve 1962-1964 to a polity its columns say had ended. Both are historical judgement (independence vs union; transfer vs Act of Free Choice), so baselined pending a decision |
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
 | gate self-test | *(the checks, checked)* Twenty-one gates that all pass are indistinguishable, from a green summary, from twenty-one that **cannot** fail. Mutation settles it: three geometry gates were shown to fail on an injected defect and to name it. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 
-`.github/workflows/validate.yml` runs **all twenty-one, plus the self-test,** on push to `main` and on PRs.
+`.github/workflows/validate.yml` runs **all twenty-two, plus the self-test,** on push to `main` and on PRs.
 Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
 manifest and the wiki — so none requires the raw sources under `data/geodata`.
 
