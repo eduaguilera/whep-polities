@@ -508,13 +508,35 @@ def check_every_gate_runs_in_ci() -> list:
         if f.startswith(("validate_", "crosscheck_", "audit_")) and f.endswith(".py")
     )
     missing = [f for f in scripts if f not in text]
-    if not missing:
-        print(f"every gate runs in CI ({len(scripts)} scripts referenced)")
-        return []
-    return [
-        f"{len(missing)} gate script(s) never run in CI, because "
-        f"validate.yml does not mention them: {missing}"
-    ]
+    problems = []
+    if missing:
+        problems.append(
+            f"{len(missing)} gate script(s) never run in CI, because "
+            f"validate.yml does not mention them: {missing}"
+        )
+
+    # And a gate nobody documented is a gate nobody can find. Checked by SCRIPT NAME
+    # rather than by counting: the README states its gate count in words, and a numeric
+    # claim in prose is exactly what goes stale. This caught the live-name-ambiguity gate,
+    # which had a table row describing it but no mention of the script that runs it — so
+    # it read as documented while being invisible to any structural check.
+    readme = os.path.join(REPO, "README.md")
+    if os.path.exists(readme):
+        with open(readme, encoding="utf-8") as fh:
+            rd = fh.read()
+        undocumented = [f for f in scripts if f[: -len(".py")] not in rd]
+        if undocumented:
+            problems.append(
+                f"{len(undocumented)} gate script(s) run in CI but are not named in "
+                f"README.md: {undocumented}"
+            )
+
+    if not problems:
+        print(
+            f"every gate runs in CI and is named in the README "
+            f"({len(scripts)} scripts)"
+        )
+    return problems
 
 def main() -> int:
     ap = argparse.ArgumentParser()

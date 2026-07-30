@@ -62,6 +62,7 @@ python3 scripts/validate_constants.py
 python3 scripts/validate_aliases.py
 python3 scripts/validate_unranged_aliases.py
 python3 scripts/validate_alias_chain_overlaps.py
+python3 scripts/validate_live_name_ambiguity.py
 python3 scripts/crosscheck_matchers.py
 python3 scripts/audit_family_shadowing.py
 
