@@ -23,8 +23,12 @@ data/final/ holds a MUTATED input, then runs one gate against it and requires a
 non-zero exit AND that the output names the injected defect. The real data is
 never written to.
 
-Five cases: three geometry gates mutating the GeoPackage, and two identity gates
-mutating a CSV. The last two were added after their own gates were, which is the
+Six cases: three geometry gates mutating the GeoPackage, and three identity gates
+mutating a CSV. Six of twenty-four, chosen by what it would cost if the gate were
+inert rather than by what is easy to mutate -- case 6 guards the invariant that a
+retired polity never receives data, which is not otherwise detectable, because a
+retired duplicate carries the same name, iso3 and often a valid geometry as its live
+successor. The last two were added after their own gates were, which is the
 wrong order -- both were mutation-tested by hand when written, and a hand test
 proves the gate worked once on one machine. This file is what makes it a standing
 claim.
@@ -98,9 +102,17 @@ def stage(gate: str, extra: tuple = (), writable: tuple = ()) -> str:
     for name in writable:
         if name == "polities_database.csv":
             continue
-        src = os.path.join(REPO, "data/final", name)
+        # A name containing a slash is repo-relative, for inputs that do not live under
+        # data/final -- the alias registry is under pipelines/.
+        if "/" in name:
+            dest = os.path.join(root, name)
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            src = os.path.join(REPO, name)
+        else:
+            dest = os.path.join(root, "data/final", name)
+            src = os.path.join(REPO, "data/final", name)
         if os.path.exists(src):
-            shutil.copy(src, os.path.join(root, "data/final", name))
+            shutil.copy(src, dest)
     return root
 
 
@@ -207,6 +219,35 @@ def mutate_touching_alias_chain(root, gpd, make_valid, affinity):
     return "extended a Kenya alias's year_end by 40 years into the next row's range"
 
 
+
+def mutate_alias_to_dead_polity(root, gpd, make_valid, affinity):
+    """Point one alias at a RETIRED polity. This is the invariant the whole dead_status
+    mechanism exists for: a retired row must never receive data, and it is not otherwise
+    distinguishable -- retired duplicates carry the same name, iso3 and often a valid
+    geometry as their live successor. If this gate were inert, data would route to a
+    withdrawn row and nothing downstream would object."""
+    polities = os.path.join(root, "data/final/polities_database.csv")
+    with open(polities, encoding="utf-8") as fh:
+        dead = [
+            r["polity_code"]
+            for r in csv.DictReader(fh)
+            if (r.get("wiki_status") or "") in ("retired", "superseded")
+        ]
+    assert dead, "no dead polity to aim an alias at"
+    target = sorted(dead)[0]
+
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/applied_aliases.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    rows[0]["target_polity_code"] = target
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return f"aimed the first alias at {target}, which is retired or superseded"
+
+
 CASES = (
     (
         "audit_family_shadowing.py",
@@ -238,12 +279,22 @@ CASES = (
         "kenya",
         "consecutive aliases for one label both covering a year",
     ),
+    (
+        "validate_aliases.py",
+        mutate_alias_to_dead_polity,
+        "AGO-1816-2025",
+        "an alias routing data to a polity that must never receive it",
+    ),
 )
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
     "validate_code_year_agreement.py": ("polities_database.csv",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
+    "validate_aliases.py": (
+        "polities_database.csv",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
 }
 
 
