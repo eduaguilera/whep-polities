@@ -112,6 +112,9 @@ python3 scripts/selftest_gates.py
 | gate self-test | *(the checks, checked)* Gates that all pass are indistinguishable, from a green summary, from gates that **cannot** fail. Mutation settles it: ten are shown to fail on an injected defect and to name it — three geometry gates that mutate the GeoPackage, and seven that mutate the CSV, the alias map or the wiki. The tenth case earned its keep before it ever guarded anything: it declared the wrong file writable, so its mutation wrote through a symlink into the real database, and two OTHER gates caught that immediately. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 
 `.github/workflows/validate.yml` runs **all twenty-four, plus the self-test,** on push to `main` and on PRs.
+The self-test also checks that claim: a gate script the workflow never mentions fails it, because a gate
+absent from CI passes on its author's machine and never runs again — which is exactly what happened to the
+live-name-ambiguity gate between writing it and registering it.
 Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
 manifest and the wiki — so none requires the raw sources under `data/geodata`.
 

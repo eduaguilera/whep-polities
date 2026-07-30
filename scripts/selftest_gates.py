@@ -483,6 +483,39 @@ WRITABLE = {
 }
 
 
+
+def check_every_gate_runs_in_ci() -> list:
+    """Every gate script must appear in the workflow that claims to run them all.
+
+    A gate absent from `.github/workflows/validate.yml` is not a gate — it passes on the
+    author's machine and never runs again. This happened immediately: the
+    validate_live_name_ambiguity gate was written, counted in the README, given a
+    self-test case, and left out of the workflow, so CI would have run 23 of 24 while
+    the README said otherwise.
+
+    Checked here rather than as its own gate, because a gate that verifies gates are
+    registered would itself need registering — the same problem one level up. This file
+    already runs in CI, so the check runs whether or not anyone remembers it.
+    """
+    workflow = os.path.join(REPO, ".github/workflows/validate.yml")
+    if not os.path.exists(workflow):
+        return ["`.github/workflows/validate.yml` is missing"]
+    with open(workflow, encoding="utf-8") as fh:
+        text = fh.read()
+    scripts = sorted(
+        f
+        for f in os.listdir(os.path.join(REPO, "scripts"))
+        if f.startswith(("validate_", "crosscheck_", "audit_")) and f.endswith(".py")
+    )
+    missing = [f for f in scripts if f not in text]
+    if not missing:
+        print(f"every gate runs in CI ({len(scripts)} scripts referenced)")
+        return []
+    return [
+        f"{len(missing)} gate script(s) never run in CI, because "
+        f"validate.yml does not mention them: {missing}"
+    ]
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--case", type=int, help="run one case by 1-based number")
@@ -535,12 +568,16 @@ def main() -> int:
         finally:
             shutil.rmtree(root, ignore_errors=True)
 
+    # Mutation proves a gate CAN fail; this proves it ever gets the chance.
+    problems.extend(check_every_gate_runs_in_ci())
+
     if problems:
-        print(f"\nFAIL: {len(problems)} gate(s) could not be shown to fail\n")
+        print(f"\nFAIL: {len(problems)} problem(s)\n")
         for p in problems:
             print(f"  {p}")
         return 1
-    print(f"\nPASS: {len(cases)} gate(s) fail on an injected defect and name it")
+    print(f"\nPASS: {len(cases)} gate(s) fail on an injected defect and name it, "
+          f"and every gate runs in CI")
     return 0
 
 
