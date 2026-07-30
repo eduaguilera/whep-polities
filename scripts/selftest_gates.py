@@ -23,8 +23,8 @@ data/final/ holds a MUTATED input, then runs one gate against it and requires a
 non-zero exit AND that the output names the injected defect. The real data is
 never written to.
 
-Six cases: three geometry gates mutating the GeoPackage, and three identity gates
-mutating a CSV. Six of twenty-four, chosen by what it would cost if the gate were
+Seven cases: three geometry gates mutating the GeoPackage, and four contract gates
+mutating a CSV. Seven of twenty-four, chosen by what it would cost if the gate were
 inert rather than by what is easy to mutate -- case 6 guards the invariant that a
 retired polity never receives data, which is not otherwise detectable, because a
 retired duplicate carries the same name, iso3 and often a valid geometry as its live
@@ -118,7 +118,7 @@ def stage(gate: str, extra: tuple = (), writable: tuple = ()) -> str:
 
 def run(root: str, gate: str) -> tuple:
     p = subprocess.run(
-        [sys.executable, os.path.join(root, "scripts", gate)],
+        [sys.executable, os.path.join(root, "scripts", gate), *ARGS.get(gate, ())],
         capture_output=True,
         text=True,
         timeout=600,
@@ -248,6 +248,30 @@ def mutate_alias_to_dead_polity(root, gpd, make_valid, affinity):
     return f"aimed the first alias at {target}, which is retired or superseded"
 
 
+
+def mutate_polity_without_regenerating_manifest(root, gpd, make_valid, affinity):
+    """Change a polity's identity in the CSV and leave the manifest as it was. The
+    manifest's `identity_sha256` is what a consumer compares against its embedded copy to
+    detect drift in one step -- so if `--check` were inert, a stale contract would ship
+    while claiming to be current, and every consumer's drift detection would be reading a
+    hash of the wrong thing."""
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = 0
+    for r in rows:
+        if r["polity_code"] == "FRA-1919-2025":
+            r["polity_name"] = "France (mutated)"
+            hit += 1
+    assert hit == 1, f"expected one FRA-1919-2025 row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return "renamed FRA-1919-2025 in the CSV without regenerating the manifest"
+
+
 CASES = (
     (
         "audit_family_shadowing.py",
@@ -285,7 +309,26 @@ CASES = (
         "AGO-1816-2025",
         "an alias routing data to a polity that must never receive it",
     ),
+    (
+        "write_manifest.py",
+        mutate_polity_without_regenerating_manifest,
+        "stale",
+        "a published contract that no longer matches the database it describes",
+    ),
 )
+
+# Gates that need an argument to run in check mode rather than write mode. Verified, not
+# assumed: against a freshly mutated copy, write_manifest.py with no arguments regenerates
+# the manifest from the mutated CSV and exits 0, absorbing the defect, while --check exits
+# 1 and says to rerun and commit. Without this mapping the case would pass while proving
+# nothing.
+#
+# Verifying it took two attempts. The first harness ran write mode and then --check against
+# the SAME directory, so write mode regenerated the manifest and --check compared two
+# consistent files and passed -- which read as "the gate cannot detect this" when in fact
+# the harness had repaired the defect before measuring it. Each mode needs its own fresh
+# copy.
+ARGS = {"write_manifest.py": ("--check",)}
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
@@ -294,6 +337,12 @@ WRITABLE = {
     "validate_aliases.py": (
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
+    "write_manifest.py": (
+        "polities_database.csv",
+        "polities_manifest.json",
+        "faostat_area_polity_map.csv",
+        "label_alias_map.csv",
     ),
 }
 
