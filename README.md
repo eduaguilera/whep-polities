@@ -175,6 +175,24 @@ when an earlier version coerced empty to zero and made 456 aliases read as inert
 the FAOSTAT map is measured in this repository, so it has no blanks; the alias map covers
 sources whose data lives in the consumer, so most of its rows cannot be measured here at all.
 
+**`observed_rows` is not a licence to un-fold an area.** Worth stating because the consumer
+tried it and it cost a 13.7x error. The WHEP package derived "areas with observed data" from
+these columns and used it to promote areas that FABIO folds into its rest-of-world bucket
+(`fabio_code` 999) onto their own numeric aggregation key — reasonable on its face, since an
+area reporting thousands of rows of its own should not have them attributed to `ROW-1850-2023`.
+
+Measured on a full-range build, promoting the 16 such areas inflated global `feed` **13.7x**
+and `export` 13.2x, with the entire `feed` increase landing on one area (212 Syria, at twelve
+times the world total). Something downstream scales on bucket membership, so an area promoted
+out of a bucket takes bucket-level magnitudes with it. The promotion is withheld and tracked in
+eduaguilera/whep#419.
+
+So these columns answer **"does this label carry data?"** — which is what they were added for,
+and what makes an alias inert or live. They do not answer **"can this area stand alone as an
+aggregation unit?"**, which depends on the consumer's own aggregation scheme and cannot be
+decided here. A consumer that reads the first as the second gets a plausible, large, silent
+error.
+
 `faostat_unmapped_areas` carries three distinct reasons an area is unmapped, and the
 distinction matters because a consumer should report the first two and **warn** on
 anything left over:
