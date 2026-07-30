@@ -157,6 +157,24 @@ decided and a consumer used to get wrong:
 | `faostat_unmapped_areas` | why an area maps to no polity, in three kinds a consumer cannot tell apart from the numbers — see below |
 | `faostat_area_map`, `label_alias_map` | path and sha256 of the two published CSVs |
 
+Two columns in those CSVs measure the same thing under **transposed names**, and neither was
+documented until a consumer-side sweep noticed:
+
+| file | column | blanks | zeros |
+|---|---|---|---|
+| `label_alias_map.csv` | `observed_rows` | 456 | 29 |
+| `faostat_area_polity_map.csv` | `rows_observed` | 0 | 18 |
+
+Both derive from the same registry column with the same coercion, so the difference is word
+order, not meaning. They are NOT renamed here: the names are part of a published contract that
+a consumer already reads, and breaking that to tidy a word order would cost more than the wart.
+
+The blank counts differ for a real reason rather than an accident. A blank means **not measured
+here**, which is distinct from `0` meaning **measured, no rows** — the distinction that was lost
+when an earlier version coerced empty to zero and made 456 aliases read as inert. Every row of
+the FAOSTAT map is measured in this repository, so it has no blanks; the alias map covers
+sources whose data lives in the consumer, so most of its rows cannot be measured here at all.
+
 `faostat_unmapped_areas` carries three distinct reasons an area is unmapped, and the
 distinction matters because a consumer should report the first two and **warn** on
 anything left over:
