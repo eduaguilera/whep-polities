@@ -107,7 +107,7 @@ for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
             # lassaletta-grassland-share aliases, all 10 mueller-synthetic-n and all 4
             # crops-manure-n read empty, because those datasets live in the whep R
             # package and this repo never sees them. Measured over there, they are
-            # anything but inert: 6,082 Lassaletta country-years resolve, 184
+            # anything but inert: 6,781 Lassaletta country-years resolve, 184
             # crops_manure_n codes, 156 Mueller codes. Publishing 0 for them invited
             # exactly the wrong conclusion, and an inert-alias check reading this
             # column would have flagged every one of them.
