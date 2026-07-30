@@ -88,6 +88,7 @@ Usage:
 """
 import argparse
 import csv
+import hashlib
 import os
 import shutil
 import subprocess
@@ -97,6 +98,35 @@ import tempfile
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
 CSV = os.path.join(REPO, "data/final/polities_database.csv")
+
+
+def fingerprint_real_data() -> dict:
+    """Hash the real files a leaking mutation would damage.
+
+    A case that writes a file it did not declare in WRITABLE writes through `stage()`'s
+    symlink and straight into the repository. That has happened TWICE here -- once
+    renaming a polity, once rewriting an iso3_code -- and both times the only reason it
+    was noticed was a human looking at `git status` afterwards. Comments at the WRITABLE
+    entries did not prevent the second one.
+
+    So the harness checks instead of asking. Cheap: a handful of files, hashed before and
+    after each case.
+    """
+    targets = [
+        os.path.join(REPO, "data/final/polities_database.csv"),
+        os.path.join(REPO, "data/final/label_alias_map.csv"),
+        os.path.join(REPO, "data/final/faostat_area_polity_map.csv"),
+        os.path.join(REPO, "data/final/polities_manifest.json"),
+        os.path.join(
+            REPO, "pipelines/polity-autoimprove/state/applied_aliases.csv"
+        ),
+    ]
+    out = {}
+    for path in targets:
+        if os.path.exists(path):
+            with open(path, "rb") as fh:
+                out[path] = hashlib.sha256(fh.read()).hexdigest()
+    return out
 
 
 def stage(gate: str, extra: tuple = (), writable: tuple = ()) -> str:
@@ -594,6 +624,9 @@ def main() -> int:
             return 2
 
     problems = []
+    # A leaking mutation is worse than a missed defect: it edits the committed database
+    # while reporting success. Fingerprinted per case so the culprit is named.
+    before_all = fingerprint_real_data()
     for n, (gate, mutate, expect, why) in cases:
         root = stage(
             gate,
@@ -619,6 +652,20 @@ def main() -> int:
                     f"{gate} failed as required but its output does not name {expect}, "
                     f"so a real failure would not tell a maintainer where to look"
                 )
+            leaked = [
+                os.path.relpath(path, REPO)
+                for path, digest in fingerprint_real_data().items()
+                if before_all.get(path) != digest
+            ]
+            if leaked:
+                problems.append(
+                    f"{gate} MUTATED THE REAL REPOSITORY: {', '.join(leaked)}. The case "
+                    f"writes a file it did not declare in WRITABLE, so stage()'s symlink "
+                    f"stood and the mutation went through it. Restore with git checkout "
+                    f"and add the file to WRITABLE for this gate."
+                )
+                # Re-fingerprint so one leak is not re-reported for every later case.
+                before_all = fingerprint_real_data()
         finally:
             shutil.rmtree(root, ignore_errors=True)
 
