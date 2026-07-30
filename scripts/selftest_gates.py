@@ -220,6 +220,27 @@ def mutate_code_year_disagreement(root, gpd, make_valid, affinity):
     return "set FRA-1800-1871's start_year to 1799, contradicting its own code"
 
 
+def mutate_new_iso_code(root, gpd, make_valid, affinity):
+    """Give a polity an iso3_code the baseline has never seen. A consumer joins on that
+    vocabulary, so a new value silently changes which rows an ISO-keyed join matches --
+    and if the value is a local invention rather than a real ISO code, it matches nothing
+    at all, which is how four dissolved federations came to be unable to reach WHEP's
+    LUH2 land series. Injected as a plausible-looking three-letter code rather than
+    obvious junk, since the gate must catch the plausible case."""
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    victim = next((r for r in rows if (r.get("iso3_code") or "").strip()), None)
+    assert victim is not None, "no row carrying an iso3_code"
+    victim["iso3_code"] = "ZZQ"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return "ZZQ"
+
+
 def mutate_name_collision(root, gpd, make_valid, affinity):
     """Rename a live polity to a name a DIFFERENT live polity already holds over the same
     years. WHEP's resolve_polity_label() then cannot pick between them and returns NA for
@@ -412,6 +433,12 @@ CASES = (
         "two live polities sharing a name and a year, so the name resolves to neither",
     ),
     (
+        "validate_local_iso_codes.py",
+        mutate_new_iso_code,
+        "ZZQ",
+        "an unreviewed iso3_code value, which changes what an ISO-keyed join matches",
+    ),
+    (
         "validate_aliases.py",
         mutate_alias_to_dead_polity,
         "AGO-1816-2025",
@@ -465,6 +492,11 @@ WRITABLE = {
     # straight through it into the repository — which two gates then correctly reported
     # as a defect in the real data. The baseline is copied by stage() automatically.
     "validate_live_name_ambiguity.py": ("polities_database.csv",),
+    # Same lesson, learned twice. This case rewrites iso3_code, so it needs a real copy;
+    # I added the case without touching this map and the mutation wrote ZZQ straight into
+    # the committed database again. The default is a symlink precisely because most gates
+    # only read the CSV, so a case that writes it MUST appear here.
+    "validate_local_iso_codes.py": ("polities_database.csv",),
     "validate_aliases.py": (
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",

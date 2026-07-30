@@ -44,9 +44,10 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Twenty-four checks guard the database, and a twenty-fifth checks the checks. Each
-of the twenty-four exists because that class of error was **found in the data**,
-not hypothesised, so they are worth keeping green:
+Twenty-five checks guard the database, and a twenty-sixth checks the checks. Most
+exist because that class of error was **found in the data**, not hypothesised; the
+few marked *(guard)* below hold a property that is true today and would be costly
+to lose. All are worth keeping green:
 
 ```bash
 # the published contract still matches the wiki
@@ -63,6 +64,7 @@ python3 scripts/validate_aliases.py
 python3 scripts/validate_unranged_aliases.py
 python3 scripts/validate_alias_chain_overlaps.py
 python3 scripts/validate_live_name_ambiguity.py
+python3 scripts/validate_local_iso_codes.py
 python3 scripts/crosscheck_matchers.py
 python3 scripts/audit_family_shadowing.py
 
@@ -100,6 +102,7 @@ python3 scripts/selftest_gates.py
 | cross-family names | `TAN-1922-1964` overlapping `TZA-1961-1964`, and `MAR-1911-1958` overlapping `MOR-1956-1958` — the earlier row's end year running past its successor's start. Invisible to the period-overlap gate, which only compares within one prefix. Latent rather than live: the inert twins are unmapped, so the consumer never sees both |
 | cow codes | `ICN-1800-2025` (Canary Islands) carried COW code **20**, which is Canada. The Canaries are not a COW state — they are part of Spain, 230 — so the value was removed rather than corrected, which would have swapped one collision for another. Its `iso3` and polygon were both fine, so no other check could see it |
 | iso collisions | *(guard)* 59 pairs already share a code over overlapping years **by design**, since `iso3` groups by modern territory. The gate is that the set must not grow |
+| local iso codes | *(guard)* `iso3_code` is **not ISO-conformant and cannot be** — there is no ISO 3166 code for Austria-Hungary, so this database invents `AUH`. 56 of its 276 values are local like that, and a consumer joining against ISO-keyed data silently matches none of them; it is what stops four dissolved federations reaching WHEP's LUH2 land series. The vocabulary is therefore an interface, and the gate is that it does not change unreviewed. Publishing the local/ISO distinction machine-readably is [issue 55](../../issues/55) |
 | period overlaps | four same-family pairs cover the same years, so a year-aware matcher must guess. `PER-1825-1909` duplicates two rows that already tile its span exactly |
 | reporting areas | six GADM territories claimed by **two** aggregates each — Palau and the Northern Marianas sit in both Asia Other and Oceania Other. Hidden because the RoW union deduplicates |
 | polygons A | 8 polities carrying **another country's** polygon — San Marino had Albania's (470× too large), Indonesia had India's |

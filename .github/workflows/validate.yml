@@ -287,6 +287,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_live_name_ambiguity.py
 
+      - name: Identity — the iso3_code vocabulary is stable, since consumers join on it
+        if: '!cancelled()'
+        run: python3 scripts/validate_local_iso_codes.py
+
       # Last, because it is the only step that answers "can the steps above
       # fail?". Twenty-one gates that all pass are indistinguishable, from a
       # green summary, from twenty-one gates that cannot fail.
