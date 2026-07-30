@@ -23,8 +23,9 @@ data/final/ holds a MUTATED input, then runs one gate against it and requires a
 non-zero exit AND that the output names the injected defect. The real data is
 never written to.
 
-Seven cases: three geometry gates mutating the GeoPackage, and four contract gates
-mutating a CSV. Seven of twenty-four, chosen by what it would cost if the gate were
+Eight cases: three geometry gates mutating the GeoPackage, four contract gates
+mutating a CSV, and one mutating a WIKI PAGE -- the source of truth every other
+artefact derives from. Eight of twenty-four, chosen by what it would cost if the gate were
 inert rather than by what is easy to mutate -- case 6 guards the invariant that a
 retired polity never receives data, which is not otherwise detectable, because a
 retired duplicate carries the same name, iso3 and often a valid geometry as its live
@@ -53,6 +54,12 @@ WHAT MUTATION TESTING ESTABLISHED, beyond that the gates fire:
   thing to check. Position and magnitude are covered by two gates, each blind to
   what the other sees. Case 3 pins that, so a future change to either cannot
   quietly leave the shrink case uncovered.
+
+  Case 8 nearly passed for the wrong reason twice, which is the argument for this
+  script requiring that a gate NAME the defect and not merely exit non-zero. Staged
+  without sources.yaml it died with a FileNotFoundError; staged without the wiki it
+  would have found nothing to compare. Both exit 1. Only the name check separated
+  "detected the mutation" from "crashed before reaching it".
 
   Case 5 exists because its gate shipped with a blind spot. The alias-chain check
   skipped rows with empty year bounds, so it missed "turkey", where an UNRANGED
@@ -111,7 +118,9 @@ def stage(gate: str, extra: tuple = (), writable: tuple = ()) -> str:
         else:
             dest = os.path.join(root, "data/final", name)
             src = os.path.join(REPO, "data/final", name)
-        if os.path.exists(src):
+        if os.path.isdir(src):
+            shutil.copytree(src, dest, dirs_exist_ok=True)
+        elif os.path.exists(src):
             shutil.copy(src, dest)
     return root
 
@@ -272,6 +281,25 @@ def mutate_polity_without_regenerating_manifest(root, gpd, make_valid, affinity)
     return "renamed FRA-1919-2025 in the CSV without regenerating the manifest"
 
 
+
+def mutate_wiki_without_rebuilding(root, gpd, make_valid, affinity):
+    """Edit a wiki page's frontmatter and leave the derived CSV alone. The wiki is the
+    SOURCE OF TRUTH here and every other artefact is derived from it, so this gate is the
+    only thing standing between an edit and a database that silently disagrees with it.
+    Its documented first catch was exactly this: a wiki edit that never propagated."""
+    page = os.path.join(root, "wiki/polities/fra-1919-2025.md")
+    assert os.path.exists(page), f"missing wiki page: {page}"
+    with open(page, encoding="utf-8") as fh:
+        text = fh.read()
+    marker = "\ncow: "
+    assert marker in text, "no cow field to edit in the France page"
+    head, rest = text.split(marker, 1)
+    _old, tail = rest.split("\n", 1)
+    with open(page, "w", encoding="utf-8") as fh:
+        fh.write(head + marker + "999" + "\n" + tail)
+    return "set the France page's cow code to 999 without rebuilding the CSV"
+
+
 CASES = (
     (
         "audit_family_shadowing.py",
@@ -315,6 +343,12 @@ CASES = (
         "stale",
         "a published contract that no longer matches the database it describes",
     ),
+    (
+        "build_database.py",
+        mutate_wiki_without_rebuilding,
+        "FRA-1919-2025",
+        "a wiki edit that never reached the database derived from it",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -328,7 +362,13 @@ CASES = (
 # consistent files and passed -- which read as "the gate cannot detect this" when in fact
 # the harness had repaired the defect before measuring it. Each mode needs its own fresh
 # copy.
-ARGS = {"write_manifest.py": ("--check",)}
+ARGS = {"write_manifest.py": ("--check",), "build_database.py": ("--check",)}
+
+# Non-script files under scripts/ that a gate reads before doing anything. build_database
+# loads sources.yaml before parsing a single page, so without it the gate dies with a
+# FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
+# half of this script is what caught that; exit-code alone would have passed it.
+EXTRA_SCRIPTS = {"build_database.py": ("sources.yaml",)}
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
@@ -338,6 +378,10 @@ WRITABLE = {
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
     ),
+    "build_database.py": ("polities_database.csv", "wiki/polities"),
+    # sources.yaml is read before any page is parsed, so without it the gate dies with a
+    # FileNotFoundError -- exit 1 for the wrong reason, which the "must name the defect"
+    # requirement is what caught.
     "write_manifest.py": (
         "polities_database.csv",
         "polities_manifest.json",
@@ -372,7 +416,11 @@ def main() -> int:
 
     problems = []
     for n, (gate, mutate, expect, why) in cases:
-        root = stage(gate, writable=WRITABLE.get(gate, ()))
+        root = stage(
+            gate,
+            extra=EXTRA_SCRIPTS.get(gate, ()),
+            writable=WRITABLE.get(gate, ()),
+        )
         try:
             did = mutate(root, gpd, make_valid, affinity)
             code, out = run(root, gate)
