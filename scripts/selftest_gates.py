@@ -23,9 +23,9 @@ data/final/ holds a MUTATED input, then runs one gate against it and requires a
 non-zero exit AND that the output names the injected defect. The real data is
 never written to.
 
-Eight cases: three geometry gates mutating the GeoPackage, four contract gates
-mutating a CSV, and one mutating a WIKI PAGE -- the source of truth every other
-artefact derives from. Eight of twenty-four, chosen by what it would cost if the gate were
+Nine cases: three geometry gates mutating the GeoPackage, four contract gates
+mutating a CSV, one mutating a WIKI PAGE -- the source of truth every other artefact
+derives from -- and one mutating a BUILDER SCRIPT's own literal. Nine of twenty-four, chosen by what it would cost if the gate were
 inert rather than by what is easy to mutate -- case 6 guards the invariant that a
 retired polity never receives data, which is not otherwise detectable, because a
 retired duplicate carries the same name, iso3 and often a valid geometry as its live
@@ -300,6 +300,30 @@ def mutate_wiki_without_rebuilding(root, gpd, make_valid, affinity):
     return "set the France page's cow code to 999 without rebuilding the CSV"
 
 
+
+def mutate_double_claimed_component(root, gpd, make_valid, affinity):
+    """Add a GADM component to a second aggregate, so two aggregates claim the same
+    territory. Its documented first catch was exactly this -- six territories claimed
+    twice, with Palau and the Northern Marianas sitting in both Asia Other and Oceania
+    Other -- and it was HIDDEN because the rest-of-world union deduplicates, so the
+    double claim never showed up as a duplicated row anywhere downstream. If this gate
+    were inert those claims would return silently and double-count the territory."""
+    path = os.path.join(root, "scripts/sources/reporting-areas/build.py")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    # The components live in a nested dict under a "components" key, not in a bare list
+    # -- checked rather than guessed on the second attempt. Claim FRO, which belongs to
+    # Europe Other, for Asia Other as well.
+    marker = '"RASI-1850-2021": {'
+    assert marker in text, "no RASI aggregate to extend"
+    i = text.index(marker)
+    j = text.index('"components": [', i) + len('"components": [')
+    text = text[:j] + '"FRO", ' + text[j:]
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return "claimed FRO for RASI-1850-2021 as well as Europe Other"
+
+
 CASES = (
     (
         "audit_family_shadowing.py",
@@ -349,6 +373,12 @@ CASES = (
         "FRA-1919-2025",
         "a wiki edit that never reached the database derived from it",
     ),
+    (
+        "validate_reporting_areas.py",
+        mutate_double_claimed_component,
+        "FRO",
+        "one territory claimed by two aggregates, which double-counts it",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -379,6 +409,7 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
     ),
     "build_database.py": ("polities_database.csv", "wiki/polities"),
+    "validate_reporting_areas.py": ("scripts/sources/reporting-areas/build.py",),
     # sources.yaml is read before any page is parsed, so without it the gate dies with a
     # FileNotFoundError -- exit 1 for the wrong reason, which the "must name the defect"
     # requirement is what caught.
