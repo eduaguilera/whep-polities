@@ -134,6 +134,38 @@ counts, an `identity_sha256` over the fields a consumer resolves against, the
 list of live polity codes, and — critically — `dead_polity_codes`: rows with
 `wiki_status` of `retired` or `superseded` that **must never receive data**.
 
+Every published field, and who reads it. The manifest grew as the consumer stopped
+inferring things it could not infer correctly, so each row here is a fact this repository
+decided and a consumer used to get wrong:
+
+| field | what it settles |
+|---|---|
+| `identity_fields`, `identity_sha256` | which columns a consumer resolves against, and one hash over them. Deliberately excludes polygon fields, so re-measuring an area does not invalidate every consumer while a changed date or status does |
+| `counts`, `live_polity_codes`, `dead_polity_codes` | 740 rows, 713 live, 27 dead |
+| `dead_status` | which `wiki_status` values mean "must never receive data" — `retired`, `superseded`. Defined **five** times in this repo, so `validate_constants.py` compares the copies; a consumer hardcoding a sixth is how it drifts |
+| `claims_polygon_status` | which polygon statuses ASSERT a polygon exists. Not "anything except `unassigned`": that held only while the vocabulary had one non-claiming value, and three of the four legacy statuses asserted no polygon |
+| `polygon_gap_polity_codes` | rows whose status claims a polygon the GeoPackage cannot carry, because the feature id was recorded as prose. A consumer asserting the strict invariant is red until this backlog clears; tolerating exactly this set keeps the check sharp for anything new |
+| `faostat_unmapped_areas` | why an area maps to no polity, in three kinds a consumer cannot tell apart from the numbers — see below |
+| `faostat_area_map`, `label_alias_map` | path and sha256 of the two published CSVs |
+
+`faostat_unmapped_areas` carries three distinct reasons an area is unmapped, and the
+distinction matters because a consumer should report the first two and **warn** on
+anything left over:
+
+- `group_code_min` (5000) — at or above it, FAOSTAT's own regional groups: World, the
+  continents, the income bands. Never territories.
+- `deliberate_area_codes` (351) — a statistical aggregate published ALONGSIDE its own
+  components. 351 "China" is mainland + Hong Kong + Macao + Taiwan, so routing it
+  anywhere double-counts all four. This is a decision, not an absence, and inference
+  cannot tell the two apart: a consumer that guessed "deliberate" from crosswalk
+  membership reported China as *"an area code this project does not know"*.
+- `subthreshold_group_codes` (261, 265, 266, 268, 269, 420) — aggregates whose code sits
+  BELOW the threshold, so the rule of thumb misses them. 420 is Sub-Saharan Africa; the
+  rest are the "(excluding intra-trade)" totals for China and the EU at 12, 15, 25 and 27
+  members. Each was found by a real consumer build reporting it as an unknown code, then
+  the class was enumerated by sweeping nine input pins rather than waiting for the next
+  build to surface the next one.
+
 Compare the hash against your embedded copy to detect drift in one step. The
 hash deliberately excludes polygon fields, so re-measuring an area does not
 invalidate every consumer, while a changed date or status does.
