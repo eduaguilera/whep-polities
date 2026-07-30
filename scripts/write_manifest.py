@@ -49,6 +49,20 @@ DEAD_STATUS = ("retired", "superseded")
 FAOSTAT_GROUP_CODE_MIN = 5000
 FAOSTAT_AGGREGATE_CODES = (351,)
 
+# FAOSTAT regional groups that sit BELOW group_code_min. The >= 5000 rule covers the
+# main groups (World 5000, the continents, the income bands) but is not exhaustive:
+# the emissions domains carry aggregates in the country range. Found by running a real
+# consumer build, where 420 "Sub-Saharan Africa" -- 14,427 rows, 0.6% of
+# faostat-emissions-livestock -- was reported as "an area code this project does not
+# know", because a threshold is a rule of thumb and this code breaks it.
+#
+# Published separately from deliberate_area_codes because the two are different facts.
+# 351 China is a deliberate NON-MAPPING: it is reported alongside its own components and
+# routing it anywhere would double-count. 420 is simply a regional group whose code
+# happens to be low. A consumer should report the first as a decision and the second as
+# a group, and it cannot tell them apart from the numbers alone.
+FAOSTAT_SUBTHRESHOLD_GROUP_CODES = (420,)
+
 IDENTITY_FIELDS = ("polity_code", "polity_name", "start_year", "end_year",
                    "polity_type", "iso3_code", "cow_code", "wiki_status")
 
@@ -154,12 +168,16 @@ manifest = {
     "faostat_unmapped_areas": {
         "group_code_min": FAOSTAT_GROUP_CODE_MIN,
         "deliberate_area_codes": sorted(FAOSTAT_AGGREGATE_CODES),
+        "subthreshold_group_codes": sorted(FAOSTAT_SUBTHRESHOLD_GROUP_CODES),
         "why": (
             "Area codes at or above group_code_min are FAOSTAT's own regional groups "
             "(World, continents, income groups), never territories. The codes in "
             "deliberate_area_codes are statistical aggregates reported ALONGSIDE their own "
             "components, so routing them to a polity would double-count: 351 'China' is "
-            "mainland + Hong Kong + Macao + Taiwan. Neither kind is a gap in this database."
+            "mainland + Hong Kong + Macao + Taiwan. subthreshold_group_codes are regional "
+            "groups whose code falls BELOW group_code_min, so the threshold alone misses them: "
+            "420 'Sub-Saharan Africa' appears in the emissions domains. None of the three kinds "
+            "is a gap in this database."
         ),
     },
     "faostat_area_map": area_map_info,

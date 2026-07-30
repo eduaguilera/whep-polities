@@ -76,7 +76,10 @@
   "deliberate_area_codes": [
    351
   ],
-  "why": "Area codes at or above group_code_min are FAOSTAT's own regional groups (World, continents, income groups), never territories. The codes in deliberate_area_codes are statistical aggregates reported ALONGSIDE their own components, so routing them to a polity would double-count: 351 'China' is mainland + Hong Kong + Macao + Taiwan. Neither kind is a gap in this database."
+  "subthreshold_group_codes": [
+   420
+  ],
+  "why": "Area codes at or above group_code_min are FAOSTAT's own regional groups (World, continents, income groups), never territories. The codes in deliberate_area_codes are statistical aggregates reported ALONGSIDE their own components, so routing them to a polity would double-count: 351 'China' is mainland + Hong Kong + Macao + Taiwan. subthreshold_group_codes are regional groups whose code falls BELOW group_code_min, so the threshold alone misses them: 420 'Sub-Saharan Africa' appears in the emissions domains. None of the three kinds is a gap in this database."
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
