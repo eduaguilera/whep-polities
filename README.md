@@ -44,8 +44,8 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Twenty-two checks guard the database, and a twenty-third checks the checks. Each
-of the twenty-two exists because that class of error was **found in the data**,
+Twenty-three checks guard the database, and a twenty-fourth checks the checks. Each
+of the twenty-three exists because that class of error was **found in the data**,
 not hypothesised, so they are worth keeping green:
 
 ```bash
@@ -61,6 +61,7 @@ python3 scripts/validate_citations.py
 python3 scripts/validate_constants.py
 python3 scripts/validate_aliases.py
 python3 scripts/validate_unranged_aliases.py
+python3 scripts/validate_alias_chain_overlaps.py
 python3 scripts/crosscheck_matchers.py
 python3 scripts/audit_family_shadowing.py
 
@@ -90,6 +91,7 @@ python3 scripts/selftest_gates.py
 | citations | 17 citations pointing at source files that were never ingested |
 | constants | `DEAD_STATUS` is defined **five** times, and `CLAIMS_POLYGON` excluded four statuses that 11 rows with geometry were using |
 | aliases | five aliases silently **inert** — two had the target sitting in the `confidence` column |
+| alias chain overlaps | *(guard)* an alias `year_end` is INCLUSIVE while a polity `end_year` is EXCLUSIVE, so consecutive aliases for one label both cover the boundary year and match order decides which polity a value lands in. 25 chains do. The rate depends on how they were written — 18 of 31 hand-entered any-source chains against **0 of 7** generated with `year_end = polity_end_year - 1` — so the convention demonstrably removes it. Gated rather than bulk-fixed: 91 rows would move, each shifting a boundary year's data, and one is the deliberate Cape Verde mid-year-independence choice (#54) |
 | unranged aliases | the `"Syria"` alias had no year range and pointed at `SYR-1946-1967`, so every year — including 2020 — resolved to a polity that ended in 1967, across 162 observed rows. Unlike an inert alias it worked; it just worked wrongly |
 | crosscheck matchers | the two independent matchers disagreed on three FAOSTAT areas, including Serbia 2006-2008 existing **twice** |
 | shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
@@ -108,7 +110,7 @@ python3 scripts/selftest_gates.py
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
 | gate self-test | *(the checks, checked)* Twenty-one gates that all pass are indistinguishable, from a green summary, from twenty-one that **cannot** fail. Mutation settles it: three geometry gates were shown to fail on an injected defect and to name it. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 
-`.github/workflows/validate.yml` runs **all twenty-two, plus the self-test,** on push to `main` and on PRs.
+`.github/workflows/validate.yml` runs **all twenty-three, plus the self-test,** on push to `main` and on PRs.
 Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
 manifest and the wiki — so none requires the raw sources under `data/geodata`.
 

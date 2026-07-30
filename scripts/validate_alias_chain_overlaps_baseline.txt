@@ -1,0 +1,33 @@
+# Chains whose consecutive alias ranges touch, so a boundary year resolves by
+# match order. See scripts/validate_alias_chain_overlaps.py for why this gates
+# rather than being fixed in bulk, and issue #54 for the recommendation.
+#
+# 'cape verde||lassaletta-grassland-share' is DELIBERATE -- the two rows overlap at
+# 1975 by curation, a decision about which polity gets a mid-year independence. It
+# is listed here because the check is the same, not because it is waiting to be
+# fixed.
+abyssinia||
+algeria||
+botswana||
+cape verde||lassaletta-grassland-share
+china 22 provinces||fao1952
+china manchuria||fao1952
+china, mainland||
+china, manchuria province of||
+czech republic||
+greece||
+guam||fao1952
+israel||
+italy||
+romania||
+russian federation||
+serbia||
+sudan||
+syria||
+tanzania||
+turkey||
+united states of america||
+united states of america||iia
+united states virgin islands||faostat
+ussr||
+western sahara||faostat
