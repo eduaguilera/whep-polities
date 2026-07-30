@@ -234,7 +234,7 @@ czech republic,,1939,1945,F51-1938-1945,Czechoslovakia (1938-1945),medium,
 czech republic,,1945,1947,F51-1945-1947,,high,603
 czech republic,,1946,1947,F51-1945-1947,Czechoslovakia (1945-1947),high,
 czech republic,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high,
-Czech Republic,faostat,1993,2025,CZE-1993-2025,Czechia,high,0
+Czech Republic,,1993,2025,CZE-1993-2025,Czechia,high,0
 Czechia,faostat,1993,2024,CZE-1993-2025,Czechia,high,126408
 czechoslovakia,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high,
 Czechoslovakia,faostat,1961,1992,F51-1947-1993,Czechoslovakia (1947-1993),high,92870
@@ -256,7 +256,7 @@ Dominican Rep,fao1952,1800,2025,DOM-1800-2025,Dominican Republic,high,
 Dominican Republic,faostat,1961,2024,DOM-1800-2025,Dominican Republic,high,181837
 Dominican Republic,lassaletta-grassland-share,1961,2009,DOM-1800-2025,Dominican Republic,high,
 DPRepublic of Korea,lassaletta-grassland-share,1961,2009,PRK-1948-2025,Democratic People's Republic of Korea,high,
-DR Congo,faostat,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
+DR Congo,,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
 Dutch Caribbean,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
 Dutch Guiana,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,
 Ecuador,faostat,1961,2024,ECU-1942-2025,Ecuador,high,221065
@@ -434,7 +434,7 @@ italy,,1870,1919,ITA-1870-1919,Italy (1870-1919),high,
 Italy,faostat,1961,2024,ITA-1919-2025,Italy,high,278124
 italy,iia,,1860,SAR-1800-1860,Kingdom of Sardinia (pre-unification Italy),high,
 Italy,lassaletta-grassland-share,1961,2009,ITA-1919-2025,Italy,high,
-Ivory Coast,faostat,1960,2025,CIV-1960-2025,Côte d'Ivoire,high,0
+Ivory Coast,,1960,2025,CIV-1960-2025,Côte d'Ivoire,high,0
 Jamaica,faostat,1961,2024,JAM-1800-2025,Jamaica,high,199570
 Jamaica,lassaletta-grassland-share,1961,2009,JAM-1800-2025,Jamaica,high,
 japan,,1945,1952,JPN-1945-1952,Japan (occupied),high,
@@ -455,7 +455,7 @@ Korea South,fao1952,1910,1945,KRS-1910-1945,Korea South (within Japanese Chosen)
 Korea South,fao1952,1948,1951,KOR-1948-2025,South Korea,high,
 Kuwait,faostat,1961,2024,KWT-1800-2025,Kuwait,high,188419
 Kyrgyzstan,faostat,1992,2024,KGZ-1991-2025,Kyrgyzstan,high,103359
-Lao,faostat,1954,2025,LAO-1954-2025,Lao People's Democratic Republic,high,0
+Lao,,1954,2025,LAO-1954-2025,Lao People's Democratic Republic,high,0
 Lao People's Democratic Republic,faostat,1961,2024,LAO-1954-2025,Laos,high,136563
 Lao People's Democratic Republic,lassaletta-grassland-share,1961,2009,LAO-1954-2025,Laos,high,
 Latvia,faostat,1992,2024,LVA-1991-2025,Latvia,high,120121

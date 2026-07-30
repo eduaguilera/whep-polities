@@ -226,9 +226,19 @@ if A.check:
                 print(f"  faostat_area_map changed: {o.get('faostat_area_map')} "
                       f"-> {area_map_info}")
             if o.get("label_alias_map") != alias_map_info:
-                was = (o.get("label_alias_map") or {}).get("aliases")
-                print(f"  label_alias_map changed: {was} -> "
-                      f"{(alias_map_info or {}).get('aliases')} aliases")
+                # Name the subfield that actually differs, for the same reason the
+                # counts above are conditional. Reporting the alias count alone said
+                # "869 -> 869 aliases" when four rows were rescoped from one source to
+                # blanket: the count was identical and the digest was not, so the one
+                # number printed was the one number that had not changed.
+                was, now = o.get("label_alias_map") or {}, alias_map_info or {}
+                for key in sorted(set(was) | set(now)):
+                    if was.get(key) != now.get(key):
+                        a, b = was.get(key), now.get(key)
+                        if key.endswith("sha256"):
+                            a = f"{str(a)[:16]}…"
+                            b = f"{str(b)[:16]}…"
+                        print(f"  label_alias_map.{key}: {a} -> {b}")
             for key in ("dead_polity_codes", "live_polity_codes",
                         "polygon_gap_polity_codes"):
                 was, now = set(o.get(key) or []), set(manifest[key])
