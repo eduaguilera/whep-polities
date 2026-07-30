@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Prove the gates can fail.
 
-Twenty-one validators guard this database and every one of them passes. That is
+Twenty-four validators guard this database and every one of them passes. That is
 the intended state and it is also indistinguishable, from the outside, from
-twenty-one validators that cannot fail. A gate whose criteria no real row can
+twenty-four validators that cannot fail. A gate whose criteria no real row can
 satisfy prints PASS forever and protects nothing.
 
 The distinction is not decidable by reading the code -- I tried, and reasoned
@@ -19,8 +19,15 @@ green summary line distinguishes "passed" from "did not execute", so the only
 defence is to demand a failure on demand.
 
 Each case below stages a scratch repo whose scripts/ is a copy and whose
-data/final/ holds a MUTATED GeoPackage, then runs one gate against it and
-requires a non-zero exit. The real data is never written to.
+data/final/ holds a MUTATED input, then runs one gate against it and requires a
+non-zero exit AND that the output names the injected defect. The real data is
+never written to.
+
+Five cases: three geometry gates mutating the GeoPackage, and two identity gates
+mutating a CSV. The last two were added after their own gates were, which is the
+wrong order -- both were mutation-tested by hand when written, and a hand test
+proves the gate worked once on one machine. This file is what makes it a standing
+claim.
 
 WHAT MUTATION TESTING ESTABLISHED, beyond that the gates fire:
 
@@ -43,11 +50,19 @@ WHAT MUTATION TESTING ESTABLISHED, beyond that the gates fire:
   what the other sees. Case 3 pins that, so a future change to either cannot
   quietly leave the shrink case uncovered.
 
+  Case 5 exists because its gate shipped with a blind spot. The alias-chain check
+  skipped rows with empty year bounds, so it missed "turkey", where an UNRANGED
+  alias sits alongside a ranged one and therefore overlaps it at every year. That
+  was found by reconciling the gate's count against the consumer's -- 24 against
+  25 -- not by mutation, which is a reminder that a self-test proves a gate fires
+  on the defect you thought of.
+
 Usage:
   python3 scripts/selftest_gates.py            # all cases
   python3 scripts/selftest_gates.py --case 2   # one case, by number
 """
 import argparse
+import csv
 import os
 import shutil
 import subprocess
@@ -59,7 +74,7 @@ GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
 CSV = os.path.join(REPO, "data/final/polities_database.csv")
 
 
-def stage(gate: str, extra: tuple = ()) -> str:
+def stage(gate: str, extra: tuple = (), writable: tuple = ()) -> str:
     """A scratch repo holding one gate, its baseline, and a writable data/final."""
     root = tempfile.mkdtemp(prefix="selftest-gates-")
     os.makedirs(os.path.join(root, "scripts"))
@@ -72,9 +87,20 @@ def stage(gate: str, extra: tuple = ()) -> str:
     src = os.path.join(REPO, "scripts", baseline)
     if os.path.exists(src):
         shutil.copy(src, os.path.join(root, "scripts", baseline))
-    # The CSV is only read for wiki_status, so a symlink to the real one is safe;
-    # the GeoPackage is the thing being mutated, so it is always a real copy.
-    os.symlink(CSV, os.path.join(root, "data/final/polities_database.csv"))
+    # The CSV is only read for wiki_status by the geometry gates, so a symlink is safe
+    # there; the GeoPackage is what those mutate, so it is always a real copy. The
+    # CSV-level gates below mutate the CSV or the alias map instead, so those cases ask
+    # for a real copy via `writable`.
+    if "polities_database.csv" in writable:
+        shutil.copy(CSV, os.path.join(root, "data/final/polities_database.csv"))
+    else:
+        os.symlink(CSV, os.path.join(root, "data/final/polities_database.csv"))
+    for name in writable:
+        if name == "polities_database.csv":
+            continue
+        src = os.path.join(REPO, "data/final", name)
+        if os.path.exists(src):
+            shutil.copy(src, os.path.join(root, "data/final", name))
     return root
 
 
@@ -136,6 +162,51 @@ def mutate_shrunk_successor(root, gpd, make_valid, affinity):
     return "shrank FRA-1871-1919 to a disc inside FRA-1800-1871"
 
 
+
+def mutate_code_year_disagreement(root, gpd, make_valid, affinity):
+    """Make one polity's start_year disagree with the years in its own code. A consumer
+    reading the span off the identifier then gets a different answer from one reading the
+    columns, which is how two aliases came to resolve 1962-1964 to a polity its columns
+    say had ended."""
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    hit = 0
+    for r in rows:
+        if r["polity_code"] == "FRA-1800-1871":
+            r["start_year"] = "1799"
+            hit += 1
+    assert hit == 1, f"expected one FRA-1800-1871 row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return "set FRA-1800-1871's start_year to 1799, contradicting its own code"
+
+
+def mutate_touching_alias_chain(root, gpd, make_valid, affinity):
+    """Extend one alias's year_end so it collides with the next row in its chain. The
+    boundary year then resolves by whichever row the matcher reaches first."""
+    path = os.path.join(root, "data/final/label_alias_map.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    # A chain the baseline does not already contain, so the mutation is what fails.
+    target = None
+    for r in rows:
+        if r.get("source_label") == "Kenya" and r.get("year_end"):
+            target = r
+            break
+    assert target is not None, "no Kenya alias to mutate"
+    target["year_end"] = str(int(target["year_end"]) + 40)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return "extended a Kenya alias's year_end by 40 years into the next row's range"
+
+
 CASES = (
     (
         "audit_family_shadowing.py",
@@ -155,7 +226,25 @@ CASES = (
         "FRA-1871-1919",
         "a polygon bound to a smaller feature inside the right territory",
     ),
+    (
+        "validate_code_year_agreement.py",
+        mutate_code_year_disagreement,
+        "FRA-1800-1871",
+        "a code whose embedded years contradict its own columns",
+    ),
+    (
+        "validate_alias_chain_overlaps.py",
+        mutate_touching_alias_chain,
+        "kenya",
+        "consecutive aliases for one label both covering a year",
+    ),
 )
+
+# Which data files each case needs to be a real, writable copy rather than a symlink.
+WRITABLE = {
+    "validate_code_year_agreement.py": ("polities_database.csv",),
+    "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
+}
 
 
 def main() -> int:
@@ -183,7 +272,7 @@ def main() -> int:
 
     problems = []
     for n, (gate, mutate, expect, why) in cases:
-        root = stage(gate)
+        root = stage(gate, writable=WRITABLE.get(gate, ()))
         try:
             did = mutate(root, gpd, make_valid, affinity)
             code, out = run(root, gate)
