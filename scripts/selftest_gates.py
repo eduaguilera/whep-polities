@@ -61,6 +61,20 @@ WHAT MUTATION TESTING ESTABLISHED, beyond that the gates fire:
   would have found nothing to compare. Both exit 1. Only the name check separated
   "detected the mutation" from "crashed before reaching it".
 
+  crosscheck_matchers.py is DELIBERATELY NOT COVERED HERE, and the reason is worth
+  recording because it looked like an easy tenth case. It compares two independent
+  matchers against each other, so producing a disagreement means changing what ONE of
+  them computes -- and both read the same applied_aliases.csv, so mutating the registry
+  moves both identically and they still agree. My attempt repointed a faostat Kenya
+  alias and the gate passed, which reads as "the gate cannot fail" and is not: staged on
+  its own it reports 281 mappings, 276 agreements and the 3 baselined differences, so it
+  works. The mutation was the wrong shape, like the REMOVED_ prefix that could not hide
+  a substring.
+  Covering it properly needs a surgical edit to matchlib.py's or match.R's resolution
+  logic, which is brittle to write and would fail for reasons unrelated to the gate. An
+  uncovered gate that is honestly labelled uncovered beats a case that passes for the
+  wrong reason.
+
   Case 5 exists because its gate shipped with a blind spot. The alias-chain check
   skipped rows with empty year bounds, so it missed "turkey", where an UNRANGED
   alias sits alongside a ranged one and therefore overlaps it at every year. That
@@ -322,6 +336,7 @@ def mutate_double_claimed_component(root, gpd, make_valid, affinity):
     with open(path, "w", encoding="utf-8") as fh:
         fh.write(text)
     return "claimed FRO for RASI-1850-2021 as well as Europe Other"
+
 
 
 CASES = (
