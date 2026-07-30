@@ -110,8 +110,11 @@ class Matcher:
                     "src": (r.get("source") or "").strip() or None,
                     "y0": _yr(r.get("year_start")), "y1": _yr(r.get("year_end")),
                     "code": tc})
+        # Blanket means NEITHER bound, for the same reason match_alias below does:
+        # keying on `y0` alone classified a rule bounded only above as blanket.
         self.blanket_override = {ru["n"]: ru["code"] for ru in self.override_rules
-                                 if ru["y0"] is None and ru["src"] is None}
+                                 if ru["y0"] is None and ru["y1"] is None
+                                 and ru["src"] is None}
         # AMBIGUITY GUARD: match_alias breaks ties by file order (`if s > score`
         # keeps the first rule at a given specificity). Two rules with the SAME
         # specificity, overlapping years and DIFFERENT targets therefore resolve
@@ -126,11 +129,20 @@ class Matcher:
             for i, a in enumerate(rules):
                 for b in rules[i + 1:]:
                     if a["code"] == b["code"]: continue
-                    if (a["y0"] is None) != (b["y0"] is None): continue   # different specificity
-                    if a["y0"] is None:                                    # both blanket
+                    ab = a["y0"] is not None or a["y1"] is not None
+                    bb = b["y0"] is not None or b["y1"] is not None
+                    if ab != bb: continue                                  # different specificity
+                    if not ab:                                             # both blanket
                         self.ambiguous_alias_pairs.append((name, src, a["code"], b["code"], "blanket"))
-                    elif a["y0"] <= b["y1"] and b["y0"] <= a["y1"]:        # year ranges overlap
-                        lo, hi = max(a["y0"], b["y0"]), min(a["y1"], b["y1"])
+                    else:
+                        # Treat a missing bound as unbounded on that side, so a half-open
+                        # rule is compared against its neighbours rather than skipped.
+                        a0 = a["y0"] if a["y0"] is not None else -10**6
+                        a1 = a["y1"] if a["y1"] is not None else 10**6
+                        b0 = b["y0"] if b["y0"] is not None else -10**6
+                        b1 = b["y1"] if b["y1"] is not None else 10**6
+                        if not (a0 <= b1 and b0 <= a1): continue
+                        lo, hi = max(a0, b0), min(a1, b1)
                         # a ONE-year overlap is the shared transition year of two
                         # adjacent periods (inclusive ranges always touch there) and
                         # is resolved by the successor convention — not ambiguity.
@@ -158,15 +170,31 @@ class Matcher:
         tie-break matters: without it two year-scoped rules covering the same
         year scored identically and the winner was decided by position in the
         CSV, so a broad 1919-1956 rule silently beat a specific 1949-1951 one.
+
+        A MISSING BOUND IS UNBOUNDED ON THAT SIDE, not blanket on both. This used
+        to key everything on `y0`, so a rule bounded only above skipped the year
+        test entirely and matched every year. One published alias is
+        `italy | iia | (blank) | 1860 -> SAR-1800-1860`, which meant IIA data
+        labelled "italy" resolved to Sardinia in the year 2000.
+
+        validate_unranged_aliases.py already permits that row on the stated
+        grounds that its `year_end` is "bounded exactly where it matters" — the
+        rule it enforces is about the upper bound alone. That was true of the
+        gate and false of this matcher, which is the disagreement fixed here:
+        two components of one repository read the same field differently, and
+        the gate's reasoning is the one worth keeping.
         """
         n = norm(name); src = (source or "")
         best, best_rank = None, None
         for ru in self.override_rules:
             if ru["n"] != n: continue
             if ru["src"] is not None and ru["src"] != src: continue
-            if ru["y0"] is not None and (year is None or not (ru["y0"] <= year <= ru["y1"])): continue
-            span = (ru["y1"] - ru["y0"]) if ru["y0"] is not None else 10**6
-            rank = ((2 if ru["y0"] is not None else 0) + (1 if ru["src"] is not None else 0),
+            bounded = ru["y0"] is not None or ru["y1"] is not None
+            lo = ru["y0"] if ru["y0"] is not None else -10**6
+            hi = ru["y1"] if ru["y1"] is not None else 10**6
+            if bounded and (year is None or not (lo <= year <= hi)): continue
+            span = (hi - lo) if bounded else 10**6
+            rank = ((2 if bounded else 0) + (1 if ru["src"] is not None else 0),
                     -span)                              # higher score, then narrower range
             if best_rank is None or rank > best_rank:
                 best, best_rank = ru["code"], rank

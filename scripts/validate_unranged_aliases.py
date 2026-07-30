@@ -32,6 +32,15 @@ the first version of this gate because that version demanded BOTH bounds be pres
 now about the UPPER bound alone, which is what determines whether an alias can fire after its
 target stopped existing.
 
+That reasoning was right about this gate and wrong about the repository. Both consumers of the
+field keyed their year test on `year_start`, so a rule bounded only above skipped the test
+altogether and matched EVERY year: `matchlib.match_alias` and WHEP's `resolve_polity_label()`
+each resolved ("italy", iia, 2000) to SAR-1800-1860, a polity that ended in 1860. The bound this
+gate called sufficient was not being read at all. Both now treat a missing bound as unbounded on
+that side, which is what makes the sentence above true rather than merely intended — and it is
+worth noting that the gate permitting the row and the matcher mishandling it lived in the same
+repository, disagreeing about one field, until a consumer in another repository hit it.
+
 So the rule enforced is: no NEW unranged alias may target an ended polity, and a baselined one
 that gains a year range must leave the list.
 
