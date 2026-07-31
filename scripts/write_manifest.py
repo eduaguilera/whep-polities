@@ -77,6 +77,25 @@ FAOSTAT_AGGREGATE_CODES = (351,)
 # a group, and it cannot tell them apart from the numbers alone.
 FAOSTAT_SUBTHRESHOLD_GROUP_CODES = (261, 265, 266, 268, 269, 420)
 
+# The local (non-ISO) iso3_code values, read from the gate's baseline rather than restated.
+# scripts/validate_local_iso_codes.py already owns and CI-gates that list; a second copy here
+# would be a second thing to drift. Missing baseline -> empty field rather than a wrong one.
+def _local_iso3_codes():
+    path = os.path.join(REPO, "scripts/validate_local_iso_codes_baseline.txt")
+    if not os.path.exists(path):
+        return []
+    out = []
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            code, _, comment = line.partition("#")
+            code = code.strip()
+            if code and "local" in comment:
+                out.append(code)
+    return sorted(out)
+
+
+LOCAL_ISO3_CODES = _local_iso3_codes()
+
 IDENTITY_FIELDS = ("polity_code", "polity_name", "start_year", "end_year",
                    "polity_type", "iso3_code", "cow_code", "wiki_status")
 
@@ -179,6 +198,29 @@ manifest = {
     # other than a deliberate decision, and a consumer inferring intent from absence cannot tell the
     # difference — which is exactly the mistake that made a downstream warning call FAOSTAT 351
     # "China" an unknown area code.
+    # WHICH iso3_code values a consumer cannot join against ISO-keyed data.
+    #
+    # iso3_code is not ISO-conformant and cannot be: there is no ISO 3166 code for
+    # Austria-Hungary, so this database invents AUH. Sound, but it makes the column two things
+    # at once, and a consumer joining against an ISO-keyed dataset silently matches nothing for
+    # the local ones. That is what stops four dissolved federations reaching WHEP's LUH2 land
+    # series, and they carry 11.88% of production value at 1961.
+    #
+    # Published as a FACT rather than left to inference, for the same reason
+    # faostat_unmapped_areas is: a consumer cannot tell a local code from an ISO one by looking,
+    # and discovering it by getting no match is how that gap went unexplained.
+    #
+    # Descriptive only. It does NOT decide how dissolved states should be coded -- three
+    # approaches coexist in the data today, which is issue 55.
+    "local_iso3_codes": LOCAL_ISO3_CODES,
+    "local_iso3_why": (
+        "iso3_code holds real ISO 3166-1 codes for entities that have them and LOCAL "
+        "identifiers for entities that do not (historical states, this project's own "
+        "aggregates). A consumer joining iso3_code against an ISO-keyed dataset will not match "
+        "any code listed here. The convention is the polity family's prefix, e.g. "
+        "AUH-1800-1859 carries AUH. See issue 55 for how dissolved states SHOULD be coded; "
+        "this field only reports which codes are local today."
+    ),
     "faostat_unmapped_areas": {
         "group_code_min": FAOSTAT_GROUP_CODE_MIN,
         "deliberate_area_codes": sorted(FAOSTAT_AGGREGATE_CODES),

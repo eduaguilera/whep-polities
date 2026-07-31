@@ -208,8 +208,11 @@ dataset silently matches nothing for those 56. That is exactly what blocks the W
 LUH2 back-cast: the bridge to LUH2 land goes through ISO3, LUH2 is ISO-keyed, so four dissolved
 federations carrying **11.88% of production value at 1961** cannot reach it. The data is not
 missing; the identifier cannot be matched. Several separately-filed gaps are this one fact.
-Making the distinction publishable — a manifest field, or a separate `local_code` column — is
-tracked in [issue 55](../../issues/55).
+**The distinction is now published.** `polities_manifest.json` carries `local_iso3_codes` (the 56)
+and `local_iso3_why`, so a consumer can tell a local code from an ISO one without discovering it
+by getting no match. Read from the gate's baseline rather than restated, so there is one list
+and CI gates it. That field is **descriptive only** — how dissolved states *should* be coded is
+still [issue 55](../../issues/55), where three approaches coexist in the data today.
 
 **`observed_rows` is not a licence to un-fold an area.** Worth stating because the consumer
 tried it and it cost a 13.7x error. The WHEP package derived "areas with observed data" from
