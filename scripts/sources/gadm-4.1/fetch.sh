@@ -13,6 +13,11 @@ mkdir -p "$OUT_DIR"
 COUNTRIES=(
   ABW AIA AND ASM ATF ATG BEL BES BHS BMU BRB BVT CCK CHN COK CUW CYM CXR
   GBR IRL STP
+  # Added 2026-08-04: ALK-1867-1959 needs USA.2_1 (Alaska) and both RYU rows need
+  # JPN.38_1 (Okinawa). Their polygon_source and polygon_feature_id were already
+  # correct; the features were simply absent from this extract, so the build logged
+  # 'feature not found' and attached nothing. See issue 59.
+  USA JPN
   DMA ESH ESP FJI FLK FRO FSM GIB GLP GRD GRL GUF GUM HMD IOT KIR KNA LCA
   LIE LUX MAF MCO MHL MNP MSR MTQ MYT NCL NFK NIU NRU PCN PLW PRI PSE PYF
   REU SGS SHN SJM SLB SMR SPM SWE SYC SXM TCA TKL TON TUV UMI VAT VCT VGB
