@@ -105,7 +105,7 @@ CAF-1912-1919,Central African Republic (1912-1919),1912,1919,national,CAF,482,Af
 CAF-1919-1960,Central African Republic (1919-1960),1919,1960,national,CAF,482,Africa,draft,2026-04-12,cshapes-2.0,482,1919,assigned,,CAF-1912-1919,CAF-1960-2025
 CAF-1960-2025,Central African Republic,1960,2025,national,CAF,482,Africa,draft,2026-04-12,cshapes-2.0,482,1960,assigned,,CAF-1919-1960,
 CAN-1800-1866,Canada (pre-Confederation),1800,1866,national,CAN,,North America,draft,2026-06-29,gadm-composed-union,gadm-ON+QC+NB+NS+PE,1800,proxy,1209852,,CAN-1866-1948
-CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,national,CAN,20,North America,draft,2026-06-29,gadm-4.1,,2023,estimate,500000,CAN-1800-1866,CAN-1870-1886
+CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,national,CAN,20,North America,draft,2026-06-29,gadm-4.1,,2023,unassigned,500000,CAN-1800-1866,CAN-1870-1886
 CAN-1866-1886,"Canada (Confederation era, to 1886)",1866,1886,national,CAN,20,North America,retired,2026-06-29,cshapes-2.0,20,1886,proxy,9553560,CAN-1800-1866,CAN-1866-1870; CAN-1870-1886
 CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),1870,1886,national,CAN,20,North America,draft,2026-06-29,cshapes-2.0,20,1886,proxy,9553560,CAN-1866-1870,CAN-1886-1948
 CAN-1886-1948,Canada (to 1948),1886,1948,national,CAN,20,North America,draft,2026-06-29,cshapes-2.0,20,1886,assigned,9553560,CAN-1866-1886,CAN-1948-2025
@@ -613,7 +613,7 @@ SER-1816-1878,Principality of Serbia (1816-1878),1816,1878,national,SER,,Europe,
 SER-1816-1913,Serbia (1816-1913),1816,1913,national,SER,,Europe,retired,2026-04-12,cshapes-2.0,340,1886,assigned,,OTT-1800-1886,SER-1913-1918
 SER-1878-1913,Kingdom of Serbia (1878-1913),1878,1913,national,SER,345,Europe,draft,2026-07-01,cshapes-2.0,340,1886,assigned,48000,SER-1816-1878,SER-1913-1918
 SER-1913-1918,Serbia (1913-1918),1913,1918,national,SER,,Europe,draft,2026-04-12,cshapes-2.0,345,1918,assigned,,SER-1878-1913,F248-1918-1919
-SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,subnational,SER,,Europe,draft,2026-07-01,composed-estimate,,1920,estimate,88000,SER-1913-1918,SER-2006-2008
+SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,subnational,SER,,Europe,draft,2026-07-01,composed-estimate,,1920,unassigned,88000,SER-1913-1918,SER-2006-2008
 SER-2006-2008,Serbia (2006-2008),2006,2008,national,SER,,Europe,draft,2026-04-12,cshapes-2.0,345,1992,assigned,,SCG-1992-2006,SRB-2008-2025; KOS-2008-2025
 SGP-1946-1963,Singapore (Crown Colony),1946,1963,colonial,SGP,830,Asia,draft,2026-06-25,cshapes-2.0,830,1953,assigned,544.72,GBM-1895-1946,MYS-1963-1965; SGP-1965-2025
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,subnational,SGP,,Asia,draft,2026-07-02,cshapes-2.0,830,1962,assigned,547,SGP-1946-1963,SGP-1965-2025
@@ -683,7 +683,7 @@ TNGU-1920-1949,Territory of New Guinea,1920,1949,colonial,PNG,912,Oceania,draft,
 TON-1800-2025,Tonga,1800,2025,national,TON,955,Oceania,draft,2026-04-13,gadm-4.1-adm0,TON,,assigned,,,
 TPAP-1906-1949,Territory of Papua,1906,1949,colonial,PNG,911,Oceania,draft,2026-07-01,cshapes-2.0,911,1910,assigned,224148,,PNG-1949-1975
 TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,national,LBY,620,Africa,draft,2026-06-26,none,,,unassigned,,LBY-1934-1943,LBY-1951-2025
-TRS-1947-1954,Free Territory of Trieste,1947,1954,national,,,Europe,draft,2026-06-26,constructed,,1947,estimate,737,ITA-1919-2025,ITA-1919-2025
+TRS-1947-1954,Free Territory of Trieste,1947,1954,national,,,Europe,draft,2026-06-26,constructed,,1947,unassigned,737,ITA-1919-2025,ITA-1919-2025
 TTO-1800-2025,Trinidad and Tobago,1800,2025,national,TTO,52,North America,draft,2026-04-13,cshapes-2.0,52,1886,assigned,,,
 TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,,,Oceania,draft,2026-06-26,constructed,TTPI-1947-1994,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025
 TUN-1800-1881,Beylik of Tunis,1800,1881,national,TUN,616,Africa,draft,2026-04-13,paine-2024,Tunis,,assigned,,,TUN-1881-2025
