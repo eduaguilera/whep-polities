@@ -214,6 +214,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_polygons.py
 
+      - name: Wiki pages only name things that exist
+        if: '!cancelled()'
+        run: python3 scripts/validate_references.py
+
       - name: No polity can shadow a sibling via family ordering
         if: '!cancelled()'
         run: python3 scripts/audit_family_shadowing.py
