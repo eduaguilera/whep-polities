@@ -5,6 +5,7 @@ territorial_flagged.json
 run_report.md
 assertions.json
 verdicts_pending*.json
+structural_snapshot.json
 # Persistent state below is committed: review_ledger.csv, applied_aliases.csv
 match_confidence.csv
 audit_sample.csv

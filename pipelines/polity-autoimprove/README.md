@@ -455,6 +455,69 @@ set converges to empty.
 
 ---
 
+## Structural-change checklist (split / merge / retire / re-date / create)
+
+A **structural change** is any edit that changes which polities exist or when
+they exist: creating a polity, splitting a chain into periods, merging two rows,
+retiring/superseding a row, or moving a start/end year. It silently re-routes
+data, because the matcher resolves a label by alias → iso3 family + year
+containment → name, and none of that is visible in the wiki diff. Four real
+failures from one session:
+
+| what happened | which step catches it |
+|---|---|
+| the Indonesia merge renamed a row to "Dutch East Indies" and **orphaned 23 rows** that had resolved by NAME | 7 |
+| the India split typed the new rows `colonial`, so Hyderabad **outranked them and took 36 rows** | 9 |
+| the Newfoundland fix put 54 rows of 1948 Canadian data on the wrong side of a boundary — **the total was unchanged** | 6 |
+| `ETH-1936-1941` shipped `polygon_area_km2: 1000000`, a rounded placeholder | 3 |
+
+Run the snapshot **before** touching anything — after the edit there is nothing
+left to compare against:
+
+```bash
+python3 scripts/structural_change_check.py --snapshot   # BEFORE the edit
+#   ... make the change (steps 1-4 below) ...
+python3 scripts/structural_change_check.py --compare    # AFTER
+```
+
+### The eleven steps
+
+| # | step | who |
+|---|---|---|
+| 0 | `scripts/structural_change_check.py --snapshot` — per-polity matched-row counts, total, resolving labels, areas | script |
+| 1 | Write/edit the wiki page(s): frontmatter **and** body, which can contradict each other; say what changed and why | **human/agent** |
+| 2 | `python3 scripts/build_database.py` — rebuilds CSV+GPKG and asserts the row count | mechanical |
+| 3 | Verify the attached geometry measures what the page claims (equal-area `ESRI:54034`); never write a round placeholder area | mechanical (step 10 checks it) |
+| 4 | Mark superseded rows `wiki_status: superseded` **and** `polygon_status: unassigned` | **human/agent** |
+| 5 | Re-run the matcher; confirm the **total match count did not drop** | `--compare` §1 |
+| 6 | Confirm per-polity counts moved **as intended**, not merely that the total held | `--compare` §2/§3 — reported as REVIEW; only a human can say the movement was the intended one |
+| 7 | If the entity's **name** changed, confirm labels that resolved by name still resolve — otherwise add an alias | `--compare` §4 |
+| 8 | If a FAOSTAT-era alias targeted a changed code, re-run `pipelines/faostat-era-matching/match.R --accept-diff` | **human/agent** (needs R + FAOSTAT bulk data) |
+| 9 | `scripts/audit_family_shadowing.py` — a new row can tie with an existing one on type rank | `--compare` §6 |
+| 10 | `scripts/validate_polygons.py`, `scripts/validate_citations.py`, placeholder-area scan | `--compare` §5/§6 (+ CI for the first two) |
+| 11 | A `wiki/log.md` entry of kind `decision`, **naming the human who signed off** | **human only** — never an agent's call |
+
+Steps 1, 4, 8 and 11 stay human. Everything else the script does, and it exits
+non-zero on: a dropped total, a polity that went from data to zero rows, a label
+that stopped resolving, a round `polygon_area_km2` this change introduced, or a
+non-zero exit from the shadowing/polygon validators. Per-polity movement and
+pre-existing round areas are reported as `REVIEW`, not `FAIL` — they need a
+judgement the script cannot make.
+
+### Why it is not in CI
+
+`--compare` needs matched-row counts, which need `01_match_and_findings.py`,
+which reads the consolidated layer-B dataset (`WHEP_LAYERB`, ~190k rows) from
+personal Nextcloud — not redistributable, so CI cannot see it. It is therefore a
+**local** pre/post-change tool and is deliberately absent from
+`.github/workflows/validate.yml`; CI keeps running the data-free validators
+(`validate_citations`, `build_database --check`, `validate_polygons`,
+`audit_family_shadowing`). Issue #17 tracks the CI limitation. The snapshot
+lands in `state/structural_snapshot.json`, gitignored like the other per-run
+artefacts.
+
+---
+
 ## Status / provenance
 
 Methodology authored 2026-06-23. The deterministic detectors and the
