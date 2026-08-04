@@ -596,8 +596,8 @@ RWA-1962-2025,Rwanda,1962,2025,national,RWA,517,Africa,draft,2026-04-12,cshapes-
 RWB-1919-1922,Rwanda and Burundi,1919,1922,national,RWB,,Africa,draft,2026-04-13,none,,,unassigned,,TAN-1891-1920,RWB-1922-1962
 RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,national,RWB,515,Africa,draft,2026-04-13,cshapes-2.0,515,1922,assigned,,RWB-1919-1922,RWA-1962-2025; BDI-1962-2025
 RWK-1800-1890,Kingdom of Rwanda,1800,1890,national,,,Africa,draft,2026-04-13,paine-2024,Rwanda,,assigned,,,TAN-1891-1920
-RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,national,JPN,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.38_1,,proxy,2271,JPN-1895-1945,RYU-1945-1972
-RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,national,,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.38_1,,proxy,2271,RYU-1937-1945,JPN-1952-2025
+RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,subnational,JPN,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.32_1,,proxy,2271,JPN-1895-1945,RYU-1945-1972
+RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,national,,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.32_1,,proxy,2271,RYU-1937-1945,JPN-1952-2025
 SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,,Europe,draft,2026-06-24,none,,,unassigned,,SAC-1935-1947,F78-1949-1990
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,colonial,SAB,,Europe,draft,2026-06-25,,,,unassigned,,DEU-1919-1920,SAC-1935-1947
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,Europe,draft,2026-06-26,none,,,unassigned,1912,SAB-1920-1935,SAA-1947-1957
