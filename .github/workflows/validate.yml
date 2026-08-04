@@ -8,6 +8,10 @@ name: Validate database
 #   build_database --check   a wiki edit never propagated to the committed CSV
 #   update_wiki_index --check wiki/index.md's counts drifting from reality (they
 #                            had reached 1,325 polities against a real 740)
+#   write_manifest --check   the published consumer contract going stale. The WHEP
+#                            R package embeds a copy of this database and had
+#                            drifted to 603 rows against 740, routing 24 FAOSTAT
+#                            area codes to retired/superseded polities
 #   validate_polygons        8 polities carried ANOTHER COUNTRY'S polygon (San
 #                            Marino had Albania's, 470x too large; Indonesia had
 #                            India's); 28 declared a polygon the build never
@@ -18,6 +22,109 @@ name: Validate database
 #   audit_family_shadowing   Alaska outranked the United States and absorbed
 #                            ~7,600 rows of mainland data; Hyderabad took
 #                            India-labelled data
+#   validate_constants       DEAD_STATUS is defined FIVE times and CLAIMS_POLYGON
+#                            must equal the polygon vocabulary minus `unassigned`,
+#                            with nothing linking them. Four legacy statuses once sat
+#                            outside CLAIMS_POLYGON while 11 rows carrying them HAD
+#                            geometry.
+#   validate_spatial_        RUS-1991-2014 carries the USSR polygon (CShapes
+#     containment            feature 365, 21.8M km2 against Russia's 17.1M) and
+#                            geometrically contains Kazakhstan, Ukraine, the
+#                            Baltics and 9 more. validate_polygons could not see
+#                            it: that check compares against a hand-entered
+#                            polygon_area_km2, and ~590 of 740 rows have none.
+#   crosscheck_matchers      the two matchers in this repo (match.R and
+#                            matchlib) disagreed on 3 of 281 FAOSTAT areas, each
+#                            a real defect: Serbia 2006-2008 existing twice,
+#                            "Malaysia" resolving to British North Borneo, and
+#                            two aliases routing Viet Nam differently
+#   validate_family_areas    check A in validate_polygons compares RECORDED against measured area
+#                            and found eight polities carrying another country's polygon — but 520
+#                            of the 684 rows claiming a polygon (76%) have no recorded area, so it
+#                            cannot run on them. Comparing a period against its own family's median
+#                            needs no external reference and covers all of them. Two anomalies
+#                            today, both legitimate and explained by a field one column away: a
+#                            polygon_feature_year of 1898 for COG-1900-1906, and the name "Eritrea
+#                            (Italian coastal)" for ERI-1885-1889.
+#
+#   validate_cross_family_names
+#                            validate_period_overlaps only sees overlaps WITHIN a prefix, and the
+#                            same territory sometimes has two — a legacy prefix and an ISO3 one.
+#                            Comparing normalised names across families found TAN-1922-1964
+#                            overlapping TZA-1961-1964 and MAR-1911-1958 overlapping MOR-1956-1958,
+#                            neither visible to that gate, plus independently re-deriving the known
+#                            Serbia duplicate. Not duplicates: the earlier row's END year runs past
+#                            where its successor begins.
+#
+#   validate_cow_codes       ICN-1800-2025 (Canary Islands) carried cow_code 20, which is CANADA.
+#                            The Canaries are not a Correlates of War state at all — they are part
+#                            of Spain, COW 230 — so the value was removed rather than corrected to
+#                            230, which would have created a collision with esp-1800-2025 instead
+#                            of fixing one. Neither an ISO check nor a polygon check could see it:
+#                            both were fine. Found by asking which cow_codes are shared by
+#                            polities whose spans overlap, which is now this gate.
+#
+#   validate_succession_geography
+#                            NWR-1900-1905 (Northwestern Rhodesia) listed its successor as
+#                            NNI-1904-1913 — Northern NIGERIA, 4,000 km away. A link can
+#                            name a real, live polity and still be wrong; comparing the two
+#                            polygons is what catches that. It reads the COMMITTED GeoPackage,
+#                            so it runs here like everything else — I had excluded it on the
+#                            assumption that it needed the raw geodata sources, which it does
+#                            not.
+#
+#   validate_unranged_aliases
+#                            the "Syria" alias had no source and no year range and pointed at
+#                            SYR-1946-1967, so EVERY year — including 2020 — resolved to a
+#                            polity that ended in 1967, across 162 observed rows. Unlike an
+#                            inert alias this one worked; it just worked wrongly. Split at 1967
+#                            to mirror the canonical label. Seven other unranged aliases to ended
+#                            polities are fine and baselined, because their labels (Belgian
+#                            Congo, French West Africa) are ones no modern source uses, plus
+#                            "viet nam", which is unranged on purpose to catch year=NA rows.
+#                            The rule is about an alias's UPPER bound, not whether it has both:
+#                            "italy" ends at 1860 against a target ending 1860, which is
+#                            correct, and only looked wrong to a first version of the check.
+#
+#   validate_iso_collisions  59 pairs of polities already share an iso3 over overlapping
+#                            years, which is BY DESIGN (iso3 groups by modern territory:
+#                            British North Borneo, Sarawak and British Malaya all carry
+#                            MYS). The gate is that the set must not GROW, because each
+#                            pair is a place an ISO+year lookup has to guess — the known
+#                            cause of "Malaysia" 1961 resolving to British North Borneo.
+#
+#   validate_iso_codes       FRS-1977-2025 is modern Djibouti and carried `iso3: FRS`.
+#                            Djibouti's ISO 3166-1 alpha-3 is DJI and FRS is not an ISO
+#                            code at all, so a consumer holding a real country code could
+#                            not reach the polity and matchlib fell back to matching on
+#                            name. The polity-code PREFIX is a separate thing and stays.
+#
+#   validate_period_overlaps four pairs of live polities in the SAME family cover the
+#                            same years, so a year-aware matcher cannot choose between
+#                            them on history alone and falls back on tie-break order.
+#                            PER-1825-1909 is the clearest: PER-1825-1884 and
+#                            PER-1884-1909 tile its span exactly, so it is a redundant
+#                            un-split row duplicating both.
+#
+#   validate_reporting_areas six GADM territories are claimed by TWO aggregate
+#                            reporting polygons each. Palau and the Northern Mariana
+#                            Islands sit in both Asia Other and Oceania Other; the
+#                            Netherlands Antilles components sit in both ANT and Latin
+#                            America Other for the 1961-2010 years the two spans share.
+#                            These aggregates receive data, so two of them claiming the
+#                            same ground puts two values on one territory — and the ROW
+#                            union hides it, because unary_union deduplicates.
+#
+#   validate_aliases         five aliases were silently INERT — two had an
+#                            unquoted comma in a field, which shifted every
+#                            column and dropped the target; one targeted a bare
+#                            family prefix; one a polity that does not exist. A
+#                            broken alias does not fail, it just never matches.
+#   write_faostat_area_map   WHEP rebuilt the FAOSTAT area -> polity mapping
+#     --check                itself and could not reach colonial-era polities,
+#                            attributing 118 area-years to polities that did
+#                            not exist (50 of them Sudan). The map is published
+#                            so consumers read it instead of guessing.
 #
 # These need only what the repo commits (wiki/, data/final/). The MATCHERS are
 # deliberately absent: they need the layer-B parquet and the FAOSTAT pins cache,
@@ -87,6 +194,18 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/build_database.py --check
 
+      # The map is checked BEFORE the manifest, because the manifest fingerprints
+      # it: a stale map makes the manifest stale too, and the specific message
+      # ("the map does not match the pipeline state") is more useful to a reader
+      # than the general one it would also trigger.
+      - name: Published FAOSTAT area map matches the pipeline state
+        if: '!cancelled()'
+        run: python3 scripts/write_faostat_area_map.py --check
+
+      - name: Consumer manifest matches the database
+        if: '!cancelled()'
+        run: python3 scripts/write_manifest.py --check
+
       - name: Wiki index coverage table is current
         if: '!cancelled()'
         run: python3 scripts/update_wiki_index.py --check
@@ -98,3 +217,83 @@ jobs:
       - name: No polity can shadow a sibling via family ordering
         if: '!cancelled()'
         run: python3 scripts/audit_family_shadowing.py
+
+      - name: Every alias can actually route to a live polity
+        if: '!cancelled()'
+        run: python3 scripts/validate_aliases.py
+
+      - name: Duplicated constants still agree
+        if: '!cancelled()'
+        run: python3 scripts/validate_constants.py
+
+      - name: No territory belongs to two reporting aggregates
+        if: '!cancelled()'
+        run: python3 scripts/validate_reporting_areas.py
+
+      - name: No two periods of one family cover the same year
+        if: '!cancelled()'
+        run: python3 scripts/validate_period_overlaps.py
+
+      - name: Live polities carry real ISO 3166-1 codes
+        if: '!cancelled()'
+        run: python3 scripts/validate_iso_codes.py
+
+      - name: No new pair shares an ISO code over the same years
+        if: '!cancelled()'
+        run: python3 scripts/validate_iso_collisions.py
+
+      - name: No unranged alias points at an ended polity
+        if: '!cancelled()'
+        run: python3 scripts/validate_unranged_aliases.py
+
+      - name: Succession links join territories that touch
+        if: '!cancelled()'
+        run: python3 scripts/validate_succession_geography.py
+
+      - name: No new pair shares a Correlates of War code
+        if: '!cancelled()'
+        run: python3 scripts/validate_cow_codes.py
+
+      - name: No two families share a name over the same years
+        if: '!cancelled()'
+        run: python3 scripts/validate_cross_family_names.py
+
+      - name: No period is wildly out of scale with its own family
+        if: '!cancelled()'
+        run: python3 scripts/validate_family_areas.py
+
+      - name: Published label alias map matches the registry
+        if: '!cancelled()'
+        run: python3 scripts/write_label_alias_map.py --check
+
+      - name: The two matchers agree with each other
+        if: '!cancelled()'
+        run: python3 scripts/crosscheck_matchers.py
+
+      - name: Polygons — no swallowed neighbour, no discontinuous family
+        if: '!cancelled()'
+        run: python3 scripts/validate_spatial_containment.py
+
+
+      - name: Identity — a code's years match its own columns
+        if: '!cancelled()'
+        run: python3 scripts/validate_code_year_agreement.py
+
+      - name: Aliases — consecutive ranges in a chain do not touch
+        if: '!cancelled()'
+        run: python3 scripts/validate_alias_chain_overlaps.py
+
+      - name: Names — one live polity per name and year, so a name can resolve
+        if: '!cancelled()'
+        run: python3 scripts/validate_live_name_ambiguity.py
+
+      - name: Identity — the iso3_code vocabulary is stable, since consumers join on it
+        if: '!cancelled()'
+        run: python3 scripts/validate_local_iso_codes.py
+
+      # Last, because it is the only step that answers "can the steps above
+      # fail?". Twenty-one gates that all pass are indistinguishable, from a
+      # green summary, from twenty-one gates that cannot fail.
+      - name: Gates — prove they fail on an injected defect
+        if: '!cancelled()'
+        run: python3 scripts/selftest_gates.py

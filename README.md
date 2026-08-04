@@ -44,30 +44,219 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Five checks guard the database. Each exists because that class of error was
-**found in the data**, not hypothesised, so they are worth keeping green:
+Twenty-five checks guard the database, and a twenty-sixth checks the checks. Most
+exist because that class of error was **found in the data**, not hypothesised; the
+few marked *(guard)* below hold a property that is true today and would be costly
+to lose. All are worth keeping green:
 
 ```bash
-python3 scripts/build_database.py --check    # the committed CSV still matches the wiki
-python3 scripts/validate_citations.py        # every citation resolves to a real source + anchor
-python3 scripts/validate_polygons.py         # area agreement · claimed-but-absent · reviewed-means-documented
-python3 scripts/audit_family_shadowing.py    # no polity can shadow a sibling in the matcher
+# the published contract still matches the wiki
+python3 scripts/build_database.py --check
+python3 scripts/write_manifest.py --check
+python3 scripts/write_faostat_area_map.py --check
+python3 scripts/write_label_alias_map.py --check
+python3 scripts/update_wiki_index.py --check
+
+# provenance and internal consistency
+python3 scripts/validate_citations.py
+python3 scripts/validate_constants.py
+python3 scripts/validate_aliases.py
+python3 scripts/validate_unranged_aliases.py
+python3 scripts/validate_alias_chain_overlaps.py
+python3 scripts/validate_live_name_ambiguity.py
+python3 scripts/validate_local_iso_codes.py
+python3 scripts/crosscheck_matchers.py
+python3 scripts/audit_family_shadowing.py
+
+# identity and periodisation
+python3 scripts/validate_iso_codes.py
+python3 scripts/validate_iso_collisions.py
+python3 scripts/validate_cow_codes.py
+python3 scripts/validate_cross_family_names.py
+python3 scripts/validate_period_overlaps.py
+python3 scripts/validate_reporting_areas.py
+python3 scripts/validate_code_year_agreement.py
+
+# geometry
+python3 scripts/validate_polygons.py
+python3 scripts/validate_spatial_containment.py
+python3 scripts/validate_family_areas.py
+python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so local only
+
+# and the one that asks whether the checks above can fail at all
+python3 scripts/selftest_gates.py
 ```
 
 | check | what it caught when first run |
 |---|---|
-| `--check` | *(new; prevents)* a wiki edit never propagated to the CSV |
+| `build_database.py --check` | a wiki edit never propagated to the CSV; later, `"NA"` text stored as a literal string |
+| `write_manifest.py --check` | a stale alias-map fingerprint after aliases changed |
 | citations | 17 citations pointing at source files that were never ingested |
+| constants | `DEAD_STATUS` is defined **five** times, and `CLAIMS_POLYGON` excluded four statuses that 11 rows with geometry were using |
+| aliases | five aliases silently **inert** — two had the target sitting in the `confidence` column |
+| alias chain overlaps | *(guard)* an alias `year_end` is INCLUSIVE while a polity `end_year` is EXCLUSIVE, so consecutive aliases for one label both cover the boundary year and match order decides which polity a value lands in. 25 chains do. The rate depends on how they were written — 18 of 31 hand-entered any-source chains against **0 of 7** generated with `year_end = polity_end_year - 1` — so the convention demonstrably removes it. Gated rather than bulk-fixed: 91 rows would move, each shifting a boundary year's data, and one is the deliberate Cape Verde mid-year-independence choice (#54) |
+| unranged aliases | the `"Syria"` alias had no year range and pointed at `SYR-1946-1967`, so every year — including 2020 — resolved to a polity that ended in 1967, across 162 observed rows. Unlike an inert alias it worked; it just worked wrongly |
+| crosscheck matchers | the two independent matchers disagreed on three FAOSTAT areas, including Serbia 2006-2008 existing **twice** |
+| shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
+| iso codes | `FRS-1977-2025` is modern Djibouti and carried `iso3: FRS`; DJI is the real code, so nothing holding a country code could reach it. Also Sudan as `SUD`, colonial Angola as `ANG` |
+| cross-family names | `TAN-1922-1964` overlapping `TZA-1961-1964`, and `MAR-1911-1958` overlapping `MOR-1956-1958` — the earlier row's end year running past its successor's start. Invisible to the period-overlap gate, which only compares within one prefix. Latent rather than live: the inert twins are unmapped, so the consumer never sees both |
+| cow codes | `ICN-1800-2025` (Canary Islands) carried COW code **20**, which is Canada. The Canaries are not a COW state — they are part of Spain, 230 — so the value was removed rather than corrected, which would have swapped one collision for another. Its `iso3` and polygon were both fine, so no other check could see it |
+| iso collisions | *(guard)* 59 pairs already share a code over overlapping years **by design**, since `iso3` groups by modern territory. The gate is that the set must not grow |
+| local iso codes | *(guard)* `iso3_code` is **not ISO-conformant and cannot be** — there is no ISO 3166 code for Austria-Hungary, so this database invents `AUH`. 56 of its 276 values are local like that, and a consumer joining against ISO-keyed data silently matches none of them; it is what stops four dissolved federations reaching WHEP's LUH2 land series. The vocabulary is therefore an interface, and the gate is that it does not change unreviewed. Publishing the local/ISO distinction machine-readably is [issue 55](../../issues/55) |
+| period overlaps | four same-family pairs cover the same years, so a year-aware matcher must guess. `PER-1825-1909` duplicates two rows that already tile its span exactly |
+| reporting areas | six GADM territories claimed by **two** aggregates each — Palau and the Northern Marianas sit in both Asia Other and Oceania Other. Hidden because the RoW union deduplicates |
 | polygons A | 8 polities carrying **another country's** polygon — San Marino had Albania's (470× too large), Indonesia had India's |
 | polygons C | 28 polities declaring a polygon the build never attached |
 | polygons D | 13 pages claiming `status: reviewed` with zero source citations |
-| shadowing | Alaska outranking the USA and absorbing ~7,600 rows of mainland data |
+| family areas | *(guard)* check A needs a **recorded** area to compare against, and 76% of rows claiming a polygon have none. Comparing a period to its own family's median needs no reference and covers all of them. Two anomalies today, both legitimate |
+| spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
+| code/year agreement | *(guard)* a polity code is documented as `PREFIX-start-end`, so consumers read years straight off the identifier rather than joining. Two codes disagree with their own columns — `TAN-1922-1964` ends 1961, `NNG-1949-1963` ends 1969 — and the consumer's aliases were written against the CODE, so two of them resolve 1962-1964 to a polity its columns say had ended. Both are historical judgement (independence vs union; transfer vs Act of Free Choice), so baselined pending a decision |
+| live name ambiguity | *(guard)* a consumer resolving a label by the polity's own NAME can only answer when one polity of that name is live in the year asked about, so a rename that collides with a live sibling turns a resolving label into `NA` — and `NA` is what an unmapped label looks like too. 17 names are ambiguous today: fifteen are a coarse period listed beside its own sub-periods (issue 49), and two cross prefix families and are tracked as issues 52 and 43 |
+| succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
+| gate self-test | *(the checks, checked)* Gates that all pass are indistinguishable, from a green summary, from gates that **cannot** fail. Mutation settles it: ten are shown to fail on an injected defect and to name it — three geometry gates that mutate the GeoPackage, and seven that mutate the CSV, the alias map or the wiki. The tenth case earned its keep before it ever guarded anything: it declared the wrong file writable, so its mutation wrote through a symlink into the real database, and two OTHER gates caught that immediately. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 
-`.github/workflows/validate.yml` runs all of them on push to `main` and on PRs.
-They need only what the repo commits, so they work without `data/geodata`.
-`scripts/validate_polygons.py` has a baseline file
-(`scripts/validate_polygons_baseline.txt`) so it fails on *new* occurrences while
-a known backlog is tracked in the issues.
+`.github/workflows/validate.yml` runs **all twenty-four, plus the self-test,** on push to `main` and on PRs.
+The self-test also checks that claim: a gate script the workflow never mentions fails it, because a gate
+absent from CI passes on its author's machine and never runs again — which is exactly what happened to the
+live-name-ambiguity gate between writing it and registering it.
+Every one of them needs only what the repo commits — the CSV, the GeoPackage, the
+manifest and the wiki — so none requires the raw sources under `data/geodata`.
+
+Baselines also report **reachability** — whether a consumer can reach the polities
+involved through the published FAOSTAT area map. That is what separates a live defect
+from a latent one, and it is not obvious: all seven baselined period overlaps are
+latent, and none of the 13 polygon gaps is FAOSTAT-mapped. Two findings on this branch
+were written up as live and downgraded after checking, which is why the gates now print
+it rather than leaving it to be re-derived.
+
+Several carry a baseline so they fail on *new* occurrences while a known backlog
+stays tracked in the issues — `validate_polygons.py` has
+`scripts/validate_polygons_baseline.txt`, and the matcher, period-overlap,
+ISO-collision, reporting-area and succession checks each hold theirs inline.
+**Every baseline is bidirectional**: a new case fails, and so does a baselined
+case that has been fixed but not yet removed from the list. That second arm is
+not decoration — it is what reported that correcting three `iso3` fields had made
+two previously unresolvable FAOSTAT areas resolvable.
+
+### Consuming this database
+
+`data/final/polities_manifest.json` is the **contract for downstream consumers**
+(regenerate with `scripts/write_manifest.py`, CI-checked). It carries the row
+counts, an `identity_sha256` over the fields a consumer resolves against, the
+list of live polity codes, and — critically — `dead_polity_codes`: rows with
+`wiki_status` of `retired` or `superseded` that **must never receive data**.
+
+Every published field, and who reads it. The manifest grew as the consumer stopped
+inferring things it could not infer correctly, so each row here is a fact this repository
+decided and a consumer used to get wrong:
+
+| field | what it settles |
+|---|---|
+| `identity_fields`, `identity_sha256` | which columns a consumer resolves against, and one hash over them. Deliberately excludes polygon fields, so re-measuring an area does not invalidate every consumer while a changed date or status does |
+| `counts`, `live_polity_codes`, `dead_polity_codes` | 740 rows, 713 live, 27 dead |
+| `dead_status` | which `wiki_status` values mean "must never receive data" — `retired`, `superseded`. Defined **five** times in this repo, so `validate_constants.py` compares the copies; a consumer hardcoding a sixth is how it drifts |
+| `claims_polygon_status` | which polygon statuses ASSERT a polygon exists. Not "anything except `unassigned`": that held only while the vocabulary had one non-claiming value, and three of the four legacy statuses asserted no polygon |
+| `polygon_gap_polity_codes` | rows whose status claims a polygon the GeoPackage cannot carry, because the feature id was recorded as prose. A consumer asserting the strict invariant is red until this backlog clears; tolerating exactly this set keeps the check sharp for anything new |
+| `faostat_unmapped_areas` | why an area maps to no polity, in three kinds a consumer cannot tell apart from the numbers — see below |
+| `faostat_area_map`, `label_alias_map` | path and sha256 of the two published CSVs |
+
+Two columns in those CSVs measure the same thing under **transposed names**, and neither was
+documented until a consumer-side sweep noticed:
+
+| file | column | blanks | zeros |
+|---|---|---|---|
+| `label_alias_map.csv` | `observed_rows` | 456 | 29 |
+| `faostat_area_polity_map.csv` | `rows_observed` | 0 | 18 |
+
+Both derive from the same registry column with the same coercion, so the difference is word
+order, not meaning. They are NOT renamed here: the names are part of a published contract that
+a consumer already reads, and breaking that to tidy a word order would cost more than the wart.
+
+The blank counts differ for a real reason rather than an accident. A blank means **not measured
+here**, which is distinct from `0` meaning **measured, no rows** — the distinction that was lost
+when an earlier version coerced empty to zero and made 456 aliases read as inert. Every row of
+the FAOSTAT map is measured in this repository, so it has no blanks; the alias map covers
+sources whose data lives in the consumer, so most of its rows cannot be measured here at all.
+
+**`iso3_code` is not ISO-conformant, and a consumer cannot tell which values are.** Measured
+on the published database: **56 of the 276** distinct `iso3_code` values are not ISO 3166-1
+alpha-3 codes. That is by design and the design is sound — there is no ISO code for
+Austria-Hungary, and inventing `AUH` beats leaving it blank — but it is nowhere written down,
+and the consumer discovers it by getting no match.
+
+The rule, which holds for **80 of the 81** rows carrying such a code: the local code is the
+**polity family's prefix**. `AUH-1800-1859` carries `AUH`, `OTT-1800-1886` carries `OTT`,
+`SUD-1899-1934` carries `SUD`. The single exception is consistent with the grouping rule rather
+than a mistake: `FCC-1862-1887` French Cochinchina carries `FID`, French Indochina's code,
+because it became part of it — the same "groups by modern territory" logic that makes 59 pairs
+share a code deliberately.
+
+The classes are: historical entities (`AUH`, `OTT`, `AOF`, `AEF`, `BWI`, `NFL`, `ZNZ`, `NAT`,
+`SWA`, `TAN`, `ITS`), colonies of Australia and Canada (`NSW`, `VIC`, `QUE`, `TAS`, `SAA`),
+this project's aggregates (`ROW`, `RAFR`, `RASI`, `REUR`, `RLAM`, `RNAM`, `ROCE`), real ISO
+3166-3 former codes (`ANT`, `SCG`, `BLX`), and pseudo-codes for entities that also have a modern
+one (`ANG` for colonial Angola beside `AGO`, `SUD`, `MOR`, `PAL`, `SER`).
+
+**Distinguish these from the fixed defects listed in the validation table above.** `FRS` for
+modern Djibouti was a real error and is gone — Djibouti has an ISO code and nothing holding a
+country code could reach it. `SUD` and `ANG` look like the same thing and are not: those
+entities have no ISO code, so the prefix is the answer rather than a bug awaiting a fix. Reading
+them as unfixed defects is the wrong conclusion, and the table above invites it.
+
+**Why it matters downstream.** A consumer joining `iso3_code` against an ISO-keyed external
+dataset silently matches nothing for those 56. That is exactly what blocks the WHEP package's
+LUH2 back-cast: the bridge to LUH2 land goes through ISO3, LUH2 is ISO-keyed, so four dissolved
+federations carrying **11.88% of production value at 1961** cannot reach it. The data is not
+missing; the identifier cannot be matched. Several separately-filed gaps are this one fact.
+**The distinction is now published.** `polities_manifest.json` carries `local_iso3_codes` (the 56)
+and `local_iso3_why`, so a consumer can tell a local code from an ISO one without discovering it
+by getting no match. Read from the gate's baseline rather than restated, so there is one list
+and CI gates it. That field is **descriptive only** — how dissolved states *should* be coded is
+still [issue 55](../../issues/55), where three approaches coexist in the data today.
+
+**`observed_rows` is not a licence to un-fold an area.** Worth stating because the consumer
+tried it and it cost a 13.7x error. The WHEP package derived "areas with observed data" from
+these columns and used it to promote areas that FABIO folds into its rest-of-world bucket
+(`fabio_code` 999) onto their own numeric aggregation key — reasonable on its face, since an
+area reporting thousands of rows of its own should not have them attributed to `ROW-1850-2023`.
+
+Measured on a full-range build, promoting the 16 such areas inflated global `feed` **13.7x**
+and `export` 13.2x, with the entire `feed` increase landing on one area (212 Syria, at twelve
+times the world total). Something downstream scales on bucket membership, so an area promoted
+out of a bucket takes bucket-level magnitudes with it. The promotion is withheld and tracked in
+eduaguilera/whep#419.
+
+So these columns answer **"does this label carry data?"** — which is what they were added for,
+and what makes an alias inert or live. They do not answer **"can this area stand alone as an
+aggregation unit?"**, which depends on the consumer's own aggregation scheme and cannot be
+decided here. A consumer that reads the first as the second gets a plausible, large, silent
+error.
+
+`faostat_unmapped_areas` carries three distinct reasons an area is unmapped, and the
+distinction matters because a consumer should report the first two and **warn** on
+anything left over:
+
+- `group_code_min` (5000) — at or above it, FAOSTAT's own regional groups: World, the
+  continents, the income bands. Never territories.
+- `deliberate_area_codes` (351) — a statistical aggregate published ALONGSIDE its own
+  components. 351 "China" is mainland + Hong Kong + Macao + Taiwan, so routing it
+  anywhere double-counts all four. This is a decision, not an absence, and inference
+  cannot tell the two apart: a consumer that guessed "deliberate" from crosswalk
+  membership reported China as *"an area code this project does not know"*.
+- `subthreshold_group_codes` (261, 265, 266, 268, 269, 420) — aggregates whose code sits
+  BELOW the threshold, so the rule of thumb misses them. 420 is Sub-Saharan Africa; the
+  rest are the "(excluding intra-trade)" totals for China and the EU at 12, 15, 25 and 27
+  members. Each was found by a real consumer build reporting it as an unknown code, then
+  the class was enumerated by sweeping nine input pins rather than waiting for the next
+  build to surface the next one.
+
+Compare the hash against your embedded copy to detect drift in one step. The
+hash deliberately excludes polygon fields, so re-measuring an area does not
+invalidate every consumer, while a changed date or status does.
+
+This exists because the WHEP R package's embedded copy had drifted to **603 rows
+against 740** here, with **24 FAOSTAT area codes routing to withdrawn
+polities** — and checking meant diffing whole tables across two repositories.
 
 **Open work lives in the [issue tracker](../../issues)**, not in comments or state
 files — anything recorded only in a CSV tends to be rediscovered by accident.

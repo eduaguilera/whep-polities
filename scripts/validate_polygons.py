@@ -48,18 +48,58 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--tolerance", type=float, default=0.25,
                 help="fractional area divergence tolerated between geometry and frontmatter")
 ap.add_argument("--min-km2", type=float, default=200.0,
-                help="skip area check below this size (projection artifacts dominate microstates)")
+                help="skip the area check only when BOTH claimed and measured are "
+                     "below this size (projection artifacts dominate microstates)")
 ap.add_argument("--strict", action="store_true", help="also fail on identity mismatches")
 A = ap.parse_args()
+
+DEAD_STATUS = ("retired", "superseded")
 
 g = gpd.read_file(GPKG)
 have = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
 have["measured_km2"] = have.to_crs(EQUAL_AREA).geometry.area / 1e6
 print(f"{len(have)} polities with geometry (of {len(g)} rows)")
 
+# ---------- A0: a row that declares no polygon must not carry one ----------
+# The mirror of check C. C catches a row claiming a polygon it does not have; this
+# catches one that HAS a polygon while declaring it does not, which is just as
+# contradictory and was not checked at all.
+#
+# It found ADE-1839-1963 (Aden Protectorate) declaring `unassigned` — the status
+# meaning "no polygon is claimed" — while carrying CShapes 680 and describing it, on
+# the same page, as a "period proxy" with documented vintage drift. A consumer
+# trusting `polygon_status`, which is exactly what the manifest's
+# `claims_polygon_status` set is for, would have concluded Aden has no polygon.
+# Corrected to `proxy`.
+#
+# DEAD rows are exempt. Five superseded/retired rows still carry geometry from
+# before they were withdrawn, because build_database.py declines to rewrite the
+# GeoPackage when a run attaches fewer geometries — so the residue cannot be removed
+# without a full rebuild with the sources fetched. They receive no data either way.
+NO_CLAIM = {"unassigned", "excluded", "none", ""}
+declared_none = have[
+    have.get("polygon_status").fillna("").astype(str).isin(NO_CLAIM)
+    & ~have.get("wiki_status").isin(DEAD_STATUS)
+]
+print(f"\nA0. DECLARES NO POLYGON YET HAS ONE — {len(declared_none)} live row(s)")
+for r in declared_none.itertuples():
+    print(f"   FAIL {r.polity_code:18s} polygon_status={r.polygon_status!r} but carries "
+          f"{r.polygon_source}/{r.polygon_feature_id}")
+
 # ---------- A: area agreement ----------
 have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
-chk = have[have.claimed.notna() & (have.claimed >= A.min_km2)].copy()
+# Skip only when BOTH the claimed and the measured area are small — a genuine
+# microstate, where projection noise dominates. Filtering on the CLAIMED value
+# alone made the check exempt exactly the errors it should catch loudest: a claim
+# that is wrong by being far TOO SMALL falls below the threshold and is never
+# compared. FRA-1871-1919 claimed 62.43 km2 against a geometry measuring 532,305
+# — France without Alsace-Lorraine recorded as smaller than Manhattan, almost
+# certainly a square-degrees value written into a km2 field — and this check
+# reported zero disagreements for as long as the filter used `claimed`.
+chk = have[
+    have.claimed.notna()
+    & ((have.claimed >= A.min_km2) | (have.measured_km2 >= A.min_km2))
+].copy()
 chk["divergence"] = (chk.measured_km2 - chk.claimed).abs() / chk.claimed
 diverging = chk[chk.divergence > A.tolerance].sort_values("divergence", ascending=False)
 # Only `assigned` CLAIMS the polygon is the territory, so only there is a
@@ -98,9 +138,57 @@ baseline = set()
 if os.path.exists(BASELINE):
     baseline = {l.split("#")[0].strip() for l in open(BASELINE) if l.split("#")[0].strip()}
 new_claim_no_geom = claim_no_geom[~claim_no_geom.polity_code.isin(baseline)]
+# Bidirectional, like every other baseline in this repo. Without the second
+# direction a baselined row that has since been FIXED keeps its licence forever, so
+# the gate would stay silent if the same code regressed later — and the list quietly
+# grows into a record of history rather than of open work. It is accurate today (0
+# stale), which is the moment to make it stay that way.
+stale_baseline = sorted(baseline - set(claim_no_geom.polity_code))
 print(f"\nC. CLAIMED BUT ABSENT — {len(missing)} polities have no geometry; "
       f"{len(claim_no_geom)} declare a polygon_status that asserts one "
-      f"({len(baseline)} baselined, {len(new_claim_no_geom)} new)")
+      f"({len(baseline)} baselined, {len(new_claim_no_geom)} new, "
+      f"{len(stale_baseline)} stale)")
+for code in stale_baseline:
+    print(f"   STALE {code:18s} baselined but no longer claims a polygon it lacks — "
+          f"remove it from scripts/validate_polygons_baseline.txt")
+
+# How much the backlog actually costs, printed rather than left to be re-derived.
+#
+# A gap on a polity no consumer can reach costs nothing in any output; a gap on a
+# FAOSTAT-mapped polity costs every row that routes there. The two need different
+# priorities, and the distinction is computable from the published contracts. Measured
+# today: NONE of the 13 baselined polities is FAOSTAT-mapped, and only four are reachable
+# at all — via historical-source aliases, 655 observed rows between them. So the backlog
+# is genuinely low-impact, which is worth knowing before anyone spends a week on it.
+#
+# Two findings on this branch were written up as live and downgraded after checking
+# reachability, which is why every baseline here now reports it.
+_area_map = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "data/final/faostat_area_polity_map.csv")
+_alias_map = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                          "data/final/label_alias_map.csv")
+if baseline and os.path.exists(_area_map):
+    import csv as _csv
+    with open(_area_map, encoding="utf-8") as fh:
+        _mapped = {(r.get("polity_code") or "").strip() for r in _csv.DictReader(fh)}
+    _obs = {}
+    if os.path.exists(_alias_map):
+        with open(_alias_map, encoding="utf-8") as fh:
+            for r in _csv.DictReader(fh):
+                c = (r.get("polity_code") or "").strip()
+                try:
+                    _obs[c] = _obs.get(c, 0) + int(r.get("observed_rows") or 0)
+                except ValueError:
+                    pass
+    _live = sorted(c for c in baseline if c in _mapped)
+    _aliased = sorted(c for c in baseline if c not in _mapped and _obs.get(c, 0) > 0)
+    print(f"   reachability of the {len(baseline)} baselined gaps: "
+          f"{len(_live)} FAOSTAT-mapped, {len(_aliased)} alias-only, "
+          f"{len(baseline) - len(_live) - len(_aliased)} unreachable")
+    for c in _live:
+        print(f"     LIVE      {c:18s} reachable by FAOSTAT area — a gap here affects output")
+    for c in _aliased:
+        print(f"     alias-only {c:17s} {_obs[c]} observed rows via historical sources")
 for r in new_claim_no_geom.itertuples():
     fid = str(r.polygon_feature_id)
     print(f"   FAIL {r.polity_code:18s} status='{r.st}' but no geometry attached  "
@@ -133,7 +221,17 @@ if os.path.exists(CSHAPES):
     cs = gpd.read_file(CSHAPES)
     name_by_gw = {int(c): grp.cntry_name.iloc[0] for c, grp in cs.groupby("gwcode")}
     pol = pd.read_csv(CSV)
-    sub = pol[pol.polygon_source.astype(str).str.contains("cshapes", na=False)]
+    # EXACTLY cshapes-2.0, not any source containing "cshapes". The looser filter also
+    # caught the 21 rows bound to `cshapes-europe`, then looked their ids up in the
+    # cshapes-2.0 shapefile — a different file with a different schema (`Id`, `Holder`,
+    # `Name`, no `gwcode`). That produced three false "id absent from CShapes" reports
+    # for AND-1800-2025, LIE-1800-2025 and MCO-1800-2025, whose ids are perfectly valid
+    # in the file they are actually bound to, and made the name comparison meaningless
+    # for all 21. The 514 genuinely cshapes-2.0-bound rows have no absent ids at all.
+    #
+    # cshapes-europe bindings are therefore NOT identity-checked. Doing so needs a
+    # second lookup against that file's own id column, which is a separate change.
+    sub = pol[pol.polygon_source.astype(str).str.strip() == "cshapes-2.0"]
     def toks(s): return set(re.findall(r"[a-z]{4,}", str(s).lower()))
     for _, r in sub.iterrows():
         fid = str(r.polygon_feature_id).strip().replace(".0", "")
@@ -151,8 +249,10 @@ if os.path.exists(CSHAPES):
 else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
-fail = len(bad_area) > 0 or len(new_claim_no_geom) > 0 or len(undoc) > 0 or (A.strict and mismatch)
+fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
+        or len(stale_baseline) > 0 or len(undoc) > 0 or (A.strict and mismatch))
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s), "
+      f"{len(declared_none)} declares-none-but-has-one, "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
 sys.exit(1 if fail else 0)

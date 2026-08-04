@@ -1,0 +1,242 @@
+#!/usr/bin/env python3
+"""Two spatial checks that need no reference data and no hand-entered value.
+
+  CONTAINMENT   a polygon that geometrically swallows other contemporaneous
+                polities, which double-counts their territory
+  CONTINUITY    successive periods of one family whose polygons do not overlap,
+                which means one of them is bound to the wrong feature
+
+Why this is a distinct check: `validate_polygons.py` compares a polygon against
+its recorded `polygon_area_km2`, so it is opt-in via a hand-entered field. Roughly
+590 of 740 rows carry no area and are therefore never compared, and the worst
+polygon error in the database sits in that blind spot:
+
+  RUS-1991-2014 uses CShapes feature 365 — the same feature as every F228 (Russian
+  Empire / USSR) row — and measures 21,824,142 km2 against Russia's 17,098,242. It
+  geometrically contains Kazakhstan, Ukraine, Uzbekistan, Turkmenistan, the
+  Baltics, Georgia and Azerbaijan. It has no recorded area, so nothing compared it
+  to anything (issue 45).
+
+This check needs no reference data and no hand-entered value. It asks only whether
+two polities that COEXIST in time overlap in space, which for two separate
+territories is a contradiction the geometry itself reveals.
+
+Containment is frequently legitimate, so the check reports CONTAINERS rather than
+pairs: a polity whose polygon holds three or more contemporaneous polities of other
+families. Empires and federations do exactly that — and `polity_type` cannot
+distinguish them, since French West Africa and its member colonies are all
+`national` — so the legitimate ones are enumerated below rather than inferred.
+
+Usage:
+  python3 scripts/validate_spatial_containment.py [--min-contained 3]
+"""
+import argparse
+import os
+import sys
+from collections import defaultdict
+
+import geopandas as gpd
+import pandas as pd
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
+EQUAL_AREA = "ESRI:54034"
+DEAD_STATUS = ("retired", "superseded")
+
+# Polities that legitimately contain others, because they WERE the larger entity:
+# empires containing their possessions, colonial federations containing their
+# member colonies, and the statistical aggregates that exist to hold small
+# territories. Enumerated because the database cannot express it — AOF-1895-1960
+# and every colony inside it are all typed `national`.
+LEGITIMATE_CONTAINERS = frozenset({
+    # Statistical / reporting aggregates
+    "ROW-1850-2023", "RAFR-1850-2021", "RASI-1850-2021", "REUR-1850-2021",
+    "RLAM-1850-2013", "ROCE-1850-2021",
+    # Empires
+    "F228-1800-1856", "F228-1856-1905", "F228-1905-1914", "F228-1914-1917",
+    "F228-1917-1918", "F228-1918-1920", "F228-1945-1991",
+    "AUH-1800-1859", "AUH-1859-1866", "AUH-1866-1908", "AUH-1908-1918",
+    "OTT-1800-1886", "JPN-1895-1945",
+    # Colonial federations and their groupings
+    "AOF-1895-1960", "AEF-1910-1960", "CODRU-1922-1960", "FRN-1953-1964",
+    "MASG-1946-1963",
+    "MLI-1890-1960", "SEN-1854-1886", "SEN-1886-1959", "KEN-1891-1894",
+    "NGA-1886-1914", "ZWE-1891-1900",
+    # AEF-1910-1960 added when its polygon was first built: French Equatorial Africa
+    # is the union of Gabon, Ubangi-Shari, Chad and Middle Congo, so it necessarily
+    # contains the 13 period-polities of those four families. Flagged as a NEW
+    # container the moment the builder landed, which is the third time this check has
+    # made a newly built polygon justify itself.
+    # A federation over its pre-1901 colonies
+    "AUS-1800-1901",
+    # A UN trust territory over the four territories that became its successors.
+    # Added when its polygon was first built (2026-07-29): the union of GADM FSM,
+    # MHL, MNP and PLW necessarily contains those four polities, whose spans overlap
+    # TTPI's 1947-1994. This check flagged it immediately as a NEW container, which
+    # is the behaviour wanted — a newly built polygon that swallows its neighbours
+    # has to be justified rather than assumed.
+    "TTPI-1947-1994",
+    # A joint reporting unit over the two states it combines. Added when its polygon
+    # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
+    # the SYR and LBN period-polities.
+    "SYL-1944-1953",
+})
+
+# Containers that are DEFECTS, tracked so the gate stays useful while they are
+# open. Bidirectional: one that stops containing must be removed from this set, so
+# the list shrinks as the polygons are fixed.
+# Empty: issue 45 is FIXED. RUS-1991-2014 carried the USSR polygon because
+# `polygon_feature_year: 1991` matched six CShapes time-steps and the winner was
+# decided by shapefile order; 1992 selects the durable 1991-2014 step and the row now
+# measures 16,882,058 km2 instead of 21,824,142. Kept as an empty frozenset rather
+# than deleted so a regression names the container.
+TRACKED_DEFECTS = frozenset()
+
+# Family pairs whose consecutive polygons do not overlap. Tracked, not accepted.
+# frozenset(...) rather than a bare {...}: when the last entry is removed — which
+# is the goal, once issue 46 is fixed — a bare literal becomes an empty DICT, and
+# `dict - set` raises TypeError. The gate would crash precisely when the data became
+# correct. Found by actually emptying it rather than assuming.
+# Empty: issue 46 is FIXED. IRN-1800-1828 was bound to Cliopatria's "United States
+# of America" and is now bound to "Qajar Dynasty" at 1800, so the two Iran periods
+# overlap as they should. Kept as an empty frozenset rather than deleted so a
+# regression names the pair.
+KNOWN_DISCONTINUOUS = frozenset()
+
+ap = argparse.ArgumentParser()
+# KNOWN LIMITATION, measured 2026-07-29. The default of 3 was chosen to keep the
+# baseline reviewable — at >=1 there are 95 containers, at >=2 there are 58, at >=3
+# there are 33 — but it means a polygon that swallows exactly ONE coexisting polity is
+# never reported, and that is arguably the commonest real error: a polygon one neighbour
+# too large.
+#
+# A confirmed instance: ITS-1908-1960 (Italian Somaliland) uses CShapes 520, all of
+# Somalia at 635,888 km2, and geometrically contains BSS-1884-1960 (British Somaliland,
+# 171,633 km2) at 100%. This check does not see it. It is fixed independently in
+# lbm364dl/whep-polities#35, which rebinds the row to 520 MINUS 521 = 464,743 km2.
+#
+# Lowering the default to 1 would require judging all 37 single-swallow cases, and most
+# ARE legitimate history — GBR-1800-1921 contains IRL-1800-1921, ESP-1800-2025 contains
+# ICN-1800-2025, IND-1947-1949 contains HYD-1724-1948, SRB-2008-2025 contains
+# KOS-2008-2025, and SLE-1886-1889 contains GMB-1800-2025 because CShapes 451 for
+# 1886-1889 is the British West African Settlements, which included Gambia until 1888.
+# Enumerating those as legitimate without verifying each would be the guessing this
+# check exists to prevent, so the threshold is left at 3 and the gap recorded here
+# rather than papered over.
+ap.add_argument("--min-contained", type=int, default=3,
+                help="report a polity that contains at least this many others; see the "
+                     "KNOWN LIMITATION note above about single-swallow cases")
+ap.add_argument("--overlap", type=float, default=0.90,
+                help="fraction of the smaller polity that must lie inside")
+ap.add_argument("--continuity", type=float, default=0.50,
+                help="minimum overlap between consecutive periods of one family")
+A = ap.parse_args()
+
+g = gpd.read_file(GPKG)
+g = g[g.geometry.notna() & ~g.geometry.is_empty]
+g = g[~g["wiki_status"].isin(DEAD_STATUS)].copy()
+for col in ("start_year", "end_year"):
+    g[col] = pd.to_numeric(g[col], errors="coerce")
+
+eq = g.to_crs(EQUAL_AREA).copy()
+# buffer(0) heals self-intersections that would otherwise make .area unreliable.
+eq["geometry"] = eq.geometry.buffer(0)
+eq["area_km2"] = eq.geometry.area / 1e6
+
+pairs = gpd.sjoin(
+    eq[["polity_code", "geometry"]], eq[["polity_code", "geometry"]],
+    how="inner", predicate="intersects",
+)
+pairs = pairs[pairs.polity_code_left != pairs.polity_code_right]
+
+meta = eq.set_index("polity_code")[["start_year", "end_year", "area_km2"]]
+geo = eq.set_index("polity_code")["geometry"]
+
+contains = defaultdict(list)
+for outer, inner in zip(pairs.polity_code_left, pairs.polity_code_right):
+    # Same prefix = successive periods of one territory, not two places.
+    if outer.split("-")[0] == inner.split("-")[0]:
+        continue
+    mo, mi = meta.loc[outer], meta.loc[inner]
+    # A shared transition year (one ends where the other starts) is not coexistence.
+    if not (mo.start_year < mi.end_year and mi.start_year < mo.end_year):
+        continue
+    if mi.area_km2 <= 0 or mi.area_km2 >= mo.area_km2:
+        continue
+    if geo.loc[inner].intersection(geo.loc[outer]).area / geo.loc[inner].area > A.overlap:
+        contains[outer].append(inner)
+
+observed = {k for k, v in contains.items() if len(v) >= A.min_contained}
+print(f"{len(eq)} live polities with geometry")
+print(f"containers holding >={A.min_contained} contemporaneous polities of other "
+      f"families: {len(observed)}")
+
+for code in sorted(observed & TRACKED_DEFECTS):
+    inside = sorted(contains[code])
+    print(f"\n  TRACKED DEFECT {code} contains {len(inside)}: "
+          f"{', '.join(inside[:6])}{' ...' if len(inside) > 6 else ''}")
+
+problems = []
+for code in sorted(observed - LEGITIMATE_CONTAINERS - TRACKED_DEFECTS):
+    inside = sorted(contains[code])
+    problems.append(
+        f"NEW container {code} holds {len(inside)} contemporaneous polities of "
+        f"other families: {', '.join(inside[:6])}"
+        + (" ..." if len(inside) > 6 else "")
+    )
+for code in sorted((LEGITIMATE_CONTAINERS | TRACKED_DEFECTS) - observed):
+    problems.append(
+        f"{code} is listed as a container but no longer contains "
+        f">={A.min_contained} others — remove it from the list"
+    )
+
+# ---------- CONTINUITY ----------
+# A family's consecutive periods describe the same territory at different times, so
+# their polygons must overlap heavily. When they do not, one is bound to the wrong
+# feature. This is the only check that finds a mis-binding of PLAUSIBLE SIZE:
+# IRN-1800-1828 carries Cliopatria's "United States of America" (its
+# polygon_feature_id says so literally) and sits in North America, but the USA in
+# 1815 measured ~1,586,287 km2 against Iran's ~1,621,564 — a ratio of 0.98, so
+# every area-based check passes it. Magnitude cannot detect position.
+eq["prefix"] = eq.polity_code.str.split("-").str[0]
+discontinuous = []
+for _prefix, fam in eq.groupby("prefix"):
+    if len(fam) < 2:
+        continue
+    fam = fam.sort_values("start_year")
+    codes, geos, areas = list(fam.polity_code), list(fam.geometry), list(fam.area_km2)
+    for i in range(len(fam) - 1):
+        smaller = min(areas[i], areas[i + 1])
+        if smaller <= 0:
+            continue
+        frac = geos[i].intersection(geos[i + 1]).area / (smaller * 1e6)
+        if frac < A.continuity:
+            discontinuous.append((codes[i], codes[i + 1], frac))
+
+print(f"\nconsecutive same-family periods overlapping <{A.continuity:.0%}: "
+      f"{len(discontinuous)}")
+for a, b, frac in sorted(discontinuous, key=lambda r: r[2]):
+    pair = f"{a} / {b}"
+    if pair in KNOWN_DISCONTINUOUS:
+        print(f"  TRACKED DEFECT {pair}  overlap {frac:.0%}")
+    else:
+        problems.append(
+            f"NEW discontinuity {pair}: consecutive periods of one family overlap "
+            f"only {frac:.0%} — one polygon is probably bound to the wrong feature"
+        )
+observed_pairs = {f"{a} / {b}" for a, b, _ in discontinuous}
+for pair in sorted(KNOWN_DISCONTINUOUS - observed_pairs):
+    problems.append(
+        f"{pair} is tracked as discontinuous but now overlaps — remove it from "
+        f"KNOWN_DISCONTINUOUS"
+    )
+
+if problems:
+    print(f"\nFAIL: {len(problems)} change(s)\n")
+    for p in problems:
+        print(f"  {p}")
+    print("\n  A polygon that swallows a coexisting polity double-counts its "
+          "territory in any spatial or area-weighted use.")
+    sys.exit(1)
+
+print("\nPASS: every container is either documented history or a tracked defect")

@@ -268,7 +268,182 @@ def build_chn_1932_1945() -> ogr.Geometry:
 
 
 # (polity_code, polity_name, builder-callable, provenance note)
+def build_btl_1920_1957() -> ogr.Geometry:
+    """British Togoland 1920-1957 = Ghana AFTER the 1956 incorporation MINUS the
+    Gold Coast before it.
+
+    CShapes gwcode 452 steps from 212,416 km2 (1898-1956, the Gold Coast) to
+    239,046 km2 (1956 onward, once British Togoland was incorporated following the
+    1956 plebiscite). The difference is the mandate territory itself.
+
+    Years are chosen to be UNAMBIGUOUS. 1956 is contained by both the 1898-1956 and
+    1956-1957 steps, and `_cshapes2_feature` returns whichever comes first in the
+    shapefile, so 1950 and 1960 are used instead: each is inside exactly one step.
+    (The 1956-1957 and 1957-2019 steps both measure 239,046 km2, so 1960 is
+    equivalent to 1956 for this purpose.)
+    """
+    return _difference(_cshapes2_feature(452, 1960), _cshapes2_feature(452, 1950))
+
+
+def build_ttpi_1947_1994() -> ogr.Geometry:
+    """Trust Territory of the Pacific Islands = the four successor states'
+    modern coastlines: Micronesia, Marshall Islands, Northern Marianas, Palau.
+
+    Guam is deliberately excluded: it was a US possession from 1898 and never part
+    of the Trust Territory.
+
+    Modern coastlines are the only available proxy — no historical source in the
+    priority stack carries the Trust Territory as one feature — and the internal
+    boundaries have not changed, so the union is the same extent the mandate had.
+    """
+    return _union(
+        _gadm_adm0("FSM"),
+        _gadm_adm0("MHL"),
+        _gadm_adm0("MNP"),
+        _gadm_adm0("PLW"),
+    )
+
+
+def build_aef_1910_1960() -> ogr.Geometry:
+    """French Equatorial Africa (AEF) 1910-1960 = union of its four constituent
+    colonies: Gabon (481), Ubangi-Shari / CAR (482), Chad (483), Middle Congo (484).
+
+    1950 is used as the sampling year because it sits inside every one of the four
+    CShapes steps — Chad's colonial status was only confirmed in 1920, so its step
+    starts later than the others' 1919 — and none of the four changes borders again
+    before independence in 1960.
+
+    The composition is not inferred: this polity's page names all four territories
+    WITH their gwcodes and per-territory areas, and those areas sum to the 2,495,219
+    km2 the page records. The union measures 2,495,221, which is that sum to within
+    rounding.
+    """
+    return _union(
+        _cshapes2_feature(481, 1950),
+        _cshapes2_feature(482, 1950),
+        _cshapes2_feature(483, 1950),
+        _cshapes2_feature(484, 1950),
+    )
+
+
+def build_gbm_1895_1946() -> ogr.Geometry:
+    """British Malaya 1895-1946 = Straits Settlements (827) + Federated Malay
+    States (821) + Unfederated Malay States (822).
+
+    Sampled at 1930, inside every one of the three CShapes steps. The union measures
+    132,040 km2, which is EXACTLY the total this polity's page tabulates from the
+    same three components (3,601 + 71,415 + 57,024).
+    """
+    return _union(
+        _cshapes2_feature(827, 1930),
+        _cshapes2_feature(821, 1930),
+        _cshapes2_feature(822, 1930),
+    )
+
+
+def build_gct_1919_1956() -> ogr.Geometry:
+    """NOT REGISTERED IN BUILDERS — see the note at the end of this docstring.
+
+    Gold Coast and British Togoland 1919-1956 = Gold Coast (452) + the British
+    Togoland mandate (462's 1922-1955 step).
+
+    Sampled at 1930, inside both steps. 212,416 + 26,630 = 239,046 km2 against the
+    240,056 the page records from historical sources — 0.4%.
+
+    Worth noting as corroboration: the 26,630 km2 Togoland component here is the same
+    figure `build_btl_1920_1957()` derives by an entirely different route, as the
+    difference between Ghana before and after the 1956 incorporation. Two independent
+    computations agreeing to the km2 is strong evidence that CShapes gwcode 462 does
+    carry the BRITISH mandate for 1922-1955, which is what this page asserts and which
+    is not obvious — 462 is the Republic of Togo (the French mandate) after 1960.
+
+    WHY IT IS NOT REGISTERED. Attaching this polygon made
+    scripts/audit_family_shadowing.py fail: GCT and BTL-1920-1957 then both carry
+    iso3 GHA, both are typed `colonial`, and they overlap 1920-1956 at a 9x area
+    ratio — so which one GHA-labelled data reaches would be decided by family
+    ordering rather than by type. That is the Alaska-absorbing-mainland-US failure
+    the audit exists to prevent.
+    
+    The risk is not created by the polygon; it exists because both rows carry iso3
+    GHA. The polygon only made it MEASURABLE, since the audit needs areas. Resolving
+    it means deciding how a composite reporting unit should be typed, and the
+    database is currently inconsistent about that — BLX is `aggregate`, SYL is
+    `statistical`, AOF and AEF are `national`, GCT is `colonial`. That is a modelling
+    decision, so the recipe is kept here, verified and ready, and the row stays in
+    the polygon backlog until the typing question is settled. See issue 47.
+    """
+    return _union(_cshapes2_feature(452, 1930), _cshapes2_feature(462, 1930))
+
+
+def build_syl_1944_1953() -> ogr.Geometry:
+    """Syria and Lebanon as one statistical unit = Syria (652) + Lebanon (660).
+
+    NOT Sylhet — the prefix is misleading. This row exists to route FAO 1952 tobacco
+    data published under the joint label "Syria and Lebanon", an artifact of the
+    French Mandate joint administration and the customs union that ran to March 1950.
+
+    Sampled at 1950, inside both steps: 188,004 + 10,209 = 198,213 km2 against the
+    195,632 the page records (1.3%). The page's figures come from the vintages it
+    names, ~185,180 for Syria and ~10,452 for Lebanon.
+    """
+    return _union(_cshapes2_feature(652, 1950), _cshapes2_feature(660, 1950))
+
+
 BUILDERS = [
+    (
+        "GBM-1895-1946",
+        "British Malaya (1895-1946)",
+        build_gbm_1895_1946,
+        "Union of CShapes 2.0 gwcodes 827 Straits Settlements (3,601 km2), 821 "
+        "Federated Malay States (71,415) and 822 Unfederated Malay States (57,024) "
+        "at 1930 = 132,040 km2, exactly the union total the page tabulates.",
+    ),
+    (
+        "SYL-1944-1953",
+        "Syria and Lebanon (combined statistical unit)",
+        build_syl_1944_1953,
+        "Union of CShapes 2.0 gwcodes 652 Syria (188,004 km2) and 660 Lebanon "
+        "(10,209) at 1950 = 198,213 against 195,632 recorded (1.3%). Despite the "
+        "prefix this is NOT Sylhet: it is the joint 'Syria and Lebanon' reporting "
+        "unit the FAO 1952 yearbook uses.",
+    ),
+
+    (
+        "AEF-1910-1960",
+        "French Equatorial Africa (AEF)",
+        build_aef_1910_1960,
+        "Union of CShapes 2.0 gwcodes 481 Gabon (260,681 km2), 482 Ubangi-Shari "
+        "(618,630), 483 Chad (1,271,888) and 484 Middle Congo (344,022) at 1950 = "
+        "2,495,221 km2, matching the 2,495,219 the page records as the sum of its "
+        "own constituent-territory table. The previous feature id, "
+        "'cshapes-idx-366+370+375+382', gave shapefile ROW INDICES rather than "
+        "gwcodes, which nothing could resolve; the page's table supplies both, and "
+        "the gwcodes are what the builder uses.",
+    ),
+
+    (
+        "BTL-1920-1957",
+        "British Togoland (1920-1957)",
+        build_btl_1920_1957,
+        "CShapes 2.0 gwcode 452 at 1960 (239,046 km2, Ghana including the "
+        "incorporated mandate) MINUS gwcode 452 at 1950 (212,416 km2, the Gold "
+        "Coast alone) = 26,630 km2. That matches the figure this polity's page "
+        "already recorded from the same computation, and sits 21% below the "
+        "~33,771 km2 historical figure — a gap the page documents and attributes "
+        "to CShapes generalisation, which is why the row is `assigned` on the "
+        "geodesic value rather than the historical one.",
+    ),
+    (
+        "TTPI-1947-1994",
+        "Trust Territory of the Pacific Islands (1947-1994)",
+        build_ttpi_1947_1994,
+        "Union of GADM 4.1 adm0 FSM, MHL, MNP and PLW = ~2,063 km2 against the "
+        "~1,791 km2 the page records; GADM's coastlines include reef and lagoon "
+        "area that land-area figures exclude, which is why the row is `proxy` "
+        "rather than `assigned`. Guam is excluded deliberately: a US possession "
+        "from 1898, never part of the Trust Territory.",
+    ),
+
     (
         "IRL-1800-1921",
         "Ireland (all-island, 1800-1921)",

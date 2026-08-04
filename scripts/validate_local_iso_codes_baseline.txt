@@ -1,0 +1,289 @@
+# Every distinct `iso3_code` value in the published database.
+#
+# This vocabulary is a published interface: a consumer joins on it, so adding a value
+# changes what that join matches and changing one re-points every row carrying it.
+#
+# 276 values over 658 rows.
+#
+# Of these, 56 are NOT ISO 3166 codes but local identifiers for entities that have none
+# (AUH Austria-Hungary, OTT Ottoman Empire, AOF French West Africa, NSW New South Wales,
+# ZNZ Zanzibar, plus this project's own aggregates ROW/RAFR/RASI/REUR/RLAM/RNAM/ROCE).
+# They are marked `local` below. A consumer cannot match them against ISO-keyed data.
+# See the README section on iso3_code, and issue 55 on publishing the distinction.
+
+AEF  # local
+AFG
+AGO
+ALB
+AND
+ANG  # local
+ANT  # local
+AOF  # local
+AOI  # local
+ARE
+ARG
+ARM
+ASM
+ATG
+AUH  # local
+AUS
+AUT
+AZE
+BDI
+BEC  # local
+BEL
+BEN
+BFA
+BGD
+BGR
+BHR
+BHS
+BIH
+BLI  # local
+BLR
+BLX  # local
+BLZ
+BMU
+BOL
+BRA
+BRB
+BRN
+BSS  # local
+BTN
+BWA
+BWI  # local
+CAF
+CAN
+CAP  # local
+CHE
+CHL
+CHN
+CIV
+CMR
+COD
+COG
+COK
+COL
+COM
+CPV
+CRI
+CUB
+CXR
+CYP
+CZE
+DEU
+DJI
+DMA
+DMO  # local
+DNK
+DOM
+DPA  # local
+DZA
+ECU
+EGY
+ERI
+ESH
+ESP
+EST
+ETH
+FID  # local
+FIN
+FJI
+FLK
+FRA
+FRN  # local
+FRO
+FSM
+GAB
+GBR
+GCO  # local
+GEO
+GHA
+GIN
+GLP
+GMB
+GNB
+GNQ
+GRC
+GRD
+GRL
+GTM
+GUF
+GUM
+GUY
+HKG
+HND
+HRV
+HTI
+HUN
+ICN  # local
+IDN
+IND
+IRL
+IRN
+IRQ
+ISL
+ISR
+ITA
+ITS  # local
+JAM
+JOR
+JPN
+KAZ
+KEN
+KGZ
+KHM
+KIR
+KNA
+KOR
+KOS  # local
+KWT
+LAO
+LBN
+LBR
+LBY
+LCA
+LIE
+LKA
+LSO
+LTU
+LUX
+LVA
+MAC
+MAN  # local
+MAR
+MCO
+MDA
+MDG
+MDV
+MEX
+MHL
+MKD
+MLI
+MLT
+MMR
+MNE
+MNG
+MOR  # local
+MOZ
+MRT
+MSR
+MTQ
+MUS
+MWI
+MYS
+NAM
+NAT  # local
+NCL
+NER
+NFK
+NFL  # local
+NGA
+NIC
+NIU
+NLD
+NNI  # local
+NOR
+NPL
+NRU
+NSW  # local
+NWR  # local
+NZL
+OMN
+OTT  # local
+PAK
+PAL  # local
+PAN
+PAP  # local
+PER
+PHL
+PLW
+PNG
+POL
+PRI
+PRK
+PRT
+PRY
+PSE
+PYF
+QAT
+QUE  # local
+RAFR  # local
+RASI  # local
+REU
+REUR  # local
+RLAM  # local
+RNAM  # local
+ROCE  # local
+ROU
+ROW  # local
+RUS
+RWA
+RWB  # local
+SAA  # local
+SAB  # local
+SAC  # local
+SAR  # local
+SAU
+SCG  # local
+SDN
+SEN
+SER  # local
+SGP
+SHN
+SLB
+SLE
+SLV
+SMO  # local
+SMR
+SNI  # local
+SNW  # local
+SOM
+SPM
+SRB
+SSD
+STP
+SUD  # local
+SUR
+SVK
+SVN
+SWA  # local
+SWE
+SWZ
+SYC
+SYR
+TAN  # local
+TAS  # local
+TCD
+TGO
+THA
+TJK
+TKM
+TLS
+TON
+TTO
+TUN
+TUR
+TUS  # local
+TUV
+TWN
+TWO  # local
+TZA
+UGA
+UKR
+URY
+USA
+UZB
+VCT
+VEN
+VGB
+VIC  # local
+VIR
+VNM
+VUT
+WSM
+YEM
+ZAF
+ZMB
+ZNZ  # local
+ZWE
