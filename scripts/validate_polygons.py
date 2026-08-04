@@ -55,10 +55,38 @@ A = ap.parse_args()
 
 DEAD_STATUS = ("retired", "superseded")
 
+# The five documented values (wiki/README.md). Ported from PR #38, whose data half --
+# consolidating nine values down to these five -- already landed on main while the GUARD
+# did not. Without it the field can grow back: `derived`, `missing`, `approximate` and
+# `excluded` were all near-synonyms of these, none was in CLAIMS_POLYGON, and so 21 pages
+# were silently exempt from check C. Any value outside this set is invisible to C, which
+# means a page could declare a polygon and carry none while failing nothing. That blind
+# spot, not the tidying, was PR #38's point.
+#
+# Retired and superseded rows are exempt, for the same reason check A0 exempts them: they
+# receive no data and one of them (DJI-1886-2025) carries no polygon_status at all.
+VOCABULARY = {"assigned", "proxy", "estimate", "polygon_vintage_drift", "unassigned"}
+
 g = gpd.read_file(GPKG)
 have = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
 have["measured_km2"] = have.to_crs(EQUAL_AREA).geometry.area / 1e6
 print(f"{len(have)} polities with geometry (of {len(g)} rows)")
+
+# ---------- V: polygon_status must be a documented value ----------
+_st = g.get("polygon_status")
+_st = pd.Series([None] * len(g)) if _st is None else _st.reset_index(drop=True)
+_live = ~g.reset_index(drop=True).get("wiki_status").isin(DEAD_STATUS)
+off_vocab = g.reset_index(drop=True)[~_st.fillna("").isin(VOCABULARY) & _live]
+print(
+    f"\nV. VOCABULARY - {len(off_vocab)} live polit(ies) carry a polygon_status outside "
+    f"the documented set ({', '.join(sorted(VOCABULARY))})"
+)
+for r in off_vocab.itertuples():
+    print(
+        f"   FAIL {r.polity_code:18s} polygon_status="
+        f"{getattr(r, 'polygon_status', None)!r} - not a documented value, so this row "
+        f"is invisible to check C"
+    )
 
 # ---------- A0: a row that declares no polygon must not carry one ----------
 # The mirror of check C. C catches a row claiming a polygon it does not have; this
@@ -250,8 +278,10 @@ else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
 fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
-        or len(stale_baseline) > 0 or len(undoc) > 0 or (A.strict and mismatch))
-print(f"\n{'FAIL' if fail else 'PASS'}: {len(bad_area)} area disagreement(s), "
+        or len(stale_baseline) > 0 or len(undoc) > 0 or len(off_vocab) > 0
+        or (A.strict and mismatch))
+print(f"\n{'FAIL' if fail else 'PASS'}: {len(off_vocab)} off-vocabulary status(es), "
+      f"{len(bad_area)} area disagreement(s), "
       f"{len(declared_none)} declares-none-but-has-one, "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
