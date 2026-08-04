@@ -10,6 +10,36 @@ export const meta = {
 // Verification layer of the assertion pipeline (see README "State model" and
 // 00_intake.py). The deterministic pass only ROUTES; this workflow decides.
 //
+
+// ---------------------------------------------------------------------------
+// PROTOCOL VERSION — bump when the RULES of verification change substantively.
+//
+// The ledger's evidence_hash reopens a banked assertion when its DATA changes.
+// This constant is the other half: it reopens a banked assertion when the rules
+// it was judged under change. apply_verdicts.py stamps it into
+// review_ledger.csv (column `protocol_version`) for every row it banks, and
+// 00_intake.py marks any banked row stamped BELOW the current version as
+// `reopened`. So a bump here re-queues the debt automatically instead of
+// depending on someone remembering which keys to re-run.
+//
+// BUMP when: the VERDICT schema gains/loses/redefines a field; the definition of
+// a verdict or of confirm_kind changes; a new obligation is added to HISTORIAN
+// (e.g. the anti-circularity rule); apply_verdicts.py starts deriving something
+// from a field the old verdicts do not carry.
+// DO NOT BUMP for: wording, examples, typos, model/effort changes, reviewSample,
+// or anything that cannot change what a verdict MEANS. A bump costs a full
+// re-verification of every banked assertion, so it must buy something.
+//
+// History:
+//   1 — rules as of 2026-07-27: confirm_kind = equal AND constant across the
+//       span; anti-circularity (draft wiki pages are a hypothesis, not
+//       evidence) + required evidence_used; blind independent review;
+//       page_suspect/page_inadequate; source_convention. This is the version
+//       the ~150 already-banked assertions were (re-)verified under, so it is
+//       the baseline and does not reopen them.
+export const PROTOCOL_VERSION = 1
+// ---------------------------------------------------------------------------
+//
 // args = { repo?, keys: ["label|source|y1-y2", ...] }
 //   keys = assertion keys to verify this run — compute from state/assertions.json
 //   (status "pending"/"reopened"; chunk to ~100 per run). An empty/missing keys
@@ -116,7 +146,7 @@ const results = await pipeline(keys,
   })
 const verdicts = results.filter(Boolean)
 const nQ = verdicts.filter(x => x.quarantined).length
-log(`Verify: ${verdicts.length}/${keys.length} verdicts (${nQ} quarantined by reviewer disagreement)`)
+log(`Verify: ${verdicts.length}/${keys.length} verdicts at protocol v${PROTOCOL_VERSION} (${nQ} quarantined by reviewer disagreement)`)
 
 phase('Save')
 // Save, then STAMP each verdict with the bundle's real evidence_hash read from
@@ -124,10 +154,14 @@ phase('Save')
 // 16-hex string is unreliable (observed: one character-level slip that tripped
 // the stale guard as a false positive), so the script-derived value is
 // authoritative and the echo is advisory only.
+// The same stamp carries PROTOCOL_VERSION — interpolated into the script by this
+// workflow, so it records the rules THESE verdicts were produced under even if
+// the constant is bumped before apply_verdicts.py runs. No agent is asked to
+// copy it, for the reason above.
 await agent(
   `Write this JSON array to ${repo}/pipelines/polity-autoimprove/state/${outFile} (overwrite; pretty-print), then stamp the true evidence hashes into it by RUNNING this exact python (do not hand-edit hashes):\n` +
   "```\n" +
-  `python3 - <<'PY'\nimport json\nH="${repo}/pipelines/polity-autoimprove/state"\nV=json.load(open(f"{H}/${outFile}"))\nA={a["key"]:a for a in json.load(open(f"{H}/assertions.json"))["assertions"]}\nn=0\nfor x in V:\n    v=x["verdict"]; b=A.get(v["key"])\n    if not b: continue\n    if v.get("verified_evidence_hash") != b["evidence_hash"]: n+=1\n    v["echoed_evidence_hash"]=v.get("verified_evidence_hash")\n    v["verified_evidence_hash"]=b["evidence_hash"]\njson.dump(V, open(f"{H}/${outFile}","w"), indent=1)\nprint(f"stamped {len(V)} verdicts; corrected {n} echoed hashes")\nPY\n` +
+  `python3 - <<'PY'\nimport json\nH="${repo}/pipelines/polity-autoimprove/state"\nV=json.load(open(f"{H}/${outFile}"))\nA={a["key"]:a for a in json.load(open(f"{H}/assertions.json"))["assertions"]}\nn=0\nfor x in V:\n    v=x["verdict"]; b=A.get(v["key"])\n    v["protocol_version"]=${PROTOCOL_VERSION}\n    if not b: continue\n    if v.get("verified_evidence_hash") != b["evidence_hash"]: n+=1\n    v["echoed_evidence_hash"]=v.get("verified_evidence_hash")\n    v["verified_evidence_hash"]=b["evidence_hash"]\njson.dump(V, open(f"{H}/${outFile}","w"), indent=1)\nprint(f"stamped {len(V)} verdicts at protocol v${PROTOCOL_VERSION}; corrected {n} echoed hashes")\nPY\n` +
   "```\n" +
   `Do NOT commit and do NOT touch any other file. Then print the python's output plus a 2-line summary of verdict counts.\n${JSON.stringify(verdicts).slice(0, 400000)}`,
   { ...M, effort:'low', label:'save-verdicts', phase:'Save' })
@@ -135,6 +169,7 @@ await agent(
 return {
   verified: verdicts.length,
   quarantined: nQ,
+  protocol_version: PROTOCOL_VERSION,
   by_verdict: verdicts.reduce((m, x) => { const k = x.verdict.verdict; m[k] = (m[k] || 0) + 1; return m }, {}),
   note: `Verdicts are in state/${outFile} — inspect, then run apply_verdicts.py [${outFile}] to bank/apply them.`,
 }
