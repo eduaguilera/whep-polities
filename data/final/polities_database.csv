@@ -369,7 +369,7 @@ ITA-1866-1870,Italy (1866-1870),1866,1870,national,ITA,325,Europe,draft,2026-06-
 ITA-1870-1919,Italy (1870-1919),1870,1919,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,ITA-1866-1870,ITA-1919-2025
 ITA-1919-2025,Italy,1919,2025,national,ITA,325,Europe,draft,2026-04-12,cshapes-2.0,325,1919,assigned,,ITA-1861-1919,
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,colonial,ITA,325,Europe,draft,2026-06-25,,,,unassigned,,OTT-1908-1912,GRC-1947-2025
-ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,national,ITS,,Africa,draft,2026-04-13,cshapes-2.0,520,1960,proxy,636242,,SOM-1960-2025
+ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,national,ITS,,Africa,draft,2026-04-13,constructed,ITS-1908-1960,,assigned,464743,,SOM-1960-2025
 JAM-1800-2025,Jamaica,1800,2025,national,JAM,51,North America,draft,2026-04-13,cshapes-2.0,51,1886,assigned,,,
 JOL-1800-1890,Kingdom of Jolof,1800,1890,national,,,Africa,draft,2026-04-13,paine-2024,Jolof,,assigned,,,SEN-1960-2025
 JOR-1918-1920,Jordan (to 1920),1918,1920,national,JOR,663,Asia,draft,2026-04-13,cshapes-2.0,663,1920,assigned,,,JOR-1920-1923
