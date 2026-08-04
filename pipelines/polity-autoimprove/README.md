@@ -53,7 +53,8 @@ do with it:
 | file | holds | issue |
 |---|---|---|
 | `state/assertions.json` | pending assertions to verify | #7, #8 |
-| `state/quarantine.csv` | verdicts where two agents disagreed | #20 |
+| `state/quarantine.csv` | verdicts where two agents disagreed (kept actionable by `reconcile_quarantine.py`) | #20 |
+| `state/quarantine_resolved.csv` | append-only audit trail of cleared quarantine rows + why | — |
 | `state/new_polity_proposals.json` | proposed polities awaiting sign-off | — |
 | `state/suspect_wiki_pages.csv` | pages verification judged wrong or too thin | #19, #25 |
 | `state/landuse_corrections.csv` | recoverable bad cells in the FAO land-use series | #4 |
@@ -136,6 +137,16 @@ apply_verdicts.py      deterministic execution with contract validation — rero
                        alias row + ledger fixed · not_a_polity -> ignored_labels.csv ·
                        new_polity -> new_polity_proposals.json (feed new_polity
                        .workflow.js) · uncertain/disagreement -> quarantine.csv
+reconcile_quarantine   housekeeping: drops quarantine rows whose situation is
+  .py                  resolved — ledger now `correct`/`fixed` (banked), or the
+                       assertion no longer routes to the quarantined `candidate`
+                       (route_changed: a new polity, an alias or a matcher fix
+                       moved it, so the recorded dispute is about a routing that
+                       no longer exists). Route read from assertions.json when
+                       present, else re-derived through matchlib; unresolvable
+                       rows are KEPT. Every dropped row is appended to
+                       state/quarantine_resolved.csv with reason + date and
+                       printed — never silently discarded. Idempotent; --dry-run.
 ```
 
 Onboarding a NEW dataset = run `00_intake.py` on it (`--source-tag mydata`),
@@ -356,6 +367,7 @@ back-projects modern country borders onto historical production/trade data.
 python pipelines/polity-autoimprove/01_match_and_findings.py     # match + review units, filtered by ledger
 python pipelines/polity-autoimprove/02_territorial_evidence.py   # attach numeric territorial evidence
 python pipelines/polity-autoimprove/04_territory_basis.py        # classify each polity's territory_basis (1860-1961 sweep)
+python pipelines/polity-autoimprove/reconcile_quarantine.py      # clear resolved quarantine rows (--dry-run to preview)
 
 # the agent loop (Workflow tool) — audit -> reconcile -> fix -> integrate -> cleanup
 #   Workflow({ scriptPath: "pipelines/polity-autoimprove/autoimprove.workflow.js", args: {...} })
