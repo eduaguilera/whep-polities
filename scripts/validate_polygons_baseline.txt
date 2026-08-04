@@ -34,7 +34,6 @@
 # 13 rows remain, from 20.
 ALK-1867-1959   # [extract] assigned: USA.2_1
 CAN-1800-1866   # [compose] proxy: gadm-ON+QC+NB+NS+PE
-CAN-1866-1870   # [no-id] estimate: NA
 FRIN-1816-1954   # [compose] estimate: composed-union-puducherry-karikal-mahe-yanam-chandernagore
 IDN-BLB-1949-1951   # [compose] proxy: IDN.1_1+IDN.20_1
 IDN-JVM-1949-1951   # [compose] proxy: IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1
@@ -42,7 +41,5 @@ IDN-OTH-1949-1951   # [compose] proxy: IDN-complement-JVM-BLB
 PTIND-1816-1961   # [no-id] estimate: None
 RYU-1937-1945   # [extract] proxy: JPN.38_1
 RYU-1945-1972   # [extract] proxy: JPN.38_1
-SER-1918-1945   # [no-id] estimate: NA
-TRS-1947-1954   # [no-id] estimate: NA
 
 GCT-1919-1956   # [compose] recipe verified in build_gct_1919_1956(), unregistered pending the BTL typing question (issue 47)
