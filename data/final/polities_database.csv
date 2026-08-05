@@ -463,8 +463,8 @@ MMR-1852-1885,Upper Burma (1852-1885),1852,1885,national,MMR,,Asia,draft,2026-04
 MMR-1885-2025,Myanmar,1885,2025,national,MMR,,Asia,draft,2026-04-12,cliopatria,Burma,1967,polygon_vintage_drift,,MMR-1852-1885,
 MMR-LWR-1852-1885,British Lower Burma (1852-1885),1852,1885,colonial,MMR,,Asia,draft,2026-06-30,gadm-4.1,MMR.2_1+MMR.13_1+MMR.15_1,,unassigned,116000,MMR-1826-1852,MMR-1885-2025
 MNE-1878-1913,Montenegro (to 1913),1878,1913,national,MNE,341,Europe,draft,2026-04-12,cshapes-europe,341,1886,assigned,,,MNE-1913-1915
-MNE-1913-1915,Montenegro (1913-1915),1913,1915,national,MNE,341,Europe,draft,2026-04-12,cshapes-2.0,341,1886,assigned,,MNE-1878-1913,F248-1918-1919
-MNE-1913-1918,Montenegro (1913-1918),1913,1918,national,MNE,341,Europe,draft,2026-04-15,cshapes-2.0,341,1915,assigned,,MNE-1878-1913,
+MNE-1913-1915,Montenegro (1913-1915),1913,1915,national,MNE,341,Europe,retired,2026-04-12,cshapes-2.0,341,1886,assigned,,MNE-1878-1913,MNE-1913-1918
+MNE-1913-1918,Montenegro (1913-1918),1913,1918,national,MNE,341,Europe,draft,2026-04-15,cshapes-2.0,341,1915,assigned,,MNE-1878-1913,F248-1918-1919
 MNE-2006-2025,Montenegro,2006,2025,national,MNE,341,Europe,draft,2026-04-12,cshapes-2.0,341,2006,assigned,,SCG-1992-2006,
 MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,national,MNG,,Asia,draft,2026-04-13,cshapes-2.0,712,1921,assigned,,,MNG-1921-2025
 MNG-1921-2025,Mongolia,1921,2025,national,MNG,712,Asia,draft,2026-04-13,cshapes-2.0,712,1921,assigned,,MNG-1911-1921,
