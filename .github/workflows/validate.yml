@@ -77,6 +77,18 @@ name: Validate database
 #                            assumption that it needed the raw geodata sources, which it does
 #                            not.
 #
+#   validate_stated_areas    TUNISIA. Six IIA yearbook editions, 1911-1937, all state 125,130 km² —
+#                            while TUN-1800-1881 carries 43,752 (paine-2024, 0.35x) and
+#                            TUN-1881-2025 carries 155,482 (cshapes-2.0, 1.24x). BOTH polygons are
+#                            wrong, in opposite directions, and the 3.55x step between them at 1881
+#                            is entirely the two conventions meeting. Every other area check here
+#                            compares one GIS product to another; this compares to what the
+#                            statistical authority that PUBLISHED THE DATA believed the territory
+#                            to be, which is the figure a per-km² denominator has to match.
+#                            Compares against the RANGE the source states, not one figure: 61 of
+#                            159 repeated (label, year) pairs disagree across editions, up to
+#                            5.45x, so picking one statement picks an edition arbitrarily.
+#
 #   validate_polygon_validity 41 of 703 polygons fail is_valid, which quietly weakens
 #                            validate_spatial_containment and validate_family_areas — both read
 #                            the same geometries, and an invalid one makes contains/area
@@ -270,6 +282,10 @@ jobs:
         if: '!cancelled()'
         run: python3 pipelines/polity-autoimprove/04_territory_basis.py --check
 
+      - name: source_stated_areas.csv still matches the yearbooks
+        if: '!cancelled()'
+        run: python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
+
       - name: Polygons — area agreement, claimed-but-absent, reviewed-means-documented
         if: '!cancelled()'
         run: python3 scripts/validate_polygons.py
@@ -277,6 +293,10 @@ jobs:
       - name: No new invalid geometry in the published GeoPackage
         if: '!cancelled()'
         run: python3 scripts/validate_polygon_validity.py
+
+      - name: Polygons agree with the areas the sources state for themselves
+        if: '!cancelled()'
+        run: python3 scripts/validate_stated_areas.py
 
       - name: Wiki pages only name things that exist
         if: '!cancelled()'

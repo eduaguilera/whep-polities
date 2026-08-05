@@ -57,6 +57,7 @@ python3 scripts/write_faostat_area_map.py --check
 python3 scripts/write_label_alias_map.py --check
 python3 scripts/update_wiki_index.py --check
 python3 pipelines/polity-autoimprove/04_territory_basis.py --check
+python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 python3 scripts/write_feature_index.py --check
 
 # provenance and internal consistency
@@ -88,6 +89,7 @@ python3 scripts/validate_alias_year_coverage.py
 # geometry
 python3 scripts/validate_polygons.py
 python3 scripts/validate_polygon_validity.py
+python3 scripts/validate_stated_areas.py
 python3 scripts/validate_polygon_period_fit.py
 python3 scripts/validate_polygon_binding_determinism.py
 python3 scripts/validate_spatial_containment.py
