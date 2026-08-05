@@ -465,17 +465,12 @@ CASES = (
         "observed_rows",
         "a renamed column, which every reader sees as None rather than as an error",
     ),
-    # validate_polygon_binding_determinism.py is NOT here, and the reason is the whole
-    # point of this file. Its mutation IS staged and does fire locally -- setting
-    # VNM-1887-1954's polygon_feature_year back to 1893 makes the gate exit 1 and name
-    # the row. But the gate needs data/geodata/**, which is GITIGNORED, so in CI it can
-    # resolve no bindings at all, exits 0, and this harness correctly reported it as
-    # "PASSED a mutation it claims to catch". Keeping the case would have meant a red CI
-    # for a gate that is simply unverifiable there. The gate now prints an explicit SKIP
-    # rather than a bare pass, and is marked local-only in the README, so an inert run is
-    # visible instead of looking like a verification. Mutation-tested by hand on 2026-08-05
-    # (three ways: reintroduce the defect, drop a live baseline entry, baseline a fixed
-    # row) -- which is weaker than a standing claim, and is the honest state.
+    (
+        "validate_polygon_binding_determinism.py",
+        mutate_order_dependent_binding,
+        "VNM-1887-1954",
+        "a polygon binding whose feature is chosen by shapefile row order",
+    ),
     (
         "audit_family_shadowing.py",
         mutate_shadowing_twin,
@@ -580,12 +575,14 @@ WRITABLE = {
     # binding against the features it could have matched. Without it the gate sees no
     # bindings at all and fails for the wrong reason, which is how this list was found.
     # The .zip in that directory is deliberately not staged (12 MB, unread).
+    # Reads the COMMITTED feature index, not the 19 MB shapefile it was first staged with
+    # (issue 103). That is what made this case possible at all: the shapefile is gitignored,
+    # so in CI the gate resolved nothing, exited 0, and this harness correctly reported it
+    # as a gate that cannot fail. The index carries the same candidates with their file
+    # order, so the case now runs everywhere.
     "validate_polygon_binding_determinism.py": (
         "polities_database.csv",
-        "data/geodata/cshapes-2.0/CShapes-2.0.shp",
-        "data/geodata/cshapes-2.0/CShapes-2.0.dbf",
-        "data/geodata/cshapes-2.0/CShapes-2.0.shx",
-        "data/geodata/cshapes-2.0/CShapes-2.0.prj",
+        "polygon_feature_index.csv",
     ),
     "validate_code_year_agreement.py": ("polities_database.csv",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),

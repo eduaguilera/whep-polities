@@ -105,12 +105,38 @@ def main() -> int:
     with open(CSV_PATH, encoding="utf-8") as fh:
         rows = [r for r in csv.DictReader(fh) if r["wiki_status"] not in DEAD]
 
+    # PREFER THE COMMITTED INDEX (issue 103). data/geodata/** is gitignored, so reading the
+    # shapefiles makes this gate inert in CI -- it verified nothing there, exited 0, and had
+    # to lose its selftest case because the harness rightly called that a gate that cannot
+    # fail. data/final/polygon_feature_index.csv carries the same candidates with their file
+    # order, written by scripts/write_feature_index.py and kept honest by its --check.
+    #
+    # The shapefile is still used when the index lacks a source, so a newly fetched source
+    # is covered before anyone regenerates the index.
+    index = {}
+    index_path = os.path.join(REPO, "data/final/polygon_feature_index.csv")
+    if os.path.exists(index_path):
+        with open(index_path, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                def num(v):
+                    try:
+                        return int(float(v))
+                    except (TypeError, ValueError):
+                        return None
+                index.setdefault(row["source"], []).append(
+                    (row["feature_id"], num(row["start_year"]), num(row["end_year"]))
+                )
+
     # Cache each source's features as (id_value, start_year, end_year), in FILE ORDER --
     # the order is the whole point, so it must not be sorted.
     cache = {}
     missing_sources = set()
 
     def features(slug):
+        if slug in index:
+            entry = cfg.get(slug)
+            if entry is not None:
+                return index[slug], entry, (entry.get("temporal") or {})
         if slug in cache:
             return cache[slug]
         entry = cfg.get(slug)

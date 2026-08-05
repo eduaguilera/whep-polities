@@ -209,6 +209,12 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/write_faostat_area_map.py --check
 
+      - name: The polygon feature index still matches its sources
+        # SKIPs in CI, where data/geodata is gitignored: rebuilding from a partial
+        # set of sources would delete the rows of every unfetched one. It verifies
+        # locally, which is where the index is regenerated.
+        run: python3 scripts/write_feature_index.py --check
+
       - name: Consumer manifest matches the database
         if: '!cancelled()'
         run: python3 scripts/write_manifest.py --check
@@ -294,11 +300,8 @@ jobs:
         run: python3 scripts/crosscheck_matchers.py
 
       - name: Polygon bindings are decided by the data, not by shapefile row order
-        # Prints an explicit SKIP here: this gate needs data/geodata/**, which is
-        # gitignored, so in CI it can resolve no bindings. Kept in the workflow so it
-        # starts working the moment a source is available, and so its inertness is
-        # visible in the log rather than looking like a verification. Mutation-tested
-        # locally; see the note in scripts/selftest_gates.py for why it has no case.
+        # Reads data/final/polygon_feature_index.csv, so this runs for real in CI (issue
+        # 103). It previously needed the gitignored shapefiles and verified nothing here.
         run: python3 scripts/validate_polygon_binding_determinism.py
 
       - name: Polygons — no swallowed neighbour, no discontinuous family
