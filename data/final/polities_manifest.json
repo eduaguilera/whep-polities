@@ -146,13 +146,13 @@
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
-  "sha256": "63d69d17ca6495d2a34f6bb1d1d9baf85e3452eb4234e3e97ed11b1aaee341d5",
+  "sha256": "acb78d8be086ef3ddfbf9d8a1e69d664582e8ac8b7cef76eee4f1bdc4322ea11",
   "mappings": 281,
   "areas": 228
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "849857a5845ecbde311fbe563c3334113c4007f317d112a7809eba78cd21b892",
+  "sha256": "0f085ea40300b8301f15a8632b1dc4afec94e9e477f459a7b1746f1fa84274d4",
   "aliases": 869,
   "labels": 470,
   "sources": [

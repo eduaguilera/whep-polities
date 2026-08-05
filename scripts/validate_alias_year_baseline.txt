@@ -30,12 +30,8 @@ British Virgin Islands	faostat	VGB-1800-2025
 COS	mueller-synthetic-n	CRI-1800-2025
 Cape Verde	lassaletta-grassland-share	CPV-1886-1975
 Cape Verde Islands	fao1952	CPV-1886-1975
-China Manchuria	fao1952	CHN-1945-1947
-China Manchuria	fao1952	CHN-1947-1949
-China Manchuria	fao1952	CHN-1949-1950
 China Manchuria	fao1952	CHN-1950-2025
 China Manchuria	fao1952	MAN-1932-1945
-China, Manchuria Province of	mitchell	MAN-1945-1950
 Christmas Island	faostat	CXR-1946-1958
 Czech Republic		CZE-1993-2025
 DR Congo		COD-1960-2025
@@ -61,9 +57,7 @@ Gold Coast and Br Togoland	fao1952	GCT-1919-1956
 Gold Coast and British Togoland	fao1952	GCT-1919-1956
 Gold Coast and British togoland	fao1952	GCT-1919-1956
 Greenland	faostat	GRL-1800-2025
-Guam	fao1952	GUM-1898-1950
 Guam	fao1952	GUM-1950-2025
-Guam	faostat	GUM-1898-1950
 HAI	mueller-synthetic-n	HTI-1800-2025
 HON	mueller-synthetic-n	HND-1800-2025
 Indonesia	fao1952	IDN-1800-1945
@@ -72,7 +66,6 @@ Indonesia Java and Madura	fao1952	IDN-JVM-1949-1951
 Indonesia Other islands	fao1952	IDN-OTH-1949-1951
 Italian East Africa		AOI-1936-1941
 Ivory Coast		CIV-1960-2025
-Japan	fao1952	JPN-1895-1945
 Korea South	fao1952	KRS-1910-1945
 Lao		LAO-1954-2025
 Libya	fao1952	LBY-1943-1949
@@ -125,7 +118,6 @@ USSR		F228-1940-1945
 USSR		F228-1945-1991
 USSR	faostat	F228-1945-1991
 United Kingdom	faostat	GBR-1921-2025
-United States Virgin Islands	faostat	DWI-1800-1917
 United States Virgin Islands	faostat	VIR-1917-2025
 Virgin Is US	fao1952	VIR-1917-2025
 Virgin Islands US	fao1952	VIR-1917-2025
@@ -136,9 +128,6 @@ Windward Islands  Grenada	fao1952	GRD-1800-2025
 Yemen	fao1952	MKY-1918-1962
 ZAR	mueller-synthetic-n	COD-1960-2025
 Zanzibar and Pemba	fao1952	ZNZ-1890-1963
-algeria		DZA-1831-1886
-algeria		DZA-1886-1902
-algeria		DZA-1902-1919
 algeria		DZA-1919-1962
 algeria		DZA-1962-2025
 australia		AUS-1901-2025
@@ -153,29 +142,13 @@ burma		MMR-1885-2025
 burma	mitchell	MMR-LWR-1852-1885
 cape province		CAP-1800-1910
 china 22 provinces	fao1952	CHN-1932-1945
-china 22 provinces	fao1952	CHN-1945-1947
-china 22 provinces	fao1952	CHN-1947-1949
-china 22 provinces	fao1952	CHN-1949-1950
 china taiwan		TWN-1945-2025
 china, mainland		CHN-1800-1895
 china, mainland		CHN-1895-1913
-china, mainland		CHN-1913-1914
-china, mainland		CHN-1914-1921
-china, mainland		CHN-1921-1932
-china, mainland		CHN-1932-1945
-china, mainland		CHN-1945-1947
-china, mainland		CHN-1947-1949
-china, mainland		CHN-1949-1950
 china, mainland		CHN-1950-2025
-china, manchuria province of		CHN-1921-1932
-china, manchuria province of		CHN-1945-1947
 china, manchuria province of		CHN-1947-1949
 china, manchuria province of		CHN-1950-2025
-china, manchuria province of		MAN-1932-1945
 cyprus	iia	CYP-1879-2025
-czech republic		F51-1918-1938
-czech republic		F51-1938-1945
-czech republic		F51-1945-1947
 czech republic		F51-1947-1993
 czechoslovakia		F51-1947-1993
 czechoslovakia	juan	CZE-1804-1918
@@ -194,10 +167,7 @@ hawaii		HAWI-1898-1959
 indochina cambodia		KHM-1907-1953
 indochina viet nam		FID-1887-1954
 israel		ISR-1948-1967
-israel		PAL-1920-1948
 israel/palestine		PAL-1920-1948
-italy		ITA-1861-1866
-italy		ITA-1866-1870
 italy		ITA-1870-1919
 italy	iia	SAR-1800-1860
 japan		JPN-1945-1952
@@ -212,61 +182,36 @@ palau	iia	GCAR-1899-1914
 panama canal zone	fao1952	CZN-1903-1979
 reunion		REU-1816-1946
 reunion	fao1952	REU-1946-2025
-romania		ROU-1859-1913
-romania		ROU-1913-1918
-romania		ROU-1918-1919
-romania		ROU-1919-1920
-romania		ROU-1920-1940
-romania		ROU-1940-1947
 romania		ROU-1947-2025
-russian federation		F228-1905-1914
-russian federation		F228-1914-1917
-russian federation		F228-1917-1918
-russian federation		F228-1918-1920
 russian federation		F228-1920-1921
-russian federation		F228-1921-1940
-russian federation		F228-1940-1945
 russian federation		RUS-1991-2014
 russian federation		RUS-2014-2025
 serbia		F248-1918-1919
-serbia		F248-1919-1920
 serbia		F248-1920-1947
 serbia		F248-1947-1991
 serbia		F248-1991-1992
 serbia		SCG-1992-2006
 serbia		SER-1816-1878
-serbia		SER-1878-1913
 serbia		SER-1913-1918
-serbia		SER-1918-1945
 serbia		SRB-2006-2008
 serbia		SRB-2008-2025
 south africa		ZAF-1910-2025
 south africa	iia	ZAF-1910-2025
 southern rhodesia		ZWE-1900-1953
 sudan		SDN-2011-2025
-sudan		SUD-1899-1934
-sudan		SUD-1934-1956
 sudan		SUD-1956-2011
 suriname	mitchell	SUR-1886-1954
 tanganyika		TAN-1922-1964
-tanzania		TAN-1891-1920
-tanzania		TAN-1920-1922
 tanzania		TAN-1922-1964
 turkey		TUR-1913-1914
 union of south africa		ZAF-1910-2025
 united states and dependent territories	fao1952	USA-1867-1959
 united states of america		USA-1800-1803
 united states of america		USA-1803-1848
-united states of america		USA-1848-1867
-united states of america		USA-1867-1959
 united states of america		USA-1959-2025
 united states of america	iia	USA-1800-1803
 united states of america	iia	USA-1803-1848
-united states of america	iia	USA-1848-1867
-united states of america	iia	USA-1867-1959
 united states of america	iia	USA-1959-2025
-united states of america	juan	USA-1867-1959
-united states of america	mitchell	USA-1867-1959
 viet nam		VNM-1887-1954
 viet nam		VNM-1975-2025
 yemen	iia	MKY-1918-1962

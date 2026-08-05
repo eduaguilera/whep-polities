@@ -1,3 +1,7 @@
+# Cleared 2026-08-05 by the Group A clip (issue 90): 7 chains stopped overlapping when the
+# earlier alias's inclusive year_end was reduced by one to stop claiming its successor's
+# first year -- china/manchuria, guam, israel, italy, romania, tanzania, us virgin islands.
+# Chains whose ranges touch: 25 -> 18.
 # Chains whose consecutive alias ranges touch, so a boundary year resolves by
 # match order. See scripts/validate_alias_chain_overlaps.py for why this gates
 # rather than being fixed in bulk, and issue #54 for the recommendation.
@@ -13,21 +17,14 @@ cape verde||lassaletta-grassland-share
 china 22 provinces||fao1952
 china manchuria||fao1952
 china, mainland||
-china, manchuria province of||
 czech republic||
 greece||
-guam||fao1952
-israel||
-italy||
-romania||
 russian federation||
 serbia||
 sudan||
 syria||
-tanzania||
 turkey||
 united states of america||
 united states of america||iia
-united states virgin islands||faostat
 ussr||
 western sahara||faostat

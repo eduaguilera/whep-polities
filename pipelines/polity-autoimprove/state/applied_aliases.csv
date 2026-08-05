@@ -38,12 +38,12 @@ Germany Western,fao1952,1938,1948,Western Germany / Western Occupation Zones,WZO
 Germany Western,fao1952,1949,1951,West Germany,F78-1949-1990,high,FAO 1952 'Germany Western' from 1949: FRG formally established 23 May 1949; CShapes gwcode=260 polygon (~249000 km²),5
 cape province,,1800,1910,,CAP-1800-1910,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,1816,1878,,SER-1816-1878,medium,split from SER-1816-1913; Principality of Serbia pre-independence,
-serbia,,1878,1913,,SER-1878-1913,medium,split from SER-1816-1913; Kingdom of Serbia post-Berlin Congress,
+serbia,,1878,1912,,SER-1878-1913,medium,split from SER-1816-1913; Kingdom of Serbia post-Berlin Congress,
 serbia,,1913,1918,,SER-1913-1918,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,2008,2025,,SRB-2008-2025,medium,reused from stopped run wf_62a587d4 audit,
 serbia,,1918,1919,Serbia within Kingdom of Serbs Croats and Slovenes (1918-1919),F248-1918-1919,medium,year-ranged predecessor chain,
-serbia,,1919,1920,Serbia within Kingdom of Serbs Croats and Slovenes (1919-1920),F248-1919-1920,medium,year-ranged predecessor chain,
-serbia,,1920,1945,Serbia within Yugoslavia (1920-1945),SER-1918-1945,high,IIA/Mitchell data labelled 'serbia' 1921-1945 covers Serbian sub-territory (~88000 km2); routing to F248-1920-1947 (~255000 km2) would overstate ~3x,568
+serbia,,1919,1919,Serbia within Kingdom of Serbs Croats and Slovenes (1919-1920),F248-1919-1920,medium,year-ranged predecessor chain,
+serbia,,1920,1944,Serbia within Yugoslavia (1920-1945),SER-1918-1945,high,IIA/Mitchell data labelled 'serbia' 1921-1945 covers Serbian sub-territory (~88000 km2); routing to F248-1920-1947 (~255000 km2) would overstate ~3x,568
 serbia,,1945,1947,Yugoslavia (1945-1947) — serbia sub-territory data approximation,F248-1920-1947,low,no granular Serbia-within-SFRY polity exists; approximation pending SER-1945-1991 creation,
 serbia,,1947,1991,Yugoslavia (1947-1991) — serbia sub-territory data approximation,F248-1947-1991,low,no granular Serbia-within-SFRY polity exists; approximation pending SER-1945-1991 creation,
 serbia,,1991,1992,Serbia within Yugoslavia/SFR dissolution (1991-1992),F248-1991-1992,medium,year-ranged predecessor chain,
@@ -59,11 +59,11 @@ china taiwan,,1895,1944,,TWN-1895-1945,high,FAO1952 label for Taiwan under Japan
 china taiwan,,1945,2025,,TWN-1945-2025,high,colonial-period split fix,
 Formosa,,1895,1945,,TWN-1895-1945,high,Federico-Tena label,
 germany eastern,,1949,1990,,F77-1949-1990,medium,reused from stopped run wf_62a587d4 audit,
-israel,,1920,1948,,PAL-1920-1948,medium,reused from stopped run wf_62a587d4 audit,
+israel,,1920,1947,,PAL-1920-1948,medium,reused from stopped run wf_62a587d4 audit,
 israel,,1948,1967,,ISR-1948-1967,medium,reused from stopped run wf_62a587d4 audit,
 tanganyika,,1922,1964,,TAN-1922-1964,medium,reused from stopped run wf_62a587d4 audit,
-sudan,,1899,1934,,SUD-1899-1934,medium,reused from stopped run wf_62a587d4 audit,
-sudan,,1934,1956,,SUD-1934-1956,medium,reused from stopped run wf_62a587d4 audit,
+sudan,,1899,1933,,SUD-1899-1934,medium,reused from stopped run wf_62a587d4 audit,
+sudan,,1934,1955,,SUD-1934-1956,medium,reused from stopped run wf_62a587d4 audit,
 sudan,,1956,2011,,SUD-1956-2011,medium,reused from stopped run wf_62a587d4 audit,
 sudan,,2011,2025,,SDN-2011-2025,medium,reused from stopped run wf_62a587d4 audit,
 union of south africa,,1910,2025,,ZAF-1910-2025,medium,reused from stopped run wf_62a587d4 audit,
@@ -71,15 +71,15 @@ viet nam,,1887,1954,,VNM-1887-1954,high,"sub-territory: Vietnam component of Fre
 viet nam,,1975,2025,,VNM-1975-2025,medium,reused from stopped run wf_62a587d4 audit,
 british west indies jamaica,,1800,2025,,JAM-1800-2025,medium,reused from stopped run wf_62a587d4 audit,
 southern rhodesia,,1900,1953,,ZWE-1900-1953,medium,reused from stopped run wf_62a587d4 audit,
-"china, manchuria province of",,1921,1932,,CHN-1921-1932,medium,split from CHN-1921-1945 at 1932; Manchuria was Chinese 1921-1932,
-"china, manchuria province of",,1932,1945,,MAN-1932-1945,medium,reused from stopped run wf_62a587d4 audit,
-"china, manchuria province of",,1945,1947,,CHN-1945-1947,medium,reused from stopped run wf_62a587d4 audit,
+"china, manchuria province of",,1921,1931,,CHN-1921-1932,medium,split from CHN-1921-1945 at 1932; Manchuria was Chinese 1921-1932,
+"china, manchuria province of",,1932,1944,,MAN-1932-1945,medium,reused from stopped run wf_62a587d4 audit,
+"china, manchuria province of",,1945,1946,,CHN-1945-1947,medium,reused from stopped run wf_62a587d4 audit,
 "china, manchuria province of",,1947,1949,,CHN-1947-1949,medium,reused from stopped run wf_62a587d4 audit,
 "china, manchuria province of",,1950,2025,,CHN-1950-2025,medium,reused from stopped run wf_62a587d4 audit,
 burma,,1826,1852,,MMR-1826-1852,medium,reused from stopped run wf_62a587d4 audit,
 burma,,1885,2025,,MMR-1885-2025,medium,reused from stopped run wf_62a587d4 audit,
-tanzania,,1891,1920,,TAN-1891-1920,medium,reused from stopped run wf_62a587d4 audit,
-tanzania,,1920,1922,,TAN-1920-1922,medium,reused from stopped run wf_62a587d4 audit,
+tanzania,,1891,1919,,TAN-1891-1920,medium,reused from stopped run wf_62a587d4 audit,
+tanzania,,1920,1921,,TAN-1920-1922,medium,reused from stopped run wf_62a587d4 audit,
 tanzania,,1922,1964,,TAN-1922-1964,medium,reused from stopped run wf_62a587d4 audit,
 indochina cambodia,,1907,1953,,KHM-1907-1953,medium,reused from stopped run wf_62a587d4 audit,
 russian federation,,1991,2014,,RUS-1991-2014,medium,reused from stopped run wf_62a587d4 audit,
@@ -88,26 +88,26 @@ hawaii,,1898,1959,Territory of Hawaii,HAWI-1898-1959,high,new polity routed; lab
 Germany Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed; Saar protectorate 1947-57 (pre-1947 Saar=Germany),
 France Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed,
 Saar,,1947,1957,Saar Protectorate,SAA-1947-1957,high,new polity routed,
-czech republic,,1919,1938,,F51-1918-1938,high,year-ranged alias: interwar Czechoslovakia covers 1919-1938 Czech data,603
-czech republic,,1938,1945,,F51-1938-1945,high,year-ranged alias: WWII-period Czechoslovakia covers 1938-1945 Czech data,603
-czech republic,,1945,1947,,F51-1945-1947,high,year-ranged alias: postwar Czechoslovakia covers 1945-1947 Czech data,603
-russian federation,,1906,1914,Russian Empire (1905-1914),F228-1905-1914,high,data labelled 'russian federation' pre-1917 measures Russian Empire territory; modern RF did not exist until 1991,
-russian federation,,1914,1917,Russian Empire (1914-1917),F228-1914-1917,high,data labelled 'russian federation' 1914-1917 measures wartime Russian Empire; modern RF did not exist until 1991,
-russian federation,,1917,1918,Russia (1917-1918),F228-1917-1918,high,provisional state after February Revolution; RF did not exist until 1991,
-russian federation,,1918,1920,RSFSR (1918-1920),F228-1918-1920,high,RSFSR is direct territorial predecessor of modern RF; RF did not exist until 1991,
+czech republic,,1919,1937,,F51-1918-1938,high,year-ranged alias: interwar Czechoslovakia covers 1919-1938 Czech data,603
+czech republic,,1938,1944,,F51-1938-1945,high,year-ranged alias: WWII-period Czechoslovakia covers 1938-1945 Czech data,603
+czech republic,,1945,1946,,F51-1945-1947,high,year-ranged alias: postwar Czechoslovakia covers 1945-1947 Czech data,603
+russian federation,,1906,1913,Russian Empire (1905-1914),F228-1905-1914,high,data labelled 'russian federation' pre-1917 measures Russian Empire territory; modern RF did not exist until 1991,
+russian federation,,1914,1916,Russian Empire (1914-1917),F228-1914-1917,high,data labelled 'russian federation' 1914-1917 measures wartime Russian Empire; modern RF did not exist until 1991,
+russian federation,,1917,1917,Russia (1917-1918),F228-1917-1918,high,provisional state after February Revolution; RF did not exist until 1991,
+russian federation,,1918,1919,RSFSR (1918-1920),F228-1918-1920,high,RSFSR is direct territorial predecessor of modern RF; RF did not exist until 1991,
 russian federation,,1920,1921,RSFSR (1920-1921),F228-1920-1921,high,RSFSR is direct territorial predecessor of modern RF; RF did not exist until 1991,
-russian federation,,1921,1940,RSFSR/USSR (1921-1940),F228-1921-1940,high,data measures Russian core of USSR; RF did not exist until 1991,
-russian federation,,1940,1945,USSR (1940-1945),F228-1940-1945,high,data measures Russian core of USSR; RF did not exist until 1991,
+russian federation,,1921,1939,RSFSR/USSR (1921-1940),F228-1921-1940,high,data measures Russian core of USSR; RF did not exist until 1991,
+russian federation,,1940,1944,USSR (1940-1945),F228-1940-1945,high,data measures Russian core of USSR; RF did not exist until 1991,
 russian federation,,1945,1960,USSR (1945-1991),F228-1945-1991,high,data measures Russian core of USSR; RF did not exist until 1991,
 united states of america,,1800,1803,United States of America,USA-1800-1803,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
 united states of america,,1803,1848,United States of America,USA-1803-1848,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
-united states of america,,1848,1867,United States of America,USA-1848-1867,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
-united states of america,,1867,1959,United States of America,USA-1867-1959,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
+united states of america,,1848,1866,United States of America,USA-1848-1867,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
+united states of america,,1867,1958,United States of America,USA-1867-1959,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
 united states of america,,1959,2025,United States of America,USA-1959-2025,high,year-ranged alias for time-sliced USA family (full span 1800-2025),141
 united states of america,iia,1800,1803,United States of America,USA-1800-1803,high,source-restricted iia alias; year-ranged USA family,141
 united states of america,iia,1803,1848,United States of America,USA-1803-1848,high,source-restricted iia alias; year-ranged USA family,141
-united states of america,iia,1848,1867,United States of America,USA-1848-1867,high,source-restricted iia alias; year-ranged USA family,141
-united states of america,iia,1867,1959,United States of America,USA-1867-1959,high,source-restricted iia alias; year-ranged USA family,141
+united states of america,iia,1848,1866,United States of America,USA-1848-1867,high,source-restricted iia alias; year-ranged USA family,141
+united states of america,iia,1867,1958,United States of America,USA-1867-1959,high,source-restricted iia alias; year-ranged USA family,141
 united states of america,iia,1959,2025,United States of America,USA-1959-2025,high,source-restricted iia alias; year-ranged USA family,141
 italy,iia,,1860,Kingdom of Sardinia (pre-unification Italy),SAR-1800-1860,high,year-ranged alias: IIA 'italy'/ita rows pre-1861 measure Sardinian/pre-unification aggregate; SAR-1800-1860 has Cliopatria polygon assigned,
 japan,,1945,1952,Japan (occupied),JPN-1945-1952,high,polity exists in DB; omitted from resolver resolved_family,
@@ -122,16 +122,16 @@ france,,1919,2025,France,FRA-1919-2025,high,year-ranged split at 1919 Alsace-Lor
 australia,,1800,1900,,AUS-1800-1901,high,year-ranged aggregate routing for pre-Federation Australia,118
 australia,,1901,2025,,AUS-1901-2025,high,year-ranged aggregate routing for post-Federation Australia,118
 French Equat Africa,,1939,1951,French Equatorial Africa (AEF),AEF-1910-1960,high,standard abbreviation; fao1952 source; data years within polity span,110
-romania,,1859,1913,Romania,ROU-1859-1913,high,iso rou + year-ranged dispatch to ROU family,
-romania,,1913,1918,Romania,ROU-1913-1918,high,iso rou + year-ranged dispatch to ROU family,
-romania,,1918,1919,Romania,ROU-1918-1919,high,iso rou + year-ranged dispatch to ROU family,
-romania,,1919,1920,Romania,ROU-1919-1920,high,iso rou + year-ranged dispatch to ROU family,
-romania,,1920,1940,Romania,ROU-1920-1940,high,iso rou + year-ranged dispatch to ROU family,
-romania,,1940,1947,Romania (1940-1947),ROU-1940-1947,high,iso rou + year-ranged dispatch; split at 1947 Treaty of Paris (northern Transylvania returned),
+romania,,1859,1912,Romania,ROU-1859-1913,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1913,1917,Romania,ROU-1913-1918,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1918,1918,Romania,ROU-1918-1919,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1919,1919,Romania,ROU-1919-1920,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1920,1939,Romania,ROU-1920-1940,high,iso rou + year-ranged dispatch to ROU family,
+romania,,1940,1946,Romania (1940-1947),ROU-1940-1947,high,iso rou + year-ranged dispatch; split at 1947 Treaty of Paris (northern Transylvania returned),
 romania,,1947,2025,Romania (1947-2025),ROU-1947-2025,high,iso rou + year-ranged dispatch; split at 1947 Treaty of Paris (northern Transylvania returned),
-algeria,,1831,1886,Algeria,DZA-1831-1886,high,name-equivalence; French colonial Algeria pre-CShapes baseline,
-algeria,,1886,1902,Algeria,DZA-1886-1902,high,name-equivalence; French colonial Algeria 1886-1902,
-algeria,,1902,1919,Algeria,DZA-1902-1919,high,name-equivalence; French colonial Algeria post-Sahara annexation,
+algeria,,1831,1885,Algeria,DZA-1831-1886,high,name-equivalence; French colonial Algeria pre-CShapes baseline,
+algeria,,1886,1901,Algeria,DZA-1886-1902,high,name-equivalence; French colonial Algeria 1886-1902,
+algeria,,1902,1918,Algeria,DZA-1902-1919,high,name-equivalence; French colonial Algeria post-Sahara annexation,
 algeria,,1919,1962,Algeria,DZA-1919-1962,high,name-equivalence; French colonial Algeria IIA period (1905-1945 active),
 algeria,,1962,2025,Algeria,DZA-1962-2025,high,name-equivalence; independent Algeria,
 viet nam,,1955,1974,Republic of Vietnam,RVN-1954-1975,high,"Mitchell western stats used ""viet nam"" exclusively for South Vietnam 1955-1974",
@@ -139,13 +139,13 @@ south africa,iia,1910,2025,South Africa,ZAF-1910-2025,high,name-equivalence; iso
 U of S Africa,fao1952,1910,1961,Union of South Africa,ZAF-1910-2025,high,abbreviation of Union of South Africa; existing alias maps full form; no polygon_vintage_drift for 1948-1951 data,65
 argentina,iia,1909,1945,Argentina,ARG-1902-2025,high,name-equivalence; iso match (arg); full IIA data range 1909-1945 within ARG-1902-2025 span (1902-2025); retargeted from ARG-1800-2025 after split 2026-07-01; 88 rows flagged but 84 already matched via iso — residual 88 unmatched rows have year=NA (data-quality gap not a routing gap),88
 china 22 provinces,fao1952,1937,1945,China,CHN-1932-1945,high,name-variant: FAO designation for China proper excl. Manchuria; re-routed from CHN-1921-1945 (superseded) to CHN-1932-1945 (composed-difference polygon excludes Manchukuo),87
-china 22 provinces,fao1952,1945,1947,China,CHN-1945-1947,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
-china 22 provinces,fao1952,1947,1949,China,CHN-1947-1949,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
-china 22 provinces,fao1952,1949,1950,China,CHN-1949-1950,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
+china 22 provinces,fao1952,1945,1946,China,CHN-1945-1947,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
+china 22 provinces,fao1952,1947,1948,China,CHN-1947-1949,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
+china 22 provinces,fao1952,1949,1949,China,CHN-1949-1950,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
 china 22 provinces,fao1952,1950,1951,China,CHN-1950-2025,high,name-variant: FAO designation for China proper excl. Manchuria; CShapes polygon already excludes Manchukuo from 1932,87
-czech republic,,1919,1938,Czechoslovakia (1918-1938),F51-1918-1938,high,IIA data (flax/hops/wheat/rye tens-of-thousands ha) matches Bohemia-Moravia scale ~79k km2; not full Czechoslovakia ~140k km2 but closest polity for Czech Lands 1919-1938,
-czech republic,,1939,1945,Czechoslovakia (1938-1945),F51-1938-1945,medium,German occupation period; Czech Lands agricultural data recorded under Protectorate of Bohemia-Moravia geography; output magnitudes consistent with pre-war Czech Lands,
-czech republic,,1946,1947,Czechoslovakia (1945-1947),F51-1945-1947,high,Restored Czechoslovakia post-WWII; Czech Lands reintegrated; borders near-identical to pre-Munich configuration minus Ruthenia (ceded to USSR 1945),
+czech republic,,1919,1937,Czechoslovakia (1918-1938),F51-1918-1938,high,IIA data (flax/hops/wheat/rye tens-of-thousands ha) matches Bohemia-Moravia scale ~79k km2; not full Czechoslovakia ~140k km2 but closest polity for Czech Lands 1919-1938,
+czech republic,,1939,1944,Czechoslovakia (1938-1945),F51-1938-1945,medium,German occupation period; Czech Lands agricultural data recorded under Protectorate of Bohemia-Moravia geography; output magnitudes consistent with pre-war Czech Lands,
+czech republic,,1946,1946,Czechoslovakia (1945-1947),F51-1945-1947,high,Restored Czechoslovakia post-WWII; Czech Lands reintegrated; borders near-identical to pre-Munich configuration minus Ruthenia (ceded to USSR 1945),
 Somalia,fao1952,1939,1951,Italian Somaliland,ITS-1908-1960,high,banana and cotton lint exports are signature products of Italian Somaliland; 1939-1951 data years fall within ITS-1908-1960 span; 1950-1960 was UN Trust Territory (AFIS) still coded ITS-1908-1960,
 korea,mitchell,1949,1960,South Korea,KOR-1948-2025,high,post-1948 Korea data from Mitchell refers to Republic of Korea (South Korea); North Korea data inaccessible to Western compilers; agricultural magnitudes (~100k km2 territory) consistent with RoK,
 somalia,iia,1920,1959,British Somaliland Protectorate,BSS-1884-1960,medium,pre-1960 'somalia'/'som' label covers northern British Somaliland; BSS routing appropriate for data scoped to Berbera/northern territory; aggregate figures should route to ITS-1908-1960 (~78% of combined area) — see wiki oq-bss-somalia-label-routing,81
@@ -159,13 +159,13 @@ South West Africa,fao1952,1937,1951,Namibia (1920-1990),NAM-1920-1990,high,name-
 reunion,,1816,1946,Réunion,REU-1816-1946,high,name-equivalence,
 "china, mainland",,1800,1895,China (mainland),CHN-1800-1895,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1895,1913,China (mainland),CHN-1895-1913,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
-"china, mainland",,1913,1914,China (mainland),CHN-1913-1914,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
-"china, mainland",,1914,1921,China (mainland),CHN-1914-1921,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
-"china, mainland",,1921,1932,China (mainland),CHN-1921-1932,high,FAO/IIA label for China excl. Taiwan; split at 1932 (Manchukuo); routes to all CHN slots,
-"china, mainland",,1932,1945,China (mainland),CHN-1932-1945,high,FAO/IIA label for China excl. Taiwan; split at 1932 (Manchukuo); routes to all CHN slots,
-"china, mainland",,1945,1947,China (mainland),CHN-1945-1947,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
-"china, mainland",,1947,1949,China (mainland),CHN-1947-1949,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
-"china, mainland",,1949,1950,China (mainland),CHN-1949-1950,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
+"china, mainland",,1913,1913,China (mainland),CHN-1913-1914,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
+"china, mainland",,1914,1920,China (mainland),CHN-1914-1921,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
+"china, mainland",,1921,1931,China (mainland),CHN-1921-1932,high,FAO/IIA label for China excl. Taiwan; split at 1932 (Manchukuo); routes to all CHN slots,
+"china, mainland",,1932,1944,China (mainland),CHN-1932-1945,high,FAO/IIA label for China excl. Taiwan; split at 1932 (Manchukuo); routes to all CHN slots,
+"china, mainland",,1945,1946,China (mainland),CHN-1945-1947,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
+"china, mainland",,1947,1948,China (mainland),CHN-1947-1949,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
+"china, mainland",,1949,1949,China (mainland),CHN-1949-1950,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 "china, mainland",,1950,2025,China (mainland),CHN-1950-2025,high,FAO/IIA label for China excl. Taiwan; routes to all CHN slots,
 zimbabwe,,1953,1964,Southern Rhodesia (within Federation 1953-1964),SRH-1953-1964,high,ISO zwe data 1953-1964 measures Southern Rhodesia alone (~390610 km²); routing to FRN (~1260000 km²) would overstate ~3×,
 indochina laos,,1936,1951,Laos (1893-1953),LAO-1893-1953,high,FAO label for Lao sub-territory within French Indochina (~196820 km²); routing to FID-1887-1954 (~740000 km²) would overstate ~3x,59
@@ -175,7 +175,7 @@ Ryukyu Islands,,1937,1944,Ryukyu Islands / Okinawa Prefecture (Japanese),RYU-193
 Ryukyu Islands,,1945,1951,Ryukyu Islands (US Administration),RYU-1945-1972,high,new polity routed; distinct from JPN-1945-1952 home islands (~377000 km²); Ryukyus under US military/civil administration 1945-1972,
 viet nam,iia,,,Vietnam (French Indochina),VNM-1887-1954,high,sub-territory routing for IIA year=NA rows; Vietnam component of French Indochina only,58
 British Borneo North Borneo,,1937,1951,British North Borneo,BNB-1881-1963,high,"British Borneo North Borneo -> BNB-1881-1963 (years 1937-1951; FAO 1952 sub-entry for Chartered Company / Crown Colony of North Borneo, northeast Borneo ~72620 km2, now Sabah Malaysia)",
-Japan,fao1952,1895,1945,Japanese Empire,JPN-1895-1945,high,name-equivalence,57
+Japan,fao1952,1895,1944,Japanese Empire,JPN-1895-1945,high,name-equivalence,57
 burkina faso,iia,1919,1932,Upper Volta (1919-1932),BFA-1919-1932,high,year-ranged alias: Upper Volta first colonial period; routing to AOF-1895-1960 would overstate territory ~17x (~272k km2 vs ~4.77M km2),68
 British Borneo Brunei,,,,,BRN-1888-2025,high,FAO 1952 sub-entry pattern; Brunei suffix unambiguously identifies Brunei Protectorate (~5765 km²); full data range 1937-1951,
 papua new guinea,iia,1920,1940,Territory of New Guinea / Territory of Papua (combined IIA series 1920-1940),TPAP-1906-1949,low,IIA 1920-1940 administrative anchor only; COMBINED series covers TPAP+TNGU (~2x overstatement); tobacco 15.7x and cacao 2.6x step-changes confirm TNGU plantation output entering post-1920; FAO 1952 confirms two distinct reporting units; NOT comparable to FAO data or post-1949 PNG series,
@@ -186,7 +186,7 @@ French Guiana,iia,1816,1945,French Guiana (Colony),GUF-1816-1946,high,year-range
 french guiana,iia,1816,1945,French Guiana (Colony),GUF-1816-1946,high,year-ranged alias lowercase for IIA/fao1952 data 1909-1945; colonial period,85
 French Guiana,fao1952,1946,2025,French Guiana (Overseas Department),GUF-1946-2025,high,year-ranged alias for fao1952 data 1946-1951; post-DOM transition,
 french guiana,,1946,2025,French Guiana (Overseas Department),GUF-1946-2025,high,year-ranged alias lowercase for post-1946 data; post-DOM transition,
-Guam,fao1952,1898,1950,Territory of Guam,GUM-1898-1950,high,year-ranged alias for fao1952 Guam data 1937-1951,
+Guam,fao1952,1898,1949,Territory of Guam,GUM-1898-1950,high,year-ranged alias for fao1952 Guam data 1937-1951,
 reunion,fao1952,1946,2025,Réunion,REU-1946-2025,high,post-1946 FAO data routes to DOM successor polity; island territory unchanged at 1946 administrative transition,47
 British Borneo Sarawak,fao1952,1937,1951,Sarawak (Brooke Raj / Crown Colony),BSW-1841-1963,high,FAO 1952 sub-entry for Brooke Raj / Crown Colony of Sarawak; northwest Borneo ~124276 km²; distinct from BNB-1881-1963 (northeast Borneo ~72620 km²) and BRN-1888-2025,
 Trieste,fao1952,1947,1951,Free Territory of Trieste,TRS-1947-1954,high,FAO separate reporting entity; FTT not Italian territory 1947-1954; ~737 km² vs ~300000 km² Italy,
@@ -201,9 +201,9 @@ Libya Tripolitania,fao1952,1943,1951,British Military Administration of Tripolit
 Tripolitania,fao1952,1943,1951,British Military Administration of Tripolitania,TRP-1943-1951,high,FAO 1952 short-form label for western Libyan province; same territory as Libya Tripolitania; 2 rows 1949-1951,2
 Libya Cyrenaica,fao1952,1949,1951,Emirate of Cyrenaica,CYR-1949-1951,high,FAO 1952 label for eastern Libyan province; ~850-900k km2 vs all-Libya ~1.6M km2; 8 rows 1948-1950,8
 China Manchuria,fao1952,1937,1945,Manchukuo,MAN-1932-1945,high,FAO 1952 label for Manchuria region; 1937-1945 = Manchukuo period; CShapes CHN polygon already excludes Manchukuo from 1932; routing to CHN would understate Chinese territory and overstate scope of Manchukuo data,
-China Manchuria,fao1952,1945,1947,China (1945-1947),CHN-1945-1947,high,FAO 1952 label for Manchuria; post-Manchukuo reintegration into Republic of China August 1945; CHN-1945-1947 polygon covers Manchuria,
-China Manchuria,fao1952,1947,1949,China (1947-1949),CHN-1947-1949,high,FAO 1952 label for Manchuria; ROC period 1947-1949; CHN-1947-1949 polygon covers Manchuria,
-China Manchuria,fao1952,1949,1950,China (1949-1950),CHN-1949-1950,high,FAO 1952 label for Manchuria; PRC period from October 1949; CHN-1949-1950 polygon covers Manchuria,
+China Manchuria,fao1952,1945,1946,China (1945-1947),CHN-1945-1947,high,FAO 1952 label for Manchuria; post-Manchukuo reintegration into Republic of China August 1945; CHN-1945-1947 polygon covers Manchuria,
+China Manchuria,fao1952,1947,1948,China (1947-1949),CHN-1947-1949,high,FAO 1952 label for Manchuria; ROC period 1947-1949; CHN-1947-1949 polygon covers Manchuria,
+China Manchuria,fao1952,1949,1949,China (1949-1950),CHN-1949-1950,high,FAO 1952 label for Manchuria; PRC period from October 1949; CHN-1949-1950 polygon covers Manchuria,
 China Manchuria,fao1952,1950,2025,China (1950-2025),CHN-1950-2025,high,FAO 1952 label for Manchuria; PRC period from 1950 onward; CHN-1950-2025 polygon covers Manchuria,
 Germany Eastern,fao1952,1938,1948,Eastern Germany / Soviet Occupation Zone,SBZ-1938-1949,high,year-ranged alias for FAO 1952 Germany Eastern pre-1949 data,
 Gold Coast,fao1952,1821,1956,Gold Coast Colony,GHA-1898-1956,high,British Crown Colony of the Gold Coast (~238533 km²); CShapes 2.0 polygon vintage 1898; fao1952 data years 1937-1951 fall within polity span 1898-1956; 'Gold Coast and Br Togoland' is a separate unresolved coverage gap,36
@@ -298,12 +298,12 @@ greece,,1830,1881,Greece,GRC-1830-1881,high,split of GRC-1830-1913 at 1881 Thess
 greece,,1881,1913,Greece,GRC-1881-1913,high,split of GRC-1830-1913 at 1881 Thessaly cession; routes post-1881 data to CShapes 1886 polygon 63711 km2,
 greece,whep-split-2026-06-29,1919,1946,Greece,GRC-1919-1947,high,year-ranged routing: Greece pre-Dodecanese (1919-1946); split from GRC-1919-2025 at 1947 Dodecanese acquisition,
 greece,whep-split-2026-06-29,1947,2025,Greece,GRC-1947-2025,high,year-ranged routing: Greece post-Dodecanese (1947-2025); split from GRC-1919-2025 at 1947 Dodecanese acquisition,
-united states of america,juan,1898,1959,United States of America,USA-1867-1959,high,belt-and-suspenders: source=juan year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
-united states of america,mitchell,1898,1959,United States of America,USA-1867-1959,high,belt-and-suspenders: source=mitchell year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
+united states of america,juan,1898,1958,United States of America,USA-1867-1959,high,belt-and-suspenders: source=juan year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
+united states of america,mitchell,1898,1958,United States of America,USA-1867-1959,high,belt-and-suspenders: source=mitchell year-ranged alias to prevent misrouting to HAWI after iso3 cleared,
 italy,,1870,1919,Italy (1870-1919),ITA-1870-1919,high,year-ranged routing: Italy 1870-1919 (post-Rome capture to Treaty of Saint-Germain); split from ITA-1861-1919,
 hungary,,1920,1920,Hungary (1920-1938),HUN-1920-1938,high,year-ranged alias: harvest-year 1920 post-Trianon rump (~93000 km2); prevents misrouting to HUN-1918-1919 pre-Trianon polygon (~325421 km2),
-italy,,1861,1866,Italy (1861-1866),ITA-1861-1866,high,year-ranged routing: Italy 1861-1866 (proclamation to Vienna Peace Treaty/Venetia cession); polygon_status=estimate (CShapes 1886 overstates ~30k km2),
-italy,,1866,1870,Italy (1866-1870),ITA-1866-1870,high,year-ranged routing: Italy 1866-1870 (Venetia acquisition to capture of Rome); polygon_status=estimate (CShapes 1886 overstates ~12k km2),
+italy,,1861,1865,Italy (1861-1866),ITA-1861-1866,high,year-ranged routing: Italy 1861-1866 (proclamation to Vienna Peace Treaty/Venetia cession); polygon_status=estimate (CShapes 1886 overstates ~30k km2),
+italy,,1866,1869,Italy (1866-1870),ITA-1866-1870,high,year-ranged routing: Italy 1866-1870 (Venetia acquisition to capture of Rome); polygon_status=estimate (CShapes 1886 overstates ~12k km2),
 Libya,fao1952,1943,1949,Libya (1943-1949),LBY-1943-1949,high,plain FAO 1952 all-Libya aggregate label (distinct from sub-provincial Libya Tripolitania/Libya Cyrenaica/Libya Fezzan labels); livestock magnitudes confirm all-Libya scope: 1949 horses+mules+asses=152k vs Tripolitania-only 33k; CShapes all-Libya polygon ~1617537 km2,
 burma,mitchell,1852,1885,British Lower Burma (1852-1885),MMR-LWR-1852-1885,high,Mitchell rice-paddy series 1852-1885 records ~4M tonnes from Irrawaddy delta; impossible for Upper Burma rump (~437k km2 uplands); consistent with British Lower Burma delta economy (world leading rice exporter); routing to MMR-1852-1885 would overstate ~4.8x; Cliopatria area diff confirms ~116k km2 ceded to Britain in 1852,
 panama canal zone,fao1952,1903,1979,Panama Canal Zone,CZN-1903-1979,high,FAO 1952 verbatim label for US-administered Canal Zone (~1432 km2); 5 rows year 1951; land-area ratio of 51.8x in FAO data matches actual ratio Panama/Canal Zone (~52.7x) confirming sub-territory scope; routing to PAN-1903-1979 (~75517 km2) would overstate ~52x,5
@@ -351,11 +351,11 @@ British W Indies Jamaica,fao1952,1949,1951,Jamaica,JAM-1800-2025,high,abbreviate
 denmark the faeroes,fao1952,1800,2025,Faroe Islands,FRO-1800-2025,high,FAO 1952 sub-entry for Faroe Islands (~1399 km²); routing to DNK-1920-2025 (~43000 km²) would overstate ~30x; sub-territory/parent conflation avoided,
 Portuguese India,fao1952,1816,1961,Portuguese India (Estado da India Portuguesa),PTIND-1816-1961,high,colonial-era FAO label for Portuguese India (Goa + Daman + Diu ~3812 km2); borders stable 1816-1961; territory equals PTIND-1816-1961 polygon; no sub-territory ambiguity,
 Windward Islands  St Lucia,fao1952,1838,1962,Saint Lucia,LCA-1838-2025,high,FAO label reporting St Lucia as sub-unit of British Windward Islands colonial grouping; island qualifier identifies Saint Lucia alone (~616 km2); routing to Windward Islands aggregate (~3900 km2) would overstate ~6x; data year 1950 within LCA-1838-2025 span; matches BWI-prefixed pattern already resolved for LCA,7
-united states of america,juan,1900,1959,united states of america,USA-1867-1959,high,"assertion-verification: The source label is literally ""united states of america"" (iso_in_data=usa) with staple magnitudes (median wheat 23.3M ha, barley 4.2M ha, seed cotton 6.7M ha across 120 country-years) that are national-US-scale, not Alaska-scale. Alaska's own wiki page (wiki/polities/alk-1867-1959.md) documents it a",6076
+united states of america,juan,1900,1958,united states of america,USA-1867-1959,high,"assertion-verification: The source label is literally ""united states of america"" (iso_in_data=usa) with staple magnitudes (median wheat 23.3M ha, barley 4.2M ha, seed cotton 6.7M ha across 120 country-years) that are national-US-scale, not Alaska-scale. Alaska's own wiki page (wiki/polities/alk-1867-1959.md) documents it a",6076
 Indonesia Bali and Lombok,fao1952,1950,1951,indonesia bali and lombok,IDN-BLB-1949-1951,high,"assertion-verification: The label ""Indonesia Bali and Lombok"" is a FAO 1952 island-group sub-national reporting unit, not the whole of Indonesia; FAO 1952 explicitly disaggregated Indonesia into ""Java and Madura"", ""Bali and Lombok"", and ""Other islands"" reporting rows. The deterministic matcher routed it to IDN-1949-1969 (w",16
 ethiopia,fao1952,1936,1941,ethiopia,ETH-1936-1941,high,"assertion-verification: fao1952's ""Ethiopia"" label reports continuous values across 1934-1945 with no step consistent with the AOI aggregate (~1.7M km2) vs Ethiopia-proper (~1.0M km2) territory difference; new polity ETH-1936-1941 created to hold Ethiopia-proper-only data during the Italian occupation, releasing quarantined key ethiopia|fao1952|1937-1937",1
 ethiopia,iia,1936,1941,ethiopia,ETH-1936-1941,high,"assertion-verification: iia's ""ethiopia"" label reports continuous coffee-green series across 1932-1945 (19,800 t 1932; 16,300 t 1938; 17,000 t 1945) with no step consistent with the AOI aggregate (~1.7M km2) vs Ethiopia-proper (~1.0M km2) territory difference; new polity ETH-1936-1941 created to hold Ethiopia-proper-only data during the Italian occupation, releasing quarantined key ethiopia|iia|1938-1938",1
-"China, Manchuria Province of",mitchell,1945,1950,manchuria,MAN-1945-1950,high,"new polity created: MAN-1945-1950 (Manchuria (region, 1945-1950)) to close reporting-territory gap for Mitchell's Manchuria-region series 1945-1950 (previously folding up into national CHN rows)",
+"China, Manchuria Province of",mitchell,1945,1949,manchuria,MAN-1945-1950,high,"new polity created: MAN-1945-1950 (Manchuria (region, 1945-1950)) to close reporting-territory gap for Mitchell's Manchuria-region series 1945-1950 (previously folding up into national CHN rows)",
 Gold Coast & Br Togoland,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,"ampersand variant of the composite FAO label; routes to the COMPOSITE polity (Gold Coast + British Togoland), not GHA alone which understates by the Togoland share",
 Gold Coast and Br Tog,fao1952,1919,1956,Gold Coast and British Togoland,GCT-1919-1956,high,"abbreviated variant of the composite FAO label; routes to the COMPOSITE polity, not GHA alone",
 Armenia,faostat,1992,2024,Armenia,ARM-1991-2025,high,FAOSTAT area code 1; observed 1992-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,96333
@@ -448,7 +448,7 @@ Greece,faostat,1961,2024,Greece (1947-2025),GRC-1947-2025,high,FAOSTAT area code
 Greenland,faostat,1850,2025,Greenland,GRL-1800-2025,high,FAOSTAT area code 85; no data in scanned pins; registry map to GRL-1800-2025 (1850-2025),0
 Grenada,faostat,1961,2024,Grenada,GRD-1800-2025,high,FAOSTAT area code 86; observed 1961-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,162962
 Guadeloupe,faostat,1961,2006,Guadeloupe,GLP-1816-2025,high,FAOSTAT area code 87; observed 1961-2006 in pins faostat-production;faostat-trade-totals; iso-equal period match,11766
-Guam,faostat,1898,1950,Territory of Guam,GUM-1898-1950,high,FAOSTAT area code 88; no data in scanned pins; registry map to GUM-1898-1950 (1898-1950),0
+Guam,faostat,1898,1949,Territory of Guam,GUM-1898-1950,high,FAOSTAT area code 88; no data in scanned pins; registry map to GUM-1898-1950 (1898-1950),0
 Guatemala,faostat,1961,2024,Guatemala,GTM-1821-2025,high,FAOSTAT area code 89; observed 1961-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,224016
 Guinea,faostat,1961,2024,Guinea,GIN-1958-2025,high,FAOSTAT area code 90; observed 1961-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,152542
 Guyana,faostat,1961,2024,Guyana,GUY-1800-2025,high,FAOSTAT area code 91; observed 1961-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,174251
@@ -620,7 +620,7 @@ Viet Nam,faostat,1961,1974,Vietnam (combined reporting: DRV and RVN),F237-1954-1
 Viet Nam,faostat,1975,2024,Vietnam,VNM-1975-2025,high,FAOSTAT area code 237; observed 1975-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,170522
 Ethiopia,faostat,1993,2024,Ethiopia,ETH-1993-2025,high,FAOSTAT area code 238; observed 1993-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,102786
 British Virgin Islands,faostat,1850,2025,British Virgin Islands,VGB-1800-2025,high,FAOSTAT area code 239; no data in scanned pins; registry map to VGB-1800-2025 (1850-2025),0
-United States Virgin Islands,faostat,1850,1917,Danish West Indies,DWI-1800-1917,high,FAOSTAT area code 240; no data in scanned pins; registry map to DWI-1800-1917 (1850-1917),0
+United States Virgin Islands,faostat,1850,1916,Danish West Indies,DWI-1800-1917,high,FAOSTAT area code 240; no data in scanned pins; registry map to DWI-1800-1917 (1850-1917),0
 United States Virgin Islands,faostat,1917,2025,United States Virgin Islands,VIR-1917-2025,high,FAOSTAT area code 240; no data in scanned pins; registry map to VIR-1917-2025 (1917-2025),0
 Samoa,faostat,1961,2024,Samoa,WSM-1900-2025,high,FAOSTAT area code 244; observed 1961-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,141994
 Yugoslav SFR,faostat,1961,1990,Yugoslavia (1947-1991),F248-1947-1991,high,FAOSTAT area code 248; observed 1961-1990 in pins faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-old;faostat-production;faostat-trade-totals; manual-replace period match,112967

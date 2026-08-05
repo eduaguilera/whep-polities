@@ -11,9 +11,9 @@ Africa Orientale Italiana,,1936,1941,AOI-1936-1941,Italian East Africa (1936-194
 Alaska,fao1952,1867,1959,ALK-1867-1959,Territory of Alaska,high,39
 Albania,faostat,1961,2024,ALB-1913-2025,Albania (1913-2025),high,177572
 Albania,lassaletta-grassland-share,1961,2009,ALB-1913-2025,Albania (1913-2025),high,
-algeria,,1831,1886,DZA-1831-1886,Algeria,high,
-algeria,,1886,1902,DZA-1886-1902,Algeria,high,
-algeria,,1902,1919,DZA-1902-1919,Algeria,high,
+algeria,,1831,1885,DZA-1831-1886,Algeria,high,
+algeria,,1886,1901,DZA-1886-1902,Algeria,high,
+algeria,,1902,1918,DZA-1902-1919,Algeria,high,
 algeria,,1919,1962,DZA-1919-1962,Algeria,high,
 algeria,,1962,2025,DZA-1962-2025,Algeria,high,
 Algeria,faostat,1961,1961,DZA-1919-1962,Algeria (1919-1962),high,208548
@@ -174,16 +174,16 @@ China,trade-sources,1947,1948,CHN-1947-1949,China (1947-1949),high,
 China,trade-sources,1949,1949,CHN-1949-1950,China (1949-1950),high,
 China,trade-sources,1950,1996,CHN-1950-2025,China (PRC),high,
 china 22 provinces,fao1952,1937,1945,CHN-1932-1945,China,high,87
-china 22 provinces,fao1952,1945,1947,CHN-1945-1947,China,high,87
-china 22 provinces,fao1952,1947,1949,CHN-1947-1949,China,high,87
-china 22 provinces,fao1952,1949,1950,CHN-1949-1950,China,high,87
+china 22 provinces,fao1952,1945,1946,CHN-1945-1947,China,high,87
+china 22 provinces,fao1952,1947,1948,CHN-1947-1949,China,high,87
+china 22 provinces,fao1952,1949,1949,CHN-1949-1950,China,high,87
 china 22 provinces,fao1952,1950,1951,CHN-1950-2025,China,high,87
 China and Manchuria,fao1952,1949,1949,CHN-1949-1950,China (1949-1950),high,
 China and Manchuria,fao1952,1950,1952,CHN-1950-2025,China (1950-2025),high,
 China Manchuria,fao1952,1937,1945,MAN-1932-1945,Manchukuo,high,
-China Manchuria,fao1952,1945,1947,CHN-1945-1947,China (1945-1947),high,
-China Manchuria,fao1952,1947,1949,CHN-1947-1949,China (1947-1949),high,
-China Manchuria,fao1952,1949,1950,CHN-1949-1950,China (1949-1950),high,
+China Manchuria,fao1952,1945,1946,CHN-1945-1947,China (1945-1947),high,
+China Manchuria,fao1952,1947,1948,CHN-1947-1949,China (1947-1949),high,
+China Manchuria,fao1952,1949,1949,CHN-1949-1950,China (1949-1950),high,
 China Manchuria,fao1952,1950,2025,CHN-1950-2025,China (1950-2025),high,
 china taiwan,,1895,1944,TWN-1895-1945,,high,27
 china taiwan,,1945,2025,TWN-1945-2025,,high,
@@ -191,21 +191,21 @@ china taiwan,,1945,2025,TWN-1945-2025,,high,
 "China, Macao SAR",faostat,1961,2024,MAC-1800-2025,"China, Macao SAR",high,185164
 "china, mainland",,1800,1895,CHN-1800-1895,China (mainland),high,
 "china, mainland",,1895,1913,CHN-1895-1913,China (mainland),high,
-"china, mainland",,1913,1914,CHN-1913-1914,China (mainland),high,
-"china, mainland",,1914,1921,CHN-1914-1921,China (mainland),high,
-"china, mainland",,1921,1932,CHN-1921-1932,China (mainland),high,
-"china, mainland",,1932,1945,CHN-1932-1945,China (mainland),high,
-"china, mainland",,1945,1947,CHN-1945-1947,China (mainland),high,
-"china, mainland",,1947,1949,CHN-1947-1949,China (mainland),high,
-"china, mainland",,1949,1950,CHN-1949-1950,China (mainland),high,
+"china, mainland",,1913,1913,CHN-1913-1914,China (mainland),high,
+"china, mainland",,1914,1920,CHN-1914-1921,China (mainland),high,
+"china, mainland",,1921,1931,CHN-1921-1932,China (mainland),high,
+"china, mainland",,1932,1944,CHN-1932-1945,China (mainland),high,
+"china, mainland",,1945,1946,CHN-1945-1947,China (mainland),high,
+"china, mainland",,1947,1948,CHN-1947-1949,China (mainland),high,
+"china, mainland",,1949,1949,CHN-1949-1950,China (mainland),high,
 "china, mainland",,1950,2025,CHN-1950-2025,China (mainland),high,
 "China, mainland",faostat,1961,2024,CHN-1950-2025,China (PRC),high,269529
-"china, manchuria province of",,1921,1932,CHN-1921-1932,,medium,
-"china, manchuria province of",,1932,1945,MAN-1932-1945,,medium,
-"china, manchuria province of",,1945,1947,CHN-1945-1947,,medium,
+"china, manchuria province of",,1921,1931,CHN-1921-1932,,medium,
+"china, manchuria province of",,1932,1944,MAN-1932-1945,,medium,
+"china, manchuria province of",,1945,1946,CHN-1945-1947,,medium,
 "china, manchuria province of",,1947,1949,CHN-1947-1949,,medium,
 "china, manchuria province of",,1950,2025,CHN-1950-2025,,medium,
-"China, Manchuria Province of",mitchell,1945,1950,MAN-1945-1950,manchuria,high,
+"China, Manchuria Province of",mitchell,1945,1949,MAN-1945-1950,manchuria,high,
 "china, taiwan province of",,1895,1944,TWN-1895-1945,Taiwan,high,
 "China, Taiwan Province of",faostat,1961,2024,TWN-1945-2025,Taiwan,high,252667
 Christmas Island,faostat,1946,1958,CXR-1946-1958,Christmas Island (under Singapore administration),high,0
@@ -227,12 +227,12 @@ Cuba,lassaletta-grassland-share,1961,2009,CUB-1800-2025,Cuba,high,
 Cyprus,faostat,1961,2024,CYP-1879-2025,Cyprus,high,233146
 cyprus,iia,1879,2025,CYP-1879-2025,Cyprus,high,97
 Cyprus,lassaletta-grassland-share,1961,2009,CYP-1879-2025,Cyprus,high,
-czech republic,,1919,1938,F51-1918-1938,,high,603
-czech republic,,1919,1938,F51-1918-1938,Czechoslovakia (1918-1938),high,
-czech republic,,1938,1945,F51-1938-1945,,high,603
-czech republic,,1939,1945,F51-1938-1945,Czechoslovakia (1938-1945),medium,
-czech republic,,1945,1947,F51-1945-1947,,high,603
-czech republic,,1946,1947,F51-1945-1947,Czechoslovakia (1945-1947),high,
+czech republic,,1919,1937,F51-1918-1938,,high,603
+czech republic,,1919,1937,F51-1918-1938,Czechoslovakia (1918-1938),high,
+czech republic,,1938,1944,F51-1938-1945,,high,603
+czech republic,,1939,1944,F51-1938-1945,Czechoslovakia (1938-1945),medium,
+czech republic,,1945,1946,F51-1945-1947,,high,603
+czech republic,,1946,1946,F51-1945-1947,Czechoslovakia (1945-1947),high,
 czech republic,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high,
 Czech Republic,,1993,2025,CZE-1993-2025,Czechia,high,0
 Czechia,faostat,1993,2024,CZE-1993-2025,Czechia,high,126408
@@ -365,9 +365,9 @@ Greenland,faostat,1850,2025,GRL-1800-2025,Greenland,high,0
 Grenada,faostat,1961,2024,GRD-1800-2025,Grenada,high,162962
 GUA,mueller-synthetic-n,1821,2025,GTM-1821-2025,Guatemala,high,
 Guadeloupe,faostat,1961,2006,GLP-1816-2025,Guadeloupe,high,11766
-Guam,fao1952,1898,1950,GUM-1898-1950,Territory of Guam,high,
+Guam,fao1952,1898,1949,GUM-1898-1950,Territory of Guam,high,
 Guam,fao1952,1950,2025,GUM-1950-2025,Guam (US Territory),high,1
-Guam,faostat,1898,1950,GUM-1898-1950,Territory of Guam,high,0
+Guam,faostat,1898,1949,GUM-1898-1950,Territory of Guam,high,0
 Guatemala,faostat,1961,2024,GTM-1821-2025,Guatemala,high,224016
 Guatemala,lassaletta-grassland-share,1961,2009,GTM-1821-2025,Guatemala,high,
 Guinea,faostat,1961,2024,GIN-1958-2025,Guinea,high,152542
@@ -417,7 +417,7 @@ Iraq,faostat,1961,2024,IRQ-1932-2025,Iraq,high,176958
 Iraq,lassaletta-grassland-share,1961,2009,IRQ-1932-2025,Iraq,high,
 Ireland,faostat,1961,2024,IRL-1921-2025,Ireland,high,246559
 Ireland,lassaletta-grassland-share,1961,2009,IRL-1921-2025,Ireland,high,
-israel,,1920,1948,PAL-1920-1948,,medium,
+israel,,1920,1947,PAL-1920-1948,,medium,
 israel,,1948,1967,ISR-1948-1967,,medium,
 Israel,faostat,1961,1966,ISR-1948-1967,Israel (1948-1967),high,234671
 Israel,faostat,1967,1978,ISR-1967-1979,Israel (1967-1979),high,234671
@@ -428,8 +428,8 @@ Israel,lassaletta-grassland-share,1979,2009,ISR-1979-2025,Israel,high,
 israel/palestine,,1925,1948,PAL-1920-1948,British Mandate Palestine,high,
 israel/palestine,,1949,1949,ISR-1948-1967,Israel,medium,
 Italian East Africa,,1936,1941,AOI-1936-1941,Italian East Africa (1936-1941),high,
-italy,,1861,1866,ITA-1861-1866,Italy (1861-1866),high,
-italy,,1866,1870,ITA-1866-1870,Italy (1866-1870),high,
+italy,,1861,1865,ITA-1861-1866,Italy (1861-1866),high,
+italy,,1866,1869,ITA-1866-1870,Italy (1866-1870),high,
 italy,,1870,1919,ITA-1870-1919,Italy (1870-1919),high,
 Italy,faostat,1961,2024,ITA-1919-2025,Italy,high,278124
 italy,iia,,1860,SAR-1800-1860,Kingdom of Sardinia (pre-unification Italy),high,
@@ -438,7 +438,7 @@ Ivory Coast,,1960,2025,CIV-1960-2025,Côte d'Ivoire,high,0
 Jamaica,faostat,1961,2024,JAM-1800-2025,Jamaica,high,199570
 Jamaica,lassaletta-grassland-share,1961,2009,JAM-1800-2025,Jamaica,high,
 japan,,1945,1952,JPN-1945-1952,Japan (occupied),high,
-Japan,fao1952,1895,1945,JPN-1895-1945,Japanese Empire,high,57
+Japan,fao1952,1895,1944,JPN-1895-1945,Japanese Empire,high,57
 Japan,faostat,1961,2024,JPN-1952-2025,Japan,high,254381
 Japan,lassaletta-grassland-share,1961,2009,JPN-1952-2025,Japan,high,
 Jordan,faostat,1961,2024,JOR-1946-2025,Jordan,high,214926
@@ -625,22 +625,22 @@ reunion,,1816,1946,REU-1816-1946,Réunion,high,
 reunion,fao1952,1946,2025,REU-1946-2025,Réunion,high,47
 Reunion,lassaletta-grassland-share,1961,2009,REU-1946-2025,Reunion (French Overseas Department),high,
 ROM,mueller-synthetic-n,1947,2025,ROU-1947-2025,Romania,high,
-romania,,1859,1913,ROU-1859-1913,Romania,high,
-romania,,1913,1918,ROU-1913-1918,Romania,high,
-romania,,1918,1919,ROU-1918-1919,Romania,high,
-romania,,1919,1920,ROU-1919-1920,Romania,high,
-romania,,1920,1940,ROU-1920-1940,Romania,high,
-romania,,1940,1947,ROU-1940-1947,Romania (1940-1947),high,
+romania,,1859,1912,ROU-1859-1913,Romania,high,
+romania,,1913,1917,ROU-1913-1918,Romania,high,
+romania,,1918,1918,ROU-1918-1919,Romania,high,
+romania,,1919,1919,ROU-1919-1920,Romania,high,
+romania,,1920,1939,ROU-1920-1940,Romania,high,
+romania,,1940,1946,ROU-1940-1947,Romania (1940-1947),high,
 romania,,1947,2025,ROU-1947-2025,Romania (1947-2025),high,
 Romania,faostat,1961,2024,ROU-1947-2025,Romania (1947-2025),high,234453
 RoW,crops-manure-n,1850,2022,ROW-1850-2023,Rest of World,high,
-russian federation,,1906,1914,F228-1905-1914,Russian Empire (1905-1914),high,
-russian federation,,1914,1917,F228-1914-1917,Russian Empire (1914-1917),high,
-russian federation,,1917,1918,F228-1917-1918,Russia (1917-1918),high,
-russian federation,,1918,1920,F228-1918-1920,RSFSR (1918-1920),high,
+russian federation,,1906,1913,F228-1905-1914,Russian Empire (1905-1914),high,
+russian federation,,1914,1916,F228-1914-1917,Russian Empire (1914-1917),high,
+russian federation,,1917,1917,F228-1917-1918,Russia (1917-1918),high,
+russian federation,,1918,1919,F228-1918-1920,RSFSR (1918-1920),high,
 russian federation,,1920,1921,F228-1920-1921,RSFSR (1920-1921),high,
-russian federation,,1921,1940,F228-1921-1940,RSFSR/USSR (1921-1940),high,
-russian federation,,1940,1945,F228-1940-1945,USSR (1940-1945),high,
+russian federation,,1921,1939,F228-1921-1940,RSFSR/USSR (1921-1940),high,
+russian federation,,1940,1944,F228-1940-1945,USSR (1940-1945),high,
 russian federation,,1945,1960,F228-1945-1991,USSR (1945-1991),high,
 russian federation,,1991,2014,RUS-1991-2014,,medium,
 russian federation,,2014,2025,RUS-2014-2025,,medium,
@@ -670,11 +670,11 @@ Saudi Arabia,lassaletta-grassland-share,1961,2009,SAU-1924-2025,Saudi Arabia,hig
 Senegal,faostat,1961,2024,SEN-1960-2025,Senegal,high,206509
 Senegal,lassaletta-grassland-share,1961,2009,SEN-1960-2025,Senegal,high,
 serbia,,1816,1878,SER-1816-1878,,medium,
-serbia,,1878,1913,SER-1878-1913,,medium,
+serbia,,1878,1912,SER-1878-1913,,medium,
 serbia,,1913,1918,SER-1913-1918,,medium,
 serbia,,1918,1919,F248-1918-1919,Serbia within Kingdom of Serbs Croats and Slovenes (1918-1919),medium,
-serbia,,1919,1920,F248-1919-1920,Serbia within Kingdom of Serbs Croats and Slovenes (1919-1920),medium,
-serbia,,1920,1945,SER-1918-1945,Serbia within Yugoslavia (1920-1945),high,568
+serbia,,1919,1919,F248-1919-1920,Serbia within Kingdom of Serbs Croats and Slovenes (1919-1920),medium,
+serbia,,1920,1944,SER-1918-1945,Serbia within Yugoslavia (1920-1945),high,568
 serbia,,1945,1947,F248-1920-1947,Yugoslavia (1945-1947) — serbia sub-territory data approximation,low,
 serbia,,1947,1991,F248-1947-1991,Yugoslavia (1947-1991) — serbia sub-territory data approximation,low,
 serbia,,1991,1992,F248-1991-1992,Serbia within Yugoslavia/SFR dissolution (1991-1992),medium,
@@ -721,8 +721,8 @@ SRM,mueller-synthetic-n,1992,2006,SCG-1992-2006,Serbia and Montenegro,high,
 SSD,crops-manure-n,1956,2010,SUD-1956-2011,Sudan (1956-2011),high,
 st helena,fao1952,1931,1951,SHN-1834-1967,Saint Helena,high,
 St Pierre and Miquelon,fao1952,1937,1951,SPM-1816-2025,Saint Pierre and Miquelon,high,8
-sudan,,1899,1934,SUD-1899-1934,,medium,
-sudan,,1934,1956,SUD-1934-1956,,medium,
+sudan,,1899,1933,SUD-1899-1934,,medium,
+sudan,,1934,1955,SUD-1934-1956,,medium,
 sudan,,1956,2011,SUD-1956-2011,,medium,
 sudan,,2011,2025,SDN-2011-2025,,medium,
 Sudan,faostat,2012,2024,SDN-2011-2025,Sudan,high,35724
@@ -748,8 +748,8 @@ Syrian Arab Republic,lassaletta-grassland-share,1961,1966,SYR-1946-1967,Syrian A
 Syrian Arab Republic,lassaletta-grassland-share,1967,2009,SYR-1967-2025,Syrian Arab Republic,high,
 Tajikistan,faostat,1992,2024,TJK-1991-2025,Tajikistan,high,71520
 tanganyika,,1922,1964,TAN-1922-1964,,medium,
-tanzania,,1891,1920,TAN-1891-1920,,medium,
-tanzania,,1920,1922,TAN-1920-1922,,medium,
+tanzania,,1891,1919,TAN-1891-1920,,medium,
+tanzania,,1920,1921,TAN-1920-1922,,medium,
 tanzania,,1922,1964,TAN-1922-1964,,medium,
 Tanzania,faostat,1964,2025,TZA-1964-2025,United Republic of Tanzania,high,0
 Thailand,faostat,1961,2024,THA-1909-2025,Thailand,high,252783
@@ -799,23 +799,23 @@ United Republic of Tanzania,lassaletta-grassland-share,1964,2009,TZA-1964-2025,T
 united states and dependent territories,fao1952,1867,1959,USA-1867-1959,United States and dependent territories,high,32
 united states of america,,1800,1803,USA-1800-1803,United States of America,high,141
 united states of america,,1803,1848,USA-1803-1848,United States of America,high,141
-united states of america,,1848,1867,USA-1848-1867,United States of America,high,141
-united states of america,,1867,1959,USA-1867-1959,United States of America,high,141
+united states of america,,1848,1866,USA-1848-1867,United States of America,high,141
+united states of america,,1867,1958,USA-1867-1959,United States of America,high,141
 united states of america,,1959,2025,USA-1959-2025,United States of America,high,141
 United States of America,faostat,1961,2024,USA-1959-2025,United States of America,high,275022
 united states of america,iia,1800,1803,USA-1800-1803,United States of America,high,141
 united states of america,iia,1803,1848,USA-1803-1848,United States of America,high,141
-united states of america,iia,1848,1867,USA-1848-1867,United States of America,high,141
-united states of america,iia,1867,1959,USA-1867-1959,United States of America,high,141
+united states of america,iia,1848,1866,USA-1848-1867,United States of America,high,141
+united states of america,iia,1867,1958,USA-1867-1959,United States of America,high,141
 united states of america,iia,1959,2025,USA-1959-2025,United States of America,high,141
-united states of america,juan,1898,1959,USA-1867-1959,United States of America,high,
-united states of america,juan,1900,1959,USA-1867-1959,united states of america,high,6076
-united states of america,mitchell,1898,1959,USA-1867-1959,United States of America,high,
+united states of america,juan,1898,1958,USA-1867-1959,United States of America,high,
+united states of america,juan,1900,1958,USA-1867-1959,united states of america,high,6076
+united states of america,mitchell,1898,1958,USA-1867-1959,United States of America,high,
 United States of America (the),trade-sources,1827,1847,USA-1803-1848,United States (1803-1848),high,
 United States of America (the),trade-sources,1848,1866,USA-1848-1867,United States (1848-1867),high,
 United States of America (the),trade-sources,1867,1958,USA-1867-1959,United States (1867-1959),high,
 United States of America (the),trade-sources,1959,2014,USA-1959-2025,United States of America,high,
-United States Virgin Islands,faostat,1850,1917,DWI-1800-1917,Danish West Indies,high,0
+United States Virgin Islands,faostat,1850,1916,DWI-1800-1917,Danish West Indies,high,0
 United States Virgin Islands,faostat,1917,2025,VIR-1917-2025,United States Virgin Islands,high,0
 united states virgin islands,iia,1909,1916,DWI-1800-1917,Danish West Indies,high,
 united states virgin islands,iia,1917,1945,VIR-1917-2025,United States Virgin Islands,high,
