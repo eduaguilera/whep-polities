@@ -492,7 +492,7 @@ MYS-1957-1963,Malaysia (1957-1963),1957,1963,national,MYS,820,Asia,draft,2026-04
 MYS-1963-1965,Malaysia (1963-1965),1963,1965,national,MYS,820,Asia,draft,2026-04-13,cshapes-2.0,820,1963,assigned,,MYS-1957-1963,MYS-1965-2025
 MYS-1965-2025,Malaysia,1965,2025,national,MYS,820,Asia,draft,2026-04-12,cshapes-2.0,820,1965,assigned,,MYS-1963-1965,
 NAM-1884-1886,Namibia,1884,1886,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1920,assigned,,,NAM-1886-1915
-NAM-1886-1915,Namibia (1886-1915),1886,1915,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1886,assigned,,NAM-1884-1886,NAM-1915-1920
+NAM-1886-1915,Namibia (1886-1915),1886,1915,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1887,assigned,824760,NAM-1884-1886,NAM-1915-1920
 NAM-1915-1920,Namibia (1915-1920),1915,1920,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1915,assigned,,NAM-1886-1915,NAM-1920-1990
 NAM-1920-1990,Namibia (1920-1990),1920,1990,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1920,assigned,,NAM-1915-1920,NAM-1990-2025
 NAM-1990-2025,Namibia (1990-2025),1990,2025,national,NAM,565,Africa,draft,2026-04-13,cshapes-2.0,565,1990,assigned,,NAM-1920-1990,
@@ -582,7 +582,7 @@ RNAM-1850-2021,North America Other,1850,2021,aggregate,RNAM,,North America,draft
 ROCE-1850-2021,Oceania Other,1850,2021,aggregate,ROCE,,Oceania,draft,2026-06-11,reporting-areas,ROCE-1850-2021,,assigned,,,
 ROU-1859-1913,Romania (to 1913),1859,1913,national,ROU,360,Europe,draft,2026-04-12,cshapes-europe,360,1886,assigned,,,ROU-1913-1918
 ROU-1913-1918,Romania (1913-1918),1913,1918,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1913,assigned,,ROU-1859-1913,ROU-1918-1919
-ROU-1918-1919,Romania (1918-1919),1918,1919,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1920,assigned,295000,ROU-1913-1918,ROU-1919-1920
+ROU-1918-1919,Romania (1918-1919),1918,1919,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1921,assigned,295000,ROU-1913-1918,ROU-1919-1920
 ROU-1919-1920,Romania (1919-1920),1919,1920,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1919,assigned,,ROU-1918-1919,ROU-1920-1940
 ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1920,assigned,,ROU-1919-1920,ROU-1940-1947
 ROU-1940-1947,Romania (1940-1947),1940,1947,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1940,estimate,194000,ROU-1920-1940,ROU-1947-2025
