@@ -517,7 +517,7 @@ NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,national,NLD,,Europe,d
 NLD-1830-2025,Netherlands,1830,2025,national,NLD,,Europe,draft,2026-04-12,cliopatria,Netherlands,1950,assigned,,NLD-1800-1830,
 NNG-1949-1963,Netherlands New Guinea / West Irian (1949-1969),1949,1969,colonial,IDN,,Oceania,draft,2026-07-24,cshapes-2.0,851,1955,assigned,410361,IDN-1945-1949,IDN-1949-1969
 NNI-1899-1904,Northern Nigeria (1899-1904),1899,1904,national,NNI,385,Africa,draft,2026-04-13,cshapes-2.0,4784,1899,assigned,,,NNI-1904-1913
-NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,national,NNI,385,Africa,draft,2026-04-13,cshapes-2.0,4784,1905,assigned,660625,NNI-1899-1904; NWR-1900-1905,NGA-1914-1960
+NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,national,NNI,385,Africa,draft,2026-04-13,cshapes-2.0,4784,1905,assigned,660625,NNI-1899-1904,NGA-1914-1960
 NOR-1800-2025,Norway,1800,2025,national,NOR,385,Europe,draft,2026-04-13,cshapes-2.0,385,1905,assigned,,,
 NPL-1800-1816,Greater Nepal,1800,1816,national,NPL,,Asia,draft,2026-04-13,cliopatria,Nepal,1800,assigned,,,NPL-1816-2025
 NPL-1816-2025,Nepal,1816,2025,national,NPL,,Asia,draft,2026-04-12,cliopatria,Nepal,1929,assigned,,NPL-1800-1816,
