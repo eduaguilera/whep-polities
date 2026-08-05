@@ -78,26 +78,19 @@ BASELINE = frozenset({
     # was reclassified subnational (2026-08-04), which is the check working -- a new
     # link has to justify itself.
     ("ALK-1867-1959", "predecessor", "F228-1856-1905"),
-    # The GRL/ISL cluster, revealed 2026-08-05 when parse_links stopped splitting on ',' alone
-    # and 145 previously-invisible links became checkable. Non-touching is expected here: these
-    # are overseas relationships across open ocean, the same shape as the ALK/Russia entry above.
+    # The GRL/ISL cluster that appeared here on 2026-08-05, when the parser fix made 145
+    # previously-invisible links checkable, is GONE -- and the way it went is the point.
     #
-    # TWO THINGS ABOUT THEM ARE NOT SETTLED, and are recorded rather than implied by silence:
-    #   1. The DIRECTION looks reversed. Iceland became independent of Denmark in 1944, so
-    #      Denmark is its predecessor, not its successor. Greenland is still Danish, so a
-    #      successor of any kind is questionable.
-    #   2. Both rows run to the 2025 ceiling AND declare successors, which cannot both be true
-    #      of a live entity.
-    # Baselined so this gate returns to zero on the defect it just found (NNI/NWR); the direction
-    # question belongs to the chain-integrity work, not to a geometry check.
-    ("GRL-1800-2025", "successor", "DNK-1800-1864"),
-    ("GRL-1800-2025", "successor", "DNK-1864-1920"),
-    ("GRL-1800-2025", "successor", "DNK-1920-2025"),
-    ("GRL-1800-2025", "successor", "ISL-1800-2025"),
-    ("ISL-1800-2025", "successor", "DNK-1800-1864"),
-    ("ISL-1800-2025", "successor", "DNK-1864-1920"),
-    ("ISL-1800-2025", "successor", "DNK-1920-2025"),
-    ("ISL-1800-2025", "successor", "GRL-1800-2025"),
+    # I baselined 8 of them with the reason "non-touching is expected across open ocean", which
+    # was true and was the wrong question. The links were not overseas SUCCESSIONS at all:
+    # Greenland and Iceland each named the other, plus three Denmark periods, in `successor:` to
+    # express SOVEREIGNTY -- a relation this schema has no field for. Both rows span 1800-2025, so
+    # neither has a temporal successor, and Denmark is if anything Iceland's predecessor.
+    #
+    # A geometry gate cannot detect that. It can only measure the distance between two things it
+    # has been told are related, so it will happily confirm that a nonexistent relationship spans
+    # a plausible distance. validate_chain_integrity.py asks the prior question -- does this link
+    # make sense as chronology at all -- and the 8 entries dissolved rather than being explained.
     ("CAR-1920-1945", "predecessor", "JPN-1895-1945"),
     ("CXR-1946-1958", "predecessor", "GBM-1895-1946"),
     ("GCAR-1899-1914", "predecessor", "DEU-1871-1919"),

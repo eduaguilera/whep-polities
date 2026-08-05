@@ -396,6 +396,52 @@ def mutate_wiki_without_rebuilding(root, gpd, make_valid, affinity):
 
 
 
+def mutate_succession_cycle(root, gpd, make_valid, affinity):
+    """Make two rows whose spans OVERLAP name each other as successors, closing a cycle in
+    the chronology.
+
+    The overlap is the whole design of this case, not incidental. A cycle among
+    NON-overlapping spans is necessarily caught by the same gate's impossible-order signal
+    instead -- going round a loop has to run backwards in time somewhere -- so a cycle case
+    built from consecutive periods would prove the wrong signal and read as success. Two rows
+    that overlap can point at each other with neither edge running backwards, which is the
+    only shape where cycle detection is the sole thing standing between the defect and a
+    green run.
+
+    That is not hypothetical: it is precisely what GRL-1800-2025 and ISL-1800-2025 did before
+    2026-08-05, each naming the other as successor across identical 1800-2025 spans, to
+    express a sovereignty relation the schema has no field for.
+    """
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    live = [
+        r for r in rows
+        if (r.get("wiki_status") or "").strip() not in ("retired", "superseded")
+    ]
+    pair = None
+    for a in live:
+        for b in live:
+            if a is b:
+                continue
+            # overlapping spans, so neither successor edge can trip the order signal
+            if int(a["start_year"]) < int(b["end_year"]) and int(b["start_year"]) < int(a["end_year"]):
+                pair = (a, b)
+                break
+        if pair:
+            break
+    assert pair is not None, "no overlapping live pair to build a cycle from"
+    a, b = pair
+    a["successor"] = b["polity_code"]
+    b["successor"] = a["polity_code"]
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=list(fields))
+        writer.writeheader()
+        writer.writerows(rows)
+    return a["polity_code"]
+
+
 def mutate_double_claimed_component(root, gpd, make_valid, affinity):
     """Add a GADM component to a second aggregate, so two aggregates claim the same
     territory. Its documented first catch was exactly this -- six territories claimed
@@ -564,6 +610,13 @@ CASES = (
         "FRO",
         "one territory claimed by two aggregates, which double-counts it",
     ),
+    (
+        "validate_chain_integrity.py",
+        mutate_succession_cycle,
+        "CYCLE",
+        "a chronology that loops, between two rows whose spans overlap so that the "
+        "impossible-order signal provably cannot fire instead",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -632,6 +685,10 @@ WRITABLE = {
     # the committed database again. The default is a symlink precisely because most gates
     # only read the CSV, so a case that writes it MUST appear here.
     "validate_local_iso_codes.py": ("polities_database.csv",),
+    # Rewrites two successor fields, so a real copy is required. The default symlink would
+    # have written the cycle into the committed database -- the failure mode this harness has
+    # now caught four times.
+    "validate_chain_integrity.py": ("polities_database.csv",),
     "validate_aliases.py": (
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",

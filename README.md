@@ -89,7 +89,8 @@ python3 scripts/validate_polygon_period_fit.py
 python3 scripts/validate_polygon_binding_determinism.py
 python3 scripts/validate_spatial_containment.py
 python3 scripts/validate_family_areas.py
-python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so local only
+python3 scripts/validate_succession_geography.py   # reads the committed .gpkg; runs in CI too
+python3 scripts/validate_chain_integrity.py        # CSV + wiki only, no geometry
 
 # and the one that asks whether the checks above can fail at all
 python3 scripts/selftest_gates.py
