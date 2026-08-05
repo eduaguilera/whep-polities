@@ -608,7 +608,7 @@ RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,cshapes-2.0,1922.0,assigned,Tr
 RWK-1800-1890,Kingdom of Rwanda,1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,5
 RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year; footnote coverage caveat (FAO/IIA yearbook),53
-SAA-1947-1957,Saar Protectorate,1947,1957,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),132
+SAA-1947-1957,Saar Protectorate,1947,1957,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,132
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),14
 SAR-1800-1860,Sardinia,1800,1860,cliopatria,1815.0,assigned,True,assumed_constant,True,False,single 1815 polygon held across a 60y span (1800-1860); borders may have changed,0

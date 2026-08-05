@@ -94,6 +94,22 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Fixing the routing found 99 rows labelled `Indochina Viet Nam` that were landing on the
     # WHOLE rather than on Vietnam, which would have summed a part into its own aggregate.
     "FID-1887-1954",
+    # Occupied and divided Germany over its occupation zones AND the Saar. Both became
+    # containers on 2026-08-05 only because SAA-1947-1957's polygon was attached, which pushed
+    # each from two contained polities to three -- the zones were already inside them.
+    #
+    # The zone containment is by construction: build_deu_1945_1949() and build_deu_1949_1990()
+    # are unions of exactly those territories.
+    #
+    # THE SAAR IS DIFFERENT AND THE DOUBLE-COUNT IS REAL. Between 1947 and 1957 the Saar was
+    # detached from Germany -- a French protectorate with its own currency and customs frontier --
+    # so it sits geographically inside these polygons while being administratively outside them.
+    # Any spatial or area-weighted use that sums Germany and the Saar for those years
+    # double-counts 2,571 km2. That is 0.7% of Germany, so it is small rather than negligible,
+    # and it is a property of the history rather than of the polygons: the Saar really was inside
+    # Germany's outline and outside its administration.
+    "DEU-1945-1949",
+    "DEU-1949-1990",
     # A joint reporting unit over the two states it combines. Added when its polygon
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.
