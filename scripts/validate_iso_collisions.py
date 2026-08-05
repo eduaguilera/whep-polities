@@ -80,7 +80,8 @@ BASELINE = frozenset({
     ("LBY", "TRP-1943-1951", "CYR-1949-1951"),
     ("LBY", "TRP-1943-1951", "LBY-1950-1951"),
     ("MMR", "MMR-1852-1885", "MMR-LWR-1852-1885"),
-    ("MNE", "MNE-1913-1915", "MNE-1913-1918"),
+    # MNE pair removed 2026-08-05: MNE-1913-1915 is retired (issue 62).
+
     ("MYS", "BNB-1881-1963", "GBM-1895-1946"),
     ("MYS", "BNB-1881-1963", "MASG-1946-1963"),
     ("MYS", "BNB-1881-1963", "MYS-1946-1957"),
@@ -94,8 +95,9 @@ BASELINE = frozenset({
     ("MYS", "MYS-1946-1957", "MASG-1946-1963"),
     ("NGA", "NUP-1800-1897", "NGA-1886-1914"),
     ("PAN", "CZN-1903-1979", "PAN-1903-1979"),
-    ("PER", "PER-1825-1884", "PER-1825-1909"),
-    ("PER", "PER-1825-1909", "PER-1884-1909"),
+    # PER pairs removed 2026-08-05: PER-1825-1909 is superseded by the finer
+    # PER-1825-1884 / PER-1884-1909 split (issue 49).
+
     ("PNG", "TPAP-1906-1949", "TNGU-1920-1949"),
     ("TUR", "TUR-1920-2025", "HATAY-1938-1939"),
     ("USA", "ALK-1867-1959", "USA-1867-1959"),})

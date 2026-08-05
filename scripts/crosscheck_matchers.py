@@ -46,7 +46,10 @@ PUBLISHED = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
 
 # Known disagreements, by FAOSTAT area code. Each is an open defect, not an
 # accepted difference — see the issues named above.
-BASELINE_DIFFERENT = {131, 237, 272}
+# 272 removed 2026-08-05: retiring the duplicate SER-2006-2008 (issue 43, PR 86) left
+# one Serbia row for 2006-2007, so match.R and matchlib now agree on area 272. The
+# disagreement was a SYMPTOM of the duplicate, not an independent matcher bug.
+BASELINE_DIFFERENT = {131, 237}
 
 # Labels matchlib cannot resolve without the faostat alias, so an explicit route is
 # REQUIRED. One area, and it is genuinely nominal: the Yugoslav SFR chain sits under

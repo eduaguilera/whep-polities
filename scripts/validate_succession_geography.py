@@ -70,6 +70,13 @@ POLITIES_CSV = os.path.join(REPO, "data/final/polities_database.csv")
 POLITIES_GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
 
 BASELINE = frozenset({
+    # Alaska, purchased from Russia in 1867. The seller and an overseas possession need
+    # not touch: ALK and the Russian Empire are separated by the Bering Strait, and
+    # CShapes' 1856-1905 Russian Empire polygon post-dates the sale, so it does not
+    # include Russian America. Same shape as HAWI/USA below. Flagged when ALK-1867-1959
+    # was reclassified subnational (2026-08-04), which is the check working -- a new
+    # link has to justify itself.
+    ("ALK-1867-1959", "predecessor", "F228-1856-1905"),
     ("CAR-1920-1945", "predecessor", "JPN-1895-1945"),
     ("CXR-1946-1958", "predecessor", "GBM-1895-1946"),
     ("GCAR-1899-1914", "predecessor", "DEU-1871-1919"),

@@ -36,8 +36,8 @@ DEAD_STATUS = ("retired", "superseded")
 # (cow_code, earlier polity, later polity) for every pair already sharing a code over overlapping
 # years. Generated from the database, not hand-listed.
 BASELINE = frozenset({
-    ("135", "PER-1825-1884", "PER-1825-1909"),
-    ("135", "PER-1825-1909", "PER-1884-1909"),
+    # PER pairs removed 2026-08-05: PER-1825-1909 is superseded (issue 49).
+
     ("220", "FRA-1800-1871", "FRIN-1816-1954"),
     ("220", "FRIN-1816-1954", "FRA-1871-1919"),
     ("220", "FRIN-1816-1954", "FRA-1919-2025"),
@@ -46,7 +46,8 @@ BASELINE = frozenset({
     ("260", "WZO-1938-1949", "DEU-1945-1949"),
     ("325", "ITA-1870-1919", "ITAEG-1912-1947"),
     ("325", "ITAEG-1912-1947", "ITA-1919-2025"),
-    ("341", "MNE-1913-1915", "MNE-1913-1918"),
+    # MNE pair removed 2026-08-05: MNE-1913-1915 is retired (issue 62).
+
     ("380", "SNW-1814-1905", "SWE-1814-1905"),
     ("385", "NOR-1800-2025", "NNI-1899-1904"),
     ("385", "NOR-1800-2025", "NNI-1904-1913"),

@@ -46,8 +46,13 @@ POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 DEAD_STATUS = ("retired", "superseded")
 
 BASELINE = frozenset({
-    ("MAR-1911-1958", "MOR-1956-1958"),
-    ("SER-2006-2008", "SRB-2006-2008"),
+    # Both pairs removed 2026-08-05, fixed rather than accepted:
+    #   MOR-1956-1958 retired as a duplicate of MAR-1911-1958 (issue 82, PR 83)
+    #   SER-2006-2008 retired as a duplicate of SRB-2006-2008 (issue 43, PR 86)
+    # Both were CROSS-FAMILY duplicates, which is why validate_period_overlaps could
+    # not see either: it compares periods within one prefix. This check saw them
+    # because it compares NAMES, which is the argument for keeping a name-keyed view.
+
     ("TAN-1922-1964", "TZA-1961-1964"),
 })
 
