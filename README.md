@@ -56,6 +56,7 @@ python3 scripts/write_manifest.py --check
 python3 scripts/write_faostat_area_map.py --check
 python3 scripts/write_label_alias_map.py --check
 python3 scripts/update_wiki_index.py --check
+python3 pipelines/polity-autoimprove/04_territory_basis.py --check
 python3 scripts/write_feature_index.py --check
 
 # provenance and internal consistency
