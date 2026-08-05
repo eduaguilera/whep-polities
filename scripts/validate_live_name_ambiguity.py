@@ -54,6 +54,15 @@ import unicodedata
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
+
+# Matches the six other gates that already agree on this: validate_cow_codes,
+# validate_family_areas, validate_iso_collisions, validate_cross_family_names,
+# audit_family_shadowing and structural_change_check all define exactly this tuple.
+# This gate tested `== "retired"` alone until 2026-08-05, so it counted the 20
+# `superseded` rows as LIVE -- 728 against the repo convention's 708 -- and any
+# name it flagged where one member was superseded was an artifact of that, not an
+# ambiguity a data source could ever hit.
+DEAD_STATUS = ("retired", "superseded")
 BASELINE_PATH = os.path.join(
     REPO, "scripts/validate_live_name_ambiguity_baseline.txt"
 )
@@ -95,7 +104,7 @@ def main() -> int:
     live = []
     with open(CSV_PATH, encoding="utf-8") as fh:
         for row in csv.DictReader(fh):
-            if (row.get("wiki_status") or "").strip() == "retired":
+            if (row.get("wiki_status") or "").strip() in DEAD_STATUS:
                 continue
             try:
                 start = int(row["start_year"])

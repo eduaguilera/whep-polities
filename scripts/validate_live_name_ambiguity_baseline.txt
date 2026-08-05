@@ -1,29 +1,37 @@
 # Normalised names held by two or more LIVE polities whose years overlap, so a consumer
 # resolving a label by that name cannot pick one and returns NA.
 #
-# The remaining entries are a coarse period listed alongside its own finer sub-periods
-# (same prefix) — the consumer's view of issue 49.
+# Bidirectional: a new entry fails, and an entry that stops overlapping must be deleted.
 #
-# THREE LEFT ON 2026-08-05, all fixed rather than accepted:
+# ---------------------------------------------------------------------------------------
+# WHY THIS GATE EARNS ITS KEEP — three cases it caught that a code-keyed gate cannot
+# ---------------------------------------------------------------------------------------
+# Fixed rather than accepted, 2026-08-05:
 #   morocco     MOR-1956-1958 retired, a duplicate of MAR-1911-1958 (issue 82, PR 83)
 #   serbia      SER-2006-2008 retired, a duplicate of SRB-2006-2008 (issue 43, PR 86)
 #   montenegro  MNE-1913-1915 retired, a duplicate of MNE-1913-1918 (issue 62)
 # The first two crossed prefix families, which is why validate_period_overlaps could see
-# neither: it compares periods within one prefix. A name-keyed view caught what a
-# code-keyed one structurally cannot.
+# neither: it compares periods WITHIN one prefix. A name-keyed view caught what a
+# code-keyed one structurally cannot. Keep that reasoning even though the list is empty.
 #
-# Bidirectional: a new entry fails, and an entry that stops overlapping must be deleted.
-belize
-brazil
-china
-egypt
-ethiopia
-france
-german kamerun
-greece
-hungary
-iraq
-italy
-paraguay
-peru
-romania
+# ---------------------------------------------------------------------------------------
+# THE LIST IS NOW EMPTY, AND THAT IS ITSELF THE FINDING
+# ---------------------------------------------------------------------------------------
+# Until 2026-08-05 it held 14 names: belize, brazil, china, egypt, ethiopia, france,
+# german kamerun, greece, hungary, iraq, italy, paraguay, peru, romania. The header
+# described them as "a coarse period listed alongside its own finer sub-periods".
+#
+# ALL FOURTEEN WERE ARTIFACTS OF THIS GATE, not facts about the data. It selected live rows
+# with `== "retired"`, while the six other gates making the same distinction — validate_cow_codes,
+# validate_family_areas, validate_iso_collisions, validate_cross_family_names,
+# audit_family_shadowing and structural_change_check — all define
+# DEAD_STATUS = ("retired", "superseded"). So the 20 `superseded` rows counted as LIVE here:
+# 728 against the convention's 708. Each of the 14 was a superseded coarse period overlapping
+# the finer rows that replaced it. No data source can reach a superseded row, so not one of
+# them was ever an ambiguity a consumer could hit.
+#
+# Once the status test matched the rest of the repo, overlapping-holder names went 14 -> 0.
+#
+# The cost was never the 14 false entries. It is that a REAL new ambiguity would have arrived
+# as a 15th line among 14 known-harmless ones, in a file whose header explained them away.
+# Empty means the next addition is unambiguously a regression.
