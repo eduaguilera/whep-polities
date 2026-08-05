@@ -238,6 +238,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_period_overlaps.py
 
+      - name: No FAOSTAT area-year has two live polity answers
+        if: '!cancelled()'
+        run: python3 scripts/validate_map_area_year.py
+
       - name: Live polities carry real ISO 3166-1 codes
         if: '!cancelled()'
         run: python3 scripts/validate_iso_codes.py
