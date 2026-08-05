@@ -608,7 +608,7 @@ RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,national,RWB,515,Africa,draft,
 RWK-1800-1890,Kingdom of Rwanda,1800,1890,national,,,Africa,draft,2026-04-13,paine-2024,Rwanda,,assigned,,,TAN-1891-1920
 RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,subnational,JPN,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.32_1,,proxy,2271,JPN-1895-1945,RYU-1945-1972
 RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,national,,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.32_1,,proxy,2271,RYU-1937-1945,JPN-1952-2025
-SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,,Europe,draft,2026-06-24,none,,,unassigned,,SAC-1935-1947,F78-1949-1990
+SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,,Europe,draft,2026-06-24,gadm-4.1-adm1,DEU.12_1,,assigned,2571,SAC-1935-1947,F78-1949-1990
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,colonial,SAB,,Europe,draft,2026-06-25,,,,unassigned,,DEU-1919-1920,SAC-1935-1947
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,Europe,draft,2026-06-26,none,,,unassigned,1912,SAB-1920-1935,SAA-1947-1957
 SAR-1800-1860,Sardinia,1800,1860,national,SAR,338,Europe,draft,2026-04-12,cliopatria,Kingdom of Sardinia,1815,assigned,,,ITA-1861-1919

@@ -27,6 +27,15 @@ COUNTRIES=(
   # Added 2026-08-05 for issue 56: MDV-1800-2025's CShapes polygon measures 24 km2
   # against an official ~300, because CShapes captures only part of the atoll chain.
   MDV
+  # Added 2026-08-05 for issues 155 and 156. LBY: occupied Libya 1943-1951 was THREE separately
+  # administered territories and the database has a polygon for none of them -- TRP-1943-1951 and
+  # CYR-1949-1951 carry polygon_source `none`, and Fezzan has no row at all. FAO 1952 states the
+  # partition exactly (Cyrenaica 855,400 + Fezzan 551,100 + Tripolitania 353,000 = 1,759,500 =
+  # Libya), so adm1 regions can be unioned to each territory and asserted against those figures.
+  # DEU: the Saar. SAA-1947-1957 and SAC-1935-1947 receive 133 layer-B rows between them with no
+  # geometry, and neither cshapes-europe nor cliopatria carries a Saar feature -- checked, both
+  # return zero matches. GADM adm1 is the only remaining route.
+  LBY DEU
   DMA ESH ESP FJI FLK FRO FSM GIB GLP GRD GRL GUF GUM HMD IOT KIR KNA LCA
   LIE LUX MAF MCO MHL MNP MSR MTQ MYT NCL NFK NIU NRU PCN PLW PRI PSE PYF
   REU SGS SHN SJM SLB SMR SPM SWE SYC SXM TCA TKL TON TUV UMI VAT VCT VGB
