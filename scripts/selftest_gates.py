@@ -542,7 +542,6 @@ WRITABLE = {
         "polities_manifest.json",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
         "pipelines/faostat-era-matching/state/faostat_aliases.csv",
-        "pipelines/polity-autoimprove/state/match_confidence.csv",
     ),
     "validate_code_year_agreement.py": ("polities_database.csv",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),

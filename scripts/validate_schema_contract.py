@@ -73,10 +73,6 @@ CSV_CONTRACT = {
         "target_polity_code", "confidence", "basis", "rows", "area_code",
         "iso3", "match_route", "match_status",
     ],
-    "pipelines/polity-autoimprove/state/match_confidence.csv": [
-        "label", "source", "polity_code", "year_min", "year_max", "n_rows",
-        "method", "iso_ok", "name_ok", "confidence_class", "risk_flags",
-    ],
 }
 
 # Top-level keys of the published manifest, the consumer contract the WHEP R package
@@ -91,6 +87,23 @@ MANIFEST_KEYS = [
 # Not gated -- outside the repo, so CI cannot read it. Documented because its
 # `polity_code` column is the trap that cost the most.
 EXTERNAL = {
+    # GITIGNORED, so CI cannot see it -- a local pipeline diagnostic, not a committed
+    # artefact. Pinning it here failed CI on the very commit that added this gate:
+    # verified locally, where the file exists, and pushed. That is the same mistake this
+    # gate exists to prevent, one level up -- an assumption about a file that holds on
+    # one machine and not in CI.
+    #
+    # Documented rather than dropped, because `year_min`/`n_rows` are exactly the names
+    # behind one of the four silent wrong answers in the docstring above.
+    "pipelines/polity-autoimprove/state/match_confidence.csv": [
+        "label",          # <- not `source_label`, not `original_name`
+        "source",
+        "polity_code",    # <- not `target_polity_code`, unlike the alias registries
+        "year_min",       # <- NOT `year_start`. Reading year_start here returns None
+        "year_max",       # <-     for every row, and an empty result that looks clean.
+        "n_rows",         # <- not `rows`, not `observed_rows`, not `rows_observed`
+        "method", "iso_ok", "name_ok", "confidence_class", "risk_flags",
+    ],
     "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet": [
         "source", "source_detail", "continent",
         "country",       # <- THE LABEL. Not `source_label`, not `original_name`.
@@ -107,6 +120,26 @@ EXTERNAL = {
 def main() -> int:
     problems = []
     checked = 0
+
+    # Every gated path must be COMMITTED, or this gate passes locally and fails in CI --
+    # exactly how it failed on the commit that introduced it. Checked here so the mistake
+    # cannot be made twice. Skipped silently when git is unavailable, rather than turning
+    # a missing binary into a false alarm.
+    try:
+        import subprocess
+        tracked = set(subprocess.run(
+            ["git", "-C", REPO, "ls-files"],
+            capture_output=True, text=True, timeout=60, check=True,
+        ).stdout.split())
+        untracked = [rel for rel in CSV_CONTRACT if rel not in tracked]
+        if untracked:
+            problems.append(
+                "pinned but NOT COMMITTED, so CI cannot read them: "
+                + str(untracked)
+                + " -- move them to EXTERNAL instead of gating them"
+            )
+    except Exception:
+        pass
 
     for rel, expected in CSV_CONTRACT.items():
         path = os.path.join(REPO, rel)
