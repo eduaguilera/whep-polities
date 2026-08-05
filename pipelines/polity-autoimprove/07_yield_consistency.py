@@ -47,18 +47,18 @@ import warnings
 
 import pandas as pd
 
+import extdata
+
 warnings.filterwarnings("ignore")
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 H = os.path.join(REPO, "pipelines/polity-autoimprove/state")
-LAYER_B = os.path.expanduser("~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
-
-# Unit -> multiplier into hectares / tonnes. Anything not listed is not an area or a
-# production figure and is ignored: heads, people, bushels, gallons, hectolitres.
-AREA_UNITS = {"ha": 1.0, "hectares": 1.0, "1000 hectares": 1e3, "1000 ha": 1e3,
-              "1000000 hectares": 1e6}
-PROD_UNITS = {"tonnes": 1.0, "t": 1.0, "1000 tonnes": 1e3, "metric tons": 1.0,
-              "tons": 1.0}
+# Paths, schema assertions and the unit maps live in extdata.py, so a rename upstream
+# raises here instead of quietly yielding an empty result. Six analyses in one session
+# were wrong that way; see that module's docstring.
+LAYER_B = extdata.LAYER_B
+AREA_UNITS = extdata.AREA_UNITS
+PROD_UNITS = extdata.PROD_UNITS
 
 # Physical ceiling and floor on t/ha. Sugarcane reaches ~150 and a few fodder crops more,
 # so 200 is above every real crop rather than at the edge of a distribution.
@@ -84,7 +84,12 @@ def main() -> int:
         print(f"SKIP: {LAYER_B} not present (it lives outside the repo)")
         return 0
 
-    d = pd.read_parquet(LAYER_B)
+    # Asserts layer B's documented columns; raises rather than returning an empty frame.
+    d = extdata.load_layer_b()
+    # And assert the unit spellings this whole check depends on actually occur. Without
+    # this, an upstream change from "ha" to "hectare" would report zero paired
+    # observations and a clean pass.
+    extdata.require_any_value(d, "unit", ["ha", "tonnes"], "layer B units")
     d = d[d["value"].notna() & d["year"].notna()].copy()
     d["u"] = d["unit"].astype(str).str.lower()
 
