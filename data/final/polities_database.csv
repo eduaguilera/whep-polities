@@ -11,8 +11,8 @@ ALK-1867-1959,Territory of Alaska,1867,1959,subnational,USA,,North America,draft
 AMI-1946-1953,Amami Islands (US-administered),1946,1953,colonial,,,Asia,draft,2026-06-25,,,,unassigned,,RYU-1937-1945,JPN-1952-2025
 AND-1800-2025,Andorra,1800,2025,national,AND,,Europe,reviewed,2026-04-12,cshapes-europe,232,1816,assigned,,,
 ANG-1800-1890,Angola (to 1890),1800,1890,national,ANG,,Africa,draft,2026-04-15,cshapes-2.0,540,1886,assigned,,,ANG-1890-1891
-ANG-1890-1891,Angola (1890-1891),1890,1891,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1886,assigned,,,ANG-1891-1905
-ANG-1891-1905,Angola (1891-1905),1891,1905,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1890,assigned,,ANG-1890-1891,AGO-1816-2025
+ANG-1890-1891,Angola (1890-1891),1890,1891,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1890,assigned,1037117,,ANG-1891-1905
+ANG-1891-1905,Angola (1891-1905),1891,1905,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1891,assigned,1344272,ANG-1890-1891,AGO-1816-2025
 ANG-1905-1975,Angola (1905-1975),1905,1975,national,AGO,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,
 ANT-1816-1960,Dutch Caribbean (colonial),1816,1960,colonial,ANT,,North America,draft,2026-06-26,reporting-areas,ANT-1961-2010,,proxy,960,,ANT-1961-2010
 ANT-1961-2010,Netherlands Antilles,1961,2010,aggregate,ANT,,North America,draft,2026-06-11,reporting-areas,ANT-1961-2010,,assigned,,,
