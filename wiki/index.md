@@ -14,17 +14,17 @@ double the real polity total.)
 
 | Metric | Value |
 |---|---|
-| Polities in the database | 740 |
-| Polity pages | 740 |
+| Polities in the database | 742 |
+| Polity pages | 742 |
 | Sources ingested | 25 |
 | `status: draft` | 650 |
 | `status: reviewed` | 59 |
-| `status: superseded` / `retired` | 20 / 11 |
-| Pages with no source citation | 188 |
-| Pages citing biger-1995 | 391 |
+| `status: superseded` / `retired` | 20 / 13 |
+| Pages with no source citation | 189 |
+| Pages citing biger-1995 | 392 |
 | Open questions (`### oq-`) | 800 |
 
-**By continent:** Africa 265 · Europe 172 · Asia 160 · North America 59 · South America 43 · Oceania 39 · World 1
+**By continent:** Africa 265 · Europe 172 · Asia 160 · North America 61 · South America 43 · Oceania 39 · World 1
 
 Regenerate with `python3 scripts/update_wiki_index.py`. The authoritative
 catalog is `data/final/polities_database.csv`; the per-continent notes below
@@ -504,8 +504,8 @@ are a **curated selection**, not a complete listing.
 - [United States of America](polities/usa-1959-2025.md) — `USA-1959-2025`, draft.
 - [Mexico (to 1848)](polities/mex-1800-1848.md) — `MEX-1800-1848`, draft.
 - [Mexico](polities/mex-1848-2025.md) — `MEX-1848-2025`, draft.
-- [Canada (to 1948)](polities/can-1886-1948.md) — `CAN-1886-1948`, draft.
-- [Canada](polities/can-1948-2025.md) — `CAN-1948-2025`, reviewed.
+- [Canada (to 1948)](polities/can-1886-1948.md) — `CAN-1886-1948`, retired.
+- [Canada](polities/can-1948-2025.md) — `CAN-1948-2025`, retired.
 - [Canada (pre-Confederation)](polities/can-1800-1866.md) — `CAN-1800-1866`, draft.
 - [Belize](polities/blz-1800-2025.md) — `BLZ-1800-2025`, superseded, 0 open questions. From database floor; British Honduras colony; independence 21 Sep 1981.
 - [Costa Rica](polities/cri-1800-2025.md) — `CRI-1800-2025`, draft.

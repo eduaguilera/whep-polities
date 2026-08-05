@@ -143,13 +143,13 @@ Cameroon,faostat,1961,2024,CMR-1961-2025,Cameroon,high,216617
 Cameroon,lassaletta-grassland-share,1961,2009,CMR-1961-2025,Cameroon,high,
 canada,,1866,1869,CAN-1866-1870,Canada (original four provinces 1866-1870),high,
 canada,,1870,1885,CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),high,
-canada,,1886,1886,CAN-1886-1948,Canada (post-CPR completion 1886),high,
-canada,,1948,1948,CAN-1886-1948,Canada,high,54
-Canada,faostat,1961,2024,CAN-1948-2025,Canada,high,252243
-Canada,lassaletta-grassland-share,1961,2009,CAN-1948-2025,Canada,high,
+canada,,1886,1886,CAN-1886-1949,Canada (post-CPR completion 1886),high,
+canada,,1948,1948,CAN-1886-1949,Canada,high,54
+Canada,faostat,1961,2024,CAN-1949-2025,Canada,high,252243
+Canada,lassaletta-grassland-share,1961,2009,CAN-1949-2025,Canada,high,
 Canada,trade-sources,1867,1869,CAN-1866-1870,"Canada (original four provinces, 1866–1870)",high,
 Canada,trade-sources,1870,1885,CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),high,
-Canada,trade-sources,1886,1913,CAN-1886-1948,Canada (to 1948),high,
+Canada,trade-sources,1886,1913,CAN-1886-1949,Canada (to 1948),high,
 cape natal,mitchell,1918,1957,ZAF-1910-2025,Cape and Natal provinces (South Africa),medium,
 Cape of Good Hope,,,,CAP-1800-1910,Cape Colony,high,195
 cape province,,1800,1910,CAP-1800-1910,,medium,

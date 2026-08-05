@@ -11,11 +11,11 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "29021215365d5ec65819b99b20dccfd115c9fa11dbd1a1feaa5134711b528a7c",
+ "identity_sha256": "ab06340eea5704cc06280e9f821dc4b678b74601f74adf85c70dab247c906da1",
  "counts": {
-  "total": 740,
+  "total": 742,
   "live": 709,
-  "dead": 31
+  "dead": 33
  },
  "dead_status": [
   "retired",
@@ -27,6 +27,8 @@
   "BLZ-1800-2025",
   "BRA-1800-2025",
   "CAN-1866-1886",
+  "CAN-1886-1948",
+  "CAN-1948-2025",
   "CHN-1921-1945",
   "CZE-1947-1992",
   "DJI-1886-2025",
@@ -144,13 +146,13 @@
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
-  "sha256": "8695753a881070c5f52b039a6422722323d69c7104a8ba5d2e33017f0e0e79db",
+  "sha256": "63d69d17ca6495d2a34f6bb1d1d9baf85e3452eb4234e3e97ed11b1aaee341d5",
   "mappings": 281,
   "areas": 228
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "4e6457f9530252229b244990cc8d3f2e265a00ba06c3395576f43bc79a865f9c",
+  "sha256": "849857a5845ecbde311fbe563c3334113c4007f317d112a7809eba78cd21b892",
   "aliases": 869,
   "labels": 470,
   "sources": [
@@ -274,8 +276,8 @@
   "CAN-1800-1866",
   "CAN-1866-1870",
   "CAN-1870-1886",
-  "CAN-1886-1948",
-  "CAN-1948-2025",
+  "CAN-1886-1949",
+  "CAN-1949-2025",
   "CAP-1800-1910",
   "CAR-1920-1945",
   "CAY-1800-1886",
