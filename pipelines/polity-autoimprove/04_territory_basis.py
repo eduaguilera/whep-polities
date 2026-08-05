@@ -24,7 +24,7 @@ A polity is "territory_assumed" (needs review) when basis != measured.
 The report focuses on polities overlapping the WINDOW (default 1860-1961).
 Data magnitude per polity is attached from the layer-B matched_rows when present.
 """
-import pandas as pd, numpy as np, json, os
+import pandas as pd, numpy as np, json, os, sys
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 H = os.path.join(REPO, "pipelines/polity-autoimprove/state")
 POLDB = os.path.join(REPO, "data/final/polities_database.csv")
@@ -126,7 +126,39 @@ for _, r in pol.iterrows():
     })
 
 out = pd.DataFrame(recs)
-out.to_csv(os.path.join(H, "territory_basis.csv"), index=False)
+_DEST = os.path.join(H, "territory_basis.csv")
+
+# --check mirrors the write_*.py convention in scripts/: regenerate in memory and compare,
+# exiting 1 on drift, so staleness is a CI failure rather than something a reader has to
+# notice. Added 2026-08-05 after this file was found 122 commits behind the database it
+# describes -- 721 rows against 749, with 28 polities simply absent. A derived file with no
+# freshness check is a file that silently stops describing its input, and this one feeds the
+# territory-basis assessment that answers "is WHEP carrying 1860-1961 data on borders that
+# were not the real territory" -- so 28 missing rows read as 28 polities with nothing to
+# worry about.
+if "--check" in sys.argv:
+    import io
+    fresh = out.to_csv(index=False)
+    if not os.path.exists(_DEST):
+        print(f"FAIL: {_DEST} missing; run this script without --check")
+        raise SystemExit(1)
+    committed = open(_DEST, encoding="utf-8").read()
+    if fresh.replace("\r\n", "\n") != committed.replace("\r\n", "\n"):
+        import csv as _csv
+        cf = {r["polity_code"] for r in _csv.DictReader(io.StringIO(fresh))}
+        cc = {r["polity_code"] for r in _csv.DictReader(io.StringIO(committed))}
+        print(f"FAIL: territory_basis.csv is stale ({len(cc)} committed rows vs "
+              f"{len(cf)} regenerated)")
+        if cf - cc:
+            print(f"  in the database but MISSING from the committed file: {sorted(cf - cc)}")
+        if cc - cf:
+            print(f"  in the committed file but no longer in the database: {sorted(cc - cf)}")
+        print("  rerun: python3 pipelines/polity-autoimprove/04_territory_basis.py")
+        raise SystemExit(1)
+    print(f"OK: territory_basis.csv matches the database ({len(out)} polities)")
+    raise SystemExit(0)
+
+out.to_csv(_DEST, index=False)
 
 ORDER = ["measured", "assumed_constant", "back_projected", "unassigned"]
 print(f"classified {len(out)} polities -> state/territory_basis.csv\n")

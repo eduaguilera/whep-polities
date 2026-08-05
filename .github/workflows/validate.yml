@@ -266,6 +266,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/update_wiki_index.py --check
 
+      - name: territory_basis.csv still describes the current database
+        if: '!cancelled()'
+        run: python3 pipelines/polity-autoimprove/04_territory_basis.py --check
+
       - name: Polygons — area agreement, claimed-but-absent, reviewed-means-documented
         if: '!cancelled()'
         run: python3 scripts/validate_polygons.py
