@@ -45,13 +45,19 @@ POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 DEAD_STATUS = ("retired", "superseded")
 
 # Each entry is the pair of codes, sorted, that may overlap. See the docstring.
-BASELINE = {
-    ("BLX-1850-1999", "BLX-1921-1999"),
+BASELINE = frozenset({
+    # BLX pair removed 2026-08-05: BLX-1921-1999 is retired (issue 40). This was the
+    # LAST same-prefix overlap -- the check now reports 0.
     # Both PER pairs removed 2026-08-05: PER-1825-1909 is superseded by the 1884 split,
     # so neither pair overlaps any more. Issue 62's sibling case.
     # MNE-1913-1915 / MNE-1913-1918 removed 2026-08-05: the 1913-1915 row is retired as
     # a duplicate, so the pair no longer overlaps. Issue 62.
-}
+})
+# frozenset({...}) rather than a bare {...}: this baseline is now EMPTY, and a bare
+# empty literal is a DICT, so `set(observed) - BASELINE` raises TypeError -- the gate
+# would crash exactly when the data became correct. validate_spatial_containment
+# documents the same trap for the same reason; it bit here on 2026-08-05 when the last
+# entry (the BLX pair) was removed.
 
 CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
 
