@@ -53,7 +53,7 @@ CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
 
 # (earlier_code, later_code) pairs with a known gap between them. See the docstring:
 # most are correct, four are issue 77.
-BASELINE = {
+BASELINE = frozenset({
     ("ANT-1816-1960", "ANT-1961-2010"),
     ("BFA-1919-1932", "BFA-1947-1960"),
     ("CHL-1810-1883", "CHL-1884-1899"),
@@ -93,7 +93,7 @@ BASELINE = {
     ("TCD-1912-1919", "TCD-1920-1960"),
     ("VNM-1887-1954", "VNM-1975-2025"),
     ("ZWE-1900-1953", "ZWE-1964-1980"),
-}
+})
 
 
 def live_rows() -> list:
