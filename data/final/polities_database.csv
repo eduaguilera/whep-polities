@@ -666,7 +666,7 @@ SWE-1905-2025,Sweden,1905,2025,national,SWE,380,Europe,draft,2026-04-13,cshapes-
 SWK-1800-1894,Swazi Kingdom,1800,1894,national,,,Africa,draft,2026-04-15,paine-2024,Swazi,,assigned,,,SWZ-1894-2025
 SWZ-1894-2025,Eswatini,1894,2025,national,SWZ,572,Africa,draft,2026-04-13,cshapes-2.0,572,1902,assigned,,,
 SYC-1903-2025,Seychelles,1903,2025,national,SYC,591,Africa,draft,2026-04-13,gadm-4.1-adm0,SYC,,assigned,,MUS-1800-2025,
-SYL-1944-1953,Syria and Lebanon (combined statistical unit),1944,1953,statistical,,,Asia,draft,2026-07-01,constructed,SYL-1944-1953,1949,assigned,195632,,SYR-1946-1967; LBN-1944-2025
+SYL-1944-1953,Syria and Lebanon (combined statistical unit),1944,1953,aggregate,,,Asia,draft,2026-07-01,constructed,SYL-1944-1953,1949,assigned,195632,,SYR-1946-1967; LBN-1944-2025
 SYR-1920-1922,Syria (French Mandate),1920,1922,national,SYR,,Asia,draft,2026-04-16,cshapes-2.0,652,1920,assigned,,SYR-1918-1920,SYR-1922-1945
 SYR-1922-1945,Syria (1922-1945),1922,1945,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1922,assigned,,,SYR-1946-1967
 SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1946,assigned,,SYR-1922-1945,SYR-1967-2025

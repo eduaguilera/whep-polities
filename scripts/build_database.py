@@ -591,6 +591,34 @@ def main() -> int:
             print(f"\n  Allowed: {sorted(POLYGON_STATUS_VOCABULARY)}")
             return 1
 
+        # THE SAME DISCIPLINE FOR polity_type, for the same reason (issue 31).
+        # polygon_status sprawled to nine values, four of which no validator could see, and
+        # the fix was to enforce a vocabulary here. polity_type had begun the same drift:
+        # `statistical` was a VOCABULARY OF ONE -- SYL-1944-1953 alone -- beside 23 rows of
+        # identical kind typed `aggregate`.
+        #
+        # It matters more than tidiness because polity_type BREAKS TIES in
+        # matchlib.pick_by_year. A value nothing else uses is a value no ranking rule
+        # reaches, so a row carrying it silently sits outside whatever ordering the others
+        # obey. That is how "Malaysia" 1961 resolved to British North Borneo (issue 44).
+        POLITY_TYPE_VOCABULARY = {
+            "national", "colonial", "subnational", "aggregate",
+            "territory", "city-territory", "disputed",
+        }
+        bad_type = sorted({
+            (r["polity_code"], r["polity_type"]) for r in rows
+            if (r.get("polity_type") or "").strip()
+            and r["polity_type"].strip() not in POLITY_TYPE_VOCABULARY
+        })
+        if bad_type:
+            print("--check: FAIL — polity_type values outside the documented vocabulary")
+            for code, t in bad_type[:10]:
+                print(f"  {code}: {t!r}")
+            print(f"\n  Allowed: {sorted(POLITY_TYPE_VOCABULARY)}")
+            print("  A one-off type is not merely untidy: polity_type breaks ties in the\n"
+                  "  matcher, so a value nothing else uses is a value no ranking rule reaches.")
+            return 1
+
         # No published column may carry the literal string "NA". It means
         # missing, and a second spelling of missing is how a consumer ends up
         # treating 79 absent ISO3 codes as present.
