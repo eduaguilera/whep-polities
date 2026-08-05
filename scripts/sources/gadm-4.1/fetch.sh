@@ -24,6 +24,9 @@ COUNTRIES=(
   # Puducherry/Karikal/Mahe/Yanam; the three IDN-* rows need Java, Madura, Bali and
   # Lombok. None of them can be built while the extract lacks the country.
   CAN IND IDN
+  # Added 2026-08-05 for issue 56: MDV-1800-2025's CShapes polygon measures 24 km2
+  # against an official ~300, because CShapes captures only part of the atoll chain.
+  MDV
   DMA ESH ESP FJI FLK FRO FSM GIB GLP GRD GRL GUF GUM HMD IOT KIR KNA LCA
   LIE LUX MAF MCO MHL MNP MSR MTQ MYT NCL NFK NIU NRU PCN PLW PRI PSE PYF
   REU SGS SHN SJM SLB SMR SPM SWE SYC SXM TCA TKL TON TUV UMI VAT VCT VGB
