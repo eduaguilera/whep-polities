@@ -63,6 +63,7 @@ Usage:
 import ast
 import csv
 import os
+import re
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,6 +78,26 @@ BASELINE = frozenset({
     # was reclassified subnational (2026-08-04), which is the check working -- a new
     # link has to justify itself.
     ("ALK-1867-1959", "predecessor", "F228-1856-1905"),
+    # The GRL/ISL cluster, revealed 2026-08-05 when parse_links stopped splitting on ',' alone
+    # and 145 previously-invisible links became checkable. Non-touching is expected here: these
+    # are overseas relationships across open ocean, the same shape as the ALK/Russia entry above.
+    #
+    # TWO THINGS ABOUT THEM ARE NOT SETTLED, and are recorded rather than implied by silence:
+    #   1. The DIRECTION looks reversed. Iceland became independent of Denmark in 1944, so
+    #      Denmark is its predecessor, not its successor. Greenland is still Danish, so a
+    #      successor of any kind is questionable.
+    #   2. Both rows run to the 2025 ceiling AND declare successors, which cannot both be true
+    #      of a live entity.
+    # Baselined so this gate returns to zero on the defect it just found (NNI/NWR); the direction
+    # question belongs to the chain-integrity work, not to a geometry check.
+    ("GRL-1800-2025", "successor", "DNK-1800-1864"),
+    ("GRL-1800-2025", "successor", "DNK-1864-1920"),
+    ("GRL-1800-2025", "successor", "DNK-1920-2025"),
+    ("GRL-1800-2025", "successor", "ISL-1800-2025"),
+    ("ISL-1800-2025", "successor", "DNK-1800-1864"),
+    ("ISL-1800-2025", "successor", "DNK-1864-1920"),
+    ("ISL-1800-2025", "successor", "DNK-1920-2025"),
+    ("ISL-1800-2025", "successor", "GRL-1800-2025"),
     ("CAR-1920-1945", "predecessor", "JPN-1895-1945"),
     ("CXR-1946-1958", "predecessor", "GBM-1895-1946"),
     ("GCAR-1899-1914", "predecessor", "DEU-1871-1919"),
@@ -98,7 +119,14 @@ def parse_links(value: str) -> list:
             return [str(x).strip() for x in ast.literal_eval(v)]
     except (ValueError, SyntaxError):
         pass
-    return [x.strip() for x in v.strip("[]").split(",") if x.strip()]
+    # SPLIT ON BOTH ';' AND ','. build_database.py writes multi-valued chain fields joined
+    # with "; ", so splitting on ',' alone turned a whole field into ONE unresolvable token
+    # -- and the loop below skipped unresolvable tokens silently, so this check FAILED OPEN
+    # on every multi-valued field. 86 fields contain ';', hiding 145 of 1,054 links (13.8%),
+    # including the case this script's own docstring says it was written to catch:
+    # NNI-1904-1913's predecessor is 'NNI-1899-1904; NWR-1900-1905', and the NWR half was
+    # invisible. Found 2026-08-05 by two independent sweeps that isolated the same line.
+    return [x.strip() for x in re.split(r"[;,]", v.strip("[]")) if x.strip()]
 
 
 def main() -> int:
@@ -124,11 +152,13 @@ def main() -> int:
 
     observed = set()
     checked = 0
+    unresolvable = []
     for r in rows:
         src = r["polity_code"]
         for field in ("predecessor", "successor"):
             for target in parse_links(r.get(field)):
                 if target not in known or src not in geom or target not in geom:
+                    unresolvable.append(f"{src} {field} -> {target!r}")
                     continue
                 checked += 1
                 if not geom[src].intersects(geom[target]):
