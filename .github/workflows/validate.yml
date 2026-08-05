@@ -77,6 +77,18 @@ name: Validate database
 #                            assumption that it needed the raw geodata sources, which it does
 #                            not.
 #
+#   validate_order_decided_families
+#                            197 Mitchell rows labelled `malaysia`, 1898-1945, resolved to British
+#                            North BORNEO instead of British MALAYA, and 20 rows labelled `Libya
+#                            Tripolitania` resolved to the Emirate of CYRENAICA — the other side of
+#                            the country. Both because no candidate in those years is typed
+#                            `national`, so matchlib falls back to the family list and takes the
+#                            first. crosscheck_matchers had documented the Malaysia case (issue 44)
+#                            at 1961 ONLY, because it resolves FAOSTAT labels and FAOSTAT starts in
+#                            1961; issue 44 was then closed by a retype that fixed 1961 and left
+#                            1881-1945 untouched. This gate scans from 1800, so a fix that merely
+#                            moves a tie cannot close it again.
+#
 #   validate_chain_integrity TCD-1920-1960 listed WAD-1800-1912 (Wadai) as a SUCCESSOR — a polity
 #                            that ended EIGHT YEARS BEFORE Chad's colonial row begins, and the same
 #                            page's prose called it a predecessor while citing "the CSV", which is
@@ -322,6 +334,10 @@ jobs:
       - name: The two matchers agree with each other
         if: '!cancelled()'
         run: python3 scripts/crosscheck_matchers.py
+
+      - name: No label's route is decided by family order
+        if: '!cancelled()'
+        run: python3 scripts/validate_order_decided_families.py
 
       - name: Polygon bindings belong to the period their row covers
         # Reads the committed feature index and GeoPackage only, so unlike the

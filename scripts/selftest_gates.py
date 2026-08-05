@@ -442,6 +442,44 @@ def mutate_succession_cycle(root, gpd, make_valid, affinity):
     return a["polity_code"]
 
 
+def mutate_untyped_national(root, gpd, make_valid, affinity):
+    """Retype the single `national` member of an overlapping ISO family, so the tie-break that
+    was deciding the route stops discriminating and family ORDER decides instead.
+
+    This is the exact shape of issue 44 in reverse. That issue was closed by typing
+    MYS-1957-1963 `national`, which made 1961 determinate -- and a retype is therefore all it
+    takes to undo it silently, with no error anywhere, because falling back to list position is
+    a documented branch of pick_by_year rather than a failure. The route simply becomes whatever
+    the CSV's row order happens to say.
+    """
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    live = [r for r in rows
+            if (r.get("wiki_status") or "").strip() not in ("retired", "superseded")]
+    victim = None
+    for a in live:
+        if (a.get("polity_type") or "") != "national" or not a.get("iso3_code"):
+            continue
+        # needs a same-iso overlapping partner, or removing the type changes nothing observable
+        for b in live:
+            if b is a or b.get("iso3_code") != a["iso3_code"]:
+                continue
+            if int(a["start_year"]) < int(b["end_year"]) and int(b["start_year"]) < int(a["end_year"]):
+                victim = a
+                break
+        if victim:
+            break
+    assert victim is not None, "no national row with an overlapping same-iso partner"
+    victim["polity_type"] = "colonial"
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=list(fields))
+        writer.writeheader()
+        writer.writerows(rows)
+    return victim["polity_code"]
+
+
 def mutate_double_claimed_component(root, gpd, make_valid, affinity):
     """Add a GADM component to a second aggregate, so two aggregates claim the same
     territory. Its documented first catch was exactly this -- six territories claimed
@@ -611,6 +649,13 @@ CASES = (
         "one territory claimed by two aggregates, which double-counts it",
     ),
     (
+        "validate_order_decided_families.py",
+        mutate_untyped_national,
+        "ORDER DECIDES",
+        "an overlapping ISO family losing its only `national` member, so list position "
+        "silently becomes the route",
+    ),
+    (
         "validate_chain_integrity.py",
         mutate_succession_cycle,
         "CYCLE",
@@ -689,6 +734,10 @@ WRITABLE = {
     # have written the cycle into the committed database -- the failure mode this harness has
     # now caught four times.
     "validate_chain_integrity.py": ("polities_database.csv",),
+    "validate_order_decided_families.py": (
+        "polities_database.csv",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
     "validate_aliases.py": (
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
