@@ -16,6 +16,14 @@
 # with pandas) plus the standard library. The MATCHERS THEMSELVES still do not run
 # in CI — they need the layer-B parquet and the FAOSTAT pins cache, which live
 # outside the repo and would pull in pyarrow and R. See issue #17.
+#   spherely   validate_s2_polygons.py and repair_s2_polygons.py. It wraps the SAME
+#              s2geometry library that R's s2 package wraps, which is the whole reason
+#              it is here rather than a hand-rolled spherical predicate: the consumer
+#              that aborts is sf::st_area(), and a gate that only APPROXIMATES s2 can
+#              pass while the consumer still aborts. The failure strings it prints are
+#              character-for-character sf's. Ships as a manylinux wheel for CPython
+#              3.10+ and needs only numpy, so it adds no system dependency.
 pandas>=2.0
 geopandas>=1.0
 pyyaml>=6.0
+spherely>=0.1.1

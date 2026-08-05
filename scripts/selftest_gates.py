@@ -563,6 +563,40 @@ def mutate_period_mismatched_binding(root, gpd, make_valid, affinity):
     return "set COG-1906-1912's polygon_feature_year to its predecessor's, 1900"
 
 
+def mutate_spherically_degenerate_ring(root, gpd, make_valid, affinity):
+    """Give one polity a ring that is VALID in the plane and self-crossing on the sphere.
+
+    The four vertices are the REAL ones from DEU-1871-1919's ring 3, the defect issue 515
+    was filed for: a quad on CShapes Europe's 0.02-degree grid whose edges 0 and 2 pass
+    3.576e-15 degrees -- 4e-10 m, about one ULP -- apart. GEOS reads that as no
+    intersection and calls the ring valid; s2 rounds each lon/lat onto a unit vector
+    first, and after the rounding the edges cross.
+
+    Synthetic alternatives were tried first and DO NOT WORK, which is why the real
+    coordinates are used: a deliberately thin high-latitude sliver spanning 40 degrees of
+    longitude is accepted by s2 at every latitude from 0 to 80. The failure is not about
+    geodesic sag, so a mutation built on that theory would have passed the gate and read
+    as "this gate cannot fail".
+
+    It is also the one mutation in this file that NO OTHER GATE HERE COULD CATCH, since
+    every other geometry check reasons in the plane and this geometry is planar-valid.
+    """
+    from shapely.geometry import MultiPolygon, Polygon
+
+    g = gpd.read_file(GPKG)
+    victim = "SWE-1800-1809"
+    idx = g.index[g.polity_code == victim]
+    assert len(idx) == 1, f"expected one {victim} row, found {len(idx)}"
+    ring = Polygon([(10.9, 53.96), (10.86, 53.92), (10.82, 53.9), (10.9, 53.94)])
+    assert ring.is_valid, "the injected ring must be GEOS-valid or it proves nothing"
+    g.loc[idx[0], "geometry"] = MultiPolygon([ring])
+    g.to_file(os.path.join(root, "data/final/polities_database.gpkg"), driver="GPKG")
+    return (
+        f"replaced {victim}'s geometry with a GEOS-valid ring whose edges 0 and 2 are "
+        f"4e-10 m apart, which s2 reads as a self-crossing"
+    )
+
+
 CASES = (
     (
         "validate_polygon_period_fit.py",
@@ -662,6 +696,13 @@ CASES = (
         "a chronology that loops, between two rows whose spans overlap so that the "
         "impossible-order signal provably cannot fire instead",
     ),
+    (
+        "validate_s2_polygons.py",
+        mutate_spherically_degenerate_ring,
+        "SWE-1800-1809",
+        "a polygon GEOS calls valid that s2 cannot load, so every geodesic area and "
+        "every grid intersection over it aborts",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -682,7 +723,13 @@ ARGS = {"write_manifest.py": ("--check",), "build_database.py": ("--check",)}
 # FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
 # half of this script is what caught that; exit-code alone would have passed it.
 EXTRA_SCRIPTS = {
-    "validate_polygon_binding_determinism.py": ("sources.yaml",),"build_database.py": ("sources.yaml",)}
+    "validate_polygon_binding_determinism.py": ("sources.yaml",),"build_database.py": ("sources.yaml",),
+    # The s2 gate imports s2_failure()/geodesic_area_km2() from the repair script, so the
+    # two cannot disagree about what "s2 can measure this" means. Staged without it the
+    # gate dies on the import -- exit 2, no defect named, and the "must name the defect"
+    # arm of this harness is what would report that as the wrong kind of failure.
+    "validate_s2_polygons.py": ("repair_s2_polygons.py",),
+}
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
