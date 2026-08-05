@@ -77,6 +77,19 @@ name: Validate database
 #                            assumption that it needed the raw geodata sources, which it does
 #                            not.
 #
+#   validate_chain_integrity TCD-1920-1960 listed WAD-1800-1912 (Wadai) as a SUCCESSOR — a polity
+#                            that ended EIGHT YEARS BEFORE Chad's colonial row begins, and the same
+#                            page's prose called it a predecessor while citing "the CSV", which is
+#                            generated from that very frontmatter. Also: GRL and ISL each named the
+#                            other as successor, forming a cycle, because `successor:` was being
+#                            used for SOVEREIGNTY — a relation with no field in this schema. The
+#                            geometry gate above had accepted 8 of those links as "overseas, need
+#                            not touch": true, and the wrong question, since they were never
+#                            successions. This gate asks the prior one — does the link work as
+#                            chronology — plus whether targets exist, and whether page links
+#                            resolve. That last signal found 4 broken links that predated it;
+#                            validate_references checks citation markers, not inter-page links.
+#
 #   validate_unranged_aliases
 #                            the "Syria" alias had no source and no year range and pointed at
 #                            SYR-1946-1967, so EVERY year — including 2020 — resolved to a
@@ -285,6 +298,10 @@ jobs:
       - name: Succession links join territories that touch
         if: '!cancelled()'
         run: python3 scripts/validate_succession_geography.py
+
+      - name: The succession graph is a coherent chronology
+        if: '!cancelled()'
+        run: python3 scripts/validate_chain_integrity.py
 
       - name: No new pair shares a Correlates of War code
         if: '!cancelled()'
