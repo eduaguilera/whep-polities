@@ -622,8 +622,8 @@ SEN-1960-2025,Senegal,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constan
 SER-1816-1878,Principality of Serbia (1816-1878),1816,1878,cliopatria,1830.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 SER-1816-1913,Serbia (1816-1913),1816,1913,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 97y span (1816-1913); borders may have changed,0
 SER-1878-1913,Kingdom of Serbia (1878-1913),1878,1913,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 35y span (1878-1913); borders may have changed,355
-SER-1913-1918,Serbia (1913-1918),1913,1918,cshapes-2.0,1918.0,assigned,True,measured,False,False,vintage 1918 faithful to period 1913-1918,17
-SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,composed-estimate,1920.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),561
+SER-1913-1918,Serbia (1913-1918),1913,1918,cshapes-europe,1915.0,assigned,True,measured,False,False,vintage 1915 faithful to period 1913-1918,17
+SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,cshapes-europe,1915.0,proxy,True,back_projected,True,True,polygon vintage 1915 is BEFORE the period starts (1918),561
 SER-2006-2008,Serbia (2006-2008),2006,2008,cshapes-2.0,1992.0,assigned,False,back_projected,True,False,polygon vintage 1992 is BEFORE the period starts (2006),0
 SGP-1946-1963,Singapore (Crown Colony),1946,1963,cshapes-2.0,1953.0,assigned,True,measured,False,False,vintage 1953 faithful to period 1946-1963,59
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,cshapes-2.0,1962.0,assigned,False,back_projected,True,False,polygon vintage 1962 is BEFORE the period starts (1963),0
