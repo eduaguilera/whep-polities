@@ -86,6 +86,7 @@ python3 scripts/validate_alias_year_coverage.py
 
 # geometry
 python3 scripts/validate_polygons.py
+python3 scripts/validate_polygon_validity.py
 python3 scripts/validate_polygon_period_fit.py
 python3 scripts/validate_polygon_binding_determinism.py
 python3 scripts/validate_spatial_containment.py
