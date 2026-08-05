@@ -17,9 +17,9 @@ double the real polity total.)
 | Polities in the database | 740 |
 | Polity pages | 740 |
 | Sources ingested | 25 |
-| `status: draft` | 654 |
+| `status: draft` | 650 |
 | `status: reviewed` | 59 |
-| `status: superseded` / `retired` | 19 / 8 |
+| `status: superseded` / `retired` | 20 / 11 |
 | Pages with no source citation | 188 |
 | Pages citing biger-1995 | 391 |
 | Open questions (`### oq-`) | 800 |
@@ -289,7 +289,7 @@ are a **curated selection**, not a complete listing.
 - [Slovenia](polities/svn-1992-2025.md) — `SVN-1992-2025`, draft.
 - [Bosnia and Herzegovina](polities/bih-1992-2025.md) — `BIH-1992-2025`, draft.
 - [Serbia and Montenegro](polities/scg-1992-2006.md) — `SCG-1992-2006`, draft.
-- [Serbia (2006-2008)](polities/ser-2006-2008.md) — `SER-2006-2008`, draft.
+- [Serbia (2006-2008)](polities/ser-2006-2008.md) — `SER-2006-2008`, retired.
 - [Serbia](polities/srb-2008-2025.md) — `SRB-2008-2025`, draft.
 - [Montenegro](polities/mne-2006-2025.md) — `MNE-2006-2025`, draft.
 - [Kosovo](polities/kos-2008-2025.md) — `KOS-2008-2025`, draft.
