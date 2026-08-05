@@ -445,10 +445,10 @@ MAR-1958-1975,Morocco (1958-1975),1958,1975,national,MAR,600,Africa,draft,2026-0
 MAR-1975-1979,Morocco (1975-1979),1975,1979,national,MAR,600,Africa,reviewed,2026-04-12,cshapes-2.0,600,1975,assigned,,MAR-1958-1975,MAR-1979-2025
 MAR-1979-2025,Morocco,1979,2025,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1979,assigned,,MAR-1975-1979,
 MASG-1946-1963,Malaya and Singapore,1946,1963,national,MYS,,Asia,draft,2026-06-25,constructed,MASG-1946-1963,,assigned,132040,,
-MCO-1800-2025,Monaco,1800,2025,national,MCO,,Europe,reviewed,2026-04-12,cshapes-europe,221,1861,assigned,,,
+MCO-1800-2025,Monaco,1800,2025,national,MCO,,Europe,reviewed,2026-04-12,gadm-4.1-adm0,MCO,1861,assigned,2.35,,
 MDA-1991-2025,Moldova,1991,2025,national,MDA,359,Europe,reviewed,2026-04-12,cshapes-2.0,359,1991,assigned,,F228-1945-1991,
 MDG-1882-2025,Madagascar,1882,2025,national,MDG,580,Africa,draft,2026-04-13,cshapes-2.0,580,1960,assigned,,,
-MDV-1800-2025,Maldives,1800,2025,national,MDV,781,Asia,draft,2026-04-13,cshapes-2.0,781,1887,assigned,,,
+MDV-1800-2025,Maldives,1800,2025,national,MDV,781,Asia,draft,2026-04-13,gadm-4.1-adm0,MDV,1887,assigned,172.62,,
 MEX-1800-1848,Mexico (to 1848),1800,1848,national,MEX,,North America,draft,2026-04-12,cliopatria,Federated Republic of Mexico,1825,assigned,,,MEX-1848-2025
 MEX-1848-2025,Mexico,1848,2025,national,MEX,,North America,draft,2026-04-12,cshapes-2.0,70,1886,assigned,,MEX-1800-1848,
 MHL-1874-2025,Marshall Islands,1874,2025,national,MHL,983,Oceania,draft,2026-04-13,gadm-4.1-adm0,MHL,,assigned,,,
