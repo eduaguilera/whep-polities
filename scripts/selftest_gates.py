@@ -420,7 +420,30 @@ def mutate_double_claimed_component(root, gpd, make_valid, affinity):
 
 
 
+def mutate_renamed_column(root, gpd, make_valid, affinity):
+    """Rename `observed_rows` to `rows_observed` in the published alias map.
+
+    Not an invented name: `rows_observed` is the REAL name of the same field in
+    faostat_area_polity_map.csv, so this is exactly the transposition those two files
+    invite. It is the right mutation for this gate because a renamed column is not an
+    error at any read site -- csv.DictReader hands back None for a name that is not
+    there, and None propagates into an empty result that reads as "nothing found".
+    Four analyses in one session were wrong this way."""
+    path = os.path.join(root, "data/final/label_alias_map.csv")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text.replace("observed_rows", "rows_observed", 1))
+    return "observed_rows"
+
+
 CASES = (
+    (
+        "validate_schema_contract.py",
+        mutate_renamed_column,
+        "observed_rows",
+        "a renamed column, which every reader sees as None rather than as an error",
+    ),
     (
         "audit_family_shadowing.py",
         mutate_shadowing_twin,
@@ -510,6 +533,17 @@ EXTRA_SCRIPTS = {"build_database.py": ("sources.yaml",)}
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
+    # This gate reads SEVEN tables, so all of them must be staged or it fails for the
+    # wrong reason -- "file missing" rather than "column renamed". Listing them here is
+    # itself the point of the gate: these are every table a consumer reads by name.
+    "validate_schema_contract.py": (
+        "label_alias_map.csv",
+        "faostat_area_polity_map.csv",
+        "polities_manifest.json",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+        "pipelines/faostat-era-matching/state/faostat_aliases.csv",
+        "pipelines/polity-autoimprove/state/match_confidence.csv",
+    ),
     "validate_code_year_agreement.py": ("polities_database.csv",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
     # This case RENAMES a polity, so it needs a real copy of the CSV. Declaring the

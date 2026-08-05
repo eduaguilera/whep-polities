@@ -190,6 +190,9 @@ jobs:
 
       # Each check runs even if an earlier one failed, so one push surfaces every
       # problem rather than only the first.
+      - name: Published tables still have the columns consumers read
+        run: python3 scripts/validate_schema_contract.py
+
       - name: Citations resolve to real sources and anchors
         if: '!cancelled()'
         run: python3 scripts/validate_citations.py
