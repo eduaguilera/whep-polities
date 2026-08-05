@@ -80,6 +80,34 @@ LEGITIMATE_CONTAINERS = frozenset({
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.
     "SYL-1944-1953",
+    # British India over its provinces and princely states. These four crossed the
+    # >=3 threshold the moment PTIND-1816-1961's polygon was built (2026-08-04), which
+    # is the fifth time this check has made a newly built polygon justify itself. Each
+    # content was checked individually rather than accepted as a group:
+    #
+    #   HYD-1724-1948   211,298 km2  100.0%  Hyderabad, a princely state under British
+    #                                        suzerainty and inside British India.
+    #   MMR-1885-2025   675,971 km2   96.9%  Burma, annexed 1886 and administered AS A
+    #                                        PROVINCE of British India until it was
+    #                                        separated on 1937-04-01.
+    #   PAK-1937-1947   932,574 km2  100.0%  The territory that became Pakistan, which
+    #                                        its own polity_name states was within
+    #                                        British India.
+    #
+    # The polygons encode the Burma separation correctly, which is the evidence that
+    # these are history and not mis-bindings: IND-1937-1947 does NOT contain
+    # MMR-1885-2025, while the three earlier periods do.
+    #
+    # ONE CONTENT IS NOT LEGITIMATE, and a container-level exemption necessarily hides
+    # it: PTIND-1816-1961 (Portuguese India -- Goa, Daman, Diu) sits 98.4% inside every
+    # British India period, and Portuguese India was never British India. It is a real
+    # 3,779 km2 double-count and it survives into IND-1949-2025, since independent India
+    # did not annex Goa until December 1961. The same measurement also found
+    # IND-1800-1886 holding LKA-1800-2025 (Ceylon, 65,955 km2, 99.5%), a separate Crown
+    # Colony that was likewise never British India -- invisible here only because that
+    # period holds two. Both are filed as issue 84 rather than left implied by this
+    # exemption.
+    "IND-1886-1893", "IND-1893-1914", "IND-1914-1937", "IND-1937-1947",
 })
 
 # Containers that are DEFECTS, tracked so the gate stays useful while they are
