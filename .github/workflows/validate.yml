@@ -209,6 +209,13 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/write_faostat_area_map.py --check
 
+      - name: The external-data guards can still fail
+        # extdata.py asserts the columns and categorical VALUES of the datasets the
+        # autoimprove pipeline reads. Its self-test uses synthetic frames, so unlike
+        # the pipeline itself it runs anywhere. Here for the same reason
+        # selftest_gates exists: a guard that is only hand-tested decays quietly.
+        run: python3 pipelines/polity-autoimprove/extdata.py
+
       - name: The polygon feature index still matches its sources
         # SKIPs in CI, where data/geodata is gitignored: rebuilding from a partial
         # set of sources would delete the rows of every unfetched one. It verifies

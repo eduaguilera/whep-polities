@@ -92,6 +92,9 @@ python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so l
 
 # and the one that asks whether the checks above can fail at all
 python3 scripts/selftest_gates.py
+
+# the external-data guards, whose self-test uses synthetic frames and so runs anywhere
+python3 pipelines/polity-autoimprove/extdata.py
 ```
 
 | check | what it caught when first run |
