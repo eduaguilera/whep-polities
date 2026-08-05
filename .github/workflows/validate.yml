@@ -293,6 +293,9 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/crosscheck_matchers.py
 
+      - name: Polygon bindings are decided by the data, not by shapefile row order
+        run: python3 scripts/validate_polygon_binding_determinism.py
+
       - name: Polygons — no swallowed neighbour, no discontinuous family
         if: '!cancelled()'
         run: python3 scripts/validate_spatial_containment.py

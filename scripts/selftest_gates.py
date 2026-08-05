@@ -437,12 +437,39 @@ def mutate_renamed_column(root, gpd, make_valid, affinity):
     return "observed_rows"
 
 
+def mutate_order_dependent_binding(root, gpd, make_valid, affinity):
+    """Set VNM-1887-1954's polygon_feature_year back to 1893, the value it shipped with.
+
+    CShapes gwcode 815 has three steps containing 1893 and TWO of them start in 1893, so
+    find_feature's tie-break cannot single one out and returns whichever the shapefile
+    lists first -- a 379,848 km2 pre-Laos-transfer step, against the 326,024 recorded on
+    the row. Not an invented mutation: it is the exact state of the repository before
+    issue 99, and the third instance of this bug class after issues 45 and 92."""
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.reader(fh))
+    head = rows[0]
+    ci, cy = head.index("polity_code"), head.index("polygon_feature_year")
+    for r in rows:
+        if len(r) > cy and r[ci] == "VNM-1887-1954":
+            r[cy] = "1893"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        csv.writer(fh).writerows(rows)
+    return "set VNM-1887-1954's polygon_feature_year to 1893, which matches three steps"
+
+
 CASES = (
     (
         "validate_schema_contract.py",
         mutate_renamed_column,
         "observed_rows",
         "a renamed column, which every reader sees as None rather than as an error",
+    ),
+    (
+        "validate_polygon_binding_determinism.py",
+        mutate_order_dependent_binding,
+        "VNM-1887-1954",
+        "a polygon binding whose feature is chosen by shapefile row order",
     ),
     (
         "audit_family_shadowing.py",
@@ -529,7 +556,8 @@ ARGS = {"write_manifest.py": ("--check",), "build_database.py": ("--check",)}
 # loads sources.yaml before parsing a single page, so without it the gate dies with a
 # FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
 # half of this script is what caught that; exit-code alone would have passed it.
-EXTRA_SCRIPTS = {"build_database.py": ("sources.yaml",)}
+EXTRA_SCRIPTS = {
+    "validate_polygon_binding_determinism.py": ("sources.yaml",),"build_database.py": ("sources.yaml",)}
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
@@ -542,6 +570,17 @@ WRITABLE = {
         "polities_manifest.json",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
         "pipelines/faostat-era-matching/state/faostat_aliases.csv",
+    ),
+    # Needs the SOURCE shapefile, not just the CSV: the gate compares each declared
+    # binding against the features it could have matched. Without it the gate sees no
+    # bindings at all and fails for the wrong reason, which is how this list was found.
+    # The .zip in that directory is deliberately not staged (12 MB, unread).
+    "validate_polygon_binding_determinism.py": (
+        "polities_database.csv",
+        "data/geodata/cshapes-2.0/CShapes-2.0.shp",
+        "data/geodata/cshapes-2.0/CShapes-2.0.dbf",
+        "data/geodata/cshapes-2.0/CShapes-2.0.shx",
+        "data/geodata/cshapes-2.0/CShapes-2.0.prj",
     ),
     "validate_code_year_agreement.py": ("polities_database.csv",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
