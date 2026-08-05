@@ -246,6 +246,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_period_gaps.py
 
+      - name: No alias claims a year its polity does not cover
+        if: '!cancelled()'
+        run: python3 scripts/validate_alias_year_coverage.py
+
       - name: Live polities carry real ISO 3166-1 codes
         if: '!cancelled()'
         run: python3 scripts/validate_iso_codes.py
