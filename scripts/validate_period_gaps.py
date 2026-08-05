@@ -66,7 +66,15 @@ BASELINE = {
     ("LAO-1893-1953", "LAO-1954-2025"),
     ("LBY-1943-1949", "LBY-1950-1951"),
     ("MNE-1913-1918", "MNE-2006-2025"),
-    ("MOR-1800-1904", "MOR-1956-1958"),
+    # MOR pair removed 2026-08-05: MOR-1956-1958 is retired (it duplicated 1956-1957,
+    # which MAR-1911-1958 covers), leaving family MOR with a single period and so no
+    # consecutive pair to gap.
+    #
+    # THE HOLE IT REPRESENTED IS STILL THERE and this check can no longer see it.
+    # MOR-1800-1904 ends 1903, MAR-1911-1958 begins 1911, so 1904-1910 is covered by
+    # nothing -- while the "French Morocco" alias claims from 1904 on 261 observed rows.
+    # It is now a CROSS-FAMILY hole, and this check is per-family by construction.
+    # Exactly the blind spot issue 82 is about.
     ("SEN-1886-1959", "SEN-1960-2025"),
     ("SER-1918-1945", "SER-2006-2008"),
     ("SYR-1922-1945", "SYR-1946-1967"),
