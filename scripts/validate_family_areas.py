@@ -41,7 +41,17 @@ POLITIES_GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
 DEAD_STATUS = ("retired", "superseded")
 
 # Family periods whose area is legitimately out of scale. See the docstring.
-BASELINE = frozenset({"COG-1900-1906", "ERI-1885-1889"})
+#
+# COG-1900-1906 -> COG-1898-1900 on 2026-08-05 (issue 123). The anomaly did not go away, it
+# MOVED -- and where it moved to is the point. All four Congo rows from 1898 to 1919 were
+# bound to their PREDECESSOR's CShapes step, so the 2.23M km2 French-Congo-at-its-widest
+# polygon sat on the 1900-1906 row and this baseline recorded it there. With the lag fixed
+# it sits on COG-1898-1900, which is the period that genuinely covered the whole
+# Congo-Ubangi basin before the 1900s reorganisation.
+#
+# So this entry was previously pinning a real anomaly to the WRONG ROW, and reading it as
+# "1900-1906 is legitimately large" would have been reading a binding error as history.
+BASELINE = frozenset({"COG-1898-1900", "ERI-1885-1889"})
 
 CODE_RE = re.compile(r"^(.*)-\d{4}-\d{4}$")
 
