@@ -458,7 +458,34 @@ def mutate_order_dependent_binding(root, gpd, make_valid, affinity):
     return "set VNM-1887-1954's polygon_feature_year to 1893, which matches three steps"
 
 
+def mutate_period_mismatched_binding(root, gpd, make_valid, affinity):
+    """Put COG-1906-1912 back on its predecessor's CShapes step.
+
+    The exact state of the repository before issue 124: polygon_feature_year 1900 on a row
+    covering 1906-1911, selecting French Equatorial Africa's 2,234,540 km2 for a territory
+    that should be 344,022 -- a 6.5x overstatement. Chosen over a synthetic mutation because
+    it is what the data actually looked like, and because the row declares no
+    polygon_area_km2, so no area check would object to it."""
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.reader(fh))
+    head = rows[0]
+    ci, cy = head.index("polity_code"), head.index("polygon_feature_year")
+    for r in rows:
+        if len(r) > cy and r[ci] == "COG-1906-1912":
+            r[cy] = "1900"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        csv.writer(fh).writerows(rows)
+    return "set COG-1906-1912's polygon_feature_year to its predecessor's, 1900"
+
+
 CASES = (
+    (
+        "validate_polygon_period_fit.py",
+        mutate_period_mismatched_binding,
+        "COG-1906-1912",
+        "a polygon bound to a step from outside the period its row covers",
+    ),
     (
         "validate_schema_contract.py",
         mutate_renamed_column,
@@ -561,6 +588,15 @@ EXTRA_SCRIPTS = {
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
+    # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
+    # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with
+    # only stage()'s default symlink in place the mutation wrote straight through into the
+    # committed database -- which this harness detected and named, for the third time.
+    "validate_polygon_period_fit.py": (
+        "polities_database.csv",
+        "polygon_feature_index.csv",
+        "polities_database.gpkg",
+    ),
     # This gate reads SEVEN tables, so all of them must be staged or it fails for the
     # wrong reason -- "file missing" rather than "column renamed". Listing them here is
     # itself the point of the gate: these are every table a consumer reads by name.
