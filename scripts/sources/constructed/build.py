@@ -36,6 +36,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 CSHAPES2 = REPO_ROOT / "data/geodata/cshapes-2.0/CShapes-2.0.shp"
 GADM41_ADM1 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm1.gpkg"
 GADM41_ADM0 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm0.gpkg"
+CLIOPATRIA = REPO_ROOT / "data/geodata/cliopatria/cliopatria_polities_only.geojson"
 CROWNLANDS = (
     REPO_ROOT
     / "data/geodata/histogis-1860-habsburg/crownlands_1860"
@@ -101,6 +102,61 @@ def _gadm_adm0(gid_0: str) -> ogr.Geometry:
     raise LookupError(f"GADM 4.1 adm0 has no feature with GID_0={gid_0!r}")
 
 
+def _cliopatria_feature(name: str, year: int) -> ogr.Geometry:
+    """Return the Cliopatria feature called `name` whose [FromYear, ToYear] contains `year`.
+
+    Cliopatria steps are inclusive on both ends, unlike this repo's exclusive end_year, so the
+    containment test here is deliberately `<= year <=`. Raises if the year is covered by more
+    than one step, because a silent first-match would reintroduce exactly the order-dependence
+    that validate_polygon_binding_determinism exists to prevent.
+    """
+    if not CLIOPATRIA.exists():
+        raise FileNotFoundError(
+            f"{CLIOPATRIA} missing - run scripts/sources/cliopatria/fetch.sh first."
+        )
+    ds = ogr.Open(str(CLIOPATRIA))
+    lyr = ds.GetLayer()
+    hits = []
+    for f in lyr:
+        if f.GetField("Name") != name:
+            continue
+        if int(f.GetField("FromYear")) <= year <= int(f.GetField("ToYear")):
+            hits.append(f.GetGeometryRef().Clone())
+    if not hits:
+        raise LookupError(f"Cliopatria has no {name!r} step covering {year}")
+    if len(hits) > 1:
+        raise LookupError(f"Cliopatria has {len(hits)} {name!r} steps covering {year}")
+    return hits[0]
+
+
+def _keep_parts_within(geom: ogr.Geometry, lon_min: float, lat_min: float,
+                       lon_max: float, lat_max: float) -> ogr.Geometry:
+    """Drop the parts of a multipolygon that do not touch the given lon/lat envelope.
+
+    Written for one specific defect and deliberately narrow. Some Cliopatria "polities" are
+    records of an empire's whole possession list rather than of one territory, so the feature
+    named "French Indochina" also carries New Caledonia, Reunion, Kerguelen, the Loyalty
+    Islands and the French concession at Tianjin. Selecting a different step cannot help --
+    all 35 steps carry them.
+
+    Dropping by envelope rather than by named exclusion because the parts have no attributes
+    to name them by; the envelope is stated at the call site and the kept/dropped areas are
+    asserted there, so the operation is checkable rather than merely plausible.
+    """
+    env = ogr.CreateGeometryFromWkt(
+        f"POLYGON(({lon_min} {lat_min},{lon_max} {lat_min},{lon_max} {lat_max},"
+        f"{lon_min} {lat_max},{lon_min} {lat_min}))"
+    )
+    if geom.GetGeometryType() not in (ogr.wkbMultiPolygon, ogr.wkbMultiPolygon25D):
+        return geom.Clone() if geom.Intersects(env) else None
+    out = ogr.Geometry(ogr.wkbMultiPolygon)
+    for i in range(geom.GetGeometryCount()):
+        part = geom.GetGeometryRef(i)
+        if part.Intersects(env):
+            out.AddGeometry(part)
+    return out
+
+
 def _crownland(feature_id: str) -> ogr.Geometry:
     """Return the geometry of the Histogis 1860 Habsburg crownland with `id`,
     reprojected to WGS84 (the source shapefile is EPSG:3857 Web Mercator)."""
@@ -143,6 +199,74 @@ def _union(*geoms: ogr.Geometry) -> ogr.Geometry:
     if acc.GetGeometryType() != ogr.wkbMultiPolygon:
         acc = ogr.ForceToMultiPolygon(acc)
     return acc
+
+
+def build_fid_1887_1954() -> ogr.Geometry:
+    """French Indochina 1887-1954 = Cliopatria's "French Indochina" at 1920, with the parts
+    outside mainland Indochina removed.
+
+    The attached Cliopatria polygon CONTAINED NEW CALEDONIA, REUNION AND KERGUELEN -- 15 parts
+    spanning 55.1E to 168.0E and 49.8S to 39.6N, so a containment test put Noumea, Saint-Denis
+    and Port-aux-Francais inside French Indochina. All 35 steps of that feature carry them, so
+    no choice of polygon_feature_year fixes it; the feature is a record of French possessions
+    east of Africa rather than of Indochina.
+
+    Two things this recipe fixes at once:
+
+      * 11 parts totalling 36,992 km2 are dropped: New Caledonia 20,278, Kerguelen 8,939,
+        Reunion 3,513, the Loyalty Islands ~2,700, and 681 km2 near Tianjin (39.4N) which is
+        the French concession there. Guangzhouwan (110.4E, 21.2N) is INSIDE the envelope and
+        deliberately kept -- it was leased to France and administered from Indochina.
+      * The result is VALID, but not for free. The raw feature fails is_valid in Cliopatria's
+        own GeoJSON, and clipping does not cure it: two KEPT parts abut along a line, which a
+        multipolygon may not do. They are unioned, which preserves area exactly, where
+        make_valid would have dropped a 56.7 km2 part. See the assertion in the body.
+
+    1920 rather than the 1900 the page previously declared. Clipped areas by step:
+
+        1895-1897   659,948      1908-1939   753,213   <- stable mature extent
+        1900-1904   662,141      1946-1955   751,021
+        1905-1907   700,369      1940-1945     2,473   <- Japanese occupation
+
+    French Indochina's territory was essentially complete after the 1907 Franco-Siamese treaty
+    and stable until 1940, so the plateau is the right representation for a row spanning
+    1887-1954. 1920 falls inside exactly one step (1919-1921), which keeps the binding
+    deterministic. Result 753,049 km2 against the commonly cited ~740,000, i.e. 1.8% high --
+    where the previously attached polygon was 5% LOW while containing three wrong territories,
+    the two errors partly cancelling, which is why no area check ever flagged it.
+    """
+    raw = _cliopatria_feature("French Indochina", 1920)
+    clipped = _keep_parts_within(raw, 99.0, 7.5, 110.5, 24.5)
+    if clipped is None or clipped.IsEmpty():
+        raise ValueError("clipping French Indochina to the mainland envelope left nothing")
+
+    # The clipped multipolygon is still invalid, and the reason decides the repair. EVERY
+    # INDIVIDUAL PART IS VALID; two of them share a boundary LINE, which a multipolygon may not
+    # do (points are allowed, lines are not). So this is adjacency recorded as two pieces, not a
+    # broken ring -- and the two candidate repairs behave completely differently:
+    #
+    #     union       753,049.331 km2   area-preserving; merges the two adjacent pieces
+    #     make_valid  752,992.664 km2   DROPS the 56.7 km2 part entirely
+    #
+    # make_valid would delete real territory to satisfy the predicate. Union is therefore the
+    # correct repair here, and the assertion below is what makes that a checked claim rather
+    # than a preference: if a future Cliopatria vintage makes these parts genuinely OVERLAP
+    # instead of abut, the union would shrink and this raises instead of quietly changing area.
+    before = sum(
+        clipped.GetGeometryRef(i).GetArea() for i in range(clipped.GetGeometryCount())
+    )
+    merged = clipped.GetGeometryRef(0).Clone()
+    for i in range(1, clipped.GetGeometryCount()):
+        merged = merged.Union(clipped.GetGeometryRef(i))
+    if abs(merged.GetArea() - before) > before * 1e-9:
+        raise ValueError(
+            "unioning the kept parts of French Indochina changed the area "
+            f"({before:.6f} -> {merged.GetArea():.6f} in square degrees): the parts now overlap "
+            "rather than abut, so decide the repair explicitly instead of unioning"
+        )
+    if not merged.IsValid():
+        raise ValueError("French Indochina is still invalid after unioning the kept parts")
+    return merged
 
 
 def build_deu_1945_1949() -> ogr.Geometry:
@@ -611,6 +735,17 @@ def build_syl_1944_1953() -> ogr.Geometry:
 
 
 BUILDERS = [
+    (
+        "FID-1887-1954",
+        "French Indochina",
+        build_fid_1887_1954,
+        "Cliopatria 'French Indochina' at 1920, clipped to the mainland envelope "
+        "(99-110.5E, 7.5-24.5N). REPLACES a polygon that contained New Caledonia, Reunion and "
+        "Kerguelen -- all 35 steps of that feature carry them, so no feature_year fixed it. "
+        "Drops 11 parts totalling 36,992 km2, keeps Guangzhouwan, and yields a VALID geometry "
+        "where the raw feature is invalid in Cliopatria's own GeoJSON. 753,049 km2 against "
+        "~740,000 cited.",
+    ),
     (
         "HUN-1940-1944",
         "Hungary (1940-1944)",
