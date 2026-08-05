@@ -23,7 +23,7 @@ Anglo-Egyptian Sudan		SUD-1934-1956
 BZE	mueller-synthetic-n	BLZ-1981-2025
 Basutoland	fao1952	LSO-1886-1966
 Belgium-Luxembourg	faostat	BLX-1850-1999
-Belgium-Luxemburg	lassaletta-grassland-share	BLX-1921-1999
+Belgium-Luxemburg	lassaletta-grassland-share	BLX-1850-1999
 British Somaliland	fao1952	BSS-1884-1960
 British Togoland		BTL-1920-1957
 British Virgin Islands	faostat	VGB-1800-2025

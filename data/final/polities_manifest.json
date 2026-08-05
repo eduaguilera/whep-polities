@@ -11,11 +11,11 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "ecb7ed079fdcf1ce2826f7924b7d870788c398971dc253f4f5655beb8607edcc",
+ "identity_sha256": "fb0669dca16e0de8d5648d2f45edfde3148a84b2e53602b1f1e9e932edecfc8e",
  "counts": {
   "total": 742,
-  "live": 709,
-  "dead": 33
+  "live": 708,
+  "dead": 34
  },
  "dead_status": [
   "retired",
@@ -24,6 +24,7 @@
  "dead_polity_codes": [
   "AGO-1816-2025",
   "ARG-1800-2025",
+  "BLX-1921-1999",
   "BLZ-1800-2025",
   "BRA-1800-2025",
   "CAN-1866-1886",
@@ -152,7 +153,7 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "b5e5a694bc96cda04ebc0cf4c0c936c41098ed8c1e2de6fd2d2c6f7e444020ed",
+  "sha256": "0db3d2234dc12a884a9b644343e5f38d3f5125487f49c4edd70f4be88819cc13",
   "aliases": 877,
   "labels": 470,
   "sources": [
@@ -238,7 +239,6 @@
   "BLI-1833-1960",
   "BLR-1991-2025",
   "BLX-1850-1999",
-  "BLX-1921-1999",
   "BLZ-1800-1886",
   "BLZ-1886-1970",
   "BLZ-1970-1981",

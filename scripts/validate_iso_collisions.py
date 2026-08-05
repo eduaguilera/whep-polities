@@ -43,7 +43,9 @@ BASELINE = frozenset({
     ("AUS", "AUS-1800-1901", "AUSA-1836-1900"),
     ("AUS", "AUS-1800-1901", "AUWA-1829-1900"),
     ("AUS", "AUWA-1829-1900", "AUSA-1836-1900"),
-    ("BEL", "BEL-1831-2025", "BLX-1921-1999"),
+    # BEL pair removed 2026-08-05: BLX-1921-1999 is retired as a duplicate of the
+    # BLX-1850-1999 reporting row (issue 40). Its iso3 was BEL, which is what put a
+    # Belgium-Luxembourg row in Belgium's family in the first place.
     ("CMR", "BCM-1916-1961", "CMR-1960-1961"),
     ("CMR", "BCM-1916-1961", "FCM-1920-1960"),
     ("COD", "COD-1910-1960", "CODRU-1922-1960"),
