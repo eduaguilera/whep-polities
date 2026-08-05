@@ -138,10 +138,15 @@ ap = argparse.ArgumentParser()
 # never reported, and that is arguably the commonest real error: a polygon one neighbour
 # too large.
 #
-# A confirmed instance: ITS-1908-1960 (Italian Somaliland) uses CShapes 520, all of
-# Somalia at 635,888 km2, and geometrically contains BSS-1884-1960 (British Somaliland,
-# 171,633 km2) at 100%. This check does not see it. It is fixed independently in
-# lbm364dl/whep-polities#35, which rebinds the row to 520 MINUS 521 = 464,743 km2.
+# The instance that used to be cited here is FIXED (issue 21, closed 2026-08-05):
+# ITS-1908-1960 used CShapes 520, all of Somalia at 635,888 km2, and contained
+# BSS-1884-1960 (British Somaliland, 171,633 km2) at 100%. It is now a `constructed`
+# 520 MINUS 521 at 464,286 km2 and the two no longer intersect at all.
+#
+# THE LIMITATION IS UNCHANGED, which is why this note stays. That pair was found by
+# reading the data, not by this check -- a single swallow is invisible at the default
+# threshold however wrong it is, and the fix removed the instance rather than the blind
+# spot. Another single-swallow error of the same shape would be equally unreported.
 #
 # Lowering the default to 1 would require judging all 37 single-swallow cases, and most
 # ARE legitimate history — GBR-1800-1921 contains IRL-1800-1921, ESP-1800-2025 contains
