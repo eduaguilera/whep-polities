@@ -631,8 +631,8 @@ SLV-1821-2025,El Salvador,1821,2025,national,SLV,92,North America,draft,2026-04-
 SMO-1912-1956,Spanish Morocco (1912-1956),1912,1956,national,SMO,,Africa,draft,2026-04-15,cshapes-2.0,602,1912,assigned,,SWA-1884-1912,
 SMR-1800-2025,San Marino,1800,2025,national,SMR,,Europe,draft,2026-04-13,gadm-4.1-adm0,SMR,,proxy,61,,
 SNE-1800-1887,Kingdom of Sine,1800,1887,national,,,Africa,draft,2026-04-13,paine-2024,Sine,,assigned,,,SEN-1960-2025
-SNI-1899-1906,Southern Nigeria (1899-1906),1899,1906,national,SNI,,Africa,draft,2026-04-13,cshapes-2.0,4783,1899,assigned,,,SNI-1906-1913
-SNI-1906-1913,Southern Nigeria (1906-1913),1906,1913,national,SNI,,Africa,draft,2026-04-13,cshapes-2.0,4783,1899,assigned,,SNI-1899-1906,NGA-1914-1960
+SNI-1899-1906,Southern Nigeria (1899-1906),1899,1906,national,SNI,,Africa,draft,2026-04-13,cshapes-2.0,4783,1899,assigned,130337,,SNI-1906-1913
+SNI-1906-1913,Southern Nigeria (1906-1913),1906,1913,national,SNI,,Africa,draft,2026-04-13,cshapes-2.0,4783,1906,assigned,202103,SNI-1899-1906,NGA-1914-1960
 SNW-1814-1905,"Sweden-Norway (Union, 1814-1905)",1814,1905,national,SNW,380,Europe,draft,2026-04-12,cshapes-europe,380,1816,assigned,,SWE-1809-1814,SWE-1905-2025; NOR-1800-2025
 SOK-1804-1903,Sokoto Caliphate,1804,1903,national,,,Africa,draft,2026-04-15,paine-2024,Sokoto,,assigned,,GOB-1800-1808,NNI-1899-1904
 SOM-1960-2025,Somalia,1960,2025,national,SOM,520,Africa,draft,2026-04-13,cshapes-2.0,520,1960,assigned,,,
