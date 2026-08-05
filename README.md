@@ -56,6 +56,7 @@ python3 scripts/write_manifest.py --check
 python3 scripts/write_faostat_area_map.py --check
 python3 scripts/write_label_alias_map.py --check
 python3 scripts/update_wiki_index.py --check
+python3 scripts/write_feature_index.py --check
 
 # provenance and internal consistency
 python3 scripts/validate_schema_contract.py
@@ -84,7 +85,7 @@ python3 scripts/validate_alias_year_coverage.py
 
 # geometry
 python3 scripts/validate_polygons.py
-python3 scripts/validate_polygon_binding_determinism.py   # needs data/geodata (gitignored), so local only
+python3 scripts/validate_polygon_binding_determinism.py
 python3 scripts/validate_spatial_containment.py
 python3 scripts/validate_family_areas.py
 python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so local only

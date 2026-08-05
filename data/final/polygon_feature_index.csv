@@ -1,0 +1,1520 @@
+source,feature_id,row_order,start_year,end_year,area_km2
+cliopatria,Papal States,3194,755,756,12807.6
+cliopatria,Papal States,3208,757,762,21793.1
+cliopatria,Papal States,3229,763,774,27414.4
+cliopatria,Papal States,3285,775,777,14092.0
+cliopatria,Papal States,3302,778,782,14139.8
+cliopatria,Papal States,3323,783,787,20234.6
+cliopatria,Papal States,3334,788,792,20162.7
+cliopatria,Papal States,3348,793,849,15062.2
+cliopatria,Papal States,3518,850,879,15873.8
+cliopatria,Papal States,3761,880,881,16229.2
+cliopatria,Papal States,3789,882,910,15873.8
+cliopatria,Papal States,4040,911,969,15873.8
+cliopatria,Papal States,4405,970,989,15777.8
+cliopatria,Papal States,4469,990,1033,15873.8
+cliopatria,Papal States,4793,1034,1045,15945.6
+cliopatria,Papal States,4909,1046,1055,15945.8
+cliopatria,Papal States,5010,1056,1065,15878.3
+cliopatria,Papal States,5034,1066,1084,15854.2
+cliopatria,Papal States,5143,1085,1146,16113.7
+cliopatria,Papal States,5456,1147,1201,15946.5
+cliopatria,Papal States,5781,1202,1209,15995.1
+cliopatria,Papal States,5922,1210,1259,15900.3
+cliopatria,Papal States,6358,1260,1271,16138.5
+cliopatria,Ethiopian Empire,6390,1272,1284,209415.4
+cliopatria,Papal States,6430,1272,1278,28486.9
+cliopatria,Papal States,6463,1279,1293,39479.0
+cliopatria,Ethiopian Empire,6504,1285,1332,208363.1
+cliopatria,Papal States,6551,1294,1313,39501.3
+cliopatria,Ottoman Empire,6672,1305,1325,12981.6
+cliopatria,Papal States,6731,1314,1406,39477.6
+cliopatria,Ottoman Empire,6776,1326,1332,27394.6
+cliopatria,Ottoman Empire,6833,1333,1343,31420.3
+cliopatria,Ethiopian Empire,6844,1333,1414,391810.5
+cliopatria,Ottoman Empire,6919,1344,1351,189088.6
+cliopatria,Ottoman Empire,7040,1352,1362,190555.2
+cliopatria,Ottoman Empire,7086,1363,1374,209600.5
+cliopatria,Ottoman Empire,7237,1375,1384,264302.4
+cliopatria,Ottoman Empire,7334,1385,1394,277416.7
+cliopatria,Ottoman Empire,7358,1395,1401,404437.0
+cliopatria,Ottoman Empire,7440,1402,1406,387833.7
+cliopatria,Papal States,7500,1407,1430,39291.3
+cliopatria,Ottoman Empire,7531,1407,1414,422665.9
+cliopatria,Ottoman Empire,7584,1415,1421,440003.8
+cliopatria,Ethiopian Empire,7596,1415,1501,392042.4
+cliopatria,Ottoman Empire,7620,1422,1428,457210.8
+cliopatria,Ottoman Empire,7684,1429,1430,550238.2
+cliopatria,Ottoman Empire,7740,1431,1439,562984.4
+cliopatria,Papal States,7758,1431,1462,39525.6
+cliopatria,Ottoman Empire,7772,1440,1449,563077.6
+cliopatria,Ottoman Empire,7876,1450,1452,569535.1
+cliopatria,Ottoman Empire,7893,1453,1458,570829.8
+cliopatria,Ottoman Empire,7951,1459,1462,654659.9
+cliopatria,Papal States,8001,1463,1486,39267.5
+cliopatria,Ottoman Empire,8026,1463,1467,799080.8
+cliopatria,Ottoman Empire,8087,1468,1474,896142.7
+cliopatria,Ottoman Empire,8109,1475,1481,905057.4
+cliopatria,Ottoman Empire,8184,1482,1486,913772.4
+cliopatria,Papal States,8211,1487,1506,39594.5
+cliopatria,Ottoman Empire,8240,1487,1491,930450.2
+cliopatria,Ottoman Empire,8294,1492,1501,930689.0
+cliopatria,Ethiopian Empire,8393,1502,1528,392042.4
+cliopatria,Ottoman Empire,8403,1502,1506,929740.2
+cliopatria,Ottoman Empire,8410,1507,1511,931397.0
+cliopatria,Papal States,8439,1507,1528,40645.4
+cliopatria,Ottoman Empire,8471,1512,1515,931300.4
+cliopatria,Ottoman Empire,8539,1516,1518,1062278.4
+cliopatria,Ottoman Empire,8579,1519,1520,2688863.3
+cliopatria,Ottoman Empire,8620,1521,1525,2780554.7
+cliopatria,Ottoman Empire,8645,1526,1528,2792927.3
+cliopatria,Papal States,8692,1529,1555,40645.4
+cliopatria,Ottoman Empire,8725,1529,1533,2814294.1
+cliopatria,Ethiopian Empire,8736,1529,1533,381441.5
+cliopatria,Ethiopian Empire,8757,1534,1539,126243.0
+cliopatria,Ottoman Empire,8762,1534,1539,3176933.1
+cliopatria,Ethiopian Empire,8830,1540,1546,126932.0
+cliopatria,Ottoman Empire,8846,1540,1546,3194566.1
+cliopatria,Ottoman Empire,8880,1547,1551,3258197.6
+cliopatria,Ethiopian Empire,8890,1547,1563,526424.8
+cliopatria,Ottoman Empire,8945,1552,1555,3481684.2
+cliopatria,Ottoman Empire,8983,1556,1563,3689743.9
+cliopatria,Papal States,9006,1556,1599,40598.5
+cliopatria,Ottoman Empire,9020,1564,1571,3641712.1
+cliopatria,Ethiopian Empire,9029,1564,1578,523870.5
+cliopatria,Ottoman Empire,9106,1572,1578,3783128.3
+cliopatria,Ethiopian Empire,9156,1579,1635,523955.9
+cliopatria,Ottoman Empire,9163,1579,1581,3869614.3
+cliopatria,Ottoman Empire,9202,1582,1587,3869539.1
+cliopatria,Ottoman Empire,9249,1588,1594,4253536.0
+cliopatria,Ottoman Empire,9266,1595,1599,4254101.6
+cliopatria,Ottoman Empire,9321,1600,1601,4254085.7
+cliopatria,Papal States,9342,1600,1652,41647.6
+cliopatria,Ottoman Empire,9383,1602,1608,4253973.5
+cliopatria,Ottoman Empire,9421,1609,1611,3800371.5
+cliopatria,Ottoman Empire,9453,1612,1621,3775366.4
+cliopatria,Ottoman Empire,9542,1622,1625,3775388.8
+cliopatria,Ottoman Empire,9565,1626,1635,3583411.0
+cliopatria,Ottoman Empire,9704,1636,1639,3379980.2
+cliopatria,Ethiopian Empire,9708,1636,1768,587497.6
+cliopatria,Ottoman Empire,9734,1640,1644,3522695.2
+cliopatria,Ottoman Empire,9817,1645,1647,3518070.1
+cliopatria,Ottoman Empire,9872,1648,1661,3522313.9
+cliopatria,Papal States,9925,1653,1708,41647.6
+cliopatria,Ottoman Empire,10010,1662,1669,3525028.7
+cliopatria,Ottoman Empire,10064,1670,1672,3529608.0
+cliopatria,Morocco,10065,1670,1676,383833.0
+cliopatria,Ottoman Empire,10123,1673,1676,3638377.6
+cliopatria,Morocco,10144,1677,1682,383858.4
+cliopatria,Ottoman Empire,10145,1677,1682,3587092.2
+cliopatria,Ottoman Empire,10243,1683,1686,3591714.0
+cliopatria,Morocco,10244,1683,1686,383708.1
+cliopatria,Ottoman Empire,10269,1687,1690,3510104.8
+cliopatria,Morocco,10270,1687,1740,384509.1
+cliopatria,Ottoman Empire,10327,1691,1695,3489934.5
+cliopatria,Ottoman Empire,10359,1696,1699,3440913.6
+cliopatria,Ottoman Empire,10393,1700,1701,3437339.2
+cliopatria,Ottoman Empire,10418,1702,1705,3437414.3
+cliopatria,Ottoman Empire,10472,1706,1708,3147735.7
+cliopatria,Ottoman Empire,10504,1709,1712,3148106.7
+cliopatria,Papal States,10528,1709,1733,41694.0
+cliopatria,Ottoman Empire,10582,1713,1717,2882183.5
+cliopatria,Ottoman Empire,10640,1718,1726,2838233.6
+cliopatria,Kingdom of Sardinia,10658,1721,1733,71868.1
+cliopatria,Russian Empire,10674,1721,1726,14381213.3
+cliopatria,Ottoman Empire,10707,1727,1733,3141769.3
+cliopatria,Hyderabad State,10719,1727,1743,261169.5
+cliopatria,Russian Empire,10723,1727,1733,14457326.1
+cliopatria,Kingdom of Sardinia,10732,1734,1737,78466.2
+cliopatria,Papal States,10749,1734,1737,41647.6
+cliopatria,Russian Empire,10758,1734,1737,14977755.9
+cliopatria,Ottoman Empire,10780,1734,1737,2900185.4
+cliopatria,Papal States,10796,1738,1740,41718.8
+cliopatria,Kingdom of Sardinia,10807,1738,1747,73882.0
+cliopatria,Ottoman Empire,10824,1738,1740,2841174.7
+cliopatria,Russian Empire,10829,1738,1743,14962853.4
+cliopatria,Ottoman Empire,10859,1741,1743,2876555.9
+cliopatria,Morocco,10860,1741,1768,384985.0
+cliopatria,Papal States,10874,1741,1747,41647.6
+cliopatria,Sultanate of Oman,10889,1744,1747,101281.6
+cliopatria,Ottoman Empire,10908,1744,1747,2833208.1
+cliopatria,Hyderabad State,10914,1744,1751,261393.1
+cliopatria,Russian Empire,10921,1744,1747,15060304.0
+cliopatria,Kingdom of Sardinia,10929,1748,1756,77534.7
+cliopatria,Papal States,10937,1748,1790,41718.8
+cliopatria,Sultanate of Oman,10938,1748,1756,105459.8
+cliopatria,Russian Empire,10950,1748,1751,15063533.4
+cliopatria,Ottoman Empire,10956,1748,1751,2876607.2
+cliopatria,Ottoman Empire,10975,1752,1756,2876296.0
+cliopatria,Hyderabad State,10982,1752,1756,261199.8
+cliopatria,Russian Empire,10992,1752,1761,15244941.7
+cliopatria,Kingdom of Sardinia,11017,1757,1793,77605.2
+cliopatria,Sultanate of Oman,11027,1757,1798,120650.7
+cliopatria,Hyderabad State,11048,1757,1761,261033.0
+cliopatria,Ottoman Empire,11070,1757,1768,2875958.5
+cliopatria,Russian Empire,11097,1762,1762,15323524.5
+cliopatria,Hyderabad State,11104,1762,1762,260411.9
+cliopatria,Russian Empire,11152,1763,1768,15244757.9
+cliopatria,Hyderabad State,11162,1763,1768,260246.8
+cliopatria,Hyderabad State,11192,1769,1775,183865.0
+cliopatria,Russian Empire,11204,1769,1771,15709314.0
+cliopatria,Morocco,11205,1769,1860,387614.3
+cliopatria,Ottoman Empire,11206,1769,1771,2833763.8
+cliopatria,Ethiopian Empire,11214,1769,1889,240358.0
+cliopatria,Russian Empire,11221,1772,1774,16046245.3
+cliopatria,Ottoman Empire,11238,1772,1774,2828885.2
+cliopatria,Ottoman Empire,11271,1775,1775,2871967.2
+cliopatria,Russian Empire,11284,1775,1775,15985935.5
+cliopatria,Nepal,11314,1775,1787,56746.2
+cliopatria,United States of America,11318,1776,1777,1037249.1
+cliopatria,Russian Empire,11322,1776,1777,15985935.5
+cliopatria,Hyderabad State,11326,1776,1779,184117.8
+cliopatria,Ottoman Empire,11332,1776,1779,2864670.7
+cliopatria,Russian Empire,11349,1778,1782,16101464.0
+cliopatria,United States of America,11355,1778,1779,1008406.5
+cliopatria,United States of America,11373,1780,1780,884083.2
+cliopatria,Ottoman Empire,11382,1780,1782,2871967.2
+cliopatria,Hyderabad State,11391,1780,1787,183948.3
+cliopatria,United States of America,11405,1781,1782,1010119.2
+cliopatria,Russian Empire,11426,1783,1787,16234921.3
+cliopatria,Ottoman Empire,11429,1783,1787,2872285.0
+cliopatria,United States of America,11456,1783,1787,1008878.6
+cliopatria,Russian Empire,11458,1788,1790,16239970.2
+cliopatria,Hyderabad State,11465,1788,1791,183960.4
+cliopatria,Ottoman Empire,11478,1788,1790,2870318.0
+cliopatria,Qajar Dynasty,11481,1788,1790,579678.9
+cliopatria,Nepal,11486,1788,1790,169455.8
+cliopatria,United States of America,11492,1788,1790,1061905.6
+cliopatria,Russian Empire,11512,1791,1791,16406712.6
+cliopatria,Ottoman Empire,11522,1791,1791,2827849.6
+cliopatria,Qajar Dynasty,11531,1791,1793,964650.6
+cliopatria,Nepal,11536,1791,1791,192150.8
+cliopatria,United States of America,11542,1791,1791,1099059.7
+cliopatria,Papal States,11551,1791,1793,41742.4
+cliopatria,United States of America,11554,1792,1793,1102516.3
+cliopatria,Nepal,11564,1792,1793,208048.2
+cliopatria,Ottoman Empire,11567,1792,1793,2844357.9
+cliopatria,Russian Empire,11583,1792,1793,16526101.0
+cliopatria,Hyderabad State,11590,1792,1793,184129.9
+cliopatria,Papal States,11598,1794,1796,41719.5
+cliopatria,United States of America,11601,1794,1795,1103706.9
+cliopatria,Nepal,11604,1794,1798,179850.2
+cliopatria,Kingdom of Sardinia,11607,1794,1795,62047.7
+cliopatria,Qajar Dynasty,11611,1794,1795,1585478.8
+cliopatria,Ottoman Empire,11617,1794,1795,2843916.3
+cliopatria,Hyderabad State,11631,1794,1798,184157.6
+cliopatria,Russian Empire,11636,1794,1795,16692098.4
+cliopatria,Ottoman Empire,11642,1796,1796,2708106.8
+cliopatria,Russian Empire,11661,1796,1796,16753151.3
+cliopatria,United States of America,11673,1796,1796,1161373.3
+cliopatria,Kingdom of Sardinia,11676,1796,1796,50927.5
+cliopatria,Qajar Dynasty,11680,1796,1796,1624572.4
+cliopatria,Russian Empire,11693,1797,1798,16694006.1
+cliopatria,Ottoman Empire,11694,1797,1798,2707825.1
+cliopatria,Grand Duchy of Tuscany,11701,1797,1798,1031.9
+cliopatria,Kingdom of Sardinia,11703,1797,1799,55579.0
+cliopatria,Qajar Dynasty,11709,1797,1799,1743253.2
+cliopatria,Papal States,11715,1797,1798,30059.0
+cliopatria,United States of America,11721,1797,1798,1172919.9
+cliopatria,United States of America,11728,1799,1799,1184016.8
+cliopatria,Sultanate of Oman,11732,1799,1799,120758.2
+cliopatria,Nepal,11734,1799,1799,179928.1
+cliopatria,Ottoman Empire,11751,1799,1799,2645790.4
+cliopatria,Russian Empire,11763,1799,1802,16719127.5
+cliopatria,Qajar Dynasty,11772,1800,1804,1743611.5
+cliopatria,Kingdom of Sardinia,11776,1800,1813,62141.5
+cliopatria,Nepal,11779,1800,1802,179850.2
+cliopatria,United States of America,11784,1800,1802,1184595.2
+cliopatria,Sultanate of Oman,11786,1800,1802,105871.6
+cliopatria,Papal States,11788,1800,1802,38898.2
+cliopatria,Grand Duchy of Tuscany,11812,1800,1802,1031.9
+cliopatria,Ottoman Empire,11820,1800,1802,2659417.9
+cliopatria,Grand Duchy of Tuscany,11824,1803,1805,961.6
+cliopatria,Ottoman Empire,11841,1803,1804,2680478.9
+cliopatria,Russian Empire,11844,1803,1804,16767780.5
+cliopatria,United States of America,11859,1803,1804,1246130.2
+cliopatria,Sultanate of Oman,11865,1803,1810,104538.7
+cliopatria,Papal States,11868,1803,1805,30153.5
+cliopatria,Nepal,11880,1803,1804,180061.7
+cliopatria,Ottoman Empire,11892,1805,1805,2375422.1
+cliopatria,Muhammad Ali dynasty,11897,1805,1810,1770.9
+cliopatria,Russian Empire,11906,1805,1805,16838710.5
+cliopatria,United States of America,11919,1805,1805,1312361.7
+cliopatria,Nepal,11930,1805,1805,207436.0
+cliopatria,Qajar Dynasty,11937,1805,1805,1724858.2
+cliopatria,Nepal,11942,1806,1806,214602.5
+cliopatria,Qajar Dynasty,11949,1806,1810,1676690.1
+cliopatria,Austrian Empire,11950,1806,1806,657693.4
+cliopatria,Papal States,11952,1806,1806,29916.1
+cliopatria,United States of America,11961,1806,1806,1340440.4
+cliopatria,Russian Empire,11977,1806,1806,16886389.2
+cliopatria,Ottoman Empire,11989,1806,1806,2375715.2
+cliopatria,Grand Duchy of Tuscany,11991,1806,1806,821.0
+cliopatria,Papal States,11997,1807,1810,29941.0
+cliopatria,United States of America,12003,1807,1808,1365277.6
+cliopatria,Nepal,12010,1807,1808,221955.8
+cliopatria,Austrian Empire,12014,1807,1808,657648.4
+cliopatria,Ottoman Empire,12022,1807,1808,2356907.1
+cliopatria,Grand Duchy of Tuscany,12024,1807,1813,891.4
+cliopatria,Russian Empire,12036,1807,1808,17053686.6
+cliopatria,Russian Empire,12056,1809,1810,17383173.8
+cliopatria,Ottoman Empire,12057,1809,1810,2357260.0
+cliopatria,Nepal,12072,1809,1810,214757.3
+cliopatria,Austrian Empire,12079,1809,1810,617105.9
+cliopatria,United States of America,12097,1809,1810,1392023.3
+cliopatria,Ottoman Empire,12105,1811,1811,1754600.4
+cliopatria,Muhammad Ali dynasty,12113,1811,1821,604513.0
+cliopatria,Russian Empire,12127,1811,1811,17399569.8
+cliopatria,Papal States,12130,1811,1813,47.0
+cliopatria,United States of America,12138,1811,1811,1420112.5
+cliopatria,Sultanate of Oman,12141,1811,1811,85435.4
+cliopatria,Nepal,12149,1811,1811,214946.1
+cliopatria,Austrian Empire,12155,1811,1811,531684.1
+cliopatria,Qajar Dynasty,12157,1811,1821,1673976.7
+cliopatria,Nepal,12162,1812,1813,214610.4
+cliopatria,Austrian Empire,12168,1812,1813,531570.6
+cliopatria,United States of America,12176,1812,1813,1502106.2
+cliopatria,Sultanate of Oman,12180,1812,1814,105121.8
+cliopatria,Russian Empire,12186,1812,1813,17200880.5
+cliopatria,Ottoman Empire,12196,1812,1813,1916478.0
+cliopatria,Austrian Empire,12204,1814,1814,688313.7
+cliopatria,Kingdom of Sardinia,12216,1814,1814,74404.5
+cliopatria,Nepal,12217,1814,1814,227085.2
+cliopatria,United States of America,12223,1814,1814,1597150.9
+cliopatria,Papal States,12232,1814,1859,39268.7
+cliopatria,Russian Empire,12244,1814,1814,17431583.8
+cliopatria,Ottoman Empire,12273,1814,1814,2087356.9
+cliopatria,United States of America,12278,1815,1819,1586288.7
+cliopatria,Netherlands,12280,1815,1819,71126.3
+cliopatria,Sultanate of Oman,12282,1815,1819,76654.8
+cliopatria,Austrian Empire,12295,1815,1819,691594.7
+cliopatria,Kingdom of Sardinia,12303,1815,1847,77962.6
+cliopatria,Nepal,12307,1815,1819,148999.0
+cliopatria,Grand Duchy of Tuscany,12310,1815,1847,938.3
+cliopatria,Duchy of Parma and Piacenza,12321,1815,1847,7460.0
+cliopatria,Ottoman Empire,12322,1815,1819,2177096.8
+cliopatria,Kingdom of the Two Sicilies,12324,1815,1819,91429.8
+cliopatria,Russian Empire,12330,1815,1823,17398307.3
+cliopatria,Duchy of Modena and Reggio,12335,1815,1847,6396.8
+cliopatria,United States of America,12344,1820,1821,1947374.9
+cliopatria,Sultanate of Oman,12345,1820,1829,78868.5
+cliopatria,Netherlands,12349,1820,1829,71104.4
+cliopatria,Austrian Empire,12368,1820,1827,691747.6
+cliopatria,Burma,12375,1820,1821,698287.1
+cliopatria,Nepal,12376,1820,1835,149504.8
+cliopatria,Kingdom of the Two Sicilies,12394,1820,1847,91429.8
+cliopatria,Ottoman Empire,12397,1820,1821,2668906.3
+cliopatria,Ottoman Empire,12431,1822,1823,2632992.6
+cliopatria,Gran Colombia,12434,1822,1823,2846354.1
+cliopatria,Muhammad Ali dynasty,12442,1822,1833,1643206.7
+cliopatria,First Hellenic Republic,12448,1822,1823,36255.4
+cliopatria,United States of America,12451,1822,1823,2118782.2
+cliopatria,Qajar Dynasty,12465,1822,1827,1652059.6
+cliopatria,Burma,12472,1822,1824,797944.4
+cliopatria,Ottoman Empire,12477,1824,1824,2640287.3
+cliopatria,First Hellenic Republic,12483,1824,1824,21841.8
+cliopatria,Russian Empire,12487,1824,1827,17398162.2
+cliopatria,Gran Colombia,12488,1824,1824,4323865.0
+cliopatria,United States of America,12493,1824,1824,2346851.9
+cliopatria,Federated Republic of Mexico,12496,1824,1824,3187712.1
+cliopatria,First Hellenic Republic,12502,1825,1827,21423.3
+cliopatria,Gran Colombia,12506,1825,1829,2846354.1
+cliopatria,Ottoman Empire,12512,1825,1827,2155014.2
+cliopatria,Burma,12517,1825,1827,552726.2
+cliopatria,Federated Republic of Mexico,12521,1825,1835,3187760.0
+cliopatria,United States of America,12528,1825,1827,2377468.9
+cliopatria,First Hellenic Republic,12531,1828,1829,41363.7
+cliopatria,Russian Empire,12539,1828,1829,17683286.2
+cliopatria,Ottoman Empire,12546,1828,1829,2133227.1
+cliopatria,Burma,12556,1828,1833,552420.5
+cliopatria,Qajar Dynasty,12563,1828,1855,1621695.5
+cliopatria,Austrian Empire,12565,1828,1829,691883.3
+cliopatria,United States of America,12574,1828,1829,2402052.8
+cliopatria,Ottoman Empire,12581,1830,1833,2128641.1
+cliopatria,First Hellenic Republic,12592,1830,1833,45003.6
+cliopatria,Russian Empire,12594,1830,1833,17584994.6
+cliopatria,Gran Colombia,12597,1830,1833,2846354.1
+cliopatria,United States of America,12605,1830,1833,2473954.5
+cliopatria,Sultanate of Oman,12606,1830,1839,176235.6
+cliopatria,Netherlands,12607,1830,1833,45851.6
+cliopatria,Austrian Empire,12612,1830,1833,691972.3
+cliopatria,United States of America,12613,1834,1835,2753918.0
+cliopatria,Netherlands,12617,1834,1839,37107.6
+cliopatria,Austrian Empire,12622,1834,1835,691769.9
+cliopatria,Burma,12625,1834,1841,552579.5
+cliopatria,Ottoman Empire,12651,1834,1835,1459648.9
+cliopatria,Russian Empire,12652,1834,1835,17629414.1
+cliopatria,Muhammad Ali dynasty,12659,1834,1839,2313034.0
+cliopatria,First Hellenic Republic,12662,1834,1863,43926.9
+cliopatria,Ottoman Empire,12679,1836,1839,1487899.9
+cliopatria,Russian Empire,12684,1836,1839,17630641.2
+cliopatria,United States of America,12695,1836,1839,2812209.3
+cliopatria,Austrian Empire,12707,1836,1839,691747.6
+cliopatria,Federated Republic of Mexico,12714,1836,1839,1352853.0
+cliopatria,Nepal,12715,1836,1855,149283.9
+cliopatria,Russian Empire,12720,1840,1845,17630970.5
+cliopatria,Muhammad Ali dynasty,12732,1840,1841,2688661.8
+cliopatria,Ottoman Empire,12743,1840,1841,1447967.3
+cliopatria,Austrian Empire,12752,1840,1845,691769.9
+cliopatria,Federated Republic of Mexico,12754,1840,1841,1050405.7
+cliopatria,Netherlands,12763,1840,1863,40698.9
+cliopatria,Sultanate of Oman,12764,1840,1855,176182.3
+cliopatria,United States of America,12768,1840,1841,2948235.8
+cliopatria,Burma,12787,1842,1852,552405.0
+cliopatria,Federated Republic of Mexico,12788,1842,1845,668071.3
+cliopatria,United States of America,12792,1842,1845,3002238.1
+cliopatria,Muhammad Ali dynasty,12811,1842,1847,1648233.4
+cliopatria,Ottoman Empire,12820,1842,1847,2113381.4
+cliopatria,Russian Empire,12832,1846,1847,18996550.1
+cliopatria,Federated Republic of Mexico,12847,1846,1847,2796063.2
+cliopatria,Austrian Empire,12852,1846,1847,693259.8
+cliopatria,United States of America,12859,1846,1847,3518593.2
+cliopatria,United States of America,12871,1848,1848,3454930.9
+cliopatria,Kingdom of Sardinia,12875,1848,1848,134414.0
+cliopatria,Federated Republic of Mexico,12876,1848,1852,2085315.9
+cliopatria,Austrian Empire,12878,1848,1848,627276.6
+cliopatria,Ottoman Empire,12884,1848,1848,2113195.3
+cliopatria,Kingdom of the Two Sicilies,12886,1848,1848,69254.0
+cliopatria,Grand Duchy of Tuscany,12890,1848,1848,24632.5
+cliopatria,Muhammad Ali dynasty,12893,1848,1864,1834432.7
+cliopatria,Russian Empire,12899,1848,1848,20920770.7
+cliopatria,Kingdom of Sardinia,12907,1849,1852,77962.6
+cliopatria,Austrian Empire,12909,1849,1852,423424.5
+cliopatria,United States of America,12917,1849,1852,3469206.6
+cliopatria,Duchy of Modena and Reggio,12918,1849,1858,6678.0
+cliopatria,Russian Empire,12924,1849,1852,21036218.3
+cliopatria,Duchy of Parma and Piacenza,12930,1849,1858,7460.0
+cliopatria,Ottoman Empire,12933,1849,1852,2113241.6
+cliopatria,Kingdom of the Two Sicilies,12934,1849,1859,91429.8
+cliopatria,Ottoman Empire,12943,1853,1855,2106502.7
+cliopatria,Russian Empire,12964,1853,1855,21036993.2
+cliopatria,United States of America,12977,1853,1855,3862893.0
+cliopatria,Burma,12981,1853,1858,437084.1
+cliopatria,Federated Republic of Mexico,12982,1853,1855,1924248.0
+cliopatria,Kingdom of Sardinia,12983,1853,1858,78055.9
+cliopatria,Austrian Empire,12992,1853,1855,694173.4
+cliopatria,Qajar Dynasty,12997,1856,1856,1644989.5
+cliopatria,Austrian Empire,13000,1856,1856,810560.7
+cliopatria,Nepal,13003,1856,1870,149022.1
+cliopatria,Federated Republic of Mexico,13007,1856,1858,2005524.2
+cliopatria,Sultanate of Oman,13013,1856,1858,79419.8
+cliopatria,United States of America,13015,1856,1858,4197051.1
+cliopatria,Russian Empire,13029,1856,1856,20984055.1
+cliopatria,Ottoman Empire,13042,1856,1856,2106432.8
+cliopatria,Qajar Dynasty,13055,1857,1863,1621695.5
+cliopatria,Austrian Empire,13057,1857,1858,694309.0
+cliopatria,Ottoman Empire,13071,1857,1863,2106456.3
+cliopatria,Russian Empire,13078,1857,1858,21021700.7
+cliopatria,Russian Empire,13081,1859,1859,21057016.6
+cliopatria,Duchy of Modena and Reggio,13083,1859,1859,6396.9
+cliopatria,British Raj,13095,1859,1859,4186193.9
+cliopatria,Duchy of Parma and Piacenza,13100,1859,1859,7250.6
+cliopatria,Austrian Empire,13102,1859,1859,651527.6
+cliopatria,Kingdom of Sardinia,13111,1859,1859,122057.0
+cliopatria,Federated Republic of Mexico,13112,1859,1860,2004929.0
+cliopatria,Burma,13113,1859,1884,436996.6
+cliopatria,United States of America,13115,1859,1860,4302943.3
+cliopatria,Sultanate of Oman,13116,1859,1869,79692.9
+cliopatria,Kingdom of the Two Sicilies,13125,1860,1860,56600.9
+cliopatria,British Raj,13128,1860,1860,4186193.9
+cliopatria,Russian Empire,13129,1860,1861,21965469.7
+cliopatria,French Indochina,13136,1860,1861,94028.8
+cliopatria,Papal States,13137,1860,1860,29561.2
+cliopatria,Austrian Empire,13141,1860,1863,649043.5
+cliopatria,Kingdom of Sardinia,13144,1860,1860,163091.6
+cliopatria,Morocco,13154,1861,1869,386676.9
+cliopatria,British Raj,13155,1861,1861,4186193.9
+cliopatria,Kingdom of Sardinia,13161,1861,1861,235357.0
+cliopatria,Federated Republic of Mexico,13162,1861,1861,2005524.2
+cliopatria,United States of America,13163,1861,1861,2499044.3
+cliopatria,Papal States,13169,1861,1869,14119.3
+cliopatria,United States of America,13171,1862,1862,3148929.2
+cliopatria,French Indochina,13176,1862,1862,93891.5
+cliopatria,Federated Republic of Mexico,13181,1862,1862,1994711.0
+cliopatria,British Raj,13190,1862,1862,4186193.9
+cliopatria,Russian Empire,13191,1862,1862,21962360.8
+cliopatria,Federated Republic of Mexico,13196,1863,1863,1978471.4
+cliopatria,United States of America,13198,1863,1863,3319424.8
+cliopatria,French Indochina,13202,1863,1863,93915.8
+cliopatria,Russian Empire,13204,1863,1863,21963417.9
+cliopatria,British Raj,13211,1863,1863,4186193.9
+cliopatria,French Indochina,13216,1864,1867,94028.8
+cliopatria,Netherlands,13222,1864,1865,40810.3
+cliopatria,United States of America,13223,1864,1864,3841971.4
+cliopatria,Federated Republic of Mexico,13227,1864,1864,1773777.3
+cliopatria,Qajar Dynasty,13232,1864,1869,1621598.5
+cliopatria,Austrian Empire,13233,1864,1865,657866.4
+cliopatria,Ottoman Empire,13239,1864,1865,2106502.7
+cliopatria,British Raj,13241,1864,1864,4186193.9
+cliopatria,First Hellenic Republic,13246,1864,1865,46340.0
+cliopatria,Russian Empire,13256,1864,1867,22854917.2
+cliopatria,Federated Republic of Mexico,13259,1865,1865,55.3
+cliopatria,United States of America,13267,1865,1865,4006016.0
+cliopatria,Muhammad Ali dynasty,13271,1865,1865,1834432.7
+cliopatria,British Raj,13280,1865,1865,4186193.9
+cliopatria,Ottoman Empire,13286,1866,1869,2106656.2
+cliopatria,British Raj,13291,1866,1867,4186193.9
+cliopatria,First Hellenic Republic,13298,1866,1884,46123.1
+cliopatria,Netherlands,13315,1866,1869,40787.1
+cliopatria,United States of America,13317,1866,1867,5724207.8
+cliopatria,Austrian Empire,13321,1866,1867,587670.6
+cliopatria,Austria-Hungary,13333,1868,1869,622774.7
+cliopatria,French Indochina,13338,1868,1869,208753.4
+cliopatria,United States of America,13343,1868,1869,7948372.9
+cliopatria,Russian Empire,13351,1868,1869,21486754.7
+cliopatria,British Raj,13357,1868,1869,4188456.7
+cliopatria,French Indochina,13372,1870,1870,208784.0
+cliopatria,Papal States,13374,1870,1870,14119.3
+cliopatria,Sultanate of Oman,13377,1870,1879,119303.8
+cliopatria,Netherlands,13380,1870,1870,40742.4
+cliopatria,United States of America,13383,1870,1870,8076022.0
+cliopatria,Qajar Dynasty,13389,1870,1872,1624311.9
+cliopatria,Austria-Hungary,13391,1870,1870,623046.7
+cliopatria,Ottoman Empire,13398,1870,1870,2106571.7
+cliopatria,Morocco,13400,1870,1884,386205.0
+cliopatria,British Raj,13403,1870,1870,4188456.7
+cliopatria,Russian Empire,13421,1870,1870,21576247.5
+cliopatria,Nepal,13425,1871,1889,149101.6
+cliopatria,Austria-Hungary,13430,1871,1872,622958.9
+cliopatria,French Indochina,13435,1871,1879,208646.7
+cliopatria,Netherlands,13438,1871,1916,40722.7
+cliopatria,United States of America,13439,1871,1872,8074417.6
+cliopatria,Russian Empire,13443,1871,1872,21608107.7
+cliopatria,Ottoman Empire,13445,1871,1872,2106524.3
+cliopatria,British Raj,13448,1871,1872,4188456.7
+cliopatria,Russian Empire,13463,1873,1876,21994174.7
+cliopatria,Ottoman Empire,13465,1873,1876,2412758.4
+cliopatria,British Raj,13466,1873,1876,4188570.8
+cliopatria,Austria-Hungary,13481,1873,1879,622911.5
+cliopatria,Qajar Dynasty,13482,1873,1879,1624408.9
+cliopatria,United States of America,13492,1873,1876,8275121.1
+cliopatria,United States of America,13502,1877,1879,8846945.0
+cliopatria,Russian Empire,13514,1877,1879,22212318.3
+cliopatria,Ottoman Empire,13523,1877,1879,2302753.8
+cliopatria,British Raj,13525,1877,1879,4188399.4
+cliopatria,Austria-Hungary,13534,1880,1899,677497.4
+cliopatria,Qajar Dynasty,13536,1880,1894,1624386.0
+cliopatria,French Indochina,13539,1880,1884,208646.7
+cliopatria,United States of America,13544,1880,1889,8906467.0
+cliopatria,Sultanate of Oman,13549,1880,1894,192266.2
+cliopatria,Russian Empire,13560,1880,1884,22138711.9
+cliopatria,British Raj,13566,1880,1884,4209917.0
+cliopatria,Ottoman Empire,13570,1880,1884,2236405.7
+cliopatria,British Raj,13581,1885,1889,4816534.0
+cliopatria,Ottoman Empire,13584,1885,1894,2181775.8
+cliopatria,Morocco,13585,1885,1889,358262.6
+cliopatria,Russian Empire,13591,1885,1894,22112496.4
+cliopatria,First Hellenic Republic,13605,1885,1907,62413.8
+cliopatria,French Indochina,13614,1885,1889,443856.4
+cliopatria,Ethiopian Empire,13648,1890,1894,333340.1
+cliopatria,British Raj,13652,1890,1894,4823859.0
+cliopatria,Morocco,13656,1890,1904,358421.5
+cliopatria,Nepal,13667,1890,1916,148575.0
+cliopatria,United States of America,13672,1890,1897,9402120.5
+cliopatria,French Indochina,13682,1890,1894,479920.4
+cliopatria,French Indochina,13691,1895,1897,696558.3
+cliopatria,Sultanate of Oman,13701,1895,1897,192076.9
+cliopatria,Qajar Dynasty,13712,1895,1897,1778443.0
+cliopatria,British Raj,13714,1895,1897,4874083.0
+cliopatria,Ottoman Empire,13717,1895,1897,2181130.2
+cliopatria,Ethiopian Empire,13723,1895,1897,682751.3
+cliopatria,Russian Empire,13735,1895,1897,22158706.0
+cliopatria,French Indochina,13746,1898,1899,696672.5
+cliopatria,Sultanate of Oman,13747,1898,1899,118725.1
+cliopatria,United States of America,13749,1898,1899,9434818.2
+cliopatria,Qajar Dynasty,13758,1898,1904,1624386.0
+cliopatria,Ottoman Empire,13761,1898,1899,2176154.2
+cliopatria,British Raj,13764,1898,1899,4874083.0
+cliopatria,Ethiopian Empire,13766,1898,1899,720495.0
+cliopatria,Russian Empire,13774,1898,1899,22162337.2
+cliopatria,Russian Empire,13782,1900,1904,22894019.7
+cliopatria,Ottoman Empire,13787,1900,1904,2169166.1
+cliopatria,British Raj,13790,1900,1904,4874083.0
+cliopatria,Ethiopian Empire,13792,1900,1904,961897.6
+cliopatria,Austria-Hungary,13798,1900,1904,677520.2
+cliopatria,French Indochina,13807,1900,1904,699133.0
+cliopatria,United States of America,13813,1900,1904,9904993.2
+cliopatria,United States of America,13817,1905,1907,9784942.0
+cliopatria,French Indochina,13822,1905,1907,737317.9
+cliopatria,Qajar Dynasty,13828,1905,1914,1624437.3
+cliopatria,Austria-Hungary,13832,1905,1910,677791.1
+cliopatria,Ethiopian Empire,13840,1905,1907,972273.4
+cliopatria,Ottoman Empire,13849,1905,1910,2169653.1
+cliopatria,Morocco,13851,1905,1911,358049.3
+cliopatria,British Raj,13853,1905,1907,4873911.3
+cliopatria,Russian Empire,13857,1905,1911,22118476.5
+cliopatria,United States of America,13868,1908,1910,9906139.5
+cliopatria,French Indochina,13871,1908,1914,790107.6
+cliopatria,Ethiopian Empire,13884,1908,1931,1128474.6
+cliopatria,British Raj,13885,1908,1910,4873882.7
+cliopatria,First Hellenic Republic,13892,1908,1911,67740.7
+cliopatria,United States of America,13896,1911,1912,9784726.5
+cliopatria,Austria-Hungary,13904,1911,1911,673568.8
+cliopatria,Ottoman Empire,13917,1911,1911,2173687.1
+cliopatria,British Raj,13920,1911,1911,4874366.8
+cliopatria,Russian Empire,13933,1912,1912,22118394.0
+cliopatria,First Hellenic Republic,13937,1912,1912,101186.3
+cliopatria,Ottoman Empire,13939,1912,1912,2017983.7
+cliopatria,British Raj,13944,1912,1912,4874366.8
+cliopatria,Austria-Hungary,13945,1912,1912,673471.9
+cliopatria,Ottoman Empire,13960,1913,1914,1929341.6
+cliopatria,British Raj,13964,1913,1913,4874248.3
+cliopatria,Russian Empire,13967,1913,1913,22160833.0
+cliopatria,First Hellenic Republic,13968,1913,1915,111053.4
+cliopatria,United States of America,13973,1913,1913,9784931.6
+cliopatria,Austria-Hungary,13978,1913,1913,673592.3
+cliopatria,Russian Empire,13987,1914,1914,22309898.3
+cliopatria,British Raj,13988,1914,1914,4935378.3
+cliopatria,Austria-Hungary,13998,1914,1914,673471.9
+cliopatria,United States of America,14003,1914,1914,9787333.0
+cliopatria,Ottoman Empire,14005,1915,1915,1940601.1
+cliopatria,British Raj,14008,1915,1915,4935579.5
+cliopatria,Russian Empire,14019,1915,1915,22462676.5
+cliopatria,French Indochina,14022,1915,1915,790205.1
+cliopatria,United States of America,14027,1915,1915,9784931.6
+cliopatria,Austria-Hungary,14034,1915,1915,592373.6
+cliopatria,Qajar Dynasty,14035,1915,1915,1428131.6
+cliopatria,Qajar Dynasty,14044,1916,1916,1423943.7
+cliopatria,Austria-Hungary,14048,1916,1916,707867.0
+cliopatria,French Indochina,14055,1916,1916,790107.6
+cliopatria,United States of America,14059,1916,1917,9869228.1
+cliopatria,First Hellenic Republic,14062,1916,1916,105703.3
+cliopatria,Russian Empire,14066,1916,1916,22263654.2
+cliopatria,Ottoman Empire,14068,1916,1916,1799855.3
+cliopatria,British Raj,14072,1916,1916,4935186.5
+cliopatria,French Indochina,14080,1917,1917,789943.7
+cliopatria,Netherlands,14081,1917,1921,38405.4
+cliopatria,Nepal,14092,1917,1919,148496.6
+cliopatria,Austria-Hungary,14099,1917,1917,854380.0
+cliopatria,Qajar Dynasty,14100,1917,1917,1525289.5
+cliopatria,Ottoman Empire,14102,1917,1917,1270515.3
+cliopatria,British Raj,14106,1917,1917,4938921.5
+cliopatria,First Hellenic Republic,14110,1917,1917,100111.5
+cliopatria,British Raj,14118,1918,1919,4935586.6
+cliopatria,Ottoman Empire,14122,1918,1918,1143862.2
+cliopatria,First Hellenic Republic,14127,1918,1918,99991.6
+cliopatria,Serbia,14128,1918,1918,18307.2
+cliopatria,French Indochina,14132,1918,1918,790041.2
+cliopatria,United States of America,14138,1918,1918,9871027.9
+cliopatria,Austria-Hungary,14149,1918,1918,931571.8
+cliopatria,Qajar Dynasty,14150,1918,1918,1478240.9
+cliopatria,First Hellenic Republic,14155,1919,1919,116629.6
+cliopatria,Ottoman Empire,14170,1919,1919,760097.0
+cliopatria,Qajar Dynasty,14179,1919,1919,1478562.5
+cliopatria,French Indochina,14184,1919,1921,789943.7
+cliopatria,United States of America,14191,1919,1919,9876526.6
+cliopatria,Ottoman Empire,14199,1920,1921,650451.1
+cliopatria,British Raj,14202,1920,1923,4935501.2
+cliopatria,First Hellenic Republic,14210,1920,1921,203773.6
+cliopatria,United States of America,14232,1920,1923,9876321.5
+cliopatria,Nepal,14238,1920,1921,148575.0
+cliopatria,Qajar Dynasty,14245,1920,1921,1525072.4
+cliopatria,French Indochina,14249,1922,1923,789971.6
+cliopatria,Netherlands,14254,1922,1923,38318.1
+cliopatria,Nepal,14259,1922,1923,148391.5
+cliopatria,Qajar Dynasty,14266,1922,1923,1624335.0
+cliopatria,Ottoman Empire,14270,1922,1923,723584.9
+cliopatria,First Hellenic Republic,14281,1922,1923,138663.5
+cliopatria,Netherlands,14290,1924,1929,38449.1
+cliopatria,United States of America,14295,1924,1925,9816449.0
+cliopatria,French Indochina,14303,1924,1926,789943.7
+cliopatria,Nepal,14314,1924,1928,148575.0
+cliopatria,British Raj,14321,1924,1925,4935586.6
+cliopatria,First Hellenic Republic,14334,1924,1935,118364.3
+cliopatria,British Raj,14344,1926,1926,4935529.5
+cliopatria,United States of America,14356,1926,1931,9813082.3
+cliopatria,British Raj,14381,1927,1928,4935417.7
+cliopatria,French Indochina,14390,1927,1929,790107.6
+cliopatria,Nepal,14419,1929,2023,148391.5
+cliopatria,British Raj,14422,1929,1931,4935418.1
+cliopatria,Netherlands,14429,1930,1935,38382.4
+cliopatria,French Indochina,14435,1930,1931,789889.6
+cliopatria,Ethiopian Empire,14447,1932,1935,1128474.6
+cliopatria,British Raj,14452,1932,1935,4935212.9
+cliopatria,United States of America,14461,1932,1935,9813154.4
+cliopatria,French Indochina,14467,1932,1935,790107.6
+cliopatria,French Indochina,14491,1936,1937,790205.0
+cliopatria,Netherlands,14495,1936,1939,37362.4
+cliopatria,United States of America,14497,1936,1940,9781729.4
+cliopatria,British Raj,14525,1936,1937,4935158.4
+cliopatria,First Hellenic Republic,14534,1936,1939,117439.6
+cliopatria,British Raj,14548,1938,1938,4935158.4
+cliopatria,French Indochina,14563,1938,1939,790107.6
+cliopatria,British Raj,14569,1939,1939,4902087.6
+cliopatria,French Indochina,14601,1940,1941,26432.5
+cliopatria,First Hellenic Republic,14607,1940,1940,117439.6
+cliopatria,British Raj,14616,1940,1940,4902169.4
+cliopatria,United States of America,14627,1941,1941,12002132.6
+cliopatria,British Raj,14640,1941,1941,4902249.6
+cliopatria,British Raj,14654,1942,1942,4902169.4
+cliopatria,French Indochina,14673,1942,1942,222250.8
+cliopatria,United States of America,14677,1942,1942,11769926.1
+cliopatria,British Raj,14679,1943,1944,4219142.0
+cliopatria,French Indochina,14695,1943,1943,235135.5
+cliopatria,United States of America,14701,1943,1943,11768665.2
+cliopatria,United States of America,14729,1944,1944,11769718.7
+cliopatria,French Indochina,14733,1944,1944,225448.6
+cliopatria,British Raj,14744,1945,1945,4901834.1
+cliopatria,United States of America,14752,1945,1945,12188516.5
+cliopatria,Netherlands,14758,1945,1949,38382.4
+cliopatria,French Indochina,14759,1945,1945,225489.6
+cliopatria,United States of America,14797,1946,1946,10398925.7
+cliopatria,French Indochina,14802,1946,1946,787249.4
+cliopatria,British Raj,14815,1946,1946,4902856.4
+cliopatria,United States of America,14825,1947,1947,10147953.8
+cliopatria,French Indochina,14831,1947,1955,787331.1
+cliopatria,British Raj,14854,1947,1947,747822.0
+cliopatria,Hyderabad State,14865,1947,1947,211298.1
+cliopatria,United States of America,14881,1948,1949,10044972.6
+cliopatria,Burma,14896,1948,1962,675970.8
+cliopatria,United States of America,14946,1950,1952,9851307.7
+cliopatria,Netherlands,14948,1950,2023,38295.2
+cliopatria,United States of America,14954,1953,1966,9440915.1
+cliopatria,Morocco,14993,1956,1957,380320.3
+cliopatria,French Indochina,15004,1956,1957,35475.1
+cliopatria,Morocco,15027,1958,1968,404785.9
+cliopatria,Burma,15107,1963,1966,675942.4
+cliopatria,Burma,15124,1967,1986,675970.8
+cliopatria,United States of America,15129,1967,1972,9609955.0
+cliopatria,Morocco,15161,1969,1975,405748.6
+cliopatria,United States of America,15196,1973,1986,9438978.7
+cliopatria,Sultanate of Oman,15199,1973,2023,314266.7
+cliopatria,Morocco,15229,1976,2023,406464.5
+cliopatria,United States of America,15324,1987,1990,9438428.4
+cliopatria,Burma,15326,1987,1989,675970.8
+cliopatria,United States of America,15359,1991,1995,9438611.6
+cliopatria,United States of America,15416,1996,1999,9437861.8
+cliopatria,United States of America,15439,2000,2005,9436558.0
+cliopatria,United States of America,15453,2006,2013,9875773.7
+cliopatria,United States of America,15479,2014,2023,9436558.0
+cliopatria,Morocco,15599,2024,2024,406464.5
+cliopatria,Nepal,15637,2024,2024,148391.5
+cliopatria,United States of America,15644,2024,2024,9436558.0
+cliopatria,Sultanate of Oman,15657,2024,2024,314266.7
+cliopatria,Netherlands,15662,2024,2024,38295.2
+constructed,GBM-1895-1946,0,,,132040.0
+constructed,SYL-1944-1953,1,,,198213.1
+constructed,AEF-1910-1960,2,,,2495220.6
+constructed,BTL-1920-1957,3,,,26630.2
+constructed,TTPI-1947-1994,4,,,2063.4
+constructed,IRL-1800-1921,5,,,84433.0
+constructed,CHN-1932-1945,6,,,6710397.3
+constructed,DEU-1945-1949,7,,,356916.6
+constructed,DEU-1949-1990,8,,,356916.6
+constructed,JPN-1895-1945,9,,,626338.5
+constructed,KOR-1800-1945,10,,,219398.2
+constructed,MAN-1932-1945,11,,,791653.0
+constructed,EGYSUD-1934-1956,12,,,3485332.4
+constructed,CODRU-1922-1960,13,,,2378962.0
+constructed,BLX-1921-1999,14,,,33223.3
+constructed,MASG-1946-1963,15,,,132040.0
+constructed,AOF-1895-1960,16,,,4623690.1
+constructed,CZE-1804-1918,17,,,79348.6
+constructed,ITS-1908-1960,18,,,464743.0
+constructed,PTIND-1816-1961,19,,,3779.3
+cshapes-2.0,2,0,1886,1959,7939970.8
+cshapes-2.0,2,1,1959,1959,9446211.9
+cshapes-2.0,2,2,1959,2019,9462897.7
+cshapes-2.0,4,4,1898,1959,16685.9
+cshapes-2.0,20,7,1886,1948,9553644.5
+cshapes-2.0,20,8,1948,2019,9952067.5
+cshapes-2.0,21,9,1886,1948,398423.0
+cshapes-2.0,40,12,1886,1898,109097.1
+cshapes-2.0,40,13,1898,1902,109097.1
+cshapes-2.0,40,14,1902,2019,109097.1
+cshapes-2.0,41,15,1886,1915,27136.8
+cshapes-2.0,41,16,1915,1934,27136.8
+cshapes-2.0,41,17,1934,2019,27136.8
+cshapes-2.0,42,18,1886,2019,48314.3
+cshapes-2.0,51,19,1886,1962,11027.5
+cshapes-2.0,51,20,1962,2019,11027.5
+cshapes-2.0,52,21,1886,1962,4996.4
+cshapes-2.0,52,22,1962,2019,4996.4
+cshapes-2.0,65,25,1886,2019,1651.9
+cshapes-2.0,66,26,1886,2019,1148.0
+cshapes-2.0,70,27,1886,2019,1956759.1
+cshapes-2.0,80,28,1886,1970,22091.9
+cshapes-2.0,80,29,1970,1981,22091.9
+cshapes-2.0,80,30,1981,2019,22091.9
+cshapes-2.0,90,31,1886,2019,109028.5
+cshapes-2.0,91,32,1886,2019,112227.0
+cshapes-2.0,92,33,1886,2019,20555.9
+cshapes-2.0,93,34,1886,2019,128096.7
+cshapes-2.0,94,35,1886,2019,51054.3
+cshapes-2.0,95,36,1903,2019,74108.4
+cshapes-2.0,100,37,1886,1903,1167414.6
+cshapes-2.0,100,38,1903,1922,1093306.2
+cshapes-2.0,100,39,1922,2019,1135124.5
+cshapes-2.0,101,40,1886,2019,910834.2
+cshapes-2.0,110,41,1886,1966,210583.9
+cshapes-2.0,110,42,1966,2019,210583.9
+cshapes-2.0,115,43,1886,1954,144985.3
+cshapes-2.0,115,44,1954,1975,144985.3
+cshapes-2.0,115,45,1975,2019,144985.3
+cshapes-2.0,120,46,1886,1930,83710.8
+cshapes-2.0,120,47,1930,1946,13068.0
+cshapes-2.0,120,48,1946,2019,83710.8
+cshapes-2.0,130,49,1886,1942,341765.0
+cshapes-2.0,130,50,1942,2019,255274.2
+cshapes-2.0,135,51,1886,1909,1277690.3
+cshapes-2.0,135,52,1909,1922,1246181.6
+cshapes-2.0,135,53,1922,1942,1204363.4
+cshapes-2.0,135,54,1942,2019,1290854.2
+cshapes-2.0,140,55,1886,1903,8311721.1
+cshapes-2.0,140,56,1903,1909,8437289.0
+cshapes-2.0,140,57,1909,1960,8472099.9
+cshapes-2.0,140,58,1960,2019,8472099.9
+cshapes-2.0,145,59,1886,1903,1320740.8
+cshapes-2.0,145,60,1903,1909,1195172.9
+cshapes-2.0,145,61,1909,1938,1191870.7
+cshapes-2.0,145,62,1938,2019,1086604.0
+cshapes-2.0,150,63,1886,1938,293541.8
+cshapes-2.0,150,64,1938,2019,398808.5
+cshapes-2.0,155,65,1886,1899,746275.5
+cshapes-2.0,155,66,1899,1902,698983.1
+cshapes-2.0,155,67,1902,2019,743667.0
+cshapes-2.0,160,68,1886,1899,2778351.4
+cshapes-2.0,160,69,1899,1902,2825643.8
+cshapes-2.0,160,70,1902,2019,2780959.9
+cshapes-2.0,165,71,1886,2019,177856.8
+cshapes-2.0,200,72,1886,1921,313669.3
+cshapes-2.0,200,73,1921,2019,244091.1
+cshapes-2.0,205,74,1921,2019,69578.3
+cshapes-2.0,211,76,1886,2019,30641.7
+cshapes-2.0,212,77,1886,2019,2581.7
+cshapes-2.0,220,78,1886,1919,532306.5
+cshapes-2.0,220,79,1919,2019,548040.8
+cshapes-2.0,225,80,1886,2019,41497.1
+cshapes-2.0,230,81,1886,2019,506124.1
+cshapes-2.0,235,82,1886,2019,91872.1
+cshapes-2.0,255,83,1886,1919,540111.3
+cshapes-2.0,255,84,1919,1920,474782.2
+cshapes-2.0,255,85,1920,1938,470832.2
+cshapes-2.0,255,86,1938,1945,496651.4
+cshapes-2.0,260,87,1945,1949,247662.5
+cshapes-2.0,260,88,1949,1990,247662.5
+cshapes-2.0,260,89,1990,2019,356916.6
+cshapes-2.0,265,90,1945,1949,109254.0
+cshapes-2.0,265,91,1949,1990,109254.0
+cshapes-2.0,290,92,1918,1919,130204.5
+cshapes-2.0,290,93,1919,1919,177761.6
+cshapes-2.0,290,94,1919,1920,256574.5
+cshapes-2.0,290,95,1920,1921,284598.6
+cshapes-2.0,290,96,1921,1945,388378.5
+cshapes-2.0,290,97,1945,2019,311678.8
+cshapes-2.0,300,99,1886,1908,624185.4
+cshapes-2.0,300,100,1908,1918,675720.2
+cshapes-2.0,305,101,1918,1919,211937.1
+cshapes-2.0,305,102,1919,2019,83949.5
+cshapes-2.0,310,103,1918,1918,323100.1
+cshapes-2.0,310,104,1918,1919,270453.7
+cshapes-2.0,310,105,1919,1920,257705.8
+cshapes-2.0,310,106,1920,1938,92991.2
+cshapes-2.0,310,107,1938,1947,108785.4
+cshapes-2.0,310,108,1947,2019,92991.2
+cshapes-2.0,315,109,1918,1938,140397.6
+cshapes-2.0,315,110,1938,1938,116616.2
+cshapes-2.0,315,111,1938,1945,100821.9
+cshapes-2.0,315,112,1945,1947,111885.4
+cshapes-2.0,315,113,1947,1992,127679.6
+cshapes-2.0,316,114,1993,2019,78752.5
+cshapes-2.0,317,115,1993,2019,48927.1
+cshapes-2.0,325,116,1886,1919,284652.0
+cshapes-2.0,325,117,1919,2019,300049.4
+cshapes-2.0,338,118,1886,1964,291.9
+cshapes-2.0,338,119,1964,2019,291.9
+cshapes-2.0,339,120,1913,1914,28655.7
+cshapes-2.0,339,121,1914,1920,28655.7
+cshapes-2.0,339,122,1920,2019,28655.7
+cshapes-2.0,340,123,1886,1913,52533.7
+cshapes-2.0,340,124,1913,1915,90640.2
+cshapes-2.0,340,125,1915,1918,90640.2
+cshapes-2.0,340,126,2006,2008,87920.4
+cshapes-2.0,340,127,2008,2019,77183.1
+cshapes-2.0,341,128,1886,1913,9950.3
+cshapes-2.0,341,129,1913,1915,15907.4
+cshapes-2.0,341,130,1915,1918,15907.4
+cshapes-2.0,341,131,2006,2019,14010.1
+cshapes-2.0,343,132,1991,2019,25460.7
+cshapes-2.0,344,133,1992,2019,55834.2
+cshapes-2.0,345,134,1918,1919,157995.4
+cshapes-2.0,345,135,1919,1920,191964.5
+cshapes-2.0,345,136,1920,1991,255186.3
+cshapes-2.0,345,137,1991,1992,229725.7
+cshapes-2.0,345,138,1992,2006,101930.5
+cshapes-2.0,346,139,1992,2019,51534.8
+cshapes-2.0,347,140,2008,2019,10737.3
+cshapes-2.0,349,141,1992,2019,20426.2
+cshapes-2.0,350,142,1886,1913,63754.6
+cshapes-2.0,350,143,1913,1919,121697.0
+cshapes-2.0,350,144,1919,2019,129913.4
+cshapes-2.0,352,145,1914,1960,9128.1
+cshapes-2.0,352,146,1960,2019,9128.1
+cshapes-2.0,355,147,1886,1913,93162.2
+cshapes-2.0,355,148,1913,1918,111549.5
+cshapes-2.0,355,149,1918,1919,119236.5
+cshapes-2.0,355,150,1919,1940,103333.1
+cshapes-2.0,355,151,1940,2019,111020.1
+cshapes-2.0,359,152,1991,2019,33682.0
+cshapes-2.0,360,153,1886,1913,128499.1
+cshapes-2.0,360,154,1913,1916,136186.1
+cshapes-2.0,360,155,1916,1918,136186.1
+cshapes-2.0,360,156,1918,1918,128499.1
+cshapes-2.0,360,157,1918,1919,128499.1
+cshapes-2.0,360,158,1919,1919,141247.0
+cshapes-2.0,360,159,1919,1920,148934.0
+cshapes-2.0,360,160,1920,1920,251719.0
+cshapes-2.0,360,161,1920,1940,296086.7
+cshapes-2.0,360,162,1940,1940,245066.4
+cshapes-2.0,360,163,1940,2019,237379.5
+cshapes-2.0,365,164,1886,1905,22016260.9
+cshapes-2.0,365,165,1905,1914,21984196.2
+cshapes-2.0,365,166,1914,1917,22149249.3
+cshapes-2.0,365,167,1917,1918,21760481.7
+cshapes-2.0,365,168,1918,1918,21676599.4
+cshapes-2.0,365,169,1918,1918,21650599.2
+cshapes-2.0,365,170,1918,1918,21650599.2
+cshapes-2.0,365,171,1918,1920,21405134.4
+cshapes-2.0,365,172,1920,1920,21506735.8
+cshapes-2.0,365,173,1920,1920,21700851.5
+cshapes-2.0,365,174,1920,1921,21656483.8
+cshapes-2.0,365,175,1921,1940,21552703.9
+cshapes-2.0,365,176,1940,1940,21606390.6
+cshapes-2.0,365,177,1940,1940,21777509.2
+cshapes-2.0,365,178,1940,1945,21828529.4
+cshapes-2.0,365,179,1945,1945,22033900.4
+cshapes-2.0,365,180,1945,1991,22065965.1
+cshapes-2.0,365,181,1991,1991,21824571.6
+cshapes-2.0,365,182,1991,1991,21178415.9
+cshapes-2.0,365,183,1991,1991,20790223.7
+cshapes-2.0,365,184,1991,1991,20317975.2
+cshapes-2.0,365,185,1991,1991,19721218.9
+cshapes-2.0,365,186,1991,2014,16882578.0
+cshapes-2.0,365,187,2014,2019,16908413.8
+cshapes-2.0,366,188,1918,1940,49294.6
+cshapes-2.0,366,189,1991,2019,45911.6
+cshapes-2.0,367,190,1918,1940,65965.7
+cshapes-2.0,367,191,1991,2019,64643.2
+cshapes-2.0,368,192,1918,1920,83882.3
+cshapes-2.0,368,193,1920,1922,55858.2
+cshapes-2.0,368,194,1922,1939,55858.2
+cshapes-2.0,368,195,1939,1940,55858.2
+cshapes-2.0,368,196,1991,2019,65024.4
+cshapes-2.0,369,197,1991,2014,597501.0
+cshapes-2.0,369,198,2014,2019,571665.1
+cshapes-2.0,370,199,1991,2019,207711.5
+cshapes-2.0,371,200,1991,2019,29663.6
+cshapes-2.0,372,201,1991,2019,69956.5
+cshapes-2.0,373,202,1991,2019,85951.0
+cshapes-2.0,375,203,1917,1940,388767.6
+cshapes-2.0,375,204,1940,2019,335249.3
+cshapes-2.0,380,205,1886,1905,766623.4
+cshapes-2.0,380,206,1905,2019,445979.4
+cshapes-2.0,385,207,1905,2019,320644.0
+cshapes-2.0,390,208,1886,1920,38680.6
+cshapes-2.0,390,209,1920,2019,42630.6
+cshapes-2.0,395,210,1886,1918,102889.1
+cshapes-2.0,395,211,1918,1942,102889.1
+cshapes-2.0,395,212,1942,1944,102889.1
+cshapes-2.0,395,213,1944,2019,102889.1
+cshapes-2.0,402,214,1886,1975,3997.5
+cshapes-2.0,402,215,1975,2019,3997.5
+cshapes-2.0,404,216,1886,1886,33241.8
+cshapes-2.0,404,217,1886,1942,33241.8
+cshapes-2.0,404,218,1942,1974,33241.8
+cshapes-2.0,404,219,1974,2019,33241.8
+cshapes-2.0,411,220,1886,1900,26920.8
+cshapes-2.0,411,221,1900,1968,26920.8
+cshapes-2.0,411,222,1968,2019,26920.8
+cshapes-2.0,420,223,1889,1965,10722.9
+cshapes-2.0,420,224,1965,2019,10722.9
+cshapes-2.0,432,228,1905,1913,1736745.9
+cshapes-2.0,432,229,1913,1919,1736745.9
+cshapes-2.0,432,230,1919,1932,1464408.3
+cshapes-2.0,432,231,1932,1944,1513080.7
+cshapes-2.0,432,232,1944,1947,1300963.9
+cshapes-2.0,432,233,1947,1959,1252291.5
+cshapes-2.0,432,234,1959,1960,1448287.4
+cshapes-2.0,432,235,1960,1960,1252291.5
+cshapes-2.0,432,236,1960,2019,1252291.5
+cshapes-2.0,433,237,1886,1959,195995.8
+cshapes-2.0,433,238,1960,2019,195995.8
+cshapes-2.0,434,239,1895,1897,36223.0
+cshapes-2.0,434,240,1897,1898,36223.0
+cshapes-2.0,434,241,1898,1960,116188.8
+cshapes-2.0,434,242,1960,2019,116188.8
+cshapes-2.0,435,243,1904,1904,947714.6
+cshapes-2.0,435,244,1904,1912,918917.4
+cshapes-2.0,435,245,1912,1913,826366.5
+cshapes-2.0,435,246,1913,1920,826366.5
+cshapes-2.0,435,247,1920,1944,826366.5
+cshapes-2.0,435,248,1944,1960,1038483.3
+cshapes-2.0,435,249,1960,1975,1038483.3
+cshapes-2.0,435,250,1975,1979,1136257.5
+cshapes-2.0,435,251,1979,2019,1038483.3
+cshapes-2.0,436,252,1905,1926,1182017.1
+cshapes-2.0,436,253,1926,1932,1182017.1
+cshapes-2.0,436,254,1932,1947,1259559.3
+cshapes-2.0,436,255,1947,1960,1182017.1
+cshapes-2.0,436,256,1960,2019,1182017.1
+cshapes-2.0,437,257,1889,1893,321307.7
+cshapes-2.0,437,258,1893,1900,321307.7
+cshapes-2.0,437,259,1900,1902,321307.7
+cshapes-2.0,437,260,1902,1932,321307.7
+cshapes-2.0,437,261,1932,1933,467430.7
+cshapes-2.0,437,262,1933,1947,467430.7
+cshapes-2.0,437,263,1947,1960,321307.7
+cshapes-2.0,437,264,1960,1983,321307.7
+cshapes-2.0,437,265,1983,2019,321307.7
+cshapes-2.0,438,266,1894,1958,245068.4
+cshapes-2.0,438,267,1958,2019,245068.4
+cshapes-2.0,439,268,1919,1932,272337.5
+cshapes-2.0,439,269,1947,1960,272337.5
+cshapes-2.0,439,270,1960,2019,272337.5
+cshapes-2.0,450,271,1886,1892,96000.4
+cshapes-2.0,450,272,1892,2019,96000.4
+cshapes-2.0,451,273,1886,1889,83202.1
+cshapes-2.0,451,274,1889,1895,72479.2
+cshapes-2.0,451,275,1895,1961,72479.2
+cshapes-2.0,451,276,1961,2019,72479.2
+cshapes-2.0,452,277,1886,1888,68325.3
+cshapes-2.0,452,278,1888,1898,127937.5
+cshapes-2.0,452,279,1898,1956,212416.0
+cshapes-2.0,452,280,1956,1957,239046.2
+cshapes-2.0,452,281,1957,2019,239046.2
+cshapes-2.0,461,290,1922,1960,57094.3
+cshapes-2.0,461,291,1960,2019,57094.3
+cshapes-2.0,470,293,1886,1894,510512.1
+cshapes-2.0,470,294,1894,1900,510512.1
+cshapes-2.0,470,295,1901,1912,510512.1
+cshapes-2.0,470,296,1912,1916,799953.1
+cshapes-2.0,470,297,1916,1919,799953.1
+cshapes-2.0,471,298,1919,1922,423068.5
+cshapes-2.0,471,299,1922,1959,423068.5
+cshapes-2.0,471,300,1960,1961,423068.5
+cshapes-2.0,471,301,1961,2019,464746.7
+cshapes-2.0,472,302,1919,1922,87443.6
+cshapes-2.0,472,303,1922,1961,87443.6
+cshapes-2.0,475,304,1914,1960,862547.3
+cshapes-2.0,475,305,1960,1961,862547.3
+cshapes-2.0,475,306,1961,2019,908494.3
+cshapes-2.0,481,307,1886,1903,260680.9
+cshapes-2.0,481,308,1903,1906,260680.9
+cshapes-2.0,481,309,1906,1912,260680.9
+cshapes-2.0,481,310,1912,1919,226633.3
+cshapes-2.0,481,311,1919,1960,260680.9
+cshapes-2.0,481,312,1960,2019,260680.9
+cshapes-2.0,482,313,1906,1912,618630.4
+cshapes-2.0,482,314,1912,1919,495615.0
+cshapes-2.0,482,315,1919,1960,618630.4
+cshapes-2.0,482,316,1960,2019,618630.4
+cshapes-2.0,483,317,1900,1912,1271887.5
+cshapes-2.0,483,318,1912,1919,1220971.5
+cshapes-2.0,483,319,1919,1920,1271887.5
+cshapes-2.0,483,320,1920,1960,1271887.5
+cshapes-2.0,483,321,1960,2019,1271887.5
+cshapes-2.0,484,322,1886,1898,344021.8
+cshapes-2.0,484,323,1898,1900,2234539.7
+cshapes-2.0,484,324,1900,1906,962652.2
+cshapes-2.0,484,325,1906,1912,344021.8
+cshapes-2.0,484,326,1912,1919,262560.0
+cshapes-2.0,484,327,1919,1960,344021.8
+cshapes-2.0,484,328,1960,2019,344021.8
+cshapes-2.0,490,329,1886,1891,2011830.6
+cshapes-2.0,490,330,1891,1891,2011830.6
+cshapes-2.0,490,331,1891,1894,2221496.7
+cshapes-2.0,490,332,1894,1908,2380996.6
+cshapes-2.0,490,333,1908,1910,2380996.6
+cshapes-2.0,490,334,1910,1960,2326636.4
+cshapes-2.0,490,335,1960,2019,2326636.4
+cshapes-2.0,500,336,1894,1902,381359.4
+cshapes-2.0,500,337,1902,1910,268929.5
+cshapes-2.0,500,338,1910,1914,282509.3
+cshapes-2.0,500,339,1914,1926,282509.3
+cshapes-2.0,500,340,1926,1962,242080.2
+cshapes-2.0,500,341,1962,2019,242080.2
+cshapes-2.0,501,342,1888,1891,469649.1
+cshapes-2.0,501,343,1891,1894,1041479.9
+cshapes-2.0,501,344,1894,1902,660120.4
+cshapes-2.0,501,345,1902,1906,772550.3
+cshapes-2.0,501,346,1907,1907,772550.3
+cshapes-2.0,501,347,1907,1914,635867.5
+cshapes-2.0,501,348,1914,1920,635867.5
+cshapes-2.0,501,349,1920,1924,635867.5
+cshapes-2.0,501,350,1924,1926,541463.0
+cshapes-2.0,501,351,1926,1963,581892.1
+cshapes-2.0,501,352,1963,2019,581892.1
+cshapes-2.0,510,353,1891,1916,991095.5
+cshapes-2.0,510,354,1916,1919,991095.5
+cshapes-2.0,510,355,1919,1920,991095.5
+cshapes-2.0,510,356,1920,1922,938769.9
+cshapes-2.0,510,357,1922,1961,938769.9
+cshapes-2.0,510,358,1961,1964,938769.9
+cshapes-2.0,510,359,1964,2019,941361.2
+cshapes-2.0,515,363,1920,1922,52325.6
+cshapes-2.0,515,364,1922,1962,52325.6
+cshapes-2.0,516,365,1962,2019,27187.6
+cshapes-2.0,517,366,1962,2019,25138.0
+cshapes-2.0,520,367,1960,2019,636242.2
+cshapes-2.0,521,368,1886,1897,171499.2
+cshapes-2.0,521,369,1897,1960,171499.2
+cshapes-2.0,522,370,1886,1900,21433.0
+cshapes-2.0,522,371,1900,1977,21433.0
+cshapes-2.0,522,372,1977,2019,21433.0
+cshapes-2.0,530,373,1886,1889,280222.4
+cshapes-2.0,530,374,1889,1897,266082.2
+cshapes-2.0,530,375,1897,1902,939230.3
+cshapes-2.0,530,376,1902,1907,990850.9
+cshapes-2.0,530,377,1907,1952,1127556.3
+cshapes-2.0,530,378,1952,1993,1248453.5
+cshapes-2.0,530,379,1993,2019,1127556.3
+cshapes-2.0,531,380,1886,1889,19030.0
+cshapes-2.0,531,381,1889,1900,120897.2
+cshapes-2.0,531,382,1900,1941,120897.2
+cshapes-2.0,531,383,1941,1952,120897.2
+cshapes-2.0,531,384,1993,2019,120897.2
+cshapes-2.0,540,385,1886,1890,409489.5
+cshapes-2.0,540,386,1890,1891,1037116.8
+cshapes-2.0,540,387,1891,1905,1344272.2
+cshapes-2.0,540,388,1905,1975,1247353.0
+cshapes-2.0,540,389,1975,2019,1247353.0
+cshapes-2.0,541,390,1886,1891,633865.6
+cshapes-2.0,541,391,1891,1975,786319.4
+cshapes-2.0,541,392,1975,2019,786319.4
+cshapes-2.0,550,393,1953,1964,1260260.7
+cshapes-2.0,551,394,1911,1953,751924.2
+cshapes-2.0,551,395,1964,2019,751924.2
+cshapes-2.0,552,396,1889,1891,389852.7
+cshapes-2.0,552,397,1891,1900,1044857.8
+cshapes-2.0,552,398,1900,1953,389852.7
+cshapes-2.0,552,399,1964,1965,389852.7
+cshapes-2.0,552,400,1965,2019,389852.7
+cshapes-2.0,553,401,1891,1953,118483.7
+cshapes-2.0,553,402,1964,1964,118483.7
+cshapes-2.0,553,403,1964,2019,118483.7
+cshapes-2.0,560,404,1910,2019,1220229.4
+cshapes-2.0,561,405,1886,1895,600800.9
+cshapes-2.0,561,406,1895,1910,716101.1
+cshapes-2.0,562,407,1886,1895,43594.8
+cshapes-2.0,562,408,1895,1910,72309.4
+cshapes-2.0,565,411,1886,1886,699762.1
+cshapes-2.0,565,412,1886,1915,824759.5
+cshapes-2.0,565,413,1915,1920,824759.5
+cshapes-2.0,565,414,1920,1966,824759.5
+cshapes-2.0,565,415,1966,1990,824759.5
+cshapes-2.0,565,416,1990,2019,824759.5
+cshapes-2.0,570,417,1886,1966,30516.2
+cshapes-2.0,570,418,1966,2019,30516.2
+cshapes-2.0,571,419,1886,1890,308370.0
+cshapes-2.0,571,420,1890,1895,576506.7
+cshapes-2.0,571,421,1895,1966,578323.8
+cshapes-2.0,571,422,1966,2019,578323.8
+cshapes-2.0,572,423,1895,1902,17110.8
+cshapes-2.0,572,424,1902,1968,17110.8
+cshapes-2.0,572,425,1968,2019,17110.8
+cshapes-2.0,580,426,1886,1896,592863.2
+cshapes-2.0,580,427,1896,1912,592863.2
+cshapes-2.0,580,428,1912,1946,594564.4
+cshapes-2.0,580,429,1946,1960,592863.2
+cshapes-2.0,580,430,1960,2019,592863.2
+cshapes-2.0,581,431,1946,1975,1701.1
+cshapes-2.0,581,432,1975,2019,1701.1
+cshapes-2.0,585,433,1886,2019,2642.0
+cshapes-2.0,590,434,1886,1968,2133.4
+cshapes-2.0,590,435,1968,2019,2133.4
+cshapes-2.0,600,436,1886,1902,374438.2
+cshapes-2.0,600,437,1902,1904,374438.2
+cshapes-2.0,600,438,1904,1904,374438.2
+cshapes-2.0,600,439,1904,1912,350330.6
+cshapes-2.0,600,440,1912,1956,350330.6
+cshapes-2.0,600,441,1956,1956,350330.6
+cshapes-2.0,600,442,1956,1958,374438.2
+cshapes-2.0,600,443,1958,1975,403235.4
+cshapes-2.0,600,444,1975,1979,574428.8
+cshapes-2.0,600,445,1979,2019,672203.0
+cshapes-2.0,602,446,1912,1956,52904.8
+cshapes-2.0,610,448,1886,1900,176416.7
+cshapes-2.0,610,449,1900,1912,176416.7
+cshapes-2.0,610,450,1912,1958,268967.6
+cshapes-2.0,615,451,1886,1901,655581.3
+cshapes-2.0,615,452,1901,1902,655581.3
+cshapes-2.0,615,453,1902,1919,2441790.9
+cshapes-2.0,615,454,1919,1962,2317513.3
+cshapes-2.0,615,455,1962,2019,2317513.3
+cshapes-2.0,616,456,1886,1955,155359.3
+cshapes-2.0,616,457,1956,2019,155359.3
+cshapes-2.0,620,458,1912,1919,881871.9
+cshapes-2.0,620,459,1919,1925,1006149.5
+cshapes-2.0,620,460,1925,1934,1524983.3
+cshapes-2.0,620,461,1934,1943,1617563.9
+cshapes-2.0,620,462,1943,1949,1617563.9
+cshapes-2.0,620,463,1949,1951,1617563.9
+cshapes-2.0,620,464,1951,2019,1617563.9
+cshapes-2.0,625,465,1899,1902,2590381.6
+cshapes-2.0,625,466,1902,1910,2538738.4
+cshapes-2.0,625,467,1910,1914,2579518.9
+cshapes-2.0,625,468,1914,1934,2579518.9
+cshapes-2.0,625,469,1934,1955,2486938.3
+cshapes-2.0,625,470,1956,2011,2486938.3
+cshapes-2.0,625,471,2011,2019,1859620.0
+cshapes-2.0,626,472,2011,2019,627318.3
+cshapes-2.0,630,473,1886,2019,1621541.4
+cshapes-2.0,640,474,1886,1912,2823096.3
+cshapes-2.0,640,475,1912,1912,1941224.4
+cshapes-2.0,640,476,1913,1913,1912568.7
+cshapes-2.0,640,477,1913,1914,1784488.3
+cshapes-2.0,640,478,1914,1918,1705783.3
+cshapes-2.0,640,479,1918,1918,1731860.5
+cshapes-2.0,640,480,1918,1920,1657471.2
+cshapes-2.0,640,481,1920,1923,779964.4
+cshapes-2.0,640,482,1923,2019,779964.4
+cshapes-2.0,645,483,1920,1920,274745.8
+cshapes-2.0,645,484,1920,1922,436254.9
+cshapes-2.0,645,485,1922,1932,436254.9
+cshapes-2.0,645,486,1932,1932,436254.9
+cshapes-2.0,645,487,1932,2019,436254.9
+cshapes-2.0,651,488,1886,1899,1167826.9
+cshapes-2.0,651,489,1899,1914,1517227.9
+cshapes-2.0,651,490,1914,1922,1517227.9
+cshapes-2.0,651,491,1922,1925,1517227.9
+cshapes-2.0,651,492,1925,1967,998394.1
+cshapes-2.0,651,493,1967,1979,937826.1
+cshapes-2.0,651,494,1979,2019,998394.1
+cshapes-2.0,652,495,1920,1920,182452.5
+cshapes-2.0,652,496,1920,1922,188003.7
+cshapes-2.0,652,497,1922,1945,188003.7
+cshapes-2.0,652,498,1946,1967,188003.7
+cshapes-2.0,652,499,1967,2019,186891.8
+cshapes-2.0,660,500,1920,1920,10209.4
+cshapes-2.0,660,501,1920,1944,10209.4
+cshapes-2.0,660,502,1944,2019,10209.4
+cshapes-2.0,663,503,1920,1920,45148.3
+cshapes-2.0,663,504,1920,1923,45148.3
+cshapes-2.0,663,505,1923,1925,89254.9
+cshapes-2.0,663,506,1925,1946,89254.9
+cshapes-2.0,663,507,1946,2019,89254.9
+cshapes-2.0,665,508,1920,1920,26963.9
+cshapes-2.0,665,509,1920,1923,26963.9
+cshapes-2.0,665,510,1923,1948,26963.9
+cshapes-2.0,666,511,1948,1967,20719.3
+cshapes-2.0,666,512,1967,1979,88643.9
+cshapes-2.0,666,513,1979,2019,28075.8
+cshapes-2.0,670,514,1932,1934,1954495.7
+cshapes-2.0,670,515,1935,2000,1954495.7
+cshapes-2.0,670,516,2000,2019,1924636.0
+cshapes-2.0,678,517,1918,1934,136555.3
+cshapes-2.0,678,518,1934,1990,136555.3
+cshapes-2.0,678,519,1990,2000,423690.5
+cshapes-2.0,678,520,2000,2019,453550.3
+cshapes-2.0,680,521,1967,1990,287135.3
+cshapes-2.0,690,523,1961,2019,16753.0
+cshapes-2.0,692,524,1971,2019,628.8
+cshapes-2.0,694,525,1916,1971,11089.3
+cshapes-2.0,694,526,1971,2019,11089.3
+cshapes-2.0,696,527,1892,1913,70367.6
+cshapes-2.0,696,528,1913,1971,70367.6
+cshapes-2.0,696,529,1971,2019,70367.6
+cshapes-2.0,700,532,1886,1888,808996.0
+cshapes-2.0,700,533,1888,1893,808996.0
+cshapes-2.0,700,534,1893,1919,641913.1
+cshapes-2.0,700,535,1919,2019,641913.1
+cshapes-2.0,701,536,1991,2019,471678.2
+cshapes-2.0,702,537,1991,2019,142405.0
+cshapes-2.0,703,538,1991,2019,199565.1
+cshapes-2.0,704,539,1991,2019,446590.7
+cshapes-2.0,705,540,1991,1997,2723103.5
+cshapes-2.0,705,541,1997,2019,2723103.5
+cshapes-2.0,710,542,1886,1895,11146801.9
+cshapes-2.0,710,543,1895,1898,11110812.1
+cshapes-2.0,710,544,1899,1912,11110812.1
+cshapes-2.0,710,545,1913,1914,9224555.4
+cshapes-2.0,710,546,1914,1921,9059502.2
+cshapes-2.0,710,547,1921,1945,7496578.2
+cshapes-2.0,710,548,1945,1947,7532568.0
+cshapes-2.0,710,549,1947,1949,7593654.4
+cshapes-2.0,710,550,1949,1950,7557664.6
+cshapes-2.0,710,551,1950,2019,9369260.5
+cshapes-2.0,712,554,1921,2019,1562924.0
+cshapes-2.0,713,555,1895,1945,35989.8
+cshapes-2.0,713,556,1949,2019,35989.8
+cshapes-2.0,730,557,1886,1910,219398.3
+cshapes-2.0,730,558,1910,1945,219398.3
+cshapes-2.0,731,559,1945,1948,122203.0
+cshapes-2.0,731,560,1948,2019,122203.0
+cshapes-2.0,732,561,1945,1948,97195.1
+cshapes-2.0,732,562,1948,2019,97195.1
+cshapes-2.0,740,563,1886,2019,370950.5
+cshapes-2.0,750,564,1886,1893,4652711.8
+cshapes-2.0,750,565,1893,1898,4819794.7
+cshapes-2.0,750,566,1899,1914,4819794.7
+cshapes-2.0,750,567,1914,1931,4894455.6
+cshapes-2.0,750,568,1931,1937,4894455.6
+cshapes-2.0,750,569,1937,1947,4227508.2
+cshapes-2.0,750,570,1947,1949,3046195.6
+cshapes-2.0,750,571,1949,2019,3152040.3
+cshapes-2.0,760,572,1886,1947,39840.3
+cshapes-2.0,760,573,1947,1948,39840.3
+cshapes-2.0,760,574,1949,2019,39840.3
+cshapes-2.0,770,575,1947,1949,932692.1
+cshapes-2.0,770,576,1949,1959,1014381.4
+cshapes-2.0,770,577,1959,1967,1014381.4
+cshapes-2.0,770,578,1967,1971,1014381.4
+cshapes-2.0,770,579,1971,2019,876533.7
+cshapes-2.0,771,580,1971,2019,137847.7
+cshapes-2.0,780,584,1886,1948,65983.3
+cshapes-2.0,780,585,1948,2019,65983.3
+cshapes-2.0,800,589,1886,1893,778578.3
+cshapes-2.0,800,590,1893,1904,604305.0
+cshapes-2.0,800,591,1904,1907,585589.8
+cshapes-2.0,800,592,1907,1909,552812.3
+cshapes-2.0,800,593,1909,2019,512205.1
+cshapes-2.0,811,594,1886,1893,130258.1
+cshapes-2.0,811,595,1893,1904,130258.1
+cshapes-2.0,811,596,1904,1907,148973.4
+cshapes-2.0,811,597,1907,1953,181750.8
+cshapes-2.0,811,598,1953,2019,181750.8
+cshapes-2.0,812,599,1893,1896,229904.6
+cshapes-2.0,812,600,1896,1954,229904.6
+cshapes-2.0,812,601,1954,2019,229904.6
+cshapes-2.0,815,602,1886,1887,379847.5
+cshapes-2.0,815,603,1887,1893,379847.5
+cshapes-2.0,815,604,1893,1893,379847.5
+cshapes-2.0,815,605,1893,1954,324216.2
+cshapes-2.0,816,606,1954,1975,155654.4
+cshapes-2.0,816,607,1975,2019,324216.2
+cshapes-2.0,817,608,1954,1975,168561.8
+cshapes-2.0,820,609,1946,1957,131495.3
+cshapes-2.0,820,610,1957,1963,131495.3
+cshapes-2.0,820,611,1963,1965,328936.0
+cshapes-2.0,820,612,1965,2019,328391.3
+cshapes-2.0,823,617,1888,1889,72619.6
+cshapes-2.0,823,618,1889,1946,72619.6
+cshapes-2.0,823,619,1946,1963,72619.6
+cshapes-2.0,824,620,1888,1889,124276.3
+cshapes-2.0,824,621,1889,1946,124276.3
+cshapes-2.0,824,622,1946,1963,124276.3
+cshapes-2.0,830,624,1946,1962,544.7
+cshapes-2.0,830,625,1965,2019,544.7
+cshapes-2.0,835,626,1888,1983,5728.8
+cshapes-2.0,835,627,1984,2019,5728.8
+cshapes-2.0,840,628,1886,1898,292048.4
+cshapes-2.0,840,629,1898,1946,292048.4
+cshapes-2.0,840,630,1946,1948,292048.4
+cshapes-2.0,840,631,1948,1976,292048.4
+cshapes-2.0,840,632,1976,2019,292048.4
+cshapes-2.0,850,633,1886,1889,1877243.3
+cshapes-2.0,850,634,1889,1945,1877243.3
+cshapes-2.0,850,635,1945,1949,1877243.3
+cshapes-2.0,850,636,1949,1969,1466882.2
+cshapes-2.0,850,637,1969,1976,1877243.3
+cshapes-2.0,850,638,1976,2002,1892268.4
+cshapes-2.0,850,639,2002,2019,1877243.3
+cshapes-2.0,851,640,1949,1962,410361.1
+cshapes-2.0,851,641,1962,1963,410361.1
+cshapes-2.0,851,642,1963,1969,410361.1
+cshapes-2.0,860,643,1886,1976,15024.1
+cshapes-2.0,860,644,2002,2019,15024.1
+cshapes-2.0,900,645,1901,1927,7686685.8
+cshapes-2.0,900,646,1927,2019,7686685.8
+cshapes-2.0,901,647,1886,1900,799702.5
+cshapes-2.0,902,648,1886,1900,2521614.6
+cshapes-2.0,903,649,1886,1900,2313799.9
+cshapes-2.0,904,650,1886,1900,238160.2
+cshapes-2.0,905,651,1886,1900,1744860.8
+cshapes-2.0,910,653,1949,1975,461688.8
+cshapes-2.0,910,654,1975,2019,461688.8
+cshapes-2.0,911,655,1886,1887,224147.8
+cshapes-2.0,911,656,1888,1905,224147.8
+cshapes-2.0,911,657,1905,1920,224147.8
+cshapes-2.0,911,658,1920,1949,224147.8
+cshapes-2.0,912,659,1886,1890,228079.8
+cshapes-2.0,912,660,1891,1899,228079.8
+cshapes-2.0,912,661,1900,1909,228079.8
+cshapes-2.0,912,662,1910,1914,228079.8
+cshapes-2.0,912,663,1914,1920,228079.8
+cshapes-2.0,912,664,1920,1949,237536.1
+cshapes-2.0,920,665,1886,1907,268491.8
+cshapes-2.0,920,666,1907,2019,268491.8
+cshapes-2.0,4783,680,1899,1906,130336.9
+cshapes-2.0,4783,681,1906,1913,202103.4
+cshapes-2.0,4784,682,1899,1902,727303.5
+cshapes-2.0,4784,683,1903,1904,727303.5
+cshapes-2.0,4784,684,1904,1913,660625.4
+cshapes-2.0,5519,692,1900,1905,369532.6
+cshapes-2.0,5519,693,1905,1911,466451.8
+cshapes-2.0,6631,698,1948,1967,5871.2
+cshapes-2.0,7506,704,1947,1949,105844.7
+cshapes-europe,200,3,1886,1920,313711.0
+cshapes-europe,200,8,1921,2023,244214.0
+cshapes-europe,255,16,1835,1839,271809.2
+cshapes-europe,200,22,1816,1818,355875.2
+cshapes-europe,380,25,1886,1904,766623.1
+cshapes-europe,255,31,1849,1850,269864.2
+cshapes-europe,380,49,1816,1885,766071.4
+cshapes-europe,255,51,1867,1870,345831.7
+cshapes-europe,200,54,1865,1885,313360.9
+cshapes-europe,255,58,1817,1817,271813.2
+cshapes-europe,255,59,1818,1827,271392.8
+cshapes-europe,255,60,1828,1834,271395.9
+cshapes-europe,255,64,1816,1816,287736.3
+cshapes-europe,355,72,1879,1885,57570.1
+cshapes-europe,350,73,1865,1881,49146.0
+cshapes-europe,232,83,1816,2019,489.0
+cshapes-europe,390,88,1886,1919,38647.3
+cshapes-europe,360,91,1919,1919,148888.3
+cshapes-europe,341,92,1881,1885,9949.0
+cshapes-europe,341,95,2006,2023,14037.0
+cshapes-europe,200,102,1838,1854,316241.8
+cshapes-europe,200,104,1855,1856,317143.2
+cshapes-europe,200,105,1857,1864,316241.8
+cshapes-europe,255,109,1851,1864,271156.9
+cshapes-europe,255,110,1865,1866,281640.4
+cshapes-europe,255,112,1840,1848,270845.3
+cshapes-europe,200,160,1819,1837,355875.2
+cshapes-europe,350,174,1829,1830,35460.0
+cshapes-europe,390,180,1816,1864,57214.5
+cshapes-europe,390,181,1865,1885,38570.2
+cshapes-europe,350,185,1831,1832,39692.5
+cshapes-europe,350,186,1882,1885,63564.0
+cshapes-europe,220,190,1816,1860,534004.3
+cshapes-europe,350,191,1833,1834,46299.3
+cshapes-europe,220,192,1861,1870,547635.8
+cshapes-europe,350,193,1835,1864,46299.3
+cshapes-europe,220,194,1871,1879,532090.3
+cshapes-europe,220,196,1880,1885,532090.3
+cshapes-europe,255,199,1871,1885,538533.2
+cshapes-europe,341,203,1879,1880,9006.9
+cshapes-europe,325,205,1862,1866,247820.2
+cshapes-europe,325,208,1867,1870,272655.0
+cshapes-europe,325,210,1871,1885,284508.7
+cshapes-europe,360,218,1879,1885,128472.8
+cshapes-europe,223,225,1806,2019,173.7
+cshapes-europe,341,227,1913,1914,15945.5
+cshapes-europe,355,234,1886,1912,93231.8
+cshapes-europe,355,238,1913,1917,111690.2
+cshapes-europe,341,241,1915,1917,15945.5
+cshapes-europe,355,246,1919,1939,103429.8
+cshapes-europe,355,251,1940,2023,111124.4
+cshapes-europe,220,254,1886,1918,532212.9
+cshapes-europe,255,258,1886,1918,540031.9
+cshapes-europe,350,259,1886,1912,63642.0
+cshapes-europe,325,261,1886,1918,284717.5
+cshapes-europe,341,262,1886,1912,9936.6
+cshapes-europe,360,264,1886,1912,128434.6
+cshapes-europe,380,271,1905,2023,445895.6
+cshapes-europe,360,275,1913,1915,136129.3
+cshapes-europe,360,276,1916,1917,136129.3
+cshapes-europe,350,277,1913,1918,121499.8
+cshapes-europe,360,278,1918,1918,128434.6
+cshapes-europe,360,283,1920,1939,296065.1
+cshapes-europe,355,285,1918,1918,119384.8
+cshapes-europe,220,289,1919,2023,547918.6
+cshapes-europe,255,291,1919,1919,474733.1
+cshapes-europe,350,292,1919,2023,129769.6
+cshapes-europe,325,294,1919,2023,300105.6
+cshapes-europe,390,299,1920,2023,42594.4
+cshapes-europe,255,301,1920,1937,470786.1
+cshapes-europe,255,304,1938,1944,496559.2
+cshapes-europe,360,306,1940,2023,237299.6
+gadm-4.1-adm0,ASM,3,,,204.2
+gadm-4.1-adm0,ATG,5,,,435.8
+gadm-4.1-adm0,BHS,8,,,13388.1
+gadm-4.1-adm0,BMU,9,,,68.1
+gadm-4.1-adm0,BRB,10,,,434.6
+gadm-4.1-adm0,COK,17,,,283.0
+gadm-4.1-adm0,CXR,20,,,139.6
+gadm-4.1-adm0,STP,23,,,1002.2
+gadm-4.1-adm0,MDV,34,,,299.7
+gadm-4.1-adm0,DMA,35,,,754.2
+gadm-4.1-adm0,ESH,36,,,267320.7
+gadm-4.1-adm0,FJI,38,,,18963.5
+gadm-4.1-adm0,FLK,39,,,12397.4
+gadm-4.1-adm0,FRO,40,,,1439.6
+gadm-4.1-adm0,FSM,41,,,774.9
+gadm-4.1-adm0,GRD,44,,,359.5
+gadm-4.1-adm0,GRL,45,,,2150880.2
+gadm-4.1-adm0,GUM,47,,,549.8
+gadm-4.1-adm0,KIR,50,,,1012.1
+gadm-4.1-adm0,KNA,51,,,267.1
+gadm-4.1-adm0,LCA,52,,,614.4
+gadm-4.1-adm0,MCO,56,,,2.4
+gadm-4.1-adm0,MHL,57,,,300.3
+gadm-4.1-adm0,MSR,59,,,100.6
+gadm-4.1-adm0,NCL,62,,,18827.0
+gadm-4.1-adm0,NFK,63,,,40.6
+gadm-4.1-adm0,NIU,64,,,266.7
+gadm-4.1-adm0,NRU,65,,,22.2
+gadm-4.1-adm0,PLW,67,,,484.2
+gadm-4.1-adm0,PRI,68,,,8970.5
+gadm-4.1-adm0,PSE,69,,,6220.0
+gadm-4.1-adm0,PYF,70,,,4053.4
+gadm-4.1-adm0,SLB,75,,,28532.8
+gadm-4.1-adm0,SMR,76,,,61.2
+gadm-4.1-adm0,SPM,77,,,226.7
+gadm-4.1-adm0,SWE,78,,,450047.3
+gadm-4.1-adm0,SYC,79,,,491.2
+gadm-4.1-adm0,TON,83,,,763.4
+gadm-4.1-adm0,TUV,84,,,41.7
+gadm-4.1-adm0,VCT,87,,,397.9
+gadm-4.1-adm0,VGB,88,,,169.4
+gadm-4.1-adm0,VIR,89,,,362.2
+gadm-4.1-adm0,VUT,90,,,12319.0
+gadm-4.1-adm0,WSM,92,,,2853.4
+gadm-4.1-adm1,CHN.HKG,113,,,1129.3
+gadm-4.1-adm1,CHN.MAC,120,,,33.5
+gadm-4.1-adm1,USA.2_1,189,,,1507384.9
+gadm-4.1-adm1,JPN.32_1,270,,,2339.8
+gadm-4.1-adm1,ESP.14_1,401,,,7510.5
+gadm-4.1-adm1,SHN.2_1,668,,,122.7
+histogis-1860-habsburg,AUT-1800-1918,0,,,300559.5
+histogis-1860-habsburg,HUN-1800-1918,1,,,325420.9
+paine-2024,Lozi,0,,,61150.0
+paine-2024,Benin,1,,,9581.5
+paine-2024,Borgu,2,,,122705.0
+paine-2024,Dahomey,3,,,39128.7
+paine-2024,Dagomba,4,,,21683.6
+paine-2024,Mossi,5,,,101762.8
+paine-2024,Damagaram,6,,,31258.5
+paine-2024,Gobir,7,,,9818.9
+paine-2024,Porto Novo,8,,,7103.1
+paine-2024,Bundu,9,,,10644.9
+paine-2024,Futa Toro,10,,,10332.1
+paine-2024,Igala,11,,,7770.4
+paine-2024,Walo,12,,,7275.3
+paine-2024,Cayor,13,,,11434.0
+paine-2024,Sine,14,,,17355.4
+paine-2024,Jolof,15,,,27274.9
+paine-2024,Salum,16,,,17011.3
+paine-2024,Borno,17,,,85025.2
+paine-2024,Buganda,18,,,38776.1
+paine-2024,Bunyoro,19,,,16298.4
+paine-2024,Nkore,20,,,13173.7
+paine-2024,Rwanda,21,,,25159.4
+paine-2024,Burundi,22,,,21574.8
+paine-2024,Asante,23,,,194003.0
+paine-2024,Kasanje,24,,,18388.6
+paine-2024,Wadai,26,,,362760.6
+paine-2024,Futa Jalon,29,,,47564.6
+paine-2024,Zulu,31,,,34659.1
+paine-2024,Lesotho,32,,,39223.9
+paine-2024,Ndebele,33,,,33343.0
+paine-2024,Tunis,35,,,43786.9
+paine-2024,Bemba,36,,,65980.4
+paine-2024,Swazi,37,,,22449.9
+paine-2024,Sokoto,38,,,644005.1
+paine-2024,Ibadan,39,,,25409.8
+paine-2024,Oyo,40,,,17850.8
+paine-2024,Egba,41,,,2936.3
+paine-2024,Ijebu,42,,,6067.4
+paine-2024,Lunda,43,,,67655.6
+paine-2024,Luba,44,,,26897.8
+paine-2024,Kazembe,45,,,16234.3
+reporting-areas,BLX-1850-1999,0,,,33289.0
+reporting-areas,ANT-1961-2010,1,,,799.4
+reporting-areas,RAFR-1850-2021,2,,,270636.2
+reporting-areas,RASI-1850-2021,3,,,2127.9
+reporting-areas,REUR-1850-2021,4,,,2213345.0
+reporting-areas,RLAM-1850-2013,5,,,22429.4
+reporting-areas,RNAM-1850-2021,6,,,273.9
+reporting-areas,ROCE-1850-2021,7,,,30828.5
+reporting-areas,ROW-1850-2023,8,,,2571894.4

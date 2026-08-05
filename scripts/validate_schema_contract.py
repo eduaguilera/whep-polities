@@ -64,6 +64,12 @@ CSV_CONTRACT = {
         "area_code", "year_start", "year_end", "polity_code", "source_label",
         "iso3", "match_route", "confidence", "rows_observed",
     ],
+    # Added with the table itself (issue 103). `row_order` is load-bearing and easy to
+    # mistake for decoration: the defect the binding gate detects is that find_feature
+    # returns the FIRST match, so reproducing its choice needs the source's own ordering.
+    "data/final/polygon_feature_index.csv": [
+        "source", "feature_id", "row_order", "start_year", "end_year", "area_km2",
+    ],
     "pipelines/polity-autoimprove/state/applied_aliases.csv": [
         "original_name", "source", "year_start", "year_end", "common_name",
         "target_polity_code", "confidence", "basis", "rows",
