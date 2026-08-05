@@ -465,12 +465,17 @@ CASES = (
         "observed_rows",
         "a renamed column, which every reader sees as None rather than as an error",
     ),
-    (
-        "validate_polygon_binding_determinism.py",
-        mutate_order_dependent_binding,
-        "VNM-1887-1954",
-        "a polygon binding whose feature is chosen by shapefile row order",
-    ),
+    # validate_polygon_binding_determinism.py is NOT here, and the reason is the whole
+    # point of this file. Its mutation IS staged and does fire locally -- setting
+    # VNM-1887-1954's polygon_feature_year back to 1893 makes the gate exit 1 and name
+    # the row. But the gate needs data/geodata/**, which is GITIGNORED, so in CI it can
+    # resolve no bindings at all, exits 0, and this harness correctly reported it as
+    # "PASSED a mutation it claims to catch". Keeping the case would have meant a red CI
+    # for a gate that is simply unverifiable there. The gate now prints an explicit SKIP
+    # rather than a bare pass, and is marked local-only in the README, so an inert run is
+    # visible instead of looking like a verification. Mutation-tested by hand on 2026-08-05
+    # (three ways: reintroduce the defect, drop a live baseline entry, baseline a fixed
+    # row) -- which is weaker than a standing claim, and is the honest state.
     (
         "audit_family_shadowing.py",
         mutate_shadowing_twin,

@@ -214,6 +214,15 @@ def main() -> int:
     if unverifiable:
         print(f"baselined but unverifiable, source not fetched: {len(unverifiable)}")
 
+    if checked == 0:
+        print("SKIP: no polygon source is fetched, so no binding could be resolved.")
+        print("  This gate needs data/geodata/**, which is GITIGNORED -- it verifies each")
+        print("  declared binding against the features it could have matched, and the")
+        print("  committed GeoPackage holds only the feature that WAS chosen, which is")
+        print("  exactly the information this check cannot use. Run it locally after")
+        print("  scripts/sources/cshapes-2.0/fetch.sh.")
+        return 0
+
     print(f"bindings resolved against a source: {checked}")
     print(f"order-dependent: {len(observed)}")
     if missing_sources:
@@ -227,6 +236,18 @@ def main() -> int:
               "  re-fetch can silently hand back a different polygon. Pin it by choosing a\n"
               "  polygon_feature_year that falls inside exactly one candidate span.")
         return 1
+
+    if unverifiable:
+        # Do NOT print a clean PASS while part of the population could not be looked at.
+        # Caught by simulating CI locally: with only cshapes-2.0 hidden, 192 bindings from
+        # other sources still resolved, so the SKIP above did not fire and the gate printed
+        # "every binding is decided by the data" with 25 of them unexamined.
+        print(f"\nPARTIAL PASS: the {checked} bindings that could be resolved are all "
+              f"decided by the data,")
+        print(f"  but {len(unverifiable)} baselined binding(s) could not be examined at all "
+              f"because their")
+        print(f"  source is not fetched. This is NOT a statement about those.")
+        return 0
 
     print("\nPASS: every binding is decided by the data, not by row order")
     return 0
