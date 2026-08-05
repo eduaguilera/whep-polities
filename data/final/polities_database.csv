@@ -327,7 +327,7 @@ HUN-1918-1919,Hungary (1918-1919),1918,1919,national,HUN,310,Europe,draft,2026-0
 HUN-1920-1938,Hungary (1920-1938),1920,1938,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1920,assigned,,HUN-1919-1920,HUN-1938-1940
 HUN-1938-1940,Hungary (1938-1940),1938,1940,national,HUN,310,Europe,draft,2026-06-30,cshapes-2.0,310,1938,assigned,108785,HUN-1920-1938,HUN-1940-1944
 HUN-1938-1947,Hungary (1938-1947),1938,1947,national,HUN,310,Europe,superseded,2026-06-30,cshapes-2.0,310,1938,assigned,108785,HUN-1920-1938,HUN-1947-2025
-HUN-1940-1944,Hungary (1940-1944),1940,1944,national,HUN,310,Europe,draft,2026-07-01,composed-union,cshapes-HUN310-1938+cshapes-ROU360-1920minus1940,1940,unassigned,167492,HUN-1938-1940,HUN-1944-1947
+HUN-1940-1944,Hungary (1940-1944),1940,1944,national,HUN,310,Europe,draft,2026-07-01,constructed,HUN-1940-1944,1940,proxy,152423,HUN-1938-1940,HUN-1944-1947
 HUN-1944-1947,Hungary (1944-1947),1944,1947,national,HUN,310,Europe,draft,2026-06-30,cshapes-2.0,310,1947,assigned,93033,HUN-1940-1944,HUN-1947-2025
 HUN-1947-2025,Hungary (1947-2025),1947,2025,national,HUN,310,Europe,reviewed,2026-04-12,cshapes-2.0,310,1947,assigned,,HUN-1944-1947,
 HYD-1724-1948,Hyderabad State,1724,1948,subnational,IND,750,Asia,draft,2026-06-25,cliopatria,Hyderabad State,1947,assigned,211298,,IND-1947-1949
@@ -585,7 +585,7 @@ ROU-1913-1918,Romania (1913-1918),1913,1918,national,ROU,360,Europe,draft,2026-0
 ROU-1918-1919,Romania (1918-1919),1918,1919,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1921,assigned,295000,ROU-1913-1918,ROU-1919-1920
 ROU-1919-1920,Romania (1919-1920),1919,1920,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1919,assigned,,ROU-1918-1919,ROU-1920-1940
 ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1920,assigned,,ROU-1919-1920,ROU-1940-1947
-ROU-1940-1947,Romania (1940-1947),1940,1947,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1940,estimate,194000,ROU-1920-1940,ROU-1947-2025
+ROU-1940-1947,Romania (1940-1947),1940,1947,national,ROU,360,Europe,reviewed,2026-07-01,constructed,ROU-1940-1947,1940,proxy,194000,ROU-1920-1940,ROU-1947-2025
 ROU-1940-2025,Romania (1940-2025),1940,2025,national,ROU,360,Europe,superseded,2026-04-12,cshapes-2.0,360,1940,assigned,,ROU-1920-1940,
 ROU-1947-2025,Romania (1947-2025),1947,2025,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1946,assigned,238000,ROU-1940-1947,
 ROW-1850-2023,Rest of World,1850,2023,aggregate,ROW,,World,draft,2026-06-11,reporting-areas,ROW-1850-2023,,assigned,,,

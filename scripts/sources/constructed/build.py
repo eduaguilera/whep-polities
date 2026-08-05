@@ -328,6 +328,69 @@ def build_can_1800_1866() -> ogr.Geometry:
     )
 
 
+# The Second Vienna Award holding, 1940-1944, as eight modern Romanian counties.
+# CShapes CANNOT supply this territory and the difference recipe HUN-1940-1944 declared
+# does not either: `ROU360 1920-1940 MINUS ROU360 1940-2019` is 58,707 km2 on Romania's
+# EASTERN edge (lon 24.67..30.51) -- Bessarabia, Northern Bukovina and Southern Dobruja,
+# ceded to the USSR and Bulgaria. Northern Transylvania is on the WESTERN edge and cancels
+# out of that difference entirely, because post-war Romania kept it and it is interior to
+# both operands. See issue 106; the recipe's area happened to match its declared figure
+# exactly (108,785 + 58,707 = 167,492), so no area check would have objected.
+NTR_1940_COUNTIES = (
+    "ROU.34_1",   # Satu Mare        4,418 km2
+    "ROU.27_1",   # Maramures        6,304
+    "ROU.33_1",   # Salaj            3,864
+    "ROU.6_1",    # Bistrita-Nasaud  5,354
+    "ROU.14_1",   # Cluj             6,673
+    "ROU.29_1",   # Mures            6,713
+    "ROU.22_1",   # Harghita         6,650
+    "ROU.16_1",   # Covasna          3,709
+)
+
+
+def _northern_transylvania_1940() -> ogr.Geometry:
+    """The 1940-44 Hungarian holding, approximated by eight modern Romanian counties.
+
+    A PROXY with a measured error, not an exact boundary. The union measures 43,685 km2
+    against the Second Vienna Award's 43,104 -- +1.3%. Two offsetting inaccuracies:
+    the award also took the northern part of BIHOR (not included here, since Bihor is one
+    modern county of 7,548 km2 and including it whole would overshoot by 24%), while these
+    county boundaries over-cover slightly elsewhere. The residual is smaller than either
+    error alone, which is luck rather than design and is why the figure is stated.
+    """
+    return _union(*(_gadm_adm1(gid) for gid in NTR_1940_COUNTIES))
+
+
+def build_hun_1940_1944() -> ogr.Geometry:
+    """Hungary at peak expansion, 1940-1944 = Hungary 1938 union Northern Transylvania.
+
+    `_cshapes2_feature(310, 1939)` rather than 1938: the helper returns the FIRST feature
+    whose span contains the year, and gwcode 310 has both a 1920-1938 and a 1938-1947 step,
+    so 1938 is ambiguous while 1939 selects the post-First-Vienna-Award polygon uniquely.
+    The same class of defect as issue 99.
+
+    Understates the peak: the April 1941 Backa and Baranya strips (~10,000 km2) are not
+    included, because CShapes retains Yugoslavia's full pre-war footprint through the
+    occupation and GADM cannot isolate them either. The page records the peak as
+    ~172,277 km2 against this construction's ~152,500.
+    """
+    return _union(_cshapes2_feature(310, 1939), _northern_transylvania_1940())
+
+
+def build_rou_1940_1947() -> ogr.Geometry:
+    """Romania after the 1940 losses = post-war Romania minus Northern Transylvania.
+
+    `_cshapes2_feature(360, 1941)` selects the 1940-2019 step (237,379 km2): post-war
+    Romania, already without Bessarabia, Northern Bukovina and Southern Dobruja but WITH
+    Northern Transylvania, which this subtracts. 1941 rather than 1940 because three steps
+    contain 1940 and two of them start in it -- the row is the one case in issue 100 that
+    no polygon_feature_year can disambiguate.
+
+    Expected ~193,700 km2 against the page's declared 194,000.
+    """
+    return _difference(_cshapes2_feature(360, 1941), _northern_transylvania_1940())
+
+
 def build_ptind_1816_1961() -> ogr.Geometry:
     """Portuguese India, 1816-1961 = Goa union Daman and Diu, on GADM 4.1 adm1.
 
@@ -548,6 +611,27 @@ def build_syl_1944_1953() -> ogr.Geometry:
 
 
 BUILDERS = [
+    (
+        "HUN-1940-1944",
+        "Hungary (1940-1944)",
+        build_hun_1940_1944,
+        "CShapes gwcode 310 at 1939 (108,785 km2, post-First Vienna Award) union the "
+        "eight-county Northern Transylvania proxy (43,685). REPLACES the recipe the page "
+        "declared, which added Romania's EASTERN losses instead -- Bessarabia and Southern "
+        "Dobruja, ceded to the USSR and Bulgaria, on the wrong side of the country "
+        "(issue 106). Understates the ~172,277 km2 peak because the 1941 Backa and Baranya "
+        "strips cannot be isolated from CShapes or GADM.",
+    ),
+    (
+        "ROU-1940-1947",
+        "Romania (1940-1947)",
+        build_rou_1940_1947,
+        "CShapes gwcode 360 at 1941 (237,379 km2, post-war Romania) MINUS the same "
+        "Northern Transylvania proxy. Its declared 194,000 km2 was unreachable from "
+        "CShapes alone: no feature offers it, and the step it was bound to spans exactly "
+        "{1940} while both neighbours also contain 1940, so no polygon_feature_year could "
+        "select it (issues 100, 12).",
+    ),
     (
         "GBM-1895-1946",
         "British Malaya (1895-1946)",

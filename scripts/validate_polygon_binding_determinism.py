@@ -71,6 +71,12 @@ BASELINE = {
     "PAL-1920-1948": "2 identical candidates at year 1920, all 26,964 km2 -- no geometry at stake",
 
     # FIXED and removed 2026-08-05 (issue 100):
+    #   ROU-1940-1947  the one entry no polygon_feature_year could have fixed: its step spans
+    #                  exactly {1940} and both neighbours contain 1940. Resolved instead by
+    #                  BUILDING the polygon it needed -- post-war Romania MINUS an
+    #                  eight-county Northern Transylvania proxy -- which measures 193,855 km2
+    #                  against its declared 194,000 (0.07%). It is no longer cshapes-bound,
+    #                  so it leaves this check's population entirely. Issues 12, 106.
     #   NAM-1886-1915  picked 699,762 of {699,762, 824,760}; German South West Africa was
     #                  825,615 km2, so it was short by 124,998. feature_year 1886 -> 1887.
     #   ROU-1918-1919  picked 251,719 of {148,934, 251,719, 296,087} while its own page and
@@ -84,7 +90,6 @@ BASELINE = {
     "ROU-1920-1940": "3 candidates at year 1920 spanning 148,934-296,087 km2 (1.99x); picked 251,719, no declared area",
     "POL-1919-1920": "3 candidates at year 1919 spanning 130,205-256,575 km2 (1.97x); picked 177,762, declared 177,754",
     "F51-1938-1945": "3 candidates at year 1938 spanning 100,822-140,398 km2 (1.39x); picked 116,616, no declared area",
-    "ROU-1940-1947": "3 candidates at year 1940 spanning 237,379-296,087 km2 (1.25x); picked 245,066, declared 194,000",
     "KEN-1907-1924": "2 candidates at year 1907 spanning 635,868-772,550 km2 (1.21x); picked 772,550, no declared area",
     "USA-1959-2025": "3 candidates at year 1959 spanning 7,939,971-9,462,898 km2 (1.19x); picked 9,446,212, no declared area",
     "ROU-1919-1920": "3 candidates at year 1919 spanning 128,499-148,934 km2 (1.16x); picked 141,247, no declared area",
