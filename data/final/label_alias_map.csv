@@ -95,6 +95,7 @@ Brazil,lassaletta-grassland-share,1961,2009,BRA-1909-2025,Brazil,high,
 British Borneo Brunei,,,,BRN-1888-2025,,high,
 British Borneo North Borneo,,1937,1951,BNB-1881-1963,British North Borneo,high,
 British Borneo Sarawak,fao1952,1937,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,
+British Borneo Sarawak,mitchell,1937,1937,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,1
 british honduras,,1886,1970,BLZ-1886-1970,British Honduras,high,
 British Solomon Is,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,
 British Solomon Islands,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,
@@ -227,6 +228,7 @@ Cuba,lassaletta-grassland-share,1961,2009,CUB-1800-2025,Cuba,high,
 Cyprus,faostat,1961,2024,CYP-1879-2025,Cyprus,high,233146
 cyprus,iia,1879,2025,CYP-1879-2025,Cyprus,high,97
 Cyprus,lassaletta-grassland-share,1961,2009,CYP-1879-2025,Cyprus,high,
+Cyrenaica,mitchell,1949,1949,CYR-1949-1951,Emirate of Cyrenaica,high,2
 czech republic,,1919,1937,F51-1918-1938,,high,603
 czech republic,,1919,1937,F51-1918-1938,Czechoslovakia (1918-1938),high,
 czech republic,,1938,1944,F51-1938-1945,,high,603
@@ -476,7 +478,10 @@ Libya,fao1952,1951,1951,LBY-1951-2025,Libya under UN Transitional Administration
 Libya,faostat,1961,2024,LBY-1951-2025,Libya,high,81391
 Libya,lassaletta-grassland-share,1961,2009,LBY-1951-2025,Libya,high,
 Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high,8
+Libya Cyrenaica,mitchell,1949,1950,CYR-1949-1951,Emirate of Cyrenaica,high,4
 Libya Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,37
+Libya Tripolitania,mitchell,1948,1950,TRP-1943-1951,British Military Administration of Tripolitania,high,22
+Libya: Cyrenaica,mitchell,1949,1950,CYR-1949-1951,Emirate of Cyrenaica,high,5
 Liechtenstein,faostat,1850,2025,LIE-1800-2025,Liechtenstein,high,0
 Lithuania,faostat,1992,2024,LTU-1991-2025,Lithuania,high,123044
 ltaly,fao1952,1949,1951,ITA-1919-2025,Italy,high,3
@@ -489,14 +494,17 @@ Malawi,faostat,1961,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia a
 Malawi,faostat,1964,2024,MWI-1964-2025,Malawi,high,185999
 Malawi,lassaletta-grassland-share,1964,2009,MWI-1964-2025,Malawi,high,
 Malaya Fed of,fao1952,1949,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,25
+Malaya Federation,mitchell,1937,1937,GBM-1895-1946,British Malaya (1895-1946),high,1
 Malaya Federation of,fao1952,1939,1945,GBM-1895-1946,British Malaya,high,
 Malaya Federation of,fao1952,1946,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,
+Malaya Federation of,mitchell,1939,1939,GBM-1895-1946,British Malaya (1895-1946),high,2
 Malaysia,faostat,1961,1962,MYS-1957-1963,Malaysia (1957-1963),high,250837
 Malaysia,faostat,1963,1964,MYS-1963-1965,Malaysia (1963-1965),high,250837
 Malaysia,faostat,1965,2024,MYS-1965-2025,Malaysia,high,250837
 Malaysia,lassaletta-grassland-share,1961,1962,MYS-1957-1963,Malaysia (1957-1963),high,
 Malaysia,lassaletta-grassland-share,1963,1964,MYS-1963-1965,Malaysia (1963-1965),high,
 Malaysia,lassaletta-grassland-share,1965,2009,MYS-1965-2025,Malaysia,high,
+malaysia,mitchell,1898,1945,GBM-1895-1946,British Malaya (1895-1946),high,197
 Maldives,faostat,1961,2024,MDV-1800-2025,Maldives,high,131539
 Mali,faostat,1961,2024,MLI-1960-2025,Mali,high,181291
 Mali,lassaletta-grassland-share,1961,2009,MLI-1960-2025,Mali,high,
@@ -605,6 +613,7 @@ Panama,lassaletta-grassland-share,1979,2009,PAN-1979-2025,Panama (post-Canal Zon
 panama canal zone,fao1952,1903,1979,CZN-1903-1979,Panama Canal Zone,high,5
 Papua,fao1952,1937,1949,TPAP-1906-1949,Territory of Papua,high,17
 Papua,fao1952,1950,1951,PNG-1949-1975,Territory of Papua and New Guinea,high,11
+Papua,mitchell,1937,1937,TPAP-1906-1949,Territory of Papua,high,1
 Papua New Guinea,faostat,1961,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,87626
 Papua New Guinea,faostat,1975,2024,PNG-1975-2025,Papua New Guinea,high,87626
 papua new guinea,iia,1920,1940,TPAP-1906-1949,Territory of New Guinea / Territory of Papua (combined IIA series 1920-1940),low,
@@ -774,6 +783,7 @@ Trieste us uk,fao1952,1947,1954,TRS-1947-1954,Free Territory of Trieste,high,
 Trinidad and Tobago,faostat,1961,2024,TTO-1800-2025,Trinidad and Tobago,high,211626
 Trinidad and Tobago,lassaletta-grassland-share,1961,2009,TTO-1800-2025,Trinidad and Tobago,high,
 Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,2
+Tripolitania,mitchell,1949,1949,TRP-1943-1951,British Military Administration of Tripolitania,high,1
 Tunisia,faostat,1961,2024,TUN-1881-2025,Tunisia,high,226193
 Tunisia,lassaletta-grassland-share,1961,2009,TUN-1881-2025,Tunisia,high,
 Turkey,,1880,1912,TUR-1800-1913,"Turkey (Anatolia, to 1913)",high,

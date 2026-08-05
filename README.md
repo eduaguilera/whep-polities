@@ -68,6 +68,7 @@ python3 scripts/validate_alias_chain_overlaps.py
 python3 scripts/validate_live_name_ambiguity.py
 python3 scripts/validate_local_iso_codes.py
 python3 scripts/crosscheck_matchers.py
+python3 scripts/validate_order_decided_families.py
 python3 scripts/audit_family_shadowing.py
 
 # identity and periodisation
