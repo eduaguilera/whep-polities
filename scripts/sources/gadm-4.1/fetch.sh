@@ -31,6 +31,10 @@ COUNTRIES=(
   LIE LUX MAF MCO MHL MNP MSR MTQ MYT NCL NFK NIU NRU PCN PLW PRI PSE PYF
   REU SGS SHN SJM SLB SMR SPM SWE SYC SXM TCA TKL TON TUV UMI VAT VCT VGB
   VIR VUT WLF WSM
+  # Added 2026-08-05: the 1940-44 Northern Transylvania holding is built from eight
+  # Romanian adm1 counties (issues 12, 106). CShapes cannot supply it -- the territory
+  # is interior to both of its Romanian steps, because post-war Romania kept it.
+  ROU
 )
 
 ADM0="$OUT_DIR/gadm41_adm0.gpkg"
