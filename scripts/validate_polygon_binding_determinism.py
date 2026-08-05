@@ -87,7 +87,11 @@ BASELINE = {
     #
     # ---- candidates DIFFER: a re-fetch could hand back another polygon ----
     # Enumerated with the spread and what was actually picked. Issue 100.
-    "ROU-1920-1940": "3 candidates at year 1920 spanning 148,934-296,087 km2 (1.99x); picked 251,719, no declared area",
+    # ROU-1920-1940 removed 2026-08-05: order-dependence RESOLVED by moving
+    # polygon_feature_year 1920 -> 1921, which falls inside exactly one candidate span.
+    # The row order had been picking 251,719 km2 over the correct 296,087 -- Bessarabia
+    # missing for all 20 interwar years and 1,087 data rows. This baseline entry recorded
+    # the non-determinism for 21 rows; it turned out to also be recording a live 15% error.
     "POL-1919-1920": "3 candidates at year 1919 spanning 130,205-256,575 km2 (1.97x); picked 177,762, declared 177,754",
     "F51-1938-1945": "3 candidates at year 1938 spanning 100,822-140,398 km2 (1.39x); picked 116,616, no declared area",
     "KEN-1907-1924": "2 candidates at year 1907 spanning 635,868-772,550 km2 (1.21x); picked 772,550, no declared area",
