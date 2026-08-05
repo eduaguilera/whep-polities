@@ -394,7 +394,8 @@ India,lassaletta-grassland-share,1961,2009,IND-1949-2025,India,high,
 India,trade-sources,1885,1885,IND-1800-1886,British India (to 1886),high,
 India,trade-sources,1886,1892,IND-1886-1893,British India (1886-1893),high,
 India,trade-sources,1893,1913,IND-1893-1914,India (1893-1914),high,
-indochina,,,,FID-1887-1954,French Indochina,high,259
+indochina,,1866,1886,FCC-1862-1887,French Cochinchina,high,
+indochina,,1887,,FID-1887-1954,French Indochina,high,259
 indochina cambodia,,1907,1953,KHM-1907-1953,,medium,
 indochina laos,,1936,1951,LAO-1893-1953,Laos (1893-1953),high,59
 indochina viet nam,,1887,1954,FID-1887-1954,,medium,
@@ -775,9 +776,12 @@ Trinidad and Tobago,lassaletta-grassland-share,1961,2009,TTO-1800-2025,Trinidad 
 Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,2
 Tunisia,faostat,1961,2024,TUN-1881-2025,Tunisia,high,226193
 Tunisia,lassaletta-grassland-share,1961,2009,TUN-1881-2025,Tunisia,high,
-Turkey,,,,TUR-1920-2025,Türkiye,high,323
+Turkey,,1880,1912,TUR-1800-1913,"Turkey (Anatolia, to 1913)",high,
 turkey,,1913,1913,TUR-1913-1914,Türkiye (1913-1914),high,
 turkey,,1914,1914,TUR-1914-1918,Türkiye (1913-1914),high,
+Turkey,,1915,1917,TUR-1914-1918,Turkiye (1914-1918),high,
+Turkey,,1918,1919,TUR-1918-1920,Turkiye (1918-1920),high,
+Turkey,,1920,,TUR-1920-2025,Türkiye,high,323
 Turkmenistan,faostat,1992,2024,TKM-1991-2025,Turkmenistan,high,63651
 Tuvalu,faostat,1961,2024,TUV-1800-2025,Tuvalu,high,24864
 Türkiye,faostat,1961,2024,TUR-1920-2025,Türkiye (1920-2025),high,258437

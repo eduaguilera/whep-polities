@@ -1,3 +1,6 @@
+# 'turkey||' cleared 2026-08-05 (issue 54): the unranged `Turkey` alias was bounded to 1920
+# and three ranged siblings added for 1880-1912, 1915-1917 and 1918-1919, so the chain now
+# tiles the TUR periods without touching. Chains whose ranges touch: 18 -> 17.
 # Cleared 2026-08-05 by the Group A clip (issue 90): 7 chains stopped overlapping when the
 # earlier alias's inclusive year_end was reduced by one to stop claiming its successor's
 # first year -- china/manchuria, guam, israel, italy, romania, tanzania, us virgin islands.
@@ -23,7 +26,6 @@ russian federation||
 serbia||
 sudan||
 syria||
-turkey||
 united states of america||
 united states of america||iia
 ussr||

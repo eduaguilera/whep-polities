@@ -1,5 +1,28 @@
 #!/usr/bin/env python3
-"""Check that no alias can resolve a year AFTER its target polity ended.
+"""Check that an alias cannot resolve a year OUTSIDE its target polity's span — both directions.
+
+THE LATE DIRECTION was the original check and is described below. THE EARLY DIRECTION was added
+2026-08-05 (issue 54) and is the mirror image: a blank `year_start` is unbounded BELOW, so the
+alias also resolves years before its target began.
+
+That half was genuinely ungated, and the reason is worth recording. An investigation of issue 54
+proposed a gate testing `year_start < start_year` — which is UNEVALUABLE when year_start is
+blank, so it flagged 4 aliases and silently skipped 18. Measured against layer B, those 18 put
+66 rows on polities that did not yet exist:
+
+  `Turkey`    (blank start) -> TUR-1920-2025   46 rows dated 1880-1919
+  `indochina` (blank start) -> FID-1887-1954   20 rows dated 1866-1886
+
+Both are fixed: `Turkey` is bounded to 1920 with three ranged siblings covering 1880-1919 across
+the TUR periods, and `indochina` is bounded to 1887 with a sibling routing 1866-1886 to
+FCC-1862-1887, French Cochinchina — the only French possession there before the 1887 federation.
+The early count is now 0.
+
+The check here is STRUCTURAL rather than data-driven, so it runs in CI: a blank year_start is
+flagged when the target begins after the 1800 database floor, whether or not data happens to fall
+in the exposed years today. Thirteen do, and all thirteen are baselined — none currently
+misroutes anything, but each is one new observation away from doing so, which is precisely what
+a baseline should record rather than what a passing gate should hide.
 
 An alias with an empty `year_start`/`year_end` applies to EVERY year. If its target is a polity
 that ended, the alias silently resolves modern data to a historical entity — and unlike an inert
@@ -71,6 +94,28 @@ BASELINE = frozenset({
 })
 
 CODE_END = re.compile(r"-(\d{4})$")
+# The START year, read off the code the same way this gate already reads the end year.
+# validate_code_year_agreement holds only two rows whose code and columns disagree, and
+# both differ on end_year, so the code's start is safe to trust here.
+CODE_START = re.compile(r"-(\d{4})-\d{4}$")
+
+# EARLY DIRECTION (issue 54). Blank year_start, target starting after the 1800 floor: the alias is
+# unbounded below. Baselined by (label, source) with the reason each is currently harmless.
+# Bidirectional: a new one fails, and one that gains a year_start must be removed.
+BASELINE_EARLY = frozenset({
+    # Historical names no present-day source writes, so the label itself carries the era and the
+    # exposed years contain no data. Verified: 0 rows before the target's start, in layer B.
+    ("Belgian Congo", ""), ("Belgian Congo (fao1952)", ""),
+    ("French Equat Africa", ""), ("French W Africa", ""), ("French West Africa", ""),
+    ("rwanda and burundi", ""), ("NetherlandsWest Indies", "fao1952"),
+    ("netherlandswest indies", "fao1952"),
+    # Current names whose target starts late, but whose sources begin later still.
+    ("American Samoa", ""), ("British Borneo Brunei", ""), ("EI Salvador", ""),
+    ("belgium", "iia"),
+    # Deliberate: an unranged alias is the only thing that can match an IIA row whose year is
+    # MISSING, which is this alias's recorded purpose. Bounding it would drop those rows.
+    ("viet nam", "iia"),
+})
 
 
 def main() -> int:
@@ -105,7 +150,38 @@ def main() -> int:
     for label, source in sorted(observed):
         print(f"   {label!r} (source {source or 'any'})")
 
+    # ---------- EARLY DIRECTION ----------
+    FLOOR = 1800
+    observed_early = set()
+    for row in rows:
+        if (row.get("year_start") or "").strip():
+            continue
+        tgt = (row.get("polity_code") or "").strip()
+        m = CODE_START.search(tgt)
+        if not m:
+            continue
+        start = int(m.group(1))
+        if start <= FLOOR:
+            continue
+        observed_early.add(((row.get("source_label") or "").strip(),
+                            (row.get("source") or "").strip()))
+    print(f"aliases with a BLANK year_start whose target begins after {FLOOR}: "
+          f"{len(observed_early)} ({len(BASELINE_EARLY)} baselined)")
+
     problems = []
+    for pair in sorted(observed_early - BASELINE_EARLY):
+        problems.append(
+            f"NEW unbounded-below alias: {pair[0]!r} (source {pair[1] or 'any'}) has a blank "
+            f"year_start while its target begins after {FLOOR}, so it resolves years before that "
+            f"polity existed. Give it the target's start year, and add a sibling alias for the "
+            f"earlier period if data reaches back that far."
+        )
+    for pair in sorted(BASELINE_EARLY - observed_early):
+        problems.append(
+            f"{pair[0]!r} (source {pair[1] or 'any'}) is baselined as unbounded-below but no "
+            f"longer is — remove it from BASELINE_EARLY"
+        )
+
     for pair in sorted(observed - BASELINE):
         problems.append(
             f"NEW unranged alias to an ended polity: {pair[0]!r} (source {pair[1] or 'any'}) — "
