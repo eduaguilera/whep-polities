@@ -74,8 +74,12 @@ python3 scripts/validate_iso_collisions.py
 python3 scripts/validate_cow_codes.py
 python3 scripts/validate_cross_family_names.py
 python3 scripts/validate_period_overlaps.py
+python3 scripts/validate_period_gaps.py
 python3 scripts/validate_reporting_areas.py
 python3 scripts/validate_code_year_agreement.py
+python3 scripts/validate_references.py
+python3 scripts/validate_map_area_year.py
+python3 scripts/validate_alias_year_coverage.py
 
 # geometry
 python3 scripts/validate_polygons.py
