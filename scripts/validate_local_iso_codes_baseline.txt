@@ -287,3 +287,6 @@ ZAF
 ZMB
 ZNZ  # local
 ZWE
+CSK
+DDR
+YUG
