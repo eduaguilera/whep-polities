@@ -47,8 +47,8 @@ DEAD_STATUS = ("retired", "superseded")
 # Each entry is the pair of codes, sorted, that may overlap. See the docstring.
 BASELINE = {
     ("BLX-1850-1999", "BLX-1921-1999"),
-    ("PER-1825-1884", "PER-1825-1909"),
-    ("PER-1825-1909", "PER-1884-1909"),
+    # Both PER pairs removed 2026-08-05: PER-1825-1909 is superseded by the 1884 split,
+    # so neither pair overlaps any more. Issue 62's sibling case.
     # MNE-1913-1915 / MNE-1913-1918 removed 2026-08-05: the 1913-1915 row is retired as
     # a duplicate, so the pair no longer overlaps. Issue 62.
 }
