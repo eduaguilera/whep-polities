@@ -148,7 +148,7 @@ are a **curated selection**, not a complete listing.
 - [Czechoslovakia (1947-1993)](polities/f51-1947-1993.md) — `F51-1947-1993`, draft. Communist era to Velvet Divorce 1993.
 - [Czechoslovakia (1945-1947)](polities/f51-1945-1947.md) — `F51-1945-1947`, draft. Restored, Ruthenia ceded to USSR.
 - [Czechoslovakia (1938-1945)](polities/f51-1938-1945.md) — `F51-1938-1945`, draft. Munich to WWII.
-- [Yugoslavia (1920-1991)](polities/f248-1920-1991.md) — `F248-1920-1991`, draft. 72-year row, Kingdom→Communist→dissolution.
+- [Yugoslavia (1920-1991)](polities/f248-1920-1991.md) — `F248-1920-1991`, retired. 72-year row, Kingdom→Communist→dissolution.
 - [Austria](polities/aut-1919-2025.md) —
   `AUT-1919-2025`, draft, 2 open questions. Post-AUH Austria.
   Saint-Germain reduced area from 25.5 to 10.0 sq deg. COW gap
@@ -167,7 +167,7 @@ are a **curated selection**, not a complete listing.
   `POL-1918-1919`, draft, 2 open questions. Reconstituted from
   triple partition. Borders fluid 1918-1921.
 - [USSR (1945-1991)](polities/f228-1945-1991.md) — `F228-1945-1991`, draft. Soviet superpower era. 15 successor states. F228 chain complete (11 rows, 1800→1991).
-- [Serbia (1913-1918)](polities/ser-1913-1918.md) — `SER-1913-1918`, reviewed. Post-Balkan Wars through WWI. Successor: Yugoslavia.
+- [Serbia (1913-1918)](polities/ser-1913-1918.md) — `SER-1913-1918`, draft. Post-Balkan Wars through WWI. Successor: Yugoslavia.
 - [USSR (1940-1945)](polities/f228-1940-1945.md) — `F228-1940-1945`, draft. WWII. Correctly labeled.
 - [RSFSR/USSR (1921-1940)](polities/f228-1921-1940.md) — `F228-1921-1940`, draft. RSFSR until Dec 1922, then USSR. NEP to Molotov-Ribbentrop.
 - [RSFSR (1920-1921)](polities/f228-1920-1921.md) — `F228-1920-1921`, draft. Treaty of Riga, Baltic recognition.
@@ -211,13 +211,13 @@ are a **curated selection**, not a complete listing.
   `BGR-1918-1919`, draft, 1 OQ. Treaty of Neuilly.
 - [Romania (1918-1919)](polities/rou-1918-1919.md) —
   `ROU-1918-1919`, draft, 1 OQ. Greater Romania formation.
-- [Poland](polities/pol-1945-2025.md) — `POL-1945-2025`, draft. Modern Poland. Chain complete 1918→2025.
+- [Poland](polities/pol-1945-2025.md) — `POL-1945-2025`, reviewed. Modern Poland. Chain complete 1918→2025.
 - [Poland (1921-1945)](polities/pol-1921-1945.md) — `POL-1921-1945`, draft. Interwar + WWII.
-- [Hungary](polities/hun-1947-2025.md) — `HUN-1947-2025`, draft. Modern Hungary. Chain complete 1918→2025.
-- [Hungary (1938-1947)](polities/hun-1938-1947.md) — `HUN-1938-1947`, draft. Vienna Awards + WWII.
-- [Bulgaria](polities/bgr-1940-2025.md) — `BGR-1940-2025`, draft. Modern Bulgaria. Chain complete 1878→2025.
+- [Hungary](polities/hun-1947-2025.md) — `HUN-1947-2025`, reviewed. Modern Hungary. Chain complete 1918→2025.
+- [Hungary (1938-1947)](polities/hun-1938-1947.md) — `HUN-1938-1947`, superseded. Vienna Awards + WWII.
+- [Bulgaria](polities/bgr-1940-2025.md) — `BGR-1940-2025`, reviewed. Modern Bulgaria. Chain complete 1878→2025.
 - [Bulgaria (1919-1940)](polities/bgr-1919-1940.md) — `BGR-1919-1940`, draft. Post-Neuilly interwar.
-- [Romania](polities/rou-1940-2025.md) — `ROU-1940-2025`, draft. Modern Romania. Chain complete 1859→2025.
+- [Romania](polities/rou-1940-2025.md) — `ROU-1940-2025`, superseded. Modern Romania. Chain complete 1859→2025.
 - [Romania (1920-1940)](polities/rou-1920-1940.md) — `ROU-1920-1940`, draft. Greater Romania at maximum extent.
 - [Romania (1919-1920)](polities/rou-1919-1920.md) — `ROU-1919-1920`, draft. Transitional.
 - [Hungary (1920-1938)](polities/hun-1920-1938.md) —
@@ -231,8 +231,12 @@ are a **curated selection**, not a complete listing.
 - [Montenegro (1913-1915)](polities/mne-1913-1915.md) —
   `MNE-1913-1915`, draft, 1 OQ. Overrun 1916, absorbed into
   Yugoslavia 1918.
-- [Hungary (1919-1920)](polities/hun-1919-1920.md) —
-  `HUN-1919-1920`, draft, 1 OQ. Treaty of Trianon: -63% area.
+- Hungary 1919-1920 has **no polity row**. The index used to link `HUN-1919-1920`,
+  which does not exist and never did: [hun-1918-1919](polities/hun-1918-1919.md) ends
+  1918 and [hun-1920-1938](polities/hun-1920-1938.md) begins 1920, so 1919 is covered
+  by nothing. The gap is a tracked entry in `scripts/validate_period_gaps.py`, not an
+  oversight. The Treaty of Trianon reduction (-63% area) is documented on
+  [hun-1920-1938](polities/hun-1920-1938.md).
 - [Poland (1919-1920)](polities/pol-1919-1920.md) —
   `POL-1919-1920`, draft, 1 OQ. Border-settling, Polish-Soviet
   War.
@@ -279,30 +283,30 @@ are a **curated selection**, not a complete listing.
 - [Russia](polities/rus-2014-2025.md) — `RUS-2014-2025`, draft.
 - [Ukraine (1991-2014)](polities/ukr-1991-2014.md) — `UKR-1991-2014`, draft.
 - [Ukraine](polities/ukr-2014-2025.md) — `UKR-2014-2025`, draft.
-- [Belarus](polities/blr-1991-2025.md) — `BLR-1991-2025`, draft.
-- [Estonia](polities/est-1991-2025.md) — `EST-1991-2025`, draft.
-- [Latvia](polities/lva-1991-2025.md) — `LVA-1991-2025`, draft.
-- [Lithuania](polities/ltu-1991-2025.md) — `LTU-1991-2025`, draft.
-- [Moldova](polities/mda-1991-2025.md) — `MDA-1991-2025`, draft.
-- [Georgia](polities/geo-1991-2025.md) — `GEO-1991-2025`, draft.
-- [Croatia](polities/hrv-1992-2025.md) — `HRV-1992-2025`, draft.
-- [Slovenia](polities/svn-1992-2025.md) — `SVN-1992-2025`, draft.
-- [Bosnia and Herzegovina](polities/bih-1992-2025.md) — `BIH-1992-2025`, draft.
+- [Belarus](polities/blr-1991-2025.md) — `BLR-1991-2025`, reviewed.
+- [Estonia](polities/est-1991-2025.md) — `EST-1991-2025`, reviewed.
+- [Latvia](polities/lva-1991-2025.md) — `LVA-1991-2025`, reviewed.
+- [Lithuania](polities/ltu-1991-2025.md) — `LTU-1991-2025`, reviewed.
+- [Moldova](polities/mda-1991-2025.md) — `MDA-1991-2025`, reviewed.
+- [Georgia](polities/geo-1991-2025.md) — `GEO-1991-2025`, reviewed.
+- [Croatia](polities/hrv-1992-2025.md) — `HRV-1992-2025`, reviewed.
+- [Slovenia](polities/svn-1992-2025.md) — `SVN-1992-2025`, reviewed.
+- [Bosnia and Herzegovina](polities/bih-1992-2025.md) — `BIH-1992-2025`, reviewed.
 - [Serbia and Montenegro](polities/scg-1992-2006.md) — `SCG-1992-2006`, draft.
 - [Serbia (2006-2008)](polities/ser-2006-2008.md) — `SER-2006-2008`, retired.
-- [Serbia](polities/srb-2008-2025.md) — `SRB-2008-2025`, draft.
+- [Serbia](polities/srb-2008-2025.md) — `SRB-2008-2025`, reviewed.
 - [Montenegro](polities/mne-2006-2025.md) — `MNE-2006-2025`, draft.
 - [Kosovo](polities/kos-2008-2025.md) — `KOS-2008-2025`, draft.
-- [North Macedonia](polities/mkd-1991-2025.md) — `MKD-1991-2025`, draft.
-- [Czechia](polities/cze-1993-2025.md) — `CZE-1993-2025`, draft.
-- [Slovakia](polities/svk-1993-2025.md) — `SVK-1993-2025`, draft.
+- [North Macedonia](polities/mkd-1991-2025.md) — `MKD-1991-2025`, reviewed.
+- [Czechia](polities/cze-1993-2025.md) — `CZE-1993-2025`, reviewed.
+- [Slovakia](polities/svk-1993-2025.md) — `SVK-1993-2025`, reviewed.
 - [Liechtenstein](polities/lie-1800-2025.md) — `LIE-1800-2025`, draft. 226-year continuous row. Principality since 1342/1719, independence 1806.
 - [San Marino](polities/smr-1800-2025.md) — `SMR-1800-2025`, draft. Microstate enclave in Italy.
-- [Andorra](polities/and-1800-2025.md) — `AND-1800-2025`, draft. Microstate between France and Spain.
-- [Monaco](polities/mco-1800-2025.md) — `MCO-1800-2025`, draft. Microstate on French Riviera.
-- [Malta](polities/mlt-1800-2025.md) — `MLT-1800-2025`, draft. Island state.
+- [Andorra](polities/and-1800-2025.md) — `AND-1800-2025`, reviewed. Microstate between France and Spain.
+- [Monaco](polities/mco-1800-2025.md) — `MCO-1800-2025`, reviewed. Microstate on French Riviera.
+- [Malta](polities/mlt-1800-2025.md) — `MLT-1800-2025`, reviewed. Island state.
 - [Austria (1918-1919)](polities/aut-1918-1919.md) — `AUT-1918-1919`, draft. Transitional post-AUH row.
-- [Czechoslovakia (1947-1992)](polities/cze-1947-1992.md) — `CZE-1947-1992`, draft. Communist era to 1992 dissolution.
+- [Czechoslovakia (1947-1992)](polities/cze-1947-1992.md) — `CZE-1947-1992`, superseded. Communist era to 1992 dissolution.
 - [Duchy of Modena](polities/dmo-1800-1860.md) — `DMO-1800-1860`, draft. Pre-unification Italian duchy.
 - [Duchy of Parma](polities/dpa-1800-1860.md) — `DPA-1800-1860`, draft. Pre-unification Italian duchy.
 
@@ -313,30 +317,30 @@ are a **curated selection**, not a complete listing.
 - [Algeria (1902-1919)](polities/dza-1902-1919.md) — `DZA-1902-1919`, draft. French colony, post-Sahara annexation.
 - [Algeria (1919-1962)](polities/dza-1919-1962.md) — `DZA-1919-1962`, draft. French colony, final colonial period.
 - [Algeria (1962-2025)](polities/dza-1962-2025.md) — `DZA-1962-2025`, draft. Independent Algeria from 5 July 1962.
-- [Egypt (to 1899)](polities/egy-1800-1899.md) — `EGY-1800-1899`, draft. Chain: EGY-1800-1899 -> EGY-1899-1925 -> EGY-1925-1967 -> EGY-1967-1979 -> EGY-1979-2025.
+- [Egypt (to 1899)](polities/egy-1800-1899.md) — `EGY-1800-1899`, superseded. Chain: EGY-1800-1899 -> EGY-1899-1925 -> EGY-1925-1967 -> EGY-1967-1979 -> EGY-1979-2025.
 - [Egypt (1899-1925)](polities/egy-1899-1925.md) — `EGY-1899-1925`, draft. Anglo-Egyptian Condominium through independence.
 - [Egypt (1925-1967)](polities/egy-1925-1967.md) — `EGY-1925-1967`, draft. Egypt proper after Sudan separated.
 - [Egypt (1967-1979)](polities/egy-1967-1979.md) — `EGY-1967-1979`, draft. Sinai under Israeli occupation.
-- [Egypt](polities/egy-1979-2025.md) — `EGY-1979-2025`, draft. Post-Camp David.
+- [Egypt](polities/egy-1979-2025.md) — `EGY-1979-2025`, reviewed. Post-Camp David.
 - [Ethiopia (to 1889)](polities/eth-1800-1889.md) — `ETH-1800-1889`, draft.
 - [Ethiopia (1889-1897)](polities/eth-1889-1897.md) — `ETH-1889-1897`, draft.
 - [Ethiopia (1897-1902)](polities/eth-1897-1902.md) — `ETH-1897-1902`, draft.
 - [Ethiopia (1902-1907)](polities/eth-1902-1907.md) — `ETH-1902-1907`, draft.
-- [Ethiopia (1907-1952)](polities/eth-1907-1952.md) — `ETH-1907-1952`, draft.
+- [Ethiopia (1907-1952)](polities/eth-1907-1952.md) — `ETH-1907-1952`, superseded.
 - [Ethiopia (1952-1993)](polities/eth-1952-1993.md) — `ETH-1952-1993`, draft.
-- [Ethiopia](polities/eth-1993-2025.md) — `ETH-1993-2025`, draft.
+- [Ethiopia](polities/eth-1993-2025.md) — `ETH-1993-2025`, reviewed.
 - [Ghana](polities/gha-1957-2025.md) — `GHA-1957-2025`, draft.
-- [Kenya](polities/ken-1963-2025.md) — `KEN-1963-2025`, draft.
-- [Libya](polities/lby-1951-2025.md) — `LBY-1951-2025`, draft.
+- [Kenya](polities/ken-1963-2025.md) — `KEN-1963-2025`, reviewed.
+- [Libya](polities/lby-1951-2025.md) — `LBY-1951-2025`, reviewed.
 - [Morocco (to 1958)](polities/mar-1911-1958.md) — `MAR-1911-1958`, draft.
 - [Morocco (1958-1975)](polities/mar-1958-1975.md) — `MAR-1958-1975`, draft.
-- [Morocco (1975-1979)](polities/mar-1975-1979.md) — `MAR-1975-1979`, draft.
+- [Morocco (1975-1979)](polities/mar-1975-1979.md) — `MAR-1975-1979`, reviewed.
 - [Morocco](polities/mar-1979-2025.md) — `MAR-1979-2025`, draft.
 - [Northern Nigeria (1904-1913)](polities/nni-1904-1913.md) — `NNI-1904-1913`, draft. British Protectorate of Northern Nigeria; amalgamated 1914.
 - [Southern Nigeria (1906-1913)](polities/sni-1906-1913.md) — `SNI-1906-1913`, draft. Colony and Protectorate of Southern Nigeria; amalgamated 1914.
 - [Nigeria (1914-1960)](polities/nga-1914-1960.md) — `NGA-1914-1960`, reviewed.
-- [Nigeria](polities/nga-1961-2025.md) — `NGA-1961-2025`, draft.
-- [Democratic Republic of the Congo](polities/cod-1960-2025.md) — `COD-1960-2025`, draft.
+- [Nigeria](polities/nga-1961-2025.md) — `NGA-1961-2025`, reviewed.
+- [Democratic Republic of the Congo](polities/cod-1960-2025.md) — `COD-1960-2025`, reviewed.
 - [Beylik of Tunis](polities/tun-1800-1881.md) — `TUN-1800-1881`, draft. Pre-protectorate Husainid regency; French invasion ends chain 1881.
 - [Tunisia](polities/tun-1881-2025.md) — `TUN-1881-2025`, draft,
   2 OQs. French protectorate 1881, independent 1956. No territorial
@@ -382,7 +386,7 @@ are a **curated selection**, not a complete listing.
 - [Western Sahara (1958-1975)](polities/esh-1958-1975.md) — `ESH-1958-1975`, draft. Spanish Sahara as separate territory.
 - [Western Sahara](polities/esh-1975-2025.md) — `ESH-1975-2025`, draft. Sovereignty disputed since Spanish withdrawal.
 - [Angola (1891-1905)](polities/ang-1891-1905.md) — `ANG-1891-1905`, draft. Portuguese colony; boundary settled 1891.
-- [Angola](polities/ago-1816-2025.md) — `AGO-1816-2025`, draft.
+- [Angola](polities/ago-1816-2025.md) — `AGO-1816-2025`, retired.
 - [Burundi](polities/bdi-1962-2025.md) — `BDI-1962-2025`, draft.
 - [Kingdom of Burundi](polities/bdk-1800-1890.md) — `BDK-1800-1890`, draft.
 - [Benin (1895-1898)](polities/ben-1895-1898.md) — `BEN-1895-1898`, draft. French Dahomey; territory expanded 1898.
@@ -406,9 +410,10 @@ are a **curated selection**, not a complete listing.
 - [Congo (1919-1960)](polities/cog-1919-1960.md) — `COG-1919-1960`, draft.
 - [Comoros (1946-1975)](polities/com-1946-1975.md) — `COM-1946-1975`, draft.
 - [Comoros](polities/com-1975-2025.md) — `COM-1975-2025`, draft.
-- [Cabo Verde](polities/cpv-1800-2025.md) — `CPV-1800-2025`, draft, 0 open questions. From database floor; Portuguese colony; independence 5 Jul 1975.
+- [Cape Verde (Portuguese colony)](polities/cpv-1886-1975.md) — `CPV-1886-1975`, draft. Portuguese colony.
+- [Cabo Verde](polities/cpv-1975-2025.md) — `CPV-1975-2025`, draft. Independence 5 Jul 1975.
 - [Kingdom of Dahomey](polities/dhy-1800-1894.md) — `DHY-1800-1894`, draft.
-- [Djibouti](polities/dji-1886-2025.md) — `DJI-1886-2025`, draft, 1 open question. French Somaliland; independence 26 Jun 1977.
+- [Djibouti](polities/dji-1886-2025.md) — `DJI-1886-2025`, retired, 1 open question. French Somaliland; independence 26 Jun 1977.
 - [Djibouti (post-independence)](polities/frs-1977-2025.md) — `FRS-1977-2025`, draft, 2 open questions. Independent Djibouti from 1977; last country in continental Africa to gain independence. CSV cow_code=987 is wrong (should be 522); chain overlap with DJI-1886-2025 flagged.
 - [Canary Islands](polities/icn-1800-2025.md) — `ICN-1800-2025`, draft, 2 open questions. Spanish archipelago off northwest Africa; GADM polygon; cow_code=20 conflicts with Canada COW code.
 - [Sao Tome and Principe](polities/stp-1800-2025.md) — `STP-1800-2025`, draft, 1 open question. Two-island republic in Gulf of Guinea; independent from Portugal 1975. CSV cow_code=411 is wrong (should be 403); polygon verification needed.
@@ -499,10 +504,10 @@ are a **curated selection**, not a complete listing.
 - [United States of America](polities/usa-1959-2025.md) — `USA-1959-2025`, draft.
 - [Mexico (to 1848)](polities/mex-1800-1848.md) — `MEX-1800-1848`, draft.
 - [Mexico](polities/mex-1848-2025.md) — `MEX-1848-2025`, draft.
-- [Canada (to 1948)](polities/can-1866-1948.md) — `CAN-1866-1948`, draft.
-- [Canada](polities/can-1948-2025.md) — `CAN-1948-2025`, draft.
+- [Canada (to 1948)](polities/can-1886-1948.md) — `CAN-1886-1948`, draft.
+- [Canada](polities/can-1948-2025.md) — `CAN-1948-2025`, reviewed.
 - [Canada (pre-Confederation)](polities/can-1800-1866.md) — `CAN-1800-1866`, draft.
-- [Belize](polities/blz-1800-2025.md) — `BLZ-1800-2025`, draft, 0 open questions. From database floor; British Honduras colony; independence 21 Sep 1981.
+- [Belize](polities/blz-1800-2025.md) — `BLZ-1800-2025`, superseded, 0 open questions. From database floor; British Honduras colony; independence 21 Sep 1981.
 - [Costa Rica](polities/cri-1800-2025.md) — `CRI-1800-2025`, draft.
 - [Cuba](polities/cub-1800-2025.md) — `CUB-1800-2025`, draft.
 - [Dominica](polities/dma-1800-2025.md) — `DMA-1800-2025`, draft.
@@ -521,53 +526,56 @@ are a **curated selection**, not a complete listing.
 
 ### South America
 
-- [Argentina](polities/arg-1800-2025.md) — `ARG-1800-2025`, reviewed, 1 open question. 226-year continuous row. Stable borders. COW: ARG, ccode=160.
+- [Argentina](polities/arg-1800-2025.md) — `ARG-1800-2025`, retired, 1 open question. 226-year continuous row. Stable borders. COW: ARG, ccode=160.
 - [Bolivia (to 1903)](polities/bol-1825-1903.md) — `BOL-1825-1903`, draft.
 - [Bolivia (1903-1909)](polities/bol-1903-1909.md) — `BOL-1903-1909`, draft.
 - [Bolivia (1909-1938)](polities/bol-1909-1938.md) — `BOL-1909-1938`, draft.
-- [Bolivia](polities/bol-1938-2025.md) — `BOL-1938-2025`, draft.
-- [Brazil](polities/bra-1800-2025.md) — `BRA-1800-2025`, draft, 2 open questions. 226-year row from database floor. Independence 1822. COW: BRA, ccode=140.
-- [Chile (to 1899)](polities/chl-1810-1899.md) — `CHL-1810-1899`, draft.
-- [Chile (1899-1902)](polities/chl-1899-1902.md) — `CHL-1899-1902`, draft.
-- [Chile](polities/chl-1902-2025.md) — `CHL-1902-2025`, draft.
+- [Bolivia](polities/bol-1938-2025.md) — `BOL-1938-2025`, reviewed.
+- [Brazil](polities/bra-1800-2025.md) — `BRA-1800-2025`, superseded, 2 open questions. 226-year row from database floor. Independence 1822. COW: BRA, ccode=140.
+- [Chile (to 1883)](polities/chl-1810-1883.md) — `CHL-1810-1883`, draft.
+- [Chile (1884-1899)](polities/chl-1884-1899.md) — `CHL-1884-1899`, draft.
+- [Chile (1899-1902)](polities/chl-1899-1902.md) — `CHL-1899-1902`, reviewed.
+- [Chile](polities/chl-1902-2025.md) — `CHL-1902-2025`, reviewed.
 - [Gran Colombia](polities/col-1800-1830.md) — `COL-1800-1830`, draft.
 - [Colombia (to 1903)](polities/col-1830-1903.md) — `COL-1830-1903`, draft.
-- [Colombia (1903-1922)](polities/col-1903-1922.md) — `COL-1903-1922`, draft.
-- [Colombia](polities/col-1922-2025.md) — `COL-1922-2025`, draft.
+- [Colombia (1903-1922)](polities/col-1903-1922.md) — `COL-1903-1922`, reviewed.
+- [Colombia](polities/col-1922-2025.md) — `COL-1922-2025`, reviewed.
 - [Ecuador (to 1942)](polities/ecu-1800-1942.md) — `ECU-1800-1942`, draft.
-- [Ecuador](polities/ecu-1942-2025.md) — `ECU-1942-2025`, draft.
-- [Peru (to 1909)](polities/per-1825-1909.md) — `PER-1825-1909`, draft.
-- [Peru (1909-1922)](polities/per-1909-1922.md) — `PER-1909-1922`, draft.
+- [Ecuador](polities/ecu-1942-2025.md) — `ECU-1942-2025`, reviewed.
+- [Peru (to 1909)](polities/per-1825-1909.md) — `PER-1825-1909`, superseded.
+- [Peru (1909-1922)](polities/per-1909-1922.md) — `PER-1909-1922`, reviewed.
 - [Peru (1922-1942)](polities/per-1922-1942.md) — `PER-1922-1942`, draft.
-- [Peru](polities/per-1942-2025.md) — `PER-1942-2025`, draft.
-- [Paraguay (to 1938)](polities/pry-1811-1938.md) — `PRY-1811-1938`, draft.
+- [Peru](polities/per-1942-2025.md) — `PER-1942-2025`, reviewed.
+- [Paraguay (to 1938)](polities/pry-1811-1938.md) — `PRY-1811-1938`, superseded.
 - [Paraguay](polities/pry-1938-2025.md) — `PRY-1938-2025`, draft.
 - [Uruguay](polities/ury-1828-2025.md) — `URY-1828-2025`, draft.
 - [Venezuela](polities/ven-1821-2025.md) — `VEN-1821-2025`, draft.
 - [Guyana](polities/guy-1800-2025.md) — `GUY-1800-2025`, draft, 0 open questions. From database floor; British Guiana colony; independence 26 May 1966.
-- [Suriname](polities/sur-1886-2025.md) — `SUR-1886-2025`, draft, 0 open questions. Dutch colony; independence 1975.
+- [Dutch Guiana](polities/sur-1886-1954.md) — `SUR-1886-1954`, draft. Dutch colony.
+- [Surinam (Autonomous)](polities/sur-1954-1975.md) — `SUR-1954-1975`, draft.
+- [Suriname](polities/sur-1975-2025.md) — `SUR-1975-2025`, draft. Independence 1975.
 
 ### Asia
 
-- [Armenia](polities/arm-1991-2025.md) — `ARM-1991-2025`, draft.
-- [Azerbaijan](polities/aze-1991-2025.md) — `AZE-1991-2025`, draft.
+- [Armenia](polities/arm-1991-2025.md) — `ARM-1991-2025`, reviewed.
+- [Azerbaijan](polities/aze-1991-2025.md) — `AZE-1991-2025`, reviewed.
 - [China (to 1895)](polities/chn-1800-1895.md) — `CHN-1800-1895`, draft.
-- [China (1895-1912)](polities/chn-1895-1912.md) — `CHN-1895-1912`, draft.
+- [China (1895-1913)](polities/chn-1895-1913.md) — `CHN-1895-1913`, draft.
 - [China (1913-1914)](polities/chn-1913-1914.md) — `CHN-1913-1914`, draft.
 - [China (1914-1921)](polities/chn-1914-1921.md) — `CHN-1914-1921`, draft.
-- [China (1921-1945)](polities/chn-1921-1945.md) — `CHN-1921-1945`, draft.
+- [China (1921-1945)](polities/chn-1921-1945.md) — `CHN-1921-1945`, superseded.
 - [China (1945-1947)](polities/chn-1945-1947.md) — `CHN-1945-1947`, draft.
 - [China (1947-1949)](polities/chn-1947-1949.md) — `CHN-1947-1949`, draft.
 - [China (1949-1950)](polities/chn-1949-1950.md) — `CHN-1949-1950`, draft.
 - [China (PRC)](polities/chn-1950-2025.md) — `CHN-1950-2025`, draft.
-- [Indonesia (to 1889)](polities/idn-1800-1889.md) — `IDN-1800-1889`, draft.
-- [Indonesia (1889-1945)](polities/idn-1889-1945.md) — `IDN-1889-1945`, reviewed.
+- [Indonesia (to 1889)](polities/idn-1800-1889.md) — `IDN-1800-1889`, superseded.
+- [Indonesia (1889-1945)](polities/idn-1889-1945.md) — `IDN-1889-1945`, superseded.
 - [Indonesia (1945-1949)](polities/idn-1945-1949.md) — `IDN-1945-1949`, draft.
 - [Indonesia (1949-1969)](polities/idn-1949-1969.md) — `IDN-1949-1969`, draft.
 - [Indonesia (1969-1976)](polities/idn-1969-1976.md) — `IDN-1969-1976`, draft.
 - [Indonesia (1976-2002)](polities/idn-1976-2002.md) — `IDN-1976-2002`, draft.
-- [Indonesia](polities/idn-2002-2025.md) — `IDN-2002-2025`, draft.
-- [India (to 1893)](polities/ind-1800-1893.md) — `IND-1800-1893`, draft.
+- [Indonesia](polities/idn-2002-2025.md) — `IDN-2002-2025`, reviewed.
+- [India (to 1893)](polities/ind-1800-1893.md) — `IND-1800-1893`, superseded.
 - [India (1893-1914)](polities/ind-1893-1914.md) — `IND-1893-1914`, draft.
 - [India (1914-1937)](polities/ind-1914-1937.md) — `IND-1914-1937`, draft.
 - [India (1937-1947)](polities/ind-1937-1947.md) — `IND-1937-1947`, draft.
@@ -579,19 +587,20 @@ are a **curated selection**, not a complete listing.
 - [Japanese Empire](polities/jpn-1895-1945.md) — `JPN-1895-1945`, draft.
 - [Japan (occupied)](polities/jpn-1945-1952.md) — `JPN-1945-1952`, draft.
 - [Japan](polities/jpn-1952-2025.md) — `JPN-1952-2025`, draft.
-- [Kazakhstan](polities/kaz-1991-2025.md) — `KAZ-1991-2025`, draft.
-- [Kyrgyzstan](polities/kgz-1991-2025.md) — `KGZ-1991-2025`, draft.
+- [Kazakhstan](polities/kaz-1991-2025.md) — `KAZ-1991-2025`, reviewed.
+- [Kyrgyzstan](polities/kgz-1991-2025.md) — `KGZ-1991-2025`, reviewed.
 - [South Korea](polities/kor-1948-2025.md) — `KOR-1948-2025`, draft.
 - [Saudi Arabia](polities/sau-1924-2025.md) — `SAU-1924-2025`, draft, 2 open questions. Ibn Saud conquest 1924; Kingdom proclaimed 23 Sep 1932.
 - [Thailand (to 1893)](polities/tha-1800-1893.md) — `THA-1800-1893`, draft.
 - [Thailand (1893-1904)](polities/tha-1893-1904.md) — `THA-1893-1904`, draft.
 - [Thailand (1904-1907)](polities/tha-1904-1907.md) — `THA-1904-1907`, draft.
 - [Thailand (1907-1909)](polities/tha-1907-1909.md) — `THA-1907-1909`, draft.
-- [Thailand](polities/tha-1909-2025.md) — `THA-1909-2025`, draft.
-- [Tajikistan](polities/tjk-1991-2025.md) — `TJK-1991-2025`, draft.
-- [Turkmenistan](polities/tkm-1991-2025.md) — `TKM-1991-2025`, draft.
-- [Taiwan](polities/twn-1896-2025.md) — `TWN-1896-2025`, draft.
-- [Uzbekistan](polities/uzb-1991-2025.md) — `UZB-1991-2025`, draft.
+- [Thailand](polities/tha-1909-2025.md) — `THA-1909-2025`, reviewed.
+- [Tajikistan](polities/tjk-1991-2025.md) — `TJK-1991-2025`, reviewed.
+- [Turkmenistan](polities/tkm-1991-2025.md) — `TKM-1991-2025`, reviewed.
+- [Formosa (Japanese Taiwan)](polities/twn-1895-1945.md) — `TWN-1895-1945`, draft.
+- [Taiwan](polities/twn-1945-2025.md) — `TWN-1945-2025`, draft.
+- [Uzbekistan](polities/uzb-1991-2025.md) — `UZB-1991-2025`, reviewed.
 - [Bogd Khanate of Mongolia](polities/mng-1911-1921.md) —
   `MNG-1911-1921`, draft, 2 OQs. Independence from Qing 1911.
 - [Mongolia](polities/mng-1921-2025.md) —
@@ -607,7 +616,7 @@ are a **curated selection**, not a complete listing.
 - [Brunei Darussalam](polities/brn-1888-2025.md) — `BRN-1888-2025`, draft.
 - [Bhutan](polities/btn-1800-2025.md) — `BTN-1800-2025`, draft.
 - [Cyprus](polities/cyp-1879-2025.md) — `CYP-1879-2025`, draft.
-- [Iraq](polities/irq-1921-2025.md) — `IRQ-1921-2025`, draft.
+- [Iraq](polities/irq-1921-2025.md) — `IRQ-1921-2025`, superseded.
 - [Israel (1948-1967)](polities/isr-1948-1967.md) — `ISR-1948-1967`, draft. Independence 1948; pre-1967 borders.
 - [Israel (1967-1979)](polities/isr-1967-1979.md) — `ISR-1967-1979`, draft.
 - [Israel](polities/isr-1979-2025.md) — `ISR-1979-2025`, draft.
@@ -653,7 +662,7 @@ are a **curated selection**, not a complete listing.
 
 ### Oceania
 
-- [Australia](polities/aus-1901-2025.md) — `AUS-1901-2025`, draft.
+- [Australia](polities/aus-1901-2025.md) — `AUS-1901-2025`, reviewed.
 - [New Zealand](polities/nzl-1840-2025.md) — `NZL-1840-2025`, draft. British colony from Treaty of Waitangi; Dominion status 1907.
 - [Papua New Guinea](polities/png-1975-2025.md) — `PNG-1975-2025`, draft.
 - [Vanuatu](polities/vut-1800-2025.md) — `VUT-1800-2025`, draft.
@@ -665,7 +674,7 @@ are a **curated selection**, not a complete listing.
 - [Nauru](polities/nru-1888-2025.md) — `NRU-1888-2025`, draft, 2 open questions. German annexation 1888; Australian administration after WWI; independent 1968. COW batch entry 1999.
 - [Micronesia (Federated States of)](polities/fsm-1991-2025.md) — `FSM-1991-2025`, draft, 1 open question. US Trust Territory until Compact of Free Association 1986; COW/UN entry 1991.
 - [Palau](polities/plw-1991-2025.md) — `PLW-1991-2025`, draft, 2 open questions. Last US Trust Territory component; Compact of Free Association 1994; COW entry 1994. WHEP start year 1991 inconsistent.
-- [German colonies Oceania](polities/gco-1884-2025.md) — `GCO-1884-2025`, draft, 1 open question. **Candidate error row**: end_year=2025 is historically impossible (Germany lost Pacific colonies 1914–1919). Requires deletion or correction.
+- [German colonies Oceania](polities/gco-1884-2025.md) — `GCO-1884-2025`, retired, 1 open question. **Candidate error row**: end_year=2025 is historically impossible (Germany lost Pacific colonies 1914–1919). Requires deletion or correction.
 
 ## Sources
 

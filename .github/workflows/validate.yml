@@ -7,7 +7,11 @@ name: Validate database
 #
 #   build_database --check   a wiki edit never propagated to the committed CSV
 #   update_wiki_index --check wiki/index.md's counts drifting from reality (they
-#                            had reached 1,325 polities against a real 740)
+#                            had reached 1,325 polities against a real 740), and, since
+#                            2026-08-05, the hand-typed status word on each curated
+#                            entry: 65 of them contradicted the database, presenting 2
+#                            RETIRED and 8 SUPERSEDED polities as `draft`, and 7 links
+#                            pointed at pages that do not exist
 #   write_manifest --check   the published consumer contract going stale. The WHEP
 #                            R package embeds a copy of this database and had
 #                            drifted to 603 rows against 740, routing 24 FAOSTAT
