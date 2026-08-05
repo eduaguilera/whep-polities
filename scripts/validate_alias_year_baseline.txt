@@ -239,7 +239,7 @@ serbia		SER-1816-1878
 serbia		SER-1878-1913
 serbia		SER-1913-1918
 serbia		SER-1918-1945
-serbia		SER-2006-2008
+serbia		SRB-2006-2008
 serbia		SRB-2008-2025
 south africa		ZAF-1910-2025
 south africa	iia	ZAF-1910-2025

@@ -1,10 +1,16 @@
 # Normalised names held by two or more LIVE polities whose years overlap, so a consumer
 # resolving a label by that name cannot pick one and returns NA.
 #
-# Fifteen are a coarse period listed alongside its own finer sub-periods (same prefix) —
-# the consumer's view of issue 49. Two cross prefix families and are tracked elsewhere:
-# morocco is issue 52 (MAR-1911-1958 running past its successor) and serbia is issue 43
-# (SER-2006-2008 duplicating SRB-2006-2008).
+# The remaining entries are a coarse period listed alongside its own finer sub-periods
+# (same prefix) — the consumer's view of issue 49.
+#
+# THREE LEFT ON 2026-08-05, all fixed rather than accepted:
+#   morocco     MOR-1956-1958 retired, a duplicate of MAR-1911-1958 (issue 82, PR 83)
+#   serbia      SER-2006-2008 retired, a duplicate of SRB-2006-2008 (issue 43, PR 86)
+#   montenegro  MNE-1913-1915 retired, a duplicate of MNE-1913-1918 (issue 62)
+# The first two crossed prefix families, which is why validate_period_overlaps could see
+# neither: it compares periods within one prefix. A name-keyed view caught what a
+# code-keyed one structurally cannot.
 #
 # Bidirectional: a new entry fails, and an entry that stops overlapping must be deleted.
 belize
@@ -18,9 +24,6 @@ greece
 hungary
 iraq
 italy
-montenegro
-morocco
 paraguay
 peru
 romania
-serbia
