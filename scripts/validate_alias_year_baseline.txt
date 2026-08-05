@@ -60,7 +60,6 @@ Greenland	faostat	GRL-1800-2025
 Guam	fao1952	GUM-1950-2025
 HAI	mueller-synthetic-n	HTI-1800-2025
 HON	mueller-synthetic-n	HND-1800-2025
-Indonesia	fao1952	IDN-1800-1945
 Indonesia Bali and Lombok	fao1952	IDN-BLB-1949-1951
 Indonesia Java and Madura	fao1952	IDN-JVM-1949-1951
 Indonesia Other islands	fao1952	IDN-OTH-1949-1951
@@ -69,7 +68,6 @@ Ivory Coast		CIV-1960-2025
 Korea South	fao1952	KRS-1910-1945
 Lao		LAO-1954-2025
 Libya	fao1952	LBY-1943-1949
-Libya	fao1952	LBY-1950-1951
 Libya Cyrenaica	fao1952	CYR-1949-1951
 Libya Tripolitania	fao1952	TRP-1943-1951
 Liechtenstein	faostat	LIE-1800-2025
@@ -170,13 +168,11 @@ israel		ISR-1948-1967
 israel/palestine		PAL-1920-1948
 italy		ITA-1870-1919
 italy	iia	SAR-1800-1860
-japan		JPN-1945-1952
 micronesia (federated states of)	iia	CAR-1920-1945
 neth west indies	fao1952	ANT-1816-1960
 netherlands antilles		ANT-1816-1960
 netherlands w indies	fao1952	ANT-1816-1960
 netherlands west indies	fao1952	ANT-1816-1960
-niger		NER-1911-1922
 pacific is us trust	fao1952	TTPI-1947-1994
 palau	iia	GCAR-1899-1914
 panama canal zone	fao1952	CZN-1903-1979
@@ -200,10 +196,8 @@ south africa	iia	ZAF-1910-2025
 southern rhodesia		ZWE-1900-1953
 sudan		SDN-2011-2025
 sudan		SUD-1956-2011
-suriname	mitchell	SUR-1886-1954
 tanganyika		TAN-1922-1964
 tanzania		TAN-1922-1964
-turkey		TUR-1913-1914
 union of south africa		ZAF-1910-2025
 united states and dependent territories	fao1952	USA-1867-1959
 united states of america		USA-1800-1803
@@ -212,9 +206,7 @@ united states of america		USA-1959-2025
 united states of america	iia	USA-1800-1803
 united states of america	iia	USA-1803-1848
 united states of america	iia	USA-1959-2025
-viet nam		VNM-1887-1954
 viet nam		VNM-1975-2025
 yemen	iia	MKY-1918-1962
-yugoslavia		F248-1920-1947
 zambia	mitchell	NRH-1953-1964
 zimbabwe		SRH-1953-1964

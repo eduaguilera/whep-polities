@@ -398,7 +398,8 @@ indochina,,,,FID-1887-1954,French Indochina,high,259
 indochina cambodia,,1907,1953,KHM-1907-1953,,medium,
 indochina laos,,1936,1951,LAO-1893-1953,Laos (1893-1953),high,59
 indochina viet nam,,1887,1954,FID-1887-1954,,medium,
-Indonesia,fao1952,1800,1945,IDN-1800-1945,Dutch East Indies,high,23
+Indonesia,fao1952,1800,1944,IDN-1800-1945,Dutch East Indies,high,23
+Indonesia,fao1952,1945,1945,IDN-1945-1949,Dutch East Indies,high,
 Indonesia,faostat,1961,1968,IDN-1949-1969,Indonesia (1949-1969),high,251399
 Indonesia,faostat,1969,1975,IDN-1969-1976,Indonesia (1969-1976),high,251399
 Indonesia,faostat,1976,2001,IDN-1976-2002,Indonesia (1976-2002),high,251399
@@ -437,7 +438,8 @@ Italy,lassaletta-grassland-share,1961,2009,ITA-1919-2025,Italy,high,
 Ivory Coast,,1960,2025,CIV-1960-2025,Côte d'Ivoire,high,0
 Jamaica,faostat,1961,2024,JAM-1800-2025,Jamaica,high,199570
 Jamaica,lassaletta-grassland-share,1961,2009,JAM-1800-2025,Jamaica,high,
-japan,,1945,1952,JPN-1945-1952,Japan (occupied),high,
+japan,,1945,1951,JPN-1945-1952,Japan (occupied),high,
+japan,,1952,1952,JPN-1952-2025,Japan (occupied),high,
 Japan,fao1952,1895,1944,JPN-1895-1945,Japanese Empire,high,57
 Japan,faostat,1961,2024,JPN-1952-2025,Japan,high,254381
 Japan,lassaletta-grassland-share,1961,2009,JPN-1952-2025,Japan,high,
@@ -468,7 +470,8 @@ Lesotho,lassaletta-grassland-share,1966,2009,LSO-1966-2025,Lesotho,high,
 Liberia,faostat,1961,2024,LBR-1847-2025,Liberia,high,135600
 Liberia,lassaletta-grassland-share,1961,2009,LBR-1847-2025,Liberia,high,
 Libya,fao1952,1943,1949,LBY-1943-1949,Libya (1943-1949),high,
-Libya,fao1952,1950,1951,LBY-1950-1951,Libya under UN Transitional Administration (1950-1951),high,
+Libya,fao1952,1950,1950,LBY-1950-1951,Libya under UN Transitional Administration (1950-1951),high,
+Libya,fao1952,1951,1951,LBY-1951-2025,Libya under UN Transitional Administration (1950-1951),high,
 Libya,faostat,1961,2024,LBY-1951-2025,Libya,high,81391
 Libya,lassaletta-grassland-share,1961,2009,LBY-1951-2025,Libya,high,
 Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high,8
@@ -563,7 +566,8 @@ New Zealand,faostat,1961,2024,NZL-1840-2025,New Zealand,high,240961
 New Zealand,lassaletta-grassland-share,1961,2009,NZL-1840-2025,New Zealand,high,
 Nicaragua,faostat,1961,2023,NIC-1800-2025,Nicaragua,high,208187
 Nicaragua,lassaletta-grassland-share,1961,2009,NIC-1800-2025,Nicaragua,high,
-niger,,1911,1922,NER-1911-1922,Niger (Military Territory),high,
+niger,,1911,1921,NER-1911-1922,Niger (Military Territory),high,
+niger,,1922,1922,NER-1922-1947,Niger (Military Territory),high,
 Niger,faostat,1961,2024,NER-1960-2025,Niger,high,180039
 Niger,lassaletta-grassland-share,1961,2009,NER-1960-2025,Niger,high,
 Nigeria,faostat,1961,2024,NGA-1961-2025,Nigeria,high,191847
@@ -732,7 +736,8 @@ Suriname,faostat,1961,1974,SUR-1954-1975,Surinam (Autonomous),high,152943
 Suriname,faostat,1975,2024,SUR-1975-2025,Suriname,high,152943
 Suriname,lassaletta-grassland-share,1961,1974,SUR-1954-1975,Surinam (Autonomous),high,
 Suriname,lassaletta-grassland-share,1975,2009,SUR-1975-2025,Suriname,high,
-suriname,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,84
+suriname,mitchell,1886,1953,SUR-1886-1954,Dutch Guiana,high,84
+suriname,mitchell,1954,1954,SUR-1954-1975,Dutch Guiana,high,
 Swaziland,faostat,1961,2024,SWZ-1894-2025,Eswatini,high,180663
 Swaziland,lassaletta-grassland-share,1961,2009,SWZ-1894-2025,Eswatini,high,
 Sweden,faostat,1961,2024,SWE-1905-2025,Sweden,high,245456
@@ -771,7 +776,8 @@ Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of 
 Tunisia,faostat,1961,2024,TUN-1881-2025,Tunisia,high,226193
 Tunisia,lassaletta-grassland-share,1961,2009,TUN-1881-2025,Tunisia,high,
 Turkey,,,,TUR-1920-2025,Türkiye,high,323
-turkey,,1913,1914,TUR-1913-1914,Türkiye (1913-1914),high,
+turkey,,1913,1913,TUR-1913-1914,Türkiye (1913-1914),high,
+turkey,,1914,1914,TUR-1914-1918,Türkiye (1913-1914),high,
 Turkmenistan,faostat,1992,2024,TKM-1991-2025,Turkmenistan,high,63651
 Tuvalu,faostat,1961,2024,TUV-1800-2025,Tuvalu,high,24864
 Türkiye,faostat,1961,2024,TUR-1920-2025,Türkiye (1920-2025),high,258437
@@ -829,7 +835,8 @@ Uzbekistan,faostat,1992,2024,UZB-1991-2025,Uzbekistan,high,94197
 Vanuatu,faostat,1961,2024,VUT-1800-2025,Vanuatu,high,132942
 Venezuela (Bolivarian Republic of),faostat,1961,2024,VEN-1821-2025,Venezuela,high,232770
 Venezuela (Bolivarian Republic of),lassaletta-grassland-share,1961,2009,VEN-1821-2025,Venezuela,high,
-viet nam,,1887,1954,VNM-1887-1954,,high,
+viet nam,,1887,1953,VNM-1887-1954,,high,
+viet nam,,1954,1954,F237-1954-1975,,high,
 viet nam,,1955,1974,RVN-1954-1975,Republic of Vietnam,high,
 viet nam,,1975,2025,VNM-1975-2025,,medium,
 Viet Nam,faostat,1961,1974,F237-1954-1975,Vietnam (combined reporting: DRV and RVN),high,170522
@@ -854,7 +861,8 @@ yugoslav sfr,juan,1909,1912,SER-1878-1913,Kingdom of Serbia (1878-1913),medium,
 yugoslav sfr,juan,1913,1913,SER-1913-1918,Kingdom of Serbia post-Balkan Wars,medium,
 Yugoslav SFR,lassaletta-grassland-share,1961,1990,F248-1947-1991,Yugoslavia (1947-1991),high,
 Yugoslav SFR,lassaletta-grassland-share,1991,1991,F248-1991-1992,Yugoslavia (1991-1992),high,
-yugoslavia,,1920,1947,F248-1920-1947,Yugoslavia (1920-1947),high,
+yugoslavia,,1920,1946,F248-1920-1947,Yugoslavia (1920-1947),high,
+yugoslavia,,1947,1947,F248-1947-1991,Yugoslavia (1920-1947),high,
 Zambia,faostat,1961,1963,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),high,199421
 Zambia,faostat,1964,2024,ZMB-1964-2025,Zambia,high,199421
 Zambia,lassaletta-grassland-share,1961,1963,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),high,
