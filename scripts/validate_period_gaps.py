@@ -72,9 +72,14 @@ BASELINE = {
     #
     # THE HOLE IT REPRESENTED IS STILL THERE and this check can no longer see it.
     # MOR-1800-1904 ends 1903, MAR-1911-1958 begins 1911, so 1904-1910 is covered by
-    # nothing -- while the "French Morocco" alias claims from 1904 on 261 observed rows.
-    # It is now a CROSS-FAMILY hole, and this check is per-family by construction.
-    # Exactly the blind spot issue 82 is about.
+    # nothing. It is now a CROSS-FAMILY hole, and this check is per-family by
+    # construction. Exactly the blind spot issue 82 is about.
+    #
+    # Sharpened 2026-08-05 after joining against the observations: the "French Morocco"
+    # alias claims from 1904 and carries 261 rows, which I first cited here as if they
+    # landed in the hole. They do not -- every one is 1937-1951, inside MAR-1911-1958.
+    # The hole routes ZERO rows today. Real as coverage, empty in practice, and the
+    # alias's 1904 records when French influence began rather than where data is.
     ("SEN-1886-1959", "SEN-1960-2025"),
     # SER pair removed 2026-08-05: SER-2006-2008 is retired (a duplicate of
     # SRB-2006-2008, issue 43), so family SER ends at SER-1918-1945 and has no
