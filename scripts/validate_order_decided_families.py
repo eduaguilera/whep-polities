@@ -83,14 +83,15 @@ BASELINE_ORDERED = {
     ("LBY", ("LBY-1943-1949", "TRP-1943-1951")):
         "Tripolitania under British military administration alongside the all-Libya row, "
         "BOTH typed `national`, so the filter leaves two. 23 rows pinned by alias.",
-    ("LBY", ("CYR-1949-1951", "TRP-1943-1951")):
-        "Cyrenaica and Tripolitania simultaneously in 1949, both `national`. This is the set "
-        "that sent 20 Tripolitania rows to Cyrenaica. I first wrote this key with "
-        "LBY-1943-1949 as a third member and the gate rejected it: end_year is EXCLUSIVE, so "
-        "the all-Libya row is NOT live in 1949. A reminder that the convention has to be "
-        "applied, not recalled -- reading that end year as inclusive is filed as issue 131.",
-    ("LBY", ("CYR-1949-1951", "LBY-1950-1951", "TRP-1943-1951")):
-        "the 1950 UN transitional year, same three-way shape.",
+
+    ("LBY", ("CYR-1949-1951", "LBY-1949-1951", "TRP-1943-1951")):
+        "1949-1950: Cyrenaica, Tripolitania and the all-Libya UN transitional row, all three "
+        "`national`. This is the set that sent 20 Tripolitania rows to Cyrenaica, and 28 rows "
+        "labelled `Libya` to Cyrenaica as well. The 1949 member of this set only exists because "
+        "LBY-1949-1951 was moved from a 1950 start on 2026-08-05 -- before that, NO all-Libya row "
+        "was live in 1949 and this gate saw a two-member set. Every observed label is now pinned "
+        "by alias. NOTE that Fezzan, the third occupied territory, is absent from the database "
+        "entirely, so this set is not a partition of Libya.",
     ("PNG", ("PAPNG-1920-1949", "TNGU-1920-1949", "TPAP-1906-1949")):
         "the Territory of Papua and the Territory of New Guinea were administered separately "
         "1920-1949, and PAPNG-1920-1949 is the combined reporting unit over both. None is "
