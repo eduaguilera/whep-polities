@@ -49,7 +49,8 @@ BASELINE = {
     ("BLX-1850-1999", "BLX-1921-1999"),
     ("PER-1825-1884", "PER-1825-1909"),
     ("PER-1825-1909", "PER-1884-1909"),
-    ("MNE-1913-1915", "MNE-1913-1918"),
+    # MNE-1913-1915 / MNE-1913-1918 removed 2026-08-05: the 1913-1915 row is retired as
+    # a duplicate, so the pair no longer overlaps. Issue 62.
 }
 
 CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
