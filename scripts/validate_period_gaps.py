@@ -76,7 +76,14 @@ BASELINE = {
     # It is now a CROSS-FAMILY hole, and this check is per-family by construction.
     # Exactly the blind spot issue 82 is about.
     ("SEN-1886-1959", "SEN-1960-2025"),
-    ("SER-1918-1945", "SER-2006-2008"),
+    # SER pair removed 2026-08-05: SER-2006-2008 is retired (a duplicate of
+    # SRB-2006-2008, issue 43), so family SER ends at SER-1918-1945 and has no
+    # consecutive pair to gap.
+    #
+    # SAME BLIND SPOT AS THE MOR PAIR ABOVE. The 1945-2006 hole is still there --
+    # SER-1918-1945 ends 1944, SRB-2006-2008 begins 2006, and no polity covers the
+    # Serbian republic within SFR Yugoslavia in between. It is now a CROSS-FAMILY
+    # hole (SER -> SRB) and this check is per-family, so it cannot see it. Issue 82.
     ("SYR-1922-1945", "SYR-1946-1967"),
     ("TCD-1912-1919", "TCD-1920-1960"),
     ("VNM-1887-1954", "VNM-1975-2025"),

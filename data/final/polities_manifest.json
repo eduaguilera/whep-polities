@@ -11,11 +11,11 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "d4eac0393a998fe35d451b05b6c3f0b1c9c55ef2fe4ebe097fac7af0579d2339",
+ "identity_sha256": "29021215365d5ec65819b99b20dccfd115c9fa11dbd1a1feaa5134711b528a7c",
  "counts": {
   "total": 740,
-  "live": 710,
-  "dead": 30
+  "live": 709,
+  "dead": 31
  },
  "dead_status": [
   "retired",
@@ -51,7 +51,8 @@
   "PRY-1811-1938",
   "ROU-1940-2025",
   "RSFSR-1917-1991",
-  "SER-1816-1913"
+  "SER-1816-1913",
+  "SER-2006-2008"
  ],
  "claims_polygon_status": [
   "assigned",
@@ -754,7 +755,6 @@
   "SER-1878-1913",
   "SER-1913-1918",
   "SER-1918-1945",
-  "SER-2006-2008",
   "SGP-1946-1963",
   "SGP-1963-1965",
   "SGP-1965-2025",

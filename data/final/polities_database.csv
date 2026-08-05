@@ -400,7 +400,7 @@ KNA-1800-2025,Saint Kitts and Nevis,1800,2025,national,KNA,60,North America,draf
 KOR-1800-1945,Korea (to 1945),1800,1945,national,KOR,730,Asia,draft,2026-04-17,constructed,KOR-1800-1945,,assigned,,,KOR-1945-1948
 KOR-1945-1948,Korea (occupied),1945,1948,national,KOR,730,Asia,draft,2026-04-16,cshapes-2.0,730,1910,assigned,,KOR-1910-1945,KOR-1948-2025; PRK-1948-2025
 KOR-1948-2025,South Korea,1948,2025,national,KOR,732,Asia,draft,2026-04-12,cshapes-2.0,732,1948,assigned,,,
-KOS-2008-2025,Kosovo,2008,2025,national,KOS,347,Europe,draft,2026-04-12,cshapes-2.0,347,2008,assigned,,SER-2006-2008,
+KOS-2008-2025,Kosovo,2008,2025,national,KOS,347,Europe,draft,2026-04-12,cshapes-2.0,347,2008,assigned,,SRB-2006-2008,
 KRS-1910-1945,Korea South (within Japanese Chosen),1910,1945,colonial,KOR,,Asia,draft,2026-06-26,cshapes-2.0,732,1948,assigned,100210,,KOR-1948-2025
 KSJ-1800-1911,Kingdom of Kasanje,1800,1911,national,,,Africa,draft,2026-04-13,paine-2024,Kasanje,,assigned,,,AGO-1816-2025
 KWT-1800-2025,Kuwait,1800,2025,national,KWT,690,Asia,draft,2026-04-12,cshapes-2.0,690,1961,assigned,,,
@@ -604,7 +604,7 @@ SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,E
 SAR-1800-1860,Sardinia,1800,1860,national,SAR,338,Europe,draft,2026-04-12,cliopatria,Kingdom of Sardinia,1815,assigned,,,ITA-1861-1919
 SAU-1924-2025,Saudi Arabia,1924,2025,national,SAU,670,Asia,draft,2026-04-12,cshapes-2.0,670,1935,assigned,,OTT-1908-1912,
 SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,national,,265,Europe,draft,2026-06-26,cshapes-2.0,265,1949,assigned,109272,DEU-1938-1945,F77-1949-1990
-SCG-1992-2006,Serbia and Montenegro,1992,2006,national,SCG,,Europe,draft,2026-04-12,cshapes-2.0,345,1992,assigned,,F248-1991-1992,SER-2006-2008; MNE-2006-2025
+SCG-1992-2006,Serbia and Montenegro,1992,2006,national,SCG,,Europe,draft,2026-04-12,cshapes-2.0,345,1992,assigned,,F248-1991-1992,SRB-2006-2008; MNE-2006-2025
 SDN-2011-2025,Sudan,2011,2025,national,SDN,625,Africa,draft,2026-04-12,cshapes-2.0,625,2011,assigned,,SUD-1956-2011,
 SEN-1854-1886,Senegal (colony),1854,1886,national,SEN,,Africa,draft,2026-04-16,cshapes-2.0,433,1886,assigned,,,SEN-1886-1959
 SEN-1886-1959,Senegal (1886-1959),1886,1959,national,SEN,433,Africa,draft,2026-04-13,cshapes-2.0,433,1886,assigned,,CAY-1800-1886; BND-1800-1887; FTT-1800-1862; WLO-1800-1855; SNE-1800-1887; JOL-1800-1890; SLM-1800-1887,SEN-1960-2025
@@ -613,8 +613,8 @@ SER-1816-1878,Principality of Serbia (1816-1878),1816,1878,national,SER,,Europe,
 SER-1816-1913,Serbia (1816-1913),1816,1913,national,SER,,Europe,retired,2026-04-12,cshapes-2.0,340,1886,assigned,,OTT-1800-1886,SER-1913-1918
 SER-1878-1913,Kingdom of Serbia (1878-1913),1878,1913,national,SER,345,Europe,draft,2026-07-01,cshapes-2.0,340,1886,assigned,48000,SER-1816-1878,SER-1913-1918
 SER-1913-1918,Serbia (1913-1918),1913,1918,national,SER,,Europe,draft,2026-04-12,cshapes-2.0,345,1918,assigned,,SER-1878-1913,F248-1918-1919
-SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,subnational,SER,,Europe,draft,2026-07-01,composed-estimate,,1920,unassigned,88000,SER-1913-1918,SER-2006-2008
-SER-2006-2008,Serbia (2006-2008),2006,2008,national,SER,,Europe,draft,2026-04-12,cshapes-2.0,345,1992,assigned,,SCG-1992-2006,SRB-2008-2025; KOS-2008-2025
+SER-1918-1945,Serbia within Yugoslavia (1918-1945),1918,1945,subnational,SER,,Europe,draft,2026-07-01,composed-estimate,,1920,unassigned,88000,SER-1913-1918,SRB-2006-2008
+SER-2006-2008,Serbia (2006-2008),2006,2008,national,SER,,Europe,retired,2026-04-12,cshapes-2.0,345,1992,assigned,,SCG-1992-2006,SRB-2006-2008
 SGP-1946-1963,Singapore (Crown Colony),1946,1963,colonial,SGP,830,Asia,draft,2026-06-25,cshapes-2.0,830,1953,assigned,544.72,GBM-1895-1946,MYS-1963-1965; SGP-1965-2025
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,subnational,SGP,,Asia,draft,2026-07-02,cshapes-2.0,830,1962,assigned,547,SGP-1946-1963,SGP-1965-2025
 SGP-1965-2025,Singapore,1965,2025,national,SGP,830,Asia,draft,2026-04-12,cshapes-2.0,830,1965,assigned,,,
@@ -635,8 +635,8 @@ SNW-1814-1905,"Sweden-Norway (Union, 1814-1905)",1814,1905,national,SNW,380,Euro
 SOK-1804-1903,Sokoto Caliphate,1804,1903,national,,,Africa,draft,2026-04-15,paine-2024,Sokoto,,assigned,,GOB-1800-1808,NNI-1899-1904
 SOM-1960-2025,Somalia,1960,2025,national,SOM,520,Africa,draft,2026-04-13,cshapes-2.0,520,1960,assigned,,,
 SPM-1816-2025,Saint Pierre and Miquelon,1816,2025,colonial,SPM,,North America,draft,2026-07-02,gadm-4.1-adm0,SPM,2024,proxy,242,,
-SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,2026-07-02,cshapes-2.0,340,2007,assigned,87745,SCG-1992-2006,SRB-2008-2025
-SRB-2008-2025,Serbia,2008,2025,national,SRB,345,Europe,reviewed,2026-04-12,cshapes-2.0,340,2006,assigned,,SER-2006-2008,
+SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,2026-07-02,cshapes-2.0,340,2007,assigned,87745,SCG-1992-2006,SRB-2008-2025; KOS-2008-2025
+SRB-2008-2025,Serbia,2008,2025,national,SRB,345,Europe,reviewed,2026-04-12,cshapes-2.0,340,2008,assigned,77251,SRB-2006-2008,
 SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,national,ZWE,552,Africa,draft,2026-06-24,cshapes-2.0,552,1953,assigned,390610,ZWE-1900-1953,ZWE-1964-1980
 SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,cshapes-2.0,626,2011,assigned,,SUD-1956-2011,
 STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
