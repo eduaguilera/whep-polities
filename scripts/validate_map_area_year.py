@@ -45,12 +45,12 @@ DB = os.path.join(REPO, "data/final/polities_database.csv")
 DEAD_STATUS = ("retired", "superseded")
 
 # (area_code, year) pairs known to have two live answers. See the module docstring.
-BASELINE = {
+BASELINE = frozenset({
     # area 240 year 1917 cleared 2026-08-05 by the Group A alias clip (issue 90): the earlier
     # alias stopped claiming 1917, which its successor covers. Left as a set with one entry
     # rather than emptied so a regression still names the pair.
     ("205", 1975),
-}
+})
 
 
 def live_polity_codes() -> set:

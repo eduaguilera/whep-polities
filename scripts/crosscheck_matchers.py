@@ -54,7 +54,7 @@ PUBLISHED = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
 # family ORDER decided. "Malaysia" 1961 resolved to BNB-1881-1963 (British North Borneo,
 # 72,557 km2). Retyping BNB and BSW to `colonial` and MASG to `aggregate` -- all three
 # accurate -- let the preference work, and the two matchers now agree.
-BASELINE_DIFFERENT = {237}
+BASELINE_DIFFERENT = frozenset({237})
 
 # Labels matchlib cannot resolve without the faostat alias, so an explicit route is
 # REQUIRED. One area, and it is genuinely nominal: the Yugoslav SFR chain sits under
@@ -73,7 +73,7 @@ BASELINE_DIFFERENT = {237}
 #
 # I also first guessed this set would be the four China components, assuming an aggregate
 # with no ISO3 would be the hard case. Those resolve fine.
-BASELINE_UNRESOLVED = {248}
+BASELINE_UNRESOLVED = frozenset({248})
 
 
 def main() -> int:

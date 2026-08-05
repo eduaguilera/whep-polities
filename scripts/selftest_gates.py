@@ -651,6 +651,45 @@ def check_every_gate_runs_in_ci() -> list:
     # claim in prose is exactly what goes stale. This caught the live-name-ambiguity gate,
     # which had a table row describing it but no mention of the script that runs it — so
     # it read as documented while being invisible to any structural check.
+    # EVERY BASELINE MUST BE A frozenset({...}), NOT A BARE {...}.
+    #
+    # A bare set literal is fine until it is EMPTIED, at which point `{}` is a DICT, and
+    # `set(observed) - BASELINE` raises TypeError. The gate then breaks precisely when the
+    # data becomes correct — the one moment nobody is expecting a failure, and the failure
+    # looks like a bug in the check rather than a success in the data.
+    #
+    # This is not hypothetical and it is not new. validate_spatial_containment has carried a
+    # comment explaining the trap since its KNOWN_DISCONTINUOUS was first emptied. On
+    # 2026-08-05 it bit validate_period_overlaps anyway, when retiring BLX-1921-1999 removed
+    # its last entry — the warning existed and had not been applied to the sibling. Checked
+    # structurally here so the next baseline cannot repeat it.
+    #
+    # Detected by AST rather than by regex: a first pass with a pattern misread
+    # `BASELINE_DIFFERENT = {237}` as empty, because the heuristic looked for quotes.
+    import ast
+    import glob as _glob
+    bare = []
+    for path in sorted(_glob.glob(os.path.join(REPO, "scripts", "*.py"))):
+        try:
+            tree = ast.parse(open(path, encoding="utf-8").read())
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Assign) or not isinstance(node.value, ast.Set):
+                continue
+            names = [getattr(t, "id", "") for t in node.targets]
+            if names and any(
+                names[0].startswith(p)
+                for p in ("BASELINE", "KNOWN", "TRACKED", "LEGITIMATE")
+            ):
+                bare.append(f"{os.path.basename(path)}:{names[0]}")
+    if bare:
+        problems.append(
+            f"{len(bare)} baseline constant(s) declared as a bare set literal, which "
+            f"becomes a DICT when emptied and raises TypeError on set arithmetic — use "
+            f"frozenset({{...}}): {bare}"
+        )
+
     readme = os.path.join(REPO, "README.md")
     if os.path.exists(readme):
         with open(readme, encoding="utf-8") as fh:
