@@ -67,7 +67,7 @@ BKN-1800-1897,Kingdom of Benin,1800,1897,national,,,Africa,draft,2026-04-15,pain
 BLI-1833-1960,British Leeward Islands Colony,1833,1960,colonial,BLI,,North America,draft,2026-06-26,gadm-4.1-adm0,gadm-union-ATG+KNA+MSR+DMA+VGB,,unassigned,1716,,ATG-1800-2025; KNA-1800-2025; MSR-1800-2025; DMA-1800-2025; VGB-1800-2025
 BLR-1991-2025,Belarus,1991,2025,national,BLR,370,Europe,reviewed,2026-04-12,cshapes-2.0,370,1991,assigned,,F228-1945-1991,
 BLX-1850-1999,Belgium-Luxembourg,1850,1999,aggregate,BLX,,Europe,draft,2026-06-11,reporting-areas,BLX-1850-1999,,assigned,,,
-BLX-1921-1999,Belgium-Luxembourg Economic Union,1921,1999,national,BEL,,Europe,draft,2026-06-25,constructed,BLX-1921-1999,,assigned,33223,,
+BLX-1921-1999,Belgium-Luxembourg Economic Union,1921,1999,aggregate,BEL,,Europe,draft,2026-06-25,constructed,BLX-1921-1999,,assigned,33223,,
 BLZ-1800-1886,Belize (to 1886),1800,1886,colonial,BLZ,80,North America,draft,2026-04-13,none,,,unassigned,,,BLZ-1886-1970
 BLZ-1800-2025,Belize,1800,2025,national,BLZ,80,North America,superseded,2026-04-13,cshapes-2.0,80,1886,assigned,,,BLZ-1800-1886; BLZ-1886-1970; BLZ-1970-1981; BLZ-1981-2025
 BLZ-1886-1970,British Honduras,1886,1970,colonial,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,22966,BLZ-1800-1886,BLZ-1970-1981
@@ -144,7 +144,7 @@ COD-1891-1894,Democratic Republic of the Congo (1891-1894),1891,1894,national,CO
 COD-1894-1910,Democratic Republic of the Congo (1894-1910),1894,1910,national,COD,,Africa,draft,2026-04-13,cshapes-2.0,490,1894,assigned,,COD-1891-1894,COD-1910-1960
 COD-1910-1960,DR Congo (1910-1960),1910,1960,national,COD,490,Africa,draft,2026-04-12,cshapes-2.0,490,1910,assigned,,COD-1894-1910,COD-1960-2025
 COD-1960-2025,Democratic Republic of the Congo,1960,2025,national,COD,490,Africa,reviewed,2026-04-12,cshapes-2.0,490,1960,assigned,,,
-CODRU-1922-1960,Belgian Congo and Ruanda-Urundi,1922,1960,national,COD,,Africa,draft,2026-06-25,constructed,CODRU-1922-1960,,assigned,2378962,,
+CODRU-1922-1960,Belgian Congo and Ruanda-Urundi,1922,1960,aggregate,COD,,Africa,draft,2026-06-25,constructed,CODRU-1922-1960,,assigned,2378962,,
 COG-1898-1900,Congo (1898-1900),1898,1900,national,COG,,Africa,draft,2026-04-15,cshapes-2.0,484,1886,assigned,,,COG-1900-1906
 COG-1900-1906,Congo (1900-1906),1900,1906,national,COG,,Africa,draft,2026-04-15,cshapes-2.0,484,1898,assigned,,,COG-1906-1912
 COG-1906-1912,Congo (1906-1912),1906,1912,national,COG,,Africa,draft,2026-04-13,cshapes-2.0,484,1900,assigned,,,COG-1912-1919
