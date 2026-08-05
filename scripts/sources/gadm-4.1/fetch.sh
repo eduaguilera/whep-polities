@@ -18,6 +18,12 @@ COUNTRIES=(
   # correct; the features were simply absent from this extract, so the build logged
   # 'feature not found' and attached nothing. See issue 59.
   USA JPN
+  # Added 2026-08-05: the remaining polygon gaps in issue 59 are GADM unions or a
+  # complement over these three. CAN-1800-1866 needs Ontario/Quebec/New Brunswick/
+  # Nova Scotia/PEI; PTIND-1816-1961 needs Goa/Daman/Diu and FRIN-1816-1954 needs
+  # Puducherry/Karikal/Mahe/Yanam; the three IDN-* rows need Java, Madura, Bali and
+  # Lombok. None of them can be built while the extract lacks the country.
+  CAN IND IDN
   DMA ESH ESP FJI FLK FRO FSM GIB GLP GRD GRL GUF GUM HMD IOT KIR KNA LCA
   LIE LUX MAF MCO MHL MNP MSR MTQ MYT NCL NFK NIU NRU PCN PLW PRI PSE PYF
   REU SGS SHN SJM SLB SMR SPM SWE SYC SXM TCA TKL TON TUV UMI VAT VCT VGB

@@ -142,7 +142,7 @@ sources:
   constructed:
     # Manual polygons (Antarctic sector claims, Uqair Protocol, point buffers).
     # Maintained as a single hand-edited GeoJSON file in this repo.
-    file: data/geodata/constructed/constructed.geojson
+    file: data/geodata/constructed/constructed.gpkg
     id_column: polity_code
     id_type: str
 

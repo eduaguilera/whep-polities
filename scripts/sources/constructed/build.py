@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build data/geodata/constructed/constructed.geojson from other fetched sources.
+Build data/geodata/constructed/constructed.gpkg from other fetched sources.
 
 Some WHEP polities have no single external-source polygon that matches their
 territorial extent. This script derives those polygons from other raw
@@ -15,12 +15,12 @@ Current entries:
 Add new entries by appending to the BUILDERS list below, with a function
 that returns an ogr.Geometry in WGS84 (lon,lat axis order).
 
-IMPORTANT — this script REWRITES constructed.geojson from scratch every run
+IMPORTANT — this script REWRITES constructed.gpkg from scratch every run
 (it unlinks the file, then writes exactly the features in BUILDERS). So:
   * EVERY polity whose wiki page sets `polygon_source: constructed` MUST have
     an entry in BUILDERS here. If it doesn't, a re-run silently drops its
     polygon and `scripts/build_database.py` then logs it as feature-not-found.
-  * NEVER hand-edit constructed.geojson directly — those edits are lost on the
+  * NEVER hand-edit constructed.gpkg directly — those edits are lost on the
     next run. The BUILDERS list is the single source of truth; this file is a
     derived artifact (gitignored). Add the recipe here instead.
 """
@@ -41,7 +41,13 @@ CROWNLANDS = (
     / "data/geodata/histogis-1860-habsburg/crownlands_1860"
     / "austrian_empire_adm2_crownlands_1860.shp"
 )
-OUT = REPO_ROOT / "data/geodata/constructed/constructed.geojson"
+# GeoPackage, not GeoJSON. GeoJSON carries a per-object size limit
+# (OGR_GEOJSON_MAX_OBJ_SIZE, default 200 MB of coordinates per feature) and adding
+# IDN-OTH-1949-1951 -- Indonesia minus Java minus Bali, tens of thousands of islands --
+# crossed it. The failure mode is the dangerous kind: ogr.Open() rejects the WHOLE
+# FILE, so every constructed polygon silently stops attaching, not just the large one.
+# A GeoPackage has no such limit and is what every other polygon source here uses.
+OUT = REPO_ROOT / "data/geodata/constructed/constructed.gpkg"
 
 
 def wgs84_lonlat() -> osr.SpatialReference:
@@ -296,6 +302,128 @@ def build_its_1908_1960() -> ogr.Geometry:
     wiki/polities/its-1908-1960.md. The row's data is 1924-1959.
     """
     return _difference(_cshapes2_feature(520, 1960), _cshapes2_feature(521, 1960))
+
+def build_can_1800_1866() -> ogr.Geometry:
+    """Canada pre-Confederation, 1800-1866 = the union of the five colonies that
+    became the Dominion, on GADM 4.1 adm1 boundaries.
+
+    The page recorded the recipe symbolically as `gadm-ON+QC+NB+NS+PE` against an
+    unregistered `gadm-composed-union` slug, so nothing built it. Resolved against
+    the fetched extract: Ontario CAN.9_1, Quebec CAN.11_1, New Brunswick CAN.4_1,
+    Nova Scotia CAN.7_1, Prince Edward Island CAN.10_1.
+
+    NOT REGISTERED in BUILDERS, on measurement. Modern provincial boundaries give
+    2,735,024 km2 against the page's 1,209,852 -- 126% over, because Ontario and
+    Quebec reach Hudson Bay while the 1866 Province of Canada stopped at the
+    Hudson's Bay Company's Rupert's Land. That is not a proxy, it is a different
+    territory. The recipe is kept for anyone who fetches a pre-Confederation
+    source; it should not ship against GADM.
+    """
+    return _union(
+        _gadm_adm1("CAN.9_1"),
+        _gadm_adm1("CAN.11_1"),
+        _gadm_adm1("CAN.4_1"),
+        _gadm_adm1("CAN.7_1"),
+        _gadm_adm1("CAN.10_1"),
+    )
+
+
+def build_ptind_1816_1961() -> ogr.Geometry:
+    """Portuguese India, 1816-1961 = Goa union Daman and Diu, on GADM 4.1 adm1.
+
+    The page names the components in `polygon_method` as
+    `composed-union-goa-daman-diu` and carries no `polygon_feature_id`, which is
+    why an earlier pass mistook it for having no recipe at all. Resolved: Goa
+    IND.10_1, and Daman and Diu IND.9_1 -- GADM carries those two as ONE feature,
+    so the union is of two features rather than three.
+
+    Excludes Dadra and Nagar Haveli (IND.8_1), which Portugal also held until 1954
+    but which the page does not name. Left out deliberately rather than added
+    silently.
+    """
+    return _union(_gadm_adm1("IND.10_1"), _gadm_adm1("IND.9_1"))
+
+
+def build_idn_blb_1949_1951() -> ogr.Geometry:
+    """Bali and Lombok, 1949-1951 = Bali union Nusa Tenggara Barat, GADM 4.1 adm1.
+
+    CORRECTS the page's `polygon_feature_id`, which read `IDN.1_1+IDN.20_1`.
+    IDN.1_1 is ACEH, on northern Sumatra, some 3,000 km from Bali. Bali is
+    IDN.2_1. The Lombok half was right: Lombok lies in Nusa Tenggara Barat
+    (IDN.20_1), though that province also contains Sumbawa, so the polygon
+    overstates a unit named for Lombok alone.
+
+    NOT REGISTERED in BUILDERS, on measurement: 25,261 km2 against the page's
+    10,505 -- 140% over, and Sumbawa is why. GADM adm1 cannot separate Lombok from
+    Nusa Tenggara Barat, so building this to the page's own figure needs adm2. The
+    corrected Bali id is kept here so the work is not lost.
+    """
+    return _union(_gadm_adm1("IDN.2_1"), _gadm_adm1("IDN.20_1"))
+
+
+def build_idn_jvm_1949_1951() -> ogr.Geometry:
+    """Java and Madura, 1949-1951 = the six modern provinces of Java island.
+
+    CORRECTS the page's `polygon_feature_id`, which read
+    `IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1`. Three of those are Java (Jakarta Raya,
+    Jawa Tengah, Jawa Timur) but IDN.29_1 is SULAWESI UTARA, a different island
+    entirely; and the list omitted half of Java.
+
+    Java island is Banten IDN.4_1, Jakarta Raya IDN.7_1, Jawa Barat IDN.9_1, Jawa
+    Tengah IDN.10_1, Yogyakarta IDN.33_1 and Jawa Timur IDN.11_1. Madura needs no
+    separate feature: it is part of Jawa Timur.
+
+    Banten and Yogyakarta are included because the unit is named for the ISLAND.
+    Banten was part of West Java until 2000 and Yogyakarta was a Special Region,
+    so neither existed as a separate province in 1949-1951, but both are on Java
+    and their territory was inside the reporting unit.
+
+    VERIFIED: 132,720 km2 against the page's own 132,000 -- 0.5%, which is what
+    confirms this province set rather than the four the page listed.
+
+    NOT REGISTERED in BUILDERS, and not because the polygon is wrong. Attaching it
+    makes audit_family_shadowing fail against NNG-1949-1963 at a 3.1x ratio, on a
+    TIED type rank, because NNG carries iso3 IDN although it was Dutch until 1963.
+    Java and West Papua are geographically disjoint, so that is a false positive
+    driven by NNG's iso3, not a territorial error here. It is entangled with the
+    IDN-OTH question -- see the issue -- so all three 1949-1951 rows want settling
+    together rather than one at a time.
+    """
+    return _union(
+        _gadm_adm1("IDN.4_1"),
+        _gadm_adm1("IDN.7_1"),
+        _gadm_adm1("IDN.9_1"),
+        _gadm_adm1("IDN.10_1"),
+        _gadm_adm1("IDN.33_1"),
+        _gadm_adm1("IDN.11_1"),
+    )
+
+
+def build_idn_oth_1949_1951() -> ogr.Geometry:
+    """Other islands of Indonesia, 1949-1951 = Indonesia minus Java-and-Madura
+    minus Bali-and-Lombok, which is what the page's `IDN-complement-JVM-BLB` says.
+
+    Built as a complement so the three 1949-1951 rows partition Indonesia exactly:
+    any area not in the other two lands here, with no gap and no double count. That
+    property is why it must be derived rather than enumerated -- listing the other
+    27 provinces by hand would break the partition the moment GADM re-splits one.
+
+    NOT REGISTERED in BUILDERS. As written it is territorially WRONG for the period:
+    modern Indonesia includes Papua, but Netherlands New Guinea stayed Dutch until
+    1963, so subtracting only Java and Bali leaves 410,399 km2 of Dutch territory
+    inside a 1949-1951 Indonesian row. audit_family_shadowing caught it, flagging
+    NNG-1949-1963 against this row at a 4.2x ratio.
+
+    The fix is to subtract NNG-1949-1963 as well, but the page's own
+    polygon_area_km2 of 1,757,495 also appears to include Papua, so the recorded
+    figure needs settling with the territory. Left disabled pending that.
+    """
+    return _difference(
+        _gadm_adm0("IDN"),
+        build_idn_jvm_1949_1951(),
+        build_idn_blb_1949_1951(),
+    )
+
 
 # (polity_code, polity_name, builder-callable, provenance note)
 def build_btl_1920_1957() -> ogr.Geometry:
@@ -615,6 +743,16 @@ BUILDERS = [
         "extent; overstates 1908-1924 by ~94,400 km2 — see "
         "wiki/polities/its-1908-1960.md.",
     ),
+    (
+        "PTIND-1816-1961",
+        "Portuguese India (Estado da India Portuguesa)",
+        build_ptind_1816_1961,
+        "Union of GADM 4.1 adm1 Goa IND.10_1 and Daman and Diu IND.9_1, which GADM "
+        "carries as one feature. Components named by the page's polygon_method "
+        "composed-union-goa-daman-diu; it had no polygon_feature_id, which is why "
+        "an earlier pass read it as having no recipe. Excludes Dadra and Nagar "
+        "Haveli, held until 1954 but not named by the page.",
+    ),
 ]
 
 
@@ -623,7 +761,7 @@ def main() -> int:
     if OUT.exists():
         OUT.unlink()
 
-    drv = ogr.GetDriverByName("GeoJSON")
+    drv = ogr.GetDriverByName("GPKG")
     ds = drv.CreateDataSource(str(OUT))
     srs = wgs84_lonlat()
     layer = ds.CreateLayer("constructed", srs, ogr.wkbMultiPolygon)
