@@ -58,6 +58,7 @@ python3 scripts/write_label_alias_map.py --check
 python3 scripts/update_wiki_index.py --check
 
 # provenance and internal consistency
+python3 scripts/validate_schema_contract.py
 python3 scripts/validate_citations.py
 python3 scripts/validate_constants.py
 python3 scripts/validate_aliases.py
