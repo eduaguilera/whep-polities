@@ -58,12 +58,15 @@ from __future__ import annotations
 
 import csv
 import os
+import re
 import sys
+import unicodedata
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATED_PATH = os.path.join(REPO, "data/final/source_stated_areas.csv")
 GPKG_PATH = os.path.join(REPO, "data/final/polities_database.gpkg")
 CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
+LEXICON_PATH = os.path.join(REPO, "data/final/source_label_lexicon.csv")
 
 TOLERANCE = 0.25  # scope detector, not a precision check
 
@@ -85,6 +88,59 @@ BASELINE = {
         "not hold, so part of the gap is the claimed-versus-controlled question of issue 159. "
         "Tracked with the long-single-vintage rows in issue 22, which names Paraguay.",
     # --- FAO additions, 2026-08-05. Each says WHICH SIDE is wrong, because the answer differs.
+    # --- surfaced 2026-08-05 when the French lexicon took coverage from 41 polities to 203.
+    # Each says which side is wrong. THIRTEEN of these are scope or vintage differences where our
+    # polygon is defensible; TWO are apparent polygon defects and are filed rather than accepted.
+    ("BSS-1884-1960", "iia"):
+        "OURS IS RIGHT. British Somaliland is 176,120 km2 and our polygon is 171,633. IIA's "
+        "497,500 is roughly Italian + British Somaliland together, so the label reaches the wrong "
+        "extent; FAO independently states 176,000, agreeing with us.",
+    ("CHN-1921-1932", "iia"):
+        "SCOPE. IIA states 11,080,000 km2 for China against our 7,496,467. China's own claimed "
+        "area including Outer Mongolia and Tibet was routinely given as ~11m in this period; the "
+        "1938 edition drops to 9,870,000 once Mongolia is excluded. Our polygon is effective "
+        "Republican control, which is the right basis for production data.",
+    ("CHN-1932-1945", "iia"): "same as CHN-1921-1932, against the 1932 edition's 11,084,000.",
+    ("DZA-1902-1919", "iia"):
+        "SCOPE, and the more interesting direction. IIA states 575,511 km2 -- NORTHERN Algeria, "
+        "the three civil departments -- while our polygon is 2,442,844 including the Southern "
+        "Territories. Both are 'Algeria'; only one is the basis French agricultural statistics "
+        "were collected on. A per-km2 denominator using our polygon understates by 4.2x for any "
+        "series the yearbook drew from the civil departments.",
+    ("ETH-1907-1936", "iia"):
+        "OURS IS RIGHT. Ethiopia is ~1,104,300 km2 and our polygon is 1,127,533. IIA's 900,000 "
+        "is a pre-survey estimate from before the interior was mapped.",
+    ("GBR-1800-1921", "iia"):
+        "THE LABEL IS NARROWER THAN THE POLITY. IIA's `royaume uni` states 230,616 km2, which is "
+        "GREAT BRITAIN without Ireland. Our 313,550 includes all of Ireland, which is correct for "
+        "the United Kingdom of 1800-1921. Ours is right; the label needs a separate GB row if any "
+        "data actually arrives under it.",
+    ("GKM-1884-1912", "iia"):
+        "VINTAGE. IIA states 790,000 km2, which is German Kamerun AFTER the 1911 Neukamerun "
+        "cession from French Equatorial Africa; our 510,422 is the pre-1911 colony. The row spans "
+        "1884-1912, so both are inside it and the polygon represents most of the span.",
+    ("GRC-1881-1913", "iia"):
+        "PERIOD MISMATCH IN THE SOURCE, not in us. IIA's 1925 edition states 119,050 km2 under "
+        "the data year 1913 -- post-Balkan-Wars Greece -- while this row ends in 1913 and covers "
+        "the 63,211 km2 kingdom. Our 63,612 is right for the row. The yearbook is labelling a "
+        "1913 column with the territory Greece held after the treaties of that year.",
+    ("IRQ-1921-1932", "iia"):
+        "OURS IS RIGHT. Iraq is 438,317 km2 and our polygon is 436,200. IIA's 336,379 predates "
+        "the 1926 settlement of the Mosul vilayet boundary with Turkey.",
+    ("ITS-1908-1960", "iia"):
+        "OURS IS CLOSER. Italian Somaliland is ~502,000 km2; our 464,286 against IIA's 357,000. "
+        "The IIA figure predates the 1925 Jubaland transfer from Kenya.",
+    ("MAN-1932-1945", "iia"):
+        "SCOPE. IIA states 1,303,143 km2 for Manchukuo, which includes Jehol and the Inner "
+        "Mongolian leagues; our 791,708 is the three north-eastern provinces. build_man_1932_1945() "
+        "documents that choice, and this is the first external evidence of what it costs.",
+    # GRL-1800-2025 was baselined here and the gate removed it: the digit screen drops IIA's
+    # Greenland statements before they reach the comparison. Keep the reasoning, because it is the
+    # counter-example to the screen's own premise. IIA states 88,100 km2 in the early editions and
+    # 313,000 / 341,700 later, for an island of 2,166,000. Those are ICE-FREE area estimates,
+    # growing as the coast was surveyed -- a DIFFERENT QUANTITY, not a lost digit. A ~10x outlier
+    # can be either, and the screen cannot tell them apart; it only stops the outlier widening the
+    # accepted band, which is right in both cases but for different reasons.
     ("F249-1918-1990", "fao"):
         "SCOPE MISMATCH, not an error. FAO's `Yemen` for 1947 is 195,000 km2 -- NORTH Yemen "
         "alone -- while F249-1918-1990 is the combined YAR + PDR reporting unit at 423,668. The "
@@ -113,6 +169,20 @@ BASELINE = {
         "territory and the Viet Minh the rest, so a survey covering 225,000 km2 is plausible as "
         "the area actually enumerated. Cross-checking two sources is what makes this readable as "
         "a coverage difference rather than a polygon error.",
+    ("EGY-1899-1925", "iia"):
+        "SCOPE, verified by containment rather than assumed. Our polygon is 1,517,144 km2 against "
+        "IIA's 1,027,996 and a modern Egypt of 1,001,450 -- but Cairo, Aswan and Sinai are inside "
+        "it while Wadi Halfa, Khartoum and Port Sudan are OUTSIDE, so it is not silently carrying "
+        "Sudan. The extra ~500,000 km2 is the Libyan Desert: Egypt's western boundary with "
+        "Cyrenaica was undefined until 1925 and CShapes encodes the maximal claim. IIA states the "
+        "administered territory, which is the basis its agricultural figures were collected on.",
+    ("SMO-1912-1956", "iia"):
+        "SCOPE, and OUR POLYGON IS ARGUABLY THE MORE COMPLETE. 52,792 km2 in TWO parts, bounds "
+        "27.67-35.92N: the northern zone (Tetouan and Nador inside) plus the Tarfaya strip in the "
+        "far southwest. Spanish Morocco did include that Southern Protectorate, so the union is "
+        "right. IIA's 21,800 is the northern zone alone, matching the ~20,948 km2 usually quoted "
+        "for it. Anyone using Spanish Morocco as a denominator needs to know which of the two the "
+        "numerator came from.",
     ("SLV-1821-2025", "fao"):
         "EXTRACTION DAMAGE, visible in the label itself: the row is `EI Salvador`, an OCR misread "
         "of `El`. The stated 34,130 km2 is 62% above El Salvador's 21,041, so the number is as "
@@ -135,6 +205,44 @@ BASELINE = {
         "The Chaco War is fought across this row's span, so the stated figure is a claim under "
         "active dispute -- but the polygon does not move at all, which is the issue 22 problem.",
 }
+
+
+
+# The IIA tables are in FRENCH, and 708 of 785 labels resolved to nothing, so the check reached
+# only 41 polities on its first run. `data/final/source_label_lexicon.csv` maps a normalised
+# French (or OCR-damaged) form to an English label that `matchlib` can resolve.
+#
+# DELIBERATELY NOT ALIASES. These labels never appear in production data -- layer B's IIA rows
+# arrive already translated -- so putting 180 French rules into applied_aliases.csv would inflate
+# the published label_alias_map.csv with routes nothing uses. The lexicon serves this reference
+# table only.
+#
+# The normaliser also strips a trailing nationality qualifier (`TUNISIE french`,
+# `AUSTRALIE british`) and repairs OCR hyphenation across a line break, which is why several
+# variants collapse onto one form.
+_NATIONALITY = re.compile(
+    r"\b(british|french|portuguese|german|spanish|italian|belgian|dutch|japanese|american"
+    r"|fr|br|it|sp|port|angl)\b"
+)
+
+
+def normalise_label(raw: str) -> str:
+    text = unicodedata.normalize("NFKD", str(raw)).encode("ascii", "ignore").decode().lower()
+    text = re.sub(r"-\s+", "", text)          # OCR hyphenation across a line break
+    text = _NATIONALITY.sub("", text)
+    text = re.sub(r"[^a-z0-9: ]", " ", text)
+    return re.sub(r"\s+", " ", text).strip(" :")
+
+
+def load_lexicon() -> dict:
+    if not os.path.exists(LEXICON_PATH):
+        return {}
+    with open(LEXICON_PATH, encoding="utf-8") as fh:
+        return {
+            r["normalised_form"]: r["english_label"]
+            for r in csv.DictReader(fh)
+            if r.get("normalised_form") and r.get("english_label")
+        }
 
 
 def main() -> int:
@@ -167,6 +275,7 @@ def main() -> int:
         verbose=False,
     )
 
+    lexicon = load_lexicon()
     with open(STATED_PATH, encoding="utf-8") as fh:
         statements = list(csv.DictReader(fh))
 
@@ -227,10 +336,16 @@ def main() -> int:
             stated = float(row["stated_area_km2"])
         except (KeyError, TypeError, ValueError):
             continue
-        try:
-            code = matcher.assign(row["label"], None, row["source"], year)[0]
-        except Exception:
-            code = None
+        code = None
+        for candidate in (row["label"], lexicon.get(normalise_label(row["label"]))):
+            if not candidate:
+                continue
+            try:
+                code = matcher.assign(candidate, None, row["source"], year)[0]
+            except Exception:
+                code = None
+            if code:
+                break
         if not code or code not in ours or stated <= 0:
             continue
         pairs[(code, row["source"], year)] = ours[code] / stated
@@ -299,7 +414,7 @@ def main() -> int:
             )
 
     within10 = sum(1 for r in pairs.values() if abs(r - 1) <= 0.10)
-    print(f"stated-area statements: {len(statements):,}")
+    print(f"stated-area statements: {len(statements):,}   lexicon entries: {len(lexicon)}")
     print(f"(polity, source, year) pairs resolved: {len(pairs)}   polities: {len({k[0] for k in pairs})}")
     print(f"  within 10%: {within10}   within {TOLERANCE:.0%}: "
           f"{sum(1 for r in pairs.values() if abs(r - 1) <= TOLERANCE)}")
