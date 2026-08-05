@@ -74,7 +74,12 @@ CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
 BASELINE_INVALID = {
     # Invalid in the raw Cliopatria GeoJSON, verified feature by feature. These also carry the
     # largest repair spreads, so each needs a decision on its page, not a sweep.
-    "FID-1887-1954": "cliopatria",
+    # FID-1887-1954 removed 2026-08-05: its polygon is now built by
+    # build_fid_1887_1954(), which clips Cliopatria's feature to mainland Indochina and
+    # UNIONS the kept parts. Two of them abutted along a line, which is what made the
+    # multipolygon invalid; unioning preserved the area exactly (753,049.331 km2) where
+    # make_valid would have dropped a 56.7 km2 part. First entry to leave this list, and
+    # it left by being fixed rather than re-explained.
     "IND-1800-1886": "cliopatria",
     "IRN-1800-1828": "cliopatria",
     "PAP-1800-1870": "cliopatria",
@@ -101,7 +106,7 @@ BASELINE_COUNT_BY_SOURCE = {
     "gadm-4.1-adm0": 19,
     "gadm-4.1-adm1": 4,
     "constructed": 5,
-    "cliopatria": 4,
+    "cliopatria": 3,
     "cshapes-europe": 3,
     "reporting-areas": 6,
 }

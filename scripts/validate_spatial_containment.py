@@ -76,6 +76,24 @@ LEGITIMATE_CONTAINERS = frozenset({
     # is the behaviour wanted — a newly built polygon that swallows its neighbours
     # has to be justified rather than assumed.
     "TTPI-1947-1994",
+    # French Indochina over Vietnam, Cambodia and Laos -- it held all three as
+    # constituent protectorates, so containment is the historical fact.
+    #
+    # WORTH READING BEFORE TRUSTING THIS GATE'S SILENCE ELSEWHERE: this container appeared
+    # only on 2026-08-05, when FID-1887-1954's polygon was rebuilt. Not because the polygon
+    # moved into Indochina -- the previous one already covered Hanoi and Saigon -- but because
+    # the previous one was INVALID, and `contains` on an invalid geometry is unreliable. A
+    # containment relationship involving six polities was invisible for as long as the
+    # geometry was broken, and nothing reported that this check was degraded. That is the
+    # concrete harm validate_polygon_validity exists to bound.
+    #
+    # The double-count risk here is REAL and not hypothetical: in 22 years (1930-1951) layer B
+    # carries data against both the whole and its parts, because Mitchell publishes an
+    # Indochina aggregate alongside per-territory series. Both are kept -- dropping either
+    # would discard published data -- so any spatial or area-weighted use must pick one level.
+    # Fixing the routing found 99 rows labelled `Indochina Viet Nam` that were landing on the
+    # WHOLE rather than on Vietnam, which would have summed a part into its own aggregate.
+    "FID-1887-1954",
     # A joint reporting unit over the two states it combines. Added when its polygon
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.
