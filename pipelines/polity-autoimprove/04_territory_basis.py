@@ -138,24 +138,76 @@ _DEST = os.path.join(H, "territory_basis.csv")
 # worry about.
 if "--check" in sys.argv:
     import io
-    fresh = out.to_csv(index=False)
+    import csv as _csv
+
+    # TWO OF THIS SCRIPT'S INPUTS ARE UNTRACKED, so CI can never reproduce every column.
+    #   state/matched_rows.parquet    -> layerb_data_rows   (layer B lives outside the repo)
+    #   state/territorial_flagged.json -> priority_review   (written per-run by stage 02)
+    # state/footnote_flags.csv IS committed, so basis_reason is reproducible everywhere.
+    #
+    # The first version of this check compared the whole frame and turned main red within
+    # minutes of merging: CI reported "749 committed rows vs 749 regenerated", identical
+    # counts with differing content, because both columns collapse to 0/False without their
+    # inputs. Comparing everything looked stricter and was simply broken in the only
+    # environment that runs it automatically.
+    #
+    # So: compare every column when both inputs are present, and otherwise compare the
+    # columns that ARE reproducible -- which still catches the failure this check exists for
+    # (a polity missing from the file, or a basis reclassified), and says which comparison it
+    # performed rather than implying full coverage.
+    _VOLATILE = {
+        "layerb_data_rows": os.path.join(H, "matched_rows.parquet"),
+        "priority_review": os.path.join(H, "territorial_flagged.json"),
+    }
+    _missing = sorted(c for c, src in _VOLATILE.items() if not os.path.exists(src))
+
     if not os.path.exists(_DEST):
         print(f"FAIL: {_DEST} missing; run this script without --check")
         raise SystemExit(1)
-    committed = open(_DEST, encoding="utf-8").read()
-    if fresh.replace("\r\n", "\n") != committed.replace("\r\n", "\n"):
-        import csv as _csv
-        cf = {r["polity_code"] for r in _csv.DictReader(io.StringIO(fresh))}
-        cc = {r["polity_code"] for r in _csv.DictReader(io.StringIO(committed))}
-        print(f"FAIL: territory_basis.csv is stale ({len(cc)} committed rows vs "
-              f"{len(cf)} regenerated)")
-        if cf - cc:
-            print(f"  in the database but MISSING from the committed file: {sorted(cf - cc)}")
-        if cc - cf:
-            print(f"  in the committed file but no longer in the database: {sorted(cc - cf)}")
+
+    committed = pd.read_csv(_DEST, keep_default_na=False, dtype=str)
+    fresh = pd.read_csv(io.StringIO(out.to_csv(index=False)), keep_default_na=False, dtype=str)
+
+    cf = set(fresh["polity_code"])
+    cc = set(committed["polity_code"])
+    problems = []
+    if cf - cc:
+        problems.append(f"in the database but MISSING from the committed file: {sorted(cf - cc)}")
+    if cc - cf:
+        problems.append(f"in the committed file but no longer in the database: {sorted(cc - cf)}")
+
+    compared = [c for c in fresh.columns if c not in _missing]
+    if not problems:
+        a = committed.set_index("polity_code")[compared[1:]].sort_index()
+        b = fresh.set_index("polity_code")[compared[1:]].sort_index()
+        for code in a.index:
+            for col in compared[1:]:
+                if a.at[code, col] != b.at[code, col]:
+                    problems.append(
+                        f"{code} {col}: committed {a.at[code, col]!r} != regenerated "
+                        f"{b.at[code, col]!r}"
+                    )
+                    if len(problems) > 12:
+                        break
+            if len(problems) > 12:
+                problems.append("... further differences suppressed")
+                break
+
+    if problems:
+        print(f"FAIL: territory_basis.csv is stale ({len(cc)} committed rows vs {len(cf)} "
+              f"regenerated)")
+        for line in problems:
+            print(f"  {line}")
         print("  rerun: python3 pipelines/polity-autoimprove/04_territory_basis.py")
         raise SystemExit(1)
-    print(f"OK: territory_basis.csv matches the database ({len(out)} polities)")
+
+    if _missing:
+        print(f"OK: territory_basis.csv matches the database ({len(fresh)} polities); "
+              f"{len(compared)} of {len(fresh.columns)} columns compared -- "
+              f"{_missing} need untracked inputs and were skipped")
+    else:
+        print(f"OK: territory_basis.csv matches the database ({len(fresh)} polities, "
+              f"all {len(fresh.columns)} columns)")
     raise SystemExit(0)
 
 out.to_csv(_DEST, index=False)
