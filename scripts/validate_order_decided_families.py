@@ -91,10 +91,15 @@ BASELINE_ORDERED = {
         "applied, not recalled -- reading that end year as inclusive is filed as issue 131.",
     ("LBY", ("CYR-1949-1951", "LBY-1950-1951", "TRP-1943-1951")):
         "the 1950 UN transitional year, same three-way shape.",
-    ("PNG", ("TNGU-1920-1949", "TPAP-1906-1949")):
+    ("PNG", ("PAPNG-1920-1949", "TNGU-1920-1949", "TPAP-1906-1949")):
         "the Territory of Papua and the Territory of New Guinea were administered separately "
-        "1920-1949; both `colonial`, so the filter leaves zero. `Papua` was resolving to New "
-        "Guinea and is now pinned.",
+        "1920-1949, and PAPNG-1920-1949 is the combined reporting unit over both. None is "
+        "`national`, so the filter leaves zero. The two-member version of this key was replaced "
+        "on 2026-08-05 when PAPNG was created; ADDING A ROW MADE THIS FAMILY MORE AMBIGUOUS, not "
+        "less, and the gate required the key to be updated rather than letting the third "
+        "candidate slip in silently. All five observed labels are now pinned: `papua new guinea` "
+        "-> PAPNG (1922-1940) and PNG-1949-1975 (1949-1974), `New Guinea` and "
+        "`New Guinea australian` -> TNGU, `Papua` -> TPAP.",
     ("NGA", ("NGA-1886-1914", "NUP-1800-1897")):
         "the Niger Coast/Royal Niger Company row overlaps the Nupe emirate 1886-1896. The 8 "
         "observed rows are labelled `nigeria` and resolve to NGA-1886-1914, which is correct, "

@@ -542,6 +542,7 @@ PAL-1920-1948,Palestine (1920-1948),1920,1948,national,PAL,,Asia,draft,2026-04-1
 PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",1903,1979,national,PAN,95,North America,draft,2026-04-15,cshapes-2.0,95,1903,assigned,75517,COL-1830-1903,PAN-1979-2025
 PAN-1979-2025,Panama (post-Canal Zone),1979,2025,national,PAN,95,North America,draft,2026-04-12,cshapes-2.0,95,1903,assigned,,COL-1830-1903,
 PAP-1800-1870,Papal States,1800,1870,national,PAP,327,Europe,draft,2026-04-12,cliopatria,Papal States,1814,assigned,,,ITA-1861-1919
+PAPNG-1920-1949,Papua and New Guinea (combined reporting unit),1920,1949,aggregate,PNG,,Oceania,draft,2026-08-05,constructed,PAPNG-1920-1949,1930,assigned,461684,TPAP-1906-1949; TNGU-1920-1949,PNG-1949-1975
 PER-1825-1884,Peru (to 1884),1825,1884,national,PER,135,South America,draft,2026-07-01,cshapes-2.0,135,1886,assigned,,,PER-1884-1909
 PER-1825-1909,Peru (to 1909),1825,1909,national,PER,135,South America,superseded,2026-04-12,cshapes-2.0,135,1886,assigned,,,PER-1909-1922
 PER-1884-1909,Peru (1884-1909),1884,1909,national,PER,135,South America,draft,2026-07-01,cshapes-2.0,135,1886,assigned,,PER-1825-1884,PER-1909-1922

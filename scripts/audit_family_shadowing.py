@@ -91,6 +91,17 @@ BASELINE = {
     "TPAP-1906-1949 / TNGU-1920-1949": "Papua and New Guinea, different territories",
     # Sarawak is not Malaya. Different territories of comparable size, both correct rows.
     "BSW-1841-1963 / MASG-1946-1963": "Sarawak vs Malaya+Singapore, different territories",
+    # An aggregate over its own constituents, added 2026-08-05 with PAPNG-1920-1949. Unlike the
+    # pairs above these are NOT different territories -- the larger CONTAINS the smaller, by
+    # construction: PAPNG is the union of exactly these two. The ratios (2.06x and 1.94x) are
+    # therefore expected rather than suspicious, and the coexistence is describable because
+    # PAPNG is typed `aggregate` while both constituents are `colonial`.
+    #
+    # Compare GCT-1919-1956, whose polygon is STILL unattached because it and BTL-1920-1957 are
+    # both typed `colonial` and overlap at 9x (issue 47). The type is what makes the difference
+    # between a reporting unit and a collision, which is why `aggregate` was chosen here.
+    "TPAP-1906-1949 / PAPNG-1920-1949": "Papua inside the Papua+New Guinea reporting unit (2.06x, by construction)",
+    "TNGU-1920-1949 / PAPNG-1920-1949": "New Guinea inside the Papua+New Guinea reporting unit (1.94x, by construction)",
     "BSW-1841-1963 / GBM-1895-1946": "Sarawak vs British Malaya, different territories",
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",
     "BNB-1881-1963 / MASG-1946-1963": "North Borneo vs Malaya+Singapore, different",
