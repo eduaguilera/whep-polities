@@ -11,11 +11,11 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "fc2fee2c69b81e12091bef9d367614720cd9b5246e497035dd50b6de5812a315",
+ "identity_sha256": "a9c4797e0bb316f7b63316c8930f09bde24201f1ac23c08789c01f8b58e28b8c",
  "counts": {
   "total": 740,
-  "live": 712,
-  "dead": 28
+  "live": 711,
+  "dead": 29
  },
  "dead_status": [
   "retired",
@@ -46,6 +46,7 @@
   "ITA-1861-1919",
   "MNE-1913-1915",
   "MOR-1904-1956",
+  "PER-1825-1909",
   "PRY-1811-1938",
   "ROU-1940-2025",
   "RSFSR-1917-1991",
@@ -685,7 +686,6 @@
   "PAN-1979-2025",
   "PAP-1800-1870",
   "PER-1825-1884",
-  "PER-1825-1909",
   "PER-1884-1909",
   "PER-1909-1922",
   "PER-1922-1942",
