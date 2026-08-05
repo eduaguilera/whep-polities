@@ -145,10 +145,10 @@ COD-1894-1910,Democratic Republic of the Congo (1894-1910),1894,1910,national,CO
 COD-1910-1960,DR Congo (1910-1960),1910,1960,national,COD,490,Africa,draft,2026-04-12,cshapes-2.0,490,1910,assigned,,COD-1894-1910,COD-1960-2025
 COD-1960-2025,Democratic Republic of the Congo,1960,2025,national,COD,490,Africa,reviewed,2026-04-12,cshapes-2.0,490,1960,assigned,,,
 CODRU-1922-1960,Belgian Congo and Ruanda-Urundi,1922,1960,aggregate,COD,,Africa,draft,2026-06-25,constructed,CODRU-1922-1960,,assigned,2378962,,
-COG-1898-1900,Congo (1898-1900),1898,1900,national,COG,,Africa,draft,2026-04-15,cshapes-2.0,484,1886,assigned,,,COG-1900-1906
-COG-1900-1906,Congo (1900-1906),1900,1906,national,COG,,Africa,draft,2026-04-15,cshapes-2.0,484,1898,assigned,,,COG-1906-1912
-COG-1906-1912,Congo (1906-1912),1906,1912,national,COG,,Africa,draft,2026-04-13,cshapes-2.0,484,1900,assigned,,,COG-1912-1919
-COG-1912-1919,Congo (1912-1919),1912,1919,national,COG,,Africa,draft,2026-04-13,cshapes-2.0,484,1906,assigned,,COG-1906-1912,COG-1919-1960
+COG-1898-1900,Congo (1898-1900),1898,1900,national,COG,,Africa,draft,2026-04-15,cshapes-2.0,484,1898,assigned,2234540,,COG-1900-1906
+COG-1900-1906,Congo (1900-1906),1900,1906,national,COG,,Africa,draft,2026-04-15,cshapes-2.0,484,1900,assigned,962652,,COG-1906-1912
+COG-1906-1912,Congo (1906-1912),1906,1912,national,COG,,Africa,draft,2026-04-13,cshapes-2.0,484,1906,assigned,344022,,COG-1912-1919
+COG-1912-1919,Congo (1912-1919),1912,1919,national,COG,,Africa,draft,2026-04-13,cshapes-2.0,484,1912,assigned,262560,COG-1906-1912,COG-1919-1960
 COG-1919-1960,Congo (1919-1960),1919,1960,national,COG,484,Africa,draft,2026-04-12,cshapes-2.0,484,1919,assigned,,COG-1912-1919,COG-1960-2025
 COG-1960-2025,Congo,1960,2025,national,COG,484,Africa,draft,2026-04-13,cshapes-2.0,484,1960,assigned,,COG-1919-1960,
 COK-1800-2025,Cook Islands,1800,2025,territory,COK,,Oceania,draft,2026-07-02,gadm-4.1-adm0,COK,,assigned,284,,
