@@ -49,7 +49,12 @@ PUBLISHED = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
 # 272 removed 2026-08-05: retiring the duplicate SER-2006-2008 (issue 43, PR 86) left
 # one Serbia row for 2006-2007, so match.R and matchlib now agree on area 272. The
 # disagreement was a SYMPTOM of the duplicate, not an independent matcher bug.
-BASELINE_DIFFERENT = {131, 237}
+# 131 removed 2026-08-05 (issue 44): eight polities carried iso3_code MYS and ALL EIGHT
+# were typed `national`, so pick_by_year's national preference discriminated nothing and
+# family ORDER decided. "Malaysia" 1961 resolved to BNB-1881-1963 (British North Borneo,
+# 72,557 km2). Retyping BNB and BSW to `colonial` and MASG to `aggregate` -- all three
+# accurate -- let the preference work, and the two matchers now agree.
+BASELINE_DIFFERENT = {237}
 
 # Labels matchlib cannot resolve without the faostat alias, so an explicit route is
 # REQUIRED. One area, and it is genuinely nominal: the Yugoslav SFR chain sits under
