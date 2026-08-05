@@ -572,6 +572,8 @@ netherlandswest indies,fao1952,,,ANT-1816-1960,Dutch Caribbean (colonial),high,
 New Caledonia,faostat,1961,2024,NCL-1800-2025,New Caledonia,high,161177
 New Guinea,fao1952,1937,1949,TNGU-1920-1949,Territory of New Guinea,high,
 New Guinea,fao1952,1950,1951,PNG-1949-1975,Papua and New Guinea (administrative union),medium,
+New Guinea,mitchell,1920,1948,TNGU-1920-1949,Territory of New Guinea,high,1
+New Guinea australian,mitchell,1920,1948,TNGU-1920-1949,Territory of New Guinea,high,1
 New Hebrides,fao1952,1906,1979,VUT-1800-2025,New Hebrides (Vanuatu),high,
 New Zealand,faostat,1961,2024,NZL-1840-2025,New Zealand,high,240961
 New Zealand,lassaletta-grassland-share,1961,2009,NZL-1840-2025,New Zealand,high,
@@ -619,6 +621,8 @@ Papua,mitchell,1937,1937,TPAP-1906-1949,Territory of Papua,high,1
 Papua New Guinea,faostat,1961,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,87626
 Papua New Guinea,faostat,1975,2024,PNG-1975-2025,Papua New Guinea,high,87626
 papua new guinea,iia,1920,1940,TPAP-1906-1949,Territory of New Guinea / Territory of Papua (combined IIA series 1920-1940),low,
+papua new guinea,mitchell,1922,1940,PAPNG-1920-1949,Papua and New Guinea (combined reporting unit),high,23
+papua new guinea,mitchell,1949,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,3
 Paraguay,faostat,1961,2024,PRY-1938-2025,Paraguay,high,194468
 Paraguay,lassaletta-grassland-share,1961,2009,PRY-1938-2025,Paraguay,high,
 Peru,faostat,1961,2024,PER-1942-2025,Peru,high,239266

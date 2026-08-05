@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "f4fa8357866fe359f445f668074bad762fcb85b15405ee72f0983fa9369cd84a",
+ "identity_sha256": "ff9fa9f3d5322187667ac136c66a7834bcfd1fb9b6f37c7e6c7edb9e4f9e4947",
  "counts": {
-  "total": 749,
-  "live": 708,
+  "total": 750,
+  "live": 709,
   "dead": 41
  },
  "dead_status": [
@@ -160,9 +160,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "e3417d5b4367d2fb973cfb8e4ffc25c950b6ca1fe8f59ab904152926188415af",
-  "aliases": 893,
-  "labels": 476,
+  "sha256": "eb7a62df901b99c2c10bfab90bc58f39a71ddd21cbe964efd683137386176012",
+  "aliases": 897,
+  "labels": 477,
   "sources": [
    "crops-manure-n",
    "fao1952",
@@ -695,6 +695,7 @@
   "PAN-1903-1979",
   "PAN-1979-2025",
   "PAP-1800-1870",
+  "PAPNG-1920-1949",
   "PER-1825-1884",
   "PER-1884-1909",
   "PER-1909-1922",

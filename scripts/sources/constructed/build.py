@@ -269,6 +269,28 @@ def build_fid_1887_1954() -> ogr.Geometry:
     return merged
 
 
+def build_papng_1920_1949() -> ogr.Geometry:
+    """Papua + New Guinea as a single reporting unit = CShapes gwcode 911 (Territory of Papua)
+    union gwcode 912 (Territory of New Guinea), both at their 1920-1949 step.
+
+    INDEPENDENTLY VALIDATED, the same way build_gct_1919_1956()'s recipe was. CShapes codes the
+    post-1949 combined Territory of Papua and New Guinea as its own feature, gwcode 910:
+
+        gw911 1920-1949   224,148 km2      Papua
+        gw912 1920-1949   237,536 km2      New Guinea
+        union             461,684 km2
+        gw910 1949-1975   461,689 km2      the combined territory, coded separately
+        difference              5 km2      0.001%
+
+    The two constituents also intersect in ZERO area, so the union double-counts nothing.
+
+    1930 rather than 1920 for the lookup year: 1920 is the boundary between gw912's 1914-1920
+    step (228,080 km2) and its 1920-1949 step (237,536), and a boundary year is exactly where
+    find_feature's tie-break stops discriminating. 1930 is interior to both features' steps.
+    """
+    return _union(_cshapes2_feature(911, 1930), _cshapes2_feature(912, 1930))
+
+
 def build_deu_1945_1949() -> ogr.Geometry:
     """Allied-occupied Germany = West (gwcode 260) ∪ East (gwcode 265)
     for 1945-1949."""
@@ -735,6 +757,16 @@ def build_syl_1944_1953() -> ogr.Geometry:
 
 
 BUILDERS = [
+    (
+        "PAPNG-1920-1949",
+        "Papua and New Guinea (combined reporting unit)",
+        build_papng_1920_1949,
+        "CShapes gwcode 911 (Papua) union 912 (New Guinea) at their 1920-1949 steps = "
+        "461,684 km2, against CShapes' own separately-coded combined territory gwcode 910 at "
+        "461,689 -- a 5 km2 / 0.001% match, and the constituents intersect in zero area. "
+        "Created so 23 Mitchell rows labelled `papua new guinea` for 1922-1940 stop landing on "
+        "TNGU-1920-1949, New Guinea alone, which silently dropped Papua's 224,148 km2.",
+    ),
     (
         "FID-1887-1954",
         "French Indochina",

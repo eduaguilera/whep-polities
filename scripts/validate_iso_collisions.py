@@ -91,6 +91,13 @@ BASELINE = frozenset({
     ("MYS", "BSW-1841-1963", "BNB-1881-1963"),
     ("MYS", "BSW-1841-1963", "GBM-1895-1946"),
     ("MYS", "BSW-1841-1963", "MASG-1946-1963"),
+    # PAPNG-1920-1949 over its two constituents, added 2026-08-05. Same shape as the MASG and
+    # CODRU entries above: a combined reporting unit necessarily shares its iso3 with the
+    # polities it combines. An iso3+year lookup for PNG in 1920-1948 does have three answers,
+    # and that is why every observed label is pinned by an explicit alias instead of left to
+    # resolution order -- see validate_order_decided_families.
+    ("PNG", "PAPNG-1920-1949", "TNGU-1920-1949"),
+    ("PNG", "TPAP-1906-1949", "PAPNG-1920-1949"),
     ("MYS", "BSW-1841-1963", "MYS-1946-1957"),
     ("MYS", "BSW-1841-1963", "MYS-1957-1963"),
     ("MYS", "MASG-1946-1963", "MYS-1957-1963"),
