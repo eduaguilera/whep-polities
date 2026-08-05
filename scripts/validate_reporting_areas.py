@@ -15,14 +15,14 @@ eyeballed.
 Six such claims exist today, and they are not all the same kind of thing, which is why
 this reports rather than fixes:
 
-  BES, CUW, SXM   ANT-1961-2010 and RLAM-1850-2013. Arguably intentional temporal
+  BES, CUW, SXM   ANT-1961-2010 and RLAM-1850-2025. Arguably intentional temporal
                   succession — the Netherlands Antilles dissolved in 2010 and its parts
                   fall to Latin America Other afterwards — except the two spans OVERLAP
                   for 1961-2010, so during those years both claim the same islands.
-  MNP, PLW        RASI-1850-2021 (Asia Other) and ROCE-1850-2021 (Oceania Other).
+  MNP, PLW        RASI-1850-2025 (Asia Other) and ROCE-1850-2025 (Oceania Other).
                   Northern Mariana Islands and Palau are in Oceania; membership of Asia
                   Other looks simply wrong.
-  UMI             RNAM-1850-2021 (North America Other) and ROCE-1850-2021. US Minor
+  UMI             RNAM-1850-2025 (North America Other) and ROCE-1850-2025. US Minor
                   Outlying Islands genuinely straddle both regions (Navassa in the
                   Caribbean, Johnston/Midway/Wake in the Pacific), but the GADM polygon
                   is one indivisible feature, so it cannot sit in both without
@@ -45,12 +45,12 @@ BUILDER = os.path.join(REPO, "scripts/sources/reporting-areas/build.py")
 
 # component -> the aggregates that claim it, as (sorted) tuples.
 BASELINE = {
-    "BES": ("ANT-1961-2010", "RLAM-1850-2013"),
-    "CUW": ("ANT-1961-2010", "RLAM-1850-2013"),
-    "SXM": ("ANT-1961-2010", "RLAM-1850-2013"),
-    "MNP": ("RASI-1850-2021", "ROCE-1850-2021"),
-    "PLW": ("RASI-1850-2021", "ROCE-1850-2021"),
-    "UMI": ("RNAM-1850-2021", "ROCE-1850-2021"),
+    "BES": ("ANT-1961-2010", "RLAM-1850-2025"),
+    "CUW": ("ANT-1961-2010", "RLAM-1850-2025"),
+    "SXM": ("ANT-1961-2010", "RLAM-1850-2025"),
+    "MNP": ("RASI-1850-2025", "ROCE-1850-2025"),
+    "PLW": ("RASI-1850-2025", "ROCE-1850-2025"),
+    "UMI": ("RNAM-1850-2025", "ROCE-1850-2025"),
 }
 
 
