@@ -76,7 +76,7 @@ BLZ-1981-2025,Belize,1981,2025,national,BLZ,80,North America,draft,2026-04-13,cs
 BMB-1800-1899,Bemba Kingdom,1800,1899,national,,,Africa,draft,2026-04-13,paine-2024,Bemba,,assigned,,,ZMB-1964-2025
 BMU-1684-1968,British Crown Colony of Bermuda,1684,1968,national,BMU,,North America,draft,2026-06-26,gadm-4.1-adm0,BMU,,proxy,54,,
 BMU-1968-2025,Bermuda,1968,2025,territory,BMU,,North America,draft,2026-07-02,gadm-4.1-adm0,BMU,,assigned,68,BMU-1684-1968,
-BNB-1881-1963,British North Borneo,1881,1963,national,MYS,823,Asia,draft,2026-06-24,cshapes-2.0,823,1889,assigned,72620,,MYS-1963-1965
+BNB-1881-1963,British North Borneo,1881,1963,colonial,MYS,823,Asia,draft,2026-06-24,cshapes-2.0,823,1889,assigned,72620,,MYS-1963-1965
 BND-1800-1887,Kingdom of Bundu,1800,1887,national,,,Africa,draft,2026-04-13,paine-2024,Bundu,,assigned,,,SEN-1960-2025
 BNU-1800-1893,Bornu Empire,1800,1893,national,,,Africa,draft,2026-04-15,paine-2024,Borno,,assigned,,,NNI-1899-1904
 BNY-1800-1899,Kingdom of Bunyoro,1800,1899,national,,,Africa,draft,2026-04-13,paine-2024,Bunyoro,,assigned,,,UGA-1894-1902; UGA-1962-2025
@@ -95,7 +95,7 @@ BRL-1945-1949,Berlin (Allied Occupation),1945,1949,city-territory,,,Europe,draft
 BRN-1816-1888,Brunei (greater),1816,1888,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,,BRN-1888-2025
 BRN-1888-2025,Brunei Darussalam,1888,2025,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,BRN-1816-1888,
 BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,national,BSS,,Africa,draft,2026-06-24,cshapes-2.0,521,1886,assigned,,,SOM-1960-2025
-BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,national,MYS,824,Asia,draft,2026-06-26,cshapes-2.0,824,1889,assigned,124276,,MYS-1963-1965
+BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,colonial,MYS,824,Asia,draft,2026-06-26,cshapes-2.0,824,1889,assigned,124276,,MYS-1963-1965
 BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,,Africa,draft,2026-06-26,constructed,BTL-1920-1957,1957,assigned,26630,GTO-1919-1922,GHA-1957-2025
 BTN-1800-2025,Bhutan,1800,2025,national,BTN,,Asia,draft,2026-04-12,cshapes-2.0,760,1886,assigned,,,
 BWA-1966-2025,Botswana,1966,2025,national,BWA,571,Africa,draft,2026-04-13,cshapes-2.0,571,1966,assigned,,,
@@ -277,7 +277,7 @@ GAB-1839-1912,Gabon (to 1912),1839,1912,national,GAB,481,Africa,draft,2026-04-15
 GAB-1912-1919,Gabon (1912-1919),1912,1919,national,GAB,481,Africa,draft,2026-04-13,cshapes-2.0,481,1912,assigned,,,GAB-1919-1960
 GAB-1919-1960,Gabon (1919-1960),1919,1960,national,GAB,481,Africa,draft,2026-04-13,cshapes-2.0,481,1919,assigned,,GAB-1912-1919,GAB-1960-2025
 GAB-1960-2025,Gabon,1960,2025,national,GAB,481,Africa,draft,2026-04-13,cshapes-2.0,481,1960,assigned,,GAB-1919-1960,
-GBM-1895-1946,British Malaya (1895-1946),1895,1946,national,MYS,,Asia,draft,2026-06-24,constructed,GBM-1895-1946,1909,assigned,132040,,MYS-1946-1957
+GBM-1895-1946,British Malaya (1895-1946),1895,1946,colonial,MYS,,Asia,draft,2026-06-24,constructed,GBM-1895-1946,1909,assigned,132040,,MYS-1946-1957
 GBR-1800-1921,United Kingdom (to 1921),1800,1921,national,GBR,200,Europe,draft,2026-04-12,cshapes-europe,200,1886,assigned,,,GBR-1921-2025
 GBR-1921-2025,United Kingdom,1921,2025,national,GBR,200,Europe,draft,2026-04-12,cshapes-2.0,200,1921,assigned,,GBR-1800-1921,
 GCAR-1899-1914,German Caroline Islands (Karolinen),1899,1914,colonial,,,Oceania,draft,2026-06-26,gadm-4.1-adm0,PLW,,proxy,459,DEU-1871-1919,JPN-1895-1945
@@ -446,7 +446,7 @@ MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-
 MAR-1958-1975,Morocco (1958-1975),1958,1975,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1958,assigned,,MAR-1911-1958,MAR-1975-1979
 MAR-1975-1979,Morocco (1975-1979),1975,1979,national,MAR,600,Africa,reviewed,2026-04-12,cshapes-2.0,600,1975,assigned,,MAR-1958-1975,MAR-1979-2025
 MAR-1979-2025,Morocco,1979,2025,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1979,assigned,,MAR-1975-1979,
-MASG-1946-1963,Malaya and Singapore,1946,1963,national,MYS,,Asia,draft,2026-06-25,constructed,MASG-1946-1963,,assigned,132040,,
+MASG-1946-1963,Malaya and Singapore,1946,1963,aggregate,MYS,,Asia,draft,2026-06-25,constructed,MASG-1946-1963,,assigned,132040,,
 MCO-1800-2025,Monaco,1800,2025,national,MCO,,Europe,reviewed,2026-04-12,gadm-4.1-adm0,MCO,1861,assigned,2.35,,
 MDA-1991-2025,Moldova,1991,2025,national,MDA,359,Europe,reviewed,2026-04-12,cshapes-2.0,359,1991,assigned,,F228-1945-1991,
 MDG-1882-2025,Madagascar,1882,2025,national,MDG,580,Africa,draft,2026-04-13,cshapes-2.0,580,1960,assigned,,,
