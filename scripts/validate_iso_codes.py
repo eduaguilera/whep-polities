@@ -57,6 +57,19 @@ EXEMPT = {
     "KOS-2008-2025",
     "SCG-1992-2006",
     "SER-2006-2008",
+    # Dissolved states carrying their ISO 3166-3 code (issue 55). 3166-3 is the register OF
+    # FORMERLY-USED codes, so by construction no 3166-1 alpha-3 exists for any of them --
+    # which is precisely the condition this EXEMPT list is documented for.
+    #
+    # They previously carried NOTHING, so they belonged to no ISO family and were reachable
+    # only by an explicit alias. The database's own rule is that a dissolved entity inherits
+    # its successor's code when it has exactly one successor and takes its own 3166-3 code
+    # when it split; Czechoslovakia became two states, Yugoslavia several, and East Germany
+    # merged into a Germany that is still live, so DEU would have created a family tie.
+    "F51-1918-1938", "F51-1938-1945", "F51-1945-1947", "F51-1947-1993",     # CSK
+    "F248-1918-1919", "F248-1919-1920", "F248-1920-1947",
+    "F248-1920-1991", "F248-1947-1991", "F248-1991-1992",                   # YUG
+    "F77-1949-1990",                                                        # DDR
 }
 
 # Aggregate reporting buckets are not countries and are keyed by WHEP-internal codes.

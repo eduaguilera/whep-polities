@@ -73,7 +73,11 @@ BASELINE_DIFFERENT = frozenset({237})
 #
 # I also first guessed this set would be the four China components, assuming an aggregate
 # with no ISO3 would be the hard case. Those resolve fine.
-BASELINE_UNRESOLVED = frozenset({248})
+# 248 removed 2026-08-05 (issue 55): giving the Yugoslav rows their ISO 3166-3 code YUG put
+# them in an ISO family for the first time, so matchlib can now resolve FAOSTAT area 248 by
+# the ISO route. Before, those rows carried no iso3 at all and were reachable only by an
+# explicit alias. This is the concrete gain from that change, reported by an independent gate.
+BASELINE_UNRESOLVED = frozenset()
 
 
 def main() -> int:
