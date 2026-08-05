@@ -9,9 +9,12 @@ something they must not disagree about — and nothing would notice.
 The two that matter:
 
   DEAD_STATUS   which wiki_status values mean "this row must never receive data".
-                Defined FIVE times: write_manifest, validate_polygons,
-                validate_aliases, validate_spatial_containment, and
-                matchlib.Matcher. If the matcher's copy drifted from the
+                Defined SIX times: write_manifest, validate_polygons,
+                validate_aliases, validate_spatial_containment,
+                validate_shared_polygons and matchlib.Matcher. The sixth was added
+                here in the same commit as the gate that holds it, which is the point
+                — the README already warned that "a consumer hardcoding a sixth is how
+                it drifts". If the matcher's copy drifted from the
                 manifest's, the matcher would route data to a row the published
                 contract calls dead — the exact failure the contract exists to
                 prevent, arriving through the back door.
@@ -68,6 +71,7 @@ dead_sources = {
     "scripts/validate_polygons.py": None,
     "scripts/validate_aliases.py": None,
     "scripts/validate_spatial_containment.py": None,
+    "scripts/validate_shared_polygons.py": None,
     "pipelines/polity-autoimprove/matchlib.py": None,
 }
 for rel in list(dead_sources):

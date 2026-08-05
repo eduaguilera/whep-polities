@@ -44,7 +44,9 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Thirty checks guard the database, and a thirty-first checks the checks. Most
+Thirty-five checks guard the database, and a thirty-six checks the checks -- the
+count matches the `validate_*`/`crosscheck_*`/`audit_*` scripts under `scripts/`,
+which is what `selftest_gates.py` enumerates, so it is checkable rather than prose. Most
 exist because that class of error was **found in the data**, not hypothesised; the
 few marked *(guard)* below hold a property that is true today and would be costly
 to lose. All are worth keeping green:
@@ -92,6 +94,7 @@ python3 scripts/validate_alias_year_coverage.py
 python3 scripts/validate_polygons.py
 python3 scripts/validate_polygon_validity.py
 python3 scripts/validate_stated_areas.py
+python3 scripts/validate_shared_polygons.py
 python3 scripts/validate_polygon_period_fit.py
 python3 scripts/validate_polygon_binding_determinism.py
 python3 scripts/validate_spatial_containment.py
@@ -131,6 +134,7 @@ python3 pipelines/polity-autoimprove/extdata.py
 | polygons D | 13 pages claiming `status: reviewed` with zero source citations |
 | family areas | *(guard)* check A needs a **recorded** area to compare against, and 76% of rows claiming a polygon have none. Comparing a period to its own family's median needs no reference and covers all of them. Two anomalies today, both legitimate |
 | spatial containment | one polity's polygon swallowing a neighbour's; a family's consecutive periods overlapping by under half |
+| shared polygons | *(consumer-found)* **twelve** cross-family pairs coexist on ONE polygon in WHEP's embedded copy, so the ground inside it is claimed twice: `GNQ-1968-2025` and `STP-1800-2025` were both bound to CShapes feature 411, which is mainland Rio Muni, and cell (10.25, 1.75) claimed **2.0000×** its own area — 451 of 67,691 cells over-claimed for 2015, 12.72 Mha in excess. All twelve are already resolved here, so this gate is the standing assertion rather than the repair, and each pair is pinned by name. The reason it is a separate check is that **all 27 other gates pass on it**, verified by injecting it back at the wiki, the CSV and the GeoPackage together: the area check had no recorded area to compare against, the containment check needs three swallowed neighbours and two identical polygons swallow one each, and the period-fit and determinism checks confirm `411@1900` resolves cleanly — it is simply the wrong country. Two signals, because a binding and a geometry can each be wrong alone: a shared `(source, feature_id, feature_year)` in the CSV, and an intersection-over-union above 0.9999 in the GeoPackage. It deliberately does **not** assert that a cell never over-claims: 188 coexisting pairs overlap by >1 km² in 2015 (331,429 km² total) and the large ones are dispute and nesting — `ESH`/`MAR` 267,078 km², `SAU`/`YEM` 29,918 km², `ESP`/`ICN` 7,027 km² — which is a territorial judgement, tracked separately |
 | code/year agreement | *(guard)* a polity code is documented as `PREFIX-start-end`, so consumers read years straight off the identifier rather than joining. Two codes disagree with their own columns — `TAN-1922-1964` ends 1961, `NNG-1949-1963` ends 1969 — and the consumer's aliases were written against the CODE, so two of them resolve 1962-1964 to a polity its columns say had ended. Both are historical judgement (independence vs union; transfer vs Act of Free Choice), so baselined pending a decision |
 | live name ambiguity | *(guard)* a consumer resolving a label by the polity's own NAME can only answer when one polity of that name is live in the year asked about, so a rename that collides with a live sibling turns a resolving label into `NA` — and `NA` is what an unmapped label looks like too. 17 names are ambiguous today: fifteen are a coarse period listed beside its own sub-periods (issue 49), and two cross prefix families and are tracked as issues 52 and 43 |
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
@@ -138,7 +142,7 @@ python3 pipelines/polity-autoimprove/extdata.py
 | gate self-test | *(the checks, checked)* Gates that all pass are indistinguishable, from a green summary, from gates that **cannot** fail. Mutation settles it: seventeen are shown to fail on an injected defect and to name it — four geometry gates that mutate the GeoPackage, and thirteen that mutate the CSV, the alias map, the wiki or a builder script's own literal. The s2 case is the only mutation here that no other gate could catch, because the injected geometry is planar-valid; it also had to use the real defect's coordinates, since a synthetic thin sliver built on a geodesic-sag theory is accepted by s2 at every latitude and would have read as "this gate cannot fail". One case earned its keep before it ever guarded anything: it declared the wrong file writable, so its mutation wrote through a symlink into the real database, and two OTHER gates caught that immediately. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 | spherical edges | the published 49th-parallel US/Canada border was **one segment 27.6 degrees of longitude wide**, and under s2 — which `sf` uses by default, and which any geodesic area requires — a segment is a GREAT CIRCLE that bulges poleward between two equal-latitude points. So it rendered as an arc reaching latitude 49.83, **92 km into Canada, booking 12.33 Mha of Canadian prairie to the United States** (eduaguilera/whep#529). 525 distinct edges were affected, displacing 292,481 km² of ground in total; Egypt's 22nd parallel contributed 235,890 ha over two edges. **No existing check could see any of it, by construction**: USA + CAN = 1.0000 in every cell, no overlap, no gap, planar area unchanged to the bit — a clean mutual displacement, and conservation checks detect non-conservation, not misattribution. Half of it was ours: CShapes stores that border with 124 vertices, and `build_database.py`'s own `SimplifyPreserveTopology(0.01)` deleted all 124, because Douglas-Peucker measures deviation from the chord in PLANAR degrees. The build now densifies **after** simplifying |
 
-`.github/workflows/validate.yml` runs **all thirty, plus the self-test,** on push to `main` and on PRs.
+`.github/workflows/validate.yml` runs **all thirty-five, plus the self-test,** on push to `main` and on PRs.
 The self-test also checks that claim: a gate script the workflow never mentions fails it, because a gate
 absent from CI passes on its author's machine and never runs again — which is exactly what happened to the
 live-name-ambiguity gate between writing it and registering it.
