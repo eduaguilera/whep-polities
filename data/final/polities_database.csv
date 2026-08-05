@@ -130,7 +130,7 @@ CHN-1932-1945,China (1932-1945),1932,1945,national,CHN,710,Asia,draft,2026-06-29
 CHN-1945-1947,China (1945-1947),1945,1947,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1945,assigned,,CHN-1932-1945,CHN-1947-1949
 CHN-1947-1949,China (1947-1949),1947,1949,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1947,assigned,,CHN-1945-1947,CHN-1949-1950
 CHN-1949-1950,China (1949-1950),1949,1950,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1949,assigned,,CHN-1947-1949,CHN-1950-2025
-CHN-1950-2025,China (PRC),1950,2025,national,CHN,,Asia,draft,2026-04-12,cshapes-2.0,710,1949,assigned,,CHN-1949-1950,
+CHN-1950-2025,China (PRC),1950,2025,national,CHN,,Asia,draft,2026-04-12,cshapes-2.0,710,1950,assigned,9369260,CHN-1949-1950,
 CIV-1889-1893,Côte d'Ivoire (1889-1893),1889,1893,national,CIV,437,Africa,draft,2026-04-15,cshapes-2.0,437,1889,assigned,,,CIV-1893-1900
 CIV-1893-1900,Côte d'Ivoire (1893-1900),1893,1900,national,CIV,437,Africa,draft,2026-04-15,cshapes-2.0,437,1893,assigned,,CIV-1889-1893,CIV-1902-1932
 CIV-1902-1932,Côte d'Ivoire (1902-1932),1902,1932,national,CIV,437,Africa,draft,2026-04-13,cshapes-2.0,437,1902,assigned,,,CIV-1932-1947
