@@ -306,6 +306,12 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/crosscheck_matchers.py
 
+      - name: Polygon bindings belong to the period their row covers
+        # Reads the committed feature index and GeoPackage only, so unlike the
+        # determinism gate this one does real work in CI from the start. Found eight
+        # wrong bindings across five families, none visible to an area check.
+        run: python3 scripts/validate_polygon_period_fit.py
+
       - name: Polygon bindings are decided by the data, not by shapefile row order
         # Reads data/final/polygon_feature_index.csv, so this runs for real in CI (issue
         # 103). It previously needed the gitignored shapefiles and verified nothing here.
