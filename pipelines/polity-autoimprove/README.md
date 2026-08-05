@@ -559,3 +559,70 @@ loop stays fast and separate.
 polygon (steps 1–2) doesn't exist, and it must be flagged loudly so it is never
 mistaken for ground truth. Prefer leaving `polygon_status=unassigned` with a
 documented reason over a silent modern-borders guess.
+
+## Two detectors that do not work, and why (2026-08-05)
+
+Recorded so they are not rebuilt. Both were attempts to generalise the Canada boundary
+fix (issue 15) into a sweep for polity periods that inherited a source's break date
+instead of the territorial event.
+
+### 1. "start_year sits on a mid-year CShapes break" — 342 hits, not a defect class
+
+A CShapes step beginning on a date other than 1 January means the source is dating a
+mid-year political event. Copying that year into `start_year` makes the polity claim the
+whole calendar year, including the months before the event.
+
+**342 live polities do this**, 40+ of them across a >=1% area change. But the vast
+majority are simply *true*: `ISR-1967-1979` begins with the Six-Day War (1967/06/10),
+`DEU-1990-2025` with reunification (1990/10/03), `YEM-1990-2025` with unification
+(1990/05/22). The polity genuinely began mid-year, and assigning the whole calendar year
+to it is an unavoidable approximation for annual data, not an error.
+
+What made Canada a defect was not the mid-year break but that **the source dated the wrong
+event** — the Newfoundland referendum (22 July 1948) rather than the accession (31 March
+1949). That is a historical judgement per case and is not mechanically detectable from the
+date. The detector therefore cannot separate signal from history.
+
+### 2. "no source's data supports the declared start_year" — a convention artifact
+
+The idea: if every source's data for a polity begins after its `start_year`, the boundary
+may be a year early. On `match_confidence.csv`, restricted to polities with >=2
+independent sources:
+
+    live polities with >=2 sources        207
+      earliest data year - start_year = +1   107   (51.7%)
+      ... <= 0                                12
+
+**A +1 gap in half the database is the boundary-year convention, not a per-polity signal.**
+A polity's first calendar year is routed to its predecessor, so the successor's data
+begins one year after it starts. Any polity will show +1.
+
+This one produced a wrong conclusion before it was checked: `ITA-1919-2025` (start 1919)
+has `iia`, `juan` and `mitchell` all beginning at 1920, which was briefly read as three
+independent sources corroborating that its boundary was a year early. They corroborate
+nothing — 107 polities have the same pattern.
+
+### What survived, for Italy specifically
+
+The one piece of specific evidence is a magnitude test on the smoothest available series.
+Italian livestock across the Treaty of Saint-Germain (signed 1919/09/10, in force 1920/07/16),
+where the post-treaty polygon is 5.4% larger (284,652 -> 300,049 km2):
+
+    goats  1918: 3,082,000   1919: 3,080,000   1920: 3,080,000   1921: 3,083,000   (cv 0.020)
+    sheep  1918: 11,753,000  1919: 11,744,000  1920: 11,744,000  1921: 11,754,000  (cv 0.034)
+
+No step at either year. A 5.4% territorial gain in mountain-pastoral Trentino-South Tyrol
+could not be invisible in goats, so the 1919 and 1920 figures are on the pre-treaty basis.
+
+That supports a **narrow** claim — `ITA-1919-2025` claims calendar 1919 with post-treaty
+geometry, a one-year 5.4% overstatement — and **not** the Canada-scale case: unlike
+`CAN-1948-2025`, which overlapped a live `NFL-1907-1949` and double-counted 398,084 km2,
+`ITA-1919-2025` overlaps nothing (`AUH-1908-1918` ends 1917). On that evidence a breaking
+two-code rename is not justified; it is recorded on issue 23 instead.
+
+### The transferable lesson
+
+A "broken" alias may be compensating for a wrong period boundary. The `canada` 1948 alias
+was territorially correct while pointing at a polity whose columns did not cover 1948, and
+retargeting it would have reintroduced the error it was hiding. **Read the rationale column
+before treating an alias as the defect.**
