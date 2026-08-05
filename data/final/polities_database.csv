@@ -590,7 +590,7 @@ ROU-1859-1913,Romania (to 1913),1859,1913,national,ROU,360,Europe,draft,2026-04-
 ROU-1913-1918,Romania (1913-1918),1913,1918,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1913,assigned,,ROU-1859-1913,ROU-1918-1919
 ROU-1918-1919,Romania (1918-1919),1918,1919,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1921,assigned,295000,ROU-1913-1918,ROU-1919-1920
 ROU-1919-1920,Romania (1919-1920),1919,1920,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1919,assigned,,ROU-1918-1919,ROU-1920-1940
-ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1920,assigned,,ROU-1919-1920,ROU-1940-1947
+ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1921,assigned,296000,ROU-1919-1920,ROU-1940-1947
 ROU-1940-1947,Romania (1940-1947),1940,1947,national,ROU,360,Europe,reviewed,2026-07-01,constructed,ROU-1940-1947,1940,proxy,194000,ROU-1920-1940,ROU-1947-2025
 ROU-1940-2025,Romania (1940-2025),1940,2025,national,ROU,360,Europe,superseded,2026-04-12,cshapes-2.0,360,1940,assigned,,ROU-1920-1940,
 ROU-1947-2025,Romania (1947-2025),1947,2025,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1946,assigned,238000,ROU-1940-1947,
@@ -702,7 +702,7 @@ TUR-1913-1914,Türkiye (1913-1914),1913,1914,national,TUR,640,Asia,reviewed,2026
 TUR-1914-1918,Türkiye (1914-1918),1914,1918,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1914,assigned,,TUR-1913-1914,TUR-1918-1920
 TUR-1918-1920,Türkiye (1918-1920),1918,1920,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1918,assigned,,TUR-1914-1918,TUR-1920-2025
 TUR-1920-2025,Türkiye (1920-2025),1920,2025,national,TUR,640,Asia,draft,2026-04-12,cshapes-2.0,640,1923,assigned,,TUR-1918-1920,
-TUS-1800-1860,Tuscany,1800,1860,national,TUS,337,Europe,draft,2026-04-15,cliopatria,Grand Duchy of Tuscany,1815,assigned,,,ITA-1861-1919
+TUS-1800-1860,Tuscany,1800,1860,national,TUS,337,Europe,draft,2026-04-15,cliopatria,Grand Duchy of Tuscany,1848,assigned,24632,,ITA-1861-1919
 TUV-1800-2025,Tuvalu,1800,2025,national,TUV,947,Oceania,draft,2026-04-13,gadm-4.1-adm0,TUV,,assigned,,,
 TWN-1895-1945,Formosa (Japanese Taiwan),1895,1945,colonial,TWN,,Asia,draft,2026-06-24,cshapes-2.0,713,1949,assigned,36193,CHN-1800-1895,TWN-1945-2025
 TWN-1945-2025,Taiwan,1945,2025,national,TWN,713,Asia,draft,2026-06-24,cshapes-2.0,713,1949,assigned,36193,TWN-1895-1945,
