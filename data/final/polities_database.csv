@@ -271,7 +271,7 @@ FRS-1884-1977,French Somaliland,1884,1977,national,DJI,522,Africa,draft,2026-07-
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,DJI,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,FRS-1884-1977,
 FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,,
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,national,,,Africa,draft,2026-04-13,paine-2024,Futa Jalon,,assigned,,,GIN-1958-2025; GIN-1894-1958
-FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,,Africa,draft,2026-04-16,none,,,unassigned,,GTO-1919-1922,TGO-1960-2025
+FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,,Africa,draft,2026-04-16,cshapes-2.0,461,1930,assigned,57094,GTO-1919-1922,TGO-1960-2025
 FTT-1800-1862,Imamate of Futa Toro,1800,1862,national,,,Africa,draft,2026-04-13,paine-2024,Futa Toro,,assigned,,,SEN-1960-2025
 GAB-1839-1912,Gabon (to 1912),1839,1912,national,GAB,481,Africa,draft,2026-04-15,cshapes-2.0,481,1886,assigned,,,GAB-1912-1919
 GAB-1912-1919,Gabon (1912-1919),1912,1919,national,GAB,481,Africa,draft,2026-04-13,cshapes-2.0,481,1912,assigned,,,GAB-1919-1960

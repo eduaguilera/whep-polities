@@ -271,7 +271,7 @@ FRS-1884-1977,French Somaliland,1884,1977,cshapes-2.0,1900.0,assigned,True,assum
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,cshapes-2.0,1900.0,assigned,False,back_projected,True,False,polygon vintage 1900 is BEFORE the period starts (1977),0
 FSM-1991-2025,Micronesia,1991,2025,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
-FTO-1920-1960,French Togoland (1920-1960),1920,1960,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),182
+FTO-1920-1960,French Togoland (1920-1960),1920,1960,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,False,single 1930 polygon held across a 40y span (1920-1960); borders may have changed,182
 FTT-1800-1862,Imamate of Futa Toro,1800,1862,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 GAB-1839-1912,Gabon (to 1912),1839,1912,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 73y span (1839-1912); borders may have changed,6
 GAB-1912-1919,Gabon (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,vintage 1912 faithful to period 1912-1919,26
