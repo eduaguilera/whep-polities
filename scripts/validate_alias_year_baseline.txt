@@ -151,7 +151,6 @@ burkina faso	iia	BFA-1919-1932
 burma		MMR-1826-1852
 burma		MMR-1885-2025
 burma	mitchell	MMR-LWR-1852-1885
-canada		CAN-1886-1948
 cape province		CAP-1800-1910
 china 22 provinces	fao1952	CHN-1932-1945
 china 22 provinces	fao1952	CHN-1945-1947

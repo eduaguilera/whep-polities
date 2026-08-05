@@ -35,7 +35,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 29,1961,1961,BDI-1922-1962,Burundi,BDI,iso-equal,high,62205
 29,1962,2024,BDI-1962-2025,Burundi,BDI,iso-equal,high,62205
 32,1961,2024,CMR-1961-2025,Cameroon,CMR,iso-equal,high,216617
-33,1961,2024,CAN-1948-2025,Canada,CAN,iso-equal,high,252243
+33,1961,2024,CAN-1949-2025,Canada,CAN,iso-equal,high,252243
 35,1961,1974,CPV-1886-1975,Cabo Verde,CPV,iso-equal,high,150407
 35,1975,2024,CPV-1975-2025,Cabo Verde,CPV,iso-equal,high,150407
 37,1961,2024,CAF-1960-2025,Central African Republic,CAF,iso-equal,high,155872
