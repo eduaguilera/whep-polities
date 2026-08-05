@@ -418,7 +418,7 @@ LBY-1919-1925,Libya (1919-1925),1919,1925,cshapes-2.0,1919.0,assigned,True,measu
 LBY-1925-1934,Libya (1925-1934),1925,1934,cshapes-2.0,1925.0,assigned,True,measured,False,False,vintage 1925 faithful to period 1925-1934,77
 LBY-1934-1943,Libya (1934-1943),1934,1943,cshapes-2.0,1934.0,assigned,True,measured,False,False,vintage 1934 faithful to period 1934-1943,73
 LBY-1943-1949,Libya (1943-1949),1943,1949,cshapes-2.0,1943.0,assigned,True,measured,False,False,vintage 1943 faithful to period 1943-1949,23
-LBY-1950-1951,Libya under UN Transitional Administration (1950-1951),1950,1951,cshapes-2.0,1943.0,assigned,True,back_projected,True,True,polygon vintage 1943 is BEFORE the period starts (1950),25
+LBY-1949-1951,Libya under UN Transitional Administration (1949-1951),1949,1951,cshapes-2.0,1943.0,assigned,True,back_projected,True,False,polygon vintage 1943 is BEFORE the period starts (1949),0
 LBY-1951-2025,Libya,1951,2025,cshapes-2.0,1951.0,assigned,True,assumed_constant,True,True,single 1951 polygon held across a 74y span (1951-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),27
 LCA-1800-1838,Saint Lucia (to 1838),1800,1838,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 LCA-1838-2025,Saint Lucia,1838,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,158

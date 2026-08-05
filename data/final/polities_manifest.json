@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "ff9fa9f3d5322187667ac136c66a7834bcfd1fb9b6f37c7e6c7edb9e4f9e4947",
+ "identity_sha256": "ec8844ac8f67a6fd1333617f4fc6a1e7d47c7fd884c08a0a537aff87381e5a84",
  "counts": {
   "total": 750,
   "live": 709,
@@ -160,9 +160,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "eb7a62df901b99c2c10bfab90bc58f39a71ddd21cbe964efd683137386176012",
-  "aliases": 897,
-  "labels": 477,
+  "sha256": "efb6321895f4b770fb337178d726d9a740a768ceacd3979a8c7bbc74d2c8493f",
+  "aliases": 899,
+  "labels": 478,
   "sources": [
    "crops-manure-n",
    "fao1952",
@@ -574,7 +574,7 @@
   "LBY-1925-1934",
   "LBY-1934-1943",
   "LBY-1943-1949",
-  "LBY-1950-1951",
+  "LBY-1949-1951",
   "LBY-1951-2025",
   "LCA-1800-1838",
   "LCA-1838-2025",

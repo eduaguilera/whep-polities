@@ -24,8 +24,16 @@ family holds the territory:
 Two of the SHORT gaps are also correct, and they are why this check reports coverage
 rather than only listing gaps:
 
-    LBY 1949   covered by CYR-1949-1951 and TRP-1943-1951, both iso3 LBY --
-               Libya was split into Cyrenaica and Tripolitania
+    SYR 1945   covered by SYL-1944-1953, the "Syria and Lebanon" unit from fao1952
+
+    The LBY 1949 entry that stood here was WRONG and is gone. It read "covered by
+    CYR-1949-1951 and TRP-1943-1951 ... Libya was split into Cyrenaica and
+    Tripolitania". Libya was split into THREE: Fezzan, about 550,000 km2 or a third of
+    the country, was under FRENCH military administration and has no row at all. Two
+    thirds of a country is not coverage, and 28 rows labelled `Libya` for 1949 were
+    landing on Cyrenaica alone as a result. Fixed on 2026-08-05 by starting
+    LBY-1949-1951 in 1949 -- the year of UN Resolution 289 -- which is what that row's
+    own summary always claimed it did.
     SYR 1945   covered by SYL-1944-1953, the "Syria and Lebanon" unit from fao1952
 
 Four are genuinely uncovered and all are latent today, since no source reaches them:
@@ -64,7 +72,11 @@ BASELINE = frozenset({
     ("CZE-1804-1918", "CZE-1993-2025"),
     ("ERI-1889-1952", "ERI-1993-2025"),
     ("LAO-1893-1953", "LAO-1954-2025"),
-    ("LBY-1943-1949", "LBY-1950-1951"),
+    # ("LBY-1943-1949", "LBY-1949-1951") removed 2026-08-05: the gap is CLOSED, not
+    # re-explained. LBY-1949-1951 previously started in 1950 while its own summary claimed to
+    # "close the 1949-1951 gap", leaving 1949 uncovered and sending 28 rows labelled `Libya`
+    # to Cyrenaica alone. Moving its start to 1949 -- the year of UN Resolution 289 -- closed
+    # it, and this gate then required the baseline entry to be deleted rather than kept.
     ("MNE-1913-1918", "MNE-2006-2025"),
     # MOR pair removed 2026-08-05: MOR-1956-1958 is retired (it duplicated 1956-1957,
     # which MAR-1911-1958 covers), leaving family MOR with a single period and so no
