@@ -84,7 +84,7 @@ python3 scripts/validate_alias_year_coverage.py
 
 # geometry
 python3 scripts/validate_polygons.py
-python3 scripts/validate_polygon_binding_determinism.py
+python3 scripts/validate_polygon_binding_determinism.py   # needs data/geodata (gitignored), so local only
 python3 scripts/validate_spatial_containment.py
 python3 scripts/validate_family_areas.py
 python3 scripts/validate_succession_geography.py   # needs the built .gpkg, so local only
