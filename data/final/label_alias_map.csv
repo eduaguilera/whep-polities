@@ -94,6 +94,7 @@ Brazil,faostat,1961,2024,BRA-1909-2025,Brazil,high,255068
 Brazil,lassaletta-grassland-share,1961,2009,BRA-1909-2025,Brazil,high,
 British Borneo Brunei,,,,BRN-1888-2025,,high,
 British Borneo North Borneo,,1937,1951,BNB-1881-1963,British North Borneo,high,
+British Borneo Sarawak,fao,1946,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,1
 British Borneo Sarawak,fao1952,1937,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,
 British Borneo Sarawak,mitchell,1937,1937,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,1
 british honduras,,1886,1970,BLZ-1886-1970,British Honduras,high,
@@ -401,6 +402,7 @@ indochina,,1887,,FID-1887-1954,French Indochina,high,259
 indochina cambodia,,1907,1953,KHM-1907-1953,,medium,
 indochina laos,,1936,1951,LAO-1893-1953,Laos (1893-1953),high,59
 indochina viet nam,,1887,1954,FID-1887-1954,,medium,
+Indochina Viet Nam,fao,1937,1953,VNM-1887-1954,Vietnam (French Indochina),high,1
 Indochina Viet Nam,mitchell,1937,1951,VNM-1887-1954,Vietnam (French Indochina),high,96
 Indochina: Viet Nam,mitchell,1949,1951,VNM-1887-1954,Vietnam (French Indochina),high,3
 Indonesia,fao1952,1800,1944,IDN-1800-1945,Dutch East Indies,high,23
@@ -499,6 +501,7 @@ Malawi,faostat,1964,2024,MWI-1964-2025,Malawi,high,185999
 Malawi,lassaletta-grassland-share,1964,2009,MWI-1964-2025,Malawi,high,
 Malaya Fed of,fao1952,1949,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,25
 Malaya Federation,mitchell,1937,1937,GBM-1895-1946,British Malaya (1895-1946),high,1
+Malaya Federation of,fao,1948,1951,MYS-1946-1957,Malayan Union / Federation of Malaya (1946-1957),high,1
 Malaya Federation of,fao1952,1939,1945,GBM-1895-1946,British Malaya,high,
 Malaya Federation of,fao1952,1946,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,
 Malaya Federation of,mitchell,1939,1939,GBM-1895-1946,British Malaya (1895-1946),high,2

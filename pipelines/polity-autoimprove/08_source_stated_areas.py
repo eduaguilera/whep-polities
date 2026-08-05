@@ -52,6 +52,18 @@ import pandas as pd
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DEST = os.path.join(REPO, "data/final/source_stated_areas.csv")
 
+FAO_GLOB = os.environ.get(
+    "WHEP_FAO_LAND_GLOB",
+    os.path.expanduser(
+        "~/Nextcloud/WHEP_ERC 2025/Sources/data_raw/sources_reviewed/fao/"
+        "*/fao_land_*/r_fao_land_*_use_total.xlsx"
+    ),
+)
+
+# FAO reports land use in hectares, IIA in km2. Conversion is exact, so it is asserted rather
+# than assumed: an unrecognised unit raises instead of silently scaling by 1.
+HECTARE_UNITS = {"1000 hectares": 10.0, "1000000 hectares": 10000.0}
+
 IIA_GLOB = os.environ.get(
     "WHEP_IIA_LAND_GLOB",
     os.path.expanduser(
@@ -64,7 +76,7 @@ IIA_GLOB = os.environ.get(
 AGGREGATE_PREFIXES = ("total", "monde", "world")
 
 
-def extract() -> pd.DataFrame:
+def _extract_iia() -> list:
     files = sorted(glob.glob(IIA_GLOB))
     if not files:
         raise FileNotFoundError(
@@ -85,18 +97,60 @@ def extract() -> pd.DataFrame:
                     continue
                 unit = str(row.get("unit", "")).strip()
                 if unit and "square kilometer" not in unit:
-                    # Never seen so far -- every one of the 2,016 statements is km2 -- but a
-                    # silently mixed unit would be read as an area, so refuse rather than guess.
                     raise ValueError(f"unexpected unit {unit!r} for {label!r} in {path}")
                 rows.append({
-                    "source": "iia",
-                    "edition": edition,
-                    "data_year": int(col),
-                    "label": label,
+                    "source": "iia", "edition": edition, "data_year": int(col), "label": label,
                     "continent": ("" if pd.isna(row.get("continent")) else str(row["continent"]).strip()),
                     "stated_area_km2": float(value),
                     "footnote": ("" if pd.isna(row.get("footnotes")) else str(row["footnotes"]).strip()),
                 })
+    return rows
+
+
+def _extract_fao() -> list:
+    """FAO's land-use `use_total` table, which extends the reference past IIA's 1937 ceiling.
+
+    Two reasons this is worth having beyond more coverage:
+
+    Its labels are ENGLISH and match the ones the data actually arrives under -- `Libya
+    Tripolitania`, `Indochina Viet Nam`, `Gold Coast and Br Togoland` -- where IIA's are French
+    and resolve for only 77 of 785. So the same evidence reaches far more polities.
+
+    And it CROSS-CHECKS IIA. Where both state a figure they agree to within a few per cent
+    (Chile 741,770 vs 741,767; Libya 1,759,500 vs 1,759,540; Yugoslavia 1.03x; French Togoland
+    1.06x) -- with ONE exception, Tunisia, where FAO says 155,830 and IIA says 125,130, a 24.5%
+    gap. Two sources agreeing to four digits and a third disagreeing by a quarter is how you
+    tell an outlier from a convention.
+    """
+    files = sorted(glob.glob(FAO_GLOB))
+    if not files:
+        return []
+    rows = []
+    for path in files:
+        edition = int(re.search(r"_(\d{4})_", os.path.basename(path)).group(1))
+        frame = pd.read_excel(path)
+        for col in [c for c in frame.columns if re.fullmatch(r"\d{4}", str(c))]:
+            for _, row in frame.iterrows():
+                label, value = row.get("country"), row[col]
+                if pd.isna(label) or pd.isna(value):
+                    continue
+                label = str(label).strip()
+                if label.lower().startswith(AGGREGATE_PREFIXES):
+                    continue
+                unit = str(row.get("unit", "")).strip()
+                if unit not in HECTARE_UNITS:
+                    raise ValueError(f"unexpected FAO unit {unit!r} for {label!r} in {path}")
+                rows.append({
+                    "source": "fao", "edition": edition, "data_year": int(col), "label": label,
+                    "continent": ("" if pd.isna(row.get("continent")) else str(row["continent"]).strip()),
+                    "stated_area_km2": float(value) * HECTARE_UNITS[unit],
+                    "footnote": ("" if pd.isna(row.get("footnotes")) else str(row["footnotes"]).strip()),
+                })
+    return rows
+
+
+def extract() -> pd.DataFrame:
+    rows = _extract_iia() + _extract_fao()
     out = pd.DataFrame(rows).sort_values(["source", "edition", "data_year", "label"])
     return out.reset_index(drop=True)
 
