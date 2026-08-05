@@ -572,14 +572,20 @@ PTIND-1816-1961,Portuguese India (Estado da India Portuguesa),1816,1961,colonial
 PYF-1800-2025,French Polynesia,1800,2025,national,PYF,,Oceania,draft,2026-06-09,gadm-4.1-adm0,PYF,,proxy,,,
 QAT-1800-2025,Qatar,1800,2025,national,QAT,694,Asia,draft,2026-04-12,cshapes-2.0,694,1916,assigned,,,
 QUE-1859-1900,Queensland (to 1900),1859,1900,national,QUE,,Oceania,draft,2026-04-15,cshapes-2.0,905,1886,assigned,,NSW-1800-1900,AUS-1901-2025
-RAFR-1850-2021,Africa Other,1850,2021,aggregate,RAFR,,Africa,draft,2026-06-11,reporting-areas,RAFR-1850-2021,,assigned,,,
-RASI-1850-2021,Asia Other,1850,2021,aggregate,RASI,,Asia,draft,2026-06-11,reporting-areas,RASI-1850-2021,,assigned,,,
+RAFR-1850-2021,Africa Other,1850,2021,aggregate,RAFR,,Africa,retired,2026-06-11,reporting-areas,RAFR-1850-2021,,unassigned,,,
+RAFR-1850-2025,Africa Other,1850,2025,aggregate,RAFR,,Africa,draft,2026-08-05,reporting-areas,RAFR-1850-2025,,assigned,,,
+RASI-1850-2021,Asia Other,1850,2021,aggregate,RASI,,Asia,retired,2026-06-11,reporting-areas,RASI-1850-2021,,unassigned,,,
+RASI-1850-2025,Asia Other,1850,2025,aggregate,RASI,,Asia,draft,2026-08-05,reporting-areas,RASI-1850-2025,,assigned,,,
 REU-1816-1946,Réunion (French Colony),1816,1946,colonial,REU,585,Africa,draft,2026-06-24,cshapes-2.0,585,1886,assigned,2642,,
 REU-1946-2025,Réunion (French Overseas Department),1946,2025,national,REU,585,Africa,draft,2026-06-26,cshapes-2.0,585,1886,assigned,2642,REU-1816-1946,
-REUR-1850-2021,Europe Other,1850,2021,aggregate,REUR,,Europe,draft,2026-06-11,reporting-areas,REUR-1850-2021,,assigned,,,
-RLAM-1850-2013,Latin America Other,1850,2013,aggregate,RLAM,,South America,draft,2026-06-11,reporting-areas,RLAM-1850-2013,,assigned,,,
-RNAM-1850-2021,North America Other,1850,2021,aggregate,RNAM,,North America,draft,2026-06-11,reporting-areas,RNAM-1850-2021,,assigned,,,
-ROCE-1850-2021,Oceania Other,1850,2021,aggregate,ROCE,,Oceania,draft,2026-06-11,reporting-areas,ROCE-1850-2021,,assigned,,,
+REUR-1850-2021,Europe Other,1850,2021,aggregate,REUR,,Europe,retired,2026-06-11,reporting-areas,REUR-1850-2021,,unassigned,,,
+REUR-1850-2025,Europe Other,1850,2025,aggregate,REUR,,Europe,draft,2026-08-05,reporting-areas,REUR-1850-2025,,assigned,,,
+RLAM-1850-2013,Latin America Other,1850,2013,aggregate,RLAM,,South America,retired,2026-06-11,reporting-areas,RLAM-1850-2013,,unassigned,,,
+RLAM-1850-2025,Latin America Other,1850,2025,aggregate,RLAM,,South America,draft,2026-08-05,reporting-areas,RLAM-1850-2025,,assigned,,,
+RNAM-1850-2021,North America Other,1850,2021,aggregate,RNAM,,North America,retired,2026-06-11,reporting-areas,RNAM-1850-2021,,unassigned,,,
+RNAM-1850-2025,North America Other,1850,2025,aggregate,RNAM,,North America,draft,2026-08-05,reporting-areas,RNAM-1850-2025,,assigned,,,
+ROCE-1850-2021,Oceania Other,1850,2021,aggregate,ROCE,,Oceania,retired,2026-06-11,reporting-areas,ROCE-1850-2021,,unassigned,,,
+ROCE-1850-2025,Oceania Other,1850,2025,aggregate,ROCE,,Oceania,draft,2026-08-05,reporting-areas,ROCE-1850-2025,,assigned,,,
 ROU-1859-1913,Romania (to 1913),1859,1913,national,ROU,360,Europe,draft,2026-04-12,cshapes-europe,360,1886,assigned,,,ROU-1913-1918
 ROU-1913-1918,Romania (1913-1918),1913,1918,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1913,assigned,,ROU-1859-1913,ROU-1918-1919
 ROU-1918-1919,Romania (1918-1919),1918,1919,national,ROU,360,Europe,draft,2026-04-12,cshapes-2.0,360,1921,assigned,295000,ROU-1913-1918,ROU-1919-1920
@@ -588,7 +594,8 @@ ROU-1920-1940,Romania (1920-1940),1920,1940,national,ROU,360,Europe,draft,2026-0
 ROU-1940-1947,Romania (1940-1947),1940,1947,national,ROU,360,Europe,reviewed,2026-07-01,constructed,ROU-1940-1947,1940,proxy,194000,ROU-1920-1940,ROU-1947-2025
 ROU-1940-2025,Romania (1940-2025),1940,2025,national,ROU,360,Europe,superseded,2026-04-12,cshapes-2.0,360,1940,assigned,,ROU-1920-1940,
 ROU-1947-2025,Romania (1947-2025),1947,2025,national,ROU,360,Europe,reviewed,2026-07-01,cshapes-2.0,360,1946,assigned,238000,ROU-1940-1947,
-ROW-1850-2023,Rest of World,1850,2023,aggregate,ROW,,World,draft,2026-06-11,reporting-areas,ROW-1850-2023,,assigned,,,
+ROW-1850-2023,Rest of World,1850,2023,aggregate,ROW,,World,retired,2026-06-11,reporting-areas,ROW-1850-2023,,unassigned,,,
+ROW-1850-2025,Rest of World,1850,2025,aggregate,ROW,,World,draft,2026-08-05,reporting-areas,ROW-1850-2025,,assigned,,,
 RSFSR-1917-1991,Russian SFSR (1917-1991),1917,1991,national,RUS,365,Europe,retired,2026-06-24,cshapes-2.0,365,1991,unassigned,17098242,F228-1914-1917,RUS-1991-2014
 RUS-1991-2014,Russia (1991-2014),1991,2014,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,1992,assigned,,F228-1945-1991,RUS-2014-2025
 RUS-2014-2025,Russia,2014,2025,national,RUS,365,Europe,draft,2026-04-12,cshapes-2.0,365,2014,assigned,,RUS-1991-2014,

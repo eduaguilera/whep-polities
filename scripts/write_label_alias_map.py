@@ -87,7 +87,7 @@ for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
             # That excluded too little. Eleven folded areas carry substantial data in
             # OTHER domains — Bermuda 67,310 rows, Faroe Islands 45,036, Cook Islands
             # 42,137, Palestine 32,534, Equatorial Guinea 23,719 — so their production
-            # and trade were routed to ROW-1850-2023 while each has its own live polity
+            # and trade were routed to ROW-1850-2025 while each has its own live polity
             # that THIS map already targets for the same label. Two published contracts
             # disagreeing about where one territory's data belongs.
             #

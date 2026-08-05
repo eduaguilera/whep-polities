@@ -409,14 +409,14 @@ def mutate_double_claimed_component(root, gpd, make_valid, affinity):
     # The components live in a nested dict under a "components" key, not in a bare list
     # -- checked rather than guessed on the second attempt. Claim FRO, which belongs to
     # Europe Other, for Asia Other as well.
-    marker = '"RASI-1850-2021": {'
+    marker = '"RASI-1850-2025": {'
     assert marker in text, "no RASI aggregate to extend"
     i = text.index(marker)
     j = text.index('"components": [', i) + len('"components": [')
     text = text[:j] + '"FRO", ' + text[j:]
     with open(path, "w", encoding="utf-8") as fh:
         fh.write(text)
-    return "claimed FRO for RASI-1850-2021 as well as Europe Other"
+    return "claimed FRO for RASI-1850-2025 as well as Europe Other"
 
 
 

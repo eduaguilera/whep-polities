@@ -50,8 +50,8 @@ DEAD_STATUS = ("retired", "superseded")
 # and every colony inside it are all typed `national`.
 LEGITIMATE_CONTAINERS = frozenset({
     # Statistical / reporting aggregates
-    "ROW-1850-2023", "RAFR-1850-2021", "RASI-1850-2021", "REUR-1850-2021",
-    "RLAM-1850-2013", "ROCE-1850-2021",
+    "ROW-1850-2025", "RAFR-1850-2025", "RASI-1850-2025", "REUR-1850-2025",
+    "RLAM-1850-2025", "ROCE-1850-2025",
     # Empires
     "F228-1800-1856", "F228-1856-1905", "F228-1905-1914", "F228-1914-1917",
     "F228-1917-1918", "F228-1918-1920", "F228-1945-1991",
