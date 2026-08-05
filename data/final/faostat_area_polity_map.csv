@@ -89,7 +89,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 85,1850,2025,GRL-1800-2025,Greenland,GRL,registry,high,0
 86,1961,2024,GRD-1800-2025,Grenada,GRD,iso-equal,high,162962
 87,1961,2006,GLP-1816-2025,Guadeloupe,GLP,iso-equal,high,11766
-88,1898,1950,GUM-1898-1950,Guam,GUM,registry,high,0
+88,1898,1949,GUM-1898-1950,Guam,GUM,registry,high,0
 89,1961,2024,GTM-1821-2025,Guatemala,GTM,iso-equal,high,224016
 90,1961,2024,GIN-1958-2025,Guinea,GIN,iso-equal,high,152542
 91,1961,2024,GUY-1800-2025,Guyana,GUY,iso-equal,high,174251
@@ -262,7 +262,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 237,1975,2024,VNM-1975-2025,Viet Nam,VNM,iso-equal,high,170522
 238,1993,2024,ETH-1993-2025,Ethiopia,ETH,iso-equal,high,102786
 239,1850,2025,VGB-1800-2025,British Virgin Islands,VGB,registry,high,0
-240,1850,1917,DWI-1800-1917,United States Virgin Islands,VIR,registry,high,0
+240,1850,1916,DWI-1800-1917,United States Virgin Islands,VIR,registry,high,0
 240,1917,2025,VIR-1917-2025,United States Virgin Islands,VIR,registry,high,0
 244,1961,2024,WSM-1900-2025,Samoa,WSM,iso-equal,high,141994
 248,1961,1990,F248-1947-1991,Yugoslav SFR,YUG,manual-replace,high,112967
