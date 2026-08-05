@@ -91,6 +91,22 @@ def covered_elsewhere(rows: list, iso3: str, year: int, exclude: set) -> list:
     This is what separates a correct gap from a hole. Libya's 1949 looks identical to
     Chad's 1919 until you ask who else holds the territory: Cyrenaica and Tripolitania
     do for Libya, nothing does for Chad.
+
+    ADVISORY, NOT AUTHORITATIVE, and the gate does not act on it -- only the baseline
+    comparison decides pass or fail. iso3 is the only cross-family link the data has and
+    it fails two ways:
+
+      * AGGREGATES CARRY NO iso3. `F51-1947-1993` (Czechoslovakia) and `F248-1947-1991`
+        (Yugoslavia) both have `iso3_code = ''`, so the CZE 1918-1992 and SER 1945-2005
+        gaps are reported uncovered when Czechoslovakia and Yugoslavia in fact hold
+        that territory.
+      * LOCAL AND ISO CODES FOR ONE TERRITORY DO NOT LINK. Morocco is `MOR-*` (a
+        declared local code) and `MAR-*` (the ISO one), so the "French Morocco" alias
+        -- 261 observed rows, pointing at `MAR-1911-1958` -- is invisible when testing
+        the MOR family's gap, and that gap reads latent when it is live.
+
+    Both are the same missing thing: nothing expresses "these families are the same
+    territory". Treat the annotation as a triage hint and check the specific case.
     """
     out = []
     for r in rows:
@@ -162,7 +178,7 @@ def main() -> int:
             tag = f"covered by {', '.join(others[:2])}"
         else:
             claims = alias_claims(lo, iso3) if iso3 else 0
-            tag = "UNCOVERED, source data reaches it" if claims else "uncovered but latent"
+            tag = "no cover found, source reaches it" if claims else "no cover found, seems latent"
         print(f"   {span:>4}y  {pair[0]:<20} -> {pair[1]:<20} ({lo}-{hi})  {tag}")
 
     problems = []
