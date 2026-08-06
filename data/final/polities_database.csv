@@ -116,8 +116,8 @@ CAP-1800-1910,Cape Colony (to 1910),1800,1910,national,CAP,,Africa,draft,2026-04
 CAR-1920-1945,Caroline Islands (Japanese Mandate),1920,1945,colonial,,,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM,,proxy,702,JPN-1895-1945,FSM-1991-2025
 CAY-1800-1886,Kingdom of Cayor,1800,1886,national,,,Africa,draft,2026-04-13,paine-2024,Cayor,,assigned,,,SEN-1960-2025
 CHE-1800-2025,Switzerland,1800,2025,national,CHE,225,Europe,draft,2026-04-13,cshapes-2.0,225,1886,assigned,,,
-CHL-1810-1883,Chile (to 1883),1810,1883,national,CHL,155,South America,draft,2026-06-24,none,,,unassigned,,,CHL-1884-1899
-CHL-1884-1899,Chile (1884-1899),1884,1899,national,CHL,155,South America,draft,2026-06-24,cshapes-2.0,155,1886,assigned,,CHL-1810-1883,CHL-1899-1902
+CHL-1810-1884,Chile (to 1884),1810,1884,national,CHL,155,South America,draft,2026-06-24,none,,,unassigned,,,CHL-1884-1899
+CHL-1884-1899,Chile (1884-1899),1884,1899,national,CHL,155,South America,draft,2026-06-24,cshapes-2.0,155,1886,assigned,,CHL-1810-1884,CHL-1899-1902
 CHL-1899-1902,Chile (1899-1902),1899,1902,national,CHL,155,South America,reviewed,2026-04-12,cshapes-2.0,155,1899,assigned,,CHL-1884-1899,CHL-1902-2025
 CHL-1902-2025,Chile,1902,2025,national,CHL,155,South America,reviewed,2026-04-12,cshapes-2.0,155,1902,assigned,,CHL-1899-1902,
 CHN-1800-1895,China (to 1895),1800,1895,national,CHN,710,Asia,draft,2026-04-12,cshapes-2.0,710,1886,assigned,,,CHN-1895-1913

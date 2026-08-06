@@ -64,7 +64,11 @@ CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
 BASELINE = frozenset({
     ("ANT-1816-1960", "ANT-1961-2010"),
     ("BFA-1919-1932", "BFA-1947-1960"),
-    ("CHL-1810-1883", "CHL-1884-1899"),
+    # ("CHL-1810-1883", "CHL-1884-1899") removed 2026-08-06: the gap is CLOSED, by moving
+    # CHL-1810-1883's exclusive end_year to 1884 so the two spans meet. It had sat here as an
+    # accepted one-year gap; whep_crops v1.0 put 7 observed crop rows into 1883, which turned an
+    # accepted hole into a routing failure. The gate was right that a gap existed and gave no
+    # reason to think it mattered -- external data is what settled that.
     ("GHA-1898-1956", "GHA-1957-2025"),
     ("HUN-1918-1919", "HUN-1920-1938"),
     ("KEN-1902-1906", "KEN-1907-1924"),

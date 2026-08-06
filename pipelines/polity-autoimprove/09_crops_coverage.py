@@ -38,7 +38,7 @@ WHAT THE 483 ARE, and they fall into three classes that need different fixes:
   2. PERIOD GAPS THAT ARE NO LONGER LATENT. validate_period_gaps baselines four gaps as "genuinely
      uncovered and all are latent today, since no source reaches them: TCD 1919, SEN 1959, LAO 1953,
      and CIV 1900-1901". THIS PANEL REACHES SEN 1959 AND LAO 1953. It also finds gaps not on that
-     list: CHL 1883 (7 rows -- CHL-1810-1883 ends exclusive at 1883 and CHL-1884-1899 begins at
+     list: CHL 1883 (7 rows -- CHL-1810-1884 ends exclusive at 1883 and CHL-1884-1899 begins at
      1884, so 1883 belongs to neither), HUN 1919, SYR 1945, SDN 1951, LBY 1909.
 
   3. GENUINELY MISSING POLITIES. TKL (Tokelau) has no row at any period, 252 rows. ERI 1952-1992

@@ -116,7 +116,7 @@ CAP-1800-1910,Cape Colony (to 1910),1800,1910,cshapes-2.0,1886.0,assigned,True,a
 CAR-1920-1945,Caroline Islands (Japanese Mandate),1920,1945,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,31
 CAY-1800-1886,Kingdom of Cayor,1800,1886,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CHE-1800-2025,Switzerland,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,3132
-CHL-1810-1883,Chile (to 1883),1810,1883,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),168
+CHL-1810-1884,Chile (to 1884),1810,1884,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 CHL-1884-1899,Chile (1884-1899),1884,1899,cshapes-2.0,1886.0,assigned,True,measured,False,False,vintage 1886 faithful to period 1884-1899,105
 CHL-1899-1902,Chile (1899-1902),1899,1902,cshapes-2.0,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1899-1902,25
 CHL-1902-2025,Chile,1902,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,False,single 1902 polygon held across a 123y span (1902-2025); borders may have changed,2371
