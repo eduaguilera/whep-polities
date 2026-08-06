@@ -532,7 +532,7 @@ are a **curated selection**, not a complete listing.
 - [Bolivia (1909-1938)](polities/bol-1909-1938.md) — `BOL-1909-1938`, draft.
 - [Bolivia](polities/bol-1938-2025.md) — `BOL-1938-2025`, reviewed.
 - [Brazil](polities/bra-1800-2025.md) — `BRA-1800-2025`, superseded, 2 open questions. 226-year row from database floor. Independence 1822. COW: BRA, ccode=140.
-- [Chile (to 1883)](polities/chl-1810-1883.md) — `CHL-1810-1883`, draft.
+- [Chile (to 1884)](polities/chl-1810-1884.md) — `CHL-1810-1884`, draft.
 - [Chile (1884-1899)](polities/chl-1884-1899.md) — `CHL-1884-1899`, draft.
 - [Chile (1899-1902)](polities/chl-1899-1902.md) — `CHL-1899-1902`, reviewed.
 - [Chile](polities/chl-1902-2025.md) — `CHL-1902-2025`, reviewed.
