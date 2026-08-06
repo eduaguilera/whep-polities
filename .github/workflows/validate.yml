@@ -286,6 +286,10 @@ jobs:
         if: '!cancelled()'
         run: python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 
+      - name: iso3_successor_map.csv still matches the chain graph
+        if: '!cancelled()'
+        run: python3 scripts/write_iso3_successor_map.py --check
+
       - name: Polygons — area agreement, claimed-but-absent, reviewed-means-documented
         if: '!cancelled()'
         run: python3 scripts/validate_polygons.py
