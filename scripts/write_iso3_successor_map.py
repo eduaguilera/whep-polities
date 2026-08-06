@@ -141,8 +141,28 @@ def build() -> list:
 
     def resolve(iso, year):
         """Walk backward edges outward, returning the first live row containing `year` and the
-        depth it was found at."""
-        start = min(by_iso[iso], key=lambda r: span(r)[0])
+        depth it was found at.
+
+        START FROM THE ROW ADJACENT TO THE GAP, not from the family's earliest row. The first
+        version did the latter and could therefore only explain gaps BEFORE a family begins --
+        it silently answered nothing for gaps in the MIDDLE of one, which is a different and
+        common shape:
+
+            ERI-1885-1889, ERI-1889-1952, [1952-1992 missing], ERI-1993-2025
+
+        Eritrea was federated with Ethiopia in 1952 and annexed in 1962, so those years belong to
+        ETH-1952-1993 -- and ERI-1993-2025 says so outright, `predecessor: ERI-1889-1952;
+        ETH-1952-1993`. Walking back from ERI-1885-1889 can never reach a row that starts in 1952,
+        so 360 rows of observed Eritrean data resolved to nothing while the answer sat one edge
+        away from the other end of the family.
+
+        Starting from the earliest row that begins AFTER `year` makes the walk approach the gap
+        from the near side. Falling back to the earliest row overall covers the before-the-family
+        case, which is what the original did.
+        """
+        later = [r for r in by_iso[iso] if span(r)[0] > year]
+        start = (min(later, key=lambda r: span(r)[0]) if later
+                 else min(by_iso[iso], key=lambda r: span(r)[0]))
         seen, frontier = {start["polity_code"]}, [start["polity_code"]]
         for depth in range(1, MAX_DEPTH + 1):
             nxt = []
