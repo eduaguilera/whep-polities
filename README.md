@@ -59,6 +59,8 @@ python3 scripts/update_wiki_index.py --check
 python3 pipelines/polity-autoimprove/04_territory_basis.py --check
 python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 python3 scripts/write_feature_index.py --check
+python3 scripts/write_iso3_successor_map.py --check
+python3 scripts/write_iso3_successor_map.py
 
 # provenance and internal consistency
 python3 scripts/validate_schema_contract.py
