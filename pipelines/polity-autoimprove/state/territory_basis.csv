@@ -687,6 +687,7 @@ THA-1904-1907,Thailand (1904-1907),1904,1907,cshapes-2.0,1904.0,assigned,True,me
 THA-1907-1909,Thailand (1907-1909),1907,1909,cshapes-2.0,1907.0,assigned,True,measured,False,False,vintage 1907 faithful to period 1907-1909,4
 THA-1909-2025,Thailand,1909,2025,cshapes-2.0,1909.0,assigned,True,assumed_constant,True,False,single 1909 polygon held across a 116y span (1909-2025); borders may have changed,767
 TJK-1991-2025,Tajikistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
+TKL-1800-2025,Tokelau,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 TKM-1991-2025,Turkmenistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 TLS-1800-2025,Timor-Leste,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,30
 TNGU-1920-1949,Territory of New Guinea,1920,1949,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,True,single 1930 polygon held across a 29y span (1920-1949); borders may have changed,6
