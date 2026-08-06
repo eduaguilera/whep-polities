@@ -282,7 +282,7 @@ GBR-1800-1921,United Kingdom (to 1921),1800,1921,cshapes-europe,1886.0,assigned,
 GBR-1921-2025,United Kingdom,1921,2025,cshapes-2.0,1921.0,assigned,True,assumed_constant,True,False,single 1921 polygon held across a 104y span (1921-2025); borders may have changed,1834
 GCAR-1899-1914,German Caroline Islands (Karolinen),1899,1914,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,6
 GCO-1884-2025,German colonies Oceania,1884,2025,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
-GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,cshapes-2.0,1938.0,assigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),55
+GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,constructed,1938.0,assigned,True,assumed_constant,True,True,single 1938 polygon held across a 37y span (1919-1956); borders may have changed,55
 GEO-1991-2025,Georgia,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 GHA-1821-1888,Ghana (to 1888),1821,1888,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 67y span (1821-1888); borders may have changed,0
 GHA-1888-1898,Ghana (1888-1898),1888,1898,cshapes-2.0,1888.0,assigned,True,measured,False,False,vintage 1888 faithful to period 1888-1898,2

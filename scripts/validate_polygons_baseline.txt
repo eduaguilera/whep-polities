@@ -18,7 +18,9 @@
 #              source features. Nothing can resolve it as a single id; it needs a
 #              builder in scripts/sources/constructed/build.py. 5 rows (was
 #              11). Built so far: BTL-1920-1957, TTPI-1947-1994,
-#              AEF-1910-1960, GBM-1895-1946, SYL-1944-1953. GCT-1919-1956's
+#              AEF-1910-1960, GBM-1895-1946, SYL-1944-1953. GCT-1919-1956 LEFT this list on
+#              2026-08-06: its recipe was registered once the row was retyped `aggregate`, which
+#              is what issue 47's blocker actually was. Its
 #              recipe is verified but unregistered — see issue 47.
 #              The 5 that remain all need GADM extracts absent locally
 #              (Canada, India, Indonesia).
@@ -37,5 +39,4 @@ FRIN-1816-1954   # [compose] estimate: composed-union-puducherry-karikal-mahe-ya
 IDN-BLB-1949-1951   # [compose] proxy: IDN.1_1+IDN.20_1
 IDN-OTH-1949-1951   # [compose] proxy: IDN-complement-JVM-BLB
 
-GCT-1919-1956   # [compose] recipe verified in build_gct_1919_1956(), unregistered pending the BTL typing question (issue 47)
 IDN-JVM-1949-1951
