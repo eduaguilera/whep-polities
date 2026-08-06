@@ -41,6 +41,16 @@ LAYER_B = os.environ.get(
     os.path.expanduser("~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"),
 )
 
+# The reconciled crop panel (whep_crops v1.0, from Juan). Lives under a gitignored path inside
+# the repo by default because it is 103 MB; WHEP_CROPS moves it outside, as layer B is.
+WHEP_CROPS = os.environ.get(
+    "WHEP_CROPS",
+    os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        "data/external/whep_crops/whep_crops_v1.0.parquet",
+    ),
+)
+
 # --------------------------------------------------------------------------------------
 # Documented schemas. These are ASSERTED, not hoped for.
 # --------------------------------------------------------------------------------------
@@ -53,6 +63,26 @@ LAYER_B_COLUMNS = (
                       # Joining this to polities_database.polity_code matches NOTHING and
                       # returns zero counts, not an error. Use `country` with the alias map.
     "is_aggregate",
+)
+
+# whep_crops is keyed on ISO3 + item_code + year, NOT on a free-text label -- so it needs no alias
+# map, and its coverage question is different from layer B's: does every (iso3, year) resolve to
+# exactly one polity?
+#
+# THE COLUMNS THAT DECIDE WHETHER A ROW MAKES A HISTORICAL CLAIM AT ALL:
+#   src_production / src_area / src_yield   a value beginning "backcast" is MODELLED onto a modern
+#                                           ISO3 unit, not observed for a historical entity. 55.4%
+#                                           of production values are back-cast.
+#   state / state_production / ...           `active`, `pre_emergence` (the unit did not exist yet),
+#                                           `not_estimable`, `extinct`.
+# Matching back-cast or pre_emergence rows to a historical polity is a category error: those rows
+# describe a modern territory's past, not a past polity. Filter on both before any coverage claim.
+WHEP_CROPS_COLUMNS = (
+    "iso3", "item_code", "year", "area", "production", "yield",
+    "m_area", "m_production", "m_yield",
+    "src_area", "src_production", "src_yield",
+    "anchor_area", "anchor_production", "anchor_yield",
+    "state", "state_area", "state_production", "state_yield",
 )
 
 # Unit spellings seen in layer B, mapped into hectares and tonnes. Anything absent from
@@ -119,6 +149,26 @@ def require_any_value(df, column: str, expected, where: str, case_insensitive=Tr
         missing = [e for e in expected if e not in present]
         print(f"  note: {where}: {missing} absent from {column!r}; proceeding with {hit}")
     return hit
+
+
+def load_whep_crops(path: str | None = None, columns=None):
+    """Load whep_crops v1.0, asserting the columns this repo relies on.
+
+    Same contract as load_layer_b: a missing file raises with the env var named, and a renamed
+    column raises rather than being coped with. Pass `columns` to read a subset -- the full panel
+    is 1.84M rows by 28 columns.
+    """
+    target = path or WHEP_CROPS
+    if not os.path.exists(target):
+        raise FileNotFoundError(
+            f"whep_crops not found at {target!r}. Set WHEP_CROPS to point at "
+            f"whep_crops_v1.0.parquet, or copy it to data/external/whep_crops/ (gitignored)."
+        )
+    import pandas as pd
+
+    frame = pd.read_parquet(target, columns=list(columns) if columns else None)
+    require_columns(frame, columns or WHEP_CROPS_COLUMNS, f"whep_crops ({target})")
+    return frame
 
 
 def load_layer_b(path: str | None = None):
