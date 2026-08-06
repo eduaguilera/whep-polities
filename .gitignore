@@ -17,6 +17,12 @@ data/geodata/**
 # Compiled / temporary pipeline outputs
 data/compiled/
 
+# Large third-party datasets. data/external/ itself IS tracked -- it holds small committed
+# reference tables like cow_state_system.csv -- but anything here is too big to version and is
+# reproducible from its owner. Loaded via pipelines/polity-autoimprove/extdata.py, which takes an
+# env override so the file can live outside the repo instead (as layer B does).
+data/external/whep_crops/
+
 # Wiki source PDFs (copyrighted; stored locally, not redistributed)
 wiki/sources/pdfs/*.pdf
 !wiki/sources/pdfs/README.md
