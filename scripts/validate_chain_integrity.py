@@ -13,6 +13,7 @@ backwards, or close a cycle, and stay green forever.
     C. CYCLE            — a cycle in the successor graph, i.e. a chronology that loops
     D. LIVE CEILING     — a LIVE row ending at the 2025 ceiling that declares a successor
     E. BROKEN PAGE LINK — a wiki page linking to a `slug.md` that does not exist
+    F. ASYMMETRY        — A says `successor: B` while B does not say `predecessor: A`, or vice versa
 
 What each found first time out:
 
@@ -41,6 +42,29 @@ What each found first time out:
   `validate_references` checks citation markers, not inter-page links, so a rename could
   silently orphan every cross-reference to the renamed page. Two were `zaf-1828-2025`, a
   code that never existed; the correct `zaf-1910-2025` was one directory listing away.
+
+  F was added on 2026-08-06 after the ISO3 successor map (PR 170) came out half-empty. THE GRAPH
+  IS ONLY 55% SYMMETRIC:
+
+      edges asserted as A.successor = B        539
+      edges asserted as B.predecessor = A     430
+      asserted BOTH ways                      345
+      successor-only  (no reverse predecessor) 194
+      predecessor-only (no reverse successor)   85
+
+  Every per-edge check here reads both fields, so none of them noticed. What breaks is any
+  TRAVERSAL: a walk that follows `predecessor` sees 430 of 539 relations and silently misses the
+  rest. SOM-1960-2025 is the clean example -- BSS-1884-1960 and ITS-1908-1960 both declare
+  `successor: SOM-1960-2025`, and SOM declares no predecessor at all, so walking backwards from
+  Somalia found nothing while the relation was sitting there in the other field.
+
+  I was about to hand-patch five rows before measuring. Reading both fields in the map fixed 194
+  relations at once and took its whep_crops coverage from 96 pairs to 255. This signal exists so
+  the asymmetry shrinks rather than growing, since a consumer writing their own traversal will not
+  know to read both.
+
+  The counts are PINNED rather than the edges enumerated -- 279 entries would be unreadable, and
+  what matters is the direction of travel.
 
 Bidirectional, like the other baselines here: a new entry fails, and a baselined entry that
 stops reproducing must be deleted.
@@ -97,6 +121,13 @@ BASELINE_CEILING = {
 # Deliberate forward references to pages that have not been written. `bbc-1885-1895` even
 # carries an explicit `<!-- TODO: page not yet created -->` marker at the link site. The rest
 # are the A-baseline entities above, referenced from prose as well as frontmatter.
+# Signal F. Pinned counts, not enumerated edges: 279 lines would be unreadable and the useful
+# property is that these only go down. Lower them when they do -- the check insists.
+BASELINE_ASYMMETRY = {
+    "successor_only": 194,
+    "predecessor_only": 85,
+}
+
 BASELINE_LINKS = {
     ("bec-1885-1966.md", "bbc-1885-1895"): "British Bechuanaland Crown Colony; the link site carries an explicit 'page not yet created' TODO",
     ("fcm-1920-1960.md", "bca-1919-1961"): "British Cameroon; page not yet created",
@@ -225,12 +256,49 @@ def main() -> int:
     for key in sorted(set(BASELINE_LINKS) - broken):
         stale.append(f"BASELINE_LINKS {key} no longer broken -- remove it")
 
+    # F -------------------------------------------------------------------------------------
+    # LIVE rows only, deliberately. The other signals use every row, because a dead row is still a
+    # real target and a dangling reference to one is still dangling. Asymmetry is different: it
+    # matters because it breaks TRAVERSAL, and every consumer -- matchlib included -- drops
+    # retired and superseded rows before traversing anything. Counting them would pin a number
+    # nobody's walk can reach. (Measured both ways: 225/94 over all rows, 194/85 over live.)
+    walkable = {c: r for c, r in by.items() if is_live(c)}
+    forward = {
+        (code, target)
+        for code, row in walkable.items()
+        for target in links(row.get("successor"))
+        if target in walkable
+    }
+    backward = {
+        (target, code)
+        for code, row in walkable.items()
+        for target in links(row.get("predecessor"))
+        if target in walkable
+    }
+    succ_only = len(forward - backward)
+    pred_only = len(backward - forward)
+    for name, actual in (("successor_only", succ_only), ("predecessor_only", pred_only)):
+        pinned = BASELINE_ASYMMETRY[name]
+        if actual > pinned:
+            problems.append(
+                f"ASYMMETRY: {actual} {name.replace('_', '-')} chain edges, up from {pinned}. "
+                f"An edge asserted in one field only is invisible to any traversal that reads the "
+                f"other, which is how the ISO3 successor map came out half-empty (PR 170)."
+            )
+        elif actual < pinned:
+            problems.append(
+                f"ASYMMETRY: {actual} {name.replace('_', '-')} chain edges, DOWN from {pinned} -- "
+                f"lower the pinned count so the improvement is locked in"
+            )
+
     print(f"rows: {len(rows)}")
     print(f"chain edges: {sum(len(links(r.get(f))) for r in rows for f in ('predecessor', 'successor')):,}")
     print(f"dead targets: {len(dead)} ({len(BASELINE_DEAD)} baselined)")
     print(f"cycles: {len(cycles)}")
     print(f"ceiling rows declaring a successor: {len(ceiling)} ({len(BASELINE_CEILING)} baselined, all dead)")
     print(f"broken page links: {len(broken)} ({len(BASELINE_LINKS)} baselined)")
+    print(f"one-directional chain edges: {succ_only} successor-only, {pred_only} predecessor-only "
+          f"(graph is {len(forward & backward) / max(len(forward | backward), 1):.0%} symmetric)")
 
     if problems or stale:
         print(f"\nFAIL: {len(problems) + len(stale)} problem(s)\n")

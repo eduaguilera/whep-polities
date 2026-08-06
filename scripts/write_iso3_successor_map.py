@@ -12,8 +12,9 @@ era and gets no error back -- the join succeeds and returns zero rows. whep_crop
 keyed exactly that way, and ~1,900 of its observed rows land in that hole (issue 168).
 
 This writes `data/final/iso3_successor_map.csv`: for each (modern iso3, year) that the modern code
-does NOT cover, the polity that was actually live, found by walking `predecessor` edges back from
-the modern family's earliest row.
+does NOT cover, the polity that was actually live, found by walking BOTH chain fields back from
+the modern family's earliest row -- `predecessor` edges, plus `successor` edges read in reverse,
+because the graph is only 55% symmetric and reading one field sees half of it.
 
 DERIVED, NOT HAND-WRITTEN, and that matters. My first attempt was a hand-authored list of code pairs
 (`SER -> SRB`, `TAN -> TZA`, ...). Deriving it from the chain graph instead means it cannot drift
@@ -114,26 +115,50 @@ def build() -> list:
     def covers(iso, year):
         return any(span(r)[0] <= year < span(r)[1] for r in by_iso.get(iso, ()))
 
+    # THE GRAPH IS ONLY 55% SYMMETRIC, so a walk that reads one field sees half of it.
+    #
+    #     edges asserted as A.successor = B       539
+    #     edges asserted as B.predecessor = A     430
+    #     asserted BOTH ways                      345
+    #     successor-only  (no reverse predecessor) 194
+    #     predecessor-only (no reverse successor)   85
+    #
+    # The first version of this walk read `predecessor` only and therefore could not see 194 real
+    # relations -- including SOM-1960-2025, whose predecessors BSS-1884-1960 and ITS-1908-1960 BOTH
+    # declare `successor: SOM-1960-2025` while SOM declares no predecessor at all. I was about to
+    # patch five rows by hand before measuring; reading both fields fixes all 194 at once.
+    #
+    # So build one backward adjacency from both directions: B's predecessors are everything B names
+    # in `predecessor` PLUS everything that names B in its `successor`.
+    backward = collections.defaultdict(set)
+    for code, row in live.items():
+        for target in links(row.get("predecessor")):
+            if target in live:
+                backward[code].add(target)
+        for target in links(row.get("successor")):
+            if target in live:
+                backward[target].add(code)
+
     def resolve(iso, year):
-        """Walk predecessor edges outward, returning the first live row containing `year`
-        and the depth it was found at."""
+        """Walk backward edges outward, returning the first live row containing `year` and the
+        depth it was found at."""
         start = min(by_iso[iso], key=lambda r: span(r)[0])
-        seen, frontier = {start["polity_code"]}, [start]
+        seen, frontier = {start["polity_code"]}, [start["polity_code"]]
         for depth in range(1, MAX_DEPTH + 1):
             nxt = []
-            for row in frontier:
-                for target in links(row.get("predecessor")):
-                    parent = live.get(target)
-                    if parent is None or target in seen:
+            for code in frontier:
+                for target in sorted(backward.get(code, ())):
+                    if target in seen:
                         continue
                     seen.add(target)
+                    parent = live[target]
                     try:
                         lo, hi = span(parent)
                     except (TypeError, ValueError):
                         continue
                     if lo <= year < hi:
                         return parent, depth
-                    nxt.append(parent)
+                    nxt.append(target)
             if not nxt:
                 break
             frontier = nxt
