@@ -396,7 +396,7 @@ KHM-1800-1904,Cambodia (to 1904),1800,1904,national,KHM,,Asia,draft,2026-04-13,c
 KHM-1904-1907,Cambodia (1904-1907),1904,1907,national,KHM,,Asia,draft,2026-04-13,cshapes-2.0,811,1904,assigned,,KHM-1800-1904,KHM-1907-1953
 KHM-1907-1953,Cambodia (1907-1953),1907,1953,national,KHM,811,Asia,draft,2026-04-12,cshapes-2.0,811,1907,assigned,,KHM-1904-1907,KHM-1953-2025
 KHM-1953-2025,Cambodia,1953,2025,national,KHM,811,Asia,draft,2026-04-12,cshapes-2.0,811,1953,assigned,,KHM-1907-1953,
-KIR-1800-2025,Kiribati,1800,2025,national,KIR,946,Oceania,draft,2026-04-13,gadm-4.1-adm0,KIR,,assigned,,,
+KIR-1800-2025,Kiribati,1800,2025,national,KIR,946,Oceania,draft,2026-04-13,gadm-4.1-adm0,KIR,,assigned,811,,
 KJM-1947-1972,Jammu and Kashmir (disputed territory),1947,1972,disputed,,7506,Asia,draft,2026-06-25,cshapes-2.0,7506,1948,assigned,105844,,IND-1949-2025; PAK-1949-1971
 KNA-1800-2025,Saint Kitts and Nevis,1800,2025,national,KNA,60,North America,draft,2026-04-13,gadm-4.1-adm0,KNA,,assigned,,,
 KOR-1800-1945,Korea (to 1945),1800,1945,national,KOR,730,Asia,draft,2026-04-17,constructed,KOR-1800-1945,,assigned,,,KOR-1945-1948
@@ -450,10 +450,10 @@ MASG-1946-1963,Malaya and Singapore,1946,1963,aggregate,MYS,,Asia,draft,2026-06-
 MCO-1800-2025,Monaco,1800,2025,national,MCO,,Europe,reviewed,2026-04-12,gadm-4.1-adm0,MCO,1861,assigned,2.35,,
 MDA-1991-2025,Moldova,1991,2025,national,MDA,359,Europe,reviewed,2026-04-12,cshapes-2.0,359,1991,assigned,,F228-1945-1991,
 MDG-1882-2025,Madagascar,1882,2025,national,MDG,580,Africa,draft,2026-04-13,cshapes-2.0,580,1960,assigned,,,
-MDV-1800-2025,Maldives,1800,2025,national,MDV,781,Asia,draft,2026-04-13,gadm-4.1-adm0,MDV,1887,assigned,172.62,,
+MDV-1800-2025,Maldives,1800,2025,national,MDV,781,Asia,draft,2026-04-13,gadm-4.1-adm0,MDV,1887,estimate,298,,
 MEX-1800-1848,Mexico (to 1848),1800,1848,national,MEX,,North America,draft,2026-04-12,cliopatria,Federated Republic of Mexico,1825,assigned,,,MEX-1848-2025
 MEX-1848-2025,Mexico,1848,2025,national,MEX,,North America,draft,2026-04-12,cshapes-2.0,70,1886,assigned,,MEX-1800-1848,
-MHL-1874-2025,Marshall Islands,1874,2025,national,MHL,983,Oceania,draft,2026-04-13,gadm-4.1-adm0,MHL,,assigned,,,
+MHL-1874-2025,Marshall Islands,1874,2025,national,MHL,983,Oceania,draft,2026-04-13,gadm-4.1-adm0,MHL,,estimate,181,,
 MKD-1991-2025,North Macedonia,1991,2025,national,MKD,343,Europe,reviewed,2026-04-12,cshapes-2.0,343,1991,assigned,,F248-1920-1991; F248-1991-1992,
 MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,national,,679,Asia,draft,2026-06-26,cshapes-2.0,678,1930,assigned,136555,,YEM-1990-2025
 MLI-1890-1960,French Sudan (1890-1960),1890,1960,national,MLI,432,Africa,draft,2026-06-24,cshapes-2.0,432,1905,assigned,1736746,,MLI-1960-2025
@@ -523,7 +523,7 @@ NPL-1800-1816,Greater Nepal,1800,1816,national,NPL,,Asia,draft,2026-04-13,cliopa
 NPL-1816-2025,Nepal,1816,2025,national,NPL,,Asia,draft,2026-04-12,cliopatria,Nepal,1929,assigned,,NPL-1800-1816,
 NRH-1911-1953,Northern Rhodesia (1911-1953),1911,1953,colonial,ZMB,,,draft,,cshapes-2.0,551,1911,assigned,751924,NWR-1900-1905,FRN-1953-1964
 NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,national,ZMB,551,Africa,draft,2026-07-02,cshapes-2.0,551,1953,assigned,751924,NRH-1911-1953,ZMB-1964-2025
-NRU-1888-2025,Nauru,1888,2025,national,NRU,970,Oceania,draft,2026-04-13,gadm-4.1-adm0,NRU,,assigned,,,
+NRU-1888-2025,Nauru,1888,2025,national,NRU,970,Oceania,draft,2026-04-13,gadm-4.1-adm0,NRU,,assigned,21,,
 NSW-1800-1900,New South Wales (to 1900),1800,1900,national,NSW,,Oceania,draft,2026-04-15,cshapes-2.0,901,1886,assigned,,,AUS-1901-2025
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,national,NGA,,Africa,draft,2026-04-15,none,,,unassigned,,,NNI-1899-1904
 NWR-1900-1905,Northwestern Rhodesia (1900-1905),1900,1905,national,NWR,,Africa,draft,2026-04-13,cshapes-2.0,5519,1900,assigned,,,NRH-1911-1953
@@ -687,7 +687,7 @@ THA-1904-1907,Thailand (1904-1907),1904,1907,national,THA,800,Asia,draft,2026-04
 THA-1907-1909,Thailand (1907-1909),1907,1909,national,THA,800,Asia,draft,2026-04-12,cshapes-2.0,800,1907,assigned,,THA-1904-1907,THA-1909-2025
 THA-1909-2025,Thailand,1909,2025,national,THA,800,Asia,reviewed,2026-04-12,cshapes-2.0,800,1909,assigned,,THA-1907-1909,
 TJK-1991-2025,Tajikistan,1991,2025,national,TJK,702,Asia,reviewed,2026-04-12,cshapes-2.0,702,1991,assigned,,F228-1945-1991,
-TKL-1800-2025,Tokelau,1800,2025,territory,TKL,,Oceania,draft,2026-08-06,gadm-4.1-adm0,TKL,,assigned,16,,
+TKL-1800-2025,Tokelau,1800,2025,territory,TKL,,Oceania,draft,2026-08-06,gadm-4.1-adm0,TKL,,estimate,12,,
 TKM-1991-2025,Turkmenistan,1991,2025,national,TKM,701,Asia,reviewed,2026-04-12,cshapes-2.0,701,1991,assigned,,F228-1945-1991,
 TLS-1800-2025,Timor-Leste,1800,2025,national,TLS,860,Asia,draft,2026-04-12,cshapes-2.0,860,1886,assigned,,,
 TNGU-1920-1949,Territory of New Guinea,1920,1949,colonial,PNG,912,Oceania,draft,2026-06-26,cshapes-2.0,912,1930,assigned,237536,GNGU-1884-1914,PNG-1949-1975
@@ -705,7 +705,7 @@ TUR-1914-1918,Türkiye (1914-1918),1914,1918,national,TUR,640,Asia,reviewed,2026
 TUR-1918-1920,Türkiye (1918-1920),1918,1920,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1918,assigned,,TUR-1914-1918,TUR-1920-2025
 TUR-1920-2025,Türkiye (1920-2025),1920,2025,national,TUR,640,Asia,draft,2026-04-12,cshapes-2.0,640,1923,assigned,,TUR-1918-1920,
 TUS-1800-1860,Tuscany,1800,1860,national,TUS,337,Europe,draft,2026-04-15,cliopatria,Grand Duchy of Tuscany,1848,assigned,24632,,ITA-1861-1919
-TUV-1800-2025,Tuvalu,1800,2025,national,TUV,947,Oceania,draft,2026-04-13,gadm-4.1-adm0,TUV,,assigned,,,
+TUV-1800-2025,Tuvalu,1800,2025,national,TUV,947,Oceania,draft,2026-04-13,gadm-4.1-adm0,TUV,,estimate,26,,
 TWN-1895-1945,Formosa (Japanese Taiwan),1895,1945,colonial,TWN,,Asia,draft,2026-06-24,cshapes-2.0,713,1949,assigned,36193,CHN-1800-1895,TWN-1945-2025
 TWN-1945-2025,Taiwan,1945,2025,national,TWN,713,Asia,draft,2026-06-24,cshapes-2.0,713,1949,assigned,36193,TWN-1895-1945,
 TWO-1800-1860,Two Sicilies,1800,1860,national,TWO,329,Europe,draft,2026-04-15,cliopatria,Kingdom of the Two Sicilies,1820,assigned,,,ITA-1861-1919

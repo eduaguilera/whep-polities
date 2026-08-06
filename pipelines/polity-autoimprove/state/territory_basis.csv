@@ -450,10 +450,10 @@ MASG-1946-1963,Malaya and Singapore,1946,1963,constructed,,assigned,True,assumed
 MCO-1800-2025,Monaco,1800,2025,gadm-4.1-adm0,1861.0,assigned,True,assumed_constant,True,True,single 1861 polygon held across a 225y span (1800-2025); borders may have changed,5
 MDA-1991-2025,Moldova,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 MDG-1882-2025,Madagascar,1882,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 143y span (1882-2025); borders may have changed,1079
-MDV-1800-2025,Maldives,1800,2025,gadm-4.1-adm0,1887.0,assigned,True,assumed_constant,True,False,single 1887 polygon held across a 225y span (1800-2025); borders may have changed,0
+MDV-1800-2025,Maldives,1800,2025,gadm-4.1-adm0,1887.0,estimate,True,assumed_constant,True,False,single 1887 polygon held across a 225y span (1800-2025); borders may have changed,0
 MEX-1800-1848,Mexico (to 1848),1800,1848,cliopatria,1825.0,assigned,False,assumed_constant,True,False,single 1825 polygon held across a 48y span (1800-1848); borders may have changed,0
 MEX-1848-2025,Mexico,1848,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 177y span (1848-2025); borders may have changed,4253
-MHL-1874-2025,Marshall Islands,1874,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MHL-1874-2025,Marshall Islands,1874,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MKD-1991-2025,North Macedonia,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,True,single 1930 polygon held across a 44y span (1918-1962); borders may have changed,28
 MLI-1890-1960,French Sudan (1890-1960),1890,1960,cshapes-2.0,1905.0,assigned,True,assumed_constant,True,False,single 1905 polygon held across a 70y span (1890-1960); borders may have changed,367
@@ -687,7 +687,7 @@ THA-1904-1907,Thailand (1904-1907),1904,1907,cshapes-2.0,1904.0,assigned,True,me
 THA-1907-1909,Thailand (1907-1909),1907,1909,cshapes-2.0,1907.0,assigned,True,measured,False,False,vintage 1907 faithful to period 1907-1909,4
 THA-1909-2025,Thailand,1909,2025,cshapes-2.0,1909.0,assigned,True,assumed_constant,True,False,single 1909 polygon held across a 116y span (1909-2025); borders may have changed,767
 TJK-1991-2025,Tajikistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
-TKL-1800-2025,Tokelau,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+TKL-1800-2025,Tokelau,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 TKM-1991-2025,Turkmenistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 TLS-1800-2025,Timor-Leste,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,30
 TNGU-1920-1949,Territory of New Guinea,1920,1949,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,True,single 1930 polygon held across a 29y span (1920-1949); borders may have changed,6
@@ -705,7 +705,7 @@ TUR-1914-1918,Türkiye (1914-1918),1914,1918,cshapes-2.0,1914.0,assigned,True,me
 TUR-1918-1920,Türkiye (1918-1920),1918,1920,cshapes-2.0,1918.0,assigned,True,measured,False,False,vintage 1918 faithful to period 1918-1920,2
 TUR-1920-2025,Türkiye (1920-2025),1920,2025,cshapes-2.0,1923.0,assigned,True,assumed_constant,True,True,single 1923 polygon held across a 105y span (1920-2025); borders may have changed,1658
 TUS-1800-1860,Tuscany,1800,1860,cliopatria,1848.0,assigned,True,assumed_constant,True,False,single 1848 polygon held across a 60y span (1800-1860); borders may have changed,0
-TUV-1800-2025,Tuvalu,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+TUV-1800-2025,Tuvalu,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 TWN-1895-1945,Formosa (Japanese Taiwan),1895,1945,cshapes-2.0,1949.0,assigned,True,back_projected,True,False,polygon vintage 1949 is AFTER the period ends (1945) — later/modern border applied back,719
 TWN-1945-2025,Taiwan,1945,2025,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,True,single 1949 polygon held across a 80y span (1945-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),443
 TWO-1800-1860,Two Sicilies,1800,1860,cliopatria,1820.0,assigned,True,assumed_constant,True,False,single 1820 polygon held across a 60y span (1800-1860); borders may have changed,0
