@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "ec8844ac8f67a6fd1333617f4fc6a1e7d47c7fd884c08a0a537aff87381e5a84",
+ "identity_sha256": "2d52c15c43d899133be29877813b1ef4450d875cf7c85b6b46f654b5dad6199a",
  "counts": {
   "total": 750,
   "live": 709,
@@ -290,7 +290,7 @@
   "CAR-1920-1945",
   "CAY-1800-1886",
   "CHE-1800-2025",
-  "CHL-1810-1883",
+  "CHL-1810-1884",
   "CHL-1884-1899",
   "CHL-1899-1902",
   "CHL-1902-2025",
