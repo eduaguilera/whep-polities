@@ -709,9 +709,7 @@ def build_gbm_1895_1946() -> ogr.Geometry:
 
 
 def build_gct_1919_1956() -> ogr.Geometry:
-    """NOT REGISTERED IN BUILDERS — see the note at the end of this docstring.
-
-    Gold Coast and British Togoland 1919-1956 = Gold Coast (452) + the British
+    """Gold Coast and British Togoland 1919-1956 = Gold Coast (452) + the British
     Togoland mandate (462's 1922-1955 step).
 
     Sampled at 1930, inside both steps. 212,416 + 26,630 = 239,046 km2 against the
@@ -757,6 +755,18 @@ def build_syl_1944_1953() -> ogr.Geometry:
 
 
 BUILDERS = [
+    (
+        "GCT-1919-1956",
+        "Gold Coast and British Togoland (1919-1956)",
+        build_gct_1919_1956,
+        "CShapes gwcode 452 (Gold Coast, 1898-1956 step) union gwcode 462 (the British Togoland "
+        "mandate, 1922-1955) = 239,046 km2 with ZERO overlap. Registered 2026-08-06 after issue 47's "
+        "blocker was resolved by retyping this row `aggregate`, the MASG/PAPNG pattern for a "
+        "combined reporting unit -- it and BTL-1920-1957 both being `colonial` on iso3 GHA is what "
+        "made audit_family_shadowing fail. Corroborated three ways: CShapes' own post-plebiscite "
+        "Gold Coast step is 239,046 to 0.000%, FAO states 237,880 for 'Gold Coast and Br Togoland' "
+        "(0.49%), and the page derives 240,056 from historical sources (0.42%).",
+    ),
     (
         "PAPNG-1920-1949",
         "Papua and New Guinea (combined reporting unit)",

@@ -101,6 +101,18 @@ BASELINE = {
     # both typed `colonial` and overlap at 9x (issue 47). The type is what makes the difference
     # between a reporting unit and a collision, which is why `aggregate` was chosen here.
     "TPAP-1906-1949 / PAPNG-1920-1949": "Papua inside the Papua+New Guinea reporting unit (2.06x, by construction)",
+    # British Togoland inside the Gold Coast + British Togoland reporting unit, added 2026-08-06
+    # when GCT-1919-1956's polygon was finally attached. 9.00x, and by construction: GCT is the
+    # union of the Gold Coast (212,416 km2) and exactly this mandate (26,630).
+    #
+    # THIS PAIR IS WHY GCT SAT UNATTACHED FOR A WEEK. Both rows were typed `colonial` on iso3 GHA,
+    # so this audit read them as two colonies of wildly different size overlapping 1920-1956 and
+    # reported "neither reading clear" -- correctly, because nothing in the data said which was the
+    # container. Retyping GCT `aggregate` (the MASG/CODRU/PAPNG pattern for a combined reporting
+    # unit) changed the audit's own verdict to "probable component in parent", which is the
+    # relationship that actually holds. The type field was carrying the information all along; it
+    # was just set to the wrong value.
+    "BTL-1920-1957 / GCT-1919-1956": "British Togoland inside the Gold Coast + Br Togoland reporting unit (9.00x, by construction)",
     "TNGU-1920-1949 / PAPNG-1920-1949": "New Guinea inside the Papua+New Guinea reporting unit (1.94x, by construction)",
     "BSW-1841-1963 / GBM-1895-1946": "Sarawak vs British Malaya, different territories",
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",

@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "567e2703700961b663a8617561815770af33844944998623648914906d652e48",
+ "identity_sha256": "61b7ec0eacd16acc1ba9e6fdde6d09f33b6068947ef5de0fd78031d138cf95db",
  "counts": {
   "total": 751,
   "live": 710,
@@ -73,7 +73,6 @@
  "polygon_gap_polity_codes": [
   "CAN-1800-1866",
   "FRIN-1816-1954",
-  "GCT-1919-1956",
   "IDN-BLB-1949-1951",
   "IDN-JVM-1949-1951",
   "IDN-OTH-1949-1951"
