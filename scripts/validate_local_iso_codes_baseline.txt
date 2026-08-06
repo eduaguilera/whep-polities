@@ -3,9 +3,10 @@
 # This vocabulary is a published interface: a consumer joins on it, so adding a value
 # changes what that join matches and changing one re-points every row carrying it.
 #
-# 276 values over 658 rows.
+# 280 values over 680 rows (2026-08-06; the header had said 276/658 and was stale, which is
+# what a count in a comment does when the gate asserts the LIST rather than the number).
 #
-# Of these, 56 are NOT ISO 3166 codes but local identifiers for entities that have none
+# Of these, ~56 are NOT ISO 3166 codes but local identifiers for entities that have none
 # (AUH Austria-Hungary, OTT Ottoman Empire, AOF French West Africa, NSW New South Wales,
 # ZNZ Zanzibar, plus this project's own aggregates ROW/RAFR/RASI/REUR/RLAM/RNAM/ROCE).
 # They are marked `local` below. A consumer cannot match them against ISO-keyed data.
@@ -67,10 +68,12 @@ COL
 COM
 CPV
 CRI
+CSK
 CUB
 CXR
 CYP
 CZE
+DDR
 DEU
 DJI
 DMA
@@ -258,6 +261,7 @@ TCD
 TGO
 THA
 TJK
+TKL
 TKM
 TLS
 TON
@@ -283,10 +287,8 @@ VNM
 VUT
 WSM
 YEM
+YUG
 ZAF
 ZMB
 ZNZ  # local
 ZWE
-CSK
-DDR
-YUG
