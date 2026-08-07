@@ -223,6 +223,34 @@ def mutate_shrunk_successor(root, gpd, make_valid, affinity):
 
 
 
+def mutate_collapsed_planar_border(root, gpd, make_valid, affinity):
+    """Re-simplify the USA polygon at 0.01 degrees, which is how the defect was MADE.
+
+    Not a synthetic mutation: this is the exact operation `build_database.py` used to
+    perform last, and it is what turned CShapes' 124-vertex 49th-parallel border into a
+    single 27.6-degree chord. Douglas-Peucker measures deviation from the chord in PLANAR
+    degrees, so every vertex sitting on the parallel is the first thing it deletes -- and
+    under s2 the surviving chord renders as a great circle reaching latitude 49.83, 92 km
+    into Canada, booking 12.33 Mha of Canadian prairie to the United States.
+
+    This case is the reason the gate exists rather than a nice-to-have, because the defect
+    is invisible to every other gate here BY CONSTRUCTION. Planar area is unchanged to the
+    bit, so the area gates cannot move; USA + CAN still sums to exactly 1.0000 in every
+    cell, so nothing conservation-based can object. A gate that only fires on
+    non-conservation would pass this mutation, which is precisely what the real database
+    did for as long as it shipped."""
+    from shapely import simplify
+
+    g = gpd.read_file(GPKG)
+    i = g.index[g.polity_code == "USA-1959-2025"][0]
+    g.loc[i, "geometry"] = simplify(g.loc[i, "geometry"], 0.01, preserve_topology=True)
+    g.to_file(os.path.join(root, "data/final/polities_database.gpkg"), driver="GPKG")
+    return (
+        "re-ran SimplifyPreserveTopology(0.01) on USA-1959-2025, collapsing its "
+        "49th-parallel border back to a single chord"
+    )
+
+
 def mutate_code_year_disagreement(root, gpd, make_valid, affinity):
     """Make one polity's start_year disagree with the years in its own code. A consumer
     reading the span off the identifier then gets a different answer from one reading the
@@ -635,6 +663,13 @@ CASES = (
         "a polygon bound to a smaller feature inside the right territory",
     ),
     (
+        "validate_spherical_edges.py",
+        mutate_collapsed_planar_border,
+        "USA-1959-2025",
+        "a straight treaty border stored sparsely, which a spherical consumer "
+        "renders 92 km off line while every conservation check still passes",
+    ),
+    (
         "validate_code_year_agreement.py",
         mutate_code_year_disagreement,
         "FRA-1800-1871",
@@ -723,12 +758,24 @@ ARGS = {"write_manifest.py": ("--check",), "build_database.py": ("--check",)}
 # FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
 # half of this script is what caught that; exit-code alone would have passed it.
 EXTRA_SCRIPTS = {
-    "validate_polygon_binding_determinism.py": ("sources.yaml",),"build_database.py": ("sources.yaml",),
-    # The s2 gate imports s2_failure()/geodesic_area_km2() from the repair script, so the
-    # two cannot disagree about what "s2 can measure this" means. Staged without it the
-    # gate dies on the import -- exit 2, no defect named, and the "must name the defect"
-    # arm of this harness is what would report that as the wrong kind of failure.
+    "validate_polygon_binding_determinism.py": ("sources.yaml",),
+    # The s2 gate imports s2_failure()/geodesic_area_km2() from the repair script, so the two
+    # cannot disagree about what "s2 can measure this" means. Staged without it the gate dies on
+    # the import -- exit 2, no defect named, and the "must name the defect" arm of this harness is
+    # what would report that as the wrong kind of failure.
     "validate_s2_polygons.py": ("repair_s2_polygons.py",),
+    # spherical_edges.py is a LIBRARY, not a gate: it holds the great-circle maths that
+    # build_database.py and validate_spherical_edges.py share, so neither can be staged without
+    # it. It deliberately does not start with validate_/audit_/crosscheck_, so
+    # check_every_gate_runs_in_ci does not demand a workflow step for it.
+    #
+    # Adding it to build_database.py's list was not optional and was not foreseen: the import sits
+    # at module level, so a scratch repo without it made the build_database case die with an
+    # ImportError -- exit 1 for entirely the wrong reason. The case still "fired", and only the
+    # requirement that a gate NAME the defect separated a detected mutation from a crash before
+    # reaching it. That is the third time that requirement has earned its keep in this file.
+    "build_database.py": ("sources.yaml", "spherical_edges.py"),
+    "validate_spherical_edges.py": ("spherical_edges.py",),
 }
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.

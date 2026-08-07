@@ -36,6 +36,9 @@ from typing import Any
 import yaml
 from osgeo import ogr, osr
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import spherical_edges  # noqa: E402  (needs the path above)
+
 ogr.UseExceptions()
 osr.UseExceptions()
 
@@ -392,6 +395,54 @@ def load_s2_repair():
         )
         return lambda wkb: None
     return repair_wkb
+def densify_planar_edges(geom: ogr.Geometry, tolerance_deg: float) -> ogr.Geometry:
+    """Insert vertices so each edge's GREAT CIRCLE tracks the line it was drawn as.
+
+    Every source here is a planar product: a straight treaty border is two
+    vertices, and a planar viewer joins them with the straight line the treaty
+    describes. A consumer using s2 -- which `sf` does by default, and which any
+    geodesic area requires -- joins them with a GREAT CIRCLE instead, and between
+    two points at equal latitude that bulges poleward. The published 49th-parallel
+    US/Canada border was one segment 27.6 degrees wide, so it rendered as an arc
+    reaching 49.83 and booked 12.33 Mha of Canadian prairie to the United States
+    (eduaguilera/whep#529).
+
+    THIS MUST RUN AFTER SIMPLIFICATION, not before, and the ordering is the whole
+    fix rather than a detail. Douglas-Peucker measures deviation from the chord in
+    PLANAR degrees, so vertices lying on the chord are the first thing it deletes
+    -- and that is how the worst case in this database was created rather than
+    inherited: CShapes 2.0 stores that border with 124 vertices, widest gap 1.95
+    degrees, and `SimplifyPreserveTopology(0.01)` collapses all 124 into one
+    chord. Densifying first would simply hand DP more vertices to delete.
+
+    Planar-side this is a no-op by construction -- the inserted points lie exactly
+    ON the existing segment, so planar area is unchanged to the bit and no ring can
+    gain a self-intersection. Verified on the published database: planar area delta
+    0.0, and the planar-invalid count unchanged.
+    """
+    if tolerance_deg <= 0:
+        return geom
+    flat = ogr.GT_Flatten(geom.GetGeometryType())
+    if flat == ogr.wkbPolygon:
+        out = ogr.Geometry(ogr.wkbPolygon)
+        for i in range(geom.GetGeometryCount()):
+            ring = geom.GetGeometryRef(i)
+            coords = [
+                (ring.GetX(j), ring.GetY(j)) for j in range(ring.GetPointCount())
+            ]
+            new_ring = ogr.Geometry(ogr.wkbLinearRing)
+            for lon, lat in spherical_edges.densify_ring(coords, tolerance_deg):
+                new_ring.AddPoint_2D(lon, lat)
+            out.AddGeometry(new_ring)
+        return out
+    if flat in (ogr.wkbMultiPolygon, ogr.wkbGeometryCollection):
+        out = ogr.Geometry(flat)
+        for i in range(geom.GetGeometryCount()):
+            out.AddGeometry(
+                densify_planar_edges(geom.GetGeometryRef(i), tolerance_deg)
+            )
+        return out
+    return geom
 
 
 def write_gpkg(
@@ -399,6 +450,7 @@ def write_gpkg(
     geometries: dict[str, ogr.Geometry],
     out_path: Path,
     simplify_tolerance: float,
+    densify_tolerance: float = spherical_edges.DEFAULT_TOLERANCE_DEG,
     allow_fewer: bool = False,
 ) -> None:
     # GUARD: the raw polygon sources under data/geodata are gitignored, so a
@@ -471,6 +523,8 @@ def write_gpkg(
             g = geom.Clone()
             if simplify_tolerance > 0:
                 g = g.SimplifyPreserveTopology(simplify_tolerance)
+            # After simplification, never before: see densify_planar_edges.
+            g = densify_planar_edges(g, densify_tolerance)
             if g.GetGeometryType() != ogr.wkbMultiPolygon:
                 g = ogr.ForceToMultiPolygon(g)
             # TWO REPAIRS, DIFFERENT AXES, IN THIS ORDER.
@@ -609,6 +663,15 @@ def main() -> int:
         default=0.01,
         help="Douglas-Peucker tolerance in degrees (0 to disable). "
              "Default 0.01 ≈ 1 km at equator; keeps the master GPKG under 5 MB.",
+    )
+    ap.add_argument(
+        "--densify-tolerance",
+        type=float,
+        default=spherical_edges.DEFAULT_TOLERANCE_DEG,
+        help="max angular gap in degrees, AFTER simplification, between an edge's "
+             "planar line and the great circle a spherical consumer renders it as "
+             "(0 to disable). Default 0.001 deg = 111 m; see "
+             "scripts/spherical_edges.py for why the number is what it is.",
     )
     ap.add_argument(
         "--allow-fewer-geometries",
@@ -829,8 +892,10 @@ def main() -> int:
 
     print(f"Writing CSV ({len(rows)} rows)...")
     write_csv(rows, csv_path)
-    print(f"Writing GeoPackage ({len(geometries)} geometries, simplify={args.simplify_tolerance})...")
+    print(f"Writing GeoPackage ({len(geometries)} geometries, "
+          f"simplify={args.simplify_tolerance}, densify={args.densify_tolerance})...")
     write_gpkg(rows, geometries, gpkg_path, args.simplify_tolerance,
+               densify_tolerance=args.densify_tolerance,
                allow_fewer=args.allow_fewer_geometries)
     print("Done writing outputs.")
 

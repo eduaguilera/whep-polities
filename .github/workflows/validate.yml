@@ -436,6 +436,22 @@ jobs:
         # a gate that only approximates it can pass while the consumer aborts.
         if: '!cancelled()'
         run: python3 scripts/validate_s2_polygons.py
+      - name: Polygons — a planar straight border still renders as a straight border
+        # The 49th-parallel US/Canada border shipped as ONE segment 27.6 degrees of
+        # longitude wide, and under s2 -- which sf uses by default, and which any
+        # geodesic area requires -- a segment is a GREAT CIRCLE bulging poleward
+        # between two equal-latitude points. It therefore rendered as an arc reaching
+        # latitude 49.83, 92 km into Canada, booking 12.33 Mha of Canadian prairie to
+        # the United States. NOT ONE OTHER CHECK HERE COULD SEE IT: USA + CAN =
+        # 1.0000 in every cell, no overlap, no gap, planar area identical to the bit.
+        # A clean mutual displacement, and every gate above is either planar or
+        # conservation-based -- conservation detects non-conservation, never
+        # misattribution. Half the cause was ours: CShapes stores that border with
+        # 124 vertices and build_database.py's own 0.01-degree Douglas-Peucker
+        # deleted all 124, because DP measures deviation from the chord in PLANAR
+        # degrees. eduaguilera/whep#529.
+        if: '!cancelled()'
+        run: python3 scripts/validate_spherical_edges.py
 
 
       - name: Identity — a code's years match its own columns
