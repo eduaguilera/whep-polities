@@ -72,7 +72,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 REGRESSION_PINS = {
     "FJI-1800-2025": 18_710.0,
     "DEU-1871-1919": 538_028.0,
-    "FID-1887-1954": 701_416.0,
+    # 701_416 -> 755_602 on 2026-08-07, and the pin was stale rather than the geometry wrong.
+    # This pin was recorded on 2026-08-05 against a polygon that CONTAINED NEW CALEDONIA, REUNION
+    # AND KERGUELEN: Cliopatria's "French Indochina" feature is a record of French possessions east
+    # of Africa, and all 35 of its steps carry those islands. PR 152 replaced it with the 1920 step
+    # clipped to a mainland envelope (99-110.5E, 7.5-24.5N), which drops 11 parts totalling 36,992
+    # km2 and keeps Guangzhouwan. The new figure being LARGER despite dropping territory is the
+    # vintage moving 1900 -> 1920, into Cliopatria's stable 1908-1939 plateau.
+    "FID-1887-1954": 755_602.0,
     "FRA-1800-1871": 532_627.0,
     "FRA-1800-1919": 532_627.0,
     "GBR-1800-1921": 312_224.0,

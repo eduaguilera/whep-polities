@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Count invalid geometries in the published GeoPackage and hold the number down.
 
-41 of 703 polygons fail `is_valid` in the published CRS. That matters because an invalid geometry makes every
+ZERO of 713 polygons fail `is_valid`, down from 44 (see BASELINE_INVALID). That matters because an invalid geometry makes every
 spatial predicate unreliable: `contains`, `intersects` and `area` may return a wrong answer
 or raise, depending on the GEOS version. `validate_spatial_containment` and
 `validate_family_areas` both read these same geometries, so an invalid polygon silently
@@ -71,17 +71,23 @@ CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
 
 # Polygons known to be invalid, with the source that supplied them. Being here is a debt
 # record, not an exemption: the list is bidirectional, so it shrinks and cannot grow.
-BASELINE_INVALID = {
-    # ONE row left, down from 44 on 2026-08-07. build_database.py now repairs an invalid geometry
-    # with MakeValid when that costs at most 0.5% of its area, and reports what it refuses. 43 were
-    # repaired for 110 km2 BETWEEN THEM; this one would cost 12,845 km2 on its own.
-    #
-    # Keeping it is PR 140's reasoning applied, not ignored: make_valid gives 1,730,793 km2 and
-    # buffer(0) gives 1,743,638 for Qajar Iran, and choosing between them is a territorial
-    # judgement about whether a self-overlapping ring is a digitising artefact or two real rings.
-    # 0.748% is above the threshold precisely so this row has to be decided on its page.
-    "IRN-1800-1828": "cliopatria",
-}
+BASELINE_INVALID = {}
+
+# EMPTY, AND THAT IS THE POINT. 44 -> 1 -> 0 in two days:
+#
+#   PR 178  a conditional GEOS MakeValid at a <=0.5% area budget repaired 43, leaving
+#           IRN-1800-1828, whose repair would have moved 12,845 km2.
+#   PR 147  the s2 repair (scripts/repair_s2_polygons.py) repaired that one too, and it is
+#           AREA-PRESERVING: IRN-1800-1828 still measures exactly 1,743,638 km2, not the
+#           1,730,793 that make_valid would have given. The 12,845 km2 decision this
+#           docstring warned about was never taken -- it was made unnecessary.
+#
+# So the outcome PR 140 was protecting is intact: nobody silently chose between make_valid
+# and buffer(0) on Qajar Iran. A repair that preserves area does not need the judgement.
+#
+# The empty baseline is bidirectional like the rest: a new invalid polygon fails here, and
+# it can no longer be waved through by adding a line, because there is no precedent line to
+# copy.
 
 # GEOS VALIDITY IS NOT s2 VALIDITY, AND THIS GATE ONLY SEES GEOS.
 #
@@ -99,9 +105,7 @@ BASELINE_INVALID = {
 # empty intersection in both this database and whep's committed snapshot.
 #
 # This gate CANNOT be extended to cover it from Python without s2 bindings. Tracked separately.
-BASELINE_COUNT_BY_SOURCE = {
-    "cliopatria": 1,
-}
+BASELINE_COUNT_BY_SOURCE = {}
 
 
 def main() -> int:
