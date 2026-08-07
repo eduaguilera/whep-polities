@@ -48,7 +48,20 @@ COUNTRIES=(
 
 ADM0="$OUT_DIR/gadm41_adm0.gpkg"
 ADM1="$OUT_DIR/gadm41_adm1.gpkg"
-rm -f "$ADM0" "$ADM1"
+ADM2="$OUT_DIR/gadm41_adm2.gpkg"
+rm -f "$ADM0" "$ADM1" "$ADM2"
+
+# Level 2 is built for a SHORT EXPLICIT LIST, not for every country, because a global adm2 extract
+# is far larger than anything here needs and the per-country files already on disk can be re-read
+# at any time. Extend this list, not the COUNTRIES loop.
+#
+# IDN added 2026-08-07: IDN-BLB-1949-1951 is Bali and LOMBOK, and adm1 cannot separate Lombok from
+# Sumbawa -- Nusa Tenggara Barat contains both, so the adm1 union measured 25,261 km2 against the
+# page's declared 10,505 (140% over) and the builder was left unregistered for it. At adm2 Lombok
+# is five districts (Lombok Barat/Tengah/Timur/Utara plus Mataram) totalling 4,570 km2, and
+# Bali + Lombok = 10,160, which is 3.3% of the declared figure. IDN-OTH-1949-1951 is the
+# complement of Java and Bali/Lombok, so it was blocked behind the same thing.
+ADM2_COUNTRIES=(IDN)
 
 for iso in "${COUNTRIES[@]}"; do
   CFILE="$OUT_DIR/gadm41_${iso}.gpkg"
@@ -69,6 +82,16 @@ for iso in "${COUNTRIES[@]}"; do
       ogr2ogr -f GPKG -update -append -nln polygons "$ADM0" "$CFILE" ADM_ADM_0
     fi
   fi
+  # Level 2 (admin-2 / districts) -- only for the countries named in ADM2_COUNTRIES
+  for want in "${ADM2_COUNTRIES[@]}"; do
+    if [ "$iso" = "$want" ] && ogrinfo -q "$CFILE" 2>/dev/null | grep -q 'ADM_ADM_2'; then
+      if [ ! -f "$ADM2" ]; then
+        ogr2ogr -f GPKG -nln polygons "$ADM2" "$CFILE" ADM_ADM_2
+      else
+        ogr2ogr -f GPKG -update -append -nln polygons "$ADM2" "$CFILE" ADM_ADM_2
+      fi
+    fi
+  done
   # Level 1 (admin-1 / provinces)
   if ogrinfo -q "$CFILE" 2>/dev/null | grep -q 'ADM_ADM_1'; then
     if [ ! -f "$ADM1" ]; then
@@ -80,3 +103,4 @@ for iso in "${COUNTRIES[@]}"; do
 done
 echo "Wrote: $ADM0"
 echo "Wrote: $ADM1"
+[ -f "$ADM2" ] && echo "Wrote: $ADM2 (countries: ${ADM2_COUNTRIES[*]})"

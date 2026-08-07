@@ -94,6 +94,11 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Fixing the routing found 99 rows labelled `Indochina Viet Nam` that were landing on the
     # WHOLE rather than on Vietnam, which would have summed a part into its own aggregate.
     "FID-1887-1954",
+    # British India over the European enclaves, added 2026-08-07 when FRIN-1816-1954's polygon was
+    # attached. Pondicherry, Karikal, Mahe and Yanam sit inside India by definition, as Goa and
+    # Daman-and-Diu already did for PTIND-1816-1961. Hyderabad and Kashmir likewise.
+    "IND-1947-1949",
+    "IND-1949-2025",
     # Occupied and divided Germany over its occupation zones AND the Saar. Both became
     # containers on 2026-08-05 only because SAA-1947-1957's polygon was attached, which pushed
     # each from two contained polities to three -- the zones were already inside them.
@@ -163,7 +168,22 @@ TRACKED_DEFECTS = frozenset()
 # of America" and is now bound to "Qajar Dynasty" at 1800, so the two Iran periods
 # overlap as they should. Kept as an empty frozenset rather than deleted so a
 # regression names the pair.
-KNOWN_DISCONTINUOUS = frozenset()
+KNOWN_DISCONTINUOUS = frozenset({
+    # NOT defects, and not discontinuities either -- this check has mis-read its own input.
+    #
+    # It groups families by CODE PREFIX and sorts by start_year, so IDN-BLB, IDN-JVM and IDN-OTH
+    # all become the "IDN family" and, because all three start in 1949, an arbitrary sort order
+    # turns them into "consecutive periods". They are not consecutive; they are a SIMULTANEOUS
+    # PARTITION of Indonesia for 1949-1951 -- Java, Bali/Lombok, and everything else -- and 0%
+    # overlap is the correct and required outcome for a partition, the exact opposite of the
+    # mis-binding this check exists to catch.
+    #
+    # Tracked rather than fixing the grouping, because the prefix heuristic is right for every
+    # ordinary family and a partition is rare. If a second one appears, teach the check about
+    # polity_type instead of adding two more lines here.
+    "IDN-BLB-1949-1951 / IDN-JVM-1949-1951",
+    "IDN-JVM-1949-1951 / IDN-OTH-1949-1951",
+})
 
 ap = argparse.ArgumentParser()
 # KNOWN LIMITATION, measured 2026-07-29. The default of 3 was chosen to keep the

@@ -41,14 +41,14 @@
 #   page's own component list says 'Ontario + Quebec ~1,076,000 km2' where modern ON+QC
 #   is 2,600,836. Declared area right, declared recipe wrong. Checked 2026-08-07.
 CAN-1800-1866   # [compose] proxy: see the note above, the stated recipe is 2.26x too large
-FRIN-1816-1954   # [compose] estimate: composed-union-puducherry-karikal-mahe-yanam-chandernagore
+# FRIN-1816-1954 LEFT this list on 2026-08-07: polygon attached, see the constructed builder.
 # IDN-BLB-1949-1951's declared recipe is WRONG and must not be built as written:
 #   IDN.1_1 is ACEH, on Sumatra, ~1,700 km from Bali. IDN.20_1 is Nusa Tenggara Barat,
 #   which is Lombok PLUS SUMBAWA at 19,670 km2. Bali 5,591 + NTB 19,670 = 25,261 against
 #   the page's declared 10,505 -- and 10,505 is Bali + Lombok ALONE, so the declared AREA
 #   is right. Separating Lombok from Sumbawa needs GADM adm2, which this repo does not
 #   build (only adm0 and adm1). Blocked on data, not on a decision. Checked 2026-08-07.
-IDN-BLB-1949-1951   # [compose] proxy: Bali + Lombok; see the note above, adm2 required
+# IDN-BLB-1949-1951 LEFT this list on 2026-08-07: polygon attached, see the constructed builder.
 # IDN-OTH-1949-1951 is the complement of JVM and BLB, so it is blocked on BLB.
-IDN-OTH-1949-1951   # [compose] proxy: IDN-complement-JVM-BLB; blocked on IDN-BLB
+# IDN-OTH-1949-1951 LEFT this list on 2026-08-07: polygon attached, see the constructed builder.
 

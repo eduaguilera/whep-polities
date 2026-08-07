@@ -264,7 +264,7 @@ FRA-1800-1871,"France (with Alsace-Lorraine, to 1871)",1800,1871,cshapes-europe,
 FRA-1800-1919,France (to 1919),1800,1919,cshapes-europe,1816.0,assigned,True,assumed_constant,True,False,single 1816 polygon held across a 119y span (1800-1919); borders may have changed,0
 FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",1871,1919,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 48y span (1871-1919); borders may have changed,2358
 FRA-1919-2025,France,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4101
-FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,gadm-4.1+osm,2024.0,estimate,True,unassigned,True,False,no polygon (honest gap; never a false territory),14
+FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,constructed,2024.0,estimate,True,back_projected,True,False,polygon vintage 2024 is AFTER the period ends (1954) — later/modern border applied back,14
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,cshapes-2.0,1953.0,assigned,True,measured,False,False,vintage 1953 faithful to period 1953-1964,0
 FRO-1800-2025,Faroe Islands,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,13
 FRS-1884-1977,French Somaliland,1884,1977,cshapes-2.0,1900.0,assigned,True,assumed_constant,True,False,single 1900 polygon held across a 93y span (1884-1977); borders may have changed,43
@@ -341,9 +341,9 @@ IDN-1949-1969,Indonesia (1949-1969),1949,1969,cshapes-2.0,1949.0,assigned,True,m
 IDN-1969-1976,Indonesia (1969-1976),1969,1976,cshapes-2.0,1969.0,assigned,False,measured,False,False,vintage 1969 faithful to period 1969-1976,0
 IDN-1976-2002,Indonesia (1976-2002),1976,2002,cshapes-2.0,1976.0,assigned,False,assumed_constant,True,False,single 1976 polygon held across a 26y span (1976-2002); borders may have changed,0
 IDN-2002-2025,Indonesia,2002,2025,cshapes-2.0,2002.0,assigned,False,measured,False,False,vintage 2002 faithful to period 2002-2025,0
-IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,gadm-4.1,,proxy,True,unassigned,True,False,no polygon (honest gap; never a false territory),24
+IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,24
 IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,27
-IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,gadm-4.1,,proxy,True,unassigned,True,False,no polygon (honest gap; never a false territory),15
+IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,15
 IGL-1800-1901,Igala Kingdom,1800,1901,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 IJB-1800-1892,Ijebu Kingdom,1800,1892,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 IND-1800-1886,British India (to 1886),1800,1886,cliopatria,1880.0,polygon_vintage_drift,True,assumed_constant,True,False,single 1880 polygon held across a 86y span (1800-1886); borders may have changed,3

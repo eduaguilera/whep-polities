@@ -72,61 +72,35 @@ CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
 # Polygons known to be invalid, with the source that supplied them. Being here is a debt
 # record, not an exemption: the list is bidirectional, so it shrinks and cannot grow.
 BASELINE_INVALID = {
-    # Invalid in the raw Cliopatria GeoJSON, verified feature by feature. These also carry the
-    # largest repair spreads, so each needs a decision on its page, not a sweep.
-    # FID-1887-1954 removed 2026-08-05: its polygon is now built by
-    # build_fid_1887_1954(), which clips Cliopatria's feature to mainland Indochina and
-    # UNIONS the kept parts. Two of them abutted along a line, which is what made the
-    # multipolygon invalid; unioning preserved the area exactly (753,049.331 km2) where
-    # make_valid would have dropped a 56.7 km2 part. First entry to leave this list, and
-    # it left by being fixed rather than re-explained.
-    "IND-1800-1886": "cliopatria",
+    # ONE row left, down from 44 on 2026-08-07. build_database.py now repairs an invalid geometry
+    # with MakeValid when that costs at most 0.5% of its area, and reports what it refuses. 43 were
+    # repaired for 110 km2 BETWEEN THEM; this one would cost 12,845 km2 on its own.
+    #
+    # Keeping it is PR 140's reasoning applied, not ignored: make_valid gives 1,730,793 km2 and
+    # buffer(0) gives 1,743,638 for Qajar Iran, and choosing between them is a territorial
+    # judgement about whether a self-overlapping ring is a digitising artefact or two real rings.
+    # 0.748% is above the threshold precisely so this row has to be decided on its page.
     "IRN-1800-1828": "cliopatria",
-    "PAP-1800-1870": "cliopatria",
-    # Our own unions -- the ones most likely to be genuinely ours, since a union of invalid
-    # inputs is invalid. All six have a repair spread at or below 2 km2.
-    "RAFR-1850-2025": "reporting-areas",
-    "RASI-1850-2025": "reporting-areas",
-    "REUR-1850-2025": "reporting-areas",
-    "RLAM-1850-2025": "reporting-areas",
-    "ROCE-1850-2025": "reporting-areas",
-    "ROW-1850-2025": "reporting-areas",
-    # Also ours, from scripts/sources/constructed/build.py.
-    "CHN-1932-1945": "constructed",
-    "IRL-1800-1921": "constructed",
-    "MAN-1932-1945": "constructed",
-    "MAN-1945-1950": "constructed",
-    "TTPI-1947-1994": "constructed",
-    # IDN-JVM-1949-1951, added 2026-08-07, and it is the CLEANEST EVIDENCE IN THIS FILE that
-    # SimplifyPreserveTopology(0.01) creates invalidity rather than only inheriting it:
-    #
-    #     data/geodata/constructed/constructed.gpkg   valid=True    132,674.44 km2
-    #     data/final/polities_database.gpkg           valid=False   132,720.05 km2
-    #
-    # Same geometry, one simplification apart. The union itself is exact -- _union() does pairwise
-    # OGR Union, so six abutting Java provinces dissolve cleanly -- and the "Nested shells" appears
-    # at 114.05E, -8.64 only after simplification.
-    #
-    # THIS PARTLY CORRECTS THE DOCSTRING ABOVE. I wrote that the sweep's claim ("created by
-    # SimplifyPreserveTopology") was not the main cause, and that stands on the counts: 29 of 41
-    # arrive invalid from their source. But "mostly inherited" should not be read as "our
-    # simplifier is innocent", and this row is a case I produced myself, from a valid input, in one
-    # step. Repair cost is negligible here (make_valid 132,719.77, buffer(0) 132,719.91, 0.14 km2
-    # apart) which is why it is baselined rather than fixed -- but the mechanism is now proven, not
-    # merely suspected.
-    "IDN-JVM-1949-1951": "constructed",
-    "FRA-1800-1871": "cshapes-europe",
-    "FRA-1800-1919": "cshapes-europe",
-    "GBR-1800-1921": "cshapes-europe",
 }
 
+# GEOS VALIDITY IS NOT s2 VALIDITY, AND THIS GATE ONLY SEES GEOS.
+#
+# shapely uses GEOS, so `is_valid` here is a planar judgement. R's sf uses s2 BY DEFAULT, and s2 is
+# stricter. Measured on the published GeoPackage after the repair above:
+#
+#     GEOS-invalid   1     IRN-1800-1828
+#     s2-invalid     4     IRN-1800-1828, DEU-1871-1919, FJI-1800-2025, SNW-1814-1905
+#
+# So THREE polygons pass this gate and fail in every R consumer that has not turned s2 off, and
+# the failure is not cosmetic: st_intersection over the live 2015 polity set RAISES
+# "Loop N edge M crosses loop P edge Q" and returns nothing at all. That is the actual cause of
+# the symptom reported in eduaguilera/whep#514, which had diagnosed it as two polities sharing one
+# polygon -- they do not; GNQ-1968-2025 and STP-1800-2025 measure 26,904 and 1,012 km2 with an
+# empty intersection in both this database and whep's committed snapshot.
+#
+# This gate CANNOT be extended to cover it from Python without s2 bindings. Tracked separately.
 BASELINE_COUNT_BY_SOURCE = {
-    "gadm-4.1-adm0": 19,
-    "gadm-4.1-adm1": 4,
-    "constructed": 6,
-    "cliopatria": 3,
-    "cshapes-europe": 3,
-    "reporting-areas": 6,
+    "cliopatria": 1,
 }
 
 
