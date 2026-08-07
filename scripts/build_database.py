@@ -612,7 +612,6 @@ def _repair_if_free(g, polity_code: str, repairs: dict):
     # MakeValid can return a GEOMETRY COLLECTION -- the repaired polygons plus stray lines or
     # points where a self-intersection collapsed -- and ogr.ForceToMultiPolygon does NOT reliably
     # flatten one. PR 178 shipped exactly that: GBR-1800-1921 and IND-1800-1886 were published as
-<<<<<<< HEAD
     # GeometryCollection in a layer declared MultiPolygon, and nothing here noticed, because every
     # geometry gate in this repo reads areas or does containment and both work on a collection. It
     # surfaced only when validate_spherical_edges.py (PR 151) walked exterior rings and died on
@@ -620,12 +619,6 @@ def _repair_if_free(g, polity_code: str, repairs: dict):
     #
     # Take the areal members explicitly, recursing through nested collections, and REFUSE the
     # repair if nothing polygonal survives rather than publishing a non-polygon.
-=======
-    # GeometryCollection, which violates the layer's declared type and CRASHED
-    # validate_spherical_edges.py on `'GeometryCollection' object has no attribute 'exterior'`.
-    # So take the polygonal members explicitly and drop the rest, which is what a repaired polygon
-    # means. If nothing polygonal survives, refuse the repair rather than publish a non-polygon.
->>>>>>> 177d6d7 (Flatten MakeValid results to polygons only -- PR 178 published two GeometryCollections)
     fixed = _polygonal_only(fixed)
     if fixed is None:
         repairs["failed"].append(polity_code)

@@ -758,35 +758,25 @@ ARGS = {"write_manifest.py": ("--check",), "build_database.py": ("--check",)}
 # FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
 # half of this script is what caught that; exit-code alone would have passed it.
 EXTRA_SCRIPTS = {
-<<<<<<< HEAD
-    "validate_polygon_binding_determinism.py": ("sources.yaml",),"build_database.py": ("sources.yaml",),
-    # The s2 gate imports s2_failure()/geodesic_area_km2() from the repair script, so the
-    # two cannot disagree about what "s2 can measure this" means. Staged without it the
-    # gate dies on the import -- exit 2, no defect named, and the "must name the defect"
-    # arm of this harness is what would report that as the wrong kind of failure.
-    "validate_s2_polygons.py": ("repair_s2_polygons.py",),
-}
-    # A LIBRARY, not a gate: spherical_edges.py holds the great-circle maths that
-    # build_database.py and this gate share, so neither can be staged without it.
-    # It deliberately does not start with validate_/audit_/crosscheck_, so
-    # check_every_gate_runs_in_ci does not demand a workflow step for it.
-=======
     "validate_polygon_binding_determinism.py": ("sources.yaml",),
-    # spherical_edges.py is a LIBRARY, not a gate: it holds the great-circle maths
-    # that build_database.py and validate_spherical_edges.py share, so neither can
-    # be staged without it. It deliberately does not start with
-    # validate_/audit_/crosscheck_, so check_every_gate_runs_in_ci does not demand
-    # a workflow step for it.
+    # The s2 gate imports s2_failure()/geodesic_area_km2() from the repair script, so the two
+    # cannot disagree about what "s2 can measure this" means. Staged without it the gate dies on
+    # the import -- exit 2, no defect named, and the "must name the defect" arm of this harness is
+    # what would report that as the wrong kind of failure.
+    "validate_s2_polygons.py": ("repair_s2_polygons.py",),
+    # spherical_edges.py is a LIBRARY, not a gate: it holds the great-circle maths that
+    # build_database.py and validate_spherical_edges.py share, so neither can be staged without
+    # it. It deliberately does not start with validate_/audit_/crosscheck_, so
+    # check_every_gate_runs_in_ci does not demand a workflow step for it.
     #
-    # Adding it to build_database.py's list was not optional and was not foreseen:
-    # the import sits at module level, so a scratch repo without it made the
-    # build_database case die with an ImportError -- exit 1 for entirely the wrong
-    # reason. The case still "fired", and only the requirement that a gate NAME the
-    # defect separated a detected mutation from a crash before reaching it. That is
-    # the third time that requirement has earned its keep in this file.
+    # Adding it to build_database.py's list was not optional and was not foreseen: the import sits
+    # at module level, so a scratch repo without it made the build_database case die with an
+    # ImportError -- exit 1 for entirely the wrong reason. The case still "fired", and only the
+    # requirement that a gate NAME the defect separated a detected mutation from a crash before
+    # reaching it. That is the third time that requirement has earned its keep in this file.
     "build_database.py": ("sources.yaml", "spherical_edges.py"),
->>>>>>> 2671f58 (Stage spherical_edges.py for the build_database self-test case)
-    "validate_spherical_edges.py": ("spherical_edges.py",)}
+    "validate_spherical_edges.py": ("spherical_edges.py",),
+}
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
