@@ -501,10 +501,37 @@ def _repair_if_free(g, polity_code: str, repairs: dict):
     if change > REPAIR_MAX_AREA_CHANGE:
         repairs["skipped"].append((polity_code, change))
         return g
-    if fixed.GetGeometryType() != ogr.wkbMultiPolygon:
-        fixed = ogr.ForceToMultiPolygon(fixed)
+    # MakeValid can return a GEOMETRY COLLECTION -- the repaired polygons plus stray lines or
+    # points where a self-intersection collapsed -- and ogr.ForceToMultiPolygon does NOT reliably
+    # flatten one. PR 178 shipped exactly that: GBR-1800-1921 and IND-1800-1886 were published as
+    # GeometryCollection in a layer declared MultiPolygon, and nothing here noticed, because every
+    # geometry gate in this repo reads areas or does containment and both work on a collection. It
+    # surfaced only when validate_spherical_edges.py (PR 151) walked exterior rings and died on
+    # `'GeometryCollection' object has no attribute 'exterior'`.
+    #
+    # Take the areal members explicitly, recursing through nested collections, and REFUSE the
+    # repair if nothing polygonal survives rather than publishing a non-polygon.
+    fixed = _polygonal_only(fixed)
+    if fixed is None:
+        repairs["failed"].append(polity_code)
+        return g
     repairs["repaired"].append(polity_code)
     return fixed
+
+
+def _polygonal_only(geom):
+    """Flatten a MakeValid result to a MultiPolygon, discarding non-areal debris."""
+    out = ogr.Geometry(ogr.wkbMultiPolygon)
+    stack = [geom]
+    while stack:
+        g = stack.pop()
+        t = ogr.GT_Flatten(g.GetGeometryType())
+        if t == ogr.wkbPolygon:
+            out.AddGeometry(g)
+        elif t in (ogr.wkbMultiPolygon, ogr.wkbGeometryCollection):
+            for i in range(g.GetGeometryCount()):
+                stack.append(g.GetGeometryRef(i))
+    return out if out.GetGeometryCount() else None
 
 
 def write_csv(rows: list[dict[str, Any]], out_path: Path) -> None:
