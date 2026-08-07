@@ -316,40 +316,6 @@ def build_papng_1920_1949() -> ogr.Geometry:
     return _union(_cshapes2_feature(911, 1930), _cshapes2_feature(912, 1930))
 
 
-def build_idn_jvm_1949_1951() -> ogr.Geometry:
-    """Java and Madura = the six GADM adm1 provinces that make up Java.
-
-    Madura is not separable in GADM: it is part of Jawa Timur, which is correct for this row
-    anyway since the source reports Java and Madura together.
-
-        Jakarta Raya      654        IDN.7_1
-        Banten          9,352        IDN.4_1
-        Jawa Barat     37,059        IDN.9_1
-        Jawa Tengah    34,437        IDN.10_1
-        Yogyakarta      3,177        IDN.33_1
-        Jawa Timur     47,996        IDN.11_1
-        union         132,674  km2   against the page's declared 132,000 -> 0.5%
-
-    THE FEATURE IDS THE PAGE DECLARED WERE WRONG AND ARE NOT USED. It listed
-    `IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1`, and in this GADM extract IDN.29_1 is SULAWESI UTARA --
-    North Sulawesi, a different island 1,500 km away -- while Banten, Jawa Barat and Yogyakarta
-    are missing. Those four sum to 97,594 km2, against a declared 132,000. Building the recipe as
-    written would have attached North Sulawesi to Java and dropped a third of Java itself.
-
-    The declared AREA was right and the declared RECIPE was wrong, which is the same shape as
-    SER-1918-1945 (PR 157) and CAN-1800-1866: a page whose prose and whose ids disagree, where
-    following the ids is worse than ignoring them. The area is what identified the correct set.
-    """
-    return _union(
-        _gadm_adm1("IDN.7_1"),    # Jakarta Raya
-        _gadm_adm1("IDN.4_1"),    # Banten
-        _gadm_adm1("IDN.9_1"),    # Jawa Barat
-        _gadm_adm1("IDN.10_1"),   # Jawa Tengah
-        _gadm_adm1("IDN.33_1"),   # Yogyakarta
-        _gadm_adm1("IDN.11_1"),   # Jawa Timur
-    )
-
-
 def build_deu_1945_1949() -> ogr.Geometry:
     """Allied-occupied Germany = West (gwcode 260) ∪ East (gwcode 265)
     for 1945-1949."""
@@ -646,32 +612,6 @@ def build_idn_blb_1949_1951() -> ogr.Geometry:
     )
 
 
-def build_idn_oth_1949_1951() -> ogr.Geometry:
-    """Indonesia minus Java minus Bali/Lombok -- the "other islands" reporting unit.
-
-    Blocked behind build_idn_blb_1949_1951() until adm2 arrived, because a complement is only as
-    good as what it subtracts: with Sumbawa wrongly inside Bali/Lombok this would have REMOVED
-    Sumbawa from the other islands as well, moving ~15,000 km2 to the wrong row twice over.
-
-        Indonesia (adm1 union)   1,890,243
-        minus Java                 132,674
-        minus Bali and Lombok       10,160
-        remainder                1,747,408 km2   against the declared 1,757,495 -> 0.6%
-
-    The comment at OUT explains why this file is a GeoPackage rather than GeoJSON: this polygon,
-    tens of thousands of islands, is what crossed OGR's per-object GeoJSON size limit.
-    """
-    parts = [_gadm_adm1(g) for g in (
-        "IDN.1_1", "IDN.2_1", "IDN.3_1", "IDN.4_1", "IDN.5_1", "IDN.6_1", "IDN.7_1", "IDN.8_1",
-        "IDN.9_1", "IDN.10_1", "IDN.11_1", "IDN.12_1", "IDN.13_1", "IDN.14_1", "IDN.15_1",
-        "IDN.16_1", "IDN.17_1", "IDN.18_1", "IDN.19_1", "IDN.20_1", "IDN.21_1", "IDN.22_1",
-        "IDN.23_1", "IDN.24_1", "IDN.25_1", "IDN.26_1", "IDN.27_1", "IDN.28_1", "IDN.29_1",
-        "IDN.30_1", "IDN.31_1", "IDN.32_1", "IDN.33_1", "IDN.34_1",
-    )]
-    whole = _union(*parts)
-    return _difference(whole, build_idn_jvm_1949_1951(), build_idn_blb_1949_1951())
-
-
 def build_frin_1816_1954() -> ogr.Geometry:
     """French India 1816-1954 = the modern Puducherry union territory, GADM adm1 IND.27_1.
 
@@ -740,20 +680,59 @@ def build_idn_oth_1949_1951() -> ogr.Geometry:
     property is why it must be derived rather than enumerated -- listing the other
     27 provinces by hand would break the partition the moment GADM re-splits one.
 
-    NOT REGISTERED in BUILDERS. As written it is territorially WRONG for the period:
-    modern Indonesia includes Papua, but Netherlands New Guinea stayed Dutch until
-    1963, so subtracting only Java and Bali leaves 410,399 km2 of Dutch territory
-    inside a 1949-1951 Indonesian row. audit_family_shadowing caught it, flagging
-    NNG-1949-1963 against this row at a 4.2x ratio.
+    WEST PAPUA IS SUBTRACTED TOO, and the source is what settles it. Modern
+    Indonesia includes Papua, but Netherlands New Guinea stayed Dutch until 1962, so
+    subtracting only Java and Bali left 405,513 km2 of Dutch territory inside a
+    1949-1951 Indonesian row -- 98.8% of NNG-1949-1963, which is the overlap
+    whep#514 reported.
 
-    The fix is to subtract NNG-1949-1963 as well, but the page's own
-    polygon_area_km2 of 1,757,495 also appears to include Papua, so the recorded
-    figure needs settling with the territory. Left disabled pending that.
+    The page's own polygon_area_km2 of 1,757,495 included Papua, so the recorded
+    figure had to be settled against the territory rather than assumed correct. FAO's
+    1952 yearbook lists the two as SEPARATE REPORTING UNITS:
+
+        Indonesia (ASIA)     1947    1,904,350 km2
+        New Guinea (ASIA)    1951      412,780 km2
+
+    NNG-1949-1963 declares 410,361, a 0.6% match to FAO's New Guinea. The 1,904,350
+    figure is a PRE-INDEPENDENCE 1947 total for the whole Dutch East Indies, which is
+    how the anachronism entered the page: 1,757,495 is that total less Java and Bali.
+    The Netherlands held West Papua until 1962 -- which is the entire reason
+    NNG-1949-1963 exists as a row at all.
+
+    PAPUA IS SUBTRACTED AS GADM PROVINCES, NOT AS NNG'S OWN CShapes FEATURE, and the
+    reason is measured. Subtracting `_cshapes2_feature(851, 1955)` -- the feature
+    NNG-1949-1963 binds to -- is the obvious choice, since cutting both rows from one
+    source ought to keep them from drifting. It does not survive publication:
+
+        minus CShapes 851             1,341,857 km2   n published NNG   341 km2
+        minus GADM Papua provinces    1,335,103 km2   n published NNG     0 km2
+
+    GADM's Papua coastline does not follow CShapes', so `_gadm_adm0("IDN")` minus 851
+    leaves a hairline coastal RIM of GADM Papua behind -- 1,031 fragments, 6,140 km2,
+    largest 268 km2. Every fragment is outside 851 by construction, so the unsimplified
+    intersection really is zero; then build_database simplifies the two rows
+    INDEPENDENTLY at 0.01 degrees (~1.1 km), the rim's edges wobble back across the
+    boundary, and 341 km2 of double claim reappears in the published GeoPackage. Cutting
+    GADM with GADM leaves no rim to wobble.
+
+    It also fits the source better. FAO 1952 gives New Guinea 412,780 km2:
+
+        GADM Papua + Papua Barat   412,305 km2   0.1%
+        CShapes 851                410,361 km2   0.6%
+
+    THE RESIDUAL IS NOW A GAP, NOT AN OVERLAP, and that is the intended direction.
+    GADM Papua is ~1,900 km2 larger than CShapes 851, so that much coastal fringe is
+    subtracted here while NNG-1949-1963 (still CShapes-bound) does not cover it, and it
+    belongs to no polity. A gap of 1,900 km2 is strictly preferable to a double count of
+    405,513: unassigned territory is visible and honest, whereas doubly-claimed territory
+    silently inflates any area-weighted aggregate over it.
     """
     return _difference(
         _gadm_adm0("IDN"),
         build_idn_jvm_1949_1951(),
         build_idn_blb_1949_1951(),
+        _gadm_adm1("IDN.22_1"),   # Papua Barat
+        _gadm_adm1("IDN.23_1"),   # Papua
     )
 
 
@@ -891,9 +870,11 @@ BUILDERS = [
         "IDN-OTH-1949-1951",
         "Other islands (within Indonesia, 1949-1951)",
         build_idn_oth_1949_1951,
-        "Indonesia minus Java minus Bali/Lombok = 1,747,408 km2 against a declared 1,757,495 "
-        "(0.6%). Blocked behind IDN-BLB: with Sumbawa wrongly inside Bali/Lombok this complement "
-        "would have removed Sumbawa from the other islands too, misplacing ~15,000 km2 twice.",
+        "Indonesia minus Java, Bali/Lombok AND West Papua. FAO 1952 lists Netherlands New Guinea "
+        "as its own reporting unit at 412,780 km2, and NNG-1949-1963 declares 410,361 (0.6%), so "
+        "the source did not count West Papua inside Indonesia for 1949-1951 -- the Netherlands held "
+        "it until 1962. Including it (PR 178) overlapped NNG by 405,513 km2, 98.8% of NNG, claiming "
+        "every West Papuan cell twice.",
     ),
     (
         "FRIN-1816-1954",

@@ -138,17 +138,24 @@ BASELINE = {
     "IDN-JVM-1949-1951 / IDN-OTH-1949-1951": "partition, disjoint by construction (13.1x, 0.0 km2 intersection)",
     "IDN-BLB-1949-1951 / IDN-JVM-1949-1951": "partition, disjoint by construction (13.1x, 0.0 km2 intersection)",
     "IDN-BLB-1949-1951 / NNG-1949-1963": "Bali/Lombok and West Papua: disjoint (0.0 km2 intersection)",
-    # AND ONE THAT IS NOT BENIGN, kept here with the number rather than filed away silently:
+    # AND ONE THAT WAS NOT BENIGN, now fixed -- kept here with both numbers, because the pair still
+    # TIES on area ratio (3.3x) even though it no longer overlaps, and PINNED_DISJOINT below is what
+    # holds the fix in place:
     #
-    #   IDN-OTH-1949-1951 n NNG-1949-1963 = 405,513 km2, which is 98.8% OF NNG.
+    #   IDN-OTH-1949-1951 n NNG-1949-1963 = 405,513 km2 -> 0 km2   (98.8% of NNG, claimed twice)
     #
     # Netherlands New Guinea stayed Dutch until 1962, so West Papua was NOT part of Indonesia in
-    # 1949-1951 -- yet IDN-OTH's own declared area of 1,757,495 km2 INCLUDES it (the complement
-    # measures 1,747,408, within 0.6%), so the double claim is in the two pages' definitions rather
-    # than in the geometry that implements them. Any area-weighted use over 1949-1951 counts West
-    # Papua twice. This is exactly the class eduaguilera/whep#514 reports, for a different pair
-    # than the one it names. Filed.
-    "NNG-1949-1963 / IDN-OTH-1949-1951": "REAL OVERLAP: 405,513 km2, 98.8% of NNG. West Papua claimed by both; see the note above",
+    # 1949-1951 -- yet IDN-OTH's declared area of 1,757,495 km2 INCLUDED it, so the double claim was
+    # in the two pages' definitions rather than in the geometry implementing them. Any area-weighted
+    # use over 1949-1951 counted West Papua twice: the class eduaguilera/whep#514 reports, for a
+    # different pair than the one that issue names.
+    #
+    # FIXED 2026-08-07: build_idn_oth_1949_1951 now subtracts the same CShapes feature NNG binds to,
+    # and the declared area drops to 1,349,065 -- FAO 1952 lists Indonesia (1947, 1,904,350) and New
+    # Guinea (1951, 412,780) as SEPARATE reporting units, so the old figure was a whole-Dutch-East-
+    # Indies total less Java and Bali. The old 0.6% agreement between declared and measured was two
+    # errors cancelling, which is why the geometry alone never looked wrong.
+    "NNG-1949-1963 / IDN-OTH-1949-1951": "was a 405,513 km2 real overlap (98.8% of NNG); fixed 2026-08-07, now disjoint and pinned so",
     "TNGU-1920-1949 / PAPNG-1920-1949": "New Guinea inside the Papua+New Guinea reporting unit (1.94x, by construction)",
     "BSW-1841-1963 / GBM-1895-1946": "Sarawak vs British Malaya, different territories",
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",
@@ -157,6 +164,45 @@ BASELINE = {
     # Two separate Australian colonies before federation.
     "AUSA-1836-1900 / AUWA-1829-1900": "South vs Western Australia, different colonies",
 }
+
+# PAIRS THAT MUST MEASURE ZERO INTERSECTION, asserted rather than described.
+#
+# eduaguilera/whep#514 asked for "a regression check pinning the GNQ/STP pair" -- but GNQ and STP
+# were never the defect (different sources, 26x size difference, empty intersection), so pinning
+# them would pass vacuously forever. The pair that DID double-claim ground is IDN-OTH / NNG, so
+# that is what is pinned here.
+#
+# WHY THE BASELINE ABOVE IS NOT ENOUGH. That baseline records pairs by NAME with a prose reason;
+# nothing in it re-measures anything. IDN-OTH/NNG sat in it for a day carrying the string
+# "REAL OVERLAP: 405,513 km2" and the gate passed on every run, because a described defect is
+# still a baselined pair. A named pair with a measured assertion cannot rot that way: if the
+# builder stops subtracting West Papua, this fails with the km2 it came back as.
+PINNED_DISJOINT = {
+    ("IDN-OTH-1949-1951", "NNG-1949-1963"):
+        "West Papua was Dutch until 1962; IDN-OTH is a complement and must exclude it (whep#514)",
+    ("IDN-JVM-1949-1951", "IDN-OTH-1949-1951"):
+        "partition by construction -- OTH is defined as Indonesia minus JVM and BLB",
+    ("IDN-BLB-1949-1951", "IDN-OTH-1949-1951"):
+        "partition by construction -- OTH is defined as Indonesia minus JVM and BLB",
+}
+PIN_TOLERANCE_KM2 = 1.0   # simplify+densify leaves sliver-scale disagreement on shared edges
+
+by_code = {r.polity_code: r.geometry for r in g.itertuples()}
+pin_failures = []
+for (a, b), why in sorted(PINNED_DISJOINT.items()):
+    if a not in by_code or b not in by_code:
+        pin_failures.append(f"{a} / {b}: one side has no live geometry -- cannot verify ({why})")
+        continue
+    inter = by_code[a].intersection(by_code[b])
+    km2 = 0.0 if inter.is_empty else (
+        gpd.GeoSeries([inter], crs=g.crs).to_crs("ESRI:54034").iloc[0].area / 1e6)
+    if km2 > PIN_TOLERANCE_KM2:
+        pin_failures.append(f"{a} / {b}: intersect {km2:,.1f} km2, must be <= "
+                            f"{PIN_TOLERANCE_KM2} -- {why}")
+print(f"pinned-disjoint pairs: {len(PINNED_DISJOINT)} checked, {len(pin_failures)} failing")
+for f in pin_failures:
+    print(f"  FAIL  {f}")
+print()
 
 NON_ISO = {"NA", "NAN", "NONE", ""}
 flagged = []
@@ -207,7 +253,8 @@ for pair in sorted(BASELINE):
         unbaselined.append(("stale", 0.0, None, None, 0, 0))
         print(f"\n  {pair} is baselined as a tied pair but no longer ties — remove it")
 
-print(f"\n{'FAIL' if unbaselined else 'PASS'}: {len(flagged)} tied pair(s); "
-      f"{len(unbaselined)} outside the baseline. Family ordering, not polity_type, "
-      f"decides each of these.")
-sys.exit(1 if unbaselined else 0)
+bad = bool(unbaselined) or bool(pin_failures)
+print(f"\n{'FAIL' if bad else 'PASS'}: {len(flagged)} tied pair(s); "
+      f"{len(unbaselined)} outside the baseline; {len(pin_failures)} pinned-disjoint "
+      f"pair(s) overlapping. Family ordering, not polity_type, decides each of these.")
+sys.exit(1 if bad else 0)

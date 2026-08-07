@@ -180,6 +180,25 @@ def run(root: str, gate: str) -> tuple:
 # GeoPackage into `root`.
 
 
+def mutate_pinned_disjoint_overlap(root, gpd, make_valid, affinity):
+    """Put West Papua back inside IDN-OTH-1949-1951, which is the defect
+    audit_family_shadowing's PINNED_DISJOINT exists to catch.
+
+    THE PROSE BASELINE ALREADY "COVERED" THIS PAIR AND THE GATE STILL PASSED. For a
+    day, BASELINE carried the entry `NNG-1949-1963 / IDN-OTH-1949-1951` with the string
+    "REAL OVERLAP: 405,513 km2" in it, and every run reported PASS -- because a pair
+    named in the baseline is an accepted pair, whatever the prose beside it says. That is
+    what this case really tests: not that a number can be recomputed, but that describing
+    a defect in a baseline no longer counts as handling it.
+    """
+    g = gpd.read_file(GPKG)
+    i = g.index[g.polity_code == "IDN-OTH-1949-1951"][0]
+    nng = g[g.polity_code == "NNG-1949-1963"].iloc[0].geometry
+    g.loc[i, "geometry"] = make_valid(g.loc[i, "geometry"].union(nng))
+    g.to_file(os.path.join(root, "data/final/polities_database.gpkg"), driver="GPKG")
+    return "unioned NNG-1949-1963 back into IDN-OTH-1949-1951, restoring the double claim"
+
+
 def mutate_shadowing_twin(root, gpd, make_valid, affinity):
     """A same-iso3, time-overlapping, same-type twin far smaller than its family
     peer: the exact conjunction audit_family_shadowing says it looks for."""
@@ -692,6 +711,12 @@ CASES = (
         mutate_order_dependent_binding,
         "VNM-1887-1954",
         "a polygon binding whose feature is chosen by shapefile row order",
+    ),
+    (
+        "audit_family_shadowing.py",
+        mutate_pinned_disjoint_overlap,
+        "IDN-OTH-1949-1951",
+        "two live rows claiming the same ground, the defect eduaguilera/whep#514 reports",
     ),
     (
         "audit_family_shadowing.py",
