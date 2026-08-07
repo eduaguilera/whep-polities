@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check that the predecessor/successor graph is a coherent chronology.
 
-Five signals, each of which caught something real on 2026-08-05 that every other gate in
+Seven signals, each of which caught something real that every other gate in
 this repo structurally could not see. The existing chain check,
 `validate_succession_geography.py`, asks whether two linked territories TOUCH. That is a
 question about space. Nothing asked whether the link makes sense in TIME, points at a row
@@ -14,6 +14,7 @@ backwards, or close a cycle, and stay green forever.
     D. LIVE CEILING     — a LIVE row ending at the 2025 ceiling that declares a successor
     E. BROKEN PAGE LINK — a wiki page linking to a `slug.md` that does not exist
     F. ASYMMETRY        — A says `successor: B` while B does not say `predecessor: A`, or vice versa
+    G. SELF-REPLACING   — a page whose prose says it replaced or superseded ITS OWN code
 
 What each found first time out:
 
@@ -65,6 +66,17 @@ What each found first time out:
 
   The counts are PINNED rather than the edges enumerated -- 279 entries would be unreadable, and
   what matters is the direction of travel.
+
+  G was added on 2026-08-07 and found SEVEN pages at once — every reporting bucket. Each note
+  read "End year moved 2021 -> 2025 (issue 50), replacing `RAFR-1850-2025`": its own code, not
+  the retired `RAFR-1850-2021` it superseded. So the live page named no predecessor and the
+  retired page pointed nowhere forward, leaving the rename undocumented from both ends.
+
+  It survived every other gate BY CONSTRUCTION. Signal E only asks whether a linked page
+  EXISTS, and a self-link always exists. The frontmatter was correct throughout — the defect
+  was purely a claim in prose, which is where the REASON for a rename lives, and nothing else
+  in this repo reads prose for meaning. There is no baseline: seven were found and seven were
+  fixed, so the correct count is zero.
 
 Bidirectional, like the other baselines here: a new entry fails, and a baselined entry that
 stops reproducing must be deleted.
@@ -291,7 +303,40 @@ def main() -> int:
                 f"lower the pinned count so the improvement is locked in"
             )
 
+    # G -------------------------------------------------------------------------------------
+    # A PAGE THAT SAYS IT REPLACED ITSELF NAMES ITS PREDECESSOR NOWHERE.
+    #
+    # All SEVEN reporting-bucket pages carried this on 2026-08-07. Each had a note reading
+    # "End year moved 2021 -> 2025 (issue 50), replacing `RAFR-1850-2025`" -- its own code, not
+    # the retired `RAFR-1850-2021` it superseded. So a reader arriving at the live page could
+    # not learn which code went away, and a reader arriving at the retired page had nothing
+    # pointing forward either.
+    #
+    # It survived every other gate by construction. Signal E only checks that a linked page
+    # EXISTS, and a self-link always exists. The frontmatter was correct throughout -- this is
+    # purely a claim in prose, and prose is where the reason for a rename lives. Nothing else
+    # reads it.
+    #
+    # Deliberately narrow: only the "replac*/supersed*" verbs, and only a code matching the
+    # page's own. A page may mention its own code freely for any other purpose.
+    self_replacing = set()
+    for p in pages:
+        text = p.read_text(encoding="utf-8")
+        m = re.search(r"^polity_code:\s*([A-Z0-9]+-\d{4}-\d{4})", text, re.M)
+        if not m:
+            continue
+        own = m.group(1)
+        for vm in re.finditer(r"(replac\w*|supersed\w*)\s+`([A-Z0-9]+-\d{4}-\d{4})`", text, re.I):
+            if vm.group(2) == own:
+                self_replacing.add((p.name, vm.group(1).lower()))
+    for name, verb in sorted(self_replacing):
+        problems.append(
+            f"SELF-REPLACING PAGE: {name} says it {verb} its own polity_code -- name the code "
+            f"it actually superseded, or the retired row is documented nowhere"
+        )
+
     print(f"rows: {len(rows)}")
+    print(f"pages claiming to replace themselves: {len(self_replacing)}")
     print(f"chain edges: {sum(len(links(r.get(f))) for r in rows for f in ('predecessor', 'successor')):,}")
     print(f"dead targets: {len(dead)} ({len(BASELINE_DEAD)} baselined)")
     print(f"cycles: {len(cycles)}")
