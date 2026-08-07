@@ -786,6 +786,8 @@ CASES = (
         "SWE-1800-1809",
         "a polygon GEOS calls valid that s2 cannot load, so every geodesic area and "
         "every grid intersection over it aborts",
+    ),
+    (
         "validate_shared_polygons.py",
         mutate_shared_polygon,
         "STP-1800-2025",
