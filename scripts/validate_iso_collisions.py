@@ -40,6 +40,23 @@ DEAD_STATUS = ("retired", "superseded")
 # (iso3, earlier polity, later polity) for every pair that already shares a code over
 # overlapping years. Generated from the database, not hand-listed.
 BASELINE = frozenset({
+    # French India and the Italian Dodecanese moved from the ADMINISTERING POWER's code to the
+    # SUCCESSOR STATE's on 2026-08-07, which is what 19 of the 21 borrowing colonial rows do.
+    # The collisions move with them: FRIN left FRA's family and entered IND's, ITAEG left ITA's
+    # and entered GRC's. Same class as ("GHA", "GHA-1898-1956", "BTL-1920-1957") above -- a
+    # colonial row borrowing its successor's code necessarily overlaps that successor's periods.
+    # Every one is resolved by polity_type: the IND and GRC rows are `national`, these are not.
+    ("GRC", "GRC-1881-1913", "ITAEG-1912-1947"),
+    ("GRC", "ITAEG-1912-1947", "GRC-1913-1919"),
+    ("GRC", "ITAEG-1912-1947", "GRC-1919-1947"),
+    ("IND", "FRIN-1816-1954", "IND-1886-1893"),
+    ("IND", "FRIN-1816-1954", "IND-1893-1914"),
+    ("IND", "FRIN-1816-1954", "IND-1914-1937"),
+    ("IND", "FRIN-1816-1954", "IND-1937-1947"),
+    ("IND", "FRIN-1816-1954", "IND-1947-1949"),
+    ("IND", "FRIN-1816-1954", "IND-1949-2025"),
+    ("IND", "HYD-1724-1948", "FRIN-1816-1954"),
+    ("IND", "IND-1800-1886", "FRIN-1816-1954"),
     ("AUS", "AUS-1800-1901", "AUSA-1836-1900"),
     ("AUS", "AUS-1800-1901", "AUWA-1829-1900"),
     ("AUS", "AUWA-1829-1900", "AUSA-1836-1900"),
@@ -50,9 +67,6 @@ BASELINE = frozenset({
     ("CMR", "BCM-1916-1961", "FCM-1920-1960"),
     ("COD", "COD-1910-1960", "CODRU-1922-1960"),
     ("EGY", "EGY-1925-1967", "EGYSUD-1934-1956"),
-    ("FRA", "FRA-1800-1871", "FRIN-1816-1954"),
-    ("FRA", "FRIN-1816-1954", "FRA-1871-1919"),
-    ("FRA", "FRIN-1816-1954", "FRA-1919-2025"),
     ("GHA", "GCT-1919-1956", "BTL-1920-1957"),
     ("GHA", "GHA-1898-1956", "BTL-1920-1957"),
     ("GHA", "GHA-1898-1956", "GCT-1919-1956"),
@@ -72,8 +86,6 @@ BASELINE = frozenset({
     ("IND", "HYD-1724-1948", "IND-1914-1937"),
     ("IND", "HYD-1724-1948", "IND-1937-1947"),
     ("IND", "HYD-1724-1948", "IND-1947-1949"),
-    ("ITA", "ITA-1870-1919", "ITAEG-1912-1947"),
-    ("ITA", "ITAEG-1912-1947", "ITA-1919-2025"),
     ("JOR", "JOR-1946-2025", "WBK-1950-1967"),
     ("JPN", "JPN-1895-1945", "RYU-1937-1945"),
     ("KOR", "KOR-1800-1945", "KRS-1910-1945"),
