@@ -290,7 +290,13 @@ discontinuous = []
 for _prefix, fam in eq.groupby("prefix"):
     if len(fam) < 2:
         continue
-    fam = fam.sort_values("start_year")
+    # Sort on (start_year, polity_code), NOT start_year alone. A tie makes the order arbitrary,
+    # and arbitrary order changes which rows are ADJACENT -- so the pairs this check reports differ
+    # between machines and any baseline of them is unpinnable. That is not hypothetical: the three
+    # IDN-*-1949-1951 rows all start in 1949, and on 2026-08-07 this gate passed locally while
+    # failing in CI with the SAME data, reporting IDN-JVM/IDN-BLB and IDN-BLB/IDN-OTH where the
+    # local run had reported IDN-BLB/IDN-JVM and IDN-JVM/IDN-OTH. Same three rows, two pairings.
+    fam = fam.sort_values(["start_year", "polity_code"])
     codes, geos, areas = list(fam.polity_code), list(fam.geometry), list(fam.area_km2)
     for i in range(len(fam) - 1):
         smaller = min(areas[i], areas[i + 1])
