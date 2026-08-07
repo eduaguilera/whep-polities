@@ -343,7 +343,7 @@ IDN-1976-2002,Indonesia (1976-2002),1976,2002,national,IDN,850,Asia,draft,2026-0
 IDN-2002-2025,Indonesia,2002,2025,national,IDN,850,Asia,reviewed,2026-04-12,cshapes-2.0,850,2002,assigned,,IDN-1976-2002,
 IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,constructed,IDN-BLB-1949-1951,,proxy,10505,,
 IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,constructed,IDN-JVM-1949-1951,,proxy,132000,,
-IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,constructed,IDN-OTH-1949-1951,,proxy,1757495,,
+IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,constructed,IDN-OTH-1949-1951,,proxy,1349065,,
 IGL-1800-1901,Igala Kingdom,1800,1901,national,,,Africa,draft,2026-04-15,paine-2024,Igala,,assigned,,,NNI-1899-1904
 IJB-1800-1892,Ijebu Kingdom,1800,1892,national,,,Africa,draft,2026-04-15,paine-2024,Ijebu,,assigned,,,SNI-1899-1906
 IND-1800-1886,British India (to 1886),1800,1886,national,IND,750,Asia,draft,2026-07-24,cliopatria,British Raj,1880,polygon_vintage_drift,4209917,,IND-1886-1893
