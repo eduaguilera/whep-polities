@@ -23,9 +23,10 @@ data/final/ holds a MUTATED input, then runs one gate against it and requires a
 non-zero exit AND that the output names the injected defect. The real data is
 never written to.
 
-Nine cases: three geometry gates mutating the GeoPackage, four contract gates
-mutating a CSV, one mutating a WIKI PAGE -- the source of truth every other artefact
-derives from -- and one mutating a BUILDER SCRIPT's own literal. Nine of twenty-four, chosen by what it would cost if the gate were
+Fifteen cases, each mutating one input: the GeoPackage for the geometry gates, a CSV
+or the alias registry for the contract gates, a WIKI PAGE -- the source of truth every
+other artefact derives from -- for build_database, and a BUILDER SCRIPT's own literal
+for the reporting-area aggregates. Fifteen of twenty-eight, chosen by what it would cost if the gate were
 inert rather than by what is easy to mutate -- case 6 guards the invariant that a
 retired polity never receives data, which is not otherwise detectable, because a
 retired duplicate carries the same name, iso3 and often a valid geometry as its live
@@ -623,6 +624,54 @@ def mutate_spherically_degenerate_ring(root, gpd, make_valid, affinity):
         f"replaced {victim}'s geometry with a GEOS-valid ring whose edges 0 and 2 are "
         f"4e-10 m apart, which s2 reads as a self-crossing"
     )
+def mutate_shared_polygon(root, gpd, make_valid, affinity):
+    """Bind STP-1800-2025 back to CShapes 2.0 feature 411, which is Equatorial Guinea.
+
+    Not a synthetic mutation: it is the exact state the row shipped in, and still the
+    state of WHEP's embedded copy at 603 rows. Sao Tome and Principe is two islands
+    250 km offshore; feature 411 is mainland Rio Muni plus Bioko. Both rows were
+    therefore handed one polygon, and cell (10.25, 1.75) claimed 2.0000x its own area
+    (whep#514).
+
+    `polygon_area_km2` is blanked as well, and that is the load-bearing part. With an
+    area recorded, validate_polygons check A compares 1,002 km2 against ~28,000 and
+    catches it; without one it cannot compare at all, which is the 76% blind spot that
+    gate's own docstring names. The defect shipped in the blind spot, so the mutation
+    has to as well.
+
+    The GeoPackage is written FRESH into `root` rather than into a staged copy. A copy
+    would already contain a layer named `polities`, and `to_file` without an explicit
+    layer writes one named after the FILE -- so the gate would read layer 0, see
+    unmutated data, pass, and this harness would report a working gate as one that
+    cannot fail. Cost half an hour to find; recorded so the next geometry case does not
+    repeat it.
+    """
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.reader(fh))
+    head = rows[0]
+    idx = {name: head.index(name) for name in (
+        "polity_code", "polygon_source", "polygon_feature_id",
+        "polygon_feature_year", "polygon_status", "polygon_area_km2")}
+    hit = 0
+    for r in rows:
+        if len(r) > max(idx.values()) and r[idx["polity_code"]] == "STP-1800-2025":
+            r[idx["polygon_source"]] = "cshapes-2.0"
+            r[idx["polygon_feature_id"]] = "411"
+            r[idx["polygon_feature_year"]] = "1900"
+            r[idx["polygon_status"]] = "assigned"
+            r[idx["polygon_area_km2"]] = ""
+            hit += 1
+    assert hit == 1, f"expected one STP-1800-2025 row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        csv.writer(fh).writerows(rows)
+
+    g = gpd.read_file(GPKG)
+    src = g.loc[g.polity_code == "GNQ-1968-2025", "geometry"].iloc[0]
+    i = g.index[g.polity_code == "STP-1800-2025"][0]
+    g.loc[i, "geometry"] = src
+    g.to_file(os.path.join(root, "data/final/polities_database.gpkg"), driver="GPKG")
+    return "gave STP-1800-2025 Equatorial Guinea's CShapes feature 411 and blanked its area"
 
 
 CASES = (
@@ -738,6 +787,12 @@ CASES = (
         "a polygon GEOS calls valid that s2 cannot load, so every geodesic area and "
         "every grid intersection over it aborts",
     ),
+    (
+        "validate_shared_polygons.py",
+        mutate_shared_polygon,
+        "STP-1800-2025",
+        "two coexisting live polities on one polygon, which claims the ground twice",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -838,6 +893,16 @@ WRITABLE = {
     ),
     "build_database.py": ("polities_database.csv", "wiki/polities"),
     "validate_reporting_areas.py": ("scripts/sources/reporting-areas/build.py",),
+    # Rewrites the CSV, so that must be a real copy. The GeoPackage is deliberately
+    # NOT listed: the mutation writes a fresh one into `root`, and staging a copy
+    # first would give the file two layers and let the gate read the unmutated one.
+    # The FAOSTAT map is listed only so it is PRESENT — the gate reads it to say
+    # whether a consumer can reach the polities involved, and reports "not
+    # FAOSTAT-mapped" for everything if it is absent.
+    "validate_shared_polygons.py": (
+        "polities_database.csv",
+        "faostat_area_polity_map.csv",
+    ),
     # sources.yaml is read before any page is parsed, so without it the gate dies with a
     # FileNotFoundError -- exit 1 for the wrong reason, which the "must name the defect"
     # requirement is what caught.

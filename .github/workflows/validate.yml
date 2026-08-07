@@ -452,6 +452,20 @@ jobs:
         # degrees. eduaguilera/whep#529.
         if: '!cancelled()'
         run: python3 scripts/validate_spherical_edges.py
+      - name: Polygons — no two coexisting polities on one polygon
+        # Measured in the consumer, which is where it surfaced: WHEP's embedded copy
+        # has TWELVE cross-family pairs coexisting on one polygon, and for 2015 451 of
+        # 67,691 grid cells claim more territory than they contain, 12.72 Mha in excess,
+        # worst ratio 2.0000x at cell (10.25, 1.75) — GNQ-1968-2025 and STP-1800-2025
+        # both bound to CShapes feature 411. The defect was injected back into a copy of
+        # this repository at the wiki, the CSV and the GeoPackage together, and all 27
+        # gates then exited 0 without naming STP-1800-2025: the area check had no
+        # recorded area to compare, the containment check needs three swallowed
+        # neighbours and two identical polygons swallow one each, and the period-fit and
+        # determinism checks confirm that 411@1900 resolves cleanly — it is simply the
+        # wrong country. Nothing asked whether another live polity already held it.
+        if: '!cancelled()'
+        run: python3 scripts/validate_shared_polygons.py
 
 
       - name: Identity — a code's years match its own columns
