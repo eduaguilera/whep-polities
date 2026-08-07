@@ -367,6 +367,33 @@ def sync_gpkg_attributes(rows: list[dict[str, Any]], out_path: Path) -> str:
             + (" ..." if changed > 8 else ""))
 
 
+def load_s2_repair():
+    """The polygon repair from scripts/repair_s2_polygons.py, or a no-op that warns.
+
+    Imported lazily and tolerantly rather than at module scope. `--check` runs in CI
+    and touches no geometry, and this builder is otherwise pure GDAL, so a missing
+    shapely or spherely must not stop a wiki-to-CSV comparison. When the repair IS
+    unavailable the rebuild still succeeds and says so loudly -- and
+    validate_s2_polygons.py is the backstop that fails in CI if an unrepaired polygon
+    reaches the committed GeoPackage.
+    """
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    try:
+        import shapely  # noqa: F401 - repair_wkb imports these lazily, so probe here
+        import spherely  # noqa: F401
+
+        from repair_s2_polygons import repair_wkb
+    except ImportError as exc:
+        print(
+            f"  ! s2 polygon repair unavailable ({exc}); geometries written as-is. "
+            f"Install shapely+spherely (requirements-ci.txt) or "
+            f"validate_s2_polygons.py will fail.",
+            file=sys.stderr,
+        )
+        return lambda wkb: None
+    return repair_wkb
+
+
 def write_gpkg(
     rows: list[dict[str, Any]],
     geometries: dict[str, ogr.Geometry],
@@ -420,6 +447,9 @@ def write_gpkg(
         ftype = ogr.OFTInteger if col in ("start_year", "end_year") else ogr.OFTString
         lyr.CreateField(ogr.FieldDefn(col, ftype))
 
+    repair_wkb = load_s2_repair()
+    s2_repaired: list[str] = []
+
     defn = lyr.GetLayerDefn()
     repairs = {"repaired": [], "skipped": [], "failed": []}
     for row in rows:
@@ -443,6 +473,25 @@ def write_gpkg(
                 g = g.SimplifyPreserveTopology(simplify_tolerance)
             if g.GetGeometryType() != ogr.wkbMultiPolygon:
                 g = ogr.ForceToMultiPolygon(g)
+            # TWO REPAIRS, DIFFERENT AXES, IN THIS ORDER.
+            #
+            # s2 first. It is area-PRESERVING and fixes the thing that makes a geometry unloadable
+            # by s2geometry -- which is what R's sf uses by default, so it is the failure a consumer
+            # actually hits: sf::st_area() and st_intersection() ABORT rather than returning
+            # something distorted. Repaired after simplification because simplification is part of
+            # what it has to clean up: a Douglas-Peucker pass can leave two non-adjacent edges of a
+            # ring touching to within one ULP, which GEOS reads as no intersection and s2 -- which
+            # rounds lon/lat onto unit vectors first -- reads as a crossing. Two of the ten
+            # unloadable polygons were GEOS-VALID, so no planar check here could have seen them.
+            #
+            # GEOS second, and only when it costs almost nothing. s2-loadable is not the same as
+            # GEOS-valid, and _repair_if_free() closes that gap under an area budget so a rebuild
+            # never silently takes the 12,845 km2 IRN-1800-1828 decision. Running it second means it
+            # judges the geometry a consumer will actually receive.
+            fixed = repair_wkb(bytes(g.ExportToWkb()))
+            if fixed is not None:
+                g = ogr.CreateGeometryFromWkb(fixed)
+                s2_repaired.append(row["polity_code"])
             g = _repair_if_free(g, row["polity_code"], repairs)
             f.SetGeometry(g)
         lyr.CreateFeature(f)
@@ -457,6 +506,11 @@ def write_gpkg(
         print(f"  LEFT INVALID {code}: MakeValid produced nothing usable")
 
     ds = None
+    if s2_repaired:
+        print(
+            f"  s2-repaired {len(s2_repaired)} geometry(ies) on write: "
+            + ", ".join(sorted(s2_repaired))
+        )
 
 
 

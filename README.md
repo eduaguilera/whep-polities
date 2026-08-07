@@ -44,7 +44,7 @@ You don't have to run the fetches if you only want to consume the committed `dat
 
 ## Validation
 
-Twenty-five checks guard the database, and a twenty-sixth checks the checks. Most
+Thirty checks guard the database, and a thirty-first checks the checks. Most
 exist because that class of error was **found in the data**, not hypothesised; the
 few marked *(guard)* below hold a property that is true today and would be costly
 to lose. All are worth keeping green:
@@ -96,6 +96,7 @@ python3 scripts/validate_polygon_period_fit.py
 python3 scripts/validate_polygon_binding_determinism.py
 python3 scripts/validate_spatial_containment.py
 python3 scripts/validate_family_areas.py
+python3 scripts/validate_s2_polygons.py            # asks s2 itself, via spherely
 python3 scripts/validate_succession_geography.py   # reads the committed .gpkg; runs in CI too
 python3 scripts/validate_chain_integrity.py        # CSV + wiki only, no geometry
 
@@ -132,9 +133,10 @@ python3 pipelines/polity-autoimprove/extdata.py
 | code/year agreement | *(guard)* a polity code is documented as `PREFIX-start-end`, so consumers read years straight off the identifier rather than joining. Two codes disagree with their own columns — `TAN-1922-1964` ends 1961, `NNG-1949-1963` ends 1969 — and the consumer's aliases were written against the CODE, so two of them resolve 1962-1964 to a polity its columns say had ended. Both are historical judgement (independence vs union; transfer vs Act of Free Choice), so baselined pending a decision |
 | live name ambiguity | *(guard)* a consumer resolving a label by the polity's own NAME can only answer when one polity of that name is live in the year asked about, so a rename that collides with a live sibling turns a resolving label into `NA` — and `NA` is what an unmapped label looks like too. 17 names are ambiguous today: fifteen are a coarse period listed beside its own sub-periods (issue 49), and two cross prefix families and are tracked as issues 52 and 43 |
 | succession geography | `NWR-1900-1905` (Northwestern Rhodesia) listing its successor as Northern **Nigeria**, 4,000 km away. A wrong code looks exactly like a right one, so only the polygons reveal it |
-| gate self-test | *(the checks, checked)* Gates that all pass are indistinguishable, from a green summary, from gates that **cannot** fail. Mutation settles it: ten are shown to fail on an injected defect and to name it — three geometry gates that mutate the GeoPackage, and seven that mutate the CSV, the alias map or the wiki. The tenth case earned its keep before it ever guarded anything: it declared the wrong file writable, so its mutation wrote through a symlink into the real database, and two OTHER gates caught that immediately. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
+| s2 polygons | ten of the 703 polygons could not be **loaded by s2 at all**, so `sf::st_area()` and `sf::st_intersection()` aborted on them rather than answering — and every other geometry check here reasons in the plane, so none could see it. Two were **GEOS-valid**: `DEU-1871-1919` and `SNW-1814-1905` each carry two non-adjacent edges of one ring 4e-10 m apart (about one ULP), which GEOS reads as no intersection and s2, converting lon/lat to unit vectors first, reads as a crossing. `make_valid()` had nothing to repair and returned them unchanged. The live cost was `FJI-1800-2025`, current today and carrying FAOSTAT area 66 across 203,519 observed rows: intersected with a 0.5° grid its polygon raised `Loop 82 edge 4 crosses loop 332 edge 2` and produced **no cells**, where live neighbour `TON-1800-2025` produced 20. Repaired at source by `scripts/repair_s2_polygons.py`, which exposes the two repairs that disagree — `buffer(0)` and `make_valid` differ by 12,845 km² on Qajar Iran, the very spread `validate_polygon_validity` declined to decide — and defaults to the one that **moves no published area**: measured in ESRI:54034 the repair changes seven of the ten by 0.00 km² and none by more than 21. Eight of the 41 rows in that gate's invalid baseline came valid as a by-product, which is why its pinned count is now 33 |
+| gate self-test | *(the checks, checked)* Gates that all pass are indistinguishable, from a green summary, from gates that **cannot** fail. Mutation settles it: seventeen are shown to fail on an injected defect and to name it — four geometry gates that mutate the GeoPackage, and thirteen that mutate the CSV, the alias map, the wiki or a builder script's own literal. The s2 case is the only mutation here that no other gate could catch, because the injected geometry is planar-valid; it also had to use the real defect's coordinates, since a synthetic thin sliver built on a geodesic-sag theory is accepted by s2 at every latitude and would have read as "this gate cannot fail". One case earned its keep before it ever guarded anything: it declared the wrong file writable, so its mutation wrote through a symlink into the real database, and two OTHER gates caught that immediately. It also stopped a plausible "fix" — symmetrising the containment metric would have reported 26 real historical facts, the Alaska purchase and the Treaty of Trianon among them, as defects to close |
 
-`.github/workflows/validate.yml` runs **all twenty-four, plus the self-test,** on push to `main` and on PRs.
+`.github/workflows/validate.yml` runs **all thirty, plus the self-test,** on push to `main` and on PRs.
 The self-test also checks that claim: a gate script the workflow never mentions fails it, because a gate
 absent from CI passes on its author's machine and never runs again — which is exactly what happened to the
 live-name-ambiguity gate between writing it and registering it.
@@ -277,6 +279,15 @@ This exists because the WHEP R package's embedded copy had drifted to **603 rows
 against 740** here, with **24 FAOSTAT area codes routing to withdrawn
 polities** — and checking meant diffing whole tables across two repositories.
 
+**`identity_sha256` deliberately excludes the polygon fields, so a geometry fix does
+not announce itself to a consumer.** That is the right trade for re-measuring an area,
+and it means a consumer holding a broken polygon has no way to learn from the hash that
+it was repaired. Repairing the ten s2-unloadable polygons on 2026-08-05 left the
+identity hash unchanged and `whep::polities` still carrying seven of them — the same ten
+minus the three rows its 603-row copy does not have. Nothing downstream can consume that
+fix without re-syncing the embedded copy from `polities_database.gpkg`, which is
+eduaguilera/whep#530.
+
 **Open work lives in the [issue tracker](../../issues)**, not in comments or state
 files — anything recorded only in a CSV tends to be rediscovered by accident.
 Useful labels: `decision-needed`, `blocked-on-source`, `guard`, `backlog`.
@@ -292,6 +303,7 @@ Useful labels: `decision-needed`, `blocked-on-source`, `guard`, `backlog`.
 | `wiki/log.md` | Chronological record of decisions and open questions |
 | `scripts/rebuild.sh` | **The** rebuild command. Orchestrates everything below. |
 | `scripts/build_database.py` | Builds `data/final/polities_database.{csv,gpkg}` from wiki + `scripts/sources.yaml` |
+| `scripts/repair_s2_polygons.py` | Makes polygons loadable by s2, which `make_valid()` cannot always do. Called by `build_database.py` on write, so a rebuild needs no separate step; run standalone (`--dry-run` to look first) to repair the committed GeoPackage without one |
 | `scripts/sources.yaml` | Per-source registry: file path, id column, temporal columns |
 | `scripts/sources/<slug>/fetch.{sh,R}` | Fetches the raw source |
 | `scripts/sources/<slug>/build.py` | Optional per-source processing step for derived sources |

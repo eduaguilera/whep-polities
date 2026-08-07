@@ -124,6 +124,25 @@ name: Validate database
 #                            chronology — plus whether targets exist, and whether page links
 #                            resolve. That last signal found 4 broken links that predated it;
 #                            validate_references checks citation markers, not inter-page links.
+#   validate_s2_polygons     ten of the 703 polygons could not be LOADED by s2 at all, so
+#                            sf::st_area() and sf::st_intersection() aborted on them
+#                            instead of answering. Two were GEOS-valid, with two
+#                            non-adjacent edges of one ring 4e-10 m apart -- one ULP --
+#                            which GEOS reads as no intersection and s2, converting
+#                            lon/lat to unit vectors first, reads as a crossing. Every
+#                            other geometry gate here reasons in the plane, so none could
+#                            see them, and make_valid() had nothing to repair. Live cost:
+#                            FJI-1800-2025 is current and carries FAOSTAT area 66 across
+#                            203,519 observed rows, and its polygon yielded ZERO grid
+#                            cells (an abort) where live neighbour TON-1800-2025 yielded
+#                            20. Repaired by scripts/repair_s2_polygons.py, which offers
+#                            both of the repairs that disagree -- buffer(0) and make_valid
+#                            differ by 12,845 km2 on Qajar Iran, the spread
+#                            validate_polygon_validity declined to decide -- and defaults
+#                            to the one that moves NO published area: seven of the ten
+#                            change by 0.00 km2 in ESRI:54034 and none by over 21. Eight
+#                            rows left that gate's invalid baseline as a by-product, so
+#                            its pinned count is now 33.
 #
 #   validate_unranged_aliases
 #                            the "Syria" alias had no source and no year range and pointed at
@@ -403,6 +422,20 @@ jobs:
       - name: Polygons — no swallowed neighbour, no discontinuous family
         if: '!cancelled()'
         run: python3 scripts/validate_spatial_containment.py
+
+      - name: Polygons — measurable on the sphere, not just in the plane
+        # Every other geometry gate reasons in the plane, so none could see that ten
+        # polygons were unloadable by s2 -- two of them while GEOS-valid, carrying a
+        # pinch 4e-10 m wide that GEOS reads as no intersection and s2, which rounds
+        # lon/lat onto unit vectors, reads as a crossing. sf::st_area() and
+        # sf::st_intersection() both ABORT on those, so the territory leaves a gridded
+        # build rather than arriving wrong. FJI-1800-2025 is live today and FAOSTAT area
+        # 66 routes to it across 203,519 observed rows: its polygon raised
+        # "Loop 82 edge 4 crosses loop 332 edge 2" against a 0.5-degree grid where live
+        # neighbour TON-1800-2025 returned 20 cells. Asks s2 itself, via spherely, since
+        # a gate that only approximates it can pass while the consumer aborts.
+        if: '!cancelled()'
+        run: python3 scripts/validate_s2_polygons.py
 
 
       - name: Identity — a code's years match its own columns
