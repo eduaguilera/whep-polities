@@ -444,6 +444,25 @@ def mutate_wiki_without_rebuilding(root, gpd, make_valid, affinity):
 
 
 
+def mutate_self_replacing_page(root, gpd, make_valid, affinity):
+    """A page whose prose says it replaced ITS OWN code, so the retired predecessor
+    it superseded is named nowhere.
+
+    All seven reporting-bucket pages carried this at once. It is invisible to every
+    other gate BY CONSTRUCTION: the chain gate's broken-link signal only asks whether
+    a linked page exists, and a self-link always exists; the frontmatter is correct
+    throughout. The claim lives in prose, which is where the REASON for a rename lives
+    and which nothing else in this repo reads for meaning.
+    """
+    page = os.path.join(root, "wiki/polities/rafr-1850-2025.md")
+    with open(page, encoding="utf-8") as fh:
+        text = fh.read()
+    assert "replacing `RAFR-1850-2021`" in text, "fixture page no longer names its predecessor"
+    with open(page, "w", encoding="utf-8") as fh:
+        fh.write(text.replace("replacing `RAFR-1850-2021`", "replacing `RAFR-1850-2025`", 1))
+    return "made rafr-1850-2025.md claim it replaced its own code"
+
+
 def mutate_succession_cycle(root, gpd, make_valid, affinity):
     """Make two rows whose spans OVERLAP name each other as successors, closing a cycle in
     the chronology.
@@ -800,6 +819,12 @@ CASES = (
     ),
     (
         "validate_chain_integrity.py",
+        mutate_self_replacing_page,
+        "rafr-1850-2025.md",
+        "a page documenting a rename by naming itself, leaving the retired code documented nowhere",
+    ),
+    (
+        "validate_chain_integrity.py",
         mutate_succession_cycle,
         "CYCLE",
         "a chronology that loops, between two rows whose spans overlap so that the "
@@ -907,7 +932,12 @@ WRITABLE = {
     # Rewrites two successor fields, so a real copy is required. The default symlink would
     # have written the cycle into the committed database -- the failure mode this harness has
     # now caught four times.
-    "validate_chain_integrity.py": ("polities_database.csv",),
+    # `wiki/polities` is staged because signals E and G read PAGES, not the CSV. Without it
+    # `WIKI_DIR.glob("*.md")` yields nothing and both signals silently cannot fire -- so the
+    # cycle case ran against a gate that was two-sevenths blind, and passed anyway because the
+    # signal it targets reads the CSV. A gate staged without its inputs is a gate whose other
+    # checks are being self-tested vacuously.
+    "validate_chain_integrity.py": ("polities_database.csv", "wiki/polities"),
     "validate_order_decided_families.py": (
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
