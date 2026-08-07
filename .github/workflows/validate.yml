@@ -225,7 +225,14 @@ jobs:
       - name: Install GDAL and Python dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq gdal-bin libgdal-dev python3-gdal
+          # libgdal-dev REMOVED 2026-08-07. It exists to COMPILE against GDAL and nothing in this
+          # workflow compiles: python3-gdal supplies the `osgeo` bindings that build_database.py,
+          # validate_polygon_binding_determinism.py and write_feature_index.py import, gdal-bin
+          # supplies ogr2ogr, and everything else reaches GDAL through geopandas/pyogrio wheels.
+          # It was the bottleneck: on run 31167317554 the install step alone ran past 28 MINUTES
+          # with every gate queued behind it, while `cache: pip` above meant pip was not the cause.
+          # apt has no cache here, so the dependency tree is paid in full on every run.
+          sudo apt-get install -y -qq --no-install-recommends gdal-bin python3-gdal
           python -m pip install --upgrade pip
           pip install -r requirements-ci.txt
           # expose the apt-installed osgeo bindings to the setup-python interpreter
