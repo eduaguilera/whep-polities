@@ -156,6 +156,12 @@ BASELINE = {
     # Indies total less Java and Bali. The old 0.6% agreement between declared and measured was two
     # errors cancelling, which is why the geometry alone never looked wrong.
     "NNG-1949-1963 / IDN-OTH-1949-1951": "was a 405,513 km2 real overlap (98.8% of NNG); fixed 2026-08-07, now disjoint and pinned so",
+    # Surfaced by moving FRIN-1816-1954 from iso3 FRA to IND on 2026-08-07. Under FRA nothing
+    # compared French India with anything Indian; under IND it ties with Hyderabad State, because
+    # both are non-national and the rank cannot break it. They are 1.155 degrees apart and the
+    # intersection measures 0.000 km2 -- Pondicherry and the other establishments are coastal, and
+    # Hyderabad was the Deccan interior. PINNED_DISJOINT asserts that zero rather than describing it.
+    "FRIN-1816-1954 / HYD-1724-1948": "French India vs Hyderabad State: disjoint (0.000 km2, 1.155 degrees apart), sharing iso3 IND only",
     "TNGU-1920-1949 / PAPNG-1920-1949": "New Guinea inside the Papua+New Guinea reporting unit (1.94x, by construction)",
     "BSW-1841-1963 / GBM-1895-1946": "Sarawak vs British Malaya, different territories",
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",
@@ -184,6 +190,8 @@ PINNED_DISJOINT = {
         "partition by construction -- OTH is defined as Indonesia minus JVM and BLB",
     ("IDN-BLB-1949-1951", "IDN-OTH-1949-1951"):
         "partition by construction -- OTH is defined as Indonesia minus JVM and BLB",
+    ("FRIN-1816-1954", "HYD-1724-1948"):
+        "coastal establishments vs the Deccan interior; ties on iso3 IND only",
 }
 PIN_TOLERANCE_KM2 = 1.0   # simplify+densify leaves sliver-scale disagreement on shared edges
 
