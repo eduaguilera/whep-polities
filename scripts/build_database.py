@@ -421,6 +421,7 @@ def write_gpkg(
         lyr.CreateField(ogr.FieldDefn(col, ftype))
 
     defn = lyr.GetLayerDefn()
+    repairs = {"repaired": [], "skipped": [], "failed": []}
     for row in rows:
         f = ogr.Feature(defn)
         for col in CSV_COLUMNS:
@@ -442,10 +443,68 @@ def write_gpkg(
                 g = g.SimplifyPreserveTopology(simplify_tolerance)
             if g.GetGeometryType() != ogr.wkbMultiPolygon:
                 g = ogr.ForceToMultiPolygon(g)
+            g = _repair_if_free(g, row["polity_code"], repairs)
             f.SetGeometry(g)
         lyr.CreateFeature(f)
 
+    if repairs["repaired"]:
+        print(f"  repaired {len(repairs['repaired'])} invalid geometry(ies) at "
+              f"<={REPAIR_MAX_AREA_CHANGE:.1%} area cost")
+    for code, change in repairs["skipped"]:
+        print(f"  LEFT INVALID {code}: repair would move {change:.3%} of its area, above the "
+              f"{REPAIR_MAX_AREA_CHANGE:.1%} threshold - decide it on the page")
+    for code in repairs["failed"]:
+        print(f"  LEFT INVALID {code}: MakeValid produced nothing usable")
+
     ds = None
+
+
+
+# Repairing an invalid polygon is only safe when it does not move territory, so this measures the
+# cost first and refuses above a threshold.
+#
+# WHY IT EXISTS. 44 of 703 published polygons failed is_valid, and an invalid geometry does not
+# merely look untidy downstream -- IT HARD-FAILS sf's DEFAULT INTERSECTION. Measured against whep's
+# committed snapshot: st_intersection over the 220 live non-aggregate polities of 2015 raises
+# "Loop 82 edge 4 crosses loop 332 edge 2" with s2 enabled, which is R's default, and the single
+# geometry responsible is FJI-1800-2025. So every downstream R consumer either turns s2 off or
+# cannot intersect the polity set at all. That is the real cost of leaving these unrepaired, and it
+# is much worse than the cosmetic reading (see eduaguilera/whep#514).
+#
+# WHY IT IS CONDITIONAL. make_valid is not free everywhere. Measured across all 44:
+#
+#     repairable with area change <= 0.01%     32
+#     repairable with area change <= 0.10%     42
+#     total area moved if ALL repaired    12,955 km2
+#     of which IRN-1800-1828 alone        12,845 km2   (0.737%)
+#
+# So 43 of 44 cost 110 km2 BETWEEN THEM, and one costs 12,845 on its own. PR 140 established that
+# make_valid and buffer(0) disagree by exactly that amount on Qajar Iran, and that choosing between
+# them is a territorial judgement rather than a default. This threshold repairs the 43 and leaves
+# the 44th alone, which is the outcome that PR's reasoning asks for.
+REPAIR_MAX_AREA_CHANGE = 0.005  # 0.5%: an order of magnitude above the 42, well below IRN's 0.737%
+
+
+def _repair_if_free(g, polity_code: str, repairs: dict):
+    """Return a valid geometry if repairing costs almost no area, else the original unchanged."""
+    if g.IsValid():
+        return g
+    fixed = g.MakeValid()
+    if fixed is None or not fixed.IsValid():
+        repairs["failed"].append(polity_code)
+        return g
+    before, after = g.GetArea(), fixed.GetArea()
+    if before <= 0:
+        repairs["failed"].append(polity_code)
+        return g
+    change = abs(after - before) / before
+    if change > REPAIR_MAX_AREA_CHANGE:
+        repairs["skipped"].append((polity_code, change))
+        return g
+    if fixed.GetGeometryType() != ogr.wkbMultiPolygon:
+        fixed = ogr.ForceToMultiPolygon(fixed)
+    repairs["repaired"].append(polity_code)
+    return fixed
 
 
 def write_csv(rows: list[dict[str, Any]], out_path: Path) -> None:

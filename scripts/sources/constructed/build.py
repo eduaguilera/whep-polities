@@ -36,6 +36,8 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 CSHAPES2 = REPO_ROOT / "data/geodata/cshapes-2.0/CShapes-2.0.shp"
 GADM41_ADM1 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm1.gpkg"
 GADM41_ADM0 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm0.gpkg"
+# Built for a short explicit country list only -- see ADM2_COUNTRIES in the fetch script.
+GADM41_ADM2 = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_adm2.gpkg"
 CLIOPATRIA = REPO_ROOT / "data/geodata/cliopatria/cliopatria_polities_only.geojson"
 CROWNLANDS = (
     REPO_ROOT
@@ -155,6 +157,29 @@ def _keep_parts_within(geom: ogr.Geometry, lon_min: float, lat_min: float,
         if part.Intersects(env):
             out.AddGeometry(part)
     return out
+
+
+
+def _gadm_adm2(gid_2: str) -> ogr.Geometry:
+    """Return the GADM 4.1 admin-2 feature with the given GID_2.
+
+    The adm2 extract covers only the countries in the fetch script's ADM2_COUNTRIES, because a
+    global one is far larger than anything here needs. A missing country raises rather than
+    returning nothing.
+    """
+    if not GADM41_ADM2.exists():
+        raise FileNotFoundError(
+            f"{GADM41_ADM2} missing - run scripts/sources/gadm-4.1/fetch.sh first."
+        )
+    ds = ogr.Open(str(GADM41_ADM2))
+    lyr = ds.GetLayer()
+    for f in lyr:
+        if f.GetField("GID_2") == gid_2:
+            return f.GetGeometryRef().Clone()
+    raise LookupError(
+        f"GADM 4.1 adm2 has no feature with GID_2={gid_2!r}. If its country is not in the fetch "
+        f"script's ADM2_COUNTRIES list, add it there."
+    )
 
 
 def _crownland(feature_id: str) -> ogr.Geometry:
@@ -588,21 +613,85 @@ def build_ptind_1816_1961() -> ogr.Geometry:
 
 
 def build_idn_blb_1949_1951() -> ogr.Geometry:
-    """Bali and Lombok, 1949-1951 = Bali union Nusa Tenggara Barat, GADM 4.1 adm1.
+    """Bali and Lombok, 1949-1951 = Bali (adm1) union the five Lombok districts (adm2).
 
-    CORRECTS the page's `polygon_feature_id`, which read `IDN.1_1+IDN.20_1`.
-    IDN.1_1 is ACEH, on northern Sumatra, some 3,000 km from Bali. Bali is
-    IDN.2_1. The Lombok half was right: Lombok lies in Nusa Tenggara Barat
-    (IDN.20_1), though that province also contains Sumbawa, so the polygon
-    overstates a unit named for Lombok alone.
+    TWO SEPARATE ERRORS IN THE PAGE'S DECLARED RECIPE, `IDN.1_1+IDN.20_1`:
 
-    NOT REGISTERED in BUILDERS, on measurement: 25,261 km2 against the page's
-    10,505 -- 140% over, and Sumbawa is why. GADM adm1 cannot separate Lombok from
-    Nusa Tenggara Barat, so building this to the page's own figure needs adm2. The
-    corrected Bali id is kept here so the work is not lost.
+      IDN.1_1 is ACEH, on northern Sumatra, some 3,000 km from Bali. Bali is IDN.2_1.
+      IDN.20_1 is Nusa Tenggara Barat, which is Lombok PLUS SUMBAWA.
+
+    The second is why this builder sat unregistered: at adm1 the union measured 25,261 km2 against
+    the page's declared 10,505, 140% over, because Sumbawa is four times Lombok's size. Separating
+    them needs adm2, which the fetch script now builds for IDN.
+
+        Lombok Barat    IDN.20.4_1     924
+        Lombok Tengah   IDN.20.5_1   1,167
+        Lombok Timur    IDN.20.6_1   1,607
+        Lombok Utara    IDN.20.7_1     812
+        Mataram         IDN.20.8_1      60   the city, on Lombok
+        Lombok total               4,570 km2   against a published ~4,725
+        + Bali IDN.2_1             5,591
+        union                     10,160 km2   against the declared 10,505 -> 3.3%
+
+    Mataram is included because it is a kota carved out of Lombok Barat, not a separate island;
+    omitting it would leave a hole in the middle of the polygon.
     """
-    return _union(_gadm_adm1("IDN.2_1"), _gadm_adm1("IDN.20_1"))
+    return _union(
+        _gadm_adm1("IDN.2_1"),      # Bali
+        _gadm_adm2("IDN.20.4_1"),   # Lombok Barat
+        _gadm_adm2("IDN.20.5_1"),   # Lombok Tengah
+        _gadm_adm2("IDN.20.6_1"),   # Lombok Timur
+        _gadm_adm2("IDN.20.7_1"),   # Lombok Utara
+        _gadm_adm2("IDN.20.8_1"),   # Mataram
+    )
 
+
+def build_idn_oth_1949_1951() -> ogr.Geometry:
+    """Indonesia minus Java minus Bali/Lombok -- the "other islands" reporting unit.
+
+    Blocked behind build_idn_blb_1949_1951() until adm2 arrived, because a complement is only as
+    good as what it subtracts: with Sumbawa wrongly inside Bali/Lombok this would have REMOVED
+    Sumbawa from the other islands as well, moving ~15,000 km2 to the wrong row twice over.
+
+        Indonesia (adm1 union)   1,890,243
+        minus Java                 132,674
+        minus Bali and Lombok       10,160
+        remainder                1,747,408 km2   against the declared 1,757,495 -> 0.6%
+
+    The comment at OUT explains why this file is a GeoPackage rather than GeoJSON: this polygon,
+    tens of thousands of islands, is what crossed OGR's per-object GeoJSON size limit.
+    """
+    parts = [_gadm_adm1(g) for g in (
+        "IDN.1_1", "IDN.2_1", "IDN.3_1", "IDN.4_1", "IDN.5_1", "IDN.6_1", "IDN.7_1", "IDN.8_1",
+        "IDN.9_1", "IDN.10_1", "IDN.11_1", "IDN.12_1", "IDN.13_1", "IDN.14_1", "IDN.15_1",
+        "IDN.16_1", "IDN.17_1", "IDN.18_1", "IDN.19_1", "IDN.20_1", "IDN.21_1", "IDN.22_1",
+        "IDN.23_1", "IDN.24_1", "IDN.25_1", "IDN.26_1", "IDN.27_1", "IDN.28_1", "IDN.29_1",
+        "IDN.30_1", "IDN.31_1", "IDN.32_1", "IDN.33_1", "IDN.34_1",
+    )]
+    whole = _union(*parts)
+    return _difference(whole, build_idn_jvm_1949_1951(), build_idn_blb_1949_1951())
+
+
+def build_frin_1816_1954() -> ogr.Geometry:
+    """French India 1816-1954 = the modern Puducherry union territory, GADM adm1 IND.27_1.
+
+    Puducherry UT is the four southern establishments -- Pondicherry, Karikal, Mahe and Yanam --
+    as six disjoint parts, which is why one adm1 feature covers all four.
+
+        IND.27_1 Puducherry     547 km2
+        the page declares       510 km2   -> +7.3%
+
+    CHANDERNAGORE IS NOT INCLUDED, and the direction of the error is worth reading carefully.
+    Chandernagore (~19 km2) was ceded in 1952 and merged into West Bengal, so it is not separable
+    above adm3. Omitting it should make this polygon SMALLER than the declared 510, and instead it
+    is 7% LARGER -- so modern Puducherry UT is about 13% bigger than the four historical enclaves
+    it descends from. Both effects are inside the 25% tolerance and the row is `estimate`, which is
+    what that status is for.
+
+    Compare build_ptind_1816_1961(), Portuguese India, which needed two adm1 features for Goa and
+    Daman-and-Diu.
+    """
+    return _gadm_adm1("IND.27_1")
 
 def build_idn_jvm_1949_1951() -> ogr.Geometry:
     """Java and Madura, 1949-1951 = the six modern provinces of Java island.
@@ -789,6 +878,33 @@ def build_syl_1944_1953() -> ogr.Geometry:
 
 
 BUILDERS = [
+    (
+        "IDN-BLB-1949-1951",
+        "Bali and Lombok (within Indonesia, 1949-1951)",
+        build_idn_blb_1949_1951,
+        "Bali (adm1) union the five Lombok districts (adm2) = 10,160 km2 against a declared 10,505 "
+        "(3.3%). The page's ids were IDN.1_1 (ACEH, 3,000 km away) plus Nusa Tenggara Barat, which "
+        "is Lombok PLUS SUMBAWA -- 25,261 km2, 140% over, which is why this sat unregistered until "
+        "the fetch script gained a targeted adm2 extract.",
+    ),
+    (
+        "IDN-OTH-1949-1951",
+        "Other islands (within Indonesia, 1949-1951)",
+        build_idn_oth_1949_1951,
+        "Indonesia minus Java minus Bali/Lombok = 1,747,408 km2 against a declared 1,757,495 "
+        "(0.6%). Blocked behind IDN-BLB: with Sumbawa wrongly inside Bali/Lombok this complement "
+        "would have removed Sumbawa from the other islands too, misplacing ~15,000 km2 twice.",
+    ),
+    (
+        "FRIN-1816-1954",
+        "French India (Etablissements francais dans l'Inde)",
+        build_frin_1816_1954,
+        "GADM adm1 IND.27_1, the modern Puducherry union territory = 547 km2 against a declared "
+        "510 (+7.3%). Covers Pondicherry, Karikal, Mahe and Yanam as six disjoint parts. "
+        "Chandernagore (~19 km2, merged into West Bengal in 1952) is not separable above adm3 and "
+        "is excluded -- yet the polygon is still 7% LARGER than declared, so modern Puducherry UT "
+        "is ~13% bigger than the historical enclaves.",
+    ),
     (
         "IDN-JVM-1949-1951",
         "Java and Madura (within Indonesia, 1949-1951)",

@@ -71,10 +71,7 @@
   "polygon_vintage_drift"
  ],
  "polygon_gap_polity_codes": [
-  "CAN-1800-1866",
-  "FRIN-1816-1954",
-  "IDN-BLB-1949-1951",
-  "IDN-OTH-1949-1951"
+  "CAN-1800-1866"
  ],
  "local_iso3_codes": [
   "AEF",

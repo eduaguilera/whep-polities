@@ -126,6 +126,29 @@ BASELINE = {
     # between two disjoint islands looks identical to a 3.09x ratio between a province and its
     # country. Recorded so the label is not mistaken for a finding.
     "IDN-JVM-1949-1951 / NNG-1949-1963": "Java and Netherlands New Guinea: DISJOINT (0.000 km2 intersection, 14.4 degrees apart), sharing iso3 IDN only",
+    # The three-way 1949-1951 Indonesian partition, added 2026-08-07 when IDN-BLB and IDN-OTH were
+    # attached. Java, Bali/Lombok and "other islands" are MUTUALLY DISJOINT BY CONSTRUCTION --
+    # IDN-OTH is literally the complement of the other two -- so every ratio below is a partition
+    # and not a containment, however large. Measured intersections are 0.0 km2 for all of them.
+    #
+    # The audit cannot tell a partition from a containment, because both look like one large row
+    # and one small row sharing an iso3 and a span. 171x between Bali/Lombok and the other islands
+    # is the most extreme instance and the most obviously benign.
+    "IDN-BLB-1949-1951 / IDN-OTH-1949-1951": "partition, disjoint by construction (171x, 0.0 km2 intersection)",
+    "IDN-JVM-1949-1951 / IDN-OTH-1949-1951": "partition, disjoint by construction (13.1x, 0.0 km2 intersection)",
+    "IDN-BLB-1949-1951 / IDN-JVM-1949-1951": "partition, disjoint by construction (13.1x, 0.0 km2 intersection)",
+    "IDN-BLB-1949-1951 / NNG-1949-1963": "Bali/Lombok and West Papua: disjoint (0.0 km2 intersection)",
+    # AND ONE THAT IS NOT BENIGN, kept here with the number rather than filed away silently:
+    #
+    #   IDN-OTH-1949-1951 n NNG-1949-1963 = 405,513 km2, which is 98.8% OF NNG.
+    #
+    # Netherlands New Guinea stayed Dutch until 1962, so West Papua was NOT part of Indonesia in
+    # 1949-1951 -- yet IDN-OTH's own declared area of 1,757,495 km2 INCLUDES it (the complement
+    # measures 1,747,408, within 0.6%), so the double claim is in the two pages' definitions rather
+    # than in the geometry that implements them. Any area-weighted use over 1949-1951 counts West
+    # Papua twice. This is exactly the class eduaguilera/whep#514 reports, for a different pair
+    # than the one it names. Filed.
+    "NNG-1949-1963 / IDN-OTH-1949-1951": "REAL OVERLAP: 405,513 km2, 98.8% of NNG. West Papua claimed by both; see the note above",
     "TNGU-1920-1949 / PAPNG-1920-1949": "New Guinea inside the Papua+New Guinea reporting unit (1.94x, by construction)",
     "BSW-1841-1963 / GBM-1895-1946": "Sarawak vs British Malaya, different territories",
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",
