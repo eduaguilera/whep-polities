@@ -97,6 +97,24 @@ BASELINE_INVALID = {
     "MAN-1932-1945": "constructed",
     "MAN-1945-1950": "constructed",
     "TTPI-1947-1994": "constructed",
+    # IDN-JVM-1949-1951, added 2026-08-07, and it is the CLEANEST EVIDENCE IN THIS FILE that
+    # SimplifyPreserveTopology(0.01) creates invalidity rather than only inheriting it:
+    #
+    #     data/geodata/constructed/constructed.gpkg   valid=True    132,674.44 km2
+    #     data/final/polities_database.gpkg           valid=False   132,720.05 km2
+    #
+    # Same geometry, one simplification apart. The union itself is exact -- _union() does pairwise
+    # OGR Union, so six abutting Java provinces dissolve cleanly -- and the "Nested shells" appears
+    # at 114.05E, -8.64 only after simplification.
+    #
+    # THIS PARTLY CORRECTS THE DOCSTRING ABOVE. I wrote that the sweep's claim ("created by
+    # SimplifyPreserveTopology") was not the main cause, and that stands on the counts: 29 of 41
+    # arrive invalid from their source. But "mostly inherited" should not be read as "our
+    # simplifier is innocent", and this row is a case I produced myself, from a valid input, in one
+    # step. Repair cost is negligible here (make_valid 132,719.77, buffer(0) 132,719.91, 0.14 km2
+    # apart) which is why it is baselined rather than fixed -- but the mechanism is now proven, not
+    # merely suspected.
+    "IDN-JVM-1949-1951": "constructed",
     "FRA-1800-1871": "cshapes-europe",
     "FRA-1800-1919": "cshapes-europe",
     "GBR-1800-1921": "cshapes-europe",
@@ -105,7 +123,7 @@ BASELINE_INVALID = {
 BASELINE_COUNT_BY_SOURCE = {
     "gadm-4.1-adm0": 19,
     "gadm-4.1-adm1": 4,
-    "constructed": 5,
+    "constructed": 6,
     "cliopatria": 3,
     "cshapes-europe": 3,
     "reporting-areas": 6,
