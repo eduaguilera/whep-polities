@@ -291,6 +291,40 @@ def build_papng_1920_1949() -> ogr.Geometry:
     return _union(_cshapes2_feature(911, 1930), _cshapes2_feature(912, 1930))
 
 
+def build_idn_jvm_1949_1951() -> ogr.Geometry:
+    """Java and Madura = the six GADM adm1 provinces that make up Java.
+
+    Madura is not separable in GADM: it is part of Jawa Timur, which is correct for this row
+    anyway since the source reports Java and Madura together.
+
+        Jakarta Raya      654        IDN.7_1
+        Banten          9,352        IDN.4_1
+        Jawa Barat     37,059        IDN.9_1
+        Jawa Tengah    34,437        IDN.10_1
+        Yogyakarta      3,177        IDN.33_1
+        Jawa Timur     47,996        IDN.11_1
+        union         132,674  km2   against the page's declared 132,000 -> 0.5%
+
+    THE FEATURE IDS THE PAGE DECLARED WERE WRONG AND ARE NOT USED. It listed
+    `IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1`, and in this GADM extract IDN.29_1 is SULAWESI UTARA --
+    North Sulawesi, a different island 1,500 km away -- while Banten, Jawa Barat and Yogyakarta
+    are missing. Those four sum to 97,594 km2, against a declared 132,000. Building the recipe as
+    written would have attached North Sulawesi to Java and dropped a third of Java itself.
+
+    The declared AREA was right and the declared RECIPE was wrong, which is the same shape as
+    SER-1918-1945 (PR 157) and CAN-1800-1866: a page whose prose and whose ids disagree, where
+    following the ids is worse than ignoring them. The area is what identified the correct set.
+    """
+    return _union(
+        _gadm_adm1("IDN.7_1"),    # Jakarta Raya
+        _gadm_adm1("IDN.4_1"),    # Banten
+        _gadm_adm1("IDN.9_1"),    # Jawa Barat
+        _gadm_adm1("IDN.10_1"),   # Jawa Tengah
+        _gadm_adm1("IDN.33_1"),   # Yogyakarta
+        _gadm_adm1("IDN.11_1"),   # Jawa Timur
+    )
+
+
 def build_deu_1945_1949() -> ogr.Geometry:
     """Allied-occupied Germany = West (gwcode 260) ∪ East (gwcode 265)
     for 1945-1949."""
@@ -755,6 +789,15 @@ def build_syl_1944_1953() -> ogr.Geometry:
 
 
 BUILDERS = [
+    (
+        "IDN-JVM-1949-1951",
+        "Java and Madura (within Indonesia, 1949-1951)",
+        build_idn_jvm_1949_1951,
+        "Union of the six GADM adm1 Java provinces = 132,674 km2 against the page's declared "
+        "132,000 (0.5%). The feature ids the page declared are NOT used: IDN.29_1 is Sulawesi "
+        "Utara, a different island, and three Java provinces were missing, so those four ids sum "
+        "to 97,594. Declared area right, declared recipe wrong -- the SER-1918-1945 shape.",
+    ),
     (
         "GCT-1919-1956",
         "Gold Coast and British Togoland (1919-1956)",

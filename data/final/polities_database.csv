@@ -342,7 +342,7 @@ IDN-1969-1976,Indonesia (1969-1976),1969,1976,national,IDN,850,Asia,draft,2026-0
 IDN-1976-2002,Indonesia (1976-2002),1976,2002,national,IDN,850,Asia,draft,2026-04-12,cshapes-2.0,850,1976,assigned,,IDN-1969-1976,IDN-2002-2025
 IDN-2002-2025,Indonesia,2002,2025,national,IDN,850,Asia,reviewed,2026-04-12,cshapes-2.0,850,2002,assigned,,IDN-1976-2002,
 IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN.1_1+IDN.20_1,,proxy,10505,,
-IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN.7_1+IDN.10_1+IDN.11_1+IDN.29_1,,proxy,132000,,
+IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,constructed,IDN-JVM-1949-1951,,proxy,132000,,
 IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,gadm-4.1,IDN-complement-JVM-BLB,,proxy,1757495,,
 IGL-1800-1901,Igala Kingdom,1800,1901,national,,,Africa,draft,2026-04-15,paine-2024,Igala,,assigned,,,NNI-1899-1904
 IJB-1800-1892,Ijebu Kingdom,1800,1892,national,,,Africa,draft,2026-04-15,paine-2024,Ijebu,,assigned,,,SNI-1899-1906

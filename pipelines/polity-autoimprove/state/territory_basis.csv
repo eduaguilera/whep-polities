@@ -342,7 +342,7 @@ IDN-1969-1976,Indonesia (1969-1976),1969,1976,cshapes-2.0,1969.0,assigned,False,
 IDN-1976-2002,Indonesia (1976-2002),1976,2002,cshapes-2.0,1976.0,assigned,False,assumed_constant,True,False,single 1976 polygon held across a 26y span (1976-2002); borders may have changed,0
 IDN-2002-2025,Indonesia,2002,2025,cshapes-2.0,2002.0,assigned,False,measured,False,False,vintage 2002 faithful to period 2002-2025,0
 IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,gadm-4.1,,proxy,True,unassigned,True,False,no polygon (honest gap; never a false territory),24
-IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,gadm-4.1,,proxy,True,unassigned,True,False,no polygon (honest gap; never a false territory),27
+IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,27
 IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,gadm-4.1,,proxy,True,unassigned,True,False,no polygon (honest gap; never a false territory),15
 IGL-1800-1901,Igala Kingdom,1800,1901,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 IJB-1800-1892,Ijebu Kingdom,1800,1892,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0

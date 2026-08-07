@@ -113,6 +113,19 @@ BASELINE = {
     # relationship that actually holds. The type field was carrying the information all along; it
     # was just set to the wrong value.
     "BTL-1920-1957 / GCT-1919-1956": "British Togoland inside the Gold Coast + Br Togoland reporting unit (9.00x, by construction)",
+    # Java and Netherlands New Guinea, added 2026-08-07 when IDN-JVM's polygon was attached.
+    #
+    # THE AUDIT LABELS THIS "probable component in parent" AND THAT LABEL IS WRONG HERE. Measured:
+    # Java spans 105.1-116.3E, Netherlands New Guinea 129.7-141.0E, their intersection is 0.000 km2
+    # and they are 14.4 degrees apart. Neither contains the other; they are opposite ends of the
+    # archipelago.
+    #
+    # They share iso3 IDN because both are parts of Indonesia, and they overlap in TIME (1949-1951)
+    # while being disjoint in SPACE -- which is the one combination this audit's heuristic cannot
+    # read, because it infers containment from an area ratio and a shared code. A 3.09x ratio
+    # between two disjoint islands looks identical to a 3.09x ratio between a province and its
+    # country. Recorded so the label is not mistaken for a finding.
+    "IDN-JVM-1949-1951 / NNG-1949-1963": "Java and Netherlands New Guinea: DISJOINT (0.000 km2 intersection, 14.4 degrees apart), sharing iso3 IDN only",
     "TNGU-1920-1949 / PAPNG-1920-1949": "New Guinea inside the Papua+New Guinea reporting unit (1.94x, by construction)",
     "BSW-1841-1963 / GBM-1895-1946": "Sarawak vs British Malaya, different territories",
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",
