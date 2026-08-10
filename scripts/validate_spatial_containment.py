@@ -146,6 +146,15 @@ LEGITIMATE_CONTAINERS = frozenset({
     # military administration of Cyrenaica, 1943-1949, has no row at all -- so this container
     # sits one below the >=3 threshold for a coverage gap rather than for a territorial reason.
     "LBY-1949-1951",
+    # The British Leeward Islands Colony over its member islands, added 2026-08-10 when its
+    # polygon was finally built (issues 3 and 155). It holds ATG, DMA, KNA and MSR, which is what
+    # a federation of those islands is -- the union is composed FROM their GADM outlines, so
+    # containment is by construction. BVI is the fifth member and has no separate live row here.
+    #
+    # The double-count risk is real for 24 rows of FAO "Leeward Islands" data: those are reported
+    # against the colony while the member islands also report separately, so a spatial use must
+    # pick one level. Same shape as FID-1887-1954 over Indochina.
+    "BLI-1833-1960",
     # A joint reporting unit over the two states it combines. Added when its polygon
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.
