@@ -444,6 +444,30 @@ def mutate_wiki_without_rebuilding(root, gpd, make_valid, affinity):
 
 
 
+def mutate_site_shows_withdrawn(root, gpd, make_valid, affinity):
+    """Put a retired polity back into site/polities.geojson, which is how the site
+    drew Argentina twice.
+
+    THE DATABASE IS UNTOUCHED HERE, and that is the point. Both the CSV and the
+    GeoPackage were correct the whole time this defect shipped -- the master carries
+    geometry for dead rows on purpose -- and the defect was in what the site converter
+    chose to keep. A reader checking either authoritative file would find nothing
+    wrong, and `site/` was covered by exactly one workflow: the one that deploys it.
+    """
+    import json
+
+    path = os.path.join(root, "site/polities.geojson")
+    with open(path, encoding="utf-8") as fh:
+        geo = json.load(fh)
+    ghost = json.loads(json.dumps(geo["features"][0]))
+    ghost["properties"]["polity_code"] = "ARG-1800-2025"
+    ghost["properties"]["wiki_status"] = "superseded"
+    geo["features"].append(ghost)
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(geo, fh)
+    return "added superseded ARG-1800-2025 back into site/polities.geojson"
+
+
 def mutate_self_replacing_page(root, gpd, make_valid, affinity):
     """A page whose prose says it replaced ITS OWN code, so the retired predecessor
     it superseded is named nowhere.
@@ -818,6 +842,12 @@ CASES = (
         "silently becomes the route",
     ),
     (
+        "validate_site_outputs.py",
+        mutate_site_shows_withdrawn,
+        "ARG-1800-2025",
+        "a withdrawn polity drawn on the published map, over the rows that replaced it",
+    ),
+    (
         "validate_chain_integrity.py",
         mutate_self_replacing_page,
         "rafr-1850-2025.md",
@@ -938,6 +968,16 @@ WRITABLE = {
     # signal it targets reads the CSV. A gate staged without its inputs is a gate whose other
     # checks are being self-tested vacuously.
     "validate_chain_integrity.py": ("polities_database.csv", "wiki/polities"),
+    # Needs the GeoPackage (to know which rows are live AND polygonal) and both site files,
+    # writable because the case mutates the geojson. The master CSV must be a real copy too,
+    # not stage()'s symlink: signal A compares it against site/polities.csv byte for byte, and
+    # a mutation writing through the symlink would rewrite the committed database.
+    "validate_site_outputs.py": (
+        "polities_database.csv",
+        "polities_database.gpkg",
+        "site/polities.csv",
+        "site/polities.geojson",
+    ),
     "validate_order_decided_families.py": (
         "polities_database.csv",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
