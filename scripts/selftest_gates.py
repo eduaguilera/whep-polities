@@ -494,7 +494,10 @@ def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
             hit, newval = r.polity_code, round(r.km2)
             break
     assert hit, "no row with a >5% divergence to overwrite"
-    g.loc[g.polity_code == hit, "polygon_area_km2"] = newval
+    # STRING, not int. The column's dtype is str, and newer pandas raises
+    # "Invalid value '795' for dtype 'str'" on an int assignment while older pandas
+    # silently accepts it -- so this passed locally and failed in CI.
+    g.loc[g.polity_code == hit, "polygon_area_km2"] = str(newval)
     write_gpkg(g, root)
     return f"rewrote {hit}'s declared area to {newval:,}, exactly what its polygon measures"
 
