@@ -1,4 +1,5 @@
 polity_code,polity_name,start_year,end_year,polygon_source,polygon_feature_year,polygon_status,overlaps_1860_1961,territory_basis,territory_assumed,priority_review,basis_reason,layerb_data_rows
+ABW-1800-2025,Aruba,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,cshapes-2.0,1967.0,proxy,True,back_projected,True,False,polygon vintage 1967 is AFTER the period ends (1963) — later/modern border applied back,18
 AEF-1910-1960,French Equatorial Africa (AEF),1910,1960,constructed,1938.0,assigned,True,assumed_constant,True,False,single 1938 polygon held across a 50y span (1910-1960); borders may have changed,130
 AFG-1800-1893,Afghanistan (to 1893),1800,1893,cshapes-2.0,1888.0,assigned,True,assumed_constant,True,False,single 1888 polygon held across a 93y span (1800-1893); borders may have changed,0
@@ -725,6 +726,7 @@ USA-1848-1867,United States (1848-1867),1848,1867,cliopatria,1849.0,assigned,Tru
 USA-1867-1959,United States (1867-1959),1867,1959,cliopatria,1880.0,assigned,True,assumed_constant,True,True,single 1880 polygon held across a 92y span (1867-1959); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),8350
 USA-1959-2025,United States of America,1959,2025,cshapes-2.0,1959.0,assigned,True,assumed_constant,True,False,single 1959 polygon held across a 66y span (1959-2025); borders may have changed,133
 UZB-1991-2025,Uzbekistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
+VAT-1929-2025,Holy See (Vatican City State),1929,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 VCT-1800-1833,Saint Vincent (to 1833),1800,1833,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 VCT-1833-2025,Saint Vincent and the Grenadines,1833,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,257
 VEN-1821-2025,Venezuela,1821,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 204y span (1821-2025); borders may have changed,1050
