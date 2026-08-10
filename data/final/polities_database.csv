@@ -14,7 +14,7 @@ AND-1800-2025,Andorra,1800,2025,national,AND,,Europe,reviewed,2026-04-12,cshapes
 ANG-1800-1890,Angola (to 1890),1800,1890,national,ANG,,Africa,draft,2026-04-15,cshapes-2.0,540,1886,assigned,,,ANG-1890-1891
 ANG-1890-1891,Angola (1890-1891),1890,1891,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1890,assigned,1037117,,ANG-1891-1905
 ANG-1891-1905,Angola (1891-1905),1891,1905,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1891,assigned,1344272,ANG-1890-1891,AGO-1816-2025
-ANG-1905-1975,Angola (1905-1975),1905,1975,national,AGO,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,
+ANG-1905-1975,Angola (1905-1975),1905,1975,national,AGO,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,AGO-1975-2025
 ANT-1816-1960,Dutch Caribbean (colonial),1816,1960,colonial,ANT,,North America,draft,2026-06-26,reporting-areas,ANT-1961-2010,,proxy,960,,ANT-1961-2010
 ANT-1961-2010,Netherlands Antilles,1961,2010,aggregate,ANT,,North America,draft,2026-06-11,reporting-areas,ANT-1961-2010,,assigned,,,
 AOF-1895-1960,French West Africa (AOF),1895,1960,national,AOF,430,Africa,draft,2026-06-23,constructed,AOF-1895-1960,1938,assigned,4774865,,SEN-1960-2025; GIN-1958-2025; CIV-1960-2025; BEN-1960-2025; NER-1960-2025; BFA-1960-2025; MLI-1960-2025; MRT-1960-1975
@@ -75,7 +75,7 @@ BLZ-1886-1970,British Honduras,1886,1970,colonial,BLZ,80,North America,draft,202
 BLZ-1970-1981,Belize (pre-independence),1970,1981,colonial,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,22966,BLZ-1886-1970,BLZ-1981-2025
 BLZ-1981-2025,Belize,1981,2025,national,BLZ,80,North America,draft,2026-04-13,cshapes-2.0,80,1886,assigned,22966,BLZ-1970-1981,
 BMB-1800-1899,Bemba Kingdom,1800,1899,national,,,Africa,draft,2026-04-13,paine-2024,Bemba,,assigned,,,ZMB-1964-2025
-BMU-1684-1968,British Crown Colony of Bermuda,1684,1968,national,BMU,,North America,draft,2026-06-26,gadm-4.1-adm0,BMU,,proxy,54,,
+BMU-1684-1968,British Crown Colony of Bermuda,1684,1968,national,BMU,,North America,draft,2026-06-26,gadm-4.1-adm0,BMU,,proxy,54,,BMU-1968-2025
 BMU-1968-2025,Bermuda,1968,2025,territory,BMU,,North America,draft,2026-07-02,gadm-4.1-adm0,BMU,,assigned,68,BMU-1684-1968,
 BNB-1881-1963,British North Borneo,1881,1963,colonial,MYS,823,Asia,draft,2026-06-24,cshapes-2.0,823,1889,assigned,72620,,MYS-1963-1965
 BND-1800-1887,Kingdom of Bundu,1800,1887,national,,,Africa,draft,2026-04-13,paine-2024,Bundu,,assigned,,,SEN-1960-2025
@@ -579,7 +579,7 @@ RAFR-1850-2021,Africa Other,1850,2021,aggregate,RAFR,,Africa,retired,2026-06-11,
 RAFR-1850-2025,Africa Other,1850,2025,aggregate,RAFR,,Africa,draft,2026-08-05,reporting-areas,RAFR-1850-2025,,assigned,,,
 RASI-1850-2021,Asia Other,1850,2021,aggregate,RASI,,Asia,retired,2026-06-11,reporting-areas,RASI-1850-2021,,unassigned,,,
 RASI-1850-2025,Asia Other,1850,2025,aggregate,RASI,,Asia,draft,2026-08-05,reporting-areas,RASI-1850-2025,,assigned,,,
-REU-1816-1946,Réunion (French Colony),1816,1946,colonial,REU,585,Africa,draft,2026-06-24,cshapes-2.0,585,1886,assigned,2642,,
+REU-1816-1946,Réunion (French Colony),1816,1946,colonial,REU,585,Africa,draft,2026-06-24,cshapes-2.0,585,1886,assigned,2642,,REU-1946-2025
 REU-1946-2025,Réunion (French Overseas Department),1946,2025,national,REU,585,Africa,draft,2026-06-26,cshapes-2.0,585,1886,assigned,2642,REU-1816-1946,
 REUR-1850-2021,Europe Other,1850,2021,aggregate,REUR,,Europe,retired,2026-06-11,reporting-areas,REUR-1850-2021,,unassigned,,,
 REUR-1850-2025,Europe Other,1850,2025,aggregate,REUR,,Europe,draft,2026-08-05,reporting-areas,REUR-1850-2025,,assigned,,,
