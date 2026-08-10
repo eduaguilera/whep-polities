@@ -147,6 +147,60 @@ for r in documented.itertuples():
     print(f"   ok   {r.divergence*100:6.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2 vs "
           f"{r.measured_km2:>12,.0f} km2 — declared '{r.polygon_status}', divergence documented")
 
+# ---------- A2: how many of check A's comparisons cannot fail ----------
+#
+# CHECK A COMPARES A DECLARED AREA AGAINST THE GEOMETRY IT WAS OFTEN COPIED FROM.
+#
+# `polygon_area_km2` has no recorded provenance. Some pages declare an official land area or a
+# yearbook figure -- TKL-1800-2025 declares 12 km2 against a GADM 15.95, deliberately -- and some
+# declare what their own polygon measures. For the second kind, check A is a no-op: a polygon
+# cannot disagree with a number read off it, and the row reports PASS whatever is wrong with it.
+#
+# THAT TAUTOLOGY HID THREE REAL ERRORS, each of which agreed to under 1%:
+#
+#     IDN-OTH-1949-1951   declared 1,757,495 vs measured 1,747,408   0.6%    both included West Papua
+#     IND-1800-1886       declared 4,209,917 vs measured 4,209,869   0.001%  both included Ceylon
+#     CAN-1800-1866       declared 1,209,852, recipe 2,735,024       -       declared = recipe minus Quebec
+#
+# The right fix is provenance metadata -- a `polygon_area_source` field distinguishing
+# measured-from-polygon / source-stated / official-gazetteer / derived-arithmetic -- which is
+# issue 195 and a schema change. This is the cheap half: COUNT the comparisons that cannot fail,
+# so the number is visible on every run and can only be argued down.
+#
+# NOT BIDIRECTIONAL, unlike every other baseline in this repo, and the reason is specific. A
+# DECREASE here does not mean the provenance improved; it means the GEOMETRY MOVED -- PR 189
+# changed 42 geometries and would have pushed rows out of the tight band without anyone sourcing
+# a single figure. Failing on a decrease would print "lock in the improvement" when nothing
+# improved. A row can only ENTER the band by someone re-deriving a declared figure from a
+# polygon, which is a human act and worth failing on. So this is a ceiling.
+SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
+BASELINE_SELF_REFERENTIAL = 103     # measured 2026-08-10 over 197 rows carrying both
+
+# Live rows only, matching the population check A actually judges -- `have` includes the
+# retired and superseded rows that still carry geometry, and check A exempts those.
+with_both = have[
+    have.claimed.notna() & (have.claimed > 0) & have.measured_km2.notna()
+    & ~have.get("wiki_status").isin(DEAD_STATUS)
+].copy()
+with_both["dev"] = (with_both.measured_km2 / with_both.claimed - 1).abs()
+selfref = with_both[with_both.dev <= SELF_REF_TOLERANCE]
+exact = with_both[with_both.dev <= 0.000005]
+print(f"\nA2. SELF-REFERENTIAL AREAS — {len(selfref)} of {len(with_both)} declared areas agree with "
+      f"their own geometry within {SELF_REF_TOLERANCE:.1%}, so check A cannot fail for them "
+      f"({len(exact)} agree to every digit)")
+for r in exact.sort_values("polity_code").itertuples():
+    print(f"   exact  {r.polity_code:18s} {r.claimed:>12,.0f} km2   ({r.polygon_source})")
+selfref_over = len(selfref) - BASELINE_SELF_REFERENTIAL
+if selfref_over > 0:
+    print(f"   FAIL: {len(selfref)} is above the pinned ceiling of {BASELINE_SELF_REFERENTIAL}. "
+          f"A declared area within {SELF_REF_TOLERANCE:.1%} of its own polygon is not evidence "
+          f"about the territory -- source it from a yearbook or an official gazetteer, or say in "
+          f"polygon_method that it was measured from the geometry.")
+elif selfref_over < 0:
+    print(f"   note: {len(selfref)} is BELOW the pinned {BASELINE_SELF_REFERENTIAL}. Lower the pin "
+          f"to keep the ratchet tight -- but check first whether a figure was actually sourced, or "
+          f"whether the geometry simply moved.")
+
 # ---------- C: status claims a polygon that was never attached ----------
 # `assigned`/`proxy`/`estimate` all assert a polygon exists. When the build
 # cannot resolve polygon_feature_id it attaches nothing and says so only in a
@@ -279,9 +333,11 @@ else:
 
 fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
         or len(stale_baseline) > 0 or len(undoc) > 0 or len(off_vocab) > 0
+        or selfref_over > 0
         or (A.strict and mismatch))
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(off_vocab)} off-vocabulary status(es), "
       f"{len(bad_area)} area disagreement(s), "
+      f"{max(selfref_over, 0)} self-referential area(s) above the ceiling, "
       f"{len(declared_none)} declares-none-but-has-one, "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))

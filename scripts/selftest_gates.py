@@ -444,6 +444,61 @@ def mutate_wiki_without_rebuilding(root, gpd, make_valid, affinity):
 
 
 
+def write_gpkg(gdf, root):
+    """Write a mutated GeoDataFrame over the staged GeoPackage, replacing it.
+
+    USE THIS RATHER THAN gdf.to_file(...) WHENEVER THE GEOPACKAGE IS IN THIS GATE'S `WRITABLE`.
+    `to_file` on a path that ALREADY EXISTS appends a new layer named after the file stem instead
+    of overwriting the existing one, and `read_file` returns the FIRST layer -- so the mutation is
+    written, reported, and completely invisible to the gate:
+
+        layers after to_file over existing:  ['polities', 'polities_database']
+        value re-read from dest:             the ORIGINAL, unmutated
+
+    Measured on 2026-08-10 while adding the check-A2 case. The existing gpkg-mutating cases escape
+    this only because their gates do not list the GeoPackage in WRITABLE, so stage() never creates
+    it and their write lands on a fresh path. Any future case that stages it would silently pass --
+    which is the one failure mode this harness exists to prevent, occurring inside the harness.
+    """
+    dest = os.path.join(root, "data/final/polities_database.gpkg")
+    if os.path.exists(dest):
+        os.unlink(dest)
+    gdf.to_file(dest, driver="GPKG", layer="polities")
+
+
+def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
+    """Rewrite a declared area to exactly what its own polygon measures, which is the
+    tautology check A2 counts.
+
+    THIS MUTATION MAKES CHECK A PASS, and that is the point. The row it targets is
+    chosen for having a genuine divergence: overwriting the declared figure with the
+    measured one silences check A's disagreement and raises A2's count in the same
+    edit. A gate that only reported disagreements would score this as an improvement.
+
+    THE DECLARED AREA IS READ FROM THE GEOPACKAGE, not the CSV -- validate_polygons
+    takes `claimed` from `have`, which comes from the .gpkg attribute table. The first
+    version of this case rewrote the CSV and the gate did not notice, which is worth
+    knowing before writing another case against this gate.
+    """
+    g = gpd.read_file(GPKG)
+    live = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
+    live["km2"] = live.to_crs("ESRI:54034").geometry.area / 1e6
+    hit = None
+    for r in live.itertuples():
+        dec = r.polygon_area_km2
+        try:
+            dec = float(dec)
+        except (TypeError, ValueError):
+            continue
+        if dec > 0 and abs(r.km2 / dec - 1) > 0.05:      # a real divergence to overwrite
+            hit, newval = r.polity_code, round(r.km2)
+            break
+    assert hit, "no row with a >5% divergence to overwrite"
+    g.loc[g.polity_code == hit, "polygon_area_km2"] = newval
+    write_gpkg(g, root)
+    return f"rewrote {hit}'s declared area to {newval:,}, exactly what its polygon measures"
+
+
 def mutate_site_shows_withdrawn(root, gpd, make_valid, affinity):
     """Put a retired polity back into site/polities.geojson, which is how the site
     drew Argentina twice.
@@ -842,6 +897,12 @@ CASES = (
         "silently becomes the route",
     ),
     (
+        "validate_polygons.py",
+        mutate_area_read_off_its_own_polygon,
+        "self-referential",
+        "a declared area overwritten with its own polygon's measurement, which silences check A",
+    ),
+    (
         "validate_site_outputs.py",
         mutate_site_shows_withdrawn,
         "ARG-1800-2025",
@@ -968,6 +1029,13 @@ WRITABLE = {
     # signal it targets reads the CSV. A gate staged without its inputs is a gate whose other
     # checks are being self-tested vacuously.
     "validate_chain_integrity.py": ("polities_database.csv", "wiki/polities"),
+    # Only the GeoPackage: validate_polygons reads BOTH the declared area and the geometry from
+    # it, so that is the file the case mutates. CShapes is not staged, so check B prints "skipped"
+    # -- fine, since the case targets A2.
+    #
+    # NOTE FOR THE NEXT AUTHOR: this is the ONLY gate that both stages the GeoPackage and mutates
+    # it, and that combination is a trap -- see write_gpkg(). Use that helper, not to_file().
+    "validate_polygons.py": ("polities_database.gpkg",),
     # Needs the GeoPackage (to know which rows are live AND polygonal) and both site files,
     # writable because the case mutates the geojson. The master CSV must be a real copy too,
     # not stage()'s symlink: signal A compares it against site/polities.csv byte for byte, and
