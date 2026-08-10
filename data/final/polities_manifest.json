@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "90e372fed9a4459c30a59fa8612d446d0d4fd451d822f0490ffb19df7da71bb6",
+ "identity_sha256": "ad01086e39ea6b823bdf68632bdb63db50b60acf4767f9bf7801a43b40be93bf",
  "counts": {
-  "total": 753,
-  "live": 712,
+  "total": 754,
+  "live": 713,
   "dead": 41
  },
  "dead_status": [
@@ -155,9 +155,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "038f26472d88f00f813a720ae00b9a0e635f7e48e8cfdce2d389e580c9b85c48",
-  "aliases": 902,
-  "labels": 478,
+  "sha256": "c50b833b00d3c6b36c8791321c929f79f583005cd33c79710c7de81824937ee2",
+  "aliases": 903,
+  "labels": 479,
   "sources": [
    "crops-manure-n",
    "fao",
@@ -418,6 +418,7 @@
   "F78-1949-1990",
   "FCC-1862-1887",
   "FCM-1920-1960",
+  "FEZ-1943-1951",
   "FID-1887-1954",
   "FIN-1809-1917",
   "FIN-1917-1940",

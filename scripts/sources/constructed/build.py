@@ -671,6 +671,109 @@ def build_idn_blb_1949_1951() -> ogr.Geometry:
     )
 
 
+# OCCUPIED LIBYA 1943-1951 WAS THREE SEPARATELY ADMINISTERED TERRITORIES, and the database
+# could represent the whole but none of the parts (issue 156). Tripolitania and Cyrenaica were
+# under British military administration, Fezzan under French; 39 data rows route to them.
+#
+# NO SOURCE IN THIS REPO DRAWS THEM. Checked directly: CShapes has only gwcode 620 (Libya
+# entire) for every step 1912-2019, and Cliopatria's nearest features are "Ottoman
+# Tripolitania" (1840-1911) and an ANCIENT "Cyrenaica" (-331 to -92). So the three have to be
+# composed from modern GADM 4.1 adm1 shabiyat, and the assignment of those shabiyat is the
+# judgement this comment exists to justify.
+#
+# THE HISTORICAL BOUNDARIES DO NOT FOLLOW THE MODERN SHABIYAT, and the disagreement is
+# concentrated in exactly two units: Surt (78,659 km2, the Sirte basin, historically the
+# Tripolitania/Cyrenaica frontier) and Al Jufrah (111,245 km2, the Jufra oases, between
+# Tripolitania's southern reach and Fezzan's northern one). The other 20 units are unambiguous
+# by geography. All four possible placements were measured against FAO 1952's own areas for the
+# three reporting units -- Tripolitania 353,000, Cyrenaica 855,400, Fezzan 551,100, summing to
+# exactly its Libya of 1,759,500:
+#
+#     placement                        TRP        CYR        FEZ      worst
+#     Surt->CYR, Jufrah->TRP      -10.9%      -2.0%     -15.9%     -15.9%   <- chosen
+#     Surt->CYR, Jufrah->FEZ      -42.4%      -2.0%      +4.3%     -42.4%
+#     Surt->TRP, Jufrah->FEZ      -20.1%     -11.2%      +4.3%     -20.1%
+#     Surt->TRP, Jufrah->TRP      +11.4%     -11.2%     -15.9%     -15.9%
+#
+# The first is chosen for a reason stronger than "smallest worst error". GADM's Libya measures
+# 1,616,058 km2 geodesically against the accepted 1,759,540 -- it is 8.2% SHORT, and that is
+# real rather than a projection artefact (checked in three equal-area projections and on the
+# ellipsoid; GADM's bounds match Libya's accepted extent to 0.01 degrees, so nothing is missing
+# geographically, and the same measurement gives Indonesia 0.992x). If the whole is 8.2% under
+# FAO, EVERY PART SHOULD BE UNDER TOO. Only the first placement achieves that. The second and
+# third put Fezzan ABOVE FAO while the whole is below, and the fourth does the same for
+# Tripolitania -- internally inconsistent, whatever the average error.
+#
+# WHAT IS STILL A GUESS: whether the 1943-1951 administrators drew Sirte into Cyrenaica. The
+# 1934 Italian provinces put Sirte in Misurata, i.e. Tripolitania, which argues for the third or
+# fourth placement -- and both are refused above on the consistency test. So this is an
+# area-evidence decision over a documentary one, and it is recorded as such on the three pages
+# rather than presented as settled.
+#
+# THE PARTITION IS THE DELIVERABLE. The three unions are exhaustive over GADM's 22 Libyan
+# shabiyat and pairwise disjoint by construction, so per-territory data sums to the national
+# total -- which is what makes TRP + CYR + FEZ usable alongside LBY at all.
+_TRP_ADM1 = (
+    "LBY.20_1",  # Tripoli
+    "LBY.4_1",   # Al Jifarah
+    "LBY.11_1",  # Az Zawiyah
+    "LBY.10_1",  # An Nuqat al Khams
+    "LBY.8_1",   # Al Marqab
+    "LBY.15_1",  # Misratah
+    "LBY.3_1",   # Al Jabal al Gharbi
+    "LBY.17_1",  # Nalut
+    "LBY.5_1",   # Al Jufrah -- the judgement; see above
+)
+_CYR_ADM1 = (
+    "LBY.1_1",   # Al Butnan
+    "LBY.13_1",  # Darnah
+    "LBY.2_1",   # Al Jabal al Akhdar
+    "LBY.7_1",   # Al Marj
+    "LBY.12_1",  # Benghazi
+    "LBY.9_1",   # Al Wahat
+    "LBY.6_1",   # Al Kufrah
+    "LBY.19_1",  # Surt -- the judgement; see above
+)
+_FEZ_ADM1 = (
+    "LBY.16_1",  # Murzuq
+    "LBY.18_1",  # Sabha
+    "LBY.21_1",  # Wadi al Hayat
+    "LBY.22_1",  # Wadi ash Shati'
+    "LBY.14_1",  # Ghat
+)
+
+
+def build_trp_1943_1951() -> ogr.Geometry:
+    """Tripolitania under British military administration = 9 GADM adm1 shabiyat, 314,598 km2
+    against FAO 1952's 353,000 (-10.9%). See the partition note above for why Al Jufrah is here
+    and Surt is not."""
+    return _union(*(_gadm_adm1(g) for g in _TRP_ADM1))
+
+
+def build_cyr_1949_1951() -> ogr.Geometry:
+    """Cyrenaica = 8 GADM adm1 shabiyat, 837,876 km2 against FAO 1952's 855,400 (-2.0%).
+
+    Bound to CYR-1949-1951, the Emirate of Cyrenaica proclaimed 1 June 1949. The TERRITORY is
+    the same one the British administered from 1943; only the polity changed in 1949, so the
+    geometry carries no vintage question. That the emirate's row starts in 1949 while
+    TRP-1943-1951 starts in 1943 leaves Cyrenaican data for 1943-1949 with no destination --
+    recorded as an open question on both pages, not something this geometry can fix.
+    """
+    return _union(*(_gadm_adm1(g) for g in _CYR_ADM1))
+
+
+def build_fez_1943_1951() -> ogr.Geometry:
+    """Fezzan under French military administration = 5 GADM adm1 shabiyat, 463,596 km2 against
+    FAO 1952's 551,100 (-15.9%), the largest of the three deviations.
+
+    Fezzan is where GADM's 8.2% Libya-wide shortfall concentrates: it is the emptiest quarter of
+    the country, so a coarse desert boundary costs proportionally most here. The deviation is
+    stated rather than corrected -- scaling a polygon to hit a stated area would make the check
+    that compares them circular.
+    """
+    return _union(*(_gadm_adm1(g) for g in _FEZ_ADM1))
+
+
 def build_ind_1800_1886() -> ogr.Geometry:
     """British India 1800-1886 = Cliopatria's "British Raj" at 1880, MINUS Ceylon and the
     European enclaves that were never British.
@@ -1244,6 +1347,30 @@ BUILDERS = [
         "which is absent from the registered source. Post-1924 (post-Jubaland) "
         "extent; overstates 1908-1924 by ~94,400 km2 — see "
         "wiki/polities/its-1908-1960.md.",
+    ),
+    (
+        "TRP-1943-1951",
+        "British Military Administration of Tripolitania",
+        build_trp_1943_1951,
+        "Union of 9 GADM 4.1 adm1 shabiyat: Tripoli, Al Jifarah, Az Zawiyah, An Nuqat al "
+        "Khams, Al Marqab, Misratah, Al Jabal al Gharbi, Nalut and Al Jufrah. 314,598 km2 "
+        "against FAO 1952's 353,000 (-10.9%). Issue 156.",
+    ),
+    (
+        "CYR-1949-1951",
+        "Emirate of Cyrenaica",
+        build_cyr_1949_1951,
+        "Union of 8 GADM 4.1 adm1 shabiyat: Al Butnan, Darnah, Al Jabal al Akhdar, Al Marj, "
+        "Benghazi, Al Wahat, Al Kufrah and Surt. 837,876 km2 against FAO 1952's 855,400 "
+        "(-2.0%). Issue 156.",
+    ),
+    (
+        "FEZ-1943-1951",
+        "French Military Administration of Fezzan",
+        build_fez_1943_1951,
+        "Union of 5 GADM 4.1 adm1 shabiyat: Murzuq, Sabha, Wadi al Hayat, Wadi ash Shati' "
+        "and Ghat. 463,596 km2 against FAO 1952's 551,100 (-15.9%), the largest deviation of "
+        "the three and where GADM's Libya-wide 8.2% shortfall concentrates. Issue 156.",
     ),
     (
         "IND-1800-1886",

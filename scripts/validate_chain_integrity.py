@@ -50,8 +50,14 @@ What each found first time out:
       edges asserted as A.successor = B        539
       edges asserted as B.predecessor = A     430
       asserted BOTH ways                      345
-      successor-only  (no reverse predecessor) 194
-      predecessor-only (no reverse successor)   85
+      successor-only  (no reverse predecessor) 194 -> 191 on 2026-08-10
+      predecessor-only (no reverse successor)   85 -> 83  on 2026-08-10
+
+  Lowered when occupied Libya's three territories got their polygons (issue 156). TRP, CYR and
+  FEZ each declared a predecessor and a successor while LBY-1934-1943, LBY-1943-1949 and
+  LBY-1951-2025 named none of them back, so the family was asymmetric on six edges. Adding the
+  reverse edges fixed five and this pin came down with them -- which is the point of failing on
+  an improvement rather than passing quietly.
 
   Every per-edge check here reads both fields, so none of them noticed. What breaks is any
   TRAVERSAL: a walk that follows `predecessor` sees 430 of 539 relations and silently misses the
@@ -136,8 +142,8 @@ BASELINE_CEILING = {
 # Signal F. Pinned counts, not enumerated edges: 279 lines would be unreadable and the useful
 # property is that these only go down. Lower them when they do -- the check insists.
 BASELINE_ASYMMETRY = {
-    "successor_only": 194,
-    "predecessor_only": 85,
+    "successor_only": 191,
+    "predecessor_only": 83,
 }
 
 BASELINE_LINKS = {

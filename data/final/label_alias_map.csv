@@ -270,10 +270,10 @@ Egypt,faostat,1979,2024,EGY-1979-2025,Egypt,high,243914
 Egypt,lassaletta-grassland-share,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,
 Egypt,lassaletta-grassland-share,1967,1978,EGY-1967-1979,Egypt (1967-1979),high,
 Egypt,lassaletta-grassland-share,1979,2009,EGY-1979-2025,Egypt,high,
-egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
 Egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
-egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
+egypt,mitchell,1866,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),high,19
 Egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
+egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65
 Egypt,trade-sources,1879,1879,EGY-1820-1885,Egypt with Sudan (1820-1885),high,
 EI Salvador,,,,SLV-1821-2025,El Salvador,high,
 El Salvador,faostat,1961,2024,SLV-1821-2025,El Salvador,high,207960
@@ -485,6 +485,7 @@ Libya,mitchell,1949,1950,LBY-1949-1951,Libya under UN Transitional Administratio
 libya,mitchell,1949,1950,LBY-1949-1951,Libya under UN Transitional Administration (1949-1951),high,3
 Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high,8
 Libya Cyrenaica,mitchell,1949,1950,CYR-1949-1951,Emirate of Cyrenaica,high,4
+Libya Fezzan,fao1952,1943,1950,FEZ-1943-1951,French Military Administration of Fezzan,high,5
 Libya Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,37
 Libya Tripolitania,mitchell,1948,1950,TRP-1943-1951,British Military Administration of Tripolitania,high,22
 Libya: Cyrenaica,mitchell,1949,1950,CYR-1949-1951,Emirate of Cyrenaica,high,5

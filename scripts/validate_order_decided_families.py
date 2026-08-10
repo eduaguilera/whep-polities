@@ -10,7 +10,7 @@ That is not a hypothetical. Every case this gate reports today was misrouting re
 
     iso  years        candidates                                    layer-B rows at risk
     MYS  1881-1945    BNB / BSW / GBM (three colonial territories)         207
-    LBY  1943-1950    LBY / TRP / CYR (all three typed `national`)          83
+    LBY  1943-1950    LBY / TRP / CYR / FEZ (all typed `national`)          88
     PNG  1920-1948    TNGU / TPAP                                           26
     NGA  1886-1896    NGA-1886-1914 / NUP-1800-1897                          8
 
@@ -80,18 +80,32 @@ BASELINE_ORDERED = {
     # exactly one `national` member, which those windows have. The comment contradicted the
     # implementation and the bidirectional check found it immediately. Removed rather than
     # accommodated: those windows are determined, which is the whole point.
-    ("LBY", ("LBY-1943-1949", "TRP-1943-1951")):
-        "Tripolitania under British military administration alongside the all-Libya row, "
-        "BOTH typed `national`, so the filter leaves two. 23 rows pinned by alias.",
+    # BOTH LBY SETS GREW BY ONE ON 2026-08-10, when FEZ-1943-1951 was created and the three
+    # occupation territories got polygons (issue 156). The previous version of the second entry
+    # ended "NOTE that Fezzan, the third occupied territory, is absent from the database
+    # entirely, so this set is not a partition of Libya." IT IS ONE NOW: TRP + CYR + FEZ are
+    # unions of disjoint GADM shabiyat whose union reproduces GADM's Libya to 0.0000 km2, with
+    # all three pairwise intersections asserted at zero by audit_family_shadowing.
+    #
+    # A LARGER CANDIDATE SET IS NOT A WORSE ONE HERE. Adding Fezzan makes the sets bigger while
+    # making the model MORE determined, because the ambiguity was never between the parts -- it
+    # was that Fezzan-labelled data had nowhere to go and would have had to be routed to the
+    # all-Libya row, overstating the territory it describes by 3.2x. Every observed label in both
+    # windows is pinned by an explicit alias: `Libya`, `Libya Tripolitania`, `Libya Cyrenaica`,
+    # `Libya Fezzan`, plus the `Tripolitania` and `Libya: Cyrenaica` variants.
+    ("LBY", ("FEZ-1943-1951", "LBY-1943-1949", "TRP-1943-1951")):
+        "1943-1948: Tripolitania and Fezzan alongside the all-Libya row, all three `national`, so "
+        "the filter leaves three. Cyrenaica is absent from THIS window because CYR-1949-1951 is "
+        "the EMIRATE, proclaimed 1949 -- the British military administration of Cyrenaica "
+        "1943-1949 has no row, which is a coverage gap recorded on the TRP and FEZ pages.",
 
-    ("LBY", ("CYR-1949-1951", "LBY-1949-1951", "TRP-1943-1951")):
-        "1949-1950: Cyrenaica, Tripolitania and the all-Libya UN transitional row, all three "
-        "`national`. This is the set that sent 20 Tripolitania rows to Cyrenaica, and 28 rows "
-        "labelled `Libya` to Cyrenaica as well. The 1949 member of this set only exists because "
-        "LBY-1949-1951 was moved from a 1950 start on 2026-08-05 -- before that, NO all-Libya row "
-        "was live in 1949 and this gate saw a two-member set. Every observed label is now pinned "
-        "by alias. NOTE that Fezzan, the third occupied territory, is absent from the database "
-        "entirely, so this set is not a partition of Libya.",
+    ("LBY", ("CYR-1949-1951", "FEZ-1943-1951", "LBY-1949-1951", "TRP-1943-1951")):
+        "1949-1950: all three occupation territories plus the all-Libya UN transitional row, all "
+        "four `national`. This is the set that sent 20 Tripolitania rows to Cyrenaica, and 28 rows "
+        "labelled `Libya` to Cyrenaica as well. The 1949 member exists because LBY-1949-1951 was "
+        "moved from a 1950 start on 2026-08-05 -- before that, NO all-Libya row was live in 1949 "
+        "and this gate saw a two-member set. All four are `national` because there was no Libyan "
+        "state between 1943 and 1951 for them to be subnational units of.",
     ("PNG", ("PAPNG-1920-1949", "TNGU-1920-1949", "TPAP-1906-1949")):
         "the Territory of Papua and the Territory of New Guinea were administered separately "
         "1920-1949, and PAPNG-1920-1949 is the combined reporting unit over both. None is "

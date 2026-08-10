@@ -131,6 +131,21 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Germany's outline and outside its administration.
     "DEU-1945-1949",
     "DEU-1949-1990",
+    # Occupied Libya over its three territories, added 2026-08-10 with their polygons (issue
+    # 156). This is the most literal container in the list: TRP + CYR + FEZ are built as unions of
+    # disjoint GADM shabiyat whose union reproduces GADM's Libya to 0.0000 km2, so LBY-1949-1951
+    # containing all three is the partition property itself, not a swallow.
+    #
+    # THE DOUBLE-COUNT RISK IS REAL AND IS THE REASON THE PARTS EXIST. FAO 1952 publishes an
+    # all-Libya series AND per-territory series for the same years, and both are kept -- dropping
+    # either would discard published data -- so any spatial or area-weighted use must pick one
+    # level. That is the same shape as FID-1887-1954 over Indochina above.
+    #
+    # LBY-1943-1949 does NOT appear here, and the reason is worth knowing: it holds only TRP and
+    # FEZ, because CYR-1949-1951 is the EMIRATE of Cyrenaica and starts in 1949. The British
+    # military administration of Cyrenaica, 1943-1949, has no row at all -- so this container
+    # sits one below the >=3 threshold for a coverage gap rather than for a territorial reason.
+    "LBY-1949-1951",
     # A joint reporting unit over the two states it combines. Added when its polygon
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.

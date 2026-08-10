@@ -167,6 +167,28 @@ BASELINE = {
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",
     "BNB-1881-1963 / MASG-1946-1963": "North Borneo vs Malaya+Singapore, different",
     "BNB-1881-1963 / GBM-1895-1946": "North Borneo vs British Malaya, different",
+    # OCCUPIED LIBYA 1943-1951: the three territories, and each against the all-Libya rows.
+    # Added 2026-08-10 with their polygons (issue 156). Eight pairs appear at once and every one
+    # is the partition working as intended rather than a defect:
+    #
+    #   TRP / CYR / FEZ against LBY-1943-1949 and LBY-1949-1951 -- a part inside its own whole,
+    #   which is what "component in parent" is supposed to look like. Ratios 5.14x, 3.49x, 1.93x.
+    #
+    #   TRP / CYR / FEZ against each other -- same iso3 LBY, same polity_type national, spans
+    #   overlapping, so the type rank cannot break the tie. They are pairwise disjoint (0.0000
+    #   km2 unsimplified) and PINNED_DISJOINT asserts it every run.
+    #
+    # The pairs are unavoidable given the model: iso3 LBY carries both the whole and its parts,
+    # and all four are `national` because the occupation territories were not subordinate units
+    # of a Libyan state -- there was no Libyan state between 1943 and 1951.
+    "TRP-1943-1951 / LBY-1943-1949": "Tripolitania inside all-Libya, by construction (5.14x)",
+    "TRP-1943-1951 / LBY-1949-1951": "Tripolitania inside all-Libya, by construction (5.14x)",
+    "FEZ-1943-1951 / LBY-1943-1949": "Fezzan inside all-Libya, by construction (3.49x)",
+    "FEZ-1943-1951 / LBY-1949-1951": "Fezzan inside all-Libya, by construction (3.49x)",
+    "CYR-1949-1951 / LBY-1949-1951": "Cyrenaica inside all-Libya, by construction (1.93x)",
+    "TRP-1943-1951 / CYR-1949-1951": "two thirds of the same partition: disjoint, 0.0000 km2",
+    "FEZ-1943-1951 / CYR-1949-1951": "two thirds of the same partition: disjoint, 0.0000 km2",
+    "TRP-1943-1951 / FEZ-1943-1951": "two thirds of the same partition: disjoint, 0.0000 km2",
     # Two separate Australian colonies before federation.
     "AUSA-1836-1900 / AUWA-1829-1900": "South vs Western Australia, different colonies",
 }
@@ -192,8 +214,38 @@ PINNED_DISJOINT = {
         "partition by construction -- OTH is defined as Indonesia minus JVM and BLB",
     ("FRIN-1816-1954", "HYD-1724-1948"):
         "coastal establishments vs the Deccan interior; ties on iso3 IND only",
+    # Occupied Libya's three territories, added 2026-08-10 with their polygons (issue 156).
+    # They are built as unions of disjoint GADM shabiyat, so disjointness is by construction --
+    # which is exactly why it is worth ASSERTING: the whole value of the partition is that
+    # per-territory data sums to the national total, and a future edit to any of the three
+    # shabiya lists could break that silently. The union also equals GADM's Libya to 0.0000 km2.
+    ("TRP-1943-1951", "CYR-1949-1951"):
+        "Tripolitania vs Cyrenaica; adjacent across the Sirte basin, disjoint by construction",
+    ("TRP-1943-1951", "FEZ-1943-1951"):
+        "Tripolitania vs Fezzan; adjacent, disjoint by construction",
+    ("CYR-1949-1951", "FEZ-1943-1951"):
+        "Cyrenaica vs Fezzan; adjacent, disjoint by construction",
 }
 PIN_TOLERANCE_KM2 = 1.0   # simplify+densify leaves sliver-scale disagreement on shared edges
+
+# A PAIR SHARING A LONG LAND BOUNDARY NEEDS MORE HEADROOM THAN AN ISLAND PAIR, and 1.0 km2 was
+# calibrated on island pairs. The IDN entries above are separated by open sea, so their shared
+# edge has no length and any intersection at all is a defect. Tripolitania and Cyrenaica are
+# built from adjacent GADM shabiyat and share roughly 500 km of land boundary through the Sirte
+# basin: unsimplified they intersect at 0.0000 km2, but build_database simplifies each row
+# INDEPENDENTLY at 0.01 degrees (~1.1 km), so the shared edge no longer matches and 1.2 km2 of
+# sliver appears in the published GeoPackage. That is the same mechanism that put 341 km2 back
+# between IDN-OTH and NNG (PR 182) -- there it was fatal because the rim was 6,140 km2 wide;
+# here the whole boundary contributes 1.2.
+#
+# 5 km2 against territories of 315,000 and 838,000 km2 is 0.0006%, and a genuine re-assignment
+# error would be a whole shabiya -- 78,659 km2 for Surt, 111,245 for Al Jufrah. So this cannot
+# hide the defect it is here to catch.
+PIN_TOLERANCE_OVERRIDE = {
+    ("TRP-1943-1951", "CYR-1949-1951"): 5.0,
+    ("TRP-1943-1951", "FEZ-1943-1951"): 5.0,
+    ("CYR-1949-1951", "FEZ-1943-1951"): 5.0,
+}
 
 by_code = {r.polity_code: r.geometry for r in g.itertuples()}
 pin_failures = []
@@ -204,9 +256,10 @@ for (a, b), why in sorted(PINNED_DISJOINT.items()):
     inter = by_code[a].intersection(by_code[b])
     km2 = 0.0 if inter.is_empty else (
         gpd.GeoSeries([inter], crs=g.crs).to_crs("ESRI:54034").iloc[0].area / 1e6)
-    if km2 > PIN_TOLERANCE_KM2:
-        pin_failures.append(f"{a} / {b}: intersect {km2:,.1f} km2, must be <= "
-                            f"{PIN_TOLERANCE_KM2} -- {why}")
+    tol = PIN_TOLERANCE_OVERRIDE.get((a, b), PIN_TOLERANCE_OVERRIDE.get((b, a),
+                                                                          PIN_TOLERANCE_KM2))
+    if km2 > tol:
+        pin_failures.append(f"{a} / {b}: intersect {km2:,.1f} km2, must be <= {tol} -- {why}")
 print(f"pinned-disjoint pairs: {len(PINNED_DISJOINT)} checked, {len(pin_failures)} failing")
 for f in pin_failures:
     print(f"  FAIL  {f}")

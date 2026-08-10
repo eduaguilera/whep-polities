@@ -89,6 +89,14 @@ BASELINE = frozenset({
     ("JOR", "JOR-1946-2025", "WBK-1950-1967"),
     ("JPN", "JPN-1895-1945", "RYU-1937-1945"),
     ("KOR", "KOR-1800-1945", "KRS-1910-1945"),
+    # Fezzan joined the LBY family on 2026-08-10 (issue 156), completing the 1943-1951
+    # partition. Same class as the TRP and CYR entries beside it: iso3 LBY carries the whole
+    # AND its three occupation territories, because there was no Libyan state to make them
+    # subnational units of. Every label observed in data is pinned by an explicit alias.
+    ("LBY", "FEZ-1943-1951", "CYR-1949-1951"),
+    ("LBY", "FEZ-1943-1951", "LBY-1949-1951"),
+    ("LBY", "FEZ-1943-1951", "TRP-1943-1951"),
+    ("LBY", "LBY-1943-1949", "FEZ-1943-1951"),
     ("LBY", "CYR-1949-1951", "LBY-1949-1951"),
     ("LBY", "LBY-1943-1949", "TRP-1943-1951"),
     ("LBY", "TRP-1943-1951", "CYR-1949-1951"),
