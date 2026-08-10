@@ -57,9 +57,27 @@ def simplify_ring(ring, max_pts=80):
 with open('/tmp/polities_raw.geojson') as f:
     data = json.load(f)
 
+# RETIRED AND SUPERSEDED ROWS ARE NOT DRAWN, and they were until 2026-08-10.
+#
+# This script converted the whole GeoPackage, and the GeoPackage carries geometry for dead
+# rows too -- 32 of its 713. index.html reads `wiki_status` for the colour legend and the
+# status badge but never FILTERS on it, so every one of those was rendered on the map, on top
+# of the finer rows that replaced it: `ARG-1800-2025` (superseded) drew Argentina a second
+# time over ARG's five real periods, and `CAN-1866-1886`/`CAN-1886-1948`/`CAN-1948-2025` drew
+# three retired Canadas. A year filter showed both, so the map claimed the same ground twice
+# for a reason that has nothing to do with the territory.
+#
+# Filtering HERE rather than in index.html is deliberate: the site file should not ship data
+# no viewer is meant to see, and a client-side filter would be one more thing to forget.
+DEAD = ('retired', 'superseded')
+
 kept = []
 dropped = []
+withdrawn = []
 for feat in data['features']:
+    if (feat.get('properties', {}).get('wiki_status') or '').strip() in DEAD:
+        withdrawn.append(feat['properties'].get('polity_code'))
+        continue
     g = feat.get('geometry')
     if not g:
         continue
@@ -104,6 +122,7 @@ data['features'] = kept
 with open(f"{site_dir}/polities.geojson", 'w') as f:
     json.dump(data, f)
 print(f"  {len(kept)} features → site/polities.geojson")
+print(f"  excluded {len(withdrawn)} retired/superseded polities (not drawn on the map)")
 if dropped:
     print(f"  WARN: dropped {len(dropped)} non-polygonal geometries:")
     for pc, t in dropped[:10]:

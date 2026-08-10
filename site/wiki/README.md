@@ -108,7 +108,29 @@ source files on disk.
   for Paine).
 - `polygon_feature_year` — only for sources with a `temporal` block in
   `sources.yaml`; picks a specific time-step.
-- `polygon_status` — `assigned` | `proxy` | `missing` | `excluded`.
+- `polygon_status` — **load-bearing, not descriptive.** `scripts/validate_polygons.py`
+  keys off these values, so choosing the wrong one either hides a real error or
+  fails the build:
+
+  | value | means | validator behaviour |
+  |---|---|---|
+  | `assigned` | the polygon **is** this polity's territory for the period | check A **fails** if the geometry's measured area diverges >25% from `polygon_area_km2` |
+  | `proxy` | a stand-in from another period or entity, knowingly inexact | divergence reported, not failed — but the page must document direction and magnitude |
+  | `estimate` | approximate, no exact feature exists | same as `proxy` |
+  | `polygon_vintage_drift` | the polygon's vintage is unrepresentative of much of the row's span — typically a single snapshot back-projected across a long period. The vintage is usually INSIDE the span, not outside it: every row carrying this value today has a vintage within its own dates (`BRA-1800-1903` uses an 1890 polygon, `IND-1800-1886` an 1880 one). An earlier wording said "sits outside the row's span", which is not how the value is used and led to two rows being mislabelled `proxy`. | same as `proxy` |
+  | `unassigned` | **no polygon**, with the reason documented | check C ignores it; this is the honest state when no source exists |
+
+  Check C **fails** when any of `assigned`/`proxy`/`estimate`/`polygon_vintage_drift`
+  is declared but the build attached no geometry — a page must not claim a polygon
+  it does not have. Prefer `unassigned` with a documented reason over a silent
+  modern-borders guess.
+
+  Four legacy values — `derived`, `missing`, `approximate`, `excluded` — predate
+  this vocabulary and are **no longer present**: all rows were migrated and
+  `build_database.py --check` now rejects anything outside the five above. This
+  paragraph said they were "still present in the database" until the migration
+  landed without it being updated, which is why validate_constants.py now checks
+  this table against the enforced set.
 - `polygon_area_km2` — optional sanity-check.
 - `predecessor`, `successor` — YAML lists of UPPERCASE `polity_code`s
   (`[]` for none). Drives the site's Graph tab edges and the coverage-
@@ -145,6 +167,59 @@ slider, search, and type filters) reads `site/polities.csv` and
 `cpv-1800-2025.md`, `lux-1839-2025.md`. One file per row in the database.
 Aggregate pages (continents, unions) live in `wiki/polities/_aggregates/`.
 
+## Prefix convention
+
+A polity code is `PREFIX-startyear-endyear`. The prefix names a **territory**,
+not a regime and not a name — so it is the part that answers "is this the same
+place?" while the period answers "when?" and `polity_name` carries what it was
+called at the time.
+
+This has a consequence that looks like an inconsistency until you know the rule:
+**a prefix is NOT always the modern ISO3.** 84 live prefixes differ from their
+row's `iso3_code`, and 29 ISO3 families span more than one prefix. Those are
+deliberate. A distinct prefix marks a distinct territory that later merged into,
+or split away from, the modern state:
+
+| family | prefixes | why |
+|---|---|---|
+| `USA` | `ALK`, `USA` | Alaska, acquired 1867, is its own territory |
+| `IND` | `HYD`, `IND` | Hyderabad acceded in 1948 |
+| `LBY` | `CYR`, `TRP`, `LBY` | Cyrenaica and Tripolitania before unification |
+| `MYS` | `BNB`, `BSW`, `GBM`, `MASG`, `MYS` | North Borneo, Sarawak, Malaya |
+| `GHA` | `BTL`, `GCT`, `GHA` | British Togoland, and the Gold Coast composite |
+| `SDN` | `SUD`, `SDN` | `SUD-1899-1934` is 2,579,525 km2 — Sudan INCLUDING what became South Sudan. `SDN-2011-2025` excludes it. Different territory, so a different prefix. |
+
+So when a source label needs routing, resolve it to a **period**, never to a bare
+prefix: `ETH` is a family and cannot receive data, `ETH-1907-1936` can. An alias
+targeting a bare prefix is rejected by `scripts/validate_aliases.py`.
+
+### Where the convention is not cleanly applied
+
+Four chains use separate prefixes for what is arguably the SAME territory under a
+changed regime, rather than a different territory:
+
+`ANG-1905-1975` / `AGO-1975-2025` (Portuguese Angola then Angola), `BEC-1885-1966`
+/ `BWA-1966-2025` (Bechuanaland then Botswana), `NRH-*` / `ZMB-1964-2025`, and
+`SRH-1953-1964` sitting between `ZWE-1900-1953` and `ZWE-1964-1980`.
+
+Under the rule above these would be one prefix each. They are left as they are on
+purpose:
+
+- Renaming changes `polity_code`, which is identity. It invalidates the manifest's
+  `identity_sha256`, every alias targeting those codes, the published maps, and
+  every downstream copy — for a cosmetic gain.
+- The functional problem it would have solved is already solved. A consumer whose
+  area maps to only one prefix could not reach the colonial polity, so
+  pre-independence years fell through to the modern one. The WHEP R package fixed
+  that by mapping such areas to BOTH prefixes (eduaguilera/whep#387), which needs
+  no change here.
+- `FRS-1884-1977` / `FRS-1977-2025` (French Somaliland, then Djibouti) shows the
+  opposite choice on the same question: one prefix for the whole chain, and the
+  HISTORICAL one rather than the modern ISO3 `DJI`. So there is no single
+  precedent to be consistent with.
+
+Do not "fix" these by renaming without a decision recorded here first.
+
 ## Page schema
 
 Every polity page MUST have this frontmatter and these sections. Empty
@@ -156,10 +231,10 @@ polity_code: <CSV polity_code>
 polity_name: <CSV polity_name>
 start_year: <int>
 end_year: <int>
-type: national | subnational
+type: national | colonial | aggregate | subnational | territory | city-territory | disputed | statistical
 iso3: <code or NA>
 cow: <code or NA>
-status: draft | reviewed | contested
+status: draft | reviewed | superseded | retired
 last_ingest: <YYYY-MM-DD>
 sources: [source-slug-1, source-slug-2]
 ---
@@ -207,6 +282,25 @@ replace the body with a one-line pointer to the `log.md` entry
 that resolved it. This preserves the slug as a stable anchor for
 older cross-references.
 ```
+
+## What `status` commits you to
+
+`status: reviewed` asserts that **a human checked this page's claims against
+sources**, and the assertion-verification pipeline relies on it: draft pages are
+treated as a prior agent's hypothesis and must be corroborated independently,
+whereas a `reviewed` page can be leaned on. So promoting a page is a substantive
+act, not bookkeeping.
+
+`scripts/validate_polygons.py` check D therefore **fails** if a `reviewed` page
+carries zero source citations or still contains `(to be documented)`. Thirteen
+pages were downgraded to `draft` on 2026-07-24 for exactly that reason — they
+claimed review while being unsourced stubs, which invited unsourced assertions to
+be treated as verified.
+
+`superseded` and `retired` mean the row no longer receives data (it was split,
+merged, or withdrawn). Both are excluded from matching entirely — see
+`pipelines/polity-autoimprove/matchlib.py`, `DEAD_STATUS` — so a page must not be
+left in a dead status while data still needs to route to it.
 
 ## Cross-reference conventions
 
@@ -288,6 +382,17 @@ Prompts for each workflow live in `wiki/prompts/`:
   guardrails (no CSV edits, no `decision`-kind log entries, no
   `git push`, no closed-access source acquisition, no `draft → reviewed`
   status changes unless schema requirements are met).
+
+**Splitting, merging, retiring, re-dating or creating a polity** is a
+*structural* change: it silently re-routes the data rows that match the affected
+polities, and the wiki diff shows none of that. Follow the eleven-step
+**structural-change checklist** in
+[`pipelines/polity-autoimprove/README.md`](../pipelines/polity-autoimprove/README.md#structural-change-checklist-split--merge--retire--re-date--create)
+— snapshot the per-polity row counts *before* the edit with
+`python3 scripts/structural_change_check.py --snapshot`, then `--compare` after.
+The checklist lives with the pipeline because its central check needs the matcher
+and the layer-B dataset; the human steps (writing the page, the `log.md`
+`decision` entry naming who signed off) are recorded there alongside.
 
 ## Rules for the agent
 

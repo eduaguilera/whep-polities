@@ -26,6 +26,926 @@ Kinds:
 
 ---
 
+## lint-polygon-status-vocabulary
+**Date:** 2026-07-29
+**Touched:** ant-1961-2010, blx-1850-1999, rafr-1850-2021, rasi-1850-2021, reur-1850-2021, rlam-1850-2013, rnam-1850-2021, roce-1850-2021, row-1850-2023, hnd-1800-2025, mmr-1885-2025, aoi-1936-1941, fcc-1862-1887, fto-1920-1960, nup-1800-1897, rwb-1919-1922, saa-1947-1957, tan-1891-1920, tan-1920-1922, tas-1825-1900, gco-1884-2025
+**Source:** none
+**Kind:** lint
+
+Migrated the four legacy `polygon_status` values to the documented vocabulary.
+README.md has said since the vocabulary was written that `derived`, `missing`,
+`approximate` and `excluded` "are near-synonyms of the above and predate this
+vocabulary. Do not use them in new pages." The migration itself was never done, and
+21 rows still carried them.
+
+That was not cosmetic. `polygon_status` is what the manifest's
+`claims_polygon_status` set is built from, and consumers use it to decide which rows
+should have a polygon. Eleven rows — the nine `derived` reporting-area unions plus
+the two `approximate` ones — HAVE geometry while their status sat outside that set,
+so a consumer was told they do not claim a polygon. That is the same defect as
+ade-1839-1963 declaring `unassigned` while carrying CShapes 680, which was corrected
+the same day.
+
+Mapping, each chosen from the README's own definitions:
+
+- `derived` -> `assigned` (9). All nine are built by
+  scripts/sources/reporting-areas/build.py, which composes them from their members,
+  so the polygon IS the territory by construction. All have geometry and none
+  records an area, so check A skips them.
+- `approximate` -> `proxy` (2). hnd-1800-2025 uses the CShapes 1886 feature for the
+  full 1800-2025 span and mmr-1885-2025 a Cliopatria feature likewise: a stand-in
+  from another period, which is the README's definition of `proxy`. Both pages
+  already used the word.
+- `missing` -> `unassigned` (9) and `excluded` -> `unassigned` (1). None has any
+  geometry, which is what `unassigned` means.
+
+No geometry changed. `scripts/build_database.py --check` now also refuses any
+`polygon_status` outside the documented vocabulary, so the legacy values cannot
+return.
+
+---
+
+## decision-merge-idn-1889
+**Date:** 2026-07-24
+**Touched:** IDN-1800-1889, IDN-1889-1945, IDN-1800-1945, NNG-1949-1963, CAN-1948-2025, NFL-1907-1949, EGYSUD-1934-1956, AUSA-1836-1900, AUWA-1829-1900
+**Source:** cshapes-2.0
+**Kind:** decision
+
+Three approved changes, plus what the third one uncovered.
+
+**1. Merged `IDN-1800-1889` + `IDN-1889-1945` into
+[idn-1800-1945](polities/idn-1800-1945.md).** The 1889 boundary had no
+territorial basis: both rows carried the *same* geometry (1,877,243 km²), and the
+CShapes break at `1889/06/19 → 1889/06/20` is a Gleditsch-Ward status change, not
+a boundary change. The "1889 Anglo-Dutch boundary treaty" the old page cited does
+not exist — the Borneo convention was 1891. All 1,208 rows moved to the merged
+row. Renamed to **Dutch East Indies**, its actual identity, which cost 23 rows
+until an alias was added: the `fao1952` "Indonesia" rows carry **no iso3 code**
+and had been resolving by *name*, so renaming the row orphaned them. A neat
+illustration of why the alias table exists — the source's label and the polity's
+name are different things.
+
+**2. Extended `NNG-1949-1963` to 1969** and renamed it *Netherlands New Guinea /
+West Irian*. Biger dates the handover to Indonesia to 1963 (the UNTEA transfer),
+but CShapES keeps gwcode 851 distinct until 1969-09-16 and only enlarges
+Indonesia's polygon on 1969-09-17 (the Act of Free Choice). Ending at 1963 left
+1963-1969 with **no polity holding the territory**. Extending makes the polygons
+complementary with no gap and keeps the chain on one source. The 1963
+administrative handover is recorded in the page's sourced claims — it is not a
+*territorial* change, which is what row boundaries track.
+
+**3. Audited the whole database for the shadowing hazard** that bit three times
+today (Alaska outranking the USA, Hyderabad taking India-labelled data, a retired
+Argentina row beating its own successors). New
+`scripts/audit_family_shadowing.py` flags polities that share an iso3, overlap by
+more than a year, tie on the national/not-national preference, and differ ≥3× in
+area — cases where **family ordering, not polity_type, decides the match**. Five
+found, each a genuine mis-description:
+
+| polity | was | now | why |
+|---|---|---|---|
+| NFL-1907-1949 | `iso3: CAN` | **`iso3: NFL`** | a separate Dominion until 1949; it was never Canada, and sharing the code let Canada-labelled data reach a 25× smaller territory |
+| EGYSUD-1934-1956 | `national` | **`aggregate`** | Egypt *plus* Sudan; at equal rank it competed with Egypt itself for Egypt-labelled data, 3.5× larger |
+| AUSA-1836-1900 | `national` | **`colonial`** | a self-governing colony before the 1901 federation |
+| AUWA-1829-1900 | `national` | **`colonial`** | likewise |
+
+The audit now passes clean. Fixing Newfoundland then exposed a fourth issue:
+with it out of Canada's family, the shared-transition-year convention routed
+**calendar-1948** Canadian data to [can-1948-2025](polities/can-1948-2025.md),
+which *includes* Newfoundland — but the accession was **31 March 1949**, so 1948
+data belongs to the excluded territory. CShapes dates its step to the 22 July
+1948 *referendum* instead. Pinned with a year-scoped alias; the underlying fix is
+this row's start year, which should arguably be 1949 and would require renaming
+the code. Recorded, not done. That page also lists a **predecessor code that does
+not exist** (`CAN-1866-1948`), so dangling references deserve their own sweep.
+
+Match count unchanged at 189,694 throughout; 740 polities; all validators green.
+
+Signed off by: Catalin Covaci.
+
+
+## decision-split-india-at-1886
+**Date:** 2026-07-24
+**Touched:** IND-1800-1893, IND-1800-1886, IND-1886-1893, HYD-1724-1948
+**Source:** cshapes-2.0, cliopatria-v0.1.3
+**Kind:** decision
+
+**Corrects and supersedes
+[proposal-india-chain-source-conflict](log.md#proposal-india-chain-source-conflict),
+which was wrong.** That entry claimed CShapes and Cliopatria disagreed 3.6× about
+the Burma annexation. They do not — it compared **two different events**:
+
+- **CShapes 2.0's India coverage begins `1886-01-01`.** Its earliest feature
+  (4,652,712 km²) therefore *already includes* Upper Burma, annexed 1 January 1886
+  after the Third Anglo-Burmese War.
+- **CShapes' step at `1893-11-12`** (+167,089 km²) is the **Durand Line** of 12
+  November 1893 — the dates match exactly.
+- **Cliopatria's step at 1885** (+606,617 km²) is **Upper Burma**.
+
+Where the two overlap they agree within 3.5%. The real defect was simpler:
+**CShapes has no pre-1886 India at all**, so the old row's polygon included Upper
+Burma across its entire 1800-1893 span, overstating British India before 1886 by
+~440,000 km².
+
+**Split applied at 1886**, where a real territorial change and a source boundary
+coincide:
+
+| row | span | source | claimed | measured |
+|---|---|---|---|---|
+| [ind-1800-1886](polities/ind-1800-1886.md) | 1800-1886 | Cliopatria `British Raj` @1880 | 4,209,917 km² | 4,209,888 |
+| [ind-1886-1893](polities/ind-1886-1893.md) | 1886-1893 | CShapes 750 @1890 | 4,652,712 km² | 4,652,138 |
+
+Using Cliopatria for the earlier row is **not** source-mixing: CShapes does not
+cover those years, which is what the polygon priority stack exists for. The 1886
+junction is a genuine event. `IND-1886-1893` is `assigned` — the CShapes feature's
+own span (`1886-01-01`-`1893-11-11`) matches the row exactly. `IND-1800-1886` is
+`polygon_vintage_drift`, because Cliopatria's British Raj series itself starts in
+**1859** and neither source has an East India Company feature, so 1800-1859 stays
+a back-projection and the conquest-era expansions inside it cannot be split on
+either source. Stated on the page rather than hidden.
+
+**The split exposed a shadowing hazard.** With the old row superseded, **36 rows
+labelled plainly "india" (1885-1892) began routing to
+[hyd-1724-1948](polities/hyd-1724-1948.md) — Hyderabad State** — because it shares
+`iso3_code: IND`, spans 1724-1948, and was typed `colonial`, tying with the new
+rows on type rank so that family ordering decided the winner. Hyderabad was a
+**princely state within British India**, so it is now `subnational`, which ranks
+below `national` and closes the path. This is the same failure mode as
+[alk-1867-1959](polities/alk-1867-1959.md) (Alaska shadowing the United States)
+fixed earlier the same day; the new India rows were also re-typed `national` to
+match the rest of their chain. All 49 pre-1893 India rows now route correctly
+(3 to 1800-1886, 46 to 1886-1893), match count unchanged at 189,694.
+
+Signed off by: Catalin Covaci.
+
+
+## proposal-india-chain-source-conflict
+**Date:** 2026-07-24
+**Touched:** IND-1800-1893, IND-1893-1914
+**Source:** cshapes-2.0, cliopatria-v0.1.3
+**Kind:** contradiction
+
+> **CORRECTED 2026-07-24, same day.** The analysis below is **wrong**: it treats
+> CShapes' 1893 step and Cliopatria's 1885 step as competing accounts of the
+> Burma annexation. They are **two different events** — CShapes' step is dated
+> `1893-11-12`, the **Durand Line**, while Cliopatria's 1885 step is Upper Burma.
+> CShapes' India coverage begins `1886-01-01`, so its earliest feature already
+> includes Burma and it has no pre-1886 India at all. There is no 3.6×
+> contradiction. See
+> [decision-split-india-at-1886](log.md#decision-split-india-at-1886) for the
+> corrected finding and the split that follows from it. Kept here rather than
+> deleted, because the log is append-only and a wrong reading is itself worth
+> recording.
+
+Went to split `IND-1800-1893` on the Cliopatria evidence and **stopped
+deliberately**: the two sources disagree about the same event badly enough that
+picking one is a research decision, not an implementation detail.
+
+| source | step year | before | after | step |
+|---|---|---|---|---|
+| **CShapes 2.0** (currently bound) | **1893** | 4,652,138 km² | 4,819,227 km² | +167,089 |
+| **Cliopatria v0.1.3** | **1885** | 4,209,917 km² | 4,816,534 km² | +606,617 |
+
+They differ **3.6× on the magnitude**, **eight years on the date**, and **9.5% on
+the pre-annexation area of British India itself**.
+
+**Cliopatria has the better date.** Upper Burma was annexed 1 January 1886 after
+the Third Anglo-Burmese War of November 1885. CShapes places that change at 1893,
+eight years late — and a Cliopatria-based chain would additionally make the
+existing 1893 boundary nearly redundant, since Cliopatria's 1890-94 figure
+(4,823,859 km²) is within **0.06%** of the CShapes figure
+[ind-1893-1914](polities/ind-1893-1914.md) already uses.
+
+**Why nothing was applied.** Splitting this row on Cliopatria while its
+neighbours remain on CShapes would bind adjacent rows to sources disagreeing by
+9.5% about the same territory, **manufacturing a spurious territorial step at the
+junction** — an artefact of source-mixing rather than of history. This is a
+general lesson worth stating: *a chain cannot be re-split using a different
+polygon source than its neighbours without inventing a boundary change.* Doing it
+properly means deciding whether the **whole India chain** moves to Cliopatria — a
+preference between two references in the same priority tier, affecting every India
+assertion already verified.
+
+Also worth noting what Cliopatria does **not** have: no British India or East
+India Company feature before **1859**, so the conquest-era expansions inside this
+row (Anglo-Maratha 1803-1818, Sugauli 1816, Yandabo 1826, Sindh 1843, Anglo-Sikh
+1845-1849) cannot be split on it either. Whatever is decided about Burma, the
+1800-1859 portion of this row stays a back-projection.
+
+Left for a human decision, with the measurements recorded so it can be settled on
+evidence.
+
+
+## decision-create-nng-1949-1963
+**Date:** 2026-07-24
+**Touched:** NNG-1949-1963, IDN-1949-1969, IDN-1800-1889, IND-1800-1893
+**Source:** cshapes-2.0, cliopatria-v0.1.3
+**Kind:** decision
+
+Acted on the three findings from
+[document-13-stub-pages](log.md#document-13-stub-pages).
+
+**Created [nng-1949-1963](polities/nng-1949-1963.md) — Netherlands New Guinea.**
+Three independent things pointed at the same missing polity: an **unmatched**
+`fao1952` label ("Netherlands New Guinea", 3 rows, 1949-1951); a hole in the
+Indonesian chain of exactly **410,361 km²** (CShapes 850 measures 1,877,243 km²
+for the Dutch East Indies but 1,466,882 km² for independent Indonesia 1949-1969);
+and CShapes carrying that territory as its **own entity**, gwcode **851**, with
+time-steps for Dutch administration, the UNTEA interregnum and Indonesian
+administration. Bound to that exact historical feature — measured **410,399 km²**
+against the stated 410,361 — `type: colonial`, predecessor IDN-1945-1949. The
+label now routes here, and total matched rows rose 189,691 → **189,694**.
+
+Recorded [oq-1963-to-1969-attribution](polities/nng-1949-1963.md#oq-1963-to-1969-attribution):
+Biger dates the handover to 1963, CShapes only enlarges Indonesia's polygon at
+1969 (the Act of Free Choice). This row ends at 1963, so for **1963-1969**
+Indonesia administered territory that IDN-1949-1969's polygon excludes — 28% of
+that row's area, held by no polity. Needs a decision.
+
+Signed off by: Catalin Covaci.
+
+**Corrected `IDN-1800-1889`: the 1889 split has no territorial basis.** The page
+justified it with an "1889 Anglo-Dutch boundary treaty" that does not exist — the
+Anglo-Dutch Borneo convention was **1891**. What sits at 1889 is a CShapes
+time-step at `1889/06/19 → 1889/06/20` whose geometry is **identical on both
+sides** (1,877,243 km²): a Gleditsch-Ward status change, not a boundary change.
+Under the territorial-change rule this row and
+[idn-1889-1945](polities/idn-1889-1945.md) are therefore redundant — same
+territory, same polygon, no event between them. Merging them is the logical
+conclusion but would re-route data, so it is recorded for a decision rather than
+applied.
+
+**`IND-1800-1893`: a split IS feasible, contrary to the earlier conclusion.**
+That assumption rested on CShapes having no intermediate features, which is true
+of CShapes but not of the priority stack: **Cliopatria v0.1.3**, already fetched,
+carries **British Raj** features at 3-5 year resolution across the span —
+4,188,571 km² (1873-76), 4,209,917 (1880-84), **4,816,534 (1885-89)**, 4,823,859
+(1890-94). The **+606,617 km²** step at 1885 is the annexation of **Upper Burma**,
+so the largest territorial change inside the row is directly observable in a
+source we already hold. Doing the split properly is a project — several sub-rows,
+each needing a page and binding, plus checking Cliopatria's pre-1873 features
+before choosing years for the Anglo-Maratha, Sugauli, Yandabo, Sindh and
+Anglo-Sikh expansions — so it is recorded with the evidence rather than
+half-done.
+
+
+## document-13-stub-pages
+**Date:** 2026-07-24
+**Touched:** IND-1800-1893, IND-1893-1914, IND-1914-1937, IND-1937-1947, IND-1947-1949, IDN-1800-1889, IDN-1889-1945, IDN-1945-1949, IDN-1949-1969, IDN-1969-1976, IDN-1976-2002, CHN-1913-1914, CHN-1914-1921
+**Source:** biger-1995, cshapes-2.0, cow-state-system-v2024
+**Kind:** ingest
+
+Documented the 13 pages downgraded in
+[decision-reviewed-status-audit](log.md#decision-reviewed-status-audit). Each went
+from a 1.5-2.9 KB stub with **zero** source citations to an 8-12 KB page with
+real ones — **145 citations added**, and `scripts/validate_citations.py` passes,
+so none is fabricated. That check mattered: it had already found 17 citations in
+the existing wiki pointing at sources never ingested.
+
+**They remain `draft`, deliberately.** They are now *documented*, but `reviewed`
+means a human checked the claims, and an agent writing a page does not make that
+true. Promoting them would repeat exactly the error the audit corrected.
+
+Four pages report a territorial change **inside** their span — the thing that
+decides whether a row should be split, and the reason this pass was worth doing:
+
+**1. `IDN-1949-1969` spans the West New Guinea transfer, and WHEP has no polity
+for the territory at all.** The arithmetic is exact: CShapes gwcode 850 measures
+1,877,243 km² for the Dutch East Indies and **1,466,882 km²** for independent
+Indonesia 1949-1969 — a difference of **410,361 km², precisely the area of
+CShapes gwcode 851 (West Irian / Dutch New Guinea)**. CShapes carries that
+territory as its own entity with three sub-periods (1949-1962 Dutch, 1962-1963
+UNTEA, 1963-1969 Indonesian administration), while Biger 1995 dates the handover
+to 1963 and CShapes closes the Indonesian row at 1969 (the Act of Free Choice).
+So the sources disagree on the date by six years, and for 1963-1969 Indonesian
+data may include a territory this row's polygon excludes.
+
+Concretely actionable: the layer-B data contains a **"Netherlands New Guinea"**
+label (3 fao1952 rows, 1949-1951) which is currently **unmatched**, and CShapes
+has the exact feature for it. A polity for the Dutch period would close a real
+coverage gap. **Proposed, not applied** — a new polity needs sign-off.
+
+**2. `IDN-1800-1889`'s end year may rest on a factual error.** The page's own
+successor note justifies the 1889 boundary with an "1889 Anglo-Dutch boundary
+treaty", but the Anglo-Dutch Borneo convention was signed in **1891**, and
+neither an ingested source nor any CShapes feature year lines up with 1889. If
+the 1889 boundary has no event behind it, the split point itself is arbitrary.
+Recorded on the page; needs a decision.
+
+**3. `IND-1800-1893` covers the entire British conquest of India with one
+polygon.** CShapes confirms a change at 1893 (4,652,712 → 4,819,795 km², the
+Durand Line), validating the row's end — but inside the span sit the Anglo-Maratha
+Wars (1803-1818), the 1816 Sugauli cession, the 1826 Treaty of Yandabo (Arakan,
+Manipur, Assam, Tenasserim), the 1843 conquest of Sindh and the 1845-49
+Anglo-Sikh wars. A 93-year row with a single vintage, and CShapes has no
+intermediate features to split on. The approximation is now documented rather
+than implied.
+
+**4. `IDN-1976-2002`** — the East Timor annexation (1976) and independence (2002)
+are already the row's own boundaries, so nothing further is needed. A useful
+negative result.
+
+
+## decision-apply-brazil-acre-split
+**Date:** 2026-07-24
+**Touched:** BRA-1800-2025, BRA-1800-1903, BRA-1903-1909, BRA-1909-2025
+**Source:** cshapes-2.0
+**Kind:** decision
+
+**Applied the Brazil split that [bra-1800-2025](polities/bra-1800-2025.md)'s own
+body had described but the database never received** (see
+[chunk2-verification-page-suspect-fires](log.md#chunk2-verification-page-suspect-fires)
+for how the contradiction surfaced).
+
+CShapes 2.0 gwcode 140 supports a **three-way** periodisation, not the two-way
+one the old page assumed:
+
+| row | span | polygon | area | step |
+|---|---|---|---|---|
+| [bra-1800-1903](polities/bra-1800-1903.md) | 1800-1903 | 140 @1890 | 8,311,721 km² | — |
+| [bra-1903-1909](polities/bra-1903-1909.md) | 1903-1909 | 140 @1905 | 8,437,289 km² | **+125,568** (Acre) |
+| [bra-1909-2025](polities/bra-1909-2025.md) | 1909-2025 | 140 @1930 | 8,472,100 km² | +34,811 (1909 settlements) |
+
+The 1903 boundary is the **Treaty of Petrópolis** (17 November 1903), by which
+Bolivia ceded Acre during the rubber boom — Brazil's largest single territorial
+acquisition since independence. The 1909 boundary is the settlement of the
+remaining Amazonian frontiers. CShapes records identical geometry for 1909-1960
+and 1960-2019, so the third row's borders are genuinely constant and its
+`polygon_status: assigned` is exact rather than approximate.
+
+`BRA-1800-1903` is deliberately `polygon_vintage_drift` rather than `assigned`:
+CShapes coverage begins in 1886, so for 1800-1886 its polygon is a
+back-projection, and Brazil's earlier Amazonian frontiers (deriving from the 1750
+Madrid and 1777 San Ildefonso lines) were not identical to the 1886 boundary.
+That approximation is stated on the page rather than implied.
+
+`BRA-1800-2025` is `superseded`. All 3,484 layer-B rows re-routed cleanly by year
+containment — **34 / 36 / 3,414** across the three rows, summing exactly to the
+old total, with the overall match count unchanged at 189,691. The STALE guard in
+`matchlib` correctly caught the one FAOSTAT alias still pointing at the dead row.
+
+Signed off by: Catalin Covaci.
+
+## decision-reviewed-status-audit
+**Date:** 2026-07-24
+**Touched:** CHN-1913-1914, CHN-1914-1921, IDN-1800-1889, IDN-1889-1945, IDN-1945-1949, IDN-1949-1969, IDN-1969-1976, IDN-1976-2002, IND-1800-1893, IND-1893-1914, IND-1914-1937, IND-1937-1947, IND-1947-1949
+**Source:** none
+**Kind:** decision
+
+**Thirteen pages were flagged `wiki_status: reviewed` while carrying no source
+citations at all.** All are downgraded to `draft`.
+
+`reviewed` is supposed to mean a human checked the page's claims against sources,
+and it is load-bearing: the assertion-verification pipeline was explicitly told
+that draft pages are a prior agent's hypothesis while `reviewed` pages are
+settled enough to lean on. A reviewed-but-unsourced page therefore invited
+unsourced assertions to be treated as verified — the exact circularity that rule
+was written to prevent.
+
+Affected: the whole **IND** chain (1800-1893, 1893-1914, 1914-1937, 1937-1947,
+1947-1949), the whole **IDN** chain (1800-1889, 1889-1945, 1945-1949, 1949-1969,
+1969-1976, 1976-2002), and **CHN-1913-1914** and **CHN-1914-1921**. Nothing about
+their data or polygons changed — only the honesty of the label.
+
+The rule is now enforced rather than audited by hand: `scripts/validate_polygons.py`
+gained **check D**, which fails when a `reviewed` page has zero source citations
+or unfilled "(to be documented)" sections. Encoding it immediately found **three
+pages the initial hand audit had missed** (it had used a page-size threshold),
+which is why the count is thirteen rather than ten.
+
+To earn `reviewed` back, each page needs **Territorial extent** and **Sourced
+claims** filled from real sources — Biger 1995, CShapes 2.0, the COW
+state-system list — with inline citations, and the territorial changes inside its
+span identified. Until then the verification pipeline treats them as drafts and
+corroborates their claims independently, which is also why the evidence bundle
+now carries each page's measurable depth rather than just its status label.
+
+Signed off by: Catalin Covaci.
+
+
+## chunk2-verification-page-suspect-fires
+**Date:** 2026-07-24
+**Touched:** BRA-1800-2025, JAM-1800-2025, MAR-1911-1958, IND-1914-1937, SYR-1922-1945, ALB-1913-2025, AUT-1919-2025
+**Source:** none
+**Kind:** proposal
+
+Verified 50 more assertions (chunk 2, the largest remaining pending ones). All
+50 confirmed — 37 `verified_equal`, 13 `best_available` — with all 10 blind
+spot-reviews agreeing, and every verdict citing `data_magnitudes` so none rests
+on the wiki alone. **`page_suspect` fired for the first time, three times, and
+all three were genuine.**
+
+**Two pages describe splits the database never received:**
+
+- **[bra-1800-2025](polities/bra-1800-2025.md)** is titled "Brazil (to 1903)",
+  asserts the row ends in 1903 and names a successor `BRA-1903-1909` that does
+  not exist; the CSV has one row spanning 225 years. The 1903 boundary was not
+  arbitrary — the **Treaty of Petrópolis** transferred **Acre (~152,000 km²)**
+  from Bolivia that year — so the split was right and simply never executed.
+  1,148 layer-B rows are matched to a territory ~152,000 km² too large before
+  1903. Recorded as [oq-acre-split-not-applied](polities/bra-1800-2025.md#oq-acre-split-not-applied);
+  needs a decision between applying the split and documenting the approximation.
+- **[jam-1800-2025](polities/jam-1800-2025.md)** has the same shape (titled "to
+  1886", references a nonexistent `JAM-1886-1962`) but **no territorial reason
+  to split**: Jamaica's boundary is its coastline, unchanged across the span, and
+  the 1886 line was about polygon-source coverage rather than territory.
+
+**One page overstates its own scope:**
+[mar-1911-1958](polities/mar-1911-1958.md) describes itself as covering the
+French *and* Spanish protectorates, but [smo-1912-1956](polities/smo-1912-1956.md)
+exists separately and the attached polygon is the French zone. Measured: 350,268
+km² here against 52,792 km² for Spanish Morocco — complementary, not nested. So
+summing the two is legitimate and does not double-count, but reading this row
+alone as "all of Morocco" understates by ~12%. Prose corrected.
+
+**A systemic finding about `wiki_status`.** Verification of
+`india|mitchell|1915-1937` noticed that [ind-1914-1937](polities/ind-1914-1937.md)
+is flagged `reviewed` while carrying **zero source citations**. An audit found
+**10 of 72 `reviewed` pages** in that state — the whole IND chain, the whole IDN
+chain, and CHN-1914-1921. That matters because the anti-circularity rule added
+earlier today told agents that `reviewed` pages were safe to lean on directly.
+`00_intake.py` now reports each page's measurable depth (bytes, source citations,
+to-be-documented markers) in the evidence bundle, and the prompt instructs agents
+to judge pages on that rather than on the status label: a page with zero
+citations is an assertion by whoever wrote it, whatever its status says.
+
+Smaller territorial notes folded in: the **Sanjak of Alexandretta** (~5,524 km²)
+was ceded to Turkey in 1939, inside SYR-1922-1945's span; Italy annexed **Kosovo
+and parts of western Macedonia and Montenegro** into Greater Albania in
+1941-1943, which ALB-1913-2025 had not recorded; and Austrian crop areas in
+`juan` are stable straight through the 1938-1945 Anschluss, confirming that
+source reports Austria on its First-Republic basis throughout.
+
+
+## polygon-backlog-eight-resolved
+**Date:** 2026-07-24
+**Touched:** IRL-1800-1921, STP-1800-2025, TNGU-1920-1949, MKY-1918-1962, GKM-1884-1912, GKM-1912-1916, ITS-1908-1960, CHN-1932-1945
+**Source:** cshapes-2.0, gadm-4.1
+**Kind:** ingest
+
+Worked the polygon backlog down from 28 to 20. Every measured area agrees with
+the page's stated figure to within 1%.
+
+**Fetched GADM 4.1 for `IRL`, `GBR` and `STP`** (added to
+`scripts/sources/gadm-4.1/fetch.sh`), which unblocked two rows:
+
+- **[irl-1800-1921](polities/irl-1800-1921.md)** — the largest polity in the
+  backlog at **1,049 layer-B rows**. New `build_irl_1800_1921` composes
+  all-Ireland as GADM adm0 `IRL` (26 counties, 70,266 km²) ∪ adm1 `GBR.2_1`
+  Northern Ireland (14,167 km²) = **84,433 km²**, matching the ~84,421 km²
+  all-island figure the page already documented. Modern borders are sound here:
+  the island's coastline is the boundary throughout, and the only internal
+  change in the span is the 1921 partition, which the union reverses.
+- **[stp-1800-2025](polities/stp-1800-2025.md)** — São Tomé and Príncipe is
+  absent from CShapes entirely and had been left `unassigned` earlier today
+  because GADM had not been fetched for it. Now bound as a `proxy` (1,002 km²).
+
+**Four more index-vs-Gleditsch-Ward mis-bindings** of the kind found earlier
+today, all declaring `assigned` while resolving to no CShapes feature at all:
+
+| polity | was | now | area |
+|---|---|---|---|
+| TNGU-1920-1949 | 746 | **912** @1930 | 237,536 km² — exactly the page's stated figure |
+| MKY-1918-1962 | 679 | **678** @1930 | 136,555 km² |
+| GKM-1884-1912 | 295 | **470** @1905 | 510,512 km² (pre-Neukamerun) |
+| GKM-1912-1916 | 296 | **470** @1913 | 799,953 km² (with Neukamerun) |
+
+**[its-1908-1960](polities/its-1908-1960.md)** was bound to a non-existent id
+782. CShapes has **no pre-1960 feature for Italian Somaliland** — its only
+Somali feature (gwcode 520) starts in 1960 at 636,242 km², the whole of
+independent Somalia, i.e. Italian Somaliland *plus* British Somaliland after
+their 1 July 1960 union. Bound to it as a `proxy`, not `assigned`, with the
+**~137,000 km² (≈21%) overstatement documented** on the page for the 103 rows
+matched there.
+
+**[chn-1932-1945](polities/chn-1932-1945.md)** was built earlier in the day (see
+[chn-1932-1945-polygon-built-hun-irl-blocked](log.md#chn-1932-1945-polygon-built-hun-irl-blocked)).
+
+Match count unchanged at 189,691; zero alias ambiguities; validator green.
+
+
+## chn-1932-1945-polygon-built-hun-irl-blocked
+**Date:** 2026-07-24
+**Touched:** CHN-1932-1945, MAN-1932-1945, HUN-1940-1944, IRL-1800-1921
+**Source:** cshapes-2.0
+**Kind:** ingest
+
+Started on the 28-polity backlog of rows that declared a polygon while carrying
+none (see [decision-retire-rsfsr](log.md#decision-retire-rsfsr) for how the
+backlog was found). Worked in order of how much data each row actually receives.
+
+**Built: `CHN-1932-1945`** (361 layer-B rows). Added a `_difference` helper and
+`build_chn_1932_1945` to `scripts/sources/constructed/build.py`: CShapes gwcode
+710's 1921-1945 feature **minus** the existing constructed Manchukuo polygon.
+The CShapes feature still includes Manchuria — its drop from the 1914-1921
+feature is Outer Mongolia, not the northeast — so without the subtraction this
+row and [man-1932-1945](polities/man-1932-1945.md) double-count the three
+northeastern provinces. Result measures **6,710,144 km²** against the page's
+long-standing claim of 6,710,264 km² (0.002% agreement), and 6,710,144 +
+791,708 recovers the full China feature to within 0.07%, confirming the
+subtraction is clean. MAN's own measured area (791,708 km²) was recorded, having
+been blank.
+
+**Blocked, and downgraded to `unassigned` rather than left claiming a polygon:**
+
+- **`HUN-1940-1944`** (201 rows). Its `polygon_feature_id` held the recipe
+  `cshapes-HUN310-1938 + cshapes-ROU360-1920minus1940`, which is not resolvable
+  *and* is wrong. Hungary's 1938-1947 feature is 108,785 km² — Trianon plus the
+  First Vienna Award, without northern Transylvania — while the Romania
+  difference (296,087 − 237,379 ≈ 58,708 km²) is Bessarabia, northern Bukovina
+  and southern Dobruja, since the 1940-2019 feature already includes northern
+  Transylvania (returned 1947). CShapes never models the 1940-44 Hungarian
+  holding, the same gap recorded on [rou-1940-1947](polities/rou-1940-1947.md),
+  so this row's ~167,492 km² cannot be composed from it.
+- **`IRL-1800-1921`** (**1,049 rows — the largest of any polity without
+  geometry**). Recipe `gadm-IRL+GBR-NIR` cannot be executed: the fetched GADM
+  4.1 admin-1 file covers only 61 countries and contains neither `GBR` nor
+  `IRL`. CShapes cannot substitute either — gwcode 205 (Ireland) starts in 1921
+  and covers 26 counties, while gwcode 200 (United Kingdom, 1886-1921) fuses
+  Great Britain with all Ireland inseparably. Fixing it needs GADM fetched for
+  `IRL` and `GBR` plus a union builder, or a historical source carrying
+  pre-partition Ireland.
+
+Backlog now 25, all baselined; the validator gate stays green on new
+occurrences. Match count unchanged at 189,691 and zero alias ambiguities.
+
+
+## decision-retire-rsfsr
+**Date:** 2026-07-24
+**Touched:** RSFSR-1917-1991, GCT-1919-1956, GHA-1898-1956
+**Source:** none
+**Kind:** decision
+
+**Retired `RSFSR-1917-1991`.** Three converging reasons, verified before acting:
+
+1. **It received no data.** Zero layer-B rows, zero assertions. Every
+   `russian federation` label for 1917-1991 was already routed to the
+   [f228-*](polities/f228-1945-1991.md) chain by six finer high-confidence alias
+   rules; this row's own rule was a broader, medium-confidence duplicate that
+   only ever lost to them on file order.
+2. **Its polygon was a different entity.** CShapes gwcode 365 returns the whole
+   Soviet Union (~21.8M km²) for these years, not the republic (~17.1M km²) —
+   CShapes models the USSR as one state with no constituent-republic features.
+3. **It duplicated the F228 chain**, which covers 1917-1991 in seven
+   period-accurate rows rather than one 74-year span.
+
+Its redundant alias rule was removed. Routing is byte-identical afterwards
+(189,691 matched rows, unchanged per-polity distribution). If a source ever
+needs the RSFSR *as distinct from* the USSR, the answer is a new polity with a
+composed polygon (the union minus the other fourteen republics), not this row.
+
+Signed off by: Catalin Covaci.
+
+**A silent tie-break was found and fixed while verifying this.** `match_alias`
+scored a rule by whether it was year-scoped and source-scoped, with no notion of
+range *width* — so two year-scoped rules covering the same year tied and the
+winner was decided by position in the CSV. That is how the RSFSR rule sat
+unnoticed behind the F228 rules, and it was also silently resolving a real
+conflict: `Gold Coast and British Togoland` had rules pointing at both
+[gct-1919-1956](polities/gct-1919-1956.md) (the composite, 1919-1956) and
+[gha-1898-1956](polities/gha-1898-1956.md) (the Gold Coast colony alone,
+1949-1951), and the broader rule won by file order.
+
+`match_alias` now prefers the **narrower year range** among equally-scoped
+rules, and `matchlib` reports any remaining equal-specificity overlap with
+conflicting targets (one-year overlaps at chain boundaries are excluded — those
+are the shared transition year, resolved by the successor convention). 83 raw
+overlaps reduce to zero genuine ambiguities after the fix.
+
+The Gold Coast conflict was then settled on the merits: the label names the
+**composite** territory, so it routes to GCT-1919-1956; the five rules pointing
+at GHA-1898-1956 understated it by the British Togoland share and were removed.
+Two label variants existed only in the removed set and gained GCT rules, keeping
+the match count whole. GCT now carries 55 rows.
+
+The narrower-range preference also reassigned boundary-year rows across ~40
+polities (CHN, ROU, F51, ITA, F228, SER chains) — the intended effect, since a
+specific year-ranged rule exists precisely to override the general case.
+
+**`scripts/validate_polygons.py` gained a third test** as a result of this work:
+a `polygon_status` of assigned/proxy/estimate asserts a polygon exists, so it
+now fails when the build attached none. That caught **28 polities claiming a
+polygon they do not have** — mostly composed unions whose `polygon_feature_id`
+is prose ("composed-union: cowcode=452 row … UNION cowcode=462 row …"), which
+nothing can resolve. GCT-1919-1956 is one of them: it is the correct target for
+the Gold Coast composite label and receives 55 rows, but has no geometry. These
+are recorded in `scripts/validate_polygons_baseline.txt` as a tracked backlog —
+each needs a real builder in `scripts/sources/constructed/build.py` or an honest
+downgrade to `unassigned` — so the gate fails on new occurrences rather than
+staying permanently red.
+
+
+## decision-polygon-misbindings-eight-polities
+**Date:** 2026-07-24
+**Touched:** SMR-1800-2025, IDN-1800-1889, IDN-1889-1945, FCM-1920-1960, STP-1800-2025, TPAP-1906-1949, NNI-1904-1913, GKM-1884-1916
+**Source:** cshapes-2.0
+**Kind:** decision
+
+**Eight polities were carrying a different country's polygon.** Found by a new
+deterministic magnitude screen
+(`pipelines/polity-autoimprove/05_magnitude_screen.py`), which flagged FAO 1952
+land-use figures for French Cameroun as physically impossible — 44,090,000 ha of
+land against a polygon measuring only 11,098,017 ha. The data was right and our
+polygon was wrong.
+
+Root cause: `scripts/sources.yaml` resolves CShapes features by **Gleditsch-Ward
+code** (`id_column: gwcode`), but these pages recorded `polygon_feature_id` as a
+shapefile row index or an adjacent guessed number. Nothing validated the result,
+so each silently attached whatever country happened to hold that code.
+
+| polity | should be | was carrying |
+|---|---|---|
+| SMR-1800-2025 | San Marino, 61 km² | **Albania**, 28,624 km² (470x) |
+| IDN-1800-1889 | Dutch East Indies, 1.88M km² | **India**, 4.65M km² |
+| IDN-1889-1945 | Dutch East Indies, 1.88M km² | **India**, 4.89M km² |
+| FCM-1920-1960 | French Cameroun, 423,069 km² | **Bulgaria**, 110,980 km² |
+| STP-1800-2025 | Sao Tome, 964 km² | **Equatorial Guinea**, 26,904 km² |
+| TPAP-1906-1949 | Territory of Papua, 224,148 km² | **Japan**, 371,147 km² |
+| NNI-1904-1913 | Northern Nigeria, 660,625 km² | **Norway**, 320,136 km² |
+| GKM-1884-1916 | German Kamerun, 799,953 km² | id resolved to **Cyprus**; no geometry |
+
+Six are now bound to their correct Gleditsch-Ward codes and verified against the
+geometry to within 0.1%: FCM to 471, GKM to 470 (the 1912-1916 feature,
+799,953 km², exactly the figure the page already claimed), IDN to 850, NNI to
+**4784** and TPAP to **911**. The last two are upgrades rather than repairs:
+CShapes carries *exact historical* features for the Northern Nigeria
+protectorate (660,625 km² for precisely 1904-1913) and for the Territory of
+Papua, so both now rest on period-accurate geometry instead of a proxy.
+
+San Marino is absent from CShapes entirely and is now bound to GADM 4.1 adm0
+(`SMR`) as a `proxy` — defensible, since its borders have not moved since 1463.
+Sao Tome is absent from both CShapes and the partially-built GADM adm0 file (79
+countries), so it is set to `polygon_status: unassigned` with this reason
+recorded, per the rule preferring a documented gap over a silent
+modern-borders guess.
+
+**A permanent guard was added:** `scripts/validate_polygons.py` measures every
+attached geometry in an equal-area projection and fails if it diverges from the
+page's own `polygon_area_km2` by more than 25%, plus reports CShapes bindings
+whose feature name is unrelated to the polity. This class of error was
+undetectable before because nothing ever compared the attached geometry to the
+claim.
+
+Signed off by: Catalin Covaci.
+
+**Four further divergences the new validator surfaced, not yet resolved:**
+
+- `RSFSR-1917-1991` claims 17,098,242 km² (correct for the RSFSR) but carries
+  the **whole USSR** at 21,824,142 km² — gwcode 365 is the union, not the
+  republic. Same scope-error class as the eight above, but the fix needs a
+  decision: no CShapes feature exists for the RSFSR *within* the USSR, and the
+  F228-* chain already covers the union. Left flagged.
+- `ROU-1940-1947` claims 194,000 km², geometry measures 245,035 km². The claim
+  is historically right (Romania after ceding Bessarabia, northern Bukovina,
+  northern Transylvania and southern Dobruja) but CShapes does not model the
+  1940-44 Hungarian occupation, so no exact feature exists.
+- `PRY-1870-1932` claims 157,000 km², geometry 293,549 km² — the geometry
+  includes Chaco Boreal territory not effectively held before the 1938 award.
+- `POL-1919-1920` claims 256,573 km², geometry 177,754 km²; the geometry looks
+  period-correct for the pre-Riga transitional window and the claim suspect.
+
+
+## decision-eth-1936-1941-man-1945-1950
+**Date:** 2026-07-24
+**Touched:** ETH-1936-1941, MAN-1945-1950, AOI-1936-1941, CHN-1947-1949
+**Source:** none
+**Kind:** decision
+
+Created two new polities to close the coverage gaps that assertion verification
+raised as [oq-ethiopia-proper-1936-1941](polities/aoi-1936-1941.md#oq-ethiopia-proper-1936-1941)
+and [oq-manchuria-region-1945-1950](polities/chn-1947-1949.md#oq-manchuria-region-1945-1950).
+Both are instances of the same rule: a sub-territory's data must not be matched
+up to its parent aggregate.
+
+**[ETH-1936-1941](polities/eth-1936-1941.md)** — Ethiopia (Italian occupation,
+proper territory), `type: national` for consistency with its AOI sibling
+constituents ERI-1889-1952 and ITS-1908-1960. Predecessor ETH-1907-1936,
+successor ETH-1941-1952. Polygon: CShapes 2.0 feature 530 @1907 as a
+`period_proxy`, `polygon_confidence: high` — justified by the geometry being
+*identical* immediately before and after the occupation (the occupation
+administered AOI as a super-structure over existing units rather than redrawing
+the Ethiopian highlands boundary), measured area **1,127,533 km²** versus the
+AOI aggregate's ~1.7M km². Routing "Ethiopia" here instead of to AOI removes a
+~70% territorial overstatement for the `iia` and `fao1952` series.
+
+**[MAN-1945-1950](polities/man-1945-1950.md)** — Manchuria (region),
+deliberately `type: subnational` so it cannot compete with the national CHN
+chain in the matcher's `pick_by_year` ranking; the data label routes here by an
+explicit year-scoped alias instead. Predecessor MAN-1932-1945, successor
+CHN-1950-2025. Polygon: the existing `constructed` MAN-1932-1945 feature reused
+as a `period_proxy` (Heilongjiang + Jilin + Liaoning), measured area
+**791,708 km²**. Its exclusion of Rehe/Jehol is *correct* here rather than
+approximate: after Japan's surrender Jehol reverted to Chinese administration
+outside the three northeastern provinces.
+
+Verified end to end: `ethiopia|fao1952|1937-1937` and `ethiopia|iia|1938-1938`
+(previously quarantined) now route to ETH-1936-1941, and
+`china manchuria province of|mitchell|1945-1950` routes to MAN-1945-1950.
+Overall match rate unchanged at 99.6%. Mitchell's own "ethiopia" 1936-1940
+series still routes to the AOI aggregate and stays pending verification — that
+source was never shown to disaggregate, so the fold-up may be correct for it.
+
+Both polygon areas were corrected after creation: `scripts/build_database.py`
+copies `polygon_area_km2` from frontmatter rather than computing it, so a
+rounded ~1,000,000 km² placeholder on ETH and an empty field on MAN were
+replaced with values measured from the attached geometry in an equal-area
+projection (ESRI:54034).
+
+Signed off by: Catalin Covaci.
+
+## assertion-verification-probe-findings
+**Date:** 2026-07-24
+**Touched:** AOI-1936-1941, CHN-1947-1949, BRL-1945-1949, PSE-1948-2025, F51-1945-1947, SAC-1935-1947, SER-1918-1945, TUR-1920-2025
+**Source:** none
+**Kind:** proposal
+
+Second batch of assertion-verification research folded in, from two adversarial
+probes (the `banked_legacy` tier with war/transition spans, and the
+evidence-starved single-row tail). Kind is *proposal* because two entries raise
+structural questions that need a human decision and are recorded, not applied.
+
+**Two coverage gaps found, both instances of the sub-territory-must-not-fold-up
+rule:**
+
+1. **[oq-ethiopia-proper-1936-1941](polities/aoi-1936-1941.md#oq-ethiopia-proper-1936-1941).**
+   The AOI page's own magnitude test has now been run against two sources and
+   both FAIL it: `iia` keeps *Ethiopie* and *Erythrée* as separate country
+   lines 1934-1945 (green coffee continuous across 1936 and 1941: 22,400 →
+   19,800 → 14,500 → 16,300 t, no ~70% step), and `fao1952` reports Eritrea and
+   Italian Somaliland separately throughout the occupation. So "Ethiopia"
+   1936-1941 in these sources means Ethiopia *proper* (~1.0M km²), and routing
+   it to the AOI aggregate (~1.7M km²) overstates by ~70%. No polity covers
+   Ethiopia proper during the occupation. Proposed remedy: a new polity
+   *Ethiopia (Italian occupation, proper territory, 1936-1941)*. Both
+   assertions quarantined pending the decision.
+
+2. **[oq-manchuria-region-1945-1950](polities/chn-1947-1949.md#oq-manchuria-region-1945-1950).**
+   Mitchell's "China, Manchuria province of" series runs 1928-1952 at regional
+   scale (wheat ~300k-1.4M t vs whole-China ~18-20M t) and is routed to
+   whichever polity held sovereignty; but for 1945-1949 no Manchuria-region
+   polity exists, so it folds up into the national row. Proposed remedy: a
+   Manchuria-region polity for 1945-1950, mirroring MAN-1932-1945.
+
+**A registered source convention was CORRECTED by a later probe.** The
+FAO-1952 population series was recorded as reading ~⅓ of true totals
+(agricultural population). The Saar 1937 figure (821,000) matches the true
+total (~812,000 at the 1935 plebiscite), so the series is *not* uniformly one
+measure. Both observations, and the fact that the split between them is
+uncharacterised, are now in `state/source_conventions.csv` and noted on
+[sac-1935-1947](polities/sac-1935-1947.md) and
+[f248-1920-1947](polities/f248-1920-1947.md).
+
+Smaller findings: `fao1952`'s "Germany Berlin" label extends into 1949 (widen
+the alias range); its residual "Palestine" label means the non-Israel Arab
+remainder, confirmed against the separately-reported "Israel" series; Mitchell's
+"czech republic" for 1946 is the whole restored Czechoslovak state
+(retrospective naming); Mitchell shows no visible 1939 Hatay step in Turkish
+crop areas; and SER-1918-1945 shows no reporting-basis discontinuity at the
+1929 banovina reorganisation.
+
+## assertion-verification-source-conventions
+**Date:** 2026-07-24
+**Touched:** FIN-1940-2025, POL-1921-1945, F228-1921-1940, DEU-1949-1990, F248-1920-1947, KOR-1800-1945
+**Source:** none
+**Kind:** ingest
+
+Folded the first batch of assertion-verification research into the wiki
+(`state/wiki_notes_queue.csv`, now cleared). Verification agents establish
+things about source reporting conventions that were previously discarded once
+the verdict was banked; these are the six findings from the validated runs.
+
+Substantive additions: `oq-continuation-war-territory` on FIN-1940-2025 is now
+**partially resolved** — the `juan` sown-area series runs smooth through
+1941-1944 and the armistice, so that source reports the post-1940 reduced
+territory throughout (the CShapes polygon question stays open). A new open
+question `oq-wartime-reporting-basis` on POL-1921-1945 records that the
+1939-1945 territorial basis could not be confirmed (whole pre-war Poland vs
+General Government), which is why the assertion is banked `best_available`
+rather than `verified_equal`. Two new data-quality sections document
+anachronistic source labels: IIA "Russian Federation" is whole-USSR (proved
+from cotton areas impossible for the RSFSR alone) and IIA "south korea" is the
+whole peninsula pre-1945. DEU-1949-1990 gains corroboration that `juan` really
+does carry one undifferentiated "germany" label for 1950-1960.
+
+The cross-cutting finding — the FAO 1952 population series is not total
+population (~1/3 of true totals, consistent across countries; likely
+agricultural population) — is documented on F248-1920-1947 where it surfaced
+and, because it affects every fao1952 population row, registered in
+`pipelines/polity-autoimprove/state/source_conventions.csv`. The intake step
+now attaches matching conventions to assertion evidence bundles (245 of 1,040
+bundles carry one), so each verifier starts from what earlier verifiers
+established instead of re-deriving it, and verdicts can register new
+conventions of their own.
+
+## alk-reclassify-subnational
+**Date:** 2026-07-24
+**Touched:** ALK-1867-1959
+**Source:** none
+**Kind:** decision
+
+Reclassified `ALK-1867-1959` (Territory of Alaska) from `type: national` to
+`type: subnational`. Alaska 1867-1959 was a non-contiguous US territory
+(customs/military district, then organized territory from the 1884/1912
+Organic Acts), never an independent polity — the same class as the FAO-1952
+island-group units (e.g. `IDN-BLB-1949-1951`). The page was created to absorb
+a narrow FAO(1952) "Alaska" reporting row and was typed `national` by mistake.
+
+The mistype had a real routing consequence: sharing `iso3: USA`, the same span
+as `USA-1867-1959`, and `national` rank, it shadowed the mainland-USA polity in
+the matcher's family re-pick and absorbed ~7,600 layer-B rows of mainland US
+data (caught by assertion verification; the matcher-side bug is fixed in
+`matchlib.py`, this reclassification removes the remaining tie in
+`pick_by_year`'s national-first ordering).
+
+Signed off by: Catalin Covaci.
+
+## polygon-area-km2-frontmatter-normalization
+**Date:** 2026-07-24
+**Touched:** F248-1920-1947, F248-1947-1991, SAC-1935-1947, SER-1918-1945, AMI-1946-1953, CYR-1949-1951, ITAEG-1912-1947
+**Source:** none
+**Kind:** lint
+
+Normalized malformed `polygon_area_km2` frontmatter values that crashed the
+deterministic territorial-evidence step (`02_territorial_evidence.py` float
+coercion). Four pages carried tilde-prefixed approximations (`~255000` twice,
+`~88000`, `~1912`) — the tilde was dropped, keeping the numeric value; the
+approximate/estimate character of each figure was already documented in the
+pages' polygon-decision prose and `polygon_status: estimate`, so no information
+was lost. Three pages carried an empty value — set to `null`. The field is now
+always numeric or null, as the database build expects. Rebuilt
+`polities_database.{csv,gpkg}` from the wiki afterwards.
+
+## peru-iia-no-year-data-error
+**Date:** 2026-06-24
+**Touched:** PER-1909-1922, PER-1922-1942
+**Source:** iia
+**Kind:** proposal
+
+Root-cause diagnosis of the 58 null-year Peru IIA rows in the matching pipeline. The IIA agricultural yearbooks (iia_1925, iia_1929, iia_1933, iia_1938, iia_1939) report 5-year period averages rather than single calendar years; the raw IIA normalized data at `iia_data_normalize.xlsx` records these in the 'year' column as period strings: "1909-1913", "1921-1925", "1925-1929", "1928-1932", "1934-1938". During consolidation into `consolidated_layer_b.parquet`, the script runs `pd.to_numeric(full["year"], errors="coerce")` which silently coerces all period strings to NaN, while `period` is set to `None` for the entire core block — discarding the period information entirely.
+
+The matching pipeline's `eff_year()` function (01_match_and_findings.py lines 147–153) can already recover a routing year from the `period` field: end-year extraction would yield 1913 → PER-1909-1922; 1925/1929/1932/1938 → PER-1922-1942. The Peru polity family (PER-1825-1909, PER-1909-1922, PER-1922-1942, PER-1942-2025) is complete and correctly structured; no polity definition change or alias is needed.
+
+**Proposed fix (not yet applied):** in `consolidate_layer_b.py` core block, detect period strings via regex `\d{4}\s*[-–]\s*\d{4}` before numeric coercion; route matched strings into the `period` column and set `year=None` for those rows. This is the same fix diagnosed for Hungary (see `hungary-iia-no-year-data-error-2026-06-24`). The bug affects 6,163 IIA null-year rows across all countries (~23.5% of all IIA rows); the Peru case is one instance of this systemic pipeline defect.
+
+---
+
+## morocco-mar-mor-double-count
+**Date:** 2026-06-24
+**Touched:** MOR-1904-1956, MAR-1911-1958, MOR-1800-1904
+**Source:** cshapes-2.0
+**Kind:** decision
+
+MOR-1904-1956 was a duplicate of MAR-1911-1958. Both rows referenced CShapes 2.0 feature 600 (French Protectorate Morocco) and overlapped 1911–1956. MAR-1911-1958 is the canonical polity (CoW code 600, continuous MAR chain, 708 matched rows). MOR-1904-1956 had no independent polygon and was created as a second-order gap fill without recognizing the existing MAR entry.
+
+Resolution: MOR-1904-1956 retired (wiki_status=superseded, successor=MAR-1911-1958). MAR-1911-1958 predecessor set to MOR-1800-1904, resolving the broken chain. MOR-1800-1904 successor updated from MOR-1904-1956 to MAR-1911-1958. The "French Morocco" alias in applied_aliases.csv retargeted from MOR-1904-1956 to MAR-1911-1958 (year-ranged 1904–1956). No polygon change: MAR-1911-1958 retains CShapes 2.0 feature 600 (vintage 1912).
+
+---
+
+## india-iia-null-year-rows
+**Date:** 2026-06-24
+**Touched:** IND-1893-1914, IND-1914-1937, IND-1937-1947
+**Source:** iia
+**Kind:** proposal
+
+Root-cause diagnosis of the 60 null-year India IIA rows in the matching pipeline. These rows are IIA publication summary statistics (multi-year period averages printed as reference context alongside annual series), not individual annual observations. Period identity is verified by exact arithmetic: jute area null=1,198,946 ha matches the 1909–1913 annual mean of 1,198,945.6 ha; jute production null=1,528,062.4 t matches the 1909–1913 mean of 1,528,062.4 t exactly; cotton lint area null=9,102,104 ha matches the 1909–1913 mean of 9,102,148 ha (within rounding); sugar raw centrifugal null=2,403,560 t matches the 1909–1913 mean of 2,403,561 t. A second set of null values with larger magnitudes (cotton lint tonnes, cotton seed tonnes, coffee tonnes, groundnuts tonnes, linseed tonnes, fertilizer) likely corresponds to a later reference period (~1923–1927), but insufficient annual IIA coverage for those items prevents exact identification.
+
+This is distinct from the Hungary/Austria/Brazil range-string issue (where IIA year fields carry strings like "1909–1913" that `pd.to_numeric` coerces to NaN). For India, the null rows appear to be true summary averages with no period string in the source — no year field exists that could route them. No alias can fix a null year field; no polity change is needed. The IND polity family (IND-1800-1893 through IND-1949-2025) is correctly structured; the 333 dated IIA rows route correctly to IND-1893-1914, IND-1914-1937, and IND-1937-1947.
+
+**Proposed pipeline action:** before excluding all 60 rows, check `consolidated_layer_b` for a `period` column on these rows. If a period string (e.g. "1909–1913") is present for any, `eff_year()` inference would already recover a routing year and those rows could be matched. Rows confirmed to lack any period string should be flagged `undatable_source` and excluded from the matched dataset. Classification corrected from `coverage_gap` to `data_error/undatable_source` in the pipeline findings.
+
+---
+
+## hungary-iia-no-year-data-error-2026-06-24
+**Date:** 2026-06-24
+**Touched:** HUN-1800-1918, HUN-1920-1938
+**Source:** mitchell-iia (mitchell_juan_iia.csv)
+**Kind:** proposal
+
+Root-cause diagnosis of the 94 Hungary IIA rows that appear with null
+years in the matching pipeline. The IIA publication uses 5-year period
+labels (e.g. 1909–1913, 1925–1929, 1928–1932, 1934–1938) rather than
+single calendar years; these range strings are present in
+`mitchell_juan_iia.csv` (year column, dtype object). The consolidation
+script `layer_b/consolidate_layer_b.py` line 122 runs
+`pd.to_numeric(full["year"], errors="coerce")`, which silently coerces
+all range strings to NaN. Line 43 sets `period=None` for the entire
+core block, discarding the range information entirely. The matching
+pipeline's `eff_year()` function (01_match_and_findings.py lines
+147–153) can recover a year from the `period` field, but `period` is
+never populated for these rows.
+
+**Proposed fix (not yet applied):** in `consolidate_layer_b.py` core
+block (lines 33–48), detect range strings via regex
+`\d{4}\s*[-–]\s*\d{4}` before numeric coercion; route matched strings
+into the `period` column and set `year=None` for those rows, leaving
+single-year strings unchanged. With `period` populated, `eff_year()`
+yields the range-end year: 1913 → HUN-1800-1918; 1929/1932/1938 →
+HUN-1920-1938. No new polity or alias needed. The same bug likely
+affects ~23.5% of IIA rows across all countries (6,163 of 26,175 null
+years).
+
+---
+
 ## lint-2026-04-17
 **Date:** 2026-04-17
 **Touched:** (audit only; no wiki pages edited)

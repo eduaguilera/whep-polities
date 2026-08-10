@@ -316,6 +316,12 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/write_iso3_successor_map.py --check
 
+      # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
+      # step existed `site/` appeared in exactly one workflow: the one that publishes it.
+      - name: site/ shows exactly the live polities that carry geometry
+        if: '!cancelled()'
+        run: python3 scripts/validate_site_outputs.py
+
       - name: Polygons — area agreement, claimed-but-absent, reviewed-means-documented
         if: '!cancelled()'
         run: python3 scripts/validate_polygons.py
