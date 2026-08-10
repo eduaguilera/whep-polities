@@ -206,6 +206,65 @@ def _crownland(feature_id: str) -> ogr.Geometry:
     raise LookupError(f"crownlands shapefile has no feature id={feature_id!r}")
 
 
+def _envelope_of(g: ogr.Geometry) -> ogr.Geometry:
+    """The axis-aligned bounding box of `g`, as a polygon.
+
+    For clipping an ISLAND out of a coarser containing feature. Subtracting the island's own
+    outline is not enough when the two sources disagree about where its coast is: Cliopatria's
+    Ceylon is about 8,000 km2 larger than CShapes 780's, so `British Raj MINUS CShapes 780` left
+    12 fragments totalling 7,995 km2, every one of them ON Sri Lanka (79.9-81.9E, 6.6-9.7N) and
+    still attributed to British India.
+    
+    Subtracting the ENVELOPE removes the island and any coastal disagreement in one operation.
+    It is only safe where the box holds nothing else, so the caller must have checked: Ceylon's
+    box is lon 79.70-81.89, lat 5.92-9.82, India's nearest land is 0.443 degrees away, and no
+    other live polity in the database has any land inside it.
+    """
+    x0, x1, y0, y1 = g.GetEnvelope()
+    ring = ogr.Geometry(ogr.wkbLinearRing)
+    for x, y in ((x0, y0), (x1, y0), (x1, y1), (x0, y1), (x0, y0)):
+        ring.AddPoint_2D(x, y)
+    poly = ogr.Geometry(ogr.wkbPolygon)
+    poly.AddGeometry(ring)
+    return poly
+
+
+MAX_REPAIR_COST = 0.001  # 0.1% of area; a repair costing more than this is a judgement, not a fix
+
+
+def _valid(g: ogr.Geometry, label: str) -> ogr.Geometry:
+    """Repair a source geometry enough for set operations, refusing an expensive repair.
+
+    SOURCE FEATURES ARE NOT ALWAYS VALID, and GEOS set operations abort on them rather than
+    returning something wrong -- which is the good failure mode, but it means a builder cannot
+    just call Difference() on whatever the source hands back. Cliopatria's "British Raj" @1880
+    self-intersects in Balochistan (63.83E, 29.47N), so subtracting Ceylon from it died with
+    "side location conflict at 71.33 20.80".
+
+    build_database repairs invalid geometry on write, under its own 0.5% budget, so this only
+    matters for geometry consumed by a BUILDER before it ever reaches that step.
+
+    The cost is checked rather than assumed: repairing British Raj moves 0.0009% of its area.
+    A repair that moves more than 0.1% is refused, because at that point it is changing the
+    territory rather than fixing the encoding, and the builder should say so instead of
+    silently publishing the difference.
+    """
+    if g.IsValid():
+        return g
+    fixed = g.MakeValid()
+    if fixed is None or not fixed.IsValid():
+        raise ValueError(f"{label}: MakeValid produced nothing usable")
+    before = g.GetArea()
+    if before > 0:
+        cost = abs(fixed.GetArea() - before) / before
+        if cost > MAX_REPAIR_COST:
+            raise ValueError(
+                f"{label}: repairing the source moves {cost:.3%} of its area, above the "
+                f"{MAX_REPAIR_COST:.1%} budget - decide it explicitly rather than here"
+            )
+    return fixed
+
+
 def _difference(base: ogr.Geometry, *subtract: ogr.Geometry) -> ogr.Geometry:
     """base minus each of `subtract` — for polities defined as a parent territory
     with a breakaway/occupied region removed (e.g. China without Manchukuo)."""
@@ -609,6 +668,48 @@ def build_idn_blb_1949_1951() -> ogr.Geometry:
         _gadm_adm2("IDN.20.6_1"),   # Lombok Timur
         _gadm_adm2("IDN.20.7_1"),   # Lombok Utara
         _gadm_adm2("IDN.20.8_1"),   # Mataram
+    )
+
+
+def build_ind_1800_1886() -> ogr.Geometry:
+    """British India 1800-1886 = Cliopatria's "British Raj" at 1880, MINUS Ceylon and the
+    European enclaves that were never British.
+
+    CEYLON IS THE WHOLE POINT, and it is 65,600 km2. Cliopatria's "British Raj" feature
+    includes it, so this row -- the only IND period bound to Cliopatria rather than to CShapes
+    750 -- geometrically contained LKA-1800-2025 at 99.5% of Ceylon. Ceylon was a separate
+    Crown Colony from 1802, administered from Colombo and answering to the Colonial Office
+    rather than to the India Office. It was never part of British India, and every CShapes-bound
+    IND period correctly contains 0 km2 of it. Measured:
+
+        IND-1800-1886 n LKA-1800-2025    65,600 km2
+        every other IND period n LKA          0 km2
+
+    THE DECLARED AREA AGREED WITH THE GEOMETRY BECAUSE BOTH INCLUDED CEYLON. The page declared
+    4,209,917 and the polygon measured 4,209,869 -- a 0.001% match that looked like confirmation
+    and was two errors cancelling, the same shape as IDN-OTH-1949-1951's West Papua (PR 182).
+
+    The two European enclaves are subtracted as well, and for this span that is unambiguous:
+    Portuguese India was Portuguese until December 1961 and French India French until October
+    1954, so both were foreign for the whole of 1800-1886. They are small -- 1,299 and 311 km2
+    inside this feature -- but they cost nothing to remove and leaving them would keep a known
+    double claim in a row being rebuilt anyway.
+
+    Each subtrahend is the SAME geometry the other row publishes, not a re-derivation, so the
+    pairs cannot drift apart: CShapes 780 at 1948 is what LKA-1800-2025 binds, and the two
+    enclave builders are the ones PTIND-1816-1961 and FRIN-1816-1954 use.
+
+    WHAT THIS DOES NOT FIX. The CShapes-bound periods still contain PTIND (3,719 km2) and FRIN
+    (520 km2), and those cannot be subtracted the same way, because IND-1949-2025 spans both
+    sides of 1954 and 1961 -- Goa and Pondicherry really did become Indian territory. Fixing
+    them needs IND-1949-2025 split at those dates, which is a periodisation change to a major
+    national family and belongs in its own decision (issue 84).
+    """
+    return _difference(
+        _valid(_cliopatria_feature("British Raj", 1880), "Cliopatria British Raj @1880"),
+        _envelope_of(_cshapes2_feature(780, 1948)),
+        build_ptind_1816_1961(),
+        build_frin_1816_1954(),
     )
 
 
@@ -1143,6 +1244,16 @@ BUILDERS = [
         "which is absent from the registered source. Post-1924 (post-Jubaland) "
         "extent; overstates 1908-1924 by ~94,400 km2 — see "
         "wiki/polities/its-1908-1960.md.",
+    ),
+    (
+        "IND-1800-1886",
+        "British India (to 1886)",
+        build_ind_1800_1886,
+        "Cliopatria 'British Raj' @1880 MINUS Ceylon (CShapes 780 @1948), Portuguese "
+        "India and French India. The Cliopatria feature includes Ceylon, which was a "
+        "separate Crown Colony from 1802 and never part of British India: 65,600 km2 "
+        "claimed by both this row and LKA-1800-2025. Every CShapes-bound IND period "
+        "correctly contains 0 km2 of Ceylon. Issue 84.",
     ),
     (
         "PTIND-1816-1961",

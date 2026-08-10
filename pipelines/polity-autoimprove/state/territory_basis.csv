@@ -347,7 +347,7 @@ IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,cons
 IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,15
 IGL-1800-1901,Igala Kingdom,1800,1901,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 IJB-1800-1892,Ijebu Kingdom,1800,1892,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
-IND-1800-1886,British India (to 1886),1800,1886,cliopatria,1880.0,polygon_vintage_drift,True,assumed_constant,True,False,single 1880 polygon held across a 86y span (1800-1886); borders may have changed,3
+IND-1800-1886,British India (to 1886),1800,1886,constructed,,polygon_vintage_drift,True,assumed_constant,True,False,polygon present but no recorded vintage year,3
 IND-1800-1893,India (to 1893),1800,1893,cshapes-2.0,1886.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 IND-1886-1893,British India (1886-1893),1886,1893,cshapes-2.0,1890.0,assigned,True,measured,False,False,vintage 1890 faithful to period 1886-1893,46
 IND-1893-1914,India (1893-1914),1893,1914,cshapes-2.0,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1893-1914,469

@@ -347,7 +347,7 @@ IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,subn
 IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,subnational,IDN,,Asia,draft,2026-06-26,constructed,IDN-OTH-1949-1951,,proxy,1349065,,
 IGL-1800-1901,Igala Kingdom,1800,1901,national,,,Africa,draft,2026-04-15,paine-2024,Igala,,assigned,,,NNI-1899-1904
 IJB-1800-1892,Ijebu Kingdom,1800,1892,national,,,Africa,draft,2026-04-15,paine-2024,Ijebu,,assigned,,,SNI-1899-1906
-IND-1800-1886,British India (to 1886),1800,1886,national,IND,750,Asia,draft,2026-07-24,cliopatria,British Raj,1880,polygon_vintage_drift,4209917,,IND-1886-1893
+IND-1800-1886,British India (to 1886),1800,1886,national,IND,750,Asia,draft,2026-07-24,constructed,IND-1800-1886,,polygon_vintage_drift,4135466,,IND-1886-1893
 IND-1800-1893,India (to 1893),1800,1893,national,IND,750,Asia,superseded,2026-04-12,cshapes-2.0,750,1886,unassigned,,,IND-1893-1914
 IND-1886-1893,British India (1886-1893),1886,1893,national,IND,750,Asia,draft,2026-07-24,cshapes-2.0,750,1890,assigned,4652712,IND-1800-1886,IND-1893-1914
 IND-1893-1914,India (1893-1914),1893,1914,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1899,assigned,,IND-1800-1893,IND-1914-1937
