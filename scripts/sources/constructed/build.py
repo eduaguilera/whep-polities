@@ -774,6 +774,81 @@ def build_fez_1943_1951() -> ogr.Geometry:
     return _union(*(_gadm_adm1(g) for g in _FEZ_ADM1))
 
 
+def build_mmr_lwr_1852_1885() -> ogr.Geometry:
+    """British Lower Burma 1852-1885 = Cliopatria's Burma BEFORE the Second Anglo-Burmese War
+    minus Burma AFTER it. The territory Britain took in 1852 is the difference between the two
+    steps that bracket the war, so the source defines it without anyone having to enumerate
+    provinces:
+
+        Burma 1842-1852    552,405 km2    before
+        Burma 1853-1858    437,084 km2    Upper Burma after annexation
+        difference         115,321 km2    page declares 116,000 -> 0.6%
+
+    Years 1850 and 1855 are each inside exactly ONE step, which _cliopatria_feature requires --
+    the same care build_btl_1920_1957 documents, and that builder is the model here: British
+    Togoland is likewise "Ghana after incorporation minus the Gold Coast before it".
+
+    THE PAGE'S OWN RECIPE WAS WRONG IN TWO WAYS, and neither could have been caught by area alone
+    because the row carried no geometry at all. It read `MMR.2_1+MMR.13_1+MMR.15_1`:
+
+      * MMR.13_1 is SHAN -- 155,756 km2 of the northeastern plateau, annexed with UPPER Burma in
+        1885-87, i.e. after this row ends. The page's own component table names Ayeyarwady in that
+        slot, which is MMR.1_1: a GID transposition swapped the Irrawaddy delta for a highland
+        state that was never in Lower Burma.
+      * It listed three GIDs where the table lists FOUR components, omitting Tenasserim.
+
+        as written (Bago+Shan+Yangon)         203,832 km2   +76%
+        as apparently intended (Bago+Ayeyarwady+Yangon)  81,839 km2   -29%
+        adding Tanintharyi                   123,140 km2    +6%
+        adding Mon as well                   134,689 km2   +16%
+        adding Rakhine as well               170,183 km2   +47%
+
+    Every GADM reading needs a judgement about how much of Tenasserim and whether Arakan counts.
+    The Cliopatria difference needs none: it is what the source says changed hands in 1852, and it
+    lands within 0.6% of the page's independently-derived figure. So the GADM recipe is abandoned
+    rather than repaired.
+    """
+    return _difference(
+        _valid(_cliopatria_feature("Burma", 1850), "Cliopatria Burma @1850"),
+        _valid(_cliopatria_feature("Burma", 1855), "Cliopatria Burma @1855"),
+    )
+
+
+def build_bwi_1833_1962() -> ogr.Geometry:
+    """British West Indies colonial aggregate = the eleven territories the page enumerates.
+
+    The recipe was written in `polygon_feature_id` as the string
+    `gadm-union-JAM+TTO+BRB+BHS+ATG+GRD+VCT+DMA+LCA+KNA+MSR` with no builder, and the extract had
+    no Jamaica or Trinidad and Tobago, so 24 rows of FAO "British West Indies" data landed on a
+    polity with no territory. Both countries were fetched on 2026-08-10; the other nine were
+    already present.
+
+        JAM 11,000.0   BHS 13,388.1   TTO 5,159.1   DMA  754.2   LCA  614.4
+        BRB    434.6   ATG    435.8   VCT   397.9   GRD  359.5   KNA  267.1   MSR 100.6
+        union 32,912 km2    page declares 34,766 -> -5.3%
+
+    FAO CANNOT SETTLE THE 5.3%, and it is worth saying why rather than implying the union is
+    5% short of something known. FAO 1952's stated-area table has NO British West Indies
+    aggregate -- only per-member rows (`British West Indies Jamaica`, `... Bahamas`, `...
+    Cayman Islands`, `... Turks and Caicos`) plus separate `Leeward Islands` and `Windward
+    Islands` groups. And two of those members are unusable:
+
+        British West Indies Bahamas   1,400 km2   the Bahamas are 13,880
+        British West Indies Jamaica   1,420 km2   Jamaica is 10,991
+
+    roughly a factor of ten out, where the same table gives Cape Verde 4,030 against an actual
+    4,033 and the Channel Islands 190 against 194. So those two rows are a units or OCR defect
+    in the source extraction, not a disagreement about territory -- the class issue 111
+    describes. Reported there.
+
+    The page also excludes VGB, CYM and TCA "pending creation of those polity entries", and
+    their combined ~1,300 km2 is most of the 1,854 km2 gap, which is the likeliest explanation
+    for the declared figure being higher than the eleven-member union.
+    """
+    return _union(*(_gadm_adm0(c) for c in (
+        "JAM", "TTO", "BRB", "BHS", "ATG", "GRD", "VCT", "DMA", "LCA", "KNA", "MSR")))
+
+
 def build_bli_1833_1960() -> ogr.Geometry:
     """British Leeward Islands Colony 1833-1960 = the five modern territories it federated.
 
@@ -1372,6 +1447,23 @@ BUILDERS = [
         "which is absent from the registered source. Post-1924 (post-Jubaland) "
         "extent; overstates 1908-1924 by ~94,400 km2 — see "
         "wiki/polities/its-1908-1960.md.",
+    ),
+    (
+        "BWI-1833-1962",
+        "British West Indies (colonial aggregate)",
+        build_bwi_1833_1962,
+        "Union of 11 GADM 4.1 adm0 territories as the page enumerates them: 32,912 km2 against "
+        "34,766 declared (-5.3%, most of it the VGB/CYM/TCA the page excludes). JAM and TTO were "
+        "fetched for this. Issues 3 and 155.",
+    ),
+    (
+        "MMR-LWR-1852-1885",
+        "British Lower Burma (1852-1885)",
+        build_mmr_lwr_1852_1885,
+        "Cliopatria 'Burma' @1850 (552,405 km2, before the Second Anglo-Burmese War) MINUS "
+        "'Burma' @1855 (437,084 km2, Upper Burma after it) = 115,321 km2, within 0.6% of the "
+        "page's declared 116,000. Replaces a GADM recipe that named Shan -- upper Burma, "
+        "annexed 1885-87 -- in the slot its own table gives to Ayeyarwady. Issues 3 and 155.",
     ),
     (
         "BLI-1833-1960",

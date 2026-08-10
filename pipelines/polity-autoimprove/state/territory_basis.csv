@@ -100,7 +100,7 @@ BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,cshapes-2.0,1889.0,a
 BTL-1920-1957,British Togoland (1920-1957),1920,1957,constructed,1957.0,assigned,True,assumed_constant,True,True,single 1957 polygon held across a 37y span (1920-1957); borders may have changed,12
 BTN-1800-2025,Bhutan,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,4
 BWA-1966-2025,Botswana,1966,2025,cshapes-2.0,1966.0,assigned,False,assumed_constant,True,False,single 1966 polygon held across a 59y span (1966-2025); borders may have changed,0
-BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,gadm-4.1-adm0,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),24
+BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,24
 CAF-1906-1912,Central African Republic (1906-1912),1906,1912,cshapes-2.0,1906.0,assigned,True,measured,False,False,vintage 1906 faithful to period 1906-1912,0
 CAF-1912-1919,Central African Republic (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,vintage 1912 faithful to period 1912-1919,0
 CAF-1919-1960,Central African Republic (1919-1960),1919,1960,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 41y span (1919-1960); borders may have changed,14
@@ -465,7 +465,7 @@ MMR-1800-1826,Konbaung Burma (to 1826),1800,1826,cliopatria,1822.0,assigned,Fals
 MMR-1826-1852,Burma (1826-1852),1826,1852,cliopatria,1842.0,assigned,False,assumed_constant,True,False,single 1842 polygon held across a 26y span (1826-1852); borders may have changed,0
 MMR-1852-1885,Upper Burma (1852-1885),1852,1885,cliopatria,1859.0,assigned,True,assumed_constant,True,False,single 1859 polygon held across a 33y span (1852-1885); borders may have changed,24
 MMR-1885-2025,Myanmar,1885,2025,cliopatria,1967.0,polygon_vintage_drift,True,assumed_constant,True,False,single 1967 polygon held across a 140y span (1885-2025); borders may have changed,533
-MMR-LWR-1852-1885,British Lower Burma (1852-1885),1852,1885,gadm-4.1,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+MMR-LWR-1852-1885,British Lower Burma (1852-1885),1852,1885,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MNE-1878-1913,Montenegro (to 1913),1878,1913,cshapes-europe,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 35y span (1878-1913); borders may have changed,0
 MNE-1913-1915,Montenegro (1913-1915),1913,1915,cshapes-2.0,1886.0,assigned,True,back_projected,True,False,polygon vintage 1886 is BEFORE the period starts (1913),0
 MNE-1913-1918,Montenegro (1913-1918),1913,1918,cshapes-2.0,1915.0,assigned,True,measured,False,False,vintage 1915 faithful to period 1913-1918,0

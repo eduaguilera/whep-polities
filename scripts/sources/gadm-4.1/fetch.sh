@@ -44,6 +44,18 @@ COUNTRIES=(
   # Romanian adm1 counties (issues 12, 106). CShapes cannot supply it -- the territory
   # is interior to both of its Romanian steps, because post-war Romania kept it.
   ROU
+  # Added 2026-08-10 for issues 3 and 155, the last two data-blocked polygon gaps.
+  #
+  # JAM TTO: BWI-1833-1962's recipe is a union of eleven British West Indian territories and nine
+  # were already here -- Jamaica and Trinidad and Tobago were the two missing, so the union could
+  # not be built and 24 rows of FAO "British West Indies" data landed on a polity with no
+  # territory. Every other member (BRB BHS ATG GRD VCT DMA LCA KNA MSR) was already fetched.
+  #
+  # MMR: MMR-LWR-1852-1885 (British Lower Burma) declares gadm-4.1 MMR.2_1+MMR.13_1+MMR.15_1 --
+  # Bago, Ayeyarwady and Yangon -- and the extract had no Myanmar at all, so the build logged
+  # 'feature not found'. The recipe names the three lower-delta regions annexed after the Second
+  # Anglo-Burmese War, which is what this row covers.
+  JAM TTO MMR
 )
 
 ADM0="$OUT_DIR/gadm41_adm0.gpkg"
