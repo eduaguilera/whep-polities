@@ -504,6 +504,7 @@ def write_gpkg(
 
     defn = lyr.GetLayerDefn()
     repairs = {"repaired": [], "skipped": [], "failed": []}
+    simplifies = {"done": 0, "kept": [], "reduced": []}
     for row in rows:
         f = ogr.Feature(defn)
         for col in CSV_COLUMNS:
@@ -522,7 +523,7 @@ def write_gpkg(
         if geom is not None:
             g = geom.Clone()
             if simplify_tolerance > 0:
-                g = g.SimplifyPreserveTopology(simplify_tolerance)
+                g = _simplify_if_cheap(g, simplify_tolerance, row["polity_code"], simplifies)
             # After simplification, never before: see densify_planar_edges.
             g = densify_planar_edges(g, densify_tolerance)
             if g.GetGeometryType() != ogr.wkbMultiPolygon:
@@ -550,6 +551,17 @@ def write_gpkg(
             f.SetGeometry(g)
         lyr.CreateFeature(f)
 
+    if simplifies["reduced"]:
+        print(f"  simplified {len(simplifies['reduced'])} geometry(ies) at a FINER tolerance: "
+              f"the requested one would have cost more than {SIMPLIFY_MAX_AREA_CHANGE:.0%} "
+              f"of their area")
+        for code, factor, change in sorted(simplifies["reduced"], key=lambda t: t[1]):
+            print(f"    {code}: tolerance x{factor:g}, cost {change:.2%}")
+    if simplifies["kept"]:
+        print(f"  published {len(simplifies['kept'])} geometry(ies) UNSIMPLIFIED: even the finest "
+              f"ladder step would have cost more than {SIMPLIFY_MAX_AREA_CHANGE:.0%}")
+        for code, change in sorted(simplifies["kept"], key=lambda t: -t[1]):
+            print(f"    {code}: coarsest step would have lost {change:.1%}")
     if repairs["repaired"]:
         print(f"  repaired {len(repairs['repaired'])} invalid geometry(ies) at "
               f"<={REPAIR_MAX_AREA_CHANGE:.1%} area cost")
@@ -591,6 +603,73 @@ def write_gpkg(
 # them is a territorial judgement rather than a default. This threshold repairs the 43 and leaves
 # the 44th alone, which is the outcome that PR's reasoning asks for.
 REPAIR_MAX_AREA_CHANGE = 0.005  # 0.5%: an order of magnitude above the 42, well below IRN's 0.737%
+
+# SIMPLIFICATION IS A FILE-SIZE OPTIMISATION, AND IT WAS SILENTLY DELETING TERRITORY.
+#
+# `SimplifyPreserveTopology(0.01)` preserves topology, not area. 0.01 degrees is about 1.1 km,
+# which is fine for a country and catastrophic for anything whose parts are smaller than that.
+# Measured on 2026-08-10 over the 57 rows bound to a gadm-4.1-adm0 feature, published area
+# against raw GADM:
+#
+#     VAT-1929-2025   0.527 ->   0.275 km2   0.521x   the Vatican, 48% deleted
+#     MDV-1800-2025 299.684 -> 172.576 km2   0.576x   the Maldives, 1,192 islands
+#     NRU-1888-2025  22.151 ->  17.261 km2   0.779x
+#     MHL-1874-2025 300.283 -> 252.553 km2   0.841x
+#     COK-1800-2025 283.023 -> 240.835 km2   0.851x
+#     SYC-1903-2025 491.200 -> 423.039 km2   0.861x
+#     TUV-1800-2025  41.726 ->  36.203 km2   0.868x
+#
+# 15 of the 57 lost more than 5%; two lost more than 25%. Every loser is small, archipelagic or
+# both -- exactly the population issue 71 describes, where an archipelago "cannot declare a true
+# area" because the declared figure is compared against a geometry that has had its small islands
+# thinned away. The declared areas were not wrong; the geometry was.
+#
+# Nothing caught it because `validate_polygons` check A skips rows where BOTH the claimed and the
+# measured area are under --min-km2 200, which is every one of the worst cases by construction.
+#
+# So simplification now carries an AREA BUDGET, the same shape as REPAIR_MAX_AREA_CHANGE above:
+# try it, measure what it cost, and keep the original if it cost too much. A row that cannot be
+# simplified cheaply is simply published unsimplified -- it is small, so the file-size argument
+# for simplifying it was never worth much anyway.
+SIMPLIFY_MAX_AREA_CHANGE = 0.02  # 2%: below every legitimate loss, above rounding on large rows
+
+# THE TOLERANCE IS SCALED TO THE FEATURE, not applied or abandoned.
+#
+# The first version of this was all-or-nothing: simplify at 0.01, and if that costs more than the
+# budget, publish the geometry untouched. Correct on area, expensive on disk -- 40 rows went
+# unsimplified and the GeoPackage grew from 14.6 MB to 22.4 MB, +53%, on a binary that is
+# committed and rebuilt constantly.
+#
+# The all-or-nothing framing was the mistake. A geometry that cannot survive 1.1 km of thinning
+# usually survives 110 m of it perfectly well, and 110 m of thinning still removes most of the
+# vertices. So walk DOWN a ladder and take the coarsest tolerance that stays inside the budget.
+SIMPLIFY_LADDER = (1.0, 0.1, 0.01)  # multipliers on the requested tolerance
+
+
+def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict):
+    """Simplify at the coarsest ladder step that costs less than the budget.
+
+    Returns the geometry untouched if even the finest step is too expensive, which is the honest
+    outcome: the feature's parts are smaller than anything we could thin them by.
+    """
+    before = g.GetArea()
+    if before <= 0:
+        return g
+    worst = None
+    for factor in SIMPLIFY_LADDER:
+        s = g.SimplifyPreserveTopology(tolerance * factor)
+        if s is None or s.IsEmpty():
+            continue
+        change = abs(before - s.GetArea()) / before
+        if worst is None:
+            worst = change
+        if change <= SIMPLIFY_MAX_AREA_CHANGE:
+            simplifies["done"] += 1
+            if factor != 1.0:
+                simplifies["reduced"].append((polity_code, factor, change))
+            return s
+    simplifies["kept"].append((polity_code, worst if worst is not None else 1.0))
+    return g
 
 
 def _repair_if_free(g, polity_code: str, repairs: dict):
