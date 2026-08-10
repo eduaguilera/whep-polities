@@ -1363,6 +1363,7 @@ cshapes-europe,360,306,1940,2023,237299.6
 cshapes-europe,340,313,2006,2007,87932.9
 gadm-4.1-adm0,ABW,0,,,181.9
 gadm-4.1-adm0,ASM,3,,,204.2
+gadm-4.1-adm0,ATF,4,,,7867.5
 gadm-4.1-adm0,ATG,5,,,435.8
 gadm-4.1-adm0,BHS,8,,,13388.1
 gadm-4.1-adm0,BMU,9,,,68.1
@@ -1394,6 +1395,7 @@ gadm-4.1-adm0,PLW,69,,,484.2
 gadm-4.1-adm0,PRI,70,,,8970.5
 gadm-4.1-adm0,PSE,71,,,6220.0
 gadm-4.1-adm0,PYF,72,,,4053.4
+gadm-4.1-adm0,SGS,74,,,4096.7
 gadm-4.1-adm0,SLB,77,,,28532.8
 gadm-4.1-adm0,SMR,78,,,61.2
 gadm-4.1-adm0,SPM,79,,,226.7
@@ -1407,6 +1409,7 @@ gadm-4.1-adm0,VCT,89,,,397.9
 gadm-4.1-adm0,VGB,90,,,169.4
 gadm-4.1-adm0,VIR,91,,,362.2
 gadm-4.1-adm0,VUT,92,,,12319.0
+gadm-4.1-adm0,WLF,93,,,155.7
 gadm-4.1-adm0,WSM,94,,,2853.4
 gadm-4.1-adm1,CHN.HKG,113,,,1129.3
 gadm-4.1-adm1,CHN.MAC,120,,,33.5

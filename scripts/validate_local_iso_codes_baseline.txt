@@ -3,7 +3,7 @@
 # This vocabulary is a published interface: a consumer joins on it, so adding a value
 # changes what that join matches and changing one re-points every row carrying it.
 #
-# 282 values over 682 rows (2026-08-10; was 280/680 on 2026-08-06, and before that the header had said 276/658 and was stale, which is
+# 285 values over 685 rows (2026-08-10; was 280/680 on 2026-08-06, and before that the header had said 276/658 and was stale, which is
 # what a count in a comment does when the gate asserts the LIST rather than the number).
 #
 # Of these, ~56 are NOT ISO 3166 codes but local identifiers for entities that have none
@@ -25,6 +25,7 @@ ARE
 ARG
 ARM
 ASM
+ATF
 ATG
 AUH  # local
 AUS
@@ -233,6 +234,7 @@ SDN
 SEN
 SER  # local
 SGP
+SGS
 SHN
 SLB
 SLE
@@ -286,6 +288,7 @@ VIC  # local
 VIR
 VNM
 VUT
+WLF
 WSM
 YEM
 YUG

@@ -27,6 +27,7 @@ ARG-1902-2025,Argentina,1902,2025,cshapes-2.0,1902.0,assigned,True,assumed_const
 ARM-1991-2025,Armenia,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 ASH-1800-1896,Ashanti Empire,1800,1896,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ASM-1900-2025,Territory of American Samoa,1900,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,False,single 2023 polygon held across a 125y span (1900-2025); borders may have changed,38
+ATF-1800-2025,French Southern and Antarctic Lands (sub-Antarctic districts),1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ATG-1800-2025,Antigua and Barbuda,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,122
 AUH-1800-1859,Austrian Empire (to 1859),1800,1859,cliopatria,1820.0,assigned,False,assumed_constant,True,False,single 1820 polygon held across a 59y span (1800-1859); borders may have changed,0
 AUH-1859-1866,Austrian Empire (1859-1866),1859,1866,cliopatria,1860.0,assigned,True,measured,False,False,vintage 1860 faithful to period 1859-1866,0
@@ -630,6 +631,7 @@ SER-2006-2008,Serbia (2006-2008),2006,2008,cshapes-2.0,1992.0,assigned,False,bac
 SGP-1946-1963,Singapore (Crown Colony),1946,1963,cshapes-2.0,1953.0,assigned,True,measured,False,False,vintage 1953 faithful to period 1946-1963,59
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,cshapes-2.0,1962.0,assigned,False,back_projected,True,False,polygon vintage 1962 is BEFORE the period starts (1963),0
 SGP-1965-2025,Singapore,1965,2025,cshapes-2.0,1965.0,assigned,False,assumed_constant,True,False,single 1965 polygon held across a 60y span (1965-2025); borders may have changed,0
+SGS-1800-2025,South Georgia and the South Sandwich Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,gadm-4.1-adm1,2024.0,proxy,True,back_projected,True,True,polygon vintage 2024 is AFTER the period ends (1967) — later/modern border applied back,15
 SLB-1800-2025,Solomon Islands,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,28
 SLE-1800-1886,Sierra Leone,1800,1886,cshapes-2.0,1895.0,assigned,True,back_projected,True,False,polygon vintage 1895 is AFTER the period ends (1886) — later/modern border applied back,0
@@ -740,6 +742,7 @@ VUT-1800-2025,Vanuatu,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,Tr
 WAD-1800-1912,Wadai Empire,1800,1912,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 WBK-1950-1967,West Bank (Jordanian-annexed),1950,1967,cshapes-2.0,1953.0,assigned,True,measured,False,False,vintage 1953 faithful to period 1950-1967,0
 WBL-1949-1990,West Berlin,1949,1990,cshapes-2.0,1949.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),24
+WLF-1800-2025,Wallis and Futuna,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 WLO-1800-1855,Kingdom of Waalo,1800,1855,paine-2024,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 WSM-1900-2025,Samoa,1900,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,59
 WZO-1938-1949,Western Germany / Western Occupation Zones,1938,1949,cshapes-2.0,1949.0,assigned,True,measured,False,False,vintage 1949 faithful to period 1938-1949,44
