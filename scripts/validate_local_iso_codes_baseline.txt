@@ -3,7 +3,7 @@
 # This vocabulary is a published interface: a consumer joins on it, so adding a value
 # changes what that join matches and changing one re-points every row carrying it.
 #
-# 280 values over 680 rows (2026-08-06; the header had said 276/658 and was stale, which is
+# 282 values over 682 rows (2026-08-10; was 280/680 on 2026-08-06, and before that the header had said 276/658 and was stale, which is
 # what a count in a comment does when the gate asserts the LIST rather than the number).
 #
 # Of these, ~56 are NOT ISO 3166 codes but local identifiers for entities that have none
@@ -11,7 +11,7 @@
 # ZNZ Zanzibar, plus this project's own aggregates ROW/RAFR/RASI/REUR/RLAM/RNAM/ROCE).
 # They are marked `local` below. A consumer cannot match them against ISO-keyed data.
 # See the README section on iso3_code, and issue 55 on publishing the distinction.
-
+ABW
 AEF  # local
 AFG
 AGO
@@ -278,6 +278,7 @@ UKR
 URY
 USA
 UZB
+VAT
 VCT
 VEN
 VGB

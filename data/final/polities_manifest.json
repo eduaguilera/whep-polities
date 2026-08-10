@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "b440072ad8c60c51f7c28288dbf75fbc022006269f2678175836b4bf8d056a37",
+ "identity_sha256": "90e372fed9a4459c30a59fa8612d446d0d4fd451d822f0490ffb19df7da71bb6",
  "counts": {
-  "total": 751,
-  "live": 710,
+  "total": 753,
+  "live": 712,
   "dead": 41
  },
  "dead_status": [
@@ -176,6 +176,7 @@
   ]
  },
  "live_polity_codes": [
+  "ABW-1800-2025",
   "ADE-1839-1963",
   "AEF-1910-1960",
   "AFG-1800-1893",
@@ -861,6 +862,7 @@
   "USA-1867-1959",
   "USA-1959-2025",
   "UZB-1991-2025",
+  "VAT-1929-2025",
   "VCT-1800-1833",
   "VCT-1833-2025",
   "VEN-1821-2025",

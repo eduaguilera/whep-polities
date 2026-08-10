@@ -1396,6 +1396,7 @@ cshapes-europe,255,301,1920,1937,470786.1
 cshapes-europe,255,304,1938,1944,496559.2
 cshapes-europe,360,306,1940,2023,237299.6
 cshapes-europe,340,313,2006,2007,87932.9
+gadm-4.1-adm0,ABW,0,,,181.9
 gadm-4.1-adm0,ASM,3,,,204.2
 gadm-4.1-adm0,ATG,5,,,435.8
 gadm-4.1-adm0,BHS,8,,,13388.1
@@ -1436,6 +1437,7 @@ gadm-4.1-adm0,SYC,81,,,491.2
 gadm-4.1-adm0,TKL,84,,,15.7
 gadm-4.1-adm0,TON,85,,,763.4
 gadm-4.1-adm0,TUV,86,,,41.7
+gadm-4.1-adm0,VAT,88,,,0.5
 gadm-4.1-adm0,VCT,89,,,397.9
 gadm-4.1-adm0,VGB,90,,,169.4
 gadm-4.1-adm0,VIR,91,,,362.2
