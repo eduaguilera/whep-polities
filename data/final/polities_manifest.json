@@ -70,9 +70,7 @@
   "estimate",
   "polygon_vintage_drift"
  ],
- "polygon_gap_polity_codes": [
-  "CAN-1800-1866"
- ],
+ "polygon_gap_polity_codes": [],
  "local_iso3_codes": [
   "AEF",
   "ANG",

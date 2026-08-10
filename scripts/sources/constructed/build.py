@@ -774,6 +774,31 @@ def build_fez_1943_1951() -> ogr.Geometry:
     return _union(*(_gadm_adm1(g) for g in _FEZ_ADM1))
 
 
+def build_bli_1833_1960() -> ogr.Geometry:
+    """British Leeward Islands Colony 1833-1960 = the five modern territories it federated.
+
+    The page carried the recipe in its `polygon_feature_id` as the string
+    `gadm-union-ATG+KNA+MSR+DMA+VGB` and no builder, so the build logged
+    "feature not found" and 24 rows of FAO Leeward Islands data landed on a polity with no
+    territory (issues 3 and 155). The recipe is right; it just had nowhere to run.
+
+        Antigua and Barbuda    435.8 km2
+        Saint Kitts and Nevis  267.1
+        Montserrat             100.6
+        Dominica               754.2
+        British Virgin Islands 169.4
+        union                1,727.1 km2   page declares 1,716 -> 0.6%
+
+    Dominica is included because it WAS a Leeward Island for most of this span: transferred
+    from the Leeward Islands to the Windward Islands group in 1940, seventeen years before the
+    colony was dissolved in 1956 and twenty before this row ends. So the union overstates the
+    1940-1960 tail by Dominica's 754 km2 -- 44% of the total -- which is recorded on the page as
+    an open question rather than smoothed away by dropping an island that belonged here for 107
+    of the row's 127 years.
+    """
+    return _union(*(_gadm_adm0(c) for c in ("ATG", "KNA", "MSR", "DMA", "VGB")))
+
+
 def build_ind_1800_1886() -> ogr.Geometry:
     """British India 1800-1886 = Cliopatria's "British Raj" at 1880, MINUS Ceylon and the
     European enclaves that were never British.
@@ -1347,6 +1372,15 @@ BUILDERS = [
         "which is absent from the registered source. Post-1924 (post-Jubaland) "
         "extent; overstates 1908-1924 by ~94,400 km2 — see "
         "wiki/polities/its-1908-1960.md.",
+    ),
+    (
+        "BLI-1833-1960",
+        "British Leeward Islands Colony",
+        build_bli_1833_1960,
+        "Union of GADM 4.1 adm0 Antigua and Barbuda, Saint Kitts and Nevis, Montserrat, "
+        "Dominica and the British Virgin Islands: 1,727 km2 against 1,716 declared (0.6%). "
+        "The recipe was already written in the page's polygon_feature_id with no builder to "
+        "run it. Issues 3 and 155.",
     ),
     (
         "TRP-1943-1951",

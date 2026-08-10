@@ -65,7 +65,7 @@ BHR-1800-2025,Bahrain,1800,2025,national,BHR,692,Asia,draft,2026-04-12,cshapes-2
 BHS-1800-2025,Bahamas,1800,2025,national,BHS,31,North America,draft,2026-06-09,gadm-4.1-adm0,BHS,,proxy,,,
 BIH-1992-2025,Bosnia and Herzegovina,1992,2025,national,BIH,346,Europe,reviewed,2026-04-12,cshapes-2.0,346,1992,assigned,,F248-1991-1992,
 BKN-1800-1897,Kingdom of Benin,1800,1897,national,,,Africa,draft,2026-04-15,paine-2024,Benin,,assigned,,,SNI-1899-1906
-BLI-1833-1960,British Leeward Islands Colony,1833,1960,colonial,BLI,,North America,draft,2026-06-26,gadm-4.1-adm0,gadm-union-ATG+KNA+MSR+DMA+VGB,,unassigned,1716,,ATG-1800-2025; KNA-1800-2025; MSR-1800-2025; DMA-1800-2025; VGB-1800-2025
+BLI-1833-1960,British Leeward Islands Colony,1833,1960,colonial,BLI,,North America,draft,2026-06-26,constructed,BLI-1833-1960,,proxy,1716,,ATG-1800-2025; KNA-1800-2025; MSR-1800-2025; DMA-1800-2025; VGB-1800-2025
 BLR-1991-2025,Belarus,1991,2025,national,BLR,370,Europe,reviewed,2026-04-12,cshapes-2.0,370,1991,assigned,,F228-1945-1991,
 BLX-1850-1999,Belgium-Luxembourg,1850,1999,aggregate,BLX,,Europe,draft,2026-06-11,reporting-areas,BLX-1850-1999,,assigned,,,
 BLX-1921-1999,Belgium-Luxembourg Economic Union,1921,1999,aggregate,BEL,,Europe,retired,2026-06-25,constructed,BLX-1921-1999,,assigned,33223,,BLX-1850-1999
@@ -105,7 +105,7 @@ CAF-1906-1912,Central African Republic (1906-1912),1906,1912,national,CAF,482,Af
 CAF-1912-1919,Central African Republic (1912-1919),1912,1919,national,CAF,482,Africa,draft,2026-04-13,cshapes-2.0,482,1912,assigned,,CAF-1906-1912,CAF-1919-1960
 CAF-1919-1960,Central African Republic (1919-1960),1919,1960,national,CAF,482,Africa,draft,2026-04-12,cshapes-2.0,482,1919,assigned,,CAF-1912-1919,CAF-1960-2025
 CAF-1960-2025,Central African Republic,1960,2025,national,CAF,482,Africa,draft,2026-04-12,cshapes-2.0,482,1960,assigned,,CAF-1919-1960,
-CAN-1800-1866,Canada (pre-Confederation),1800,1866,national,CAN,,North America,draft,2026-06-29,gadm-composed-union,gadm-ON+QC+NB+NS+PE,1800,proxy,1209852,,CAN-1866-1870
+CAN-1800-1866,Canada (pre-Confederation),1800,1866,national,CAN,,North America,draft,2026-06-29,none,,,unassigned,,,CAN-1866-1870
 CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,national,CAN,20,North America,draft,2026-06-29,gadm-4.1,,2023,unassigned,500000,CAN-1800-1866,CAN-1870-1886
 CAN-1866-1886,"Canada (Confederation era, to 1886)",1866,1886,national,CAN,20,North America,retired,2026-06-29,cshapes-2.0,20,1886,proxy,9553560,CAN-1800-1866,CAN-1866-1870; CAN-1870-1886
 CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),1870,1886,national,CAN,20,North America,draft,2026-06-29,cshapes-2.0,20,1886,proxy,9553560,CAN-1866-1870,CAN-1886-1949
@@ -746,7 +746,7 @@ WZO-1938-1949,Western Germany / Western Occupation Zones,1938,1949,national,,260
 YEM-1990-2025,Yemen (1990-2025),1990,2025,national,YEM,678,Asia,draft,2026-04-13,cshapes-2.0,678,2000,assigned,,,
 ZAF-1910-2025,South Africa (Union and Republic),1910,2025,national,ZAF,560,Africa,reviewed,2026-07-01,cshapes-2.0,560,1910,assigned,1221037,CAP-1800-1910; NAT-1895-1910,
 ZMB-1964-2025,Zambia,1964,2025,national,ZMB,551,Africa,draft,2026-04-12,cshapes-2.0,551,1964,assigned,,BMB-1800-1899; LZI-1800-1890; KZM-1800-1899,
-ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,national,ZNZ,,Africa,draft,2026-06-24,cshapes-2.0,,,unassigned,2650,,TZA-1964-2025
+ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,national,ZNZ,,Africa,draft,2026-06-24,cshapes-2.0,511,1930,assigned,2650,,TZA-1964-2025
 ZUL-1816-1879,Zulu Kingdom,1816,1879,national,,,Africa,draft,2026-04-15,paine-2024,Zulu,,assigned,,,NAT-1843-1895; ZAF-1910-2025
 ZWE-1890-1891,Zimbabwe,1890,1891,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1965,assigned,,NDB-1823-1894,ZWE-1891-1900
 ZWE-1891-1900,Zimbabwe (1891-1900),1891,1900,national,ZWE,552,Africa,draft,2026-04-13,cshapes-2.0,552,1891,assigned,,NDB-1823-1894; ZWE-1890-1891,ZWE-1900-1953
