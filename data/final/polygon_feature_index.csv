@@ -407,7 +407,6 @@ cliopatria,Ottoman Empire,13071,1857,1863,2106456.3
 cliopatria,Russian Empire,13078,1857,1858,21021700.7
 cliopatria,Russian Empire,13081,1859,1859,21057016.6
 cliopatria,Duchy of Modena and Reggio,13083,1859,1859,6396.9
-cliopatria,British Raj,13095,1859,1859,4186193.9
 cliopatria,Duchy of Parma and Piacenza,13100,1859,1859,7250.6
 cliopatria,Austrian Empire,13102,1859,1859,651527.6
 cliopatria,Kingdom of Sardinia,13111,1859,1859,122057.0
@@ -416,40 +415,33 @@ cliopatria,Burma,13113,1859,1884,436996.6
 cliopatria,United States of America,13115,1859,1860,4302943.3
 cliopatria,Sultanate of Oman,13116,1859,1869,79692.9
 cliopatria,Kingdom of the Two Sicilies,13125,1860,1860,56600.9
-cliopatria,British Raj,13128,1860,1860,4186193.9
 cliopatria,Russian Empire,13129,1860,1861,21965469.7
 cliopatria,Papal States,13137,1860,1860,29561.2
 cliopatria,Austrian Empire,13141,1860,1863,649043.5
 cliopatria,Kingdom of Sardinia,13144,1860,1860,163091.6
 cliopatria,Morocco,13154,1861,1869,386676.9
-cliopatria,British Raj,13155,1861,1861,4186193.9
 cliopatria,Kingdom of Sardinia,13161,1861,1861,235357.0
 cliopatria,Federated Republic of Mexico,13162,1861,1861,2005524.2
 cliopatria,United States of America,13163,1861,1861,2499044.3
 cliopatria,Papal States,13169,1861,1869,14119.3
 cliopatria,United States of America,13171,1862,1862,3148929.2
 cliopatria,Federated Republic of Mexico,13181,1862,1862,1994711.0
-cliopatria,British Raj,13190,1862,1862,4186193.9
 cliopatria,Russian Empire,13191,1862,1862,21962360.8
 cliopatria,Federated Republic of Mexico,13196,1863,1863,1978471.4
 cliopatria,United States of America,13198,1863,1863,3319424.8
 cliopatria,Russian Empire,13204,1863,1863,21963417.9
-cliopatria,British Raj,13211,1863,1863,4186193.9
 cliopatria,Netherlands,13222,1864,1865,40810.3
 cliopatria,United States of America,13223,1864,1864,3841971.4
 cliopatria,Federated Republic of Mexico,13227,1864,1864,1773777.3
 cliopatria,Qajar Dynasty,13232,1864,1869,1621598.5
 cliopatria,Austrian Empire,13233,1864,1865,657866.4
 cliopatria,Ottoman Empire,13239,1864,1865,2106502.7
-cliopatria,British Raj,13241,1864,1864,4186193.9
 cliopatria,First Hellenic Republic,13246,1864,1865,46340.0
 cliopatria,Russian Empire,13256,1864,1867,22854917.2
 cliopatria,Federated Republic of Mexico,13259,1865,1865,55.3
 cliopatria,United States of America,13267,1865,1865,4006016.0
 cliopatria,Muhammad Ali dynasty,13271,1865,1865,1834432.7
-cliopatria,British Raj,13280,1865,1865,4186193.9
 cliopatria,Ottoman Empire,13286,1866,1869,2106656.2
-cliopatria,British Raj,13291,1866,1867,4186193.9
 cliopatria,First Hellenic Republic,13298,1866,1884,46123.1
 cliopatria,Netherlands,13315,1866,1869,40787.1
 cliopatria,United States of America,13317,1866,1867,5724207.8
@@ -457,7 +449,6 @@ cliopatria,Austrian Empire,13321,1866,1867,587670.6
 cliopatria,Austria-Hungary,13333,1868,1869,622774.7
 cliopatria,United States of America,13343,1868,1869,7948372.9
 cliopatria,Russian Empire,13351,1868,1869,21486754.7
-cliopatria,British Raj,13357,1868,1869,4188456.7
 cliopatria,Papal States,13374,1870,1870,14119.3
 cliopatria,Sultanate of Oman,13377,1870,1879,119303.8
 cliopatria,Netherlands,13380,1870,1870,40742.4
@@ -466,7 +457,6 @@ cliopatria,Qajar Dynasty,13389,1870,1872,1624311.9
 cliopatria,Austria-Hungary,13391,1870,1870,623046.7
 cliopatria,Ottoman Empire,13398,1870,1870,2106571.7
 cliopatria,Morocco,13400,1870,1884,386205.0
-cliopatria,British Raj,13403,1870,1870,4188456.7
 cliopatria,Russian Empire,13421,1870,1870,21576247.5
 cliopatria,Nepal,13425,1871,1889,149101.6
 cliopatria,Austria-Hungary,13430,1871,1872,622958.9
@@ -474,37 +464,30 @@ cliopatria,Netherlands,13438,1871,1916,40722.7
 cliopatria,United States of America,13439,1871,1872,8074417.6
 cliopatria,Russian Empire,13443,1871,1872,21608107.7
 cliopatria,Ottoman Empire,13445,1871,1872,2106524.3
-cliopatria,British Raj,13448,1871,1872,4188456.7
 cliopatria,Russian Empire,13463,1873,1876,21994174.7
 cliopatria,Ottoman Empire,13465,1873,1876,2412758.4
-cliopatria,British Raj,13466,1873,1876,4188570.8
 cliopatria,Austria-Hungary,13481,1873,1879,622911.5
 cliopatria,Qajar Dynasty,13482,1873,1879,1624408.9
 cliopatria,United States of America,13492,1873,1876,8275121.1
 cliopatria,United States of America,13502,1877,1879,8846945.0
 cliopatria,Russian Empire,13514,1877,1879,22212318.3
 cliopatria,Ottoman Empire,13523,1877,1879,2302753.8
-cliopatria,British Raj,13525,1877,1879,4188399.4
 cliopatria,Austria-Hungary,13534,1880,1899,677497.4
 cliopatria,Qajar Dynasty,13536,1880,1894,1624386.0
 cliopatria,United States of America,13544,1880,1889,8906467.0
 cliopatria,Sultanate of Oman,13549,1880,1894,192266.2
 cliopatria,Russian Empire,13560,1880,1884,22138711.9
-cliopatria,British Raj,13566,1880,1884,4209917.0
 cliopatria,Ottoman Empire,13570,1880,1884,2236405.7
-cliopatria,British Raj,13581,1885,1889,4816534.0
 cliopatria,Ottoman Empire,13584,1885,1894,2181775.8
 cliopatria,Morocco,13585,1885,1889,358262.6
 cliopatria,Russian Empire,13591,1885,1894,22112496.4
 cliopatria,First Hellenic Republic,13605,1885,1907,62413.8
 cliopatria,Ethiopian Empire,13648,1890,1894,333340.1
-cliopatria,British Raj,13652,1890,1894,4823859.0
 cliopatria,Morocco,13656,1890,1904,358421.5
 cliopatria,Nepal,13667,1890,1916,148575.0
 cliopatria,United States of America,13672,1890,1897,9402120.5
 cliopatria,Sultanate of Oman,13701,1895,1897,192076.9
 cliopatria,Qajar Dynasty,13712,1895,1897,1778443.0
-cliopatria,British Raj,13714,1895,1897,4874083.0
 cliopatria,Ottoman Empire,13717,1895,1897,2181130.2
 cliopatria,Ethiopian Empire,13723,1895,1897,682751.3
 cliopatria,Russian Empire,13735,1895,1897,22158706.0
@@ -512,12 +495,10 @@ cliopatria,Sultanate of Oman,13747,1898,1899,118725.1
 cliopatria,United States of America,13749,1898,1899,9434818.2
 cliopatria,Qajar Dynasty,13758,1898,1904,1624386.0
 cliopatria,Ottoman Empire,13761,1898,1899,2176154.2
-cliopatria,British Raj,13764,1898,1899,4874083.0
 cliopatria,Ethiopian Empire,13766,1898,1899,720495.0
 cliopatria,Russian Empire,13774,1898,1899,22162337.2
 cliopatria,Russian Empire,13782,1900,1904,22894019.7
 cliopatria,Ottoman Empire,13787,1900,1904,2169166.1
-cliopatria,British Raj,13790,1900,1904,4874083.0
 cliopatria,Ethiopian Empire,13792,1900,1904,961897.6
 cliopatria,Austria-Hungary,13798,1900,1904,677520.2
 cliopatria,United States of America,13813,1900,1904,9904993.2
@@ -527,33 +508,26 @@ cliopatria,Austria-Hungary,13832,1905,1910,677791.1
 cliopatria,Ethiopian Empire,13840,1905,1907,972273.4
 cliopatria,Ottoman Empire,13849,1905,1910,2169653.1
 cliopatria,Morocco,13851,1905,1911,358049.3
-cliopatria,British Raj,13853,1905,1907,4873911.3
 cliopatria,Russian Empire,13857,1905,1911,22118476.5
 cliopatria,United States of America,13868,1908,1910,9906139.5
 cliopatria,Ethiopian Empire,13884,1908,1931,1128474.6
-cliopatria,British Raj,13885,1908,1910,4873882.7
 cliopatria,First Hellenic Republic,13892,1908,1911,67740.7
 cliopatria,United States of America,13896,1911,1912,9784726.5
 cliopatria,Austria-Hungary,13904,1911,1911,673568.8
 cliopatria,Ottoman Empire,13917,1911,1911,2173687.1
-cliopatria,British Raj,13920,1911,1911,4874366.8
 cliopatria,Russian Empire,13933,1912,1912,22118394.0
 cliopatria,First Hellenic Republic,13937,1912,1912,101186.3
 cliopatria,Ottoman Empire,13939,1912,1912,2017983.7
-cliopatria,British Raj,13944,1912,1912,4874366.8
 cliopatria,Austria-Hungary,13945,1912,1912,673471.9
 cliopatria,Ottoman Empire,13960,1913,1914,1929341.6
-cliopatria,British Raj,13964,1913,1913,4874248.3
 cliopatria,Russian Empire,13967,1913,1913,22160833.0
 cliopatria,First Hellenic Republic,13968,1913,1915,111053.4
 cliopatria,United States of America,13973,1913,1913,9784931.6
 cliopatria,Austria-Hungary,13978,1913,1913,673592.3
 cliopatria,Russian Empire,13987,1914,1914,22309898.3
-cliopatria,British Raj,13988,1914,1914,4935378.3
 cliopatria,Austria-Hungary,13998,1914,1914,673471.9
 cliopatria,United States of America,14003,1914,1914,9787333.0
 cliopatria,Ottoman Empire,14005,1915,1915,1940601.1
-cliopatria,British Raj,14008,1915,1915,4935579.5
 cliopatria,Russian Empire,14019,1915,1915,22462676.5
 cliopatria,United States of America,14027,1915,1915,9784931.6
 cliopatria,Austria-Hungary,14034,1915,1915,592373.6
@@ -564,15 +538,12 @@ cliopatria,United States of America,14059,1916,1917,9869228.1
 cliopatria,First Hellenic Republic,14062,1916,1916,105703.3
 cliopatria,Russian Empire,14066,1916,1916,22263654.2
 cliopatria,Ottoman Empire,14068,1916,1916,1799855.3
-cliopatria,British Raj,14072,1916,1916,4935186.5
 cliopatria,Netherlands,14081,1917,1921,38405.4
 cliopatria,Nepal,14092,1917,1919,148496.6
 cliopatria,Austria-Hungary,14099,1917,1917,854380.0
 cliopatria,Qajar Dynasty,14100,1917,1917,1525289.5
 cliopatria,Ottoman Empire,14102,1917,1917,1270515.3
-cliopatria,British Raj,14106,1917,1917,4938921.5
 cliopatria,First Hellenic Republic,14110,1917,1917,100111.5
-cliopatria,British Raj,14118,1918,1919,4935586.6
 cliopatria,Ottoman Empire,14122,1918,1918,1143862.2
 cliopatria,First Hellenic Republic,14127,1918,1918,99991.6
 cliopatria,Serbia,14128,1918,1918,18307.2
@@ -584,7 +555,6 @@ cliopatria,Ottoman Empire,14170,1919,1919,760097.0
 cliopatria,Qajar Dynasty,14179,1919,1919,1478562.5
 cliopatria,United States of America,14191,1919,1919,9876526.6
 cliopatria,Ottoman Empire,14199,1920,1921,650451.1
-cliopatria,British Raj,14202,1920,1923,4935501.2
 cliopatria,First Hellenic Republic,14210,1920,1921,203773.6
 cliopatria,United States of America,14232,1920,1923,9876321.5
 cliopatria,Nepal,14238,1920,1921,148575.0
@@ -597,39 +567,24 @@ cliopatria,First Hellenic Republic,14281,1922,1923,138663.5
 cliopatria,Netherlands,14290,1924,1929,38449.1
 cliopatria,United States of America,14295,1924,1925,9816449.0
 cliopatria,Nepal,14314,1924,1928,148575.0
-cliopatria,British Raj,14321,1924,1925,4935586.6
 cliopatria,First Hellenic Republic,14334,1924,1935,118364.3
-cliopatria,British Raj,14344,1926,1926,4935529.5
 cliopatria,United States of America,14356,1926,1931,9813082.3
-cliopatria,British Raj,14381,1927,1928,4935417.7
 cliopatria,Nepal,14419,1929,2023,148391.5
-cliopatria,British Raj,14422,1929,1931,4935418.1
 cliopatria,Netherlands,14429,1930,1935,38382.4
 cliopatria,Ethiopian Empire,14447,1932,1935,1128474.6
-cliopatria,British Raj,14452,1932,1935,4935212.9
 cliopatria,United States of America,14461,1932,1935,9813154.4
 cliopatria,Netherlands,14495,1936,1939,37362.4
 cliopatria,United States of America,14497,1936,1940,9781729.4
-cliopatria,British Raj,14525,1936,1937,4935158.4
 cliopatria,First Hellenic Republic,14534,1936,1939,117439.6
-cliopatria,British Raj,14548,1938,1938,4935158.4
-cliopatria,British Raj,14569,1939,1939,4902087.6
 cliopatria,First Hellenic Republic,14607,1940,1940,117439.6
-cliopatria,British Raj,14616,1940,1940,4902169.4
 cliopatria,United States of America,14627,1941,1941,12002132.6
-cliopatria,British Raj,14640,1941,1941,4902249.6
-cliopatria,British Raj,14654,1942,1942,4902169.4
 cliopatria,United States of America,14677,1942,1942,11769926.1
-cliopatria,British Raj,14679,1943,1944,4219142.0
 cliopatria,United States of America,14701,1943,1943,11768665.2
 cliopatria,United States of America,14729,1944,1944,11769718.7
-cliopatria,British Raj,14744,1945,1945,4901834.1
 cliopatria,United States of America,14752,1945,1945,12188516.5
 cliopatria,Netherlands,14758,1945,1949,38382.4
 cliopatria,United States of America,14797,1946,1946,10398925.7
-cliopatria,British Raj,14815,1946,1946,4902856.4
 cliopatria,United States of America,14825,1947,1947,10147953.8
-cliopatria,British Raj,14854,1947,1947,747822.0
 cliopatria,Hyderabad State,14865,1947,1947,211298.1
 cliopatria,United States of America,14881,1948,1949,10044972.6
 cliopatria,Burma,14896,1948,1962,675970.8
@@ -685,7 +640,8 @@ constructed,MASG-1946-1963,24,,,132040.0
 constructed,AOF-1895-1960,25,,,4623690.1
 constructed,CZE-1804-1918,26,,,79348.6
 constructed,ITS-1908-1960,27,,,464743.0
-constructed,PTIND-1816-1961,28,,,3779.3
+constructed,IND-1800-1886,28,,,4135425.6
+constructed,PTIND-1816-1961,29,,,3779.3
 cshapes-2.0,2,0,1886,1959,7939970.8
 cshapes-2.0,2,1,1959,1959,9446211.9
 cshapes-2.0,2,2,1959,2019,9462897.7
