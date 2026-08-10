@@ -51,9 +51,15 @@ What each found first time out:
       edges asserted as B.predecessor = A     430
       asserted BOTH ways                      345
       successor-only  (no reverse predecessor) 194 -> 191 on 2026-08-10
-      predecessor-only (no reverse successor)   85 -> 83  on 2026-08-10
+      predecessor-only (no reverse successor)   85 -> 83 -> 80 on 2026-08-10
 
-  Lowered when occupied Libya's three territories got their polygons (issue 156). TRP, CYR and
+  Lowered twice on 2026-08-10. The second time (issue 188) was three HAND-OVERS where the
+  successor named its predecessor and the predecessor named nothing back -- ANG-1905-1975 ->
+  AGO-1975-2025, BMU-1684-1968 -> BMU-1968-2025, REU-1816-1946 -> REU-1946-2025, each pair
+  exactly adjacent so the predecessor is unambiguously over. That is the cheapest possible
+  asymmetry to fix: the relation is already asserted, just from one side only.
+
+  The first was when occupied Libya's three territories got their polygons (issue 156). TRP, CYR and
   FEZ each declared a predecessor and a successor while LBY-1934-1943, LBY-1943-1949 and
   LBY-1951-2025 named none of them back, so the family was asymmetric on six edges. Adding the
   reverse edges fixed five and this pin came down with them -- which is the point of failing on
@@ -143,7 +149,7 @@ BASELINE_CEILING = {
 # property is that these only go down. Lower them when they do -- the check insists.
 BASELINE_ASYMMETRY = {
     "successor_only": 191,
-    "predecessor_only": 83,
+    "predecessor_only": 80,
 }
 
 BASELINE_LINKS = {
