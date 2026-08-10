@@ -69,13 +69,29 @@ LEGITIMATE_CONTAINERS = frozenset({
     # made a newly built polygon justify itself.
     # A federation over its pre-1901 colonies
     "AUS-1800-1901",
-    # A UN trust territory over the four territories that became its successors.
-    # Added when its polygon was first built (2026-07-29): the union of GADM FSM,
-    # MHL, MNP and PLW necessarily contains those four polities, whose spans overlap
-    # TTPI's 1947-1994. This check flagged it immediately as a NEW container, which
-    # is the behaviour wanted — a newly built polygon that swallows its neighbours
-    # has to be justified rather than assumed.
-    "TTPI-1947-1994",
+    # TTPI-1947-1994 WAS HERE AND IS NOT ANY MORE, which is worth explaining rather than
+    # silently deleting: it did not stop containing anything, the measurement got sharper.
+    #
+    # It was added on 2026-07-29 as a UN trust territory over the four territories that became
+    # its successors — the union of GADM FSM, MHL, MNP and PLW necessarily contains those
+    # polities, whose spans overlap TTPI's 1947-1994.
+    #
+    # On 2026-08-10 build_database gained a per-feature simplification budget, so archipelagos
+    # are no longer thinned at 1.1 km. Re-measured against TTPI's 2,026 km2:
+    #
+    #     PLW-1991-2025   480.5 km2   100.0% inside
+    #     FSM-1991-2025   762.8 km2    99.3% inside
+    #     MHL-1874-2025   300.0 km2    85.6% inside   <-- below the 90% --overlap threshold
+    #
+    # Two contained rows, not three, so TTPI no longer meets this gate's >=3 definition of a
+    # container. Both remaining containments are as real as they ever were.
+    #
+    # MHL's 85.6% is the finding hiding in here, and it is NOT a simplification artefact: about
+    # 43 km2 of the Marshall Islands sits outside the polygon of the trust territory that
+    # administered them, because TTPI is a union of modern GADM outlines and MHL's own GADM
+    # outline reaches atolls the union does not. Coarse simplification had blurred both until
+    # they agreed. Left recorded rather than fixed -- it is a question about TTPI's recipe in
+    # scripts/sources/constructed/build.py, not about the simplification change.
     # French Indochina over Vietnam, Cambodia and Laos -- it held all three as
     # constituent protectorates, so containment is the historical fact.
     #
