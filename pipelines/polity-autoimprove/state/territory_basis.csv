@@ -165,7 +165,7 @@ CRI-1800-2025,Costa Rica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_cons
 CUB-1800-2025,Cuba,1800,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,False,single 1902 polygon held across a 225y span (1800-2025); borders may have changed,1153
 CXR-1946-1958,Christmas Island (under Singapore administration),1946,1958,gadm-4.1-adm0,2023.0,assigned,True,back_projected,True,False,polygon vintage 2023 is AFTER the period ends (1958) — later/modern border applied back,6
 CYP-1879-2025,Cyprus,1879,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 146y span (1879-2025); borders may have changed,1130
-CYR-1949-1951,Emirate of Cyrenaica,1949,1951,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),14
+CYR-1949-1951,Emirate of Cyrenaica,1949,1951,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,14
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,constructed,1860.0,assigned,True,assumed_constant,True,False,single 1860 polygon held across a 114y span (1804-1918); borders may have changed,37
 CZE-1947-1992,Czechoslovakia (1947-1992) [superseded],1947,1992,cshapes-2.0,1945.0,assigned,True,back_projected,True,False,polygon vintage 1945 is BEFORE the period starts (1947),0
 CZE-1993-2025,Czechia,1993,2025,cshapes-2.0,1993.0,assigned,False,assumed_constant,True,False,single 1993 polygon held across a 32y span (1993-2025); borders may have changed,0
@@ -255,6 +255,7 @@ F77-1949-1990,East Germany,1949,1990,cshapes-2.0,1949.0,assigned,True,assumed_co
 F78-1949-1990,West Germany,1949,1990,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,True,single 1949 polygon held across a 41y span (1949-1990); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),212
 FCC-1862-1887,French Cochinchina,1862,1887,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),20
 FCM-1920-1960,French Cameroon (1920-1960),1920,1960,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,True,single 1940 polygon held across a 40y span (1920-1960); borders may have changed,575
+FEZ-1943-1951,French Military Administration of Fezzan,1943,1951,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 FID-1887-1954,French Indochina,1887,1954,constructed,1920.0,assigned,True,assumed_constant,True,True,single 1920 polygon held across a 67y span (1887-1954); borders may have changed,374
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,cshapes-2.0,1917.0,assigned,True,assumed_constant,True,False,single 1917 polygon held across a 108y span (1809-1917); borders may have changed,411
 FIN-1917-1940,Finland (1917-1940),1917,1940,cshapes-2.0,1917.0,assigned,True,measured,False,False,vintage 1917 faithful to period 1917-1940,631
@@ -694,7 +695,7 @@ TLS-1800-2025,Timor-Leste,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_con
 TNGU-1920-1949,Territory of New Guinea,1920,1949,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,True,single 1930 polygon held across a 29y span (1920-1949); borders may have changed,6
 TON-1800-2025,Tonga,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,53
 TPAP-1906-1949,Territory of Papua,1906,1949,cshapes-2.0,1910.0,assigned,True,assumed_constant,True,True,single 1910 polygon held across a 43y span (1906-1949); borders may have changed,60
-TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),39
+TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,39
 TRS-1947-1954,Free Territory of Trieste,1947,1954,constructed,1947.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),78
 TTO-1800-2025,Trinidad and Tobago,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,404
 TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,40

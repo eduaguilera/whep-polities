@@ -53,6 +53,13 @@ BASELINE = frozenset({
     ("385", "NOR-1800-2025", "NNI-1904-1913"),
     ("411", "STP-1800-2025", "GNQ-1886-1968"),
     ("452", "GHA-1898-1956", "GCT-1919-1956"),
+    # Fezzan, added 2026-08-10 (issue 156). cow 620 is Libya; the three occupation
+    # territories share it for the same reason they share iso3 LBY -- COW has no code for a
+    # military administration, and inventing one would assert an entity COW does not model.
+    ("620", "FEZ-1943-1951", "CYR-1949-1951"),
+    ("620", "FEZ-1943-1951", "LBY-1949-1951"),
+    ("620", "FEZ-1943-1951", "TRP-1943-1951"),
+    ("620", "LBY-1943-1949", "FEZ-1943-1951"),
     ("620", "CYR-1949-1951", "LBY-1949-1951"),
     ("620", "LBY-1943-1949", "TRP-1943-1951"),
     ("620", "TRP-1943-1951", "CYR-1949-1951"),
