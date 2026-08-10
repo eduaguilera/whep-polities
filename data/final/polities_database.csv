@@ -100,7 +100,7 @@ BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,colonial,MYS,824,Asi
 BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,,Africa,draft,2026-06-26,constructed,BTL-1920-1957,1957,assigned,26630,GTO-1919-1922,GHA-1957-2025
 BTN-1800-2025,Bhutan,1800,2025,national,BTN,,Asia,draft,2026-04-12,cshapes-2.0,760,1886,assigned,,,
 BWA-1966-2025,Botswana,1966,2025,national,BWA,571,Africa,draft,2026-04-13,cshapes-2.0,571,1966,assigned,,,
-BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,national,BWI,,North America,draft,2026-06-26,gadm-4.1-adm0,gadm-union-JAM+TTO+BRB+BHS+ATG+GRD+VCT+DMA+LCA+KNA+MSR,,unassigned,34766,,JAM-1800-2025; TTO-1800-2025; BRB-1800-2025; BHS-1800-2025; ATG-1800-2025; GRD-1800-2025; VCT-1833-2025; DMA-1800-2025; LCA-1838-2025; KNA-1800-2025; MSR-1800-2025
+BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,national,BWI,,North America,draft,2026-06-26,constructed,BWI-1833-1962,,proxy,34766,,JAM-1800-2025; TTO-1800-2025; BRB-1800-2025; BHS-1800-2025; ATG-1800-2025; GRD-1800-2025; VCT-1833-2025; DMA-1800-2025; LCA-1838-2025; KNA-1800-2025; MSR-1800-2025
 CAF-1906-1912,Central African Republic (1906-1912),1906,1912,national,CAF,482,Africa,draft,2026-04-13,cshapes-2.0,482,1906,assigned,,,CAF-1912-1919
 CAF-1912-1919,Central African Republic (1912-1919),1912,1919,national,CAF,482,Africa,draft,2026-04-13,cshapes-2.0,482,1912,assigned,,CAF-1906-1912,CAF-1919-1960
 CAF-1919-1960,Central African Republic (1919-1960),1919,1960,national,CAF,482,Africa,draft,2026-04-12,cshapes-2.0,482,1919,assigned,,CAF-1912-1919,CAF-1960-2025
@@ -465,7 +465,7 @@ MMR-1800-1826,Konbaung Burma (to 1826),1800,1826,national,MMR,,Asia,draft,2026-0
 MMR-1826-1852,Burma (1826-1852),1826,1852,national,MMR,,Asia,draft,2026-04-13,cliopatria,Burma,1842,assigned,,,MMR-1852-1885
 MMR-1852-1885,Upper Burma (1852-1885),1852,1885,national,MMR,,Asia,draft,2026-04-13,cliopatria,Burma,1859,assigned,,MMR-1826-1852,MMR-1885-2025
 MMR-1885-2025,Myanmar,1885,2025,national,MMR,,Asia,draft,2026-04-12,cliopatria,Burma,1967,polygon_vintage_drift,,MMR-1852-1885,
-MMR-LWR-1852-1885,British Lower Burma (1852-1885),1852,1885,colonial,MMR,,Asia,draft,2026-06-30,gadm-4.1,MMR.2_1+MMR.13_1+MMR.15_1,,unassigned,116000,MMR-1826-1852,MMR-1885-2025
+MMR-LWR-1852-1885,British Lower Burma (1852-1885),1852,1885,colonial,MMR,,Asia,draft,2026-06-30,constructed,MMR-LWR-1852-1885,,proxy,116000,MMR-1826-1852,MMR-1885-2025
 MNE-1878-1913,Montenegro (to 1913),1878,1913,national,MNE,341,Europe,draft,2026-04-12,cshapes-europe,341,1886,assigned,,,MNE-1913-1915
 MNE-1913-1915,Montenegro (1913-1915),1913,1915,national,MNE,341,Europe,retired,2026-04-12,cshapes-2.0,341,1886,assigned,,MNE-1878-1913,MNE-1913-1918
 MNE-1913-1918,Montenegro (1913-1918),1913,1918,national,MNE,341,Europe,draft,2026-04-15,cshapes-2.0,341,1915,assigned,,MNE-1878-1913,F248-1918-1919

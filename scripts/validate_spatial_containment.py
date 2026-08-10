@@ -155,6 +155,16 @@ LEGITIMATE_CONTAINERS = frozenset({
     # against the colony while the member islands also report separately, so a spatial use must
     # pick one level. Same shape as FID-1887-1954 over Indochina.
     "BLI-1833-1960",
+    # The British West Indies colonial aggregate over its members, added 2026-08-10 when its
+    # polygon was built (issues 3 and 155). It holds 13 rows because the aggregate is composed
+    # from their GADM outlines AND because BLI-1833-1960 -- itself an aggregate of five Leeward
+    # islands -- sits inside it, so this is an aggregate containing an aggregate containing
+    # members. Containment is by construction at both levels.
+    #
+    # The double-count risk is real and layered: FAO 1952 reports "British West Indies", "Leeward
+    # Islands", "Windward Islands" AND individual islands, so three nested levels of the same
+    # ground are published. Any spatial or area-weighted use must pick one.
+    "BWI-1833-1962",
     # A joint reporting unit over the two states it combines. Added when its polygon
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.
@@ -208,22 +218,32 @@ TRACKED_DEFECTS = frozenset()
 # of America" and is now bound to "Qajar Dynasty" at 1800, so the two Iran periods
 # overlap as they should. Kept as an empty frozenset rather than deleted so a
 # regression names the pair.
-KNOWN_DISCONTINUOUS = frozenset({
-    # NOT defects, and not discontinuities either -- this check has mis-read its own input.
-    #
-    # It groups families by CODE PREFIX and sorts by start_year, so IDN-BLB, IDN-JVM and IDN-OTH
-    # all become the "IDN family" and, because all three start in 1949, an arbitrary sort order
-    # turns them into "consecutive periods". They are not consecutive; they are a SIMULTANEOUS
-    # PARTITION of Indonesia for 1949-1951 -- Java, Bali/Lombok, and everything else -- and 0%
-    # overlap is the correct and required outcome for a partition, the exact opposite of the
-    # mis-binding this check exists to catch.
-    #
-    # Tracked rather than fixing the grouping, because the prefix heuristic is right for every
-    # ordinary family and a partition is rare. If a second one appears, teach the check about
-    # polity_type instead of adding two more lines here.
-    "IDN-BLB-1949-1951 / IDN-JVM-1949-1951",
-    "IDN-JVM-1949-1951 / IDN-OTH-1949-1951",
-})
+# EMPTY, AND IT WAS THE GROUPING THAT WAS WRONG RATHER THAN THE DATA.
+#
+# This held two pairs -- IDN-BLB/IDN-JVM and IDN-JVM/IDN-OTH -- with a note explaining that they
+# are a SIMULTANEOUS PARTITION of Indonesia rather than consecutive periods, so 0% overlap is the
+# required outcome and not the mis-binding this check looks for. That note ended: "If a second one
+# appears, teach the check about polity_type instead of adding two more lines here."
+#
+# A second appeared on 2026-08-10 -- MMR-1852-1885 against MMR-LWR-1852-1885, where Lower Burma is
+# built as the COMPLEMENT of Upper Burma, so 0% overlap is again correct by construction. Taking
+# the note's advice, but the property that separates them is not polity_type: it is that the family
+# prefix was being read as `polity_code.split("-")[0]`, which stops at the FIRST hyphen. A polity
+# code is `PREFIX-start-end` and its prefix can itself contain hyphens, so:
+#
+#     MMR-LWR-1852-1885  ->  "MMR"      grouped with Upper Burma, a different territory
+#     IDN-BLB-1949-1951  ->  "IDN"      grouped with Java and the other islands
+#     AZE-SSR-1920-1991  ->  "AZE"
+#
+# Reading it as `rsplit("-", 2)[0]` gives MMR-LWR, IDN-BLB, IDN-JVM, IDN-OTH and AZE-SSR their own
+# families, which is what they are. All 754 codes match `PREFIX-YYYY-YYYY`, so the split is safe,
+# and exactly 5 rows change family -- these five.
+#
+# WHAT THIS COSTS: AZE-1991-2025 and AZE-SSR-1920-1991 are no longer compared, and they arguably
+# ARE the same territory in successive periods. Measured before changing it, they overlap 100% of
+# the smaller, so nothing is being hidden today -- but a future mis-binding on that pair would go
+# unreported. Recorded rather than traded away silently.
+KNOWN_DISCONTINUOUS = frozenset()
 
 ap = argparse.ArgumentParser()
 # KNOWN LIMITATION, measured 2026-07-29. The default of 3 was chosen to keep the
@@ -325,7 +345,8 @@ for code in sorted((LEGITIMATE_CONTAINERS | TRACKED_DEFECTS) - observed):
 # polygon_feature_id says so literally) and sits in North America, but the USA in
 # 1815 measured ~1,586,287 km2 against Iran's ~1,621,564 — a ratio of 0.98, so
 # every area-based check passes it. Magnitude cannot detect position.
-eq["prefix"] = eq.polity_code.str.split("-").str[0]
+# rsplit, not split: a prefix can contain hyphens (MMR-LWR, IDN-BLB). See KNOWN_DISCONTINUOUS.
+eq["prefix"] = eq.polity_code.str.rsplit("-", n=2).str[0]
 discontinuous = []
 for _prefix, fam in eq.groupby("prefix"):
     if len(fam) < 2:
