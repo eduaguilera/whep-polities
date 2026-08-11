@@ -7,7 +7,7 @@ AFG-1893-1919,Afghanistan (1893-1919),1893,1919,national,AFG,700,Asia,draft,2026
 AFG-1919-2025,Afghanistan,1919,2025,national,AFG,700,Asia,draft,2026-04-12,cshapes-2.0,700,1919,assigned,,AFG-1893-1919,
 AGO-1816-2025,Angola,1816,2025,national,AGO,540,Africa,retired,2026-04-12,cshapes-2.0,540,1905,assigned,,ANG-1891-1905; KSJ-1800-1911,
 AGO-1975-2025,"Angola (independent, 1975–2025)",1975,2025,national,AGO,540,Africa,draft,2026-07-01,cshapes-2.0,540,1975,assigned,1246700,ANG-1905-1975,
-ALB-1913-2025,Albania (1913-2025),1913,2025,national,ALB,400,Europe,draft,2026-04-12,cshapes-2.0,339,1913,assigned,,,
+ALB-1913-2025,Albania (1913-2025),1913,2025,national,ALB,339,Europe,draft,2026-04-12,cshapes-2.0,339,1913,assigned,,,
 ALK-1867-1959,Territory of Alaska,1867,1959,subnational,USA,,North America,draft,2026-06-26,gadm-4.1-adm1,USA.2_1,2020,assigned,1518800,F228-1856-1905,USA-1959-2025
 AMI-1946-1953,Amami Islands (US-administered),1946,1953,colonial,,,Asia,draft,2026-06-25,,,,unassigned,,RYU-1937-1945,JPN-1952-2025
 AND-1800-2025,Andorra,1800,2025,national,AND,,Europe,reviewed,2026-04-12,cshapes-europe,232,1816,assigned,,,
@@ -159,7 +159,7 @@ COL-1830-1903,Colombia (to 1903),1830,1903,national,COL,,South America,draft,202
 COL-1903-1922,Colombia (1903-1922),1903,1922,national,COL,100,South America,reviewed,2026-04-12,cshapes-2.0,100,1903,assigned,,COL-1830-1903,COL-1922-2025
 COL-1922-2025,Colombia,1922,2025,national,COL,100,South America,reviewed,2026-04-12,cshapes-2.0,100,1922,assigned,,COL-1903-1922,
 COM-1946-1975,Comoros (1946-1975),1946,1975,national,COM,581,Africa,draft,2026-04-12,cshapes-2.0,581,1946,assigned,,,COM-1975-2025
-COM-1975-2025,Comoros,1975,2025,national,COM,403,Africa,draft,2026-04-12,cshapes-2.0,581,1946,assigned,,COM-1946-1975,
+COM-1975-2025,Comoros,1975,2025,national,COM,581,Africa,draft,2026-04-12,cshapes-2.0,581,1946,assigned,,COM-1946-1975,
 CPV-1886-1975,Cape Verde (Portuguese colony),1886,1975,colonial,CPV,402,Africa,draft,2026-06-26,cshapes-2.0,402,1886,assigned,4033,,CPV-1975-2025
 CPV-1975-2025,Cabo Verde,1975,2025,national,CPV,402,Africa,draft,2026-06-26,cshapes-2.0,402,1886,assigned,4033,CPV-1886-1975,
 CRI-1800-2025,Costa Rica,1800,2025,national,CRI,94,North America,draft,2026-04-12,cshapes-2.0,94,1886,assigned,,,
@@ -614,7 +614,7 @@ RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,national,,,Asia,draft
 SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,,Europe,draft,2026-06-24,gadm-4.1-adm1,DEU.12_1,,assigned,2571,SAC-1935-1947,F78-1949-1990
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,colonial,SAB,,Europe,draft,2026-06-25,,,,unassigned,,DEU-1919-1920,SAC-1935-1947
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,Europe,draft,2026-06-26,none,,,unassigned,1912,SAB-1920-1935,SAA-1947-1957
-SAR-1800-1860,Sardinia,1800,1860,national,SAR,338,Europe,draft,2026-04-12,cliopatria,Kingdom of Sardinia,1815,assigned,,,ITA-1861-1919
+SAR-1800-1860,Sardinia,1800,1860,national,SAR,325,Europe,draft,2026-04-12,cliopatria,Kingdom of Sardinia,1815,assigned,,,ITA-1861-1919
 SAU-1924-2025,Saudi Arabia,1924,2025,national,SAU,670,Asia,draft,2026-04-12,cshapes-2.0,670,1935,assigned,,OTT-1908-1912,
 SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,national,,265,Europe,draft,2026-06-26,cshapes-2.0,265,1949,assigned,109272,DEU-1938-1945,F77-1949-1990
 SCG-1992-2006,Serbia and Montenegro,1992,2006,national,SCG,,Europe,draft,2026-04-12,cshapes-2.0,345,1992,assigned,,F248-1991-1992,SRB-2006-2008; MNE-2006-2025
@@ -653,7 +653,7 @@ SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,
 SRB-2008-2025,Serbia,2008,2025,national,SRB,345,Europe,reviewed,2026-04-12,cshapes-2.0,340,2008,assigned,77251,SRB-2006-2008,
 SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,national,ZWE,552,Africa,draft,2026-06-24,cshapes-2.0,552,1953,assigned,390610,ZWE-1900-1953,ZWE-1964-1980
 SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,cshapes-2.0,626,2011,assigned,,SUD-1956-2011,
-STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,411,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
+STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,403,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
 SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,,Africa,draft,2026-04-16,cshapes-2.0,625,1914,assigned,,SUD-1899-1934,SUD-1956-2011
 SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SDN,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
