@@ -71,6 +71,15 @@ polities = list(csv.DictReader(open(POLITIES, encoding="utf-8")))
 live = {r["polity_code"] for r in polities if r["wiki_status"] not in DEAD_STATUS}
 dead = {r["polity_code"] for r in polities if r["wiki_status"] in DEAD_STATUS}
 
+# polity_code -> (start_year, end_year), for the before-target check below. Dead rows included:
+# an alias pointing at a dead polity is already reported above, and its years are still wrong.
+spans = {}
+for _r in polities:
+    try:
+        spans[_r["polity_code"]] = (int(_r["start_year"]), int(_r["end_year"]))
+    except (KeyError, TypeError, ValueError):
+        continue
+
 rows = list(csv.DictReader(open(ALIASES, encoding="utf-8")))
 problems: list[str] = []
 
@@ -126,6 +135,54 @@ for i, r in enumerate(rows, start=2):  # +2: header is line 1
             )
     if YEAR_RE.match(y0) and YEAR_RE.match(y1) and int(y0) > int(y1):
         problems.append(f"{where}: year_start {y0} is after year_end {y1}")
+
+# --- aliases beginning before their target polity existed ------------------------------
+#
+# An alias year_start earlier than its target's start_year routes those years to a polity that
+# did not yet exist. Four existed on 2026-08-11 (issue 54) and THREE WERE COPIED RANGES rather
+# than decisions, which their own `basis` text showed once read:
+#
+#   Gold Coast       1821 -> 1898   basis recorded the fao1952 data years as 1937-1951, and
+#                                   GHA-1821-1888 and GHA-1888-1898 both exist, so any data
+#                                   before 1898 was going to the wrong polity while the right
+#                                   ones sat unused
+#   Portuguese Timor 1702 -> 1800   1702 predates this database's own start
+#   French Morocco   1904 -> 1911   the 1904 start was inherited from MOR-1904-1956, the
+#                                   duplicate retired on 2026-06-24, and never re-checked
+#                                   against the replacement
+#
+# The fourth IS a decision, and its basis says so: "Province of Trieste ~700 km2 footprint = FTT;
+# cannot attribute to all-Italy ~300000 km2; closest territorial match". For 1937-1946 Trieste was
+# Italian and no Free Territory existed, so the alternatives were the whole of Italy -- 430x the
+# area -- or dropping the label. It is pinned rather than fixed, which is what makes it a decision
+# on the record instead of an unexamined range.
+#
+# Bidirectional: a fifth fails, and this one fails if it is ever resolved.
+BASELINE_BEFORE_TARGET = frozenset({
+    ("Trieste", "fao1952", "TRS-1947-1954"),
+})
+
+before_target = set()
+for r in rows:
+    target = (r.get("target_polity_code") or "").strip()
+    span = spans.get(target)
+    y0 = (r.get("year_start") or "").strip()
+    if not span or not YEAR_RE.match(y0):
+        continue
+    if int(y0) < span[0]:
+        before_target.add(((r.get("original_name") or "").strip(),
+                           (r.get("source") or "").strip(), target))
+for key in sorted(before_target - BASELINE_BEFORE_TARGET):
+    problems.append(
+        f"alias {key[0]!r} [{key[1] or 'no source'}] begins before {key[2]} existed — those "
+        f"years route to a polity that did not yet exist. Clip year_start to the target's "
+        f"start_year, or route the earlier years to a polity that does cover them (issue 54)"
+    )
+for key in sorted(BASELINE_BEFORE_TARGET - before_target):
+    problems.append(
+        f"alias {key[0]!r} [{key[1] or 'no source'}] -> {key[2]} is baselined as beginning "
+        f"before its target existed but no longer does — remove it from BASELINE_BEFORE_TARGET"
+    )
 
 if problems:
     print(f"FAIL: {len(problems)} alias problem(s)\n")
