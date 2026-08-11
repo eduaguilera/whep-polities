@@ -466,6 +466,49 @@ def write_gpkg(gdf, root):
     gdf.to_file(dest, driver="GPKG", layer="polities")
 
 
+def mutate_map_year_end_past_coverage(root, gpd, make_valid, affinity):
+    """Raise a FAOSTAT map row's inclusive year_end past its polity's exclusive coverage.
+
+    This is the convention collision of issue 131 as it appears IN DATA: end_year is
+    exclusive here, the map's year_end is inclusive, so a consistent row has
+    `end_year == year_end + 1`. A row at 0 claims a reporting year the polity does not
+    cover, and a consumer joining on year containment either drops it or resolves it to
+    an entity that had already dissolved.
+
+    The row is chosen for having a CLOSED period -- an open-ended polity sits at the 2025
+    ceiling, where year_end == end_year is the ceiling showing through rather than an
+    overshoot, and 13 registry rows sat there harmlessly before match.R was fixed.
+    """
+    import csv
+
+    db = os.path.join(root, "data/final/polities_database.csv")
+    with open(db, encoding="utf-8") as fh:
+        spans = {r["polity_code"]: r for r in csv.DictReader(fh)}
+    path = os.path.join(root, "data/final/faostat_area_polity_map.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = None
+    for r in rows:
+        p = spans.get(r.get("polity_code", ""))
+        if not p:
+            continue
+        try:
+            end_year, year_end = int(p["end_year"]), int(r["year_end"])
+        except (TypeError, ValueError, KeyError):
+            continue
+        if end_year < 2025 and end_year - year_end == 1:      # currently consistent
+            r["year_end"] = str(end_year)                      # now one past coverage
+            hit = (r["area_code"], r["polity_code"])
+            break
+    assert hit, "no consistent closed-period row to push over"
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return f"pushed area {hit[0]} -> {hit[1]}'s year_end one past the polity's coverage"
+
+
 def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
     """Rewrite a declared area to exactly what its own polygon measures, which is the
     tautology check A2 counts.
@@ -900,6 +943,12 @@ CASES = (
         "silently becomes the route",
     ),
     (
+        "validate_map_area_year.py",
+        mutate_map_year_end_past_coverage,
+        "year_end past coverage",
+        "a map row claiming a reporting year its polity does not cover, which the exclusive/inclusive collision makes easy to write",
+    ),
+    (
         "validate_polygons.py",
         mutate_area_read_off_its_own_polygon,
         "self-referential",
@@ -1039,6 +1088,13 @@ WRITABLE = {
     # NOTE FOR THE NEXT AUTHOR: this is the ONLY gate that both stages the GeoPackage and mutates
     # it, and that combination is a trap -- see write_gpkg(). Use that helper, not to_file().
     "validate_polygons.py": ("polities_database.gpkg",),
+    # Both files as real copies: the case rewrites the map, and the gate reads polity spans from
+    # the CSV to know what "past coverage" means. With the CSV symlinked the read still works, but
+    # copying keeps the case honest about what it touches.
+    "validate_map_area_year.py": (
+        "faostat_area_polity_map.csv",
+        "polities_database.csv",
+    ),
     # Needs the GeoPackage (to know which rows are live AND polygonal) and both site files,
     # writable because the case mutates the geojson. The master CSV must be a real copy too,
     # not stage()'s symlink: signal A compares it against site/polities.csv byte for byte, and
