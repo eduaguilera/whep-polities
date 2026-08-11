@@ -412,7 +412,15 @@ match_area <- function(row) {
       area_name = row$area_name,
       iso3 = row$iso3,
       year_start = pmax(start_year, 1850L),
-      year_end = pmin(end_year, 2025L),
+      # end_year is EXCLUSIVE in the polities database and year_end here is INCLUSIVE, so the
+      # -1 is the convention conversion (issue 131). Without it this route wrote the polity
+      # code's end year verbatim and claimed one year past the polity's coverage: 16 of the 18
+      # registry rows sat at `end_year - year_end == 0` while 243 of 249 iso-equal rows sat at
+      # 1. Three were material -- ESH-1958-1975, SHN-1834-1967, CXR-1946-1958 -- and the ESH
+      # one was ALSO the single baselined (area, year) ambiguity in validate_map_area_year,
+      # because area 205's two rows both claimed 1975. See `+ 1L` at the segment splitter
+      # below, which already had this right.
+      year_end = pmin(end_year - 1L, 2025L),
       target_polity_code = polity_code,
       common_name = polity_name,
       match_route = "registry",

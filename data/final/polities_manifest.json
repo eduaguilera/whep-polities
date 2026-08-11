@@ -147,7 +147,7 @@
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
-  "sha256": "acb78d8be086ef3ddfbf9d8a1e69d664582e8ac8b7cef76eee4f1bdc4322ea11",
+  "sha256": "eb19bf6da910b1f8081f5e6279068f1d9bd3fb89f319fb5858a1f19364c83dbb",
   "mappings": 281,
   "areas": 228
  },
