@@ -1,210 +1,212 @@
-cow_code,cow_name,cow_start,cow_end,iso3
-2,United States,1816,2025,USA
-20,Canada,1920,2025,CAN
-31,Bahamas,1973,2025,BHS
-40,Cuba,1902,2025,CUB
-41,Haiti,1859,2025,HTI
-42,Dominican Republic,1894,2025,DOM
-51,Jamaica,1962,2025,JAM
-52,Trinidad and Tobago,1962,2025,TTO
-53,Barbados,1966,2025,BRB
-55,Grenada,1974,2025,GRD
-56,Dominica,1978,2025,DMA
-57,St. Lucia,1979,2025,LCA
-58,St. Vincent,1979,2025,VCT
-60,St. Kitts and Nevis,1983,2025,KNA
-70,Mexico,1831,2025,MEX
-80,Belize,1981,2025,BLZ
-90,Guatemala,1868,2025,GTM
-91,Honduras,1899,2025,HND
-92,El Salvador,1875,2025,SLV
-93,Nicaragua,1900,2025,NIC
-94,Costa Rica,1920,2025,CRI
-95,Panama,1903,2025,PAN
-100,Colombia,1831,2025,COL
-101,Venezuela,1841,2025,VEN
-110,Guyana,1966,2025,GUY
-115,Suriname,1975,2025,SUR
-130,Ecuador,1854,2025,ECU
-135,Peru,1839,2025,PER
-140,Brazil,1826,2025,BRA
-145,Bolivia,1848,2025,BOL
-150,Paraguay,1846,2025,PRY
-155,Chile,1839,2025,CHL
-160,Argentina,1841,2025,ARG
-165,Uruguay,1882,2025,URY
-200,United Kingdom,1816,2025,GBR
-205,Ireland,1922,2025,IRL
-210,Netherlands,1816,2025,NLD
-211,Belgium,1830,2025,BEL
-212,Luxembourg,1867,2025,LUX
-220,France,1816,2025,FRA
-225,Switzerland,1816,2025,CHE
-230,Spain,1816,2025,ESP
-235,Portugal,1816,2025,PRT
-240,Hanover,1838,1866,NA
-245,Bavaria,1816,1870,NA
-255,Germany,1816,2025,DEU
-260,German Federal Republic,1949,1990,DEU
-265,German Democratic Rep.,1954,1990,NA
-267,Baden,1816,1870,NA
-269,Saxony,1816,1870,NA
-271,Württemberg,1816,1870,NA
-273,Hesse Electoral,1816,1866,NA
-275,Hesse Grand Ducal,1816,1867,NA
-280,Mecklenburg-Schwerin,1843,1867,NA
-290,Poland,1918,2025,POL
-300,Austria-Hungary,1816,1918,NA
-305,Austria,1918,2025,AUT
-310,Hungary,1918,2025,HUN
-315,Czechoslovakia,1918,1992,NA
-316,Czech Republic,1993,2025,CZE
-317,Slovakia,1993,2025,SVK
-325,Italy,1861,2025,ITA
-327,Papal States,1816,1860,NA
-329,Two Sicilies,1816,1861,NA
-332,Modena,1816,1860,NA
-335,Parma,1816,1860,NA
-337,Tuscany,1816,1860,NA
-338,Sardinia,1816,1861,NA
-339,San Marino,1816,2025,SMR
-341,Montenegro,1878,2025,MNE
-343,Macedonia,1991,2025,MKD
-344,Croatia,1992,2025,HRV
-345,Yugoslavia/Serbia,1816,2025,SRB
-346,Bosnia-Herzegovina,1992,2025,BIH
-347,Kosovo,2008,2025,XKX
-349,Slovenia,1992,2025,SVN
-350,Greece,1828,2025,GRC
-352,Cyprus,1960,2025,CYP
-355,Bulgaria,1878,2025,BGR
-359,Moldova,1991,2025,MDA
-360,Romania,1878,2025,ROU
-365,Russia/USSR,1816,2025,RUS
-366,Estonia,1991,2025,EST
-367,Latvia,1991,2025,LVA
-368,Lithuania,1991,2025,LTU
-369,Ukraine,1991,2025,UKR
-370,Belarus,1991,2025,BLR
-371,Armenia,1991,2025,ARM
-372,Georgia,1991,2025,GEO
-373,Azerbaijan,1991,2025,AZE
-375,Finland,1917,2025,FIN
-380,Sweden,1816,2025,SWE
-385,Norway,1905,2025,NOR
-390,Denmark,1816,2025,DNK
-395,Iceland,1944,2025,ISL
-400,Albania,1914,2025,ALB
-402,Turkey/Ottoman Empire,1816,2025,TUR
-403,Comoros,1975,2025,COM
-404,Cape Verde,1975,2025,CPV
-411,São Tomé and Príncipe,1975,2025,STP
-420,Gambia,1965,2025,GMB
-432,Mali,1960,2025,MLI
-433,Senegal,1960,2025,SEN
-434,Benin,1960,2025,BEN
-435,Mauritania,1960,2025,MRT
-436,Niger,1960,2025,NER
-437,Côte d'Ivoire,1960,2025,CIV
-438,Guinea,1958,2025,GIN
-439,Burkina Faso,1960,2025,BFA
-450,Liberia,1847,2025,LBR
-451,Sierra Leone,1961,2025,SLE
-452,Ghana,1957,2025,GHA
-461,Togo,1960,2025,TGO
-471,Cameroon,1960,2025,CMR
-475,Nigeria,1960,2025,NGA
-481,Gabon,1960,2025,GAB
-482,Central African Republic,1960,2025,CAF
-483,Chad,1960,2025,TCD
-484,Congo,1960,2025,COG
-490,DR Congo,1960,2025,COD
-500,Uganda,1962,2025,UGA
-501,Kenya,1963,2025,KEN
-510,Tanzania,1961,2025,TZA
-516,Burundi,1962,2025,BDI
-517,Rwanda,1962,2025,RWA
-520,Somalia,1960,2025,SOM
-522,Djibouti,1977,2025,DJI
-530,Ethiopia,1898,2025,ETH
-531,Eritrea,1993,2025,ERI
-540,Angola,1975,2025,AGO
-541,Mozambique,1975,2025,MOZ
-551,Zambia,1964,2025,ZMB
-552,Zimbabwe,1980,2025,ZWE
-553,Malawi,1964,2025,MWI
-560,South Africa,1910,2025,ZAF
-565,Namibia,1990,2025,NAM
-570,Lesotho,1966,2025,LSO
-571,Botswana,1966,2025,BWA
-572,Eswatini,1968,2025,SWZ
-580,Madagascar,1960,2025,MDG
-590,Mauritius,1968,2025,MUS
-591,Seychelles,1976,2025,SYC
-600,Morocco,1956,2025,MAR
-615,Algeria,1962,2025,DZA
-616,Tunisia,1956,2025,TUN
-620,Libya,1951,2025,LBY
-625,Sudan,1956,2025,SDN
-626,South Sudan,2011,2025,SSD
-630,Iran,1816,2025,IRN
-640,Turkey,1816,2025,TUR
-645,Iraq,1932,2025,IRQ
-651,Egypt,1855,2025,EGY
-652,Syria,1946,2025,SYR
-660,Lebanon,1946,2025,LBN
-663,Jordan,1946,2025,JOR
-666,Israel,1948,2025,ISR
-670,Saudi Arabia,1927,2025,SAU
-678,Yemen,1990,2025,YEM
-679,North Yemen,1918,1990,NA
-680,South Yemen,1967,1990,NA
-690,Kuwait,1961,2025,KWT
-692,Bahrain,1971,2025,BHR
-694,Qatar,1971,2025,QAT
-696,UAE,1971,2025,ARE
-698,Oman,1920,2025,OMN
-700,Afghanistan,1816,2025,AFG
-701,Turkmenistan,1991,2025,TKM
-702,Tajikistan,1991,2025,TJK
-703,Kyrgyzstan,1991,2025,KGZ
-704,Uzbekistan,1991,2025,UZB
-705,Kazakhstan,1991,2025,KAZ
-710,China,1816,2025,CHN
-712,Mongolia,1921,2025,MNG
-713,Taiwan,1949,2025,TWN
-730,Korea,1816,1910,NA
-731,North Korea,1948,2025,PRK
-732,South Korea,1948,2025,KOR
-740,Japan,1816,2025,JPN
-750,India,1947,2025,IND
-770,Pakistan,1947,2025,PAK
-771,Bangladesh,1971,2025,BGD
-775,Myanmar,1948,2025,MMR
-780,Sri Lanka,1948,2025,LKA
-781,Maldives,1965,2025,MDV
-790,Nepal,1920,2025,NPL
-800,Thailand,1816,2025,THA
-811,Cambodia,1953,2025,KHM
-812,Laos,1954,2025,LAO
-816,Vietnam,1954,2025,VNM
-820,Malaysia,1957,2025,MYS
-830,Singapore,1965,2025,SGP
-835,Brunei,1984,2025,BRN
-840,Philippines,1946,2025,PHL
-850,Indonesia,1945,2025,IDN
-860,Timor-Leste,2002,2025,TLS
-900,Australia,1901,2025,AUS
-910,Papua New Guinea,1975,2025,PNG
-920,New Zealand,1907,2025,NZL
-935,Vanuatu,1980,2025,VUT
-940,Solomon Islands,1978,2025,SLB
-946,Kiribati,1979,2025,KIR
-947,Tuvalu,1978,2025,TUV
-950,Fiji,1970,2025,FJI
-955,Tonga,1970,2025,TON
-970,Nauru,1968,2025,NRU
-983,Marshall Islands,1991,2025,MHL
-986,Palau,1994,2025,PLW
-987,Micronesia,1991,2025,FSM
-990,Samoa,1962,2025,WSM
+cow_code,cow_name,cow_start,cow_end,iso3,verified
+2,United States,1816,2025,USA,unchanged
+20,Canada,1920,2025,CAN,unchanged
+31,Bahamas,1973,2025,BHS,unchanged
+40,Cuba,1902,2025,CUB,unchanged
+41,Haiti,1859,2025,HTI,unchanged
+42,Dominican Republic,1894,2025,DOM,unchanged
+51,Jamaica,1962,2025,JAM,unchanged
+52,Trinidad and Tobago,1962,2025,TTO,unchanged
+53,Barbados,1966,2025,BRB,unchanged
+54,Dominica,1978,2025,DMA,cow-v2016-issue-144
+55,Grenada,1974,2025,GRD,unchanged
+56,St. Lucia,1979,2025,LCA,cow-v2016-issue-144
+57,St. Vincent and the Grenadines,1979,2025,VCT,cow-v2016-issue-144
+58,Antigua & Barbuda,1981,2025,ATG,cow-v2016-issue-144-entry-year-unverified
+60,St. Kitts and Nevis,1983,2025,KNA,unchanged
+70,Mexico,1831,2025,MEX,unchanged
+80,Belize,1981,2025,BLZ,unchanged
+90,Guatemala,1868,2025,GTM,unchanged
+91,Honduras,1899,2025,HND,unchanged
+92,El Salvador,1875,2025,SLV,unchanged
+93,Nicaragua,1900,2025,NIC,unchanged
+94,Costa Rica,1920,2025,CRI,unchanged
+95,Panama,1903,2025,PAN,unchanged
+100,Colombia,1831,2025,COL,unchanged
+101,Venezuela,1841,2025,VEN,unchanged
+110,Guyana,1966,2025,GUY,unchanged
+115,Suriname,1975,2025,SUR,unchanged
+130,Ecuador,1854,2025,ECU,unchanged
+135,Peru,1839,2025,PER,unchanged
+140,Brazil,1826,2025,BRA,unchanged
+145,Bolivia,1848,2025,BOL,unchanged
+150,Paraguay,1846,2025,PRY,unchanged
+155,Chile,1839,2025,CHL,unchanged
+160,Argentina,1841,2025,ARG,unchanged
+165,Uruguay,1882,2025,URY,unchanged
+200,United Kingdom,1816,2025,GBR,unchanged
+205,Ireland,1922,2025,IRL,unchanged
+210,Netherlands,1816,2025,NLD,unchanged
+211,Belgium,1830,2025,BEL,unchanged
+212,Luxembourg,1867,2025,LUX,unchanged
+220,France,1816,2025,FRA,unchanged
+225,Switzerland,1816,2025,CHE,unchanged
+230,Spain,1816,2025,ESP,unchanged
+235,Portugal,1816,2025,PRT,unchanged
+240,Hanover,1838,1866,NA,unchanged
+245,Bavaria,1816,1870,NA,unchanged
+255,Germany,1816,2025,DEU,unchanged
+260,German Federal Republic,1949,1990,DEU,unchanged
+265,German Democratic Rep.,1954,1990,NA,unchanged
+267,Baden,1816,1870,NA,unchanged
+269,Saxony,1816,1870,NA,unchanged
+271,Württemberg,1816,1870,NA,unchanged
+273,Hesse Electoral,1816,1866,NA,unchanged
+275,Hesse Grand Ducal,1816,1867,NA,unchanged
+280,Mecklenburg-Schwerin,1843,1867,NA,unchanged
+290,Poland,1918,2025,POL,unchanged
+300,Austria-Hungary,1816,1918,NA,unchanged
+305,Austria,1918,2025,AUT,unchanged
+310,Hungary,1918,2025,HUN,unchanged
+315,Czechoslovakia,1918,1992,NA,unchanged
+316,Czech Republic,1993,2025,CZE,unchanged
+317,Slovakia,1993,2025,SVK,unchanged
+325,Italy,1861,2025,ITA,unchanged
+327,Papal States,1816,1860,NA,unchanged
+329,Two Sicilies,1816,1861,NA,unchanged
+331,San Marino,1992,2025,SMR,cow-v2016-issue-144-entry-year-unverified
+332,Modena,1816,1860,NA,unchanged
+335,Parma,1816,1860,NA,unchanged
+337,Tuscany,1816,1860,NA,unchanged
+338,Malta,1964,2025,MLT,cshapes-2.0-gwcode-entry-year-unverified
+339,Albania,1914,2025,ALB,cshapes-2.0-gwcode
+341,Montenegro,1878,2025,MNE,unchanged
+343,Macedonia,1991,2025,MKD,unchanged
+344,Croatia,1992,2025,HRV,unchanged
+345,Yugoslavia/Serbia,1816,2025,SRB,unchanged
+346,Bosnia-Herzegovina,1992,2025,BIH,unchanged
+347,Kosovo,2008,2025,XKX,unchanged
+349,Slovenia,1992,2025,SVN,unchanged
+350,Greece,1828,2025,GRC,unchanged
+352,Cyprus,1960,2025,CYP,unchanged
+355,Bulgaria,1878,2025,BGR,unchanged
+359,Moldova,1991,2025,MDA,unchanged
+360,Romania,1878,2025,ROU,unchanged
+365,Russia/USSR,1816,2025,RUS,unchanged
+366,Estonia,1991,2025,EST,unchanged
+367,Latvia,1991,2025,LVA,unchanged
+368,Lithuania,1991,2025,LTU,unchanged
+369,Ukraine,1991,2025,UKR,unchanged
+370,Belarus,1991,2025,BLR,unchanged
+371,Armenia,1991,2025,ARM,unchanged
+372,Georgia,1991,2025,GEO,unchanged
+373,Azerbaijan,1991,2025,AZE,unchanged
+375,Finland,1917,2025,FIN,unchanged
+380,Sweden,1816,2025,SWE,unchanged
+385,Norway,1905,2025,NOR,unchanged
+390,Denmark,1816,2025,DNK,unchanged
+395,Iceland,1944,2025,ISL,unchanged
+402,Cape Verde,1975,2025,CPV,cshapes-2.0-gwcode
+403,Sao Tome and Principe,1975,2025,STP,cow-v2016-issue-144
+404,Guinea-Bissau,1974,2025,GNB,cshapes-2.0-gwcode-entry-year-unverified
+411,Equatorial Guinea,1968,2025,GNQ,cshapes-2.0-gwcode-entry-year-unverified
+420,Gambia,1965,2025,GMB,unchanged
+432,Mali,1960,2025,MLI,unchanged
+433,Senegal,1960,2025,SEN,unchanged
+434,Benin,1960,2025,BEN,unchanged
+435,Mauritania,1960,2025,MRT,unchanged
+436,Niger,1960,2025,NER,unchanged
+437,Côte d'Ivoire,1960,2025,CIV,unchanged
+438,Guinea,1958,2025,GIN,unchanged
+439,Burkina Faso,1960,2025,BFA,unchanged
+450,Liberia,1847,2025,LBR,unchanged
+451,Sierra Leone,1961,2025,SLE,unchanged
+452,Ghana,1957,2025,GHA,unchanged
+461,Togo,1960,2025,TGO,unchanged
+471,Cameroon,1960,2025,CMR,unchanged
+475,Nigeria,1960,2025,NGA,unchanged
+481,Gabon,1960,2025,GAB,unchanged
+482,Central African Republic,1960,2025,CAF,unchanged
+483,Chad,1960,2025,TCD,unchanged
+484,Congo,1960,2025,COG,unchanged
+490,DR Congo,1960,2025,COD,unchanged
+500,Uganda,1962,2025,UGA,unchanged
+501,Kenya,1963,2025,KEN,unchanged
+510,Tanzania,1961,2025,TZA,unchanged
+516,Burundi,1962,2025,BDI,unchanged
+517,Rwanda,1962,2025,RWA,unchanged
+520,Somalia,1960,2025,SOM,unchanged
+522,Djibouti,1977,2025,DJI,unchanged
+530,Ethiopia,1898,2025,ETH,unchanged
+531,Eritrea,1993,2025,ERI,unchanged
+540,Angola,1975,2025,AGO,unchanged
+541,Mozambique,1975,2025,MOZ,unchanged
+551,Zambia,1964,2025,ZMB,unchanged
+552,Zimbabwe,1980,2025,ZWE,unchanged
+553,Malawi,1964,2025,MWI,unchanged
+560,South Africa,1910,2025,ZAF,unchanged
+565,Namibia,1990,2025,NAM,unchanged
+570,Lesotho,1966,2025,LSO,unchanged
+571,Botswana,1966,2025,BWA,unchanged
+572,Eswatini,1968,2025,SWZ,unchanged
+580,Madagascar,1960,2025,MDG,unchanged
+581,Comoros,1975,2025,COM,cshapes-2.0-gwcode
+590,Mauritius,1968,2025,MUS,unchanged
+591,Seychelles,1976,2025,SYC,unchanged
+600,Morocco,1956,2025,MAR,unchanged
+615,Algeria,1962,2025,DZA,unchanged
+616,Tunisia,1956,2025,TUN,unchanged
+620,Libya,1951,2025,LBY,unchanged
+625,Sudan,1956,2025,SDN,unchanged
+626,South Sudan,2011,2025,SSD,unchanged
+630,Iran,1816,2025,IRN,unchanged
+640,Turkey,1816,2025,TUR,unchanged
+645,Iraq,1932,2025,IRQ,unchanged
+651,Egypt,1855,2025,EGY,unchanged
+652,Syria,1946,2025,SYR,unchanged
+660,Lebanon,1946,2025,LBN,unchanged
+663,Jordan,1946,2025,JOR,unchanged
+666,Israel,1948,2025,ISR,unchanged
+670,Saudi Arabia,1927,2025,SAU,unchanged
+678,Yemen,1990,2025,YEM,unchanged
+679,North Yemen,1918,1990,NA,unchanged
+680,South Yemen,1967,1990,NA,unchanged
+690,Kuwait,1961,2025,KWT,unchanged
+692,Bahrain,1971,2025,BHR,unchanged
+694,Qatar,1971,2025,QAT,unchanged
+696,UAE,1971,2025,ARE,unchanged
+698,Oman,1920,2025,OMN,unchanged
+700,Afghanistan,1816,2025,AFG,unchanged
+701,Turkmenistan,1991,2025,TKM,unchanged
+702,Tajikistan,1991,2025,TJK,unchanged
+703,Kyrgyzstan,1991,2025,KGZ,unchanged
+704,Uzbekistan,1991,2025,UZB,unchanged
+705,Kazakhstan,1991,2025,KAZ,unchanged
+710,China,1816,2025,CHN,unchanged
+712,Mongolia,1921,2025,MNG,unchanged
+713,Taiwan,1949,2025,TWN,unchanged
+730,Korea,1816,1910,NA,unchanged
+731,North Korea,1948,2025,PRK,unchanged
+732,South Korea,1948,2025,KOR,unchanged
+740,Japan,1816,2025,JPN,unchanged
+750,India,1947,2025,IND,unchanged
+770,Pakistan,1947,2025,PAK,unchanged
+771,Bangladesh,1971,2025,BGD,unchanged
+775,Myanmar,1948,2025,MMR,unchanged
+780,Sri Lanka,1948,2025,LKA,unchanged
+781,Maldives,1965,2025,MDV,unchanged
+790,Nepal,1920,2025,NPL,unchanged
+800,Thailand,1816,2025,THA,unchanged
+811,Cambodia,1953,2025,KHM,unchanged
+812,Laos,1954,2025,LAO,unchanged
+816,Vietnam,1954,2025,VNM,unchanged
+820,Malaysia,1957,2025,MYS,unchanged
+830,Singapore,1965,2025,SGP,unchanged
+835,Brunei,1984,2025,BRN,unchanged
+840,Philippines,1946,2025,PHL,unchanged
+850,Indonesia,1945,2025,IDN,unchanged
+860,Timor-Leste,2002,2025,TLS,unchanged
+900,Australia,1901,2025,AUS,unchanged
+910,Papua New Guinea,1975,2025,PNG,unchanged
+920,New Zealand,1907,2025,NZL,unchanged
+935,Vanuatu,1980,2025,VUT,unchanged
+940,Solomon Islands,1978,2025,SLB,unchanged
+946,Kiribati,1979,2025,KIR,unchanged
+947,Tuvalu,1978,2025,TUV,unchanged
+950,Fiji,1970,2025,FJI,unchanged
+955,Tonga,1970,2025,TON,unchanged
+970,Nauru,1968,2025,NRU,unchanged
+983,Marshall Islands,1991,2025,MHL,unchanged
+986,Palau,1994,2025,PLW,unchanged
+987,Micronesia,1991,2025,FSM,unchanged
+990,Samoa,1962,2025,WSM,unchanged
