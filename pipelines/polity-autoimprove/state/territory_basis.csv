@@ -704,7 +704,7 @@ TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,constructed,,pro
 TUN-1800-1881,Beylik of Tunis,1800,1881,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 TUN-1881-2025,Tunisia,1881,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 144y span (1881-2025); borders may have changed,1294
 TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,cshapes-2.0,1923.0,estimate,True,back_projected,True,True,polygon vintage 1923 is AFTER the period ends (1913) — later/modern border applied back,36
-TUR-1913-1914,Türkiye (1913-1914),1913,1914,cshapes-2.0,1914.0,assigned,True,measured,False,False,vintage 1914 faithful to period 1913-1914,12
+TUR-1913-1914,Türkiye (1913-1914),1913,1914,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,12
 TUR-1914-1918,Türkiye (1914-1918),1914,1918,cshapes-2.0,1914.0,assigned,True,measured,False,False,vintage 1914 faithful to period 1914-1918,3
 TUR-1918-1920,Türkiye (1918-1920),1918,1920,cshapes-2.0,1918.0,assigned,True,measured,False,False,vintage 1918 faithful to period 1918-1920,2
 TUR-1920-2025,Türkiye (1920-2025),1920,2025,cshapes-2.0,1923.0,assigned,True,assumed_constant,True,True,single 1923 polygon held across a 105y span (1920-2025); borders may have changed,1658

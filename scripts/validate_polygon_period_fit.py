@@ -83,14 +83,20 @@ BASELINE = frozenset({
     "A:MOR-1800-1904",     # Cliopatria vintage 1769, 31 years before the row starts; not a
                            # one-step lag, and Cliopatria's step density differs from CShapes'
     "A:SUD-1934-1956",     # -3.6%, within simplification and boundary-vintage noise
-    "A:TUR-1913-1914",     # points FORWARD (1914 for a 1913 row); every fixed case pointed back
+    # A:TUR-1913-1914 LEFT this list on 2026-08-12, and the note it carried -- "points FORWARD
+    # (1914 for a 1913 row); every fixed case pointed back" -- described the symptom and drew the
+    # wrong conclusion from it. Pointing forward was not a quirk to tolerate: fy=1914 resolved to
+    # the `1914-1918` step, so the row published 1,705,971 km2 while declaring 1,785,218, and it
+    # published the SAME geometry as TUR-1914-1918 (which is why "B:TUR-1913-1914 /
+    # TUR-1914-1918" sat below). Neither 1913 step can be named by a feature_year -- both start in
+    # 1913 -- so it is now a constructed row selecting the step by its bounds. See
+    # build_tur_1913_1914 and _cshapes2_step.
     # --- documented / undecided (signal B), issues 121 and 123 ---
     "B:ITA-1861-1866 / ITA-1866-1870",
     "B:ITA-1866-1870 / ITA-1870-1919",
     "B:HUN-1944-1947 / HUN-1947-2025",   # here the LATER row is right: 93,004 km2 matches
                                          # modern Hungary, so the earlier row is the suspect
     "B:SUD-1899-1934 / SUD-1934-1956",
-    "B:TUR-1913-1914 / TUR-1914-1918",
 })
 
 PROXY_RE = re.compile(
