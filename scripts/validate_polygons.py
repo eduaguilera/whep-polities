@@ -174,7 +174,26 @@ for r in documented.itertuples():
 # improved. A row can only ENTER the band by someone re-deriving a declared figure from a
 # polygon, which is a human act and worth failing on. So this is a ceiling.
 SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
-BASELINE_SELF_REFERENTIAL = 103     # measured 2026-08-10 over 197 rows carrying both
+BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12, see below
+
+# THE CEILING IS NOT A PURE RATCHET, and one day of use falsified the reason given for making it
+# one. The original note argued: "a row can only ENTER the band by someone re-deriving a declared
+# figure from a polygon, which is a human act worth failing on." That is not the only way in.
+#
+# TUR-1913-1914 entered it on 2026-08-12 by having its GEOMETRY CORRECTED. The row declared
+# 1,785,218 km2 and published 1,705,971 -- a 4.5% disagreement -- because polygon_feature_year 1914
+# resolved to CShapes 640's `1914-1918` step, one that begins after the row ends. Rebinding it to
+# the `1913-1914` step it had always declared brought the measurement to 1,784,775, which agrees
+# with the declared figure to 0.02% and so counts as self-referential here.
+#
+# But that declared figure PREDATES the fix and was independently right -- it is what identified
+# the correct step in the first place. Nothing was copied off a polygon; a polygon was corrected
+# to match an independently-stated number. That is the best outcome available, and it raises this
+# count.
+#
+# So the ceiling moves up for a geometry fix and down for a sourcing fix, and the two cannot be
+# told apart without the provenance field issue 195 asks for. Until then, raising it requires the
+# reason to be written here -- which is the actual guard, rather than the number.
 
 # Live rows only, matching the population check A actually judges -- `have` includes the
 # retired and superseded rows that still carry geometry, and check A exempts those.

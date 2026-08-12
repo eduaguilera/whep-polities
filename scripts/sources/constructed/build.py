@@ -76,6 +76,46 @@ def _cshapes2_feature(gwcode: int, year: int) -> ogr.Geometry:
     raise LookupError(f"CShapes 2.0 has no feature for gwcode={gwcode}, year={year}")
 
 
+def _cshapes2_step(gwcode: int, start_year: int, end_year: int) -> ogr.Geometry:
+    """Return the CShapes 2.0 step matching (gwcode, gwsyear, gweyear) EXACTLY.
+
+    `_cshapes2_feature(gwcode, year)` selects by containment, which cannot express a step whose
+    years are shared with another step. CShapes 640 has BOTH `1913-1913` (1,912,569 km2) and
+    `1913-1914` (1,784,488) because the Ottoman border moved during 1913, so:
+
+        polygon_feature_year: 1913   ties -- both steps start in 1913, and find_feature's
+                                     exact-start preference leaves the winner to shapefile row
+                                     order, which validate_polygon_binding_determinism exists
+                                     to forbid
+        polygon_feature_year: 1914   resolves DETERMINISTICALLY to `1914-1918`, a step that
+                                     begins after the row ends
+
+    There is no year that names the intended step, so it has to be named by its bounds.
+    """
+    if not CSHAPES2.exists():
+        raise FileNotFoundError(
+            f"{CSHAPES2} missing - run scripts/sources/cshapes-2.0/fetch.sh first."
+        )
+    ds = ogr.Open(str(CSHAPES2))
+    lyr = ds.GetLayer()
+    hits = []
+    for f in lyr:
+        if int(f.GetField("gwcode")) != gwcode:
+            continue
+        if int(f.GetField("gwsyear")) == start_year and int(f.GetField("gweyear")) == end_year:
+            hits.append(f.GetGeometryRef().Clone())
+    if not hits:
+        raise LookupError(
+            f"CShapes 2.0 has no gwcode={gwcode} step exactly {start_year}-{end_year}"
+        )
+    if len(hits) > 1:
+        raise LookupError(
+            f"CShapes 2.0 has {len(hits)} gwcode={gwcode} steps at {start_year}-{end_year}; "
+            f"naming a step by its bounds is supposed to be unique"
+        )
+    return hits[0]
+
+
 def _gadm_adm1(gid_1: str) -> ogr.Geometry:
     """Return the geometry of the GADM 4.1 admin-1 feature with the given GID_1."""
     if not GADM41_ADM1.exists():
@@ -814,6 +854,35 @@ def build_mmr_lwr_1852_1885() -> ogr.Geometry:
     )
 
 
+def build_tur_1913_1914() -> ogr.Geometry:
+    """The Ottoman Empire during 1913 = CShapes 640's `1913-1914` step, named by its bounds.
+
+    THE ROW WAS PUBLISHING A STEP THAT BEGINS AFTER IT ENDS. It covered 1913 (end_year exclusive)
+    with `polygon_feature_year: 1914`, and 1914 sits in two steps -- `1913-1914` and `1914-1918`.
+    find_feature prefers the step whose start_year equals the queried year, so it took
+    `1914-1918`: the row published 1,705,971 km2 while DECLARING 1,785,218, a 4.5% disagreement
+    between a page and its own geometry that check A could not see, because 200 km2 of that gap
+    is simplification and the rest is a different step entirely.
+
+    It also made TUR-1913-1914 and TUR-1914-1918 publish IDENTICAL geometry, which is why the
+    period-fit gate carried both an A entry and a B pair for this row.
+
+    WHY THE `1913-1914` STEP AND NOT `1913-1913`. CShapes splits 1913 in two because the Ottoman
+    border moved during it -- the Treaty of London in May, Bucharest in August, and the
+    Ottoman-Bulgarian treaty in September that returned Edirne:
+
+        1913-1913   1,912,569 km2   the earlier extent
+        1913-1914   1,784,488 km2   the extent that carried into 1914
+
+    The page declares 1,785,218, a 0.04% match to the second, so the second is what this row has
+    always intended. For a row covering a full year the settled end-of-year extent is also the
+    more useful one.
+
+    Neither step can be selected by `polygon_feature_year` at all -- see _cshapes2_step.
+    """
+    return _cshapes2_step(640, 1913, 1914)
+
+
 def build_bwi_1833_1962() -> ogr.Geometry:
     """British West Indies colonial aggregate = the eleven territories the page enumerates.
 
@@ -1447,6 +1516,16 @@ BUILDERS = [
         "which is absent from the registered source. Post-1924 (post-Jubaland) "
         "extent; overstates 1908-1924 by ~94,400 km2 — see "
         "wiki/polities/its-1908-1960.md.",
+    ),
+    (
+        "TUR-1913-1914",
+        "Turkiye (1913-1914)",
+        build_tur_1913_1914,
+        "CShapes 640's 1913-1914 step (1,784,488 km2) named by its bounds. The row previously "
+        "used polygon_feature_year 1914, which resolves to the 1914-1918 step -- one that begins "
+        "after the row ends -- publishing 1,705,971 against a declared 1,785,218 and making this "
+        "row identical to TUR-1914-1918. No feature_year can name either 1913 step: both start in "
+        "1913, so 1913 is an order-dependent tie. Issue 123.",
     ),
     (
         "BWI-1833-1962",
