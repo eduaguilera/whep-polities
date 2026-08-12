@@ -94,8 +94,21 @@ BASELINE = frozenset({
     # --- documented / undecided (signal B), issues 121 and 123 ---
     "B:ITA-1861-1866 / ITA-1866-1870",
     "B:ITA-1866-1870 / ITA-1870-1919",
-    "B:HUN-1944-1947 / HUN-1947-2025",   # here the LATER row is right: 93,004 km2 matches
-                                         # modern Hungary, so the earlier row is the suspect
+    # B:HUN-1944-1947 / HUN-1947-2025 -- RESOLVED AS A DELIBERATE CHOICE on 2026-08-12, and the
+    # old note's reading was back to front. It said "the LATER row is right: 93,004 km2 matches
+    # modern Hungary, so the earlier row is the suspect". The earlier row is not a suspect; it is
+    # on that step ON PURPOSE, and hun-1944-1947.md now carries a polygon_vintage_note saying so.
+    #
+    # CShapes 310 has ONE step for 1938-1947 (108,785 km2, the enlarged post-Vienna-Award Hungary)
+    # and does not model the reversion. The January 1945 Armistice restored the Trianon borders, so
+    # for 1945 and 1946 the Trianon step is right and CShapes' in-span step would overstate them by
+    # 15,781 km2. For 1944 it is the other way round. Two of three years favour the choice made.
+    #
+    # The pair stays here because signal B does not read pages -- unlike signal A, which consults
+    # declares_proxy(). Teaching B the same test would clear this entry automatically, and is worth
+    # doing if a second documented duplicate appears; with one, the baseline entry is cheaper than
+    # the code change.
+    "B:HUN-1944-1947 / HUN-1947-2025",
     "B:SUD-1899-1934 / SUD-1934-1956",
 })
 
