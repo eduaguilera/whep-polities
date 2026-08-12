@@ -80,8 +80,16 @@ BASELINE = frozenset({
     "A:ROU-1918-1919",
     "A:TUR-1800-1913",
     # --- undecided (signal A), issue 123 ---
-    "A:MOR-1800-1904",     # Cliopatria vintage 1769, 31 years before the row starts; not a
-                           # one-step lag, and Cliopatria's step density differs from CShapes'
+    # A:MOR-1800-1904 LEFT this list on 2026-08-12. The note here was right that it is "not a
+    # one-step lag" and stopped there. The bound step is 1769-1860, which COVERS the row's first
+    # 61 years -- the step was in span even though the year naming it was not. polygon_feature_year
+    # is now 1800, which selects the identical step (387,614 km2, verified) and describes it
+    # honestly, so the flag is gone with no geometry change.
+    #
+    # What the flag was standing in front of is a different issue: FIVE Cliopatria vintages fall
+    # inside 1800-1903, and the territory drops 387,614 -> 358,422 across them, so one geometry
+    # overstates the row's last two decades by 7.5%. That is issue 22's class, recorded in the
+    # page's polygon_vintage_note, and splitting at 1885 would fix it.
     "A:SUD-1934-1956",     # -3.6%, within simplification and boundary-vintage noise
     # A:TUR-1913-1914 LEFT this list on 2026-08-12, and the note it carried -- "points FORWARD
     # (1914 for a 1913 row); every fixed case pointed back" -- described the symptom and drew the
