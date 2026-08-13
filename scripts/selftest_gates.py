@@ -466,6 +466,34 @@ def write_gpkg(gdf, root):
     gdf.to_file(dest, driver="GPKG", layer="polities")
 
 
+def mutate_unmapped_area_that_has_a_polity(root, gpd, make_valid, affinity):
+    """List an area as having no polity family when its polity exists.
+
+    THIS IS THE DEFECT THAT ACTUALLY HAPPENED, reproduced. Sixteen territories got
+    polities in PRs 190, 201 and 210 and every one stayed on this list, so the FAOSTAT
+    map -- generated from a registry that reads it -- never gained a row and all sixteen
+    still resolved to ROW-1850-2025. A consuming session found it, not this repo.
+
+    Mayotte is used because its polity is unambiguous and its area code appears in the
+    published map, so both of the gate's signals fire on one edit.
+    """
+    import csv
+
+    path = os.path.join(root, "pipelines/faostat-era-matching/state/registry_unmapped.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    rows.append({
+        "area_code": "270", "area_name": "Mayotte", "iso3": "MYT",
+        "note": "registry area with no polity family (non-country/aggregate)",
+    })
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return "listed area 270 Mayotte as having no polity, while MYT-1800-2025 exists"
+
+
 def mutate_map_year_end_past_coverage(root, gpd, make_valid, affinity):
     """Raise a FAOSTAT map row's inclusive year_end past its polity's exclusive coverage.
 
@@ -948,6 +976,12 @@ CASES = (
         "silently becomes the route",
     ),
     (
+        "validate_registry_unmapped.py",
+        mutate_unmapped_area_that_has_a_polity,
+        "area 270",
+        "an area listed as having no polity while its polity exists, so its data keeps resolving to ROW",
+    ),
+    (
         "validate_map_area_year.py",
         mutate_map_year_end_past_coverage,
         "year_end past coverage",
@@ -1096,6 +1130,13 @@ WRITABLE = {
     # Both files as real copies: the case rewrites the map, and the gate reads polity spans from
     # the CSV to know what "past coverage" means. With the CSV symlinked the read still works, but
     # copying keeps the case honest about what it touches.
+    # The case appends to registry_unmapped.csv, so that must be a real copy; the gate also reads
+    # the published map and the database to decide whether the claim is false.
+    "validate_registry_unmapped.py": (
+        "pipelines/faostat-era-matching/state/registry_unmapped.csv",
+        "faostat_area_polity_map.csv",
+        "polities_database.csv",
+    ),
     "validate_map_area_year.py": (
         "faostat_area_polity_map.csv",
         "polities_database.csv",

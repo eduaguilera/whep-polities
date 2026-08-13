@@ -104,6 +104,7 @@ python3 scripts/validate_spherical_edges.py
 python3 scripts/validate_succession_geography.py   # reads the committed .gpkg; runs in CI too
 python3 scripts/validate_chain_integrity.py        # CSV + wiki only, no geometry
 python3 scripts/validate_site_outputs.py           # site/ is deployed output; nothing checked it
+python3 scripts/validate_registry_unmapped.py      # 'no polity for this area' is a claim; check it
 
 # and the one that asks whether the checks above can fail at all
 python3 scripts/selftest_gates.py
@@ -118,6 +119,7 @@ python3 pipelines/polity-autoimprove/extdata.py
 | `write_manifest.py --check` | a stale alias-map fingerprint after aliases changed |
 | citations | 17 citations pointing at source files that were never ingested |
 | `validate_site_outputs.py` | site/polities.geojson two months stale — 194 live polities missing, 35 withdrawn ones drawn on the map |
+| `validate_registry_unmapped.py` | 16 areas listed as having no polity while their polity existed, so their data still resolved to `ROW-1850-2025` |
 | constants | `DEAD_STATUS` is defined **five** times, and `CLAIMS_POLYGON` excluded four statuses that 11 rows with geometry were using |
 | aliases | five aliases silently **inert** — two had the target sitting in the `confidence` column |
 | alias chain overlaps | *(guard)* an alias `year_end` is INCLUSIVE while a polity `end_year` is EXCLUSIVE, so consecutive aliases for one label both cover the boundary year and match order decides which polity a value lands in. 18 chains do, down from 25: the seven cleared on 2026-08-05 were the ones whose earlier alias claimed a year its successor covers, clipped after checking against the observations that nothing would go unmatched (issue 90 group A -- 58 aliases, 1,544 rows). The rate depends on how they were written — 18 of 31 hand-entered any-source chains against **0 of 7** generated with `year_end = polity_end_year - 1` — so the convention demonstrably removes it. The safe half is now fixed rather than gated: 58 aliases whose boundary year a successor alias already covers were clipped (issue 90). 209 aliases still overclaim, of which 24 (label, year) pairs carrying 229 rows have NO covering successor and must not be clipped -- those need a target or a period boundary, not a range edit |
