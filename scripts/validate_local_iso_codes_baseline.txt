@@ -3,7 +3,7 @@
 # This vocabulary is a published interface: a consumer joins on it, so adding a value
 # changes what that join matches and changing one re-points every row carrying it.
 #
-# 285 values over 685 rows (2026-08-10; was 280/680 on 2026-08-06, and before that the header had said 276/658 and was stale, which is
+# 295 values over 702 rows (2026-08-13; was 280/680 on 2026-08-06, and before that the header had said 276/658 and was stale, which is
 # what a count in a comment does when the gate asserts the LIST rather than the number).
 #
 # Of these, ~56 are NOT ISO 3166 codes but local identifiers for entities that have none
@@ -15,6 +15,7 @@ ABW
 AEF  # local
 AFG
 AGO
+AIA
 ALB
 AND
 ANG  # local
@@ -71,7 +72,9 @@ CPV
 CRI
 CSK
 CUB
+CUW
 CXR
+CYM
 CYP
 CZE
 DDR
@@ -103,6 +106,7 @@ GBR
 GCO  # local
 GEO
 GHA
+GIB
 GIN
 GLP
 GMB
@@ -154,6 +158,7 @@ LTU
 LUX
 LVA
 MAC
+MAF
 MAN  # local
 MAR
 MCO
@@ -168,6 +173,7 @@ MLT
 MMR
 MNE
 MNG
+MNP
 MOR  # local
 MOZ
 MRT
@@ -176,6 +182,7 @@ MTQ
 MUS
 MWI
 MYS
+MYT
 NAM
 NAT  # local
 NCL
@@ -199,6 +206,8 @@ PAK
 PAL  # local
 PAN
 PAP  # local
+PCI  # local -- FAOSTAT area 164, no ISO code for a dissolved UN trusteeship
+PCN
 PER
 PHL
 PLW
@@ -259,6 +268,7 @@ SYC
 SYR
 TAN  # local
 TAS  # local
+TCA
 TCD
 TGO
 THA

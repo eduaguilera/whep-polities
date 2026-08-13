@@ -533,10 +533,15 @@ def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
             dec = float(dec)
         except (TypeError, ValueError):
             continue
-        if dec > 0 and abs(r.km2 / dec - 1) > 0.05:      # a real divergence to overwrite
+        # km2 >= 1000 MATTERS. The rewrite rounds to a whole km2, and at small areas that
+        # rounding alone exceeds A2's 0.1% band -- AIA-1800-2025 at 79.9 km2 rounds to 80, a
+        # 0.125% gap, so the row never entered the band and this case silently PASSED when
+        # nine new small territories shifted which row it picked first. At >=1000 km2 the
+        # rounding error is at most 0.05%, half the band.
+        if dec > 0 and r.km2 >= 1000 and abs(r.km2 / dec - 1) > 0.05:
             hit, newval = r.polity_code, round(r.km2)
             break
-    assert hit, "no row with a >5% divergence to overwrite"
+    assert hit, "no row over 1000 km2 with a >5% divergence to overwrite"
     # STRING, not int. The column's dtype is str, and newer pandas raises
     # "Invalid value '795' for dtype 'str'" on an int assignment while older pandas
     # silently accepts it -- so this passed locally and failed in CI.

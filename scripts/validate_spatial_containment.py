@@ -92,6 +92,16 @@ LEGITIMATE_CONTAINERS = frozenset({
     # outline reaches atolls the union does not. Coarse simplification had blurred both until
     # they agreed. Left recorded rather than fixed -- it is a question about TTPI's recipe in
     # scripts/sources/constructed/build.py, not about the simplification change.
+    # TTPI-1947-1994 RETURNS on 2026-08-13, having been removed on 2026-08-10. It now holds
+    # FSM-1991-2025, PLW-1991-2025 and the new MNP-1986-2025 -- three again, where finer
+    # simplification had pushed the Marshall Islands to 85.6% and dropped it to two.
+    #
+    # The containment is the trust territory's own definition: TTPI is the union of GADM FSM, MHL,
+    # MNP and PLW, so it contains those polities by construction. The trusteeship also dissolved in
+    # STAGES -- terminated for the Marianas, Marshalls and FSM in 1986, for Palau only in 1994 --
+    # so TTPI necessarily coexists with members that had already left, and MNP-1986-2025 overlaps
+    # it for 1986-1993 as real history rather than as a modelling error.
+    "TTPI-1947-1994",
     # French Indochina over Vietnam, Cambodia and Laos -- it held all three as
     # constituent protectorates, so containment is the historical fact.
     #
