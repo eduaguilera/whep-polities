@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "0bbdbdd64a5e638eb30ad36954630700d042202dab281850a74dd05f3e64a25a",
+ "identity_sha256": "39ff0bc093fffb921f7d8dacff27f5b610905a21a3df2de6cc45d627cc6cb6fc",
  "counts": {
-  "total": 766,
-  "live": 725,
+  "total": 767,
+  "live": 726,
   "dead": 41
  },
  "dead_status": [
@@ -396,6 +396,7 @@
   "ETH-1941-1952",
   "ETH-1952-1993",
   "ETH-1993-2025",
+  "F206-2011-2025",
   "F228-1800-1856",
   "F228-1856-1905",
   "F228-1905-1914",

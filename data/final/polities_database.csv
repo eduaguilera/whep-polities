@@ -233,6 +233,7 @@ ETH-1936-1941,"Ethiopia (Italian occupation, proper territory, 1936-1941)",1936,
 ETH-1941-1952,Ethiopia (1941-1952),1941,1952,national,ETH,530,Africa,draft,2026-06-29,cshapes-2.0,530,1941,assigned,,ETH-1907-1936,ETH-1952-1993
 ETH-1952-1993,Ethiopia (1952-1993),1952,1993,national,ETH,530,Africa,draft,2026-04-12,cshapes-2.0,530,1952,assigned,,ETH-1941-1952,ETH-1993-2025
 ETH-1993-2025,Ethiopia,1993,2025,national,ETH,530,Africa,reviewed,2026-04-12,cshapes-2.0,530,1993,assigned,,ETH-1952-1993,
+F206-2011-2025,Sudan and South Sudan (combined reporting),2011,2025,aggregate,,,Africa,draft,2026-08-13,constructed,F206-2011-2025,,assigned,2505813,SUD-1956-2011,
 F228-1800-1856,Russian Empire (to 1856),1800,1856,national,RUS,,Europe,draft,2026-04-12,cliopatria,Russian Empire,1815,assigned,,,F228-1856-1905
 F228-1856-1905,Russian Empire (1856-1905),1856,1905,national,RUS,,Europe,draft,2026-04-12,cshapes-2.0,365,1886,assigned,,F228-1800-1856,F228-1905-1914
 F228-1905-1914,Russian Empire (1905-1914),1905,1914,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1905,assigned,,F228-1856-1905,F228-1914-1917
@@ -664,7 +665,7 @@ SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,csh
 STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,403,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
 SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,,Africa,draft,2026-04-16,cshapes-2.0,625,1914,assigned,,SUD-1899-1934,SUD-1956-2011
-SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SDN,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
+SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SDN,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025; F206-2011-2025
 SUR-1886-1954,Dutch Guiana,1886,1954,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1886,assigned,144985,,SUR-1954-1975
 SUR-1954-1975,Surinam (Autonomous),1954,1975,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1954,assigned,144985,SUR-1886-1954,SUR-1975-2025
 SUR-1975-2025,Suriname,1975,2025,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1975,assigned,144985,SUR-1954-1975,

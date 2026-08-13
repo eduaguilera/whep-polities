@@ -233,6 +233,7 @@ ETH-1936-1941,"Ethiopia (Italian occupation, proper territory, 1936-1941)",1936,
 ETH-1941-1952,Ethiopia (1941-1952),1941,1952,cshapes-2.0,1941.0,assigned,True,measured,False,False,vintage 1941 faithful to period 1941-1952,190
 ETH-1952-1993,Ethiopia (1952-1993),1952,1993,cshapes-2.0,1952.0,assigned,True,assumed_constant,True,False,single 1952 polygon held across a 41y span (1952-1993); borders may have changed,65
 ETH-1993-2025,Ethiopia,1993,2025,cshapes-2.0,1993.0,assigned,False,assumed_constant,True,False,single 1993 polygon held across a 32y span (1993-2025); borders may have changed,0
+F206-2011-2025,Sudan and South Sudan (combined reporting),2011,2025,constructed,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 F228-1800-1856,Russian Empire (to 1856),1800,1856,cliopatria,1815.0,assigned,False,assumed_constant,True,False,single 1815 polygon held across a 56y span (1800-1856); borders may have changed,0
 F228-1856-1905,Russian Empire (1856-1905),1856,1905,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 49y span (1856-1905); borders may have changed,10
 F228-1905-1914,Russian Empire (1905-1914),1905,1914,cshapes-2.0,1905.0,assigned,True,measured,False,False,vintage 1905 faithful to period 1905-1914,136
