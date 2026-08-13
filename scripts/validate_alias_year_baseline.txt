@@ -3,12 +3,37 @@
 #
 # Format: `<source_label>\t<source>\t<polity_code>`. One per line.
 #
-# A TRACKED BACKLOG, not an exemption. 461,445 observed rows sit on these, and the
-# four largest are entities whose FINAL REPORTING YEAR is the disputed one --
-# Belgium-Luxembourg 1999, Sudan 2011, the USSR 1991, the Netherlands Antilles 2010.
-# Whether the aliases overclaim or the polity codes end a year early is issue 79.
+# 132 entries, 451,145 observed rows. Was 201 entries / 451,933 rows on 2026-08-13, when
+# issue 79 was worked; the issue itself said 270 entries / 461,445 rows, which had already
+# gone stale. 69 entries were REMOVED that day, in two groups, and neither was an
+# exemption:
 #
-# This file exists so the class cannot GROW while that is open.
+#   67 pointed at a LIVE polity whose exclusive `end_year` is the 2025 ceiling
+#      (`year_end == 2025` on all 67, 788 observed rows). A live polity has no real last
+#      year, so there is nothing to overclaim -- the ceiling was showing through. The gate
+#      now excludes them, matching validate_map_area_year.py, which had already excluded
+#      exactly this case on the FAOSTAT map side. Measured, not assumed: every one of the
+#      67 had polity end_year == 2025 and alias year_end == 2025.
+#
+#    2 were FIXED: "tanzania" and "tanganyika" claimed to 1964 against TAN-1922-1964,
+#      whose span was narrowed to end_year=1961 when TZA-1961-1964 was split out for
+#      independence -- 1964 survives in the polity CODE only. These were the only two
+#      entries in the class overshooting by more than one year. Clipped to 1960, with the
+#      1961-1963 and 1964 claims re-pointed at TZA-1961-1964 and TZA-1964-2025 (the issue
+#      90 group B pattern), so no year the aliases used to cover is now uncovered.
+#
+# A TRACKED BACKLOG, not an exemption. Of the 132 that remain, 101 rows (450,348 observed)
+# name a dissolved entity's FINAL REPORTING YEAR that no successor alias claims --
+# Belgium-Luxembourg 1999, Sudan 2011, the USSR 1991, the Netherlands Antilles 2010 are
+# 450,335 of those rows -- and issue 79's third option is now the decision: that year's
+# data belongs to the outgoing entity, and the convention is written down in the gate's
+# docstring. The other 32 rows (813 observed) DO have a successor alias covering the
+# boundary year and are clippable by the issue 90 group A recipe; they are still open,
+# because 6 move measured data, 7 point at a successor in a different polity family and so
+# need the historical decision validate_alias_chain_overlaps.py describes, and Cape Verde
+# 1975 is deliberate.
+#
+# This file exists so the class cannot GROW while that remainder is open.
 Abyssinia		ETH-1800-1889
 Abyssinia		ETH-1889-1897
 Abyssinia		ETH-1897-1902
@@ -16,39 +41,25 @@ Abyssinia		ETH-1902-1907
 Abyssinia		ETH-1907-1936
 Africa Orientale Italiana		AOI-1936-1941
 Alaska	fao1952	ALK-1867-1959
-American Samoa	faostat	ASM-1900-2025
-Andorra	faostat	AND-1800-2025
 Anglo-Egypt Sudan	fao1952	SUD-1934-1956
 Anglo-Egyptian Sudan		SUD-1934-1956
-BZE	mueller-synthetic-n	BLZ-1981-2025
 Basutoland	fao1952	LSO-1886-1966
 Belgium-Luxembourg	faostat	BLX-1850-1999
 Belgium-Luxemburg	lassaletta-grassland-share	BLX-1850-1999
 British Somaliland	fao1952	BSS-1884-1960
 British Togoland		BTL-1920-1957
-British Virgin Islands	faostat	VGB-1800-2025
-COS	mueller-synthetic-n	CRI-1800-2025
 Cape Verde	lassaletta-grassland-share	CPV-1886-1975
 Cape Verde Islands	fao1952	CPV-1886-1975
-China Manchuria	fao1952	CHN-1950-2025
 China Manchuria	fao1952	MAN-1932-1945
 Christmas Island	faostat	CXR-1946-1958
-Czech Republic		CZE-1993-2025
-DR Congo		COD-1960-2025
-Dominican Rep	fao1952	DOM-1800-2025
 Dutch Caribbean	fao1952	ANT-1816-1960
 Dutch Guiana	mitchell	SUR-1886-1954
-ELS	mueller-synthetic-n	SLV-1821-2025
 Egypt	mitchell	EGY-1885-1899
-Eswatini	faostat	SWZ-1894-2025
 Ethiopia		AOI-1936-1941
 FSU	lassaletta-grassland-share	F228-1945-1991
-Falkland Islands (Malvinas)	faostat	FLK-1833-2025
 Federation of Malaya	fao1952	MYS-1946-1957
 Formosa		TWN-1895-1945
 France Saar		SAA-1947-1957
-French Guiana	fao1952	GUF-1946-2025
-GUA	mueller-synthetic-n	GTM-1821-2025
 Germany Saar		SAA-1947-1957
 Gold Coast	fao1952	GHA-1898-1956
 Gold Coast & Br Togoland	fao1952	GCT-1919-1956
@@ -56,34 +67,20 @@ Gold Coast and Br Tog	fao1952	GCT-1919-1956
 Gold Coast and Br Togoland	fao1952	GCT-1919-1956
 Gold Coast and British Togoland	fao1952	GCT-1919-1956
 Gold Coast and British togoland	fao1952	GCT-1919-1956
-Greenland	faostat	GRL-1800-2025
-Guam	fao1952	GUM-1950-2025
-HAI	mueller-synthetic-n	HTI-1800-2025
-HON	mueller-synthetic-n	HND-1800-2025
 Indonesia Bali and Lombok	fao1952	IDN-BLB-1949-1951
 Indonesia Java and Madura	fao1952	IDN-JVM-1949-1951
 Indonesia Other islands	fao1952	IDN-OTH-1949-1951
 Italian East Africa		AOI-1936-1941
-Ivory Coast		CIV-1960-2025
 Korea South	fao1952	KRS-1910-1945
-Lao		LAO-1954-2025
 Libya	fao1952	LBY-1943-1949
 Libya Cyrenaica	fao1952	CYR-1949-1951
 Libya Tripolitania	fao1952	TRP-1943-1951
-Liechtenstein	faostat	LIE-1800-2025
-Marcinique	fao1952	MTQ-1816-2025
-Moldova	faostat	MDA-1991-2025
-Monaco	faostat	MCO-1800-2025
-Montserrat	faostat	MSR-1800-2025
 Neth West Indies	fao1952	ANT-1816-1960
 Netherlands Antilles	fao1952	ANT-1816-1960
 Netherlands Antilles (former)	faostat	ANT-1961-2010
 Netherlands W Indies	fao1952	ANT-1816-1960
 Netherlands West Indies	fao1952	ANT-1816-1960
 New Guinea	fao1952	TNGU-1920-1949
-Norfolk Island	faostat	NFK-1914-2025
-Norfolk Islands	fao1952	NFK-1914-2025
-North Korea	faostat	PRK-1948-2025
 Pacific Is	fao1952	TTPI-1947-1994
 Pacific Is (U S	fao1952	TTPI-1947-1994
 Pacific Is US tr	fao1952	TTPI-1947-1994
@@ -91,21 +88,14 @@ Pacific Islands (U S	fao1952	TTPI-1947-1994
 Papua	fao1952	TPAP-1906-1949
 Portuguese Guinea	fao1952	GNB-1886-1974
 Portuguese India	fao1952	PTIND-1816-1961
-ROM	mueller-synthetic-n	ROU-1947-2025
 SRM	mueller-synthetic-n	SCG-1992-2006
 Saar		SAA-1947-1957
 Saint Helena, Ascension and Tristan da Cunha	faostat	SHN-1834-1967
-Saint Pierre and Miquelon	faostat	SPM-1816-2025
-San Marino	faostat	SMR-1800-2025
-South Korea	faostat	KOR-1948-2025
 Spanish Guinea	fao1952	GNQ-1886-1968
 Sudan (former)	faostat	SUD-1956-2011
 Surinam	fao1952	SUR-1886-1954
 Syria		SYR-1946-1967
-Syria		SYR-1967-2025
 Syria and Lebanon	fao1952	SYL-1944-1953
-TRI	mueller-synthetic-n	TTO-1800-2025
-Tanzania	faostat	TZA-1964-2025
 Trieste UK ans US	fao1952	TRS-1947-1954
 Trieste UK-US	fao1952	TRS-1947-1954
 Trieste uk us	fao1952	TRS-1947-1954
@@ -115,52 +105,31 @@ USSR		F228-1921-1940
 USSR		F228-1940-1945
 USSR		F228-1945-1991
 USSR	faostat	F228-1945-1991
-United Kingdom	faostat	GBR-1921-2025
-United States Virgin Islands	faostat	VIR-1917-2025
-Virgin Is US	fao1952	VIR-1917-2025
-Virgin Islands US	fao1952	VIR-1917-2025
 Western Australia	sa_colonial	AUWA-1829-1900
 Western Sahara	faostat	ESH-1958-1975
-Western Sahara	faostat	ESH-1975-2025
-Windward Islands  Grenada	fao1952	GRD-1800-2025
 Yemen	fao1952	MKY-1918-1962
-ZAR	mueller-synthetic-n	COD-1960-2025
 Zanzibar and Pemba	fao1952	ZNZ-1890-1963
 algeria		DZA-1919-1962
-algeria		DZA-1962-2025
-australia		AUS-1901-2025
 botswana		BEC-1885-1966
-botswana		BWA-1966-2025
 british honduras		BLZ-1886-1970
-british west indies jamaica		JAM-1800-2025
-bulgaria		BGR-1940-2025
 burkina faso	iia	BFA-1919-1932
 burma		MMR-1826-1852
-burma		MMR-1885-2025
 burma	mitchell	MMR-LWR-1852-1885
 cape province		CAP-1800-1910
 china 22 provinces	fao1952	CHN-1932-1945
-china taiwan		TWN-1945-2025
 china, mainland		CHN-1800-1895
 china, mainland		CHN-1895-1913
-china, mainland		CHN-1950-2025
 china, manchuria province of		CHN-1947-1949
-china, manchuria province of		CHN-1950-2025
-cyprus	iia	CYP-1879-2025
 czech republic		F51-1947-1993
 czechoslovakia		F51-1947-1993
 czechoslovakia	juan	CZE-1804-1918
-denmark the faeroes	fao1952	FRO-1800-2025
 djibouti	iia	FRS-1884-1977
 egypt	mitchell	EGY-1885-1899
 ethiopia	fao1952	ETH-1936-1941
 ethiopia	iia	ETH-1936-1941
-france		FRA-1919-2025
-french guiana		GUF-1946-2025
 germany eastern		F77-1949-1990
 greece		GRC-1830-1881
 greece		GRC-1881-1913
-greece	whep-split-2026-06-29	GRC-1947-2025
 hawaii		HAWI-1898-1959
 indochina cambodia		KHM-1907-1953
 indochina viet nam		FID-1887-1954
@@ -177,11 +146,8 @@ pacific is us trust	fao1952	TTPI-1947-1994
 palau	iia	GCAR-1899-1914
 panama canal zone	fao1952	CZN-1903-1979
 reunion		REU-1816-1946
-reunion	fao1952	REU-1946-2025
-romania		ROU-1947-2025
 russian federation		F228-1920-1921
 russian federation		RUS-1991-2014
-russian federation		RUS-2014-2025
 serbia		F248-1918-1919
 serbia		F248-1920-1947
 serbia		F248-1947-1991
@@ -190,23 +156,13 @@ serbia		SCG-1992-2006
 serbia		SER-1816-1878
 serbia		SER-1913-1918
 serbia		SRB-2006-2008
-serbia		SRB-2008-2025
-south africa		ZAF-1910-2025
-south africa	iia	ZAF-1910-2025
 southern rhodesia		ZWE-1900-1953
-sudan		SDN-2011-2025
 sudan		SUD-1956-2011
-tanganyika		TAN-1922-1964
-tanzania		TAN-1922-1964
-union of south africa		ZAF-1910-2025
 united states and dependent territories	fao1952	USA-1867-1959
 united states of america		USA-1800-1803
 united states of america		USA-1803-1848
-united states of america		USA-1959-2025
 united states of america	iia	USA-1800-1803
 united states of america	iia	USA-1803-1848
-united states of america	iia	USA-1959-2025
-viet nam		VNM-1975-2025
 yemen	iia	MKY-1918-1962
 zambia	mitchell	NRH-1953-1964
 zimbabwe		SRH-1953-1964

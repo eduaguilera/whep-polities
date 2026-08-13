@@ -371,6 +371,35 @@ def mutate_touching_alias_chain(root, gpd, make_valid, affinity):
     return "extended a Kenya alias's year_end by 40 years into the next row's range"
 
 
+def mutate_alias_past_the_ceiling(root, gpd, make_valid, affinity):
+    """Push the "Andorra" alias's year_end one year past the 2025 ceiling.
+
+    This exists because of what issue 79 changed. validate_alias_year_coverage now SKIPS an
+    alias whose target's exclusive end_year is 2025, since a live polity has no real last
+    year for the alias to overclaim -- 67 of the 201 rows it was flagging were that and
+    nothing else. The risk of an exclusion is that it swallows the real thing too, so the
+    skip is conditioned on `year_end <= CEILING` and this case is the proof: AND-1800-2025
+    is exactly such a ceiling polity, and an alias reaching 2026 against it claims a year
+    that is past coverage on any reading. If the guard were dropped the gate would go quiet
+    on it, and no other gate compares an alias's year_end against its target's span."""
+    path = os.path.join(root, "data/final/label_alias_map.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    target = None
+    for r in rows:
+        if r.get("source_label") == "Andorra" and r.get("polity_code") == "AND-1800-2025":
+            target = r
+            break
+    assert target is not None, "no Andorra alias on AND-1800-2025 to mutate"
+    target["year_end"] = "2026"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return "set the Andorra alias's year_end to 2026, one year past the ceiling"
+
+
 
 def mutate_alias_to_dead_polity(root, gpd, make_valid, affinity):
     """Point one alias at a RETIRED polity. This is the invariant the whole dead_status
@@ -956,6 +985,13 @@ CASES = (
         "a code whose embedded years contradict its own columns",
     ),
     (
+        "validate_alias_year_coverage.py",
+        mutate_alias_past_the_ceiling,
+        "Andorra",
+        "an alias claiming a year past its target's span, in the one place the gate's "
+        "open-ended exclusion could have hidden it",
+    ),
+    (
         "validate_alias_chain_overlaps.py",
         mutate_touching_alias_chain,
         "kenya",
@@ -1136,6 +1172,9 @@ WRITABLE = {
     # gate needs `wiki/polities` staged at all or it sees zero pages and cannot fire.
     "validate_references.py": ("wiki/polities",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
+    # Rewrites the published alias map, so it needs a real copy rather than stage()'s
+    # symlink; the baseline txt is copied automatically.
+    "validate_alias_year_coverage.py": ("label_alias_map.csv",),
     # This case RENAMES a polity, so it needs a real copy of the CSV. Declaring the
     # baseline here instead let the default symlink stand, and the mutation wrote
     # straight through it into the repository — which two gates then correctly reported

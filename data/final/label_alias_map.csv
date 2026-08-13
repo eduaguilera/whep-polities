@@ -774,10 +774,14 @@ Syrian Arab Republic,faostat,1967,2024,SYR-1967-2025,Syrian Arab Republic,high,1
 Syrian Arab Republic,lassaletta-grassland-share,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-1967),high,
 Syrian Arab Republic,lassaletta-grassland-share,1967,2009,SYR-1967-2025,Syrian Arab Republic,high,
 Tajikistan,faostat,1992,2024,TJK-1991-2025,Tajikistan,high,71520
-tanganyika,,1922,1964,TAN-1922-1964,,medium,
+tanganyika,,1922,1960,TAN-1922-1964,,medium,
+tanganyika,,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high,
+tanganyika,,1964,1964,TZA-1964-2025,United Republic of Tanzania,high,
 tanzania,,1891,1919,TAN-1891-1920,,medium,
 tanzania,,1920,1921,TAN-1920-1922,,medium,
-tanzania,,1922,1964,TAN-1922-1964,,medium,
+tanzania,,1922,1960,TAN-1922-1964,,medium,
+tanzania,,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high,
+tanzania,,1964,1964,TZA-1964-2025,United Republic of Tanzania,high,
 Tanzania,faostat,1964,2025,TZA-1964-2025,United Republic of Tanzania,high,0
 Thailand,faostat,1961,2024,THA-1909-2025,Thailand,high,252783
 Thailand,lassaletta-grassland-share,1961,2009,THA-1909-2025,Thailand,high,
