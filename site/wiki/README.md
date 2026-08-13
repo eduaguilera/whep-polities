@@ -131,7 +131,21 @@ source files on disk.
   paragraph said they were "still present in the database" until the migration
   landed without it being updated, which is why validate_constants.py now checks
   this table against the enforced set.
-- `polygon_area_km2` — optional sanity-check.
+- `polygon_area_km2` — optional sanity-check, and it means **the area of the territory this
+  polygon represents**, not the area of the geometry this repository happens to ship.
+  Issue 71 asked which, because the two had come apart: `build_database.py` simplifies,
+  densifies and repairs before writing, and simplification alone once deleted 42% of the
+  Maldives (299.68 km² at source, 172.62 shipped, 791 atolls almost all smaller than the
+  0.01° tolerance). An archipelago could then state the truth and fail check A on a correct
+  polygon, or state the rendering and understate the country by 42%.
+
+  The two now coincide by construction, not by luck: the build's simplification carries an
+  area budget (`SIMPLIFY_MAX_AREA_CHANGE`) and `validate_simplification_loss.py` asserts
+  that every shipped polygon stays within 5% of the source it was cut from — measured
+  2026-08-13, the largest movement across all 735 is 2.1%. So check A's 25% tolerance tests
+  the territory, and a divergence means the declared figure or the binding is wrong, never
+  the rendering. Declare the official or source-stated area; do **not** re-measure it off
+  the shipped polygon, which is the tautology check A2 counts.
 - `predecessor`, `successor` — YAML lists of UPPERCASE `polity_code`s
   (`[]` for none). Drives the site's Graph tab edges and the coverage-
   chain integrity checks in lint. Every code listed here should also
