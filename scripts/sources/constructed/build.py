@@ -639,10 +639,15 @@ def build_hun_1940_1944() -> ogr.Geometry:
     so 1938 is ambiguous while 1939 selects the post-First-Vienna-Award polygon uniquely.
     The same class of defect as issue 99.
 
-    Understates the peak: the April 1941 Backa and Baranya strips (~10,000 km2) are not
-    included, because CShapes retains Yugoslavia's full pre-war footprint through the
-    occupation and GADM cannot isolate them either. The page records the peak as
-    ~172,277 km2 against this construction's ~152,500.
+    Understates the peak by 11.5% for TWO reasons, not one (re-measured for issue 106):
+    the April 1941 Backa and Baranya strips (~10,000 km2) are not included, because CShapes
+    retains Yugoslavia's full pre-war footprint through the occupation and GADM cannot
+    isolate them either; and neither is Subcarpathian Ruthenia (annexed March 1939,
+    ~12,000 km2), which the page long claimed was already inside this CShapes feature.
+    It is not -- the feature has 0 km2 inside modern Ukraine, and decomposes as Trianon
+    Hungary (92,991) plus 15,795 km2 inside modern Slovakia (the First Vienna Award slice),
+    which is the whole 108,785. The page records the peak as ~172,277 km2 against this
+    construction's 152,423; restoring both missing components gives ~174,500.
     """
     return _union(_cshapes2_feature(310, 1939), _northern_transylvania_1940())
 

@@ -26,6 +26,60 @@ Kinds:
 
 ---
 
+## hun-1940-1944-wrong-recipe-withdrawn
+**Date:** 2026-08-13
+**Touched:** HUN-1940-1944, HUN-1938-1947
+**Source:** cshapes-2.0, gadm-4.1
+**Kind:** decision
+
+Closes issue 106. The recipe [hun-1940-1944](polities/hun-1940-1944.md) declared,
+`cshapes-HUN310-1938+cshapes-ROU360-1920minus1940` (167,492 km²), was never
+attachable and was also geographically wrong: measured on CShapes 2.0 in EPSG:3035,
+ROU gwcode 360 is 296,087 km² for 1920-1940 and 237,379 km² for 1940-2019, and the
+difference is **58,707 km² spanning longitude 24.67..30.51** — Romania's *eastern*
+edge, i.e. Bessarabia, northern Bukovina and southern Dobruja, ceded to the USSR and
+Bulgaria. Northern Transylvania is on the *western* edge and cancels out of the
+difference entirely, because post-war Romania kept it and it is interior to both
+operands. The recipe would have given Hungary the Dniester and a stretch of Black Sea
+coast, non-contiguous with Hungary, while omitting the only territory the Second
+Vienna Award transferred. No magnitude check could have rejected it:
+`108,785 + 58,707 = 167,492` is exactly the area the page declared — the same failure
+mode as issue 46, where `IRN-1800-1828` was drawn as the United States and passed
+every area check because the two differ by 2%.
+
+The replacement is the `constructed` builder `HUN-1940-1944`,
+`ST_Union(CShapes-310@1939, northern-Transylvania-proxy)`, where the proxy is an
+eight-county GADM 4.1 adm1 union measuring 43,685 km² against the award's ~43,104
+(+1.3%). It measures **152,423 km²**, longitude 16.11..26.45 — western, contiguous —
+and is attached at `polygon_status: proxy`. The 201 layer-B rows matched here now have
+geometry. **`polygon_area_km2` 167,492 → 152,423.**
+
+Re-measuring the peak accounting found a second error the fix had inherited. The page
+attributed its whole shortfall to the April 1941 Backa and Baranja strips and stated
+Subcarpathian Ruthenia (~13,964 km²) was *"already in the CShapes 1938 polygon"*.
+**It is not: the CShapes gwcode-310 1938-1947 feature has 0 km² inside modern
+Ukraine.** That feature decomposes as Trianon Hungary (92,991 km², byte-identical in
+area to the 1920-1938 and 1947-2019 steps) plus 15,795 km² inside modern Slovakia —
+the First Vienna Award slice, 3,965 km² larger than the ~11,830 the page claimed.
+92,991 + 15,795 = 108,786, the whole feature, leaving no room for Ruthenia. So the
+polygon is Trianon + First Vienna Award + Northern Transylvania proxy
+(92,991 + 15,795 + 43,685 − 47 overlap = 152,423) and misses **two** peak components,
+not one: Ruthenia (annexed March 1939, ~12,000 km²) and the 1941 strips (~10,000).
+Restoring both gives ~174,500 against the stated 172,277 — 1.3% high, the same First
+Vienna discrepancy. **The shortfall is therefore 11.5%, not the 2.8% recorded.** This
+is the third residual-explanation the row has carried and the first that reconciles;
+issue 106's complaint that the page gave "two incompatible explanations for two
+different residuals, both invoking the same territory" is upheld.
+
+This entry also retires three statements the page and its predecessor kept asserting
+after the fix landed: the withdrawn recipe as the live *Polygon source*, a *Polygon
+blocked* section claiming `unassigned` and "no geometry", and
+[hun-1938-1947](polities/hun-1938-1947.md)'s "polygon_status=missing". The withdrawn
+recipe itself is kept on the page, labelled, because its self-consistent arithmetic is
+the evidence that magnitude cannot detect position. Left open: the 1941 peak extent
+(needs a historical GIS that models the occupation), the county-vs-award boundary
+residual, and issue 100's `ROU-1940-1947` declared 194,000 against 193,854 measured.
+
 ## lint-polygon-status-vocabulary
 **Date:** 2026-07-29
 **Touched:** ant-1961-2010, blx-1850-1999, rafr-1850-2021, rasi-1850-2021, reur-1850-2021, rlam-1850-2013, rnam-1850-2021, roce-1850-2021, row-1850-2023, hnd-1800-2025, mmr-1885-2025, aoi-1936-1941, fcc-1862-1887, fto-1920-1960, nup-1800-1897, rwb-1919-1922, saa-1947-1957, tan-1891-1920, tan-1920-1922, tas-1825-1900, gco-1884-2025
