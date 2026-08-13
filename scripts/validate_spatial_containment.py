@@ -60,7 +60,11 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Colonial federations and their groupings
     "AOF-1895-1960", "AEF-1910-1960", "CODRU-1922-1960", "FRN-1953-1964",
     "MASG-1946-1963",
-    "MLI-1890-1960", "SEN-1854-1886", "SEN-1886-1959", "KEN-1891-1894",
+    # SEN-1886-1959 renamed SEN-1886-1960 on 2026-08-13 (issue 77): its exclusive end_year
+    # moved 1959 -> 1960 so that the year 1959, which belonged to no Senegalese polity while
+    # 14 mitchell observations were being routed into it, is covered. Same polygon, same
+    # containment relationships; only the code changed.
+    "MLI-1890-1960", "SEN-1854-1886", "SEN-1886-1960", "KEN-1891-1894",
     "NGA-1886-1914", "ZWE-1891-1900",
     # AEF-1910-1960 added when its polygon was first built: French Equatorial Africa
     # is the union of Gabon, Ubangi-Shari, Chad and Middle Congo, so it necessarily

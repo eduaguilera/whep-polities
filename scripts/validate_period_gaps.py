@@ -14,7 +14,7 @@ territory in that year.
 `end_year` is EXCLUSIVE, so TCD-1912-1919 covers 1912-1918 and TCD-1920-1960 covers
 1920-1959: 1919 is in neither.
 
-IT CANNOT ASSERT ZERO, and that is the point of the baseline. 13 of the 19 gaps are
+IT CANNOT ASSERT ZERO, and that is the point of the baseline. Most of the gaps are
 correct -- they are periods when the entity did not exist as itself and another
 family holds the territory:
 
@@ -36,11 +36,27 @@ rather than only listing gaps:
     own summary always claimed it did.
     SYR 1945   covered by SYL-1944-1953, the "Syria and Lebanon" unit from fao1952
 
-Four are genuinely uncovered and all are latent today, since no source reaches them:
-TCD 1919, SEN 1959, LAO 1953, and CIV 1900-1901. Each is a real historical question
-rather than a slip -- Senegal was in the Mali Federation in 1959, Laos gained
-independence in October 1953 -- so they are baselined for issue 77 rather than
-patched.
+THE FOUR UNCOVERED YEARS ISSUE 77 LISTED ARE ALL FIXED as of 2026-08-13: TCD 1919,
+SEN 1959, LAO 1953 and CIV 1900-1901, each by moving one boundary of one row so the
+two spans meet. Their baseline entries are deleted above with the measurement that
+retired them. Two things the issue said about them turned out to be wrong:
+
+  * "No source currently has data in any of the four ... they are latent, not live."
+    Half true. mitchell has 14 Senegal observations for 1959 and 2 Lao observations
+    for 1953, and matched.csv showed them already routed to spans that formally ended
+    the year before, because the matcher reads end_year as INCLUSIVE. The dangerous
+    fallback the issue predicted was already happening; it was invisible because the
+    two candidate polygons are identical in both cases. TCD 1919 and CIV 1900-1901
+    were latent as claimed.
+
+  * "Each is a real historical question rather than a transcription slip." Not for
+    Chad or Côte d'Ivoire. Both were dropped CShapes 2.0 steps -- Chad's 1919-06-28
+    to 1920-03-16, Côte d'Ivoire's 1900-11-15 to 1902-03-19 -- with the same area as
+    their neighbours, so absorbing them was arithmetic, not judgement.
+
+What remains open is the one genuinely historical part: the MALI FEDERATION has no
+polity, so Federation-labelled data for 1959-1960 still has nowhere to go even though
+Senegal-labelled data now does.
 
 Usage:
   python3 scripts/validate_period_gaps.py
@@ -72,10 +88,21 @@ BASELINE = frozenset({
     ("GHA-1898-1956", "GHA-1957-2025"),
     ("HUN-1918-1919", "HUN-1920-1938"),
     ("KEN-1902-1906", "KEN-1907-1924"),
-    ("CIV-1893-1900", "CIV-1902-1932"),
+    # ("CIV-1893-1900", "CIV-1902-1932") removed 2026-08-13 (issue 77): the gap is CLOSED. The
+    # cause was not "an error in one of the two end dates" as the issue guessed but a CShapes 2.0
+    # step WHEP never transcribed -- 1900-11-15 to 1902-03-19, the move of the capital from
+    # Grand Bassam to Bingerville, at the same 321,307.9 km2 as the steps on either side. Absorbed
+    # by moving CIV-1893-1900's exclusive end_year to 1902 (renamed CIV-1893-1902), which loses no
+    # territory. Latent: the layer B has no Ivorian observation for 1900 or 1901.
     ("CZE-1804-1918", "CZE-1993-2025"),
     ("ERI-1889-1952", "ERI-1993-2025"),
-    ("LAO-1893-1953", "LAO-1954-2025"),
+    # ("LAO-1893-1953", "LAO-1954-2025") removed 2026-08-13 (issue 77): the gap is CLOSED, by
+    # moving LAO-1893-1953's exclusive end_year to 1954 (renamed LAO-1893-1954). NOT latent, which
+    # is where the issue was wrong: mitchell has 2 Lao observations for 1953 (rice paddy area and
+    # production) and data/compiled/pre1961/matched.csv shows both already routed to a row whose
+    # span formally ended in 1952, because the matcher reads end_year as inclusive. Independence
+    # fell on 22 October 1953, so the colonial row holds ten months of the year; every CShapes Laos
+    # step measures 229,904.6 km2, so the direction costs no precision.
     # ("LBY-1943-1949", "LBY-1949-1951") removed 2026-08-05: the gap is CLOSED, not
     # re-explained. LBY-1949-1951 previously started in 1950 while its own summary claimed to
     # "close the 1949-1951 gap", leaving 1949 uncovered and sending 28 rows labelled `Libya`
@@ -96,7 +123,12 @@ BASELINE = frozenset({
     # landed in the hole. They do not -- every one is 1937-1951, inside MAR-1911-1958.
     # The hole routes ZERO rows today. Real as coverage, empty in practice, and the
     # alias's 1904 records when French influence began rather than where data is.
-    ("SEN-1886-1959", "SEN-1960-2025"),
+    # ("SEN-1886-1959", "SEN-1960-2025") removed 2026-08-13 (issue 77): the gap is CLOSED, by
+    # moving SEN-1886-1959's exclusive end_year to 1960 (renamed SEN-1886-1960). NOT latent either:
+    # mitchell has 14 Senegal observations for 1959 and matched.csv shows all 14 already routed to
+    # the colonial row. Senegal entered the Mali Federation on 4 April 1959 and its boundaries did
+    # not move -- both CShapes Senegal steps measure 195,995.8 km2 -- so the earlier row takes the
+    # year. The Mali Federation itself still has no polity; see oq-sen-mali-federation-entity.
     # SER pair removed 2026-08-05: SER-2006-2008 is retired (a duplicate of
     # SRB-2006-2008, issue 43), so family SER ends at SER-1918-1945 and has no
     # consecutive pair to gap.
@@ -106,7 +138,15 @@ BASELINE = frozenset({
     # Serbian republic within SFR Yugoslavia in between. It is now a CROSS-FAMILY
     # hole (SER -> SRB) and this check is per-family, so it cannot see it. Issue 82.
     ("SYR-1922-1945", "SYR-1946-1967"),
-    ("TCD-1912-1919", "TCD-1920-1960"),
+    # ("TCD-1912-1919", "TCD-1920-1960") removed 2026-08-13 (issue 77): the gap is CLOSED, by
+    # moving TCD-1920-1960's start_year back to 1919 (renamed TCD-1919-1960). The three AEF
+    # siblings decided it: GAB-1919-1960, CAF-1919-1960 and COG-1919-1960 all start at the same
+    # 28 June 1919 post-Versailles restoration, and Chad is the only one of the four whose CShapes
+    # record is split again at 1920-03-17 (its separation from Oubangui-Chari). WHEP transcribed
+    # the second half of that split and dropped the first, which is why Chad alone had a 1919 hole.
+    # Both steps measure 1,271,888 km2, so nothing territorial is lost -- while extending
+    # TCD-1912-1919 instead would have published the 1911 Neukamerun cession dip (1,220,971 km2)
+    # for a year in which it had already been reversed. Latent: no Chad observation before 1953.
     ("VNM-1887-1954", "VNM-1975-2025"),
     ("ZWE-1900-1953", "ZWE-1964-1980"),
 })
