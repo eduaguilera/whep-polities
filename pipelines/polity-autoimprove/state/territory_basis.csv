@@ -7,6 +7,7 @@ AFG-1893-1919,Afghanistan (1893-1919),1893,1919,cshapes-2.0,1893.0,assigned,True
 AFG-1919-2025,Afghanistan,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 106y span (1919-2025); borders may have changed,84
 AGO-1816-2025,Angola,1816,2025,cshapes-2.0,1905.0,assigned,True,assumed_constant,True,False,single 1905 polygon held across a 209y span (1816-2025); borders may have changed,0
 AGO-1975-2025,"Angola (independent, 1975–2025)",1975,2025,cshapes-2.0,1975.0,assigned,False,assumed_constant,True,False,single 1975 polygon held across a 50y span (1975-2025); borders may have changed,0
+AIA-1800-2025,Anguilla,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ALB-1913-2025,Albania (1913-2025),1913,2025,cshapes-2.0,1913.0,assigned,True,assumed_constant,True,False,single 1913 polygon held across a 112y span (1913-2025); borders may have changed,534
 ALK-1867-1959,Territory of Alaska,1867,1959,gadm-4.1-adm1,2020.0,assigned,True,back_projected,True,True,polygon vintage 2020 is AFTER the period ends (1959) — later/modern border applied back,39
 AMI-1946-1953,Amami Islands (US-administered),1946,1953,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
@@ -164,7 +165,9 @@ CPV-1886-1975,Cape Verde (Portuguese colony),1886,1975,cshapes-2.0,1886.0,assign
 CPV-1975-2025,Cabo Verde,1975,2025,cshapes-2.0,1886.0,assigned,False,back_projected,True,False,polygon vintage 1886 is BEFORE the period starts (1975),0
 CRI-1800-2025,Costa Rica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,930
 CUB-1800-2025,Cuba,1800,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,False,single 1902 polygon held across a 225y span (1800-2025); borders may have changed,1153
+CUW-2010-2025,Curaçao,2010,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CXR-1946-1958,Christmas Island (under Singapore administration),1946,1958,gadm-4.1-adm0,2023.0,assigned,True,back_projected,True,False,polygon vintage 2023 is AFTER the period ends (1958) — later/modern border applied back,6
+CYM-1800-2025,Cayman Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CYP-1879-2025,Cyprus,1879,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 146y span (1879-2025); borders may have changed,1130
 CYR-1949-1951,Emirate of Cyrenaica,1949,1951,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,14
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,constructed,1860.0,assigned,True,assumed_constant,True,False,single 1860 polygon held across a 114y span (1804-1918); borders may have changed,37
@@ -291,6 +294,7 @@ GHA-1821-1888,Ghana (to 1888),1821,1888,cshapes-2.0,1886.0,assigned,True,assumed
 GHA-1888-1898,Ghana (1888-1898),1888,1898,cshapes-2.0,1888.0,assigned,True,measured,False,False,vintage 1888 faithful to period 1888-1898,2
 GHA-1898-1956,Ghana (1898-1956),1898,1956,cshapes-2.0,1898.0,assigned,True,assumed_constant,True,True,single 1898 polygon held across a 58y span (1898-1956); borders may have changed,315
 GHA-1957-2025,Ghana,1957,2025,cshapes-2.0,1957.0,assigned,True,assumed_constant,True,False,single 1957 polygon held across a 68y span (1957-2025); borders may have changed,29
+GIB-1800-2025,Gibraltar,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 GIN-1894-1958,Guinea (1894-1958),1894,1958,cshapes-2.0,1894.0,assigned,True,assumed_constant,True,False,single 1894 polygon held across a 64y span (1894-1958); borders may have changed,262
 GIN-1958-2025,Guinea,1958,2025,cshapes-2.0,1958.0,assigned,True,assumed_constant,True,False,single 1958 polygon held across a 67y span (1958-2025); borders may have changed,12
 GKM-1884-1912,German Kamerun (1884-1912),1884,1912,cshapes-2.0,1905.0,assigned,True,assumed_constant,True,True,single 1905 polygon held across a 28y span (1884-1912); borders may have changed,12
@@ -443,6 +447,7 @@ LVA-1940-1991,Latvian SSR,1940,1991,cshapes-2.0,1918.0,assigned,True,back_projec
 LVA-1991-2025,Latvia,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 LZI-1800-1890,Lozi Kingdom (Barotseland),1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MAC-1800-2025,"China, Macao SAR",1800,2025,gadm-4.1-adm1,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MAF-2007-2025,Saint-Martin (French part),2007,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MAN-1932-1945,Manchukuo (1932-1945),1932,1945,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,100
 MAN-1945-1950,"Manchuria (region, 1945-1950)",1945,1950,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,10
 MAR-1911-1958,Morocco (to 1958),1911,1958,cshapes-2.0,1912.0,assigned,True,assumed_constant,True,False,single 1912 polygon held across a 47y span (1911-1958); borders may have changed,1283
@@ -473,6 +478,7 @@ MNE-1913-1918,Montenegro (1913-1918),1913,1918,cshapes-2.0,1915.0,assigned,True,
 MNE-2006-2025,Montenegro,2006,2025,cshapes-2.0,2006.0,assigned,False,measured,False,False,vintage 2006 faithful to period 2006-2025,0
 MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,cshapes-2.0,1921.0,assigned,True,measured,False,False,vintage 1921 faithful to period 1911-1921,0
 MNG-1921-2025,Mongolia,1921,2025,cshapes-2.0,1921.0,assigned,True,assumed_constant,True,False,single 1921 polygon held across a 104y span (1921-2025); borders may have changed,8
+MNP-1986-2025,Northern Mariana Islands,1986,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MOR-1800-1904,Morocco (to 1904),1800,1904,cliopatria,1800.0,assigned,True,assumed_constant,True,False,single 1800 polygon held across a 104y span (1800-1904); borders may have changed,0
 MOR-1904-1956,Morocco (1904-1956) [superseded],1904,1956,cshapes-2.0,1902.0,assigned,True,back_projected,True,False,polygon vintage 1902 is BEFORE the period starts (1904),0
 MOR-1956-1958,Morocco (1956-1958),1956,1958,cshapes-2.0,1912.0,assigned,True,back_projected,True,False,polygon vintage 1912 is BEFORE the period starts (1956),0
@@ -494,6 +500,7 @@ MYS-1946-1957,Malayan Union / Federation of Malaya (1946-1957),1946,1957,cshapes
 MYS-1957-1963,Malaysia (1957-1963),1957,1963,cshapes-2.0,1957.0,assigned,True,measured,False,True,vintage 1957 faithful to period 1957-1963; footnote coverage caveat (FAO/IIA yearbook),0
 MYS-1963-1965,Malaysia (1963-1965),1963,1965,cshapes-2.0,1963.0,assigned,False,measured,False,False,vintage 1963 faithful to period 1963-1965,0
 MYS-1965-2025,Malaysia,1965,2025,cshapes-2.0,1965.0,assigned,False,assumed_constant,True,False,single 1965 polygon held across a 60y span (1965-2025); borders may have changed,0
+MYT-1800-2025,Mayotte,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 NAM-1884-1886,Namibia,1884,1886,cshapes-2.0,1920.0,assigned,True,back_projected,True,False,polygon vintage 1920 is AFTER the period ends (1886) — later/modern border applied back,0
 NAM-1886-1915,Namibia (1886-1915),1886,1915,cshapes-2.0,1887.0,assigned,True,assumed_constant,True,False,single 1887 polygon held across a 29y span (1886-1915); borders may have changed,21
 NAM-1915-1920,Namibia (1915-1920),1915,1920,cshapes-2.0,1915.0,assigned,True,measured,False,False,vintage 1915 faithful to period 1915-1920,0
@@ -546,6 +553,7 @@ PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",1903,1979,cshapes-2
 PAN-1979-2025,Panama (post-Canal Zone),1979,2025,cshapes-2.0,1903.0,assigned,False,back_projected,True,False,polygon vintage 1903 is BEFORE the period starts (1979),0
 PAP-1800-1870,Papal States,1800,1870,cliopatria,1814.0,assigned,True,assumed_constant,True,False,single 1814 polygon held across a 70y span (1800-1870); borders may have changed,0
 PAPNG-1920-1949,Papua and New Guinea (combined reporting unit),1920,1949,constructed,1930.0,assigned,True,assumed_constant,True,False,single 1930 polygon held across a 29y span (1920-1949); borders may have changed,0
+PCN-1800-2025,Pitcairn Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 PER-1825-1884,Peru (to 1884),1825,1884,cshapes-2.0,1886.0,assigned,True,back_projected,True,False,polygon vintage 1886 is AFTER the period ends (1884) — later/modern border applied back,11
 PER-1825-1909,Peru (to 1909),1825,1909,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 84y span (1825-1909); borders may have changed,32
 PER-1884-1909,Peru (1884-1909),1884,1909,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 25y span (1884-1909); borders may have changed,0
@@ -680,6 +688,7 @@ TAN-1891-1920,Tanzania (1891-1920),1891,1920,none,,unassigned,True,unassigned,Tr
 TAN-1920-1922,Tanzania (1920-1922),1920,1922,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),18
 TAN-1922-1964,Tanzania (1922-1964),1922,1961,cshapes-2.0,1946.0,assigned,True,assumed_constant,True,False,single 1946 polygon held across a 39y span (1922-1961); borders may have changed,647
 TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),195
+TCA-1800-2025,Turks and Caicos Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 TCD-1900-1912,Chad (1900-1912),1900,1912,cshapes-2.0,1900.0,assigned,True,measured,False,False,vintage 1900 faithful to period 1900-1912,0
 TCD-1912-1919,Chad (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,vintage 1912 faithful to period 1912-1919,0
 TCD-1920-1960,Chad (1920-1960),1920,1960,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,False,single 1920 polygon held across a 40y span (1920-1960); borders may have changed,46

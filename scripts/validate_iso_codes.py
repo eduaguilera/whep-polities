@@ -53,6 +53,11 @@ DEAD_STATUS = ("retired", "superseded")
 #                  the same ISO code as its twin would create an ambiguity worse than the
 #                  non-ISO value. Fix the duplicate first.
 EXEMPT = {
+    # PCI is FAOSTAT's own code for area 164, the Pacific Islands Trust Territory, and no
+    # ISO 3166-1 alpha-3 exists for a dissolved UN trusteeship. Assigned on 2026-08-13 so
+    # that area's 489 rows of land-use data (1961-1990) can reach the polity that already
+    # models it, instead of a new row duplicating the same ground (issue 209).
+    "TTPI-1947-1994",
     "ICN-1800-2025",
     "KOS-2008-2025",
     "SCG-1992-2006",
