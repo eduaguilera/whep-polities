@@ -14,6 +14,24 @@ Three independent tests:
      and compare against the page's own polygon_area_km2. A large divergence
      means one of them is wrong.
 
+     WHICH GEOMETRY THIS IS, since issue 71 found that the answer mattered. It is
+     the SHIPPED geometry, after build_database.py's simplify/densify/repair
+     passes -- not the source polygon the page names. Those were once different
+     things: simplification at 0.01 degrees deleted 42% of MDV-1800-2025's 791
+     atolls, so the Maldives could declare 299.68 and fail this check on a
+     CORRECT polygon, or declare 172.62 and understate the country by 42%.
+     `polygon_area_km2` means the territory's area (wiki/README.md), so the
+     second reading was never available and the check was measuring the wrong
+     object.
+
+     It is now safe, and the safety is asserted rather than assumed:
+     build_database.py's simplification carries an area budget and
+     validate_simplification_loss.py fails if any shipped polygon moves more
+     than 5% from the source area recorded in polygon_feature_index.csv. The
+     largest movement across all 735 is 2.1% (2026-08-13), well inside this
+     check's 25%, so a divergence here is the declared figure or the binding --
+     never the rendering.
+
   C. CLAIMED BUT ABSENT — a polygon_status of assigned/proxy/estimate asserts a
      polygon exists; fail if the build attached none (e.g. polygon_feature_id
      written as prose, "composed-union: cowcode=452 UNION cowcode=462", which

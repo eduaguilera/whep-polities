@@ -332,6 +332,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_polygons.py
 
+      # The polygon we publish must be the polygon we read (issue 71). build_database.py
+      # simplifies, densifies and repairs before writing, and simplification alone once
+      # deleted 42% of the Maldives -- which made `polygon_area_km2` unfillable, because the
+      # page could either state the truth and fail check A or state the rendering and
+      # understate the country. The reference is polygon_feature_index.csv's `area_km2`,
+      # measured from the raw source, so this needs no data/geodata and runs here.
+      - name: Shipped polygons still measure what their sources measure
+        if: '!cancelled()'
+        run: python3 scripts/validate_simplification_loss.py
+
       - name: No new invalid geometry in the published GeoPackage
         if: '!cancelled()'
         run: python3 scripts/validate_polygon_validity.py

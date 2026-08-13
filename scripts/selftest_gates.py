@@ -607,6 +607,41 @@ def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
     return f"rewrote {hit}'s declared area to {newval:,}, exactly what its polygon measures"
 
 
+def mutate_oversimplified_archipelago(root, gpd, make_valid, affinity):
+    """Thin an archipelago's polygon at the build's own default tolerance, which is the
+    defect issue 71 describes, reproduced exactly rather than modelled.
+
+    `SimplifyPreserveTopology(0.01)` -- 0.01 degrees, about 1.1 km at the equator -- is
+    what `build_database.py` applied unconditionally until the area budget landed on
+    2026-08-10. On the Maldives, 791 atolls almost all smaller than that, it deleted 42% of
+    the country: 299.68 km2 at source, 172.62 km2 shipped. The page could then declare the
+    truth and fail check A on a correct polygon, or declare the rendering and understate
+    the country by 42%.
+
+    NO OTHER GATE HERE CAN SEE IT, and that is why the case exists. The loss is planar and
+    internally consistent: the polygon stays valid, stays inside its neighbours, stays
+    s2-loadable, keeps its binding and its feature year, and overlaps nothing new. Check A
+    is the one gate that compares an area to anything, and it cannot fail here for two
+    independent reasons -- MDV declares `estimate`, and check A fails only on `assigned`;
+    and for the smaller members of the same class (VAT 0.53 km2, TKL 15.7, NRU 22, TUV 42)
+    the --min-km2 200 filter exempts the row outright, which is every polity small enough
+    for 1.1 km of thinning to matter, by construction. NOT ASSUMED: run against a freshly
+    mutated copy, `validate_polygons.py` prints PASS and exits 0 on exactly this mutation.
+
+    The mutation is milder than the original defect (shapely/GEOS `simplify` leaves 245
+    km2 where GDAL's left 172) and is left that way deliberately: a case that only fires on
+    the worst instance of a class proves less than one that fires on a mild one.
+    """
+    g = gpd.read_file(GPKG)
+    target = "MDV-1800-2025"
+    hit = g.polity_code == target
+    assert hit.any(), f"{target} absent from the GeoPackage"
+    g.loc[hit, "geometry"] = g.loc[hit, "geometry"].simplify(0.01, preserve_topology=True)
+    write_gpkg(g, root)
+    return (f"thinned {target}'s 791 atolls at the build's default 0.01 degrees, deleting "
+            f"a fifth of the country while its source area stays on record")
+
+
 def mutate_site_shows_withdrawn(root, gpd, make_valid, affinity):
     """Put a retired polity back into site/polities.geojson, which is how the site
     drew Argentina twice.
@@ -1059,6 +1094,13 @@ CASES = (
         "a declared area overwritten with its own polygon's measurement, which silences check A",
     ),
     (
+        "validate_simplification_loss.py",
+        mutate_oversimplified_archipelago,
+        "MDV-1800-2025",
+        "an archipelago thinned by the build's own simplification pass, which makes "
+        "`polygon_area_km2` unfillable and which check A skips by construction",
+    ),
+    (
         "validate_site_outputs.py",
         mutate_site_shows_withdrawn,
         "ARG-1800-2025",
@@ -1201,6 +1243,15 @@ WRITABLE = {
     # NOTE FOR THE NEXT AUTHOR: this is the ONLY gate that both stages the GeoPackage and mutates
     # it, and that combination is a trap -- see write_gpkg(). Use that helper, not to_file().
     "validate_polygons.py": ("polities_database.gpkg",),
+    # The GeoPackage is mutated, so it must be a real copy, and write_gpkg() must be used to
+    # replace it -- see that helper: `to_file` over an existing .gpkg APPENDS a layer and the
+    # gate reads the unmutated first one. The feature index is the gate's REFERENCE and is
+    # deliberately left untouched by the mutation: the defect is that the shipped geometry
+    # stopped matching a source area that is still correctly on record.
+    "validate_simplification_loss.py": (
+        "polities_database.gpkg",
+        "polygon_feature_index.csv",
+    ),
     # Both files as real copies: the case rewrites the map, and the gate reads polity spans from
     # the CSV to know what "past coverage" means. With the CSV symlinked the read still works, but
     # copying keeps the case honest about what it touches.
