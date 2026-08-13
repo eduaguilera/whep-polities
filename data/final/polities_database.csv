@@ -373,9 +373,9 @@ ISL-1800-2025,Iceland,1800,2025,national,ISL,395,Europe,draft,2026-04-13,cshapes
 ISR-1948-1967,Israel (1948-1967),1948,1967,national,ISR,666,Asia,draft,2026-04-13,cshapes-2.0,666,1948,assigned,,PAL-1920-1948,ISR-1967-1979
 ISR-1967-1979,Israel (1967-1979),1967,1979,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1967,assigned,,ISR-1948-1967,ISR-1979-2025
 ISR-1979-2025,Israel,1979,2025,national,ISR,666,Asia,draft,2026-04-12,cshapes-2.0,666,1979,assigned,,ISR-1967-1979,
-ITA-1861-1866,Italy (1861-1866),1861,1866,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,estimate,,SAR-1800-1860; PAP-1800-1870,ITA-1866-1870
+ITA-1861-1866,Italy (1861-1866),1861,1866,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1862,assigned,,SAR-1800-1860; PAP-1800-1870,ITA-1866-1870
 ITA-1861-1919,Italy (to 1919),1861,1919,national,ITA,325,Europe,superseded,2026-04-12,cshapes-europe,325,1886,assigned,,SAR-1800-1860; PAP-1800-1870,ITA-1919-2025
-ITA-1866-1870,Italy (1866-1870),1866,1870,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,estimate,,ITA-1861-1866,ITA-1870-1919
+ITA-1866-1870,Italy (1866-1870),1866,1870,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1867,assigned,,ITA-1861-1866,ITA-1870-1919
 ITA-1870-1919,Italy (1870-1919),1870,1919,national,ITA,325,Europe,draft,2026-06-29,cshapes-europe,325,1886,assigned,,ITA-1866-1870,ITA-1919-2025
 ITA-1919-2025,Italy,1919,2025,national,ITA,325,Europe,draft,2026-04-12,cshapes-2.0,325,1919,assigned,,ITA-1861-1919,
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,colonial,GRC,325,Europe,draft,2026-06-25,,,,unassigned,,OTT-1908-1912,GRC-1947-2025
@@ -664,7 +664,7 @@ SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,natio
 SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,cshapes-2.0,626,2011,assigned,,SUD-1956-2011,
 STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,403,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
-SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,,Africa,draft,2026-04-16,cshapes-2.0,625,1914,assigned,,SUD-1899-1934,SUD-1956-2011
+SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,,Africa,draft,2026-04-16,cshapes-2.0,625,1934,assigned,,SUD-1899-1934,SUD-1956-2011
 SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SDN,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
 SUR-1886-1954,Dutch Guiana,1886,1954,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1886,assigned,144985,,SUR-1954-1975
 SUR-1954-1975,Surinam (Autonomous),1954,1975,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1954,assigned,144985,SUR-1886-1954,SUR-1975-2025

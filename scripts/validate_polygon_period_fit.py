@@ -30,6 +30,12 @@ WHAT THEY FOUND, so the value is not hypothetical:
   ANG x2          Angola lagged by one across two rows (issue 122)
   SNI-1906-1913   bound to the pre-Lagos-merger polygon (issue 51)
   SWA, TCD        the 1911 Neukamerun cession, lagged in two more families (issue 125)
+  ITA x2          both pre-1870 rows on the 1886 vintage, +13.8% and +5.9% against external
+                  figures, while CShapes-Europe's own 1862-1866 and 1867-1870 steps were
+                  sitting unused in the same feature (issue 121)
+  SUD-1934-1956   published the 1914-1934 step, so the 1934 Sarra Triangle cession to Italian
+                  Libya (-92,582 km2) never reached the map; the page had described the
+                  correct step all along (issue 121)
 
 WHY AN AREA CHECK FINDS NONE OF THEM: every one of those rows declared no
 `polygon_area_km2`, so `validate_polygons`' comparison -- opt-in via that hand-entered field
@@ -39,12 +45,16 @@ alternatives rather than against a number someone typed.
 
 BOTH SIGNALS ARE NOISY WITHOUT THEIR SECOND CLAUSE, and the clauses are what make them
 usable:
-  - 83 live rows have an out-of-span feature_year; most are inherent, because GADM and
+  - 72 live rows have an out-of-span feature_year; most are inherent, because GADM and
     `constructed` are modern-only and a historical row MUST use a modern vintage. Requiring
-    a TEMPORAL source and a differently-sized in-span step gives 8.
-  - 115 consecutive pairs share geometry, and most are correct: decolonisation usually
-    preserves borders (BDI-1922-1962 -> BDI-1962-2025). Requiring the same binding AND an
-    available alternative gives 5.
+    a TEMPORAL source and a differently-sized in-span step gives 3.
+  - 107 consecutive pairs share geometry, 53 of them from the same binding, and most are
+    correct: decolonisation usually preserves borders (BDI-1922-1962 -> BDI-1962-2025), as
+    does independence (SUD-1934-1956 -> SUD-1956-2011). Requiring an available alternative
+    as well gives 1.
+    (Counted 2026-08-13, after issue 121. The figures this paragraph carried before -- 83 /
+    8 and 115 / 5 -- were measured before issues 120-125 were fixed; the fixes both removed
+    flags and removed rows from the raw populations.)
 
 Usage:
   python3 scripts/validate_polygon_period_fit.py
@@ -75,8 +85,16 @@ TOL = 0.02          # a step counts as "differently sized" beyond 2%
 BASELINE = frozenset({
     # --- documented proxies (signal A) ---
     "A:F237-1954-1975",
-    "A:ITA-1861-1866",
-    "A:ITA-1866-1870",
+    # A:ITA-1861-1866 and A:ITA-1866-1870 LEFT this list on 2026-08-13. They were filed as
+    # "documented proxies", and the pages did document them -- both said the 1886 vintage
+    # overstated the row and that "no such polygon exists in CShapes 2.0 or CShapes-Europe
+    # (Italy has a single backdated polygon)". That sentence was false, and being documented
+    # is what kept it unexamined for six weeks. CShapes-Europe Id 325 carries FIVE steps
+    # (1862-1866 = 247,820; 1867-1870 = 272,655; 1871-1885 = 284,509; 1886-1918 = 284,718;
+    # 1919-2023 = 300,106), and their capital fields read Turin / Florence / Rome / Rome /
+    # Rome -- the actual sequence of Italian capitals. The two rows are now on 1862 and 1867,
+    # both in span, so signal A no longer fires and "B:ITA-1861-1866 / ITA-1866-1870" and
+    # "B:ITA-1866-1870 / ITA-1870-1919" below are gone with them.
     "A:ROU-1918-1919",
     "A:TUR-1800-1913",
     # --- undecided (signal A), issue 123 ---
@@ -90,7 +108,20 @@ BASELINE = frozenset({
     # inside 1800-1903, and the territory drops 387,614 -> 358,422 across them, so one geometry
     # overstates the row's last two decades by 7.5%. That is issue 22's class, recorded in the
     # page's polygon_vintage_note, and splitting at 1885 would fix it.
-    "A:SUD-1934-1956",     # -3.6%, within simplification and boundary-vintage noise
+    # A:SUD-1934-1956 LEFT this list on 2026-08-13, and its note -- "-3.6%, within
+    # simplification and boundary-vintage noise" -- was a misreading. CShapes 625 dates the
+    # step-down to 20 July 1934, the date of the Anglo-Italian agreement ceding the Sarra
+    # Triangle to Italian Libya, and differencing the two steps gives 92,581 km2 lost, 0
+    # gained, in ONE block bounded 19.07E-25.00E / 19.51N-22.00N -- the Sarra Triangle's own
+    # corner. Simplification does not remove area on one side only, in one contiguous piece.
+    # Worth generalising: a percentage on its own cannot distinguish simplification from a
+    # cession, but the source's CHANGE DATE and the SHAPE of the difference can, and this
+    # gate already has both in hand.
+    #
+    # The row's page had named the 1934-1955 step and its 2,486,943 km2 area all along while
+    # the frontmatter said 1914, so the published geometry was the 1914-1934 step and was
+    # byte-identical to SUD-1899-1934 (2,580,191 km2 measured). Declared recipe right,
+    # binding wrong -- which is why "B:SUD-1899-1934 / SUD-1934-1956" below is gone too.
     # A:TUR-1913-1914 LEFT this list on 2026-08-12, and the note it carried -- "points FORWARD
     # (1914 for a 1913 row); every fixed case pointed back" -- described the symptom and drew the
     # wrong conclusion from it. Pointing forward was not a quirk to tolerate: fy=1914 resolved to
@@ -100,8 +131,10 @@ BASELINE = frozenset({
     # 1913 -- so it is now a constructed row selecting the step by its bounds. See
     # build_tur_1913_1914 and _cshapes2_step.
     # --- documented / undecided (signal B), issues 121 and 123 ---
-    "B:ITA-1861-1866 / ITA-1866-1870",
-    "B:ITA-1866-1870 / ITA-1870-1919",
+    # B:ITA-1861-1866 / ITA-1866-1870 and B:ITA-1866-1870 / ITA-1870-1919 LEFT this list on
+    # 2026-08-13; see the A:ITA note above. All three rows published the SAME 284,847 km2,
+    # and the fix moved the first two off it (247,820 and 272,655) while leaving
+    # ITA-1870-1919 alone -- post-Rome Italy really is what the 1886 vintage shows.
     # B:HUN-1944-1947 / HUN-1947-2025 -- RESOLVED AS A DELIBERATE CHOICE on 2026-08-12, and the
     # old note's reading was back to front. It said "the LATER row is right: 93,004 km2 matches
     # modern Hungary, so the earlier row is the suspect". The earlier row is not a suspect; it is
@@ -117,7 +150,11 @@ BASELINE = frozenset({
     # doing if a second documented duplicate appears; with one, the baseline entry is cheaper than
     # the code change.
     "B:HUN-1944-1947 / HUN-1947-2025",
-    "B:SUD-1899-1934 / SUD-1934-1956",
+    # B:SUD-1899-1934 / SUD-1934-1956 LEFT this list on 2026-08-13; see the A:SUD note above.
+    # SUD-1934-1956 is now on the 1934 vintage, so its geometry is the post-Sarra-Triangle
+    # 2,487,112 km2 and no longer matches its predecessor. It DOES still match its successor
+    # SUD-1956-2011, which is correct and does not fire signal B: independence changed no
+    # borders, and CShapes offers no differently-sized step inside 1956-2010.
 })
 
 PROXY_RE = re.compile(
