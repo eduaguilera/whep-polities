@@ -25,6 +25,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 20,1961,1965,BEC-1885-1966,Botswana,BWA,manual-route,high,211714
 20,1966,2024,BWA-1966-2025,Botswana,BWA,manual-route,high,211714
 21,1961,2024,BRA-1909-2025,Brazil,BRA,iso-equal,high,255068
+22,1850,2024,ABW-1800-2025,Aruba,ABW,registry,high,0
 23,1961,1969,BLZ-1886-1970,Belize,BLZ,iso-equal,high,177780
 23,1970,1980,BLZ-1970-1981,Belize,BLZ,iso-equal,high,177780
 23,1981,2024,BLZ-1981-2025,Belize,BLZ,iso-equal,high,177780
@@ -38,6 +39,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 33,1961,2024,CAN-1949-2025,Canada,CAN,iso-equal,high,252243
 35,1961,1974,CPV-1886-1975,Cabo Verde,CPV,iso-equal,high,150407
 35,1975,2024,CPV-1975-2025,Cabo Verde,CPV,iso-equal,high,150407
+36,1850,2024,CYM-1800-2025,Cayman Islands,CYM,registry,high,0
 37,1961,2024,CAF-1960-2025,Central African Republic,CAF,iso-equal,high,155872
 38,1961,2024,LKA-1800-2025,Sri Lanka,LKA,iso-equal,high,229589
 39,1961,2024,TCD-1960-2025,Chad,TCD,iso-equal,high,134061
@@ -75,6 +77,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 68,1961,2024,FRA-1919-2025,France,FRA,iso-equal,high,269731
 69,1961,2006,GUF-1946-2025,French Guiana,GUF,manual-route,high,8934
 70,1961,2024,PYF-1800-2025,French Polynesia,PYF,iso-equal,high,170270
+71,1850,2024,ATF-1800-2025,French Southern and Antarctic Territories,ATF,registry,high,0
 72,1961,1976,FRS-1884-1977,Djibouti,DJI,manual-route,high,140634
 72,1977,2024,FRS-1977-2025,Djibouti,DJI,manual-route,high,140634
 73,1992,2024,GEO-1991-2025,Georgia,GEO,iso-equal,high,101509
@@ -84,6 +87,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 79,1990,2024,DEU-1990-2025,Germany,DEU,iso-equal,high,266337
 80,1992,2024,BIH-1992-2025,Bosnia and Herzegovina,BIH,iso-equal,high,103643
 81,1961,2024,GHA-1957-2025,Ghana,GHA,iso-equal,high,191734
+82,1850,2024,GIB-1800-2025,Gibraltar,GIB,registry,high,0
 83,1961,2024,KIR-1800-2025,Kiribati,KIR,iso-equal,high,105746
 84,1961,2024,GRC-1947-2025,Greece,GRC,iso-equal,high,268331
 85,1850,2024,GRL-1800-2025,Greenland,GRL,registry,high,0
@@ -94,6 +98,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 90,1961,2024,GIN-1958-2025,Guinea,GIN,iso-equal,high,152542
 91,1961,2024,GUY-1800-2025,Guyana,GUY,iso-equal,high,174251
 93,1961,2024,HTI-1800-2025,Haiti,HTI,iso-equal,high,152458
+94,1929,2024,VAT-1929-2025,Holy See,VAT,registry,high,0
 95,1961,2024,HND-1800-2025,Honduras,HND,iso-equal,high,213241
 96,1961,2024,HKG-1842-2025,"China, Hong Kong SAR",HKG,iso-equal,high,231444
 97,1961,2024,HUN-1947-2025,Hungary,HUN,iso-equal,high,255854
@@ -175,6 +180,8 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 160,1961,2024,NIU-1800-2025,Niue,NIU,iso-equal,high,22055
 161,1914,2024,NFK-1914-2025,Norfolk Island,NFK,registry,high,0
 162,1961,2024,NOR-1800-2025,Norway,NOR,iso-equal,high,231582
+163,1986,2024,MNP-1986-2025,Northern Mariana Islands,MNP,registry,high,0
+164,1947,1993,TTPI-1947-1994,Pacific Islands Trust Territory,PCI,registry,high,0
 165,1961,1970,PAK-1949-1971,Pakistan,PAK,iso-equal,high,233714
 165,1971,2024,PAK-1971-2025,Pakistan,PAK,iso-equal,high,233714
 166,1961,1978,PAN-1903-1979,Panama,PAN,iso-equal,high,196061
@@ -185,6 +192,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 169,1961,2024,PRY-1938-2025,Paraguay,PRY,iso-equal,high,194468
 170,1961,2024,PER-1942-2025,Peru,PER,iso-equal,high,239266
 171,1961,2024,PHL-1800-2025,Philippines,PHL,iso-equal,high,234546
+172,1850,2024,PCN-1800-2025,Pitcairn Islands,PCN,registry,high,0
 173,1961,2024,POL-1945-2025,Poland,POL,iso-equal,high,236068
 174,1961,2024,PRT-1800-2025,Portugal,PRT,iso-equal,high,262025
 175,1961,1973,GNB-1886-1974,Guinea-Bissau,GNB,iso-equal,high,127361
@@ -240,11 +248,13 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 215,1964,2024,TZA-1964-2025,United Republic of Tanzania,TZA,iso-equal,high,219893
 216,1961,2024,THA-1909-2025,Thailand,THA,iso-equal,high,252783
 217,1961,2024,TGO-1960-2025,Togo,TGO,iso-equal,high,186647
+218,1850,2024,TKL-1800-2025,Tokelau,TKL,registry,high,0
 219,1961,2024,TON-1800-2025,Tonga,TON,iso-equal,high,46569
 220,1961,2024,TTO-1800-2025,Trinidad and Tobago,TTO,iso-equal,high,211626
 221,1961,2024,OMN-1856-2025,Oman,OMN,iso-equal,high,144474
 222,1961,2024,TUN-1881-2025,Tunisia,TUN,iso-equal,high,226193
 223,1961,2024,TUR-1920-2025,Türkiye,TUR,iso-equal,high,258437
+224,1850,2024,TCA-1800-2025,Turks and Caicos Islands,TCA,registry,high,0
 225,1961,2024,ARE-1892-2025,United Arab Emirates,ARE,iso-equal,high,201802
 226,1961,1961,UGA-1926-1962,Uganda,UGA,iso-equal,high,200589
 226,1962,2024,UGA-1962-2025,Uganda,UGA,iso-equal,high,200589
@@ -264,6 +274,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 239,1850,2024,VGB-1800-2025,British Virgin Islands,VGB,registry,high,0
 240,1850,1916,DWI-1800-1917,United States Virgin Islands,VIR,registry,high,0
 240,1917,2024,VIR-1917-2025,United States Virgin Islands,VIR,registry,high,0
+243,1850,2024,WLF-1800-2025,Wallis and Futuna Islands,WLF,registry,high,0
 244,1961,2024,WSM-1900-2025,Samoa,WSM,iso-equal,high,141994
 248,1961,1990,F248-1947-1991,Yugoslav SFR,YUG,manual-replace,high,112967
 248,1991,1991,F248-1991-1992,Yugoslav SFR,YUG,manual-replace,high,112967
@@ -274,9 +285,14 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 251,1964,2024,ZMB-1964-2025,Zambia,ZMB,iso-equal,high,199421
 255,2000,2024,BEL-1831-2025,Belgium,BEL,iso-equal,high,102668
 256,2000,2024,LUX-1839-2025,Luxembourg,LUX,iso-equal,high,94451
+258,1850,2024,AIA-1800-2025,Anguilla,AIA,registry,high,0
+270,1850,2024,MYT-1800-2025,Mayotte,MYT,registry,high,0
+271,1850,2024,SGS-1800-2025,South Georgia and the South Sandwich Islands,SGS,registry,high,0
 272,2006,2007,SRB-2006-2008,Serbia,SRB,iso-equal,high,68875
 272,2008,2024,SRB-2008-2025,Serbia,SRB,iso-equal,high,68875
 273,2006,2024,MNE-2006-2025,Montenegro,MNE,iso-equal,high,56042
 276,2012,2024,SDN-2011-2025,Sudan,SDN,iso-equal,high,35724
 277,2012,2024,SSD-2011-2025,South Sudan,SSD,iso-equal,high,17383
+279,2010,2024,CUW-2010-2025,CuraÃ§ao,CUW,registry,high,0
+281,2007,2024,MAF-2007-2025,Saint-Martin (French Part),MAF,registry,high,0
 299,1961,2024,PSE-1948-2025,Palestine,PSE,iso-equal,high,32534
