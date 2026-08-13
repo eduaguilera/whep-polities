@@ -373,9 +373,9 @@ ISL-1800-2025,Iceland,1800,2025,cshapes-2.0,1944.0,assigned,True,assumed_constan
 ISR-1948-1967,Israel (1948-1967),1948,1967,cshapes-2.0,1948.0,assigned,True,measured,False,False,vintage 1948 faithful to period 1948-1967,233
 ISR-1967-1979,Israel (1967-1979),1967,1979,cshapes-2.0,1967.0,assigned,False,measured,False,False,vintage 1967 faithful to period 1967-1979,0
 ISR-1979-2025,Israel,1979,2025,cshapes-2.0,1979.0,assigned,False,assumed_constant,True,False,single 1979 polygon held across a 46y span (1979-2025); borders may have changed,0
-ITA-1861-1866,Italy (1861-1866),1861,1866,cshapes-europe,1886.0,estimate,True,back_projected,True,False,polygon vintage 1886 is AFTER the period ends (1866) — later/modern border applied back,120
+ITA-1861-1866,Italy (1861-1866),1861,1866,cshapes-europe,1862.0,assigned,True,measured,False,False,vintage 1862 faithful to period 1861-1866,120
 ITA-1861-1919,Italy (to 1919),1861,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 58y span (1861-1919); borders may have changed,0
-ITA-1866-1870,Italy (1866-1870),1866,1870,cshapes-europe,1886.0,estimate,True,back_projected,True,True,polygon vintage 1886 is AFTER the period ends (1870) — later/modern border applied back,123
+ITA-1866-1870,Italy (1866-1870),1866,1870,cshapes-europe,1867.0,assigned,True,measured,False,False,vintage 1867 faithful to period 1866-1870,123
 ITA-1870-1919,Italy (1870-1919),1870,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 49y span (1870-1919); borders may have changed,1921
 ITA-1919-2025,Italy,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4949
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
@@ -664,7 +664,7 @@ SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,cshap
 SSD-2011-2025,South Sudan,2011,2025,cshapes-2.0,2011.0,assigned,False,measured,False,False,vintage 2011 faithful to period 2011-2025,0
 STP-1800-2025,Sao Tome and Principe,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,84
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,cshapes-2.0,1914.0,assigned,True,assumed_constant,True,False,single 1914 polygon held across a 35y span (1899-1934); borders may have changed,97
-SUD-1934-1956,Sudan (1934-1956),1934,1956,cshapes-2.0,1914.0,assigned,True,back_projected,True,False,polygon vintage 1914 is BEFORE the period starts (1934),277
+SUD-1934-1956,Sudan (1934-1956),1934,1956,cshapes-2.0,1934.0,assigned,True,measured,False,False,vintage 1934 faithful to period 1934-1956,277
 SUD-1956-2011,Sudan (1956-2011),1956,2011,cshapes-2.0,1956.0,assigned,True,assumed_constant,True,False,single 1956 polygon held across a 55y span (1956-2011); borders may have changed,41
 SUR-1886-1954,Dutch Guiana,1886,1954,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 68y span (1886-1954); borders may have changed,356
 SUR-1954-1975,Surinam (Autonomous),1954,1975,cshapes-2.0,1954.0,assigned,True,measured,False,False,vintage 1954 faithful to period 1954-1975,12
