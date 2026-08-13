@@ -883,6 +883,20 @@ def build_tur_1913_1914() -> ogr.Geometry:
     return _cshapes2_step(640, 1913, 1914)
 
 
+def build_f206_2011_2025() -> ogr.Geometry:
+    """Sudan and South Sudan as one reporting unit, 2011 onward = CShapes 625 union 626.
+
+    Built from the SAME features the two members bind -- SDN-2011-2025 uses gwcode 625 and
+    SSD-2011-2025 uses 626 -- so the aggregate cannot drift from its parts. Measured, the union is
+    2,486,805 km2 against SUD-1956-2011's 2,486,812: a ratio of 1.0000, which is the check that
+    matters, because this entity exists to describe exactly the territory unified Sudan had.
+
+    The 8.9 km2 the two members intersect is sliver along their shared boundary from simplifying
+    each independently, the same artefact documented for TRP/CYR in issue 156; the union absorbs it.
+    """
+    return _union(_cshapes2_feature(625, 2015), _cshapes2_feature(626, 2015))
+
+
 def build_bwi_1833_1962() -> ogr.Geometry:
     """British West Indies colonial aggregate = the eleven territories the page enumerates.
 
@@ -1526,6 +1540,14 @@ BUILDERS = [
         "after the row ends -- publishing 1,705,971 against a declared 1,785,218 and making this "
         "row identical to TUR-1914-1918. No feature_year can name either 1913 step: both start in "
         "1913, so 1913 is an order-dependent tie. Issue 123.",
+    ),
+    (
+        "F206-2011-2025",
+        "Sudan and South Sudan (combined reporting)",
+        build_f206_2011_2025,
+        "Union of CShapes 625 (Sudan) and 626 (South Sudan), the features the two members "
+        "themselves bind, so the aggregate cannot drift from its parts: 2,486,805 km2 against "
+        "SUD-1956-2011's 2,486,812, ratio 1.0000. Issue 139.",
     ),
     (
         "BWI-1833-1962",
