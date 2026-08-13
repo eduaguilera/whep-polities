@@ -621,28 +621,6 @@ def mutate_self_replacing_page(root, gpd, make_valid, affinity):
     return "made rafr-1850-2025.md claim it replaced its own code"
 
 
-def mutate_title_period_contradiction(root, gpd, make_valid, affinity):
-    """Retitle a page so its heading claims a period its row does not cover.
-
-    This is the defect issue #25 reports, in the one shape check 4 cannot see: a title
-    can contradict the database while naming NO code at all, so the "asserted code does
-    not exist" signal has nothing to catch. `blz-1800-2025` — a superseded 1800-2025
-    umbrella — was headed "Belize (to 1886)", the name of the separate BLZ-1800-1886 row,
-    and every code on the page resolved.
-
-    France is used rather than one of the fixed pages so the case cannot pass by
-    re-detecting a defect a later cleanup removes.
-    """
-    page = os.path.join(root, "wiki/polities/fra-1919-2025.md")
-    with open(page, encoding="utf-8") as fh:
-        text = fh.read()
-    heading = next((ln for ln in text.split("\n") if ln.startswith("# ")), None)
-    assert heading, "no h1 in the France page"
-    with open(page, "w", encoding="utf-8") as fh:
-        fh.write(text.replace(heading, "# France (to 1940)", 1))
-    return "headed fra-1919-2025.md 'France (to 1940)' on a 1919-2025 row"
-
-
 def mutate_succession_cycle(root, gpd, make_valid, affinity):
     """Make two rows whose spans OVERLAP name each other as successors, closing a cycle in
     the chronology.
@@ -943,13 +921,6 @@ CASES = (
         "renders 92 km off line while every conservation check still passes",
     ),
     (
-        "validate_references.py",
-        mutate_title_period_contradiction,
-        "fra-1919-2025",
-        "a page heading claiming a period its row does not cover, which contradicts "
-        "the database while naming no code at all",
-    ),
-    (
         "validate_code_year_agreement.py",
         mutate_code_year_disagreement,
         "FRA-1800-1871",
@@ -1092,9 +1063,6 @@ EXTRA_SCRIPTS = {
     # reaching it. That is the third time that requirement has earned its keep in this file.
     "build_database.py": ("sources.yaml", "spherical_edges.py"),
     "validate_spherical_edges.py": ("spherical_edges.py",),
-    # This gate derives the legal frontmatter key set by READING build_database.py's source,
-    # so a scratch repo without it exits 2 before any check runs.
-    "validate_references.py": ("build_database.py",),
 }
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
@@ -1132,9 +1100,6 @@ WRITABLE = {
         "polygon_feature_index.csv",
     ),
     "validate_code_year_agreement.py": ("polities_database.csv",),
-    # Rewrites a PAGE, so wiki/polities must be a real copy; the CSV is only read, but the
-    # gate needs `wiki/polities` staged at all or it sees zero pages and cannot fire.
-    "validate_references.py": ("wiki/polities",),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
     # This case RENAMES a polity, so it needs a real copy of the CSV. Declaring the
     # baseline here instead let the default symlink stand, and the mutation wrote

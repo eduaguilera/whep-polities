@@ -50,7 +50,7 @@ What each found first time out:
       edges asserted as A.successor = B        539
       edges asserted as B.predecessor = A     430
       asserted BOTH ways                      345
-      successor-only  (no reverse predecessor) 194 -> 191 on 2026-08-10
+      successor-only  (no reverse predecessor) 194 -> 191 on 2026-08-10, 193 on 2026-08-13
       predecessor-only (no reverse successor)   85 -> 83 -> 80 on 2026-08-10, 81 on 2026-08-13
 
   Lowered twice on 2026-08-10. The second time (issue 188) was three HAND-OVERS where the
@@ -162,8 +162,22 @@ BASELINE_CEILING = {
 # are the A-baseline entities above, referenced from prose as well as frontmatter.
 # Signal F. Pinned counts, not enumerated edges: 279 lines would be unreadable and the useful
 # property is that these only go down. Lower them when they do -- the check insists.
+#
+#  RAISED A SECOND TIME, on 2026-08-13, by TWO edges, for the same reason as the first raise and
+#  from the other end of the relation. BLX-1850-1999 (Belgium-Luxembourg, FAOSTAT reporting area
+#  15) was the only combined-union row in the database declaring NEITHER a predecessor nor a
+#  successor, so a consumer walking `successor` could not tell "this union has no successors" from
+#  "its successors were never recorded" (issue 138). It now declares
+#  `successor: [BEL-1831-2025, LUX-1839-2025]`, matching the convention the other unions already
+#  use -- SYL-1944-1953 -> SYR/LBN, F249-1918-1990 -> YEM-1990-2025, F237-1954-1975 -> VNM-1975-2025.
+#
+#  Belgium and Luxembourg do NOT name it back, deliberately: both declare NLD-1800-1830, the actual
+#  state succession, and per the F206 note above nothing here declares an aggregate as its
+#  successor. So the fix necessarily adds two successor-only edges. SYL is asymmetric in exactly
+#  the same way; symmetry is the goal, but not by asserting that Belgium's territory BECAME a
+#  reporting union's.
 BASELINE_ASYMMETRY = {
-    "successor_only": 191,
+    "successor_only": 193,
     "predecessor_only": 81,
 }
 
