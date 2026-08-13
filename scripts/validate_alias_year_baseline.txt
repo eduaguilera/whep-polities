@@ -34,6 +34,14 @@
 # 1975 is deliberate.
 #
 # This file exists so the class cannot GROW while that remainder is open.
+#
+#
+# 'italy||ITA-1870-1919' cleared 2026-08-13 (issue 90). Its year_end was clipped 1919 ->
+# 1918 and a single-year `italy 1919-1919 -> ITA-1919-2025` alias added, because the two
+# earlier links of the same chain (1861-1865, 1866-1869) already followed the exclusive
+# convention and this one did not. Measured: 73 layer-B rows labelled "italy" in 1919
+# (65 juan, 7 iia, 1 mitchell) now name a polity that covers the year; +5.4% territory
+# (284,848 -> 300,310 km2). Overclaiming aliases 201 -> 200.
 Abyssinia		ETH-1800-1889
 Abyssinia		ETH-1889-1897
 Abyssinia		ETH-1897-1902
@@ -135,7 +143,6 @@ indochina cambodia		KHM-1907-1953
 indochina viet nam		FID-1887-1954
 israel		ISR-1948-1967
 israel/palestine		PAL-1920-1948
-italy		ITA-1870-1919
 italy	iia	SAR-1800-1860
 micronesia (federated states of)	iia	CAR-1920-1945
 neth west indies	fao1952	ANT-1816-1960
