@@ -92,18 +92,62 @@ BASELINE = {
     # The row order had been picking 251,719 km2 over the correct 296,087 -- Bessarabia
     # missing for all 20 interwar years and 1,087 data rows. This baseline entry recorded
     # the non-determinism for 21 rows; it turned out to also be recording a live 15% error.
-    "POL-1919-1920": "3 candidates at year 1919 spanning 130,205-256,575 km2 (1.97x); picked 177,762, declared 177,754",
-    "F51-1938-1945": "3 candidates at year 1938 spanning 100,822-140,398 km2 (1.39x); picked 116,616, no declared area",
-    "KEN-1907-1924": "2 candidates at year 1907 spanning 635,868-772,550 km2 (1.21x); picked 772,550, no declared area",
-    "USA-1959-2025": "3 candidates at year 1959 spanning 7,939,971-9,462,898 km2 (1.19x); picked 9,446,212, no declared area",
-    "ROU-1919-1920": "3 candidates at year 1919 spanning 128,499-148,934 km2 (1.16x); picked 141,247, no declared area",
-    "MLI-1960-2025": "3 candidates at year 1960 spanning 1,252,292-1,448,287 km2 (1.16x); picked 1,252,292, no declared area",
-    "TUR-1918-1920": "3 candidates at year 1918 spanning 1,657,471-1,731,860 km2 (1.04x); picked 1,731,860, no declared area",
-    "SYR-1920-1922": "2 candidates at year 1920 spanning 182,452-188,004 km2 (1.03x); picked 182,452, no declared area",
-    "F228-1918-1920": "5 candidates at year 1918 spanning 21,405,134-21,760,482 km2 (1.02x); picked 21,676,599, no declared area",
-    "F228-1920-1921": "4 candidates at year 1920 spanning 21,405,134-21,700,852 km2 (1.01x); picked 21,506,736, no declared area",
-    "F228-1940-1945": "4 candidates at year 1940 spanning 21,552,704-21,828,529 km2 (1.01x); picked 21,606,391, no declared area",
-    "F228-1945-1991": "3 candidates at year 1945 spanning 21,828,529-22,065,965 km2 (1.01x); picked 22,033,900, no declared area",
+    # FIXED and removed 2026-08-13 (issue 100), nine rows, each by moving
+    # polygon_feature_year to a year that falls inside exactly ONE candidate span. No new
+    # geometry and no code change; the candidate chosen is named on each page's Decisions
+    # section with its measured area. Four of the nine were not merely fragile -- row order
+    # had been handing back a polygon that contradicted the row's own page:
+    #   KEN-1907-1924   1907 -> 1908. Took the PRE-transfer 772,550 km2 while the page says
+    #                   the row "covers the protectorate at its post-transfer extent"
+    #                   (635,868). 136,682 km2 / 21% too large for 16 of 17 years.
+    #   USA-1959-2025   1959 -> 1960. Took the 49-state step (9,446,212) while the page says
+    #                   the polygon "should reflect the 50-state configuration including
+    #                   Alaska and Hawaii" (9,462,898). Missing Hawaii for 66 years.
+    #   TUR-1918-1920   1918 -> 1919. Took the PRE-Mudros step while the page asked for
+    #                   post-Mudros and asserted no post-Mudros polygon existed. CShapes
+    #                   breaks gwcode 640 ON the armistice date, so one did: 1,657,471.
+    #   F51-1938-1945   1938 -> 1939. Took a 33-day step between the Munich Agreement and
+    #                   the First Vienna Award (116,616) instead of the post-Vienna extent
+    #                   the row held for 6.5 of its 7 years (100,822).
+    # The other five were reproducibility only, the picked candidate being defensible or
+    # identical in area: SYR-1920-1922 1920 -> 1921, MLI-1960-2025 1960 -> 1961 (area
+    # unchanged; the risk was a re-fetch handing back the 1,448,287 km2 Mali FEDERATION
+    # polygon, which includes Senegal), F228-1918-1920 1918 -> 1919, F228-1940-1945
+    # 1940 -> 1941, F228-1945-1991 1945 -> 1946.
+    #
+    # ---- STILL order-dependent: no polygon_feature_year can pin these ----
+    # These three rows cover a SINGLE calendar year that CShapes subdivides into three or
+    # more steps. Every candidate shares that year with at least one other candidate, and
+    # every other year they contain belongs to a neighbouring step too, so there is no year
+    # that falls inside exactly one span. A year is simply not expressive enough here; the
+    # mechanisms that would fix them are a date-level binding (find_feature truncates
+    # gwsdate/gwedate to a year today) or a constructed polygon, as ROU-1940-1947 got.
+    # Measured 2026-08-13; the picked candidate is defensible in all three, which is why
+    # they are baselined rather than force-changed.
+    # POL-1919-1920 is the worst of the three and NOT merely fragile: it is a live 44%
+    # error. Its page names the 1919-09-10 (Saint-Germain, 256,575 km2) step four times as
+    # "the polygon for this row", rejects the 1919-06-28 one BY NAME because it "excludes
+    # Galicia", and even records `polygon_feature_date: 1919-09-10` -- a frontmatter key
+    # NOTHING in the pipeline reads (only validate_references knows it exists). Row order
+    # hands back the rejected 177,762 step, and `polygon_area_km2: 177754` was then entered
+    # from the geometry rather than from the argument, so check A compares the wrong polygon
+    # against its own area and passes. No feature_year selects the wanted step: 1919 is
+    # shared by three candidates and 1920 resolves deterministically to the NEXT step
+    # (1920-10-07, 284,599), which is both out of the row's span and not what the page asks
+    # for. Needs a date-level binding or a constructed polygon.
+    "POL-1919-1920": "row covers 1919 only; 3 candidates (1918-11-11/1919-06-27 130,205; "
+                     "1919-06-28/1919-09-09 177,762; 1919-09-10/1920-10-06 256,575) and 2 "
+                     "start in 1919. Picked 177,762, but the page argues for 256,575",
+    "ROU-1919-1920": "row covers 1919 only; 3 candidates (1918-11-01/1919-09-09 128,499; "
+                     "1919-09-10/1919-11-26 141,247; 1919-11-27/1920-06-03 148,934) and 2 "
+                     "start in 1919. Picked 141,247, whose step STARTS on the row's own "
+                     "start-of-row event (Treaty of Saint-Germain, 1919-09-10), so the "
+                     "pick agrees with the page. No declared area to catch a change",
+    "F228-1920-1921": "row covers 1920 only; 4 candidates (1918-11-11/1920-02-01 "
+                      "21,405,134; 1920-02-02/1920-09-01 21,506,736; 1920-09-02/1920-10-27 "
+                      "21,700,852; 1920-10-28/1921-03-17 21,656,484) and 3 start in 1920. "
+                      "Picked 21,506,736, the step in force at the row's start. Spread is "
+                      "1.01x, so any re-fetch swap is small in area but silent",
 }
 
 

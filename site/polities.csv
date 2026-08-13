@@ -239,11 +239,11 @@ F228-1856-1905,Russian Empire (1856-1905),1856,1905,national,RUS,,Europe,draft,2
 F228-1905-1914,Russian Empire (1905-1914),1905,1914,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1905,assigned,,F228-1856-1905,F228-1914-1917
 F228-1914-1917,Russian Empire (1914-1917),1914,1917,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1914,assigned,,F228-1905-1914,F228-1917-1918
 F228-1917-1918,Russia (1917-1918),1917,1918,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1917,assigned,,F228-1914-1917,F228-1918-1920
-F228-1918-1920,RSFSR (1918-1920),1918,1920,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1918,assigned,,F228-1917-1918,F228-1920-1921
+F228-1918-1920,RSFSR (1918-1920),1918,1920,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1919,assigned,,F228-1917-1918,F228-1920-1921
 F228-1920-1921,RSFSR (1920-1921),1920,1921,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1920,assigned,,F228-1918-1920,F228-1921-1940
 F228-1921-1940,RSFSR/USSR (1921-1940),1921,1940,national,,365,Europe,draft,2026-04-13,cshapes-2.0,365,1921,assigned,,F228-1920-1921,F228-1940-1945
-F228-1940-1945,USSR (1940-1945),1940,1945,national,,365,Europe,draft,2026-04-12,cshapes-2.0,365,1940,assigned,,F228-1921-1940,F228-1945-1991
-F228-1945-1991,USSR (1945-1991),1945,1991,national,,365,Europe,draft,2026-04-12,cshapes-2.0,365,1945,assigned,,F228-1940-1945,RUS-1991-2014; UKR-1991-2014; BLR-1991-2025; EST-1991-2025; LVA-1991-2025; LTU-1991-2025; MDA-1991-2025; ARM-1991-2025; AZE-1991-2025; GEO-1991-2025; KAZ-1991-2025; KGZ-1991-2025; TJK-1991-2025; TKM-1991-2025; UZB-1991-2025
+F228-1940-1945,USSR (1940-1945),1940,1945,national,,365,Europe,draft,2026-04-12,cshapes-2.0,365,1941,assigned,,F228-1921-1940,F228-1945-1991
+F228-1945-1991,USSR (1945-1991),1945,1991,national,,365,Europe,draft,2026-04-12,cshapes-2.0,365,1946,assigned,,F228-1940-1945,RUS-1991-2014; UKR-1991-2014; BLR-1991-2025; EST-1991-2025; LVA-1991-2025; LTU-1991-2025; MDA-1991-2025; ARM-1991-2025; AZE-1991-2025; GEO-1991-2025; KAZ-1991-2025; KGZ-1991-2025; TJK-1991-2025; TKM-1991-2025; UZB-1991-2025
 F237-1954-1975,Vietnam (combined reporting: DRV and RVN),1954,1975,aggregate,VNM,,Asia,draft,2026-07-02,cshapes-2.0,816,1976,estimate,325295,VNM-1887-1954,VNM-1975-2025
 F248-1918-1919,Yugoslavia (1918-1919),1918,1919,national,YUG,345,Europe,draft,2026-04-12,cshapes-2.0,345,1918,assigned,,AUH-1908-1918,F248-1919-1920; F248-1920-1991
 F248-1919-1920,Yugoslavia (1919-1920),1919,1920,national,YUG,345,Europe,draft,2026-04-12,cshapes-2.0,345,1919,assigned,,F248-1918-1919,F248-1920-1991
@@ -253,7 +253,7 @@ F248-1947-1991,Yugoslavia (1947-1991),1947,1991,national,YUG,345,Europe,draft,20
 F248-1991-1992,Yugoslavia (1991-1992),1991,1992,national,YUG,345,Europe,draft,2026-04-12,cshapes-2.0,345,1991,assigned,,F248-1920-1991,SVN-1992-2025; HRV-1992-2025; BIH-1992-2025; SCG-1992-2006; MKD-1991-2025
 F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),1918,1990,aggregate,YEM,,Asia,draft,2026-07-02,cshapes-2.0,678,1990,estimate,425263,,YEM-1990-2025
 F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1918,assigned,,AUH-1908-1918,F51-1938-1945
-F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1938,assigned,,F51-1918-1938,F51-1945-1947
+F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1939,assigned,,F51-1918-1938,F51-1945-1947
 F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1945,assigned,,F51-1938-1945,F51-1947-1993
 F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1947,assigned,,F51-1945-1947,CZE-1993-2025; SVK-1993-2025
 F77-1949-1990,East Germany,1949,1990,national,DDR,265,Europe,draft,2026-04-12,cshapes-2.0,265,1949,assigned,,DEU-1938-1945,DEU-1990-2025
@@ -395,7 +395,7 @@ KEN-1888-1891,Kenya (1888-1891),1888,1891,national,KEN,501,Africa,draft,2026-04-
 KEN-1891-1894,Kenya (1891-1894),1891,1894,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1891,assigned,,,KEN-1894-1902
 KEN-1894-1902,Kenya (1894-1902),1894,1902,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1894,assigned,,,KEN-1902-1906
 KEN-1902-1906,Kenya (1902-1906),1902,1906,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1902,assigned,,,KEN-1907-1924
-KEN-1907-1924,Kenya (1907-1924),1907,1924,national,KEN,501,Africa,draft,2026-04-13,cshapes-2.0,501,1907,assigned,,,KEN-1924-1926; KEN-1926-1963
+KEN-1907-1924,Kenya (1907-1924),1907,1924,national,KEN,501,Africa,draft,2026-04-13,cshapes-2.0,501,1908,assigned,,,KEN-1924-1926; KEN-1926-1963
 KEN-1924-1926,Kenya (1924-1926),1924,1926,national,KEN,501,Africa,draft,2026-04-13,cshapes-2.0,501,1924,assigned,,KEN-1907-1924,KEN-1926-1963
 KEN-1926-1963,Kenya (1926-1963),1926,1963,national,KEN,501,Africa,draft,2026-04-12,cshapes-2.0,501,1926,assigned,,KEN-1907-1924; KEN-1924-1926,KEN-1963-2025
 KEN-1963-2025,Kenya,1963,2025,national,KEN,501,Africa,reviewed,2026-04-12,cshapes-2.0,501,1963,assigned,,,
@@ -466,7 +466,7 @@ MHL-1874-2025,Marshall Islands,1874,2025,national,MHL,983,Oceania,draft,2026-04-
 MKD-1991-2025,North Macedonia,1991,2025,national,MKD,343,Europe,reviewed,2026-04-12,cshapes-2.0,343,1991,assigned,,F248-1920-1991; F248-1991-1992,
 MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,national,,679,Asia,draft,2026-06-26,cshapes-2.0,678,1930,assigned,136555,,YEM-1990-2025
 MLI-1890-1960,French Sudan (1890-1960),1890,1960,national,MLI,432,Africa,draft,2026-06-24,cshapes-2.0,432,1905,assigned,1736746,,MLI-1960-2025
-MLI-1960-2025,Mali,1960,2025,national,MLI,432,Africa,draft,2026-04-12,cshapes-2.0,432,1960,assigned,,,
+MLI-1960-2025,Mali,1960,2025,national,MLI,432,Africa,draft,2026-04-12,cshapes-2.0,432,1961,assigned,,,
 MLT-1800-2025,Malta,1800,2025,national,MLT,,Europe,reviewed,2026-04-12,cshapes-2.0,338,1886,assigned,,,
 MMR-1800-1826,Konbaung Burma (to 1826),1800,1826,national,MMR,,Asia,draft,2026-04-15,cliopatria,Burma,1822,assigned,,,MMR-1826-1852
 MMR-1826-1852,Burma (1826-1852),1826,1852,national,MMR,,Asia,draft,2026-04-13,cliopatria,Burma,1842,assigned,,,MMR-1852-1885
@@ -681,7 +681,7 @@ SWK-1800-1894,Swazi Kingdom,1800,1894,national,,,Africa,draft,2026-04-15,paine-2
 SWZ-1894-2025,Eswatini,1894,2025,national,SWZ,572,Africa,draft,2026-04-13,cshapes-2.0,572,1902,assigned,,,
 SYC-1903-2025,Seychelles,1903,2025,national,SYC,591,Africa,draft,2026-04-13,gadm-4.1-adm0,SYC,,assigned,,MUS-1800-2025,
 SYL-1944-1953,Syria and Lebanon (combined statistical unit),1944,1953,aggregate,,,Asia,draft,2026-07-01,constructed,SYL-1944-1953,1949,assigned,195632,,SYR-1946-1967; LBN-1944-2025
-SYR-1920-1922,Syria (French Mandate),1920,1922,national,SYR,,Asia,draft,2026-04-16,cshapes-2.0,652,1920,assigned,,SYR-1918-1920,SYR-1922-1945
+SYR-1920-1922,Syria (French Mandate),1920,1922,national,SYR,,Asia,draft,2026-04-16,cshapes-2.0,652,1921,assigned,,SYR-1918-1920,SYR-1922-1945
 SYR-1922-1945,Syria (1922-1945),1922,1945,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1922,assigned,,,SYR-1946-1967
 SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1946,assigned,,SYR-1922-1945,SYR-1967-2025
 SYR-1967-2025,Syrian Arab Republic,1967,2025,national,SYR,652,Asia,draft,2026-04-12,cshapes-2.0,652,1967,assigned,,SYR-1946-1967,
@@ -716,7 +716,7 @@ TUN-1881-2025,Tunisia,1881,2025,national,TUN,616,Africa,draft,2026-04-13,cshapes
 TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,national,TUR,640,Asia,draft,2026-04-16,cshapes-2.0,640,1923,estimate,779964,,TUR-1913-1914
 TUR-1913-1914,Türkiye (1913-1914),1913,1914,national,TUR,640,Asia,reviewed,2026-04-12,constructed,TUR-1913-1914,,assigned,1785218,OTT-1908-1912,TUR-1914-1918
 TUR-1914-1918,Türkiye (1914-1918),1914,1918,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1914,assigned,,TUR-1913-1914,TUR-1918-1920
-TUR-1918-1920,Türkiye (1918-1920),1918,1920,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1918,assigned,,TUR-1914-1918,TUR-1920-2025
+TUR-1918-1920,Türkiye (1918-1920),1918,1920,national,TUR,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1919,assigned,,TUR-1914-1918,TUR-1920-2025
 TUR-1920-2025,Türkiye (1920-2025),1920,2025,national,TUR,640,Asia,draft,2026-04-12,cshapes-2.0,640,1923,assigned,,TUR-1918-1920,
 TUS-1800-1860,Tuscany,1800,1860,national,TUS,337,Europe,draft,2026-04-15,cliopatria,Grand Duchy of Tuscany,1848,assigned,24632,,ITA-1861-1919
 TUV-1800-2025,Tuvalu,1800,2025,national,TUV,947,Oceania,draft,2026-04-13,gadm-4.1-adm0,TUV,,estimate,26,,
@@ -737,7 +737,7 @@ USA-1800-1803,United States (original),1800,1803,national,USA,2,North America,dr
 USA-1803-1848,United States (1803-1848),1803,1848,national,USA,2,North America,draft,2026-04-12,cliopatria,United States of America,1815,assigned,,USA-1800-1803,USA-1848-1867
 USA-1848-1867,United States (1848-1867),1848,1867,national,USA,2,North America,draft,2026-04-12,cliopatria,United States of America,1849,assigned,,USA-1803-1848,USA-1867-1959
 USA-1867-1959,United States (1867-1959),1867,1959,national,USA,2,North America,draft,2026-04-12,cliopatria,United States of America,1880,assigned,,USA-1848-1867,USA-1959-2025
-USA-1959-2025,United States of America,1959,2025,national,USA,2,North America,draft,2026-04-12,cshapes-2.0,2,1959,assigned,,USA-1867-1959,
+USA-1959-2025,United States of America,1959,2025,national,USA,2,North America,draft,2026-04-12,cshapes-2.0,2,1960,assigned,,USA-1867-1959,
 UZB-1991-2025,Uzbekistan,1991,2025,national,UZB,704,Asia,reviewed,2026-04-12,cshapes-2.0,704,1991,assigned,,F228-1945-1991,
 VAT-1929-2025,Holy See (Vatican City State),1929,2025,national,VAT,,Europe,draft,2026-08-10,gadm-4.1-adm0,VAT,,estimate,0.49,PAP-1800-1870,
 VCT-1800-1833,Saint Vincent (to 1833),1800,1833,national,,,North America,draft,2026-04-15,gadm-4.1-adm0,VCT,,assigned,,,VCT-1833-2025

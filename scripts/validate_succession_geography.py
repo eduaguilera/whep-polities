@@ -11,7 +11,7 @@ Africa. Northwestern Rhodesia merged with Northeastern Rhodesia to form Northern
 which exists here as NRH-1911-1953. Almost certainly a confusion between two codes that both
 begin "Northern". Corrected, and it is the reason this script exists.
 
-Non-intersection is a SCREEN, not a verdict. Nine links legitimately join territories that
+Non-intersection is a SCREEN, not a verdict. Eight links legitimately join territories that
 do not touch, because succession here also covers colonial and administrative transfer
 rather than only contiguous partition:
 
@@ -21,8 +21,6 @@ rather than only contiguous partition:
   SYC with MUS                the Seychelles were administered from Mauritius until 1903
   SMO with SWA                Spanish Morocco and Spanish West Africa were a shared
                               administration, not adjacent ground
-  HAWI with USA               Hawaii became a state in 1959; the USA polygon here does not
-                              reach across the Pacific
   NNG with IDN                Netherlands New Guinea joined Indonesia in 1963, after the
                               span of the IDN row it points at
 
@@ -36,12 +34,19 @@ rather than only contiguous partition:
                               and SNI is 130,457 km2 centred at (7.21E, 5.97N), which is
                               southern Nigeria.
 
-SIX of the nine pairs are cross-source like that, so the report prints each link's polygon
+SIX of the eight pairs are cross-source like that, so the report prints each link's polygon
 SOURCES alongside it: a disjointness between two different datasets is weak evidence, while
 one within a SINGLE dataset means that dataset itself says the territories do not touch.
-Only three pairs are same-source (HAWI/USA, NNG/IDN, SMO/SWA, all cshapes-2.0), and all
-three reflect real geography — Hawaii against the continental USA, West Papua outside
-Indonesia's 1949 extent, Spanish Morocco against Spanish West Africa.
+Only two pairs are same-source (NNG/IDN, SMO/SWA, both cshapes-2.0), and both reflect real
+geography — West Papua outside Indonesia's 1949 extent, Spanish Morocco against Spanish
+West Africa.
+
+A third same-source pair, HAWI/USA, was on that list until 2026-08-13 and was explained the
+same way ("Hawaii against the continental USA"). It was not real geography: USA-1959-2025
+was bound to CShapes' 49-state step by shapefile row order and did not contain Hawaii at
+all. A same-source disjointness deserves the treatment the paragraph above promises — it
+means the dataset says these do not touch, which is a claim about a POLYGON as much as about
+a link. See issue 100.
 
 Worth noting separately, found while triaging this and not a link problem: SNI-1899-1906 and
 SNI-1906-1913 bind to the SAME CShapes feature 4783, so they have identical geometry. 1906 is
@@ -95,7 +100,13 @@ BASELINE = frozenset({
     ("CXR-1946-1958", "predecessor", "GBM-1895-1946"),
     ("GCAR-1899-1914", "predecessor", "DEU-1871-1919"),
     ("GCAR-1899-1914", "successor", "JPN-1895-1945"),
-    ("HAWI-1898-1959", "successor", "USA-1959-2025"),
+    # ("HAWI-1898-1959", "successor", "USA-1959-2025") REMOVED 2026-08-13 (issue 100).
+    # The pair now INTERSECTS, and the reason is instructive: this entry was never about
+    # Pacific distance, it was recording a wrong polygon. USA-1959-2025's binding was
+    # decided by shapefile row order and had taken CShapes' 49-state step (Alaska admitted
+    # 1959-01-03, Hawaii not until 1959-08-21), so the United States polygon did not
+    # contain Hawaii at all. Pinning polygon_feature_year to 1960 selects the 50-state step
+    # and Hawaii's successor link resolves geometrically, as it always should have.
     ("IJB-1800-1892", "successor", "SNI-1899-1906"),
     ("NNG-1949-1963", "successor", "IDN-1949-1969"),
     ("SMO-1912-1956", "predecessor", "SWA-1884-1912"),

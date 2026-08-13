@@ -54,7 +54,20 @@ LEGITIMATE_CONTAINERS = frozenset({
     "RLAM-1850-2025", "ROCE-1850-2025",
     # Empires
     "F228-1800-1856", "F228-1856-1905", "F228-1905-1914", "F228-1914-1917",
-    "F228-1917-1918", "F228-1918-1920", "F228-1945-1991",
+    "F228-1917-1918", "F228-1940-1945", "F228-1945-1991",
+    # F228-1940-1945 ADDED and F228-1918-1920 REMOVED, both on 2026-08-13 (issue 100), and
+    # both are consequences of pinning those two rows' order-dependent bindings rather than
+    # of any new geometry:
+    #   F228-1940-1945  polygon_feature_year 1940 -> 1941 moves it from a 82-day step
+    #                   (1940-03-12, 21,606,391 km2) to the wartime extent (1940-06-28,
+    #                   21,828,529). That extent DOES contain the Baltic states, which the
+    #                   USSR annexed in 1940, so it now holds EST-1940-1991, LTU-1940-1991,
+    #                   LVA-1940-1991 and AZE-SSR-1920-1991. Legitimate: this is the union
+    #                   containing its own republics, exactly like F228-1945-1991 below.
+    #   F228-1918-1920  polygon_feature_year 1918 -> 1919 moves it from a 15-day February
+    #                   1918 step to the post-armistice one (1918-11-11, 21,405,134 km2),
+    #                   which is 271,988 km2 smaller and drops below the >=3 threshold. It
+    #                   did not stop being an empire; it stopped swallowing three others.
     "AUH-1800-1859", "AUH-1859-1866", "AUH-1866-1908", "AUH-1908-1918",
     "OTT-1800-1886", "JPN-1895-1945",
     # Colonial federations and their groupings
