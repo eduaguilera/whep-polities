@@ -26,59 +26,56 @@ Kinds:
 
 ---
 
-## hun-1940-1944-wrong-recipe-withdrawn
+## ingest-phantom-source-replacement
 **Date:** 2026-08-13
-**Touched:** HUN-1940-1944, HUN-1938-1947
-**Source:** cshapes-2.0, gadm-4.1
-**Kind:** decision
+**Touched:** aze-ssr-1920-1991, car-1920-1945, saa-1947-1957, fcm-1920-1960, fto-1920-1960, ner-1922-1947, ner-1947-1960, nzl-1840-2025, aof-1895-1960
+**Source:** wikipedia-azerbaijan-ssr-2026-08-13, wikipedia-nanyo-2026-08-13, wikipedia-saar-protectorate-2026-08-13, wikipedia-french-africa-mandates-2026-08-13, federico-tena-2019
+**Kind:** ingest
 
-Closes issue 106. The recipe [hun-1940-1944](polities/hun-1940-1944.md) declared,
-`cshapes-HUN310-1938+cshapes-ROU360-1920minus1940` (167,492 km²), was never
-attachable and was also geographically wrong: measured on CShapes 2.0 in EPSG:3035,
-ROU gwcode 360 is 296,087 km² for 1920-1940 and 237,379 km² for 1940-2019, and the
-difference is **58,707 km² spanning longitude 24.67..30.51** — Romania's *eastern*
-edge, i.e. Bessarabia, northern Bukovina and southern Dobruja, ceded to the USSR and
-Bulgaria. Northern Transylvania is on the *western* edge and cancels out of the
-difference entirely, because post-war Romania kept it and it is interior to both
-operands. The recipe would have given Hungary the Dniester and a stretch of Black Sea
-coast, non-contiguous with Hungary, while omitting the only territory the Second
-Vienna Award transferred. No magnitude check could have rejected it:
-`108,785 + 58,707 = 167,492` is exactly the area the page declared — the same failure
-mode as issue 46, where `IRN-1800-1828` was drawn as the United States and passed
-every area check because the two differ by 2%.
+Seventeen citations on eight pages pointed at seven source files that had
+never been ingested (whep-polities issue 5); `scripts/validate_citations.py`
+had already demoted them to `[uncited — <slug> was never ingested]` markers,
+so the claims were surviving with no provenance at all. Rather than delete
+the claims or leave the markers, the four Wikipedia clusters were re-fetched
+on 2026-08-13 (MediaWiki API, plaintext extracts) and ingested as four
+snapshot sources, and the Federico-Tena reference material that has been
+staged in `data/external/federico_tena/` for months was registered as
+`federico-tena-2019` — the slug `reu-1816-1946` was already using, and
+`aof-1895-1960`'s `federico_tena` frontmatter was normalised onto it.
 
-The replacement is the `constructed` builder `HUN-1940-1944`,
-`ST_Union(CShapes-310@1939, northern-Transylvania-proxy)`, where the proxy is an
-eight-county GADM 4.1 adm1 union measuring 43,685 km² against the award's ~43,104
-(+1.3%). It measures **152,423 km²**, longitude 16.11..26.45 — western, contiguous —
-and is attached at `polygon_status: proxy`. The 201 layer-B rows matched here now have
-geometry. **`polygon_area_km2` 167,492 → 152,423.**
+Re-fetching falsified five claims, which is the point of doing it rather
+than rubber-stamping them. (1) **Niger:** both Niger pages described the
++77,542 km² CShapes step of 1932-1947 as the Tibesti region. The source has
+Tibesti leaving Niger for Chad in **1931**, and the Dori/Fada N'Gourma
+cercles of the dissolved Upper Volta arriving in **1932** and returning in
+1947 — the other territory, the other direction. Differencing CShapes rows
+309 and 307 confirms it: the increment sits at 1.32°W-2.39°E, 10.94°-15.08°N,
+while Tibesti is near 16-19°E, 20-22°N, outside Niger's easternmost vertex
+(15.997°E) in all six steps. (2) **Saar:** there is no "Saar Statute of
+17 January 1947"; the *Saarstatut* is the 1954 WEU plan the 1955 referendum
+rejected, and the 1947 event is the constitution of 15 December (in force
+17 December). (3) The 1955 referendum was **67.7%** against, not 67.3%
+(423,434 / 625,409 = 67.71%). (4) The Saar's "ISO 3166 alpha-3 SAA" is
+anachronistic — ISO 3166 dates from 1974 — and is now recorded as an open
+question rather than a fact. (5) **Nan'yō-chō** was established in March
+1932, not 1922; Koror became the administrative seat in 1921 and the
+district civil administrations date from April 1922.
 
-Re-measuring the peak accounting found a second error the fix had inherited. The page
-attributed its whole shortfall to the April 1941 Backa and Baranja strips and stated
-Subcarpathian Ruthenia (~13,964 km²) was *"already in the CShapes 1938 polygon"*.
-**It is not: the CShapes gwcode-310 1938-1947 feature has 0 km² inside modern
-Ukraine.** That feature decomposes as Trianon Hungary (92,991 km², byte-identical in
-area to the 1920-1938 and 1947-2019 steps) plus 15,795 km² inside modern Slovakia —
-the First Vienna Award slice, 3,965 km² larger than the ~11,830 the page claimed.
-92,991 + 15,795 = 108,786, the whole feature, leaving no room for Ruthenia. So the
-polygon is Trianon + First Vienna Award + Northern Transylvania proxy
-(92,991 + 15,795 + 43,685 − 47 overlap = 152,423) and misses **two** peak components,
-not one: Ruthenia (annexed March 1939, ~12,000 km²) and the 1941 strips (~10,000).
-Restoring both gives ~174,500 against the stated 172,277 — 1.3% high, the same First
-Vienna discrepancy. **The shortfall is therefore 11.5%, not the 2.8% recorded.** This
-is the third residual-explanation the row has carried and the first that reconciles;
-issue 106's complaint that the page gave "two incompatible explanations for two
-different residuals, both invoking the same territory" is upheld.
+Two further corrections came from the repo's own data: the Azerbaijan SSR
+area claim ("~86,600 km²") has no source and was replaced with the measured
+polygon (86,014 km², against 87,000 declared), and the 21 "trade with cook
+islands" rows on `nzl-1840-2025` are IIA yearbook footnotes
+(`pipelines/polity-autoimprove/state/iia_territorial_notes.csv`), not
+Federico-Tena, whose staged extract holds no bilateral series at all.
 
-This entry also retires three statements the page and its predecessor kept asserting
-after the fix landed: the withdrawn recipe as the live *Polygon source*, a *Polygon
-blocked* section claiming `unassigned` and "no geometry", and
-[hun-1938-1947](polities/hun-1938-1947.md)'s "polygon_status=missing". The withdrawn
-recipe itself is kept on the page, labelled, because its self-consistent arithmetic is
-the evidence that magnitude cannot detect position. Left open: the 1941 peak extent
-(needs a historical GIS that models the occupation), the county-vs-award boundary
-residual, and issue 100's `ROU-1940-1947` declared 194,000 against 193,854 measured.
+No row was re-dated, split or retired: every correction is documentary. The
+source snapshots note where they *disagree* with a row's dates — Togoland's
+and Cameroon's League mandates are dated 1922 there against WHEP's 1920
+start years — and leave the re-dating question open, since that is a
+structural change. The eight Biger-anchor demotions in the same issue are
+untouched and remain open.
+
+---
 
 ## lint-polygon-status-vocabulary
 **Date:** 2026-07-29
