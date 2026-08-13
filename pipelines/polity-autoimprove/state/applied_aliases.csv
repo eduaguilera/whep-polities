@@ -786,7 +786,7 @@ hungary,,1920,1920,Hungary (1920-1938),HUN-1920-1938,high,year-ranged alias: har
 indochina,,1866,1886,French Cochinchina,FCC-1862-1887,high,"added 2026-08-05 (issue 54): French Indochina was federated in 1887, so the 20 Mitchell rows labelled `indochina` at 1866-1886 predate it. FCC-1862-1887 (French Cochinchina, 1862-1886) is the French possession those years describe -- the only one before the federation.",
 indochina,,1887,,French Indochina,FID-1887-1954,high,"name-equivalence | bounded below 2026-08-05 (issue 54): this alias had a BLANK year_start, so it applied to every year including years before FID-1887-1954 existed, and layer B put 20 rows on it dated 1866-1886. A blank year_start is unbounded below, which no gate could evaluate -- the existing check tests year_start < start_year and skips a blank one entirely.",259
 indochina cambodia,,1907,1953,,KHM-1907-1953,medium,reused from stopped run wf_62a587d4 audit,
-indochina laos,,1936,1951,Laos (1893-1953),LAO-1893-1953,high,FAO label for Lao sub-territory within French Indochina (~196820 km²); routing to FID-1887-1954 (~740000 km²) would overstate ~3x,59
+indochina laos,,1936,1951,Laos (1893-1954),LAO-1893-1954,high,FAO label for Lao sub-territory within French Indochina (~196820 km²); routing to FID-1887-1954 (~740000 km²) would overstate ~3x,59
 indochina viet nam,,1887,1954,,FID-1887-1954,medium,reused from stopped run wf_62a587d4 audit,
 israel,,1920,1947,,PAL-1920-1948,medium,reused from stopped run wf_62a587d4 audit,
 israel,,1948,1967,,ISR-1948-1967,medium,reused from stopped run wf_62a587d4 audit,

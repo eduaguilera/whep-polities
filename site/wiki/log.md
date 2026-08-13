@@ -26,6 +26,64 @@ Kinds:
 
 ---
 
+## close-four-uncovered-territory-years-issue-77
+**Date:** 2026-08-13
+**Touched:** tcd-1912-1919, tcd-1919-1960 (renamed from tcd-1920-1960), tcd-1960-2025, sen-1854-1886, sen-1886-1960 (renamed from sen-1886-1959), sen-1960-2025, lao-1893-1954 (renamed from lao-1893-1953), lao-1954-2025, civ-1889-1893, civ-1893-1902 (renamed from civ-1893-1900), civ-1902-1932, aef-1910-1960, aof-1895-1960, lby-1949-1951
+**Source:** cshapes-2.0
+**Kind:** decision
+
+Closed the four territory-years that issue 77 found in no polity: **TCD 1919, SEN 1959,
+LAO 1953 and CIV 1900-1901**. Each was fixed by moving ONE boundary of ONE row so the
+two spans meet — no new polities, no polygon changes. `validate_period_gaps` went from
+15 baselined family gaps to 11, and its four entries were deleted with the measurement
+that retired them, per the bidirectional baseline design.
+
+Two of issue 77's claims did not survive re-measurement, and both mattered.
+
+**"They are latent, not live."** Half wrong. `mitchell` in the consolidated layer B has
+**14 Senegal observations for 1959** and **2 Lao observations for 1953**, and
+`data/compiled/pre1961/matched.csv` shows all 16 already routed to `SEN-1886-1959` and
+`LAO-1893-1953` — spans that formally ended in 1958 and 1952. The matcher reads
+`end_year` as inclusive, so the fallback the issue warned about was already happening;
+it was invisible only because the two candidate polygons are identical in both cases.
+The fix makes accidental routing correct routing and moves no published figure. TCD 1919
+and CIV 1900-1901 were latent as claimed (no observation before 1953 and 1919
+respectively).
+
+**"Each is a real historical question rather than a transcription slip."** Not for Chad
+or Côte d'Ivoire. Both were **CShapes 2.0 steps WHEP never transcribed**:
+
+- Chad's step 1919-06-28 -> 1920-03-16, the post-Versailles restoration. The three AEF
+  siblings decided the direction unanimously: `GAB-1919-1960`, `CAF-1919-1960` and
+  `COG-1919-1960` all start on that same date, and Chad is the only one of the four
+  whose CShapes record splits again at 1920-03-17 (separation from Oubangui-Chari). WHEP
+  took the second half and dropped the first. Both steps measure 1,271,888 km² in
+  ESRI:54034, so `TCD-1920-1960` simply starts a year earlier as `TCD-1919-1960`.
+  Extending `TCD-1912-1919` instead would have published the 1911 Neukamerun cession dip
+  (1,220,971 km²) for a year in which it had already been reversed, contradicting that
+  page's own decision that it is the only row carrying the dip.
+- Côte d'Ivoire's step 1900-11-15 -> 1902-03-19, which is a **capital move**, Grand
+  Bassam -> Bingerville, at the same 321,307.9 km² as the steps on either side. Absorbed
+  into `CIV-1893-1902`, the same identical-area merge rule used for `LAO-1893-1896` +
+  `LAO-1896-1953` in April 2026. This also answers `oq-civ-1900-event`, which had
+  guessed "a CShapes annual-grid artefact", and corrects a false sentence on
+  civ-1902-1932 claiming the intervening step had "a different configuration".
+
+The two live cases were decided on the event date, following `CHL-1810-1884`: Senegal
+entered the Mali Federation on 4 April 1959 and Laos became sovereign on 22 October
+1953, so in both the earlier row holds the larger part of the year — and in both, every
+CShapes step of the family measures the same area (195,995.8 km² and 229,904.6 km²), so
+no territorial precision is spent on the choice.
+
+**Left open deliberately:** the **Mali Federation** has no WHEP polity, so
+Federation-labelled data for 1959-1960 still has nowhere to go, and French Sudan's side
+of those 16 months was not examined — recorded as `oq-sen-mali-federation-entity`. Also
+untouched: the eleven remaining baselined gaps, three of which (`CZE`, `BFA`, `ANT`) the
+gate itself reports as "source reaches it" and which are cross-family or aggregate cases
+belonging to issue 82.
+
+---
+
 ## lint-polygon-status-vocabulary
 **Date:** 2026-07-29
 **Touched:** ant-1961-2010, blx-1850-1999, rafr-1850-2021, rasi-1850-2021, reur-1850-2021, rlam-1850-2013, rnam-1850-2021, roce-1850-2021, row-1850-2023, hnd-1800-2025, mmr-1885-2025, aoi-1936-1941, fcc-1862-1887, fto-1920-1960, nup-1800-1897, rwb-1919-1922, saa-1947-1957, tan-1891-1920, tan-1920-1922, tas-1825-1900, gco-1884-2025
