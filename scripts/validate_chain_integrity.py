@@ -51,7 +51,7 @@ What each found first time out:
       edges asserted as B.predecessor = A     430
       asserted BOTH ways                      345
       successor-only  (no reverse predecessor) 194 -> 191 on 2026-08-10
-      predecessor-only (no reverse successor)   85 -> 83 -> 80 on 2026-08-10
+      predecessor-only (no reverse successor)   85 -> 83 -> 80 on 2026-08-10, 81 on 2026-08-13
 
   Lowered twice on 2026-08-10. The second time (issue 188) was three HAND-OVERS where the
   successor named its predecessor and the predecessor named nothing back -- ANG-1905-1975 ->
@@ -75,6 +75,21 @@ What each found first time out:
   relations at once and took its whep_crops coverage from 96 pairs to 255. This signal exists so
   the asymmetry shrinks rather than growing, since a consumer writing their own traversal will not
   know to read both.
+
+  RAISED ONCE, on 2026-08-13, and the reason matters more than the number. F206-2011-2025 (Sudan
+  and South Sudan as one reporting unit) declares `predecessor: SUD-1956-2011`, and SUD deliberately
+  does NOT name it back. Of the six reporting aggregates here -- SYL, F237, F249, ROW, RLAM, MASG --
+  NOT ONE is named as a successor by any page. An aggregate may declare a predecessor, but nothing
+  declares an aggregate as its successor, because an aggregate is not what a territory BECAME;
+  putting one there overloads the field to mean "related to", the error PR 135 removed from
+  Greenland and Iceland.
+
+  The reverse edge was briefly added and it broke a downstream invariant: whep's
+  .bucket_is_predecessor() compares a polity's successor set to a bucket's members by EXACT
+  equality, so a third successor flipped all 14 of bucket 206's year-rows from `predecessor` to
+  `partial` -- the class that exists to catch a bucket labelled with a polity covering only some of
+  what it sums. Symmetry is the goal, but not at the price of asserting a succession that did not
+  happen.
 
   The counts are PINNED rather than the edges enumerated -- 279 entries would be unreadable, and
   what matters is the direction of travel.
@@ -149,7 +164,7 @@ BASELINE_CEILING = {
 # property is that these only go down. Lower them when they do -- the check insists.
 BASELINE_ASYMMETRY = {
     "successor_only": 191,
-    "predecessor_only": 80,
+    "predecessor_only": 81,
 }
 
 BASELINE_LINKS = {
