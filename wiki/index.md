@@ -16,7 +16,7 @@ double the real polity total.)
 |---|---|
 | Polities in the database | 767 |
 | Polity pages | 767 |
-| Sources ingested | 25 |
+| Sources ingested | 30 |
 | `status: draft` | 667 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 20 / 21 |
