@@ -440,12 +440,12 @@ are a **curated selection**, not a complete listing.
 - [Ruanda-Urundi (1922-1962)](polities/rwb-1922-1962.md) — `RWB-1922-1962`, draft. Belgian UN trust territory; split into Rwanda and Burundi 1962.
 - [Rwanda](polities/rwa-1962-2025.md) — `RWA-1962-2025`, draft.
 - [Sudan](polities/sdn-2011-2025.md) — `SDN-2011-2025`, draft.
-- [Senegal (1886-1959)](polities/sen-1886-1959.md) — `SEN-1886-1959`, draft. French West Africa; federation dissolved 1959.
+- [Senegal (1886-1960)](polities/sen-1886-1960.md) — `SEN-1886-1960`, draft. French West Africa; federation dissolved 1959.
 - [Senegal](polities/sen-1960-2025.md) — `SEN-1960-2025`, draft.
 - [South Sudan](polities/ssd-2011-2025.md) — `SSD-2011-2025`, draft.
 - [Sudan (1956-2011)](polities/sud-1956-2011.md) — `SUD-1956-2011`, draft.
 - [Eswatini](polities/swz-1894-2025.md) — `SWZ-1894-2025`, draft, 1 open question. Colonial Swaziland (SAR 1895, British 1902); independence 6 Sep 1968.
-- [Chad (1920-1960)](polities/tcd-1920-1960.md) — `TCD-1920-1960`, draft. Territoire du Tchad in AEF; independence 1960.
+- [Chad (1919-1960)](polities/tcd-1919-1960.md) — `TCD-1919-1960`, draft. Territoire du Tchad in AEF; independence 1960.
 - [Chad](polities/tcd-1960-2025.md) — `TCD-1960-2025`, draft.
 - [Uganda (1894-1902)](polities/uga-1894-1902.md) — `UGA-1894-1902`, draft. Uganda Protectorate; territory reorganised 1902.
 - [Uganda (1926-1962)](polities/uga-1926-1962.md) — `UGA-1926-1962`, draft. Uganda Protectorate post-boundary revision; independence 1962.
@@ -629,7 +629,7 @@ are a **curated selection**, not a complete listing.
 - [Cambodia (1907-1953)](polities/khm-1907-1953.md) — `KHM-1907-1953`, draft.
 - [Cambodia](polities/khm-1953-2025.md) — `KHM-1953-2025`, draft.
 - [Kuwait](polities/kwt-1800-2025.md) — `KWT-1800-2025`, draft.
-- [Laos (1893-1953)](polities/lao-1893-1953.md) — `LAO-1893-1953`, draft. French Laos; Mekong left-bank boundary 1896; independence 1953.
+- [Laos (1893-1954)](polities/lao-1893-1954.md) — `LAO-1893-1954`, draft. French Laos; Mekong left-bank boundary 1896; independence 1953.
 - [Laos](polities/lao-1954-2025.md) — `LAO-1954-2025`, draft.
 - [Lebanon (1920-1944)](polities/lbn-1920-1944.md) — `LBN-1920-1944`, draft.
 - [Lebanon](polities/lbn-1944-2025.md) — `LBN-1944-2025`, draft.
