@@ -26,57 +26,6 @@ Kinds:
 
 ---
 
-## ingest-phantom-source-replacement
-**Date:** 2026-08-13
-**Touched:** aze-ssr-1920-1991, car-1920-1945, saa-1947-1957, fcm-1920-1960, fto-1920-1960, ner-1922-1947, ner-1947-1960, nzl-1840-2025, aof-1895-1960
-**Source:** wikipedia-azerbaijan-ssr-2026-08-13, wikipedia-nanyo-2026-08-13, wikipedia-saar-protectorate-2026-08-13, wikipedia-french-africa-mandates-2026-08-13, federico-tena-2019
-**Kind:** ingest
-
-Seventeen citations on eight pages pointed at seven source files that had
-never been ingested (whep-polities issue 5); `scripts/validate_citations.py`
-had already demoted them to `[uncited — <slug> was never ingested]` markers,
-so the claims were surviving with no provenance at all. Rather than delete
-the claims or leave the markers, the four Wikipedia clusters were re-fetched
-on 2026-08-13 (MediaWiki API, plaintext extracts) and ingested as four
-snapshot sources, and the Federico-Tena reference material that has been
-staged in `data/external/federico_tena/` for months was registered as
-`federico-tena-2019` — the slug `reu-1816-1946` was already using, and
-`aof-1895-1960`'s `federico_tena` frontmatter was normalised onto it.
-
-Re-fetching falsified five claims, which is the point of doing it rather
-than rubber-stamping them. (1) **Niger:** both Niger pages described the
-+77,542 km² CShapes step of 1932-1947 as the Tibesti region. The source has
-Tibesti leaving Niger for Chad in **1931**, and the Dori/Fada N'Gourma
-cercles of the dissolved Upper Volta arriving in **1932** and returning in
-1947 — the other territory, the other direction. Differencing CShapes rows
-309 and 307 confirms it: the increment sits at 1.32°W-2.39°E, 10.94°-15.08°N,
-while Tibesti is near 16-19°E, 20-22°N, outside Niger's easternmost vertex
-(15.997°E) in all six steps. (2) **Saar:** there is no "Saar Statute of
-17 January 1947"; the *Saarstatut* is the 1954 WEU plan the 1955 referendum
-rejected, and the 1947 event is the constitution of 15 December (in force
-17 December). (3) The 1955 referendum was **67.7%** against, not 67.3%
-(423,434 / 625,409 = 67.71%). (4) The Saar's "ISO 3166 alpha-3 SAA" is
-anachronistic — ISO 3166 dates from 1974 — and is now recorded as an open
-question rather than a fact. (5) **Nan'yō-chō** was established in March
-1932, not 1922; Koror became the administrative seat in 1921 and the
-district civil administrations date from April 1922.
-
-Two further corrections came from the repo's own data: the Azerbaijan SSR
-area claim ("~86,600 km²") has no source and was replaced with the measured
-polygon (86,014 km², against 87,000 declared), and the 21 "trade with cook
-islands" rows on `nzl-1840-2025` are IIA yearbook footnotes
-(`pipelines/polity-autoimprove/state/iia_territorial_notes.csv`), not
-Federico-Tena, whose staged extract holds no bilateral series at all.
-
-No row was re-dated, split or retired: every correction is documentary. The
-source snapshots note where they *disagree* with a row's dates — Togoland's
-and Cameroon's League mandates are dated 1922 there against WHEP's 1920
-start years — and leave the re-dating question open, since that is a
-structural change. The eight Biger-anchor demotions in the same issue are
-untouched and remain open.
-
----
-
 ## lint-polygon-status-vocabulary
 **Date:** 2026-07-29
 **Touched:** ant-1961-2010, blx-1850-1999, rafr-1850-2021, rasi-1850-2021, reur-1850-2021, rlam-1850-2013, rnam-1850-2021, roce-1850-2021, row-1850-2023, hnd-1800-2025, mmr-1885-2025, aoi-1936-1941, fcc-1862-1887, fto-1920-1960, nup-1800-1897, rwb-1919-1922, saa-1947-1957, tan-1891-1920, tan-1920-1922, tas-1825-1900, gco-1884-2025

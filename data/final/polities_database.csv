@@ -42,7 +42,7 @@ AUT-1918-1919,Austria (1918-1919),1918,1919,national,AUT,305,Europe,draft,2026-0
 AUT-1919-2025,Austria,1919,2025,national,AUT,305,Europe,draft,2026-04-12,cshapes-2.0,305,1919,assigned,,AUH-1908-1918,
 AUWA-1829-1900,Western Australia (to 1900),1829,1900,colonial,AUS,,Oceania,draft,2026-04-15,cshapes-2.0,902,1886,assigned,,,AUS-1901-2025
 AZE-1991-2025,Azerbaijan,1991,2025,national,AZE,373,Asia,reviewed,2026-04-12,cshapes-2.0,373,1991,assigned,,AZE-SSR-1920-1991,
-AZE-SSR-1920-1991,Azerbaijan SSR,1920,1991,national,AZE,373,Asia,draft,2026-08-13,cshapes-2.0,373,1991,proxy,87000,F228-1920-1921,AZE-1991-2025
+AZE-SSR-1920-1991,Azerbaijan SSR,1920,1991,national,AZE,373,Asia,draft,2026-06-26,cshapes-2.0,373,1991,proxy,87000,F228-1920-1921,AZE-1991-2025
 BCM-1916-1961,British Cameroons,1916,1961,colonial,CMR,472,Africa,draft,2026-06-25,cshapes-2.0,472,1953,assigned,87489,,NGA-1961-2025; CMR-1961-2025
 BDI-1922-1962,Burundi (within Ruanda-Urundi),1922,1962,subnational,BDI,,Africa,draft,2026-07-02,cshapes-2.0,516,1962,assigned,27308,,BDI-1962-2025
 BDI-1962-2025,Burundi,1962,2025,national,BDI,516,Africa,draft,2026-04-12,cshapes-2.0,516,1962,assigned,,BDK-1800-1890; RWB-1922-1962,
@@ -116,7 +116,7 @@ CAN-1886-1949,Canada (to the Newfoundland accession),1886,1949,national,CAN,20,N
 CAN-1948-2025,Canada,1948,2025,national,CAN,20,North America,retired,2026-04-12,cshapes-2.0,20,1948,assigned,,CAN-1866-1948,CAN-1949-2025
 CAN-1949-2025,Canada,1949,2025,national,CAN,20,North America,reviewed,2026-08-05,cshapes-2.0,20,1949,assigned,,CAN-1886-1949; NFL-1907-1949,
 CAP-1800-1910,Cape Colony (to 1910),1800,1910,national,CAP,,Africa,draft,2026-04-17,cshapes-2.0,561,1886,assigned,600802,,ZAF-1910-2025
-CAR-1920-1945,Caroline Islands (Japanese Mandate),1920,1945,colonial,,,Oceania,draft,2026-08-13,gadm-4.1-adm0,FSM,,proxy,702,JPN-1895-1945,FSM-1991-2025
+CAR-1920-1945,Caroline Islands (Japanese Mandate),1920,1945,colonial,,,Oceania,draft,2026-06-26,gadm-4.1-adm0,FSM,,proxy,702,JPN-1895-1945,FSM-1991-2025
 CAY-1800-1886,Kingdom of Cayor,1800,1886,national,,,Africa,draft,2026-04-13,paine-2024,Cayor,,assigned,,,SEN-1960-2025
 CHE-1800-2025,Switzerland,1800,2025,national,CHE,225,Europe,draft,2026-04-13,cshapes-2.0,225,1886,assigned,,,
 CHL-1810-1884,Chile (to 1884),1810,1884,national,CHL,155,South America,draft,2026-06-24,none,,,unassigned,,,CHL-1884-1899
@@ -259,7 +259,7 @@ F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,national,CSK,315,Europe,draft
 F77-1949-1990,East Germany,1949,1990,national,DDR,265,Europe,draft,2026-04-12,cshapes-2.0,265,1949,assigned,,DEU-1938-1945,DEU-1990-2025
 F78-1949-1990,West Germany,1949,1990,national,,260,Europe,draft,2026-04-12,cshapes-2.0,260,1949,assigned,,WZO-1938-1949,DEU-1990-2025
 FCC-1862-1887,French Cochinchina,1862,1887,national,FID,,Asia,draft,2026-04-16,none,,,unassigned,,,FID-1887-1954
-FCM-1920-1960,French Cameroon (1920-1960),1920,1960,national,CMR,471,Africa,draft,2026-08-13,cshapes-2.0,471,1940,assigned,423069,GKM-1884-1916,CMR-1960-1961
+FCM-1920-1960,French Cameroon (1920-1960),1920,1960,national,CMR,471,Africa,draft,2026-04-16,cshapes-2.0,471,1940,assigned,423069,GKM-1884-1916,CMR-1960-1961
 FEZ-1943-1951,French Military Administration of Fezzan,1943,1951,national,LBY,620,Africa,draft,2026-08-10,constructed,FEZ-1943-1951,,proxy,463596,LBY-1934-1943,LBY-1951-2025
 FID-1887-1954,French Indochina,1887,1954,national,FID,,Asia,draft,2026-04-17,constructed,FID-1887-1954,1920,assigned,753049,,KHM-1953-2025; LAO-1954-2025
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,national,FIN,375,Europe,draft,2026-04-16,cshapes-2.0,375,1917,assigned,,,FIN-1917-1940
@@ -278,7 +278,7 @@ FRS-1884-1977,French Somaliland,1884,1977,national,DJI,522,Africa,draft,2026-07-
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,DJI,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,FRS-1884-1977,
 FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,,
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,national,,,Africa,draft,2026-04-13,paine-2024,Futa Jalon,,assigned,,,GIN-1958-2025; GIN-1894-1958
-FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,,Africa,draft,2026-08-13,cshapes-2.0,461,1930,assigned,57094,GTO-1919-1922,TGO-1960-2025
+FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,,Africa,draft,2026-04-16,cshapes-2.0,461,1930,assigned,57094,GTO-1919-1922,TGO-1960-2025
 FTT-1800-1862,Imamate of Futa Toro,1800,1862,national,,,Africa,draft,2026-04-13,paine-2024,Futa Toro,,assigned,,,SEN-1960-2025
 GAB-1839-1912,Gabon (to 1912),1839,1912,national,GAB,481,Africa,draft,2026-04-15,cshapes-2.0,481,1886,assigned,,,GAB-1912-1919
 GAB-1912-1919,Gabon (1912-1919),1912,1919,national,GAB,481,Africa,draft,2026-04-13,cshapes-2.0,481,1912,assigned,,,GAB-1919-1960
@@ -512,8 +512,8 @@ NAT-1895-1910,Natal (1895-1910),1895,1910,national,NAT,,Africa,reviewed,2026-06-
 NCL-1800-2025,New Caledonia,1800,2025,national,NCL,,Oceania,draft,2026-06-09,gadm-4.1-adm0,NCL,,proxy,,,
 NDB-1823-1894,Ndebele Kingdom,1823,1894,national,,,Africa,draft,2026-04-13,paine-2024,Ndebele,,assigned,,,ZWE-1890-1891
 NER-1911-1922,"Niger (Military Territory, 1911-1922)",1911,1922,national,NER,436,Africa,draft,2026-07-01,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1922-1947
-NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft,2026-08-13,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1947-1960
-NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-08-13,cshapes-2.0,436,1947,assigned,1182017,NER-1922-1947,NER-1960-2025
+NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft,2026-06-24,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1947-1960
+NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-04-16,cshapes-2.0,436,1947,assigned,1182017,NER-1922-1947,NER-1960-2025
 NER-1960-2025,Niger,1960,2025,national,NER,436,Africa,draft,2026-04-13,cshapes-2.0,436,1960,assigned,,DMG-1800-1899,
 NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,territory,NFK,,Oceania,draft,2026-07-01,gadm-4.1-adm0,NFK,2023,assigned,35,,
 NFL-1907-1949,Dominion of Newfoundland,1907,1949,national,NFL,21,North America,draft,2026-06-25,cshapes-2.0,21,1920,assigned,398416,,CAN-1949-2025
@@ -538,7 +538,7 @@ NRU-1888-2025,Nauru,1888,2025,national,NRU,970,Oceania,draft,2026-04-13,gadm-4.1
 NSW-1800-1900,New South Wales (to 1900),1800,1900,national,NSW,,Oceania,draft,2026-04-15,cshapes-2.0,901,1886,assigned,,,AUS-1901-2025
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,national,NGA,,Africa,draft,2026-04-15,none,,,unassigned,,,NNI-1899-1904
 NWR-1900-1905,Northwestern Rhodesia (1900-1905),1900,1905,national,NWR,,Africa,draft,2026-04-13,cshapes-2.0,5519,1900,assigned,,,NRH-1911-1953
-NZL-1840-2025,New Zealand,1840,2025,national,NZL,920,Oceania,draft,2026-08-13,cshapes-2.0,920,1907,assigned,,,
+NZL-1840-2025,New Zealand,1840,2025,national,NZL,920,Oceania,draft,2026-04-13,cshapes-2.0,920,1907,assigned,,,
 OMN-1800-1856,Omani Empire,1800,1856,national,OMN,,Asia,draft,2026-04-13,cliopatria,Sultanate of Oman,1840,assigned,,,OMN-1856-2025
 OMN-1856-2025,Sultanate of Oman,1856,2025,national,OMN,,Asia,draft,2026-04-12,cliopatria,Sultanate of Oman,1973,assigned,,OMN-1800-1856,
 OTT-1800-1886,Ottoman Empire (to 1886),1800,1886,national,OTT,640,Asia,draft,2026-04-11,cliopatria,Ottoman Empire,1857,assigned,,,OTT-1886-1908
@@ -620,7 +620,7 @@ RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,national,RWB,515,Africa,draft,
 RWK-1800-1890,Kingdom of Rwanda,1800,1890,national,,,Africa,draft,2026-04-13,paine-2024,Rwanda,,assigned,,,TAN-1891-1920
 RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,subnational,JPN,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.32_1,,proxy,2271,JPN-1895-1945,RYU-1945-1972
 RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,national,,,Asia,draft,2026-06-24,gadm-4.1-adm1,JPN.32_1,,proxy,2271,RYU-1937-1945,JPN-1952-2025
-SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,,Europe,draft,2026-08-13,gadm-4.1-adm1,DEU.12_1,,assigned,2571,SAC-1935-1947,F78-1949-1990
+SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,,Europe,draft,2026-06-24,gadm-4.1-adm1,DEU.12_1,,assigned,2571,SAC-1935-1947,F78-1949-1990
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,colonial,SAB,,Europe,draft,2026-06-25,,,,unassigned,,DEU-1919-1920,SAC-1935-1947
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,Europe,draft,2026-06-26,none,,,unassigned,1912,SAB-1920-1935,SAA-1947-1957
 SAR-1800-1860,Sardinia,1800,1860,national,SAR,325,Europe,draft,2026-04-12,cliopatria,Kingdom of Sardinia,1815,assigned,,,ITA-1861-1919
