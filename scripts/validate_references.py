@@ -42,7 +42,27 @@ database does not contain and nothing notices. Four ways that happened:
      retired/superseded page's banner, which deliberately point at the rows
      that replaced it.
 
-Known legacy failures for checks 2 and 4 are listed in
+  5. TITLE PERIODS. The same "body written for a split that was never applied"
+     failure also shows up in the page's own heading, where no code has to be
+     named at all: `blz-1800-2025` — a `superseded` umbrella row spanning
+     1800-2025 — was titled "# Belize (to 1886)", the name of the *separate*
+     `BLZ-1800-1886` row that replaced part of it, and its whole body described
+     that pre-1886 row. Check 4 cannot see this: every code the page mentions
+     exists. Eight more pages claimed a period their row does not have
+     ("# Gambia (to 1889)" on a 1800-2025 row, "# UAE (1913-1971)" on
+     1892-2025).
+
+     So a period claimed in the `# ` heading or in `polity_name` — `(to YYYY)`,
+     `(from YYYY)`, `(YYYY-YYYY)` — must match the row's own years. `end_year`
+     is exclusive here, and the repo writes both conventions in names
+     (`BLZ-1800-1886` is "Belize (to 1886)"), so an end claim of `end_year` or
+     `end_year - 1` is accepted. The years embedded in the polity CODE are
+     accepted too: where a code and its columns disagree the offender is
+     scripts/validate_code_year_agreement.py, not the title. A parenthesis that
+     names a code, or says SUPERSEDED/RETIRED, is a redirection banner and is
+     skipped.
+
+Known legacy failures for checks 2, 4 and 5 are listed in
 scripts/validate_references_baseline.txt so the gate gets NEW ones rather than
 staying permanently red. That file is a tracked backlog, not an exemption.
 
@@ -122,6 +142,44 @@ CODE_RE = re.compile(r"\b[A-Z][A-Z0-9]{1,9}-\d{4}-\d{4}\b")
 PAGE_LINK_RE = re.compile(r"\]\((?!\.\.|https?:)([a-z0-9][a-z0-9_-]*\.md)(?:#[^)]*)?\)")
 CHAIN_LINE_RE = re.compile(r"^\s*[-*>]?\s*\**\s*(?:Predecessor|Successor)s?\b", re.I)
 DEAD_STATUSES = ("retired", "superseded")
+
+# check 5: a period claimed inside a parenthesis, e.g. "Gambia (to 1889)"
+PAREN_RE = re.compile(r"\(([^()]*)\)")
+YEAR = r"(1[5-9]\d\d|20\d\d)"
+PERIOD_FORMS = (
+    ("range", re.compile(r"^" + YEAR + r"\s*[-‒-―]\s*" + YEAR + r"$")),
+    ("to", re.compile(r"^(?:to|until|through|up to)\s+" + YEAR + r"$", re.I)),
+    ("from", re.compile(r"^(?:from|since)\s+" + YEAR + r"$", re.I)),
+)
+# a parenthesis that redirects rather than dates the row
+BANNER_WORDS = re.compile(r"SUPERSEDED|RETIRED|REPLACED|MERGED|SPLIT", re.I)
+
+
+def period_claims(text):
+    """Periods a title/name claims, as (form, start_or_None, end_or_None, raw)."""
+    out = []
+    for m in PAREN_RE.finditer(text or ""):
+        inner = m.group(1).strip()
+        if BANNER_WORDS.search(inner) or CODE_RE.search(inner):
+            continue
+        for form, rx in PERIOD_FORMS:
+            hit = rx.match(inner)
+            if not hit:
+                continue
+            if form == "range":
+                out.append((form, int(hit.group(1)), int(hit.group(2)), inner))
+            elif form == "to":
+                out.append((form, None, int(hit.group(1)), inner))
+            else:
+                out.append((form, int(hit.group(1)), None, inner))
+            break
+    return out
+
+
+def code_years(code):
+    """The years embedded in a polity code, or None."""
+    m = re.search(r"-(\d{4})-(\d{4})$", str(code or ""))
+    return (int(m.group(1)), int(m.group(2))) if m else None
 
 
 def load_baseline():
@@ -329,9 +387,46 @@ if not A.warnings and len(prose) > 5:
     print(f"   ... {len(prose) - 5} more (--warnings to list all)")
 
 # ---------------------------------------------------------------------------
-fail = bool(csv_name_typos or unknown_keys or dangling or asserted or broken_links)
+# 5. periods claimed by the page title / polity_name
+# ---------------------------------------------------------------------------
+bad_titles, title_baselined = [], 0
+for slug, (fm, body) in sorted(parsed.items()):
+    try:
+        start = int(fm["start_year"])
+        end = int(fm["end_year"])
+    except (KeyError, TypeError, ValueError):
+        continue
+    ok_start, ok_end = {start}, {end, end - 1}
+    embedded = code_years(fm.get("polity_code"))
+    if embedded:                       # code/columns disagreement is another gate's
+        ok_start.add(embedded[0])
+        ok_end.update((embedded[1], embedded[1] - 1))
+
+    heading = next((line.strip() for _, line in body_lines(body)
+                    if line.startswith("# ")), "")
+    for where, text in (("title", heading), ("polity_name", fm.get("polity_name"))):
+        for form, cs, ce, raw in period_claims(text):
+            wrong = ((cs is not None and cs not in ok_start)
+                     or (ce is not None and ce not in ok_end))
+            if not wrong:
+                continue
+            if (slug, f"({raw})") in baseline:
+                title_baselined += 1
+                continue
+            bad_titles.append((slug, where, raw, start, end))
+
+print(f"\n5. TITLE PERIODS: {len(bad_titles)} claimed period(s) the row does not "
+      f"have ({title_baselined} baselined)")
+for slug, where, raw, start, end in bad_titles:
+    print(f"   FAIL {slug:26s} {where} claims ({raw}), but the row is "
+          f"{start}-{end}")
+
+# ---------------------------------------------------------------------------
+fail = bool(csv_name_typos or unknown_keys or dangling or asserted or broken_links
+            or bad_titles)
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(csv_name_typos) + len(unknown_keys)} "
       f"bad frontmatter key(s), {len(dangling)} dangling chain ref(s), "
       f"{len(asserted)} asserted-but-absent code(s), {len(broken_links)} broken "
-      f"page link(s); {len(asymmetric) + len(dead) + len(prose)} warning(s) ignored")
+      f"page link(s), {len(bad_titles)} bad title period(s); "
+      f"{len(asymmetric) + len(dead) + len(prose)} warning(s) ignored")
 sys.exit(1 if fail else 0)

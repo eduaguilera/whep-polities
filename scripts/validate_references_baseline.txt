@@ -41,6 +41,11 @@ ryu-1945-1972  JPN-1972-2025    # decision prose: successor set to JPN-1952-2025
 tur-1913-1914  TUR-1800-1912    # "per CSV", but the CSV row is OTT-*; needs the Ottoman/Turkey chain settled
 
 # --- Body written for a split that was never applied (issue #25) -------------
+# 2026-08-13: the TITLES of these pages are no longer part of the backlog. Each
+# claimed the planned sub-period rather than the row's own span ("# Gambia (to
+# 1889)" on a 1800-2025 row) and has been corrected to the row's span with a note
+# saying what the body still gets wrong; check 5 now enforces that. What remains
+# baselined below is the prose, which is a per-page editorial job.
 # Each of these has a "- **Successor:** XXX-yyyy-yyyy (this row)" bullet naming a
 # code that does not exist, left over from a planned split. The rows are single
 # long spans; the prose, not the database, is what is wrong. Rewriting it is a
