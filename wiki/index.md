@@ -16,13 +16,13 @@ double the real polity total.)
 |---|---|
 | Polities in the database | 767 |
 | Polity pages | 767 |
-| Sources ingested | 25 |
+| Sources ingested | 30 |
 | `status: draft` | 667 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 20 / 21 |
-| Pages with no source citation | 214 |
+| Pages with no source citation | 207 |
 | Pages citing biger-1995 | 392 |
-| Open questions (`### oq-`) | 814 |
+| Open questions (`### oq-`) | 815 |
 
 **By continent:** Africa 269 · Europe 175 · Asia 161 · North America 68 · Oceania 46 · South America 45 · World 2
 
