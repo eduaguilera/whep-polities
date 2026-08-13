@@ -322,6 +322,12 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_site_outputs.py
 
+      # Added after sixteen territories got polities and stayed listed as having none, so their
+      # data still resolved to ROW-1850-2025. Nothing linked the two files; now something does.
+      - name: areas listed as unmapped really have no polity to map them to
+        if: '!cancelled()'
+        run: python3 scripts/validate_registry_unmapped.py
+
       - name: Polygons — area agreement, claimed-but-absent, reviewed-means-documented
         if: '!cancelled()'
         run: python3 scripts/validate_polygons.py
