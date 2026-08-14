@@ -96,8 +96,7 @@ BASELINE = frozenset({
     # orphan code remains, so this entry cannot silently become a lie a second time.
     #
     # The reason it had no polygon is unchanged and still on the page: Cliopatria's pre-1884
-    # Chile steps
-    # (1866-1879: 314,287 km2) are settlement-extent rather than claimed territory, so
+    # Chile steps (1866-1879: 314,287 km2) are settlement-extent rather than claimed territory, so
     # binding one would put a 2.4x step against this family's CShapes-sourced siblings
     # (~745,000 km2) that is a mapping convention and not a border. CShapes has a 1886
     # floor and its earliest Chile polygon already contains the ~240,000 km2 annexed in
