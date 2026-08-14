@@ -60,8 +60,35 @@ do with it:
 | `state/landuse_corrections.csv` | recoverable bad cells in the FAO land-use series, one row per cell, with an `action` (`replace_value` / `drop_row` / `review_cell` / `review`) saying what an upstream applier may do unattended. `scripts/validate_landuse_corrections.py` re-derives every diagnosis from the row's own numbers | #4 |
 | `state/yield_corrections.csv` | single cells whose area x yield is physically impossible | #29, #111 |
 | `state/yield_series_corrections.csv` | whole series carrying a scale error, one row per run, with which column moved | #111 |
+| `state/livestock_corrections.csv` | FAO-1952 meat cells the components/total identity recovers, and carcass weights outside physical bounds | #29 |
 | `state/source_conventions.csv` | what a source's labels actually measure | #24, #13 |
 | `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack — **empty since 2026-08-13**, the queue is drained | #3 (closed) |
+
+### Self-checking arithmetic: what each candidate series actually supports
+
+Issue 29 listed five series that might carry an identity worth exploiting, after
+the land-use block showed what one buys. Measured against the current layer B,
+they are not equally promising, and one of them does not exist as stated:
+
+| candidate | verdict | measured |
+|---|---|---|
+| area × yield = production | **exploited** — `07_yield_consistency.py` | physical yield bounds; per-cell and per-run correction tables |
+| meat components = stated total | **exploited** — `10_livestock_consistency.py` | holds to the tonne for 204 of 218 country-years; 11 bad cells, all recovered |
+| carcass weight within physical bounds | **exploited** — `10_livestock_consistency.py` | 5 of 562 cells outside a species' dressed-carcass range |
+| heads × carcass weight = meat | **not available as stated** | standing herd is not annual slaughter (pigs turn over faster than once a year), and `item` = "meat" collapses four yearbook columns under one label |
+| crop area ≤ arable land | **weak, and 06 already sees the hits** | only 93 fao1952 country-years have both; extracted crop area is a median 15% of arable land, so the bound is slack, and multiple cropping lets it exceed 1 legitimately. The two hard breaches (Netherlands 1951, Germany Western 1951) are both already land-use residuals |
+| trade mirrors | **tracked separately** | issue #112: 6.1M doubly reported flows |
+| sub-national parts sum to the whole | **open — needs a curated map** | a label-prefix test over layer B's 671 labels finds 75 candidate parents but only 291 parent/child co-occurrences in one (source, table, item, year) block, and most candidates are false (`Netherlands`/`Netherlands Antilles`, `New`/`New Zealand`); median children/parent ratio 0.25 |
+
+**The cross-cutting finding is the error MODE, not the series.** In the FAO-1952
+extraction the characteristic fault is a dropped leading `1` — the cell is exactly
+1,000 units low. All eleven meat-table mismatches are that, and so are seven of
+the land-use residuals in `landuse_corrections.csv` (NLD 1951, JPN 1951, ECU 1949,
+GBR 1951, LBR 1948, HUN 1947, SLB 1949). `06_landuse_consistency.py` detects them
+but diagnoses none, because its diagnoses (`digits prepended`, `decimal point
+dropped`) all describe a value that came out too LARGE. Netherlands 1951 arable
+land is recorded as 43 against an implied 1,043 and lands in the table as
+`(multiple)`. Extending 06's diagnosis set is issue #4's work, not #29's.
 
 Useful label combinations: `decision-needed` (blocked on a judgement call),
 `blocked-on-source` (needs a GIS/reference source we lack), `guard` (a check that
