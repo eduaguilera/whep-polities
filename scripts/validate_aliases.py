@@ -158,6 +158,17 @@ for i, r in enumerate(rows, start=2):  # +2: header is line 1
 # on the record instead of an unexamined range.
 #
 # Bidirectional: a fifth fails, and this one fails if it is ever resolved.
+#
+# Re-measured 2026-08-14 over all 913 published aliases, which closes issue 54 in both
+# directions. Beginning before the target: 1 (this pin), down from the issue's 4. Ending after
+# the target: 0 alias now ends MORE than one year past its target's coverage, down from the
+# issue's 2 -- "tanganyika" and "tanzania" claimed to 1964 against TAN-1922-1964 and were
+# clipped to 1960 during the issue-79 work, i.e. they were decided against the COLUMNS reading
+# (1922-1961) rather than waiting on the code/columns disagreement the issue expected to settle
+# them; TAN's code-vs-columns split itself remains baselined in validate_code_year_agreement.py,
+# which is that gate's open item and no longer this one's. The remaining 198 aliases whose
+# inclusive year_end equals their target's exclusive end_year are the convention working, and
+# validate_alias_year_coverage.py pins that set by identity.
 BASELINE_BEFORE_TARGET = frozenset({
     ("Trieste", "fao1952", "TRS-1947-1954"),
 })
