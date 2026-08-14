@@ -84,6 +84,54 @@ belonging to issue 82.
 
 ---
 
+## decision-independence-predecessor-edges-2026-08-13
+**Date:** 2026-08-13
+**Touched:** LBY-1912-1919, OTT-1908-1912, BFA-1919-1932, BFA-1947-1960
+**Source:** none
+**Kind:** decision
+
+*Recorded by Claude (Claude Code) while working issue 171; every figure below was
+measured against the repo, not carried over from the issue. Not human-signed-off.*
+
+Issue 171 listed eleven families whose earliest row had no `predecessor` and asked
+for the missing edges, naming Somalia (118 data rows) and Botswana (85) as the two
+biggest wins. **Most of the list was already fixed when it was measured, and not by
+adding edges.** `write_iso3_successor_map.py` reads `successor` in reverse as well as
+`predecessor`, and BSS-1884-1960, ITS-1908-1960, BEC-1885-1966 and SUD-1934-1956 had
+each named their successor all along. Measured 2026-08-13: SOM 76 (iso3, year) pairs
+at hop depth 1, BWA 81 at depth 1, SDN 57, ERI 41, RUS 74. The issue's premise came
+from a docstring in that same script that still quoted "96 pairs"; the script now
+prints 5,169. The docstring has been corrected and says why it was wrong.
+
+Two of the eleven were genuinely missing edges, with opposite shapes:
+
+- [lby-1912-1919](polities/lby-1912-1919.md) gained `predecessor: OTT-1908-1912`, and
+  [ott-1908-1912](polities/ott-1908-1912.md) the reverse `successor`. The issue said
+  "Ottoman Tripolitania — no row"; that is false. The OTT chain runs 1800–1912 and
+  `OTT-1908-1912` ends in exactly the year Italian Libya begins, by the Treaty of Ouchy
+  (18 October 1912) — an event both pages already described in prose while asserting it
+  in neither chain field. This also closes `oq-lby-ottoman-predecessor`, which had been
+  asking for precisely this edge since 2026-04-15. LBY went 0 → 62 map pairs.
+- [bfa-1919-1932](polities/bfa-1919-1932.md) and [bfa-1947-1960](polities/bfa-1947-1960.md)
+  gained `predecessor: AOF-1895-1960`. Haut-Sénégal-et-Niger has no row, but it was a
+  colony of French West Africa, which does, and whose span covers both the 1919 carve-out
+  and the 1932–1947 interruption. `NER-1911-1922`, `NER-1922-1947` and `MRT-1920-1960`
+  already carry this exact edge. BFA went 0 → 39 pairs.
+
+Left deliberately empty, with reasons on the pages and in the script docstring: `PAK`
+(PAK-1937-1947 is a sub-territory reported alongside IND-1937-1947, not after it — a
+containment relation, which this schema has no field for), `COM` (the only candidate is
+MDG-1882-2025, a live row conflating colony and republic), `TGO` and pre-1912 `LBY`
+(missing polities, already baselined), and `RUS`, `HUN`, `ERI-1885-1889` (genuine chain
+starts — `HUN-1800-1918` covers 1850 already, so HUN has no gap at all).
+
+The AOF edges are predecessor-only on purpose: AOF ran to 1960 through both BFA events,
+so "AOF's successor is BFA-1919-1932" would assert that AOF ended in 1919.
+`validate_chain_integrity`'s `predecessor_only` pin therefore goes 81 → 83, with that
+argument written into the baseline. The four reverse edges also lower `successor_only`
+**193 → 189**; this entry was written against a 191 base, before issue 77's closures and
+the F206 work moved it, so the arithmetic was re-measured on rebase rather than carried.
+
 ## lint-polygon-status-vocabulary
 **Date:** 2026-07-29
 **Touched:** ant-1961-2010, blx-1850-1999, rafr-1850-2021, rasi-1850-2021, reur-1850-2021, rlam-1850-2013, rnam-1850-2021, roce-1850-2021, row-1850-2023, hnd-1800-2025, mmr-1885-2025, aoi-1936-1941, fcc-1862-1887, fto-1920-1960, nup-1800-1897, rwb-1919-1922, saa-1947-1957, tan-1891-1920, tan-1920-1922, tas-1825-1900, gco-1884-2025
