@@ -194,10 +194,16 @@ LEGITIMATE_CONTAINERS = frozenset({
     # either would discard published data -- so any spatial or area-weighted use must pick one
     # level. That is the same shape as FID-1887-1954 over Indochina above.
     #
-    # LBY-1943-1949 does NOT appear here, and the reason is worth knowing: it holds only TRP and
-    # FEZ, because CYR-1949-1951 is the EMIRATE of Cyrenaica and starts in 1949. The British
-    # military administration of Cyrenaica, 1943-1949, has no row at all -- so this container
-    # sits one below the >=3 threshold for a coverage gap rather than for a territorial reason.
+    # LBY-1943-1949 JOINED THIS LIST ON 2026-08-13, and the note it replaces explains why it was
+    # ever absent: "it holds only TRP and FEZ, because CYR-1949-1951 is the EMIRATE of Cyrenaica
+    # and starts in 1949. The British military administration of Cyrenaica, 1943-1949, has no row
+    # at all -- so this container sits one below the >=3 threshold for a coverage gap rather than
+    # for a territorial reason." Issue 198 created CYR-1943-1949, so it now holds three and the
+    # container is reported for the territorial reason the other one always was.
+    #
+    # This is the clearest illustration of this gate's single-swallow blind spot in the wild: a
+    # missing row, not a boundary, kept a container invisible.
+    "LBY-1943-1949",
     "LBY-1949-1951",
     # The British Leeward Islands Colony over its member islands, added 2026-08-10 when its
     # polygon was finally built (issues 3 and 155). It holds ATG, DMA, KNA and MSR, which is what

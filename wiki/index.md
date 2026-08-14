@@ -14,17 +14,17 @@ double the real polity total.)
 
 | Metric | Value |
 |---|---|
-| Polities in the database | 767 |
-| Polity pages | 767 |
+| Polities in the database | 768 |
+| Polity pages | 768 |
 | Sources ingested | 30 |
-| `status: draft` | 667 |
+| `status: draft` | 668 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 20 / 21 |
-| Pages with no source citation | 207 |
+| Pages with no source citation | 208 |
 | Pages citing biger-1995 | 392 |
-| Open questions (`### oq-`) | 815 |
+| Open questions (`### oq-`) | 817 |
 
-**By continent:** Africa 269 · Europe 175 · Asia 161 · North America 68 · Oceania 46 · South America 45 · World 2
+**By continent:** Africa 270 · Europe 175 · Asia 161 · North America 68 · Oceania 46 · South America 45 · World 2
 
 Regenerate with `python3 scripts/update_wiki_index.py`. The authoritative
 catalog is `data/final/polities_database.csv`; the per-continent notes below

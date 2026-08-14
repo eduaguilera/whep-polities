@@ -192,7 +192,10 @@ for r in documented.itertuples():
 # improved. A row can only ENTER the band by someone re-deriving a declared figure from a
 # polygon, which is a human act and worth failing on. So this is a ceiling.
 SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
-BASELINE_SELF_REFERENTIAL = 102     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13, see below
+BASELINE_SELF_REFERENTIAL = 103     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 on 2026-08-14, see below
+
+#
+
 
 # THE CEILING IS NOT A PURE RATCHET, and one day of use falsified the reason given for making it
 # one. The original note argued: "a row can only ENTER the band by someone re-deriving a declared
@@ -228,6 +231,23 @@ BASELINE_SELF_REFERENTIAL = 102     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # polygon by 0.1%, which is check A doing its job. The pin is lowered because selftest_gates
 # requires the ceiling to bite: at 104 the harness's own mutation (rewriting a declared area to
 # what its polygon measures, +1) landed at 103 and the gate PASSED a defect it claims to catch.
+#
+# (Pinned at 103, not the 105 this note originally said: it was written against a base of 104,
+# and the issue-84 cuts above had since taken that to 102. 102 + this one new row = 103,
+# measured on rebase 2026-08-14.)
+#
+# 105 ON 2026-08-13, and this is a THIRD way in that neither note above anticipated: a NEW ROW
+# BOUND TO AN EXISTING POLYGON. CYR-1943-1949 (the British military administration of Cyrenaica,
+# issue 198) declares 837,876 km2 and reuses CYR-1949-1951's constructed feature unchanged, so it
+# lands in the band by construction -- there is one geometry and now two rows reading the same
+# number off it. Exactly the pattern MAN-1932-1945 / MAN-1945-1950 already shows in the `exact`
+# list above, where both periods of Manchuria declare 791,708.
+#
+# No figure was re-derived and no polygon was corrected. Declaring FAO 1952's independent 855,400
+# instead would have dropped the count -- and would have been a fabrication, because the row's
+# geometry is the 8 GADM shabiyat, not FAO's outline; the -2.0% gap between the two is stated on
+# the page instead, which is what `polygon_status: proxy` is for. Issue 195's provenance field is
+# what would record "measured from the geometry" honestly; a ceiling cannot.
 
 # Live rows only, matching the population check A actually judges -- `have` includes the
 # retired and superseded rows that still carry geometry, and check A exempts those.

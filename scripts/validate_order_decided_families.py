@@ -11,6 +11,7 @@ That is not a hypothetical. Every case this gate reports today was misrouting re
     iso  years        candidates                                    layer-B rows at risk
     MYS  1881-1945    BNB / BSW / GBM (three colonial territories)         207
     LBY  1943-1950    LBY / TRP / CYR / FEZ (all typed `national`)          88
+                      (CYR is CYR-1943-1949 before 1949 and CYR-1949-1951 from it)
     PNG  1920-1948    TNGU / TPAP                                           26
     NGA  1886-1896    NGA-1886-1914 / NUP-1800-1897                          8
 
@@ -93,11 +94,25 @@ BASELINE_ORDERED = {
     # all-Libya row, overstating the territory it describes by 3.2x. Every observed label in both
     # windows is pinned by an explicit alias: `Libya`, `Libya Tripolitania`, `Libya Cyrenaica`,
     # `Libya Fezzan`, plus the `Tripolitania` and `Libya: Cyrenaica` variants.
-    ("LBY", ("FEZ-1943-1951", "LBY-1943-1949", "TRP-1943-1951")):
-        "1943-1948: Tripolitania and Fezzan alongside the all-Libya row, all three `national`, so "
-        "the filter leaves three. Cyrenaica is absent from THIS window because CYR-1949-1951 is "
-        "the EMIRATE, proclaimed 1949 -- the British military administration of Cyrenaica "
-        "1943-1949 has no row, which is a coverage gap recorded on the TRP and FEZ pages.",
+    # THE 1943-1948 SET GAINED CYRENAICA ON 2026-08-13 (issue 198). It read
+    # ("FEZ-1943-1951", "LBY-1943-1949", "TRP-1943-1951") and said "Cyrenaica is absent from THIS
+    # window because CYR-1949-1951 is the EMIRATE, proclaimed 1949 -- the British military
+    # administration of Cyrenaica 1943-1949 has no row, which is a coverage gap". It has one now:
+    # CYR-1943-1949, bound to the same constructed polygon as the emirate. The three-member key is
+    # deleted rather than kept alongside, because it can never reproduce -- no window exists in
+    # which Cyrenaica is missing.
+    #
+    # AND THE GAP WAS NOT LATENT, which issue 198 asserted and this comment implied by calling it a
+    # coverage gap with nothing behind it: 4 FAO 1952 `Libya Cyrenaica` land-use rows for 1948 were
+    # resolving to NOTHING, one of them the 855,400 km2 stated area that the CYR, TRP and FEZ pages
+    # all measure their polygons against.
+    ("LBY", ("CYR-1943-1949", "FEZ-1943-1951", "LBY-1943-1949", "TRP-1943-1951")):
+        "1943-1948: all three occupation territories plus the all-Libya row, all four `national`, "
+        "so the filter leaves four. Cyrenaica's member here is CYR-1943-1949, the British military "
+        "administration, distinct from the CYR-1949-1951 emirate that appears in the 1949-1950 "
+        "window below; they are consecutive periods of one `CYR` family on one polygon. Every "
+        "observed label in this window is pinned by an explicit alias, `Libya Cyrenaica` at 1948 "
+        "included.",
 
     ("LBY", ("CYR-1949-1951", "FEZ-1943-1951", "LBY-1949-1951", "TRP-1943-1951")):
         "1949-1950: all three occupation territories plus the all-Libya UN transitional row, all "

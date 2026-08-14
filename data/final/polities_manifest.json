@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "b649b3e50ce36bbdf01aafb794e1ec2060a9cc2f102b30171ac4f0e42ee42006",
+ "identity_sha256": "2eff2a47504017409cae5d67440584bd35051ab542431045602f2f1707cf6412",
  "counts": {
-  "total": 767,
-  "live": 726,
+  "total": 768,
+  "live": 727,
   "dead": 41
  },
  "dead_status": [
@@ -155,8 +155,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "1955c747fcac084b1be87e08a7a374ca893f8c4ec3cfc23311b9df4ebe38f965",
-  "aliases": 908,
+  "sha256": "05487ea9c530e724b59717cf291840036b55bd95ad43472e507ec10c2b526fdb",
+  "aliases": 909,
   "labels": 479,
   "sources": [
    "crops-manure-n",
@@ -901,6 +901,7 @@
   "CXR-1946-1958",
   "CYM-1800-2025",
   "CYP-1879-2025",
+  "CYR-1943-1949",
   "CYR-1949-1951",
   "CZE-1804-1918",
   "CZE-1993-2025",

@@ -169,6 +169,7 @@ CUW-2010-2025,Curaçao,2010,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,
 CXR-1946-1958,Christmas Island (under Singapore administration),1946,1958,gadm-4.1-adm0,2023.0,assigned,True,back_projected,True,False,polygon vintage 2023 is AFTER the period ends (1958) — later/modern border applied back,6
 CYM-1800-2025,Cayman Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CYP-1879-2025,Cyprus,1879,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 146y span (1879-2025); borders may have changed,1130
+CYR-1943-1949,British Military Administration of Cyrenaica,1943,1949,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CYR-1949-1951,Emirate of Cyrenaica,1949,1951,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,14
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,constructed,1860.0,assigned,True,assumed_constant,True,False,single 1860 polygon held across a 114y span (1804-1918); borders may have changed,37
 CZE-1947-1992,Czechoslovakia (1947-1992) [superseded],1947,1992,cshapes-2.0,1945.0,assigned,True,back_projected,True,False,polygon vintage 1945 is BEFORE the period starts (1947),0
