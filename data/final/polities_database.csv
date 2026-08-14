@@ -711,7 +711,7 @@ TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,national
 TRS-1947-1954,Free Territory of Trieste,1947,1954,national,,,Europe,draft,2026-06-26,constructed,,1947,unassigned,737,ITA-1919-2025,ITA-1919-2025
 TTO-1800-2025,Trinidad and Tobago,1800,2025,national,TTO,52,North America,draft,2026-04-13,cshapes-2.0,52,1886,assigned,,,
 TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,PCI,,Oceania,draft,2026-06-26,constructed,TTPI-1947-1994,,proxy,1791,CAR-1920-1945; MHL-1874-2025,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025
-TUN-1800-1881,Beylik of Tunis,1800,1881,national,TUN,616,Africa,draft,2026-04-13,paine-2024,Tunis,,assigned,,,TUN-1881-2025
+TUN-1800-1881,Beylik of Tunis,1800,1881,national,TUN,616,Africa,draft,2026-04-13,cshapes-2.0,616,1886,proxy,,,TUN-1881-2025
 TUN-1881-2025,Tunisia,1881,2025,national,TUN,616,Africa,draft,2026-04-13,cshapes-2.0,616,1886,assigned,,TUN-1800-1881,
 TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,national,TUR,640,Asia,draft,2026-04-16,cshapes-2.0,640,1923,estimate,779964,,TUR-1913-1914
 TUR-1913-1914,Türkiye (1913-1914),1913,1914,national,TUR,640,Asia,reviewed,2026-04-12,constructed,TUR-1913-1914,,assigned,1785218,OTT-1908-1912,TUR-1914-1918
