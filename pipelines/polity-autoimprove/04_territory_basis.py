@@ -72,11 +72,36 @@ if os.path.exists(ff):
     footnote_flagged = set(pd.read_csv(ff)["polity_code"].dropna())
 
 # layer-B data magnitude per polity (optional hint)
+#
+# ORPHAN-CODE GUARD (issue 243). matched_rows.parquet is gitignored per-run state written
+# by stage 01; `layerb_data_rows` below is the only column of the TRACKED territory_basis.csv
+# derived from it. When a polity is re-spanned, the stale parquet keeps the OLD code, so its
+# rows are attributed to a code the database no longer contains -- and this script, which
+# only looks codes UP, silently commits 0 rows for the renamed polity. That is not a
+# hypothetical: measured on main 2026-08-14, five codes carrying 799 rows were orphaned
+# (SEN-1886-1959 471, CHL-1810-1883 168, LAO-1893-1953 89, TCD-1920-1960 46, LBY-1950-1951
+# 25) and CHL-1810-1884 had to be dropped from validate_data_without_geometry's baseline
+# because committed state said it received nothing.
+#
+# So refuse to write (or to validate) an accounting whose input describes a different polity
+# set. The check costs one set difference and is the invariant that actually broke; it can
+# only fire where the parquet exists at all, which is where the damage is authored.
 rows_by_code = {}
 mp = os.path.join(H, "matched_rows.parquet")
 if os.path.exists(mp):
     m = pd.read_parquet(mp)
     rows_by_code = m[m.whep_code.notna()].groupby("whep_code").size().to_dict()
+    _orphans = {c: n for c, n in rows_by_code.items() if c not in set(pol["polity_code"])}
+    if _orphans:
+        print(f"FAIL: matched_rows.parquet attributes {sum(_orphans.values()):,} rows to "
+              f"{len(_orphans)} code(s) the database does not contain, so layerb_data_rows "
+              f"would undercount their successors:")
+        for c, n in sorted(_orphans.items(), key=lambda t: -t[1]):
+            print(f"  {c}  {n:,} rows")
+        print("  the parquet predates a re-span; regenerate it and rerun:\n"
+              "    python3 pipelines/polity-autoimprove/01_match_and_findings.py\n"
+              "    python3 pipelines/polity-autoimprove/02_territorial_evidence.py")
+        sys.exit(1)
 
 def classify(r):
     code = r.polity_code

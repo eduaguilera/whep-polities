@@ -15,9 +15,10 @@ unmatched row is visible in a coverage figure, a matched row with no territory i
 
 WHAT IT MEASURED WHEN IT WAS WRITTEN (2026-08-13, issue 155): 9 live polities receive
 362 layer-B rows with no geometry, all nine judged and baselined below. On rebase
-(2026-08-14) it measures 8 polities and 194 rows: CHL-1810-1884 left the baseline for the
-reason recorded beside it, and the committed row counts are lower than when this paragraph
-was written because the gitignored parquet they derive from predates the recent re-spans.
+(2026-08-14) it briefly measured 8 polities and 194 rows, because the gitignored parquet the
+counts derive from predated the recent re-spans; CHL-1810-1884 left the baseline for that
+reason. Regenerating the parquet (issue 243) restored the original reading exactly — 9
+polities, 362 rows — and CHL is baselined again.
 
 Issue 155 filed the same class at 18 polities / 1,071 rows. Re-enumerating it from the
 data rather than from the issue changed both the membership and the counts:
@@ -50,6 +51,13 @@ input has silently emptied prints PASS forever. That is the failure mode this re
 already paid for once: `04_territory_basis.py --check` compares only the columns CI can
 reproduce, and this column is not one of them.
 
+The OTHER way the input goes wrong is subtler than emptying, and check C cannot see it: the
+parquet keeps a re-spanned polity's old code, so its rows are attributed to a code that no
+longer exists and the successor's committed count reads 0 while the total stays healthy.
+That is issue 243, and it cost this baseline an entry. `04_territory_basis.py` now refuses to
+write or validate the accounting while any such orphan code is present, which is upstream of
+here and is why check C can stay the cheap non-empty test it is.
+
 Three checks:
   A. DATA WITHOUT TERRITORY — a live polity with rows > 0 and no geometry, unbaselined.
   B. STALE BASELINE (bidirectional) — a baselined polity that now HAS geometry, or now
@@ -78,16 +86,14 @@ DEAD = ("retired", "superseded")
 # taken from its own page's prose — which is how issue 155's five already-fixed cases
 # were found. Row counts are the layer-B figures measured on 2026-08-13.
 BASELINE = frozenset({
-    # CHL-1810-1884 was listed here for its 168 rows and is REMOVED on 2026-08-14, because
-    # committed state does not support the count: territory_basis.csv reads
-    # `layerb_data_rows = 0` for it, on main as well as here. The rows are real but are
-    # attributed to `CHL-1810-1883`, a code the database does not contain -- matched_rows.parquet
-    # is gitignored and predates the recent re-spans, so five codes carrying 799 rows point at
-    # polities that no longer exist (SEN-1886-1959 471, CHL-1810-1883 168, LAO-1893-1953 89,
-    # TCD-1920-1960 46, LBY-1950-1951 25). Check A cannot flag CHL while its committed count is
-    # zero, so the entry could only ever be stale. It belongs back here once the parquet is
-    # regenerated against the current polity set; that is tracked separately, since the same
-    # staleness understates four other polities' row counts.
+    # CHL-1810-1884, 168 rows, RESTORED on 2026-08-14 (issue 243). It was removed earlier the
+    # same day because committed state said `layerb_data_rows = 0` for it: the rows were real
+    # but attributed to `CHL-1810-1883`, a code the database no longer contains, because the
+    # gitignored matched_rows.parquet predated the re-spans. That parquet has now been
+    # regenerated against the current polity set (orphan codes 5 -> 0, 799 rows re-attributed),
+    # so the count is 168 again and check A flags it for the reason below rather than for
+    # staleness. 04_territory_basis.py now refuses to write the accounting at all while any
+    # orphan code remains, so this entry cannot silently become a lie a second time.
     #
     # The reason it had no polygon is unchanged and still on the page: Cliopatria's pre-1884
     # Chile steps
@@ -96,6 +102,7 @@ BASELINE = frozenset({
     # (~745,000 km2) that is a mapping convention and not a border. CShapes has a 1886
     # floor and its earliest Chile polygon already contains the ~240,000 km2 annexed in
     # 1883-1884. See wiki/polities/chl-1810-1884.md and issue 158.
+    "CHL-1810-1884",
     # 78 rows, the largest remaining. NO SOURCE HAS IT. The Free Territory of Trieste
     # (declared 737 km2, Zone A ~222 + Zone B ~515) needs adm2-level Italian, Slovenian
     # and Croatian units. Measured: CShapes 2.0 has zero features matching Trieste or
