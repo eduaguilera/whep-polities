@@ -121,6 +121,12 @@ def _extract_fao() -> list:
     1.06x) -- with ONE exception, Tunisia, where FAO says 155,830 and IIA says 125,130, a 24.5%
     gap. Two sources agreeing to four digits and a third disagreeing by a quarter is how you
     tell an outlier from a convention.
+
+    CAVEAT ADDED BY ISSUE 196: Libya's agreement is genealogical, not independent. Both figures
+    are the same Italian colonial one, published for a Libya whose southern boundary was the
+    never-ratified 1935 Laval-Mussolini (Aouzou) line; IIA 1932/1933 give 1,638,000 for the same
+    country, and three modern boundary products agree with that. See the docstring of
+    scripts/validate_stated_areas.py.
     """
     files = sorted(glob.glob(FAO_GLOB))
     if not files:

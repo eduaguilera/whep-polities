@@ -740,20 +740,39 @@ def build_idn_blb_1949_1951() -> ogr.Geometry:
 #     Surt->TRP, Jufrah->FEZ      -20.1%     -11.2%      +4.3%     -20.1%
 #     Surt->TRP, Jufrah->TRP      +11.4%     -11.2%     -15.9%     -15.9%
 #
-# The first is chosen for a reason stronger than "smallest worst error". GADM's Libya measures
-# 1,616,058 km2 geodesically against the accepted 1,759,540 -- it is 8.2% SHORT, and that is
-# real rather than a projection artefact (checked in three equal-area projections and on the
-# ellipsoid; GADM's bounds match Libya's accepted extent to 0.01 degrees, so nothing is missing
-# geographically, and the same measurement gives Indonesia 0.992x). If the whole is 8.2% under
-# FAO, EVERY PART SHOULD BE UNDER TOO. Only the first placement achieves that. The second and
-# third put Fezzan ABOVE FAO while the whole is below, and the fourth does the same for
-# Tripolitania -- internally inconsistent, whatever the average error.
+# The first was chosen for a reason stronger than "smallest worst error": GADM's Libya measures
+# 1,616,058 km2 against the accepted 1,759,540, apparently 8.2% SHORT, so if the whole is under
+# FAO then EVERY PART SHOULD BE UNDER TOO -- which only the first placement achieved.
 #
-# WHAT IS STILL A GUESS: whether the 1943-1951 administrators drew Sirte into Cyrenaica. The
-# 1934 Italian provinces put Sirte in Misurata, i.e. Tripolitania, which argues for the third or
-# fourth placement -- and both are refused above on the consistency test. So this is an
-# area-evidence decision over a documentary one, and it is recorded as such on the three pages
-# rather than presented as settled.
+# THAT ARGUMENT IS WITHDRAWN (issue 196). GADM is not short. Three independent products agree on
+# Libya to 0.5%: GADM 1,616,058, CShapes 2.0 1,617,537, Natural Earth 10m 1,623,761. The outlier
+# is 1,759,540, an Italian 1930s figure for a LARGER Libya: it first appears in IIA 1938, while
+# the 1933 edition gives Tripolitania 900,000 + Cyrenaica 738,000 = 1,638,000 for the same country,
+# matching modern GIS to +0.9%..+1.4% (1925 and 1929 give 1,500,000; 1932 has only Tripolitania). In between, the January 1935 Laval-Mussolini treaty put Libya's
+# southern boundary on the Aouzou line -- 114,000 km2, 79% of the 143,482 km2 gap -- never
+# ratified and awarded to Chad by the ICJ in 1994. All three products draw the 1899/1919 line
+# instead, confirmed from Chad's own vertices at 15.985E/23.4447N (Tropic of Cancer at 16E) and
+# 19.4961N at 23.9813E (19 deg 30' N at 24E). So the gap is territory OUTSIDE the polygon, not area
+# missing from inside it, and FAO's three territorial figures -- which sum to exactly its
+# 1,759,500 -- carry the same over-count. Against a strip-corrected 353,000 / 792,377 / 500,123
+# (the strip split 55.3/44.7 CYR/FEZ by MEASURED length of Chad frontage: Al Kufrah and Murzuq are
+# the only two shabiyat on that boundary, which measures 1,051.5 km -- 581.3 on Al Kufrah, 470.2 on
+# Murzuq):
+#
+#     placement                        TRP        CYR        FEZ      worst
+#     Surt->CYR, Jufrah->TRP      -10.9%      +5.7%      -7.3%     -10.9%   <- still chosen
+#     Surt->CYR, Jufrah->FEZ      -42.4%      +5.7%     +14.9%     -42.4%
+#     Surt->TRP, Jufrah->FEZ      -20.1%      -4.2%     +14.9%     -20.1%
+#     Surt->TRP, Jufrah->TRP      +11.4%      -4.2%      -7.3%     +11.4%
+#
+# NO placement now puts every part under FAO, and the first leads the fourth 10.9% to 11.4%.
+#
+# WHAT IS STILL A GUESS, AND NOW MORE OPEN THAN BEFORE: whether the 1943-1951 administrators drew
+# Sirte into Cyrenaica. The 1934 Italian provinces put Sirte in Misurata, i.e. Tripolitania, which
+# argues for the third or fourth placement, and the consistency test that refused them is gone.
+# The assignment is left UNCHANGED -- issue 196 answered the area question, not the placement one,
+# and 55.3/44.7 is a frontage estimate, not a measured strip. Recorded as
+# oq-fez-shabiya-placement-consistency-withdrawn on fez-1943-1951 for all three pages.
 #
 # THE PARTITION IS THE DELIVERABLE. The three unions are exhaustive over GADM's 22 Libyan
 # shabiyat and pairwise disjoint by construction, so per-territory data sums to the national
