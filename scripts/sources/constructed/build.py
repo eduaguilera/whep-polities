@@ -990,11 +990,13 @@ def build_ind_1800_1886() -> ogr.Geometry:
     pairs cannot drift apart: CShapes 780 at 1948 is what LKA-1800-2025 binds, and the two
     enclave builders are the ones PTIND-1816-1961 and FRIN-1816-1954 use.
 
-    WHAT THIS DOES NOT FIX. The CShapes-bound periods still contain PTIND (3,719 km2) and FRIN
-    (520 km2), and those cannot be subtracted the same way, because IND-1949-2025 spans both
-    sides of 1954 and 1961 -- Goa and Pondicherry really did become Indian territory. Fixing
-    them needs IND-1949-2025 split at those dates, which is a periodisation change to a major
-    national family and belongs in its own decision (issue 84).
+    WHAT THIS DOES NOT FIX -- REVISED 2026-08-13, and the earlier text overstated the blocker.
+    It said the CShapes-bound periods "cannot be subtracted the same way, because IND-1949-2025
+    spans both sides of 1954 and 1961". That is true of IND-1949-2025 ALONE. The five periods
+    IND-1886-1893 .. IND-1947-1949 all end in or before 1949, five years before Pondicherry and
+    twelve before Goa, so for them the subtraction is as unambiguous as it is here -- and they
+    now do it, via _british_india_minus_enclaves(). Only IND-1949-2025 remains, and it does need
+    a periodisation decision (issue 84).
     """
     return _difference(
         _valid(_cliopatria_feature("British Raj", 1880), "Cliopatria British Raj @1880"),
@@ -1002,6 +1004,98 @@ def build_ind_1800_1886() -> ogr.Geometry:
         build_ptind_1816_1961(),
         build_frin_1816_1954(),
     )
+
+
+def _british_india_minus_enclaves(gwsyear: int, gweyear: int) -> ogr.Geometry:
+    """A CShapes 750 step MINUS Portuguese India MINUS French India.
+
+    THE ENCLAVES WERE NEVER BRITISH AND THE DOUBLE-COUNT WAS CONTINUOUS. Measured on the built
+    GeoPackage before this change, every CShapes-bound British India period contained both:
+
+        each IND period n PTIND-1816-1961    3,719 km2   98.4% of Portuguese India
+        each IND period n FRIN-1816-1954       520 km2   95.2% of French India
+
+    Portuguese India (Goa, Daman, Diu) was Portuguese until December 1961 and French India
+    (Pondicherry, Karikal, Mahe, Yanam) French until October 1954, so for every period ending in
+    or before 1949 both were foreign for the whole span and the subtraction needs no judgement.
+    That is what makes this safe here and unsafe for IND-1949-2025, which straddles both
+    annexation dates -- see the BUILDERS note and issue 84.
+
+    THE SUBTRACTION ITSELF LEAVES NO RIM, AND THE PUBLISHED POLYGON STILL DOES. Both were
+    measured, because they disagree and the difference is build_database.py rather than this
+    recipe:
+
+        this builder's own geometry n PTIND     0.00 km2      n FRIN     0.00 km2
+        the published GeoPackage    n PTIND    13.60 km2      n FRIN    47.20 km2
+
+    CShapes' India covers both GADM enclaves completely, so the raw difference removes them
+    outright -- unlike Cliopatria's British Raj, whose coastline disagrees with GADM's and leaves
+    build_ind_1800_1886() with 8.3 km2 of Goa and 40.2 km2 of Puducherry. What puts a rim back is
+    write_gpkg()'s Douglas-Peucker simplification: it moves every boundary by up to the tolerance,
+    including the freshly cut enclave holes, and the same step is why these rows publish ~0.011%
+    less area than the builder computes. So the double-count falls 3,719 -> 13.6 km2 (99.6% gone)
+    and 520 -> 47.2 (90.9% gone) rather than to zero, and the remainder is a property of the
+    published simplification, not of the recipe. Recorded rather than rounded to "fixed".
+
+    THE STEP IS NAMED BY ITS BOUNDS rather than by a year, because two of these rows would
+    otherwise pick the wrong geometry: `polygon_feature_year: 1914` on IND-1914-1937 matches BOTH
+    the 1899-1914 step (4,819,795 km2) and the 1914-1931 one (4,894,456), and only
+    find_feature's exact-start preference separates them. Each wrapper below passes the bounds of
+    the step its row was already bound to, so this change subtracts the enclaves and moves
+    nothing else.
+
+    Each subtrahend is the SAME geometry PTIND-1816-1961 and FRIN-1816-1954 publish, not a
+    re-derivation, so the pairs cannot drift apart.
+    """
+    return _difference(
+        _cshapes2_step(750, gwsyear, gweyear),
+        build_ptind_1816_1961(),
+        build_frin_1816_1954(),
+    )
+
+
+def build_ind_1886_1893() -> ogr.Geometry:
+    """British India 1886-1893 = CShapes 750's `1886-1893` step minus the two enclaves.
+
+    4,652,712 km2 measured on the step, 4,648,466 after the cut, 4,647,939 published -- the last
+    gap being write_gpkg's simplification."""
+    return _british_india_minus_enclaves(1886, 1893)
+
+
+def build_ind_1893_1914() -> ogr.Geometry:
+    """British India 1893-1914 = CShapes 750's `1899-1914` step minus the two enclaves.
+
+    The row spans 1893-1913 and CShapes splits it in two -- `1893-1898` and `1899-1914` -- at
+    identical area (4,819,795 km2 both). The row was bound to the later step via
+    `polygon_feature_year: 1899`; that binding is preserved so this change is the subtraction
+    only. 4,815,549 after the cut, 4,815,028 published."""
+    return _british_india_minus_enclaves(1899, 1914)
+
+
+def build_ind_1914_1937() -> ogr.Geometry:
+    """British India 1914-1937 = CShapes 750's `1914-1931` step minus the two enclaves.
+
+    CShapes also has a `1931-1937` step at bit-identical area (4,894,456 km2) whose only changed
+    field is `capname`, Calcutta to New Delhi -- the row's page already establishes that this is
+    not a territorial change. 4,890,210 after the cut, 4,889,739 published."""
+    return _british_india_minus_enclaves(1914, 1931)
+
+
+def build_ind_1937_1947() -> ogr.Geometry:
+    """British India 1937-1947 = CShapes 750's `1937-1947` step minus the two enclaves.
+
+    Burma is already out of this step. 4,227,508 km2 measured on it, 4,223,262 after the cut,
+    4,223,063 published."""
+    return _british_india_minus_enclaves(1937, 1947)
+
+
+def build_ind_1947_1949() -> ogr.Geometry:
+    """India 1947-1949 = CShapes 750's `1947-1949` step minus the two enclaves.
+
+    Post-partition India, and the last period that can be cut without a periodisation decision:
+    it ends on 1949-01-04, five years before France ceded Pondicherry and twelve before India
+    annexed Goa. 3,046,196 km2 in CShapes, 3,041,950 after the cut, 3,041,829 published."""
+    return _british_india_minus_enclaves(1947, 1949)
 
 
 def build_frin_1816_1954() -> ogr.Geometry:
@@ -1613,6 +1707,66 @@ BUILDERS = [
         "separate Crown Colony from 1802 and never part of British India: 65,600 km2 "
         "claimed by both this row and LKA-1800-2025. Every CShapes-bound IND period "
         "correctly contains 0 km2 of Ceylon. Issue 84.",
+    ),
+    # The five CShapes-bound British India periods that end before the enclaves became Indian,
+    # registered 2026-08-13 (issue 84). Each is the SAME CShapes 750 step the row was already
+    # bound to, MINUS Portuguese India and French India -- 3,719 + 520 km2 that every one of them
+    # claimed alongside PTIND-1816-1961 and FRIN-1816-1954. The cut itself leaves 0.00 km2 of
+    # either enclave -- CShapes' India covers both GADM outlines completely -- but the PUBLISHED
+    # polygons keep 13.6 and 47.2 km2, because write_gpkg() simplifies every boundary including
+    # the new holes. 3,719 -> 13.6 and 520 -> 47.2, not to zero; see the helper's docstring.
+    #
+    # IND-1949-2025 IS DELIBERATELY ABSENT and keeps both enclaves. It spans 1949-2025, which
+    # contains October 1954 (Pondicherry) and December 1961 (Goa): for part of that row the
+    # enclaves really were Indian territory, so subtracting them for the whole span would trade
+    # a 1949-1961 double claim for a 1961-2025 hole. Fixing it needs the row split at those
+    # dates, and THAT SPLIT WAS CONSIDERED AND DECLINED on 2026-08-13 (issue 84): it renames the
+    # modern-India polity code, which is referenced outside this repository (whep's
+    # tests/testthat/test_build_cbs.R) and by two aliases that span the cut, for a 0.13%
+    # correction -- while Sikkim, 6,988 km2 and wrong for 27 years, sits in the same CShapes step
+    # untouched because no WHEP polity claims it. CShapes 750 has ONE step for 1949-2019 and it
+    # encodes neither the 1961 nor the 1975 acquisition, so both halves of a split would need
+    # constructed polygons and the later one would be the unchanged step. The 3,719 + 520 km2
+    # overstatement is recorded on wiki/polities/ind-1949-2025.md and on both enclave pages.
+    (
+        "IND-1886-1893",
+        "British India (1886-1893)",
+        build_ind_1886_1893,
+        "CShapes 750's 1886-1893 step MINUS Portuguese India and French India = 4,648,466 km2 "
+        "from 4,652,712. The step's own span matches this row's exactly, so the only change is "
+        "the enclaves.",
+    ),
+    (
+        "IND-1893-1914",
+        "India (1893-1914)",
+        build_ind_1893_1914,
+        "CShapes 750's 1899-1914 step MINUS the two enclaves = 4,815,549 km2 from 4,819,795. "
+        "CShapes splits 1893-1914 into two steps of identical area; the row's existing binding "
+        "to the later one is preserved.",
+    ),
+    (
+        "IND-1914-1937",
+        "India (1914-1937)",
+        build_ind_1914_1937,
+        "CShapes 750's 1914-1931 step MINUS the two enclaves = 4,890,210 km2 from 4,894,456. "
+        "Named by its bounds because `polygon_feature_year: 1914` matches the 1899-1914 step "
+        "too, and only exact-start preference separated them.",
+    ),
+    (
+        "IND-1937-1947",
+        "India (1937-1947)",
+        build_ind_1937_1947,
+        "CShapes 750's 1937-1947 step MINUS the two enclaves = 4,223,262 km2 from 4,227,508. "
+        "Burma is already out of this step -- the 1937 separation is in CShapes, not in this "
+        "recipe.",
+    ),
+    (
+        "IND-1947-1949",
+        "India (1947-1949)",
+        build_ind_1947_1949,
+        "CShapes 750's 1947-1949 step MINUS the two enclaves = 3,041,950 km2 from 3,046,196. "
+        "The last period that ends before either annexation: 1949-01-04, five years before "
+        "Pondicherry and twelve before Goa.",
     ),
     (
         "PTIND-1816-1961",

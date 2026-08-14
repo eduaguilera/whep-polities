@@ -356,11 +356,11 @@ IGL-1800-1901,Igala Kingdom,1800,1901,paine-2024,,assigned,True,assumed_constant
 IJB-1800-1892,Ijebu Kingdom,1800,1892,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 IND-1800-1886,British India (to 1886),1800,1886,constructed,,polygon_vintage_drift,True,assumed_constant,True,False,polygon present but no recorded vintage year,3
 IND-1800-1893,India (to 1893),1800,1893,cshapes-2.0,1886.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
-IND-1886-1893,British India (1886-1893),1886,1893,cshapes-2.0,1890.0,assigned,True,measured,False,False,vintage 1890 faithful to period 1886-1893,46
-IND-1893-1914,India (1893-1914),1893,1914,cshapes-2.0,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1893-1914,469
-IND-1914-1937,India (1914-1937),1914,1937,cshapes-2.0,1914.0,assigned,True,measured,False,False,vintage 1914 faithful to period 1914-1937,865
-IND-1937-1947,India (1937-1947),1937,1947,cshapes-2.0,1937.0,assigned,True,measured,False,False,vintage 1937 faithful to period 1937-1947,296
-IND-1947-1949,India (1947-1949),1947,1949,cshapes-2.0,1947.0,assigned,True,measured,False,False,vintage 1947 faithful to period 1947-1949,37
+IND-1886-1893,British India (1886-1893),1886,1893,constructed,1890.0,assigned,True,measured,False,False,vintage 1890 faithful to period 1886-1893,46
+IND-1893-1914,India (1893-1914),1893,1914,constructed,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1893-1914,469
+IND-1914-1937,India (1914-1937),1914,1937,constructed,1914.0,assigned,True,measured,False,False,vintage 1914 faithful to period 1914-1937,865
+IND-1937-1947,India (1937-1947),1937,1947,constructed,1937.0,assigned,True,measured,False,False,vintage 1937 faithful to period 1937-1947,296
+IND-1947-1949,India (1947-1949),1947,1949,constructed,1947.0,assigned,True,measured,False,False,vintage 1947 faithful to period 1947-1949,37
 IND-1949-2025,India,1949,2025,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,True,single 1949 polygon held across a 76y span (1949-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),511
 IRL-1800-1921,Ireland (within United Kingdom),1800,1921,constructed,2024.0,assigned,True,back_projected,True,False,polygon vintage 2024 is AFTER the period ends (1921) — later/modern border applied back,1049
 IRL-1921-2025,Ireland,1921,2025,cshapes-2.0,1921.0,assigned,True,assumed_constant,True,False,single 1921 polygon held across a 104y span (1921-2025); borders may have changed,1370

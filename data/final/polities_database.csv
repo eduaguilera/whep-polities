@@ -356,11 +356,11 @@ IGL-1800-1901,Igala Kingdom,1800,1901,national,,,Africa,draft,2026-04-15,paine-2
 IJB-1800-1892,Ijebu Kingdom,1800,1892,national,,,Africa,draft,2026-04-15,paine-2024,Ijebu,,assigned,,,SNI-1899-1906
 IND-1800-1886,British India (to 1886),1800,1886,national,IND,750,Asia,draft,2026-07-24,constructed,IND-1800-1886,,polygon_vintage_drift,4135466,,IND-1886-1893
 IND-1800-1893,India (to 1893),1800,1893,national,IND,750,Asia,superseded,2026-04-12,cshapes-2.0,750,1886,unassigned,,,IND-1893-1914
-IND-1886-1893,British India (1886-1893),1886,1893,national,IND,750,Asia,draft,2026-07-24,cshapes-2.0,750,1890,assigned,4652712,IND-1800-1886,IND-1893-1914
-IND-1893-1914,India (1893-1914),1893,1914,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1899,assigned,,IND-1800-1893,IND-1914-1937
-IND-1914-1937,India (1914-1937),1914,1937,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1914,assigned,,IND-1893-1914,IND-1937-1947
-IND-1937-1947,India (1937-1947),1937,1947,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1937,assigned,4227508,IND-1914-1937,IND-1947-1949
-IND-1947-1949,India (1947-1949),1947,1949,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1947,assigned,,IND-1937-1947,IND-1949-2025
+IND-1886-1893,British India (1886-1893),1886,1893,national,IND,750,Asia,draft,2026-07-24,constructed,IND-1886-1893,1890,assigned,4652712,IND-1800-1886,IND-1893-1914
+IND-1893-1914,India (1893-1914),1893,1914,national,IND,750,Asia,draft,2026-04-12,constructed,IND-1893-1914,1899,assigned,,IND-1800-1893,IND-1914-1937
+IND-1914-1937,India (1914-1937),1914,1937,national,IND,750,Asia,draft,2026-04-12,constructed,IND-1914-1937,1914,assigned,,IND-1893-1914,IND-1937-1947
+IND-1937-1947,India (1937-1947),1937,1947,national,IND,750,Asia,draft,2026-04-12,constructed,IND-1937-1947,1937,assigned,4227508,IND-1914-1937,IND-1947-1949
+IND-1947-1949,India (1947-1949),1947,1949,national,IND,750,Asia,draft,2026-04-12,constructed,IND-1947-1949,1947,assigned,,IND-1937-1947,IND-1949-2025
 IND-1949-2025,India,1949,2025,national,IND,750,Asia,draft,2026-04-12,cshapes-2.0,750,1949,assigned,,IND-1947-1949,
 IRL-1800-1921,Ireland (within United Kingdom),1800,1921,national,IRL,205,Europe,draft,2026-04-16,constructed,IRL-1800-1921,2024,assigned,84433,,IRL-1921-2025
 IRL-1921-2025,Ireland,1921,2025,national,IRL,205,Europe,draft,2026-04-13,cshapes-2.0,205,1921,assigned,,GBR-1800-1921,

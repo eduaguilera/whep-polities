@@ -192,7 +192,7 @@ for r in documented.itertuples():
 # improved. A row can only ENTER the band by someone re-deriving a declared figure from a
 # polygon, which is a human act and worth failing on. So this is a ceiling.
 SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
-BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12, see below
+BASELINE_SELF_REFERENTIAL = 102     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13, see below
 
 # THE CEILING IS NOT A PURE RATCHET, and one day of use falsified the reason given for making it
 # one. The original note argued: "a row can only ENTER the band by someone re-deriving a declared
@@ -212,6 +212,22 @@ BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12, see 
 # So the ceiling moves up for a geometry fix and down for a sourcing fix, and the two cannot be
 # told apart without the provenance field issue 195 asks for. Until then, raising it requires the
 # reason to be written here -- which is the actual guard, rather than the number.
+#
+# 104 -> 102 on 2026-08-13, AND THIS IS THE "GEOMETRY SIMPLY MOVED" CASE THE NOTE ABOVE WARNS
+# ABOUT, not a sourcing improvement. Issue 84 rebuilt six British India periods as their CShapes
+# step MINUS Portuguese India MINUS French India. Two of the six declare an area, and both were
+# declaring the UNCUT step, so removing 4,246 km2 of enclave pushed each just outside the 0.1%
+# band:
+#
+#     IND-1886-1893   declared 4,652,712   measured 4,647,939   0.1026%   was 0.000%
+#     IND-1937-1947   declared 4,227,508   measured 4,223,063   0.1051%   was 0.000%
+#
+# Their declared figures were left alone deliberately. Rewriting them to the post-cut measurement
+# would put both straight back into this band and re-create exactly the tautology A2 exists to
+# count -- the declared number is now a source-stated CShapes figure disagreeing with a corrected
+# polygon by 0.1%, which is check A doing its job. The pin is lowered because selftest_gates
+# requires the ceiling to bite: at 104 the harness's own mutation (rewriting a declared area to
+# what its polygon measures, +1) landed at 103 and the gate PASSED a defect it claims to catch.
 
 # Live rows only, matching the population check A actually judges -- `have` includes the
 # retired and superseded rows that still carry geometry, and check A exempts those.

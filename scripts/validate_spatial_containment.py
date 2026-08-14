@@ -137,10 +137,25 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Fixing the routing found 99 rows labelled `Indochina Viet Nam` that were landing on the
     # WHOLE rather than on Vietnam, which would have summed a part into its own aggregate.
     "FID-1887-1954",
-    # British India over the European enclaves, added 2026-08-07 when FRIN-1816-1954's polygon was
-    # attached. Pondicherry, Karikal, Mahe and Yanam sit inside India by definition, as Goa and
-    # Daman-and-Diu already did for PTIND-1816-1961. Hyderabad and Kashmir likewise.
-    "IND-1947-1949",
+    # Independent India over the European enclaves and Kashmir. Added 2026-08-07 when
+    # FRIN-1816-1954's polygon was attached; IND-1947-1949 was REMOVED on 2026-08-13 (issue 84)
+    # because its polygon no longer holds the enclaves at all -- it is now CShapes 750's
+    # 1947-1949 step MINUS both, so it holds only HYD-1724-1948 and falls below the >=3
+    # threshold. Measured: 3 contents before, 1 after.
+    #
+    # IND-1949-2025 STAYS, AND ONE OF ITS THREE CONTENTS IS STILL A DOUBLE-COUNT. It holds
+    # KJM-1947-1972 legitimately (CShapes assigns Kashmir by de facto control), but also
+    # PTIND-1816-1961 (3,719 km2) and FRIN-1816-1954 (520 km2) -- and this row spans 1949-2025,
+    # which straddles October 1954 (Pondicherry ceded) and December 1961 (Goa annexed). So it is
+    # a real double claim for 1949-1954/1961 and correct thereafter, and subtracting the enclaves
+    # for the whole span would swap it for a 1961-2025 hole. That needs the row split at those
+    # dates, and the split was CONSIDERED AND DECLINED on 2026-08-13 (issue 84) -- it renames the
+    # modern-India polity code, which is referenced outside this repository, for a 0.13%
+    # correction, while Sikkim (6,988 km2, wrong for 27 years) sits in the same CShapes step
+    # untouched. So this exemption knowingly covers two illegitimate contents; the overstatement
+    # is quantified on wiki/polities/ind-1949-2025.md and on both enclave pages. Expressing it
+    # properly needs pair-level exemptions, which remain unbuilt because every other such pair is
+    # a single swallow and below this gate's >=3 threshold regardless.
     "IND-1949-2025",
     # Occupied and divided Germany over its occupation zones AND the Saar. Both became
     # containers on 2026-08-05 only because SAA-1947-1957's polygon was attached, which pushed
@@ -207,34 +222,31 @@ LEGITIMATE_CONTAINERS = frozenset({
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.
     "SYL-1944-1953",
-    # British India over its provinces and princely states. These four crossed the
-    # >=3 threshold the moment PTIND-1816-1961's polygon was built (2026-08-04), which
-    # is the fifth time this check has made a newly built polygon justify itself. Each
-    # content was checked individually rather than accepted as a group:
+    # BRITISH INDIA 1886-1947: ALL FOUR ENTRIES REMOVED ON 2026-08-13 (issue 84), and the reason
+    # is a correction to what this list used to claim. They were added on 2026-08-04 with a note
+    # arguing that their contents -- Hyderabad, Burma-as-a-province, the territory that became
+    # Pakistan -- were genuine history, and they are. But the note also recorded that
+    # PTIND-1816-1961 was NOT legitimate and that a container-level exemption necessarily hid it.
     #
-    #   HYD-1724-1948   211,298 km2  100.0%  Hyderabad, a princely state under British
-    #                                        suzerainty and inside British India.
-    #   MMR-1885-2025   675,971 km2   96.9%  Burma, annexed 1886 and administered AS A
-    #                                        PROVINCE of British India until it was
-    #                                        separated on 1937-04-01.
-    #   PAK-1937-1947   932,574 km2  100.0%  The territory that became Pakistan, which
-    #                                        its own polity_name states was within
-    #                                        British India.
+    # Issue 84's fix removes the illegitimate contents instead: each period is now CShapes 750's
+    # own step MINUS Portuguese India MINUS French India, dropping the 3,719 + 520 km2 that both
+    # this row and the enclaves' own rows claimed to 13.6 + 47.2 km2 of simplification rim (the
+    # cut is exact; write_gpkg's Douglas-Peucker step puts the rim back). Well below this gate's
+    # 90%-of-the-smaller test either way. Every one of the four then falls BELOW the >=3
+    # threshold -- 4 contents before, 2 after -- so the exemption has nothing left to exempt:
     #
-    # The polygons encode the Burma separation correctly, which is the evidence that
-    # these are history and not mis-bindings: IND-1937-1947 does NOT contain
-    # MMR-1885-2025, while the three earlier periods do.
+    #   IND-1886-1893   FRIN, HYD, MMR, PTIND  ->  HYD-1724-1948, MMR-1885-2025
+    #   IND-1893-1914   FRIN, HYD, MMR, PTIND  ->  HYD-1724-1948, MMR-1885-2025
+    #   IND-1914-1937   FRIN, HYD, MMR, PTIND  ->  HYD-1724-1948, MMR-1885-2025
+    #   IND-1937-1947   FRIN, HYD, PAK, PTIND  ->  HYD-1724-1948, PAK-1937-1947
     #
-    # ONE CONTENT IS NOT LEGITIMATE, and a container-level exemption necessarily hides
-    # it: PTIND-1816-1961 (Portuguese India -- Goa, Daman, Diu) sits 98.4% inside every
-    # British India period, and Portuguese India was never British India. It is a real
-    # 3,779 km2 double-count and it survives into IND-1949-2025, since independent India
-    # did not annex Goa until December 1961. The same measurement also found
-    # IND-1800-1886 holding LKA-1800-2025 (Ceylon, 65,955 km2, 99.5%), a separate Crown
-    # Colony that was likewise never British India -- invisible here only because that
-    # period holds two. Both are filed as issue 84 rather than left implied by this
-    # exemption.
-    "IND-1886-1893", "IND-1893-1914", "IND-1914-1937", "IND-1937-1947",
+    # WHICH MEANS THE LEGITIMATE CONTENTS NEVER CROSSED THE THRESHOLD ON THEIR OWN. These four
+    # were reportable only because of the two enclaves they should not have contained, so the
+    # exemption was created by the defect it was silencing. The legitimate containment survives
+    # and is now invisible to this gate at --min-contained 3, which is the documented
+    # double-swallow blind spot rather than a new one: it is still visible at --min-contained 2,
+    # and IND-1937-1947 still does NOT contain Burma while the three earlier periods do, which is
+    # the evidence that the Burma separation is encoded in the polygons rather than assumed.
 })
 
 # Containers that are DEFECTS, tracked so the gate stays useful while they are
