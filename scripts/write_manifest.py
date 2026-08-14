@@ -159,6 +159,56 @@ if os.path.exists(ALIAS_MAP):
         "sources": sorted({r["source"] for r in alias_rows if r["source"]}),
     }
 
+# The cross-family TERRITORY link, and the reason this block exists at all.
+#
+# iso3_code answers "which ISO code is this polity", never "which other families cover the same
+# ground". A consumer asking who held Czech territory in 1950 and matching on iso3_code finds
+# nothing: the Czech family carries CZE and Czechoslovakia carries CSK. Same for MNE against YUG
+# and MAR against MOR -- 57 of the codes are local, and wherever one sits beside its ISO
+# counterpart the two families are invisible to each other (issue 82).
+#
+# THE ANSWER WAS ALREADY DERIVED AND PUBLISHED, JUST NOT IN THE CONTRACT. iso3_successor_map.csv
+# (scripts/write_iso3_successor_map.py) walks the database's own predecessor/successor edges and
+# resolves (modern iso3, year) -> the polity that actually held the territory. It was the one
+# published table the manifest did not name, so a consumer reading the manifest to learn what
+# exists could not learn that the link exists.
+#
+# Two things are published here, and they are different facts:
+#   iso3_successor_map   path + digest + shape, like faostat_area_map and label_alias_map, so a
+#                        consumer pins all three with one comparison.
+#   territory_families   the FAMILY-level collapse of the depth-1 rows: which other family holds
+#                        a modern code's territory, and over which years. Depth 1 only, because
+#                        that is where the database ASSERTS the relation with an edge; depth 2+
+#                        is a traversal inference and belongs in the year-resolved file where a
+#                        consumer can see the depth it is trusting.
+SUCCESSOR_MAP = os.path.join(REPO, "data/final/iso3_successor_map.csv")
+successor_map_info = None
+territory_families = {}
+if os.path.exists(SUCCESSOR_MAP):
+    raw = open(SUCCESSOR_MAP, "rb").read()
+    smap_rows = list(csv.DictReader(open(SUCCESSOR_MAP, encoding="utf-8")))
+    successor_map_info = {
+        "path": "data/final/iso3_successor_map.csv",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "relations": len(smap_rows),
+        "modern_iso3": len({r["modern_iso3"] for r in smap_rows}),
+    }
+    spans = {}
+    for r in smap_rows:
+        try:
+            if int(r["hop_depth"]) != 1:
+                continue
+            year = int(r["year"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        family = r["polity_code"].rsplit("-", 2)[0]
+        lo, hi = spans.get((r["modern_iso3"], family), (year, year))
+        spans[(r["modern_iso3"], family)] = (min(lo, year), max(hi, year))
+    for (iso3, family), (lo, hi) in sorted(spans.items()):
+        territory_families.setdefault(iso3, []).append(
+            {"family": family, "year_min": lo, "year_max": hi}
+        )
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -172,6 +222,8 @@ manifest = {
         "reporting area's data belongs to in a given year, and "
         "`label_alias_map` the mapping from a source's own country LABEL to a "
         "polity — prefer both over rebuilding those mappings yourself. "
+        "`territory_families` and `iso3_successor_map` say which OTHER families cover "
+        "one territory, which iso3_code cannot: do not infer that link from the code. "
         "Regenerate with scripts/write_manifest.py."
     ),
     "source": "data/final/polities_database.csv",
@@ -239,6 +291,21 @@ manifest = {
     },
     "faostat_area_map": area_map_info,
     "label_alias_map": alias_map_info,
+    "iso3_successor_map": successor_map_info,
+    "territory_families": territory_families,
+    "territory_families_why": (
+        "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not "
+        "link the families that hold the same ground at different times, and a consumer matching "
+        "on it alone gets no answer for the years before a modern code's own rows begin. Czech "
+        "territory in 1950 is held by CSK (Czechoslovakia), Montenegrin by YUG, Moroccan before "
+        "1911 by the local code MOR -- none of which equals the code being asked about. Each "
+        "entry names a family that held this modern code's territory and the years over which "
+        "the database asserts it with a predecessor or successor EDGE (hop_depth 1). It is "
+        "derived from those edges, not hand-written, so it cannot drift from the database. For "
+        "per-year resolution, including the deeper traversals this field omits, read "
+        "iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a "
+        "polity whose edge is missing, or by no row at all -- MAR has no holder for 1904-1910."
+    ),
     "live_polity_codes": sorted(r["polity_code"] for r in live),
 }
 

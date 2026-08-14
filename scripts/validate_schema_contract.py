@@ -86,9 +86,15 @@ CSV_CONTRACT = {
 MANIFEST_KEYS = [
     "_comment", "claims_polygon_status", "counts", "dead_polity_codes",
     "dead_status", "faostat_area_map", "faostat_unmapped_areas",
-    "identity_fields", "identity_sha256", "label_alias_map", "live_polity_codes",
-    "local_iso3_codes", "local_iso3_why", "polygon_gap_polity_codes", "source",
+    "identity_fields", "identity_sha256", "iso3_successor_map", "label_alias_map",
+    "live_polity_codes", "local_iso3_codes", "local_iso3_why",
+    "polygon_gap_polity_codes", "source", "territory_families",
+    "territory_families_why",
 ]
+# `iso3_successor_map`, `territory_families` and `territory_families_why` added 2026-08-13
+# (issue 82). The successor-map CSV was published on 2026-08-06 and was the only published
+# table the manifest did not name, so a consumer reading the manifest to find out what
+# exists could not find the one file that says which families cover one territory.
 
 # Not gated -- outside the repo, so CI cannot read it. Documented because its
 # `polity_code` column is the trap that cost the most.
