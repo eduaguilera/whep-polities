@@ -192,7 +192,7 @@ for r in documented.itertuples():
 # improved. A row can only ENTER the band by someone re-deriving a declared figure from a
 # polygon, which is a human act and worth failing on. So this is a ceiling.
 SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
-BASELINE_SELF_REFERENTIAL = 103     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 on 2026-08-14, see below
+BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
 
 #
 
@@ -248,6 +248,20 @@ BASELINE_SELF_REFERENTIAL = 103     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # geometry is the 8 GADM shabiyat, not FAO's outline; the -2.0% gap between the two is stated on
 # the page instead, which is what `polygon_status: proxy` is for. Issue 195's provenance field is
 # what would record "measured from the geometry" honestly; a ceiling cannot.
+#
+# 103 -> 104 ON 2026-08-14 (issue 22), and it is a FOURTH way in: A SPLIT. CAP-1800-1910 was one
+# row across 110 years holding CShapes gwcode 561's 1886-1895 step (600,802 km2) while the source
+# also ships a 1895-1910 step (716,102 km2). It was split into CAP-1800-1895 and CAP-1895-1910,
+# each declaring ITS OWN step's stated `area` attribute, which is what wiki/README.md asks for
+# ("declare the official or source-stated area"). Net +1 rather than +2, because A2 counts LIVE
+# rows and the old row is now `superseded`, so it left the band as the two replacements entered.
+#
+# No figure was re-derived off a shipped polygon: 716,102 is CShapes' own number for the step, the
+# same provenance as NAT-1895-1910's 72,516 already in this band. The honest alternative would be
+# an independently stated Cape area, and the repository has none -- data/final/source_stated_areas.csv
+# carries no Cape Colony row, only Cape Verde. Leaving polygon_area_km2 blank would have kept the
+# count at 103 by publishing less information, which is the wrong trade for a check that exists to
+# make provenance visible rather than to be minimised.
 
 # Live rows only, matching the population check A actually judges -- `have` includes the
 # retired and superseded rows that still carry geometry, and check A exempts those.

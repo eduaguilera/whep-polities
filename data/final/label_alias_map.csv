@@ -173,8 +173,10 @@ Canada,trade-sources,1867,1869,CAN-1866-1870,"Canada (original four provinces, 1
 Canada,trade-sources,1870,1885,CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),high,
 Canada,trade-sources,1886,1913,CAN-1886-1949,Canada (to 1948),high,
 cape natal,mitchell,1918,1957,ZAF-1910-2025,Cape and Natal provinces (South Africa),medium,
-Cape of Good Hope,,,,CAP-1800-1910,Cape Colony,high,195
-cape province,,1800,1910,CAP-1800-1910,,medium,
+Cape of Good Hope,,1800,1894,CAP-1800-1895,Cape Colony,high,178
+Cape of Good Hope,,1895,1909,CAP-1895-1910,Cape Colony,high,27
+cape province,,1800,1894,CAP-1800-1895,,medium,84
+cape province,,1895,1909,CAP-1895-1910,,medium,29
 Cape Verde,lassaletta-grassland-share,1961,1975,CPV-1886-1975,Cabo Verde,high,
 Cape Verde,lassaletta-grassland-share,1975,2009,CPV-1975-2025,Cabo Verde,high,
 Cape Verde Islands,fao1952,1886,1975,CPV-1886-1975,Cape Verde Islands,high,
@@ -763,7 +765,8 @@ Somalia,faostat,1961,2024,SOM-1960-2025,Somalia,high,62074
 somalia,iia,1920,1959,BSS-1884-1960,British Somaliland Protectorate,medium,81
 Somalia,lassaletta-grassland-share,1961,2009,SOM-1960-2025,Somalia,high,
 somalia,mitchell,1920,1959,ITS-1908-1960,Italian Somaliland,high,
-south africa,,1852,1909,CAP-1800-1910,Cape Colony,high,218
+south africa,,1852,1894,CAP-1800-1895,Cape Colony,high,146
+south africa,,1895,1909,CAP-1895-1910,Cape Colony,high,72
 south africa,,1910,2025,ZAF-1910-2025,South Africa (Union and Republic),high,
 South Africa,faostat,1961,2024,ZAF-1910-2025,South Africa (Union and Republic),high,253610
 south africa,iia,1910,2025,ZAF-1910-2025,South Africa,high,90
