@@ -551,6 +551,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_local_iso_codes.py
 
+      - name: Coverage — every polity that receives data carries a polygon
+        if: '!cancelled()'
+        run: python3 scripts/validate_data_without_geometry.py
+
       # Last, because it is the only step that answers "can the steps above
       # fail?". Twenty-one gates that all pass are indistinguishable, from a
       # green summary, from twenty-one gates that cannot fail.

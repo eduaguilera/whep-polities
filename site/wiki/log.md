@@ -81,6 +81,95 @@ of those 16 months was not examined — recorded as `oq-sen-mali-federation-enti
 untouched: the eleven remaining baselined gaps, three of which (`CZE`, `BFA`, `ANT`) the
 gate itself reports as "source reaches it" and which are cross-family or aggregate cases
 belonging to issue 82.
+Seventeen citations on eight pages pointed at seven source files that had
+never been ingested (whep-polities issue 5); `scripts/validate_citations.py`
+had already demoted them to `[uncited — <slug> was never ingested]` markers,
+so the claims were surviving with no provenance at all. Rather than delete
+the claims or leave the markers, the four Wikipedia clusters were re-fetched
+on 2026-08-13 (MediaWiki API, plaintext extracts) and ingested as four
+snapshot sources, and the Federico-Tena reference material that has been
+staged in `data/external/federico_tena/` for months was registered as
+`federico-tena-2019` — the slug `reu-1816-1946` was already using, and
+`aof-1895-1960`'s `federico_tena` frontmatter was normalised onto it.
+
+Re-fetching falsified five claims, which is the point of doing it rather
+than rubber-stamping them. (1) **Niger:** both Niger pages described the
++77,542 km² CShapes step of 1932-1947 as the Tibesti region. The source has
+Tibesti leaving Niger for Chad in **1931**, and the Dori/Fada N'Gourma
+cercles of the dissolved Upper Volta arriving in **1932** and returning in
+1947 — the other territory, the other direction. Differencing CShapes rows
+309 and 307 confirms it: the increment sits at 1.32°W-2.39°E, 10.94°-15.08°N,
+while Tibesti is near 16-19°E, 20-22°N, outside Niger's easternmost vertex
+(15.997°E) in all six steps. (2) **Saar:** there is no "Saar Statute of
+17 January 1947"; the *Saarstatut* is the 1954 WEU plan the 1955 referendum
+rejected, and the 1947 event is the constitution of 15 December (in force
+17 December). (3) The 1955 referendum was **67.7%** against, not 67.3%
+(423,434 / 625,409 = 67.71%). (4) The Saar's "ISO 3166 alpha-3 SAA" is
+anachronistic — ISO 3166 dates from 1974 — and is now recorded as an open
+question rather than a fact. (5) **Nan'yō-chō** was established in March
+1932, not 1922; Koror became the administrative seat in 1921 and the
+district civil administrations date from April 1922.
+
+Two further corrections came from the repo's own data: the Azerbaijan SSR
+area claim ("~86,600 km²") has no source and was replaced with the measured
+polygon (86,014 km², against 87,000 declared), and the 21 "trade with cook
+islands" rows on `nzl-1840-2025` are IIA yearbook footnotes
+(`pipelines/polity-autoimprove/state/iia_territorial_notes.csv`), not
+Federico-Tena, whose staged extract holds no bilateral series at all.
+
+No row was re-dated, split or retired: every correction is documentary. The
+source snapshots note where they *disagree* with a row's dates — Togoland's
+and Cameroon's League mandates are dated 1922 there against WHEP's 1920
+start years — and leave the re-dating question open, since that is a
+structural change. The eight Biger-anchor demotions in the same issue are
+untouched and remain open.
+---
+
+## decision-bind-prose-only-polygons
+**Date:** 2026-08-13
+**Touched:** tas-1825-1900, tan-1891-1920, tan-1920-1922, brl-1938-1945, brl-1945-1949
+**Source:** cshapes-2.0, gadm-4.1-adm1
+**Kind:** decision
+
+Five polities were **described** as having a polygon and carried none. Issue 155 counted the
+class — polities that receive layer-B data while carrying no geometry — and these five turned
+out to share one cause the issue had not identified: in every case the *Territorial extent*
+prose named a source and a feature while the frontmatter said `polygon_source: none` (TAS, both
+TAN rows) or named a feature the declared source does not contain (`greater-berlin-1920` in
+CShapes 2.0, which has no Berlin feature and no city-level units at all). Prose is not a binding;
+the build reads the fields, so it attached nothing and 270 layer-B rows were matched to the right
+polity with no territory.
+
+Bindings written, each measured in ESRI:54034 before committing:
+[tas-1825-1900](polities/tas-1825-1900.md) → CShapes gwcode **906** @1886, 68,137 km², the same
+dependency-level series its five sibling colonies already use (NSW 901 … Queensland 905);
+[tan-1891-1920](polities/tan-1891-1920.md) → gwcode **510** @1900, 991,096 km², German East Africa
+including Ruanda-Urundi, with the 1919-1920 overstatement against
+[rwb-1919-1922](polities/rwb-1919-1922.md) documented on the page rather than absorbed;
+[tan-1920-1922](polities/tan-1920-1922.md) → gwcode **510** @1921, 938,770 km², the post-separation
+step this page's own *Contradictions* section already identified; and both Berlin rows
+([brl-1938-1945](polities/brl-1938-1945.md), [brl-1945-1949](polities/brl-1945-1949.md)) → GADM 4.1
+adm1 **DEU.3_1**, 891.9 km² against the 892 km² both pages independently attest, because the Land
+Berlin perimeter *is* the 1920 Greater Berlin boundary those pages asked to have constructed.
+
+Feature years were chosen for determinism, not convenience: TAN 1921 rather than 1920 because two
+CShapes steps contain 1920, and TAN 1900 rather than 1891 for the same reason. Not done, and
+recorded as such: nine polities still receive 362 rows with no geometry, now baselined in
+`scripts/validate_data_without_geometry.py` with the source checked for each one — Chile
+deliberately (see [chl-1810-1884](polities/chl-1810-1884.md)), Trieste, West Berlin, Cochinchina
+and the Canal Zone because no fetched source carries the territory, the two Canada rows plus
+the Saar because the available recipe was measured *wrong* rather than merely missing (2,735,024 km²
+against 1,209,852 declared; 2,571 km² against 1,912), and [aoi-1936-1941](polities/aoi-1936-1941.md)
+because a union of Ethiopia + Eritrea + Italian Somaliland is buildable but would contain three
+coexisting polities, so it needs a `LEGITIMATE_CONTAINERS` ruling before it can ship.
+
+Issue 155's own table is not the list this entry worked from, and re-enumerating the class from the
+data is what made the difference. Eight of its eighteen cases had already been fixed by other PRs
+(`SER-1918-1945`, `SAA-1947-1957`, `FTO-1920-1960`, `GCT-1919-1956`, `TRP-1943-1951`,
+`BWI-1833-1962`, `FRIN-1816-1954`, `CYR-1949-1951`) against the five it names; two of the five
+fixed here — `TAS-1825-1900` at **195 rows, the largest single block in the whole class**, and
+`BRL-1938-1945` at 19 — do not appear in it at all; and its per-polity counts run low throughout
+(SER 476 filed against 573 measured, FTO 93 against 182).
 
 ---
 

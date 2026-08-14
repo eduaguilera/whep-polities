@@ -37,9 +37,10 @@ rather than only contiguous partition:
 SIX of the eight pairs are cross-source like that, so the report prints each link's polygon
 SOURCES alongside it: a disjointness between two different datasets is weak evidence, while
 one within a SINGLE dataset means that dataset itself says the territories do not touch.
-Only two pairs are same-source (NNG/IDN, SMO/SWA, both cshapes-2.0), and both reflect real
-geography — West Papua outside Indonesia's 1949 extent, Spanish Morocco against Spanish
-West Africa.
+Only three pairs are same-source (NNG/IDN, SMO/SWA, TAS/NSW, all cshapes-2.0), and all three
+reflect real geography — West Papua outside Indonesia's 1949 extent, Spanish Morocco against
+Spanish West Africa, and Tasmania across Bass Strait from the colony it was separated from in
+1825.
 
 A third same-source pair, HAWI/USA, was on that list until 2026-08-13 and was explained the
 same way ("Hawaii against the continental USA"). It was not real geography: USA-1959-2025
@@ -111,6 +112,16 @@ BASELINE = frozenset({
     ("NNG-1949-1963", "successor", "IDN-1949-1969"),
     ("SMO-1912-1956", "predecessor", "SWA-1884-1912"),
     ("SYC-1903-2025", "predecessor", "MUS-1800-2025"),
+    # Van Diemen's Land against the colony it was separated FROM, added 2026-08-13 when
+    # TAS-1825-1900 was finally bound to CShapes 906 (issue 155). Same shape as HAWI/USA and
+    # SMO/SWA above, and same-source rather than cross-source: CShapes itself says these two
+    # do not touch, and it is right — Tasmania is an island and Bass Strait is ~240 km wide.
+    # The link is nonetheless the correct one and is not the sovereignty confusion the GRL/ISL
+    # cluster turned out to be: Governor Darling proclaimed the island a colony separate from
+    # New South Wales on 3 December 1825, so NSW is its predecessor as chronology, by the same
+    # reasoning `validate_chain_integrity` applies. A separation across water cannot produce
+    # touching polygons.
+    ("TAS-1825-1900", "predecessor", "NSW-1800-1900"),
 })
 
 

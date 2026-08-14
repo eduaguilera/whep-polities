@@ -93,8 +93,8 @@ BRA-1903-1909,Brazil (1903-1909),1903,1909,national,BRA,140,South America,draft,
 BRA-1909-2025,Brazil,1909,2025,national,BRA,140,South America,draft,2026-07-24,cshapes-2.0,140,1930,assigned,8472100,BRA-1903-1909,
 BRB-1800-2025,Barbados,1800,2025,national,BRB,53,North America,draft,2026-06-09,gadm-4.1-adm0,BRB,,proxy,,,
 BRG-1800-1897,Borgu Confederacy,1800,1897,national,,,Africa,draft,2026-04-13,paine-2024,Borgu,,assigned,,,NGA-1914-1960; BEN-1960-2025
-BRL-1938-1945,Greater Berlin (1938-1945),1938,1945,city-territory,,,Europe,draft,2026-06-26,cshapes-2.0,greater-berlin-1920,1938,unassigned,892,BRL-1920-1938,BRL-1945-1949
-BRL-1945-1949,Berlin (Allied Occupation),1945,1949,city-territory,,,Europe,draft,2026-06-26,cshapes-2.0,greater-berlin-1920,1945,unassigned,892,DEU-1945-1949,WBL-1949-1990; EBL-1949-1990
+BRL-1938-1945,Greater Berlin (1938-1945),1938,1945,city-territory,,,Europe,draft,2026-06-26,gadm-4.1-adm1,DEU.3_1,2022,assigned,892,BRL-1920-1938,BRL-1945-1949
+BRL-1945-1949,Berlin (Allied Occupation),1945,1949,city-territory,,,Europe,draft,2026-06-26,gadm-4.1-adm1,DEU.3_1,2022,assigned,892,DEU-1945-1949,WBL-1949-1990; EBL-1949-1990
 BRN-1816-1888,Brunei (greater),1816,1888,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,,BRN-1888-2025
 BRN-1888-2025,Brunei Darussalam,1888,2025,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,BRN-1816-1888,
 BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,national,BSS,,Africa,draft,2026-06-24,cshapes-2.0,521,1886,assigned,,,SOM-1960-2025
@@ -685,10 +685,10 @@ SYR-1920-1922,Syria (French Mandate),1920,1922,national,SYR,,Asia,draft,2026-04-
 SYR-1922-1945,Syria (1922-1945),1922,1945,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1922,assigned,,,SYR-1946-1967
 SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1946,assigned,,SYR-1922-1945,SYR-1967-2025
 SYR-1967-2025,Syrian Arab Republic,1967,2025,national,SYR,652,Asia,draft,2026-04-12,cshapes-2.0,652,1967,assigned,,SYR-1946-1967,
-TAN-1891-1920,Tanzania (1891-1920),1891,1920,national,TAN,,Africa,draft,2026-04-13,none,,,unassigned,,RWK-1800-1890,TAN-1920-1922
-TAN-1920-1922,Tanzania (1920-1922),1920,1922,national,TAN,,Africa,draft,2026-04-13,none,,,unassigned,,TAN-1891-1920,TAN-1922-1964
+TAN-1891-1920,Tanzania (1891-1920),1891,1920,national,TAN,,Africa,draft,2026-04-13,cshapes-2.0,510,1900,assigned,,RWK-1800-1890,TAN-1920-1922
+TAN-1920-1922,Tanzania (1920-1922),1920,1922,national,TAN,,Africa,draft,2026-04-13,cshapes-2.0,510,1921,assigned,,TAN-1891-1920,TAN-1922-1964
 TAN-1922-1964,Tanzania (1922-1964),1922,1961,national,TAN,,Africa,draft,2026-04-13,cshapes-2.0,510,1946,assigned,945087,TAN-1920-1922,TZA-1961-1964
-TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,national,TAS,,Oceania,draft,2026-04-15,none,,,unassigned,,NSW-1800-1900,AUS-1901-2025
+TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,national,TAS,,Oceania,draft,2026-04-15,cshapes-2.0,906,1886,assigned,,NSW-1800-1900,AUS-1901-2025
 TCA-1800-2025,Turks and Caicos Islands,1800,2025,territory,TCA,,North America,draft,2026-08-13,gadm-4.1-adm0,TCA,,estimate,948,,
 TCD-1900-1912,Chad (1900-1912),1900,1912,national,TCD,,Africa,draft,2026-04-13,cshapes-2.0,483,1900,assigned,,WAD-1800-1912,TCD-1912-1919
 TCD-1912-1919,Chad (1912-1919),1912,1919,national,TCD,,Africa,draft,2026-04-13,cshapes-2.0,483,1912,assigned,1220972,TCD-1900-1912,TCD-1919-1960

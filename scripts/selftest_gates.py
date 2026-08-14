@@ -26,7 +26,9 @@ never written to.
 Fifteen cases, each mutating one input: the GeoPackage for the geometry gates, a CSV
 or the alias registry for the contract gates, a WIKI PAGE -- the source of truth every
 other artefact derives from -- for build_database, and a BUILDER SCRIPT's own literal
-for the reporting-area aggregates. Fifteen of twenty-eight, chosen by what it would cost if the gate were
+for the reporting-area aggregates. The counts in this paragraph are prose and have gone
+stale before — as of 2026-08-13 there are 26 cases against 37 gate scripts, and `main()`
+prints both, which is the checkable version. Chosen by what it would cost if the gate were
 inert rather than by what is easy to mutate -- case 6 guards the invariant that a
 retired polity never receives data, which is not otherwise detectable, because a
 retired duplicate carries the same name, iso3 and often a valid geometry as its live
@@ -549,6 +551,27 @@ def mutate_unmapped_area_that_has_a_polity(root, gpd, make_valid, affinity):
         w.writeheader()
         w.writerows(rows)
     return "listed area 270 Mayotte as having no polity, while MYT-1800-2025 exists"
+
+
+def mutate_data_receiving_polity_without_geometry(root, gpd, make_valid, affinity):
+    """Strip the geometry from a polity that receives data, leaving the row in place.
+
+    This is issue 155's defect exactly, and it is invisible to every other gate here by
+    construction. `validate_polygons` check C fails a row that DECLARES a polygon and has
+    none; this mutation leaves `polygon_status`/`polygon_source` untouched in the CSV, so C
+    sees a declaration and — reading only the GeoPackage rows that HAVE geometry — simply
+    stops considering it. The completeness harness meanwhile still counts its 195 layer-B
+    rows as matched, because they are.
+
+    TAS-1825-1900 is used deliberately: it is the largest of the bindings the PR that added
+    this gate attached, so the mutation restores the precise state the gate was written to
+    forbid rather than inventing a synthetic one.
+    """
+    g = gpd.read_file(GPKG)
+    i = g.index[g.polity_code == "TAS-1825-1900"][0]
+    g.loc[i, "geometry"] = None
+    write_gpkg(g, root)
+    return "dropped TAS-1825-1900's geometry while it still receives 195 layer-B rows"
 
 
 def mutate_map_year_end_past_coverage(root, gpd, make_valid, affinity):
@@ -1346,6 +1369,16 @@ CASES = (
         "the SAME misreading arriving through the alias path, where a blanket alias "
         "that claims no year at all is still honoured at its target's end_year",
     ),
+    # APPENDED, not inserted: the prose above refers to cases by NUMBER ("case 6 guards the
+    # invariant that a retired polity never receives data"), so putting a new case anywhere
+    # but the end silently renumbers those references.
+    (
+        "validate_data_without_geometry.py",
+        mutate_data_receiving_polity_without_geometry,
+        "TAS-1825-1900",
+        "a polity that receives data and carries no territory, so every area-weighted "
+        "consumer drops its rows silently",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -1391,6 +1424,15 @@ EXTRA_SCRIPTS = {
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
+    # The GeoPackage is what this case mutates, so it must be a real copy — and it MUST be
+    # written with write_gpkg(), not to_file(), for the reason that helper documents.
+    # territory_basis.csv is staged not because the case writes it but because the gate
+    # READS it for the row counts: without it the gate exits 1 saying the file is missing,
+    # which is a failure for entirely the wrong reason and would have looked like a pass.
+    "validate_data_without_geometry.py": (
+        "polities_database.gpkg",
+        "pipelines/polity-autoimprove/state/territory_basis.csv",
+    ),
     # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
     # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with
     # only stage()'s default symlink in place the mutation wrote straight through into the
