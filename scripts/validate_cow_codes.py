@@ -55,6 +55,12 @@ BASELINE = frozenset({
     # Fezzan, added 2026-08-10 (issue 156). cow 620 is Libya; the three occupation
     # territories share it for the same reason they share iso3 LBY -- COW has no code for a
     # military administration, and inventing one would assert an entity COW does not model.
+    # British Cyrenaica, added 2026-08-13 (issue 137), on identical grounds: cow 620 is all of
+    # Libya and COW codes no military administration separately, so the fourth occupation-era row
+    # shares it exactly as the other three do.
+    ("620", "CYR-1943-1949", "FEZ-1943-1951"),
+    ("620", "CYR-1943-1949", "LBY-1943-1949"),
+    ("620", "CYR-1943-1949", "TRP-1943-1951"),
     ("620", "FEZ-1943-1951", "CYR-1949-1951"),
     ("620", "FEZ-1943-1951", "LBY-1949-1951"),
     ("620", "FEZ-1943-1951", "TRP-1943-1951"),

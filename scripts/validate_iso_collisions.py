@@ -93,6 +93,15 @@ BASELINE = frozenset({
     # partition. Same class as the TRP and CYR entries beside it: iso3 LBY carries the whole
     # AND its three occupation territories, because there was no Libyan state to make them
     # subnational units of. Every label observed in data is pinned by an explicit alias.
+    # Cyrenaica's British-administration row joined the same family on 2026-08-13 (issue 137),
+    # closing the six-year hole the entries below already record: TRP and FEZ covered 1943-1951
+    # and 1943-1951, CYR only 1949-1951. These three pairs are the TRP/FEZ pairs shifted six years
+    # earlier and read exactly the same -- the whole and its parts sharing LBY because there was
+    # no Libyan state between 1943 and 1951. Every Libyan label observed in data is pinned by an
+    # explicit alias, `Libya` included as of this PR.
+    ("LBY", "CYR-1943-1949", "FEZ-1943-1951"),
+    ("LBY", "CYR-1943-1949", "LBY-1943-1949"),
+    ("LBY", "CYR-1943-1949", "TRP-1943-1951"),
     ("LBY", "FEZ-1943-1951", "CYR-1949-1951"),
     ("LBY", "FEZ-1943-1951", "LBY-1949-1951"),
     ("LBY", "FEZ-1943-1951", "TRP-1943-1951"),
