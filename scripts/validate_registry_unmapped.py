@@ -82,9 +82,9 @@ def main() -> int:
         area = (u.get("area_code") or "").strip()
         iso = (u.get("iso3") or "").strip()
         if iso and iso in by_iso:
-            stale.append((area, iso, (u.get("area_name") or "").strip(), by_iso[iso]))
+            stale.append((area, iso, (u.get("source_label") or "").strip(), by_iso[iso]))
         if area and area in mapped:
-            both.append((area, (u.get("area_name") or "").strip()))
+            both.append((area, (u.get("source_label") or "").strip()))
 
     print(f"registry areas listed as having no polity: {len(unmapped)}")
     print(f"published map covers:                      {len(mapped)} areas")

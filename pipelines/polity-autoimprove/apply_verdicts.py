@@ -225,13 +225,13 @@ for item in verdicts:
     elif v["verdict"] == "reroute":
         y0, y1 = b["years_observed"].split("-")
         append_dedup(ALIASES,
-            ["original_name", "source", "year_start", "year_end", "common_name",
-             "target_polity_code", "confidence", "basis", "rows"],
-            {"original_name": b["label_raw"], "source": b["source"],
+            ["source_label", "source", "year_start", "year_end", "common_name",
+             "polity_code", "confidence", "basis", "observed_rows"],
+            {"source_label": b["label_raw"], "source": b["source"],
              "year_start": y0, "year_end": y1, "common_name": b["label_raw"].lower(),
-             "target_polity_code": v["polity_code"], "confidence": v["confidence"],
+             "polity_code": v["polity_code"], "confidence": v["confidence"],
              "basis": f"assertion-verification: {v['basis'][:300]}",
-             "rows": b["rows"]})
+             "observed_rows": b["rows"]})
         bank(key, "fixed")   # no hash: next intake re-derives the assertion under
         stats["reroute"] += 1  # the new candidate and it verifies/banks fresh
     elif v["verdict"] == "split_reroute":
@@ -240,14 +240,14 @@ for item in verdicts:
         # segment, each verifying/banking independently
         for s in sorted(v["split_segments"], key=lambda s: s["year_start"]):
             append_dedup(ALIASES,
-                ["original_name", "source", "year_start", "year_end", "common_name",
-                 "target_polity_code", "confidence", "basis", "rows"],
-                {"original_name": b["label_raw"], "source": b["source"],
+                ["source_label", "source", "year_start", "year_end", "common_name",
+                 "polity_code", "confidence", "basis", "observed_rows"],
+                {"source_label": b["label_raw"], "source": b["source"],
                  "year_start": s["year_start"], "year_end": s["year_end"],
                  "common_name": b["label_raw"].lower(),
-                 "target_polity_code": s["polity_code"], "confidence": v["confidence"],
+                 "polity_code": s["polity_code"], "confidence": v["confidence"],
                  "basis": f"assertion-verification (split_reroute): {v['basis'][:280]}",
-                 "rows": ""})
+                 "observed_rows": ""})
         bank(key, "fixed")
         stats["split_reroute"] += 1
     elif v["verdict"] == "not_a_polity":

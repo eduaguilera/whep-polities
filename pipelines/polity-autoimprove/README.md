@@ -311,8 +311,10 @@ one commit.
 
 ### The alias table: `(name, source, year-range) → polity`
 
-`state/applied_aliases.csv` columns: `original_name, source, year_start, year_end,
-common_name, target_polity_code, confidence, basis, rows`. A single label can route
+`state/applied_aliases.csv` columns: `source_label, source, year_start, year_end,
+common_name, polity_code, confidence, basis, observed_rows` (renamed from
+`original_name`/`target_polity_code`/`rows` by issue 95; the whole set is pinned by
+`scripts/validate_schema_contract.py`). A single label can route
 to **different polities by year and/or source** — empty `source`/`year_*` = applies
 to all. `01_match_and_findings.py` picks the most specific matching rule per data row
 (year- and source-qualified rules beat blanket ones). Example: `Germany Western`

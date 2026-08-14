@@ -1,19 +1,30 @@
 #!/usr/bin/env python3
 """Pin the column names of every published and intermediate table.
 
-WHY THIS EXISTS. Seven tables in this repository describe the same few things, and
-they disagree on what to call them:
+WHY THIS EXISTS. Seven tables in this repository describe the same few things, and they
+used to disagree on what to call them. Issue 95 unified the INTERNAL ones; what is left
+is what could not be renamed without breaking a consumer:
 
-    the label        polity_name / source_label / original_name / label / country
-    the row count    observed_rows / rows_observed / rows / n_rows
+    the label        polity_name / source_label / country   (was: + original_name,
+                                                                    label, area_name)
+    the row count    observed_rows / rows_observed          (was: + rows, n_rows)
     the ISO3 code    iso3_code / iso3 / iso3c
-    the polity code  polity_code / target_polity_code
+    the polity code  polity_code                            (was: + target_polity_code)
 
-`observed_rows` and `rows_observed` are TRANSPOSITIONS of each other in two files that
-are routinely read together. `iso3` and `iso3_code` differ by a suffix. And the
-consolidated layer B parquet has a column literally named `polity_code` that holds
-lowercase ISO codes (`fra`, `deu`), not polity codes -- so joining it to this database
-on the obvious key silently matches nothing.
+`observed_rows` and `rows_observed` are still TRANSPOSITIONS of each other, in two files
+that are routinely read together -- but both spellings now live in `data/final/`, which
+is a published contract the WHEP R package reads by name, so unifying them needs a
+deprecation period rather than a rename (issue 95, option 2; still open). Every
+pipeline-internal table now says `source_label`, `observed_rows`, `polity_code`.
+
+`iso3` and `iso3_code` differ by a suffix, same reason: both are published.
+
+The consolidated layer B parquet still has a column literally named `polity_code` that
+holds lowercase ISO codes (`fra`, `deu`), because that file is built outside this
+repository. It is no longer a live trap HERE: extdata.load_layer_b renames it to
+`iso3_lower` on the way in and raises if it ever starts holding real codes. The
+parquet's own header is unchanged, so anyone reading it directly still meets the
+original name -- which is why it stays documented in EXTERNAL below.
 
 That is not hypothetical. Four analyses in one session read a wrong column name and got
 an answer rather than an error: `year_start` for `year_min` returned an empty result read
@@ -26,10 +37,11 @@ WHAT THIS GATE DOES. It asserts the exact column list of each table. A rename sh
 here, at the contract, instead of as a silently empty analysis downstream. It is a
 CONTRACT check, not a quality check: it says nothing about the values.
 
-WHAT IT DELIBERATELY DOES NOT DO. It does not require the names to be consistent. They
-are not, and unifying them would break the WHEP R package, which reads these files by
-name. Pinning them at least means the inconsistency is written down in one place and
-cannot quietly grow a third spelling. The renaming is issue 95.
+WHAT IT DELIBERATELY DOES NOT DO. It does not require the names to be consistent. The
+remaining inconsistencies are all in PUBLISHED files, where unifying them would break the
+WHEP R package, which reads them by name. Pinning them means the inconsistency is written
+down in one place and cannot quietly grow another spelling. The published half of the
+rename (issue 95, option 2) is still open.
 
 The consolidated layer B parquet is NOT gated: it lives outside the repo
 (~/Nextcloud/whep/layer_b/), so CI cannot see it. Its schema is documented here instead,
@@ -70,14 +82,39 @@ CSV_CONTRACT = {
     "data/final/polygon_feature_index.csv": [
         "source", "feature_id", "row_order", "start_year", "end_year", "area_km2",
     ],
+    # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
+    # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,
+    # not a published contract, so they could be unified now; `data/final/` could not.
     "pipelines/polity-autoimprove/state/applied_aliases.csv": [
-        "original_name", "source", "year_start", "year_end", "common_name",
-        "target_polity_code", "confidence", "basis", "rows",
+        "source_label", "source", "year_start", "year_end", "common_name",
+        "polity_code", "confidence", "basis", "observed_rows",
     ],
     "pipelines/faostat-era-matching/state/faostat_aliases.csv": [
-        "original_name", "source", "year_start", "year_end", "common_name",
-        "target_polity_code", "confidence", "basis", "rows", "area_code",
+        "source_label", "source", "year_start", "year_end", "common_name",
+        "polity_code", "confidence", "basis", "observed_rows", "area_code",
         "iso3", "match_route", "match_status",
+    ],
+    # The other four faostat-era-matching state files, pinned by issue 95 along with the
+    # rename that gave them these names (`area_name` -> `source_label`, `n_rows` ->
+    # `observed_rows`). Pinned because they are written by match.R, which cannot run in
+    # CI (it needs the WHEP pins cache), and read by 01_match_and_findings.py and two
+    # gates, which can -- so a rename on one side would otherwise surface as an empty
+    # findings queue rather than as an error.
+    "pipelines/faostat-era-matching/state/ambiguous.csv": [
+        "source_label", "source", "year_start", "year_end", "common_name",
+        "polity_code", "confidence", "basis", "observed_rows", "area_code",
+        "iso3", "match_route", "match_status", "note",
+    ],
+    "pipelines/faostat-era-matching/state/unmatched.csv": [
+        "area_code", "source_label", "iso3", "year_start", "year_end", "note",
+        "observed_rows", "pins",
+    ],
+    "pipelines/faostat-era-matching/state/aggregates.csv": [
+        "area_code", "source_label", "year_first", "year_last", "observed_rows",
+        "pins", "iso3",
+    ],
+    "pipelines/faostat-era-matching/state/registry_unmapped.csv": [
+        "area_code", "source_label", "iso3", "note",
     ],
 }
 
@@ -105,25 +142,30 @@ EXTERNAL = {
     # gate exists to prevent, one level up -- an assumption about a file that holds on
     # one machine and not in CI.
     #
-    # Documented rather than dropped, because `year_min`/`n_rows` are exactly the names
-    # behind one of the four silent wrong answers in the docstring above.
+    # Documented rather than dropped, because `year_min` is still not `year_start` and
+    # that is one of the four silent wrong answers in the docstring above.
     "pipelines/polity-autoimprove/state/match_confidence.csv": [
-        "label",          # <- not `source_label`, not `original_name`
+        "source_label",   # <- was `label` until issue 95
         "source",
-        "polity_code",    # <- not `target_polity_code`, unlike the alias registries
-        "year_min",       # <- NOT `year_start`. Reading year_start here returns None
-        "year_max",       # <-     for every row, and an empty result that looks clean.
-        "n_rows",         # <- not `rows`, not `observed_rows`, not `rows_observed`
+        "polity_code",
+        "year_min",       # <- STILL NOT `year_start`, DELIBERATELY: this is the span the
+        "year_max",       #    data was OBSERVED over, not the span a rule routes. Reading
+                          #    year_start here returns None for every row, and an empty
+                          #    result that looks clean. See 03_confidence.py.
+        "observed_rows",  # <- was `n_rows` until issue 95
         "method", "iso_ok", "name_ok", "confidence_class", "risk_flags",
     ],
     "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet": [
         "source", "source_detail", "continent",
-        "country",       # <- THE LABEL. Not `source_label`, not `original_name`.
+        "country",       # <- THE LABEL. Not `source_label`.
         "item", "item_code", "indicator", "year", "period", "value", "unit",
         "iso3c",         # <- not `iso3`, not `iso3_code`
         "polity_code",   # <- HOLDS LOWERCASE ISO CODES ("fra"), NOT POLITY CODES.
                          #    Joining this to polities_database.polity_code matches
-                         #    NOTHING and returns zero counts, not an error.
+                         #    NOTHING and returns zero counts, not an error. Measured
+                         #    2026-08-13: 166 distinct values, 0 of them a real polity
+                         #    code. This repo's readers never see the name --
+                         #    extdata.load_layer_b renames it to `iso3_lower` (issue 95).
         "is_aggregate",
     ],
 }

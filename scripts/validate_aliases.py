@@ -29,10 +29,10 @@ script exists so the next one is caught by a gate rather than by someone noticin
 years later, that a label never resolved.
 
 Checks:
-  1. `target_polity_code` names a LIVE polity in the database. Dead targets are
+  1. `polity_code` names a LIVE polity in the database. Dead targets are
      rejected too: routing data to a retired or superseded row is the mistake the
      whole DEAD_STATUS mechanism exists to prevent.
-  2. `target_polity_code` is a full periodised code, not a bare family prefix.
+  2. `polity_code` is a full periodised code, not a bare family prefix.
      `ETH` is not a polity; `ETH-1907-1936` is.
   3. `confidence` is one of the expected values, and the year fields are either
      empty or four-digit years. Both are shift detectors: when a column slips,
@@ -84,8 +84,8 @@ rows = list(csv.DictReader(open(ALIASES, encoding="utf-8")))
 problems: list[str] = []
 
 for i, r in enumerate(rows, start=2):  # +2: header is line 1
-    label = r.get("original_name", "")
-    target = (r.get("target_polity_code") or "").strip()
+    label = r.get("source_label", "")
+    target = (r.get("polity_code") or "").strip()
     conf = (r.get("confidence") or "").strip()
     y0 = (r.get("year_start") or "").strip()
     y1 = (r.get("year_end") or "").strip()
@@ -94,7 +94,7 @@ for i, r in enumerate(rows, start=2):  # +2: header is line 1
 
     if not target:
         problems.append(
-            f"{where}: no target_polity_code — the alias can never route anything"
+            f"{where}: no polity_code — the alias can never route anything"
         )
     elif not CODE_RE.match(target):
         hint = (
@@ -164,13 +164,13 @@ BASELINE_BEFORE_TARGET = frozenset({
 
 before_target = set()
 for r in rows:
-    target = (r.get("target_polity_code") or "").strip()
+    target = (r.get("polity_code") or "").strip()
     span = spans.get(target)
     y0 = (r.get("year_start") or "").strip()
     if not span or not YEAR_RE.match(y0):
         continue
     if int(y0) < span[0]:
-        before_target.add(((r.get("original_name") or "").strip(),
+        before_target.add(((r.get("source_label") or "").strip(),
                            (r.get("source") or "").strip(), target))
 for key in sorted(before_target - BASELINE_BEFORE_TARGET):
     problems.append(

@@ -93,12 +93,15 @@ for r in matched:
             "area_code": int(float(area)),
             "year_start": r["year_start"].strip(),
             "year_end": r["year_end"].strip(),
-            "polity_code": r["target_polity_code"].strip(),
-            "source_label": r["original_name"].strip(),
+            "polity_code": r["polity_code"].strip(),
+            "source_label": r["source_label"].strip(),
             "iso3": (r.get("iso3") or "").strip(),
             "match_route": (r.get("match_route") or "").strip(),
             "confidence": (r.get("confidence") or "").strip(),
-            "rows_observed": (r.get("rows") or "").strip(),
+            # PUBLISHED spelling, deliberately NOT `observed_rows`: the WHEP R package
+            # reads this file by column name (issue 95, option 2 — unifying the two
+            # published transpositions needs a deprecation release, not a rename).
+            "rows_observed": (r.get("observed_rows") or "").strip(),
         }
     )
 

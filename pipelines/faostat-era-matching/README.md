@@ -44,7 +44,9 @@ Requires an accessible WHEP checkout (pins cache + area registry); set
 
 1. **Inventory.** Scans the cached FAOSTAT pins (production, FBS new/old,
    CBS new/old, trade totals) for every observed
-   `(area_code, area_name, first_year, last_year, n_rows)`. This — not a
+   `(area_code, area_name, first_year, last_year, n_rows)` — written out as
+   `(area_code, source_label, year_first, year_last, observed_rows)`, the
+   repo-wide column vocabulary of issue 95. This — not a
    registry listing — is the completeness target: every code that reports
    data must resolve to a polity.
 1b. **No-data registry areas.** WHEP's *processed* production imputes rows

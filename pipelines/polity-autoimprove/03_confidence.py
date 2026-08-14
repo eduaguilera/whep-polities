@@ -60,17 +60,21 @@ for (lab,src,code),g in mm.groupby(["lab","source","whep_code"]):
     if code in terr: flags.append("territory_flag")   # polity has a known territorial/extent question
     rows.append([lab,src,code,ymin,ymax,int(len(g)),meth,iso_ok,name_ok,cls,";".join(flags)])
 
-out=pd.DataFrame(rows,columns=["label","source","polity_code","year_min","year_max",
-        "n_rows","method","iso_ok","name_ok","confidence_class","risk_flags"])
+# Column names are the repo-wide vocabulary (issue 95): the label is `source_label`,
+# the row count `observed_rows`. `year_min`/`year_max` deliberately stay: they are the
+# span the data was OBSERVED over, not the span a rule routes (`year_start`/`year_end`),
+# and collapsing the two would make an alias registry and an observation log look joinable.
+out=pd.DataFrame(rows,columns=["source_label","source","polity_code","year_min","year_max",
+        "observed_rows","method","iso_ok","name_ok","confidence_class","risk_flags"])
 out.to_csv(os.path.join(H,"match_confidence.csv"),index=False)
 
 SAFE={"safe_iso_name","ok_name_only","asserted_alias"}
-print(f"assertions: {len(out)} | rows: {out.n_rows.sum():,}\n")
+print(f"assertions: {len(out)} | rows: {out.observed_rows.sum():,}\n")
 print("by confidence_class (assertions | rows):")
-for c,g in out.groupby("confidence_class").agg(n=("label","size"),rows=("n_rows","sum")).sort_values("rows",ascending=False).iterrows():
+for c,g in out.groupby("confidence_class").agg(n=("source_label","size"),rows=("observed_rows","sum")).sort_values("rows",ascending=False).iterrows():
     print(f"  {c:22s} {int(g.n):>5} assertions  {int(g.rows):>9,} rows  [{'SAFE' if c in SAFE else 'REVIEW'}]")
 flagged=out[out.risk_flags!=""]
-print(f"\nwith risk flags (boundary / territory_flag): {len(flagged)} assertions, {flagged.n_rows.sum():,} rows")
+print(f"\nwith risk flags (boundary / territory_flag): {len(flagged)} assertions, {flagged.observed_rows.sum():,} rows")
 review=out[(~out.confidence_class.isin(SAFE)) | (out.risk_flags!="")]
-print(f"\n=> REVIEW set (suspect classes OR risk-flagged): {len(review)} assertions, {review.n_rows.sum():,} rows")
+print(f"\n=> REVIEW set (suspect classes OR risk-flagged): {len(review)} assertions, {review.observed_rows.sum():,} rows")
 print(f"=> SAFE & unflagged (sample-audit only):           {len(out)-len(review)} assertions")

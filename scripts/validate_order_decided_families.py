@@ -161,7 +161,7 @@ def main() -> int:
     aliased = set()
     if os.path.exists(ALIAS_PATH):
         with open(ALIAS_PATH, encoding="utf-8") as fh:
-            aliased = {r["target_polity_code"] for r in csv.DictReader(fh)}
+            aliased = {r["polity_code"] for r in csv.DictReader(fh)}
 
     problems = []
     for key in sorted(found):

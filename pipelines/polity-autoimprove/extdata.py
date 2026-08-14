@@ -62,8 +62,23 @@ LAYER_B_COLUMNS = (
     "polity_code",    # HOLDS LOWERCASE ISO CODES ("fra", "deu"), NOT WHEP POLITY CODES.
                       # Joining this to polities_database.polity_code matches NOTHING and
                       # returns zero counts, not an error. Use `country` with the alias map.
+                      # load_layer_b RENAMES it to `iso3_lower` so no reader here can make
+                      # that join by its obvious-looking name; see LAYER_B_MISNAMED below.
     "is_aggregate",
 )
+
+# THE ONE COLUMN WHOSE NAME IS WRONG ABOUT ITS CONTENTS, not merely inconsistent with ours.
+# Measured on the current parquet (2026-08-13, 192,670 rows): `polity_code` has 166 distinct
+# values, 99.37% of the non-null ones exactly `lower(iso3c)`, and 0 of the 166 equal to any
+# polity code in data/final/polities_database.csv. So the join a reader naturally writes --
+#     layer_b.merge(polities, on="polity_code")
+# -- returns an empty frame and no error. That is issue 95, option 4, and it cost a table of
+# zeros nearly published as evidence that no data existed in those years.
+#
+# The parquet is built outside this repository, so its header cannot be fixed here. Renaming
+# on the way IN fixes it for every reader in this repo: the misleading name never exists in
+# a frame any script here holds.
+LAYER_B_MISNAMED = {"polity_code": "iso3_lower"}
 
 # whep_crops is keyed on ISO3 + item_code + year, NOT on a free-text label -- so it needs no alias
 # map, and its coverage question is different from layer B's: does every (iso3, year) resolve to
@@ -171,8 +186,42 @@ def load_whep_crops(path: str | None = None, columns=None):
     return frame
 
 
-def load_layer_b(path: str | None = None):
-    """Load the consolidated layer-B parquet, asserting its documented columns."""
+def rename_layer_b_misnamed(df, polity_codes=None, where: str = "layer B"):
+    """Rename layer B's mislabelled `polity_code` to `iso3_lower`, or raise if it changed.
+
+    Renaming is not cosmetic here: the column's NAME is wrong about its CONTENTS, and the
+    wrongness is silent (see LAYER_B_MISNAMED). If the upstream file is ever fixed to hold
+    real polity codes, renaming them to `iso3_lower` would be the new silent wrong answer --
+    so pass `polity_codes` and this raises instead of quietly mislabelling them.
+    """
+    for old, new in LAYER_B_MISNAMED.items():
+        if old not in df.columns:
+            continue
+        if polity_codes:
+            values = set(df[old].dropna().astype(str).unique())
+            hits = values & set(polity_codes)
+            if hits:
+                raise ExternalDataError(
+                    f"{where}: column {old!r} now holds REAL polity codes "
+                    f"({sorted(hits)[:5]}...). It used to hold lowercase ISO codes, which is "
+                    f"why this module renamed it to {new!r}. Drop it from LAYER_B_MISNAMED "
+                    f"and join on it, rather than renaming a correct column into a wrong one."
+                )
+        if new in df.columns:
+            raise ExternalDataError(
+                f"{where}: cannot rename {old!r} to {new!r} -- {new!r} already exists."
+            )
+        df = df.rename(columns={old: new})
+    return df
+
+
+def load_layer_b(path: str | None = None, polity_codes=None):
+    """Load the consolidated layer-B parquet, asserting its documented columns.
+
+    Returns it with `polity_code` renamed to `iso3_lower` (LAYER_B_MISNAMED), because that
+    column holds lowercase ISO codes and joining it to this repo's `polity_code` matches
+    nothing while raising nothing.
+    """
     import pandas as pd
     p = path or LAYER_B
     if not os.path.exists(p):
@@ -182,7 +231,9 @@ def load_layer_b(path: str | None = None):
         )
     df = pd.read_parquet(p)
     require_columns(df, LAYER_B_COLUMNS, f"layer B ({os.path.basename(p)})")
-    return df
+    return rename_layer_b_misnamed(
+        df, polity_codes=polity_codes, where=f"layer B ({os.path.basename(p)})"
+    )
 
 
 def _selftest() -> int:
@@ -211,6 +262,19 @@ def _selftest() -> int:
     hit = require_any_value(df, "Element", ["Export quantity"], "selftest")
     assert hit == ["export quantity"]
     print("pass: the same comparison succeeds case-insensitively")
+
+    df = pd.DataFrame({"polity_code": ["fra", "deu"], "value": [1, 2]})
+    out = rename_layer_b_misnamed(df, polity_codes={"FRA-1800-1871"}, where="selftest")
+    assert "polity_code" not in out.columns and list(out["iso3_lower"]) == ["fra", "deu"]
+    print("pass: layer B's ISO-holding `polity_code` is renamed to `iso3_lower`")
+
+    df = pd.DataFrame({"polity_code": ["FRA-1800-1871"], "value": [1]})
+    try:
+        rename_layer_b_misnamed(df, polity_codes={"FRA-1800-1871"}, where="selftest")
+        print("FAIL: renamed a column that had started holding real polity codes"); ok = False
+    except ExternalDataError as e:
+        assert "REAL polity codes" in str(e)
+        print("pass: the rename refuses once the column holds real polity codes")
 
     print("\nPASS: the guards fire" if ok else "\nFAIL")
     return 0 if ok else 1

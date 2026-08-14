@@ -449,7 +449,7 @@ def mutate_alias_to_dead_polity(root, gpd, make_valid, affinity):
     with open(path, encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
         fields = list(rows[0].keys())
-    rows[0]["target_polity_code"] = target
+    rows[0]["polity_code"] = target
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=fields)
         w.writeheader()
@@ -541,7 +541,7 @@ def mutate_unmapped_area_that_has_a_polity(root, gpd, make_valid, affinity):
         rows = list(csv.DictReader(fh))
         fields = list(rows[0].keys())
     rows.append({
-        "area_code": "270", "area_name": "Mayotte", "iso3": "MYT",
+        "area_code": "270", "source_label": "Mayotte", "iso3": "MYT",
         "note": "registry area with no polity family (non-country/aggregate)",
     })
     with open(path, "w", encoding="utf-8", newline="") as fh:
@@ -1409,6 +1409,11 @@ WRITABLE = {
         "polities_manifest.json",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
         "pipelines/faostat-era-matching/state/faostat_aliases.csv",
+        # Pinned by issue 95 along with the rename that unified their column names.
+        "pipelines/faostat-era-matching/state/ambiguous.csv",
+        "pipelines/faostat-era-matching/state/unmatched.csv",
+        "pipelines/faostat-era-matching/state/aggregates.csv",
+        "pipelines/faostat-era-matching/state/registry_unmapped.csv",
     ),
     # Needs the SOURCE shapefile, not just the CSV: the gate compares each declared
     # binding against the features it could have matched. Without it the gate sees no

@@ -1,1 +1,1 @@
-original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows,area_code,iso3,match_route,match_status,note
+source_label,source,year_start,year_end,common_name,polity_code,confidence,basis,observed_rows,area_code,iso3,match_route,match_status,note

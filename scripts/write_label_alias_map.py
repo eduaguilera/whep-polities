@@ -64,14 +64,14 @@ if not os.path.exists(REGISTRY):
 
 rows = []
 for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
-    target = (r.get("target_polity_code") or "").strip()
+    target = (r.get("polity_code") or "").strip()
     if not target:
         # validate_aliases.py rejects these, so this should be unreachable; skip
         # rather than publish a row that resolves to nothing.
         continue
     rows.append(
         {
-            "source_label": (r.get("original_name") or "").strip(),
+            "source_label": (r.get("source_label") or "").strip(),
             "source": (r.get("source") or "").strip(),
             "year_start": (r.get("year_start") or "").strip(),
             "year_end": (r.get("year_end") or "").strip(),
@@ -111,7 +111,7 @@ for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
             # crops_manure_n codes, 156 Mueller codes. Publishing 0 for them invited
             # exactly the wrong conclusion, and an inert-alias check reading this
             # column would have flagged every one of them.
-            "observed_rows": (r.get("rows") or "").strip(),
+            "observed_rows": (r.get("observed_rows") or "").strip(),
         }
     )
 

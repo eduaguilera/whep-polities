@@ -1,4 +1,4 @@
-area_code,area_name,year_first,year_last,n_rows,pins,iso3
+area_code,source_label,year_first,year_last,observed_rows,pins,iso3
 261,European Union (12) (excluding intra-trade),1994,1994,1866,faostat-trade-totals,NA
 265,China (excluding intra-trade),1986,2024,71806,faostat-trade-totals,NA
 266,European Union (15) (excluding intra-trade),1995,2003,16952,faostat-trade-totals,NA

@@ -154,7 +154,9 @@ class Matcher:
             print(f"excluded from matching: {len(self.dead_codes)} dead polities "
                   f"({'/'.join(dead_status)}): {', '.join(sorted(self.dead_codes))}")
 
-        # spelling-alias table: norm(original_name) -> norm(common_name)
+        # spelling-alias table: norm(original_name) -> norm(common_name).
+        # `original_name` here is NOT our spelling: common_names.csv is an EXTERNAL file
+        # (Gleditsch/CoW-style common names), so issue 95's rename does not reach it.
         self.alias = {}
         if common_names_csv and os.path.exists(common_names_csv):
             cn = pd.read_csv(common_names_csv)
@@ -162,14 +164,14 @@ class Matcher:
                 o, c = norm(r["original_name"]), norm(r["common_name"])
                 if o and c: self.alias.setdefault(o, c)
 
-        # APPLIED aliases: (original_name [, source] [, year_start-year_end]) -> target_polity_code.
+        # APPLIED aliases: (source_label [, source] [, year_start-year_end]) -> polity_code.
         # A label can resolve to DIFFERENT polities by year/source — the SOURCE's reporting
         # unit need not match our period splits.
         self.override_rules = []
         self.stale_alias_targets = defaultdict(int)   # alias rows aimed at dead polities
         if applied_aliases_csv and os.path.exists(applied_aliases_csv):
             for r in csv.DictReader(open(applied_aliases_csv)):
-                tc = (r.get("target_polity_code") or "").strip()
+                tc = (r.get("polity_code") or "").strip()
                 if tc in self.dead_codes:
                     # the alias itself is stale: let the label fall through to
                     # family resolution (which now sees only live polities)
@@ -177,7 +179,7 @@ class Matcher:
                     continue
                 if tc not in self.code_row: continue
                 self.override_rules.append({
-                    "n": norm(r["original_name"]),
+                    "n": norm(r["source_label"]),
                     "src": (r.get("source") or "").strip() or None,
                     "y0": _yr(r.get("year_start")), "y1": _yr(r.get("year_end")),
                     "code": tc})
