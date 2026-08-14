@@ -234,6 +234,36 @@ purpose:
 
 Do not "fix" these by renaming without a decision recorded here first.
 
+## The year convention
+
+`end_year` is **EXCLUSIVE**. A period is `[start_year, end_year)`, so
+`CIV-1893-1900` covers 1893-1899 and a row whose `end_year` equals a year does
+NOT cover that year. Its successor, which starts there, does.
+
+This paragraph exists because issue #131 found it stated NOWHERE in this file —
+only in the prose of individual polity pages (a dozen of them say it) — while
+the issue reporting the ambiguity believed it was documented here. The matchers
+read the field the other way and produced plausible answers with no error: at
+India 1937 an ended period took the data. Every component that resolves a year
+against a period now declares one named constant, `END_YEAR_EXCLUSIVE`, and
+`scripts/validate_year_semantics.py` fails if they stop agreeing.
+
+Not the same field: alias `year_end` in
+`pipelines/polity-autoimprove/state/applied_aliases.csv` and in the published
+`data/final/label_alias_map.csv` is **INCLUSIVE**, so a consistent pair has
+`end_year == year_end + 1`.
+
+That second reading is named too — `ALIAS_YEAR_END_INCLUSIVE`, declared by
+`matchlib.py` and `pipelines/faostat-era-matching/match.R` — because leaving it
+as a bare comparison operator in each component is the same defect one field
+over. It buys one specific rule, which the same gate enforces: an alias may put
+data on a period that has **already ended** only where the alias itself writes
+that year down as its `year_end`. `Libya Tripolitania | fao1952 | ...-1951 ->
+TRP-1943-1951` asserts that 1951 is Tripolitania's, and that written decision is
+honoured over the exclusive bound. A **blanket** alias asserts nothing about any
+boundary year, so it gets no such deference and falls through to year-containment
+in the target's family, exactly like an unaliased label.
+
 ## Page schema
 
 Every polity page MUST have this frontmatter and these sections. Empty

@@ -46,6 +46,32 @@ applied_path <- file.path(
 
 faostat_era_start <- 1961L
 
+# A polity period is [start_year, end_year): `end_year` is EXCLUSIVE, while the
+# alias `year_end` this script EMITS is INCLUSIVE, so a consistent pair has
+# end_year == year_end + 1. Named rather than written as a bare `- 1L` because
+# the two readings of one field, each plausible and neither erroring, is issue
+# #131; scripts/validate_year_semantics.py fails if this file, matchlib.py or
+# pipelines/pre1961-matching/match.R stops declaring and using it.
+END_YEAR_EXCLUSIVE <- TRUE
+
+# INCLUSIVE last year covered by a period whose exclusive bound is `end_year`.
+last_covered_year <- function(end_year) {
+  end_year - as.integer(END_YEAR_EXCLUSIVE)
+}
+
+# The OTHER half of the same conversion, and the one this script actually needs:
+# the alias `year_end` it emits is INCLUSIVE, so it equals the last covered year.
+# Named for the same reason END_YEAR_EXCLUSIVE is — the alias reading was left as
+# an unnamed assumption when the polity reading was fixed, which is precisely the
+# shape of issue #131 one field over. matchlib.py declares the same constant and
+# scripts/validate_year_semantics.py fails if either file stops doing so.
+ALIAS_YEAR_END_INCLUSIVE <- TRUE
+
+# The alias `year_end` that means the same last covered year as `end_year`.
+alias_year_end <- function(end_year) {
+  last_covered_year(end_year) + (1L - as.integer(ALIAS_YEAR_END_INCLUSIVE))
+}
+
 # Pins scanned for the observed reporting-area inventory. Column names vary
 # slightly across dumps; resolved per file below.
 pins <- c(
@@ -412,15 +438,16 @@ match_area <- function(row) {
       area_name = row$area_name,
       iso3 = row$iso3,
       year_start = pmax(start_year, 1850L),
-      # end_year is EXCLUSIVE in the polities database and year_end here is INCLUSIVE, so the
-      # -1 is the convention conversion (issue 131). Without it this route wrote the polity
+      # end_year is EXCLUSIVE in the polities database and year_end here is INCLUSIVE, so
+      # alias_year_end() is the convention conversion, and it names BOTH readings rather
+      # than only the polity-side one (issue 131). Without it this route wrote the polity
       # code's end year verbatim and claimed one year past the polity's coverage: 16 of the 18
       # registry rows sat at `end_year - year_end == 0` while 243 of 249 iso-equal rows sat at
       # 1. Three were material -- ESH-1958-1975, SHN-1834-1967, CXR-1946-1958 -- and the ESH
       # one was ALSO the single baselined (area, year) ambiguity in validate_map_area_year,
       # because area 205's two rows both claimed 1975. See `+ 1L` at the segment splitter
       # below, which already had this right.
-      year_end = pmin(end_year - 1L, 2025L),
+      year_end = pmin(alias_year_end(end_year), 2025L),
       target_polity_code = polity_code,
       common_name = polity_name,
       match_route = "registry",

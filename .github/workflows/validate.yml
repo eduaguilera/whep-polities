@@ -517,6 +517,28 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_code_year_agreement.py
 
+      - name: Identity — every component reads end_year the same way
+        # `end_year` is EXCLUSIVE here and matchlib read it INCLUSIVELY, so at a
+        # transition year an ENDED period competed for the year and, wherever a third
+        # row overlapped the family, won on list order: 12 layer-B (label, source,
+        # year) tuples carrying 190 rows resolved to a polity that had already ended,
+        # every India transition among them. Nothing errored — both readings return a
+        # live, plausibly-dated polity — and issue #77's "four territory-years fall in
+        # no polity" turned out to be ONE, the other three being artefacts of
+        # measuring with one convention against data governed by the other. The gate
+        # compares one NAMED constant across the three components that resolve a year,
+        # checks wiki/README.md states it (it did not state it at all), and asks the
+        # matcher whether an ended period still wins its own boundary year.
+        #
+        # It also holds the OTHER field, which reads the other way on purpose: alias
+        # `year_end` is INCLUSIVE, so a consistent pair is end_year == year_end + 1.
+        # That reading was still unnamed, and matchlib.assign applied it to the
+        # TARGET's exclusive end_year for every alias, including blanket ones that
+        # claim no year at all — 219 of 903 rules could reach their target's end_year
+        # and 19 did so without declaring it.
+        if: '!cancelled()'
+        run: python3 scripts/validate_year_semantics.py
+
       - name: Aliases — consecutive ranges in a chain do not touch
         if: '!cancelled()'
         run: python3 scripts/validate_alias_chain_overlaps.py

@@ -1067,6 +1067,72 @@ def mutate_undocumented_source_change(root, gpd, make_valid, affinity):
         w.writeheader()
         w.writerows(rows)
     return "declared ISR-1967-1979 as GADM-sourced, so the 4.27x step at 1967 now crosses a source change"
+def mutate_inclusive_end_year(root, gpd, make_valid, affinity):
+    """Put matchlib back to reading `end_year` INCLUSIVELY, which is issue #131.
+
+    Not a synthetic mutation either: it is the state the matcher shipped in until
+    that issue. `pick_by_year` tested `start <= year <= end`, so at a transition
+    year the ENDED period was a candidate and, in any family with a third
+    overlapping row, it won on list position. The empty `expired` list restores
+    exactly that — the candidate gather is already inclusive, and the narrowing
+    step is what makes the declared convention real.
+
+    What makes this case worth having is that NOTHING ELSE CATCHES IT. The
+    mutation raises no exception, changes no schema, moves no polygon and leaves
+    every count identical; both readings return a real, live, plausibly-dated
+    polity, so the only observable difference is WHICH one. Reverting it in a
+    scratch copy of this repo leaves all other gates green — including
+    crosscheck_matchers, which compares the two matchers at each area's MIDPOINT
+    year and therefore never asks about a boundary.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/matchlib.py")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = "expired = [r for r in cands if not covers(r[3], r[4], year) and r[3] != year]"
+    assert target in text, "matchlib.pick_by_year no longer narrows by expiry"
+    text = text.replace(target, "expired = []")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return (
+        "made matchlib.pick_by_year read end_year inclusively again, so a period "
+        "that has ended still competes for its own boundary year"
+    )
+
+
+def mutate_inclusive_alias_end_year(root, gpd, make_valid, affinity):
+    """Put matchlib's ALIAS path back to reading the target's `end_year` inclusively.
+
+    The other half of issue #131, and the half that survived the first fix.
+    `assign()` tested `rec[3] <= year <= rec[4]` — the INCLUSIVE reading of the
+    exclusive field — for EVERY alias, including blanket ones that carry no year
+    bound at all. Where an alias writes `year_end` down, honouring it is a
+    deliberate deference to a human decision; where it does not, there is no
+    decision and the exclusive convention simply leaks in through the alias path.
+
+    Measured on the registry: 219 of 903 rules can reach their target's
+    `end_year`; 200 declare it and 19 do not. This mutation restores the state in
+    which all 219 were honoured alike.
+
+    Like the polity-side case, nothing else catches it: the mutation raises no
+    exception, moves no polygon, changes no count, and returns a real live polity
+    — just the one that ended that year instead of the one that started it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/matchlib.py")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = (
+        "                    and (covers(rec[3], rec[4], year)\n"
+        "                         or (ALIAS_YEAR_END_INCLUSIVE\n"
+        "                             and year == rec[4] and alias_rule[\"y1\"] == year)):"
+    )
+    assert target in text, "matchlib.assign no longer guards the alias boundary year"
+    text = text.replace(target, "                    and rec[3] <= year <= rec[4]:")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return (
+        "made matchlib.assign honour every alias at its target's end_year, "
+        "including blanket aliases that never claimed that year"
+    )
 
 
 CASES = (
@@ -1266,6 +1332,20 @@ CASES = (
         "STP-1800-2025",
         "two coexisting live polities on one polygon, which claims the ground twice",
     ),
+    (
+        "validate_year_semantics.py",
+        mutate_inclusive_end_year,
+        "USA-1848-1867",
+        "a matcher reading end_year the opposite way from the database, which returns "
+        "an ended polity for its own boundary year and errors on nothing",
+    ),
+    (
+        "validate_year_semantics.py",
+        mutate_inclusive_alias_end_year,
+        "COD-1910-1960",
+        "the SAME misreading arriving through the alias path, where a blanket alias "
+        "that claims no year at all is still honoured at its target's end_year",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -1459,6 +1539,21 @@ WRITABLE = {
         "polities_manifest.json",
         "faostat_area_polity_map.csv",
         "label_alias_map.csv",
+    ),
+    # matchlib.py must be a real COPY, not stage()'s symlink: the case rewrites it,
+    # and a symlink would edit the matcher the whole pipeline uses. The other four
+    # are read-only for this gate but must be PRESENT — it imports matchlib, and it
+    # compares the constant across all three declaring components plus the sentence
+    # in wiki/README.md, so a scratch repo missing any of them fails for the wrong
+    # reason (one of them reported as "does not declare END_YEAR_EXCLUSIVE" rather
+    # than the injected defect, which the "must name the defect" arm would catch).
+    "validate_year_semantics.py": (
+        "polities_database.csv",
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+        "pipelines/pre1961-matching/match.R",
+        "pipelines/faostat-era-matching/match.R",
+        "wiki/README.md",
     ),
 }
 
