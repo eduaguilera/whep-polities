@@ -1,4 +1,4 @@
-original_name,source,year_start,year_end,common_name,target_polity_code,confidence,basis,rows,area_code,iso3,match_route,match_status
+source_label,source,year_start,year_end,common_name,polity_code,confidence,basis,observed_rows,area_code,iso3,match_route,match_status
 Afghanistan,faostat,1961,2024,Afghanistan,AFG-1919-2025,high,FAOSTAT area code 2; observed 1961-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,122086,2,AFG,iso-equal,matched
 Albania,faostat,1961,2024,Albania (1913-2025),ALB-1913-2025,high,FAOSTAT area code 3; observed 1961-2024 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,177572,3,ALB,iso-equal,matched
 Algeria,faostat,1961,1961,Algeria (1919-1962),DZA-1919-1962,high,FAOSTAT area code 4; observed 1961-1961 in pins faostat-cbs-new;faostat-cbs-old-animal;faostat-cbs-old-crops;faostat-fbs-new;faostat-fbs-old;faostat-production;faostat-trade-totals; iso-equal period match,208548,4,DZA,iso-equal,matched

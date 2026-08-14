@@ -37,6 +37,7 @@ if os.path.exists(LEDGER):
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from matchlib import Matcher, norm, toks, eff_year as _eff_year
+import extdata
 
 PA = os.path.join(OUT, "applied_aliases.csv")   # aliases confirmed by prior runs
 M = Matcher(POLDB, applied_aliases_csv=PA, common_names_csv=COMMON_NAMES)
@@ -46,15 +47,23 @@ pick_by_year, fam_for_code = M.pick_by_year, M.fam_for_code
 
 # ---------- Stage 0: match ----------
 df = pd.read_parquet(LB)
-work = df[~df.is_aggregate].copy()
-# trust a prior polity_code ONLY if it is a real period-specific WHEP polity_code.
-# bare-iso stubs (deu, gbr, jpn) carry no period/territory -> do NOT trust them; send
-# them to the resolver so iso+year-containment resolves each to its period polity.
+# Layer B's `polity_code` holds LOWERCASE ISO CODES, not polity codes (issue 95,
+# option 4). Renamed on the way in, so nothing below can join it to ours by a name
+# that looks right and matches nothing. `polity_codes=` makes the rename refuse if
+# the upstream file ever starts holding real codes.
 valid_codes = set(pol["polity_code"])
-trusted = work["polity_code"].where(work["polity_code"].isin(valid_codes))
+df = extdata.rename_layer_b_misnamed(df, polity_codes=valid_codes, where="layer B")
+work = df[~df.is_aggregate].copy()
+# trust a prior code ONLY if it is a real period-specific WHEP polity_code. Bare-iso
+# stubs (deu, gbr, jpn) carry no period/territory -> do NOT trust them; send them to
+# the resolver so iso+year-containment resolves each to its period polity. Measured
+# 2026-08-13: 0 of layer B's 166 distinct values is a real code, so nothing is
+# trusted today -- but the branch stays, because the rename above is what would
+# make a fixed upstream visible instead of silent.
+trusted = work["iso3_lower"].where(work["iso3_lower"].isin(valid_codes))
 work["whep_code"] = trusted
 work["match_method"] = np.where(trusted.notna(), "prior", "")
-_bare = int(work["polity_code"].notna().sum() - trusted.notna().sum())
+_bare = int(work["iso3_lower"].notna().sum() - trusted.notna().sum())
 print(f"bare-iso stubs NOT trusted (sent to resolver): {_bare:,}")
 
 todo = work[work.whep_code.isna()]
@@ -127,8 +136,8 @@ def _faostat_era_findings():
     if os.path.exists(unm):
         for r in csv.DictReader(open(unm)):
             out.append({
-                "entity": r["area_name"], "iso_in_data": r.get("iso3") or None,
-                "rows": int(float(r.get("n_rows") or 0)),
+                "entity": r["source_label"], "iso_in_data": r.get("iso3") or None,
+                "rows": int(float(r.get("observed_rows") or 0)),
                 "years": f"{r['year_start']}-{r['year_end']}",
                 "sources": ["faostat"], "items_sample": [],
                 "finding_type": "name_unresolved", "nearest_guess": None,
@@ -139,15 +148,15 @@ def _faostat_era_findings():
     if os.path.exists(amb):
         by_area = defaultdict(list)
         for r in csv.DictReader(open(amb)):
-            by_area[(r["area_code"], r["original_name"])].append(r)
+            by_area[(r["area_code"], r["source_label"])].append(r)
         for (code, name), rs in by_area.items():
             out.append({
                 "entity": name, "iso_in_data": rs[0].get("iso3") or None,
-                "rows": int(float(rs[0].get("rows") or 0)),
+                "rows": int(float(rs[0].get("observed_rows") or 0)),
                 "years": f"{min(r['year_start'] for r in rs)}-{max(r['year_end'] for r in rs)}",
                 "sources": ["faostat"], "items_sample": [],
                 "finding_type": "coverage_gap",
-                "resolved_family": sorted({r["target_polity_code"] for r in rs}),
+                "resolved_family": sorted({r["polity_code"] for r in rs}),
                 "note": f"faostat-era-matching: overlapping polity periods for "
                         f"FAOSTAT area {code}; settle from data magnitudes and add "
                         f"a manual span route in pipelines/faostat-era-matching/match.R",
@@ -160,8 +169,8 @@ def _faostat_era_findings():
             if "no covering polity period" in basis and r["area_code"] not in seen:
                 seen.add(r["area_code"])
                 out.append({
-                    "entity": r["original_name"], "iso_in_data": r.get("iso3") or None,
-                    "rows": int(float(r.get("rows") or 0)),
+                    "entity": r["source_label"], "iso_in_data": r.get("iso3") or None,
+                    "rows": int(float(r.get("observed_rows") or 0)),
                     "years": f"{r['year_start']}-{r['year_end']}",
                     "sources": ["faostat"], "items_sample": [],
                     "finding_type": "coverage_gap",

@@ -651,16 +651,21 @@ alias_base <- matches |>
       )
     )
   ) |>
+  # Column names are the repo-wide vocabulary (issue 95): the label is
+  # `source_label`, the row count `observed_rows`, the polity code `polity_code`.
+  # `area_name`/`n_rows`/`target_polity_code` stay as INTERNAL variable names here;
+  # only what lands in a file is renamed, and scripts/validate_schema_contract.py
+  # pins the result.
   select(
-    original_name = area_name,
+    source_label = area_name,
     source,
     year_start,
     year_end,
     common_name,
-    target_polity_code,
+    polity_code = target_polity_code,
     confidence,
     basis,
-    rows = n_rows,
+    observed_rows = n_rows,
     area_code,
     iso3,
     match_route,
@@ -679,10 +684,11 @@ gaps <- aliases |>
 # informational.
 unmatched <- matches |>
   filter(is.na(target_polity_code), match_status == "unmatched") |>
-  select(area_code, area_name, iso3, year_start, year_end, note, n_rows, pins)
+  select(area_code, source_label = area_name, iso3, year_start, year_end, note,
+         observed_rows = n_rows, pins)
 registry_unmapped <- matches |>
   filter(match_status == "registry_unmapped") |>
-  select(area_code, area_name, iso3, note) |>
+  select(area_code, source_label = area_name, iso3, note) |>
   arrange(area_code)
 
 registry_matched <- aliases |> filter(match_route == "registry")
@@ -690,7 +696,10 @@ write_csv(select(aliases, -note), file.path(state_dir, "faostat_aliases.csv"))
 write_csv(ambiguous, file.path(state_dir, "ambiguous.csv"))
 write_csv(unmatched, file.path(state_dir, "unmatched.csv"))
 write_csv(registry_unmapped, file.path(state_dir, "registry_unmapped.csv"))
-write_csv(aggregates, file.path(state_dir, "aggregates.csv"))
+write_csv(
+  aggregates |> rename(source_label = area_name, observed_rows = n_rows),
+  file.path(state_dir, "aggregates.csv")
+)
 
 .report_lines <- function(df, fmt_fn) {
   if (nrow(df) == 0L) "(none)" else fmt_fn(df)
@@ -716,28 +725,29 @@ report <- c(
   "## Coverage gaps (autoimprove queue)",
   "",
   .report_lines(gaps, \(df) sprintf(
-    "- %s (%d): %s", df$original_name, df$area_code, df$note
+    "- %s (%d): %s", df$source_label, df$area_code, df$note
   )),
   "",
   "## Ambiguous areas (autoimprove queue)",
   "",
   .report_lines(ambiguous, \(df) sprintf(
     "- %s (%d) %d-%d -> candidate %s",
-    df$original_name, df$area_code, df$year_start, df$year_end,
-    df$target_polity_code
+    df$source_label, df$area_code, df$year_start, df$year_end,
+    df$polity_code
   )),
   "",
   "## Data-bearing unmatched areas (autoimprove queue)",
   "",
   .report_lines(unmatched, \(df) sprintf(
     "- %s (%d) %d-%d: %s [%d rows]",
-    df$area_name, df$area_code, df$year_start, df$year_end, df$note, df$n_rows
+    df$source_label, df$area_code, df$year_start, df$year_end, df$note,
+    df$observed_rows
   )),
   "",
   "## No-data registry areas with no polity family (informational, not a finding)",
   "",
   .report_lines(registry_unmapped, \(df) sprintf(
-    "- %s (%d): %s", df$area_name, df$area_code, df$note
+    "- %s (%d): %s", df$source_label, df$area_code, df$note
   ))
 )
 writeLines(report, file.path(state_dir, "report.md"))
@@ -759,15 +769,15 @@ if (apply_aliases) {
 
   canonical <- aliases |>
     select(
-      original_name,
+      source_label,
       source,
       year_start,
       year_end,
       common_name,
-      target_polity_code,
+      polity_code,
       confidence,
       basis,
-      rows
+      observed_rows
     )
 
   # Guard against silently wiping decisions: every faostat row in the CSV is
@@ -788,13 +798,13 @@ if (apply_aliases) {
   if (nrow(existing_fao) > 0 && !accept_diff) {
     new_chr <- canonical |>
       mutate(across(everything(), as.character)) |>
-      mutate(key = paste(original_name, year_start, year_end, sep = " | "))
+      mutate(key = paste(source_label, year_start, year_end, sep = " | "))
     old_chr <- existing_fao |>
-      mutate(key = paste(original_name, year_start, year_end, sep = " | "))
+      mutate(key = paste(source_label, year_start, year_end, sep = " | "))
     lost <- anti_join(old_chr, new_chr, by = "key")
     changed <- inner_join(
-      old_chr |> select(key, old_target = target_polity_code),
-      new_chr |> select(key, new_target = target_polity_code),
+      old_chr |> select(key, old_target = polity_code),
+      new_chr |> select(key, new_target = polity_code),
       by = "key"
     ) |>
       filter(old_target != new_target)
@@ -803,7 +813,7 @@ if (apply_aliases) {
         "REFUSING to rewrite faostat rows in applied_aliases.csv:",
         if (nrow(lost) > 0) c(
           sprintf("  %d existing row(s) would be DROPPED:", nrow(lost)),
-          head(sprintf("    %s -> %s", lost$key, lost$target_polity_code), 20)
+          head(sprintf("    %s -> %s", lost$key, lost$polity_code), 20)
         ),
         if (nrow(changed) > 0) c(
           sprintf("  %d existing row(s) would change TARGET:", nrow(changed)),
