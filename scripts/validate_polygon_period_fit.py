@@ -80,8 +80,14 @@ TOL = 0.02          # a step counts as "differently sized" beyond 2%
 #                 intentional. ROU-1918-1919's 1921 vintage was chosen on DATA evidence
 #                 (maize production consistent only with Greater Romania) -- a check that
 #                 failed on it would be failing on its own correct decision.
-#   "undecided"   flagged, unexplained, and NOT yet judged. Tracked in issues 121 and 123.
+#   "undecided"   flagged, unexplained, and NOT yet judged. Tracked in issue 121.
 #                 Listed here so the gate can run at zero without pretending these are fine.
+#
+# Re-measured on 2026-08-14 (issue 123). That issue named fourteen rows: five documented, nine
+# undecided. EIGHT of the nine have since been rebound or re-labelled, and the only undecided
+# signal-A entry left in this set is A:SUD-1934-1956 -- whose note below is measurably wrong and
+# is corrected in place. Everything else here is a documented proxy or a signal-B pair from
+# issue 121.
 BASELINE = frozenset({
     # --- documented proxies (signal A) ---
     "A:F237-1954-1975",
@@ -97,7 +103,24 @@ BASELINE = frozenset({
     # "B:ITA-1866-1870 / ITA-1870-1919" below are gone with them.
     "A:ROU-1918-1919",
     "A:TUR-1800-1913",
-    # --- undecided (signal A), issue 123 ---
+    # --- cleared (signal A), issue 123 ---
+    # The Congo four, SWA-1912-1958 and TCD-1912-1919 left this list on 2026-08-12 without leaving a
+    # note behind, so it is recorded here. Each was bound to its PREDECESSOR's feature_year; each now
+    # names its own step, and the published GeoPackage confirms it (ESRI:54034, km2):
+    #
+    #     COG-1898-1900  fy 1886 -> 1898     343,962 ->   2,234,499
+    #     COG-1900-1906  fy 1898 -> 1900   2,234,449 ->     962,676
+    #     COG-1906-1912  fy 1900 -> 1906     962,676 ->     343,962
+    #     COG-1912-1919  fy 1906 -> 1912     343,962 ->     262,586
+    #     SWA-1912-1958  fy 1900 -> 1912     176,369 ->     269,194
+    #     TCD-1912-1919  fy 1900 -> 1912   1,271,772 ->   1,220,889
+    #
+    # Issue 123's own table of "bound km2" was OFF BY ONE for the Congo rows, and for the same reason
+    # TUR-1913-1914's entry was wrong: it assumed a feature_year names the step CONTAINING it, while
+    # find_feature prefers the step STARTING at it. So the issue reported COG-1906-1912 as carrying
+    # 2,234,540 km2 ("a 6.5x overstatement"); it actually carried 962,676, and the 2.2 Mkm2 sat on
+    # COG-1900-1906 instead. The lag diagnosis was right; the per-row areas attached to it were not.
+    # The worst live error was COG-1900-1906 at +132% (2,234,449 for a row whose step is 962,676).
     # A:MOR-1800-1904 LEFT this list on 2026-08-12. The note here was right that it is "not a
     # one-step lag" and stopped there. The bound step is 1769-1860, which COVERS the row's first
     # 61 years -- the step was in span even though the year naming it was not. polygon_feature_year
@@ -130,6 +153,13 @@ BASELINE = frozenset({
     # TUR-1914-1918" sat below). Neither 1913 step can be named by a feature_year -- both start in
     # 1913 -- so it is now a constructed row selecting the step by its bounds. See
     # build_tur_1913_1914 and _cshapes2_step.
+    # WHERE ISSUE 123 STANDS, re-measured 2026-08-14 against the committed CSV, feature index and
+    # GeoPackage: signal A flags six rows. Five are the documented proxies at the top of this set
+    # -- the same five the issue itself named as "deliberate and documented" and excluded from
+    # suspicion. The sixth is SUD-1934-1956, the one row of the nine undecided that is still
+    # bound outside its own span. Eight of the nine are done; seven of those eight moved
+    # geometry, and MOR-1800-1904 moved none because its 1769-1860 step already covered the
+    # row's first 61 years.
     # --- documented / undecided (signal B), issues 121 and 123 ---
     # B:ITA-1861-1866 / ITA-1866-1870 and B:ITA-1866-1870 / ITA-1870-1919 LEFT this list on
     # 2026-08-13; see the A:ITA note above. All three rows published the SAME 284,847 km2,
