@@ -16,7 +16,8 @@ banked in review_ledger.csv with an evidence hash.
 Usage:
   python3 pipelines/polity-autoimprove/00_intake.py \
     --input data.parquet --label-col country --year-col year \
-    [--iso-col iso3c] [--value-col value] [--item-col item] [--unit-col unit] \
+    [--iso-col iso3c] [--value-col value] [--item-col item] [--indicator-col indicator] \
+    [--unit-col unit] \
     [--period-col period] [--aggregate-col is_aggregate] [--prior-code-col polity_code] \
     (--source-col source | --source-tag mydata) \
     [--out pipelines/polity-autoimprove/state/assertions.json]
@@ -47,6 +48,14 @@ ap.add_argument("--year-col", required=True)
 ap.add_argument("--iso-col")
 ap.add_argument("--value-col")
 ap.add_argument("--item-col")
+ap.add_argument("--indicator-col",
+                help="column naming the MEASURE within an item code. Some sources reuse ONE item "
+                     "code for several unrelated measures (issue 13: FAO-1952's "
+                     "r_fao_population_1952_10_18 carries total population, agricultural population, "
+                     "population economically active in agriculture and its male/female splits). "
+                     "Keying staple medians on the item code alone then mixes them and produces a "
+                     "median that is no measure at all. Pass this and the bundle reports each "
+                     "measure separately as 'item [indicator]'.")
 ap.add_argument("--unit-col")
 ap.add_argument("--period-col")
 ap.add_argument("--aggregate-col", help="boolean column: True rows are aggregates, dropped")
@@ -73,6 +82,23 @@ w = pd.DataFrame({
     "unit":  df[A.unit_col] if A.unit_col else None,
     "period": df[A.period_col] if A.period_col else None,
 })
+# `series` is what staple magnitudes are keyed on: the item code, qualified by the
+# indicator WHERE ONE ITEM CODE CARRIES MORE THAN ONE MEASURE. Without this the
+# median is taken across incommensurable measures — issue 13's whole confusion:
+# FAO-1952's single population item code holds total population AND agricultural
+# population AND population economically active in agriculture, so Turkey's
+# "population" median came out 6,086k, which is the midpoint of ten mixed rows
+# and not any figure the yearbook prints. Item codes with a single indicator are
+# left unqualified, so bundles for every other source are byte-identical and no
+# banked verdict is reopened.
+w["series"] = w["item"]
+if A.indicator_col:
+    ind = df[A.indicator_col].reindex(w.index)
+    multi = {it for it, n in ind.groupby(w["item"]).nunique().items() if n > 1}
+    mix = w["item"].isin(multi) & ind.notna()
+    w.loc[mix, "series"] = w.loc[mix, "item"].astype(str) + " [" + ind[mix].astype(str) + "]"
+    print(f"indicator-split series: {len(multi)} item code(s) carry >1 indicator, "
+          f"{int(mix.sum()):,} rows qualified")
 print(f"input: {n_raw:,} rows ({len(w):,} after aggregate filter)")
 
 # ---------- deterministic pass ----------
@@ -157,14 +183,14 @@ def page_stats(code):
 # ---------- assertions: one evidence bundle per (label, source, candidate) ----------
 polmeta = {r.polity_code: r for _, r in M.pol.iterrows()}
 def staples(grp, k=5):
-    """median magnitude for the group's top-k items (the data's own scale)."""
-    if grp.item.isna().all() or grp.value.isna().all(): return {}
+    """median magnitude for the group's top-k series (the data's own scale)."""
+    if grp.series.isna().all() or grp.value.isna().all(): return {}
     out = {}
-    top = grp.item.value_counts().head(k).index
+    top = grp.series.value_counts().head(k).index
     for it in top:
-        v = grp[grp.item == it].value.dropna()
+        v = grp[grp.series == it].value.dropna()
         if not len(v): continue
-        u = grp[grp.item == it].unit.dropna()
+        u = grp[grp.series == it].unit.dropna()
         u = str(u.mode().iloc[0]) if len(u) else ""
         out[str(it)] = f"median {v.median():,.0f} {u} (n={len(v)})".strip()
     return out
@@ -195,7 +221,7 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
         "rows": int(len(grp)), "years_observed": f"{y0}-{y1}",
         "n_distinct_years": int(yrs.nunique()),
         "iso_in_data": (sorted({str(i) for i in grp.iso.dropna().unique()}) or [None])[0],
-        "items_sample": sorted({str(i) for i in grp.item.dropna().unique()})[:5],
+        "items_sample": sorted({str(i) for i in grp.series.dropna().unique()})[:5],
         "staple_magnitudes": staples(grp),
         "neighbor_segments": {f"{a}-{b}": c for c, a, b in by_label_src[(label_n, src)] if c != code},
         "candidate_meta": None if pm is None else {

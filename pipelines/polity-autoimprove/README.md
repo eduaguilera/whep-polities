@@ -60,7 +60,7 @@ do with it:
 | `state/landuse_corrections.csv` | recoverable bad cells in the FAO land-use series | #4 |
 | `state/yield_corrections.csv` | single cells whose area x yield is physically impossible | #29, #111 |
 | `state/yield_series_corrections.csv` | whole series carrying a scale error, one row per run, with which column moved | #111 |
-| `state/source_conventions.csv` | what a source's labels actually measure | #24 |
+| `state/source_conventions.csv` | what a source's labels actually measure | #24, #13 |
 | `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack — **empty since 2026-08-13**, the queue is drained | #3 (closed) |
 
 Useful label combinations: `decision-needed` (blocked on a judgement call),
@@ -120,7 +120,15 @@ claim — and banked. 190k layer-B rows collapse to ~1,030 assertions.
 00_intake.py           any table (label+year[+iso+value+item]) -> deterministic
                        pass (matchlib.py, shared with 01) -> state/assertions.json:
                        one EVIDENCE BUNDLE per assertion (magnitudes, neighbor
-                       segments, candidate meta, evidence_hash, ledger status)
+                       segments, candidate meta, evidence_hash, ledger status).
+                       Pass --indicator-col when the source reuses ONE item code
+                       for several measures, or the bundle's median is taken
+                       across incommensurable series (issue #13: FAO-1952's
+                       single population item code holds total population,
+                       agricultural population and population economically
+                       active in agriculture; 80 layer-B item codes carry >1
+                       indicator). Opt-in, because qualifying a series changes
+                       the evidence hash and REOPENS its banked verdicts.
 verify_assertions      one economic-historian agent per pending assertion ->
   .workflow.js         verdict {confirm|reroute|split_reroute|new_polity|
                        not_a_polity|uncertain} + confidence + confirm_kind

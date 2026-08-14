@@ -26,6 +26,42 @@ Kinds:
 
 ---
 
+## fao1952-population-series-resolved-issue-13
+**Date:** 2026-08-14
+**Touched:** f248-1920-1947, sac-1935-1947
+**Source:** fao1952
+**Kind:** contradiction
+
+The FAO-1952 population series was recorded as UNRESOLVED in
+`state/source_conventions.csv`: sometimes about a third of true total
+population (Yugoslavia "~5.08M", Turkey "~6,086k"), sometimes the total
+(Saar 1937 = 821,000), with the Saar's small non-agricultural character
+floated as a possible discriminator. Re-measuring against
+`consolidated_layer_b.parquet` resolves it, and the discriminator is not
+territorial at all. FAO 1952 carries **five distinct population
+indicators under one item code** (`r_fao_population_1952_10_18`): total,
+agricultural, economically active in agriculture, and the male/female
+splits of the last. Layer B separates them in its `indicator` column;
+the item code does not, and `00_intake.py` keyed staple medians on the
+item code, so the bundle median was taken across incommensurable series.
+Yugoslavia 1937 is total 15,722k (1931 census 13.9M, 1948 census
+15.77M), agricultural 10,629k, agricultural-active 5,083k — and "5.08M"
+is both the agricultural-active row and the median of the five mixed
+rows. Turkey's "6,086k" is exactly (5,712+6,459)/2, the midpoint of ten
+mixed rows, against actual FAO totals of 16,823k and 20,935k. The Saar's
+821,000 is the `population total` indicator, and its agricultural rows
+sit under a *separate* label, `France  Saar` — so nothing ever
+contradicted anything. Two supporting claims in the old note are false:
+the ~⅓ ratio is not uniform (USA 6.5%, Germany 12.4%, Japan 20.2% in
+1937) and FAO 1952 has **no** USSR population row (its aggregate reads
+`GENERAL TOTAL EXCLUDING THE USSR`). The convention entry is rewritten
+as RESOLVED, both pages are corrected, and `00_intake.py` gains an
+opt-in `--indicator-col` so a bundle can no longer average unrelated
+measures — 80 layer-B item codes carry more than one indicator, so this
+was never only about population.
+
+---
+
 ## close-four-uncovered-territory-years-issue-77
 **Date:** 2026-08-13
 **Touched:** tcd-1912-1919, tcd-1919-1960 (renamed from tcd-1920-1960), tcd-1960-2025, sen-1854-1886, sen-1886-1960 (renamed from sen-1886-1959), sen-1960-2025, lao-1893-1954 (renamed from lao-1893-1953), lao-1954-2025, civ-1889-1893, civ-1893-1902 (renamed from civ-1893-1900), civ-1902-1932, aef-1910-1960, aof-1895-1960, lby-1949-1951
