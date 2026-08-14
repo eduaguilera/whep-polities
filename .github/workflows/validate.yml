@@ -67,7 +67,8 @@ name: Validate database
 #                            Ottoman Libya and Yemen that Cliopatria omits.
 #
 #   validate_cross_family_names
-#                            validate_period_overlaps only sees overlaps WITHIN a prefix, and the
+#                            validate_period_overlaps used to see overlaps only WITHIN a prefix
+#                            (it gained a cross-family signal on 2026-08-14, issue 82), and the
 #                            same territory sometimes has two — a legacy prefix and an ISO3 one.
 #                            Comparing normalised names across families found TAN-1922-1964
 #                            overlapping TZA-1961-1964 and MAR-1911-1958 overlapping MOR-1956-1958,
@@ -190,7 +191,15 @@ name: Validate database
 #                            them on history alone and falls back on tie-break order.
 #                            PER-1825-1909 is the clearest: PER-1825-1884 and
 #                            PER-1884-1909 tile its span exactly, so it is a redundant
-#                            un-split row duplicating both.
+#                            un-split row duplicating both. All four are now fixed and
+#                            the same-family baseline is empty.
+#                            A CROSS-FAMILY signal was added 2026-08-14 for issue 82,
+#                            reading the succession edges in iso3_successor_map.csv
+#                            rather than guessing the link from iso3_code: 53 pairs
+#                            today, all baselined and none a duplicate (25 nested, 25
+#                            disjoint ground, 3 without geometry). It would have caught
+#                            the Morocco pair the issue reported, which no same-prefix
+#                            comparison can see.
 #
 #   validate_reporting_areas six GADM territories are claimed by TWO aggregate
 #                            reporting polygons each. Palau and the Northern Mariana
@@ -385,7 +394,7 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_reporting_areas.py
 
-      - name: No two periods of one family cover the same year
+      - name: No two periods of one family, or of two families sharing a territory, cover the same year
         if: '!cancelled()'
         run: python3 scripts/validate_period_overlaps.py
 
