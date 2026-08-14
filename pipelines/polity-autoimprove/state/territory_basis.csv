@@ -93,8 +93,8 @@ BRA-1903-1909,Brazil (1903-1909),1903,1909,cshapes-2.0,1905.0,assigned,True,meas
 BRA-1909-2025,Brazil,1909,2025,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,False,single 1930 polygon held across a 116y span (1909-2025); borders may have changed,3414
 BRB-1800-2025,Barbados,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,309
 BRG-1800-1897,Borgu Confederacy,1800,1897,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
-BRL-1938-1945,Greater Berlin (1938-1945),1938,1945,cshapes-2.0,1938.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),19
-BRL-1945-1949,Berlin (Allied Occupation),1945,1949,cshapes-2.0,1945.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),2
+BRL-1938-1945,Greater Berlin (1938-1945),1938,1945,gadm-4.1-adm1,2022.0,assigned,True,back_projected,True,False,polygon vintage 2022 is AFTER the period ends (1945) — later/modern border applied back,19
+BRL-1945-1949,Berlin (Allied Occupation),1945,1949,gadm-4.1-adm1,2022.0,assigned,True,back_projected,True,False,polygon vintage 2022 is AFTER the period ends (1949) — later/modern border applied back,2
 BRN-1816-1888,Brunei (greater),1816,1888,cshapes-2.0,1888.0,assigned,True,assumed_constant,True,False,single 1888 polygon held across a 72y span (1816-1888); borders may have changed,0
 BRN-1888-2025,Brunei Darussalam,1888,2025,cshapes-2.0,1888.0,assigned,True,assumed_constant,True,False,single 1888 polygon held across a 137y span (1888-2025); borders may have changed,77
 BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 76y span (1884-1960); borders may have changed,86
@@ -685,10 +685,10 @@ SYR-1920-1922,Syria (French Mandate),1920,1922,cshapes-2.0,1921.0,assigned,True,
 SYR-1922-1945,Syria (1922-1945),1922,1945,cshapes-2.0,1922.0,assigned,True,measured,False,False,vintage 1922 faithful to period 1922-1945,690
 SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,cshapes-2.0,1946.0,assigned,True,measured,False,True,vintage 1946 faithful to period 1946-1967; footnote coverage caveat (FAO/IIA yearbook),294
 SYR-1967-2025,Syrian Arab Republic,1967,2025,cshapes-2.0,1967.0,assigned,False,assumed_constant,True,False,single 1967 polygon held across a 58y span (1967-2025); borders may have changed,0
-TAN-1891-1920,Tanzania (1891-1920),1891,1920,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),46
-TAN-1920-1922,Tanzania (1920-1922),1920,1922,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),18
+TAN-1891-1920,Tanzania (1891-1920),1891,1920,cshapes-2.0,1900.0,assigned,True,assumed_constant,True,False,single 1900 polygon held across a 29y span (1891-1920); borders may have changed,46
+TAN-1920-1922,Tanzania (1920-1922),1920,1922,cshapes-2.0,1921.0,assigned,True,measured,False,False,vintage 1921 faithful to period 1920-1922,18
 TAN-1922-1964,Tanzania (1922-1964),1922,1961,cshapes-2.0,1946.0,assigned,True,assumed_constant,True,False,single 1946 polygon held across a 39y span (1922-1961); borders may have changed,647
-TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),195
+TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 75y span (1825-1900); borders may have changed,195
 TCA-1800-2025,Turks and Caicos Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 TCD-1900-1912,Chad (1900-1912),1900,1912,cshapes-2.0,1900.0,assigned,True,measured,False,False,vintage 1900 faithful to period 1900-1912,0
 TCD-1912-1919,Chad (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,vintage 1912 faithful to period 1912-1919,0

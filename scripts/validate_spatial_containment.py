@@ -158,6 +158,17 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Germany's outline and outside its administration.
     "DEU-1945-1949",
     "DEU-1949-1990",
+    # Nazi Germany over Greater Berlin and the two zone rows that begin inside its span, added
+    # 2026-08-13 (issue 155) when brl-1938-1945 was bound to GADM's Land Berlin. Exactly the
+    # 2026-08-05 pattern above: SBZ-1938-1949 and WZO-1938-1949 were already inside this polygon
+    # and attaching a third pushed it over the >=3 threshold.
+    #
+    # A CITY INSIDE ITS OWN COUNTRY IS NOT A SWALLOW, and unlike the Saar it is not a hidden
+    # double-count either: BRL-1938-1945 exists because FAO 1952 reports "Germany Berlin" as a
+    # unit distinct from Germany, so the two series are levels of one hierarchy and a consumer
+    # summing both is double-counting by its own choice, not by a wrong binding. The magnitude is
+    # 892 km2 against ~600,000 -- 0.15% of Germany.
+    "DEU-1938-1945",
     # Occupied Libya over its three territories, added 2026-08-10 with their polygons (issue
     # 156). This is the most literal container in the list: TRP + CYR + FEZ are built as unions of
     # disjoint GADM shabiyat whose union reproduces GADM's Libya to 0.0000 km2, so LBY-1949-1951
