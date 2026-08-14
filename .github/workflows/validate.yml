@@ -344,6 +344,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/write_iso3_successor_map.py --check
 
+      # Issue 14: a source can report, under a territory's own label, a quantity the
+      # territory did not produce (IIA green coffee under `djibouti` is Ethiopian beans
+      # in transit through the port). The judgement was recorded in prose, where no
+      # aggregation can reach it; this step keeps the machine-readable publication of it
+      # from going stale, because a non-production flow known to state and absent from
+      # data/final is a double-count nobody can exclude.
+      - name: source_flow_flags.csv still matches the recorded source conventions
+        if: '!cancelled()'
+        run: python3 scripts/write_source_flow_flags.py --check
+
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
       - name: site/ shows exactly the live polities that carry geometry

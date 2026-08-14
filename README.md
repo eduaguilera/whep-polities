@@ -74,7 +74,11 @@ python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 python3 scripts/write_feature_index.py --check
 python3 scripts/write_iso3_successor_map.py --check
 python3 scripts/write_iso3_successor_map.py
+<<<<<<< ours
 python3 scripts/write_stated_area_basis.py --check   # which territory each source counted, per (polity, source)
+=======
+python3 scripts/write_source_flow_flags.py --check
+>>>>>>> theirs
 
 # provenance and internal consistency
 python3 scripts/validate_schema_contract.py
@@ -136,6 +140,7 @@ python3 pipelines/polity-autoimprove/extdata.py
 |---|---|
 | `build_database.py --check` | a wiki edit never propagated to the CSV; later, `"NA"` text stored as a literal string |
 | `write_manifest.py --check` | a stale alias-map fingerprint after aliases changed |
+| `write_source_flow_flags.py --check` | *(guard)* the IIA's green coffee under `djibouti` is Ethiopian beans in transit through the port, not French Somaliland's crop — 5 rows, 1930–1933, median 14,113.7 t, whose 1930/1931 values match Mitchell's own `ethiopia` series to its 100 t rounding. Every alias, polity and polygon involved is CORRECT, so no other check can see it; summing it beside Ethiopia adds 65,832 t over 1930–1933, a +92% inflation of Ethiopian coffee in that window. The judgement lived in prose, where an aggregation cannot reach it; this republishes the machine-readable part as `data/final/source_flow_flags.csv` and fails if state records a non-production flow the published file does not carry (issue 14) |
 | citations | 17 citations pointing at source files that were never ingested |
 | `validate_site_outputs.py` | site/polities.geojson two months stale — 194 live polities missing, 35 withdrawn ones drawn on the map |
 | `validate_registry_unmapped.py` | 16 areas listed as having no polity while their polity existed, so their data still resolved to `ROW-1850-2025` |
@@ -238,8 +243,12 @@ decided and a consumer used to get wrong:
 | `polygon_gap_polity_codes` | rows whose status claims a polygon the GeoPackage cannot carry, because the feature id was recorded as prose. A consumer asserting the strict invariant is red until this backlog clears; tolerating exactly this set keeps the check sharp for anything new |
 | `faostat_unmapped_areas` | why an area maps to no polity, in three kinds a consumer cannot tell apart from the numbers — see below |
 | `faostat_area_map`, `label_alias_map`, `iso3_successor_map` | path and sha256 of the three published CSVs |
+<<<<<<< ours
 | `faostat_area_map.coverage` | **what era the FAOSTAT map describes, and what to do outside it** (issue 200). The map is built from what FAOSTAT reports, so the pre-reporting era is declared `out-of-scope` rather than left blank, and `pre_coverage_rule` says what a consumer should do instead of matching the area's ISO3 as a polity-code prefix — a rule that cannot cross a colonial handover and produced 262 invented crosswalk rows downstream. Every number in the block is measured from the map, so it cannot go stale; `validate_map_era_scope.py` asserts the map obeys it |
 | `stated_area_basis` | shape of `data/final/source_stated_area_basis.csv`: per (polity, source), the area the SOURCE stated for its own reporting unit beside our polygon's. A per-km² denominator has to match the basis its numerator was collected on, and where the two are both defensible and far apart the row is flagged `review` — IIA's Algeria is the three civil departments, 575,511 km², against our 2,442,683 km² colony. No sha256, unlike the three maps above: the areas are PROJ geodesy and a digest would fail on a PROJ upgrade rather than on a data change |
+=======
+| `source_flow_flags` | path, sha256 and shape of `data/final/source_flow_flags.csv`: the (source, label, item) combinations whose figures are **not** the labelled territory's production. Exclude them from production aggregates or reattribute them to `origin_iso3` — do not sum them beside the origin's own series. Absence is not a guarantee: it lists the cases verified so far, not every entrepôt in the data |
+>>>>>>> theirs
 | `territory_families`, `territory_families_why` | which OTHER families cover one territory — 80 relations over 74 modern codes, collapsed from the successor map's depth-1 rows. `iso3_code` cannot answer this and a consumer matching on it gets nothing: Czech territory in 1950 is held by `CSK`, Montenegrin by `YUG`, Moroccan before 1911 by the local code `MOR` |
 
 Two columns in those CSVs measure the same thing under **transposed names**, and neither was
