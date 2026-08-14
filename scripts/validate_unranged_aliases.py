@@ -36,7 +36,7 @@ not, so it has been split the same way.
 Thirteen unranged aliases target an ended polity, and twelve of them are FINE, which is why this
 gate baselines rather than forbids. The distinction is whether the LABEL is still in use:
 
-  Belgian Congo, French West Africa, French Equatorial Africa, Cape of Good Hope, indochina,
+  Belgian Congo, French West Africa, French Equatorial Africa, indochina,
   rwanda and burundi, Netherlands West Indies
       historical names no present-day source writes. An unranged alias cannot mis-fire, because
       the label itself carries the era.
@@ -82,7 +82,12 @@ MAP = os.path.join(REPO, "data/final/label_alias_map.csv")
 BASELINE = frozenset({
     ("Belgian Congo", ""),
     ("Belgian Congo (fao1952)", ""),
-    ("Cape of Good Hope", ""),
+    # ("Cape of Good Hope", "") removed 2026-08-14 (issue 22). It is no longer unranged:
+    # CAP-1800-1910 was split at the 1895 British Bechuanaland annexation, so the label now
+    # carries two ranged rows, 1800-1894 -> CAP-1800-1895 and 1895-1909 -> CAP-1895-1910.
+    # Bounding it drops nothing: measured in layer B, all 205 rows labelled "Cape of Good
+    # Hope" are dated 1854-1904 and none has a missing year, which is the only thing an
+    # unranged alias was buying here.
     ("French Equat Africa", ""),
     ("French W Africa", ""),
     ("French West Africa", ""),

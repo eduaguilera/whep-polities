@@ -11,11 +11,11 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "910ca426d2856e38acda03e4e2dcf9e90ac253437804227bd3ea754622df5058",
+ "identity_sha256": "c63f01829c190a2084fccfe66ed16305954d79a9cd678884e7f9122ecd3ceec7",
  "counts": {
-  "total": 771,
-  "live": 728,
-  "dead": 43
+  "total": 773,
+  "live": 729,
+  "dead": 44
  },
  "dead_status": [
   "retired",
@@ -30,6 +30,7 @@
   "CAN-1866-1886",
   "CAN-1886-1948",
   "CAN-1948-2025",
+  "CAP-1800-1910",
   "CHN-1921-1945",
   "CZE-1947-1992",
   "DJI-1886-2025",
@@ -170,8 +171,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "e9a7feae545be92144ff30a2af970bbcc7771377ed396c5871bedde9603b340b",
-  "aliases": 943,
+  "sha256": "fdbb2eaa89513d59d1a88159468543e575a9a5fffd5904b63392957f0c49bfbc",
+  "aliases": 946,
   "labels": 510,
   "sources": [
    "crops-manure-n",
@@ -192,7 +193,7 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "013ee8087fa064c36435f8e378b46da3fcbc4c5491b7c754322871ae7584db45",
+  "sha256": "14d04867c0891bae5597d1735bc7e472776b9b9167eb5ce5e2a1e04d5592c50a",
   "relations": 5232,
   "modern_iso3": 77
  },
@@ -754,8 +755,13 @@
   "ZAF": [
    {
     "family": "CAP",
-    "year_min": 1850,
+    "year_min": 1895,
     "year_max": 1909
+   },
+   {
+    "family": "ZUL",
+    "year_min": 1850,
+    "year_max": 1878
    }
   ],
   "ZMB": [
@@ -883,7 +889,8 @@
   "CAN-1870-1886",
   "CAN-1886-1949",
   "CAN-1949-2025",
-  "CAP-1800-1910",
+  "CAP-1800-1895",
+  "CAP-1895-1910",
   "CAR-1920-1945",
   "CAY-1800-1886",
   "CHE-1800-2025",

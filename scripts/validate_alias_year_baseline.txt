@@ -3,7 +3,9 @@
 #
 # Format: `<source_label>\t<source>\t<polity_code>`. One per line.
 #
-# 132 entries, 451,145 observed rows. Was 201 entries / 451,933 rows on 2026-08-13, when
+# 131 entries, 451,145 observed rows (132 until 2026-08-14, when 'cape province' was fixed
+# rather than kept -- see its cleared-entry note below; its observed_rows field was blank, so
+# the row total is unchanged). Was 201 entries / 451,933 rows on 2026-08-13, when
 # issue 79 was worked; the issue itself said 270 entries / 461,445 rows, which had already
 # gone stale. 69 entries were REMOVED that day, in two groups, and neither was an
 # exemption:
@@ -123,7 +125,12 @@ british honduras		BLZ-1886-1970
 burkina faso	iia	BFA-1919-1932
 burma		MMR-1826-1852
 burma	mitchell	MMR-LWR-1852-1885
-cape province		CAP-1800-1910
+# 'cape province||CAP-1800-1910' cleared 2026-08-14 (issue 22). Its year_end was 1910 against
+# CAP-1800-1910's exclusive end_year 1910, so it claimed a year the polity did not hold. The row
+# was split at the 1895 British Bechuanaland annexation: 1800-1894 -> CAP-1800-1895 and 1895-1909
+# -> CAP-1895-1910, both ending one year inside their target. Measured: 113 layer-B rows labelled
+# "cape province" (mitchell, 1852-1909), of which the 29 dated 1895-1909 now resolve to the
+# observed 716,102 km2 CShapes step instead of the 600,802 km2 one (+19.2% territory).
 china 22 provinces	fao1952	CHN-1932-1945
 china, mainland		CHN-1800-1895
 china, mainland		CHN-1895-1913
