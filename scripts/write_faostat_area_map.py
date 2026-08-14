@@ -22,6 +22,17 @@ Only `matched` rows are published. An unresolved label is not a mapping, and
 emitting it with an empty target invites a consumer to treat the absence as a
 polity.
 
+`year_start`/`year_end` are INCLUSIVE while a polity's `end_year` is EXCLUSIVE, so a
+consistent row has `end_year == year_end + 1`, and A HANDOVER YEAR BELONGS TO THE
+INCOMING POLITY (issue 74). This script does NOT clip year_end to enforce that, and the
+choice is deliberate: it is a faithful republisher of pipeline state — silently editing
+years here would make the published contract disagree with the matcher that produced it,
+and would hide exactly the generator bug that put a year in two places (match.R's registry
+branch wrote the exclusive end_year into the inclusive column; 16 rows, fixed 2026-08-11).
+Four rows also overshoot legitimately, each a dissolved entity's final REPORTED year, so
+a blanket clip would be wrong as well as invisible. The convention is enforced one step
+later, where a violation can be named instead of erased: `scripts/validate_map_area_year.py`.
+
 Usage:
   python3 scripts/write_faostat_area_map.py [--check]
 
