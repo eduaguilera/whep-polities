@@ -143,7 +143,7 @@ BASELINE = frozenset({
     #
     # The row's page had named the 1934-1955 step and its 2,486,943 km2 area all along while
     # the frontmatter said 1914, so the published geometry was the 1914-1934 step and was
-    # byte-identical to SUD-1899-1934 (2,580,191 km2 measured). Declared recipe right,
+    # byte-identical to SUD-1899-1934 (2,580,014 km2 measured). Declared recipe right,
     # binding wrong -- which is why "B:SUD-1899-1934 / SUD-1934-1956" below is gone too.
     # A:TUR-1913-1914 LEFT this list on 2026-08-12, and the note it carried -- "points FORWARD
     # (1914 for a 1913 row); every fixed case pointed back" -- described the symptom and drew the
@@ -182,7 +182,7 @@ BASELINE = frozenset({
     "B:HUN-1944-1947 / HUN-1947-2025",
     # B:SUD-1899-1934 / SUD-1934-1956 LEFT this list on 2026-08-13; see the A:SUD note above.
     # SUD-1934-1956 is now on the 1934 vintage, so its geometry is the post-Sarra-Triangle
-    # 2,487,112 km2 and no longer matches its predecessor. It DOES still match its successor
+    # 2,486,812 km2 and no longer matches its predecessor. It DOES still match its successor
     # SUD-1956-2011, which is correct and does not fire signal B: independence changed no
     # borders, and CShapes offers no differently-sized step inside 1956-2010.
 })
