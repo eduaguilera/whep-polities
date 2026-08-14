@@ -254,22 +254,30 @@ def load_lexicon() -> dict:
         }
 
 
-def main() -> int:
+def analyse():
+    """Resolve every stated area to a polity and compare it to that polity's polygon.
+
+    Returns a dict, or a string explaining why the analysis cannot run (a SKIP reason).
+
+    SPLIT OUT OF main() FOR ISSUE 166. The comparison used to exist only inside this gate, so
+    the one thing a CONSUMER needs from it -- which territorial basis the source's numbers were
+    collected on, per (polity, source) -- was reachable only by reading a Python dict of prose.
+    `scripts/write_stated_area_basis.py` publishes it as a table by calling this function, which
+    keeps exactly one implementation of the digit screen and the consensus band. If the two ever
+    disagreed, the published table would contradict the gate that guards it.
+    """
     for path in (STATED_PATH, CSV_PATH, GPKG_PATH):
         if not os.path.exists(path):
-            print(f"SKIP: {os.path.relpath(path, REPO)} missing")
-            return 0
+            return f"SKIP: {os.path.relpath(path, REPO)} missing"
     try:
         import geopandas as gpd
     except ImportError:
-        print("SKIP: geopandas unavailable")
-        return 0
+        return "SKIP: geopandas unavailable"
     sys.path.insert(0, os.path.join(REPO, "pipelines/polity-autoimprove"))
     try:
         import matchlib
     except ImportError:
-        print("SKIP: matchlib unavailable")
-        return 0
+        return "SKIP: matchlib unavailable"
 
     import warnings
     warnings.filterwarnings("ignore")
@@ -277,6 +285,8 @@ def main() -> int:
     frame = gpd.read_file(GPKG_PATH)
     frame = frame[frame.geometry.notna() & ~frame.geometry.is_empty].to_crs("ESRI:54034")
     ours = {r["polity_code"]: r.geometry.area / 1e6 for _, r in frame.iterrows()}
+    with open(CSV_PATH, encoding="utf-8") as fh:
+        names = {r["polity_code"]: r["polity_name"] for r in csv.DictReader(fh)}
 
     matcher = matchlib.Matcher(
         CSV_PATH,
@@ -372,7 +382,7 @@ def main() -> int:
     # Monaco becomes IIA 21 vs FAO 2, and neither is discarded -- the band is simply wide, which
     # is the honest description of two sources disagreeing tenfold about a 2 km2 country.
     DIGIT_LO, DIGIT_HI = 7.0, 13.0  # a lost or gained decimal digit, with room for rounding
-    suspect, worst = [], {}
+    suspect, worst, per_source = [], {}, {}
     for code, obs in allstated.items():
         by_source = {}
         for stated, src, edition, label in obs:
@@ -386,11 +396,19 @@ def main() -> int:
             r = val / consensus if val > consensus else consensus / val
             # only drop a source whose whole median looks like a digit error AND where another
             # source survives to compare against -- never leave the polity with no evidence
-            if DIGIT_LO <= r <= DIGIT_HI and len(source_value) > 1:
+            dropped = DIGIT_LO <= r <= DIGIT_HI and len(source_value) > 1
+            if dropped:
                 worst_ed = max(by_source[src], key=lambda t: abs(t[0] - consensus))
                 suspect.append((code, val, consensus, src, worst_ed[1], worst_ed[2]))
             else:
                 kept[src] = val
+            per_source[(code, src)] = {
+                "stated": val,
+                "statements": len(by_source[src]),
+                "editions": sorted({str(e) for _, e, _ in by_source[src]}),
+                "labels": sorted({lab for *_, lab in by_source[src]}),
+                "digit_error_suspect": dropped,
+            }
         if not kept:
             continue
         lo, hi = min(kept.values()), max(kept.values())
@@ -401,7 +419,27 @@ def main() -> int:
         elif mine > hi * (1 + TOLERANCE):
             worst[key] = (mine / hi, lo, hi, mine, list(kept.items()))
 
-    diverged = worst
+    return {
+        "ours": ours,
+        "names": names,
+        "statements": statements,
+        "lexicon": lexicon,
+        "pairs": pairs,
+        "allstated": allstated,
+        "per_source": per_source,
+        "suspect": suspect,
+        "diverged": worst,
+    }
+
+
+def main() -> int:
+    result = analyse()
+    if isinstance(result, str):
+        print(result)
+        return 0
+    ours = result["ours"]
+    statements, lexicon, pairs = result["statements"], result["lexicon"], result["pairs"]
+    allstated, suspect, diverged = result["allstated"], result["suspect"], result["diverged"]
 
     problems = []
     baselined = {k[0] for k in BASELINE}

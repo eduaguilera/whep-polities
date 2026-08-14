@@ -74,6 +74,7 @@ python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 python3 scripts/write_feature_index.py --check
 python3 scripts/write_iso3_successor_map.py --check
 python3 scripts/write_iso3_successor_map.py
+python3 scripts/write_stated_area_basis.py --check   # which territory each source counted, per (polity, source)
 
 # provenance and internal consistency
 python3 scripts/validate_schema_contract.py
@@ -238,6 +239,7 @@ decided and a consumer used to get wrong:
 | `faostat_unmapped_areas` | why an area maps to no polity, in three kinds a consumer cannot tell apart from the numbers — see below |
 | `faostat_area_map`, `label_alias_map`, `iso3_successor_map` | path and sha256 of the three published CSVs |
 | `faostat_area_map.coverage` | **what era the FAOSTAT map describes, and what to do outside it** (issue 200). The map is built from what FAOSTAT reports, so the pre-reporting era is declared `out-of-scope` rather than left blank, and `pre_coverage_rule` says what a consumer should do instead of matching the area's ISO3 as a polity-code prefix — a rule that cannot cross a colonial handover and produced 262 invented crosswalk rows downstream. Every number in the block is measured from the map, so it cannot go stale; `validate_map_era_scope.py` asserts the map obeys it |
+| `stated_area_basis` | shape of `data/final/source_stated_area_basis.csv`: per (polity, source), the area the SOURCE stated for its own reporting unit beside our polygon's. A per-km² denominator has to match the basis its numerator was collected on, and where the two are both defensible and far apart the row is flagged `review` — IIA's Algeria is the three civil departments, 575,511 km², against our 2,442,683 km² colony. No sha256, unlike the three maps above: the areas are PROJ geodesy and a digest would fail on a PROJ upgrade rather than on a data change |
 | `territory_families`, `territory_families_why` | which OTHER families cover one territory — 80 relations over 74 modern codes, collapsed from the successor map's depth-1 rows. `iso3_code` cannot answer this and a consumer matching on it gets nothing: Czech territory in 1950 is held by `CSK`, Montenegrin by `YUG`, Moroccan before 1911 by the local code `MOR` |
 
 Two columns in those CSVs measure the same thing under **transposed names**, and neither was
@@ -395,6 +397,7 @@ Useful labels: `decision-needed`, `blocked-on-source`, `guard`, `backlog`.
 | `scripts/rebuild.sh` | **The** rebuild command. Orchestrates everything below. |
 | `scripts/build_database.py` | Builds `data/final/polities_database.{csv,gpkg}` from wiki + `scripts/sources.yaml` |
 | `scripts/repair_s2_polygons.py` | Makes polygons loadable by s2, which `make_valid()` cannot always do. Called by `build_database.py` on write, so a rebuild needs no separate step; run standalone (`--dry-run` to look first) to repair the committed GeoPackage without one |
+| `scripts/write_stated_area_basis.py` | Publishes `data/final/source_stated_area_basis.csv` — which territory each statistical source's numbers were collected over, per (polity, source). Calls `validate_stated_areas.analyse()` so the table cannot drift from the gate |
 | `scripts/sources.yaml` | Per-source registry: file path, id column, temporal columns |
 | `scripts/sources/<slug>/fetch.{sh,R}` | Fetches the raw source |
 | `scripts/sources/<slug>/build.py` | Optional per-source processing step for derived sources |

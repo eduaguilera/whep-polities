@@ -286,6 +286,35 @@ if os.path.exists(SUCCESSOR_MAP):
             {"family": family, "year_min": lo, "year_max": hi}
         )
 
+# WHICH TERRITORY EACH SOURCE'S NUMBERS WERE COLLECTED OVER (issue 166), so a consumer dividing
+# a source's production by a polygon can tell whether the two describe the same ground. IIA's
+# Algeria is the three civil departments (575,511 km2); ours is the colony including the Southern
+# Territories (2,442,683). Both are right, the join is right, and a yield built from them is out
+# by 4.2x with nothing to flag it.
+#
+# NOT FINGERPRINTED BY sha256, unlike the three maps above, and the difference is deliberate:
+# this table's areas are PROJ geodesy, whose last digits move between PROJ releases. A digest
+# would make this manifest's --check fail on a dependency bump rather than on a data change.
+# Shape and the review count are stable facts, so those are what is published.
+BASIS_MAP = os.path.join(REPO, "data/final/source_stated_area_basis.csv")
+stated_area_basis = None
+if os.path.exists(BASIS_MAP):
+    basis_rows = list(csv.DictReader(open(BASIS_MAP, encoding="utf-8")))
+    stated_area_basis = {
+        "path": "data/final/source_stated_area_basis.csv",
+        "bases": len(basis_rows),
+        "polities": len({r["polity_code"] for r in basis_rows}),
+        "sources": sorted({r["source"] for r in basis_rows}),
+        "review_flagged": sum(1 for r in basis_rows if r["basis_flag"] == "review"),
+        "why": (
+            "Per (polity, source), the area the SOURCE stated for its own reporting unit beside "
+            "the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more "
+            "and are BOTH defensible -- a per-km2 denominator has to choose which territory the "
+            "numerator was collected over. An empty `note` on such a row means no reason has been "
+            "recorded for THAT source, not that the divergence is understood."
+        ),
+    }
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -369,6 +398,7 @@ manifest = {
     "faostat_area_map": area_map_info,
     "label_alias_map": alias_map_info,
     "iso3_successor_map": successor_map_info,
+    "stated_area_basis": stated_area_basis,
     "territory_families": territory_families,
     "territory_families_why": (
         "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not "

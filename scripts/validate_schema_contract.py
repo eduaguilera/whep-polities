@@ -82,6 +82,13 @@ CSV_CONTRACT = {
     "data/final/polygon_feature_index.csv": [
         "source", "feature_id", "row_order", "start_year", "end_year", "area_km2",
     ],
+    # Added with the table itself (issue 166). `source` is the STATISTICAL source (iia, fao),
+    # not a polygon source -- the same word means the other thing one row above, which is
+    # exactly the kind of transposition this gate exists to pin down.
+    "data/final/source_stated_area_basis.csv": [
+        "polity_code", "polity_name", "source", "stated_area_km2", "statements", "editions",
+        "source_labels", "polygon_area_km2", "ratio_polygon_over_stated", "basis_flag", "note",
+    ],
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,
     # not a published contract, so they could be unified now; `data/final/` could not.
@@ -125,9 +132,13 @@ MANIFEST_KEYS = [
     "dead_status", "faostat_area_map", "faostat_unmapped_areas",
     "identity_fields", "identity_sha256", "iso3_successor_map", "label_alias_map",
     "live_polity_codes", "local_iso3_codes", "local_iso3_why",
-    "polygon_gap_polity_codes", "source", "territory_families",
+    "polygon_gap_polity_codes", "source", "stated_area_basis", "territory_families",
     "territory_families_why",
 ]
+# `stated_area_basis` added 2026-08-14 (issue 166): the shape of
+# data/final/source_stated_area_basis.csv, which says per (polity, source) which territory the
+# source's own numbers were collected over. Named here so a consumer reading the manifest can
+# find the file at all -- the same reason iso3_successor_map was added.
 # `iso3_successor_map`, `territory_families` and `territory_families_why` added 2026-08-13
 # (issue 82). The successor-map CSV was published on 2026-08-06 and was the only published
 # table the manifest did not name, so a consumer reading the manifest to find out what

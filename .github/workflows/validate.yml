@@ -336,6 +336,10 @@ jobs:
         if: '!cancelled()'
         run: python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 
+      - name: source_stated_area_basis.csv still matches the polygons and the sources
+        if: '!cancelled()'
+        run: python3 scripts/write_stated_area_basis.py --check
+
       - name: iso3_successor_map.csv still matches the chain graph
         if: '!cancelled()'
         run: python3 scripts/write_iso3_successor_map.py --check
