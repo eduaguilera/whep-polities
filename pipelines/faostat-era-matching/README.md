@@ -121,3 +121,41 @@ areas resolve to 264 aliases with no gaps, no ambiguity, and no unmatched
 areas (that pass created 12 polities — COK, NIU, GUF, REU, PSE, BMU-1968,
 SGP-1963, BDI/RWA-1922, F237, F249, SRB-2006 — and settled Malaysia
 1961-1962 from rubber-production magnitudes).
+
+## Scope: the reporting era, and nothing before it
+
+Decided 2026-08-14 for [issue 200](../../../../issues/200), which was filed from the
+consumer side. This pipeline matches areas over the years FAOSTAT **reports**,
+which begin in 1961. It does **not** state which polity an area's pre-1961
+*back-cast* years belong to, and it will not: the consumer publishes 1850-2023 by
+growing the 1961 anchor backwards with a present-day-ISO3 land series, and
+
+- for **36 of the 244** mapped areas there is no anchor at the era's start to grow
+  backwards from (Armenia 1992, Czechia 1993, Palau 2000, Serbia 2006, South Sudan
+  2012, Belgium and Luxembourg 2000 — **38** areas have no row covering 1961), so
+  "this area's pre-1961 polity" is undefined, not merely unrecorded; and
+- a quantity reconstructed on modern borders is not an observation of the entity that
+  held that ground, so stamping a polity code on it asserts more than the data has.
+
+A genuine pre-1961 **observation** resolves on the other key — the source label,
+through `label_alias_map.csv` and [`pipelines/pre1961-matching`](../pre1961-matching/README.md),
+which name real historical polities (`Abyssinia 1800-1889 -> ETH-1800-1889`).
+
+The pre-1961 rows the published map *does* contain (30, over 29 areas) are all
+`registry`/`rows_observed = 0` no-data areas, whose span comes from the polity's own
+period because there are no observed years to bound it. That is why the scope is
+stated as a rule rather than as "min(year_start) = 1961", which the file does not
+satisfy and never did.
+
+The scope is published machine-readably in `polities_manifest.json` under
+`faostat_area_map.coverage` — including `pre_coverage_rule`, the instruction that
+replaces the consumer's ISO3-prefix guessing — and
+`scripts/validate_map_era_scope.py` asserts that the map keeps obeying it (no
+observed row starts before 1961; every area has exactly one anchor row; no row
+starts before its own polity does).
+
+`state/report.md` is written by `match.R` and is older than the last few polity
+additions: it lists 30 unmapped no-data areas where `state/registry_unmapped.csv`
+now holds **14**, all genuine non-countries. Re-running the matcher refreshes it;
+`scripts/validate_registry_unmapped.py` gates the CSV, which is the file consumers
+and gates read.

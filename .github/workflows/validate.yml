@@ -402,6 +402,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_map_area_year.py
 
+      - name: The FAOSTAT map stays inside the era it declares
+        if: '!cancelled()'
+        run: python3 scripts/validate_map_era_scope.py
+
       - name: No family leaves a year covered by nothing
         if: '!cancelled()'
         run: python3 scripts/validate_period_gaps.py
