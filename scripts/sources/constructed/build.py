@@ -817,11 +817,18 @@ def build_trp_1943_1951() -> ogr.Geometry:
 def build_cyr_1949_1951() -> ogr.Geometry:
     """Cyrenaica = 8 GADM adm1 shabiyat, 837,876 km2 against FAO 1952's 855,400 (-2.0%).
 
-    Bound to CYR-1949-1951, the Emirate of Cyrenaica proclaimed 1 June 1949. The TERRITORY is
-    the same one the British administered from 1943; only the polity changed in 1949, so the
-    geometry carries no vintage question. That the emirate's row starts in 1949 while
-    TRP-1943-1951 starts in 1943 leaves Cyrenaican data for 1943-1949 with no destination --
-    recorded as an open question on both pages, not something this geometry can fix.
+    TWO POLITY ROWS SHARE THIS ONE FEATURE, and that is the point: CYR-1949-1951 (the Emirate of
+    Cyrenaica, proclaimed 1 June 1949) and CYR-1943-1949 (the British Military Administration
+    before it, added for issue 198) both declare polygon_feature_id `CYR-1949-1951`. The TERRITORY
+    is the same one Britain administered from 1943; only the polity changed in 1949, so the
+    geometry carries no vintage question and no second builder was written for it. Successive
+    periods of one territory sharing a feature is the normal case -- validate_shared_polygons
+    reports sharing only for rows that COEXIST, and these two do not, because end_year is
+    exclusive. MAN-1945-1950 reuses MAN-1932-1945's feature the same way.
+
+    This docstring previously ended "leaves Cyrenaican data for 1943-1949 with no destination --
+    not something this geometry can fix", which was right about the geometry and wrong about the
+    remedy: the fix was a row, not a polygon.
     """
     return _union(*(_gadm_adm1(g) for g in _CYR_ADM1))
 

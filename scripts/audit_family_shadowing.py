@@ -189,6 +189,14 @@ BASELINE = {
     "TRP-1943-1951 / CYR-1949-1951": "two thirds of the same partition: disjoint, 0.0000 km2",
     "FEZ-1943-1951 / CYR-1949-1951": "two thirds of the same partition: disjoint, 0.0000 km2",
     "TRP-1943-1951 / FEZ-1943-1951": "two thirds of the same partition: disjoint, 0.0000 km2",
+    # CYR-1943-1949 added 2026-08-13 (issue 198): the British military administration of Cyrenaica,
+    # which had no row while TRP and FEZ covered 1943-1951 in full. It carries CYR-1949-1951's
+    # constructed feature UNCHANGED -- same 837,876 km2 of ground, earlier administration -- so
+    # these three pairs are the same three the emirate already had, one window earlier. It does NOT
+    # pair with CYR-1949-1951 itself: end_year is exclusive, so the two never coexist.
+    "CYR-1943-1949 / LBY-1943-1949": "Cyrenaica inside all-Libya, by construction (1.93x)",
+    "TRP-1943-1951 / CYR-1943-1949": "two thirds of the same partition: disjoint, 0.0000 km2",
+    "FEZ-1943-1951 / CYR-1943-1949": "two thirds of the same partition: disjoint, 0.0000 km2",
     # Two separate Australian colonies before federation.
     "AUSA-1836-1900 / AUWA-1829-1900": "South vs Western Australia, different colonies",
 }
@@ -225,6 +233,15 @@ PINNED_DISJOINT = {
         "Tripolitania vs Fezzan; adjacent, disjoint by construction",
     ("CYR-1949-1951", "FEZ-1943-1951"):
         "Cyrenaica vs Fezzan; adjacent, disjoint by construction",
+    # The 1943-1948 half of the same partition, added 2026-08-13 with CYR-1943-1949 (issue 198).
+    # Worth asserting separately even though CYR-1943-1949 shares the emirate's feature: the two
+    # rows are simplified INDEPENDENTLY by build_database, so these are genuinely different
+    # measurements, and if a future edit rebinds either row the pin fails with the km2 it came
+    # back as instead of going quietly inert.
+    ("TRP-1943-1951", "CYR-1943-1949"):
+        "Tripolitania vs British-administered Cyrenaica; disjoint by construction",
+    ("CYR-1943-1949", "FEZ-1943-1951"):
+        "British-administered Cyrenaica vs Fezzan; disjoint by construction",
 }
 PIN_TOLERANCE_KM2 = 1.0   # simplify+densify leaves sliver-scale disagreement on shared edges
 
@@ -245,6 +262,9 @@ PIN_TOLERANCE_OVERRIDE = {
     ("TRP-1943-1951", "CYR-1949-1951"): 5.0,
     ("TRP-1943-1951", "FEZ-1943-1951"): 5.0,
     ("CYR-1949-1951", "FEZ-1943-1951"): 5.0,
+    # Same shared land boundaries, one window earlier (issue 198).
+    ("TRP-1943-1951", "CYR-1943-1949"): 5.0,
+    ("CYR-1943-1949", "FEZ-1943-1951"): 5.0,
 }
 
 by_code = {r.polity_code: r.geometry for r in g.itertuples()}

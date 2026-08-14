@@ -484,7 +484,8 @@ Libya,faostat,1961,2024,LBY-1951-2025,Libya,high,81391
 Libya,lassaletta-grassland-share,1961,2009,LBY-1951-2025,Libya,high,
 Libya,mitchell,1949,1950,LBY-1949-1951,Libya under UN Transitional Administration (1949-1951),high,28
 libya,mitchell,1949,1950,LBY-1949-1951,Libya under UN Transitional Administration (1949-1951),high,3
-Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high,8
+Libya Cyrenaica,fao1952,1943,1948,CYR-1943-1949,British Military Administration of Cyrenaica,high,4
+Libya Cyrenaica,fao1952,1949,1951,CYR-1949-1951,Emirate of Cyrenaica,high,4
 Libya Cyrenaica,mitchell,1949,1950,CYR-1949-1951,Emirate of Cyrenaica,high,4
 Libya Fezzan,fao1952,1943,1950,FEZ-1943-1951,French Military Administration of Fezzan,high,5
 Libya Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,37

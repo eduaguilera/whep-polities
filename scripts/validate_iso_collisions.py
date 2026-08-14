@@ -101,6 +101,14 @@ BASELINE = frozenset({
     ("LBY", "LBY-1943-1949", "TRP-1943-1951"),
     ("LBY", "TRP-1943-1951", "CYR-1949-1951"),
     ("LBY", "TRP-1943-1951", "LBY-1949-1951"),
+    # CYR-1943-1949 joined on 2026-08-13 (issue 198), the British military administration of
+    # Cyrenaica: the 1943-1948 window previously had TRP and FEZ but no Cyrenaica, because
+    # CYR-1949-1951 is the EMIRATE and starts in 1949. Three more pairs, all the same class as
+    # the eight above, and the ambiguity is resolved the same way -- by explicit alias, including
+    # `Libya Cyrenaica` at 1948, which was resolving to NOTHING before this row existed.
+    ("LBY", "CYR-1943-1949", "FEZ-1943-1951"),
+    ("LBY", "CYR-1943-1949", "LBY-1943-1949"),
+    ("LBY", "CYR-1943-1949", "TRP-1943-1951"),
     ("MMR", "MMR-1852-1885", "MMR-LWR-1852-1885"),
     # MNE pair removed 2026-08-05: MNE-1913-1915 is retired (issue 62).
 

@@ -63,6 +63,12 @@ BASELINE = frozenset({
     ("620", "LBY-1943-1949", "TRP-1943-1951"),
     ("620", "TRP-1943-1951", "CYR-1949-1951"),
     ("620", "TRP-1943-1951", "LBY-1949-1951"),
+    # CYR-1943-1949, added 2026-08-13 (issue 198): the British military administration of
+    # Cyrenaica, which had no row while TRP and FEZ covered 1943-1951 in full. Same reasoning as
+    # the block above -- COW has no code for a military administration, so 620 is inherited.
+    ("620", "CYR-1943-1949", "FEZ-1943-1951"),
+    ("620", "CYR-1943-1949", "LBY-1943-1949"),
+    ("620", "CYR-1943-1949", "TRP-1943-1951"),
     ("640", "OTT-1800-1886", "TUR-1800-1913"),
     ("640", "TUR-1800-1913", "OTT-1886-1908"),
     ("640", "TUR-1800-1913", "OTT-1908-1912"),
