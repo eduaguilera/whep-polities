@@ -30,6 +30,15 @@ step at 1881 is still an artifact, but of ONE bad polygon rather than of two con
 Two sources agreeing to four digits while a third differs by a quarter is how you tell an outlier
 from a convention -- and with IIA alone I drew the wrong conclusion and wrote it into a merged PR.
 
+BUT AGREEMENT BETWEEN THESE TWO SOURCES IS NOT ALWAYS INDEPENDENT, and Libya is the case that
+shows it (issue 196). FAO 1952's 1,759,500 and IIA 1938's 1,759,540 agree to 0.002% because they
+are the same Italian colonial figure, first published in the IIA 1938 edition for a Libya whose
+southern boundary was the never-ratified 1935 Laval-Mussolini (Aouzou) line. The IIA 1932 and 1933
+editions give 1,638,000 for the same country. Three modern boundary products agree with the 1932
+figure and disagree with the 1938 one by 8.2%, so here the two "agreeing" sources are both the
+outlier. Cross-source agreement bounds transcription error, not scope error; only a source with a
+different provenance bounds that.
+
 WHAT THIS CHECK IS NOT FOR. The yearbooks are not more accurate than modern GIS about
 coastlines, and they carry their own errors: IIA gives Monaco as 21 km2 in five editions and 149
 in two, against an actual ~2 km2. What a stated area IS authoritative about is SCOPE -- whether
