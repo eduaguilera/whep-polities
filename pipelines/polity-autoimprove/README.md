@@ -57,7 +57,7 @@ do with it:
 | `state/quarantine_resolved.csv` | append-only audit trail of cleared quarantine rows + why | — |
 | `state/new_polity_proposals.json` | proposed polities awaiting sign-off | — |
 | `state/suspect_wiki_pages.csv` | pages verification judged wrong or too thin | #19, #25 |
-| `state/landuse_corrections.csv` | recoverable bad cells in the FAO land-use series | #4 |
+| `state/landuse_corrections.csv` | recoverable bad cells in the FAO land-use series, one row per cell, with an `action` (`replace_value` / `drop_row` / `review_cell` / `review`) saying what an upstream applier may do unattended. `scripts/validate_landuse_corrections.py` re-derives every diagnosis from the row's own numbers | #4 |
 | `state/yield_corrections.csv` | single cells whose area x yield is physically impossible | #29, #111 |
 | `state/yield_series_corrections.csv` | whole series carrying a scale error, one row per run, with which column moved | #111 |
 | `state/source_conventions.csv` | what a source's labels actually measure | #24, #13 |
