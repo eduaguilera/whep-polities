@@ -123,6 +123,86 @@ here, so it could not be measured), and whether East Timor should likewise move 
 
 Signed off by: Claude (Claude Code), issue 23.
 
+## decision-nested-subpolity-polygons-are-gross
+**Date:** 2026-08-14
+**Touched:** esp-1800-2025, icn-1800-2025, chn-1950-2025, hkg-1842-2025, gbr-1800-1921, irl-1800-1921, ind-1947-1949, hyd-1724-1948, esh-1975-2025, mar-1979-2025, isr-1979-2025, pse-1948-2025, sau-1924-2025, yem-1990-2025, srb-2008-2025, kos-2008-2025
+**Source:** none
+**Kind:** decision
+
+*Recorded by Claude (Claude Code) working issue 143; every figure below was re-measured
+against `data/final/polities_database.gpkg`, not carried over from the issue. Not
+human-signed-off. No polity row, polygon, date, status or alias changed. Issue 143 asked
+for exactly one thing to be decided — the class-2 accounting convention — and argued
+against writing a gate before classes 1 and 3 are settled. That is what this entry does.*
+
+**The measurement reproduces.** Live real rows only (`wiki_status` not
+retired/superseded, `polity_type != "aggregate"`, geometry present), spans overlapping
+2015, pairwise intersection in `ESRI:54034`: **188 pairs overlapping >1 km², 331,319 km²
+total** (issue 143 said 188 / 331,429 km²). Against the 0.5° grid: **544 of 68,549
+candidate cells claim more territory than they contain, 30.73 Mha in excess, worst ratio
+2.0000× at cell (-9.75, 26.25)** in Western Sahara. All four headline figures hold; the
+110 km² and 116-cell drifts are 0.03% and 0.17%, from polygon work merged since the issue
+was filed. This residual is larger than the 12.72 Mha shared-polygon defect of
+eduaguilera/whep#514 and is **not** that defect returning.
+
+**THE DECISION (class 2, nested sub-polity): a polity's polygon is GROSS of the
+sub-polities that are themselves rows.** [esp-1800-2025](polities/esp-1800-2025.md) is
+Spain *including* the Canaries even though [icn-1800-2025](polities/icn-1800-2025.md) is
+its own row; [chn-1950-2025](polities/chn-1950-2025.md) includes Hong Kong even though
+[hkg-1842-2025](polities/hkg-1842-2025.md) is its own row; `GBR-1800-1921` includes
+Ireland; `IND-1947-1949` includes Hyderabad. This is not a claim about history — the
+history is not in doubt — it is an accounting convention, and the one chosen is the one
+already in force: `validate_spatial_containment.py` treats these as legitimate
+containment and enumerates them. Making polygons net would mean subtracting child
+geometry from 103 container rows (the count at `--min-contained 1`, measured today),
+silently changing published `polygon_area_km2` across most of the colonial and imperial
+rows, and losing the ability to answer "what did this polity administer".
+
+**The consequence a consumer must act on**, because gross polygons are only safe if the
+consumer knows they are gross: any area-weighted or per-cell allocation over these
+polygons must subtract the coexisting child polygons from each parent first, or it
+double-counts the child's territory. The database publishes no net-of-children geometry
+and does not intend to. Written into README's "Consuming this database" so it is not
+discoverable only from this log.
+
+**Class 2 measured, coexisting in 2015: two pairs, 7,920 km².** `ESP`/`ICN` 7,027 km²
+(93.2% of the Canaries) and `CHN`/`HKG` 893 km² (79.2% of Hong Kong). Across all years
+the same mechanism covers `GBR-1800-1921`/`IRL-1800-1921` (82,451 km², 97.7%) and
+`IND-*`/`HYD-1724-1948` (211,298 km², 100.0% in each of six IND periods).
+
+**Correction — `SRB-2008-2025` / `KOS-2008-2025` is NOT an instance.** Issue 143 lists
+it, having taken it from the KNOWN LIMITATION comment in
+`validate_spatial_containment.py`. Measured, the two polygons intersect in **0.0 km²**:
+CShapes feature 347 for 2008+ already excises Kosovo from Serbia, and `SRB-2008-2025`
+does not appear in the container list even at `--min-contained 1`. That comment's own
+counts were stale as well — it said 95 / 58 / 33 containers at thresholds 1 / 2 / 3,
+measured today they are **103 / 64 / 42**, so the single-swallow blind spot it records is
+39 cases and not 37, larger than written. Both corrected in the comment; the gate's
+threshold and behaviour are untouched.
+
+**Left open on purpose.**
+
+- **Class 1, disputed ground — 273,228 km² over two pairs, 82% of the whole residual.**
+  `ESH-1975-2025`/`MAR-1979-2025` 267,078 km² (99.8% of Western Sahara) and
+  `ISR-1979-2025`/`PSE-1948-2025` 6,150 km² (99.1% of Palestine). Both rows in each pair
+  are live and both polygons cover the same ground, because this database codes the
+  claimant as well as the de facto controller where CShapes codes only the controller
+  (recorded in this log under `morocco-mar-mor-double-count`). Whether the overlap is
+  netted, split by control, or left explicit is a territorial judgement per pair, and is
+  named as open rather than invented here.
+- **The Saudi–Yemen frontier — 29,828 km², 6.58% of Yemen.** `SAU-1924-2025`/
+  `YEM-1990-2025`, its own class: not a nesting and not a resolution artefact, but two
+  sources disagreeing over a frontier that was undefined until the 2000 Treaty of Jeddah.
+  Needs a source decision, not a tolerance.
+- **Class 3, source-resolution slivers — 183 pairs, 20,342 km².** Everything after the
+  four pairs above. **Max 1.07% of the smaller polity** (`MMR-1885-2025`/`THA-1909-2025`,
+  5,459 km²); median 0.006%, 75th percentile 0.019%. A tolerance expressed as a fraction
+  of the smaller polity therefore separates class 3 from every other class cleanly
+  anywhere between ~1.1% and ~6.5% — which is the number a future per-cell gate needs.
+  **No gate is added here**, on issue 143's own argument: a tolerance written before
+  class 1 is settled has to be wide enough to swallow 267,078 km², and then it means
+  nothing.
+
 
 ## close-four-uncovered-territory-years-issue-77
 **Date:** 2026-08-13

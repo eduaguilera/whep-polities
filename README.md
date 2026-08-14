@@ -390,6 +390,22 @@ minus the three rows its 603-row copy does not have. Nothing downstream can cons
 fix without re-syncing the embedded copy from `polities_database.gpkg`, which is
 eduaguilera/whep#530.
 
+**Polygons are GROSS of nested sub-polities, so an area-weighted allocation must net them
+out itself.** `ESP-1800-2025` is Spain *including* the Canaries even though
+`ICN-1800-2025` is its own row; `CHN-1950-2025` includes Hong Kong; `GBR-1800-1921`
+includes Ireland; `IND-1947-1949` includes Hyderabad. A polygon answers "what did this
+polity administer", not "what was left once its sub-polities were carved out", and this
+repository publishes no net-of-children geometry. A consumer that intersects these
+polygons with a grid and sums will therefore claim the child's territory twice: measured
+on the 2015 slice, **544 of 68,549 half-degree cells claim more than they contain,
+30.73 Mha in excess, worst ratio 2.0000×**. Most of that excess is NOT this convention
+but disputed ground coded twice on purpose (`ESH`/`MAR` 267,078 km², `ISR`/`PSE`
+6,150 km²); the nesting convention itself is 7,920 km² in 2015 and the remaining 183
+pairs are 20,342 km² of source-resolution slivers. `validate_spatial_containment.py`
+enumerates the containers — 103 at `--min-contained 1` — and the per-class measurements,
+the decision and what is still undecided are in [wiki/log.md](wiki/log.md) under
+`decision-nested-subpolity-polygons-are-gross` (issue 143).
+
 **Open work lives in the [issue tracker](../../issues)**, not in comments or state
 files — anything recorded only in a CSV tends to be rediscovered by accident.
 Useful labels: `decision-needed`, `blocked-on-source`, `guard`, `backlog`.
