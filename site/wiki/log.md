@@ -220,6 +220,50 @@ so "AOF's successor is BFA-1919-1932" would assert that AOF ended in 1919.
 argument written into the baseline. The four reverse edges also lower `successor_only`
 **193 → 189**; this entry was written against a 191 base, before issue 77's closures and
 the F206 work moved it, so the arithmetic was re-measured on rebase rather than carried.
+## lint-polygon-backlog-cleared
+**Date:** 2026-08-13
+**Touched:** can-1866-1870, trs-1947-1954
+**Source:** none
+**Kind:** lint
+
+Closed out the issue #3 polygon backlog and made the documentation say what the data
+already says. Re-measured first, on a fresh `scripts/build_database.py` with
+`data/geodata/` present: 767 pages, 735 geometries attached, and
+`scripts/validate_polygons.py` check C reports **0 polities declaring a polygon_status
+that asserts a polygon while carrying none** (0 baselined, 0 new, 0 stale). All 20 rows
+the issue tracked are resolved — 17 carry real geometry (11 via builders in
+`scripts/sources/constructed/build.py`: AEF, BTL, FRIN, GBM, GCT, IDN-BLB, IDN-JVM,
+IDN-OTH, PTIND, SYL, TTPI; 6 by naming or correcting one source feature id: ALK, GRC, NRH,
+RYU-1937-1945, RYU-1945-1972, SER) and 3 were withdrawn to `polygon_status: unassigned`
+(CAN-1800-1866, CAN-1866-1870, TRS-1947-1954).
+
+The issue's own figures were stale, and so were four places in the repo that still
+described 13 open rows: the header of `scripts/validate_polygons_baseline.txt` (whose
+active list has in fact been empty for some time), the reachability comment in
+`scripts/validate_polygons.py`, `README.md`'s baseline section, and the queue table in
+`pipelines/polity-autoimprove/README.md`. The `build_gct_1919_1956()` docstring still said
+"WHY IT IS NOT REGISTERED … the row stays in the polygon backlog" although the builder has
+been registered since 2026-08-06 and issue 47 is closed. All corrected. The baseline file
+is KEPT, empty, because both the validator and `scripts/write_manifest.py` read it and an
+empty list is the invariant now wanted: no polity may claim a polygon it lacks.
+
+Two of the three withdrawn pages still read as if they claimed a polygon, which is the
+half of "an honest downgrade with the blocker documented on the page" that had not been
+done. `trs-1947-1954` said `polygon_status=estimate` in two places against
+`unassigned` in its front matter. `can-1866-1870` was worse: it declared
+`polygon_source: gadm-4.1` with `polygon_feature_id: NA` and described an "ESTIMATE
+polygon (composed GADM union: Ontario + Quebec + Nova Scotia + New Brunswick) ~500,000
+km²". That union measures **2,729,293 km²** in ESRI:54034 — 5.5x the declared figure —
+because modern Ontario and Quebec absorbed Rupert's Land, Keewatin and Ungava between
+1870 and 1912, which is exactly the territory a row ending at the 1870 transfer must
+exclude. The same finding withdrew `can-1800-1866`'s polygon on 2026-08-10. So
+`polygon_source` becomes `none` here too and the page now states the blocker; note that
+`gadm41_CAN.gpkg` IS present locally, so the blocker is vintage, not missing data. The
+unsourced `polygon_area_km2: 500000` is kept per the convention for unassigned rows but
+flagged unverified in a new open question — it matches neither the recipe nor any subset
+of it. Deciding what it should be is left open.
+
+---
 
 ## lint-polygon-status-vocabulary
 **Date:** 2026-07-29

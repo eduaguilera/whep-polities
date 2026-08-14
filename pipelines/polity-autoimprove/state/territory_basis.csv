@@ -108,7 +108,7 @@ CAF-1912-1919,Central African Republic (1912-1919),1912,1919,cshapes-2.0,1912.0,
 CAF-1919-1960,Central African Republic (1919-1960),1919,1960,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 41y span (1919-1960); borders may have changed,14
 CAF-1960-2025,Central African Republic,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 65y span (1960-2025); borders may have changed,1
 CAN-1800-1866,Canada (pre-Confederation),1800,1866,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),39
-CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,gadm-4.1,2023.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),4
+CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),4
 CAN-1866-1886,"Canada (Confederation era, to 1886)",1866,1886,cshapes-2.0,1886.0,proxy,True,measured,False,False,vintage 1886 faithful to period 1866-1886,0
 CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),1870,1886,cshapes-2.0,1886.0,proxy,True,measured,False,False,vintage 1886 faithful to period 1870-1886,53
 CAN-1886-1948,Canada (to 1948),1886,1948,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 62y span (1886-1948); borders may have changed,2219

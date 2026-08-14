@@ -1310,7 +1310,8 @@ def build_gct_1919_1956() -> ogr.Geometry:
     carry the BRITISH mandate for 1922-1955, which is what this page asserts and which
     is not obvious — 462 is the Republic of Togo (the French mandate) after 1960.
 
-    WHY IT IS NOT REGISTERED. Attaching this polygon made
+    WHY IT WAS NOT REGISTERED UNTIL 2026-08-06 (history; it IS registered now, see the
+    BUILDERS entry). Attaching this polygon made
     scripts/audit_family_shadowing.py fail: GCT and BTL-1920-1957 then both carry
     iso3 GHA, both are typed `colonial`, and they overlap 1920-1956 at a 9x area
     ratio — so which one GHA-labelled data reaches would be decided by family
@@ -1322,8 +1323,10 @@ def build_gct_1919_1956() -> ogr.Geometry:
     it means deciding how a composite reporting unit should be typed, and the
     database is currently inconsistent about that — BLX is `aggregate`, SYL is
     `statistical`, AOF and AEF are `national`, GCT is `colonial`. That is a modelling
-    decision, so the recipe is kept here, verified and ready, and the row stays in
-    the polygon backlog until the typing question is settled. See issue 47.
+    decision, so the recipe was kept here, verified and ready, while the row stayed in
+    the polygon backlog until the typing question was settled. Issue 47 settled it: the
+    row is typed `aggregate` (the MASG/PAPNG pattern for a combined reporting unit), the
+    shadowing audit passes, and this builder was registered on 2026-08-06.
     """
     return _union(_cshapes2_feature(452, 1930), _cshapes2_feature(462, 1930))
 

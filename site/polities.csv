@@ -108,7 +108,7 @@ CAF-1912-1919,Central African Republic (1912-1919),1912,1919,national,CAF,482,Af
 CAF-1919-1960,Central African Republic (1919-1960),1919,1960,national,CAF,482,Africa,draft,2026-04-12,cshapes-2.0,482,1919,assigned,,CAF-1912-1919,CAF-1960-2025
 CAF-1960-2025,Central African Republic,1960,2025,national,CAF,482,Africa,draft,2026-04-12,cshapes-2.0,482,1960,assigned,,CAF-1919-1960,
 CAN-1800-1866,Canada (pre-Confederation),1800,1866,national,CAN,,North America,draft,2026-06-29,none,,,unassigned,,,CAN-1866-1870
-CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,national,CAN,20,North America,draft,2026-06-29,gadm-4.1,,2023,unassigned,500000,CAN-1800-1866,CAN-1870-1886
+CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,national,CAN,20,North America,draft,2026-06-29,none,,,unassigned,500000,CAN-1800-1866,CAN-1870-1886
 CAN-1866-1886,"Canada (Confederation era, to 1886)",1866,1886,national,CAN,20,North America,retired,2026-06-29,cshapes-2.0,20,1886,proxy,9553560,CAN-1800-1866,CAN-1866-1870; CAN-1870-1886
 CAN-1870-1886,Canada (post-Rupert's Land 1870-1886),1870,1886,national,CAN,20,North America,draft,2026-06-29,cshapes-2.0,20,1886,proxy,9553560,CAN-1866-1870,CAN-1886-1949
 CAN-1886-1948,Canada (to 1948),1886,1948,national,CAN,20,North America,retired,2026-06-29,cshapes-2.0,20,1886,assigned,9553560,CAN-1866-1886,CAN-1886-1949
