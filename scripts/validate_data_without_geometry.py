@@ -14,7 +14,10 @@ WHEP R package — silently drops them or divides by nothing. Silently is the pr
 unmatched row is visible in a coverage figure, a matched row with no territory is not.
 
 WHAT IT MEASURED WHEN IT WAS WRITTEN (2026-08-13, issue 155): 9 live polities receive
-362 layer-B rows with no geometry, all nine judged and baselined below.
+362 layer-B rows with no geometry, all nine judged and baselined below. On rebase
+(2026-08-14) it measures 8 polities and 194 rows: CHL-1810-1884 left the baseline for the
+reason recorded beside it, and the committed row counts are lower than when this paragraph
+was written because the gitignored parquet they derive from predates the recent re-spans.
 
 Issue 155 filed the same class at 18 polities / 1,071 rows. Re-enumerating it from the
 data rather than from the issue changed both the membership and the counts:
@@ -75,13 +78,24 @@ DEAD = ("retired", "superseded")
 # taken from its own page's prose — which is how issue 155's five already-fixed cases
 # were found. Row counts are the layer-B figures measured on 2026-08-13.
 BASELINE = frozenset({
-    # 168 rows. DELIBERATE, and the page argues it: Cliopatria's pre-1884 Chile steps
+    # CHL-1810-1884 was listed here for its 168 rows and is REMOVED on 2026-08-14, because
+    # committed state does not support the count: territory_basis.csv reads
+    # `layerb_data_rows = 0` for it, on main as well as here. The rows are real but are
+    # attributed to `CHL-1810-1883`, a code the database does not contain -- matched_rows.parquet
+    # is gitignored and predates the recent re-spans, so five codes carrying 799 rows point at
+    # polities that no longer exist (SEN-1886-1959 471, CHL-1810-1883 168, LAO-1893-1953 89,
+    # TCD-1920-1960 46, LBY-1950-1951 25). Check A cannot flag CHL while its committed count is
+    # zero, so the entry could only ever be stale. It belongs back here once the parquet is
+    # regenerated against the current polity set; that is tracked separately, since the same
+    # staleness understates four other polities' row counts.
+    #
+    # The reason it had no polygon is unchanged and still on the page: Cliopatria's pre-1884
+    # Chile steps
     # (1866-1879: 314,287 km2) are settlement-extent rather than claimed territory, so
     # binding one would put a 2.4x step against this family's CShapes-sourced siblings
     # (~745,000 km2) that is a mapping convention and not a border. CShapes has a 1886
     # floor and its earliest Chile polygon already contains the ~240,000 km2 annexed in
     # 1883-1884. See wiki/polities/chl-1810-1884.md and issue 158.
-    "CHL-1810-1884",
     # 78 rows, the largest remaining. NO SOURCE HAS IT. The Free Territory of Trieste
     # (declared 737 km2, Zone A ~222 + Zone B ~515) needs adm2-level Italian, Slovenian
     # and Croatian units. Measured: CShapes 2.0 has zero features matching Trieste or
