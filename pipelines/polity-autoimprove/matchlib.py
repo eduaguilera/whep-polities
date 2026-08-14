@@ -12,6 +12,77 @@ the assertion-verification workflow's job (see README, "assertion").
 import pandas as pd, numpy as np, re, unicodedata, csv, os
 from collections import defaultdict
 
+# ---------------------------------------------------------------------------
+# THE YEAR CONVENTION, named once so it can be checked rather than assumed.
+#
+# A polity period is the half-open interval [start_year, end_year): `end_year`
+# is EXCLUSIVE. CIV-1893-1900 covers 1893-1899. That is stated in
+# wiki/README.md, enforced on the polity_code by
+# scripts/validate_code_year_agreement.py, and assumed by every gate.
+#
+# It was NOT what this matcher implemented. pick_by_year tested
+# `start <= year <= end`, so at a transition year — where a predecessor's
+# end_year equals its successor's start_year — the ENDED period was a
+# candidate, and in any family with a third overlapping row it WON on list
+# order. Measured against the consolidated layer-B panel (192,670 rows):
+# 12 (label, source, year) tuples covering 190 rows resolved to a period that
+# had already ended, among them every India transition (1886, 1893, 1914,
+# 1937, 1947, 1949), Greece 1919, Indonesia 1949 and Malaysia 1957. Every one
+# of the 12 now resolves to what a strictly exclusive reading would give.
+#
+# The two R matchers declare and use the same constant, and
+# scripts/validate_year_semantics.py fails if any of them stops doing so — the
+# point of issue #131 being that a component reading this field the other way
+# produces a plausible answer and no error.
+#
+# NOT the same field, and deliberately unchanged here: alias `year_end` in
+# pipelines/polity-autoimprove/state/applied_aliases.csv is INCLUSIVE (see
+# scripts/write_label_alias_map.py), so a consistent pair has
+# end_year == year_end + 1. Where an alias NAMES a target, its human decision
+# is honoured as written; issues #79 and #90 own that seam.
+END_YEAR_EXCLUSIVE = True
+
+# The alias registry's OWN year bound reads the OTHER way, and is meant to:
+# `year_end` in state/applied_aliases.csv and in the published
+# data/final/label_alias_map.csv is INCLUSIVE (scripts/write_label_alias_map.py
+# publishes it as "last year (inclusive)"), so a consistent pair has
+# end_year == year_end + 1. Two fields, two meanings — that is not the defect.
+#
+# The defect is that this reading was, like the polity-side one before issue
+# #131, written as a bare comparison operator in every component that uses it,
+# and an operator cannot be compared across files. A name can. Declared here and
+# in pipelines/faostat-era-matching/match.R (which CONVERTS a polity end_year
+# into an alias year_end when it emits routing rules), and held together by
+# scripts/validate_year_semantics.py.
+ALIAS_YEAR_END_INCLUSIVE = True
+
+
+def covers(start, end, year):
+    """Does the polity period contain `year`?
+
+    The single place this repository's Python side decides that question.
+    `end` is exclusive when END_YEAR_EXCLUSIVE, so a row with end == year has
+    ALREADY ENDED and does not cover it.
+    """
+    return start <= year < end if END_YEAR_EXCLUSIVE else start <= year <= end
+
+
+def alias_covers(y0, y1, year):
+    """Does an ALIAS rule's year range contain `year`?
+
+    The single place this repository's Python side decides that question. A
+    missing bound is unbounded on that side (see match_alias). `y1` is the LAST
+    year the rule applies to when ALIAS_YEAR_END_INCLUSIVE — the opposite of
+    `covers()` above, deliberately, because it is a different field.
+    """
+    if year is None or pd.isna(year):
+        return False
+    if y0 is not None and year < y0:
+        return False
+    if y1 is not None and (year > y1 if ALIAS_YEAR_END_INCLUSIVE else year >= y1):
+        return False
+    return True
+
 
 def norm(s):
     if s is None or (isinstance(s, float) and np.isnan(s)): return ""
@@ -163,7 +234,17 @@ class Matcher:
                       f"{dict(self.stale_alias_targets)}; rewrite them to the live successor")
 
     def match_alias(self, name, source, year):
-        """best applied-alias target for (name, source, year).
+        """best applied-alias TARGET CODE for (name, source, year), or None."""
+        ru = self.match_alias_rule(name, source, year)
+        return ru["code"] if ru else None
+
+    def match_alias_rule(self, name, source, year):
+        """best applied-alias RULE for (name, source, year).
+
+        Returns the rule rather than just its target because a caller sometimes
+        has to know WHAT THE RULE SAID, not only where it points: `assign()`
+        honours an alias over a target period that has already ended only when
+        the rule itself names that year as its inclusive `year_end`. See there.
 
         Preference order: year-scoped over blanket, then source-scoped, then —
         among equally-scoped rules — the NARROWER year range. That last
@@ -192,31 +273,60 @@ class Matcher:
             bounded = ru["y0"] is not None or ru["y1"] is not None
             lo = ru["y0"] if ru["y0"] is not None else -10**6
             hi = ru["y1"] if ru["y1"] is not None else 10**6
-            if bounded and (year is None or not (lo <= year <= hi)): continue
+            if bounded and not alias_covers(ru["y0"], ru["y1"], year): continue
             span = (hi - lo) if bounded else 10**6
             rank = ((2 if bounded else 0) + (1 if ru["src"] is not None else 0),
                     -span)                              # higher score, then narrower range
             if best_rank is None or rank > best_rank:
-                best, best_rank = ru["code"], rank
+                best, best_rank = ru, rank
         return best
 
     @staticmethod
     def pick_by_year(fam, year):
-        """from a polity family, pick the row whose [s,e] contains year; prefer national."""
+        """from a polity family, pick the row covering `year`; prefer national.
+
+        The candidate set is gathered INCLUSIVELY and then narrowed, rather than
+        gathered with `covers()` outright, and the difference is the whole of the
+        cost line in issue #131. Under a strict exclusive gather, 13 layer-B
+        (label, source, year) tuples — 83 rows, Hungary 1919, Syria 1945,
+        Senegal 1959, Burkina Faso 1932 among them — stop resolving to anything,
+        because their family has no period starting at the boundary year at all.
+        Losing those is not a fix; it is the same defect with the sign flipped.
+
+        So: a period that has ENDED (`not covers(...)`, i.e. end_year == year)
+        loses to the successor that STARTS here, when that successor is unique at
+        its rank and is not a worse polity_type. Otherwise it is kept, and the
+        year resolves as it did before.
+
+        Both guards are load-bearing and were measured, not assumed:
+          - the UNIQUENESS guard: at Libya 1949 both CYR-1949-1951 (Cyrenaica
+            alone) and LBY-1949-1951 (the UN transitional administration) start,
+            and both are `national`, so "the successor" is not a fact and family
+            order would pick it. Uniqueness is judged at the BEST rank present,
+            not over all starters — otherwise Indonesia 1949 stayed on the ended
+            IDN-1945-1949 because three subnational Dutch-era reporting units
+            also begin in 1949 alongside the one national successor, and the USA
+            at 1867 stayed on USA-1848-1867 because ALK-1867-1959 begins there.
+          - the TYPE guard: at Ghana 1956 the only row covering the year is
+            BTL-1920-1957 — British TOGOLAND, a different territory that merely
+            shares iso3 GHA — so dropping GHA-1898-1956 would move whole-Ghana
+            data onto it. Czechoslovakia 1918 is likewise held back because the
+            row starting there is typed `aggregate`.
+        """
         if pd.isna(year): return None, "no_year"
         cands = [r for r in fam if not pd.isna(r[3]) and not pd.isna(r[4]) and r[3] <= year <= r[4]]
         if not cands: return None, "year_uncovered"
+        rank = lambda r: 0 if r[5] == "national" else 1
         if len(cands) > 1:
-            # Adjacent WHEP periods SHARE their transition year (predecessor ends
-            # the year the successor starts). Route the shared year to the
-            # SUCCESSOR, matching pipelines/faostat-era-matching/match.R so the
-            # two matchers agree. Only when every candidate starts or ends
-            # exactly on this year — anything else is real ambiguity (an
-            # aggregate overlapping a period), left to the type preference.
-            if all(r[3] == year or r[4] == year for r in cands):
-                starters = [r for r in cands if r[3] == year]
-                if len(starters) == 1: return starters[0], "ok"
-        cands.sort(key=lambda r: 0 if r[5] == "national" else 1)
+            expired = [r for r in cands if not covers(r[3], r[4], year) and r[3] != year]
+            starters = [r for r in cands if r[3] == year and covers(r[3], r[4], year)]
+            if starters:                       # uniqueness is judged at the BEST rank
+                best = min(rank(r) for r in starters)
+                starters = [r for r in starters if rank(r) == best]
+            if expired and len(starters) == 1 \
+                    and rank(starters[0]) <= min(rank(r) for r in expired):
+                cands = [r for r in cands if r not in expired]
+        cands.sort(key=rank)
         return cands[0], "ok"
 
     def fam_for_code(self, code):
@@ -246,15 +356,48 @@ class Matcher:
         """full per-row resolution: (candidate_code|None, status, how).
         Same decision order as 01's assign(): year/source-conditional alias first,
         then cached family + year containment."""
-        ac = self.match_alias(name, source, year)
+        alias_rule = self.match_alias_rule(name, source, year)
+        ac = alias_rule["code"] if alias_rule else None
         if ac:
             # HONOR the alias's explicit target when its period covers the year.
+            # NOT plain covers() on purpose: an alias row is a HUMAN decision
+            # keyed on an INCLUSIVE year_end, so "Libya Tripolitania | fao1952 |
+            # ...-1951 -> TRP-1943-1951" asserts that 1951 belongs to
+            # Tripolitania. Applying END_YEAR_EXCLUSIVE here would silently
+            # overrule that and, measured, would move 12 more tuples / 137 rows —
+            # sending whole-Libya 1949 to Cyrenaica alone and Tripolitania 1951 to
+            # all of Libya. Whether those alias bounds are right is issues #79/#90;
+            # this matcher is not the place to decide it.
+            #
+            # BUT ONLY WHERE THE RULE ACTUALLY SAID IT. This used to test
+            # `rec[3] <= year <= rec[4]` — the INCLUSIVE reading of the TARGET
+            # POLITY's `end_year`, which is the exclusive field — for every alias,
+            # including the ones that carry no year bound at all. A blanket alias
+            # makes no claim about a boundary year, so there was no human decision
+            # to honour and the seam of issue #131 survived inside the alias path:
+            # 219 of 903 rules could reach their target's `end_year`, and 19 of
+            # them did so WITHOUT naming that year as their `year_end`. Now the
+            # inclusive reading applies only when `year_end == year`, i.e. when a
+            # person wrote that year down; everything else falls through to
+            # year-containment in the family, exactly like an unaliased label.
+            #
+            # Measured effect on the consolidated layer-B panel (192,670 rows,
+            # 17,599 (label, source, year, iso3) tuples): ZERO tuples change.
+            # Enumerated over the rules themselves, exactly one answer moves —
+            # blanket "belgian congo" at 1960 goes from COD-1910-1960 (which ends
+            # in 1960 and so does not cover it) to COD-1960-2025, the row that
+            # starts there. The other 18 already resolved to the same code by
+            # fallback, because their family has no period starting at the
+            # boundary.
             # (Re-picking from the target's ISO family let a same-span sibling
             # polity shadow the named target — e.g. an "Alaska" period polity
             # with iso3=USA absorbing mainland-USA rows aliased to USA-1867-1959.)
             rec = self.code_row.get(ac)
             if rec is not None and not pd.isna(year) and not pd.isna(rec[3]) \
-                    and not pd.isna(rec[4]) and rec[3] <= year <= rec[4]:
+                    and not pd.isna(rec[4]) \
+                    and (covers(rec[3], rec[4], year)
+                         or (ALIAS_YEAR_END_INCLUSIVE
+                             and year == rec[4] and alias_rule["y1"] == year)):
                 return (ac, "matched", "applied_alias")
             # year outside the target's own span: the alias names a family
             # representative — fall back to year-containment within the family

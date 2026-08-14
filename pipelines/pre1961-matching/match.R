@@ -40,6 +40,55 @@ suppressPackageStartupMessages({
   library(jsonlite)
 })
 
+# ---- the year convention -----------------------------------------------------
+# A polity period is [start_year, end_year): `end_year` is EXCLUSIVE. Stated in
+# wiki/README.md, enforced by scripts/validate_code_year_agreement.py, declared
+# here and in pipelines/polity-autoimprove/matchlib.py and
+# pipelines/faostat-era-matching/match.R so the three cannot silently disagree —
+# scripts/validate_year_semantics.py fails if one of them drops it (issue #131).
+#
+# This matcher read the field INCLUSIVELY (`end_year >= year`) and then broke
+# ties by WIDEST SPAN, so at a transition year the ended period was not merely a
+# candidate, it was the favourite. `drop_expired_periods()` below is the same
+# narrowing rule matchlib.Matcher.pick_by_year applies, ported verbatim, so the
+# two matchers answer a boundary year identically.
+END_YEAR_EXCLUSIVE <- TRUE
+
+# Does the period contain `year`? The single place this file decides that.
+covers <- function(start_year, end_year, year) {
+  if (END_YEAR_EXCLUSIVE) {
+    start_year <= year & year < end_year
+  } else {
+    start_year <= year & year <= end_year
+  }
+}
+
+# From a set of candidate periods that all TOUCH `year` inclusively, drop any
+# that have already ended — but only when the period STARTING at `year` is
+# unique at its rank and is no worse a polity_type. Gathering with covers()
+# outright instead would lose boundary years whose family has no period starting
+# there (measured on the layer-B panel: 83 rows), and dropping without the two
+# guards moves whole-country data onto a co-ISO neighbour (Ghana 1956 ->
+# British Togoland) or onto whichever of two simultaneous successors sorts first
+# (Libya 1949: Cyrenaica alone vs the UN transitional administration).
+# Same rule, same guards, as matchlib.Matcher.pick_by_year.
+drop_expired_periods <- function(hits, year) {
+  if (nrow(hits) < 2L) return(hits)
+  rk <- ifelse(hits$polity_type == "national", 0L, 1L)
+  expired <- !covers(hits$start_year, hits$end_year, year) &
+    hits$start_year != year
+  starters <- hits$start_year == year &
+    covers(hits$start_year, hits$end_year, year)
+  if (any(starters)) {          # uniqueness is judged at the BEST rank present
+    starters <- starters & rk == min(rk[starters])
+  }
+  if (any(expired) && sum(starters) == 1L &&
+        rk[starters] <= min(rk[expired])) {
+    return(hits[!expired, , drop = FALSE])
+  }
+  hits
+}
+
 # ---- paths -------------------------------------------------------------------
 proj_root   <- normalizePath(".")
 input_path  <- file.path(proj_root, "data", "external", "before_1961.csv")
@@ -106,7 +155,8 @@ normalise_iso <- function(iso, year, polity_name = NA_character_) {
   # iso TUR: TUR-1800-1913 (Anatolian territory, ~780k km2; Mitchell/FAOSTAT
   # use present-day borders retroactively per Pamuk) and TUR-1920-2025
   # (Türkiye). Year-based disambiguation is handled by match_one's
-  # year-bounded pool lookup (start_year <= year <= end_year), NOT by an iso
+  # year-bounded pool lookup (start_year <= year < end_year, since end_year is
+  # EXCLUSIVE — see covers() above), NOT by an iso
   # rewrite here. known_equivalent resolves ASCII "Turkey" input to either
   # entry via the "turkey" alias now merged into the canonical TUR name_equiv
   # entry. No normalise_iso routing needed.
@@ -332,6 +382,9 @@ match_one <- function(iso_lookup, year, input_country = NA_character_) {
   if (is.null(pool) || nrow(pool) == 0) return(list(code = NA, status = "none"))
   hits <- pool[pool$start_year <= year & pool$end_year >= year, ]
   if (nrow(hits) == 0) return(list(code = NA, status = "none"))
+  # end_year is EXCLUSIVE: a period ending in `year` does not cover it, and the
+  # widest-span tie-breaks below would otherwise prefer exactly that row.
+  hits <- drop_expired_periods(hits, year)
   nat <- hits[hits$polity_type == "national", ]
   if (nrow(nat) == 1) {
     # Single national candidate: reject if its name has no token overlap
