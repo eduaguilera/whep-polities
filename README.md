@@ -80,6 +80,7 @@ python3 scripts/audit_family_shadowing.py
 # identity and periodisation
 python3 scripts/validate_iso_codes.py
 python3 scripts/validate_iso_collisions.py
+python3 scripts/validate_dissolved_iso_codes.py    # the ISO 3166-3 coding rule, as a check
 python3 scripts/validate_cow_codes.py
 python3 scripts/validate_cross_family_names.py
 python3 scripts/validate_period_overlaps.py
@@ -133,7 +134,8 @@ python3 pipelines/polity-autoimprove/extdata.py
 | cross-family names | `TAN-1922-1964` overlapping `TZA-1961-1964`, and `MAR-1911-1958` overlapping `MOR-1956-1958` — the earlier row's end year running past its successor's start. Invisible to the period-overlap gate, which only compares within one prefix. Latent rather than live: the inert twins are unmapped, so the consumer never sees both |
 | cow codes | `ICN-1800-2025` (Canary Islands) carried COW code **20**, which is Canada. The Canaries are not a COW state — they are part of Spain, 230 — so the value was removed rather than corrected, which would have swapped one collision for another. Its `iso3` and polygon were both fine, so no other check could see it |
 | iso collisions | *(guard)* 59 pairs already share a code over overlapping years **by design**, since `iso3` groups by modern territory. The gate is that the set must not grow |
-| local iso codes | *(guard)* `iso3_code` is **not ISO-conformant and cannot be** — there is no ISO 3166 code for Austria-Hungary, so this database invents `AUH`. 56 of its 276 values are local like that, and a consumer joining against ISO-keyed data silently matches none of them; it is what stops four dissolved federations reaching WHEP's LUH2 land series. The vocabulary is therefore an interface, and the gate is that it does not change unreviewed. Publishing the local/ISO distinction machine-readably is [issue 55](../../issues/55) |
+| dissolved iso codes | the USSR's three rows carried **no** `iso3_code`, so a consumer holding `SUN` — which WHEP's own `regions_full` and `polity_area_crosswalk` both reference — reached nothing, even though the polity plainly existed. Fixed to `SUN` (ISO 3166-3 `SUHH`). The gate is the rule [issue 55](../../issues/55) asked to have written down: a dissolved entity whose polity family **continues into a live polity** carries that live polity's 3166-1 code (Zaire→`COD`, Burma→`MMR`, Southern Rhodesia→`ZWE`, Afars and Issas→`DJI`) and must NOT use its 3166-3 code; one whose family **terminates** carries its own 3166-3 code (`CSK`, `YUG`, `DDR`, `SUN`, `ANT`, `SCG`, `PCI`). Membership is listed, the verdict is derived, so the rule is tested rather than restated. 12 entities, 36 rows |
+| local iso codes | *(guard)* `iso3_code` is **not ISO-conformant and cannot be** — there is no ISO 3166 code for Austria-Hungary, so this database invents `AUH`. 56 of its 276 values are local like that, and a consumer joining against ISO-keyed data silently matches none of them; it is what stops four dissolved federations reaching WHEP's LUH2 land series. The vocabulary is therefore an interface, and the gate is that it does not change unreviewed. The local/ISO distinction is now published in `polities_manifest.json` (`local_iso3_codes`), and how dissolved states are coded is gated by `validate_dissolved_iso_codes.py` |
 | period overlaps | four same-family pairs cover the same years, so a year-aware matcher must guess. `PER-1825-1909` duplicates two rows that already tile its span exactly |
 | period gaps | *(guard)* the complement — 11 families leave a year between consecutive periods, where a matcher gets NO answer. `LBY` 1949 was one and was sending 28 rows labelled `Libya` to Cyrenaica alone. Its coverage annotation answered "who else held this territory" by comparing `iso3_code`, which cannot cross a family: five gaps read "no cover found" while the published successor map named a holder for every year of them — `CZE` 1918-1992 to `F51`, `MNE` 1918-2005 to `F248`/`SCG`, `ERI` 1952-1992 to `ETH`, `SEN` 1959 to `AOF`, `LAO` 1953 to `FID` (issue 82). The annotation now reads that map. It is still advisory: the gate passes or fails only on the baseline |
 | `validate_map_area_year.py` | the same question asked of the published FAOSTAT map, whose `year_start`/`year_end` are **INCLUSIVE** while a polity's `end_year` is **EXCLUSIVE**. Two areas gave a real handover year to both polities at once — area 205 in 1975 (the Madrid Accords) and area 240 in 1917 (the sale of the Danish West Indies) — and `validate_period_overlaps` could see neither, because read from the database `DWI-1800-1917` covers through 1916 and genuinely does not overlap `VIR-1917-2025`. The ambiguity existed only in the published ranges. Both are fixed, and both fixes chose the same rule, so it is now written down and asserted rather than argued: **a handover year belongs to the INCOMING polity** (issue 74). All 53 handover boundaries in the 43 multi-row areas obey it, with no baseline. The third arm catches one answer too FEW, which neither of the other two can: an outgoing row clipped a year short leaves a year no polity claims, and a year with zero answers looks exactly like a year nobody asked about. The four rows whose `year_end` overshoots their polity's coverage are a different question — a dissolved entity's final REPORTED year, accepted and pinned (issue 164) |
@@ -255,8 +257,18 @@ missing; the identifier cannot be matched. Several separately-filed gaps are thi
 **The distinction is now published.** `polities_manifest.json` carries `local_iso3_codes` (the 56)
 and `local_iso3_why`, so a consumer can tell a local code from an ISO one without discovering it
 by getting no match. Read from the gate's baseline rather than restated, so there is one list
-and CI gates it. That field is **descriptive only** — how dissolved states *should* be coded is
-still [issue 55](../../issues/55), where three approaches coexist in the data today.
+and CI gates it. That field is **descriptive only**.
+
+**How dissolved states are coded is now a rule with a gate**, not three coexisting approaches
+([issue 55](../../issues/55), `validate_dissolved_iso_codes.py`). An entity with an ISO 3166-3
+former alpha-3 code takes **its successor's modern 3166-1 code when its own polity family
+continues into a live polity** — the state still exists and only the name changed, so Zaire's
+rows carry `COD`, Burma's `MMR`, Southern Rhodesia's `ZWE`, the Afars and Issas' `DJI`, and the
+3166-3 code goes unused. It takes **its own 3166-3 code when the family terminates**: `CSK`,
+`YUG`, `DDR`, `SUN`, `ANT`, `SCG`, `PCI`. Only the third apparent approach — carrying nothing —
+was a defect, and the last of it (the USSR's three rows, fixed to `SUN` on 2026-08-13) is gone.
+The gate lists which polities represent each entity, which is a judgement, but DERIVES the
+verdict from whether they reach a live polity, so the rule is tested rather than restated.
 
 **Knowing a code is local does not tell you which family holds its territory instead.** That is
 the sharper version of the same problem, and it is [issue 82](../../issues/82). A consumer asking

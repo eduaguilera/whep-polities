@@ -409,6 +409,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_iso_collisions.py
 
+      - name: Dissolved states with an ISO 3166-3 code follow one coding rule
+        if: '!cancelled()'
+        run: python3 scripts/validate_dissolved_iso_codes.py
+
       - name: No unranged alias points at an ended polity
         if: '!cancelled()'
         run: python3 scripts/validate_unranged_aliases.py

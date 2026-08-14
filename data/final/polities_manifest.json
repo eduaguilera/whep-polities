@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "0113713fda4544090daf98bc149f473ad91053ac40107f034dcc06c909212c8b",
+ "identity_sha256": "b649b3e50ce36bbdf01aafb794e1ec2060a9cc2f102b30171ac4f0e42ee42006",
  "counts": {
   "total": 767,
   "live": 726,
@@ -122,6 +122,7 @@
   "SNI",
   "SNW",
   "SUD",
+  "SUN",
   "SWA",
   "TAN",
   "TAS",
@@ -176,9 +177,9 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "31dbb5a548244319cd4df95a29b37843d194e120cafbe8a0ac25d9d381749212",
-  "relations": 5066,
-  "modern_iso3": 74
+  "sha256": "4a40ad81030c5730dd4f7d8014b3c2cbbe65f13456b3cc74d8427bc6043d1ee3",
+  "relations": 5131,
+  "modern_iso3": 75
  },
  "territory_families": {
   "AGO": [
@@ -566,6 +567,13 @@
     "family": "SUD",
     "year_min": 1956,
     "year_max": 2010
+   }
+  ],
+  "SUN": [
+   {
+    "family": "F228",
+    "year_min": 1920,
+    "year_max": 1920
    }
   ],
   "SVK": [

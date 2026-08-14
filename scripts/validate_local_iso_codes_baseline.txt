@@ -3,8 +3,10 @@
 # This vocabulary is a published interface: a consumer joins on it, so adding a value
 # changes what that join matches and changing one re-points every row carrying it.
 #
-# 295 values over 702 rows (2026-08-13; was 280/680 on 2026-08-06, and before that the header had said 276/658 and was stale, which is
-# what a count in a comment does when the gate asserts the LIST rather than the number).
+# 296 values over 699 rows (2026-08-13, after SUN; the header had said "295 over 702" and the
+# row count was already wrong -- measured 696 on main, not 702. Third time a hand-typed count
+# in this header has drifted, which is what a count in a comment does when the gate asserts
+# the LIST rather than the number. Was 280/680 on 2026-08-06 and 276/658 before that.)
 #
 # Of these, ~56 are NOT ISO 3166 codes but local identifiers for entities that have none
 # (AUH Austria-Hungary, OTT Ottoman Empire, AOF French West Africa, NSW New South Wales,
@@ -258,6 +260,10 @@ SRB
 SSD
 STP
 SUD  # local
+SUN  # local -- ISO 3166-3 SUHH, the USSR's former alpha-3. Added 2026-08-13 (issue 55) to
+     # the three USSR-era F228 rows, which previously carried nothing and so belonged to no
+     # ISO family. Not in a 3166-1 list by construction: 3166-3 is the register of codes
+     # withdrawn because the entity no longer exists.
 SUR
 SVK
 SVN
