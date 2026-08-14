@@ -107,6 +107,19 @@ BASELINE_EXPIRED_WINS = frozenset({
     ("ANG-1891-1905", 1905),      # family unreachable: successor carries iso3 AGO
     ("BMU-1684-1968", 1968),      # type guard: successor is `territory`
     ("BRL-1938-1945", 1945),      # family unreachable
+    # CONCURRENT FAMILY, not a chain. Added 2026-08-14 with CYR-1943-1949 (issue 198). The LBY
+    # family holds eleven rows of which four are simultaneous occupation zones -- CYR, TRP and
+    # FEZ all run from 1943, alongside the LBY rows -- so at 1949 several rows are live at once
+    # and pick_by_year's assumption that a family is a chronology does not hold; the ended BMA
+    # row wins on list position.
+    #
+    # LATENT, and measured rather than assumed: every alias that can reach 1949 already names
+    # CYR-1949-1951 (`Libya Cyrenaica`/fao1952 1949-1951, `Cyrenaica`/mitchell 1949, plus two
+    # mitchell variants), the 1943-1948 alias stops at 1948, and all 6 observed layer-B rows
+    # labelled Cyrenaica at 1949 route to CYR-1949-1951. So no row reaches this path today.
+    # Fixing it means teaching pick_by_year that a family can be concurrent, which is a matcher
+    # change, not a data one.
+    ("CYR-1943-1949", 1949),
     ("F228-1856-1905", 1905),     # family unreachable
     ("F228-1914-1917", 1917),     # family unreachable
     ("F228-1917-1918", 1918),     # family unreachable
