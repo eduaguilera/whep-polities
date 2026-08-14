@@ -1,5 +1,5 @@
 {
- "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. `territory_families` and `iso3_successor_map` say which OTHER families cover one territory, which iso3_code cannot: do not infer that link from the code. Regenerate with scripts/write_manifest.py.",
+ "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. `source_flow_flags` names the (source, label, item) combinations whose figures are NOT the labelled territory's production — entrepot/transit volumes — which no aggregate should sum beside the producing territory's own series. `territory_families` and `iso3_successor_map` say which OTHER families cover one territory, which iso3_code cannot: do not infer that link from the code. Regenerate with scripts/write_manifest.py.",
  "source": "data/final/polities_database.csv",
  "identity_fields": [
   "polity_code",
@@ -205,6 +205,15 @@
   ],
   "review_flagged": 18,
   "why": "Per (polity, source), the area the SOURCE stated for its own reporting unit beside the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more and are BOTH defensible -- a per-km2 denominator has to choose which territory the numerator was collected over. An empty `note` on such a row means no reason has been recorded for THAT source, not that the divergence is understood."
+ },
+ "source_flow_flags": {
+  "path": "data/final/source_flow_flags.csv",
+  "sha256": "1a26ffdd18b4d5d91a4f48b9be1139d65cbb3eb8ddd2809dd5fd05ac8de9e821",
+  "flows": 1,
+  "flow_types": [
+   "entrepot_transit"
+  ],
+  "why": "Rows a source reports under a territory's label that are NOT that territory's production -- entrepot/transit volumes above all. Exclude them from any production aggregate, or reattribute them to `origin_iso3`; do not sum them beside the origin's own series. Match on source + label_pattern + item_pattern, where * means every label or item. ABSENCE IS NOT A GUARANTEE: this lists the cases verified so far, not every entrepot in the data."
  },
  "territory_families": {
   "AGO": [

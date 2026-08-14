@@ -315,6 +315,39 @@ if os.path.exists(BASIS_MAP):
         ),
     }
 
+# NON-PRODUCTION FLOWS, fingerprinted like the three maps above (issue 14).
+#
+# A source can report, under a territory's own label, a quantity the territory did not
+# produce: the IIA's green coffee under `djibouti` is Ethiopian beans in transit through the
+# port, at a median 14,114 t/yr for a territory that grows none. Routing it to
+# FRS-1884-1977 is CORRECT -- that is the label the source wrote -- so no alias, no polity
+# and no polygon is wrong, and nothing in this manifest could tell a consumer that summing
+# the series beside Ethiopia's own production counts the same coffee twice.
+#
+# Named here for the reason iso3_successor_map was: a published table the manifest does not
+# mention is a table a consumer reading the manifest cannot discover. The digest and shape
+# only -- the flags themselves are few and belong in their own file.
+FLOW_FLAGS = os.path.join(REPO, "data/final/source_flow_flags.csv")
+flow_flags_info = None
+if os.path.exists(FLOW_FLAGS):
+    raw = open(FLOW_FLAGS, "rb").read()
+    flow_rows = list(csv.DictReader(open(FLOW_FLAGS, encoding="utf-8")))
+    flow_flags_info = {
+        "path": "data/final/source_flow_flags.csv",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "flows": len(flow_rows),
+        "flow_types": sorted({r["flow_type"] for r in flow_rows if r["flow_type"]}),
+        "why": (
+            "Rows a source reports under a territory's label that are NOT that "
+            "territory's production -- entrepot/transit volumes above all. Exclude them "
+            "from any production aggregate, or reattribute them to `origin_iso3`; do not "
+            "sum them beside the origin's own series. Match on source + label_pattern + "
+            "item_pattern, where * means every label or item. ABSENCE IS NOT A "
+            "GUARANTEE: this lists the cases verified so far, not every entrepot in the "
+            "data."
+        ),
+    }
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -328,6 +361,9 @@ manifest = {
         "reporting area's data belongs to in a given year, and "
         "`label_alias_map` the mapping from a source's own country LABEL to a "
         "polity — prefer both over rebuilding those mappings yourself. "
+        "`source_flow_flags` names the (source, label, item) combinations whose figures "
+        "are NOT the labelled territory's production — entrepot/transit volumes — which "
+        "no aggregate should sum beside the producing territory's own series. "
         "`territory_families` and `iso3_successor_map` say which OTHER families cover "
         "one territory, which iso3_code cannot: do not infer that link from the code. "
         "Regenerate with scripts/write_manifest.py."
@@ -399,6 +435,7 @@ manifest = {
     "label_alias_map": alias_map_info,
     "iso3_successor_map": successor_map_info,
     "stated_area_basis": stated_area_basis,
+    "source_flow_flags": flow_flags_info,
     "territory_families": territory_families,
     "territory_families_why": (
         "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not "

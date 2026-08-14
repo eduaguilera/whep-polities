@@ -1265,6 +1265,45 @@ def mutate_mislabelled_landuse_shift(root, gpd, make_valid, affinity):
         fh.write(text)
     return ("relabelled BRA-1909-2025 1947 arable as a x100 decimal shift, the label the "
             "generator's 2% ratio window really did emit")
+def mutate_entrepot_flag_dropped(root, gpd, make_valid, affinity):
+    """Demote the one recorded entrepôt flow back to `production` in state, and leave the
+    published file as it was.
+
+    This is the pre-issue-14 world exactly: the IIA's green coffee under `djibouti` sits in
+    the data as if French Somaliland grew 14,114 t/yr of it, and every production aggregate
+    sums it beside Ethiopia's own crop. Nothing else in this repository can see it — the
+    alias is right, the polity is right, the polygon is right, the row counts are unchanged.
+    The ONLY thing that distinguishes a transit volume from an output is this flag, so the
+    mutation removes it in the direction that matters: a flag DISAPPEARING is a double count
+    coming back, which is why the check reports removals by name rather than just "stale".
+
+    Direction matters for a second reason: the writer regenerates on demand, so if the case
+    mutated the published file instead, a reader could dismiss it as "just rerun the
+    writer". Mutating STATE makes the published file the thing that is wrong.
+    """
+    import csv as _csv
+
+    path = os.path.join(
+        root, "pipelines/polity-autoimprove/state/source_conventions.csv"
+    )
+    with open(path, encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = 0
+    for r in rows:
+        if r.get("flow_type") and r["flow_type"] != "production":
+            r["flow_type"] = "production"
+            r["origin_iso3"] = ""
+            hit += 1
+    assert hit, "no non-production flow left in source_conventions.csv to demote"
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (
+        f"demoted {hit} recorded non-production flow(s) to `production` in state without "
+        f"republishing, so the published flags claim an exclusion state no longer recorded"
+    )
 
 
 CASES = (
@@ -1380,6 +1419,13 @@ CASES = (
         mutate_polity_without_regenerating_manifest,
         "stale",
         "a published contract that no longer matches the database it describes",
+    ),
+    (
+        "write_source_flow_flags.py",
+        mutate_entrepot_flag_dropped,
+        "iia|djibouti|coffee, green",
+        "an entrepôt series silently readmitted as production, which double-counts "
+        "Ethiopia's coffee and is invisible to every other check",
     ),
     (
         "build_database.py",
@@ -1523,7 +1569,13 @@ CASES = (
 # consistent files and passed -- which read as "the gate cannot detect this" when in fact
 # the harness had repaired the defect before measuring it. Each mode needs its own fresh
 # copy.
-ARGS = {"write_manifest.py": ("--check",), "build_database.py": ("--check",)}
+ARGS = {
+    "write_manifest.py": ("--check",),
+    "build_database.py": ("--check",),
+    # Same trap as write_manifest: run with no arguments this script REGENERATES the
+    # published flags from the mutated state and exits 0, absorbing the defect.
+    "write_source_flow_flags.py": ("--check",),
+}
 
 # Non-script files under scripts/ that a gate reads before doing anything. build_database
 # loads sources.yaml before parsing a single page, so without it the gate dies with a
@@ -1724,6 +1776,20 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
     ),
     "build_database.py": ("polities_database.csv", "wiki/polities"),
+    # The case rewrites the STATE file, so that must be a real copy or the mutation writes
+    # through stage()'s symlink into the committed conventions registry. The published flags
+    # are listed because they are what the check compares against: absent, the check reports
+    # a missing file rather than the demoted flow, and would not name it.
+    "write_source_flow_flags.py": (
+        "pipelines/polity-autoimprove/state/source_conventions.csv",
+        "source_flow_flags.csv",
+        "label_alias_map.csv",
+        # The writer resolves `polity_code` from the alias map and `wiki_page` from the
+        # pages, so both must be PRESENT or the regenerated text differs from the committed
+        # file for reasons that have nothing to do with the mutation — the check would then
+        # fail on an unmutated repo, which is a case that proves nothing.
+        "wiki/polities",
+    ),
     "validate_reporting_areas.py": ("scripts/sources/reporting-areas/build.py",),
     # Rewrites the CSV, so that must be a real copy. The GeoPackage is deliberately
     # NOT listed: the mutation writes a fresh one into `root`, and staging a copy
