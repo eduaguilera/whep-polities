@@ -22,7 +22,7 @@ double the real polity total.)
 | `status: superseded` / `retired` | 20 / 23 |
 | Pages with no source citation | 208 |
 | Pages citing biger-1995 | 394 |
-| Open questions (`### oq-`) | 819 |
+| Open questions (`### oq-`) | 820 |
 
 **By continent:** Africa 270 · Europe 175 · Asia 163 · North America 68 · Oceania 46 · South America 45 · World 2
 
