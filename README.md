@@ -194,12 +194,18 @@ cross-family pairs** baselined in their place are LIVE at both ends (`MUS`/`SYC`
 `KOR`/`PRK`, `CHN`/`TWN`, `BGD`/`PAK`, `ERI`/`ETH`, `FSM` and `PLW` against `TTPI`,
 `F248`/`MKD`), which is precisely why that signal is a change detector and not a defect
 list. None of the 13 polygon gaps is FAOSTAT-mapped. Two findings on this branch
+from a latent one, and it is not obvious: all seven baselined period overlaps are
+latent, and when the polygon-gap backlog stood at 13 rows none of them was
+FAOSTAT-mapped (that backlog is now **empty** — see below). Two findings on this branch
 were written up as live and downgraded after checking, which is why the gates now print
 it rather than leaving it to be re-derived.
 
 Several carry a baseline so they fail on *new* occurrences while a known backlog
 stays tracked in the issues — `validate_polygons.py` has
-`scripts/validate_polygons_baseline.txt`, and the matcher, period-overlap,
+`scripts/validate_polygons_baseline.txt`, **now empty**: all 20 polities that claimed
+a polygon the build never attached are resolved (17 carry real geometry, 3 were
+withdrawn to `polygon_status: unassigned`), so any occurrence fails outright. The file
+is kept as the ratchet rather than deleted. The matcher, period-overlap,
 ISO-collision, reporting-area and succession checks each hold theirs inline.
 **Every baseline is bidirectional**: a new case fails, and so does a baselined
 case that has been fixed but not yet removed from the list. That second arm is

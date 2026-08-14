@@ -61,7 +61,7 @@ do with it:
 | `state/yield_corrections.csv` | single cells whose area x yield is physically impossible | #29, #111 |
 | `state/yield_series_corrections.csv` | whole series carrying a scale error, one row per run, with which column moved | #111 |
 | `state/source_conventions.csv` | what a source's labels actually measure | #24 |
-| `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack | #3 |
+| `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack — **empty since 2026-08-13**, the queue is drained | #3 (closed) |
 
 Useful label combinations: `decision-needed` (blocked on a judgement call),
 `blocked-on-source` (needs a GIS/reference source we lack), `guard` (a check that

@@ -264,10 +264,11 @@ CLAIMS_POLYGON = {"assigned", "proxy", "estimate", "polygon_vintage_drift"}
 missing = g[g.geometry.isna() | g.geometry.is_empty].copy()
 missing["st"] = missing.get("polygon_status").astype(str)
 claim_no_geom = missing[missing.st.isin(CLAIMS_POLYGON)]
-# Baseline: polities already known to claim a polygon they don't have. They are a
-# tracked backlog (each needs a real builder in scripts/sources/constructed/build.py
-# or an honest downgrade to unassigned); baselining keeps the gate meaningful for
-# NEW regressions instead of leaving it permanently red.
+# Baseline: polities already known to claim a polygon they don't have. It is EMPTY as of
+# 2026-08-13 — the issue #3 backlog is cleared — so every occurrence is now a failure.
+# The file is kept as the ratchet: if a page ever has to claim a polygon it cannot carry,
+# it needs a line there with the blocker named (each such row needs a real builder in
+# scripts/sources/constructed/build.py or an honest downgrade to unassigned).
 BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "validate_polygons_baseline.txt")
 baseline = set()
 if os.path.exists(BASELINE):
@@ -291,10 +292,15 @@ for code in stale_baseline:
 #
 # A gap on a polity no consumer can reach costs nothing in any output; a gap on a
 # FAOSTAT-mapped polity costs every row that routes there. The two need different
-# priorities, and the distinction is computable from the published contracts. Measured
-# today: NONE of the 13 baselined polities is FAOSTAT-mapped, and only four are reachable
-# at all — via historical-source aliases, 655 observed rows between them. So the backlog
-# is genuinely low-impact, which is worth knowing before anyone spends a week on it.
+# priorities, and the distinction is computable from the published contracts.
+#
+# The baseline is EMPTY as of 2026-08-13 (issue #3 closed: 17 of the 20 tracked rows got
+# real geometry, 3 were withdrawn to `unassigned`), so this block prints nothing and the
+# `if baseline` guard below short-circuits. It is kept because the reachability question is
+# the first thing anyone will ask the next time a row has to be baselined. When the list was
+# 13 rows long, none was FAOSTAT-mapped and only four were reachable at all — via
+# historical-source aliases, 655 observed rows between them — which is why the backlog was
+# correctly treated as low-impact rather than urgent.
 #
 # Two findings on this branch were written up as live and downgraded after checking
 # reachability, which is why every baseline here now reports it.

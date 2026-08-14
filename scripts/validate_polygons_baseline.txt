@@ -1,67 +1,41 @@
 # Polities that declare a polygon_status asserting a polygon exists, but whose
 # polygon_feature_id the build cannot resolve, so nothing is attached.
 #
-# This is a TRACKED BACKLOG, not an exemption. Each needs either a real builder
-# in scripts/sources/constructed/build.py (most are composed unions/differences
-# described in prose, which nothing can resolve) or an honest downgrade to
-# polygon_status: unassigned with the reason recorded on the page.
+# THE LIST IS EMPTY, AND THAT IS THE CURRENT STATE, NOT AN OVERSIGHT.
 #
-# Baselined 2026-07-24 so scripts/validate_polygons.py fails on NEW occurrences
-# rather than staying permanently red. Remove a line as you fix it. The check is
-# bidirectional: a line left here after the row is fixed FAILS, so the list cannot
-# drift into a record of history.
+# Measured 2026-08-13 on a fresh `python3 scripts/build_database.py` with
+# data/geodata/ present (767 pages scanned, 735 geometries attached):
 #
-# Each entry is tagged with what actually blocks it, because the three categories
-# need completely different work (diagnosed 2026-07-29):
+#   check C: 32 polities have no geometry; 0 of them declare a polygon_status
+#            that asserts one (0 baselined, 0 new, 0 stale)
 #
-#   [compose]  the feature id describes a union, difference or complement of several
-#              source features. Nothing can resolve it as a single id; it needs a
-#              builder in scripts/sources/constructed/build.py. 5 rows (was
-#              11). Built so far: BTL-1920-1957, TTPI-1947-1994,
-#              AEF-1910-1960, GBM-1895-1946, SYL-1944-1953. GCT-1919-1956 LEFT this list on
-#              2026-08-06: its recipe was registered once the row was retyped `aggregate`, which
-#              is what issue 47's blocker actually was. Its
-#              recipe is verified but unregistered — see issue 47.
-#              The 5 that remain all need GADM extracts absent locally
-#              (Canada, India, Indonesia).
-#   [no-id]    there is no feature id at all (`None` / `NA`). A source and an id must
-#              be identified first, or the row downgraded to `unassigned` with the
-#              reason recorded. 4 rows (was 6; NRH-1911-1953 and GRC-1830-1881
-#              turned out to have faithful polygons that simply were not bound).
-#   [extract]  the id IS a single valid identifier and the slug is now correct, but
-#              the GADM copy in data/geodata/ is a curated subset (82 adm0 and 620
-#              adm1 features, small territories only) that does not contain the
-#              country. Needs a fuller GADM download, nothing else. 3 rows.
+#   of those 32, 31 are `polygon_status: unassigned` and the 32nd is the retired
+#   duplicate page DJI-1886-2025, which declares no polygon status at all. None of
+#   the 32 is reachable through data/final/faostat_area_polity_map.csv, so no
+#   published row routes to a polity that promises a polygon and has none.
 #
-# 13 rows remain, from 20.
-# CAN-1800-1866 LEFT this list on 2026-08-10, and the 2026-08-07 conclusion recorded here
-#   was half wrong, which is worth keeping rather than deleting.
+# All 20 rows tracked here for issue #3 are resolved: 17 got real geometry (11 via
+# builders in scripts/sources/constructed/build.py — AEF, BTL, FRIN, GBM, GCT,
+# IDN-BLB, IDN-JVM, IDN-OTH, PTIND, SYL, TTPI; 6 by naming or correcting a single
+# source feature id that already existed — ALK, GRC, NRH, RYU-1937-1945,
+# RYU-1945-1972, SER) and 3 were withdrawn to
+# `polygon_status: unassigned` with the blocker recorded on the page
+# (CAN-1800-1866, CAN-1866-1870, TRS-1947-1954).
 #
-#   That note said: the recipe gadm ON+QC+NB+NS+PE measures 2,735,024 km2 against the page's
-#   declared 1,209,852, so it "must not be built as written" -- modern Ontario and Quebec
-#   absorbed Rupert's Land, Keewatin and Ungava between 1870 and 1912 while the Province of
-#   Canada was the settled southern strip. All of that holds. Its conclusion was "DECLARED AREA
-#   RIGHT, DECLARED RECIPE WRONG", and that half does not.
+# KEEP THIS FILE. scripts/validate_polygons.py and scripts/write_manifest.py both
+# read it; an empty file means "no polity is allowed to claim a polygon it lacks",
+# which is exactly the invariant wanted now that the backlog is cleared. Deleting
+# it would work today but would make it invisible that the ratchet exists.
 #
-#   The declared area is the recipe WITH QUEBEC DROPPED. ON+NB+NS+PE measures 1,215,079 km2,
-#   0.43% from the declared 1,209,852 -- and the page's own prose gives "Province of Canada
-#   (Ontario + Quebec) ~1,076,000 km2" where Ontario ALONE is 1,080,890. So the pair's area was
-#   taken from one member and Quebec's 1.52M km2 fell out of the sum. The declared figure is not
-#   an independent historical estimate that happened to disagree with a bad recipe; it is
-#   arithmetic on the SAME bad recipe, missing a term.
+# HOW TO USE IT AGAIN. If a new page legitimately has to claim a polygon it cannot
+# yet carry, add one line with just the polity_code and a `#` comment saying what
+# blocks it. The check is bidirectional: a line left here after the row is fixed
+# FAILS, so the list cannot drift into a record of history. Prefer fixing or
+# downgrading the row over adding a line.
 #
-#   Both are therefore withdrawn: polygon_source `none`, polygon_status `unassigned`,
-#   polygon_area_km2 `null`. No source here covers the period -- Cliopatria's Canada begins 1932,
-#   CShapes gwcode 20 begins 1886 -- so an honest gap is the correct state, and this row is no
-#   longer claimed-but-absent.
-# FRIN-1816-1954 LEFT this list on 2026-08-07: polygon attached, see the constructed builder.
-# IDN-BLB-1949-1951's declared recipe is WRONG and must not be built as written:
-#   IDN.1_1 is ACEH, on Sumatra, ~1,700 km from Bali. IDN.20_1 is Nusa Tenggara Barat,
-#   which is Lombok PLUS SUMBAWA at 19,670 km2. Bali 5,591 + NTB 19,670 = 25,261 against
-#   the page's declared 10,505 -- and 10,505 is Bali + Lombok ALONE, so the declared AREA
-#   is right. Separating Lombok from Sumbawa needs GADM adm2, which this repo does not
-#   build (only adm0 and adm1). Blocked on data, not on a decision. Checked 2026-08-07.
-# IDN-BLB-1949-1951 LEFT this list on 2026-08-07: polygon attached, see the constructed builder.
-# IDN-OTH-1949-1951 is the complement of JVM and BLB, so it is blocked on BLB.
-# IDN-OTH-1949-1951 LEFT this list on 2026-08-07: polygon attached, see the constructed builder.
-
+# Do not re-add prose diagnoses here. The three blocker categories this file used
+# to carry ([compose] needs a builder, [no-id] has no feature id, [extract] needs a
+# fuller GADM download) all turned out to be resolvable, and the per-row reasoning
+# now lives where it belongs: in the builder docstrings in
+# scripts/sources/constructed/build.py and in the polygon sections of the pages
+# themselves. wiki/log.md keeps the chronology.
