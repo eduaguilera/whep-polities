@@ -105,8 +105,8 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 98,1992,2024,HRV-1992-2025,Croatia,HRV,iso-equal,high,122938
 99,1961,2024,ISL-1800-2025,Iceland,ISL,iso-equal,high,170791
 100,1961,2024,IND-1949-2025,India,IND,iso-equal,high,254312
-101,1961,1968,IDN-1949-1969,Indonesia,IDN,iso-equal,high,251399
-101,1969,1975,IDN-1969-1976,Indonesia,IDN,iso-equal,high,251399
+101,1961,1962,IDN-1949-1963,Indonesia,IDN,iso-equal,high,251399
+101,1963,1975,IDN-1963-1976,Indonesia,IDN,iso-equal,high,251399
 101,1976,2001,IDN-1976-2002,Indonesia,IDN,iso-equal,high,251399
 101,2002,2024,IDN-2002-2025,Indonesia,IDN,iso-equal,high,251399
 102,1961,2024,IRN-1828-2025,Iran (Islamic Republic of),IRN,iso-equal,high,218401

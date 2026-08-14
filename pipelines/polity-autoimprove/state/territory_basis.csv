@@ -346,7 +346,9 @@ IDN-1800-1889,Indonesia (to 1889),1800,1889,cshapes-2.0,1886.0,unassigned,True,u
 IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,cshapes-2.0,1900.0,polygon_vintage_drift,True,assumed_constant,True,False,single 1900 polygon held across a 145y span (1800-1945); borders may have changed,1208
 IDN-1889-1945,Indonesia (1889-1945),1889,1945,cshapes-2.0,1900.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 IDN-1945-1949,Indonesia (1945-1949),1945,1949,cshapes-2.0,1945.0,assigned,True,measured,False,False,vintage 1945 faithful to period 1945-1949,70
+IDN-1949-1963,Indonesia (1949-1963),1949,1963,cshapes-2.0,1949.0,assigned,True,measured,False,False,vintage 1949 faithful to period 1949-1963,0
 IDN-1949-1969,Indonesia (1949-1969),1949,1969,cshapes-2.0,1949.0,assigned,True,measured,False,False,vintage 1949 faithful to period 1949-1969,382
+IDN-1963-1976,Indonesia (1963-1976),1963,1976,cshapes-2.0,1969.0,assigned,False,measured,False,False,vintage 1969 faithful to period 1963-1976,0
 IDN-1969-1976,Indonesia (1969-1976),1969,1976,cshapes-2.0,1969.0,assigned,False,measured,False,False,vintage 1969 faithful to period 1969-1976,0
 IDN-1976-2002,Indonesia (1976-2002),1976,2002,cshapes-2.0,1976.0,assigned,False,assumed_constant,True,False,single 1976 polygon held across a 26y span (1976-2002); borders may have changed,0
 IDN-2002-2025,Indonesia,2002,2025,cshapes-2.0,2002.0,assigned,False,measured,False,False,vintage 2002 faithful to period 2002-2025,0
@@ -527,7 +529,7 @@ NIU-1800-2025,Niue,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,
 NKR-1800-1901,Kingdom of Nkore (Ankole),1800,1901,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,cliopatria,1820.0,assigned,False,assumed_constant,True,False,single 1820 polygon held across a 30y span (1800-1830); borders may have changed,0
 NLD-1830-2025,Netherlands,1830,2025,cliopatria,1950.0,assigned,True,assumed_constant,True,False,single 1950 polygon held across a 195y span (1830-2025); borders may have changed,2925
-NNG-1949-1963,Netherlands New Guinea / West Irian (1949-1969),1949,1969,cshapes-2.0,1955.0,assigned,True,measured,False,False,vintage 1955 faithful to period 1949-1969,3
+NNG-1949-1963,Netherlands New Guinea (1949-1963),1949,1963,cshapes-2.0,1955.0,assigned,True,measured,False,False,vintage 1955 faithful to period 1949-1963,3
 NNI-1899-1904,Northern Nigeria (1899-1904),1899,1904,cshapes-2.0,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1899-1904,0
 NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,cshapes-2.0,1905.0,assigned,True,measured,False,False,vintage 1905 faithful to period 1904-1913,0
 NOR-1800-2025,Norway,1800,2025,cshapes-2.0,1905.0,assigned,True,assumed_constant,True,True,single 1905 polygon held across a 225y span (1800-2025); borders may have changed,1637
