@@ -130,6 +130,76 @@ identity_hash = hashlib.sha256(
 # recorded, not the mapping itself: the map is 281 rows and belongs in its own
 # file, while what a consumer needs from the manifest is whether the copy it
 # holds is the current one.
+REPORTING_ERA_FIRST_YEAR = 1961
+
+
+def area_map_coverage(map_rows):
+    """The map's declared era, measured from the map itself, plus the rule for years outside it.
+
+    Every number here is derived, never typed: a scope statement that is maintained by hand goes
+    stale the first time the matcher moves, and a stale scope is worse than none because a consumer
+    trusts it. `scripts/validate_map_era_scope.py` asserts the map keeps obeying it.
+    """
+    def year(row, field):
+        try:
+            return int(float(row[field]))
+        except (KeyError, TypeError, ValueError):
+            return None
+
+    anchors = {}
+    for r in map_rows:
+        ys = year(r, "year_start")
+        if ys is None:
+            continue
+        area = r["area_code"]
+        anchors[area] = min(anchors.get(area, ys), ys)
+    starts = [y for y in (year(r, "year_start") for r in map_rows) if y is not None]
+    ends = [y for y in (year(r, "year_end") for r in map_rows) if y is not None]
+    covers_1961 = {
+        r["area_code"]
+        for r in map_rows
+        if (year(r, "year_start") or 9999)
+        <= REPORTING_ERA_FIRST_YEAR
+        <= (year(r, "year_end") or -1)
+    }
+    return {
+        "reporting_era_first_year": REPORTING_ERA_FIRST_YEAR,
+        "earliest_year_start": min(starts) if starts else None,
+        "latest_year_end": max(ends) if ends else None,
+        "pre_reporting_era": "out-of-scope",
+        "areas_with_a_row_covering_the_era_start": len(covers_1961),
+        "areas_first_covered_after_the_era_start": sum(
+            1 for y in anchors.values() if y > REPORTING_ERA_FIRST_YEAR
+        ),
+        "pre_reporting_rows": sum(
+            1 for r in map_rows if (year(r, "year_start") or 9999) < REPORTING_ERA_FIRST_YEAR
+        ),
+        "pre_reporting_rows_are": (
+            "no-data registry areas only (rows_observed = 0), whose span comes from the polity's "
+            "own period because the area has no observed FAOSTAT years at all"
+        ),
+        "pre_coverage_rule": (
+            "For a year before an area's earliest row, this map states nothing. Do NOT infer a "
+            "polity by matching the area's ISO3 as a prefix of a polity code: the stems differ "
+            "across a colonial handover (TUR before 1913 is OTT, PAK before 1947 is IND), so a "
+            "prefix rule cannot reach the right answer and reaches a wrong one silently. A "
+            "back-cast value (grown from the reporting-era anchor by a present-day-ISO3 land "
+            "series) should carry that area's ANCHOR row -- its earliest, which is unique per "
+            "area -- and be labelled a reconstruction on that polity's boundary, not an "
+            "observation of it in that year. A value that is a genuine pre-1961 OBSERVATION "
+            "belongs on the other key: resolve its source label through label_alias_map.csv, "
+            "which names real historical polities (Abyssinia 1800-1889 -> ETH-1800-1889)."
+        ),
+        "why": (
+            "The map is built from what FAOSTAT reports, and FAOSTAT begins in 1961. Stating a "
+            "pre-1961 polity per area_code is not merely unsupported but undefined for a third of "
+            "the file: the areas first covered after the era's start have no anchor at 1961 to "
+            "extend backwards (Armenia 1992, Czechia 1993, Palau 2000, South Sudan 2012), and a "
+            "back-cast built on modern borders is not an observation of whoever held that ground."
+        ),
+    }
+
+
 AREA_MAP = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
 area_map_info = None
 if os.path.exists(AREA_MAP):
@@ -140,6 +210,13 @@ if os.path.exists(AREA_MAP):
         "sha256": hashlib.sha256(raw).hexdigest(),
         "mappings": len(map_rows),
         "areas": len({r["area_code"] for r in map_rows}),
+        # WHERE THE MAP STOPS, and what a consumer should do past that point (issue 200).
+        # It never said, so a consumer holding data for 1850 could not tell "no row because
+        # out of scope" from "no row because the polity is missing", and manufactured 262
+        # crosswalk rows by ISO3-PREFIX match instead -- a rule that cannot express
+        # `TUR < 1913 -> OTT`, because the stems differ. Enforced by
+        # scripts/validate_map_era_scope.py, which reads these very fields.
+        "coverage": area_map_coverage(map_rows),
     }
 
 # The source-label -> polity alias map, fingerprinted the same way. A consumer

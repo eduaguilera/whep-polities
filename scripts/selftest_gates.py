@@ -694,6 +694,55 @@ def mutate_map_handover_year_claimed_by_nobody(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_observed_area_backdated_before_the_reporting_era(root, gpd, make_valid, affinity):
+    """Widen an OBSERVED FAOSTAT area's span back past 1961, which is issue 200's option (a).
+
+    The map states the reporting era only, and FAOSTAT reports from 1961. Backdating a row that
+    carries observed data makes the file assert which polity an area was in years the source never
+    reported — the assertion the consumer was making for itself with 262 ISO3-prefix rows, arriving
+    upstream instead and therefore no longer visible as a guess.
+
+    The row is chosen for having a polity that ALREADY covered the earlier year, so the mutation
+    trips arm A alone: a backdate past the polity's own `start_year` would also trip arm C, and a
+    case that fires two arms cannot show which one is alive. `max(start_year, 1850)` is the same
+    floor the legitimate `registry`/no-data rows use, so the mutated row is exactly what a widened
+    observed span would look like.
+    """
+    import csv
+
+    db = os.path.join(root, "data/final/polities_database.csv")
+    with open(db, encoding="utf-8") as fh:
+        spans = {r["polity_code"]: r for r in csv.DictReader(fh)}
+    path = os.path.join(root, "data/final/faostat_area_polity_map.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = None
+    for r in rows:
+        p = spans.get(r.get("polity_code", ""))
+        if not p:
+            continue
+        try:
+            obs = int(float(r["rows_observed"] or 0))
+            start = int(float(p["start_year"]))
+            year_start = int(float(r["year_start"]))
+        except (TypeError, ValueError, KeyError):
+            continue
+        if obs > 0 and year_start == 1961 and start < 1961:
+            r["year_start"] = str(max(start, 1850))
+            hit = (r["area_code"], r["polity_code"], r["year_start"], obs)
+            break
+    assert hit, "no observed row starting at 1961 whose polity predates it"
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (
+        f"backdated area {hit[0]} -> {hit[1]} to {hit[2]}, so {hit[3]} observed rows now claim a "
+        f"territorial identity for years FAOSTAT does not report"
+    )
+
+
 def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
     """Rewrite a declared area to exactly what its own polygon measures, which is the
     tautology check A2 counts.
@@ -1345,6 +1394,14 @@ CASES = (
         "past-coverage arms are both blind to — one answer too few looks like nothing at all",
     ),
     (
+        "validate_map_era_scope.py",
+        mutate_observed_area_backdated_before_the_reporting_era,
+        "before the reporting era",
+        "an observed area backdated past 1961, so the map asserts a polity for years FAOSTAT "
+        "never reported — the guess the consumer was making with ISO3 prefixes, moved upstream "
+        "where it stops looking like a guess",
+    ),
+    (
         "validate_polygons.py",
         mutate_area_read_off_its_own_polygon,
         "self-referential",
@@ -1599,6 +1656,15 @@ WRITABLE = {
     "validate_map_area_year.py": (
         "faostat_area_polity_map.csv",
         "polities_database.csv",
+    ),
+    # The case rewrites the map, so it must be a real copy. The manifest is listed although the
+    # case never writes it: arm D reads the published scope declaration out of it, and with the
+    # manifest absent that arm prints SKIP -- a gate self-tested with one arm silently switched
+    # off, which is the trap several entries above document.
+    "validate_map_era_scope.py": (
+        "faostat_area_polity_map.csv",
+        "polities_database.csv",
+        "polities_manifest.json",
     ),
     # Needs the GeoPackage (to know which rows are live AND polygonal) and both site files,
     # writable because the case mutates the geojson. The master CSV must be a real copy too,

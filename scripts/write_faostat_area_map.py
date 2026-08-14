@@ -33,6 +33,20 @@ Four rows also overshoot legitimately, each a dissolved entity's final REPORTED 
 a blanket clip would be wrong as well as invisible. The convention is enforced one step
 later, where a violation can be named instead of erased: `scripts/validate_map_area_year.py`.
 
+WHAT ERA THIS FILE DESCRIBES, decided 2026-08-14 for issue 200: THE REPORTING ERA ONLY. FAOSTAT
+begins in 1961, and this map says which polity an area REPORTS AS; it does not say which polity an
+area's back-cast pre-1961 years belong to, and adding rows to make it say so was considered and
+rejected — 36 of the 244 areas are first covered after 1961, so there is no anchor row to extend
+backwards for them, and a value back-cast on modern borders is not an observation of whoever held
+that ground. A consumer needing pre-1961 identities resolves SOURCE LABELS through
+`label_alias_map.csv` instead ("Abyssinia" 1800-1889 -> `ETH-1800-1889`).
+
+The 30 pre-1961 rows here are not an exception to that: every one is a `registry` route with
+`rows_observed = 0`, a no-data area whose span comes from its polity's period because it has no
+observed FAOSTAT years at all. The scope is published machine-readably in
+`polities_manifest.json -> faostat_area_map.coverage`, together with the rule that replaces the
+consumer's ISO3-prefix guessing, and `scripts/validate_map_era_scope.py` holds both to it.
+
 Usage:
   python3 scripts/write_faostat_area_map.py [--check]
 
