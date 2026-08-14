@@ -1241,6 +1241,32 @@ def mutate_inclusive_alias_end_year(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_mislabelled_landuse_shift(root, gpd, make_valid, affinity):
+    """Relabel Brazil 1947's land-use repair as a x100 decimal shift.
+
+    THIS IS THE STATE THE TABLE SHIPPED IN until 2026-08-14, not an invented edit.
+    `06_landuse_consistency.py` tested `recorded / implied` against 100 with a 2%
+    window, and 1,918,835 / 18,835 = 101.9 fell inside it — so the row asserted a
+    decimal shift while 18,835 x 100 is 1,883,500, a different number from the one
+    recorded. The actual fault was two prepended digits.
+
+    It is the right mutation for this gate because nothing else in the repository
+    reads this file: the numbers stay exactly as they are, only the stated reason
+    changes, so no count moves, no schema breaks, and a consumer that trusts the
+    label divides by 100 and lands on 19,188.35 hectares of Brazilian arable land.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/landuse_corrections.csv")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = "1918835.0,18835.0,replace_value,digits prepended"
+    assert target in text, "the Brazil 1947 arable repair row is no longer in the table"
+    text = text.replace(target, "1918835.0,18835.0,replace_value,decimal point dropped (x100)")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return ("relabelled BRA-1909-2025 1947 arable as a x100 decimal shift, the label the "
+            "generator's 2% ratio window really did emit")
+
+
 CASES = (
     (
         "validate_source_change_steps.py",
@@ -1477,6 +1503,13 @@ CASES = (
         "a polity that receives data and carries no territory, so every area-weighted "
         "consumer drops its rows silently",
     ),
+    (
+        "validate_landuse_corrections.py",
+        mutate_mislabelled_landuse_shift,
+        "BRA-1909-2025",
+        "a repair row whose stated reason contradicts its own numbers, so a consumer "
+        "applying the label lands on a different value from the one in the table",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -1530,6 +1563,12 @@ WRITABLE = {
     "validate_data_without_geometry.py": (
         "polities_database.gpkg",
         "pipelines/polity-autoimprove/state/territory_basis.csv",
+    ),
+    # The correction table is the ONLY file this gate reads, and the case rewrites a
+    # diagnosis string in it, so it must be a real copy or the mutation writes the wrong
+    # label into the committed table through stage()'s symlink.
+    "validate_landuse_corrections.py": (
+        "pipelines/polity-autoimprove/state/landuse_corrections.csv",
     ),
     # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
     # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with
