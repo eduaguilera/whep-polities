@@ -481,7 +481,9 @@ Libya,fao1952,1943,1949,LBY-1943-1949,Libya (1943-1949),high,
 Libya,fao1952,1950,1950,LBY-1949-1951,Libya under UN Transitional Administration (1950-1951),high,
 Libya,fao1952,1951,1951,LBY-1951-2025,Libya under UN Transitional Administration (1950-1951),high,
 Libya,faostat,1961,2024,LBY-1951-2025,Libya,high,81391
+Libya,iia,1943,1948,LBY-1943-1949,Libya under Allied occupation (1943-1949),high,3
 Libya,lassaletta-grassland-share,1961,2009,LBY-1951-2025,Libya,high,
+Libya,mitchell,1943,1948,LBY-1943-1949,Libya under Allied occupation (1943-1949),high,6
 Libya,mitchell,1949,1950,LBY-1949-1951,Libya under UN Transitional Administration (1949-1951),high,28
 libya,mitchell,1949,1950,LBY-1949-1951,Libya under UN Transitional Administration (1949-1951),high,3
 Libya Cyrenaica,fao1952,1943,1948,CYR-1943-1949,British Military Administration of Cyrenaica,high,4
@@ -508,6 +510,8 @@ Malaya Federation of,fao,1948,1951,MYS-1946-1957,Malayan Union / Federation of M
 Malaya Federation of,fao1952,1939,1945,GBM-1895-1946,British Malaya,high,
 Malaya Federation of,fao1952,1946,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,
 Malaya Federation of,mitchell,1939,1939,GBM-1895-1946,British Malaya (1895-1946),high,2
+Malaya Federation of and Singapore,fao1952,1895,1945,GBM-1895-1946,British Malaya (1895-1946),high,2
+Malaya Federation of and Singapore,fao1952,1946,1962,MASG-1946-1963,Malaya and Singapore,high,3
 Malaysia,faostat,1961,1962,MYS-1957-1963,Malaysia (1957-1963),high,250837
 Malaysia,faostat,1963,1964,MYS-1963-1965,Malaysia (1963-1965),high,250837
 Malaysia,faostat,1965,2024,MYS-1965-2025,Malaysia,high,250837
@@ -628,8 +632,8 @@ Papua,fao1952,1950,1951,PNG-1949-1975,Territory of Papua and New Guinea,high,11
 Papua,mitchell,1937,1937,TPAP-1906-1949,Territory of Papua,high,1
 Papua New Guinea,faostat,1961,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,87626
 Papua New Guinea,faostat,1975,2024,PNG-1975-2025,Papua New Guinea,high,87626
-papua new guinea,iia,1920,1940,TPAP-1906-1949,Territory of New Guinea / Territory of Papua (combined IIA series 1920-1940),low,
-papua new guinea,mitchell,1922,1940,PAPNG-1920-1949,Papua and New Guinea (combined reporting unit),high,23
+papua new guinea,iia,1920,1940,TPAP-1906-1949,"Territory of Papua (IIA series, scope undetermined)",low,30
+papua new guinea,mitchell,1922,1940,PAPNG-1920-1949,Papua and New Guinea (combined reporting unit),high,0
 papua new guinea,mitchell,1949,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,3
 Paraguay,faostat,1961,2024,PRY-1938-2025,Paraguay,high,194468
 Paraguay,lassaletta-grassland-share,1961,2009,PRY-1938-2025,Paraguay,high,
