@@ -999,7 +999,56 @@ def mutate_shared_polygon(root, gpd, make_valid, affinity):
     return "gave STP-1800-2025 Equatorial Guinea's CShapes feature 411 and blanked its area"
 
 
+def mutate_undocumented_source_change(root, gpd, make_valid, affinity):
+    """Rebind one period of a family to a different polygon source across a large area step.
+
+    The gate's claim is that a source change AND a big ratio together must be accounted for,
+    so the injected defect is exactly that: `ISR-1948-1967` -> `ISR-1967-1979` already steps
+    4.27x (20,786 -> 88,667 km2) with BOTH rows on cshapes-2.0, which the gate ignores because
+    no source changes. Declaring the later row as GADM-sourced makes the same step qualify,
+    with nothing in the baseline saying why.
+
+    ONLY THE DECLARED SOURCE IS CHANGED, not the geometry -- which is the point rather than a
+    shortcut. This gate reads `polygon_source` from the CSV and the areas from the GeoPackage,
+    so a label-only edit is precisely the operation that turns an unexamined step into a
+    published convention difference, and it is how the TUN defect was written in the first
+    place: the frontmatter named one source while the page's prose described another.
+
+    The Six-Day War is real history, so a maintainer facing this failure would answer it with
+    an `EVENT:` baseline entry rather than a repair. That is the correct behaviour and does not
+    weaken the case: what is being tested is that the step cannot pass UNANSWERED.
+    """
+    import csv
+
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = 0
+    for r in rows:
+        if r["polity_code"] == "ISR-1967-1979":
+            assert r["polygon_source"] == "cshapes-2.0", (
+                f"ISR-1967-1979 no longer reads cshapes-2.0 but {r['polygon_source']!r}; "
+                f"pick another same-source pair with a >=1.3x step"
+            )
+            r["polygon_source"] = "gadm-4.1-adm0"
+            hit += 1
+    assert hit == 1, f"expected one ISR-1967-1979 row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return "declared ISR-1967-1979 as GADM-sourced, so the 4.27x step at 1967 now crosses a source change"
+
+
 CASES = (
+    (
+        "validate_source_change_steps.py",
+        mutate_undocumented_source_change,
+        "ISR-1948-1967 -> ISR-1967-1979",
+        "an area step at a boundary where the polygon SOURCE also changes and nothing says "
+        "which of the two produced it — the shape of the 3.55x Tunisia artefact",
+    ),
     (
         "validate_polygon_period_fit.py",
         mutate_period_mismatched_binding,
@@ -1263,6 +1312,24 @@ WRITABLE = {
     # Rewrites a PAGE, so wiki/polities must be a real copy; the CSV is only read, but the
     # gate needs `wiki/polities` staged at all or it sees zero pages and cannot fire.
     "validate_references.py": ("wiki/polities",),
+    # Rewrites one row's polygon_source, so the CSV must be a real copy -- the fifth time
+    # this list has been the difference between a self-test and a write into the committed
+    # database.
+    #
+    # The GeoPackage is listed even though the case never writes it, and that is not
+    # decorative: stage() creates NOTHING it was not asked for, and the CSV is the only file
+    # it symlinks by default. Without this entry the gate exited **2** with "GeoPackage
+    # missing" and named no defect -- the "must name the defect" arm of this harness caught
+    # it, for the fourth time in this file. The gate measures its areas from the GeoPackage
+    # and reads polygon_source from the CSV, so it needs both to see anything at all.
+    #
+    # The FAOSTAT map is listed so the gate reports reachability rather than calling every
+    # step unmapped.
+    "validate_source_change_steps.py": (
+        "polities_database.csv",
+        "polities_database.gpkg",
+        "faostat_area_polity_map.csv",
+    ),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
     # Rewrites the published alias map, so it needs a real copy rather than stage()'s
     # symlink; the baseline txt is copied automatically.

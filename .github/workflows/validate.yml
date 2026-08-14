@@ -51,6 +51,21 @@ name: Validate database
 #                            polygon_feature_year of 1898 for COG-1900-1906, and the name "Eritrea
 #                            (Italian coastal)" for ERI-1885-1889.
 #
+#   validate_source_change_steps
+#                            validate_family_areas compares each period against its family
+#                            MEDIAN, so a step change between two HALVES of a family leaves both
+#                            halves in tolerance and is invisible. When the two halves also come
+#                            from different polygon sources, the datasets' conventions are
+#                            published as a territorial change at the boundary year. 39 steps
+#                            change source; 17 move the area by 1.3x or more and each now carries
+#                            a verdict. It found TUN-1800-1881 at 3.55x — the largest step in the
+#                            database, and no event at all: the Paine polygon omitted the Beylik's
+#                            north-western grain belt, 42,728 km2 of the 111,741 km2 difference,
+#                            and the row was rebound to the CShapes vintage its own page had
+#                            described all along. It also found OTT-1800-1886 publishing a 34%
+#                            EXPANSION of an empire that was contracting, from 963,520 km2 of
+#                            Ottoman Libya and Yemen that Cliopatria omits.
+#
 #   validate_cross_family_names
 #                            validate_period_overlaps only sees overlaps WITHIN a prefix, and the
 #                            same territory sometimes has two — a legacy prefix and an ISO3 one.
@@ -417,6 +432,10 @@ jobs:
       - name: No period is wildly out of scale with its own family
         if: '!cancelled()'
         run: python3 scripts/validate_family_areas.py
+
+      - name: No area step coincides with a polygon-source change unaccounted for
+        if: '!cancelled()'
+        run: python3 scripts/validate_source_change_steps.py
 
       - name: Published label alias map matches the registry
         if: '!cancelled()'

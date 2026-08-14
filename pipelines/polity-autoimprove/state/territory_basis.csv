@@ -711,7 +711,7 @@ TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,construc
 TRS-1947-1954,Free Territory of Trieste,1947,1954,constructed,1947.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),78
 TTO-1800-2025,Trinidad and Tobago,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,404
 TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,40
-TUN-1800-1881,Beylik of Tunis,1800,1881,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+TUN-1800-1881,Beylik of Tunis,1800,1881,cshapes-2.0,1886.0,proxy,True,back_projected,True,False,polygon vintage 1886 is AFTER the period ends (1881) — later/modern border applied back,0
 TUN-1881-2025,Tunisia,1881,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 144y span (1881-2025); borders may have changed,1294
 TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,cshapes-2.0,1923.0,estimate,True,back_projected,True,True,polygon vintage 1923 is AFTER the period ends (1913) — later/modern border applied back,36
 TUR-1913-1914,Türkiye (1913-1914),1913,1914,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,12
