@@ -6,33 +6,51 @@ code's `end_year` is EXCLUSIVE. This asks it of `data/final/faostat_area_polity_
 where `year_start`/`year_end` are INCLUSIVE. Those two conventions meet at every
 handover year, and nothing was comparing the map's ranges against each other.
 
-The gap is not theoretical. Two areas assign a transfer year to BOTH the outgoing and
-the incoming polity:
+The gap was not theoretical. Two areas assigned a transfer year to BOTH the outgoing and
+the incoming polity, and BOTH ARE NOW FIXED -- each by the same convention, arrived at
+independently three weeks apart, which is what let issue 74 be settled by naming it
+rather than by choosing it:
 
-    area 205  year 1975   RESOLVED 2026-08-11 -- it was not a convention question at all.
+    area 205  year 1975   RESOLVED 2026-08-11 (553d9b5) -- it was not a convention question at all.
                           The registry route wrote `year_end = pmin(end_year, 2025)`, copying the
                           polity code's EXCLUSIVE end year into an INCLUSIVE column, so area 205's
                           first row claimed 1975 while ESH-1975-2025 already owned it. Fixed in
                           match.R; ambiguity went 1 -> 0 with no data moved (both rows had
-                          rows_observed = 0).
-    area 240  year 1917   DWI-1800-1917  and  VIR-1917-2025
+                          rows_observed = 0). Row now reads 1958-1974.
+    area 240  year 1917   RESOLVED 2026-08-05 (d5b6194, issue 90 group A) -- the outgoing row was
+                          clipped from 1850-1917 to 1850-1916 because VIR-1917-2025 already
+                          covered 1917. Both rows carry rows_observed = 0, so no data moved.
 
-Both are real mid-year handovers -- Spanish Sahara's 1975 Madrid Accords, and the 1917
+Both were real mid-year handovers -- Spanish Sahara's 1975 Madrid Accords, and the 1917
 sale of the Danish West Indies to the United States. A consumer joining on year
-containment gets two candidates and picks by row order, which is the same failure mode
+containment got two candidates and picked by row order, which is the same failure mode
 as a duplicated polity period but originating in the map rather than in the table.
 
-`validate_period_overlaps` cannot see these: read from the database, with the exclusive
+`validate_period_overlaps` could see neither: read from the database, with the exclusive
 convention, `DWI-1800-1917` covers through 1916 and genuinely does not overlap
-`VIR-1917-2025`. The ambiguity exists only in the published ranges.
+`VIR-1917-2025`. The ambiguity existed only in the published ranges.
 
-BASELINED rather than asserted to zero. Both pairs need a convention decided -- does a
-handover year belong to the outgoing polity, the incoming one, or is it split? -- and
-that is issue 74. This gate exists so a THIRD one cannot appear unnoticed while that is
-open, and so the list shrinks when it is settled.
+THE CONVENTION, decided 2026-08-13 for issue 74: A HANDOVER YEAR BELONGS TO THE INCOMING
+POLITY. It is not split, and the outgoing row does not keep it. That follows from the
+exclusive `end_year` the rest of the repository already uses -- `DWI-1800-1917` means
+"through 1916" -- so an outgoing map row is consistent exactly when
+`year_end == end_year - 1`, and the incoming row starts the year after. Both repairs above
+did this; it had simply never been written down, so it could not be enforced.
 
-Dead polities are excluded: a retired or superseded row is not a resolution candidate,
-so it cannot make an answer ambiguous.
+So `handover_problems()` asserts it, with NO baseline: measured over the 297 published
+mappings, all 53 handover boundaries in the 43 multi-row areas satisfy both arms today.
+It is not the same check as the ambiguity arm -- an outgoing row can keep the transfer
+year while its successor starts later, which leaves a year with ONE answer that is the
+wrong one, and it can also be clipped a year too far, which leaves a year with NO answer.
+Neither shows up as an ambiguity.
+
+The four `BASELINE_YEAR_END_PAST_COVERAGE` rows are untouched by that arm, and not by
+exemption: each is the only mapping for its area, so it has no successor row and is not a
+handover at all. Their year_end overshoot is a final REPORTED year, a different question
+(issue 164).
+
+Dead polities are excluded throughout: a retired or superseded row is not a resolution
+candidate, so it cannot make an answer ambiguous.
 
 Usage:
   python3 scripts/validate_map_area_year.py
@@ -50,11 +68,16 @@ DB = os.path.join(REPO, "data/final/polities_database.csv")
 DEAD_STATUS = ("retired", "superseded")
 
 # (area_code, year) pairs known to have two live answers. See the module docstring.
-BASELINE = frozenset({
-    # area 240 year 1917 cleared 2026-08-05 by the Group A alias clip (issue 90): the earlier
-    # alias stopped claiming 1917, which its successor covers. Left as a set with one entry
-    # rather than emptied so a regression still names the pair.
-})
+#
+# EMPTY, and both entries it used to hold were removed after the data was fixed rather than
+# after the convention was argued:
+#   ("240", 1917) cleared 2026-08-05 by the Group A alias clip (issue 90) -- the outgoing row
+#                 stopped claiming 1917, which its successor covers.
+#   ("205", 1975) cleared 2026-08-11 by the match.R registry fix (553d9b5).
+# Measured on 2026-08-13 over 297 mappings: 0 ambiguous (area, year) pairs. Kept as an empty
+# frozenset rather than deleted so the arm below still names any regression, and frozenset
+# rather than {} because an emptied bare set literal is a dict.
+BASELINE = frozenset()
 
 
 def live_polity_codes() -> set:
@@ -128,6 +151,61 @@ def year_end_past_coverage(mappings, spans):
     return out
 
 
+def handover_problems(mappings, spans, live):
+    """Every handover inside one area must give the transfer year to the INCOMING polity.
+
+    A handover is two consecutive live mappings for the same `area_code`. The convention
+    (module docstring, issue 74) makes both of these hold, and each fails differently:
+
+      A. the outgoing row's inclusive `year_end` is its polity's exclusive `end_year - 1`.
+         Too high and the outgoing polity claims a year it does not cover; too low and the
+         year belongs to nobody.
+      B. the incoming row starts at `year_end + 1`. A later start leaves a hole, an earlier
+         one an overlap.
+
+    Arm A is not implied by arm B or by `year_end_past_coverage`: an outgoing row that keeps
+    the transfer year while its successor starts a year later gives that year exactly ONE
+    answer -- the dissolved polity -- which no ambiguity check can see. And it is not implied
+    by `year_end_past_coverage` in the other direction either, since that arm only looks at
+    year_end too HIGH, and only for closed periods.
+
+    Returns a list of message strings, all containing the word "handover" so the self-test
+    can tell this arm apart from the other two.
+    """
+    by_area = defaultdict(list)
+    for m in mappings:
+        code = (m.get("polity_code") or "").strip()
+        if code not in live or code not in spans:
+            continue
+        try:
+            start, end = int(m["year_start"]), int(m["year_end"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        by_area[(m.get("area_code") or "").strip()].append((start, end, code))
+
+    problems, boundaries = [], 0
+    for area, rows in sorted(by_area.items()):
+        rows.sort()
+        for (_, out_end, out_code), (in_start, _, in_code) in zip(rows, rows[1:]):
+            boundaries += 1
+            expected = spans[out_code][1] - 1
+            if out_end != expected:
+                problems.append(
+                    f"handover in area {area}: {out_code} maps through {out_end} but covers "
+                    f"..{expected} (end_year is exclusive), then {in_code} takes over. The "
+                    f"transfer year belongs to the incoming polity, so year_end must be "
+                    f"{expected}"
+                )
+            if in_start != out_end + 1:
+                gap = "leaves " + str(out_end + 1) + " unclaimed" if in_start > out_end + 1 \
+                    else "overlaps the outgoing row"
+                problems.append(
+                    f"handover in area {area}: {out_code} maps through {out_end} but {in_code} "
+                    f"starts {in_start}, which {gap}"
+                )
+    return problems, boundaries, sum(1 for v in by_area.values() if len(v) > 1)
+
+
 def polity_spans() -> dict:
     """polity_code -> (start_year, end_year) for every row, dead included.
 
@@ -187,7 +265,13 @@ def main() -> int:
         end_year = spans[code][1]
         print(f"   area {area:<5} {code:16s} covers ..{int(end_year) - 1}, map declares the year after")
 
-    problems = []
+    # --- the handover convention: the transfer year is the incoming polity's -------------
+    handover, boundaries, multi = handover_problems(rows, spans, live)
+    print(f"\n{multi} areas with more than one live mapping, {boundaries} handover boundaries; "
+          f"{len(handover)} break the convention (issue 74: the transfer year is the incoming "
+          f"polity's)")
+
+    problems = list(handover)
     for key in sorted(over - BASELINE_YEAR_END_PAST_COVERAGE):
         problems.append(
             f"NEW year_end past coverage: area {key[0]} -> {key[1]} declares a reporting year the "
@@ -218,7 +302,8 @@ def main() -> int:
             print(f"  {p}")
         return 1
 
-    print("\nPASS: map (area, year) ambiguity matches the baseline exactly")
+    print("\nPASS: every handover gives the transfer year to the incoming polity, and map "
+          "(area, year) ambiguity matches the baseline exactly")
     return 0
 
 

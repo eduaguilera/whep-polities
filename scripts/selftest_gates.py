@@ -566,6 +566,49 @@ def mutate_map_year_end_past_coverage(root, gpd, make_valid, affinity):
     return f"pushed area {hit[0]} -> {hit[1]}'s year_end one past the polity's coverage"
 
 
+def mutate_map_handover_year_claimed_by_nobody(root, gpd, make_valid, affinity):
+    """Clip an outgoing map row a year short, so the handover year has NO answer.
+
+    The convention decided for issue 74 is that a transfer year belongs to the INCOMING
+    polity, which makes an outgoing row consistent exactly when its inclusive `year_end`
+    is its polity's exclusive `end_year - 1` and its successor starts the year after.
+
+    Pulling year_end DOWN by one breaks that in the direction the other two arms are blind
+    to. It is not an ambiguity -- one fewer polity claims the year, not one more -- and it
+    is not `year_end past coverage`, which only looks at year_end too HIGH. The year simply
+    stops resolving: FAOSTAT data for it lands on no polity at all.
+    """
+    import csv
+    from collections import defaultdict
+
+    path = os.path.join(root, "data/final/faostat_area_polity_map.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    by_area = defaultdict(list)
+    for r in rows:
+        by_area[r["area_code"]].append(r)
+    hit = None
+    for area, group in sorted(by_area.items()):
+        if len(group) < 2:
+            continue
+        group.sort(key=lambda r: int(r["year_start"]))
+        outgoing = group[0]
+        year = int(outgoing["year_end"])
+        outgoing["year_end"] = str(year - 1)
+        hit = (area, outgoing["polity_code"], year)
+        break
+    assert hit, "no multi-row area to clip a handover in"
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (
+        f"clipped area {hit[0]} -> {hit[1]} to end {hit[2] - 1}, leaving {hit[2]} claimed "
+        f"by neither it nor its successor"
+    )
+
+
 def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
     """Rewrite a declared area to exactly what its own polygon measures, which is the
     tautology check A2 counts.
@@ -1086,6 +1129,13 @@ CASES = (
         mutate_map_year_end_past_coverage,
         "year_end past coverage",
         "a map row claiming a reporting year its polity does not cover, which the exclusive/inclusive collision makes easy to write",
+    ),
+    (
+        "validate_map_area_year.py",
+        mutate_map_handover_year_claimed_by_nobody,
+        "handover",
+        "a handover year claimed by NEITHER polity, the direction the ambiguity and "
+        "past-coverage arms are both blind to — one answer too few looks like nothing at all",
     ),
     (
         "validate_polygons.py",
