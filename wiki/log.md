@@ -62,6 +62,68 @@ was never only about population.
 
 ---
 
+## decision-row-boundary-dating
+**Date:** 2026-08-14
+**Touched:** IDN-1949-1963 (renamed from IDN-1949-1969), IDN-1963-1976 (renamed from IDN-1969-1976), NNG-1949-1963
+**Source:** cshapes-2.0, biger-1995
+**Kind:** decision
+
+Issue 23 asked for a convention: does a row boundary follow the **source's** date or
+the **historical event**? Stated now in
+[README §which-date-a-boundary-year-takes](README.md#which-date-a-boundary-year-takes),
+in four rules. The short form: the boundary takes the date the territory changed;
+between a de facto transfer and its later legal ratification it takes the de facto
+one; a change of administering power over unchanged territory is still not a boundary
+at all, but absorption of one unit into another *is* one for the receiving unit; and
+`polygon_feature_year` is a different field from the row's years and may disagree with
+them, which is what makes re-dating affordable without touching geometry.
+
+The convention was not invented for this issue — it was already applied at CAN and
+denied at IDN, which is the accident the issue reported. CAN: CShapes dated Canada's
+enlargement to the 1948 Newfoundland *referendum*, publishing a 398,094 km² overlap for
+calendar 1948; rows re-dated to the 1949 accession (issue 15). IDN: the chain followed
+CShapes' `1969-09-17` Act-of-Free-Choice stamp.
+
+**IDN is now re-dated too, and the six-year "source disagreement" turned out not to
+exist.** Measured on `data/geodata/cshapes-2.0/CShapes-2.0.shp` in ESRI:54034:
+
+- feature **851** (western New Guinea) has three time-steps — `1949-12-29`,
+  `1962-08-15`, **`1963-05-01`** — each **410,361 km²** and **geometrically
+  identical** (`shapely.equals` True, symmetric difference 0 km²). CShapes therefore
+  *does* date the UNTEA-to-Indonesia hand-over to 1963-05-01, to the day, which is
+  Biger's 1963. What 1969-09-16/17 marks is when 851 stops being a separate
+  sovereignty unit — a Westphalian fact.
+- the polygon a 1963-enlarged Indonesia needs was already in the file: feature 850's
+  `1969-09-17` step (**1,877,243.324 km²**) is the **exact union** of its `1949-12-29`
+  step (1,466,882 km²) and feature 851 — symmetric difference **0.0 km²**. Three wiki
+  pages had asserted that no 1963 polygon existed and that a split was blocked on
+  sourcing one. It was not.
+
+So `IDN-1949-1969` → **IDN-1949-1963** (covers 1949-1962, polygon 850@1949 unchanged),
+`IDN-1969-1976` → **IDN-1963-1976** (covers 1963-1975, polygon 850@1969 unchanged, now
+six years older than its row's start — legitimate under rule 4 and documented on the
+page), and `NNG-1949-1963`'s `end_year` goes 1969 → **1963**, which is what its code
+said all along. Both old codes are retired with redirects. What moves is 410,361 km²
+for 1963-1968: from a row with **zero data rows** in that window (NNG's only data is 3
+`fao1952` rows, 1949-1951) to Indonesia, which administered and reported it. Indonesian
+data for those years had been sitting on a polygon **21.9%** smaller than Indonesia's
+territory.
+
+`validate_code_year_agreement`'s baseline loses its `NNG-1949-1963` entry — the entry
+existed *because* this decision was outstanding, and the bidirectional baseline makes
+resolving it mandatory rather than optional. `TAN-1922-1964` stays: independence-vs-union
+is a different question and this convention does not settle it, since both 1961 and 1964
+are dates of real events of different kinds.
+
+Left open, named rather than guessed: whether FAOSTAT's `Indonesia` series reports a
+constant modern territory across 1961-2024 (which would leave 1961-1962 mismatched on a
+reporting-basis rather than a boundary ground — no FAOSTAT land-area series is committed
+here, so it could not be measured), and whether East Timor should likewise move from the
+1976 annexation to the December 1975 invasion.
+
+Signed off by: Claude (Claude Code), issue 23.
+
+
 ## close-four-uncovered-territory-years-issue-77
 **Date:** 2026-08-13
 **Touched:** tcd-1912-1919, tcd-1919-1960 (renamed from tcd-1920-1960), tcd-1960-2025, sen-1854-1886, sen-1886-1960 (renamed from sen-1886-1959), sen-1960-2025, lao-1893-1954 (renamed from lao-1893-1953), lao-1954-2025, civ-1889-1893, civ-1893-1902 (renamed from civ-1893-1900), civ-1902-1932, aef-1910-1960, aof-1895-1960, lby-1949-1951
@@ -536,6 +598,11 @@ Biger dates the handover to 1963, CShapes only enlarges Indonesia's polygon at
 1969 (the Act of Free Choice). This row ends at 1963, so for **1963-1969**
 Indonesia administered territory that IDN-1949-1969's polygon excludes — 28% of
 that row's area, held by no polity. Needs a decision.
+
+*(Annotated 2026-08-14: decided in
+[decision-row-boundary-dating](log.md#decision-row-boundary-dating) — the row ends 1963
+and Indonesia takes the territory from 1963, so the `oq-1963-to-1969-attribution` anchor
+named above no longer exists on the page.)*
 
 Signed off by: Catalin Covaci.
 

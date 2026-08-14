@@ -109,7 +109,12 @@ BASELINE = frozenset({
     # contain Hawaii at all. Pinning polygon_feature_year to 1960 selects the 50-state step
     # and Hawaii's successor link resolves geometrically, as it always should have.
     ("IJB-1800-1892", "successor", "SNI-1899-1906"),
-    ("NNG-1949-1963", "successor", "IDN-1949-1969"),
+    # ("NNG-1949-1963", "successor", "IDN-1949-1969") REMOVED 2026-08-14 (issue 23).
+    # The pair was disjoint because NNG's successor was the Indonesia row whose polygon
+    # EXCLUDES western New Guinea -- i.e. the entry was recording the row-dating defect
+    # this repo has now fixed, not a geographic fact. NNG's successor is IDN-1963-1976,
+    # whose polygon is the exact union of the old Indonesia step and NNG's own feature
+    # (symmetric difference 0.0 km2), so the pair intersects and needs no entry.
     ("SMO-1912-1956", "predecessor", "SWA-1884-1912"),
     ("SYC-1903-2025", "predecessor", "MUS-1800-2025"),
     # Van Diemen's Land against the colony it was separated FROM, added 2026-08-13 when

@@ -14,17 +14,17 @@ double the real polity total.)
 
 | Metric | Value |
 |---|---|
-| Polities in the database | 768 |
-| Polity pages | 768 |
+| Polities in the database | 770 |
+| Polity pages | 770 |
 | Sources ingested | 30 |
 | `status: draft` | 668 |
 | `status: reviewed` | 59 |
-| `status: superseded` / `retired` | 20 / 21 |
+| `status: superseded` / `retired` | 20 / 23 |
 | Pages with no source citation | 208 |
-| Pages citing biger-1995 | 392 |
-| Open questions (`### oq-`) | 818 |
+| Pages citing biger-1995 | 394 |
+| Open questions (`### oq-`) | 819 |
 
-**By continent:** Africa 270 · Europe 175 · Asia 161 · North America 68 · Oceania 46 · South America 45 · World 2
+**By continent:** Africa 270 · Europe 175 · Asia 163 · North America 68 · Oceania 46 · South America 45 · World 2
 
 Regenerate with `python3 scripts/update_wiki_index.py`. The authoritative
 catalog is `data/final/polities_database.csv`; the per-continent notes below
@@ -571,8 +571,8 @@ are a **curated selection**, not a complete listing.
 - [Indonesia (to 1889)](polities/idn-1800-1889.md) — `IDN-1800-1889`, superseded.
 - [Indonesia (1889-1945)](polities/idn-1889-1945.md) — `IDN-1889-1945`, superseded.
 - [Indonesia (1945-1949)](polities/idn-1945-1949.md) — `IDN-1945-1949`, draft.
-- [Indonesia (1949-1969)](polities/idn-1949-1969.md) — `IDN-1949-1969`, draft.
-- [Indonesia (1969-1976)](polities/idn-1969-1976.md) — `IDN-1969-1976`, draft.
+- [Indonesia (1949-1969)](polities/idn-1949-1969.md) — `IDN-1949-1969`, retired.
+- [Indonesia (1969-1976)](polities/idn-1969-1976.md) — `IDN-1969-1976`, retired.
 - [Indonesia (1976-2002)](polities/idn-1976-2002.md) — `IDN-1976-2002`, draft.
 - [Indonesia](polities/idn-2002-2025.md) — `IDN-2002-2025`, reviewed.
 - [India (to 1893)](polities/ind-1800-1893.md) — `IND-1800-1893`, superseded.

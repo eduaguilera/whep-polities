@@ -11,11 +11,11 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "2eff2a47504017409cae5d67440584bd35051ab542431045602f2f1707cf6412",
+ "identity_sha256": "3aa8752b5b654bb5a986199982edfe41775a8f75883279568a98a8ff1724a2d5",
  "counts": {
-  "total": 768,
+  "total": 770,
   "live": 727,
-  "dead": 41
+  "dead": 43
  },
  "dead_status": [
   "retired",
@@ -44,6 +44,8 @@
   "HUN-1938-1947",
   "IDN-1800-1889",
   "IDN-1889-1945",
+  "IDN-1949-1969",
+  "IDN-1969-1976",
   "IND-1800-1893",
   "IRQ-1921-2025",
   "ITA-1861-1919",
@@ -149,7 +151,7 @@
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
-  "sha256": "af64beef060e0475010f600d2a6a51d8aee05df094f729dca98757b41a695bdd",
+  "sha256": "75c7efedca43b01eafd734e37310d5588bbd55635b99bfa8f2f626c98f8a2b24",
   "mappings": 297,
   "areas": 244,
   "coverage": {
@@ -167,7 +169,7 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "73e46c7dd23816d5284cda1be0a18c41c2db25cf63e1884137faad8ea838ef2d",
+  "sha256": "c3a3f4a20ff50f7e7c4e1076f906380f9812818cf88e36e26b4d9fa13279e23d",
   "aliases": 913,
   "labels": 480,
   "sources": [
@@ -1077,8 +1079,8 @@
   "ICN-1800-2025",
   "IDN-1800-1945",
   "IDN-1945-1949",
-  "IDN-1949-1969",
-  "IDN-1969-1976",
+  "IDN-1949-1963",
+  "IDN-1963-1976",
   "IDN-1976-2002",
   "IDN-2002-2025",
   "IDN-BLB-1949-1951",

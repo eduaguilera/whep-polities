@@ -193,7 +193,12 @@ BASELINE_ASYMMETRY = {
     # the pages had said "no dedicated WHEP row identified" about rows that exist. The ISO3 map is
     # byte-identical before and after (5,169 pairs), because its walk already read both fields --
     # what changed is that a consumer reading `predecessor` alone now sees these four.
-    "successor_only": 189,
+    # LOWERED 189 -> 188 on 2026-08-14 (issue 23). NNG-1949-1963's successor edge became
+    # symmetric: its target used to be IDN-1949-1969, which named only IDN-1945-1949 back,
+    # and is now IDN-1963-1976, whose territory IS the union of IDN-1949-1963 and NNG so it
+    # names both as predecessors. Again no new historical claim -- the reverse of an edge the
+    # database already stated.
+    "successor_only": 188,
     # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
     # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
     # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to

@@ -24,13 +24,19 @@ rather than corrected here:
   TAN-1922-1964  Tanganyika. Independence 1961; the union with Zanzibar forming Tanzania
                  was 1964. Either year is defensible for the end of the polity, but the
                  code and the columns must agree on which was chosen.
-  NNG-1949-1963  Netherlands New Guinea. Transferred to Indonesian administration 1963;
-                 the Act of Free Choice was 1969. `end_year` says 1969, the code says
-                 1963.
+  NNG-1949-1963  RESOLVED 2026-08-14 (issue 23), so it is no longer below. `end_year` said
+                 1969 because CShapes stamps Indonesia's enlargement at the 1969 Act of
+                 Free Choice; its change log for feature 851 in fact opens a step on
+                 1963-05-01, the transfer to Indonesian administration, and its three
+                 steps for that feature are geometrically identical. Sovereignty
+                 recognition does not date a WHEP boundary, so `end_year` is 1963 and the
+                 code was right all along.
 
-Fixing either means editing the wiki page — the source of truth — and deciding which year
-the polity ends. Until then the pair is tracked so a THIRD cannot appear unnoticed, and so
-that resolving one forces its removal from the baseline.
+Fixing one means editing the wiki page — the source of truth — and deciding which year the
+polity ends. Until then it is tracked so a THIRD cannot appear unnoticed, and so that
+resolving one forces its removal from the baseline. That is exactly what happened to
+NNG-1949-1963: the baseline entry outlived the open question by nothing, because deleting
+it was mandatory the moment `end_year` moved.
 
 Usage:
   python3 scripts/validate_code_year_agreement.py
@@ -47,7 +53,9 @@ CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
 # decision about which year is right. Bidirectional: a new one fails, and a resolved one
 # must be removed or this fails too.
 BASELINE = {
-    "NNG-1949-1963": "end_year 1969; Act of Free Choice vs 1963 transfer",
+    # NNG-1949-1963 removed 2026-08-14 (issue 23): end_year is 1963, so code and columns
+    # agree and an entry here would fail this gate's bidirectional check. See
+    # wiki/log.md#decision-row-boundary-dating.
     "TAN-1922-1964": "end_year 1961; independence vs the 1964 union with Zanzibar",
 }
 

@@ -264,6 +264,58 @@ honoured over the exclusive bound. A **blanket** alias asserts nothing about any
 boundary year, so it gets no such deference and falls through to year-containment
 in the target's family, exactly like an unaliased label.
 
+## Which date a boundary year takes
+
+The year convention above says what a boundary year *means*. This says **which
+date it takes** when a territorial-extent source stamps its own change on a
+different day than the history did. Issue 23 asked for it after two cases came
+out differently by accident; the rule is:
+
+1. **A row boundary takes the date the territory changed, not the date the
+   source stamps on its time-step.** CShapes, Biger and the atlases date their
+   steps by their own conventions — treaty dates, recognition dates, the date a
+   provisional border was made permanent. Those are evidence about the event,
+   not the event.
+2. **Between two dates for one transfer, the boundary takes the de facto one** —
+   when administration actually changed hands — and not the later legal
+   ratification of a transfer that had already happened. Ratification is a
+   Westphalian fact; WHEP rows are territorial.
+3. **A change of administering power over unchanged territory is still not a
+   boundary at all** (the polity-definition rule). Rules 1 and 2 only choose
+   *which* date a boundary that genuinely exists is dated by. A source that
+   opens a new time-step for the same geometry has recorded an administrative
+   event, not a territorial one — but when one unit is **absorbed into
+   another**, the receiving unit's territory does change, and that boundary is
+   dated by rules 1 and 2.
+4. **The polygon's vintage is a different field from the row's years, and they
+   are allowed to disagree.** `polygon_feature_year` records what the source
+   says; `start_year`/`end_year` record what happened. Never move a row's years
+   to make them agree — say so on the page instead. This is what keeps rule 1
+   affordable: the row can be re-dated while the geometry stays exactly the
+   source's.
+
+Two worked cases, both measured rather than argued:
+
+- **CAN.** CShapes dated Canada's enlargement `1948-07-22`, the second
+  Newfoundland *referendum*; the accession was 31 March **1949**. The source's
+  date published a 398,094 km² overlap — Newfoundland claimed by two live rows
+  for calendar 1948. Rows re-dated to 1949 (issue 15).
+- **IDN / NNG.** CShapes enlarges Indonesia's own polygon on `1969-09-17`, the
+  Act of Free Choice, and the wiki recorded a six-year "disagreement" with
+  Biger's 1963. Measuring the shapefile dissolved it: CShapes' change log for
+  feature 851 opens a step on `1963-05-01`, the UNTEA-to-Indonesia hand-over,
+  and its three steps for that feature are geometrically identical, so the
+  source dates the transfer to 1963 and reserves 1969 for sovereignty. Rows
+  re-dated to 1963 (issue 23).
+
+The lesson those two share is worth stating separately, because it is the
+cheapest step in applying this convention: **before recording a disagreement
+between two sources' dates, read the source's own change log rather than the
+date on the feature you happen to have bound.** In the IDN case the
+"disagreement" was an artefact of paraphrase, and the polygon the fix needed was
+already in the file — feature 850's 1969 step is the exact union (0.0 km²
+symmetric difference) of its 1949 step and feature 851.
+
 ## Page schema
 
 Every polity page MUST have this frontmatter and these sections. Empty
