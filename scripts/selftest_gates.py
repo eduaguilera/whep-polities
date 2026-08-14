@@ -295,6 +295,40 @@ def mutate_code_year_disagreement(root, gpd, make_valid, affinity):
     return "set FRA-1800-1871's start_year to 1799, contradicting its own code"
 
 
+def mutate_cross_family_overlap(root, gpd, make_valid, affinity):
+    """Re-create issue 82's Morocco defect: two LIVE polities in DIFFERENT families
+    claiming Moroccan territory for the same years.
+
+    The original was MOR-1956-1958 against MAR-1911-1958, retired by PR 83. This injects
+    the same shape from the other end -- MAR-1911-1958 backdated to 1900, so it collides
+    with MOR-1800-1904, whose family the successor map names as the previous holder of
+    MAR's territory. Backdating rather than adding a row keeps the mutation inside the one
+    file the case rewrites.
+
+    The point of the case is that the SAME-family half of this gate provably cannot fire
+    instead: MAR-* and MOR-* are different prefixes, which is exactly why the issue said
+    no gate catches it.
+    """
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    hit = 0
+    for r in rows:
+        if r["polity_code"] == "MAR-1911-1958":
+            r["start_year"] = "1900"
+            hit += 1
+    assert hit == 1, f"expected one MAR-1911-1958 row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return (
+        "backdated MAR-1911-1958 to 1900 so it claims Moroccan territory that "
+        "MOR-1800-1904, a different family, already claims"
+    )
+
+
 def mutate_new_iso_code(root, gpd, make_valid, affinity):
     """Give a polity an iso3_code the baseline has never seen. A consumer joins on that
     vocabulary, so a new value silently changes which rows an ISO-keyed join matches --
@@ -1350,6 +1384,13 @@ CASES = (
         "every grid intersection over it aborts",
     ),
     (
+        "validate_period_overlaps.py",
+        mutate_cross_family_overlap,
+        "MAR-1911-1958",
+        "two families the database says hold one territory both claiming the same "
+        "years, which no same-prefix comparison can see",
+    ),
+    (
         "validate_shared_polygons.py",
         mutate_shared_polygon,
         "STP-1800-2025",
@@ -1491,6 +1532,17 @@ WRITABLE = {
         "polities_database.csv",
         "polities_database.gpkg",
         "faostat_area_polity_map.csv",
+    ),
+    # Rewrites MAR-1911-1958's start_year, so the CSV must be a real copy. The successor
+    # MAP must be staged too, and finding that out is the point: `stage()` provides only
+    # the CSV by default, so without this line the cross-family signal had no territory
+    # link, reported that it had checked nothing, and exited 1 for the wrong reason --
+    # which the harness's "must NAME the defect" arm is what reported. The gate only
+    # READS this file, but WRITABLE is the only mechanism that puts a second data file in
+    # the scratch repo at all.
+    "validate_period_overlaps.py": (
+        "polities_database.csv",
+        "iso3_successor_map.csv",
     ),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
     # Rewrites the published alias map, so it needs a real copy rather than stage()'s
