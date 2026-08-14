@@ -318,14 +318,26 @@ ap = argparse.ArgumentParser()
 # threshold however wrong it is, and the fix removed the instance rather than the blind
 # spot. Another single-swallow error of the same shape would be equally unreported.
 #
-# Lowering the default to 1 would require judging all 37 single-swallow cases, and most
+# Lowering the default to 1 would require judging all 39 single-swallow cases, and most
 # ARE legitimate history — GBR-1800-1921 contains IRL-1800-1921, ESP-1800-2025 contains
-# ICN-1800-2025, IND-1947-1949 contains HYD-1724-1948, SRB-2008-2025 contains
-# KOS-2008-2025, and SLE-1886-1889 contains GMB-1800-2025 because CShapes 451 for
-# 1886-1889 is the British West African Settlements, which included Gambia until 1888.
+# ICN-1800-2025, IND-1947-1949 contains HYD-1724-1948, and SLE-1886-1889 contains
+# GMB-1800-2025 because CShapes 451 for 1886-1889 is the British West African
+# Settlements, which included Gambia until 1888.
 # Enumerating those as legitimate without verifying each would be the guessing this
 # check exists to prevent, so the threshold is left at 3 and the gap recorded here
 # rather than papered over.
+#
+# CORRECTED 2026-08-14 (issue 143). This note used to cite "SRB-2008-2025 contains
+# KOS-2008-2025" as a fourth example, and issue 143 repeated it from here. It is false:
+# measured in ESRI:54034 those two polygons intersect in 0.0 km2 — CShapes feature 347
+# for 2008+ already excises Kosovo from Serbia — and SRB-2008-2025 does not appear as a
+# container even at --min-contained 1. The counts above were stale too; re-measured the
+# same day they are 103 / 64 / 42 at thresholds 1 / 2 / 3, so the single-swallow blind
+# spot this note records is 103-64 = 39 cases, not 37 — LARGER than written, not smaller.
+# The accounting convention these examples illustrate — a parent's polygon is GROSS of
+# the sub-polities that are themselves rows — is now decided and recorded in wiki/log.md
+# under `decision-nested-subpolity-polygons-are-gross`. The threshold and this gate's
+# behaviour are unchanged.
 ap.add_argument("--min-contained", type=int, default=3,
                 help="report a polity that contains at least this many others; see the "
                      "KNOWN LIMITATION note above about single-swallow cases")
