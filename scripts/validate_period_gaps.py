@@ -14,12 +14,15 @@ territory in that year.
 `end_year` is EXCLUSIVE, so TCD-1912-1919 covers 1912-1918 and TCD-1920-1960 covers
 1920-1959: 1919 is in neither.
 
-IT CANNOT ASSERT ZERO, and that is the point of the baseline. Most of the gaps are
-correct -- they are periods when the entity did not exist as itself and another
-family holds the territory:
+IT CANNOT ASSERT ZERO, and that is the point of the baseline. 7 of the 11 gaps on the
+current database name a coverer -- they are periods when the entity did not exist as
+itself and another family holds the territory:
 
     MNE-1913-1918 -> MNE-2006-2025   88y, Montenegro inside Yugoslavia
     CZE-1804-1918 -> CZE-1993-2025   75y, inside Czechoslovakia
+
+Those two are the pair issue 82 named as UNREACHABLE, and they were, until the coverage
+lookup started reading the published successor map -- see covered_elsewhere().
 
 Two of the SHORT gaps are also correct, and they are why this check reports coverage
 rather than only listing gaps:
@@ -58,6 +61,12 @@ What remains open is the one genuinely historical part: the MALI FEDERATION has 
 polity, so Federation-labelled data for 1959-1960 still has nowhere to go even though
 Senegal-labelled data now does.
 
+    The cross-family lookup added for issue 82 is what makes that checkable: when this
+    check said "no cover found" it was reporting the LOOKUP's reach, not the database's --
+    AOF-1895-1960 held Senegal 1959 and FID-1887-1954 held Laos 1953 all along. Those two
+    are no longer baselined, because issue 77 closed the spans outright; the lesson stands
+    for whatever lands here next.
+
 Usage:
   python3 scripts/validate_period_gaps.py
 """
@@ -72,6 +81,7 @@ from collections import defaultdict
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB = os.path.join(REPO, "data/final/polities_database.csv")
 ALIAS = os.path.join(REPO, "data/final/label_alias_map.csv")
+SUCCESSOR_MAP = os.path.join(REPO, "data/final/iso3_successor_map.csv")
 DEAD_STATUS = ("retired", "superseded")
 CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
 
@@ -123,6 +133,14 @@ BASELINE = frozenset({
     # landed in the hole. They do not -- every one is 1937-1951, inside MAR-1911-1958.
     # The hole routes ZERO rows today. Real as coverage, empty in practice, and the
     # alias's 1904 records when French influence began rather than where data is.
+    #
+    # STILL TRUE ON 2026-08-13, and now measurable rather than remembered. The alias no
+    # longer claims 1904 either -- issue 54 clipped it to 1911-1956 on 2026-08-11 -- so the
+    # sentence above describes a range that is gone. What survives is the coverage hole:
+    # the published successor map resolves MAR for 1850-1903 (to MOR-1800-1904) and MAR's
+    # own rows begin 1911, leaving 1904-1910 resolved by nothing. 7 years, in a map that
+    # otherwise answers 74 modern codes. Still a CROSS-FAMILY hole and still unseen here,
+    # because this check pairs CONSECUTIVE PERIODS OF ONE FAMILY. Issue 82.
     # ("SEN-1886-1959", "SEN-1960-2025") removed 2026-08-13 (issue 77): the gap is CLOSED, by
     # moving SEN-1886-1959's exclusive end_year to 1960 (renamed SEN-1886-1960). NOT latent either:
     # mitchell has 14 Senegal observations for 1959 and matched.csv shows all 14 already routed to
@@ -133,10 +151,19 @@ BASELINE = frozenset({
     # SRB-2006-2008, issue 43), so family SER ends at SER-1918-1945 and has no
     # consecutive pair to gap.
     #
-    # SAME BLIND SPOT AS THE MOR PAIR ABOVE. The 1945-2006 hole is still there --
-    # SER-1918-1945 ends 1944, SRB-2006-2008 begins 2006, and no polity covers the
-    # Serbian republic within SFR Yugoslavia in between. It is now a CROSS-FAMILY
-    # hole (SER -> SRB) and this check is per-family, so it cannot see it. Issue 82.
+    # THIS ENTRY CLAIMED A HOLE THAT DOES NOT EXIST, and the claim is withdrawn here
+    # rather than deleted. It read: "the 1945-2006 hole is still there -- SER-1918-1945
+    # ends 1944, SRB-2006-2008 begins 2006, and no polity covers the Serbian republic
+    # within SFR Yugoslavia in between".
+    #
+    # Measured against data/final/iso3_successor_map.csv on 2026-08-13, EVERY year of
+    # 1945-2005 resolves for modern code SRB:
+    #     1945-1946  F248-1920-1947      1991       F248-1991-1992
+    #     1947-1990  F248-1947-1991      1992-2005  SCG-1992-2006
+    # Nothing is uncovered. The gap was never a hole in the DATABASE; it was a hole in
+    # the LOOKUP, which compared iso3_code (SER/SRB) against a holder coded YUG. The MOR
+    # 1904-1910 hole above is the real one, and it is the only one of issue 82's three
+    # examples that survives measurement.
     ("SYR-1922-1945", "SYR-1946-1967"),
     # ("TCD-1912-1919", "TCD-1920-1960") removed 2026-08-13 (issue 77): the gap is CLOSED, by
     # moving TCD-1920-1960's start_year back to 1919 (renamed TCD-1919-1960). The three AEF
@@ -161,38 +188,72 @@ def live_rows() -> list:
         ]
 
 
-def covered_elsewhere(rows: list, iso3: str, year: int, exclude: set) -> list:
-    """Live polities of ANOTHER family sharing this iso3 and spanning the year.
+def successor_map() -> dict:
+    """(modern_iso3, year) -> [(polity_code, hop_depth)] from the published successor map.
+
+    THIS IS THE CROSS-FAMILY TERRITORY LINK, and it is published rather than inferred here:
+    `scripts/write_iso3_successor_map.py` derives it from the database's own predecessor and
+    successor edges. `hop_depth` 1 means the database asserts the relation directly; 2+ is an
+    inference through intermediate rows and should be read as one.
+
+    Missing file -> empty, so the annotation degrades to iso3 equality rather than crashing.
+    """
+    out = defaultdict(list)
+    if not os.path.exists(SUCCESSOR_MAP):
+        return out
+    with open(SUCCESSOR_MAP, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            try:
+                out[(r["modern_iso3"], int(r["year"]))].append(
+                    (r["polity_code"], int(r["hop_depth"]))
+                )
+            except (KeyError, TypeError, ValueError):
+                continue
+    return out
+
+
+def covered_elsewhere(rows: list, smap: dict, keys: tuple, year: int, exclude: set) -> list:
+    """Who else holds this territory in this year: same-iso3 rows, plus the successor map.
 
     This is what separates a correct gap from a hole. Libya's 1949 looks identical to
     Chad's 1919 until you ask who else holds the territory: Cyrenaica and Tripolitania
     do for Libya, nothing does for Chad.
 
-    ADVISORY, NOT AUTHORITATIVE, and the gate does not act on it -- only the baseline
-    comparison decides pass or fail. iso3 is the only cross-family link the data has and
-    it fails two ways:
+    iso3 EQUALITY ALONE GOT TWO OF THESE WRONG, which is issue 82, and the wrong answers
+    were not the ones that issue and an earlier version of this docstring recorded. Both
+    claimed the aggregates carry no iso3 at all -- "`F51-1947-1993` (Czechoslovakia) and
+    `F248-1947-1991` (Yugoslavia) both have `iso3_code = ''`". Measured on the current
+    database they carry `CSK` and `YUG`. The defect is not an EMPTY code, it is a
+    DIFFERENT one: the family whose gap is being tested carries `CZE`/`MNE` and the family
+    that holds the territory carries `CSK`/`YUG`, so equality matches nothing. Same shape
+    as the local-versus-ISO case (`MOR-*` beside `MAR-*`) rather than a second failure mode.
 
-      * AGGREGATES CARRY NO iso3. `F51-1947-1993` (Czechoslovakia) and `F248-1947-1991`
-        (Yugoslavia) both have `iso3_code = ''`, so the CZE 1918-1992 and SER 1945-2005
-        gaps are reported uncovered when Czechoslovakia and Yugoslavia in fact hold
-        that territory.
-      * LOCAL AND ISO CODES FOR ONE TERRITORY DO NOT LINK. Morocco is `MOR-*` (a
-        declared local code) and `MAR-*` (the ISO one), so the "French Morocco" alias
-        -- 261 observed rows, pointing at `MAR-1911-1958` -- is invisible when testing
-        the MOR family's gap, and that gap reads latent when it is live.
+    The fix is to consult the successor map, which links exactly those pairs and is derived
+    from the chain graph, so it cannot drift from the database:
 
-    Both are the same missing thing: nothing expresses "these families are the same
-    territory". Treat the annotation as a triage hint and check the specific case.
+        CZE 1918-1992 -> F51-1947-1993 at depth 1   (was "no cover found")
+        MNE 1918-2005 -> F248/SCG                   (was "no cover found")
+        ERI 1952-1992 -> ETH-1952-1993 at depth 1   (was "no cover found")
+
+    STILL ADVISORY, and the gate still does not act on it -- only the baseline comparison
+    decides pass or fail. The remaining reason not to promote it: the map answers "who held
+    this territory" for the years it resolves, and its silence is not proof of absence (109
+    (iso3, year) pairs are unresolved for want of rows, not for want of traversal). Treat
+    the annotation as a triage hint and check the specific case.
     """
-    out = []
+    out = set()
     for r in rows:
-        if r["polity_code"] in exclude or (r.get("iso3_code") or "") != iso3:
+        if r["polity_code"] in exclude or (r.get("iso3_code") or "") not in keys:
             continue
         try:
             if int(r["start_year"]) <= year < int(r["end_year"]):
-                out.append(r["polity_code"])
+                out.add(r["polity_code"])
         except (TypeError, ValueError):
             continue
+    for key in keys:
+        for code, depth in smap.get((key, year), []):
+            if code not in exclude:
+                out.add(f"{code} (map depth {depth})" if depth > 1 else code)
     return sorted(out)
 
 
@@ -247,9 +308,16 @@ def main() -> int:
     print(f"live polities: {len(rows)} | multi-period families: {multi}")
     print(f"families with a gap between consecutive periods: {len(observed)}")
 
+    smap = successor_map()
     for pair, (lo, hi, iso3) in sorted(observed.items(), key=lambda kv: -(kv[1][1] - kv[1][0])):
         span = hi - lo + 1
-        others = covered_elsewhere(rows, iso3, lo, {pair[0], pair[1]}) if iso3 else []
+        # Look the territory up under BOTH the row's iso3 and its family prefix. They are
+        # usually equal, but the successor map is keyed by the prefix, and a row with an
+        # empty iso3 (71 of them today, all aggregates and pre-ISO states) would otherwise
+        # be unlookupable -- which is the shape issue 82 mis-diagnosed as the whole defect.
+        m = CODE_RE.match(pair[1])
+        keys = tuple(k for k in {iso3, m.group(1) if m else ""} if k)
+        others = covered_elsewhere(rows, smap, keys, lo, {pair[0], pair[1]}) if keys else []
         if others:
             tag = f"covered by {', '.join(others[:2])}"
         else:

@@ -134,6 +134,7 @@ python3 pipelines/polity-autoimprove/extdata.py
 | iso collisions | *(guard)* 59 pairs already share a code over overlapping years **by design**, since `iso3` groups by modern territory. The gate is that the set must not grow |
 | local iso codes | *(guard)* `iso3_code` is **not ISO-conformant and cannot be** — there is no ISO 3166 code for Austria-Hungary, so this database invents `AUH`. 56 of its 276 values are local like that, and a consumer joining against ISO-keyed data silently matches none of them; it is what stops four dissolved federations reaching WHEP's LUH2 land series. The vocabulary is therefore an interface, and the gate is that it does not change unreviewed. Publishing the local/ISO distinction machine-readably is [issue 55](../../issues/55) |
 | period overlaps | four same-family pairs cover the same years, so a year-aware matcher must guess. `PER-1825-1909` duplicates two rows that already tile its span exactly |
+| period gaps | *(guard)* the complement — 15 families leave a year between consecutive periods, where a matcher gets NO answer. `LBY` 1949 was one and was sending 28 rows labelled `Libya` to Cyrenaica alone. Its coverage annotation answered "who else held this territory" by comparing `iso3_code`, which cannot cross a family: five gaps read "no cover found" while the published successor map named a holder for every year of them — `CZE` 1918-1992 to `F51`, `MNE` 1918-2005 to `F248`/`SCG`, `ERI` 1952-1992 to `ETH`, `SEN` 1959 to `AOF`, `LAO` 1953 to `FID` (issue 82). The annotation now reads that map. It is still advisory: the gate passes or fails only on the baseline |
 | reporting areas | six GADM territories claimed by **two** aggregates each — Palau and the Northern Marianas sit in both Asia Other and Oceania Other. Hidden because the RoW union deduplicates |
 | polygons A | 8 polities carrying **another country's** polygon — San Marino had Albania's (470× too large), Indonesia had India's |
 | polygons C | 28 polities declaring a polygon the build never attached |
@@ -194,7 +195,8 @@ decided and a consumer used to get wrong:
 | `claims_polygon_status` | which polygon statuses ASSERT a polygon exists. Not "anything except `unassigned`": that held only while the vocabulary had one non-claiming value, and three of the four legacy statuses asserted no polygon |
 | `polygon_gap_polity_codes` | rows whose status claims a polygon the GeoPackage cannot carry, because the feature id was recorded as prose. A consumer asserting the strict invariant is red until this backlog clears; tolerating exactly this set keeps the check sharp for anything new |
 | `faostat_unmapped_areas` | why an area maps to no polity, in three kinds a consumer cannot tell apart from the numbers — see below |
-| `faostat_area_map`, `label_alias_map` | path and sha256 of the two published CSVs |
+| `faostat_area_map`, `label_alias_map`, `iso3_successor_map` | path and sha256 of the three published CSVs |
+| `territory_families`, `territory_families_why` | which OTHER families cover one territory — 80 relations over 74 modern codes, collapsed from the successor map's depth-1 rows. `iso3_code` cannot answer this and a consumer matching on it gets nothing: Czech territory in 1950 is held by `CSK`, Montenegrin by `YUG`, Moroccan before 1911 by the local code `MOR` |
 
 Two columns in those CSVs measure the same thing under **transposed names**, and neither was
 documented until a consumer-side sweep noticed:
@@ -249,6 +251,25 @@ and `local_iso3_why`, so a consumer can tell a local code from an ISO one withou
 by getting no match. Read from the gate's baseline rather than restated, so there is one list
 and CI gates it. That field is **descriptive only** — how dissolved states *should* be coded is
 still [issue 55](../../issues/55), where three approaches coexist in the data today.
+
+**Knowing a code is local does not tell you which family holds its territory instead.** That is
+the sharper version of the same problem, and it is [issue 82](../../issues/82). A consumer asking
+"who held Czech territory in 1950" and matching on `iso3_code` gets nothing: the Czech family
+carries `CZE` and Czechoslovakia carries `CSK`. The issue diagnosed this as the aggregates carrying
+an EMPTY `iso3_code` — measured on the current database, `F51-1947-1993` carries `CSK` and
+`F248-1947-1991` carries `YUG`, so the defect is a *different* code rather than a missing one, the
+same shape as the local-versus-ISO case (`MOR-*` beside `MAR-*`) and not a second failure mode.
+
+**The link is derived and published: `territory_families` in the manifest, and
+`iso3_successor_map.csv` beside it.** The CSV resolves (modern code, year) → the polity that
+actually held the territory, from the database's own predecessor and successor edges — 5,068
+year-resolved relations over 76 codes; the manifest field is the family-level collapse of the
+depth-1 rows, 80 relations over 74 codes, including every pair the issue named as unlinkable
+(`CZE`→`F51`, `SVK`→`F51`, `MAR`→`MOR`, `SRB`→`SER`/`SCG`, `MNE`→`SCG`, `TZA`→`TAN`, `AGO`→`ANG`).
+Depth 1 only in the manifest, because that is where the database *asserts* the relation with an
+edge; deeper traversals stay in the year-resolved file where a consumer can see the depth it is
+trusting. **Absence is not coverage** — `MAR` has no holder for 1904-1910, a real seven-year hole
+that no per-family check can see because it falls *between* two families.
 
 **`observed_rows` is not a licence to un-fold an area.** Worth stating because the consumer
 tried it and it cost a 13.7x error. The WHEP package derived "areas with observed data" from

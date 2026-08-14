@@ -1,5 +1,5 @@
 {
- "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. Regenerate with scripts/write_manifest.py.",
+ "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. `territory_families` and `iso3_successor_map` say which OTHER families cover one territory, which iso3_code cannot: do not infer that link from the code. Regenerate with scripts/write_manifest.py.",
  "source": "data/final/polities_database.csv",
  "identity_fields": [
   "polity_code",
@@ -174,6 +174,549 @@
    "whep-split-2026-06-29"
   ]
  },
+ "iso3_successor_map": {
+  "path": "data/final/iso3_successor_map.csv",
+  "sha256": "31dbb5a548244319cd4df95a29b37843d194e120cafbe8a0ac25d9d381749212",
+  "relations": 5066,
+  "modern_iso3": 74
+ },
+ "territory_families": {
+  "AGO": [
+   {
+    "family": "ANG",
+    "year_min": 1891,
+    "year_max": 1904
+   }
+  ],
+  "ARM": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "BEN": [
+   {
+    "family": "DHY",
+    "year_min": 1850,
+    "year_max": 1893
+   }
+  ],
+  "BGD": [
+   {
+    "family": "PAK",
+    "year_min": 1937,
+    "year_max": 1946
+   }
+  ],
+  "BIH": [
+   {
+    "family": "F248",
+    "year_min": 1991,
+    "year_max": 1991
+   }
+  ],
+  "BLR": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "BWA": [
+   {
+    "family": "BEC",
+    "year_min": 1885,
+    "year_max": 1965
+   }
+  ],
+  "COD": [
+   {
+    "family": "LBA",
+    "year_min": 1850,
+    "year_max": 1884
+   }
+  ],
+  "CSK": [
+   {
+    "family": "AUH",
+    "year_min": 1908,
+    "year_max": 1917
+   },
+   {
+    "family": "CZE",
+    "year_min": 1850,
+    "year_max": 1907
+   }
+  ],
+  "CXR": [
+   {
+    "family": "GBM",
+    "year_min": 1895,
+    "year_max": 1945
+   }
+  ],
+  "CZE": [
+   {
+    "family": "F51",
+    "year_min": 1947,
+    "year_max": 1992
+   }
+  ],
+  "DDR": [
+   {
+    "family": "DEU",
+    "year_min": 1938,
+    "year_max": 1948
+   }
+  ],
+  "ERI": [
+   {
+    "family": "ETH",
+    "year_min": 1952,
+    "year_max": 1992
+   }
+  ],
+  "ESH": [
+   {
+    "family": "SWA",
+    "year_min": 1912,
+    "year_max": 1957
+   }
+  ],
+  "FRN": [
+   {
+    "family": "NRH",
+    "year_min": 1911,
+    "year_max": 1952
+   },
+   {
+    "family": "ZWE",
+    "year_min": 1900,
+    "year_max": 1910
+   }
+  ],
+  "FSM": [
+   {
+    "family": "CAR",
+    "year_min": 1920,
+    "year_max": 1944
+   },
+   {
+    "family": "TTPI",
+    "year_min": 1947,
+    "year_max": 1990
+   }
+  ],
+  "GEO": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "GIN": [
+   {
+    "family": "FTJ",
+    "year_min": 1850,
+    "year_max": 1893
+   }
+  ],
+  "HRV": [
+   {
+    "family": "F248",
+    "year_min": 1991,
+    "year_max": 1991
+   }
+  ],
+  "ISR": [
+   {
+    "family": "PAL",
+    "year_min": 1920,
+    "year_max": 1947
+   }
+  ],
+  "ITA": [
+   {
+    "family": "PAP",
+    "year_min": 1850,
+    "year_max": 1860
+   }
+  ],
+  "KAZ": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "KGZ": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "KOS": [
+   {
+    "family": "SRB",
+    "year_min": 2006,
+    "year_max": 2007
+   }
+  ],
+  "LSO": [
+   {
+    "family": "LST",
+    "year_min": 1850,
+    "year_max": 1867
+   }
+  ],
+  "MAN": [
+   {
+    "family": "CHN",
+    "year_min": 1921,
+    "year_max": 1931
+   }
+  ],
+  "MAR": [
+   {
+    "family": "MOR",
+    "year_min": 1850,
+    "year_max": 1903
+   }
+  ],
+  "MDA": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "MKD": [
+   {
+    "family": "F248",
+    "year_min": 1947,
+    "year_max": 1990
+   }
+  ],
+  "MNE": [
+   {
+    "family": "SCG",
+    "year_min": 1992,
+    "year_max": 2005
+   }
+  ],
+  "MRT": [
+   {
+    "family": "AOF",
+    "year_min": 1895,
+    "year_max": 1919
+   }
+  ],
+  "NER": [
+   {
+    "family": "AOF",
+    "year_min": 1895,
+    "year_max": 1910
+   }
+  ],
+  "NNI": [
+   {
+    "family": "BNU",
+    "year_min": 1850,
+    "year_max": 1892
+   },
+   {
+    "family": "IGL",
+    "year_min": 1893,
+    "year_max": 1898
+   }
+  ],
+  "PCI": [
+   {
+    "family": "CAR",
+    "year_min": 1920,
+    "year_max": 1944
+   },
+   {
+    "family": "MHL",
+    "year_min": 1874,
+    "year_max": 2024
+   }
+  ],
+  "PLW": [
+   {
+    "family": "TTPI",
+    "year_min": 1947,
+    "year_max": 1990
+   }
+  ],
+  "PRK": [
+   {
+    "family": "KOR",
+    "year_min": 1945,
+    "year_max": 1947
+   }
+  ],
+  "QUE": [
+   {
+    "family": "NSW",
+    "year_min": 1850,
+    "year_max": 1858
+   }
+  ],
+  "RUS": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "RWB": [
+   {
+    "family": "TAN",
+    "year_min": 1891,
+    "year_max": 1918
+   }
+  ],
+  "SAA": [
+   {
+    "family": "SAC",
+    "year_min": 1935,
+    "year_max": 1946
+   }
+  ],
+  "SAB": [
+   {
+    "family": "DEU",
+    "year_min": 1919,
+    "year_max": 1919
+   }
+  ],
+  "SAC": [
+   {
+    "family": "SAB",
+    "year_min": 1920,
+    "year_max": 1934
+   }
+  ],
+  "SAU": [
+   {
+    "family": "OTT",
+    "year_min": 1908,
+    "year_max": 1911
+   }
+  ],
+  "SCG": [
+   {
+    "family": "F248",
+    "year_min": 1991,
+    "year_max": 1991
+   }
+  ],
+  "SDN": [
+   {
+    "family": "SUD",
+    "year_min": 1934,
+    "year_max": 1955
+   }
+  ],
+  "SGP": [
+   {
+    "family": "GBM",
+    "year_min": 1895,
+    "year_max": 1945
+   }
+  ],
+  "SMO": [
+   {
+    "family": "SWA",
+    "year_min": 1884,
+    "year_max": 1911
+   }
+  ],
+  "SNI": [
+   {
+    "family": "BKN",
+    "year_min": 1850,
+    "year_max": 1896
+   }
+  ],
+  "SOM": [
+   {
+    "family": "BSS",
+    "year_min": 1884,
+    "year_max": 1959
+   }
+  ],
+  "SRB": [
+   {
+    "family": "SCG",
+    "year_min": 1992,
+    "year_max": 2005
+   },
+   {
+    "family": "SER",
+    "year_min": 1918,
+    "year_max": 1944
+   }
+  ],
+  "SSD": [
+   {
+    "family": "SUD",
+    "year_min": 1956,
+    "year_max": 2010
+   }
+  ],
+  "SVK": [
+   {
+    "family": "F51",
+    "year_min": 1947,
+    "year_max": 1992
+   }
+  ],
+  "SVN": [
+   {
+    "family": "F248",
+    "year_min": 1991,
+    "year_max": 1991
+   }
+  ],
+  "SWZ": [
+   {
+    "family": "SWK",
+    "year_min": 1850,
+    "year_max": 1893
+   }
+  ],
+  "SYC": [
+   {
+    "family": "MUS",
+    "year_min": 1850,
+    "year_max": 1902
+   }
+  ],
+  "SYR": [
+   {
+    "family": "SYL",
+    "year_min": 1945,
+    "year_max": 1945
+   }
+  ],
+  "TAN": [
+   {
+    "family": "BDK",
+    "year_min": 1850,
+    "year_max": 1889
+   }
+  ],
+  "TCD": [
+   {
+    "family": "WAD",
+    "year_min": 1850,
+    "year_max": 1899
+   }
+  ],
+  "TJK": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "TKM": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "TWN": [
+   {
+    "family": "CHN",
+    "year_min": 1850,
+    "year_max": 1894
+   }
+  ],
+  "TZA": [
+   {
+    "family": "TAN",
+    "year_min": 1922,
+    "year_max": 1960
+   }
+  ],
+  "UGA": [
+   {
+    "family": "BGA",
+    "year_min": 1850,
+    "year_max": 1893
+   }
+  ],
+  "UKR": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "UZB": [
+   {
+    "family": "F228",
+    "year_min": 1945,
+    "year_max": 1990
+   }
+  ],
+  "VAT": [
+   {
+    "family": "PAP",
+    "year_min": 1850,
+    "year_max": 1869
+   }
+  ],
+  "VIC": [
+   {
+    "family": "NSW",
+    "year_min": 1850,
+    "year_max": 1850
+   }
+  ],
+  "VNM": [
+   {
+    "family": "FCC",
+    "year_min": 1862,
+    "year_max": 1886
+   }
+  ],
+  "YUG": [
+   {
+    "family": "AUH",
+    "year_min": 1908,
+    "year_max": 1917
+   }
+  ],
+  "ZAF": [
+   {
+    "family": "CAP",
+    "year_min": 1850,
+    "year_max": 1909
+   }
+  ],
+  "ZMB": [
+   {
+    "family": "NWR",
+    "year_min": 1900,
+    "year_max": 1904
+   }
+  ],
+  "ZWE": [
+   {
+    "family": "NDB",
+    "year_min": 1850,
+    "year_max": 1889
+   }
+  ]
+ },
+ "territory_families_why": "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not link the families that hold the same ground at different times, and a consumer matching on it alone gets no answer for the years before a modern code's own rows begin. Czech territory in 1950 is held by CSK (Czechoslovakia), Montenegrin by YUG, Moroccan before 1911 by the local code MOR -- none of which equals the code being asked about. Each entry names a family that held this modern code's territory and the years over which the database asserts it with a predecessor or successor EDGE (hop_depth 1). It is derived from those edges, not hand-written, so it cannot drift from the database. For per-year resolution, including the deeper traversals this field omits, read iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a polity whose edge is missing, or by no row at all -- MAR has no holder for 1904-1910.",
  "live_polity_codes": [
   "ABW-1800-2025",
   "ADE-1839-1963",
