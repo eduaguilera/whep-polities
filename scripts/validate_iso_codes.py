@@ -75,6 +75,12 @@ EXEMPT = {
     "F248-1918-1919", "F248-1919-1920", "F248-1920-1947",
     "F248-1920-1991", "F248-1947-1991", "F248-1991-1992",                   # YUG
     "F77-1949-1990",                                                        # DDR
+    # SUN, the USSR, added on 2026-08-13. Deferred by that first pass because the F228
+    # prefix spans two entities (Russian Empire, then USSR) and SUN describes only the
+    # second -- but `iso3` is a per-ROW field over periodised rows, so the two entities
+    # can be coded separately. Only the three USSR-era rows take SUN; the Russian Empire
+    # rows are untouched. See scripts/validate_dissolved_iso_codes.py for the rule.
+    "F228-1921-1940", "F228-1940-1945", "F228-1945-1991",                   # SUN
 }
 
 # Aggregate reporting buckets are not countries and are keyed by WHEP-internal codes.

@@ -314,6 +314,34 @@ def mutate_new_iso_code(root, gpd, make_valid, affinity):
     return "ZZQ"
 
 
+def mutate_dissolved_iso_blanked(root, gpd, make_valid, affinity):
+    """Blank the iso3_code of a dissolved state that carries its own ISO 3166-3 code.
+
+    This is the exact defect issue 55 was filed for: the USSR's three rows carried nothing,
+    so they belonged to no ISO family and a consumer holding `SUN` -- which WHEP's own
+    `regions_full` and `polity_area_crosswalk` both reference -- resolved to nothing while
+    the polity plainly existed. Blanking is chosen over corrupting the value because a blank
+    is the version that hides: it looks like "this entity has no code" rather than an error,
+    which is precisely how it survived long enough to reach a consumer.
+
+    Yugoslavia is the victim rather than the USSR so the case does not merely re-test the row
+    that motivated the gate.
+    """
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    victim = next((r for r in rows if r["polity_code"] == "F248-1947-1991"), None)
+    assert victim is not None, "F248-1947-1991 (Yugoslavia) not in the database"
+    assert (victim.get("iso3_code") or "").strip() == "YUG", "victim no longer carries YUG"
+    victim["iso3_code"] = ""
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return "F248-1947-1991"
+
+
 def mutate_name_collision(root, gpd, make_valid, affinity):
     """Rename a live polity to a name a DIFFERENT live polity already holds over the same
     years. WHEP's resolve_polity_label() then cannot pick between them and returns NA for
@@ -1131,6 +1159,13 @@ CASES = (
         "two live polities sharing a name and a year, so the name resolves to neither",
     ),
     (
+        "validate_dissolved_iso_codes.py",
+        mutate_dissolved_iso_blanked,
+        "F248-1947-1991",
+        "a dissolved state left with no iso3_code, so it belongs to no ISO family and a "
+        "consumer holding its 3166-3 code reaches nothing",
+    ),
+    (
         "validate_local_iso_codes.py",
         mutate_new_iso_code,
         "ZZQ",
@@ -1344,6 +1379,9 @@ WRITABLE = {
     # the committed database again. The default is a symlink precisely because most gates
     # only read the CSV, so a case that writes it MUST appear here.
     "validate_local_iso_codes.py": ("polities_database.csv",),
+    # Same again: this case blanks an iso3_code, so a real copy is required or the mutation
+    # writes through the default symlink into the committed database.
+    "validate_dissolved_iso_codes.py": ("polities_database.csv",),
     # Rewrites two successor fields, so a real copy is required. The default symlink would
     # have written the cycle into the committed database -- the failure mode this harness has
     # now caught four times.
