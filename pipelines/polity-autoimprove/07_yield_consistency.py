@@ -33,13 +33,49 @@ set where physics ends, not where a distribution thins: sugarcane genuinely exce
 100 t/ha and some fodder crops more, so the ceiling is deliberately far above any real
 crop. A tighter bound would need per-item knowledge and would start guessing.
 
+SERIES, NOT CELLS (issue 111). Most detections are not isolated: 44 of the 77 flagged cells
+fall into nine (source, country, item) series spanning three or more years. A single
+implausible cell is a data-entry slip; a run of them is a UNIT error for the whole series,
+and the two need different treatment. So a second pass groups the flagged cells into runs
+and writes state/yield_series_corrections.csv: 39 runs, 12 of them 3+ years long.
+
+Two things that pass discovered, and that the per-cell table cannot express:
+
+  1. THE CELL COUNT UNDERSTATES THE DEFECT, because a cell is only flagged when it crosses
+     a hard physical bound AND both columns are present. The nine series' 44 cells sit inside
+     runs holding 113 paired observations. mitchell natal maize has 12 cells below 0.01 t/ha
+     and 43 paired years at the same ~0.01 t/ha level: the other 31 sit just inside the floor.
+     iia czech republic tobacco is the extreme case -- ONE flagged cell (1943, 271 t/ha) and
+     a ten-observation run 1934-1944 sitting at 130-155 t/ha, under the 200 ceiling the whole
+     way. Counting runs rather than cells is what makes the number honest.
+
+  2. WHICH COLUMN MOVED is decided by the series' OWN nearby clean years where it has them,
+     not by the reference yield. If the run's area matches the series' clean-year area and
+     only its production is off by an order of magnitude, production moved. That test is
+     stronger than any ratio to a cross-source reference median, and it is what settles
+     natal maize (production; the area 9,000-160,000 ha is in family with every other
+     mitchell maize country) against czech grapes (area; 8-23 ha against 18,696 ha in 1920
+     and 17,298 in 1933, same source). Where a series has no clean years, the fallback is
+     whether each column falls inside the same source+item cross-country range, and where
+     neither test decides, the row says `undetermined` rather than guessing.
+
+     `area_ratio_vs_basis` / `prod_ratio_vs_basis` are read against `direction_basis`:
+     under `within-series` they are the run's median over the nearby clean years' median;
+     under `peer-range` they are 1.0 for a column inside the source's cross-country
+     [p10, p90] for the item and the ratio to the breached edge for one outside it.
+
+A column whose ratio is large but under 10x is recorded as `secondary_suspect`, not asserted:
+a real territorial change produces exactly that signature. juan austria grapes is the case --
+its area drops 213,400 -> 48,500 ha at 1918 because pre-1918 "austria" is Cisleithania, not
+the republic. Asserting "both columns moved" there would corrupt a correct cell.
+
 Like 06, this does NOT modify the source parquet (it lives outside the repo, in the
-maintainer's own store). It writes a correction table so the fix lands upstream in the
+maintainer's own store). It writes correction tables so the fix lands upstream in the
 consolidation step, where it belongs.
 
 Usage:
   python3 pipelines/polity-autoimprove/07_yield_consistency.py [--hi 200] [--lo 0.01]
-Writes state/yield_corrections.csv
+Writes state/yield_corrections.csv and state/yield_series_corrections.csv
 """
 import argparse
 import os
@@ -65,6 +101,30 @@ PROD_UNITS = extdata.PROD_UNITS
 HI_DEFAULT = 200.0
 LO_DEFAULT = 0.01
 
+# --- thresholds for the series pass (issue 111) -----------------------------------------
+# A year belongs to a defective run if its yield is a full order of magnitude from the
+# item's reference. Real year-to-year yield variation is well under 3x even in a famine
+# year, so 10x is not a distributional judgement.
+ANOM_ORDERS = 1.0
+# A year counts as CLEAN, and so as evidence of the series' true level, only well inside
+# that: half an order of magnitude (3.2x) from the reference.
+CLEAN_ORDERS = 0.5
+# A column is asserted to have MOVED only at a full order of magnitude. Between 3x and 10x
+# it is recorded as a secondary suspect and nothing is asserted: a genuine change of
+# reporting territory (austria 1918: 213,400 -> 48,500 ha) lands in exactly that band.
+MOVED_RATIO = 10.0
+SECONDARY_RATIO = 3.0
+# The cross-country fallback needs a distribution to speak of.
+MIN_PEERS = 10
+MIN_CLEAN_YEARS = 3
+# The clean level a run is compared against is the median of the NEAREST-IN-TIME clean
+# years, not of the whole series. A series can change level for real -- juan sweden linseed
+# runs at 300-3,500 ha before 1934 and 19,000-51,000 ha after 1939 because of the wartime
+# oilseed expansion -- and a whole-series median run against a wartime run says "the area
+# moved" when the area is the one column that is right. Ten years each way is enough to be
+# robust to one polluted neighbour and short enough not to cross a structural break.
+NEAR_YEARS = 10
+
 
 def nearest_power_of_ten(ratio: float) -> int:
     """How many orders of magnitude a cell is out by, to the nearest power of ten."""
@@ -72,6 +132,149 @@ def nearest_power_of_ten(ratio: float) -> int:
     if ratio <= 0:
         return 0
     return int(round(math.log10(ratio)))
+
+
+def _ratio_verdict(ratio: float) -> str:
+    """`moved` / `suspect` / `` for an inside-run to outside-run ratio of one column."""
+    if ratio is None or not (ratio == ratio) or ratio <= 0:
+        return ""
+    if ratio >= MOVED_RATIO or ratio <= 1.0 / MOVED_RATIO:
+        return "moved"
+    if ratio >= SECONDARY_RATIO or ratio <= 1.0 / SECONDARY_RATIO:
+        return "suspect"
+    return ""
+
+
+def _runs_of(series: pd.DataFrame, flagged_years: set) -> list:
+    """Maximal runs of consecutive same-sign anomalous years containing a flagged cell.
+
+    Consecutive in the series' OWN ordered paired years, not in calendar years: a source
+    that reports 1930-33 and then 1939 has one gap, not a new defect, and splitting on the
+    gap would report two runs where the unit error is one.
+    """
+    s = series.sort_values("year").reset_index(drop=True)
+    runs, cur = [], []
+    for i, r in s.iterrows():
+        sign = 0 if not r["anom"] else (1 if r["log_dev"] > 0 else -1)
+        if sign and (not cur or cur[-1][1] == sign):
+            cur.append((i, sign))
+            continue
+        if cur:
+            runs.append([i for i, _ in cur])
+        cur = [(i, sign)] if sign else []
+    if cur:
+        runs.append([i for i, _ in cur])
+    return [s.loc[idx] for idx in runs
+            if any(y in flagged_years for y in s.loc[idx, "year"])]
+
+
+def _near_level(col_series: pd.DataFrame, col: str, anom_years: set, mid: float):
+    """The NEAR_YEARS values of one column closest in time to a run, excluding the run."""
+    s = col_series[~col_series["year"].isin(anom_years)]
+    if not len(s):
+        return s[col]
+    s = s.assign(_d=(s["year"] - mid).abs()).nsmallest(NEAR_YEARS, "_d")
+    return s[col]
+
+
+def series_pass(m: pd.DataFrame, bad: pd.DataFrame,
+                area: pd.DataFrame, prod: pd.DataFrame) -> pd.DataFrame:
+    """Group flagged cells into per-series runs and say which COLUMN moved.
+
+    See the module docstring: the per-cell table cannot express either how far a defective
+    run really extends or which of the two cells is the wrong one, and both change the fix.
+
+    `area` and `prod` are the pre-merge per-column series, so a column's own level outside
+    the run is measured over EVERY year it reports -- not only the years where the other
+    column happens to be present too. That matters: iia china sesame seed reports production
+    for 1922-24 and 1939-45 with no area at all, and those years are what show the 1930-33
+    production level to be normal for the source and the 65-126 ha area to be the defect.
+    """
+    import math
+    m = m.copy()
+    m["log_dev"] = [math.log10(y / r) if (r and r == r and y > 0) else float("nan")
+                    for y, r in zip(m["yield_t_ha"], m["ref_yield"])]
+    m["anom"] = m["log_dev"].abs() >= ANOM_ORDERS
+    flagged = {(s, c, i): set() for s, c, i in
+               zip(bad["source"], bad["country"], bad["item"])}
+    for s, c, i, y in zip(bad["source"], bad["country"], bad["item"], bad["year"]):
+        flagged[(s, c, i)].add(y)
+
+    key = ["source", "country", "item"]
+    a_idx = {k: g for k, g in area.groupby(key, dropna=False)}
+    p_idx = {k: g for k, g in prod.groupby(key, dropna=False)}
+
+    rows = []
+    for k, ser in m.groupby(key, dropna=False):
+        if k not in flagged:
+            continue
+        anom_years = set(ser.loc[ser["anom"], "year"])
+        for run in _runs_of(ser, flagged[k]):
+            ar = pr = float("nan")
+            basis = "none"
+            # A column's OWN level outside every anomalous year of the series, taken over
+            # the years nearest the run (see NEAR_YEARS).
+            mid = run["year"].median()
+            out_a = _near_level(a_idx.get(k, area.iloc[:0]), "area_ha", anom_years, mid)
+            out_p = _near_level(p_idx.get(k, prod.iloc[:0]), "prod_t", anom_years, mid)
+            n_clean = min(len(out_a), len(out_p))
+            if n_clean >= MIN_CLEAN_YEARS:
+                basis = "within-series"
+                ar = run["area_ha"].median() / out_a.median()
+                pr = run["prod_t"].median() / out_p.median()
+            else:
+                peers = m[(m["source"] == k[0]) & (m["item"] == k[2])
+                          & (m["country"] != k[1]) & (m["log_dev"].abs() <= CLEAN_ORDERS)]
+                if len(peers) >= MIN_PEERS:
+                    basis = "peer-range"
+                    # A ratio to the peer MEDIAN is meaningless across countries of
+                    # different size, so the test here is CONTAINMENT in the source's own
+                    # cross-country range for the item. A column inside the range is
+                    # reported as ratio 1 (nothing to explain); one outside is reported as
+                    # its ratio to the nearer edge, which is what has to be explained.
+                    edge = {}
+                    for col in ("area_ha", "prod_t"):
+                        lo, hi = peers[col].quantile(0.10), peers[col].quantile(0.90)
+                        v = run[col].median()
+                        edge[col] = (v / lo) if v < lo else ((v / hi) if v > hi else 1.0)
+                    ar, pr = edge["area_ha"], edge["prod_t"]
+            va, vp = _ratio_verdict(ar), _ratio_verdict(pr)
+            moved = [n for n, v in (("area", va), ("production", vp)) if v == "moved"]
+            suspect = [n for n, v in (("area", va), ("production", vp)) if v == "suspect"]
+            direction = "+".join(moved) if moved else "undetermined"
+            ref = run["ref_yield"].median()
+            # The factor that restores the reference yield, computed on the column that moved.
+            if direction == "production":
+                fac = (run["area_ha"] * run["ref_yield"] / run["prod_t"]).median()
+            elif direction == "area":
+                fac = (run["prod_t"] / run["ref_yield"] / run["area_ha"]).median()
+            else:
+                fac = float("nan")
+            rows.append({
+                "source": k[0], "country": k[1], "item": k[2],
+                "year_first": int(run["year"].min()), "year_last": int(run["year"].max()),
+                "n_paired_in_run": len(run),
+                "n_flagged_cells": int(sum(y in flagged[k] for y in run["year"])),
+                "median_orders_out": round(run["log_dev"].median(), 2),
+                "direction": direction,
+                "direction_basis": basis,
+                "secondary_suspect": "+".join(suspect),
+                "area_ratio_vs_basis": float(f"{ar:.3g}") if ar == ar else "",
+                "prod_ratio_vs_basis": float(f"{pr:.3g}") if pr == pr else "",
+                "clean_years_in_series": n_clean,
+                "run_area_ha_median": float(f"{run['area_ha'].median():.4g}"),
+                "run_prod_t_median": float(f"{run['prod_t'].median():.4g}"),
+                "near_area_ha_median": (float(f"{out_a.median():.4g}") if len(out_a) else ""),
+                "near_prod_t_median": (float(f"{out_p.median():.4g}") if len(out_p) else ""),
+                "implied_factor": float(f"{fac:.3g}") if fac == fac else "",
+                "implied_factor_pow10": nearest_power_of_ten(fac) if fac == fac else "",
+                "ref_yield": round(ref, 3) if ref == ref else "",
+                "years": ";".join(str(int(y)) for y in sorted(run["year"])),
+            })
+    out = pd.DataFrame(rows)
+    if len(out):
+        out = out.sort_values("n_paired_in_run", ascending=False)
+    return out
 
 
 def main() -> int:
@@ -138,6 +341,10 @@ def main() -> int:
     path = os.path.join(H, "yield_corrections.csv")
     out.to_csv(path, index=False)
 
+    ser = series_pass(m, bad, area, prod)
+    ser_path = os.path.join(H, "yield_series_corrections.csv")
+    ser.to_csv(ser_path, index=False)
+
     n_pow = int(out["looks_like_power_of_ten"].sum())
     print(f"paired (source, country, item, year) with BOTH area and production: {len(m):,}")
     print(f"  items covered: {m['item'].nunique()}   sources: "
@@ -148,6 +355,23 @@ def main() -> int:
           f"-- a dropped decimal or a thousands column labelled units")
     print(f"  by source: {dict(out['source'].astype(str).value_counts())}")
     print(f"\nwrote state/yield_corrections.csv ({len(out)} rows)")
+
+    multi = ser[ser["n_paired_in_run"] >= 3]
+    print(f"\nseries pass: {len(ser)} defective runs, "
+          f"{int(ser['n_paired_in_run'].sum())} paired observations inside them "
+          f"vs {int(ser['n_flagged_cells'].sum())} cells the per-cell test flagged")
+    print(f"  runs of 3+ years (a unit error, not a slip): {len(multi)} covering "
+          f"{int(multi['n_paired_in_run'].sum())} observations "
+          f"({int(multi['n_flagged_cells'].sum())} flagged cells)")
+    print(f"  direction decided: {dict(ser['direction'].value_counts())}")
+    print(f"  basis: {dict(ser['direction_basis'].value_counts())}")
+    for r in multi.itertuples():
+        print(f"  {str(r.source):8s} {str(r.country)[:26]:26s} {str(r.item)[:24]:24s} "
+              f"{r.year_first}-{r.year_last}  n={r.n_paired_in_run:2d} "
+              f"(flagged {r.n_flagged_cells:2d})  {r.direction:13s} x{r.implied_factor} "
+              f"[{r.direction_basis}]"
+              + (f"  secondary: {r.secondary_suspect}" if r.secondary_suspect else ""))
+    print(f"\nwrote state/yield_series_corrections.csv ({len(ser)} rows)")
     return 0
 
 
