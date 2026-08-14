@@ -214,6 +214,18 @@ LEGITIMATE_CONTAINERS = frozenset({
     # against the colony while the member islands also report separately, so a spatial use must
     # pick one level. Same shape as FID-1887-1954 over Indochina.
     "BLI-1833-1960",
+    # The British Windward Islands Colony over its member islands, added 2026-08-14 with the row
+    # itself (issue 18). It holds DMA, GRD, LCA-1800-1838, LCA-1838-2025 and VCT -- five, because
+    # Saint Lucia is split into two period-polities at 1838 and both fall inside the same union.
+    # Containment is by construction: the polygon IS the union of those islands' GADM outlines.
+    #
+    # This is the Windward half of the shape the BWI note below already describes. FAO 1952
+    # publishes "British West Indies", "Windward Islands" and the individual islands as separate
+    # rows over the same ground, so the double-count risk is real for 13 rows of Windward Islands
+    # data and a spatial use must pick one level. Dominica is additionally inside BLI-1833-1960
+    # above, because the island was a Leeward Island until 1940 and a Windward Island after, and
+    # both rows span the transfer -- documented on both pages.
+    "WIN-1833-1960",
     # The British West Indies colonial aggregate over its members, added 2026-08-10 when its
     # polygon was built (issues 3 and 155). It holds 13 rows because the aggregate is composed
     # from their GADM outlines AND because BLI-1833-1960 -- itself an aggregate of five Leeward

@@ -198,7 +198,17 @@ BASELINE_ASYMMETRY = {
     # and is now IDN-1963-1976, whose territory IS the union of IDN-1949-1963 and NNG so it
     # names both as predecessors. Again no new historical claim -- the reverse of an edge the
     # database already stated.
-    "successor_only": 188,
+    #
+    # RAISED 188 -> 192 on 2026-08-14 (issue 18). WIN-1833-1960, the British Windward Islands
+    # Colony, declares `successor: [GRD-1800-2025, LCA-1838-2025, VCT-1833-2025, DMA-1800-2025]`
+    # and none of the four names it back. That is the SAME shape its Leeward sibling
+    # BLI-1833-1960 already has -- five successor-only edges, inside the 189 -- and for the same
+    # reason: all four island rows START IN 1800/1833/1838 and run to 2025, so they span the
+    # colonial grouping entirely rather than following it. `predecessor: WIN-1833-1960` on
+    # GRD-1800-2025 would assert that Grenada's territory was the colony's BEFORE 1800, which is
+    # false, and it would point a predecessor edge at a row that begins 33 years later. The
+    # forward direction is the true one: the colony dissolved INTO these four in 1960.
+    "successor_only": 192,
     # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
     # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
     # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to

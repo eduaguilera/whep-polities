@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "3aa8752b5b654bb5a986199982edfe41775a8f75883279568a98a8ff1724a2d5",
+ "identity_sha256": "910ca426d2856e38acda03e4e2dcf9e90ac253437804227bd3ea754622df5058",
  "counts": {
-  "total": 770,
-  "live": 727,
+  "total": 771,
+  "live": 728,
   "dead": 43
  },
  "dead_status": [
@@ -131,6 +131,7 @@
   "TUS",
   "TWO",
   "VIC",
+  "WIN",
   "ZNZ"
  ],
  "local_iso3_why": "iso3_code holds real ISO 3166-1 codes for entities that have them and LOCAL identifiers for entities that do not (historical states, this project's own aggregates). A consumer joining iso3_code against an ISO-keyed dataset will not match any code listed here. The convention is the polity family's prefix, e.g. AUH-1800-1859 carries AUH. See issue 55 for how dissolved states SHOULD be coded; this field only reports which codes are local today.",
@@ -169,9 +170,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "c3a3f4a20ff50f7e7c4e1076f906380f9812818cf88e36e26b4d9fa13279e23d",
-  "aliases": 913,
-  "labels": 480,
+  "sha256": "e9a7feae545be92144ff30a2af970bbcc7771377ed396c5871bedde9603b340b",
+  "aliases": 943,
+  "labels": 510,
   "sources": [
    "crops-manure-n",
    "fao",
@@ -1487,6 +1488,7 @@
   "WAD-1800-1912",
   "WBK-1950-1967",
   "WBL-1949-1990",
+  "WIN-1833-1960",
   "WLF-1800-2025",
   "WLO-1800-1855",
   "WSM-1900-2025",

@@ -304,6 +304,7 @@ VIC  # local
 VIR
 VNM
 VUT
+WIN  # local -- British Windward Islands Colony, WIN-1833-1960 (issue 18)
 WLF
 WSM
 YEM

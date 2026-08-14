@@ -84,9 +84,15 @@ Botswana,faostat,1961,1965,BEC-1885-1966,Bechuanaland Protectorate (1885-1966),h
 Botswana,faostat,1966,2024,BWA-1966-2025,Botswana,high,211714
 Br Solomon Is,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,
 Br Solomon Islands,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,
+Br W Indies Jamaica,fao1952,1949,1951,JAM-1800-2025,Jamaica,high,3
+Br W Indies Trinidad and Tobago,fao1952,1949,1951,TTO-1800-2025,Trinidad and Tobago,high,3
+Br West Indies Antigua,fao1952,1951,1951,ATG-1800-2025,Antigua and Barbuda,high,4
 Br West Indies Barbados,fao1952,1950,1951,BRB-1800-2025,Barbados,high,
+Br West Indies Grenada,fao1952,1951,1951,GRD-1800-2025,Grenada,high,4
 Br West Indies Jamaica,,,,JAM-1800-2025,Jamaica,high,
+Br West Indies Leeward Is,fao1952,1949,1949,BLI-1833-1960,British Leeward Islands Colony,high,2
 Br West Indies Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high,
+Br West Indies Montserrat,fao1952,1949,1950,MSR-1800-2025,Montserrat,high,6
 Br West Indies St Kitts-Nevis Anguilla,fao1952,1949,1967,KNA-1800-2025,Saint Kitts-Nevis-Anguilla (British colony),high,
 Br West Indies St Lucia,fao1952,1949,1951,LCA-1838-2025,Saint Lucia,high,12
 Br West Indies St Vincent,fao1952,1949,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high,12
@@ -104,17 +110,31 @@ British Somaliland,fao1952,1884,1960,BSS-1884-1960,British Somaliland Protectora
 British Togoland,,1920,1957,BTL-1920-1957,British Togoland,high,
 British Virgin Islands,faostat,1850,2025,VGB-1800-2025,British Virgin Islands,high,0
 british virgin islands,iia-cotton,1909,1925,VGB-1800-2025,British Virgin Islands,high,29
-British W Indies Jamaica,fao1952,1949,1951,JAM-1800-2025,Jamaica,high,3
+British W Indies Jamaica,fao1952,1938,1951,JAM-1800-2025,Jamaica,high,3
+British W Indies Trinidad and Tobago,fao1952,1938,1951,TTO-1800-2025,Trinidad and Tobago,high,4
 British West Indies,fao1952,1937,1951,BWI-1833-1962,British West Indies (colonial aggregate),high,24
 British West Indies  Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high,
+British West Indies Antigua,fao1952,1949,1950,ATG-1800-2025,Antigua and Barbuda,high,3
 British West Indies Bahama Islands,fao1952,1937,1951,BHS-1800-2025,Bahamas,high,9
+British West Indies Bahamas,fao1952,1939,1949,BHS-1800-2025,Bahamas,high,9
 British West Indies Barbados,fao1952,1935,1951,BRB-1800-2025,Barbados,high,
+British West Indies Cayman Islands,fao1952,1947,1947,CYM-1800-2025,Cayman Islands,high,2
+British West Indies Dominica,fao1952,1938,1951,DMA-1800-2025,Dominica,high,4
 British West Indies Grenada,fao1952,1800,1962,GRD-1800-2025,Grenada,high,10
 british west indies jamaica,,1800,2025,JAM-1800-2025,,medium,
+British West Indies Jamaica and Dependencies,fao1952,1937,1951,JAM-1800-2025,Jamaica,high,2
+British West Indies Leeward Is,fao1952,1950,1950,BLI-1833-1960,British Leeward Islands Colony,high,2
 British West Indies Leeward Islands,fao1952,1937,1951,BLI-1833-1960,British Leeward Islands Colony,high,
-British West Indies St Lucia,fao1952,1939,1951,LCA-1838-2025,Saint Lucia,high,10
+British West Indies Montserrat,fao1952,1951,1951,MSR-1800-2025,Montserrat,high,1
+British West Indies St Kitts-Nevis,fao1952,1951,1951,KNA-1800-2025,Saint Kitts and Nevis,high,1
+British West Indies St L cia,fao1952,1938,1951,LCA-1838-2025,Saint Lucia,high,4
+British West Indies St Lucia,fao1952,1938,1951,LCA-1838-2025,Saint Lucia,high,10
 British West Indies St Vincent,fao1952,1939,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high,13
+British West Indies Trinidad & Tobago,fao1952,1938,1951,TTO-1800-2025,Trinidad and Tobago,high,10
 British West Indies Trinidad and Tobago,fao1952,1937,1951,TTO-1800-2025,Trinidad and Tobago,high,
+British West Indies Turks and Caicos,fao1952,1948,1948,TCA-1800-2025,Turks and Caicos Islands,high,2
+British West Indies Virgin Islands,fao1952,1950,1951,VGB-1800-2025,British Virgin Islands,high,3
+British West Indies Windward Islands,fao1952,1937,1951,WIN-1833-1960,British Windward Islands Colony,high,7
 Brunei Darussalam,faostat,1961,2024,BRN-1888-2025,Brunei Darussalam,high,161774
 bulgaria,,1878,1912,BGR-1878-1913,,high,137
 bulgaria,,1913,1917,BGR-1913-1918,,high,137
@@ -446,6 +466,9 @@ Italy,lassaletta-grassland-share,1961,2009,ITA-1919-2025,Italy,high,
 Ivory Coast,,1960,2025,CIV-1960-2025,Côte d'Ivoire,high,0
 Jamaica,faostat,1961,2024,JAM-1800-2025,Jamaica,high,199570
 Jamaica,lassaletta-grassland-share,1961,2009,JAM-1800-2025,Jamaica,high,
+Jamaica St Lucia,fao1952,1949,1951,LCA-1838-2025,Saint Lucia,high,3
+Jamaica St Vincent,fao1952,1949,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high,3
+Jamaica Trinidad and Tobago,fao1952,1951,1951,TTO-1800-2025,Trinidad and Tobago,high,1
 japan,,1945,1951,JPN-1945-1952,Japan (occupied),high,
 japan,,1952,1952,JPN-1952-2025,Japan (occupied),high,
 Japan,fao1952,1895,1944,JPN-1895-1945,Japanese Empire,high,57
@@ -471,6 +494,11 @@ Lao People's Democratic Republic,lassaletta-grassland-share,1961,2009,LAO-1954-2
 Latvia,faostat,1992,2024,LVA-1991-2025,Latvia,high,120121
 Lebanon,faostat,1961,2024,LBN-1944-2025,Lebanon,high,225832
 Lebanon,lassaletta-grassland-share,1961,2009,LBN-1944-2025,Lebanon,high,
+Leeward Islands,fao1952,1950,1951,BLI-1833-1960,British Leeward Islands Colony,high,6
+Leeward Islands  Antigua,fao1952,1950,1950,ATG-1800-2025,Antigua and Barbuda,high,5
+Leeward Islands  Montserrat,fao1952,1950,1950,MSR-1800-2025,Montserrat,high,5
+Leeward Islands  St Kitts & Nevis,fao1952,1950,1950,KNA-1800-2025,Saint Kitts and Nevis,high,5
+Leeward Islands  Trinidad and Tobago,fao1952,1951,1951,TTO-1800-2025,Trinidad and Tobago,high,6
 Lesotho,faostat,1961,1965,LSO-1886-1966,Lesotho (1886-1966),high,109395
 Lesotho,faostat,1966,2024,LSO-1966-2025,Lesotho,high,109395
 Lesotho,lassaletta-grassland-share,1961,1965,LSO-1886-1966,Lesotho (1886-1966),high,
@@ -883,8 +911,10 @@ Virgin Islands US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,h
 Western Australia,sa_colonial,1829,1900,AUWA-1829-1900,Western Australia (colonial),high,
 Western Sahara,faostat,1958,1975,ESH-1958-1975,Western Sahara (1958-1975),high,0
 Western Sahara,faostat,1975,2025,ESH-1975-2025,Western Sahara,high,0
+Windward Islands,fao1952,1950,1950,WIN-1833-1960,British Windward Islands Colony,high,6
 Windward Islands  Grenada,fao1952,1800,2025,GRD-1800-2025,Grenada,high,7
 Windward Islands  St Lucia,fao1952,1838,1962,LCA-1838-2025,Saint Lucia,high,7
+Windward Islands  St Vincent,fao1952,1950,1950,VCT-1833-2025,Saint Vincent and the Grenadines,high,5
 Yemen,fao1952,1918,1962,MKY-1918-1962,Mutawakkilite Kingdom of Yemen,high,8
 Yemen,faostat,1961,1989,F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),high,187189
 Yemen,faostat,1990,2024,YEM-1990-2025,Yemen (1990-2025),high,187189

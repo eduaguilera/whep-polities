@@ -988,6 +988,38 @@ def build_bli_1833_1960() -> ogr.Geometry:
     return _union(*(_gadm_adm0(c) for c in ("ATG", "KNA", "MSR", "DMA", "VGB")))
 
 
+def build_win_1833_1960() -> ogr.Geometry:
+    """British Windward Islands Colony 1833-1960 = the four islands it grouped in 1940-1960.
+
+    The Leeward half of the British Caribbean got a polity (BLI-1833-1960, issues 3 and 155);
+    the Windward half did not, so three FAO 1952 label variants carrying 13 rows had nowhere
+    to route (issue 18). The only alternatives were BWI-1833-1962 at ~34,766 km2 -- 16x this
+    colony -- or a single island, which understates it 3-6x.
+
+        Grenada                359.5 km2
+        Saint Lucia            614.4
+        Saint Vincent          397.9
+        Dominica               754.2
+        union                2,126.1 km2
+
+    THE COMPOSITION IS MEASURED, NOT ASSUMED, because the source prints the parent and the
+    parts in the same column. FAO 1952's 1950 land-use table gives `Windward Islands` a total
+    of 215.0 thousand ha = 2,150 km2, which the four-island union matches to 1.1%. The three
+    island sub-entries in that same table -- Grenada 34.0, St Lucia 62.0, St Vincent 34.0
+    thousand ha -- sum to only 1,300 km2, and Dominica's 754 is the difference. So Dominica is
+    IN (transferred from the Leeward Islands in 1940) and Barbados is OUT (434.6 km2, left the
+    Windward Islands government in 1885) -- both of which the administrative history says
+    independently.
+
+    This is therefore the POST-1940 composition, held for the whole 1833-1960 span, because it
+    is the composition the data measures: the group population totals (247 thousand in 1937,
+    279 in 1951) also fit the four-island unit throughout. Same choice and same reason as
+    build_bli_1833_1960 above, and the two rows consequently BOTH claim Dominica for the years
+    they share -- 754 km2 of deliberate, documented overlap, on both pages.
+    """
+    return _union(*(_gadm_adm0(c) for c in ("GRD", "LCA", "VCT", "DMA")))
+
+
 def build_ind_1800_1886() -> ogr.Geometry:
     """British India 1800-1886 = Cliopatria's "British Raj" at 1880, MINUS Ceylon and the
     European enclaves that were never British.
@@ -1702,6 +1734,17 @@ BUILDERS = [
         "Dominica and the British Virgin Islands: 1,727 km2 against 1,716 declared (0.6%). "
         "The recipe was already written in the page's polygon_feature_id with no builder to "
         "run it. Issues 3 and 155.",
+    ),
+    (
+        "WIN-1833-1960",
+        "British Windward Islands Colony",
+        build_win_1833_1960,
+        "Union of GADM 4.1 adm0 Grenada, Saint Lucia, Saint Vincent and Dominica: 2,126 km2 "
+        "against FAO 1952's own 1950 group land-use total of 215.0 thousand ha = 2,150 km2 "
+        "(1.1%). The composition is fixed by that measurement, not assumed -- the same table "
+        "prints the three island sub-entries, which sum to 1,300 km2, and Dominica's 754 is "
+        "the difference. The Leeward sibling BLI-1833-1960 existed and this one did not, so "
+        "13 FAO rows had nowhere to route. Issue 18.",
     ),
     (
         "TRP-1943-1951",
