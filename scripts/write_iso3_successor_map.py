@@ -14,7 +14,8 @@ keyed exactly that way, and ~1,900 of its observed rows land in that hole (issue
 This writes `data/final/iso3_successor_map.csv`: for each (modern iso3, year) that the modern code
 does NOT cover, the polity that was actually live, found by walking BOTH chain fields back from
 the modern family's earliest row -- `predecessor` edges, plus `successor` edges read in reverse,
-because the graph is only 55% symmetric and reading one field sees half of it.
+because the graph is only 57% symmetric (live rows, measured 2026-08-13) and reading one field sees
+barely half of it.
 
 DERIVED, NOT HAND-WRITTEN, and that matters. My first attempt was a hand-authored list of code pairs
 (`SER -> SRB`, `TAN -> TZA`, ...). Deriving it from the chain graph instead means it cannot drift
@@ -35,23 +36,59 @@ consumer should treat it as one:
     depth 1     a predecessor edge says so directly
     depth 2+    reached through intermediate rows; plausible, not asserted
 
-WHAT IT DOES NOT RESOLVE, AND WHY. Of whep_crops' 482 uncovered observed (iso3, year) pairs this
-map answers 96 (822 rows), 86 of them at depth 1 -- including the three largest blocks: TZA 465
-rows to `TAN`, ISR 230 to `PAL`, SRB 120 to `SCG`/`F248`. The other 386 fail for ONE reason, and it
-is not a mapping problem:
+WHAT IT DOES NOT RESOLVE, AND WHY.
 
-    SOM: earliest SOM-1960-2025    predecessor: NONE
-    BWA: earliest BWA-1966-2025    predecessor: NONE
-    SDN: earliest SUD-1956-2011    predecessor: NONE
-    ERI: earliest ERI-1885-1889    predecessor: NONE
-    TGO: earliest FTO-1920-1960    predecessor: GTO-1919-1922 (DEAD TARGET)
+THE FIRST VERSION OF THIS SECTION WAS WRONG AND IS KEPT HERE AS A WARNING. It said the map answered
+96 of whep_crops' 482 uncovered (iso3, year) pairs and that 386 failed for one reason -- the earliest
+row of a family having no `predecessor` -- and it listed SOM, BWA, SDN, ERI and TGO as the examples.
+Issue 171 was filed off that list. By the time anyone measured it, four of the five were already
+resolved, and NOT by adding any edge: this walk reads `successor` in reverse as well (see the comment
+in build()), and BSS-1884-1960, ITS-1908-1960, BEC-1885-1966 and SUD-1934-1956 had each named their
+successor all along. Measured 2026-08-13:
 
-The historical rows EXIST -- BSS-1884-1960 and ITS-1908-1960 for Somaliland, BEC-1885-1966 for
-Bechuanaland -- and nothing links them to their successors. So the walk starts and immediately has
-nowhere to go. `validate_chain_integrity` checks that the edges present are coherent; nothing checks
-that an independence transition HAS one.
+    SOM  76 pairs, 1884-1959, all depth 1 via BSS-1884-1960
+    BWA  81 pairs, 1885-1965, all depth 1 via BEC-1885-1966
+    SDN  57 pairs, 1899-1955, depth 1-2 via SUD-1934-1956 / SUD-1899-1934
+    ERI  41 pairs, 1952-1992, depth 1 via ETH-1952-1993
+    RUS  74 pairs, 1917-1990, depth 1-6 through the F228 chain
 
-A HEURISTIC FOR FINDING THOSE MISSING EDGES WAS TRIED AND REJECTED -- recorded so nobody repeats it.
+Those four reverse edges were nevertheless WRITTEN DOWN on 2026-08-13, in a second pass on issue
+171, and the map did not move by one row (5,169 pairs before and after). SOM-1960-2025 now names
+`predecessor: BSS-1884-1960; ITS-1908-1960`, BWA-1966-2025 names BEC-1885-1966 and SUD-1956-2011
+names SUD-1934-1956. The reason is not this script -- it already read both fields -- but that all
+three pages asserted in prose that the predecessor row did not exist ("no dedicated WHEP row
+identified in CSV"), which was false, and two carried open questions asking someone to go looking
+for rows that were already in the database. A consumer writing their own one-field traversal, which
+is exactly what the first version of this walk was, saw nothing there.
+
+The lesson is not that the numbers went stale -- it is that a docstring quoting a coverage figure is a
+measurement with no test behind it, and this one survived long enough to become the premise of an
+issue. Regenerate before quoting: the script prints its own totals.
+
+WHAT ACTUALLY REMAINS UNRESOLVED is a much shorter list, and every entry is a MISSING POLITY rather
+than a missing edge:
+
+    TGO  0 pairs -- FTO-1920-1960 covers 1920-1960 and names GTO-1919-1922, which is a DEAD TARGET
+                    (baselined in validate_chain_integrity). Nothing models German Togoland, so
+                    1850-1919 has no answer to give.
+    COM  0 pairs -- Comoros was a dependency of Madagascar 1908-1946. The only candidate row is
+                    MDG-1882-2025, a single live row conflating the colony with the republic; naming
+                    it would assert that Madagascar became the Comoros.
+    PAK  0 pairs -- PAK-1937-1947 is a SUB-TERRITORY of British India reported separately, running
+                    parallel to IND-1937-1947 rather than after it. Its page declines a predecessor
+                    on purpose. A containment relation is not a succession and this schema has no
+                    field for one -- the same overloading PR 135 removed from Greenland and Iceland.
+    HUN  0 pairs -- correct: HUN-1800-1918 already covers 1850 onward, so there is no gap.
+
+Two entries came OFF that list on 2026-08-13 (issue 171), and both were missing edges after all:
+
+    LBY  0 -> 62 pairs, 1850-1911, via OTT-1908-1912 (Treaty of Ouchy, 18 October 1912). The issue
+         said "Ottoman Tripolitania -- no row"; false, the OTT chain runs 1800-1912 and ends in
+         exactly Libya's start year. Added symmetrically.
+    BFA  0 -> 39 pairs, 1895-1918 and 1932-1946, via AOF-1895-1960, following the convention
+         NER-1911-1922 and MRT-1920-1960 already use for carve-outs of French West Africa.
+
+A HEURISTIC FOR FINDING MISSING EDGES WAS TRIED AND REJECTED -- recorded so nobody repeats it.
 Selecting rows with no predecessor that have a span-adjacent candidate (some other row ending exactly
 where they start) yields 134 rows, and the candidates are mostly year coincidence:
 
@@ -60,6 +97,11 @@ where they start) yields 134 rows, and the candidates are mostly year coincidenc
 1913 was a busy year; none of those preceded Albania. A few hits are real (BWA-1966-2025 <- BEC-1885-1966,
 AOI-1936-1941 <- ETH-1907-1936) but the precision is far too low to gate on, and a gate that is mostly
 false positives trains people to ignore it. The missing edges need naming case by case.
+
+Note also that the heuristic would have MISSED both edges issue 171 actually needed to have added:
+LBY-1912-1919 had no predecessor and OTT-1908-1912 is span-adjacent, so that one it would have found;
+but BFA's answer is AOF-1895-1960, whose span CONTAINS both BFA rows rather than abutting them, so no
+adjacency rule reaches it. The two real fixes here have opposite shapes.
 
 Usage:
   python3 scripts/write_iso3_successor_map.py
@@ -115,13 +157,17 @@ def build() -> list:
     def covers(iso, year):
         return any(span(r)[0] <= year < span(r)[1] for r in by_iso.get(iso, ()))
 
-    # THE GRAPH IS ONLY 55% SYMMETRIC, so a walk that reads one field sees half of it.
+    # THE GRAPH IS ONLY 57% SYMMETRIC, so a walk that reads one field sees barely half of it.
+    # Live rows only, matching validate_chain_integrity signal F, measured 2026-08-13:
     #
-    #     edges asserted as A.successor = B       539
-    #     edges asserted as B.predecessor = A     430
-    #     asserted BOTH ways                      345
-    #     successor-only  (no reverse predecessor) 194
-    #     predecessor-only (no reverse successor)   85
+    #     edges asserted as A.successor = B       548
+    #     edges asserted as B.predecessor = A     440
+    #     asserted BOTH ways                      357
+    #     successor-only  (no reverse predecessor) 191
+    #     predecessor-only (no reverse successor)   83
+    #
+    # (The pinned counts live in validate_chain_integrity.BASELINE_ASYMMETRY. These are here for
+    # the reader; that gate is what keeps them honest.)
     #
     # The first version of this walk read `predecessor` only and therefore could not see 194 real
     # relations -- including SOM-1960-2025, whose predecessors BSS-1884-1960 and ITS-1908-1960 BOTH

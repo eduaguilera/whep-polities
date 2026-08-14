@@ -52,8 +52,8 @@ BEL-1831-2025,Belgium,1831,2025,national,BEL,211,Europe,draft,2026-04-12,cshapes
 BEN-1895-1898,Benin (1895-1898),1895,1898,national,BEN,434,Africa,draft,2026-04-13,cshapes-2.0,434,1895,assigned,,DHY-1800-1894,BEN-1898-1960
 BEN-1898-1960,Benin (1898-1960),1898,1960,national,BEN,434,Africa,draft,2026-04-12,cshapes-2.0,434,1898,assigned,,BEN-1895-1898,BEN-1960-2025
 BEN-1960-2025,Benin,1960,2025,national,BEN,434,Africa,draft,2026-04-12,cshapes-2.0,434,1960,assigned,,DHY-1800-1894; PNV-1800-1882; BEN-1898-1960,
-BFA-1919-1932,Upper Volta (1919-1932),1919,1932,national,BFA,439,Africa,draft,2026-06-26,cshapes-2.0,439,1947,assigned,,,
-BFA-1947-1960,Burkina Faso (1947-1960),1947,1960,national,BFA,439,Africa,draft,2026-04-12,cshapes-2.0,439,1947,assigned,,,BFA-1960-2025
+BFA-1919-1932,Upper Volta (1919-1932),1919,1932,national,BFA,439,Africa,draft,2026-06-26,cshapes-2.0,439,1947,assigned,,AOF-1895-1960,
+BFA-1947-1960,Burkina Faso (1947-1960),1947,1960,national,BFA,439,Africa,draft,2026-04-12,cshapes-2.0,439,1947,assigned,,AOF-1895-1960,BFA-1960-2025
 BFA-1960-2025,Burkina Faso,1960,2025,national,BFA,439,Africa,draft,2026-04-12,cshapes-2.0,439,1960,assigned,,MOS-1800-1897; BFA-1947-1960,
 BGA-1800-1894,Kingdom of Buganda,1800,1894,national,,,Africa,draft,2026-04-12,paine-2024,Buganda,,assigned,,,UGA-1894-1902; UGA-1962-2025
 BGD-1947-1971,East Pakistan (1947-1971),1947,1971,national,BGD,771,Asia,draft,2026-04-16,cshapes-2.0,771,1971,assigned,,PAK-1937-1947,BGD-1971-2025
@@ -101,7 +101,7 @@ BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,national,BSS
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,colonial,MYS,824,Asia,draft,2026-06-26,cshapes-2.0,824,1889,assigned,124276,,MYS-1963-1965
 BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,,Africa,draft,2026-06-26,constructed,BTL-1920-1957,1957,assigned,26630,GTO-1919-1922,GHA-1957-2025
 BTN-1800-2025,Bhutan,1800,2025,national,BTN,,Asia,draft,2026-04-12,cshapes-2.0,760,1886,assigned,,,
-BWA-1966-2025,Botswana,1966,2025,national,BWA,571,Africa,draft,2026-04-13,cshapes-2.0,571,1966,assigned,,,
+BWA-1966-2025,Botswana,1966,2025,national,BWA,571,Africa,draft,2026-04-13,cshapes-2.0,571,1966,assigned,,BEC-1885-1966,
 BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,national,BWI,,North America,draft,2026-06-26,constructed,BWI-1833-1962,,proxy,34766,,JAM-1800-2025; TTO-1800-2025; BRB-1800-2025; BHS-1800-2025; ATG-1800-2025; GRD-1800-2025; VCT-1833-2025; DMA-1800-2025; LCA-1838-2025; KNA-1800-2025; MSR-1800-2025
 CAF-1906-1912,Central African Republic (1906-1912),1906,1912,national,CAF,482,Africa,draft,2026-04-13,cshapes-2.0,482,1906,assigned,,,CAF-1912-1919
 CAF-1912-1919,Central African Republic (1912-1919),1912,1919,national,CAF,482,Africa,draft,2026-04-13,cshapes-2.0,482,1912,assigned,,CAF-1906-1912,CAF-1919-1960
@@ -421,7 +421,7 @@ LBA-1800-1885,Luba Empire,1800,1885,national,,,Africa,draft,2026-04-15,paine-202
 LBN-1920-1944,Lebanon (1920-1944),1920,1944,national,LBN,660,Asia,draft,2026-04-12,cshapes-2.0,660,1920,assigned,,,LBN-1944-2025
 LBN-1944-2025,Lebanon,1944,2025,national,LBN,660,Asia,draft,2026-04-12,cshapes-2.0,660,1944,assigned,,LBN-1920-1944,
 LBR-1847-2025,Liberia,1847,2025,national,LBR,450,Africa,draft,2026-04-13,cshapes-2.0,450,1892,assigned,,,
-LBY-1912-1919,Libya (1912-1919),1912,1919,national,LBY,620,Africa,draft,2026-04-15,cshapes-2.0,620,1912,assigned,,,LBY-1919-1925
+LBY-1912-1919,Libya (1912-1919),1912,1919,national,LBY,620,Africa,draft,2026-04-15,cshapes-2.0,620,1912,assigned,,OTT-1908-1912,LBY-1919-1925
 LBY-1919-1925,Libya (1919-1925),1919,1925,national,LBY,620,Africa,draft,2026-04-15,cshapes-2.0,620,1919,assigned,,,LBY-1925-1934
 LBY-1925-1934,Libya (1925-1934),1925,1934,national,LBY,620,Africa,draft,2026-04-15,cshapes-2.0,620,1925,assigned,,,LBY-1934-1943
 LBY-1934-1943,Libya (1934-1943),1934,1943,national,LBY,620,Africa,draft,2026-04-15,cshapes-2.0,620,1934,assigned,,,LBY-1943-1949; TRP-1943-1951; FEZ-1943-1951
@@ -543,7 +543,7 @@ OMN-1800-1856,Omani Empire,1800,1856,national,OMN,,Asia,draft,2026-04-13,cliopat
 OMN-1856-2025,Sultanate of Oman,1856,2025,national,OMN,,Asia,draft,2026-04-12,cliopatria,Sultanate of Oman,1973,assigned,,OMN-1800-1856,
 OTT-1800-1886,Ottoman Empire (to 1886),1800,1886,national,OTT,640,Asia,draft,2026-04-11,cliopatria,Ottoman Empire,1857,assigned,,,OTT-1886-1908
 OTT-1886-1908,Ottoman Empire (1886–1908),1886,1908,national,OTT,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1886,assigned,,OTT-1800-1886,OTT-1908-1912
-OTT-1908-1912,Ottoman Empire (1908–1912),1908,1912,national,OTT,640,Asia,draft,2026-04-11,cshapes-2.0,640,1886,assigned,,OTT-1886-1908,TUR-1913-1914; SAU-1924-2025
+OTT-1908-1912,Ottoman Empire (1908–1912),1908,1912,national,OTT,640,Asia,draft,2026-04-11,cshapes-2.0,640,1886,assigned,,OTT-1886-1908,TUR-1913-1914; SAU-1924-2025; LBY-1912-1919
 OYO-1800-1836,Oyo Empire,1800,1836,national,,,Africa,draft,2026-04-15,paine-2024,Oyo,,assigned,,,IBD-1829-1893
 PAK-1937-1947,"Pakistan (territory within British India, 1937–1947)",1937,1947,national,PAK,770,Asia,draft,2026-06-30,cshapes-2.0,770,1947,assigned,881625,,PAK-1947-1949
 PAK-1947-1949,Pakistan (1947-1949),1947,1949,national,PAK,770,Asia,draft,2026-04-13,cshapes-2.0,770,1947,assigned,,,PAK-1949-1971
@@ -656,7 +656,7 @@ SNI-1899-1906,Southern Nigeria (1899-1906),1899,1906,national,SNI,,Africa,draft,
 SNI-1906-1913,Southern Nigeria (1906-1913),1906,1913,national,SNI,,Africa,draft,2026-04-13,cshapes-2.0,4783,1906,assigned,202103,SNI-1899-1906,NGA-1914-1960
 SNW-1814-1905,"Sweden-Norway (Union, 1814-1905)",1814,1905,national,SNW,380,Europe,draft,2026-04-12,cshapes-europe,380,1816,assigned,,SWE-1809-1814,SWE-1905-2025; NOR-1800-2025
 SOK-1804-1903,Sokoto Caliphate,1804,1903,national,,,Africa,draft,2026-04-15,paine-2024,Sokoto,,assigned,,GOB-1800-1808,NNI-1899-1904
-SOM-1960-2025,Somalia,1960,2025,national,SOM,520,Africa,draft,2026-04-13,cshapes-2.0,520,1960,assigned,,,
+SOM-1960-2025,Somalia,1960,2025,national,SOM,520,Africa,draft,2026-04-13,cshapes-2.0,520,1960,assigned,,BSS-1884-1960; ITS-1908-1960,
 SPM-1816-2025,Saint Pierre and Miquelon,1816,2025,colonial,SPM,,North America,draft,2026-07-02,gadm-4.1-adm0,SPM,2024,proxy,242,,
 SRB-2006-2008,Serbia (including Kosovo),2006,2008,national,SRB,345,Europe,draft,2026-07-02,cshapes-2.0,340,2007,assigned,87745,SCG-1992-2006,SRB-2008-2025; KOS-2008-2025
 SRB-2008-2025,Serbia,2008,2025,national,SRB,345,Europe,reviewed,2026-04-12,cshapes-2.0,340,2008,assigned,77251,SRB-2006-2008,
@@ -665,7 +665,7 @@ SSD-2011-2025,South Sudan,2011,2025,national,SSD,626,Africa,draft,2026-04-12,csh
 STP-1800-2025,Sao Tome and Principe,1800,2025,national,STP,403,Africa,draft,2026-04-13,gadm-4.1-adm0,STP,,proxy,1002,,
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,national,SUD,,Africa,draft,2026-04-17,cshapes-2.0,625,1914,assigned,2579525,,SUD-1934-1956
 SUD-1934-1956,Sudan (1934-1956),1934,1956,national,SUD,,Africa,draft,2026-04-16,cshapes-2.0,625,1934,assigned,,SUD-1899-1934,SUD-1956-2011
-SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SDN,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,,SDN-2011-2025; SSD-2011-2025
+SUD-1956-2011,Sudan (1956-2011),1956,2011,national,SDN,,Africa,draft,2026-04-12,cshapes-2.0,625,1956,assigned,,SUD-1934-1956,SDN-2011-2025; SSD-2011-2025
 SUR-1886-1954,Dutch Guiana,1886,1954,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1886,assigned,144985,,SUR-1954-1975
 SUR-1954-1975,Surinam (Autonomous),1954,1975,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1954,assigned,144985,SUR-1886-1954,SUR-1975-2025
 SUR-1975-2025,Suriname,1975,2025,national,SUR,115,South America,draft,2026-07-01,cshapes-2.0,115,1975,assigned,144985,SUR-1954-1975,

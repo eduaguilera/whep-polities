@@ -91,6 +91,13 @@ What each found first time out:
   what it sums. Symmetry is the goal, but not at the price of asserting a succession that did not
   happen.
 
+  RAISED AGAIN the same day, by two, for the mirror image of that reason -- see the comment on
+  BASELINE_ASYMMETRY["predecessor_only"]. Issue 171 asked for the missing independence edges and
+  most of them turned out to be already reachable; the two that were not, BFA-1919-1932 and
+  BFA-1947-1960, take French West Africa as a predecessor while AOF ran on past both events, so the
+  reverse successor would be a false claim about when AOF ended. Not every asymmetry is a defect;
+  what the pin buys is that each one had to be argued for in writing.
+
   The counts are PINNED rather than the edges enumerated -- 279 entries would be unreadable, and
   what matters is the direction of travel.
 
@@ -177,8 +184,26 @@ BASELINE_CEILING = {
 #  the same way; symmetry is the goal, but not by asserting that Belgium's territory BECAME a
 #  reporting union's.
 BASELINE_ASYMMETRY = {
-    "successor_only": 193,
-    "predecessor_only": 81,
+    # LOWERED 193 -> 189 on 2026-08-13 (issue 171), by recording four reverse edges that the
+    # database already asserted from the other side and three pages denied in prose:
+    #     SOM-1960-2025 <- BSS-1884-1960, ITS-1908-1960   (both colonies already named SOM)
+    #     BWA-1966-2025 <- BEC-1885-1966                  (BEC already named BWA)
+    #     SUD-1956-2011 <- SUD-1934-1956                  (SUD-1934-1956 already named SUD)
+    # No new historical claim was made: each edge is the reverse of one the database states, and
+    # the pages had said "no dedicated WHEP row identified" about rows that exist. The ISO3 map is
+    # byte-identical before and after (5,169 pairs), because its walk already read both fields --
+    # what changed is that a consumer reading `predecessor` alone now sees these four.
+    "successor_only": 189,
+    # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
+    # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
+    # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to
+    # 1960 through both events, so "AOF's successor is BFA-1919-1932" would assert that AOF ended in
+    # 1919, which is false. The predecessor direction is the true one -- the territory was AOF's
+    # before it was a separate colony -- and it is the direction the ISO3 map walks. This is the same
+    # asymmetry the F206 entry above describes, mirrored: an aggregate may BE a predecessor without
+    # anything being its successor. NER-1911-1922, NER-1922-1947 and MRT-1920-1960 already carry
+    # exactly this edge, predecessor-only, which is why 83 is consistency rather than drift.
+    "predecessor_only": 83,
 }
 
 BASELINE_LINKS = {

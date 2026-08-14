@@ -177,9 +177,9 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "4a40ad81030c5730dd4f7d8014b3c2cbbe65f13456b3cc74d8427bc6043d1ee3",
-  "relations": 5131,
-  "modern_iso3": 75
+  "sha256": "013ee8087fa064c36435f8e378b46da3fcbc4c5491b7c754322871ae7584db45",
+  "relations": 5232,
+  "modern_iso3": 77
  },
  "territory_families": {
   "AGO": [
@@ -201,6 +201,13 @@
     "family": "DHY",
     "year_min": 1850,
     "year_max": 1893
+   }
+  ],
+  "BFA": [
+   {
+    "family": "AOF",
+    "year_min": 1895,
+    "year_max": 1946
    }
   ],
   "BGD": [
@@ -363,6 +370,13 @@
     "family": "SRB",
     "year_min": 2006,
     "year_max": 2007
+   }
+  ],
+  "LBY": [
+   {
+    "family": "OTT",
+    "year_min": 1908,
+    "year_max": 1911
    }
   ],
   "LSO": [
