@@ -111,7 +111,12 @@ BASELINE_EXPIRED_WINS = frozenset({
     ("F228-1914-1917", 1917),     # family unreachable
     ("F228-1917-1918", 1918),     # family unreachable
     ("F228-1920-1921", 1921),     # family unreachable
-    ("F228-1921-1940", 1940),     # family unreachable
+    # ("F228-1921-1940", 1940) removed 2026-08-14: it now resolves to its successor, so the
+    # entry had become a place for a real regression to hide. It was baselined as "family
+    # unreachable"; PR 230 gave the three USSR rows their ISO 3166-3 code SUN, which is what
+    # made F228-1940-1945 reachable from the 1940 boundary -- both rows now read SUN. The four
+    # F228 entries above are NOT affected and stay: their successors are pre-USSR rows whose
+    # iso3 is blank (F228-1905-1914, -1918-1920) or RUS, so no code links them.
     ("MAN-1932-1945", 1945),      # type guard: successor is `subnational`
     ("SER-1913-1918", 1918),      # type guard: successor is `subnational`
     ("SUD-1934-1956", 1956),      # family unreachable
