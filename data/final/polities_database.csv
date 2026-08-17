@@ -457,7 +457,7 @@ MAC-1800-2025,"China, Macao SAR",1800,2025,national,MAC,,Asia,draft,2026-06-09,g
 MAF-2007-2025,Saint-Martin (French part),2007,2025,territory,MAF,,North America,draft,2026-08-13,gadm-4.1-adm0,MAF,,estimate,53,,
 MAN-1932-1945,Manchukuo (1932-1945),1932,1945,national,MAN,,Asia,draft,2026-04-17,constructed,MAN-1932-1945,,assigned,791708,CHN-1921-1932,CHN-1945-1947; CHN-1947-1949; CHN-1950-2025
 MAN-1945-1950,"Manchuria (region, 1945-1950)",1945,1950,subnational,MAN,,Asia,draft,2026-07-27,constructed,MAN-1932-1945,,assigned,791708,MAN-1932-1945,CHN-1950-2025
-MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1912,assigned,,MOR-1800-1904,MAR-1958-1975
+MAR-1911-1958,Morocco (to 1958),1911,1958,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1912,assigned,,MOR-1904-1911,MAR-1958-1975
 MAR-1958-1975,Morocco (1958-1975),1958,1975,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1958,assigned,,MAR-1911-1958,MAR-1975-1979
 MAR-1975-1979,Morocco (1975-1979),1975,1979,national,MAR,600,Africa,reviewed,2026-04-12,cshapes-2.0,600,1975,assigned,,MAR-1958-1975,MAR-1979-2025
 MAR-1979-2025,Morocco,1979,2025,national,MAR,600,Africa,draft,2026-04-12,cshapes-2.0,600,1979,assigned,,MAR-1975-1979,
@@ -486,7 +486,8 @@ MNE-2006-2025,Montenegro,2006,2025,national,MNE,341,Europe,draft,2026-04-12,csha
 MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,national,MNG,,Asia,draft,2026-04-13,cshapes-2.0,712,1921,assigned,,,MNG-1921-2025
 MNG-1921-2025,Mongolia,1921,2025,national,MNG,712,Asia,draft,2026-04-13,cshapes-2.0,712,1921,assigned,,MNG-1911-1921,
 MNP-1986-2025,Northern Mariana Islands,1986,2025,territory,MNP,,Oceania,draft,2026-08-13,gadm-4.1-adm0,MNP,,estimate,464,,
-MOR-1800-1904,Morocco (to 1904),1800,1904,national,MOR,,Africa,draft,2026-04-15,cliopatria,Morocco,1800,assigned,,,MAR-1911-1958
+MOR-1800-1904,Morocco (to 1904),1800,1904,national,MOR,,Africa,draft,2026-04-15,cliopatria,Morocco,1800,assigned,,,MOR-1904-1911
+MOR-1904-1911,Morocco (1904-1911),1904,1911,national,MOR,,Africa,draft,2026-08-17,cliopatria,Morocco,1905,assigned,,MOR-1800-1904,MAR-1911-1958
 MOR-1904-1956,Morocco (1904-1956) [superseded],1904,1956,national,MOR,,Africa,superseded,2026-06-24,cshapes-2.0,600,1902,assigned,,,MAR-1911-1958
 MOR-1956-1958,Morocco (1956-1958),1956,1958,national,MOR,,Africa,retired,2026-04-15,cshapes-2.0,600,1912,assigned,,,MAR-1911-1958
 MOS-1800-1897,Mossi Kingdoms,1800,1897,national,,,Africa,draft,2026-04-13,paine-2024,Mossi,,assigned,,,BFA-1960-2025; BFA-1947-1960

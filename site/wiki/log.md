@@ -139,6 +139,70 @@ relation this schema has no field for, and COM-1946-1975's only candidate is MDG
 single live row conflating the Madagascar colony with the republic. Nothing new was learned
 about either, so nothing was asserted about either.
 
+## morocco-1904-1910-territory-hole
+**Date:** 2026-08-17
+**Touched:** mor-1904-1911 (new), mor-1800-1904, mar-1911-1958, mor-1904-1956
+**Source:** cliopatria-v0.1.3
+**Kind:** decision
+
+**Seven years of Morocco were in no live polity row.** `MOR-1800-1904` ends 1904
+(exclusive, so it covers through 1903) and `MAR-1911-1958` starts 1911. Nothing
+covered **1904-1910**. This entry adds [mor-1904-1911](polities/mor-1904-1911.md)
+and re-chains `MOR-1800-1904 -> MOR-1904-1911 -> MAR-1911-1958`.
+
+**Cause, measured.** Not a missing edge: the hole was *opened* by
+[morocco-mar-mor-double-count](#morocco-mar-mor-double-count) on 2026-06-24.
+`MOR-1904-1956` was superseded as a duplicate of `MAR-1911-1958`, and it was one —
+for **1911-1956**. It also held **1904-1910**, which `MAR-1911-1958` does not, and
+the supersession retired the row whole. `MOR-1800-1904`'s `successor` was then
+pointed straight at `MAR-1911-1958`, which made the chain look continuous while the
+spans did not meet.
+
+**Why no gate saw it.** `validate_period_gaps` compares consecutive rows *within a
+prefix*, and after the supersession the `MOR` prefix had exactly one live row, so it
+had no consecutive pair to compare. The hole falls *between* the `MOR` and `MAR`
+families — the cross-family blindness that is the subject of issue 82. It surfaced
+in `data/final/iso3_successor_map.csv` instead: modern `MAR` resolved 1850-1903 (54
+pairs, all depth 1 via `MOR-1800-1904`) and then nothing until its own rows begin.
+Sweeping every non-local ISO3 for that shape — a resolved year, then unresolved
+years, then the family's own start — finds **six** codes: `MAR` (1904-1910), `SAU`
+(1912-1923), `VAT` (1870-1928), `ZMB` (1905-1910), `BEN` (1894) and `TZA` (1890).
+Only `MAR` is fixed here; the other five are not diagnosed and are left open.
+
+**Consequence in the data.** The `French Morocco` alias was clipped from 1904 to
+1911 on 2026-08-11 (issue 54) precisely because "NO Moroccan polity covers
+1904-1910" — turning an invisible mis-route into a visible gap, on the correct
+reasoning that French Morocco did not exist in 1904. That clip stands: its 261
+observed rows are **1937-1951** and none of them reach 1904-1910, so no alias
+change is needed. What does reach the hole is the lower-case `morocco` label
+(992 rows, 1909-1960): **two rows, IIA 1909 and 1910**, both `iso3c = mar`, both
+value 0.0 tonnes. Small, but they resolved to nothing and no error was raised.
+
+**Territorial evidence, and the boundary that was not moved.** Cliopatria has a
+`Morocco` step **1905-1911** (359,089 km² in ESRI:54009), then no Morocco feature
+at all until 1956-1957 — an independent source agreeing that the sovereign
+sultanate ends with the protectorate and not in 1904. The step immediately before
+it, 1890-1904, measures 359,471 km², so territory is flat to **0.106%** across the
+1904 split: 1904 is a diplomatic boundary (the Entente Cordiale), not a territorial
+one. The new row binds the 1905-1911 step, which covers six of its seven years.
+
+The row ends at **1911**, not 1912, even though the Treaty of Fez was 30 March 1912
+and Cliopatria's step runs through 1911 inclusive. That is deference, not a finding:
+`MAR-1911-1958`'s 1911 start is itself unexplained and has carried `oq-1911-start`
+since April. Creating a 1911 overlap to satisfy the sources would trade a coverage
+hole for the exact cross-family overlap issue 82 complains no gate can see. If
+`oq-1911-start` is ever resolved to 1912, both boundaries move together; that is
+recorded as `oq-mor-1911-vs-1912` on the new page.
+
+**Deliberately not done.** No change to `MAR-1911-1958`'s span, polygon or matched
+rows; no alias edits; no new gate for the cross-family gap shape (the six-code
+sweep above is the measurement a future gate would need, but five of the six cases
+are undiagnosed and a baseline written now would mostly pin unexplained holes); and
+no revisit of the `MOR`/`MAR` prefix duplication, which is the data-model half of
+issue 82 and unaffected by this row.
+
+---
+
 ## fao1952-population-series-resolved-issue-13
 **Date:** 2026-08-14
 **Touched:** f248-1920-1947, sac-1935-1947

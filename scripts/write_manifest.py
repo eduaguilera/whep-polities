@@ -258,6 +258,15 @@ if os.path.exists(ALIAS_MAP):
 #                        that is where the database ASSERTS the relation with an edge; depth 2+
 #                        is a traversal inference and belongs in the year-resolved file where a
 #                        consumer can see the depth it is trusting.
+#
+# THE DEPTH-1 FILTER UNDERSTATES A FAMILY THAT CHAINS INTERNALLY, and the fix for issue 82's gap
+# half made that visible rather than hypothetical. MAR/MOR used to read 1850-1903 -- every year
+# resolved to MOR-1800-1904 at depth 1. Inserting MOR-1904-1911 to cover 1904-1910 put
+# MOR-1800-1904 one hop further out, so the same relation now reads 1904-1910: the years did not
+# stop being MOR's, the edge chain into MAR got longer. Widening this to any depth was rejected --
+# it would publish traversal inferences (DDR reaching AUT-1919-2025) as assertions, which is the
+# one thing the depth-1 rule exists to prevent -- so the narrowing is documented in
+# territory_families_why instead, and iso3_successor_map remains the per-year authority.
 SUCCESSOR_MAP = os.path.join(REPO, "data/final/iso3_successor_map.csv")
 successor_map_info = None
 territory_families = {}
@@ -448,7 +457,14 @@ manifest = {
         "derived from those edges, not hand-written, so it cannot drift from the database. For "
         "per-year resolution, including the deeper traversals this field omits, read "
         "iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a "
-        "polity whose edge is missing, or by no row at all -- MAR has no holder for 1904-1910."
+        "polity whose edge is missing, or by no row at all -- SAU has no holder for 1912-1923, "
+        "which is the second kind: SAU-1924-2025 names OTT-1908-1912 and nothing models the "
+        "Hejaz or Nejd between them. This sentence read 'MAR has no holder for 1904-1910' "
+        "until 2026-08-17, when MOR-1904-1911 was added and that hole was closed (issue 82). "
+        "A NARROW YEAR RANGE IS ALSO NOT A HOLE: this field takes hop_depth 1 only, so a "
+        "family that reaches the modern code through a chain of its OWN rows is reported over "
+        "the last link's years alone -- MAR/MOR reads 1904-1910, not 1850-1910, because "
+        "MOR-1800-1904 now sits behind MOR-1904-1911. Read iso3_successor_map for the rest."
     ),
     "live_polity_codes": sorted(r["polity_code"] for r in live),
 }
