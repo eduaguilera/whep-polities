@@ -221,9 +221,26 @@ name: Validate database
 #                            not exist (50 of them Sudan). The map is published
 #                            so consumers read it instead of guessing.
 #
+#   validate_matcher_orphan_guard
+#                            the matchers still cannot RUN here, but their OUTPUT can be
+#                            checked here: a row of data/final/faostat_area_polity_map.csv
+#                            retargeted to a fabricated ZZZ-1800-1900 passes NINE of the TEN
+#                            gates that read that file, because the only one that joins on the
+#                            code (validate_map_area_year) SKIPS rows whose code is not live
+#                            (the tenth, crosscheck_matchers, does catch it). That is the #244
+#                            failure one step further out — five codes carrying 799 rows once
+#                            sat in the layer-B match while territory_basis published 0 rows
+#                            for their successors. This checks the committed crosswalks
+#                            against the live polity set (1,540 references, 0 unroutable) and
+#                            checks that each matcher still refuses to WRITE an unroutable
+#                            one — the part that matters most, since two of those outputs
+#                            (matched_rows.parquet, data/compiled/pre1961/matched.csv) are
+#                            gitignored and no gate here can ever read them.
+#
 # These need only what the repo commits (wiki/, data/final/). The MATCHERS are
 # deliberately absent: they need the layer-B parquet and the FAOSTAT pins cache,
-# which live outside the repo — see issue #17.
+# which live outside the repo — see issue #17. Their output is checked here even so,
+# by validate_matcher_orphan_guard; what remains unverifiable in CI is the match COUNT.
 
 on:
   push:
@@ -426,6 +443,10 @@ jobs:
       - name: Every alias can actually route to a live polity
         if: '!cancelled()'
         run: python3 scripts/validate_aliases.py
+
+      - name: Every matcher crosswalk routes to a live polity, and refuses to write when it cannot
+        if: '!cancelled()'
+        run: python3 scripts/validate_matcher_orphan_guard.py
 
       - name: Duplicated constants still agree
         if: '!cancelled()'

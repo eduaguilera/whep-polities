@@ -37,6 +37,8 @@ args <- commandArgs(trailingOnly = TRUE)
 apply_aliases <- !("--no-apply" %in% args)
 
 whep_repo <- Sys.getenv("WHEP_REPO", unset = "/home/usuario/WHEP")
+# Refuses to write a crosswalk naming a polity code data cannot be routed to (issue 17).
+source(file.path("pipelines", "lib", "orphan_guard.R"))
 pipe_dir <- file.path("pipelines", "faostat-era-matching")
 state_dir <- file.path(pipe_dir, "state")
 dir.create(state_dir, showWarnings = FALSE, recursive = TRUE)
@@ -692,6 +694,16 @@ registry_unmapped <- matches |>
   arrange(area_code)
 
 registry_matched <- aliases |> filter(match_route == "registry")
+# The published FAOSTAT map (data/final/faostat_area_polity_map.csv) is a republication of
+# the `matched` rows below, and the gates that read it SKIP any row whose code is not live --
+# so an orphan target reaches consumers unremarked. Refuse here instead.
+refuse_orphan_codes(
+  aliases$polity_code,
+  what = "faostat_aliases.csv",
+  fix = paste("the polity this area resolved to has been re-spanned or retired;",
+              "re-check the manual routes above and re-run."),
+  polities_csv = file.path("data", "final", "polities_database.csv")
+)
 write_csv(select(aliases, -note), file.path(state_dir, "faostat_aliases.csv"))
 write_csv(ambiguous, file.path(state_dir, "ambiguous.csv"))
 write_csv(unmatched, file.path(state_dir, "unmatched.csv"))

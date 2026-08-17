@@ -218,6 +218,83 @@ def polity_codes_from_database(path: str | None = None) -> set:
         }
 
 
+DEAD_WIKI_STATUS = ("retired", "superseded")
+
+
+def live_polity_codes(path: str | None = None) -> set:
+    """The polity codes an output may legitimately name: present AND not retired/superseded.
+
+    `polity_codes_from_database` answers "does this code exist"; this answers "may data be
+    routed to it", which is the question a matcher's output has to satisfy. Routing to a
+    retired or superseded row is the mistake DEAD_WIKI_STATUS exists to prevent, and
+    `scripts/validate_aliases.py` already rejects it for the alias registry -- so a matcher
+    that emits one is emitting something a gate would refuse if it were written by hand.
+    """
+    import csv as _csv
+
+    target = path or POLITIES_CSV
+    if not os.path.exists(target):
+        return set()
+    with open(target, newline="", encoding="utf-8") as fh:
+        return {
+            row["polity_code"]
+            for row in _csv.DictReader(fh)
+            if row.get("polity_code")
+            and (row.get("wiki_status") or "").strip() not in DEAD_WIKI_STATUS
+        }
+
+
+def refuse_orphan_codes(counts, what: str, fix: str, path: str | None = None) -> None:
+    """Exit 1 rather than write `what` when it names a polity code data cannot be routed to.
+
+    THE #244 PATTERN, generalised (issue 17). A matcher's output is a crosswalk: rows in,
+    polity codes out. When the database moves underneath it -- a re-span, a rename, a
+    retirement -- the codes it emits can stop existing, and every consumer downstream then
+    LOOKS THE CODE UP AND FINDS NOTHING. Measured on this repo 2026-08-17: one published
+    FAOSTAT mapping row pointing at a fabricated `ZZZ-1800-1900` passes NINE of the TEN
+    gates that read `data/final/faostat_area_polity_map.csv`, because the one that joins on
+    the code (`validate_map_area_year`) SKIPS rows whose code is not live -- an orphan is
+    literally invisible to the check that would otherwise catch it. (The tenth,
+    `crosscheck_matchers.py`, does catch it by re-resolving every published area through
+    matchlib; the outputs THIS function protects have no such second reader, see below.)
+
+    Why the write and not a gate: `matched_rows.parquet` is gitignored, so no gate in CI can
+    ever read it, and the five orphan codes carrying 799 rows in issue 243 sat precisely
+    there while `territory_basis.csv` published 0 rows for their successors.
+
+    So the refusal belongs at the write, where the bad crosswalk is authored, not in a gate
+    downstream. That siting is also what makes it work at all for these matchers: their
+    INPUTS live outside the repo (WHEP_LAYERB, the FAOSTAT pins cache), so CI can never run
+    them, and a gate expressing this invariant would skip in the only place gates run
+    automatically. This runs wherever the matcher runs, which is the only place the defect
+    can be introduced.
+
+    `counts` maps polity code -> number of rows carrying it (any iterable of codes works
+    too, and is reported without counts). `fix` is the command that regenerates the input.
+    """
+    if not isinstance(counts, dict):
+        from collections import Counter
+
+        counts = Counter(c for c in counts if c)
+    live = live_polity_codes(path)
+    if not live:
+        print(f"WARNING: {what}: no polity database to check codes against; "
+              f"orphan-code guard skipped")
+        return
+    orphans = {c: n for c, n in counts.items() if c and c not in live}
+    if not orphans:
+        return
+    total = sum(orphans.values())
+    print(f"FAIL: {what} names {len(orphans)} polity code(s) the database cannot route "
+          f"data to, carrying {total:,} row(s). Every consumer looks these codes up and "
+          f"finds nothing, silently:")
+    for code, n in sorted(orphans.items(), key=lambda t: (-t[1], t[0])):
+        why = "retired/superseded" if code in polity_codes_from_database(path) else "absent"
+        print(f"  {code}  {n:,} row(s)  [{why}]")
+    print(f"  refusing to write. {fix}")
+    raise SystemExit(1)
+
+
 def rename_layer_b_misnamed(df, polity_codes=None, where: str = "layer B"):
     """Rename layer B's mislabelled `polity_code` to `iso3_lower`, or raise if it changed.
 
@@ -277,6 +354,9 @@ def load_layer_b(path: str | None = None, polity_codes=None):
 
 def _selftest() -> int:
     """Prove the guards fire. Run: python3 extdata.py"""
+    import contextlib
+    import io
+
     import pandas as pd
     ok = True
 
@@ -323,6 +403,34 @@ def _selftest() -> int:
     else:
         print(f"pass: the reverse guard has {len(codes):,} real polity codes to compare "
               f"against BY DEFAULT, so a no-argument load_layer_b() is guarded too")
+
+    # The orphan-code guard (issue 17). Proven both ways, because a guard that never
+    # refuses and a guard that always refuses are equally useless.
+    live = live_polity_codes()
+    if not live:
+        print("note: data/final/polities_database.csv absent; orphan-guard cases skipped")
+    else:
+        dead = polity_codes_from_database() - live
+        sample = sorted(live)[0]
+        refuse_orphan_codes({sample: 3}, what="selftest", fix="n/a")
+        print(f"pass: a crosswalk naming only live codes writes ({sample})")
+        for label, code in (("an absent", "ZZZ-1800-1900"),
+                            ("a retired/superseded", sorted(dead)[0] if dead else None)):
+            if code is None:
+                print("note: no retired/superseded row in the database; case skipped")
+                continue
+            # The refusal prints its own FAIL report; captured so a PASSING selftest does
+            # not put the word FAIL in a CI log, and asserted so the report still names
+            # the code and its reason rather than merely exiting.
+            buf = io.StringIO()
+            try:
+                with contextlib.redirect_stdout(buf):
+                    refuse_orphan_codes({code: 7}, what="selftest", fix="n/a")
+                print(f"FAIL: wrote a crosswalk naming {label} code {code}"); ok = False
+            except SystemExit as exc:
+                assert exc.code == 1
+                assert code in buf.getvalue() and label.split()[-1] in buf.getvalue(), buf.getvalue()
+                print(f"pass: {label} code refuses to be written ({code})")
 
     print("\nPASS: the guards fire" if ok else "\nFAIL")
     return 0 if ok else 1
