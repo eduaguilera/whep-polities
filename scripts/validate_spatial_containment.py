@@ -73,6 +73,14 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Colonial federations and their groupings
     "AOF-1895-1960", "AEF-1910-1960", "CODRU-1922-1960", "FRN-1953-1964",
     "MASG-1946-1963",
+    # AOI-1936-1941 added 2026-08-17, when its polygon was first built (issue 155). Italian
+    # East Africa is DEFINED as the union of Ethiopia, Eritrea and Italian Somaliland, so the
+    # polygon necessarily contains ETH-1907-1936, ERI-1889-1952 and ITS-1908-1960, all three of
+    # which overlap 1936-1941. Measured: the three members' pairwise intersections are 0.000
+    # km2 and their union is 1,713,196 km2, so the containment is exact rather than approximate.
+    # Same relationship AOF/AEF/MASG have with their members. The fourth newly built polygon
+    # this check has made justify itself.
+    "AOI-1936-1941",
     # SEN-1886-1959 renamed SEN-1886-1960 on 2026-08-13 (issue 77): its exclusive end_year
     # moved 1959 -> 1960 so that the year 1959, which belonged to no Senegalese polity while
     # 14 mitchell observations were being routed into it, is covered. Same polygon, same
