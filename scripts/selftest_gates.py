@@ -95,6 +95,7 @@ Usage:
 """
 import argparse
 import csv
+import math
 import os
 import shutil
 import subprocess
@@ -1503,6 +1504,52 @@ def mutate_dead_convention_pattern(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_trace_flow_into_mirror_gaps(root, gpd, make_valid, affinity):
+    """Put one trace-quantity flow back into the trade-mirror gap table.
+
+    THIS IS THE SCREEN ISSUE #112 PROPOSED, not an invented edit: "filtered to >=1000x
+    (40k)". Measured on the pin, 26,915 of the 39,690 flows above 1000x — 67.8% — have
+    their smaller side under one tonne, median 0.1 t against a median 532 t on the other
+    side, so the ratio screen alone selects mostly reporting-threshold artefacts in which
+    neither figure need be wrong. This mutation shrinks one side of a real disagreement to
+    0.02 t, the 25th percentile of that trace population, and leaves everything else
+    consistent: the ratio column, `larger_side`, `nearest_pow10` and the row count all
+    still agree with each other, so the row reads as an ordinary member of the table.
+
+    Nothing else in the repository reads this file, and the mutated row is still a 1000x+
+    ratio between two positive tonnages — which is precisely why only a gate that re-tests
+    the ABSOLUTE half of the screen can see it. Admitting the class it belongs to takes the
+    investigable set from 12,775 to 39,690 and turns a 0.2% tail into a 0.65% one.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/trade_mirror_gaps.csv")
+    with open(path, encoding="utf-8") as fh:
+        lines = fh.read().splitlines(keepends=True)
+    target = None
+    for i, line in enumerate(lines):
+        if ",Ice and snow,1993,1.0," in line:
+            target = i
+            break
+    assert target is not None, (
+        "the Switzerland/France 1993 'Ice and snow' flow is no longer the table's exp_t=1.0 "
+        "row; pick another row whose smaller side is the exporter's"
+    )
+    old = lines[target]
+    new = old.replace(",Ice and snow,1993,1.0,", ",Ice and snow,1993,0.02,")
+    assert new != old, "the exp_t field was not rewritten"
+    # The ratio has to move with it, or the gate catches the arithmetic instead of the screen
+    # and the case proves the wrong thing.
+    fields = new.rstrip("\r\n").split(",")
+    hi, lo = max(float(fields[7]), float(fields[8])), min(float(fields[7]), float(fields[8]))
+    fields[9] = f"{round(hi / lo, 3)}"
+    fields[12] = str(int(round(math.log10(hi / lo))))
+    lines[target] = ",".join(fields) + "\n"
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.writelines(lines)
+    return ("shrank the exporter's side of the Switzerland->France 1993 'Ice and snow' flow "
+            "to 0.02 t, so the row is trace reporting rather than a disagreement — the "
+            "class that is 67.8% of what issue 112's ratio-only screen selected")
+
+
 def mutate_entrepot_flag_dropped(root, gpd, make_valid, affinity):
     """Demote the one recorded entrepôt flow back to `production` in state, and leave the
     published file as it was.
@@ -1926,6 +1973,14 @@ CASES = (
         "a matcher that can route data to a withdrawn polity, whose collapsed all-years "
         "row then outranks the live successors it was split into",
     ),
+    (
+        "validate_trade_mirror_gaps.py",
+        mutate_trace_flow_into_mirror_gaps,
+        "Ice and snow",
+        "a trace-quantity flow readmitted to the mirror-gap table -- 0.02 t against a real "
+        "flow is a 1000x 'disagreement' in which neither side need be wrong, and it is "
+        "67.8% of what issue 112's ratio-only screen selected",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -2024,6 +2079,15 @@ WRITABLE = {
     # committed table through stage()'s symlink.
     "validate_subnational_sums.py": (
         "pipelines/polity-autoimprove/state/subnational_sums.csv",
+    ),
+    # The gap table is what the case rewrites, so it must be a real copy or the mutation
+    # writes a trace flow through stage()'s symlink into the committed table. The summary is
+    # staged because the gate holds the two to each other -- without it the gate exits 1
+    # saying a file is missing, which is a failure for the wrong reason and would have read
+    # as a pass.
+    "validate_trade_mirror_gaps.py": (
+        "pipelines/polity-autoimprove/state/trade_mirror_gaps.csv",
+        "pipelines/polity-autoimprove/state/trade_mirror_summary.csv",
     ),
     # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
     # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with
