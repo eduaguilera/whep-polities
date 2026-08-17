@@ -1,0 +1,235 @@
+source,outer_key,outer_code,inner_key,inner_code,overlap_years,inner_share_covered,outer_km2,inner_km2,outer_rows,inner_rows,outer_status,inner_status,shared_cells,cells_outer_lt_inner,median_outer_over_inner,inclusion
+fao1952,china 22 provinces|fao1952|1950-1951,CHN-1950-2025,hong kong|fao1952|1937-1951,HKG-1842-2025,1950-1951,0.792,9369120,1128,23,56,banked_legacy,pending,1,0,1156.25,consistent_with_inclusion
+fao1952,china|fao1952|1950-1951,CHN-1950-2025,hong kong|fao1952|1937-1951,HKG-1842-2025,1950-1951,0.792,9369120,1128,14,56,pending,pending,6,2,197.551,few_violations
+fao1952,china and manchuria|fao1952|1950-1951,CHN-1950-2025,hong kong|fao1952|1937-1951,HKG-1842-2025,1950-1951,0.792,9369120,1128,8,56,pending,pending,0,0,,no_shared_cells
+fao1952,china manchuria|fao1952|1950-1951,CHN-1950-2025,hong kong|fao1952|1937-1951,HKG-1842-2025,1950-1951,0.792,9369120,1128,7,56,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,china|fao1952|1947-1948,CHN-1947-1949,china taiwan|fao1952|1948-1951,TWN-1945-2025,1948-1948,0.999,7593571,35994,7,132,pending,banked,0,0,,no_shared_cells
+fao1952,china 22 provinces|fao1952|1947-1948,CHN-1947-1949,china taiwan|fao1952|1948-1951,TWN-1945-2025,1948-1948,0.999,7593571,35994,4,132,banked_legacy,banked,0,0,,no_shared_cells
+fao1952,china|fao1952|1947-1948,CHN-1947-1949,hong kong|fao1952|1937-1951,HKG-1842-2025,1947-1948,0.792,7593571,1128,7,56,pending,pending,0,0,,no_shared_cells
+fao1952,china 22 provinces|fao1952|1947-1948,CHN-1947-1949,hong kong|fao1952|1937-1951,HKG-1842-2025,1947-1948,0.792,7593571,1128,4,56,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,china manchuria|fao1952|1947-1947,CHN-1947-1949,hong kong|fao1952|1937-1951,HKG-1842-2025,1947-1947,0.792,7593571,1128,4,56,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,china 22 provinces|fao1952|1949-1949,CHN-1949-1950,hong kong|fao1952|1937-1951,HKG-1842-2025,1949-1949,0.792,7557599,1128,29,56,banked_legacy,pending,7,0,1156.25,consistent_with_inclusion
+fao1952,china|fao1952|1949-1949,CHN-1949-1950,hong kong|fao1952|1937-1951,HKG-1842-2025,1949-1949,0.792,7557599,1128,7,56,pending,pending,3,0,658.0,consistent_with_inclusion
+fao1952,china manchuria|fao1952|1949-1949,CHN-1949-1950,hong kong|fao1952|1937-1951,HKG-1842-2025,1949-1949,0.792,7557599,1128,5,56,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,china and manchuria|fao1952|1949-1949,CHN-1949-1950,hong kong|fao1952|1937-1951,HKG-1842-2025,1949-1949,0.792,7557599,1128,4,56,pending,pending,0,0,,no_shared_cells
+fao1952,china 22 provinces|fao1952|1937-1939,CHN-1932-1945,hong kong|fao1952|1937-1951,HKG-1842-2025,1937-1939,0.792,6710151,1128,31,56,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,china|fao1952|1937-1938,CHN-1932-1945,hong kong|fao1952|1937-1951,HKG-1842-2025,1937-1938,0.792,6710151,1128,5,56,pending,pending,1,0,398.643,consistent_with_inclusion
+fao1952,india|fao1952|1937-1940,IND-1937-1947,pakistan|fao1952|1937-1940,PAK-1937-1947,1937-1940,1.0,4223063,932577,44,22,pending,pending,34,5,3.292,impossible_outer_excludes_inner
+fao1952,india|fao1952|1949-1951,IND-1949-2025,portuguese india|fao1952|1937-1951,PTIND-1816-1961,1949-1951,0.984,3151797,3779,161,7,pending,banked_legacy,4,0,431.526,consistent_with_inclusion
+fao1952,india|fao1952|1949-1951,IND-1949-2025,french india|fao1952|1937-1951,FRIN-1816-1954,1949-1951,0.952,3151797,547,161,14,pending,pending,1,0,1068.249,consistent_with_inclusion
+fao1952,libya|fao1952|1949-1949,LBY-1943-1949,libya cyrenaica|fao1952|1949-1951,CYR-1949-1951,1949-1949,0.999,1617898,837886,15,11,pending,pending,4,0,10.825,consistent_with_inclusion
+fao1952,libya|fao1952|1950-1950,LBY-1949-1951,libya cyrenaica|fao1952|1949-1951,CYR-1949-1951,1950-1950,0.999,1617898,837886,13,11,pending,pending,0,0,,no_shared_cells
+fao1952,libya|fao1952|1951-1951,LBY-1951-2025,libya cyrenaica|fao1952|1949-1951,CYR-1949-1951,1951-1951,0.999,1617898,837886,12,11,pending,pending,0,0,,no_shared_cells
+fao1952,libya|fao1952|1949-1949,LBY-1943-1949,libya fezzan|fao1952|1948-1949,FEZ-1943-1951,1949-1949,0.998,1617898,463617,15,5,pending,pending,2,0,12.667,consistent_with_inclusion
+fao1952,libya|fao1952|1949-1949,LBY-1943-1949,libya tripolitania|fao1952|1948-1951,TRP-1943-1951,1949-1949,0.999,1617898,314551,15,37,pending,banked_legacy,6,0,15.2,consistent_with_inclusion
+fao1952,libya|fao1952|1950-1950,LBY-1949-1951,libya tripolitania|fao1952|1948-1951,TRP-1943-1951,1950-1950,0.999,1617898,314551,13,37,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,libya|fao1952|1951-1951,LBY-1951-2025,libya tripolitania|fao1952|1948-1951,TRP-1943-1951,1951-1951,0.999,1617898,314551,12,37,pending,banked_legacy,1,0,4.984,consistent_with_inclusion
+fao1952,libya|fao1952|1949-1949,LBY-1943-1949,tripolitania|fao1952|1949-1951,TRP-1943-1951,1949-1949,0.999,1617898,314551,15,2,pending,pending,0,0,,no_shared_cells
+fao1952,libya|fao1952|1950-1950,LBY-1949-1951,tripolitania|fao1952|1949-1951,TRP-1943-1951,1950-1950,0.999,1617898,314551,13,2,pending,pending,0,0,,no_shared_cells
+fao1952,libya|fao1952|1951-1951,LBY-1951-2025,tripolitania|fao1952|1949-1951,TRP-1943-1951,1951-1951,0.999,1617898,314551,12,2,pending,pending,0,0,,no_shared_cells
+fao1952,indonesia|fao1952|1949-1951,IDN-1949-1963,indonesia other islands|fao1952|1949-1951,IDN-OTH-1949-1951,1949-1951,0.977,1466397,1332131,114,15,pending,banked_legacy,6,0,60.161,consistent_with_inclusion
+fao1952,indonesia|fao1952|1949-1951,IDN-1949-1963,indonesia java and madura|fao1952|1949-1951,IDN-JVM-1949-1951,1949-1951,0.974,1466397,132720,114,27,pending,pending,6,0,1.052,consistent_with_inclusion
+fao1952,indonesia|fao1952|1949-1951,IDN-1949-1963,indonesia bali and lombok|fao1952|1949-1951,IDN-BLB-1949-1951,1949-1951,0.951,1466397,10169,114,24,pending,reopened,6,0,31.542,consistent_with_inclusion
+fao1952,indochina viet nam|fao1952|1937-1951,FID-1887-1954,viet nam|fao1952|1938-1951,VNM-1887-1954,1938-1951,0.993,753049,324094,113,20,pending,pending,0,0,,no_shared_cells
+fao1952,indochina|fao1952|1937-1951,FID-1887-1954,viet nam|fao1952|1938-1951,VNM-1887-1954,1938-1951,0.993,753049,324094,22,20,pending,pending,0,0,,no_shared_cells
+fao1952,indochina viet nam|fao1952|1937-1951,FID-1887-1954,indochina laos|fao1952|1936-1951,LAO-1893-1954,1937-1951,0.969,753049,229987,113,59,pending,banked_legacy,62,10,3.67,impossible_outer_excludes_inner
+fao1952,indochina viet nam|fao1952|1937-1951,FID-1887-1954,laos|fao1952|1949-1951,LAO-1893-1954,1949-1951,0.969,753049,229987,113,12,pending,pending,0,0,,label_not_in_panel
+fao1952,indochina|fao1952|1937-1951,FID-1887-1954,indochina laos|fao1952|1936-1951,LAO-1893-1954,1937-1951,0.969,753049,229987,22,59,pending,banked_legacy,5,0,230.398,consistent_with_inclusion
+fao1952,indochina|fao1952|1937-1951,FID-1887-1954,laos|fao1952|1949-1951,LAO-1893-1954,1949-1951,0.969,753049,229987,22,12,pending,pending,0,0,,label_not_in_panel
+fao1952,indochina viet nam|fao1952|1937-1951,FID-1887-1954,indochina cambodia|fao1952|1937-1951,KHM-1907-1953,1937-1951,0.994,753049,181798,113,105,pending,pending,111,40,1.667,impossible_outer_excludes_inner
+fao1952,indochina viet nam|fao1952|1937-1951,FID-1887-1954,cambodia|fao1952|1949-1950,KHM-1907-1953,1949-1950,0.994,753049,181798,113,5,pending,pending,0,0,,no_shared_cells
+fao1952,indochina|fao1952|1937-1951,FID-1887-1954,indochina cambodia|fao1952|1937-1951,KHM-1907-1953,1937-1951,0.994,753049,181798,22,105,pending,pending,5,0,120.957,consistent_with_inclusion
+fao1952,indochina|fao1952|1937-1951,FID-1887-1954,cambodia|fao1952|1949-1950,KHM-1907-1953,1949-1950,0.994,753049,181798,22,5,pending,pending,0,0,,no_shared_cells
+fao1952,japan|fao1952|1936-1938,JPN-1895-1945,korea|fao1952|1937-1938,KOR-1800-1945,1937-1938,1.0,626507,219372,57,33,pending,pending,37,14,1.959,impossible_outer_excludes_inner
+fao1952,japan|fao1952|1936-1938,JPN-1895-1945,korea south|fao1952|1938-1939,KRS-1910-1945,1938-1938,1.0,626507,97097,57,27,pending,banked_legacy,36,6,4.917,impossible_outer_excludes_inner
+fao1952,japan|fao1952|1936-1938,JPN-1895-1945,china taiwan|fao1952|1937-1938,TWN-1895-1945,1937-1938,1.0,626507,35994,57,28,pending,banked_legacy,37,12,2.555,impossible_outer_excludes_inner
+fao1952,japan|fao1952|1936-1938,JPN-1895-1945,ryukyu islands|fao1952|1937-1939,RYU-1937-1945,1937-1938,0.69,626507,2337,57,5,pending,banked_legacy,11,5,1.326,impossible_outer_excludes_inner
+fao1952,germany|fao1952|1938-1938,DEU-1938-1945,germany western|fao1952|1938-1948,WZO-1938-1949,1938-1938,1.0,496629,247552,38,44,pending,banked_legacy,52,7,1.66,impossible_outer_excludes_inner
+fao1952,germany|fao1952|1938-1938,DEU-1938-1945,germany eastern|fao1952|1938-1948,SBZ-1938-1949,1938-1938,1.0,496629,109271,38,36,pending,pending,44,7,2.677,impossible_outer_excludes_inner
+fao1952,germany|fao1952|1938-1938,DEU-1938-1945,germany berlin|fao1952|1938-1939,BRL-1938-1945,1938-1938,1.0,496629,901,38,19,pending,banked_legacy,20,2,126.486,few_violations
+fao1952,japan|fao1952|1947-1951,JPN-1945-1952,ryukyu islands|fao1952|1949-1951,RYU-1945-1972,1949-1951,0.694,371147,2337,283,53,pending,banked_legacy,77,6,80.667,few_violations
+fao1952,germany|fao1952|1949-1951,DEU-1949-1990,germany western|fao1952|1949-1951,F78-1949-1990,1949-1951,1.0,356835,247552,75,212,pending,banked,115,11,1.614,few_violations
+fao1952,germany|fao1952|1949-1951,DEU-1949-1990,germany eastern|fao1952|1949-1951,F77-1949-1990,1949-1951,1.0,356835,109271,75,76,pending,pending,91,8,3.094,few_violations
+fao1952,germany|fao1952|1949-1951,DEU-1949-1990,france saar|fao1952|1948-1951,SAA-1947-1957,1949-1951,0.985,356835,2565,75,118,pending,banked,46,3,276.401,few_violations
+fao1952,germany|fao1952|1949-1951,DEU-1949-1990,saar|fao1952|1949-1951,SAA-1947-1957,1949-1951,0.985,356835,2565,75,14,pending,pending,8,0,55.397,consistent_with_inclusion
+fao1952,germany|fao1952|1949-1951,DEU-1949-1990,berlin|fao1952|1949-1949,BRL-1945-1949,1949-1949,1.0,356835,901,75,1,pending,banked,1,0,566.2,consistent_with_inclusion
+fao1952,germany western|fao1952|1949-1951,F78-1949-1990,france saar|fao1952|1948-1951,SAA-1947-1957,1949-1951,0.985,247552,2565,212,118,banked,banked,173,6,132.4,few_violations
+fao1952,germany western|fao1952|1949-1951,F78-1949-1990,saar|fao1952|1949-1951,SAA-1947-1957,1949-1951,0.985,247552,2565,212,14,banked,pending,13,0,94.465,consistent_with_inclusion
+fao1952,germany western|fao1952|1938-1948,WZO-1938-1949,france saar|fao1952|1948-1951,SAA-1947-1957,1948-1948,0.985,247552,2565,44,118,banked_legacy,banked,13,0,220.0,consistent_with_inclusion
+fao1952,gold coast and br togoland|fao1952|1938-1951,GCT-1919-1956,gold coast|fao1952|1937-1951,GHA-1898-1957,1938-1951,1.0,239020,212451,32,36,banked_legacy,banked_legacy,0,0,,no_shared_cells
+fao1952,gold coast and british togoland|fao1952|1938-1951,GCT-1919-1956,gold coast|fao1952|1937-1951,GHA-1898-1957,1938-1951,1.0,239020,212451,17,36,banked_legacy,banked_legacy,0,0,,no_shared_cells
+fao1952,gold coast and br tog|fao1952|1949-1951,GCT-1919-1956,gold coast|fao1952|1937-1951,GHA-1898-1957,1949-1951,1.0,239020,212451,3,36,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,gold coast br togoland|fao1952|1949-1951,GCT-1919-1956,gold coast|fao1952|1937-1951,GHA-1898-1957,1949-1951,1.0,239020,212451,3,36,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,gold coast and br togoland|fao1952|1938-1951,GCT-1919-1956,british togoland|fao1952|1937-1951,BTL-1920-1957,1938-1951,0.999,239020,26545,32,12,banked_legacy,banked_legacy,0,0,,no_shared_cells
+fao1952,gold coast and british togoland|fao1952|1938-1951,GCT-1919-1956,british togoland|fao1952|1937-1951,BTL-1920-1957,1938-1951,0.999,239020,26545,17,12,banked_legacy,banked_legacy,0,0,,no_shared_cells
+fao1952,gold coast and br tog|fao1952|1949-1951,GCT-1919-1956,british togoland|fao1952|1937-1951,BTL-1920-1957,1949-1951,0.999,239020,26545,3,12,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,gold coast br togoland|fao1952|1949-1951,GCT-1919-1956,british togoland|fao1952|1937-1951,BTL-1920-1957,1949-1951,0.999,239020,26545,3,12,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,korea|fao1952|1937-1938,KOR-1800-1945,korea south|fao1952|1938-1939,KRS-1910-1945,1938-1938,1.0,219372,97097,33,27,pending,banked_legacy,22,4,1.974,impossible_outer_excludes_inner
+fao1952,syria and lebanon|fao1952|1949-1951,SYL-1944-1953,syria|fao1952|1949-1951,SYR-1946-1967,1949-1951,1.0,198309,188105,6,162,pending,pending,0,0,,no_shared_cells
+fao1952,syria and lebanon|fao1952|1949-1951,SYL-1944-1953,lebanon|fao1952|1949-1951,LBN-1944-2025,1949-1951,0.999,198309,10199,6,121,pending,pending,0,0,,no_shared_cells
+fao1952,malaya federation of and singapore|fao1952|1951-1951,MASG-1946-1963,malaya federation of|fao1952|1948-1951,MYS-1946-1957,1951-1951,1.0,132001,131452,3,69,pending,pending,0,0,,no_shared_cells
+fao1952,malaya federation of and singapore|fao1952|1951-1951,MASG-1946-1963,malaya fed of|fao1952|1949-1951,MYS-1946-1957,1951-1951,1.0,132001,131452,3,22,pending,pending,0,0,,no_shared_cells
+fao1952,malaya federation of and singapore|fao1952|1951-1951,MASG-1946-1963,federation of malaya|fao1952|1949-1951,MYS-1946-1957,1951-1951,1.0,132001,131452,3,10,pending,pending,0,0,,no_shared_cells
+fao1952,malaya federation of and singapore|fao1952|1951-1951,MASG-1946-1963,singapore|fao1952|1948-1951,SGP-1946-1963,1951-1951,0.995,132001,545,3,54,pending,pending,3,2,0.803,few_violations
+fao1952,germany eastern|fao1952|1949-1951,F77-1949-1990,berlin|fao1952|1949-1949,BRL-1945-1949,1949-1949,1.0,109271,901,76,1,pending,banked,0,0,,no_shared_cells
+fao1952,germany eastern|fao1952|1938-1948,SBZ-1938-1949,germany berlin|fao1952|1938-1939,BRL-1938-1945,1938-1939,1.0,109271,901,36,19,pending,banked_legacy,33,5,18.705,impossible_outer_excludes_inner
+fao1952,germany eastern|fao1952|1938-1948,SBZ-1938-1949,germany berlin|fao1952|1948-1948,BRL-1945-1949,1948-1948,1.0,109271,901,36,1,pending,banked_legacy,1,0,65.323,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies bahama islands|fao1952|1937-1951,BHS-1800-2025,1937-1951,0.991,32849,13279,24,9,banked_legacy,banked_legacy,4,0,116.53,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies bahamas|fao1952|1939-1949,BHS-1800-2025,1939-1949,0.991,32849,13279,24,9,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,bahamas|fao1952|1949-1951,BHS-1800-2025,1949-1951,0.991,32849,13279,24,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies jamaica|fao1952|1938-1951,JAM-1800-2025,1938-1951,0.976,32849,11001,24,112,banked_legacy,pending,3,0,15.807,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,jamaica|fao1952|1938-1951,JAM-1800-2025,1938-1951,0.976,32849,11001,24,22,banked_legacy,pending,1,0,4.28,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies jamaica|fao1952|1949-1951,JAM-1800-2025,1949-1951,0.976,32849,11001,24,16,banked_legacy,banked_legacy,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british w indies jamaica|fao1952|1938-1951,JAM-1800-2025,1938-1951,0.976,32849,11001,24,7,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br w indies jamaica|fao1952|1949-1951,JAM-1800-2025,1949-1951,0.976,32849,11001,24,3,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies jamaica and dependencies|fao1952|1937-1951,JAM-1800-2025,1937-1951,0.976,32849,11001,24,2,banked_legacy,pending,2,0,1.919,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies trinidad and tobago|fao1952|1937-1951,TTO-1800-2025,1937-1951,0.982,32849,4953,24,49,banked_legacy,banked_legacy,2,0,4.553,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies trinidad tobago|fao1952|1938-1951,TTO-1800-2025,1938-1951,0.982,32849,4953,24,10,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,leeward islands trinidad and tobago|fao1952|1951-1951,TTO-1800-2025,1951-1951,0.982,32849,4953,24,6,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british w indies trinidad and tobago|fao1952|1938-1951,TTO-1800-2025,1938-1951,0.982,32849,4953,24,4,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br w indies trinidad and tobago|fao1952|1949-1951,TTO-1800-2025,1949-1951,0.982,32849,4953,24,3,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,trinidad and tobago|fao1952|1938-1951,TTO-1800-2025,1938-1951,0.982,32849,4953,24,3,banked_legacy,pending,1,0,24.191,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,jamaica trinidad and tobago|fao1952|1951-1951,TTO-1800-2025,1951-1951,0.982,32849,4953,24,1,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,1937-1951,0.998,32849,2124,24,7,banked_legacy,pending,5,0,48.807,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,windward islands|fao1952|1950-1950,WIN-1833-1960,1950-1950,0.998,32849,2124,24,6,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,1937-1951,0.91,32849,1693,24,20,banked_legacy,banked_legacy,5,0,115.917,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,leeward islands|fao1952|1950-1951,BLI-1833-1960,1950-1951,0.91,32849,1693,24,6,banked_legacy,pending,1,0,27.275,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies leeward is|fao1952|1949-1949,BLI-1833-1960,1949-1949,0.91,32849,1693,24,2,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,1950-1950,0.91,32849,1693,24,2,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies dominica|fao1952|1938-1951,DMA-1800-2025,1938-1951,1.0,32849,747,24,4,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies st lucia|fao1952|1949-1951,LCA-1838-2025,1949-1951,0.999,32849,614,24,12,banked_legacy,banked_legacy,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies st lucia|fao1952|1938-1951,LCA-1838-2025,1938-1951,0.999,32849,614,24,10,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,windward islands st lucia|fao1952|1950-1950,LCA-1838-2025,1950-1950,0.999,32849,614,24,7,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies st l cia|fao1952|1938-1951,LCA-1838-2025,1938-1951,0.999,32849,614,24,4,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,jamaica st lucia|fao1952|1949-1951,LCA-1838-2025,1949-1951,0.999,32849,614,24,3,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies barbados|fao1952|1935-1951,BRB-1800-2025,1937-1951,0.96,32849,435,24,49,banked_legacy,banked_legacy,5,0,111.28,consistent_with_inclusion
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies barbados|fao1952|1950-1951,BRB-1800-2025,1950-1951,0.96,32849,435,24,8,banked_legacy,banked_legacy,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,leeward islands antigua|fao1952|1950-1950,ATG-1800-2025,1950-1950,0.998,32849,432,24,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies antigua|fao1952|1951-1951,ATG-1800-2025,1951-1951,0.998,32849,432,24,4,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies antigua|fao1952|1949-1950,ATG-1800-2025,1949-1950,0.998,32849,432,24,3,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies st vincent|fao1952|1939-1951,VCT-1833-2025,1939-1951,0.996,32849,394,24,13,banked_legacy,banked_legacy,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies st vincent|fao1952|1949-1951,VCT-1833-2025,1949-1951,0.996,32849,394,24,12,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,windward islands st vincent|fao1952|1950-1950,VCT-1833-2025,1950-1950,0.996,32849,394,24,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,jamaica st vincent|fao1952|1949-1951,VCT-1833-2025,1949-1951,0.996,32849,394,24,3,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies grenada|fao1952|1938-1951,GRD-1800-2025,1938-1951,0.954,32849,359,24,10,banked_legacy,banked_legacy,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,windward islands grenada|fao1952|1950-1950,GRD-1800-2025,1950-1950,0.954,32849,359,24,7,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies grenada|fao1952|1951-1951,GRD-1800-2025,1951-1951,0.954,32849,359,24,4,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies st kitts nevis anguilla|fao1952|1949-1951,KNA-1800-2025,1949-1951,1.0,32849,263,24,12,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,leeward islands st kitts nevis|fao1952|1950-1950,KNA-1800-2025,1950-1950,1.0,32849,263,24,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies st kitts nevis|fao1952|1951-1951,KNA-1800-2025,1951-1951,1.0,32849,263,24,1,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,br west indies montserrat|fao1952|1949-1950,MSR-1800-2025,1949-1950,1.0,32849,101,24,6,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,leeward islands montserrat|fao1952|1950-1950,MSR-1800-2025,1950-1950,1.0,32849,101,24,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies|fao1952|1937-1951,BWI-1833-1962,british west indies montserrat|fao1952|1951-1951,MSR-1800-2025,1951-1951,1.0,32849,101,24,1,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,british west indies dominica|fao1952|1938-1951,DMA-1800-2025,1938-1951,1.0,2124,747,7,4,pending,pending,0,0,,no_shared_cells
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,british west indies dominica|fao1952|1938-1951,DMA-1800-2025,1950-1950,1.0,2124,747,6,4,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,br west indies st lucia|fao1952|1949-1951,LCA-1838-2025,1949-1951,0.999,2124,614,7,12,pending,banked_legacy,0,0,,label_not_in_panel
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,br west indies st lucia|fao1952|1949-1951,LCA-1838-2025,1950-1950,0.999,2124,614,6,12,pending,banked_legacy,0,0,,label_not_in_panel
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,british west indies st lucia|fao1952|1938-1951,LCA-1838-2025,1938-1951,0.999,2124,614,7,10,pending,pending,0,0,,no_shared_cells
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,british west indies st lucia|fao1952|1938-1951,LCA-1838-2025,1950-1950,0.999,2124,614,6,10,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,windward islands st lucia|fao1952|1950-1950,LCA-1838-2025,1950-1950,0.999,2124,614,7,7,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,british west indies st l cia|fao1952|1938-1951,LCA-1838-2025,1938-1951,0.999,2124,614,7,4,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,jamaica st lucia|fao1952|1949-1951,LCA-1838-2025,1949-1951,0.999,2124,614,7,3,pending,pending,0,0,,no_shared_cells
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,windward islands st lucia|fao1952|1950-1950,LCA-1838-2025,1950-1950,0.999,2124,614,6,7,pending,pending,6,0,3.252,consistent_with_inclusion
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,british west indies st l cia|fao1952|1938-1951,LCA-1838-2025,1950-1950,0.999,2124,614,6,4,pending,pending,0,0,,no_shared_cells
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,jamaica st lucia|fao1952|1949-1951,LCA-1838-2025,1950-1950,0.999,2124,614,6,3,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,british west indies st vincent|fao1952|1939-1951,VCT-1833-2025,1939-1951,0.999,2124,394,7,13,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,british west indies st vincent|fao1952|1939-1951,VCT-1833-2025,1950-1950,0.999,2124,394,6,13,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,br west indies st vincent|fao1952|1949-1951,VCT-1833-2025,1949-1951,0.999,2124,394,7,12,pending,pending,0,0,,label_not_in_panel
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,br west indies st vincent|fao1952|1949-1951,VCT-1833-2025,1950-1950,0.999,2124,394,6,12,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,windward islands st vincent|fao1952|1950-1950,VCT-1833-2025,1950-1950,0.999,2124,394,7,5,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,jamaica st vincent|fao1952|1949-1951,VCT-1833-2025,1949-1951,0.999,2124,394,7,3,pending,pending,0,0,,no_shared_cells
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,windward islands st vincent|fao1952|1950-1950,VCT-1833-2025,1950-1950,0.999,2124,394,6,5,pending,pending,4,0,5.191,consistent_with_inclusion
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,jamaica st vincent|fao1952|1949-1951,VCT-1833-2025,1950-1950,0.999,2124,394,6,3,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,british west indies grenada|fao1952|1938-1951,GRD-1800-2025,1938-1951,0.956,2124,359,7,10,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,british west indies grenada|fao1952|1938-1951,GRD-1800-2025,1950-1950,0.956,2124,359,6,10,pending,banked_legacy,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,windward islands grenada|fao1952|1950-1950,GRD-1800-2025,1950-1950,0.956,2124,359,7,7,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies windward islands|fao1952|1937-1951,WIN-1833-1960,br west indies grenada|fao1952|1951-1951,GRD-1800-2025,1951-1951,0.956,2124,359,7,4,pending,pending,0,0,,label_not_in_panel
+fao1952,windward islands|fao1952|1950-1950,WIN-1833-1960,windward islands grenada|fao1952|1950-1950,GRD-1800-2025,1950-1950,0.956,2124,359,6,7,pending,pending,6,0,4.846,consistent_with_inclusion
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,british west indies dominica|fao1952|1938-1951,DMA-1800-2025,1938-1951,1.0,1693,747,20,4,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,british west indies dominica|fao1952|1938-1951,DMA-1800-2025,1950-1951,1.0,1693,747,6,4,pending,pending,0,0,,no_shared_cells
+fao1952,br west indies leeward is|fao1952|1949-1949,BLI-1833-1960,british west indies dominica|fao1952|1938-1951,DMA-1800-2025,1949-1949,1.0,1693,747,2,4,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,british west indies dominica|fao1952|1938-1951,DMA-1800-2025,1950-1950,1.0,1693,747,2,4,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,leeward islands antigua|fao1952|1950-1950,ATG-1800-2025,1950-1950,1.0,1693,432,20,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,br west indies antigua|fao1952|1951-1951,ATG-1800-2025,1951-1951,1.0,1693,432,20,4,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,british west indies antigua|fao1952|1949-1950,ATG-1800-2025,1949-1950,1.0,1693,432,20,3,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,leeward islands antigua|fao1952|1950-1950,ATG-1800-2025,1950-1950,1.0,1693,432,6,5,pending,pending,5,0,2.477,consistent_with_inclusion
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,br west indies antigua|fao1952|1951-1951,ATG-1800-2025,1951-1951,1.0,1693,432,6,4,pending,pending,0,0,,label_not_in_panel
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,british west indies antigua|fao1952|1949-1950,ATG-1800-2025,1950-1950,1.0,1693,432,6,3,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,leeward islands antigua|fao1952|1950-1950,ATG-1800-2025,1950-1950,1.0,1693,432,2,5,pending,pending,0,0,,no_shared_cells
+fao1952,br west indies leeward is|fao1952|1949-1949,BLI-1833-1960,british west indies antigua|fao1952|1949-1950,ATG-1800-2025,1949-1949,1.0,1693,432,2,3,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,british west indies antigua|fao1952|1949-1950,ATG-1800-2025,1950-1950,1.0,1693,432,2,3,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,br west indies st kitts nevis anguilla|fao1952|1949-1951,KNA-1800-2025,1949-1951,1.0,1693,263,20,12,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,leeward islands st kitts nevis|fao1952|1950-1950,KNA-1800-2025,1950-1950,1.0,1693,263,20,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,british west indies st kitts nevis|fao1952|1951-1951,KNA-1800-2025,1951-1951,1.0,1693,263,20,1,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,br west indies st kitts nevis anguilla|fao1952|1949-1951,KNA-1800-2025,1950-1951,1.0,1693,263,6,12,pending,pending,0,0,,label_not_in_panel
+fao1952,br west indies leeward is|fao1952|1949-1949,BLI-1833-1960,br west indies st kitts nevis anguilla|fao1952|1949-1951,KNA-1800-2025,1949-1949,1.0,1693,263,2,12,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,br west indies st kitts nevis anguilla|fao1952|1949-1951,KNA-1800-2025,1950-1950,1.0,1693,263,2,12,pending,pending,0,0,,label_not_in_panel
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,leeward islands st kitts nevis|fao1952|1950-1950,KNA-1800-2025,1950-1950,1.0,1693,263,6,5,pending,pending,5,0,2.795,consistent_with_inclusion
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,british west indies st kitts nevis|fao1952|1951-1951,KNA-1800-2025,1951-1951,1.0,1693,263,6,1,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,leeward islands st kitts nevis|fao1952|1950-1950,KNA-1800-2025,1950-1950,1.0,1693,263,2,5,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,virgin islands|fao1952|1938-1951,VGB-1800-2025,1938-1951,0.787,1693,168,20,6,banked_legacy,pending,4,0,8.299,consistent_with_inclusion
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,british west indies virgin islands|fao1952|1950-1951,VGB-1800-2025,1950-1951,0.787,1693,168,20,3,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,virgin islands|fao1952|1938-1951,VGB-1800-2025,1950-1951,0.787,1693,168,6,6,pending,pending,0,0,,no_shared_cells
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,british west indies virgin islands|fao1952|1950-1951,VGB-1800-2025,1950-1951,0.787,1693,168,6,3,pending,pending,0,0,,no_shared_cells
+fao1952,br west indies leeward is|fao1952|1949-1949,BLI-1833-1960,virgin islands|fao1952|1938-1951,VGB-1800-2025,1949-1949,0.787,1693,168,2,6,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,virgin islands|fao1952|1938-1951,VGB-1800-2025,1950-1950,0.787,1693,168,2,6,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,british west indies virgin islands|fao1952|1950-1951,VGB-1800-2025,1950-1950,0.787,1693,168,2,3,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,br west indies montserrat|fao1952|1949-1950,MSR-1800-2025,1949-1950,1.0,1693,101,20,6,banked_legacy,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,leeward islands montserrat|fao1952|1950-1950,MSR-1800-2025,1950-1950,1.0,1693,101,20,5,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward islands|fao1952|1937-1951,BLI-1833-1960,british west indies montserrat|fao1952|1951-1951,MSR-1800-2025,1951-1951,1.0,1693,101,20,1,banked_legacy,pending,0,0,,no_shared_cells
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,br west indies montserrat|fao1952|1949-1950,MSR-1800-2025,1950-1950,1.0,1693,101,6,6,pending,pending,0,0,,label_not_in_panel
+fao1952,br west indies leeward is|fao1952|1949-1949,BLI-1833-1960,br west indies montserrat|fao1952|1949-1950,MSR-1800-2025,1949-1949,1.0,1693,101,2,6,pending,pending,0,0,,label_not_in_panel
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,br west indies montserrat|fao1952|1949-1950,MSR-1800-2025,1950-1950,1.0,1693,101,2,6,pending,pending,0,0,,label_not_in_panel
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,leeward islands montserrat|fao1952|1950-1950,MSR-1800-2025,1950-1950,1.0,1693,101,6,5,pending,pending,5,0,9.0,consistent_with_inclusion
+fao1952,leeward islands|fao1952|1950-1951,BLI-1833-1960,british west indies montserrat|fao1952|1951-1951,MSR-1800-2025,1951-1951,1.0,1693,101,6,1,pending,pending,0,0,,no_shared_cells
+fao1952,british west indies leeward is|fao1952|1950-1950,BLI-1833-1960,leeward islands montserrat|fao1952|1950-1950,MSR-1800-2025,1950-1950,1.0,1693,101,2,5,pending,pending,0,0,,no_shared_cells
+iia,russian federation|iia|1945-1945,F228-1945-1991,latvia|iia|1940-1945,LVA-1940-1991,1945-1945,1.0,22065490,65978,2,7,pending,pending,0,0,,no_shared_cells
+iia,russian federation|iia|1945-1945,F228-1945-1991,lithuania|iia|1940-1945,LTU-1940-1991,1945-1945,1.0,22065490,55904,2,6,pending,pending,0,0,,no_shared_cells
+iia,russian federation|iia|1909-1913,F228-1905-1914,finland|iia|1913-1913,FIN-1809-1917,1913-1913,1.0,21983823,388750,128,6,pending,pending,8,0,99.712,consistent_with_inclusion
+iia,russian federation|iia|1909-1913,F228-1905-1914,poland|iia|1913-1913,POL-1815-1918,1913-1913,1.0,21983823,130180,128,13,pending,banked_legacy,21,1,10.365,few_violations
+iia,russian federation|iia|1909-1913,F228-1905-1914,lithuania|iia|1913-1913,LTU-1800-1918,1913-1913,1.0,21983823,83899,128,6,pending,pending,11,0,27.36,consistent_with_inclusion
+iia,russian federation|iia|1909-1913,F228-1905-1914,latvia|iia|1913-1913,LVA-1800-1918,1913-1913,1.0,21983823,65978,128,6,pending,pending,11,0,26.669,consistent_with_inclusion
+iia,russian federation|iia|1909-1913,F228-1905-1914,estonia|iia|1913-1913,EST-1800-1918,1913-1913,1.0,21983823,49303,128,6,pending,pending,11,0,41.342,consistent_with_inclusion
+iia,russian federation|iia|1940-1944,F228-1940-1945,azerbaijan|iia|1929-1940,AZE-SSR-1920-1991,1940-1940,1.0,21828130,86014,22,27,pending,banked_legacy,0,0,,no_shared_cells
+iia,russian federation|iia|1940-1944,F228-1940-1945,latvia|iia|1940-1945,LVA-1940-1991,1940-1944,1.0,21828130,65978,22,7,pending,pending,0,0,,no_shared_cells
+iia,russian federation|iia|1940-1944,F228-1940-1945,lithuania|iia|1940-1945,LTU-1940-1991,1940-1944,1.0,21828130,55904,22,6,pending,pending,0,0,,no_shared_cells
+iia,russian federation|iia|1940-1944,F228-1940-1945,estonia|iia|1940-1944,EST-1940-1991,1940-1944,1.0,21828130,49303,22,2,pending,pending,0,0,,no_shared_cells
+iia,russian federation|iia|1922-1939,F228-1921-1940,azerbaijan|iia|1929-1940,AZE-SSR-1920-1991,1929-1939,1.0,21552092,86014,422,27,pending,banked_legacy,0,0,,no_shared_cells
+iia,china mainland|iia|1945-1945,CHN-1945-1947,china taiwan province of|iia|1945-1945,TWN-1945-2025,1945-1945,0.999,7532446,35994,10,2,pending,pending,0,0,,no_shared_cells
+iia,china mainland|iia|1922-1931,CHN-1921-1932,china hong kong sar|iia|1924-1924,HKG-1842-2025,1924-1924,0.792,7496474,1128,54,2,pending,pending,1,0,41.59,consistent_with_inclusion
+iia,india|iia|1914-1936,IND-1914-1937,myanmar|iia|1932-1945,MMR-1885-2025,1932-1936,0.969,4889739,675971,277,147,pending,banked,45,26,0.043,impossible_outer_excludes_inner
+iia,turkey|iia|1913-1913,TUR-1913-1914,cyprus|iia|1909-1945,CYP-1879-2025,1913-1913,0.999,1784775,9123,7,636,banked_legacy,banked,5,0,51.478,consistent_with_inclusion
+iia,mali|iia|1913-1938,MLI-1890-1960,burkina faso|iia|1922-1932,BFA-1919-1932,1922-1932,1.0,1736506,272322,66,67,pending,pending,31,7,1.35,impossible_outer_excludes_inner
+iia,japan|iia|1909-1944,JPN-1895-1945,south korea|iia|1909-1944,KOR-1800-1945,1909-1944,1.0,626507,219372,737,427,banked,pending,394,220,0.806,impossible_outer_excludes_inner
+iia,palau|iia|1915-1918,JPN-1895-1945,south korea|iia|1909-1944,KOR-1800-1945,1915-1918,1.0,626507,219372,4,427,banked_legacy,pending,0,0,,no_shared_cells
+iia,japan|iia|1909-1944,JPN-1895-1945,china taiwan province of|iia|1909-1944,TWN-1895-1945,1909-1944,1.0,626507,35994,737,340,banked,pending,330,120,3.296,impossible_outer_excludes_inner
+iia,palau|iia|1915-1918,JPN-1895-1945,china taiwan province of|iia|1909-1944,TWN-1895-1945,1915-1918,1.0,626507,35994,4,340,banked_legacy,pending,0,0,,no_shared_cells
+iia,ivory coast|iia|1932-1945,CIV-1932-1947,burkina faso|iia|1922-1932,BFA-1919-1932,1932-1932,0.536,467463,272322,106,67,pending,pending,13,12,0.183,impossible_outer_excludes_inner
+iia,united kingdom|iia|1909-1920,GBR-1800-1921,ireland|iia|1913-1913,IRL-1800-1921,1913-1913,0.977,313550,84366,42,4,pending,pending,3,0,4.347,consistent_with_inclusion
+iia,austria|iia|1909-1917,AUT-1800-1918,czech republic|iia|1910-1918,CZE-1804-1918,1910-1917,1.0,300304,79366,77,2,pending,pending,0,0,,no_shared_cells
+juan,united kingdom|juan|1867-1920,GBR-1800-1921,ireland|juan|1850-1920,IRL-1800-1921,1867-1920,0.977,313550,84366,760,1045,banked,banked,637,87,3.118,impossible_outer_excludes_inner
+juan,austria|juan|1851-1917,AUT-1800-1918,czechoslovakia|juan|1914-1918,CZE-1804-1918,1914-1917,1.0,300304,79366,1042,35,banked,banked_legacy,27,0,1.444,consistent_with_inclusion
+mitchell,china mainland|mitchell|1950-1960,CHN-1950-2025,china hong kong sar|mitchell|1948-1960,HKG-1842-2025,1950-1960,0.792,9369120,1128,305,12,pending,pending,11,0,44.038,consistent_with_inclusion
+mitchell,china manchuria province of|mitchell|1950-1952,CHN-1950-2025,china hong kong sar|mitchell|1948-1960,HKG-1842-2025,1950-1952,0.792,9369120,1128,13,12,pending,pending,0,0,,no_shared_cells
+mitchell,china mainland|mitchell|1947-1948,CHN-1947-1949,china manchuria province of|mitchell|1945-1948,MAN-1945-1950,1947-1948,0.993,7593571,791708,45,7,pending,pending,2,0,64.941,consistent_with_inclusion
+mitchell,china mainland|mitchell|1947-1948,CHN-1947-1949,china taiwan province of|mitchell|1945-1960,TWN-1945-2025,1947-1948,0.999,7593571,35994,45,290,pending,pending,15,0,158.818,consistent_with_inclusion
+mitchell,china mainland|mitchell|1947-1948,CHN-1947-1949,china hong kong sar|mitchell|1948-1960,HKG-1842-2025,1948-1948,0.792,7593571,1128,45,12,pending,pending,0,0,,no_shared_cells
+mitchell,china mainland|mitchell|1949-1949,CHN-1949-1950,china hong kong sar|mitchell|1948-1960,HKG-1842-2025,1949-1949,0.792,7557599,1128,30,12,pending,pending,0,0,,no_shared_cells
+mitchell,china mainland|mitchell|1945-1946,CHN-1945-1947,china manchuria province of|mitchell|1945-1948,MAN-1945-1950,1945-1946,0.993,7532446,791708,36,7,pending,pending,3,0,57.852,consistent_with_inclusion
+mitchell,china mainland|mitchell|1945-1946,CHN-1945-1947,china taiwan province of|mitchell|1945-1960,TWN-1945-2025,1945-1946,0.999,7532446,35994,36,290,pending,pending,9,0,126.788,consistent_with_inclusion
+mitchell,india|mitchell|1914-1936,IND-1914-1937,myanmar|mitchell|1885-1960,MMR-1885-2025,1914-1936,0.969,4889739,675971,595,277,pending,banked,36,0,6.804,consistent_with_inclusion
+mitchell,india|mitchell|1893-1913,IND-1893-1914,myanmar|mitchell|1885-1960,MMR-1885-2025,1893-1913,0.969,4815028,675971,372,277,pending,banked,21,0,8.073,consistent_with_inclusion
+mitchell,india|mitchell|1886-1892,IND-1886-1893,myanmar|mitchell|1885-1960,MMR-1885-2025,1886-1892,0.969,4647939,675971,35,277,pending,banked,2,0,10.975,consistent_with_inclusion
+mitchell,india|mitchell|1937-1946,IND-1937-1947,pakistan|mitchell|1945-1946,PAK-1937-1947,1945-1946,1.0,4223063,932577,207,9,pending,pending,9,0,8.683,consistent_with_inclusion
+mitchell,turkey|mitchell|1913-1913,TUR-1913-1914,cyprus|mitchell|1897-1960,CYP-1879-2025,1913-1913,0.999,1784775,9123,1,269,banked_legacy,pending,0,0,,no_shared_cells
+mitchell,mali|mitchell|1920-1959,MLI-1890-1960,burkina faso|mitchell|1948-1959,BFA-1947-1960,1948-1959,1.0,1736506,272322,301,40,pending,pending,14,7,0.95,impossible_outer_excludes_inner
+mitchell,ethiopia|mitchell|1936-1940,AOI-1936-1941,somalia|mitchell|1920-1959,ITS-1908-1960,1936-1940,1.0,1712684,464286,10,30,pending,pending,0,0,,no_shared_cells
+mitchell,pakistan|mitchell|1949-1960,PAK-1949-1971,bangladesh|mitchell|1953-1960,BGD-1947-1971,1953-1960,1.0,1014357,137848,244,8,pending,pending,0,0,,no_shared_cells
+mitchell,indochina|mitchell|1887-1948,FID-1887-1954,viet nam|mitchell|1938-1953,VNM-1887-1954,1938-1948,0.993,753049,324094,239,83,banked,pending,0,0,,no_shared_cells
+mitchell,indochina|mitchell|1887-1948,FID-1887-1954,lao|mitchell|1948-1953,LAO-1893-1954,1948-1948,0.969,753049,229987,239,18,banked,pending,0,0,,no_shared_cells
+mitchell,indochina|mitchell|1887-1948,FID-1887-1954,cambodia|mitchell|1948-1952,KHM-1907-1953,1948-1948,0.994,753049,181798,239,26,banked,pending,0,0,,no_shared_cells
+mitchell,japan|mitchell|1895-1944,JPN-1895-1945,korea|mitchell|1909-1944,KOR-1800-1945,1909-1944,1.0,626507,219372,1112,447,reopened,banked,355,70,2.245,impossible_outer_excludes_inner
+mitchell,japan|mitchell|1895-1944,JPN-1895-1945,south korea|mitchell|1932-1944,KOR-1800-1945,1932-1944,1.0,626507,219372,1112,13,reopened,pending,13,0,7.151,consistent_with_inclusion
+mitchell,japan|mitchell|1895-1944,JPN-1895-1945,china taiwan province of|mitchell|1896-1944,TWN-1895-1945,1896-1944,1.0,626507,35994,1112,351,reopened,banked,267,121,2.167,impossible_outer_excludes_inner
+mitchell,korea|mitchell|1945-1948,KOR-1945-1948,south korea|mitchell|1948-1960,KOR-1948-2025,1948-1948,1.0,219402,97097,46,148,pending,pending,0,0,,no_shared_cells
+mitchell,israel palestine|mitchell|1925-1948,PAL-1920-1948,israel|mitchell|1948-1960,ISR-1948-1967,1948-1948,1.0,27009,20786,24,103,pending,pending,0,0,,no_shared_cells

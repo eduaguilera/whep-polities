@@ -53,6 +53,8 @@ do with it:
 | file | holds | issue |
 |---|---|---|
 | `state/assertions.json` | pending assertions to verify | #7, #8 |
+| `state/assertion_triage.csv` | the pending queue tiered by what deterministic evidence says about it, with a `verify_order` (written by `12_triage_assertions.py`; a snapshot, because `assertions.json` is gitignored) | #7 |
+| `state/assertion_nesting_flags.csv` | pairs of same-source assertions whose candidate polygons nest, with the panel's own arithmetic on whether the outer figures can include the inner | #7 |
 | `state/quarantine.csv` | verdicts where two agents disagreed (kept actionable by `reconcile_quarantine.py`) | #20 |
 | `state/quarantine_resolved.csv` | append-only audit trail of cleared quarantine rows + why | — |
 | `state/new_polity_proposals.json` | proposed polities awaiting sign-off | — |
@@ -381,6 +383,78 @@ the honest error rate needs option 4 — a human, scoring a sample.
 
 ---
 
+### Triaging the backlog — what deterministic evidence can and cannot settle (issue #7)
+
+`12_triage_assertions.py` reads `assertions.json` and answers, without spending a
+token, where the historian budget should go. Measured 2026-08-17 against a fresh
+`00_intake.py` run on the current main (**1,073 assertions; 796 pending/reopened
+carrying 94,925 of 189,839 routed rows** — issue #7's "723 of 1,031" is stale, the
+queue GREW as polities and aliases were added and as banked rows reopened on
+changed evidence):
+
+| tier | assertions | rows | what it means |
+|---|---:|---:|---|
+| `territory_basis_wrong` | 17 | 3,184 | the panel's own arithmetic rules out the routing's premise (below) |
+| `nested_reporting` | 120 | 5,563 | same source reports an outer AND an inner territory in overlapping years |
+| `boundary_year` | 1 | 10 | span ends at the candidate's exclusive `end_year` — the accepted convention, not a defect |
+| `weak_route` | 122 | 12,535 | name/tokenset only: no iso agreement, no human-written alias |
+| `precedent` | 256 | 36,495 | a ranged alias or a banked sibling already decided the ROUTING |
+| `thin` | 53 | 272 | ≤5 rows or one distinct year |
+| `bulk` | 227 | 36,866 | no deterministic signal at all |
+
+**Deterministic evidence cannot CONFIRM an assertion, and that is structural.** An
+assertion exists precisely because the deterministic pass finished: `matchlib`
+decided the route and recorded it. What is pending is whether the SOURCE's
+reporting territory equals the polity's territory — and the repo's tables are one
+side of that comparison, so no check over them can close it. 659 of the 796 have
+no deterministic signal whatever; those genuinely need the historian pass.
+
+**What it CAN settle is the opposite direction.** Every layer-B unit is extensive,
+so if a label's figures included a nested territory the same source reports
+separately, `outer >= inner` would hold in every shared (item, unit, year) cell.
+234 same-source nesting pairs exist; in **20 of them inclusion is arithmetically
+impossible**, so the source is reporting the outer EXCLUSIVE of the inner and it
+is the polity's territory, not the routing, that is wrong. Examples, all
+re-derivable from `state/assertion_nesting_flags.csv`:
+
+* Juan's `united kingdom` → `GBR-1800-1921` (313,550 km², Great Britain **and**
+  Ireland) while Juan reports `ireland` separately: Irish flax area 22,436 ha
+  against the UK's 259 ha in 1901, UK below Ireland in 87 of 637 shared cells,
+  concentrated in potatoes, flax and linseed. Juan's UK is Great Britain.
+* IIA's and Mitchell's `japan` → `JPN-1895-1945` (626,507 km² — the empire, i.e.
+  metropolitan Japan + Korea + Taiwan) while both report Korea and Taiwan
+  separately: Japan below Korea in 220 of 394 shared IIA cells (cotton, hemp,
+  sesame, soybeans). Those series are metropolitan Japan.
+* FAO-1952's `germany` 1938 below its own `germany western`/`germany eastern`;
+  `indochina viet nam` below Cambodia and Laos; IIA's `india` below Burma;
+  Mali below Upper Volta in IIA and Mitchell.
+
+**13 of those 20 pairs involve an already-BANKED assertion** — Juan's UK/Ireland is
+banked on both sides — so the screen contradicts recorded verdicts and those rows
+need re-verification, not first verification.
+
+The nesting screen (the flag, not the arithmetic) also independently re-finds the
+Ethiopia/`AOI` fold-up that the reading pass found by hand — Mitchell's `ethiopia`
+-> `AOI-1936-1941` (1,712,684 km²) against its own `somalia` -> `ITS-1908-1960`
+(464,286 km², wholly inside it), 1936-1940. Those two labels share no comparable
+(item, unit, year) cell, so the arithmetic returns `no_shared_cells` and the pair
+is only a flag; it is the calibration for the screen, not a second settlement.
+
+The inclusion test is the first concrete instance of the deterministic
+cross-checks issue #10 asks for (sums, double-counts, continuity) applied to the
+assertion queue rather than to a single polity.
+
+Consistency is NOT proof: the 55 pairs where `outer >= inner` holds everywhere
+look exactly like a genuine double count would, and 118 pairs share no comparable
+cell. Those stay for the historian.
+
+Two more bounds worth knowing before buying tokens: only **66 of 796** candidates
+have a `reviewed` wiki page, so for the other 92% a confirm resting on the page
+alone is recorded as `best_available` (the anti-circularity rule in
+`apply_verdicts.py`) — the pass buys routing assurance, not territorial proof. And
+of the 159 verdicts applied so far only **3 (1.9%)** changed a routing, so the
+queue's value is mostly in the record it leaves, not in corrections found.
+
 ## Pipeline stages
 
 ```
@@ -591,6 +665,7 @@ python pipelines/polity-autoimprove/01_match_and_findings.py     # match + revie
 python pipelines/polity-autoimprove/02_territorial_evidence.py   # attach numeric territorial evidence
 python pipelines/polity-autoimprove/04_territory_basis.py        # classify each polity's territory_basis (1860-1961 sweep)
 python pipelines/polity-autoimprove/reconcile_quarantine.py      # clear resolved quarantine rows (--dry-run to preview)
+python pipelines/polity-autoimprove/12_triage_assertions.py      # tier the pending assertion queue + the nesting/inclusion screen (needs 00_intake first)
 
 # the agent loop (Workflow tool) — audit -> reconcile -> fix -> integrate -> cleanup
 #   Workflow({ scriptPath: "pipelines/polity-autoimprove/autoimprove.workflow.js", args: {...} })
