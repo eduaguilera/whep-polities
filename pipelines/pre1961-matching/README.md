@@ -16,6 +16,22 @@ Rscript pipelines/pre1961-matching/match.R
 
 Required R packages: `readr`, `dplyr`, `tidyr`, `jsonlite`.
 
+After running it, republish the crosswalk CI reads (issue 16):
+
+```bash
+python3 pipelines/pre1961-matching/write_r_crosswalk.py   # → state/r_crosswalk.csv
+```
+
+`state/r_crosswalk.csv` is this matcher's decisions — not its data — collapsed to one row
+per run of years over which its answer is constant (487 runs over 150 reporting entities,
+from 124,508 data rows). It exists because this matcher is the one implementation no gate
+could check: it needs R, its input is 18 MB under `data/external`, and its output
+`data/compiled/pre1961/matched.csv` is gitignored. `scripts/crosscheck_matchers.py` reads
+the crosswalk to compare this matcher's answers against `matchlib.py`'s at each run's
+first, middle and last year — a run boundary being a year where this matcher changes its
+mind, which is where every recorded matcher divergence has lived. Commit it whenever
+`match.R`'s output changes, or the gate will report a stale routing as a disagreement.
+
 ## What it does
 
 1. **Loads** the WHEP polity registry and the pre-1961 input.
