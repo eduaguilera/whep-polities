@@ -824,6 +824,46 @@ def mutate_oversimplified_archipelago(root, gpd, make_valid, affinity):
             f"a fifth of the country while its source area stays on record")
 
 
+def mutate_partial_territory_claimed_twice(root, gpd, make_valid, affinity):
+    """Shift Nepal's polygon one degree north, so more than half of Nepal falls inside
+    China's polygon while every per-row property of both stays fine.
+
+    PARTIAL overlap, deliberately, because that is the half of the doubled-ground problem no
+    existing gate reaches. Measured on a freshly mutated copy: the overlap becomes 80,681
+    km2, 54.9% of Nepal, and
+
+      validate_shared_polygons  PASSES, exit 0, and does not mention NPL. Signal A compares
+                                `(polygon_source, feature_id, feature_year)`, untouched here.
+                                Signal B needs intersection-over-union above 0.9999 between
+                                two polygons within 1% of each other's SIZE, and China is 65x
+                                Nepal, so the pair is discarded before the IOU is computed --
+                                which is 0.0086 in any case.
+      validate_polygons         PASSES, exit 0, and does not mention NPL. A rigid translation
+                                changes the AREA by 0.1% (147,181 -> 147,006 km2), so the
+                                declared-vs-measured check has nothing to see.
+
+    A pure offset is also the realistic version of this defect: it is what a wrong datum, a
+    wrong vintage of a moving frontier, or a hand-built polygon assembled from the wrong
+    reference produces -- ground that is the right SHAPE and the right SIZE in the wrong
+    PLACE, overlapping a neighbour that has every right to it.
+
+    NPL is chosen because it already appears in the gate's sliver pins twice (`IND`/`NPL`
+    2,529.3 km2, `CHN`/`NPL` 2,332.8 km2, each under 2% of Nepal), so the mutation converts a
+    KNOWN, budgeted border disagreement into a doubled territory -- 54.9% instead of 1.6% --
+    which is exactly the transition the share threshold exists to detect, and it moves the
+    `IND`/`NPL` size pin by +75.2% at the same time. A pair that was merely new would prove
+    less about the classification.
+    """
+    g = gpd.read_file(GPKG)
+    i = g.index[g.polity_code == "NPL-1816-2025"][0]
+    g.loc[i, "geometry"] = make_valid(affinity.translate(g.loc[i, "geometry"], yoff=1.0))
+    write_gpkg(g, root)
+    return (
+        "shifted NPL-1816-2025's polygon 1 degree north, so 54.9% of Nepal sits inside "
+        "CHN-1950-2025's polygon while its own area moves by 0.1%"
+    )
+
+
 def mutate_site_shows_withdrawn(root, gpd, make_valid, affinity):
     """Put a retired polity back into site/polities.geojson, which is how the site
     drew Argentina twice.
@@ -2295,6 +2335,14 @@ CASES = (
         "14's class is a LABEL, not a defect, and the two classes differ only by whether "
         "imports cover the exports",
     ),
+    (
+        "validate_coexisting_overlaps.py",
+        mutate_partial_territory_claimed_twice,
+        "NPL-1816-2025",
+        "half a territory claimed by two coexisting live rows whose bindings, areas and "
+        "validity are all fine — a rigid offset, which validate_shared_polygons and "
+        "validate_polygons both provably pass on (verified, exit 0, NPL unnamed)",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -2700,6 +2748,14 @@ WRITABLE = {
     "validate_shared_polygons.py": (
         "polities_database.csv",
         "faostat_area_polity_map.csv",
+    ),
+    # Same reasoning as the line above, minus the FAOSTAT map, which this gate does not
+    # read: the CSV supplies the spans and statuses and is read-only here, and the
+    # GeoPackage is deliberately NOT staged because the mutation writes a fresh one into
+    # `root` — staging a copy first would give that file two layers and read_file would
+    # return the unmutated one (see write_gpkg).
+    "validate_coexisting_overlaps.py": (
+        "polities_database.csv",
     ),
     # sources.yaml is read before any page is parsed, so without it the gate dies with a
     # FileNotFoundError -- exit 1 for the wrong reason, which the "must name the defect"

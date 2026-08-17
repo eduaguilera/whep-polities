@@ -623,6 +623,22 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_shared_polygons.py
 
+      - name: Polygons — coexisting polities overlap only by a pinned amount
+        # The half of issue 143 that is implementable. Sharing a polygon outright is
+        # forbidden above; PARTIAL overlap is where the rest of the cell over-claim lives
+        # — 188 coexisting pairs and 331,319 km2 in 2015, which is 544 of 68,549
+        # half-degree cells claiming more than they contain, 30.73 Mha in excess. That
+        # total is NOT a defect to be zeroed: 267,078 km2 of it is Western Sahara coded
+        # from both sides, a territorial judgement PR 247 deliberately left open, and
+        # 7,920 km2 is the decided gross-polygon convention. So the gate names and
+        # classifies every pair overlapping >=10% of the smaller polity — measured, the
+        # sliver tail tops out at 1.07% and every decided pair is 14.1% or more, so the
+        # classes do not touch — and pins the remaining ~177 pairs, 5,160 km2 in 2015, as
+        # a budget that cannot grow. Five sliver pairs above 2,000 km2 are pinned by SIZE,
+        # so a border drifting further apart is reported even though the pair is known.
+        if: '!cancelled()'
+        run: python3 scripts/validate_coexisting_overlaps.py
+
 
       - name: Identity — a code's years match its own columns
         if: '!cancelled()'
