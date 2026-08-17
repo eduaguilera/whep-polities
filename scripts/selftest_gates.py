@@ -1009,6 +1009,25 @@ def mutate_renamed_column(root, gpd, make_valid, affinity):
     return "observed_rows"
 
 
+def mutate_unrenamed_layer_b_column(root, gpd, make_valid, affinity):
+    """Drop the layer-B rename from the R reader, leaving `polity_code` as the parquet spells it.
+
+    Not an invented defect: this is exactly the state build.R was in until issue 95's option 4
+    was finished. Layer B's column NAMED `polity_code` holds LOWERCASE ISO CODES -- 166 distinct
+    values, 0 of them a real polity code -- so a frame that keeps the name invites
+    `merge(..., on="polity_code")`, which returns an EMPTY frame and raises nothing. The
+    mutation is a DELETION rather than a wrong value because that is how this defect appears:
+    nobody writes the bad join, they simply omit the rename that makes it unwritable."""
+    path = os.path.join(root, "pipelines/historical-production-harmonized/build.R")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    needle = 'layer_b <- dplyr::rename(layer_b, iso3_lower = "polity_code")'
+    assert needle in text, "build.R no longer renames layer B's polity_code at the read"
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text.replace(needle, "layer_b <- layer_b", 1))
+    return "build.R"
+
+
 def mutate_order_dependent_binding(root, gpd, make_valid, affinity):
     """Set VNM-1887-1954's polygon_feature_year back to 1893, the value it shipped with.
 
@@ -1360,6 +1379,13 @@ CASES = (
         "a renamed column, which every reader sees as None rather than as an error",
     ),
     (
+        "validate_layer_b_column_guard.py",
+        mutate_unrenamed_layer_b_column,
+        "build.R",
+        "a layer-B read that keeps the column named `polity_code`, which holds lowercase ISO "
+        "codes, so the obvious join returns zero rows and no error",
+    ),
+    (
         "validate_polygon_binding_determinism.py",
         mutate_order_dependent_binding,
         "VNM-1887-1954",
@@ -1694,6 +1720,17 @@ WRITABLE = {
         "pipelines/faostat-era-matching/state/unmatched.csv",
         "pipelines/faostat-era-matching/state/aggregates.csv",
         "pipelines/faostat-era-matching/state/registry_unmapped.csv",
+    ),
+    # A SOURCE-scanning gate, so what it needs staged is source files, not data. All three
+    # layer-B readers are staged, not just the one the case mutates: the gate fails when it
+    # can find NO reader at all -- a scan that has stopped matching anything must not read as
+    # a pass -- so staging only build.R would have made this case fire for the wrong reason.
+    # extdata.py is staged because the gate also checks that the rename and its reverse guard
+    # are still declared there.
+    "validate_layer_b_column_guard.py": (
+        "pipelines/historical-production-harmonized/build.R",
+        "pipelines/polity-autoimprove/extdata.py",
+        "pipelines/polity-autoimprove/01_match_and_findings.py",
     ),
     # Needs the SOURCE shapefile, not just the CSV: the gate compares each declared
     # binding against the features it could have matched. Without it the gate sees no

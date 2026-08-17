@@ -291,6 +291,21 @@ jobs:
       - name: Published tables still have the columns consumers read
         run: python3 scripts/validate_schema_contract.py
 
+      - name: Layer B's misnamed polity_code is renamed at every read
+        # Layer B's column NAMED `polity_code` holds LOWERCASE ISO CODES: measured
+        # 2026-08-17, 192,670 rows, 166 distinct values, 99.37% exactly lower(iso3c), and
+        # 0 of the 166 equal to any polity_code in the database. So
+        # `layer_b.merge(polities, on="polity_code")` returns an EMPTY frame and raises
+        # nothing — a table of zeros was nearly published as evidence that no data existed
+        # in those years (issue 95, option 4). The parquet is built outside this repo, so
+        # its header cannot be fixed here; what is enforced instead is that no frame held
+        # in this repo carries the lying name. A source check, not a data check, because
+        # layer B is not redistributable and CI cannot read it — the loader-side guard
+        # existed already and two of its three callers passed no `polity_codes`, so it
+        # compared against an empty set and passed for that reason.
+        if: '!cancelled()'
+        run: python3 scripts/validate_layer_b_column_guard.py
+
       - name: Citations resolve to real sources and anchors
         if: '!cancelled()'
         run: python3 scripts/validate_citations.py
