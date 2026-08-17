@@ -284,6 +284,29 @@ re-derives them, it only validates executability and records them.
 | `faostat` | separate code-keyed matcher (`write_faostat_area_map.py`), not this intake | — |
 | `federico_tena` | `prepare_federico_tena.py` (issue 26) | 27,359 rows → 77.3% routed, 269 assertions (242 pending), 32 labels that never route |
 
+### Re-deriving the layer-B assertion queue
+
+The invocation was not written down anywhere, which cost real time: `assertions.json` is
+keyed by polity CODE, so every re-span leaves it naming codes that no longer exist, and
+without the command there is no way to refresh it. Measured 2026-08-17 before this was run:
+23 assertions carrying 1,925 rows named retired codes, two of them already banked.
+
+```bash
+python3 pipelines/polity-autoimprove/01_match_and_findings.py     # rebuild matched_rows.parquet
+python3 pipelines/polity-autoimprove/00_intake.py \
+  --input pipelines/polity-autoimprove/state/matched_rows.parquet \
+  --label-col country --year-col year --iso-col iso3c \
+  --value-col value --item-col item --unit-col unit \
+  --source-col source --prior-code-col whep_code
+```
+
+`--iso-col` and `--prior-code-col` are what separate the production run from a label-only
+one (88.9% routed against 67.7% for a source that cannot supply them). Run it to `--out` a
+temp file first and diff the assertion count before overwriting state: the queue is the
+pipeline's memory of what still needs judging, and a bad regeneration is silent.
+
+After the run above: 1,032 -> 1,073 assertions, stale candidates 23 -> 0.
+
 `prepare_federico_tena.py` is what onboarding a new source actually costs: it
 reads the tracked `data/external/federico_tena_polities.xlsx` and writes
 `state/federico_tena_intake.csv` (gitignored, regenerable), one row per
