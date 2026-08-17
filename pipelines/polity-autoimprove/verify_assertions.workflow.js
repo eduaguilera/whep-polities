@@ -37,7 +37,11 @@ export const meta = {
 //       page_suspect/page_inadequate; source_convention. This is the version
 //       the ~150 already-banked assertions were (re-)verified under, so it is
 //       the baseline and does not reopen them.
-export const PROTOCOL_VERSION = 1
+// NOT exported: a second `export` makes this file unparseable by the Workflow runner
+// ("Unexpected keyword 'export'"), which is how the verification workflow became
+// unlaunchable. protocol.py reads this line textually and accepts it with or without the
+// keyword, so dropping it costs nothing.
+const PROTOCOL_VERSION = 1
 // ---------------------------------------------------------------------------
 //
 // args = { repo?, keys: ["label|source|y1-y2", ...], review_sample?, out?,
