@@ -1468,7 +1468,43 @@ def mutate_entrepot_flag_dropped(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_member_bound_to_a_siblings_polygon(root, gpd, make_valid, affinity):
+    """Give one AEF constituent a SIBLING constituent's polygon, so the four parts no
+    longer sum to the federation they compose.
+
+    This is the defect class `composed_union` recipes keep producing here, reproduced in the
+    one place a sum can see it. IDN-JVM-1949-1951 declared four GADM ids of which one was
+    North Sulawesi, 1,500 km away, while three Java provinces were missing; SER-1918-1945 and
+    CAN-1800-1866 had the same shape. Every per-row gate passed on all three: the geometry is
+    valid, s2-loadable, inside its continent, the right SIZE ORDER for its family, and its
+    row declares a polygon and has one. What contradicted them was the OTHER number the page
+    carried -- the total -- which only a sum against the enumerated members can use.
+
+    Chad is swapped in for Middle Congo rather than something absurd because it must stay
+    inside AEF: that keeps containment (check B) quiet and leaves the sum as the only signal,
+    which is the point of the case. 343,962 km2 becomes 1,271,822, so the four parts reach
+    1.372x the federation polygon.
+    """
+    g = gpd.read_file(GPKG)
+    i = g.index[g.polity_code == "COG-1919-1960"][0]
+    tcd = g[g.polity_code == "TCD-1919-1960"].iloc[0].geometry
+    g.loc[i, "geometry"] = make_valid(tcd)
+    write_gpkg(g, root)
+    return (
+        "bound COG-1919-1960 to TCD-1919-1960's polygon, so AEF's four constituents sum to "
+        "1.372x the federation while every one of them stays inside it"
+    )
+
+
 CASES = (
+    (
+        "validate_composition_sums.py",
+        mutate_member_bound_to_a_siblings_polygon,
+        "AEF-1910-1960",
+        "a member bound to a sibling's polygon, which no per-row check can see because "
+        "every property of the geometry is fine — only the parts-sum-to-the-whole identity "
+        "contradicts it",
+    ),
     (
         "validate_source_change_steps.py",
         mutate_undocumented_source_change,
@@ -1927,6 +1963,17 @@ WRITABLE = {
     "validate_period_overlaps.py": (
         "polities_database.csv",
         "iso3_successor_map.csv",
+    ),
+    # The GeoPackage is what this case rewrites, so it must be a real copy and must be
+    # written with write_gpkg(). The other two are READ-ONLY for this gate but stage()
+    # creates nothing it was not asked for: without the registry the gate exits 2 with
+    # "missing" and names no defect, and without the alias map its double-count arm exits 2
+    # the same way — both of which the "must NAME the defect" arm of this harness reports as
+    # a failure for the wrong reason.
+    "validate_composition_sums.py": (
+        "polities_database.gpkg",
+        "label_alias_map.csv",
+        "pipelines/polity-autoimprove/state/polity_composition.csv",
     ),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
     # Rewrites the published alias map, so it needs a real copy rather than stage()'s
