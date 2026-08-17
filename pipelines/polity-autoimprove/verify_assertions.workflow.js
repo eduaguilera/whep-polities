@@ -3,7 +3,7 @@ export const meta = {
   description: 'One agent per pending assertion (label+source+years -> polity): verify the source\'s reporting territory equals the candidate polity\'s; independent reviewer on risky verdicts; quarantine on disagreement.',
   phases: [
     { title: 'Verify', detail: 'one economic-historian agent per assertion evidence bundle', model: 'sonnet' },
-    { title: 'Review', detail: 'independent refuter on non-confirm / low-confidence verdicts; disagreement -> quarantine', model: 'sonnet' },
+    { title: 'Review', detail: 'DECORRELATED independent refuter (different model + rotated lens) on non-confirm / low-confidence verdicts; disagreement -> quarantine', model: 'opus' },
     { title: 'Save',   detail: 'write verdicts to state/verdicts_pending.json (NOT applied; run apply_verdicts.py)', model: 'sonnet' },
   ],
 }
@@ -40,7 +40,12 @@ export const meta = {
 export const PROTOCOL_VERSION = 1
 // ---------------------------------------------------------------------------
 //
-// args = { repo?, keys: ["label|source|y1-y2", ...] }
+// args = { repo?, keys: ["label|source|y1-y2", ...], review_sample?, out?,
+//          model?, effort?, review_model?, review_effort? }
+//   model/review_model default to sonnet for verification and opus for review —
+//   see "DECORRELATION OF THE BLIND REVIEW" below. Setting review_model equal to
+//   model restores the old fully correlated behaviour; do that only to measure
+//   the difference, and record it if you do.
 //   keys = assertion keys to verify this run — compute from state/assertions.json
 //   (status "pending"/"reopened"; chunk to ~100 per run). An empty/missing keys
 //   list is a no-op with a warning (same caveat as autoimprove's n_findings).
@@ -56,7 +61,44 @@ const reviewSample = Number(A.review_sample) || 5   // spot-review every Nth con
 const outFile = A.out || 'verdicts_pending.json'
 const ASSERTIONS = `${repo}/pipelines/polity-autoimprove/state/assertions.json`
 const POLDB = `${repo}/data/final/polities_database.csv`
-const M = { model: 'sonnet', effort: 'medium' }
+const M = { model: A.model || 'sonnet', effort: A.effort || 'medium' }
+
+// ---------------------------------------------------------------------------
+// DECORRELATION OF THE BLIND REVIEW (issue #27)
+//
+// Blind review closes ANCHORING: the reviewer never sees the first verdict, so
+// agreement cannot be deference. It does not close CORRELATED ERROR: until now
+// both agents were the same model, at the same effort, reading the same bundle
+// under the SAME instructions, so a failure mode inherent to the model or to
+// the prompt was reproduced rather than caught, and the agreement rate measured
+// the pipeline's CONSISTENCY, not its accuracy.
+//
+// Two cheap decorrelators, both applied here:
+//   1. MODEL DIVERSITY — the reviewer runs on a different model than the
+//      verifier (default sonnet -> opus). Only the reviewed subset pays for the
+//      stronger model (~1/3 of verdicts at review_sample 5, measured), so this
+//      is the cheapest meaningful decorrelation available.
+//   2. PERSPECTIVE DIVERSITY — the reviewer gets a different LENS: which
+//      evidence to open FIRST and weight HEAVIEST. Rotated deterministically by
+//      position so a batch spreads across all three lenses. A lens ADDS a
+//      starting point; it never subtracts an obligation from HISTORIAN.
+//
+// Neither is worth anything unless it can be measured, and the archive could
+// not measure it: verdicts_applied.jsonl recorded no model and no lens, so
+// "does disagreement rise when the reviewer differs?" was unanswerable from the
+// 159 banked records. Every record now carries verify_model / review_model /
+// review_lens, and review_stats.py slices agreement by them.
+//
+// NOT a PROTOCOL_VERSION bump: the bump policy above explicitly excludes models
+// and review sampling, and a lens changes where a reviewer starts, not what any
+// verdict MEANS. The VERDICT schema, the definition of confirm_kind and every
+// HISTORIAN obligation are untouched.
+const MR = { model: A.review_model || 'opus', effort: A.review_effort || A.effort || 'medium' }
+const LENSES = [
+  { id:'magnitudes', text:` YOUR LENS FOR THIS REVIEW: reason from the NUMBERS FIRST. Before you read anyone's prose about this territory, work from staple_magnitudes and neighbor_segments: is the level plausible per km2 and per head of population for a territory of candidate_meta.area_km2, and is it continuous across our period splits? Try to make the numbers refute the routing — what territorial scope would this level imply if you knew nothing else, and is that the candidate's scope? Only then consult the wiki page and the literature, and if they disagree with the arithmetic say which you believe and why.` },
+  { id:'source_documentation', text:` YOUR LENS FOR THIS REVIEW: reason from the SOURCE'S OWN CONVENTIONS FIRST. Ask what THIS publication meant by this label in these years: its country-table structure, whether it lists the label's components separately elsewhere (a source that reports the parts separately is not folding them into the whole), its footnotes and territorial notes, its stated compilation basis and border vintage, and source_conventions already established for it. Search the web / read the source file where you can. Establish the label's reporting basis from the publication, and only then compare it against the candidate polity.` },
+  { id:'territorial_history', text:` YOUR LENS FOR THIS REVIEW: reason from the TERRITORY'S HISTORY FIRST. Independently reconstruct what this territory was, year by year, across the observed span — unions, annexations, cessions, occupations, separations, colonial dependencies administered as metropolitan territory — and only then ask whether one candidate polity can equal it for the WHOLE span. A span that crosses a territorial change cannot be verified_equal however good the routing is. Then check the data against the history you reconstructed.` },
+]
 
 const WIKI_SKEPTICISM = ` CRITICAL — THE WIKI IS NOT GROUND TRUTH. Most polity pages (634 of 733) have wiki_status "draft", meaning they were written by an EARLIER AUTOMATED PASS and never reviewed by a human. candidate_meta.wiki_status tells you which you are looking at. Treat a "draft" page as a PRIOR AGENT'S HYPOTHESIS, not as evidence: its territorial claims, areas, dates and "Data routing" decisions may be wrong, and confirming your verdict by citing a draft page is CIRCULAR REASONING — an earlier agent's guess laundered into an apparent verification. To rely on a territorial claim from a draft page you must corroborate it independently: the data's own magnitudes, an external authority (search the web — encyclopaedias, historical-boundary literature, statistical-yearbook documentation, census figures), or a source file you can read. Do NOT treat wiki_status "reviewed" as a guarantee either: 10 of 72 reviewed pages are thin stubs with no source citations at all. candidate_meta.wiki_page gives the page's measurable depth (bytes, source_citations, has_todo_markers) — judge the page on THAT plus the specific claim you need, not on its status label. A page with zero source_citations is an assertion by whoever wrote it, whatever its status says. If the page's own claims look WRONG, say so in wiki_note and set page_suspect — a page that misstates its polity's territory or dates is a finding in its own right, more valuable than the verdict itself. Record honestly in evidence_used what your conclusion actually rests on.`
 
@@ -93,6 +135,12 @@ const VERDICT = { type:'object', additionalProperties:false,
 // blind review: the reviewer NEVER sees the first verdict (anchoring would make
 // agreement meaningless) — it produces its own full VERDICT from the same
 // evidence, and the comparison is done in code below.
+// split_reroute is compared segment-for-segment ON PURPOSE, boundaries included:
+// the only archived disagreement where the second agent was demonstrably right
+// (argentina|juan|1900-1960) was a one-year boundary slip — same two targets, but
+// the first verdict's segments overlapped at 1902 and apply_verdicts.py's
+// contiguity contract rejects them. An "agree if the targets match" comparator
+// would have banked it silently.
 const sameTarget = (a, b) => {
   if (a.verdict !== b.verdict) return false
   // confirm: both endorse the bundle's candidate by definition (polity_code may
@@ -113,7 +161,11 @@ if (keys.length === 0) {
 phase('Verify')
 // review every non-confirm / low-confidence verdict, PLUS a deterministic 1-in-5
 // sample of confident confirms — a confident-wrong confirm is the failure mode
-// this pipeline fears most, and without sampling it would never be reviewed
+// this pipeline fears most, and without sampling it would never be reviewed.
+// MEASURED over the 159 banked verdicts (review_stats.py): 51 carry a review,
+// 48 of 156 confident confirms (30.8%) — so ~69% of confident confirms have
+// never been second-checked. Lowering review_sample buys coverage linearly but
+// decorrelates nothing, which is why the reviewer's model and lens differ.
 const needsReview = (v, i) => v && (v.verdict !== 'confirm' || v.confidence === 'low' || i % reviewSample === 0)
 const results = await pipeline(keys,
   key => agent(
@@ -129,24 +181,31 @@ const results = await pipeline(keys,
     { ...M, label:`verify:${key.slice(0,40)}`, phase:'Verify', schema:VERDICT }),
   (v, key, i) => {
     if (!v) return null
-    if (!needsReview(v, i)) return { verdict: v, review: null, quarantined: false }
+    if (!needsReview(v, i))
+      return { verdict: v, review: null, quarantined: false, verify_model: M.model }
     // BLIND second verification: same evidence, zero knowledge of the first
     // verdict. The verify prompt is deliberately worded differently so the two
-    // agents don't converge by prompt echo alone.
+    // agents don't converge by prompt echo alone — and, since issue #27, the
+    // reviewer also runs on a DIFFERENT MODEL and under a rotated LENS, so
+    // agreement is not merely the same model re-running the same instructions.
+    const lens = LENSES[i % LENSES.length]
     return agent(
-      `${HISTORIAN}\nIndependently verify ONE assertion (you are the second, blind verifier — decide from scratch). ` +
+      `${HISTORIAN}${lens.text}\nIndependently verify ONE assertion (you are the second, blind verifier — decide from scratch). ` +
       `Read ${ASSERTIONS} and extract ONLY the assertion object whose "key" equals ${JSON.stringify(key)} (python3/jq — do not load the whole file). ` +
       `Study the candidate's wiki page (candidate_meta.wiki under ${repo}), the family in ${POLDB} if useful, and the web for the source's reporting conventions when in doubt. ` +
-      `Return your own verdict (same decision space: confirm/reroute/split_reroute/new_polity/not_a_polity/uncertain), echoing the key and the bundle's evidence_hash (as verified_evidence_hash) verbatim, and citing the evidence that decided it.`,
-      { ...M, label:`review:${key.slice(0,40)}`, phase:'Review', schema:VERDICT })
+      `Return your own verdict (same decision space: confirm/reroute/split_reroute/new_polity/not_a_polity/uncertain), echoing the key and the bundle's evidence_hash (as verified_evidence_hash) verbatim, and citing the evidence that decided it. ` +
+      `Do not soften a disagreement to be agreeable — nobody has told you what the other verifier concluded, and a disagreement you report is what sends this to quarantine for a human, which is the outcome the pipeline wants when the answer is not clear.`,
+      { ...MR, label:`review:${key.slice(0,40)}`, phase:'Review', schema:VERDICT })
       .then(r => {
         const agrees = r ? sameTarget(v, r) : false
-        return { verdict: v, review: r, review_agrees: agrees, quarantined: !agrees }
+        return { verdict: v, review: r, review_agrees: agrees, quarantined: !agrees,
+                 verify_model: M.model, review_model: MR.model, review_lens: lens.id }
       })
   })
 const verdicts = results.filter(Boolean)
 const nQ = verdicts.filter(x => x.quarantined).length
-log(`Verify: ${verdicts.length}/${keys.length} verdicts at protocol v${PROTOCOL_VERSION} (${nQ} quarantined by reviewer disagreement)`)
+const nR = verdicts.filter(x => x.review).length
+log(`Verify: ${verdicts.length}/${keys.length} verdicts at protocol v${PROTOCOL_VERSION} (${nR} reviewed by ${MR.model} against ${M.model}, ${nQ} quarantined by reviewer disagreement)`)
 
 phase('Save')
 // Save, then STAMP each verdict with the bundle's real evidence_hash read from
@@ -168,8 +227,12 @@ await agent(
 
 return {
   verified: verdicts.length,
+  reviewed: nR,
   quarantined: nQ,
   protocol_version: PROTOCOL_VERSION,
+  verify_model: M.model,
+  review_model: MR.model,
+  review_lenses: verdicts.reduce((m, x) => { if (x.review_lens) m[x.review_lens] = (m[x.review_lens] || 0) + 1; return m }, {}),
   by_verdict: verdicts.reduce((m, x) => { const k = x.verdict.verdict; m[k] = (m[k] || 0) + 1; return m }, {}),
   note: `Verdicts are in state/${outFile} — inspect, then run apply_verdicts.py [${outFile}] to bank/apply them.`,
 }

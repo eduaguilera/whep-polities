@@ -9,3 +9,7 @@ structural_snapshot.json
 # Persistent state below is committed: review_ledger.csv, applied_aliases.csv
 match_confidence.csv
 audit_sample.csv
+# regenerable, deterministic (review_stats.py --audit-sample): a BLANK human-audit
+# template. If someone actually scores one by hand, commit it under a new name
+# (audit_scored_<date>.csv) — that is a measurement, not a derived artifact.
+audit_sample_banked.csv

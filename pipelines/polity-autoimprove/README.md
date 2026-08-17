@@ -189,7 +189,15 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        low-confidence verdict and a 1-in-review_sample slice of
                        confident confirms — it never sees the first verdict, and
                        code compares verdict+target; mismatch -> quarantine.
+                       The reviewer is DECORRELATED from the verifier — a
+                       different model (opus vs sonnet) under a rotated lens —
+                       see "Decorrelating the blind review".
                        Writes state/<args.out> (nothing applied).
+review_stats.py        measures the review itself out of the banked archive:
+                       coverage, coverage of confident confirms (the class the
+                       sampler can skip), agreement sliced by model pair and by
+                       lens, and the disagreements. --audit-sample N writes a
+                       deterministic human-audit sample. Not a gate.
 apply_verdicts.py      deterministic execution with contract validation — reroute
                        target must EXIST, must not be retired/superseded, and must
                        COVER the observed span; split_reroute segments must tile it
@@ -264,6 +272,89 @@ a bump reopens exactly the rows that predate it.
 `protocol_version` is empty on rows banked by `01_`/`02_` (a different review
 unit, not this protocol) and on `banked_legacy` label-level rows, which pre-date
 assertion verification entirely and are skipped by that separate mechanism.
+
+### Decorrelating the blind review (issue 27)
+
+Blind review closes **anchoring**: the reviewer never sees the first verdict, so
+agreement cannot be deference. It does not close **correlated error**. Until
+2026-08-17 both agents were the same model at the same effort, reading the same
+bundle under the *same* instructions, so a failure mode inherent to the model or
+to the prompt was reproduced rather than caught — and the agreement rate measured
+the pipeline's **consistency**, not its accuracy.
+
+What the archive actually says (`review_stats.py`, over the 159 banked verdicts):
+
+| measured | value |
+|---|---|
+| banked verdicts carrying a review | 51 of 159 (32.1%) |
+| confident confirms second-checked | 48 of 156 (30.8%) |
+| confident confirms **never** second-checked | 108 (69.2%) |
+| agreement among reviewed | 48 agree / 3 disagree (94.1%) |
+| reviewed verdicts whose correlation can be assessed | **0** |
+
+Three corrections to the issue's own figures. The exposure is **69%**, not the
+75-80% it estimated (`review_sample` was 1 or 2 on several runs, so real coverage
+beats the 1-in-5 default). The convergence evidence it cites as 6/6 and 13/13 is
+94.1% over the whole archive, not 100% — and the three disagreements are worth
+reading one by one, because they are the entire evidential base for "review
+catches things":
+
+* `ethiopia|fao1952|1937-1937` and `ethiopia|iia|1938-1938` — genuine
+  territorial disputes (Ethiopia proper vs the Italian East Africa aggregate),
+  both quarantined, and both later closed by `reconcile_quarantine.py` as
+  `route_changed` when the candidate became `ETH-1936-1941`. Neither was ever
+  adjudicated on its merits.
+* `argentina|juan|1900-1960` — *not* a territorial disagreement at all. Both
+  agents chose the same two targets (`ARG-1899-1902`, `ARG-1902-2025`); they
+  differed by one year on the boundary, `1900-1902` vs `1900-1901`. The
+  verifier's pair overlaps at 1902 and is rejected outright by
+  `apply_verdicts.py`'s contiguity contract (`year_start == prev year_end + 1`);
+  the reviewer's tiles cleanly. So the one case where the second agent was
+  demonstrably RIGHT was an arithmetic slip, not a scope error — which is
+  precisely the argument for the deterministic cross-checks issue, and precisely
+  what a decorrelated *lens* is unlikely to add much to.
+
+And the last row of the table is the finding that made the issue actionable:
+the archive recorded neither the model nor the instructions behind each review,
+so "does disagreement rise when the reviewer differs?" was unanswerable from the
+data we already had — no experiment was possible, whatever we changed.
+
+So, cheapest first:
+
+1. **Model diversity** — the reviewer runs on a different model than the verifier
+   (`review_model`, default `opus`, against `model`, default `sonnet`). Only the
+   reviewed ~1/3 pays for the stronger model.
+2. **Perspective diversity** — the reviewer gets a different **lens**, rotated
+   deterministically by position across `magnitudes` (start from the numbers and
+   try to make them refute the routing), `source_documentation` (start from what
+   *this publication* meant by the label) and `territorial_history` (reconstruct
+   the territory year by year, then test the span). A lens changes where the
+   reviewer *starts and what it weights*; it never subtracts a `HISTORIAN`
+   obligation.
+3. **Lower `review_sample`** — buys coverage linearly, decorrelates nothing.
+   Left at 5; use it when the population, not the method, is the worry.
+4. **A human audit sample** — the only thing that yields a real error rate.
+   `review_stats.py --audit-sample N` writes a deterministic (key-hash-seeded)
+   sample of banked confirms with blank `human_verdict`/`human_reason` columns.
+   It must be scored **by hand**: an agent scoring it reintroduces exactly the
+   correlated error the sample exists to measure, which is the flaw in relying on
+   `audit_matches.workflow.js` for this.
+
+Every verdict record now carries `verify_model`, `review_model` and
+`review_lens` (they ride the archive through `apply_verdicts.py`), and
+`review_stats.py` slices agreement by both — so the same-model **5.9%**
+disagreement rate above (3 of 51; **3.9%** if the Argentina boundary slip is
+excluded as non-territorial) is the baseline the decorrelated reviewer is
+measured against. **None of this is a `PROTOCOL_VERSION` bump**: the bump policy excludes
+models and sampling, and a lens cannot change what a verdict *means* — the
+VERDICT schema, `confirm_kind` and every `HISTORIAN` obligation are untouched, so
+no banked assertion is reopened by it.
+
+What remains open: whether decorrelation *works*. One would expect a
+decorrelated pair to disagree MORE often than 5.9% if correlated error was
+real, and less often only if the reviewer's lens is simply better. Neither
+reading is available until enough reviews are banked with the new metadata, and
+the honest error rate needs option 4 — a human, scoring a sample.
 
 ---
 
