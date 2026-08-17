@@ -1471,6 +1471,45 @@ def mutate_subnational_aggregate_with_residual(root, gpd, make_valid, affinity):
             "claim a 0.5% tolerance really made")
 
 
+def mutate_irrigated_breach_as_multiple_cropping(root, gpd, make_valid, affinity):
+    """Re-label Peru 1950's irrigated-area breach as a possible multiple-cropping case.
+
+    NOT AN INVENTED EDIT: it is the state 13_land_containment.py would have had if the
+    crop-area bound had been the only one, which is how it was first written. The crop floor
+    legitimately CAN exceed arable land -- harvested area counts a double-cropped field twice --
+    so a breach of it is reported and never corrected. The irrigated bound is a different animal:
+    irrigated arable land is arable land BY DEFINITION, so a breach of it cannot be cropping
+    intensity and dismissing it as one turns the single case no other guard can see back into a
+    clean cell. Peru 1950 is exactly that case: arable 600 (1000 ha) against an irrigated 750,
+    with the block 1,000 short of its own `use total` -- a deficit that sits UNDER
+    06_landuse_consistency.py's 2%-of-total window (2,498), so 06 never sees the block at all.
+
+    It is the right mutation for this gate because nothing else in the repository reads this
+    file, so no count moves and no schema breaks: after the edit the row is still internally
+    consistent in every re-derivable column (floor, binding_bound and ratio are untouched), and
+    only its VERDICT is false. The single thing that can catch it is a gate that asks which bound
+    was breached before accepting the cropping-intensity excuse.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/land_containment.csv")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = ",1600.0,replace_value,"
+    assert target in text, "PER-1942-2025 1950 no longer proposes 1,600 for its arable cell"
+    text = text.replace(
+        target,
+        ",,review,",
+    ).replace(
+        "digits dropped: irrigated_arable 750 exceeds arable 600, and the block is 1,000 "
+        "short of use total — restoring the leading digit(s) satisfies both",
+        "crop area floor 370 over 15 crop(s) exceeds arable 600 (intensity 1.25x); the block "
+        "is consistent, so multiple cropping is not excluded and no value is proposed",
+    )
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return ("dismissed Peru 1950's irrigated arable land of 750 against a recorded arable of "
+            "600 as possible multiple cropping, the escape only the crop-area bound has")
+
+
 def mutate_short_convention_row(root, gpd, make_valid, affinity):
     """Append a convention row carrying only the FIRST SEVEN columns.
 
@@ -2070,6 +2109,15 @@ CASES = (
         "before 1860 routes 20th-century data — a rules regression crosscheck_matchers "
         "passes, measured, because its every assertion also depends on the real database",
     ),
+    (
+        "validate_land_containment.py",
+        mutate_irrigated_breach_as_multiple_cropping,
+        "PER-1942-2025",
+        "an irrigated-area breach of arable land waved through as multiple cropping -- "
+        "irrigated arable IS arable, so the escape the crop-area bound legitimately has does "
+        "not exist here, and Peru 1950's 1,000 (1000 ha) short arable cell goes back to "
+        "looking fine",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -2168,6 +2216,12 @@ WRITABLE = {
     # committed table through stage()'s symlink.
     "validate_subnational_sums.py": (
         "pipelines/polity-autoimprove/state/subnational_sums.csv",
+    ),
+    # Same reasoning once more: the containment table is the only file this gate reads, and the
+    # case REWRITES two fields of Peru's row in place, so it must be a real copy or the mutation
+    # writes the false verdict through stage()'s symlink into the committed table.
+    "validate_land_containment.py": (
+        "pipelines/polity-autoimprove/state/land_containment.csv",
     ),
     # The gap table is what the case rewrites, so it must be a real copy or the mutation
     # writes a trace flow through stage()'s symlink into the committed table. The summary is
