@@ -26,6 +26,49 @@ Kinds:
 
 ---
 
+## ingest-federico-tena-through-00-intake-issue-26
+**Date:** 2026-08-17
+**Touched:** none
+**Source:** federico-tena-2019
+**Kind:** ingest
+
+**Federico-Tena is the second independent dataset through `00_intake.py`, and it
+routes far worse than layer B — which is the finding, not a failure.** Issue 26
+asked for the onboarding and predicted the payoff ("a source with a different
+provenance will find different gaps"). It was right. `00_intake.py` needed no
+change; the whole cost was
+[prepare_federico_tena.py](../pipelines/polity-autoimprove/prepare_federico_tena.py),
+which turns the staged xlsx into one row per (polity, series, year) — 48,569 rows,
+243 polities, 1800–1940 — plus 167 rows carrying the one magnitude the source has,
+the 1913 population.
+
+Measured 2026-08-17: **32,870/48,569 rows routed (67.7%)**, **270 assertions** (240
+pending, 30 `banked_legacy` inherited from layer-B label verdicts), **76 labels that
+never route at all** (9,822 rows) and **66 that route but observe years their
+candidate's chain does not cover** (5,877 rows). Layer B measured the same way the
+same day — label only — routes **88.9%** of 192,670 rows. The 76 unrouted labels
+split into alias gaps against polities WHEP already has (`Dutch Guayana` →
+`SUR-1886-1954`, `Gold Coast` → the GHA chain, `German East Africa` →
+`TAN-1891-1920`, `Zanzibar` → `ZNZ-1890-1963`) and territories WHEP has no row for
+at all: the six Trucial sheikhdoms that reported separately, the Central Asian
+khanates (Bukhara, Khiva, Kokand), Tibet and Sikkim, the Straits Settlements and
+Federated Malay States, the Chinese leased territories, the pre-Confederation
+Canadian provinces, and the Boer republics (`CAP-1800-1895` exists; Orange Free
+State and Transvaal do not).
+
+Also measured while preparing the input, and recorded on the source page:
+`data/external/federico_tena/polities.csv` is a **lossy** extract of the xlsx —
+`population_end` and `population_estimate` are empty in all 243 rows, and the
+sheet's 1913-population and "Trade sample serie included" columns are missing
+entirely. The prep script therefore reads the xlsx. Nothing on the page is
+withdrawn; the CSV is right where it is present.
+
+**Nothing was applied to the database.** No alias row, no new polity, no re-dating
+rests on this source: the 240 pending assertions are unverified, and verification is
+agent work through `verify_assertions.workflow.js` + `apply_verdicts.py`. That, and
+the judgement of which unrouted reporting units deserve a WHEP row, are named as
+open on [federico-tena-2019](sources/federico-tena-2019.md).
+
 ## decision-company-era-india-quantified-not-split-issue-11
 **Date:** 2026-08-17
 **Touched:** IND-1800-1886

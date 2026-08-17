@@ -233,6 +233,29 @@ The workflow needs `args.keys` (compute from assertions.json status
 pending/reopened); the agent verdicts are DECISIONS — apply_verdicts.py never
 re-derives them, it only validates executability and records them.
 
+#### Sources onboarded so far
+
+| source tag(s) | prepared by | intake result |
+|---|---|---|
+| `juan`, `mitchell`, `iia`, `fao1952`, `sa_colonial` | `consolidated_layer_b.parquet` (per-row source column) | 192,670 rows → ~1,030 assertions (88.9% routed on labels alone) |
+| `faostat` | separate code-keyed matcher (`write_faostat_area_map.py`), not this intake | — |
+| `federico_tena` | `prepare_federico_tena.py` (issue 26) | 48,569 rows → 67.7% routed, 270 assertions (240 pending), 76 labels that never route |
+
+`prepare_federico_tena.py` is what onboarding a new source actually costs: it
+reads the tracked `data/external/federico_tena_polities.xlsx` and writes
+`state/federico_tena_intake.csv` (gitignored, regenerable), one row per
+(polity, series, year) plus the one magnitude the source carries. `00_intake.py`
+itself needed no change. Full measurements, the three kinds of gap the 76
+unrouted labels fall into, and what is still unverified are in
+[wiki/sources/federico-tena-2019.md](../../wiki/sources/federico-tena-2019.md).
+The lesson generalises: a source whose provenance differs from layer B's routes
+far worse — 67.7% against **88.9%** for layer B measured the same way on
+2026-08-17 (192,670 rows, 994 assertions, label-only, i.e. without the `--iso-col`
+and `--prior-code-col` its production run gets and Federico-Tena cannot supply) —
+not because the matcher is worse but because it names reporting units — Trucial sheikhdoms, Central Asian khanates,
+pre-Confederation Canadian provinces — that no 20th-century source does. That
+list is the value.
+
 ### Protocol version — reopening when the RULES change
 
 The evidence hash answers "did the data change since we judged this?". It cannot
