@@ -236,6 +236,21 @@ for ft in ("name_unresolved","coverage_gap","data_error","other"):
     bucket=[f for f in findings if f["finding_type"]==ft]
     print(f"  {ft}: {len(bucket)} distinct entities, {sum(f['rows'] for f in bucket):,} rows")
 
+# ORPHAN-CODE GUARD (issue 17, the #244 pattern moved upstream). Stage 04 already refuses to
+# write territory_basis.csv from a parquet naming codes the database does not contain -- but it
+# is the CONSUMER, so the bad parquet gets authored here and only complained about two stages
+# later. Most of what this file emits is filtered against `valid_codes` on the way through, so
+# the route an orphan can still take is an APPLIED ALIAS whose target has since been re-spanned
+# or retired: matchlib drops an alias with an unknown target, but a target that exists and is
+# `retired`/`superseded` resolves and routes rows to a row nothing may point at.
+extdata.refuse_orphan_codes(
+    work[work.whep_code.notna()].groupby("whep_code").size().to_dict(),
+    what="matched_rows.parquet",
+    fix=("check the alias registry for a stale target:\n"
+         "    python3 scripts/validate_aliases.py\n"
+         "  then re-run this stage."),
+)
+
 json.dump({"summary": {
             "total_rows": int(len(work)),
             "matched_rows": int(matched.sum()),

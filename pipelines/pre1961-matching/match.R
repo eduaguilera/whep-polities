@@ -99,6 +99,9 @@ by_item_dir <- file.path(out_dir, "by_item")
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(by_item_dir, recursive = TRUE, showWarnings = FALSE)
 
+# Refuses to write a crosswalk naming a polity code data cannot be routed to (issue 17).
+source(file.path(proj_root, "pipelines", "lib", "orphan_guard.R"))
+
 stopifnot(file.exists(input_path))
 stopifnot(file.exists(whep_path))
 
@@ -106,6 +109,18 @@ stopifnot(file.exists(whep_path))
 cat("[load] WHEP polities...\n")
 whep <- read_csv(whep_path, show_col_types = FALSE) |>
   filter(!is.na(start_year), !is.na(end_year)) |>
+  # Retired/superseded rows stay in the database for provenance but must never receive
+  # data -- the same filter pipelines/faostat-era-matching/match.R applies, and this
+  # matcher was missing it (issue 17). Re-measured 2026-08-17 on the committed database,
+  # joining before_1961.csv's raw `iso3c` to the 35 retired/superseded polities typed
+  # `national`: 18 ISO3 codes, carrying 31,702 data rows, had such a polity in range for
+  # year-containment plus the `national` preference below to pick -- CAN-1886-1948
+  # (superseded by CAN-1886-1949) against 2,539 Canadian rows is the clearest. That is a
+  # LOWER bound: resolve_iso() below remaps some inputs (CSK, RUS, TAN, FRG/DDR) before
+  # the lookup, and those remappings were not modelled in the count. Without this filter
+  # matched.csv can name a code no consumer can resolve, and the orphan guard at the
+  # write would (correctly) refuse to emit the file at all.
+  filter(!wiki_status %in% c("retired", "superseded")) |>
   mutate(start_year = as.integer(start_year),
          end_year   = as.integer(end_year))
 
@@ -595,6 +610,17 @@ cat(sprintf("[match] %d/%d matched (%.1f%%)\n",
 print(pre |> count(match_status, sort = TRUE))
 
 # ---- output: matched CSV -----------------------------------------------------
+# Orphan-code guard (issue 17). Second line of defence behind the retired/superseded
+# filter at load: any future route that injects a code by hand rather than by lookup
+# would otherwise ship it, and every consumer of matched.csv resolves the code by
+# joining, which finds nothing and says nothing.
+refuse_orphan_codes(
+  pre$whep_polity_code,
+  what = "data/compiled/pre1961/matched.csv",
+  fix = paste("a polity this matcher routed to has been re-spanned or retired;",
+              "re-check normalise_iso/name_override above and re-run."),
+  polities_csv = whep_path
+)
 matched_path <- file.path(out_dir, "matched.csv")
 write_csv(pre |> select(-iso_lookup), matched_path)
 cat("[out] ", matched_path, "\n")

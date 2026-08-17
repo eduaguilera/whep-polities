@@ -1029,6 +1029,43 @@ def mutate_unrenamed_layer_b_column(root, gpd, make_valid, affinity):
     return "build.R"
 
 
+def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
+    """Retarget one published FAOSTAT mapping row to a RETIRED polity, as a re-span leaves it.
+
+    Not an invented defect and not an invented code: `CAN-1886-1948` is a real row of this
+    database, superseded by `CAN-1886-1949`, and it is one of the five codes that carried 799
+    orphaned rows in issue 243 -- the matchers' outputs pointed at the old span for as long as
+    they were not re-run. That is precisely how this defect arrives: nobody writes a wrong
+    code, the code simply STOPS BEING THE RIGHT ONE when the database moves underneath a
+    crosswalk that is not regenerated.
+
+    A DEAD code rather than an absent one, deliberately, because dead is the harder half. An
+    absent code at least fails a `code in database` test; a retired one exists, resolves, has
+    a name and a polygon, and is only forbidden by policy -- and measured 2026-08-17, a row
+    retargeted this way passes nine of the ten gates that read this file, because the one that
+    joins on the code (`validate_map_area_year`) drops rows whose code is not live rather than
+    complaining about them. The tenth, `crosscheck_matchers.py`, does catch it.
+    """
+    import csv as _csv
+
+    path = os.path.join(root, "data/final/faostat_area_polity_map.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = 0
+    for r in rows:
+        if r.get("polity_code", "").startswith("CAN-"):
+            r["polity_code"] = "CAN-1886-1948"
+            hit += 1
+    assert hit, "no Canadian row in the published FAOSTAT map to retarget"
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"retargeted {hit} published FAOSTAT mapping row(s) from the live Canadian polity "
+            f"to CAN-1886-1948, the span issue 243 retired, as an un-regenerated crosswalk does")
+
+
 def mutate_order_dependent_binding(root, gpd, make_valid, affinity):
     """Set VNM-1887-1954's polygon_feature_year back to 1893, the value it shipped with.
 
@@ -1459,6 +1496,13 @@ CASES = (
         "codes, so the obvious join returns zero rows and no error",
     ),
     (
+        "validate_matcher_orphan_guard.py",
+        mutate_retargeted_map_to_dead_polity,
+        "CAN-1886-1948",
+        "a matcher crosswalk still pointing at the polity code a re-span retired, which every "
+        "consumer resolves by lookup and therefore routes NOWHERE without raising",
+    ),
+    (
         "validate_polygon_binding_determinism.py",
         mutate_order_dependent_binding,
         "VNM-1887-1954",
@@ -1819,6 +1863,24 @@ WRITABLE = {
         "pipelines/historical-production-harmonized/build.R",
         "pipelines/polity-autoimprove/extdata.py",
         "pipelines/polity-autoimprove/01_match_and_findings.py",
+    ),
+    # Half data, half source, because the gate is half of each. The published map is the file
+    # the case mutates, so it must be a real copy; the other two crosswalks are staged because
+    # the gate reports "missing -- this gate has stopped checking it" for an absent one, which
+    # would make the case fire for the wrong reason. The four guarded WRITERS and the two guard
+    # declarations are source files, and stage() copies only the gate itself from scripts/ --
+    # without them check B reports four vanished writers and two missing declarations, and a
+    # failure naming six things that are all fine is not a self-test of anything.
+    "validate_matcher_orphan_guard.py": (
+        "faostat_area_polity_map.csv",
+        "pipelines/faostat-era-matching/state/faostat_aliases.csv",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+        "pipelines/polity-autoimprove/01_match_and_findings.py",
+        "pipelines/polity-autoimprove/04_territory_basis.py",
+        "pipelines/faostat-era-matching/match.R",
+        "pipelines/pre1961-matching/match.R",
+        "pipelines/polity-autoimprove/extdata.py",
+        "pipelines/lib/orphan_guard.R",
     ),
     # Needs the SOURCE shapefile, not just the CSV: the gate compares each declared
     # binding against the features it could have matched. Without it the gate sees no
