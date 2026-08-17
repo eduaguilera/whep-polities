@@ -115,7 +115,22 @@ polygon-date mismatches` for the full list.
 5. **Variable quality across time periods.** Pre-1800 polygons are
    based on different atlas sources than 1800–1886; the handful of
    post-1886 records are mostly for continuity with better sources.
-6. **Not an authoritative trade-data source.** Cliopatria is a
+6. **Its British India features overlap themselves, and the pre-1859 ones have a
+   different scope from the post-1859 ones.** Measured 2026-08-17 for issue 11.
+   The polity named `British Empire` (direct-rule member of `(British Empire)`)
+   does cover the Company era, 1794-1858 — but summing its parts inside the
+   subcontinent against their union leaves **678,017 km² of self-overlap in 1820
+   (24.1%), 689,303 in 1840, 512,204 in 1856**, all of it in India; repairing the
+   raw features moves 4.3-23.8% of their area, far outside `build.py`'s 0.1%
+   `_valid()` budget, so the builder refuses them. Separately, `British Empire`
+   @1856 **excludes Hyderabad and Delhi** (the latter still inside Cliopatria's
+   `Mughal Empire`, which runs to 1858) while `British Raj` @1859 **includes**
+   both — so the two series cannot be chained without publishing a ~590,000 km²
+   step that is a coding change, not a conquest. Its independent-polity dates in
+   the region are also loose: `Talpur Dynasty` runs to 1863 (Sindh was conquered
+   in 1843) and `Sikh Empire` ends in 1841 (the Punjab was annexed in 1849).
+   See [ind-1800-1886](../polities/ind-1800-1886.md).
+7. **Not an authoritative trade-data source.** Cliopatria is a
    boundary dataset. Trade regimes, economic-union membership,
    and customs-union dates must come from other sources.
 

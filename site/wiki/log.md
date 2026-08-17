@@ -26,6 +26,64 @@ Kinds:
 
 ---
 
+## decision-company-era-india-quantified-not-split-issue-11
+**Date:** 2026-08-17
+**Touched:** IND-1800-1886
+**Source:** cliopatria-v0.1.3
+**Kind:** decision
+
+**Corrects [decision-split-india-at-1886](log.md#decision-split-india-at-1886) on
+one point and closes issue 11 without re-periodising.** That entry, and the page,
+said "neither source has an East India Company feature". Cliopatria has one. It is
+not under `British Raj` (which does begin in 1859) but under the polity named
+**`British Empire`** — the direct-rule member of the `(British Empire)` container —
+with features from **1794 to 1858**.
+
+So the back-projection can be measured instead of merely admitted, and it is
+large. Clipping both the Company-era features and the polygon
+[ind-1800-1886](polities/ind-1800-1886.md) actually publishes to the same box
+(66-101°E, 5-37°N, Ceylon envelope removed): **916,568 km² in 1800 against
+3,961,111 for the 1880 base — the published polygon is 4.32× too large at the
+start of the span**, closing to 52% by 1820, 69% by 1840, 90% by 1850 and 99% at
+1859. The issue's description of the defect was right; it just left the size of it
+open, and the size is a factor of four.
+
+**The row is nevertheless not split, on three measurements.**
+
+First, **nothing is affected**. WHEP's consolidated layer B starts at 1885; its
+earliest India observation is one row for 1885, and that single row is also the
+only row in the corpus matched to this polity. No datum touches the 1800-1859
+back-projection, and the one that exists sits five years from the polygon's 1880
+vintage, inside 1% drift.
+
+Second, **the pre-1859 series does not join the post-1859 one**. Point tests:
+`British Empire` @1856 excludes **Hyderabad** (~214,000 km²) and **Delhi** (still
+inside Cliopatria's `Mughal Empire`, which runs to 1858); `British Raj` @1859
+contains both. WHEP's British India includes the princely states, as the 1880 base
+does, so chaining the two would publish a spurious ~590,000 km² step at 1859 that
+is a change of source coding, not of territory.
+
+Third, **the features fail this repo's own validity budget**. Summing each
+feature's parts against their union, in the same box, leaves **678,017 km² of
+self-overlap in 1820 (24.1%)**, 689,303 in 1840 and 512,204 in 1856 — all of it
+inside India. Repairing the raw features moves 4.3-23.8% of their area;
+`build.py`'s `_valid()` budget is 0.1%, so it refuses them rather than guessing.
+
+The issue's suggested workaround — British India as the subcontinent minus the
+still-independent polities, per year — is therefore both unnecessary and worse:
+Cliopatria's `Talpur Dynasty` (Sindh) runs to **1863**, twenty years after the
+1843 conquest, and its `Sikh Empire` ends in **1841**, eight years before the
+Punjab annexation, so the difference would inherit both errors.
+
+`polygon_status` stays `polygon_vintage_drift`, which is what it is. The page now
+carries the year-by-year table, the scope discontinuity and the overlap figures,
+and names the trigger that reopens the question: **any ingest of India data before
+1885**, at which point the approximation stops being free and will need a source
+outside Cliopatria. Nothing generated changed — this is a documentation entry.
+
+Signed off by: Catalin Covaci.
+
+
 ## fao1952-population-series-resolved-issue-13
 **Date:** 2026-08-14
 **Touched:** f248-1920-1947, sac-1935-1947
