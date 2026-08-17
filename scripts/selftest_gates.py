@@ -1316,6 +1316,78 @@ def mutate_yield_run_as_clean_power_of_ten(root, gpd, make_valid, affinity):
     return ("claimed the iia congo coffee, green 1922-1934 run is off by a clean x10 when "
             "its own factor is x26.1, the unconditional pow10 claim the table really made")
 
+def mutate_short_convention_row(root, gpd, make_valid, affinity):
+    """Append a convention row carrying only the FIRST SEVEN columns.
+
+    NOT INVENTED: this is exactly what `apply_verdicts.py` did until issue 24. Its
+    `append_dedup` call listed seven fields while the registry has twelve, so every
+    convention a verdict taught the pipeline landed as a short row. Read back,
+    `flow_type` is empty — and `write_source_flow_flags.py` reads an empty flow_type as
+    `production`, so a verdict recording a TRANSIT flow would have published no flag at
+    all: the double count that gate exists to expose, arriving through the writer that
+    feeds it.
+
+    The mutation is deliberately a plausible NEW entry rather than a corruption of an
+    existing one, because that is the shape the defect really has — nothing looks wrong
+    until a consumer asks the row a question about a column it never wrote.
+    """
+    path = os.path.join(
+        root, "pipelines/polity-autoimprove/state/source_conventions.csv"
+    )
+    with open(path, "a", encoding="utf-8", newline="") as fh:
+        fh.write(
+            "iia,brazil,\"coffee, green\",\"IIA figures under 'brazil' for coffee green "
+            "are Santos port shipments, not national output\",\"Placeholder evidence long "
+            "enough to pass the minimum-length arm of the gate, so the case can only fire "
+            "on the missing columns and not on a short evidence string.\","
+            "2026-08-17,assertion-verification (synthetic)\n"
+        )
+    return (
+        "appended a convention row with 7 of the registry's 12 columns, the shape "
+        "apply_verdicts.py wrote before issue 24 — its flow_type reads back empty, so a "
+        "transit flow would publish as production"
+    )
+
+
+def mutate_dead_convention_pattern(root, gpd, make_valid, affinity):
+    """Re-point a live convention's `label_pattern` at a label the source never carries.
+
+    This is the silent failure the registry is most exposed to, and it needs no bad faith
+    to happen: labels get renamed, re-spanned and re-normalised, and `00_intake.py`
+    attaches a convention by NORMALISED SUBSTRING of the label. Miss, and the entry still
+    sits in the file, still reads as verified, and reaches no bundle — every verifier
+    touching that source goes back to re-deriving what was already settled, or worse,
+    routes whole-USSR figures to Russia proper because the note that says not to never
+    arrived.
+
+    Nothing else can see it. The file parses, the flow flags regenerate byte-identically
+    (the mutated row is a `production` row, so it is not published at all), and the
+    pipeline that would notice cannot run in CI.
+    """
+    import csv as _csv
+
+    path = os.path.join(
+        root, "pipelines/polity-autoimprove/state/source_conventions.csv"
+    )
+    with open(path, encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = 0
+    for r in rows:
+        if r["source"] == "iia" and r["label_pattern"] == "russian federation":
+            r["label_pattern"] = "soviet union"      # a label the IIA does not use
+            hit += 1
+    assert hit == 1, f"expected one iia/russian federation convention, found {hit}"
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (
+        "re-pointed the whole-USSR convention from `russian federation` to `soviet "
+        "union`, a label iia never writes, so it attaches to no bundle while still "
+        "reading as verified"
+    )
+
 
 def mutate_entrepot_flag_dropped(root, gpd, make_valid, affinity):
     """Demote the one recorded entrepôt flow back to `production` in state, and leave the
@@ -1622,6 +1694,21 @@ CASES = (
         "a defective series claiming a clean power-of-ten offset its own repair factor "
         "contradicts, so a batch decimal fix leaves the run 2.6x out",
     ),
+    (
+        "validate_source_conventions.py",
+        mutate_short_convention_row,
+        "fewer field(s) than the header",
+        "a convention appended with fewer columns than the registry has — the shape "
+        "apply_verdicts.py really wrote — whose empty flow_type publishes a transit flow "
+        "as production",
+    ),
+    (
+        "validate_source_conventions.py",
+        mutate_dead_convention_pattern,
+        "soviet union",
+        "a convention whose label_pattern matches nothing the source carries, so the "
+        "premise every verifier is supposed to inherit reaches no evidence bundle",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -1877,6 +1964,19 @@ WRITABLE = {
         "wiki/polities",
     ),
     "validate_reporting_areas.py": ("scripts/sources/reporting-areas/build.py",),
+    # Both cases rewrite the registry, so it must be a real copy or the mutation writes
+    # through stage()'s symlink into the committed file — the leak this harness has caught
+    # four times. The review ledger is listed because the reachability arm reads the
+    # (source, label) pairs out of it: absent, that arm cannot fire at all and the
+    # dead-pattern case would pass for the wrong reason. 11_retest_conventions.py is
+    # listed because the gate IMPORTS it for CHECKS; without it the gate reports "no
+    # CHECKS" for every row, which is exit 1 without naming the injected defect — and the
+    # "must NAME the defect" arm is what would report that.
+    "validate_source_conventions.py": (
+        "pipelines/polity-autoimprove/state/source_conventions.csv",
+        "pipelines/polity-autoimprove/state/review_ledger.csv",
+        "pipelines/polity-autoimprove/11_retest_conventions.py",
+    ),
     # Rewrites the CSV, so that must be a real copy. The GeoPackage is deliberately
     # NOT listed: the mutation writes a fresh one into `root`, and staging a copy
     # first would give the file two layers and let the gate read the unmutated one.
