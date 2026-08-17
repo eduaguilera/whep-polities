@@ -111,8 +111,194 @@ Polity slugs that cite this source:
 [aof-1895-1960](../polities/aof-1895-1960.md),
 [reu-1816-1946](../polities/reu-1816-1946.md).
 
+## Onboarded through 00_intake.py (issue 26)
+
+Registration made the source citable; it did not make it *testable*. Only
+`consolidated_layer_b.parquet` (5 sources) and, by a separate code-keyed
+matcher, FAOSTAT had ever been through
+[00_intake.py](../../pipelines/polity-autoimprove/00_intake.py), so every
+assertion in the ledger came from one provenance. Federico-Tena is now the
+second independent source through the same door.
+
+`00_intake.py` needed no changes. The preparation is
+[prepare_federico_tena.py](../../pipelines/polity-autoimprove/prepare_federico_tena.py),
+which reshapes the xlsx into an intake table and nothing else:
+
+```bash
+python3 pipelines/polity-autoimprove/prepare_federico_tena.py
+python3 pipelines/polity-autoimprove/00_intake.py \
+  --input pipelines/polity-autoimprove/state/federico_tena_intake.csv \
+  --label-col polity_name --year-col year --item-col item \
+  --value-col value --unit-col unit --source-tag federico_tena \
+  --out pipelines/polity-autoimprove/state/assertions_federico_tena.json
+```
+
+Both outputs are derived per-run artifacts and are gitignored, like
+`assertions.json`.
+
+### what the assertions are
+
+Because what is staged is documentation, the claim this source can make is a
+**coverage** claim — "Federico-Tena reports a series for a territory called X
+in year Y" — so the intake table is one row per (polity, series, year) over each
+series' inclusive window: 48,569 rows for 243 polities, years 1800–1940, items
+`imports` (21,210 rows), `exports` (13,018), `population` (14,174). Expanding
+the windows year by year is the point: it is what makes year containment
+testable, since every year the source reports has to land inside some polity's
+span. Plus 167 rows carrying the one magnitude the source has, the 1913
+population in thousands, keyed as its own item `population_1913` so its median
+is not mixed with the value-less coverage rows.
+
+The xlsx is read rather than
+[polities.csv](../../data/external/federico_tena/polities.csv) because the CSV
+is a lossy extract of the same sheet — see *Known limitations*.
+
+### measured result, 2026-08-17
+
+| | |
+|---|---|
+| rows in | 48,569 |
+| routed by the deterministic pass | 32,870 (**67.7%**) |
+| assertions produced | **270** — 240 `pending`, 30 `banked_legacy` |
+| distinct candidate polities | 269 |
+| labels that never route (no alias, no name, no iso) | **76** (9,822 rows) |
+| labels that route but with years outside the candidate's span | **66** (5,877 rows) |
+
+For scale, layer B measured the same way on the same day — label only, without
+the `--iso-col` and `--prior-code-col` its production run gets and this source
+cannot supply — routes **88.9%** of 192,670 rows into 994 assertions. So
+Federico-Tena is a materially harsher test, which is the point of onboarding it.
+
+Routing is *low by design of the comparison*: this is a pre-1938,
+colonial-granular trade source read against a polity set built mostly from
+20th-century data, and it names reporting units — Trucial sheikhdoms, Central
+Asian khanates, pre-Confederation Canadian provinces — that no later source
+does. The 30 `banked_legacy` assertions are label-level verdicts inherited from
+layer B (Angola, Argentina, Canada, Egypt, Poland, South Africa segments and
+others); none of the 240 pending ones has been verified, and **verification is
+not done here** (see *what is left open*).
+
+49 labels split across more than one candidate polity, which is the deterministic
+pass tiling a long Federico-Tena window across a WHEP chain — `china` into six
+segments 1800–1938, `ethiopia` into six ending in `AOI-1936-1941`, `siam` into
+five. Those segment boundaries are exactly what a verifier has to accept or
+reject.
+
+Passing `--aggregate-col is_aggregate` drops the four umbrella rows
+(`British settlement Oceania`, `French Settlements in Oceania`,
+`German colonies Oceania`, `US settlement Oceania`), 867 rows, and raises
+routing to 68.9%. The default run keeps them, so their coverage is measured and
+their status is decided by verification (`not_a_polity`) rather than by the prep
+script.
+
+### the 76 labels that never route
+
+This is the harvest the issue predicted: a source with a different provenance
+finds different gaps. Hand-checked against `data/final/polities_database.csv`,
+they fall into three kinds — **and the kind is a screen, not a verdict**:
+
+**(A) a WHEP polity plainly covers the territory; the label is an alias gap.**
+`Dutch Guayana` 1800–1938 → `SUR-1886-1954` *Dutch Guiana* (spelling);
+`Gold Coast` 1817–1938 → the `GHA-1821-1888`/`GHA-1888-1898`/`GHA-1898-1957`
+chain; `German East Africa (Tanganyika)` → `TAN-1891-1920`;
+`Nyasaland Protectorate (Malawi)` → `MWI-1891-1953`;
+`Italian Libia Cyrenaica (Lybia)` → the `LBY-1912-1919`… chain;
+`Zanzibar` → `ZNZ-1890-1963`; `Newfoundland` → `NFL-1907-1949`;
+`Aden` → `ADE-1839-1963`; `St. Lucía` → `LCA-1838-2025`;
+`St. Vincent` → `VCT-1800-1833`/`VCT-1833-2025`; `Oman` → `OMN-1856-2025`;
+`St. Helena` → `SHN-1834-1967`; `Germany/Zollverein` → the
+`DEU-1800-1866` *Prussia* chain; `Leeward Islands (…)` → `BLI-1833-1960`;
+`Dutch West Indies (Netherland Antilles)` → `ANT-1816-1961`;
+`British Bechuanaland` → `BEC-1885-1966`; `Mayotte and Noissi-be` →
+`MYT-1800-2025`.
+
+**(B) the polity exists but starts later than the Federico-Tena window**, so
+even with an alias the early years would land in bucket (B)'s sibling below:
+`Zanzibar` 1800–1938 vs `ZNZ-1890-1963`; `Newfoundland` 1816–1938 vs
+`NFL-1907-1949`; `Gold Coast` from 1817 vs `GHA-1821-1888`. These are the same
+question the 66 `year_uncovered` labels ask.
+
+**(C) no WHEP polity for the territory at all.** The largest coherent groups:
+the Trucial sheikhdoms reported separately (`Abu Dhabi`, `Ajman`, `Sharjah`,
+`Fujairah`, `Umm al Qawain`, `Ras al Khaimah` — WHEP has only
+`ARE-1892-2025`); the Central Asian khanates (`Bukhara` to 1920, `Khiva` and
+`Kokand`, `Badakhshan`, `Herat`); `Tibet` and `Sikkim`; the Malayan customs
+units (`Straits Settlement` 1826–1922, `Federated Malay States` 1895–1922 —
+WHEP's Malaysia chain starts 1946 and Singapore's 1946); the Chinese leased
+territories (`Kiautchou` 1898–1922, `Kwantung (Port Arthur)`,
+`Kwang-Chou-Wan`); the pre-Confederation Canadian provinces (`Ontario`,
+`Lower Quebec`, `New Brunswick`, `Nova Scotia Cape Breton Isl.`,
+`Prince Edward Island`, `British Columbia`, `Vancouver´s Island` — WHEP has
+only the umbrella `CAN-1800-1866`); the Boer republics (`Orange Free State`
+1848–1900, `Transvaal` 1856–1902 — `CAP-1800-1895` exists, these do not);
+`Crete` 1898–1913, `Ionian islands` 1815–1862 and `Dodecanese Is.` 1912–1938;
+`British Protectorate (British Somaliland)`; `Sabah (British Borneo)`;
+`Ceuta Y Melilla`; and a dozen Pacific islands (`Midway`, `Wake`, `Palmyra`,
+`Gambier`, `Marquesas`, `Society Islands (Tahiti)`, `Gilbert and Ellice`,
+`New Hebrides`, `Bonin`).
+
+An automated name-token screen finds a same-token WHEP polity for 36 of the 76
+and none for 40. It is crude in both directions — it pairs `Danish Virgin
+Islands` with the *British* Virgin Islands and misses `Dutch Guayana` →
+*Dutch Guiana* on spelling — so the buckets above are the hand-checked reading
+of the same list, and neither is a verdict.
+
+### what the 66 `year_uncovered` labels are
+
+These route on the label but observe years the candidate chain does not cover:
+`Russia/USSR` 1800–1938, `Bermuda` 1800–1938, `CapoVerde` 1800–1938,
+`Serbia/Yugoslavia` 1816–1938, `Persia (Iran)` from 1829, `India` 1800–1892,
+`Ottoman Empire/Turkey` 1800–1912. Two causes are mixed and must not be
+conflated:
+
+- **The source's own back-extrapolation.** Export and population series are
+  routinely extended behind the import series (`Cameroon (Kamerun)` imports
+  start 1884, exports 1850; `Belgian Congo` 1885 vs 1850), and this page's
+  *Known limitations* already warns that a start year is evidence of when the
+  compilers could *estimate*. Unrouted rows are 1,787 `imports`, 1,869
+  `exports` and 2,204 `population` — so the reconstructed series carry the
+  majority of the year gaps, and an uncovered year there is weak evidence
+  about WHEP.
+- **Genuine early-19th-century thinness in the polity set**, which is what the
+  `imports` share points at.
+
+Separating the two per label is verification work, not screening work.
+
+### what is left open
+
+- **240 pending assertions are unverified.** Chunking them through
+  `verify_assertions.workflow.js` (~100/run) and applying the verdicts with
+  `apply_verdicts.py` is the remaining half of issue 26. Nothing in this repo
+  has been re-routed, aliased or re-dated on the strength of this source; no
+  alias row and no polity was created here.
+- **No `source_conventions.csv` entry was added.** Two candidates are visible
+  from the notes (the four Oceania umbrellas pool named territories; the 1913
+  population column is dated to 1913 under *later* borders, which is why
+  `estonia`, `latvia`, `lithuania`, `austria` and `ireland` each produced a
+  one-year 1913 assertion against a pre-independence polity such as
+  `EST-1800-1918`). Both are conclusions a verifier should reach and bank with
+  evidence, and `validate_source_conventions.py` holds entries to that
+  standard, so neither was asserted here.
+- **Which bucket-(C) territories deserve a polity row** is a judgement about
+  WHEP's scope, not something this intake can settle: a Federico-Tena row is a
+  *reporting unit*, and the page already warns that a WHEP row must not be
+  created merely because one exists.
+
 ## Known limitations
 
+- **`polities.csv` is a LOSSY extract of the xlsx; read
+  `federico_tena_polities.xlsx` instead.** Measured 2026-08-17 while preparing
+  the intake table: the sheet *List of trading polities* carries eight numeric
+  columns per polity, the CSV carries five. `population_end` and
+  `population_estimate` are empty in **all 243** CSV rows, and the sheet's 1913
+  population (in thousands, given for **167** polities) and its
+  "Trade sample serie included" column are absent altogether. The three windows
+  the CSV does carry agree with the sheet row for row. Consequence for the count
+  quoted above: "330 of the series ending in 1938" counts the CSV's 389 import
+  and export ends; with the 146 population ends the sheet also has, it is
+  **468 of 535** series ends, 191 of the 243 import series among them. Nothing
+  above is withdrawn — the CSV is right where it is present — but a new
+  measurement should come from the xlsx.
 - **This is the documentation, not the data.** No trade values are staged
   in the repo, so no claim about a *magnitude* can be sourced here — only
   claims about coverage windows, pooling and compilation method. A page
