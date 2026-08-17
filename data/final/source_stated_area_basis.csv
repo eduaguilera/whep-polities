@@ -39,7 +39,7 @@ BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),fao,121910,1,1952,British Born
 BTL-1920-1957,British Togoland (1920-1957),iia,34200,1,1925,TOGOLAND british,26545,0.776,agrees,
 BTN-1800-2025,Bhutan,fao,46600,1,1952,Bhutan,39799,0.854,agrees,
 BTN-1800-2025,Bhutan,iia,51800,9,1909;1925;1929;1932;1933;1938,BOUTAN;boutan,39799,0.768,agrees,
-CAN-1886-1949,Canada (to the Newfoundland accession),iia,9659653,9,1909;1925;1929;1932;1933;1938,CANADA;canada,9551197,0.989,agrees,
+CAN-1886-1949,Canada (to the Newfoundland accession),iia,9659653,9,1909;1925;1929;1932;1933;1938,CANADA;canada,9551195,0.989,agrees,
 CAN-1949-2025,Canada,fao,9960560,1,1952,Canada,9949288,0.999,agrees,
 CHE-1800-2025,Switzerland,fao,41300,1,1952,Switzerland,41472,1.004,agrees,
 CHE-1800-2025,Switzerland,iia,41295,9,1909;1925;1929;1932;1933;1938,SUISSE;suisse,41472,1.004,agrees,
@@ -117,8 +117,8 @@ GMB-1800-2025,Gambia,iia,10539,9,1909;1925;1929;1932;1933;1938,GAMBIE;GAMBIE bri
 GRC-1881-1913,Greece (1881–1913),iia,119050,3,1909;1925;1929,GRECE;GRÈCE;grèce,63612,0.534,review,"PERIOD MISMATCH IN THE SOURCE, not in us. IIA's 1925 edition states 119,050 km2 under the data year 1913 -- post-Balkan-Wars Greece -- while this row ends in 1913 and covers the 63,211 km2 kingdom. Our 63,612 is right for the row. The yearbook is labelling a 1913 column with the territory Greece held after the treaties of that year."
 GRC-1919-1947,Greece (1919-1947),iia,130199,6,1909;1925;1929;1932;1933;1938,GRECE;GRÈCE;grèce,129841,0.997,agrees,
 GRC-1947-2025,Greece (1947-2025),fao,132560,1,1952,Greece,129841,0.979,agrees,
-GRL-1800-2025,Greenland,fao,2176000,1,1952,Greenland,2148910,0.988,agrees,
-GRL-1800-2025,Greenland,iia,88100,7,1909;1925;1932;1933;1938,GROENLAND,2148910,24.392,source_figure_suspect,
+GRL-1800-2025,Greenland,fao,2176000,1,1952,Greenland,2148911,0.988,agrees,
+GRL-1800-2025,Greenland,iia,88100,7,1909;1925;1932;1933;1938,GROENLAND,2148911,24.392,source_figure_suspect,
 GTM-1821-2025,Guatemala,fao,108890,1,1952,Guatemala,109118,1.002,agrees,
 GTM-1821-2025,Guatemala,iia,109960,9,1909;1925;1929;1932;1933;1938,GUATEMALA;GUATÉMALA;guatémala,109118,0.992,agrees,
 GUF-1816-1946,French Guiana (Colony),iia,88240,9,1909;1925;1929;1932;1933;1938,GUYANE FRANÇAISE;GUYANE FRANÇAISE ET ININI;guyane française,83660,0.948,agrees,
@@ -153,7 +153,7 @@ ITA-1870-1919,Italy (1870-1919),iia,286610,3,1909;1925;1929,ITALIE;italie,284848
 ITA-1919-2025,Italy,fao,301050,1,1952,Italy,300310,0.998,agrees,
 ITA-1919-2025,Italy,iia,310086,6,1909;1925;1929;1932;1933;1938,ITALIE;italie,300310,0.968,agrees,
 ITS-1908-1960,Italian Somaliland (1908-1960),iia,357000,2,1909,SOMALIE ITALIENNE,464286,1.301,agrees,"OURS IS CLOSER. Italian Somaliland is ~502,000 km2; our 464,286 against IIA's 357,000. The IIA figure predates the 1925 Jubaland transfer from Kenya."
-JAM-1800-2025,Jamaica,fao,1420,1,1952,British West Indies Jamaica,11001,7.747,review,"THE LABEL IS NOT THE POLITY. `British West Indies Jamaica` states 1,420 km2 against Jamaica's 10,991, and IIA's equivalent sub-label states 231-271 km2 -- BOTH sources give a small figure, so this is a sub-unit inside a BWI section rather than the island. The alias routing it to JAM-1800-2025 is what needs revisiting, not the polygon."
+JAM-1800-2025,Jamaica,fao,1420,1,1952,British West Indies Jamaica,11001,7.747,review,"A TRANSCRIPTION ERROR IN THIS SOURCE, and NOT a x10 one. FAO 1952's `British West Indies Jamaica` states 142 thousand ha = 1,420 km2 for an island of 10,991. A decimal shift gives 14,200 (1.29x, too large); restoring a dropped leading digit gives 11,420 (1.039x). IIA's own `JAMAIQUE` line states 10,880-11,526 across six editions and our polygon is 11,001, so the polygon and the alias are right and this one figure is wrong. Its BWI neighbours in the same FAO table are right (Barbados 450 vs 435; Cayman Islands 240 vs 281), which is what makes it one bad cell rather than a narrower basis for the block. DO NOT use 1,420 km2 as a denominator for Jamaican FAO 1952 rows. Logged with the sibling Bahamas error in pipelines/polity-autoimprove/state/data_errors.csv; the figure is not corrected, because this repo carries what the yearbook printed."
 JOR-1946-2025,Jordan,fao,91110,1,1952,Jordan,89270,0.980,agrees,
 JPN-1945-1952,Japan (occupied),fao,368480,1,1952,Japan,371147,1.007,agrees,
 KEN-1907-1924,Kenya (1907-1924),iia,637128,4,1909;1925;1929,KENIA (ex-Afrique orient;KENIA (ex-Afrique orient british;kénia,635652,0.998,agrees,
