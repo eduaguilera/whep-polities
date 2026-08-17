@@ -13,9 +13,14 @@ investigable_items,402
 investigable_year_min,1986
 investigable_year_max,2021
 investigable_ratio_is_pow10,372
+investigable_ratio_is_halfdecade,211
+investigable_pow10_enrichment,1.763
 investigable_keeps_larger_side,6494
 extremes_ratio_is_pow10,926
+extremes_ratio_is_halfdecade,654
+extremes_pow10_enrichment,1.416
 min_side_t,1.0
 ratio_threshold_strict,1000.0
 pow10_window,0.02
+halfdecade_control_offset,0.5
 whep_keeps,exporter

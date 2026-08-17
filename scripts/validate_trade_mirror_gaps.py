@@ -37,6 +37,19 @@ WHY EACH CHECK EXISTS
                     class, but the gate holds the tighter definition so the number cannot
                     drift into the looser one while keeping the words.
 
+  ratio_is_        THE CONTROL, and the reason the line above is a measurement rather than a
+  halfdecade       share. A 2% window on the ratio spans log10(1.02/0.98) = 1.74% of a
+                    decade, so ~1.7% of ANY smooth distribution of ratios falls in it — and
+                    issue #112 read "21,257 of 178,131 (11.9%) within 5% of a clean power of
+                    ten" as clustering without ever asking what a window that wide catches by
+                    default. Applying the SAME window half a decade away, at 10^(k+0.5),
+                    where a factor-of-ten error cannot land, gives 211 of 12,775 (1.7%)
+                    against the 372 (2.9%) on the decades: an enrichment of 1.76x, or 161
+                    flows out of 12,775. Real, and far short of a pile-up. Both counts are
+                    re-derived per row and the enrichment re-divided, because a control that
+                    nothing checks can be dropped low and manufacture any enrichment at all —
+                    the failure mode of every self-reported baseline.
+
   the summary       `trade_mirror_summary.csv` carries the pin-side census (6.13M mirrored
                     flows, the >=2x/10x/100x steps) that CI cannot check, and the table-side
                     counts that it can. Every table-side count is re-derived. This is what
@@ -74,7 +87,7 @@ SUMMARY = os.path.join(REPO, "pipelines/polity-autoimprove/state/trade_mirror_su
 
 COLUMNS = ["reporter_code", "reporter", "partner_code", "partner", "item_code", "item",
            "year", "exp_t", "imp_t", "ratio", "larger_side", "keeps_larger_side",
-           "nearest_pow10", "ratio_is_pow10"]
+           "nearest_pow10", "ratio_is_pow10", "ratio_is_halfdecade"]
 
 # The screen, and whep's preference rule. These are the generator's constants; they are
 # repeated here rather than imported because the summary states them too, and the point is
@@ -82,6 +95,7 @@ COLUMNS = ["reporter_code", "reporter", "partner_code", "partner", "item_code", 
 MIN_SIDE_T = 1.0
 RATIO_THRESHOLD = 1000.0
 POW10_WINDOW = 0.02
+HALF_DECADE_OFFSET = 0.5
 WHEP_KEEPS = "exporter"
 
 # `ratio` is stored rounded to 3 decimals, so the recomputation is compared with a relative
@@ -95,6 +109,17 @@ RATIO_TOL = 1e-3
 # threshold — it fails only on a change of KIND, not on ordinary movement.
 POW10_SHARE_CEILING = 0.25
 
+# And the same reading in the form that actually licenses it: the decade share OVER its
+# matched half-decade control. Measured 1.76x (372 vs 211). A genuine #111-style class would
+# put the decade count many times above a control that a scale error cannot reach, so the
+# ceiling is set where "modest excess" stops being an honest description. Bidirectional in
+# spirit: if this ever fires, the docstrings above and README's row are the thing to change,
+# not the number.
+POW10_ENRICHMENT_CEILING = 5.0
+
+# `investigable_pow10_enrichment` is stored rounded to 3 decimals.
+ENRICHMENT_TOL = 1e-3
+
 # Columns that would assert a direction or a repair the mirror cannot establish.
 DIRECTION_CLAIMS = frozenset({
     "implied_correct", "action", "correct_side", "wrong_side", "repair", "corrected_t",
@@ -105,7 +130,7 @@ DIRECTION_CLAIMS = frozenset({
 TABLE_DERIVED = (
     "investigable_flows", "investigable_reporters", "investigable_items",
     "investigable_year_min", "investigable_year_max", "investigable_ratio_is_pow10",
-    "investigable_keeps_larger_side",
+    "investigable_ratio_is_halfdecade", "investigable_keeps_larger_side",
 )
 
 
@@ -131,6 +156,14 @@ def is_clean_power_of_ten(ratio: float) -> bool:
         return False
     p = nearest_power_of_ten(ratio)
     return p != 0 and abs(ratio / (10.0 ** p) - 1.0) < POW10_WINDOW
+
+
+def is_clean_half_decade(ratio: float) -> bool:
+    """The control: the same window, centred on 10^(k+0.5) instead of 10^k."""
+    if ratio is None or not math.isfinite(ratio) or ratio <= 0:
+        return False
+    centre = 10.0 ** (math.floor(math.log10(ratio)) + HALF_DECADE_OFFSET)
+    return abs(ratio / centre - 1.0) < POW10_WINDOW
 
 
 def main() -> int:
@@ -166,7 +199,8 @@ def main() -> int:
     # The summary must state the same screen the generator applied and this gate re-tests.
     for metric, expect in (("min_side_t", MIN_SIDE_T),
                            ("ratio_threshold_strict", RATIO_THRESHOLD),
-                           ("pow10_window", POW10_WINDOW)):
+                           ("pow10_window", POW10_WINDOW),
+                           ("halfdecade_control_offset", HALF_DECADE_OFFSET)):
         got = num(summary.get(metric))
         if got is None or abs(got - expect) > 1e-12:
             problems.append(
@@ -178,7 +212,7 @@ def main() -> int:
             f"keeps_larger_side means nothing without the rule it refers to")
 
     seen = {}
-    pow10_rows = keeps_rows = 0
+    pow10_rows = half_rows = keeps_rows = 0
     reporters, items, years = set(), set(), []
     for i, r in enumerate(rows, start=2):
         where = (f"{r.get('reporter')} ({r.get('reporter_code')}) -> "
@@ -240,6 +274,29 @@ def main() -> int:
                 f"turned 2.3% into 5.0% in issue 112")
         elif flag:
             pow10_rows += 1
+        # And the control, on the same window half a decade off. Re-derived per row rather
+        # than trusted from the summary: the enrichment is a quotient, so an unchecked
+        # denominator drifting down would raise the reported clustering without any tonnage
+        # in the table changing.
+        control = boolean(r.get("ratio_is_halfdecade"))
+        expect_control = is_clean_half_decade(stored)
+        if control is None:
+            problems.append(f"line {i}: {where}: ratio_is_halfdecade is "
+                            f"{r.get('ratio_is_halfdecade')!r}, not a boolean")
+        elif control != expect_control:
+            problems.append(
+                f"line {i}: {where}: ratio_is_halfdecade says {control} but {stored:g} is "
+                f"{'' if expect_control else 'not '}within {POW10_WINDOW:.0%} of "
+                f"10^(k+{HALF_DECADE_OFFSET:g}) -- this is the matched control the "
+                f"power-of-ten reading is a ratio AGAINST, so a wrong flag here moves the "
+                f"enrichment without moving a single tonnage")
+        elif control:
+            half_rows += 1
+        if expect_flag and expect_control:
+            problems.append(
+                f"line {i}: {where}: ratio {stored:g} counts as BOTH on a decade and on a "
+                f"half-decade; the two windows are half a decade apart and cannot overlap, "
+                f"so the control is not measuring what it claims")
         key = (r.get("reporter_code"), r.get("partner_code"), r.get("item_code"),
                r.get("year"))
         if key in seen:
@@ -259,6 +316,7 @@ def main() -> int:
         "investigable_year_min": min(years) if years else None,
         "investigable_year_max": max(years) if years else None,
         "investigable_ratio_is_pow10": pow10_rows,
+        "investigable_ratio_is_halfdecade": half_rows,
         "investigable_keeps_larger_side": keeps_rows,
     }
     for metric in TABLE_DERIVED:
@@ -290,6 +348,34 @@ def main() -> int:
                 f"{int(trace) + len(rows)}, not the {int(census[3])} flows above the "
                 f"threshold. Every flow above it is one or the other, so a mismatch means "
                 f"the exclusion is not what the summary says it is")
+    # The enrichment: the stated quotient must be the two counts the table itself carries,
+    # and it must stay in the range the docstrings and README describe as a modest excess.
+    stated_enrich = num(summary.get("investigable_pow10_enrichment"))
+    if stated_enrich is None:
+        problems.append(
+            "summary is missing investigable_pow10_enrichment. The power-of-ten share is "
+            "meaningless without its control -- a 2% ratio window covers 1.74% of a decade, "
+            "so ~1.7% lands in it by construction, which is how issue 112's 11.9% became "
+            "'the ratios cluster on powers of ten'")
+    elif half_rows:
+        derived_enrich = pow10_rows / half_rows
+        if abs(stated_enrich - derived_enrich) > ENRICHMENT_TOL * max(derived_enrich, 1.0):
+            problems.append(
+                f"summary investigable_pow10_enrichment is {stated_enrich:g}, but the table's "
+                f"own {pow10_rows} on-decade over {half_rows} on-half-decade is "
+                f"{derived_enrich:.3f}")
+        if derived_enrich > POW10_ENRICHMENT_CEILING:
+            problems.append(
+                f"the on-decade share is {derived_enrich:.2f}x its matched half-decade "
+                f"control ({pow10_rows} vs {half_rows}), above the "
+                f"{POW10_ENRICHMENT_CEILING:g}x ceiling. At 1.76x the table reads this as a "
+                f"modest decade-aligned excess and NOT issue 111's class; at this ratio that "
+                f"reading no longer follows and the docstrings and README need revisiting")
+    elif pow10_rows:
+        problems.append(
+            f"{pow10_rows} ratios sit on a decade and NONE on the half-decade control. An "
+            f"empty control cannot be divided by, and a control that catches nothing is more "
+            f"likely broken than a distribution that avoids half-decades entirely")
     if len(rows) and pow10_rows / len(rows) > POW10_SHARE_CEILING:
         problems.append(
             f"{pow10_rows} of {len(rows)} ratios ({100 * pow10_rows / len(rows):.1f}%) are "
@@ -307,10 +393,12 @@ def main() -> int:
         return 1
     print(f"PASS: {len(rows):,} mirror gaps, every one with both sides >= {MIN_SIDE_T:g} t "
           f"and a ratio above {RATIO_THRESHOLD:g}x")
-    print(f"  ratio, larger_side, nearest_pow10, ratio_is_pow10 re-derived from the two "
-          f"tonnages on every row")
+    print(f"  ratio, larger_side, nearest_pow10, ratio_is_pow10 and ratio_is_halfdecade "
+          f"re-derived from the two tonnages on every row")
     print(f"  {pow10_rows} ({100 * pow10_rows / len(rows):.1f}%) within {POW10_WINDOW:.0%} of "
-          f"a power of ten -- not issue 111's class")
+          f"a power of ten, against {half_rows} "
+          f"({100 * half_rows / len(rows):.1f}%) on the matched half-decade control -- "
+          f"{pow10_rows / half_rows:.2f}x, a modest excess and not issue 111's class")
     print(f"  whep's preference for the {WHEP_KEEPS} keeps the larger side in "
           f"{100 * keeps_rows / len(rows):.1f}% of them")
     print(f"  summary agrees with the table on {len(TABLE_DERIVED)} counts")

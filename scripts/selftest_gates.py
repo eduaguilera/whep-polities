@@ -1696,6 +1696,64 @@ def mutate_trace_flow_into_mirror_gaps(root, gpd, make_valid, affinity):
             "class that is 67.8% of what issue 112's ratio-only screen selected")
 
 
+def mutate_halfdecade_control_dropped(root, gpd, make_valid, affinity):
+    """Drop one row out of the CONTROL the power-of-ten reading is measured against.
+
+    `trade_mirror_gaps.csv` reports that 372 of 12,775 ratios (2.9%) sit within 2% of a power
+    of ten, and issue #112 read a figure of that shape — its own "21,257 of 178,131 (11.9%)
+    within 5% of a clean power of ten" — as proof that the ratios CLUSTER on the decades, the
+    signature of a scale error. A share cannot say that. A 2% window on the ratio spans
+    log10(1.02/0.98) = 1.74% of a decade, so about 1.7% of any smooth distribution lands in
+    it whatever put it there. The claim only becomes a measurement against the same window
+    applied half a decade away, at 10^(k+0.5), where a factor of ten cannot reach: 211 rows,
+    1.7%, so the real decade-aligned excess is 1.76x — 161 flows out of 12,775.
+
+    That makes the control a DENOMINATOR, and an unchecked denominator is the softest number
+    in any self-reported baseline. This mutation flips `ratio_is_halfdecade` off on the
+    Australia -> Malaysia 2013 raw-sugar flow (1 t exported against 312,005 t imported, a
+    ratio of 312,005 which sits 1.3% below 10^5.5) and then decrements the summary's count
+    and re-divides its enrichment to match, so the two files still agree with each other and
+    the arithmetic still closes. Nothing about a tonnage changed, the row count is untouched,
+    every other derived column is right — and the reported clustering has risen. Only a gate
+    that re-derives the control from each row's own ratio can see it; 210 controls against 372
+    decades reads as 1.77x, and repeating the trick is how 1.76x becomes whatever a reader is
+    told it is.
+    """
+    gaps = os.path.join(root, "pipelines/polity-autoimprove/state/trade_mirror_gaps.csv")
+    summary = os.path.join(root, "pipelines/polity-autoimprove/state/trade_mirror_summary.csv")
+    anchor = ("10,Australia,131,Malaysia,162,"
+              "Raw cane or beet sugar (centrifugal only),2013,")
+    with open(gaps, encoding="utf-8") as fh:
+        lines = fh.read().splitlines(keepends=True)
+    target = None
+    for i, line in enumerate(lines):
+        if line.startswith(anchor) and line.rstrip("\r\n").endswith(",True"):
+            target = i
+            break
+    assert target is not None, (
+        "the Australia->Malaysia 2013 raw-sugar flow is no longer a half-decade control row; "
+        "pick another row whose ratio_is_halfdecade is True"
+    )
+    lines[target] = lines[target].rstrip("\r\n")[: -len("True")] + "False\n"
+    with open(gaps, "w", encoding="utf-8") as fh:
+        fh.writelines(lines)
+
+    # And make the summary agree, so the cross-file count check cannot be what fires.
+    with open(summary, encoding="utf-8") as fh:
+        srows = [ln.rstrip("\r\n").split(",", 1) for ln in fh.read().splitlines() if ln]
+    stated = {k: v for k, v in srows}
+    controls = int(stated["investigable_ratio_is_halfdecade"]) - 1
+    decades = int(stated["investigable_ratio_is_pow10"])
+    stated["investigable_ratio_is_halfdecade"] = str(controls)
+    stated["investigable_pow10_enrichment"] = f"{round(decades / controls, 3)}"
+    with open(summary, "w", encoding="utf-8") as fh:
+        for k, _ in srows:
+            fh.write(f"{k},{stated[k]}\n")
+    return ("flipped the half-decade control off on the Australia->Malaysia 2013 raw-sugar "
+            "flow and decremented the summary to match, so the power-of-ten enrichment rises "
+            "from 1.76x with no tonnage, row count or other derived column changing")
+
+
 def mutate_direction_verdict_withdrawn(root, gpd, make_valid, affinity):
     """Return one resolved mirror flow to "nobody knows which side", leaving whep's default.
 
@@ -2301,6 +2359,15 @@ CASES = (
         "a trace-quantity flow readmitted to the mirror-gap table -- 0.02 t against a real "
         "flow is a 1000x 'disagreement' in which neither side need be wrong, and it is "
         "67.8% of what issue 112's ratio-only screen selected",
+    ),
+    (
+        "validate_trade_mirror_gaps.py",
+        mutate_halfdecade_control_dropped,
+        "Raw cane or beet sugar",
+        "a row dropped out of the half-decade CONTROL, with the summary decremented to keep "
+        "the arithmetic closing -- the power-of-ten share is 2.9% against a window that "
+        "catches 1.7% by construction, so the whole '1.76x, not issue 111's class' reading "
+        "rests on a denominator nothing else in the repo re-derives",
     ),
     (
         "validate_matcher_fixture.py",
