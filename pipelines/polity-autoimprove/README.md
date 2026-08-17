@@ -59,7 +59,7 @@ do with it:
 | `state/suspect_wiki_pages.csv` | pages verification judged wrong or too thin | #19, #25 |
 | `state/landuse_corrections.csv` | recoverable bad cells in the FAO land-use series, one row per cell, with an `action` (`replace_value` / `drop_row` / `review_cell` / `review`) saying what an upstream applier may do unattended. `scripts/validate_landuse_corrections.py` re-derives every diagnosis from the row's own numbers | #4 |
 | `state/yield_corrections.csv` | single cells whose area x yield is physically impossible | #29, #111 |
-| `state/yield_series_corrections.csv` | whole series carrying a scale error, one row per run, with which column moved | #111 |
+| `state/yield_series_corrections.csv` | whole series carrying a scale error, one row per run, with which column moved, the factor that restores the reference yield, and `implied_factor_is_pow10` saying whether that factor really is a decimal shift (it is for 14 of the 28 runs naming a column, so `implied_factor_pow10` alone must not be applied). `scripts/validate_yield_corrections.py` re-derives both tables' every derived column from the numbers in the same row | #111 |
 | `state/livestock_corrections.csv` | FAO-1952 meat cells the components/total identity recovers, and carcass weights outside physical bounds | #29 |
 | `state/source_conventions.csv` | what a source's labels actually measure | #24, #13 |
 | `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack — **empty since 2026-08-13**, the queue is drained | #3 (closed) |
