@@ -118,6 +118,8 @@ GRC
 GRD
 GRL
 GTM
+GTO  # local -- German Togoland 1884-1920, added 2026-08-17 (issue 171); no ISO code, and
+     # it is not TGO because the colony also became the British Togoland third of Ghana
 GUF
 GUM
 GUY

@@ -322,6 +322,7 @@ GRC-1947-2025,Greece (1947-2025),1947,2025,cshapes-2.0,1944.0,assigned,True,back
 GRD-1800-2025,Grenada,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,163
 GRL-1800-2025,Greenland,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,5
 GTM-1821-2025,Guatemala,1821,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 204y span (1821-2025); borders may have changed,1597
+GTO-1884-1920,German Togoland (1884-1920),1884,1920,constructed,1920.0,proxy,True,assumed_constant,True,False,single 1920 polygon held across a 36y span (1884-1920); borders may have changed,0
 GUF-1816-1946,French Guiana (Colony),1816,1946,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 130y span (1816-1946); borders may have changed,41
 GUF-1946-2025,French Guiana (Overseas Department),1946,2025,cshapes-2.0,1946.0,assigned,True,assumed_constant,True,False,single 1946 polygon held across a 79y span (1946-2025); borders may have changed,44
 GUM-1898-1950,Territory of Guam,1898,1950,gadm-4.1-adm0,2023.0,assigned,True,back_projected,True,False,polygon vintage 2023 is AFTER the period ends (1950) — later/modern border applied back,19

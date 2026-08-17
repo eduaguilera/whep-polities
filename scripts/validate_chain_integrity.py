@@ -141,8 +141,12 @@ DEAD_STATUS = ("retired", "superseded")
 BASELINE_DEAD = {
     ("BRL-1938-1945", "predecessor", "BRL-1920-1938"): "Berlin before the 1938 Greater Berlin boundary; no pre-1938 BRL row exists",
     ("BRL-1945-1949", "successor", "EBL-1949-1990"): "East Berlin 1949-1990; no EBL row exists",
-    ("BTL-1920-1957", "predecessor", "GTO-1919-1922"): "German Togoland in the 1919-1922 transitional period, before the British/French partition; no GTO row exists",
-    ("FTO-1920-1960", "predecessor", "GTO-1919-1922"): "same GTO gap, from the French side",
+    # REMOVED 2026-08-17 (issue 171): the two GTO-1919-1922 entries, one per mandate. German
+    # Togoland now HAS a row -- GTO-1884-1920, polygon `constructed/GTO-1884-1920` at 83,724
+    # km2 (CShapes gwcode 461 union the BTL difference) -- and both BTL-1920-1957 and
+    # FTO-1920-1960 point at it, symmetrically. It is not spanned 1919-1922, as the dead
+    # reference was: a 1919-1922 row would OVERLAP both of its own successors by two years,
+    # and it would leave 1884-1918 with no row at all. Dead targets 9 -> 7.
     ("CZN-1903-1979", "predecessor", "PAN-1800-1979"): "Panama before the 1903 Canal Zone, i.e. as part of Colombia; the PAN chain starts at 1903",
     ("HUN-1920-1938", "predecessor", "HUN-1919-1920"): "the 1919-1920 Hungarian interregnum; the HUN chain jumps 1918-1919 -> 1920-1938",
     ("SYR-1920-1922", "predecessor", "SYR-1918-1920"): "OETA East / Arab Kingdom of Syria; the SYR chain starts at the 1920 mandate",
@@ -224,7 +228,8 @@ BASELINE_ASYMMETRY = {
 BASELINE_LINKS = {
     ("bec-1885-1966.md", "bbc-1885-1895"): "British Bechuanaland Crown Colony; the link site carries an explicit 'page not yet created' TODO",
     ("fcm-1920-1960.md", "bca-1919-1961"): "British Cameroon; page not yet created",
-    ("fto-1920-1960.md", "gto-1919-1922"): "German Togoland transitional period; see BASELINE_DEAD",
+    # REMOVED 2026-08-17 (issue 171): fto-1920-1960.md's link to gto-1919-1922 is gone; the page
+    # now links gto-1884-1920.md, which exists. Broken page links 7 -> 6.
     ("hun-1920-1938.md", "hun-1919-1920"): "Hungarian interregnum; see BASELINE_DEAD",
     ("can-1948-2025.md", "can-1866-1948"): "re-spanned Canada row; see BASELINE_DEAD",
     ("syr-1920-1922.md", "syr-1918-1920"): "Arab Kingdom of Syria; see BASELINE_DEAD",

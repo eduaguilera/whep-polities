@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "c63f01829c190a2084fccfe66ed16305954d79a9cd678884e7f9122ecd3ceec7",
+ "identity_sha256": "e05091d3601c735d458c3f24606f842b4654bdc58198c4442c6cbf56e208cc1e",
  "counts": {
-  "total": 773,
-  "live": 729,
+  "total": 774,
+  "live": 730,
   "dead": 44
  },
  "dead_status": [
@@ -92,6 +92,7 @@
   "FID",
   "FRN",
   "GCO",
+  "GTO",
   "ICN",
   "ITS",
   "KOS",
@@ -193,9 +194,9 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "14d04867c0891bae5597d1735bc7e472776b9b9167eb5ce5e2a1e04d5592c50a",
-  "relations": 5232,
-  "modern_iso3": 77
+  "sha256": "d8600d5a0eab8ba1ced34f1d6074347bc8db4a0a556cb4d660a2777c5ea78584",
+  "relations": 5268,
+  "modern_iso3": 78
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
@@ -675,6 +676,13 @@
     "year_max": 1899
    }
   ],
+  "TGO": [
+   {
+    "family": "GTO",
+    "year_min": 1884,
+    "year_max": 1919
+   }
+  ],
   "TJK": [
    {
     "family": "F228",
@@ -1084,6 +1092,7 @@
   "GRD-1800-2025",
   "GRL-1800-2025",
   "GTM-1821-2025",
+  "GTO-1884-1920",
   "GUF-1816-1946",
   "GUF-1946-2025",
   "GUM-1898-1950",

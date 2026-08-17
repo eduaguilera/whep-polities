@@ -1393,6 +1393,25 @@ def build_btl_1920_1957() -> ogr.Geometry:
     return _difference(_cshapes2_feature(452, 1960), _cshapes2_feature(452, 1950))
 
 
+def build_gto_1884_1920() -> ogr.Geometry:
+    """German Togoland 1884-1920 = the two mandates it was partitioned into, re-joined.
+
+    French Togoland (CShapes gwcode 461, the 1922-1960 mandate step, 57,094 km2)
+    UNION British Togoland (build_btl_1920_1957, 26,630 km2) = the whole of the
+    former German colony as the 1919-1922 partition divided it.
+
+    This is a PROXY, and the direction of its error is known: the union measures
+    ~83.7k km2 against the ~87.2k km2 usually published for Deutsch-Togoland, i.e.
+    4% low. The gap is not a missing piece -- both mandates are present -- it is
+    that CShapes' generalised mandate outlines are individually a little tight
+    (BTL alone is 21% below the ~33,771 km2 historical figure for the British
+    portion, which its own page documents). No source in the priority stack
+    carries the German colony as a feature of its own: CShapes 2.0 begins its Togo
+    coverage with the 1922 mandate step, and Cliopatria has no Togoland polity.
+    """
+    return _union(_cshapes2_feature(461, 1930), build_btl_1920_1957())
+
+
 def build_ttpi_1947_1994() -> ogr.Geometry:
     """Trust Territory of the Pacific Islands = the four successor states'
     modern coastlines: Micronesia, Marshall Islands, Northern Marianas, Palau.
@@ -1633,6 +1652,20 @@ BUILDERS = [
         "~33,771 km2 historical figure — a gap the page documents and attributes "
         "to CShapes generalisation, which is why the row is `assigned` on the "
         "geodesic value rather than the historical one.",
+    ),
+    (
+        "GTO-1884-1920",
+        "German Togoland (1884-1920)",
+        build_gto_1884_1920,
+        "Union of CShapes 2.0 gwcode 461 at 1930 (French Togoland mandate, 57,094 "
+        "km2) and the BTL-1920-1957 difference above (British Togoland, 26,630) = "
+        "83,724 km2, against the ~87,200 km2 usually published for the German "
+        "colony (4% low). The two mandates ARE the partition of German Togoland, so "
+        "re-joining them is the only composition available: CShapes' Togo coverage "
+        "starts at the 1922 mandate step and no other source in the stack carries "
+        "Deutsch-Togoland as a feature. Recorded `proxy`, not `assigned`, because "
+        "the outline is the 1922 mandate boundary pair rather than the 1884-1914 "
+        "colonial boundary.",
     ),
     (
         "TTPI-1947-1994",
