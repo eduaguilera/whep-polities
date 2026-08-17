@@ -320,19 +320,40 @@ if n_sus:
 # newly established SOURCE conventions -> the registry 00_intake.py attaches to
 # future bundles. Only from verdicts that survived review (a convention
 # generalizes beyond its assertion, so a disputed one must not propagate).
+#
+# The field list must be the registry's FULL column set (issue 24). It used to be the
+# seven columns this step knows how to fill, which appended a SHORT row: `flow_type`
+# then read back as empty, and write_source_flow_flags.py reads an empty flow_type as
+# `production` — so a convention recording a transit flow would have published no flag
+# at all, which is exactly the double count that file exists to expose. The columns this
+# step cannot decide are written EMPTY on purpose, and validate_source_conventions.py
+# fails on them until a human fills them in: a convention arriving from one verifier,
+# with nothing re-measuring it, is below the bar for a premise every later verifier
+# inherits, and should block rather than accumulate.
+CONV_FIELDS = ["source", "label_pattern", "item_pattern", "convention", "evidence",
+               "verified", "verified_by", "flow_type", "origin_iso3",
+               "corroboration", "retested", "retest"]
 n_conv = 0
 for item in verdicts:
     if item.get("quarantined"): continue
     v = item["verdict"]; b = bundles.get(v["key"]); sc = v.get("source_convention") or {}
     if not (b and (sc.get("convention") or "").strip()): continue
-    n_conv += append_dedup(CONVENTIONS,
-        ["source", "label_pattern", "item_pattern", "convention", "evidence", "verified", "verified_by"],
+    n_conv += append_dedup(CONVENTIONS, CONV_FIELDS,
         {"source": b["source"], "label_pattern": sc.get("label_pattern") or "*",
          "item_pattern": sc.get("item_pattern") or "*", "convention": sc["convention"],
          "evidence": sc.get("evidence") or "", "verified": TODAY,
-         "verified_by": f"assertion-verification ({v['key']})"})
+         "verified_by": f"assertion-verification ({v['key']})",
+         "flow_type": sc.get("flow_type") or "production",
+         "origin_iso3": sc.get("origin_iso3") or "",
+         # left for a human: one verifier is one corroborator, and nothing has
+         # re-measured this yet.
+         "corroboration": sc.get("corroboration") or "",
+         "retested": "", "retest": ""})
 if n_conv:
     print(f"source conventions learned: {n_conv} -> {CONVENTIONS} (attached to future bundles)")
+    print(f"  ACTION REQUIRED: each new entry needs a second independent corroborator, a "
+          f"check in 11_retest_conventions.py and a `retested` date before "
+          f"scripts/validate_source_conventions.py will pass.")
 print(f"applied {len(verdicts)} verdicts: " +
       ", ".join(f"{k}={n}" for k, n in stats.items() if n))
 print(f"ledger: {len(ledger)} rows (banked at protocol v{PROTOCOL}); "

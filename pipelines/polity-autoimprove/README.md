@@ -61,8 +61,33 @@ do with it:
 | `state/yield_corrections.csv` | single cells whose area x yield is physically impossible | #29, #111 |
 | `state/yield_series_corrections.csv` | whole series carrying a scale error, one row per run, with which column moved, the factor that restores the reference yield, and `implied_factor_is_pow10` saying whether that factor really is a decimal shift (it is for 14 of the 28 runs naming a column, so `implied_factor_pow10` alone must not be applied). `scripts/validate_yield_corrections.py` re-derives both tables' every derived column from the numbers in the same row | #111 |
 | `state/livestock_corrections.csv` | FAO-1952 meat cells the components/total identity recovers, and carcass weights outside physical bounds | #29 |
-| `state/source_conventions.csv` | what a source's labels actually measure | #24, #13 |
+| `state/source_conventions.csv` | what a source's labels actually measure, with how it was corroborated and when it was last re-tested — validated by `scripts/validate_source_conventions.py` and re-measured by `11_retest_conventions.py` | #24, #13 |
 | `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack — **empty since 2026-08-13**, the queue is drained | #3 (closed) |
+
+#### The rule for registering a source convention (issue 24)
+
+A convention is not one opinion about one row. `00_intake.py` attaches every matching
+entry to the evidence bundle of every assertion touching that source, so it is a PREMISE
+inherited by every later verifier, and a wrong one propagates further than any single
+verdict. Two rules follow, and both are enforced by
+`scripts/validate_source_conventions.py` rather than by good intentions:
+
+1. **Two independent corroborators before it is registered** — a second blind verifier, an
+   independent re-measurement, or a documentary source outside the panel — mirroring the
+   blind-review requirement for verdicts. The `corroboration` column records which, from a
+   closed vocabulary; an entry standing on one verifier must be named in the gate's
+   `SINGLE_CORROBORATOR_BASELINE` with the reason, so it is a decision and not an omission.
+2. **Every entry has a mechanical re-test.** Most of these claims are magnitude claims, so
+   `11_retest_conventions.py` re-runs the measurement behind each one against the current
+   layer-B panel and reports whether the CONCLUSION still holds (an error) and whether the
+   FIGURES in the `evidence` column still reproduce (drift, fixed by correcting the
+   evidence). It cannot run in CI — the panel is gitignored — so the gate checks instead
+   that every registered row is covered by a check, which is what stops the file growing
+   entries nothing re-measures.
+
+The first full re-test, 2026-08-17, confirmed all seven conclusions and falsified the
+quoted figures in three of them; `apply_verdicts.py` was also appending rows with 7 of the
+12 columns, which read back as `flow_type` empty — i.e. as production.
 
 ### Self-checking arithmetic: what each candidate series actually supports
 

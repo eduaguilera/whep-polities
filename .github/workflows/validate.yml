@@ -369,6 +369,18 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/write_source_flow_flags.py --check
 
+      # Issue 24: the conventions registry is a PREMISE handed to every verifier that
+      # touches the source (00_intake.py attaches matching entries to the evidence
+      # bundle), so a dead pattern, a short row appended by a script that knows fewer
+      # columns, or a claim resting on one agent propagates further than any single
+      # verdict. Everything checked here comes from tracked files; the magnitude re-test
+      # needs the gitignored layer-B panel and runs by hand
+      # (pipelines/polity-autoimprove/11_retest_conventions.py), with this step
+      # guaranteeing every entry is covered by one.
+      - name: The source-conventions registry is well-formed, live and corroborated
+        if: '!cancelled()'
+        run: python3 scripts/validate_source_conventions.py
+
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
       - name: site/ shows exactly the live polities that carry geometry
