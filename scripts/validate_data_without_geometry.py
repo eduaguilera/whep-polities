@@ -61,6 +61,38 @@ Both remaining Canada rows, the Saar and West Berlin have all been tested agains
 form and fail it for stated reasons; TRS and the Saar have not been tested exhaustively
 against the second.
 
+RE-MEASURED A FOURTH TIME, 2026-08-17 (issue 155, fourth pass): 5 polities, 159 rows.
+CHL-1810-1884 left the baseline, and it is the LARGEST single block the class ever had at 168
+rows. The paragraph above ended by naming TRS and the Saar as the two cases not yet tested
+against the difference form; both have now been tested, both fail, and the case that fell was
+neither of them. It fell to the FIRST form, on a row whose own page had written the definition
+down and then not used it: the 1866 Chile-Bolivia treaty parallel at 24 deg S bounds the entire
+1883-1884 annexation, so pre-war Chile is CShapes' 1886 Chile clipped at that line -- 600,490 km2
+against 600,325 from independent modern-region arithmetic, 0.03%. Issue 158 had declined
+Cliopatria here on the grounds that a 2.4x step would be a mapping convention rather than
+territory. That was right, and it is an argument for staying inside CShapes rather than for
+leaving the row empty; the clip makes the step 1.24x, which is the annexation.
+
+Two lessons, both about where the answer was:
+
+  * A "deliberately empty" row is not a closed one. CHL had a documented decision, an issue
+    number (158) and a baseline entry all agreeing it should stay empty, and all three were
+    reasoning about which SOURCE to attach when the question was which OPERATION to apply to the
+    source already attached to its own siblings.
+  * The page said 24 deg S in its Summary and in its own polygon decision, and still estimated the
+    area by subtracting a round ~240,000 km2 instead of measuring the clip. Measured, 145,607 km2
+    lies north of the parallel, so the page's ~516,000-520,000 was ~85,000 too small and issue
+    158's ~180,000 annexation figure too large. The recipe was in the prose; only the arithmetic
+    was missing.
+
+What remains is 5 polities and 159 rows, and every one has now been tested against BOTH forms
+with the negative result recorded in its entry below: TRS (78) has no 1947 or 1954 step break in
+any source and its Italy/Yugoslavia gap is 2,239 km2 of mostly Adriatic sea against a 738 km2
+territory; both Canada rows (43) have no Cliopatria step before 1932-1948; SAC (14) is contained
+in every CShapes-Europe German step, so nothing detaches it; WBL (24) has no sub-Berlin unit in
+GADM at adm2, adm3 OR adm4. That is now a data-acquisition list, stated after testing rather
+than before -- which is the distinction the third pass got wrong.
+
 Issue 155 filed the same class at 18 polities / 1,071 rows. Re-enumerating it from the
 data rather than from the issue changed both the membership and the counts:
 
@@ -127,22 +159,26 @@ DEAD = ("retired", "superseded")
 # taken from its own page's prose — which is how issue 155's five already-fixed cases
 # were found. Row counts are the layer-B figures measured on 2026-08-13.
 BASELINE = frozenset({
-    # CHL-1810-1884, 168 rows, RESTORED on 2026-08-14 (issue 243). It was removed earlier the
-    # same day because committed state said `layerb_data_rows = 0` for it: the rows were real
-    # but attributed to `CHL-1810-1883`, a code the database no longer contains, because the
-    # gitignored matched_rows.parquet predated the re-spans. That parquet has now been
-    # regenerated against the current polity set (orphan codes 5 -> 0, 799 rows re-attributed),
-    # so the count is 168 again and check A flags it for the reason below rather than for
-    # staleness. 04_territory_basis.py now refuses to write the accounting at all while any
-    # orphan code remains, so this entry cannot silently become a lie a second time.
-    #
-    # The reason it had no polygon is unchanged and still on the page: Cliopatria's pre-1884
-    # Chile steps (1866-1879: 314,287 km2) are settlement-extent rather than claimed territory, so
-    # binding one would put a 2.4x step against this family's CShapes-sourced siblings
-    # (~745,000 km2) that is a mapping convention and not a border. CShapes has a 1886
-    # floor and its earliest Chile polygon already contains the ~240,000 km2 annexed in
-    # 1883-1884. See wiki/polities/chl-1810-1884.md and issue 158.
-    "CHL-1810-1884",
+    # CHL-1810-1884 WAS HERE AND IS FIXED, 2026-08-17 (168 rows, the largest block in the class).
+    # This entry said Cliopatria's pre-1884 Chile steps are settlement-extent rather than claimed
+    # territory, so binding one would put a 2.4x step against this family's CShapes-sourced
+    # siblings, and that CShapes has a 1886 floor whose earliest Chile polygon already contains the
+    # territory annexed in 1883-1884. Both halves are TRUE and the conclusion did not follow, in
+    # the CZN-1903-1979 shape: there is no pre-conquest CShapes FEATURE, but there is a
+    # pre-conquest BOUNDARY. The 1866 Treaty of Mutual Benefits (reaffirmed 1874) fixed the
+    # Chile-Bolivia border at 24 deg S, and Tarapaca, the Bolivian Litoral and the administered
+    # Tacna-Arica all lie north of it, so the annexation is a clip rather than a different source.
+    # `build_chl_1810_1884` clips CShapes 155's 1886-1899 step (746,276 km2) at that parallel:
+    # 600,669 km2, less Easter Island (179, annexed September 1888) = 600,490 published. The
+    # convention objection is not overturned, it is SATISFIED -- the family keeps one source and
+    # the 1884 step becomes 1.24x, which is the annexation, instead of Cliopatria's 2.4x.
+    # It also falsified two figures: this page said ~240,000 km2 was annexed and put the row at
+    # ~516,000-520,000; issue 158 said ~180,000. Measured, 145,607 km2 is north of 24 deg S, and
+    # independent arithmetic (modern Chile 756,096 - Tarapaca 42,226 - Antofagasta 126,049 + Taltal
+    # 20,405, scaled onto the CShapes base) gives 600,325, 0.03% from the published figure. The
+    # old estimate had subtracted the whole modern Antofagasta region without adding Taltal back.
+    # `proxy`, for the EASTERN edge: the 1886 step is post-1881-treaty Patagonia, so the polygon
+    # understates Chile's claims for 71 of the row's 74 years (oq-pre-1881-patagonian-claims).
     # 78 rows, the largest remaining. NO SOURCE HAS IT. The Free Territory of Trieste
     # (declared 737 km2, Zone A ~222 + Zone B ~515) needs adm2-level Italian, Slovenian
     # and Croatian units. Measured: CShapes 2.0 has zero features matching Trieste or
@@ -150,19 +186,45 @@ BASELINE = frozenset({
     # Italy, Italy/Sardinia and Yugoslavia for the region; Cliopatria has no Trieste
     # polity; and GADM 4.1's fetched set has no ITA/SVN/HRV file, with adm2 extracted for
     # IDN alone. Unblocking it means fetching new GADM countries, not rebinding.
+    #
+    # TESTED AGAINST THE DIFFERENCE FORM TOO, 2026-08-17, and it fails: no source in
+    # data/geodata carries a 1947 or a 1954 step break for either neighbour, so there is no
+    # before/after pair to subtract. CShapes 2.0 has Italy/Sardinia as ONE step 1919-2019 and
+    # Yugoslavia as one 1920-1991; CShapes-Europe the same (Italy/Sardinia 1919-2023,
+    # Yugoslavia 1920-1990); Cliopatria has Republic of Italy as one step 1946-2023 and its
+    # SFRY steps at 1947 and 1949 differ by 479 km2 lost and 96 gained, neither of them near
+    # Trieste. And there is no HOLE to lift either: the territory in the 13.2-14.1E/45.2-46.0N
+    # envelope covered by neither Italy nor Yugoslavia measures 2,239 km2, three times the
+    # FTT's 738, because it is mostly the Gulf of Trieste -- and no fetched source has an
+    # Italian/Slovenian/Croatian coastline to clip the sea off with.
     "TRS-1947-1954",
     # 39 rows. The recipe EXISTS and was measured WRONG: build.py carries
     # build_can_1800_1866 unregistered because the five modern provinces give
     # 2,735,024 km2 against the page's 1,209,852 — Ontario and Quebec reach Hudson Bay
     # while the 1866 Province of Canada stopped at Rupert's Land. A different territory,
-    # not a proxy. Needs a pre-Confederation source.
+    # not a proxy. Needs a pre-Confederation source. RE-MEASURED 2026-08-17: the "pre-Confederation
+    # source" is not in data/geodata under any name. Cliopatria's EARLIEST Canada step is
+    # 1932-1948 -- it has no pre-1932 Canada at all, so the before/after difference form has no
+    # "before" -- and the legacy data/geodata/polities_polygons.gpkg, which does carry a
+    # CAN-1866-1948 feature, measures it at 9,553,644 km2, i.e. modern Canada.
     "CAN-1800-1866",
     # 24 rows. West Berlin's three western sectors (~480 km2) cannot be recovered from
-    # any fetched source: CShapes has no Berlin feature, and Berlin's 2001 district
-    # reform merged boroughs ACROSS the sector line (Mitte = Mitte + Tiergarten + Wedding;
-    # Friedrichshain-Kreuzberg spans it), so even GADM adm2 could not reproduce it.
+    # any fetched source: CShapes has no Berlin feature.
     # Its predecessor BRL-1945-1949 is now bound to the whole city, which is deliberately
     # NOT reused here: 892 km2 for a 480 km2 territory would be an 86% overstatement.
+    #
+    # THIS ENTRY'S REASON WAS HYPOTHETICAL AND IS REPLACED BY A MEASUREMENT. It said Berlin's
+    # 2001 district reform merged boroughs ACROSS the sector line (Mitte = Mitte + Tiergarten +
+    # Wedding; Friedrichshain-Kreuzberg spans it) "so even GADM adm2 could not reproduce it".
+    # True of the reform, but it never had to be argued: GADM 4.1's DEU file carries Berlin as a
+    # SINGLE feature at adm2 (403 units nationally), adm3 (4,680) AND adm4 (11,302). There is no
+    # sub-Berlin unit at any level to union, coarse or fine. Two further sources were queried and
+    # neither helps: CShapes-Europe's German Federal Republic 1949-1989 is 247,632 km2 in ONE part
+    # with no exclave near Berlin, and its GDR 1949-1989 (109,361) has no interior ring, so West
+    # Berlin is absent from both rather than liftable as a hole; and the legacy
+    # data/geodata/polities_polygons.gpkg does carry a "West Berlin" feature (GWB-1800-1982) at
+    # 891.5 km2 -- byte-identical in area to its own East Berlin feature, i.e. both are the whole
+    # city, which is the same 892 this entry already refuses.
     "WBL-1949-1990",
     # FCC-1862-1887 WAS HERE AND IS FIXED, 2026-08-17 (20 rows). This entry said French
     # Cochinchina "needs the six southern Vietnamese provinces of the 1860s-80s; GADM 4.1's
@@ -178,6 +240,19 @@ BASELINE = frozenset({
     # GADM's Saarland (DEU.12_1) measures 2,571 km2 — 34% larger, because post-1947
     # additions are in it. Bindable only as a documented 34% overstatement, which is a
     # judgement this gate's baseline should record rather than a fix to slip in.
+    #
+    # TESTED AGAINST THE DIFFERENCE FORM, 2026-08-17, and it fails on containment before it gets
+    # to arithmetic: CShapes-Europe's German steps ALL CONTAIN Saarbruecken (7.00E, 49.24N) --
+    # 1886-1918, 1919, 1920-1937 and 1938-1944 alike -- so no step models the 1920-1935 Saar
+    # Territory as detached from Germany, and there is nothing to subtract. The 1886-1918 minus
+    # 1920-1937 difference clipped to the Saar box (6.2-7.6E, 49.0-49.8N) is 2,844 km2, but it is
+    # northern LORRAINE, not the Saar, which is why Saarbruecken stays German across the pair.
+    # The subtraction form is unavailable in the other direction too: the 1946-47 enlargement was
+    # 142 named municipalities from the Rhine Province and the Palatinate, and modern Saarland's
+    # six Landkreise (2,568 km2 total: Merzig-Wadern 555, St. Wendel 476, Saarlouis 459,
+    # Saarpfalz 418, Regionalverband Saarbruecken 411, Neunkirchen 249) were redrawn in 1974 and
+    # do not decompose into it -- dropping St. Wendel whole leaves 2,092 against 1,912 and cuts
+    # territory that WAS in the 1920 Saar. So the 34% figure stands as the only reading.
     "SAC-1935-1947",
     # AOI-1936-1941 WAS HERE AND IS FIXED, 2026-08-17. It had declared `constructed` at
     # 1,700,000 km2 with no builder, and this baseline's own entry said the union of
@@ -216,6 +291,10 @@ BASELINE = frozenset({
     # was written, so the comment was describing a state that had already gone. The
     # `sources: [gadm-4.1]` frontmatter list still names it, which is a bibliography entry
     # and not a polygon binding.
+    #
+    # RE-MEASURED 2026-08-17 alongside CAN-1800-1866: same negative result. Cliopatria has no
+    # Canada step before 1932-1948; the legacy polities_polygons.gpkg's CAN-1866-1948 is modern
+    # Canada at 9,553,644 km2. Both Canada rows need a source this repo does not have.
     "CAN-1866-1870",
 })
 

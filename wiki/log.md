@@ -26,6 +26,40 @@ Kinds:
 
 ---
 
+## decision-chl-pre-1884-clip-at-24s
+**Date:** 2026-08-17
+**Touched:** CHL-1810-1884
+**Source:** cshapes-2.0
+**Kind:** decision
+
+**The polygon this row lacked was its own successor's, clipped at a treaty
+parallel — and the parallel was already written on the page.** `CHL-1810-1884`
+received 168 layer-B rows with no geometry, the largest block in
+[issue 155](https://github.com/eduaguilera/whep-polities/issues/155)'s class, and had
+been left empty deliberately: a `Decisions` entry, merged issue #158, and
+`validate_data_without_geometry`'s baseline all agreed. All three were arguing about
+which SOURCE to attach — #158 rightly declined Cliopatria's 313,424 km² step because
+a 2.4× jump at 1884 would encode the CShapes-vs-Cliopatria treatment of Patagonia as
+a territorial event — and none noticed that the convention objection is an argument
+for STAYING inside CShapes. There is no pre-conquest CShapes *feature*, but there is
+a pre-conquest *boundary*: the 1866 Treaty of Mutual Benefits, reaffirmed in 1874,
+fixed the Chile–Bolivia border at 24°S, and Tarapacá, the Bolivian Litoral and the
+administered Tacna–Arica all lie north of it. So the 1883–1884 annexation is a clip,
+not a different source.
+
+Built as `constructed/CHL-1810-1884`: CShapes 155's 1886-1899 step (746,276 km²)
+clipped south of 24°S = 600,669 km², less Easter Island (179 km², annexed September
+1888) = **600,490 km² published**. Corroborated to 0.03% by independent arithmetic
+(modern Chile 756,096 − Tarapacá 42,226 − Antofagasta 126,049 **+ Taltal 20,405**,
+scaled onto CShapes' base = 600,325). The 1884 step is now 1.24×, which is the
+annexation. Two figures in the trail were wrong and are corrected on the page: it had
+asserted ~240,000 km² annexed and estimated the row at ~516,000–520,000, where the
+measured territory north of the parallel is 145,607 km²; #158's ~180,000 is too large
+for the same reason. `polygon_status: proxy`, for the EASTERN edge — the 1886 step
+postdates the 1881 Patagonian boundary treaty, so the polygon understates Chile's
+claims for 71 of the row's 74 years, recorded as `oq-pre-1881-patagonian-claims` and
+not fixed. See [chl-1810-1884](polities/chl-1810-1884.md).
+
 ## ingest-federico-tena-through-00-intake-issue-26
 **Date:** 2026-08-17
 **Touched:** none
