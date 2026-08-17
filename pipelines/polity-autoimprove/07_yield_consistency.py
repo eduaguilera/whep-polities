@@ -84,6 +84,57 @@ Two things that pass discovered, and that the per-cell table cannot express:
      batch x10^n pass would leave the worst of them 48% out rather than 8-9%. The gate prints
      that range on every run. Use `implied_factor`, not `implied_factor_pow10`.
 
+  4. WHICH RUNS CAN BE REPAIRED WITHOUT THE YEARBOOK PAGE (issue 111's remaining half).
+     The 0.52x-1.44x residual above was read as evidence that even the `true` runs are
+     unrepairable. That reading uses the wrong yardstick. A residual is only evidence
+     against the decimal-shift hypothesis if it exceeds the noise the CLEAN observations
+     themselves show, and here they show a great deal of it: juan sweden linseed's ten clean
+     years span 0.37x-2.13x of their own median, juan chile flax 0.53x-4.70x. A run landing
+     1.32x from a power of ten inside a series whose good years span 0.86x-1.76x is not
+     evidence of anything.
+
+     TWO CHANGES follow. First the ANCHOR: the level a run is compared against is the
+     series' OWN clean paired years where it has three or more (`own_level_yield`), and the
+     cross-source reference only where it does not (`repair_anchor_basis`). That matters
+     substantively -- iia ghana cotton lint's clean years yield 0.071 t/ha against the item
+     reference of 0.140, so its factor is 55, not the 109 the reference implies, and 55 is
+     not a power of ten. Second the TEST: the residual is judged against that anchor's own
+     p10-p90 dispersion (`noise_band_lo/hi`, BAND_Q), not against a fixed window.
+
+     `repairable_without_source` is the resulting four-way verdict, measured 2026-08-17:
+
+       decimal-shift       11 runs, 27 cells, 73 paired obs -- REPAIRABLE. One column moved,
+                           the factor against its own anchor is a power of ten, and the
+                           residual is inside that anchor's own noise. `repair_factor`
+                           carries the repair, an EXACT 10^n. Led by mitchell natal maize
+                           1860-1906 (43 obs, x100 on production) and iia australia hops
+                           1933-1944 (11 obs, /100).
+       shift-outside-noise  4 runs, 12 cells -- NOT repairable. Passes the loose 50% window
+                           and fails its own series' dispersion: iia ghana cotton lint (0.55
+                           against a 0.84-1.09 band) and iia taiwan tobacco (0.757 against
+                           0.79-1.17) are the multi-year cases. Those are the runs issue
+                           111's headline leans on hardest, and they are exactly the ones
+                           the anchor change disqualifies.
+       not-a-shift         13 runs, 23 cells -- NOT repairable. x26.1, x38.7, x1680 are not
+                           transcription artefacts, and the only repair on offer is the
+                           factor that reproduces the anchor, which is circular: it makes
+                           the cell agree with the assumption used to detect it and cannot
+                           be checked against anything.
+       no-direction        11 runs, 15 cells -- NOT repairable, for a different reason:
+                           nothing here says WHICH of the two cells to edit, and editing the
+                           wrong one corrupts a good number while leaving the bad one.
+
+     A fifth verdict, `shift-unyardsticked`, covers a run with neither three clean paired
+     years nor ten clean peer observations. No run is in it today; it exists so that such a
+     run cannot fall into the licensed set by default if the inputs change.
+
+     So 27 of the 77 flagged cells are repairable from internal evidence alone and 50 are
+     not, and the reason differs: 12 fail an arithmetic test, 23 have no error mode to
+     apply, 15 have no attributable cell. The repair is published for the first group only,
+     because a blank is an instruction. POW10_WINDOW stays at 0.5: it answers "is this
+     series' offset shaped like a decimal shift", a different question from "may this cell
+     be edited unseen", and narrowing it would silently re-answer the first.
+
 A column whose ratio is large but under 10x is recorded as `secondary_suspect`, not asserted:
 a real territorial change produces exactly that signature. juan austria grapes is the case --
 its area drops 213,400 -> 48,500 ha at 1918 because pre-1918 "austria" is Cisleithania, not
@@ -147,6 +198,10 @@ NEAR_YEARS = 10
 # How close to a power of ten a factor must be before the table says it IS one. 0.5 is the
 # per-cell table's own window, kept identical so the two columns mean the same thing.
 POW10_WINDOW = 0.5
+# The quantiles of the CLEAN observations' own dispersion that bound a residual (issue 111's
+# repairability question; see the module docstring). p10/p90 rather than min/max so one
+# polluted clean year cannot widen the band enough to admit anything.
+BAND_Q = (0.10, 0.90)
 
 
 def nearest_power_of_ten(ratio: float) -> int:
@@ -254,13 +309,13 @@ def series_pass(m: pd.DataFrame, bad: pd.DataFrame,
             out_a = _near_level(a_idx.get(k, area.iloc[:0]), "area_ha", anom_years, mid)
             out_p = _near_level(p_idx.get(k, prod.iloc[:0]), "prod_t", anom_years, mid)
             n_clean = min(len(out_a), len(out_p))
+            peers = m[(m["source"] == k[0]) & (m["item"] == k[2])
+                      & (m["country"] != k[1]) & (m["log_dev"].abs() <= CLEAN_ORDERS)]
             if n_clean >= MIN_CLEAN_YEARS:
                 basis = "within-series"
                 ar = run["area_ha"].median() / out_a.median()
                 pr = run["prod_t"].median() / out_p.median()
             else:
-                peers = m[(m["source"] == k[0]) & (m["item"] == k[2])
-                          & (m["country"] != k[1]) & (m["log_dev"].abs() <= CLEAN_ORDERS)]
                 if len(peers) >= MIN_PEERS:
                     basis = "peer-range"
                     # A ratio to the peer MEDIAN is meaningless across countries of
@@ -290,6 +345,51 @@ def series_pass(m: pd.DataFrame, bad: pd.DataFrame,
             # and any downstream re-derivation are computed on the SAME number a reader
             # sees rather than on an unwritten full-precision one.
             facr = float(f"{fac:.3g}") if fac == fac else ""
+
+            # --- can this be repaired WITHOUT the source page? (issue 111) ---------------
+            # The yardstick is NOT a fixed window around 10^n. It is the dispersion the
+            # CLEAN observations themselves show around whichever level anchors the run,
+            # because a residual is only evidence against the decimal-shift hypothesis if
+            # it is larger than the noise the same series (or the same source's other
+            # countries) already exhibits. See the module docstring.
+            clean_pair = ser[(~ser["year"].isin(anom_years))
+                             & (ser["log_dev"].abs() <= CLEAN_ORDERS)]
+            clean_pair = clean_pair.assign(_d=(clean_pair["year"] - mid).abs()) \
+                                   .nsmallest(NEAR_YEARS, "_d")
+            n_own = len(clean_pair)
+            own = clean_pair["yield_t_ha"].median() if n_own else float("nan")
+            if n_own >= MIN_CLEAN_YEARS:
+                anchor_basis, anchor, spread = "own-clean-years", own, \
+                    clean_pair["yield_t_ha"] / own
+            elif len(peers) >= MIN_PEERS:
+                anchor_basis, anchor, spread = "peer-countries", ref, \
+                    peers["yield_t_ha"] / ref
+            else:
+                anchor_basis, anchor, spread = "none", ref, None
+            band_lo = band_hi = float("nan")
+            if spread is not None and len(spread):
+                band_lo = float(spread.quantile(BAND_Q[0]))
+                band_hi = float(spread.quantile(BAND_Q[1]))
+            if direction == "production" and anchor == anchor and anchor > 0:
+                afac = (run["area_ha"] * anchor / run["prod_t"]).median()
+            elif direction == "area" and anchor == anchor and anchor > 0:
+                afac = (run["prod_t"] / anchor / run["area_ha"]).median()
+            else:
+                afac = float("nan")
+            afacr = float(f"{afac:.3g}") if afac == afac else ""
+            resid = (afacr / 10.0 ** nearest_power_of_ten(afacr)) if afacr != "" else \
+                float("nan")
+            if direction not in ("area", "production"):
+                verdict = "no-direction"
+            elif afacr == "" or not is_clean_power_of_ten(afacr):
+                verdict = "not-a-shift"
+            elif band_lo != band_lo:
+                verdict = "shift-unyardsticked"
+            elif band_lo <= resid <= band_hi:
+                verdict = "decimal-shift"
+            else:
+                verdict = "shift-outside-noise"
+
             rows.append({
                 "source": k[0], "country": k[1], "item": k[2],
                 "year_first": int(run["year"].min()), "year_last": int(run["year"].max()),
@@ -315,6 +415,20 @@ def series_pass(m: pd.DataFrame, bad: pd.DataFrame,
                 "implied_factor_is_pow10": (is_clean_power_of_ten(facr)
                                             if fac == fac else ""),
                 "ref_yield": round(ref, 3) if ref == ref else "",
+                # --- repairability without the source page (issue 111) --------------------
+                "own_level_yield": round(own, 4) if own == own else "",
+                "own_clean_pairs": n_own,
+                "repair_anchor_basis": anchor_basis,
+                "repair_anchor_yield": (round(anchor, 4) if anchor == anchor else ""),
+                "anchor_factor": afacr,
+                "noise_band_lo": round(band_lo, 3) if band_lo == band_lo else "",
+                "noise_band_hi": round(band_hi, 3) if band_hi == band_hi else "",
+                "repair_residual": (round(resid, 3) if resid == resid else ""),
+                "repairable_without_source": verdict,
+                # The repair itself, and ONLY where it is licensed: an exact power of ten,
+                # never the fitted factor. Blank is the instruction "do not repair this".
+                "repair_factor": (10.0 ** nearest_power_of_ten(afacr)
+                                  if verdict == "decimal-shift" else ""),
                 "years": ";".join(str(int(y)) for y in sorted(run["year"])),
             })
     out = pd.DataFrame(rows)
@@ -415,11 +529,22 @@ def main() -> int:
           f"{int((fac_rows['implied_factor_is_pow10'] == True).sum())}"  # noqa: E712
           f" -- the rest are NOT x10^n and must not be repaired as if they were")
     print(f"  basis: {dict(ser['direction_basis'].value_counts())}")
+    # Issue 111's remaining question: what can be repaired WITHOUT the yearbook page.
+    print("  repairable without the source page:")
+    for v, n in ser["repairable_without_source"].value_counts().items():
+        sub = ser[ser["repairable_without_source"] == v]
+        print(f"    {v:20s} {n:2d} run(s), {int(sub['n_flagged_cells'].sum()):2d} "
+              f"flagged cell(s), {int(sub['n_paired_in_run'].sum()):3d} paired observation(s)")
+    lic = ser[ser["repairable_without_source"] == "decimal-shift"]
+    if len(lic):
+        rr = lic["repair_residual"].astype(float)
+        print(f"  the licensed set's residuals after its 10^n repair: "
+              f"{rr.min():.2f}x-{rr.max():.2f}x, each inside ITS OWN clean-year noise band")
     for r in multi.itertuples():
         print(f"  {str(r.source):8s} {str(r.country)[:26]:26s} {str(r.item)[:24]:24s} "
               f"{r.year_first}-{r.year_last}  n={r.n_paired_in_run:2d} "
               f"(flagged {r.n_flagged_cells:2d})  {r.direction:13s} x{r.implied_factor} "
-              f"[{r.direction_basis}]"
+              f"[{r.direction_basis}] {r.repairable_without_source}"
               + (f"  secondary: {r.secondary_suspect}" if r.secondary_suspect else ""))
     print(f"\nwrote state/yield_series_corrections.csv ({len(ser)} rows)")
     return 0
