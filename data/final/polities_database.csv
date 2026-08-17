@@ -573,7 +573,7 @@ PNG-1975-2025,Papua New Guinea,1975,2025,national,PNG,910,Oceania,draft,2026-04-
 PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,national,,,Africa,draft,2026-04-13,paine-2024,Porto Novo,,assigned,,,BEN-1960-2025; BEN-1898-1960
 POL-1815-1918,Congress Poland (1815-1918),1815,1918,national,POL,290,Europe,draft,2026-04-16,cshapes-2.0,290,1918,assigned,,,POL-1918-1919
 POL-1918-1919,Poland (1918-1919),1918,1919,national,POL,290,Europe,draft,2026-04-12,cshapes-2.0,290,1918,assigned,,AUH-1908-1918; F228-1856-1905; DEU-1800-1866,POL-1919-1920
-POL-1919-1920,Poland (1919-1920),1919,1920,national,POL,290,Europe,draft,2026-04-12,cshapes-2.0,290,1919,polygon_vintage_drift,177754,POL-1918-1919,POL-1920-1921
+POL-1919-1920,Poland (1919-1920),1919,1920,national,POL,290,Europe,draft,2026-04-12,constructed,POL-1919-1920,1919,polygon_vintage_drift,256575,POL-1918-1919,POL-1920-1921
 POL-1920-1921,Poland (1920-1921),1920,1921,national,POL,290,Europe,draft,2026-04-12,cshapes-2.0,290,1920,assigned,,POL-1919-1920,POL-1921-1945
 POL-1921-1945,Poland (1921-1945),1921,1945,national,POL,290,Europe,draft,2026-04-12,cshapes-2.0,290,1921,assigned,,POL-1920-1921,POL-1945-2025
 POL-1945-2025,Poland (1945-2025),1945,2025,national,POL,290,Europe,reviewed,2026-04-12,cshapes-2.0,290,1945,assigned,,POL-1921-1945,
