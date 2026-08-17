@@ -69,6 +69,120 @@ agent work through `verify_assertions.workflow.js` + `apply_verdicts.py`. That, 
 the judgement of which unrouted reporting units deserve a WHEP row, are named as
 open on [federico-tena-2019](sources/federico-tena-2019.md).
 
+## banked-legacy-tier-is-a-live-catch-all-issue-8
+**Date:** 2026-08-17
+**Touched:** (none)
+**Source:** none
+**Kind:** decision
+
+**Issue 8 asked for the 155 `banked_legacy` assertions to be re-verified and
+described them as "the small-row tail". Re-measuring the tier first says the
+premise is wrong on both counts, and the reason it is wrong is the more important
+finding.**
+
+Re-running `00_intake.py` over consolidated layer B (190,529 rows after the
+aggregate filter, 1,073 assertions) gives **158** assertions in the tier, not 155,
+carrying **4,635 rows** across **89 labels** and four sources (`fao1952` 90,
+`mitchell` 32, `iia` 27, `juan` 9). None of the 158 keys appears in any
+`state/verdicts_*.json` or among the 148 keys in `verdicts_applied.jsonl`, so the
+issue is right that none of them was ever verified at assertion level.
+
+But the tier is not a small-row tail. Its largest member is
+`serbia|iia|1920-1944` at **573 rows** — larger than most of the chunk-1 legacy
+assertions it was supposedly the remainder of — followed by
+`canada|fao1952|1949-1951` (274) and `niger|mitchell|1922-1946` (151). The
+explanation is in the branch that assigns the status: the ledger lookup falls back
+from the full assertion key to the **bare label**, so `banked_legacy` was never a
+closed set of pre-assertion-era rows. It is a **live catch-all**. Any assertion
+whose full key is absent from the ledger inherits "already reviewed" from a
+bare-label row, *including segments that did not exist when the label was
+reviewed* — `serbia` was banked at label level on 2026-07-02, and the
+`SER-1918-1945` segment this key routes to postdates that review. This is exactly
+the mechanism the retired-polity bug hid behind: `ARG-1800-2025`,
+`GRC-1919-2025`, `F248-1920-1991` and 18 others absorbed 7,359 rows while every one
+of those assertions read as banked.
+
+**Decision.** The branch now yields `reopened` — with a note naming the covering
+bare-label ledger row — instead of a terminal `banked_legacy`. The verification
+workflow selects on `pending`/`reopened`, so the 158 enter the ordinary backlog by
+construction and the catch-all is closed: a future re-span can no longer be
+absorbed by a label somebody glanced at in June. Against the ledger at HEAD the
+status counts before any verdict were `pending` 778 / `reopened` 176 (the 158 plus
+18 ordinary reopens) / `banked` 119.
+
+**Verification, chunk 3: 65 of the 158, at assertion level.**
+`state/verdicts_legacy_chunk3.json` records **51 confirms** and **14
+`uncertain`**, taking `banked` from 119 to 170 and the tier from 158 to **107** (93
+never examined, plus the 14 that were examined and could not be decided). The 51
+are two families. Forty-three are exact-territory insular and colonial units whose
+borders did not move inside the observed span, corroborated numerically wherever
+the bundle allowed it: Alaska's population row of 70 thousand against the 1939
+census count of 72,524; the Faroes' 29 thousand, which fixes `Denmark: the Faeroes`
+as the islands and not a Denmark-plus-Faroes aggregate; Portuguese India's 624
+thousand against 637 thousand in 1950; Portuguese Timor's 456 thousand against the
+1950 census 442 thousand; the Falklands' 615 thousand sheep and 2 thousand t of
+greasy wool; Bechuanaland's 1,027 thousand cattle; Spanish Guinea's 15 thousand t
+of Fernando Poo cacao. The other eight are aggregates confirmed **best_available**
+with an explicit double-count note rather than `verified_equal` — `british west
+indies`, `british west indies leeward islands`, `gold coast`, `british togoland`,
+the two spellings of `gold coast and british togoland`, `french oceania` (which
+shares its polity with its own component island `makatea`) and `united states and
+dependent territories`. Nothing was confirmed `verified_equal` on a draft wiki page
+alone; where a series was implausible the assertion was downgraded rather than
+dressed up (`falkland islands|iia`, `british borneo north borneo`, `cape verde
+islands`).
+
+**The 14 that could not be decided share one cause, and it is not in the issue.**
+A polity can receive **two or more nesting levels of the same territory from the
+same source**, so any aggregation over `polity_code` either sums a whole with its
+own parts or reads a cell holding two incompatible values. Routing all 189,839
+matched layer-B rows through the assertion segments and grouping on
+`(polity_code, source, item, indicator, year, unit)` finds **52 such cells holding
+110 rows**, and **none of the colliding values are equal** — so this is not
+duplicate ingestion but genuinely different series landing on one key. The worst
+are PNG-1949-1975 with 18 rows from `papua` + `new guinea` (FAO kept reporting the
+two component territories separately after the 1949 union), CHN-1949-1950 with 13
+and CHN-1947-1949 with 12 from `china` + `china 22 provinces` + `china manchuria`
+— and the land-use rows prove those last two are disjoint, 507,182 against 106,930
+thousand ha, i.e. ~5.07M km² of China proper against ~1.07M km² of Manchuria —
+FID-1887-1954 with 10, KOR-1948-2025 with 10, DEU-1920-1938 with 9 from `germany` +
+`germany western` + `germany berlin` **for 1937 alone**, which leaves the Reich
+polity carrying three mutually incompatible 1937 population values including
+Berlin's 4,284 thousand against a Reich total near 67 million, JPN-1895-1945 with 8
+from `japan` + `palau`, and GBR-1921-2025 with 8 from `united kingdom` + `united
+kingdom great britain`, where the narrower label excludes Northern Ireland. Logged
+as `layerb-nested-reporting-levels-one-polity` (`pending_audit`) — the generalised,
+quantified form of the single-label `united-states-california-double-count` row
+already in the file. Each quarantined verdict names the missing segment where one
+exists: MAN-1945-1950 already covers 1945-1949 Manchuria; TNGU-1920-1949 and
+TPAP-1906-1949 stop at the 1949 union; BRL-1938-1945 and WZO-1938-1949 both start
+in 1938, so the 1937 Berlin and western-zone rows have no target at all; and the
+Caroline Islands have no polity for the 1914-1920 Japanese occupation
+(GCAR-1899-1914 → CAR-1920-1945), which is why Palau's phosphate lands on the whole
+Japanese Empire. No polity, polygon or alias is changed here.
+
+Issue 8 therefore stays open for the remaining 93, with its arithmetic corrected,
+its tier no longer invisible, and its largest structural obstacle named.
+
+**One blocker for that pass, recorded as a data error, not fixed here.**
+`magnitude_continuity` is one of the protocol's checks, and for the tier's 27 `iia`
+assertions — the largest among them included — it cannot be applied: `iia`
+magnitudes in layer B are not on a common scale. Median wheat production in
+`tonnes` across 26,175 `iia` rows reads canada 756,867, denmark 690,589, sweden
+497,275, germany 293,228, france 101,145, netherlands 1,103. Denmark and Sweden are
+plausible interwar figures; France (~8 Mt), Germany (~4–5 Mt), Canada (~10–14 Mt)
+and the Netherlands (~150 kt) are one to two orders low, so no single divisor
+explains it. Areas are affected too — 1930-1938 median wheat area is 125,800 ha for
+the Russian Federation against 58,000 for Serbia, a ratio of 2.2 where the real one
+is ~90 — and the scale flips *within* one series (Serbia wheat area 58,000 ha for
+1934, 17,000 ha for the 1934-1938 average). Logged as
+`iia-layerb-magnitude-scale-inconsistent` (`pending_audit`) in
+`state/data_errors.csv`; it is an ingestion question for the layer-B consolidation
+and carries no territorial consequence. Until it is answered, a verifier must not
+read `iia` staple magnitudes as evidence of reporting scope.
+
+Signed off by: Catalin Covaci.
+
 ## decision-company-era-india-quantified-not-split-issue-11
 **Date:** 2026-08-17
 **Touched:** IND-1800-1886

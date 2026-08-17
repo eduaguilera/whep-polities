@@ -296,8 +296,63 @@ the version into the hash) is deliberate: the debt is then visible row by row, a
 a bump reopens exactly the rows that predate it.
 
 `protocol_version` is empty on rows banked by `01_`/`02_` (a different review
-unit, not this protocol) and on `banked_legacy` label-level rows, which pre-date
-assertion verification entirely and are skipped by that separate mechanism.
+unit, not this protocol) and on the pre-assertion-era **bare-label** ledger rows,
+which recorded that a label had been looked at and nothing more.
+
+### Bare-label legacy rows are not banked (issue #8)
+
+A bare-label ledger row carries no `evidence_hash`. `00_intake.py` used to report
+any assertion covered only by such a row under its own status, `banked_legacy`, and
+skip it. Two things were wrong with that:
+
+* the old ledger never recorded a `(label, source, year-span) -> polity` claim, so
+  "banked" asserted something that had not been checked; and
+* the fallback keys on the **label**, so it was never a closed set of pre-assertion
+  rows — it is a **live catch-all**. Any assertion whose full key is missing from the
+  ledger inherits "already reviewed" from a bare-label row, *including segments
+  created after that label was reviewed*, by a re-span or a new period. This is
+  where the retired-polity bug hid: `ARG-1800-2025`, `GRC-1919-2025`,
+  `F248-1920-1991` and 18 others absorbed 7,359 rows while every one of those
+  assertions read as banked.
+
+Measured on consolidated layer B (2026-08-17, 190,529 rows after the aggregate
+filter, 1,073 assertions) the tier held **158 assertions / 4,635 rows over 89
+labels** — `fao1952` 90, `mitchell` 32, `iia` 27, `juan` 9 — and none of its keys
+appeared in any `state/verdicts_*.json` or in `verdicts_applied.jsonl`. Its largest
+member was `serbia|iia|1920-1944` at **573 rows**, which cannot be a legacy
+small-row remainder: the label-level review of `serbia` (2026-07-02) predates the
+`SER-1918-1945` segment the key now routes to.
+
+So the branch now yields `reopened`, with a note naming the covering bare-label
+row. The tier enters the ordinary verification queue by construction and the
+catch-all is closed. Against the ledger as of 2026-08-17 the status counts were
+`pending` 778 / `reopened` 176 / `banked` 119, the `reopened` figure being the 158
+legacy keys plus 18 ordinary reopens.
+
+`state/verdicts_legacy_chunk3.json` then verified **65** of the 158 at assertion
+level — **51 confirms** (`banked` 119 -> 170) and **14 quarantined as
+`uncertain`**, leaving **107** in the tier (93 never examined + the 14 that were
+examined and could not be decided). The 51 are the exact-territory insular and
+colonial tail plus eight aggregates confirmed as `best_available` with an explicit
+double-count note; nothing was confirmed `verified_equal` on a draft wiki page
+alone.
+
+Two blockers for the remaining pass are recorded, not fixed:
+
+* `iia-layerb-magnitude-scale-inconsistent` — `iia` magnitudes in layer B are not
+  on a common scale, so `magnitude_continuity`, one of the protocol's checks,
+  cannot be applied to the tier's 27 `iia` assertions, the largest among them
+  included.
+* `layerb-nested-reporting-levels-one-polity` — a polity can receive **two or more
+  nesting levels of the same territory from the same source**. Routing all 189,839
+  matched rows through the assertion segments and grouping on `(polity_code,
+  source, item, indicator, year, unit)` finds **52 cells holding 110 rows** from
+  more than one label, none of the colliding values equal: `papua` + `new guinea`
+  on PNG-1949-1975, `china` + `china 22 provinces` + `china manchuria` on the CHN
+  chain, `germany` + `germany western` + `germany berlin` on DEU-1920-1938 for 1937
+  alone, `japan` + `palau` on JPN-1895-1945, `united kingdom` + `united kingdom
+  great britain` on GBR-1921-2025, and others. This is what the 14 quarantined
+  assertions are blocked on; each names the missing segment where one exists.
 
 ### Decorrelating the blind review (issue 27)
 
