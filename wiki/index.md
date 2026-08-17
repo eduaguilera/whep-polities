@@ -16,11 +16,11 @@ double the real polity total.)
 |---|---|
 | Polities in the database | 775 |
 | Polity pages | 775 |
-| Sources ingested | 30 |
+| Sources ingested | 31 |
 | `status: draft` | 672 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 21 / 23 |
-| Pages with no source citation | 195 |
+| Pages with no source citation | 193 |
 | Pages citing biger-1995 | 411 |
 | Open questions (`### oq-`) | 851 |
 

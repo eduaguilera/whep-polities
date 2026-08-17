@@ -371,6 +371,20 @@ status: draft | reviewed | superseded | retired
 last_ingest: <YYYY-MM-DD>
 sources: [source-slug-1, source-slug-2]
 ---
+```
+
+**`sources:` takes the `wiki/sources/` filename, not `scripts/sources.yaml`'s
+slug.** The two vocabularies differ — the machine registry that binds polygons
+knows `gadm-4.1-adm0`, `cliopatria` and `paine-2024`, while the readable records
+are `gadm-4.1.md`, `cliopatria-v0.1.3.md` and `paine-et-al-2024.md` — and
+`sources:` is a citation, so it must name something a reader can open. Nothing in
+the build reads this key, which is how 146 of 775 pages came to declare 38 slugs
+that resolved to no file at all (issue 19); `scripts/validate_declared_sources.py`
+now fails on any slug with no `wiki/sources/<slug>.md`, with the remaining
+unregistered ones baselined as a worklist. Declaring a source here does **not**
+substitute for an inline citation at the claim it supports.
+
+```markdown
 
 # <polity_name>
 

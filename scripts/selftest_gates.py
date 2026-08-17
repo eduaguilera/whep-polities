@@ -921,6 +921,33 @@ def mutate_page_back_to_a_stub(root, gpd, make_valid, affinity):
     return "gutted fra-1919-2025.md back to a CSV-derived stub"
 
 
+def mutate_unregistered_declared_source(root, gpd, make_valid, affinity):
+    """Add a source slug to a page's `sources:` frontmatter that resolves to no record.
+
+    This is the defect class measured on main, not a hypothetical: 146 of 775 pages declared
+    one of 38 slugs with no file under wiki/sources/ (issue 19's follow-up), because nothing
+    in the repo read the key -- `validate_references.py` merely permits it, and
+    `validate_citations.py` reads inline links only. `biger-1996` is chosen as the injected
+    slug because it is the realistic form: a one-character drift off the registered
+    `biger-1995`, which the wiki cites 1,473 times. It looks like the most-used source in the
+    database and opens nothing.
+
+    France is used rather than one of the pages already naming a baselined slug, for the same
+    reason the stub case uses it: a case that re-detects a baselined defect would pass for
+    free the day that slug is registered, and would then be proving nothing. The existing
+    slugs are KEPT -- removing them would turn this into the arm-B defect (a page naming no
+    source at all) and the case would pass on the wrong signal.
+    """
+    page = os.path.join(root, "wiki/polities/fra-1919-2025.md")
+    with open(page, encoding="utf-8") as fh:
+        text = fh.read()
+    assert "sources: [cshapes-2.0" in text, "the France page no longer declares cshapes-2.0"
+    text = text.replace("sources: [cshapes-2.0", "sources: [biger-1996, cshapes-2.0", 1)
+    with open(page, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return "declared the unregistered slug biger-1996 in fra-1919-2025.md"
+
+
 def mutate_succession_cycle(root, gpd, make_valid, affinity):
     """Make two rows whose spans OVERLAP name each other as successors, closing a cycle in
     the chronology.
@@ -1951,6 +1978,13 @@ CASES = (
         "verification pipeline would then read as evidence",
     ),
     (
+        "validate_declared_sources.py",
+        mutate_unregistered_declared_source,
+        "biger-1996",
+        "a page declaring a source slug that resolves to no record, which reads as the "
+        "most-cited source in the database and opens nothing",
+    ),
+    (
         "validate_aliases.py",
         mutate_alias_to_dead_polity,
         "AGO-1816-2025",
@@ -2426,6 +2460,17 @@ WRITABLE = {
     # wrong reason, which is the trap validate_chain_integrity's note above describes.
     "validate_page_depth.py": (
         "wiki/polities",
+        "pipelines/polity-autoimprove/state/territory_basis.csv",
+    ),
+    # Same shape: the case rewrites a page's frontmatter, so wiki/polities must be a real
+    # copy or the mutation would edit the committed France page. wiki/sources is staged
+    # read-only but MUST be present -- the gate resolves every declared slug against it, and
+    # with the directory missing it exits 1 saying no source records were found, which is a
+    # failure for the wrong reason and would read as this case passing. territory_basis.csv
+    # is arm B's population, for the same reason it is staged for validate_page_depth.
+    "validate_declared_sources.py": (
+        "wiki/polities",
+        "wiki/sources",
         "pipelines/polity-autoimprove/state/territory_basis.csv",
     ),
     # Rewrites the published alias map, so it needs a real copy rather than stage()'s
