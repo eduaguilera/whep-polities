@@ -51,7 +51,11 @@ BASELINE = frozenset({
     ("380", "SNW-1814-1905", "SWE-1814-1905"),
     ("385", "NOR-1800-2025", "NNI-1899-1904"),
     ("385", "NOR-1800-2025", "NNI-1904-1913"),
-    ("452", "GHA-1898-1956", "GCT-1919-1956"),
+    # Renamed 2026-08-17 (issue 252): GHA-1898-1956 -> GHA-1898-1957, when the row's exclusive
+    # end_year moved 1956 -> 1957 to cover the 1956 hole. The shared cow 452 is unchanged, and so
+    # is the reason -- GCT-1919-1956 is the Gold-Coast-plus-Togoland reporting aggregate, which
+    # COW has no separate code for.
+    ("452", "GHA-1898-1957", "GCT-1919-1956"),
     # Fezzan, added 2026-08-10 (issue 156). cow 620 is Libya; the three occupation
     # territories share it for the same reason they share iso3 LBY -- COW has no code for a
     # military administration, and inventing one would assert an entity COW does not model.

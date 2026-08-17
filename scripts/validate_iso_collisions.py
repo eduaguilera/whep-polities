@@ -43,7 +43,7 @@ BASELINE = frozenset({
     # French India and the Italian Dodecanese moved from the ADMINISTERING POWER's code to the
     # SUCCESSOR STATE's on 2026-08-07, which is what 19 of the 21 borrowing colonial rows do.
     # The collisions move with them: FRIN left FRA's family and entered IND's, ITAEG left ITA's
-    # and entered GRC's. Same class as ("GHA", "GHA-1898-1956", "BTL-1920-1957") above -- a
+    # and entered GRC's. Same class as ("GHA", "GHA-1898-1957", "BTL-1920-1957") above -- a
     # colonial row borrowing its successor's code necessarily overlaps that successor's periods.
     # Every one is resolved by polity_type: the IND and GRC rows are `national`, these are not.
     ("GRC", "GRC-1881-1913", "ITAEG-1912-1947"),
@@ -68,8 +68,14 @@ BASELINE = frozenset({
     ("COD", "COD-1910-1960", "CODRU-1922-1960"),
     ("EGY", "EGY-1925-1967", "EGYSUD-1934-1956"),
     ("GHA", "GCT-1919-1956", "BTL-1920-1957"),
-    ("GHA", "GHA-1898-1956", "BTL-1920-1957"),
-    ("GHA", "GHA-1898-1956", "GCT-1919-1956"),
+    # Both GHA pairs renamed 2026-08-17 (issue 252): GHA-1898-1956 -> GHA-1898-1957, when the
+    # row's exclusive end_year moved 1956 -> 1957 to cover the year that had fallen between it
+    # and GHA-1957-2025. Re-measured after the rename: the same two pairs still overlap on GHA
+    # (BTL 1920-1956 and GCT 1919-1955 against this row's 1898-1956), one year longer than
+    # before, and both are still resolved by polity_type -- this row is `national`, BTL is
+    # colonial and GCT is an aggregate. Nothing new collides.
+    ("GHA", "GHA-1898-1957", "BTL-1920-1957"),
+    ("GHA", "GHA-1898-1957", "GCT-1919-1956"),
     ("IDN", "IDN-BLB-1949-1951", "IDN-1949-1963"),
     ("IDN", "IDN-BLB-1949-1951", "IDN-JVM-1949-1951"),
     ("IDN", "IDN-BLB-1949-1951", "IDN-OTH-1949-1951"),

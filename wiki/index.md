@@ -153,7 +153,7 @@ are a **curated selection**, not a complete listing.
   `AUT-1919-2025`, draft, 2 open questions. Post-AUH Austria.
   Saint-Germain reduced area from 25.5 to 10.0 sq deg. COW gap
   1938-1955 (Anschluss).
-- [Hungary (1918-1919)](polities/hun-1918-1919.md) —
+- [Hungary (1918-1920)](polities/hun-1918-1920.md) —
   `HUN-1918-1919`, draft, 1 open question. Transitional row
   post-AUH dissolution. Trianon devastation on successor row.
 - [Czechoslovakia (1918-1938)](polities/f51-1918-1938.md) —
@@ -232,7 +232,7 @@ are a **curated selection**, not a complete listing.
   `MNE-1913-1915`, draft, 1 OQ. Overrun 1916, absorbed into
   Yugoslavia 1918.
 - Hungary 1919-1920 has **no polity row**. The index used to link `HUN-1919-1920`,
-  which does not exist and never did: [hun-1918-1919](polities/hun-1918-1919.md) ends
+  which does not exist and never did: [hun-1918-1920](polities/hun-1918-1920.md) ends
   1918 and [hun-1920-1938](polities/hun-1920-1938.md) begins 1920, so 1919 is covered
   by nothing. The gap is a tracked entry in `scripts/validate_period_gaps.py`, not an
   oversight. The Treaty of Trianon reduction (-63% area) is documented on
@@ -419,7 +419,7 @@ are a **curated selection**, not a complete listing.
 - [Sao Tome and Principe](polities/stp-1800-2025.md) — `STP-1800-2025`, draft, 1 open question. Two-island republic in Gulf of Guinea; independent from Portugal 1975. CSV cow_code=411 is wrong (should be 403); polygon verification needed.
 - [Seychelles](polities/syc-1903-2025.md) — `SYC-1903-2025`, draft, 2 open questions. Indian Ocean archipelago; separate Crown Colony from 1903; independent 1976. CShapes single time-step from 1976-06-29.
 - [Ghana (1888-1898)](polities/gha-1888-1898.md) — `GHA-1888-1898`, draft. British Gold Coast; boundary settlements 1888-1898.
-- [Ghana (1898-1956)](polities/gha-1898-1956.md) — `GHA-1898-1956`, draft.
+- [Ghana (1898-1957)](polities/gha-1898-1957.md) — `GHA-1898-1957`, draft.
 - [Guinea (1894-1958)](polities/gin-1894-1958.md) — `GIN-1894-1958`, draft.
 - [Guinea](polities/gin-1958-2025.md) — `GIN-1958-2025`, draft.
 - [Equatorial Guinea (1886-1968)](polities/gnq-1886-1968.md) — `GNQ-1886-1968`, draft. Spanish Guinea; boundary settled 1900.
@@ -652,7 +652,7 @@ are a **curated selection**, not a complete listing.
 - [North Korea](polities/prk-1948-2025.md) — `PRK-1948-2025`, draft.
 - [Qatar](polities/qat-1800-2025.md) — `QAT-1800-2025`, draft.
 - [Singapore](polities/sgp-1965-2025.md) — `SGP-1965-2025`, draft.
-- [Syria (1922-1945)](polities/syr-1922-1945.md) — `SYR-1922-1945`, draft. French Mandate; San Remo 1920; independence 1946.
+- [Syria (1922-1946)](polities/syr-1922-1946.md) — `SYR-1922-1946`, draft. French Mandate; San Remo 1920; independence 1946.
 - [Syrian Arab Republic (1946-1967)](polities/syr-1946-1967.md) — `SYR-1946-1967`, draft. Independence 1946; Golan Heights lost in Six-Day War 1967.
 - [Syria](polities/syr-1967-2025.md) — `SYR-1967-2025`, draft.
 - [Timor-Leste](polities/tls-1800-2025.md) — `TLS-1800-2025`, draft.

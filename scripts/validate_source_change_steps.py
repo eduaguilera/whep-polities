@@ -111,7 +111,11 @@ BASELINE = {
         "Anatolian throughout — not a polygon question, so it is not decided here."
     ),
     # ---------- EVENT: real history at the boundary year ----------
-    "HUN-1918-1919 -> HUN-1920-1938": (
+    # Key renamed 2026-08-17 (issue 252): HUN-1918-1919 -> HUN-1918-1920, when the row's
+    # exclusive end_year moved 1919 -> 1920 to give 1919 back its coverage. Re-measured after
+    # the rename: still 325,419 -> 93,004 km2, still 3.50x, still a source change. Only the
+    # identifier moved.
+    "HUN-1918-1920 -> HUN-1920-1938": (
         "EVENT: Treaty of Trianon, 4 June 1920. 325,419 -> 93,004 km2 (3.50x); Hungary "
         "genuinely lost about two thirds of its territory. The earlier row is HistoGIS' 1860 "
         "Habsburg Hungary, the later CShapes', so the source changes at the same boundary — "

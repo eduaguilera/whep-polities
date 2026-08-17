@@ -16,7 +16,7 @@ ANG-1800-1890,Angola (to 1890),1800,1890,national,ANG,,Africa,draft,2026-04-15,c
 ANG-1890-1891,Angola (1890-1891),1890,1891,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1890,assigned,1037117,,ANG-1891-1905
 ANG-1891-1905,Angola (1891-1905),1891,1905,national,ANG,,Africa,draft,2026-04-13,cshapes-2.0,540,1891,assigned,1344272,ANG-1890-1891,AGO-1816-2025
 ANG-1905-1975,Angola (1905-1975),1905,1975,national,AGO,540,Africa,draft,2026-04-15,cshapes-2.0,540,1905,assigned,,ANG-1891-1905,AGO-1975-2025
-ANT-1816-1960,Dutch Caribbean (colonial),1816,1960,colonial,ANT,,North America,draft,2026-06-26,reporting-areas,ANT-1961-2010,,proxy,960,,ANT-1961-2010
+ANT-1816-1961,Dutch Caribbean (colonial),1816,1961,colonial,ANT,,North America,draft,2026-06-26,reporting-areas,ANT-1961-2010,,proxy,960,,ANT-1961-2010
 ANT-1961-2010,Netherlands Antilles,1961,2010,aggregate,ANT,,North America,draft,2026-06-11,reporting-areas,ANT-1961-2010,,assigned,,,
 AOF-1895-1960,French West Africa (AOF),1895,1960,national,AOF,430,Africa,draft,2026-06-23,constructed,AOF-1895-1960,1938,assigned,4774865,,SEN-1960-2025; GIN-1958-2025; CIV-1960-2025; BEN-1960-2025; NER-1960-2025; BFA-1960-2025; MLI-1960-2025; MRT-1960-1975
 AOI-1936-1941,Italian East Africa (1936-1941),1936,1941,aggregate,AOI,,Africa,draft,2026-06-29,constructed,AOI-1936-1941,,assigned,1700000,,
@@ -26,14 +26,14 @@ ARG-1800-2025,Argentina,1800,2025,national,ARG,160,South America,retired,2026-04
 ARG-1899-1902,Argentina (1899-1902),1899,1902,national,ARG,160,South America,draft,2026-07-01,cshapes-2.0,160,1899,assigned,,ARG-1800-1899,ARG-1902-2025
 ARG-1902-2025,Argentina,1902,2025,national,ARG,160,South America,draft,2026-07-01,cshapes-2.0,160,1902,assigned,,ARG-1899-1902,
 ARM-1991-2025,Armenia,1991,2025,national,ARM,371,Asia,reviewed,2026-04-12,cshapes-2.0,371,1991,assigned,,F228-1945-1991,
-ASH-1800-1896,Ashanti Empire,1800,1896,national,,,Africa,draft,2026-04-13,paine-2024,Asante,,assigned,,,GHA-1898-1956
+ASH-1800-1896,Ashanti Empire,1800,1896,national,,,Africa,draft,2026-04-13,paine-2024,Asante,,assigned,,,GHA-1898-1957
 ASM-1900-2025,Territory of American Samoa,1900,2025,colonial,ASM,,Oceania,draft,2026-06-26,gadm-4.1-adm0,ASM,2023,assigned,199,,
 ATF-1800-2025,French Southern and Antarctic Lands (sub-Antarctic districts),1800,2025,territory,ATF,,Oceania,draft,2026-08-10,gadm-4.1-adm0,ATF,,proxy,7747,,
 ATG-1800-2025,Antigua and Barbuda,1800,2025,national,ATG,58,North America,draft,2026-06-09,gadm-4.1-adm0,ATG,,proxy,,,
 AUH-1800-1859,Austrian Empire (to 1859),1800,1859,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austrian Empire,1820,assigned,,,AUH-1859-1866
 AUH-1859-1866,Austrian Empire (1859-1866),1859,1866,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austrian Empire,1860,assigned,,AUH-1800-1859,AUH-1866-1908
 AUH-1866-1908,Austria-Hungary (1866-1908),1866,1908,national,AUH,300,Europe,draft,2026-04-13,cliopatria,Austria-Hungary,1880,assigned,,AUH-1859-1866,AUH-1908-1918
-AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,national,AUH,300,Europe,draft,2026-04-11,cshapes-2.0,300,1908,assigned,,AUH-1866-1908,AUT-1918-1919; HUN-1918-1919; F51-1918-1938; F248-1918-1919; POL-1918-1919
+AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,national,AUH,300,Europe,draft,2026-04-11,cshapes-2.0,300,1908,assigned,,AUH-1866-1908,AUT-1918-1919; HUN-1918-1920; F51-1918-1938; F248-1918-1919; POL-1918-1919
 AUS-1800-1901,Australian Colonies (to 1901),1800,1901,national,AUS,,Oceania,draft,2026-04-16,cshapes-2.0,900,1901,proxy,7686693,,AUS-1901-2025
 AUS-1901-2025,Australia,1901,2025,national,AUS,900,Oceania,reviewed,2026-04-12,cshapes-2.0,900,1927,assigned,,,
 AUSA-1836-1900,South Australia (to 1900),1836,1900,colonial,AUS,,Oceania,draft,2026-04-15,cshapes-2.0,903,1886,assigned,,,AUS-1901-2025
@@ -186,7 +186,7 @@ DEU-1938-1945,Germany (1938-1945),1938,1945,national,DEU,260,Europe,draft,2026-0
 DEU-1945-1949,Allied-occupied Germany,1945,1949,national,DEU,260,Europe,draft,2026-04-16,constructed,DEU-1945-1949,,assigned,,DEU-1938-1945,F77-1949-1990; F78-1949-1990
 DEU-1949-1990,"Germany (divided, 1949-1990)",1949,1990,national,DEU,255,Europe,draft,2026-04-17,constructed,DEU-1949-1990,,assigned,,DEU-1945-1949,DEU-1990-2025
 DEU-1990-2025,Germany,1990,2025,national,DEU,260,Europe,reviewed,2026-04-12,cshapes-2.0,260,1990,assigned,,F78-1949-1990; F77-1949-1990,
-DGM-1800-1899,Kingdom of Dagbon (Dagomba),1800,1899,national,,,Africa,draft,2026-04-13,paine-2024,Dagomba,,assigned,,,GHA-1898-1956
+DGM-1800-1899,Kingdom of Dagbon (Dagomba),1800,1899,national,,,Africa,draft,2026-04-13,paine-2024,Dagomba,,assigned,,,GHA-1898-1957
 DHY-1800-1894,Kingdom of Dahomey,1800,1894,national,,,Africa,draft,2026-04-12,paine-2024,Dahomey,,assigned,,,BEN-1895-1898; BEN-1960-2025
 DJI-1886-2025,Djibouti (RETIRED — duplicate of FRS chain),1886,2025,national,DJI,522,Africa,retired,2026-07-01,,,,,,,
 DMA-1800-2025,Dominica,1800,2025,national,DMA,54,North America,draft,2026-04-12,gadm-4.1-adm0,DMA,,assigned,,,
@@ -292,11 +292,11 @@ GBR-1800-1921,United Kingdom (to 1921),1800,1921,national,GBR,200,Europe,draft,2
 GBR-1921-2025,United Kingdom,1921,2025,national,GBR,200,Europe,draft,2026-04-12,cshapes-2.0,200,1921,assigned,,GBR-1800-1921,
 GCAR-1899-1914,German Caroline Islands (Karolinen),1899,1914,colonial,,,Oceania,draft,2026-06-26,gadm-4.1-adm0,PLW,,proxy,459,DEU-1871-1919,JPN-1895-1945
 GCO-1884-2025,German colonies Oceania,1884,2025,national,GCO,255,Oceania,retired,2026-04-13,none,,,unassigned,,,
-GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,aggregate,GHA,452,Africa,draft,2026-06-26,constructed,GCT-1919-1956,1938,assigned,239046,GHA-1898-1956,GHA-1957-2025
+GCT-1919-1956,Gold Coast and British Togoland (1919-1956),1919,1956,aggregate,GHA,452,Africa,draft,2026-06-26,constructed,GCT-1919-1956,1938,assigned,239046,GHA-1898-1957,GHA-1957-2025
 GEO-1991-2025,Georgia,1991,2025,national,GEO,372,Asia,reviewed,2026-04-13,cshapes-2.0,372,1991,assigned,,F228-1945-1991,
 GHA-1821-1888,Ghana (to 1888),1821,1888,national,GHA,452,Africa,draft,2026-04-13,cshapes-2.0,452,1886,assigned,,ASH-1800-1896,GHA-1888-1898
-GHA-1888-1898,Ghana (1888-1898),1888,1898,national,GHA,452,Africa,draft,2026-04-13,cshapes-2.0,452,1888,assigned,,GHA-1821-1888,GHA-1898-1956
-GHA-1898-1956,Ghana (1898-1956),1898,1956,national,GHA,452,Africa,draft,2026-04-12,cshapes-2.0,452,1898,assigned,238533,ASH-1800-1896; GHA-1888-1898; DGM-1800-1899,GHA-1957-2025
+GHA-1888-1898,Ghana (1888-1898),1888,1898,national,GHA,452,Africa,draft,2026-04-13,cshapes-2.0,452,1888,assigned,,GHA-1821-1888,GHA-1898-1957
+GHA-1898-1957,Ghana (1898-1957),1898,1957,national,GHA,452,Africa,draft,2026-04-12,cshapes-2.0,452,1898,assigned,238533,ASH-1800-1896; GHA-1888-1898; DGM-1800-1899,GHA-1957-2025
 GHA-1957-2025,Ghana,1957,2025,national,GHA,452,Africa,draft,2026-04-12,cshapes-2.0,452,1957,assigned,,,
 GIB-1800-2025,Gibraltar,1800,2025,territory,GIB,,Europe,draft,2026-08-13,gadm-4.1-adm0,GIB,,estimate,6.8,,
 GIN-1894-1958,Guinea (1894-1958),1894,1958,national,GIN,438,Africa,draft,2026-04-12,cshapes-2.0,438,1894,assigned,,,GIN-1958-2025
@@ -328,14 +328,14 @@ GUF-1946-2025,French Guiana (Overseas Department),1946,2025,national,GUF,120,Sou
 GUM-1898-1950,Territory of Guam,1898,1950,colonial,GUM,,Oceania,draft,2026-06-26,gadm-4.1-adm0,GUM,2023,assigned,550,,GUM-1950-2025
 GUM-1950-2025,Guam (US Territory),1950,2025,territory,GUM,,Oceania,draft,2026-06-26,gadm-4.1-adm0,GUM,2023,assigned,550,GUM-1898-1950,
 GUY-1800-2025,Guyana,1800,2025,national,GUY,110,South America,draft,2026-04-13,cshapes-2.0,110,1886,assigned,,,
-HATAY-1938-1939,Sanjak of Alexandretta / Hatay State,1938,1939,colonial,TUR,,Asia,draft,2026-06-25,,,,unassigned,,SYR-1922-1945,TUR-1920-2025
+HATAY-1938-1939,Sanjak of Alexandretta / Hatay State,1938,1939,colonial,TUR,,Asia,draft,2026-06-25,,,,unassigned,,SYR-1922-1946,TUR-1920-2025
 HAWI-1898-1959,Territory of Hawaii,1898,1959,national,,4,Oceania,draft,2026-06-24,cshapes-2.0,4,1898,assigned,16686,,USA-1959-2025
 HKG-1842-2025,Hong Kong,1842,2025,national,HKG,,Asia,draft,2026-04-17,gadm-4.1-adm1,CHN.HKG,,assigned,,CHN-1800-1895,
 HND-1800-2025,Honduras,1800,2025,national,HND,91,North America,draft,2026-04-12,cshapes-2.0,91,1886,polygon_vintage_drift,,,
 HRV-1992-2025,Croatia,1992,2025,national,HRV,344,Europe,reviewed,2026-04-12,cshapes-2.0,344,1992,assigned,,F248-1991-1992,
 HTI-1800-2025,Haiti,1800,2025,national,HTI,41,North America,draft,2026-04-12,cshapes-2.0,41,1934,assigned,,,
-HUN-1800-1918,Kingdom of Hungary (Transleithania),1800,1918,national,HUN,310,Europe,draft,2026-04-17,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,,HUN-1918-1919
-HUN-1918-1919,Hungary (1918-1919),1918,1919,national,HUN,310,Europe,draft,2026-06-30,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,AUH-1908-1918,HUN-1920-1938
+HUN-1800-1918,Kingdom of Hungary (Transleithania),1800,1918,national,HUN,310,Europe,draft,2026-04-17,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,,HUN-1918-1920
+HUN-1918-1920,Hungary (1918-1920),1918,1920,national,HUN,310,Europe,draft,2026-06-30,histogis-1860-habsburg,HUN-1800-1918,,assigned,325421,AUH-1908-1918,HUN-1920-1938
 HUN-1920-1938,Hungary (1920-1938),1920,1938,national,HUN,310,Europe,draft,2026-04-12,cshapes-2.0,310,1920,assigned,,HUN-1919-1920,HUN-1938-1940
 HUN-1938-1940,Hungary (1938-1940),1938,1940,national,HUN,310,Europe,draft,2026-06-30,cshapes-2.0,310,1938,assigned,108785,HUN-1920-1938,HUN-1940-1944
 HUN-1938-1947,Hungary (1938-1947),1938,1947,national,HUN,310,Europe,superseded,2026-06-30,cshapes-2.0,310,1938,assigned,108785,HUN-1920-1938,HUN-1947-2025
@@ -399,8 +399,8 @@ JPN-1952-2025,Japan,1952,2025,national,JPN,,Asia,draft,2026-04-12,cshapes-2.0,74
 KAZ-1991-2025,Kazakhstan,1991,2025,national,KAZ,705,Asia,reviewed,2026-04-12,cshapes-2.0,705,1997,assigned,,F228-1945-1991,
 KEN-1888-1891,Kenya (1888-1891),1888,1891,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1888,assigned,,,KEN-1891-1894
 KEN-1891-1894,Kenya (1891-1894),1891,1894,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1891,assigned,,,KEN-1894-1902
-KEN-1894-1902,Kenya (1894-1902),1894,1902,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1894,assigned,,,KEN-1902-1906
-KEN-1902-1906,Kenya (1902-1906),1902,1906,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1902,assigned,,,KEN-1907-1924
+KEN-1894-1902,Kenya (1894-1902),1894,1902,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1894,assigned,,,KEN-1902-1907
+KEN-1902-1907,Kenya (1902-1907),1902,1907,national,KEN,501,Africa,draft,2026-04-15,cshapes-2.0,501,1902,assigned,,,KEN-1907-1924
 KEN-1907-1924,Kenya (1907-1924),1907,1924,national,KEN,501,Africa,draft,2026-04-13,cshapes-2.0,501,1908,assigned,,,KEN-1924-1926; KEN-1926-1963
 KEN-1924-1926,Kenya (1924-1926),1924,1926,national,KEN,501,Africa,draft,2026-04-13,cshapes-2.0,501,1924,assigned,,KEN-1907-1924,KEN-1926-1963
 KEN-1926-1963,Kenya (1926-1963),1926,1963,national,KEN,501,Africa,draft,2026-04-12,cshapes-2.0,501,1926,assigned,,KEN-1907-1924; KEN-1924-1926,KEN-1963-2025
@@ -687,9 +687,9 @@ SWK-1800-1894,Swazi Kingdom,1800,1894,national,,,Africa,draft,2026-04-15,paine-2
 SWZ-1894-2025,Eswatini,1894,2025,national,SWZ,572,Africa,draft,2026-04-13,cshapes-2.0,572,1902,assigned,,,
 SYC-1903-2025,Seychelles,1903,2025,national,SYC,591,Africa,draft,2026-04-13,gadm-4.1-adm0,SYC,,assigned,,MUS-1800-2025,
 SYL-1944-1953,Syria and Lebanon (combined statistical unit),1944,1953,aggregate,,,Asia,draft,2026-07-01,constructed,SYL-1944-1953,1949,assigned,195632,,SYR-1946-1967; LBN-1944-2025
-SYR-1920-1922,Syria (French Mandate),1920,1922,national,SYR,,Asia,draft,2026-04-16,cshapes-2.0,652,1921,assigned,,SYR-1918-1920,SYR-1922-1945
-SYR-1922-1945,Syria (1922-1945),1922,1945,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1922,assigned,,,SYR-1946-1967
-SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1946,assigned,,SYR-1922-1945,SYR-1967-2025
+SYR-1920-1922,Syria (French Mandate),1920,1922,national,SYR,,Asia,draft,2026-04-16,cshapes-2.0,652,1921,assigned,,SYR-1918-1920,SYR-1922-1946
+SYR-1922-1946,Syria (1922-1946),1922,1946,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1922,assigned,,,SYR-1946-1967
+SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,national,SYR,652,Asia,draft,2026-04-13,cshapes-2.0,652,1946,assigned,,SYR-1922-1946,SYR-1967-2025
 SYR-1967-2025,Syrian Arab Republic,1967,2025,national,SYR,652,Asia,draft,2026-04-12,cshapes-2.0,652,1967,assigned,,SYR-1946-1967,
 TAN-1891-1920,Tanzania (1891-1920),1891,1920,national,TAN,,Africa,draft,2026-04-13,cshapes-2.0,510,1900,assigned,,RWK-1800-1890,TAN-1920-1922
 TAN-1920-1922,Tanzania (1920-1922),1920,1922,national,TAN,,Africa,draft,2026-04-13,cshapes-2.0,510,1921,assigned,,TAN-1891-1920,TAN-1922-1964

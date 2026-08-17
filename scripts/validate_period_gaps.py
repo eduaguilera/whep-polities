@@ -14,7 +14,14 @@ territory in that year.
 `end_year` is EXCLUSIVE, so TCD-1912-1919 covers 1912-1918 and TCD-1920-1960 covers
 1920-1959: 1919 is in neither.
 
-IT CANNOT ASSERT ZERO, and that is the point of the baseline. 7 of the 11 gaps on the
+GAPS ARE SPLIT BY SEVERITY as of 2026-08-17 (issue 252): see SHORT_GAP_MAX. A gap of two
+years or less is presumed an ERROR and fails whatever the baseline says, because every one
+this gate has ever recorded was a boundary written as if `end_year` were inclusive or a
+source step WHEP never transcribed. A longer gap is presumed intentional and needs a
+baseline entry naming who holds the territory. There are ZERO short gaps today; the
+shortest surviving one is 11 years.
+
+IT CANNOT ASSERT ZERO, and that is the point of the baseline. 6 of the 6 gaps on the
 current database name a coverer -- they are periods when the entity did not exist as
 itself and another family holds the territory:
 
@@ -88,16 +95,45 @@ CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
 # (earlier_code, later_code) pairs with a known gap between them. See the docstring:
 # most are correct, four are issue 77.
 BASELINE = frozenset({
-    ("ANT-1816-1960", "ANT-1961-2010"),
+    # ("ANT-1816-1960", "ANT-1961-2010") removed 2026-08-17 (issue 252): the gap is CLOSED, by
+    # moving ANT-1816-1960's exclusive end_year to 1961 (renamed ANT-1816-1961). The page said in
+    # so many words "End year 1960 is the final year before the existing ANT-1961-2010 row
+    # begins" -- an inclusive reading of an exclusive column. This gate had annotated the gap
+    # "source reaches it", and it was right for a reason worth recording: all nine published
+    # `Netherlands W Indies`-family aliases carry the inclusive `year_end: 1960`, so they claimed
+    # a year their target did not cover and sat in validate_alias_year_baseline.txt for it. One
+    # boundary move cleared both gates at once. No territory changes; the polygon is the same
+    # composed-union island proxy for every year of the span.
     ("BFA-1919-1932", "BFA-1947-1960"),
     # ("CHL-1810-1883", "CHL-1884-1899") removed 2026-08-06: the gap is CLOSED, by moving
     # CHL-1810-1883's exclusive end_year to 1884 so the two spans meet. It had sat here as an
     # accepted one-year gap; whep_crops v1.0 put 7 observed crop rows into 1883, which turned an
     # accepted hole into a routing failure. The gate was right that a gap existed and gave no
     # reason to think it mattered -- external data is what settled that.
-    ("GHA-1898-1956", "GHA-1957-2025"),
-    ("HUN-1918-1919", "HUN-1920-1938"),
-    ("KEN-1902-1906", "KEN-1907-1924"),
+    # ("GHA-1898-1956", "GHA-1957-2025") removed 2026-08-17 (issue 252): the gap is CLOSED, by
+    # moving GHA-1898-1956's exclusive end_year to 1957 (renamed GHA-1898-1957). The alias
+    # `Gold Coast` [fao1952] already claimed to 1956 with 36 observed rows behind it. This gate
+    # had annotated the year "covered by BTL-1920-1957", which is TRUE and IRRELEVANT: British
+    # Togoland is a ~33,771 km2 slice of the Gold Coast's east, not a stand-in for the colony, so
+    # Gold-Coast-labelled 1956 data landing there would have been off by 7x in the wrong
+    # direction. The direction of the fix was chosen against CShapes 2.0, which opens a
+    # 1956-03-06 step at 239,046.81 km2 (Gold Coast WITH Togoland integrated): starting
+    # GHA-1957-2025 in 1956 instead would have published that polygon for a year in which
+    # BTL-1920-1957 still holds Togoland, double-counting the same ground.
+    # ("HUN-1918-1919", "HUN-1920-1938") removed 2026-08-17 (issue 252): the gap is CLOSED, by
+    # moving HUN-1918-1919's exclusive end_year to 1920 (renamed HUN-1918-1920). This one was
+    # SELF-INFLICTED and recently: on 2026-06-30 the row's end_year was moved 1920 -> 1919 to stop
+    # harvest-year 1920 data landing on the 325,421 km2 pre-Trianon polygon. Under the exclusive
+    # convention end_year=1920 already excluded 1920, so the shortening went one year too far and
+    # left the row covering 1918 alone -- contradicting its own page, whose data-routing table has
+    # always said 1919 routes here. Restoring end_year=1920 keeps year-1920 data on
+    # HUN-1920-1938 (~93,000 km2) and gives 1919 back its row.
+    # ("KEN-1902-1906", "KEN-1907-1924") removed 2026-08-17 (issue 252): the gap is CLOSED, by
+    # moving KEN-1902-1906's exclusive end_year to 1907 (renamed KEN-1902-1907). CShapes 2.0
+    # decides it without judgement: gwcode 501 runs 1902-05-15 to 1906-12-31 and the next step
+    # opens 1907-01-01, so the row's own step ends with the calendar year 1906. Both steps
+    # measure 772,553.06 km2, so absorbing the year moves no territory. Latent, as this gate
+    # said: no Kenyan observation in the layer B before 1907.
     # ("CIV-1893-1900", "CIV-1902-1932") removed 2026-08-13 (issue 77): the gap is CLOSED. The
     # cause was not "an error in one of the two end dates" as the issue guessed but a CShapes 2.0
     # step WHEP never transcribed -- 1900-11-15 to 1902-03-19, the move of the capital from
@@ -164,7 +200,15 @@ BASELINE = frozenset({
     # the LOOKUP, which compared iso3_code (SER/SRB) against a holder coded YUG. The MOR
     # 1904-1910 hole above is the real one, and it is the only one of issue 82's three
     # examples that survives measurement.
-    ("SYR-1922-1945", "SYR-1946-1967"),
+    # ("SYR-1922-1945", "SYR-1946-1967") removed 2026-08-17 (issue 252): the gap is CLOSED, by
+    # moving SYR-1922-1945's exclusive end_year to 1946 (renamed SYR-1922-1946). The page's own
+    # prose always said the row ran "to the end of 1945" and cited the CShapes step 1922-12-02 to
+    # 1945-12-31, whose successor opens 1946-01-01; only the columns said otherwise. Both steps
+    # measure 187,993.23 km2. The "covered by SYL-1944-1953" annotation this gate printed was a
+    # true statement about a LARGER unit (fao1952's joint "Syria and Lebanon"), which cannot serve
+    # Syria-labelled data without overstating its area -- see the note in
+    # validate_period_overlaps.py, where closing this hole also removed the SYR<->SYL family link
+    # and with it that gate's view of a real containment.
     # ("TCD-1912-1919", "TCD-1920-1960") removed 2026-08-13 (issue 77): the gap is CLOSED, by
     # moving TCD-1920-1960's start_year back to 1919 (renamed TCD-1919-1960). The three AEF
     # siblings decided it: GAB-1919-1960, CAF-1919-1960 and COG-1919-1960 all start at the same
@@ -177,6 +221,30 @@ BASELINE = frozenset({
     ("VNM-1887-1954", "VNM-1975-2025"),
     ("ZWE-1900-1953", "ZWE-1964-1980"),
 })
+
+
+# SEVERITY SPLIT, added 2026-08-17 for issue 252.
+#
+# A LONG gap and a SHORT gap are different animals, and until now the baseline treated them
+# alike. A multi-year gap is normally a territory genuinely held by someone else --
+# Montenegro inside Yugoslavia, Czechia inside Czechoslovakia -- and it needs a note naming
+# the holder. A one- or two-year gap asserts an interregnum of a year or two, which almost
+# never happened: every one of the nine short gaps this gate has ever recorded turned out to
+# be a boundary written as if `end_year` were inclusive, or a CShapes step WHEP never
+# transcribed. TCD 1919, SEN 1959, LAO 1953 and CIV 1900-1901 (issue 77), CHL 1883, LBY 1949,
+# and ANT 1960 / GHA 1956 / HUN 1919 / KEN 1906 / SYR 1945 (issue 252). None survived contact
+# with its source.
+#
+# So a short gap is presumed an ERROR and fails even if someone baselines it; only an entry
+# in SHORT_GAP_ACCEPTED, which has to say why, keeps it. That set is EMPTY today: after issue
+# 252 the shortest surviving gap is 11 years (ZWE inside the Rhodesian federation). An
+# accepted short gap must be argued in the entry, not merely listed.
+SHORT_GAP_MAX = 2
+SHORT_GAP_ACCEPTED: dict = {
+    # code_pair -> why a gap of <= SHORT_GAP_MAX years is genuinely correct here.
+    # Empty on purpose. If you add one, name the polity that holds the territory in the
+    # missing year and say why the boundary cannot simply move.
+}
 
 
 def live_rows() -> list:
@@ -308,6 +376,12 @@ def main() -> int:
     print(f"live polities: {len(rows)} | multi-period families: {multi}")
     print(f"families with a gap between consecutive periods: {len(observed)}")
 
+    short = {p for p, v in observed.items() if v[1] - v[0] + 1 <= SHORT_GAP_MAX}
+    print(
+        f"of which {len(short)} are {SHORT_GAP_MAX} years or shorter, which this gate "
+        f"presumes to be an error rather than an interregnum"
+    )
+
     smap = successor_map()
     for pair, (lo, hi, iso3) in sorted(observed.items(), key=lambda kv: -(kv[1][1] - kv[1][0])):
         span = hi - lo + 1
@@ -326,7 +400,18 @@ def main() -> int:
         print(f"   {span:>4}y  {pair[0]:<20} -> {pair[1]:<20} ({lo}-{hi})  {tag}")
 
     problems = []
-    for pair in sorted(set(observed) - BASELINE):
+    for pair in sorted(short - set(SHORT_GAP_ACCEPTED)):
+        lo, hi, _ = observed[pair]
+        span = hi - lo + 1
+        problems.append(
+            f"SHORT gap: {pair[0]} ends before {pair[1]} begins, leaving {lo}-{hi} "
+            f"({span}y) in no polity of that family. A gap of {SHORT_GAP_MAX} years or less "
+            f"asserts an interregnum that almost never happened — read it as a boundary "
+            f"written with an INCLUSIVE end_year, or as an untranscribed source step, and "
+            f"move one boundary so the spans meet. Baselining it is not enough: add it to "
+            f"SHORT_GAP_ACCEPTED with the polity that holds the territory if the gap is real"
+        )
+    for pair in sorted(set(observed) - BASELINE - short):
         lo, hi, _ = observed[pair]
         problems.append(
             f"NEW gap: {pair[0]} ends before {pair[1]} begins, leaving {lo}-{hi} in no "
@@ -336,6 +421,16 @@ def main() -> int:
         problems.append(
             f"{pair[0]} -> {pair[1]} is baselined as gapped but no longer is — "
             f"remove the pair from BASELINE in this script"
+        )
+    for pair in sorted(set(SHORT_GAP_ACCEPTED) - set(observed)):
+        problems.append(
+            f"{pair[0]} -> {pair[1]} is in SHORT_GAP_ACCEPTED but is not gapped — "
+            f"remove the entry (baselines here are bidirectional)"
+        )
+    for pair in sorted(BASELINE & short):
+        problems.append(
+            f"{pair[0]} -> {pair[1]} is a short gap sitting in BASELINE — short gaps are "
+            f"governed by SHORT_GAP_ACCEPTED, which requires a reason; move it or fix it"
         )
 
     if problems:
