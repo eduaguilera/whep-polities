@@ -280,17 +280,30 @@ re-derives them, it only validates executability and records them.
 |---|---|---|
 | `juan`, `mitchell`, `iia`, `fao1952`, `sa_colonial` | `consolidated_layer_b.parquet` (per-row source column) | 192,670 rows → ~1,030 assertions (88.9% routed on labels alone) |
 | `faostat` | separate code-keyed matcher (`write_faostat_area_map.py`), not this intake | — |
-| `federico_tena` | `prepare_federico_tena.py` (issue 26) | 48,569 rows → 67.7% routed, 270 assertions (240 pending), 76 labels that never route |
+| `federico_tena` | `prepare_federico_tena.py` (issue 26) | 27,359 rows → 77.3% routed, 269 assertions (242 pending), 32 labels that never route |
 
 `prepare_federico_tena.py` is what onboarding a new source actually costs: it
 reads the tracked `data/external/federico_tena_polities.xlsx` and writes
 `state/federico_tena_intake.csv` (gitignored, regenerable), one row per
 (polity, series, year) plus the one magnitude the source carries. `00_intake.py`
-itself needed no change. Full measurements, the three kinds of gap the 76
-unrouted labels fall into, and what is still unverified are in
+itself needed no change. Full measurements, the three kinds of gap the unrouted
+labels fall into, and what is still unverified are in
 [wiki/sources/federico-tena-2019.md](../../wiki/sources/federico-tena-2019.md).
-The lesson generalises: a source whose provenance differs from layer B's routes
-far worse — 67.7% against **88.9%** for layer B measured the same way on
+
+**Two corrections to the first version of that row, both from issue 26 and both
+worth reading before onboarding the next source.** (1) It said 48,569 rows and
+67.7% routed. 21,210 of those rows did not exist: the sheet's header is three
+merged rows, the prep script took its columns by position one GROUP late, and so
+emitted each polity's existence window as an `imports` series — for all 243
+polities, including the 97 that carry no trade series at all — while labelling the
+real imports `exports` and the real exports `population`, a measure the sheet does
+not contain. **Read the header rows, not the first data row.** (2) It said 76
+labels never route. 44 of those were the same artefact — polities Federico-Tena
+lists and reports nothing for — so a "coverage gap" count was really a polity-list
+count. The 32 real ones remain open.
+
+The lesson still generalises: a source whose provenance differs from layer B's
+routes worse — 77.3% against **88.9%** for layer B measured the same way on
 2026-08-17 (192,670 rows, 994 assertions, label-only, i.e. without the `--iso-col`
 and `--prior-code-col` its production run gets and Federico-Tena cannot supply) —
 not because the matcher is worse but because it names reporting units — Trucial sheikhdoms, Central Asian khanates,
