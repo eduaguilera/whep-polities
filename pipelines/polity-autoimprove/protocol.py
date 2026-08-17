@@ -21,7 +21,7 @@ import os, re
 
 WORKFLOW = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                         "verify_assertions.workflow.js")
-_RE = re.compile(r"^\s*export\s+const\s+PROTOCOL_VERSION\s*=\s*(\d+)", re.M)
+_RE = re.compile(r"^\s*(?:export\s+)?const\s+PROTOCOL_VERSION\s*=\s*(\d+)", re.M)
 
 
 def protocol_version(path=WORKFLOW):
@@ -33,7 +33,7 @@ def protocol_version(path=WORKFLOW):
                          "protocol version lives there and is not optional")
     m = _RE.search(txt)
     if not m:
-        raise SystemExit(f"no `export const PROTOCOL_VERSION = <int>` in {path} "
+        raise SystemExit(f"no `const PROTOCOL_VERSION = <int>` in {path} "
                          "— the ledger cannot tell which rules a verdict was "
                          "produced under without it")
     return int(m.group(1))
