@@ -117,6 +117,42 @@ PROD_UNITS = {"tonnes": 1.0, "t": 1.0, "1000 tonnes": 1e3, "metric tons": 1.0,
 # Compare case-insensitively, always. These are the lowercased forms to compare against.
 TRADE_ELEMENTS = ("export quantity", "import quantity", "export value", "import value")
 
+# --------------------------------------------------------------------------------------
+# The bilateral trade pin (issue 112). Lives in the pins cache, under a CONTENT-HASH
+# directory, so its path cannot be hard-coded without pinning the hash: resolve by glob.
+# --------------------------------------------------------------------------------------
+TRADE_BILATERAL = os.environ.get("WHEP_TRADE_BILATERAL", "")
+TRADE_BILATERAL_GLOB = os.path.expanduser(
+    "~/.cache/pins/url/*/faostat-trade-bilateral.parquet"
+)
+TRADE_BILATERAL_COLUMNS = (
+    "Reporter Country Code", "Reporter Countries",
+    "Partner Country Code", "Partner Countries",
+    "Item Code", "Item", "Element Code", "Element", "Year", "Unit", "Value",
+)
+
+# THREE OF ITS STRING COLUMNS ARE NOT UTF-8. They are latin-1: "Maté leaves",
+# "Côte d'Ivoire", "Réunion", "Türkiye". pandas does not cope and does not say why --
+#
+#   pd.read_parquet(pin)
+#   pyarrow.lib.ArrowException: Unknown error: Wrapping Mat? leaves failed
+#
+# -- which names neither the column nor the encoding, and reads as a corrupt file rather
+# than as a decoding choice. Dropping `Item` makes the read succeed and silently discards
+# the only human-readable key in the table, which is how a screen over this pin ends up
+# keyed on bare numeric codes nobody can review. load_trade_bilateral decodes them.
+TRADE_BILATERAL_LATIN1 = ("Reporter Countries", "Partner Countries", "Item")
+
+# Element codes, because the STRINGS are ambiguous here in a second way beyond capital Q:
+# five distinct codes all spell themselves "Export Quantity" (5907 No, 5908 Head,
+# 5909 1000 Head, 5910 tonnes) and five spell "Import Quantity". Filtering on the string
+# and then summing Value adds head of cattle to tonnes of wheat. Measured on the 2026-08
+# pin: 5910/5610 are the ONLY codes carrying Unit == "tonnes", 11,420,261 and 11,614,303
+# rows, and no non-tonne unit occurs under either.
+TRADE_EXPORT_QUANTITY_CODE = 5910
+TRADE_IMPORT_QUANTITY_CODE = 5610
+TRADE_TONNE_UNIT = "tonnes"
+
 
 class ExternalDataError(RuntimeError):
     """An external dataset does not look the way this pipeline believes it does."""
@@ -352,6 +388,140 @@ def load_layer_b(path: str | None = None, polity_codes=None):
     )
 
 
+def find_trade_bilateral(path: str | None = None) -> str:
+    """Resolve the bilateral trade pin's path, or raise naming the env var and the glob.
+
+    WHEP_TRADE_BILATERAL wins; otherwise the newest match of TRADE_BILATERAL_GLOB, because
+    the pins cache keys on a content hash and a re-pinned file lands in a new directory.
+    """
+    import glob
+
+    target = path or TRADE_BILATERAL
+    if target:
+        if not os.path.exists(target):
+            raise FileNotFoundError(
+                f"bilateral trade pin not found at {target!r} (from WHEP_TRADE_BILATERAL)."
+            )
+        return target
+    hits = sorted(glob.glob(TRADE_BILATERAL_GLOB), key=os.path.getmtime, reverse=True)
+    if not hits:
+        raise FileNotFoundError(
+            f"bilateral trade pin not found. Looked for {TRADE_BILATERAL_GLOB!r}; set "
+            f"WHEP_TRADE_BILATERAL to point at faostat-trade-bilateral.parquet. It lives in "
+            f"the maintainer's pins cache, outside this repository."
+        )
+    return hits[0]
+
+
+def decode_latin1_columns(table, columns):
+    """Return a pandas frame from an arrow `table`, decoding non-UTF-8 columns as latin-1.
+
+    Exists because `.to_pandas()` on the bilateral pin raises `ArrowException: Unknown
+    error: Wrapping Mat? leaves failed` -- a message that names no column, no encoding and
+    no remedy. The two ways past it without this helper are both wrong: drop the offending
+    columns (losing every readable label) or catch and continue (an empty result again).
+    """
+    import pyarrow as pa
+
+    named = [c for c in columns if c in table.column_names]
+    keep = [c for c in table.column_names if c not in named]
+    frame = table.select(keep).to_pandas()
+    for col in named:
+        raw = table[col].combine_chunks().cast(pa.binary()).to_pylist()
+        frame[col] = [None if v is None else v.decode("latin-1") for v in raw]
+    return frame[[c for c in table.column_names]]
+
+
+def load_trade_bilateral(path: str | None = None, columns=None):
+    """Load the FAOSTAT bilateral trade pin, asserting its columns and its Element values.
+
+    The pin is 46.8M rows by 16 columns, so pass `columns` for a subset -- but the subset
+    is asserted against TRADE_BILATERAL_COLUMNS all the same, and `Element` is checked to
+    still carry the capital-Q spellings, which is the mismatch that reported "0 flows
+    reported from both sides" out of 19.9M rows in issue 112.
+    """
+    import pyarrow.parquet as pq
+
+    # Schema check FIRST, before the file lookup: it is the half that can run without the
+    # pin, and the pipeline's self-test has no pin.
+    want = list(columns) if columns else list(TRADE_BILATERAL_COLUMNS)
+    unknown = [c for c in want if c not in TRADE_BILATERAL_COLUMNS]
+    if unknown:
+        raise ExternalDataError(
+            f"bilateral trade pin: {unknown} is not in this module's documented schema "
+            f"{list(TRADE_BILATERAL_COLUMNS)}. Add it there as well, so a later rename "
+            f"upstream raises here instead of returning an empty column."
+        )
+    target = find_trade_bilateral(path)
+    table = pq.read_table(target, columns=want)
+    where = f"bilateral trade pin ({os.path.basename(target)})"
+    frame = decode_latin1_columns(table, TRADE_BILATERAL_LATIN1)
+    require_columns(frame, want, where)
+    if "Element" in frame.columns:
+        require_any_value(frame, "Element", ["export quantity", "import quantity"], where)
+    if "Unit" in frame.columns:
+        require_any_value(frame, "Unit", [TRADE_TONNE_UNIT], where)
+    return frame
+
+
+def trade_bilateral_code_names(code_col: str, name_col: str, path: str | None = None):
+    """{code: name} for one of the pin's code/label pairs, decoded, without loading it.
+
+    Reading the label columns into pandas alongside 46.8M numeric rows costs several
+    gigabytes for three columns that hold 189, 220 and 559 distinct values. Arrow's
+    group_by returns the distinct pairs in about a second, so the labels cost nothing --
+    and the alternative that "works", dropping them, is how a screen over this pin ends up
+    keyed on numeric codes no reviewer can read.
+    """
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    for col in (code_col, name_col):
+        if col not in TRADE_BILATERAL_COLUMNS:
+            raise ExternalDataError(
+                f"bilateral trade pin: {col!r} is not in this module's documented schema."
+            )
+    table = pq.read_table(find_trade_bilateral(path), columns=[code_col, name_col])
+    if name_col in TRADE_BILATERAL_LATIN1:
+        table = table.set_column(
+            table.column_names.index(name_col), name_col,
+            table[name_col].combine_chunks().cast(pa.binary()),
+        )
+    pairs = table.group_by([code_col, name_col]).aggregate([])
+    out = {}
+    for code, name in zip(pairs[code_col].to_pylist(), pairs[name_col].to_pylist()):
+        if code is None or name is None:
+            continue
+        out.setdefault(code, name.decode("latin-1") if isinstance(name, bytes) else name)
+    if not out:
+        raise ExternalDataError(
+            f"bilateral trade pin: {code_col!r}/{name_col!r} yielded no pairs."
+        )
+    return out
+
+
+def require_trade_quantity_codes(element_names) -> None:
+    """Assert 5910/5610 still mean export/import quantity, given {code: Element} pairs.
+
+    A reader who filters on Element CODES escapes the capital-Q trap and walks into a
+    quieter one: if FAOSTAT ever renumbers, 5910 still selects rows and still sums, and the
+    answer is simply about something else. So the codes are checked against the labels they
+    are supposed to carry -- cheaply, via trade_bilateral_code_names, which does not load
+    the 46.8M-row label column.
+    """
+    keys = {float(k): str(v) for k, v in element_names.items()}
+    for code, word in ((TRADE_EXPORT_QUANTITY_CODE, "export"),
+                       (TRADE_IMPORT_QUANTITY_CODE, "import")):
+        label = keys.get(float(code), "")
+        if word not in label.lower() or "quantity" not in label.lower():
+            raise ExternalDataError(
+                f"bilateral trade pin: Element Code {code} is labelled {label!r}, not a "
+                f"{word} quantity. This module's codes are stale; filtering on them still "
+                f"returns rows, so the result would be about something else. Present: "
+                f"{sorted(keys.items())[:12]}"
+            )
+
+
 def _selftest() -> int:
     """Prove the guards fire. Run: python3 extdata.py"""
     import contextlib
@@ -394,6 +564,53 @@ def _selftest() -> int:
     except ExternalDataError as e:
         assert "REAL polity codes" in str(e)
         print("pass: the rename refuses once the column holds real polity codes")
+
+    # The bilateral pin's latin-1 columns, on a synthetic table so this runs anywhere.
+    import pyarrow as pa
+    table = pa.table({
+        "Item Code": pa.array([1.0, 2.0]),
+        "Item": pa.array([b"Mat\xe9 leaves", b"Wheat"], type=pa.binary()).cast(
+            pa.string(), safe=False),
+        "Element": pa.array(["Export Quantity", "Import Quantity"]),
+    })
+    # Whether to_pandas() RAISES on this fixture is a property of the installed pyarrow, not
+    # of the guard. It raises on 19.0.1, which is what the bilateral pin is read with locally
+    # ("Wrapping Mat\xe9 leaves failed"), and no longer raises on 25.0.1, which is what a
+    # fresh CI runner installs. So this arm reports the environment instead of failing in it:
+    # a hazard fixed upstream is not a broken guard, and pinning CI to an old pyarrow to keep
+    # the assertion meaningful would be worse than saying which version was tested.
+    try:
+        table.to_pandas()
+        print(f"note: pyarrow {pa.__version__} decodes the latin-1 fixture without raising, "
+              f"so the HAZARD is absent here; the decode assertion below still runs")
+    except Exception:
+        print(f"pass: to_pandas() on a latin-1 string column raises under pyarrow "
+              f"{pa.__version__}, as the pin does")
+    out = decode_latin1_columns(table, TRADE_BILATERAL_LATIN1)
+    if list(out["Item"]) != ["Maté leaves", "Wheat"]:
+        print(f"FAIL: latin-1 decode produced {list(out['Item'])}"); ok = False
+    elif list(out.columns) != table.column_names:
+        print(f"FAIL: decode reordered the columns to {list(out.columns)}"); ok = False
+    else:
+        print("pass: decode_latin1_columns recovers 'Maté leaves' and keeps column order")
+
+    try:
+        require_trade_quantity_codes({5910.0: "Export Value", 5610.0: "Import Quantity"})
+        print("FAIL: accepted an element code whose label is not a quantity"); ok = False
+    except ExternalDataError as e:
+        assert "5910" in str(e)
+        print("pass: a renumbered Element Code raises instead of summing the wrong element")
+    require_trade_quantity_codes({5910.0: "Export Quantity", 5610.0: "Import Quantity"})
+
+    try:
+        load_trade_bilateral(columns=["Item Code", "Reporter Name"])
+        print("FAIL: accepted a column absent from the documented schema"); ok = False
+    except ExternalDataError as e:
+        assert "Reporter Name" in str(e)
+        print("pass: a column outside TRADE_BILATERAL_COLUMNS raises before any read")
+    except FileNotFoundError:
+        print("FAIL: the schema check ran after the file lookup, so it is unreachable "
+              "without the pin"); ok = False
 
     codes = polity_codes_from_database()
     if not codes:
