@@ -42,7 +42,11 @@ GUM-1950-2025     #  28 rows, 1305 B
 SLB-1800-2025     #  28 rows, 1746 B
 FLK-1833-2025     #  25 rows,  995 B
 BHS-1800-2025     #  23 rows,  945 B
-FCC-1862-1887     #  20 rows, 2260 B
+# FCC-1862-1887 removed 2026-08-17: no longer a stub. PR #280 (issue 155) built its
+# polygon -- the six southern Vietnamese provinces of French Cochinchina from GADM adm1 --
+# and documented the territory, taking the page 2,260 -> 5,799 bytes. It still carries 0
+# `../sources/` citations, so it is out of THIS gate's scope (stub-ness) while remaining
+# an issue 19 draft.
 GUM-1898-1950     #  19 rows,  716 B -- flagged page_inadequate in state/suspect_wiki_pages.csv
 SUR-1954-1975     #  14 rows, 1796 B
 GKM-1884-1912     #  12 rows, 1605 B
