@@ -35,7 +35,7 @@ GNB-1886-1974,1937,(multiple),1612.0,3612.0,review,"components sum to 1,612 but 
 HAWI-1898-1959,1951,(multiple),1182.0,1659.0,review,"components sum to 1,182 but total is 1,659",1659.0,1663.2,4
 JAM-1800-2025,1948,(multiple),1142.0,142.0,review,"components sum to 1,142 but total is 142",142.0,1100.1,5
 PAN-1903-1979,1951,(multiple),957.0,7401.0,review,"components sum to 957 but total is 7,401",7401.0,7405.0,2
-ANT-1816-1960,1951,use builton wasteland,394.0,94.0,replace_value,digits prepended,99.0,79.5,2
+ANT-1816-1961,1951,use builton wasteland,394.0,94.0,replace_value,digits prepended,99.0,79.5,2
 CZN-1903-1979,1951,(multiple),87.0,143.0,review,components sum to 87 but total is 143,143.0,,3
 BMU-1684-1968,1948,(multiple),33.0,6.0,review,components sum to 33 but total is 6,6.0,6.8,5
 NFK-1914-2025,1949,(multiple),3.5,35.0,review,components sum to 4 but total is 35,35.0,4.1,2

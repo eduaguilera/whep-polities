@@ -1138,7 +1138,7 @@ winner was decided by position in the CSV. That is how the RSFSR rule sat
 unnoticed behind the F228 rules, and it was also silently resolving a real
 conflict: `Gold Coast and British Togoland` had rules pointing at both
 [gct-1919-1956](polities/gct-1919-1956.md) (the composite, 1919-1956) and
-[gha-1898-1956](polities/gha-1898-1956.md) (the Gold Coast colony alone,
+[gha-1898-1957](polities/gha-1898-1957.md) (the Gold Coast colony alone,
 1949-1951), and the broader rule won by file order.
 
 `match_alias` now prefers the **narrower year range** among equally-scoped

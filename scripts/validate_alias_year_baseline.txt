@@ -3,7 +3,10 @@
 #
 # Format: `<source_label>\t<source>\t<polity_code>`. One per line.
 #
-# 131 entries, 451,145 observed rows (132 until 2026-08-14, when 'cape province' was fixed
+# 121 entries (131 until 2026-08-17, when the nine ANT and one GHA entries were fixed rather
+# than kept -- see their cleared-entry note below; 'Netherlands W Indies' and its lowercase twin
+# carried 21 observed rows each and 'Gold Coast' 36, so the row total drops by 78 to 451,067).
+# 132 until 2026-08-14, when 'cape province' was fixed
 # rather than kept -- see its cleared-entry note below; its observed_rows field was blank, so
 # the row total is unchanged). Was 201 entries / 451,933 rows on 2026-08-13, when
 # issue 79 was worked; the issue itself said 270 entries / 461,445 rows, which had already
@@ -62,7 +65,22 @@ Cape Verde	lassaletta-grassland-share	CPV-1886-1975
 Cape Verde Islands	fao1952	CPV-1886-1975
 China Manchuria	fao1952	MAN-1932-1945
 Christmas Island	faostat	CXR-1946-1958
-Dutch Caribbean	fao1952	ANT-1816-1960
+# The nine 'ANT-1816-1960' entries and 'Gold Coast||GHA-1898-1956' cleared 2026-08-17 (issue
+# 252). Neither was the "dissolved entity's final reporting year" class this file accepts: in
+# both cases a SUCCESSOR ROW exists and starts the very next year (ANT-1961-2010, GHA-1957-2025),
+# so the overshoot was not the alias naming a year past the end of the entity -- it was the
+# POLITY stopping a year early. The aliases were right and the columns were wrong. `end_year`
+# moved 1960 -> 1961 (ANT-1816-1961) and 1956 -> 1957 (GHA-1898-1957), which closes the
+# matching one-year coverage holes in validate_period_gaps.py and makes each pair consistent at
+# `end_year == year_end + 1`. Cleared entries, with their old keys:
+#   Dutch Caribbean          fao1952  ANT-1816-1960        netherlands antilles           ANT-1816-1960
+#   Neth West Indies         fao1952  ANT-1816-1960        netherlands w indies  fao1952  ANT-1816-1960
+#   Netherlands Antilles     fao1952  ANT-1816-1960        netherlands west indies fao1952 ANT-1816-1960
+#   Netherlands W Indies     fao1952  ANT-1816-1960        neth west indies      fao1952  ANT-1816-1960
+#   Netherlands West Indies  fao1952  ANT-1816-1960        Gold Coast            fao1952  GHA-1898-1956
+# 'Netherlands Antilles (former)||ANT-1961-2010' is NOT cleared and stays below: that one is the
+# genuine final-reporting-year case (the Antilles dissolved on 2010-10-10) and 1960 has nothing
+# to do with it.
 Dutch Guiana	mitchell	SUR-1886-1954
 Egypt	mitchell	EGY-1885-1899
 Ethiopia		AOI-1936-1941
@@ -71,7 +89,6 @@ Federation of Malaya	fao1952	MYS-1946-1957
 Formosa		TWN-1895-1945
 France Saar		SAA-1947-1957
 Germany Saar		SAA-1947-1957
-Gold Coast	fao1952	GHA-1898-1956
 Gold Coast & Br Togoland	fao1952	GCT-1919-1956
 Gold Coast and Br Tog	fao1952	GCT-1919-1956
 Gold Coast and Br Togoland	fao1952	GCT-1919-1956
@@ -85,11 +102,7 @@ Korea South	fao1952	KRS-1910-1945
 Libya	fao1952	LBY-1943-1949
 Libya Cyrenaica	fao1952	CYR-1949-1951
 Libya Tripolitania	fao1952	TRP-1943-1951
-Neth West Indies	fao1952	ANT-1816-1960
-Netherlands Antilles	fao1952	ANT-1816-1960
 Netherlands Antilles (former)	faostat	ANT-1961-2010
-Netherlands W Indies	fao1952	ANT-1816-1960
-Netherlands West Indies	fao1952	ANT-1816-1960
 New Guinea	fao1952	TNGU-1920-1949
 Pacific Is	fao1952	TTPI-1947-1994
 Pacific Is (U S	fao1952	TTPI-1947-1994
@@ -152,10 +165,6 @@ israel		ISR-1948-1967
 israel/palestine		PAL-1920-1948
 italy	iia	SAR-1800-1860
 micronesia (federated states of)	iia	CAR-1920-1945
-neth west indies	fao1952	ANT-1816-1960
-netherlands antilles		ANT-1816-1960
-netherlands w indies	fao1952	ANT-1816-1960
-netherlands west indies	fao1952	ANT-1816-1960
 pacific is us trust	fao1952	TTPI-1947-1994
 palau	iia	GCAR-1899-1914
 panama canal zone	fao1952	CZN-1903-1979

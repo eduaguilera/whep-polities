@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "e05091d3601c735d458c3f24606f842b4654bdc58198c4442c6cbf56e208cc1e",
+ "identity_sha256": "cdbc4d2cb4d6d4d6d534f2242db0b98d4cdbe2abb9ddda126418551a27327443",
  "counts": {
   "total": 774,
   "live": 730,
@@ -172,7 +172,7 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "fdbb2eaa89513d59d1a88159468543e575a9a5fffd5904b63392957f0c49bfbc",
+  "sha256": "6f49cff48dc6316dccbf96de80543c8c56d4c89d800e01509e8115ad39c01d4e",
   "aliases": 946,
   "labels": 510,
   "sources": [
@@ -194,9 +194,9 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "d8600d5a0eab8ba1ced34f1d6074347bc8db4a0a556cb4d660a2777c5ea78584",
-  "relations": 5268,
-  "modern_iso3": 78
+  "sha256": "e1758df242280d986b8bffa6692e510686bfb04de7161189b3c746c7962002f6",
+  "relations": 5267,
+  "modern_iso3": 77
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
@@ -655,13 +655,6 @@
     "year_max": 1902
    }
   ],
-  "SYR": [
-   {
-    "family": "SYL",
-    "year_min": 1945,
-    "year_max": 1945
-   }
-  ],
   "TAN": [
    {
     "family": "BDK",
@@ -805,7 +798,7 @@
   "ANG-1890-1891",
   "ANG-1891-1905",
   "ANG-1905-1975",
-  "ANT-1816-1960",
+  "ANT-1816-1961",
   "ANT-1961-2010",
   "AOF-1895-1960",
   "AOI-1936-1941",
@@ -1069,7 +1062,7 @@
   "GEO-1991-2025",
   "GHA-1821-1888",
   "GHA-1888-1898",
-  "GHA-1898-1956",
+  "GHA-1898-1957",
   "GHA-1957-2025",
   "GIB-1800-2025",
   "GIN-1894-1958",
@@ -1105,7 +1098,7 @@
   "HRV-1992-2025",
   "HTI-1800-2025",
   "HUN-1800-1918",
-  "HUN-1918-1919",
+  "HUN-1918-1920",
   "HUN-1920-1938",
   "HUN-1938-1940",
   "HUN-1940-1944",
@@ -1162,7 +1155,7 @@
   "KEN-1888-1891",
   "KEN-1891-1894",
   "KEN-1894-1902",
-  "KEN-1902-1906",
+  "KEN-1902-1907",
   "KEN-1907-1924",
   "KEN-1924-1926",
   "KEN-1926-1963",
@@ -1434,7 +1427,7 @@
   "SYC-1903-2025",
   "SYL-1944-1953",
   "SYR-1920-1922",
-  "SYR-1922-1945",
+  "SYR-1922-1946",
   "SYR-1946-1967",
   "SYR-1967-2025",
   "TAN-1891-1920",

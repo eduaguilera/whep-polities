@@ -200,9 +200,28 @@ BASELINE_CROSS_FAMILY = frozenset({
     ("RWB-1919-1922", "TAN-1891-1920"),                 #   1y 1919-1920
     ("RWB-1919-1922", "TAN-1920-1922"),                 #   2y 1920-1922
     ("RWB-1922-1962", "TAN-1922-1964"),                 #  39y 1922-1961
-    # The Syria-Lebanon mandate aggregate containing Syria.
-    ("SYL-1944-1953", "SYR-1922-1945"),                 #   1y 1944-1945
-    ("SYL-1944-1953", "SYR-1946-1967"),                 #   7y 1946-1953
+    # The Syria-Lebanon mandate aggregate containing Syria. BOTH PAIRS REMOVED 2026-08-17
+    # (issue 252), and NOT because either overlap stopped existing on the ground:
+    #
+    #     ("SYL-1944-1953", "SYR-1922-1945"),           #   1y 1944-1945
+    #     ("SYL-1944-1953", "SYR-1946-1967"),           #   7y 1946-1953
+    #
+    # SYR's one-year coverage hole at 1945 was closed (SYR-1922-1945 -> SYR-1922-1946,
+    # end_year 1945 -> 1946). The SYR<->SYL family link this signal pairs on came ONLY from
+    # that hole: `territory_families` in the manifest listed SYR's holder SYL for
+    # `year_min: 1945, year_max: 1945` and nothing else, because the successor map names a
+    # foreign holder exactly for the years a family's own rows do not cover. With 1945 now
+    # inside SYR-1922-1946, the pair drops out of the manifest (75 territory families -> 74)
+    # and this gate can no longer see EITHER overlap.
+    #
+    # THE SECOND ONE IS STILL REAL, and this is the blind spot rather than a fix: SYL-1944-1953
+    # (the fao1952 "Syria and Lebanon" joint reporting unit) still spans 1944-1952 and still
+    # contains SYR-1946-1967's ground at IoU 1.0000, as this gate's own docstring records under
+    # the 25 NESTED pairs. It is now invisible here for the same structural reason the MOR
+    # 1904-1910 hole is invisible in validate_period_gaps.py: the pair source is derived from
+    # coverage, so closing a hole removes a link that was standing in for one. Same shape as
+    # issue 82. Nothing is re-baselined to paper over it, because inventing a pair the
+    # published contract does not assert is what this gate was written to stop.
 })
 
 CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")

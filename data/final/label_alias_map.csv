@@ -282,7 +282,7 @@ Dominican Republic,faostat,1961,2024,DOM-1800-2025,Dominican Republic,high,18183
 Dominican Republic,lassaletta-grassland-share,1961,2009,DOM-1800-2025,Dominican Republic,high,
 DPRepublic of Korea,lassaletta-grassland-share,1961,2009,PRK-1948-2025,Democratic People's Republic of Korea,high,
 DR Congo,,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
-Dutch Caribbean,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
+Dutch Caribbean,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
 Dutch Guiana,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,
 Ecuador,faostat,1961,2024,ECU-1942-2025,Ecuador,high,221065
 Ecuador,lassaletta-grassland-share,1961,2009,ECU-1942-2025,Ecuador,high,
@@ -374,7 +374,7 @@ Germany Western,fao1952,1938,1948,WZO-1938-1949,Western Germany / Western Occupa
 Germany Western,fao1952,1949,1951,F78-1949-1990,West Germany,high,5
 Ghana,faostat,1961,2024,GHA-1957-2025,Ghana,high,191734
 Ghana,lassaletta-grassland-share,1961,2009,GHA-1957-2025,Ghana,high,
-Gold Coast,fao1952,1898,1956,GHA-1898-1956,Gold Coast Colony,high,36
+Gold Coast,fao1952,1898,1956,GHA-1898-1957,Gold Coast Colony,high,36
 Gold Coast & Br Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,
 Gold Coast and Br Tog,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,
 Gold Coast and Br Togoland,fao1952,1919,1956,GCT-1919-1956,Gold Coast and British Togoland,high,32
@@ -597,20 +597,20 @@ Nauru,faostat,1961,2024,NRU-1888-2025,Nauru,high,21491
 Necherlands,fao1952,1949,1951,NLD-1830-2025,Netherlands,high,8
 Nepal,faostat,1961,2024,NPL-1816-2025,Nepal,high,193378
 Nepal,lassaletta-grassland-share,1961,2009,NPL-1816-2025,Nepal,high,
-Neth West Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
-neth west indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
+Neth West Indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
+neth west indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
 Netherlands,lassaletta-grassland-share,1961,2009,NLD-1830-2025,Netherlands,high,
 Netherlands (Kingdom of the),faostat,1961,2024,NLD-1830-2025,Netherlands,high,259019
-netherlands antilles,,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
-Netherlands Antilles,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
+netherlands antilles,,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
+Netherlands Antilles,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
 Netherlands Antilles (former),faostat,1961,2010,ANT-1961-2010,Netherlands Antilles,high,61441
 Netherlands New Guinea,fao1952,1949,1962,NNG-1949-1963,Netherlands New Guinea,high,3
-Netherlands W Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,21
-netherlands w indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,21
-Netherlands West Indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
-netherlands west indies,fao1952,1816,1960,ANT-1816-1960,Dutch Caribbean (colonial),high,
-NetherlandsWest Indies,fao1952,,,ANT-1816-1960,Dutch Caribbean (colonial),high,
-netherlandswest indies,fao1952,,,ANT-1816-1960,Dutch Caribbean (colonial),high,
+Netherlands W Indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,21
+netherlands w indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,21
+Netherlands West Indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
+netherlands west indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
+NetherlandsWest Indies,fao1952,,,ANT-1816-1961,Dutch Caribbean (colonial),high,
+netherlandswest indies,fao1952,,,ANT-1816-1961,Dutch Caribbean (colonial),high,
 New Caledonia,faostat,1961,2024,NCL-1800-2025,New Caledonia,high,161177
 New Guinea,fao1952,1937,1949,TNGU-1920-1949,Territory of New Guinea,high,
 New Guinea,fao1952,1950,1951,PNG-1949-1975,Papua and New Guinea (administrative union),medium,
