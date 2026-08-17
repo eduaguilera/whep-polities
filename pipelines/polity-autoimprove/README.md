@@ -65,7 +65,7 @@ do with it:
 | `state/livestock_corrections.csv` | FAO-1952 meat cells the components/total identity recovers, and carcass weights outside physical bounds | #29 |
 | `state/subnational_sums.csv` | fao1952 whole/part blocks where the parts' sum is tested against the stated whole, with an `action` (`mark_aggregate` / `relabel_rows` / `review`). 93 rows are the identity HOLDING, which makes the whole row an unmarked aggregate of its own parts; 4 are the impossible direction. `scripts/validate_subnational_sums.py` re-derives every claim from the row's own three numbers | #29 |
 | `state/source_conventions.csv` | what a source's labels actually measure, with how it was corroborated and when it was last re-tested — validated by `scripts/validate_source_conventions.py` and re-measured by `11_retest_conventions.py` | #24, #13 |
-| `state/trade_mirror_gaps.csv` + `state/trade_mirror_summary.csv` | the doubly-reported FAOSTAT trade flows whose two sides disagree by more than 1000x **with both sides at or above one tonne** — 12,775 of 6,130,052 mirrored flows (0.208%), written by `12_trade_mirror_gap.py` from a pin outside the repo. The absolute floor is the point: 26,915 of the 39,690 flows above 1000x (67.8%) have their smaller side under a tonne, median 0.1 t against a median 532 t, which is a reporting threshold and not a disagreement. No `implied_correct`/`action` column, because a mirror localises the error to the (exporter, importer) pair and has no third quantity to solve for. `scripts/validate_trade_mirror_gaps.py` re-tests both halves of the screen and re-derives every derived column | #112 |
+| `state/trade_mirror_gaps.csv` + `state/trade_mirror_summary.csv` | the doubly-reported FAOSTAT trade flows whose two sides disagree by more than 1000x **with both sides at or above one tonne** — 12,775 of 6,130,052 mirrored flows (0.208%), written by `12_trade_mirror_gap.py` from a pin outside the repo. The absolute floor is the point: 26,915 of the 39,690 flows above 1000x (67.8%) have their smaller side under a tonne, median 0.1 t against a median 532 t, which is a reporting threshold and not a disagreement. No `implied_correct`/`action` column, because a mirror localises the error to the (exporter, importer) pair and has no third quantity to solve for. `ratio_is_pow10` is paired with `ratio_is_halfdecade`, the SAME window applied at 10^(k+0.5) where a factor of ten cannot land: 372 on the decades against 211 on the control (1.76x), which is what turns "2.9% are on a power of ten" from a share into a measurement. `scripts/validate_trade_mirror_gaps.py` re-tests both halves of the screen and re-derives every derived column, including the control and the quotient | #112 |
 | `state/source_conventions.csv` | what a source's labels actually measure | #24, #13 |
 | `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack — **empty since 2026-08-13**, the queue is drained | #3 (closed) |
 
@@ -94,6 +94,41 @@ The first full re-test, 2026-08-17, confirmed all seven conclusions and falsifie
 quoted figures in three of them; `apply_verdicts.py` was also appending rows with 7 of the
 12 columns, which read back as `flow_type` empty — i.e. as production.
 
+### Issue 112's claims, one by one (the trade-mirror disposition)
+
+Issue #112 established that FAOSTAT trade mirrors exist and made a dozen specific numerical
+claims about them. `12_trade_mirror_gap.py` (issue #274) and `13_trade_entrepot_direction.py`
+(issue #291) answered most of them; re-run against the current pins on **2026-08-17**, both
+generators produce **byte-identical** output to what is committed, so nothing below is a
+vintage artefact. The disposition, so a reader does not have to reconstruct it from three
+issue threads:
+
+| #112's claim | status | measured now |
+|---|---|---|
+| bilateral pin exists with reporter AND partner codes; 46.8M rows | **confirmed** | 46,807,399 rows; 189 reporters, 220 partners, 559 items |
+| 19,868,672 tonnage rows, positive value | **confirmed exactly** | 19,868,672 |
+| 6,130,052 flows reported from both sides | **confirmed exactly** | 6,130,052 |
+| median relative gap 0.348, exactly equal 13.03% | **confirmed exactly** | 0.3481, 13.03% |
+| within 1% 15.10%, within 10% 27.54% | **confirmed exactly** (neither was re-derived by #274) | 15.10%, 27.54% |
+| >2× 38.43% (2,356,012); >10× 12.49% (765,546) | **confirmed exactly**, and both are the STRICT counts | 2,356,012 / 765,546 strict; 2,468,283 / 777,153 at `>=` |
+| headline: **39,804** flows differ by ≥1000× | **arithmetic right, screen wrong** | 39,804 at `>=`, 39,690 strict — but 26,915 (67.8%) have their smaller side under a tonne (median 0.1 t against 532 t), which is a reporting threshold and not a disagreement. **12,775 investigable** |
+| "no accounting convention makes an exporter and importer disagree by a factor of a thousand" | **holds for the 12,775, not for the 39,804** | ratio is unbounded as the denominator goes to zero, so two thirds of the tail is a trace consignment against a real flow |
+| histogram over the 178,131 flows ≥100×: 92,969 / 67,882 / 14,383 / 2,501 / 364 / 31 | **confirmed exactly**, and one bin is missing from the issue | a 10^8 bin holds **1** flow; the seven bins sum to 178,131 |
+| "21,257 of 178,131 (11.9%) within 5% of a clean power of ten" | **count reproduces, description does not** | 21,257 is `\|log10(r) − k\| < 0.05`, a **±12%** ratio window. "Within 5%" read literally gives **9,604 (5.4%)**. Same mis-description #274 found at the 2% window (2.3% reported as 5.0%) |
+| **"the ratios cluster on powers of ten … the same signature as #111's"** | **refuted as stated; a modest real excess remains** | a share is not evidence: a 2% ratio window spans 1.74% of a decade, so ~1.7% lands in it by construction. Applying the same window at **10^(k+0.5)**, where a factor of ten cannot reach, catches **211 of 12,775 (1.7%)** against **372 (2.9%)** on the decades — an enrichment of **1.76×**, i.e. **161 flows**, 1.3% of the set. Real, and nothing like a pile-up. `ratio_is_halfdecade` carries the control per row and the gate re-derives it |
+| suggested scope 1, a gap table keyed (reporter, partner, item, year) | **done** (#274) | `state/trade_mirror_gaps.csv`, 12,775 rows, 153 reporters, 402 items, 1986–2021 |
+| suggested scope 2, "preferring exports will pick wrong roughly half the time in that tail" | **half confirmed, half refuted** | whep's rule keeps the LARGER side in **50.8%** — a coin flip, so a systematic error would be invisible, which was the point. But where a third quantity decides, the rule is **not** wrong half the time: of 49 flows resolved by availability, it keeps the refuted side in **18 (36.7%)** |
+| suggested scope 3, "this is whep-side work" | **still true, and it is the whole remainder** | the 18 refuted flows, the preference rule, the pin and the consumer all live in `eduaguilera/whep` |
+| the capital-Q trap | **cannot bite here** | `extdata.require_trade_quantity_codes` filters on element CODES (5910/5610) and asserts they still mean tonnes; five distinct codes spell themselves "Export Quantity" |
+
+**What is left open, precisely.** Nothing in this repository: the screen, the control, the
+entrepôt label and the availability tie-breaker are all built and gated. What remains is (a)
+the **18 flows** where availability refutes the side whep keeps — a change to
+`R/bilateral_trade.R`'s preference, which is whep-side; (b) the **3,864** flows with a
+production figure that availability refutes on neither side, and the **8,862** with no third
+quantity at all, both of which need reporter reliability or a third-party total that no pin
+here supplies; and (c) issue #14's `flow_type`/`is_reexport` column, a layer-B schema question.
+
 ### Self-checking arithmetic: what each candidate series actually supports
 
 Issue 29 listed five series that might carry an identity worth exploiting, after
@@ -107,9 +142,8 @@ they are not equally promising, and one of them does not exist as stated:
 | carcass weight within physical bounds | **exploited** — `10_livestock_consistency.py` | 5 of 562 cells outside a species' dressed-carcass range |
 | heads × carcass weight = meat | **not available as stated** | standing herd is not annual slaughter (pigs turn over faster than once a year), and `item` = "meat" collapses four yearbook columns under one label |
 | crop area ≤ arable land | **weak, and 06 already sees the hits** | only 93 fao1952 country-years have both; extracted crop area is a median 15% of arable land, so the bound is slack, and multiple cropping lets it exceed 1 legitimately. The two hard breaches (Netherlands 1951, Germany Western 1951) are both already land-use residuals |
-| trade mirrors | **tracked separately** | issue #112: 6.1M doubly reported flows |
 | sub-national parts sum to the whole | **exploited** — `12_subnational_sums.py` | the identity holds EXACTLY on 93 of the 128 (table, item, indicator, unit, period) keys carrying a whole and ≥2 of its parts, and no key at all lands between 0 and 1. 4 keys have parts exceeding their whole, 2 recovered as a label spillover. Only `fao1952` has the structure. The earlier "needs a curated map" reading (75 candidate parents, 291 co-occurrences) came from a bare prefix test over all five sources: filtering composites (`and `, `& `, `Inc `), footnote-marker suffixes, and requiring one row per label per key leaves 28 real families, and keying on the TABLE as well as the year is what makes them comparable |
-| trade mirrors | **screened, not recoverable** — `12_trade_mirror_gap.py` | 6,130,052 doubly reported flows, median relative gap 0.348 (an expected CIF/FOB-and-transit gap, not a defect rate). The tail needs an ABSOLUTE floor as well as a ratio: 67.8% of the 39,690 flows above 1000x have their smaller side under a tonne. Both sides >= 1 t leaves 12,775 (0.208%), diffuse over 153 reporters and 402 items, and only 2.9% land on a power of ten — so this is not #111's class and no direction can be derived |
+| trade mirrors | **screened, not recoverable** — `12_trade_mirror_gap.py` | 6,130,052 doubly reported flows, median relative gap 0.348 (an expected CIF/FOB-and-transit gap, not a defect rate). The tail needs an ABSOLUTE floor as well as a ratio: 67.8% of the 39,690 flows above 1000x have their smaller side under a tonne. Both sides >= 1 t leaves 12,775 (0.208%), diffuse over 153 reporters and 402 items, and 2.9% land on a power of ten against 1.7% on a matched half-decade control (1.76x) — so this is not #111's class and no direction can be derived from the pair alone |
 | sub-national parts sum to the whole | **open — needs a curated map** | a label-prefix test over layer B's 671 labels finds 75 candidate parents but only 291 parent/child co-occurrences in one (source, table, item, year) block, and most candidates are false (`Netherlands`/`Netherlands Antilles`, `New`/`New Zealand`); median children/parent ratio 0.25 |
 
 **The cross-cutting finding is the error MODE, not the series.** In the FAO-1952
