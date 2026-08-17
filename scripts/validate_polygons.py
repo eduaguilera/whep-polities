@@ -194,6 +194,22 @@ for r in documented.itertuples():
 SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
 BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
 
+# A2b: OF the self-referential areas, how many were AVOIDABLE -- i.e. an INDEPENDENT figure
+# for that (polity, source) already exists in data/final/source_stated_area_basis.csv and the
+# row declares its own polygon's measurement anyway. That is the difference between "nobody
+# knows what this territory's area was" and "a yearbook says, and we wrote down our own number
+# instead", and only the second is fixable without new research.
+#
+# Measured 2026-08-17: 111 self-referential, of which 28 avoidable and 83 not. Six of the 28
+# diverge from their stated figure by more than 20% -- CHN-1932-1945 39.5%, MAN-1932-1945 39.2%,
+# PRY-1932-1938 35.9%, GKM-1884-1912 35.4%, CHN-1921-1932 32.3%, ITS-1908-1960 30.1% -- so
+# check A is silent today on six rows where the source and the polygon disagree by a third.
+#
+# WHICH number each should declare is a judgement about published figures and is issue 195's
+# open question; this is a CEILING so the avoidable set cannot GROW while that is decided. A new
+# row copying its own polygon's area, where a stated figure was available, fails here.
+BASELINE_AVOIDABLE_SELF_REF = 28
+
 #
 
 
@@ -277,6 +293,29 @@ print(f"\nA2. SELF-REFERENTIAL AREAS — {len(selfref)} of {len(with_both)} decl
       f"({len(exact)} agree to every digit)")
 for r in exact.sort_values("polity_code").itertuples():
     print(f"   exact  {r.polity_code:18s} {r.claimed:>12,.0f} km2   ({r.polygon_source})")
+# A2b. Of those, the AVOIDABLE ones: an independent stated figure exists and the row declared
+# its own polygon's measurement anyway. Reads the table write_stated_area_basis.py publishes,
+# so it needs no geometry beyond what A2 already measured.
+_basis_path = os.path.join(REPO, "data/final/source_stated_area_basis.csv")
+_have_stated = set()
+if os.path.exists(_basis_path):
+    _b = pd.read_csv(_basis_path)
+    _b = _b[pd.to_numeric(_b.stated_area_km2, errors="coerce").notna()]
+    _have_stated = set(_b.polity_code)
+avoidable = sorted(selfref[selfref.polity_code.isin(_have_stated)].polity_code)
+print(f"   of which AVOIDABLE — an independent stated figure exists for them: {len(avoidable)} "
+      f"(the other {len(selfref) - len(avoidable)} have no stated figure at all)")
+avoidable_over = len(avoidable) - BASELINE_AVOIDABLE_SELF_REF
+if avoidable_over > 0:
+    print(f"   FAIL: {len(avoidable)} is above the pinned ceiling of "
+          f"{BASELINE_AVOIDABLE_SELF_REF}. These rows declare their own polygon's area while a "
+          f"yearbook figure for them is already published in source_stated_area_basis.csv, so "
+          f"check A compares the polygon against itself when it could have compared it against "
+          f"a source. Declare the stated figure, or say on the page why the polygon is the "
+          f"better number (issue 195)")
+    for _c in avoidable[-min(6, avoidable_over):]:
+        print(f"     {_c}")
+
 selfref_over = len(selfref) - BASELINE_SELF_REFERENTIAL
 if selfref_over > 0:
     print(f"   FAIL: {len(selfref)} is above the pinned ceiling of {BASELINE_SELF_REFERENTIAL}. "
@@ -426,7 +465,7 @@ else:
 
 fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
         or len(stale_baseline) > 0 or len(undoc) > 0 or len(off_vocab) > 0
-        or selfref_over > 0
+        or selfref_over > 0 or avoidable_over > 0
         or (A.strict and mismatch))
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(off_vocab)} off-vocabulary status(es), "
       f"{len(bad_area)} area disagreement(s), "
