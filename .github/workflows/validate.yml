@@ -333,6 +333,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_citations.py
 
+      - name: No new data-receiving polity is documented only by a stub page
+        # validate_citations proves a citation is real; this proves there is one to make.
+        # A polity that receives layer-B rows behind a CSV-derived stub is a place where
+        # verification has to lean on an earlier agent's hypothesis (issue 19). 45 of the 460
+        # data-receiving polities were in that state on main; fourteen were documented and the
+        # remaining 31 (1,005 rows) are baselined bidirectionally, so the set can only shrink.
+        if: '!cancelled()'
+        run: python3 scripts/validate_page_depth.py
+
       - name: Committed CSV matches the wiki
         if: '!cancelled()'
         run: python3 scripts/build_database.py --check

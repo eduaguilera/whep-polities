@@ -1,0 +1,63 @@
+# Data-receiving polities whose wiki page is still a stub, and is accepted as one FOR NOW.
+#
+# A page in this list is a place where verification has nothing to lean on: the polity
+# receives layer-B rows, but its page carries neither enough prose to describe a territory
+# nor a single `../sources/` citation. Issue 19 is the standing statement of the problem
+# (672 of 775 pages are `status: draft`); this file is the part of it that is measurable and
+# load-bearing, so it is the part that gets ratcheted. Entries must be DELETED as pages are
+# documented -- validate_page_depth.py fails on a documented page still listed here, because
+# a stale entry silently accepts the next stub that lands on that code.
+#
+# THIS FILE IS A WORKLIST, ORDERED BY EXPOSURE. Row counts come from
+# pipelines/polity-autoimprove/state/territory_basis.csv (`layerb_data_rows`) and are the
+# priority issue 19 asks for: document the pages that actually receive data first.
+#
+# 31 pages holding 1,005 of 189,839 layer-B rows (0.53%), measured 2026-08-17.
+# Was 45 pages / 5,580 rows (2.94%) on main, before the fourteen pages documented in the
+# same commit that added this gate -- ATG-1800-2025 (134 rows) and CAN-1870-1886 (53 rows)
+# among them.
+#
+# TWO OF THESE ARE FALSE POSITIVES OF THE SCREEN, AND ARE LISTED ANYWAY. NCL and PYF are not
+# empty stubs: verification wrote real territorial findings into them (New Caledonia's 1853
+# boundaries; Makatea's phosphate monopoly and the FAO/US-Bureau-of-Mines unit discrepancy),
+# citing external works that are not registered under wiki/sources/ and therefore count as
+# zero citations. They are kept in the list rather than exempted because the fix is to
+# register those sources -- exempting them would also exempt every future page that gestures
+# at a source without registering it, which is exactly what validate_citations.py exists to
+# prevent.
+
+NCL-1800-2025     # 125 rows, 1521 B -- NOT a stub; documented against unregistered external sources
+PYF-1800-2025     # 107 rows, 2563 B -- NOT a stub; same, plus an open FAO phosphate unit-basis question
+CHN-1949-1950     #  75 rows, 2006 B
+ETH-1952-1993     #  65 rows, 2597 B -- 3 bytes under the floor; a one-paragraph addition graduates it
+VIR-1917-2025     #  65 rows,  899 B -- Danish West Indies successor; see DWI-1800-1917 below, same gap
+KOR-1945-1948     #  63 rows, 2078 B
+TPAP-1906-1949    #  60 rows, 2518 B
+NGA-1886-1914     #  58 rows, 2169 B
+CHN-1945-1947     #  46 rows, 2054 B
+WZO-1938-1949     #  44 rows, 2246 B
+ASM-1900-2025     #  38 rows,  642 B
+ETH-1907-1936     #  31 rows, 2045 B
+GUM-1950-2025     #  28 rows, 1305 B
+SLB-1800-2025     #  28 rows, 1746 B
+FLK-1833-2025     #  25 rows,  995 B
+BHS-1800-2025     #  23 rows,  945 B
+# FCC-1862-1887 removed 2026-08-17: no longer a stub. PR #280 (issue 155) built its
+# polygon -- the six southern Vietnamese provinces of French Cochinchina from GADM adm1 --
+# and documented the territory, taking the page 2,260 -> 5,799 bytes. It still carries 0
+# `../sources/` citations, so it is out of THIS gate's scope (stub-ness) while remaining
+# an issue 19 draft.
+GUM-1898-1950     #  19 rows,  716 B -- flagged page_inadequate in state/suspect_wiki_pages.csv
+SUR-1954-1975     #  14 rows, 1796 B
+GKM-1884-1912     #  12 rows, 1605 B
+DWI-1800-1917     #   9 rows,  768 B
+BGD-1947-1971     #   8 rows, 2035 B
+F237-1954-1975    #   8 rows, 2408 B
+NER-1911-1922     #   8 rows,  759 B
+TNGU-1920-1949    #   6 rows, 1581 B -- flagged page_inadequate in state/suspect_wiki_pages.csv
+GKM-1912-1916     #   5 rows, 1550 B
+LSO-1868-1886     #   4 rows, 2430 B
+THA-1907-1909     #   4 rows, 1431 B
+COK-1800-2025     #   3 rows, 1834 B
+NIU-1800-2025     #   2 rows, 1549 B
+THA-1904-1907     #   2 rows, 1386 B
