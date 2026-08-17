@@ -342,6 +342,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_page_depth.py
 
+      - name: Declared sources resolve, and a data-receiving page names one
+        # The other citation channel. validate_citations checks INLINE links; nothing read
+        # the `sources:` frontmatter key at all, so a page could name any string and no
+        # check would notice — 146 of 775 pages declared one of 38 slugs with no file under
+        # wiki/sources/ (issue 19's follow-up). Six were cleared (one source registered, 53
+        # pages' slugs corrected); the remaining 32 are baselined per slug as a worklist,
+        # and no data-receiving page now names no source at all.
+        if: '!cancelled()'
+        run: python3 scripts/validate_declared_sources.py
+
       - name: Committed CSV matches the wiki
         if: '!cancelled()'
         run: python3 scripts/build_database.py --check

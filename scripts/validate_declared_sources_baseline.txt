@@ -1,0 +1,77 @@
+# Source slugs declared in polity-page `sources:` frontmatter that resolve to NO record
+# under wiki/sources/, and are accepted as unregistered FOR NOW.
+#
+# A slug in this list is a citation that looks like evidence and is not: the page names a
+# source, nothing in the repo can open it, and the verification pipeline reads the page as
+# evidence anyway (issue 19). scripts/validate_declared_sources.py fails on any slug NOT in
+# this list, and equally on any line here whose slug now resolves or that no page declares
+# any more -- a stale entry silently accepts the next page that mistypes that slug.
+#
+# THIS FILE IS A WORKLIST, ORDERED BY EXPOSURE, in the same spirit as
+# validate_page_depth_baseline.txt. `rows` is the layer-B row count of the data-receiving
+# pages naming the slug (`layerb_data_rows` in
+# pipelines/polity-autoimprove/state/territory_basis.csv), which is issue 19's priority
+# order: fix what actually receives data first.
+#
+# MEASURED 2026-08-17. On main, 146 of 775 pages declared one of 38 unregistered slugs.
+# The commit that added this gate cleared six of them -- one by registering the source
+# (wiki/sources/gadm-4.1.md, 46 pages) and five by correcting the slug on 53 pages, where
+# the page had written scripts/sources.yaml's MACHINE slug or a case variant instead of the
+# readable record's name: CShapes -> cshapes-2.0 (22 pages), gadm-4.1-adm0 -> gadm-4.1 (23),
+# cliopatria -> cliopatria-v0.1.3 (6), paine-2024 -> paine-et-al-2024 (1),
+# federico_tena -> federico-tena-2019 (1). 32 slugs on 105 page references remain, and they
+# fall into four kinds, named below because the kind IS the fix.
+#
+# KIND 1 -- NOT A SOURCE AT ALL. `database` names this database itself, so a page citing it
+# cites the artefact the page is the source of truth for. That is the circularity issue 19
+# describes, in one word, on 18 pages holding 7,153 rows. The fix is to replace it with the
+# source the claim actually came from, or delete it; it is NOT to register a page.
+database                        # 18 pages, 13 data-receiving, 7,153 rows -- self-citation, delete or replace
+whep-regions                    # 16 pages,  0 data-receiving,     0 rows -- the reporting-area convention, not a source; the record would be a wiki page under docs, not wiki/sources
+#
+# KIND 2 -- REAL SOURCE, NEVER GIVEN A RECORD. These are the ones worth writing, hardest
+# first by exposure. `fao1952`/`fao-1952` are the same FAO 1952 yearbook under two spellings
+# and `iia`/`iia-agricultural-statistics`/`iia-cotton` the same IIA yearbooks under three;
+# one record each would clear all five lines. `mitchell`/`mitchell-ihs`/
+# `mitchell-international-historical-statistics` are three spellings of Mitchell's
+# International Historical Statistics.
+histogis-1860                   #  2 pages,  2 data-receiving, 2,285 rows -- HistoGIS 1860; scripts/sources/histogis-1860-habsburg/ exists, the readable record does not
+fao1952                         # 17 pages, 17 data-receiving, 1,206 rows -- FAO 1952 yearbook, the single most-cited unregistered source
+decolonization_events           #  6 pages,  6 data-receiving, 1,181 rows
+cow_state_system                #  6 pages,  6 data-receiving, 1,181 rows -- almost certainly the registered cow-state-system-v2024 under its underscore name, but the six pages predate that record and none of them says which vintage, so the rename is not evidence-free
+iia-agricultural-statistics     #  1 page,   1 data-receiving,   573 rows -- SER-1918-1945, which rests 573 rows on this and mitchell alone
+mitchell-international-historical-statistics  # 1 page, 1 data-receiving, 573 rows -- same page
+cshapes-europe                  #  2 pages,  2 data-receiving,   373 rows -- scripts/sources/cshapes-europe/ exists; distinct dataset from cshapes-2.0, so it needs its own record, not a rename
+histogis-1860-habsburg          #  2 pages,  2 data-receiving,    96 rows -- the Habsburg extract; same record as histogis-1860 above would serve both
+iia                             #  1 page,   1 data-receiving,    58 rows
+fao-1952                        #  1 page,   1 data-receiving,    47 rows -- spelling variant of fao1952
+iia-cotton                      #  1 page,   1 data-receiving,    38 rows
+faostat-landuse                 #  9 pages,  3 data-receiving,    10 rows
+mitchell                        #  1 page,   1 data-receiving,     7 rows
+faostat-production              #  2 pages,  1 data-receiving,     2 rows
+mitchell-ihs                    #  1 page,   0 data-receiving,     0 rows
+#
+# KIND 3 -- A BUILDER, NOT A SOURCE. `constructed` names
+# scripts/sources/constructed/build.py, which composes polygons out of OTHER sources. The
+# honest citation is the underlying source plus the builder function; a `constructed` record
+# would document the mechanism, which wiki/README.md already does.
+constructed                     #  3 pages,  3 data-receiving,   510 rows -- AOI-1936-1941 and CHN-1932-1945 among them
+#
+# KIND 4 -- WIKIPEDIA READS THAT WERE NEVER WRITTEN UP. wiki/sources/ holds 20 such records
+# (wikipedia-<topic>-<date>.md) and these follow the same naming, so the read happened and
+# the record was skipped. Each is one page's territorial narrative, so each is cheap to
+# write and cheap to leave: the exposure is small and the claims are already on the page.
+wikipedia-ftt-2026-06-26                          #  1 page,  78 rows -- TRS-1947-1954, Free Territory of Trieste
+wikipedia-colonial-oceania                        #  2 pages,  66 rows -- TPAP/TNGU; also the only KIND-4 slug with no date, so nothing records WHEN it was read
+wikipedia-united-states-virgin-islands-2026-06-26 #  1 page,  65 rows
+wikipedia-netherlands-antilles-2026-06-26         #  1 page,  58 rows
+wikipedia-british-togoland-2026                   #  1 page,  55 rows -- year-only date
+wikipedia-ttpi-2026-06-26                         #  1 page,  40 rows
+wikipedia-saint-helena-2026-06-26                 #  1 page,  15 rows
+wikipedia-late-colonial-2026-06-24                #  1 page,  14 rows -- wikipedia-late-colonial-2026-04-16 IS registered; this is a later read of the same topic
+wikipedia-danish-west-indies-2026-06-26           #  1 page,   9 rows
+wikipedia-niger-colony-2026                       #  1 page,   8 rows -- year-only date
+wikipedia-saint-pierre-and-miquelon-2026-07-02    #  1 page,   8 rows
+wikipedia-christmas-island-2026-07-01             #  1 page,   6 rows
+wikipedia-german-carolines-2026-06-26             #  1 page,   6 rows
+wikipedia-syria-lebanon-customs-union-2026-07-01  #  1 page,   6 rows
