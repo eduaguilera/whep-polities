@@ -23,7 +23,15 @@
 #              pass while the consumer still aborts. The failure strings it prints are
 #              character-for-character sf's. Ships as a manylinux wheel for CPython
 #              3.10+ and needs only numpy, so it adds no system dependency.
+#   pyarrow    extdata.py's self-test, as of 2026-08-17. The paragraph above says pyarrow
+#              is excluded because only the MATCHERS need it and they do not run in CI.
+#              That stopped being the whole story when issue 112's work added a guard for
+#              the bilateral pin's latin-1 column names -- the case that decodes
+#              b'Mat\xe9 leaves' has to build an arrow table to reproduce the failure, and
+#              a guard that cannot run in CI does not guard. The matchers still do not run
+#              here; see issue #17.
 pandas>=2.0
 geopandas>=1.0
 pyyaml>=6.0
 spherely>=0.1.1
+pyarrow>=14.0
