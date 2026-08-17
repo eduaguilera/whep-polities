@@ -1050,6 +1050,76 @@ def build_fcc_1862_1887() -> ogr.Geometry:
     return kept
 
 
+# The Chile-Bolivia boundary fixed by the Treaty of Mutual Benefits (10 August 1866) and
+# reaffirmed by the 1874 Treaty of Sucre: the 24th parallel south. Everything Chile gained in
+# 1883-1884 -- Tarapaca from Peru, the Bolivian Litoral, and the Tacna-Arica provinces it
+# administered from 1883 -- lies north of it, so ONE number defines the whole northern edge of
+# pre-war Chile. See build_chl_1810_1884.
+CHL_1866_PARALLEL = -24.0
+
+
+def build_chl_1810_1884() -> ogr.Geometry:
+    """Pre-War-of-the-Pacific Chile = CShapes' Chile SOUTH OF THE 24TH PARALLEL.
+
+    THE CZN-1903-1979 PATTERN, not a proxy: the row's northern boundary is not estimated, it is
+    a treaty line. The 1866 Treaty of Mutual Benefits fixed the Chile-Bolivia border at 24 deg S
+    and the 1874 Treaty of Sucre reaffirmed it, and every acre Chile acquired in 1883-1884 lies
+    north of that parallel. So the only ingredient needed is a Chile polygon in the SAME mapping
+    convention as this family's other three rows, which CShapes supplies:
+
+        CShapes 155, 1886-1899 step        746,276 km2   ESRI:54034
+        clipped south of 24 deg S          600,669 km2
+        removed north of it                145,607 km2
+        less Easter Island (see below)     -    179 km2
+        PUBLISHED                          600,490 km2
+
+    WHY IT SAT EMPTY, and why the previous answer was right about the source it tested and wrong
+    about the conclusion. Issue 158 declined Cliopatria's "Republic of Chile" (313,424 km2 at
+    1866-1879) because attaching it would have encoded a 2.4x step at 1883 that is mostly the
+    difference between two mapping conventions -- CShapes carries Patagonia as CLAIMED, Cliopatria
+    excludes it as not effectively controlled -- rather than territory. That reasoning holds and is
+    not overturned here. What did not follow is "therefore this row cannot have a polygon": the
+    convention mismatch is an argument for STAYING INSIDE CShapes, and inside CShapes the
+    annexation is expressible as a clip. The resulting step is 746,276 / 600,490 = 1.24x, and the
+    24.2% is the annexation itself rather than a change of source.
+
+    THE PAGE'S OWN ARITHMETIC WAS WRONG BY 62%, which is why the clip was worth measuring rather
+    than assuming. The page said the 1886 polygon "already incorporates ~240,000 km2 of territory
+    annexed in 1883-1884" and estimated the row at "~516,000-520,000 km2". Measured, the territory
+    north of 24 deg S in that polygon is 145,607 km2, so the estimate was ~85,000 km2 too small.
+    Issue 158's own figure (~180,000) is also too large. Independent arithmetic agrees with the
+    measurement, not with either estimate: modern Chile 756,096 km2 minus Tarapaca region 42,226
+    minus Antofagasta region 126,049 PLUS Taltal province 20,405 -- Taltal is Antofagasta's
+    southernmost province and was Chilean before the war -- is 608,226, which scaled onto CShapes'
+    slightly smaller base (746,276/756,096) is 600,325 against the measured 600,490: 0.03%.
+
+    ONE PART IS DROPPED, by envelope (lon -85 to -60, lat -60 to -24): Easter Island, 179 km2 at
+    109.4W/27.1S, which Chile annexed in September 1888 and therefore did not hold during this
+    row. That is 0.03% of the clip and the only part outside the South American envelope; the 123
+    kept parts span 75.7W-66.4W and 55.9S-24.0S, i.e. the mainland plus Tierra del Fuego and the
+    Patagonian archipelago. Neither Juan Fernandez nor the Desventuradas appears in the CShapes
+    step at all, so nothing there had to be judged.
+
+    `proxy`, for a reason on the OTHER boundary. The eastern limit is the post-1881 one: the
+    Boundary Treaty of 23 July 1881 settled Patagonia with Argentina, and before it Chile claimed
+    far more of it than CShapes' 1886 polygon shows. So this polygon UNDERSTATES Chile's claimed
+    extent for 1810-1881 -- 71 of the row's 74 years -- by an amount no fetched source measures,
+    and the direction is opposite to the one the annexation clip corrects. Both facts are on the
+    page. The 1899-1902 CShapes step (698,984 km2) is not used and is a separate oddity belonging
+    to CHL-1899-1902.
+    """
+    chile = _valid(_cshapes2_step(155, 1886, 1899), "CShapes 155 @1886-1899")
+    north_of_parallel = ogr.CreateGeometryFromWkt(
+        f"POLYGON((-120 {CHL_1866_PARALLEL},-30 {CHL_1866_PARALLEL},-30 -5,"
+        f"-120 -5,-120 {CHL_1866_PARALLEL}))"
+    )
+    south = _difference(chile, north_of_parallel)
+    kept = _keep_parts_within(south, -85.0, -60.0, -60.0, CHL_1866_PARALLEL)
+    if kept is None or kept.IsEmpty():
+        raise ValueError("build_chl_1810_1884: the South American envelope kept nothing")
+    return kept
+
+
 def build_tur_1913_1914() -> ogr.Geometry:
     """The Ottoman Empire during 1913 = CShapes 640's `1913-1914` step, named by its bounds.
 
@@ -1687,6 +1757,25 @@ BUILDERS = [
         "which the Zone held and a centreline buffer cannot reach; Panama City and Colon, which "
         "the treaty excludes, are not subtracted because no fetched source has their limits. "
         "Unblocks 5 layer-B rows that were matched but spatially unusable (issue 155).",
+    ),
+    (
+        "CHL-1810-1884",
+        "Chile (to 1884)",
+        build_chl_1810_1884,
+        "CShapes 155's 1886-1899 step (746,276 km2) clipped SOUTH OF THE 24TH PARALLEL = "
+        "600,669 km2, less Easter Island = 600,490 published. The 24 deg S line is not an estimate: "
+        "it is the Chile-Bolivia border fixed "
+        "by the 1866 Treaty of Mutual Benefits and reaffirmed in 1874, and everything Chile gained "
+        "in 1883-1884 (Tarapaca, the Bolivian Litoral, the administered Tacna-Arica) lies north of "
+        "it -- 145,607 km2 removed. Staying inside CShapes is the point: issue 158 declined "
+        "Cliopatria's 313,424 km2 step because it would have encoded a 2.4x convention difference "
+        "as an 1883 event, and this clip makes the step 1.24x, which is the annexation. Corroborated "
+        "to 0.06% by modern-Chile arithmetic (756,096 - Tarapaca 42,226 - Antofagasta 126,049 + "
+        "Taltal 20,405, scaled onto CShapes' base = 600,325, 0.03% off). The page's own estimate of "
+        "~516,000-520,000 was 85,000 too small and its ~240,000 annexation figure 62% too large. "
+        "Easter Island (179 km2, annexed 1888) is dropped by envelope. `proxy` because the EASTERN "
+        "limit is the post-1881 Patagonian one, so the polygon understates Chile's claims for "
+        "1810-1881. Unblocks 168 layer-B rows, the largest remaining block in issue 155.",
     ),
     (
         "FCC-1862-1887",
