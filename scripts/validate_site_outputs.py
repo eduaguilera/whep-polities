@@ -57,6 +57,7 @@ DB_CSV = os.path.join(REPO, "data/final/polities_database.csv")
 GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
 SITE_CSV = os.path.join(REPO, "site/polities.csv")
 SITE_GEOJSON = os.path.join(REPO, "site/polities.geojson")
+SITE_PRE1961 = os.path.join(REPO, "site/pre1961")
 
 DEAD = ("retired", "superseded")
 REBUILD = "  rebuild: bash site/build_wiki.sh"
@@ -75,6 +76,52 @@ def live_with_geometry() -> set:
     return set(g.polity_code)
 
 
+def dead_codes_in_pre1961() -> list:
+    """site/pre1961/** is TRACKED and deployed, and is copied wholesale from
+    data/compiled/pre1961, which is GITIGNORED and produced by pipelines/pre1961-matching.
+
+    That combination is how a fixed matcher fails to reach the published site: the R matcher
+    gained its dead-status filter in issue 16, but nothing regenerates the compiled directory,
+    so the deployed files kept attributing pre-1961 production to polities that had been
+    retired or superseded. Measured on 2026-08-18 before this check existed: 23 dead codes
+    across 138 files, e.g. ARG-1800-2025 in 76 of them, BRA-1800-2025 in 67.
+
+    A reader of the site cannot tell -- the codes look like any other, and every gate that
+    knows about dead rows was looking at polities.geojson, which is built from a different
+    path and was clean throughout.
+    """
+    if not os.path.isdir(SITE_PRE1961):
+        return []
+    dead = set()
+    with open(DB_CSV, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            if (r.get("wiki_status") or "") in DEAD:
+                dead.add(r["polity_code"])
+    if not dead:
+        return []
+    found = {}
+    for root, _dirs, files in os.walk(SITE_PRE1961):
+        for name in files:
+            path = os.path.join(root, name)
+            try:
+                text = open(path, encoding="utf-8").read()
+            except (OSError, UnicodeDecodeError):
+                continue
+            for code in dead:
+                if code in text:
+                    found.setdefault(code, set()).add(name)
+    out = []
+    for code in sorted(found):
+        files = found[code]
+        out.append(
+            f"site/pre1961 attributes data to {code}, which is retired or superseded — "
+            f"{len(files)} file(s), e.g. {sorted(files)[0]}. The compiled directory it is "
+            f"copied from is gitignored, so regenerate it "
+            f"(Rscript pipelines/pre1961-matching/match.R) and rerun site/build_wiki.sh"
+        )
+    return out
+
+
 def main() -> int:
     for path in (DB_CSV, GPKG, SITE_CSV, SITE_GEOJSON):
         if not os.path.exists(path):
@@ -82,6 +129,7 @@ def main() -> int:
             return 2
 
     problems = []
+    problems.extend(dead_codes_in_pre1961())
 
     # A ------------------------------------------------------------------------------------
     with open(DB_CSV, encoding="utf-8") as fh:
