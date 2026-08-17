@@ -176,7 +176,7 @@ CYR-1949-1951,Emirate of Cyrenaica,1949,1951,constructed,,proxy,True,assumed_con
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,constructed,1860.0,assigned,True,assumed_constant,True,False,single 1860 polygon held across a 114y span (1804-1918); borders may have changed,37
 CZE-1947-1992,Czechoslovakia (1947-1992) [superseded],1947,1992,cshapes-2.0,1945.0,assigned,True,back_projected,True,False,polygon vintage 1945 is BEFORE the period starts (1947),0
 CZE-1993-2025,Czechia,1993,2025,cshapes-2.0,1993.0,assigned,False,assumed_constant,True,False,single 1993 polygon held across a 32y span (1993-2025); borders may have changed,0
-CZN-1903-1979,Panama Canal Zone (US-administered),1903,1979,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),5
+CZN-1903-1979,Panama Canal Zone (US-administered),1903,1979,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,5
 DEU-1800-1866,Prussia (to 1866),1800,1866,cshapes-europe,1851.0,assigned,True,assumed_constant,True,False,single 1851 polygon held across a 66y span (1800-1866); borders may have changed,131
 DEU-1866-1871,North German Confederation (1866-1871),1866,1871,cshapes-europe,1867.0,assigned,True,measured,False,False,vintage 1867 faithful to period 1866-1871,42
 DEU-1871-1919,German Empire (1871-1919),1871,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 48y span (1871-1919); borders may have changed,882
@@ -261,7 +261,7 @@ F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,cshapes-2.0,1945.0,assigned,T
 F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,cshapes-2.0,1947.0,assigned,True,assumed_constant,True,False,single 1947 polygon held across a 46y span (1947-1993); borders may have changed,734
 F77-1949-1990,East Germany,1949,1990,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,False,single 1949 polygon held across a 41y span (1949-1990); borders may have changed,76
 F78-1949-1990,West Germany,1949,1990,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,True,single 1949 polygon held across a 41y span (1949-1990); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),212
-FCC-1862-1887,French Cochinchina,1862,1887,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),20
+FCC-1862-1887,French Cochinchina,1862,1887,constructed,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,20
 FCM-1920-1960,French Cameroon (1920-1960),1920,1960,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,True,single 1940 polygon held across a 40y span (1920-1960); borders may have changed,575
 FEZ-1943-1951,French Military Administration of Fezzan,1943,1951,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,5
 FID-1887-1954,French Indochina,1887,1954,constructed,1920.0,assigned,True,assumed_constant,True,True,single 1920 polygon held across a 67y span (1887-1954); borders may have changed,374

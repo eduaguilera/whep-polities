@@ -176,7 +176,7 @@ CYR-1949-1951,Emirate of Cyrenaica,1949,1951,national,LBY,620,Africa,draft,2026-
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,national,CZE,,Europe,draft,2026-06-24,constructed,CZE-1804-1918,1860,assigned,79349,AUH-1800-1859,F51-1918-1938
 CZE-1947-1992,Czechoslovakia (1947-1992) [superseded],1947,1992,national,,,Europe,superseded,2026-06-29,cshapes-2.0,315,1945,assigned,,,F51-1947-1993
 CZE-1993-2025,Czechia,1993,2025,national,CZE,316,Europe,reviewed,2026-04-12,cshapes-2.0,316,1993,assigned,,F51-1947-1993,
-CZN-1903-1979,Panama Canal Zone (US-administered),1903,1979,colonial,PAN,,North America,draft,2026-06-25,,,,unassigned,,PAN-1800-1979,PAN-1979-2025
+CZN-1903-1979,Panama Canal Zone (US-administered),1903,1979,colonial,PAN,,North America,draft,2026-06-25,constructed,CZN-1903-1979,,proxy,1432,PAN-1800-1979,PAN-1979-2025
 DEU-1800-1866,Prussia (to 1866),1800,1866,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1851,assigned,,,DEU-1866-1871
 DEU-1866-1871,North German Confederation (1866-1871),1866,1871,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1867,assigned,,DEU-1800-1866,DEU-1871-1919
 DEU-1871-1919,German Empire (1871-1919),1871,1919,national,DEU,255,Europe,draft,2026-04-13,cshapes-europe,255,1886,assigned,,DEU-1866-1871,DEU-1919-1920
@@ -261,7 +261,7 @@ F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,national,CSK,315,Europe,draft
 F51-1947-1993,Czechoslovakia (1947-1993),1947,1993,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1947,assigned,,F51-1945-1947,CZE-1993-2025; SVK-1993-2025
 F77-1949-1990,East Germany,1949,1990,national,DDR,265,Europe,draft,2026-04-12,cshapes-2.0,265,1949,assigned,,DEU-1938-1945,DEU-1990-2025
 F78-1949-1990,West Germany,1949,1990,national,,260,Europe,draft,2026-04-12,cshapes-2.0,260,1949,assigned,,WZO-1938-1949,DEU-1990-2025
-FCC-1862-1887,French Cochinchina,1862,1887,national,FID,,Asia,draft,2026-04-16,none,,,unassigned,,,FID-1887-1954
+FCC-1862-1887,French Cochinchina,1862,1887,national,FID,,Asia,draft,2026-04-16,constructed,FCC-1862-1887,,proxy,,,FID-1887-1954
 FCM-1920-1960,French Cameroon (1920-1960),1920,1960,national,CMR,471,Africa,draft,2026-08-13,cshapes-2.0,471,1940,assigned,423069,GKM-1884-1916,CMR-1960-1961
 FEZ-1943-1951,French Military Administration of Fezzan,1943,1951,national,LBY,620,Africa,draft,2026-08-10,constructed,FEZ-1943-1951,,proxy,463596,LBY-1934-1943,LBY-1951-2025
 FID-1887-1954,French Indochina,1887,1954,national,FID,,Asia,draft,2026-04-17,constructed,FID-1887-1954,1920,assigned,753049,,KHM-1953-2025; LAO-1954-2025

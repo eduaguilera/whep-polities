@@ -51,6 +51,16 @@ CROWNLANDS = (
 # FILE, so every constructed polygon silently stops attaching, not just the large one.
 # A GeoPackage has no such limit and is what every other polygon source here uses.
 OUT = REPO_ROOT / "data/geodata/constructed/constructed.gpkg"
+# Natural Earth 10m rivers + lake centrelines, as distributed INSIDE the Paine et al. 2024
+# replication package (data/geodata/paine-2024). It is not a separately registered WHEP source,
+# and it is used here for exactly one feature: the two line parts named "Panama Canal", which are
+# the only canal centreline in any fetched file. Named at the top rather than inside the builder
+# so that a future fetch reorganising paine-2024 breaks in one place.
+NE10M_RIVERS = (
+    REPO_ROOT
+    / "data/geodata/paine-2024/AfricanBordersReplication/Shapefiles/Rivers"
+    / "ne_10m_rivers_lake_centerlines.shp"
+)
 
 
 def wgs84_lonlat() -> osr.SpatialReference:
@@ -244,6 +254,53 @@ def _crownland(feature_id: str) -> ogr.Geometry:
                 g.Transform(transform)
             return g
     raise LookupError(f"crownlands shapefile has no feature id={feature_id!r}")
+
+
+def _ne10m_river(name: str) -> ogr.Geometry:
+    """Union of the Natural Earth 10m river/lake-centreline parts whose `name` matches exactly.
+
+    Returns a LINE geometry in WGS84, not a polygon: the only caller buffers it. NE splits the
+    Panama Canal into two parts with different `featurecla` ("Lake Centerline" through Gatun Lake,
+    "River" for the cut sections), so a single-feature lookup would silently return half a canal.
+    """
+    if not NE10M_RIVERS.exists():
+        raise FileNotFoundError(
+            f"{NE10M_RIVERS} missing - run scripts/sources/paine-2024/fetch.sh first."
+        )
+    ds = ogr.Open(str(NE10M_RIVERS))
+    lyr = ds.GetLayer()
+    acc = None
+    n = 0
+    for f in lyr:
+        if f.GetField("name") != name:
+            continue
+        g = f.GetGeometryRef().Clone()
+        acc = g if acc is None else acc.Union(g)
+        n += 1
+    if acc is None:
+        raise LookupError(f"Natural Earth 10m rivers has no feature named {name!r}")
+    print(f"    NE 10m {name!r}: {n} part(s)")
+    return acc
+
+
+def _buffer_metres(geom: ogr.Geometry, metres: float, epsg: int) -> ogr.Geometry:
+    """Buffer a WGS84 geometry by a distance in METRES, via the projected CRS `epsg`.
+
+    Buffering in degrees is not a distance at all, and buffering in a global equal-area CRS is a
+    distance that varies with latitude, so the projection is named by the caller for the one place
+    the polygon actually is. The round trip is WGS84 -> epsg -> buffer -> WGS84.
+    """
+    src = wgs84_lonlat()
+    dst = osr.SpatialReference()
+    dst.ImportFromEPSG(epsg)
+    dst.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+    g = geom.Clone()
+    g.Transform(osr.CoordinateTransformation(src, dst))
+    b = g.Buffer(metres)
+    b.Transform(osr.CoordinateTransformation(dst, src))
+    if b.GetGeometryType() != ogr.wkbMultiPolygon:
+        b = ogr.ForceToMultiPolygon(b)
+    return b
 
 
 def _envelope_of(g: ogr.Geometry) -> ogr.Geometry:
@@ -946,6 +1003,53 @@ def build_mmr_lwr_1852_1885() -> ogr.Geometry:
     )
 
 
+def build_fcc_1862_1887() -> ogr.Geometry:
+    """French Cochinchina = Cliopatria's Vietnam BEFORE the French conquest of the south minus
+    Vietnam AFTER it. Exactly the MMR-LWR-1852-1885 pattern: the territory that changed hands is
+    the difference between the two steps that bracket the war, so the source defines it without
+    anyone enumerating provinces -- and here nobody could have, because GADM 4.1's fetched set has
+    no VNM file at all (re-measured 2026-08-17: adm0 99 countries, adm1 80, adm2 Indonesia only).
+
+        Vietnam 1834-1858    300,525 km2    before the Cochinchina campaign
+        Vietnam 1859-1867    234,392 km2    after
+        difference            66,277 km2    in 4 parts
+
+    THE OBVIOUS CANDIDATE WAS THE WRONG SHAPE, which is why this row sat unbuilt: Cliopatria's
+    "French Indochina" is the whole federation at 753,049 km2, 11x this row's territory, and its
+    own successor FID-1887-1954 already uses it. The difference is a different question put to the
+    same source.
+
+    Three of the four parts are boundary jitter between the two steps, not territory: 49.6 km2 at
+    107.5-107.6E/12.37-12.44N, 84.9 km2 at 109.4E/13.0N and 152.6 km2 at 109.3E/13.5-14.0N -- the
+    last two on the central coast around Nha Trang and Qui Nhon, 150-300 km from Cochinchina and
+    on the wrong side of the 1862 line. `_keep_parts_within` drops the two coastal ones by
+    envelope (104-108.5E, 8-12.5N):
+
+        kept       66,039 km2   the Mekong delta and Saigon, 104.4-108.0E, 8.5-12.4N
+        dropped       238 km2   0.36%
+
+    66,039 km2 against the ~65,000 km2 usually stated for Cochinchina, +1.6%. The page declares no
+    area at all, so there is no in-repo figure to check against and the external one is what there
+    is; `polygon_area_km2` is set to the measured 66,039 with that stated externally, NOT the other
+    way round.
+
+    VINTAGE CAVEAT, stated because it is real. France took the three eastern provinces in 1862 and
+    the three western ones in 1867, but Cliopatria models the whole loss at its 1859 step break --
+    the campaign began in 1858. So this polygon is the SIX-province Cochinchina for the row's whole
+    1862-1887 span, and overstates 1862-1867, when France held only the east. The row spans 25
+    years of which 20 are six-province, and no source here can split the two halves: the 1868-1869
+    step is 234,478 km2, i.e. Cliopatria records no further reduction in 1867. `proxy`, for that
+    reason, rather than `assigned`.
+    """
+    before = _valid(_cliopatria_feature("Vietnam", 1855), "Cliopatria Vietnam @1855")
+    after = _valid(_cliopatria_feature("Vietnam", 1860), "Cliopatria Vietnam @1860")
+    ceded = _difference(before, after)
+    kept = _keep_parts_within(ceded, 104.0, 8.0, 108.5, 12.5)
+    if kept is None or kept.IsEmpty():
+        raise ValueError("build_fcc_1862_1887: the Cochinchina envelope kept nothing")
+    return kept
+
+
 def build_tur_1913_1914() -> ogr.Geometry:
     """The Ottoman Empire during 1913 = CShapes 640's `1913-1914` step, named by its bounds.
 
@@ -1517,7 +1621,86 @@ def build_syl_1944_1953() -> ogr.Geometry:
     return _union(_cshapes2_feature(652, 1950), _cshapes2_feature(660, 1950))
 
 
+STATUTE_MILE_M = 1609.344
+CZN_HALF_WIDTH_M = 5 * STATUTE_MILE_M  # 8,046.72 m -- the treaty's five miles each side
+CZN_UTM = 32617                        # UTM zone 17N; the canal sits at 79.6-79.9W, 8.96-9.30N
+
+
+def build_czn_1903_1979() -> ogr.Geometry:
+    """Panama Canal Zone = the canal centreline buffered by five statute miles each side.
+
+    THE RECIPE IS THE TREATY, not an approximation of it. Article II of the Hay-Bunau-Varilla
+    Treaty (1903-11-18) grants the United States "a zone of land and land under water ... of the
+    width of ten miles extending to the distance of five miles on each side of the center line of
+    the route of the Canal". So the Zone is DEFINED as a 5-mile buffer of the canal centreline,
+    and the only thing this builder needs from a source is that centreline.
+
+    The centreline was believed unavailable here. The page's oq-polygon-construction said a
+    faithful polygon "could be constructed from the historical treaty description (16 km wide strip
+    centred on the canal centreline)" but that no source in data/geodata carried it, and the four
+    sources it had queried (CShapes, Cliopatria, Paine's PCS, GADM adm1) indeed do not. It is in a
+    FIFTH file nobody queried: Natural Earth 10m rivers/lake centrelines, shipped inside the
+    Paine 2024 replication package, carries the "Panama Canal" as two line parts.
+
+    MEASURED, and the deviation is one-directional and explained:
+
+        NE centreline length            60.65 km
+        5-mile buffer                1,175.9 km2   ESRI:54034
+        conventionally stated        1,432    km2   (553 sq mi)
+        deviation                      -17.9%
+
+    The shortfall is NOT buffer distance; it is the two things the Zone held BEYOND the strip:
+      * Gatun Lake. The Zone included the whole lake (~425 km2), much of which lies more than
+        five miles from the centreline. The commonly quoted 553 sq mi is land AND water; the
+        Zone's LAND area is usually given near 553-185 = 368 sq mi (~953 km2), which this
+        1,176 km2 land-plus-water strip sits above, as it should.
+      * The sea approaches, three marine miles out from each coast. NE's line stops at the
+        coast: it ends at 9.304N against Cristobal's ~9.35N and 8.960N against Balboa's ~8.93N,
+        so about 9 km of centreline, ~145 km2 of buffer, is missing at the ends.
+    Nothing here is scaled to hit 1,432. Extending the line to invented termini, or widening the
+    buffer until the area matched, would make the area check circular -- the FEZ-1943-1951 rule.
+
+    NOT SUBTRACTED, and this is the known overstatement in the other direction: the treaty
+    excludes "the cities of Panama and Colon", which sit at the two ends inside the strip. No
+    fetched source has either city's 1903 limits (GADM has no PAN file at all), so they stay in.
+    Both cities were small in 1903 and the two errors partly cancel; the net is still -17.9%.
+
+    Reveals a false claim on a NEIGHBOUR's page, which is why it is recorded here as well as
+    there: pan-1903-1979.md says its CShapes feature 95 covers Panama "excluding the
+    US-administered Canal Zone strip". Measured, 95.9% of this Zone polygon (1,127 of 1,176 km2)
+    is INSIDE CShapes 95 -- the feature does not exclude the Zone, and the 4.1% outside is the
+    sea approaches, not an excluded enclave. So PAN-1903-1979 and CZN-1903-1979 overlap almost
+    completely, and any area-weighted consumer summing both double-counts the Zone.
+    """
+    return _buffer_metres(_ne10m_river("Panama Canal"), CZN_HALF_WIDTH_M, CZN_UTM)
+
+
 BUILDERS = [
+    (
+        "CZN-1903-1979",
+        "Panama Canal Zone (US-administered)",
+        build_czn_1903_1979,
+        "Natural Earth 10m's 'Panama Canal' centreline buffered by five statute miles each side, "
+        "which is the Hay-Bunau-Varilla Treaty's own definition of the Zone rather than a proxy "
+        "for it = 1,175.9 km2 against the conventionally stated 1,432 (-17.9%). The shortfall is "
+        "Gatun Lake beyond the five-mile strip plus the three-marine-mile sea approaches, both of "
+        "which the Zone held and a centreline buffer cannot reach; Panama City and Colon, which "
+        "the treaty excludes, are not subtracted because no fetched source has their limits. "
+        "Unblocks 5 layer-B rows that were matched but spatially unusable (issue 155).",
+    ),
+    (
+        "FCC-1862-1887",
+        "French Cochinchina",
+        build_fcc_1862_1887,
+        "Cliopatria's Vietnam at 1855 (300,525 km2) MINUS Vietnam at 1860 (234,392), clipped to the "
+        "Mekong-delta envelope (104-108.5E, 8-12.5N) = 66,039 km2 against the ~65,000 usually "
+        "stated for Cochinchina (+1.6%). The MMR-LWR-1852-1885 pattern: what changed hands is the "
+        "difference between the two steps bracketing the conquest. GADM cannot do it -- there is no "
+        "VNM file in the fetched set -- and Cliopatria's 'French Indochina' is the whole federation "
+        "at 11x this territory. Drops 238 km2 (0.36%) of step-boundary jitter on the central coast. "
+        "Overstates 1862-1867, when France held only the three eastern provinces; Cliopatria puts "
+        "the whole loss at its 1859 break. Unblocks 20 layer-B rows (issue 155).",
+    ),
     (
         "IDN-BLB-1949-1951",
         "Bali and Lombok (within Indonesia, 1949-1951)",
