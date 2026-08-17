@@ -15,6 +15,16 @@ tie-break cannot single one out -- either two or more candidates start in the qu
 year, or none does. The winner is then whichever the shapefile happens to list first,
 which is not a modelling decision anybody made.
 
+SINCE 2026-08-17 there is a second, finer filter, and this gate honours it: a page may
+declare `polygon_feature_date: YYYY-MM-DD`, and where the source config names full-date
+columns `find_feature` narrows the candidates to the step containing that DAY, taking it
+only if exactly one matches. That was the general remedy issue 100 asked for, and the only
+one available for the last two entries in the baseline below -- rows covering a single
+calendar year that CShapes cuts into three or more steps, where every year a candidate
+contains is shared with a neighbour, so no `polygon_feature_year` can single one out.
+`data/final/polygon_feature_index.csv` carries each candidate's full-date span for exactly
+this check.
+
 WHY IT MATTERS: this is the same bug three times, each found by hand and each after it
 had shipped.
 
@@ -135,26 +145,24 @@ BASELINE = {
     #                  build_pol_1919_1920 -> _cshapes2_step(290, 1919, 1920). The row is no
     #                  longer cshapes-bound, so it leaves this check's population entirely.
     #
-    # ---- STILL order-dependent: no polygon_feature_year can pin these ----
-    # These two rows cover a SINGLE calendar year that CShapes subdivides into three or
-    # more steps. Every candidate shares that year with at least one other candidate, and
-    # every other year they contain belongs to a neighbouring step too, so there is no year
-    # that falls inside exactly one span. A year is simply not expressive enough here; the
-    # mechanisms that would fix them are a date-level binding (find_feature truncates
-    # gwsdate/gwedate to a year today) or a constructed polygon, as ROU-1940-1947 got.
-    # Measured 2026-08-13; in both remaining cases the picked candidate is defensible, which
-    # is why they are baselined rather than force-changed. The third member of this group,
-    # POL-1919-1920, was NOT defensible and is now fixed -- see the note above.
-    "ROU-1919-1920": "row covers 1919 only; 3 candidates (1918-11-01/1919-09-09 128,499; "
-                     "1919-09-10/1919-11-26 141,247; 1919-11-27/1920-06-03 148,934) and 2 "
-                     "start in 1919. Picked 141,247, whose step STARTS on the row's own "
-                     "start-of-row event (Treaty of Saint-Germain, 1919-09-10), so the "
-                     "pick agrees with the page. No declared area to catch a change",
-    "F228-1920-1921": "row covers 1920 only; 4 candidates (1918-11-11/1920-02-01 "
-                      "21,405,134; 1920-02-02/1920-09-01 21,506,736; 1920-09-02/1920-10-27 "
-                      "21,700,852; 1920-10-28/1921-03-17 21,656,484) and 3 start in 1920. "
-                      "Picked 21,506,736, the step in force at the row's start. Spread is "
-                      "1.01x, so any re-fetch swap is small in area but silent",
+    # FIXED and removed 2026-08-17 (issue 100), the last two entries of this group and
+    # the ones the issue said "no polygon_feature_year can pin":
+    #   ROU-1919-1920   row covers 1919 only; 3 candidates (1918-11-01/1919-09-09 128,499;
+    #                   1919-09-10/1919-11-26 141,247; 1919-11-27/1920-06-03 148,934) and 2
+    #                   start in 1919.
+    #   F228-1920-1921  row covers 1920 only; 4 candidates (1918-11-11/1920-02-01
+    #                   21,405,134; 1920-02-02/1920-09-01 21,506,736; 1920-09-02/1920-10-27
+    #                   21,700,852; 1920-10-28/1921-03-17 21,656,484) and 3 start in 1920.
+    # In both, EVERY year a candidate contains is shared with a neighbouring candidate, so
+    # no year falls inside exactly one span and the tie-break could not decide. A year is
+    # simply not expressive enough, which is why these two outlived the other fourteen.
+    # Resolved by the general remedy the issue named instead of by a per-row choice:
+    # `polygon_feature_date` is now LOAD-BEARING in build_database.find_feature (it narrows
+    # the candidates by day, and only a UNIQUE hit is allowed to win), and
+    # data/final/polygon_feature_index.csv carries each candidate's full-date span so this
+    # gate can verify that uniqueness in CI. Neither polygon changed: both pages declare the
+    # date of the step row order was already picking, 1919-09-10 (141,247 km2) and
+    # 1920-02-02 (21,506,736 km2). What changed is that the choice is now made by the data.
 }
 
 
@@ -175,6 +183,22 @@ BASELINE = {
 # every candidate's area, and write_feature_index.py --check keeps it honest. So unlike
 # check A above, this arm runs in CI.
 CLAIM = re.compile(r"all ([\d,]+) km2")
+DATE_RE = re.compile(r"^\s*(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})")
+
+
+def iso_date(value):
+    """`YYYY-MM-DD` for a source date column, or "" -- one spelling, so `<=` is sound.
+
+    CShapes writes `1919/09/10`, which sorts differently from the wiki's `1919-09-10`
+    as text. The published index is normalised by write_feature_index.py; this is the
+    same normalisation for the shapefile fallback path.
+    """
+    if value is None:
+        return ""
+    m = DATE_RE.match(str(value))
+    if not m:
+        return ""
+    return f"{int(m.group(1)):04d}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
 
 
 def check_claimed_identity(rows, cfg):
@@ -262,11 +286,14 @@ def main() -> int:
                     except (TypeError, ValueError):
                         return None
                 index.setdefault(row["source"], []).append(
-                    (row["feature_id"], num(row["start_year"]), num(row["end_year"]))
+                    (row["feature_id"], num(row["start_year"]), num(row["end_year"]),
+                     (row.get("start_date") or "").strip(),
+                     (row.get("end_date") or "").strip())
                 )
 
-    # Cache each source's features as (id_value, start_year, end_year), in FILE ORDER --
-    # the order is the whole point, so it must not be sorted.
+    # Cache each source's features as (id_value, start_year, end_year, start_date,
+    # end_date), in FILE ORDER -- the order is the whole point, so it must not be sorted.
+    # The dates are "" for a source whose config names no date columns.
     cache = {}
     missing_sources = set()
 
@@ -293,12 +320,17 @@ def main() -> int:
         for feat in lyr:
             v = feat.GetField(entry["id_column"])
             s = e = None
+            sd = ed = ""
             if temporal:
                 sv = feat.GetField(temporal["start_column"])
                 ev = feat.GetField(temporal["end_column"])
                 if sv is not None and ev is not None:
                     s, e = int(str(sv)[:4]), int(str(ev)[:4])
-            out.append((v, s, e))
+                sd = iso_date(feat.GetField(temporal["start_date_column"])) \
+                    if temporal.get("start_date_column") else ""
+                ed = iso_date(feat.GetField(temporal["end_date_column"])) \
+                    if temporal.get("end_date_column") else ""
+            out.append((v, s, e, sd, ed))
         cache[slug] = (out, entry, temporal)
         return cache[slug]
 
@@ -325,9 +357,9 @@ def main() -> int:
                 want = int(fid)
             except ValueError:
                 continue
-            same = [(v, s, e) for v, s, e in feats if v is not None and int(v) == want]
+            same = [f for f in feats if f[0] is not None and int(f[0]) == want]
         else:
-            same = [(v, s, e) for v, s, e in feats if str(v) == fid]
+            same = [f for f in feats if str(f[0]) == fid]
         checked += 1
         if not same:
             continue
@@ -336,12 +368,24 @@ def main() -> int:
         if temporal and fyear is not None:
             policy = temporal.get("match_year", "within")
             if policy == "within":
-                cands = [(v, s, e) for v, s, e in same
-                         if s is not None and e is not None and s <= fyear <= e]
+                cands = [f for f in same
+                         if f[1] is not None and f[2] is not None and f[1] <= fyear <= f[2]]
             elif policy == "exact_start":
-                cands = [(v, s, e) for v, s, e in same if s == fyear]
+                cands = [f for f in same if f[1] == fyear]
         if len(cands) < 2:
             continue
+
+        # A DAY can decide what a year cannot (issue 100). Where the page declares
+        # `polygon_feature_date` and the source carries full dates, find_feature
+        # narrows to the step containing that date and only a UNIQUE hit is allowed
+        # to win, so mirror exactly that here: unique hit -> the data decided, not
+        # row order. Two or none and the year tie-break still runs, so this stays
+        # order-dependent and is reported.
+        fdate = (r.get("polygon_feature_date") or "").strip()
+        if fdate:
+            on_date = [f for f in cands if f[3] and f[4] and f[3] <= fdate <= f[4]]
+            if len(on_date) == 1:
+                continue
 
         exact = [c for c in cands if c[1] == fyear] if fyear is not None else []
         if len(exact) == 1:
@@ -353,10 +397,14 @@ def main() -> int:
                f"{len(exact)} candidates start in the queried year, so the FIRST is taken")
         observed[r["polity_code"]] = why
         if r["polity_code"] not in BASELINE:
-            spans = ", ".join(f"{s}-{e}" for _v, s, e in cands[:6])
+            spans = ", ".join(
+                (f"{sd}/{ed}" if sd and ed else f"{s}-{e}")
+                for _v, s, e, sd, ed in cands[:6]
+            )
             problems.append(
-                f"{r['polity_code']}: {slug} id={fid!r} year={fyear} -- {why}. "
-                f"Candidate spans: {spans}"
+                f"{r['polity_code']}: {slug} id={fid!r} year={fyear}"
+                + (f" date={fdate}" if fdate else "")
+                + f" -- {why}. Candidate spans: {spans}"
                 + (" ..." if len(cands) > 6 else "")
             )
 
@@ -402,7 +450,10 @@ def main() -> int:
             print(f"  {p}")
         print("\n  A binding decided by shapefile row order is not reproducible: a source\n"
               "  re-fetch can silently hand back a different polygon. Pin it by choosing a\n"
-              "  polygon_feature_year that falls inside exactly one candidate span.")
+              "  polygon_feature_year that falls inside exactly one candidate span -- or,\n"
+              "  when no year can (a source that subdivides one calendar year into three or\n"
+              "  more steps), by declaring polygon_feature_date: YYYY-MM-DD, which\n"
+              "  find_feature narrows the candidates by.")
         return 1
 
     if unverifiable:
