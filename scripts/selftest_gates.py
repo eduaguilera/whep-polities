@@ -972,7 +972,8 @@ def mutate_double_claimed_component(root, gpd, make_valid, affinity):
     """Add a GADM component to a second aggregate, so two aggregates claim the same
     territory. Its documented first catch was exactly this -- six territories claimed
     twice, with Palau and the Northern Marianas sitting in both Asia Other and Oceania
-    Other -- and it was HIDDEN because the rest-of-world union deduplicates, so the
+    Other (those two were removed from Asia Other on 2026-08-17, issue 48; four claims
+    remain baselined) -- and it was HIDDEN because the rest-of-world union deduplicates, so the
     double claim never showed up as a duplicated row anywhere downstream. If this gate
     were inert those claims would return silently and double-count the territory."""
     path = os.path.join(root, "scripts/sources/reporting-areas/build.py")

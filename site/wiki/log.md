@@ -203,6 +203,50 @@ issue 82 and unaffected by this row.
 
 ---
 
+## decision-aggregates-are-fixed-lists-issue-48
+**Date:** 2026-08-17
+**Touched:** ROW-1850-2025, RASI-1850-2025
+**Source:** whep-regions
+**Kind:** decision
+
+*Recorded by Claude (Claude Code) while working issue 48; every figure was measured
+against the repo, not carried over from the issue. Not human-signed-off.*
+
+Issue 48 asked two questions about what a residual aggregate means. **Question 1 — is a
+regional "Other" bucket a fixed list or a residual that shrinks? — is answered FIXED.**
+The authority is the `polity_code` column of `inst/extdata/harmonization/regions_full.csv`
+in eduaguilera/whep, which is what folds CBS and FABIO data into these buckets and still
+assigns all eleven of the territories reattributed in issue 39 to one: Faroe Islands to
+`REUR`, Cook Islands / Niue / Northern Marianas / Palau to `ROCE`, Bermuda / Guadeloupe /
+Martinique to `RLAM`, Réunion to `RAFR`. Their own polity rows exist because FAOSTAT
+reports them individually — two reporting systems over one piece of ground. Dropping them
+from the unions would leave the polygon describing less ground than the data routed into
+it. So no geometry changed, and the consequence is documented instead: consumers must not
+allocate aggregate data spatially without deduplicating against the own-data rows.
+Measured 2026-08-17, **thirteen** polity rows lie inside ROW's union, not the eight the
+issue lists (it missed `FSM-1991-2025`, `MHL-1874-2025`, `MNP-1986-2025`, and the
+historical predecessors `BMU-1684-1968` and `REU-1816-1946`), and the overlap is
+**9,040 km² of 2,571,894**, against the issue's 7,319 of 2,569,652. Table on
+[row-1850-2025](polities/row-1850-2025.md).
+
+**Question 2 — six components claimed by two aggregates each — is one-third fixed.** The
+same source table settles `MNP` and `PLW`: it gives `RASI` exactly two members, `IOT` and
+`PCI` (Pacific Islands Trust Territory), and files both islands under `ROCE`. Their Asia
+Other membership was an artefact of proxying the defunct `PCI` with four islands, two of
+which `ROCE` already claimed. Both are removed from `RASI`'s components in
+`scripts/sources/reporting-areas/build.py`; the polygon falls 2,128 -> 1,140 km² and the
+`PCI` proxy is now `FSM` + `MHL`, about half of the Trust Territory's land area, which is
+stated on [rasi-1850-2025](polities/rasi-1850-2025.md) rather than papered over. `ROW` is
+unchanged because the islands still enter its union through `ROCE`.
+`validate_reporting_areas.py`'s baseline goes **6 -> 4**.
+
+Left open, deliberately: `BES`/`CUW`/`SXM` (`ANT-1961-2010` vs `RLAM-1850-2025`) and `UMI`
+(`RNAM` vs `ROCE`). Both need something this builder does not have — the first is a
+temporal succession with overlapping spans and would need per-year aggregate geometry; the
+second is one indivisible GADM feature that genuinely straddles two regions. Neither is
+resolvable by editing a component list, which is why they stay baselined with the argument
+written next to them.
+
 ## fao1952-population-series-resolved-issue-13
 **Date:** 2026-08-14
 **Touched:** f248-1920-1947, sac-1935-1947
