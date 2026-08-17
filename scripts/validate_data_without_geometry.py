@@ -32,6 +32,35 @@ same 34% overstatement. So AOI was the ONLY member of this class fixable without
 fetching new source data, which is the finding: what is left is a data-acquisition
 task, not a rebinding one.
 
+RE-MEASURED AGAIN 2026-08-17, LATER THE SAME DAY (issue 155, third pass): 6 polities, 327
+rows. THE PARAGRAPH ABOVE WAS WRONG, and wrong in a way worth keeping visible rather than
+deleting. Its conclusion — "what is left is a data-acquisition task, not a rebinding one" —
+rested on asking each blocked polity's OWN sources one more time. Two of the eight fell to
+asking a DIFFERENT source a different question:
+
+  * CZN-1903-1979 (5 rows). The Hay-Bunau-Varilla Treaty DEFINES the Canal Zone as five
+    miles each side of the canal centreline, so the only missing ingredient was a
+    centreline. Four sources had been queried for a Canal Zone feature and none has one —
+    but Natural Earth 10m rivers, shipped inside the paine-2024 replication package,
+    carries the "Panama Canal" as two line parts. A 5-statute-mile buffer measures
+    1,176 km2 against the stated 1,432 (-17.9%, being Gatun Lake beyond the strip plus the
+    sea approaches). Nobody had queried that file, and the page's own open question had
+    asked for exactly this construction while declaring the source absent.
+  * FCC-1862-1887 (20 rows). Cliopatria's Vietnam at 1855 MINUS Vietnam at 1860 is
+    66,039 km2 of the Mekong delta against ~65,000 stated for Cochinchina (+1.6%) — the
+    MMR-LWR-1852-1885 pattern, where what changed hands is the difference between the two
+    steps bracketing the conquest. The earlier note is right that Cliopatria's "French
+    Indochina" is the whole federation and useless here; it did not occur to it that the
+    same source answers a different question.
+
+The lesson generalises to the six that remain, so it is recorded here rather than in a PR:
+"no source has a feature for X" is a weaker statement than it sounds. It can be true while
+X is still constructible, either because X is DEFINED as an operation on something a source
+does have (CZN), or because X is the DIFFERENCE between two states a source records (FCC).
+Both remaining Canada rows, the Saar and West Berlin have all been tested against the first
+form and fail it for stated reasons; TRS and the Saar have not been tested exhaustively
+against the second.
+
 Issue 155 filed the same class at 18 polities / 1,071 rows. Re-enumerating it from the
 data rather than from the issue changed both the membership and the counts:
 
@@ -135,10 +164,16 @@ BASELINE = frozenset({
     # Its predecessor BRL-1945-1949 is now bound to the whole city, which is deliberately
     # NOT reused here: 892 km2 for a 480 km2 territory would be an 86% overstatement.
     "WBL-1949-1990",
-    # 20 rows. French Cochinchina needs the six southern Vietnamese provinces of the
-    # 1860s-80s; GADM 4.1's fetched set has no VNM file, and Cliopatria's "French
-    # Indochina" is the whole federation (753,049 km2 against Cochinchina's ~65,000).
-    "FCC-1862-1887",
+    # FCC-1862-1887 WAS HERE AND IS FIXED, 2026-08-17 (20 rows). This entry said French
+    # Cochinchina "needs the six southern Vietnamese provinces of the 1860s-80s; GADM 4.1's
+    # fetched set has no VNM file, and Cliopatria's 'French Indochina' is the whole federation
+    # (753,049 km2 against Cochinchina's ~65,000)". Both halves are true and the conclusion did
+    # not follow: the six provinces are what Cliopatria's Vietnam LOST between its 1834-1858 step
+    # (300,525 km2) and its 1859-1867 step (234,392), and that difference is 66,277 km2 in four
+    # parts. Clipped to the Mekong-delta envelope (104-108.5E, 8-12.5N) it is 66,039 km2 against
+    # ~65,000 stated, +1.6%; the 238 km2 dropped is step-boundary jitter near Nha Trang and Qui
+    # Nhon. `proxy`, because Cliopatria puts the whole loss at 1859 while France took the three
+    # western provinces only in 1867, so the polygon overstates 1862-1867 (5 of 25 years).
     # 14 rows. The 1935-1947 Saar is the 1920 Saar Territory boundary, 1,912 km2.
     # GADM's Saarland (DEU.12_1) measures 2,571 km2 — 34% larger, because post-1947
     # additions are in it. Bindable only as a documented 34% overstatement, which is a
@@ -158,14 +193,29 @@ BASELINE = frozenset({
     # oq-aoi-member-double-count on the page — geometry was attached anyway, because 10
     # rows with no territory is worse than 10 rows a hypothetical double-sum would
     # duplicate.
-    # 5 rows. The Panama Canal Zone (1,432 km2) is a strip either side of the canal; no
-    # fetched source carries it as a feature and GADM's Panamá/Colón provinces are not
-    # it. polygon_source is empty, which at least does not lie about having one.
-    "CZN-1903-1979",
-    # 4 rows. Same territory question as CAN-1800-1866 and the same measured answer;
-    # additionally its polygon_source is `gadm-4.1`, which is not a registry slug at all
-    # (the registry has gadm-4.1-adm0 and gadm-4.1-adm1), so the build reports it as an
-    # unknown source rather than as a missing feature.
+    # CZN-1903-1979 WAS HERE AND IS FIXED, 2026-08-17 (5 rows). This entry said "no fetched
+    # source carries it as a feature", which is true of the Canal Zone and irrelevant: the 1903
+    # treaty DEFINES the Zone as five statute miles each side of the canal centreline, so what was
+    # needed was a centreline, not a Zone. Natural Earth 10m rivers (inside the paine-2024 bundle)
+    # has the Panama Canal as two line parts; the 8,046.72 m buffer measures 1,176 km2 against the
+    # stated 1,432, -17.9%, the gap being Gatun Lake beyond the five-mile line plus the
+    # three-marine-mile sea approaches. `proxy` for that reason. It also falsified a claim on
+    # PAN-1903-1979's page: 95.9% of the Zone polygon lies INSIDE CShapes feature 95, so that
+    # feature does not exclude the Zone and the two rows double-count it (now an open question on
+    # the Canal Zone page, and the sentence on PAN's page is corrected).
+    # 4 rows. Same territory question as CAN-1800-1866 and the same measured answer: modern
+    # Ontario and Quebec absorbed Rupert's Land, Keewatin and Ungava between 1870 and 1912,
+    # which is precisely the territory this row exists to EXCLUDE, so their union
+    # (2,729,293 km2) overstates the row by more than the row itself.
+    #
+    # THIS ENTRY'S SECOND SENTENCE WAS STALE AND IS DELETED. It said "additionally its
+    # polygon_source is `gadm-4.1`, which is not a registry slug at all ... so the build
+    # reports it as an unknown source rather than as a missing feature". Re-measured
+    # 2026-08-17: polygon_source is `none`. The dangling slug was brought into line on
+    # 2026-08-13 (the page's own Territorial extent records it), the same day this baseline
+    # was written, so the comment was describing a state that had already gone. The
+    # `sources: [gadm-4.1]` frontmatter list still names it, which is a bibliography entry
+    # and not a polygon binding.
     "CAN-1866-1870",
 })
 
