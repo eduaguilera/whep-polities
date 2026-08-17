@@ -1,0 +1,12 @@
+country,iso3,year,item,value,unit,source
+France,FRA,1900,wheat_area,5000000,ha,fixture
+France,FRA,1901,wheat_area,5100000,ha,fixture
+France,FRA,1902,wheat_area,4900000,ha,fixture
+Malaysia,MYS,1961,rubber_production,700000,t,faostat
+Malaysia,MYS,1962,rubber_production,720000,t,faostat
+Gold Coast,,1948,cocoa_production,250000,t,fao1952
+Gold Coast,,1949,cocoa_production,260000,t,fao1952
+Hungary,HUN,1937,wheat_area,1600000,ha,fixture
+Hungary,HUN,1938,wheat_area,1650000,ha,fixture
+Nowhereland,,1900,wheat_area,1,ha,fixture
+Nowhereland,,1901,wheat_area,2,ha,fixture

@@ -1,0 +1,23 @@
+polity_code,polity_name,start_year,end_year,polity_type,iso3_code,wiki_status
+ALP-1800-1850,Alpina,1800,1850,national,XAA,reviewed
+ALP-1850-1900,Alpina,1850,1900,national,XAA,reviewed
+BOR-1850-1900,Alpina Border District,1850,1900,subnational,XAA,reviewed
+DEL-1900-1950,Delta,1900,1950,national,XAC,reviewed
+TRE-1950-1980,Delta Trust Territory,1950,1980,territory,XAC,reviewed
+ECH-1900-1949,Echo,1900,1949,national,XAD,reviewed
+ECH-1949-1960,Echo,1949,1960,national,XAD,reviewed
+FOX-1949-1960,Foxtrot,1949,1960,national,XAD,reviewed
+GHO-1800-2025,Ghostland,1800,2025,national,XAE,retired
+GHO-1900-1950,Ghostland,1900,1950,national,XAE,reviewed
+SIS-1900-2000,Islandia South,1900,2000,national,XAF,reviewed
+HIN-1900-1980,Hinterland,1900,1980,national,XAG,reviewed
+HIN-1930-1940,Hinterland Occupation Zone,1930,1940,national,XAG,reviewed
+SAR-1800-1860,Kingdom of Sarda,1800,1860,national,XAH,reviewed
+SAR-1860-1900,United Sarda,1860,1900,national,XAH,reviewed
+SAR-1960-2025,Sarda Republic,1960,2025,national,XAH,reviewed
+RIV-1910-1960,Riverland Colony,1910,1960,national,XAI,reviewed
+RIV-1960-2025,Riverland,1960,2025,national,XAI,reviewed
+TWA-1900-2000,Twinpeak North,1900,2000,national,XAJ,reviewed
+TWB-1900-2000,Twinpeak South,1900,2000,national,XAK,reviewed
+SUP-1800-2025,Supland,1800,2025,national,XAL,superseded
+SUP-1900-1950,Supland,1900,1950,national,XAL,reviewed

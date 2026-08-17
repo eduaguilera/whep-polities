@@ -1698,6 +1698,40 @@ def mutate_dead_status_exclusion_dropped(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_half_open_alias_bound(root, gpd, make_valid, affinity):
+    """Put back the defect where an alias bounded only ABOVE matched every year.
+
+    `match_alias_rule` decides whether a rule carries a year bound at all before it tests
+    the year. That test used to read `ru["y0"] is not None` — the LOWER bound alone — so a
+    rule with a blank `year_start` and a real `year_end` was classified as blanket and
+    skipped the year check entirely. One published alias is
+    `italy | iia | (blank) | 1860 -> SAR-1800-1860`, which meant IIA data labelled "italy"
+    resolved to the Kingdom of Sardinia in the year 2000.
+
+    THIS IS THE CASE THAT ARGUES FOR THE NEW GATE, because it was measured against the old
+    one: with this exact mutation applied, `crosscheck_matchers.py` PASSES — agreement
+    matches its baseline exactly and all 19 of its golden routes still resolve — while
+    validate_matcher_fixture fails and names SAR-1960-2025, the later period its synthetic
+    family carries precisely so the regression cannot hide behind the fall-through.
+
+    The mutation is one clause, and the fixture is what makes it visible: the fixture's
+    `old kingdom` rule is bounded above at 1860, and asked about the year 2000 a correct
+    matcher must refuse rather than answer from a family it was never routed to.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/matchlib.py")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = '            bounded = ru["y0"] is not None or ru["y1"] is not None'
+    assert target in text, "matchlib.match_alias_rule no longer classifies rules by bound"
+    text = text.replace(target, '            bounded = ru["y0"] is not None', 1)
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return (
+        "keyed matchlib's alias `bounded` test on year_start alone, so a rule bounded only "
+        "above skips the year check and matches every year"
+    )
+
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -2028,6 +2062,14 @@ CASES = (
         "flow is a 1000x 'disagreement' in which neither side need be wrong, and it is "
         "67.8% of what issue 112's ratio-only screen selected",
     ),
+    (
+        "validate_matcher_fixture.py",
+        mutate_half_open_alias_bound,
+        "SAR-1960-2025",
+        "an alias bounded only ABOVE matching every year, so a rule written for the era "
+        "before 1860 routes 20th-century data — a rules regression crosscheck_matchers "
+        "passes, measured, because its every assertion also depends on the real database",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -2188,6 +2230,29 @@ WRITABLE = {
         "pipelines/pre1961-matching/match.R",
         "pipelines/polity-autoimprove/extdata.py",
         "pipelines/lib/orphan_guard.R",
+    ),
+    # matchlib.py is the file this case rewrites, so it must be a real copy and not
+    # stage()'s symlink -- otherwise the mutation writes the alias-bound defect straight
+    # into the committed matcher. The fixture DIRECTORY is the gate's entire input (a
+    # synthetic polities table, a synthetic alias registry, an intake input); without it the
+    # gate exits 2 saying a fixture is missing, which names no defect and would have read as
+    # the wrong kind of failure.
+    #
+    # Check C runs 00_intake.py as a subprocess, which needs the pipeline's own module
+    # neighbours: protocol.py, and the workflow .js file protocol.py PARSES the version out
+    # of -- absent, it raises SystemExit before the intake begins. The state tables
+    # (applied_aliases, review_ledger, source_conventions) are optional to 00_intake by
+    # construction, and are staged anyway so the scratch run exercises the same ledger and
+    # conventions code paths CI does.
+    "validate_matcher_fixture.py": (
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/00_intake.py",
+        "pipelines/polity-autoimprove/protocol.py",
+        "pipelines/polity-autoimprove/verify_assertions.workflow.js",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+        "pipelines/polity-autoimprove/state/review_ledger.csv",
+        "pipelines/polity-autoimprove/state/source_conventions.csv",
+        "tests/fixtures/matcher",
     ),
     # Needs the SOURCE shapefile, not just the CSV: the gate compares each declared
     # binding against the features it could have matched. Without it the gate sees no
