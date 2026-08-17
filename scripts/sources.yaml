@@ -13,6 +13,9 @@
 #     match_year — how to use wiki's `polygon_feature_year`:
 #                  "within" → start <= year <= end
 #                  "exact_start" → start == year
+#     start_date_column, end_date_column — OPTIONAL full-date columns, used
+#                  when a page declares `polygon_feature_date` and the year
+#                  alone leaves more than one candidate (issue 100).
 #
 # Raw source files are all gitignored. Fetch them with the corresponding
 # scripts/sources/<slug>/fetch.* before running scripts/build_database.py.
@@ -30,6 +33,14 @@ sources:
       start_column: gwsyear
       end_column: gweyear
       match_year: within
+      # Full-date columns (YYYY/MM/DD). A YEAR cannot express which step a row
+      # means when CShapes subdivides one calendar year into three or more steps
+      # -- see issue 100's last two order-dependent bindings, ROU-1919-1920 and
+      # F228-1920-1921. A page may then declare `polygon_feature_date` and
+      # find_feature narrows the candidates by DAY. Optional: a source without
+      # these columns behaves exactly as before.
+      start_date_column: gwsdate
+      end_date_column: gwedate
 
   cshapes-europe:
     url: https://icr.ethz.ch/data/cshapes/CShapes-Europe.geojson

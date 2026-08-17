@@ -1231,6 +1231,42 @@ def mutate_order_dependent_binding(root, gpd, make_valid, affinity):
     return "set VNM-1887-1954's polygon_feature_year to 1893, which matches three steps"
 
 
+def mutate_dropped_feature_date(root, gpd, make_valid, affinity):
+    """Blank F228-1920-1921's polygon_feature_date, the row's ONLY tie-breaker.
+
+    This is the exact state of the repository before issue 100's last fix. CShapes cuts
+    gwcode 365's 1920 into four steps the row can match and THREE of them start in 1920,
+    so no polygon_feature_year can single one out and find_feature falls back to shapefile
+    row order. The row therefore depends on `polygon_feature_date: 1920-02-02` and on
+    nothing else.
+
+    Every other gate stays quiet: the row still declares a polygon and has one, it declares
+    no polygon_area_km2 for check A to compare, and the four candidates lie within 1.01x of
+    each other so no magnitude or containment check would notice a swap either. That
+    narrowness is the hazard, not a mitigation -- a re-fetch changes the geometry silently.
+
+    It also proves the new mechanism is load-bearing rather than decorative: if the gate
+    ignored polygon_feature_date, removing it would change nothing and this case would
+    pass.
+    """
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.reader(fh))
+    head = rows[0]
+    ci, cd = head.index("polity_code"), head.index("polygon_feature_date")
+    hit = 0
+    for r in rows[1:]:
+        if len(r) > cd and r[ci] == "F228-1920-1921":
+            assert r[cd].strip(), "F228-1920-1921 already carries no polygon_feature_date"
+            r[cd] = ""
+            hit += 1
+    assert hit == 1, f"expected one F228-1920-1921 row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        csv.writer(fh).writerows(rows)
+    return ("blanked F228-1920-1921's polygon_feature_date, leaving four CShapes steps that "
+            "contain 1920 and only shapefile row order to choose between them")
+
+
 def mutate_period_mismatched_binding(root, gpd, make_valid, affinity):
     """Put COG-1906-1912 back on its predecessor's CShapes step.
 
@@ -2062,6 +2098,13 @@ CASES = (
         mutate_order_dependent_binding,
         "VNM-1887-1954",
         "a polygon binding whose feature is chosen by shapefile row order",
+    ),
+    (
+        "validate_polygon_binding_determinism.py",
+        mutate_dropped_feature_date,
+        "F228-1920-1921",
+        "a binding whose only tie-breaker is a full DATE -- three CShapes steps start in its "
+        "single year -- with that date removed, so row order decides again",
     ),
     (
         "validate_polygon_binding_determinism.py",

@@ -108,6 +108,18 @@ source files on disk.
   for Paine).
 - `polygon_feature_year` — only for sources with a `temporal` block in
   `sources.yaml`; picks a specific time-step.
+- `polygon_feature_date` — `YYYY-MM-DD`, optional, and only for a source whose
+  `temporal` block names `start_date_column`/`end_date_column` (today:
+  `cshapes-2.0`). Use it when **no year can name the step you mean** — a source
+  that cuts one calendar year into three or more steps leaves every candidate
+  sharing its years with a neighbour, and the binding is then decided by
+  shapefile row order rather than by anything anybody wrote (issue 100).
+  `find_feature` narrows the candidates to the one containing this day and takes
+  it only if exactly one does, so a date that lands in two spans or in none
+  changes nothing and the row stays flagged by
+  `scripts/validate_polygon_binding_determinism.py`. It does **not** replace
+  `polygon_feature_year`: keep the year, since that is what records the polygon's
+  vintage for `pipelines/polity-autoimprove/04_territory_basis.py`.
 - `polygon_status` — **load-bearing, not descriptive.** `scripts/validate_polygons.py`
   keys off these values, so choosing the wrong one either hides a real error or
   fails the build:

@@ -28,6 +28,7 @@ size is controlled by the simplification step (--simplify-tolerance).
 
 from __future__ import annotations
 import argparse
+import datetime
 import re
 import sys
 from pathlib import Path
@@ -76,6 +77,30 @@ def load_sources_config() -> dict[str, dict[str, Any]]:
     return cfg["sources"]
 
 
+_DATE_RE = re.compile(r"^\s*(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})")
+
+
+def _date_key(value: Any) -> tuple[int, int, int] | None:
+    """Normalise a date to a comparable (y, m, d), or None if it is not one.
+
+    Accepts what actually turns up: `datetime.date` (YAML parses an unquoted
+    `1919-09-10` as one), the wiki's `YYYY-MM-DD` string, and CShapes' own
+    `YYYY/MM/DD` shapefile text. A bare year is deliberately NOT accepted -- a
+    year is what `polygon_feature_year` is for, and silently reading `1919` as
+    1919-01-01 would invent a precision nobody declared.
+    """
+    if value is None:
+        return None
+    if isinstance(value, datetime.datetime):
+        value = value.date()
+    if isinstance(value, datetime.date):
+        return (value.year, value.month, value.day)
+    m = _DATE_RE.match(str(value))
+    if not m:
+        return None
+    return (int(m.group(1)), int(m.group(2)), int(m.group(3)))
+
+
 class SourceReader:
     """Cache of opened OGR layers, one per source."""
 
@@ -105,7 +130,8 @@ class SourceReader:
         return lyr
 
     def find_feature(
-        self, slug: str, feature_id: Any, feature_year: int | None
+        self, slug: str, feature_id: Any, feature_year: int | None,
+        feature_date: Any = None,
     ) -> ogr.Feature | None:
         entry = self.cfg.get(slug)
         if entry is None:
@@ -132,6 +158,23 @@ class SourceReader:
         # the queried year. This disambiguates cases like CShapes where two
         # adjacent time-steps share a boundary year (e.g. gwcode 380 has
         # both 1886-1905 and 1905-2019; for year=1905 we want the 1905-one).
+        #
+        # A YEAR is not always expressive enough. CShapes subdivides some calendar
+        # years into three or more steps, and then every candidate shares its years
+        # with a neighbour, so NO polygon_feature_year can single one out and the
+        # binding is decided by shapefile row order -- issue 100's mechanism. Two rows
+        # were in exactly that position (ROU-1919-1920, F228-1920-1921). Those pages
+        # may declare `polygon_feature_date: YYYY-MM-DD`, and when the source config
+        # names full-date columns the candidates are narrowed by DAY before the
+        # year tie-break runs. A date that lands inside exactly one step decides the
+        # binding by the data.
+        feature_date_key = _date_key(feature_date)
+        date_cols = None
+        if temporal is not None and feature_date_key is not None:
+            sc = temporal.get("start_date_column")
+            ec = temporal.get("end_date_column")
+            if sc and ec:
+                date_cols = (sc, ec)
         candidates = []
         lyr.ResetReading()
         for feat in lyr:
@@ -163,13 +206,28 @@ class SourceReader:
                 elif match == "exact_start":
                     if s_year != feature_year:
                         continue
-            candidates.append((feat.Clone(), s_year))
+            d_span = None
+            if date_cols is not None:
+                ds = _date_key(feat.GetField(date_cols[0]))
+                de = _date_key(feat.GetField(date_cols[1]))
+                if ds is not None and de is not None:
+                    d_span = (ds, de)
+            candidates.append((feat.Clone(), s_year, d_span))
 
         if not candidates:
             return None
+        # Narrow by the declared DAY first, where one was declared and the source
+        # carries full dates. Only a UNIQUE hit is allowed to decide: if a date
+        # somehow lands in two spans, or in none, fall through to the year logic
+        # rather than silently taking the first again.
+        if feature_date_key is not None:
+            on_date = [c for c in candidates
+                       if c[2] is not None and c[2][0] <= feature_date_key <= c[2][1]]
+            if len(on_date) == 1:
+                return on_date[0][0]
         # Prefer features where start_year == queried year.
         if feature_year is not None:
-            exact = [f for f, s in candidates if s == feature_year]
+            exact = [f for f, s, _d in candidates if s == feature_year]
             if exact:
                 return exact[0]
         return candidates[0][0]
@@ -200,6 +258,14 @@ CSV_COLUMN_TO_FM_KEY = {
     "polygon_area_km2":     "polygon_area_km2",
     "predecessor":          "predecessor",
     "successor":            "successor",
+    # APPENDED, not inserted next to polygon_feature_year, because the schema
+    # contract pins column ORDER for consumers that read by position; a new column
+    # at the end shifts nothing. It is published rather than left in the wiki
+    # because it is LOAD-BEARING: where it is set, find_feature narrows the source's
+    # candidate steps by day, so this value decides which geometry ships (issue
+    # 100). A published binding whose deciding input is unpublished cannot be
+    # reproduced from data/final/ at all. Empty on every row that does not need it.
+    "polygon_feature_date": "polygon_feature_date",
 }
 CSV_COLUMNS = list(CSV_COLUMN_TO_FM_KEY.keys())
 
@@ -210,6 +276,13 @@ def flatten_row(fm: dict[str, Any]) -> dict[str, Any]:
         v = fm.get(fm_key)
         if isinstance(v, list):
             v = "; ".join(str(x) for x in v)
+        # YAML reads an unquoted `1919-09-10` as a date object. Publish it as the
+        # ISO text it was written as, so the CSV and the GeoPackage's string field
+        # carry the identical spelling.
+        if isinstance(v, datetime.datetime):
+            v = v.date()
+        if isinstance(v, datetime.date):
+            v = v.isoformat()
         v = "" if v is None else v
         # A frontmatter value of `NA` means missing, but YAML reads it as the
         # STRING "NA", so it reached the published CSV as text that looks present.
@@ -912,6 +985,7 @@ def main() -> int:
         src = fm.get("polygon_source")
         fid = fm.get("polygon_feature_id")
         fyear = fm.get("polygon_feature_year")
+        fdate = fm.get("polygon_feature_date")
 
         if not src or src == "none":
             continue
@@ -924,7 +998,7 @@ def main() -> int:
             n_source_not_fetched += 1
             continue
 
-        feat = reader.find_feature(src, fid, fyear)
+        feat = reader.find_feature(src, fid, fyear, fdate)
         if feat is None:
             n_feature_not_found += 1
             print(f"  ! {pc}: no match in {src} for id={fid!r} year={fyear}",

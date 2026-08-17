@@ -73,6 +73,11 @@ CSV_CONTRACT = {
         "iso3_code", "cow_code", "continent", "wiki_status", "last_ingest",
         "polygon_source", "polygon_feature_id", "polygon_feature_year",
         "polygon_status", "polygon_area_km2", "predecessor", "successor",
+        # Appended (not inserted beside polygon_feature_year) by issue 100 so no
+        # position-reading consumer shifts. Load-bearing where set: find_feature
+        # narrows a source's candidate steps by DAY, which is the only way to pin a
+        # binding whose year is shared by three or more steps.
+        "polygon_feature_date",
     ],
     "data/final/label_alias_map.csv": [
         "source_label", "source", "year_start", "year_end", "polity_code",
@@ -87,6 +92,10 @@ CSV_CONTRACT = {
     # returns the FIRST match, so reproducing its choice needs the source's own ordering.
     "data/final/polygon_feature_index.csv": [
         "source", "feature_id", "row_order", "start_year", "end_year", "area_km2",
+        # `start_date`/`end_date` appended by issue 100: the full-date span of each
+        # candidate, so a `polygon_feature_date` can be verified to fall inside
+        # exactly one of them in CI, where data/geodata/** is absent.
+        "start_date", "end_date",
     ],
     # Added with the table itself (issue 166). `source` is the STATISTICAL source (iia, fao),
     # not a polygon source -- the same word means the other thing one row above, which is

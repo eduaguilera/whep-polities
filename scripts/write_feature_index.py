@@ -33,6 +33,7 @@ Usage:
 import argparse
 import csv
 import os
+import re
 import sys
 
 import yaml
@@ -41,8 +42,26 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCES = os.path.join(REPO, "scripts/sources.yaml")
 CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
 OUT = os.path.join(REPO, "data/final/polygon_feature_index.csv")
-COLUMNS = ["source", "feature_id", "row_order", "start_year", "end_year", "area_km2"]
+COLUMNS = ["source", "feature_id", "row_order", "start_year", "end_year", "area_km2",
+           "start_date", "end_date"]
 EQUAL_AREA = "+proj=cea +lat_ts=0 +lon_0=0 +units=m"
+
+
+DATE_RE = re.compile(r"^\s*(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})")
+
+
+def _iso_date(value):
+    """Normalise a source date column to `YYYY-MM-DD`, or "" if it is not a date.
+
+    CShapes writes `1919/09/10`; the wiki writes `1919-09-10`. One spelling in the
+    published index, so a consumer can compare the two as strings.
+    """
+    if value is None:
+        return ""
+    m = DATE_RE.match(str(value))
+    if not m:
+        return ""
+    return f"{int(m.group(1)):04d}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
 
 
 def build():
@@ -101,6 +120,7 @@ def build():
                 order += 1
                 continue
             s = e = ""
+            sd = ed = ""
             if temporal:
                 sv = feat.GetField(temporal["start_column"])
                 ev = feat.GetField(temporal["end_column"])
@@ -108,6 +128,18 @@ def build():
                     s = int(str(sv)[:4])
                 if ev is not None:
                     e = int(str(ev)[:4])
+                # FULL DATES, where the source has them (issue 100). A YEAR cannot
+                # say which step a row means when a source subdivides one calendar
+                # year into three or more, which is why two bindings stayed
+                # order-dependent after every other one had been pinned. With the
+                # dates here, the gate can verify a `polygon_feature_date` lands
+                # inside exactly one candidate span WITHOUT data/geodata.
+                sdc = temporal.get("start_date_column")
+                edc = temporal.get("end_date_column")
+                if sdc:
+                    sd = _iso_date(feat.GetField(sdc))
+                if edc:
+                    ed = _iso_date(feat.GetField(edc))
             area = ""
             g = feat.GetGeometryRef()
             if g is not None and tr is not None:
@@ -120,6 +152,7 @@ def build():
             out.append({
                 "source": slug, "feature_id": key, "row_order": order,
                 "start_year": s, "end_year": e, "area_km2": area,
+                "start_date": sd, "end_date": ed,
             })
             order += 1
     return out, unknown, unfetched
