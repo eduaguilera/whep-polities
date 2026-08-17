@@ -196,11 +196,28 @@ BASELINE = {
         "EXTRACTION DAMAGE, visible in the label itself: the row is `EI Salvador`, an OCR misread "
         "of `El`. The stated 34,130 km2 is 62% above El Salvador's 21,041, so the number is as "
         "suspect as the name. Belongs to the digitisation review, not to this repo.",
-    ("JAM-1800-2025", "fao"):
-        "THE LABEL IS NOT THE POLITY. `British West Indies Jamaica` states 1,420 km2 against "
-        "Jamaica's 10,991, and IIA's equivalent sub-label states 231-271 km2 -- BOTH sources "
-        "give a small figure, so this is a sub-unit inside a BWI section rather than the island. "
-        "The alias routing it to JAM-1800-2025 is what needs revisiting, not the polygon.",
+    # JAM-1800-2025 / fao was baselined here as "THE LABEL IS NOT THE POLITY ... IIA's equivalent
+    # sub-label states 231-271 km2 -- BOTH sources give a small figure, so this is a sub-unit
+    # inside a BWI section rather than the island. The alias routing it to JAM-1800-2025 is what
+    # needs revisiting, not the polygon." THAT WAS WRONG, and issue 111 is why it was re-measured.
+    #
+    # The 231-271 km2 belongs to `INDES OCCIDENTALES BRITANNIQUES: JAMAIQUE: CAIMANS` -- the
+    # CAYMAN ISLANDS, whose own polity is CYM-1800-2025 at 281 km2 and whose FAO 1952 sibling row
+    # states 240. It is a different reporting unit that happens to be indented under Jamaica.
+    # IIA's actual `JAMAIQUE` line states 10,880 / 10,896 / 11,525 / 11,526 km2 across its six
+    # editions, i.e. the ISLAND, within 0.2-4.9% of our 11,001 polygon and of the modern 10,991.
+    # The lexicon now maps that label (and the Bahamas one), so IIA votes here and the second
+    # source is no longer invisible; the accepted band widens to 1,420-11,525 and our polygon sits
+    # inside it, which is why this entry is gone rather than reworded.
+    #
+    # So FAO 1952's 1,420 is a TRANSCRIPTION ERROR, not a narrower scope, and it is not the x10
+    # kind: 14,200 would be 1.29x of Jamaica while 11,420 -- a DROPPED LEADING 1 -- is 1.039x.
+    # Its BWI neighbours in the same table are right (Barbados 450 vs our 435, 1.03x; Cayman
+    # Islands 240 vs our 281, 0.86x), which is what makes it a slip in one cell rather than a
+    # different territorial basis for the block. Logged as a source error, with the sibling
+    # `British West Indies Bahamas` 1,400-for-13,880 (a clean x10), in
+    # pipelines/polity-autoimprove/state/data_errors.csv; the figure is NOT corrected here,
+    # because this repo records what the yearbook printed.
     ("NFK-1914-2025", "fao"):
         "A UNIT ERROR IN THE SOURCE. FAO states 350 km2 for Norfolk Island, which is 35 km2 -- "
         "exactly 10x, i.e. a figure in km2 recorded under the `1000 hectares` heading. Our 37 is "
@@ -213,7 +230,41 @@ BASELINE = {
         "same polygon as PRY-1870-1932 (293,549) against a stated 457,872 for 1932/1933/1937. "
         "The Chaco War is fought across this row's span, so the stated figure is a claim under "
         "active dispute -- but the polygon does not move at all, which is the issue 22 problem.",
+    ("JAM-1800-2025", "fao"):
+        "A TRANSCRIPTION ERROR IN THIS SOURCE, and NOT a x10 one. FAO 1952's `British West "
+        "Indies Jamaica` states 142 thousand ha = 1,420 km2 for an island of 10,991. A decimal "
+        "shift gives 14,200 (1.29x, too large); restoring a dropped leading digit gives 11,420 "
+        "(1.039x). IIA's own `JAMAIQUE` line states 10,880-11,526 across six editions and our "
+        "polygon is 11,001, so the polygon and the alias are right and this one figure is wrong. "
+        "Its BWI neighbours in the same FAO table are right (Barbados 450 vs 435; Cayman Islands "
+        "240 vs 281), which is what makes it one bad cell rather than a narrower basis for the "
+        "block. DO NOT use 1,420 km2 as a denominator for Jamaican FAO 1952 rows. Logged with "
+        "the sibling Bahamas error in pipelines/polity-autoimprove/state/data_errors.csv; the "
+        "figure is not corrected, because this repo carries what the yearbook printed.",
 }
+
+# (polity_code, source) -> why ONE SOURCE's figure is wrong for a polity the gate does NOT fail on.
+#
+# BASELINE cannot hold these, because it is bidirectional: an entry there for a polity now inside
+# the accepted band is itself a failure ("remove its entry"). But a polity can be accepted on one
+# source's figure while the OTHER source's is badly wrong, and that is exactly the case a per-km2
+# consumer has to be warned about -- it divides by the figure IT holds, not by the accepted band.
+# `write_stated_area_basis.py` publishes these into the `note` column so the warning survives
+# outside this file. Nothing here affects pass/fail.
+SOURCE_NOTES = {
+    # Empty today. The JAM-1800-2025/fao note that lived here moved to BASELINE on
+    # 2026-08-17: divergence is computed PER (polity, source), so IIA voting 10,880-11,526 does
+    # not bring JAM inside the band FAO states, and only BASELINE suppresses a failure.
+    # write_stated_area_basis.py reads BOTH dicts, so the published warning survives the move.
+
+}
+
+_both = sorted(set(BASELINE) & set(SOURCE_NOTES))
+if _both:
+    raise SystemExit(
+        f"BASELINE and SOURCE_NOTES both explain {_both}; a divergence is either baselined or "
+        f"a one-source note, not both, or the published note is ambiguous"
+    )
 
 
 

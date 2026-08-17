@@ -293,6 +293,18 @@ print(f"{len(cells)} flagged cell(s), {len(series)} defective run(s) "
       f"({len(multi)} spanning 3+ paired years)")
 print(f"  runs naming one column: {len(with_fac)}; of those a clean power of ten: "
       f"{len(clean_fac)}")
+# HOW LOOSE `clean` IS, printed rather than left to be assumed. POW10_WINDOW is 50%, so a run
+# can be is_pow10=True and still sit nearly a factor of two off the power of ten. Measured
+# 2026-08-17 the residuals span 0.52x-1.44x, i.e. repairing the worst True run by 10^n leaves
+# it 48% out -- not the "within ~9%" that mitchell natal maize (1.08) and iia ghana cotton lint
+# (1.09) suggest if you only look at the two the issue quotes. Anyone batch-repairing by powers
+# of ten needs this number, so the gate says it every run instead of only when it fails.
+if clean_fac:
+    resid = sorted(num(r["implied_factor"]) / 10.0 ** pow10(num(r["implied_factor"]))
+                   for r in clean_fac)
+    worst = max(resid, key=lambda v: abs(v - 1.0))
+    print(f"  residual of those after repairing by 10^n: {resid[0]:.2f}x-{resid[-1]:.2f}x "
+          f"(worst {abs(worst - 1.0):.0%} out) — `clean` is a 50% window, not a tight fit")
 
 print(f"\nDERIVED COLUMNS DISAGREEING WITH THEIR OWN ROW: {len(problems)}")
 for p in problems[:40]:

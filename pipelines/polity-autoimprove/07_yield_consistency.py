@@ -76,6 +76,14 @@ Two things that pass discovered, and that the per-cell table cannot express:
      scripts/validate_yield_corrections.py re-derives that boolean, so it cannot drift
      back into an unconditional assertion.
 
+     AND `true` IS NOT A TIGHT FIT. On the 50% window the 14 true runs' residuals after a
+     10^n repair span 0.52x-1.44x -- fao1952 tanganyika bananas 0.524 and iia taiwan tobacco
+     0.525 are nearly a factor of TWO from the nearest power of ten, and iia russian
+     federation rye is 1.44x. The two runs issue 111's title leans on (mitchell natal maize
+     1.08, iia ghana cotton lint 1.09) are the tightest of the fourteen, not typical, so a
+     batch x10^n pass would leave the worst of them 48% out rather than 8-9%. The gate prints
+     that range on every run. Use `implied_factor`, not `implied_factor_pow10`.
+
 A column whose ratio is large but under 10x is recorded as `secondary_suspect`, not asserted:
 a real territorial change produces exactly that signature. juan austria grapes is the case --
 its area drops 213,400 -> 48,500 ha at 1918 because pre-1918 "austria" is Cisleithania, not

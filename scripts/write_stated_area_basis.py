@@ -34,6 +34,12 @@ some OTHER source's figure keeps it inside the accepted band, so no reason was e
 THIS source's basis. Per-source is the granularity a denominator needs: FAO and IIA disagree about
 Tunisia by a quarter, and the row you are dividing came from one of them, not from their median.
 
+Notes come from TWO dicts in `validate_stated_areas`, and the second exists because of that
+sentence. `BASELINE` is bidirectional -- an entry for a polity now inside the band is itself a gate
+failure -- so a polity accepted on IIA's figure while FAO's is 7.7x wrong (JAM-1800-2025, issue
+111) could not keep its explanation there. `SOURCE_NOTES` holds those, and this table publishes
+either, so a per-km2 consumer reading one source's row is still told the figure is bad.
+
 The comparison itself is NOT reimplemented here -- it is `validate_stated_areas.analyse()`, so the
 published table and the gate that guards it cannot drift apart.
 
@@ -88,7 +94,7 @@ def build() -> list:
             flag = "review"
         else:
             flag = "agrees"
-        note = V.BASELINE.get((code, source), "")
+        note = V.BASELINE.get((code, source)) or V.SOURCE_NOTES.get((code, source), "")
         rows.append({
             "polity_code": code,
             "polity_name": names.get(code, ""),
