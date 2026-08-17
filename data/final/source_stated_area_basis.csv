@@ -17,7 +17,7 @@ ARG-1902-2025,Argentina,iia,2792713,9,1909;1925;1929;1932;1933;1938,ARGENTINE;ar
 ASM-1900-2025,Territory of American Samoa,fao,200,1,1952,American Samoa,204,1.018,agrees,
 AUS-1901-2025,Australia,fao,7704020,1,1952,Australia,7687109,0.998,agrees,
 AUS-1901-2025,Australia,iia,7704022,9,1909;1925;1929;1932;1933;1938,AUSTRALIE;AUSTRALIE british;australie,7687109,0.998,agrees,
-AUT-1800-1918,Austria (Cisleithania),iia,300004,3,1909;1925;1929,AUTRICHE;autriche,300304,1.001,agrees,
+AUT-1800-1918,Austria (Cisleithania),iia,300004,3,1909;1925;1929,AUTRICHE;autriche,300303,1.001,agrees,
 AUT-1919-2025,Austria,fao,81360,1,1952,Austria,84021,1.033,agrees,
 AUT-1919-2025,Austria,iia,83845,6,1909;1925;1929;1932;1933;1938,AUTRICHE;autriche,84021,1.002,agrees,
 BEL-1831-2025,Belgium,fao,30510,1,1952,Belgium,30692,1.006,agrees,
@@ -95,7 +95,7 @@ FCM-1920-1960,French Cameroon (1920-1960),fao,440900,1,1952,French Cameroons,422
 FID-1887-1954,French Indochina,iia,740400,9,1909;1925;1929;1932;1933;1938,INDOCHINE;indochine,753049,1.017,agrees,
 FIN-1917-1940,Finland (1917-1940),iia,388217,6,1909;1925;1929;1932;1933;1938,FINLANDE;finlande,388750,1.001,agrees,
 FIN-1940-2025,Finland (1940-2025),fao,337010,1,1952,Finland,335207,0.995,agrees,
-FJI-1800-2025,Fiji,fao,18230,1,1952,Fiji,18649,1.023,agrees,
+FJI-1800-2025,Fiji,fao,18230,1,1952,Fiji,18650,1.023,agrees,
 FLK-1833-2025,Falkland Islands,fao,15720,1,1952,Falkland Islands,12208,0.777,agrees,
 FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",iia,536464,3,1909;1925;1929,FRANCE;france,532305,0.992,agrees,
 FRA-1919-2025,France,fao,551600,1,1952,France,548058,0.994,agrees,
@@ -117,8 +117,8 @@ GMB-1800-2025,Gambia,iia,10539,9,1909;1925;1929;1932;1933;1938,GAMBIE;GAMBIE bri
 GRC-1881-1913,Greece (1881–1913),iia,119050,3,1909;1925;1929,GRECE;GRÈCE;grèce,63612,0.534,review,"PERIOD MISMATCH IN THE SOURCE, not in us. IIA's 1925 edition states 119,050 km2 under the data year 1913 -- post-Balkan-Wars Greece -- while this row ends in 1913 and covers the 63,211 km2 kingdom. Our 63,612 is right for the row. The yearbook is labelling a 1913 column with the territory Greece held after the treaties of that year."
 GRC-1919-1947,Greece (1919-1947),iia,130199,6,1909;1925;1929;1932;1933;1938,GRECE;GRÈCE;grèce,129841,0.997,agrees,
 GRC-1947-2025,Greece (1947-2025),fao,132560,1,1952,Greece,129841,0.979,agrees,
-GRL-1800-2025,Greenland,fao,2176000,1,1952,Greenland,2148910,0.988,agrees,
-GRL-1800-2025,Greenland,iia,88100,7,1909;1925;1932;1933;1938,GROENLAND,2148910,24.392,source_figure_suspect,
+GRL-1800-2025,Greenland,fao,2176000,1,1952,Greenland,2148912,0.988,agrees,
+GRL-1800-2025,Greenland,iia,88100,7,1909;1925;1932;1933;1938,GROENLAND,2148912,24.392,source_figure_suspect,
 GTM-1821-2025,Guatemala,fao,108890,1,1952,Guatemala,109118,1.002,agrees,
 GTM-1821-2025,Guatemala,iia,109960,9,1909;1925;1929;1932;1933;1938,GUATEMALA;GUATÉMALA;guatémala,109118,0.992,agrees,
 GUF-1816-1946,French Guiana (Colony),iia,88240,9,1909;1925;1929;1932;1933;1938,GUYANE FRANÇAISE;GUYANE FRANÇAISE ET ININI;guyane française,83660,0.948,agrees,
@@ -176,7 +176,7 @@ LTU-1918-1940,Lithuania (interwar republic),iia,55670,6,1909;1925;1929;1932;1933
 LUX-1839-2025,Luxembourg,fao,2590,1,1952,Luxembourg,2591,1.000,agrees,
 LUX-1839-2025,Luxembourg,iia,2586,9,1909;1925;1929;1932;1933;1938,LUXEMBOURG;luxembourg,2591,1.002,agrees,
 LVA-1918-1940,Latvia (interwar republic),iia,65791,6,1909;1925;1929;1932;1933;1938,LETTONIE;lettonie,65978,1.003,agrees,
-MAN-1932-1945,Manchukuo (1932-1945),iia,1303143,1,1938,MANDCHOUKOUO,791708,0.608,review,"SCOPE. IIA states 1,303,143 km2 for Manchukuo, which includes Jehol and the Inner Mongolian leagues; our 791,708 is the three north-eastern provinces. build_man_1932_1945() documents that choice, and this is the first external evidence of what it costs."
+MAN-1932-1945,Manchukuo (1932-1945),iia,1303143,1,1938,MANDCHOUKOUO,791707,0.608,review,"SCOPE. IIA states 1,303,143 km2 for Manchukuo, which includes Jehol and the Inner Mongolian leagues; our 791,708 is the three north-eastern provinces. build_man_1932_1945() documents that choice, and this is the first external evidence of what it costs."
 MAR-1911-1958,Morocco (to 1958),fao,390800,1,1952,French Morocco,350268,0.896,agrees,
 MAR-1911-1958,Morocco (to 1958),iia,415000,9,1909;1925;1929;1932;1933;1938,MAROC FRANÇAIS;maroc français,350268,0.844,agrees,
 MCO-1800-2025,Monaco,fao,2,1,1952,Monaco,2,1.192,agrees,

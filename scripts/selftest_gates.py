@@ -1656,6 +1656,84 @@ def mutate_trace_flow_into_mirror_gaps(root, gpd, make_valid, affinity):
             "class that is 67.8% of what issue 112's ratio-only screen selected")
 
 
+def mutate_direction_verdict_withdrawn(root, gpd, make_valid, affinity):
+    """Return one resolved mirror flow to "nobody knows which side", leaving whep's default.
+
+    THIS IS THE STATE THE REPOSITORY WAS IN BEFORE the availability tie-breaker existed, and
+    it is the state `trade_mirror_gaps.csv` is still REQUIRED to be in: a pair of tonnages
+    with no third quantity cannot name a guilty side, so that table may not carry a direction
+    column at all. What licenses the claim here is production. Mexico reports 195,282 t of
+    green onions exported to the United States in 1995; Mexico's entire production that year
+    was 71,919 t and its imports 12,936 t, so 84,855 t was everything it had, and the United
+    States reports receiving 2 t. whep's rule (R/bilateral_trade.R keeps the exporter's
+    figure) keeps the 195,282.
+
+    The mutation withdraws that verdict -- `impossible_side` none, `plausible_side`
+    undetermined, `whep_keeps_plausible` unknown -- and changes nothing else. Every tonnage
+    still agrees with itself, the ratio is untouched, the row count is unchanged, the flow is
+    still in the mirror table, and the summary's `direction_undetermined` count is one of the
+    figures this harness's staged copy leaves alone. So the row reads as one of the 3,864
+    undecidable flows, and only a gate that re-derives the verdict FROM the availability can
+    see that this one was decided and the decision was dropped: 18 flows where whep keeps a
+    tonnage the exporter's own supply refutes become 17, and the one that vanishes is
+    invisible.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/trade_mirror_direction.csv")
+    with open(path, encoding="utf-8") as fh:
+        lines = fh.read().splitlines(keepends=True)
+    target = None
+    for i, line in enumerate(lines):
+        if ("Mexico" in line and "Onions and shallots, green" in line
+                and ",1995,195282.0," in line and line.rstrip().endswith(
+                    ",exporter,importer,false")):
+            target = i
+            break
+    assert target is not None, (
+        "the Mexico->USA 1995 'Onions and shallots, green' flow is no longer the table's "
+        "exporter-refuted row; pick another row whose plausible_side is `importer`")
+    lines[target] = lines[target].rstrip("\r\n").replace(
+        ",exporter,importer,false", ",none,undetermined,unknown") + "\n"
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.writelines(lines)
+    return ("withdrew the availability verdict on Mexico->USA 1995 'Onions and shallots, "
+            "green' -- 195,282 t exported against 84,855 t of production plus imports -- so "
+            "the flow reads as undecidable and whep's exporter preference stands unchallenged")
+
+
+def mutate_reexport_filed_as_unsourceable(root, gpd, make_valid, affinity):
+    """Relabel an entrepot's transit trade as exports nothing could have supplied.
+
+    Issue 14's whole point is that this class is NOT an error: a port that imports and
+    re-ships exports far more than it grows, which is why the re-export class is led by the
+    Netherlands, Belgium, Hong Kong and Singapore -- #14's own candidate list, arrived at
+    from the data. The distinction the table draws is between exports above PRODUCTION
+    (a routing label, `reexport`) and exports above production PLUS imports (unsourceable,
+    a candidate scale error).
+
+    This mutation moves one re-export row into `exceeds_availability` and touches nothing
+    else, so its three tonnages are still internally consistent and both ratio columns still
+    check out. The cost is in both directions: a reader triaging the unsourceable class now
+    finds ordinary transit trade in it, and the class that #14 asked to have MARKED loses a
+    member. Only re-deriving the class from the row's own tonnages against the 1.1x screen
+    distinguishes them.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/trade_entrepot_flags.csv")
+    with open(path, encoding="utf-8") as fh:
+        lines = fh.read().splitlines(keepends=True)
+    target = None
+    for i, line in enumerate(lines):
+        if line.rstrip().endswith(",reexport"):
+            target = i
+            break
+    assert target is not None, "the entrepot table no longer carries a `reexport` row"
+    lines[target] = lines[target].rstrip("\r\n")[: -len("reexport")] + \
+        "exceeds_availability\n"
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.writelines(lines)
+    return ("filed one re-export row -- exports above production but covered by imports, "
+            "which is what an entrepot does -- as exports nothing could have supplied")
+
+
 def mutate_entrepot_flag_dropped(root, gpd, make_valid, affinity):
     """Demote the one recorded entrepôt flow back to `production` in state, and leave the
     published file as it was.
@@ -2201,6 +2279,22 @@ CASES = (
         "not exist here, and Peru 1950's 1,000 (1000 ha) short arable cell goes back to "
         "looking fine",
     ),
+    (
+        "validate_trade_direction_tiebreak.py",
+        mutate_direction_verdict_withdrawn,
+        "Onions and shallots, green",
+        "a mirror flow whose availability verdict was dropped, so 195,282 t exported "
+        "against 84,855 t of production plus imports reads as undecidable and whep's "
+        "exporter preference keeps the refuted figure unchallenged",
+    ),
+    (
+        "validate_trade_direction_tiebreak.py",
+        mutate_reexport_filed_as_unsourceable,
+        "covered by availability",
+        "an entrepot's transit trade filed as exports nothing could have supplied -- issue "
+        "14's class is a LABEL, not a defect, and the two classes differ only by whether "
+        "imports cover the exports",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -2319,6 +2413,19 @@ WRITABLE = {
     "validate_trade_mirror_gaps.py": (
         "pipelines/polity-autoimprove/state/trade_mirror_gaps.csv",
         "pipelines/polity-autoimprove/state/trade_mirror_summary.csv",
+    ),
+    # Both availability tables must be REAL COPIES: one case rewrites a verdict in the
+    # direction table and the other rewrites a class in the entrepot table, and with
+    # stage()'s default symlink either mutation would write straight through into the
+    # committed table. The mirror gap table and the summary are staged because this gate
+    # holds all four to each other -- it requires every direction row to exist in the mirror
+    # table with the same two tonnages, so without it the gate reports 3,913 flows as never
+    # having passed the mirror screen and the case's own defect arrives buried.
+    "validate_trade_direction_tiebreak.py": (
+        "pipelines/polity-autoimprove/state/trade_entrepot_flags.csv",
+        "pipelines/polity-autoimprove/state/trade_mirror_direction.csv",
+        "pipelines/polity-autoimprove/state/trade_availability_summary.csv",
+        "pipelines/polity-autoimprove/state/trade_mirror_gaps.csv",
     ),
     # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
     # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with

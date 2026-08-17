@@ -153,6 +153,34 @@ TRADE_EXPORT_QUANTITY_CODE = 5910
 TRADE_IMPORT_QUANTITY_CODE = 5610
 TRADE_TONNE_UNIT = "tonnes"
 
+# --------------------------------------------------------------------------------------
+# The FAOSTAT production pin. This is the THIRD QUANTITY a mirror gap does not have
+# (issue 112's follow-up, and issue 14's entrepot class): a flow A->B can be tested against
+# what A had to ship, production + A's own imports, in the same year.
+#
+# WHY THIS PIN AND NOT LAYER B. Issue 112's follow-up says the entrepot pattern is
+# "checkable against layer-B production". It is not, on these flows: layer B ends in 1960
+# and the bilateral pin starts in 1986, so the two share NOT ONE YEAR. Measured, not
+# assumed -- see 13_trade_entrepot_direction.py, which prints both ranges and writes the
+# overlap into its summary. This pin covers 1961-2024 and, decisively, is keyed on the SAME
+# FAOSTAT area and item codes as the bilateral pin, so the join needs no ISO3 crosswalk and
+# no item concordance: 189 of the bilateral pin's 189 reporters and 234 of its 555 items
+# resolve directly.
+FAOSTAT_PRODUCTION = os.environ.get("WHEP_FAOSTAT_PRODUCTION", "")
+FAOSTAT_PRODUCTION_GLOB = os.path.expanduser(
+    "~/.cache/pins/url/*/faostat-production.parquet"
+)
+FAOSTAT_PRODUCTION_COLUMNS = (
+    "Area Code", "Area", "Item Code", "Item", "Element Code", "Element",
+    "Year", "Unit", "Value",
+)
+# Element 5510 is "Production", and its unit must be checked as well as its code: 5510 also
+# occurs with Unit "1000 No" (eggs, 18,208 rows) and 5513 is a second "Production" element
+# in "1000 No". Summing Value across units adds thousands of eggs to tonnes of wheat, which
+# is the same failure as the five element codes spelling "Export Quantity" above.
+PRODUCTION_ELEMENT_CODE = 5510
+PRODUCTION_TONNE_UNIT = "t"
+
 
 class ExternalDataError(RuntimeError):
     """An external dataset does not look the way this pipeline believes it does."""
@@ -522,6 +550,93 @@ def require_trade_quantity_codes(element_names) -> None:
             )
 
 
+def find_faostat_production(path: str | None = None) -> str:
+    """Resolve the FAOSTAT production pin's path, or raise naming the env var and the glob.
+
+    Same contract as find_trade_bilateral, for the same reason: the pins cache keys on a
+    content hash, so a re-pinned file lands in a new directory and a hard-coded path would
+    silently go stale rather than fail.
+    """
+    import glob
+
+    target = path or FAOSTAT_PRODUCTION
+    if target:
+        if not os.path.exists(target):
+            raise FileNotFoundError(
+                f"FAOSTAT production pin not found at {target!r} "
+                f"(from WHEP_FAOSTAT_PRODUCTION)."
+            )
+        return target
+    hits = sorted(glob.glob(FAOSTAT_PRODUCTION_GLOB), key=os.path.getmtime, reverse=True)
+    if not hits:
+        raise FileNotFoundError(
+            f"FAOSTAT production pin not found. Looked for {FAOSTAT_PRODUCTION_GLOB!r}; set "
+            f"WHEP_FAOSTAT_PRODUCTION to point at faostat-production.parquet. It lives in "
+            f"the maintainer's pins cache, outside this repository."
+        )
+    return hits[0]
+
+
+def load_faostat_production(path: str | None = None, columns=None):
+    """Load the FAOSTAT production pin, asserting its columns and its Element labels.
+
+    4.21M rows by 14 columns, so pass `columns` for a subset -- asserted against
+    FAOSTAT_PRODUCTION_COLUMNS all the same. The Element/Unit checks are not ceremony:
+    filtering Element Code 5510 without also filtering Unit "t" mixes tonnes with the
+    "1000 No" rows and the sum is about nothing.
+    """
+    import pandas as pd
+
+    # Schema check FIRST, before the file lookup, so the half that needs no pin still runs
+    # in the self-test. Same ordering as load_trade_bilateral, and for the same reason.
+    want = list(columns) if columns else list(FAOSTAT_PRODUCTION_COLUMNS)
+    unknown = [c for c in want if c not in FAOSTAT_PRODUCTION_COLUMNS]
+    if unknown:
+        raise ExternalDataError(
+            f"FAOSTAT production pin: {unknown} is not in this module's documented schema "
+            f"{list(FAOSTAT_PRODUCTION_COLUMNS)}. Add it there as well, so a later rename "
+            f"upstream raises here instead of returning an empty column."
+        )
+    target = find_faostat_production(path)
+    frame = pd.read_parquet(target, columns=want)
+    where = f"FAOSTAT production pin ({os.path.basename(target)})"
+    require_columns(frame, want, where)
+    if "Element" in frame.columns:
+        require_any_value(frame, "Element", ["production"], where)
+    if "Unit" in frame.columns:
+        require_any_value(frame, "Unit", [PRODUCTION_TONNE_UNIT], where,
+                          case_insensitive=False)
+    return frame
+
+
+def require_production_tonnes_code(frame) -> None:
+    """Assert 5510/"t" still means production in tonnes on the frame just loaded.
+
+    The pin carries a second "Production" element (5513, 1000 No) and 5510 itself occurs in
+    a non-tonne unit, so neither the code nor the unit identifies the quantity alone. A
+    renumbering upstream would leave both filters selecting rows and summing cleanly, and
+    the answer would be about a different quantity -- the quiet half of the capital-Q trap.
+    """
+    require_columns(frame, ["Element Code", "Element", "Unit"], "FAOSTAT production pin")
+    sub = frame[(frame["Element Code"] == PRODUCTION_ELEMENT_CODE)
+                & (frame["Unit"] == PRODUCTION_TONNE_UNIT)]
+    if sub.empty:
+        raise ExternalDataError(
+            f"FAOSTAT production pin: no row has Element Code "
+            f"{PRODUCTION_ELEMENT_CODE} with Unit {PRODUCTION_TONNE_UNIT!r}. This module's "
+            f"code/unit pair is stale; a filter on an absent pair returns an empty frame "
+            f"and reports zero production for every country."
+        )
+    labels = {str(v).lower() for v in sub["Element"].dropna().unique()}
+    if not any("production" in v for v in labels):
+        raise ExternalDataError(
+            f"FAOSTAT production pin: Element Code {PRODUCTION_ELEMENT_CODE} with Unit "
+            f"{PRODUCTION_TONNE_UNIT!r} is labelled {sorted(labels)}, not a production "
+            f"quantity. Filtering on it still returns rows, so the result would be about "
+            f"something else."
+        )
+
+
 def _selftest() -> int:
     """Prove the guards fire. Run: python3 extdata.py"""
     import contextlib
@@ -611,6 +726,39 @@ def _selftest() -> int:
     except FileNotFoundError:
         print("FAIL: the schema check ran after the file lookup, so it is unreachable "
               "without the pin"); ok = False
+
+    # The production pin's guards (issue 112's follow-up): the third quantity a mirror gap
+    # lacks. Synthetic frames, so this runs without the 4.2M-row pin.
+    try:
+        load_faostat_production(columns=["Area Code", "Production"])
+        print("FAIL: accepted a column absent from the production pin's schema"); ok = False
+    except ExternalDataError as e:
+        assert "Production" in str(e)
+        print("pass: a column outside FAOSTAT_PRODUCTION_COLUMNS raises before any read")
+    except FileNotFoundError:
+        print("FAIL: the production schema check ran after the file lookup, so it is "
+              "unreachable without the pin"); ok = False
+
+    # The trap this guard exists for: element 5510 present, but only in the 1000-No unit, so
+    # a tonne filter selects nothing and every country reports zero production.
+    eggs = pd.DataFrame({"Element Code": [5510.0], "Element": ["Production"],
+                         "Unit": ["1000 No"], "Value": [7.0]})
+    try:
+        require_production_tonnes_code(eggs)
+        print("FAIL: accepted a production pin with no tonne rows under 5510"); ok = False
+    except ExternalDataError as e:
+        assert "5510" in str(e)
+        print("pass: production element 5510 with no tonne unit raises instead of summing zero")
+    try:
+        require_production_tonnes_code(pd.DataFrame(
+            {"Element Code": [5510.0], "Element": ["Area harvested"], "Unit": ["t"],
+             "Value": [7.0]}))
+        print("FAIL: accepted 5510 relabelled to a non-production element"); ok = False
+    except ExternalDataError as e:
+        assert "not a production" in str(e)
+        print("pass: a renumbered production element raises instead of summing areas")
+    require_production_tonnes_code(pd.DataFrame(
+        {"Element Code": [5510.0], "Element": ["Production"], "Unit": ["t"], "Value": [7.0]}))
 
     codes = polity_codes_from_database()
     if not codes:

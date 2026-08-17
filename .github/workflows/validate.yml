@@ -686,6 +686,9 @@ jobs:
       - name: Mirrors — every flagged trade flow really breaches both halves of the screen
         if: '!cancelled()'
         run: python3 scripts/validate_trade_mirror_gaps.py
+      - name: Mirrors — and each direction verdict follows from the exporter's own supply
+        if: '!cancelled()'
+        run: python3 scripts/validate_trade_direction_tiebreak.py
 
       # Last, because it is the only step that answers "can the steps above
       # fail?". Twenty-one gates that all pass are indistinguishable, from a

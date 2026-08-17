@@ -53,6 +53,13 @@ inventing a direction here would be exactly the mistake 07 refuses when it write
 keep, which is the reviewable fact; the direction needs a tie-breaker this screen does not
 have (reporter reliability, or a third-party total).
 
+That tie-breaker now exists next door, and it is a third quantity rather than either of
+those: 13_trade_entrepot_direction.py tests both claims against the exporter's own
+production plus imports, since a shipment cannot exceed what the shipper had. It decides 49
+of these flows and leaves 3,864 undetermined, which is why THIS table still carries no
+direction column -- the mirror alone cannot say, and only 30.6% of the flows have a
+production figure to be judged against at all.
+
 It is also DIFFUSE: the top 20 (reporter, item) pairs hold 9.8% of the 12,775. So no
 per-series correction table of 06's shape can cover it -- whatever consumes this has to
 work per flow.
