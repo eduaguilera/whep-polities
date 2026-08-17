@@ -186,6 +186,38 @@ def load_whep_crops(path: str | None = None, columns=None):
     return frame
 
 
+POLITIES_CSV = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data/final/polities_database.csv",
+)
+
+
+def polity_codes_from_database(path: str | None = None) -> set:
+    """The published polity codes, for the reverse guard in rename_layer_b_misnamed.
+
+    Exists so that guard cannot be inert BY DEFAULT. `rename_layer_b_misnamed` only refuses
+    to relabel a fixed upstream if it is TOLD what a real polity code looks like, and two of
+    the three readers here (07_yield_consistency, 10_livestock_consistency) called
+    load_layer_b() with no argument -- so for them the check compared against nothing and
+    passed for that reason, not because the column was still wrong. A guard that is present
+    but supplied with an empty set is the same silence it was written to break.
+
+    Returns an empty set if the CSV is missing, rather than raising: the loader's job is
+    layer B, and a repo without data/final is a different problem with its own gates.
+    """
+    import csv as _csv
+
+    target = path or POLITIES_CSV
+    if not os.path.exists(target):
+        return set()
+    with open(target, newline="", encoding="utf-8") as fh:
+        return {
+            row["polity_code"]
+            for row in _csv.DictReader(fh)
+            if row.get("polity_code")
+        }
+
+
 def rename_layer_b_misnamed(df, polity_codes=None, where: str = "layer B"):
     """Rename layer B's mislabelled `polity_code` to `iso3_lower`, or raise if it changed.
 
@@ -221,6 +253,11 @@ def load_layer_b(path: str | None = None, polity_codes=None):
     Returns it with `polity_code` renamed to `iso3_lower` (LAYER_B_MISNAMED), because that
     column holds lowercase ISO codes and joining it to this repo's `polity_code` matches
     nothing while raising nothing.
+
+    `polity_codes` DEFAULTS to the published database's codes, so the reverse guard -- refuse
+    to relabel the column once it holds real polity codes -- is live for every caller. It was
+    not: this function's two callers passed nothing, so for them the guard compared against an
+    empty set.
     """
     import pandas as pd
     p = path or LAYER_B
@@ -232,7 +269,9 @@ def load_layer_b(path: str | None = None, polity_codes=None):
     df = pd.read_parquet(p)
     require_columns(df, LAYER_B_COLUMNS, f"layer B ({os.path.basename(p)})")
     return rename_layer_b_misnamed(
-        df, polity_codes=polity_codes, where=f"layer B ({os.path.basename(p)})"
+        df,
+        polity_codes=polity_codes if polity_codes is not None else polity_codes_from_database(),
+        where=f"layer B ({os.path.basename(p)})",
     )
 
 
@@ -275,6 +314,15 @@ def _selftest() -> int:
     except ExternalDataError as e:
         assert "REAL polity codes" in str(e)
         print("pass: the rename refuses once the column holds real polity codes")
+
+    codes = polity_codes_from_database()
+    if not codes:
+        print("note: data/final/polities_database.csv absent; default-codes case skipped")
+    elif not any("-" in c for c in codes):
+        print("FAIL: polity_codes_from_database returned nothing that looks like a code"); ok = False
+    else:
+        print(f"pass: the reverse guard has {len(codes):,} real polity codes to compare "
+              f"against BY DEFAULT, so a no-argument load_layer_b() is guarded too")
 
     print("\nPASS: the guards fire" if ok else "\nFAIL")
     return 0 if ok else 1

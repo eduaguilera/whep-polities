@@ -26,6 +26,12 @@ repository. It is no longer a live trap HERE: extdata.load_layer_b renames it to
 parquet's own header is unchanged, so anyone reading it directly still meets the
 original name -- which is why it stays documented in EXTERNAL below.
 
+That the rename actually happens at every read is now checked rather than asserted, by
+`validate_layer_b_column_guard.py`: it scans for layer-B reads and fails one that keeps the
+name. Writing it found that the loader-side guard was inert for two of its three callers
+(they passed no `polity_codes`, so the "has it started holding real codes?" check compared
+against an empty set) and that the R reader renamed nothing at all.
+
 That is not hypothetical. Four analyses in one session read a wrong column name and got
 an answer rather than an error: `year_start` for `year_min` returned an empty result read
 as "no problems found"; a join on layer B's `polity_code` returned zero for every row and
@@ -186,8 +192,12 @@ EXTERNAL = {
                          #    Joining this to polities_database.polity_code matches
                          #    NOTHING and returns zero counts, not an error. Measured
                          #    2026-08-13: 166 distinct values, 0 of them a real polity
-                         #    code. This repo's readers never see the name --
-                         #    extdata.load_layer_b renames it to `iso3_lower` (issue 95).
+                         #    code. Re-measured 2026-08-17, unchanged: 192,670 rows,
+                         #    165,581 non-null, 166 distinct, 99.37% exactly lower(iso3c),
+                         #    0 real polity codes. This repo's readers never see the name --
+                         #    extdata.load_layer_b renames it to `iso3_lower` (issue 95),
+                         #    and validate_layer_b_column_guard.py checks that every reader
+                         #    does, including the R one.
         "is_aggregate",
     ],
 }

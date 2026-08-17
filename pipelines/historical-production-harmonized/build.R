@@ -385,6 +385,18 @@ prepare_stocks <- function(base, lookup) {
 message("Reading raw historical printed-statistics union: ", layer_b_path)
 layer_b <- arrow::read_parquet(layer_b_path) |>
   tibble::as_tibble()
+# Layer B's column NAMED `polity_code` holds LOWERCASE ISO CODES ("fra", "deu"), not WHEP
+# polity codes: measured 2026-08-17 on the 192,670-row parquet, 166 distinct values, 99.4%
+# exactly tolower(iso3c), and 0 of them equal to any polity_code in
+# data/final/polities_database.csv. Joining on it returns nothing and errors on nothing
+# (issue 95, option 4). It is renamed here for the same reason extdata.py renames it on the
+# Python side: the misleading name never exists in a frame this script holds. Nothing below
+# reads it -- prepare_products()/prepare_stocks() narrow to base_cols(), which excludes it,
+# and the real polity_code arrives later from polity_lookup() -- so this rename changes no
+# output value; it removes the chance that a future edit joins on the wrong column.
+if ("polity_code" %in% names(layer_b)) {
+  layer_b <- dplyr::rename(layer_b, iso3_lower = "polity_code")
+}
 message("Reading WHEP polity matches: ", matches_path)
 matches <- arrow::read_parquet(matches_path) |>
   tibble::as_tibble()
