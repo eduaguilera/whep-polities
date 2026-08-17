@@ -78,6 +78,35 @@ EQUAL_AREA = "ESRI:54034"
 DEAD_STATUS = ("retired", "superseded")
 MIN_OVERLAP_KM2 = 1.0
 
+# ENCLAVE PAIRS THAT COEXIST BEFORE 1990 (issue 197). The YEARS grid below starts at 1990
+# for the reason in the docstring, which leaves three named double claims unwatched: a
+# national row spanning an enclave's absorption date overlaps that enclave for part of its
+# span, and all three windows closed before 1990.
+#
+# Measured 2026-08-18 in ESRI:54034, each at a year inside the overlap:
+#
+#     IND-1949-2025 / PTIND-1816-1961   3,719.08 km2   98% of Portuguese India
+#     IND-1949-2025 / FRIN-1816-1954      520.25 km2   95% of French India
+#     ITA-1919-2025 / VAT-1929-2025         0.53 km2  100% of the Holy See
+#
+# These are pinned as CEILINGS, not classified and not decided. Issue 197 asks whether to
+# split the national rows at the absorption dates, subtract the enclaves, or record the
+# overlap as intended, and that is a periodisation judgement about live national rows. What
+# this arm does is make sure the ground does not grow while it is open.
+#
+# ITA-1919-2025 / SMR-1800-2025 is deliberately NOT here. The issue lists San Marino at
+# "~61 km2", which is the country's own area; the actual intersection is 8.60 km2, 14% of
+# it, so Italy's polygon already excludes 86% of San Marino and what remains is border
+# imprecision of the same size as the sliver tail this gate budgets. Adding it would spend a
+# ceiling on vintage noise.
+ENCLAVE_PINS = {
+    ("IND-1949-2025", "PTIND-1816-1961", 1955): 3719.08,
+    ("IND-1949-2025", "FRIN-1816-1954", 1950): 520.25,
+    ("ITA-1919-2025", "VAT-1929-2025", 1950): 0.53,
+}
+ENCLAVE_TOLERANCE = 0.02      # 2%: simplification and CRS noise, not a territorial change
+
+
 # The years measured. Modern slices only, for the reason in the docstring. 2015 is the
 # year issue 143 and eduaguilera/whep#514 both measured, so it is kept even though 2010
 # and 2020 bracket it; 2025 is deliberately absent because `end_year` is EXCLUSIVE and
@@ -237,6 +266,56 @@ def overlaps_by_year(live: dict) -> dict:
     return out
 
 
+def enclave_pin_problems(live: dict) -> list:
+    """Check the pre-1990 enclave pairs pinned for issue 197, at the year each is pinned at.
+
+    Independent of the YEARS grid on purpose: adding a pre-1990 slice there would pull in the
+    whole colonial-era gross-polygon class (the 1925 slice alone has 50 substantial pairs over
+    11.46 Mha), which needs the convention decision this gate deliberately does not make.
+    Same CRS and the same buffer(0) as overlaps_by_year, so the numbers are comparable.
+    """
+    import geopandas as gpd
+
+    out = []
+    g = gpd.read_file(GPKG)
+    g = g[~g.geometry.isna() & ~g.geometry.is_empty].to_crs(EQUAL_AREA).copy()
+    g["geometry"] = g.geometry.buffer(0)
+    geo = dict(zip(g.polity_code, g.geometry))
+    for (outer, inner, year), pinned in sorted(ENCLAVE_PINS.items()):
+        for code in (outer, inner):
+            if code not in geo:
+                out.append(
+                    f"ENCLAVE PIN {outer} / {inner} cannot be measured: {code} carries no "
+                    f"geometry. If the row was re-spanned or retired, update the pin"
+                )
+                break
+        else:
+            for code in (outer, inner):
+                s, e = live.get(code, (None, None))
+                if s is None or not (s <= year < e):
+                    out.append(
+                        f"ENCLAVE PIN {outer} / {inner} is pinned at {year}, which is outside "
+                        f"{code}'s span {s}-{e} — issue 197's window moved, so re-measure and "
+                        f"re-pin rather than deleting"
+                    )
+                    break
+            else:
+                km2 = geo[outer].intersection(geo[inner]).area / 1e6
+                drift = abs(km2 - pinned) / pinned if pinned > 0 else 0.0
+                print(f"   enclave pin {outer} / {inner} @{year}: {km2:,.2f} km2 "
+                      f"(pinned {pinned:,.2f}, {drift:+.1%})")
+                if drift > ENCLAVE_TOLERANCE:
+                    out.append(
+                        f"ENCLAVE PIN {outer} / {inner} @{year} now measures {km2:,.2f} km2 "
+                        f"against a pinned {pinned:,.2f} ({drift:.1%} drift, tolerance "
+                        f"{ENCLAVE_TOLERANCE:.0%}). A national row's overlap with an enclave it "
+                        f"later absorbed has CHANGED — either a polygon moved or the row was "
+                        f"re-spanned. Issue 197 decides what to do about the overlap; this only "
+                        f"says it must not drift while that is open"
+                    )
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
@@ -370,6 +449,8 @@ def main() -> int:
                 f"and record what changed"
             )
 
+    problems.extend(enclave_pin_problems(live))
+
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)")
         for p in problems:
@@ -377,8 +458,8 @@ def main() -> int:
         return 1
     print(
         f"\nPASS: {len(DECIDED_OVERLAPS)} substantial overlap(s) classified, "
-        f"{len(LARGE_SLIVERS)} sliver(s) pinned by size, tail within budget in all "
-        f"{len(YEARS)} checked year(s)"
+        f"{len(LARGE_SLIVERS)} sliver(s) pinned by size, {len(ENCLAVE_PINS)} pre-1990 "
+        f"enclave pin(s) steady, tail within budget in all {len(YEARS)} checked year(s)"
     )
     return 0
 

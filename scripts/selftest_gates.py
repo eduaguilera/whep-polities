@@ -1170,6 +1170,29 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
             f"to CAN-1886-1948, the span issue 243 retired, as an un-regenerated crosswalk does")
 
 
+def mutate_enclave_overlap_grown(root, gpd, make_valid, affinity):
+    """Grow Portuguese India by 3 km, so its pre-1990 overlap with India drifts past tolerance.
+
+    Issue 197's three enclave pairs coexist only before 1990, and validate_coexisting_overlaps'
+    YEARS grid starts at 1990 -- its own docstring says a new pre-1990 mis-binding is not caught.
+    The ENCLAVE_PINS arm exists for exactly that window, and this proves it watches: buffering
+    PTIND-1816-1961 takes the 1955 intersection 3,719.08 -> 4,580.22 km2, +23.2%.
+
+    Nothing else objects. PTIND declares no area, so check A has nothing to compare; the polygon
+    stays valid and s2-loadable; and the pair is invisible to the 1990+ slices because
+    PTIND-1816-1961 ended in 1961.
+    """
+    g = gpd.read_file(GPKG)
+    i = g.index[g.polity_code == "PTIND-1816-1961"]
+    assert len(i) == 1, f"expected one PTIND-1816-1961 row, found {len(i)}"
+    i = i[0]
+    eq = g.to_crs("ESRI:54034")
+    eq.loc[i, "geometry"] = make_valid(eq.loc[i, "geometry"].buffer(3000))
+    write_gpkg(eq.to_crs(g.crs), root)
+    return ("buffered PTIND-1816-1961 by 3 km, so its 1955 overlap with IND-1949-2025 grows "
+            "23% past the pinned figure")
+
+
 def mutate_avoidable_self_referential_area(root, gpd, make_valid, affinity):
     """Give a row with a PUBLISHED stated figure its own polygon's area as polygon_area_km2.
 
@@ -2231,6 +2254,13 @@ CASES = (
         "F228-1920-1921",
         "a binding whose only tie-breaker is a full DATE -- three CShapes steps start in its "
         "single year -- with that date removed, so row order decides again",
+    ),
+    (
+        "validate_coexisting_overlaps.py",
+        mutate_enclave_overlap_grown,
+        "PTIND-1816-1961",
+        "a pre-1990 enclave double claim that grew, in the window this gate's year grid does "
+        "not reach and where the enclave declares no area for check A to notice",
     ),
     (
         "validate_polygons.py",
