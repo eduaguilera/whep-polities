@@ -41,8 +41,11 @@ Armenia,faostat,1992,2024,ARM-1991-2025,Armenia,high,96333
 australia,,1800,1900,AUS-1800-1901,,high,118
 australia,,1901,2025,AUS-1901-2025,,high,118
 Australia,faostat,1961,2024,AUS-1901-2025,Australia,high,253557
+Australia Commonwealth,federico_tena,1826,1900,AUS-1800-1901,Australian Colonies (to 1901),high,150
 Austria,faostat,1961,2024,AUT-1919-2025,Austria,high,255267
 Austria,lassaletta-grassland-share,1961,2009,AUT-1919-2025,Austria,high,
+Austria-Hungary,federico_tena,1830,1858,AUH-1800-1859,Austrian Empire (to 1859),high,58
+Austria-Hungary,federico_tena,1859,1865,AUH-1859-1866,Austrian Empire (1859-1866),high,14
 Azerbaijan,faostat,1992,2024,AZE-1991-2025,Azerbaijan,high,103326
 azerbaijan,iia-tea,1920,1990,AZE-SSR-1920-1991,Azerbaijan SSR,high,
 Bahamas,faostat,1961,2024,BHS-1800-2025,Bahamas,high,163402
@@ -54,6 +57,7 @@ Bangladesh,lassaletta-grassland-share,1971,2009,BGD-1971-2025,Bangladesh,high,
 Barbados,faostat,1961,2024,BRB-1800-2025,Barbados,high,198640
 Barbados,lassaletta-grassland-share,1961,2009,BRB-1800-2025,Barbados,high,
 Basutoland,fao1952,1886,1966,LSO-1886-1966,Basutoland,high,
+Basutoland,federico_tena,1913,1913,LSO-1886-1966,Lesotho (1886-1966),high,1
 Bechuanaland,fao1952,1937,1951,BEC-1885-1966,Bechuanaland Protectorate,high,
 Belarus,faostat,1992,2024,BLR-1991-2025,Belarus,high,110351
 Belgian Congo,,,,COD-1910-1960,Belgian Congo,high,180
@@ -73,6 +77,7 @@ Benin,lassaletta-grassland-share,1961,2009,BEN-1960-2025,Benin,high,
 Bermuda,fao1952,1937,1951,BMU-1684-1968,Bermuda,high,41
 Bermuda,faostat,1961,1967,BMU-1684-1968,British Crown Colony of Bermuda,high,67310
 Bermuda,faostat,1968,2013,BMU-1968-2025,Bermuda,high,67310
+Bermuda,federico_tena,1816,1938,BMU-1684-1968,British Crown Colony of Bermuda,high,213
 bermuda,iia,1930,1945,BMU-1684-1968,Bermuda,high,17
 Bhutan,faostat,1961,2024,BTN-1800-2025,Bhutan,high,46525
 Bolivia (Plurinational State of),faostat,1961,2024,BOL-1938-2025,Bolivia,high,203360
@@ -104,6 +109,7 @@ British Borneo Sarawak,fao,1946,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown C
 British Borneo Sarawak,fao1952,1937,1951,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,
 British Borneo Sarawak,mitchell,1937,1937,BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),high,1
 british honduras,,1886,1970,BLZ-1886-1970,British Honduras,high,
+British Honduras (Belize),federico_tena,1816,1885,BLZ-1800-1886,Belize (to 1886),high,129
 British Solomon Is,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,
 British Solomon Islands,fao1952,1893,1978,SLB-1800-2025,British Solomon Islands Protectorate,high,
 British Somaliland,fao1952,1884,1960,BSS-1884-1960,British Somaliland Protectorate,high,
@@ -135,6 +141,7 @@ British West Indies Trinidad and Tobago,fao1952,1937,1951,TTO-1800-2025,Trinidad
 British West Indies Turks and Caicos,fao1952,1948,1948,TCA-1800-2025,Turks and Caicos Islands,high,2
 British West Indies Virgin Islands,fao1952,1950,1951,VGB-1800-2025,British Virgin Islands,high,3
 British West Indies Windward Islands,fao1952,1937,1951,WIN-1833-1960,British Windward Islands Colony,high,7
+Brunei,federico_tena,1889,1938,BRN-1888-2025,Brunei Darussalam,high,101
 Brunei Darussalam,faostat,1961,2024,BRN-1888-2025,Brunei Darussalam,high,161774
 bulgaria,,1878,1912,BGR-1878-1913,,high,137
 bulgaria,,1913,1917,BGR-1913-1918,,high,137
@@ -234,6 +241,7 @@ china taiwan,,1945,2025,TWN-1945-2025,,high,
 "China, Taiwan Province of",faostat,1961,2024,TWN-1945-2025,Taiwan,high,252667
 Christmas Island,faostat,1946,1958,CXR-1946-1958,Christmas Island (under Singapore administration),high,0
 Colombia,faostat,1961,2024,COL-1922-2025,Colombia,high,235230
+Colombia,federico_tena,1820,1829,COL-1800-1830,Gran Colombia,medium,10
 Colombia,lassaletta-grassland-share,1961,2009,COL-1922-2025,Colombia,high,
 Comoro Islands,fao1952,1949,1951,COM-1946-1975,Comoros (1946-1975),high,8
 Comoros,faostat,1961,1974,COM-1946-1975,Comoros (1946-1975),high,52459
@@ -289,6 +297,7 @@ Ecuador,lassaletta-grassland-share,1961,2009,ECU-1942-2025,Ecuador,high,
 Egypt,faostat,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,243914
 Egypt,faostat,1967,1978,EGY-1967-1979,Egypt (1967-1979),high,243914
 Egypt,faostat,1979,2024,EGY-1979-2025,Egypt,high,243914
+Egypt,federico_tena,1850,1884,EGY-1820-1885,Egypt with Sudan (1820-1885),medium,70
 Egypt,lassaletta-grassland-share,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,
 Egypt,lassaletta-grassland-share,1967,1978,EGY-1967-1979,Egypt (1967-1979),high,
 Egypt,lassaletta-grassland-share,1979,2009,EGY-1979-2025,Egypt,high,
@@ -320,6 +329,7 @@ Faroe Islands,faostat,1961,2024,FRO-1800-2025,Faroe Islands,high,45036
 Federation of Malaya,fao1952,1946,1957,MYS-1946-1957,Malayan Union / Federation of Malaya,high,
 Fiji,faostat,1961,2024,FJI-1800-2025,Fiji,high,203519
 Finland,faostat,1961,2024,FIN-1940-2025,Finland (1940-2025),high,229594
+Finland,federico_tena,1812,1916,FIN-1809-1917,Grand Duchy of Finland,high,173
 Finland,lassaletta-grassland-share,1961,2009,FIN-1940-2025,Finland (1940-2025),high,
 Formosa,,1895,1945,TWN-1895-1945,,high,
 Fr Equat Africa,fao1952,1950,1951,AEF-1910-1960,French Equatorial Africa (AEF),high,8
@@ -372,6 +382,12 @@ Germany Saar,,1947,1957,SAA-1947-1957,Saar Protectorate,high,
 Germany Western,fao1952,1937,1937,DEU-1920-1938,West Germany (pre-Anschluss back-projection),high,10
 Germany Western,fao1952,1938,1948,WZO-1938-1949,Western Germany / Western Occupation Zones,high,30
 Germany Western,fao1952,1949,1951,F78-1949-1990,West Germany,high,5
+Germany/Zollverein,federico_tena,1821,1865,DEU-1800-1866,Prussia (to 1866),medium,75
+Germany/Zollverein,federico_tena,1866,1870,DEU-1866-1871,North German Confederation (1866-1871),high,10
+Germany/Zollverein,federico_tena,1871,1918,DEU-1871-1919,German Empire (1871-1919),high,97
+Germany/Zollverein,federico_tena,1919,1919,DEU-1919-1920,Germany (1919-1920),high,2
+Germany/Zollverein,federico_tena,1920,1937,DEU-1920-1938,Germany (1920-1938),high,36
+Germany/Zollverein,federico_tena,1938,1938,DEU-1938-1945,Germany (1938-1945),high,2
 Ghana,faostat,1961,2024,GHA-1957-2025,Ghana,high,191734
 Ghana,lassaletta-grassland-share,1961,2009,GHA-1957-2025,Ghana,high,
 Gold Coast,fao1952,1898,1956,GHA-1898-1957,Gold Coast Colony,high,36
@@ -415,6 +431,8 @@ Hungary,lassaletta-grassland-share,1961,2009,HUN-1947-2025,Hungary (1947-2025),h
 Iceland,faostat,1961,2024,ISL-1800-2025,Iceland,high,170791
 Iceland,lassaletta-grassland-share,1961,2009,ISL-1800-2025,Iceland,high,
 India,faostat,1961,2024,IND-1949-2025,India,high,254312
+India,federico_tena,1800,1885,IND-1800-1886,British India (to 1886),high,172
+India,federico_tena,1886,1892,IND-1886-1893,British India (1886-1893),high,14
 India,lassaletta-grassland-share,1961,2009,IND-1949-2025,India,high,
 India,trade-sources,1885,1885,IND-1800-1886,British India (to 1886),high,
 India,trade-sources,1886,1892,IND-1886-1893,British India (1886-1893),high,
@@ -475,6 +493,7 @@ japan,,1945,1951,JPN-1945-1952,Japan (occupied),high,
 japan,,1952,1952,JPN-1952-2025,Japan (occupied),high,
 Japan,fao1952,1895,1944,JPN-1895-1945,Japanese Empire,high,57
 Japan,faostat,1961,2024,JPN-1952-2025,Japan,high,254381
+Japan,federico_tena,1896,1938,JPN-1895-1945,Japanese Empire,high,87
 Japan,lassaletta-grassland-share,1961,2009,JPN-1952-2025,Japan,high,
 Jordan,faostat,1961,2024,JOR-1946-2025,Jordan,high,214926
 Jordan,lassaletta-grassland-share,1961,2009,JOR-1946-2025,Jordan,high,
@@ -573,6 +592,7 @@ MNE,crops-manure-n,1992,2005,SCG-1992-2006,Serbia and Montenegro,high,
 Moldova,faostat,1991,2025,MDA-1991-2025,Republic of Moldova,high,0
 Monaco,faostat,1850,2025,MCO-1800-2025,Monaco,high,0
 Mongolia,faostat,1961,2024,MNG-1921-2025,Mongolia,high,138130
+Mongolia,federico_tena,1913,1913,MNG-1911-1921,Bogd Khanate of Mongolia,high,1
 Mongolia,lassaletta-grassland-share,1961,2009,MNG-1921-2025,Mongolia,high,
 Montenegro,faostat,2006,2024,MNE-2006-2025,Montenegro,high,56042
 Montserrat,faostat,1850,2025,MSR-1800-2025,Montserrat,high,0
@@ -599,6 +619,7 @@ Nepal,faostat,1961,2024,NPL-1816-2025,Nepal,high,193378
 Nepal,lassaletta-grassland-share,1961,2009,NPL-1816-2025,Nepal,high,
 Neth West Indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
 neth west indies,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
+Netherlands,federico_tena,1800,1829,NLD-1800-1830,United Kingdom of the Netherlands,medium,60
 Netherlands,lassaletta-grassland-share,1961,2009,NLD-1830-2025,Netherlands,high,
 Netherlands (Kingdom of the),faostat,1961,2024,NLD-1830-2025,Netherlands,high,259019
 netherlands antilles,,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
@@ -626,6 +647,7 @@ niger,,1922,1922,NER-1922-1947,Niger (Military Territory),high,
 Niger,faostat,1961,2024,NER-1960-2025,Niger,high,180039
 Niger,lassaletta-grassland-share,1961,2009,NER-1960-2025,Niger,high,
 Nigeria,faostat,1961,2024,NGA-1961-2025,Nigeria,high,191847
+Nigeria,federico_tena,1886,1913,NGA-1886-1914,Colonial Nigeria,high,57
 Nigeria,lassaletta-grassland-share,1961,2009,NGA-1961-2025,Nigeria,high,
 Niue,faostat,1961,2024,NIU-1800-2025,Niue,high,22055
 Norfolk Island,faostat,1914,2025,NFK-1914-2025,Norfolk Island (Australian Territory),high,0
@@ -637,6 +659,13 @@ Norway,lassaletta-grassland-share,1961,2009,NOR-1800-2025,Norway,high,
 Occupied Palestinian Territory,lassaletta-grassland-share,1961,2009,PSE-1948-2025,Palestine (West Bank and Gaza),high,
 Oman,faostat,1961,2024,OMN-1856-2025,Sultanate of Oman,high,144474
 Oman,lassaletta-grassland-share,1961,2009,OMN-1856-2025,Sultanate of Oman,high,
+Ottoman Empire/Turkey,federico_tena,1830,1885,OTT-1800-1886,Ottoman Empire (to 1886),high,92
+Ottoman Empire/Turkey,federico_tena,1886,1907,OTT-1886-1908,Ottoman Empire (1886–1908),high,44
+Ottoman Empire/Turkey,federico_tena,1908,1911,OTT-1908-1912,Ottoman Empire (1908–1912),high,8
+Ottoman Empire/Turkey,federico_tena,1913,1913,TUR-1913-1914,Türkiye (1913-1914),high,3
+Ottoman Empire/Turkey,federico_tena,1914,1917,TUR-1914-1918,Türkiye (1914-1918),high,8
+Ottoman Empire/Turkey,federico_tena,1918,1919,TUR-1918-1920,Türkiye (1918-1920),high,4
+Ottoman Empire/Turkey,federico_tena,1920,1938,TUR-1920-2025,Türkiye,high,38
 Pacific Is,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,
 Pacific Is (U S,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,
 Pacific Is US tr,fao1952,1947,1994,TTPI-1947-1994,Trust Territory of the Pacific Islands,high,
@@ -652,6 +681,7 @@ palau,iia,1909,1914,GCAR-1899-1914,German Caroline Islands (Karolinen),high,6
 palau,iia,1915,1919,JPN-1895-1945,Palau (Japanese military occupation),high,5
 palau,iia,1920,1932,CAR-1920-1945,Palau (Caroline Islands Japanese Mandate),high,4
 Palestine,faostat,1961,2024,PSE-1948-2025,Palestine (West Bank and Gaza),high,32534
+Palestine/Jordan,federico_tena,1920,1938,PAL-1920-1948,Palestine (1920-1948),medium,38
 Panama,faostat,1961,1978,PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",high,196061
 Panama,faostat,1979,2024,PAN-1979-2025,Panama (post-Canal Zone),high,196061
 Panama,lassaletta-grassland-share,1961,1978,PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",high,
@@ -667,6 +697,7 @@ papua new guinea,mitchell,1922,1940,PAPNG-1920-1949,Papua and New Guinea (combin
 papua new guinea,mitchell,1949,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,3
 Paraguay,faostat,1961,2024,PRY-1938-2025,Paraguay,high,194468
 Paraguay,lassaletta-grassland-share,1961,2009,PRY-1938-2025,Paraguay,high,
+Persia (Iran),federico_tena,1850,1938,IRN-1828-2025,Iran,high,179
 Peru,faostat,1961,2024,PER-1942-2025,Peru,high,239266
 Peru,lassaletta-grassland-share,1961,2009,PER-1942-2025,Peru,high,
 Philippines,faostat,1961,2024,PHL-1800-2025,Philippines,high,234546
@@ -696,6 +727,14 @@ romania,,1940,1946,ROU-1940-1947,Romania (1940-1947),high,
 romania,,1947,2025,ROU-1947-2025,Romania (1947-2025),high,
 Romania,faostat,1961,2024,ROU-1947-2025,Romania (1947-2025),high,234453
 RoW,crops-manure-n,1850,2022,ROW-1850-2025,Rest of World,high,
+Russia/USSR,federico_tena,1800,1855,F228-1800-1856,Russian Empire (to 1856),high,62
+Russia/USSR,federico_tena,1856,1904,F228-1856-1905,Russian Empire (1856-1905),high,98
+Russia/USSR,federico_tena,1905,1913,F228-1905-1914,Russian Empire (1905-1914),high,19
+Russia/USSR,federico_tena,1914,1916,F228-1914-1917,Russian Empire (1914-1917),high,6
+Russia/USSR,federico_tena,1917,1917,F228-1917-1918,Russia (1917-1918),high,2
+Russia/USSR,federico_tena,1918,1919,F228-1918-1920,RSFSR (1918-1920),medium,4
+Russia/USSR,federico_tena,1920,1920,F228-1920-1921,RSFSR (1920-1921),medium,2
+Russia/USSR,federico_tena,1921,1938,F228-1921-1940,RSFSR/USSR (1921-1940),high,36
 russian federation,,1906,1913,F228-1905-1914,Russian Empire (1905-1914),high,
 russian federation,,1914,1916,F228-1914-1917,Russian Empire (1914-1917),high,
 russian federation,,1917,1917,F228-1917-1918,Russia (1917-1918),high,
@@ -746,6 +785,12 @@ serbia,,2008,2025,SRB-2008-2025,,medium,
 Serbia,faostat,2006,2007,SRB-2006-2008,Serbia (including Kosovo),high,68875
 Serbia,faostat,2008,2024,SRB-2008-2025,Serbia,high,68875
 Serbia and Montenegro,faostat,1992,2005,SCG-1992-2006,Serbia and Montenegro,high,46585
+Serbia/Yugoslavia,federico_tena,1830,1877,SER-1816-1878,Principality of Serbia (1816-1878),high,76
+Serbia/Yugoslavia,federico_tena,1878,1912,SER-1878-1913,Kingdom of Serbia (1878-1913),high,70
+Serbia/Yugoslavia,federico_tena,1913,1917,SER-1913-1918,Serbia (1913-1918),high,11
+Serbia/Yugoslavia,federico_tena,1918,1918,F248-1918-1919,Yugoslavia (1918-1919),high,2
+Serbia/Yugoslavia,federico_tena,1919,1919,F248-1919-1920,Yugoslavia (1919-1920),high,2
+Serbia/Yugoslavia,federico_tena,1920,1938,F248-1920-1947,Yugoslavia (1920-1947),high,38
 Seychelles,faostat,1961,2024,SYC-1903-2025,Seychelles,high,73947
 Sierra Leone,faostat,1961,2024,SLE-1961-2025,Sierra Leone (1961-2025),high,142058
 Sierra Leone,lassaletta-grassland-share,1961,2009,SLE-1961-2025,Sierra Leone (1961-2025),high,
@@ -838,6 +883,7 @@ Trinidad and Tobago,lassaletta-grassland-share,1961,2009,TTO-1800-2025,Trinidad 
 Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,2
 Tripolitania,mitchell,1949,1949,TRP-1943-1951,British Military Administration of Tripolitania,high,1
 Tunisia,faostat,1961,2024,TUN-1881-2025,Tunisia,high,226193
+Tunisia,federico_tena,1830,1880,TUN-1800-1881,Beylik of Tunis,high,82
 Tunisia,lassaletta-grassland-share,1961,2009,TUN-1881-2025,Tunisia,high,
 Turkey,,1880,1912,TUR-1800-1913,"Turkey (Anatolia, to 1913)",high,
 turkey,,1913,1913,TUR-1913-1914,Türkiye (1913-1914),high,

@@ -172,14 +172,15 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "6f49cff48dc6316dccbf96de80543c8c56d4c89d800e01509e8115ad39c01d4e",
-  "aliases": 946,
-  "labels": 510,
+  "sha256": "f8ab5580708c2b68da25c0d939f0771e49cb0d779d0c794b6081a8b7f2bacf2f",
+  "aliases": 992,
+  "labels": 520,
   "sources": [
    "crops-manure-n",
    "fao",
    "fao1952",
    "faostat",
+   "federico_tena",
    "iia",
    "iia-cotton",
    "iia-tea",

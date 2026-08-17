@@ -32,7 +32,40 @@ inclusive window -- which is what makes the table a test of year containment:
 every year the source reports has to land inside some polity's span, and the
 years that do not are the finding. Plus one row per polity carrying the 1913
 population, keyed as its own item so its median is not mixed with the coverage
-rows (which have no value at all).
+rows (which have no value at all). The source's OWN first/last year for the
+polity travels as `ft_polity_start` / `ft_polity_end` columns, which
+`00_intake.py` does not read: they are not coverage claims, they are the
+source's independent dating of the reporting unit, and the whole point of
+keeping them out of the year expansion is that a polity Federico-Tena lists
+WITHOUT a trade series reports no trade at all (see COLUMN POSITIONS).
+
+COLUMN POSITIONS -- read the header, do not guess. This script's first version
+took columns 1-2 as the imports window, 3-4 as exports and 5/7 as a
+"population" series, and every one of those was off by one column GROUP. Header
+row 5 of the sheet names the groups and row 6 their sub-columns:
+
+    cols 1,2  "Trading polity"  Starting / End   <- the polity's own dating
+    cols 3,4  "Imports"         Starting / End
+    cols 5,7  "Exports"         Starting / End
+    col  9    "Population"      1913 '(000)      <- ONE value, not a series
+    col  11   "Trade sample serie included: Exports"
+    col  13   "Notes"
+
+Cols 6, 8, 10 and 12 are empty merge spacers, and cols 1-2 are populated for
+all 243 polities while 3-4 and 5/7 are populated for only 146 -- which is the
+substantive consequence: 97 of the 243 trading polities carry NO trade series,
+so the old mapping FABRICATED a per-year import series for every one of them
+out of its existence window. It also emitted the import series as "exports" and
+the export series as "population", a measure the sheet does not contain.
+
+The fix is confirmed against dates the misreading contradicts outright: Korea
+1876 (Treaty of Ganghwa) not 1800; Japan 1860 (opened 1859) not 1800; China
+1830, Philippines 1810, Iceland 1849, Bulgaria 1879, Ireland 1922, Austria /
+Czechoslovakia / the Baltics 1920, Poland 1922, Syria-and-Lebanon 1921,
+Palestine/Jordan 1920. Under the old mapping Korea imported from 1800, while
+closed to foreign trade. Measured effect: 48,569 rows -> 27,359, of which
+21,210 removed were the fabricated existence-window series and the rest are
+the re-labelling.
 
 Usage:
   python3 pipelines/polity-autoimprove/prepare_federico_tena.py
@@ -51,12 +84,13 @@ SHEET = "List of trading polities"
 OUT = os.path.join(REPO, "pipelines/polity-autoimprove/state/federico_tena_intake.csv")
 
 # The sheet's header is spread over three merged rows, so columns are taken by
-# position from the first data row (skiprows=6). Positions verified against the
-# January 2019 file on 2026-08-17: Algeria = imports 1831-1938, exports
-# 1830-1938, population 1830-1938, 1913 population 5,579 thousand.
-COLS = {0: "polity_name", 1: "imports_start", 2: "imports_end",
-        3: "exports_start", 4: "exports_end", 5: "population_start",
-        7: "population_end", 9: "population_1913_thousands",
+# position from the first data row (skiprows=6). Positions read off header rows
+# 5-6 of the January 2019 file on 2026-08-17 (see COLUMN POSITIONS above):
+# Algeria = trading polity 1831-1938, imports 1830-1938, exports 1830-1938,
+# 1913 population 5,579 thousand.
+COLS = {0: "polity_name", 1: "ft_polity_start", 2: "ft_polity_end",
+        3: "imports_start", 4: "imports_end", 5: "exports_start",
+        7: "exports_end", 9: "population_1913_thousands",
         11: "trade_sample_exports_start", 13: "notes"}
 CONTINENTS = ("Africa", "Americas", "Asia", "Europe", "Oceania")
 
@@ -70,7 +104,7 @@ UMBRELLAS = frozenset({
     "British settlement Oceania", "French Settlements in Oceania",
     "German colonies Oceania", "US settlement Oceania",
 })
-SERIES = ("imports", "exports", "population")
+SERIES = ("imports", "exports")
 
 
 def load_sheet(path=XLSX):
@@ -84,13 +118,17 @@ def load_sheet(path=XLSX):
     for c in COLS.values():
         if c not in ("polity_name", "notes"):
             d[c] = pd.to_numeric(d[c], errors="coerce")
-    return d[d["imports_start"].notna()].reset_index(drop=True)
+    # every listed polity carries a "Trading polity" window; only the header and
+    # banner rows do not, so this is the row filter as well as a real column
+    return d[d["ft_polity_start"].notna()].reset_index(drop=True)
 
 
 def build(d):
     rows = []
     for r in d.itertuples(index=False):
         agg = r.polity_name in UMBRELLAS
+        ps = int(r.ft_polity_start)
+        pe = None if pd.isna(r.ft_polity_end) else int(r.ft_polity_end)
         for s in SERIES:
             y0 = getattr(r, f"{s}_start")
             if pd.isna(y0):
@@ -98,13 +136,14 @@ def build(d):
             y1 = getattr(r, f"{s}_end")
             y1 = int(y0) if pd.isna(y1) else int(y1)
             for y in range(int(y0), y1 + 1):
-                rows.append((r.polity_name, y, s, None, None, agg, r.notes))
+                rows.append((r.polity_name, y, s, None, None, agg, ps, pe, r.notes))
         p13 = r.population_1913_thousands
         if not pd.isna(p13):
             rows.append((r.polity_name, 1913, "population_1913", float(p13),
-                         "thousand persons", agg, r.notes))
+                         "thousand persons", agg, ps, pe, r.notes))
     out = pd.DataFrame(rows, columns=["polity_name", "year", "item", "value",
-                                      "unit", "is_aggregate", "notes"])
+                                      "unit", "is_aggregate", "ft_polity_start",
+                                      "ft_polity_end", "notes"])
     return out.sort_values(["polity_name", "item", "year"]).reset_index(drop=True)
 
 
@@ -122,6 +161,11 @@ if __name__ == "__main__":
     for s in SERIES:
         n = int(d[f"{s}_start"].notna().sum())
         print(f"  {s:11s} series: {n:3d} polities")
+    no_series = d[d.imports_start.isna() & d.exports_start.isna()]
+    print(f"NO trade series at all: {len(no_series)} polities "
+          f"(listed with a period, but the sheet gives them no import or export "
+          f"window; {int(no_series.population_1913_thousands.notna().sum())} of them "
+          f"still carry a 1913 population)")
     print(f"1913 population given for {int(d.population_1913_thousands.notna().sum())} polities")
     print(f"rows: {len(t):,} over years {t.year.min()}-{t.year.max()}")
     print(f"wrote {A.out}")
