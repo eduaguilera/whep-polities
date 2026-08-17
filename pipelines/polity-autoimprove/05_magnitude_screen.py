@@ -18,16 +18,32 @@ Ratios are computed in log space and reported as multiples.
 Areas come from the polygon geometry (equal-area projection), not the
 frontmatter field, so they are measured rather than asserted.
 
+ALREADY-ADJUDICATED FLOWS (issue 14). `data/final/source_flow_flags.csv` records the
+(source, label, item) combinations a human already ruled NON-production — Ethiopian
+coffee under `djibouti` is the standing case. This screen reads that file and joins it
+onto the outliers on (source, polity, item), for two reasons that pull in opposite
+directions:
+  * an outlier already carrying a flag needs no further investigation, and reporting it
+    again spends an agent's time re-deriving a settled verdict;
+  * a flagged combination the screen does NOT rank as an outlier is proof the screen is
+    not a census of entrepots. Both directions are printed, and `known_flow` /
+    `flow_origin_iso3` land in state/magnitude_outliers.csv so the next reader sees the
+    verdict beside the ratio. Until this join existed nothing in the repository consumed
+    the published flag file at all.
+
 Usage:
   python3 pipelines/polity-autoimprove/05_magnitude_screen.py [--top 40] [--min-ratio 8]
 Writes state/magnitude_outliers.csv and prints the ranked list.
 """
+import csv
+import re
 import pandas as pd, numpy as np, geopandas as gpd, json, os, argparse, warnings
 warnings.filterwarnings("ignore")
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 H = os.path.join(REPO, "pipelines/polity-autoimprove/state")
 GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
+FLAGS = os.path.join(REPO, "data/final/source_flow_flags.csv")
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--top", type=int, default=40)
@@ -36,6 +52,52 @@ ap.add_argument("--min-ratio", type=float, default=8.0,
 ap.add_argument("--min-polities", type=int, default=6,
                 help="skip items reported by fewer polities than this (no reliable median)")
 A = ap.parse_args()
+
+
+def norm_item(s) -> str:
+    """Item normalisation shared with the flag join — the two sides must agree."""
+    return re.sub(r"[^a-z0-9]+", " ", str(s).lower()).strip()
+
+
+def load_flow_flags():
+    """The published non-production flows, keyed the way this screen keys its rows.
+
+    The flag file is written on (source, source LABEL, item); this screen works in
+    (source, POLITY, item), so the join uses the flag's `polity_code` column — which the
+    writer resolves from the published alias map, so the two cannot drift. Two flag
+    shapes cannot be joined and are returned separately rather than silently dropped:
+      * `polity_code` empty (a `label_pattern` of `*`, i.e. every label of a source) —
+        not one polity, so not attachable to one polity's outlier row;
+      * `item_pattern` of `*` — every item, handled as a per-(source, polity) wildcard.
+    """
+    exact, wildcard, unjoinable = {}, {}, []
+    if not os.path.exists(FLAGS):
+        return exact, wildcard, unjoinable
+    with open(FLAGS, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            codes = [c for c in (r.get("polity_code") or "").split(";") if c]
+            payload = (r.get("flow_type", ""), r.get("origin_iso3", ""))
+            if not codes:
+                unjoinable.append(r)
+                continue
+            for code in codes:
+                if r.get("item_pattern", "*").strip() == "*":
+                    wildcard[(r["source"], code)] = payload
+                else:
+                    exact[(r["source"], code, norm_item(r["item_pattern"]))] = payload
+    return exact, wildcard, unjoinable
+
+
+FLAG_EXACT, FLAG_WILDCARD, FLAG_UNJOINABLE = load_flow_flags()
+print(f"{len(FLAG_EXACT) + len(FLAG_WILDCARD)} published non-production flow flag(s) "
+      f"joinable to a polity; {len(FLAG_UNJOINABLE)} not attachable to one polity")
+
+
+def flag_for(source, code, item):
+    """(flow_type, origin_iso3) already recorded for this combination, or ("", "")."""
+    return FLAG_EXACT.get((source, code, norm_item(item))) \
+        or FLAG_WILDCARD.get((source, code)) or ("", "")
+
 
 # ---------- measured areas (equal-area projection, not the frontmatter field) ----------
 g = gpd.read_file(GPKG)
@@ -119,13 +181,37 @@ out = out.copy()
 out["assertion_keys"] = [keys_for(r.whep_code, r.source) for r in out.itertuples()]
 out["polity_name"] = out.whep_code.map(dict(zip(g.polity_code, g.polity_name)))
 
+# ---------- already-adjudicated flows (issue 14) ----------
+flagged = [flag_for(r.source, r.whep_code, r.item) for r in out.itertuples()]
+out["known_flow"] = [f[0] for f in flagged]
+out["flow_origin_iso3"] = [f[1] for f in flagged]
+known = out[out.known_flow != ""]
+print(f"already carrying a verdict in data/final/source_flow_flags.csv, and so needing no "
+      f"further investigation: {len(known)}")
+for r in known.itertuples():
+    print(f"  SETTLED {r.ratio:8.1f}x  {r.item[:26]:26s} {r.whep_code:16s} {r.source:9s} "
+          f"{r.known_flow} (origin {r.flow_origin_iso3 or 'unrecorded'})")
+
+# The reverse direction, and the more important one: a flagged combination this screen
+# does NOT rank as an outlier. Those are the cases intensity cannot find, so their
+# number is the measured argument against treating this screen as a census.
+seen = {(r.source, r.whep_code, norm_item(r.item)) for r in grp.itertuples()}
+ranked = {(r.source, r.whep_code, norm_item(r.item)) for r in out.itertuples()}
+missed = sorted(k for k in seen - ranked if flag_for(*k)[0])
+for s, c, i in missed:
+    print(f"  MISSED BY THIS SCREEN  {i[:26]:26s} {c:16s} {s:9s} — flagged "
+          f"{flag_for(s, c, i)[0]} but below {A.min_ratio}x, so intensity would never "
+          f"have found it")
+
 cols = ["ratio", "item", "unit", "whep_code", "polity_name", "source", "median_value",
-        "area", "n", "item_median_intensity", "assertion_keys"]
+        "area", "n", "item_median_intensity", "assertion_keys", "known_flow",
+        "flow_origin_iso3"]
 out[cols].to_csv(os.path.join(H, "magnitude_outliers.csv"), index=False)
 
 show = out.head(A.top)
 for r in show.itertuples():
     print(f"{r.ratio:8.1f}x  {r.item[:26]:26s} {r.whep_code:16s} ({r.area:>9,.0f} km2) "
-          f"{r.source:9s} median={r.median_value:>12,.0f} {r.unit[:12]:12s} n={r.n}")
+          f"{r.source:9s} median={r.median_value:>12,.0f} {r.unit[:12]:12s} n={r.n}"
+          + (f"  [SETTLED: {r.known_flow}]" if r.known_flow else ""))
     print(f"           -> {r.assertion_keys[:110]}")
 print(f"\nwrote {os.path.join(H,'magnitude_outliers.csv')} ({len(out)} rows)")
