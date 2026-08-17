@@ -483,7 +483,126 @@ back-casts (1,779), `CapoVerde` (179) and `Ottoman Empire/Turkey`'s 1912 (2).
 - **Which bucket-(C) territories deserve a polity row** is a judgement about
   WHEP's scope, not something this intake can settle: a Federico-Tena row is a
   *reporting unit*, and the page already warns that a WHEP row must not be
-  created merely because one exists.
+  created merely because one exists. Four of them have since been created — see
+  the next section, which also corrects two of the screens above.
+
+### the missing-polity half, measured 2026-08-17
+
+The screen above sorted labels into "an alias would fix it", "the polity starts
+too late" and "no polity at all". That sort is not the question a polity row
+answers. The question is: **for each label, how many of its rows fall in years
+that NO WHEP polity for that territory covers** — the residue an alias cannot
+reach. Measured by intersecting each label's intake years with the spans of the
+hand-identified candidate chain:
+
+| label | rows | covered by an existing span | UNCOVERED | uncovered years |
+|---|---|---|---|---|
+| `Ceuta Y Melilla` | 342 | 0 | **342** | 1800–1938 |
+| `Newfoundland` | 336 | 97 | **239** | 1816–1906 |
+| `Zanzibar` | 340 | 148 | **192** | 1800–1889 |
+| `Dutch Guayana` | 348 | 160 | **188** | 1800–1885 |
+| `CapoVerde` | 318 | 160 | **158** | 1800–1885 |
+| `Leeward Islands (…)` | 375 | 319 | **56** | 1800–1832 |
+| `Dutch West Indies (Netherland Antilles)` | 378 | 362 | **16** | 1800–1815 |
+| `Gold Coast` | 308 | 304 | **4** | 1817–1820 |
+| `Danish Virgin Islands` | 378 | 378 | **0** | — |
+| `Bermuda` | 352 | 352 | **0** | — |
+| `Germany/Zollverein` | 361 | 361 | **0** | — |
+| `Russia/USSR` | 368 | 359 | **9** | 1918–1920 (the `F228` chain's own gap) |
+
+Two things in that table correct earlier readings, including the issue text that
+prompted this work:
+
+- **`Danish Virgin Islands` needs no row.** It was named as the
+  highest-exposure missing reporting unit at 378 rows. `DWI-1800-1917`
+  *Danish West Indies* has existed since 2026-06-26 and, with
+  `VIR-1917-2025`, covers 1800–1938 completely. The label is 100% an alias gap.
+  The name-token screen in the previous section had paired it with the *British*
+  Virgin Islands and so missed the exact match. `Bermuda`
+  (`BMU-1684-1968`) and `Germany/Zollverein` (the `DEU-1800-1866` Prussia chain)
+  are the same: alias-only, zero territorial gap.
+- **`Gold Coast` is 4 rows short, not eighty years.** The claim that
+  "Federico-Tena reports from 1817 and our earliest Gold Coast row starts 1898"
+  is false against the current database: `GHA-1821-1888` and `GHA-1888-1898`
+  exist, so 304 of the 308 rows are inside a span and only 1817–1820 is
+  uncovered. Four rows do not justify a polity row, and no defensible date makes
+  a Gold Coast entity begin in 1817 rather than 1821.
+
+**Four rows were created** (each with its own page and polygon decision), closing
+**927** of the uncovered rows above:
+
+| new row | uncovered rows it takes | polygon |
+|---|---|---|
+| `CEM-1800-2025` Ceuta and Melilla | 342 | GADM 4.1 ADM1 `ESP.7_1`, whose own name is *Ceuta y Melilla*; `proxy`, because the modern limits are the post-1860/1862 ones |
+| `NFL-1800-1907` Colony of Newfoundland | 239 | CShapes gwcode 21 @1886 — its only step, and in-span; `proxy` for the pre-1927 Labrador limit |
+| `SUR-1800-1886` Dutch Guiana (to 1886) | 188 | CShapes gwcode 115 @1886; `proxy`, the geometry post-dates the 1899 and 1906 boundary settlements |
+| `CPV-1800-1886` Cape Verde (to 1886) | 158 | CShapes gwcode 402 @1886; `proxy` on vintage only — an archipelago with no land border |
+
+Three of the four are span extensions of families whose start year was CShapES's
+coverage floor (1886) rather than any event: `sur-1886-1954` and `cpv-1886-1975`
+both said so on their own pages, one of them in as many words ("pre-1886 Cape
+Verde colonial history is not yet modelled"). That is the structural finding
+underneath the individual labels — **a second source with an earlier horizon
+exposes the 1886 floor as a polity-set boundary, not a historical one** — and it
+is not exhausted by four rows.
+
+Re-measuring the twelve labels after the four rows exist leaves **277**
+uncovered rows across them, down from 1,204 — and every one of the 277 is in the
+list below, by decision rather than by omission.
+
+Deliberately NOT created, with the reason:
+
+- **`Zanzibar` 1800–1889, 192 rows.** `ZNZ-1890-1963` is the *protectorate*. The
+  Omani sultanate that preceded it ruled the Mrima coast — Mombasa, Malindi, the
+  Lamu archipelago, a strip that is now Kenyan — and its extent varied through
+  the century. No source fetched into this repository offers that strip as a
+  polygon, so the row would have to declare either an invented geometry or the
+  2,650 km² island proxy while describing a mainland empire. The judgement is
+  real and is left to a verifier with a source, not guessed here.
+- **`Leeward Islands` 1800–1832, 56 rows.** `BLI-1833-1960` begins at the
+  colony's federation. Before it the islands were separately administered, and
+  WHEP already has all five constituents from 1800 (`ATG`, `DMA`, `MSR`, `KNA`,
+  `VGB`). The pre-1833 label is therefore an AGGREGATE-routing question, not a
+  missing territory: nothing new should be created for it.
+- **`Dutch West Indies` 1800–1815, 16 rows.** `ANT-1816-1961` opens at the 1816
+  restitution because the islands were under British occupation before it; a row
+  for the occupation years would assert a territorial identity change that did
+  not happen, which is the same argument `sur-1800-1886` makes for keeping
+  1799–1816 inside one row. Whether to extend `ANT-1816-1961` back to 1800 is a
+  question about that row.
+- **`Gold Coast` 1817–1820, 4 rows** — see above.
+- **The bucket-(C) groups** (Trucial sheikhdoms, Central Asian khanates, Malayan
+  customs units, Chinese leased territories, the pre-Confederation Canadian
+  provinces, the Boer republics, the Pacific islands) are untouched. Each is a
+  family-scale decision about WHEP's scope with 9–139 rows behind it, and the
+  five Canadian provinces alone (`Ontario`, `Lower Quebec`, `New Brunswick`,
+  `Nova Scotia Cape Breton Isl.`, `Prince Edward Island`, 67 rows each) would
+  need a subnational polygon source this repository has not fetched for 1800–1866.
+- **No alias was added.** These four rows give the years a home; making the
+  labels *route* is the alias half, and belongs with the verification of the 240
+  pending assertions. The measurement above is deliberately alias-independent —
+  it compares years against spans, so it is unaffected by whether a label
+  matches a name.
+
+Robustness of these numbers to the prep script's column mapping: the ROW counts
+above are rows of the intake table as `prepare_federico_tena.py` builds it, so if
+that script's positional column mapping is corrected the counts move. The
+DECISIONS do not, because they turn on YEARS and not on which column a year came
+from. Read straight off the xlsx row for each territory created here — the first
+two numeric cells being the unit's own first and last year — Ceuta y Melilla is
+dated 1800–1938 with its earliest series year 1826, Newfoundland 1816–1938 from
+1816, Dutch Guayana 1800–1938 from 1820, CapoVerde 1800–1938 from 1850. Every one
+still begins decades before the WHEP row that existed. The same reading makes the
+Gold Coast case *stronger*: the sheet dates that unit **1843**–1938 and notes
+"1821-1843 … part of Sierra Leone", so its 1817 cell is one series' start and not
+a claim that a Gold Coast reporting unit existed in 1817.
+
+Counting note: this measurement finds **81 labels with zero routed rows
+(11,020 rows)** where the section above reports 76 (9,822). Both are right and
+they count different things: 76 is what `00_intake.py` calls unresolved with no
+candidate at all, while 81 also includes labels that DO find a candidate by name
+but observe no year inside its span, which is why `Bermuda`, `CapoVerde` and
+`Russia/USSR` appear in the table above.
 
 ## Known limitations
 
