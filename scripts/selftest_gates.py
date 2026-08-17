@@ -1200,7 +1200,9 @@ def mutate_avoidable_self_referential_area(root, gpd, make_valid, affinity):
         f"AFG-1893-1919 now declares {cur!r}; pick another row that has a stated figure and "
         f"declares no area"
     )
-    g.loc[i, "polygon_area_km2"] = round(areas["AFG-1893-1919"])
+    # str(), not int: CI's pandas raises "Invalid value for dtype 'str'" on an int
+    # assignment into a string column while the local version accepts it silently.
+    g.loc[i, "polygon_area_km2"] = str(round(areas["AFG-1893-1919"]))
     write_gpkg(g, root)
     return ("gave AFG-1893-1919 its own polygon's area as polygon_area_km2, so check A can only "
             "compare it against itself while a stated figure for it is already published")
