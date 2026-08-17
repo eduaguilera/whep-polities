@@ -110,7 +110,28 @@ def dead_codes_in_pre1961() -> list:
             for code in dead:
                 if code in text:
                     found.setdefault(code, set()).add(name)
+    # The mirror-image failure: build_wiki.sh does `rm -rf site/pre1961` and THEN copies, with
+    # `|| true` on every cp. If data/compiled/pre1961 exists but is empty or partial -- a failed
+    # or interrupted match.R run -- the tracked directory is emptied and the copies silently do
+    # nothing, and a dead-code scan of an empty directory passes. So assert the deployed set is
+    # still there. 138 files are tracked today; the two index files plus a non-empty by_item/ is
+    # the shape, and checking the shape rather than the count leaves room for the item list to
+    # change legitimately.
     out = []
+    for name in ("summary_by_polity.json", "by_item_index.json"):
+        if not os.path.exists(os.path.join(SITE_PRE1961, name)):
+            out.append(
+                f"site/pre1961/{name} is missing while the directory exists. build_wiki.sh "
+                f"deletes this directory before copying and ignores copy failures, so an empty "
+                f"or partial data/compiled/pre1961 silently empties the deployed set. "
+                f"Regenerate it (Rscript pipelines/pre1961-matching/match.R) before rebuilding"
+            )
+    by_item = os.path.join(SITE_PRE1961, "by_item")
+    if os.path.isdir(by_item) and not [f for f in os.listdir(by_item) if f.endswith(".json")]:
+        out.append(
+            "site/pre1961/by_item is empty while the directory exists — the deployed per-item "
+            "files were removed without being replaced (same cause as above)"
+        )
     for code in sorted(found):
         files = found[code]
         out.append(
