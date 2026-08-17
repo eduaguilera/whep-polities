@@ -539,6 +539,17 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/crosscheck_matchers.py
 
+      # Issue 17: the matchers' real inputs (the layer-B parquet, common_names.csv, a WHEP
+      # checkout for the FAOSTAT pins) live outside the repository and are not
+      # redistributable, so no CI run ever executed the matching RULES. This runs them on a
+      # committed synthetic fixture -- invented polities, invented aliases -- and then runs
+      # 00_intake.py itself over a committed 11-row input, so the pipeline entry point is
+      # executed too. Measured: it catches a half-open-alias-bound regression that
+      # crosscheck_matchers passes.
+      - name: The matcher's rules and the intake path run on a committed fixture
+        if: '!cancelled()'
+        run: python3 scripts/validate_matcher_fixture.py
+
       - name: No label's route is decided by family order
         if: '!cancelled()'
         run: python3 scripts/validate_order_decided_families.py
