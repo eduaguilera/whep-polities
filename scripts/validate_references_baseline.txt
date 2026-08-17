@@ -41,26 +41,25 @@ ryu-1945-1972  JPN-1972-2025    # decision prose: successor set to JPN-1952-2025
 tur-1913-1914  TUR-1800-1912    # "per CSV", but the CSV row is OTT-*; needs the Ottoman/Turkey chain settled
 
 # --- Body written for a split that was never applied (issue #25) -------------
-# 2026-08-13: the TITLES of these pages are no longer part of the backlog. Each
-# claimed the planned sub-period rather than the row's own span ("# Gambia (to
-# 1889)" on a 1800-2025 row) and has been corrected to the row's span with a note
-# saying what the body still gets wrong; check 5 now enforces that. What remains
-# baselined below is the prose, which is a per-page editorial job.
-# Each of these has a "- **Successor:** XXX-yyyy-yyyy (this row)" bullet naming a
-# code that does not exist, left over from a planned split. The rows are single
-# long spans; the prose, not the database, is what is wrong. Rewriting it is a
-# per-page editorial job — issue #25 records jam-1800-2025 as needing exactly that.
-are-1892-2025  ARE-1892-1913
-are-1892-2025  ARE-1971-2025
-gmb-1800-2025  GMB-1889-1965
-jam-1800-2025  JAM-1886-1962
-lka-1800-2025  LKA-1886-1948
-mus-1800-2025  MUS-1886-1968
-phl-1800-2025  PHL-1886-1898
-phl-1800-2025  PHL-1946-2025
-sau-1924-2025  SAU-1932-2000
-swz-1894-2025  SWZ-1968-2025
-tto-1800-2025  TTO-1886-1962
+# EMPTIED 2026-08-17. This block held 11 lines across 9 pages, each a
+# "- **Successor:** XXX-yyyy-yyyy (this row)" bullet naming a code that does not
+# exist, left over from a planned split: are-1892-2025 (ARE-1892-1913,
+# ARE-1971-2025), gmb-1800-2025 (GMB-1889-1965), jam-1800-2025 (JAM-1886-1962),
+# lka-1800-2025 (LKA-1886-1948), mus-1800-2025 (MUS-1886-1968), phl-1800-2025
+# (PHL-1886-1898, PHL-1946-2025), sau-1924-2025 (SAU-1932-2000), swz-1894-2025
+# (SWZ-1968-2025), tto-1800-2025 (TTO-1886-1962).
+#
+# The titles were corrected on 2026-08-13; the prose was the remaining editorial
+# job and all nine bodies have now been rewritten to describe their actual single
+# row. No polity row was created or deleted: in every case the year the split was
+# planned at is a change of ruler (independence, protectorate transfer) or a
+# polygon-source vintage, not a change of extent, and each page now says so and
+# records what remains undecided. Nine pages, zero rows changed, zero geometry
+# changed. Where a code still appears it is prose ("a split at 1932 was once
+# planned"), which check 4 treats as a warning by design.
+
+
+
 
 # Added when the checker was ported onto current main (2026-08-04). Legacy chain
 # and link breakage predating the port; every line is a page naming something that
