@@ -1771,6 +1771,47 @@ def mutate_half_open_alias_bound(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_pre1961_crosswalk_claims_transition_year(root, gpd, make_valid, affinity):
+    """Let the pre-1961 matcher's crosswalk keep Canada one year past CAN-1886-1949's end.
+
+    THIS CASE COVERS THE THIRD MATCHER, which until issue 16's second half was checked
+    only by grepping its source for two status words. `pipelines/pre1961-matching/match.R`
+    cannot run in CI -- no R toolchain, an 18 MB input under data/external and a GITIGNORED
+    19 MB output -- so crosscheck_matchers reads its decisions from the committed crosswalk
+    `write_r_crosswalk.py` publishes, one row per run of years over which R's answer is
+    constant.
+
+    The mutation is the defect that shape exists to catch, and it is the same off-by-one
+    the FAOSTAT arm baselines four times: a run's INCLUSIVE `year_end` set equal to its
+    target's EXCLUSIVE `end_year`, so it claims the transition year its own target
+    excludes. Canada's run ends 1948 against CAN-1886-1949; pushing it to 1949 makes the
+    crosswalk answer CAN-1886-1949 for a year matchlib gives to CAN-1949-2025.
+
+    It also proves the boundary probing is real and not decorative. The gate probes
+    {first, midpoint, last} of every run: only the LAST-year probe can see this, and
+    before the boundary years were added (the first half of issue 16) the midpoint reading
+    would have compared 1917 and reported agreement.
+    """
+    path = os.path.join(root, "pipelines/pre1961-matching/state/r_crosswalk.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.reader(fh))
+    header, body = rows[0], rows[1:]
+    col = {name: i for i, name in enumerate(header)}
+    hits = [
+        r for r in body
+        if r[col["polity_code"]] == "CAN-1886-1949" and r[col["year_end"]] == "1948"
+    ]
+    assert hits, "the pre-1961 crosswalk no longer carries Canada's 1886-1948 run"
+    for r in hits:
+        r[col["year_end"]] = "1949"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        csv.writer(fh, lineterminator="\n").writerows([header, *body])
+    return (
+        "extended the pre-1961 crosswalk's Canada run to 1949, the transition year "
+        "CAN-1886-1949's exclusive end_year hands to CAN-1949-2025"
+    )
+
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -2094,6 +2135,14 @@ CASES = (
         "row then outranks the live successors it was split into",
     ),
     (
+        "crosscheck_matchers.py",
+        mutate_pre1961_crosswalk_claims_transition_year,
+        "CAN-1886-1949",
+        "the third matcher -- pipelines/pre1961-matching/match.R, which no gate could read "
+        "before issue 16 -- claiming a transition year its own target's exclusive end_year "
+        "gives to the successor, visible only at a run's LAST-year probe",
+    ),
+    (
         "validate_trade_mirror_gaps.py",
         mutate_trace_flow_into_mirror_gaps,
         "Ice and snow",
@@ -2186,6 +2235,11 @@ WRITABLE = {
         "pipelines/pre1961-matching/match.R",
         "pipelines/faostat-era-matching/match.R",
         "faostat_area_polity_map.csv",
+        # The pre-1961 matcher's committed crosswalk: the only way a Python gate in CI can
+        # see the THIRD implementation at all, since match.R needs R and its 19 MB output is
+        # gitignored. A real copy, not a symlink, because the transition-year case rewrites
+        # one field of it -- through a symlink that would edit the committed table.
+        "pipelines/pre1961-matching/state/r_crosswalk.csv",
     ),
     # The GeoPackage is what this case mutates, so it must be a real copy — and it MUST be
     # written with write_gpkg(), not to_file(), for the reason that helper documents.

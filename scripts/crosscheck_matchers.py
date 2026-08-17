@@ -53,8 +53,49 @@ And `check_dead_status_declared` asserts, by source text, that ALL THREE matcher
 name both dead statuses. That is the invariant issue 16 found missing from
 `pre1961-matching/match.R` entirely — see DEAD_STATUS_DECLARERS below.
 
+THE THIRD MATCHER IS NOW COMPARED BY BEHAVIOUR, not only by source text (issue 16).
+Until 2026-08-17 this gate compared TWO of the three implementations and checked the
+third, `pipelines/pre1961-matching/match.R`, only by grepping it for two status words.
+That was not a choice about what mattered; it was the reachable check. The R matcher
+needs an R toolchain CI does not have, its input `data/external/before_1961.csv` is 18 MB
+and its output `data/compiled/pre1961/matched.csv` is 19 MB AND GITIGNORED —
+`validate_matcher_orphan_guard.py` states the consequence outright: "no gate can ever
+read them".
+
+What CI can read is a small COMMITTED table of the R matcher's decisions, which is what
+`pipelines/pre1961-matching/write_r_crosswalk.py` now publishes. The R answers are
+piecewise constant in the year, so its 124,508-row match collapses to 487 runs over 150
+reporting entities, and a run boundary IS a year where the R matcher changes its mind —
+i.e. exactly a transition year. Probing {y0, midpoint, y1} of each run gives 1,154 probes
+and found 21 disagreements plus 34 probes matchlib cannot resolve at all, in four
+mechanisms none of which the source-text check could see:
+
+  * TRANSITION-YEAR ATTRIBUTION, the rule the issue predicted, now measured on the third
+    matcher: Greece 1913, Russia 1905, Korea 1948, Israel/Palestine 1948 all go to the
+    SUCCESSOR in match.R and to the PREDECESSOR in matchlib, while Sudan 1956 and
+    Manchuria 1945 go the other way round. So neither implementation is uniform, and the
+    convention `matchlib.pick_by_year`'s comment claims to share is not in fact shared.
+  * AN ERA-REWRITE TABLE ONLY R HAS. `normalise_iso` hard-codes 26 (iso3, year-cutoff)
+    rewrites, so match.R sends Malawi and Zambia 1953-63 to FRN (the Federation of
+    Rhodesia & Nyasaland) and Rwanda pre-1962 to RWB (Ruanda-Urundi), where matchlib
+    answers the modern successor. These are territory-scope decisions, not typos:
+    FRN is ~1.26M km2 against Nyasaland's ~118k.
+  * A NAME-OVERRIDE TABLE ONLY R HAS. 13 labels whose iso3c is literally "NA" —
+    "Korea", "Cape Natal", "Indochina", "China, Manchuria Province of" — route by name in
+    R and resolve to nothing in matchlib.
+  * FAMILY TIE-BREAKS: Libya 1943-49 (LBY against CYR, Cyrenaica) and Ethiopia 1936-41
+    (ETH against AOI, Italian East Africa) differ with no alias and no rewrite involved.
+
+There is no circularity to guard against on this arm, unlike the FAOSTAT one: match.R
+(pre1961) writes only into `data/compiled/`, which matchlib never reads, so the full
+alias registry is used here.
+
 Usage:
   python3 scripts/crosscheck_matchers.py
+
+  # regenerating the R side (needs R + data/external, so NOT runnable in CI):
+  Rscript pipelines/pre1961-matching/match.R
+  python3 pipelines/pre1961-matching/write_r_crosswalk.py
 """
 import csv
 import os
@@ -67,6 +108,7 @@ sys.path.insert(0, os.path.join(REPO, "pipelines/polity-autoimprove"))
 ALIASES = os.path.join(REPO, "pipelines/polity-autoimprove/state/applied_aliases.csv")
 POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 PUBLISHED = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
+PRE1961 = os.path.join(REPO, "pipelines/pre1961-matching/state/r_crosswalk.csv")
 
 # Known disagreements, by FAOSTAT area code. Each is an open defect, not an
 # accepted difference — see the issues named above.
@@ -200,6 +242,78 @@ FIXTURE = (
 # explicit alias. This is the concrete gain from that change, reported by an independent gate.
 BASELINE_UNRESOLVED = frozenset()
 
+# --- the THIRD matcher: pipelines/pre1961-matching/match.R ---------------------------
+# Keyed by (label, iso3 or "-", probe year), measured 2026-08-17 against the committed
+# crosswalk (487 runs, 1,154 probes, 1,099 agreements). Every entry is an OPEN divergence
+# with a named mechanism, not an accepted difference. Grouped by mechanism:
+#
+# 1. TRANSITION-YEAR ATTRIBUTION — the rule issue 16 predicted every divergence would turn
+#    on, confirmed on the third matcher. At a year shared by a predecessor and its
+#    successor the two implementations pick opposite sides, and NEITHER is consistent:
+#      Greece 1913, Russia 1905, Korea 1948, Israel/Palestine 1948  R -> successor
+#      Sudan 1956, Manchuria 1945                                   R -> predecessor
+#    match.R reaches its answer via `covers()` + `drop_expired_periods`, matchlib via
+#    `pick_by_year`'s narrower-range preference or an alias whose INCLUSIVE `year_end`
+#    equals its target's EXCLUSIVE `end_year` — the same alias parity the FAOSTAT arm
+#    baselines four times above, and the same registry-wide decision is pending there.
+#    Not fixed here: choosing the convention changes both matchers' output on real data.
+# 2. AN ERA-REWRITE TABLE ONLY match.R HAS (`normalise_iso`, 26 hard-coded rules).
+#    Malawi/Zambia 1953-63 -> FRN (Federation of Rhodesia & Nyasaland, ~1.26M km2) and
+#    Rwanda pre-1962 -> RWB (Ruanda-Urundi) in R; matchlib answers the modern successor
+#    (MWI/NRH/RWA rows of the same span). This is a TERRITORY-SCOPE disagreement, the
+#    largest in magnitude here, and porting the table into matchlib would move layer-B
+#    routing for three countries — argued, not absorbed.
+# 3. FAMILY TIE-BREAKS with no alias and no rewrite: Libya 1943-49 (R LBY-1943-1949 vs
+#    matchlib CYR-1943-1949, Cyrenaica alone) and Ethiopia 1936-41 (R ETH-1936-1941 vs
+#    matchlib AOI-1936-1941, Italian East Africa). Both are real attribution questions
+#    about occupied/partitioned territory, which a matcher gate must not settle by itself.
+BASELINE_PRE1961_DIFFERENT = frozenset({
+    ("China, Manchuria Province of", "-", 1945),   # R MAN-1932-1945 / CHN-1945-1947
+    ("Ethiopia", "ETH", 1936),                     # R ETH-1936-1941 / AOI-1936-1941
+    ("Ethiopia", "ETH", 1938),
+    ("Ethiopia", "ETH", 1940),
+    ("Greece", "GRC", 1913),                       # R GRC-1913-1919 / GRC-1881-1913
+    ("Israel/Palestine", "-", 1948),               # R ISR-1948-1967 / PAL-1920-1948
+    ("Korea", "-", 1948),                          # R KOR-1948-2025 / KOR-1945-1948
+    ("Libya", "LBY", 1945),                        # R LBY-1943-1949 / CYR-1943-1949
+    ("Libya", "LBY", 1947),
+    ("Libya", "LBY", 1949),
+    ("Malawi", "MWI", 1953),                       # R FRN-1953-1964 / MWI-1953-1964
+    ("Malawi", "MWI", 1956),
+    ("Malawi", "MWI", 1960),
+    ("Russian Federation", "RUS", 1905),           # R F228-1905-1914 / F228-1856-1905
+    ("Rwanda", "RWA", 1952),                       # R RWB-1922-1962 / RWA-1922-1962
+    ("Rwanda", "RWA", 1956),
+    ("Rwanda", "RWA", 1960),
+    ("Sudan", "SDN", 1956),                        # R SUD-1934-1956 / SUD-1956-2011
+    ("Zambia", "ZMB", 1953),                       # R FRN-1953-1964 / NRH-1953-1964
+    ("Zambia", "ZMB", 1956),
+    ("Zambia", "ZMB", 1960),
+})
+
+# Entities match.R routes and matchlib cannot resolve AT ALL. Keyed by (label, iso3) and
+# NOT by year, deliberately: the mechanism is entity-level — matchlib has no equivalent of
+# match.R's `name_override` table (13 labels whose input iso3c is literally the string
+# "NA": Korea, Cape Natal, Indochina, Manchuria, Rwanda and Burundi, Cape Province...) and
+# no equivalent of the pre-independence arm of `normalise_iso` (SOM pre-1960 -> ITS,
+# CSK pre-1918 -> AUH, YUG pre-1918 -> SER, PSE -> PAL, LBY pre-1912 -> OTT, PRK pre-1948
+# -> KOR). The year a probe happens to land on is an artefact of which years the panel
+# carries, so year-keying these would churn on every regeneration without adding signal.
+# Cost of that choice, stated: a NEW unresolved year at an entity already listed here does
+# not fail. "Korea" shows why the entities and not the years are the unit — it resolves by
+# name at 1948 (see the DIFFERENT baseline) and not at 1954 or 1960.
+# 34 probes across these 8 entities as of 2026-08-17.
+BASELINE_PRE1961_UNRESOLVED = frozenset({
+    ("Cape Natal", "-"),            # name_override -> NAT, then ZAF after Union (1910)
+    ("Czechoslovakia", "CSK"),      # pre-1918 -> AUH (Austria-Hungary)
+    ("Korea", "-"),                 # name_override -> KOR
+    ("Libya", "LBY"),               # pre-1912 -> OTT (Ottoman Empire)
+    ("North Korea", "PRK"),         # pre-1948 -> KOR (undivided Korea)
+    ("Palestine", "PSE"),           # -> PAL (British Mandate)
+    ("Somalia", "SOM"),             # pre-1960 -> ITS (Italian Somaliland)
+    ("Yugoslav SFR", "YUG"),        # pre-1918 -> SER (Kingdom of Serbia)
+})
+
 
 # Every program in this repo that decides which polity a label and year belong to. All
 # three must exclude dead polities, and until 2026-08-17 one of them did not: issue 16
@@ -248,6 +362,71 @@ def dead_codes() -> set:
         for r in csv.DictReader(open(POLITIES, encoding="utf-8"))
         if (r.get("wiki_status") or "").strip() in ("retired", "superseded")
     }
+
+
+def all_codes() -> set:
+    """every polity_code the database carries, dead ones included."""
+    return {
+        r["polity_code"] for r in csv.DictReader(open(POLITIES, encoding="utf-8"))
+    }
+
+
+def check_pre1961(full, dead: set, live: set) -> tuple:
+    """Compare matchlib against the THIRD matcher, `pre1961-matching/match.R`.
+
+    The R matcher cannot run in CI, so its decisions are read from the crosswalk
+    `write_r_crosswalk.py` publishes from its output. Each row is a run of consecutive
+    years over which R's answer is constant, so a run boundary is a year where R changes
+    its mind: probing {y0, midpoint, y1} puts two of every three probes ON a transition.
+
+    Returns (probes, agree, different, unresolved, problems).
+    """
+    problems = []
+    if not os.path.exists(PRE1961):
+        return 0, 0, {}, {}, [
+            f"{os.path.relpath(PRE1961, REPO)} is missing, so the third matcher "
+            f"(pre1961-matching/match.R) is compared by source text only — regenerate it "
+            f"with: Rscript pipelines/pre1961-matching/match.R && python3 "
+            f"pipelines/pre1961-matching/write_r_crosswalk.py"
+        ]
+
+    runs = list(csv.DictReader(open(PRE1961, encoding="utf-8")))
+    agree, probes, different, unresolved = 0, 0, {}, {}
+    for r in runs:
+        rcode = r["polity_code"]
+        # Freshness and the two invariants the R matcher claims for its own output. An
+        # orphan means the database moved under the crosswalk (issue 17); a dead target
+        # means the retired/superseded filter did not hold on real data, which is the
+        # BEHAVIOURAL form of what DEAD_STATUS_DECLARERS can only check as source text.
+        if rcode not in live:
+            problems.append(
+                f"pre1961 crosswalk routes {r['country']!r} {r['year_start']}-"
+                f"{r['year_end']} to {rcode}, which is not in the database — the R "
+                f"matcher's crosswalk is stale, regenerate it"
+            )
+            continue
+        if rcode in dead:
+            problems.append(
+                f"pre1961 crosswalk routes {r['country']!r} {r['year_start']}-"
+                f"{r['year_end']} to {rcode}, whose wiki_status is dead — a dead polity "
+                f"must never receive data"
+            )
+            continue
+        y0, y1 = int(r["year_start"]), int(r["year_end"])
+        # match.R resolves on iso3c first and falls back to polity_name, then country
+        # (`resolve_iso`). "NA" is a literal string in this panel, not a missing value.
+        label = r["polity_name"] if r["polity_name"] not in ("", "NA") else r["country"]
+        iso = r["iso3c"] if r["iso3c"] not in ("", "NA") else None
+        for year in sorted({y0, (y0 + y1) // 2, y1}):
+            probes += 1
+            code, _status, how = full.assign(label, iso, None, year)
+            if code == rcode:
+                agree += 1
+            elif code is None:
+                unresolved[(label, iso or "-")] = (rcode, how)
+            else:
+                different[(label, iso or "-", year)] = (rcode, code, how)
+    return probes, agree, different, unresolved, problems
 
 
 def main() -> int:
@@ -305,10 +484,13 @@ def main() -> int:
                     f"{code}, whose wiki_status is dead — a dead polity must never "
                     f"receive data"
                 )
+
+        (p_probes, p_agree, p_different, p_unresolved,
+         p_problems) = check_pre1961(full, dead, all_codes())
     finally:
         os.unlink(tmp.name)
 
-    problems = list(fixture_failures) + check_dead_status_declared()
+    problems = list(fixture_failures) + check_dead_status_declared() + p_problems
     for label, observed, baseline in (
         ("disagreement", set(different), BASELINE_DIFFERENT),
         ("unresolved", set(unresolved), BASELINE_UNRESOLVED),
@@ -319,6 +501,25 @@ def main() -> int:
             problems.append(
                 f"area {area} year {year} is baselined as a {label} but now agrees — "
                 f"remove it from the baseline"
+            )
+
+    for label, observed, baseline in (
+        ("disagreement", set(p_different), BASELINE_PRE1961_DIFFERENT),
+        ("unresolved", set(p_unresolved), BASELINE_PRE1961_UNRESOLVED),
+    ):
+        for key in sorted(observed - baseline):
+            detail = (p_different if len(key) == 3 else p_unresolved)[key]
+            problems.append(
+                f"NEW pre1961 {label} at {key[0]!r} [iso {key[1]}]"
+                + (f" year {key[2]}" if len(key) == 3 else "")
+                + f": match.R says {detail[0]}, matchlib says "
+                + (f"{detail[1]} ({detail[2]})" if len(key) == 3
+                   else f"nothing ({detail[1]})")
+            )
+        for key in sorted(baseline - observed):
+            problems.append(
+                f"pre1961 {key} is baselined as a {label} against "
+                f"pre1961-matching/match.R but now agrees — remove it from the baseline"
             )
 
     print(f"published FAOSTAT mappings: {len(published)}")
@@ -336,6 +537,19 @@ def main() -> int:
         for (area, year), (lbl, a, b, how) in sorted(different.items()):
             print(
                 f"    area {area:>4} y={year} {lbl[:24]:<26} match.R={a:<16} "
+                f"matchlib={b:<16} ({how})"
+            )
+
+    print(f"\npre-1961 crosswalk (pipelines/pre1961-matching/match.R): "
+          f"{p_probes} probes")
+    print(f"  matchlib agrees             : {p_agree}")
+    print(f"  different target            : {len(p_different)}")
+    print(f"  matchlib cannot resolve     : {len(p_unresolved)} entit(ies)")
+    if p_different:
+        print("\n  different target:")
+        for (lbl, iso, year), (a, b, how) in sorted(p_different.items()):
+            print(
+                f"    {lbl[:28]:<30} [{iso:<3}] y={year} match.R={a:<16} "
                 f"matchlib={b:<16} ({how})"
             )
 
