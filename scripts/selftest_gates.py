@@ -1170,6 +1170,39 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
             f"to CAN-1886-1948, the span issue 243 retired, as an un-regenerated crosswalk does")
 
 
+def mutate_pre1961_site_names_dead_polity(root, gpd, make_valid, affinity):
+    """Put a retired polity back into the deployed pre-1961 summary.
+
+    NOT a synthetic hazard: it is the exact state of the repository until 2026-08-18. The R
+    matcher gained its dead-status filter in issue 16, but site/pre1961/** is TRACKED and
+    copied from data/compiled/pre1961, which is GITIGNORED -- so nothing regenerated it and
+    the deployed files kept attributing pre-1961 production to 23 retired or superseded
+    codes across 138 files (ARG-1800-2025 in 76 of them, BRA-1800-2025 in 67).
+
+    Every gate that knows about dead rows was looking at site/polities.geojson, which is
+    built from a different path and was clean the whole time.
+    """
+    import json
+    path = os.path.join(root, "site/pre1961/summary_by_polity.json")
+    if not os.path.exists(path):
+        raise AssertionError("site/pre1961/summary_by_polity.json missing from the scratch repo")
+    with open(path, encoding="utf-8") as fh:
+        d = json.load(fh)
+    if isinstance(d, dict):
+        d["ARG-1800-2025"] = next(iter(d.values()))
+    else:
+        first = dict(d[0])
+        for k, v in first.items():
+            if "polity" in k.lower() and isinstance(v, str):
+                first[k] = "ARG-1800-2025"
+                break
+        d[0] = first
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(d, fh)
+    return ("put ARG-1800-2025, retired, back into the deployed pre-1961 summary, the state "
+            "the site shipped in until the compiled directory was regenerated")
+
+
 def mutate_enclave_overlap_grown(root, gpd, make_valid, affinity):
     """Grow Portuguese India by 3 km, so its pre-1990 overlap with India drifts past tolerance.
 
@@ -2256,6 +2289,13 @@ CASES = (
         "single year -- with that date removed, so row order decides again",
     ),
     (
+        "validate_site_outputs.py",
+        mutate_pre1961_site_names_dead_polity,
+        "ARG-1800-2025",
+        "deployed pre-1961 data attributed to a retired polity, in the tracked directory that "
+        "is copied from a gitignored one and so does not heal when the matcher is fixed",
+    ),
+    (
         "validate_coexisting_overlaps.py",
         mutate_enclave_overlap_grown,
         "PTIND-1816-1961",
@@ -3002,6 +3042,9 @@ WRITABLE = {
         "polities_database.gpkg",
         "site/polities.csv",
         "site/polities.geojson",
+        # site/pre1961 is a DIRECTORY and must be a real copy: the case rewrites the deployed
+        # summary, and through stage()'s symlink that write would land in the committed site.
+        "site/pre1961",
     ),
     "validate_order_decided_families.py": (
         "polities_database.csv",
