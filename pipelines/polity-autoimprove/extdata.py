@@ -573,12 +573,19 @@ def _selftest() -> int:
             pa.string(), safe=False),
         "Element": pa.array(["Export Quantity", "Import Quantity"]),
     })
+    # Whether to_pandas() RAISES on this fixture is a property of the installed pyarrow, not
+    # of the guard. It raises on 19.0.1, which is what the bilateral pin is read with locally
+    # ("Wrapping Mat\xe9 leaves failed"), and no longer raises on 25.0.1, which is what a
+    # fresh CI runner installs. So this arm reports the environment instead of failing in it:
+    # a hazard fixed upstream is not a broken guard, and pinning CI to an old pyarrow to keep
+    # the assertion meaningful would be worse than saying which version was tested.
     try:
         table.to_pandas()
-        print("FAIL: the latin-1 fixture no longer breaks to_pandas, so the case is inert")
-        ok = False
+        print(f"note: pyarrow {pa.__version__} decodes the latin-1 fixture without raising, "
+              f"so the HAZARD is absent here; the decode assertion below still runs")
     except Exception:
-        print("pass: to_pandas() on a latin-1 string column raises, as the pin does")
+        print(f"pass: to_pandas() on a latin-1 string column raises under pyarrow "
+              f"{pa.__version__}, as the pin does")
     out = decode_latin1_columns(table, TRADE_BILATERAL_LATIN1)
     if list(out["Item"]) != ["Maté leaves", "Wheat"]:
         print(f"FAIL: latin-1 decode produced {list(out['Item'])}"); ok = False
