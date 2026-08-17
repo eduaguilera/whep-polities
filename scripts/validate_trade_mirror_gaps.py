@@ -49,7 +49,14 @@ WHY EACH CHECK EXISTS
                     third quantity to solve for. So the table must not grow an
                     `implied_correct`/`action`-shaped column. 07 writes `undetermined` where
                     it cannot decide; here the honest form is no such column at all, and a
-                    consumer that found one would apply a repair nothing supports.
+                    consumer that found one would apply a repair nothing supports. Where a
+                    third quantity DOES exist -- the exporter's own production plus its own
+                    imports, which a shipment cannot exceed -- a direction is licensed, and
+                    it lives in a SEPARATE table with its own gate:
+                    state/trade_mirror_direction.csv, checked by
+                    scripts/validate_trade_direction_tiebreak.py. It decides 49 of these
+                    12,775 flows and leaves 3,864 of the 3,913 it can see undetermined, so
+                    this table stays silent about all of them.
 
 Usage:
   python3 scripts/validate_trade_mirror_gaps.py
