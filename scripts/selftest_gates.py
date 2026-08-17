@@ -64,19 +64,23 @@ WHAT MUTATION TESTING ESTABLISHED, beyond that the gates fire:
   would have found nothing to compare. Both exit 1. Only the name check separated
   "detected the mutation" from "crashed before reaching it".
 
-  crosscheck_matchers.py is DELIBERATELY NOT COVERED HERE, and the reason is worth
-  recording because it looked like an easy tenth case. It compares two independent
-  matchers against each other, so producing a disagreement means changing what ONE of
-  them computes -- and both read the same applied_aliases.csv, so mutating the registry
-  moves both identically and they still agree. My attempt repointed a faostat Kenya
-  alias and the gate passed, which reads as "the gate cannot fail" and is not: staged on
-  its own it reports 281 mappings, 276 agreements and the 3 baselined differences, so it
-  works. The mutation was the wrong shape, like the REMOVED_ prefix that could not hide
-  a substring.
-  Covering it properly needs a surgical edit to matchlib.py's or match.R's resolution
-  logic, which is brittle to write and would fail for reasons unrelated to the gate. An
-  uncovered gate that is honestly labelled uncovered beats a case that passes for the
-  wrong reason.
+  crosscheck_matchers.py WAS DELIBERATELY NOT COVERED HERE, and the history is worth
+  keeping because the stated reason was right and the conclusion was wrong. It compares
+  two independent matchers against each other, so producing a disagreement means changing
+  what ONE of them computes -- and both read the same applied_aliases.csv, so mutating the
+  registry moves both identically and they still agree. An attempt that repointed a
+  faostat Kenya alias made the gate pass, which reads as "the gate cannot fail" and was
+  not: staged on its own it reported 281 mappings, 276 agreements and the 3 baselined
+  differences, so it worked. The mutation was the wrong shape, like the REMOVED_ prefix
+  that could not hide a substring. The note then concluded that covering it needed a
+  surgical edit to matchlib's resolution logic, "brittle to write".
+  Issue 16 made it easy instead of brittle, by changing what the gate asserts rather than
+  how it is mutated: the gate now also pins a golden FIXTURE of routing decisions to
+  expected polity codes, and a fixture has no second party to move in step with it. The
+  last case in this file empties matchlib's DEAD_STATUS -- one token -- and the fixture
+  reports ARG-1800-2025 by name. The lesson is that "this gate cannot be mutated" was
+  really "this gate compares two things that move together"; giving it one absolute
+  assertion was the fix.
 
   Case 5 exists because its gate shipped with a blind spot. The alias-chain check
   skipped rows with empty year bounds, so it missed "turkey", where an UNRANGED
@@ -1243,10 +1247,17 @@ def mutate_inclusive_end_year(root, gpd, make_valid, affinity):
     What makes this case worth having is that NOTHING ELSE CATCHES IT. The
     mutation raises no exception, changes no schema, moves no polygon and leaves
     every count identical; both readings return a real, live, plausibly-dated
-    polity, so the only observable difference is WHICH one. Reverting it in a
-    scratch copy of this repo leaves all other gates green — including
-    crosscheck_matchers, which compares the two matchers at each area's MIDPOINT
-    year and therefore never asks about a boundary.
+    polity, so the only observable difference is WHICH one.
+
+    "NOTHING ELSE CATCHES IT" was measured when crosscheck_matchers compared the
+    two matchers at each area's MIDPOINT year alone and therefore never asked
+    about a boundary. Since issue 16 that gate probes each mapping's FIRST and
+    LAST year too, and it does now catch this mutation: 52 disagreements against
+    the 9 baselined, plus 5 fixture failures. This case is kept anyway, aimed at
+    validate_year_semantics, because that gate names the convention itself while
+    crosscheck reports the symptom -- and the second reading of a defect is worth
+    having when the first is a baselined comparison that a future entry could
+    absorb.
     """
     path = os.path.join(root, "pipelines/polity-autoimprove/matchlib.py")
     with open(path, encoding="utf-8") as fh:
@@ -1526,6 +1537,45 @@ def mutate_member_bound_to_a_siblings_polygon(root, gpd, make_valid, affinity):
     return (
         "bound COG-1919-1960 to TCD-1919-1960's polygon, so AEF's four constituents sum to "
         "1.372x the federation while every one of them stays inside it"
+    )
+
+
+def mutate_dead_status_exclusion_dropped(root, gpd, make_valid, affinity):
+    """Empty matchlib's DEAD_STATUS, so retired and superseded polities compete for data.
+
+    THIS CASE EXISTS BECAUSE THE FILE ABOVE SAID IT COULD NOT. The prose recorded
+    crosscheck_matchers as honestly uncovered, on the reasoning that both matchers read
+    the same alias registry so mutating the registry moves both identically. That
+    reasoning is sound and still is; what it missed is that the gate does not only
+    compare the two matchers against each other. Since issue 16 it also pins a golden
+    FIXTURE of routing decisions to expected polity codes, and a fixture has no second
+    party to move in step with it.
+
+    The mutation is one token — `DEAD_STATUS = ()` — and it is the state matchlib shipped
+    in before the exclusion was added. Its effect is not subtle and is not local:
+    ARG-1800-2025 (retired) and BRA-1800-2025 (superseded) each span 1800-2025 as
+    `national`, so restored to their families they outrank every live successor at every
+    year. Measured on the 874-probe FAOSTAT set the mutation raises disagreements from
+    the 9 baselined to 49 -- 40 new, across 10 areas (7, 9, 21, 23, 33, 72, 84, 101, 103,
+    248) -- and breaks 2 of the 19 fixture cases: 'Argentina' 1900 answers ARG-1800-2025,
+    the retired row, and 'Hungary' 1938 answers HUN-1920-1938 because a dead row rejoining
+    the HUN family changes which candidate the tie-break reaches.
+
+    The R side is why this invariant needs a guard at all. faostat-era-matching/match.R
+    and matchlib both filtered dead rows; pre1961-matching/match.R did not, and routed
+    15,526 of 124,508 rows onto 24 dead polities before issue 16.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/matchlib.py")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = '    DEAD_STATUS = ("retired", "superseded")'
+    assert target in text, "matchlib no longer declares DEAD_STATUS"
+    text = text.replace(target, "    DEAD_STATUS = ()")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return (
+        "emptied matchlib.Matcher.DEAD_STATUS, so retired and superseded polities are "
+        "matchable again and their all-years `national` rows outrank live successors"
     )
 
 
@@ -1830,6 +1880,13 @@ CASES = (
         "a whole/part block calling itself an exact aggregate while its parts are 18 units "
         "short, so a consumer dropping the duplicate loses the difference silently",
     ),
+    (
+        "crosscheck_matchers.py",
+        mutate_dead_status_exclusion_dropped,
+        "ARG-1800-2025",
+        "a matcher that can route data to a withdrawn polity, whose collapsed all-years "
+        "row then outranks the live successors it was split into",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -1881,6 +1938,24 @@ EXTRA_SCRIPTS = {
 
 # Which data files each case needs to be a real, writable copy rather than a symlink.
 WRITABLE = {
+    # crosscheck_matchers imports matchlib from `pipelines/polity-autoimprove` relative to
+    # its OWN path, so in a scratch root that directory has to exist or the gate dies on
+    # the import -- exit 1 with no defect named, which the "must name the defect" arm of
+    # this harness would report as the wrong kind of failure. matchlib.py is the file the
+    # case rewrites, so it must be a real copy and not a symlink; the registry and the
+    # published FAOSTAT map are read-only but must be present, since a gate that finds no
+    # mappings compares nothing and exits 0.
+    # The two match.R files are staged because the gate also checks, by source text, that
+    # all THREE matchers name both dead statuses. Absent, they would be reported as missing
+    # -- true in the scratch root, misleading as a finding -- and the case's own defect would
+    # arrive buried under two spurious ones.
+    "crosscheck_matchers.py": (
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+        "pipelines/pre1961-matching/match.R",
+        "pipelines/faostat-era-matching/match.R",
+        "faostat_area_polity_map.csv",
+    ),
     # The GeoPackage is what this case mutates, so it must be a real copy — and it MUST be
     # written with write_gpkg(), not to_file(), for the reason that helper documents.
     # territory_basis.csv is staged not because the case writes it but because the gate

@@ -41,7 +41,13 @@ name: Validate database
 #                            matchlib) disagreed on 3 of 281 FAOSTAT areas, each
 #                            a real defect: Serbia 2006-2008 existing twice,
 #                            "Malaysia" resolving to British North Borneo, and
-#                            two aliases routing Viet Nam differently
+#                            two aliases routing Viet Nam differently. It asked
+#                            each mapping about its MIDPOINT year only, so it
+#                            could not see the shared-transition-year rule every
+#                            one of those divergences turned on; probing the
+#                            first and last year too (issue 16) took 297 probes
+#                            to 874 and disagreements from 1 to 9, and it now
+#                            also pins 19 golden routing decisions by hand
 #   validate_family_areas    check A in validate_polygons compares RECORDED against measured area
 #                            and found eight polities carrying another country's polygon — but 520
 #                            of the 684 rows claiming a polygon (76%) have no recorded area, so it

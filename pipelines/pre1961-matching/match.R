@@ -107,7 +107,7 @@ stopifnot(file.exists(whep_path))
 
 # ---- load --------------------------------------------------------------------
 cat("[load] WHEP polities...\n")
-whep <- read_csv(whep_path, show_col_types = FALSE) |>
+whep_all <- read_csv(whep_path, show_col_types = FALSE) |>
   filter(!is.na(start_year), !is.na(end_year)) |>
   # Retired/superseded rows stay in the database for provenance but must never receive
   # data -- the same filter pipelines/faostat-era-matching/match.R applies, and this
@@ -124,6 +124,23 @@ whep <- read_csv(whep_path, show_col_types = FALSE) |>
   mutate(start_year = as.integer(start_year),
          end_year   = as.integer(end_year))
 
+# Retired/superseded rows stay in the DB for provenance but must NEVER receive
+# data. `retired` means the row was withdrawn; `superseded` means it was split
+# into finer rows (and carries superseded_by). A collapsed dead row typically
+# spans ALL years with polity_type=national, so leaving it in the pool lets it
+# silently outrank its own live successors in every tie-break below.
+# Same exclusion, same two statuses, as faostat-era-matching/match.R and
+# matchlib.Matcher.DEAD_STATUS. Measured on the 124,508-row pre-1961 panel:
+# without it, 15,526 rows landed on 24 dead polities (ARG-1800-2025 alone took
+# 3,356, BRA-1800-2025 2,590, FRA-1800-1919 2,263), and the overall match rate
+# was 13.2 points LOWER (83.0% against 96.2%) because a collapsed dead row also
+# makes its own family ambiguous.
+DEAD_STATUS <- c("retired", "superseded")
+whep <- whep_all |> filter(!wiki_status %in% DEAD_STATUS)
+cat(sprintf("[load] %d polities matchable, %d excluded as %s\n",
+            nrow(whep), nrow(whep_all) - nrow(whep),
+            paste(DEAD_STATUS, collapse = "/")))
+
 cat(sprintf("[load] pre-1961 input (%.1f MB)...\n",
             file.size(input_path) / 1024^2))
 pre <- read_csv(input_path, show_col_types = FALSE) |>
@@ -138,7 +155,11 @@ FAO1952_AGGREGATE_LABELS <- c("western", "eastern", "total", "world")
 pre <- pre |>
   mutate(
     is_fao_aggregate = tolower(trimws(country)) %in% FAO1952_AGGREGATE_LABELS &
-                       tolower(trimws(source)) == "fao1952"
+                       # the input column is `Source`, capitalised; `source` is a
+                       # base R function, so the lowercase spelling this line
+                       # shipped with made trimws() raise "cannot coerce type
+                       # 'closure'" and the pipeline could not run at all.
+                       tolower(trimws(Source)) == "fao1952"
   )
 pre_matchable <- pre |> filter(!is_fao_aggregate)
 # (use pre_matchable in place of pre for iso_lookup resolution and matching below)
