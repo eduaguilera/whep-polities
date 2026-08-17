@@ -641,6 +641,9 @@ jobs:
       - name: Relations — a whole's parts sum to it, sit inside it, and declare their data overlaps
         if: '!cancelled()'
         run: python3 scripts/validate_composition_sums.py
+      - name: Corrections — each sub-national sum matches its own arithmetic
+        if: '!cancelled()'
+        run: python3 scripts/validate_subnational_sums.py
 
       # Last, because it is the only step that answers "can the steps above
       # fail?". Twenty-one gates that all pass are indistinguishable, from a

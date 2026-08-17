@@ -1354,6 +1354,39 @@ def mutate_yield_run_as_clean_power_of_ten(root, gpd, make_valid, affinity):
     return ("claimed the iia congo coffee, green 1922-1934 run is off by a clean x10 when "
             "its own factor is x26.1, the unconditional pow10 claim the table really made")
 
+def mutate_subnational_aggregate_with_residual(root, gpd, make_valid, affinity):
+    """Append the Germany 1937 agricultural-population block as an exact aggregate claim.
+
+    THIS IS THE STATE THE TABLE HAD while 12_subnational_sums.py was being written, not an
+    invented edit. The generator's first tolerance was `max(0.5, 0.005 * whole)` — a
+    PERCENTAGE window, copied from 10_livestock_consistency.py, where the tables run to five
+    figures and it is the right instrument. Here it is not: four keys passed as "the parts sum
+    to the stated whole" whose parts are 6, 12, 18 and 31 units short of it, because the
+    Berlin row is absent for those population sub-items and Indochina's 1937 parts genuinely
+    do not add up. This case restores the largest of the four.
+
+    It is the right mutation for this gate because nothing else in the repository reads this
+    file, so no count moves and no schema breaks: the row is arithmetically self-consistent
+    (7,098 - 7,116 = -18, exactly what `residual` says) and only its CLAIM is false. A
+    consumer acting on `mark_aggregate` drops the whole row as a duplicate of its parts and
+    silently loses Berlin's 18,000 agricultural inhabitants — and the only thing that can
+    catch it is a gate that asks whether a row calling itself an aggregate has a residual.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/subnational_sums.csv")
+    with open(path, "a", encoding="utf-8", newline="") as fh:
+        fh.write(
+            "fao1952,r_fao_population_1952_10_18.xlsx,Germany,"
+            "Germany Eastern; Germany Western,2,r_fao_population_1952_10_18,"
+            "population:population agricultural ocupati,1000 people,1937,,"
+            "7116.0,7098.0,-18.0,mark_aggregate,,"
+            "\"parts sum to the stated whole (7,116.0), so this whole row is an aggregate "
+            "of its 2 part row(s) and is_aggregate is False on it\"\n"
+        )
+    return ("asserted Germany's 1937 agricultural population is the exact sum of its "
+            "Eastern and Western zones while the two are 18 (1000 people) short of it, the "
+            "claim a 0.5% tolerance really made")
+
+
 def mutate_short_convention_row(root, gpd, make_valid, affinity):
     """Append a convention row carrying only the FIRST SEVEN columns.
 
@@ -1790,6 +1823,13 @@ CASES = (
         "a convention whose label_pattern matches nothing the source carries, so the "
         "premise every verifier is supposed to inherit reaches no evidence bundle",
     ),
+    (
+        "validate_subnational_sums.py",
+        mutate_subnational_aggregate_with_residual,
+        "Germany r_fao_population_1952_10_18 1937",
+        "a whole/part block calling itself an exact aggregate while its parts are 18 units "
+        "short, so a consumer dropping the duplicate loses the difference silently",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -1864,6 +1904,12 @@ WRITABLE = {
     "validate_yield_corrections.py": (
         "pipelines/polity-autoimprove/state/yield_series_corrections.csv",
         "pipelines/polity-autoimprove/state/yield_corrections.csv",
+    ),
+    # Same reasoning again: the sub-national table is the only file this gate reads, and the
+    # case APPENDS a row to it, so it must be a real copy or the append lands in the
+    # committed table through stage()'s symlink.
+    "validate_subnational_sums.py": (
+        "pipelines/polity-autoimprove/state/subnational_sums.csv",
     ),
     # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
     # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with
