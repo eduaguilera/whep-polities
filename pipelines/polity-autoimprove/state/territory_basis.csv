@@ -487,6 +487,7 @@ MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,cshapes-2.0,1921.0,assigned,Tru
 MNG-1921-2025,Mongolia,1921,2025,cshapes-2.0,1921.0,assigned,True,assumed_constant,True,False,single 1921 polygon held across a 104y span (1921-2025); borders may have changed,8
 MNP-1986-2025,Northern Mariana Islands,1986,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MOR-1800-1904,Morocco (to 1904),1800,1904,cliopatria,1800.0,assigned,True,assumed_constant,True,False,single 1800 polygon held across a 104y span (1800-1904); borders may have changed,0
+MOR-1904-1911,Morocco (1904-1911),1904,1911,cliopatria,1905.0,assigned,True,measured,False,False,vintage 1905 faithful to period 1904-1911,0
 MOR-1904-1956,Morocco (1904-1956) [superseded],1904,1956,cshapes-2.0,1902.0,assigned,True,back_projected,True,False,polygon vintage 1902 is BEFORE the period starts (1904),0
 MOR-1956-1958,Morocco (1956-1958),1956,1958,cshapes-2.0,1912.0,assigned,True,back_projected,True,False,polygon vintage 1912 is BEFORE the period starts (1956),0
 MOS-1800-1897,Mossi Kingdoms,1800,1897,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0

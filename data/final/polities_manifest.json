@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "cdbc4d2cb4d6d4d6d534f2242db0b98d4cdbe2abb9ddda126418551a27327443",
+ "identity_sha256": "73b324b6c515d55729f03c9e69b40d3fcacd885f75ce846e0efdd4b7fa370867",
  "counts": {
-  "total": 774,
-  "live": 730,
+  "total": 775,
+  "live": 731,
   "dead": 44
  },
  "dead_status": [
@@ -194,8 +194,8 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "e1758df242280d986b8bffa6692e510686bfb04de7161189b3c746c7962002f6",
-  "relations": 5267,
+  "sha256": "f98ae67acc6068f9d08de12fd008fb531e0c98f2672b9e4830c5dd82792adea5",
+  "relations": 5274,
   "modern_iso3": 77
  },
  "stated_area_basis": {
@@ -433,8 +433,8 @@
   "MAR": [
    {
     "family": "MOR",
-    "year_min": 1850,
-    "year_max": 1903
+    "year_min": 1904,
+    "year_max": 1910
    }
   ],
   "MDA": [
@@ -780,7 +780,7 @@
    }
   ]
  },
- "territory_families_why": "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not link the families that hold the same ground at different times, and a consumer matching on it alone gets no answer for the years before a modern code's own rows begin. Czech territory in 1950 is held by CSK (Czechoslovakia), Montenegrin by YUG, Moroccan before 1911 by the local code MOR -- none of which equals the code being asked about. Each entry names a family that held this modern code's territory and the years over which the database asserts it with a predecessor or successor EDGE (hop_depth 1). It is derived from those edges, not hand-written, so it cannot drift from the database. For per-year resolution, including the deeper traversals this field omits, read iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a polity whose edge is missing, or by no row at all -- MAR has no holder for 1904-1910.",
+ "territory_families_why": "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not link the families that hold the same ground at different times, and a consumer matching on it alone gets no answer for the years before a modern code's own rows begin. Czech territory in 1950 is held by CSK (Czechoslovakia), Montenegrin by YUG, Moroccan before 1911 by the local code MOR -- none of which equals the code being asked about. Each entry names a family that held this modern code's territory and the years over which the database asserts it with a predecessor or successor EDGE (hop_depth 1). It is derived from those edges, not hand-written, so it cannot drift from the database. For per-year resolution, including the deeper traversals this field omits, read iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a polity whose edge is missing, or by no row at all -- SAU has no holder for 1912-1923, which is the second kind: SAU-1924-2025 names OTT-1908-1912 and nothing models the Hejaz or Nejd between them. This sentence read 'MAR has no holder for 1904-1910' until 2026-08-17, when MOR-1904-1911 was added and that hole was closed (issue 82). A NARROW YEAR RANGE IS ALSO NOT A HOLE: this field takes hop_depth 1 only, so a family that reaches the modern code through a chain of its OWN rows is reported over the last link's years alone -- MAR/MOR reads 1904-1910, not 1850-1910, because MOR-1800-1904 now sits behind MOR-1904-1911. Read iso3_successor_map for the rest.",
  "live_polity_codes": [
   "ABW-1800-2025",
   "ADE-1839-1963",
@@ -1241,6 +1241,7 @@
   "MNG-1921-2025",
   "MNP-1986-2025",
   "MOR-1800-1904",
+  "MOR-1904-1911",
   "MOS-1800-1897",
   "MOZ-1800-1891",
   "MOZ-1891-1975",
