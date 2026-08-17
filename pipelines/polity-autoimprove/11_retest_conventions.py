@@ -85,6 +85,36 @@ def check_fao1952_population(d):
     )
 
 
+def check_iia_algeria(d):
+    """The claim: IIA reports Algeria as its OWN reporting unit, not inside metropolitan France.
+
+    Structural, so it is checkable without judgement. If Algeria were folded into France the
+    label would not appear at all; if it appeared but meant "France including Algeria" its
+    magnitudes would sit at French levels rather than a fraction of them.
+
+    Corroborated independently by the stated areas, which is a different mechanism from the
+    agricultural series this convention was learned from: IIA states an ALGERIE area in six
+    editions, 2,195,696 km2 against our 2,318,386 km2 colony polygon (ratio 1.056, recorded as
+    `agrees` in data/final/source_stated_area_basis.csv). A source that treated Algeria as part
+    of France would not state a separate area for it six times.
+    """
+    a = d[(d["source"] == "iia") & (d["country"].map(norm) == "algeria")]
+    f = d[(d["source"] == "iia") & (d["country"].map(norm) == "france")]
+    shared = set(a["item"].map(norm)) & set(f["item"].map(norm))
+    smaller = 0
+    for item in shared:
+        av = a[a["item"].map(norm) == item]["value"].dropna()
+        fv = f[f["item"].map(norm) == item]["value"].dropna()
+        if len(av) and len(fv) and float(av.median()) < float(fv.median()):
+            smaller += 1
+    ok = len(a) > 0 and len(f) > 0 and len(shared) >= 3 and smaller >= len(shared) * 0.6
+    return ok, (
+        f"iia carries {len(a)} algeria rows and {len(f)} france rows as separate labels; "
+        f"{len(shared)} shared items, algeria's median below france's in {smaller} of them "
+        f"(a folded-in Algeria would not be a separate label at all)"
+    )
+
+
 def check_iia_russia(d):
     """Whole-USSR scope. The test is that the areas are impossible for the RSFSR:
     Soviet cotton grew in Central Asia and Transcaucasia, not in Russia proper."""
@@ -196,6 +226,7 @@ def check_iia_djibouti_coffee(d):
 
 
 CHECKS = {
+    ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("iia", "russian federation", "*"): check_iia_russia,
     ("iia", "south korea", "*"): check_iia_south_korea,
