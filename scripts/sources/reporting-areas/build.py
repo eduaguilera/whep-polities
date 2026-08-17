@@ -13,6 +13,19 @@ when each row was written, not facts about any territory. FAOSTAT still reports 
 these areas through 2024, so the buckets stopped before the data did and 72 area-years
 resolved to nothing. 220 live rows already end at 2025, which is the convention for a row
 that covers through 2024.
+
+THE COMPONENT LISTS ARE FIXED, NOT RESIDUAL (issue 48, decided 2026-08-17). A regional
+"Other" bucket here is the fixed membership WHEP's own harmonization table assigns it, not
+a residual that shrinks whenever a territory acquires a polity row of its own. The
+authority is the `polity_code` column of `inst/extdata/harmonization/regions_full.csv` in
+eduaguilera/whep, which still routes Faroe Islands to REUR; Cook Islands, Niue, Northern
+Marianas and Palau to ROCE; Bermuda, Guadeloupe and Martinique to RLAM; and Reunion to
+RAFR. That is the table the R package folds CBS and FABIO data with, so dropping those
+territories from the unions here would leave the polygon describing less ground than the
+data routed into it. Thirteen polity rows therefore lie inside ROW's union
+(9,040 km2 of its 2,571,894 km2, measured 2026-08-17) and that overlap is INTENDED:
+aggregate data must not be spatially allocated without first deduplicating against the
+own-data rows. See wiki/polities/row-1850-2025.md for the measured table.
 """
 from __future__ import annotations
 
@@ -53,8 +66,8 @@ REPORTING_AREAS = {
     },
     "RASI-1850-2025": {
         "name": "Asia Other",
-        "components": ["FSM", "IOT", "MHL", "MNP", "PLW"],
-        "note": "Union of WHEP Asia Other component territories; Pacific Islands Trust Territory is proxied by FSM, MHL, MNP, and PLW.",
+        "components": ["FSM", "IOT", "MHL"],
+        "note": "Union of WHEP Asia Other component territories; Pacific Islands Trust Territory is proxied by FSM and MHL only, because ROCE (Oceania Other) claims MNP and PLW as members in their own right.",
     },
     "REUR-1850-2025": {
         "name": "Europe Other",

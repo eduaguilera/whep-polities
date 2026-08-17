@@ -395,6 +395,31 @@ def load_s2_repair():
         )
         return lambda wkb: None
     return repair_wkb
+
+
+def load_s2_check():
+    """A predicate `wkb -> bool`: can s2 load this, or the repair make it loadable?
+
+    Used by the simplification ladder, which has to know whether a tolerance produced a
+    geometry the repair below can still rescue. Unavailable dependencies degrade to "yes"
+    -- same tolerance as load_s2_repair, same backstop.
+    """
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    try:
+        import shapely
+        import spherely  # noqa: F401
+
+        from repair_s2_polygons import repair_geometry, s2_failure
+    except ImportError:
+        return None
+
+    def ok(wkb: bytes) -> bool:
+        geom = shapely.from_wkb(wkb)
+        if s2_failure(geom) is None:
+            return True
+        return s2_failure(repair_geometry(geom)) is None
+
+    return ok
 def densify_planar_edges(geom: ogr.Geometry, tolerance_deg: float) -> ogr.Geometry:
     """Insert vertices so each edge's GREAT CIRCLE tracks the line it was drawn as.
 
@@ -500,11 +525,12 @@ def write_gpkg(
         lyr.CreateField(ogr.FieldDefn(col, ftype))
 
     repair_wkb = load_s2_repair()
+    s2_check = load_s2_check()
     s2_repaired: list[str] = []
 
     defn = lyr.GetLayerDefn()
     repairs = {"repaired": [], "skipped": [], "failed": []}
-    simplifies = {"done": 0, "kept": [], "reduced": []}
+    simplifies = {"done": 0, "kept": [], "reduced": [], "s2_refined": [], "s2_unresolved": []}
     for row in rows:
         f = ogr.Feature(defn)
         for col in CSV_COLUMNS:
@@ -523,7 +549,9 @@ def write_gpkg(
         if geom is not None:
             g = geom.Clone()
             if simplify_tolerance > 0:
-                g = _simplify_if_cheap(g, simplify_tolerance, row["polity_code"], simplifies)
+                g = _simplify_if_cheap(
+                    g, simplify_tolerance, row["polity_code"], simplifies, s2_check
+                )
             # After simplification, never before: see densify_planar_edges.
             g = densify_planar_edges(g, densify_tolerance)
             if g.GetGeometryType() != ogr.wkbMultiPolygon:
@@ -577,6 +605,12 @@ def write_gpkg(
             f"  s2-repaired {len(s2_repaired)} geometry(ies) on write: "
             + ", ".join(sorted(s2_repaired))
         )
+    for code, factor in simplifies["s2_refined"]:
+        print(f"  simplified {code} FINER than tolerance x{factor:g}: that step left a "
+              f"geometry s2 cannot load and the repair cannot rescue")
+    for code, factor in simplifies["s2_unresolved"]:
+        print(f"  NO s2-LOADABLE TOLERANCE for {code}: published at x{factor:g}; "
+              f"validate_s2_polygons.py will report it")
 
 
 
@@ -645,9 +679,50 @@ SIMPLIFY_MAX_AREA_CHANGE = 0.02  # 2%: below every legitimate loss, above roundi
 # vertices. So walk DOWN a ladder and take the coarsest tolerance that stays inside the budget.
 SIMPLIFY_LADDER = (1.0, 0.1, 0.01)  # multipliers on the requested tolerance
 
+# THE LADDER ALSO HAS TO STAY s2-LOADABLE, not only inside the area budget.
+#
+# Douglas-Peucker can leave two non-adjacent edges of a ring touching to within one ULP.
+# GEOS reads that as no intersection; s2 -- which R's `sf` uses by default -- rounds
+# lon/lat onto unit vectors and reads it as a crossing, and then st_area() ABORTS. The
+# s2 repair below (buffer(0), then a noding fallback) normally cleans it up, and
+# validate_s2_polygons.py is the backstop. But repair is not guaranteed: ROW-1850-2025 at
+# tolerance 0.01 produces a crossing that NEITHER repair can fix, and the same row at
+# 0.001 is clean. It reached the committed file s2-broken-but-repairable for months and
+# passed only because buffer(0) happened to succeed on that exact vertex set; changing
+# RASI's components (issue 48) changed the union's vertex order and buffer(0) stopped
+# working, which is how the fragility surfaced. Simplifying a 53-territory union is
+# precisely where it should be expected.
+#
+# So a ladder step must ALSO produce something s2 can load, after repair, or the ladder
+# walks down. The check runs on the step already accepted on area, so the common case
+# costs one s2 load per row and nothing else. If no step is both cheap and loadable, the
+# cheapest one is published anyway (unchanged behaviour) and named in the output --
+# validate_s2_polygons then fails, which is the right place for a defect this build
+# cannot resolve.
+#
+# The walk-down takes HALF-STEPS, and only when s2 forced it. The ladder's own steps are
+# decades apart, and dropping a whole decade for a topological reason is expensive on a
+# committed binary: ROW-1850-2025 at x1 is 1.1 MB of WKB, at x0.5 1.6 MB and at x0.1
+# 4.8 MB, and x0.5 is already s2-clean. So a rejected step is retried at half its
+# tolerance before the next decade. The half-steps are unreachable unless an s2 rejection
+# happened, which keeps every other row's geometry bit-identical to what the decade ladder
+# alone produced -- the point is to fix one row, not to re-simplify 746.
+S2_REFINE_FACTOR = 0.5
 
-def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict):
-    """Simplify at the coarsest ladder step that costs less than the budget.
+
+def _s2_loadable(g, s2_check) -> bool:
+    """Would this OGR geometry survive the s2 repair the write path applies below?"""
+    if s2_check is None:
+        return True
+    try:
+        return s2_check(bytes(g.ExportToWkb()))
+    except Exception:      # a check that cannot run must not fail the build
+        return True
+
+
+def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict, s2_check=None):
+    """Simplify at the coarsest ladder step that costs less than the budget and stays
+    s2-loadable.
 
     Returns the geometry untouched if even the finest step is too expensive, which is the honest
     outcome: the feature's parts are smaller than anything we could thin them by.
@@ -656,7 +731,15 @@ def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict):
     if before <= 0:
         return g
     worst = None
+    cheapest = None            # first step inside the budget, s2-loadable or not
+    steps = []
     for factor in SIMPLIFY_LADDER:
+        steps.append((factor, False))
+        steps.append((factor * S2_REFINE_FACTOR, True))
+    s2_blocked = False
+    for factor, s2_only in steps:
+        if s2_only and not s2_blocked:
+            continue
         s = g.SimplifyPreserveTopology(tolerance * factor)
         if s is None or s.IsEmpty():
             continue
@@ -664,10 +747,23 @@ def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict):
         if worst is None:
             worst = change
         if change <= SIMPLIFY_MAX_AREA_CHANGE:
+            if cheapest is None:
+                cheapest = (s, factor, change)
+            if not _s2_loadable(s, s2_check):
+                simplifies["s2_refined"].append((polity_code, factor))
+                s2_blocked = True
+                continue
             simplifies["done"] += 1
             if factor != 1.0:
                 simplifies["reduced"].append((polity_code, factor, change))
             return s
+    if cheapest is not None:
+        s, factor, change = cheapest
+        simplifies["done"] += 1
+        simplifies["s2_unresolved"].append((polity_code, factor))
+        if factor != 1.0:
+            simplifies["reduced"].append((polity_code, factor, change))
+        return s
     simplifies["kept"].append((polity_code, worst if worst is not None else 1.0))
     return g
 
