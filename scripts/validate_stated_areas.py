@@ -230,17 +230,6 @@ BASELINE = {
         "same polygon as PRY-1870-1932 (293,549) against a stated 457,872 for 1932/1933/1937. "
         "The Chaco War is fought across this row's span, so the stated figure is a claim under "
         "active dispute -- but the polygon does not move at all, which is the issue 22 problem.",
-}
-
-# (polity_code, source) -> why ONE SOURCE's figure is wrong for a polity the gate does NOT fail on.
-#
-# BASELINE cannot hold these, because it is bidirectional: an entry there for a polity now inside
-# the accepted band is itself a failure ("remove its entry"). But a polity can be accepted on one
-# source's figure while the OTHER source's is badly wrong, and that is exactly the case a per-km2
-# consumer has to be warned about -- it divides by the figure IT holds, not by the accepted band.
-# `write_stated_area_basis.py` publishes these into the `note` column so the warning survives
-# outside this file. Nothing here affects pass/fail.
-SOURCE_NOTES = {
     ("JAM-1800-2025", "fao"):
         "A TRANSCRIPTION ERROR IN THIS SOURCE, and NOT a x10 one. FAO 1952's `British West "
         "Indies Jamaica` states 142 thousand ha = 1,420 km2 for an island of 10,991. A decimal "
@@ -252,6 +241,22 @@ SOURCE_NOTES = {
         "block. DO NOT use 1,420 km2 as a denominator for Jamaican FAO 1952 rows. Logged with "
         "the sibling Bahamas error in pipelines/polity-autoimprove/state/data_errors.csv; the "
         "figure is not corrected, because this repo carries what the yearbook printed.",
+}
+
+# (polity_code, source) -> why ONE SOURCE's figure is wrong for a polity the gate does NOT fail on.
+#
+# BASELINE cannot hold these, because it is bidirectional: an entry there for a polity now inside
+# the accepted band is itself a failure ("remove its entry"). But a polity can be accepted on one
+# source's figure while the OTHER source's is badly wrong, and that is exactly the case a per-km2
+# consumer has to be warned about -- it divides by the figure IT holds, not by the accepted band.
+# `write_stated_area_basis.py` publishes these into the `note` column so the warning survives
+# outside this file. Nothing here affects pass/fail.
+SOURCE_NOTES = {
+    # Empty today. The JAM-1800-2025/fao note that lived here moved to BASELINE on
+    # 2026-08-17: divergence is computed PER (polity, source), so IIA voting 10,880-11,526 does
+    # not bring JAM inside the band FAO states, and only BASELINE suppresses a failure.
+    # write_stated_area_basis.py reads BOTH dicts, so the published warning survives the move.
+
 }
 
 _both = sorted(set(BASELINE) & set(SOURCE_NOTES))
