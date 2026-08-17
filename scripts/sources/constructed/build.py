@@ -975,6 +975,40 @@ def build_tur_1913_1914() -> ogr.Geometry:
     return _cshapes2_step(640, 1913, 1914)
 
 
+def build_pol_1919_1920() -> ogr.Geometry:
+    """Poland after the Treaty of Saint-Germain = CShapes 290's `1919-1920` step, by its bounds.
+
+    THE ROW WAS PUBLISHING THE POLYGON ITS OWN PAGE REJECTS BY NAME. CShapes gives gwcode 290
+    three steps containing 1919:
+
+        1918-11-11 / 1919-06-27   130,205 km2   post-independence, pre-Versailles
+        1919-06-28 / 1919-09-09   177,762 km2   post-Versailles, EXCLUDES Galicia
+        1919-09-10 / 1920-10-06   256,575 km2   post-Saint-Germain, Galicia incorporated
+
+    Two of them start in 1919, so `polygon_feature_year: 1919` left find_feature's exact-start
+    preference tied and the winner was decided by shapefile row order (issue 100's mechanism). Row
+    order handed back the middle one -- 177,762 km2 -- while the page names the Saint-Germain step
+    four times as "the polygon for this row" and rejects the middle one explicitly because it
+    "excludes Galicia" and "would understate the actual territorial extent by ~44%".
+
+    The error was invisible to validate_polygons check A because `polygon_area_km2: 177754` had
+    been back-filled FROM the attached geometry (a 2026-07-24 caveat on the page records that
+    edit), so the check compared the wrong polygon against its own area and passed.
+
+    WHY A CONSTRUCTED FEATURE AND NOT A `polygon_feature_year` FIX. No year names the wanted step:
+    1919 is shared by three candidates, and 1920 resolves deterministically to the NEXT step
+    (1920-10-07 / 1921-03-17, 284,599 km2), which begins after this row's period and which the
+    page assigns to the successor POL-1920-1921. The page also carried
+    `polygon_feature_date: 1919-09-10`, an attempt to pin the step that nothing in the pipeline
+    reads. Naming the step by its bounds is the same remedy TUR-1913-1914 got -- see
+    _cshapes2_step -- and `1919-1920` is unique among gwcode 290's steps.
+
+    This does not touch the row's residual `polygon_vintage_drift`: the Saint-Germain extent still
+    understates October-December 1920 by ~11%, which is the page's own open question.
+    """
+    return _cshapes2_step(290, 1919, 1920)
+
+
 def build_f206_2011_2025() -> ogr.Geometry:
     """Sudan and South Sudan as one reporting unit, 2011 onward = CShapes 625 union 626.
 
@@ -1778,6 +1812,18 @@ BUILDERS = [
         "after the row ends -- publishing 1,705,971 against a declared 1,785,218 and making this "
         "row identical to TUR-1914-1918. No feature_year can name either 1913 step: both start in "
         "1913, so 1913 is an order-dependent tie. Issue 123.",
+    ),
+    (
+        "POL-1919-1920",
+        "Poland (1919-1920)",
+        build_pol_1919_1920,
+        "CShapes 290's 1919-1920 step (256,575 km2, gwsdate 1919-09-10, Treaty of Saint-Germain) "
+        "named by its bounds. The row previously used polygon_feature_year 1919, which ties three "
+        "candidates -- two of them starting in 1919 -- so shapefile row order picked the "
+        "177,762 km2 post-Versailles step that the page rejects BY NAME for excluding Galicia: a "
+        "live 44% shortfall, hidden from check A because polygon_area_km2 had been back-filled "
+        "from the wrong geometry. No feature_year can name the wanted step (1919 is shared, 1920 "
+        "resolves to the 1920-10-07 step, which begins after the row ends). Issue 100.",
     ),
     (
         "F206-2011-2025",

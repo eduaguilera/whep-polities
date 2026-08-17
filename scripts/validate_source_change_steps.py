@@ -152,6 +152,18 @@ BASELINE = {
         "EVENT: 626,507 -> 371,147 km2, the loss of the empire in 1945 — the same step in "
         "reverse, back to the home islands."
     ),
+    "POL-1918-1919 -> POL-1919-1920": (
+        "EVENT: the Treaty of Saint-Germain, 10 September 1919, which incorporated Galicia. "
+        "130,180 -> 256,627 km2 (1.97x). The step is real history and most of it is Galicia "
+        "(78,813 km2) plus the Versailles settlement of the western border and the Polish "
+        "Corridor (130,205 -> 177,762 in CShapes' own steps for gwcode 290). The source "
+        "changes at this boundary only because the later row cannot express its CShapes step "
+        "as a polygon_feature_year and now binds constructed/POL-1919-1920, which IS that "
+        "CShapes step named by its year bounds — so nothing about the step is a convention "
+        "difference. Appeared when the row stopped publishing the polygon its own page "
+        "rejects: it had been carrying the 177,762 km2 post-Versailles step, and 130,180 -> "
+        "177,754 was 1.37x with no source change, hence unflagged. Issue 100."
+    ),
     "HUN-1938-1940 -> HUN-1940-1944": (
         "EVENT: the Second Vienna Award, 30 August 1940, returned Northern Transylvania — "
         "43,492 km2. 108,814 + 43,492 = 152,306 against 152,441 measured, a 0.09% match, "

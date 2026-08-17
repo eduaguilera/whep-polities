@@ -115,29 +115,31 @@ BASELINE = {
     # polygon, which includes Senegal), F228-1918-1920 1918 -> 1919, F228-1940-1945
     # 1940 -> 1941, F228-1945-1991 1945 -> 1946.
     #
+    # FIXED and removed 2026-08-17 (issue 100):
+    #   POL-1919-1920  a live error, not merely fragile. Row order picked CShapes 290's
+    #                  1919-06-28/1919-09-09 step (177,762 km2) -- the one the page rejects BY
+    #                  NAME for excluding Galicia -- over the 1919-09-10/1920-10-06
+    #                  Saint-Germain step (256,575 km2) the page names four times as "the
+    #                  polygon for this row". 78,813 km2 / 31% short as published, and hidden
+    #                  from validate_polygons check A because polygon_area_km2 had been
+    #                  back-filled FROM the wrong geometry on 2026-07-24.
+    #                  No polygon_feature_year could fix it: 1919 is shared by three
+    #                  candidates and 1920 resolves to the NEXT step (284,599 km2), which
+    #                  begins after the row ends. Resolved the TUR-1913-1914 way (issue 123):
+    #                  a constructed feature naming the step by its unique year bounds,
+    #                  build_pol_1919_1920 -> _cshapes2_step(290, 1919, 1920). The row is no
+    #                  longer cshapes-bound, so it leaves this check's population entirely.
+    #
     # ---- STILL order-dependent: no polygon_feature_year can pin these ----
-    # These three rows cover a SINGLE calendar year that CShapes subdivides into three or
+    # These two rows cover a SINGLE calendar year that CShapes subdivides into three or
     # more steps. Every candidate shares that year with at least one other candidate, and
     # every other year they contain belongs to a neighbouring step too, so there is no year
     # that falls inside exactly one span. A year is simply not expressive enough here; the
     # mechanisms that would fix them are a date-level binding (find_feature truncates
     # gwsdate/gwedate to a year today) or a constructed polygon, as ROU-1940-1947 got.
-    # Measured 2026-08-13; the picked candidate is defensible in all three, which is why
-    # they are baselined rather than force-changed.
-    # POL-1919-1920 is the worst of the three and NOT merely fragile: it is a live 44%
-    # error. Its page names the 1919-09-10 (Saint-Germain, 256,575 km2) step four times as
-    # "the polygon for this row", rejects the 1919-06-28 one BY NAME because it "excludes
-    # Galicia", and even records `polygon_feature_date: 1919-09-10` -- a frontmatter key
-    # NOTHING in the pipeline reads (only validate_references knows it exists). Row order
-    # hands back the rejected 177,762 step, and `polygon_area_km2: 177754` was then entered
-    # from the geometry rather than from the argument, so check A compares the wrong polygon
-    # against its own area and passes. No feature_year selects the wanted step: 1919 is
-    # shared by three candidates and 1920 resolves deterministically to the NEXT step
-    # (1920-10-07, 284,599), which is both out of the row's span and not what the page asks
-    # for. Needs a date-level binding or a constructed polygon.
-    "POL-1919-1920": "row covers 1919 only; 3 candidates (1918-11-11/1919-06-27 130,205; "
-                     "1919-06-28/1919-09-09 177,762; 1919-09-10/1920-10-06 256,575) and 2 "
-                     "start in 1919. Picked 177,762, but the page argues for 256,575",
+    # Measured 2026-08-13; in both remaining cases the picked candidate is defensible, which
+    # is why they are baselined rather than force-changed. The third member of this group,
+    # POL-1919-1920, was NOT defensible and is now fixed -- see the note above.
     "ROU-1919-1920": "row covers 1919 only; 3 candidates (1918-11-01/1919-09-09 128,499; "
                      "1919-09-10/1919-11-26 141,247; 1919-11-27/1920-06-03 148,934) and 2 "
                      "start in 1919. Picked 141,247, whose step STARTS on the row's own "
