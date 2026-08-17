@@ -22,10 +22,11 @@ Usage:
     (--source-col source | --source-tag mydata) \
     [--out pipelines/polity-autoimprove/state/assertions.json]
 
-Ledger-aware: assertions whose key (or legacy bare-label key) is banked
-correct/fixed with a matching evidence_hash AND a protocol_version at least the
-current one get status "banked"; everything else is "pending" (never seen) or
-"reopened" (banked, but the evidence changed or the verification RULES did) for
+Ledger-aware: assertions whose FULL key is banked correct/fixed with a matching
+evidence_hash AND a protocol_version at least the current one get status
+"banked"; everything else is "pending" (never seen) or "reopened" (banked, but
+the evidence changed, the verification RULES did, or the only ledger cover is a
+pre-assertion-era bare-label row with no hash — see the legacy branch below) for
 the verification workflow.
 """
 import pandas as pd, numpy as np, json, csv, os, sys, argparse, hashlib, re
@@ -145,6 +146,7 @@ def _hash(obj):
 # reopens every row banked below it — no hand-picking of keys.
 PROTOCOL = protocol_version()
 n_proto_reopened = 0
+n_legacy_reopened = 0
 
 # ---------- verified source reporting conventions ----------
 # Accumulated by assertion verification: what a given source's label/series
@@ -268,9 +270,37 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
                           f"(ledger last_run {row.get('last_run') or 'n/a'})]")
             n_proto_reopened += 1
     elif row is not None and row is banked.get(norm(label)) and not (row.get("evidence_hash") or "").strip():
-        # legacy bare-label banking without a hash: treat as banked for label-level
-        # verdicts (pre-assertion era); assertion-level verification will supersede it
-        ev["status"] = "banked_legacy"
+        # LEGACY bare-label banking, no evidence hash. This used to be reported as
+        # its own terminal status ("banked_legacy") and skipped like a banked
+        # assertion. It is not banked: the pre-assertion ledger recorded only that
+        # a LABEL had been looked at, never that this (label, source, year-span) ->
+        # polity claim was checked, and a bare label carries no hash, so nothing can
+        # detect that the evidence has since moved.
+        #
+        # Worse, the fallback is keyed on the label alone, so it is a LIVE catch-all,
+        # not a closed legacy tail: every assertion whose full key is absent from the
+        # ledger — including segments that did not exist when the label was banked,
+        # because the polity family was re-spanned or a new period was added since —
+        # inherits "already reviewed" from a bare-label row and is never seen. That
+        # is the mechanism the retired-polity bug hid behind (ARG-1800-2025,
+        # GRC-1919-2025, F248-1920-1991 and 18 others absorbing 7,359 rows while
+        # every one of those assertions read as banked). When this changed the tier
+        # held 158 assertions / 4,635 layer-B rows over 89 labels, and its LARGEST
+        # member was serbia|iia|1920-1944 at 573 rows — which cannot be a legacy
+        # small-row remainder, since the label-level review of "serbia" (2026-07-02)
+        # predates the SER-1918-1945 segment the key now routes to.
+        #
+        # So it reopens, in the vocabulary the rest of the pipeline already uses
+        # (verify_assertions.workflow.js selects on pending/reopened): the debt
+        # becomes scheduled work instead of an invisible skip. Nothing here judges
+        # the routing — the 158 may well all be right; they have simply never been
+        # asked at assertion level. See issue #8.
+        ev["status"] = "reopened"
+        ev["note"] = ("[reopened: label-level legacy banking only — ledger row "
+                      f"'{row.get('key')}' ({row.get('status')}, last_run "
+                      f"{row.get('last_run') or 'n/a'}) has no evidence_hash, so "
+                      "this (label, source, span) assertion was never verified]")
+        n_legacy_reopened += 1
     else:
         ev["status"] = "pending" if row is None else "reopened"
         if row is not None:
@@ -308,4 +338,7 @@ print(f"assertions: {len(assertions)} ({counts}); unresolved labels: {len(unreso
 print(f"verification protocol: v{PROTOCOL}" +
       (f"; REOPENED {n_proto_reopened} banked assertions verified under an older protocol"
        if n_proto_reopened else ""))
+if n_legacy_reopened:
+    print(f"REOPENED {n_legacy_reopened} assertions held only by LABEL-LEVEL legacy "
+          "banking (no evidence_hash): never verified at assertion level (issue #8)")
 print(f"wrote {A.out}")
