@@ -419,6 +419,10 @@ jobs:
       # needs the gitignored layer-B panel and runs by hand
       # (pipelines/polity-autoimprove/11_retest_conventions.py), with this step
       # guaranteeing every entry is covered by one.
+      - name: Ledger — every banked verdict names a polity that exists
+        if: '!cancelled()'
+        run: python3 scripts/validate_review_ledger.py
+
       - name: The source-conventions registry is well-formed, live and corroborated
         if: '!cancelled()'
         run: python3 scripts/validate_source_conventions.py

@@ -1170,6 +1170,35 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
             f"to CAN-1886-1948, the span issue 243 retired, as an un-regenerated crosswalk does")
 
 
+def mutate_ledger_verdict_on_dead_polity(root, gpd, make_valid, affinity):
+    """Re-point a banked verdict at a polity code that does not exist.
+
+    The exact state of the ledger until 2026-08-17: four polity-keyed rows judged `correct`
+    for codes retired by re-spans (SEN-1886-1959 became SEN-1886-1960 when issue 77 closed a
+    one-year hole). Such a row is not a wrong verdict, it is a verdict about nothing -- and it
+    silently exempts the row that REPLACED it from ever being examined, because the pipeline
+    looks the key up and finds a judgement.
+
+    Nothing else notices: the ledger is not the database, so no polity gate reads it, and the
+    conventions gate checks a different file.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/review_ledger.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.reader(fh))
+    head = rows[0]
+    ck, cu = head.index("key"), head.index("unit_kind")
+    hit = 0
+    for r in rows[1:]:
+        if len(r) > max(ck, cu) and r[cu] == "polity" and hit == 0:
+            r[ck] = "SEN-1886-1959"
+            hit += 1
+    assert hit == 1, f"expected a polity-keyed ledger row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        csv.writer(fh).writerows(rows)
+    return ("re-pointed a banked verdict at SEN-1886-1959, a code issue 77's re-span retired, "
+            "so the ledger judges something that does not exist")
+
+
 def mutate_pre1961_site_names_dead_polity(root, gpd, make_valid, affinity):
     """Put a retired polity back into the deployed pre-1961 summary.
 
@@ -2289,6 +2318,13 @@ CASES = (
         "single year -- with that date removed, so row order decides again",
     ),
     (
+        "validate_review_ledger.py",
+        mutate_ledger_verdict_on_dead_polity,
+        "SEN-1886-1959",
+        "a banked verdict naming a polity a re-span retired, which reads as a judgement on the "
+        "successor that was never examined",
+    ),
+    (
         "validate_site_outputs.py",
         mutate_pre1961_site_names_dead_polity,
         "ARG-1800-2025",
@@ -3037,6 +3073,7 @@ WRITABLE = {
     # writable because the case mutates the geojson. The master CSV must be a real copy too,
     # not stage()'s symlink: signal A compares it against site/polities.csv byte for byte, and
     # a mutation writing through the symlink would rewrite the committed database.
+    "validate_review_ledger.py": ("pipelines/polity-autoimprove/state/review_ledger.csv",),
     "validate_site_outputs.py": (
         "polities_database.csv",
         "polities_database.gpkg",
