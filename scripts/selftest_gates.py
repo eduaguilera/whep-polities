@@ -888,6 +888,38 @@ def mutate_title_period_contradiction(root, gpd, make_valid, affinity):
     return "headed fra-1919-2025.md 'France (to 1940)' on a 1919-2025 row"
 
 
+def mutate_page_back_to_a_stub(root, gpd, make_valid, affinity):
+    """Gut a documented, data-receiving page back to the CSV-derived stub it started as.
+
+    This is the regression issue 19 describes rather than a hypothetical: 987 pages were
+    generated programmatically from CSV metadata by one autonomous pass, and a page in that
+    state is not neutral -- the verification pipeline reads pages as evidence, so an empty
+    one makes an agent cite an earlier agent's hypothesis. The gate's whole job is that the
+    accepted set of such pages can only shrink, and a gate that only reads a baseline file
+    would pass this mutation without noticing.
+
+    France is gutted rather than one of the pages already in the baseline, for the same
+    reason the title case uses it: a case that re-detects a baselined defect would still
+    pass once that page is documented, and would then be proving nothing. FRA-1919-2025
+    receives 4,101 layer-B rows, so it is unambiguously in the gate's population.
+
+    The frontmatter is KEPT. Truncating it too would break every other gate staged beside
+    this one and, worse, would make this case pass for the wrong reason -- a page the CSV
+    cannot be rebuilt from is a different defect, owned by build_database. What is removed
+    is only the documentation: the prose and the `../sources/` citations.
+    """
+    page = os.path.join(root, "wiki/polities/fra-1919-2025.md")
+    with open(page, encoding="utf-8") as fh:
+        text = fh.read()
+    end = text.find("---", 3)
+    assert end > 0, "no closing frontmatter fence in the France page"
+    front = text[: end + 3]
+    with open(page, "w", encoding="utf-8") as fh:
+        fh.write(front + "\n\n# France (1919-2025)\n\n"
+                 "Draft WHEP row for France, added to cover FAOSTAT reporting code FRA.\n")
+    return "gutted fra-1919-2025.md back to a CSV-derived stub"
+
+
 def mutate_succession_cycle(root, gpd, make_valid, affinity):
     """Make two rows whose spans OVERLAP name each other as successors, closing a cycle in
     the chronology.
@@ -1704,6 +1736,13 @@ CASES = (
         "an unreviewed iso3_code value, which changes what an ISO-keyed join matches",
     ),
     (
+        "validate_page_depth.py",
+        mutate_page_back_to_a_stub,
+        "FRA-1919-2025",
+        "a data-receiving polity documented only by a CSV-derived stub, which the "
+        "verification pipeline would then read as evidence",
+    ),
+    (
         "validate_aliases.py",
         mutate_alias_to_dead_polity,
         "AGO-1816-2025",
@@ -2097,6 +2136,14 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/polity_composition.csv",
     ),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
+    # The case REWRITES a page, so wiki/polities must be a real copy or the mutation would
+    # gut the committed France page. territory_basis.csv is the gate's population -- without
+    # it the gate finds no data-receiving polities at all, reports that, and exits 1 for the
+    # wrong reason, which is the trap validate_chain_integrity's note above describes.
+    "validate_page_depth.py": (
+        "wiki/polities",
+        "pipelines/polity-autoimprove/state/territory_basis.csv",
+    ),
     # Rewrites the published alias map, so it needs a real copy rather than stage()'s
     # symlink; the baseline txt is copied automatically.
     "validate_alias_year_coverage.py": ("label_alias_map.csv",),
