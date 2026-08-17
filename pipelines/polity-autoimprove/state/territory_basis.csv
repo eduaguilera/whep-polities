@@ -120,6 +120,7 @@ CAP-1800-1910,Cape Colony (to 1910),1800,1910,cshapes-2.0,1886.0,assigned,True,a
 CAP-1895-1910,Cape Colony (1895-1910),1895,1910,cshapes-2.0,1895.0,assigned,True,measured,False,False,vintage 1895 faithful to period 1895-1910,128
 CAR-1920-1945,Caroline Islands (Japanese Mandate),1920,1945,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,31
 CAY-1800-1886,Kingdom of Cayor,1800,1886,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CEM-1800-2025,Ceuta and Melilla,1800,2025,gadm-4.1-adm1,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CHE-1800-2025,Switzerland,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,3132
 CHL-1810-1884,Chile (to 1884),1810,1884,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,168
 CHL-1884-1899,Chile (1884-1899),1884,1899,cshapes-2.0,1886.0,assigned,True,measured,False,False,vintage 1886 faithful to period 1884-1899,105
@@ -163,6 +164,7 @@ COL-1903-1922,Colombia (1903-1922),1903,1922,cshapes-2.0,1903.0,assigned,True,me
 COL-1922-2025,Colombia,1922,2025,cshapes-2.0,1922.0,assigned,True,assumed_constant,True,False,single 1922 polygon held across a 103y span (1922-2025); borders may have changed,1225
 COM-1946-1975,Comoros (1946-1975),1946,1975,cshapes-2.0,1946.0,assigned,True,assumed_constant,True,False,single 1946 polygon held across a 29y span (1946-1975); borders may have changed,7
 COM-1975-2025,Comoros,1975,2025,cshapes-2.0,1946.0,assigned,False,back_projected,True,False,polygon vintage 1946 is BEFORE the period starts (1975),0
+CPV-1800-1886,Cape Verde (to 1886),1800,1886,cshapes-2.0,1886.0,proxy,True,assumed_constant,True,False,single 1886 polygon held across a 86y span (1800-1886); borders may have changed,0
 CPV-1886-1975,Cape Verde (Portuguese colony),1886,1975,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 89y span (1886-1975); borders may have changed,52
 CPV-1975-2025,Cabo Verde,1975,2025,cshapes-2.0,1886.0,assigned,False,back_projected,True,False,polygon vintage 1886 is BEFORE the period starts (1975),0
 CRI-1800-2025,Costa Rica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,930
@@ -523,6 +525,7 @@ NER-1922-1947,Colonial Niger (1922-1947),1922,1947,cshapes-2.0,1926.0,assigned,T
 NER-1947-1960,Niger (1947-1960),1947,1960,cshapes-2.0,1947.0,assigned,True,measured,False,False,vintage 1947 faithful to period 1947-1960,82
 NER-1960-2025,Niger,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 65y span (1960-2025); borders may have changed,9
 NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,True,single 2023 polygon held across a 111y span (1914-2025); borders may have changed,9
+NFL-1800-1907,Colony of Newfoundland,1800,1907,cshapes-2.0,1886.0,proxy,True,assumed_constant,True,False,single 1886 polygon held across a 107y span (1800-1907); borders may have changed,0
 NFL-1907-1949,Dominion of Newfoundland,1907,1949,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,False,single 1920 polygon held across a 42y span (1907-1949); borders may have changed,0
 NGA-1886-1914,Colonial Nigeria,1886,1914,cshapes-2.0,1914.0,assigned,True,assumed_constant,True,False,single 1914 polygon held across a 28y span (1886-1914); borders may have changed,58
 NGA-1914-1960,Nigeria (1914-1960),1914,1960,cshapes-2.0,1914.0,assigned,True,assumed_constant,True,True,single 1914 polygon held across a 46y span (1914-1960); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),501
@@ -673,6 +676,7 @@ STP-1800-2025,Sao Tome and Principe,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,cshapes-2.0,1914.0,assigned,True,assumed_constant,True,False,single 1914 polygon held across a 35y span (1899-1934); borders may have changed,97
 SUD-1934-1956,Sudan (1934-1956),1934,1956,cshapes-2.0,1934.0,assigned,True,measured,False,False,vintage 1934 faithful to period 1934-1956,265
 SUD-1956-2011,Sudan (1956-2011),1956,2011,cshapes-2.0,1956.0,assigned,True,assumed_constant,True,False,single 1956 polygon held across a 55y span (1956-2011); borders may have changed,53
+SUR-1800-1886,Dutch Guiana (to 1886),1800,1886,cshapes-2.0,1886.0,proxy,True,assumed_constant,True,False,single 1886 polygon held across a 86y span (1800-1886); borders may have changed,0
 SUR-1886-1954,Dutch Guiana,1886,1954,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 68y span (1886-1954); borders may have changed,354
 SUR-1954-1975,Surinam (Autonomous),1954,1975,cshapes-2.0,1954.0,assigned,True,measured,False,False,vintage 1954 faithful to period 1954-1975,14
 SUR-1975-2025,Suriname,1975,2025,cshapes-2.0,1975.0,assigned,False,assumed_constant,True,False,single 1975 polygon held across a 50y span (1975-2025); borders may have changed,0
