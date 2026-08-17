@@ -32,6 +32,13 @@ constant power of ten" headline showed it is true of 14 of the 28 runs with a fa
 of the 9 multi-year ones, so the generator now also writes `implied_factor_is_pow10` and
 this gate holds it to the same 50% window the per-cell table uses.
 
+A second, sharper column followed from the same issue: `repairable_without_source`, which
+says whether a run may be edited without the yearbook page. It is licensed for 11 of the 39
+runs (27 of the 77 flagged cells) and withheld for 28, and it carries `repair_factor` for
+exactly the licensed ones. It is the column with the most consequence in either table — a
+false `decimal-shift` is a x100 edit to a correct cell — and, like every other, it is a
+function of four numbers in its own row, so this gate re-derives it too.
+
 WHAT IS CHECKED
 
   per-cell table   yield_t_ha == prod_t / area_ha; ratio_to_ref == yield / ref_yield;
@@ -52,7 +59,16 @@ WHAT IS CHECKED
                    the factor points the RIGHT WAY (a production factor above 1 only where
                    the yield is too LOW, an area factor above 1 only where it is too HIGH),
                    since a factor inverted against a 2-order defect is a 10,000x edit;
-                   implied_factor_is_pow10 re-derived, as above.
+                   implied_factor_is_pow10 re-derived, as above;
+                   and the repairability block: repair_anchor_basis `own-clean-years` iff
+                   own_clean_pairs >= 3, repair_anchor_yield equal to the level that basis
+                   names, anchor_factor pointing the way median_orders_out says,
+                   repair_residual == anchor_factor / 10^n, a noise band present exactly
+                   when an anchor is, `repairable_without_source` re-derived from those four
+                   numbers, and `repair_factor` present for exactly the licensed verdict and
+                   equal to an EXACT power of ten. That last pair is the point: a fitted
+                   factor makes the repaired cell agree with the assumption used to detect
+                   it, and a blank is the instruction "do not repair this".
 
   across tables    every flagged cell falls inside a run of its own series, and the runs'
                    n_flagged_cells sums to the per-cell table's row count. A series row
@@ -88,9 +104,15 @@ SERIES_COLUMNS = ["source", "country", "item", "year_first", "year_last",
                   "n_paired_in_run", "n_flagged_cells", "median_orders_out", "direction",
                   "direction_basis", "secondary_suspect", "area_ratio_vs_basis",
                   "prod_ratio_vs_basis", "clean_years_in_series", "implied_factor",
-                  "implied_factor_pow10", "implied_factor_is_pow10", "ref_yield", "years"]
+                  "implied_factor_pow10", "implied_factor_is_pow10", "ref_yield",
+                  "own_level_yield", "own_clean_pairs", "repair_anchor_basis",
+                  "repair_anchor_yield", "anchor_factor", "noise_band_lo", "noise_band_hi",
+                  "repair_residual", "repairable_without_source", "repair_factor", "years"]
 BASES = {"within-series", "peer-range", "none"}
 DIRECTIONS = {"production", "area", "area+production", "undetermined"}
+ANCHORS = {"own-clean-years", "peer-countries", "none"}
+VERDICTS = {"decimal-shift", "shift-outside-noise", "shift-unyardsticked",
+            "not-a-shift", "no-direction"}
 
 
 def num(s):
@@ -270,6 +292,100 @@ for r in series:
                 f"{fac / 10.0 ** pow10(fac):.3g}x away from the table's own factor"
             )
 
+    # --- repairability without the source page (issue 111) ------------------------------
+    ref = num(r["ref_yield"])
+    own, n_own = num(r["own_level_yield"]), num(r["own_clean_pairs"]) or 0
+    ab = str(r["repair_anchor_basis"]).strip()
+    anchor = num(r["repair_anchor_yield"])
+    afac = num(r["anchor_factor"])
+    blo, bhi = num(r["noise_band_lo"]), num(r["noise_band_hi"])
+    resid = num(r["repair_residual"])
+    said_v = str(r["repairable_without_source"]).strip()
+    rfac = num(r["repair_factor"])
+    if said_v not in VERDICTS:
+        problems.append(f"{where}: repairable_without_source {said_v!r} is not one of "
+                        f"{sorted(VERDICTS)}")
+    if ab not in ANCHORS:
+        problems.append(f"{where}: repair_anchor_basis {ab!r} is not one of "
+                        f"{sorted(ANCHORS)}")
+    if (ab == "own-clean-years") != (n_own >= MIN_CLEAN_YEARS):
+        problems.append(
+            f"{where}: repair_anchor_basis={ab} with {n_own:g} clean PAIRED year(s); the "
+            f"series' own yield level anchors the repair only at {MIN_CLEAN_YEARS}+, below "
+            f"which the anchor falls back to the cross-country reference"
+        )
+    want_anchor = own if ab == "own-clean-years" else ref
+    if want_anchor is not None and not near(anchor, want_anchor, 1e-2):
+        problems.append(
+            f"{where}: repair_anchor_yield {r['repair_anchor_yield']} is neither the "
+            f"series' own clean-year level ({r['own_level_yield']}) nor the item reference "
+            f"({r['ref_yield']}), so the factor measured against it means nothing"
+        )
+    # The anchored factor must point the same way as the ref-anchored one: both repair the
+    # same column against a level in the same direction, and an inverted factor here is the
+    # same 10,000x edit the implied_factor check exists to stop.
+    if afac is not None:
+        orders = num(r["median_orders_out"])
+        too_low = orders is not None and orders < 0
+        want_up = too_low if r["direction"] == "production" else not too_low
+        if r["direction"] in ("production", "area") and (afac > 1.0) != want_up:
+            problems.append(
+                f"{where}: median_orders_out {orders:g} says the yield is too "
+                f"{'LOW' if too_low else 'HIGH'} but anchor_factor is {afac:g}"
+            )
+        if not near(resid, afac / 10.0 ** pow10(afac), 1e-2):
+            problems.append(
+                f"{where}: repair_residual {r['repair_residual']} is not anchor_factor "
+                f"{afac:g} over 10^{pow10(afac)} ({afac / 10.0 ** pow10(afac):.3g})"
+            )
+    if (afac is None) and said_v not in ("no-direction", "not-a-shift"):
+        problems.append(f"{where}: repairable_without_source={said_v} without an "
+                        f"anchor_factor to have judged")
+    if blo is not None and bhi is not None and blo > bhi:
+        problems.append(f"{where}: noise band {blo:g}-{bhi:g} is inverted")
+    if (blo is None) != (ab == "none"):
+        problems.append(
+            f"{where}: noise_band_lo={r['noise_band_lo']!r} with repair_anchor_basis={ab}; "
+            f"a band exists exactly when clean observations anchor the run"
+        )
+    # Re-derive the verdict itself. This is the column a fixer acts on, and it is a pure
+    # function of the direction, the anchored factor and the band in the same row.
+    if r["direction"] not in ("area", "production"):
+        want_v = "no-direction"
+    elif afac is None or not is_pow10(afac):
+        want_v = "not-a-shift"
+    elif blo is None or bhi is None:
+        want_v = "shift-unyardsticked"
+    elif blo <= (resid if resid is not None else -1) <= bhi:
+        want_v = "decimal-shift"
+    else:
+        want_v = "shift-outside-noise"
+    if said_v in VERDICTS and said_v != want_v:
+        problems.append(
+            f"{where}: repairable_without_source={said_v!r} but direction="
+            f"{r['direction']}, anchor_factor={r['anchor_factor']} and residual "
+            f"{r['repair_residual']} against the clean-year band "
+            f"[{r['noise_band_lo']}, {r['noise_band_hi']}] imply {want_v!r} — this column "
+            f"is the licence to edit a cell without seeing the page"
+        )
+    # A repair factor exists for exactly the licensed verdict, and is an EXACT power of ten
+    # rather than the fitted factor: fitting a cell to the level used to detect it is
+    # circular, and it is the fitted factor a careless consumer would apply.
+    if (rfac is not None) != (said_v == "decimal-shift"):
+        problems.append(
+            f"{where}: repair_factor={r['repair_factor']!r} with "
+            f"repairable_without_source={said_v!r}; a repair is published for the licensed "
+            f"verdict and withheld for every other, since a blank is the instruction"
+        )
+    if rfac is not None and afac is not None:
+        want_r = 10.0 ** pow10(afac)
+        if not near(rfac, want_r, 1e-9):
+            problems.append(
+                f"{where}: repair_factor {rfac:g} is not the exact power of ten "
+                f"10^{pow10(afac)} = {want_r:g}; a fitted factor makes the repaired cell "
+                f"agree with the assumption used to detect it"
+            )
+
 # --- across the two tables --------------------------------------------------------------
 orphans = [f"{r['source']} {r['country']} {r['item']} {r['year']}" for r in cells
            if int(r["year"]) not in runs.get((r["source"], r["country"], r["item"]), set())]
@@ -305,6 +421,20 @@ if clean_fac:
     worst = max(resid, key=lambda v: abs(v - 1.0))
     print(f"  residual of those after repairing by 10^n: {resid[0]:.2f}x-{resid[-1]:.2f}x "
           f"(worst {abs(worst - 1.0):.0%} out) — `clean` is a 50% window, not a tight fit")
+
+# Issue #111's remaining question, answered on the committed table rather than in prose.
+counts = {}
+for r in series:
+    v = str(r["repairable_without_source"]).strip()
+    c = counts.setdefault(v, [0, 0, 0])
+    c[0] += 1
+    c[1] += int(num(r["n_flagged_cells"]) or 0)
+    c[2] += int(num(r["n_paired_in_run"]) or 0)
+print("  repairable without the source page:")
+for v in sorted(counts, key=lambda k: -counts[k][0]):
+    c = counts[v]
+    print(f"    {v:20s} {c[0]:2d} run(s), {c[1]:2d} flagged cell(s), "
+          f"{c[2]:3d} paired observation(s)")
 
 print(f"\nDERIVED COLUMNS DISAGREEING WITH THEIR OWN ROW: {len(problems)}")
 for p in problems[:40]:

@@ -1541,6 +1541,41 @@ def mutate_yield_run_as_clean_power_of_ten(root, gpd, make_valid, affinity):
     return ("claimed the iia congo coffee, green 1922-1934 run is off by a clean x10 when "
             "its own factor is x26.1, the unconditional pow10 claim the table really made")
 
+def mutate_yield_run_as_repairable_unseen(root, gpd, make_valid, affinity):
+    """License a x100 repair of iia ghana cotton lint 1910-1918 without the source page.
+
+    THIS IS THE CLAIM ISSUE #111 ITSELF MADE, not an invented edit: its table lists
+    `iia ghana cotton lint 1910-1918` as "all -2", one of the six series it calls
+    "exactly x100", and its follow-up quotes the run's 109.0 as being "within ~9% of 100".
+    Both readings measure the run against the item's CROSS-SOURCE reference yield of
+    0.140 t/ha. Against Ghana's OWN clean years, which yield 0.071, the factor is 55.0 --
+    and 55 is not a power of ten, so a x100 repair would land this series 45% below the
+    level its own good years establish. The generator therefore says
+    `shift-outside-noise`, and this case restores the licence.
+
+    It is the right mutation for this gate because `repairable_without_source` is the one
+    column in either table that authorises editing a cell nobody has seen the page for: a
+    false `decimal-shift` is a silent x100 rewrite of seven observations. Nothing else in
+    the repository reads the file, every number in the row stays exactly as it is, and only
+    the verdict and the published factor change — so no count moves and no schema breaks,
+    and the sole thing that can catch it is a gate re-deriving the verdict from the
+    residual and the band in the same row.
+    """
+    path = os.path.join(
+        root, "pipelines/polity-autoimprove/state/yield_series_corrections.csv"
+    )
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = "0.55,shift-outside-noise,,1910;1911"
+    assert target in text, "the iia ghana cotton-lint run no longer carries residual 0.55"
+    text = text.replace(target, "0.55,decimal-shift,100.0,1910;1911")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return ("licensed an unseen x100 repair of iia ghana cotton lint 1910-1918, whose "
+            "residual 0.55 is outside its own clean years' 0.84-1.09 band -- issue #111's "
+            "own claim that the run is 'exactly x100'")
+
+
 def mutate_subnational_aggregate_with_residual(root, gpd, make_valid, affinity):
     """Append the Germany 1937 agricultural-population block as an exact aggregate claim.
 
@@ -2357,6 +2392,13 @@ CASES = (
         "iia congo coffee, green 1922-1934",
         "a defective series claiming a clean power-of-ten offset its own repair factor "
         "contradicts, so a batch decimal fix leaves the run 2.6x out",
+    ),
+    (
+        "validate_yield_corrections.py",
+        mutate_yield_run_as_repairable_unseen,
+        "iia ghana cotton lint 1910-1918",
+        "a run licensed for an unseen x100 repair whose residual falls outside its own "
+        "clean years' dispersion, so seven correct-looking cells get rewritten by 100",
     ),
     (
         "validate_source_conventions.py",
