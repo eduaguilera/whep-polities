@@ -20,6 +20,18 @@ counts derive from predated the recent re-spans; CHL-1810-1884 left the baseline
 reason. Regenerating the parquet (issue 243) restored the original reading exactly — 9
 polities, 362 rows — and CHL is baselined again.
 
+RE-MEASURED 2026-08-17 (issue 155 again): 8 polities, 352 rows. AOI-1936-1941 left the
+baseline because its polygon was built. The other eight were re-checked against the
+FETCHED sources rather than against their own baseline comments, and every blocker held:
+GADM 4.1 as fetched here has adm0 for 99 countries and adm1 for 80, and neither set
+contains ITA, SVN, HRV (TRS-1947-1954), VNM (FCC-1862-1887) or PAN (CZN-1903-1979);
+adm2 covers IDN alone, 502 features, so Trieste is unreachable above adm1 in any case.
+CShapes 2.0's country names contain no Trieste, no Berlin and no Saar feature at all.
+GADM's Saarland DEU.12_1 re-measures 2,571 km2 against SAC-1935-1947's 1,912 — still the
+same 34% overstatement. So AOI was the ONLY member of this class fixable without
+fetching new source data, which is the finding: what is left is a data-acquisition
+task, not a rebinding one.
+
 Issue 155 filed the same class at 18 polities / 1,071 rows. Re-enumerating it from the
 data rather than from the issue changed both the membership and the counts:
 
@@ -132,12 +144,20 @@ BASELINE = frozenset({
     # additions are in it. Bindable only as a documented 34% overstatement, which is a
     # judgement this gate's baseline should record rather than a fix to slip in.
     "SAC-1935-1947",
-    # 10 rows. Italian East Africa declares `constructed` at 1,700,000 km2 with no
-    # builder. A union of Ethiopia + Eritrea + Italian Somaliland is buildable, but it
-    # would contain three coexisting polities and so needs a LEGITIMATE_CONTAINERS entry
-    # in validate_spatial_containment plus the member-vs-aggregate double-count question
-    # settled. Deliberately not done for 10 rows in a PR about the other 270.
-    "AOI-1936-1941",
+    # AOI-1936-1941 WAS HERE AND IS FIXED, 2026-08-17. It had declared `constructed` at
+    # 1,700,000 km2 with no builder, and this baseline's own entry said the union of
+    # Ethiopia + Eritrea + Italian Somaliland was buildable but deferred it because it
+    # needed a LEGITIMATE_CONTAINERS entry and left the double-count question open.
+    # Built: `build_aoi_1936_1941` unions CShapes step 530/1907-1952 (1,127,556 km2),
+    # step 531/1900-1941 (120,897) and the constructed ITS-1908-1960 (464,743) =
+    # 1,713,196 km2, the exact arithmetic sum because all three pairwise intersections
+    # measure 0.000 km2. That is +0.78% on the declared 1,700,000 and -0.70% on the
+    # 1,725,330 usually quoted for AOI. The containment entry was added (it holds
+    # ETH-1907-1936, ERI-1889-1952, ITS-1908-1960, exactly as predicted); the
+    # aggregate-vs-member double-count question is NOT settled and is now
+    # oq-aoi-member-double-count on the page — geometry was attached anyway, because 10
+    # rows with no territory is worse than 10 rows a hypothetical double-sum would
+    # duplicate.
     # 5 rows. The Panama Canal Zone (1,432 km2) is a strip either side of the canal; no
     # fetched source carries it as a feature and GADM's Panamá/Colón provinces are not
     # it. polygon_source is empty, which at least does not lie about having one.

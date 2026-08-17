@@ -19,7 +19,7 @@ ANG-1905-1975,Angola (1905-1975),1905,1975,cshapes-2.0,1905.0,assigned,True,assu
 ANT-1816-1960,Dutch Caribbean (colonial),1816,1960,reporting-areas,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,58
 ANT-1961-2010,Netherlands Antilles,1961,2010,reporting-areas,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 AOF-1895-1960,French West Africa (AOF),1895,1960,constructed,1938.0,assigned,True,assumed_constant,True,False,single 1938 polygon held across a 65y span (1895-1960); borders may have changed,162
-AOI-1936-1941,Italian East Africa (1936-1941),1936,1941,constructed,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),10
+AOI-1936-1941,Italian East Africa (1936-1941),1936,1941,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,10
 ARE-1892-2025,United Arab Emirates,1892,2025,cshapes-2.0,1913.0,assigned,True,assumed_constant,True,False,single 1913 polygon held across a 133y span (1892-2025); borders may have changed,0
 ARG-1800-1899,Argentina (to 1899),1800,1899,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 99y span (1800-1899); borders may have changed,94
 ARG-1800-2025,Argentina,1800,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,True,single 1902 polygon held across a 225y span (1800-2025); borders may have changed,0

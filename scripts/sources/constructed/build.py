@@ -573,6 +573,67 @@ def build_its_1908_1960() -> ogr.Geometry:
     """
     return _difference(_cshapes2_feature(520, 1960), _cshapes2_feature(521, 1960))
 
+
+def build_aoi_1936_1941() -> ogr.Geometry:
+    """Italian East Africa 1936-1941 = Ethiopia union Eritrea union Italian Somaliland.
+
+    The recipe is not invented here. wiki/polities/aoi-1936-1941.md has carried it as
+    `oq-aoi-polygon-construction` since the row was created -- "union of CShapes 530
+    (1907) + 531 (1900) + 5200 (1924)" -- and the row has declared
+    `polygon_source: constructed` all along with nothing built, which is exactly the
+    failure mode the constructed-source docstring warns about: a declaration with no
+    BUILDERS entry ships no geometry.
+
+    Two of the three ids resolve directly. The third does NOT, and that is why this is
+    written against `build_its_1908_1960` rather than against 5200: cowcode 5200 is a
+    DEPENDENCY feature, and the CShapes distribution registered here is the
+    sovereign-state one, which has no Italian Somaliland at all -- its only Somali
+    polygon is gwcode 520, independent Somalia from 1960, i.e. Italian PLUS British
+    Somaliland. `build_its_1908_1960` already reconstructs the colonial boundary as
+    520 MINUS 521 and is documented there as bit-identical (symmetric difference
+    0.0 km2) to 5200 itself, so reusing it satisfies the page's recipe rather than
+    substituting for it.
+
+    The two CShapes members are named by their step bounds, not by a year, because
+    both families have steps that share a start year with a neighbour and
+    `_cshapes2_feature` would leave the winner to shapefile row order:
+      530  1907-1952  Ethiopia after the 1907 Anglo-Italian-Ethiopian boundary
+                      settlement, 1,127,556 km2. Note this is the pre-1952 extent,
+                      i.e. WITHOUT Eritrea, which is supplied separately -- CShapes'
+                      1952-1993 step (1,248,452) is federated Ethiopia-with-Eritrea
+                      and using it would have double-counted Eritrea.
+      531  1900-1941  Eritrea in its final colonial boundary, 120,897 km2. The step
+                      ends in 1941, the year AOI did.
+
+    MEASURED, all three members reprojected to ESRI:54034:
+        Ethiopia            1,127,556 km2
+        Eritrea               120,897
+        Italian Somaliland    464,743
+        union               1,713,196      = the arithmetic sum, because all three
+                                             pairwise intersections are 0.000 km2
+
+    1,713,196 against the page's declared 1,700,000 is +0.78%, and against the
+    1,725,330 km2 usually quoted for AOI it is -0.70%. So the union is not a proxy
+    for the territory; it is the territory, on the boundaries of its own three parts.
+
+    CONSEQUENCE, stated rather than discovered later: this polygon necessarily
+    contains ETH-1907-1936, ERI-1889-1952 and ITS-1908-1960, all three of which
+    overlap 1936-1941, so it becomes a container under
+    validate_spatial_containment and is listed there. That is the same relationship
+    AOF/AEF/MASG already have with their members and is not a defect. What it does
+    NOT settle is whether a consumer summing AOI together with its members
+    double-counts the Horn -- see oq-aoi-member-double-count on the page. Nothing in
+    this repo sums them, and the page's own verification concluded that the sources
+    checked report the members separately, so the geometry is attached and the
+    aggregation question is left named.
+    """
+    return _union(
+        _cshapes2_step(530, 1907, 1952),
+        _cshapes2_step(531, 1900, 1941),
+        build_its_1908_1960(),
+    )
+
+
 def build_can_1800_1866() -> ogr.Geometry:
     """Canada pre-Confederation, 1800-1866 = the union of the five colonies that
     became the Dominion, on GADM 4.1 adm1 boundaries.
@@ -1690,6 +1751,23 @@ BUILDERS = [
         "which is absent from the registered source. Post-1924 (post-Jubaland) "
         "extent; overstates 1908-1924 by ~94,400 km2 — see "
         "wiki/polities/its-1908-1960.md.",
+    ),
+    (
+        "AOI-1936-1941",
+        "Italian East Africa (1936-1941)",
+        build_aoi_1936_1941,
+        "CShapes step 530/1907-1952 (Ethiopia without Eritrea, 1,127,556 km2) union "
+        "531/1900-1941 (Eritrea, 120,897) union ITS-1908-1960 (Italian Somaliland, "
+        "464,743) = 1,713,196 km2, the exact arithmetic sum because all three pairwise "
+        "intersections are 0.000 km2. Against the page's declared 1,700,000 that is "
+        "+0.78%, and against the 1,725,330 usually quoted for AOI, -0.70%. The recipe is "
+        "the page's own oq-aoi-polygon-construction, unbuilt since the row was created "
+        "while the row declared `constructed` — so it shipped with no geometry and "
+        "received 10 layer-B rows with no territory (issue 155). The page's third id, "
+        "cowcode 5200, is a DEPENDENCY feature absent from the registered "
+        "sovereign-state distribution, which is why the Somali member comes from "
+        "ITS-1908-1960's 520-minus-521 reconstruction — documented there as "
+        "bit-identical to 5200.",
     ),
     (
         "TUR-1913-1914",
