@@ -60,6 +60,82 @@ postdates the 1881 Patagonian boundary treaty, so the polygon understates Chile'
 claims for 71 of the row's 74 years, recorded as `oq-pre-1881-patagonian-claims` and
 not fixed. See [chl-1810-1884](polities/chl-1810-1884.md).
 
+## gate-coexisting-overlap-tail-pinned
+**Date:** 2026-08-17
+**Touched:** (none)
+**Source:** none
+**Kind:** decision
+
+*Recorded by Claude (Claude Code) working the remaining half of issue 143; every figure
+re-measured against `data/final/polities_database.gpkg` today. Not human-signed-off. No
+polity row, polygon, date, status or alias changed. This entry adds a GATE and decides
+nothing about disputed ground.*
+
+**The prior entry (`decision-nested-subpolity-polygons-are-gross`, 2026-08-14) argued that
+no tolerance could be written yet.** Its reasoning was that a tolerance has to be wide
+enough to swallow class 1 — 267,078 km² of Western Sahara — and then it means nothing. That
+holds for a tolerance expressed in km². It does **not** hold for a tolerance expressed as a
+share OF THE SMALLER POLITY plus a per-pair enumeration, which is what
+`scripts/validate_coexisting_overlaps.py` now does, and the same entry's own measurement is
+what makes it work: class 3 tops out at **1.07%** (`MMR-1885-2025`/`THA-1909-2025`), the
+Saudi–Yemen frontier is **6.58%** of Yemen, and every disputed or nested pair is **14.1% or
+more**. The classes provably do not touch anywhere between ~1.1% and ~6.5%, so a **10%**
+threshold separates "two sources disagree about where a border runs" from "two rows claim
+the same territory" without anyone deciding which row owns anything.
+
+**Re-measured today, unchanged from the prior entry to within 0.03%:** 188 coexisting live
+real pairs overlap by >1 km² in 2015, **331,319 km²** total. Issue 143 said 188 /
+331,429 km²; the orchestration note that reopened it said 202 pairs / 331,329 km². The pair
+count is **188** on the stated population (live, `polity_type != "aggregate"`, geometry
+present, >1 km²); including aggregates gives 297 pairs and 10.86 Mha, which is federation
+polygons containing their own members by definition and is not what the issue measures.
+`SAU-1924-2025`/`YEM-1990-2025` measures **29,828.3 km²**, not the 29,918 km² the issue
+listed — 0.3% out, the only figure of the issue's ten that does not reproduce exactly.
+
+**What the gate asserts**, at 1990, 2000, 2010, 2015 and 2020:
+
+- **13 substantial pairs** (≥10% of the smaller) are each named with a class. Class 1 stays
+  **OPEN** and is listed rather than accepted: `disputed` (`ESH`/`MAR` 267,078 km²,
+  `ISR`/`PSE` 6,150 km²) and `occupation` (`IDN-1976-2002`/`TLS-1800-2025` 14,951 km², in
+  the 1990 and 1995 slices only — Timor-Leste's row runs through the annexation that
+  Indonesia's row also covers). Class 2 is the settled gross-polygon convention:
+  `ESP`/`ICN`, `CHN`/`HKG`, `CHN`/`MAC` (6 km², 19.2% of Macau), `ITA`/`SMR` (9 km², 14.1%
+  of San Marino), `F228-1945-1991` over four Soviet republics, `TTPI-1947-1994` over two
+  Pacific successors. An unlisted substantial pair fails the gate; a listed pair that stops
+  overlapping substantially also fails, so a resolved pair cannot leave an inert pin behind.
+- **5 sliver pairs above 2,000 km²** are pinned by SIZE ±5% (`SAU`/`YEM` 29,828.3,
+  `MMR`/`THA` 5,458.7, `CHN`/`MMR` 4,845.5, `IND`/`NPL` 2,529.3, `CHN`/`NPL` 2,332.8), so a
+  border drifting further apart is reported even though the pair is already known.
+- **The tail** — everything else, ~146–177 pairs, **5,160.5 km² at 2015** — is a per-year
+  budget. Growth above 1% fails; shrinking more than 10% fails too, so a reduction must be
+  re-pinned rather than silently protected.
+
+**Left open, deliberately.** Class 1 is still undecided and this entry does not decide it:
+whether the `ESH`/`MAR`, `ISR`/`PSE` and `IDN`/`TLS` overlaps are netted, split by control,
+or left explicit remains a territorial judgement for a human. The cell over-claim itself is
+therefore **not** fixed — 544 of 68,549 half-degree cells still claim more than they
+contain, 30.73 Mha in excess, and eduaguilera/whep#514's first acceptance criterion stays
+unsatisfiable until class 1 is settled. What has changed is that the part which is nobody's
+decision can no longer grow unnoticed, and the part which IS a decision is enumerated with
+its class instead of hiding inside an aggregate number.
+
+**Pre-1990 years are NOT checked, and that gap is named rather than hidden.** The 1925
+slice has 50 substantial pairs totalling 11.46 Mha (`AOF`/`MLI`, `AEF`/`TCD`, `ALK`/`USA`
+and so on), every one of them the gross-polygon convention at colonial scale. Enumerating
+50 federation/member pairs per year here would restate `validate_spatial_containment.py`'s
+container list in a second place, where it would rot. The consequence: a NEW pre-1990
+whole-territory mis-binding is not caught by this gate — it is caught by
+`validate_shared_polygons` if the polygon is shared, by `validate_composition_sums` if the
+pair sits inside a documented federation, and by `validate_polygons` if the area is
+recorded.
+
+**The self-test case is a partial overlap on purpose**, because that is the class no
+existing gate reaches. Shifting `NPL-1816-2025`'s polygon one degree north puts 54.9% of
+Nepal inside China's polygon; measured against a freshly mutated copy,
+`validate_shared_polygons` exits 0 without naming NPL (its size filter discards a 65×
+mismatch before computing an IOU of 0.0086) and so does `validate_polygons` (a rigid
+translation moves the area by 0.1%). The new gate fails and names it.
+
 ## ingest-federico-tena-through-00-intake-issue-26
 **Date:** 2026-08-17
 **Touched:** none
