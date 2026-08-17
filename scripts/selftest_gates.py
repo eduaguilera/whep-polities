@@ -1103,6 +1103,46 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
             f"to CAN-1886-1948, the span issue 243 retired, as an un-regenerated crosswalk does")
 
 
+def mutate_duplicate_candidate_area_drift(root, gpd, make_valid, affinity):
+    """Change ONE of MWI-1964-2025's two duplicate CShapes steps in the feature index.
+
+    This is the drift the determinism baseline predicts in prose and nothing measured:
+    nine of its entries are accepted because "candidates are IDENTICAL in area, so
+    order-dependence is harmless today", and each names the figure. CShapes 553 gives
+    Malawi two steps containing 1964 -- 1964-1964 and 1964-2019 -- both 118,483.7 km2, so
+    whichever the shapefile lists first is the same polygon either way.
+
+    Widening one of them by 5% makes row order DECIDE the geometry. Every per-row gate
+    stays quiet: the row still declares a polygon and has one, the area it declares still
+    matches whichever step was picked, containment and s2 are untouched. Only the
+    identical-area claim can see it, which is the point of check B.
+
+    Not a synthetic hazard: the baseline's own note says "an upstream re-fetch that changes
+    one of the duplicate steps would make them differ, silently and without a code change".
+    """
+    path = os.path.join(root, "data/final/polygon_feature_index.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.reader(fh))
+    head = rows[0]
+    cs, cf = head.index("source"), head.index("feature_id")
+    c0, c1, ca = head.index("start_year"), head.index("end_year"), head.index("area_km2")
+    hit = 0
+    for r in rows[1:]:
+        if len(r) <= ca or r[cs] != "cshapes-2.0" or str(r[cf]) != "553":
+            continue
+        if int(float(r[c0])) <= 1964 <= int(float(r[c1])) and hit == 0:
+            r[ca] = f"{float(r[ca]) * 1.05:.2f}"
+            hit += 1
+    assert hit == 1, (
+        f"expected one cshapes-2.0 feature 553 candidate spanning 1964, found {hit}; "
+        f"pick another duplicate pair from the identical-area baseline"
+    )
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        csv.writer(fh).writerows(rows)
+    return ("widened one of MWI-1964-2025's two duplicate 118,484 km2 steps by 5%, so which "
+            "one row order picks now decides the geometry")
+
+
 def mutate_order_dependent_binding(root, gpd, make_valid, affinity):
     """Set VNM-1887-1954's polygon_feature_year back to 1893, the value it shipped with.
 
@@ -1705,6 +1745,13 @@ CASES = (
         mutate_order_dependent_binding,
         "VNM-1887-1954",
         "a polygon binding whose feature is chosen by shapefile row order",
+    ),
+    (
+        "validate_polygon_binding_determinism.py",
+        mutate_duplicate_candidate_area_drift,
+        "MWI-1964-2025",
+        "a baselined duplicate pair that has stopped being duplicate, so an entry accepted "
+        "as harmless now hides a binding that row order decides",
     ),
     (
         "audit_family_shadowing.py",

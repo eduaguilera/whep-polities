@@ -45,6 +45,7 @@ Usage:
 """
 import csv
 import os
+import re
 import sys
 
 import yaml
@@ -58,8 +59,12 @@ DEAD = ("retired", "superseded")
 # Bidirectional: a new one fails, and one that becomes deterministic must be removed.
 BASELINE = {
     # ---- candidates are IDENTICAL in area, so order-dependence is harmless today ----
-    # These still deserve pinning eventually: an upstream re-fetch that changes one of
-    # the duplicate steps would make them differ, silently and without a code change.
+    # PINNED as of 2026-08-17: check B below re-derives each of these figures from
+    # data/final/polygon_feature_index.csv on every run and fails if a pair stops being a
+    # pair, so the sentence that used to end "deserve pinning eventually" is now an
+    # assertion. The hazard it names -- an upstream re-fetch changing one of the duplicate
+    # steps, silently and without a code change -- is the selftest case
+    # mutate_duplicate_candidate_area_drift.
     "GNB-1879-1886": "2 identical candidates at year 1886, all 33,242 km2 -- no geometry at stake",
     "GNB-1886-1974": "2 identical candidates at year 1886, all 33,242 km2 -- no geometry at stake",
     "IRQ-1921-1932": "3 identical candidates at year 1932, all 436,255 km2 -- no geometry at stake",
@@ -151,6 +156,77 @@ BASELINE = {
                       "Picked 21,506,736, the step in force at the row's start. Spread is "
                       "1.01x, so any re-fetch swap is small in area but silent",
 }
+
+
+# ---------------------------------------------------------------------------
+# CHECK B: the baseline's OWN claim, verified (issue 100).
+#
+# Nine of the entries above are accepted because "candidates are IDENTICAL in area, so
+# order-dependence is harmless today", and each names the area it means. That was prose:
+# nothing re-derived it, and the baseline's own comment says why that matters --
+#
+#     "an upstream re-fetch that changes one of the duplicate steps would make them
+#      differ, silently and without a code change"
+#
+# -- which is precisely a defect no other gate can see, because every per-row check passes
+# on whichever duplicate was picked. This turns the sentence into an assertion.
+#
+# It needs NO geometry and no data/geodata: data/final/polygon_feature_index.csv carries
+# every candidate's area, and write_feature_index.py --check keeps it honest. So unlike
+# check A above, this arm runs in CI.
+CLAIM = re.compile(r"all ([\d,]+) km2")
+
+
+def check_claimed_identity(rows, cfg):
+    """Return problems where a baseline note claims identical candidate areas and they differ."""
+    index_path = os.path.join(REPO, "data/final/polygon_feature_index.csv")
+    if not os.path.exists(index_path):
+        return [], 0
+    by_feature = {}
+    with open(index_path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            try:
+                area = float(row["area_km2"])
+                start, end = int(float(row["start_year"])), int(float(row["end_year"]))
+            except (TypeError, ValueError, KeyError):
+                continue
+            by_feature.setdefault((row["source"], str(row["feature_id"])), []).append(
+                (start, end, area))
+
+    meta = {r["polity_code"]: r for r in rows}
+    problems, verified = [], 0
+    for code, note in sorted(BASELINE.items()):
+        m = CLAIM.search(note or "")
+        if not m:
+            continue                      # only the identical-area entries make this claim
+        claimed = float(m.group(1).replace(",", ""))
+        r = meta.get(code)
+        if r is None:
+            continue
+        slug = (r.get("polygon_source") or "").strip()
+        fid = str(r.get("polygon_feature_id") or "").strip()
+        try:
+            fyear = int(float(r.get("polygon_feature_year")))
+        except (TypeError, ValueError):
+            continue
+        cands = [a for s, e, a in by_feature.get((slug, fid), []) if s <= fyear <= e]
+        if len(cands) < 2:
+            continue                      # not the shape the claim describes; check A owns it
+        verified += 1
+        areas = sorted({round(a) for a in cands})
+        if len(areas) > 1:
+            problems.append(
+                f"{code}: the baseline says its {len(cands)} candidates are all "
+                f"{claimed:,.0f} km2, but they now measure {areas} -- a re-fetch changed one "
+                f"of the duplicate steps, so which one row order picks now DECIDES the "
+                f"geometry. Pin the binding or re-measure the note"
+            )
+        elif areas and abs(areas[0] - claimed) > max(1.0, claimed * 0.001):
+            problems.append(
+                f"{code}: candidates still agree with each other at {areas[0]:,} km2, but the "
+                f"baseline note says {claimed:,.0f} km2 -- the note is stale, correct it"
+            )
+    return problems, verified
 
 
 def main() -> int:
@@ -311,8 +387,12 @@ def main() -> int:
         print("  scripts/sources/cshapes-2.0/fetch.sh.")
         return 0
 
+    claim_problems, claims_verified = check_claimed_identity(rows, cfg)
+    problems.extend(claim_problems)
+
     print(f"bindings resolved against a source: {checked}")
     print(f"order-dependent: {len(observed)}")
+    print(f"baseline identical-area claims re-derived from the index: {claims_verified}")
     if missing_sources:
         print(f"sources not fetched, so unchecked: {sorted(missing_sources)}")
 
