@@ -66,6 +66,14 @@ Known legacy failures for checks 2, 4 and 5 are listed in
 scripts/validate_references_baseline.txt so the gate gets NEW ones rather than
 staying permanently red. That file is a tracked backlog, not an exemption.
 
+Which is why the run also reports baseline lines that NOTHING matches any more.
+Measured 2026-08-17: 19 of 52 lines were dead — the page had since stopped naming
+the thing (bgd-1947-1971 no longer mentions PAK-1940-1947) or the reference was
+repointed — so a third of the "backlog" recorded work already done. They are
+reported as a WARNING rather than a failure: a dead line suppresses nothing, and
+failing on one would make any page edit that happens to fix a reference turn the
+gate red in a PR that never touched this file.
+
 Usage:
   python3 scripts/validate_references.py [--warnings] [--no-baseline]
 Exit 1 if any hard check fails.
@@ -187,6 +195,8 @@ def load_baseline():
     if A.no_baseline or not os.path.exists(BASELINE):
         return set()
     out = set()
+    # every line read is a line that must still be matched by something, or it is
+    # a dead entry; see BASELINE_USED below.
     for line in open(BASELINE, encoding="utf-8"):
         line = line.split("#")[0].strip()
         if not line:
@@ -251,6 +261,15 @@ pages = [p for p in sorted(glob.glob(os.path.join(POLITIES, "*.md")))
          if not os.path.basename(p).startswith("_")]  # _template.md holds placeholders
 page_files = {os.path.basename(p) for p in glob.glob(os.path.join(POLITIES, "*.md"))}
 baseline = load_baseline()
+BASELINE_USED = set()
+
+
+def baselined(slug, target):
+    """True if this finding is baselined, recording that the line was needed."""
+    if (slug, target) in baseline:
+        BASELINE_USED.add((slug, target))
+        return True
+    return False
 
 parsed = {}
 for path in pages:
@@ -295,7 +314,7 @@ for slug, (fm, _) in sorted(parsed.items()):
         for code in as_codes(fm.get(field)):
             if code in db_status:
                 continue
-            if (slug, code) in baseline:
+            if baselined(slug, code):
                 dangling_baselined += 1
                 continue
             dangling.append((slug, field, code))
@@ -353,7 +372,7 @@ for slug, (fm, body) in sorted(parsed.items()):
             target = m.group(1)
             if target in page_files:
                 continue
-            if (slug, target) in baseline:
+            if baselined(slug, target):
                 broken_baselined += 1
                 continue
             broken_links.append((slug, lineno, target))
@@ -362,7 +381,7 @@ for slug, (fm, body) in sorted(parsed.items()):
             if code in db_status or code in banner_codes:
                 continue
             if CHAIN_LINE_RE.match(line):
-                if (slug, code) in baseline:
+                if baselined(slug, code):
                     asserted_baselined += 1
                 else:
                     asserted.append((slug, lineno, code, line.strip()[:70]))
@@ -410,7 +429,7 @@ for slug, (fm, body) in sorted(parsed.items()):
                      or (ce is not None and ce not in ok_end))
             if not wrong:
                 continue
-            if (slug, f"({raw})") in baseline:
+            if baselined(slug, f"({raw})"):
                 title_baselined += 1
                 continue
             bad_titles.append((slug, where, raw, start, end))
@@ -422,11 +441,24 @@ for slug, where, raw, start, end in bad_titles:
           f"{start}-{end}")
 
 # ---------------------------------------------------------------------------
+# 6. baseline lines nothing matched — warnings: a dead line hides no defect, but
+#    it records work already done as if it were outstanding
+# ---------------------------------------------------------------------------
+stale = sorted(baseline - BASELINE_USED)
+print(f"\n6. STALE BASELINE LINES (warnings, do not fail): {len(stale)} of "
+      f"{len(baseline)} line(s) matched nothing in this run")
+for slug, target in (stale if A.warnings else stale[:8]):
+    print(f"   warn {slug:26s} {target} is no longer named by the page — delete "
+          f"the baseline line")
+if not A.warnings and len(stale) > 8:
+    print(f"   ... {len(stale) - 8} more (--warnings to list all)")
+
+# ---------------------------------------------------------------------------
 fail = bool(csv_name_typos or unknown_keys or dangling or asserted or broken_links
             or bad_titles)
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(csv_name_typos) + len(unknown_keys)} "
       f"bad frontmatter key(s), {len(dangling)} dangling chain ref(s), "
       f"{len(asserted)} asserted-but-absent code(s), {len(broken_links)} broken "
       f"page link(s), {len(bad_titles)} bad title period(s); "
-      f"{len(asymmetric) + len(dead) + len(prose)} warning(s) ignored")
+      f"{len(asymmetric) + len(dead) + len(prose) + len(stale)} warning(s) ignored")
 sys.exit(1 if fail else 0)
