@@ -1903,6 +1903,59 @@ def mutate_reexport_filed_as_unsourceable(root, gpd, make_valid, affinity):
             "which is what an entrepot does -- as exports nothing could have supplied")
 
 
+def mutate_census_promoted_without_flag(root, gpd, make_valid, affinity):
+    """Record a promotion in the census and nowhere else.
+
+    This is the failure the census table invites by existing. Issue 14's whole ask is that a
+    transit series be MARKED so an aggregate can exclude it, and the only file an aggregate
+    reads is `data/final/source_flow_flags.csv`. A `promote` verdict sitting in
+    `entrepot_census.csv` looks like the decision was taken -- the row says so, in a column
+    named for exactly that -- while the published flag file still says the series is
+    production, so every aggregate keeps double-counting it. Nothing about the census row is
+    internally wrong: its tonnages, its modern classes and its year range all still check out,
+    which is why only holding the verdict against the flag file catches it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/entrepot_census.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    target = next((r for r in rows if r["verdict"] == "no_origin_evidence"), None)
+    assert target is not None, "the census no longer carries a no_origin_evidence row"
+    target["verdict"] = "promote"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"promoted {target['source']} {target['label']} / {target['item']} to an entrepot "
+            f"flow in the census only, leaving source_flow_flags.csv -- the file an aggregate "
+            f"actually reads -- still calling it production")
+
+
+def mutate_census_modern_class_stale(root, gpd, make_valid, affinity):
+    """Regenerate the entrepot table and leave the census describing the previous run.
+
+    The census carries the modern side of each crossing -- the flow classes, the year range,
+    the row count -- copied from `trade_entrepot_flags.csv`. Copied columns are what rot when
+    one of two files is regenerated, and they rot silently: `reexport` where the classification
+    now says `exceeds_availability` still reads as a perfectly ordinary census row, and a
+    reader triaging by class works from the older verdict without knowing it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/entrepot_census.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    target = next((r for r in rows if r["modern_classes"] == "reexport"), None)
+    assert target is not None, "the census no longer carries a reexport-only crossing"
+    target["modern_classes"] = "exceeds_availability"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"left {target['source']} {target['label']} / {target['item']} describing its "
+            f"modern flow class as exceeds_availability while the entrepot classification "
+            f"calls it reexport")
+
+
 def mutate_entrepot_flag_dropped(root, gpd, make_valid, affinity):
     """Demote the one recorded entrepôt flow back to `production` in state, and leave the
     published file as it was.
@@ -2488,6 +2541,21 @@ CASES = (
         "imports cover the exports",
     ),
     (
+        "validate_trade_direction_tiebreak.py",
+        mutate_census_promoted_without_flag,
+        "census verdict is not a place a decision may live alone",
+        "an entrepot promotion recorded only in the census, so the flag file an aggregate "
+        "reads still calls the series production and the double count issue 14 exists to "
+        "stop goes on being summed",
+    ),
+    (
+        "validate_trade_direction_tiebreak.py",
+        mutate_census_modern_class_stale,
+        "one file was regenerated and the other was not",
+        "a census row still describing the previous entrepot run's flow class -- the copied "
+        "column of a two-file artifact, which rots without looking wrong",
+    ),
+    (
         "validate_coexisting_overlaps.py",
         mutate_partial_territory_claimed_twice,
         "NPL-1816-2025",
@@ -2621,11 +2689,17 @@ WRITABLE = {
     # holds all four to each other -- it requires every direction row to exist in the mirror
     # table with the same two tonnages, so without it the gate reports 3,913 flows as never
     # having passed the mirror screen and the case's own defect arrives buried.
+    # The census table joins the list for the same reason and with the same requirement: one
+    # case rewrites a verdict in it, and the gate holds it against BOTH the entrepot table and
+    # the published flag file, so all three must be present or the case's defect arrives
+    # buried under "a file is missing".
     "validate_trade_direction_tiebreak.py": (
         "pipelines/polity-autoimprove/state/trade_entrepot_flags.csv",
         "pipelines/polity-autoimprove/state/trade_mirror_direction.csv",
         "pipelines/polity-autoimprove/state/trade_availability_summary.csv",
         "pipelines/polity-autoimprove/state/trade_mirror_gaps.csv",
+        "pipelines/polity-autoimprove/state/entrepot_census.csv",
+        "source_flow_flags.csv",
     ),
     # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
     # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with

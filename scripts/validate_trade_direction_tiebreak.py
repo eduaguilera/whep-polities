@@ -59,6 +59,23 @@ WHY EACH CHECK EXISTS
                     onions does not make the importer's 2 t the truth, and #14 asks for
                     entrepot rows to be MARKED, not rewritten.
 
+  the census        `state/entrepot_census.csv` (issue 14's last half, written by
+                    `14_entrepot_census.py`) crosses the classification against the published
+                    flag file: 193 layer-B production series share a source LABEL and an ITEM
+                    with an entrepot-classified reporter, and NONE was promoted to a flag. The
+                    verdict column is not allowed to be the only place a decision lives, so
+                    `promote` must be matched by a row in `data/final/source_flow_flags.csv`,
+                    and `already_flagged` must agree with that file in both directions. Every
+                    non-production flag row must carry `origin_iso3`, because that is the half
+                    of the discriminator the classification cannot supply -- and the reason it
+                    cannot is checked too: the entrepot table is reporter-level and must carry
+                    no partner column. If one appears, the census becomes answerable and the
+                    promotions have to be redone, so the gate FAILS and says so rather than
+                    letting a stale "zero promotions" stand. The modern-side columns
+                    (`modern_classes`, the year range, the row count) are re-derived from the
+                    entrepot table on every row, which catches the failure of a two-file
+                    artifact: one regenerated and the other not.
+
   the summary       `trade_availability_summary.csv` carries the pin-side census (the two
                     pins' year ranges, the layer-B overlap that is zero, the 1.32M cells)
                     which CI cannot check, and the table-side counts that it can. Every
@@ -73,6 +90,7 @@ a function of, a direction row is absent from the mirror table, or the summary d
 import csv
 import math
 import os
+import re
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -81,6 +99,8 @@ ENTREPOT = os.path.join(STATE, "trade_entrepot_flags.csv")
 DIRECTION = os.path.join(STATE, "trade_mirror_direction.csv")
 SUMMARY = os.path.join(STATE, "trade_availability_summary.csv")
 GAPS = os.path.join(STATE, "trade_mirror_gaps.csv")
+CENSUS = os.path.join(STATE, "entrepot_census.csv")
+FLOW_FLAGS = os.path.join(REPO, "data/final/source_flow_flags.csv")
 
 ENTREPOT_COLUMNS = ["reporter_code", "reporter", "item_code", "item", "year", "prod_t",
                     "imports_t", "exports_t", "avail_t", "exp_over_prod", "exp_over_avail",
@@ -110,6 +130,15 @@ FORBIDDEN = frozenset({
 })
 FLOW_CLASSES = frozenset({"exceeds_availability", "reexport"})
 SIDES = frozenset({"exporter", "importer", "both", "none"})
+
+CENSUS_COLUMNS = ["source", "label", "item", "polity_code", "n_rows", "year_min", "year_max",
+                  "median_t", "area_km2", "intensity_ratio", "arealess", "modern_classes",
+                  "modern_year_min", "modern_year_max", "modern_rows", "already_flagged",
+                  "verdict", "reason"]
+VERDICTS = frozenset({"already_flagged", "promote", "no_origin_evidence"})
+# A partner column here would void the census's central claim; see the docstring.
+PARTNER_COLUMNS = frozenset({"partner", "partner_code", "partner_countries", "origin",
+                             "origin_iso3"})
 
 TABLE_DERIVED_ENTREPOT = {
     "entrepot_rows", "entrepot_exceeds_availability", "entrepot_reexport",
@@ -302,6 +331,128 @@ def check_direction(problems):
     return rows, counts, resolved, refuted
 
 
+def norm(s) -> str:
+    """Label/item normalisation, identical to 14_entrepot_census.norm."""
+    return re.sub(r"[^a-z0-9]+", " ", str(s).lower()).strip()
+
+
+def read_flow_flags(problems):
+    """The published non-production flows, and the one column that makes them usable.
+
+    `origin_iso3` is what turns "this figure is not production" into "this coffee is
+    Ethiopian", which is the difference between a flag an aggregate can act on and a note.
+    It is also precisely the column the entrepot classification cannot supply, so a flag
+    row missing it would leave the census with nothing to promote TO.
+    """
+    flags = {}
+    if not os.path.exists(FLOW_FLAGS):
+        problems.append("census: data/final/source_flow_flags.csv is missing; run "
+                        "scripts/write_source_flow_flags.py")
+        return flags
+    with open(FLOW_FLAGS, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            flow = (r.get("flow_type") or "production").strip() or "production"
+            if flow == "production":
+                continue
+            key = (r["source"], norm(r["label_pattern"]), norm(r["item_pattern"]))
+            flags[key] = r
+            if not (r.get("origin_iso3") or "").strip():
+                problems.append(
+                    f"census: flag {key} is {flow} but carries no origin_iso3. Naming the "
+                    f"origin is the half of the discriminator the entrepot classification "
+                    f"cannot supply, and an unattributed non-production flow cannot be "
+                    f"promoted or consumed")
+    return flags
+
+
+def check_census(ent, problems):
+    """Issue 14's census: the cross of the classification against the published flags."""
+    if not os.path.exists(CENSUS):
+        problems.append(f"census: {os.path.relpath(CENSUS, REPO)} is missing; run "
+                        f"pipelines/polity-autoimprove/14_entrepot_census.py")
+        return
+    with open(CENSUS, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+    if not rows:
+        problems.append("census: entrepot_census.csv has no rows, so nothing records that "
+                        "the cross was performed")
+        return
+    got = list(rows[0].keys())
+    if got != CENSUS_COLUMNS:
+        problems.append(f"census: columns are {got}, expected {CENSUS_COLUMNS}")
+    bad = sorted(FORBIDDEN.intersection(got))
+    if bad:
+        problems.append(f"census: carries {bad}; #14 asks for entrepot rows to be marked, "
+                        f"not rewritten, and a census least of all repairs anything")
+
+    # The reason no promotion is possible, checked rather than asserted.
+    partner = sorted(PARTNER_COLUMNS.intersection(
+        {c.strip().lower() for c in (ent[0].keys() if ent else ())}))
+    if partner:
+        problems.append(
+            f"census: the entrepot table now carries {partner}, so it CAN name an origin. "
+            f"The census's 'no_origin_evidence' verdicts rest on it being reporter-level and "
+            f"summed over all partners; they must be redone against the partner column "
+            f"before this gate can pass")
+
+    modern = {}
+    for r in ent:
+        modern.setdefault((norm(r["reporter"]), norm(r["item"])), []).append(r)
+
+    flags = read_flow_flags(problems)
+    seen, verdicts = set(), {}
+    for r in rows:
+        where = f"census {r.get('source')} {r.get('label')} / {r.get('item')}"
+        key = (r.get("source"), r.get("label"), r.get("item"))
+        if key in seen:
+            problems.append(f"{where}: duplicate (source, label, item) row")
+        seen.add(key)
+        for field in ("arealess", "already_flagged"):
+            if (r.get(field) or "") not in ("true", "false"):
+                problems.append(f"{where}: {field} is {r.get(field)!r}, not true/false")
+        verdict = (r.get("verdict") or "").strip()
+        if verdict not in VERDICTS:
+            problems.append(f"{where}: verdict {verdict!r} is not one of {sorted(VERDICTS)}")
+            continue
+        verdicts[verdict] = verdicts.get(verdict, 0) + 1
+
+        hits = modern.get((r["label"], r["item"]))
+        if not hits:
+            problems.append(
+                f"{where}: no row of the entrepot classification carries this reporter and "
+                f"item, so this census row crosses nothing — every row here must be a real "
+                f"coincidence of a layer-B series with a classified flow")
+        else:
+            want = {
+                "modern_classes": "|".join(sorted({h["flow_class"] for h in hits})),
+                "modern_year_min": str(min(int(h["year"]) for h in hits)),
+                "modern_year_max": str(max(int(h["year"]) for h in hits)),
+                "modern_rows": str(len(hits)),
+            }
+            for field, w in want.items():
+                if (r.get(field) or "").strip() != w:
+                    problems.append(
+                        f"{where}: {field} says {r.get(field)!r} but the entrepot table "
+                        f"gives {w!r} — one file was regenerated and the other was not")
+
+        flag = flags.get((r["source"], r["label"], r["item"]))
+        if (r.get("already_flagged") == "true") != bool(flag):
+            problems.append(
+                f"{where}: already_flagged is {r.get('already_flagged')!r} but "
+                f"source_flow_flags.csv {'carries' if flag else 'does not carry'} this "
+                f"(source, label, item)")
+        if verdict == "already_flagged" and not flag:
+            problems.append(f"{where}: verdict already_flagged with no published flag")
+        if verdict == "promote" and not flag:
+            problems.append(
+                f"{where}: verdict is promote, but data/final/source_flow_flags.csv carries "
+                f"no flag for it. A census verdict is not a place a decision may live alone "
+                f"— an aggregate reads the flag file, not this table")
+        if (r.get("intensity_ratio") or "").strip() and not (r.get("area_km2") or "").strip():
+            problems.append(f"{where}: intensity_ratio without an area_km2 to divide by")
+    return len(rows), verdicts
+
+
 def check_summary(ent, ent_counts, dirn, dir_counts, resolved, refuted, problems):
     if not os.path.exists(SUMMARY):
         problems.append(f"summary: {os.path.relpath(SUMMARY, REPO)} is missing")
@@ -363,6 +514,7 @@ def main() -> int:
     ent, ent_counts = check_entrepot(problems)
     dirn, dir_counts, resolved, refuted = check_direction(problems)
     check_summary(ent, ent_counts, dirn, dir_counts, resolved, refuted, problems)
+    census = check_census(ent, problems)
     if problems:
         print(f"FAIL: {len(problems)} problem(s) in the trade availability tables\n")
         for p in problems[:40]:
@@ -370,11 +522,16 @@ def main() -> int:
         if len(problems) > 40:
             print(f"  ... and {len(problems) - 40} more")
         return 1
+    n_census, verdicts = census if census else (0, {})
     print(f"PASS: {len(ent):,} entrepot rows "
           f"({ent_counts.get('exceeds_availability', 0):,} unsourceable, "
           f"{ent_counts.get('reexport', 0):,} re-export) and {len(dirn):,} mirror flows with "
           f"a third quantity ({resolved} resolved, {refuted} where whep keeps the refuted "
-          f"side) all agree with their own tonnages and with the summary")
+          f"side) all agree with their own tonnages and with the summary; the census crosses "
+          f"{n_census} layer-B series against the classification and promotes "
+          f"{verdicts.get('promote', 0)} "
+          f"({verdicts.get('already_flagged', 0)} already flagged, "
+          f"{verdicts.get('no_origin_evidence', 0)} with no named origin)")
     return 0
 
 
