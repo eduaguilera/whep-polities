@@ -1170,6 +1170,42 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
             f"to CAN-1886-1948, the span issue 243 retired, as an un-regenerated crosswalk does")
 
 
+def mutate_avoidable_self_referential_area(root, gpd, make_valid, affinity):
+    """Give a row with a PUBLISHED stated figure its own polygon's area as polygon_area_km2.
+
+    This is issue 195's tautology, injected: once a row declares what its own geometry
+    measures, check A compares the polygon against itself and cannot fail for it -- even
+    though source_stated_area_basis.csv already carries an independent figure for that
+    (polity, source) which the row could have been checked against instead.
+
+    AFG-1893-1919 is chosen because it HAS a stated figure and declares no area today, so the
+    mutation moves it from the honest state into the tautological one, which is the direction
+    a careless edit takes. The area is copied from the row's own geometry, so nothing else
+    notices: A's divergence is 0.0%, the polygon is unchanged, s2 and containment are untouched.
+
+    The mutation must go into the GEOPACKAGE, not the CSV: validate_polygons reads `claimed`
+    from the GeoPackage's attribute table (its line 88), so a CSV-only edit leaves the gate
+    measuring the old value and the case silently proves nothing. Verified by making exactly
+    that mistake first -- the count stayed at 28 and the gate passed.
+    """
+    g = gpd.read_file(GPKG)
+    eq = g.to_crs("ESRI:54034")
+    areas = {r.polity_code: r.geometry.area / 1e6
+             for r in eq.itertuples() if r.geometry is not None}
+    i = g.index[g.polity_code == "AFG-1893-1919"]
+    assert len(i) == 1, f"expected one AFG-1893-1919 row, found {len(i)}"
+    i = i[0]
+    cur = g.loc[i, "polygon_area_km2"]
+    assert cur is None or str(cur).strip() in ("", "nan", "None"), (
+        f"AFG-1893-1919 now declares {cur!r}; pick another row that has a stated figure and "
+        f"declares no area"
+    )
+    g.loc[i, "polygon_area_km2"] = round(areas["AFG-1893-1919"])
+    write_gpkg(g, root)
+    return ("gave AFG-1893-1919 its own polygon's area as polygon_area_km2, so check A can only "
+            "compare it against itself while a stated figure for it is already published")
+
+
 def mutate_duplicate_candidate_area_drift(root, gpd, make_valid, affinity):
     """Change ONE of MWI-1964-2025's two duplicate CShapes steps in the feature index.
 
@@ -2193,6 +2229,13 @@ CASES = (
         "F228-1920-1921",
         "a binding whose only tie-breaker is a full DATE -- three CShapes steps start in its "
         "single year -- with that date removed, so row order decides again",
+    ),
+    (
+        "validate_polygons.py",
+        mutate_avoidable_self_referential_area,
+        "AFG-1893-1919",
+        "a declared area copied from the row's own geometry where a source figure was "
+        "available, so check A is reduced to comparing the polygon with itself",
     ),
     (
         "validate_polygon_binding_determinism.py",
