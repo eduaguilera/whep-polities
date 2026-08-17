@@ -1265,6 +1265,39 @@ def mutate_mislabelled_landuse_shift(root, gpd, make_valid, affinity):
         fh.write(text)
     return ("relabelled BRA-1909-2025 1947 arable as a x100 decimal shift, the label the "
             "generator's 2% ratio window really did emit")
+
+
+def mutate_yield_run_as_clean_power_of_ten(root, gpd, make_valid, affinity):
+    """Assert that iia congo green coffee 1922-1934 is off by a clean power of ten.
+
+    THIS IS THE STATE THE TABLE SHIPPED IN until 2026-08-17, not an invented edit.
+    `07_yield_consistency.py` wrote `implied_factor_pow10` — the NEAREST power of ten —
+    and nothing that said whether the factor is actually one, so this run read as x10
+    while the factor that restores the item's reference yield is x26.1. Repairing the
+    run by 10 leaves its production 2.6x low, and this is precisely the kind of run
+    (114 t recorded against a 1,800 t clean-year level) that gets batch-fixed by
+    powers of ten. Issue #111's own headline, "off by a constant power of ten", holds
+    for only 14 of the 28 runs naming a column.
+
+    It is the right mutation for this gate because nothing else in the repository reads
+    this file: every number stays exactly as it is and only the claim about them changes,
+    so no count moves and no schema breaks — the sole thing that can catch it is a gate
+    that re-derives the claim from the factor in the same row.
+    """
+    path = os.path.join(
+        root, "pipelines/polity-autoimprove/state/yield_series_corrections.csv"
+    )
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    target = "26.1,1,False"
+    assert target in text, "the iia congo green-coffee run no longer carries factor 26.1"
+    text = text.replace(target, "26.1,1,True")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return ("claimed the iia congo coffee, green 1922-1934 run is off by a clean x10 when "
+            "its own factor is x26.1, the unconditional pow10 claim the table really made")
+
+
 def mutate_entrepot_flag_dropped(root, gpd, make_valid, affinity):
     """Demote the one recorded entrepôt flow back to `production` in state, and leave the
     published file as it was.
@@ -1556,6 +1589,13 @@ CASES = (
         "a repair row whose stated reason contradicts its own numbers, so a consumer "
         "applying the label lands on a different value from the one in the table",
     ),
+    (
+        "validate_yield_corrections.py",
+        mutate_yield_run_as_clean_power_of_ten,
+        "iia congo coffee, green 1922-1934",
+        "a defective series claiming a clean power-of-ten offset its own repair factor "
+        "contradicts, so a batch decimal fix leaves the run 2.6x out",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -1621,6 +1661,15 @@ WRITABLE = {
     # label into the committed table through stage()'s symlink.
     "validate_landuse_corrections.py": (
         "pipelines/polity-autoimprove/state/landuse_corrections.csv",
+    ),
+    # Same reasoning: the case rewrites one field of the series table, and the gate also
+    # reads the per-cell table for the cross-table coverage check, so both must be staged.
+    # The series table must be a real copy or the mutation writes through the symlink into
+    # the committed table; the per-cell one only has to be present, but naming it here is
+    # cheaper than a second mechanism.
+    "validate_yield_corrections.py": (
+        "pipelines/polity-autoimprove/state/yield_series_corrections.csv",
+        "pipelines/polity-autoimprove/state/yield_corrections.csv",
     ),
     # Signal A reads the CSV and the feature index; signal B also needs the GeoPackage for
     # geometry equality. All three must be REAL COPIES: the case rewrites the CSV, and with

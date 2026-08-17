@@ -64,6 +64,18 @@ Two things that pass discovered, and that the per-cell table cannot express:
      under `peer-range` they are 1.0 for a column inside the source's cross-country
      [p10, p90] for the item and the ratio to the breached edge for one outside it.
 
+  3. THE OFFSET IS OFTEN NOT A POWER OF TEN. Issue 111's headline is "off by a constant
+     power of ten", and re-measuring it in 2026-08 shows that is true of only 14 of the 28
+     runs carrying a repair factor, and 5 of the 9 multi-year ones. `implied_factor_pow10`
+     is the NEAREST power of ten and always populated, so a reader who took it as the
+     repair would divide iia congo green coffee by 10 when the factor that restores the
+     reference yield is 26.1, and juan austria grapes by 100 when it is 212. So the row
+     also carries `implied_factor_is_pow10`, on the per-cell table's own 50% window
+     (POW10_WINDOW): true means a decimal shift explains the run, false means the run is
+     real but its magnitude is not a clean shift and needs the source document.
+     scripts/validate_yield_corrections.py re-derives that boolean, so it cannot drift
+     back into an unconditional assertion.
+
 A column whose ratio is large but under 10x is recorded as `secondary_suspect`, not asserted:
 a real territorial change produces exactly that signature. juan austria grapes is the case --
 its area drops 213,400 -> 48,500 ha at 1918 because pre-1918 "austria" is Cisleithania, not
@@ -124,6 +136,9 @@ MIN_CLEAN_YEARS = 3
 # moved" when the area is the one column that is right. Ten years each way is enough to be
 # robust to one polluted neighbour and short enough not to cross a structural break.
 NEAR_YEARS = 10
+# How close to a power of ten a factor must be before the table says it IS one. 0.5 is the
+# per-cell table's own window, kept identical so the two columns mean the same thing.
+POW10_WINDOW = 0.5
 
 
 def nearest_power_of_ten(ratio: float) -> int:
@@ -132,6 +147,19 @@ def nearest_power_of_ten(ratio: float) -> int:
     if ratio <= 0:
         return 0
     return int(round(math.log10(ratio)))
+
+
+def is_clean_power_of_ten(ratio: float) -> bool:
+    """Is `ratio` within POW10_WINDOW of its nearest power of ten (and not 10^0)?
+
+    Same test, same window, as the per-cell table's `looks_like_power_of_ten`. The series
+    table needs it because `implied_factor_pow10` is only the NEAREST power of ten, and a
+    reader who takes it as the repair gets iia congo coffee 2.6x wrong (x26.1 -> x10).
+    """
+    if ratio is None or not (ratio == ratio) or ratio <= 0:
+        return False
+    p = nearest_power_of_ten(ratio)
+    return p != 0 and abs(ratio / (10.0 ** p) - 1.0) < POW10_WINDOW
 
 
 def _ratio_verdict(ratio: float) -> str:
@@ -250,6 +278,10 @@ def series_pass(m: pd.DataFrame, bad: pd.DataFrame,
                 fac = (run["prod_t"] / run["ref_yield"] / run["area_ha"]).median()
             else:
                 fac = float("nan")
+            # Rounded to the 3 significant figures actually written, so the boolean below
+            # and any downstream re-derivation are computed on the SAME number a reader
+            # sees rather than on an unwritten full-precision one.
+            facr = float(f"{fac:.3g}") if fac == fac else ""
             rows.append({
                 "source": k[0], "country": k[1], "item": k[2],
                 "year_first": int(run["year"].min()), "year_last": int(run["year"].max()),
@@ -266,8 +298,14 @@ def series_pass(m: pd.DataFrame, bad: pd.DataFrame,
                 "run_prod_t_median": float(f"{run['prod_t'].median():.4g}"),
                 "near_area_ha_median": (float(f"{out_a.median():.4g}") if len(out_a) else ""),
                 "near_prod_t_median": (float(f"{out_p.median():.4g}") if len(out_p) else ""),
-                "implied_factor": float(f"{fac:.3g}") if fac == fac else "",
+                "implied_factor": facr,
                 "implied_factor_pow10": nearest_power_of_ten(fac) if fac == fac else "",
+                # Whether the run really IS off by a clean power of ten, on the same 50%
+                # window the per-cell table's `looks_like_power_of_ten` uses. Without
+                # this the pow10 column reads as an assertion, and it is only the
+                # NEAREST power of ten: iia congo coffee needs x26.1, not x10.
+                "implied_factor_is_pow10": (is_clean_power_of_ten(facr)
+                                            if fac == fac else ""),
                 "ref_yield": round(ref, 3) if ref == ref else "",
                 "years": ";".join(str(int(y)) for y in sorted(run["year"])),
             })
@@ -364,6 +402,10 @@ def main() -> int:
           f"{int(multi['n_paired_in_run'].sum())} observations "
           f"({int(multi['n_flagged_cells'].sum())} flagged cells)")
     print(f"  direction decided: {dict(ser['direction'].value_counts())}")
+    fac_rows = ser[ser["implied_factor"] != ""]
+    print(f"  runs with a repair factor: {len(fac_rows)}, of which a clean power of ten: "
+          f"{int((fac_rows['implied_factor_is_pow10'] == True).sum())}"  # noqa: E712
+          f" -- the rest are NOT x10^n and must not be repaired as if they were")
     print(f"  basis: {dict(ser['direction_basis'].value_counts())}")
     for r in multi.itertuples():
         print(f"  {str(r.source):8s} {str(r.country)[:26]:26s} {str(r.item)[:24]:24s} "
