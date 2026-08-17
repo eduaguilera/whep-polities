@@ -99,7 +99,7 @@ BRN-1816-1888,Brunei (greater),1816,1888,national,BRN,835,Asia,draft,2026-04-12,
 BRN-1888-2025,Brunei Darussalam,1888,2025,national,BRN,835,Asia,draft,2026-04-12,cshapes-2.0,835,1888,assigned,,BRN-1816-1888,
 BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,national,BSS,,Africa,draft,2026-06-24,cshapes-2.0,521,1886,assigned,,,SOM-1960-2025
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,colonial,MYS,824,Asia,draft,2026-06-26,cshapes-2.0,824,1889,assigned,124276,,MYS-1963-1965
-BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,,Africa,draft,2026-06-26,constructed,BTL-1920-1957,1957,assigned,26630,GTO-1919-1922,GHA-1957-2025
+BTL-1920-1957,British Togoland (1920-1957),1920,1957,colonial,GHA,,Africa,draft,2026-06-26,constructed,BTL-1920-1957,1957,assigned,26630,GTO-1884-1920,GHA-1957-2025
 BTN-1800-2025,Bhutan,1800,2025,national,BTN,,Asia,draft,2026-04-12,cshapes-2.0,760,1886,assigned,,,
 BWA-1966-2025,Botswana,1966,2025,national,BWA,571,Africa,draft,2026-04-13,cshapes-2.0,571,1966,assigned,,BEC-1885-1966,
 BWI-1833-1962,British West Indies (colonial aggregate),1833,1962,national,BWI,,North America,draft,2026-06-26,constructed,BWI-1833-1962,,proxy,34766,,JAM-1800-2025; TTO-1800-2025; BRB-1800-2025; BHS-1800-2025; ATG-1800-2025; GRD-1800-2025; VCT-1833-2025; DMA-1800-2025; LCA-1838-2025; KNA-1800-2025; MSR-1800-2025
@@ -281,7 +281,7 @@ FRS-1884-1977,French Somaliland,1884,1977,national,DJI,522,Africa,draft,2026-07-
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,DJI,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,FRS-1884-1977,
 FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,,
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,national,,,Africa,draft,2026-04-13,paine-2024,Futa Jalon,,assigned,,,GIN-1958-2025; GIN-1894-1958
-FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,,Africa,draft,2026-08-13,cshapes-2.0,461,1930,assigned,57094,GTO-1919-1922,TGO-1960-2025
+FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,,Africa,draft,2026-08-13,cshapes-2.0,461,1930,assigned,57094,GTO-1884-1920,TGO-1960-2025
 FTT-1800-1862,Imamate of Futa Toro,1800,1862,national,,,Africa,draft,2026-04-13,paine-2024,Futa Toro,,assigned,,,SEN-1960-2025
 GAB-1839-1912,Gabon (to 1912),1839,1912,national,GAB,481,Africa,draft,2026-04-15,cshapes-2.0,481,1886,assigned,,,GAB-1912-1919
 GAB-1912-1919,Gabon (1912-1919),1912,1919,national,GAB,481,Africa,draft,2026-04-13,cshapes-2.0,481,1912,assigned,,,GAB-1919-1960
@@ -322,6 +322,7 @@ GRC-1947-2025,Greece (1947-2025),1947,2025,national,GRC,350,Europe,draft,2026-06
 GRD-1800-2025,Grenada,1800,2025,national,GRD,55,North America,draft,2026-06-09,gadm-4.1-adm0,GRD,,proxy,,,
 GRL-1800-2025,Greenland,1800,2025,national,GRL,,North America,draft,2026-04-13,gadm-4.1-adm0,GRL,,assigned,,,
 GTM-1821-2025,Guatemala,1821,2025,national,GTM,90,North America,draft,2026-04-12,cshapes-2.0,90,1886,assigned,,,
+GTO-1884-1920,German Togoland (1884-1920),1884,1920,colonial,GTO,,Africa,draft,2026-08-17,constructed,GTO-1884-1920,1920,proxy,,,BTL-1920-1957; FTO-1920-1960
 GUF-1816-1946,French Guiana (Colony),1816,1946,colonial,GUF,120,South America,draft,2026-06-26,cshapes-2.0,120,1886,assigned,83711,,GUF-1946-2025
 GUF-1946-2025,French Guiana (Overseas Department),1946,2025,national,GUF,120,South America,draft,2026-06-26,cshapes-2.0,120,1946,assigned,83711,GUF-1816-1946,
 GUM-1898-1950,Territory of Guam,1898,1950,colonial,GUM,,Oceania,draft,2026-06-26,gadm-4.1-adm0,GUM,2023,assigned,550,,GUM-1950-2025

@@ -83,6 +83,61 @@ outside Cliopatria. Nothing generated changed — this is a documentation entry.
 
 Signed off by: Catalin Covaci.
 
+## decision-create-gto-1884-1920
+**Date:** 2026-08-17
+**Touched:** GTO-1884-1920, BTL-1920-1957, FTO-1920-1960
+**Source:** biger-1995, wikipedia-french-africa-mandates-2026-08-13, wikipedia-german-empire-2026-04-11, cshapes-2.0
+**Kind:** decision
+
+*Recorded by Claude (Claude Code) working issue 171; every figure measured against the repo.
+Not human-signed-off.*
+
+**Created [gto-1884-1920](polities/gto-1884-1920.md) — German Togoland, the undivided colony.**
+[btl-1920-1957](polities/btl-1920-1957.md) and [fto-1920-1960](polities/fto-1920-1960.md) both
+declared `predecessor: GTO-1919-1922`, a code naming no row: two of the nine dead targets
+baselined in `validate_chain_integrity` (issue 135), and the reason issue 171 listed TGO among
+the families whose earliest row has nowhere to walk back to. The entity is real, and its
+polygon was already computable from geometry the repository holds, so the missing-polity
+excuse no longer applied.
+
+**The span is 1884-1920, not the 1919-1922 the dead reference named.** Three reasons: a
+predecessor here ends exactly where its successors begin, and both mandate rows begin in
+**1920**; a 1919-1922 row would **overlap both of its own successors** by two years, which
+`validate_period_overlaps` reports; and 1884-1918 would still have had no row, leaving the gap
+the issue is about. The transitional years are the last two years of this row instead. The name
+is strictly accurate only to 1914 — 1914-1920 was Anglo-French military occupation of the same
+undivided territory — which the page states rather than hides.
+
+**Polygon: `constructed/GTO-1884-1920`, `proxy`, 83,724.5 km² measured.** Built as CShapes 2.0
+gwcode 461 at 1930 (French Togoland mandate, 57,094 km²) **∪** the existing `BTL-1920-1957`
+difference (British Togoland, 26,630 km²); the two are disjoint, so the union is exactly their
+sum. It is `proxy`, not `assigned`, because the outline is the **1922 mandate boundary pair**
+rather than the 1884-1914 colonial boundary, and it sits **4% below** the ~87,200 km² figure
+fto-1920-1960.md records for the German colony. Nothing is missing from the union — both
+mandates are in it — the two CShapes outlines are each a little tight, British Togoland alone
+being 21% under its ~33,771 km² historical figure, as its own page documents. No source in the
+priority stack carries Deutsch-Togoland as a feature: CShapes' Togo coverage starts at the 1922
+mandate step and Cliopatria has no Togoland polity.
+
+`iso3_code` is the local code **GTO**, not TGO, following BSS/ITS/BEC: this colony became both
+the Togolese Republic and the British Togoland third of Ghana, so calling it TGO would assert
+that the German colony was modern Togo, 47% larger than it. Added to
+`validate_local_iso_codes_baseline.txt`.
+
+**Measured effect.** Dead chain targets **9 → 7**; broken page links **7 → 6** (both baselines
+lowered, with the reason written in). `iso3_successor_map.csv` **5,232 → 5,268 pairs**: TGO goes
+**0 → 36** pairs, 1884-1919, all at hop depth 1. TGO 1850-1883 still has no answer, because
+nothing models the territory before the German protectorate — that is a genuine chain start,
+not a missing edge. The row receives **no data rows**: the pre-1961 input reports "Togo" only
+from 1933, inside FTO's span. It exists so the chain is traversable.
+
+**Not done.** `PAK` and `COM`, the other two families
+[decision-independence-predecessor-edges-2026-08-13](log.md#decision-independence-predecessor-edges-2026-08-13)
+left open, stay open on the same reasoning, re-checked here and unchanged: PAK-1937-1947 is a
+sub-territory reported **alongside** IND-1937-1947 (~882k km² against ~4.2M), a containment
+relation this schema has no field for, and COM-1946-1975's only candidate is MDG-1882-2025, a
+single live row conflating the Madagascar colony with the republic. Nothing new was learned
+about either, so nothing was asserted about either.
 
 ## fao1952-population-series-resolved-issue-13
 **Date:** 2026-08-14

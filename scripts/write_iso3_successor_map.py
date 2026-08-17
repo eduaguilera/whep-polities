@@ -68,9 +68,6 @@ issue. Regenerate before quoting: the script prints its own totals.
 WHAT ACTUALLY REMAINS UNRESOLVED is a much shorter list, and every entry is a MISSING POLITY rather
 than a missing edge:
 
-    TGO  0 pairs -- FTO-1920-1960 covers 1920-1960 and names GTO-1919-1922, which is a DEAD TARGET
-                    (baselined in validate_chain_integrity). Nothing models German Togoland, so
-                    1850-1919 has no answer to give.
     COM  0 pairs -- Comoros was a dependency of Madagascar 1908-1946. The only candidate row is
                     MDG-1882-2025, a single live row conflating the colony with the republic; naming
                     it would assert that Madagascar became the Comoros.
@@ -87,6 +84,18 @@ Two entries came OFF that list on 2026-08-13 (issue 171), and both were missing 
          exactly Libya's start year. Added symmetrically.
     BFA  0 -> 39 pairs, 1895-1918 and 1932-1946, via AOF-1895-1960, following the convention
          NER-1911-1922 and MRT-1920-1960 already use for carve-outs of French West Africa.
+
+A THIRD came off it on 2026-08-17 (issue 171 again), and this one WAS a missing polity, created:
+
+    TGO  0 -> 36 pairs, 1884-1919, all at hop depth 1 via GTO-1884-1920. Both mandate rows,
+         BTL-1920-1957 and FTO-1920-1960, named `GTO-1919-1922` -- a dead target with no row --
+         so the walk back from FTO had nowhere to go. German Togoland now has a row, spanned
+         1884-1920 rather than 1919-1922 (a 1919-1922 row would overlap both of its own
+         successors), with a `constructed` polygon that is the union of the two mandates,
+         83,724 km2. 1850-1883 still has no answer and should not: nothing models the territory
+         before the German protectorate, which is a genuine chain start.
+         Map total 5,232 -> 5,268 pairs, 78 ISO3 codes, 126 relations (measured, and the script
+         prints these itself -- do not quote this line without regenerating).
 
 A HEURISTIC FOR FINDING MISSING EDGES WAS TRIED AND REJECTED -- recorded so nobody repeats it.
 Selecting rows with no predecessor that have a span-adjacent candidate (some other row ending exactly
