@@ -29,6 +29,37 @@ What is deliberately NOT here:
     (whose land a label covers), a different question — and publishing them would make
     the file read as a census of what IS production, which it is not.
 
+WHY THE FILE IS SHORT, AND WHY IT CANNOT BE AUTO-POPULATED (measured 2026-08-17).
+It carries one row. That is a census problem, not a mechanism problem, and the obvious
+mechanical route to filling it is REFUTED: ranking coffee tonnage by the receiving
+polity's own area does not separate an entrepôt from a small intensive producer.
+`05_magnitude_screen.py` puts Djibouti's `iia` green coffee at 47.1x the cross-polity
+median intensity — genuinely extreme — and yet only **16th of the 52** coffee
+(item, polity, source) combinations above the 8x threshold, behind Cape Verde (291x),
+El Salvador (188x), Puerto Rico, Haiti and Guadeloupe, all of which really do grow
+coffee on very little land. Intensity is necessary, not sufficient; each case needs the
+domain judgement (a port, little arable land, and a producing neighbour whose series the
+figures duplicate).
+
+Two candidates issue 14 raised were screened on that judgement and CLEARED — recorded
+here because a rejected candidate is as useful as an accepted one:
+  * MKY-1918-1962 (Mocha is a port as well as a producing region): 2.6x intensity, and
+    FAO 1952 independently estimates 6.0-6.6 kt of Yemeni production for 1949-1951,
+    continuing the IIA level. Ethiopia's own output is 2-3x larger and separately
+    recorded, so there is no origin series being duplicated.
+  * PAN-1903-1979 (Canal Zone transit): 0.97x intensity — the coffee norm — and both
+    `iia` and `juan` report a coffee PLANTED AREA of 1,000-3,000 ha beside the 1,000 t
+    median, which transit tonnage cannot have.
+Reasoning and figures on wiki/polities/mky-1918-1962.md and pan-1903-1979.md.
+
+WHO CONSUMES THIS FILE. `pipelines/polity-autoimprove/05_magnitude_screen.py` joins it
+onto its outlier table on (source, polity, item), so an already-adjudicated flow is
+marked SETTLED instead of being re-investigated, and a flagged flow the screen does NOT
+rank is printed as such. No aggregation in this repository excludes flagged rows, and the
+downstream R package does not read the file yet: whether WHEP should subtract entrepôt
+flows or carry them as a separate flow class is an accounting decision this repository
+cannot make for it (issue 14 remains open on that half).
+
 Usage:
   python3 scripts/write_source_flow_flags.py [--check]
 
