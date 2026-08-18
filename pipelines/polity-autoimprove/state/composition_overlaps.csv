@@ -5,6 +5,12 @@ AEF-1910-1960,TCD-1919-1960,iia,1922,1924,congo,chad,alias;applied_alias,iso,2,6
 AEF-1910-1960,TCD-1919-1960,mitchell,1939,1951,French Equat Africa,chad,alias,iso,0,0,no
 AOI-1936-1941,ERI-1889-1952,fao1952,1937,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,name,34,66,no
 AOI-1936-1941,ERI-1889-1952,iia,1936,1937,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,iso,1,0,no
+FID-1887-1954,KHM-1907-1953,fao1952,1937,1951,indochina,cambodia;indochina cambodia;indochina: cambodia,applied_alias,alias;applied_alias;name,2,5,no
+FID-1887-1954,KHM-1907-1953,mitchell,1907,1948,indochina,cambodia;indochina cambodia,applied_alias,alias;iso,7,0,no
+FID-1887-1954,LAO-1893-1954,fao1952,1937,1951,indochina,indochina laos;laos,applied_alias,alias;applied_alias;name,2,5,no
+FID-1887-1954,LAO-1893-1954,mitchell,1936,1948,indochina,indochina laos;lao,applied_alias,alias;iso,5,0,no
+FID-1887-1954,VNM-1887-1954,fao1952,1937,1951,indochina,indochina viet nam;indochina: viet nam;viet nam,applied_alias,alias;applied_alias,2,5,no
+FID-1887-1954,VNM-1887-1954,mitchell,1887,1948,indochina,Indochina Viet Nam;indochina viet nam;viet nam,applied_alias,alias;applied_alias,9,0,no
 IDN-1949-1963,IDN-BLB-1949-1951,fao1952,1949,1951,indonesia,Indonesia Bali and Lombok;indonesia bali and lombok,name,alias;applied_alias,2,6,no
 IDN-1949-1963,IDN-JVM-1949-1951,fao1952,1949,1951,indonesia,Indonesia Java and Madura;indonesia java and madura,name,alias;applied_alias,2,6,no
 IDN-1949-1963,IDN-OTH-1949-1951,fao1952,1949,1951,indonesia,Indonesia Other islands;indonesia other islands,name,alias;applied_alias,2,6,no
