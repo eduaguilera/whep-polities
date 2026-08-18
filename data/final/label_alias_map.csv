@@ -247,6 +247,7 @@ Comoro Islands,fao1952,1949,1951,COM-1946-1975,Comoros (1946-1975),high,8
 Comoros,faostat,1961,1974,COM-1946-1975,Comoros (1946-1975),high,52459
 Comoros,faostat,1975,2024,COM-1975-2025,Comoros,high,52459
 Congo,faostat,1961,2024,COG-1960-2025,Congo,high,170222
+congo,iia,1913,1945,AEF-1910-1960,French Equatorial Africa,high,241
 Congo,lassaletta-grassland-share,1961,2009,COG-1960-2025,Congo,high,
 Cook Islands,faostat,1961,2024,COK-1800-2025,Cook Islands,high,42137
 COS,mueller-synthetic-n,1800,2025,CRI-1800-2025,Costa Rica,high,
@@ -807,7 +808,7 @@ Slovenia,faostat,1992,2024,SVN-1992-2025,Slovenia,high,127691
 Solomon Islands,faostat,1961,2024,SLB-1800-2025,Solomon Islands,high,120550
 Somalia,fao1952,1939,1951,ITS-1908-1960,Italian Somaliland,high,
 Somalia,faostat,1961,2024,SOM-1960-2025,Somalia,high,62074
-somalia,iia,1920,1959,BSS-1884-1960,British Somaliland Protectorate,medium,81
+somalia,iia,1920,1959,ITS-1908-1960,Italian Somaliland,high,81
 Somalia,lassaletta-grassland-share,1961,2009,SOM-1960-2025,Somalia,high,
 somalia,mitchell,1920,1959,ITS-1908-1960,Italian Somaliland,high,
 south africa,,1852,1894,CAP-1800-1895,Cape Colony,high,146

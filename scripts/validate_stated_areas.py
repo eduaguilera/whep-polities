@@ -100,10 +100,19 @@ BASELINE = {
     # --- surfaced 2026-08-05 when the French lexicon took coverage from 41 polities to 203.
     # Each says which side is wrong. THIRTEEN of these are scope or vintage differences where our
     # polygon is defensible; TWO are apparent polygon defects and are filed rather than accepted.
-    ("BSS-1884-1960", "iia"):
-        "OURS IS RIGHT. British Somaliland is 176,120 km2 and our polygon is 171,633. IIA's "
-        "497,500 is roughly Italian + British Somaliland together, so the label reaches the wrong "
-        "extent; FAO independently states 176,000, agreeing with us.",
+    # BSS-1884-1960/iia and ITS-1908-1960/iia were baselined here and BOTH WERE REMOVED on
+    # 2026-08-18, when iia's `somalia` label was rerouted from BSS-1884-1960 to ITS-1908-1960.
+    # This gate is what corroborated that reroute, and it also corrects the reasoning the BSS entry
+    # used to carry. That entry read IIA's ~497,500 km2 as "roughly Italian + British Somaliland
+    # together"; it is not. IIA states BRITISH Somaliland separately and consistently as
+    # `SOMALIE BRITANNIQUE` at 176,117 / 176,000 km2 in every edition from 1909 to 1938, while its
+    # unqualified `SOMALIE` / `SOMALIE ITALIENNE` rises 357,000 (1909) -> 400,000 -> 490,000 ->
+    # 495,000 -> 500,000 (1933) as Jubaland transfers in. So the stated area under the label that
+    # actually carried the data is ITALIAN Somaliland alone: 500,000 against ITS's polygon of
+    # 464,286 is 7.7% out and passes, where against BSS's 171,633 it was 2.9x. Combined Somaliland
+    # would be ~678,000, which the source never states. The old entry's CONCLUSION (ours is right,
+    # the label reaches the wrong extent) was correct; its premise was not, and the premise is the
+    # part a reader would have reused.
     ("CHN-1921-1932", "iia"):
         "SCOPE. IIA states 11,080,000 km2 for China against our 7,496,467. China's own claimed "
         "area including Outer Mongolia and Tibet was routinely given as ~11m in this period; the "
@@ -136,9 +145,6 @@ BASELINE = {
     ("IRQ-1921-1932", "iia"):
         "OURS IS RIGHT. Iraq is 438,317 km2 and our polygon is 436,200. IIA's 336,379 predates "
         "the 1926 settlement of the Mosul vilayet boundary with Turkey.",
-    ("ITS-1908-1960", "iia"):
-        "OURS IS CLOSER. Italian Somaliland is ~502,000 km2; our 464,286 against IIA's 357,000. "
-        "The IIA figure predates the 1925 Jubaland transfer from Kenya.",
     ("MAN-1932-1945", "iia"):
         "SCOPE. IIA states 1,303,143 km2 for Manchukuo, which includes Jehol and the Inner "
         "Mongolian leagues; our 791,708 is the three north-eastern provinces. build_man_1932_1945() "
