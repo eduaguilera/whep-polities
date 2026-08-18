@@ -236,6 +236,19 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        different model (opus vs sonnet) under a rotated lens —
                        see "Decorrelating the blind review".
                        Writes state/<args.out> (nothing applied).
+15_label_provenance    which RAW source label is each layer-B label actually made of? Layer B
+  .py                  carries 164 IIA labels; the raw extract carries 403, and nothing here
+                       records which went where. Most of that collapse is a benign colonial
+                       rename (`french algeria` -> `algeria`); some of it merges DIFFERENT
+                       TERRITORIES and is invisible to every other check, because the polygon is
+                       stable, the page is coherent and a national series looks plausible at
+                       either scale. Fingerprints each label by its (year, value) set and matches
+                       against the raw, PRODUCTION-SIDE ONLY (trade rows outnumber production 3:1
+                       and produce false matches), then classifies: MIXED (two territories in one
+                       label), REDIRECTED (a different name, needing a human to say whether it is
+                       a historical rename or a different place), UNDER-EXPLAINED. Found issues
+                       312, 315 and the viet nam quarantine. NOT a gate — the raw extract lives
+                       outside the repo; SKIPs when absent. `--label X` for one label in full.
 select_tranche.py      picks the next batch to verify: highest-exposure assertions
                        that are pending AND have no banked verdict. Status alone is
                        NOT the filter — apply_verdicts.py writes the ledger, and
