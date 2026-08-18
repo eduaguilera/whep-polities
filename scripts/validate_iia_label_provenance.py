@@ -136,9 +136,12 @@ def main() -> int:
     # others -- `french polynesia` is one phosphate island 1909-1920 then the whole territory
     # 1930-1937 -- so the early years attribute a component's output to the parent. Both defeat an
     # equality claim.
-    # `sequential_rename` does NOT: `serbia` is the Kingdom of Serbs, Croats and Slovenes and then
-    # Yugoslavia, one state across a 1929 renaming, and each era genuinely has one territory. That
-    # label's problem is which POLITY it routes to (issues 315, 317), which this gate is not about.
+    # `sequential_other` is NOT failed, and that is a deliberate limitation rather than a judgement:
+    # the eras name unrelated sources, and this cannot tell a rename from two different places.
+    # `serbia` (Kingdom of Serbs, Croats and Slovenes -> Yugoslavia) is one state renamed;
+    # `papua new guinea` (`dutch new guinea` -> `australian papua and new guinea`) is West Papua and
+    # PNG, opposite halves of an island. Failing on both would condemn the renames; failing on
+    # neither lets the second kind through. It reports them instead, and #315 carries the list.
     FAILING = ("mixed", "sequential_scope")
     mixed_targets = {r["layer_b_label"] for r in prov
                      if r.get("territory_signal") in FAILING and r.get("layer_b_label")}

@@ -225,6 +225,47 @@ def check_iia_djibouti_coffee(d):
     )
 
 
+def check_iia_austria(d):
+    """The claim: IIA's `Austria` through 1917/18 is CISLEITHANIA (~300,560 km2 — the Austrian half
+    of the dual monarchy, including Bohemia, Moravia and Galicia), not rump Austria (~84,000 km2).
+
+    TEMPORAL, so it can fail, and independent of the magnitude-plausibility argument the convention
+    was learned from. If the pre-1918 label is Cisleithania and the post-1919 label is the republic,
+    the same series must STEP DOWN hard at the dissolution. Measured medians, pre-1918 vs 1920+:
+
+        sugar raw centrifugal   938,389 t -> 128,900 t   0.14
+        p (phosphate)           323,050   ->  36,327     0.11
+        yarn of true hemp         3,336   ->     352     0.11
+        wine                    310,305   ->  85,075     0.27
+
+    The drop is far steeper than the 3.6x area ratio, which is itself the evidence: Bohemia and
+    Moravia were the empire's sugar-beet heartland and both left in 1918, so sugar had to fall by
+    more than area. A label that meant rump Austria all along would show no step at all.
+
+    NOT THE WHOLE STORY, and the assertion is quarantined for the rest: the label also draws ~12%
+    of its values from raw `austria-hungary`, the WHOLE monarchy, concurrently with raw `austria`.
+    This convention establishes what the dominant 73% means; it does not license verified_equal.
+    """
+    a = _label(d, "iia", "austria")
+    a = a.dropna(subset=["year", "value"])
+    ratios = []
+    for (item, unit), g in a.groupby(["item", "unit"]):
+        pre = g[g["year"] <= 1917]["value"].dropna()
+        post = g[g["year"] >= 1920]["value"].dropna()
+        if len(pre) >= 3 and len(post) >= 3 and float(pre.median()) > 0:
+            ratios.append(float(post.median()) / float(pre.median()))
+    if len(ratios) < 3:
+        return False, "too few items span 1918 to test the step; the check is unavailable"
+    ratios.sort()
+    med = ratios[len(ratios) // 2]
+    ok = med < 0.5
+    return ok, (
+        f"{len(ratios)} items span the 1918 dissolution; median post/pre ratio {med:.2f} "
+        f"(range {ratios[0]:.2f}-{ratios[-1]:.2f}) — a label meaning rump Austria throughout would "
+        f"show no step"
+    )
+
+
 def check_iia_netherlands(d):
     """The claim: IIA's `netherlands` is the metropolitan country, with the Dutch colonies carried
     under their own labels rather than folded in.
@@ -330,6 +371,7 @@ CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
     ("iia", "netherlands", "*"): check_iia_netherlands,
+    ("iia", "austria", "*"): check_iia_austria,
     ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("iia", "russian federation", "*"): check_iia_russia,
