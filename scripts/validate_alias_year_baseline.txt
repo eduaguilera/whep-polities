@@ -160,7 +160,6 @@ greece		GRC-1830-1881
 greece		GRC-1881-1913
 hawaii		HAWI-1898-1959
 indochina cambodia		KHM-1907-1953
-indochina viet nam		FID-1887-1954
 israel		ISR-1948-1967
 israel/palestine		PAL-1920-1948
 italy	iia	SAR-1800-1860
