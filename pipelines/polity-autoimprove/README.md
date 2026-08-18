@@ -314,6 +314,16 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        sometimes a response to a finding, so auto-carrying would launder a
                        judgement onto a span nobody judged. --write refreshes
                        state/verdict_carryover.csv
+24_item_axis_aggregates.py
+                       where one series-year carries rows nothing can tell apart. 1,130 groups,
+                       3,081 rows, all fao1952: item_code, source_detail, period, polity_code and
+                       iso3c are identical across members, because the item labels are collapsed
+                       multi-commodity ranges (`horses mules asses`, item_code `110_117`). In 239
+                       the largest value == the sum of the rest, so a TOTAL sits beside its parts
+                       and summing doubles (us meat 1950: 10,015 = 4,884+4,860+271). is_aggregate is
+                       False and rightly so — the aggregation is on the ITEM axis. 856 are genuine
+                       unlabelled siblings; 35 too close to call. --write refreshes
+                       state/item_axis_aggregates.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.

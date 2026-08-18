@@ -1,0 +1,1131 @@
+source,country,item,unit,indicator,year,n_rows,values,largest,sum_of_rest,ratio,verdict
+fao1952,guatemala,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,36;35,36,35,1.0286,near_total
+fao1952,guatemala,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,27;25,27,25,1.0800,near_total
+fao1952,japan,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,16;15,16,15,1.0667,near_total
+fao1952,germany western,dried milk,1000 tonnes,livestock:production,1949,2,11;10,11,10,1.1000,near_total
+fao1952,united kingdom,dried milk,1000 tonnes,livestock:production,1949,2,20;19,20,19,1.0526,near_total
+fao1952,italy,grapes,1000 hectares,crops:area,1949,3,2840;1724;1014,2840,2738,1.0373,near_total
+fao1952,italy,grapes,1000 hectares,crops:area,1950,3,2896;1734;1010,2896,2744,1.0554,near_total
+fao1952,italy,grapes,1000 hectares,crops:area,1951,3,2904;1743;1017,2904,2760,1.0522,near_total
+fao1952,british west indies jamaica,horses mules asses,1000 heads,livestock:livestock,1938,2,11;10,11,10,1.1000,near_total
+fao1952,dominican republic,horses mules asses,1000 heads,livestock:livestock,1951,3,134;80;43,134,123,1.0894,near_total
+fao1952,greece,horses mules asses,1000 heads,livestock:livestock,1949,3,362;231;142,362,373,0.9705,near_total
+fao1952,peru,horses mules asses,1000 heads,livestock:livestock,1950,3,550;432;159,550,591,0.9306,near_total
+fao1952,somalia,horses mules asses,1000 heads,livestock:livestock,1939,3,11;7;3,11,10,1.1000,near_total
+fao1952,spanish morocco,horses mules asses,1000 heads,livestock:livestock,1939,3,40;21;20,40,41,0.9756,near_total
+fao1952,spanish morocco,horses mules asses,1000 heads,livestock:livestock,1950,3,37;20;20,37,40,0.9250,near_total
+fao1952,tunisia,horses mules asses,1000 heads,livestock:livestock,1949,3,114;66;42,114,108,1.0556,near_total
+fao1952,union of south africa,horses mules asses,1000 heads,livestock:livestock,1937,3,870;778;137,870,915,0.9508,near_total
+fao1952,union of south africa,horses mules asses,1000 heads,livestock:livestock,1950,3,701;679;98,701,777,0.9022,near_total
+fao1952,venezuela,horses mules asses,1000 heads,livestock:livestock,1937,3,248;209;47,248,256,0.9688,near_total
+fao1952,venezuela,horses mules asses,1000 heads,livestock:livestock,1951,3,390;343;62,390,405,0.9630,near_total
+fao1952,china taiwan,meat,1000 tonnes,livestock:production,1950,3,47;46;2,47,48,0.9792,near_total
+fao1952,tanganyika,meat,1000 tonnes,livestock:production,1949,3,28;24;3,28,27,1.0370,near_total
+fao1952,united kingdom,meat,1000 tonnes,livestock:production,1950,4,644;337;152;133,644,622,1.0354,near_total
+fao1952,finland,other meat,1000 tonnes,livestock:production,1949,4,6.7;3.4;1.4;1.3,6.7,6.1,1.0984,near_total
+fao1952,ireland,other meat,1000 tonnes,livestock:production,1951,3,2.7;1.9;0.7,2.7,2.6,1.0385,near_total
+fao1952,japan,other meat,1000 tonnes,livestock:production,1951,3,17;14;2,17,16,1.0625,near_total
+fao1952,netherlands,other meat,1000 tonnes,livestock:production,1949,3,19;12.3;5.9,19,18.2,1.0440,near_total
+fao1952,norway,other meat,1000 tonnes,livestock:production,1949,4,7;2.8;2.4;2,7,7.2,0.9722,near_total
+fao1952,norway,other meat,1000 tonnes,livestock:production,1950,4,7;2.6;2;2,7,6.6,1.0606,near_total
+fao1952,sweden,other meat,1000 tonnes,livestock:production,1949,2,13.4;12.3,13.4,12.3,1.0894,near_total
+fao1952,japan,pesticides arsenicals,tonnes,inputs:consumption,1949,2,952;891,952,891,1.0685,near_total
+fao1952,japan,pesticides arsenicals,tonnes,inputs:consumption,1950,2,743;712,743,712,1.0435,near_total
+fao1952,canada,pesticides copper sulphate,tonnes,inputs:consumption,1950,4,2210;1908;105;33,2210,2046,1.0802,near_total
+fao1952,sweden,pesticides copper sulphate,tonnes,inputs:consumption,1949,2,50;48,50,48,1.0417,near_total
+fao1952,canada,pesticides ddt,tonnes,inputs:consumption,1951,3,1570;881;564,1570,1445,1.0865,near_total
+fao1952,united kingdom,butter,1000 tonnes,livestock:production,1949,2,18;10,18,10,1.8000,siblings_only
+fao1952,united kingdom,butter,1000 tonnes,livestock:production,1950,2,24;16,24,16,1.5000,siblings_only
+fao1952,united kingdom,butter,1000 tonnes,livestock:production,1951,2,14;6,14,6,2.3333,siblings_only
+fao1952,belgian congo,cassava,1000 hectares,crops:area,1949,2,650;5,650,5,130.0000,siblings_only
+fao1952,belgian congo,cassava,1000 tonnes,crops:production,1949,2,5472;33,5472,33,165.8182,siblings_only
+fao1952,belgian congo,cassava,1000 hectares,crops:area,1950,2,721;3,721,3,240.3333,siblings_only
+fao1952,belgian congo,cassava,1000 tonnes,crops:production,1950,2,6250;27,6250,27,231.4815,siblings_only
+fao1952,belgian congo,cassava,1000 hectares,crops:area,1951,2,724;2,724,2,362.0000,siblings_only
+fao1952,belgian congo,cassava,1000 tonnes,crops:production,1951,2,6203;19,6203,19,326.4737,siblings_only
+fao1952,brazil,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,1266;380,1266,380,3.3316,siblings_only
+fao1952,brazil,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,1485;360,1485,360,4.1250,siblings_only
+fao1952,brazil,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,1592;270,1592,270,5.8963,siblings_only
+fao1952,china 22 provinces,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,290;70,290,70,4.1429,siblings_only
+fao1952,china 22 provinces,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,360;50,360,50,7.2000,siblings_only
+fao1952,china 22 provinces,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,440;75,440,75,5.8667,siblings_only
+fao1952,colombia,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,740;171,740,171,4.3275,siblings_only
+fao1952,colombia,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,646;195,646,195,3.3128,siblings_only
+fao1952,colombia,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,650;218,650,218,2.9817,siblings_only
+fao1952,ecuador,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,46;22,46,22,2.0909,siblings_only
+fao1952,ecuador,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,55;21,55,21,2.6190,siblings_only
+fao1952,ecuador,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,54;21,54,21,2.5714,siblings_only
+fao1952,guatemala,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,30;27,30,27,1.1111,siblings_only
+fao1952,india,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,2787;1255,2787,1255,2.2207,siblings_only
+fao1952,india,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,3180;1350,3180,1350,2.3556,siblings_only
+fao1952,india,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,3330;1720,3330,1720,1.9360,siblings_only
+fao1952,japan,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,19;16,19,16,1.1875,siblings_only
+fao1952,japan,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,26;14,26,14,1.8571,siblings_only
+fao1952,mexico,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,628;150,628,150,4.1867,siblings_only
+fao1952,mexico,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,705;150,705,150,4.7000,siblings_only
+fao1952,mexico,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,732;150,732,150,4.8800,siblings_only
+fao1952,pakistan,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,3,762;115;45,762,160,4.7625,siblings_only
+fao1952,pakistan,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,3,726;115;50,726,165,4.4000,siblings_only
+fao1952,pakistan,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,3,726;115;87,726,202,3.5941,siblings_only
+fao1952,peru,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,427;24,427,24,17.7917,siblings_only
+fao1952,peru,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,464;26,464,26,17.8462,siblings_only
+fao1952,peru,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,462;22,462,22,21.0000,siblings_only
+fao1952,philippines,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,621;33,621,33,18.8182,siblings_only
+fao1952,philippines,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,848;36,848,36,23.5556,siblings_only
+fao1952,philippines,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,973;45,973,45,21.6222,siblings_only
+fao1952,thailand,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,32;19,32,19,1.6842,siblings_only
+fao1952,thailand,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,32;19,32,19,1.6842,siblings_only
+fao1952,thailand,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,32;19,32,19,1.6842,siblings_only
+fao1952,united states,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,3,1788;408;380,1788,788,2.2690,siblings_only
+fao1952,venezuela,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,2,120;54,120,54,2.2222,siblings_only
+fao1952,venezuela,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,2,120;48,120,48,2.5000,siblings_only
+fao1952,venezuela,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,2,100;64,100,64,1.5625,siblings_only
+fao1952,austria,cheese,1000 tonnes,livestock:production,1949,2,9;5,9,5,1.8000,siblings_only
+fao1952,austria,cheese,1000 tonnes,livestock:production,1950,2,12;5,12,5,2.4000,siblings_only
+fao1952,austria,cheese,1000 tonnes,livestock:production,1951,2,11;5,11,5,2.2000,siblings_only
+fao1952,belgium,cheese,1000 tonnes,livestock:production,1949,2,6;4,6,4,1.5000,siblings_only
+fao1952,belgium,cheese,1000 tonnes,livestock:production,1950,2,8;5,8,5,1.6000,siblings_only
+fao1952,belgium,cheese,1000 tonnes,livestock:production,1951,2,10;6,10,6,1.6667,siblings_only
+fao1952,canada,cheese,1000 tonnes,livestock:production,1949,2,55;3,55,3,18.3333,siblings_only
+fao1952,canada,cheese,1000 tonnes,livestock:production,1950,2,47;4,47,4,11.7500,siblings_only
+fao1952,canada,cheese,1000 tonnes,livestock:production,1951,2,41;5,41,5,8.2000,siblings_only
+fao1952,ecuador,cheese,1000 tonnes,livestock:production,1949,2,3;1,3,1,3.0000,siblings_only
+fao1952,france,cheese,1000 tonnes,livestock:production,1949,2,240;20,240,20,12.0000,siblings_only
+fao1952,france,cheese,1000 tonnes,livestock:production,1950,2,250;23,250,23,10.8696,siblings_only
+fao1952,france,cheese,1000 tonnes,livestock:production,1951,2,260;22,260,22,11.8182,siblings_only
+fao1952,germany western,cheese,1000 tonnes,livestock:production,1949,2,149;34,149,34,4.3824,siblings_only
+fao1952,germany western,cheese,1000 tonnes,livestock:production,1950,2,137;52,137,52,2.6346,siblings_only
+fao1952,germany western,cheese,1000 tonnes,livestock:production,1951,2,152;74,152,74,2.0541,siblings_only
+fao1952,greece,cheese,1000 tonnes,livestock:production,1949,2,28;1,28,1,28.0000,siblings_only
+fao1952,greece,cheese,1000 tonnes,livestock:production,1950,2,41;2,41,2,20.5000,siblings_only
+fao1952,greece,cheese,1000 tonnes,livestock:production,1951,2,41;2,41,2,20.5000,siblings_only
+fao1952,iraq,cheese,1000 tonnes,livestock:production,1949,2,10;3,10,3,3.3333,siblings_only
+fao1952,iraq,cheese,1000 tonnes,livestock:production,1950,2,10;4,10,4,2.5000,siblings_only
+fao1952,norway,cheese,1000 tonnes,livestock:production,1949,3,9;9;3,9,12,0.7500,siblings_only
+fao1952,norway,cheese,1000 tonnes,livestock:production,1950,3,12;11;6,12,17,0.7059,siblings_only
+fao1952,norway,cheese,1000 tonnes,livestock:production,1951,2,26;6,26,6,4.3333,siblings_only
+fao1952,peru,cheese,1000 tonnes,livestock:production,1949,2,8;1,8,1,8.0000,siblings_only
+fao1952,switzerland,cheese,1000 tonnes,livestock:production,1951,2,49;2,49,2,24.5000,siblings_only
+fao1952,syria,cheese,1000 tonnes,livestock:production,1950,2,5;1,5,1,5.0000,siblings_only
+fao1952,syria,cheese,1000 tonnes,livestock:production,1951,2,10;3,10,3,3.3333,siblings_only
+fao1952,united states,cheese,1000 tonnes,livestock:production,1949,2,544;1,544,1,544.0000,siblings_only
+fao1952,united states,cheese,1000 tonnes,livestock:production,1950,2,541;1,541,1,541.0000,siblings_only
+fao1952,united kingdom dependent territories,commercial nitrogenous fertilizers,1000 tonnes,inputs:consumption,1949,5,9.4;7.7;4.8;2.5;0.1,9.4,15.1,0.6225,siblings_only
+fao1952,united kingdom dependent territories,commercial nitrogenous fertilizers,1000 tonnes,inputs:consumption,1950,5,11.7;8.4;5.8;3;0.8,11.7,18,0.6500,siblings_only
+fao1952,united kingdom dependent territories,commercial nitrogenous fertilizers,1000 tonnes,inputs:consumption,1951,5,13.1;8.8;8.1;3.2;0.8,13.1,20.9,0.6268,siblings_only
+fao1952,united kingdom dependent territories,commercial phosphoric acid,1000 tonnes,inputs:consumption,1949,4,3.3;1.1;0.9;0.5,3.3,2.5,1.3200,siblings_only
+fao1952,united kingdom dependent territories,commercial phosphoric acid,1000 tonnes,inputs:consumption,1950,3,5.7;0.9;0.2,5.7,1.1,5.1818,siblings_only
+fao1952,united kingdom dependent territories,commercial phosphoric acid,1000 tonnes,inputs:production,1950,2,0.5;0.2,0.5,0.2,2.5000,siblings_only
+fao1952,united kingdom dependent territories,commercial phosphoric acid,1000 tonnes,inputs:consumption,1951,3,6.4;1.1;0.2,6.4,1.3,4.9231,siblings_only
+fao1952,united kingdom dependent territories,commercial phosphoric acid,1000 tonnes,inputs:production,1951,2,0.9;0.2,0.9,0.2,4.5000,siblings_only
+fao1952,united kingdom dependent territories,commercial potash fertilizers,1000 tonnes,inputs:consumption,1949,5,4;2.8;2.3;0.8;0.1,4,6,0.6667,siblings_only
+fao1952,united kingdom dependent territories,commercial potash fertilizers,1000 tonnes,inputs:consumption,1950,3,5;3.8;2.3,5,6.1,0.8197,siblings_only
+fao1952,united kingdom dependent territories,commercial potash fertilizers,1000 tonnes,inputs:consumption,1951,3,4.6;4.5;2.4,4.6,6.9,0.6667,siblings_only
+fao1952,canada,condensed evaporated milk,1000 tonnes,livestock:production,1949,2,116;7,116,7,16.5714,siblings_only
+fao1952,canada,condensed evaporated milk,1000 tonnes,livestock:production,1950,2,123;8,123,8,15.3750,siblings_only
+fao1952,canada,condensed evaporated milk,1000 tonnes,livestock:production,1951,2,142;7,142,7,20.2857,siblings_only
+fao1952,united states,condensed evaporated milk,1000 tonnes,livestock:production,1949,2,1409;342,1409,342,4.1199,siblings_only
+fao1952,united states,condensed evaporated milk,1000 tonnes,livestock:production,1950,2,1454;333,1454,333,4.3664,siblings_only
+fao1952,united states,condensed evaporated milk,1000 tonnes,livestock:production,1951,2,462;322,462,322,1.4348,siblings_only
+fao1952,australia,dried milk,1000 tonnes,livestock:production,1949,2,20;6,20,6,3.3333,siblings_only
+fao1952,australia,dried milk,1000 tonnes,livestock:production,1950,2,23;9,23,9,2.5556,siblings_only
+fao1952,australia,dried milk,1000 tonnes,livestock:production,1951,2,19;6,19,6,3.1667,siblings_only
+fao1952,belgium,dried milk,1000 tonnes,livestock:production,1949,2,3;1,3,1,3.0000,siblings_only
+fao1952,canada,dried milk,1000 tonnes,livestock:production,1949,2,29;6,29,6,4.8333,siblings_only
+fao1952,canada,dried milk,1000 tonnes,livestock:production,1950,2,24;7,24,7,3.4286,siblings_only
+fao1952,canada,dried milk,1000 tonnes,livestock:production,1951,2,24;8,24,8,3.0000,siblings_only
+fao1952,denmark,dried milk,1000 tonnes,livestock:production,1949,2,6;4,6,4,1.5000,siblings_only
+fao1952,denmark,dried milk,1000 tonnes,livestock:production,1950,2,7;5,7,5,1.4000,siblings_only
+fao1952,germany western,dried milk,1000 tonnes,livestock:production,1950,2,12;5,12,5,2.4000,siblings_only
+fao1952,germany western,dried milk,1000 tonnes,livestock:production,1951,2,16;14,16,14,1.1429,siblings_only
+fao1952,netherlands,dried milk,1000 tonnes,livestock:production,1949,2,15;13,15,13,1.1538,siblings_only
+fao1952,netherlands,dried milk,1000 tonnes,livestock:production,1950,2,41;14,41,14,2.9286,siblings_only
+fao1952,netherlands,dried milk,1000 tonnes,livestock:production,1951,2,34;20,34,20,1.7000,siblings_only
+fao1952,sweden,dried milk,1000 tonnes,livestock:production,1949,2,11;4,11,4,2.7500,siblings_only
+fao1952,sweden,dried milk,1000 tonnes,livestock:production,1950,2,5;4,5,4,1.2500,siblings_only
+fao1952,sweden,dried milk,1000 tonnes,livestock:production,1951,2,5;3,5,3,1.6667,siblings_only
+fao1952,switzerland,dried milk,1000 tonnes,livestock:production,1949,2,4;2,4,2,2.0000,siblings_only
+fao1952,switzerland,dried milk,1000 tonnes,livestock:production,1950,2,4;2,4,2,2.0000,siblings_only
+fao1952,switzerland,dried milk,1000 tonnes,livestock:production,1951,2,4;2,4,2,2.0000,siblings_only
+fao1952,united kingdom,dried milk,1000 tonnes,livestock:production,1950,2,23;18,23,18,1.2778,siblings_only
+fao1952,united kingdom,dried milk,1000 tonnes,livestock:production,1951,2,20;4,20,4,5.0000,siblings_only
+fao1952,united states,dried milk,1000 tonnes,livestock:production,1949,2,424;57,424,57,7.4386,siblings_only
+fao1952,united states,dried milk,1000 tonnes,livestock:production,1950,2,400;57,400,57,7.0175,siblings_only
+fao1952,united states,dried milk,1000 tonnes,livestock:production,1951,2,323;59,323,59,5.4746,siblings_only
+fao1952,france,dry beans,1000 hectares,crops:area,1949,2,97;37,97,37,2.6216,siblings_only
+fao1952,france,dry beans,1000 tonnes,crops:production,1949,2,39;3,39,3,13.0000,siblings_only
+fao1952,france,dry beans,1000 hectares,crops:area,1950,2,100;55,100,55,1.8182,siblings_only
+fao1952,france,dry beans,1000 tonnes,crops:production,1950,2,91;4,91,4,22.7500,siblings_only
+fao1952,france,dry beans,1000 hectares,crops:area,1951,2,98;48,98,48,2.0417,siblings_only
+fao1952,france,dry beans,1000 tonnes,crops:production,1951,2,88;10,88,10,8.8000,siblings_only
+fao1952,yugoslavia,dry beans,1000 hectares,crops:area,1949,2,783;38,783,38,20.6053,siblings_only
+fao1952,yugoslavia,dry beans,1000 tonnes,crops:production,1949,2,122;36,122,36,3.3889,siblings_only
+fao1952,yugoslavia,dry beans,1000 hectares,crops:area,1950,2,796;32,796,32,24.8750,siblings_only
+fao1952,yugoslavia,dry beans,1000 tonnes,crops:production,1950,2,53;10,53,10,5.3000,siblings_only
+fao1952,yugoslavia,dry beans,1000 hectares,crops:area,1951,2,966;30,966,30,32.2000,siblings_only
+fao1952,yugoslavia,dry beans,1000 tonnes,crops:production,1951,2,161;27,161,27,5.9630,siblings_only
+fao1952,brazil,edible pig fat,1000 tonnes,livestock:production,1948,2,108;68,108,68,1.5882,siblings_only
+fao1952,brazil,edible pig fat,1000 tonnes,livestock:production,1949,2,122;51,122,51,2.3922,siblings_only
+fao1952,ireland,edible pig fat,1000 tonnes,livestock:production,1949,2,2;1,2,1,2.0000,siblings_only
+fao1952,ireland,edible pig fat,1000 tonnes,livestock:production,1951,2,2;1,2,1,2.0000,siblings_only
+fao1952,italy,edible pig fat,1000 tonnes,livestock:production,1949,2,83;35,83,35,2.3714,siblings_only
+fao1952,italy,edible pig fat,1000 tonnes,livestock:production,1950,2,62;26,62,26,2.3846,siblings_only
+fao1952,netherlands,edible pig fat,1000 tonnes,livestock:production,1948,2,20;6,20,6,3.3333,siblings_only
+fao1952,netherlands,edible pig fat,1000 tonnes,livestock:production,1949,2,38;7,38,7,5.4286,siblings_only
+fao1952,netherlands,edible pig fat,1000 tonnes,livestock:production,1950,2,55;19,55,19,2.8947,siblings_only
+fao1952,netherlands,edible pig fat,1000 tonnes,livestock:production,1951,2,61;13,61,13,4.6923,siblings_only
+fao1952,peru,edible pig fat,1000 tonnes,livestock:production,1948,2,8;4,8,4,2.0000,siblings_only
+fao1952,sweden,edible pig fat,1000 tonnes,livestock:production,1950,2,6;1,6,1,6.0000,siblings_only
+fao1952,sweden,edible pig fat,1000 tonnes,livestock:production,1951,2,6;1,6,1,6.0000,siblings_only
+fao1952,southern rhodesia,groundnuts,1000 hectares,crops:area,1949,2,49;3,49,3,16.3333,siblings_only
+fao1952,southern rhodesia,groundnuts,1000 tonnes,crops:production,1949,2,23;2,23,2,11.5000,siblings_only
+fao1952,southern rhodesia,groundnuts,1000 tonnes,crops:production,1950,2,31;1,31,1,31.0000,siblings_only
+fao1952,southern rhodesia,groundnuts,1000 tonnes,crops:production,1951,2,44;2,44,2,22.0000,siblings_only
+fao1952,afghanistan,horses mules asses,1000 heads,livestock:livestock,1949,3,1000;500;200,1000,700,1.4286,siblings_only
+fao1952,algeria,horses mules asses,1000 heads,livestock:livestock,1939,3,349;221;209,349,430,0.8116,siblings_only
+fao1952,algeria,horses mules asses,1000 heads,livestock:livestock,1949,3,255;230;204,255,434,0.5876,siblings_only
+fao1952,algeria,horses mules asses,1000 heads,livestock:livestock,1950,3,325;238;217,325,455,0.7143,siblings_only
+fao1952,algeria,horses mules asses,1000 heads,livestock:livestock,1951,3,338;234;215,338,449,0.7528,siblings_only
+fao1952,anglo egyptian sudan,horses mules asses,1000 heads,livestock:livestock,1939,3,375;23;1,375,24,15.6250,siblings_only
+fao1952,anglo egyptian sudan,horses mules asses,1000 heads,livestock:livestock,1949,2,500;20,500,20,25.0000,siblings_only
+fao1952,anglo egyptian sudan,horses mules asses,1000 heads,livestock:livestock,1950,2,500;20,500,20,25.0000,siblings_only
+fao1952,anglo egyptian sudan,horses mules asses,1000 heads,livestock:livestock,1951,2,500;20,500,20,25.0000,siblings_only
+fao1952,angola,horses mules asses,1000 heads,livestock:livestock,1939,2,4;1,4,1,4.0000,siblings_only
+fao1952,angola,horses mules asses,1000 heads,livestock:livestock,1950,2,3;1,3,1,3.0000,siblings_only
+fao1952,argentina,horses mules asses,1000 heads,livestock:livestock,1937,3,8319;517;264,8319,781,10.6517,siblings_only
+fao1952,austria,horses mules asses,1000 heads,livestock:livestock,1939,2,231;1,231,1,231.0000,siblings_only
+fao1952,austria,horses mules asses,1000 heads,livestock:livestock,1949,2,284;2,284,2,142.0000,siblings_only
+fao1952,austria,horses mules asses,1000 heads,livestock:livestock,1950,2,282;2,282,2,141.0000,siblings_only
+fao1952,austria,horses mules asses,1000 heads,livestock:livestock,1951,2,283;2,283,2,141.5000,siblings_only
+fao1952,basutoland,horses mules asses,1000 heads,livestock:livestock,1939,3,88;27;1,88,28,3.1429,siblings_only
+fao1952,basutoland,horses mules asses,1000 heads,livestock:livestock,1949,3,99;49;2,99,51,1.9412,siblings_only
+fao1952,basutoland,horses mules asses,1000 heads,livestock:livestock,1951,3,103;59;3,103,62,1.6613,siblings_only
+fao1952,bechuanaland,horses mules asses,1000 heads,livestock:livestock,1939,2,17;3,17,3,5.6667,siblings_only
+fao1952,bechuanaland,horses mules asses,1000 heads,livestock:livestock,1949,2,74;18,74,18,4.1111,siblings_only
+fao1952,bechuanaland,horses mules asses,1000 heads,livestock:livestock,1950,2,20;5,20,5,4.0000,siblings_only
+fao1952,bechuanaland,horses mules asses,1000 heads,livestock:livestock,1951,2,20;7,20,7,2.8571,siblings_only
+fao1952,belgian congo,horses mules asses,1000 heads,livestock:livestock,1949,2,2;1,2,1,2.0000,siblings_only
+fao1952,belgian congo,horses mules asses,1000 heads,livestock:livestock,1950,2,2;1,2,1,2.0000,siblings_only
+fao1952,belgian congo,horses mules asses,1000 heads,livestock:livestock,1951,2,2;1,2,1,2.0000,siblings_only
+fao1952,belgium,horses mules asses,1000 heads,livestock:livestock,1939,2,246;12,246,12,20.5000,siblings_only
+fao1952,belgium,horses mules asses,1000 heads,livestock:livestock,1949,2,267;2,267,2,133.5000,siblings_only
+fao1952,belgium,horses mules asses,1000 heads,livestock:livestock,1950,2,266;2,266,2,133.0000,siblings_only
+fao1952,belgium,horses mules asses,1000 heads,livestock:livestock,1951,2,249;2,249,2,124.5000,siblings_only
+fao1952,bolivia,horses mules asses,1000 heads,livestock:livestock,1938,3,273;232;100,273,332,0.8223,siblings_only
+fao1952,brazil,horses mules asses,1000 heads,livestock:livestock,1939,3,6583;2645;1300,6583,3945,1.6687,siblings_only
+fao1952,brazil,horses mules asses,1000 heads,livestock:livestock,1949,3,6928;3097;536,6928,3633,1.9070,siblings_only
+fao1952,brazil,horses mules asses,1000 heads,livestock:livestock,1951,3,6937;3101;572,6937,3673,1.8886,siblings_only
+fao1952,british cameroons,horses mules asses,1000 heads,livestock:livestock,1938,2,17;8,17,8,2.1250,siblings_only
+fao1952,british guiana,horses mules asses,1000 heads,livestock:livestock,1939,3,8;3;2,8,5,1.6000,siblings_only
+fao1952,british guiana,horses mules asses,1000 heads,livestock:livestock,1949,3,9;2;2,9,4,2.2500,siblings_only
+fao1952,british guiana,horses mules asses,1000 heads,livestock:livestock,1950,3,6;3;2,6,5,1.2000,siblings_only
+fao1952,british honduras,horses mules asses,1000 heads,livestock:livestock,1949,2,2;1,2,1,2.0000,siblings_only
+fao1952,british west indies barbados,horses mules asses,1000 heads,livestock:livestock,1939,2,3;2,3,2,1.5000,siblings_only
+fao1952,british west indies jamaica,horses mules asses,1000 heads,livestock:livestock,1951,3,51;25;13,51,38,1.3421,siblings_only
+fao1952,british west indies leeward islands,horses mules asses,1000 heads,livestock:livestock,1951,3,5;2;1,5,3,1.6667,siblings_only
+fao1952,bulgaria,horses mules asses,1000 heads,livestock:livestock,1939,3,584;165;34,584,199,2.9347,siblings_only
+fao1952,burma,horses mules asses,1000 heads,livestock:livestock,1938,2,51;1,51,1,51.0000,siblings_only
+fao1952,burma,horses mules asses,1000 heads,livestock:livestock,1949,2,12;1,12,1,12.0000,siblings_only
+fao1952,burma,horses mules asses,1000 heads,livestock:livestock,1950,2,12;1,12,1,12.0000,siblings_only
+fao1952,cape verde islands,horses mules asses,1000 heads,livestock:livestock,1939,3,7;1;1,7,2,3.5000,siblings_only
+fao1952,chile,horses mules asses,1000 heads,livestock:livestock,1935,3,528;52;41,528,93,5.6774,siblings_only
+fao1952,china 22 provinces,horses mules asses,1000 heads,livestock:livestock,1937,2,9018;3624,9018,3624,2.4884,siblings_only
+fao1952,china 22 provinces,horses mules asses,1000 heads,livestock:livestock,1949,3,2023;1905;1561,2023,3466,0.5837,siblings_only
+fao1952,china manchuria,horses mules asses,1000 heads,livestock:livestock,1937,3,800;620;565,800,1185,0.6751,siblings_only
+fao1952,colombia,horses mules asses,1000 heads,livestock:livestock,1938,3,930;440;287,930,727,1.2792,siblings_only
+fao1952,colombia,horses mules asses,1000 heads,livestock:livestock,1951,3,1296;542;461,1296,1003,1.2921,siblings_only
+fao1952,costa rica,horses mules asses,1000 heads,livestock:livestock,1929,2,85;8,85,8,10.6250,siblings_only
+fao1952,costa rica,horses mules asses,1000 heads,livestock:livestock,1950,2,77;7,77,7,11.0000,siblings_only
+fao1952,cuba,horses mules asses,1000 heads,livestock:livestock,1939,3,572;77;3,572,80,7.1500,siblings_only
+fao1952,cuba,horses mules asses,1000 heads,livestock:livestock,1951,3,409;34;3,409,37,11.0541,siblings_only
+fao1952,cyprus,horses mules asses,1000 heads,livestock:livestock,1938,3,54;11;4,54,15,3.6000,siblings_only
+fao1952,cyprus,horses mules asses,1000 heads,livestock:livestock,1949,3,54;10;4,54,14,3.8571,siblings_only
+fao1952,cyprus,horses mules asses,1000 heads,livestock:livestock,1950,3,51;8;5,51,13,3.9231,siblings_only
+fao1952,cyprus,horses mules asses,1000 heads,livestock:livestock,1951,3,51;8;5,51,13,3.9231,siblings_only
+fao1952,dominican republic,horses mules asses,1000 heads,livestock:livestock,1939,3,245;116;48,245,164,1.4939,siblings_only
+fao1952,dominican republic,horses mules asses,1000 heads,livestock:livestock,1949,3,139;79;45,139,124,1.1210,siblings_only
+fao1952,dominican republic,horses mules asses,1000 heads,livestock:livestock,1950,3,142;80;47,142,127,1.1181,siblings_only
+fao1952,ecuador,horses mules asses,1000 heads,livestock:livestock,1939,3,104;48;22,104,70,1.4857,siblings_only
+fao1952,ecuador,horses mules asses,1000 heads,livestock:livestock,1949,3,111;100;54,111,154,0.7208,siblings_only
+fao1952,egypt,horses mules asses,1000 heads,livestock:livestock,1939,3,1069;47;29,1069,76,14.0658,siblings_only
+fao1952,eritrea,horses mules asses,1000 heads,livestock:livestock,1938,3,43;8;1,43,9,4.7778,siblings_only
+fao1952,eritrea,horses mules asses,1000 heads,livestock:livestock,1949,3,82;9;1,82,10,8.2000,siblings_only
+fao1952,eritrea,horses mules asses,1000 heads,livestock:livestock,1950,3,82;8;1,82,9,9.1111,siblings_only
+fao1952,ethiopia,horses mules asses,1000 heads,livestock:livestock,1949,3,3000;1100;1000,3000,2100,1.4286,siblings_only
+fao1952,ethiopia,horses mules asses,1000 heads,livestock:livestock,1950,3,3000;1100;1000,3000,2100,1.4286,siblings_only
+fao1952,france,horses mules asses,1000 heads,livestock:livestock,1938,3,2692;185;108,2692,293,9.1877,siblings_only
+fao1952,france,horses mules asses,1000 heads,livestock:livestock,1949,3,2418;107;88,2418,195,12.4000,siblings_only
+fao1952,france,horses mules asses,1000 heads,livestock:livestock,1950,3,2414;106;90,2414,196,12.3163,siblings_only
+fao1952,france,horses mules asses,1000 heads,livestock:livestock,1951,3,2397;104;91,2397,195,12.2923,siblings_only
+fao1952,french cameroons,horses mules asses,1000 heads,livestock:livestock,1937,2,25;16,25,16,1.5625,siblings_only
+fao1952,french cameroons,horses mules asses,1000 heads,livestock:livestock,1949,2,36;16,36,16,2.2500,siblings_only
+fao1952,french cameroons,horses mules asses,1000 heads,livestock:livestock,1950,2,36;16,36,16,2.2500,siblings_only
+fao1952,french cameroons,horses mules asses,1000 heads,livestock:livestock,1951,2,36;17,36,17,2.1176,siblings_only
+fao1952,french equat africa,horses mules asses,1000 heads,livestock:livestock,1939,2,61;31,61,31,1.9677,siblings_only
+fao1952,french equat africa,horses mules asses,1000 heads,livestock:livestock,1949,2,104;66,104,66,1.5758,siblings_only
+fao1952,french equat africa,horses mules asses,1000 heads,livestock:livestock,1950,2,104;62,104,62,1.6774,siblings_only
+fao1952,french equat africa,horses mules asses,1000 heads,livestock:livestock,1951,2,98;66,98,66,1.4848,siblings_only
+fao1952,french morocco,horses mules asses,1000 heads,livestock:livestock,1939,3,604;187;147,604,334,1.8084,siblings_only
+fao1952,french morocco,horses mules asses,1000 heads,livestock:livestock,1949,3,615;165;144,615,309,1.9903,siblings_only
+fao1952,french morocco,horses mules asses,1000 heads,livestock:livestock,1950,3,688;179;149,688,328,2.0976,siblings_only
+fao1952,french morocco,horses mules asses,1000 heads,livestock:livestock,1951,3,747;190;156,747,346,2.1590,siblings_only
+fao1952,french togoland,horses mules asses,1000 heads,livestock:livestock,1951,2,3;2,3,2,1.5000,siblings_only
+fao1952,french west africa,horses mules asses,1000 heads,livestock:livestock,1939,2,469;177,469,177,2.6497,siblings_only
+fao1952,french west africa,horses mules asses,1000 heads,livestock:livestock,1949,2,542;198,542,198,2.7374,siblings_only
+fao1952,french west africa,horses mules asses,1000 heads,livestock:livestock,1950,2,557;207,557,207,2.6908,siblings_only
+fao1952,french west africa,horses mules asses,1000 heads,livestock:livestock,1951,2,560;202,560,202,2.7723,siblings_only
+fao1952,germany,horses mules asses,1000 heads,livestock:livestock,1938,2,2391;5,2391,5,478.2000,siblings_only
+fao1952,germany,horses mules asses,1000 heads,livestock:livestock,1949,2,2290;6,2290,6,381.6667,siblings_only
+fao1952,germany,horses mules asses,1000 heads,livestock:livestock,1950,2,2332;5,2332,5,466.4000,siblings_only
+fao1952,germany,horses mules asses,1000 heads,livestock:livestock,1951,2,2296;5,2296,5,459.2000,siblings_only
+fao1952,germany eastern,horses mules asses,1000 heads,livestock:livestock,1938,2,811;2,811,2,405.5000,siblings_only
+fao1952,germany eastern,horses mules asses,1000 heads,livestock:livestock,1949,2,665;1,665,1,665.0000,siblings_only
+fao1952,germany western,horses mules asses,1000 heads,livestock:livestock,1938,2,1566;3,1566,3,522.0000,siblings_only
+fao1952,germany western,horses mules asses,1000 heads,livestock:livestock,1949,2,1617;5,1617,5,323.4000,siblings_only
+fao1952,germany western,horses mules asses,1000 heads,livestock:livestock,1950,2,1629;4,1629,4,407.2500,siblings_only
+fao1952,germany western,horses mules asses,1000 heads,livestock:livestock,1951,2,1570;4,1570,4,392.5000,siblings_only
+fao1952,gold coast and br togoland,horses mules asses,1000 heads,livestock:livestock,1938,2,15;4,15,4,3.7500,siblings_only
+fao1952,gold coast and br togoland,horses mules asses,1000 heads,livestock:livestock,1949,2,18;6,18,6,3.0000,siblings_only
+fao1952,gold coast and br togoland,horses mules asses,1000 heads,livestock:livestock,1950,2,18;6,18,6,3.0000,siblings_only
+fao1952,gold coast and br togoland,horses mules asses,1000 heads,livestock:livestock,1951,2,15;5,15,5,3.0000,siblings_only
+fao1952,greece,horses mules asses,1000 heads,livestock:livestock,1938,3,404;363;184,404,547,0.7386,siblings_only
+fao1952,guadeloupe,horses mules asses,1000 heads,livestock:livestock,1939,3,4;4;1,4,5,0.8000,siblings_only
+fao1952,guadeloupe,horses mules asses,1000 heads,livestock:livestock,1951,2,3;2,3,2,1.5000,siblings_only
+fao1952,guatemala,horses mules asses,1000 heads,livestock:livestock,1938,2,35;3,35,3,11.6667,siblings_only
+fao1952,guatemala,horses mules asses,1000 heads,livestock:livestock,1949,3,157;60;11,157,71,2.2113,siblings_only
+fao1952,guatemala,horses mules asses,1000 heads,livestock:livestock,1950,3,183;58;10,183,68,2.6912,siblings_only
+fao1952,haiti,horses mules asses,1000 heads,livestock:livestock,1939,3,642;400;64,642,464,1.3836,siblings_only
+fao1952,hawaii,horses mules asses,1000 heads,livestock:livestock,1950,2,8;2,8,2,4.0000,siblings_only
+fao1952,honduras,horses mules asses,1000 heads,livestock:livestock,1930,3,167;45;12,167,57,2.9298,siblings_only
+fao1952,honduras,horses mules asses,1000 heads,livestock:livestock,1949,3,209;72;20,209,92,2.2717,siblings_only
+fao1952,honduras,horses mules asses,1000 heads,livestock:livestock,1950,3,198;69;22,198,91,2.1758,siblings_only
+fao1952,honduras,horses mules asses,1000 heads,livestock:livestock,1951,3,137;77;23,137,100,1.3700,siblings_only
+fao1952,hungary,horses mules asses,1000 heads,livestock:livestock,1939,3,939;5;1,939,6,156.5000,siblings_only
+fao1952,india,horses mules asses,1000 heads,livestock:livestock,1940,3,1186;780;50,1186,830,1.4289,siblings_only
+fao1952,india,horses mules asses,1000 heads,livestock:livestock,1949,3,397;130;46,397,176,2.2557,siblings_only
+fao1952,india,horses mules asses,1000 heads,livestock:livestock,1950,3,401;131;46,401,177,2.2655,siblings_only
+fao1952,india,horses mules asses,1000 heads,livestock:livestock,1951,3,1527;1226;59,1527,1285,1.1883,siblings_only
+fao1952,iran,horses mules asses,1000 heads,livestock:livestock,1937,3,305;180;52,305,232,1.3147,siblings_only
+fao1952,iran,horses mules asses,1000 heads,livestock:livestock,1949,3,365;200;126,365,326,1.1196,siblings_only
+fao1952,iran,horses mules asses,1000 heads,livestock:livestock,1951,3,1200;365;126,1200,491,2.4440,siblings_only
+fao1952,iraq,horses mules asses,1000 heads,livestock:livestock,1938,3,150;120;60,150,180,0.8333,siblings_only
+fao1952,iraq,horses mules asses,1000 heads,livestock:livestock,1949,3,413;188;52,413,240,1.7208,siblings_only
+fao1952,ireland,horses mules asses,1000 heads,livestock:livestock,1939,3,445;148;10,445,158,2.8165,siblings_only
+fao1952,ireland,horses mules asses,1000 heads,livestock:livestock,1949,3,402;119;5,402,124,3.2419,siblings_only
+fao1952,ireland,horses mules asses,1000 heads,livestock:livestock,1950,3,391;114;5,391,119,3.2857,siblings_only
+fao1952,ireland,horses mules asses,1000 heads,livestock:livestock,1951,3,367;102;4,367,106,3.4623,siblings_only
+fao1952,israel,horses mules asses,1000 heads,livestock:livestock,1949,2,8;2,8,2,4.0000,siblings_only
+fao1952,israel,horses mules asses,1000 heads,livestock:livestock,1950,2,15;11,15,11,1.3636,siblings_only
+fao1952,israel,horses mules asses,1000 heads,livestock:livestock,1951,2,16;13,16,13,1.2308,siblings_only
+fao1952,italy,horses mules asses,1000 heads,livestock:livestock,1939,3,789;781;432,789,1213,0.6505,siblings_only
+fao1952,italy,horses mules asses,1000 heads,livestock:livestock,1949,3,798;763;394,798,1157,0.6897,siblings_only
+fao1952,italy,horses mules asses,1000 heads,livestock:livestock,1950,3,797;771;398,797,1169,0.6818,siblings_only
+fao1952,italy,horses mules asses,1000 heads,livestock:livestock,1951,3,773;768;393,773,1161,0.6658,siblings_only
+fao1952,jordan,horses mules asses,1000 heads,livestock:livestock,1938,3,24;6;2,24,8,3.0000,siblings_only
+fao1952,jordan,horses mules asses,1000 heads,livestock:livestock,1951,3,50;8;7,50,15,3.3333,siblings_only
+fao1952,kenya,horses mules asses,1000 heads,livestock:livestock,1939,2,217;4,217,4,54.2500,siblings_only
+fao1952,korea,horses mules asses,1000 heads,livestock:livestock,1937,3,51;3;1,51,4,12.7500,siblings_only
+fao1952,lebanon,horses mules asses,1000 heads,livestock:livestock,1938,3,35;8;4,35,12,2.9167,siblings_only
+fao1952,lebanon,horses mules asses,1000 heads,livestock:livestock,1949,3,25;8;4,25,12,2.0833,siblings_only
+fao1952,lebanon,horses mules asses,1000 heads,livestock:livestock,1951,3,20;10;5,20,15,1.3333,siblings_only
+fao1952,libya,horses mules asses,1000 heads,livestock:livestock,1938,3,40;13;4,40,17,2.3529,siblings_only
+fao1952,libya,horses mules asses,1000 heads,livestock:livestock,1949,2,109;43,109,43,2.5349,siblings_only
+fao1952,libya cyrenaica,horses mules asses,1000 heads,livestock:livestock,1949,2,10;4,10,4,2.5000,siblings_only
+fao1952,libya tripolitania,horses mules asses,1000 heads,livestock:livestock,1949,3,27;5;1,27,6,4.5000,siblings_only
+fao1952,libya tripolitania,horses mules asses,1000 heads,livestock:livestock,1951,3,29;5;1,29,6,4.8333,siblings_only
+fao1952,madagascar,horses mules asses,1000 heads,livestock:livestock,1939,2,2;1,2,1,2.0000,siblings_only
+fao1952,malta,horses mules asses,1000 heads,livestock:livestock,1939,3,3;3;3,3,6,0.5000,siblings_only
+fao1952,malta,horses mules asses,1000 heads,livestock:livestock,1949,3,4;3;2,4,5,0.8000,siblings_only
+fao1952,malta,horses mules asses,1000 heads,livestock:livestock,1950,3,3;3;2,3,5,0.6000,siblings_only
+fao1952,malta,horses mules asses,1000 heads,livestock:livestock,1951,3,53;53;52,53,105,0.5048,siblings_only
+fao1952,martinique,horses mules asses,1000 heads,livestock:livestock,1949,2,6;4,6,4,1.5000,siblings_only
+fao1952,martinique,horses mules asses,1000 heads,livestock:livestock,1950,2,5;4,5,4,1.2500,siblings_only
+fao1952,martinique,horses mules asses,1000 heads,livestock:livestock,1951,2,5;4,5,4,1.2500,siblings_only
+fao1952,mexico,horses mules asses,1000 heads,livestock:livestock,1940,3,2509;2314;938,2509,3252,0.7715,siblings_only
+fao1952,mexico,horses mules asses,1000 heads,livestock:livestock,1949,3,2722;2636;1225,2722,3861,0.7050,siblings_only
+fao1952,nicaragua,horses mules asses,1000 heads,livestock:livestock,1930,3,150;40;2,150,42,3.5714,siblings_only
+fao1952,nigeria,horses mules asses,1000 heads,livestock:livestock,1937,2,450;169,450,169,2.6627,siblings_only
+fao1952,nigeria,horses mules asses,1000 heads,livestock:livestock,1949,2,579;164,579,164,3.5305,siblings_only
+fao1952,nigeria,horses mules asses,1000 heads,livestock:livestock,1950,2,579;164,579,164,3.5305,siblings_only
+fao1952,pakistan,horses mules asses,1000 heads,livestock:livestock,1940,3,934;540;33,934,573,1.6300,siblings_only
+fao1952,pakistan,horses mules asses,1000 heads,livestock:livestock,1950,3,913;470;41,913,511,1.7867,siblings_only
+fao1952,palestine,horses mules asses,1000 heads,livestock:livestock,1937,3,92;20;9,92,29,3.1724,siblings_only
+fao1952,panama,horses mules asses,1000 heads,livestock:livestock,1951,2,158;5,158,5,31.6000,siblings_only
+fao1952,paraguay,horses mules asses,1000 heads,livestock:livestock,1936,3,198;9;7,198,16,12.3750,siblings_only
+fao1952,peru,horses mules asses,1000 heads,livestock:livestock,1929,3,432;195;70,432,265,1.6302,siblings_only
+fao1952,peru,horses mules asses,1000 heads,livestock:livestock,1949,3,518;433;150,518,583,0.8885,siblings_only
+fao1952,peru,horses mules asses,1000 heads,livestock:livestock,1951,3,500;432;140,500,572,0.8741,siblings_only
+fao1952,portugal,horses mules asses,1000 heads,livestock:livestock,1934,3,268;120;86,268,206,1.3010,siblings_only
+fao1952,puerto rico,horses mules asses,1000 heads,livestock:livestock,1935,3,43;5;3,43,8,5.3750,siblings_only
+fao1952,puerto rico,horses mules asses,1000 heads,livestock:livestock,1949,3,39;5;3,39,8,4.8750,siblings_only
+fao1952,puerto rico,horses mules asses,1000 heads,livestock:livestock,1950,3,36;4;3,36,7,5.1429,siblings_only
+fao1952,puerto rico,horses mules asses,1000 heads,livestock:livestock,1951,3,33;4;2,33,6,5.5000,siblings_only
+fao1952,romania,horses mules asses,1000 heads,livestock:livestock,1939,3,2042;14;2,2042,16,127.6250,siblings_only
+fao1952,somalia,horses mules asses,1000 heads,livestock:livestock,1949,3,30;10;2,30,12,2.5000,siblings_only
+fao1952,south west africa,horses mules asses,1000 heads,livestock:livestock,1939,3,106;29;2,106,31,3.4194,siblings_only
+fao1952,south west africa,horses mules asses,1000 heads,livestock:livestock,1949,3,86;53;4,86,57,1.5088,siblings_only
+fao1952,south west africa,horses mules asses,1000 heads,livestock:livestock,1950,3,85;50;4,85,54,1.5741,siblings_only
+fao1952,south west africa,horses mules asses,1000 heads,livestock:livestock,1951,3,80;48;4,80,52,1.5385,siblings_only
+fao1952,southern rhodesia,horses mules asses,1000 heads,livestock:livestock,1939,3,90;4;2,90,6,15.0000,siblings_only
+fao1952,southern rhodesia,horses mules asses,1000 heads,livestock:livestock,1949,3,98;5;1,98,6,16.3333,siblings_only
+fao1952,southern rhodesia,horses mules asses,1000 heads,livestock:livestock,1950,3,93;6;1,93,7,13.2857,siblings_only
+fao1952,southern rhodesia,horses mules asses,1000 heads,livestock:livestock,1951,3,88;6;1,88,7,12.5714,siblings_only
+fao1952,spain,horses mules asses,1000 heads,livestock:livestock,1939,3,1117;805;555,1117,1360,0.8213,siblings_only
+fao1952,spain,horses mules asses,1000 heads,livestock:livestock,1950,3,1186;822;705,1186,1527,0.7767,siblings_only
+fao1952,spanish morocco,horses mules asses,1000 heads,livestock:livestock,1949,3,34;21;19,34,40,0.8500,siblings_only
+fao1952,swaziland,horses mules asses,1000 heads,livestock:livestock,1938,2,14;1,14,1,14.0000,siblings_only
+fao1952,swaziland,horses mules asses,1000 heads,livestock:livestock,1949,2,16;2,16,2,8.0000,siblings_only
+fao1952,swaziland,horses mules asses,1000 heads,livestock:livestock,1950,2,16;2,16,2,8.0000,siblings_only
+fao1952,swaziland,horses mules asses,1000 heads,livestock:livestock,1951,2,15;2,15,2,7.5000,siblings_only
+fao1952,switzerland,horses mules asses,1000 heads,livestock:livestock,1936,3,140;3;1,140,4,35.0000,siblings_only
+fao1952,switzerland,horses mules asses,1000 heads,livestock:livestock,1949,2,138;2,138,2,69.0000,siblings_only
+fao1952,switzerland,horses mules asses,1000 heads,livestock:livestock,1950,2,134;2,134,2,67.0000,siblings_only
+fao1952,switzerland,horses mules asses,1000 heads,livestock:livestock,1951,2,131;2,131,2,65.5000,siblings_only
+fao1952,syria,horses mules asses,1000 heads,livestock:livestock,1939,3,139;66;27,139,93,1.4946,siblings_only
+fao1952,syria,horses mules asses,1000 heads,livestock:livestock,1949,3,245;108;57,245,165,1.4848,siblings_only
+fao1952,syria,horses mules asses,1000 heads,livestock:livestock,1950,3,267;98;54,267,152,1.7566,siblings_only
+fao1952,syria,horses mules asses,1000 heads,livestock:livestock,1951,3,271;97;58,271,155,1.7484,siblings_only
+fao1952,tunisia,horses mules asses,1000 heads,livestock:livestock,1939,3,130;92;56,130,148,0.8784,siblings_only
+fao1952,tunisia,horses mules asses,1000 heads,livestock:livestock,1950,3,131;69;43,131,112,1.1696,siblings_only
+fao1952,tunisia,horses mules asses,1000 heads,livestock:livestock,1951,3,162;76;48,162,124,1.3065,siblings_only
+fao1952,turkey,horses mules asses,1000 heads,livestock:livestock,1939,3,964;387;74,964,461,2.0911,siblings_only
+fao1952,turkey,horses mules asses,1000 heads,livestock:livestock,1949,3,1164;711;103,1164,814,1.4300,siblings_only
+fao1952,turkey,horses mules asses,1000 heads,livestock:livestock,1950,3,1687;1132;104,1687,1236,1.3649,siblings_only
+fao1952,turkey,horses mules asses,1000 heads,livestock:livestock,1951,3,1633;1140;109,1633,1249,1.3074,siblings_only
+fao1952,united states,horses mules asses,1000 heads,livestock:livestock,1939,2,10629;4163,10629,4163,2.5532,siblings_only
+fao1952,united states,horses mules asses,1000 heads,livestock:livestock,1949,2,5898;2348,5898,2348,2.5119,siblings_only
+fao1952,united states,horses mules asses,1000 heads,livestock:livestock,1950,2,2149;274,2149,274,7.8431,siblings_only
+fao1952,united states,horses mules asses,1000 heads,livestock:livestock,1951,2,4993;2074,4993,2074,2.4074,siblings_only
+fao1952,uruguay,horses mules asses,1000 heads,livestock:livestock,1937,3,644;11;5,644,16,40.2500,siblings_only
+fao1952,uruguay,horses mules asses,1000 heads,livestock:livestock,1951,3,667;6;3,667,9,74.1111,siblings_only
+fao1952,yugoslavia,horses mules asses,1000 heads,livestock:livestock,1939,3,273;132;21,273,153,1.7843,siblings_only
+fao1952,yugoslavia,horses mules asses,1000 heads,livestock:livestock,1949,3,162;50;34,162,84,1.9286,siblings_only
+fao1952,yugoslavia,horses mules asses,1000 heads,livestock:livestock,1950,3,158;97;33,158,130,1.2154,siblings_only
+fao1952,yugoslavia,horses mules asses,1000 heads,livestock:livestock,1951,3,1095;152;32,1095,184,5.9511,siblings_only
+fao1952,canada,linseed,1000 hectares,crops:area,1949,2,131;3,131,3,43.6667,siblings_only
+fao1952,canada,linseed,1000 tonnes,crops:production,1949,2,58;1,58,1,58.0000,siblings_only
+fao1952,canada,linseed,1000 hectares,crops:area,1950,2,227;2,227,2,113.5000,siblings_only
+fao1952,canada,linseed,1000 hectares,crops:area,1951,2,469;3,469,3,156.3333,siblings_only
+fao1952,canada,linseed,1000 tonnes,crops:production,1951,2,251;1,251,1,251.0000,siblings_only
+fao1952,united states,linseed,1000 hectares,crops:area,1949,2,1993;1,1993,1,1993.0000,siblings_only
+fao1952,united states,linseed,1000 tonnes,crops:production,1949,2,1116;1,1116,1,1116.0000,siblings_only
+fao1952,united states,linseed,1000 hectares,crops:area,1951,2,580;1,580,1,580.0000,siblings_only
+fao1952,argentina,meat,1000 tonnes,livestock:production,1949,4,1027;276;139;110,1027,525,1.9562,siblings_only
+fao1952,australia,meat,1000 tonnes,livestock:production,1949,4,603;374;95;72,603,541,1.1146,siblings_only
+fao1952,australia,meat,1000 tonnes,livestock:production,1950,4,632;303;86;21,632,410,1.5415,siblings_only
+fao1952,australia,meat,1000 tonnes,livestock:production,1951,4,648;268;86;2,648,356,1.8202,siblings_only
+fao1952,belgian congo,meat,1000 tonnes,livestock:production,1951,3,8;2;1,8,3,2.6667,siblings_only
+fao1952,british west indies trinidad tobago,meat,1000 tonnes,livestock:production,1951,2,3;2,3,2,1.5000,siblings_only
+fao1952,cyprus,meat,1000 tonnes,livestock:production,1949,3,8;3;3,8,6,1.3333,siblings_only
+fao1952,cyprus,meat,1000 tonnes,livestock:production,1950,3,8;3;3,8,6,1.3333,siblings_only
+fao1952,cyprus,meat,1000 tonnes,livestock:production,1951,3,8;3;3,8,6,1.3333,siblings_only
+fao1952,france,meat,1000 tonnes,livestock:production,1950,4,1901;790;100;11,1901,901,2.1099,siblings_only
+fao1952,france,meat,1000 tonnes,livestock:production,1951,4,990;835;745;100,990,1680,0.5893,siblings_only
+fao1952,germany western,meat,1000 tonnes,livestock:production,1951,4,1633;579;29;25,1633,633,2.5798,siblings_only
+fao1952,hong kong,meat,1000 tonnes,livestock:production,1949,2,341;5,341,5,68.2000,siblings_only
+fao1952,india,meat,1000 tonnes,livestock:production,1949,3,738;374;23,738,397,1.8589,siblings_only
+fao1952,northern rhodesia,meat,1000 tonnes,livestock:production,1950,2,10;1,10,1,10.0000,siblings_only
+fao1952,northern rhodesia,meat,1000 tonnes,livestock:production,1951,3,12;11;11,12,22,0.5455,siblings_only
+fao1952,singapore,meat,1000 tonnes,livestock:production,1949,3,9;1;1,9,2,4.5000,siblings_only
+fao1952,singapore,meat,1000 tonnes,livestock:production,1950,2,9;1,9,1,9.0000,siblings_only
+fao1952,algeria,milk,1000 tonnes,livestock:production,1949,2,720;250,720,250,2.8800,siblings_only
+fao1952,algeria,milk,1000 tonnes,livestock:production,1950,2,650;250,650,250,2.6000,siblings_only
+fao1952,cyprus,milk,1000 tonnes,livestock:production,1948,2,22;1,22,1,22.0000,siblings_only
+fao1952,cyprus,milk,1000 tonnes,livestock:production,1949,2,30;3,30,3,10.0000,siblings_only
+fao1952,cyprus,milk,1000 tonnes,livestock:production,1950,2,28;3,28,3,9.3333,siblings_only
+fao1952,cyprus,milk,1000 tonnes,livestock:production,1951,2,28;3,28,3,9.3333,siblings_only
+fao1952,egypt,milk,1000 tonnes,livestock:production,1949,2,847;425,847,425,1.9929,siblings_only
+fao1952,egypt,milk,1000 tonnes,livestock:production,1950,2,767;397,767,397,1.9320,siblings_only
+fao1952,eritrea,milk,1000 tonnes,livestock:production,1950,2,50;27,50,27,1.8519,siblings_only
+fao1952,eritrea,milk,1000 tonnes,livestock:production,1951,2,50;27,50,27,1.8519,siblings_only
+fao1952,ethiopia,milk,1000 tonnes,livestock:production,1948,2,1350;600,1350,600,2.2500,siblings_only
+fao1952,ethiopia,milk,1000 tonnes,livestock:production,1949,2,1800;600,1800,600,3.0000,siblings_only
+fao1952,ethiopia,milk,1000 tonnes,livestock:production,1950,2,800;300,800,300,2.6667,siblings_only
+fao1952,french somaliland,milk,1000 tonnes,livestock:production,1949,2,15;2,15,2,7.5000,siblings_only
+fao1952,french somaliland,milk,1000 tonnes,livestock:production,1950,2,15;2,15,2,7.5000,siblings_only
+fao1952,greece,milk,1000 tonnes,livestock:production,1948,2,285;100,285,100,2.8500,siblings_only
+fao1952,greece,milk,1000 tonnes,livestock:production,1949,2,204;94,204,94,2.1702,siblings_only
+fao1952,greece,milk,1000 tonnes,livestock:production,1950,2,350;133,350,133,2.6316,siblings_only
+fao1952,greece,milk,1000 tonnes,livestock:production,1951,2,352;130,352,130,2.7077,siblings_only
+fao1952,india,milk,1000 tonnes,livestock:production,1948,2,10278;7698,10278,7698,1.3352,siblings_only
+fao1952,iraq,milk,1000 tonnes,livestock:production,1949,2,431;229,431,229,1.8821,siblings_only
+fao1952,iraq,milk,1000 tonnes,livestock:production,1950,2,481;405,481,405,1.1877,siblings_only
+fao1952,italy,milk,1000 tonnes,livestock:production,1948,2,4202;534,4202,534,7.8689,siblings_only
+fao1952,italy,milk,1000 tonnes,livestock:production,1949,2,4917;641,4917,641,7.6708,siblings_only
+fao1952,italy,milk,1000 tonnes,livestock:production,1950,2,5257;689,5257,689,7.6299,siblings_only
+fao1952,italy,milk,1000 tonnes,livestock:production,1951,2,5447;697,5447,697,7.8149,siblings_only
+fao1952,japan,milk,1000 tonnes,livestock:production,1948,2,182;27,182,27,6.7407,siblings_only
+fao1952,japan,milk,1000 tonnes,livestock:production,1949,2,277;37,277,37,7.4865,siblings_only
+fao1952,japan,milk,1000 tonnes,livestock:production,1950,2,364;33,364,33,11.0303,siblings_only
+fao1952,japan,milk,1000 tonnes,livestock:production,1951,2,434;62,434,62,7.0000,siblings_only
+fao1952,jordan,milk,1000 tonnes,livestock:production,1948,2,37;4,37,4,9.2500,siblings_only
+fao1952,jordan,milk,1000 tonnes,livestock:production,1949,2,36;5,36,5,7.2000,siblings_only
+fao1952,malaya federation of,milk,1000 tonnes,livestock:production,1948,2,14;2,14,2,7.0000,siblings_only
+fao1952,malaya federation of,milk,1000 tonnes,livestock:production,1949,2,7;1,7,1,7.0000,siblings_only
+fao1952,malaya federation of,milk,1000 tonnes,livestock:production,1950,2,9;1,9,1,9.0000,siblings_only
+fao1952,malaya federation of,milk,1000 tonnes,livestock:production,1951,2,9;1,9,1,9.0000,siblings_only
+fao1952,malta,milk,1000 tonnes,livestock:production,1948,2,16;2,16,2,8.0000,siblings_only
+fao1952,malta,milk,1000 tonnes,livestock:production,1949,2,13;2,13,2,6.5000,siblings_only
+fao1952,malta,milk,1000 tonnes,livestock:production,1950,2,18;3,18,3,6.0000,siblings_only
+fao1952,pakistan,milk,1000 tonnes,livestock:production,1948,2,3340;2476,3340,2476,1.3489,siblings_only
+fao1952,pakistan,milk,1000 tonnes,livestock:production,1949,2,3340;2476,3340,2476,1.3489,siblings_only
+fao1952,pakistan,milk,1000 tonnes,livestock:production,1950,2,3340;2476,3340,2476,1.3489,siblings_only
+fao1952,syria,milk,1000 tonnes,livestock:production,1950,2,211;138,211,138,1.5290,siblings_only
+fao1952,syria,milk,1000 tonnes,livestock:production,1951,2,148;127,148,127,1.1654,siblings_only
+fao1952,turkey,milk,1000 tonnes,livestock:production,1948,2,856;386,856,386,2.2176,siblings_only
+fao1952,turkey,milk,1000 tonnes,livestock:production,1949,2,1070;918,1070,918,1.1656,siblings_only
+fao1952,turkey,milk,1000 tonnes,livestock:production,1950,2,791;382,791,382,2.0707,siblings_only
+fao1952,turkey,milk,1000 tonnes,livestock:production,1951,2,932;413,932,413,2.2567,siblings_only
+fao1952,french west africa,oranges tangerines clementines,1000 tonnes,crops:production,1950,2,58;2,58,2,29.0000,siblings_only
+fao1952,alaska,other meat,1000 tonnes,livestock:production,1950,2,0.3;0.1,0.3,0.1,3.0000,siblings_only
+fao1952,alaska,other meat,1000 tonnes,livestock:production,1951,2,0.3;0.1,0.3,0.1,3.0000,siblings_only
+fao1952,algeria,other meat,1000 tonnes,livestock:production,1949,4,15;5;2.2;0.7,15,7.9,1.8987,siblings_only
+fao1952,algeria,other meat,1000 tonnes,livestock:production,1950,4,10;5.5;1.8;0.5,10,7.8,1.2821,siblings_only
+fao1952,australia,other meat,1000 tonnes,livestock:production,1948,3,52.5;47.9;43.4,52.5,91.3,0.5750,siblings_only
+fao1952,australia,other meat,1000 tonnes,livestock:production,1949,3,52;50.3;46.2,52,96.5,0.5389,siblings_only
+fao1952,australia,other meat,1000 tonnes,livestock:production,1950,3,48.9;44.1;34.1,48.9,78.2,0.6253,siblings_only
+fao1952,australia,other meat,1000 tonnes,livestock:production,1951,3,47.8;46;43.7,47.8,89.7,0.5329,siblings_only
+fao1952,austria,other meat,1000 tonnes,livestock:production,1948,3,3.2;2.1;1.9,3.2,4,0.8000,siblings_only
+fao1952,austria,other meat,1000 tonnes,livestock:production,1949,3,3.8;2.7;2.3,3.8,5,0.7600,siblings_only
+fao1952,austria,other meat,1000 tonnes,livestock:production,1950,3,4.6;4.5;2.7,4.6,7.2,0.6389,siblings_only
+fao1952,austria,other meat,1000 tonnes,livestock:production,1951,2,5.8;3,5.8,3,1.9333,siblings_only
+fao1952,british west indies jamaica,other meat,1000 tonnes,livestock:production,1949,2,2;0.2,2,0.2,10.0000,siblings_only
+fao1952,british west indies jamaica,other meat,1000 tonnes,livestock:production,1950,2,2.1;0.3,2.1,0.3,7.0000,siblings_only
+fao1952,british west indies jamaica,other meat,1000 tonnes,livestock:production,1951,2,2;0.3,2,0.3,6.6667,siblings_only
+fao1952,canada,other meat,1000 tonnes,livestock:production,1948,3,122.1;40.9;14.5,122.1,55.4,2.2040,siblings_only
+fao1952,canada,other meat,1000 tonnes,livestock:production,1949,3,139.1;39;4.4,139.1,43.4,3.2051,siblings_only
+fao1952,canada,other meat,1000 tonnes,livestock:production,1950,3,132.5;38.3;11.2,132.5,49.5,2.6768,siblings_only
+fao1952,canada,other meat,1000 tonnes,livestock:production,1951,2,157;36.2,157,36.2,4.3370,siblings_only
+fao1952,cyprus,other meat,1000 tonnes,livestock:production,1948,3,1.2;0.9;0.1,1.2,1,1.2000,siblings_only
+fao1952,cyprus,other meat,1000 tonnes,livestock:production,1949,3,1.2;0.8;0.1,1.2,0.9,1.3333,siblings_only
+fao1952,cyprus,other meat,1000 tonnes,livestock:production,1950,3,1.3;0.9;0.1,1.3,1,1.3000,siblings_only
+fao1952,cyprus,other meat,1000 tonnes,livestock:production,1951,2,0.9;0.1,0.9,0.1,9.0000,siblings_only
+fao1952,denmark,other meat,1000 tonnes,livestock:production,1948,2,20.7;14.4,20.7,14.4,1.4375,siblings_only
+fao1952,denmark,other meat,1000 tonnes,livestock:production,1949,2,25;16.3,25,16.3,1.5337,siblings_only
+fao1952,denmark,other meat,1000 tonnes,livestock:production,1950,3,26;9.5;3.4,26,12.9,2.0155,siblings_only
+fao1952,denmark,other meat,1000 tonnes,livestock:production,1951,3,22;6.8;3.5,22,10.3,2.1359,siblings_only
+fao1952,egypt,other meat,1000 tonnes,livestock:production,1949,2,23;15,23,15,1.5333,siblings_only
+fao1952,egypt,other meat,1000 tonnes,livestock:production,1950,2,25;15,25,15,1.6667,siblings_only
+fao1952,finland,other meat,1000 tonnes,livestock:production,1948,4,6.4;3.4;1;0.8,6.4,5.2,1.2308,siblings_only
+fao1952,finland,other meat,1000 tonnes,livestock:production,1950,3,6.9;4;1.5,6.9,5.5,1.2545,siblings_only
+fao1952,france,other meat,1000 tonnes,livestock:production,1948,3,250;100;40,250,140,1.7857,siblings_only
+fao1952,france,other meat,1000 tonnes,livestock:production,1949,3,250;100;60,250,160,1.5625,siblings_only
+fao1952,france,other meat,1000 tonnes,livestock:production,1950,3,250;100;65,250,165,1.5152,siblings_only
+fao1952,france,other meat,1000 tonnes,livestock:production,1951,3,250;100;80,250,180,1.3889,siblings_only
+fao1952,france saar,other meat,1000 tonnes,livestock:production,1948,3,0.3;0.1;0.1,0.3,0.2,1.5000,siblings_only
+fao1952,france saar,other meat,1000 tonnes,livestock:production,1949,3,0.4;0.3;0.2,0.4,0.5,0.8000,siblings_only
+fao1952,france saar,other meat,1000 tonnes,livestock:production,1950,3,0.4;0.3;0.2,0.4,0.5,0.8000,siblings_only
+fao1952,french cameroons,other meat,1000 tonnes,livestock:production,1948,2,1;0.2,1,0.2,5.0000,siblings_only
+fao1952,french equat africa,other meat,1000 tonnes,livestock:production,1948,2,1;0.2,1,0.2,5.0000,siblings_only
+fao1952,french morocco,other meat,1000 tonnes,livestock:production,1949,4,8.6;1;1;0.8,8.6,2.8,3.0714,siblings_only
+fao1952,french morocco,other meat,1000 tonnes,livestock:production,1950,2,1.2;0.8,1.2,0.8,1.5000,siblings_only
+fao1952,french morocco,other meat,1000 tonnes,livestock:production,1951,2,1.5;1.1,1.5,1.1,1.3636,siblings_only
+fao1952,french west africa,other meat,1000 tonnes,livestock:production,1948,2,2;1,2,1,2.0000,siblings_only
+fao1952,germany western,other meat,1000 tonnes,livestock:production,1948,4,29;26;22;14,29,62,0.4677,siblings_only
+fao1952,germany western,other meat,1000 tonnes,livestock:production,1949,4,38;32;28;21,38,81,0.4691,siblings_only
+fao1952,germany western,other meat,1000 tonnes,livestock:production,1950,4,53;48;34;15,53,97,0.5464,siblings_only
+fao1952,germany western,other meat,1000 tonnes,livestock:production,1951,4,63;54;38;12,63,104,0.6058,siblings_only
+fao1952,gold coast,other meat,1000 tonnes,livestock:production,1950,2,1.6;0.8,1.6,0.8,2.0000,siblings_only
+fao1952,greece,other meat,1000 tonnes,livestock:production,1948,3,8.1;5.1;1,8.1,6.1,1.3279,siblings_only
+fao1952,greece,other meat,1000 tonnes,livestock:production,1949,3,9.1;5.2;1.1,9.1,6.3,1.4444,siblings_only
+fao1952,greece,other meat,1000 tonnes,livestock:production,1950,3,9;4.8;1.8,9,6.6,1.3636,siblings_only
+fao1952,greece,other meat,1000 tonnes,livestock:production,1951,3,9.3;5.1;1.9,9.3,7,1.3286,siblings_only
+fao1952,hawaii,other meat,1000 tonnes,livestock:production,1950,2,0.3;0.1,0.3,0.1,3.0000,siblings_only
+fao1952,hawaii,other meat,1000 tonnes,livestock:production,1951,2,0.4;0.1,0.4,0.1,4.0000,siblings_only
+fao1952,hong kong,other meat,1000 tonnes,livestock:production,1949,2,1.6;0.5,1.6,0.5,3.2000,siblings_only
+fao1952,hong kong,other meat,1000 tonnes,livestock:production,1950,2,1.7;0.5,1.7,0.5,3.4000,siblings_only
+fao1952,iceland,other meat,1000 tonnes,livestock:production,1948,3,1.4;0.9;0.1,1.4,1,1.4000,siblings_only
+fao1952,iceland,other meat,1000 tonnes,livestock:production,1949,3,1.4;0.9;0.1,1.4,1,1.4000,siblings_only
+fao1952,iceland,other meat,1000 tonnes,livestock:production,1950,3,1.3;0.9;0.1,1.3,1,1.3000,siblings_only
+fao1952,iceland,other meat,1000 tonnes,livestock:production,1951,3,1.4;0.9;0.1,1.4,1,1.4000,siblings_only
+fao1952,iran,other meat,1000 tonnes,livestock:production,1949,2,18;0.8,18,0.8,22.5000,siblings_only
+fao1952,ireland,other meat,1000 tonnes,livestock:production,1948,3,27.2;16.4;2,27.2,18.4,1.4783,siblings_only
+fao1952,ireland,other meat,1000 tonnes,livestock:production,1949,3,28.5;16;1.6,28.5,17.6,1.6193,siblings_only
+fao1952,ireland,other meat,1000 tonnes,livestock:production,1950,3,29.5;17.2;3.5,29.5,20.7,1.4251,siblings_only
+fao1952,italy,other meat,1000 tonnes,livestock:production,1948,3,66.7;60;48,66.7,108,0.6176,siblings_only
+fao1952,italy,other meat,1000 tonnes,livestock:production,1949,4,65.9;56.2;48;16.6,65.9,120.8,0.5455,siblings_only
+fao1952,italy,other meat,1000 tonnes,livestock:production,1950,4,66.6;58.4;45;21.7,66.6,125.1,0.5324,siblings_only
+fao1952,japan,other meat,1000 tonnes,livestock:production,1948,4,11;10;7;5,11,22,0.5000,siblings_only
+fao1952,japan,other meat,1000 tonnes,livestock:production,1949,4,14;9;9;5,14,23,0.6087,siblings_only
+fao1952,japan,other meat,1000 tonnes,livestock:production,1950,4,22;12.6;10;3,22,25.6,0.8594,siblings_only
+fao1952,libya tripolitania,other meat,1000 tonnes,livestock:production,1948,2,0.7;0.2,0.7,0.2,3.5000,siblings_only
+fao1952,luxembourg,other meat,1000 tonnes,livestock:production,1950,4,1;0.2;0.2;0.2,1,0.6,1.6667,siblings_only
+fao1952,luxembourg,other meat,1000 tonnes,livestock:production,1951,4,1;0.2;0.2;0.2,1,0.6,1.6667,siblings_only
+fao1952,madagascar,other meat,1000 tonnes,livestock:production,1948,2,1.5;1,1.5,1,1.5000,siblings_only
+fao1952,malaya federation of,other meat,1000 tonnes,livestock:production,1948,2,4.5;2.3,4.5,2.3,1.9565,siblings_only
+fao1952,malaya federation of,other meat,1000 tonnes,livestock:production,1949,2,4.5;2.3,4.5,2.3,1.9565,siblings_only
+fao1952,malaya federation of,other meat,1000 tonnes,livestock:production,1950,2,4.5;2.3,4.5,2.3,1.9565,siblings_only
+fao1952,malta,other meat,1000 tonnes,livestock:production,1948,2,0.4;0.1,0.4,0.1,4.0000,siblings_only
+fao1952,malta,other meat,1000 tonnes,livestock:production,1949,2,0.4;0.1,0.4,0.1,4.0000,siblings_only
+fao1952,malta,other meat,1000 tonnes,livestock:production,1950,2,0.4;0.1,0.4,0.1,4.0000,siblings_only
+fao1952,martinique,other meat,1000 tonnes,livestock:production,1949,4,0.2;0.1;0.1;0.1,0.2,0.3,0.6667,siblings_only
+fao1952,netherlands,other meat,1000 tonnes,livestock:production,1948,3,15.9;10;3.5,15.9,13.5,1.1778,siblings_only
+fao1952,netherlands,other meat,1000 tonnes,livestock:production,1950,3,30.3;10.8;7.3,30.3,18.1,1.6740,siblings_only
+fao1952,netherlands,other meat,1000 tonnes,livestock:production,1951,3,35.9;14.3;10,35.9,24.3,1.4774,siblings_only
+fao1952,new zealand,other meat,1000 tonnes,livestock:production,1948,4,22.2;4.2;2.9;0.2,22.2,7.3,3.0411,siblings_only
+fao1952,new zealand,other meat,1000 tonnes,livestock:production,1949,3,21.6;4.6;0.2,21.6,4.8,4.5000,siblings_only
+fao1952,new zealand,other meat,1000 tonnes,livestock:production,1950,3,21.7;3.4;1.5,21.7,4.9,4.4286,siblings_only
+fao1952,new zealand,other meat,1000 tonnes,livestock:production,1951,3,21.8;3.5;1.9,21.8,5.4,4.0370,siblings_only
+fao1952,norway,other meat,1000 tonnes,livestock:production,1948,4,4;2.6;2.5;2,4,7.1,0.5634,siblings_only
+fao1952,norway,other meat,1000 tonnes,livestock:production,1951,4,7;2.3;2;2,7,6.3,1.1111,siblings_only
+fao1952,nyasaland,other meat,1000 tonnes,livestock:production,1948,3,0.3;0.3;0.1,0.3,0.4,0.7500,siblings_only
+fao1952,nyasaland,other meat,1000 tonnes,livestock:production,1949,3,0.3;0.3;0.1,0.3,0.4,0.7500,siblings_only
+fao1952,nyasaland,other meat,1000 tonnes,livestock:production,1950,3,0.3;0.3;0.1,0.3,0.4,0.7500,siblings_only
+fao1952,philippines,other meat,1000 tonnes,livestock:production,1948,2,29.8;1,29.8,1,29.8000,siblings_only
+fao1952,philippines,other meat,1000 tonnes,livestock:production,1949,2,40.3;1.1,40.3,1.1,36.6364,siblings_only
+fao1952,portugal,other meat,1000 tonnes,livestock:production,1948,2,72.5;0.4,72.5,0.4,181.2500,siblings_only
+fao1952,portugal,other meat,1000 tonnes,livestock:production,1949,2,81.1;0.5,81.1,0.5,162.2000,siblings_only
+fao1952,portugal,other meat,1000 tonnes,livestock:production,1950,2,75.5;0.6,75.5,0.6,125.8333,siblings_only
+fao1952,swaziland,other meat,1000 tonnes,livestock:production,1949,3,1.3;0.7;0.2,1.3,0.9,1.4444,siblings_only
+fao1952,swaziland,other meat,1000 tonnes,livestock:production,1950,3,1;0.7;0.2,1,0.9,1.1111,siblings_only
+fao1952,sweden,other meat,1000 tonnes,livestock:production,1948,2,13.2;11,13.2,11,1.2000,siblings_only
+fao1952,sweden,other meat,1000 tonnes,livestock:production,1950,3,15.9;13;12.6,15.9,25.6,0.6211,siblings_only
+fao1952,sweden,other meat,1000 tonnes,livestock:production,1951,3,17.4;13.2;13,17.4,26.2,0.6641,siblings_only
+fao1952,switzerland,other meat,1000 tonnes,livestock:production,1948,4,14.3;3;3;3,14.3,9,1.5889,siblings_only
+fao1952,switzerland,other meat,1000 tonnes,livestock:production,1949,4,17.9;3.1;2.9;2.2,17.9,8.2,2.1829,siblings_only
+fao1952,switzerland,other meat,1000 tonnes,livestock:production,1950,4,18.7;3;2.5;2.3,18.7,7.8,2.3974,siblings_only
+fao1952,switzerland,other meat,1000 tonnes,livestock:production,1951,4,19;2.7;2.4;2.4,19,7.5,2.5333,siblings_only
+fao1952,turkey,other meat,1000 tonnes,livestock:production,1948,2,1.2;0.2,1.2,0.2,6.0000,siblings_only
+fao1952,u of s africa,other meat,1000 tonnes,livestock:production,1948,2,60.8;10.9,60.8,10.9,5.5780,siblings_only
+fao1952,u of s africa,other meat,1000 tonnes,livestock:production,1949,2,62.9;10.9,62.9,10.9,5.7706,siblings_only
+fao1952,u of s africa,other meat,1000 tonnes,livestock:production,1950,2,61.7;10.9,61.7,10.9,5.6606,siblings_only
+fao1952,u of s africa,other meat,1000 tonnes,livestock:production,1951,2,58.4;10.9,58.4,10.9,5.3578,siblings_only
+fao1952,united kingdom,other meat,1000 tonnes,livestock:production,1948,3,89.4;84.8;20,89.4,104.8,0.8531,siblings_only
+fao1952,united kingdom,other meat,1000 tonnes,livestock:production,1949,3,98.7;95;20,98.7,115,0.8583,siblings_only
+fao1952,united kingdom,other meat,1000 tonnes,livestock:production,1950,3,100.4;97.1;20,100.4,117.1,0.8574,siblings_only
+fao1952,united kingdom,other meat,1000 tonnes,livestock:production,1951,3,105;97;20,105,117,0.8974,siblings_only
+fao1952,united states,other meat,1000 tonnes,livestock:production,1948,2,1722.7;667.7,1722.7,667.7,2.5801,siblings_only
+fao1952,united states,other meat,1000 tonnes,livestock:production,1949,2,2050.7;678.1,2050.7,678.1,3.0242,siblings_only
+fao1952,united states,other meat,1000 tonnes,livestock:production,1950,2,2050.7;689,2050.7,689,2.9763,siblings_only
+fao1952,united states,other meat,1000 tonnes,livestock:production,1951,2,2175.9;681.3,2175.9,681.3,3.1937,siblings_only
+fao1952,uruguay,other meat,1000 tonnes,livestock:production,1949,2,12;10,12,10,1.2000,siblings_only
+fao1952,uruguay,other meat,1000 tonnes,livestock:production,1950,2,13;10,13,10,1.3000,siblings_only
+fao1952,uruguay,other meat,1000 tonnes,livestock:production,1951,2,19;10,19,10,1.9000,siblings_only
+fao1952,viet nam,other meat,1000 tonnes,livestock:production,1949,2,1;0.5,1,0.5,2.0000,siblings_only
+fao1952,viet nam,other meat,1000 tonnes,livestock:production,1950,2,1;0.6,1,0.6,1.6667,siblings_only
+fao1952,algeria,pesticides arsenicals,tonnes,inputs:consumption,1949,2,100;50,100,50,2.0000,siblings_only
+fao1952,algeria,pesticides arsenicals,tonnes,inputs:consumption,1950,2,80;60,80,60,1.3333,siblings_only
+fao1952,australia,pesticides arsenicals,tonnes,inputs:consumption,1950,2,30;20,30,20,1.5000,siblings_only
+fao1952,australia,pesticides arsenicals,tonnes,inputs:consumption,1951,2,910;20,910,20,45.5000,siblings_only
+fao1952,austria,pesticides arsenicals,tonnes,inputs:consumption,1949,2,22;2,22,2,11.0000,siblings_only
+fao1952,austria,pesticides arsenicals,tonnes,inputs:consumption,1950,2,16;6,16,6,2.6667,siblings_only
+fao1952,belgium,pesticides arsenicals,tonnes,inputs:consumption,1949,2,300;200,300,200,1.5000,siblings_only
+fao1952,belgium,pesticides arsenicals,tonnes,inputs:consumption,1950,2,200;30,200,30,6.6667,siblings_only
+fao1952,belgium,pesticides arsenicals,tonnes,inputs:consumption,1951,2,150;25,150,25,6.0000,siblings_only
+fao1952,bermuda,pesticides arsenicals,tonnes,inputs:consumption,1950,2,0.3;0.1,0.3,0.1,3.0000,siblings_only
+fao1952,british west indies jamaica,pesticides arsenicals,tonnes,inputs:consumption,1950,2,7;2,7,2,3.5000,siblings_only
+fao1952,canada,pesticides arsenicals,tonnes,inputs:consumption,1949,4,2568;1089;846;66,2568,2001,1.2834,siblings_only
+fao1952,canada,pesticides arsenicals,tonnes,inputs:consumption,1950,4,2424;604;341;68,2424,1013,2.3929,siblings_only
+fao1952,canada,pesticides arsenicals,tonnes,inputs:consumption,1951,4,2697;605;271;56,2697,932,2.8938,siblings_only
+fao1952,cuba,pesticides arsenicals,tonnes,inputs:consumption,1949,2,69;17,69,17,4.0588,siblings_only
+fao1952,cuba,pesticides arsenicals,tonnes,inputs:consumption,1951,4,138;115;5;5,138,125,1.1040,siblings_only
+fao1952,egypt,pesticides arsenicals,tonnes,inputs:consumption,1949,2,103;0.5,103,0.5,206.0000,siblings_only
+fao1952,finland,pesticides arsenicals,tonnes,inputs:consumption,1949,2,30;5,30,5,6.0000,siblings_only
+fao1952,finland,pesticides arsenicals,tonnes,inputs:consumption,1950,2,25;4,25,4,6.2500,siblings_only
+fao1952,finland,pesticides arsenicals,tonnes,inputs:consumption,1951,2,15;3,15,3,5.0000,siblings_only
+fao1952,french morocco,pesticides arsenicals,tonnes,inputs:consumption,1949,3,11;7;1,11,8,1.3750,siblings_only
+fao1952,french morocco,pesticides arsenicals,tonnes,inputs:consumption,1950,3,17;10;3,17,13,1.3077,siblings_only
+fao1952,hawaii,pesticides arsenicals,tonnes,inputs:consumption,1949,2,2;1,2,1,2.0000,siblings_only
+fao1952,hawaii,pesticides arsenicals,tonnes,inputs:consumption,1950,4,428;1;1;0.6,428,2.6,164.6154,siblings_only
+fao1952,hawaii,pesticides arsenicals,tonnes,inputs:consumption,1951,3,330;1;1,330,2,165.0000,siblings_only
+fao1952,iran,pesticides arsenicals,tonnes,inputs:consumption,1949,2,116;1,116,1,116.0000,siblings_only
+fao1952,iraq,pesticides arsenicals,tonnes,inputs:consumption,1949,2,0.5;0.4,0.5,0.4,1.2500,siblings_only
+fao1952,iraq,pesticides arsenicals,tonnes,inputs:consumption,1950,2,0.5;0.2,0.5,0.2,2.5000,siblings_only
+fao1952,israel,pesticides arsenicals,tonnes,inputs:consumption,1950,3,5;2;0.1,5,2.1,2.3810,siblings_only
+fao1952,italy,pesticides arsenicals,tonnes,inputs:consumption,1949,2,1330;37,1330,37,35.9459,siblings_only
+fao1952,italy,pesticides arsenicals,tonnes,inputs:consumption,1950,2,1834;365,1834,365,5.0247,siblings_only
+fao1952,italy,pesticides arsenicals,tonnes,inputs:consumption,1951,2,2334;395,2334,395,5.9089,siblings_only
+fao1952,japan,pesticides arsenicals,tonnes,inputs:consumption,1951,2,726;590,726,590,1.2305,siblings_only
+fao1952,lebanon,pesticides arsenicals,tonnes,inputs:consumption,1949,2,42;0.1,42,0.1,420.0000,siblings_only
+fao1952,luxembourg,pesticides arsenicals,tonnes,inputs:consumption,1949,2,13;0.2,13,0.2,65.0000,siblings_only
+fao1952,luxembourg,pesticides arsenicals,tonnes,inputs:consumption,1950,2,5;1,5,1,5.0000,siblings_only
+fao1952,madagascar,pesticides arsenicals,tonnes,inputs:consumption,1950,2,1;0.2,1,0.2,5.0000,siblings_only
+fao1952,madagascar,pesticides arsenicals,tonnes,inputs:consumption,1951,2,1;0.2,1,0.2,5.0000,siblings_only
+fao1952,netherlands,pesticides arsenicals,tonnes,inputs:consumption,1949,3,80;50;2,80,52,1.5385,siblings_only
+fao1952,netherlands,pesticides arsenicals,tonnes,inputs:consumption,1950,3,200;50;1,200,51,3.9216,siblings_only
+fao1952,netherlands,pesticides arsenicals,tonnes,inputs:consumption,1951,2,100;1,100,1,100.0000,siblings_only
+fao1952,new zealand,pesticides arsenicals,tonnes,inputs:consumption,1949,3,160;81;4,160,85,1.8824,siblings_only
+fao1952,new zealand,pesticides arsenicals,tonnes,inputs:consumption,1950,3,170;91;5,170,96,1.7708,siblings_only
+fao1952,new zealand,pesticides arsenicals,tonnes,inputs:consumption,1951,3,180;89;5,180,94,1.9149,siblings_only
+fao1952,nicaragua,pesticides arsenicals,tonnes,inputs:consumption,1950,2,23;7,23,7,3.2857,siblings_only
+fao1952,pakistan,pesticides arsenicals,tonnes,inputs:consumption,1950,2,11;2,11,2,5.5000,siblings_only
+fao1952,peru,pesticides arsenicals,tonnes,inputs:consumption,1949,2,403;46,403,46,8.7609,siblings_only
+fao1952,peru,pesticides arsenicals,tonnes,inputs:consumption,1951,2,710;4,710,4,177.5000,siblings_only
+fao1952,philippines,pesticides arsenicals,tonnes,inputs:consumption,1949,4,9;7;0.4;0.2,9,7.6,1.1842,siblings_only
+fao1952,philippines,pesticides arsenicals,tonnes,inputs:consumption,1950,2,19;8,19,8,2.3750,siblings_only
+fao1952,philippines,pesticides arsenicals,tonnes,inputs:consumption,1951,2,16;6,16,6,2.6667,siblings_only
+fao1952,ryukyu islands,pesticides arsenicals,tonnes,inputs:consumption,1950,2,9;1,9,1,9.0000,siblings_only
+fao1952,ryukyu islands,pesticides arsenicals,tonnes,inputs:consumption,1951,2,9;1,9,1,9.0000,siblings_only
+fao1952,tunisia,pesticides arsenicals,tonnes,inputs:consumption,1949,3,22;4;0.2,22,4.2,5.2381,siblings_only
+fao1952,tunisia,pesticides arsenicals,tonnes,inputs:consumption,1950,2,0.2;0.1,0.2,0.1,2.0000,siblings_only
+fao1952,uruguay,pesticides arsenicals,tonnes,inputs:consumption,1949,2,45;2,45,2,22.5000,siblings_only
+fao1952,uruguay,pesticides arsenicals,tonnes,inputs:consumption,1950,2,52;2,52,2,26.0000,siblings_only
+fao1952,venezuela,pesticides arsenicals,tonnes,inputs:consumption,1949,3,3;2;0.1,3,2.1,1.4286,siblings_only
+fao1952,canada,pesticides benzene hexachloride,tonnes,inputs:consumption,1950,2,96;4,96,4,24.0000,siblings_only
+fao1952,canada,pesticides benzene hexachloride,tonnes,inputs:consumption,1951,2,121;0.3,121,0.3,403.3333,siblings_only
+fao1952,uruguay,pesticides benzene hexachloride,tonnes,inputs:consumption,1949,2,45;15,45,15,3.0000,siblings_only
+fao1952,canada,pesticides copper sulphate,tonnes,inputs:consumption,1949,6,2256;958;165;55;48;15,2256,1241,1.8179,siblings_only
+fao1952,canada,pesticides copper sulphate,tonnes,inputs:consumption,1951,5,2093;1233;58;27;10,2093,1328,1.5761,siblings_only
+fao1952,france,pesticides copper sulphate,tonnes,inputs:consumption,1949,2,36500;0.5,36500,0.5,73000.0000,siblings_only
+fao1952,france,pesticides copper sulphate,tonnes,inputs:consumption,1950,2,53000;2,53000,2,26500.0000,siblings_only
+fao1952,italy,pesticides copper sulphate,tonnes,inputs:consumption,1949,2,77436;3514,77436,3514,22.0364,siblings_only
+fao1952,italy,pesticides copper sulphate,tonnes,inputs:consumption,1950,2,70436;3575,70436,3575,19.7024,siblings_only
+fao1952,philippines,pesticides copper sulphate,tonnes,inputs:consumption,1950,2,1;0.2,1,0.2,5.0000,siblings_only
+fao1952,philippines,pesticides copper sulphate,tonnes,inputs:consumption,1951,2,3;0.2,3,0.2,15.0000,siblings_only
+fao1952,sweden,pesticides copper sulphate,tonnes,inputs:consumption,1950,2,100;46,100,46,2.1739,siblings_only
+fao1952,canada,pesticides ddt,tonnes,inputs:consumption,1949,3,972;805;578,972,1383,0.7028,siblings_only
+fao1952,canada,pesticides ddt,tonnes,inputs:consumption,1950,3,2983;625;63,2983,688,4.3358,siblings_only
+fao1952,luxembourg,pesticides ddt,tonnes,inputs:consumption,1949,2,18;5,18,5,3.6000,siblings_only
+fao1952,luxembourg,pesticides ddt,tonnes,inputs:consumption,1950,2,15;1,15,1,15.0000,siblings_only
+fao1952,luxembourg,pesticides ddt,tonnes,inputs:consumption,1951,2,17;15,17,15,1.1333,siblings_only
+fao1952,philippines,pesticides ddt,tonnes,inputs:consumption,1949,2,2;1,2,1,2.0000,siblings_only
+fao1952,philippines,pesticides ddt,tonnes,inputs:consumption,1950,2,5;1,5,1,5.0000,siblings_only
+fao1952,philippines,pesticides ddt,tonnes,inputs:consumption,1951,2,6;2,6,2,3.0000,siblings_only
+fao1952,canada,pesticides nicotine sulphate,tonnes,inputs:consumption,1949,3,40;27;2,40,29,1.3793,siblings_only
+fao1952,canada,pesticides nicotine sulphate,tonnes,inputs:consumption,1950,2,25;18,25,18,1.3889,siblings_only
+fao1952,canada,pesticides nicotine sulphate,tonnes,inputs:consumption,1951,2,32;17,32,17,1.8824,siblings_only
+fao1952,algeria,pesticides sulphur dust,tonnes,inputs:consumption,1949,2,20000;100,20000,100,200.0000,siblings_only
+fao1952,algeria,pesticides sulphur dust,tonnes,inputs:consumption,1950,2,19000;80,19000,80,237.5000,siblings_only
+fao1952,canada,pesticides sulphur dust,tonnes,inputs:consumption,1949,3,210;56;6,210,62,3.3871,siblings_only
+fao1952,canada,pesticides sulphur dust,tonnes,inputs:consumption,1950,3,1227;70;40,1227,110,11.1545,siblings_only
+fao1952,canada,pesticides sulphur dust,tonnes,inputs:consumption,1951,3,1260;103;16,1260,119,10.5882,siblings_only
+fao1952,egypt,pesticides sulphur dust,tonnes,inputs:consumption,1949,2,75;20,75,20,3.7500,siblings_only
+fao1952,france saar,pesticides sulphur dust,tonnes,inputs:consumption,1949,2,40;3,40,3,13.3333,siblings_only
+fao1952,italy,pesticides sulphur dust,tonnes,inputs:consumption,1949,4,23998;6553;5425;3122,23998,15100,1.5893,siblings_only
+fao1952,italy,pesticides sulphur dust,tonnes,inputs:consumption,1950,3,37324;4462;3030,37324,7492,4.9818,siblings_only
+fao1952,italy,pesticides sulphur dust,tonnes,inputs:consumption,1951,2,45059;5137,45059,5137,8.7715,siblings_only
+fao1952,new zealand,pesticides sulphur dust,tonnes,inputs:consumption,1949,2,127;113,127,113,1.1239,siblings_only
+fao1952,norway,pesticides sulphur dust,tonnes,inputs:consumption,1949,2,250;100,250,100,2.5000,siblings_only
+fao1952,norway,pesticides sulphur dust,tonnes,inputs:consumption,1950,2,260;130,260,130,2.0000,siblings_only
+fao1952,norway,pesticides sulphur dust,tonnes,inputs:consumption,1951,2,290;116,290,116,2.5000,siblings_only
+fao1952,uruguay,pesticides sulphur dust,tonnes,inputs:consumption,1949,2,100;5,100,5,20.0000,siblings_only
+fao1952,uruguay,pesticides sulphur dust,tonnes,inputs:consumption,1950,2,30;11,30,11,2.7273,siblings_only
+fao1952,new zealand,pesticides white refined other refined oil,hectoliters,inputs:consumption,1949,2,2273;136,2273,136,16.7132,siblings_only
+fao1952,new zealand,pesticides white refined other refined oil,hectoliters,inputs:consumption,1950,2,2273;136,2273,136,16.7132,siblings_only
+fao1952,new zealand,pesticides white refined other refined oil,hectoliters,inputs:consumption,1951,2,2273;1136,2273,1136,2.0009,siblings_only
+fao1952,algeria,phosphate rock,1000 tonnes,inputs:production,1949,2,602;138,602,138,4.3623,siblings_only
+fao1952,algeria,phosphate rock,1000 tonnes,inputs:production,1950,2,678;145,678,145,4.6759,siblings_only
+fao1952,algeria,phosphate rock,1000 tonnes,inputs:production,1951,2,690;150,690,150,4.6000,siblings_only
+fao1952,belgium,phosphate rock,1000 tonnes,inputs:production,1949,2,42;5,42,5,8.4000,siblings_only
+fao1952,belgium,phosphate rock,1000 tonnes,inputs:production,1950,2,70;8,70,8,8.7500,siblings_only
+fao1952,belgium,phosphate rock,1000 tonnes,inputs:production,1951,2,90;11,90,11,8.1818,siblings_only
+fao1952,chile,phosphate rock,1000 tonnes,inputs:production,1949,2,45;13,45,13,3.4615,siblings_only
+fao1952,chile,phosphate rock,1000 tonnes,inputs:production,1950,2,37;10,37,10,3.7000,siblings_only
+fao1952,chile,phosphate rock,1000 tonnes,inputs:production,1951,2,45;13,45,13,3.4615,siblings_only
+fao1952,egypt,phosphate rock,1000 tonnes,inputs:production,1949,2,397;118,397,118,3.3644,siblings_only
+fao1952,egypt,phosphate rock,1000 tonnes,inputs:production,1950,2,451;134,451,134,3.3657,siblings_only
+fao1952,egypt,phosphate rock,1000 tonnes,inputs:production,1951,2,530;158,530,158,3.3544,siblings_only
+fao1952,france,phosphate rock,1000 tonnes,inputs:production,1950,2,80;9,80,9,8.8889,siblings_only
+fao1952,france,phosphate rock,1000 tonnes,inputs:production,1951,2,100;12,100,12,8.3333,siblings_only
+fao1952,indonesia,phosphate rock,1000 tonnes,inputs:production,1949,2,5;2,5,2,2.5000,siblings_only
+fao1952,ireland,phosphate rock,1000 tonnes,inputs:production,1949,2,29;7,29,7,4.1429,siblings_only
+fao1952,ireland,phosphate rock,1000 tonnes,inputs:production,1950,2,25;7,25,7,3.5714,siblings_only
+fao1952,ireland,phosphate rock,1000 tonnes,inputs:production,1951,2,31;8,31,8,3.8750,siblings_only
+fao1952,makatea,phosphate rock,1000 tonnes,inputs:production,1949,2,84;30,84,30,2.8000,siblings_only
+fao1952,makatea,phosphate rock,1000 tonnes,inputs:production,1950,2,273;100,273,100,2.7300,siblings_only
+fao1952,makatea,phosphate rock,1000 tonnes,inputs:production,1951,2,219;80,219,80,2.7375,siblings_only
+fao1952,mauritius,phosphate rock,1000 tonnes,inputs:production,1950,2,13;6,13,6,2.1667,siblings_only
+fao1952,mauritius,phosphate rock,1000 tonnes,inputs:production,1951,2,13;6,13,6,2.1667,siblings_only
+fao1952,nauru,phosphate rock,1000 tonnes,inputs:production,1949,2,1286;489,1286,489,2.6299,siblings_only
+fao1952,nauru,phosphate rock,1000 tonnes,inputs:production,1950,2,1170;434,1170,434,2.6959,siblings_only
+fao1952,nauru,phosphate rock,1000 tonnes,inputs:production,1951,2,1330;505,1330,505,2.6337,siblings_only
+fao1952,netherlandswest indies,phosphate rock,1000 tonnes,inputs:production,1949,2,90;31,90,31,2.9032,siblings_only
+fao1952,netherlandswest indies,phosphate rock,1000 tonnes,inputs:production,1950,2,92;32,92,32,2.8750,siblings_only
+fao1952,netherlandswest indies,phosphate rock,1000 tonnes,inputs:production,1951,2,92;32,92,32,2.8750,siblings_only
+fao1952,ocean island,phosphate rock,1000 tonnes,inputs:production,1949,2,277;105,277,105,2.6381,siblings_only
+fao1952,ocean island,phosphate rock,1000 tonnes,inputs:production,1950,2,220;84,220,84,2.6190,siblings_only
+fao1952,ocean island,phosphate rock,1000 tonnes,inputs:production,1951,2,268;102,268,102,2.6275,siblings_only
+fao1952,singapore christmas island,phosphate rock,1000 tonnes,inputs:production,1949,2,287;106,287,106,2.7075,siblings_only
+fao1952,singapore christmas island,phosphate rock,1000 tonnes,inputs:production,1950,2,290;110,290,110,2.6364,siblings_only
+fao1952,singapore christmas island,phosphate rock,1000 tonnes,inputs:production,1951,2,308;115,308,115,2.6783,siblings_only
+fao1952,spain,phosphate rock,1000 tonnes,inputs:production,1950,2,20;6,20,6,3.3333,siblings_only
+fao1952,spain,phosphate rock,1000 tonnes,inputs:production,1951,2,22;7,22,7,3.1429,siblings_only
+fao1952,tunisia,phosphate rock,1000 tonnes,inputs:production,1949,2,1449;898,1449,898,1.6136,siblings_only
+fao1952,tunisia,phosphate rock,1000 tonnes,inputs:production,1950,2,1679;1057,1679,1057,1.5885,siblings_only
+fao1952,union of south africa,phosphate rock,1000 tonnes,inputs:production,1949,2,45;9,45,9,5.0000,siblings_only
+fao1952,union of south africa,phosphate rock,1000 tonnes,inputs:production,1950,2,50;8,50,8,6.2500,siblings_only
+fao1952,union of south africa,phosphate rock,1000 tonnes,inputs:production,1951,2,50;8,50,8,6.2500,siblings_only
+fao1952,united states and dependent territories,phosphate rock,1000 tonnes,inputs:production,1949,2,10711;3460,10711,3460,3.0957,siblings_only
+fao1952,united states and dependent territories,phosphate rock,1000 tonnes,inputs:production,1950,2,10827;3464,10827,3464,3.1256,siblings_only
+fao1952,united states and dependent territories,phosphate rock,1000 tonnes,inputs:production,1951,2,11177;3576,11177,3576,3.1256,siblings_only
+fao1952,algeria,poultry,1000 heads,livestock:livestock,1949,4,10000;80;50;10,10000,140,71.4286,siblings_only
+fao1952,algeria,poultry,1000 heads,livestock:livestock,1950,4,10000;80;50;10,10000,140,71.4286,siblings_only
+fao1952,austria,poultry,1000 heads,livestock:livestock,1949,4,3892;162;60;26,3892,248,15.6935,siblings_only
+fao1952,austria,poultry,1000 heads,livestock:livestock,1950,4,4886;158;91;30,4886,279,17.5125,siblings_only
+fao1952,austria,poultry,1000 heads,livestock:livestock,1951,4,6661;171;101;38,6661,310,21.4871,siblings_only
+fao1952,belgium,poultry,1000 heads,livestock:livestock,1950,4,7590;86;36;19,7590,141,53.8298,siblings_only
+fao1952,british borneo brunei,poultry,1000 heads,livestock:livestock,1949,2,39;5,39,5,7.8000,siblings_only
+fao1952,british borneo brunei,poultry,1000 heads,livestock:livestock,1950,2,32;6,32,6,5.3333,siblings_only
+fao1952,british borneo brunei,poultry,1000 heads,livestock:livestock,1951,2,41;8,41,8,5.1250,siblings_only
+fao1952,british borneo north borneo,poultry,1000 heads,livestock:livestock,1951,2,369;31,369,31,11.9032,siblings_only
+fao1952,british borneo sarawak,poultry,1000 heads,livestock:livestock,1950,2,25;8,25,8,3.1250,siblings_only
+fao1952,british borneo sarawak,poultry,1000 heads,livestock:livestock,1951,2,25;8,25,8,3.1250,siblings_only
+fao1952,british guiana,poultry,1000 heads,livestock:livestock,1949,3,422;60;6,422,66,6.3939,siblings_only
+fao1952,british guiana,poultry,1000 heads,livestock:livestock,1950,3,386;55;6,386,61,6.3279,siblings_only
+fao1952,british honduras,poultry,1000 heads,livestock:livestock,1949,2,69;20,69,20,3.4500,siblings_only
+fao1952,british west indies barbados,poultry,1000 heads,livestock:livestock,1949,2,1661;274,1661,274,6.0620,siblings_only
+fao1952,british west indies jamaica,poultry,1000 heads,livestock:livestock,1949,3,27;20;1,27,21,1.2857,siblings_only
+fao1952,british west indies jamaica,poultry,1000 heads,livestock:livestock,1950,3,27;20;1,27,21,1.2857,siblings_only
+fao1952,british west indies jamaica,poultry,1000 heads,livestock:livestock,1951,3,35;20;2,35,22,1.5909,siblings_only
+fao1952,canada,poultry,1000 heads,livestock:livestock,1949,4,69031;2686;518;424,69031,3628,19.0273,siblings_only
+fao1952,canada,poultry,1000 heads,livestock:livestock,1950,4,61469;2559;489;369,61469,3417,17.9892,siblings_only
+fao1952,canada,poultry,1000 heads,livestock:livestock,1951,4,64615;2529;438;352,64615,3319,19.4682,siblings_only
+fao1952,ceylon,poultry,1000 heads,livestock:livestock,1950,4,1829;10;3;1,1829,14,130.6429,siblings_only
+fao1952,ceylon,poultry,1000 heads,livestock:livestock,1951,4,1541;12;4;2,1541,18,85.6111,siblings_only
+fao1952,china taiwan,poultry,1000 heads,livestock:livestock,1949,4,4525;1985;822;102,4525,2909,1.5555,siblings_only
+fao1952,china taiwan,poultry,1000 heads,livestock:livestock,1950,4,4989;2217;987;142,4989,3346,1.4910,siblings_only
+fao1952,china taiwan,poultry,1000 heads,livestock:livestock,1951,4,5143;2547;1037;147,5143,3731,1.3785,siblings_only
+fao1952,costa rica,poultry,1000 heads,livestock:livestock,1950,2,875;38,875,38,23.0263,siblings_only
+fao1952,cuba,poultry,1000 heads,livestock:livestock,1951,4,6945;201;57;31,6945,289,24.0311,siblings_only
+fao1952,cyprus,poultry,1000 heads,livestock:livestock,1950,4,531;6;3;1,531,10,53.1000,siblings_only
+fao1952,cyprus,poultry,1000 heads,livestock:livestock,1951,4,417;6;3;2,417,11,37.9091,siblings_only
+fao1952,czechoslovakia,poultry,1000 heads,livestock:livestock,1949,4,13737;943;321;130,13737,1394,9.8544,siblings_only
+fao1952,denmark,poultry,1000 heads,livestock:livestock,1949,4,25996;695;344;39,25996,1078,24.1150,siblings_only
+fao1952,denmark,poultry,1000 heads,livestock:livestock,1950,4,24548;540;255;22,24548,817,30.0465,siblings_only
+fao1952,denmark,poultry,1000 heads,livestock:livestock,1951,4,22250;401;185;20,22250,606,36.7162,siblings_only
+fao1952,dominican republic,poultry,1000 heads,livestock:livestock,1949,4,2172;48;30;1,2172,79,27.4937,siblings_only
+fao1952,dominican republic,poultry,1000 heads,livestock:livestock,1950,4,2155;54;33;1,2155,88,24.4886,siblings_only
+fao1952,dominican republic,poultry,1000 heads,livestock:livestock,1951,4,1854;52;32;1,1854,85,21.8118,siblings_only
+fao1952,ecuador,poultry,1000 heads,livestock:livestock,1949,4,15000;100;100;20,15000,220,68.1818,siblings_only
+fao1952,ei salvador,poultry,1000 heads,livestock:livestock,1951,3,2756;161;81,2756,242,11.3884,siblings_only
+fao1952,finland,poultry,1000 heads,livestock:livestock,1949,2,2668;5,2668,5,533.6000,siblings_only
+fao1952,finland,poultry,1000 heads,livestock:livestock,1950,2,3108;5,3108,5,621.6000,siblings_only
+fao1952,france,poultry,1000 heads,livestock:livestock,1949,2,75000;10000,75000,10000,7.5000,siblings_only
+fao1952,france,poultry,1000 heads,livestock:livestock,1950,2,75000;10000,75000,10000,7.5000,siblings_only
+fao1952,france,poultry,1000 heads,livestock:livestock,1951,2,75000;10000,75000,10000,7.5000,siblings_only
+fao1952,france saar,poultry,1000 heads,livestock:livestock,1949,4,368;17;4;2,368,23,16.0000,siblings_only
+fao1952,france saar,poultry,1000 heads,livestock:livestock,1950,4,487;20;5;3,487,28,17.3929,siblings_only
+fao1952,france saar,poultry,1000 heads,livestock:livestock,1951,4,545;17;4;3,545,24,22.7083,siblings_only
+fao1952,french guiana,poultry,1000 heads,livestock:livestock,1949,2,6;2,6,2,3.0000,siblings_only
+fao1952,french guiana,poultry,1000 heads,livestock:livestock,1950,2,7;3,7,3,2.3333,siblings_only
+fao1952,french oceania,poultry,1000 heads,livestock:livestock,1949,2,100;30,100,30,3.3333,siblings_only
+fao1952,french oceania,poultry,1000 heads,livestock:livestock,1950,2,100;30,100,30,3.3333,siblings_only
+fao1952,french togoland,poultry,1000 heads,livestock:livestock,1950,2,358;2,358,2,179.0000,siblings_only
+fao1952,french togoland,poultry,1000 heads,livestock:livestock,1951,2,335;3,335,3,111.6667,siblings_only
+fao1952,french west africa,poultry,1000 heads,livestock:livestock,1949,2,12000;800,12000,800,15.0000,siblings_only
+fao1952,french west africa,poultry,1000 heads,livestock:livestock,1950,2,12000;800,12000,800,15.0000,siblings_only
+fao1952,germany,poultry,1000 heads,livestock:livestock,1951,3,67850;4571;1607,67850,6178,10.9825,siblings_only
+fao1952,germany eastern,poultry,1000 heads,livestock:livestock,1951,3,18786;2117;665,18786,2782,6.7527,siblings_only
+fao1952,germany western,poultry,1000 heads,livestock:livestock,1949,4,25182;2178;505;366,25182,3049,8.2591,siblings_only
+fao1952,germany western,poultry,1000 heads,livestock:livestock,1950,4,39957;2807;988;464,39957,4259,9.3818,siblings_only
+fao1952,germany western,poultry,1000 heads,livestock:livestock,1951,4,48064;2419;902;416,48064,3737,12.8617,siblings_only
+fao1952,guadeloupe,poultry,1000 heads,livestock:livestock,1949,3,115;9;3,115,12,9.5833,siblings_only
+fao1952,guadeloupe,poultry,1000 heads,livestock:livestock,1950,3,122;9;4,122,13,9.3846,siblings_only
+fao1952,guam,poultry,1000 heads,livestock:livestock,1949,2,72;1,72,1,72.0000,siblings_only
+fao1952,guam,poultry,1000 heads,livestock:livestock,1950,2,88;1,88,1,88.0000,siblings_only
+fao1952,guam,poultry,1000 heads,livestock:livestock,1951,2,101;1,101,1,101.0000,siblings_only
+fao1952,guatemala,poultry,1000 heads,livestock:livestock,1950,3,5612;4166;233,5612,4399,1.2757,siblings_only
+fao1952,hawaii,poultry,1000 heads,livestock:livestock,1950,3,611;9;3,611,12,50.9167,siblings_only
+fao1952,honduras,poultry,1000 heads,livestock:livestock,1950,3,1574;55;49,1574,104,15.1346,siblings_only
+fao1952,honduras,poultry,1000 heads,livestock:livestock,1951,3,1925;63;42,1925,105,18.3333,siblings_only
+fao1952,hong kong,poultry,1000 heads,livestock:livestock,1950,2,218;22,218,22,9.9091,siblings_only
+fao1952,hong kong,poultry,1000 heads,livestock:livestock,1951,2,681;26,681,26,26.1923,siblings_only
+fao1952,iceland,poultry,1000 heads,livestock:livestock,1951,2,97;1,97,1,97.0000,siblings_only
+fao1952,india,poultry,1000 heads,livestock:livestock,1951,2,30699;4893,30699,4893,6.2741,siblings_only
+fao1952,indochina viet nam,poultry,1000 heads,livestock:livestock,1950,4,2004;1603;210;4,2004,1817,1.1029,siblings_only
+fao1952,indochina viet nam,poultry,1000 heads,livestock:livestock,1951,4,2680;2077;314;5,2680,2396,1.1185,siblings_only
+fao1952,indonesia,poultry,1000 heads,livestock:livestock,1949,2,32000;8000,32000,8000,4.0000,siblings_only
+fao1952,indonesia,poultry,1000 heads,livestock:livestock,1950,2,33000;8500,33000,8500,3.8824,siblings_only
+fao1952,iran,poultry,1000 heads,livestock:livestock,1949,3,13000;90;40,13000,130,100.0000,siblings_only
+fao1952,ireland,poultry,1000 heads,livestock:livestock,1949,4,18524;1159;1062;750,18524,2971,6.2349,siblings_only
+fao1952,ireland,poultry,1000 heads,livestock:livestock,1950,4,17983;1283;934;708,17983,2925,6.1480,siblings_only
+fao1952,ireland,poultry,1000 heads,livestock:livestock,1951,4,15956;1307;809;662,15956,2778,5.7437,siblings_only
+fao1952,israel,poultry,1000 heads,livestock:livestock,1949,2,2113;27,2113,27,78.2593,siblings_only
+fao1952,israel,poultry,1000 heads,livestock:livestock,1950,2,3119;23,3119,23,135.6087,siblings_only
+fao1952,israel,poultry,1000 heads,livestock:livestock,1951,2,4750;40,4750,40,118.7500,siblings_only
+fao1952,japan,poultry,1000 heads,livestock:livestock,1949,3,16356;246;1,16356,247,66.2186,siblings_only
+fao1952,japan,poultry,1000 heads,livestock:livestock,1950,4,16545;258;6;3,16545,267,61.9663,siblings_only
+fao1952,jordan,poultry,1000 heads,livestock:livestock,1949,2,369;1,369,1,369.0000,siblings_only
+fao1952,liberia,poultry,1000 heads,livestock:livestock,1949,2,3000;20,3000,20,150.0000,siblings_only
+fao1952,luxembourg,poultry,1000 heads,livestock:livestock,1949,4,400;6;3;2,400,11,36.3636,siblings_only
+fao1952,luxembourg,poultry,1000 heads,livestock:livestock,1950,4,399;6;3;2,399,11,36.2727,siblings_only
+fao1952,luxembourg,poultry,1000 heads,livestock:livestock,1951,4,401;5;3;2,401,10,40.1000,siblings_only
+fao1952,madagascar,poultry,1000 heads,livestock:livestock,1949,4,3000;500;300;150,3000,950,3.1579,siblings_only
+fao1952,madagascar,poultry,1000 heads,livestock:livestock,1950,4,3000;500;300;150,3000,950,3.1579,siblings_only
+fao1952,malta,poultry,1000 heads,livestock:livestock,1950,3,9857;9;5,9857,14,704.0714,siblings_only
+fao1952,malta,poultry,1000 heads,livestock:livestock,1951,3,971;9;5,971,14,69.3571,siblings_only
+fao1952,marcinique,poultry,1000 heads,livestock:livestock,1949,3,100;8;1,100,9,11.1111,siblings_only
+fao1952,marcinique,poultry,1000 heads,livestock:livestock,1950,3,200;6;1,200,7,28.5714,siblings_only
+fao1952,mozambique,poultry,1000 heads,livestock:livestock,1949,3,69;8;4,69,12,5.7500,siblings_only
+fao1952,mozambique,poultry,1000 heads,livestock:livestock,1950,3,81;8;3,81,11,7.3636,siblings_only
+fao1952,mozambique,poultry,1000 heads,livestock:livestock,1951,3,83;8;3,83,11,7.5455,siblings_only
+fao1952,netherlands,poultry,1000 heads,livestock:livestock,1949,2,9335;388,9335,388,24.0593,siblings_only
+fao1952,netherlands,poultry,1000 heads,livestock:livestock,1950,2,10486;526,10486,526,19.9354,siblings_only
+fao1952,netherlands,poultry,1000 heads,livestock:livestock,1951,2,12449;528,12449,528,23.5777,siblings_only
+fao1952,new zealand,poultry,1000 heads,livestock:livestock,1951,4,3829;261;58;51,3829,370,10.3486,siblings_only
+fao1952,norway,poultry,1000 heads,livestock:livestock,1949,4,6742;21;17;13,6742,51,132.1961,siblings_only
+fao1952,pacific is us trust,poultry,1000 heads,livestock:livestock,1951,2,22;1,22,1,22.0000,siblings_only
+fao1952,pakistan,poultry,1000 heads,livestock:livestock,1950,4,22248;5063;61;1,22248,5125,4.3411,siblings_only
+fao1952,panama,poultry,1000 heads,livestock:livestock,1951,3,1634;86;23,1634,109,14.9908,siblings_only
+fao1952,philippines,poultry,1000 heads,livestock:livestock,1949,4,20359;751;31;31,20359,813,25.0418,siblings_only
+fao1952,philippines,poultry,1000 heads,livestock:livestock,1950,4,27364;954;37;32,27364,1023,26.7488,siblings_only
+fao1952,philippines,poultry,1000 heads,livestock:livestock,1951,4,32122;102;43;34,32122,179,179.4525,siblings_only
+fao1952,poland,poultry,1000 heads,livestock:livestock,1949,4,42909;2931;2651;915,42909,6497,6.6044,siblings_only
+fao1952,southern rhodesia,poultry,1000 heads,livestock:livestock,1949,4,471;21;17;1,471,39,12.0769,siblings_only
+fao1952,southern rhodesia,poultry,1000 heads,livestock:livestock,1950,4,511;21;17;1,511,39,13.1026,siblings_only
+fao1952,southern rhodesia,poultry,1000 heads,livestock:livestock,1951,4,377;20;13;2,377,35,10.7714,siblings_only
+fao1952,spain,poultry,1000 heads,livestock:livestock,1950,4,20338;366;303;72,20338,741,27.4467,siblings_only
+fao1952,surinam,poultry,1000 heads,livestock:livestock,1949,2,150;8,150,8,18.7500,siblings_only
+fao1952,surinam,poultry,1000 heads,livestock:livestock,1950,2,175;10,175,10,17.5000,siblings_only
+fao1952,switzerland,poultry,1000 heads,livestock:livestock,1951,2,6239;68,6239,68,91.7500,siblings_only
+fao1952,syria,poultry,1000 heads,livestock:livestock,1949,4,2235;110;30;16,2235,156,14.3269,siblings_only
+fao1952,syria,poultry,1000 heads,livestock:livestock,1950,4,2447;118;27;14,2447,159,15.3899,siblings_only
+fao1952,syria,poultry,1000 heads,livestock:livestock,1951,4,2483;151;31;16,2483,198,12.5404,siblings_only
+fao1952,turkey,poultry,1000 heads,livestock:livestock,1949,2,18955;1145,18955,1145,16.5546,siblings_only
+fao1952,turkey,poultry,1000 heads,livestock:livestock,1950,2,20222;1174,20222,1174,17.2249,siblings_only
+fao1952,turkey,poultry,1000 heads,livestock:livestock,1951,2,20114;1200,20114,1200,16.7617,siblings_only
+fao1952,union of s africa,poultry,1000 heads,livestock:livestock,1950,4,10206;235;198;71,10206,504,20.2500,siblings_only
+fao1952,united kingdom,poultry,1000 heads,livestock:livestock,1949,4,89152;3736;1144;467,89152,5347,16.6733,siblings_only
+fao1952,united kingdom,poultry,1000 heads,livestock:livestock,1950,4,90789;3112;1250;958,90789,5320,17.0656,siblings_only
+fao1952,united kingdom,poultry,1000 heads,livestock:livestock,1951,4,90067;2379;1168;730,90067,4277,21.0585,siblings_only
+fao1952,united states,poultry,1000 heads,livestock:livestock,1949,2,448676;5540,448676,5540,80.9884,siblings_only
+fao1952,united states,poultry,1000 heads,livestock:livestock,1950,2,456549;5986,456549,5986,76.2695,siblings_only
+fao1952,united states,poultry,1000 heads,livestock:livestock,1951,2,442657;5091,442657,5091,86.9489,siblings_only
+fao1952,uruguay,poultry,1000 heads,livestock:livestock,1951,4,5148;208;163;50,5148,421,12.2280,siblings_only
+fao1952,yugoslavia,poultry,1000 heads,livestock:livestock,1949,4,17043;880;808;487,17043,2175,7.8359,siblings_only
+fao1952,yugoslavia,poultry,1000 heads,livestock:livestock,1950,4,17622;1043;886;575,17622,2504,7.0375,siblings_only
+fao1952,yugoslavia,poultry,1000 heads,livestock:livestock,1951,4,14980;873;789;468,14980,2130,7.0329,siblings_only
+fao1952,zanzibar and pemba,poultry,1000 heads,livestock:livestock,1949,2,150;1,150,1,150.0000,siblings_only
+fao1952,zanzibar and pemba,poultry,1000 heads,livestock:livestock,1950,2,150;1,150,1,150.0000,siblings_only
+fao1952,zanzibar and pemba,poultry,1000 heads,livestock:livestock,1951,2,200;1,200,1,200.0000,siblings_only
+fao1952,bolivia,sweet potatoes yams,1000 hectares,crops:area,1949,2,4;2,4,2,2.0000,siblings_only
+fao1952,bolivia,sweet potatoes yams,1000 tonnes,crops:production,1949,2,30;5,30,5,6.0000,siblings_only
+fao1952,spain,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,3,189;163;26,189,189,1.0000,total_beside_parts
+fao1952,spain,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,3,198;174;24,198,198,1.0000,total_beside_parts
+fao1952,spain,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1951,3,332;305;27,332,332,1.0000,total_beside_parts
+fao1952,united states,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1949,3,891;472;419,891,891,1.0000,total_beside_parts
+fao1952,united states,centrifugal sugar noncentrifugal cane sugar,1000 tonnes,crops:production,1950,3,2337;1825;512,2337,2337,1.0000,total_beside_parts
+fao1952,luxembourg,edible pig fat,1000 tonnes,livestock:production,1950,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,luxembourg,edible pig fat,1000 tonnes,livestock:production,1951,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,italy,grapes,1000 tonnes,crops:production,1950,3,6544;4014;2530,6544,6544,1.0000,total_beside_parts
+fao1952,italy,grapes,1000 tonnes,crops:production,1951,3,7318;4435;2883,7318,7318,1.0000,total_beside_parts
+fao1952,albania,horses mules asses,1000 heads,livestock:livestock,1938,3,54;45;10,54,55,0.9818,total_beside_parts
+fao1952,british cameroons,horses mules asses,1000 heads,livestock:livestock,1949,3,17;10;7,17,17,1.0000,total_beside_parts
+fao1952,british cameroons,horses mules asses,1000 heads,livestock:livestock,1950,3,17;10;7,17,17,1.0000,total_beside_parts
+fao1952,british honduras,horses mules asses,1000 heads,livestock:livestock,1951,2,2;2,2,2,1.0000,total_beside_parts
+fao1952,british west indies st lucia,horses mules asses,1000 heads,livestock:livestock,1939,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,british west indies trinidad and tobago,horses mules asses,1000 heads,livestock:livestock,1939,3,6;4;2,6,6,1.0000,total_beside_parts
+fao1952,french togoland,horses mules asses,1000 heads,livestock:livestock,1937,2,4;4,4,4,1.0000,total_beside_parts
+fao1952,french togoland,horses mules asses,1000 heads,livestock:livestock,1950,2,2;2,2,2,1.0000,total_beside_parts
+fao1952,greece,horses mules asses,1000 heads,livestock:livestock,1950,3,371;232;146,371,378,0.9815,total_beside_parts
+fao1952,greece,horses mules asses,1000 heads,livestock:livestock,1951,3,390;238;156,390,394,0.9898,total_beside_parts
+fao1952,guadeloupe,horses mules asses,1000 heads,livestock:livestock,1949,3,5;4;1,5,5,1.0000,total_beside_parts
+fao1952,guadeloupe,horses mules asses,1000 heads,livestock:livestock,1950,3,5;3;2,5,5,1.0000,total_beside_parts
+fao1952,hawaii,horses mules asses,1000 heads,livestock:livestock,1938,3,8;7;1,8,8,1.0000,total_beside_parts
+fao1952,r union,horses mules asses,1000 heads,livestock:livestock,1936,3,2;1;1,2,2,1.0000,total_beside_parts
+fao1952,surinam,horses mules asses,1000 heads,livestock:livestock,1949,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,surinam,horses mules asses,1000 heads,livestock:livestock,1950,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,surinam,horses mules asses,1000 heads,livestock:livestock,1951,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,algeria,meat,1000 tonnes,livestock:production,1949,4,38;16;12;10,38,38,1.0000,total_beside_parts
+fao1952,algeria,meat,1000 tonnes,livestock:production,1950,4,40;17;12;11,40,40,1.0000,total_beside_parts
+fao1952,algeria,meat,1000 tonnes,livestock:production,1951,4,47;25;16;6,47,47,1.0000,total_beside_parts
+fao1952,angola,meat,1000 tonnes,livestock:production,1949,3,5;4;1,5,5,1.0000,total_beside_parts
+fao1952,angola,meat,1000 tonnes,livestock:production,1950,3,4;3;1,4,4,1.0000,total_beside_parts
+fao1952,argentina,meat,1000 tonnes,livestock:production,1950,4,1184;990;125;69,1184,1184,1.0000,total_beside_parts
+fao1952,argentina,meat,1000 tonnes,livestock:production,1951,4,987;831;105;51,987,987,1.0000,total_beside_parts
+fao1952,austria,meat,1000 tonnes,livestock:production,1949,4,118;61;55;2,118,118,1.0000,total_beside_parts
+fao1952,austria,meat,1000 tonnes,livestock:production,1950,4,196;114;79;3,196,196,1.0000,total_beside_parts
+fao1952,austria,meat,1000 tonnes,livestock:production,1951,4,244;146;95;3,244,244,1.0000,total_beside_parts
+fao1952,belgian congo,meat,1000 tonnes,livestock:production,1949,4,12;9;2;1,12,12,1.0000,total_beside_parts
+fao1952,belgian congo,meat,1000 tonnes,livestock:production,1950,4,12;9;2;1,12,12,1.0000,total_beside_parts
+fao1952,belgium,meat,1000 tonnes,livestock:production,1949,4,260;136;122;2,260,260,1.0000,total_beside_parts
+fao1952,belgium,meat,1000 tonnes,livestock:production,1950,4,304;171;130;3,304,304,1.0000,total_beside_parts
+fao1952,belgium,meat,1000 tonnes,livestock:production,1951,4,302;156;143;3,302,302,1.0000,total_beside_parts
+fao1952,brazil,meat,1000 tonnes,livestock:production,1949,4,1218;955;233;30,1218,1218,1.0000,total_beside_parts
+fao1952,brazil,meat,1000 tonnes,livestock:production,1950,4,1226;956;239;31,1226,1226,1.0000,total_beside_parts
+fao1952,bricish guiana,meat,1000 tonnes,livestock:production,1949,3,4;3;1,4,4,1.0000,total_beside_parts
+fao1952,british west indies jamaica,meat,1000 tonnes,livestock:production,1949,4,13;9;2;2,13,13,1.0000,total_beside_parts
+fao1952,british west indies jamaica,meat,1000 tonnes,livestock:production,1950,4,13;9;2;2,13,13,1.0000,total_beside_parts
+fao1952,british west indies jamaica,meat,1000 tonnes,livestock:production,1951,4,13;9;2;2,13,13,1.0000,total_beside_parts
+fao1952,british west indies trinidad tobago,meat,1000 tonnes,livestock:production,1949,3,2;1;1,2,2,1.0000,total_beside_parts
+fao1952,burma,meat,1000 tonnes,livestock:production,1950,3,8;6;2,8,8,1.0000,total_beside_parts
+fao1952,burma,meat,1000 tonnes,livestock:production,1951,3,9;7;2,9,9,1.0000,total_beside_parts
+fao1952,canada,meat,1000 tonnes,livestock:production,1949,4,883;450;413;20,883,883,1.0000,total_beside_parts
+fao1952,canada,meat,1000 tonnes,livestock:production,1950,4,869;437;416;16,869,869,1.0000,total_beside_parts
+fao1952,canada,meat,1000 tonnes,livestock:production,1951,4,845;456;373;16,845,845,1.0000,total_beside_parts
+fao1952,ceylon,meat,1000 tonnes,livestock:production,1949,3,17;16;1,17,17,1.0000,total_beside_parts
+fao1952,ceylon,meat,1000 tonnes,livestock:production,1950,3,17;16;1,17,17,1.0000,total_beside_parts
+fao1952,ceylon,meat,1000 tonnes,livestock:production,1951,3,21;19;2,21,21,1.0000,total_beside_parts
+fao1952,chile,meat,1000 tonnes,livestock:production,1949,4,155;107;28;20,155,155,1.0000,total_beside_parts
+fao1952,chile,meat,1000 tonnes,livestock:production,1950,4,167;113;29;25,167,167,1.0000,total_beside_parts
+fao1952,chile,meat,1000 tonnes,livestock:production,1951,4,178;122;30;26,178,178,1.0000,total_beside_parts
+fao1952,china taiwan,meat,1000 tonnes,livestock:production,1951,3,65;62;2,65,64,1.0156,total_beside_parts
+fao1952,colombia,meat,1000 tonnes,livestock:production,1949,4,363;305;57;1,363,363,1.0000,total_beside_parts
+fao1952,colombia,meat,1000 tonnes,livestock:production,1950,4,335;280;53;2,335,335,1.0000,total_beside_parts
+fao1952,cuba,meat,1000 tonnes,livestock:production,1949,3,84;78;6,84,84,1.0000,total_beside_parts
+fao1952,czechoslovakia,meat,1000 tonnes,livestock:production,1949,4,290;185;104;1,290,290,1.0000,total_beside_parts
+fao1952,denmark,meat,1000 tonnes,livestock:production,1949,4,409;276;131;2,409,409,1.0000,total_beside_parts
+fao1952,denmark,meat,1000 tonnes,livestock:production,1950,4,525;355;168;2,525,525,1.0000,total_beside_parts
+fao1952,denmark,meat,1000 tonnes,livestock:production,1951,4,603;395;207;1,603,603,1.0000,total_beside_parts
+fao1952,dominican republic,meat,1000 tonnes,livestock:production,1949,3,22;15;7,22,22,1.0000,total_beside_parts
+fao1952,dominican republic,meat,1000 tonnes,livestock:production,1950,3,23;16;7,23,23,1.0000,total_beside_parts
+fao1952,ecuador,meat,1000 tonnes,livestock:production,1949,4,32;24;6;2,32,32,1.0000,total_beside_parts
+fao1952,egypt,meat,1000 tonnes,livestock:production,1949,4,158;123;34;1,158,158,1.0000,total_beside_parts
+fao1952,egypt,meat,1000 tonnes,livestock:production,1950,4,177;132;44;1,177,177,1.0000,total_beside_parts
+fao1952,eritrea,meat,1000 tonnes,livestock:production,1949,3,5;3;2,5,5,1.0000,total_beside_parts
+fao1952,eritrea,meat,1000 tonnes,livestock:production,1950,3,5;4;1,5,5,1.0000,total_beside_parts
+fao1952,eritrea,meat,1000 tonnes,livestock:production,1951,3,4;3;1,4,4,1.0000,total_beside_parts
+fao1952,ethiopia,meat,1000 tonnes,livestock:production,1949,3,290;150;140,290,290,1.0000,total_beside_parts
+fao1952,ethiopia,meat,1000 tonnes,livestock:production,1950,3,300;200;100,300,300,1.0000,total_beside_parts
+fao1952,ethiopia,meat,1000 tonnes,livestock:production,1951,3,320;200;120,320,320,1.0000,total_beside_parts
+fao1952,finland,meat,1000 tonnes,livestock:production,1949,4,107;61;39;7,107,107,1.0000,total_beside_parts
+fao1952,finland,meat,1000 tonnes,livestock:production,1950,4,106;61;38;7,106,106,1.0000,total_beside_parts
+fao1952,france,meat,1000 tonnes,livestock:production,1949,4,1805;965;770;70,1805,1805,1.0000,total_beside_parts
+fao1952,france saar,meat,1000 tonnes,livestock:production,1949,3,7;4;3,7,7,1.0000,total_beside_parts
+fao1952,france saar,meat,1000 tonnes,livestock:production,1950,3,9;5;4,9,9,1.0000,total_beside_parts
+fao1952,france saar,meat,1000 tonnes,livestock:production,1951,3,12;8;4,12,12,1.0000,total_beside_parts
+fao1952,french cameroons,meat,1000 tonnes,livestock:production,1950,3,8;7;1,8,8,1.0000,total_beside_parts
+fao1952,french morocco,meat,1000 tonnes,livestock:production,1949,4,100;49;44;7,100,100,1.0000,total_beside_parts
+fao1952,french morocco,meat,1000 tonnes,livestock:production,1950,4,115;58;50;7,115,115,1.0000,total_beside_parts
+fao1952,french morocco,meat,1000 tonnes,livestock:production,1951,4,127;68;53;6,127,127,1.0000,total_beside_parts
+fao1952,french west africa,meat,1000 tonnes,livestock:production,1949,3,38;35;3,38,38,1.0000,total_beside_parts
+fao1952,french west africa,meat,1000 tonnes,livestock:production,1950,3,39;36;3,39,39,1.0000,total_beside_parts
+fao1952,germany eastern,meat,1000 tonnes,livestock:production,1949,4,419;246;130;43,419,419,1.0000,total_beside_parts
+fao1952,germany western,meat,1000 tonnes,livestock:production,1949,4,1097;620;439;38,1097,1097,1.0000,total_beside_parts
+fao1952,germany western,meat,1000 tonnes,livestock:production,1950,4,1400;830;536;34,1400,1400,1.0000,total_beside_parts
+fao1952,gold coast and br togoland,meat,1000 tonnes,livestock:production,1949,3,19;18;1,19,19,1.0000,total_beside_parts
+fao1952,gold coast and br togoland,meat,1000 tonnes,livestock:production,1950,3,4;3;1,4,4,1.0000,total_beside_parts
+fao1952,gold coast and br togoland,meat,1000 tonnes,livestock:production,1951,3,4;3;1,4,4,1.0000,total_beside_parts
+fao1952,greece,meat,1000 tonnes,livestock:production,1949,4,59;34;16;9,59,59,1.0000,total_beside_parts
+fao1952,greece,meat,1000 tonnes,livestock:production,1950,4,58;33;17;8,58,58,1.0000,total_beside_parts
+fao1952,greece,meat,1000 tonnes,livestock:production,1951,4,60;33;18;9,60,60,1.0000,total_beside_parts
+fao1952,guatemala,meat,1000 tonnes,livestock:production,1949,3,33;27;6,33,33,1.0000,total_beside_parts
+fao1952,guatemala,meat,1000 tonnes,livestock:production,1950,3,37;30;7,37,37,1.0000,total_beside_parts
+fao1952,honduras,meat,1000 tonnes,livestock:production,1950,3,31;28;3,31,31,1.0000,total_beside_parts
+fao1952,honduras,meat,1000 tonnes,livestock:production,1951,3,44;34;10,44,44,1.0000,total_beside_parts
+fao1952,iceland,meat,1000 tonnes,livestock:production,1949,3,9;7;2,9,9,1.0000,total_beside_parts
+fao1952,iceland,meat,1000 tonnes,livestock:production,1950,3,8;6;2,8,8,1.0000,total_beside_parts
+fao1952,iceland,meat,1000 tonnes,livestock:production,1951,3,8;6;2,8,8,1.0000,total_beside_parts
+fao1952,indochina cambodia,meat,1000 tonnes,livestock:production,1949,3,15;11;4,15,15,1.0000,total_beside_parts
+fao1952,indochina cambodia,meat,1000 tonnes,livestock:production,1950,3,17;11;6,17,17,1.0000,total_beside_parts
+fao1952,indochina cambodia,meat,1000 tonnes,livestock:production,1951,3,19;13;6,19,19,1.0000,total_beside_parts
+fao1952,indochina laos,meat,1000 tonnes,livestock:production,1950,3,3;2;1,3,3,1.0000,total_beside_parts
+fao1952,indochina laos,meat,1000 tonnes,livestock:production,1951,3,2;1;1,2,2,1.0000,total_beside_parts
+fao1952,indochina viet nam,meat,1000 tonnes,livestock:production,1949,3,23;14;9,23,23,1.0000,total_beside_parts
+fao1952,indochina viet nam,meat,1000 tonnes,livestock:production,1950,3,26;17;9,26,26,1.0000,total_beside_parts
+fao1952,indochina viet nam,meat,1000 tonnes,livestock:production,1951,3,50;38;12,50,50,1.0000,total_beside_parts
+fao1952,indonesia,meat,1000 tonnes,livestock:production,1949,4,231;158;58;15,231,231,1.0000,total_beside_parts
+fao1952,iran,meat,1000 tonnes,livestock:production,1950,4,76;60;15;1,76,76,1.0000,total_beside_parts
+fao1952,iraq,meat,1000 tonnes,livestock:production,1949,3,45;25;20,45,45,1.0000,total_beside_parts
+fao1952,iraq,meat,1000 tonnes,livestock:production,1950,3,45;24;21,45,45,1.0000,total_beside_parts
+fao1952,ireland,meat,1000 tonnes,livestock:production,1949,4,140;68;58;14,140,140,1.0000,total_beside_parts
+fao1952,ireland,meat,1000 tonnes,livestock:production,1950,4,146;70;60;16,146,146,1.0000,total_beside_parts
+fao1952,ireland,meat,1000 tonnes,livestock:production,1951,4,153;81;58;14,153,153,1.0000,total_beside_parts
+fao1952,italy,meat,1000 tonnes,livestock:production,1949,4,637;326;266;45,637,637,1.0000,total_beside_parts
+fao1952,italy,meat,1000 tonnes,livestock:production,1950,4,511;302;159;50,511,511,1.0000,total_beside_parts
+fao1952,italy,meat,1000 tonnes,livestock:production,1951,4,491;290;152;49,491,491,1.0000,total_beside_parts
+fao1952,japan,meat,1000 tonnes,livestock:production,1949,3,77;43;34,77,77,1.0000,total_beside_parts
+fao1952,japan,meat,1000 tonnes,livestock:production,1950,3,136;79;57,136,136,1.0000,total_beside_parts
+fao1952,japan,meat,1000 tonnes,livestock:production,1951,3,116;69;47,116,116,1.0000,total_beside_parts
+fao1952,kenya,meat,1000 tonnes,livestock:production,1949,4,16;12;2;2,16,16,1.0000,total_beside_parts
+fao1952,kenya,meat,1000 tonnes,livestock:production,1950,4,15;10;4;1,15,15,1.0000,total_beside_parts
+fao1952,kenya,meat,1000 tonnes,livestock:production,1951,4,17;11;5;1,17,17,1.0000,total_beside_parts
+fao1952,luxembourg,meat,1000 tonnes,livestock:production,1949,3,16;11;5,16,16,1.0000,total_beside_parts
+fao1952,luxembourg,meat,1000 tonnes,livestock:production,1950,3,16;11;5,16,16,1.0000,total_beside_parts
+fao1952,luxembourg,meat,1000 tonnes,livestock:production,1951,3,16;11;5,16,16,1.0000,total_beside_parts
+fao1952,madagascar,meat,1000 tonnes,livestock:production,1949,3,60;51;9,60,60,1.0000,total_beside_parts
+fao1952,madagascar,meat,1000 tonnes,livestock:production,1950,3,52;43;9,52,52,1.0000,total_beside_parts
+fao1952,madagascar,meat,1000 tonnes,livestock:production,1951,3,53;46;7,53,53,1.0000,total_beside_parts
+fao1952,malaya federation of,meat,1000 tonnes,livestock:production,1949,3,23;18;5,23,23,1.0000,total_beside_parts
+fao1952,malaya federation of,meat,1000 tonnes,livestock:production,1950,3,25;19;6,25,25,1.0000,total_beside_parts
+fao1952,malaya federation of,meat,1000 tonnes,livestock:production,1951,3,24;19;5,24,24,1.0000,total_beside_parts
+fao1952,malta,meat,1000 tonnes,livestock:production,1949,3,3;2;1,3,3,1.0000,total_beside_parts
+fao1952,malta,meat,1000 tonnes,livestock:production,1950,3,4;2;2,4,4,1.0000,total_beside_parts
+fao1952,martinique,meat,1000 tonnes,livestock:production,1949,3,2;1;1,2,2,1.0000,total_beside_parts
+fao1952,martinique,meat,1000 tonnes,livestock:production,1950,3,2;1;1,2,2,1.0000,total_beside_parts
+fao1952,martinique,meat,1000 tonnes,livestock:production,1951,3,2;1;1,2,2,1.0000,total_beside_parts
+fao1952,mexico,meat,1000 tonnes,livestock:production,1949,4,201;131;58;12,201,201,1.0000,total_beside_parts
+fao1952,netherlands,meat,1000 tonnes,livestock:production,1949,4,211;126;78;7,211,211,1.0000,total_beside_parts
+fao1952,netherlands,meat,1000 tonnes,livestock:production,1950,4,320;181;129;10,320,320,1.0000,total_beside_parts
+fao1952,netherlands,meat,1000 tonnes,livestock:production,1951,4,374;204;166;4,374,374,1.0000,total_beside_parts
+fao1952,new zealand,meat,1000 tonnes,livestock:production,1949,4,543;323;180;40,543,543,1.0000,total_beside_parts
+fao1952,new zealand,meat,1000 tonnes,livestock:production,1950,4,565;337;188;40,565,565,1.0000,total_beside_parts
+fao1952,new zealand,meat,1000 tonnes,livestock:production,1951,4,517;297;180;40,517,517,1.0000,total_beside_parts
+fao1952,northern rhodesia,meat,1000 tonnes,livestock:production,1949,3,11;10;1,11,11,1.0000,total_beside_parts
+fao1952,norway,meat,1000 tonnes,livestock:production,1949,4,90;40;35;15,90,90,1.0000,total_beside_parts
+fao1952,norway,meat,1000 tonnes,livestock:production,1950,4,102;45;43;14,102,102,1.0000,total_beside_parts
+fao1952,norway,meat,1000 tonnes,livestock:production,1951,4,97;47;35;15,97,97,1.0000,total_beside_parts
+fao1952,pakistan,meat,1000 tonnes,livestock:production,1950,3,264;203;61,264,264,1.0000,total_beside_parts
+fao1952,peru,meat,1000 tonnes,livestock:production,1951,4,95;67;16;12,95,95,1.0000,total_beside_parts
+fao1952,philippines,meat,1000 tonnes,livestock:production,1949,4,104;67;36;1,104,104,1.0000,total_beside_parts
+fao1952,philippines,meat,1000 tonnes,livestock:production,1950,4,135;94;40;1,135,135,1.0000,total_beside_parts
+fao1952,philippines,meat,1000 tonnes,livestock:production,1951,4,144;98;44;2,144,144,1.0000,total_beside_parts
+fao1952,portugal,meat,1000 tonnes,livestock:production,1949,4,81;36;34;11,81,81,1.0000,total_beside_parts
+fao1952,portugal,meat,1000 tonnes,livestock:production,1950,4,75;31;31;13,75,75,1.0000,total_beside_parts
+fao1952,portugal,meat,1000 tonnes,livestock:production,1951,4,72;33;28;11,72,72,1.0000,total_beside_parts
+fao1952,puerto rico,meat,1000 tonnes,livestock:production,1949,3,12;7;5,12,12,1.0000,total_beside_parts
+fao1952,puerto rico,meat,1000 tonnes,livestock:production,1950,3,19;10;9,19,19,1.0000,total_beside_parts
+fao1952,r union,meat,1000 tonnes,livestock:production,1950,3,2;1;1,2,2,1.0000,total_beside_parts
+fao1952,r union,meat,1000 tonnes,livestock:production,1951,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,ruanda urundi,meat,1000 tonnes,livestock:production,1949,3,8;7;1,8,8,1.0000,total_beside_parts
+fao1952,ruanda urundi,meat,1000 tonnes,livestock:production,1950,3,12;10;2,12,12,1.0000,total_beside_parts
+fao1952,ruanda urundi,meat,1000 tonnes,livestock:production,1951,3,12;10;2,12,12,1.0000,total_beside_parts
+fao1952,singapore,meat,1000 tonnes,livestock:production,1951,4,10;8;1;1,10,10,1.0000,total_beside_parts
+fao1952,south west africa,meat,1000 tonnes,livestock:production,1949,3,37;36;1,37,37,1.0000,total_beside_parts
+fao1952,south west africa,meat,1000 tonnes,livestock:production,1950,4,29;27;1;1,29,29,1.0000,total_beside_parts
+fao1952,south west africa,meat,1000 tonnes,livestock:production,1951,4,27;25;1;1,27,27,1.0000,total_beside_parts
+fao1952,southern rhodesia,meat,1000 tonnes,livestock:production,1949,4,39;35;3;1,39,39,1.0000,total_beside_parts
+fao1952,southern rhodesia,meat,1000 tonnes,livestock:production,1950,4,42;38;3;1,42,42,1.0000,total_beside_parts
+fao1952,southern rhodesia,meat,1000 tonnes,livestock:production,1951,4,49;44;4;1,49,49,1.0000,total_beside_parts
+fao1952,spain,meat,1000 tonnes,livestock:production,1950,4,432;188;135;109,432,432,1.0000,total_beside_parts
+fao1952,swaziland,meat,1000 tonnes,livestock:production,1949,4,14;11;2;1,14,14,1.0000,total_beside_parts
+fao1952,swaziland,meat,1000 tonnes,livestock:production,1950,4,12;9;2;1,12,12,1.0000,total_beside_parts
+fao1952,sweden,meat,1000 tonnes,livestock:production,1949,4,277;167;107;3,277,277,1.0000,total_beside_parts
+fao1952,sweden,meat,1000 tonnes,livestock:production,1950,4,291;171;118;2,291,291,1.0000,total_beside_parts
+fao1952,sweden,meat,1000 tonnes,livestock:production,1951,4,312;172;138;2,312,312,1.0000,total_beside_parts
+fao1952,switzerland,meat,1000 tonnes,livestock:production,1949,4,165;82;80;3,165,165,1.0000,total_beside_parts
+fao1952,switzerland,meat,1000 tonnes,livestock:production,1950,4,179;91;85;3,179,179,1.0000,total_beside_parts
+fao1952,switzerland,meat,1000 tonnes,livestock:production,1951,4,177;88;86;3,177,177,1.0000,total_beside_parts
+fao1952,syria,meat,1000 tonnes,livestock:production,1950,3,29;27;2,29,29,1.0000,total_beside_parts
+fao1952,syria,meat,1000 tonnes,livestock:production,1951,3,21;18;3,21,21,1.0000,total_beside_parts
+fao1952,tanganyika,meat,1000 tonnes,livestock:production,1950,3,95;86;9,95,95,1.0000,total_beside_parts
+fao1952,tanganyika,meat,1000 tonnes,livestock:production,1951,3,85;77;8,85,85,1.0000,total_beside_parts
+fao1952,thailand,meat,1000 tonnes,livestock:production,1949,3,92;72;20,92,92,1.0000,total_beside_parts
+fao1952,tunisia,meat,1000 tonnes,livestock:production,1950,4,29;18;8;3,29,29,1.0000,total_beside_parts
+fao1952,tunisia,meat,1000 tonnes,livestock:production,1951,4,29;18;8;3,29,29,1.0000,total_beside_parts
+fao1952,turkey,meat,1000 tonnes,livestock:production,1949,3,80;46;34,80,80,1.0000,total_beside_parts
+fao1952,turkey,meat,1000 tonnes,livestock:production,1950,3,88;52;36,88,88,1.0000,total_beside_parts
+fao1952,turkey,meat,1000 tonnes,livestock:production,1951,3,98;58;40,98,98,1.0000,total_beside_parts
+fao1952,u of s africa,meat,1000 tonnes,livestock:production,1949,4,405;285;68;52,405,405,1.0000,total_beside_parts
+fao1952,u of s africa,meat,1000 tonnes,livestock:production,1950,4,421;299;70;52,421,421,1.0000,total_beside_parts
+fao1952,u of s africa,meat,1000 tonnes,livestock:production,1951,4,399;271;76;52,399,399,1.0000,total_beside_parts
+fao1952,united kingdom,meat,1000 tonnes,livestock:production,1949,4,952;537;273;142,952,952,1.0000,total_beside_parts
+fao1952,united kingdom,meat,1000 tonnes,livestock:production,1951,4,1158;663;361;134,1158,1158,1.0000,total_beside_parts
+fao1952,united states,meat,1000 tonnes,livestock:production,1949,4,9827;4887;4666;274,9827,9827,1.0000,total_beside_parts
+fao1952,united states,meat,1000 tonnes,livestock:production,1950,4,10015;4884;4860;271,10015,10015,1.0000,total_beside_parts
+fao1952,united states,meat,1000 tonnes,livestock:production,1951,4,9938;5209;4492;237,9938,9938,1.0000,total_beside_parts
+fao1952,uruguay,meat,1000 tonnes,livestock:production,1949,4,386;302;70;14,386,386,1.0000,total_beside_parts
+fao1952,uruguay,meat,1000 tonnes,livestock:production,1950,4,397;314;69;14,397,397,1.0000,total_beside_parts
+fao1952,uruguay,meat,1000 tonnes,livestock:production,1951,4,380;314;48;18,380,380,1.0000,total_beside_parts
+fao1952,venezuela,meat,1000 tonnes,livestock:production,1949,4,81;63;17;1,81,81,1.0000,total_beside_parts
+fao1952,venezuela,meat,1000 tonnes,livestock:production,1950,4,88;70;17;1,88,88,1.0000,total_beside_parts
+fao1952,venezuela,meat,1000 tonnes,livestock:production,1951,4,86;70;15;1,86,86,1.0000,total_beside_parts
+fao1952,british borneo brunei,natural rubber,1000 tonnes,crops:production,1949,3,1.7;1.1;0.6,1.7,1.7,1.0000,total_beside_parts
+fao1952,british borneo brunei,natural rubber,1000 tonnes,crops:production,1950,3,2.5;1.8;0.7,2.5,2.5,1.0000,total_beside_parts
+fao1952,british borneo brunei,natural rubber,1000 tonnes,crops:production,1951,3,2.4;1.9;0.5,2.4,2.4,1.0000,total_beside_parts
+fao1952,federation of malaya,natural rubber,1000 tonnes,crops:production,1949,3,682.3;407.3;275,682.3,682.3,1.0000,total_beside_parts
+fao1952,federation of malaya,natural rubber,1000 tonnes,crops:production,1950,3,705.2;382.8;322.4,705.2,705.2,1.0000,total_beside_parts
+fao1952,federation of malaya,natural rubber,1000 tonnes,crops:production,1951,3,615.1;334.1;281,615.1,615.1,1.0000,total_beside_parts
+fao1952,indonesia,natural rubber,1000 tonnes,crops:production,1949,3,438.8;268.1;170.7,438.8,438.8,1.0000,total_beside_parts
+fao1952,indonesia,natural rubber,1000 tonnes,crops:production,1950,3,707.6;529.7;177.9,707.6,707.6,1.0000,total_beside_parts
+fao1952,indonesia,natural rubber,1000 tonnes,crops:production,1951,3,818.1;601.4;216.7,818.1,818.1,1.0000,total_beside_parts
+fao1952,france saar,other meat,1000 tonnes,livestock:production,1951,3,0.5;0.4;0.1,0.5,0.5,1.0000,total_beside_parts
+fao1952,luxembourg,other meat,1000 tonnes,livestock:production,1948,2,0.2;0.2,0.2,0.2,1.0000,total_beside_parts
+fao1952,luxembourg,other meat,1000 tonnes,livestock:production,1949,2,0.2;0.2,0.2,0.2,1.0000,total_beside_parts
+fao1952,martinique,other meat,1000 tonnes,livestock:production,1948,2,0.1;0.1,0.1,0.1,1.0000,total_beside_parts
+fao1952,new caledonia,other meat,1000 tonnes,livestock:production,1948,2,0.2;0.2,0.2,0.2,1.0000,total_beside_parts
+fao1952,austria,pesticides arsenicals,tonnes,inputs:consumption,1951,2,1;1,1,1,1.0000,total_beside_parts
+fao1952,greece,pesticides arsenicals,tonnes,inputs:consumption,1949,2,100;100,100,100,1.0000,total_beside_parts
+fao1952,iceland,pesticides arsenicals,tonnes,inputs:consumption,1949,2,0.1;0.1,0.1,0.1,1.0000,total_beside_parts
+fao1952,iceland,pesticides arsenicals,tonnes,inputs:consumption,1951,2,0.1;0.1,0.1,0.1,1.0000,total_beside_parts
+fao1952,trieste uk us,pesticides arsenicals,tonnes,inputs:consumption,1949,2,0.2;0.2,0.2,0.2,1.0000,total_beside_parts
+fao1952,trieste uk us,pesticides arsenicals,tonnes,inputs:consumption,1950,2,0.2;0.2,0.2,0.2,1.0000,total_beside_parts
+fao1952,trieste uk us,pesticides arsenicals,tonnes,inputs:consumption,1951,2,0.2;0.2,0.2,0.2,1.0000,total_beside_parts
+fao1952,uruguay,pesticides benzene hexachloride,tonnes,inputs:consumption,1950,2,25;25,25,25,1.0000,total_beside_parts
+fao1952,uruguay,pesticides benzene hexachloride,tonnes,inputs:consumption,1951,2,25;25,25,25,1.0000,total_beside_parts
+fao1952,belgian congo,sweet potatoes yams,1000 hectares,crops:area,1949,3,64;63;1,64,64,1.0000,total_beside_parts
+fao1952,belgian congo,sweet potatoes yams,1000 tonnes,crops:production,1949,3,382;375;7,382,382,1.0000,total_beside_parts
+fao1952,belgian congo,sweet potatoes yams,1000 hectares,crops:area,1950,3,59;58;1,59,59,1.0000,total_beside_parts
+fao1952,belgian congo,sweet potatoes yams,1000 tonnes,crops:production,1950,3,378;371;7,378,378,1.0000,total_beside_parts
+fao1952,belgian congo,sweet potatoes yams,1000 hectares,crops:area,1951,3,60;59;1,60,60,1.0000,total_beside_parts
+fao1952,belgian congo,sweet potatoes yams,1000 tonnes,crops:production,1951,3,386;380;6,386,386,1.0000,total_beside_parts
