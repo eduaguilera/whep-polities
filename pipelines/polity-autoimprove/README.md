@@ -242,8 +242,19 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        is SPLICED and each splice is a seam. 373 seams move the value >30%, 30
                        by >100x. Nine countries show tobacco jumping x101 at a mitchell->iia
                        seam and back at the return seam (Japan 86,000 t -> 8,705,400 -> 84,000),
-                       i.e. IIA tobacco is ~100x too large for its stated unit. --write refreshes
-                       the TRACKED state/source_splices.csv that validate_source_splices.py reads
+                       i.e. 40 IIA tobacco cells are implausibly large (logged as
+                       iia-tobacco-implausible-magnitudes; the x101 factor holds only where the
+                       comparison year is ADJACENT, so it is not a licence to rescale). --write
+                       refreshes the TRACKED state/source_splices.csv validate_source_splices.py reads
+17_constant_runs.py    does a series repeat one value for years in a way its own resolution
+                       refutes? A flat line breaks no magnitude bound, opens no year gap and
+                       crosses no seam, so nothing else looked for it — but the rows carry ZERO
+                       VARIANCE and read as "unchanged" when nobody knew. Only self-refuting runs
+                       count: argentina soybeans resolves 2 ha then sits at exactly 1,000 for 11
+                       years; denmark potatoes reads 54,000 for a decade in a series carrying
+                       54,100. 246 runs, 1,619 rows, 210 series (juan 1,035, iia 522, mitchell 62;
+                       fao1952 nil, as its values are non-integer and have no coarse grid to sit
+                       on). --write refreshes state/constant_runs.csv for validate_constant_runs.py
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
