@@ -1174,35 +1174,25 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
 
 
 def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
-    """Mark a clean label as one whose values come from two raw territories at once.
+    """Mark a span whose values come from ONE territory as coming from two.
 
-    Inverse of the real defect, and deliberately so. The real defect was that the mapping was not
-    tracked at all, so `serbia` meaning Yugoslavia and `viet nam` meaning Tonkin were invisible;
-    that state cannot be re-injected once the file exists. What CAN regress is the provenance file
-    drifting so a mixed target reads as clean, at which point the gate stops refusing equality
-    claims on it and the blindness returns silently.
+    Inverse of the real defect, deliberately: the original state -- no provenance table at all, so
+    `serbia` meaning Yugoslavia was invisible -- cannot be re-injected once the file exists. What CAN
+    regress is a signal drifting so a mixed span reads clean, at which point the gate stops refusing
+    equality claims on it. This goes the other way and requires the ceiling to be breached.
 
-    So this goes the other way: it takes an IIA label that currently carries a `verified_equal`
-    verdict and is NOT flagged, and marks its target as assembled from a whole plus sub-labels.
-    The verdict is then an equality claim on a mixed label and the count must exceed its ceiling.
+    MUTATES THE SPAN TABLE, because that is what the gate reads. An earlier version perturbed
+    `territory_signal` in the LABEL table, and when the gate learned to prefer per-span signals the
+    mutation silently stopped biting -- the harness reported "PASSED a mutation it claims to catch",
+    which is exactly the state it exists to detect. A mutator has to target the file the gate
+    actually consults, and that changed under it.
 
-    Chosen by scanning rather than hard-coded, because which labels carry `verified_equal` changes
-    with every verification pass -- a pinned label would rot into a case that cannot fail.
-
-    Nothing else notices: no other gate reads this file, and the verdict itself is well-formed.
+    Picks its target by scanning for a banked `verified_equal` whose span currently reads clean,
+    rather than hard-coding one, since which assertions carry that verdict changes every pass.
     """
-    prov = os.path.join(root, "pipelines/polity-autoimprove/state/iia_label_provenance.csv")
+    span = os.path.join(root, "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv")
     applied = os.path.join(root, "pipelines/polity-autoimprove/state/verdicts_applied.jsonl")
     ledger = os.path.join(root, "pipelines/polity-autoimprove/state/review_ledger.csv")
-
-    def _n(x):
-        return re.sub(r"[^a-z0-9]+", " ", str(x).lower()).strip()
-
-    with open(prov, newline="", encoding="utf-8") as fh:
-        rows = list(csv.DictReader(fh))
-        fields = list(rows[0])
-    mixed = {r.get("layer_b_label") for r in rows
-             if r.get("territory_signal") == "mixed"}
 
     retracted = set()
     with open(ledger, newline="", encoding="utf-8") as fh:
@@ -1210,7 +1200,7 @@ def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
             if (r.get("status") or "") == "issue":
                 retracted.add((r.get("key") or "").strip())
 
-    target = None
+    equal_keys = []
     with open(applied, encoding="utf-8") as fh:
         for line in fh:
             line = line.strip()
@@ -1220,37 +1210,30 @@ def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
             if not isinstance(v, dict):
                 continue
             key = v.get("key") or ""
-            if "|iia|" not in key or key in retracted:
-                continue
-            if v.get("confirm_kind") != "verified_equal":
-                continue
-            lab = _n(key.split("|")[0])
-            if lab not in mixed:
-                target = lab
-                break
-    assert target, "no unflagged IIA verified_equal verdict to build the case on"
+            if "|iia|" in key and key not in retracted and v.get("confirm_kind") == "verified_equal":
+                equal_keys.append(key)
 
-    hit = 0
+    with open(span, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+
+    hit = None
     for r in rows:
-        # Match on the RESOLVED layer-B label, the same key the gate joins on. Matching
-        # `assigned_modern` instead failed on `south korea`, because the mapping carries the long
-        # official name -- the same 10% miss the gate itself had.
-        if r.get("layer_b_label") == target and hit == 0:
-            # Mutate `territory_signal`, the field the gate READS. An earlier version set `kind`
-            # instead -- the spec's intent -- and after the gate moved to observed mixing the
-            # mutation stopped biting: the harness reported "PASSED a mutation it claims to catch",
-            # which is precisely the state it exists to detect.
-            r["territory_signal"] = "mixed"
-            r["fingerprint_note"] = "injected: two raw labels above the floor"
-            hit += 1
-    assert hit == 1, f"expected one provenance row for {target}, changed {hit}"
-    with open(prov, "w", newline="", encoding="utf-8") as fh:
+        if r["key"] in equal_keys and r["span_signal"] not in ("mixed", "no_dominant_source"):
+            if int(r["n_values"] or 0) >= 8:
+                hit = r
+                break
+    assert hit, "no banked verified_equal with a clean, well-sampled span to build the case on"
+    hit["span_signal"] = "mixed"
+    hit["note"] = "injected: two raw labels above the floor"
+
+    with open(span, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=fields)
         w.writeheader()
         w.writerows(rows)
-    return (f"marked `{target}` as a target assembled from a whole plus sub-labels, so the "
-            f"`verified_equal` verdict already banked against it is an equality claim on a label "
-            f"whose values come from two territories at once")
+    return (f"marked `{hit['key']}` as a span whose values come from two territories at once, so the "
+            f"`verified_equal` verdict already banked against it is an equality claim on a span with "
+            f"no single territory")
 
 def mutate_ledger_verdict_on_dead_polity(root, gpd, make_valid, affinity):
     """Re-point a banked verdict at a polity code that does not exist.
@@ -2403,8 +2386,9 @@ CASES = (
         "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
         "verified_equal",
-        "a provenance row that hides an observed whole-plus-parts merge, so equality claims on a "
-        "label with no single territory stop being refused",
+        "a per-SPAN provenance row that hides an observed whole-plus-parts merge, so equality "
+        "claims on a span with no single territory stop being refused — the gate reads the span "
+        "table in preference to the label table, and a mutator aimed at the wrong one passes",
     ),
     (
         "validate_review_ledger.py",
@@ -2870,6 +2854,7 @@ WRITABLE = {
     # its target by scanning them for an unflagged `verified_equal`, and the gate reads the ledger
     # to tell a retracted verdict from a live one.
     "validate_iia_label_provenance.py": (
+        "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",
         "pipelines/polity-autoimprove/state/iia_label_provenance.csv",
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
         "pipelines/polity-autoimprove/state/review_ledger.csv",
