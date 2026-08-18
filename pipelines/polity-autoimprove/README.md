@@ -236,6 +236,17 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        different model (opus vs sonnet) under a rotated lens —
                        see "Decorrelating the blind review".
                        Writes state/<args.out> (nothing applied).
+select_tranche.py      picks the next batch to verify: highest-exposure assertions
+                       that are pending AND have no banked verdict. Status alone is
+                       NOT the filter — apply_verdicts.py writes the ledger, and
+                       until 00_intake.py re-runs, a just-verified assertion still
+                       reads `pending` (49 do right now). The authority is
+                       verdicts_applied.jsonl, whose key is NESTED at
+                       record["verdict"]["key"] — reading it top-level yields None
+                       for every record, an empty exclusion set, and a re-run of the
+                       batch you just finished. Also reports, without selecting,
+                       assertions whose candidate no longer exists. --json emits the
+                       bare array for the workflow's `keys`. Not a gate.
 review_stats.py        measures the review itself out of the banked archive:
                        coverage, coverage of confident confirms (the class the
                        sampler can skip), agreement sliced by model pair and by
@@ -272,9 +283,11 @@ chunk the pending keys (~100/run) through the verify workflow, inspect
 banked assertions; an assertion reopens only when its evidence hash changes —
 or when the verification protocol does (next section).
 
-The workflow needs `args.keys` (compute from assertions.json status
-pending/reopened); the agent verdicts are DECISIONS — apply_verdicts.py never
-re-derives them, it only validates executability and records them.
+The workflow needs `args.keys`. Get them from `select_tranche.py --json` rather than
+filtering assertions.json yourself: `status` is stale between `apply_verdicts.py` and
+the next `00_intake.py`, so a status-only filter re-selects assertions that already
+have verdicts. The agent verdicts are DECISIONS — apply_verdicts.py never re-derives
+them, it only validates executability and records them.
 
 #### Sources onboarded so far
 
