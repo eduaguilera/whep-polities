@@ -56,34 +56,25 @@ LEDGER = os.path.join(REPO, "pipelines/polity-autoimprove/state/review_ledger.cs
 # Kinds where the layer-B label cannot be one territory.
 MIXING = ("multi_country", "whole_with_sub_siblings")
 
-# Measured 2026-08-18 against OBSERVED mixing. Three verdicts:
-#   french polynesia|iia|1909-1938  `french oceania` + `french oceania: makatea island` (one island)
-#   niger|iia|1929-1945             `french niger` + `french west africa` (an eight-territory federation)
-#   serbia|iia|1921-1945            `yugoslavia` + `kingdom of serbs, croats and slovenes`
+# Measured 2026-08-18. ONE verdict: `french polynesia|iia|1909-1938` -> PYF-1800-2025, whose label
+# reports `french oceania: makatea island` alone in 1909-1920 and the whole `french oceania` in
+# 1930-1937 -- a phosphate island's output attributed to the territory for the early years.
 #
-# The count moved five times and EVERY wrong value printed as a clean pass or a plausible list:
+# This count has moved SIX times and every wrong value printed as a clean pass or a plausible list:
 #   14  trusting the applied record's own `quarantined` flag; a retraction sets the LEDGER to `issue`
 #   12  joining on country NAME, missing 16 of 164 labels where the spec writes "Korea, Republic of"
 #   13  counting the SPEC's merges, which flagged `jamaica` (86% `british jamaica` alone) for an
 #       intent that never materialised in this data
-#    1  counting observed merges, but judging a runner-up by its SHARE
-#    3  judging a runner-up by what it ADDS TO THE UNION, which is the only measure immune to one
-#       value matching several raw labels. That reclassified `ghana` (togoland 63% + gold coast 27%,
-#       union 90% -- two unrelated colonies), `mozambique` (concession 68% + province 19%, union 84%,
-#       with the colony-wide series contributing NOTHING), `serbia` and `austria`.
-#
-# The rise from 1 to 3 was the measurement improving, not the data degrading.
-#
-#    2  `niger|iia|1929-1945` retracted 2026-08-18 on the measurement rather than left inside the
-#       grandfathered ceiling. Its label carries raw `french west africa` -- the eight-territory
-#       federation -- while all seven OTHER constituents resolve cleanly to their own colonial
-#       labels and receive their own layer-B rows, so the federation total sat on Niger and any
-#       FWA aggregate counted it twice. Same shape as congo/FEA.
-#
-# `serbia|iia|1921-1945` is the remaining mixed claim and is deliberately NOT retracted here: it is
-# entangled with whether SER-1918-1945 should exist at all (issues 315, 317), which is a judgement
-# for a historian rather than a measurement to act on.
-BASELINE_VERIFIED_EQUAL_ON_MIXED = 2
+#    1  counting observed merges, but judging a runner-up by its SHARE rather than by what it ADDS
+#    3  judging by union gain, which correctly added `ghana`, `mozambique`, `serbia` and `austria`
+#    2  `niger` retracted on the measurement rather than left grandfathered (the federation total
+#       sat on Niger while all seven siblings resolved cleanly to their own labels)
+#    1  distinguishing CONCURRENT sources from SEQUENTIAL ones. `serbia` is the Kingdom of Serbs,
+#       Croats and Slovenes until 1929 and Yugoslavia after -- one state renamed, each era with one
+#       territory -- so it is `sequential_rename` and this gate is not the right instrument for it.
+#       Its actual problem is which polity it routes to (issues 315, 317). `french polynesia` stays,
+#       because sequential there means a PART in some eras and the WHOLE in others.
+BASELINE_VERIFIED_EQUAL_ON_MIXED = 1
 
 # The eight the mapping itself declares as spanning several modern countries. Pinned by name so a
 # change to the mapping surfaces here rather than silently shifting the count.
@@ -140,8 +131,17 @@ def main() -> int:
     # Only `mixed` fails. Gating on the spec's `kind` instead was wrong in both directions: it
     # flagged `jamaica` (86% `british jamaica` alone) and `austria` and `niger`, and it flagged
     # them because the SPEC merges labels there, not because this data does.
+    # `mixed` = two sources in the SAME years, so the label has no single territory at any moment.
+    # `sequential_scope` = one source at a time, but a whole in some eras and a PART of it in
+    # others -- `french polynesia` is one phosphate island 1909-1920 then the whole territory
+    # 1930-1937 -- so the early years attribute a component's output to the parent. Both defeat an
+    # equality claim.
+    # `sequential_rename` does NOT: `serbia` is the Kingdom of Serbs, Croats and Slovenes and then
+    # Yugoslavia, one state across a 1929 renaming, and each era genuinely has one territory. That
+    # label's problem is which POLITY it routes to (issues 315, 317), which this gate is not about.
+    FAILING = ("mixed", "sequential_scope")
     mixed_targets = {r["layer_b_label"] for r in prov
-                     if r.get("territory_signal") == "mixed" and r.get("layer_b_label")}
+                     if r.get("territory_signal") in FAILING and r.get("layer_b_label")}
     declared_multi = {r["raw_label"] for r in prov if r["kind"] == "multi_country"}
 
     offenders = []
