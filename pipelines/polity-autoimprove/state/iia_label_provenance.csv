@@ -1,336 +1,336 @@
-raw_label,assigned_modern,iso3,layer_b_label,kind,n_labels_on_target,parent_label,n_sub_labels,notes_countries,notes
-albania,Albania,ALB,albania,one_to_one,1,,0,0,
-anglo-egyptian sudan,Egypt,EGY,egypt,multi_country,2,,0,3,Egypt; Sudan; South Sudan
-new hebrides,Vanuatu,VUT,vanuatu,one_to_one,1,,0,0,
-argentina,Argentina,ARG,argentina,whole_with_sub_siblings,2,,1,0,
-argentina: province of mendoza,Argentina,ARG,argentina,sub_of_sibling,2,argentina,0,0,
-australia,Australia,AUS,australia,whole_with_sub_siblings,5,,3,0,
-australia: queensland,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,
-australia: tasmania,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,
-christmas island,Australia,AUS,australia,shares_target,5,,0,0,
-papua new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,
-austria-hungary,Austria,AUT,austria,multi_country,2,austria,0,13,Austria; Hungary; Czech Republic; Slovakia; Slovenia; Croatia; Bosnia and Herzegovina; Romania; Ukraine; Poland; Italy; Serbia; Montenegro
-british west indies: bahamas,Bahamas,BHS,,one_to_one,1,,0,0,
-banaba island,Kiribati,KIR,kiribati,shares_target,2,,0,0,
-british west indies: barbados,Barbados,BRB,barbados,shares_target,2,,0,0,
-belgian congo,Democratic Republic of the Congo,COD,dr congo,one_to_one,1,,0,0,
-ruanda-urundi,Burundi,BDI,burundi,one_to_one,1,,0,0,Ruanda-Urundi
-belgium,Belgium,BEL,belgium,one_to_one,1,,0,0,
-british west indies: bermuda,Bermuda,BMU,bermuda,one_to_one,1,,0,0,
-bolivia,Bolivia (Plurinational State of),BOL,bolivia,one_to_one,1,,0,0,
-brazil,Brazil,BRA,brazil,whole_with_sub_siblings,2,,1,0,
-brazil: sao paulo,Brazil,BRA,brazil,sub_of_sibling,2,brazil,0,0,Sao Paulo
-british and french cameroon,Cameroon,CMR,cameroon,multi_country,3,,0,2,British Cameroon; French Cameroon
-ascension island,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,shares_target,6,,0,0,Overseas territory of Ascension Island
-sierra leone,Sierra Leone,SLE,sierra leone,one_to_one,1,,0,0,
-british india: aden,Yemen,YEM,yemen,one_to_one,1,,0,0,
-british west indies: antigua,Antigua and Barbuda,ATG,antigua and barbuda,shares_target,2,,0,0,
-british guiana,Guyana,GUY,guyana,one_to_one,1,,0,0,
-cyprus,Cyprus,CYP,cyprus,one_to_one,1,,0,0,
-british west indies: dominica,Dominica,DMA,dominica,one_to_one,1,,0,0,
-fiji islands,Fiji,FJI,fiji,one_to_one,1,,0,0,
-kenya,Kenya,KEN,kenya,whole_with_sub_siblings,2,,1,0,
-malta,Malta,MLT,malta,one_to_one,1,,0,0,
-mauritius,Mauritius,MUS,mauritius,whole_with_sub_siblings,2,,1,0,
-mauritius and dependencies,Mauritius,MUS,mauritius,sub_of_sibling,2,mauritius,0,0,
-british west indies: montserrat,Montserrat,MSR,montserrat,one_to_one,1,,0,0,
-seychelles,Seychelles,SYC,seychelles,one_to_one,1,,0,0,
-south rhodesia,Zimbabwe,ZWE,zimbabwe,one_to_one,1,,0,0,
-gold coast,Ghana,GHA,ghana,shares_target,3,,0,0,
-hong kong,"China, Hong Kong SAR",HKG,china hong kong sar,one_to_one,1,,0,0,
-falkland islands and dependencies,Falkland Islands,FLK,falkland islands malvinas,one_to_one,1,,0,0,
-british honduras,Belize,BLZ,belize,one_to_one,1,,0,0,
-british india,India,IND,india,whole_with_sub_siblings,7,,3,0,
-andaman and nicobar islands,India,IND,india,shares_target,7,,0,0,
-british india: crown provinces,India,IND,india,sub_of_sibling,7,british india,0,0,
-british india: excluding burma,India,IND,india,sub_of_sibling,7,british india,0,0,
-british india: princely provinces,India,IND,india,sub_of_sibling,7,british india,0,0,
-british west indies: leeward islands,Antigua and Barbuda,ATG,antigua and barbuda,multi_country,2,,0,7,Antigua and Barbuda; Saint Kitts; Nevis; Anguilla; Montserrat; British Virgin Islands; Barbuda
-british malaysia,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-british cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,
-nauru island,Nauru,NRU,nauru,shares_target,2,,0,0,
-nauru and banaba island,Nauru,NRU,nauru,shares_target,2,,0,0,Banaba now part of Kiribati.
-palestine,Israel,ISR,israel,one_to_one,1,,0,0,Israel/Palestina
-territory of tanganyika,United Republic of Tanzania,TZA,tanzania,shares_target,2,,0,0,
-british togo,Ghana,GHA,ghana,shares_target,3,,0,0,
-british new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,
-british north borneo,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-bechuanaland,Botswana,BWA,botswana,one_to_one,1,,0,0,
-tonga islands,Tonga,TON,,one_to_one,1,,0,0,
-british borneo: brunei,Brunei Darussalam,BRN,brunei darussalam,one_to_one,1,,0,0,
-gambia,Gambia,GMB,gambia,one_to_one,1,,0,0,
-nigeria,Nigeria,NGA,nigeria,one_to_one,1,,0,0,
-british borneo: north borneo,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-north rhodesia,Zambia,ZMB,zambia,one_to_one,1,,0,0,
-nyasaland,Malawi,MWI,malawi,one_to_one,1,,0,0,
-british borneo: sarawak,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-solomon islands,Solomon Islands,SLB,,one_to_one,1,,0,0,
-swaziland,Eswatini,SWZ,eswatini,one_to_one,1,,0,0,
-kenya and uganda,Kenya,KEN,kenya,sub_of_sibling,2,kenya,0,0,
-british somaliland,Somalia,SOM,somalia,shares_target,3,,0,0,
-straits settlements: labuan,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-straits settlements: malacca,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-straits settlements: penang,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-straits settlements: singapore,Singapore,SGP,singapore,sub_of_sibling,2,straits settlements,0,0,
-british west indies: virgin islands,British Virgin Islands,VGB,british virgin islands,one_to_one,1,,0,0,
-british west indies,Jamaica,JAM,jamaica,whole_with_sub_siblings,2,,1,0,Include all the BWIF countries
-british west indies: windward islands,Barbados,BRB,barbados,multi_country,2,,0,5,Grenada; Saint Lucia; Saint Vincent and the Grenadines; Barbados; Dominica
-bulgaria,Bulgaria,BGR,bulgaria,one_to_one,1,,0,0,
-burma,Myanmar,MMR,myanmar,one_to_one,1,,0,0,
-cambodia,Cambodia,KHM,cambodia,shares_target,2,,0,0,
-canada,Canada,CAN,canada,shares_target,2,,0,0,
-cape verde,Cabo Verde,CPV,cabo verde,one_to_one,1,,0,0,
-british west indies: cayman islands,Cayman Islands,CYM,,one_to_one,1,,0,0,
-french equatorial africa: chad,Chad,TCD,chad,shares_target,2,,0,0,
-czechoslovakia,Czechia,CZE,czech republic,whole_with_sub_siblings,2,,1,0,
-faroe islands,Faroe Islands,FRO,faroe islands,one_to_one,1,,0,0,
-greenland,Greenland,GRL,,one_to_one,1,,0,0,
-dominican republic,Dominican Republic,DOM,dominican republic,one_to_one,1,,0,0,
-ceylon,Sri Lanka,LKA,sri lanka,one_to_one,1,,0,0,
-new zealand,New Zealand,NZL,new zealand,one_to_one,1,,0,0,
-newfoundland,Canada,CAN,canada,shares_target,2,,0,0,
-dutch east indies: bali and lombok,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only bali and lombok
-dutch antilles: curaçao,Curaçao,CUW,cura ao,one_to_one,1,,0,0,
-dutch guiana,Suriname,SUR,suriname,one_to_one,1,,0,0,
-dutch east indies: java and madura,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,Only java and madura
-dutch east indies: java,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,3,0,Only java
-dutch east indies: java and sumatra,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,Only java and sumatra
-"dutch east indies: java, madura and outer provinces",Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,"Only java, madura and outer provinces"
-new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,
-dutch east indies: sumatra,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only sumatra
-dutch east indies,Indonesia,IDN,indonesia,whole_with_sub_siblings,8,,7,0,
-dutch east indies: outer provinces,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only non-Java islands
-el salvador: san salvador,El Salvador,SLV,el salvador,sub_of_sibling,2,el salvador,0,0,Tangier 
-transjordan,Jordan,JOR,jordan,one_to_one,1,,0,0,
-ethiopia,Ethiopia,ETH,ethiopia,shares_target,2,,0,0,
-federated malay states,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-saint pierre and miquelon,France,FRA,france,shares_target,3,,0,0,
-algeria,Algeria,DZA,algeria,one_to_one,1,,0,0,
-cochinchina,Viet Nam,VNM,viet nam,shares_target,5,,0,0,
-dahomey,Benin,BEN,benin,shares_target,3,,0,0,
-french west africa: dahomey,Benin,BEN,benin,whole_with_sub_siblings,3,,1,0,
-french west africa: dahomey and dependencies,Benin,BEN,benin,sub_of_sibling,3,french west africa: dahomey,0,0,"Dependencies included Porto‑Novo, etc."
-french guiana,French Guiana,GUF,french guiana,one_to_one,1,,0,0,
-french equatorial africa: gabon,Gabon,GAB,gabon,one_to_one,1,,0,0,
-french antilles: guadeloupe,Guadeloupe,GLP,guadeloupe,whole_with_sub_siblings,3,,2,0,
-french antilles: guadeloupe and dependencies,Guadeloupe,GLP,guadeloupe,sub_of_sibling,3,french antilles: guadeloupe,0,0,
-french antilles: guadeloupe: marie-galante,Guadeloupe,GLP,guadeloupe,sub_of_sibling,3,french antilles: guadeloupe,0,0,
-french west africa: french guinea,Guinea,GIN,guinea,one_to_one,1,,0,0,
-french india,India,IND,india,shares_target,7,,0,0,
-french west africa: ivory coast,Côte d'Ivoire,CIV,ivory coast,one_to_one,1,,0,0,
-madagascar,Madagascar,MDG,madagascar,whole_with_sub_siblings,2,,1,0,
-madagascar and dependencies,Madagascar,MDG,madagascar,sub_of_sibling,2,madagascar,0,0,
-french antilles: martinique,Martinique,MTQ,martinique,one_to_one,1,,0,0,
-french west africa: mauritania,Mauritania,MRT,mauritania,shares_target,2,,0,0,
-mauritania,Mauritania,MRT,mauritania,shares_target,2,,0,0,
-new caledonia,New Caledonia,NCL,new caledonia,whole_with_sub_siblings,2,,1,0,
-new caledonia and dependencies,New Caledonia,NCL,new caledonia,sub_of_sibling,2,new caledonia,0,0,
-french west africa: niger,Niger,NER,niger,sub_of_sibling,2,french west africa,0,0,
-reunion,Réunion,REU,reunion,shares_target,2,,0,0,
-south reunion,Réunion,REU,reunion,shares_target,2,,0,0,
-french west africa: senegal,Senegal,SEN,senegal,shares_target,3,,0,0,
-senegal,Senegal,SEN,senegal,shares_target,3,,0,0,
-french west africa: french sudan,Mali,MLI,mali,shares_target,2,,0,0,
-french indochina: tonkin,Viet Nam,VNM,viet nam,shares_target,5,,0,0,
-upper senegal and niger,Mali,MLI,mali,shares_target,2,,0,0,
-french equatorial africa,Congo,COG,congo,whole_with_sub_siblings,3,,2,0,"Included Chad, Gabon, Central African Republic (Oubangui-Chari), Republic of Congo"
-french equatorial africa: gabon and middle congo,Congo,COG,congo,sub_of_sibling,3,french equatorial africa,0,0,
-french equatorial africa: middle congo and oubangui-chari,Central African Republic,CAF,central african republic,shares_target,2,,0,0,Republic of Congo and Central African Republic
-french equatorial africa: oubangui-chari and chad,Chad,TCD,chad,shares_target,2,,0,0,Central African Republic and Chad
-indochina,Viet Nam,VNM,viet nam,whole_with_sub_siblings,5,,2,0,
-french cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,
-syria and lebanon: lebanon,Lebanon,LBN,lebanon,shares_target,3,,0,0,
-syria,Syrian Arab Republic,SYR,syrian arab republic,whole_with_sub_siblings,3,,2,0,
-syria and lebanon: syria,Syrian Arab Republic,SYR,syrian arab republic,sub_of_sibling,3,syria,0,0,
-syria and lebanon,Syrian Arab Republic,SYR,syrian arab republic,sub_of_sibling,3,syria,1,0,
-french togo,Ghana,GHA,ghana,shares_target,3,,0,0,
-french establishments in oceania,French Polynesia,PYF,french polynesia,whole_with_sub_siblings,2,,1,0,
-mayotte and dependencies,Mayotte,MYT,,one_to_one,1,,0,0,
-indochina: annam,Viet Nam,VNM,viet nam,sub_of_sibling,5,indochina,0,0,
-indochina: cambodia,Cambodia,KHM,cambodia,shares_target,2,,0,0,
-indochina: cochinchina,Viet Nam,VNM,viet nam,sub_of_sibling,5,indochina,0,0,
-indochina: laos,Lao People's Democratic Republic,LAO,,one_to_one,1,,0,0,
-french morocco,Morocco,MAR,morocco,whole_with_sub_siblings,3,,1,0,
-tunisia,Tunisia,TUN,tunisia,one_to_one,1,,0,0,
-france,France,FRA,france,whole_with_sub_siblings,3,,1,0,
-france: alsace,France,FRA,france,sub_of_sibling,3,france,0,0,Only Alsace
-french equatorial africa: middle congo,Congo,COG,congo,sub_of_sibling,3,french equatorial africa,0,0,
-french equatorial africa: oubangui-chari,Central African Republic,CAF,central african republic,shares_target,2,,0,0,
-french somaliland,Djibouti,DJI,djibouti,one_to_one,1,,0,0,
-french west africa,Niger,NER,niger,multi_country,2,,1,8,Senegal; French Sudan (now Mali); French Guinea (now Guinea); Ivory Coast (Côte d'Ivoire); Dahomey (now Benin); Niger; Upper Volta (now Burkina Faso); Mauritania
-french morocco: tanger,Morocco,MAR,morocco,sub_of_sibling,3,french morocco,0,0,
-togo,Togo,TGO,togo,one_to_one,1,,0,0,
-"czechoslovakia: bohemia, moravia and silesia",Czechia,CZE,czech republic,sub_of_sibling,2,czechoslovakia,0,0,"Only bohemia, moravia and silesia"
-samoa,Samoa,WSM,samoa,shares_target,3,,0,0,
-protectorate of southwest africa,Namibia,NAM,namibia,shares_target,3,,0,0,
-territory of southwest africa,Namibia,NAM,namibia,shares_target,3,,0,0,
-germany,Germany,DEU,germany,shares_target,2,,0,0,
-gilbert and ellice islands,Kiribati,KIR,kiribati,shares_target,2,,0,0,
-luxembourg,Luxembourg,LUX,luxembourg,one_to_one,1,,0,0,
-greece,Greece,GRC,greece,shares_target,2,,0,0,
-british west indies: grenada,Grenada,GRD,grenada,one_to_one,1,,0,0,
-hungary,Hungary,HUN,hungary,one_to_one,1,,0,0,
-ireland,Ireland,IRL,ireland,one_to_one,1,,0,0,
-australia islands,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,
-italian east africa,Ethiopia,ETH,ethiopia,shares_target,2,,0,0,
-eritrea,Eritrea,ERI,eritrea,shares_target,2,,0,0,
-italian east africa: eritrea,Eritrea,ERI,eritrea,shares_target,2,,0,0,
-italian east africa: italian somalia,Somalia,SOM,somalia,shares_target,3,,0,0,
-italian aegean islands,Greece,GRC,greece,shares_target,2,,0,0,
-somalia,Somalia,SOM,somalia,shares_target,3,,0,0,
-british west indies: jamaica,Jamaica,JAM,jamaica,sub_of_sibling,2,british west indies,0,0,
-japan,Japan,JPN,japan,one_to_one,1,,0,0,
-japan: sakhalin,Russian Federation,RUS,russian federation,shares_target,9,,0,0,Karafuto Prefecture
-kwantung,"China, mainland",CHN,china mainland,shares_target,5,,0,0,Territory leased from China
-formosa,"China, Taiwan Province of",TWN,china taiwan province of,one_to_one,1,,0,0,
-korea,Republic of Korea,KOR,south korea,one_to_one,1,,0,0,Divided into South Korea and North Korea after 1945.
-japanese former oceania islands,Federated States of Micronesia,FSM,micronesia federated states of,multi_country,1,,0,2,Southern Sakhalin under Japan 1905-1945; now Russian territory.
-palau islands: angaur,Palau,PLW,palau,sub_of_sibling,2,palau islands,0,0,Only angaur
-palau islands,Palau,PLW,palau,whole_with_sub_siblings,2,,1,0,
-denmark,Denmark,DNK,denmark,one_to_one,1,,0,0,
-egypt,Egypt,EGY,egypt,shares_target,2,,0,0,
-iraq,Iraq,IRQ,iraq,one_to_one,1,,0,0,
-italy,Italy,ITA,italy,one_to_one,1,,0,0,
-libya,Libya,LBY,libya,whole_with_sub_siblings,3,,2,0,
-libya: cyrenaica,Libya,LBY,libya,sub_of_sibling,3,libya,0,0,Cyrenaica
-libya: tripolitania,Libya,LBY,libya,sub_of_sibling,3,libya,0,0,Tripolitania
-nepal,Nepal,NPL,nepal,one_to_one,1,,0,0,
-norway,Norway,NOR,norway,one_to_one,1,,0,0,
-romania,Romania,ROU,romania,one_to_one,1,,0,0,
-serbia,Serbia,SRB,serbia,shares_target,3,,0,0,
-"kingdom of serbs, croats and slovenes",Serbia,SRB,serbia,multi_country,3,,0,2,"Renamed Kingdom of Yugoslavia in 1929; successor states include Serbia, Croatia, Slovenia."
-siam,Thailand,THA,thailand,one_to_one,1,,0,0,
-netherlands,Netherlands (Kingdom of the),NLD,netherlands,one_to_one,1,,0,0,
-yugoslavia,Serbia,SRB,serbia,shares_target,3,,0,0,
-lebanese republic,Lebanon,LBN,lebanon,shares_target,3,,0,0,
-lebanon,Lebanon,LBN,lebanon,shares_target,3,,0,0,
-french establishments in oceania: makatea,French Polynesia,PYF,french polynesia,sub_of_sibling,2,french establishments in oceania,0,0,
-west samoa,Samoa,WSM,samoa,shares_target,3,,0,0,
-uruguay,Uruguay,URY,uruguay,one_to_one,1,,0,0,
-iran,Iran (Islamic Republic of),IRN,iran,shares_target,2,,0,0,
-persia,Iran (Islamic Republic of),IRN,iran,shares_target,2,,0,0,
-mainland portugal,Portugal,PRT,portugal,shares_target,4,,0,0,
-madeira,Portugal,PRT,portugal,shares_target,4,,0,0,
-portugal: madeira,Portugal,PRT,portugal,sub_of_sibling,4,portugal,0,0,Only Madeira
-angola,Angola,AGO,angola,one_to_one,1,,0,0,
-portuguese guinea,Guinea-Bissau,GNB,guinea bissau,one_to_one,1,,0,0,
-portuguese india,India,IND,india,shares_target,7,,0,0,
-macau,"China, Macao SAR",MAC,,one_to_one,1,,0,0,
-portuguese mozambique [colony],Mozambique,MOZ,mozambique,shares_target,2,,0,0,
-sao tome and principe,Sao Tome and Principe,STP,sao tome and principe,one_to_one,1,,0,0,
-timor,Timor-Leste,TLS,timor leste,whole_with_sub_siblings,2,,1,0,
-timor and kambing,Timor-Leste,TLS,timor leste,sub_of_sibling,2,timor,0,0,
-portuguese mozambique [company],Mozambique,MOZ,mozambique,shares_target,2,,0,0,
-austria,Austria,AUT,austria,whole_with_sub_siblings,2,,1,0,
-chile,Chile,CHL,chile,one_to_one,1,,0,0,
-china,"China, mainland",CHN,china mainland,whole_with_sub_siblings,5,,3,0,
-china: excluding manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,
-china: manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,
-colombia,Colombia,COL,colombia,one_to_one,1,,0,0,
-costa rica,Costa Rica,CRI,costa rica,one_to_one,1,,0,0,
-cuba,Cuba,CUB,cuba,one_to_one,1,,0,0,
-ecuador,Ecuador,ECU,ecuador,one_to_one,1,,0,0,
-el salvador,El Salvador,SLV,el salvador,whole_with_sub_siblings,2,,1,0,
-estonia,Estonia,EST,estonia,one_to_one,1,,0,0,
-finland,Finland,FIN,finland,one_to_one,1,,0,0,
-guatemala,Guatemala,GTM,guatemala,one_to_one,1,,0,0,
-haiti,Haiti,HTI,haiti,one_to_one,1,,0,0,
-honduras,Honduras,HND,honduras,one_to_one,1,,0,0,
-iceland,Iceland,ISL,,one_to_one,1,,0,0,
-latvia,Latvia,LVA,latvia,one_to_one,1,,0,0,
-liberia,Liberia,LBR,liberia,one_to_one,1,,0,0,
-lithuania,Lithuania,LTU,lithuania,one_to_one,1,,0,0,
-nicaragua,Nicaragua,NIC,nicaragua,one_to_one,1,,0,0,
-panama,Panama,PAN,panama,whole_with_sub_siblings,2,,1,0,
-paraguay,Paraguay,PRY,paraguay,one_to_one,1,,0,0,
-peru,Peru,PER,peru,one_to_one,1,,0,0,
-poland,Poland,POL,poland,one_to_one,1,,0,0,
-portugal,Portugal,PRT,portugal,whole_with_sub_siblings,4,,1,0,
-venezuela,Venezuela (Bolivarian Republic of),VEN,venezuela,one_to_one,1,,0,0,
-russia [europe and asia],Russian Federation,RUS,russian federation,sub_of_sibling,9,russia [europe],0,0,Complete Russia
-russia [asia],Russian Federation,RUS,russian federation,whole_with_sub_siblings,9,,2,0,Only Asian part
-russia [asia]: 9 governments,Russian Federation,RUS,russian federation,sub_of_sibling,9,russia [asia],0,0,it does not specify what these governments are
-russia [asia]: other governments,Russian Federation,RUS,russian federation,sub_of_sibling,9,russia [asia],0,0,it does not specify what these governments are
-russia [europe],Russian Federation,RUS,russian federation,whole_with_sub_siblings,9,,1,0,Only European part
-saint christopher,Saint Kitts and Nevis,KNA,saint kitts and nevis,shares_target,3,,0,0,
-british west indies: saint kitts and nevis,Saint Kitts and Nevis,KNA,saint kitts and nevis,sub_of_sibling,3,british west indies: saint kitts,0,0,
-british west indies: saint kitts,Saint Kitts and Nevis,KNA,saint kitts and nevis,whole_with_sub_siblings,3,,1,0,
-british west indies: saint lucia,Saint Lucia,LCA,saint lucia,one_to_one,1,,0,0,
-british west indies: saint vincent,Saint Vincent and the Grenadines,VCT,saint vincent and the grenadines,one_to_one,1,,0,0,
-french west africa: dakar,Senegal,SEN,senegal,shares_target,3,,0,0,
-british south west africa,Namibia,NAM,namibia,shares_target,3,,0,0,
-spain,Spain,ESP,spain,whole_with_sub_siblings,2,,1,0,
-spain: canary islands,Spain,ESP,spain,sub_of_sibling,2,spain,0,0,Only Canary Islands
-fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,
-spanish territories on the gulf of guinea: fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,Spanish Territories on the Gulf of Guinea
-spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea
-spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea
-spanish territories on the gulf of guinea: spanish guinea and fernando po,Equatorial Guinea,GNQ,equatorial guinea,sub_of_sibling,5,spanish territories on the gulf of guinea: spanish guinea,0,0,Spanish Territories on the Gulf of Guinea
-spanish morocco,Morocco,MAR,morocco,shares_target,3,,0,0,
-china: manchukuo,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,
-straits settlements,Singapore,SGP,singapore,whole_with_sub_siblings,2,,1,0,
-zanzibar,United Republic of Tanzania,TZA,tanzania,shares_target,2,,0,0,
-sweden,Sweden,SWE,sweden,one_to_one,1,,0,0,
-switzerland,Switzerland,CHE,switzerland,one_to_one,1,,0,0,
-saar,Germany,DEU,germany,shares_target,2,,0,0,Saarland
-british west indies: trinidad and tobago,Trinidad and Tobago,TTO,trinidad and tobago,shares_target,2,,0,0,
-trinidad and tobago,Trinidad and Tobago,TTO,trinidad and tobago,shares_target,2,,0,0,
-turkey,Türkiye,TUR,turkey,whole_with_sub_siblings,4,,3,0,
-turkey [europe and asia],Türkiye,TUR,turkey,sub_of_sibling,4,turkey,0,0,
-turkey [asia],Türkiye,TUR,turkey,sub_of_sibling,4,turkey,0,0,
-turkey [europe],Türkiye,TUR,turkey,sub_of_sibling,4,turkey,1,0,
-british west indies: turks and caicos islands,Turks and Caicos Islands,TCA,,one_to_one,1,,0,0,
-malay protected states: johore,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-malay protected states: kedah,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-malay protected states: kelantan,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-malay protected states: perlis,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-malay protected states: terengganu,Malaysia,MYS,malaysia,shares_target,13,,0,0,
-union of south africa,South Africa,ZAF,south africa,whole_with_sub_siblings,2,,1,0,
-union of south africa: cape province,South Africa,ZAF,south africa,sub_of_sibling,2,union of south africa,0,0,
-united kingdom,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,whole_with_sub_siblings,6,,4,0,
-united kingdom: england and wales,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,
-united kingdom: great britain,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,
-united kingdom: north ireland,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,
-united kingdom: scotland,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,
-mexico,Mexico,MEX,mexico,one_to_one,1,,0,0,
-panama canal,Panama,PAN,panama,sub_of_sibling,2,panama,0,0,
-united states of america,United States of America,USA,united states of america,whole_with_sub_siblings,8,,5,0,
-united states of america: alaska,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,
-united states of america: california,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,
-united states of america: louisiana and florida,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,
-united states of america: other states,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,
-united states of america and canada,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,
-hawaii,United States of America,USA,united states of america,shares_target,8,,0,0,Only hawaii
-puerto rico,United States of America,USA,united states of america,shares_target,8,,0,0,Commonwealth of Puerto Rico
-american samoa,American Samoa,ASM,american samoa,one_to_one,1,,0,0,
-philippines,Philippines,PHL,philippines,one_to_one,1,,0,0,
-us virgin islands,US Virgin Islands,UVI,,one_to_one,1,,0,0,
-french west africa: upper volta,Burkina Faso,BFA,burkina faso,shares_target,2,,0,0,
-upper volta,Burkina Faso,BFA,burkina faso,shares_target,2,,0,0,
-soviet union [europe and asia],Russian Federation,RUS,russian federation,sub_of_sibling,9,soviet union [europe],0,0,
-soviet union: transcaucasia,Azerbaijan,AZE,azerbaijan,one_to_one,1,,0,0,"Modern Georgia, Armenia and Azerbaiyán"
-soviet union [asia],Russian Federation,RUS,russian federation,shares_target,9,,0,0,
-soviet union [europe],Russian Federation,RUS,russian federation,whole_with_sub_siblings,9,,1,0,
-british samoa,Samoa,WSM,samoa,shares_target,3,,0,0,
-total,nan,NAN,,whole_with_sub_siblings,22,,21,0,TOTAL
-total [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total africa,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total asia,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total australia,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total canada,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total europe,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total general,nan,NAN,,sub_of_sibling,22,total,2,0,TOTAL
-total general [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total general [including ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total germany,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total net,nan,NAN,,sub_of_sibling,22,total,1,0,TOTAL
-total net [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total north and central america,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total north hemisphere aggregated,nan,NAN,,sub_of_sibling,22,total,1,0,TOTAL
-total north hemisphere aggregated [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total oceania,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total south america,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total south hemisphere aggregated,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total soviet union,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total union of south africa,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
-total united kingdom,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL
+raw_label,assigned_modern,iso3,layer_b_label,kind,n_labels_on_target,parent_label,n_sub_labels,notes_countries,notes,mixing_observed,fingerprint_note,dominant_raw_label,dominant_share,territory_signal
+albania,Albania,ALB,albania,one_to_one,1,,0,0,,no,albania 100% alone,albania,1.00,clean
+anglo-egyptian sudan,Egypt,EGY,egypt,multi_country,2,,0,3,Egypt; Sudan; South Sudan,no,egypt 65% alone,egypt,0.65,clean
+new hebrides,Vanuatu,VUT,vanuatu,one_to_one,1,,0,0,,no,british‑french new hebrides 100% alone,british‑french new hebrides,1.00,redirected
+argentina,Argentina,ARG,argentina,whole_with_sub_siblings,2,,1,0,,no,argentina 99% alone,argentina,0.99,clean
+argentina: province of mendoza,Argentina,ARG,argentina,sub_of_sibling,2,argentina,0,0,,no,argentina 99% alone,argentina,0.99,clean
+australia,Australia,AUS,australia,whole_with_sub_siblings,5,,3,0,,no,australia 92% alone,australia,0.92,clean
+australia: queensland,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,,no,australia 92% alone,australia,0.92,clean
+australia: tasmania,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,,no,australia 92% alone,australia,0.92,clean
+christmas island,Australia,AUS,australia,shares_target,5,,0,0,,no,australia 92% alone,australia,0.92,clean
+papua new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,dutch new guinea 72% alone,dutch new guinea,0.72,redirected
+austria-hungary,Austria,AUT,austria,multi_country,2,austria,0,13,Austria; Hungary; Czech Republic; Slovakia; Slovenia; Croatia; Bosnia and Herzegovina; Romania; Ukraine; Poland; Italy; Serbia; Montenegro,no,austria 69% alone,austria,0.69,clean
+british west indies: bahamas,Bahamas,BHS,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+banaba island,Kiribati,KIR,kiribati,shares_target,2,,0,0,,no,british ocean island 100% alone,british ocean island,1.00,redirected
+british west indies: barbados,Barbados,BRB,barbados,shares_target,2,,0,0,,no,british barbados 100% alone,british barbados,1.00,clean
+belgian congo,Democratic Republic of the Congo,COD,dr congo,one_to_one,1,,0,0,,no,belgian congo 100% alone,belgian congo,1.00,redirected
+ruanda-urundi,Burundi,BDI,burundi,one_to_one,1,,0,0,Ruanda-Urundi,no,belgian ruanda-urundi 100% alone,belgian ruanda-urundi,1.00,redirected
+belgium,Belgium,BEL,belgium,one_to_one,1,,0,0,,no,belgium 100% alone,belgium,1.00,clean
+british west indies: bermuda,Bermuda,BMU,bermuda,one_to_one,1,,0,0,,no,british bermuda 100% alone,british bermuda,1.00,clean
+bolivia,Bolivia (Plurinational State of),BOL,bolivia,one_to_one,1,,0,0,,yes,bolivia 100% + french annam 60%,bolivia,1.00,mixed
+brazil,Brazil,BRA,brazil,whole_with_sub_siblings,2,,1,0,,no,brazil 95% alone,brazil,0.95,clean
+brazil: sao paulo,Brazil,BRA,brazil,sub_of_sibling,2,brazil,0,0,Sao Paulo,no,brazil 95% alone,brazil,0.95,clean
+british and french cameroon,Cameroon,CMR,cameroon,multi_country,3,,0,2,British Cameroon; French Cameroon,no,british‑french cameroon 83% alone,british‑french cameroon,0.83,clean
+ascension island,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,shares_target,6,,0,0,Overseas territory of Ascension Island,no,uk 85% alone,uk,0.85,redirected
+sierra leone,Sierra Leone,SLE,sierra leone,one_to_one,1,,0,0,,no,british sierra leone 100% alone,british sierra leone,1.00,clean
+british india: aden,Yemen,YEM,yemen,one_to_one,1,,0,0,,no,british aden 100% alone,british aden,1.00,redirected
+british west indies: antigua,Antigua and Barbuda,ATG,antigua and barbuda,shares_target,2,,0,0,,no,british antigua 100% alone,british antigua,1.00,redirected
+british guiana,Guyana,GUY,guyana,one_to_one,1,,0,0,,no,british guiana 100% alone,british guiana,1.00,redirected
+cyprus,Cyprus,CYP,cyprus,one_to_one,1,,0,0,,no,british cyprus 92% alone,british cyprus,0.92,clean
+british west indies: dominica,Dominica,DMA,dominica,one_to_one,1,,0,0,,no,british dominica 100% alone,british dominica,1.00,clean
+fiji islands,Fiji,FJI,fiji,one_to_one,1,,0,0,,no,british fiji islands 100% alone,british fiji islands,1.00,redirected
+kenya,Kenya,KEN,kenya,whole_with_sub_siblings,2,,1,0,,no,british kenya 100% alone,british kenya,1.00,clean
+malta,Malta,MLT,malta,one_to_one,1,,0,0,,no,british malta 78% alone,british malta,0.78,clean
+mauritius,Mauritius,MUS,mauritius,whole_with_sub_siblings,2,,1,0,,no,british mauritius 100% alone,british mauritius,1.00,clean
+mauritius and dependencies,Mauritius,MUS,mauritius,sub_of_sibling,2,mauritius,0,0,,no,british mauritius 100% alone,british mauritius,1.00,clean
+british west indies: montserrat,Montserrat,MSR,montserrat,one_to_one,1,,0,0,,no,british montserrat 100% alone,british montserrat,1.00,clean
+seychelles,Seychelles,SYC,seychelles,one_to_one,1,,0,0,,no,british seychelles 100% alone,british seychelles,1.00,clean
+south rhodesia,Zimbabwe,ZWE,zimbabwe,one_to_one,1,,0,0,,no,british southern rhodesia 100% alone,british southern rhodesia,1.00,redirected
+gold coast,Ghana,GHA,ghana,shares_target,3,,0,0,,no,german togoland 63% alone,german togoland,0.63,redirected
+hong kong,"China, Hong Kong SAR",HKG,china hong kong sar,one_to_one,1,,0,0,,no,british hong kong 100% alone,british hong kong,1.00,redirected
+falkland islands and dependencies,Falkland Islands,FLK,falkland islands malvinas,one_to_one,1,,0,0,,no,british falkland islands and dependencies 100% alone,british falkland islands and dependencies,1.00,redirected
+british honduras,Belize,BLZ,belize,one_to_one,1,,0,0,,no,british honduras 100% alone,british honduras,1.00,redirected
+british india,India,IND,india,whole_with_sub_siblings,7,,3,0,,no,british india 55% alone,british india,0.55,clean
+andaman and nicobar islands,India,IND,india,shares_target,7,,0,0,,no,british india 55% alone,british india,0.55,clean
+british india: crown provinces,India,IND,india,sub_of_sibling,7,british india,0,0,,no,british india 55% alone,british india,0.55,clean
+british india: excluding burma,India,IND,india,sub_of_sibling,7,british india,0,0,,no,british india 55% alone,british india,0.55,clean
+british india: princely provinces,India,IND,india,sub_of_sibling,7,british india,0,0,,no,british india 55% alone,british india,0.55,clean
+british west indies: leeward islands,Antigua and Barbuda,ATG,antigua and barbuda,multi_country,2,,0,7,Antigua and Barbuda; Saint Kitts; Nevis; Anguilla; Montserrat; British Virgin Islands; Barbuda,no,british antigua 100% alone,british antigua,1.00,redirected
+british malaysia,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+british cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,,no,british‑french cameroon 83% alone,british‑french cameroon,0.83,clean
+nauru island,Nauru,NRU,nauru,shares_target,2,,0,0,,no,british nauru 100% alone,british nauru,1.00,clean
+nauru and banaba island,Nauru,NRU,nauru,shares_target,2,,0,0,Banaba now part of Kiribati.,no,british nauru 100% alone,british nauru,1.00,clean
+palestine,Israel,ISR,israel,one_to_one,1,,0,0,Israel/Palestina,no,british palestine 92% alone,british palestine,0.92,redirected
+territory of tanganyika,United Republic of Tanzania,TZA,tanzania,shares_target,2,,0,0,,no,british tanganyika 100% alone,british tanganyika,1.00,redirected
+british togo,Ghana,GHA,ghana,shares_target,3,,0,0,,no,german togoland 63% alone,german togoland,0.63,redirected
+british new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,dutch new guinea 72% alone,dutch new guinea,0.72,redirected
+british north borneo,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+bechuanaland,Botswana,BWA,botswana,one_to_one,1,,0,0,,no,british bechuanaland 100% alone,british bechuanaland,1.00,redirected
+tonga islands,Tonga,TON,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+british borneo: brunei,Brunei Darussalam,BRN,brunei darussalam,one_to_one,1,,0,0,,no,british brunei 100% alone,british brunei,1.00,redirected
+gambia,Gambia,GMB,gambia,one_to_one,1,,0,0,,no,british gambia 100% alone,british gambia,1.00,clean
+nigeria,Nigeria,NGA,nigeria,one_to_one,1,,0,0,,no,british nigeria 100% alone,british nigeria,1.00,clean
+british borneo: north borneo,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+north rhodesia,Zambia,ZMB,zambia,one_to_one,1,,0,0,,no,british northern rhodesia 100% alone,british northern rhodesia,1.00,redirected
+nyasaland,Malawi,MWI,malawi,one_to_one,1,,0,0,,no,british nyasaland 100% alone,british nyasaland,1.00,redirected
+british borneo: sarawak,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+solomon islands,Solomon Islands,SLB,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+swaziland,Eswatini,SWZ,eswatini,one_to_one,1,,0,0,,no,british swaziland 100% alone,british swaziland,1.00,redirected
+kenya and uganda,Kenya,KEN,kenya,sub_of_sibling,2,kenya,0,0,,no,british kenya 100% alone,british kenya,1.00,clean
+british somaliland,Somalia,SOM,somalia,shares_target,3,,0,0,,no,italian somaliland 100% alone,italian somaliland,1.00,redirected
+straits settlements: labuan,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+straits settlements: malacca,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+straits settlements: penang,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+straits settlements: singapore,Singapore,SGP,singapore,sub_of_sibling,2,straits settlements,0,0,,no,british straits settlements 100% alone,british straits settlements,1.00,redirected
+british west indies: virgin islands,British Virgin Islands,VGB,british virgin islands,one_to_one,1,,0,0,,no,british virgin islands 100% alone,british virgin islands,1.00,clean
+british west indies,Jamaica,JAM,jamaica,whole_with_sub_siblings,2,,1,0,Include all the BWIF countries,no,british jamaica 86% alone,british jamaica,0.86,clean
+british west indies: windward islands,Barbados,BRB,barbados,multi_country,2,,0,5,Grenada; Saint Lucia; Saint Vincent and the Grenadines; Barbados; Dominica,no,british barbados 100% alone,british barbados,1.00,clean
+bulgaria,Bulgaria,BGR,bulgaria,one_to_one,1,,0,0,,no,bulgaria 77% alone,bulgaria,0.77,clean
+burma,Myanmar,MMR,myanmar,one_to_one,1,,0,0,,no,british burma 100% alone,british burma,1.00,redirected
+cambodia,Cambodia,KHM,cambodia,shares_target,2,,0,0,,yes,spain 75% + bulgaria 75% + french cambodia 75%,spain,0.75,mixed
+canada,Canada,CAN,canada,shares_target,2,,0,0,,no,canada 74% alone,canada,0.74,clean
+cape verde,Cabo Verde,CPV,cabo verde,one_to_one,1,,0,0,,yes,portuguese cape verde 100% + british cyprus 47%,portuguese cape verde,1.00,mixed
+british west indies: cayman islands,Cayman Islands,CYM,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+french equatorial africa: chad,Chad,TCD,chad,shares_target,2,,0,0,,no,french equatorial africa: chad 100% alone,french equatorial africa: chad,1.00,redirected
+czechoslovakia,Czechia,CZE,czech republic,whole_with_sub_siblings,2,,1,0,,no,czechoslovakia 90% alone,czechoslovakia,0.90,redirected
+faroe islands,Faroe Islands,FRO,faroe islands,one_to_one,1,,0,0,,no,denmark: faroe islands 100% alone,denmark: faroe islands,1.00,redirected
+greenland,Greenland,GRL,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+dominican republic,Dominican Republic,DOM,dominican republic,one_to_one,1,,0,0,,no,dominican republic 100% alone,dominican republic,1.00,clean
+ceylon,Sri Lanka,LKA,sri lanka,one_to_one,1,,0,0,,no,british ceylon 100% alone,british ceylon,1.00,redirected
+new zealand,New Zealand,NZL,new zealand,one_to_one,1,,0,0,,no,new zealand 98% alone,new zealand,0.98,clean
+newfoundland,Canada,CAN,canada,shares_target,2,,0,0,,no,canada 74% alone,canada,0.74,clean
+dutch east indies: bali and lombok,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only bali and lombok,yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+dutch antilles: curaçao,Curaçao,CUW,cura ao,one_to_one,1,,0,0,,no,dutch curaçao and dependencies 100% alone,dutch curaçao and dependencies,1.00,redirected
+dutch guiana,Suriname,SUR,suriname,one_to_one,1,,0,0,,no,dutch guiana 100% alone,dutch guiana,1.00,redirected
+dutch east indies: java and madura,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,Only java and madura,yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+dutch east indies: java,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,3,0,Only java,yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+dutch east indies: java and sumatra,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,Only java and sumatra,yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+"dutch east indies: java, madura and outer provinces",Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,"Only java, madura and outer provinces",yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,dutch new guinea 72% alone,dutch new guinea,0.72,redirected
+dutch east indies: sumatra,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only sumatra,yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+dutch east indies,Indonesia,IDN,indonesia,whole_with_sub_siblings,8,,7,0,,yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+dutch east indies: outer provinces,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only non-Java islands,yes,dutch east indies 46% + dutch java and madura 39%,dutch east indies,0.46,mixed
+el salvador: san salvador,El Salvador,SLV,el salvador,sub_of_sibling,2,el salvador,0,0,Tangier ,yes,el salvador 55% + el salvador: san salvador department 45% + french tonkin 34%,el salvador,0.55,mixed
+transjordan,Jordan,JOR,jordan,one_to_one,1,,0,0,,no,british transjordan 100% alone,british transjordan,1.00,redirected
+ethiopia,Ethiopia,ETH,ethiopia,shares_target,2,,0,0,,yes,france 100% + australia 100% + total 100%,france,1.00,mixed
+federated malay states,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+saint pierre and miquelon,France,FRA,france,shares_target,3,,0,0,,no,france 73% alone,france,0.73,clean
+algeria,Algeria,DZA,algeria,one_to_one,1,,0,0,,no,french algeria 97% alone,french algeria,0.97,clean
+cochinchina,Viet Nam,VNM,viet nam,shares_target,5,,0,0,,no,french tonkin 94% alone,french tonkin,0.94,redirected
+dahomey,Benin,BEN,benin,shares_target,3,,0,0,,no,french dahomey 100% alone,french dahomey,1.00,redirected
+french west africa: dahomey,Benin,BEN,benin,whole_with_sub_siblings,3,,1,0,,no,french dahomey 100% alone,french dahomey,1.00,redirected
+french west africa: dahomey and dependencies,Benin,BEN,benin,sub_of_sibling,3,french west africa: dahomey,0,0,"Dependencies included Porto‑Novo, etc.",no,french dahomey 100% alone,french dahomey,1.00,redirected
+french guiana,French Guiana,GUF,french guiana,one_to_one,1,,0,0,,no,french guiana 100% alone,french guiana,1.00,clean
+french equatorial africa: gabon,Gabon,GAB,gabon,one_to_one,1,,0,0,,no,french equatorial africa: gabon 100% alone,french equatorial africa: gabon,1.00,redirected
+french antilles: guadeloupe,Guadeloupe,GLP,guadeloupe,whole_with_sub_siblings,3,,2,0,,no,french guadeloupe 78% alone,french guadeloupe,0.78,clean
+french antilles: guadeloupe and dependencies,Guadeloupe,GLP,guadeloupe,sub_of_sibling,3,french antilles: guadeloupe,0,0,,no,french guadeloupe 78% alone,french guadeloupe,0.78,clean
+french antilles: guadeloupe: marie-galante,Guadeloupe,GLP,guadeloupe,sub_of_sibling,3,french antilles: guadeloupe,0,0,,no,french guadeloupe 78% alone,french guadeloupe,0.78,clean
+french west africa: french guinea,Guinea,GIN,guinea,one_to_one,1,,0,0,,no,french guinea 100% alone,french guinea,1.00,clean
+french india,India,IND,india,shares_target,7,,0,0,,no,british india 55% alone,british india,0.55,clean
+french west africa: ivory coast,Côte d'Ivoire,CIV,ivory coast,one_to_one,1,,0,0,,no,french ivory coast 100% alone,french ivory coast,1.00,clean
+madagascar,Madagascar,MDG,madagascar,whole_with_sub_siblings,2,,1,0,,no,french madagascar 90% alone,french madagascar,0.90,clean
+madagascar and dependencies,Madagascar,MDG,madagascar,sub_of_sibling,2,madagascar,0,0,,no,french madagascar 90% alone,french madagascar,0.90,clean
+french antilles: martinique,Martinique,MTQ,martinique,one_to_one,1,,0,0,,no,french martinique 100% alone,french martinique,1.00,clean
+french west africa: mauritania,Mauritania,MRT,mauritania,shares_target,2,,0,0,,no,french mauritania 100% alone,french mauritania,1.00,clean
+mauritania,Mauritania,MRT,mauritania,shares_target,2,,0,0,,no,french mauritania 100% alone,french mauritania,1.00,clean
+new caledonia,New Caledonia,NCL,new caledonia,whole_with_sub_siblings,2,,1,0,,no,french new caledonia 100% alone,french new caledonia,1.00,clean
+new caledonia and dependencies,New Caledonia,NCL,new caledonia,sub_of_sibling,2,new caledonia,0,0,,no,french new caledonia 100% alone,french new caledonia,1.00,clean
+french west africa: niger,Niger,NER,niger,sub_of_sibling,2,french west africa,0,0,,no,french niger 69% alone,french niger,0.69,clean
+reunion,Réunion,REU,reunion,shares_target,2,,0,0,,no,french reunion 100% alone,french reunion,1.00,clean
+south reunion,Réunion,REU,reunion,shares_target,2,,0,0,,no,french reunion 100% alone,french reunion,1.00,clean
+french west africa: senegal,Senegal,SEN,senegal,shares_target,3,,0,0,,no,french senegal 95% alone,french senegal,0.95,clean
+senegal,Senegal,SEN,senegal,shares_target,3,,0,0,,no,french senegal 95% alone,french senegal,0.95,clean
+french west africa: french sudan,Mali,MLI,mali,shares_target,2,,0,0,,no,french sudan 98% alone,french sudan,0.98,redirected
+french indochina: tonkin,Viet Nam,VNM,viet nam,shares_target,5,,0,0,,no,french tonkin 94% alone,french tonkin,0.94,redirected
+upper senegal and niger,Mali,MLI,mali,shares_target,2,,0,0,,no,french sudan 98% alone,french sudan,0.98,redirected
+french equatorial africa,Congo,COG,congo,whole_with_sub_siblings,3,,2,0,"Included Chad, Gabon, Central African Republic (Oubangui-Chari), Republic of Congo",no,french equatorial africa 91% alone,french equatorial africa,0.91,redirected
+french equatorial africa: gabon and middle congo,Congo,COG,congo,sub_of_sibling,3,french equatorial africa,0,0,,no,french equatorial africa 91% alone,french equatorial africa,0.91,redirected
+french equatorial africa: middle congo and oubangui-chari,Central African Republic,CAF,central african republic,shares_target,2,,0,0,Republic of Congo and Central African Republic,no,french equatorial africa: oubangui‑chari 100% alone,french equatorial africa: oubangui‑chari,1.00,redirected
+french equatorial africa: oubangui-chari and chad,Chad,TCD,chad,shares_target,2,,0,0,Central African Republic and Chad,no,french equatorial africa: chad 100% alone,french equatorial africa: chad,1.00,redirected
+indochina,Viet Nam,VNM,viet nam,whole_with_sub_siblings,5,,2,0,,no,french tonkin 94% alone,french tonkin,0.94,redirected
+french cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,,no,british‑french cameroon 83% alone,british‑french cameroon,0.83,clean
+syria and lebanon: lebanon,Lebanon,LBN,lebanon,shares_target,3,,0,0,,no,french lebanon 86% alone,french lebanon,0.86,clean
+syria,Syrian Arab Republic,SYR,syrian arab republic,whole_with_sub_siblings,3,,2,0,,yes,french syria and lebanon 45% + french syria 43%,french syria and lebanon,0.45,mixed
+syria and lebanon: syria,Syrian Arab Republic,SYR,syrian arab republic,sub_of_sibling,3,syria,0,0,,yes,french syria and lebanon 45% + french syria 43%,french syria and lebanon,0.45,mixed
+syria and lebanon,Syrian Arab Republic,SYR,syrian arab republic,sub_of_sibling,3,syria,1,0,,yes,french syria and lebanon 45% + french syria 43%,french syria and lebanon,0.45,mixed
+french togo,Ghana,GHA,ghana,shares_target,3,,0,0,,no,german togoland 63% alone,german togoland,0.63,redirected
+french establishments in oceania,French Polynesia,PYF,french polynesia,whole_with_sub_siblings,2,,1,0,,yes,french oceania 61% + french oceania: makatea island 39%,french oceania,0.61,mixed
+mayotte and dependencies,Mayotte,MYT,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+indochina: annam,Viet Nam,VNM,viet nam,sub_of_sibling,5,indochina,0,0,,no,french tonkin 94% alone,french tonkin,0.94,redirected
+indochina: cambodia,Cambodia,KHM,cambodia,shares_target,2,,0,0,,yes,spain 75% + bulgaria 75% + french cambodia 75%,spain,0.75,mixed
+indochina: cochinchina,Viet Nam,VNM,viet nam,sub_of_sibling,5,indochina,0,0,,no,french tonkin 94% alone,french tonkin,0.94,redirected
+indochina: laos,Lao People's Democratic Republic,LAO,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+french morocco,Morocco,MAR,morocco,whole_with_sub_siblings,3,,1,0,,no,french morocco 98% alone,french morocco,0.98,clean
+tunisia,Tunisia,TUN,tunisia,one_to_one,1,,0,0,,no,french tunisia 100% alone,french tunisia,1.00,clean
+france,France,FRA,france,whole_with_sub_siblings,3,,1,0,,no,france 73% alone,france,0.73,clean
+france: alsace,France,FRA,france,sub_of_sibling,3,france,0,0,Only Alsace,no,france 73% alone,france,0.73,clean
+french equatorial africa: middle congo,Congo,COG,congo,sub_of_sibling,3,french equatorial africa,0,0,,no,french equatorial africa 91% alone,french equatorial africa,0.91,redirected
+french equatorial africa: oubangui-chari,Central African Republic,CAF,central african republic,shares_target,2,,0,0,,no,french equatorial africa: oubangui‑chari 100% alone,french equatorial africa: oubangui‑chari,1.00,redirected
+french somaliland,Djibouti,DJI,djibouti,one_to_one,1,,0,0,,no,french somali coast 100% alone,french somali coast,1.00,redirected
+french west africa,Niger,NER,niger,multi_country,2,,1,8,Senegal; French Sudan (now Mali); French Guinea (now Guinea); Ivory Coast (Côte d'Ivoire); Dahomey (now Benin); Niger; Upper Volta (now Burkina Faso); Mauritania,no,french niger 69% alone,french niger,0.69,clean
+french morocco: tanger,Morocco,MAR,morocco,sub_of_sibling,3,french morocco,0,0,,no,french morocco 98% alone,french morocco,0.98,clean
+togo,Togo,TGO,togo,one_to_one,1,,0,0,,no,german togoland 100% alone,german togoland,1.00,redirected
+"czechoslovakia: bohemia, moravia and silesia",Czechia,CZE,czech republic,sub_of_sibling,2,czechoslovakia,0,0,"Only bohemia, moravia and silesia",no,czechoslovakia 90% alone,czechoslovakia,0.90,redirected
+samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,new zealand western samoa 72% alone,new zealand western samoa,0.72,redirected
+protectorate of southwest africa,Namibia,NAM,namibia,shares_target,3,,0,0,,no,german south west africa 100% alone,german south west africa,1.00,redirected
+territory of southwest africa,Namibia,NAM,namibia,shares_target,3,,0,0,,no,german south west africa 100% alone,german south west africa,1.00,redirected
+germany,Germany,DEU,germany,shares_target,2,,0,0,,no,germany 78% alone,germany,0.78,clean
+gilbert and ellice islands,Kiribati,KIR,kiribati,shares_target,2,,0,0,,no,british ocean island 100% alone,british ocean island,1.00,redirected
+luxembourg,Luxembourg,LUX,luxembourg,one_to_one,1,,0,0,,no,luxembourg 61% alone,luxembourg,0.61,clean
+greece,Greece,GRC,greece,shares_target,2,,0,0,,no,greece 73% alone,greece,0.73,clean
+british west indies: grenada,Grenada,GRD,grenada,one_to_one,1,,0,0,,no,british grenada 100% alone,british grenada,1.00,clean
+hungary,Hungary,HUN,hungary,one_to_one,1,,0,0,,no,hungary 71% alone,hungary,0.71,clean
+ireland,Ireland,IRL,ireland,one_to_one,1,,0,0,,no,ireland 100% alone,ireland,1.00,clean
+australia islands,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,,no,australia 92% alone,australia,0.92,clean
+italian east africa,Ethiopia,ETH,ethiopia,shares_target,2,,0,0,,yes,france 100% + australia 100% + total 100%,france,1.00,mixed
+eritrea,Eritrea,ERI,eritrea,shares_target,2,,0,0,,no,italian eritrea 100% alone,italian eritrea,1.00,clean
+italian east africa: eritrea,Eritrea,ERI,eritrea,shares_target,2,,0,0,,no,italian eritrea 100% alone,italian eritrea,1.00,clean
+italian east africa: italian somalia,Somalia,SOM,somalia,shares_target,3,,0,0,,no,italian somaliland 100% alone,italian somaliland,1.00,redirected
+italian aegean islands,Greece,GRC,greece,shares_target,2,,0,0,,no,greece 73% alone,greece,0.73,clean
+somalia,Somalia,SOM,somalia,shares_target,3,,0,0,,no,italian somaliland 100% alone,italian somaliland,1.00,redirected
+british west indies: jamaica,Jamaica,JAM,jamaica,sub_of_sibling,2,british west indies,0,0,,no,british jamaica 86% alone,british jamaica,0.86,clean
+japan,Japan,JPN,japan,one_to_one,1,,0,0,,no,japan 92% alone,japan,0.92,clean
+japan: sakhalin,Russian Federation,RUS,russian federation,shares_target,9,,0,0,Karafuto Prefecture,no,ussr 48% alone,ussr,0.48,redirected
+kwantung,"China, mainland",CHN,china mainland,shares_target,5,,0,0,Territory leased from China,no,china 56% alone,china,0.56,redirected
+formosa,"China, Taiwan Province of",TWN,china taiwan province of,one_to_one,1,,0,0,,no,japanese taiwan 94% alone,japanese taiwan,0.94,redirected
+korea,Republic of Korea,KOR,south korea,one_to_one,1,,0,0,Divided into South Korea and North Korea after 1945.,no,japanese korea 92% alone,japanese korea,0.92,redirected
+japanese former oceania islands,Federated States of Micronesia,FSM,micronesia federated states of,multi_country,1,,0,2,Southern Sakhalin under Japan 1905-1945; now Russian territory.,no,japanese south pacific 100% alone,japanese south pacific,1.00,redirected
+palau islands: angaur,Palau,PLW,palau,sub_of_sibling,2,palau islands,0,0,Only angaur,no,japanese south pacific: palau-angaur 100% alone,japanese south pacific: palau-angaur,1.00,redirected
+palau islands,Palau,PLW,palau,whole_with_sub_siblings,2,,1,0,,no,japanese south pacific: palau-angaur 100% alone,japanese south pacific: palau-angaur,1.00,redirected
+denmark,Denmark,DNK,denmark,one_to_one,1,,0,0,,no,denmark 100% alone,denmark,1.00,clean
+egypt,Egypt,EGY,egypt,shares_target,2,,0,0,,no,egypt 65% alone,egypt,0.65,clean
+iraq,Iraq,IRQ,iraq,one_to_one,1,,0,0,,no,british iraq 96% alone,british iraq,0.96,clean
+italy,Italy,ITA,italy,one_to_one,1,,0,0,,no,italy 72% alone,italy,0.72,clean
+libya,Libya,LBY,libya,whole_with_sub_siblings,3,,2,0,,no,italian libya 36% alone,italian libya,0.36,clean
+libya: cyrenaica,Libya,LBY,libya,sub_of_sibling,3,libya,0,0,Cyrenaica,no,italian libya 36% alone,italian libya,0.36,clean
+libya: tripolitania,Libya,LBY,libya,sub_of_sibling,3,libya,0,0,Tripolitania,no,italian libya 36% alone,italian libya,0.36,clean
+nepal,Nepal,NPL,nepal,one_to_one,1,,0,0,,no,nepal 100% alone,nepal,1.00,clean
+norway,Norway,NOR,norway,one_to_one,1,,0,0,,no,norway 100% alone,norway,1.00,clean
+romania,Romania,ROU,romania,one_to_one,1,,0,0,,no,romania 72% alone,romania,0.72,clean
+serbia,Serbia,SRB,serbia,shares_target,3,,0,0,,no,yugoslavia 69% alone,yugoslavia,0.69,redirected
+"kingdom of serbs, croats and slovenes",Serbia,SRB,serbia,multi_country,3,,0,2,"Renamed Kingdom of Yugoslavia in 1929; successor states include Serbia, Croatia, Slovenia.",no,yugoslavia 69% alone,yugoslavia,0.69,redirected
+siam,Thailand,THA,thailand,one_to_one,1,,0,0,,no,siam 100% alone,siam,1.00,redirected
+netherlands,Netherlands (Kingdom of the),NLD,netherlands,one_to_one,1,,0,0,,no,netherlands 95% alone,netherlands,0.95,clean
+yugoslavia,Serbia,SRB,serbia,shares_target,3,,0,0,,no,yugoslavia 69% alone,yugoslavia,0.69,redirected
+lebanese republic,Lebanon,LBN,lebanon,shares_target,3,,0,0,,no,french lebanon 86% alone,french lebanon,0.86,clean
+lebanon,Lebanon,LBN,lebanon,shares_target,3,,0,0,,no,french lebanon 86% alone,french lebanon,0.86,clean
+french establishments in oceania: makatea,French Polynesia,PYF,french polynesia,sub_of_sibling,2,french establishments in oceania,0,0,,yes,french oceania 61% + french oceania: makatea island 39%,french oceania,0.61,mixed
+west samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,new zealand western samoa 72% alone,new zealand western samoa,0.72,redirected
+uruguay,Uruguay,URY,uruguay,one_to_one,1,,0,0,,no,uruguay 100% alone,uruguay,1.00,clean
+iran,Iran (Islamic Republic of),IRN,iran,shares_target,2,,0,0,,no,iran 92% alone,iran,0.92,clean
+persia,Iran (Islamic Republic of),IRN,iran,shares_target,2,,0,0,,no,iran 92% alone,iran,0.92,clean
+mainland portugal,Portugal,PRT,portugal,shares_target,4,,0,0,,no,portugal 63% alone,portugal,0.63,clean
+madeira,Portugal,PRT,portugal,shares_target,4,,0,0,,no,portugal 63% alone,portugal,0.63,clean
+portugal: madeira,Portugal,PRT,portugal,sub_of_sibling,4,portugal,0,0,Only Madeira,no,portugal 63% alone,portugal,0.63,clean
+angola,Angola,AGO,angola,one_to_one,1,,0,0,,no,portuguese angola 100% alone,portuguese angola,1.00,clean
+portuguese guinea,Guinea-Bissau,GNB,guinea bissau,one_to_one,1,,0,0,,yes,portuguese guinea 100% + french reunion 75% + total 50%,portuguese guinea,1.00,mixed
+portuguese india,India,IND,india,shares_target,7,,0,0,,no,british india 55% alone,british india,0.55,clean
+macau,"China, Macao SAR",MAC,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+portuguese mozambique [colony],Mozambique,MOZ,mozambique,shares_target,2,,0,0,,no,portuguese mozambique: company concession 68% alone,portuguese mozambique: company concession,0.68,redirected
+sao tome and principe,Sao Tome and Principe,STP,sao tome and principe,one_to_one,1,,0,0,,yes,portuguese sao tome and principe 100% + british southern rhodesia 60% + british montserrat 60%,portuguese sao tome and principe,1.00,mixed
+timor,Timor-Leste,TLS,timor leste,whole_with_sub_siblings,2,,1,0,,yes,portuguese timor and kambing 53% + portuguese timor 47%,portuguese timor and kambing,0.53,mixed
+timor and kambing,Timor-Leste,TLS,timor leste,sub_of_sibling,2,timor,0,0,,yes,portuguese timor and kambing 53% + portuguese timor 47%,portuguese timor and kambing,0.53,mixed
+portuguese mozambique [company],Mozambique,MOZ,mozambique,shares_target,2,,0,0,,no,portuguese mozambique: company concession 68% alone,portuguese mozambique: company concession,0.68,redirected
+austria,Austria,AUT,austria,whole_with_sub_siblings,2,,1,0,,no,austria 69% alone,austria,0.69,clean
+chile,Chile,CHL,chile,one_to_one,1,,0,0,,no,chile 100% alone,chile,1.00,clean
+china,"China, mainland",CHN,china mainland,whole_with_sub_siblings,5,,3,0,,no,china 56% alone,china,0.56,redirected
+china: excluding manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 56% alone,china,0.56,redirected
+china: manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 56% alone,china,0.56,redirected
+colombia,Colombia,COL,colombia,one_to_one,1,,0,0,,no,colombia 100% alone,colombia,1.00,clean
+costa rica,Costa Rica,CRI,costa rica,one_to_one,1,,0,0,,no,costa rica 100% alone,costa rica,1.00,clean
+cuba,Cuba,CUB,cuba,one_to_one,1,,0,0,,no,cuba 100% alone,cuba,1.00,clean
+ecuador,Ecuador,ECU,ecuador,one_to_one,1,,0,0,,no,ecuador 100% alone,ecuador,1.00,clean
+el salvador,El Salvador,SLV,el salvador,whole_with_sub_siblings,2,,1,0,,yes,el salvador 55% + el salvador: san salvador department 45% + french tonkin 34%,el salvador,0.55,mixed
+estonia,Estonia,EST,estonia,one_to_one,1,,0,0,,no,estonia 100% alone,estonia,1.00,clean
+finland,Finland,FIN,finland,one_to_one,1,,0,0,,no,finland 100% alone,finland,1.00,clean
+guatemala,Guatemala,GTM,guatemala,one_to_one,1,,0,0,,no,guatemala 100% alone,guatemala,1.00,clean
+haiti,Haiti,HTI,haiti,one_to_one,1,,0,0,,no,haiti 100% alone,haiti,1.00,clean
+honduras,Honduras,HND,honduras,one_to_one,1,,0,0,,no,honduras 100% alone,honduras,1.00,clean
+iceland,Iceland,ISL,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+latvia,Latvia,LVA,latvia,one_to_one,1,,0,0,,no,latvia 100% alone,latvia,1.00,clean
+liberia,Liberia,LBR,liberia,one_to_one,1,,0,0,,no,liberia 100% alone,liberia,1.00,clean
+lithuania,Lithuania,LTU,lithuania,one_to_one,1,,0,0,,no,lithuania 100% alone,lithuania,1.00,clean
+nicaragua,Nicaragua,NIC,nicaragua,one_to_one,1,,0,0,,no,nicaragua 100% alone,nicaragua,1.00,clean
+panama,Panama,PAN,panama,whole_with_sub_siblings,2,,1,0,,no,panama 93% alone,panama,0.93,clean
+paraguay,Paraguay,PRY,paraguay,one_to_one,1,,0,0,,no,paraguay 100% alone,paraguay,1.00,clean
+peru,Peru,PER,peru,one_to_one,1,,0,0,,no,peru 82% alone,peru,0.82,clean
+poland,Poland,POL,poland,one_to_one,1,,0,0,,no,poland 100% alone,poland,1.00,clean
+portugal,Portugal,PRT,portugal,whole_with_sub_siblings,4,,1,0,,no,portugal 63% alone,portugal,0.63,clean
+venezuela,Venezuela (Bolivarian Republic of),VEN,venezuela,one_to_one,1,,0,0,,no,venezuela 100% alone,venezuela,1.00,clean
+russia [europe and asia],Russian Federation,RUS,russian federation,sub_of_sibling,9,russia [europe],0,0,Complete Russia,no,ussr 48% alone,ussr,0.48,redirected
+russia [asia],Russian Federation,RUS,russian federation,whole_with_sub_siblings,9,,2,0,Only Asian part,no,ussr 48% alone,ussr,0.48,redirected
+russia [asia]: 9 governments,Russian Federation,RUS,russian federation,sub_of_sibling,9,russia [asia],0,0,it does not specify what these governments are,no,ussr 48% alone,ussr,0.48,redirected
+russia [asia]: other governments,Russian Federation,RUS,russian federation,sub_of_sibling,9,russia [asia],0,0,it does not specify what these governments are,no,ussr 48% alone,ussr,0.48,redirected
+russia [europe],Russian Federation,RUS,russian federation,whole_with_sub_siblings,9,,1,0,Only European part,no,ussr 48% alone,ussr,0.48,redirected
+saint christopher,Saint Kitts and Nevis,KNA,saint kitts and nevis,shares_target,3,,0,0,,no,british saint christopher and nevis 100% alone,british saint christopher and nevis,1.00,redirected
+british west indies: saint kitts and nevis,Saint Kitts and Nevis,KNA,saint kitts and nevis,sub_of_sibling,3,british west indies: saint kitts,0,0,,no,british saint christopher and nevis 100% alone,british saint christopher and nevis,1.00,redirected
+british west indies: saint kitts,Saint Kitts and Nevis,KNA,saint kitts and nevis,whole_with_sub_siblings,3,,1,0,,no,british saint christopher and nevis 100% alone,british saint christopher and nevis,1.00,redirected
+british west indies: saint lucia,Saint Lucia,LCA,saint lucia,one_to_one,1,,0,0,,no,british saint lucia 100% alone,british saint lucia,1.00,clean
+british west indies: saint vincent,Saint Vincent and the Grenadines,VCT,saint vincent and the grenadines,one_to_one,1,,0,0,,no,british saint vincent 100% alone,british saint vincent,1.00,redirected
+french west africa: dakar,Senegal,SEN,senegal,shares_target,3,,0,0,,no,french senegal 95% alone,french senegal,0.95,clean
+british south west africa,Namibia,NAM,namibia,shares_target,3,,0,0,,no,german south west africa 100% alone,german south west africa,1.00,redirected
+spain,Spain,ESP,spain,whole_with_sub_siblings,2,,1,0,,no,spain 76% alone,spain,0.76,clean
+spain: canary islands,Spain,ESP,spain,sub_of_sibling,2,spain,0,0,Only Canary Islands,no,spain 76% alone,spain,0.76,clean
+fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,,yes,bulgaria 26% + spanish spanish guinea including fernando po 26%,bulgaria,0.26,mixed
+spanish territories on the gulf of guinea: fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,Spanish Territories on the Gulf of Guinea,yes,bulgaria 26% + spanish spanish guinea including fernando po 26%,bulgaria,0.26,mixed
+spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea,yes,bulgaria 26% + spanish spanish guinea including fernando po 26%,bulgaria,0.26,mixed
+spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea,yes,bulgaria 26% + spanish spanish guinea including fernando po 26%,bulgaria,0.26,mixed
+spanish territories on the gulf of guinea: spanish guinea and fernando po,Equatorial Guinea,GNQ,equatorial guinea,sub_of_sibling,5,spanish territories on the gulf of guinea: spanish guinea,0,0,Spanish Territories on the Gulf of Guinea,yes,bulgaria 26% + spanish spanish guinea including fernando po 26%,bulgaria,0.26,mixed
+spanish morocco,Morocco,MAR,morocco,shares_target,3,,0,0,,no,french morocco 98% alone,french morocco,0.98,clean
+china: manchukuo,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 56% alone,china,0.56,redirected
+straits settlements,Singapore,SGP,singapore,whole_with_sub_siblings,2,,1,0,,no,british straits settlements 100% alone,british straits settlements,1.00,redirected
+zanzibar,United Republic of Tanzania,TZA,tanzania,shares_target,2,,0,0,,no,british tanganyika 100% alone,british tanganyika,1.00,redirected
+sweden,Sweden,SWE,sweden,one_to_one,1,,0,0,,no,sweden 100% alone,sweden,1.00,clean
+switzerland,Switzerland,CHE,switzerland,one_to_one,1,,0,0,,no,switzerland 71% alone,switzerland,0.71,clean
+saar,Germany,DEU,germany,shares_target,2,,0,0,Saarland,no,germany 78% alone,germany,0.78,clean
+british west indies: trinidad and tobago,Trinidad and Tobago,TTO,trinidad and tobago,shares_target,2,,0,0,,no,british trinidad and tobago 100% alone,british trinidad and tobago,1.00,clean
+trinidad and tobago,Trinidad and Tobago,TTO,trinidad and tobago,shares_target,2,,0,0,,no,british trinidad and tobago 100% alone,british trinidad and tobago,1.00,clean
+turkey,Türkiye,TUR,turkey,whole_with_sub_siblings,4,,3,0,,no,turkey 92% alone,turkey,0.92,clean
+turkey [europe and asia],Türkiye,TUR,turkey,sub_of_sibling,4,turkey,0,0,,no,turkey 92% alone,turkey,0.92,clean
+turkey [asia],Türkiye,TUR,turkey,sub_of_sibling,4,turkey,0,0,,no,turkey 92% alone,turkey,0.92,clean
+turkey [europe],Türkiye,TUR,turkey,sub_of_sibling,4,turkey,1,0,,no,turkey 92% alone,turkey,0.92,clean
+british west indies: turks and caicos islands,Turks and Caicos Islands,TCA,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+malay protected states: johore,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+malay protected states: kedah,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+malay protected states: kelantan,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+malay protected states: perlis,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+malay protected states: terengganu,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo 34% + british malaya 31% + british federated malay states 26%,british borneo,0.34,mixed
+union of south africa,South Africa,ZAF,south africa,whole_with_sub_siblings,2,,1,0,,no,union of south africa 97% alone,union of south africa,0.97,redirected
+union of south africa: cape province,South Africa,ZAF,south africa,sub_of_sibling,2,union of south africa,0,0,,no,union of south africa 97% alone,union of south africa,0.97,redirected
+united kingdom,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,whole_with_sub_siblings,6,,4,0,,no,uk 85% alone,uk,0.85,redirected
+united kingdom: england and wales,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,,no,uk 85% alone,uk,0.85,redirected
+united kingdom: great britain,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,,no,uk 85% alone,uk,0.85,redirected
+united kingdom: north ireland,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,,no,uk 85% alone,uk,0.85,redirected
+united kingdom: scotland,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,sub_of_sibling,6,united kingdom,0,0,,no,uk 85% alone,uk,0.85,redirected
+mexico,Mexico,MEX,mexico,one_to_one,1,,0,0,,no,mexico 93% alone,mexico,0.93,clean
+panama canal,Panama,PAN,panama,sub_of_sibling,2,panama,0,0,,no,panama 93% alone,panama,0.93,clean
+united states of america,United States of America,USA,united states of america,whole_with_sub_siblings,8,,5,0,,no,usa 52% alone,usa,0.52,redirected
+united states of america: alaska,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,,no,usa 52% alone,usa,0.52,redirected
+united states of america: california,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,,no,usa 52% alone,usa,0.52,redirected
+united states of america: louisiana and florida,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,,no,usa 52% alone,usa,0.52,redirected
+united states of america: other states,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,,no,usa 52% alone,usa,0.52,redirected
+united states of america and canada,United States of America,USA,united states of america,sub_of_sibling,8,united states of america,0,0,,no,usa 52% alone,usa,0.52,redirected
+hawaii,United States of America,USA,united states of america,shares_target,8,,0,0,Only hawaii,no,usa 52% alone,usa,0.52,redirected
+puerto rico,United States of America,USA,united states of america,shares_target,8,,0,0,Commonwealth of Puerto Rico,no,usa 52% alone,usa,0.52,redirected
+american samoa,American Samoa,ASM,american samoa,one_to_one,1,,0,0,,no,us samoa 100% alone,us samoa,1.00,redirected
+philippines,Philippines,PHL,philippines,one_to_one,1,,0,0,,no,us philippines 99% alone,us philippines,0.99,clean
+us virgin islands,US Virgin Islands,UVI,,one_to_one,1,,0,0,,unknown,no layer-B label resolved,,,unknown
+french west africa: upper volta,Burkina Faso,BFA,burkina faso,shares_target,2,,0,0,,no,french upper volta 100% alone,french upper volta,1.00,redirected
+upper volta,Burkina Faso,BFA,burkina faso,shares_target,2,,0,0,,no,french upper volta 100% alone,french upper volta,1.00,redirected
+soviet union [europe and asia],Russian Federation,RUS,russian federation,sub_of_sibling,9,soviet union [europe],0,0,,no,ussr 48% alone,ussr,0.48,redirected
+soviet union: transcaucasia,Azerbaijan,AZE,azerbaijan,one_to_one,1,,0,0,"Modern Georgia, Armenia and Azerbaiyán",no,ussr: transcaucasian sfsr 100% alone,ussr: transcaucasian sfsr,1.00,redirected
+soviet union [asia],Russian Federation,RUS,russian federation,shares_target,9,,0,0,,no,ussr 48% alone,ussr,0.48,redirected
+soviet union [europe],Russian Federation,RUS,russian federation,whole_with_sub_siblings,9,,1,0,,no,ussr 48% alone,ussr,0.48,redirected
+british samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,new zealand western samoa 72% alone,new zealand western samoa,0.72,redirected
+total,nan,NAN,,whole_with_sub_siblings,22,,21,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total africa,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total asia,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total australia,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total canada,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total europe,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total general,nan,NAN,,sub_of_sibling,22,total,2,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total general [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total general [including ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total germany,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total net,nan,NAN,,sub_of_sibling,22,total,1,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total net [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total north and central america,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total north hemisphere aggregated,nan,NAN,,sub_of_sibling,22,total,1,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total north hemisphere aggregated [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total oceania,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total south america,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total south hemisphere aggregated,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total soviet union,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total union of south africa,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
+total united kingdom,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,no layer-B label resolved,,,unknown
