@@ -225,6 +225,36 @@ def check_iia_djibouti_coffee(d):
     )
 
 
+def check_iia_netherlands(d):
+    """The claim: IIA's `netherlands` is the metropolitan country, with the Dutch colonies carried
+    under their own labels rather than folded in.
+
+    AGRONOMIC, so it can fail. The Netherlands cannot grow cacao, coffee, rubber or tea; the
+    Netherlands East Indies was one of the world's largest producers of all four. If the colonies
+    were folded into the metropolitan label, those items would appear under it. Measured: ZERO
+    tropical items under `netherlands` against four under `indonesia`, across 33 shared years --
+    concurrent, so this is not an artefact of the two labels covering different periods.
+
+    This is a different mechanism from the one the convention was learned from (the verifier argued
+    from the commodity MIX looking temperate, which is the same observation read qualitatively); the
+    test here is the concurrency plus the absence, and it is the absence that would break.
+    """
+    tropical = ("coffee", "cacao", "cocoa", "rubber", "tea", "copra", "cinchona")
+    nl = _label(d, "iia", "netherlands")
+    idn = _label(d, "iia", "indonesia")
+    nl_trop = {it for it in nl["item"].unique() if any(t in norm(it) for t in tropical)}
+    id_trop = {it for it in idn["item"].unique() if any(t in norm(it) for t in tropical)}
+    yn = set(nl.dropna(subset=["year"])["year"].astype(int))
+    yi = set(idn.dropna(subset=["year"])["year"].astype(int))
+    ok = len(nl) > 0 and len(idn) > 0 and not nl_trop and len(id_trop) >= 2 and len(yn & yi) >= 10
+    return ok, (
+        f"iia carries {len(nl)} netherlands and {len(idn)} indonesia rows over {len(yn & yi)} shared "
+        f"years; tropical items under netherlands: {len(nl_trop)}, under indonesia: {len(id_trop)} "
+        f"({', '.join(sorted(id_trop)[:3])}) -- a folded-in East Indies would put those under the "
+        f"metropolitan label"
+    )
+
+
 def check_fao1952_france(d):
     """The claim: fao1952's plain `France` is metropolitan France, with Algeria and the Saar
     carried under their own labels rather than folded in.
@@ -299,6 +329,7 @@ def check_mitchell_algeria(d):
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
+    ("iia", "netherlands", "*"): check_iia_netherlands,
     ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("iia", "russian federation", "*"): check_iia_russia,
