@@ -457,6 +457,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_constant_runs.py
 
+      # 05_magnitude_screen.py screens series MEDIANS against polity area, so a single bad year is
+      # invisible to it: iia cameroon groundnuts runs 61,000 / 620,004,098 / 62,000 ha and its median
+      # is 71,000, while Cameroon's whole land area is ~47.5M ha. No source seam either -- spike and
+      # both neighbours are one source. 21 spikes >=20x BOTH neighbours, all pinned by identity.
+      - name: Sources — no single year may read many times its own neighbours
+        if: '!cancelled()'
+        run: python3 scripts/validate_isolated_spikes.py
+
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
       - name: site/ shows exactly the live polities that carry geometry

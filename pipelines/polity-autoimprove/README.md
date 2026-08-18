@@ -255,6 +255,14 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        54,100. 246 runs, 1,619 rows, 210 series (juan 1,035, iia 522, mitchell 62;
                        fao1952 nil, as its values are non-integer and have no coarse grid to sit
                        on). --write refreshes state/constant_runs.csv for validate_constant_runs.py
+18_isolated_spikes.py  does one year read many times its own neighbours? 05_magnitude_screen.py
+                       screens series MEDIANS, so a single bad year is invisible to it: iia
+                       cameroon groundnuts runs 61,000 / 620,004,098 / 62,000 ha, median 71,000,
+                       against a country of ~47.5M ha. No source seam either — spike and both
+                       neighbours are one source. 21 spikes >=20x BOTH neighbours. `indicator` MUST
+                       be in the series key: without it 110 hits, 89 fao1952 artefacts comparing
+                       indicators rather than years. 342 series unorderable (#367) are skipped and
+                       counted. --write refreshes state/isolated_spikes.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
