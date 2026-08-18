@@ -236,6 +236,17 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        different model (opus vs sonnet) under a rotated lens —
                        see "Decorrelating the blind review".
                        Writes state/<args.out> (nothing applied).
+16_source_splices.py   where a series switches SOURCE mid-stream, does the value stay on the
+                       same scale? Layer B gives every (country, year, item, unit) cell exactly
+                       ONE source — zero of 179,096 cells carry two — so a multi-source series
+                       is SPLICED and each splice is a seam. 373 seams move the value >30%, 30
+                       by >100x. Nine countries show tobacco jumping x101 at a mitchell->iia
+                       seam and back at the return seam (Japan 86,000 t -> 8,705,400 -> 84,000),
+                       i.e. IIA tobacco is ~100x too large for its stated unit. --write refreshes
+                       the TRACKED state/source_splices.csv that validate_source_splices.py reads
+                       in CI, since the panel is gitignored. Does NOT decide the cause of any
+                       one seam: unit mismatch, different coverage and different item definitions
+                       are probably all present, and separating them needs the sources.
 15_label_provenance    which RAW source label is each layer-B label actually made of? Layer B
   .py                  carries 164 IIA labels; the raw extract carries 403, and nothing here
                        records which went where. Most of that collapse is a benign colonial

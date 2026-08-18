@@ -437,6 +437,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_iia_label_provenance.py
 
+      # Layer B assigns each (country, year, item, unit) cell to exactly ONE source — zero of its
+      # 179,097 cells carry two — so a series drawing on several is SPLICED, and every splice is a
+      # seam where a scale mismatch can enter unnoticed. 373 seams move the value by >30%; 30 by
+      # >100x. Nine countries show tobacco jumping x101 at a mitchell->iia seam and back down at the
+      # return seam. The panel is gitignored, so this reads the committed table 16_source_splices.py
+      # writes.
+      - name: Sources — a spliced series must not change scale at the seam
+        if: '!cancelled()'
+        run: python3 scripts/validate_source_splices.py
+
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
       - name: site/ shows exactly the live polities that carry geometry
