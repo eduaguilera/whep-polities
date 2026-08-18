@@ -1,11 +1,35 @@
 #!/usr/bin/env python3
 """Can a verdict claim the source territory EQUALS the polity's, when the label mixes territories?
 
-WHAT THIS RECORDS. `state/iia_label_provenance.csv` is derived from the IIA harmonisation mapping
-(`harmonization_geography.xlsx`, sheet `iia harmonization`): 335 raw yearbook labels collapsed onto
-173 modern countries. Until it was tracked, that mapping was the only record of where each IIA row's
-territory came from and it lived in one person's Downloads folder — so nothing in this repository
-could tell that `serbia` means Yugoslavia or that `viet nam` means Tonkin.
+WHAT THIS RECORDS. `state/iia_label_provenance.csv` is derived from an IIA harmonisation mapping
+(`harmonization_geography.xlsx`, sheet `iia harmonization`): 335 labels collapsed onto 173 modern
+countries.
+
+READ THE PROVENANCE OF THE PROVENANCE FILE BEFORE TRUSTING IT. That mapping is a DIFFERENT VINTAGE
+from the raw extract the pipeline actually carries: only **109 of its 334 labels** appear verbatim in
+`harmonized_data.xlsx`. It says `algeria` and `angola` where the data says `french algeria` and
+`portuguese angola`, and `dutch east indies: java and madura` where the data says
+`dutch java and madura`. Five of its eight declared multi-country labels — `anglo-egyptian sudan`
+among them — do not occur in the data at all, which is why that entry has zero rows behind it.
+
+So this file is a statement of HARMONISATION INTENT, not a transcript of what happened to these
+rows. It is a risk flag: a target the spec assembles from a whole plus its parts is one where a
+territorial merge is likely, and worth refusing an equality claim on. It is NOT proof that any
+particular row was merged. The direct evidence for that is value-fingerprint matching against the
+raw extract — `15_label_provenance.py` — and the two are complementary: `czech republic` is flagged
+here, yet fingerprints show 92.5% from `czechoslovakia` alone with no sub-label above the noise
+floor, so the risk did not materialise there.
+
+The three declared multi-country labels that DO occur in the data are all confirmed by direct
+measurement, which is what makes the flag worth keeping:
+
+    layer B `serbia`    24% of its values match raw `kingdom of serbs, croats and slovenes`
+    layer B `niger`     31% match raw `french west africa` (a federation of eight territories)
+    layer B `austria`   12% match raw `austria-hungary`
+
+The findings that motivated this gate — `serbia` being Yugoslavia, `viet nam` being Tonkin,
+`indonesia` mixing a colony with a 7% subset — were all measured directly against the raw extract and
+do not depend on this mapping being the right vintage.
 
     one_to_one                104   one raw label, one target — clean
     shares_target              97   several labels on one target, none nested in another
