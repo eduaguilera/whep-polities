@@ -1,0 +1,97 @@
+item,raw_product,cells,series,names_share_word,verdict,note
+beans dry,beans: dried,51,13,yes,approved_rename,Same commodity under a different name.
+butter cow milk,butter,11,3,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+butter cow milk,butter: factory,21,5,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+butter cow milk,"butter: farm, factory",28,6,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+butter cow milk,"butter: whey, factory",7,1,yes,unresolved,"Whey butter is a by-product of cheesemaking, distinct from cream butter."
+cacao beans,cacao: raw,592,63,yes,approved_rename,Same commodity under a different name.
+castor beans seed,castorseed,7,1,no,approved_rename,Same commodity under a different name.
+cheese processed,cheese,14,4,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+cheese processed,cheese: factory,31,7,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+cheese processed,cheese: farm,2,1,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+cheese processed,"cheese: farm, factory",14,3,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+coffee green,coffee: raw,459,60,yes,approved_rename,Same commodity under a different name.
+cotton lint,cotton,661,75,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+cotton lint,cotton: ginned,24,6,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+cotton seed,cottonseed,388,63,no,approved_rename,Same commodity under a different name.
+eggs hen in shell,eggs,434,60,yes,approved_rename,Same commodity under a different name.
+fertilizer mixed,fertilizers: copper(ii) sulfate,70,10,no,unresolved,"Copper sulphate is a fungicide (Bordeaux mixture), not a fertiliser. 70 cells. Same question as sulphur."
+fertilizer mixed,"fertilizers: guano, natural",52,6,no,approved_aggregation,Guano is a genuine fertiliser mapped to the mixed-fertiliser category.
+fertilizer mixed,sulphur,82,7,no,unresolved,"Sulphur is a fungicide and soil amendment, not a mixed fertiliser. 82 cells. Either the item is broader than its name or this is a mis-map; the source pages would settle it."
+flax fibre and tow,flax,86,13,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+flax fibre and tow,flax: fibre,100,14,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+flax fibre and tow,linseed,43,7,no,defect,"Linseed is the OILSEED, flax fibre and tow the TEXTILE FIBRE -- two products of one plant differing by orders of magnitude. A separate `linseed` item exists and 19 cells sit under BOTH. Logged as iia-flax-fibre-item-is-mostly-linseed (#380)."
+grapefruit inc pomelos,citrus fruits: grapefruits,14,5,no,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+grapefruit inc pomelos,"citrus fruits: grapefruits, other",2,1,no,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+grapes,grapes,13,4,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+grapes,"grapes: raisins, table",7,2,yes,unresolved,"Raisins plus table grapes, while a separate `raisins` item exists."
+grapes,grapes: table,46,15,yes,unresolved,"Table grapes are a small subset of total vineyard output; this item elsewhere carries `vineyards: all`. czech republic reads 8 ha here against 27,000 ha from `vineyards: all` in the same series. The scope mixture is gated by 21_item_product_switches.py where it oscillates."
+grapes,grapes: wine,5,2,yes,unresolved,"Wine grapes are a subset, mapped onto the same item as total vineyards."
+grapes,vineyards,72,10,no,unresolved,Bare `vineyards` alongside `vineyards: all` and the grape subsets.
+grapes,vineyards: all,40,10,no,unresolved,Total vineyard area/output on the same item as table-grape subsets -- the other half of the scope mixture.
+grapes,vineyards: grapes,53,7,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+grapes,"vineyards: grapes, raisins",37,11,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+groundnuts with shell,groundnut,266,56,no,approved_rename,Same commodity under a different name.
+hemp tow waste,hemp,58,10,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+hemp tow waste,hemp: fibre,3,1,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+hempseed,hempseed,35,6,yes,approved_rename,Same commodity under a different name.
+hops,hops,152,13,yes,approved_rename,Same commodity under a different name.
+jute,jute,112,9,yes,approved_rename,Same commodity under a different name.
+k,fertilizers: potash,18,5,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+k,"fertilizers: potash, mineral",7,2,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+lemons and limes,citrus fruits: lemons,30,7,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+lemons and limes,citrus fruits: limes,13,4,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+linseed,linseed,175,22,yes,approved_rename,Same commodity under a different name.
+manila fibre abaca,hemp: manila,24,2,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+milk whole fresh cow,"milk: buffalo, cow, ewe, angora goat, goat, other",6,1,yes,unresolved,"An all-species milk total mapped onto a COW-milk item. Scope, not naming."
+milk whole fresh cow,"milk: buffalo, cow, ewe, goat",4,1,yes,unresolved,"A four-species milk total (buffalo, cow, ewe, goat) mapped onto a COW-milk item. This is a scope error rather than a naming one: the figure is larger than cow milk by whatever the other three contribute, which varies by country and is not recoverable from the panel."
+milk whole fresh cow,milk: cow,84,14,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+milk whole fresh cow,"milk: cow, ewe",6,1,yes,unresolved,"Cow plus ewe milk mapped onto a COW-milk item. Scope, not naming -- the value exceeds cow milk by the ewe share, unknown per country. Small (6 cells) but the same class as the four-species case."
+milk whole fresh cow,"milk: cow, goat",11,3,yes,unresolved,"Cow plus goat milk on a cow-milk item, 11 cells."
+n,fertilizers: ammonium sulfate,129,18,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+n,fertilizers: calcium cyanamide,117,14,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+n,fertilizers: calcium nitrate,4,1,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+n,fertilizers: sodium nitrate,6,2,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+no3,fertilizers: calcium nitrate,13,1,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+no3,fertilizers: sodium nitrate,13,1,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+oats,oats,27,6,yes,approved_rename,Same commodity under a different name.
+oil olive virgin,olive: oil,35,6,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+olives,olive,19,3,no,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+olives,olive grove,104,14,no,approved_rename,Same commodity under a different name.
+oranges,"citrus fruits: lemons, mandarins, oranges",2,1,yes,unresolved,A three-species citrus total on an `oranges` item.
+oranges,"citrus fruits: lemons, oranges",8,2,yes,unresolved,Lemons plus oranges on an `oranges` item.
+oranges,"citrus fruits: mandarins, oranges",15,3,yes,unresolved,"Mandarins plus oranges on an `oranges` item, 15 cells -- and `tangerines mandarins clementines satsumas` exists separately, so the mandarin half is also carried elsewhere."
+oranges,citrus fruits: oranges,90,22,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+oranges,"citrus fruits: oranges, other",14,3,yes,unresolved,Oranges plus an unnamed residual on an `oranges` item.
+other berries and fruits of the genus vaccinium n e c,blackberries,103,14,no,approved_rename,Same commodity under a different name.
+other citrus fruit n e c,citrus fruits,5,2,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+other citrus fruit n e c,citrus fruits: cedrats,4,1,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+other citrus fruit n e c,citrus fruits: other,5,1,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+other forage products n e c,"forage: cereals, pulses",8,2,yes,approved_rename,Same commodity under a different name.
+other sugar crops n e c,citrus fruits: other,21,7,yes,defect,"Citrus is not a sugar crop. 21 cells in 7 series map a citrus residual category onto a sugar-crop residual category, almost certainly because both are 'other' buckets. Found 2026-08-18 while building this registry; not separately logged yet."
+p,fertilizers: bone superphosphate,8,2,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+p,fertilizers: calcium superphosphate,131,20,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+p,"fertilizers: calcium superphosphate, mixed, unmixed",10,1,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+p,"fertilizers: phosphate, natural",224,25,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+p,slag: basic,23,6,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+p,slag: dephosphorization,10,2,no,approved_aggregation,"Specific fertiliser MATERIAL mapped to a nutrient category. Legitimate as a mapping; the resulting series is a patchwork of materials rather than a nutrient total, which 21_item_product_switches.py gates where it oscillates. See the p/n/k convention and #378."
+raisins,raisins,55,8,yes,approved_rename,Same commodity under a different name.
+raisins,vineyards: raisins,29,9,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+rapeseed,rapeseed,192,16,yes,approved_rename,Same commodity under a different name.
+rubber natural,rubber,17,5,yes,approved_rename,Same commodity under a different name.
+rye,rye,274,21,yes,approved_rename,Same commodity under a different name.
+sesame seed,sesame,258,48,yes,approved_rename,Same commodity under a different name.
+silk worm cocoons reelable,sericulture,376,28,no,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+silk worm cocoons reelable,sericulture: spring cocoons,13,1,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+silk worm cocoons reelable,sericulture: summer cocoons,13,1,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+soybeans,soybean,70,10,no,approved_rename,Same commodity under a different name.
+sugar raw centrifugal,sugar: beet,593,29,yes,approved_aggregation,"Cane and beet both yield centrifugal sugar, so the mapping is defensible; the SERIES alternating between them is the defect, gated by 21_item_product_switches.py."
+sugar raw centrifugal,sugar: cane,422,29,yes,approved_aggregation,"Cane and beet both yield centrifugal sugar, so the mapping is defensible; the SERIES alternating between them is the defect, gated by 21_item_product_switches.py."
+sugar raw centrifugal,"sugar: cane, unrefined",66,18,yes,approved_aggregation,"Cane and beet both yield centrifugal sugar, so the mapping is defensible; the SERIES alternating between them is the defect, gated by 21_item_product_switches.py."
+tangerines mandarins clementines satsumas,citrus fruits: mandarins,34,7,yes,approved_aggregation,Sub-variety or processing split of the same commodity mapped to one item.
+tea,tea,319,29,yes,approved_rename,Same commodity under a different name.
+tobacco unmanufactured,tobacco,830,89,yes,approved_rename,Same commodity under a different name.
+wheat,meslin,12,2,no,defect,"Same defect as wheat<-spelt. Meslin is a wheat-rye mixture, not wheat. czech republic's `wheat` series is 55% meslin and 45% spelt."
+wheat,spelt,35,5,no,defect,"The source has NO wheat production rows at all -- `wheat` appears in the raw extract only as exports/imports/reexports. This item is spelt, a distinct hulled wheat species. Logged as iia-wheat-is-spelt-and-meslin (#375/#376)."
+wine,wine,143,18,yes,approved_rename,Same commodity under a different name.
+yarn of true hemp,hemp: fibre,333,30,yes,unresolved,"Fibre is not yarn -- 333 cells in 30 series, the largest unresolved mapping here. `hemp tow waste` also draws on `hemp: fibre`, so one raw product feeds two items."

@@ -485,6 +485,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_item_product_switches.py
 
+      # Three defects found by hand share one shape: an item carrying a raw product it is not named
+      # for. `wheat` is spelt and meslin (the source has NO wheat production rows), `flax fibre and
+      # tow` is majority LINSEED, and `p` is a patchwork of fertiliser materials. So every (item, raw
+      # product) mapping now needs an explicit verdict, and building the registry immediately found a
+      # fourth: `other sugar crops n e c` <- `citrus fruits: other`, 21 cells, two "other" buckets
+      # joined. 17 pairs are `unresolved` on purpose rather than waved through.
+      - name: Sources — every item/product mapping must be adjudicated
+        if: '!cancelled()'
+        run: python3 scripts/validate_item_equivalences.py
+
       # 19_composition_overlaps.py writes state/composition_overlaps.csv from the matcher's ACTUAL
       # routings, not just the alias map: only 205 of 832 routings come from an alias, so a part
       # reached by iso/name matching was invisible to the composition gate's double-count arm. 13

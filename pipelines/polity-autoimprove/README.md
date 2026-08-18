@@ -292,6 +292,16 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        oscillation (A...B...A) — comparing product medians confounds this with
                        growth and gave 28 instead of 9. --write refreshes
                        state/item_product_switches.csv
+22_item_equivalences.py
+                       which raw IIA product does each layer-B ITEM stand for, and is that mapping
+                       approved? `wheat`<-spelt/meslin, `flax fibre and tow`<-linseed and `p`<-
+                       fertiliser materials were all found by hand; this makes every (item, raw
+                       product) pair carry an explicit verdict so the next one fails a gate. Found a
+                       fourth on its first run: `other sugar crops n e c`<-`citrus fruits: other`.
+                       96 pairs: 24 renames, 51 aggregations, 4 defects, 17 unresolved. --write
+                       MERGES: existing verdicts and notes are preserved and only the counts
+                       refresh, because overwriting a hand-adjudicated column from a fresh
+                       measurement has reversed decisions here before
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
