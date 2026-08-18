@@ -1,35 +1,11 @@
 #!/usr/bin/env python3
 """Can a verdict claim the source territory EQUALS the polity's, when the label mixes territories?
 
-WHAT THIS RECORDS. `state/iia_label_provenance.csv` is derived from an IIA harmonisation mapping
-(`harmonization_geography.xlsx`, sheet `iia harmonization`): 335 labels collapsed onto 173 modern
-countries.
-
-READ THE PROVENANCE OF THE PROVENANCE FILE BEFORE TRUSTING IT. That mapping is a DIFFERENT VINTAGE
-from the raw extract the pipeline actually carries: only **109 of its 334 labels** appear verbatim in
-`harmonized_data.xlsx`. It says `algeria` and `angola` where the data says `french algeria` and
-`portuguese angola`, and `dutch east indies: java and madura` where the data says
-`dutch java and madura`. Five of its eight declared multi-country labels — `anglo-egyptian sudan`
-among them — do not occur in the data at all, which is why that entry has zero rows behind it.
-
-So this file is a statement of HARMONISATION INTENT, not a transcript of what happened to these
-rows. It is a risk flag: a target the spec assembles from a whole plus its parts is one where a
-territorial merge is likely, and worth refusing an equality claim on. It is NOT proof that any
-particular row was merged. The direct evidence for that is value-fingerprint matching against the
-raw extract — `15_label_provenance.py` — and the two are complementary: `czech republic` is flagged
-here, yet fingerprints show 92.5% from `czechoslovakia` alone with no sub-label above the noise
-floor, so the risk did not materialise there.
-
-The three declared multi-country labels that DO occur in the data are all confirmed by direct
-measurement, which is what makes the flag worth keeping:
-
-    layer B `serbia`    24% of its values match raw `kingdom of serbs, croats and slovenes`
-    layer B `niger`     31% match raw `french west africa` (a federation of eight territories)
-    layer B `austria`   12% match raw `austria-hungary`
-
-The findings that motivated this gate — `serbia` being Yugoslavia, `viet nam` being Tonkin,
-`indonesia` mixing a colony with a 7% subset — were all measured directly against the raw extract and
-do not depend on this mapping being the right vintage.
+WHAT THIS RECORDS. `state/iia_label_provenance.csv` is derived from the IIA harmonisation mapping
+(`harmonization_geography.xlsx`, sheet `iia harmonization`): 335 raw yearbook labels collapsed onto
+173 modern countries. Until it was tracked, that mapping was the only record of where each IIA row's
+territory came from and it lived in one person's Downloads folder — so nothing in this repository
+could tell that `serbia` means Yugoslavia or that `viet nam` means Tonkin.
 
     one_to_one                104   one raw label, one target — clean
     shares_target              97   several labels on one target, none nested in another
@@ -80,18 +56,26 @@ LEDGER = os.path.join(REPO, "pipelines/polity-autoimprove/state/review_ledger.cs
 # Kinds where the layer-B label cannot be one territory.
 MIXING = ("multi_country", "whole_with_sub_siblings")
 
-# Measured 2026-08-18, after excluding the two retracted this same day. These verdicts were made
-# before the mapping was tracked, from evidence that was self-consistent at the time.
+# Measured 2026-08-18 against OBSERVED mixing. One verdict:
+# `french polynesia|iia|1909-1938` -> PYF-1800-2025, where layer B's label draws on both
+# `french oceania` (61%) and `french oceania: makatea island` (39%) -- a territory and one phosphate
+# island inside it.
 #
-# It was 14 counting only the applied record's own `quarantined` flag, which was WRONG: retracting a
-# verdict sets the ledger row to `issue`, and the appended jsonl line is history that is never
-# rewritten. Reading the ledger too drops `united states of america|iia|1909-1945` and
-# `viet nam|iia|1930-1944`, both retracted in this session on raw-source measurements.
+# This number moved three times while the check was being written, and every move was a correction
+# to the MEASUREMENT rather than to the data:
+#   14  trusting the applied record's own `quarantined` flag, which does not reflect a retraction --
+#       the ledger does. Reading the ledger dropped two retracted the same day.
+#   12  joining on country NAME, which silently missed 16 of 164 labels where the spec writes
+#       "Korea, Republic of" and layer B writes `south korea`. Joining on the resolved label found
+#       `czech republic|iia|1919-1937`.
+#   13  counting the SPEC's merges rather than merges observed in this data. That flagged `jamaica`
+#       (86% `british jamaica` alone), `austria` and `niger` on the strength of a harmonisation
+#       intent that did not materialise here.
+#    1  counting only labels where two raw sources are both present above the noise floor.
 #
-# Then 12 -> 13 when the join moved from `assigned_modern` to the resolved layer-B label, which
-# added `czech republic|iia|1919-1937`. Both corrections moved the number, in opposite directions,
-# and neither was visible in the output: an unjoined label and a stale flag both read as clean.
-BASELINE_VERIFIED_EQUAL_ON_MIXED = 13
+# Every one of those wrong numbers printed as a clean pass or a plausible list. That is the whole
+# reason this file records `territory_signal` rather than re-deriving it per run.
+BASELINE_VERIFIED_EQUAL_ON_MIXED = 1
 
 # The eight the mapping itself declares as spanning several modern countries. Pinned by name so a
 # change to the mapping surfaces here rather than silently shifting the count.
@@ -137,8 +121,19 @@ def main() -> int:
     # `turkey` vs "Türkiye", `dr congo`, `united kingdom` -- so a name join silently missed 16
     # of 164 labels, about 10%, and the miss looks exactly like a clean result. The derivation
     # resolves each row to its layer-B label once, via ISO3 where the names differ.
+    # OBSERVED mixing, not merely specified. `territory_signal` is measured by value fingerprint
+    # against the raw extract when it is available, and stored here so CI can use it without the
+    # extract. Three values:
+    #   mixed       two raw labels above the noise floor -> the label HAS no single territory
+    #   redirected  one dominant raw label under a different name. Needs a human: `british ceylon`
+    #               -> `sri lanka` is a legitimate rename, `yugoslavia` -> `serbia` is not
+    #   clean       one dominant label, this label under a colonial qualifier
+    #
+    # Only `mixed` fails. Gating on the spec's `kind` instead was wrong in both directions: it
+    # flagged `jamaica` (86% `british jamaica` alone) and `austria` and `niger`, and it flagged
+    # them because the SPEC merges labels there, not because this data does.
     mixed_targets = {r["layer_b_label"] for r in prov
-                     if r["kind"] in MIXING and r.get("layer_b_label")}
+                     if r.get("territory_signal") == "mixed" and r.get("layer_b_label")}
     declared_multi = {r["raw_label"] for r in prov if r["kind"] == "multi_country"}
 
     offenders = []

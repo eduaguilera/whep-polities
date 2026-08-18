@@ -1174,7 +1174,7 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
 
 
 def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
-    """Mark a label the harmonisation mapping shows is MIXED as if it were one clean territory.
+    """Mark a clean label as one whose values come from two raw territories at once.
 
     Inverse of the real defect, and deliberately so. The real defect was that the mapping was not
     tracked at all, so `serbia` meaning Yugoslavia and `viet nam` meaning Tonkin were invisible;
@@ -1202,7 +1202,7 @@ def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
         rows = list(csv.DictReader(fh))
         fields = list(rows[0])
     mixed = {r.get("layer_b_label") for r in rows
-             if r["kind"] in ("multi_country", "whole_with_sub_siblings")}
+             if r.get("territory_signal") == "mixed"}
 
     retracted = set()
     with open(ledger, newline="", encoding="utf-8") as fh:
@@ -1236,8 +1236,12 @@ def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
         # `assigned_modern` instead failed on `south korea`, because the mapping carries the long
         # official name -- the same 10% miss the gate itself had.
         if r.get("layer_b_label") == target and hit == 0:
-            r["kind"] = "whole_with_sub_siblings"
-            r["n_sub_labels"] = "2"
+            # Mutate `territory_signal`, the field the gate READS. An earlier version set `kind`
+            # instead -- the spec's intent -- and after the gate moved to observed mixing the
+            # mutation stopped biting: the harness reported "PASSED a mutation it claims to catch",
+            # which is precisely the state it exists to detect.
+            r["territory_signal"] = "mixed"
+            r["fingerprint_note"] = "injected: two raw labels above the floor"
             hit += 1
     assert hit == 1, f"expected one provenance row for {target}, changed {hit}"
     with open(prov, "w", newline="", encoding="utf-8") as fh:
@@ -1246,7 +1250,7 @@ def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
         w.writerows(rows)
     return (f"marked `{target}` as a target assembled from a whole plus sub-labels, so the "
             f"`verified_equal` verdict already banked against it is an equality claim on a label "
-            f"with no single territory")
+            f"whose values come from two territories at once")
 
 def mutate_ledger_verdict_on_dead_polity(root, gpd, make_valid, affinity):
     """Re-point a banked verdict at a polity code that does not exist.
@@ -2399,8 +2403,8 @@ CASES = (
         "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
         "verified_equal",
-        "a provenance row that hides a whole-plus-parts merge, so equality claims on a label "
-        "with no single territory stop being refused",
+        "a provenance row that hides an observed whole-plus-parts merge, so equality claims on a "
+        "label with no single territory stop being refused",
     ),
     (
         "validate_review_ledger.py",
