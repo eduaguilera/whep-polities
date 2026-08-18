@@ -1,0 +1,10 @@
+layer_b_label,item,unit,n_cells,n_traced,n_ambiguous,n_products,products,worst_switch_ratio,worst_switch
+australia,sugar raw centrifugal,tonnes,33,30,3,2,sugar: cane=17;sugar: beet=12,185.24,1940:3300 [sugar: beet] -> 1944:611300 [sugar: cane]
+czech republic,wheat,tonnes,20,15,5,2,meslin=9;spelt=6,72.02,1925:22464 [meslin] -> 1930:312 [spelt]
+japan,p,tonnes,16,15,1,2,"fertilizers: phosphate, natural=13;fertilizers: calcium superphosphate=2",47.39,"1932:23804 [fertilizers: phosphate, natural] -> 1933:1128000 [fertilizers: calcium superphosphate]"
+sweden,p,tonnes,16,16,0,2,fertilizers: calcium superphosphate=13;slag: basic=3,28.34,1932:7730 [slag: basic] -> 1933:219030 [fertilizers: calcium superphosphate]
+japan,n,tonnes,16,12,4,2,fertilizers: calcium cyanamide=10;fertilizers: ammonium sulfate=2,27.46,1918:2731 [fertilizers: calcium cyanamide] -> 1919:75000 [fertilizers: ammonium sulfate]
+france,p,tonnes,16,15,1,3,"fertilizers: phosphate, natural=8;slag: basic=4;fertilizers: calcium superphosphate=3",17.75,"1919:103869 [fertilizers: phosphate, natural] -> 1920:1843273 [fertilizers: calcium superphosphate]"
+spain,sugar raw centrifugal,tonnes,31,27,4,2,sugar: beet=22;sugar: cane=5,14.43,1925:243900 [sugar: beet] -> 1930:16899 [sugar: cane]
+austria,p,tonnes,12,11,1,2,fertilizers: calcium superphosphate=8;slag: dephosphorization=3,10.03,1913:400000 [fertilizers: calcium superphosphate] -> 1914:39900 [slag: dephosphorization]
+paraguay,sugar raw centrifugal,tonnes,27,17,10,2,"sugar: cane=14;sugar: cane, unrefined=3",4.33,"1924:1758 [sugar: cane, unrefined] -> 1930:7616 [sugar: cane]"

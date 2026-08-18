@@ -1200,6 +1200,41 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_switch_product_count_thinned(root, gpd, make_valid, affinity):
+    """Leave a switching series' second product supplying one cell, keeping everything else.
+
+    The whole claim that a series SWITCHES rests on each product being carried by more than one cell.
+    A single cell is as likely to be a value collision -- `australia / sugar` 1942 reads 700, which
+    also appears in the raw extract under castorseed, coffee and butter -- so MIN_PER_PRODUCT=2 is
+    what separates a real switch from a coincidence. Relax it and regenerate, and the table refills
+    with series that alternate only in the noise.
+
+    So this rewrites the `products` column to leave the minority product on one cell while keeping
+    n_products, the ratio and worst_switch consistent, which is exactly what a loosened threshold
+    produces. Only signal C can catch it: the pinned set is untouched and the ratio still re-derives
+    from its own two values, so the case cannot pass for another reason.
+
+    It picks the series with the largest recorded jump, by measurement rather than name, since the
+    table is regenerated from the panel and the raw extract.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/item_product_switches.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    target = max(rows, key=lambda r: float(r["worst_switch_ratio"]))
+    parts = target["products"].split(";")
+    before = target["products"]
+    head, tail = parts[0], parts[1:]
+    target["products"] = ";".join([head] + [t.rsplit("=", 1)[0] + "=1" for t in tail])
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"thinned {target['layer_b_label']} / {target['item']}'s product counts from "
+            f"{before!r} to {target['products']!r}, leaving the minority product on a single cell -- "
+            f"the shape a value collision takes rather than a real switch")
+
+
 def mutate_item_attribution_on_round_values(root, gpd, make_valid, affinity):
     """Mark an attribution as resting on a handful of DISTINCT values, keeping everything else.
 
@@ -2564,6 +2599,13 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_item_product_switches.py",
+        mutate_switch_product_count_thinned,
+        "as likely to be a value collision",
+        "a switching series whose second product is left supplying a single cell, which is the shape "
+        "a value collision takes and is exactly what MIN_PER_PRODUCT exists to reject",
+    ),
+    (
         "validate_item_provenance.py",
         mutate_item_attribution_on_round_values,
         "chance collision and not a measurement",
@@ -3063,6 +3105,10 @@ WRITABLE = {
     # The case rewrites item_provenance.csv (it lowers a distinct-value count), so a real copy.
     "validate_item_provenance.py": (
         "pipelines/polity-autoimprove/state/item_provenance.csv",
+    ),
+    # The case rewrites item_product_switches.csv (it thins a product count), so a real copy.
+    "validate_item_product_switches.py": (
+        "pipelines/polity-autoimprove/state/item_product_switches.csv",
     ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",

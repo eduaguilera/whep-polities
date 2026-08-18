@@ -475,6 +475,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_item_provenance.py
 
+      # A series can have the right territory, a constant item name and one unchanging source, and
+      # still be a patchwork of different commodities. australia's `sugar raw centrifugal` alternates
+      # cane and BEET (x0.01 down, x873 back up, 12 of 33 cells at ~1/300 of the series); sweden's `p`
+      # alternates superphosphate and basic slag, which is why `p` is not a P2O5 total. Recorded only
+      # on OSCILLATION -- a product returning after another intervened -- because comparing product
+      # medians confounds this with growth and inflated the count from 9 to 28.
+      - name: Sources — an item series must not switch raw product back and forth
+        if: '!cancelled()'
+        run: python3 scripts/validate_item_product_switches.py
+
       # 19_composition_overlaps.py writes state/composition_overlaps.csv from the matcher's ACTUAL
       # routings, not just the alias map: only 205 of 832 routings come from an alias, so a part
       # reached by iso/name matching was invisible to the composition gate's double-count arm. 13
