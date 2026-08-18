@@ -18,7 +18,12 @@ non-quarantined verdict:
   quarantined  -> state/quarantine.csv for human adjudication + ledger: issue
 
 Idempotent: re-running the same verdicts file changes nothing (alias/ignored
-appends are deduped; ledger upserts by key).
+appends are deduped; quarantine dedups on `key`; ledger upserts by key) AND it
+will not undo an adjudication -- a `confirm` whose ledger row sits at `issue` is
+REFUSED, because that row records a reviewer disagreement or a human measurement
+written into quarantine.csv. Without that guard a re-run silently replaced
+`issue` with `correct` while the verdicts file still said confirm; it reversed
+three retractions in one run and only a gate noticed.
 """
 import json, csv, os, sys, datetime
 
@@ -76,6 +81,11 @@ def bank(key, status, evidence_hash="", protocol=None):
         ledger.append(row); by_key[key.strip().lower()] = row
     row.update({"status": status, "evidence_hash": evidence_hash,
                 "protocol_version": protocol, "last_run": TODAY})
+
+def ledger_status(key):
+    """Status the ledger currently holds for this assertion, or "" if it has none."""
+    row = by_key.get(key.strip().lower())
+    return (row or {}).get("status") or ""
 
 def append_dedup(path, fields, row, key_on=None):
     """Append unless present. `key_on` narrows the comparison to those fields only.
@@ -239,6 +249,21 @@ for item in verdicts:
         continue
 
     if v["verdict"] == "confirm":
+        # DO NOT RE-BANK A RETRACTION. A ledger row at `issue` means this assertion was adjudicated
+        # against -- by a reviewer disagreement, or by a human writing a measurement into
+        # quarantine.csv. Re-running this script over the same verdicts file used to overwrite that
+        # `issue` with `correct` and say nothing, because the verdict file still says confirm.
+        #
+        # It happened for real: three retractions (russian federation|iia|1909-1913,
+        # china mainland|iia|1922-1931, azerbaijan|iia|1930-1940) were reversed by a re-run whose
+        # only purpose was to check that quarantine dedup had become idempotent. The gate caught it;
+        # nothing else would have.
+        if ledger_status(key) == "issue":
+            print(f"  REFUSED to re-bank {key}: its ledger row is `issue`, i.e. this assertion was "
+                  f"already adjudicated against. Delete that row or move it off `issue` if the "
+                  f"confirm is genuinely the newer judgement")
+            stats["skipped_retracted"] = stats.get("skipped_retracted", 0) + 1
+            continue
         bank(key, "correct", b["evidence_hash"])
         stats["confirm"] += 1
     elif v["verdict"] == "reroute":
