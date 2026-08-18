@@ -307,8 +307,10 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        label|source|first-last, so a re-split orphans banked verdicts: 52 of 460,
                        ALL span drift. quarantine.csv is tracked and keyed independently so prior
                        quarantine work is cited; a plain `confirm` had no carrier and was paid for
-                       twice (#308). 75 rows recover 50 orphans onto 69 queue keys, 51 of them
-                       otherwise re-decided from scratch. EVIDENCE, NOT A RE-BANK: a re-split is
+                       twice (#308). One row per banked verdict (460: matched 408, carried 50,
+                       uncarried 2); the 50 carry onto 69 queue keys, 51 otherwise re-decided.
+                       The table STATES the outcome because assertions.json is gitignored and a
+                       gate cannot recompute it -- the first version skipped in CI. EVIDENCE, NOT A RE-BANK: a re-split is
                        sometimes a response to a finding, so auto-carrying would launder a
                        judgement onto a span nobody judged. --write refreshes
                        state/verdict_carryover.csv

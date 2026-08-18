@@ -51,8 +51,13 @@ OUT = os.path.join(STATE, "verdict_carryover.csv")
 APPLIED = os.path.join(STATE, "verdicts_applied.jsonl")
 QUEUE = os.path.join(STATE, "assertions.json")
 
-COLS = ["banked_key", "queue_key", "label", "source", "banked_span", "queue_span",
-        "overlap_years", "banked_years", "overlap_share", "banked_verdict", "queue_status"]
+# ONE ROW PER BANKED VERDICT, not per carry pair. The queue (`assertions.json`) is GITIGNORED, so a
+# gate cannot recompute which verdicts are orphaned -- it can only read this table and the tracked
+# applied log. So the table must state the outcome for EVERY banked key, and the carries are folded
+# into one column. The first version emitted only orphan->queue pairs and its gate silently SKIPPED in
+# CI for want of the queue, which the selftest reported as the gate failing to catch its own defect.
+COLS = ["banked_key", "label", "source", "banked_span", "queue_state", "n_carries",
+        "carries", "banked_verdict"]
 
 
 def parse_key(k):
@@ -138,21 +143,33 @@ def main() -> int:
         if not emitted:
             no_overlap.append((bk, "same label|source in the queue but no shared year"))
 
-    rows.sort(key=lambda r: (r["label"], r["source"], r["queue_span"]))
-    print(f"banked verdicts: {len(banked)}   in the queue: {len(banked) - len(orphans)}   "
-          f"ORPHANED: {len(orphans)}")
-    print(f"carry rows (orphaned verdict -> overlapping queue key): {len(rows)}")
-    print(f"  distinct orphaned verdicts carried: {len({r['banked_key'] for r in rows})}")
-    print(f"  distinct queue keys receiving evidence: {len({r['queue_key'] for r in rows})}")
-    if no_overlap:
-        print(f"\n  orphans with NOTHING to carry to ({len(no_overlap)}):")
-        for k, why in no_overlap:
-            print(f"    {k}  — {why}")
-    print(f"\n{'banked key':44} {'queue key':40} {'overlap':>8}  status")
-    for r in rows[:16]:
-        print(f"  {r['banked_key'][:42]:44} {r['queue_key'][:38]:40} "
-              f"{r['overlap_years']:>3}/{r['banked_years']:<3} {r['overlap_share']:>6}  "
-              f"{r['queue_status']}")
+    per_key = defaultdict(list)
+    for r in rows:
+        per_key[r["banked_key"]].append(r)
+
+    out = []
+    for bk in sorted(banked):
+        p = parse_key(bk)
+        if not p:
+            continue
+        label, source, b0, b1 = p
+        if bk in qstatus:
+            state, carries = "matched", []
+        elif bk in per_key:
+            state = "carried"
+            carries = [f"{r['queue_key']}@{r['overlap_share']}"
+                       for r in sorted(per_key[bk], key=lambda x: -float(x["overlap_share"]))]
+        else:
+            state, carries = "uncarried", []
+        out.append({
+            "banked_key": bk, "label": label, "source": source,
+            "banked_span": f"{b0}-{b1}" if b0 is not None else "",
+            "queue_state": state, "n_carries": len(carries),
+            "carries": ";".join(carries), "banked_verdict": banked[bk],
+        })
+    rows = out
+    from collections import Counter as _C
+    print("\n  per-verdict outcome:", dict(_C(r["queue_state"] for r in rows)))
 
     if args.write:
         fd, tmp = tempfile.mkstemp(dir=os.path.dirname(OUT), suffix=".tmp")

@@ -40,6 +40,7 @@ import json
 import os
 import re
 import sys
+from collections import defaultdict
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATE = os.path.join(REPO, "pipelines/polity-autoimprove/state")
@@ -60,8 +61,16 @@ def span_of(k):
     return (int(yy[0]), int(yy[-1])) if len(yy) >= 2 else None
 
 
+STATES = ("matched", "carried", "uncarried")
+
+
 def main() -> int:
-    for p in (TABLE, APPLIED, QUEUE):
+    # NOTE: assertions.json (the queue) is GITIGNORED and absent in CI, so this gate reads ONLY the
+    # tracked table and the tracked applied log. That is why the table carries a `queue_state` per
+    # banked verdict instead of just orphan->queue pairs: the outcome has to be stated, because it
+    # cannot be recomputed here. The first version of this gate did depend on the queue and SKIPPED in
+    # CI, which the selftest correctly reported as the gate failing to catch its own injected defect.
+    for p in (TABLE, APPLIED):
         if not os.path.exists(p):
             print(f"SKIP: {os.path.relpath(p, REPO)} missing — run 23_verdict_carryover.py --write")
             return 0
@@ -81,64 +90,82 @@ def main() -> int:
                     continue
             if isinstance(v, dict) and v.get("key"):
                 banked.add(v["key"])
-    q = json.load(open(QUEUE, encoding="utf-8"))
-    q = q if isinstance(q, list) else q.get("assertions", [])
-    qkeys = {a.get("key") for a in q if a.get("key")}
 
     problems = []
-    orphans = banked - qkeys
-    carried = {r["banked_key"] for r in rows}
-    print(f"banked verdicts {len(banked)}   orphaned by re-spanning {len(orphans)}   "
-          f"carry rows {len(rows)}")
-    print(f"  orphans carried: {len(carried)}   uncarried baseline: {len(BASELINE_UNCARRIED)}")
+    listed = {r["banked_key"] for r in rows}
+    by_state = defaultdict(set)
+    for r in rows:
+        by_state[r["queue_state"]].add(r["banked_key"])
+    print(f"banked verdicts in the applied log: {len(banked)}   rows in the table: {len(rows)}")
+    print("  " + "  ".join(f"{k}={len(v)}" for k, v in sorted(by_state.items())))
 
-    # --- A ---
-    for k in sorted(orphans - carried - BASELINE_UNCARRIED):
+    # --- A: nothing lost ---
+    for k in sorted(banked - listed):
         problems.append(
-            f"A banked verdict {k!r} matches no queue key and no carry row — the judgement is lost "
-            f"and the assertion will be decided again from scratch. Re-run "
-            f"23_verdict_carryover.py --write, or baseline it if nothing overlaps")
-    for k in sorted(BASELINE_UNCARRIED & carried):
+            f"A banked verdict {k!r} has no row in the table, so nothing records whether re-spanning "
+            f"orphaned it. That is how a judgement silently returns to the queue as `pending` and is "
+            f"paid for twice — re-run 23_verdict_carryover.py --write")
+    for k in sorted(listed - banked):
         problems.append(
-            f"A {k!r} is baselined as having nothing to carry to but now has a carry row — remove it "
-            f"from BASELINE_UNCARRIED")
-    for k in sorted(carried - orphans):
+            f"A the table lists {k!r}, which is not in the applied log — a stale row; re-run the "
+            f"generator")
+    uncarried = by_state.get("uncarried", set())
+    for k in sorted(uncarried - BASELINE_UNCARRIED):
         problems.append(
-            f"A carry row for {k!r}, which is NOT orphaned — it matches a queue key directly, so the "
-            f"row is stale. Re-run 23_verdict_carryover.py --write")
+            f"A {k!r} is orphaned with NOTHING to carry its verdict to and is not baselined. Either a "
+            f"queue key overlapping it exists and the table is stale, or the judgement is genuinely "
+            f"unreachable and must be recorded as such")
+    for k in sorted(BASELINE_UNCARRIED - uncarried):
+        problems.append(
+            f"A {k!r} is baselined as uncarried but is not any more — remove it from "
+            f"BASELINE_UNCARRIED, saying what it now carries to")
 
     for r in rows:
-        tag = f"{r['banked_key']} -> {r['queue_key']}"
-        # --- B ---
-        bs, qs = span_of(r["banked_key"]), span_of(r["queue_key"])
-        if not bs or not qs:
-            problems.append(f"B {tag}: a key carries no parseable span")
+        bk = r["banked_key"]
+        if r["queue_state"] not in STATES:
+            problems.append(f"B {bk}: unknown queue_state {r['queue_state']!r}, not in {STATES}")
             continue
-        byears = set(range(bs[0], bs[1] + 1))
-        ov = len(byears & set(range(qs[0], qs[1] + 1)))
-        if ov != int(r["overlap_years"]):
+        n = int(r["n_carries"])
+        parts = [c for c in (r["carries"] or "").split(";") if c]
+        if n != len(parts):
+            problems.append(f"B {bk}: n_carries={n} but the carries column names {len(parts)}")
+        if r["queue_state"] != "carried" and parts:
             problems.append(
-                f"B {tag}: overlap_years is {r['overlap_years']} but the two spans share {ov}")
-        if len(byears) != int(r["banked_years"]):
-            problems.append(
-                f"B {tag}: banked_years is {r['banked_years']} but {bs[0]}-{bs[1]} is {len(byears)}")
-        want = ov / len(byears) if byears else 0.0
-        if abs(want - float(r["overlap_share"])) > 5e-4:
-            problems.append(
-                f"B {tag}: overlap_share is {r['overlap_share']} but the spans give {want:.4f}")
-        # --- C ---
-        if ov == 0:
-            problems.append(
-                f"C {tag}: zero shared years. Sharing a label and source while sharing no year says "
-                f"nothing about the assertion, and such a row would carry prior work onto an "
-                f"unrelated span")
+                f"B {bk}: state is `{r['queue_state']}` but it carries {len(parts)} queue key(s)")
+        if r["queue_state"] == "carried" and not parts:
+            problems.append(f"B {bk}: state is `carried` with no carries listed")
+        # --- C: every carry must share years, and the share must re-derive from the two spans ---
+        bs = span_of(bk)
+        for c in parts:
+            qk, _, sh = c.rpartition("@")
+            qs = span_of(qk)
+            if not bs or not qs:
+                problems.append(f"C {bk} -> {qk}: a key carries no parseable span")
+                continue
+            byears = set(range(bs[0], bs[1] + 1))
+            ov = len(byears & set(range(qs[0], qs[1] + 1)))
+            if ov == 0:
+                problems.append(
+                    f"C {bk} -> {qk}: zero shared years. Sharing a label and source while sharing no "
+                    f"year says nothing about the assertion, and such a carry would put prior work "
+                    f"onto an unrelated span")
+                continue
+            want = ov / len(byears)
+            try:
+                got = float(sh)
+            except ValueError:
+                problems.append(f"C {bk} -> {qk}: overlap share {sh!r} is not a number")
+                continue
+            if abs(want - got) > 5e-4:
+                problems.append(
+                    f"C {bk} -> {qk}: recorded overlap {got:.4f} but the two spans give {want:.4f}")
 
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)\n")
         for p in problems:
             print(f"  {p}")
         return 1
-    print("\nPASS: every orphaned verdict is accounted for, every overlap re-derives, no empty carries")
+    print("\nPASS: every banked verdict is accounted for, every carry shares years and re-derives")
     return 0
 
 

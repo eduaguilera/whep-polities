@@ -1220,19 +1220,19 @@ def mutate_carryover_row_dropped(root, gpd, make_valid, affinity):
     with open(path, newline="", encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
         fields = list(rows[0])
-    counts = {}
-    for r in rows:
-        counts[r["banked_key"]] = counts.get(r["banked_key"], 0) + 1
-    victim = max(counts, key=lambda k: (counts[k], k))
-    kept = [r for r in rows if r["banked_key"] != victim]
-    assert len(kept) == len(rows) - counts[victim]
+    # Target a `carried` row: that is a verdict re-spanning ORPHANED, whose only trace is this table.
+    # Deleting a `matched` row would also fail, but for a weaker reason -- the queue still names it.
+    carried = [r for r in rows if r["queue_state"] == "carried"]
+    victim = max(carried, key=lambda r: (int(r["n_carries"]), r["banked_key"]))
+    kept = [r for r in rows if r["banked_key"] != victim["banked_key"]]
+    assert len(kept) == len(rows) - 1
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=fields)
         w.writeheader()
         w.writerows(kept)
-    return (f"deleted all {counts[victim]} carry row(s) for the orphaned verdict {victim!r}, so a "
-            f"banked judgement is no longer findable from any queue key and the assertion will be "
-            f"decided a second time")
+    return (f"deleted the table row for {victim['banked_key']!r}, a verdict re-spanning orphaned onto "
+            f"{victim['n_carries']} queue key(s), so the only record that prior work exists is gone "
+            f"and the assertion will be decided a second time")
 
 
 def mutate_defect_mapping_approved(root, gpd, make_valid, affinity):
@@ -2669,7 +2669,7 @@ CASES = (
     (
         "validate_verdict_carryover.py",
         mutate_carryover_row_dropped,
-        "the judgement is lost",
+        "paid for twice",
         "a carry row deleted for an orphaned verdict, which is how a banked judgement silently "
         "returns to the queue as pending and gets paid for a second time",
     ),
