@@ -32,7 +32,11 @@ CHN-1949-1950     #  75 rows, 2006 B
 ETH-1952-1993     #  65 rows, 2597 B -- 3 bytes under the floor; a one-paragraph addition graduates it
 VIR-1917-2025     #  65 rows,  899 B -- Danish West Indies successor; see DWI-1800-1917 below, same gap
 KOR-1945-1948     #  63 rows, 2078 B
-TPAP-1906-1949    #  60 rows, 2518 B
+# TPAP-1906-1949 graduated 2026-08-18: the page's IIA COMBINED-SERIES WARNING was
+# disproven (its tobacco evidence runs 1910-1917 and stops, three years before the 1920
+# mandate it was meant to evidence; cacao is flat across 1920) and replaced with the
+# measured finding -- 72% of the label's values are raw `dutch new guinea`, i.e. WEST
+# Papua, a different country on the other side of the island. 2,518 -> 4,601 bytes.
 NGA-1886-1914     #  58 rows, 2169 B
 CHN-1945-1947     #  46 rows, 2054 B
 WZO-1938-1949     #  44 rows, 2246 B
