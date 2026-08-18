@@ -38,7 +38,7 @@ chile|iia|1909-1945,CHL-1902-2025,104,clean,chile,1.00,chile 100%
 china hong kong sar|iia|1924-1924,HKG-1842-2025,2,redirected,british hong kong,1.00,british hong kong 100% [only 2 values — below the 8-value floor]
 china mainland|iia|1914-1917,CHN-1914-1921,6,redirected,china,0.50,china 50% [only 6 values — below the 8-value floor]
 china mainland|iia|1922-1931,CHN-1921-1932,36,mixed,china,0.56,china + japan: kwantung leased territory (union 83%)
-china mainland|iia|1932-1944,CHN-1932-1945,134,redirected,china,0.63,china 63%
+china mainland|iia|1932-1944,CHN-1932-1945,134,sequential_scope,china,0.63,"china 63% in some years, china: manchuria 10% in others — a part standing for the whole"
 china mainland|iia|1945-1945,CHN-1945-1947,9,redirected,china,0.89,china 89%
 china taiwan province of|iia|1909-1944,TWN-1895-1945,266,redirected,japanese taiwan,1.00,japanese taiwan 100%
 china taiwan province of|iia|1945-1945,TWN-1945-2025,2,redirected,japanese taiwan,1.00,japanese taiwan 100% [only 2 values — below the 8-value floor]
@@ -63,7 +63,7 @@ ecuador|iia|1922-1941,ECU-1800-1942,15,clean,ecuador,1.00,ecuador 100%
 ecuador|iia|1942-1945,ECU-1942-2025,7,clean,ecuador,1.00,ecuador 100% [only 7 values — below the 8-value floor]
 egypt|iia|1909-1924,EGY-1899-1925,94,clean,egypt,0.73,egypt 73%
 egypt|iia|1925-1945,EGY-1925-1967,275,clean,egypt,0.65,egypt 65%
-el salvador|iia|1910-1944,SLV-1821-2025,29,clean,el salvador,0.55,el salvador 55%
+el salvador|iia|1910-1944,SLV-1821-2025,29,sequential_scope,el salvador,0.55,"el salvador 55% in some years, el salvador: san salvador department 45% in others — a part standing for the whole"
 equatorial guinea|iia|1910-1945,GNQ-1886-1968,23,no_dominant_source,bulgaria,0.26,best bulgaria 26%
 eritrea|iia|1922-1937,ERI-1889-1952,87,clean,italian eritrea,1.00,italian eritrea 100%
 estonia|iia|1929-1939,EST-1918-1940,16,clean,estonia,1.00,estonia 100%
@@ -81,7 +81,7 @@ finland|iia|1940-1945,FIN-1940-2025,17,clean,finland,1.00,finland 100%
 france|iia|1909-1918,FRA-1871-1919,77,clean,france,0.87,france 87%
 france|iia|1919-1945,FRA-1919-2025,216,clean,france,0.83,france 83%
 french guiana|iia|1909-1945,GUF-1816-1946,29,clean,french guiana,1.00,french guiana 100%
-french polynesia|iia|1909-1937,PYF-1800-2025,41,redirected,french oceania,0.61,french oceania 61%
+french polynesia|iia|1909-1937,PYF-1800-2025,41,sequential_scope,french oceania,0.61,"french oceania 61% in some years, french oceania: makatea island 39% in others — a part standing for the whole"
 gabon|iia|1909-1911,GAB-1839-1912,6,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100% [only 6 values — below the 8-value floor]
 gabon|iia|1912-1918,GAB-1912-1919,22,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100%
 gabon|iia|1919-1932,GAB-1919-1960,20,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100%
@@ -96,7 +96,7 @@ greece|iia|1911-1911,GRC-1881-1913,2,clean,greece,0.50,greece 50% [only 2 values
 greece|iia|1914-1918,GRC-1913-1919,10,clean,greece,0.50,greece 50%
 greece|iia|1919-1945,GRC-1919-1947,146,clean,greece,0.77,greece 77%
 grenada|iia|1909-1945,GRD-1800-2025,109,clean,british grenada,1.00,british grenada 100%
-guadeloupe|iia|1909-1945,GLP-1816-2025,138,clean,french guadeloupe,0.78,french guadeloupe 78%
+guadeloupe|iia|1909-1945,GLP-1816-2025,138,sequential_scope,french guadeloupe,0.78,"french guadeloupe 78% in some years, french guadeloupe and dependencies 15% in others — a part standing for the whole"
 guatemala|iia|1910-1945,GTM-1821-2025,92,clean,guatemala,1.00,guatemala 100%
 guinea bissau|iia|1932-1945,GNB-1886-1974,4,redirected,portuguese guinea,1.00,portuguese guinea 100% [only 4 values — below the 8-value floor]
 guinea|iia|1922-1945,GIN-1894-1958,82,clean,french guinea,1.00,french guinea 100%
@@ -138,7 +138,7 @@ lebanon|iia|1944-1945,LBN-1944-2025,31,clean,french lebanon,0.94,french lebanon 
 liberia|iia|1939-1945,LBR-1847-2025,9,clean,liberia,1.00,liberia 100%
 libya|iia|1922-1924,LBY-1919-1925,3,redirected,italian libya: tripolitania,1.00,italian libya: tripolitania 100% [only 3 values — below the 8-value floor]
 libya|iia|1925-1933,LBY-1925-1934,44,no_dominant_source,italian libya: tripolitania,0.25,best italian libya: tripolitania 25%
-libya|iia|1934-1942,LBY-1934-1943,37,clean,italian libya,0.78,italian libya 78%
+libya|iia|1934-1942,LBY-1934-1943,37,sequential_scope,italian libya,0.78,"italian libya 78% in some years, italian libya: tripolitania 19% in others — a part standing for the whole"
 libya|iia|1943-1945,LBY-1943-1949,3,clean,italian libya,1.00,italian libya 100% [only 3 values — below the 8-value floor]
 lithuania|iia|1930-1939,LTU-1918-1940,15,clean,lithuania,1.00,lithuania 100%
 lithuania|iia|1940-1945,LTU-1940-1991,6,redirected,british nigeria,1.00,british nigeria 100% [only 6 values — below the 8-value floor]
@@ -228,7 +228,7 @@ tanzania|iia|1910-1913,TAN-1891-1920,12,redirected,british tanganyika,1.00,briti
 tanzania|iia|1921-1921,TAN-1920-1922,1,redirected,british tanganyika,1.00,british tanganyika 100% [only 1 values — below the 8-value floor]
 tanzania|iia|1922-1945,TAN-1922-1964,101,redirected,british tanganyika,1.00,british tanganyika 100%
 thailand|iia|1911-1944,THA-1909-2025,118,redirected,siam,1.00,siam 100%
-timor leste|iia|1909-1940,TLS-1800-2025,17,redirected,portuguese timor and kambing,0.53,portuguese timor and kambing 53%
+timor leste|iia|1909-1940,TLS-1800-2025,17,sequential_scope,portuguese timor and kambing,0.53,"portuguese timor and kambing 53% in some years, portuguese timor 47% in others — a part standing for the whole"
 togo|iia|1945-1945,FTO-1920-1960,3,redirected,german togoland,1.00,german togoland 100% [only 3 values — below the 8-value floor]
 trinidad and tobago|iia|1909-1945,TTO-1800-2025,82,clean,british trinidad and tobago,1.00,british trinidad and tobago 100%
 tunisia|iia|1909-1945,TUN-1881-2025,253,clean,french tunisia,1.00,french tunisia 100%

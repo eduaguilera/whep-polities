@@ -9,7 +9,7 @@ australia: queensland,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,,no
 australia: tasmania,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,,no,australia 92%,australia,0.92,clean
 christmas island,Australia,AUS,australia,shares_target,5,,0,0,,no,australia 92%,australia,0.92,clean
 papua new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,1910-1914 dutch new guinea -> 1915-1917 australian papua and new guinea -> 1922-1940 dutch new guinea,dutch new guinea,0.72,sequential_other
-austria-hungary,Austria,AUT,austria,multi_country,2,austria,0,13,Austria; Hungary; Czech Republic; Slovakia; Slovenia; Croatia; Bosnia and Herzegovina; Romania; Ukraine; Poland; Italy; Serbia; Montenegro,no,austria + austria-hungary (union 85%),austria,0.73,mixed
+austria-hungary,Austria,AUT,austria,multi_country,2,austria,0,13,Austria; Hungary; Czech Republic; Slovakia; Slovenia; Croatia; Bosnia and Herzegovina; Romania; Ukraine; Poland; Italy; Serbia; Montenegro,no,austria 73%,austria,0.73,clean
 british west indies: bahamas,Bahamas,BHS,,one_to_one,1,,0,0,,unknown,"label not measured (absent, or under --min-rows)",,,unknown
 banaba island,Kiribati,KIR,kiribati,shares_target,2,,0,0,,no,british ocean island 100%,british ocean island,1.00,redirected
 british west indies: barbados,Barbados,BRB,barbados,shares_target,2,,0,0,,no,british barbados 100%,british barbados,1.00,clean
@@ -221,7 +221,7 @@ sao tome and principe,Sao Tome and Principe,STP,sao tome and principe,one_to_one
 timor,Timor-Leste,TLS,timor leste,whole_with_sub_siblings,2,,1,0,,yes,1909-1916 portuguese timor -> 1930-1940 portuguese timor and kambing,portuguese timor and kambing,0.53,sequential_scope
 timor and kambing,Timor-Leste,TLS,timor leste,sub_of_sibling,2,timor,0,0,,yes,1909-1916 portuguese timor -> 1930-1940 portuguese timor and kambing,portuguese timor and kambing,0.53,sequential_scope
 portuguese mozambique [company],Mozambique,MOZ,mozambique,shares_target,2,,0,0,,no,portuguese mozambique: company concession + portuguese mozambique: province (union 84%),portuguese mozambique: company concession,0.68,mixed
-austria,Austria,AUT,austria,whole_with_sub_siblings,2,,1,0,,no,austria + austria-hungary (union 85%),austria,0.73,mixed
+austria,Austria,AUT,austria,whole_with_sub_siblings,2,,1,0,,no,austria 73%,austria,0.73,clean
 chile,Chile,CHL,chile,one_to_one,1,,0,0,,no,chile 100%,chile,1.00,clean
 china,"China, mainland",CHN,china mainland,whole_with_sub_siblings,5,,3,0,,no,china 62%,china,0.62,redirected
 china: excluding manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 62%,china,0.62,redirected
