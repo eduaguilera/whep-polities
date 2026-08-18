@@ -148,6 +148,62 @@ def is_rename(raw_label: str, lb_label: str) -> bool:
     return " ".join(parts) == b
 
 
+def era_runs(fp: set, raw_fp: dict, contributors: list) -> list:
+    """Per-YEAR dominant contributor, collapsed into contiguous runs.
+
+    WHY THIS EXISTS. Everything else here is computed per LABEL across all its years, which cannot
+    be right for a label whose source changes mid-span. `serbia` is the clearest case: its values
+    are 76%/92% `kingdom of serbs, croats and slovenes` up to 1929 and 94% `yugoslavia` after,
+    because the STATE was renamed in 1929. Averaged over the whole label that reads as two
+    territories mixed together, which overstates it — the label is one entity across a rename, and
+    each era is internally consistent.
+
+    So a label with two contributors is only genuinely MIXED if they co-occur in the SAME years.
+    If they occupy different years it is SEQUENTIAL, and the switch year is the useful output: it
+    tells a reader which assertions on that label are affected, instead of condemning all of them.
+
+    Returns [(first_year, last_year, raw_label), ...] using only the contributors already found
+    above the noise floor, so a chance collision cannot invent an era.
+    """
+    if len(contributors) < 2:
+        return []
+
+    # CO-OCCURRENCE FIRST. Per-year dominance alone is not enough: `indonesia` has sugar coming
+    # from `dutch java and madura` in every year while cotton comes from `dutch east indies` in
+    # every year, so whichever supplies more values that year "wins" and the label looks like a
+    # clean succession when it is nothing of the kind. If both contributors supply values in the
+    # SAME year, they are genuinely concurrent and there is no era structure to report.
+    shared = 0
+    years = sorted({y for y, _v in fp})
+    for year in years:
+        vals = {(y, v) for y, v in fp if y == year}
+        supplying = sum(1 for rl in contributors if vals & raw_fp[rl])
+        if supplying >= 2:
+            shared += 1
+    if years and shared / len(years) > 0.25:
+        return []
+
+    by_year = {}
+    for year in sorted({y for y, _v in fp}):
+        vals = {(y, v) for y, v in fp if y == year}
+        best, best_n = None, 0
+        for rl in contributors:
+            n = len(vals & raw_fp[rl])
+            if n > best_n:
+                best, best_n = rl, n
+        if best:
+            by_year[year] = best
+    runs = []
+    for year in sorted(by_year):
+        lab = by_year[year]
+        if runs and runs[-1][2] == lab and year - runs[-1][1] <= 2:
+            runs[-1][1] = year
+        else:
+            runs.append([year, year, lab])
+    # Drop runs too short to be an era rather than a stray year.
+    return [tuple(r) for r in runs if r[1] - r[0] >= 2]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -232,15 +288,30 @@ def main() -> int:
         covered = set()
         for _c, rl in above:
             covered |= fp & raw_fp[rl]
-        rows.append((label, len(fp), scored[:4], above, top / len(fp), len(covered) / len(fp)))
+        runs = era_runs(fp, raw_fp, [rl for _c, rl in above])
+        rows.append((label, len(fp), scored[:4], above, top / len(fp), len(covered) / len(fp), runs))
 
     if args.write:
         # Re-derive the tracked table: keep every column the mapping supplies, and overwrite the
         # measured ones from the fingerprints computed above.
         signal_by_label = {}
-        for label, _n, scored, above, _share, union in rows:
+        for label, _n, scored, above, _share, union, runs in rows:
             named = [rl for _c, rl in above]
-            if len(named) > 1:
+            if len(named) > 1 and len(runs) > 1 and len({r[2] for r in runs}) > 1:
+                # SEQUENTIAL: one source at a time. But that is only benign when the sources are
+                # the SAME territory under different names. `french polynesia` runs
+                # `french oceania: makatea island` 1909-1920 then `french oceania` 1930-1937 -- a
+                # phosphate island alone, then the whole territory. Sequential, and still a scope
+                # error for the early years. Whereas `serbia` runs
+                # `kingdom of serbs, croats and slovenes` then `yugoslavia`: one state renamed.
+                # The discriminator is whether one contributor is a `parent: child` refinement of
+                # the other, which same_family already answers.
+                eras = [r[2] for r in runs]
+                nested = any(same_family(a, b) and norm(a) != norm(b)
+                             for a in eras for b in eras)
+                sig = "sequential_scope" if nested else "sequential_rename"
+                note = " -> ".join(f"{lo}-{hi} {rl}" for lo, hi, rl in runs)
+            elif len(named) > 1:
                 sig, note = "mixed", " + ".join(named[:3]) + f" (union {union:.0%})"
             elif named and not is_rename(named[0], label):
                 sig, note = "redirected", f"{named[0]} {union:.0%}"
@@ -279,13 +350,20 @@ def main() -> int:
         return 0
 
     if args.label:
-        for label, n, scored, above, share, union in rows:
+        for label, n, scored, above, share, union, runs in rows:
             print(f"{label}  ({n} dated production values)\n")
             for c, rl in scored:
                 flag = "" if c / n > NOISE_FLOOR else "   (at/below noise floor)"
                 print(f"   {100 * c / n:5.1f}%  {rl}{flag}")
             named = [rl for _c, rl in above]
-            if len(named) > 1:
+            if len(named) > 1 and len(runs) > 1 and len({r[2] for r in runs}) > 1:
+                print(f"\n   SEQUENTIAL: one source at a time, switching between them —")
+                for lo, hi, rl in runs:
+                    print(f"     {lo}-{hi}  {rl}")
+                print(f"   {union:.0%} of values accounted for. The contributors occupy DIFFERENT "
+                      f"years, so this is a renaming or a succession, not two territories mixed. "
+                      f"Only assertions overlapping a switch are affected.")
+            elif len(named) > 1:
                 print(f"\n   MIXED: draws on {len(named)} raw labels — {', '.join(named)}")
                 print(f"   between them they account for {union:.0%} of the values "
                       f"(union, not sum — a value can match more than one label)")
@@ -315,7 +393,7 @@ def main() -> int:
 
     print("MIXED — drawing on more than one raw label. A label assembled from two territories\n"
           "cannot be corrected by one routing decision:\n")
-    for label, n, _scored, above, _share, _u in multi:
+    for label, n, _scored, above, _share, _u, _r in multi:
         parts = " | ".join(f"{rl} {100 * c / n:.0f}%" for c, rl in above)
         print(f"  {label[:26]:28} n={n:>4}  {parts}")
 
@@ -323,13 +401,13 @@ def main() -> int:
         print("\nREDIRECTED — one raw label, but NOT this label under a colonial qualifier.\n"
               "Some are legitimate historical renames (british southern rhodesia -> zimbabwe);\n"
               "the rest are a different territory and need a routing decision:\n")
-        for label, n, scored, _above, share, _u in redirect:
+        for label, n, scored, _above, share, _u, _r in redirect:
             print(f"  {label[:26]:28} n={n:>4}  {scored[0][1]} {share:.0%}")
 
     if thin:
         print(f"\nUNDER-EXPLAINED — matches its own name, but only {EXPLAINED:.0%} of values are\n"
               "accounted for. Usually method loss (unit conversion, period rows), not mixing:\n")
-        for label, n, scored, _above, share, _u in thin:
+        for label, n, scored, _above, share, _u, _r in thin:
             print(f"  {label[:26]:28} n={n:>4}  {scored[0][1]} {share:.0%}")
 
     print(f"\n{len(multi)} mixed, {len(redirect)} redirected, {len(thin)} under-explained, "
