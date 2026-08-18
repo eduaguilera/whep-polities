@@ -77,6 +77,11 @@ PRODUCTION_VARIABLES = {
 # this is not evidence of anything.
 NOISE_FLOOR = 0.25
 
+# Below this many values in a span, the noise floor cannot be applied: on three values a single
+# chance collision reads as 33%. Measured need -- serbia|iia|1913-1916 has 3 and reported
+# `netherlands` as a co-contributor off one match.
+MIN_SPAN_VALUES = 8
+
 # A label whose best raw match explains at least this much is accounted for by ONE raw label, and
 # whatever it is called is then just a naming question. Below it, something else is contributing.
 EXPLAINED = 0.85
@@ -320,11 +325,20 @@ def main() -> int:
         scored = sorted(((len(fp & r), rl) for rl, r in raw_fp.items() if fp & r),
                         key=lambda t: (-t[0], t[1]))
         print(f"{args.assertion}  ({len(fp)} dated production values in {lo}-{hi})\n")
+        if len(fp) < MIN_SPAN_VALUES:
+            # The noise floor was calibrated on labels with dozens of values. On three, ONE chance
+            # collision is 33% and the floor is meaningless: serbia|iia|1913-1916 has 3 values and
+            # reported `netherlands` as a second contributor on the strength of a single match.
+            print(f"   TOO FEW VALUES to apply the {NOISE_FLOOR:.0%} noise floor — one chance "
+                  f"collision is worth {100 / len(fp):.0f}% here. Read the top match only, and "
+                  f"treat anything below it as unmeasured.\n")
         for c, rl in scored[:5]:
             flag = "" if c / len(fp) > NOISE_FLOOR else "   (at/below noise floor)"
             print(f"   {100 * c / len(fp):5.1f}%  {rl}{flag}")
         top, top_label = scored[0] if scored else (0, "")
         above = [(c, rl) for c, rl in scored if c / len(fp) > NOISE_FLOOR]
+        if len(fp) < MIN_SPAN_VALUES:
+            above = above[:1]   # only the top match is meaningful at this sample size
         covered = set()
         for _c, rl in above:
             covered |= fp & raw_fp[rl]
