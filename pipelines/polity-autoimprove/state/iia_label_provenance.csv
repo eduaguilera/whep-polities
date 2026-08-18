@@ -37,8 +37,8 @@ british west indies: montserrat,Montserrat,MSR,montserrat,one_to_one,1,,0,0,,no,
 seychelles,Seychelles,SYC,seychelles,one_to_one,1,,0,0,,no,british seychelles 100%,british seychelles,1.00,clean
 south rhodesia,Zimbabwe,ZWE,zimbabwe,one_to_one,1,,0,0,,no,british southern rhodesia 100%,british southern rhodesia,1.00,redirected
 gold coast,Ghana,GHA,ghana,shares_target,3,,0,0,,no,german togoland + british gold coast (union 90%),german togoland,0.63,mixed
-hong kong,"China, Hong Kong SAR",HKG,china hong kong sar,one_to_one,1,,0,0,,no,"label not measured (absent, or under --min-rows)",british hong kong,1.00,unknown
-falkland islands and dependencies,Falkland Islands,FLK,falkland islands malvinas,one_to_one,1,,0,0,,no,"label not measured (absent, or under --min-rows)",british falkland islands and dependencies,1.00,unknown
+hong kong,"China, Hong Kong SAR",HKG,china hong kong sar,one_to_one,1,,0,0,,no,british hong kong 100%,british hong kong,1.00,redirected
+falkland islands and dependencies,Falkland Islands,FLK,falkland islands malvinas,one_to_one,1,,0,0,,no,british falkland islands and dependencies 100%,british falkland islands and dependencies,1.00,redirected
 british honduras,Belize,BLZ,belize,one_to_one,1,,0,0,,no,british honduras 100%,british honduras,1.00,redirected
 british india,India,IND,india,whole_with_sub_siblings,7,,3,0,,no,british india 55%,british india,0.55,clean
 andaman and nicobar islands,India,IND,india,shares_target,7,,0,0,,no,british india 55%,british india,0.55,clean
@@ -90,7 +90,7 @@ ceylon,Sri Lanka,LKA,sri lanka,one_to_one,1,,0,0,,no,british ceylon 100%,british
 new zealand,New Zealand,NZL,new zealand,one_to_one,1,,0,0,,no,new zealand 98%,new zealand,0.98,clean
 newfoundland,Canada,CAN,canada,shares_target,2,,0,0,,no,canada 74%,canada,0.74,clean
 dutch east indies: bali and lombok,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only bali and lombok,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
-dutch antilles: curaçao,Curaçao,CUW,cura ao,one_to_one,1,,0,0,,no,"label not measured (absent, or under --min-rows)",dutch curaçao and dependencies,1.00,unknown
+dutch antilles: curaçao,Curaçao,CUW,cura ao,one_to_one,1,,0,0,,no,dutch curaçao and dependencies 100%,dutch curaçao and dependencies,1.00,redirected
 dutch guiana,Suriname,SUR,suriname,one_to_one,1,,0,0,,no,dutch guiana 100%,dutch guiana,1.00,redirected
 dutch east indies: java and madura,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,Only java and madura,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
 dutch east indies: java,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,3,0,Only java,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
@@ -181,10 +181,10 @@ somalia,Somalia,SOM,somalia,shares_target,3,,0,0,,no,italian somaliland 100%,ita
 british west indies: jamaica,Jamaica,JAM,jamaica,sub_of_sibling,2,british west indies,0,0,,no,british jamaica 86%,british jamaica,0.86,clean
 japan,Japan,JPN,japan,one_to_one,1,,0,0,,no,japan 97%,japan,0.97,clean
 japan: sakhalin,Russian Federation,RUS,russian federation,shares_target,9,,0,0,Karafuto Prefecture,no,ussr 50%,ussr,0.50,redirected
-kwantung,"China, mainland",CHN,china mainland,shares_target,5,,0,0,Territory leased from China,no,"label not measured (absent, or under --min-rows)",china,0.56,unknown
-formosa,"China, Taiwan Province of",TWN,china taiwan province of,one_to_one,1,,0,0,,no,"label not measured (absent, or under --min-rows)",japanese taiwan,0.94,unknown
+kwantung,"China, mainland",CHN,china mainland,shares_target,5,,0,0,Territory leased from China,no,china 62%,china,0.62,redirected
+formosa,"China, Taiwan Province of",TWN,china taiwan province of,one_to_one,1,,0,0,,no,japanese taiwan 100%,japanese taiwan,1.00,redirected
 korea,Republic of Korea,KOR,south korea,one_to_one,1,,0,0,Divided into South Korea and North Korea after 1945.,no,japanese korea 100%,japanese korea,1.00,redirected
-japanese former oceania islands,Federated States of Micronesia,FSM,micronesia federated states of,multi_country,1,,0,2,Southern Sakhalin under Japan 1905-1945; now Russian territory.,no,"label not measured (absent, or under --min-rows)",japanese south pacific,1.00,unknown
+japanese former oceania islands,Federated States of Micronesia,FSM,micronesia federated states of,multi_country,1,,0,2,Southern Sakhalin under Japan 1905-1945; now Russian territory.,no,japanese south pacific 100%,japanese south pacific,1.00,redirected
 palau islands: angaur,Palau,PLW,palau,sub_of_sibling,2,palau islands,0,0,Only angaur,no,japanese south pacific: palau-angaur 100%,japanese south pacific: palau-angaur,1.00,redirected
 palau islands,Palau,PLW,palau,whole_with_sub_siblings,2,,1,0,,no,japanese south pacific: palau-angaur 100%,japanese south pacific: palau-angaur,1.00,redirected
 denmark,Denmark,DNK,denmark,one_to_one,1,,0,0,,no,denmark 100%,denmark,1.00,clean
@@ -213,19 +213,19 @@ mainland portugal,Portugal,PRT,portugal,shares_target,4,,0,0,,no,portugal 64%,po
 madeira,Portugal,PRT,portugal,shares_target,4,,0,0,,no,portugal 64%,portugal,0.64,clean
 portugal: madeira,Portugal,PRT,portugal,sub_of_sibling,4,portugal,0,0,Only Madeira,no,portugal 64%,portugal,0.64,clean
 angola,Angola,AGO,angola,one_to_one,1,,0,0,,no,portuguese angola 100%,portuguese angola,1.00,clean
-portuguese guinea,Guinea-Bissau,GNB,guinea bissau,one_to_one,1,,0,0,,yes,"label not measured (absent, or under --min-rows)",portuguese guinea,1.00,unknown
+portuguese guinea,Guinea-Bissau,GNB,guinea bissau,one_to_one,1,,0,0,,yes,portuguese guinea 100%,portuguese guinea,1.00,redirected
 portuguese india,India,IND,india,shares_target,7,,0,0,,no,british india 55%,british india,0.55,clean
 macau,"China, Macao SAR",MAC,,one_to_one,1,,0,0,,unknown,"label not measured (absent, or under --min-rows)",,,unknown
 portuguese mozambique [colony],Mozambique,MOZ,mozambique,shares_target,2,,0,0,,no,portuguese mozambique: company concession + portuguese mozambique: province (union 84%),portuguese mozambique: company concession,0.68,mixed
 sao tome and principe,Sao Tome and Principe,STP,sao tome and principe,one_to_one,1,,0,0,,yes,portuguese sao tome and principe 100%,portuguese sao tome and principe,1.00,clean
-timor,Timor-Leste,TLS,timor leste,whole_with_sub_siblings,2,,1,0,,yes,"label not measured (absent, or under --min-rows)",portuguese timor and kambing,0.53,unknown
-timor and kambing,Timor-Leste,TLS,timor leste,sub_of_sibling,2,timor,0,0,,yes,"label not measured (absent, or under --min-rows)",portuguese timor and kambing,0.53,unknown
+timor,Timor-Leste,TLS,timor leste,whole_with_sub_siblings,2,,1,0,,yes,portuguese timor and kambing + portuguese timor (union 100%),portuguese timor and kambing,0.53,mixed
+timor and kambing,Timor-Leste,TLS,timor leste,sub_of_sibling,2,timor,0,0,,yes,portuguese timor and kambing + portuguese timor (union 100%),portuguese timor and kambing,0.53,mixed
 portuguese mozambique [company],Mozambique,MOZ,mozambique,shares_target,2,,0,0,,no,portuguese mozambique: company concession + portuguese mozambique: province (union 84%),portuguese mozambique: company concession,0.68,mixed
 austria,Austria,AUT,austria,whole_with_sub_siblings,2,,1,0,,no,austria + austria-hungary (union 85%),austria,0.73,mixed
 chile,Chile,CHL,chile,one_to_one,1,,0,0,,no,chile 100%,chile,1.00,clean
-china,"China, mainland",CHN,china mainland,whole_with_sub_siblings,5,,3,0,,no,"label not measured (absent, or under --min-rows)",china,0.56,unknown
-china: excluding manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,"label not measured (absent, or under --min-rows)",china,0.56,unknown
-china: manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,"label not measured (absent, or under --min-rows)",china,0.56,unknown
+china,"China, mainland",CHN,china mainland,whole_with_sub_siblings,5,,3,0,,no,china 62%,china,0.62,redirected
+china: excluding manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 62%,china,0.62,redirected
+china: manchuria,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 62%,china,0.62,redirected
 colombia,Colombia,COL,colombia,one_to_one,1,,0,0,,no,colombia 100%,colombia,1.00,clean
 costa rica,Costa Rica,CRI,costa rica,one_to_one,1,,0,0,,no,costa rica 100%,costa rica,1.00,clean
 cuba,Cuba,CUB,cuba,one_to_one,1,,0,0,,no,cuba 100%,cuba,1.00,clean
@@ -267,7 +267,7 @@ spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,
 spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea,yes,bulgaria + spanish spanish guinea including fernando po (union 52%),bulgaria,0.26,mixed
 spanish territories on the gulf of guinea: spanish guinea and fernando po,Equatorial Guinea,GNQ,equatorial guinea,sub_of_sibling,5,spanish territories on the gulf of guinea: spanish guinea,0,0,Spanish Territories on the Gulf of Guinea,yes,bulgaria + spanish spanish guinea including fernando po (union 52%),bulgaria,0.26,mixed
 spanish morocco,Morocco,MAR,morocco,shares_target,3,,0,0,,no,french morocco 99%,french morocco,0.99,clean
-china: manchukuo,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,"label not measured (absent, or under --min-rows)",china,0.56,unknown
+china: manchukuo,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 62%,china,0.62,redirected
 straits settlements,Singapore,SGP,singapore,whole_with_sub_siblings,2,,1,0,,no,british straits settlements 100%,british straits settlements,1.00,redirected
 zanzibar,United Republic of Tanzania,TZA,tanzania,shares_target,2,,0,0,,no,british tanganyika 100%,british tanganyika,1.00,redirected
 sweden,Sweden,SWE,sweden,one_to_one,1,,0,0,,no,sweden 100%,sweden,1.00,clean
