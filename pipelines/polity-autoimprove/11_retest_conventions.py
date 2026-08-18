@@ -225,6 +225,40 @@ def check_iia_djibouti_coffee(d):
     )
 
 
+def check_mitchell_syria(d):
+    """The claim: Mitchell reports Syria as a standalone unit THROUGH the 1958-1961 United Arab
+    Republic union, not merged with Egypt.
+
+    Two independent tests, neither of which is the continuity argument the convention was learned
+    from.
+
+    CONCURRENCY. If Egypt's figures were folded into Syria's during the union, Egypt would not still
+    be carried as its own label in those years. It is: both labels have rows in every year 1955-1960.
+
+    AREA, NOT OUTPUT. Syrian wheat AREA runs 1,495k ha (1957), 1,460k (1958), 1,422k (1959),
+    1,550k (1960) -- flat across the union's start. Egyptian wheat area was on the order of 600k ha,
+    so a merge would show a step of roughly 40%. Production tonnage is NOT usable here: Syria's wheat
+    output swings 438k -> 1,051k -> 1,354k -> 562k over 1955-1958, which is harvest variance and
+    would drown any territorial signal. Sown area is what tracks the reporting unit.
+    """
+    syr = _label(d, "mitchell", "syrian arab republic").dropna(subset=["year"])
+    egy = _label(d, "mitchell", "egypt").dropna(subset=["year"])
+    union = set(range(1958, 1961))
+    syr_years = {int(y) for y in syr["year"].unique()} & union
+    egy_years = {int(y) for y in egy["year"].unique()} & union
+    area = syr[(syr["item"].map(norm) == "wheat") & (syr["unit"] == "ha")].dropna(subset=["value"])
+    by = {int(r.year): float(r.value) for r in area.itertuples()}
+    pre = [by[y] for y in (1956, 1957) if y in by]
+    post = [by[y] for y in (1958, 1959, 1960) if y in by]
+    step = (sum(post) / len(post)) / (sum(pre) / len(pre)) if pre and post else None
+    ok = bool(syr_years and egy_years and step is not None and 0.85 < step < 1.15)
+    return ok, (
+        f"both labels carry data in the union years ({sorted(syr_years)} syria, {sorted(egy_years)} "
+        f"egypt); syrian wheat AREA moves {step:.2f}x across 1958, where folding in Egypt's ~600k ha "
+        f"would step it by roughly 1.4x"
+    )
+
+
 def check_iia_libya(d):
     """The claim: IIA's plain `libya` is the whole colony (Tripolitania + Cyrenaica + Fezzan), with
     provincial data carried under sibling raw labels.
@@ -404,6 +438,7 @@ CHECKS = {
     ("iia", "netherlands", "*"): check_iia_netherlands,
     ("iia", "austria", "*"): check_iia_austria,
     ("iia", "libya", "*"): check_iia_libya,
+    ("mitchell", "Syrian Arab Republic", "*"): check_mitchell_syria,
     ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("iia", "russian federation", "*"): check_iia_russia,
