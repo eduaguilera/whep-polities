@@ -77,9 +77,73 @@ def eff_year(row):
     """row year, or the END year of a period-average label like '1934-1938'."""
     return _eff_year(row.year, getattr(row, "period", None))
 
+
+# Span of every polity, for scoring how much of a period-average a candidate actually covers.
+_SPAN = {r.polity_code: (int(r.start_year), int(r.end_year)) for r in pol.itertuples()
+         if pd.notna(r.start_year) and pd.notna(r.end_year)}
+
+
+def period_span(period):
+    """(first, last) of a period-average label like '1934-1938', else None."""
+    if not isinstance(period, str):
+        return None
+    yy = re.findall(r"\d{4}", period)
+    if len(yy) < 2:
+        return None
+    a, b = int(yy[0]), int(yy[-1])
+    return (a, b) if a <= b else None
+
+
+def _covers(code, first, last):
+    """How many years of [first, last] the polity is live for. end_year is EXCLUSIVE."""
+    span = _SPAN.get(code)
+    if not span:
+        return 0
+    s, e = span
+    return sum(1 for y in range(first, last + 1) if s <= y < e)
+
+
 def assign(row):
-    return M.assign(row.country, row.iso3c if isinstance(row.iso3c, str) else None,
-                    getattr(row, "source", None), eff_year(row), fam_cache)
+    """Resolve a row to a polity.
+
+    Dated rows are unchanged. For a PERIOD AVERAGE (`1934-1938`, no year), `eff_year` takes the
+    period's END year, and that systematically routes a multi-year average to whichever polity was
+    live in its FINAL year. Measured before this change: 560 rows landed on a polity live for a
+    MINORITY of the years they average and 10 on a polity live for NONE of them -- a 1934-1938 German
+    average on post-Anschluss DEU-1938-1945, and 64 rows on the WZO/SBZ occupation zones, which did
+    not exist until 1945.
+
+    So for a period average, try every year in the span and keep the candidate that is live for the
+    most of it. Two details make this safe rather than merely better:
+
+      * years are tried from the END BACKWARDS, and a challenger must be STRICTLY better, so the
+        end-year answer wins every tie. Whenever coverage is equal the old assignment is preserved
+        exactly, and no row can regress.
+      * the choice is made by re-calling M.assign with a different year, never by picking a polity
+        directly, so aliases, family ranking and the transition-year tie-break all still apply.
+
+    The period midpoint was the obvious alternative and was rejected on measurement: it improves 219
+    rows but sends 22 to a polity covering LESS of their period, because a midpoint is only a proxy
+    for coverage.
+    """
+    iso = row.iso3c if isinstance(row.iso3c, str) else None
+    src = getattr(row, "source", None)
+    span = period_span(getattr(row, "period", None)) if pd.isna(row.year) else None
+    if span is None:
+        return M.assign(row.country, iso, src, eff_year(row), fam_cache)
+
+    first, last = span
+    best = None
+    for y in range(last, first - 1, -1):
+        got = M.assign(row.country, iso, src, y, fam_cache)
+        if got[0] is None:
+            continue
+        cov = _covers(got[0], first, last)
+        if best is None or cov > best[0]:
+            best = (cov, got)
+    if best is None:
+        return M.assign(row.country, iso, src, eff_year(row), fam_cache)
+    return best[1]
 
 res = todo.apply(assign, axis=1, result_type="expand")
 res.columns = ["code2","status2","how2"]
