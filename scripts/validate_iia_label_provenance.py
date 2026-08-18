@@ -52,29 +52,38 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROV = os.path.join(REPO, "pipelines/polity-autoimprove/state/iia_label_provenance.csv")
 APPLIED = os.path.join(REPO, "pipelines/polity-autoimprove/state/verdicts_applied.jsonl")
 LEDGER = os.path.join(REPO, "pipelines/polity-autoimprove/state/review_ledger.csv")
+# PER-ASSERTION signals, measured over each assertion's OWN span. Preferred over the label table
+# wherever a key appears in it: the label table averages a label's whole life and over-flags spans
+# that are clean. `libya|iia|1943-1945` is 100% whole `italian libya` while the LABEL is mixed
+# (whole + Tripolitania across other years), so a label-level gate refused a span with nothing
+# wrong with it.
+ASSERT_PROV = os.path.join(REPO, "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv")
 
 # Kinds where the layer-B label cannot be one territory.
 MIXING = ("multi_country", "whole_with_sub_siblings")
 
-# Measured 2026-08-18. ONE verdict: `french polynesia|iia|1909-1938` -> PYF-1800-2025, whose label
-# reports `french oceania: makatea island` alone in 1909-1920 and the whole `french oceania` in
-# 1930-1937 -- a phosphate island's output attributed to the territory for the early years.
+# Measured 2026-08-18 with SPAN-level signals where they exist. Six verdicts, and this is a
+# CEILING on a known class, not an endorsement of any of them — each needs individual triage:
 #
-# This count has moved SIX times and every wrong value printed as a clean pass or a plausible list:
-#   14  trusting the applied record's own `quarantined` flag; a retraction sets the LEDGER to `issue`
-#   12  joining on country NAME, missing 16 of 164 labels where the spec writes "Korea, Republic of"
-#   13  counting the SPEC's merges, which flagged `jamaica` (86% `british jamaica` alone) for an
-#       intent that never materialised in this data
-#    1  counting observed merges, but judging a runner-up by its SHARE rather than by what it ADDS
-#    3  judging by union gain, which correctly added `ghana`, `mozambique`, `serbia` and `austria`
-#    2  `niger` retracted on the measurement rather than left grandfathered (the federation total
-#       sat on Niger while all seven siblings resolved cleanly to their own labels)
-#    1  distinguishing CONCURRENT sources from SEQUENTIAL ones. `serbia` is the Kingdom of Serbs,
-#       Croats and Slovenes until 1929 and Yugoslavia after -- one state renamed, each era with one
-#       territory -- so it is `sequential_rename` and this gate is not the right instrument for it.
-#       Its actual problem is which polity it routes to (issues 315, 317). `french polynesia` stays,
-#       because sequential there means a PART in some eras and the WHOLE in others.
-BASELINE_VERIFIED_EQUAL_ON_MIXED = 1
+#   french polynesia|iia|1909-1938  n=51  makatea island alone, then the whole territory
+#   samoa|iia|1910-1945             n=39  `new zealand western samoa` + `british samoa`. PROBABLY a
+#                                         naming artefact -- both are Western Samoa -- so this one
+#                                         may be a false positive of the union-gain test on two
+#                                         names for one place.
+#   libya|iia|1922-1924             n=3   `italian libya: tripolitania` alone: a province, but three
+#   libya|iia|1943-1945             n=3   whole `italian libya`: looks CLEAN, but three values cannot
+#                                         establish that a span is the clean part of a mixed label,
+#                                         so it falls back to the label reading
+#   indonesia|iia|1945-1945         n=3   `dutch java and madura` at 67%, i.e. two values of three
+#   equatorial guinea|iia|1910-1945 n=23  `bulgaria` + `spanish spanish guinea including fernando
+#                                         po`. `bulgaria` is a chance collision that clears the floor
+#                                         at this sample size, so this is very likely a FALSE
+#                                         refusal -- listed here honestly rather than tuned away.
+#
+# The count has moved seven times. Every previous move was a correction to the measurement, and this
+# one is a change of INSTRUMENT: from a per-label signal to a per-span one, which both removes
+# false refusals (a clean span inside a mixed label) and adds true ones the label view averaged away.
+BASELINE_VERIFIED_EQUAL_ON_MIXED = 6
 
 # The eight the mapping itself declares as spanning several modern countries. Pinned by name so a
 # change to the mapping surfaces here rather than silently shifting the count.
@@ -145,6 +154,16 @@ def main() -> int:
     FAILING = ("mixed", "sequential_scope")
     mixed_targets = {r["layer_b_label"] for r in prov
                      if r.get("territory_signal") in FAILING and r.get("layer_b_label")}
+
+    # Span-level signals win where they exist. FAILING_SPAN mirrors FAILING plus
+    # `no_dominant_source`, which at span level means nothing accounts for those years at all.
+    FAILING_SPAN = ("mixed", "no_dominant_source")
+    span_sig = {}
+    if os.path.exists(ASSERT_PROV):
+        with open(ASSERT_PROV, encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if r.get("key"):
+                    span_sig[r["key"]] = (r.get("span_signal") or "", r.get("n_values") or "0")
     declared_multi = {r["raw_label"] for r in prov if r["kind"] == "multi_country"}
 
     offenders = []
@@ -165,6 +184,15 @@ def main() -> int:
                 continue
             if v.get("confirm_kind") != "verified_equal":
                 continue
+            got = span_sig.get(key)
+            if got:
+                sig, n = got
+                # A span measured on fewer than a handful of values cannot carry a refusal: one
+                # chance collision moves the answer. Fall back to the label reading there.
+                if int(n or 0) >= 8:
+                    if sig in FAILING_SPAN:
+                        offenders.append((key, v.get("polity_code")))
+                    continue
             if norm(key.split("|")[0]) in mixed_targets:
                 offenders.append((key, v.get("polity_code")))
 

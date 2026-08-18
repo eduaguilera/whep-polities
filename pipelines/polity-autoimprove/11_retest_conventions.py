@@ -225,6 +225,37 @@ def check_iia_djibouti_coffee(d):
     )
 
 
+def check_iia_libya(d):
+    """The claim: IIA's plain `libya` is the whole colony (Tripolitania + Cyrenaica + Fezzan), with
+    provincial data carried under sibling raw labels.
+
+    STRUCTURAL and falsifiable via the provenance table rather than the panel, because the panel has
+    collapsed all three raw labels into one `libya`. state/iia_label_provenance.csv carries them
+    separately -- `italian libya`, `italian libya: tripolitania`, `italian libya: cyrenaica` -- which
+    is exactly what the convention asserts: the source distinguishes whole from part.
+
+    WHAT IT DOES NOT LICENSE, and the reason libya assertions are still refused by
+    validate_iia_label_provenance.py: the layer-B label MIXES them. libya|iia|1925-1933 has NO
+    dominant source at all (best is `italian libya: tripolitania` at 25% over 44 values), and
+    libya|iia|1922-1924 is 100% Tripolitania. So the source being careful does not make the
+    harmonisation careful, and this convention describes the source only.
+    """
+    import csv as _csv
+    path = os.path.join(H, "state/iia_label_provenance.csv")
+    if not os.path.exists(path):
+        return False, "iia_label_provenance.csv missing; the raw labels cannot be checked"
+    with open(path, encoding="utf-8") as fh:
+        raws = {r["raw_label"] for r in _csv.DictReader(fh)}
+    whole = [r for r in raws if norm(r) in ("libya", "italian libya")]
+    parts = [r for r in raws if ":" in r and "libya" in norm(r)]
+    ok = bool(whole) and len(parts) >= 2
+    return ok, (
+        f"the source carries {len(whole)} whole-Libya label(s) and {len(parts)} provincial "
+        f"sibling(s) ({', '.join(sorted(parts)[:3])}) — whole and part are distinguished upstream, "
+        f"which is all this convention claims; the layer-B label still mixes them"
+    )
+
+
 def check_iia_austria(d):
     """The claim: IIA's `Austria` through 1917/18 is CISLEITHANIA (~300,560 km2 — the Austrian half
     of the dual monarchy, including Bohemia, Moravia and Galicia), not rump Austria (~84,000 km2).
@@ -372,6 +403,7 @@ CHECKS = {
     ("fao1952", "France", "*"): check_fao1952_france,
     ("iia", "netherlands", "*"): check_iia_netherlands,
     ("iia", "austria", "*"): check_iia_austria,
+    ("iia", "libya", "*"): check_iia_libya,
     ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("iia", "russian federation", "*"): check_iia_russia,

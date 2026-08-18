@@ -1,0 +1,248 @@
+key,candidate,n_values,span_signal,dominant_raw_label,dominant_share,note
+albania|iia|1933-1941,ALB-1913-2025,8,clean,albania,1.00,albania 100%
+algeria|iia|1909-1918,DZA-1902-1919,100,clean,french algeria,1.00,french algeria 100%
+algeria|iia|1919-1945,DZA-1919-1962,322,clean,french algeria,1.00,french algeria 100%
+american samoa|iia|1930-1934,ASM-1900-2025,10,redirected,us samoa,1.00,us samoa 100%
+angola|iia|1930-1945,ANG-1905-1975,162,clean,portuguese angola,1.00,portuguese angola 100%
+antigua and barbuda|iia|1909-1945,ATG-1800-2025,92,redirected,british antigua,1.00,british antigua 100%
+argentina|iia|1909-1945,ARG-1902-2025,83,clean,argentina,0.99,argentina 99%
+australia|iia|1909-1945,AUS-1901-2025,621,clean,australia,0.92,australia 92%
+austria|iia|1909-1917,AUT-1800-1918,58,mixed,austria,0.45,austria + austria-hungary (union 84%)
+austria|iia|1918-1918,AUT-1918-1919,4,clean,austria,0.50,austria 50% [only 4 values — below the 8-value floor]
+austria|iia|1919-1945,AUT-1919-2025,139,clean,austria,0.85,austria 85%
+azerbaijan|iia|1930-1940,AZE-SSR-1920-1991,21,redirected,ussr: transcaucasian sfsr,1.00,ussr: transcaucasian sfsr 100%
+barbados|iia|1909-1943,BRB-1800-2025,54,clean,british barbados,1.00,british barbados 100%
+belgium|iia|1909-1945,BEL-1831-2025,125,clean,belgium,1.00,belgium 100%
+belize|iia|1909-1944,BLZ-1886-1970,21,redirected,british honduras,1.00,british honduras 100%
+benin|iia|1930-1945,BEN-1898-1960,91,redirected,french dahomey,1.00,french dahomey 100%
+bermuda|iia|1930-1945,BMU-1684-1968,16,clean,british bermuda,1.00,british bermuda 100%
+bolivia|iia|1931-1934,BOL-1909-1938,5,clean,bolivia,1.00,bolivia 100% [only 5 values — below the 8-value floor]
+botswana|iia|1929-1933,BEC-1885-1966,5,redirected,british bechuanaland,1.00,british bechuanaland 100% [only 5 values — below the 8-value floor]
+brazil|iia|1910-1945,BRA-1909-2025,64,clean,brazil,0.98,brazil 98%
+british virgin islands|iia|1909-1925,VGB-1800-2025,23,clean,british virgin islands,1.00,british virgin islands 100%
+brunei darussalam|iia|1932-1945,BRN-1888-2025,18,redirected,british brunei,1.00,british brunei 100%
+bulgaria|iia|1909-1912,BGR-1878-1913,23,clean,bulgaria,0.83,bulgaria 83%
+bulgaria|iia|1913-1917,BGR-1913-1918,35,clean,bulgaria,0.86,bulgaria 86%
+bulgaria|iia|1918-1918,BGR-1918-1919,7,clean,bulgaria,0.86,bulgaria 86% [only 7 values — below the 8-value floor]
+bulgaria|iia|1919-1939,BGR-1919-1940,166,clean,bulgaria,0.90,bulgaria 90%
+bulgaria|iia|1940-1945,BGR-1940-2025,62,clean,bulgaria,0.90,bulgaria 90%
+burkina faso|iia|1922-1932,BFA-1919-1932,46,redirected,french upper volta,1.00,french upper volta 100%
+burundi|iia|1930-1937,RWB-1922-1962,50,redirected,belgian ruanda-urundi,1.00,belgian ruanda-urundi 100%
+cabo verde|iia|1933-1944,CPV-1886-1975,32,redirected,portuguese cape verde,1.00,portuguese cape verde 100%
+cambodia|iia|1930-1943,KHM-1907-1953,4,clean,french cambodia,1.00,french cambodia 100% [only 4 values — below the 8-value floor]
+cameroon|iia|1923-1945,FCM-1920-1960,110,redirected,british‑french cameroon,0.83,british‑french cameroon 83%
+canada|iia|1909-1945,CAN-1886-1949,100,clean,canada,0.74,canada 74%
+central african republic|iia|1922-1931,CAF-1919-1960,10,redirected,french equatorial africa: oubangui‑chari,1.00,french equatorial africa: oubangui‑chari 100%
+chad|iia|1922-1924,TCD-1919-1960,6,redirected,french equatorial africa: chad,1.00,french equatorial africa: chad 100% [only 6 values — below the 8-value floor]
+chile|iia|1909-1945,CHL-1902-2025,104,clean,chile,1.00,chile 100%
+china hong kong sar|iia|1924-1924,HKG-1842-2025,2,redirected,british hong kong,1.00,british hong kong 100% [only 2 values — below the 8-value floor]
+china mainland|iia|1914-1917,CHN-1914-1921,6,redirected,china,0.50,china 50% [only 6 values — below the 8-value floor]
+china mainland|iia|1922-1931,CHN-1921-1932,36,mixed,china,0.56,china + japan: kwantung leased territory (union 83%)
+china mainland|iia|1932-1944,CHN-1932-1945,134,redirected,china,0.63,china 63%
+china mainland|iia|1945-1945,CHN-1945-1947,9,redirected,china,0.89,china 89%
+china taiwan province of|iia|1909-1944,TWN-1895-1945,266,redirected,japanese taiwan,1.00,japanese taiwan 100%
+china taiwan province of|iia|1945-1945,TWN-1945-2025,2,redirected,japanese taiwan,1.00,japanese taiwan 100% [only 2 values — below the 8-value floor]
+colombia|iia|1914-1921,COL-1903-1922,8,clean,colombia,1.00,colombia 100%
+colombia|iia|1924-1945,COL-1922-2025,26,clean,colombia,1.00,colombia 100%
+congo|iia|1913-1918,COG-1912-1919,12,redirected,french equatorial africa,1.00,french equatorial africa 100%
+congo|iia|1919-1945,COG-1919-1960,167,redirected,french equatorial africa,0.90,french equatorial africa 90%
+costa rica|iia|1909-1944,CRI-1800-2025,51,clean,costa rica,1.00,costa rica 100%
+cuba|iia|1909-1936,CUB-1800-2025,19,clean,cuba,1.00,cuba 100%
+cyprus|iia|1909-1945,CYP-1879-2025,427,clean,british cyprus,0.98,british cyprus 98%
+czech republic|iia|1910-1918,CZE-1804-1918,2,redirected,czechoslovakia,1.00,czechoslovakia 100% [only 2 values — below the 8-value floor]
+czech republic|iia|1919-1937,F51-1918-1938,321,redirected,czechoslovakia,0.96,czechoslovakia 96%
+czech republic|iia|1938-1944,F51-1938-1945,184,redirected,czechoslovakia,0.87,czechoslovakia 87%
+czech republic|iia|1945-1945,F51-1945-1947,27,redirected,czechoslovakia,0.89,czechoslovakia 89%
+denmark|iia|1909-1919,DNK-1864-1920,35,clean,denmark,1.00,denmark 100%
+denmark|iia|1920-1945,DNK-1920-2025,64,clean,denmark,1.00,denmark 100%
+djibouti|iia|1930-1945,FRS-1884-1977,5,redirected,french somali coast,1.00,french somali coast 100% [only 5 values — below the 8-value floor]
+dominican republic|iia|1910-1942,DOM-1800-2025,16,clean,dominican republic,1.00,dominican republic 100%
+dominica|iia|1909-1944,DMA-1800-2025,85,clean,british dominica,1.00,british dominica 100%
+dr congo|iia|1915-1945,COD-1910-1960,149,redirected,belgian congo,1.00,belgian congo 100%
+ecuador|iia|1922-1941,ECU-1800-1942,15,clean,ecuador,1.00,ecuador 100%
+ecuador|iia|1942-1945,ECU-1942-2025,7,clean,ecuador,1.00,ecuador 100% [only 7 values — below the 8-value floor]
+egypt|iia|1909-1924,EGY-1899-1925,94,clean,egypt,0.73,egypt 73%
+egypt|iia|1925-1945,EGY-1925-1967,275,clean,egypt,0.65,egypt 65%
+el salvador|iia|1910-1944,SLV-1821-2025,29,mixed,el salvador,0.55,el salvador + el salvador: san salvador department (union 100%)
+equatorial guinea|iia|1910-1945,GNQ-1886-1968,23,mixed,bulgaria,0.26,bulgaria + spanish spanish guinea including fernando po (union 52%)
+eritrea|iia|1922-1937,ERI-1889-1952,87,clean,italian eritrea,1.00,italian eritrea 100%
+estonia|iia|1929-1939,EST-1918-1940,16,clean,estonia,1.00,estonia 100%
+estonia|iia|1940-1944,EST-1940-1991,2,redirected,british nigeria,1.00,british nigeria 100% [only 2 values — below the 8-value floor]
+eswatini|iia|1922-1944,SWZ-1894-2025,26,redirected,british swaziland,1.00,british swaziland 100%
+ethiopia pdr|iia|1933-1935,ETH-1907-1936,3,redirected,italian east africa,1.00,italian east africa 100% [only 3 values — below the 8-value floor]
+ethiopia pdr|iia|1936-1940,ETH-1936-1941,4,redirected,ethiopian empire,0.50,ethiopian empire 50% [only 4 values — below the 8-value floor]
+ethiopia pdr|iia|1942-1945,ETH-1941-1952,4,redirected,ethiopian empire,1.00,ethiopian empire 100% [only 4 values — below the 8-value floor]
+ethiopia|iia|1945-1945,ETH-1941-1952,1,redirected,australia,1.00,australia 100% [only 1 values — below the 8-value floor]
+falkland islands|iia|1914-1919,FLK-1833-2025,0,unmeasured,,,no dated values in this span
+faroe islands|iia|1929-1939,FRO-1800-2025,5,redirected,denmark: faroe islands,1.00,denmark: faroe islands 100% [only 5 values — below the 8-value floor]
+fiji|iia|1909-1945,FJI-1800-2025,138,redirected,british fiji islands,1.00,british fiji islands 100%
+finland|iia|1919-1939,FIN-1917-1940,27,clean,finland,1.00,finland 100%
+finland|iia|1940-1945,FIN-1940-2025,17,clean,finland,1.00,finland 100%
+france|iia|1909-1918,FRA-1871-1919,77,clean,france,0.87,france 87%
+france|iia|1919-1945,FRA-1919-2025,216,clean,france,0.83,france 83%
+french guiana|iia|1909-1945,GUF-1816-1946,29,clean,french guiana,1.00,french guiana 100%
+french polynesia|iia|1909-1937,PYF-1800-2025,41,mixed,french oceania,0.61,french oceania + french oceania: makatea island (union 100%)
+gabon|iia|1909-1911,GAB-1839-1912,6,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100% [only 6 values — below the 8-value floor]
+gabon|iia|1912-1918,GAB-1912-1919,22,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100%
+gabon|iia|1919-1932,GAB-1919-1960,20,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100%
+gambia|iia|1939-1945,GMB-1800-2025,8,clean,british gambia,1.00,british gambia 100%
+germany|iia|1909-1918,DEU-1871-1919,49,clean,germany,0.80,germany 80%
+germany|iia|1919-1919,DEU-1919-1920,4,clean,germany,0.75,germany 75% [only 4 values — below the 8-value floor]
+germany|iia|1920-1937,DEU-1920-1938,78,clean,germany,0.77,germany 77%
+germany|iia|1938-1944,DEU-1938-1945,25,clean,germany,0.76,germany 76%
+germany|iia|1945-1945,DEU-1945-1949,1,redirected,[error] culture associee,1.00,[error] culture associee 100% [only 1 values — below the 8-value floor]
+ghana|iia|1909-1945,GHA-1898-1957,82,mixed,german togoland,0.63,german togoland + british gold coast (union 90%)
+greece|iia|1911-1911,GRC-1881-1913,2,clean,greece,0.50,greece 50% [only 2 values — below the 8-value floor]
+greece|iia|1914-1918,GRC-1913-1919,10,clean,greece,0.50,greece 50%
+greece|iia|1919-1945,GRC-1919-1947,146,clean,greece,0.77,greece 77%
+grenada|iia|1909-1945,GRD-1800-2025,109,clean,british grenada,1.00,british grenada 100%
+guadeloupe|iia|1909-1945,GLP-1816-2025,138,clean,french guadeloupe,0.78,french guadeloupe 78%
+guatemala|iia|1910-1945,GTM-1821-2025,92,clean,guatemala,1.00,guatemala 100%
+guinea bissau|iia|1932-1945,GNB-1886-1974,4,redirected,portuguese guinea,1.00,portuguese guinea 100% [only 4 values — below the 8-value floor]
+guinea|iia|1922-1945,GIN-1894-1958,82,clean,french guinea,1.00,french guinea 100%
+guyana|iia|1909-1945,GUY-1800-2025,74,redirected,british guiana,1.00,british guiana 100%
+haiti|iia|1909-1945,HTI-1800-2025,60,clean,haiti,1.00,haiti 100%
+honduras|iia|1912-1933,HND-1800-2025,3,clean,honduras,1.00,honduras 100% [only 3 values — below the 8-value floor]
+hungary|iia|1909-1916,HUN-1800-1918,25,clean,hungary,0.76,hungary 76%
+hungary|iia|1918-1919,HUN-1918-1920,2,clean,hungary,1.00,hungary 100% [only 2 values — below the 8-value floor]
+hungary|iia|1920-1937,HUN-1920-1938,89,clean,hungary,0.85,hungary 85%
+hungary|iia|1938-1939,HUN-1938-1940,12,clean,hungary,0.83,hungary 83%
+hungary|iia|1940-1943,HUN-1940-1944,25,clean,hungary,0.84,hungary 84%
+hungary|iia|1944-1945,HUN-1944-1947,7,clean,hungary,0.86,hungary 86% [only 7 values — below the 8-value floor]
+india|iia|1909-1913,IND-1893-1914,55,clean,british india,0.64,british india 64%
+india|iia|1914-1936,IND-1914-1937,236,clean,british india,0.61,british india 61%
+india|iia|1937-1945,IND-1937-1947,33,clean,french india,0.97,french india 97%
+indonesia|iia|1909-1944,IDN-1800-1945,286,mixed,dutch east indies,0.46,dutch east indies + dutch java and madura (union 84%)
+indonesia|iia|1945-1945,IDN-1945-1949,3,redirected,dutch java and madura,0.67,dutch java and madura 67% [only 3 values — below the 8-value floor]
+iran|iia|1922-1945,IRN-1828-2025,118,clean,iran,0.99,iran 99%
+iraq|iia|1922-1931,IRQ-1921-1932,17,clean,british iraq,1.00,british iraq 100%
+iraq|iia|1932-1945,IRQ-1932-2025,67,clean,british iraq,1.00,british iraq 100%
+ireland|iia|1929-1945,IRL-1921-2025,64,clean,ireland,1.00,ireland 100%
+israel|iia|1922-1945,PAL-1920-1948,215,redirected,british palestine,0.92,british palestine 92%
+italy|iia|1909-1918,ITA-1870-1919,71,clean,italy,0.86,italy 86%
+italy|iia|1919-1945,ITA-1919-2025,244,clean,italy,0.82,italy 82%
+ivory coast|iia|1922-1931,CIV-1902-1932,17,clean,french ivory coast,1.00,french ivory coast 100%
+ivory coast|iia|1932-1945,CIV-1932-1947,80,clean,french ivory coast,1.00,french ivory coast 100%
+jamaica|iia|1909-1945,JAM-1800-2025,192,clean,british jamaica,0.86,british jamaica 86%
+japan|iia|1909-1944,JPN-1895-1945,563,clean,japan,0.97,japan 97%
+japan|iia|1945-1945,JPN-1945-1952,3,clean,japan,1.00,japan 100% [only 3 values — below the 8-value floor]
+jordan|iia|1930-1944,JOR-1923-1946,37,redirected,british transjordan,1.00,british transjordan 100%
+kenya|iia|1919-1923,KEN-1907-1924,18,clean,british kenya,1.00,british kenya 100%
+kenya|iia|1924-1925,KEN-1924-1926,10,clean,british kenya,1.00,british kenya 100%
+kenya|iia|1930-1945,KEN-1926-1963,120,clean,british kenya,1.00,british kenya 100%
+kiribati|iia|1930-1933,KIR-1800-2025,4,redirected,british ocean island,1.00,british ocean island 100% [only 4 values — below the 8-value floor]
+latvia|iia|1923-1939,LVA-1918-1940,19,clean,latvia,1.00,latvia 100%
+latvia|iia|1940-1945,LVA-1940-1991,6,redirected,british nigeria,1.00,british nigeria 100% [only 6 values — below the 8-value floor]
+lebanon|iia|1923-1943,LBN-1920-1944,70,clean,french lebanon,0.91,french lebanon 91%
+lebanon|iia|1944-1945,LBN-1944-2025,31,clean,french lebanon,0.94,french lebanon 94%
+liberia|iia|1939-1945,LBR-1847-2025,9,clean,liberia,1.00,liberia 100%
+libya|iia|1922-1924,LBY-1919-1925,3,redirected,italian libya: tripolitania,1.00,italian libya: tripolitania 100% [only 3 values — below the 8-value floor]
+libya|iia|1925-1933,LBY-1925-1934,44,no_dominant_source,italian libya: tripolitania,0.25,best italian libya: tripolitania 25%
+libya|iia|1934-1942,LBY-1934-1943,37,clean,italian libya,0.78,italian libya 78%
+libya|iia|1943-1945,LBY-1943-1949,3,clean,italian libya,1.00,italian libya 100% [only 3 values — below the 8-value floor]
+lithuania|iia|1930-1939,LTU-1918-1940,15,clean,lithuania,1.00,lithuania 100%
+lithuania|iia|1940-1945,LTU-1940-1991,6,redirected,british nigeria,1.00,british nigeria 100% [only 6 values — below the 8-value floor]
+luxembourg|iia|1909-1945,LUX-1839-2025,82,clean,luxembourg,0.61,luxembourg 61%
+madagascar|iia|1911-1945,MDG-1882-2025,193,clean,french madagascar,0.92,french madagascar 92%
+malawi|iia|1909-1945,MWI-1891-1953,219,redirected,british nyasaland,1.00,british nyasaland 100%
+malaysia|iia|1909-1944,BNB-1881-1963,96,mixed,british borneo,0.34,british borneo + british malaya + british federated malay states (union 92%)
+mali|iia|1918-1937,MLI-1890-1960,42,redirected,french sudan,0.98,french sudan 98%
+malta|iia|1909-1945,MLT-1800-2025,88,clean,british malta,0.78,british malta 78%
+martinique|iia|1909-1945,MTQ-1816-2025,37,clean,french martinique,1.00,french martinique 100%
+mauritania|iia|1922-1945,MRT-1920-1960,90,clean,french mauritania,1.00,french mauritania 100%
+mauritius|iia|1909-1945,MUS-1800-2025,159,clean,british mauritius,1.00,british mauritius 100%
+mexico|iia|1910-1945,MEX-1848-2025,84,clean,mexico,0.93,mexico 93%
+micronesia|iia|1932-1942,CAR-1920-1945,0,unmeasured,,,no dated values in this span
+montserrat|iia|1909-1945,MSR-1800-2025,115,clean,british montserrat,1.00,british montserrat 100%
+morocco|iia|1911-1945,MAR-1911-1958,243,clean,french morocco,0.99,french morocco 99%
+mozambique|iia|1922-1937,MOZ-1891-1975,62,redirected,portuguese mozambique: company concession,0.68,portuguese mozambique: company concession 68%
+myanmar|iia|1933-1945,MMR-1885-2025,110,redirected,british burma,1.00,british burma 100%
+namibia|iia|1930-1938,NAM-1920-1990,8,redirected,german south west africa,1.00,german south west africa 100%
+nauru|iia|1909-1933,NRU-1888-2025,15,clean,british nauru,1.00,british nauru 100%
+nepal|iia|1922-1944,NPL-1816-2025,18,clean,nepal,1.00,nepal 100%
+netherlands|iia|1909-1945,NLD-1830-2025,149,clean,netherlands,0.95,netherlands 95%
+new caledonia|iia|1922-1945,NCL-1800-2025,50,clean,french new caledonia,1.00,french new caledonia 100%
+new zealand|iia|1909-1945,NZL-1840-2025,187,clean,new zealand,0.98,new zealand 98%
+nicaragua|iia|1910-1945,NIC-1800-2025,40,clean,nicaragua,1.00,nicaragua 100%
+nigeria|iia|1922-1945,NGA-1914-1960,58,clean,british nigeria,1.00,british nigeria 100%
+niger|iia|1918-1919,NER-1911-1922,2,redirected,french west africa,1.00,french west africa 100% [only 2 values — below the 8-value floor]
+niger|iia|1929-1945,NER-1922-1947,99,mixed,french niger,0.71,french niger + french west africa (union 100%)
+norway|iia|1909-1945,NOR-1800-2025,68,clean,norway,1.00,norway 100%
+palau|iia|1909-1914,GCAR-1899-1914,6,redirected,japanese south pacific: palau-angaur,1.00,japanese south pacific: palau-angaur 100% [only 6 values — below the 8-value floor]
+palau|iia|1915-1918,JPN-1895-1945,4,redirected,japanese south pacific: palau-angaur,1.00,japanese south pacific: palau-angaur 100% [only 4 values — below the 8-value floor]
+palau|iia|1930-1932,CAR-1920-1945,3,redirected,japanese south pacific: palau-angaur,1.00,japanese south pacific: palau-angaur 100% [only 3 values — below the 8-value floor]
+panama|iia|1912-1945,PAN-1903-1979,30,clean,panama,0.93,panama 93%
+papua new guinea|iia|1910-1940,TPAP-1906-1949,46,mixed,dutch new guinea,0.72,dutch new guinea + australian papua and new guinea (union 100%)
+paraguay|iia|1909-1931,PRY-1870-1932,40,clean,paraguay,1.00,paraguay 100%
+paraguay|iia|1932-1936,PRY-1932-1938,11,clean,paraguay,1.00,paraguay 100%
+paraguay|iia|1939-1945,PRY-1938-2025,25,clean,paraguay,1.00,paraguay 100%
+peru|iia|1909-1921,PER-1909-1922,20,clean,peru,0.80,peru 80%
+peru|iia|1922-1941,PER-1922-1942,27,clean,peru,0.81,peru 81%
+peru|iia|1942-1945,PER-1942-2025,4,clean,peru,1.00,peru 100% [only 4 values — below the 8-value floor]
+philippines|iia|1909-1945,PHL-1800-2025,251,clean,us philippines,0.99,us philippines 99%
+poland|iia|1919-1919,POL-1919-1920,1,clean,poland,1.00,poland 100% [only 1 values — below the 8-value floor]
+poland|iia|1920-1920,POL-1920-1921,3,clean,poland,1.00,poland 100% [only 3 values — below the 8-value floor]
+poland|iia|1921-1944,POL-1921-1945,62,clean,poland,1.00,poland 100%
+poland|iia|1945-1945,POL-1945-2025,3,clean,poland,1.00,poland 100% [only 3 values — below the 8-value floor]
+portugal|iia|1910-1945,PRT-1800-2025,84,clean,portugal,0.64,portugal 64%
+reunion|iia|1909-1945,REU-1816-1946,51,clean,french reunion,1.00,french reunion 100%
+romania|iia|1909-1912,ROU-1859-1913,16,clean,romania,0.75,romania 75%
+romania|iia|1913-1916,ROU-1913-1918,11,clean,romania,0.73,romania 73%
+romania|iia|1918-1918,ROU-1918-1919,2,clean,romania,0.50,romania 50% [only 2 values — below the 8-value floor]
+romania|iia|1919-1919,ROU-1919-1920,2,clean,romania,0.50,romania 50% [only 2 values — below the 8-value floor]
+romania|iia|1920-1939,ROU-1920-1940,109,clean,romania,0.87,romania 87%
+romania|iia|1940-1945,ROU-1940-1947,29,clean,romania,0.83,romania 83%
+russian federation|iia|1909-1913,F228-1905-1914,99,no_dominant_source,russia in europe,0.17,best russia in europe 17%
+russian federation|iia|1914-1916,F228-1914-1917,49,no_dominant_source,russia in asia,0.16,best russia in asia 16%
+russian federation|iia|1917-1917,F228-1917-1918,8,redirected,japan: karafuto prefecture,0.38,japan: karafuto prefecture 38%
+russian federation|iia|1918-1918,F228-1918-1920,8,redirected,japan: karafuto prefecture,1.00,japan: karafuto prefecture 100%
+russian federation|iia|1920-1920,F228-1920-1921,5,no_dominant_source,japan: karafuto prefecture,0.20,best japan: karafuto prefecture 20% [only 5 values — below the 8-value floor]
+russian federation|iia|1922-1939,F228-1921-1940,287,redirected,ussr,0.75,ussr 75%
+russian federation|iia|1940-1944,F228-1940-1945,21,redirected,ussr,1.00,ussr 100%
+russian federation|iia|1945-1945,F228-1945-1991,2,redirected,ussr,1.00,ussr 100% [only 2 values — below the 8-value floor]
+saint kitts and nevis|iia|1909-1945,KNA-1800-2025,116,redirected,british saint christopher and nevis,1.00,british saint christopher and nevis 100%
+saint lucia|iia|1909-1945,LCA-1838-2025,108,clean,british saint lucia,1.00,british saint lucia 100%
+saint vincent and the grenadines|iia|1909-1945,VCT-1833-2025,158,redirected,british saint vincent,1.00,british saint vincent 100%
+samoa|iia|1910-1945,WSM-1900-2025,39,mixed,new zealand western samoa,0.72,new zealand western samoa + british samoa (union 100%)
+sao tome and principe|iia|1930-1944,STP-1800-2025,10,clean,portuguese sao tome and principe,1.00,portuguese sao tome and principe 100%
+senegal|iia|1922-1945,SEN-1886-1960,84,clean,french senegal,0.95,french senegal 95%
+serbia|iia|1909-1911,SER-1878-1913,14,redirected,"kingdom of serbs, croats and slovenes",0.86,"kingdom of serbs, croats and slovenes 86%"
+serbia|iia|1913-1916,SER-1913-1918,3,redirected,"kingdom of serbs, croats and slovenes",1.00,"kingdom of serbs, croats and slovenes 100% [only 3 values — below the 8-value floor]"
+serbia|iia|1920-1944,SER-1918-1945,438,redirected,yugoslavia,0.73,yugoslavia 73%
+serbia|iia|1945-1945,F248-1920-1947,7,redirected,yugoslavia,1.00,yugoslavia 100% [only 7 values — below the 8-value floor]
+seychelles|iia|1909-1933,SYC-1903-2025,18,clean,british seychelles,1.00,british seychelles 100%
+sierra leone|iia|1914-1945,SLE-1889-1961,76,clean,british sierra leone,1.00,british sierra leone 100%
+singapore|iia|1909-1919,GBM-1895-1946,11,redirected,british straits settlements,1.00,british straits settlements 100%
+somalia|iia|1922-1936,BSS-1884-1960,43,redirected,italian somaliland,1.00,italian somaliland 100%
+south africa|iia|1909-1909,CAP-1895-1910,2,redirected,union of south africa,1.00,union of south africa 100% [only 2 values — below the 8-value floor]
+south africa|iia|1910-1945,ZAF-1910-2025,266,redirected,union of south africa,0.97,union of south africa 97%
+south korea|iia|1909-1944,KOR-1800-1945,339,redirected,japanese korea,1.00,japanese korea 100%
+south korea|iia|1945-1945,KOR-1945-1948,4,redirected,japanese korea,1.00,japanese korea 100% [only 4 values — below the 8-value floor]
+spain|iia|1909-1945,ESP-1800-2025,249,clean,spain,0.87,spain 87%
+sri lanka|iia|1909-1945,LKA-1800-2025,185,redirected,british ceylon,1.00,british ceylon 100%
+suriname|iia|1909-1945,SUR-1886-1954,158,redirected,dutch guiana,1.00,dutch guiana 100%
+sweden|iia|1909-1945,SWE-1905-2025,98,clean,sweden,1.00,sweden 100%
+switzerland|iia|1909-1945,CHE-1800-2025,168,clean,switzerland,0.80,switzerland 80%
+syrian arab republic|iia|1922-1945,SYR-1922-1946,358,mixed,french syria and lebanon,0.49,french syria and lebanon + french syria (union 92%)
+tanzania|iia|1910-1913,TAN-1891-1920,12,redirected,british tanganyika,1.00,british tanganyika 100%
+tanzania|iia|1921-1921,TAN-1920-1922,1,redirected,british tanganyika,1.00,british tanganyika 100% [only 1 values — below the 8-value floor]
+tanzania|iia|1922-1945,TAN-1922-1964,101,redirected,british tanganyika,1.00,british tanganyika 100%
+thailand|iia|1911-1944,THA-1909-2025,118,redirected,siam,1.00,siam 100%
+timor leste|iia|1909-1940,TLS-1800-2025,17,mixed,portuguese timor and kambing,0.53,portuguese timor and kambing + portuguese timor (union 100%)
+togo|iia|1945-1945,FTO-1920-1960,3,redirected,german togoland,1.00,german togoland 100% [only 3 values — below the 8-value floor]
+trinidad and tobago|iia|1909-1945,TTO-1800-2025,82,clean,british trinidad and tobago,1.00,british trinidad and tobago 100%
+tunisia|iia|1909-1945,TUN-1881-2025,253,clean,french tunisia,1.00,french tunisia 100%
+turkey|iia|1909-1911,TUR-1800-1913,6,clean,turkey,0.50,turkey 50% [only 6 values — below the 8-value floor]
+turkey|iia|1924-1945,TUR-1920-2025,350,clean,turkey,0.98,turkey 98%
+united kingdom|iia|1909-1920,GBR-1800-1921,36,redirected,uk,1.00,uk 100%
+united kingdom|iia|1921-1945,GBR-1921-2025,67,redirected,uk,0.78,uk 78%
+united states of america|iia|1909-1945,USA-1867-1959,247,redirected,usa,0.52,usa 52%
+united states virgin islands|iia|1909-1916,DWI-1800-1917,8,redirected,us virgin islands,1.00,us virgin islands 100%
+united states virgin islands|iia|1917-1945,VIR-1917-2025,24,redirected,us virgin islands,1.00,us virgin islands 100%
+uruguay|iia|1910-1945,URY-1828-2025,59,clean,uruguay,1.00,uruguay 100%
+vanuatu|iia|1911-1945,VUT-1800-2025,81,redirected,british‑french new hebrides,1.00,british‑french new hebrides 100%
+venezuela|iia|1910-1945,VEN-1821-2025,17,clean,venezuela,1.00,venezuela 100%
+viet nam|iia|1930-1944,VNM-1887-1954,166,redirected,french tonkin,0.94,french tonkin 94%
+yemen|iia|1922-1945,MKY-1918-1962,17,redirected,british aden,1.00,british aden 100%
+zambia|iia|1922-1944,NRH-1911-1953,81,redirected,british northern rhodesia,1.00,british northern rhodesia 100%
+zimbabwe|iia|1911-1945,ZWE-1900-1953,176,redirected,british southern rhodesia,1.00,british southern rhodesia 100%
