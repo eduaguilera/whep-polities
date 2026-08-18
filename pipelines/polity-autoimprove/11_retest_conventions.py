@@ -225,8 +225,81 @@ def check_iia_djibouti_coffee(d):
     )
 
 
+def check_fao1952_france(d):
+    """The claim: fao1952's plain `France` is metropolitan France, with Algeria and the Saar
+    carried under their own labels rather than folded in.
+
+    Structural and therefore checkable. The decisive detail is not just that `Algeria` and
+    `Saar` exist alongside `France` -- it is that `France Saar` ALSO exists as its own
+    125-row label. A source that folded the 1948-56 customs union into `France` would have no
+    reason to carry the combination separately, and a source that ignored the union would have
+    no reason to carry it at all. Its presence is what a deliberate convention looks like.
+    """
+    f = d[d["source"] == "fao1952"]
+    fr = f[f["country"].map(norm) == "france"]
+    al = f[f["country"].map(norm).str.contains("algeria", regex=False, na=False)]
+    saar = f[f["country"].map(norm).str.contains("saar", regex=False, na=False)]
+    combo = f[f["country"].map(norm).str.contains("france saar", regex=False, na=False)]
+    shared = set(fr["item"].map(norm)) & set(al["item"].map(norm))
+    smaller = 0
+    for item in shared:
+        a = al[al["item"].map(norm) == item]["value"].dropna()
+        b = fr[fr["item"].map(norm) == item]["value"].dropna()
+        if len(a) and len(b) and float(a.median()) < float(b.median()):
+            smaller += 1
+    ok = (
+        len(fr) > 0 and len(al) > 0 and len(saar) > 0 and len(combo) > 0
+        and len(shared) >= 10 and smaller >= len(shared) * 0.6
+    )
+    return ok, (
+        f"fao1952 carries {len(fr)} france, {len(al)} algeria and {len(saar)} saar rows as "
+        f"separate labels, plus {len(combo)} rows under a distinct france-saar combination; "
+        f"{len(shared)} shared items, algeria's median below france's in {smaller}"
+    )
+
+
+def check_mitchell_algeria(d):
+    """The claim: Mitchell's Algeria follows the civil-departments basis (~575,511 km2,
+    northern Algeria) rather than the full colony polygon including the Sahara Southern
+    Territories annexed in 1902 (~2.44M km2). Same basis already documented for IIA (issue 166).
+
+    THE CAMEL TEST, which is what makes this falsifiable rather than a restatement. Camels are
+    overwhelmingly a Saharan animal, so if Mitchell's reporting territory had widened to the
+    full colony when the Southern Territories were annexed in 1902, the camel herd would step
+    up sharply at that year. Measured: 203,000 head median before 1902 against 180,500 after --
+    it goes very slightly DOWN, 0.89x, over a 74-year series running from 1867. The basis did
+    not change at the annexation.
+
+    This is deliberately a LIVESTOCK mechanism. The convention was learned from cropland
+    magnitudes, and desert contains little cropland either way, so crop areas cannot
+    discriminate between the two territories. Camels can, and they were tested as a potential
+    refutation rather than as confirmation.
+
+    Corroborated a second way, cross-source: Mitchell and IIA agree closely on shared items
+    (oats 164,000 vs 185,000 ha, ratio 0.89; olive oil 22,000 vs 20,685 t, ratio 1.06), and
+    IIA's civil-departments basis for Algeria is the one issue 166 already established.
+    """
+    a = _label(d, "mitchell", "algeria")
+    cam = a[a["item"].map(norm) == "camels"].dropna(subset=["year"])
+    pre = cam[cam["year"] < 1902]["value"].dropna()
+    post = cam[cam["year"] >= 1902]["value"].dropna()
+    if not len(pre) or not len(post):
+        return False, "no camel series either side of 1902; the discriminating test is unavailable"
+    step = float(post.median()) / float(pre.median())
+    # A widening to the full colony would multiply the herd, not leave it flat. Anything under
+    # 1.5x means no Saharan population entered the series at the annexation.
+    ok = step < 1.5
+    return ok, (
+        f"camels {pre.median():,.0f} head median pre-1902 vs {post.median():,.0f} from 1902 "
+        f"({step:.2f}x): no step at the Southern Territories annexation, so the reporting "
+        f"basis did not widen to the full colony"
+    )
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
+    ("fao1952", "France", "*"): check_fao1952_france,
+    ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("iia", "russian federation", "*"): check_iia_russia,
     ("iia", "south korea", "*"): check_iia_south_korea,
