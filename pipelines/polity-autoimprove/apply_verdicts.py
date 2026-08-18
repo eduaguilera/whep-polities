@@ -77,10 +77,20 @@ def bank(key, status, evidence_hash="", protocol=None):
     row.update({"status": status, "evidence_hash": evidence_hash,
                 "protocol_version": protocol, "last_run": TODAY})
 
-def append_dedup(path, fields, row):
+def append_dedup(path, fields, row, key_on=None):
+    """Append unless present. `key_on` narrows the comparison to those fields only.
+
+    Quarantine passes key_on=["key"]: one row per assertion needing adjudication, however many
+    times it is verified. Comparing every field instead let a re-verification append a duplicate
+    whose only difference was the wording of its basis.
+    """
     rows = list(csv.DictReader(open(path))) if os.path.exists(path) else []
+    cmp_fields = key_on or fields
     # str() both sides: CSV re-reads are strings, fresh rows may carry ints
-    if any(all(str(r.get(k) or "") == str(row.get(k) or "") for k in fields) for r in rows):
+    if any(all(str(r.get(k) or "") == str(row.get(k) or "") for k in cmp_fields) for r in rows):
+        if key_on:
+            print(f"  quarantine: {row.get('key')} already queued — later verdict NOT written over "
+                  f"the existing row (adjudications live in that file)")
         return False
     new = not os.path.exists(path)
     with open(path, "a", newline="") as fh:
@@ -202,6 +212,14 @@ for item in verdicts:
         # record BOTH positions: the second (blind) verifier's counter-verdict is
         # often the better answer, and adjudication needs it side by side
         rp = reviewer.get("new_polity_proposal") or {}
+        # QUARANTINE DEDUPS ON `key` ALONE, unlike the alias and ignored-label appends which
+        # compare every field. A quarantine row is "this assertion needs a human", and there is one
+        # of those per assertion however many times it is verified. All-field dedup let a
+        # re-verification append a SECOND row for congo|iia|1919-1945 with the same finding in
+        # different prose -- so the human queue double-counted, and a hand-written adjudication
+        # sat next to a machine one with no indication they were the same item.
+        # FIRST WINS, deliberately: a later automated attempt must not overwrite an adjudication
+        # someone has already written into this file. The skip is printed so it is not silent.
         append_dedup(QUARANTINE,
             ["key", "candidate", "verdict", "polity_code", "confidence", "basis",
              "review_verdict", "review_polity_code", "review_basis", "review_proposal",
@@ -214,7 +232,8 @@ for item in verdicts:
              "review_basis": reviewer.get("basis") or "",
              "review_proposal": json.dumps(rp) if rp else "",
              "review_reason": reviewer.get("reason") or "",
-             "date": TODAY})
+             "date": TODAY},
+            key_on=["key"])
         bank(key, "issue")
         stats["quarantined" if item.get("quarantined") else "uncertain"] += 1
         continue
