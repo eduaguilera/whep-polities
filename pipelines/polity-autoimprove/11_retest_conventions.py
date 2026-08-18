@@ -595,13 +595,19 @@ def check_exclusive_reporting(d):
 
     cases = [("iia", "japan", "south korea"), ("iia", "japan", "china, taiwan province of"),
              ("mitchell", "japan", "korea"), ("mitchell", "japan", "china, taiwan province of"),
-             ("juan", "united kingdom", "ireland")]
+             ("juan", "united kingdom", "ireland"),
+             ("fao1952", "Japan", "Korea South"), ("fao1952", "Japan", "China Taiwan"),
+             ("iia", "india", "myanmar")]
     bits, ok = [], True
     for src, outer, inner in cases:
         n, b = below(src, outer, inner)
         bits.append(f"{src} {outer} below {inner} in {b}/{n}")
-        # a real exclusion shows up in a MATERIAL share, not one stray cell
-        if not (n >= 100 and b >= 0.03 * n):
+        # AT LEAST 20 IMPOSSIBLE CELLS. One violation refutes inclusion logically, but 20 rules out
+        # data noise -- and this is the line that separates the eight pairs these entries claim from
+        # the six that issue 273 also flags and they deliberately do not: fao1952 Germany vs its
+        # zones (2 of 61, 2 of 50), India vs Pakistan (7 of 88), Ryukyu (3 of 45), the 6-cell Korea
+        # pairing. A share threshold cannot do this job: juan UK/Ireland is only 11% but 172 cells.
+        if b < 20:
             ok = False
     return ok, "; ".join(bits)
 
@@ -626,6 +632,8 @@ CHECKS = {
     ("iia", "japan", "*"): check_exclusive_reporting,
     ("mitchell", "japan", "*"): check_exclusive_reporting,
     ("juan", "united kingdom", "*"): check_exclusive_reporting,
+    ("fao1952", "Japan", "*"): check_exclusive_reporting,
+    ("iia", "india", "*"): check_exclusive_reporting,
     ("iia", "*", "p"): check_iia_npk,
     ("iia", "*", "n"): check_iia_npk,
     ("iia", "*", "k"): check_iia_npk,
