@@ -72,8 +72,18 @@ MIXING = ("multi_country", "whole_with_sub_siblings")
 #       union 90% -- two unrelated colonies), `mozambique` (concession 68% + province 19%, union 84%,
 #       with the colony-wide series contributing NOTHING), `serbia` and `austria`.
 #
-# The rise from 1 to 3 is the measurement improving, not the data degrading.
-BASELINE_VERIFIED_EQUAL_ON_MIXED = 3
+# The rise from 1 to 3 was the measurement improving, not the data degrading.
+#
+#    2  `niger|iia|1929-1945` retracted 2026-08-18 on the measurement rather than left inside the
+#       grandfathered ceiling. Its label carries raw `french west africa` -- the eight-territory
+#       federation -- while all seven OTHER constituents resolve cleanly to their own colonial
+#       labels and receive their own layer-B rows, so the federation total sat on Niger and any
+#       FWA aggregate counted it twice. Same shape as congo/FEA.
+#
+# `serbia|iia|1921-1945` is the remaining mixed claim and is deliberately NOT retracted here: it is
+# entangled with whether SER-1918-1945 should exist at all (issues 315, 317), which is a judgement
+# for a historian rather than a measurement to act on.
+BASELINE_VERIFIED_EQUAL_ON_MIXED = 2
 
 # The eight the mapping itself declares as spanning several modern countries. Pinned by name so a
 # change to the mapping surfaces here rather than silently shifting the count.
