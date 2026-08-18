@@ -95,8 +95,10 @@ Usage:
 """
 import argparse
 import csv
+import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -1169,6 +1171,82 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
     return (f"retargeted {hit} published FAOSTAT mapping row(s) from the live Canadian polity "
             f"to CAN-1886-1948, the span issue 243 retired, as an un-regenerated crosswalk does")
 
+
+
+def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
+    """Mark a label the harmonisation mapping shows is MIXED as if it were one clean territory.
+
+    Inverse of the real defect, and deliberately so. The real defect was that the mapping was not
+    tracked at all, so `serbia` meaning Yugoslavia and `viet nam` meaning Tonkin were invisible;
+    that state cannot be re-injected once the file exists. What CAN regress is the provenance file
+    drifting so a mixed target reads as clean, at which point the gate stops refusing equality
+    claims on it and the blindness returns silently.
+
+    So this goes the other way: it takes an IIA label that currently carries a `verified_equal`
+    verdict and is NOT flagged, and marks its target as assembled from a whole plus sub-labels.
+    The verdict is then an equality claim on a mixed label and the count must exceed its ceiling.
+
+    Chosen by scanning rather than hard-coded, because which labels carry `verified_equal` changes
+    with every verification pass -- a pinned label would rot into a case that cannot fail.
+
+    Nothing else notices: no other gate reads this file, and the verdict itself is well-formed.
+    """
+    prov = os.path.join(root, "pipelines/polity-autoimprove/state/iia_label_provenance.csv")
+    applied = os.path.join(root, "pipelines/polity-autoimprove/state/verdicts_applied.jsonl")
+    ledger = os.path.join(root, "pipelines/polity-autoimprove/state/review_ledger.csv")
+
+    def _n(x):
+        return re.sub(r"[^a-z0-9]+", " ", str(x).lower()).strip()
+
+    with open(prov, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    mixed = {r.get("layer_b_label") for r in rows
+             if r["kind"] in ("multi_country", "whole_with_sub_siblings")}
+
+    retracted = set()
+    with open(ledger, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            if (r.get("status") or "") == "issue":
+                retracted.add((r.get("key") or "").strip())
+
+    target = None
+    with open(applied, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line:
+                continue
+            v = json.loads(line).get("verdict")
+            if not isinstance(v, dict):
+                continue
+            key = v.get("key") or ""
+            if "|iia|" not in key or key in retracted:
+                continue
+            if v.get("confirm_kind") != "verified_equal":
+                continue
+            lab = _n(key.split("|")[0])
+            if lab not in mixed:
+                target = lab
+                break
+    assert target, "no unflagged IIA verified_equal verdict to build the case on"
+
+    hit = 0
+    for r in rows:
+        # Match on the RESOLVED layer-B label, the same key the gate joins on. Matching
+        # `assigned_modern` instead failed on `south korea`, because the mapping carries the long
+        # official name -- the same 10% miss the gate itself had.
+        if r.get("layer_b_label") == target and hit == 0:
+            r["kind"] = "whole_with_sub_siblings"
+            r["n_sub_labels"] = "2"
+            hit += 1
+    assert hit == 1, f"expected one provenance row for {target}, changed {hit}"
+    with open(prov, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"marked `{target}` as a target assembled from a whole plus sub-labels, so the "
+            f"`verified_equal` verdict already banked against it is an equality claim on a label "
+            f"with no single territory")
 
 def mutate_ledger_verdict_on_dead_polity(root, gpd, make_valid, affinity):
     """Re-point a banked verdict at a polity code that does not exist.
@@ -2318,6 +2396,13 @@ CASES = (
         "single year -- with that date removed, so row order decides again",
     ),
     (
+        "validate_iia_label_provenance.py",
+        mutate_label_provenance_hides_mixing,
+        "verified_equal",
+        "a provenance row that hides a whole-plus-parts merge, so equality claims on a label "
+        "with no single territory stop being refused",
+    ),
+    (
         "validate_review_ledger.py",
         mutate_ledger_verdict_on_dead_polity,
         "SEN-1886-1959",
@@ -2776,6 +2861,15 @@ WRITABLE = {
     # all THREE matchers name both dead statuses. Absent, they would be reported as missing
     # -- true in the scratch root, misleading as a finding -- and the case's own defect would
     # arrive buried under two spurious ones.
+    # The case rewrites iia_label_provenance.csv, so it must be a real copy, not a symlink. The
+    # applied-verdict log and the ledger are read-only here but must be present: the mutator picks
+    # its target by scanning them for an unflagged `verified_equal`, and the gate reads the ledger
+    # to tell a retracted verdict from a live one.
+    "validate_iia_label_provenance.py": (
+        "pipelines/polity-autoimprove/state/iia_label_provenance.csv",
+        "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
+        "pipelines/polity-autoimprove/state/review_ledger.csv",
+    ),
     "crosscheck_matchers.py": (
         "pipelines/polity-autoimprove/matchlib.py",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
