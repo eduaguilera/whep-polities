@@ -11,3 +11,10 @@ wiki_notes_queue.csv,AUT-1919-2025,duplicate_finding,2026-08-18,"data/final/sour
 wiki_notes_queue.csv,FRA-1919-2025,duplicate_finding,2026-08-18,"FAO 1952 (fao1952) reports 'France' as metropolitan France only: the source carries Algeria and the Saar as separate country labels ('Algeria', 'French North Africa Algeria', 'Saar', 'France Saar'), so this label does not fold in Algeria (then administratively part of France) or the Saar protectorat"
 wiki_notes_queue.csv,GHA-1898-1957,duplicate_finding,2026-08-18,"DOUBLE-COUNT: within fao1952 this label and its 'British Togoland' label and the combined 'Gold Coast and (British) Togoland' label (GCT-1919-1956, 49 rows over 1938-1951) are BOTH routed, so summing over polity_code adds the same output twice. Use one level, never both."
 suspect_wiki_pages.csv,JAM-1800-2025,page_corrected (verified by hand),2026-08-18,"flagged 2026-07-27 for claiming it covered only 'to 1886' and naming a nonexistent JAM-1886-1962. The page now reads 'Single row ... 1800 to 2025', 'No successor row', and records that a split at 1886 was once planned and never applied. Verified 2026-08-18."
+wiki_notes_queue.csv,BTL-1920-1957,captured_elsewhere,2026-08-18,registered as composition pair GCT<-BTL (#354); this note was the parent-side view
+wiki_notes_queue.csv,GCT-1919-1956,captured_elsewhere,2026-08-18,"registered as composition pair GCT<-BTL, overlap_sources=fao1952, sum_risk (#354)"
+wiki_notes_queue.csv,BWI-1833-1962,captured_elsewhere,2026-08-18,already registered as BWI<-JAM/BRB/KNA/MSR sum_risk before this note was queued
+wiki_notes_queue.csv,BLI-1833-1960,captured_elsewhere,2026-08-18,"registered as three pairs BLI<-ATG/KNA/MSR, sum_risk (#354)"
+wiki_notes_queue.csv,PYF-1800-2025,captured_elsewhere,2026-08-18,SAME-POLITY overlap ('French Oceania' + 'Makatea' both to PYF); registry cannot express it; issue 355
+wiki_notes_queue.csv,USA-1867-1959,captured_elsewhere,2026-08-18,already registered as USA<-ALK sum_risk before this note was queued
+wiki_notes_queue.csv,RWB-1922-1962,captured_elsewhere,2026-08-18,SAME-POLITY overlap ('rwanda' + 'rwanda and burundi' both to RWB); issue 355
