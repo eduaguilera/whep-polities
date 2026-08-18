@@ -193,10 +193,14 @@ def era_runs(fp: set, raw_fp: dict, contributors: list) -> list:
                 best, best_n = rl, n
         if best:
             by_year[year] = best
+    # Extend a run across ANY gap so long as the dominant source is unchanged. Requiring the years
+    # to be near-contiguous split one source into several runs whenever the yearbook skipped a few
+    # years, producing output like "el salvador -> el salvador -> el salvador" and inflating the
+    # apparent number of eras. A gap is missing data, not a change of source.
     runs = []
     for year in sorted(by_year):
         lab = by_year[year]
-        if runs and runs[-1][2] == lab and year - runs[-1][1] <= 2:
+        if runs and runs[-1][2] == lab:
             runs[-1][1] = year
         else:
             runs.append([year, year, lab])
@@ -306,10 +310,18 @@ def main() -> int:
                 # `kingdom of serbs, croats and slovenes` then `yugoslavia`: one state renamed.
                 # The discriminator is whether one contributor is a `parent: child` refinement of
                 # the other, which same_family already answers.
+                #
+                # When they are NOT related, the tool cannot tell a rename from two different
+                # places: `serbia` runs SCS then Yugoslavia (one state renamed), but
+                # `papua new guinea` runs `dutch new guinea` then
+                # `australian papua and new guinea` -- West Papua and PNG, opposite halves of an
+                # island. Both look identical here. So the signal is `sequential_other`, meaning
+                # "one source at a time, and whether the eras are the same territory needs a
+                # human". Calling it `sequential_rename` asserted knowledge this has none of.
                 eras = [r[2] for r in runs]
                 nested = any(same_family(a, b) and norm(a) != norm(b)
                              for a in eras for b in eras)
-                sig = "sequential_scope" if nested else "sequential_rename"
+                sig = "sequential_scope" if nested else "sequential_other"
                 note = " -> ".join(f"{lo}-{hi} {rl}" for lo, hi, rl in runs)
             elif len(named) > 1:
                 sig, note = "mixed", " + ".join(named[:3]) + f" (union {union:.0%})"
@@ -357,12 +369,16 @@ def main() -> int:
                 print(f"   {100 * c / n:5.1f}%  {rl}{flag}")
             named = [rl for _c, rl in above]
             if len(named) > 1 and len(runs) > 1 and len({r[2] for r in runs}) > 1:
-                print(f"\n   SEQUENTIAL: one source at a time, switching between them —")
+                kind = "SEQUENTIAL (a part in some eras, the whole in others)" if any(
+                    same_family(a, b) and norm(a) != norm(b)
+                    for a in [r[2] for r in runs] for b in [r[2] for r in runs]
+                ) else "SEQUENTIAL (unrelated sources — rename or different places, needs a human)"
+                print(f"\n   {kind}:")
                 for lo, hi, rl in runs:
                     print(f"     {lo}-{hi}  {rl}")
                 print(f"   {union:.0%} of values accounted for. The contributors occupy DIFFERENT "
-                      f"years, so this is a renaming or a succession, not two territories mixed. "
-                      f"Only assertions overlapping a switch are affected.")
+                      f"years, so this is not two territories mixed at one moment — but whether the "
+                      f"eras are the SAME territory is a question this cannot answer.")
             elif len(named) > 1:
                 print(f"\n   MIXED: draws on {len(named)} raw labels — {', '.join(named)}")
                 print(f"   between them they account for {union:.0%} of the values "

@@ -8,7 +8,7 @@ australia,Australia,AUS,australia,whole_with_sub_siblings,5,,3,0,,no,australia 9
 australia: queensland,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,,no,australia 92%,australia,0.92,clean
 australia: tasmania,Australia,AUS,australia,sub_of_sibling,5,australia,0,0,,no,australia 92%,australia,0.92,clean
 christmas island,Australia,AUS,australia,shares_target,5,,0,0,,no,australia 92%,australia,0.92,clean
-papua new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,1910-1914 dutch new guinea -> 1915-1917 australian papua and new guinea -> 1930-1940 dutch new guinea,dutch new guinea,0.72,sequential_rename
+papua new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,1910-1914 dutch new guinea -> 1915-1917 australian papua and new guinea -> 1922-1940 dutch new guinea,dutch new guinea,0.72,sequential_other
 austria-hungary,Austria,AUT,austria,multi_country,2,austria,0,13,Austria; Hungary; Czech Republic; Slovakia; Slovenia; Croatia; Bosnia and Herzegovina; Romania; Ukraine; Poland; Italy; Serbia; Montenegro,no,austria + austria-hungary (union 85%),austria,0.73,mixed
 british west indies: bahamas,Bahamas,BHS,,one_to_one,1,,0,0,,unknown,"label not measured (absent, or under --min-rows)",,,unknown
 banaba island,Kiribati,KIR,kiribati,shares_target,2,,0,0,,no,british ocean island 100%,british ocean island,1.00,redirected
@@ -53,7 +53,7 @@ nauru and banaba island,Nauru,NRU,nauru,shares_target,2,,0,0,Banaba now part of 
 palestine,Israel,ISR,israel,one_to_one,1,,0,0,Israel/Palestina,no,british palestine 92%,british palestine,0.92,redirected
 territory of tanganyika,United Republic of Tanzania,TZA,tanzania,shares_target,2,,0,0,,no,british tanganyika 100%,british tanganyika,1.00,redirected
 british togo,Ghana,GHA,ghana,shares_target,3,,0,0,,no,german togoland + british gold coast (union 90%),german togoland,0.63,mixed
-british new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,1910-1914 dutch new guinea -> 1915-1917 australian papua and new guinea -> 1930-1940 dutch new guinea,dutch new guinea,0.72,sequential_rename
+british new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,1910-1914 dutch new guinea -> 1915-1917 australian papua and new guinea -> 1922-1940 dutch new guinea,dutch new guinea,0.72,sequential_other
 british north borneo,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo + british malaya + british federated malay states (union 92%),british borneo,0.34,mixed
 bechuanaland,Botswana,BWA,botswana,one_to_one,1,,0,0,,no,british bechuanaland 100%,british bechuanaland,1.00,redirected
 tonga islands,Tonga,TON,,one_to_one,1,,0,0,,unknown,"label not measured (absent, or under --min-rows)",,,unknown
@@ -96,11 +96,11 @@ dutch east indies: java and madura,Indonesia,IDN,indonesia,sub_of_sibling,8,dutc
 dutch east indies: java,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,3,0,Only java,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
 dutch east indies: java and sumatra,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,Only java and sumatra,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
 "dutch east indies: java, madura and outer provinces",Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies: java,0,0,"Only java, madura and outer provinces",yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
-new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,1910-1914 dutch new guinea -> 1915-1917 australian papua and new guinea -> 1930-1940 dutch new guinea,dutch new guinea,0.72,sequential_rename
+new guinea,Papua New Guinea,PNG,papua new guinea,shares_target,3,,0,0,,no,1910-1914 dutch new guinea -> 1915-1917 australian papua and new guinea -> 1922-1940 dutch new guinea,dutch new guinea,0.72,sequential_other
 dutch east indies: sumatra,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only sumatra,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
 dutch east indies,Indonesia,IDN,indonesia,whole_with_sub_siblings,8,,7,0,,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
 dutch east indies: outer provinces,Indonesia,IDN,indonesia,sub_of_sibling,8,dutch east indies,0,0,Only non-Java islands,yes,dutch east indies + dutch java and madura (union 83%),dutch east indies,0.46,mixed
-el salvador: san salvador,El Salvador,SLV,el salvador,sub_of_sibling,2,el salvador,0,0,Tangier ,yes,1922-1924 el salvador -> 1930-1932 el salvador -> 1933-1936 el salvador: san salvador department -> 1939-1944 el salvador,el salvador,0.55,sequential_scope
+el salvador: san salvador,El Salvador,SLV,el salvador,sub_of_sibling,2,el salvador,0,0,Tangier ,yes,1910-1917 el salvador: san salvador department -> 1922-1932 el salvador -> 1933-1936 el salvador: san salvador department -> 1939-1944 el salvador,el salvador,0.55,sequential_scope
 transjordan,Jordan,JOR,jordan,one_to_one,1,,0,0,,no,british transjordan 100%,british transjordan,1.00,redirected
 ethiopia,Ethiopia,ETH,ethiopia,shares_target,2,,0,0,,yes,australia 100%,australia,1.00,redirected
 federated malay states,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo + british malaya + british federated malay states (union 92%),british borneo,0.34,mixed
@@ -161,7 +161,7 @@ french west africa,Niger,NER,niger,multi_country,2,,1,8,Senegal; French Sudan (n
 french morocco: tanger,Morocco,MAR,morocco,sub_of_sibling,3,french morocco,0,0,,no,french morocco 99%,french morocco,0.99,clean
 togo,Togo,TGO,togo,one_to_one,1,,0,0,,no,german togoland 100%,german togoland,1.00,redirected
 "czechoslovakia: bohemia, moravia and silesia",Czechia,CZE,czech republic,sub_of_sibling,2,czechoslovakia,0,0,"Only bohemia, moravia and silesia",no,czechoslovakia 93%,czechoslovakia,0.93,redirected
-samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,1910-1916 british samoa -> 1922-1925 new zealand western samoa -> 1930-1945 new zealand western samoa,new zealand western samoa,0.72,sequential_rename
+samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,1910-1916 british samoa -> 1922-1945 new zealand western samoa,new zealand western samoa,0.72,sequential_other
 protectorate of southwest africa,Namibia,NAM,namibia,shares_target,3,,0,0,,no,german south west africa 100%,german south west africa,1.00,redirected
 territory of southwest africa,Namibia,NAM,namibia,shares_target,3,,0,0,,no,german south west africa 100%,german south west africa,1.00,redirected
 germany,Germany,DEU,germany,shares_target,2,,0,0,,no,germany 78%,germany,0.78,clean
@@ -197,15 +197,15 @@ libya: tripolitania,Libya,LBY,libya,sub_of_sibling,3,libya,0,0,Tripolitania,no,i
 nepal,Nepal,NPL,nepal,one_to_one,1,,0,0,,no,nepal 100%,nepal,1.00,clean
 norway,Norway,NOR,norway,one_to_one,1,,0,0,,no,norway 100%,norway,1.00,clean
 romania,Romania,ROU,romania,one_to_one,1,,0,0,,no,romania 83%,romania,0.83,clean
-serbia,Serbia,SRB,serbia,shares_target,3,,0,0,,no,"1909-1916 kingdom of serbs, croats and slovenes -> 1920-1925 kingdom of serbs, croats and slovenes -> 1930-1945 yugoslavia",yugoslavia,0.71,sequential_rename
-"kingdom of serbs, croats and slovenes",Serbia,SRB,serbia,multi_country,3,,0,2,"Renamed Kingdom of Yugoslavia in 1929; successor states include Serbia, Croatia, Slovenia.",no,"1909-1916 kingdom of serbs, croats and slovenes -> 1920-1925 kingdom of serbs, croats and slovenes -> 1930-1945 yugoslavia",yugoslavia,0.71,sequential_rename
+serbia,Serbia,SRB,serbia,shares_target,3,,0,0,,no,"1909-1925 kingdom of serbs, croats and slovenes -> 1930-1945 yugoslavia",yugoslavia,0.71,sequential_other
+"kingdom of serbs, croats and slovenes",Serbia,SRB,serbia,multi_country,3,,0,2,"Renamed Kingdom of Yugoslavia in 1929; successor states include Serbia, Croatia, Slovenia.",no,"1909-1925 kingdom of serbs, croats and slovenes -> 1930-1945 yugoslavia",yugoslavia,0.71,sequential_other
 siam,Thailand,THA,thailand,one_to_one,1,,0,0,,no,siam 100%,siam,1.00,redirected
 netherlands,Netherlands (Kingdom of the),NLD,netherlands,one_to_one,1,,0,0,,no,netherlands 95%,netherlands,0.95,clean
-yugoslavia,Serbia,SRB,serbia,shares_target,3,,0,0,,no,"1909-1916 kingdom of serbs, croats and slovenes -> 1920-1925 kingdom of serbs, croats and slovenes -> 1930-1945 yugoslavia",yugoslavia,0.71,sequential_rename
+yugoslavia,Serbia,SRB,serbia,shares_target,3,,0,0,,no,"1909-1925 kingdom of serbs, croats and slovenes -> 1930-1945 yugoslavia",yugoslavia,0.71,sequential_other
 lebanese republic,Lebanon,LBN,lebanon,shares_target,3,,0,0,,no,french lebanon 92%,french lebanon,0.92,clean
 lebanon,Lebanon,LBN,lebanon,shares_target,3,,0,0,,no,french lebanon 92%,french lebanon,0.92,clean
 french establishments in oceania: makatea,French Polynesia,PYF,french polynesia,sub_of_sibling,2,french establishments in oceania,0,0,,yes,1909-1920 french oceania: makatea island -> 1930-1937 french oceania,french oceania,0.61,sequential_scope
-west samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,1910-1916 british samoa -> 1922-1925 new zealand western samoa -> 1930-1945 new zealand western samoa,new zealand western samoa,0.72,sequential_rename
+west samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,1910-1916 british samoa -> 1922-1945 new zealand western samoa,new zealand western samoa,0.72,sequential_other
 uruguay,Uruguay,URY,uruguay,one_to_one,1,,0,0,,no,uruguay 100%,uruguay,1.00,clean
 iran,Iran (Islamic Republic of),IRN,iran,shares_target,2,,0,0,,no,iran 99%,iran,0.99,clean
 persia,Iran (Islamic Republic of),IRN,iran,shares_target,2,,0,0,,no,iran 99%,iran,0.99,clean
@@ -218,8 +218,8 @@ portuguese india,India,IND,india,shares_target,7,,0,0,,no,british india 55%,brit
 macau,"China, Macao SAR",MAC,,one_to_one,1,,0,0,,unknown,"label not measured (absent, or under --min-rows)",,,unknown
 portuguese mozambique [colony],Mozambique,MOZ,mozambique,shares_target,2,,0,0,,no,portuguese mozambique: company concession + portuguese mozambique: province (union 84%),portuguese mozambique: company concession,0.68,mixed
 sao tome and principe,Sao Tome and Principe,STP,sao tome and principe,one_to_one,1,,0,0,,yes,portuguese sao tome and principe 100%,portuguese sao tome and principe,1.00,clean
-timor,Timor-Leste,TLS,timor leste,whole_with_sub_siblings,2,,1,0,,yes,1909-1916 portuguese timor -> 1930-1936 portuguese timor and kambing,portuguese timor and kambing,0.53,sequential_scope
-timor and kambing,Timor-Leste,TLS,timor leste,sub_of_sibling,2,timor,0,0,,yes,1909-1916 portuguese timor -> 1930-1936 portuguese timor and kambing,portuguese timor and kambing,0.53,sequential_scope
+timor,Timor-Leste,TLS,timor leste,whole_with_sub_siblings,2,,1,0,,yes,1909-1916 portuguese timor -> 1930-1940 portuguese timor and kambing,portuguese timor and kambing,0.53,sequential_scope
+timor and kambing,Timor-Leste,TLS,timor leste,sub_of_sibling,2,timor,0,0,,yes,1909-1916 portuguese timor -> 1930-1940 portuguese timor and kambing,portuguese timor and kambing,0.53,sequential_scope
 portuguese mozambique [company],Mozambique,MOZ,mozambique,shares_target,2,,0,0,,no,portuguese mozambique: company concession + portuguese mozambique: province (union 84%),portuguese mozambique: company concession,0.68,mixed
 austria,Austria,AUT,austria,whole_with_sub_siblings,2,,1,0,,no,austria + austria-hungary (union 85%),austria,0.73,mixed
 chile,Chile,CHL,chile,one_to_one,1,,0,0,,no,chile 100%,chile,1.00,clean
@@ -230,7 +230,7 @@ colombia,Colombia,COL,colombia,one_to_one,1,,0,0,,no,colombia 100%,colombia,1.00
 costa rica,Costa Rica,CRI,costa rica,one_to_one,1,,0,0,,no,costa rica 100%,costa rica,1.00,clean
 cuba,Cuba,CUB,cuba,one_to_one,1,,0,0,,no,cuba 100%,cuba,1.00,clean
 ecuador,Ecuador,ECU,ecuador,one_to_one,1,,0,0,,no,ecuador 100%,ecuador,1.00,clean
-el salvador,El Salvador,SLV,el salvador,whole_with_sub_siblings,2,,1,0,,yes,1922-1924 el salvador -> 1930-1932 el salvador -> 1933-1936 el salvador: san salvador department -> 1939-1944 el salvador,el salvador,0.55,sequential_scope
+el salvador,El Salvador,SLV,el salvador,whole_with_sub_siblings,2,,1,0,,yes,1910-1917 el salvador: san salvador department -> 1922-1932 el salvador -> 1933-1936 el salvador: san salvador department -> 1939-1944 el salvador,el salvador,0.55,sequential_scope
 estonia,Estonia,EST,estonia,one_to_one,1,,0,0,,no,estonia 100%,estonia,1.00,clean
 finland,Finland,FIN,finland,one_to_one,1,,0,0,,no,finland 100%,finland,1.00,clean
 guatemala,Guatemala,GTM,guatemala,one_to_one,1,,0,0,,no,guatemala 100%,guatemala,1.00,clean
@@ -261,11 +261,11 @@ french west africa: dakar,Senegal,SEN,senegal,shares_target,3,,0,0,,no,french se
 british south west africa,Namibia,NAM,namibia,shares_target,3,,0,0,,no,german south west africa 100%,german south west africa,1.00,redirected
 spain,Spain,ESP,spain,whole_with_sub_siblings,2,,1,0,,no,spain 87%,spain,0.87,clean
 spain: canary islands,Spain,ESP,spain,sub_of_sibling,2,spain,0,0,Only Canary Islands,no,spain 87%,spain,0.87,clean
-fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_rename
-spanish territories on the gulf of guinea: fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_rename
-spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_rename
-spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_rename
-spanish territories on the gulf of guinea: spanish guinea and fernando po,Equatorial Guinea,GNQ,equatorial guinea,sub_of_sibling,5,spanish territories on the gulf of guinea: spanish guinea,0,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_rename
+fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_other
+spanish territories on the gulf of guinea: fernando po,Equatorial Guinea,GNQ,equatorial guinea,shares_target,5,,0,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_other
+spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_other
+spanish territories on the gulf of guinea: spanish guinea,Equatorial Guinea,GNQ,equatorial guinea,whole_with_sub_siblings,4,,1,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_other
+spanish territories on the gulf of guinea: spanish guinea and fernando po,Equatorial Guinea,GNQ,equatorial guinea,sub_of_sibling,5,spanish territories on the gulf of guinea: spanish guinea,0,0,Spanish Territories on the Gulf of Guinea,yes,1910-1915 spanish spanish guinea including fernando po -> 1939-1945 bulgaria,bulgaria,0.26,sequential_other
 spanish morocco,Morocco,MAR,morocco,shares_target,3,,0,0,,no,french morocco 99%,french morocco,0.99,clean
 china: manchukuo,"China, mainland",CHN,china mainland,sub_of_sibling,5,china,0,0,,no,china 62%,china,0.62,redirected
 straits settlements,Singapore,SGP,singapore,whole_with_sub_siblings,2,,1,0,,no,british straits settlements 100%,british straits settlements,1.00,redirected
@@ -311,7 +311,7 @@ soviet union [europe and asia],Russian Federation,RUS,russian federation,sub_of_
 soviet union: transcaucasia,Azerbaijan,AZE,azerbaijan,one_to_one,1,,0,0,"Modern Georgia, Armenia and Azerbaiyán",no,ussr: transcaucasian sfsr 100%,ussr: transcaucasian sfsr,1.00,redirected
 soviet union [asia],Russian Federation,RUS,russian federation,shares_target,9,,0,0,,no,ussr 50%,ussr,0.50,redirected
 soviet union [europe],Russian Federation,RUS,russian federation,whole_with_sub_siblings,9,,1,0,,no,ussr 50%,ussr,0.50,redirected
-british samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,1910-1916 british samoa -> 1922-1925 new zealand western samoa -> 1930-1945 new zealand western samoa,new zealand western samoa,0.72,sequential_rename
+british samoa,Samoa,WSM,samoa,shares_target,3,,0,0,,no,1910-1916 british samoa -> 1922-1945 new zealand western samoa,new zealand western samoa,0.72,sequential_other
 total,nan,NAN,,whole_with_sub_siblings,22,,21,0,TOTAL,unknown,"label not measured (absent, or under --min-rows)",,,unknown
 total [excluding ussr],nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,"label not measured (absent, or under --min-rows)",,,unknown
 total africa,nan,NAN,,sub_of_sibling,22,total,0,0,TOTAL,unknown,"label not measured (absent, or under --min-rows)",,,unknown
