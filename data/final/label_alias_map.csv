@@ -355,6 +355,7 @@ French Oceania,fao1952,1937,1951,PYF-1800-2025,French Polynesia,high,50
 French Polynesia,faostat,1961,2024,PYF-1800-2025,French Polynesia,high,170270
 French W Africa,,,,AOF-1895-1960,French West Africa (AOF),high,12
 French West Africa,,,,AOF-1895-1960,French West Africa (AOF),high,150
+FrenchWest Africa,fao1952,1949,1950,AOF-1895-1960,French West Africa (AOF),high,6
 FSU,lassaletta-grassland-share,1961,1991,F228-1945-1991,Soviet Union,high,
 Gabon,faostat,1961,2024,GAB-1960-2025,Gabon,high,162217
 Gabon,lassaletta-grassland-share,1961,2009,GAB-1960-2025,Gabon,high,
@@ -984,6 +985,7 @@ Zambia,faostat,1964,2024,ZMB-1964-2025,Zambia,high,199421
 Zambia,lassaletta-grassland-share,1961,1963,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),high,
 Zambia,lassaletta-grassland-share,1964,2009,ZMB-1964-2025,Zambia,high,
 zambia,mitchell,1953,1964,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland,high,
+Zanzibar,fao1952,1949,1951,ZNZ-1890-1963,Zanzibar Protectorate,high,7
 Zanzibar and Pemba,fao1952,1890,1963,ZNZ-1890-1963,Zanzibar Protectorate,high,71
 ZAR,mueller-synthetic-n,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,
 zimbabwe,,1953,1964,SRH-1953-1964,Southern Rhodesia (within Federation 1953-1964),high,
