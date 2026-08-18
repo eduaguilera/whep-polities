@@ -56,26 +56,24 @@ LEDGER = os.path.join(REPO, "pipelines/polity-autoimprove/state/review_ledger.cs
 # Kinds where the layer-B label cannot be one territory.
 MIXING = ("multi_country", "whole_with_sub_siblings")
 
-# Measured 2026-08-18 against OBSERVED mixing. One verdict:
-# `french polynesia|iia|1909-1938` -> PYF-1800-2025, where layer B's label draws on both
-# `french oceania` (61%) and `french oceania: makatea island` (39%) -- a territory and one phosphate
-# island inside it.
+# Measured 2026-08-18 against OBSERVED mixing. Three verdicts:
+#   french polynesia|iia|1909-1938  `french oceania` + `french oceania: makatea island` (one island)
+#   niger|iia|1929-1945             `french niger` + `french west africa` (an eight-territory federation)
+#   serbia|iia|1921-1945            `yugoslavia` + `kingdom of serbs, croats and slovenes`
 #
-# This number moved three times while the check was being written, and every move was a correction
-# to the MEASUREMENT rather than to the data:
-#   14  trusting the applied record's own `quarantined` flag, which does not reflect a retraction --
-#       the ledger does. Reading the ledger dropped two retracted the same day.
-#   12  joining on country NAME, which silently missed 16 of 164 labels where the spec writes
-#       "Korea, Republic of" and layer B writes `south korea`. Joining on the resolved label found
-#       `czech republic|iia|1919-1937`.
-#   13  counting the SPEC's merges rather than merges observed in this data. That flagged `jamaica`
-#       (86% `british jamaica` alone), `austria` and `niger` on the strength of a harmonisation
-#       intent that did not materialise here.
-#    1  counting only labels where two raw sources are both present above the noise floor.
+# The count moved five times and EVERY wrong value printed as a clean pass or a plausible list:
+#   14  trusting the applied record's own `quarantined` flag; a retraction sets the LEDGER to `issue`
+#   12  joining on country NAME, missing 16 of 164 labels where the spec writes "Korea, Republic of"
+#   13  counting the SPEC's merges, which flagged `jamaica` (86% `british jamaica` alone) for an
+#       intent that never materialised in this data
+#    1  counting observed merges, but judging a runner-up by its SHARE
+#    3  judging a runner-up by what it ADDS TO THE UNION, which is the only measure immune to one
+#       value matching several raw labels. That reclassified `ghana` (togoland 63% + gold coast 27%,
+#       union 90% -- two unrelated colonies), `mozambique` (concession 68% + province 19%, union 84%,
+#       with the colony-wide series contributing NOTHING), `serbia` and `austria`.
 #
-# Every one of those wrong numbers printed as a clean pass or a plausible list. That is the whole
-# reason this file records `territory_signal` rather than re-deriving it per run.
-BASELINE_VERIFIED_EQUAL_ON_MIXED = 1
+# The rise from 1 to 3 is the measurement improving, not the data degrading.
+BASELINE_VERIFIED_EQUAL_ON_MIXED = 3
 
 # The eight the mapping itself declares as spanning several modern countries. Pinned by name so a
 # change to the mapping surfaces here rather than silently shifting the count.

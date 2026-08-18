@@ -51,6 +51,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import csv
 import os
 import re
 import sys
@@ -59,6 +60,8 @@ from collections import defaultdict
 DEFAULT_RAW = os.path.expanduser(
     "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"
 )
+DEFAULT_PROV = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "state/iia_label_provenance.csv")
 DEFAULT_PANEL = os.path.expanduser(
     os.environ.get("WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
 )
@@ -82,6 +85,36 @@ EXPLAINED = 0.85
 # match. Without it, `french mauritania 100%` lists `total 31%` and `british cyprus 29%` as
 # co-contributors, which is only the noise floor showing through on a small series.
 RUNNER_UP_RATIO = 0.45
+
+# BUT the noise floor and the ratio were both calibrated on UNRELATED labels, and chance collisions
+# do not respect naming. A runner-up from the same family as the top match -- `british gold coast`
+# beside `german togoland`, `portuguese mozambique: province` beside the same colony's company
+# concession -- is evidence at a level where an unrelated label would be noise. Judging those by the
+# unrelated-label thresholds classified `ghana` (togoland 63% + gold coast 27%, union 90%) and
+# `mozambique` (concession 68% + province 19%, union 84%) as single-source redirects when both are
+# assembled from two territories.
+FAMILY_FLOOR = 0.10
+
+# How much NEW coverage an unrelated runner-up must add before it counts as a second contributor.
+# Replaces a share-ratio test, which let `ghana` through as single-source: `british gold coast` sits
+# at 27% against `german togoland` 63%, just under a 0.45 ratio, yet it explains 27 points of values
+# togoland does not explain at all. Two different colonies in one label.
+UNION_GAIN = 0.15
+
+
+def same_family(a: str, b: str) -> bool:
+    """Do two raw labels name parts of one colonial family?
+
+    True when either is a `parent: child` refinement of the other, or when they share their first
+    two words (`british gold coast` / `british togoland`). Deliberately loose: this only LOWERS the
+    threshold at which a second contributor is believed, and the union share is reported alongside
+    so the reader sees what was combined.
+    """
+    a, b = norm(a), norm(b)
+    if a.startswith(b + " ") or b.startswith(a + " "):
+        return True
+    aw, bw = a.split(), b.split()
+    return len(aw) >= 2 and len(bw) >= 2 and aw[:2] == bw[:2]
 
 
 # Colonial qualifiers the harmonisation strips when modernising a name. `french algeria` ->
@@ -124,6 +157,12 @@ def main() -> int:
     ap.add_argument("--label", help="report one layer-B label in full instead of the ranked table")
     ap.add_argument("--min-rows", type=int, default=30,
                     help="skip labels with fewer dated values (default: %(default)s)")
+    ap.add_argument("--write", metavar="CSV", nargs="?", const=DEFAULT_PROV,
+                    help="re-derive the TRACKED provenance table (default: %(const)s). The "
+                         "classification the gate enforces is computed HERE, so writing it from "
+                         "this script is the only way tool and table cannot drift apart — they "
+                         "already did once, when a hand-rolled derivation used a share-ratio test "
+                         "this script had replaced with a union-gain test")
     args = ap.parse_args()
 
     for path, what in ((args.raw, "raw extract"), (args.layer_b, "layer-B panel")):
@@ -166,11 +205,22 @@ def main() -> int:
         )
         if not scored:
             continue
-        top = scored[0][0]
-        above = [
-            (c, rl) for c, rl in scored
-            if c / len(fp) > NOISE_FLOOR and c >= top * RUNNER_UP_RATIO
-        ]
+        # A runner-up earns its place by what it ADDS to the union, not by its own share. Share is
+        # the wrong measure because one value can match several raw labels: `french mauritania` is
+        # 100% explained by its own label and STILL shows `total` at 31%, which contributes nothing
+        # new. Ghana's second label lifts coverage from 63% to 90% -- 27 points of values the first
+        # label does not explain at all -- which is what "assembled from two territories" means.
+        top, top_label = scored[0]
+        above = [(top, top_label)]
+        covered = set(fp & raw_fp[top_label])
+        for c, rl in scored[1:]:
+            if rl == top_label:
+                continue
+            gain = len((fp & raw_fp[rl]) - covered) / len(fp)
+            related = same_family(rl, top_label)
+            if gain >= (FAMILY_FLOOR if related else UNION_GAIN):
+                above.append((c, rl))
+                covered |= fp & raw_fp[rl]
         # UNION, not the sum: the same value can match several raw labels, so adding the
         # percentages double counts. `serbia` is yugoslavia 71% and kingdom-of-SCS 25%, which is
         # 93% of its values between them, not 96%.
@@ -178,6 +228,50 @@ def main() -> int:
         for _c, rl in above:
             covered |= fp & raw_fp[rl]
         rows.append((label, len(fp), scored[:4], above, top / len(fp), len(covered) / len(fp)))
+
+    if args.write:
+        # Re-derive the tracked table: keep every column the mapping supplies, and overwrite the
+        # measured ones from the fingerprints computed above.
+        signal_by_label = {}
+        for label, _n, scored, above, _share, union in rows:
+            named = [rl for _c, rl in above]
+            if len(named) > 1:
+                sig, note = "mixed", " + ".join(named[:3]) + f" (union {union:.0%})"
+            elif named and not is_rename(named[0], label):
+                sig, note = "redirected", f"{named[0]} {union:.0%}"
+            elif named:
+                sig, note = "clean", f"{named[0]} {union:.0%}"
+            else:
+                sig, note = "unknown", "no raw label matches"
+            signal_by_label[label] = (sig, note, scored[0][1] if scored else "",
+                                      f"{scored[0][0] / _n:.2f}" if scored else "")
+        with open(args.write, newline="", encoding="utf-8") as fh:
+            table = list(csv.DictReader(fh))
+            fields = list(table[0])
+        for col in ("territory_signal", "fingerprint_note", "dominant_raw_label", "dominant_share"):
+            if col not in fields:
+                fields.append(col)
+        changed = 0
+        for r in table:
+            lab = r.get("layer_b_label") or ""
+            got = signal_by_label.get(lab)
+            if not got:
+                if r.get("territory_signal") != "unknown":
+                    changed += 1
+                r["territory_signal"] = "unknown"
+                r["fingerprint_note"] = "label not measured (absent, or under --min-rows)"
+                continue
+            sig, note, dom, share = got
+            if r.get("territory_signal") != sig:
+                changed += 1
+            r["territory_signal"], r["fingerprint_note"] = sig, note
+            r["dominant_raw_label"], r["dominant_share"] = dom, share
+        with open(args.write, "w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=fields)
+            w.writeheader()
+            w.writerows(table)
+        print(f"wrote {len(table)} rows to {args.write}; {changed} signals changed")
+        return 0
 
     if args.label:
         for label, n, scored, above, share, union in rows:
