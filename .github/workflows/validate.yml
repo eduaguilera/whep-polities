@@ -447,6 +447,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_source_splices.py
 
+      # A series repeating one value for years breaks no magnitude bound, opens no year gap and
+      # crosses no source seam, so nothing else looks for it -- yet the rows carry ZERO VARIANCE and
+      # every trend reading of them says "unchanged" when nobody knew. Only runs the series itself
+      # refutes are recorded: argentina soybeans resolves 2 ha then sits at exactly 1,000 for eleven
+      # years, denmark potatoes reads 54,000 for a decade in a series carrying 54,100. 246 runs,
+      # 1,619 rows. The panel is gitignored, so this reads the committed 17_constant_runs.py table.
+      - name: Sources — a repeated value must not outlive the resolution that refutes it
+        if: '!cancelled()'
+        run: python3 scripts/validate_constant_runs.py
+
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
       - name: site/ shows exactly the live polities that carry geometry

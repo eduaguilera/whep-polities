@@ -23,8 +23,10 @@ THE CLUSTER THAT MAKES IT DIAGNOSABLE. Nine countries show `tobacco, unmanufactu
 of **x101** at exactly 1939->1940 on a `mitchell->iia` seam, and back DOWN by the same factor at
 1940->1941 on the return seam. Japan reads 86,000 t (1939, mitchell), 8,705,400 t (1940, iia), 84,000 t
 (1941, mitchell) — a one-year x101 spike. World tobacco production in 1940 was on the order of 2-3
-Mt, so 8.7 Mt for Japan alone is impossible: IIA tobacco is carried ~100x too large for its stated
-unit. Same shape, smaller factor, in livestock: `swine, pigs` seams at 1950->1951 and 1955->1956
+Mt, so 8.7 Mt for Japan alone is impossible. 40 IIA tobacco cells are implausibly large on that
+evidence, logged as `iia-tobacco-implausible-magnitudes`. The x101 factor holds only where the
+comparison value is ADJACENT-year, so the implausibility is established and the per-row multiplier is
+NOT: those cells should be dropped, not rescaled. Same shape, smaller factor, in livestock: `swine, pigs` seams at 1950->1951 and 1955->1956
 (`mitchell->juan`) sit at exactly 0.5, and `cattle` 1954->1955 at 2.1.
 
 This is the already-recorded `iia-layerb-magnitude-scale-inconsistent` error (`state/data_errors.csv`,

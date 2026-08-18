@@ -1200,6 +1200,37 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_constant_run_shortened(root, gpd, make_valid, affinity):
+    """Trim the longest constant run below the pinned length, so it stops being flagged.
+
+    The real defect lives in layer B, which is gitignored and absent here, so it cannot be
+    re-injected -- the gate reads the committed table by design. What CAN regress is the table
+    understating a run: a regeneration against a changed panel, or an edit, drops `n_values` below
+    LONG_RUN and a decade of carried-forward values silently reads as a genuinely flat series.
+
+    Shortening rather than deleting is the sharper test. A deleted row would also move the total and
+    could trip the count ceiling instead of the pinned set, so the case could pass for the wrong
+    reason; editing `n_values` in place leaves the count untouched and forces signal B to fire alone.
+
+    It picks the longest run by `n_values` rather than by name, because which run is longest changes
+    when the panel is rebuilt -- the same reason the splice mutator picks by ratio.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/constant_runs.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    worst = max(rows, key=lambda r: int(r["n_values"]))
+    before = int(worst["n_values"])
+    worst["n_values"] = "4"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"shortened the {worst['country']} / {worst['item']} run at {worst['year_first']} "
+            f"(= {worst['constant']}, {worst['source']}) from {before} values to 4, so a run too long "
+            f"to be a rounding floor stops being pinned while the total stays put")
+
+
 def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
     """Mark a span whose values come from ONE territory as coming from two.
 
@@ -2417,6 +2448,13 @@ CASES = (
         "unaccounted for and the count ceiling silently gains headroom",
     ),
     (
+        "validate_constant_runs.py",
+        mutate_constant_run_shortened,
+        "not one any more",
+        "a long constant run trimmed below the pinned length, so a decade of carried-forward "
+        "values stops being flagged and reads as a genuinely unchanging series",
+    ),
+    (
         "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
         "verified_equal",
@@ -2889,6 +2927,10 @@ WRITABLE = {
     # to tell a retracted verdict from a live one.
     "validate_source_splices.py": (
         "pipelines/polity-autoimprove/state/source_splices.csv",
+    ),
+    # The case rewrites constant_runs.csv in place (it edits n_values), so it must be a real copy.
+    "validate_constant_runs.py": (
+        "pipelines/polity-autoimprove/state/constant_runs.csv",
     ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",

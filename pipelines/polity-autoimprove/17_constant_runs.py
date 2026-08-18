@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""Where a series repeats one value for years on end, is that agriculture or a filled-in gap?
+
+Found while chasing the tobacco magnitudes in issue 360. A detector for implausibly LARGE cells kept
+flagging `india / sesame seed / ha`, and the reason turned out to be the opposite of a spike: 1922-1933
+carry 2.0-2.5M ha (which is India's real sesame area), and then 1934-1945 are all **exactly 1,000.0**.
+The flag was right, the diagnosis was inverted. Nothing existing looks for this shape, because a flat
+line breaks no magnitude bound, opens no year gap and crosses no source seam.
+
+THE OBVIOUS INNOCENT EXPLANATION, AND WHY IT IS FALSE HERE. A long run of exactly 1,000 ha looks like
+a source reporting in thousands, where every small producer rounds to "1". That would make the run a
+resolution limit rather than a defect. It is testable, and it fails: these series resolve FINER than
+their own constant. Iceland's potato series records 400, Malta's grapes 600, Norway's wheat 4,300 —
+and `argentina / soybeans / ha` records **2 ha** and then sits at exactly 1,000 for eleven years. A
+source that can express 2 is not rounding to 1,000. The cleanest proof is
+`denmark / potatoes / ha`: exactly 54,000 for ten straight years, in a series that elsewhere
+carries 54,100, so its grid resolves 100 ha and the decade of no change is not rounding.
+
+So this script reports only runs that their OWN series refutes: a run of >= MIN_RUN identical values
+where somewhere else in the same series sits a value that is not a multiple of the run value's own
+power-of-ten grid. That test needs no external data and no judgement, which is why the table can be
+gated.
+
+WHAT THE RUN THAT ADDED IT MEASURED (issue filed alongside):
+
+    constant runs of >=5 identical values                       827   (4,590 rows, 2.6% of valued)
+      refuted as rounding by their own series                   253   (1,666 rows, 215 series)
+        by source   juan 1,077   iia 522   mitchell 62   fao1952 5
+
+WHY IT MATTERS, AND IT IS NOT THE SIZE OF THE NUMBER. These rows carry zero variance. Any trend,
+growth rate, elasticity or level-shift analysis reads them as "this did not change", when what
+happened is that nobody knew. The bias is not random either: it lands on small producers and on
+colonial reporting units, so it systematically flattens exactly the series that are already weakest.
+Fifteen consecutive years of literally unchanging Norwegian wheat area is not agriculture.
+
+WHAT THIS DOES NOT DECIDE. Whether a given run was carried forward from one observation, interpolated,
+or filled with a round placeholder for "not available" — those need the source page. It also cannot
+rule out a genuinely unchanging series, which is why the refutation test is required rather than the
+bare run: a real constant would not sit in a series that resolves finer than it.
+
+A run is counted over consecutive OBSERVATIONS, not consecutive years, since the panel is not
+gap-free; `year_first`/`year_last` give the real span and `n_values` the number of rows.
+
+Usage:
+  python3 pipelines/polity-autoimprove/17_constant_runs.py            # report only
+  python3 pipelines/polity-autoimprove/17_constant_runs.py --write    # refresh the tracked table
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import os
+import re
+import sys
+import tempfile
+from collections import Counter, defaultdict
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(HERE))
+OUT = os.path.join(HERE, "state/constant_runs.csv")
+DEFAULT_PANEL = os.path.expanduser(
+    os.environ.get("WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"))
+
+# Four identical values can happen; five in a row in a series that resolves finer is a filled gap.
+MIN_RUN = 5
+# Below this the "same series resolves finer" test has too little to draw on to mean anything.
+MIN_SERIES = 6
+
+
+def norm(s) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(s).lower()).strip()
+
+
+SCALE = 10 ** 6          # the panel carries at most a few decimals; work in scaled integers
+
+
+def grid_of(v: float) -> int:
+    """The coarsest power-of-ten grid the value sits on, as a SCALE-ed integer.
+
+    54,000 -> 1000, 54,100 -> 100, 2 -> 1, 0.8 -> 0.1. Computed on scaled integers because float
+    modulo cannot be trusted here, and returning 1 (not 0.1) for a decimal constant would make the
+    refutation test below trivially true — 0.8 is not a multiple of 1, so ANY other decimal in the
+    series would "refute" a constant that was never on that grid in the first place.
+    """
+    n = int(round(v * SCALE))
+    if n == 0:
+        return 1
+    g = 1
+    while n % (g * 10) == 0 and g < SCALE * 10 ** 9:
+        g *= 10
+    return g
+
+
+def find_runs(panel_path):
+    import pandas as pd
+    d = pd.read_parquet(panel_path)
+    # Aggregates ("Total", "ASIA", ...) are already flagged in the panel and dropped by 00_intake;
+    # leaving them in would flag world totals as if they were reporting units.
+    if "is_aggregate" in d.columns:
+        d = d[~d["is_aggregate"].astype(bool)]
+    d = d.dropna(subset=["year", "value"])
+    d = d[d["value"] > 0]
+
+    series = defaultdict(list)
+    for r in d.itertuples():
+        series[(norm(r.country), norm(r.item), str(r.unit), r.source)].append(
+            (int(r.year), float(r.value)))
+
+    out, n_series, n_runs_all, n_rows_all = [], 0, 0, 0
+    for (country, item, unit, source), vals in series.items():
+        if len(vals) < MIN_SERIES:
+            continue
+        n_series += 1
+        vals.sort()
+        years = [y for y, _v in vals]
+        v = [x for _y, x in vals]
+        start = 0
+        for k in range(1, len(v) + 1):
+            if k == len(v) or v[k] != v[start]:
+                n = k - start
+                if n >= MIN_RUN:
+                    n_runs_all += 1
+                    n_rows_all += n
+                    const = v[start]
+                    g = grid_of(const)
+                    finer = [x for j, x in enumerate(v)
+                             if not (start <= j < k)
+                             and int(round(x * SCALE)) % g != 0]
+                    if finer:
+                        out.append({
+                            "source": source, "country": country, "item": item, "unit": unit,
+                            "constant": f"{const:.3f}", "n_values": n,
+                            "year_first": years[start], "year_last": years[k - 1],
+                            "series_n": len(v), "grid": f"{g / SCALE:g}",
+                            "finest_elsewhere": f"{min(finer, key=abs):.3f}",
+                            "n_finer_elsewhere": len(finer),
+                        })
+                start = k
+    out.sort(key=lambda r: (-r["n_values"], r["source"], r["country"], r["item"]))
+    return out, n_series, n_runs_all, n_rows_all
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--layer-b", default=DEFAULT_PANEL)
+    ap.add_argument("--write", action="store_true", help=f"refresh {os.path.relpath(OUT, REPO)}")
+    args = ap.parse_args()
+
+    if not os.path.exists(args.layer_b):
+        print(f"SKIP: layer-B panel not present at {args.layer_b}")
+        return 0
+
+    rows, n_series, n_runs_all, n_rows_all = find_runs(args.layer_b)
+    print(f"series (country, item, unit, source) with >={MIN_SERIES} values: {n_series:,}")
+    print(f"constant runs of >={MIN_RUN} identical values: {n_runs_all:,} ({n_rows_all:,} rows)")
+    print(f"  refuted as rounding by their own series: {len(rows):,} "
+          f"({sum(r['n_values'] for r in rows):,} rows, "
+          f"{len({(r['country'], r['item'], r['unit'], r['source']) for r in rows}):,} series)")
+    print("  by source:",
+          dict(Counter({s: sum(r["n_values"] for r in rows if r["source"] == s)
+                        for s in {r["source"] for r in rows}}).most_common()))
+    print("\nlongest refuted runs (the series resolves finer than the value it repeats):")
+    for r in rows[:14]:
+        print(f"   {r['source']:9} {r['country'][:17]:18} {r['item'][:21]:22} {r['unit']:7} "
+              f"{float(r['constant']):>10,.0f} x{r['n_values']:>2} "
+              f"{r['year_first']}-{r['year_last']}  grid {float(r['grid']):>7,.0f}  "
+              f"elsewhere {float(r['finest_elsewhere']):>12,.1f}")
+
+    if args.write:
+        cols = ["source", "country", "item", "unit", "constant", "n_values", "year_first",
+                "year_last", "series_n", "grid", "finest_elsewhere", "n_finer_elsewhere"]
+        fd, tmp = tempfile.mkstemp(dir=os.path.dirname(OUT), suffix=".tmp")
+        os.close(fd)
+        with open(tmp, "w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=cols)
+            w.writeheader()
+            w.writerows(rows)
+        os.replace(tmp, OUT)
+        print(f"\nwrote {len(rows)} runs to {os.path.relpath(OUT, REPO)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
