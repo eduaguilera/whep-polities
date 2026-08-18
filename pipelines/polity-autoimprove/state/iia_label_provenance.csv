@@ -20,7 +20,7 @@ british west indies: bermuda,Bermuda,BMU,bermuda,one_to_one,1,,0,0,,no,british b
 bolivia,Bolivia (Plurinational State of),BOL,bolivia,one_to_one,1,,0,0,,yes,bolivia 100%,bolivia,1.00,clean
 brazil,Brazil,BRA,brazil,whole_with_sub_siblings,2,,1,0,,no,brazil 98%,brazil,0.98,clean
 brazil: sao paulo,Brazil,BRA,brazil,sub_of_sibling,2,brazil,0,0,Sao Paulo,no,brazil 98%,brazil,0.98,clean
-british and french cameroon,Cameroon,CMR,cameroon,multi_country,3,,0,2,British Cameroon; French Cameroon,no,british‑french cameroon 83%,british‑french cameroon,0.83,clean
+british and french cameroon,Cameroon,CMR,cameroon,multi_country,3,,0,2,British Cameroon; French Cameroon,no,british‑french cameroon 83%,british‑french cameroon,0.83,redirected
 ascension island,United Kingdom of Great Britain and Northern Ireland,GBR,united kingdom,shares_target,6,,0,0,Overseas territory of Ascension Island,no,uk 85%,uk,0.85,redirected
 sierra leone,Sierra Leone,SLE,sierra leone,one_to_one,1,,0,0,,no,british sierra leone 100%,british sierra leone,1.00,clean
 british india: aden,Yemen,YEM,yemen,one_to_one,1,,0,0,,no,british aden 100%,british aden,1.00,redirected
@@ -47,7 +47,7 @@ british india: excluding burma,India,IND,india,sub_of_sibling,7,british india,0,
 british india: princely provinces,India,IND,india,sub_of_sibling,7,british india,0,0,,no,british india 55%,british india,0.55,clean
 british west indies: leeward islands,Antigua and Barbuda,ATG,antigua and barbuda,multi_country,2,,0,7,Antigua and Barbuda; Saint Kitts; Nevis; Anguilla; Montserrat; British Virgin Islands; Barbuda,no,british antigua 100%,british antigua,1.00,redirected
 british malaysia,Malaysia,MYS,malaysia,shares_target,13,,0,0,,yes,british borneo + british malaya + british federated malay states (union 92%),british borneo,0.34,mixed
-british cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,,no,british‑french cameroon 83%,british‑french cameroon,0.83,clean
+british cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,,no,british‑french cameroon 83%,british‑french cameroon,0.83,redirected
 nauru island,Nauru,NRU,nauru,shares_target,2,,0,0,,no,british nauru 100%,british nauru,1.00,clean
 nauru and banaba island,Nauru,NRU,nauru,shares_target,2,,0,0,Banaba now part of Kiribati.,no,british nauru 100%,british nauru,1.00,clean
 palestine,Israel,ISR,israel,one_to_one,1,,0,0,Israel/Palestina,no,british palestine 92%,british palestine,0.92,redirected
@@ -138,7 +138,7 @@ french equatorial africa: gabon and middle congo,Congo,COG,congo,sub_of_sibling,
 french equatorial africa: middle congo and oubangui-chari,Central African Republic,CAF,central african republic,shares_target,2,,0,0,Republic of Congo and Central African Republic,no,french equatorial africa: oubangui‑chari 100%,french equatorial africa: oubangui‑chari,1.00,redirected
 french equatorial africa: oubangui-chari and chad,Chad,TCD,chad,shares_target,2,,0,0,Central African Republic and Chad,no,french equatorial africa: chad 100%,french equatorial africa: chad,1.00,redirected
 indochina,Viet Nam,VNM,viet nam,whole_with_sub_siblings,5,,2,0,,no,french tonkin 94%,french tonkin,0.94,redirected
-french cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,,no,british‑french cameroon 83%,british‑french cameroon,0.83,clean
+french cameroon,Cameroon,CMR,cameroon,shares_target,3,,0,0,,no,british‑french cameroon 83%,british‑french cameroon,0.83,redirected
 syria and lebanon: lebanon,Lebanon,LBN,lebanon,shares_target,3,,0,0,,no,french lebanon 92%,french lebanon,0.92,clean
 syria,Syrian Arab Republic,SYR,syrian arab republic,whole_with_sub_siblings,3,,2,0,,yes,french syria and lebanon + french syria (union 92%),french syria and lebanon,0.49,mixed
 syria and lebanon: syria,Syrian Arab Republic,SYR,syrian arab republic,sub_of_sibling,3,syria,0,0,,yes,french syria and lebanon + french syria (union 92%),french syria and lebanon,0.49,mixed
