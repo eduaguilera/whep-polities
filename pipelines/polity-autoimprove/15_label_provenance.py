@@ -336,17 +336,33 @@ def main() -> int:
             flag = "" if c / len(fp) > NOISE_FLOOR else "   (at/below noise floor)"
             print(f"   {100 * c / len(fp):5.1f}%  {rl}{flag}")
         top, top_label = scored[0] if scored else (0, "")
-        above = [(c, rl) for c, rl in scored if c / len(fp) > NOISE_FLOOR]
+        # Use the SAME union-gain test as the label mode, not a bare noise floor. With the floor
+        # alone, `eritrea|iia|1922-1937` reported `austria` (27.6%) and `british cyprus` (25.3%) as
+        # co-contributors even though `italian eritrea` already explains 100% of the span -- they
+        # clear 25% by chance and add NOTHING. 87 values, so not a small-sample artefact: just the
+        # wrong test, inconsistent with the mode next door.
+        above, covered = [], set()
+        for c, rl in scored:
+            if not above:
+                above.append((c, rl))
+                covered |= fp & raw_fp[rl]
+                continue
+            gain = len((fp & raw_fp[rl]) - covered) / len(fp)
+            related = same_family(rl, top_label)
+            if c / len(fp) > NOISE_FLOOR and gain >= (FAMILY_FLOOR if related else UNION_GAIN):
+                above.append((c, rl))
+                covered |= fp & raw_fp[rl]
         if len(fp) < MIN_SPAN_VALUES:
             above = above[:1]   # only the top match is meaningful at this sample size
-        covered = set()
-        for _c, rl in above:
-            covered |= fp & raw_fp[rl]
+            covered = fp & raw_fp[top_label] if top_label else set()
         print()
-        if not above:
-            print(f"   NO DOMINANT SOURCE: nothing clears the {NOISE_FLOOR:.0%} noise floor, so "
-                  f"these years are assembled from several raw labels none of which explains them. "
-                  f"Best single match is {top_label} at {100 * top / len(fp):.0f}%.")
+        # The top match is always kept so there is something to report, so emptiness cannot be the
+        # test for "nothing explains this span" — ask whether the top match itself clears the floor.
+        if not above or top / len(fp) <= NOISE_FLOOR:
+            print(f"   NO DOMINANT SOURCE: the best single match, {top_label}, explains only "
+                  f"{100 * top / len(fp):.0f}% and nothing clears the {NOISE_FLOOR:.0%} noise "
+                  f"floor. These years are assembled from several raw labels, none of which "
+                  f"accounts for them.")
         elif len(above) > 1:
             print(f"   SEVERAL SOURCES IN THIS SPAN: {', '.join(rl for _c, rl in above)} "
                   f"({len(covered) / len(fp):.0%} between them)")
