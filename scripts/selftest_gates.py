@@ -1200,6 +1200,42 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_overlap_cells_raised(root, gpd, make_valid, affinity):
+    """Raise a `separate_series` pair's shared-cell count above zero, leaving the disposition alone.
+
+    `separate_series` versus `sum_risk` used to rest on trust: the docstring said disjointness needed
+    layer B, which CI does not have. 19_composition_overlaps.py now counts the (item, unit, year)
+    cells present on BOTH sides and commits them, so the gate can DERIVE the disposition instead of
+    accepting it. This checks that derivation, in the only direction that is unsafe -- a pair whose
+    real overlap grew while its registry row still promises a sum is safe.
+
+    That is a live regression path, not a hypothetical: the counts come from the panel, so a
+    regeneration against changed data can raise one while polity_composition.csv stays put.
+
+    It picks a pair currently measuring zero and declaring `separate_series`, so the mutation cannot
+    be caught by the count-declaration arm instead -- the source stays declared and only the derived
+    disposition contradicts the table.
+    """
+    reg = os.path.join(root, "pipelines/polity-autoimprove/state/polity_composition.csv")
+    tbl = os.path.join(root, "pipelines/polity-autoimprove/state/composition_overlaps.csv")
+    with open(reg, newline="", encoding="utf-8") as fh:
+        sep = {(r["whole_code"], r["part_code"]) for r in csv.DictReader(fh)
+               if (r.get("disposition") or "").strip() == "separate_series"}
+    with open(tbl, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    target = next(r for r in rows
+                  if (r["whole_code"], r["part_code"]) in sep and r["shared_cells"] == "0")
+    target["shared_cells"] = "7"
+    with open(tbl, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"raised the measured shared-cell count for {target['whole_code']} <- "
+            f"{target['part_code']} ({target['source']}) from 0 to 7, while its registry row still "
+            f"declares `separate_series` and promises that a sum is safe")
+
+
 def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
     """Rewrite a spike's factor column so it contradicts its own three values.
 
@@ -2494,6 +2530,13 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_composition_sums.py",
+        mutate_overlap_cells_raised,
+        "cells are present on BOTH sides",
+        "a pair declared `separate_series` whose measured shared-cell count has risen above zero, "
+        "so a real double count sits behind a disposition that says a sum is safe",
+    ),
+    (
         "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
         "verified_equal",
@@ -3190,6 +3233,9 @@ WRITABLE = {
         "polities_database.gpkg",
         "label_alias_map.csv",
         "pipelines/polity-autoimprove/state/polity_composition.csv",
+        # The overlap-cells case REWRITES this table, so it must be a real copy, not a symlink.
+        # It also has to be present for the gate's derived-disposition arm to run at all.
+        "pipelines/polity-autoimprove/state/composition_overlaps.csv",
     ),
     "validate_alias_chain_overlaps.py": ("label_alias_map.csv",),
     # The case REWRITES a page, so wiki/polities must be a real copy or the mutation would

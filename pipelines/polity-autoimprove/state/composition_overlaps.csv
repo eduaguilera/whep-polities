@@ -1,0 +1,50 @@
+whole_code,part_code,source,year_first,year_last,whole_labels,part_labels,whole_method,part_method,shared_item_units,shared_cells,alias_visible
+AEF-1910-1960,CAF-1919-1960,iia,1922,1931,congo,central african republic,alias;applied_alias,iso,4,10,no
+AEF-1910-1960,GAB-1919-1960,iia,1919,1932,congo,gabon,alias;applied_alias,iso,8,17,no
+AEF-1910-1960,TCD-1919-1960,iia,1922,1924,congo,chad,alias;applied_alias,iso,2,6,no
+AEF-1910-1960,TCD-1919-1960,mitchell,1939,1951,French Equat Africa,chad,alias,iso,0,0,no
+AOI-1936-1941,ERI-1889-1952,fao1952,1937,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,name,34,66,no
+AOI-1936-1941,ERI-1889-1952,iia,1936,1937,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,iso,1,0,no
+IDN-1949-1963,IDN-BLB-1949-1951,fao1952,1949,1951,indonesia,Indonesia Bali and Lombok;indonesia bali and lombok,name,alias;applied_alias,2,6,no
+IDN-1949-1963,IDN-JVM-1949-1951,fao1952,1949,1951,indonesia,Indonesia Java and Madura;indonesia java and madura,name,alias;applied_alias,2,6,no
+IDN-1949-1963,IDN-OTH-1949-1951,fao1952,1949,1951,indonesia,Indonesia Other islands;indonesia other islands,name,alias;applied_alias,2,6,no
+JPN-1895-1945,RYU-1937-1945,iia,1937,1944,japan,Ryukyu Islands,iso,alias,0,0,no
+JPN-1895-1945,RYU-1937-1945,mitchell,1937,1944,japan,Ryukyu Islands,iso,alias,0,0,no
+MASG-1946-1963,SGP-1946-1963,fao1952,1948,1951,Malaya Federation of and Singapore;malaya federation of and singapore,singapore,alias;applied_alias,name,1,2,no
+SYL-1944-1953,LBN-1944-2025,fao1952,1949,1951,Syria and Lebanon;syria and lebanon,lebanon,alias;applied_alias,name,0,0,no
+AOI-1936-1941,ETH-1936-1941,fao1952,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,ethiopia,alias,alias;applied_alias,56,136,yes
+AOI-1936-1941,ETH-1936-1941,iia,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,ethiopia;ethiopia pdr,alias,alias;iso,1,1,yes
+AOI-1936-1941,ITS-1908-1960,fao1952,1939,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,Somalia;somalia,alias,alias;applied_alias,29,48,yes
+AOI-1936-1941,ITS-1908-1960,iia,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,somalia,alias,alias;applied_alias,0,0,yes
+AOI-1936-1941,ITS-1908-1960,mitchell,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa;ethiopia,somalia,alias;applied_alias,alias;applied_alias,4,11,yes
+BLI-1833-1960,ATG-1800-2025,fao1952,1949,1951,Br West Indies Leeward Is;Br West Indies Leeward Islands;British West Indies  Leeward Islands;British West Indies Leeward Is,Br West Indies Antigua;British West Indies Antigua;Leeward Islands  Antigua;br west indies antigua,alias;applied_alias,alias;applied_alias,7,5,yes
+BLI-1833-1960,KNA-1800-2025,fao1952,1949,1951,Br West Indies Leeward Is;Br West Indies Leeward Islands;British West Indies  Leeward Islands;British West Indies Leeward Is,Br West Indies St Kitts-Nevis Anguilla;British West Indies St Kitts-Nevis;Leeward Islands  St Kitts & Nevis;br west indies st kitts-nevis anguilla,alias;applied_alias,alias;applied_alias,7,7,yes
+BLI-1833-1960,MSR-1800-2025,fao1952,1949,1951,Br West Indies Leeward Is;Br West Indies Leeward Islands;British West Indies  Leeward Islands;British West Indies Leeward Is,Br West Indies Montserrat;British West Indies Montserrat;Leeward Islands  Montserrat;br west indies montserrat,alias;applied_alias,alias;applied_alias,7,7,yes
+BWI-1833-1962,ATG-1800-2025,fao1952,1949,1951,British West Indies;british west indies,Br West Indies Antigua;British West Indies Antigua;Leeward Islands  Antigua;br west indies antigua,alias;applied_alias,alias;applied_alias,0,0,yes
+BWI-1833-1962,BHS-1800-2025,fao1952,1937,1951,British West Indies;british west indies,British West Indies Bahama Islands;British West Indies Bahamas;bahamas;british west indies bahama islands,alias;applied_alias,alias;applied_alias;name,1,2,yes
+BWI-1833-1962,BRB-1800-2025,fao1952,1937,1951,British West Indies;british west indies,Br West Indies Barbados;British West Indies Barbados;br west indies barbados;british west indies  barbados,alias;applied_alias,alias;applied_alias,1,2,yes
+BWI-1833-1962,DMA-1800-2025,fao1952,1938,1951,British West Indies;british west indies,British West Indies Dominica;british west indies dominica,alias;applied_alias,alias;applied_alias,0,0,yes
+BWI-1833-1962,GRD-1800-2025,fao1952,1937,1951,British West Indies;british west indies,Br West Indies Grenada;British West Indies Grenada;Windward Islands  Grenada;br west indies grenada,alias;applied_alias,alias;applied_alias,0,0,yes
+BWI-1833-1962,JAM-1800-2025,fao1952,1937,1951,British West Indies;british west indies,Br W Indies Jamaica;British W Indies Jamaica;British West Indies Jamaica and Dependencies;br w indies jamaica,alias;applied_alias,alias;applied_alias;name,1,2,yes
+BWI-1833-1962,KNA-1800-2025,fao1952,1949,1951,British West Indies;british west indies,Br West Indies St Kitts-Nevis Anguilla;British West Indies St Kitts-Nevis;Leeward Islands  St Kitts & Nevis;br west indies st kitts-nevis anguilla,alias;applied_alias,alias;applied_alias,0,0,yes
+BWI-1833-1962,LCA-1838-2025,fao1952,1937,1951,British West Indies;british west indies,Br West Indies St Lucia;British West Indies St L cia;British West Indies St Lucia;Jamaica St Lucia,alias;applied_alias,alias;applied_alias,0,0,yes
+BWI-1833-1962,MSR-1800-2025,fao1952,1949,1951,British West Indies;british west indies,Br West Indies Montserrat;British West Indies Montserrat;Leeward Islands  Montserrat;br west indies montserrat,alias;applied_alias,alias;applied_alias,0,0,yes
+BWI-1833-1962,TTO-1800-2025,fao1952,1937,1951,British West Indies;british west indies,Br W Indies Trinidad and Tobago;British W Indies Trinidad and Tobago;British West Indies Trinidad & Tobago;British West Indies Trinidad and Tobago,alias;applied_alias,alias;applied_alias;name,1,2,yes
+BWI-1833-1962,VCT-1833-2025,fao1952,1939,1951,British West Indies;british west indies,Br West Indies St Vincent;British West Indies St Vincent;Jamaica St Vincent;Windward Islands  St Vincent,alias;applied_alias,alias;applied_alias,0,0,yes
+CHN-1945-1947,MAN-1945-1950,mitchell,1945,1946,"china, mainland;china, manchuria province of","China, Manchuria Province of;china, manchuria province of",alias;applied_alias,alias;applied_alias,14,137,yes
+CHN-1947-1949,MAN-1945-1950,mitchell,1947,1949,"china, mainland;china, manchuria province of","China, Manchuria Province of;china, manchuria province of",alias;applied_alias,alias;applied_alias,14,137,yes
+CHN-1949-1950,MAN-1945-1950,mitchell,1949,1949,"china, mainland","China, Manchuria Province of",alias;applied_alias,alias,11,56,yes
+F237-1954-1975,RVN-1954-1975,faostat,1961,1974,Viet Nam,viet nam,alias,alias,0,0,yes
+GCT-1919-1956,BTL-1920-1957,fao1952,1920,1956,Gold Coast & Br Togoland;Gold Coast and Br Tog;Gold Coast and Br Togoland;Gold Coast and British Togoland,British Togoland;british togoland,alias;applied_alias,alias;applied_alias,4,0,yes
+GCT-1919-1956,GHA-1898-1957,fao1952,1919,1956,Gold Coast & Br Togoland;Gold Coast and Br Tog;Gold Coast and Br Togoland;Gold Coast and British Togoland,Gold Coast;gold coast,alias;applied_alias,alias;applied_alias,4,0,yes
+JPN-1895-1945,RYU-1937-1945,fao1952,1937,1944,Japan;japan,Ryukyu Islands;ryukyu islands,alias;applied_alias,alias;applied_alias,22,45,yes
+JPN-1895-1945,RYU-1937-1945,federico_tena,1937,1938,Japan,Ryukyu Islands,alias,alias,0,0,yes
+MASG-1946-1963,MYS-1946-1957,fao1952,1946,1957,Malaya Federation of and Singapore;malaya federation of and singapore,Federation of Malaya;Malaya Fed of;Malaya Federation of;federation of malaya,alias;applied_alias,alias;applied_alias,0,0,yes
+MYS-1963-1965,SGP-1963-1965,faostat,1963,1964,Malaysia,Singapore,alias,alias,0,0,yes
+MYS-1963-1965,SGP-1963-1965,lassaletta-grassland-share,1963,1964,Malaysia,Singapore,alias,alias,0,0,yes
+SYL-1944-1953,SYR-1946-1967,fao1952,1946,1953,Syria and Lebanon;syria and lebanon,Syria;syria,alias;applied_alias,alias;applied_alias,0,0,yes
+USA-1867-1959,ALK-1867-1959,fao1952,1867,1959,united states;united states and dependent territories;united states of america,Alaska;alaska,alias;applied_alias;name,alias;applied_alias,20,25,yes
+WIN-1833-1960,DMA-1800-2025,fao1952,1938,1951,British West Indies Windward Islands;Windward Islands;british west indies  windward islands;british west indies windward islands,British West Indies Dominica;british west indies dominica,alias;applied_alias,alias;applied_alias,0,0,yes
+WIN-1833-1960,GRD-1800-2025,fao1952,1937,1951,British West Indies Windward Islands;Windward Islands;british west indies  windward islands;british west indies windward islands,Br West Indies Grenada;British West Indies Grenada;Windward Islands  Grenada;br west indies grenada,alias;applied_alias,alias;applied_alias,6,6,yes
+WIN-1833-1960,LCA-1838-2025,fao1952,1937,1951,British West Indies Windward Islands;Windward Islands;british west indies  windward islands;british west indies windward islands,Br West Indies St Lucia;British West Indies St L cia;British West Indies St Lucia;Jamaica St Lucia,alias;applied_alias,alias;applied_alias,6,6,yes
+WIN-1833-1960,VCT-1833-2025,fao1952,1939,1951,British West Indies Windward Islands;Windward Islands;british west indies  windward islands;british west indies windward islands,Br West Indies St Vincent;British West Indies St Vincent;Jamaica St Vincent;Windward Islands  St Vincent,alias;applied_alias,alias;applied_alias,4,4,yes

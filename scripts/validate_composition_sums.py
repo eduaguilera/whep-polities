@@ -65,6 +65,9 @@ ALIAS_MAP = os.path.join(REPO, "data/final/label_alias_map.csv")
 REGISTRY = os.path.join(
     REPO, "pipelines/polity-autoimprove/state/polity_composition.csv"
 )
+OVERLAP_TABLE = os.path.join(
+    REPO, "pipelines/polity-autoimprove/state/composition_overlaps.csv"
+)
 
 DEAD_STATUS = ("retired", "superseded")
 RELATIONS = ("partition", "nested")
@@ -260,7 +263,20 @@ def main() -> int:
             if ys is not None and ye is not None:
                 alias[a["polity_code"]].append((src, ys, ye, a.get("source_label") or ""))
 
+    # The alias map is not the whole routing. Of the 832 label->polity routings the matcher made,
+    # only 205 came from an alias; 627 (75%) resolved by iso/name/tokenset, and a part reached that
+    # way was invisible here -- so a whole and its own part could both receive data undeclared. Those
+    # routings are computed from the layer-B panel, which is gitignored and absent in CI, so
+    # 19_composition_overlaps.py writes them to a tracked table and this reads it. 13 real overlaps
+    # were hidden, among them AOI-1936-1941 <- ERI-1889-1952 with 66 shared cells.
+    table = {}
+    if os.path.exists(OVERLAP_TABLE):
+        with open(OVERLAP_TABLE, encoding="utf-8") as fh:
+            for t in csv.DictReader(fh):
+                table[(t["whole_code"], t["part_code"], t["source"])] = t
+
     overlaps = 0
+    narrowable = []
     for r in registry:
         whole, part = r["whole_code"].strip(), (r.get("part_code") or "").strip()
         found = {}
@@ -274,6 +290,12 @@ def main() -> int:
                 lo, hi = max(wys, pys), min(wye, pye)
                 if lo <= hi:
                     found.setdefault(wsrc or psrc or "(any)", (lo, hi, wlab, plab))
+        # Overlaps the alias map cannot express, from the tracked table.
+        for (tw, tp, tsrc), t in table.items():
+            if tw == whole and tp == part and tsrc not in found:
+                found[tsrc] = (t["year_first"], t["year_last"],
+                               t["whole_labels"], t["part_labels"])
+
         declared = {
             s.strip()
             for s in (r.get("overlap_sources") or "").split(";")
@@ -296,8 +318,9 @@ def main() -> int:
             )
         for src in sorted(declared - set(found)):
             problems.append(
-                f"C {tag}: overlap_sources claims {src} feeds both sides but no overlapping "
-                f"alias pair exists — remove it"
+                f"C {tag}: overlap_sources claims {src} feeds both sides but neither an "
+                f"overlapping alias pair nor a row in composition_overlaps.csv says so — remove "
+                f"it, or re-run 19_composition_overlaps.py --write if the routing changed"
             )
         disposition = (r.get("disposition") or "").strip()
         if found and disposition == "none":
@@ -311,7 +334,42 @@ def main() -> int:
                 f"C {tag}: disposition is {disposition!r} but no source feeds both sides"
             )
 
+        # `separate_series` vs `sum_risk` is not a matter of opinion: it turns on whether the two
+        # sides carry the same (item, unit, year) cells, which 19_composition_overlaps.py counts
+        # from the panel. This is the one part of check C that used to rest on trust -- and the
+        # counts disagree with the intuitive reading in both directions. JPN-1895-1945 <-
+        # RYU-1937-1945 shares ZERO cells in iia and mitchell, so Ryukyu really is reported apart
+        # from Japan; AOI-1936-1941 <- ERI-1889-1952 shares 66.
+        # NOTE ON WHAT ZERO SHARED CELLS DOES AND DOES NOT MEAN. It means no (item, unit, year)
+        # cell appears on both sides, so a per-cell SUM cannot double-count. It does NOT mean the
+        # territories are disjoint: fao1952 publishes `british west indies windward islands` with
+        # sugar and population and `british west indies dominica` with limes only, and the Windward
+        # sugar figure still contains Dominica's ground. Safe to add up; not safe to read as "these
+        # are different territories".
+        measured = [t for (tw, tp, _s), t in table.items() if tw == whole and tp == part
+                    and t["shared_cells"] != ""]
+        if measured and disposition in ("separate_series", "sum_risk"):
+            worst = max(int(t["shared_cells"]) for t in measured)
+            if worst > 0 and disposition == "separate_series":
+                problems.append(
+                    f"C {tag}: disposition is `separate_series` but {worst} (item, unit, year) "
+                    f"cells are present on BOTH sides, so a sum double-counts them"
+                )
+            if worst == 0 and disposition == "sum_risk":
+                # NOT a failure, deliberately. `sum_risk` was the documented default for "could not
+                # verify disjointness in CI", so an entry carrying it while measuring zero shared
+                # cells is over-cautious, not wrong, and forcing the flip would silently weaken ten
+                # entries that were set that way on purpose. The asymmetry is the point: the gate
+                # exists to catch an UNDERSTATED risk, not to punish an overstated one.
+                narrowable.append(
+                    f"{tag}: `sum_risk` could be narrowed to `separate_series` — 0 shared cells"
+                )
+
     print(f"\npairs whose data overlaps in at least one source: {overlaps}")
+    if narrowable:
+        print(f"over-cautious dispositions ({len(narrowable)}, not failures):")
+        for n in narrowable:
+            print(f"   {n}")
 
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)\n")

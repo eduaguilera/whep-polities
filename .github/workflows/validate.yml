@@ -465,6 +465,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_isolated_spikes.py
 
+      # 19_composition_overlaps.py writes state/composition_overlaps.csv from the matcher's ACTUAL
+      # routings, not just the alias map: only 205 of 832 routings come from an alias, so a part
+      # reached by iso/name matching was invisible to the composition gate's double-count arm. 13
+      # real overlaps were hidden, worst AOI-1936-1941 <- ERI-1889-1952 at 66 shared cells. The
+      # table also DERIVES separate_series vs sum_risk by counting cells present on both sides.
+      - name: Composition overlaps table matches the registry
+        if: '!cancelled()'
+        run: python3 pipelines/polity-autoimprove/19_composition_overlaps.py --layer-b /nonexistent
+
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
       - name: site/ shows exactly the live polities that carry geometry
@@ -732,6 +741,12 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_yield_corrections.py
 
+      # The double-count arm now reads pipelines/polity-autoimprove/state/composition_overlaps.csv
+      # as well as the alias map: only 205 of 832 label->polity routings come from an alias, so a
+      # part reached by iso/name matching used to be invisible here. 13 real overlaps were, worst
+      # AOI-1936-1941 <- ERI-1889-1952 at 66 shared cells. That table also carries the shared-cell
+      # counts that DERIVE separate_series vs sum_risk, which check C used to take on trust.
+      # Refresh with 19_composition_overlaps.py --write, which needs the gitignored panel.
       - name: Relations — a whole's parts sum to it, sit inside it, and declare their data overlaps
         if: '!cancelled()'
         run: python3 scripts/validate_composition_sums.py
