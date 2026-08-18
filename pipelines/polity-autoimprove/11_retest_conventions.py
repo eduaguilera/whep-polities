@@ -541,6 +541,35 @@ def check_iia_npk(d):
     )
 
 
+def check_iia_wine_hectolitres(d):
+    """The claim: iia `wine` is HECTOLITRES converted at 0.097 t/hl, and the raw extract used 0.091 --
+    which is the whole of issue 358's unexplained 1.0659x factor.
+
+    Testable from the panel alone, without the raw extract: if the tonnages are hectolitres times
+    0.097, then dividing by 0.097 must land on whole hectolitres. It does, for all of them. The
+    counter-test matters as much: 0.091 must NOT work, and 0.100 must work only partly -- many
+    hectolitre figures are multiples of 1,000, so a round divisor succeeds by accident on those and
+    0.100 alone would look plausible.
+    """
+    w = d[(d["source"] == "iia") & (d["item"].map(norm) == "wine") & (d["unit"] == "tonnes")]
+    v = w["value"].dropna().astype(float)
+    if not len(v):
+        return False, "no iia wine tonnage rows found"
+
+    def hits(k):
+        q = v / k
+        return float(((q - q.round()).abs() < 0.01).mean())
+
+    at97, at91, at100 = hits(0.097), hits(0.091), hits(0.100)
+    ratio = 0.097 / 0.091
+    ok = bool(at97 > 0.99 and at91 < 0.10 and abs(ratio - 1.065934) < 1e-5)
+    return ok, (
+        f"{len(v)} iia wine tonnage values: divide into whole hectolitres at 0.097 for {at97:.1%} of "
+        f"them, at 0.091 for {at91:.1%}, at 0.100 for {at100:.1%} (round-number coincidence); "
+        f"0.097/0.091 = {ratio:.6f}, which is issue 358's reported 1.0659 factor"
+    )
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -557,6 +586,7 @@ CHECKS = {
     ("juan", "finland", "*"): check_juan_finland,
     ("juan", "Czechoslovakia", "*"): check_juan_czechoslovakia,
     ("iia", "djibouti", "coffee, green"): check_iia_djibouti_coffee,
+    ("iia", "*", "wine"): check_iia_wine_hectolitres,
     ("iia", "*", "p"): check_iia_npk,
     ("iia", "*", "n"): check_iia_npk,
     ("iia", "*", "k"): check_iia_npk,
