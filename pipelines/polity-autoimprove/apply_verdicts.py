@@ -99,8 +99,12 @@ def append_dedup(path, fields, row, key_on=None):
     # str() both sides: CSV re-reads are strings, fresh rows may carry ints
     if any(all(str(r.get(k) or "") == str(row.get(k) or "") for k in cmp_fields) for r in rows):
         if key_on:
-            print(f"  quarantine: {row.get('key')} already queued — later verdict NOT written over "
-                  f"the existing row (adjudications live in that file)")
+            # Name the file and the actual key fields: this notice fires for quarantine AND for
+            # source_conventions now, and hardcoding "quarantine" printed `None` for conventions,
+            # whose rows have no `key` column.
+            ident = ", ".join(str(row.get(k) or "") for k in key_on)
+            print(f"  {os.path.basename(path)}: {ident} already present — the later verdict was NOT "
+                  f"written over the existing row")
         return False
     new = not os.path.exists(path)
     with open(path, "a", newline="") as fh:
@@ -382,6 +386,13 @@ for item in verdicts:
     if item.get("quarantined"): continue
     v = item["verdict"]; b = bundles.get(v["key"]); sc = v.get("source_convention") or {}
     if not (b and (sc.get("convention") or "").strip()): continue
+    # DEDUP ON THE PATTERN TRIPLE, not on every field. A convention is identified by
+    # (source, label_pattern, item_pattern) -- there is one rule per that key, whatever prose a
+    # later pass writes for it. Comparing all fields meant that once a human filled in
+    # `corroboration`, `retested` and `retest` (which #259 REQUIRES before the gate will pass), a
+    # re-run of this script no longer recognised the row and appended a fresh uncorroborated copy.
+    # That happened to mitchell/Syrian Arab Republic/*: two rows, one corroborated and one not, and
+    # validate_source_conventions.py failed on the empty one. The corroborated row is the survivor.
     n_conv += append_dedup(CONVENTIONS, CONV_FIELDS,
         {"source": b["source"], "label_pattern": sc.get("label_pattern") or "*",
          "item_pattern": sc.get("item_pattern") or "*", "convention": sc["convention"],
@@ -392,7 +403,8 @@ for item in verdicts:
          # left for a human: one verifier is one corroborator, and nothing has
          # re-measured this yet.
          "corroboration": sc.get("corroboration") or "",
-         "retested": "", "retest": ""})
+         "retested": "", "retest": ""},
+        key_on=["source", "label_pattern", "item_pattern"])
 if n_conv:
     print(f"source conventions learned: {n_conv} -> {CONVENTIONS} (attached to future bundles)")
     print(f"  ACTION REQUIRED: each new entry needs a second independent corroborator, a "
