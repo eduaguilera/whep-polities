@@ -263,6 +263,16 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        be in the series key: without it 110 hits, 89 fao1952 artefacts comparing
                        indicators rather than years. 342 series unorderable (#367) are skipped and
                        counted. --write refreshes state/isolated_spikes.csv
+19_composition_overlaps.py
+                       which registered whole/part pairs actually get data on BOTH sides, by ANY
+                       routing? The composition gate's double-count arm read only the alias map,
+                       but just 205 of 832 label->polity routings come from an alias — 627 (75%)
+                       resolve by iso/name/tokenset, and a part reached that way was invisible.
+                       13 real overlaps were hidden: AOI<-ERI (66 shared cells), IDN<-its three
+                       island groups, JPN<-RYU, MASG<-SGP, SYL<-LBN, AEF<-GAB/CAF/TCD. It also
+                       DERIVES separate_series vs sum_risk by counting (item, unit, year) cells on
+                       both sides, which used to rest on trust. --write refreshes
+                       state/composition_overlaps.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.

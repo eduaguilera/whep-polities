@@ -1,7 +1,7 @@
 polity_code,polity_name,start_year,end_year,polygon_source,polygon_feature_year,polygon_status,overlaps_1860_1961,territory_basis,territory_assumed,priority_review,basis_reason,layerb_data_rows
 ABW-1800-2025,Aruba,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,cshapes-2.0,1967.0,proxy,True,back_projected,True,False,polygon vintage 1967 is AFTER the period ends (1963) — later/modern border applied back,18
-AEF-1910-1960,French Equatorial Africa (AEF),1910,1960,constructed,1938.0,assigned,True,assumed_constant,True,False,single 1938 polygon held across a 50y span (1910-1960); borders may have changed,130
+AEF-1910-1960,French Equatorial Africa (AEF),1910,1960,constructed,1938.0,assigned,True,assumed_constant,True,False,single 1938 polygon held across a 50y span (1910-1960); borders may have changed,371
 AFG-1800-1893,Afghanistan (to 1893),1800,1893,cshapes-2.0,1888.0,assigned,True,assumed_constant,True,False,single 1888 polygon held across a 93y span (1800-1893); borders may have changed,0
 AFG-1893-1919,Afghanistan (1893-1919),1893,1919,cshapes-2.0,1893.0,assigned,True,assumed_constant,True,False,single 1893 polygon held across a 26y span (1893-1919); borders may have changed,0
 AFG-1919-2025,Afghanistan,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 106y span (1919-2025); borders may have changed,84
@@ -97,7 +97,7 @@ BRL-1938-1945,Greater Berlin (1938-1945),1938,1945,gadm-4.1-adm1,2022.0,assigned
 BRL-1945-1949,Berlin (Allied Occupation),1945,1949,gadm-4.1-adm1,2022.0,assigned,True,back_projected,True,False,polygon vintage 2022 is AFTER the period ends (1949) — later/modern border applied back,2
 BRN-1816-1888,Brunei (greater),1816,1888,cshapes-2.0,1888.0,assigned,True,assumed_constant,True,False,single 1888 polygon held across a 72y span (1816-1888); borders may have changed,0
 BRN-1888-2025,Brunei Darussalam,1888,2025,cshapes-2.0,1888.0,assigned,True,assumed_constant,True,False,single 1888 polygon held across a 137y span (1888-2025); borders may have changed,77
-BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 76y span (1884-1960); borders may have changed,86
+BSS-1884-1960,British Somaliland Protectorate (1884-1960),1884,1960,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 76y span (1884-1960); borders may have changed,12
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),1841,1963,cshapes-2.0,1889.0,assigned,True,assumed_constant,True,True,single 1889 polygon held across a 122y span (1841-1963); borders may have changed,45
 BTL-1920-1957,British Togoland (1920-1957),1920,1957,constructed,1957.0,assigned,True,assumed_constant,True,True,single 1957 polygon held across a 37y span (1920-1957); borders may have changed,12
 BTN-1800-2025,Bhutan,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,4
@@ -154,8 +154,8 @@ CODRU-1922-1960,Belgian Congo and Ruanda-Urundi,1922,1960,constructed,,assigned,
 COG-1898-1900,Congo (1898-1900),1898,1900,cshapes-2.0,1898.0,assigned,True,measured,False,False,vintage 1898 faithful to period 1898-1900,0
 COG-1900-1906,Congo (1900-1906),1900,1906,cshapes-2.0,1900.0,assigned,True,measured,False,False,vintage 1900 faithful to period 1900-1906,0
 COG-1906-1912,Congo (1906-1912),1906,1912,cshapes-2.0,1906.0,assigned,True,measured,False,False,vintage 1906 faithful to period 1906-1912,0
-COG-1912-1919,Congo (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,vintage 1912 faithful to period 1912-1919,18
-COG-1919-1960,Congo (1919-1960),1919,1960,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 41y span (1919-1960); borders may have changed,223
+COG-1912-1919,Congo (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,vintage 1912 faithful to period 1912-1919,0
+COG-1919-1960,Congo (1919-1960),1919,1960,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 41y span (1919-1960); borders may have changed,0
 COG-1960-2025,Congo,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 65y span (1960-2025); borders may have changed,1
 COK-1800-2025,Cook Islands,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,3
 COL-1800-1830,Gran Colombia,1800,1830,cliopatria,1825.0,assigned,False,assumed_constant,True,False,single 1825 polygon held across a 30y span (1800-1830); borders may have changed,0
@@ -387,7 +387,7 @@ ITA-1866-1870,Italy (1866-1870),1866,1870,cshapes-europe,1867.0,assigned,True,me
 ITA-1870-1919,Italy (1870-1919),1870,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 49y span (1870-1919); borders may have changed,1873
 ITA-1919-2025,Italy,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),5022
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
-ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,103
+ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,177
 JAM-1800-2025,Jamaica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,964
 JOL-1800-1890,Kingdom of Jolof,1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 JOR-1918-1920,Jordan (to 1920),1918,1920,cshapes-2.0,1920.0,assigned,True,measured,False,False,vintage 1920 faithful to period 1918-1920,0
