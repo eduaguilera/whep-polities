@@ -248,7 +248,11 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        label), REDIRECTED (a different name, needing a human to say whether it is
                        a historical rename or a different place), UNDER-EXPLAINED. Found issues
                        312, 315 and the viet nam quarantine. NOT a gate — the raw extract lives
-                       outside the repo; SKIPs when absent. `--label X` for one label in full.
+                       outside the repo; SKIPs when absent. `--label X` for one label in full;
+                       `--write` re-derives the TRACKED state/iia_label_provenance.csv that
+                       validate_iia_label_provenance.py enforces, so tool and table cannot
+                       drift — they already did once, when a hand-rolled derivation kept a
+                       share-ratio test this script had replaced with a union-gain test.
 select_tranche.py      picks the next batch to verify: highest-exposure assertions
                        that are pending AND have no banked verdict. Status alone is
                        NOT the filter — apply_verdicts.py writes the ledger, and
