@@ -185,9 +185,14 @@ def main() -> int:
 
     d = pd.read_parquet(args.layer_b)
     lb = d[d["source"] == args.source].dropna(subset=["year", "value"])
+    # KEY BY THE NORMALISED LABEL. The tracked table stores `layer_b_label` normalised, so keying
+    # these fingerprints by the raw string silently dropped every label containing punctuation --
+    # `china, mainland`, `china, taiwan province of`, `china, hong kong sar` -- straight into
+    # `unknown` on --write. Thirteen labels, and the only visible symptom was an `unknown` count
+    # rising, which reads as "not enough data" rather than "join failed".
     lb_fp: dict[str, set] = defaultdict(set)
     for c, y, v in zip(lb["country"], lb["year"], lb["value"]):
-        lb_fp[str(c)].add((int(y), round(float(v), 1)))
+        lb_fp[norm(c)].add((int(y), round(float(v), 1)))
 
     print(f"raw: {len(prod):,} production-side rows over {len(raw_fp)} labels")
     print(f"layer B ({args.source}): {len(lb):,} dated rows over {len(lb_fp)} labels")
