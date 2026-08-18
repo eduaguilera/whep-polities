@@ -268,7 +268,14 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        LABEL is mixed) and adds true ones the label view averaged away
                        (`china mainland|iia|1922-1931` is `china` + `japan: kwantung leased
                        territory`; `syrian arab republic|iia|1922-1945` is `french syria and
-                       lebanon` + `french syria` over 358 values).
+                       lebanon` + `french syria` over 358 values). Both modes apply the SAME
+                       co-occurrence and dominance tests: two sources count as concurrent only
+                       if each supplies values UNIQUE to it in the same year, and a source is
+                       DOMINANT only at 1.5x the chance floor. Without the first, `samoa` read
+                       `mixed` when it is `british samoa` then `new zealand western samoa` --
+                       one territory renamed. Without the second, `equatorial guinea` reported
+                       `bulgaria` as its dominant source, tied at 26% with the plausible one and
+                       crowned by an alphabetical tiebreak.
 select_tranche.py      picks the next batch to verify: highest-exposure assertions
                        that are pending AND have no banked verdict. Status alone is
                        NOT the filter — apply_verdicts.py writes the ledger, and

@@ -63,8 +63,8 @@ ecuador|iia|1922-1941,ECU-1800-1942,15,clean,ecuador,1.00,ecuador 100%
 ecuador|iia|1942-1945,ECU-1942-2025,7,clean,ecuador,1.00,ecuador 100% [only 7 values — below the 8-value floor]
 egypt|iia|1909-1924,EGY-1899-1925,94,clean,egypt,0.73,egypt 73%
 egypt|iia|1925-1945,EGY-1925-1967,275,clean,egypt,0.65,egypt 65%
-el salvador|iia|1910-1944,SLV-1821-2025,29,mixed,el salvador,0.55,el salvador + el salvador: san salvador department (union 100%)
-equatorial guinea|iia|1910-1945,GNQ-1886-1968,23,mixed,bulgaria,0.26,bulgaria + spanish spanish guinea including fernando po (union 52%)
+el salvador|iia|1910-1944,SLV-1821-2025,29,clean,el salvador,0.55,el salvador 55%
+equatorial guinea|iia|1910-1945,GNQ-1886-1968,23,no_dominant_source,bulgaria,0.26,best bulgaria 26%
 eritrea|iia|1922-1937,ERI-1889-1952,87,clean,italian eritrea,1.00,italian eritrea 100%
 estonia|iia|1929-1939,EST-1918-1940,16,clean,estonia,1.00,estonia 100%
 estonia|iia|1940-1944,EST-1940-1991,2,redirected,british nigeria,1.00,british nigeria 100% [only 2 values — below the 8-value floor]
@@ -81,7 +81,7 @@ finland|iia|1940-1945,FIN-1940-2025,17,clean,finland,1.00,finland 100%
 france|iia|1909-1918,FRA-1871-1919,77,clean,france,0.87,france 87%
 france|iia|1919-1945,FRA-1919-2025,216,clean,france,0.83,france 83%
 french guiana|iia|1909-1945,GUF-1816-1946,29,clean,french guiana,1.00,french guiana 100%
-french polynesia|iia|1909-1937,PYF-1800-2025,41,mixed,french oceania,0.61,french oceania + french oceania: makatea island (union 100%)
+french polynesia|iia|1909-1937,PYF-1800-2025,41,redirected,french oceania,0.61,french oceania 61%
 gabon|iia|1909-1911,GAB-1839-1912,6,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100% [only 6 values — below the 8-value floor]
 gabon|iia|1912-1918,GAB-1912-1919,22,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100%
 gabon|iia|1919-1932,GAB-1919-1960,20,redirected,french equatorial africa: gabon,1.00,french equatorial africa: gabon 100%
@@ -145,7 +145,7 @@ lithuania|iia|1940-1945,LTU-1940-1991,6,redirected,british nigeria,1.00,british 
 luxembourg|iia|1909-1945,LUX-1839-2025,82,clean,luxembourg,0.61,luxembourg 61%
 madagascar|iia|1911-1945,MDG-1882-2025,193,clean,french madagascar,0.92,french madagascar 92%
 malawi|iia|1909-1945,MWI-1891-1953,219,redirected,british nyasaland,1.00,british nyasaland 100%
-malaysia|iia|1909-1944,BNB-1881-1963,96,mixed,british borneo,0.34,british borneo + british malaya + british federated malay states (union 92%)
+malaysia|iia|1909-1944,BNB-1881-1963,96,no_dominant_source,british borneo,0.34,best british borneo 34%
 mali|iia|1918-1937,MLI-1890-1960,42,redirected,french sudan,0.98,french sudan 98%
 malta|iia|1909-1945,MLT-1800-2025,88,clean,british malta,0.78,british malta 78%
 martinique|iia|1909-1945,MTQ-1816-2025,37,clean,french martinique,1.00,french martinique 100%
@@ -172,7 +172,7 @@ palau|iia|1909-1914,GCAR-1899-1914,6,redirected,japanese south pacific: palau-an
 palau|iia|1915-1918,JPN-1895-1945,4,redirected,japanese south pacific: palau-angaur,1.00,japanese south pacific: palau-angaur 100% [only 4 values — below the 8-value floor]
 palau|iia|1930-1932,CAR-1920-1945,3,redirected,japanese south pacific: palau-angaur,1.00,japanese south pacific: palau-angaur 100% [only 3 values — below the 8-value floor]
 panama|iia|1912-1945,PAN-1903-1979,30,clean,panama,0.93,panama 93%
-papua new guinea|iia|1910-1940,TPAP-1906-1949,46,mixed,dutch new guinea,0.72,dutch new guinea + australian papua and new guinea (union 100%)
+papua new guinea|iia|1910-1940,TPAP-1906-1949,46,redirected,dutch new guinea,0.72,dutch new guinea 72%
 paraguay|iia|1909-1931,PRY-1870-1932,40,clean,paraguay,1.00,paraguay 100%
 paraguay|iia|1932-1936,PRY-1932-1938,11,clean,paraguay,1.00,paraguay 100%
 paraguay|iia|1939-1945,PRY-1938-2025,25,clean,paraguay,1.00,paraguay 100%
@@ -194,7 +194,7 @@ romania|iia|1920-1939,ROU-1920-1940,109,clean,romania,0.87,romania 87%
 romania|iia|1940-1945,ROU-1940-1947,29,clean,romania,0.83,romania 83%
 russian federation|iia|1909-1913,F228-1905-1914,99,no_dominant_source,russia in europe,0.17,best russia in europe 17%
 russian federation|iia|1914-1916,F228-1914-1917,49,no_dominant_source,russia in asia,0.16,best russia in asia 16%
-russian federation|iia|1917-1917,F228-1917-1918,8,redirected,japan: karafuto prefecture,0.38,japan: karafuto prefecture 38%
+russian federation|iia|1917-1917,F228-1917-1918,8,no_dominant_source,japan: karafuto prefecture,0.38,best japan: karafuto prefecture 38%
 russian federation|iia|1918-1918,F228-1918-1920,8,redirected,japan: karafuto prefecture,1.00,japan: karafuto prefecture 100%
 russian federation|iia|1920-1920,F228-1920-1921,5,no_dominant_source,japan: karafuto prefecture,0.20,best japan: karafuto prefecture 20% [only 5 values — below the 8-value floor]
 russian federation|iia|1922-1939,F228-1921-1940,287,redirected,ussr,0.75,ussr 75%
@@ -203,7 +203,7 @@ russian federation|iia|1945-1945,F228-1945-1991,2,redirected,ussr,1.00,ussr 100%
 saint kitts and nevis|iia|1909-1945,KNA-1800-2025,116,redirected,british saint christopher and nevis,1.00,british saint christopher and nevis 100%
 saint lucia|iia|1909-1945,LCA-1838-2025,108,clean,british saint lucia,1.00,british saint lucia 100%
 saint vincent and the grenadines|iia|1909-1945,VCT-1833-2025,158,redirected,british saint vincent,1.00,british saint vincent 100%
-samoa|iia|1910-1945,WSM-1900-2025,39,mixed,new zealand western samoa,0.72,new zealand western samoa + british samoa (union 100%)
+samoa|iia|1910-1945,WSM-1900-2025,39,redirected,new zealand western samoa,0.72,new zealand western samoa 72%
 sao tome and principe|iia|1930-1944,STP-1800-2025,10,clean,portuguese sao tome and principe,1.00,portuguese sao tome and principe 100%
 senegal|iia|1922-1945,SEN-1886-1960,84,clean,french senegal,0.95,french senegal 95%
 serbia|iia|1909-1911,SER-1878-1913,14,redirected,"kingdom of serbs, croats and slovenes",0.86,"kingdom of serbs, croats and slovenes 86%"
@@ -228,7 +228,7 @@ tanzania|iia|1910-1913,TAN-1891-1920,12,redirected,british tanganyika,1.00,briti
 tanzania|iia|1921-1921,TAN-1920-1922,1,redirected,british tanganyika,1.00,british tanganyika 100% [only 1 values — below the 8-value floor]
 tanzania|iia|1922-1945,TAN-1922-1964,101,redirected,british tanganyika,1.00,british tanganyika 100%
 thailand|iia|1911-1944,THA-1909-2025,118,redirected,siam,1.00,siam 100%
-timor leste|iia|1909-1940,TLS-1800-2025,17,mixed,portuguese timor and kambing,0.53,portuguese timor and kambing + portuguese timor (union 100%)
+timor leste|iia|1909-1940,TLS-1800-2025,17,redirected,portuguese timor and kambing,0.53,portuguese timor and kambing 53%
 togo|iia|1945-1945,FTO-1920-1960,3,redirected,german togoland,1.00,german togoland 100% [only 3 values — below the 8-value floor]
 trinidad and tobago|iia|1909-1945,TTO-1800-2025,82,clean,british trinidad and tobago,1.00,british trinidad and tobago 100%
 tunisia|iia|1909-1945,TUN-1881-2025,253,clean,french tunisia,1.00,french tunisia 100%
