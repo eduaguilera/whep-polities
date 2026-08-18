@@ -1200,6 +1200,39 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_defect_mapping_approved(root, gpd, make_valid, affinity):
+    """Reclassify a known item/product DEFECT as an approved rename.
+
+    The registry exists because three defects of this shape were found by hand: `wheat` is spelt and
+    meslin, `flax fibre and tow` is linseed, `p` is a patchwork of fertiliser materials. Its whole
+    value is that each mapping carries an explicit verdict, so the dangerous regression is not a blank
+    verdict -- which is loud -- but a defect quietly downgraded to an approval. The table then looks
+    100% adjudicated and reads as clean.
+
+    So this flips one `defect` row to `approved_rename` and gives it a plausible note. Signal A still
+    passes (the verdict is valid), C still passes (there is a note), D still passes (the counts are
+    untouched); only the pinned-baseline arm can catch it.
+
+    It picks the defect row with the most cells, by measurement rather than name, since the table is
+    regenerated from the panel and the raw extract.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/item_equivalences.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    target = max((r for r in rows if r["verdict"] == "defect"), key=lambda r: int(r["cells"]))
+    before = target["verdict"]
+    target["verdict"] = "approved_rename"
+    target["note"] = "Same commodity under a different name; reviewed and accepted as equivalent."
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"reclassified {target['item']} <- {target['raw_product']} from `{before}` to "
+            f"`approved_rename` with a plausible note, so a known defect reads as an accepted "
+            f"synonym and the table still looks fully adjudicated")
+
+
 def mutate_switch_product_count_thinned(root, gpd, make_valid, affinity):
     """Leave a switching series' second product supplying one cell, keeping everything else.
 
@@ -2599,6 +2632,13 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_item_equivalences.py",
+        mutate_defect_mapping_approved,
+        "is pinned as `defect` but is not any more",
+        "a known item/product defect reclassified as an approved rename, which is how `wheat` "
+        "meaning spelt would be waved back through with the table still looking fully adjudicated",
+    ),
+    (
         "validate_item_product_switches.py",
         mutate_switch_product_count_thinned,
         "as likely to be a value collision",
@@ -3109,6 +3149,10 @@ WRITABLE = {
     # The case rewrites item_product_switches.csv (it thins a product count), so a real copy.
     "validate_item_product_switches.py": (
         "pipelines/polity-autoimprove/state/item_product_switches.csv",
+    ),
+    # The case rewrites item_equivalences.csv (it flips a verdict), so a real copy.
+    "validate_item_equivalences.py": (
+        "pipelines/polity-autoimprove/state/item_equivalences.csv",
     ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",
