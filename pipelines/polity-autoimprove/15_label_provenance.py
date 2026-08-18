@@ -116,18 +116,40 @@ UNION_GAIN = 0.15
 
 
 def same_family(a: str, b: str) -> bool:
-    """Do two raw labels name parts of one colonial family?
+    """Is one of these raw labels a PART of the territory the other names?
 
-    True when either is a `parent: child` refinement of the other, or when they share their first
-    two words (`british gold coast` / `british togoland`). Deliberately loose: this only LOWERS the
-    threshold at which a second contributor is believed, and the union share is reported alongside
-    so the reader sees what was combined.
+    Only two forms in this source's vocabulary reliably mean that, and both are an explicit
+    extension of the shorter name:
+
+        `italian libya`      / `italian libya: tripolitania`      a colon refinement
+        `portuguese timor`   / `portuguese timor and kambing`     an `and` extension
+
+    EARLIER VERSIONS WERE LOOSER AND WRONG. Treating a bare prefix as a family made
+    `new zealand` a parent of `new zealand western samoa` -- the metropole, not a part of Samoa.
+    Treating a shared two-word prefix as a family made `british saint lucia` and
+    `british saint christopher and nevis` relatives of `british saint vincent` -- three different
+    islands sharing a colonial qualifier and the word "saint". Both produced confident false
+    refusals: `samoa` and `saint vincent and the grenadines` were flagged as a part standing for the
+    whole when nothing of the kind is happening.
+
+    The cost of being strict is that a genuine parent/child pair named without a colon or an `and`
+    is missed. That is the right direction to err: a missed relation shows up as an ordinary `mixed`
+    or `redirected` reading, while a false one refuses a correct verdict.
     """
-    a, b = norm(a), norm(b)
-    if a.startswith(b + " ") or b.startswith(a + " "):
-        return True
-    aw, bw = a.split(), b.split()
-    return len(aw) >= 2 and len(bw) >= 2 and aw[:2] == bw[:2]
+    # Test the COLON on the raw strings: norm() strips punctuation, so by the time both are
+    # normalised `italian libya: tripolitania` and `italian libya tripolitania` are the same
+    # string and the refinement marker is gone. That silently broke every colon case.
+    ra, rb = str(a).strip().lower(), str(b).strip().lower()
+    for shorter, longer in ((ra, rb), (rb, ra)):
+        if longer.startswith(shorter + ":"):
+            return True
+    na, nb = norm(a), norm(b)
+    if na == nb:
+        return False
+    for shorter, longer in ((na, nb), (nb, na)):
+        if longer.startswith(shorter + " and "):
+            return True
+    return False
 
 
 # Colonial qualifiers the harmonisation strips when modernising a name. `french algeria` ->
@@ -391,11 +413,26 @@ def main() -> int:
                 if years and shared / len(years) <= 0.25:
                     above = above[:1]
                     covered = fp & raw_fp[top_label]
+            # SCOPE ALTERNATION. The co-occurrence test above collapses `above` to one contributor
+            # whenever the sources occupy different years -- correct for a rename, WRONG when one of
+            # those years' sources is a PART of the other. `el salvador|iia|1910-1944` alternates
+            # `el salvador: san salvador department` (1910-1917, 1933-1936) with `el salvador`
+            # (1922-1932, 1939-1944): never concurrent, so it collapsed to `clean` at 55% while 45%
+            # of its values are one department of ~886 km2 standing for a country of ~21,000. The
+            # label mode calls that `sequential_scope`; the span mode had no way to say it.
+            scope_kin = [(c, rl) for c, rl in scored[1:]
+                         if c / len(fp) >= FAMILY_FLOOR and same_family(rl, top_label)
+                         and norm(rl) != norm(top_label)]
             if share <= DOMINANCE:
                 sig, note = "no_dominant_source", f"best {top_label} {share:.0%}"
             elif len(above) > 1:
                 sig = "mixed"
                 note = " + ".join(rl for _c, rl in above[:3]) + f" (union {len(covered)/len(fp):.0%})"
+            elif scope_kin and len(fp) >= MIN_SPAN_VALUES:
+                sig = "sequential_scope"
+                note = (f"{top_label} {share:.0%} in some years, "
+                        + ", ".join(f"{rl} {100*c/len(fp):.0f}%" for c, rl in scope_kin[:2])
+                        + " in others — a part standing for the whole")
             elif not is_rename(top_label, lab):
                 sig, note = "redirected", f"{top_label} {share:.0%}"
             else:

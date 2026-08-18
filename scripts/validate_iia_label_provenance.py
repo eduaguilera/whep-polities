@@ -62,29 +62,32 @@ ASSERT_PROV = os.path.join(REPO, "pipelines/polity-autoimprove/state/iia_asserti
 # Kinds where the layer-B label cannot be one territory.
 MIXING = ("multi_country", "whole_with_sub_siblings")
 
-# Measured 2026-08-18 with SPAN-level signals where they exist. Six verdicts, and this is a
-# CEILING on a known class, not an endorsement of any of them — each needs individual triage:
+# Measured 2026-08-18. SIX verdicts, and the composition matters more than the number:
 #
-#   french polynesia|iia|1909-1938  n=51  makatea island alone, then the whole territory
-#   libya|iia|1922-1924             n=3   `italian libya: tripolitania` alone: a province, but three
-#   libya|iia|1943-1945             n=3   whole `italian libya`: looks CLEAN, but three values cannot
-#                                         establish that a span is the clean part of a mixed label,
-#                                         so it falls back to the label reading
-#   indonesia|iia|1945-1945         n=3   `dutch java and madura` at 67%, i.e. two values of three
-#   equatorial guinea|iia|1910-1945 n=23  `no_dominant_source`: the best match is `bulgaria` at 26%,
-#                                         which is noise, and the plausible source
-#                                         (`spanish spanish guinea including fernando po`) TIES it at
-#                                         26%. So this span is UNMEASURABLE, which is not the same as
-#                                         refuted -- the routing to GNQ-1886-1968 is probably right
-#                                         and nothing here can confirm it. Kept in the ceiling on
-#                                         that basis.
+#   THREE are span-level findings, well sampled:
+#     china mainland|iia|1932-1944   n=134  62.7% `china` with `china: manchuria` at 10.4% -- the
+#                                          Manchukuo era, when MAN-1932-1945 exists as its own
+#                                          polity, so this is a double-count risk as well as a scope
+#                                          one.
+#     french polynesia|iia|1909-1938 n= 51  `french oceania: makatea island` alone, then the whole.
+#     equatorial guinea|iia|1910-1945 n=23  UNMEASURABLE, not refuted: best match is `bulgaria` at
+#                                          26%, noise, tied with the plausible source. Routing to
+#                                          GNQ-1886-1968 is probably right and nothing can confirm it.
 #
-# EIGHTH move, 6 -> 5: `samoa|iia|1910-1945` left as a FALSE REFUSAL. The span mode lacked the
-# co-occurrence test the label mode already had, so `british samoa` (1910-1916) and
-# `new zealand western samoa` (1922-1945) -- one territory across a rename, one source at a time --
-# registered as concurrent. An inconsistency between two halves of one script, refusing a span with
-# nothing wrong with it. Both modes now apply the same test.
-BASELINE_VERIFIED_EQUAL_ON_MIXED = 5
+#   THREE are the SMALL-SAMPLE FALLBACK, flagged on their label rather than their own span:
+#     indonesia|iia|1945-1945        n=3
+#     libya|iia|1922-1924            n=3
+#     libya|iia|1943-1945            n=3    reads CLEAN on its own span (100% whole `italian libya`)
+#
+#   Three values cannot establish that a span is the clean part of a mixed label, so below eight the
+#   label reading stands. That is deliberately conservative and it is why libya|1943-1945 is here.
+#
+# NINTH move, 5 -> 6. `same_family` was tightened first, which REMOVED two false refusals:
+# `saint vincent and the grenadines` (matched to `british saint lucia` and
+# `british saint christopher and nevis` -- three different islands sharing a colonial qualifier and
+# the word "saint") and `samoa` (matched to `new zealand`, the metropole). A part/whole relation is
+# now only believed from an explicit `X: Y` refinement or an `X and Y` extension.
+BASELINE_VERIFIED_EQUAL_ON_MIXED = 6
 
 # The eight the mapping itself declares as spanning several modern countries. Pinned by name so a
 # change to the mapping surfaces here rather than silently shifting the count.
@@ -156,9 +159,12 @@ def main() -> int:
     mixed_targets = {r["layer_b_label"] for r in prov
                      if r.get("territory_signal") in FAILING and r.get("layer_b_label")}
 
-    # Span-level signals win where they exist. FAILING_SPAN mirrors FAILING plus
-    # `no_dominant_source`, which at span level means nothing accounts for those years at all.
-    FAILING_SPAN = ("mixed", "no_dominant_source")
+    # Span-level signals win where they exist. FAILING_SPAN mirrors FAILING plus two span-only
+    # readings: `no_dominant_source`, where nothing accounts for those years at all, and
+    # `sequential_scope`, where a PART of the territory stands in for the whole in some years --
+    # `el salvador` alternates the San Salvador department with the country, never concurrently, so
+    # the co-occurrence test rightly says "not mixed" and the span is still wrong.
+    FAILING_SPAN = ("mixed", "no_dominant_source", "sequential_scope")
     span_sig = {}
     if os.path.exists(ASSERT_PROV):
         with open(ASSERT_PROV, encoding="utf-8") as fh:
