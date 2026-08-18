@@ -495,6 +495,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_item_equivalences.py
 
+      # Assertion keys are `label|source|first-last`, so re-deriving the queue re-splits spans and
+      # renames keys: 52 of 460 banked verdicts match nothing in the current queue, ALL of them span
+      # drift. quarantine.csv is tracked and independently keyed so prior quarantine work is found and
+      # cited; an ordinary `confirm` had no such carrier and was silently paid for twice (issue 308).
+      # 23_verdict_carryover.py writes that carrier; 75 rows recover 50 orphans onto 69 queue keys,
+      # 51 of which would otherwise be decided from scratch. It is EVIDENCE, not a re-bank.
+      - name: Verification — a verdict orphaned by re-spanning must not vanish
+        if: '!cancelled()'
+        run: python3 scripts/validate_verdict_carryover.py
+
       # 19_composition_overlaps.py writes state/composition_overlaps.csv from the matcher's ACTUAL
       # routings, not just the alias map: only 205 of 832 routings come from an alias, so a part
       # reached by iso/name matching was invisible to the composition gate's double-count arm. 13

@@ -302,6 +302,16 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        MERGES: existing verdicts and notes are preserved and only the counts
                        refresh, because overwriting a hand-adjudicated column from a fresh
                        measurement has reversed decisions here before
+23_verdict_carryover.py
+                       what carries a verdict when re-spanning renames its queue key? Keys are
+                       label|source|first-last, so a re-split orphans banked verdicts: 52 of 460,
+                       ALL span drift. quarantine.csv is tracked and keyed independently so prior
+                       quarantine work is cited; a plain `confirm` had no carrier and was paid for
+                       twice (#308). 75 rows recover 50 orphans onto 69 queue keys, 51 of them
+                       otherwise re-decided from scratch. EVIDENCE, NOT A RE-BANK: a re-split is
+                       sometimes a response to a finding, so auto-carrying would launder a
+                       judgement onto a span nobody judged. --write refreshes
+                       state/verdict_carryover.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
