@@ -1200,6 +1200,38 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_item_total_read_as_siblings(root, gpd, make_valid, affinity):
+    """Downgrade a total-beside-parts group to `siblings_only`, leaving its numbers untouched.
+
+    The table's content IS the verdict: `siblings_only` says a group is safe to add up, and
+    `total_beside_parts` says summing it returns double. So the dangerous regression is not a malformed
+    row -- that is loud -- but a correct group relabelled, after which a consumer adds a total to its own
+    parts on the table's authority. Relaxing TOTAL_TOL in the generator and regenerating produces exactly
+    this shape, with every count still looking plausible.
+
+    The values, largest, sum_of_rest and ratio are all left alone, so signals A, B and D still pass and
+    only the re-derivation of the VERDICT can catch it.
+
+    It picks the largest such group by magnitude, so the mutation is unambiguous, and by measurement
+    rather than by name because the table is regenerated from the panel.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/item_axis_aggregates.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    target = max((r for r in rows if r["verdict"] == "total_beside_parts"),
+                 key=lambda r: float(r["largest"]))
+    before = target["verdict"]
+    target["verdict"] = "siblings_only"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"relabelled {target['country']} / {target['item']} {target['year']} "
+            f"({target['largest']} == the sum of its parts) from `{before}` to `siblings_only`, so a "
+            f"group that doubles when summed now reads as safe to add up")
+
+
 def mutate_carryover_row_dropped(root, gpd, make_valid, affinity):
     """Delete the carry rows for one orphaned verdict, so the judgement stops being findable.
 
@@ -2667,6 +2699,13 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_item_axis_aggregates.py",
+        mutate_item_total_read_as_siblings,
+        "is a double count waved through",
+        "an item-axis group whose total-beside-parts verdict is downgraded to `siblings_only`, so a "
+        "group that doubles when summed reads as safe to add up",
+    ),
+    (
         "validate_verdict_carryover.py",
         mutate_carryover_row_dropped,
         "paid for twice",
@@ -3200,6 +3239,10 @@ WRITABLE = {
     # are read-only here but MUST be listed so they are staged at all: the gate derives the
     # orphan set from them and SKIPS (exit 0) if either is absent, which silently turned the
     # first version of this case into a pass.
+    # The case rewrites item_axis_aggregates.csv (it flips a verdict), so it must be a real copy.
+    "validate_item_axis_aggregates.py": (
+        "pipelines/polity-autoimprove/state/item_axis_aggregates.csv",
+    ),
     "validate_verdict_carryover.py": (
         "pipelines/polity-autoimprove/state/verdict_carryover.csv",
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
