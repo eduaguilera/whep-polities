@@ -465,6 +465,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_isolated_spikes.py
 
+      # A label can be right for one commodity and wrong for another, and no label-level decision can
+      # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix
+      # raw labels across their item series -- australia's `p` is CHRISTMAS ISLAND phosphate,
+      # french polynesia's is MAKATEA, syrian arab republic carries Lebanon in its COTTON only. The
+      # gate's main job is signal C: it refuses an attribution that does not clear the distinctness
+      # filter, because loosening that and regenerating would refill the table with chance collisions.
+      - name: Sources — no iia label may mix territories across its item series unrecorded
+        if: '!cancelled()'
+        run: python3 scripts/validate_item_provenance.py
+
       # 19_composition_overlaps.py writes state/composition_overlaps.csv from the matcher's ACTUAL
       # routings, not just the alias map: only 205 of 832 routings come from an alias, so a part
       # reached by iso/name matching was invisible to the composition gate's double-count arm. 13

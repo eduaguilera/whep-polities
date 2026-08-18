@@ -1,0 +1,1919 @@
+layer_b_label,item,unit,n_values,n_distinct,raw_label,share,status,runner_up,label_is_mixed
+australia,butter cow milk,tonnes,7,7,,,too_few_values,,yes
+australia,cheese processed,tonnes,6,6,,,too_few_values,,yes
+australia,coffee green,ha,21,14,australia,1.0000,attributable,portugal=0.24,yes
+australia,coffee green,tonnes,21,17,australia,1.0000,attributable,uruguay=0.19,yes
+australia,cotton lint,ha,33,28,australia,0.8182,attributable,total=0.30,yes
+australia,cotton lint,tonnes,31,29,australia,0.8065,attributable,australia: queensland=0.23,yes
+australia,cotton seed,ha,20,16,australia,0.7000,attributable,total=0.50,yes
+australia,cotton seed,tonnes,20,19,,,unattributable,australia: queensland=0.55,yes
+australia,eggs hen in shell,tonnes,3,2,,,too_few_values,,yes
+australia,flax fibre and tow,ha,24,17,australia,1.0000,attributable,italy=0.33,yes
+australia,flax fibre and tow,tonnes,20,18,australia,1.0000,attributable,new zealand=0.25,yes
+australia,grapes,ha,27,21,australia,1.0000,attributable,total=0.33,yes
+australia,grapes,tonnes,27,27,australia,1.0000,attributable,czechoslovakia=0.07,yes
+australia,groundnuts with shell,ha,16,11,australia,1.0000,attributable,hungary=0.44,yes
+australia,groundnuts with shell,tonnes,15,15,australia,1.0000,attributable,hungary=0.33,yes
+australia,hops,ha,28,18,australia,1.0000,attributable,bulgaria=0.29,yes
+australia,hops,tonnes,28,28,australia,1.0000,attributable,ussr=0.04,yes
+australia,lemons and limes,ha,14,4,,,too_few_distinct,,yes
+australia,lemons and limes,tonnes,15,14,australia,1.0000,attributable,switzerland=0.13,yes
+australia,linseed,ha,6,6,,,too_few_values,,yes
+australia,linseed,tonnes,13,13,australia,1.0000,attributable,yugoslavia=0.00,yes
+australia,milk whole fresh cow,tonnes,7,7,,,too_few_values,,yes
+australia,n,tonnes,15,15,australia,1.0000,attributable,mexico=0.07,yes
+australia,olives,ha,8,4,,,too_few_distinct,,yes
+australia,olives,tonnes,14,9,australia,1.0000,attributable,french algeria=0.43,yes
+australia,oranges,ha,14,7,australia,1.0000,attributable,hungary=0.43,yes
+australia,oranges,tonnes,15,14,australia,1.0000,attributable,total=0.07,yes
+australia,other sugar crops n e c,ha,10,5,,,too_few_distinct,,yes
+australia,other sugar crops n e c,tonnes,14,13,australia,1.0000,attributable,italy=0.29,yes
+australia,p,tonnes,16,16,australian christmas island,1.0000,attributable,yugoslavia=0.00,yes
+australia,raisins,ha,3,3,,,too_few_values,,yes
+australia,raisins,tonnes,15,15,australia,1.0000,attributable,usa: california=0.07,yes
+australia,rye,ha,27,23,australia,1.0000,attributable,egypt=0.26,yes
+australia,rye,tonnes,27,26,australia,1.0000,attributable,british jamaica=0.11,yes
+australia,sugar raw centrifugal,tonnes,33,32,australia,0.9697,attributable,total=0.06,yes
+australia,tobacco unmanufactured,ha,28,21,australia,1.0000,attributable,total=0.29,yes
+australia,tobacco unmanufactured,tonnes,23,23,australia,1.0000,attributable,yugoslavia=0.00,yes
+australia,wine,ha,16,7,australia,1.0000,attributable,total south hemisphere aggregated=0.38,yes
+austria,butter cow milk,tonnes,7,7,,,too_few_values,,yes
+austria,cheese processed,tonnes,7,6,,,too_few_values,,yes
+austria,eggs hen in shell,tonnes,11,11,austria,1.0000,attributable,yugoslavia=0.00,yes
+austria,fertilizer mixed,tonnes,9,9,austria-hungary,0.6667,attributable,austria=0.33,yes
+austria,grapes,tonnes,5,5,,,too_few_values,,yes
+austria,hempseed,tonnes,2,1,,,too_few_values,,yes
+austria,hops,ha,3,3,,,too_few_values,,yes
+austria,milk whole fresh cow,tonnes,7,7,,,too_few_values,,yes
+austria,n,tonnes,14,9,austria-hungary,0.7143,attributable,austria=0.29,yes
+austria,p,tonnes,12,12,austria-hungary,0.6667,attributable,austria=0.33,yes
+austria,silk worm cocoons reelable,tonnes,8,8,austria,1.0000,attributable,yugoslavia=0.00,yes
+austria,soybeans,ha,5,2,,,too_few_values,,yes
+austria,sugar raw centrifugal,tonnes,32,32,austria,1.0000,attributable,total=0.06,yes
+austria,wine,ha,18,15,austria,1.0000,attributable,total=0.22,yes
+austria,wine,tonnes,31,31,,,unattributable,yugoslavia=0.00,yes
+austria,yarn of true hemp,ha,13,9,austria,1.0000,attributable,sweden=0.38,yes
+austria,yarn of true hemp,tonnes,24,21,austria,1.0000,attributable,yugoslavia=0.17,yes
+"china, mainland",beans dry,ha,1,1,,,too_few_values,,yes
+"china, mainland",beans dry,tonnes,2,2,,,too_few_values,,yes
+"china, mainland",castor beans seed,tonnes,4,4,,,too_few_values,,yes
+"china, mainland",cotton lint,ha,18,17,china,0.8889,attributable,usa=0.06,yes
+"china, mainland",cotton seed,ha,18,17,china,0.8889,attributable,usa=0.06,yes
+"china, mainland",cotton seed,tonnes,19,19,china,0.8947,attributable,total south hemisphere aggregated=0.11,yes
+"china, mainland",eggs hen in shell,tonnes,8,8,japan: kwantung leased territory,1.0000,attributable,yugoslavia=0.00,yes
+"china, mainland",flax fibre and tow,ha,1,1,,,too_few_values,,yes
+"china, mainland",flax fibre and tow,tonnes,1,1,,,too_few_values,,yes
+"china, mainland",groundnuts with shell,ha,13,13,,,unattributable,japan: kwantung leased territory=0.54,yes
+"china, mainland",groundnuts with shell,tonnes,3,3,,,too_few_values,,yes
+"china, mainland",hemp tow waste,tonnes,1,1,,,too_few_values,,yes
+"china, mainland",hempseed,ha,2,2,,,too_few_values,,yes
+"china, mainland",hempseed,tonnes,2,2,,,too_few_values,,yes
+"china, mainland",jute,tonnes,1,1,,,too_few_values,,yes
+"china, mainland",linseed,tonnes,1,1,,,too_few_values,,yes
+"china, mainland",n,tonnes,3,3,,,too_few_values,,yes
+"china, mainland",rapeseed,ha,5,5,,,too_few_values,,yes
+"china, mainland",rapeseed,tonnes,15,15,china,1.0000,attributable,yugoslavia=0.00,yes
+"china, mainland",sesame seed,ha,7,7,,,too_few_values,,yes
+"china, mainland",sesame seed,tonnes,15,15,,,unattributable,china=0.53,yes
+"china, mainland",silk worm cocoons reelable,tonnes,12,12,china,1.0000,attributable,yugoslavia=0.00,yes
+"china, mainland",soybeans,ha,12,12,,,unattributable,china=0.25,yes
+"china, mainland",soybeans,tonnes,13,13,,,unattributable,total=0.08,yes
+"china, mainland",tea,tonnes,15,15,china,1.0000,attributable,yugoslavia=0.00,yes
+"china, mainland",tobacco unmanufactured,ha,10,9,china,1.0000,attributable,italy=0.10,yes
+"china, mainland",tobacco unmanufactured,tonnes,1,1,,,too_few_values,,yes
+indonesia,cacao beans,ha,14,8,,,unattributable,total=0.57,yes
+indonesia,cacao beans,tonnes,28,27,,,unattributable,dutch java and madura=0.39,yes
+indonesia,castor beans seed,ha,3,2,,,too_few_values,,yes
+indonesia,castor beans seed,tonnes,2,2,,,too_few_values,,yes
+indonesia,coffee green,ha,16,16,,,unattributable,dutch east indies=0.19,yes
+indonesia,cotton lint,ha,21,20,dutch east indies,0.8571,attributable,hungary=0.29,yes
+indonesia,cotton lint,tonnes,29,27,dutch east indies,0.6552,attributable,dutch java and madura=0.21,yes
+indonesia,cotton seed,ha,11,10,dutch east indies,0.7273,attributable,hungary=0.55,yes
+indonesia,cotton seed,tonnes,18,17,,,unattributable,dutch east indies=0.56,yes
+indonesia,fertilizer mixed,tonnes,4,4,,,too_few_values,,yes
+indonesia,groundnuts with shell,ha,16,16,dutch java and madura,0.8750,attributable,total=0.12,yes
+indonesia,p,tonnes,12,12,dutch east indies,1.0000,attributable,peru=0.08,yes
+indonesia,rubber natural,ha,10,10,,,unattributable,dutch java and madura=0.20,yes
+indonesia,sesame seed,ha,12,10,dutch east indies,0.8333,attributable,yugoslavia=0.25,yes
+indonesia,sesame seed,tonnes,12,9,dutch east indies,1.0000,attributable,australia=0.25,yes
+indonesia,soybeans,ha,12,12,dutch java and madura,0.8333,attributable,total=0.17,yes
+indonesia,soybeans,tonnes,11,11,dutch java and madura,0.8182,attributable,total south hemisphere aggregated=0.09,yes
+indonesia,sugar raw centrifugal,tonnes,33,33,dutch java and madura,1.0000,attributable,switzerland=0.03,yes
+indonesia,tea,ha,17,13,,,unattributable,dutch east indies=0.53,yes
+indonesia,tobacco unmanufactured,ha,21,19,,,unattributable,dutch east indies=0.57,yes
+indonesia,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,yes
+malaysia,coffee green,ha,23,19,,,unattributable,british federated malay states=0.52,yes
+malaysia,coffee green,tonnes,14,14,british federated malay states,0.9286,attributable,hungary=0.07,yes
+malaysia,rubber natural,ha,8,5,,,too_few_distinct,,yes
+malaysia,tea,ha,10,8,,,ambiguous,british malaya=1.00;egypt=0.60,yes
+malaysia,tea,tonnes,6,6,,,too_few_values,,yes
+malaysia,tobacco unmanufactured,ha,19,15,british borneo,0.8947,attributable,french tonkin=0.37,yes
+malaysia,tobacco unmanufactured,tonnes,16,16,british borneo,1.0000,attributable,spanish fernando po=0.06,yes
+niger,cotton lint,ha,11,11,french west africa,0.6364,attributable,french niger=0.36,yes
+niger,cotton lint,tonnes,17,17,french west africa,0.7647,attributable,french niger=0.24,yes
+niger,cotton seed,ha,11,11,french west africa,0.6364,attributable,french niger=0.36,yes
+niger,cotton seed,tonnes,15,15,french west africa,0.7333,attributable,french niger=0.27,yes
+niger,eggs hen in shell,tonnes,9,6,french niger,1.0000,attributable,yugoslavia=0.00,yes
+niger,groundnuts with shell,ha,15,14,french niger,1.0000,attributable,total general excluding the ussr=0.13,yes
+niger,groundnuts with shell,tonnes,1,1,,,too_few_values,,yes
+niger,sesame seed,ha,7,4,,,too_few_values,,yes
+niger,sesame seed,tonnes,1,1,,,too_few_values,,yes
+niger,tobacco unmanufactured,ha,13,5,,,too_few_distinct,,yes
+niger,tobacco unmanufactured,tonnes,15,14,french niger,1.0000,attributable,total=0.13,yes
+papua new guinea,cacao beans,ha,15,11,dutch new guinea,1.0000,attributable,french algeria=0.40,yes
+papua new guinea,cacao beans,tonnes,9,8,dutch new guinea,1.0000,attributable,us puerto rico=0.44,yes
+papua new guinea,coffee green,ha,5,5,,,too_few_values,,yes
+papua new guinea,rubber natural,ha,4,2,,,too_few_values,,yes
+papua new guinea,tobacco unmanufactured,ha,8,7,australian papua and new guinea,1.0000,attributable,british mauritius=0.12,yes
+papua new guinea,tobacco unmanufactured,tonnes,5,5,,,too_few_values,,yes
+russian federation,beans dry,ha,1,1,,,too_few_values,,yes
+russian federation,castor beans seed,tonnes,1,1,,,too_few_values,,yes
+russian federation,cotton lint,ha,22,21,,,unattributable,ussr=0.50,yes
+russian federation,cotton lint,tonnes,22,22,,,unattributable,ussr=0.50,yes
+russian federation,cotton seed,ha,15,14,ussr,0.7333,attributable,ussr in asia=0.27,yes
+russian federation,cotton seed,tonnes,15,15,ussr,0.7333,attributable,ussr in asia=0.27,yes
+russian federation,eggs hen in shell,tonnes,7,7,,,too_few_values,,yes
+russian federation,fertilizer mixed,tonnes,1,1,,,too_few_values,,yes
+russian federation,flax fibre and tow,ha,26,26,,,unattributable,ussr=0.31,yes
+russian federation,flax fibre and tow,tonnes,20,20,,,unattributable,ussr=0.35,yes
+russian federation,grapes,ha,7,7,,,too_few_values,,yes
+russian federation,grapes,tonnes,3,3,,,too_few_values,,yes
+russian federation,groundnuts with shell,ha,6,6,,,too_few_values,,yes
+russian federation,groundnuts with shell,tonnes,1,1,,,too_few_values,,yes
+russian federation,hemp tow waste,ha,12,12,,,unattributable,ussr=0.08,yes
+russian federation,hemp tow waste,tonnes,2,2,,,too_few_values,,yes
+russian federation,hempseed,ha,14,14,ussr,0.7143,attributable,ussr in europe=0.29,yes
+russian federation,hempseed,tonnes,19,16,,,unattributable,ussr=0.42,yes
+russian federation,hops,tonnes,7,7,,,too_few_values,,yes
+russian federation,k,tonnes,2,2,,,too_few_values,,yes
+russian federation,linseed,ha,8,8,,,unattributable,ussr in europe=0.50,yes
+russian federation,linseed,tonnes,15,15,,,unattributable,ussr in europe=0.27,yes
+russian federation,n,tonnes,9,9,russia,0.6667,attributable,ussr=0.33,yes
+russian federation,oats,ha,1,1,,,too_few_values,,yes
+russian federation,oranges,ha,8,5,,,too_few_distinct,,yes
+russian federation,oranges,tonnes,7,7,,,too_few_values,,yes
+russian federation,p,tonnes,12,11,russia,0.6667,attributable,yugoslavia=0.00,yes
+russian federation,rapeseed,ha,12,12,,,unattributable,ussr=0.33,yes
+russian federation,rapeseed,tonnes,9,9,,,unattributable,japan: karafuto prefecture=0.44,yes
+russian federation,rye,ha,31,31,ussr,0.6452,attributable,total=0.19,yes
+russian federation,rye,tonnes,28,28,ussr,0.6429,attributable,total=0.11,yes
+russian federation,sesame seed,ha,9,9,ussr,1.0000,attributable,italy=0.33,yes
+russian federation,sesame seed,tonnes,5,5,,,too_few_values,,yes
+russian federation,silk worm cocoons reelable,tonnes,16,16,ussr,0.6250,attributable,russia in asia=0.19,yes
+russian federation,soybeans,ha,9,9,,,unattributable,ussr=0.56,yes
+russian federation,soybeans,tonnes,5,5,,,too_few_values,,yes
+russian federation,sugar raw centrifugal,tonnes,23,23,,,unattributable,ussr=0.48,yes
+russian federation,tea,ha,6,6,,,too_few_values,,yes
+russian federation,tea,tonnes,6,6,,,too_few_values,,yes
+russian federation,tobacco unmanufactured,ha,21,20,ussr,0.6190,attributable,usa: california=0.05,yes
+russian federation,tobacco unmanufactured,tonnes,17,17,,,unattributable,ussr=0.53,yes
+russian federation,wheat,ha,6,6,,,too_few_values,,yes
+russian federation,wheat,tonnes,2,2,,,too_few_values,,yes
+russian federation,wine,ha,6,5,,,too_few_values,,yes
+russian federation,wine,tonnes,3,2,,,too_few_values,,yes
+russian federation,yarn of true hemp,ha,13,13,ussr,0.6923,attributable,ussr in europe=0.31,yes
+russian federation,yarn of true hemp,tonnes,21,20,,,unattributable,ussr=0.33,yes
+syrian arab republic,beans dry,ha,8,3,,,too_few_distinct,,yes
+syrian arab republic,beans dry,tonnes,9,7,french syria,0.7778,attributable,british montserrat=0.56,yes
+syrian arab republic,butter cow milk,tonnes,7,3,,,too_few_values,,yes
+syrian arab republic,cheese processed,tonnes,7,4,,,too_few_values,,yes
+syrian arab republic,cotton lint,ha,19,19,french syria and lebanon,0.6316,attributable,french syria=0.47,yes
+syrian arab republic,cotton lint,tonnes,19,19,french syria and lebanon,0.6842,attributable,french syria=0.32,yes
+syrian arab republic,cotton seed,ha,19,19,french syria and lebanon,0.6316,attributable,french syria=0.47,yes
+syrian arab republic,cotton seed,tonnes,19,19,french syria and lebanon,0.6316,attributable,french syria=0.37,yes
+syrian arab republic,eggs hen in shell,tonnes,14,14,,,unattributable,french syria and lebanon=0.57,yes
+syrian arab republic,grapes,ha,16,16,,,unattributable,french syria and lebanon=0.56,yes
+syrian arab republic,grapes,tonnes,9,9,french syria and lebanon,1.0000,attributable,turkey=0.11,yes
+syrian arab republic,groundnuts with shell,tonnes,1,1,,,too_few_values,,yes
+syrian arab republic,hemp tow waste,ha,7,4,,,too_few_values,,yes
+syrian arab republic,hemp tow waste,tonnes,7,7,,,too_few_values,,yes
+syrian arab republic,hempseed,ha,16,13,french syria,0.9375,attributable,french syria and lebanon=0.44,yes
+syrian arab republic,hempseed,tonnes,18,16,french syria,0.7222,attributable,italy=0.39,yes
+syrian arab republic,milk whole fresh cow,tonnes,4,4,,,too_few_values,,yes
+syrian arab republic,oats,ha,7,3,,,too_few_values,,yes
+syrian arab republic,oats,tonnes,7,7,,,too_few_values,,yes
+syrian arab republic,oil olive virgin,tonnes,4,4,,,too_few_values,,yes
+syrian arab republic,olives,ha,17,13,,,unattributable,french syria and lebanon=0.59,yes
+syrian arab republic,olives,tonnes,18,18,,,unattributable,french syria=0.39,yes
+syrian arab republic,oranges,ha,9,6,french syria and lebanon,1.0000,attributable,italy=0.56,yes
+syrian arab republic,oranges,tonnes,13,13,french syria and lebanon,0.6923,attributable,french syria=0.31,yes
+syrian arab republic,other berries and fruits of the genus vaccinium n e c,ha,5,5,,,too_few_values,,yes
+syrian arab republic,other berries and fruits of the genus vaccinium n e c,tonnes,5,5,,,too_few_values,,yes
+syrian arab republic,raisins,tonnes,3,3,,,too_few_values,,yes
+syrian arab republic,sesame seed,ha,20,12,,,unattributable,french syria and lebanon=0.45,yes
+syrian arab republic,sesame seed,tonnes,20,17,,,unattributable,french syria and lebanon=0.45,yes
+syrian arab republic,silk worm cocoons reelable,tonnes,20,20,french syria and lebanon,0.6500,attributable,french syria=0.35,yes
+syrian arab republic,tobacco unmanufactured,ha,16,10,french syria and lebanon,0.6875,attributable,hungary=0.44,yes
+syrian arab republic,tobacco unmanufactured,tonnes,16,16,french syria and lebanon,0.6875,attributable,french syria=0.31,yes
+syrian arab republic,wine,ha,3,2,,,too_few_values,,yes
+syrian arab republic,wine,tonnes,13,12,,,unattributable,yugoslavia=0.00,yes
+syrian arab republic,yarn of true hemp,ha,11,10,french syria,1.0000,attributable,french syria and lebanon=0.55,yes
+syrian arab republic,yarn of true hemp,tonnes,10,10,french syria,0.9000,attributable,yugoslavia=0.20,yes
+timor-leste,cacao beans,tonnes,8,8,portuguese timor,1.0000,attributable,yugoslavia=0.00,yes
+timor-leste,coffee green,tonnes,9,8,portuguese timor and kambing,1.0000,attributable,siam=0.33,yes
+united states of america,cacao beans,tonnes,1,1,,,too_few_values,,yes
+united states of america,cheese processed,tonnes,7,7,,,too_few_values,,yes
+united states of america,coffee green,ha,28,25,,,unattributable,us puerto rico=0.36,yes
+united states of america,coffee green,tonnes,29,28,,,unattributable,us puerto rico=0.21,yes
+united states of america,cotton lint,ha,1,1,,,too_few_values,,yes
+united states of america,cotton seed,ha,20,20,,,unattributable,usa=0.55,yes
+united states of america,cotton seed,tonnes,1,1,,,too_few_values,,yes
+united states of america,eggs hen in shell,tonnes,17,17,usa,0.7059,attributable,yugoslavia=0.00,yes
+united states of america,fertilizer mixed,tonnes,17,17,usa,1.0000,attributable,yugoslavia=0.00,yes
+united states of america,flax fibre and tow,ha,1,1,,,too_few_values,,yes
+united states of america,flax fibre and tow,tonnes,6,6,,,too_few_values,,yes
+united states of america,hemp tow waste,ha,5,5,,,too_few_values,,yes
+united states of america,k,tonnes,4,4,,,too_few_values,,yes
+united states of america,milk whole fresh cow,tonnes,1,1,,,too_few_values,,yes
+united states of america,n,tonnes,17,12,usa and canada,0.7647,attributable,usa=0.35,yes
+united states of america,p,tonnes,17,17,usa,1.0000,attributable,yugoslavia=0.00,yes
+united states of america,raisins,ha,3,3,,,too_few_values,,yes
+united states of america,raisins,tonnes,16,15,usa,1.0000,attributable,total=0.06,yes
+united states of america,sugar raw centrifugal,tonnes,33,33,,,unattributable,usa=0.39,yes
+united states of america,wine,ha,7,6,,,too_few_values,,yes
+united states of america,wine,tonnes,13,13,,,unattributable,yugoslavia=0.00,yes
+united states of america,yarn of true hemp,ha,1,1,,,too_few_values,,yes
+united states of america,yarn of true hemp,tonnes,3,3,,,too_few_values,,yes
+albania,beans dry,tonnes,1,1,,,too_few_values,,no
+albania,eggs hen in shell,tonnes,6,3,,,too_few_values,,no
+albania,rye,ha,1,1,,,too_few_values,,no
+algeria,beans dry,ha,11,2,,,too_few_distinct,,no
+algeria,beans dry,tonnes,13,4,,,too_few_distinct,,no
+algeria,cotton lint,ha,24,20,french algeria,1.0000,attributable,british‑french cameroon=0.29,no
+algeria,cotton lint,tonnes,25,20,french algeria,1.0000,attributable,british cyprus=0.36,no
+algeria,cotton seed,ha,16,12,french algeria,1.0000,attributable,british‑french cameroon=0.44,no
+algeria,cotton seed,tonnes,17,12,french algeria,1.0000,attributable,british cyprus=0.47,no
+algeria,flax fibre and tow,ha,18,18,french algeria,1.0000,attributable,british jamaica=0.17,no
+algeria,flax fibre and tow,tonnes,5,5,,,too_few_values,,no
+algeria,grapes,ha,24,23,french algeria,1.0000,attributable,total=0.08,no
+algeria,grapes,tonnes,10,10,french algeria,1.0000,attributable,uk=0.10,no
+algeria,groundnuts with shell,ha,3,3,,,too_few_values,,no
+algeria,groundnuts with shell,tonnes,3,3,,,too_few_values,,no
+algeria,lemons and limes,ha,7,2,,,too_few_values,,no
+algeria,lemons and limes,tonnes,11,11,french algeria,1.0000,attributable,italy=0.27,no
+algeria,linseed,ha,5,5,,,too_few_values,,no
+algeria,linseed,tonnes,18,18,french algeria,1.0000,attributable,japanese taiwan=0.06,no
+algeria,n,tonnes,1,1,,,too_few_values,,no
+algeria,oats,tonnes,1,1,,,too_few_values,,no
+algeria,oil olive virgin,tonnes,2,2,,,too_few_values,,no
+algeria,olives,ha,15,13,french algeria,1.0000,attributable,total=0.27,no
+algeria,olives,tonnes,28,28,french algeria,1.0000,attributable,greece=0.04,no
+algeria,oranges,ha,14,9,french algeria,1.0000,attributable,french annam=0.50,no
+algeria,oranges,tonnes,14,14,french algeria,1.0000,attributable,yugoslavia=0.07,no
+algeria,other berries and fruits of the genus vaccinium n e c,ha,2,1,,,too_few_values,,no
+algeria,other sugar crops n e c,ha,3,3,,,too_few_values,,no
+algeria,other sugar crops n e c,tonnes,3,3,,,too_few_values,,no
+algeria,p,tonnes,17,17,french algeria,1.0000,attributable,total=0.06,no
+algeria,rye,ha,33,20,french algeria,1.0000,attributable,british cyprus=0.36,no
+algeria,rye,tonnes,33,28,french algeria,1.0000,attributable,austria=0.21,no
+algeria,silk worm cocoons reelable,tonnes,14,12,french algeria,1.0000,attributable,british cyprus=0.21,no
+algeria,tangerines mandarins clementines satsumas,ha,14,5,,,too_few_distinct,,no
+algeria,tangerines mandarins clementines satsumas,tonnes,14,13,french algeria,1.0000,attributable,total=0.36,no
+algeria,tobacco unmanufactured,ha,33,31,french algeria,1.0000,attributable,italy=0.21,no
+algeria,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+algeria,wine,ha,20,19,french algeria,1.0000,attributable,total=0.15,no
+algeria,wine,tonnes,1,1,,,too_few_values,,no
+american samoa,tobacco unmanufactured,ha,5,4,,,too_few_values,,no
+american samoa,tobacco unmanufactured,tonnes,5,4,,,too_few_values,,no
+angola,beans dry,ha,9,9,portuguese angola,1.0000,attributable,total=0.33,no
+angola,beans dry,tonnes,12,12,portuguese angola,1.0000,attributable,uruguay=0.08,no
+angola,castor beans seed,tonnes,7,6,,,too_few_values,,no
+angola,coffee green,ha,11,8,portuguese angola,1.0000,attributable,french morocco=0.27,no
+angola,cotton lint,ha,11,10,portuguese angola,1.0000,attributable,dutch east indies=0.27,no
+angola,cotton lint,tonnes,14,11,portuguese angola,1.0000,attributable,total=0.29,no
+angola,cotton seed,ha,11,10,portuguese angola,1.0000,attributable,dutch east indies=0.27,no
+angola,cotton seed,tonnes,14,13,portuguese angola,1.0000,attributable,italian dodecanese islands=0.14,no
+angola,groundnuts with shell,ha,11,8,portuguese angola,1.0000,attributable,spain=0.45,no
+angola,groundnuts with shell,tonnes,14,13,portuguese angola,1.0000,attributable,union of south africa=0.21,no
+angola,sesame seed,ha,10,6,,,ambiguous,portuguese angola=1.00;french tonkin=0.70;british cyprus=0.70,no
+angola,sesame seed,tonnes,14,12,portuguese angola,1.0000,attributable,british cyprus=0.43,no
+angola,sugar raw centrifugal,tonnes,15,15,portuguese angola,1.0000,attributable,us philippines=0.07,no
+angola,tobacco unmanufactured,ha,11,6,,,ambiguous,portuguese angola=1.00;spain=0.64;hungary=0.64,no
+angola,tobacco unmanufactured,tonnes,14,14,portuguese angola,1.0000,attributable,yugoslavia=0.00,no
+antigua and barbuda,cotton lint,ha,25,20,british antigua,1.0000,attributable,netherlands=0.32,no
+antigua and barbuda,cotton lint,tonnes,23,18,british antigua,1.0000,attributable,french guadeloupe and dependencies: marie‑galante=0.26,no
+antigua and barbuda,cotton seed,ha,14,10,british antigua,1.0000,attributable,french morocco=0.50,no
+antigua and barbuda,cotton seed,tonnes,13,12,british antigua,1.0000,attributable,british dominica=0.31,no
+antigua and barbuda,sugar raw centrifugal,tonnes,30,30,british antigua,1.0000,attributable,total=0.03,no
+argentina,beans dry,ha,1,1,,,too_few_values,,no
+argentina,castor beans seed,ha,6,5,,,too_few_values,,no
+argentina,castor beans seed,tonnes,6,6,,,too_few_values,,no
+argentina,cheese processed,tonnes,6,6,,,too_few_values,,no
+argentina,coffee green,ha,1,1,,,too_few_values,,no
+argentina,cotton lint,ha,1,1,,,too_few_values,,no
+argentina,cotton seed,ha,20,20,argentina,1.0000,attributable,total south hemisphere aggregated=0.05,no
+argentina,cotton seed,tonnes,2,2,,,too_few_values,,no
+argentina,flax fibre and tow,ha,1,1,,,too_few_values,,no
+argentina,flax fibre and tow,tonnes,13,13,argentina,1.0000,attributable,yugoslavia=0.00,no
+argentina,grapes,tonnes,6,6,,,too_few_values,,no
+argentina,oil olive virgin,tonnes,7,3,,,too_few_values,,no
+argentina,olives,tonnes,1,1,,,too_few_values,,no
+argentina,raisins,tonnes,8,8,argentina,1.0000,attributable,total=0.25,no
+argentina,rapeseed,ha,1,1,,,too_few_values,,no
+argentina,rapeseed,tonnes,1,1,,,too_few_values,,no
+argentina,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+argentina,wine,ha,1,1,,,too_few_values,,no
+argentina,wine,tonnes,1,1,,,too_few_values,,no
+azerbaijan,tea,ha,11,11,ussr: transcaucasian sfsr,1.0000,attributable,italy=0.18,no
+azerbaijan,tea,tonnes,10,10,ussr: transcaucasian sfsr,1.0000,attributable,british trinidad and tobago=0.10,no
+barbados,cotton lint,ha,24,20,british barbados,1.0000,attributable,british malta=0.25,no
+barbados,cotton lint,tonnes,23,19,british barbados,1.0000,attributable,sweden=0.22,no
+barbados,cotton seed,ha,12,8,british barbados,1.0000,attributable,british malta=0.50,no
+barbados,cotton seed,tonnes,16,9,british barbados,1.0000,attributable,british cyprus=0.56,no
+barbados,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+belgium,butter cow milk,tonnes,5,5,,,too_few_values,,no
+belgium,eggs hen in shell,tonnes,16,14,belgium,1.0000,attributable,yugoslavia=0.00,no
+belgium,fertilizer mixed,tonnes,4,4,,,too_few_values,,no
+belgium,flax fibre and tow,tonnes,1,1,,,too_few_values,,no
+belgium,grapes,ha,4,1,,,too_few_values,,no
+belgium,hempseed,ha,10,6,,,ambiguous,belgium=1.00;british malta=0.60,no
+belgium,hempseed,tonnes,5,1,,,too_few_values,,no
+belgium,milk whole fresh cow,tonnes,6,6,,,too_few_values,,no
+belgium,n,tonnes,16,16,belgium,1.0000,attributable,usa and canada=0.06,no
+belgium,p,tonnes,17,16,belgium,1.0000,attributable,yugoslavia=0.00,no
+belgium,rapeseed,ha,8,4,,,too_few_distinct,,no
+belgium,rapeseed,tonnes,1,1,,,too_few_values,,no
+belgium,sugar raw centrifugal,tonnes,33,33,belgium,1.0000,attributable,total=0.03,no
+belgium,yarn of true hemp,ha,13,9,belgium,1.0000,attributable,british malta=0.46,no
+belgium,yarn of true hemp,tonnes,13,9,belgium,1.0000,attributable,british saint vincent=0.38,no
+belize,cacao beans,tonnes,8,8,british honduras,1.0000,attributable,yugoslavia=0.00,no
+belize,grapefruit inc pomelos,ha,3,2,,,too_few_values,,no
+belize,grapefruit inc pomelos,tonnes,11,7,,,ambiguous,british honduras=1.00;france=0.64;british saint lucia=0.64,no
+benin,cacao beans,ha,7,5,,,too_few_values,,no
+benin,cacao beans,tonnes,7,3,,,too_few_values,,no
+benin,coffee green,ha,7,2,,,too_few_values,,no
+benin,coffee green,tonnes,5,4,,,too_few_values,,no
+benin,cotton lint,ha,4,4,,,too_few_values,,no
+benin,cotton lint,tonnes,4,3,,,too_few_values,,no
+benin,cotton seed,ha,4,4,,,too_few_values,,no
+benin,cotton seed,tonnes,4,3,,,too_few_values,,no
+benin,eggs hen in shell,tonnes,2,2,,,too_few_values,,no
+benin,groundnuts with shell,ha,15,14,french dahomey,1.0000,attributable,total=0.47,no
+benin,groundnuts with shell,tonnes,15,14,french dahomey,1.0000,attributable,total=0.27,no
+benin,tobacco unmanufactured,ha,12,6,,,ambiguous,french dahomey=1.00;french morocco=0.75;french mauritania=0.75,no
+benin,tobacco unmanufactured,tonnes,15,12,french dahomey,1.0000,attributable,australia=0.40,no
+bermuda,eggs hen in shell,tonnes,16,6,british bermuda,1.0000,attributable,french oceania=0.19,no
+bolivia,cacao beans,ha,1,1,,,too_few_values,,no
+bolivia,cacao beans,tonnes,1,1,,,too_few_values,,no
+bolivia,cotton lint,tonnes,2,2,,,too_few_values,,no
+bolivia,flax fibre and tow,tonnes,1,1,,,too_few_values,,no
+botswana,eggs hen in shell,tonnes,5,5,,,too_few_values,,no
+brazil,cacao beans,ha,9,7,brazil,1.0000,attributable,portugal=0.22,no
+brazil,cacao beans,tonnes,12,11,brazil,1.0000,attributable,total=0.17,no
+brazil,castor beans seed,tonnes,7,7,,,too_few_values,,no
+brazil,coffee green,ha,2,2,,,too_few_values,,no
+brazil,cotton lint,ha,2,2,,,too_few_values,,no
+brazil,cotton seed,ha,20,19,brazil,1.0000,attributable,ussr=0.05,no
+brazil,cotton seed,tonnes,1,1,,,too_few_values,,no
+brazil,grapes,tonnes,1,1,,,too_few_values,,no
+brazil,rye,ha,1,1,,,too_few_values,,no
+brazil,silk worm cocoons reelable,tonnes,2,2,,,too_few_values,,no
+brazil,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+brazil,sunflower seed,ha,2,2,,,too_few_values,,no
+brazil,sunflower seed,tonnes,2,2,,,too_few_values,,no
+brazil,tea,tonnes,1,1,,,too_few_values,,no
+brazil,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+brazil,wine,ha,2,2,,,too_few_values,,no
+british virgin islands,cotton lint,ha,4,2,,,too_few_values,,no
+british virgin islands,cotton lint,tonnes,15,15,british virgin islands,1.0000,attributable,switzerland=0.07,no
+british virgin islands,cotton seed,ha,4,2,,,too_few_values,,no
+british virgin islands,cotton seed,tonnes,4,3,,,too_few_values,,no
+brunei darussalam,eggs hen in shell,tonnes,6,3,,,too_few_values,,no
+brunei darussalam,rubber natural,ha,9,8,,,unattributable,british brunei=0.33,no
+brunei darussalam,rubber natural,tonnes,3,3,,,too_few_values,,no
+bulgaria,butter cow milk,tonnes,7,3,,,too_few_values,,no
+bulgaria,cheese processed,tonnes,7,7,,,too_few_values,,no
+bulgaria,cotton lint,ha,33,32,bulgaria,1.0000,attributable,australia=0.15,no
+bulgaria,cotton seed,ha,20,19,bulgaria,1.0000,attributable,australia=0.25,no
+bulgaria,cotton seed,tonnes,20,20,bulgaria,1.0000,attributable,france=0.15,no
+bulgaria,eggs hen in shell,tonnes,2,2,,,too_few_values,,no
+bulgaria,groundnuts with shell,ha,3,3,,,too_few_values,,no
+bulgaria,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+bulgaria,hops,ha,7,3,,,too_few_values,,no
+bulgaria,hops,tonnes,9,7,bulgaria,1.0000,attributable,british mauritius=0.11,no
+bulgaria,other berries and fruits of the genus vaccinium n e c,ha,19,10,bulgaria,1.0000,attributable,italy=0.53,no
+bulgaria,other berries and fruits of the genus vaccinium n e c,tonnes,18,18,bulgaria,1.0000,attributable,france=0.06,no
+bulgaria,rapeseed,ha,1,1,,,too_few_values,,no
+bulgaria,rye,tonnes,4,4,,,too_few_values,,no
+bulgaria,silk worm cocoons reelable,tonnes,33,32,bulgaria,1.0000,attributable,french lebanon=0.03,no
+bulgaria,soybeans,ha,4,3,,,too_few_values,,no
+bulgaria,sugar raw centrifugal,tonnes,33,33,bulgaria,1.0000,attributable,netherlands=0.09,no
+bulgaria,wine,ha,20,16,bulgaria,1.0000,attributable,total=0.20,no
+bulgaria,wine,tonnes,33,33,,,unattributable,yugoslavia=0.00,no
+bulgaria,yarn of true hemp,ha,13,12,bulgaria,1.0000,attributable,uk: northern ireland=0.23,no
+bulgaria,yarn of true hemp,tonnes,26,26,bulgaria,1.0000,attributable,uk: northern ireland=0.04,no
+burkina faso,cotton lint,ha,5,5,,,too_few_values,,no
+burkina faso,cotton lint,tonnes,5,5,,,too_few_values,,no
+burkina faso,cotton seed,ha,5,5,,,too_few_values,,no
+burkina faso,cotton seed,tonnes,5,5,,,too_few_values,,no
+burkina faso,eggs hen in shell,tonnes,4,4,,,too_few_values,,no
+burkina faso,groundnuts with shell,ha,6,6,,,too_few_values,,no
+burkina faso,groundnuts with shell,tonnes,7,7,,,too_few_values,,no
+burkina faso,sesame seed,ha,3,2,,,too_few_values,,no
+burkina faso,sesame seed,tonnes,5,3,,,too_few_values,,no
+burkina faso,tobacco unmanufactured,ha,3,3,,,too_few_values,,no
+burkina faso,tobacco unmanufactured,tonnes,3,3,,,too_few_values,,no
+burundi,cotton lint,ha,8,6,belgian ruanda-urundi,1.0000,attributable,hungary=0.50,no
+burundi,cotton lint,tonnes,8,7,belgian ruanda-urundi,1.0000,attributable,british cyprus=0.38,no
+burundi,cotton seed,ha,8,6,belgian ruanda-urundi,1.0000,attributable,hungary=0.50,no
+burundi,cotton seed,tonnes,7,7,,,too_few_values,,no
+burundi,groundnuts with shell,ha,7,6,,,too_few_values,,no
+burundi,groundnuts with shell,tonnes,7,7,,,too_few_values,,no
+burundi,tobacco unmanufactured,ha,7,5,,,too_few_values,,no
+burundi,tobacco unmanufactured,tonnes,7,6,,,too_few_values,,no
+cabo verde,beans dry,ha,4,2,,,too_few_values,,no
+cabo verde,beans dry,tonnes,6,5,,,too_few_values,,no
+cabo verde,coffee green,ha,3,3,,,too_few_values,,no
+cabo verde,coffee green,tonnes,5,2,,,too_few_values,,no
+cabo verde,oranges,tonnes,5,5,,,too_few_values,,no
+cabo verde,sugar raw centrifugal,tonnes,8,4,,,too_few_distinct,,no
+cabo verde,tobacco unmanufactured,tonnes,5,5,,,too_few_values,,no
+cambodia,beans dry,tonnes,3,2,,,too_few_values,,no
+cambodia,silk worm cocoons reelable,tonnes,1,1,,,too_few_values,,no
+cameroon,cacao beans,ha,15,7,british‑french cameroon,1.0000,attributable,total=0.53,no
+cameroon,coffee green,ha,7,1,,,too_few_values,,no
+cameroon,cotton lint,ha,5,1,,,too_few_values,,no
+cameroon,cotton lint,tonnes,4,1,,,too_few_values,,no
+cameroon,cotton seed,ha,12,1,,,too_few_distinct,,no
+cameroon,cotton seed,tonnes,11,2,,,too_few_distinct,,no
+cameroon,groundnuts with shell,ha,10,10,british‑french cameroon,1.0000,attributable,total=0.40,no
+cameroon,groundnuts with shell,tonnes,2,2,,,too_few_values,,no
+cameroon,rubber natural,ha,13,12,,,unattributable,french cameroon=0.54,no
+cameroon,sesame seed,ha,17,12,british‑french cameroon,1.0000,attributable,total=0.47,no
+cameroon,sesame seed,tonnes,17,14,british‑french cameroon,1.0000,attributable,austria=0.24,no
+cameroon,tobacco unmanufactured,ha,4,1,,,too_few_values,,no
+cameroon,tobacco unmanufactured,tonnes,3,3,,,too_few_values,,no
+canada,cheese processed,tonnes,7,7,,,too_few_values,,no
+canada,eggs hen in shell,tonnes,17,17,canada,0.6471,attributable,yugoslavia=0.00,no
+canada,milk whole fresh cow,tonnes,1,1,,,too_few_values,,no
+canada,n,tonnes,12,12,canada,1.0000,attributable,yugoslavia=0.00,no
+canada,p,tonnes,17,16,canada,1.0000,attributable,portugal=0.06,no
+canada,sugar raw centrifugal,tonnes,32,32,canada,1.0000,attributable,portuguese mozambique=0.03,no
+canada,wine,tonnes,14,14,,,unattributable,yugoslavia=0.00,no
+central african republic,cacao beans,ha,2,2,,,too_few_values,,no
+central african republic,cacao beans,tonnes,2,2,,,too_few_values,,no
+central african republic,groundnuts with shell,ha,3,3,,,too_few_values,,no
+central african republic,groundnuts with shell,tonnes,3,3,,,too_few_values,,no
+chad,groundnuts with shell,ha,3,3,,,too_few_values,,no
+chad,groundnuts with shell,tonnes,3,3,,,too_few_values,,no
+chile,beans dry,ha,2,2,,,too_few_values,,no
+chile,eggs hen in shell,tonnes,9,8,chile,1.0000,attributable,yugoslavia=0.00,no
+chile,fertilizer mixed,tonnes,14,14,chile,1.0000,attributable,yugoslavia=0.00,no
+chile,flax fibre and tow,ha,4,4,,,too_few_values,,no
+chile,flax fibre and tow,tonnes,5,5,,,too_few_values,,no
+chile,grapes,tonnes,6,6,,,too_few_values,,no
+chile,hemp tow waste,ha,3,3,,,too_few_values,,no
+chile,hemp tow waste,tonnes,1,1,,,too_few_values,,no
+chile,hempseed,ha,1,1,,,too_few_values,,no
+chile,hempseed,tonnes,2,2,,,too_few_values,,no
+chile,n,tonnes,4,4,,,too_few_values,,no
+chile,no3,tonnes,13,13,chile,1.0000,attributable,yugoslavia=0.00,no
+chile,oil olive virgin,tonnes,1,1,,,too_few_values,,no
+chile,olives,ha,1,1,,,too_few_values,,no
+chile,olives,tonnes,1,1,,,too_few_values,,no
+chile,raisins,tonnes,8,3,,,too_few_distinct,,no
+chile,rapeseed,tonnes,1,1,,,too_few_values,,no
+chile,rye,ha,1,1,,,too_few_values,,no
+chile,rye,tonnes,2,2,,,too_few_values,,no
+chile,sugar raw centrifugal,tonnes,2,2,,,too_few_values,,no
+chile,tobacco unmanufactured,ha,6,6,,,too_few_values,,no
+chile,tobacco unmanufactured,tonnes,3,3,,,too_few_values,,no
+chile,yarn of true hemp,ha,2,2,,,too_few_values,,no
+chile,yarn of true hemp,tonnes,13,13,chile,1.0000,attributable,yugoslavia=0.00,no
+"china, hong kong sar",groundnuts with shell,ha,1,1,,,too_few_values,,no
+"china, hong kong sar",groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+"china, taiwan province of",fertilizer mixed,tonnes,12,12,japanese taiwan,1.0000,attributable,yugoslavia=0.00,no
+"china, taiwan province of",groundnuts with shell,ha,11,8,japanese taiwan,1.0000,attributable,austria=0.18,no
+"china, taiwan province of",jute,ha,21,20,japanese taiwan,1.0000,attributable,french cambodia=0.14,no
+"china, taiwan province of",jute,tonnes,21,21,japanese taiwan,1.0000,attributable,total=0.05,no
+"china, taiwan province of",oranges,tonnes,5,5,,,too_few_values,,no
+"china, taiwan province of",other berries and fruits of the genus vaccinium n e c,ha,8,6,japanese taiwan,1.0000,attributable,uruguay=0.50,no
+"china, taiwan province of",other citrus fruit n e c,tonnes,3,3,,,too_few_values,,no
+"china, taiwan province of",p,tonnes,4,4,,,too_few_values,,no
+"china, taiwan province of",rapeseed,ha,17,13,japanese taiwan,1.0000,attributable,french algeria=0.35,no
+"china, taiwan province of",rapeseed,tonnes,16,15,japanese taiwan,1.0000,attributable,romania=0.19,no
+"china, taiwan province of",sesame seed,ha,10,8,japanese taiwan,1.0000,attributable,us puerto rico=0.40,no
+"china, taiwan province of",sesame seed,tonnes,11,10,japanese taiwan,1.0000,attributable,hungary=0.27,no
+"china, taiwan province of",silk worm cocoons reelable,tonnes,16,16,japanese taiwan,1.0000,attributable,yugoslavia=0.00,no
+"china, taiwan province of",soybeans,ha,8,6,japanese taiwan,1.0000,attributable,french annam=0.50,no
+"china, taiwan province of",soybeans,tonnes,8,8,japanese taiwan,1.0000,attributable,albania=0.25,no
+"china, taiwan province of",sugar raw centrifugal,tonnes,33,33,japanese taiwan,1.0000,attributable,poland=0.03,no
+"china, taiwan province of",tea,ha,24,22,japanese taiwan,1.0000,attributable,portuguese angola=0.08,no
+"china, taiwan province of",tea,tonnes,1,1,,,too_few_values,,no
+"china, taiwan province of",tobacco unmanufactured,ha,21,19,japanese taiwan,1.0000,attributable,ireland=0.19,no
+"china, taiwan province of",tobacco unmanufactured,tonnes,23,23,japanese taiwan,1.0000,attributable,belgium=0.04,no
+colombia,cacao beans,ha,6,6,,,too_few_values,,no
+colombia,castor beans seed,tonnes,5,3,,,too_few_values,,no
+colombia,coffee green,ha,2,2,,,too_few_values,,no
+colombia,coffee green,tonnes,3,3,,,too_few_values,,no
+colombia,cotton lint,ha,14,12,colombia,1.0000,attributable,total=0.29,no
+colombia,cotton seed,ha,13,11,colombia,1.0000,attributable,total=0.31,no
+colombia,cotton seed,tonnes,3,3,,,too_few_values,,no
+colombia,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+congo,cacao beans,ha,9,7,french equatorial africa,0.7778,attributable,french morocco=0.44,no
+congo,cacao beans,tonnes,17,11,french equatorial africa,0.8235,attributable,british cyprus=0.29,no
+congo,coffee green,ha,12,11,french equatorial africa,1.0000,attributable,total=0.25,no
+congo,coffee green,tonnes,19,18,french equatorial africa,1.0000,attributable,bulgaria=0.21,no
+congo,cotton lint,ha,19,17,french equatorial africa,1.0000,attributable,total=0.11,no
+congo,cotton lint,tonnes,18,17,french equatorial africa,1.0000,attributable,total=0.11,no
+congo,cotton seed,ha,11,11,french equatorial africa,1.0000,attributable,total=0.18,no
+congo,cotton seed,tonnes,18,17,french equatorial africa,1.0000,attributable,turkey=0.11,no
+congo,groundnuts with shell,ha,12,12,french equatorial africa,0.7500,attributable,greece=0.25,no
+congo,groundnuts with shell,tonnes,10,10,french equatorial africa,0.7000,attributable,british southern rhodesia=0.20,no
+congo,sesame seed,ha,10,9,french equatorial africa,0.7000,attributable,total=0.30,no
+congo,sesame seed,tonnes,11,10,french equatorial africa,0.7273,attributable,italy=0.27,no
+congo,tobacco unmanufactured,ha,14,13,french equatorial africa,1.0000,attributable,switzerland=0.21,no
+congo,tobacco unmanufactured,tonnes,12,11,french equatorial africa,1.0000,attributable,brazil=0.17,no
+costa rica,cacao beans,ha,11,7,costa rica,1.0000,attributable,french syria=0.36,no
+costa rica,cacao beans,tonnes,28,28,costa rica,1.0000,attributable,czechoslovakia=0.14,no
+costa rica,coffee green,ha,4,4,,,too_few_values,,no
+costa rica,lemons and limes,tonnes,7,2,,,too_few_values,,no
+costa rica,oranges,tonnes,1,1,,,too_few_values,,no
+costa rica,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+cuba,cacao beans,ha,2,1,,,too_few_values,,no
+cuba,cacao beans,tonnes,13,12,cuba,1.0000,attributable,yugoslavia=0.08,no
+cuba,coffee green,ha,1,1,,,too_few_values,,no
+cuba,other citrus fruit n e c,tonnes,2,2,,,too_few_values,,no
+cuba,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+curaã§ao,p,tonnes,4,4,,,too_few_values,,no
+cyprus,beans dry,ha,9,3,,,too_few_distinct,,no
+cyprus,beans dry,tonnes,13,7,,,ambiguous,british cyprus=1.00;bulgaria=0.69,no
+cyprus,cotton lint,ha,24,17,british cyprus,1.0000,attributable,australia=0.38,no
+cyprus,cotton lint,tonnes,33,28,british cyprus,1.0000,attributable,france=0.21,no
+cyprus,cotton seed,ha,20,13,british cyprus,1.0000,attributable,australia=0.45,no
+cyprus,cotton seed,tonnes,20,16,british cyprus,1.0000,attributable,bulgaria=0.35,no
+cyprus,flax fibre and tow,ha,13,6,,,ambiguous,british cyprus=1.00;new zealand=0.69;french algeria=0.69,no
+cyprus,flax fibre and tow,tonnes,15,13,british cyprus,1.0000,attributable,france=0.33,no
+cyprus,grapefruit inc pomelos,ha,5,1,,,too_few_values,,no
+cyprus,grapefruit inc pomelos,tonnes,10,8,british cyprus,1.0000,attributable,new zealand=0.50,no
+cyprus,grapes,ha,30,25,british cyprus,1.0000,attributable,total=0.17,no
+cyprus,grapes,tonnes,28,28,british cyprus,1.0000,attributable,australia=0.11,no
+cyprus,groundnuts with shell,ha,7,6,,,too_few_values,,no
+cyprus,groundnuts with shell,tonnes,7,7,,,too_few_values,,no
+cyprus,hemp tow waste,tonnes,6,1,,,too_few_values,,no
+cyprus,hempseed,ha,9,5,,,too_few_distinct,,no
+cyprus,hempseed,tonnes,9,5,,,too_few_distinct,,no
+cyprus,lemons and limes,ha,5,2,,,too_few_values,,no
+cyprus,lemons and limes,tonnes,15,13,,,unattributable,italy=0.40,no
+cyprus,linseed,ha,4,4,,,too_few_values,,no
+cyprus,linseed,tonnes,4,4,,,too_few_values,,no
+cyprus,oats,ha,7,4,,,too_few_values,,no
+cyprus,oats,tonnes,7,7,,,too_few_values,,no
+cyprus,oil olive virgin,tonnes,24,22,british cyprus,1.0000,attributable,italy=0.25,no
+cyprus,olives,tonnes,20,19,british cyprus,1.0000,attributable,romania=0.10,no
+cyprus,oranges,ha,7,1,,,too_few_values,,no
+cyprus,oranges,tonnes,15,15,british cyprus,1.0000,attributable,union of south africa=0.13,no
+cyprus,raisins,ha,4,4,,,too_few_values,,no
+cyprus,raisins,tonnes,20,19,british cyprus,1.0000,attributable,spain=0.15,no
+cyprus,sesame seed,ha,20,10,british cyprus,1.0000,attributable,french algeria=0.55,no
+cyprus,sesame seed,tonnes,20,13,british cyprus,1.0000,attributable,british dominica=0.40,no
+cyprus,silk worm cocoons reelable,tonnes,24,24,british cyprus,1.0000,attributable,yugoslavia=0.00,no
+cyprus,tangerines mandarins clementines satsumas,tonnes,11,5,,,too_few_distinct,,no
+cyprus,tobacco unmanufactured,ha,19,15,british cyprus,1.0000,attributable,italy=0.32,no
+cyprus,tobacco unmanufactured,tonnes,29,29,british cyprus,1.0000,attributable,romania=0.07,no
+cyprus,wine,ha,8,8,british cyprus,1.0000,attributable,yugoslavia=0.00,no
+cyprus,yarn of true hemp,ha,9,5,,,too_few_distinct,,no
+cyprus,yarn of true hemp,tonnes,9,6,british cyprus,1.0000,attributable,french guadeloupe and dependencies: marie‑galante=0.56,no
+czech republic,beans dry,ha,13,4,,,too_few_distinct,,no
+czech republic,beans dry,tonnes,13,13,czechoslovakia,1.0000,attributable,total=0.23,no
+czech republic,butter cow milk,tonnes,7,6,,,too_few_values,,no
+czech republic,cheese processed,tonnes,7,6,,,too_few_values,,no
+czech republic,eggs hen in shell,tonnes,5,5,,,too_few_values,,no
+czech republic,flax fibre and tow,ha,23,21,czechoslovakia,1.0000,attributable,total=0.17,no
+czech republic,flax fibre and tow,tonnes,22,22,czechoslovakia,1.0000,attributable,egypt=0.14,no
+czech republic,grapes,ha,17,13,czechoslovakia,1.0000,attributable,total=0.29,no
+czech republic,grapes,tonnes,15,14,czechoslovakia,1.0000,attributable,bulgaria=0.27,no
+czech republic,hemp tow waste,ha,10,5,,,too_few_distinct,,no
+czech republic,hemp tow waste,tonnes,7,6,,,too_few_values,,no
+czech republic,hempseed,ha,17,11,czechoslovakia,1.0000,attributable,total=0.47,no
+czech republic,hempseed,tonnes,22,21,czechoslovakia,1.0000,attributable,japan=0.09,no
+czech republic,hops,ha,23,23,czechoslovakia,1.0000,attributable,hungary=0.09,no
+czech republic,hops,tonnes,21,21,czechoslovakia,1.0000,attributable,belgium=0.05,no
+czech republic,linseed,ha,8,8,czechoslovakia,1.0000,attributable,yugoslavia=0.00,no
+czech republic,linseed,tonnes,11,11,czechoslovakia,1.0000,attributable,yugoslavia=0.00,no
+czech republic,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+czech republic,n,tonnes,4,4,,,too_few_values,,no
+czech republic,oats,ha,7,7,,,too_few_values,,no
+czech republic,oats,tonnes,7,7,,,too_few_values,,no
+czech republic,other forage products n e c,ha,4,4,,,too_few_values,,no
+czech republic,other forage products n e c,tonnes,4,4,,,too_few_values,,no
+czech republic,p,tonnes,4,4,,,too_few_values,,no
+czech republic,rapeseed,ha,23,22,czechoslovakia,1.0000,attributable,french algeria=0.26,no
+czech republic,rapeseed,tonnes,22,22,czechoslovakia,1.0000,attributable,us philippines=0.05,no
+czech republic,rye,ha,24,22,czechoslovakia,1.0000,attributable,yugoslavia=0.17,no
+czech republic,rye,tonnes,23,23,czechoslovakia,1.0000,attributable,greece=0.09,no
+czech republic,silk worm cocoons reelable,tonnes,14,10,czechoslovakia,1.0000,attributable,romania=0.14,no
+czech republic,soybeans,ha,9,1,,,too_few_distinct,,no
+czech republic,soybeans,tonnes,11,5,,,too_few_distinct,,no
+czech republic,sugar raw centrifugal,tonnes,23,23,czechoslovakia,1.0000,attributable,yugoslavia=0.00,no
+czech republic,tobacco unmanufactured,ha,21,16,czechoslovakia,1.0000,attributable,total=0.29,no
+czech republic,tobacco unmanufactured,tonnes,21,21,czechoslovakia,1.0000,attributable,total=0.05,no
+czech republic,wheat,ha,20,18,czechoslovakia,1.0000,attributable,total=0.25,no
+czech republic,wheat,tonnes,20,19,czechoslovakia,1.0000,attributable,romania=0.05,no
+czech republic,wine,ha,20,15,czechoslovakia,1.0000,attributable,total=0.20,no
+czech republic,wine,tonnes,20,20,,,unattributable,yugoslavia=0.00,no
+czech republic,yarn of true hemp,ha,13,9,czechoslovakia,1.0000,attributable,switzerland=0.38,no
+czech republic,yarn of true hemp,tonnes,15,14,czechoslovakia,1.0000,attributable,netherlands=0.13,no
+denmark,butter cow milk,tonnes,7,7,,,too_few_values,,no
+denmark,cheese processed,tonnes,7,7,,,too_few_values,,no
+denmark,eggs hen in shell,tonnes,15,15,denmark,1.0000,attributable,yugoslavia=0.00,no
+denmark,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+denmark,n,tonnes,12,8,denmark,1.0000,attributable,british saint lucia=0.17,no
+denmark,p,tonnes,15,15,denmark,1.0000,attributable,italy=0.07,no
+denmark,sugar raw centrifugal,tonnes,33,33,denmark,1.0000,attributable,french sudan=0.03,no
+denmark,tobacco unmanufactured,ha,3,1,,,too_few_values,,no
+djibouti,coffee green,tonnes,4,4,,,too_few_values,,no
+djibouti,eggs hen in shell,tonnes,1,1,,,too_few_values,,no
+dominica,cacao beans,ha,8,4,,,too_few_distinct,,no
+dominica,cacao beans,tonnes,29,20,british dominica,1.0000,attributable,british cyprus=0.31,no
+dominica,grapefruit inc pomelos,ha,4,1,,,too_few_values,,no
+dominica,grapefruit inc pomelos,tonnes,11,3,,,too_few_distinct,,no
+dominica,lemons and limes,ha,14,6,,,ambiguous,british dominica=1.00;french algeria=0.79;british cyprus=0.79,no
+dominica,lemons and limes,tonnes,14,13,british dominica,1.0000,attributable,italian eritrea=0.21,no
+dominica,oranges,ha,4,1,,,too_few_values,,no
+dominica,oranges,tonnes,11,3,,,too_few_distinct,,no
+dominican republic,cacao beans,ha,4,2,,,too_few_values,,no
+dominican republic,cacao beans,tonnes,1,1,,,too_few_values,,no
+dominican republic,coffee green,ha,3,3,,,too_few_values,,no
+dominican republic,coffee green,tonnes,1,1,,,too_few_values,,no
+dominican republic,cotton lint,tonnes,4,1,,,too_few_values,,no
+dominican republic,cotton seed,tonnes,5,2,,,too_few_values,,no
+dominican republic,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+dominican republic,tobacco unmanufactured,ha,1,1,,,too_few_values,,no
+dr congo,cacao beans,ha,17,10,belgian congo,1.0000,attributable,total=0.41,no
+dr congo,cacao beans,tonnes,17,13,belgian congo,1.0000,attributable,french annam=0.35,no
+dr congo,coffee green,ha,14,14,belgian congo,1.0000,attributable,greece=0.14,no
+dr congo,cotton lint,ha,23,23,belgian congo,1.0000,attributable,usa=0.04,no
+dr congo,cotton lint,tonnes,5,5,,,too_few_values,,no
+dr congo,cotton seed,ha,19,19,belgian congo,1.0000,attributable,usa=0.05,no
+dr congo,cotton seed,tonnes,19,19,belgian congo,1.0000,attributable,greece=0.05,no
+dr congo,groundnuts with shell,ha,7,5,,,too_few_values,,no
+dr congo,groundnuts with shell,tonnes,4,2,,,too_few_values,,no
+dr congo,rubber natural,ha,6,6,,,too_few_values,,no
+dr congo,sesame seed,ha,4,4,,,too_few_values,,no
+dr congo,sesame seed,tonnes,7,7,,,too_few_values,,no
+dr congo,sugar raw centrifugal,tonnes,11,9,belgian congo,1.0000,attributable,total=0.36,no
+dr congo,tobacco unmanufactured,ha,7,6,,,too_few_values,,no
+dr congo,tobacco unmanufactured,tonnes,7,6,,,too_few_values,,no
+ecuador,cacao beans,ha,1,1,,,too_few_values,,no
+ecuador,cacao beans,tonnes,1,1,,,too_few_values,,no
+ecuador,castor beans seed,tonnes,6,6,,,too_few_values,,no
+ecuador,cotton lint,tonnes,1,1,,,too_few_values,,no
+ecuador,cotton seed,tonnes,7,6,,,too_few_values,,no
+ecuador,lemons and limes,tonnes,4,2,,,too_few_values,,no
+ecuador,oranges,tonnes,2,2,,,too_few_values,,no
+egypt,beans dry,tonnes,3,3,,,too_few_values,,no
+egypt,cotton lint,ha,33,33,,,unattributable,egypt=0.12,no
+egypt,cotton lint,tonnes,1,1,,,too_few_values,,no
+egypt,cotton seed,ha,20,20,,,unattributable,sweden=0.05,no
+egypt,cotton seed,tonnes,20,20,,,unattributable,dutch java and madura=0.05,no
+egypt,eggs hen in shell,tonnes,12,12,egypt,1.0000,attributable,yugoslavia=0.00,no
+egypt,flax fibre and tow,ha,29,23,egypt,1.0000,attributable,bulgaria=0.31,no
+egypt,flax fibre and tow,tonnes,22,21,egypt,1.0000,attributable,romania=0.23,no
+egypt,grapes,ha,25,18,egypt,1.0000,attributable,italy=0.32,no
+egypt,grapes,tonnes,10,10,egypt,1.0000,attributable,portuguese mozambique: company concession=0.10,no
+egypt,groundnuts with shell,ha,20,17,,,unattributable,czechoslovakia=0.20,no
+egypt,groundnuts with shell,tonnes,20,19,,,unattributable,total=0.10,no
+egypt,lemons and limes,tonnes,11,11,egypt,1.0000,attributable,argentina=0.09,no
+egypt,linseed,ha,8,8,egypt,1.0000,attributable,french cambodia=0.12,no
+egypt,linseed,tonnes,11,11,egypt,1.0000,attributable,yugoslavia=0.00,no
+egypt,milk whole fresh cow,tonnes,4,4,,,too_few_values,,no
+egypt,n,tonnes,3,3,,,too_few_values,,no
+egypt,oil olive virgin,tonnes,4,1,,,too_few_values,,no
+egypt,olives,ha,5,1,,,too_few_values,,no
+egypt,olives,tonnes,7,6,,,too_few_values,,no
+egypt,oranges,ha,13,7,egypt,1.0000,attributable,hungary=0.38,no
+egypt,oranges,tonnes,11,11,egypt,1.0000,attributable,uruguay=0.09,no
+egypt,p,tonnes,17,17,egypt,1.0000,attributable,yugoslavia=0.00,no
+egypt,sesame seed,ha,20,19,,,unattributable,egypt=0.35,no
+egypt,sesame seed,tonnes,20,20,,,unattributable,egypt=0.10,no
+egypt,silk worm cocoons reelable,tonnes,7,6,,,too_few_values,,no
+egypt,sugar raw centrifugal,tonnes,33,33,egypt,1.0000,attributable,total=0.03,no
+egypt,tangerines mandarins clementines satsumas,tonnes,11,11,egypt,1.0000,attributable,uruguay=0.18,no
+egypt,wine,ha,4,4,,,too_few_values,,no
+el salvador,coffee green,ha,1,1,,,too_few_values,,no
+el salvador,coffee green,tonnes,2,2,,,too_few_values,,no
+el salvador,cotton lint,ha,6,4,,,too_few_values,,no
+el salvador,cotton lint,tonnes,1,1,,,too_few_values,,no
+el salvador,cotton seed,ha,11,6,,,ambiguous,czechoslovakia=0.82;total=0.73;spain=0.64,no
+el salvador,cotton seed,tonnes,12,12,el salvador,0.6667,attributable,el salvador: san salvador department=0.33,no
+el salvador,sugar raw centrifugal,tonnes,2,2,,,too_few_values,,no
+equatorial guinea,cacao beans,ha,10,7,,,unattributable,hungary=0.20,no
+equatorial guinea,coffee green,ha,6,3,,,too_few_values,,no
+equatorial guinea,coffee green,tonnes,7,5,,,too_few_values,,no
+eritrea,coffee green,ha,3,3,,,too_few_values,,no
+eritrea,coffee green,tonnes,8,6,italian eritrea,1.0000,attributable,french tonkin=0.25,no
+eritrea,cotton lint,ha,11,9,italian eritrea,1.0000,attributable,french cambodia=0.45,no
+eritrea,cotton lint,tonnes,11,9,italian eritrea,1.0000,attributable,romania=0.27,no
+eritrea,cotton seed,ha,11,9,italian eritrea,1.0000,attributable,french cambodia=0.45,no
+eritrea,cotton seed,tonnes,11,10,italian eritrea,1.0000,attributable,yugoslavia=0.36,no
+eritrea,eggs hen in shell,tonnes,3,2,,,too_few_values,,no
+eritrea,flax fibre and tow,ha,5,2,,,too_few_values,,no
+eritrea,flax fibre and tow,tonnes,5,5,,,too_few_values,,no
+eritrea,groundnuts with shell,ha,5,2,,,too_few_values,,no
+eritrea,groundnuts with shell,tonnes,5,2,,,too_few_values,,no
+eritrea,linseed,ha,4,4,,,too_few_values,,no
+eritrea,linseed,tonnes,4,3,,,too_few_values,,no
+eritrea,sesame seed,ha,6,4,,,too_few_values,,no
+eritrea,sesame seed,tonnes,7,6,,,too_few_values,,no
+eritrea,tobacco unmanufactured,ha,8,4,,,too_few_distinct,,no
+eritrea,tobacco unmanufactured,tonnes,8,8,italian eritrea,1.0000,attributable,british cyprus=0.25,no
+estonia,butter cow milk,tonnes,1,1,,,too_few_values,,no
+estonia,cheese processed,tonnes,2,2,,,too_few_values,,no
+estonia,eggs hen in shell,tonnes,10,10,estonia,1.0000,attributable,yugoslavia=0.00,no
+estonia,milk whole fresh cow,tonnes,1,1,,,too_few_values,,no
+estonia,p,tonnes,4,4,,,too_few_values,,no
+eswatini,cotton seed,ha,2,2,,,too_few_values,,no
+eswatini,cotton seed,tonnes,2,2,,,too_few_values,,no
+eswatini,tobacco unmanufactured,ha,8,4,,,too_few_distinct,,no
+eswatini,tobacco unmanufactured,tonnes,14,13,british swaziland,1.0000,attributable,czechoslovakia=0.21,no
+ethiopia,coffee green,tonnes,1,1,,,too_few_values,,no
+ethiopia pdr,coffee green,tonnes,11,11,,,unattributable,total=0.36,no
+falkland islands (malvinas),fertilizer mixed,tonnes,6,6,,,too_few_values,,no
+faroe islands,eggs hen in shell,tonnes,5,4,,,too_few_values,,no
+fiji,cacao beans,ha,10,7,british fiji islands,1.0000,attributable,us philippines=0.10,no
+fiji,cacao beans,tonnes,10,9,british fiji islands,1.0000,attributable,bulgaria=0.10,no
+fiji,cotton lint,ha,17,12,british fiji islands,1.0000,attributable,french india=0.41,no
+fiji,cotton lint,tonnes,8,4,,,too_few_distinct,,no
+fiji,cotton seed,ha,8,4,,,too_few_distinct,,no
+fiji,cotton seed,tonnes,8,4,,,too_few_distinct,,no
+fiji,groundnuts with shell,ha,2,2,,,too_few_values,,no
+fiji,groundnuts with shell,tonnes,2,2,,,too_few_values,,no
+fiji,sugar raw centrifugal,tonnes,32,32,british fiji islands,1.0000,attributable,total=0.03,no
+fiji,tea,ha,15,5,,,too_few_distinct,,no
+fiji,tea,tonnes,14,10,british fiji islands,1.0000,attributable,japan: karafuto prefecture=0.07,no
+fiji,tobacco unmanufactured,ha,15,13,british fiji islands,1.0000,attributable,french algeria=0.13,no
+fiji,tobacco unmanufactured,tonnes,15,14,british fiji islands,1.0000,attributable,bulgaria=0.07,no
+finland,butter cow milk,tonnes,7,7,,,too_few_values,,no
+finland,cheese processed,tonnes,6,6,,,too_few_values,,no
+finland,eggs hen in shell,tonnes,4,4,,,too_few_values,,no
+finland,p,tonnes,4,4,,,too_few_values,,no
+finland,sugar raw centrifugal,tonnes,23,21,finland,1.0000,attributable,french syria=0.17,no
+france,butter cow milk,tonnes,7,7,,,too_few_values,,no
+france,cheese processed,tonnes,7,7,,,too_few_values,,no
+france,eggs hen in shell,tonnes,10,5,,,too_few_distinct,,no
+france,fertilizer mixed,tonnes,12,8,france,1.0000,attributable,switzerland=0.08,no
+france,grapes,tonnes,28,28,france,1.0000,attributable,total=0.04,no
+france,k,tonnes,4,4,,,too_few_values,,no
+france,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+france,n,tonnes,17,17,france,1.0000,attributable,usa and canada=0.06,no
+france,other berries and fruits of the genus vaccinium n e c,tonnes,16,15,france,1.0000,attributable,total south hemisphere aggregated=0.06,no
+france,other citrus fruit n e c,tonnes,11,8,france,1.0000,attributable,french annam=0.36,no
+france,p,tonnes,16,16,france,1.0000,attributable,yugoslavia=0.00,no
+france,silk worm cocoons reelable,tonnes,33,33,france,1.0000,attributable,italy=0.03,no
+france,sugar raw centrifugal,tonnes,33,33,france,1.0000,attributable,netherlands=0.03,no
+france,wine,ha,20,19,france,1.0000,attributable,yugoslavia=0.00,no
+france,wine,tonnes,33,33,,,unattributable,yugoslavia=0.00,no
+france,yarn of true hemp,ha,13,10,france,1.0000,attributable,hungary=0.38,no
+france,yarn of true hemp,tonnes,26,26,france,1.0000,attributable,ussr=0.04,no
+french guiana,cacao beans,ha,5,2,,,too_few_values,,no
+french guiana,cacao beans,tonnes,11,7,french guiana,1.0000,attributable,uruguay=0.45,no
+french guiana,eggs hen in shell,tonnes,7,2,,,too_few_values,,no
+french guiana,p,tonnes,5,5,,,too_few_values,,no
+french guiana,sugar raw centrifugal,tonnes,5,2,,,too_few_values,,no
+french polynesia,cacao beans,ha,1,1,,,too_few_values,,no
+french polynesia,eggs hen in shell,tonnes,5,1,,,too_few_values,,no
+french polynesia,p,tonnes,16,15,french oceania: makatea island,1.0000,attributable,total general excluding the ussr=0.06,no
+french polynesia,sugar raw centrifugal,tonnes,3,2,,,too_few_values,,no
+french polynesia,tobacco unmanufactured,ha,8,3,,,too_few_distinct,,no
+french polynesia,tobacco unmanufactured,tonnes,8,3,,,too_few_distinct,,no
+gabon,cacao beans,ha,6,5,,,too_few_values,,no
+gabon,cacao beans,tonnes,16,16,french equatorial africa: gabon,1.0000,attributable,yugoslavia=0.00,no
+gabon,coffee green,ha,4,3,,,too_few_values,,no
+gabon,coffee green,tonnes,12,11,french equatorial africa: gabon,1.0000,attributable,british fiji islands=0.08,no
+gabon,groundnuts with shell,ha,3,2,,,too_few_values,,no
+gabon,groundnuts with shell,tonnes,3,3,,,too_few_values,,no
+gabon,sesame seed,ha,3,1,,,too_few_values,,no
+gabon,sesame seed,tonnes,3,1,,,too_few_values,,no
+gambia,groundnuts with shell,ha,7,7,,,too_few_values,,no
+gambia,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+germany,butter cow milk,tonnes,3,3,,,too_few_values,,no
+germany,cheese processed,tonnes,3,3,,,too_few_values,,no
+germany,eggs hen in shell,tonnes,4,2,,,too_few_values,,no
+germany,fertilizer mixed,tonnes,12,12,germany,1.0000,attributable,yugoslavia=0.00,no
+germany,grapes,tonnes,4,4,,,too_few_values,,no
+germany,k,tonnes,4,4,,,too_few_values,,no
+germany,milk whole fresh cow,tonnes,4,4,,,too_few_values,,no
+germany,n,tonnes,17,17,germany,1.0000,attributable,usa and canada=0.06,no
+germany,p,tonnes,17,11,germany,0.7647,attributable,french morocco=0.41,no
+germany,sugar raw centrifugal,tonnes,32,32,germany,1.0000,attributable,usa=0.03,no
+germany,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+germany,wine,ha,15,12,germany,1.0000,attributable,usa=0.13,no
+germany,wine,tonnes,28,28,,,unattributable,yugoslavia=0.00,no
+germany,yarn of true hemp,ha,9,9,germany,1.0000,attributable,italy=0.33,no
+germany,yarn of true hemp,tonnes,4,4,,,too_few_values,,no
+ghana,cacao beans,ha,16,9,,,unattributable,british gold coast=0.50,no
+ghana,cotton lint,ha,13,8,german togoland,1.0000,attributable,italy=0.15,no
+ghana,cotton lint,tonnes,19,12,,,unattributable,british gold coast=0.53,no
+ghana,cotton seed,ha,3,3,,,too_few_values,,no
+ghana,cotton seed,tonnes,9,9,german togoland,1.0000,attributable,hungary=0.22,no
+ghana,groundnuts with shell,ha,9,7,german togoland,1.0000,attributable,hungary=0.44,no
+ghana,groundnuts with shell,tonnes,12,11,german togoland,1.0000,attributable,italy=0.25,no
+ghana,rubber natural,ha,4,1,,,too_few_values,,no
+greece,cotton lint,ha,26,26,greece,1.0000,attributable,yugoslavia=0.12,no
+greece,cotton seed,ha,18,18,greece,1.0000,attributable,yugoslavia=0.17,no
+greece,cotton seed,tonnes,20,20,greece,1.0000,attributable,venezuela=0.10,no
+greece,eggs hen in shell,tonnes,7,7,,,too_few_values,,no
+greece,fertilizer mixed,tonnes,2,2,,,too_few_values,,no
+greece,grapes,tonnes,10,7,,,unattributable,italian dodecanese islands=0.40,no
+greece,lemons and limes,tonnes,1,1,,,too_few_values,,no
+greece,other berries and fruits of the genus vaccinium n e c,tonnes,7,7,,,too_few_values,,no
+greece,other citrus fruit n e c,tonnes,10,7,greece,1.0000,attributable,british cyprus=0.50,no
+greece,p,tonnes,4,4,,,too_few_values,,no
+greece,raisins,ha,6,6,,,too_few_values,,no
+greece,raisins,tonnes,16,15,greece,1.0000,attributable,yugoslavia=0.06,no
+greece,rye,ha,1,1,,,too_few_values,,no
+greece,silk worm cocoons reelable,tonnes,11,10,,,unattributable,greece=0.27,no
+greece,wine,ha,14,13,greece,0.9286,attributable,total general excluding the ussr=0.14,no
+greece,wine,tonnes,23,23,,,unattributable,lithuania=0.04,no
+grenada,cacao beans,ha,7,2,,,too_few_values,,no
+grenada,cacao beans,tonnes,31,30,british grenada,1.0000,attributable,czechoslovakia=0.13,no
+grenada,cotton lint,ha,18,9,british grenada,1.0000,attributable,austria=0.33,no
+grenada,cotton lint,tonnes,31,20,british grenada,1.0000,attributable,british cyprus=0.39,no
+grenada,cotton seed,ha,12,4,,,too_few_distinct,,no
+grenada,cotton seed,tonnes,18,10,british grenada,1.0000,attributable,french algeria=0.44,no
+grenada,lemons and limes,ha,4,2,,,too_few_values,,no
+guadeloupe,cacao beans,ha,22,6,french guadeloupe,1.0000,attributable,austria=0.50,no
+guadeloupe,cacao beans,tonnes,30,21,french guadeloupe,1.0000,attributable,british southern rhodesia=0.30,no
+guadeloupe,coffee green,ha,23,8,french guadeloupe,0.8261,attributable,total=0.43,no
+guadeloupe,coffee green,tonnes,30,25,french guadeloupe,0.6000,attributable,french guadeloupe and dependencies=0.40,no
+guadeloupe,cotton lint,ha,14,8,,,unattributable,french guadeloupe=0.50,no
+guadeloupe,cotton lint,tonnes,12,8,french guadeloupe,0.7500,attributable,french algeria=0.50,no
+guadeloupe,cotton seed,ha,10,4,,,too_few_distinct,,no
+guadeloupe,cotton seed,tonnes,15,9,french guadeloupe,0.6000,attributable,french guadeloupe and dependencies: marie‑galante=0.47,no
+guadeloupe,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+guatemala,butter cow milk,tonnes,6,3,,,too_few_values,,no
+guatemala,cacao beans,ha,15,9,guatemala,1.0000,attributable,french tonkin=0.53,no
+guatemala,cacao beans,tonnes,17,15,guatemala,1.0000,attributable,british cyprus=0.29,no
+guatemala,cheese processed,tonnes,6,4,,,too_few_values,,no
+guatemala,coffee green,ha,3,3,,,too_few_values,,no
+guatemala,cotton lint,ha,15,10,guatemala,1.0000,attributable,french cochinchina=0.47,no
+guatemala,cotton lint,tonnes,4,2,,,too_few_values,,no
+guatemala,cotton seed,ha,15,11,guatemala,1.0000,attributable,french cochinchina=0.47,no
+guatemala,cotton seed,tonnes,13,12,guatemala,1.0000,attributable,austria=0.46,no
+guatemala,eggs hen in shell,tonnes,5,5,,,too_few_values,,no
+guatemala,groundnuts with shell,ha,6,5,,,too_few_values,,no
+guatemala,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+guatemala,milk whole fresh cow,tonnes,1,1,,,too_few_values,,no
+guatemala,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+guatemala,tobacco unmanufactured,ha,1,1,,,too_few_values,,no
+guatemala,tobacco unmanufactured,tonnes,7,7,,,too_few_values,,no
+guinea,coffee green,ha,6,3,,,too_few_values,,no
+guinea,coffee green,tonnes,7,5,,,too_few_values,,no
+guinea,cotton lint,ha,7,7,,,too_few_values,,no
+guinea,cotton lint,tonnes,7,7,,,too_few_values,,no
+guinea,cotton seed,ha,7,7,,,too_few_values,,no
+guinea,cotton seed,tonnes,7,7,,,too_few_values,,no
+guinea,groundnuts with shell,ha,10,9,french guinea,1.0000,attributable,poland=0.20,no
+guinea,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+guinea,sesame seed,ha,6,2,,,too_few_values,,no
+guinea,sesame seed,tonnes,16,13,french guinea,1.0000,attributable,british southern rhodesia=0.44,no
+guinea,tobacco unmanufactured,ha,4,1,,,too_few_values,,no
+guinea,tobacco unmanufactured,tonnes,12,12,french guinea,1.0000,attributable,uruguay=0.25,no
+guinea-bissau,groundnuts with shell,ha,3,2,,,too_few_values,,no
+guinea-bissau,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+guyana,cacao beans,ha,24,20,british guiana,1.0000,attributable,iran=0.21,no
+guyana,cacao beans,tonnes,3,1,,,too_few_values,,no
+guyana,coffee green,ha,31,22,british guiana,1.0000,attributable,british cyprus=0.35,no
+guyana,coffee green,tonnes,11,8,british guiana,1.0000,attributable,french annam=0.36,no
+guyana,lemons and limes,ha,6,5,,,too_few_values,,no
+haiti,cacao beans,ha,6,1,,,too_few_values,,no
+haiti,cacao beans,tonnes,24,19,haiti,1.0000,attributable,hungary=0.17,no
+haiti,castor beans seed,tonnes,4,4,,,too_few_values,,no
+haiti,coffee green,ha,1,1,,,too_few_values,,no
+haiti,coffee green,tonnes,2,2,,,too_few_values,,no
+haiti,cotton lint,ha,6,6,,,too_few_values,,no
+haiti,cotton seed,ha,6,6,,,too_few_values,,no
+haiti,cotton seed,tonnes,16,14,haiti,1.0000,attributable,czechoslovakia=0.31,no
+haiti,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+honduras,coffee green,tonnes,2,2,,,too_few_values,,no
+honduras,tobacco unmanufactured,ha,1,1,,,too_few_values,,no
+hungary,butter cow milk,tonnes,4,4,,,too_few_values,,no
+hungary,cheese processed,tonnes,4,3,,,too_few_values,,no
+hungary,fertilizer mixed,tonnes,3,3,,,too_few_values,,no
+hungary,grapes,tonnes,6,6,,,too_few_values,,no
+hungary,hops,ha,4,4,,,too_few_values,,no
+hungary,hops,tonnes,1,1,,,too_few_values,,no
+hungary,milk whole fresh cow,tonnes,4,4,,,too_few_values,,no
+hungary,n,tonnes,4,4,,,too_few_values,,no
+hungary,p,tonnes,4,4,,,too_few_values,,no
+hungary,silk worm cocoons reelable,tonnes,21,20,hungary,1.0000,attributable,french tunisia=0.05,no
+hungary,sugar raw centrifugal,tonnes,29,29,hungary,1.0000,attributable,japan=0.03,no
+hungary,sunflower seed,tonnes,1,1,,,too_few_values,,no
+hungary,wine,ha,17,16,hungary,1.0000,attributable,usa: california=0.06,no
+hungary,wine,tonnes,26,26,,,unattributable,yugoslavia=0.00,no
+hungary,yarn of true hemp,ha,13,13,hungary,1.0000,attributable,total=0.31,no
+hungary,yarn of true hemp,tonnes,19,19,hungary,1.0000,attributable,egypt=0.11,no
+india,coffee green,ha,17,17,,,unattributable,british india=0.18,no
+india,cotton lint,ha,25,22,,,unattributable,uruguay=0.16,no
+india,cotton seed,ha,12,10,,,unattributable,norway=0.33,no
+india,cotton seed,tonnes,13,13,,,unattributable,british southern rhodesia=0.31,no
+india,eggs hen in shell,tonnes,7,5,,,too_few_values,,no
+india,fertilizer mixed,tonnes,4,4,,,too_few_values,,no
+india,flax fibre and tow,ha,13,13,british india,1.0000,attributable,yugoslavia=0.00,no
+india,groundnuts with shell,ha,18,10,,,unattributable,french india=0.56,no
+india,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+india,jute,ha,21,21,british india,1.0000,attributable,yugoslavia=0.00,no
+india,jute,tonnes,21,21,british india,1.0000,attributable,yugoslavia=0.00,no
+india,k,tonnes,4,4,,,too_few_values,,no
+india,linseed,ha,8,8,british india,1.0000,attributable,[error] inde=0.12,no
+india,linseed,tonnes,1,1,,,too_few_values,,no
+india,n,tonnes,4,4,,,too_few_values,,no
+india,p,tonnes,4,4,,,too_few_values,,no
+india,rapeseed,ha,21,21,british india,1.0000,attributable,[error] inde=0.05,no
+india,rapeseed,tonnes,20,20,british india,1.0000,attributable,yugoslavia=0.00,no
+india,rubber natural,ha,4,4,,,too_few_values,,no
+india,sesame seed,ha,18,9,,,unattributable,new zealand=0.56,no
+india,sesame seed,tonnes,18,10,,,unattributable,french india=0.56,no
+india,sugar raw centrifugal,tonnes,21,21,british india,0.8571,attributable,yugoslavia=0.00,no
+india,tea,ha,19,19,,,unattributable,british india=0.42,no
+india,tea,tonnes,20,20,british india,0.8500,attributable,yugoslavia=0.00,no
+india,tobacco unmanufactured,ha,19,19,,,unattributable,british india=0.21,no
+iran,castor beans seed,tonnes,4,4,,,too_few_values,,no
+iran,cotton lint,ha,13,10,iran,1.0000,attributable,total=0.54,no
+iran,cotton seed,ha,13,10,iran,1.0000,attributable,total=0.54,no
+iran,cotton seed,tonnes,17,17,iran,1.0000,attributable,total=0.24,no
+iran,grapes,tonnes,4,3,,,too_few_values,,no
+iran,jute,ha,4,2,,,too_few_values,,no
+iran,jute,tonnes,6,6,,,too_few_values,,no
+iran,oranges,tonnes,4,4,,,too_few_values,,no
+iran,raisins,tonnes,12,10,iran,1.0000,attributable,yugoslavia=0.17,no
+iran,sesame seed,ha,4,3,,,too_few_values,,no
+iran,sesame seed,tonnes,6,6,,,too_few_values,,no
+iran,silk worm cocoons reelable,tonnes,8,8,iran,1.0000,attributable,venezuela=0.12,no
+iran,sugar raw centrifugal,tonnes,12,12,iran,1.0000,attributable,italy=0.25,no
+iran,tea,ha,6,5,,,too_few_values,,no
+iran,tea,tonnes,6,6,,,too_few_values,,no
+iran,tobacco unmanufactured,ha,14,8,iran,1.0000,attributable,total=0.43,no
+iran,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+iran,wine,tonnes,1,1,,,too_few_values,,no
+iraq,beans dry,ha,1,1,,,too_few_values,,no
+iraq,beans dry,tonnes,5,4,,,too_few_values,,no
+iraq,cotton lint,ha,11,8,british iraq,1.0000,attributable,total=0.27,no
+iraq,cotton lint,tonnes,20,16,british iraq,1.0000,attributable,total=0.20,no
+iraq,cotton seed,ha,11,8,british iraq,1.0000,attributable,total=0.27,no
+iraq,cotton seed,tonnes,19,18,british iraq,1.0000,attributable,bulgaria=0.37,no
+iraq,sesame seed,ha,9,7,british iraq,1.0000,attributable,romania=0.56,no
+iraq,sesame seed,tonnes,9,9,british iraq,1.0000,attributable,hungary=0.33,no
+iraq,silk worm cocoons reelable,tonnes,3,3,,,too_few_values,,no
+iraq,tobacco unmanufactured,ha,8,7,,,ambiguous,british iraq=1.00;total=0.62,no
+iraq,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+ireland,butter cow milk,tonnes,7,6,,,too_few_values,,no
+ireland,eggs hen in shell,tonnes,15,14,ireland,1.0000,attributable,yugoslavia=0.00,no
+ireland,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+ireland,n,tonnes,4,1,,,too_few_values,,no
+ireland,p,tonnes,4,4,,,too_few_values,,no
+ireland,rye,ha,3,2,,,too_few_values,,no
+ireland,rye,tonnes,2,2,,,too_few_values,,no
+ireland,sugar raw centrifugal,tonnes,16,16,ireland,1.0000,attributable,total=0.06,no
+ireland,tobacco unmanufactured,ha,6,1,,,too_few_values,,no
+israel,eggs hen in shell,tonnes,7,7,,,too_few_values,,no
+israel,grapefruit inc pomelos,tonnes,7,7,,,too_few_values,,no
+israel,grapes,ha,7,3,,,too_few_values,,no
+israel,grapes,tonnes,20,20,british palestine,1.0000,attributable,total=0.10,no
+israel,lemons and limes,tonnes,9,9,british palestine,1.0000,attributable,yugoslavia=0.22,no
+israel,milk whole fresh cow,tonnes,1,1,,,too_few_values,,no
+israel,oats,ha,6,1,,,too_few_values,,no
+israel,oats,tonnes,7,5,,,too_few_values,,no
+israel,oil olive virgin,tonnes,17,16,british palestine,1.0000,attributable,total=0.18,no
+israel,olives,ha,11,9,british palestine,1.0000,attributable,uruguay=0.27,no
+israel,olives,tonnes,20,20,british palestine,1.0000,attributable,usa=0.05,no
+israel,oranges,ha,5,4,,,too_few_values,,no
+israel,oranges,tonnes,9,9,british palestine,1.0000,attributable,romania=0.11,no
+israel,raisins,tonnes,1,1,,,too_few_values,,no
+israel,sesame seed,ha,11,9,british palestine,1.0000,attributable,total=0.36,no
+israel,sesame seed,tonnes,20,20,british palestine,1.0000,attributable,hungary=0.10,no
+israel,tobacco unmanufactured,ha,19,12,british palestine,1.0000,attributable,italy=0.53,no
+israel,tobacco unmanufactured,tonnes,19,19,british palestine,1.0000,attributable,turkey=0.05,no
+israel,wine,ha,4,2,,,too_few_values,,no
+israel,wine,tonnes,18,16,,,unattributable,yugoslavia=0.00,no
+italy,butter cow milk,tonnes,7,7,,,too_few_values,,no
+italy,cheese processed,tonnes,7,7,,,too_few_values,,no
+italy,cotton lint,ha,20,16,italy,1.0000,attributable,mexico=0.30,no
+italy,cotton seed,ha,20,16,italy,1.0000,attributable,mexico=0.30,no
+italy,cotton seed,tonnes,19,17,italy,1.0000,attributable,egypt=0.16,no
+italy,eggs hen in shell,tonnes,7,7,,,too_few_values,,no
+italy,fertilizer mixed,tonnes,17,17,italy,1.0000,attributable,yugoslavia=0.00,no
+italy,lemons and limes,ha,2,2,,,too_few_values,,no
+italy,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+italy,n,tonnes,16,16,italy,1.0000,attributable,yugoslavia=0.00,no
+italy,olives,ha,1,1,,,too_few_values,,no
+italy,oranges,ha,2,2,,,too_few_values,,no
+italy,other berries and fruits of the genus vaccinium n e c,tonnes,20,20,italy,1.0000,attributable,yugoslavia=0.00,no
+italy,other citrus fruit n e c,ha,4,1,,,too_few_values,,no
+italy,other citrus fruit n e c,tonnes,8,8,italy,0.6250,attributable,union of south africa=0.12,no
+italy,other sugar crops n e c,ha,7,1,,,too_few_values,,no
+italy,other sugar crops n e c,tonnes,7,7,,,too_few_values,,no
+italy,p,tonnes,16,16,italy,1.0000,attributable,yugoslavia=0.00,no
+italy,sesame seed,tonnes,1,1,,,too_few_values,,no
+italy,silk worm cocoons reelable,tonnes,33,33,italy,1.0000,attributable,yugoslavia=0.00,no
+italy,sugar raw centrifugal,tonnes,33,33,italy,1.0000,attributable,bulgaria=0.06,no
+italy,wine,ha,11,11,italy,1.0000,attributable,yugoslavia=0.00,no
+italy,wine,tonnes,33,33,,,unattributable,yugoslavia=0.00,no
+italy,yarn of true hemp,ha,13,13,italy,1.0000,attributable,turkey=0.08,no
+italy,yarn of true hemp,tonnes,26,26,italy,1.0000,attributable,denmark=0.04,no
+ivory coast,beans dry,ha,2,1,,,too_few_values,,no
+ivory coast,cacao beans,ha,14,12,french ivory coast,1.0000,attributable,total=0.21,no
+ivory coast,coffee green,ha,14,13,french ivory coast,1.0000,attributable,total=0.29,no
+ivory coast,cotton lint,ha,3,3,,,too_few_values,,no
+ivory coast,cotton lint,tonnes,3,3,,,too_few_values,,no
+ivory coast,cotton seed,ha,3,3,,,too_few_values,,no
+ivory coast,cotton seed,tonnes,3,3,,,too_few_values,,no
+ivory coast,eggs hen in shell,tonnes,4,4,,,too_few_values,,no
+ivory coast,groundnuts with shell,ha,14,11,french ivory coast,1.0000,attributable,usa=0.21,no
+ivory coast,groundnuts with shell,tonnes,12,9,french ivory coast,1.0000,attributable,italy=0.33,no
+ivory coast,sesame seed,ha,6,6,,,too_few_values,,no
+ivory coast,sesame seed,tonnes,4,4,,,too_few_values,,no
+ivory coast,tobacco unmanufactured,ha,11,5,,,too_few_distinct,,no
+ivory coast,tobacco unmanufactured,tonnes,11,7,french ivory coast,1.0000,attributable,total=0.45,no
+jamaica,cacao beans,ha,20,20,british jamaica,1.0000,attributable,total=0.05,no
+jamaica,cacao beans,tonnes,29,25,british jamaica,1.0000,attributable,australia=0.14,no
+jamaica,coffee green,ha,20,20,british jamaica,1.0000,attributable,usa=0.05,no
+jamaica,coffee green,tonnes,28,27,british jamaica,1.0000,attributable,uruguay=0.11,no
+jamaica,cotton lint,ha,20,17,british jamaica,0.6500,attributable,total=0.15,no
+jamaica,cotton lint,tonnes,14,13,,,unattributable,british jamaica=0.50,no
+jamaica,cotton seed,ha,7,5,,,too_few_values,,no
+jamaica,cotton seed,tonnes,7,6,,,too_few_values,,no
+jamaica,grapefruit inc pomelos,ha,2,2,,,too_few_values,,no
+jamaica,grapefruit inc pomelos,tonnes,14,13,british jamaica,1.0000,attributable,british cyprus=0.36,no
+jamaica,lemons and limes,tonnes,4,2,,,too_few_values,,no
+jamaica,oranges,ha,2,2,,,too_few_values,,no
+jamaica,oranges,tonnes,14,14,british jamaica,1.0000,attributable,british cyprus=0.29,no
+jamaica,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+jamaica,tobacco unmanufactured,ha,13,13,british jamaica,1.0000,attributable,french algeria=0.15,no
+jamaica,tobacco unmanufactured,tonnes,3,3,,,too_few_values,,no
+japan,beans dry,ha,5,5,,,too_few_values,,no
+japan,beans dry,tonnes,5,5,,,too_few_values,,no
+japan,cotton lint,ha,22,20,japan,1.0000,attributable,french algeria=0.18,no
+japan,cotton lint,tonnes,23,21,japan,1.0000,attributable,british ceylon=0.17,no
+japan,cotton seed,ha,11,8,japan,1.0000,attributable,french algeria=0.45,no
+japan,cotton seed,tonnes,10,9,japan,1.0000,attributable,french cambodia=0.30,no
+japan,eggs hen in shell,tonnes,11,11,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,fertilizer mixed,tonnes,16,16,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,flax fibre and tow,ha,23,21,japan,1.0000,attributable,yugoslavia=0.09,no
+japan,flax fibre and tow,tonnes,24,24,japan,1.0000,attributable,czechoslovakia=0.08,no
+japan,grapes,ha,6,3,,,too_few_values,,no
+japan,grapes,tonnes,22,22,japan,1.0000,attributable,total=0.05,no
+japan,groundnuts with shell,ha,11,8,japan,1.0000,attributable,total=0.36,no
+japan,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+japan,hemp tow waste,ha,12,12,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,jute,ha,16,13,japan,1.0000,attributable,yugoslavia=0.25,no
+japan,jute,tonnes,16,14,japan,1.0000,attributable,japanese taiwan=0.19,no
+japan,k,tonnes,3,3,,,too_few_values,,no
+japan,lemons and limes,ha,3,1,,,too_few_values,,no
+japan,lemons and limes,tonnes,4,3,,,too_few_values,,no
+japan,linseed,ha,8,8,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,linseed,tonnes,18,18,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,n,tonnes,16,15,japan,1.0000,attributable,switzerland=0.19,no
+japan,oranges,ha,7,5,,,too_few_values,,no
+japan,oranges,tonnes,7,7,,,too_few_values,,no
+japan,other berries and fruits of the genus vaccinium n e c,ha,11,11,japan,1.0000,attributable,total=0.09,no
+japan,other sugar crops n e c,ha,3,2,,,too_few_values,,no
+japan,other sugar crops n e c,tonnes,3,3,,,too_few_values,,no
+japan,p,tonnes,16,16,japan,1.0000,attributable,british saint vincent=0.06,no
+japan,rapeseed,ha,25,24,japan,1.0000,attributable,total=0.04,no
+japan,rapeseed,tonnes,30,30,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,sesame seed,ha,11,8,japan,1.0000,attributable,french cambodia=0.36,no
+japan,sesame seed,tonnes,14,13,japan,1.0000,attributable,italy=0.21,no
+japan,silk worm cocoons reelable,tonnes,32,32,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,soybeans,ha,9,9,japan,1.0000,attributable,total south hemisphere aggregated=0.11,no
+japan,soybeans,tonnes,13,13,japan,1.0000,attributable,yugoslavia=0.00,no
+japan,sugar raw centrifugal,tonnes,26,26,japan,1.0000,attributable,total south hemisphere aggregated=0.04,no
+japan,tangerines mandarins clementines satsumas,ha,7,7,,,too_few_values,,no
+japan,tangerines mandarins clementines satsumas,tonnes,7,7,,,too_few_values,,no
+japan,tea,ha,26,22,japan,1.0000,attributable,uk: england and wales=0.08,no
+japan,tobacco unmanufactured,ha,27,24,japan,1.0000,attributable,greece=0.11,no
+japan,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+japan,wine,tonnes,5,5,,,too_few_values,,no
+japan,yarn of true hemp,ha,12,9,japan,1.0000,attributable,us philippines=0.33,no
+japan,yarn of true hemp,tonnes,22,21,japan,1.0000,attributable,us virgin islands=0.05,no
+jordan,eggs hen in shell,tonnes,8,7,british transjordan,1.0000,attributable,yugoslavia=0.00,no
+jordan,grapes,ha,1,1,,,too_few_values,,no
+jordan,grapes,tonnes,4,4,,,too_few_values,,no
+jordan,oil olive virgin,tonnes,1,1,,,too_few_values,,no
+jordan,olives,tonnes,1,1,,,too_few_values,,no
+jordan,raisins,tonnes,3,2,,,too_few_values,,no
+jordan,sesame seed,tonnes,8,6,,,ambiguous,british transjordan=1.00;french morocco=0.75;new zealand=0.62,no
+jordan,tobacco unmanufactured,ha,1,1,,,too_few_values,,no
+jordan,tobacco unmanufactured,tonnes,10,10,british transjordan,1.0000,attributable,usa: hawaii=0.10,no
+kenya,beans dry,ha,9,3,,,too_few_distinct,,no
+kenya,beans dry,tonnes,2,1,,,too_few_values,,no
+kenya,coffee green,ha,15,14,british kenya,1.0000,attributable,total=0.20,no
+kenya,cotton lint,tonnes,16,15,british kenya,1.0000,attributable,italy=0.25,no
+kenya,cotton seed,tonnes,17,17,british kenya,1.0000,attributable,spain=0.12,no
+kenya,eggs hen in shell,tonnes,5,3,,,too_few_values,,no
+kenya,flax fibre and tow,ha,7,6,,,too_few_values,,no
+kenya,flax fibre and tow,tonnes,7,7,,,too_few_values,,no
+kenya,groundnuts with shell,tonnes,17,17,british kenya,1.0000,attributable,french india=0.18,no
+kenya,linseed,ha,3,3,,,too_few_values,,no
+kenya,linseed,tonnes,4,4,,,too_few_values,,no
+kenya,oats,ha,4,2,,,too_few_values,,no
+kenya,oats,tonnes,3,3,,,too_few_values,,no
+kenya,sesame seed,tonnes,16,16,british kenya,1.0000,attributable,british cyprus=0.25,no
+kenya,sugar raw centrifugal,tonnes,8,8,british kenya,1.0000,attributable,switzerland=0.25,no
+kenya,tea,ha,15,8,british kenya,1.0000,attributable,french annam=0.40,no
+kenya,tea,tonnes,5,5,,,too_few_values,,no
+kiribati,p,tonnes,4,4,,,too_few_values,,no
+latvia,butter cow milk,tonnes,1,1,,,too_few_values,,no
+latvia,cheese processed,tonnes,1,1,,,too_few_values,,no
+latvia,eggs hen in shell,tonnes,2,2,,,too_few_values,,no
+latvia,p,tonnes,4,4,,,too_few_values,,no
+latvia,sugar raw centrifugal,tonnes,16,11,latvia,1.0000,attributable,lithuania=0.38,no
+latvia,yarn of true hemp,ha,1,1,,,too_few_values,,no
+latvia,yarn of true hemp,tonnes,1,1,,,too_few_values,,no
+lebanon,beans dry,ha,4,3,,,too_few_values,,no
+lebanon,beans dry,tonnes,4,4,,,too_few_values,,no
+lebanon,butter cow milk,tonnes,5,1,,,too_few_values,,no
+lebanon,cheese processed,tonnes,5,2,,,too_few_values,,no
+lebanon,eggs hen in shell,tonnes,3,3,,,too_few_values,,no
+lebanon,grapes,ha,6,3,,,too_few_values,,no
+lebanon,grapes,tonnes,6,5,,,too_few_values,,no
+lebanon,groundnuts with shell,ha,1,1,,,too_few_values,,no
+lebanon,groundnuts with shell,tonnes,3,3,,,too_few_values,,no
+lebanon,milk whole fresh cow,tonnes,1,1,,,too_few_values,,no
+lebanon,oats,ha,4,1,,,too_few_values,,no
+lebanon,oats,tonnes,6,5,,,too_few_values,,no
+lebanon,oil olive virgin,tonnes,4,4,,,too_few_values,,no
+lebanon,olives,ha,4,2,,,too_few_values,,no
+lebanon,olives,tonnes,6,6,,,too_few_values,,no
+lebanon,oranges,ha,5,2,,,too_few_values,,no
+lebanon,oranges,tonnes,5,5,,,too_few_values,,no
+lebanon,other berries and fruits of the genus vaccinium n e c,ha,3,2,,,too_few_values,,no
+lebanon,other berries and fruits of the genus vaccinium n e c,tonnes,3,3,,,too_few_values,,no
+lebanon,sesame seed,ha,2,2,,,too_few_values,,no
+lebanon,sesame seed,tonnes,4,4,,,too_few_values,,no
+lebanon,silk worm cocoons reelable,tonnes,6,5,,,too_few_values,,no
+lebanon,tobacco unmanufactured,ha,6,1,,,too_few_values,,no
+lebanon,tobacco unmanufactured,tonnes,7,7,,,too_few_values,,no
+lebanon,wine,ha,4,2,,,too_few_values,,no
+lebanon,wine,tonnes,8,8,,,unattributable,yugoslavia=0.00,no
+liberia,coffee green,tonnes,2,2,,,too_few_values,,no
+liberia,rubber natural,ha,7,6,,,too_few_values,,no
+libya,grapes,ha,8,7,,,unattributable,total=0.50,no
+libya,grapes,tonnes,6,6,,,too_few_values,,no
+libya,oil olive virgin,tonnes,18,16,italian libya,0.6111,attributable,italy=0.28,no
+libya,olives,ha,8,8,,,unattributable,italian libya=0.50,no
+libya,olives,tonnes,10,10,,,unattributable,italian libya=0.40,no
+libya,other berries and fruits of the genus vaccinium n e c,ha,6,5,,,too_few_values,,no
+libya,other berries and fruits of the genus vaccinium n e c,tonnes,4,2,,,too_few_values,,no
+libya,silk worm cocoons reelable,tonnes,5,5,,,too_few_values,,no
+libya,tobacco unmanufactured,ha,7,4,,,too_few_values,,no
+libya,tobacco unmanufactured,tonnes,6,6,,,too_few_values,,no
+libya,wine,ha,6,6,,,too_few_values,,no
+libya,wine,tonnes,7,7,,,too_few_values,,no
+lithuania,butter cow milk,tonnes,1,1,,,too_few_values,,no
+lithuania,milk whole fresh cow,tonnes,1,1,,,too_few_values,,no
+lithuania,p,tonnes,4,4,,,too_few_values,,no
+lithuania,sugar raw centrifugal,tonnes,15,10,lithuania,1.0000,attributable,latvia=0.40,no
+luxembourg,eggs hen in shell,tonnes,4,4,,,too_few_values,,no
+luxembourg,flax fibre and tow,ha,7,6,,,too_few_values,,no
+luxembourg,flax fibre and tow,tonnes,2,2,,,too_few_values,,no
+luxembourg,hemp tow waste,ha,5,4,,,too_few_values,,no
+luxembourg,p,tonnes,12,12,luxembourg,1.0000,attributable,british nauru=0.08,no
+luxembourg,rye,ha,6,4,,,too_few_values,,no
+luxembourg,rye,tonnes,5,4,,,too_few_values,,no
+luxembourg,wine,ha,9,9,luxembourg,1.0000,attributable,french cochinchina=0.22,no
+luxembourg,wine,tonnes,32,32,,,unattributable,yugoslavia=0.00,no
+madagascar,beans dry,ha,12,10,french madagascar,1.0000,attributable,usa: california=0.25,no
+madagascar,beans dry,tonnes,12,11,french madagascar,1.0000,attributable,yugoslavia=0.17,no
+madagascar,cacao beans,ha,9,4,,,too_few_distinct,,no
+madagascar,cacao beans,tonnes,15,5,,,too_few_distinct,,no
+madagascar,castor beans seed,ha,7,4,,,too_few_values,,no
+madagascar,castor beans seed,tonnes,7,7,,,too_few_values,,no
+madagascar,coffee green,ha,25,20,french madagascar,1.0000,attributable,total=0.12,no
+madagascar,cotton lint,ha,6,5,,,too_few_values,,no
+madagascar,cotton lint,tonnes,4,3,,,too_few_values,,no
+madagascar,cotton seed,ha,6,5,,,too_few_values,,no
+madagascar,cotton seed,tonnes,4,4,,,too_few_values,,no
+madagascar,eggs hen in shell,tonnes,9,6,french madagascar,0.6667,attributable,yugoslavia=0.00,no
+madagascar,grapes,ha,6,4,,,too_few_values,,no
+madagascar,grapes,tonnes,2,2,,,too_few_values,,no
+madagascar,groundnuts with shell,ha,16,12,french madagascar,1.0000,attributable,hungary=0.44,no
+madagascar,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+madagascar,p,tonnes,4,4,,,too_few_values,,no
+madagascar,silk worm cocoons reelable,tonnes,4,4,,,too_few_values,,no
+madagascar,sugar raw centrifugal,tonnes,18,15,french madagascar,1.0000,attributable,czechoslovakia=0.22,no
+madagascar,tobacco unmanufactured,ha,23,16,french madagascar,1.0000,attributable,total=0.39,no
+madagascar,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+madagascar,wine,ha,6,2,,,too_few_values,,no
+madagascar,wine,tonnes,12,4,,,too_few_distinct,,no
+malawi,coffee green,ha,25,21,british nyasaland,1.0000,attributable,british cyprus=0.24,no
+malawi,coffee green,tonnes,22,20,british nyasaland,1.0000,attributable,sweden=0.18,no
+malawi,cotton lint,ha,30,27,british nyasaland,1.0000,attributable,hungary=0.23,no
+malawi,cotton lint,tonnes,30,26,british nyasaland,1.0000,attributable,austria=0.23,no
+malawi,cotton seed,ha,19,16,british nyasaland,1.0000,attributable,hungary=0.37,no
+malawi,cotton seed,tonnes,19,17,british nyasaland,1.0000,attributable,british cyprus=0.32,no
+malawi,groundnuts with shell,ha,13,8,british nyasaland,1.0000,attributable,french cochinchina=0.46,no
+malawi,groundnuts with shell,tonnes,13,10,british nyasaland,1.0000,attributable,netherlands=0.38,no
+malawi,rubber natural,ha,13,2,,,too_few_distinct,,no
+malawi,tea,ha,32,24,british nyasaland,1.0000,attributable,total=0.25,no
+malawi,tea,tonnes,3,3,,,too_few_values,,no
+malawi,tobacco unmanufactured,ha,30,22,british nyasaland,1.0000,attributable,italy=0.27,no
+malawi,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+mali,cotton lint,ha,5,5,,,too_few_values,,no
+mali,cotton lint,tonnes,6,6,,,too_few_values,,no
+mali,cotton seed,ha,5,5,,,too_few_values,,no
+mali,cotton seed,tonnes,5,5,,,too_few_values,,no
+mali,groundnuts with shell,ha,8,8,french sudan,1.0000,attributable,total=0.38,no
+mali,tobacco unmanufactured,ha,9,7,french sudan,0.8889,attributable,japan=0.44,no
+mali,tobacco unmanufactured,tonnes,9,8,french sudan,0.8889,attributable,turkey=0.11,no
+malta,cotton lint,ha,26,22,british malta,1.0000,attributable,british ceylon=0.23,no
+malta,cotton lint,tonnes,8,4,,,too_few_distinct,,no
+malta,cotton seed,ha,13,9,british malta,1.0000,attributable,british barbados=0.46,no
+malta,cotton seed,tonnes,13,9,british malta,1.0000,attributable,sweden=0.46,no
+malta,eggs hen in shell,tonnes,2,2,,,too_few_values,,no
+malta,oranges,ha,4,2,,,too_few_values,,no
+malta,oranges,tonnes,10,6,british malta,1.0000,attributable,france=0.50,no
+malta,wine,ha,15,8,british malta,1.0000,attributable,switzerland=0.47,no
+malta,wine,tonnes,19,18,,,unattributable,yugoslavia=0.00,no
+martinique,cacao beans,ha,7,3,,,too_few_values,,no
+martinique,cacao beans,tonnes,29,21,french martinique,1.0000,attributable,british cyprus=0.34,no
+martinique,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+mauritania,beans dry,ha,11,7,,,ambiguous,french mauritania=1.00;total=0.73;mexico=0.64,no
+mauritania,beans dry,tonnes,11,9,french mauritania,1.0000,attributable,italy=0.55,no
+mauritania,cotton lint,ha,3,3,,,too_few_values,,no
+mauritania,cotton lint,tonnes,3,3,,,too_few_values,,no
+mauritania,cotton seed,ha,3,3,,,too_few_values,,no
+mauritania,cotton seed,tonnes,3,3,,,too_few_values,,no
+mauritania,groundnuts with shell,ha,18,8,french mauritania,1.0000,attributable,italy=0.56,no
+mauritania,groundnuts with shell,tonnes,19,16,french mauritania,1.0000,attributable,french annam=0.37,no
+mauritania,tobacco unmanufactured,ha,9,6,,,ambiguous,french mauritania=1.00;french madagascar=0.67;french algeria=0.67,no
+mauritania,tobacco unmanufactured,tonnes,14,12,french mauritania,1.0000,attributable,british southern rhodesia=0.50,no
+mauritius,coffee green,ha,10,7,british mauritius,1.0000,attributable,french tunisia=0.20,no
+mauritius,coffee green,tonnes,6,6,,,too_few_values,,no
+mauritius,groundnuts with shell,ha,11,4,,,too_few_distinct,,no
+mauritius,groundnuts with shell,tonnes,18,5,,,too_few_distinct,,no
+mauritius,sugar raw centrifugal,tonnes,33,33,british mauritius,1.0000,attributable,bulgaria=0.03,no
+mauritius,tea,ha,28,11,british mauritius,1.0000,attributable,french algeria=0.39,no
+mauritius,tea,tonnes,27,19,british mauritius,1.0000,attributable,french mauritania=0.04,no
+mauritius,tobacco unmanufactured,ha,16,11,british mauritius,1.0000,attributable,french india=0.31,no
+mauritius,tobacco unmanufactured,tonnes,20,18,british mauritius,1.0000,attributable,french tunisia=0.15,no
+mexico,cacao beans,ha,14,10,mexico,1.0000,attributable,total=0.43,no
+mexico,castor beans seed,tonnes,6,6,,,too_few_values,,no
+mexico,coffee green,ha,3,2,,,too_few_values,,no
+mexico,cotton lint,ha,12,12,mexico,1.0000,attributable,netherlands=0.08,no
+mexico,cotton seed,ha,19,18,mexico,1.0000,attributable,finland=0.05,no
+mexico,cotton seed,tonnes,4,4,,,too_few_values,,no
+mexico,flax fibre and tow,ha,9,7,mexico,1.0000,attributable,total=0.44,no
+mexico,flax fibre and tow,tonnes,11,10,mexico,1.0000,attributable,italy=0.36,no
+mexico,lemons and limes,tonnes,1,1,,,too_few_values,,no
+mexico,oranges,tonnes,1,1,,,too_few_values,,no
+mexico,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+mexico,wine,tonnes,6,5,,,too_few_values,,no
+micronesia (federated states of),eggs hen in shell,tonnes,6,2,,,too_few_values,,no
+micronesia (federated states of),sugar raw centrifugal,tonnes,6,6,,,too_few_values,,no
+micronesia (federated states of),tobacco unmanufactured,ha,5,1,,,too_few_values,,no
+micronesia (federated states of),tobacco unmanufactured,tonnes,5,5,,,too_few_values,,no
+montserrat,cotton lint,ha,33,22,british montserrat,1.0000,attributable,british cyprus=0.33,no
+montserrat,cotton lint,tonnes,33,25,british montserrat,1.0000,attributable,british cyprus=0.27,no
+montserrat,cotton seed,ha,20,10,british montserrat,1.0000,attributable,british cyprus=0.55,no
+montserrat,cotton seed,tonnes,20,12,british montserrat,1.0000,attributable,us philippines=0.25,no
+montserrat,lemons and limes,ha,6,5,,,too_few_values,,no
+montserrat,lemons and limes,tonnes,15,8,british montserrat,1.0000,attributable,british cyprus=0.40,no
+montserrat,sugar raw centrifugal,tonnes,14,5,,,too_few_distinct,,no
+morocco,beans dry,ha,6,1,,,too_few_values,,no
+morocco,beans dry,tonnes,12,8,french morocco,1.0000,attributable,france=0.58,no
+morocco,cotton lint,ha,10,6,,,ambiguous,french morocco=1.00;british cyprus=0.70;french dahomey=0.60,no
+morocco,cotton lint,tonnes,9,7,,,ambiguous,french morocco=1.00;british southern rhodesia=0.67,no
+morocco,cotton seed,ha,12,7,,,ambiguous,french morocco=1.00;british cyprus=0.75,no
+morocco,cotton seed,tonnes,10,7,french morocco,1.0000,attributable,french annam=0.50,no
+morocco,eggs hen in shell,tonnes,7,4,,,too_few_values,,no
+morocco,flax fibre and tow,ha,19,17,french morocco,1.0000,attributable,total=0.21,no
+morocco,flax fibre and tow,tonnes,12,12,french morocco,1.0000,attributable,hungary=0.25,no
+morocco,grapes,ha,13,12,french morocco,1.0000,attributable,french algeria=0.23,no
+morocco,grapes,tonnes,8,8,french morocco,1.0000,attributable,italy=0.25,no
+morocco,hempseed,ha,3,3,,,too_few_values,,no
+morocco,lemons and limes,tonnes,1,1,,,too_few_values,,no
+morocco,linseed,ha,7,7,,,too_few_values,,no
+morocco,linseed,tonnes,14,14,french morocco,1.0000,attributable,paraguay=0.07,no
+morocco,oats,ha,7,6,,,too_few_values,,no
+morocco,oats,tonnes,7,7,,,too_few_values,,no
+morocco,oil olive virgin,tonnes,1,1,,,too_few_values,,no
+morocco,olives,tonnes,12,12,french morocco,1.0000,attributable,usa=0.08,no
+morocco,p,tonnes,17,6,french morocco,1.0000,attributable,france=0.59,no
+morocco,raisins,ha,1,1,,,too_few_values,,no
+morocco,raisins,tonnes,5,5,,,too_few_values,,no
+morocco,rye,ha,9,8,french morocco,1.0000,attributable,bulgaria=0.56,no
+morocco,rye,tonnes,9,8,french morocco,1.0000,attributable,austria=0.44,no
+morocco,sesame seed,ha,1,1,,,too_few_values,,no
+morocco,sesame seed,tonnes,1,1,,,too_few_values,,no
+morocco,silk worm cocoons reelable,tonnes,4,4,,,too_few_values,,no
+morocco,sunflower seed,ha,2,2,,,too_few_values,,no
+morocco,sunflower seed,tonnes,2,2,,,too_few_values,,no
+morocco,tobacco unmanufactured,ha,14,6,,,ambiguous,french morocco=1.00;new zealand=0.71;french india=0.71,no
+morocco,tobacco unmanufactured,tonnes,14,14,french morocco,1.0000,attributable,yugoslavia=0.00,no
+morocco,wine,ha,12,12,french morocco,1.0000,attributable,french equatorial africa=0.25,no
+morocco,yarn of true hemp,ha,6,6,,,too_few_values,,no
+morocco,yarn of true hemp,tonnes,3,3,,,too_few_values,,no
+mozambique,beans dry,ha,1,1,,,too_few_values,,no
+mozambique,beans dry,tonnes,1,1,,,too_few_values,,no
+mozambique,cotton lint,ha,11,9,portuguese mozambique: company concession,0.6364,attributable,portuguese mozambique: province=0.36,no
+mozambique,cotton lint,tonnes,10,8,portuguese mozambique: company concession,0.8000,attributable,yugoslavia=0.40,no
+mozambique,cotton seed,ha,6,6,,,too_few_values,,no
+mozambique,cotton seed,tonnes,6,6,,,too_few_values,,no
+mozambique,eggs hen in shell,tonnes,7,4,,,too_few_values,,no
+mozambique,groundnuts with shell,ha,3,3,,,too_few_values,,no
+mozambique,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+mozambique,sugar raw centrifugal,tonnes,7,7,,,too_few_values,,no
+mozambique,tea,ha,5,2,,,too_few_values,,no
+mozambique,tea,tonnes,5,3,,,too_few_values,,no
+mozambique,tobacco unmanufactured,ha,4,3,,,too_few_values,,no
+mozambique,tobacco unmanufactured,tonnes,5,4,,,too_few_values,,no
+myanmar,beans dry,ha,6,6,,,too_few_values,,no
+myanmar,cotton lint,ha,11,11,british burma,1.0000,attributable,total=0.18,no
+myanmar,cotton lint,tonnes,11,11,british burma,1.0000,attributable,hungary=0.18,no
+myanmar,cotton seed,ha,11,11,british burma,1.0000,attributable,total=0.18,no
+myanmar,cotton seed,tonnes,11,11,british burma,1.0000,attributable,uk: england and wales=0.09,no
+myanmar,groundnuts with shell,ha,11,11,british burma,1.0000,attributable,total=0.18,no
+myanmar,groundnuts with shell,tonnes,11,8,british burma,1.0000,attributable,brazil=0.09,no
+myanmar,rapeseed,ha,3,2,,,too_few_values,,no
+myanmar,rubber natural,ha,6,5,,,too_few_values,,no
+myanmar,sesame seed,ha,12,12,british burma,1.0000,attributable,british uganda=0.17,no
+myanmar,sesame seed,tonnes,10,10,british burma,1.0000,attributable,greece=0.10,no
+myanmar,tea,ha,5,1,,,too_few_values,,no
+myanmar,tobacco unmanufactured,ha,12,11,british burma,1.0000,attributable,total=0.25,no
+myanmar,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+namibia,tobacco unmanufactured,tonnes,8,8,german south west africa,1.0000,attributable,yugoslavia=0.12,no
+nauru,p,tonnes,15,11,british nauru,1.0000,attributable,uruguay=0.07,no
+nepal,jute,tonnes,18,16,nepal,1.0000,attributable,spain=0.17,no
+netherlands,butter cow milk,tonnes,7,7,,,too_few_values,,no
+netherlands,cheese processed,tonnes,7,7,,,too_few_values,,no
+netherlands,eggs hen in shell,tonnes,17,15,netherlands,1.0000,attributable,switzerland=0.06,no
+netherlands,grapes,ha,10,1,,,too_few_distinct,,no
+netherlands,hemp tow waste,ha,11,8,netherlands,1.0000,attributable,japan: karafuto prefecture=0.09,no
+netherlands,hops,ha,10,7,netherlands,1.0000,attributable,dutch new guinea=0.10,no
+netherlands,milk whole fresh cow,tonnes,4,4,,,too_few_values,,no
+netherlands,n,tonnes,13,10,netherlands,1.0000,attributable,paraguay=0.08,no
+netherlands,p,tonnes,16,16,netherlands,1.0000,attributable,mexico=0.06,no
+netherlands,sugar raw centrifugal,tonnes,33,33,netherlands,1.0000,attributable,yugoslavia=0.00,no
+netherlands,tobacco unmanufactured,ha,8,5,,,too_few_distinct,,no
+netherlands,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+netherlands,yarn of true hemp,tonnes,12,12,netherlands,1.0000,attributable,yugoslavia=0.00,no
+new caledonia,coffee green,ha,16,5,,,too_few_distinct,,no
+new caledonia,coffee green,tonnes,18,14,french new caledonia,1.0000,attributable,bulgaria=0.39,no
+new caledonia,cotton lint,ha,4,2,,,too_few_values,,no
+new caledonia,cotton lint,tonnes,6,4,,,too_few_values,,no
+new caledonia,cotton seed,ha,4,2,,,too_few_values,,no
+new caledonia,cotton seed,tonnes,7,4,,,too_few_values,,no
+new caledonia,p,tonnes,4,3,,,too_few_values,,no
+new zealand,butter cow milk,tonnes,7,7,,,too_few_values,,no
+new zealand,cheese processed,tonnes,7,7,,,too_few_values,,no
+new zealand,eggs hen in shell,tonnes,2,2,,,too_few_values,,no
+new zealand,flax fibre and tow,ha,17,11,new zealand,1.0000,attributable,austria=0.59,no
+new zealand,flax fibre and tow,tonnes,6,5,,,too_few_values,,no
+new zealand,grapes,ha,16,8,new zealand,1.0000,attributable,french algeria=0.38,no
+new zealand,hops,ha,27,17,new zealand,1.0000,attributable,french guadeloupe=0.30,no
+new zealand,hops,tonnes,8,8,new zealand,1.0000,attributable,yugoslavia=0.00,no
+new zealand,lemons and limes,tonnes,3,3,,,too_few_values,,no
+new zealand,linseed,ha,7,7,,,too_few_values,,no
+new zealand,linseed,tonnes,9,9,new zealand,1.0000,attributable,yugoslavia=0.00,no
+new zealand,milk whole fresh cow,tonnes,5,5,,,too_few_values,,no
+new zealand,oranges,tonnes,2,2,,,too_few_values,,no
+new zealand,p,tonnes,4,4,,,too_few_values,,no
+new zealand,rye,ha,14,11,new zealand,1.0000,attributable,uruguay=0.29,no
+new zealand,rye,tonnes,21,15,new zealand,1.0000,attributable,british cyprus=0.43,no
+new zealand,tobacco unmanufactured,ha,20,9,new zealand,1.0000,attributable,french morocco=0.55,no
+new zealand,tobacco unmanufactured,tonnes,15,15,new zealand,1.0000,attributable,germany=0.07,no
+new zealand,wine,ha,10,7,new zealand,1.0000,attributable,sweden=0.50,no
+new zealand,wine,tonnes,3,3,,,too_few_values,,no
+nicaragua,cacao beans,ha,4,3,,,too_few_values,,no
+nicaragua,cacao beans,tonnes,18,12,nicaragua,1.0000,attributable,british cyprus=0.44,no
+nicaragua,coffee green,ha,1,1,,,too_few_values,,no
+nicaragua,coffee green,tonnes,1,1,,,too_few_values,,no
+nicaragua,cotton lint,ha,7,4,,,too_few_values,,no
+nicaragua,cotton seed,ha,7,4,,,too_few_values,,no
+nicaragua,cotton seed,tonnes,7,7,,,too_few_values,,no
+nicaragua,eggs hen in shell,tonnes,2,1,,,too_few_values,,no
+nicaragua,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+nigeria,cotton lint,ha,9,3,,,too_few_distinct,,no
+nigeria,cotton lint,tonnes,1,1,,,too_few_values,,no
+nigeria,cotton seed,tonnes,17,16,british nigeria,1.0000,attributable,spain=0.06,no
+nigeria,groundnuts with shell,ha,2,2,,,too_few_values,,no
+nigeria,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+nigeria,rubber natural,ha,5,4,,,too_few_values,,no
+nigeria,sesame seed,ha,4,4,,,too_few_values,,no
+nigeria,sesame seed,tonnes,19,19,british nigeria,1.0000,attributable,norway=0.11,no
+norway,butter cow milk,tonnes,7,7,,,too_few_values,,no
+norway,cheese processed,tonnes,7,7,,,too_few_values,,no
+norway,eggs hen in shell,tonnes,10,10,norway,1.0000,attributable,yugoslavia=0.00,no
+norway,milk whole fresh cow,tonnes,2,2,,,too_few_values,,no
+norway,n,tonnes,15,14,norway,1.0000,attributable,sweden=0.07,no
+norway,no3,tonnes,13,13,norway,1.0000,attributable,yugoslavia=0.00,no
+norway,p,tonnes,14,14,norway,1.0000,attributable,yugoslavia=0.00,no
+palau,p,tonnes,13,9,japanese south pacific: palau-angaur,1.0000,attributable,france=0.15,no
+panama,cacao beans,tonnes,23,22,panama,1.0000,attributable,spain=0.13,no
+panama,coffee green,ha,1,1,,,too_few_values,,no
+panama,eggs hen in shell,tonnes,6,6,,,too_few_values,,no
+paraguay,beans dry,ha,1,1,,,too_few_values,,no
+paraguay,beans dry,tonnes,1,1,,,too_few_values,,no
+paraguay,coffee green,ha,2,2,,,too_few_values,,no
+paraguay,coffee green,tonnes,3,3,,,too_few_values,,no
+paraguay,cotton lint,ha,12,11,paraguay,1.0000,attributable,total=0.25,no
+paraguay,cotton lint,tonnes,4,4,,,too_few_values,,no
+paraguay,cotton seed,ha,12,11,paraguay,1.0000,attributable,total=0.25,no
+paraguay,cotton seed,tonnes,13,13,paraguay,1.0000,attributable,us puerto rico=0.08,no
+paraguay,groundnuts with shell,ha,2,2,,,too_few_values,,no
+paraguay,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+paraguay,lemons and limes,tonnes,6,3,,,too_few_values,,no
+paraguay,oranges,ha,1,1,,,too_few_values,,no
+paraguay,oranges,tonnes,2,2,,,too_few_values,,no
+paraguay,sugar raw centrifugal,tonnes,27,25,paraguay,1.0000,attributable,hungary=0.11,no
+paraguay,tangerines mandarins clementines satsumas,tonnes,2,2,,,too_few_values,,no
+peru,coffee green,tonnes,1,1,,,too_few_values,,no
+peru,cotton lint,ha,1,1,,,too_few_values,,no
+peru,cotton seed,ha,18,18,peru,1.0000,attributable,total=0.28,no
+peru,cotton seed,tonnes,1,1,,,too_few_values,,no
+peru,fertilizer mixed,tonnes,17,17,peru,1.0000,attributable,yugoslavia=0.00,no
+peru,grapes,ha,1,1,,,too_few_values,,no
+peru,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+peru,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+peru,wine,ha,3,2,,,too_few_values,,no
+peru,wine,tonnes,9,9,,,unattributable,yugoslavia=0.00,no
+philippines,cacao beans,ha,16,14,us philippines,1.0000,attributable,italy=0.25,no
+philippines,cacao beans,tonnes,16,14,us philippines,1.0000,attributable,spain=0.19,no
+philippines,coffee green,ha,16,13,us philippines,1.0000,attributable,italian eritrea=0.31,no
+philippines,coffee green,tonnes,20,17,us philippines,1.0000,attributable,new zealand=0.25,no
+philippines,cotton lint,ha,9,6,us philippines,1.0000,attributable,ireland=0.56,no
+philippines,cotton lint,tonnes,9,7,us philippines,1.0000,attributable,nicaragua=0.44,no
+philippines,cotton seed,ha,8,6,,,ambiguous,us philippines=1.00;ireland=0.62,no
+philippines,cotton seed,tonnes,8,8,us philippines,1.0000,attributable,japan=0.38,no
+philippines,eggs hen in shell,tonnes,9,9,us philippines,1.0000,attributable,yugoslavia=0.00,no
+philippines,grapefruit inc pomelos,ha,7,4,,,too_few_values,,no
+philippines,grapefruit inc pomelos,tonnes,7,7,,,too_few_values,,no
+philippines,groundnuts with shell,ha,11,8,us philippines,1.0000,attributable,total=0.36,no
+philippines,groundnuts with shell,tonnes,11,10,us philippines,1.0000,attributable,british southern rhodesia=0.18,no
+philippines,hemp tow waste,ha,7,7,,,too_few_values,,no
+philippines,manila fibre abaca,ha,13,13,us philippines,1.0000,attributable,france=0.08,no
+philippines,manila fibre abaca,tonnes,13,12,us philippines,1.0000,attributable,total general excluding the ussr=0.08,no
+philippines,oranges,ha,7,4,,,too_few_values,,no
+philippines,oranges,tonnes,7,7,,,too_few_values,,no
+philippines,rubber natural,ha,6,3,,,too_few_values,,no
+philippines,sugar raw centrifugal,tonnes,30,30,us philippines,0.9333,attributable,spanish spanish guinea=0.03,no
+philippines,tangerines mandarins clementines satsumas,ha,7,4,,,too_few_values,,no
+philippines,tangerines mandarins clementines satsumas,tonnes,7,6,,,too_few_values,,no
+philippines,tobacco unmanufactured,ha,26,25,us philippines,1.0000,attributable,total=0.08,no
+philippines,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+philippines,yarn of true hemp,tonnes,8,8,us philippines,1.0000,attributable,yugoslavia=0.00,no
+poland,hops,ha,1,1,,,too_few_values,,no
+poland,hops,tonnes,1,1,,,too_few_values,,no
+poland,k,tonnes,4,4,,,too_few_values,,no
+poland,n,tonnes,4,4,,,too_few_values,,no
+poland,p,tonnes,4,4,,,too_few_values,,no
+poland,soybeans,ha,3,2,,,too_few_values,,no
+poland,sugar raw centrifugal,tonnes,23,23,poland,1.0000,attributable,total general excluding the ussr=0.04,no
+poland,tobacco unmanufactured,ha,1,1,,,too_few_values,,no
+poland,yarn of true hemp,ha,13,11,poland,1.0000,attributable,italy=0.23,no
+poland,yarn of true hemp,tonnes,15,15,poland,1.0000,attributable,yugoslavia=0.07,no
+portugal,eggs hen in shell,tonnes,1,1,,,too_few_values,,no
+portugal,fertilizer mixed,tonnes,5,4,,,too_few_values,,no
+portugal,lemons and limes,tonnes,8,4,,,too_few_distinct,,no
+portugal,n,tonnes,8,7,portugal,1.0000,attributable,ireland=0.12,no
+portugal,olives,ha,1,1,,,too_few_values,,no
+portugal,oranges,tonnes,14,5,,,too_few_distinct,,no
+portugal,p,tonnes,15,13,portugal,1.0000,attributable,portuguese mozambique=0.07,no
+portugal,silk worm cocoons reelable,tonnes,1,1,,,too_few_values,,no
+portugal,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+portugal,wine,ha,4,1,,,too_few_values,,no
+portugal,wine,tonnes,29,29,,,unattributable,yugoslavia=0.00,no
+reunion,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+reunion,sugar raw centrifugal,tonnes,33,32,french reunion,1.0000,attributable,total=0.06,no
+reunion,tobacco unmanufactured,tonnes,11,8,french reunion,1.0000,attributable,total=0.27,no
+romania,cotton lint,ha,16,13,romania,1.0000,attributable,hungary=0.44,no
+romania,cotton lint,tonnes,1,1,,,too_few_values,,no
+romania,cotton seed,ha,16,13,romania,1.0000,attributable,hungary=0.44,no
+romania,cotton seed,tonnes,15,15,romania,1.0000,attributable,italian eritrea=0.33,no
+romania,fertilizer mixed,tonnes,4,4,,,too_few_values,,no
+romania,hops,ha,4,4,,,too_few_values,,no
+romania,n,tonnes,3,3,,,too_few_values,,no
+romania,p,tonnes,2,2,,,too_few_values,,no
+romania,silk worm cocoons reelable,tonnes,20,20,romania,1.0000,attributable,sweden=0.10,no
+romania,soybeans,ha,4,4,,,too_few_values,,no
+romania,sugar raw centrifugal,tonnes,29,29,romania,1.0000,attributable,switzerland=0.03,no
+romania,wine,ha,8,6,romania,1.0000,attributable,yugoslavia=0.00,no
+romania,wine,tonnes,28,28,,,unattributable,yugoslavia=0.00,no
+romania,yarn of true hemp,ha,13,11,romania,1.0000,attributable,poland=0.23,no
+romania,yarn of true hemp,tonnes,21,21,romania,1.0000,attributable,total south hemisphere aggregated=0.05,no
+saint kitts and nevis,cotton lint,ha,33,20,british saint christopher and nevis,1.0000,attributable,french algeria=0.30,no
+saint kitts and nevis,cotton lint,tonnes,33,26,british saint christopher and nevis,1.0000,attributable,british montserrat=0.24,no
+saint kitts and nevis,cotton seed,ha,20,9,british saint christopher and nevis,1.0000,attributable,french algeria=0.50,no
+saint kitts and nevis,cotton seed,tonnes,18,15,british saint christopher and nevis,1.0000,attributable,british cyprus=0.28,no
+saint kitts and nevis,sugar raw centrifugal,tonnes,32,32,british saint christopher and nevis,1.0000,attributable,total=0.03,no
+saint lucia,cacao beans,ha,28,6,british saint lucia,1.0000,attributable,italy=0.39,no
+saint lucia,cacao beans,tonnes,31,22,british saint lucia,1.0000,attributable,france=0.26,no
+saint lucia,lemons and limes,ha,13,3,,,too_few_distinct,,no
+saint lucia,lemons and limes,tonnes,14,9,british saint lucia,1.0000,attributable,portugal=0.43,no
+saint lucia,sugar raw centrifugal,tonnes,27,25,british saint lucia,1.0000,attributable,british nigeria=0.07,no
+saint vincent and the grenadines,cacao beans,ha,19,6,british saint vincent,1.0000,attributable,british sierra leone=0.26,no
+saint vincent and the grenadines,cacao beans,tonnes,20,20,british saint vincent,1.0000,attributable,usa: hawaii=0.10,no
+saint vincent and the grenadines,cotton lint,ha,33,23,british saint vincent,1.0000,attributable,british cyprus=0.33,no
+saint vincent and the grenadines,cotton lint,tonnes,32,24,british saint vincent,1.0000,attributable,british cyprus=0.28,no
+saint vincent and the grenadines,cotton seed,ha,20,10,british saint vincent,1.0000,attributable,british cyprus=0.55,no
+saint vincent and the grenadines,cotton seed,tonnes,18,15,british saint vincent,1.0000,attributable,guatemala=0.28,no
+saint vincent and the grenadines,grapefruit inc pomelos,tonnes,5,1,,,too_few_values,,no
+saint vincent and the grenadines,groundnuts with shell,ha,7,5,,,too_few_values,,no
+saint vincent and the grenadines,groundnuts with shell,tonnes,13,8,,,ambiguous,british saint vincent=1.00;british cyprus=0.77,no
+saint vincent and the grenadines,lemons and limes,tonnes,13,3,,,too_few_distinct,,no
+saint vincent and the grenadines,oranges,tonnes,5,1,,,too_few_values,,no
+saint vincent and the grenadines,sugar raw centrifugal,tonnes,14,12,british saint vincent,1.0000,attributable,yugoslavia=0.29,no
+samoa,cacao beans,ha,13,7,new zealand western samoa,0.6923,attributable,us philippines=0.31,no
+samoa,cacao beans,tonnes,26,25,new zealand western samoa,0.7308,attributable,british samoa=0.27,no
+sao tome and principe,coffee green,tonnes,10,9,,,ambiguous,portuguese sao tome and principe=1.00;british southern rhodesia=0.60;british montserrat=0.60,no
+senegal,beans dry,ha,12,11,french senegal,1.0000,attributable,total=0.33,no
+senegal,beans dry,tonnes,12,11,french senegal,1.0000,attributable,total=0.58,no
+senegal,cotton lint,ha,8,6,french senegal,1.0000,attributable,french annam=0.38,no
+senegal,cotton lint,tonnes,7,5,,,too_few_values,,no
+senegal,cotton seed,ha,8,6,french senegal,1.0000,attributable,french annam=0.38,no
+senegal,cotton seed,tonnes,7,5,,,too_few_values,,no
+senegal,eggs hen in shell,tonnes,4,3,,,too_few_values,,no
+senegal,groundnuts with shell,ha,19,18,french senegal,0.7895,attributable,total=0.26,no
+senegal,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+senegal,other citrus fruit n e c,ha,2,1,,,too_few_values,,no
+senegal,other citrus fruit n e c,tonnes,4,1,,,too_few_values,,no
+senegal,tobacco unmanufactured,ha,4,4,,,too_few_values,,no
+senegal,tobacco unmanufactured,tonnes,4,4,,,too_few_values,,no
+serbia,beans dry,ha,7,4,,,too_few_values,,no
+serbia,beans dry,tonnes,7,6,,,too_few_values,,no
+serbia,castor beans seed,tonnes,1,1,,,too_few_values,,no
+serbia,cotton lint,ha,14,12,yugoslavia,0.7143,attributable,french tonkin=0.36,no
+serbia,cotton lint,tonnes,14,13,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,cotton seed,ha,15,13,yugoslavia,0.7333,attributable,total=0.33,no
+serbia,cotton seed,tonnes,14,13,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,flax fibre and tow,ha,17,15,,,unattributable,yugoslavia=0.59,no
+serbia,flax fibre and tow,tonnes,16,15,yugoslavia,0.6250,attributable,"kingdom of serbs, croats and slovenes=0.38",no
+serbia,grapes,ha,9,9,yugoslavia,0.7778,attributable,"kingdom of serbs, croats and slovenes=0.22",no
+serbia,grapes,tonnes,5,5,,,too_few_values,,no
+serbia,hemp tow waste,ha,7,7,,,too_few_values,,no
+serbia,hemp tow waste,tonnes,2,2,,,too_few_values,,no
+serbia,hempseed,tonnes,10,10,yugoslavia,1.0000,attributable,bulgaria=0.30,no
+serbia,hops,ha,14,14,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,hops,tonnes,14,14,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,lemons and limes,tonnes,6,2,,,too_few_values,,no
+serbia,linseed,tonnes,4,4,,,too_few_values,,no
+serbia,n,tonnes,4,4,,,too_few_values,,no
+serbia,oats,ha,2,2,,,too_few_values,,no
+serbia,oats,tonnes,6,6,,,too_few_values,,no
+serbia,oil olive virgin,tonnes,20,18,yugoslavia,0.8000,attributable,total=0.20,no
+serbia,olives,tonnes,7,7,,,too_few_values,,no
+serbia,oranges,tonnes,6,5,,,too_few_values,,no
+serbia,p,tonnes,3,3,,,too_few_values,,no
+serbia,rapeseed,ha,14,13,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,rapeseed,tonnes,16,16,yugoslavia,0.7500,attributable,"kingdom of serbs, croats and slovenes=0.25",no
+serbia,rye,ha,22,20,yugoslavia,0.7273,attributable,"kingdom of serbs, croats and slovenes=0.27",no
+serbia,rye,tonnes,22,22,yugoslavia,0.7273,attributable,"kingdom of serbs, croats and slovenes=0.27",no
+serbia,sesame seed,ha,10,6,,,ambiguous,yugoslavia=1.00;ireland=0.60;british cyprus=0.60,no
+serbia,sesame seed,tonnes,10,8,yugoslavia,1.0000,attributable,france=0.40,no
+serbia,silk worm cocoons reelable,tonnes,16,15,yugoslavia,0.6875,attributable,"kingdom of serbs, croats and slovenes=0.31",no
+serbia,soybeans,ha,7,5,,,too_few_values,,no
+serbia,soybeans,tonnes,7,7,,,too_few_values,,no
+serbia,sugar raw centrifugal,tonnes,25,25,yugoslavia,0.6000,attributable,"kingdom of serbs, croats and slovenes=0.40",no
+serbia,sunflower seed,ha,1,1,,,too_few_values,,no
+serbia,sunflower seed,tonnes,1,1,,,too_few_values,,no
+serbia,tobacco unmanufactured,ha,17,16,yugoslavia,0.6471,attributable,"kingdom of serbs, croats and slovenes=0.35",no
+serbia,tobacco unmanufactured,tonnes,17,17,yugoslavia,0.6471,attributable,"kingdom of serbs, croats and slovenes=0.35",no
+serbia,wheat,ha,14,13,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,wheat,tonnes,14,14,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,wine,ha,14,14,yugoslavia,0.7143,attributable,"kingdom of serbs, croats and slovenes=0.29",no
+serbia,wine,tonnes,18,18,,,unattributable,yugoslavia=0.00,no
+serbia,yarn of true hemp,ha,13,13,yugoslavia,0.6923,attributable,"kingdom of serbs, croats and slovenes=0.31",no
+serbia,yarn of true hemp,tonnes,18,18,,,unattributable,yugoslavia=0.50,no
+seychelles,cacao beans,tonnes,7,6,,,too_few_values,,no
+seychelles,fertilizer mixed,tonnes,11,11,british seychelles,1.0000,attributable,yugoslavia=0.00,no
+sierra leone,cacao beans,ha,9,8,british sierra leone,1.0000,attributable,total=0.11,no
+sierra leone,cacao beans,tonnes,17,14,british sierra leone,1.0000,attributable,british cyprus=0.35,no
+sierra leone,coffee green,ha,10,2,,,too_few_distinct,,no
+sierra leone,coffee green,tonnes,13,5,,,too_few_distinct,,no
+sierra leone,groundnuts with shell,ha,7,1,,,too_few_values,,no
+sierra leone,groundnuts with shell,tonnes,3,1,,,too_few_values,,no
+sierra leone,rubber natural,ha,6,1,,,too_few_values,,no
+sierra leone,sesame seed,tonnes,15,11,british sierra leone,1.0000,attributable,france=0.33,no
+singapore,coffee green,ha,11,10,british straits settlements,1.0000,attributable,luxembourg=0.09,no
+somalia,cotton lint,ha,9,8,italian somaliland,1.0000,attributable,japan=0.33,no
+somalia,cotton lint,tonnes,9,8,italian somaliland,1.0000,attributable,yugoslavia=0.33,no
+somalia,cotton seed,ha,6,6,,,too_few_values,,no
+somalia,cotton seed,tonnes,5,5,,,too_few_values,,no
+somalia,eggs hen in shell,tonnes,3,2,,,too_few_values,,no
+somalia,groundnuts with shell,ha,4,2,,,too_few_values,,no
+somalia,groundnuts with shell,tonnes,4,4,,,too_few_values,,no
+somalia,sesame seed,ha,5,4,,,too_few_values,,no
+somalia,sesame seed,tonnes,4,4,,,too_few_values,,no
+somalia,sugar raw centrifugal,tonnes,2,2,,,too_few_values,,no
+south africa,beans dry,tonnes,2,2,,,too_few_values,,no
+south africa,butter cow milk,tonnes,7,6,,,too_few_values,,no
+south africa,cheese processed,tonnes,7,6,,,too_few_values,,no
+south africa,cotton lint,ha,16,16,union of south africa,1.0000,attributable,paraguay=0.06,no
+south africa,cotton lint,tonnes,18,14,union of south africa,1.0000,attributable,british cyprus=0.44,no
+south africa,cotton seed,ha,6,6,,,too_few_values,,no
+south africa,cotton seed,tonnes,19,16,union of south africa,1.0000,attributable,british cyprus=0.42,no
+south africa,fertilizer mixed,tonnes,4,4,,,too_few_values,,no
+south africa,grapefruit inc pomelos,tonnes,6,6,,,too_few_values,,no
+south africa,grapes,ha,7,7,,,too_few_values,,no
+south africa,grapes,tonnes,5,5,,,too_few_values,,no
+south africa,groundnuts with shell,ha,6,6,,,too_few_values,,no
+south africa,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+south africa,lemons and limes,tonnes,9,8,union of south africa,1.0000,attributable,hungary=0.44,no
+south africa,n,tonnes,4,4,,,too_few_values,,no
+south africa,oats,tonnes,7,7,,,too_few_values,,no
+south africa,oranges,tonnes,6,6,,,too_few_values,,no
+south africa,raisins,tonnes,11,8,union of south africa,1.0000,attributable,total=0.27,no
+south africa,rye,ha,8,8,union of south africa,1.0000,attributable,total=0.12,no
+south africa,rye,tonnes,17,16,union of south africa,1.0000,attributable,yugoslavia=0.12,no
+south africa,sugar raw centrifugal,tonnes,32,32,union of south africa,1.0000,attributable,yugoslavia=0.00,no
+south africa,tangerines mandarins clementines satsumas,tonnes,8,5,,,too_few_distinct,,no
+south africa,tea,ha,27,16,union of south africa,1.0000,attributable,new zealand=0.37,no
+south africa,tea,tonnes,27,27,union of south africa,1.0000,attributable,british uganda=0.04,no
+south africa,tobacco unmanufactured,ha,10,9,union of south africa,1.0000,attributable,switzerland=0.30,no
+south africa,tobacco unmanufactured,tonnes,2,2,,,too_few_values,,no
+south africa,wine,ha,3,3,,,too_few_values,,no
+south africa,wine,tonnes,1,1,,,too_few_values,,no
+south korea,beans dry,ha,3,3,,,too_few_values,,no
+south korea,beans dry,tonnes,3,3,,,too_few_values,,no
+south korea,cotton lint,ha,33,33,japanese korea,1.0000,attributable,usa=0.06,no
+south korea,cotton lint,tonnes,32,32,japanese korea,1.0000,attributable,austria=0.06,no
+south korea,cotton seed,ha,20,20,japanese korea,1.0000,attributable,usa=0.10,no
+south korea,cotton seed,tonnes,20,20,japanese korea,1.0000,attributable,us puerto rico=0.05,no
+south korea,eggs hen in shell,tonnes,7,6,,,too_few_values,,no
+south korea,grapes,ha,6,6,,,too_few_values,,no
+south korea,grapes,tonnes,17,17,japanese korea,1.0000,attributable,italy=0.12,no
+south korea,groundnuts with shell,ha,11,9,japanese korea,1.0000,attributable,new zealand=0.36,no
+south korea,groundnuts with shell,tonnes,11,11,japanese korea,1.0000,attributable,turkey=0.09,no
+south korea,hemp tow waste,ha,12,12,japanese korea,1.0000,attributable,yugoslavia=0.00,no
+south korea,n,tonnes,4,4,,,too_few_values,,no
+south korea,other berries and fruits of the genus vaccinium n e c,ha,12,11,japanese korea,1.0000,attributable,total=0.17,no
+south korea,sesame seed,ha,12,9,japanese korea,1.0000,attributable,czechoslovakia=0.42,no
+south korea,sesame seed,tonnes,12,12,japanese korea,1.0000,attributable,france=0.17,no
+south korea,silk worm cocoons reelable,tonnes,28,28,japanese korea,1.0000,attributable,yugoslavia=0.00,no
+south korea,soybeans,ha,9,9,japanese korea,1.0000,attributable,usa=0.11,no
+south korea,soybeans,tonnes,10,10,japanese korea,1.0000,attributable,yugoslavia=0.00,no
+south korea,sugar raw centrifugal,tonnes,8,7,japanese korea,1.0000,attributable,costa rica=0.25,no
+south korea,tobacco unmanufactured,ha,28,26,japanese korea,1.0000,attributable,french morocco=0.14,no
+south korea,tobacco unmanufactured,tonnes,28,28,japanese korea,1.0000,attributable,yugoslavia=0.00,no
+south korea,yarn of true hemp,ha,11,10,japanese korea,1.0000,attributable,total=0.27,no
+south korea,yarn of true hemp,tonnes,24,23,japanese korea,1.0000,attributable,yugoslavia=0.04,no
+spain,cotton lint,ha,17,17,spain,1.0000,attributable,total=0.18,no
+spain,cotton seed,ha,17,17,spain,1.0000,attributable,total=0.18,no
+spain,cotton seed,tonnes,16,16,spain,1.0000,attributable,portuguese mozambique=0.12,no
+spain,eggs hen in shell,tonnes,1,1,,,too_few_values,,no
+spain,fertilizer mixed,tonnes,14,14,spain,1.0000,attributable,yugoslavia=0.00,no
+spain,grapes,ha,1,1,,,too_few_values,,no
+spain,k,tonnes,4,4,,,too_few_values,,no
+spain,milk whole fresh cow,tonnes,1,1,,,too_few_values,,no
+spain,n,tonnes,15,14,spain,1.0000,attributable,yugoslavia=0.00,no
+spain,other berries and fruits of the genus vaccinium n e c,ha,1,1,,,too_few_values,,no
+spain,other berries and fruits of the genus vaccinium n e c,tonnes,13,12,spain,1.0000,attributable,switzerland=0.15,no
+spain,p,tonnes,15,15,spain,1.0000,attributable,yugoslavia=0.00,no
+spain,raisins,ha,2,2,,,too_few_values,,no
+spain,raisins,tonnes,13,13,spain,1.0000,attributable,total north hemisphere aggregated=0.08,no
+spain,silk worm cocoons reelable,tonnes,29,28,spain,1.0000,attributable,french upper volta=0.03,no
+spain,sugar raw centrifugal,tonnes,31,31,spain,1.0000,attributable,finland=0.06,no
+spain,wine,ha,17,16,spain,1.0000,attributable,yugoslavia=0.00,no
+spain,wine,tonnes,32,32,,,unattributable,yugoslavia=0.00,no
+spain,yarn of true hemp,ha,10,9,spain,1.0000,attributable,mexico=0.30,no
+spain,yarn of true hemp,tonnes,17,17,spain,1.0000,attributable,czechoslovakia=0.12,no
+sri lanka,cacao beans,ha,20,12,british ceylon,1.0000,attributable,total=0.25,no
+sri lanka,cacao beans,tonnes,31,30,british ceylon,1.0000,attributable,total=0.10,no
+sri lanka,coffee green,ha,14,11,british ceylon,1.0000,attributable,sweden=0.07,no
+sri lanka,coffee green,tonnes,8,6,british ceylon,1.0000,attributable,british virgin islands=0.12,no
+sri lanka,cotton lint,ha,12,7,british ceylon,1.0000,attributable,union of south africa=0.42,no
+sri lanka,cotton lint,tonnes,11,5,,,too_few_distinct,,no
+sri lanka,cotton seed,ha,12,7,british ceylon,1.0000,attributable,union of south africa=0.42,no
+sri lanka,cotton seed,tonnes,11,6,british ceylon,1.0000,attributable,new zealand=0.55,no
+sri lanka,rubber natural,ha,13,8,,,unattributable,british ceylon=0.54,no
+sri lanka,sugar raw centrifugal,tonnes,8,7,british ceylon,1.0000,attributable,french mauritania=0.12,no
+sri lanka,tea,ha,32,20,british ceylon,1.0000,attributable,total=0.06,no
+sri lanka,tea,tonnes,1,1,,,too_few_values,,no
+sri lanka,tobacco unmanufactured,ha,22,13,british ceylon,1.0000,attributable,total=0.23,no
+sri lanka,tobacco unmanufactured,tonnes,3,1,,,too_few_values,,no
+suriname,cacao beans,ha,20,17,dutch guiana,1.0000,attributable,new zealand=0.25,no
+suriname,cacao beans,tonnes,24,20,dutch guiana,1.0000,attributable,british grenada=0.25,no
+suriname,coffee green,ha,18,9,dutch guiana,1.0000,attributable,total=0.33,no
+suriname,coffee green,tonnes,32,31,dutch guiana,1.0000,attributable,canada=0.19,no
+suriname,groundnuts with shell,tonnes,4,2,,,too_few_values,,no
+suriname,oranges,ha,12,5,,,too_few_distinct,,no
+suriname,oranges,tonnes,14,11,dutch guiana,1.0000,attributable,uruguay=0.29,no
+suriname,sugar raw centrifugal,tonnes,31,31,dutch guiana,1.0000,attributable,total=0.06,no
+suriname,tobacco unmanufactured,tonnes,6,6,,,too_few_values,,no
+sweden,butter cow milk,tonnes,7,7,,,too_few_values,,no
+sweden,cheese processed,tonnes,7,7,,,too_few_values,,no
+sweden,eggs hen in shell,tonnes,2,2,,,too_few_values,,no
+sweden,fertilizer mixed,tonnes,9,9,sweden,1.0000,attributable,spain=0.11,no
+sweden,flax fibre and tow,ha,4,1,,,too_few_values,,no
+sweden,flax fibre and tow,tonnes,1,1,,,too_few_values,,no
+sweden,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+sweden,n,tonnes,12,11,sweden,1.0000,attributable,usa and canada=0.17,no
+sweden,p,tonnes,16,16,sweden,1.0000,attributable,yugoslavia=0.00,no
+sweden,rapeseed,tonnes,1,1,,,too_few_values,,no
+sweden,sugar raw centrifugal,tonnes,33,33,sweden,1.0000,attributable,yugoslavia=0.00,no
+sweden,tobacco unmanufactured,ha,2,1,,,too_few_values,,no
+switzerland,butter cow milk,tonnes,7,7,,,too_few_values,,no
+switzerland,cheese processed,tonnes,7,7,,,too_few_values,,no
+switzerland,eggs hen in shell,tonnes,15,12,switzerland,1.0000,attributable,netherlands=0.07,no
+switzerland,fertilizer mixed,tonnes,4,4,,,too_few_values,,no
+switzerland,grapes,tonnes,1,1,,,too_few_values,,no
+switzerland,hemp tow waste,ha,4,2,,,too_few_values,,no
+switzerland,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+switzerland,n,tonnes,16,10,switzerland,1.0000,attributable,usa=0.19,no
+switzerland,p,tonnes,4,4,,,too_few_values,,no
+switzerland,rapeseed,ha,3,2,,,too_few_values,,no
+switzerland,rapeseed,tonnes,2,2,,,too_few_values,,no
+switzerland,silk worm cocoons reelable,tonnes,16,15,switzerland,1.0000,attributable,british virgin islands=0.06,no
+switzerland,sugar raw centrifugal,tonnes,33,32,switzerland,1.0000,attributable,italy=0.06,no
+switzerland,wine,ha,13,9,switzerland,1.0000,attributable,total=0.31,no
+switzerland,wine,tonnes,33,33,,,unattributable,yugoslavia=0.00,no
+switzerland,yarn of true hemp,tonnes,3,3,,,too_few_values,,no
+tanzania,cacao beans,ha,4,4,,,too_few_values,,no
+tanzania,coffee green,ha,11,9,british tanganyika,1.0000,attributable,french niger=0.36,no
+tanzania,cotton lint,ha,17,15,british tanganyika,1.0000,attributable,union of south africa=0.12,no
+tanzania,cotton lint,tonnes,1,1,,,too_few_values,,no
+tanzania,cotton seed,ha,10,9,british tanganyika,1.0000,attributable,uk: northern ireland=0.10,no
+tanzania,cotton seed,tonnes,20,20,british tanganyika,1.0000,attributable,total=0.10,no
+tanzania,groundnuts with shell,ha,7,7,,,too_few_values,,no
+tanzania,rubber natural,ha,4,2,,,too_few_values,,no
+tanzania,sesame seed,ha,7,6,,,too_few_values,,no
+tanzania,sesame seed,tonnes,20,18,british tanganyika,1.0000,attributable,total=0.15,no
+tanzania,tea,ha,5,2,,,too_few_values,,no
+tanzania,tea,tonnes,7,7,,,too_few_values,,no
+tanzania,tobacco unmanufactured,ha,7,3,,,too_few_values,,no
+tanzania,tobacco unmanufactured,tonnes,7,7,,,too_few_values,,no
+thailand,cotton lint,ha,26,25,siam,1.0000,attributable,bulgaria=0.19,no
+thailand,cotton lint,tonnes,16,15,siam,1.0000,attributable,total=0.25,no
+thailand,cotton seed,ha,16,15,siam,1.0000,attributable,bulgaria=0.31,no
+thailand,cotton seed,tonnes,15,15,siam,1.0000,attributable,british cyprus=0.20,no
+thailand,rubber natural,ha,4,4,,,too_few_values,,no
+thailand,sesame seed,ha,16,9,,,ambiguous,siam=1.00;italy=0.62;french tonkin=0.62,no
+thailand,sesame seed,tonnes,16,13,siam,1.0000,attributable,hungary=0.25,no
+thailand,tobacco unmanufactured,ha,26,24,siam,1.0000,attributable,total=0.27,no
+thailand,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+togo,cacao beans,ha,3,3,,,too_few_values,,no
+togo,cacao beans,tonnes,5,5,,,too_few_values,,no
+togo,groundnuts with shell,ha,1,1,,,too_few_values,,no
+togo,groundnuts with shell,tonnes,1,1,,,too_few_values,,no
+trinidad and tobago,cacao beans,ha,23,18,british trinidad and tobago,1.0000,attributable,turkey=0.04,no
+trinidad and tobago,cacao beans,tonnes,1,1,,,too_few_values,,no
+trinidad and tobago,coffee green,ha,20,8,british trinidad and tobago,1.0000,attributable,switzerland=0.20,no
+trinidad and tobago,coffee green,tonnes,17,14,british trinidad and tobago,1.0000,attributable,british montserrat=0.29,no
+trinidad and tobago,grapefruit inc pomelos,ha,2,2,,,too_few_values,,no
+trinidad and tobago,grapefruit inc pomelos,tonnes,7,7,,,too_few_values,,no
+trinidad and tobago,rubber natural,ha,13,1,,,too_few_distinct,,no
+trinidad and tobago,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+tunisia,cotton lint,ha,6,3,,,too_few_values,,no
+tunisia,eggs hen in shell,tonnes,8,1,,,too_few_distinct,,no
+tunisia,flax fibre and tow,ha,15,9,french tunisia,1.0000,attributable,sweden=0.47,no
+tunisia,flax fibre and tow,tonnes,8,3,,,too_few_distinct,,no
+tunisia,grapes,ha,29,24,french tunisia,1.0000,attributable,total=0.21,no
+tunisia,grapes,tonnes,18,14,french tunisia,1.0000,attributable,total=0.17,no
+tunisia,lemons and limes,ha,3,1,,,too_few_values,,no
+tunisia,lemons and limes,tonnes,14,10,french tunisia,1.0000,attributable,french annam=0.43,no
+tunisia,linseed,ha,8,8,french tunisia,1.0000,attributable,us philippines=0.12,no
+tunisia,linseed,tonnes,21,18,french tunisia,1.0000,attributable,total=0.10,no
+tunisia,oats,tonnes,7,7,,,too_few_values,,no
+tunisia,oil olive virgin,tonnes,3,3,,,too_few_values,,no
+tunisia,olives,ha,5,4,,,too_few_values,,no
+tunisia,olives,tonnes,6,5,,,too_few_values,,no
+tunisia,oranges,ha,3,2,,,too_few_values,,no
+tunisia,oranges,tonnes,14,11,french tunisia,1.0000,attributable,total=0.21,no
+tunisia,p,tonnes,17,17,french tunisia,1.0000,attributable,yugoslavia=0.00,no
+tunisia,tobacco unmanufactured,ha,25,23,french tunisia,1.0000,attributable,new zealand=0.20,no
+tunisia,tobacco unmanufactured,tonnes,32,32,french tunisia,1.0000,attributable,turkey=0.03,no
+tunisia,wine,ha,20,15,french tunisia,1.0000,attributable,total=0.30,no
+tunisia,wine,tonnes,1,1,,,too_few_values,,no
+turkey,beans dry,ha,11,9,turkey,1.0000,attributable,mexico=0.18,no
+turkey,beans dry,tonnes,12,12,turkey,1.0000,attributable,spain=0.08,no
+turkey,cotton lint,ha,19,19,turkey,0.8421,attributable,turkey in asia=0.11,no
+turkey,cotton seed,ha,18,18,turkey,0.8889,attributable,turkey in asia=0.11,no
+turkey,cotton seed,tonnes,17,17,turkey,0.8824,attributable,turkey in asia=0.12,no
+turkey,eggs hen in shell,tonnes,12,11,turkey,1.0000,attributable,yugoslavia=0.00,no
+turkey,flax fibre and tow,ha,13,13,turkey,1.0000,attributable,total=0.38,no
+turkey,flax fibre and tow,tonnes,13,12,turkey,1.0000,attributable,italy=0.15,no
+turkey,grapes,ha,13,11,turkey,1.0000,attributable,total=0.08,no
+turkey,grapes,tonnes,13,13,turkey,1.0000,attributable,usa=0.08,no
+turkey,hemp tow waste,ha,7,4,,,too_few_values,,no
+turkey,hemp tow waste,tonnes,7,6,,,too_few_values,,no
+turkey,hempseed,ha,11,7,turkey,1.0000,attributable,total=0.55,no
+turkey,hempseed,tonnes,13,11,turkey,1.0000,attributable,egypt=0.31,no
+turkey,lemons and limes,tonnes,6,5,,,too_few_values,,no
+turkey,linseed,ha,4,4,,,too_few_values,,no
+turkey,linseed,tonnes,4,4,,,too_few_values,,no
+turkey,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+turkey,oats,ha,1,1,,,too_few_values,,no
+turkey,oil olive virgin,tonnes,1,1,,,too_few_values,,no
+turkey,olives,ha,7,4,,,too_few_values,,no
+turkey,olives,tonnes,15,15,turkey,1.0000,attributable,total=0.13,no
+turkey,oranges,tonnes,6,6,,,too_few_values,,no
+turkey,raisins,ha,2,2,,,too_few_values,,no
+turkey,raisins,tonnes,13,13,turkey,0.8462,attributable,total=0.08,no
+turkey,rye,ha,19,19,turkey,0.9474,attributable,total north hemisphere aggregated=0.05,no
+turkey,rye,tonnes,18,18,turkey,0.9444,attributable,dutch java and madura=0.06,no
+turkey,sesame seed,ha,17,14,turkey,1.0000,attributable,total=0.12,no
+turkey,sesame seed,tonnes,16,16,turkey,1.0000,attributable,uk: england and wales=0.06,no
+turkey,silk worm cocoons reelable,tonnes,19,19,turkey,1.0000,attributable,romania=0.05,no
+turkey,sugar raw centrifugal,tonnes,16,14,turkey,1.0000,attributable,netherlands=0.06,no
+turkey,sunflower seed,ha,1,1,,,too_few_values,,no
+turkey,sunflower seed,tonnes,1,1,,,too_few_values,,no
+turkey,tangerines mandarins clementines satsumas,tonnes,6,6,,,too_few_values,,no
+turkey,tobacco unmanufactured,ha,16,14,turkey,1.0000,attributable,total=0.19,no
+turkey,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+turkey,wheat,ha,1,1,,,too_few_values,,no
+turkey,wine,ha,2,2,,,too_few_values,,no
+turkey,yarn of true hemp,ha,6,5,,,too_few_values,,no
+turkey,yarn of true hemp,tonnes,6,5,,,too_few_values,,no
+united kingdom,butter cow milk,tonnes,7,4,,,too_few_values,,no
+united kingdom,cheese processed,tonnes,7,6,,,too_few_values,,no
+united kingdom,eggs hen in shell,tonnes,11,11,,,unattributable,uk: scotland=0.09,no
+united kingdom,fertilizer mixed,tonnes,17,17,uk,1.0000,attributable,yugoslavia=0.00,no
+united kingdom,milk whole fresh cow,tonnes,7,7,,,too_few_values,,no
+united kingdom,n,tonnes,17,17,uk,1.0000,attributable,yugoslavia=0.00,no
+united kingdom,p,tonnes,17,17,uk,1.0000,attributable,yugoslavia=0.00,no
+united kingdom,sugar raw centrifugal,tonnes,20,20,uk,0.8000,attributable,uk: england and wales=0.15,no
+united states virgin islands,sugar raw centrifugal,tonnes,32,31,us virgin islands,1.0000,attributable,bulgaria=0.09,no
+uruguay,beans dry,ha,3,2,,,too_few_values,,no
+uruguay,beans dry,tonnes,3,3,,,too_few_values,,no
+uruguay,eggs hen in shell,tonnes,3,3,,,too_few_values,,no
+uruguay,flax fibre and tow,ha,1,1,,,too_few_values,,no
+uruguay,flax fibre and tow,tonnes,13,13,uruguay,1.0000,attributable,egypt=0.15,no
+uruguay,grapes,tonnes,6,6,,,too_few_values,,no
+uruguay,groundnuts with shell,ha,1,1,,,too_few_values,,no
+uruguay,lemons and limes,tonnes,2,2,,,too_few_values,,no
+uruguay,olives,ha,1,1,,,too_few_values,,no
+uruguay,olives,tonnes,2,2,,,too_few_values,,no
+uruguay,oranges,tonnes,2,2,,,too_few_values,,no
+uruguay,rye,ha,4,2,,,too_few_values,,no
+uruguay,rye,tonnes,10,6,,,ambiguous,uruguay=1.00;portugal=0.60;french tonkin=0.60,no
+uruguay,sugar raw centrifugal,tonnes,4,4,,,too_few_values,,no
+uruguay,sunflower seed,ha,1,1,,,too_few_values,,no
+uruguay,sunflower seed,tonnes,1,1,,,too_few_values,,no
+uruguay,tobacco unmanufactured,ha,4,4,,,too_few_values,,no
+uruguay,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
+vanuatu,cacao beans,ha,6,4,,,too_few_values,,no
+vanuatu,cacao beans,tonnes,21,18,british‑french new hebrides,1.0000,attributable,bulgaria=0.19,no
+vanuatu,coffee green,ha,8,4,,,too_few_distinct,,no
+vanuatu,coffee green,tonnes,19,14,british‑french new hebrides,1.0000,attributable,british cyprus=0.58,no
+vanuatu,cotton lint,ha,5,3,,,too_few_values,,no
+vanuatu,cotton lint,tonnes,17,13,british‑french new hebrides,1.0000,attributable,british cyprus=0.41,no
+vanuatu,cotton seed,ha,5,3,,,too_few_values,,no
+vanuatu,cotton seed,tonnes,12,10,british‑french new hebrides,1.0000,attributable,british saint vincent=0.50,no
+venezuela,cacao beans,tonnes,1,1,,,too_few_values,,no
+venezuela,coffee green,ha,1,1,,,too_few_values,,no
+venezuela,cotton lint,ha,7,6,,,too_few_values,,no
+venezuela,cotton seed,ha,7,6,,,too_few_values,,no
+venezuela,cotton seed,tonnes,7,6,,,too_few_values,,no
+venezuela,sugar raw centrifugal,tonnes,1,1,,,too_few_values,,no
+viet nam,coffee green,ha,13,6,,,ambiguous,french tonkin=1.00;italy=0.69;australia=0.69,no
+viet nam,coffee green,tonnes,11,9,french tonkin,1.0000,attributable,british cyprus=0.55,no
+viet nam,cotton lint,ha,14,6,,,ambiguous,french tonkin=1.00;new zealand=0.64;french india=0.64,no
+viet nam,cotton lint,tonnes,14,5,,,too_few_distinct,,no
+viet nam,cotton seed,ha,14,6,,,ambiguous,french tonkin=1.00;new zealand=0.64;french india=0.64,no
+viet nam,cotton seed,tonnes,12,8,french tonkin,1.0000,attributable,british dominica=0.50,no
+viet nam,groundnuts with shell,ha,14,7,french tonkin,1.0000,attributable,british southern rhodesia=0.57,no
+viet nam,groundnuts with shell,tonnes,13,11,french tonkin,1.0000,attributable,french annam=0.31,no
+viet nam,jute,ha,11,7,french tonkin,1.0000,attributable,french cochinchina=0.55,no
+viet nam,jute,tonnes,7,6,,,too_few_values,,no
+viet nam,other berries and fruits of the genus vaccinium n e c,ha,14,6,,,ambiguous,french tonkin=1.00;british southern rhodesia=0.71;austria=0.64,no
+viet nam,other berries and fruits of the genus vaccinium n e c,tonnes,4,4,,,too_few_values,,no
+viet nam,sesame seed,ha,7,4,,,too_few_values,,no
+viet nam,sesame seed,tonnes,7,7,,,too_few_values,,no
+viet nam,silk worm cocoons reelable,tonnes,4,4,,,too_few_values,,no
+viet nam,sugar raw centrifugal,tonnes,6,6,,,too_few_values,,no
+viet nam,tea,ha,14,9,french tonkin,1.0000,attributable,italy=0.50,no
+viet nam,tea,tonnes,10,9,french tonkin,1.0000,attributable,romania=0.20,no
+viet nam,tobacco unmanufactured,ha,13,6,,,ambiguous,french tonkin=1.00;total=0.62;austria=0.62,no
+viet nam,tobacco unmanufactured,tonnes,13,13,french tonkin,1.0000,attributable,total=0.23,no
+yemen,coffee green,tonnes,17,17,british aden,1.0000,attributable,australia=0.18,no
+zambia,cotton lint,ha,7,7,,,too_few_values,,no
+zambia,cotton lint,tonnes,7,7,,,too_few_values,,no
+zambia,cotton seed,ha,7,7,,,too_few_values,,no
+zambia,cotton seed,tonnes,7,7,,,too_few_values,,no
+zambia,groundnuts with shell,ha,10,6,british northern rhodesia,1.0000,attributable,uruguay=0.50,no
+zambia,groundnuts with shell,tonnes,9,7,british northern rhodesia,1.0000,attributable,french tonkin=0.44,no
+zambia,lemons and limes,ha,5,1,,,too_few_values,,no
+zambia,lemons and limes,tonnes,5,2,,,too_few_values,,no
+zambia,oranges,ha,8,4,,,too_few_distinct,,no
+zambia,oranges,tonnes,8,5,,,too_few_distinct,,no
+zambia,other sugar crops n e c,ha,3,2,,,too_few_values,,no
+zambia,other sugar crops n e c,tonnes,3,3,,,too_few_values,,no
+zambia,tobacco unmanufactured,ha,11,7,british northern rhodesia,1.0000,attributable,total=0.45,no
+zambia,tobacco unmanufactured,tonnes,17,17,british northern rhodesia,1.0000,attributable,latvia=0.06,no
+zimbabwe,beans dry,ha,9,3,,,too_few_distinct,,no
+zimbabwe,beans dry,tonnes,12,6,british southern rhodesia,1.0000,attributable,british cyprus=0.50,no
+zimbabwe,butter cow milk,tonnes,7,3,,,too_few_values,,no
+zimbabwe,cheese processed,tonnes,7,2,,,too_few_values,,no
+zimbabwe,cotton lint,ha,16,8,,,ambiguous,british southern rhodesia=1.00;italy=0.62;french tonkin=0.62,no
+zimbabwe,cotton lint,tonnes,14,10,british southern rhodesia,1.0000,attributable,french india=0.50,no
+zimbabwe,cotton seed,ha,16,9,british southern rhodesia,1.0000,attributable,italy=0.56,no
+zimbabwe,cotton seed,tonnes,16,13,british southern rhodesia,1.0000,attributable,french tonkin=0.44,no
+zimbabwe,eggs hen in shell,tonnes,8,7,british southern rhodesia,1.0000,attributable,yugoslavia=0.00,no
+zimbabwe,flax fibre and tow,ha,6,5,,,too_few_values,,no
+zimbabwe,groundnuts with shell,ha,18,9,,,ambiguous,british southern rhodesia=1.00;french tonkin=0.61,no
+zimbabwe,groundnuts with shell,tonnes,2,2,,,too_few_values,,no
+zimbabwe,linseed,ha,3,3,,,too_few_values,,no
+zimbabwe,linseed,tonnes,5,5,,,too_few_values,,no
+zimbabwe,oats,tonnes,4,2,,,too_few_values,,no
+zimbabwe,oranges,tonnes,13,13,british southern rhodesia,1.0000,attributable,us philippines=0.15,no
+zimbabwe,other sugar crops n e c,tonnes,6,4,,,too_few_values,,no
+zimbabwe,rye,ha,6,6,,,too_few_values,,no
+zimbabwe,soybeans,tonnes,4,2,,,too_few_values,,no
+zimbabwe,sunflower seed,ha,7,2,,,too_few_values,,no
+zimbabwe,sunflower seed,tonnes,7,2,,,too_few_values,,no
+zimbabwe,tea,ha,7,3,,,too_few_values,,no
+zimbabwe,tea,tonnes,7,7,,,too_few_values,,no
+zimbabwe,tobacco unmanufactured,ha,28,24,british southern rhodesia,1.0000,attributable,yugoslavia=0.14,no
+zimbabwe,tobacco unmanufactured,tonnes,1,1,,,too_few_values,,no
