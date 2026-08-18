@@ -147,8 +147,14 @@ def is_rename(raw_label: str, lb_label: str) -> bool:
     a, b = norm(raw_label), norm(lb_label)
     if a == b:
         return True
+    # Strip AT MOST ONE qualifier. Stripping in a loop reduced `british french cameroon` -- a
+    # COMBINED Anglo-French mandate -- to `cameroon`, so a label carrying both mandates read as a
+    # plain rename while its data was routed to FCM-1920-1960, the French part alone (423,069 km2
+    # against the two together at ~510,000, with BCM-1916-1961 existing separately). One qualifier
+    # is a colonial prefix; two is usually a condominium or a combined unit, which is a different
+    # territory from either half and must reach a human.
     parts = a.split()
-    while parts and parts[0] in COLONIAL:
+    if parts and parts[0] in COLONIAL:
         parts = parts[1:]
     return " ".join(parts) == b
 
