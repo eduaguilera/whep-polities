@@ -34,7 +34,6 @@ BOL-1938-2025,Bolivia,fao,1069100,1,1952,Bolivia,1086608,1.016,agrees,
 BRA-1909-2025,Brazil,fao,8516040,1,1952,Brazil,8471741,0.995,agrees,
 BRA-1909-2025,Brazil,iia,8511189,9,1909;1925;1929;1932;1933;1938,BRESIL;BRÉSIL;brésil,8471741,0.995,agrees,
 BRN-1888-2025,Brunei Darussalam,fao,5770,1,1952,British Borneo Brunei,5685,0.985,agrees,
-BSS-1884-1960,British Somaliland Protectorate (1884-1960),iia,497500,4,1925;1929;1932;1933,SOMALIE;SOMALIE italian;somalie,171627,0.345,review,"OURS IS RIGHT. British Somaliland is 176,120 km2 and our polygon is 171,633. IIA's 497,500 is roughly Italian + British Somaliland together, so the label reaches the wrong extent; FAO independently states 176,000, agreeing with us."
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),fao,121910,1,1952,British Borneo Sarawak,124230,1.019,agrees,
 BTL-1920-1957,British Togoland (1920-1957),iia,34200,1,1925,TOGOLAND british,26545,0.776,agrees,
 BTN-1800-2025,Bhutan,fao,46600,1,1952,Bhutan,39799,0.854,agrees,
@@ -152,7 +151,7 @@ ISR-1948-1967,Israel (1948-1967),fao,20590,1,1952,Israel,20786,1.010,agrees,
 ITA-1870-1919,Italy (1870-1919),iia,286610,3,1909;1925;1929,ITALIE;italie,284848,0.994,agrees,
 ITA-1919-2025,Italy,fao,301050,1,1952,Italy,300310,0.998,agrees,
 ITA-1919-2025,Italy,iia,310086,6,1909;1925;1929;1932;1933;1938,ITALIE;italie,300310,0.968,agrees,
-ITS-1908-1960,Italian Somaliland (1908-1960),iia,357000,2,1909,SOMALIE ITALIENNE,464286,1.301,agrees,"OURS IS CLOSER. Italian Somaliland is ~502,000 km2; our 464,286 against IIA's 357,000. The IIA figure predates the 1925 Jubaland transfer from Kenya."
+ITS-1908-1960,Italian Somaliland (1908-1960),iia,492500,6,1909;1925;1929;1932;1933,SOMALIE;SOMALIE ITALIENNE;SOMALIE italian;somalie,464286,0.943,agrees,
 JAM-1800-2025,Jamaica,fao,1420,1,1952,British West Indies Jamaica,11001,7.747,review,"A TRANSCRIPTION ERROR IN THIS SOURCE, and NOT a x10 one. FAO 1952's `British West Indies Jamaica` states 142 thousand ha = 1,420 km2 for an island of 10,991. A decimal shift gives 14,200 (1.29x, too large); restoring a dropped leading digit gives 11,420 (1.039x). IIA's own `JAMAIQUE` line states 10,880-11,526 across six editions and our polygon is 11,001, so the polygon and the alias are right and this one figure is wrong. Its BWI neighbours in the same FAO table are right (Barbados 450 vs 435; Cayman Islands 240 vs 281), which is what makes it one bad cell rather than a narrower basis for the block. DO NOT use 1,420 km2 as a denominator for Jamaican FAO 1952 rows. Logged with the sibling Bahamas error in pipelines/polity-autoimprove/state/data_errors.csv; the figure is not corrected, because this repo carries what the yearbook printed."
 JOR-1946-2025,Jordan,fao,91110,1,1952,Jordan,89270,0.980,agrees,
 JPN-1945-1952,Japan (occupied),fao,368480,1,1952,Japan,371147,1.007,agrees,

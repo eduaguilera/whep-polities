@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "f8ab5580708c2b68da25c0d939f0771e49cb0d779d0c794b6081a8b7f2bacf2f",
-  "aliases": 992,
-  "labels": 520,
+  "sha256": "b05aee5d14c26c6985418a51fbf6b0427bce618738db9bd1cbdbe08110777599",
+  "aliases": 993,
+  "labels": 521,
   "sources": [
    "crops-manure-n",
    "fao",
@@ -201,13 +201,13 @@
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 287,
-  "polities": 206,
+  "bases": 286,
+  "polities": 205,
   "sources": [
    "fao",
    "iia"
   ],
-  "review_flagged": 18,
+  "review_flagged": 17,
   "why": "Per (polity, source), the area the SOURCE stated for its own reporting unit beside the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more and are BOTH defensible -- a per-km2 denominator has to choose which territory the numerator was collected over. An empty `note` on such a row means no reason has been recorded for THAT source, not that the divergence is understood."
  },
  "source_flow_flags": {
