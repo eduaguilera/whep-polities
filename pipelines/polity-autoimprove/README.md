@@ -261,6 +261,14 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        asia` 12% — the empire plus both halves), while 1922-1940 is cleanly 73%
                        `ussr`. Likewise `serbia|iia|1909-1911` is 86% `kingdom of serbs, croats
                        and slovenes` — a state that did not exist yet.
+                       `--write-assertions` writes the TRACKED per-assertion table that
+                       validate_iia_label_provenance.py prefers over the label table: 247 IIA
+                       assertion keys, each measured on its OWN span. It both removes false
+                       refusals (`libya|iia|1943-1945` is 100% whole `italian libya` while the
+                       LABEL is mixed) and adds true ones the label view averaged away
+                       (`china mainland|iia|1922-1931` is `china` + `japan: kwantung leased
+                       territory`; `syrian arab republic|iia|1922-1945` is `french syria and
+                       lebanon` + `french syria` over 358 values).
 select_tranche.py      picks the next batch to verify: highest-exposure assertions
                        that are pending AND have no banked verdict. Status alone is
                        NOT the filter — apply_verdicts.py writes the ledger, and

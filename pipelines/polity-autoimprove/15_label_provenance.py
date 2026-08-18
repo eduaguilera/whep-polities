@@ -62,6 +62,8 @@ DEFAULT_RAW = os.path.expanduser(
 )
 DEFAULT_PROV = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "state/iia_label_provenance.csv")
+DEFAULT_ASSERT = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "state/iia_assertion_provenance.csv")
 DEFAULT_PANEL = os.path.expanduser(
     os.environ.get("WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
 )
@@ -235,6 +237,13 @@ def main() -> int:
                          "cleanly 73% `ussr`. Verification asks about a SPAN, so this does too.")
     ap.add_argument("--min-rows", type=int, default=30,
                     help="skip labels with fewer dated values (default: %(default)s)")
+    ap.add_argument("--write-assertions", metavar="CSV", nargs="?", const=DEFAULT_ASSERT,
+                    help="write a PER-ASSERTION provenance table (default: %(const)s) from the "
+                         "pending/banked IIA assertion keys. The label table averages over all a "
+                         "label's years, which over-flags: `libya|iia|1943-1945` is 100% whole "
+                         "`italian libya` while the LABEL is mixed, so a label-level gate refuses a "
+                         "span that is clean. Requires state/assertions.json, which is gitignored, "
+                         "so the OUTPUT is tracked and CI reads that.")
     ap.add_argument("--write", metavar="CSV", nargs="?", const=DEFAULT_PROV,
                     help="re-derive the TRACKED provenance table (default: %(const)s). The "
                          "classification the gate enforces is computed HERE, so writing it from "
@@ -312,6 +321,71 @@ def main() -> int:
             covered |= fp & raw_fp[rl]
         runs = era_runs(fp, raw_fp, [rl for _c, rl in above])
         rows.append((label, len(fp), scored[:4], above, top / len(fp), len(covered) / len(fp), runs))
+
+    if args.write_assertions:
+        import json as _json
+        aj = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state/assertions.json")
+        if not os.path.exists(aj):
+            print(f"SKIP: {aj} missing — run 00_intake.py first")
+            return 0
+        blob = _json.load(open(aj, encoding="utf-8"))
+        items = blob["assertions"] if isinstance(blob, dict) and "assertions" in blob else blob
+        out = []
+        for a in items:
+            key = a.get("key") or ""
+            if "|iia|" not in key:
+                continue
+            parts = key.split("|")
+            if len(parts) != 3 or "-" not in parts[2]:
+                continue
+            lab, _src, span = parts
+            try:
+                lo, hi = (int(v) for v in span.split("-", 1))
+            except ValueError:
+                continue          # None-None spans; nothing to measure
+            fp = {(y, v) for y, v in lb_fp.get(norm(lab), set()) if lo <= y <= hi}
+            if not fp:
+                out.append({"key": key, "candidate": a.get("candidate") or "", "n_values": 0,
+                            "span_signal": "unmeasured", "dominant_raw_label": "",
+                            "dominant_share": "", "note": "no dated values in this span"})
+                continue
+            scored = sorted(((len(fp & r), rl) for rl, r in raw_fp.items() if fp & r),
+                            key=lambda t: (-t[0], t[1]))
+            top, top_label = scored[0]
+            above, covered = [(top, top_label)], set(fp & raw_fp[top_label])
+            if len(fp) >= MIN_SPAN_VALUES:
+                for c, rl in scored[1:]:
+                    gain = len((fp & raw_fp[rl]) - covered) / len(fp)
+                    rel = same_family(rl, top_label)
+                    if c / len(fp) > NOISE_FLOOR and gain >= (FAMILY_FLOOR if rel else UNION_GAIN):
+                        above.append((c, rl))
+                        covered |= fp & raw_fp[rl]
+            share = top / len(fp)
+            if share <= NOISE_FLOOR:
+                sig, note = "no_dominant_source", f"best {top_label} {share:.0%}"
+            elif len(above) > 1:
+                sig = "mixed"
+                note = " + ".join(rl for _c, rl in above[:3]) + f" (union {len(covered)/len(fp):.0%})"
+            elif not is_rename(top_label, lab):
+                sig, note = "redirected", f"{top_label} {share:.0%}"
+            else:
+                sig, note = "clean", f"{top_label} {share:.0%}"
+            if len(fp) < MIN_SPAN_VALUES:
+                note += f" [only {len(fp)} values — below the {MIN_SPAN_VALUES}-value floor]"
+            out.append({"key": key, "candidate": a.get("candidate") or "", "n_values": len(fp),
+                        "span_signal": sig, "dominant_raw_label": top_label,
+                        "dominant_share": f"{share:.2f}", "note": note})
+        out.sort(key=lambda r: r["key"])
+        cols = ["key", "candidate", "n_values", "span_signal", "dominant_raw_label",
+                "dominant_share", "note"]
+        with open(args.write_assertions, "w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=cols)
+            w.writeheader()
+            w.writerows(out)
+        from collections import Counter as _C
+        print(f"wrote {len(out)} assertion rows to {args.write_assertions}")
+        print("  span_signal:", dict(_C(r["span_signal"] for r in out)))
+        return 0
 
     if args.assertion:
         parts = args.assertion.split("|")
