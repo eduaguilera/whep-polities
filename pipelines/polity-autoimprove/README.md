@@ -282,6 +282,19 @@ apply_verdicts.py      deterministic execution with contract validation — rero
                        alias row + ledger fixed · not_a_polity -> ignored_labels.csv ·
                        new_polity -> new_polity_proposals.json (feed new_polity
                        .workflow.js) · uncertain/disagreement -> quarantine.csv
+reconcile_wiki_queues  housekeeping for the two wiki findings queues, which apply_verdicts.py
+  .py                  only ever APPENDS to. Drops rows whose polity is gone or is now
+                       retired/superseded, and collapses several assertions' findings about
+                       ONE page to one row per (page, finding) — keeping the longest text and
+                       sending the rest to state/wiki_findings_resolved.csv rather than
+                       discarding them. Prints each kept page's measurable state (bytes,
+                       source citations, dated note) so `inadequate` can be triaged without
+                       opening 30 files. Does NOT judge whether a `wrong` finding still
+                       holds — that is prose. Idempotent; --dry-run. First run: BRA-1800-2025
+                       was flagged `wrong` on 2026-07-27 for naming a successor that did not
+                       exist, which exists now, and JAM-1800-2025 for a claim its page no
+                       longer makes — anyone working the queue top-down would have re-fixed
+                       two correct pages first.
 reconcile_quarantine   housekeeping: drops quarantine rows whose situation is
   .py                  resolved — ledger now `correct`/`fixed` (banked), or the
                        assertion no longer routes to the quarantined `candidate`
