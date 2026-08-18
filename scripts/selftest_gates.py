@@ -1200,6 +1200,38 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
+    """Rewrite a spike's factor column so it contradicts its own three values.
+
+    The real defect lives in layer B, gitignored and absent here, so it cannot be re-injected -- the
+    gate reads the committed table by design. What CAN regress is the table and the generator drifting
+    apart, and `factor_vs_larger_neighbour` is the single number every judgement in this gate rests
+    on: change the threshold, change the neighbour rule, or hand-edit a row, and the column stops
+    describing the values beside it while still looking perfectly plausible.
+
+    This targets the re-derivation arm specifically rather than the pinned set, because deleting or
+    renaming a row would trip signals A and B and the case could pass for the wrong reason. The three
+    values are left untouched, so ONLY the arithmetic check can catch it.
+
+    It picks the largest spike by factor rather than by name, since which one is largest changes when
+    the panel is rebuilt -- the same reason the splice and constant-run mutators pick by measurement.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/isolated_spikes.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    worst = max(rows, key=lambda r: float(r["factor_vs_larger_neighbour"]))
+    before = worst["factor_vs_larger_neighbour"]
+    worst["factor_vs_larger_neighbour"] = "1.50"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"rewrote the {worst['country']} / {worst['item']} {worst['year']} spike's factor from "
+            f"{before} to 1.50 while leaving its three values alone, so the column every judgement "
+            f"rests on no longer describes the row it sits in")
+
+
 def mutate_constant_run_shortened(root, gpd, make_valid, affinity):
     """Trim the longest constant run below the pinned length, so it stops being flagged.
 
@@ -2455,6 +2487,13 @@ CASES = (
         "values stops being flagged and reads as a genuinely unchanging series",
     ),
     (
+        "validate_isolated_spikes.py",
+        mutate_spike_factor_rewritten,
+        "does not match its own values",
+        "a recorded spike's factor column rewritten to look ordinary while its three values stay "
+        "put, so the one number every judgement here rests on contradicts the row it describes",
+    ),
+    (
         "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
         "verified_equal",
@@ -2931,6 +2970,11 @@ WRITABLE = {
     # The case rewrites constant_runs.csv in place (it edits n_values), so it must be a real copy.
     "validate_constant_runs.py": (
         "pipelines/polity-autoimprove/state/constant_runs.csv",
+    ),
+    # The case rewrites isolated_spikes.csv in place (it edits the factor column), so it must be a
+    # real copy rather than a symlink into the tracked table.
+    "validate_isolated_spikes.py": (
+        "pipelines/polity-autoimprove/state/isolated_spikes.csv",
     ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",

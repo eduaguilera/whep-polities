@@ -1,0 +1,22 @@
+source,country,item,unit,indicator,year,value,year_prev,value_prev,year_next,value_next,factor_vs_larger_neighbour
+iia,france,eggs hen in shell,tonnes,,1937,334180.000,1932,7.762,1939,5.390,43055.56
+iia,guadeloupe,cotton seed,tonnes,,1934,3884800.000,1933,30.000,1935,100.000,38848.00
+iia,cameroon,groundnuts with shell,ha,,1932,620004098.000,1931,61000.000,1933,62000.000,10000.07
+iia,turkey,silk worm cocoons reelable,tonnes,,1941,3812324.000,1940,3014.000,1942,2874.000,1264.87
+juan,panama,cattle,heads,,1934,371200.000,1933,785.000,1935,900.000,412.44
+iia,greece,grapes,tonnes,,1936,680100.000,1935,5600.000,1937,3300.000,121.45
+mitchell,czech republic,beer of barley,tonnes,page_4209_table_1,1937,66528960.000,1936,604960.000,1938,502640.000,109.97
+iia,syrian arab republic,hempseed,ha,,1940,710000.000,1938,5000.000,1942,7000.000,101.43
+juan,bulgaria,rapeseed,tonnes,,1905,33818.330,1904,386.100,1906,134.119,87.59
+iia,nicaragua,cotton seed,tonnes,,1934,95600.000,1933,200.000,1935,1200.000,79.67
+iia,antigua and barbuda,cotton seed,tonnes,,1934,14400.000,1933,3.000,1935,200.000,72.00
+juan,bulgaria,linseed,tonnes,,1898,871.774,1897,19.305,1899,14.225,45.16
+iia,cyprus,tobacco unmanufactured,ha,,1925,12707.000,1924,29.000,1930,306.000,41.53
+iia,japan,silk worm cocoons reelable,tonnes,,1942,8115325.000,1941,140984.000,1943,202500.000,40.08
+iia,japan,p,tonnes,,1931,862401.000,1930,305.000,1932,23804.000,36.23
+iia,malawi,cotton lint,tonnes,,1935,3400.000,1934,100.000,1936,100.000,34.00
+iia,syrian arab republic,hempseed,ha,,1936,213000.000,1935,5000.000,1937,7000.000,30.43
+iia,spain,wine,tonnes,,1920,51096793.305,1919,1990896.773,1921,1862817.391,25.67
+iia,cyprus,oil olive virgin,tonnes,,1920,11757.700,1919,512.000,1921,418.600,22.96
+iia,egypt,tangerines mandarins clementines satsumas,tonnes,,1940,55100.000,1939,2600.000,1941,2400.000,21.19
+sa_colonial,western australia,maize,Bushels,yield,1886,39933.000,1885,1950.000,1887,1802.000,20.48
