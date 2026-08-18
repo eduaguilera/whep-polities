@@ -282,6 +282,16 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        THE DISTINCTNESS FILTER IS NOT OPTIONAL: >=6 distinct values, or a few round
                        numbers match anything (unfiltered 43 labels, incl. cameroon <- new zealand).
                        --write refreshes state/item_provenance.csv
+21_item_product_switches.py
+                       does one item series draw on several raw PRODUCTS, switching year to year?
+                       australia's `sugar raw centrifugal` alternates cane and BEET (x0.01 down,
+                       x873 back), 12 of 33 cells at ~1/300 of the series; sweden's `p` alternates
+                       superphosphate and basic slag, so `p` is not a P2O5 total. No source change,
+                       so no splice seam; values plausible for their own product, so no magnitude
+                       flag; item name constant, so nothing keyed on it notices. Recorded ONLY on
+                       oscillation (A...B...A) — comparing product medians confounds this with
+                       growth and gave 28 instead of 9. --write refreshes
+                       state/item_product_switches.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
