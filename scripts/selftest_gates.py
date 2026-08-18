@@ -1200,6 +1200,40 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_item_attribution_on_round_values(root, gpd, make_valid, affinity):
+    """Mark an attribution as resting on a handful of DISTINCT values, keeping everything else.
+
+    The whole item-provenance result rests on one threshold. A series whose values are a few round
+    numbers matches ANY raw label containing them, so without the distinctness filter the method
+    returns `cameroon <- new zealand` and `egypt <- yugoslavia` at full agreement -- 43 labels instead
+    of 11. The realistic regression is somebody relaxing MIN_DISTINCT and regenerating: every count
+    still looks plausible, the table refills with chance collisions, and nothing else here would know.
+
+    So this lowers `n_distinct` on one attributable row and leaves the status, share and raw_label
+    alone, which is exactly the shape a loosened threshold produces. Only signal C can catch it --
+    the pinned-mixture and self-consistency arms are untouched, so the case cannot pass for another
+    reason.
+
+    It picks the row with the MOST distinct values, so the mutation is unambiguous rather than
+    borderline, and by measurement rather than by name since the table is regenerated from the panel.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/item_provenance.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    target = max((r for r in rows if r["status"] == "attributable"),
+                 key=lambda r: int(r["n_distinct"]))
+    before = target["n_distinct"]
+    target["n_distinct"] = "3"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"cut {target['layer_b_label']} / {target['item']} ({target['unit']}) from "
+            f"{before} distinct values to 3 while it stays attributed to "
+            f"{target['raw_label']!r}, the shape a loosened distinctness threshold produces")
+
+
 def mutate_overlap_cells_raised(root, gpd, make_valid, affinity):
     """Raise a `separate_series` pair's shared-cell count above zero, leaving the disposition alone.
 
@@ -2530,6 +2564,13 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_item_provenance.py",
+        mutate_item_attribution_on_round_values,
+        "chance collision and not a measurement",
+        "an item series attributed to a raw label on too few DISTINCT values, which is how a few "
+        "round numbers match any label containing them and how this method returns nonsense",
+    ),
+    (
         "validate_composition_sums.py",
         mutate_overlap_cells_raised,
         "cells are present on BOTH sides",
@@ -3018,6 +3059,10 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_isolated_spikes.py": (
         "pipelines/polity-autoimprove/state/isolated_spikes.csv",
+    ),
+    # The case rewrites item_provenance.csv (it lowers a distinct-value count), so a real copy.
+    "validate_item_provenance.py": (
+        "pipelines/polity-autoimprove/state/item_provenance.csv",
     ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",

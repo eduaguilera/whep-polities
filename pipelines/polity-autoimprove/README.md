@@ -273,6 +273,15 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        DERIVES separate_series vs sum_risk by counting (item, unit, year) cells on
                        both sides, which used to rest on trust. --write refreshes
                        state/composition_overlaps.csv
+20_item_provenance.py  which raw IIA label does each ITEM SERIES come from? 15_label_provenance.py
+                       asks this per label; a label can be right for one commodity and wrong for
+                       another, and the alias key has no item dimension, so no label-level reroute
+                       can fix it. 11 labels mix: australia's `p` is CHRISTMAS ISLAND phosphate,
+                       french polynesia's is MAKATEA, syrian arab republic carries Lebanon in COTTON
+                       only, usa's `n` is `usa and canada`. Needs the raw extract AND the panel.
+                       THE DISTINCTNESS FILTER IS NOT OPTIONAL: >=6 distinct values, or a few round
+                       numbers match anything (unfiltered 43 labels, incl. cameroon <- new zealand).
+                       --write refreshes state/item_provenance.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
