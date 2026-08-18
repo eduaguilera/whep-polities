@@ -249,7 +249,15 @@ def main() -> int:
         for a in csv.DictReader(fh):
             src = (a.get("source") or "").strip()
             ys, ye = year(a.get("year_start")), year(a.get("year_end"))
-            if src and ys is not None and ye is not None:
+            # A BLANK `source` IS A WILDCARD, NOT AN ABSENCE. Such an alias routes its label from
+            # ANY source, which is exactly how the matchers apply it. Skipping those rows made this
+            # check blind to 188 of the alias map's 992 rows (19%), and to 62 polities reachable
+            # ONLY that way -- among them AOF-1895-1960, which is itself a registered whole here.
+            # Nine real overlaps were invisible as a result, including SYL-1944-1953 <- SYR-1946-1967
+            # (fao1952 routes 'Syria and Lebanon' to the whole and 'Syria' to the part) and
+            # JPN-1895-1945 <- RYU-1937-1945. Check C exists to stop a double count going
+            # unrecorded; a fifth of the routing was exempt from it.
+            if ys is not None and ye is not None:
                 alias[a["polity_code"]].append((src, ys, ye, a.get("source_label") or ""))
 
     overlaps = 0
@@ -258,11 +266,14 @@ def main() -> int:
         found = {}
         for wsrc, wys, wye, wlab in alias.get(whole, []):
             for psrc, pys, pye, plab in alias.get(part, []):
-                if wsrc != psrc:
+                # Wildcard on either side matches; two named sources must be equal. A pair matched
+                # only through two wildcards is recorded as `(any)` -- it says data can reach both
+                # sides without naming which source does it, which still has to be declared.
+                if wsrc and psrc and wsrc != psrc:
                     continue
                 lo, hi = max(wys, pys), min(wye, pye)
                 if lo <= hi:
-                    found.setdefault(wsrc, (lo, hi, wlab, plab))
+                    found.setdefault(wsrc or psrc or "(any)", (lo, hi, wlab, plab))
         declared = {
             s.strip()
             for s in (r.get("overlap_sources") or "").split(";")

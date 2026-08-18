@@ -11,9 +11,9 @@ AOF-1895-1960,NER-1947-1960,partition,,none,wiki/polities/aof-1895-1960.md,
 AOF-1895-1960,BFA-1947-1960,partition,,none,wiki/polities/aof-1895-1960.md,272319 of its 272322 km2 also lies inside MLI-1890-1960's 1905-vintage polygon
 AOF-1895-1960,MLI-1890-1960,partition,,none,wiki/polities/aof-1895-1960.md,1905 vintage predates Upper Volta so it still contains BFA; see mli-1890-1960.md
 AOF-1895-1960,MRT-1920-1960,partition,,none,wiki/polities/aof-1895-1960.md,
-AOI-1936-1941,ETH-1936-1941,partition,,none,wiki/polities/aoi-1936-1941.md,Constituent polities section: Ethiopia proper plus Eritrea plus Italian Somaliland
+AOI-1936-1941,ETH-1936-1941,partition,fao1952;iia,sum_risk,wiki/polities/aoi-1936-1941.md,"Constituent polities section: Ethiopia proper plus Eritrea plus Italian Somaliland Italian East Africa contains Ethiopia. Both were invisible to check C until blank-source aliases were treated as wildcards; `Africa Orientale Italiana` routes with no source, so it matched nothing."
 AOI-1936-1941,ERI-1889-1952,partition,,none,wiki/polities/aoi-1936-1941.md,
-AOI-1936-1941,ITS-1908-1960,partition,,none,wiki/polities/aoi-1936-1941.md,
+AOI-1936-1941,ITS-1908-1960,partition,fao1952;mitchell,sum_risk,wiki/polities/aoi-1936-1941.md,Italian East Africa contains Italian Somaliland. Same wildcard-alias blind spot.
 BWI-1833-1962,JAM-1800-2025,partition,fao1952,sum_risk,wiki/polities/bwi-1833-1962.md,successor list and the composed-union recipe name the same eleven islands
 BWI-1833-1962,TTO-1800-2025,partition,fao1952,sum_risk,wiki/polities/bwi-1833-1962.md,
 BWI-1833-1962,BRB-1800-2025,partition,fao1952,sum_risk,wiki/polities/bwi-1833-1962.md,
@@ -25,7 +25,7 @@ BWI-1833-1962,DMA-1800-2025,partition,fao1952,sum_risk,wiki/polities/bwi-1833-19
 BWI-1833-1962,LCA-1838-2025,partition,fao1952,sum_risk,wiki/polities/bwi-1833-1962.md,
 BWI-1833-1962,KNA-1800-2025,partition,fao1952,sum_risk,wiki/polities/bwi-1833-1962.md,
 BWI-1833-1962,MSR-1800-2025,partition,fao1952,sum_risk,wiki/polities/bwi-1833-1962.md,
-BLX-1850-1999,BEL-1831-2025,partition,,none,wiki/polities/blx-1850-1999.md,faostat routes the union to 1961-1999 and the members only from 2000, so no year overlap
+BLX-1850-1999,BEL-1831-2025,partition,,none,wiki/polities/blx-1850-1999.md,"faostat routes the union to 1961-1999 and the members only from 2000, so no year overlap"
 BLX-1850-1999,LUX-1839-2025,partition,,none,wiki/polities/blx-1850-1999.md,
 CODRU-1922-1960,COD-1910-1960,partition,,none,wiki/polities/codru-1922-1960.md,Belgian Congo plus the two Ruanda-Urundi halves
 CODRU-1922-1960,RWA-1922-1962,partition,,none,wiki/polities/codru-1922-1960.md,
@@ -33,20 +33,24 @@ CODRU-1922-1960,BDI-1922-1962,partition,,none,wiki/polities/codru-1922-1960.md,
 F206-2011-2025,SDN-2011-2025,partition,,none,wiki/polities/f206-2011-2025.md,combined Sudan reporting row against the two post-2011 states
 F206-2011-2025,SSD-2011-2025,partition,,none,wiki/polities/f206-2011-2025.md,
 F237-1954-1975,DRV-1954-1975,partition,,none,wiki/polities/f237-1954-1975.md,combined Vietnam reporting row against North and South
-F237-1954-1975,RVN-1954-1975,partition,,none,wiki/polities/f237-1954-1975.md,
+F237-1954-1975,RVN-1954-1975,partition,faostat,sum_risk,wiki/polities/f237-1954-1975.md,"faostat routes 'Viet Nam' to the combined row and 'viet nam' to South Vietnam over 1961-1974. Two labels differing only in case, on both sides of a whole/part pair."
 IDN-1949-1963,IDN-JVM-1949-1951,partition,,none,wiki/polities/idn-1949-1963.md,the three fao1952 island-group units partition Indonesia for 1949-1951
 IDN-1949-1963,IDN-BLB-1949-1951,partition,,none,wiki/polities/idn-1949-1963.md,
 IDN-1949-1963,IDN-OTH-1949-1951,partition,,none,wiki/polities/idn-1949-1963.md,
 MASG-1946-1963,MYS-1946-1957,partition,fao1952,sum_risk,wiki/polities/masg-1946-1963.md,fao1952 carries the combined label and Malaya Fed of over the same years
 MASG-1946-1963,SGP-1946-1963,partition,,none,wiki/polities/masg-1946-1963.md,
-SYL-1944-1953,SYR-1946-1967,partition,,none,wiki/polities/syl-1944-1953.md,1944-1946 falls in SYR-1922-1946 which is deliberately not listed so Syria is counted once
+SYL-1944-1953,SYR-1946-1967,partition,fao1952,sum_risk,wiki/polities/syl-1944-1953.md,"1944-1946 falls in SYR-1922-1946 which is deliberately not listed so Syria is counted once fao1952 routes 'Syria and Lebanon' to the combined row and 'Syria' to the part over 1946-1953. Same shape as the measured IIA finding where half of `syrian arab republic`'s values are the combined mandate while `lebanon` carries its own rows (issue 315) -- a different source, the same defect."
 SYL-1944-1953,LBN-1944-2025,partition,,none,wiki/polities/syl-1944-1953.md,
 GCT-1919-1956,GHA-1898-1957,nested,fao1952,sum_risk,wiki/polities/gct-1919-1956.md,British Togoland has no polity row so this is not a partition
 EGYSUD-1934-1956,EGY-1925-1967,nested,,none,wiki/polities/egysud-1934-1956.md,no Anglo-Egyptian Sudan row exists for 1934-1956 so this is not a partition
 USA-1867-1959,ALK-1867-1959,nested,fao1952,sum_risk,wiki/polities/alk-1867-1959.md,fao1952 carries Alaska and united states and dependent territories over the same span
-JPN-1895-1945,RYU-1937-1945,nested,,none,wiki/polities/ryu-1937-1945.md,Okinawa Prefecture inside the Japanese Empire row
+JPN-1895-1945,RYU-1937-1945,nested,fao1952;federico_tena,sum_risk,wiki/polities/ryu-1937-1945.md,Okinawa Prefecture inside the Japanese Empire row Japan contains the Ryukyu Islands. Two sources route both sides.
 MYS-1963-1965,SGP-1963-1965,nested,faostat;lassaletta-grassland-share,separate_series,wiki/polities/sgp-1963-1965.md,FAOSTAT area 200 reports the island alone throughout so the two series never contain each other
-CHN-1945-1947,MAN-1945-1950,nested,,none,wiki/polities/man-1945-1950.md,Manchuria back under Chinese administration from 1945
-CHN-1947-1949,MAN-1945-1950,nested,,none,wiki/polities/man-1945-1950.md,
-CHN-1949-1950,MAN-1945-1950,nested,,none,wiki/polities/man-1945-1950.md,
+CHN-1945-1947,MAN-1945-1950,nested,mitchell,sum_risk,wiki/polities/man-1945-1950.md,"Manchuria back under Chinese administration from 1945 mitchell routes 'china, mainland' to the whole and 'China, Manchuria Province of' to the part. Related to the measured Kwantung/Manchuria contamination of the iia `china mainland` label (issue 315)."
+CHN-1947-1949,MAN-1945-1950,nested,mitchell,sum_risk,wiki/polities/man-1945-1950.md,As CHN-1945-1947; the MAN alias spans all three China rows.
+CHN-1949-1950,MAN-1945-1950,nested,mitchell,sum_risk,wiki/polities/man-1945-1950.md,As CHN-1945-1947.
 IND-1937-1947,HYD-1724-1948,nested,,none,wiki/polities/hyd-1724-1948.md,princely state inside British India for the last period before partition
+GCT-1919-1956,BTL-1920-1957,nested,fao1952,sum_risk,wiki/polities/btl-1920-1957.md,"fao1952 carries the parent label 'Gold Coast and British Togoland' (11 rows) AND the component 'British Togoland' (12 rows). The registry already held GCT/GHA-1898-1957 for the Gold Coast half; this is the other half, without which a Gold-Coast-plus-Togoland total counts British Togoland twice. fao1952 carries the parent 'Gold Coast & Br Togoland' (11 rows) and the component 'British Togoland' (12 rows). The registry already held GCT/GHA for the Gold Coast half; this is the other half."
+BLI-1833-1960,ATG-1800-2025,nested,fao1952,sum_risk,wiki/polities/bli-1833-1960.md,"fao1952 carries 'Leeward Islands' (6 rows) alongside 'Leeward Islands  Antigua' (5). Antigua is a component of the colony, so summing the colony with its islands double counts."
+BLI-1833-1960,KNA-1800-2025,nested,fao1952,sum_risk,wiki/polities/bli-1833-1960.md,fao1952 carries 'Leeward Islands' (6 rows) alongside 'Leeward Islands  St Kitts & Nevis' (5).
+BLI-1833-1960,MSR-1800-2025,nested,fao1952,sum_risk,wiki/polities/bli-1833-1960.md,fao1952 carries 'Leeward Islands' (6 rows) alongside 'Leeward Islands  Montserrat' (5).
