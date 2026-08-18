@@ -1200,6 +1200,41 @@ def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
             f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
             f"scale break at a source splice is no longer accounted for")
 
+def mutate_carryover_row_dropped(root, gpd, make_valid, affinity):
+    """Delete the carry rows for one orphaned verdict, so the judgement stops being findable.
+
+    Re-spanning renames assertion keys, and a verdict banked under the old name then matches nothing.
+    The whole point of this table is that such a judgement stays discoverable; the failure mode is not
+    a wrong row but a MISSING one, after which the assertion reads `pending` and is verified again from
+    scratch at full cost. Nothing else in the repo would notice, because the queue is internally
+    consistent without it.
+
+    So this removes every row for one banked key. Signals B and C still pass -- the surviving rows are
+    all arithmetically fine -- so only the nothing-lost arm can catch it, which is the arm that
+    encodes the issue this table exists for.
+
+    It picks the orphan with the MOST carry rows, so the deletion is unambiguous, and by measurement
+    rather than by name because the table is regenerated from the queue.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/verdict_carryover.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    # Target a `carried` row: that is a verdict re-spanning ORPHANED, whose only trace is this table.
+    # Deleting a `matched` row would also fail, but for a weaker reason -- the queue still names it.
+    carried = [r for r in rows if r["queue_state"] == "carried"]
+    victim = max(carried, key=lambda r: (int(r["n_carries"]), r["banked_key"]))
+    kept = [r for r in rows if r["banked_key"] != victim["banked_key"]]
+    assert len(kept) == len(rows) - 1
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(kept)
+    return (f"deleted the table row for {victim['banked_key']!r}, a verdict re-spanning orphaned onto "
+            f"{victim['n_carries']} queue key(s), so the only record that prior work exists is gone "
+            f"and the assertion will be decided a second time")
+
+
 def mutate_defect_mapping_approved(root, gpd, make_valid, affinity):
     """Reclassify a known item/product DEFECT as an approved rename.
 
@@ -2632,6 +2667,13 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_verdict_carryover.py",
+        mutate_carryover_row_dropped,
+        "paid for twice",
+        "a carry row deleted for an orphaned verdict, which is how a banked judgement silently "
+        "returns to the queue as pending and gets paid for a second time",
+    ),
+    (
         "validate_item_equivalences.py",
         mutate_defect_mapping_approved,
         "is pinned as `defect` but is not any more",
@@ -3153,6 +3195,15 @@ WRITABLE = {
     # The case rewrites item_equivalences.csv (it flips a verdict), so a real copy.
     "validate_item_equivalences.py": (
         "pipelines/polity-autoimprove/state/item_equivalences.csv",
+    ),
+    # The case rewrites verdict_carryover.csv (it deletes rows). The applied log and the queue
+    # are read-only here but MUST be listed so they are staged at all: the gate derives the
+    # orphan set from them and SKIPS (exit 0) if either is absent, which silently turned the
+    # first version of this case into a pass.
+    "validate_verdict_carryover.py": (
+        "pipelines/polity-autoimprove/state/verdict_carryover.csv",
+        "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
+        "pipelines/polity-autoimprove/state/assertions.json",
     ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",
