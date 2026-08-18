@@ -18,7 +18,7 @@ ANG-1891-1905,Angola (1891-1905),1891,1905,cshapes-2.0,1891.0,assigned,True,meas
 ANG-1905-1975,Angola (1905-1975),1905,1975,cshapes-2.0,1905.0,assigned,True,assumed_constant,True,True,single 1905 polygon held across a 70y span (1905-1975); borders may have changed,488
 ANT-1816-1961,Dutch Caribbean (colonial),1816,1961,reporting-areas,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,58
 ANT-1961-2010,Netherlands Antilles,1961,2010,reporting-areas,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
-AOF-1895-1960,French West Africa (AOF),1895,1960,constructed,1938.0,assigned,True,assumed_constant,True,False,single 1938 polygon held across a 65y span (1895-1960); borders may have changed,162
+AOF-1895-1960,French West Africa (AOF),1895,1960,constructed,1938.0,assigned,True,assumed_constant,True,False,single 1938 polygon held across a 65y span (1895-1960); borders may have changed,166
 AOI-1936-1941,Italian East Africa (1936-1941),1936,1941,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,10
 ARE-1892-2025,United Arab Emirates,1892,2025,cshapes-2.0,1913.0,assigned,True,assumed_constant,True,False,single 1913 polygon held across a 133y span (1892-2025); borders may have changed,0
 ARG-1800-1899,Argentina (to 1899),1800,1899,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 99y span (1800-1899); borders may have changed,94
@@ -771,7 +771,7 @@ WZO-1938-1949,Western Germany / Western Occupation Zones,1938,1949,cshapes-2.0,1
 YEM-1990-2025,Yemen (1990-2025),1990,2025,cshapes-2.0,2000.0,assigned,False,assumed_constant,True,False,single 2000 polygon held across a 35y span (1990-2025); borders may have changed,0
 ZAF-1910-2025,South Africa (Union and Republic),1910,2025,cshapes-2.0,1910.0,assigned,True,assumed_constant,True,False,single 1910 polygon held across a 115y span (1910-2025); borders may have changed,1584
 ZMB-1964-2025,Zambia,1964,2025,cshapes-2.0,1964.0,assigned,False,assumed_constant,True,False,single 1964 polygon held across a 61y span (1964-2025); borders may have changed,0
-ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,False,single 1930 polygon held across a 73y span (1890-1963); borders may have changed,71
+ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,False,single 1930 polygon held across a 73y span (1890-1963); borders may have changed,77
 ZUL-1816-1879,Zulu Kingdom,1816,1879,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ZWE-1890-1891,Zimbabwe,1890,1891,cshapes-2.0,1965.0,assigned,True,back_projected,True,False,polygon vintage 1965 is AFTER the period ends (1891) — later/modern border applied back,0
 ZWE-1891-1900,Zimbabwe (1891-1900),1891,1900,cshapes-2.0,1891.0,assigned,True,measured,False,False,vintage 1891 faithful to period 1891-1900,0
