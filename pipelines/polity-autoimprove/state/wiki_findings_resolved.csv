@@ -18,3 +18,4 @@ wiki_notes_queue.csv,BLI-1833-1960,captured_elsewhere,2026-08-18,"registered as 
 wiki_notes_queue.csv,PYF-1800-2025,captured_elsewhere,2026-08-18,SAME-POLITY overlap ('French Oceania' + 'Makatea' both to PYF); registry cannot express it; issue 355
 wiki_notes_queue.csv,USA-1867-1959,captured_elsewhere,2026-08-18,already registered as USA<-ALK sum_risk before this note was queued
 wiki_notes_queue.csv,RWB-1922-1962,captured_elsewhere,2026-08-18,SAME-POLITY overlap ('rwanda' + 'rwanda and burundi' both to RWB); issue 355
+wiki_notes_queue,F51-1938-1945,written_to_page,2026-08-18,"Written as contradiction iia-czechoslovakia-1938-1945-block-is-internally-corrupt. The queued note's scope-flipping explanation was REFUTED in the process: raw `german bohemia and moravia` carries only butter/cheese/milk and no rye, so there is no sub-component series to alternate with. The page records the yield-identity diagnosis instead."
