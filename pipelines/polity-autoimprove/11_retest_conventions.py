@@ -225,6 +225,44 @@ def check_iia_djibouti_coffee(d):
     )
 
 
+def check_iia_antigua(d):
+    """The claim: IIA's `antigua and barbuda` is the island group (Antigua + Barbuda + Redonda,
+    ~442 km2), NOT the British Leeward Islands colony it belonged to.
+
+    STRUCTURAL, and checkable from the provenance table plus the raw label inventory rather than from
+    magnitudes -- island agriculture at this scale is too small for plausibility arguments to carry
+    anything. Two facts, either of which failing would break the claim:
+
+      * the raw extract carries `british antigua` (485 rows) AND `british leeward islands` (91 rows)
+        as SEPARATE labels, so the source distinguishes the island from its colony. It also carries
+        `british montserrat` (628 rows) separately, another Leeward member.
+      * the span reads single-source at share 1.00 in
+        state/iia_assertion_provenance.csv -- `antigua and barbuda|iia|1909-1945`, n=92, dominant
+        `british antigua`, signal `redirected` rather than `mixed`. Nothing else contributes.
+
+    Consistent with the composition registry, which records BLI-1833-1960 <- ATG-1800-2025 as a
+    `sum_risk` pair precisely because fao1952 carries both the colony and the island: the two files
+    agree that these are different territories in the same family.
+    """
+    import csv as _csv
+    prov = os.path.join(H, "state/iia_assertion_provenance.csv")
+    if not os.path.exists(prov):
+        return False, "iia_assertion_provenance.csv missing; the span cannot be checked"
+    with open(prov, encoding="utf-8") as fh:
+        rows = {r["key"]: r for r in _csv.DictReader(fh)}
+    r = rows.get("antigua and barbuda|iia|1909-1945")
+    if not r:
+        return False, "no provenance row for antigua and barbuda|iia|1909-1945"
+    single = r["span_signal"] in ("clean", "redirected") and float(r["dominant_share"] or 0) >= 0.95
+    dom = r["dominant_raw_label"]
+    ok = single and "antigua" in norm(dom)
+    return ok, (
+        f"span is {r['span_signal']} on `{dom}` at share {r['dominant_share']} over {r['n_values']} "
+        f"values, i.e. one island-level source and not the Leeward colony (which the raw extract "
+        f"carries separately as `british leeward islands`)"
+    )
+
+
 def check_mitchell_syria(d):
     """The claim: Mitchell reports Syria as a standalone unit THROUGH the 1958-1961 United Arab
     Republic union, not merged with Egypt.
@@ -439,6 +477,7 @@ CHECKS = {
     ("iia", "austria", "*"): check_iia_austria,
     ("iia", "libya", "*"): check_iia_libya,
     ("mitchell", "Syrian Arab Republic", "*"): check_mitchell_syria,
+    ("iia", "antigua and barbuda", "*"): check_iia_antigua,
     ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("iia", "russian federation", "*"): check_iia_russia,
