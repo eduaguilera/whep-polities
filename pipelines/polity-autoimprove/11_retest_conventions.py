@@ -470,6 +470,77 @@ def check_mitchell_algeria(d):
     )
 
 
+def check_iia_npk(d):
+    """The claim: IIA's one-letter items `p`, `n` and `k` are the fertilizer MACRONUTRIENTS --
+    phosphate, nitrogen and potash -- and NOT corrupt item labels, but they may not be merged with
+    fao1952's explicitly named `commercial *` nutrient series.
+
+    Two legs, independent of each other. First the identification: three one-letter items, all in
+    tonnes, all within 1909-1933, across ~50 countries, at magnitudes (medians 85k / 15k / 55k t) that
+    are fertilizer rather than anything else a single letter might abbreviate. Second, and this is the
+    part that does not depend on reading the letters at all: the panel SEPARATELY carries
+    `commercial phosphoric acid`, `commercial nitrogenous fertilizers` and `commercial potash
+    fertilizers` from fao1952 -- the same three nutrients, explicitly named, for a DISJOINT era
+    (1949-1951). A source family that reports exactly this triple twice is reporting nutrients.
+
+    THE HALF THAT IS NOT ESTABLISHED, AND MUST NOT BE ASSUMED. Whether the two are the same
+    MEASURE. There is no (country, year) overlap at all, so the panel cannot answer it directly, and
+    the cross-era continuity test refuses to license a merge: normalised to tonnes, the last IIA value
+    against the first fao1952 value scatters over four orders of magnitude. The direction is
+    informative -- chile nitrogen x0.02 and egypt phosphate x0.03 are both major EXPORTERS of those
+    materials, and 440,632 t of phosphate is not Egyptian consumption in 1933 -- so IIA's series may be
+    production or trade of fertilizer materials where fao1952's is consumption. This check therefore
+    asserts the labels' meaning and the ABSENCE of a licence to concatenate them, not a conversion.
+    """
+    npk = d[(d["source"] == "iia") & (d["item"].isin(["p", "n", "k"]))]
+    com = d[(d["source"] == "fao1952")
+            & (d["item"].isin(["commercial phosphoric acid",
+                               "commercial nitrogenous fertilizers",
+                               "commercial potash fertilizers"]))]
+    yrs = npk["year"].dropna()
+    com_yrs = com["year"].dropna()
+    units_ok = set(npk["unit"].unique()) == {"tonnes"}
+    eras_disjoint = bool(len(yrs) and len(com_yrs) and yrs.max() < com_yrs.min())
+
+    # Undated rows MUST be dropped before this set intersection. pandas reuses one NaN object, so
+    # (country, nan) tuples match each other by IDENTITY inside a set even though nan != nan, and
+    # keeping them reported 26 phantom overlaps between two strictly disjoint eras.
+    npk_d = npk.dropna(subset=["year"])
+    com_d = com.dropna(subset=["year"])
+    overlap = set(zip(npk_d["country"].map(norm), npk_d["year"].astype(int))) & \
+        set(zip(com_d["country"].map(norm), com_d["year"].astype(int)))
+
+    # The scatter that withholds the licence to merge, re-derived rather than quoted.
+    ratios = []
+    for short, long in (("p", "commercial phosphoric acid"),
+                        ("n", "commercial nitrogenous fertilizers"),
+                        ("k", "commercial potash fertilizers")):
+        a = npk[npk["item"] == short].dropna(subset=["value", "year"])
+        b = com[com["item"] == long].dropna(subset=["value", "year"])
+        for c in set(a["country"].map(norm)) & set(b["country"].map(norm)):
+            aa = a[a["country"].map(norm) == c].sort_values("year")
+            bb = b[b["country"].map(norm) == c].sort_values("year")
+            last, first = aa.iloc[-1], bb.iloc[0]
+            scale = 1000 if "1000" in str(first["unit"]) else 1
+            if float(last["value"]) > 0:
+                ratios.append(float(first["value"]) * scale / float(last["value"]))
+
+    spread = (max(ratios) / min(ratios)) if ratios and min(ratios) > 0 else 0.0
+    ok = bool(len(npk) > 500 and units_ok and eras_disjoint
+              and not overlap and spread > 1000)
+    return ok, (
+        f"iia p/n/k: {len(npk)} rows, units {sorted(set(npk['unit'].unique()))}, "
+        f"{int(yrs.min())}-{int(yrs.max())}, {npk['country'].map(norm).nunique()} countries, "
+        f"medians p={_median(npk[npk['item'] == 'p'], 'p', 'tonnes')[0]:,.0f} "
+        f"n={_median(npk[npk['item'] == 'n'], 'n', 'tonnes')[0]:,.0f} "
+        f"k={_median(npk[npk['item'] == 'k'], 'k', 'tonnes')[0]:,.0f} t; "
+        f"fao1952 commercial* {int(com_yrs.min())}-{int(com_yrs.max())}, eras disjoint, "
+        f"{len(overlap)} country-year overlaps; cross-era ratio n={len(ratios)} "
+        f"spans x{min(ratios):.2f}-x{max(ratios):.2f} (spread {spread:,.0f}x), so the two are NOT "
+        f"licensed to be concatenated"
+    )
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -486,6 +557,9 @@ CHECKS = {
     ("juan", "finland", "*"): check_juan_finland,
     ("juan", "Czechoslovakia", "*"): check_juan_czechoslovakia,
     ("iia", "djibouti", "coffee, green"): check_iia_djibouti_coffee,
+    ("iia", "*", "p"): check_iia_npk,
+    ("iia", "*", "n"): check_iia_npk,
+    ("iia", "*", "k"): check_iia_npk,
 }
 
 
