@@ -427,6 +427,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_source_conventions.py
 
+      # 335 raw IIA yearbook labels were collapsed onto 173 modern countries, and until the
+      # mapping was tracked nothing here recorded which went where -- so `serbia` meaning
+      # Yugoslavia and `viet nam` meaning Tonkin were both invisible. Layer B deduplicates, so a
+      # whole and its parts sharing a target produce no duplicate row to find: one silently wins.
+      # This refuses NEW `verified_equal` claims on such a label, since that verdict asserts the
+      # source territory IS the polity's and a mixed label has no single territory.
+      - name: Provenance — no equality claim rests on a label that mixes territories
+        if: '!cancelled()'
+        run: python3 scripts/validate_iia_label_provenance.py
+
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
       - name: site/ shows exactly the live polities that carry geometry
