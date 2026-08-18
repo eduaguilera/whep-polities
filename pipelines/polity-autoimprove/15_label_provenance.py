@@ -84,6 +84,12 @@ NOISE_FLOOR = 0.25
 # `netherlands` as a co-contributor off one match.
 MIN_SPAN_VALUES = 8
 
+# A source is only DOMINANT if it is clearly above chance, not a hair above it. `equatorial guinea`
+# had `bulgaria` and `spanish spanish guinea including fernando po` TIED at 26% against a 25% floor,
+# and the alphabetical tiebreak crowned the noise -- reporting `bulgaria` as the dominant source for
+# Equatorial Guinea. Requiring a margin turns that into an honest "nothing explains this".
+DOMINANCE = NOISE_FLOOR * 1.5
+
 # A label whose best raw match explains at least this much is accounted for by ONE raw label, and
 # whatever it is called is then just a naming question. Below it, something else is contributing.
 EXPLAINED = 0.85
@@ -361,7 +367,31 @@ def main() -> int:
                         above.append((c, rl))
                         covered |= fp & raw_fp[rl]
             share = top / len(fp)
-            if share <= NOISE_FLOOR:
+            # CO-OCCURRENCE, the same test the label mode applies: two contributors are only
+            # genuinely concurrent if each supplies values UNIQUE to it in the SAME year. Without
+            # it, `samoa|iia|1910-1945` reads `mixed` when it is `british samoa` 1910-1916 followed
+            # by `new zealand western samoa` 1922-1945 -- one territory, renamed, one source at a
+            # time. The label mode had this test and the span mode did not, so the gate refused a
+            # sequential span on the strength of an inconsistency between two halves of one script.
+            if len(above) > 1:
+                years = sorted({y for y, _v in fp})
+                shared = 0
+                for yr in years:
+                    vals = {(y, v) for y, v in fp if y == yr}
+                    uniq = 0
+                    for _c, rl in above:
+                        others = set()
+                        for _c2, rl2 in above:
+                            if rl2 != rl:
+                                others |= raw_fp[rl2]
+                        if (vals & raw_fp[rl]) - others:
+                            uniq += 1
+                    if uniq >= 2:
+                        shared += 1
+                if years and shared / len(years) <= 0.25:
+                    above = above[:1]
+                    covered = fp & raw_fp[top_label]
+            if share <= DOMINANCE:
                 sig, note = "no_dominant_source", f"best {top_label} {share:.0%}"
             elif len(above) > 1:
                 sig = "mixed"
@@ -438,11 +468,11 @@ def main() -> int:
         print()
         # The top match is always kept so there is something to report, so emptiness cannot be the
         # test for "nothing explains this span" — ask whether the top match itself clears the floor.
-        if not above or top / len(fp) <= NOISE_FLOOR:
+        if not above or top / len(fp) <= DOMINANCE:
             print(f"   NO DOMINANT SOURCE: the best single match, {top_label}, explains only "
-                  f"{100 * top / len(fp):.0f}% and nothing clears the {NOISE_FLOOR:.0%} noise "
-                  f"floor. These years are assembled from several raw labels, none of which "
-                  f"accounts for them.")
+                  f"{100 * top / len(fp):.0f}%, short of the {DOMINANCE:.0%} needed to call "
+                  f"anything dominant against a {NOISE_FLOOR:.0%} chance floor. These years are "
+                  f"assembled from several raw labels, none of which accounts for them.")
         elif len(above) > 1:
             print(f"   SEVERAL SOURCES IN THIS SPAN: {', '.join(rl for _c, rl in above)} "
                   f"({len(covered) / len(fp):.0%} between them)")

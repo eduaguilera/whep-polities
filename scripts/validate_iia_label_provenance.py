@@ -66,24 +66,25 @@ MIXING = ("multi_country", "whole_with_sub_siblings")
 # CEILING on a known class, not an endorsement of any of them — each needs individual triage:
 #
 #   french polynesia|iia|1909-1938  n=51  makatea island alone, then the whole territory
-#   samoa|iia|1910-1945             n=39  `new zealand western samoa` + `british samoa`. PROBABLY a
-#                                         naming artefact -- both are Western Samoa -- so this one
-#                                         may be a false positive of the union-gain test on two
-#                                         names for one place.
 #   libya|iia|1922-1924             n=3   `italian libya: tripolitania` alone: a province, but three
 #   libya|iia|1943-1945             n=3   whole `italian libya`: looks CLEAN, but three values cannot
 #                                         establish that a span is the clean part of a mixed label,
 #                                         so it falls back to the label reading
 #   indonesia|iia|1945-1945         n=3   `dutch java and madura` at 67%, i.e. two values of three
-#   equatorial guinea|iia|1910-1945 n=23  `bulgaria` + `spanish spanish guinea including fernando
-#                                         po`. `bulgaria` is a chance collision that clears the floor
-#                                         at this sample size, so this is very likely a FALSE
-#                                         refusal -- listed here honestly rather than tuned away.
+#   equatorial guinea|iia|1910-1945 n=23  `no_dominant_source`: the best match is `bulgaria` at 26%,
+#                                         which is noise, and the plausible source
+#                                         (`spanish spanish guinea including fernando po`) TIES it at
+#                                         26%. So this span is UNMEASURABLE, which is not the same as
+#                                         refuted -- the routing to GNQ-1886-1968 is probably right
+#                                         and nothing here can confirm it. Kept in the ceiling on
+#                                         that basis.
 #
-# The count has moved seven times. Every previous move was a correction to the measurement, and this
-# one is a change of INSTRUMENT: from a per-label signal to a per-span one, which both removes
-# false refusals (a clean span inside a mixed label) and adds true ones the label view averaged away.
-BASELINE_VERIFIED_EQUAL_ON_MIXED = 6
+# EIGHTH move, 6 -> 5: `samoa|iia|1910-1945` left as a FALSE REFUSAL. The span mode lacked the
+# co-occurrence test the label mode already had, so `british samoa` (1910-1916) and
+# `new zealand western samoa` (1922-1945) -- one territory across a rename, one source at a time --
+# registered as concurrent. An inconsistency between two halves of one script, refusing a span with
+# nothing wrong with it. Both modes now apply the same test.
+BASELINE_VERIFIED_EQUAL_ON_MIXED = 5
 
 # The eight the mapping itself declares as spanning several modern countries. Pinned by name so a
 # change to the mapping surfaces here rather than silently shifting the count.
