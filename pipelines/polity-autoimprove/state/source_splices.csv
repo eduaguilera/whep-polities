@@ -1,0 +1,374 @@
+country,item,unit,year_before,year_after,source_before,source_after,value_before,value_after,ratio
+united states of america,flax fibre and tow,ha,1949,1950,juan,mitchell,1000.000,1655000.000,1655.0000
+united states of america,flax fibre and tow,ha,1951,1952,juan,mitchell,1000.000,1337000.000,1337.0000
+canada,flax fibre and tow,ha,1956,1957,juan,mitchell,1000.000,1231000.000,1231.0000
+united kingdom,sheep,heads,1866,1867,mitchell,juan,31000.000,33755000.000,1088.8710
+india,groundnuts with shell,tonnes,1945,1946,iia,mitchell,5500.000,3646000.000,662.9091
+canada,flax fibre and tow,ha,1924,1925,juan,mitchell,2331.000,517000.000,221.7932
+canada,flax fibre and tow,ha,1951,1952,juan,mitchell,3000.000,469000.000,156.3333
+myanmar,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,42000.000,6247200.000,148.7429
+turkey,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,65000.000,7135600.000,109.7785
+china mainland,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,499000.000,51345800.000,102.8974
+japan,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,86000.000,8705400.000,101.2256
+philippines,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,34000.000,3440600.000,101.1941
+iraq,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,4200.000,422000.000,100.4762
+madagascar,tobacco unmanufactured,tonnes,1944,1945,mitchell,iia,2000.000,193300.000,96.6500
+bulgaria,rapeseed,ha,1916,1917,iia,juan,77.000,7000.000,90.9091
+zimbabwe,tobacco unmanufactured,tonnes,1944,1945,mitchell,iia,24000.000,2141800.000,89.2417
+algeria,tobacco unmanufactured,tonnes,1944,1945,mitchell,iia,8000.000,680400.000,85.0500
+iran,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,16000.000,1270000.000,79.3750
+thailand,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,12700.000,937900.000,73.8504
+france,grapes,tonnes,1937,1938,iia,juan,159100.000,7900000.000,49.6543
+france,grapes,tonnes,1945,1946,iia,juan,106700.000,4929000.000,46.1949
+turkey,wheat,ha,1940,1941,iia,mitchell,107000.000,4394000.000,41.0654
+uruguay,oats,tonnes,1903,1904,juan,mitchell,150.000,4000.000,26.6667
+indonesia,tobacco unmanufactured,tonnes,1939,1940,mitchell,iia,103000.000,2079600.000,20.1903
+niger,groundnuts with shell,tonnes,1945,1946,iia,mitchell,40000.000,663000.000,16.5750
+united states of america,sugar cane,tonnes,1911,1912,mitchell,juan,334000.000,5340863.000,15.9906
+argentina,grapes,tonnes,1932,1933,juan,iia,15875.000,215000.000,13.5433
+hungary,sunflower seed,tonnes,1944,1945,iia,juan,10900.000,127200.000,11.6697
+china taiwan province of,tea,tonnes,1945,1946,iia,mitchell,302.000,3000.000,9.9338
+malawi,tobacco unmanufactured,tonnes,1944,1945,mitchell,iia,11000.000,101200.000,9.2000
+uruguay,barley,tonnes,1903,1904,juan,mitchell,658.700,6000.000,9.1089
+bulgaria,groundnuts with shell,ha,1932,1933,iia,juan,44.000,400.000,9.0909
+netherlands,hemp tow waste,ha,1917,1918,iia,juan,37.000,300.000,8.1081
+argentina,rye,ha,1918,1919,juan,mitchell,10405.000,83000.000,7.9769
+paraguay,wheat,ha,1956,1957,juan,mitchell,2000.000,15000.000,7.5000
+argentina,grapes,tonnes,1939,1940,iia,juan,266300.000,1904900.000,7.1532
+bolivia,wheat,tonnes,1928,1929,mitchell,juan,12000.000,83000.000,6.9167
+romania,hops,ha,1932,1933,iia,juan,29.000,200.000,6.8966
+argentina,grapes,tonnes,1933,1934,iia,juan,215000.000,1450000.000,6.7442
+dr congo,cotton lint,tonnes,1919,1920,iia,mitchell,75.000,500.000,6.6667
+nigeria,cotton lint,tonnes,1936,1937,iia,mitchell,8200.000,54000.000,6.5854
+uruguay,sunflower seed,tonnes,1939,1940,iia,juan,4200.000,23000.000,5.4762
+el salvador,cotton lint,tonnes,1931,1932,iia,juan,7.900,41.600,5.2658
+romania,cotton lint,tonnes,1930,1931,iia,juan,3.900,20.000,5.1282
+paraguay,oranges,tonnes,1929,1930,juan,iia,2090.000,10400.000,4.9761
+el salvador,sugar cane,ha,1946,1947,mitchell,juan,5000.000,22000.000,4.4000
+paraguay,wheat,tonnes,1956,1957,juan,mitchell,3000.000,12000.000,4.0000
+morocco,oil olive virgin,tonnes,1945,1946,iia,mitchell,3000.000,12000.000,4.0000
+uruguay,rye,tonnes,1919,1920,juan,iia,27.700,108.000,3.8989
+zimbabwe,groundnuts with shell,tonnes,1945,1946,iia,mitchell,4000.000,15000.000,3.7500
+bolivia,wheat,tonnes,1932,1933,juan,mitchell,40200.000,145000.000,3.6070
+south africa,groundnuts with shell,tonnes,1945,1946,iia,mitchell,8800.000,28000.000,3.1818
+guatemala,groundnuts with shell,tonnes,1930,1931,iia,juan,5.000,15.500,3.1000
+tunisia,oil olive virgin,tonnes,1915,1916,iia,mitchell,20420.500,63000.000,3.0851
+malawi,tea,tonnes,1910,1911,iia,mitchell,32.513,100.000,3.0757
+denmark,tobacco unmanufactured,ha,1911,1912,iia,juan,67.000,200.000,2.9851
+chile,flax fibre and tow,ha,1913,1914,juan,iia,68.000,201.000,2.9559
+ecuador,rice paddy,ha,1932,1933,juan,mitchell,12000.000,35000.000,2.9167
+chile,flax fibre and tow,tonnes,1912,1913,juan,iia,57.500,167.600,2.9148
+united states of america,sugar cane,ha,1908,1909,mitchell,juan,41000.000,118000.000,2.8780
+algeria,oats,tonnes,1945,1946,iia,mitchell,43200.000,124000.000,2.8704
+syrian arab republic,oil olive virgin,tonnes,1945,1946,iia,mitchell,2100.000,6000.000,2.8571
+malawi,tea,tonnes,1912,1913,iia,mitchell,36.577,100.000,2.7340
+argentina,barley,tonnes,1910,1911,mitchell,juan,20000.000,54145.000,2.7073
+argentina,barley,tonnes,1907,1908,mitchell,juan,36000.000,93689.000,2.6025
+haiti,horses,heads,1929,1930,juan,mitchell,120000.000,310000.000,2.5833
+bolivia,maize,tonnes,1927,1928,juan,mitchell,270000.000,690000.000,2.5556
+el salvador,sugar raw centrifugal,tonnes,1930,1931,mitchell,iia,12000.000,30199.300,2.5166
+peru,mules and hinnies,heads,1947,1948,juan,mitchell,123000.000,300000.000,2.4390
+canada,potatoes,tonnes,1907,1908,mitchell,juan,825000.000,2008268.600,2.4343
+peru,asses,heads,1947,1948,juan,mitchell,356000.000,866000.000,2.4326
+uruguay,lemons and limes,tonnes,1942,1943,juan,iia,2400.000,5800.000,2.4167
+paraguay,swine pigs,heads,1959,1960,juan,mitchell,476000.000,1150000.000,2.4160
+colombia,potatoes,ha,1951,1952,mitchell,juan,50000.000,120000.000,2.4000
+guatemala,tobacco unmanufactured,ha,1930,1931,iia,juan,53.000,127.000,2.3962
+argentina,tobacco unmanufactured,tonnes,1918,1919,juan,mitchell,4263.100,10000.000,2.3457
+paraguay,horses,heads,1959,1960,juan,mitchell,292000.000,684000.000,2.3425
+guatemala,swine pigs,heads,1920,1921,mitchell,juan,41000.000,95586.000,2.3314
+colombia,goats,heads,1954,1955,juan,mitchell,294000.000,684000.000,2.3265
+colombia,asses,heads,1954,1955,juan,mitchell,282000.000,650000.000,2.3050
+paraguay,cattle,heads,1948,1949,juan,mitchell,3365000.000,7730000.000,2.2972
+paraguay,goats,heads,1958,1959,juan,mitchell,62000.000,142000.000,2.2903
+paraguay,sheep,heads,1958,1959,juan,mitchell,386000.000,884000.000,2.2902
+peru,horses,heads,1947,1948,juan,mitchell,453000.000,1036000.000,2.2870
+peru,swine pigs,heads,1959,1960,juan,mitchell,1432000.000,3250000.000,2.2696
+paraguay,maize,tonnes,1945,1946,juan,mitchell,74100.000,168000.000,2.2672
+chile,tobacco unmanufactured,ha,1910,1911,juan,iia,445.000,1003.000,2.2539
+uruguay,sheep,heads,1946,1947,juan,mitchell,19559000.000,44000000.000,2.2496
+colombia,mules and hinnies,heads,1954,1955,juan,mitchell,410000.000,918000.000,2.2390
+peru,sheep,heads,1947,1948,juan,mitchell,16000000.000,35496000.000,2.2185
+colombia,horses,heads,1954,1955,juan,mitchell,1159000.000,2570000.000,2.2174
+nigeria,groundnuts with shell,tonnes,1945,1946,iia,mitchell,255800.000,560000.000,2.1892
+peru,sheep,heads,1959,1960,juan,mitchell,14760000.000,32018000.000,2.1692
+peru,cattle,heads,1954,1955,juan,mitchell,3198000.000,6878000.000,2.1507
+austria,hops,ha,1932,1933,iia,juan,47.000,100.000,2.1277
+paraguay,horses,heads,1947,1948,juan,mitchell,333000.000,708000.000,2.1261
+uruguay,swine pigs,heads,1951,1952,juan,mitchell,259000.000,550000.000,2.1236
+algeria,oil olive virgin,tonnes,1914,1915,mitchell,iia,22000.000,46557.900,2.1163
+malta,cotton lint,tonnes,1920,1921,juan,iia,50.000,105.700,2.1140
+colombia,cassava fresh,ha,1950,1951,juan,mitchell,76000.000,160000.000,2.1053
+united states of america,flax fibre and tow,ha,1934,1935,mitchell,iia,405000.000,848000.000,2.0938
+peru,mules and hinnies,heads,1959,1960,juan,mitchell,185000.000,386000.000,2.0865
+colombia,cattle,heads,1954,1955,juan,mitchell,11994000.000,25000000.000,2.0844
+peru,asses,heads,1959,1960,juan,mitchell,420000.000,870000.000,2.0714
+chile,sheep,heads,1959,1960,juan,mitchell,6129000.000,12686000.000,2.0698
+uruguay,sheep,heads,1948,1949,juan,mitchell,22000000.000,45292000.000,2.0587
+colombia,sheep,heads,1954,1955,juan,mitchell,1114000.000,2256000.000,2.0251
+ireland,rye,ha,1943,1944,juan,iia,2000.000,4000.000,2.0000
+uruguay,horses,heads,1956,1957,juan,mitchell,557000.000,1114000.000,2.0000
+paraguay,horses,heads,1953,1954,juan,mitchell,354000.000,708000.000,2.0000
+peru,cattle,heads,1946,1947,juan,mitchell,2662000.000,5324000.000,2.0000
+guatemala,cotton seed,tonnes,1943,1944,iia,mitchell,500.000,1000.000,2.0000
+united states of america,flax fibre and tow,ha,1950,1951,mitchell,juan,1655000.000,1000.000,0.0006
+india,groundnuts with shell,tonnes,1944,1945,mitchell,iia,3918000.000,5500.000,0.0014
+canada,flax fibre and tow,ha,1952,1953,mitchell,juan,469000.000,1000.000,0.0021
+canada,flax fibre and tow,ha,1925,1926,mitchell,juan,517000.000,1629.000,0.0032
+madagascar,tobacco unmanufactured,tonnes,1945,1946,iia,mitchell,193300.000,800.000,0.0041
+united states of america,flax fibre and tow,tonnes,1938,1939,iia,juan,207600.000,900.000,0.0043
+united states of america,flax fibre and tow,ha,1938,1939,mitchell,juan,366000.000,2000.000,0.0055
+canada,flax fibre and tow,ha,1920,1921,mitchell,juan,442000.000,2636.000,0.0060
+greece,grapes,tonnes,1932,1933,juan,iia,254846.900,1600.000,0.0063
+iran,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,1270000.000,9000.000,0.0071
+turkey,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,7135600.000,55000.000,0.0077
+china mainland,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,51345800.000,426000.000,0.0083
+iraq,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,422000.000,3800.000,0.0090
+japan,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,8705400.000,84000.000,0.0096
+syrian arab republic,tobacco unmanufactured,tonnes,1944,1945,iia,mitchell,392500.000,3800.000,0.0097
+myanmar,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,6247200.000,61000.000,0.0098
+argentina,rapeseed,ha,1939,1940,iia,juan,4340000.000,43000.000,0.0099
+chile,tobacco unmanufactured,tonnes,1939,1940,iia,juan,956500.000,9565.000,0.0100
+australia,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,248400.000,3100.000,0.0125
+zimbabwe,tobacco unmanufactured,tonnes,1945,1946,iia,mitchell,2141800.000,29000.000,0.0135
+thailand,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,937900.000,20000.000,0.0213
+turkey,wheat,ha,1939,1940,mitchell,iia,4322000.000,107000.000,0.0248
+algeria,tobacco unmanufactured,tonnes,1945,1946,iia,mitchell,680400.000,17000.000,0.0250
+france,grapes,tonnes,1938,1939,juan,iia,7900000.000,206200.000,0.0261
+uruguay,tobacco unmanufactured,ha,1921,1922,juan,iia,1500.000,51.000,0.0340
+uruguay,tobacco unmanufactured,tonnes,1921,1922,juan,iia,800.000,35.400,0.0442
+indonesia,tobacco unmanufactured,tonnes,1940,1941,iia,mitchell,2079600.000,94000.000,0.0452
+guatemala,cotton lint,tonnes,1931,1932,juan,iia,64.300,3.000,0.0467
+colombia,cassava fresh,ha,1953,1954,juan,mitchell,76000.000,148000.000,1.9474
+colombia,rice paddy,tonnes,1934,1935,mitchell,juan,55000.000,106600.000,1.9382
+dominican republic,horses,heads,1953,1954,juan,mitchell,125000.000,242000.000,1.9360
+uruguay,grapes,tonnes,1933,1934,iia,juan,92400.000,6200.000,0.0671
+paraguay,tobacco unmanufactured,tonnes,1932,1933,juan,mitchell,14142.000,1000.000,0.0707
+paraguay,cattle,heads,1953,1954,juan,mitchell,4163000.000,8016000.000,1.9255
+china taiwan province of,tea,tonnes,1944,1945,mitchell,iia,4000.000,302.000,0.0755
+malawi,tobacco unmanufactured,tonnes,1945,1946,iia,mitchell,101200.000,7800.000,0.0771
+nigeria,cotton lint,tonnes,1935,1936,mitchell,iia,106000.000,8200.000,0.0774
+uruguay,flax fibre and tow,ha,1934,1935,mitchell,iia,1620000.000,126000.000,0.0778
+peru,goats,heads,1947,1948,juan,mitchell,962000.000,1848000.000,1.9210
+dominican republic,goats,heads,1953,1954,juan,mitchell,262000.000,503000.000,1.9198
+trinidad and tobago,cacao beans,tonnes,1919,1920,mitchell,iia,270000.000,21797.200,0.0807
+morocco,oil olive virgin,tonnes,1944,1945,mitchell,iia,34000.000,3000.000,0.0882
+mexico,tobacco unmanufactured,ha,1922,1923,juan,mitchell,5236.000,10000.000,1.9099
+niger,groundnuts with shell,tonnes,1944,1945,mitchell,iia,21000.000,40000.000,1.9048
+uruguay,barley,tonnes,1904,1905,mitchell,juan,6000.000,588.000,0.0980
+uruguay,cattle,heads,1954,1955,juan,mitchell,7819000.000,14866000.000,1.9013
+colombia,coffee green,ha,1915,1916,iia,juan,46295.000,4620.500,0.0998
+uruguay,barley,tonnes,1899,1900,mitchell,juan,4000.000,400.000,0.1000
+zimbabwe,groundnuts with shell,tonnes,1943,1944,mitchell,iia,24000.000,2400.000,0.1000
+hungary,sunflower seed,tonnes,1943,1944,juan,iia,103800.000,10900.000,0.1050
+colombia,swine pigs,heads,1954,1955,juan,mitchell,1824000.000,3454000.000,1.8936
+madagascar,groundnuts with shell,tonnes,1944,1945,mitchell,iia,70000.000,8000.000,0.1143
+sweden,rapeseed,tonnes,1941,1942,iia,juan,1600.000,3000.000,1.8750
+paraguay,lemons and limes,tonnes,1929,1930,juan,iia,15.900,2.000,0.1258
+uruguay,oats,tonnes,1904,1905,mitchell,juan,4000.000,525.600,0.1314
+bulgaria,groundnuts with shell,ha,1929,1930,juan,iia,100.000,14.000,0.1400
+colombia,sugar cane,ha,1954,1955,mitchell,juan,270000.000,502000.000,1.8593
+chile,sheep,heads,1956,1957,juan,mitchell,6540000.000,12134000.000,1.8554
+bolivia,wheat,ha,1927,1928,juan,mitchell,102000.000,15000.000,0.1471
+argentina,grapes,tonnes,1938,1939,juan,iia,1800000.000,266300.000,0.1479
+mexico,oats,tonnes,1932,1933,mitchell,juan,2000.000,3700.000,1.8500
+el salvador,cotton lint,tonnes,1930,1931,juan,iia,52.100,7.900,0.1516
+chile,flax fibre and tow,tonnes,1909,1910,juan,iia,15.700,2.400,0.1529
+bolivia,wheat,tonnes,1939,1940,mitchell,juan,102000.000,16000.000,0.1569
+bulgaria,groundnuts with shell,tonnes,1929,1930,juan,iia,60.000,9.600,0.1600
+romania,soybeans,ha,1938,1939,iia,juan,56000.000,103000.000,1.8393
+guinea bissau,groundnuts with shell,tonnes,1944,1945,mitchell,iia,20000.000,36400.000,1.8200
+dominican republic,asses,heads,1953,1954,juan,mitchell,75000.000,135000.000,1.8000
+ecuador,sugar cane,ha,1951,1952,juan,mitchell,20000.000,36000.000,1.8000
+south africa,groundnuts with shell,tonnes,1944,1945,mitchell,iia,44000.000,8800.000,0.2000
+bolivia,goats,heads,1927,1928,juan,mitchell,415781.000,748000.000,1.7990
+hungary,grapes,tonnes,1932,1933,juan,iia,40303.600,8600.000,0.2134
+chile,sheep,heads,1953,1954,juan,mitchell,6650000.000,11866000.000,1.7844
+netherlands,hemp tow waste,ha,1918,1919,juan,iia,300.000,67.000,0.2233
+ecuador,barley,tonnes,1947,1948,juan,mitchell,35000.000,62000.000,1.7714
+bolivia,wheat,tonnes,1927,1928,juan,mitchell,51000.000,12000.000,0.2353
+guatemala,sheep,heads,1920,1921,mitchell,juan,105000.000,184635.000,1.7584
+peru,horses,heads,1959,1960,juan,mitchell,660000.000,1160000.000,1.7576
+malta,cotton lint,tonnes,1931,1932,juan,iia,30.000,7.400,0.2467
+ecuador,mules and hinnies,heads,1947,1948,mitchell,juan,108000.000,27000.000,0.2500
+guatemala,cotton seed,tonnes,1942,1943,mitchell,iia,2000.000,500.000,0.2500
+bulgaria,rapeseed,ha,1915,1916,juan,iia,300.000,77.000,0.2567
+uruguay,oats,ha,1909,1910,juan,mitchell,6891.000,12000.000,1.7414
+paraguay,tobacco unmanufactured,ha,1916,1917,juan,mitchell,8100.000,14000.000,1.7284
+bolivia,asses,heads,1947,1948,mitchell,juan,301000.000,519000.000,1.7243
+malta,cotton lint,tonnes,1921,1922,iia,juan,105.700,30.000,0.2838
+algeria,oats,tonnes,1944,1945,mitchell,iia,145000.000,43200.000,0.2979
+argentina,barley,tonnes,1908,1909,juan,mitchell,93689.000,28000.000,0.2989
+peru,sweet potatoes,tonnes,1952,1953,juan,mitchell,306000.000,92000.000,0.3007
+bolivia,barley,tonnes,1927,1928,juan,mitchell,251000.000,76000.000,0.3028
+el salvador,sugar cane,ha,1945,1946,juan,mitchell,16000.000,5000.000,0.3125
+chile,tobacco unmanufactured,ha,1913,1914,juan,iia,1388.000,437.000,0.3148
+mexico,coffee green,tonnes,1896,1897,mitchell,juan,13000.000,21838.652,1.6799
+uruguay,barley,tonnes,1909,1910,juan,mitchell,3072.200,1000.000,0.3255
+tunisia,oil olive virgin,tonnes,1945,1946,iia,mitchell,46000.000,15000.000,0.3261
+chile,hempseed,ha,1939,1940,iia,juan,3000.000,5000.000,1.6667
+italy,lemons and limes,ha,1934,1935,iia,juan,80000.000,27750.000,0.3469
+bolivia,wheat,tonnes,1955,1956,juan,mitchell,46000.000,16000.000,0.3478
+mexico,tobacco unmanufactured,ha,1924,1925,mitchell,juan,12000.000,4200.000,0.3500
+guatemala,milk whole fresh cow,tonnes,1942,1943,mitchell,iia,497000.000,179600.000,0.3614
+mexico,maize,tonnes,1910,1911,juan,mitchell,4705789.300,1720000.000,0.3655
+malawi,tea,tonnes,1911,1912,mitchell,iia,100.000,36.577,0.3658
+ecuador,rice paddy,ha,1930,1931,mitchell,juan,41000.000,15000.000,0.3659
+chile,flax fibre and tow,tonnes,1943,1944,iia,juan,3500.000,1300.000,0.3714
+ecuador,asses,heads,1947,1948,mitchell,juan,200000.000,75000.000,0.3750
+argentina,grapes,tonnes,1908,1909,juan,iia,974590.376,380189.900,0.3901
+mexico,maize,tonnes,1912,1913,juan,mitchell,2096089.600,3374000.000,1.6097
+trinidad and tobago,cacao beans,tonnes,1920,1921,iia,mitchell,21797.200,35000.000,1.6057
+barbados,sugar raw centrifugal,tonnes,1910,1911,iia,mitchell,21215.100,34000.000,1.6026
+colombia,sugar cane,ha,1950,1951,juan,mitchell,168000.000,269000.000,1.6012
+guatemala,groundnuts with shell,ha,1929,1930,juan,iia,5.000,8.000,1.6000
+nicaragua,cotton seed,tonnes,1940,1941,iia,mitchell,2500.000,4000.000,1.6000
+puerto rico,swine pigs,heads,1959,1960,juan,mitchell,102000.000,163000.000,1.5980
+bolivia,potatoes,ha,1953,1954,juan,mitchell,71000.000,113000.000,1.5915
+italy,oranges,ha,1934,1935,iia,juan,80000.000,33000.000,0.4125
+puerto rico,goats,heads,1947,1948,mitchell,juan,103000.000,163000.000,1.5825
+switzerland,rapeseed,tonnes,1909,1910,juan,iia,10.000,4.200,0.4200
+ireland,rye,tonnes,1943,1944,juan,iia,4200.000,6600.000,1.5714
+paraguay,sugar cane,ha,1951,1952,juan,mitchell,7000.000,11000.000,1.5714
+cuba,mules and hinnies,heads,1939,1940,juan,mitchell,76900.000,33000.000,0.4291
+el salvador,horses,heads,1954,1955,mitchell,juan,90000.000,141000.000,1.5667
+italy,olives,ha,1909,1910,iia,juan,2344680.000,1018340.000,0.4343
+chile,tobacco unmanufactured,tonnes,1922,1923,iia,juan,8977.100,3977.100,0.4430
+ecuador,sheep,heads,1951,1952,mitchell,juan,3118000.000,1385000.000,0.4442
+barbados,sugar raw centrifugal,tonnes,1909,1910,mitchell,iia,46000.000,21215.100,0.4612
+ecuador,maize,ha,1951,1952,juan,mitchell,71000.000,109000.000,1.5352
+austria,hops,ha,1931,1932,juan,iia,100.000,47.000,0.4700
+paraguay,coffee green,tonnes,1916,1917,juan,iia,500.000,765.000,1.5300
+paraguay,cattle,heads,1949,1950,mitchell,juan,7730000.000,3645000.000,0.4715
+united states of america,groundnuts with shell,tonnes,1915,1916,mitchell,juan,218000.000,332812.008,1.5267
+senegal,groundnuts with shell,tonnes,1944,1945,mitchell,iia,232000.000,354000.000,1.5259
+dominican republic,mules and hinnies,heads,1953,1954,juan,mitchell,46000.000,70000.000,1.5217
+canada,potatoes,tonnes,1900,1901,juan,mitchell,1507000.000,735000.000,0.4877
+jamaica,sugar raw centrifugal,tonnes,1909,1910,mitchell,iia,19000.000,28731.500,1.5122
+peru,horses,heads,1948,1949,mitchell,juan,1036000.000,510000.000,0.4923
+colombia,horses,heads,1955,1956,mitchell,juan,2570000.000,1268000.000,0.4934
+venezuela,cattle,heads,1950,1951,mitchell,juan,11348000.000,5632000.000,0.4963
+colombia,horses,heads,1950,1951,mitchell,juan,2596000.000,1296000.000,0.4992
+uruguay,swine pigs,heads,1950,1951,mitchell,juan,518000.000,259000.000,0.5000
+uruguay,sheep,heads,1947,1948,mitchell,juan,44000000.000,22000000.000,0.5000
+uruguay,sheep,heads,1949,1950,mitchell,juan,45292000.000,22646000.000,0.5000
+chile,goats,heads,1947,1948,mitchell,juan,1272000.000,636000.000,0.5000
+chile,goats,heads,1954,1955,mitchell,juan,2198000.000,1099000.000,0.5000
+chile,sheep,heads,1954,1955,mitchell,juan,11866000.000,5933000.000,0.5000
+paraguay,tobacco unmanufactured,tonnes,1939,1940,juan,mitchell,8000.000,4000.000,0.5000
+colombia,asses,heads,1946,1947,mitchell,juan,504000.000,252000.000,0.5000
+colombia,asses,heads,1950,1951,mitchell,juan,922000.000,461000.000,0.5000
+colombia,asses,heads,1955,1956,mitchell,juan,650000.000,325000.000,0.5000
+colombia,cattle,heads,1950,1951,mitchell,juan,31024000.000,15512000.000,0.5000
+colombia,goats,heads,1946,1947,mitchell,juan,1306000.000,653000.000,0.5000
+colombia,goats,heads,1955,1956,mitchell,juan,684000.000,342000.000,0.5000
+colombia,horses,heads,1946,1947,mitchell,juan,2154000.000,1077000.000,0.5000
+colombia,mules and hinnies,heads,1946,1947,mitchell,juan,952000.000,476000.000,0.5000
+colombia,mules and hinnies,heads,1950,1951,mitchell,juan,1084000.000,542000.000,0.5000
+colombia,swine pigs,heads,1946,1947,mitchell,juan,3358000.000,1679000.000,0.5000
+colombia,swine pigs,heads,1950,1951,mitchell,juan,5564000.000,2782000.000,0.5000
+colombia,swine pigs,heads,1955,1956,mitchell,juan,3454000.000,1727000.000,0.5000
+paraguay,cattle,heads,1946,1947,mitchell,juan,6906000.000,3453000.000,0.5000
+paraguay,goats,heads,1955,1956,mitchell,juan,114000.000,57000.000,0.5000
+paraguay,horses,heads,1946,1947,mitchell,juan,666000.000,333000.000,0.5000
+paraguay,horses,heads,1948,1949,mitchell,juan,708000.000,354000.000,0.5000
+paraguay,horses,heads,1954,1955,mitchell,juan,708000.000,354000.000,0.5000
+paraguay,swine pigs,heads,1951,1952,mitchell,juan,500000.000,250000.000,0.5000
+paraguay,swine pigs,heads,1955,1956,mitchell,juan,878000.000,439000.000,0.5000
+peru,cattle,heads,1948,1949,mitchell,juan,5278000.000,2639000.000,0.5000
+peru,sheep,heads,1948,1949,mitchell,juan,35496000.000,17748000.000,0.5000
+venezuela,asses,heads,1956,1957,mitchell,juan,854000.000,427000.000,0.5000
+venezuela,goats,heads,1956,1957,mitchell,juan,1842000.000,921000.000,0.5000
+venezuela,mules and hinnies,heads,1950,1951,mitchell,juan,124000.000,62000.000,0.5000
+venezuela,mules and hinnies,heads,1956,1957,mitchell,juan,260000.000,130000.000,0.5000
+venezuela,swine pigs,heads,1956,1957,mitchell,juan,4724000.000,2362000.000,0.5000
+venezuela,sheep,heads,1950,1951,mitchell,juan,202000.000,101000.000,0.5000
+venezuela,sheep,heads,1956,1957,mitchell,juan,352000.000,176000.000,0.5000
+peru,goats,heads,1948,1949,mitchell,juan,1848000.000,924000.000,0.5000
+bolivia,rice paddy,ha,1927,1928,juan,mitchell,24000.000,12000.000,0.5000
+colombia,sheep,heads,1946,1947,mitchell,juan,2336000.000,1168000.000,0.5000
+colombia,sheep,heads,1955,1956,mitchell,juan,2256000.000,1128000.000,0.5000
+costa rica,oranges,tonnes,1933,1934,iia,juan,200.000,100.000,0.5000
+ecuador,cattle,heads,1947,1948,mitchell,juan,3040000.000,1520000.000,0.5000
+ecuador,cattle,heads,1951,1952,mitchell,juan,2400000.000,1200000.000,0.5000
+ecuador,horses,heads,1951,1952,mitchell,juan,196000.000,98000.000,0.5000
+ecuador,swine pigs,heads,1951,1952,mitchell,juan,518000.000,259000.000,0.5000
+ecuador,swine pigs,heads,1955,1956,mitchell,juan,1988000.000,994000.000,0.5000
+ecuador,sheep,heads,1947,1948,mitchell,juan,3604000.000,1802000.000,0.5000
+ecuador,sheep,heads,1955,1956,mitchell,juan,2484000.000,1242000.000,0.5000
+peru,asses,heads,1948,1949,mitchell,juan,866000.000,433000.000,0.5000
+peru,mules and hinnies,heads,1948,1949,mitchell,juan,300000.000,150000.000,0.5000
+ecuador,goats,heads,1951,1952,mitchell,juan,698000.000,349000.000,0.5000
+bulgaria,soybeans,ha,1938,1939,iia,juan,12000.000,18000.000,1.5000
+ecuador,asses,heads,1951,1952,mitchell,juan,82000.000,41000.000,0.5000
+ecuador,mules and hinnies,heads,1951,1952,mitchell,juan,60000.000,30000.000,0.5000
+colombia,cassava fresh,ha,1951,1952,mitchell,juan,160000.000,80000.000,0.5000
+el salvador,cotton lint,ha,1939,1940,iia,mitchell,2000.000,3000.000,1.5000
+argentina,flax fibre and tow,ha,1935,1936,iia,mitchell,2059000.000,3086000.000,1.4988
+chile,hemp tow waste,ha,1913,1914,juan,iia,464.000,695.000,1.4978
+venezuela,asses,heads,1950,1951,mitchell,juan,774000.000,390000.000,0.5039
+venezuela,swine pigs,heads,1950,1951,mitchell,juan,2902000.000,1467000.000,0.5055
+uruguay,swine pigs,heads,1900,1901,mitchell,juan,94000.000,47568.000,0.5060
+colombia,mules and hinnies,heads,1955,1956,mitchell,juan,918000.000,468000.000,0.5098
+venezuela,horses,heads,1950,1951,mitchell,juan,670000.000,343000.000,0.5119
+mexico,goats,heads,1946,1947,juan,mitchell,4635000.000,6894000.000,1.4874
+dominican republic,swine pigs,heads,1954,1955,mitchell,juan,947000.000,1408000.000,1.4868
+chile,tobacco unmanufactured,ha,1929,1930,juan,iia,3078.000,4563.000,1.4825
+venezuela,goats,heads,1950,1951,mitchell,juan,2546000.000,1322000.000,0.5192
+mexico,maize,tonnes,1918,1919,juan,mitchell,1930121.300,2857000.000,1.4802
+bolivia,rice paddy,tonnes,1927,1928,juan,mitchell,25000.000,37000.000,1.4800
+ecuador,goats,heads,1947,1948,mitchell,juan,2764000.000,1450000.000,0.5246
+syrian arab republic,oil olive virgin,tonnes,1944,1945,mitchell,iia,4000.000,2100.000,0.5250
+ecuador,cacao beans,tonnes,1925,1926,iia,mitchell,34200.000,18000.000,0.5263
+mexico,maize,tonnes,1907,1908,juan,mitchell,5075085.190,2679000.000,0.5279
+uruguay,swine pigs,heads,1953,1954,mitchell,juan,520000.000,275000.000,0.5288
+bolivia,rice paddy,tonnes,1943,1944,juan,mitchell,10200.000,15000.000,1.4706
+dominican republic,cattle,heads,1948,1949,juan,mitchell,602000.000,885000.000,1.4701
+hungary,hops,ha,1921,1922,juan,iia,100.000,53.000,0.5300
+ecuador,wheat,ha,1951,1952,juan,mitchell,30000.000,44000.000,1.4667
+el salvador,swine pigs,heads,1959,1960,juan,mitchell,221000.000,324000.000,1.4661
+uruguay,barley,tonnes,1910,1911,mitchell,juan,1000.000,535.800,0.5358
+united states of america,flax fibre and tow,ha,1935,1936,iia,mitchell,848000.000,455000.000,0.5366
+gambia,groundnuts with shell,tonnes,1944,1945,mitchell,iia,30000.000,43800.000,1.4600
+chile,sheep,heads,1957,1958,mitchell,juan,12134000.000,6607000.000,0.5445
+brazil,sugar cane,ha,1922,1923,juan,mitchell,551000.000,300000.000,0.5445
+mexico,coffee green,ha,1915,1916,juan,iia,52300.000,76000.000,1.4532
+peru,goats,heads,1959,1960,juan,mitchell,5196000.000,7538000.000,1.4507
+switzerland,hemp tow waste,ha,1909,1910,juan,iia,100.000,55.000,0.5500
+uruguay,wheat,tonnes,1903,1904,juan,mitchell,142611.150,206000.000,1.4445
+chile,flax fibre and tow,ha,1920,1921,juan,iia,363.000,205.000,0.5647
+venezuela,cacao beans,tonnes,1924,1925,mitchell,iia,17000.000,24400.000,1.4353
+argentina,horses,heads,1919,1920,mitchell,juan,9293000.000,5253699.000,0.5653
+paraguay,tobacco unmanufactured,tonnes,1916,1917,juan,mitchell,9770.000,14000.000,1.4330
+mexico,cotton seed,tonnes,1924,1925,iia,mitchell,150539.000,86000.000,0.5713
+argentina,cotton seed,tonnes,1939,1940,mitchell,iia,161000.000,93100.000,0.5783
+bolivia,cattle,heads,1950,1951,juan,mitchell,3849000.000,2227000.000,0.5786
+paraguay,sugar cane,ha,1946,1947,juan,mitchell,19000.000,11000.000,0.5789
+ecuador,rice paddy,ha,1939,1940,mitchell,juan,69000.000,40000.000,0.5797
+tunisia,wine,tonnes,1920,1921,iia,mitchell,48320.356,28017.000,0.5798
+paraguay,sheep,heads,1943,1944,mitchell,juan,250000.000,145100.000,0.5804
+argentina,grapes,tonnes,1929,1930,juan,iia,1196000.000,705561.400,0.5899
+venezuela,horses,heads,1956,1957,mitchell,juan,1066000.000,629000.000,0.5901
+mexico,maize,tonnes,1913,1914,mitchell,juan,3374000.000,1992555.000,0.5906
+colombia,potatoes,ha,1956,1957,juan,mitchell,102000.000,61000.000,0.5980
+mexico,tobacco unmanufactured,tonnes,1896,1897,mitchell,juan,15000.000,9001.981,0.6001
+ecuador,horses,heads,1947,1948,mitchell,juan,222000.000,136000.000,0.6126
+venezuela,cacao beans,tonnes,1925,1926,iia,mitchell,24400.000,15000.000,0.6148
+colombia,sugar cane,ha,1957,1958,juan,mitchell,447000.000,279000.000,0.6242
+chile,sheep,heads,1951,1952,mitchell,juan,11588000.000,7300000.000,0.6300
+paraguay,maize,tonnes,1946,1947,mitchell,juan,168000.000,106000.000,0.6310
+bulgaria,rye,tonnes,1940,1941,juan,iia,218600.000,138000.000,0.6313
+el salvador,swine pigs,heads,1951,1952,juan,mitchell,419000.000,265000.000,0.6325
+chile,flax fibre and tow,ha,1911,1912,juan,iia,107.000,68.000,0.6355
+el salvador,coffee green,tonnes,1916,1917,juan,iia,46729.100,29752.000,0.6367
+colombia,potatoes,ha,1950,1951,juan,mitchell,78000.000,50000.000,0.6410
+south africa,oats,tonnes,1945,1946,iia,mitchell,132400.000,87000.000,0.6571
+colombia,cotton seed,tonnes,1939,1940,mitchell,iia,11000.000,7400.000,0.6727
+uruguay,linseed,tonnes,1903,1904,juan,mitchell,20767.000,14000.000,0.6741
+nicaragua,sugar raw centrifugal,tonnes,1909,1910,mitchell,iia,4000.000,2700.000,0.6750
+guatemala,coffee green,tonnes,1899,1900,mitchell,juan,45000.000,30423.940,0.6761
+cuba,horses,heads,1939,1940,juan,mitchell,572400.000,391000.000,0.6831
+argentina,linseed,tonnes,1896,1897,juan,mitchell,232000.000,160000.000,0.6897
+nicaragua,coffee green,ha,1913,1914,iia,juan,97000.000,67000.000,0.6907
+mexico,goats,heads,1956,1957,mitchell,juan,10110000.000,7042202.000,0.6966
+uruguay,wheat,tonnes,1909,1910,juan,mitchell,233910.000,163000.000,0.6968

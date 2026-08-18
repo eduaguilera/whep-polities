@@ -1173,6 +1173,33 @@ def mutate_retargeted_map_to_dead_polity(root, gpd, make_valid, affinity):
 
 
 
+
+def mutate_source_splice_hidden(root, gpd, make_valid, affinity):
+    """Delete a recorded source seam, so a scale break at a splice stops being accounted for.
+
+    The real defect cannot be re-injected: it lives in layer B, which is gitignored and absent here,
+    and the gate deliberately reads the committed table instead. What CAN regress is the table losing
+    a seam -- by a regeneration against a changed panel, or by an edit -- at which point a x100 scale
+    break goes unrecorded again and the count ceiling silently has room in it.
+
+    So this removes the largest extreme seam and requires the gate to notice. It picks by ratio rather
+    than by name because which seam is largest changes when the panel is rebuilt.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/source_splices.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    worst = max(rows, key=lambda r: abs(1 - float(r["ratio"])))
+    kept = [r for r in rows if r is not worst]
+    assert len(kept) == len(rows) - 1
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(kept)
+    return (f"deleted the {worst['country']} / {worst['item']} seam at {worst['year_before']} "
+            f"(x{float(worst['ratio']):.0f}, {worst['source_before']} -> {worst['source_after']}), so a "
+            f"scale break at a source splice is no longer accounted for")
+
 def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
     """Mark a span whose values come from ONE territory as coming from two.
 
@@ -2383,6 +2410,13 @@ CASES = (
         "single year -- with that date removed, so row order decides again",
     ),
     (
+        "validate_source_splices.py",
+        mutate_source_splice_hidden,
+        "not one any more",
+        "a recorded source seam deleted from the table, so a x100 scale break at a splice goes "
+        "unaccounted for and the count ceiling silently gains headroom",
+    ),
+    (
         "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
         "verified_equal",
@@ -2853,6 +2887,9 @@ WRITABLE = {
     # applied-verdict log and the ledger are read-only here but must be present: the mutator picks
     # its target by scanning them for an unflagged `verified_equal`, and the gate reads the ledger
     # to tell a retracted verdict from a live one.
+    "validate_source_splices.py": (
+        "pipelines/polity-autoimprove/state/source_splices.csv",
+    ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",
         "pipelines/polity-autoimprove/state/iia_label_provenance.csv",
