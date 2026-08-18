@@ -324,6 +324,27 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        False and rightly so — the aggregation is on the ITEM axis. 856 are genuine
                        unlabelled siblings; 35 too close to call. --write refreshes
                        state/item_axis_aggregates.csv
+25_same_polity_overlaps.py
+                       two labels of ONE source landing on ONE polity over overlapping years. The
+                       composition gate's double-count arm needs TWO codes to register a pair, so
+                       this case has nothing to register (#355). Derived from the matcher's actual
+                       routings, NOT from label shape: #355's string test (does one label extend
+                       another?) matched 39 polities of which 4 were real, because `Lao` extends to
+                       `Lao People's Democratic Republic` and eight spellings of `Trieste UK-US`
+                       extend to each other. A pair is reported only when the two labels share an
+                       (item, unit, year) cell — disjoint labels on one polity are the normal case.
+                       37 pairs, 13 with enough cells to support a verdict, and NONE of #355's four
+                       among them. Best evidenced: mitchell `cape natal` equals `south africa` in
+                       all 12 shared cattle cells 1946-1957 over 12 distinct values, a province
+                       carrying the national series; fao1952 `Germany` over `Germany Western` (22
+                       cells) and `Germany Berlin` (8), the 1948-51 yearbook's 1937 figures
+                       recomputed on post-war boundaries landing beside the actual 1937 Reich.
+                       A DIRECTIONAL FLOOR OF 5 CELLS demotes 18 of 26 first-run containments to
+                       `undetermined`: under a null where each shared cell falls either way at
+                       random, n cells agreeing has probability 2**-(n-1), so 5 is the smallest
+                       count clearing 0.05. On one cell it is a coin flip, and it wrongly called
+                       `EI Salvador`/`El Salvador` — an OCR variant of one label — a containment.
+                       --write refreshes state/same_polity_overlaps.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
