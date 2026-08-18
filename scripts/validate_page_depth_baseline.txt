@@ -44,7 +44,6 @@ ASM-1900-2025     #  38 rows,  642 B
 ETH-1907-1936     #  31 rows, 2045 B
 GUM-1950-2025     #  28 rows, 1305 B
 SLB-1800-2025     #  28 rows, 1746 B
-FLK-1833-2025     #  25 rows,  995 B
 BHS-1800-2025     #  23 rows,  945 B
 # FCC-1862-1887 removed 2026-08-17: no longer a stub. PR #280 (issue 155) built its
 # polygon -- the six southern Vietnamese provinces of French Cochinchina from GADM adm1 --
