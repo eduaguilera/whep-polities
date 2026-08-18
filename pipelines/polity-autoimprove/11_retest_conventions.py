@@ -570,6 +570,42 @@ def check_iia_wine_hectolitres(d):
     )
 
 
+def check_exclusive_reporting(d):
+    """The claim: three labels report a territory EXCLUSIVE of dependencies the same source reports
+    separately, so the polity each is routed to overstates the reporting territory.
+
+    The test is arithmetic and needs nothing outside the panel: if the outer label included the inner
+    territory, then outer >= inner would hold in EVERY shared (item, unit, year) cell. One violation
+    refutes inclusion; a systematic pattern of them is what these entries record.
+
+    Deliberately NOT tested here: which remedy is right. Issue 273 lists three, and this convention
+    documents only that the exclusion is real -- which stays true whichever is chosen.
+    """
+    pos = d[(d["value"].notna()) & (d["value"] > 0) & (d["year"].notna())]
+    if "is_aggregate" in pos.columns:
+        pos = pos[~pos["is_aggregate"].astype(bool)]
+
+    def below(source, outer, inner):
+        A = {(norm(r.item), str(r.unit), int(r.year)): float(r.value)
+             for r in pos[(pos["source"] == source) & (pos["country"].astype(str) == outer)].itertuples()}
+        B = {(norm(r.item), str(r.unit), int(r.year)): float(r.value)
+             for r in pos[(pos["source"] == source) & (pos["country"].astype(str) == inner)].itertuples()}
+        shared = set(A) & set(B)
+        return len(shared), sum(1 for k in shared if A[k] < B[k])
+
+    cases = [("iia", "japan", "south korea"), ("iia", "japan", "china, taiwan province of"),
+             ("mitchell", "japan", "korea"), ("mitchell", "japan", "china, taiwan province of"),
+             ("juan", "united kingdom", "ireland")]
+    bits, ok = [], True
+    for src, outer, inner in cases:
+        n, b = below(src, outer, inner)
+        bits.append(f"{src} {outer} below {inner} in {b}/{n}")
+        # a real exclusion shows up in a MATERIAL share, not one stray cell
+        if not (n >= 100 and b >= 0.03 * n):
+            ok = False
+    return ok, "; ".join(bits)
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -587,6 +623,9 @@ CHECKS = {
     ("juan", "Czechoslovakia", "*"): check_juan_czechoslovakia,
     ("iia", "djibouti", "coffee, green"): check_iia_djibouti_coffee,
     ("iia", "*", "wine"): check_iia_wine_hectolitres,
+    ("iia", "japan", "*"): check_exclusive_reporting,
+    ("mitchell", "japan", "*"): check_exclusive_reporting,
+    ("juan", "united kingdom", "*"): check_exclusive_reporting,
     ("iia", "*", "p"): check_iia_npk,
     ("iia", "*", "n"): check_iia_npk,
     ("iia", "*", "k"): check_iia_npk,
