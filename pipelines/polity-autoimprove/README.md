@@ -253,6 +253,14 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        validate_iia_label_provenance.py enforces, so tool and table cannot
                        drift — they already did once, when a hand-rolled derivation kept a
                        share-ratio test this script had replaced with a union-gain test.
+                       `--assertion 'label|source|LO-HI'` measures ONE assertion's own span,
+                       which is what verification actually asks. A label-level signal averages
+                       over all years and misses a problem confined to one era: `russian
+                       federation` reads `redirected -> ussr` overall, yet its 1909-1913 values
+                       have NO dominant source (`russia in europe` 17%, `russia` 13%, `russia in
+                       asia` 12% — the empire plus both halves), while 1922-1940 is cleanly 73%
+                       `ussr`. Likewise `serbia|iia|1909-1911` is 86% `kingdom of serbs, croats
+                       and slovenes` — a state that did not exist yet.
 select_tranche.py      picks the next batch to verify: highest-exposure assertions
                        that are pending AND have no banked verdict. Status alone is
                        NOT the filter — apply_verdicts.py writes the ledger, and

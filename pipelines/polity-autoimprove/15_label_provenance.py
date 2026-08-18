@@ -215,6 +215,13 @@ def main() -> int:
     ap.add_argument("--layer-b", default=DEFAULT_PANEL, help="consolidated layer-B parquet")
     ap.add_argument("--source", default="iia", help="source tag to audit (default: %(default)s)")
     ap.add_argument("--label", help="report one layer-B label in full instead of the ranked table")
+    ap.add_argument("--assertion", metavar="KEY",
+                    help="measure ONE assertion's own span, e.g. 'serbia|iia|1909-1911'. A "
+                         "label-level signal averages over all years and misses a problem confined "
+                         "to one era: `russian federation` reads `redirected -> ussr` overall, but "
+                         "its 1909-1917 values draw on `russia`, `russia in europe` AND "
+                         "`russia in asia` -- the empire plus both halves -- while 1922-1940 is "
+                         "cleanly 73% `ussr`. Verification asks about a SPAN, so this does too.")
     ap.add_argument("--min-rows", type=int, default=30,
                     help="skip labels with fewer dated values (default: %(default)s)")
     ap.add_argument("--write", metavar="CSV", nargs="?", const=DEFAULT_PROV,
@@ -294,6 +301,46 @@ def main() -> int:
             covered |= fp & raw_fp[rl]
         runs = era_runs(fp, raw_fp, [rl for _c, rl in above])
         rows.append((label, len(fp), scored[:4], above, top / len(fp), len(covered) / len(fp), runs))
+
+    if args.assertion:
+        parts = args.assertion.split("|")
+        if len(parts) != 3 or "-" not in parts[2]:
+            print("--assertion wants 'label|source|LO-HI'", file=sys.stderr)
+            return 2
+        lab, _src, span = parts
+        try:
+            lo, hi = (int(v) for v in span.split("-", 1))
+        except ValueError:
+            print(f"cannot read a year range from {span!r}", file=sys.stderr)
+            return 2
+        fp = {(y, v) for y, v in lb_fp.get(norm(lab), set()) if lo <= y <= hi}
+        if not fp:
+            print(f"no dated values for `{lab}` in {lo}-{hi}")
+            return 0
+        scored = sorted(((len(fp & r), rl) for rl, r in raw_fp.items() if fp & r),
+                        key=lambda t: (-t[0], t[1]))
+        print(f"{args.assertion}  ({len(fp)} dated production values in {lo}-{hi})\n")
+        for c, rl in scored[:5]:
+            flag = "" if c / len(fp) > NOISE_FLOOR else "   (at/below noise floor)"
+            print(f"   {100 * c / len(fp):5.1f}%  {rl}{flag}")
+        top, top_label = scored[0] if scored else (0, "")
+        above = [(c, rl) for c, rl in scored if c / len(fp) > NOISE_FLOOR]
+        covered = set()
+        for _c, rl in above:
+            covered |= fp & raw_fp[rl]
+        print()
+        if not above:
+            print(f"   NO DOMINANT SOURCE: nothing clears the {NOISE_FLOOR:.0%} noise floor, so "
+                  f"these years are assembled from several raw labels none of which explains them. "
+                  f"Best single match is {top_label} at {100 * top / len(fp):.0f}%.")
+        elif len(above) > 1:
+            print(f"   SEVERAL SOURCES IN THIS SPAN: {', '.join(rl for _c, rl in above)} "
+                  f"({len(covered) / len(fp):.0%} between them)")
+        elif not is_rename(top_label, lab):
+            print(f"   REDIRECTED IN THIS SPAN: {top_label} at {100 * top / len(fp):.0f}%")
+        else:
+            print(f"   CLEAN IN THIS SPAN: {top_label} at {100 * top / len(fp):.0f}%")
+        return 0
 
     if args.write:
         # Re-derive the tracked table: keep every column the mapping supplies, and overwrite the
