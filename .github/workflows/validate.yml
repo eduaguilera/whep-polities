@@ -483,6 +483,13 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_edition_conflicts.py
 
+      # validate_isolated_spikes.py is one-directional and skips endpoints, and both choices left a
+      # hole with a confirmed defect in it: iia nauru/p ends on 97 after 424,896 — a transposition
+      # with Australia's 1933 phosphate. 117 collapses at >=20x, ZERO overlapping the spike table.
+      - name: Sources — no year may read many times BELOW its own neighbours
+        if: '!cancelled()'
+        run: python3 scripts/validate_series_collapses.py
+
       # A label can be right for one commodity and wrong for another, and no label-level decision can
       # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix
       # raw labels across their item series -- australia's `p` is CHRISTMAS ISLAND phosphate,

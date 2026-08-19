@@ -379,6 +379,21 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        layer B. Where a second opinion exists the pipeline prefers it (1933: 179
                        raw zeros -> 61 in layer B); where none exists they pass through (1935:
                        148 -> 120). Issue 414. --write refreshes state/edition_conflicts.csv
+27_series_collapses.py where does a series COLLAPSE — a year many times BELOW its neighbours, or
+                       below its own start/end? 18_isolated_spikes.py is one-directional and skips
+                       endpoints, and both left a hole: `iia nauru / p` runs 275,720/245,040/424,896
+                       for 1930-32 and ends on **97** in 1933 — the iia_1933_34 volume swapped
+                       Nauru's and Australia's phosphate (iia_1938_39 has 369,500 and 100). Wrong
+                       sign AND an endpoint, so the spike detector missed it twice over.
+                       117 collapses at >=20x — interior 55, leading 52, terminal 10 — with ZERO
+                       overlap with isolated_spikes.csv, so a disjoint class not a re-detection.
+                       IT DOES NOT CLAIM ITS ROWS ARE DEFECTS, and that is measured: of the 10
+                       terminal collapses, four are plausible war endings (hungary silk cocoons
+                       236->4 and sugar 176,400->6,500 in 1945, iran castor 2,600->100 in 1944)
+                       while mitchell china millet 6,524,000->4,000 ha (1952) is not. NO RATIO
+                       SEPARATES THEM — hungary's sugar is 27x, below tanzania's cassava at 70x — so
+                       inventing a threshold would fit it to the examples at hand (issue 406).
+                       --write refreshes state/series_collapses.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.

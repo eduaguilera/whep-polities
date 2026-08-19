@@ -1437,6 +1437,38 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_collapse_factor_rewritten(root, gpd, make_valid, affinity):
+    """Rewrite the deepest collapse's factor to look ordinary while its two values stay put.
+
+    The mutation dodges both of the gate's headline signals on purpose. The row count per position is
+    untouched, so the bidirectional ceilings stay quiet; the source, label, item, unit, position and
+    year are untouched, so all 117 identity pins still match. What changes is the one column every
+    judgement rests on -- and the row keeps the value and neighbour_value that contradict it.
+
+    That combination is what a partially-regenerated table looks like: the shape survives, the
+    measurement rots, and nothing about the row LOOKS wrong on its own. Only check C, which
+    recomputes the ratio from the two numbers sitting beside it, can see it.
+
+    It picks the deepest collapse by factor rather than by name, since which one is deepest changes
+    when the panel is rebuilt -- the same reason the splice, spike and constant-run mutators pick by
+    measurement.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/series_collapses.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    worst = max(rows, key=lambda r: float(r["factor"]))
+    before = worst["factor"]
+    worst["factor"] = "21.0"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"rewrote the {worst['country']} / {worst['item']} {worst['year']} collapse's factor from "
+            f"{before} to 21.0 while leaving its two values alone, so the column every judgement "
+            f"rests on no longer describes the row it sits in")
+
+
 def mutate_edition_zero_reclassed(root, gpd, make_valid, affinity):
     """Move a contradicted zero into the `revised` class, where the ceiling treats it as normal.
 
@@ -2882,6 +2914,14 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_series_collapses.py",
+        mutate_collapse_factor_rewritten,
+        "does not match its own values",
+        "the deepest collapse's factor rewritten to look ordinary while its two values stay put — "
+        "row counts and all 117 identity pins unchanged, so only the check that recomputes the "
+        "ratio from the numbers beside it can see the table has rotted",
+    ),
+    (
         "validate_edition_conflicts.py",
         mutate_edition_zero_reclassed,
         "is classed revised but carries a zero",
@@ -3446,6 +3486,10 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_isolated_spikes.py": (
         "pipelines/polity-autoimprove/state/isolated_spikes.csv",
+    ),
+    # The case rewrites series_collapses.csv in place (it edits the factor column), so a real copy.
+    "validate_series_collapses.py": (
+        "pipelines/polity-autoimprove/state/series_collapses.csv",
     ),
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
