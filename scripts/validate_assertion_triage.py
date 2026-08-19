@@ -18,6 +18,7 @@ Almost nothing here is a pinned count. Five of the six arms recompute the column
     D  n_distinct_years in [1, span width] -- cannot observe more years than the span contains
     E  inclusion_impossible agrees with assertion_nesting_flags.csv   <-- CROSS-TABLE
     F  candidate resolves to a live polity_code
+    G  the observed span INTERSECTS the candidate's lifetime         <-- CROSS-TABLE
 
 E is the arm worth having. `inclusion_impossible` is a copy of a verdict computed in a DIFFERENT
 table, and a copied verdict is exactly the thing that goes stale when its source is regenerated and
@@ -27,16 +28,28 @@ the impossible pairs in assertion_nesting_flags.csv keyed on either side.
 Why no baseline row count: the queue drains on purpose. Pinning 796 would fail on the correct action
 of verifying an assertion, which is the failure mode validate_magnitude_outliers.py exists to avoid.
 
-WHAT THIS GATE DOES NOT CATCH — stated because the coverage is otherwise easy to over-read. Arm A is
-INTERNAL consistency: it proves each key rebuilds from its own three columns, and all 796 do. A row
-that is stale relative to `assertions.json` rebuilds perfectly and passes. Issue 434 is exactly that
-defect and this gate is green on it: 71 queue rows name a span no current assertion has, and 198
+ARM G, and why it is worth having before the resync. `matchlib.eff_year` dates a period-average row
+to the period's END year, but `01_match_and_findings.py:110-130` picks that row's polity by MAXIMUM
+COVERAGE of the period -- it documents rejecting the midpoint on measurement. Those two rules disagree
+wherever a period straddles a polity boundary, and the result is a row dated outside the lifetime of
+the very polity it is routed to. Measured on a freshly generated assertion set (issue 310): 7
+assertions, 337 rows, worst `india|fao1952|1938-1938 -> IND-1914-1937` where all 37 rows are the
+single period `1934-1938` and so date to 1938 against a polity ending 1937.
+
+The committed queue has ZERO violations, so this arm passes today and fires the moment a regeneration
+introduces one. That is the whole point of adding it now rather than after: the defect is currently
+latent in the generator, not in the table.
+
+WHAT THIS GATE STILL DOES NOT CATCH — stated because the coverage is otherwise easy to over-read. Arm
+A is INTERNAL consistency: it proves each key rebuilds from its own three columns, and all 796 do. A
+row that is stale relative to `assertions.json` rebuilds perfectly and passes. Issue 434 is exactly
+that defect and this gate is green on it: 71 queue rows name a span no current assertion has, and 198
 pending/reopened assertions (8.9% of pending panel rows) never reach the queue at all.
 
-The arm that would catch it is a seventh, checking the queue against `assertions.json`. It is absent
-because it would fail on main today, and the resync it demands is a decision about curated state
-(re-running the generator has previously re-banked verdicts over hand retractions). Order is: resync
-under 434, then add the arm. Arm E is the same class of check against a table that IS in sync.
+An arm comparing the queue against `assertions.json` is IMPOSSIBLE IN CI, not merely deferred: that
+file is gitignored and absent there (`validate_verdict_carryover.py` records the same constraint). So
+#434's resync has to be verified by hand at the point it is performed. Arms E and G are the same class
+of cross-table check restricted to tables CI actually has.
 
 Usage:
   python3 scripts/validate_assertion_triage.py
@@ -100,14 +113,21 @@ def main() -> int:
         print(f"FAIL: {os.path.relpath(TABLE, REPO)} has no rows", file=sys.stderr)
         return 1
 
-    live = None
+    live = spans = None
     if os.path.exists(POLITIES):
         with open(POLITIES, encoding="utf-8") as fh:
-            live = {r["polity_code"] for r in csv.DictReader(fh)}
+            pol = list(csv.DictReader(fh))
+        live = {r["polity_code"] for r in pol}
+        spans = {}
+        for r in pol:
+            try:
+                spans[r["polity_code"]] = (int(r["start_year"]), int(r["end_year"]))
+            except (KeyError, TypeError, ValueError):
+                pass
     imposs = impossible_keys()
 
     problems, orphans, seen, orders = [], set(), {}, []
-    rederived = flagged = 0
+    rederived = flagged = overlapped = 0
 
     for i, r in enumerate(rows, start=2):
         key = (r.get("key") or "").strip()
@@ -169,6 +189,22 @@ def main() -> int:
         if live is not None and cand and cand not in live:
             orphans.add(cand)
 
+        # --- G: a span must overlap the lifetime of the polity it is routed to ---
+        # Not "be contained in": a label legitimately reports across a boundary, and the assertion is
+        # then verified by deciding where to split it. What cannot be right is a span that misses the
+        # candidate's life ENTIRELY -- that is a routing claim contradicted by its own dates.
+        if spans is not None and m and cand in spans:
+            y0, y1 = int(m.group(1)), int(m.group(2))
+            s0, s1 = spans[cand]
+            if y1 < s0 or y0 > s1:
+                problems.append(
+                    f"G {where}: observed {span} lies entirely outside {cand}'s lifetime "
+                    f"{s0}-{s1}. The row is dated by the period's END year while 01 picks the polity "
+                    f"by maximum COVERAGE of that period, and the two rules disagree across a "
+                    f"boundary (issue 310)")
+            else:
+                overlapped += 1
+
         tier, status = (r.get("tier") or "").strip(), (r.get("status") or "").strip()
         if tier and tier not in TIERS:
             problems.append(f"{where}: unknown tier {tier!r} — generator and gate disagree about "
@@ -209,7 +245,8 @@ def main() -> int:
           f"inclusion_impossible {flagged}"
           + (f" agreeing with {len(imposs)} nesting keys" if imposs is not None
              else " (nesting table absent, arm E skipped)")
-          + f", orphaned candidates {len(orphans)}")
+          + f", orphaned candidates {len(orphans)}"
+          + f", spans overlapping their candidate {overlapped}")
 
     for p in problems:
         print(f"FAIL: {p}", file=sys.stderr)
