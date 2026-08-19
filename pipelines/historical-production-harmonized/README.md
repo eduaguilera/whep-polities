@@ -99,3 +99,30 @@ The build excludes rows needing stronger assumptions:
 - ambiguous animal aggregates like cattle, pigs, chickens/poultry unless split
   rules are explicitly added
 - aggregate regional rows
+- **period averages — rows carrying a period label instead of a year.** This is
+  the largest single exclusion and it was previously implicit, visible only as a
+  `!is.na(year)` filter, so a coverage measurement read the gap as missing
+  sources rather than as a deliberate exclusion (whep-polities #310):
+
+  ```
+  layer B rows                          192,670
+  valued rows with NO year                9,865   5.12%   iia 6,163 | fao1952 3,702
+     ...carrying a period label           9,865   100%    none is genuinely undated
+  distinct periods                           21
+     1934-1938 5,629 | 1925-1929 1,649 | 1928-1932 1,600 | 1909-1913 845
+  series affected (label, item)           3,589   over 100 items and 401 labels
+  ```
+
+  These are the printed sources' five-year-mean convention, not sparse residue.
+  They are excluded because a period average is not an observation of a year and
+  placing it on one would invent a datum — but note the asymmetry with the
+  assertion pipeline, which does reason about them: `matchlib.eff_year` reads the
+  period's end year, `01_match_and_findings.py` routes a period average to the
+  polity covering the MOST of its span (the midpoint was rejected on
+  measurement), and `00_intake.py` refuses to run without `--period-col` (#437).
+  None of that reaches here, because this build has no `period` column at all.
+
+  If they are ever to be published, the option that needs no semantic decision is
+  a separate table keyed on `(period_start, period_end)` rather than a flag on a
+  chosen year — choosing the year is what #434's four lifetime-overlap failures
+  ran into.

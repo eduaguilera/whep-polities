@@ -449,6 +449,20 @@ base <- dplyr::bind_cols(
     !is.na(.data$unit),
     !is.na(.data$whep_code),
     !is.na(.data$value),
+    # PERIOD AVERAGES ARE EXCLUDED HERE, and this is the largest single exclusion
+    # the build makes: 9,865 valued layer-B rows (5.12%) carry a period label
+    # like `1934-1938` instead of a year -- iia 6,163, fao1952 3,702, across
+    # 3,589 (label, item) series, 100 items and 401 labels. Every one of them has
+    # a period, so none is genuinely undated; they are the printed sources'
+    # five-year-mean convention.
+    #
+    # A period average is not an observation of a year, so placing it on one
+    # would invent a datum. But the exclusion used to be INVISIBLE -- just this
+    # predicate -- and a coverage measurement then reads the gap as missing
+    # sources (whep-polities #310). `period` is not even carried into this
+    # pipeline, so there is no path by which the label could supply a year, and
+    # `.prepare_historical_production()` would drop them again anyway via
+    # `year %in% years` (NA %in% years is FALSE in R).
     !is.na(.data$year)
   )
 
