@@ -88,6 +88,12 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATE = os.path.join(REPO, "pipelines/polity-autoimprove/state")
 CELLS = os.path.join(STATE, "yield_corrections.csv")
 SERIES = os.path.join(STATE, "yield_series_corrections.csv")
+IMPOSSIBLE = os.path.join(STATE, "impossible_pairs.csv")
+
+# Measured 2026-08-19 on the first run that emitted the table. BIDIRECTIONAL: repairing a false zero
+# area must lower this with a note, so the count cannot quietly refill.
+BASELINE_IMPOSSIBLE = 177
+IMPOSSIBLE_COLUMNS = ["source", "country", "item", "year", "area_ha", "prod_t"]
 
 # The generator's own constants. Duplicated deliberately: this gate must be able to judge
 # the committed table in CI, where layer B is absent and the generator cannot run, and a
@@ -435,6 +441,59 @@ for v in sorted(counts, key=lambda k: -counts[k][0]):
     c = counts[v]
     print(f"    {v:20s} {c[0]:2d} run(s), {c[1]:2d} flagged cell(s), "
           f"{c[2]:3d} paired observation(s)")
+
+# --- IMPOSSIBLE PAIRS: area == 0 beside a positive production ---
+# This class exists because a guard meant to prevent a divide-by-zero was also silently deleting
+# the finding. 07_yield_consistency.py filtered `area_ha > 0` before computing any yield, so 177
+# cells whose implied yield is INFINITE never reached the flagging step at all -- the tool built to
+# detect physically impossible yields was discarding its most impossible cases. Same shape as the
+# guarded existence check that shipped dead in issue 407.
+#
+# Nothing here can be re-derived, which is the point: there is no yield, no ratio_to_ref and no
+# orders_out at area = 0, and `production / ref_yield` is the only repair the arithmetic offers. So
+# the checks are existence, shape and a bidirectional ceiling.
+if not os.path.exists(IMPOSSIBLE):
+    problems.append(
+        f"{os.path.relpath(IMPOSSIBLE, REPO)} is missing — run 07_yield_consistency.py. An absent "
+        f"table is a FAILURE here, not a skip: this whole class was invisible for as long as it "
+        f"had no file of its own")
+    impossible = []
+else:
+    with open(IMPOSSIBLE, encoding="utf-8") as fh:
+        rdr = csv.DictReader(fh)
+        impossible = list(rdr)
+        if list(rdr.fieldnames or []) != IMPOSSIBLE_COLUMNS:
+            problems.append(
+                f"{os.path.relpath(IMPOSSIBLE, REPO)} columns are {rdr.fieldnames}, expected "
+                f"{IMPOSSIBLE_COLUMNS}")
+
+for r in impossible:
+    where = f"impossible {r.get('source')}/{r.get('country')}/{r.get('item')} {r.get('year')}"
+    a, pt = num(r.get("area_ha")), num(r.get("prod_t"))
+    if a is None or pt is None:
+        problems.append(f"{where}: unparseable area or production")
+        continue
+    if a != 0:
+        problems.append(
+            f"{where}: area_ha={a:g} is not zero, so this row is an ordinary implausible yield and "
+            f"belongs in yield_corrections.csv where its derived columns can be checked")
+    if pt <= 0:
+        problems.append(
+            f"{where}: prod_t={pt:g} is not positive, so nothing is impossible about it — a zero "
+            f"area beside no production is simply a territory not growing the crop")
+
+print(f"\nAREA == 0 BESIDE A POSITIVE PRODUCTION: {len(impossible)} "
+      f"(ceiling {BASELINE_IMPOSSIBLE})")
+if len(impossible) > BASELINE_IMPOSSIBLE:
+    problems.append(
+        f"{len(impossible)} cells report zero area with positive production, above the ceiling of "
+        f"{BASELINE_IMPOSSIBLE}. No tonnage comes off zero hectares — nigeria cotton lint reads 0 ha "
+        f"for 1941-1945 while the same label reports 15,100 t of cotton seed in those years")
+elif impossible and len(impossible) < BASELINE_IMPOSSIBLE:
+    problems.append(
+        f"only {len(impossible)} impossible pairs remain, below the pinned ceiling of "
+        f"{BASELINE_IMPOSSIBLE} — lower the baseline and say which cells were repaired and whether "
+        f"the zero became a real area or a missing value")
 
 print(f"\nDERIVED COLUMNS DISAGREEING WITH THEIR OWN ROW: {len(problems)}")
 for p in problems[:40]:

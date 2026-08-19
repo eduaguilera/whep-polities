@@ -1,0 +1,178 @@
+source,country,item,year,area_ha,prod_t
+iia,guadeloupe,cotton seed,1934,0.0,3884800.0
+iia,libya,"tobacco, unmanufactured",1937,0.0,85000.0
+iia,tunisia,"tobacco, unmanufactured",1936,0.0,71700.0
+iia,libya,"tobacco, unmanufactured",1935,0.0,69600.0
+iia,libya,"tobacco, unmanufactured",1936,0.0,68400.0
+iia,tunisia,"tobacco, unmanufactured",1935,0.0,59500.0
+iia,tunisia,"tobacco, unmanufactured",1937,0.0,55900.0
+iia,burundi,"tobacco, unmanufactured",1935,0.0,52500.0
+iia,burundi,"tobacco, unmanufactured",1934,0.0,52500.0
+iia,mauritius,"tobacco, unmanufactured",1936,0.0,47800.0
+iia,morocco,"tobacco, unmanufactured",1936,0.0,47400.0
+iia,mauritius,"tobacco, unmanufactured",1933,0.0,46900.0
+iia,morocco,"tobacco, unmanufactured",1937,0.0,41700.0
+iia,morocco,"tobacco, unmanufactured",1934,0.0,32100.0
+iia,mauritius,"tobacco, unmanufactured",1935,0.0,32000.0
+iia,mauritius,"tobacco, unmanufactured",1934,0.0,27600.0
+iia,burundi,"tobacco, unmanufactured",1936,0.0,23000.0
+iia,malaysia,"tobacco, unmanufactured",1937,0.0,21100.0
+iia,morocco,"tobacco, unmanufactured",1935,0.0,17600.0
+iia,eswatini,"tobacco, unmanufactured",1933,0.0,17000.0
+iia,antigua and barbuda,cotton seed,1934,0.0,14400.0
+iia,malaysia,"tobacco, unmanufactured",1936,0.0,14300.0
+iia,cyprus,"tobacco, unmanufactured",1936,0.0,13700.0
+iia,malaysia,"tobacco, unmanufactured",1935,0.0,13500.0
+iia,eswatini,"tobacco, unmanufactured",1935,0.0,12800.0
+iia,malaysia,"tobacco, unmanufactured",1934,0.0,12600.0
+iia,eswatini,"tobacco, unmanufactured",1934,0.0,11900.0
+iia,eswatini,"tobacco, unmanufactured",1937,0.0,10600.0
+iia,cameroon,"tobacco, unmanufactured",1936,0.0,10000.0
+iia,jordan,"tobacco, unmanufactured",1937,0.0,9700.0
+iia,eswatini,"tobacco, unmanufactured",1936,0.0,9100.0
+iia,congo,cotton lint,1939,0.0,8800.0
+iia,saint lucia,lemons and limes,1933,0.0,7100.0
+iia,cameroon,"tobacco, unmanufactured",1937,0.0,7000.0
+iia,cameroon,"tobacco, unmanufactured",1935,0.0,4400.0
+iia,algeria,lemons and limes,1937,0.0,4000.0
+iia,benin,"tobacco, unmanufactured",1934,0.0,4000.0
+iia,benin,"tobacco, unmanufactured",1935,0.0,4000.0
+iia,benin,"tobacco, unmanufactured",1937,0.0,4000.0
+iia,benin,"tobacco, unmanufactured",1936,0.0,4000.0
+iia,algeria,lemons and limes,1933,0.0,3900.0
+iia,algeria,lemons and limes,1936,0.0,3800.0
+iia,eritrea,"tobacco, unmanufactured",1934,0.0,3500.0
+iia,algeria,lemons and limes,1935,0.0,3500.0
+iia,algeria,lemons and limes,1934,0.0,3400.0
+iia,cyprus,"tobacco, unmanufactured",1937,0.0,3400.0
+iia,benin,"tobacco, unmanufactured",1933,0.0,3000.0
+juan,argentina,fibre crops nes,1937,0.0,2832.0
+iia,australia,other sugar crops n.e.c.,1937,0.0,2700.0
+iia,eritrea,"tobacco, unmanufactured",1936,0.0,2700.0
+iia,eritrea,"tobacco, unmanufactured",1935,0.0,2500.0
+iia,eritrea,"tobacco, unmanufactured",1937,0.0,2100.0
+iia,australia,other sugar crops n.e.c.,1936,0.0,2100.0
+iia,cyprus,lemons and limes,1936,0.0,2100.0
+iia,australia,other sugar crops n.e.c.,1935,0.0,2100.0
+iia,american samoa,"tobacco, unmanufactured",1934,0.0,2000.0
+iia,dominica,lemons and limes,1934,0.0,2000.0
+iia,dominica,lemons and limes,1935,0.0,2000.0
+iia,australia,other sugar crops n.e.c.,1934,0.0,1900.0
+iia,australia,other sugar crops n.e.c.,1933,0.0,1700.0
+iia,south korea,grapes,1937,0.0,1700.0
+iia,cyprus,lemons and limes,1935,0.0,1400.0
+iia,micronesia (federated states of),"tobacco, unmanufactured",1933,0.0,1300.0
+iia,cyprus,lemons and limes,1933,0.0,1277.0
+iia,micronesia (federated states of),"tobacco, unmanufactured",1935,0.0,1100.0
+iia,micronesia (federated states of),"tobacco, unmanufactured",1934,0.0,1000.0
+iia,cyprus,lemons and limes,1934,0.0,900.0
+iia,belize,grapefruit (inc. pomelos),1934,0.0,800.0
+iia,india,cotton seed,1936,0.0,800.0
+iia,australia,olives,1936,0.0,700.0
+iia,mauritania,"tobacco, unmanufactured",1935,0.0,700.0
+iia,suriname,oranges,1933,0.0,700.0
+iia,belize,grapefruit (inc. pomelos),1933,0.0,700.0
+iia,suriname,oranges,1935,0.0,600.0
+iia,mauritania,"tobacco, unmanufactured",1934,0.0,500.0
+iia,australia,olives,1935,0.0,500.0
+iia,suriname,oranges,1934,0.0,500.0
+iia,montserrat,lemons and limes,1934,0.0,500.0
+iia,australia,olives,1937,0.0,400.0
+iia,dominica,oranges,1936,0.0,400.0
+iia,australia,olives,1934,0.0,400.0
+iia,cyprus,"beans, dry",1934,0.0,400.0
+iia,micronesia (federated states of),"tobacco, unmanufactured",1936,0.0,400.0
+iia,zambia,oranges,1937,0.0,300.0
+iia,zambia,oranges,1936,0.0,300.0
+iia,french polynesia,"tobacco, unmanufactured",1936,0.0,300.0
+iia,tunisia,flax fibre and tow,1933,0.0,300.0
+iia,new zealand,flax fibre and tow,1937,0.0,300.0
+iia,french polynesia,"tobacco, unmanufactured",1937,0.0,300.0
+iia,algeria,"beans, dry",1935,0.0,300.0
+iia,algeria,"beans, dry",1936,0.0,300.0
+iia,dominica,oranges,1933,0.0,300.0
+iia,algeria,"beans, dry",1938,0.0,300.0
+iia,australia,olives,1933,0.0,300.0
+iia,french polynesia,"tobacco, unmanufactured",1934,0.0,300.0
+iia,benin,"cacao, beans",1934,0.0,300.0
+iia,benin,"cacao, beans",1935,0.0,300.0
+iia,benin,"cacao, beans",1936,0.0,300.0
+iia,french polynesia,"tobacco, unmanufactured",1935,0.0,300.0
+iia,dominica,oranges,1935,0.0,300.0
+iia,dominica,oranges,1934,0.0,300.0
+iia,madagascar,wine,1934,0.0,291.0
+iia,madagascar,wine,1936,0.0,291.0
+iia,micronesia (federated states of),"tobacco, unmanufactured",1937,0.0,200.0
+iia,new zealand,rye,1937,0.0,200.0
+iia,cyprus,"beans, dry",1933,0.0,200.0
+iia,"china, taiwan province of",rapeseed,1937,0.0,200.0
+iia,tunisia,flax fibre and tow,1935,0.0,200.0
+iia,tunisia,flax fibre and tow,1934,0.0,200.0
+iia,belgium,yarn of true hemp,1938,0.0,200.0
+iia,antigua and barbuda,cotton seed,1935,0.0,200.0
+iia,mauritania,"tobacco, unmanufactured",1937,0.0,200.0
+iia,australia,flax fibre and tow,1933,0.0,200.0
+iia,morocco,cotton seed,1937,0.0,200.0
+iia,australia,flax fibre and tow,1935,0.0,200.0
+iia,viet nam,jute,1935,0.0,200.0
+iia,algeria,cotton seed,1937,0.0,200.0
+iia,viet nam,jute,1936,0.0,200.0
+iia,dominica,grapefruit (inc. pomelos),1933,0.0,200.0
+iia,zambia,oranges,1935,0.0,200.0
+iia,zambia,oranges,1934,0.0,200.0
+iia,zambia,oranges,1933,0.0,200.0
+iia,new zealand,rye,1935,0.0,200.0
+iia,madagascar,wine,1933,0.0,194.0
+iia,tunisia,flax fibre and tow,1937,0.0,100.0
+iia,tunisia,flax fibre and tow,1936,0.0,100.0
+iia,guadeloupe,cotton seed,1935,0.0,100.0
+iia,senegal,"other citrus fruit, n.e.c.",1933,0.0,100.0
+iia,senegal,"other citrus fruit, n.e.c.",1934,0.0,100.0
+iia,algeria,cotton lint,1936,0.0,100.0
+iia,somalia,sesame seed,1935,0.0,100.0
+iia,australia,flax fibre and tow,1934,0.0,100.0
+iia,vanuatu,cotton seed,1935,0.0,100.0
+iia,antigua and barbuda,cotton seed,1936,0.0,100.0
+iia,algeria,cotton seed,1936,0.0,100.0
+iia,zambia,"groundnuts, with shell",1934,0.0,100.0
+iia,viet nam,jute,1934,0.0,100.0
+iia,zambia,lemons and limes,1937,0.0,100.0
+iia,zambia,lemons and limes,1936,0.0,100.0
+iia,tunisia,flax fibre and tow,1938,0.0,100.0
+iia,zambia,"groundnuts, with shell",1936,0.0,100.0
+iia,zambia,"groundnuts, with shell",1935,0.0,100.0
+iia,antigua and barbuda,cotton lint,1935,0.0,100.0
+iia,kenya,flax fibre and tow,1935,0.0,100.0
+iia,new zealand,rye,1936,0.0,100.0
+iia,mauritius,"groundnuts, with shell",1937,0.0,100.0
+iia,dominica,grapefruit (inc. pomelos),1936,0.0,100.0
+iia,dominica,grapefruit (inc. pomelos),1935,0.0,100.0
+iia,malawi,"coffee, green",1934,0.0,100.0
+iia,malawi,"coffee, green",1935,0.0,100.0
+iia,malawi,cotton lint,1937,0.0,100.0
+iia,malawi,cotton seed,1937,0.0,100.0
+iia,dominica,grapefruit (inc. pomelos),1934,0.0,100.0
+iia,cyprus,yarn of true hemp,1938,0.0,100.0
+iia,cyprus,yarn of true hemp,1937,0.0,100.0
+iia,cyprus,yarn of true hemp,1936,0.0,100.0
+iia,cyprus,yarn of true hemp,1935,0.0,100.0
+iia,mauritius,"groundnuts, with shell",1934,0.0,100.0
+iia,mauritius,"groundnuts, with shell",1935,0.0,100.0
+iia,mauritius,"groundnuts, with shell",1936,0.0,100.0
+iia,austria,yarn of true hemp,1934,0.0,100.0
+iia,new zealand,rye,1934,0.0,100.0
+iia,"china, taiwan province of",rapeseed,1935,0.0,100.0
+iia,"china, taiwan province of",rapeseed,1934,0.0,100.0
+iia,guatemala,cotton seed,1935,0.0,100.0
+iia,guadeloupe,cotton seed,1938,0.0,100.0
+iia,guadeloupe,cotton seed,1937,0.0,100.0
+iia,austria,yarn of true hemp,1937,0.0,100.0
+iia,austria,yarn of true hemp,1936,0.0,100.0
+iia,austria,yarn of true hemp,1935,0.0,100.0
+iia,guadeloupe,cotton seed,1936,0.0,100.0
+iia,australia,flax fibre and tow,1936,0.0,100.0
+iia,mauritius,tea,1935,0.0,40.0
+iia,mauritius,tea,1937,0.0,38.0
+iia,mauritius,tea,1936,0.0,31.0
+iia,mauritius,tea,1934,0.0,17.0
+iia,antigua and barbuda,cotton lint,1933,0.0,1.2

@@ -1437,6 +1437,35 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_impossible_pair_area_filled(root, gpd, make_valid, affinity):
+    """Give an impossible pair a nonzero area, the state the old divide-by-zero filter produced.
+
+    Until 2026-08-19 `07_yield_consistency.py` filtered `area_ha > 0` before computing any yield, so
+    177 cells whose implied yield is INFINITE were dropped before the flagging step -- the tool built
+    to find physically impossible yields was silently discarding its most impossible cases, and every
+    gate passed. This mutation reproduces the shape of that regression on one row.
+
+    It dodges the ceiling by construction: the row COUNT is unchanged, so the bidirectional ceiling
+    stays satisfied and only the per-row shape check, which asserts that an entry in this table must
+    actually carry a zero area, can see it. That distinction matters -- a row with a real area is an
+    ordinary implausible yield whose derived columns can be re-checked in yield_corrections.csv, and
+    letting it sit here instead moves it somewhere nothing re-derives anything.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/impossible_pairs.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = max(rows, key=lambda r: float(r["prod_t"]))
+    victim["area_ha"] = "1000.0"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"gave the {victim['country']} / {victim['item']} {victim['year']} impossible pair an "
+            f"area of 1000 ha, so it stops being impossible while the row count -- and therefore "
+            f"the ceiling -- is untouched")
+
+
 def mutate_collapse_factor_rewritten(root, gpd, make_valid, affinity):
     """Rewrite the deepest collapse's factor to look ordinary while its two values stay put.
 
@@ -2914,6 +2943,14 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_yield_corrections.py",
+        mutate_impossible_pair_area_filled,
+        "is not zero, so this row is an ordinary implausible yield",
+        "an impossible pair given a real area — the state the divide-by-zero filter produced for "
+        "177 cells while every gate passed — with the row count left intact so the ceiling cannot "
+        "see it",
+    ),
+    (
         "validate_series_collapses.py",
         mutate_collapse_factor_rewritten,
         "does not match its own values",
@@ -3566,6 +3603,8 @@ WRITABLE = {
     "validate_yield_corrections.py": (
         "pipelines/polity-autoimprove/state/yield_series_corrections.csv",
         "pipelines/polity-autoimprove/state/yield_corrections.csv",
+        # The impossible-pairs case rewrites this in place (it fills an area), so a real copy.
+        "pipelines/polity-autoimprove/state/impossible_pairs.csv",
     ),
     # Same reasoning again: the sub-national table is the only file this gate reads, and the
     # case APPENDS a row to it, so it must be a real copy or the append lands in the
