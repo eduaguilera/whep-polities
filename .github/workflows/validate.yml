@@ -490,6 +490,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_series_collapses.py
 
+      # Every other repetition guard looks along the YEAR axis. None could see one value repeated
+      # across ITEMS in a single label-year, which has a different cause: a cell broadcast over a row.
+      # mitchell india 1947 reads exactly 3,000 for asses, buffalo, camels, cattle, goats, horses,
+      # sheep AND swine, in a year its cattle reads 155,295,000 (1951). 5 blocks, all defects.
+      - name: Sources — four items may not share one value in a label-year
+        if: '!cancelled()'
+        run: python3 scripts/validate_item_blocks.py
+
       # A label can be right for one commodity and wrong for another, and no label-level decision can
       # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix
       # raw labels across their item series -- australia's `p` is CHRISTMAS ISLAND phosphate,

@@ -426,6 +426,26 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        classes; `factor` is left EMPTY rather than given a sentinel later
                        arithmetic might believe.
                        --write refreshes state/series_collapses.csv
+28_item_blocks.py      where do FOUR OR MORE items share one value in a single label-year? Every
+                       other repetition detector here looks along the YEAR axis — 17_constant_runs.py
+                       for one value repeated across years, 27_series_collapses.py for a year out of
+                       line with its neighbours. None can see a value repeated across ITEMS in one
+                       year, and the cause differs: a cell broadcast over a row, or a placeholder for
+                       a table nobody filled.
+                       THE CROSS-ITEM VIEW IS THE DIAGNOSIS. 27_series_collapses.py already flags
+                       mitchell india / swine 1947 (3,000 between 3,653,000 and 4,420,000). What a
+                       per-series test cannot say is that asses, buffalo, camels, cattle, goats,
+                       horses, sheep AND swine all read exactly 3,000 that year — eight independent
+                       errors on one number is not a hypothesis worth weighing; one broadcast cell is.
+                       5 blocks in the whole panel and ALL FIVE are defects: mitchell india heads 1947
+                       (8 items, 3,000 vs a 20,895,500 median elsewhere), mitchell somalia heads 1959
+                       (4 items, 15,000 vs 1,286,000), and iia belgium ha 1934/1935/1936 (4 items all
+                       0 — issue 414's blank-read-as-0 as a block, inside the iia_1938_39 window).
+                       THE VALUE IS NOT THE SIGNAL: 3,000 occurs 148 times across 48 mitchell labels
+                       legitimately. UNIT MUST BE IN THE KEY, or india's varied crop rows that year
+                       make the group non-uniform and the block vanishes — a placeholder is broadcast
+                       across one TABLE, and a table is one unit.
+                       --write refreshes state/item_blocks.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.
