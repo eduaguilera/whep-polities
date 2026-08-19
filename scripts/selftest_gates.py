@@ -1437,6 +1437,36 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
+    """Point an overlap row at a polity code that does not exist.
+
+    This exists because the arm it tests SHIPPED DEAD. `validate_same_polity_overlaps.py` guarded its
+    polity-existence check with `if os.path.exists(POLITIES)` and pointed POLITIES at
+    `data/final/polities.csv` -- a filename this repo does not have; the table is
+    `polities_database.csv`. So the guard was always False, the arm never ran, and the gate passed
+    green while checking nothing. That is issue 387's failure verbatim, in a gate whose own docstring
+    cites issue 387.
+
+    It mutates an `undetermined` row, not a supported one, so the identity pins stay quiet -- they
+    only cover rows with a supported verdict. The row count, the arithmetic and the directional floor
+    are all untouched. ONLY the polity-existence arm can catch it, which is the point: a case that
+    tripped some other signal would have passed against the dead version too.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/same_polity_overlaps.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["relation"] == "undetermined")
+    before = victim["whep_code"]
+    victim["whep_code"] = "ZZZ-1800-1900"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"repointed an undetermined overlap from {before} to ZZZ-1800-1900, a code no polity "
+            f"has, leaving the row count, the arithmetic, the floor and every identity pin intact")
+
+
 def mutate_overlap_shrunk_below_floor(root, gpd, make_valid, affinity):
     """Shrink a pinned containment pair's cell count below the floor that made it sayable.
 
@@ -2738,6 +2768,14 @@ CASES = (
         "does not match its own values",
         "a recorded spike's factor column rewritten to look ordinary while its three values stay "
         "put, so the one number every judgement here rests on contradicts the row it describes",
+    ),
+    (
+        "validate_same_polity_overlaps.py",
+        mutate_overlap_code_not_a_polity,
+        "is not a polity in",
+        "an overlap row pointing at a code no polity has — the arm that catches this shipped DEAD, "
+        "guarded on a filename this repo does not contain, so the gate ran green while checking "
+        "nothing; the mutation leaves every other signal quiet so only that arm can see it",
     ),
     (
         "validate_same_polity_overlaps.py",
