@@ -55,7 +55,7 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/same_polity_overlaps.csv")
-POLITIES = os.path.join(REPO, "data/final/polities.csv")
+POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 
 # Measured 2026-08-19 on the first run. BIDIRECTIONAL: rerouting a label must lower this, with a note
 # saying which pair was resolved, so a later regression cannot hide inside the old headroom.
@@ -140,12 +140,20 @@ def main() -> int:
                 f"{r['whep_code']} {r['label_a']!r}/{r['label_b']!r} claims {r['relation']} on {n} "
                 f"cells, under the floor of {MIN_DIRECTIONAL} where direction is a coin flip")
 
-    # Every code must be a real polity, or the pins above refer to nothing.
-    if os.path.exists(POLITIES):
+    # Every code must be a real polity, or the pins above refer to nothing. NOT conditional on the
+    # file existing: this check shipped pointing at `data/final/polities.csv`, which is not the name
+    # of anything in this repo, so `os.path.exists` was False and the whole arm silently no-opped --
+    # the exact failure this gate's own docstring cites from issue 387. An absent input is a FAILURE.
+    if not os.path.exists(POLITIES):
+        problems.append(f"{os.path.relpath(POLITIES, REPO)} is missing, so no code here can be "
+                        f"checked against a real polity")
+    else:
         with open(POLITIES, encoding="utf-8") as fh:
-            live = {r["whep_code"] for r in csv.DictReader(fh)}
+            live = {r["polity_code"] for r in csv.DictReader(fh)}
         for code in sorted({r["whep_code"] for r in rows} - live):
-            problems.append(f"{code} is not a polity in data/final/polities.csv")
+            problems.append(
+                f"{code} is not a polity in {os.path.relpath(POLITIES, REPO)} — every pinned pair "
+                f"above refers to it, so the pin is checking against nothing")
 
     for p in problems:
         print(f"FAIL: {p}", file=sys.stderr)
