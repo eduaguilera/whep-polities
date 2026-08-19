@@ -578,6 +578,59 @@ def check_iia_australia_phosphate(d):
     )
 
 
+def check_iia_tobacco_era(d):
+    """The claim: iia tobacco and hops are ~100x too large from 1934 onward, and clean before it.
+
+    TWO INDEPENDENT METHODS AGREE ON THE SAME BOUNDARY, which is what makes this more than a
+    magnitude complaint. The physical one is here: production/area for these items runs 0.90 t/ha
+    through 1933 and 58.90 t/ha from 1934 -- and tobacco yields 0.5-3 t/ha, so the later figure is not
+    a large harvest, it is impossible. The documentary one is in state/edition_conflicts.csv (issue
+    414): of 89 inter-volume revisions above 50x, ALL are in 1933 and 88 hold the larger value in
+    `iia_1938_39`; turkey tobacco 1933 is 35,367 t there against 4,014,800 t.
+
+    WHY 1933 IS THE LAST CLEAN YEAR, which is the part that explains rather than describes. 1933 is
+    the only year covered by two yearbook volumes. Where `iia_1933_34` offers a second opinion the
+    pipeline takes it; from 1934 the inflated volumes are the sole source and the values pass
+    through. Same mechanism and same boundary as issue 414's false zeros.
+
+    IT IS CONFINED TO THESE TWO ITEMS. Run across all 26 iia items with enough paired cells either
+    side, only tobacco (70x) and hops (21x) break; every other item sits between 0.52x and 2.2x.
+    That specificity is the counter-test -- a pipeline-wide unit bug would move everything, and a
+    real agricultural event would not move two items by two orders of magnitude in one year.
+
+    The check tests BOTH halves. A clean pre-1934 era is as necessary as a broken post-1934 one: if
+    the early years were also impossible the diagnosis would be a units problem throughout, not an
+    era break, and the 1933 anchor this offers for repair would be worthless.
+    """
+    t = d[(d["source"] == "iia")
+          & d["item"].astype(str).str.contains("tobacco|hops", case=False, na=False)]
+    t = t.dropna(subset=["year", "value"])
+    prod = t[t["unit"] == "tonnes"].set_index(["country", "item", "year"])["value"]
+    area = t[t["unit"] == "ha"].set_index(["country", "item", "year"])["value"]
+    prod, area = prod[~prod.index.duplicated()], area[~area.index.duplicated()]
+    both = prod.index.intersection(area.index)
+    if len(both) < 50:
+        return False, f"only {len(both)} paired area/production cells; the yield test is unavailable"
+    y = (prod.loc[both] / area.loc[both]).replace([float("inf")], float("nan")).dropna()
+    yrs = [int(k[2]) for k in y.index]
+    pre = [v for v, yr in zip(y, yrs) if yr <= 1933]
+    post = [v for v, yr in zip(y, yrs) if yr >= 1934]
+    if len(pre) < 20 or len(post) < 20:
+        return False, "too few cells either side of 1933/1934 to compare eras"
+    import statistics as st
+    mpre, mpost = st.median(pre), st.median(post)
+    hi_post = sum(1 for v in post if v > 20) / len(post)
+    hi_pre = sum(1 for v in pre if v > 20) / len(pre)
+    # Tobacco tops out near 3 t/ha; 20 is far above any real harvest and far below the ~59 observed,
+    # so it separates the two eras without being fitted to either.
+    ok = mpre < 3 and mpost > 20 and hi_post > 0.5 and hi_pre < 0.1
+    return ok, (
+        f"yield median {mpre:.2f} t/ha through 1933 ({hi_pre:.0%} above 20) against {mpost:.2f} from "
+        f"1934 ({hi_post:.0%} above 20); the break sits exactly where iia_1933_34 stops offering a "
+        f"second volume, and no other iia item breaks by more than 2.2x"
+    )
+
+
 def check_iia_npk(d):
     """The claim: IIA's one-letter items `p`, `n` and `k` are the fertilizer MACRONUTRIENTS --
     phosphate, nitrogen and potash -- and NOT corrupt item labels, but they may not be merged with
@@ -744,6 +797,8 @@ CHECKS = {
     ("iia", "india", "*"): check_exclusive_reporting,
     ("mitchell", "south africa", "*"): check_mitchell_cape_natal,
     ("iia", "australia", "p"): check_iia_australia_phosphate,
+    ("iia", "*", "tobacco, unmanufactured"): check_iia_tobacco_era,
+    ("iia", "*", "hops"): check_iia_tobacco_era,
     ("iia", "*", "p"): check_iia_npk,
     ("iia", "*", "n"): check_iia_npk,
     ("iia", "*", "k"): check_iia_npk,
