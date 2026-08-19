@@ -97,6 +97,7 @@ print(f"  + {len([f for f in flagged if any('vintage_drift' in r for r in f['fla
 # missing hash reopens the polity. Every flag carries its evidence_hash so the
 # Cleanup phase can copy it into review_ledger.csv when banking.
 import csv as _csv, hashlib as _hashlib
+from atomic import write_csv_atomic
 LEDGER=os.path.join(H,"review_ledger.csv"); _banked={}
 if os.path.exists(LEDGER):
     for r in _csv.DictReader(open(LEDGER)):
@@ -128,8 +129,9 @@ if _bf:
     for r in _rows:
         b=_banked.get((r.get("key") or "").strip())
         if b is not None and b.get("evidence_hash"): r["evidence_hash"]=b["evidence_hash"]
-    with open(LEDGER,"w",newline="") as _fh:
-        _w=_csv.DictWriter(_fh,fieldnames=list(_rows[0].keys())); _w.writeheader(); _w.writerows(_rows)
+    # Atomic (issue 431): same read-edit-write-over-itself shape as 01_match_and_findings.py.
+    if _rows:
+        write_csv_atomic(LEDGER, list(_rows[0].keys()), _rows)
 print(f"flagged {len(flagged)} territorially-sensitive existing polities (magnitude-step + known)"
       + (f"; ledger skipped {_b-len(flagged)}" if _b!=len(flagged) else "")
       + (f"; backfilled {_bf} evidence hashes (WHEP_LEDGER_BACKFILL)" if _bf else "")

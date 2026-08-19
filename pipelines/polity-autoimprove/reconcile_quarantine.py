@@ -35,6 +35,7 @@ Usage:
   python3 reconcile_quarantine.py [--dry-run]
 """
 import json, csv, os, sys, datetime
+from atomic import write_csv_atomic
 
 H = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state")
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -182,9 +183,8 @@ for row, resolution, reason, now in resolved:
          "current_candidate": now, "resolved_by": "reconcile_quarantine.py",
          "resolved_date": TODAY},
         dedup_on=DEDUP_ON)
-with open(QUARANTINE, "w", newline="") as fh:
-    w = csv.DictWriter(fh, fieldnames=QUAR_FIELDS)
-    w.writeheader()
-    w.writerows([{f: row.get(f, "") for f in QUAR_FIELDS} for row, _ in kept])
+# Atomic (issue 431): quarantine.csv records quarantined series and why, and is not re-derivable.
+write_csv_atomic(QUARANTINE, QUAR_FIELDS,
+                 [{f: row.get(f, "") for f in QUAR_FIELDS} for row, _ in kept])
 print(f"archived {n_arch} row(s) -> {RESOLVED} ({len(resolved) - n_arch} already recorded)")
 print(f"quarantine.csv: {len(quar)} -> {len(kept)} row(s) open")

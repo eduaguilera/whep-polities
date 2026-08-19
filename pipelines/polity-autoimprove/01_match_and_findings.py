@@ -38,6 +38,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from matchlib import Matcher, norm, toks, eff_year as _eff_year
 import extdata
+from atomic import write_csv_atomic
 
 PA = os.path.join(OUT, "applied_aliases.csv")   # aliases confirmed by prior runs
 M = Matcher(POLDB, applied_aliases_csv=PA, common_names_csv=COMMON_NAMES)
@@ -292,9 +293,10 @@ if _backfilled:
     for r in _rows:
         b = banked.get((r.get("key") or "").strip().lower())
         if b is not None and b.get("evidence_hash"): r["evidence_hash"] = b["evidence_hash"]
-    with open(LEDGER, "w", newline="") as _fh:
-        _w = csv.DictWriter(_fh, fieldnames=list(_rows[0].keys()))
-        _w.writeheader(); _w.writerows(_rows)
+    # Atomic (issue 431). This block READS the ledger, edits it in memory and writes it back over
+    # itself, so a truncating write that dies part-way loses the file rather than corrupting it.
+    if _rows:
+        write_csv_atomic(LEDGER, list(_rows[0].keys()), _rows)
 findings.sort(key=lambda f: (-f["rows"]))
 for ft in ("name_unresolved","coverage_gap","data_error","other"):
     bucket=[f for f in findings if f["finding_type"]==ft]

@@ -53,6 +53,7 @@ LEDGER_FIELDS = ["unit_kind", "key", "status", "issue_id", "evidence_hash",
 # version is reopened by 00_intake.py, the same way a changed evidence_hash
 # reopens one. See protocol.py.
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from atomic import write_csv_atomic
 from protocol import protocol_version
 PROTOCOL = protocol_version()
 
@@ -315,9 +316,9 @@ for item in verdicts:
         stats["new_polity"] += 1
 
 # ---------- write ----------
-with open(LEDGER, "w", newline="") as fh:
-    w = csv.DictWriter(fh, fieldnames=LEDGER_FIELDS)
-    w.writeheader(); w.writerows(ledger)
+# Atomic: the ledger holds every banked verdict, and a truncating write that dies part-way loses
+# them (issue 431). Same-directory temp + os.replace.
+write_csv_atomic(LEDGER, LEDGER_FIELDS, ledger)
 if proposals:
     json.dump(proposals, open(PROPOSALS, "w"), indent=1)
 
