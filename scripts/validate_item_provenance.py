@@ -36,6 +36,7 @@ Usage:
 from __future__ import annotations
 
 import csv
+import re
 import os
 import sys
 from collections import defaultdict
@@ -49,7 +50,8 @@ MIN_VALUES = 8
 MIN_DISTINCT = 6
 SHARE_FLOOR = 0.60
 
-STATUSES = {"attributable", "ambiguous", "unattributable", "too_few_distinct", "too_few_values"}
+STATUSES = {"attributable", "ambiguous", "split_candidate", "unattributable",
+            "too_few_distinct", "too_few_values"}
 
 # Measured 2026-08-18. BIDIRECTIONAL: repairing a mixture must remove its entry with a note.
 BASELINE_MIXED = frozenset({
@@ -109,6 +111,50 @@ def main() -> int:
     for r in rows:
         if r["status"] not in STATUSES:
             problems.append(f"C {r['layer_b_label']}/{r['item']}: unknown status {r['status']!r}")
+
+        # --- E: a split_candidate must carry the split it claims (issue 443) --------------------
+        # `split_candidate` says the series is TWO raw labels in sequence. Freshness is not checkable
+        # here -- CI has neither the panel nor the raw extract -- so this checks the claim is
+        # INTERNALLY complete and self-consistent, the same standard arm A of
+        # validate_assertion_triage.py holds. What it catches is a hand edit or a partial merge that
+        # leaves the status behind without the evidence, which is how a status becomes decorative.
+        if r["status"] == "split_candidate":
+            where = f"E {r['layer_b_label']}/{r['item']}/{r['unit']}"
+            if r["raw_label"]:
+                problems.append(
+                    f"{where}: split_candidate must leave raw_label EMPTY -- it names ONE territory "
+                    f"and this row has two, so a consumer joining on it would read {r['raw_label']!r} "
+                    f"as the whole series' provenance")
+            m = re.match(r"early=(.+?) (-?\d+)-(-?\d+) \((\d+)d\); late=(.+?) (-?\d+)-(-?\d+) \((\d+)d\)$",
+                         r["runner_up"] or "")
+            if not m:
+                problems.append(
+                    f"{where}: split_candidate without a parseable split in runner_up "
+                    f"({r['runner_up']!r}). The status is then a claim with no evidence attached")
+            else:
+                e_lab, e0, e1, e_d, l_lab, l0, l1, l_d = m.groups()
+                if e_lab.split("/")[0] == l_lab.split("/")[0]:
+                    problems.append(f"{where}: both halves name the same raw label "
+                                    f"{e_lab.split('/')[0]!r} -- that is not a split")
+                if int(e1) >= int(l0):
+                    problems.append(
+                        f"{where}: the halves overlap in time ({e0}-{e1} then {l0}-{l1}). An "
+                        f"interleaved pair is a MIXTURE, not a splice, and must not be reported as "
+                        f"one -- USA sugar holds two scopes for the same year (issue 443)")
+                for half, d in (("early", e_d), ("late", l_d)):
+                    if int(d) < MIN_DISTINCT:
+                        problems.append(
+                            f"{where}: the {half} half rests on {d} distinct values, below "
+                            f"MIN_DISTINCT={MIN_DISTINCT}. Half a series is exactly where this floor "
+                            f"is easiest to fall below, and below it a fingerprint matches anything")
+                sh = r["share"]
+                try:
+                    if float(sh) < SHARE_FLOOR:
+                        problems.append(f"{where}: combined share {sh} is below SHARE_FLOOR="
+                                        f"{SHARE_FLOOR}, so the two halves do not account for the "
+                                        f"series")
+                except (TypeError, ValueError):
+                    problems.append(f"{where}: split_candidate with unparseable share {sh!r}")
             continue
         if r["status"] != "attributable":
             continue
