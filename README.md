@@ -144,6 +144,7 @@ python3 scripts/validate_edition_conflicts.py      # one yearbook volume may not
 python3 scripts/validate_series_collapses.py       # no year may read many times BELOW its own neighbours
 python3 scripts/validate_item_blocks.py            # four items may not share one value in a label-year
 python3 scripts/validate_assertion_nesting_flags.py # nesting-flag verdicts must follow from their own numbers
+python3 scripts/validate_assertion_triage.py        # the triage queue must describe its own rows
 python3 scripts/validate_item_provenance.py         # no iia label may mix territories across its item series unrecorded
 python3 scripts/validate_item_product_switches.py   # an item series must not switch raw product back and forth
 python3 scripts/validate_item_equivalences.py       # every item/product mapping must be adjudicated

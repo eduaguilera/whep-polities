@@ -506,6 +506,13 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_assertion_nesting_flags.py
 
+      # The triage queue decides WHAT GETS LOOKED AT, so a silent corruption produces work never done
+      # rather than a wrong number. Five of six arms re-derive a column from other columns; the sixth
+      # checks inclusion_impossible against assertion_nesting_flags.csv, the table it was copied from.
+      - name: Sources — the assertion triage queue must describe its own rows
+        if: '!cancelled()'
+        run: python3 scripts/validate_assertion_triage.py
+
       # A label can be right for one commodity and wrong for another, and no label-level decision can
       # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix
       # raw labels across their item series -- australia's `p` is CHRISTMAS ISLAND phosphate,
