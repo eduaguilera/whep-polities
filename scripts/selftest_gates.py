@@ -1626,6 +1626,40 @@ def mutate_landuse_dropped_digit_residual(root, gpd, make_valid, affinity):
             f"ten the diagnosis claims, while every other field stays valid")
 
 
+
+def mutate_provenance_split_interleaved(root, gpd, make_valid, affinity):
+    """Stretch a split_candidate's early half so the two halves overlap in time.
+
+    `split_candidate` (issue 443) claims a series is two raw labels IN SEQUENCE. The temporal
+    separation is the entire claim: two labels matching the same series over OVERLAPPING years is a
+    mixture, not a splice, and the two cases need opposite remedies -- a splice can be cut at a
+    boundary year, a mixture cannot. USA sugar is the counter-example that proves the distinction
+    matters, holding a national total AND a two-state subset for 1938.
+
+    The mutation only rewrites the early half's END year to the late half's end, so the row keeps its
+    status, both raw labels, both distinct-value counts and its share -- every other arm stays quiet
+    and only the ordering check can see that the claim has stopped being true.
+    """
+    import re as _re
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/item_provenance.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["status"] == "split_candidate")
+    before = victim["runner_up"]
+    m = _re.match(r"(early=.+? )(-?\d+)-(-?\d+)( \(\d+d\); late=.+? )(-?\d+)-(-?\d+)( \(\d+d\))$",
+                  before)
+    g = m.groups()
+    victim["runner_up"] = f"{g[0]}{g[1]}-{g[5]}{g[3]}{g[4]}-{g[5]}{g[6]}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"stretched {victim['layer_b_label']}/{victim['item']}'s early half to end at "
+            f"{g[5]}, so it now overlaps the late half instead of preceding it, while the status, "
+            f"both labels, both distinct counts and the share all stay as they were")
+
+
 def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
     """Lower a block's n_items while leaving the item list it describes intact.
 
@@ -3362,6 +3396,14 @@ CASES = (
         "as likely to be a value collision",
         "a switching series whose second product is left supplying a single cell, which is the shape "
         "a value collision takes and is exactly what MIN_PER_PRODUCT exists to reject",
+    ),
+    (
+        "validate_item_provenance.py",
+        mutate_provenance_split_interleaved,
+        "MIXTURE, not a splice",
+        "a split_candidate's two halves made to overlap in time, with its status, labels, distinct "
+        "counts and share untouched -- a splice can be cut at a boundary year and a mixture cannot, "
+        "so reporting one as the other sends the remedy the wrong way (issue 443)",
     ),
     (
         "validate_item_provenance.py",

@@ -138,6 +138,44 @@ def product_agrees(item: str, product: str) -> str:
     return "no"
 
 
+
+def _split_candidate(pairs, raw):
+    """Is this series two raw labels in sequence rather than none?
+
+    Returns ((early_label, early_product, early_years, early_ndistinct),
+             (late_label, late_product, late_years, late_ndistinct), combined_share) or None.
+
+    The temporal-separation test is what distinguishes a splice from a mixture. USA sugar (issue 443)
+    is the counter-example that motivates it: it interleaves a national total with a Louisiana+Florida
+    subset and holds BOTH values for 1938, so it is not separable by year and must not be reported as
+    a clean split.
+    """
+    hits = []
+    for (c, prod), s in raw.items():
+        m = pairs & s
+        if len({v for _y, v in m}) >= MIN_DISTINCT:
+            hits.append((len(m), c, prod, m))
+    hits.sort(key=lambda h: (-h[0], h[1], h[2]))
+    for i in range(len(hits)):
+        for j in range(i + 1, len(hits)):
+            _na, ca, pa, ma = hits[i]
+            _nb, cb, pb, mb = hits[j]
+            if ca == cb or (ma & mb):
+                continue
+            ya = sorted(y for y, _v in ma)
+            yb = sorted(y for y, _v in mb)
+            if not (max(ya) < min(yb) or max(yb) < min(ya)):
+                continue                      # interleaved -> a mixture, not a splice
+            if (len(ma) + len(mb)) / len(pairs) < SHARE_FLOOR:
+                continue
+            da = len({v for _y, v in ma})
+            db = len({v for _y, v in mb})
+            early, late = ((ca, pa, ya, da), (cb, pb, yb, db)) if min(ya) < min(yb) \
+                else ((cb, pb, yb, db), (ca, pa, ya, da))
+            return early, late, (len(ma) + len(mb)) / len(pairs)
+    return None
+
+
 def measure(panel_path, raw_path):
     import pandas as pd
     raw = raw_sets(raw_path)
@@ -169,9 +207,33 @@ def measure(panel_path, raw_path):
                 # only kind this table is about.
                 over_labels = sorted({c for sh, c, _p in ranked if sh >= SHARE_FLOOR})
                 if not over_labels:
-                    rec["status"] = "unattributable"
-                    if ranked:
-                        rec["runner_up"] = f"{ranked[0][1]}/{ranked[0][2]}={ranked[0][0]:.2f}"
+                    # SPLIT DETECTION (issue 443). `unattributable` was doing two jobs: "no raw label
+                    # matches" and "TWO do, at different times". A series whose territorial scope
+                    # changes partway has no single label above SHARE_FLOOR by arithmetic -- each half
+                    # carries about half the cells -- so it landed here and the splice was invisible.
+                    #
+                    # Only reached when no single label qualifies, so this cannot change an existing
+                    # `attributable` or `ambiguous` verdict. Requirements, all necessary:
+                    #   * two DIFFERENT raw labels, whose matched cells are disjoint
+                    #   * their matched years temporally SEPARATED (no interleaving) -- an interleaved
+                    #     pair is a mixture, not a splice, and must not be reported as one
+                    #   * MIN_DISTINCT distinct values on EACH side, because the whole table rests on
+                    #     that floor and half a series is where it is easiest to fall below it
+                    #   * combined share over SHARE_FLOOR, so the two halves account for the series
+                    split = _split_candidate(pairs, raw)
+                    if split:
+                        (ea, ep, ey, ed), (la, lp, ly, ld), comb = split
+                        rec["status"] = "split_candidate"
+                        # raw_label stays EMPTY: consumers read it as ONE territory (the gate joins on
+                        # it only for `attributable`), and a packed "A -> B" would be a value that
+                        # looks like a label and is not one.
+                        rec["share"] = f"{comb:.4f}"
+                        rec["runner_up"] = (f"early={ea}/{ep} {min(ey)}-{max(ey)} ({ed}d)"
+                                            f"; late={la}/{lp} {min(ly)}-{max(ly)} ({ld}d)")
+                    else:
+                        rec["status"] = "unattributable"
+                        if ranked:
+                            rec["runner_up"] = f"{ranked[0][1]}/{ranked[0][2]}={ranked[0][0]:.2f}"
                 elif len(over_labels) > 1:
                     rec["status"] = "ambiguous"
                     seen, parts = set(), []
@@ -221,7 +283,8 @@ def main() -> int:
     for r in rows:
         counts[r["status"]] += 1
     print(f"iia (label, item, unit) series: {len(rows)}")
-    for k in ("attributable", "ambiguous", "unattributable", "too_few_distinct", "too_few_values"):
+    for k in ("attributable", "ambiguous", "split_candidate", "unattributable",
+              "too_few_distinct", "too_few_values"):
         print(f"   {k:18} {counts[k]:>5}")
     print(f"\nlabels mixing more than one raw label at the ITEM level: {len(mixed)}")
     for label in sorted(mixed):

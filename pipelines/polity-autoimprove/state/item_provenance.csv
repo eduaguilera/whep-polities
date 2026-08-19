@@ -82,7 +82,7 @@ austria,yarn of true hemp,tonnes,24,21,austria,hemp: fibre,yes,1.0000,attributab
 "china, mainland",tobacco unmanufactured,ha,10,9,china,tobacco,yes,1.0000,attributable,italy/oats=0.10,yes
 "china, mainland",tobacco unmanufactured,tonnes,1,1,,,,,too_few_values,,yes
 indonesia,cacao beans,ha,14,8,,,,,unattributable,dutch east indies/cacao: raw=0.57,yes
-indonesia,cacao beans,tonnes,28,27,,,,,unattributable,dutch java and madura/cacao: raw=0.39,yes
+indonesia,cacao beans,tonnes,28,27,,,,0.7857,split_candidate,early=dutch java and madura/cacao: raw 1909-1919 (11d); late=dutch east indies/cacao: raw 1925-1943 (10d),yes
 indonesia,castor beans seed,ha,3,2,,,,,too_few_values,,yes
 indonesia,castor beans seed,tonnes,2,2,,,,,too_few_values,,yes
 indonesia,coffee green,ha,16,16,,,,,unattributable,dutch east indies/coffee: raw=0.19,yes
@@ -102,7 +102,7 @@ indonesia,sugar raw centrifugal,tonnes,33,33,dutch java and madura,sugar: cane,y
 indonesia,tea,ha,17,13,,,,,unattributable,dutch east indies/tea=0.53,yes
 indonesia,tobacco unmanufactured,ha,21,19,,,,,unattributable,dutch east indies/tobacco=0.52,yes
 indonesia,tobacco unmanufactured,tonnes,1,1,,,,,too_few_values,,yes
-malaysia,coffee green,ha,23,19,,,,,unattributable,british federated malay states/coffee: raw=0.52,yes
+malaysia,coffee green,ha,23,19,,,,1.0000,split_candidate,early=british federated malay states/coffee: raw 1909-1920 (12d); late=british malaya/coffee: raw 1930-1944 (7d),yes
 malaysia,coffee green,tonnes,14,14,british federated malay states,coffee: raw,yes,0.9286,attributable,hungary/flax: fibre=0.07,yes
 malaysia,rubber natural,ha,8,5,,,,,too_few_distinct,,yes
 malaysia,tea,ha,10,8,british malaya,tea,yes,1.0000,attributable,ireland/flax: fibre=0.50,yes
@@ -162,11 +162,11 @@ russian federation,sesame seed,tonnes,5,5,,,,,too_few_values,,yes
 russian federation,silk worm cocoons reelable,tonnes,16,16,ussr,sericulture,no,0.6250,attributable,switzerland/fertilizers: calcium superphosphate=0.06,yes
 russian federation,soybeans,ha,9,9,,,,,unattributable,ussr/soybean=0.56,yes
 russian federation,soybeans,tonnes,5,5,,,,,too_few_values,,yes
-russian federation,sugar raw centrifugal,tonnes,23,23,,,,,unattributable,ussr/sugar: beet=0.48,yes
+russian federation,sugar raw centrifugal,tonnes,23,23,,,,0.7391,split_candidate,early=russia in europe/sugar: beet 1909-1916 (6d); late=ussr/sugar: beet 1930-1940 (11d),yes
 russian federation,tea,ha,6,6,,,,,too_few_values,,yes
 russian federation,tea,tonnes,6,6,,,,,too_few_values,,yes
 russian federation,tobacco unmanufactured,ha,21,20,ussr,tobacco,yes,0.6190,attributable,usa: california/vineyards: all=0.05,yes
-russian federation,tobacco unmanufactured,tonnes,17,17,,,,,unattributable,ussr/tobacco=0.53,yes
+russian federation,tobacco unmanufactured,tonnes,17,17,,,,1.0000,split_candidate,early=russia in europe/tobacco 1909-1916 (8d); late=ussr/tobacco 1923-1936 (9d),yes
 russian federation,wheat,ha,6,6,,,,,too_few_values,,yes
 russian federation,wheat,tonnes,2,2,,,,,too_few_values,,yes
 russian federation,wine,ha,6,5,,,,,too_few_values,,yes
@@ -178,7 +178,7 @@ syrian arab republic,beans dry,tonnes,9,7,french syria,beans: dried,unknown,0.77
 syrian arab republic,butter cow milk,tonnes,7,3,,,,,too_few_values,,yes
 syrian arab republic,cheese processed,tonnes,7,4,,,,,too_few_values,,yes
 syrian arab republic,cotton lint,ha,19,19,french syria and lebanon,cottonseed,yes,0.6316,attributable,french syria/cottonseed=0.37,yes
-syrian arab republic,cotton lint,tonnes,19,19,,,,,unattributable,french syria and lebanon/cotton=0.42,yes
+syrian arab republic,cotton lint,tonnes,19,19,,,,0.7368,split_candidate,early=french syria and lebanon/cotton 1922-1933 (8d); late=french syria/cotton: ginned 1939-1944 (6d),yes
 syrian arab republic,cotton seed,ha,19,19,french syria and lebanon,cottonseed,yes,0.6316,attributable,french syria/cottonseed=0.37,yes
 syrian arab republic,cotton seed,tonnes,19,19,french syria and lebanon,cottonseed,yes,0.6316,attributable,french syria/cottonseed=0.37,yes
 syrian arab republic,eggs hen in shell,tonnes,14,14,,,,,unattributable,french syria and lebanon/eggs=0.57,yes
@@ -201,7 +201,7 @@ syrian arab republic,other berries and fruits of the genus vaccinium n e c,ha,5,
 syrian arab republic,other berries and fruits of the genus vaccinium n e c,tonnes,5,5,,,,,too_few_values,,yes
 syrian arab republic,raisins,tonnes,3,3,,,,,too_few_values,,yes
 syrian arab republic,sesame seed,ha,20,12,,,,,unattributable,french syria and lebanon/sesame=0.45,yes
-syrian arab republic,sesame seed,tonnes,20,17,,,,,unattributable,french syria and lebanon/sesame=0.45,yes
+syrian arab republic,sesame seed,tonnes,20,17,,,,0.8000,split_candidate,early=french syria and lebanon/sesame 1930-1938 (8d); late=french syria/sesame 1939-1945 (6d),yes
 syrian arab republic,silk worm cocoons reelable,tonnes,20,20,french syria and lebanon,sericulture,no,0.6500,attributable,total/hops=0.05,yes
 syrian arab republic,tobacco unmanufactured,ha,16,10,french syria and lebanon,tobacco,yes,0.6875,attributable,french syria/tobacco=0.31,yes
 syrian arab republic,tobacco unmanufactured,tonnes,16,16,french syria and lebanon,tobacco,yes,0.6875,attributable,french syria/tobacco=0.31,yes
@@ -229,7 +229,7 @@ united states of america,n,tonnes,17,12,usa and canada,fertilizers: calcium cyan
 united states of america,p,tonnes,17,17,,,,,unattributable,"usa/fertilizers: calcium superphosphate, mixed, unmixed=0.59",yes
 united states of america,raisins,ha,3,3,,,,,too_few_values,,yes
 united states of america,raisins,tonnes,16,15,usa,raisins,yes,0.7500,attributable,"total/vineyards: grapes, raisins=0.06",yes
-united states of america,sugar raw centrifugal,tonnes,33,33,,,,,unattributable,usa/sugar: beet=0.39,yes
+united states of america,sugar raw centrifugal,tonnes,33,33,,,,0.6061,split_candidate,early=usa/sugar: beet 1909-1921 (13d); late=usa: louisiana and florida/sugar: cane 1939-1945 (7d),yes
 united states of america,wine,ha,7,6,,,,,too_few_values,,yes
 united states of america,wine,tonnes,13,13,,,,,unattributable,yugoslavia/wine=0.00,yes
 united states of america,yarn of true hemp,ha,1,1,,,,,too_few_values,,yes
@@ -1575,7 +1575,7 @@ serbia,wheat,tonnes,14,14,yugoslavia,spelt,no,0.7143,attributable,"kingdom of se
 serbia,wine,ha,14,14,yugoslavia,wine,yes,0.7143,attributable,"kingdom of serbs, croats and slovenes/wine=0.29",no
 serbia,wine,tonnes,18,18,,,,,unattributable,yugoslavia/wine=0.00,no
 serbia,yarn of true hemp,ha,13,13,yugoslavia,hemp: fibre,yes,0.6923,attributable,"kingdom of serbs, croats and slovenes/hemp: fibre=0.31",no
-serbia,yarn of true hemp,tonnes,18,18,,,,,unattributable,yugoslavia/hemp: fibre=0.50,no
+serbia,yarn of true hemp,tonnes,18,18,,,,1.0000,split_candidate,"early=kingdom of serbs, croats and slovenes/hemp: fibre 1909-1925 (9d); late=yugoslavia/hemp: fibre 1930-1938 (9d)",no
 seychelles,cacao beans,tonnes,7,6,,,,,too_few_values,,no
 seychelles,fertilizer mixed,tonnes,11,11,british seychelles,"fertilizers: guano, natural",yes,1.0000,attributable,yugoslavia/wine=0.00,no
 sierra leone,cacao beans,ha,9,8,british sierra leone,cacao: raw,yes,1.0000,attributable,total/cottonseed=0.11,no

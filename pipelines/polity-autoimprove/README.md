@@ -310,6 +310,17 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        ambiguous 31->6, unattributable 92->142, and the 11 mixtures survive
                        unchanged. It also corrected this entry: syrian arab republic carries Lebanon
                        in GRAPES, ORANGES and TOBACCO as well as cotton, not "cotton only".
+                       `split_candidate` SINCE 2026-08-19 (issue 443): `unattributable` was doing two
+                       jobs -- "no raw label matches" and "TWO do, at different times". A series whose
+                       territorial scope changes partway has no single label above SHARE_FLOOR by
+                       arithmetic, since each half carries about half the cells, so it landed in
+                       `unattributable` and the splice was invisible. 8 of the 142 are such splits
+                       (unattributable 142->134); nothing else moved. Detected only when the two
+                       halves are TEMPORALLY SEPARATED -- an interleaved pair is a mixture, not a
+                       splice, and the two need opposite remedies: a splice can be cut at a boundary
+                       year, a mixture cannot. USA sugar is why that distinction is enforced rather
+                       than assumed; it holds a national total AND a Louisiana+Florida subset for
+                       1938. `raw_label` stays EMPTY on these rows because it names ONE territory.
                        It buys a second, independent signal. `raw_product` and `product_agrees`
                        record whether the winning raw product names the SAME COMMODITY as the
                        layer-B item -- a match on numbers can be chance, a match that also respects
