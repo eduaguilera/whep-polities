@@ -3,17 +3,17 @@ iia,algeria,flax fibre and tow,tonnes,,interior_collapse,1919,0.1,100,1920,1000.
 iia,algeria,grapes,ha,,interior_collapse,1933,4360,173545,1921,39.8,24
 iia,algeria,linseed,tonnes,,interior_collapse,1920,1.4,120,1921,85.7,18
 iia,algeria,wine,ha,,interior_collapse,1933,373,351952,1932,943.6,20
-iia,australia,flax fibre and tow,ha,,interior_collapse,1923,2,53,1924,26.5,18
+iia,australia,flax fibre and tow,ha,,interior_collapse,1923,2,53,1924,26.5,24
 iia,australia,linseed,ha,,interior_collapse,1923,2,53,1924,26.5,6
 iia,canada,"eggs, hen, in shell",tonnes,,interior_collapse,1930,148.764,146659,1929,985.8,17
 iia,czech republic,rye,ha,,interior_collapse,1943,26000,861000,1942,33.1,24
 iia,egypt,"tangerines, mandarins, clementines, satsumas",tonnes,,interior_collapse,1939,2600,55100,1940,21.2,11
-iia,greece,grapes,tonnes,,interior_collapse,1937,3300,672500,1938,203.8,7
+iia,greece,grapes,tonnes,,interior_collapse,1937,3300,672500,1938,203.8,10
 iia,italy,sugar raw centrifugal,tonnes,,interior_collapse,1941,8000,372300,1942,46.5,33
 iia,japan,p,tonnes,,interior_collapse,1930,305,97340,1920,319.1,16
 iia,japan,p,tonnes,,interior_collapse,1932,23804,862401,1931,36.2,16
 iia,libya,wine,ha,,interior_collapse,1933,12,1000,1934,83.3,6
-iia,lithuania,sugar raw centrifugal,tonnes,,interior_collapse,1933,8.1,13700,1934,1691.4,9
+iia,lithuania,sugar raw centrifugal,tonnes,,interior_collapse,1933,8.1,13700,1934,1691.4,15
 iia,morocco,wine,ha,,interior_collapse,1933,113,8600,1932,76.1,12
 iia,panama,"cacao, beans",tonnes,,interior_collapse,1917,4.5,116.8,1918,26.0,23
 iia,russian federation,flax fibre and tow,ha,,interior_collapse,1918,20,730438,1920,36521.9,26
@@ -62,15 +62,14 @@ iia,czech republic,rye,ha,,leading_collapse,1910,3,732970,1919,244323.3,24
 iia,czech republic,yarn of true hemp,tonnes,,leading_collapse,1919,326.5,8489.1,1920,26.0,15
 iia,dr congo,cotton seed,ha,,leading_collapse,1922,5,7500,1923,1500.0,19
 iia,ivory coast,"cacao, beans",ha,,leading_collapse,1922,1000,50000,1930,50.0,14
-iia,morocco,p,tonnes,,leading_collapse,1921,8232,1.85e+06,1930,224.7,5
 iia,mozambique,cotton lint,ha,,leading_collapse,1922,53,11809,1923,222.8,11
 iia,mozambique,cotton seed,ha,,leading_collapse,1922,53,11809,1923,222.8,6
 iia,syrian arab republic,cotton lint,ha,,leading_collapse,1922,1320,28650,1924,21.7,19
 iia,syrian arab republic,cotton seed,ha,,leading_collapse,1922,1320,28650,1924,21.7,19
-iia,zambia,cotton lint,ha,,leading_collapse,1922,3,943,1923,314.3,6
-iia,zambia,cotton lint,tonnes,,leading_collapse,1922,0.1,86.1,1923,861.0,6
-iia,zambia,cotton seed,ha,,leading_collapse,1922,3,943,1923,314.3,6
-iia,zambia,cotton seed,tonnes,,leading_collapse,1922,0.2,201,1923,1005.0,6
+iia,zambia,cotton lint,ha,,leading_collapse,1922,3,943,1923,314.3,7
+iia,zambia,cotton lint,tonnes,,leading_collapse,1922,0.1,86.1,1923,861.0,7
+iia,zambia,cotton seed,ha,,leading_collapse,1922,3,943,1923,314.3,7
+iia,zambia,cotton seed,tonnes,,leading_collapse,1922,0.2,201,1923,1005.0,7
 iia,zambia,"tobacco, unmanufactured",ha,,leading_collapse,1922,29,1401,1923,48.3,11
 iia,zambia,"tobacco, unmanufactured",tonnes,,leading_collapse,1922,8.6,517,1923,60.1,17
 iia,zimbabwe,cotton lint,ha,,leading_collapse,1922,8,1597,1923,199.6,16
@@ -116,3 +115,126 @@ iia,norway,no3,tonnes,,terminal_collapse,1921,130,148000,1920,1138.5,13
 juan,hungary,castor beans seed,tonnes,,terminal_collapse,1945,200,6000,1943,30.0,4
 mitchell,"china, mainland",millet,ha,page_35_table_1,terminal_collapse,1952,4000,6.524e+06,1951,1631.0,6
 mitchell,tanzania,"cassava, fresh",ha,page_11_table_1,terminal_collapse,1960,7000,487000,1953,69.6,8
+iia,algeria,"beans, dry",ha,,zero_interior,1938,0,1000,1937,,11
+iia,algeria,cotton lint,tonnes,,zero_interior,1935,0,4.5,1933,,25
+iia,algeria,cotton lint,tonnes,,zero_interior,1938,0,100,1936,,25
+iia,algeria,cotton seed,tonnes,,zero_interior,1935,0,9,1933,,17
+iia,algeria,cotton seed,tonnes,,zero_interior,1938,0,100,1937,,17
+iia,antigua and barbuda,cotton lint,tonnes,,zero_interior,1934,0,1.2,1933,,23
+iia,antigua and barbuda,cotton lint,tonnes,,zero_interior,1936,0,100,1935,,23
+iia,bulgaria,sugar raw centrifugal,tonnes,,zero_interior,1925,0,40396.8,1924,,33
+iia,canada,p,tonnes,,zero_interior,1920,0,22,1919,,17
+iia,canada,p,tonnes,,zero_interior,1931,0,36,1930,,17
+iia,cyprus,flax fibre and tow,ha,,zero_interior,1938,0,1000,1937,,13
+iia,cyprus,flax fibre and tow,tonnes,,zero_interior,1938,0,800,1937,,15
+iia,cyprus,yarn of true hemp,tonnes,,zero_interior,1934,0,42.8,1933,,9
+iia,egypt,flax fibre and tow,ha,,zero_interior,1913,0,381,1912,,29
+iia,falkland islands (malvinas),"fertilizer, mixed",tonnes,,zero_interior,1918,0,606,1917,,6
+iia,germany,yarn of true hemp,ha,,zero_interior,1934,0,210,1933,,9
+iia,indonesia,p,tonnes,,zero_interior,1918,0,3582,1917,,12
+iia,kenya,"beans, dry",ha,,zero_interior,1938,0,1000,1936,,9
+iia,kenya,flax fibre and tow,ha,,zero_interior,1935,0,1000,1933,,7
+iia,kenya,"groundnuts, with shell",tonnes,,zero_interior,1934,0,300,1933,,17
+iia,libya,"oil, olive, virgin",tonnes,,zero_interior,1935,0,1600,1934,,18
+iia,malawi,cotton lint,ha,,zero_interior,1937,0,1000,1936,,30
+iia,malawi,cotton seed,ha,,zero_interior,1937,0,1000,1936,,19
+iia,montserrat,lemons and limes,ha,,zero_interior,1934,0,200,1933,,6
+iia,montserrat,sugar raw centrifugal,tonnes,,zero_interior,1937,0,100,1936,,14
+iia,morocco,cotton lint,tonnes,,zero_interior,1934,0,30,1933,,9
+iia,morocco,cotton lint,tonnes,,zero_interior,1940,0,100,1939,,9
+iia,morocco,cotton seed,tonnes,,zero_interior,1934,0,60,1933,,10
+iia,myanmar,sesame seed,ha,,zero_interior,1944,0,419000,1943,,12
+iia,new caledonia,p,tonnes,,zero_interior,1932,0,4361,1931,,4
+iia,palau,p,tonnes,,zero_interior,1913,0,60000,1912,,13
+iia,portugal,n,tonnes,,zero_interior,1920,0,5,1919,,8
+iia,saint lucia,lemons and limes,ha,,zero_interior,1933,0,1000,1932,,13
+iia,serbia,lemons and limes,tonnes,,zero_interior,1936,0,100,1935,,6
+iia,somalia,sesame seed,ha,,zero_interior,1935,0,5000,1934,,5
+iia,sri lanka,cotton seed,tonnes,,zero_interior,1933,0,100,1925,,11
+iia,switzerland,sugar raw centrifugal,tonnes,,zero_interior,1912,0,3477.4,1911,,33
+iia,vanuatu,cotton seed,tonnes,,zero_interior,1933,0,100,1932,,12
+iia,vanuatu,cotton seed,tonnes,,zero_interior,1936,0,100,1935,,12
+juan,czechoslovakia,asses,heads,,zero_interior,1935,0,1000,1934,,19
+juan,iceland,goats,heads,,zero_interior,1945,0,1000,1944,,103
+juan,iceland,goats,heads,,zero_interior,1948,0,1000,1947,,103
+fao1952,Germany Berlin,milk,1000 tonnes,livestock:production,zero_tail,1950,0,38,1949,,4
+fao1952,Germany Eastern,milk,1000 tonnes,livestock:production,zero_tail,1950,0,2358,1949,,4
+iia,algeria,"silk-worm cocoons, reelable",tonnes,,zero_tail,1933,0,0.22,1931,,14
+iia,australia,"coffee, green",ha,,zero_tail,1933,0,4,1932,,21
+iia,australia,"coffee, green",tonnes,,zero_tail,1933,0,1.9,1932,,21
+iia,australia,olives,ha,,zero_tail,1933,0,138,1932,,8
+iia,austria,soybeans,ha,,zero_tail,1934,0,96,1931,,5
+iia,austria,yarn of true hemp,ha,,zero_tail,1934,0,310,1933,,13
+iia,barbados,cotton lint,ha,,zero_tail,1934,0,25,1933,,24
+iia,barbados,cotton lint,tonnes,,zero_tail,1934,0,0.7,1933,,23
+iia,barbados,cotton seed,ha,,zero_tail,1934,0,25,1933,,12
+iia,belgium,hempseed,ha,,zero_tail,1934,0,17,1933,,10
+iia,belgium,rapeseed,ha,,zero_tail,1934,0,70,1933,,8
+iia,belgium,yarn of true hemp,ha,,zero_tail,1934,0,17,1933,,13
+iia,benin,"cacao, beans",ha,,zero_tail,1934,0,100,1933,,7
+iia,burundi,"tobacco, unmanufactured",ha,,zero_tail,1934,0,450,1933,,7
+iia,"china, taiwan province of",other berries and fruits of the genus vaccinium n.e.c.,ha,,zero_tail,1936,0,1000,1935,,8
+iia,"china, taiwan province of",rapeseed,ha,,zero_tail,1934,0,308,1933,,17
+iia,costa rica,lemons and limes,tonnes,,zero_tail,1931,0,1.1,1930,,7
+iia,cyprus,hempseed,ha,,zero_tail,1934,0,71,1933,,9
+iia,cyprus,hempseed,tonnes,,zero_tail,1934,0,13.4,1933,,9
+iia,cyprus,yarn of true hemp,ha,,zero_tail,1934,0,71,1933,,9
+iia,dominican republic,cotton seed,tonnes,,zero_tail,1933,0,22,1930,,5
+iia,ecuador,lemons and limes,tonnes,,zero_tail,1934,0,130,1930,,4
+iia,eritrea,"groundnuts, with shell",ha,,zero_tail,1936,0,1000,1935,,5
+iia,eritrea,"groundnuts, with shell",tonnes,,zero_tail,1936,0,200,1935,,5
+iia,eritrea,"tobacco, unmanufactured",ha,,zero_tail,1934,0,50,1933,,8
+iia,eswatini,"tobacco, unmanufactured",ha,,zero_tail,1933,0,223,1932,,8
+iia,fiji,cotton lint,ha,,zero_tail,1933,0,256,1932,,17
+iia,fiji,cotton lint,tonnes,,zero_tail,1933,0,16.4,1932,,8
+iia,fiji,cotton seed,ha,,zero_tail,1933,0,256,1932,,8
+iia,fiji,cotton seed,tonnes,,zero_tail,1933,0,49,1932,,8
+iia,french guiana,"cacao, beans",ha,,zero_tail,1933,0,383,1922,,5
+iia,french guiana,"cacao, beans",tonnes,,zero_tail,1933,0,5.9,1931,,11
+iia,french polynesia,"tobacco, unmanufactured",ha,,zero_tail,1934,0,30,1933,,8
+iia,greece,grapes,tonnes,,zero_tail,1941,0,619900,1939,,10
+iia,guadeloupe,cotton lint,ha,,zero_tail,1934,0,300,1933,,14
+iia,guadeloupe,cotton lint,tonnes,,zero_tail,1934,0,9,1933,,12
+iia,guadeloupe,cotton seed,ha,,zero_tail,1934,0,300,1933,,10
+iia,guatemala,cotton lint,tonnes,,zero_tail,1933,0,3,1932,,4
+iia,guatemala,"groundnuts, with shell",ha,,zero_tail,1934,0,28,1933,,6
+iia,guyana,lemons and limes,ha,,zero_tail,1934,0,352,1933,,6
+iia,india,cotton lint,ha,,zero_tail,1934,0,9.60688e+06,1933,,25
+iia,india,cotton seed,ha,,zero_tail,1936,0,5000,1935,,12
+iia,latvia,sugar raw centrifugal,tonnes,,zero_tail,1940,0,36000,1939,,16
+iia,libya,"tobacco, unmanufactured",ha,,zero_tail,1934,0,221,1933,,7
+iia,lithuania,sugar raw centrifugal,tonnes,,zero_tail,1940,0,21600,1939,,15
+iia,madagascar,cotton lint,ha,,zero_tail,1934,0,70,1933,,6
+iia,madagascar,cotton lint,tonnes,,zero_tail,1933,0,9,1931,,4
+iia,madagascar,cotton seed,ha,,zero_tail,1934,0,70,1933,,6
+iia,malawi,"coffee, green",tonnes,,zero_tail,1936,0,100,1935,,22
+iia,malta,cotton lint,ha,,zero_tail,1934,0,25,1933,,26
+iia,malta,cotton lint,tonnes,,zero_tail,1934,0,5.7,1933,,8
+iia,malta,cotton seed,ha,,zero_tail,1934,0,25,1933,,13
+iia,malta,cotton seed,tonnes,,zero_tail,1934,0,17,1933,,13
+iia,mauritius,"groundnuts, with shell",ha,,zero_tail,1934,0,40,1933,,11
+iia,mauritius,"tobacco, unmanufactured",ha,,zero_tail,1933,0,842,1932,,16
+iia,netherlands,"tobacco, unmanufactured",ha,,zero_tail,1934,0,21,1933,,8
+iia,new caledonia,cotton lint,ha,,zero_tail,1935,0,773,1933,,4
+iia,new caledonia,cotton lint,tonnes,,zero_tail,1935,0,10,1932,,6
+iia,new caledonia,cotton seed,ha,,zero_tail,1935,0,773,1933,,4
+iia,new caledonia,cotton seed,tonnes,,zero_tail,1934,0,30,1932,,7
+iia,new zealand,grapes,ha,,zero_tail,1933,0,75,1920,,16
+iia,new zealand,rye,ha,,zero_tail,1934,0,105,1933,,14
+iia,new zealand,wine,ha,,zero_tail,1933,0,132,1932,,10
+iia,nigeria,cotton lint,ha,,zero_tail,1939,0,236482,1924,,9
+iia,paraguay,lemons and limes,tonnes,,zero_tail,1933,0,1,1931,,6
+iia,portugal,lemons and limes,tonnes,,zero_tail,1933,0,4,1932,,8
+iia,saint vincent and the grenadines,"groundnuts, with shell",ha,,zero_tail,1934,0,60,1933,,7
+iia,south korea,sugar raw centrifugal,tonnes,,zero_tail,1932,0,1500.1,1931,,8
+iia,tunisia,"tobacco, unmanufactured",ha,,zero_tail,1935,0,1000,1934,,25
+iia,uruguay,rye,ha,,zero_tail,1935,0,58,1910,,4
+iia,vanuatu,cotton lint,ha,,zero_tail,1934,0,1821,1923,,5
+iia,vanuatu,cotton seed,ha,,zero_tail,1934,0,1821,1923,,5
+iia,zambia,"groundnuts, with shell",ha,,zero_tail,1933,0,382,1932,,10
+iia,zambia,oranges,ha,,zero_tail,1933,0,109,1932,,8
+juan,iceland,ducks,heads,,zero_tail,1948,0,1000,1947,,29
+juan,iceland,geese and guinea fowls,heads,,zero_tail,1948,0,1000,1947,,29
+juan,iceland,goats,heads,,zero_tail,1950,0,1000,1949,,103
+juan,switzerland,asses,heads,,zero_tail,1943,0,3000,1942,,14
+juan,united kingdom,mules and hinnies,heads,,zero_tail,1921,0,272000,1910,,28

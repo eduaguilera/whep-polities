@@ -1437,6 +1437,38 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_zero_tail_given_a_factor(root, gpd, make_valid, affinity):
+    """Fill in a factor on a zero-position row, where no ratio exists.
+
+    The two zero classes deliberately leave `factor` EMPTY: there is no ratio against zero, and a
+    sentinel there is worse than a blank because later arithmetic might believe it. This mutation
+    writes a plausible-looking number into that column.
+
+    It dodges every other signal: the row count per position is unchanged so all five ceilings pass,
+    the identity tuple (source, country, item, unit, position, year) is untouched so all 239 pins
+    match, and the row still sits at value 0 so the zero-shape arm stays quiet. Only the arm that
+    forbids a ratio where none can exist can see it.
+
+    Picks the longest-running zero tail by series length rather than by name, since which one is
+    longest changes when the panel is rebuilt — the same reason the splice, spike and constant-run
+    mutators pick by measurement.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/series_collapses.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = max((r for r in rows if r["position"] == "zero_tail"),
+                 key=lambda r: int(r["series_n"]))
+    victim["factor"] = "999.0"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"gave the {victim['country']} / {victim['item']} {victim['year']} zero tail a factor of "
+            f"999.0, a ratio against zero that cannot exist, while its count, its identity pin and "
+            f"its zero value all stay as they were")
+
+
 def mutate_impossible_pair_area_filled(root, gpd, make_valid, affinity):
     """Give an impossible pair a nonzero area, the state the old divide-by-zero filter produced.
 
@@ -1486,7 +1518,8 @@ def mutate_collapse_factor_rewritten(root, gpd, make_valid, affinity):
     with open(path, newline="", encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
         fields = list(rows[0])
-    worst = max(rows, key=lambda r: float(r["factor"]))
+    # The zero positions carry no factor at all, so they cannot be the victim of a factor rewrite.
+    worst = max((r for r in rows if r["factor"]), key=lambda r: float(r["factor"]))
     before = worst["factor"]
     worst["factor"] = "21.0"
     with open(path, "w", newline="", encoding="utf-8") as fh:
@@ -2941,6 +2974,14 @@ CASES = (
         "does not match its own values",
         "a recorded spike's factor column rewritten to look ordinary while its three values stay "
         "put, so the one number every judgement here rests on contradicts the row it describes",
+    ),
+    (
+        "validate_series_collapses.py",
+        mutate_zero_tail_given_a_factor,
+        "there is no ratio against zero",
+        "a zero-position row given a fabricated ratio — all five ceilings, all 239 identity pins and "
+        "the zero value itself left intact, so only the arm forbidding a measurement where none can "
+        "exist can see it",
     ),
     (
         "validate_yield_corrections.py",

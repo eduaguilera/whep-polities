@@ -393,6 +393,26 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        while mitchell china millet 6,524,000->4,000 ha (1952) is not. NO RATIO
                        SEPARATES THEM — hungary's sugar is 27x, below tanzania's cassava at 70x — so
                        inventing a threshold would fit it to the examples at hand (issue 406).
+                       TWO ZERO CLASSES ADDED 2026-08-19 because nothing could see them. This tool
+                       first excluded zeros, deferring them to issue 414 — wrongly:
+                       edition_conflicts.csv needs two volumes (only 1933 has them) and
+                       impossible_pairs.csv needs a paired area, and 17_constant_runs.py excludes
+                       zeros for the same divide-by-zero reason. A series dropping to zero and
+                       staying there was invisible to EVERY detector here. 81 zero_tail + 42
+                       zero_interior. `juan united kingdom / mules and hinnies` reads 0.0 for every
+                       year 1921-1938 while the SAME source and label report asses (10,000->7,000)
+                       and horses (2,055,000->1,100,000) throughout — the zero means "not stated".
+                       68 of the 81 tails start in 1933-1936, the iia_1938_39 window, so most of
+                       this class is issue 414's blank-read-as-0 appearing as a RUN.
+                       LEGITIMATE ZEROS ARE EXCLUDED BY CONSTRUCTION: a series that OPENS at zero is
+                       in neither class — `iia morocco / p` is zero for 1909-1918 because Moroccan
+                       phosphate mining had not begun.
+                       AND THE OLD FILTER FABRICATED A ROW, not just hid them: deleting zero rows
+                       promoted morocco's first POSITIVE value to the head of its series and
+                       reported a leading_collapse between two years that were not the start at all.
+                       leading_collapse 52 -> 51 on the fix. No ratio is recorded for the zero
+                       classes; `factor` is left EMPTY rather than given a sentinel later
+                       arithmetic might believe.
                        --write refreshes state/series_collapses.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions

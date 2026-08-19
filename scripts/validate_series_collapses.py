@@ -14,14 +14,33 @@ detector could not see it twice over: wrong sign, and an endpoint. It was found 
 `pipelines/polity-autoimprove/27_series_collapses.py` measures the mirror shape from the layer-B
 panel. The panel is gitignored and absent in CI, so this gate reads the committed table.
 
-WHAT THE FIRST RUN MEASURED: 117 collapses at >=20x, in three positions and **zero overlap** with the
-21 rows of `isolated_spikes.csv` — a disjoint class, not a re-detection.
+WHAT IT MEASURES: 239 rows in five positions, with **zero overlap** with the 21 rows of
+`isolated_spikes.csv` — a disjoint class, not a re-detection.
 
     interior_collapse   55   a year >=20x below BOTH neighbours; the exact mirror of a spike
-    leading_collapse    52   the first value >=20x below its only neighbour
+    leading_collapse    51   the first value >=20x below its only neighbour
     terminal_collapse   10   the last value >=20x below its only neighbour
+    zero_tail           81   a series ending in >=2 zeros after real output
+    zero_interior       42   a single zero with real output on both sides
 
-    by source: iia 58, juan 37, mitchell 20, fao1952 2
+THE TWO ZERO CLASSES WERE ADDED BECAUSE NOTHING COULD SEE THEM. This tool first excluded zeros,
+deferring them to issue 414 — and that deferral was wrong: `edition_conflicts.csv` needs two volumes
+and only 1933 has them, and `impossible_pairs.csv` needs a paired area. `17_constant_runs.py`
+excludes zeros too, for the same divide-by-zero reason. So a series that dropped to zero and stayed
+there was invisible to EVERY detector in this repo.
+
+`juan united kingdom / mules and hinnies` reads 0.0 for every year 1921-1938 while the SAME source
+and label report asses (10,000 falling to 7,000) and horses (2,055,000 to 1,100,000) throughout. The
+source is reporting draught animals and not reporting mules; the zero means "not stated".
+
+68 of the 81 tails begin in 1933-1936 — the `iia_1938_39` window — so most of this class is issue
+414's blank-read-as-0 appearing as a RUN rather than a cell. The rest are not: the UK mules run
+starts in 1921, and `latvia` and `lithuania` sugar beet go to zero in 1940, when both were annexed
+and their output would be reported inside Soviet statistics instead.
+
+LEGITIMATE ZEROS ARE EXCLUDED BY CONSTRUCTION, not by judgement. A series that OPENS at zero is in
+neither class: `iia morocco / p` reads zero for 1909-1918 because Moroccan phosphate mining had not
+begun, and a leading run of zeros is exactly what that should look like.
 
 THE TABLE DOES NOT CLAIM ITS ROWS ARE DEFECTS, AND THAT IS A MEASURED POSITION. Of the ten terminal
 collapses, four are plausible war endings — `iia hungary / silk-worm cocoons` 236 -> 4 (1945),
@@ -51,9 +70,16 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/series_collapses.csv")
 
-# Measured 2026-08-19 on the first run. BIDIRECTIONAL: repairing a collapse must lower the matching
-# ceiling with a note saying which cell was fixed and how.
-BASELINE = {"interior_collapse": 55, "leading_collapse": 52, "terminal_collapse": 10}
+# Measured 2026-08-19. BIDIRECTIONAL: repairing a collapse must lower the matching ceiling with a
+# note saying which cell was fixed and how.
+#
+# `leading_collapse` fell from 52 to 51 when the generator stopped deleting zero rows before
+# comparing. `iia morocco / p` opens with TEN zeros (1909-1918, before Moroccan phosphate mining
+# began, so they are legitimate); the old `value > 0` filter removed them, promoted the first
+# POSITIVE value to the head of the series, and reported a leading collapse between two years that
+# were not the series start at all. That row was FABRICATED by the filter, not merely hidden by it.
+BASELINE = {"interior_collapse": 55, "leading_collapse": 51, "terminal_collapse": 10,
+            "zero_tail": 81, "zero_interior": 42}
 
 # The factor 27_series_collapses.py reports against, restated so the gate does not depend on the
 # generator\'s constant to know what the table means. Deliberately the same 20x
@@ -129,7 +155,6 @@ BASELINE_KEYS = frozenset({
     ('iia', 'czech republic', 'yarn of true hemp', 'tonnes', 'leading_collapse', '1919'),
     ('iia', 'dr congo', 'cotton seed', 'ha', 'leading_collapse', '1922'),
     ('iia', 'ivory coast', 'cacao, beans', 'ha', 'leading_collapse', '1922'),
-    ('iia', 'morocco', 'p', 'tonnes', 'leading_collapse', '1921'),
     ('iia', 'mozambique', 'cotton lint', 'ha', 'leading_collapse', '1922'),
     ('iia', 'mozambique', 'cotton seed', 'ha', 'leading_collapse', '1922'),
     ('iia', 'syrian arab republic', 'cotton lint', 'ha', 'leading_collapse', '1922'),
@@ -183,6 +208,129 @@ BASELINE_KEYS = frozenset({
     ('juan', 'hungary', 'castor beans seed', 'tonnes', 'terminal_collapse', '1945'),
     ('mitchell', 'china, mainland', 'millet', 'ha', 'terminal_collapse', '1952'),
     ('mitchell', 'tanzania', 'cassava, fresh', 'ha', 'terminal_collapse', '1960'),
+    ('iia', 'algeria', 'beans, dry', 'ha', 'zero_interior', '1938'),
+    ('iia', 'algeria', 'cotton lint', 'tonnes', 'zero_interior', '1935'),
+    ('iia', 'algeria', 'cotton lint', 'tonnes', 'zero_interior', '1938'),
+    ('iia', 'algeria', 'cotton seed', 'tonnes', 'zero_interior', '1935'),
+    ('iia', 'algeria', 'cotton seed', 'tonnes', 'zero_interior', '1938'),
+    ('iia', 'antigua and barbuda', 'cotton lint', 'tonnes', 'zero_interior', '1934'),
+    ('iia', 'antigua and barbuda', 'cotton lint', 'tonnes', 'zero_interior', '1936'),
+    ('iia', 'bulgaria', 'sugar raw centrifugal', 'tonnes', 'zero_interior', '1925'),
+    ('iia', 'canada', 'p', 'tonnes', 'zero_interior', '1920'),
+    ('iia', 'canada', 'p', 'tonnes', 'zero_interior', '1931'),
+    ('iia', 'cyprus', 'flax fibre and tow', 'ha', 'zero_interior', '1938'),
+    ('iia', 'cyprus', 'flax fibre and tow', 'tonnes', 'zero_interior', '1938'),
+    ('iia', 'cyprus', 'yarn of true hemp', 'tonnes', 'zero_interior', '1934'),
+    ('iia', 'egypt', 'flax fibre and tow', 'ha', 'zero_interior', '1913'),
+    ('iia', 'falkland islands (malvinas)', 'fertilizer, mixed', 'tonnes', 'zero_interior', '1918'),
+    ('iia', 'germany', 'yarn of true hemp', 'ha', 'zero_interior', '1934'),
+    ('iia', 'indonesia', 'p', 'tonnes', 'zero_interior', '1918'),
+    ('iia', 'kenya', 'beans, dry', 'ha', 'zero_interior', '1938'),
+    ('iia', 'kenya', 'flax fibre and tow', 'ha', 'zero_interior', '1935'),
+    ('iia', 'kenya', 'groundnuts, with shell', 'tonnes', 'zero_interior', '1934'),
+    ('iia', 'libya', 'oil, olive, virgin', 'tonnes', 'zero_interior', '1935'),
+    ('iia', 'malawi', 'cotton lint', 'ha', 'zero_interior', '1937'),
+    ('iia', 'malawi', 'cotton seed', 'ha', 'zero_interior', '1937'),
+    ('iia', 'montserrat', 'lemons and limes', 'ha', 'zero_interior', '1934'),
+    ('iia', 'montserrat', 'sugar raw centrifugal', 'tonnes', 'zero_interior', '1937'),
+    ('iia', 'morocco', 'cotton lint', 'tonnes', 'zero_interior', '1934'),
+    ('iia', 'morocco', 'cotton lint', 'tonnes', 'zero_interior', '1940'),
+    ('iia', 'morocco', 'cotton seed', 'tonnes', 'zero_interior', '1934'),
+    ('iia', 'myanmar', 'sesame seed', 'ha', 'zero_interior', '1944'),
+    ('iia', 'new caledonia', 'p', 'tonnes', 'zero_interior', '1932'),
+    ('iia', 'palau', 'p', 'tonnes', 'zero_interior', '1913'),
+    ('iia', 'portugal', 'n', 'tonnes', 'zero_interior', '1920'),
+    ('iia', 'saint lucia', 'lemons and limes', 'ha', 'zero_interior', '1933'),
+    ('iia', 'serbia', 'lemons and limes', 'tonnes', 'zero_interior', '1936'),
+    ('iia', 'somalia', 'sesame seed', 'ha', 'zero_interior', '1935'),
+    ('iia', 'sri lanka', 'cotton seed', 'tonnes', 'zero_interior', '1933'),
+    ('iia', 'switzerland', 'sugar raw centrifugal', 'tonnes', 'zero_interior', '1912'),
+    ('iia', 'vanuatu', 'cotton seed', 'tonnes', 'zero_interior', '1933'),
+    ('iia', 'vanuatu', 'cotton seed', 'tonnes', 'zero_interior', '1936'),
+    ('juan', 'czechoslovakia', 'asses', 'heads', 'zero_interior', '1935'),
+    ('juan', 'iceland', 'goats', 'heads', 'zero_interior', '1945'),
+    ('juan', 'iceland', 'goats', 'heads', 'zero_interior', '1948'),
+    ('fao1952', 'Germany Berlin', 'milk', '1000 tonnes', 'zero_tail', '1950'),
+    ('fao1952', 'Germany Eastern', 'milk', '1000 tonnes', 'zero_tail', '1950'),
+    ('iia', 'algeria', 'silk-worm cocoons, reelable', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'australia', 'coffee, green', 'ha', 'zero_tail', '1933'),
+    ('iia', 'australia', 'coffee, green', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'australia', 'olives', 'ha', 'zero_tail', '1933'),
+    ('iia', 'austria', 'soybeans', 'ha', 'zero_tail', '1934'),
+    ('iia', 'austria', 'yarn of true hemp', 'ha', 'zero_tail', '1934'),
+    ('iia', 'barbados', 'cotton lint', 'ha', 'zero_tail', '1934'),
+    ('iia', 'barbados', 'cotton lint', 'tonnes', 'zero_tail', '1934'),
+    ('iia', 'barbados', 'cotton seed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'belgium', 'hempseed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'belgium', 'rapeseed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'belgium', 'yarn of true hemp', 'ha', 'zero_tail', '1934'),
+    ('iia', 'benin', 'cacao, beans', 'ha', 'zero_tail', '1934'),
+    ('iia', 'burundi', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1934'),
+    ('iia', 'china, taiwan province of', 'other berries and fruits of the genus vaccinium n.e.c.', 'ha', 'zero_tail', '1936'),
+    ('iia', 'china, taiwan province of', 'rapeseed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'costa rica', 'lemons and limes', 'tonnes', 'zero_tail', '1931'),
+    ('iia', 'cyprus', 'hempseed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'cyprus', 'hempseed', 'tonnes', 'zero_tail', '1934'),
+    ('iia', 'cyprus', 'yarn of true hemp', 'ha', 'zero_tail', '1934'),
+    ('iia', 'dominican republic', 'cotton seed', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'ecuador', 'lemons and limes', 'tonnes', 'zero_tail', '1934'),
+    ('iia', 'eritrea', 'groundnuts, with shell', 'ha', 'zero_tail', '1936'),
+    ('iia', 'eritrea', 'groundnuts, with shell', 'tonnes', 'zero_tail', '1936'),
+    ('iia', 'eritrea', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1934'),
+    ('iia', 'eswatini', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1933'),
+    ('iia', 'fiji', 'cotton lint', 'ha', 'zero_tail', '1933'),
+    ('iia', 'fiji', 'cotton lint', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'fiji', 'cotton seed', 'ha', 'zero_tail', '1933'),
+    ('iia', 'fiji', 'cotton seed', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'french guiana', 'cacao, beans', 'ha', 'zero_tail', '1933'),
+    ('iia', 'french guiana', 'cacao, beans', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'french polynesia', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1934'),
+    ('iia', 'greece', 'grapes', 'tonnes', 'zero_tail', '1941'),
+    ('iia', 'guadeloupe', 'cotton lint', 'ha', 'zero_tail', '1934'),
+    ('iia', 'guadeloupe', 'cotton lint', 'tonnes', 'zero_tail', '1934'),
+    ('iia', 'guadeloupe', 'cotton seed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'guatemala', 'cotton lint', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'guatemala', 'groundnuts, with shell', 'ha', 'zero_tail', '1934'),
+    ('iia', 'guyana', 'lemons and limes', 'ha', 'zero_tail', '1934'),
+    ('iia', 'india', 'cotton lint', 'ha', 'zero_tail', '1934'),
+    ('iia', 'india', 'cotton seed', 'ha', 'zero_tail', '1936'),
+    ('iia', 'latvia', 'sugar raw centrifugal', 'tonnes', 'zero_tail', '1940'),
+    ('iia', 'libya', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1934'),
+    ('iia', 'lithuania', 'sugar raw centrifugal', 'tonnes', 'zero_tail', '1940'),
+    ('iia', 'madagascar', 'cotton lint', 'ha', 'zero_tail', '1934'),
+    ('iia', 'madagascar', 'cotton lint', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'madagascar', 'cotton seed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'malawi', 'coffee, green', 'tonnes', 'zero_tail', '1936'),
+    ('iia', 'malta', 'cotton lint', 'ha', 'zero_tail', '1934'),
+    ('iia', 'malta', 'cotton lint', 'tonnes', 'zero_tail', '1934'),
+    ('iia', 'malta', 'cotton seed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'malta', 'cotton seed', 'tonnes', 'zero_tail', '1934'),
+    ('iia', 'mauritius', 'groundnuts, with shell', 'ha', 'zero_tail', '1934'),
+    ('iia', 'mauritius', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1933'),
+    ('iia', 'netherlands', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1934'),
+    ('iia', 'new caledonia', 'cotton lint', 'ha', 'zero_tail', '1935'),
+    ('iia', 'new caledonia', 'cotton lint', 'tonnes', 'zero_tail', '1935'),
+    ('iia', 'new caledonia', 'cotton seed', 'ha', 'zero_tail', '1935'),
+    ('iia', 'new caledonia', 'cotton seed', 'tonnes', 'zero_tail', '1934'),
+    ('iia', 'new zealand', 'grapes', 'ha', 'zero_tail', '1933'),
+    ('iia', 'new zealand', 'rye', 'ha', 'zero_tail', '1934'),
+    ('iia', 'new zealand', 'wine', 'ha', 'zero_tail', '1933'),
+    ('iia', 'nigeria', 'cotton lint', 'ha', 'zero_tail', '1939'),
+    ('iia', 'paraguay', 'lemons and limes', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'portugal', 'lemons and limes', 'tonnes', 'zero_tail', '1933'),
+    ('iia', 'saint vincent and the grenadines', 'groundnuts, with shell', 'ha', 'zero_tail', '1934'),
+    ('iia', 'south korea', 'sugar raw centrifugal', 'tonnes', 'zero_tail', '1932'),
+    ('iia', 'tunisia', 'tobacco, unmanufactured', 'ha', 'zero_tail', '1935'),
+    ('iia', 'uruguay', 'rye', 'ha', 'zero_tail', '1935'),
+    ('iia', 'vanuatu', 'cotton lint', 'ha', 'zero_tail', '1934'),
+    ('iia', 'vanuatu', 'cotton seed', 'ha', 'zero_tail', '1934'),
+    ('iia', 'zambia', 'groundnuts, with shell', 'ha', 'zero_tail', '1933'),
+    ('iia', 'zambia', 'oranges', 'ha', 'zero_tail', '1933'),
+    ('juan', 'iceland', 'ducks', 'heads', 'zero_tail', '1948'),
+    ('juan', 'iceland', 'geese and guinea fowls', 'heads', 'zero_tail', '1948'),
+    ('juan', 'iceland', 'goats', 'heads', 'zero_tail', '1950'),
+    ('juan', 'switzerland', 'asses', 'heads', 'zero_tail', '1943'),
+    ('juan', 'united kingdom', 'mules and hinnies', 'heads', 'zero_tail', '1921'),
 })
 
 
@@ -232,6 +380,20 @@ def main() -> int:
     # A row whose recorded factor contradicts its own two values means the table and this gate
     # disagree about what the row says, and every judgement above rests on that column.
     for r in rows:
+        # The zero positions carry no ratio, deliberately: `factor` is left EMPTY rather than filled
+        # with a sentinel that later arithmetic might believe. Their shape check is that they really
+        # do sit at zero.
+        if r["position"].startswith("zero_"):
+            if r["factor"] != "":
+                problems.append(
+                    f"C {r['country']}/{r['item']} {r['year']}: a {r['position']} carries a factor "
+                    f"{r['factor']!r}, but there is no ratio against zero — an empty column has been "
+                    f"filled with something a consumer could take for a measurement")
+            if float(r["value"]) != 0:
+                problems.append(
+                    f"C {r['country']}/{r['item']} {r['year']} is classed {r['position']} but its "
+                    f"value is {r['value']}, not zero")
+            continue
         try:
             v, nb, f = float(r["value"]), float(r["neighbour_value"]), float(r["factor"])
         except ValueError:
