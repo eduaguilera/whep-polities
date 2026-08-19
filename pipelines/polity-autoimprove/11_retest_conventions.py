@@ -578,6 +578,113 @@ def check_iia_australia_phosphate(d):
     )
 
 
+# The six labels whose meslin/spelt ratio inverts in iia_1938_39, measured 2026-08-19. An IDENTITY
+# pin rather than a count: a count of six would pass if one label dropped out and another dropped in.
+# `spain` and `turkey` qualify and do not invert, and are excluded on the record rather than silently
+# -- in both the ratio sits near 1, so which side of 1 it falls on carries no information.
+EXPECTED_SWAP_LABELS = frozenset({
+    "austria", "belgium", "bulgaria", "germany", "switzerland", "yugoslavia",
+})
+
+
+def check_iia_meslin_spelt_swap(d):
+    """The claim: the iia_1938_39 volume has MESLIN and SPELT transposed, for every label.
+
+    THE TEST IS SELF-CONTROLLED, and it has to be. "Meslin should exceed spelt" is false as a general
+    rule -- Belgium and Switzerland genuinely grew more spelt (epeautre) than meslin -- so a
+    which-is-bigger test would convict the wrong volumes. The question asked instead is whether a
+    volume disagrees with ITS OWN LABEL'S other volumes, which needs no view about any country's
+    agriculture:
+
+        austria       32.5 -> 247.6 -> 725.3 -> 0.00                 inverted in 1938_39
+        bulgaria      15.7 ->  14.0 ->   9.5 -> 0.09 -> 5.1          inverted in 1938_39
+        germany        4.5 ->   4.3 ->  0.12                         inverted in 1938_39
+        yugoslavia     3.8 ->   3.8 ->  0.22                         inverted in 1938_39
+        belgium       0.28 ->  0.28 ->  0.18 -> 4.82 -> 0.47         inverted in 1938_39
+        switzerland   0.37 ->  0.37 ->  0.43 -> 1.70 -> 0.58         inverted in 1938_39
+
+    Belgium and Switzerland are what make it conclusive rather than suggestive: their normal order is
+    spelt above meslin, and 1938_39 flips them the OTHER way.
+
+    SIX OF EIGHT, NOT SIX OF SIX -- I claimed the latter from a hand scan and the check corrected me.
+    Two labels qualify (both products in 1938_39 and elsewhere) and do not invert, and in both the
+    test is simply uninformative rather than contradictory: `spain` runs 1.00 / 0.83 / 0.95 / 0.24, so
+    meslin and spelt are near-equal and which side of 1 a ratio falls on is noise; `turkey` has the
+    two products in only 1938_39 (1.11) and 1939_45 (2.07), both within spitting distance of each
+    other. Neither is evidence against the swap; both are labels the side-of-1 test cannot speak to.
+
+    So the assertion is an IDENTITY PIN on the six, not a threshold on a count. A count would let a
+    label drop out while another dropped in and report PASS.
+
+    The 1933 overlap confirms it cell-for-cell, since both volumes cover that year: bulgaria meslin
+    115,096.1 against 11,900 and spelt 11,889.9 against 115,100 -- mutual and near-exact, the same
+    signature as the Nauru/Australia phosphate transposition in issue 418.
+
+    NO MEASURED EFFECT ON PUBLISHED FIGURES, which is why this is a convention and not a data error.
+    Layer-B `wheat` is drawn from raw spelt and meslin (issue 375: 28 cells matched at the same label,
+    year, variable and a non-round value), but ZERO of those 28 come from iia_1938_39 -- 8 from
+    iia_1925_26, 19 from iia_1933_34, 1 from iia_1939_45. Layer B carries no meslin, spelt or wheat
+    item for Bulgaria at all.
+
+    Needs the raw extract, which is outside the repo. Absent, it reports unavailable rather than
+    passing: a re-test that succeeds because its input vanished is worth less than none (issue 387).
+    """
+    import os
+    import statistics as st
+
+    import pandas as pd
+
+    raw = os.path.expanduser(os.environ.get(
+        "WHEP_IIA_RAW",
+        "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"))
+    if not os.path.exists(raw):
+        return False, f"raw IIA extract absent ({raw}); the discriminating test cannot run"
+    r = pd.read_excel(raw)
+    r["cl"] = r["country"].astype(str).str.strip().str.lower()
+    r["pl"] = r["product"].astype(str).str.strip()
+    r["vl"] = r["variable"].astype(str).str.strip().str.lower()
+    r["y"] = pd.to_numeric(r["year"], errors="coerce")
+    s = r[(r.pl.isin(["meslin", "spelt"])) & (r.vl == "production")
+          & r.y.notna() & r["value"].notna()]
+    ratios = {}
+    for (lab, vol), g in s.groupby(["cl", "yearbook"]):
+        m, sp = g[g.pl == "meslin"]["value"], g[g.pl == "spelt"]["value"]
+        if len(m) < 2 or len(sp) < 2:
+            continue
+        msp = st.median(sp)
+        if msp > 0:
+            ratios.setdefault(lab, {})[str(vol)] = st.median(m) / msp
+    inverted, tested = 0, 0
+    inverted_labels = set()
+    for lab, per in ratios.items():
+        if "iia_1938_39" not in per or len(per) < 2:
+            continue
+        others = [v for k, v in per.items() if k != "iia_1938_39"]
+        tested += 1
+        # "Inverted" means the 1938_39 ratio sits on the opposite side of 1 from EVERY other volume
+        # of the same label. That is the whole test: no external view of any crop is needed.
+        here = per["iia_1938_39"]
+        if all((here < 1) != (o < 1) for o in others):
+            inverted += 1
+            inverted_labels.add(lab)
+    if tested < 4:
+        return False, f"only {tested} labels carry both products in 1938_39 and elsewhere; too few"
+    ok = inverted_labels == EXPECTED_SWAP_LABELS
+    missing = sorted(EXPECTED_SWAP_LABELS - inverted_labels)
+    extra = sorted(inverted_labels - EXPECTED_SWAP_LABELS)
+    detail = ""
+    if missing:
+        detail += f"; no longer inverted: {missing}"
+    if extra:
+        detail += f"; newly inverted: {extra}"
+    return ok, (
+        f"{inverted} of {tested} labels carrying meslin and spelt in iia_1938_39 AND in another "
+        f"volume have their ratio inverted in exactly that volume, and the six are exactly the "
+        f"pinned set (belgium and switzerland among them, whose normal order is spelt above "
+        f"meslin){detail}"
+    )
+
+
 def check_iia_tobacco_era(d):
     """The claim: iia tobacco and hops are ~100x too large from 1934 onward, and clean before it.
 
@@ -797,6 +904,7 @@ CHECKS = {
     ("iia", "india", "*"): check_exclusive_reporting,
     ("mitchell", "south africa", "*"): check_mitchell_cape_natal,
     ("iia", "australia", "p"): check_iia_australia_phosphate,
+    ("iia", "*", "wheat"): check_iia_meslin_spelt_swap,
     ("iia", "*", "tobacco, unmanufactured"): check_iia_tobacco_era,
     ("iia", "*", "hops"): check_iia_tobacco_era,
     ("iia", "*", "p"): check_iia_npk,
