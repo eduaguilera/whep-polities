@@ -20,12 +20,24 @@ THE DESIGN RULE THAT MATTERS: this tool must never answer "not recorded" when it
 A lookup that reports a confident absence is worse than no lookup, because absence is what licenses
 publishing. So every entry lands in exactly one of three buckets, and the middle one is the point:
 
-    MATCH          every dimension the caller gave is covered by the entry
-    INDETERMINATE  a scope field is a placeholder, or a dimension was not given, so coverage
-                   cannot be decided from the table -- READ THE SUMMARY
+    MATCH          the entry's SCOPE covers every dimension the caller gave
+    INDETERMINATE  a scope field is a placeholder, so coverage cannot be decided from the
+                   table -- READ THE SUMMARY
     no match       a dimension is present, parseable, and definitely excludes the query
 
 An INDETERMINATE result is not a pass. It means a human reads that entry before publishing.
+
+AND NEITHER IS A MATCH, WHICH IS THE MIRROR MISTAKE. A MATCH says the entry's declared scope
+COVERS the query -- not that the query's specific cell is enumerated inside it. Those come apart
+routinely, because an entry's scope is a year RANGE and a label LIST while its findings are
+individual cells: `iia-attributable-single-cell-errors` declares `serbia / rye / 1920-1945` and
+enumerates serbia rye divergences at 1931, 1932 and 1945 ONLY. Querying `serbia / rye / 1942`
+returns MATCH, and the 1941-1944 block turned out to be an unrecorded defect (a cross-label
+duplication with `czech republic`, whep-polities#433) sitting inside a covering entry.
+
+So the two failure modes are opposite and both are real: treating absence as proof nothing is
+recorded, and treating a scope match as proof the cell already is. This tool removes the first
+and cannot remove the second -- only reading the summary does.
 
 Usage:
   python3 scripts/lookup_known_defect.py --source iia --label serbia --item rye --year 1931
@@ -136,7 +148,8 @@ def main() -> int:
     print(f"scanned {len(rows)} data_errors entries\n")
 
     if matches:
-        print(f"MATCH -- every dimension you gave is covered ({len(matches)}):")
+        print(f"MATCH -- the entry's SCOPE covers your query ({len(matches)}). This does NOT mean your")
+        print("cell is enumerated inside it: scope is a year range and a label list, findings are cells.")
         for r, _ in matches:
             print(f"  {r['issue_id']}  [{r['status']}]  {r['year_min']}-{r['year_max']}")
             print(f"      source={r['source']!r} label={r['label']!r} commodity={r['commodity']!r}")
@@ -150,7 +163,8 @@ def main() -> int:
         print("That is a definite NO only for the dimensions you constrained -- narrow queries")
         print("exclude more entries, so re-run with fewer flags before concluding it is unrecorded.")
     else:
-        print("\nAn INDETERMINATE result is NOT a pass. Read those summaries before publishing:")
+        print("\nRead the summaries before publishing -- an INDETERMINATE is not a pass, and a MATCH is")
+        print("not proof the cell is already recorded:")
         print(f"  {os.path.relpath(ERRORS, REPO)}")
     return 0
 
