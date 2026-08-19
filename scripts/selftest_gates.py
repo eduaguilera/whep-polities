@@ -1539,6 +1539,39 @@ def mutate_constant_run_shortened(root, gpd, make_valid, affinity):
             f"to be a rounding floor stops being pinned while the total stays put")
 
 
+def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
+    """Blank the raw_product on every attributable row, as an index built per LABEL would leave it.
+
+    20_item_provenance.py indexed raw fingerprints by label alone until 2026-08-19, unioning every
+    product that label carries -- `french syria and lebanon` carries 18, so a layer-B `grapes`
+    series could score against values belonging to `wine`. Switching to a per-(label, product) index
+    withdrew 25 attributions and resolved 25 ambiguities, so the looser version was measurably
+    wrong, not merely coarser.
+
+    A regression to it would leave `raw_product` empty while EVERY OTHER SIGNAL stayed healthy: the
+    series count, the status counts, the 11 pinned mixtures and the distinctness filter are all
+    computed the same way either side of the change. This mutation reproduces exactly that state --
+    statuses, labels and shares untouched, only the per-product evidence gone -- so nothing but
+    check D can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/item_provenance.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    n = 0
+    for r in rows:
+        if r["status"] == "attributable" and r.get("raw_product"):
+            r["raw_product"] = ""
+            n += 1
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"erased raw_product on all {n} attributable rows, the state a label-level index would "
+            f"leave, while every status, share, pinned mixture and filter count stays exactly as it "
+            f"was")
+
+
 def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
     """Mark a span whose values come from ONE territory as coming from two.
 
@@ -2871,6 +2904,15 @@ CASES = (
         "cells are present on BOTH sides",
         "a pair declared `separate_series` whose measured shared-cell count has risen above zero, "
         "so a real double count sits behind a disposition that says a sum is safe",
+    ),
+    (
+        "validate_item_provenance.py",
+        mutate_provenance_raw_product_erased,
+        "the per-product index did not run",
+        "every attributable row stripped of its raw_product — the state a regression to the "
+        "label-level index would leave, which withdrew 25 attributions and resolved 25 ambiguities "
+        "when it was fixed, while the series count, status counts, 11 pinned mixtures and "
+        "distinctness filter all stay identical",
     ),
     (
         "validate_iia_label_provenance.py",

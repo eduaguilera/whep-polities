@@ -277,10 +277,26 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        asks this per label; a label can be right for one commodity and wrong for
                        another, and the alias key has no item dimension, so no label-level reroute
                        can fix it. 11 labels mix: australia's `p` is CHRISTMAS ISLAND phosphate,
-                       french polynesia's is MAKATEA, syrian arab republic carries Lebanon in COTTON
-                       only, usa's `n` is `usa and canada`. Needs the raw extract AND the panel.
+                       french polynesia's is MAKATEA, usa's `n` is `usa and canada`. Needs the raw
+                       extract AND the panel.
                        THE DISTINCTNESS FILTER IS NOT OPTIONAL: >=6 distinct values, or a few round
                        numbers match anything (unfiltered 43 labels, incl. cameroon <- new zealand).
+                       INDEXED PER RAW (LABEL, PRODUCT) SINCE 2026-08-19, not per raw label. A label
+                       is a union of its products -- `french syria and lebanon` carries 18 -- so a
+                       layer-B `grapes` series could score against values belonging to `wine`, the
+                       same class of error as matching a trade tonnage to a production one. The
+                       stricter index is uniformly more conservative: attributable 804->779,
+                       ambiguous 31->6, unattributable 92->142, and the 11 mixtures survive
+                       unchanged. It also corrected this entry: syrian arab republic carries Lebanon
+                       in GRAPES, ORANGES and TOBACCO as well as cotton, not "cotton only".
+                       It buys a second, independent signal. `raw_product` and `product_agrees`
+                       record whether the winning raw product names the SAME COMMODITY as the
+                       layer-B item -- a match on numbers can be chance, a match that also respects
+                       commodity identity is much harder to fake. 670 of 779 agree, 55 unknown, 54
+                       disagree, and check D of the gate pins that 54 bidirectionally. The
+                       disagreements are informative rather than wrong: `silk worm cocoons reelable`
+                       <- `sericulture` is a vocabulary gap, `flax fibre and tow` <- `linseed`
+                       independently reproduces issue 360's finding from another source.
                        --write refreshes state/item_provenance.csv
 21_item_product_switches.py
                        does one item series draw on several raw PRODUCTS, switching year to year?

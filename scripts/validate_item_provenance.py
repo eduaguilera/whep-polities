@@ -67,6 +67,14 @@ BASELINE_MIXED = frozenset({
 })
 
 
+AGREE_VALUES = frozenset({"yes", "no", "unknown"})
+
+# Measured 2026-08-19 on the first per-product run: 670 yes, 54 no, 55 unknown over 779 attributable
+# rows. BIDIRECTIONAL, like every other ceiling here — closing a vocabulary gap must lower it with a
+# note, so the count cannot quietly refill with genuinely bad matches.
+BASELINE_DISAGREE = 54
+
+
 def main() -> int:
     if not os.path.exists(TABLE):
         print(f"SKIP: {os.path.relpath(TABLE, REPO)} missing — run 20_item_provenance.py --write")
@@ -141,6 +149,39 @@ def main() -> int:
             f"A {label!r} is pinned as an item-level mixture but is not one any more — remove its "
             f"entry, saying what was repaired, or whether a threshold moved and hid it"
         )
+
+    # --- D: the commodity cross-check ---
+    # The fingerprint matches NUMBERS. Since 2026-08-19 the tool indexes raw (label, PRODUCT) rather
+    # than raw label, which makes a second, independent question askable: does the winning raw
+    # product name the same commodity as the layer-B item? A match on numbers alone can be a
+    # coincidence; a match that also respects commodity identity is far harder to produce by chance,
+    # and 670 of 724 attributable rows have one. If that agreement collapsed, the matching would
+    # have decayed into noise while every count above still looked healthy.
+    attrib = [r for r in rows if r["status"] == "attributable"]
+    for r in attrib:
+        if not (r.get("raw_product") or "").strip():
+            problems.append(
+                f"D {r['layer_b_label']}/{r['item']} is attributable to {r['raw_label']!r} with no "
+                f"raw_product — the per-product index did not run, so the union-of-products error "
+                f"this column exists to detect is back and invisible")
+        if (r.get("product_agrees") or "") not in AGREE_VALUES:
+            problems.append(
+                f"D {r['layer_b_label']}/{r['item']}: product_agrees "
+                f"{r.get('product_agrees')!r} not in {sorted(AGREE_VALUES)}")
+    disagree = sorted(f"{r['layer_b_label']}/{r['item']}" for r in attrib
+                      if r.get("product_agrees") == "no")
+    print(f"attributable rows whose raw product names a different commodity: {len(disagree)} "
+          f"(ceiling {BASELINE_DISAGREE})")
+    if len(disagree) > BASELINE_DISAGREE:
+        problems.append(
+            f"D {len(disagree)} attributable series land on a raw product naming a DIFFERENT "
+            f"commodity, above the ceiling of {BASELINE_DISAGREE}. Each is either a vocabulary gap "
+            f"(`silk worm cocoons reelable` <- `sericulture`), a real finding (`flax fibre and tow` "
+            f"<- `linseed`) or a bad match — and a rise means more of the third")
+    elif len(disagree) < BASELINE_DISAGREE:
+        problems.append(
+            f"D only {len(disagree)} disagreeing series remain, below the pinned ceiling of "
+            f"{BASELINE_DISAGREE} — lower the baseline and say which vocabulary gap was closed")
 
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)\n")
