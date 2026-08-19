@@ -1848,6 +1848,45 @@ def mutate_edition_zero_reclassed(root, gpd, make_valid, affinity):
             f"stay satisfied")
 
 
+def mutate_era_zero_area_exonerated(root, gpd, make_valid, affinity):
+    """Reclassify a zero-area row as fine, the way the `if area > 0` guard does.
+
+    50 rows in `era_shift_verdicts.csv` carry production of 200 to 85,000 tonnes against an area of
+    EXACTLY 0, so their implied yield is infinite -- the strongest evidence in the table. The natural
+    way to write the screen tests `if area > 0` before dividing, which sends all 50 to the weaker
+    own-history test; measured, that EXONERATES 14 of them and drops the convicted count from 266 to
+    252. Those are precisely the counts the first pass at this measurement reported, which is how the
+    guard was found.
+
+    So this mutation reproduces the exonerating half: it takes one zero-area row and files it as
+    `no_area_level_consistent`, i.e. reported as fine. Every other arm stays quiet BY CONSTRUCTION --
+    `convicted` is flipped to False so arm A agrees with the new verdict, and the row already carries no
+    implied_yield (it cannot, with a zero area) so arms B and C have nothing to say. Only the zero-area
+    rule can see it.
+
+    It picks the highest-production zero-area row rather than one by name, because which rows have a
+    zero area moves when the panel is rebuilt -- and the biggest one is the most absurd thing to clear.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/era_shift_verdicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    zero = [r for r in rows if (r["area_ha"] or "").strip() == "0"]
+    if not zero:
+        raise AssertionError("no zero-area rows in era_shift_verdicts.csv, so this mutation has "
+                             "nothing to exonerate and the case would pass vacuously")
+    hit = max(zero, key=lambda r: float(r["production"]))
+    before = hit["verdict"]
+    hit["verdict"] = "no_area_level_consistent"
+    hit["convicted"] = "False"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"cleared {hit['label']} {hit['item']!r} {hit['year']} -- {hit['production']} tonnes on "
+            f"ZERO hectares -- from {before} to no_area_level_consistent, i.e. reported as fine, with "
+            f"`convicted` flipped to match so every other arm stays quiet")
+
 def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
     """Point an overlap row at a polity code that does not exist.
 
@@ -3354,6 +3393,14 @@ CASES = (
         "pass and only the class-shape check can see it",
     ),
     (
+        "validate_era_shift_verdicts.py",
+        mutate_era_zero_area_exonerated,
+        "implied yield is INFINITE",
+        "a row with 85,000 tonnes of production on ZERO hectares reclassified as fine, with "
+        "`convicted` flipped to match so arms A, B and C stay quiet -- only the zero-area rule stands "
+        "between the `if area > 0` guard and 14 exonerated impossible rows",
+    ),
+    (
         "validate_same_polity_overlaps.py",
         mutate_overlap_code_not_a_polity,
         "is not a polity in",
@@ -3946,6 +3993,10 @@ WRITABLE = {
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+    ),
+    # The case rewrites era_shift_verdicts.csv in place (it reclassifies one row), so a real copy.
+    "validate_era_shift_verdicts.py": (
+        "pipelines/polity-autoimprove/state/era_shift_verdicts.csv",
     ),
     # The case rewrites same_polity_overlaps.csv in place (it shrinks a cell count), so a real copy
     # rather than a symlink into the tracked table.
