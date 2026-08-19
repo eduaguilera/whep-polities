@@ -46,8 +46,9 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/collapse_groups.csv")
 
 FIELDS = ["whep_code", "item", "unit", "year", "n_rows", "n_distinct", "n_labels", "n_sources",
-          "verdict", "composition", "v_min", "v_max", "published_mean", "ratio_mean_max",
-          "labels", "sources"]
+          "n_indicators", "verdict", "composition", "duplicate_class", "v_min", "v_max",
+          "published_mean", "ratio_mean_max", "labels", "sources"]
+DUP_CLASSES = {"true_duplicate_key", "item_code_collision"}
 VERDICTS = {"values_identical", "values_differ"}
 COMPOSITIONS = {"one_label_one_source", "one_label_several_sources",
                 "several_labels_one_source", "several_labels_several_sources"}
@@ -125,6 +126,31 @@ def main() -> int:
             if abs(float(r["ratio_mean_max"]) - want) > 1e-6:
                 problems.append(f"B {where}: ratio_mean_max {r['ratio_mean_max']} != "
                                 f"published_mean/v_max ({want:.6f})")
+        # --- E. duplicate_class must follow n_indicators ---
+        # The consumer's key excludes `indicator`, which names the MEASURE within an item code, so a
+        # group holding several indicators is several distinct statistics being averaged -- a real
+        # defect, but issue 13's, not a whole/part collision, and no routing change would touch it.
+        # Counting the two together overstates duplicate reporting by about a fifth (1,995 -> 1,577).
+        # This arm stops the classification drifting from the column it rests on.
+        try:
+            n_ind = int(r["n_indicators"])
+        except (KeyError, ValueError):
+            problems.append(f"E {where}: n_indicators {r.get('n_indicators')!r} is not an integer")
+            n_ind = None
+        if r["duplicate_class"] not in DUP_CLASSES:
+            problems.append(f"E {where}: duplicate_class {r['duplicate_class']!r} not in "
+                            f"{sorted(DUP_CLASSES)}")
+        elif n_ind is not None:
+            want = "true_duplicate_key" if n_ind == 1 else "item_code_collision"
+            if r["duplicate_class"] != want:
+                problems.append(
+                    f"E {where}: {n_ind} distinct indicator(s) but duplicate_class is "
+                    f"{r['duplicate_class']!r}, expected {want!r}. With >1 indicator the spread is "
+                    f"partly distinct MEASURES sharing an item code (issue 13), which routing cannot "
+                    f"fix; calling it a duplicate key sends the reader at the wrong remedy")
+        if n_ind is not None and not (1 <= n_ind <= n_rows):
+            problems.append(f"E {where}: n_indicators {n_ind} outside [1, n_rows={n_rows}]")
+
         # --- D. composition agrees with the listed labels/sources ---
         labs = [x for x in r["labels"].split(" | ") if x]
         srcs = [x for x in r["sources"].split(" | ") if x]
@@ -161,6 +187,11 @@ def main() -> int:
           f"{len(diff)} values_differ")
     for k in sorted(comp):
         print(f"  {k:32} {comp[k]}")
+    dc: dict[str, int] = {}
+    for r in diff:
+        dc[r["duplicate_class"]] = dc.get(r["duplicate_class"], 0) + 1
+    for k in ("true_duplicate_key", "item_code_collision"):
+        print(f"  {k:24} {dc.get(k, 0)}")
     reach = comp.get("several_labels_one_source", 0)
     if diff:
         print(f"  reachable by a per-source label-pair screen: {reach} "

@@ -1946,6 +1946,45 @@ def mutate_ledger_write_untruncated_to_atomic(root, gpd, make_valid, affinity):
             "call form the grep that found issue 431's four sites was blind to -- so the file that "
             "holds every banked verdict is truncated on every run of the tool that reads it")
 
+def mutate_collapse_indicator_class_flipped(root, gpd, make_valid, affinity):
+    """File a multi-measure group as a duplicate key, which points the reader at the wrong remedy.
+
+    The consumer's key excludes `indicator`, the field naming the MEASURE within an item code. So a
+    group holding several indicators is several distinct statistics being averaged together -- issue
+    13's defect, fixed upstream by splitting the item code -- and NOT a whole and a part colliding on
+    one polity, which is fixed by routing or a composition entry. Both are real; the remedies do not
+    overlap.
+
+    Counting them as one number is not hypothetical: I published "1,977 groups publish a blend" on
+    issue 451 before measuring this axis, and 418 of them (a fifth) are the second kind. The worst
+    case is DEU-1920-1938's 1937 population group, which carries FIVE indicators across two labels --
+    total, agricultural, economically active, and male/female splits -- and is therefore both kinds at
+    once, which is why it publishes 24% of the Reich rather than something between its two labels.
+
+    The mutation relabels the largest multi-indicator group as `true_duplicate_key`. Every other arm
+    stays quiet: no value, count, verdict or composition changes, so only the arm that ties the class
+    to `n_indicators` can see it. It picks by row count rather than by name because which group is
+    largest moves when the panel is rebuilt.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/collapse_groups.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    multi = [r for r in rows if int(r["n_indicators"]) > 1]
+    if not multi:
+        raise AssertionError("no multi-indicator groups in collapse_groups.csv, so this mutation has "
+                             "nothing to misclassify and the case would pass vacuously")
+    hit = max(multi, key=lambda r: int(r["n_rows"]))
+    before = hit["duplicate_class"]
+    hit["duplicate_class"] = "true_duplicate_key"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"relabelled {hit['whep_code']} {hit['item']!r} {hit['year']} -- {hit['n_indicators']} "
+            f"distinct measures under one item code -- from {before} to true_duplicate_key, so a "
+            f"reader would look for a routing fix that cannot touch it")
+
 def mutate_collapse_mean_outside_range(root, gpd, make_valid, affinity):
     """Publish a "mean" that lies above the largest member of its own group.
 
@@ -3520,6 +3559,14 @@ CASES = (
         "the truncating ledger write issue 431 removed, restored as a `to_csv` -- the call form the "
         "grep that found the original four sites could not see -- so only an AST-based sweep can "
         "tell that the file holding every banked verdict is truncated again",
+    ),
+    (
+        "validate_collapse_groups.py",
+        mutate_collapse_indicator_class_flipped,
+        "sends the reader at the wrong remedy",
+        "a group of FIVE distinct measures sharing one item code relabelled as a duplicate key, with "
+        "every value, count and verdict untouched, so only the arm tying the class to n_indicators "
+        "can tell that routing is being blamed for an item-code collision",
     ),
     (
         "validate_collapse_groups.py",
