@@ -474,6 +474,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_same_polity_overlaps.py
 
+      # iia tobacco/hops production from 1934 runs at a median implied yield of 76 t/ha against 0.92
+      # before, and 1933 is the last year a second yearbook volume offers an opinion (issue 414). The
+      # per-row verdicts are gated rather than the era: 50 rows carry production on an area of exactly
+      # 0, so their implied yield is infinite, and an `if area > 0` guard exonerates 14 of them.
+      - name: Sources — post-1933 tobacco/hops verdicts must match their own numbers
+        if: '!cancelled()'
+        run: python3 scripts/validate_era_shift_verdicts.py
+
       # The raw IIA extract names the yearbook VOLUME each row came from, and nothing here had used
       # it. It is the only comparison that can convict a specific extracted cell: the same publisher
       # printed both numbers for the same territory, commodity and year. 83 cells read 0 in one
