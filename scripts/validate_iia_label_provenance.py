@@ -42,6 +42,7 @@ Usage:
 """
 from __future__ import annotations
 
+import collections
 import csv
 import json
 import os
@@ -206,6 +207,25 @@ def main() -> int:
     print(f"provenance rows: {len(prov)}")
     print(f"  targets assembled from a whole plus parts, or several countries: {len(mixed_targets)}")
     print(f"  labels the mapping's own notes call multi-country: {len(declared_multi)}")
+
+    # PRINT THE TABLE'S OWN CLASSIFICATION COLUMNS (issue 315). Not a check -- observability. Issue
+    # 315's headline is "25 IIA assertions carry a territory the label does not name", and that figure
+    # could not be reproduced from this table because it is unclear which column it meant: three
+    # candidates span very different populations, and nothing printed them. A number no gate prints is
+    # a number nobody can cite, which is the pattern behind every unreproducible figure in this
+    # backlog. So print all three distributions and let the definition be pinned to one.
+    for col in ("kind", "mixing_observed", "territory_signal"):
+        if not prov or col not in prov[0]:
+            continue
+        dist = collections.Counter((r.get(col) or "").strip() or "(blank)" for r in prov)
+        labels = {
+            v: len({(r.get("layer_b_label") or "").strip()
+                    for r in prov if (r.get(col) or "").strip() == v and r.get("layer_b_label")})
+            for v in dist
+        }
+        parts = ", ".join(f"{v}={n} rows/{labels[v]} labels"
+                          for v, n in sorted(dist.items(), key=lambda kv: -kv[1]))
+        print(f"  {col}: {parts}")
     print(f"`verified_equal` verdicts on such a label: {len(offenders)} "
           f"(ceiling {BASELINE_VERIFIED_EQUAL_ON_MIXED})")
 
