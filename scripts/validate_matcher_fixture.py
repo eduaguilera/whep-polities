@@ -150,7 +150,32 @@ CASES = (
      "whole subtlety: the ended period is kept only at its own end_year, where the "
      "inclusive gather still reaches it, and not for every later year"),
     ("Alpina", "XAA", None, 1700, None, "year_uncovered", "iso",
-     "a year before the family begins is refused, not rounded to the first period"),
+     "a year before the family begins is refused, not rounded to the first period. This "
+     "is ALSO the control for the fallback below: `alpina` as a NAME reaches a different "
+     "family than XAA does (the iso set includes the border district), so the fallback is "
+     "reachable here — and it must still refuse, because the name family does not cover "
+     "1700 either. A fallback that fired on family-difference alone would break this"),
+    ("Mandaria", "XAN", None, 1930, "MND-1920-1948", "matched",
+     "name_after_iso_year_gap",
+     "AN ISO CODE WHOSE FAMILY DOES NOT REACH THE YEAR FALLS BACK TO THE NAME (issue "
+     "448). MDW-1948-2025 owns XAN and starts in 1948, so 1930 is year_uncovered on the "
+     "iso route while `mandaria` as a name reaches MND-1920-1948, which covers it. Before "
+     "the fallback the row was DROPPED: real case mitchell/palestine, whose rows all "
+     "carry iso `pse` (PSE-1948-2025) while the British Mandate polity is PAL-1920-1948 "
+     "— 27 consecutive years, 95 rows, silently absent from the panel"),
+    ("Mandaria", "XAN", None, 1990, "MDW-1948-2025", "matched", "iso",
+     "GUARD 1, and the reason this gate needs both Mandaria cases: where the iso route "
+     "MATCHES it still wins. iso is preferred precisely because names are ambiguous "
+     "across families, so the fallback must be unreachable for a matching row — not "
+     "merely outranked by it"),
+    ("Mandaria", "XAN", None, None, None, "no_year", "iso",
+     "a year-less row stays unrouted. NOT a guard case, and the distinction is worth "
+     "recording: I wrote it as one, then mutated the fallback to fire on `no_year` too "
+     "and this case still passed. pick_by_year returns `no_year` on its FIRST line for "
+     "any NaN year, whatever family it is handed, so no family can rescue such a row and "
+     "the no_year restriction cannot change an answer. What this case pins is that "
+     "outcome itself — if a year-less row ever starts resolving, the restriction becomes "
+     "load-bearing and this case is where that will show up"),
 )
 
 # --- C. what the intake run must produce ------------------------------------------
