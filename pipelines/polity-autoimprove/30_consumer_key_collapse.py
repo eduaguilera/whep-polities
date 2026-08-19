@@ -93,8 +93,8 @@ MATCHED = os.path.join(STATE, "matched_rows.parquet")
 EPS = 1e-9
 
 FIELDS = ("whep_code", "item", "unit", "year", "n_rows", "n_distinct", "n_labels", "n_sources",
-          "verdict", "composition", "v_min", "v_max", "published_mean", "ratio_mean_max",
-          "labels", "sources")
+          "n_indicators", "verdict", "composition", "duplicate_class", "v_min", "v_max",
+          "published_mean", "ratio_mean_max", "labels", "sources")
 
 
 def _num(x) -> str:
@@ -119,6 +119,11 @@ def build(matched: str) -> list[dict]:
         vmin, vmax, vmean = float(vals.min()), float(vals.max()), float(vals.mean())
         labels = sorted({str(x).strip() for x in g.country})
         sources = sorted({str(x).strip() for x in g.source})
+        # `indicator` names the MEASURE within an item code, and the consumer's key does NOT include
+        # it -- so several distinct statistics filed under one code are averaged together. That is a
+        # DIFFERENT defect from a whole and a part colliding, with a different remedy, and counting
+        # them as one number overstates duplicate reporting by about a fifth (issues 451, 13).
+        n_ind = int(g.indicator.nunique(dropna=False)) if "indicator" in g else 1
         identical = (vmax - vmin) <= EPS * max(1.0, abs(vmax))
         rows.append({
             "whep_code": code, "item": item, "unit": unit, "year": int(year),
@@ -126,8 +131,12 @@ def build(matched: str) -> list[dict]:
             # distinctness is judged on the ROUNDED value for the same reason EPS exists: two
             # round-trips of one number through parquet must not read as two opinions.
             "n_distinct": int(vals.round(9).nunique()),
-            "n_labels": len(labels), "n_sources": len(sources),
+            "n_labels": len(labels), "n_sources": len(sources), "n_indicators": n_ind,
             "verdict": "values_identical" if identical else "values_differ",
+            # ONE indicator across the group -> the same measure really is reported twice.
+            # MORE than one -> at least part of the spread is distinct measures sharing an item code,
+            # which no routing or composition fix would touch.
+            "duplicate_class": ("true_duplicate_key" if n_ind == 1 else "item_code_collision"),
             "composition": ("one_label" if len(labels) == 1 else "several_labels") + "_" +
                            ("one_source" if len(sources) == 1 else "several_sources"),
             "v_min": _num(vmin), "v_max": _num(vmax), "published_mean": _num(vmean),
@@ -185,6 +194,15 @@ def main() -> int:
     for k in sorted(comp):
         note = "  <- what a label-pair screen can reach" if k.startswith("several_labels") else ""
         print(f"    {k:32} {comp[k]}{note}")
+    dc: dict[str, int] = {}
+    for r in diff:
+        dc[r["duplicate_class"]] = dc.get(r["duplicate_class"], 0) + 1
+    print("  by what the disagreement IS:")
+    for k in ("true_duplicate_key", "item_code_collision"):
+        why = ("one measure reported twice: routing/composition"
+               if k == "true_duplicate_key" else
+               "distinct measures sharing an item code: upstream item split (issue 13)")
+        print(f"    {k:24} {dc.get(k, 0):5}   {why}")
 
     if args.check:
         if not os.path.exists(OUT):
