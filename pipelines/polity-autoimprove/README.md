@@ -361,6 +361,24 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        count clearing 0.05. On one cell it is a coin flip, and it wrongly called
                        `EI Salvador`/`El Salvador` — an OCR variant of one label — a containment.
                        --write refreshes state/same_polity_overlaps.csv
+26_edition_conflicts.py
+                       where do two IIA yearbook VOLUMES disagree about the same cell? The raw
+                       extract's `yearbook` column names the volume each row came from — six of
+                       them — and nothing here had used it. It is the only comparison that can
+                       convict a specific extracted cell, because the same publisher printed both
+                       numbers for the same territory, commodity, unit and year.
+                       PRODUCTION+AREA ZERO RATE BY VOLUME: iia_1925_26 0.04%, iia_1929_30 0.07%,
+                       iia_1933_34 0.14%, iia_1939_45 0.45%, iia_1909_21 0.82% — and
+                       iia_1938_39 **6.30%**, 14x to 150x the rest, holding 770 of the extract's
+                       zeros. 1,141 cells are carried by more than one volume and disagree: 83 are
+                       a zero contradicted by a real value (austria meslin area 1933 = 0 against
+                       8,588 ha) and ALL 83 sit in iia_1938_39; 1,058 are ordinary revisions,
+                       median 1.032x but 189 above 2x and one at 3,809x.
+                       THE COVERAGE LIMIT IS THE MECHANISM: only 1933 is covered by a second
+                       volume, so most of the 770 zeros cannot be tested — which is why they reach
+                       layer B. Where a second opinion exists the pipeline prefers it (1933: 179
+                       raw zeros -> 61 in layer B); where none exists they pass through (1935:
+                       148 -> 120). Issue 414. --write refreshes state/edition_conflicts.csv
                        in CI, since the panel is gitignored. Does NOT decide the cause of any
                        one seam: unit mismatch, different coverage and different item definitions
                        are probably all present, and separating them needs the sources.

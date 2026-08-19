@@ -474,6 +474,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_same_polity_overlaps.py
 
+      # The raw IIA extract names the yearbook VOLUME each row came from, and nothing here had used
+      # it. It is the only comparison that can convict a specific extracted cell: the same publisher
+      # printed both numbers for the same territory, commodity and year. 83 cells read 0 in one
+      # volume and a real value in another — ALL 83 in iia_1938_39, whose production/area zero rate
+      # is 6.30% against 0.04–0.82% everywhere else (issue 414).
+      - name: Sources — one yearbook volume may not contradict another about a cell
+        if: '!cancelled()'
+        run: python3 scripts/validate_edition_conflicts.py
+
       # A label can be right for one commodity and wrong for another, and no label-level decision can
       # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix
       # raw labels across their item series -- australia's `p` is CHRISTMAS ISLAND phosphate,
