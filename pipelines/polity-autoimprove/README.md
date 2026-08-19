@@ -152,11 +152,32 @@ they are not equally promising, and one of them does not exist as stated:
 extraction the characteristic fault is a dropped leading `1` — the cell is exactly
 1,000 units low. All eleven meat-table mismatches are that, and so are seven of
 the land-use residuals in `landuse_corrections.csv` (NLD 1951, JPN 1951, ECU 1949,
-GBR 1951, LBR 1948, HUN 1947, SLB 1949). `06_landuse_consistency.py` detects them
-but diagnoses none, because its diagnoses (`digits prepended`, `decimal point
-dropped`) all describe a value that came out too LARGE. Netherlands 1951 arable
-land is recorded as 43 against an implied 1,043 and lands in the table as
-`(multiple)`. Extending 06's diagnosis set is issue #4's work, not #29's.
+GBR 1951, LBR 1948, HUN 1947, SLB 1949). `06_landuse_consistency.py` detected them
+but diagnosed none, because its single-component search skipped every candidate with
+`bad <= good` — so every diagnosis it could emit (`digits prepended`, `decimal point
+dropped`, `value too large`) described a value that came out too LARGE, and the most
+common fault in the source was the one it could not name.
+
+**FIXED 2026-08-19 (branch 4b).** The signature is that the block's residual is
+EXACTLY a power of ten — 1,000, not 1,036 — which is a narrow coincidence: the
+free-text bucket held 14 ordinary residuals (194, 477, 2,036, 6,444, 8,000…) against
+9 exact powers of ten. Ten blocks now carry a structured diagnosis instead of free
+text, and the free-text bucket falls 24 → 15:
+
+* **8 component-side** (`residual > 0`, a component is low by 10^k). THREE are
+  uniquely identified because only one component sits below that place value —
+  JPN 1951, ECU 1949, GBR 1951. The rest name their candidates rather than guess.
+* **2 total-side** (`residual < 0`, so the TOTAL lost its leading digit — uniquely
+  located by construction). JAM 1948 is `replace_value`, corroborated because
+  `use land` in the same block already reads 1,142, the components' sum; BHS 1947
+  has no corroborating row and stays `review`.
+
+**WHY THE OTHER FIVE COMPONENT CASES CANNOT BE NARROWED, measured not assumed:** any
+component below 10^k had an empty leading-digit position, so arithmetic cannot choose
+between them, and **fao1952 publishes exactly ONE land-use year per territory** —
+verified for all seven — so no within-series comparison exists either. The Netherlands
+identification (arable land 43 against an implied 1,043) rests on knowing Dutch land
+use, which is external evidence this tool does not have.
 
 Useful label combinations: `decision-needed` (blocked on a judgement call),
 `blocked-on-source` (needs a GIS/reference source we lack), `guard` (a check that

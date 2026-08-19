@@ -73,6 +73,19 @@ def tol(total):
     return max(1.0, 0.02 * total)
 
 
+def exact_pow10(n):
+    """The exponent if n is EXACTLY a power of ten, else None. Exact, not within a window: the whole
+    point is that a residual of 1,000 is a different animal from one of 1,036."""
+    if n <= 0:
+        return None
+    k = 0
+    v = float(n)
+    while v >= 10 and abs(v / 10 - round(v / 10)) < 1e-9:
+        v /= 10
+        k += 1
+    return k if abs(v - 1.0) < 1e-9 and k >= 1 else None
+
+
 def exact_shift(bad, good):
     """k such that bad == good * 10^k to within one unit, else None.
 
@@ -155,6 +168,60 @@ for (code, year), grp in lu.groupby(["whep_code", "year"]):
                          "action": "replace_value",
                          "diagnosis": f"decimal point dropped (x{fixed}), "
                                       f"{len(impossible)} cells in this block"})
+        continue
+
+    # (4b) THE DROPPED LEADING DIGIT, which cases (2)/(3) structurally cannot reach.
+    #
+    # The single-component search above skips any candidate with `bad <= good`, so it only ever
+    # considers cells that came out too LARGE. Every diagnosis it can emit -- "digits prepended",
+    # "decimal point dropped", "value too large" -- describes that direction. The characteristic
+    # FAO-1952 fault is the opposite: a dropped leading `1`, leaving the cell exactly 10^k low
+    # (Netherlands 1951 arable land recorded as 43 against an implied 1,043). Those blocks all fell
+    # through to case (5) and were reported as free text, so the most common error mode in this source
+    # was the one the tool could not name. Nine blocks, measured before this branch existed.
+    #
+    # The signature is that the residual is EXACTLY a power of ten. That is a much narrower
+    # coincidence than it looks: ordinary residuals here run 194, 477, 1,036, 2,036, 6,444, 8,000 --
+    # the free-text bucket has 14 such rows against 9 exact powers of ten.
+    resid = total - comp_sum
+    k = exact_pow10(abs(resid))
+    if k is not None and k >= 1:
+        step = 10 ** k
+        if resid > 0:
+            # A COMPONENT is low by 10^k. Which one cannot be settled from arithmetic: any component
+            # smaller than 10^k had an empty leading-digit position and so is a candidate. Reported as
+            # a candidate list rather than a guess.
+            #
+            # AND NO WITHIN-SERIES TEST CAN NARROW IT. fao1952 publishes exactly ONE land-use year per
+            # territory -- verified for all seven positive-residual blocks (NLD, GBR, JPN 1951; ECU,
+            # SLB 1949; LBR, JAM 1948; HUN 1947) -- so a component cannot be compared against its own
+            # neighbouring years. The Netherlands identification in the literature rests on knowing
+            # Dutch land use, which is external evidence this tool does not have.
+            cands = sorted((c for c in present if vals[c] < step), key=lambda c: vals[c])
+            rows.append({**base, "item": "(multiple)", "recorded": comp_sum,
+                         "implied_correct": total, "action": "review",
+                         "diagnosis": (f"leading digit dropped: one component is low by exactly "
+                                       f"{step:,} (10^{k}); {len(cands)} candidate(s) below that "
+                                       f"place value: " + ", ".join(
+                                           f"{c}={vals[c]:,.0f}" for c in cands))})
+            continue
+        # resid < 0: the components EXCEED the total by exactly 10^k, so it is the TOTAL that lost its
+        # leading digit. Uniquely identified, unlike the positive case -- and often confirmed outright,
+        # because another row in the same block already carries the components' sum. Jamaica 1948:
+        # `use total` reads 142, the components sum to 1,142, and `use land` reads 1,142.
+        # Searched over EVERY row in the block, not just the components. The corroborating figure is
+        # typically `use land`, which is not one of the five components -- restricting the search to
+        # `present` reported "no corroborating row" for Jamaica 1948 even though `use land` reads
+        # 1,142 there, exactly the components' sum.
+        confirm = [c for c in vals
+                   if c != TOTAL and abs(vals[c] - comp_sum) <= tol(comp_sum)]
+        rows.append({**base, "item": "use total", "recorded": total,
+                     "implied_correct": round(comp_sum, 3),
+                     "action": "replace_value" if confirm else "review",
+                     "diagnosis": (f"leading digit dropped from the TOTAL: low by exactly "
+                                   f"{step:,} (10^{k})"
+                                   + (f"; confirmed by {confirm[0]}={vals[confirm[0]]:,.0f}"
+                                      if confirm else "; no corroborating row in the block"))})
         continue
 
     # (5) no single-cell story: report the inconsistency itself

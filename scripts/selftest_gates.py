@@ -1593,6 +1593,39 @@ def mutate_triage_span_outside_candidate(root, gpd, make_valid, affinity):
             f"{victim['years_observed']} misses entirely")
 
 
+def mutate_landuse_dropped_digit_residual(root, gpd, make_valid, affinity):
+    """Nudge a dropped-leading-digit row's total so the residual stops being a power of ten.
+
+    The whole claim in that diagnosis is that the block's residual is EXACTLY 10^k -- 1,000 rather
+    than 1,036 -- because that is what distinguishes a dropped leading `1` from an ordinary
+    inconsistency. Nothing else in the row carries it: the polity, year, item and action all stay
+    valid, and the free-text bucket this replaced would have passed either way.
+
+    So the mutation adds 7 to `implied_correct`, making the residual 1,007. The row still parses, its
+    action is still `review`, its candidate count is still positive, and only the arm that recomputes
+    the residual from the row's own two numbers can see that the diagnosis has stopped being true.
+
+    This arm exists because 06_landuse_consistency.py could not diagnose this error mode at all until
+    2026-08-19 -- its single-component search skipped every candidate with `bad <= good`, so a cell
+    that came out too SMALL fell through to free text. Nine blocks did.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/landuse_corrections.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows
+                  if r["diagnosis"].startswith("leading digit dropped: one component"))
+    before = victim["implied_correct"]
+    victim["implied_correct"] = f"{float(before) + 7:g}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"moved the {victim['polity_code']} {victim['year']} block's total from {before} to "
+            f"{victim['implied_correct']}, so its residual is 1,007 rather than the exact power of "
+            f"ten the diagnosis claims, while every other field stays valid")
+
+
 def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
     """Lower a block's n_items while leaving the item list it describes intact.
 
@@ -3229,6 +3262,14 @@ CASES = (
         "the top outlier's ratio rewritten to a value that still clears the floor, with the three "
         "numbers it derives from left alone and the ordering preserved — so only the re-derivation "
         "can see that the column the whole table is judged by has stopped describing its row",
+    ),
+    (
+        "validate_landuse_corrections.py",
+        mutate_landuse_dropped_digit_residual,
+        "being a power of ten",
+        "a dropped-leading-digit diagnosis whose residual was nudged off an exact power of ten — the "
+        "one fact that distinguishes that error mode from an ordinary inconsistency, and the arm "
+        "recomputing it from the row's own numbers is the only thing that can see it",
     ),
     (
         "validate_item_blocks.py",
