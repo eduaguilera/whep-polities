@@ -336,7 +336,13 @@ json.dump({"summary": {
 # a label/candidate group whose ONLY overlapping rows are period rows got years_observed
 # "None-None", and 12_triage_assertions.py:149 raises ValueError on that -- so the triage queue
 # could not be regenerated AT ALL, which is why it drifted (issue 434).
-work[["source","country","iso3c","year","period","item","value","unit","whep_code","match_method"]] \
+# `indicator` carried for the same reason as `period`: needed downstream and dropped here. Its
+# MEANING IS SOURCE-DEPENDENT, which matters more than its presence -- fao1952 uses it for the
+# MEASURE (13 values: crops:area, population:population total, ...) while mitchell uses it for
+# PROVENANCE (152 values: `page_17_table_1`, `copia de page_17_table_1`). A consumer must decide
+# per source; see 25_same_polity_overlaps.py, where keying on it for mitchell would separate the
+# very duplicates the table exists to find.
+work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method"]] \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 
 # coverage by source after

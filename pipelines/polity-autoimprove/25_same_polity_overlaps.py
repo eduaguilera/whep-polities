@@ -118,8 +118,20 @@ def build(matched: str) -> list[dict]:
             continue
         for a, b in itertools.combinations(labels, 2):
             ga, gb = g[g.country == a], g[g.country == b]
-            ka = ga.set_index(["item", "unit", "year"]).value
-            kb = gb.set_index(["item", "unit", "year"]).value
+            # KEY ON `indicator` FOR fao1952 ONLY. That source packs five indicators under
+            # `r_fao_population_1952_10_18` (issue 13), so without it two labels are reported as
+            # sharing a cell they do not share, and the `~duplicated()` below then keeps whichever
+            # came first. It removed 13 pairs whose ONLY shared cell was such an artefact.
+            #
+            # NOT for the other sources, and this is the whole subtlety: mitchell's `indicator` is a
+            # PROVENANCE string, not a measure -- `cape natal` is `page_17_table_1` and `south africa`
+            # is `copia de page_17_table_1`, a copy of one table with identical values. Keying on it
+            # there DELETED that pair, which source_conventions.csv documents with a passing re-test
+            # and a warning that dropping it loses 21 years of national cattle, plus every
+            # orthographic-variant pair. Verified by doing it: 37 pairs became 21.
+            idx_cols = ["item", "unit", "year"] + (["indicator"] if src == "fao1952" else [])
+            ka = ga.set_index(idx_cols).value
+            kb = gb.set_index(idx_cols).value
             ka, kb = ka[~ka.index.duplicated()], kb[~kb.index.duplicated()]
             shared = ka.index.intersection(kb.index)
             if len(shared) == 0:
@@ -130,7 +142,9 @@ def build(matched: str) -> list[dict]:
             agt = int((va - vb > tol).sum())
             bgt = int((vb - va > tol).sum())
             distinct = len(set(va.round(9)) | set(vb.round(9)))
-            years = sorted({int(y) for _, _, y in shared if not pd.isna(y)})
+            # the index gains `indicator` for fao1952, so take the year by POSITION rather than
+            # unpacking a fixed arity -- unpacking crashed when the key first grew.
+            years = sorted({int(t[2]) for t in shared if not pd.isna(t[2])})
             out.append({
                 "whep_code": code, "source": src, "label_a": a, "label_b": b,
                 "relation": classify(eq, agt, bgt, len(shared), distinct, norm(a) == norm(b)),
