@@ -51,6 +51,11 @@ COLUMNS = ["polity_code", "year", "item", "recorded", "implied_correct", "action
 ACTIONS = {"replace_value", "drop_row", "review_cell", "review"}
 
 SHIFT = re.compile(r"^decimal point dropped \(x(10|100|1000)\)")
+DROP_COMPONENT = re.compile(
+    r"leading digit dropped: one component is low by exactly ([\d,]+) \(10\^(\d+)\); "
+    r"(\d+) candidate")
+DROP_TOTAL = re.compile(
+    r"leading digit dropped from the TOTAL: low by exactly ([\d,]+) \(10\^(\d+)\)")
 SUMS = re.compile(r"^components sum to ([\d,]+) but total is ([\d,]+)$")
 
 
@@ -128,6 +133,64 @@ for r in rows:
                 f"explains it, so it must be action=review_cell, not {action!r} — "
                 f"replace_value would invite an unattended rewrite"
             )
+        continue
+
+    # The DROPPED LEADING DIGIT shapes, added 2026-08-19 with 06's new branch (4b). Both are
+    # re-derived from the row's own two numbers, so a diagnosis that names a power of ten the
+    # arithmetic does not support fails here rather than reading as verified.
+    m = DROP_COMPONENT.match(diag)
+    if m:
+        step, k, ncand = num(m.group(1)), int(m.group(2)), int(m.group(3))
+        if rec is None or imp is None:
+            problems.append(f"{where}: labelled a dropped leading digit but has no numbers")
+        else:
+            resid = imp - rec          # implied_correct is the total, recorded the components' sum
+            if abs(resid - step) > 0.5:
+                problems.append(
+                    f"{where}: text says one component is low by exactly {step:,.0f} but the row's "
+                    f"own numbers give a residual of {resid:,.0f} — the whole claim rests on that "
+                    f"residual being a power of ten")
+            if abs(step - 10 ** k) > 0.5:
+                problems.append(f"{where}: text says {step:,.0f} and 10^{k}, which disagree")
+            if resid <= 0:
+                problems.append(
+                    f"{where}: a LOW component means the total exceeds the components' sum, but the "
+                    f"residual is {resid:,.0f} — that is the TOTAL-side shape, not this one")
+        if ncand < 1:
+            problems.append(f"{where}: claims a dropped digit with {ncand} candidate cells, so it "
+                            f"names no cell that could carry it")
+        if action != "review":
+            problems.append(
+                f"{where}: the arithmetic fixes the block total but NOT which component moved, and "
+                f"fao1952 publishes one land-use year per territory so no within-series test can "
+                f"narrow it — so this must be action=review, not {action!r}")
+        continue
+
+    m = DROP_TOTAL.match(diag)
+    if m:
+        step, k = num(m.group(1)), int(m.group(2))
+        confirmed = "confirmed by" in diag
+        if rec is None or imp is None:
+            problems.append(f"{where}: labelled a dropped total digit but has no numbers")
+        else:
+            resid = imp - rec          # implied_correct is the components' sum, recorded the total
+            if abs(resid - step) > 0.5:
+                problems.append(
+                    f"{where}: text says the total is low by exactly {step:,.0f} but the row's own "
+                    f"numbers give {resid:,.0f}")
+            if abs(step - 10 ** k) > 0.5:
+                problems.append(f"{where}: text says {step:,.0f} and 10^{k}, which disagree")
+        if str(r.get("item")).strip() != "use total":
+            problems.append(f"{where}: the TOTAL-side shape must name `use total` as the cell, "
+                            f"not {item!r}")
+        # Corroboration is what separates a rewrite from a review here: another row in the block
+        # already carrying the components' sum identifies the cell independently of the arithmetic.
+        if confirmed and action != "replace_value":
+            problems.append(f"{where}: corroborated by another row in the block, so it must be "
+                            f"action=replace_value, not {action!r}")
+        if not confirmed and action != "review":
+            problems.append(f"{where}: no corroborating row, so the cell is fixed by arithmetic "
+                            f"alone and must be action=review, not {action!r}")
         continue
 
     m = SUMS.match(diag)
