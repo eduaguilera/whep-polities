@@ -82,18 +82,60 @@ def norm(s) -> str:
 
 
 def raw_sets(raw_path):
+    """Fingerprint each raw (label, PRODUCT), not each raw label.
+
+    Indexing by label alone unions every product that label carries, and `french syria and lebanon`
+    carries 18. A layer-B `grapes` series could then be scored against values that belong to `wine`
+    or `olive: oil` -- the same class of error as matching a trade tonnage to a production tonnage,
+    which this method already had to correct for once. Per product removes it.
+
+    It also buys a free corroboration the label-level version could not have: the winning raw product
+    can be COMPARED to the layer-B item, and a match that respects commodity identity
+    (`cottonseed` -> cotton seed, `cacao: raw` -> cacao beans) is much harder to produce by chance
+    than one that only respects the numbers. The `product_agrees` column records it.
+
+    Raw product names do NOT resemble layer-B item names -- the raw vocabulary is `grapes: table`,
+    `citrus fruits: oranges, other`, `fertilizers: calcium cyanamide` -- so the comparison is on
+    shared word stems, and disagreement is reported rather than used to reject a match.
+    """
     import pandas as pd
     r = pd.read_excel(raw_path)
     r["c"] = r["country"].astype(str).str.strip().str.lower()
+    r["p"] = r["product"].astype(str).str.strip()
     r["v"] = pd.to_numeric(r["value"], errors="coerce")
     r["y"] = pd.to_numeric(r["year"], errors="coerce")
     r = r[r["variable"].isin(PRODUCTION)].dropna(subset=["v", "y"])
     out = {}
-    for c, g in r.groupby("c"):
+    for (c, prod), g in r.groupby(["c", "p"]):
         s = {(int(x.y), round(float(x.v), 1)) for x in g.itertuples()}
         if len(s) >= MIN_RAW_VALUES:
-            out[c] = s
+            out[(c, prod)] = s
     return out
+
+
+# Words that carry no commodity information, so their overlap must not count as agreement.
+_STOP = {"of", "and", "the", "other", "raw", "total", "true", "n", "e", "c", "in", "shell",
+         "unmanufactured", "green", "dry", "dried", "fibre", "fiber", "beans", "seed", "hen"}
+
+
+def product_agrees(item: str, product: str) -> str:
+    """Do the layer-B item and the winning raw product name a recognisably common commodity?
+
+    Reported, never used to filter: the vocabularies genuinely differ, so a disagreement is a
+    prompt to look rather than grounds to reject. `yes` where a non-stop word stem is shared.
+    """
+    a = {w for w in norm(item).split() if w not in _STOP and len(w) > 2}
+    b = {w for w in norm(product).split() if w not in _STOP and len(w) > 2}
+    if not a or not b:
+        return "unknown"
+    if a & b:
+        return "yes"
+    # stem-prefix match catches cottonseed/cotton, cacao/cacao
+    for x in a:
+        for y in b:
+            if x.startswith(y[:4]) or y.startswith(x[:4]):
+                return "yes"
+    return "no"
 
 
 def measure(panel_path, raw_path):
@@ -111,7 +153,8 @@ def measure(panel_path, raw_path):
             distinct = {v for _y, v in pairs}
             rec = {"layer_b_label": label, "item": item, "unit": unit,
                    "n_values": len(pairs), "n_distinct": len(distinct),
-                   "raw_label": "", "share": "", "status": "", "runner_up": ""}
+                   "raw_label": "", "raw_product": "", "product_agrees": "",
+                   "share": "", "status": "", "runner_up": ""}
             if len(pairs) < MIN_VALUES:
                 rec["status"] = "too_few_values"
             elif len(distinct) < MIN_DISTINCT:
@@ -119,23 +162,33 @@ def measure(panel_path, raw_path):
                 # round values collides with everything. Saying so is the point.
                 rec["status"] = "too_few_distinct"
             else:
-                ranked = sorted(((len(pairs & s) / len(pairs), c) for c, s in raw.items()),
-                                reverse=True)
-                over = [c for sh, c in ranked if sh >= SHARE_FLOOR]
-                if not over:
+                ranked = sorted(((len(pairs & s) / len(pairs), c, prod)
+                                 for (c, prod), s in raw.items()), reverse=True)
+                # Ambiguity is judged on the LABEL, not the (label, product) pair: two products of
+                # one raw label both clearing the floor is not a territorial ambiguity, which is the
+                # only kind this table is about.
+                over_labels = sorted({c for sh, c, _p in ranked if sh >= SHARE_FLOOR})
+                if not over_labels:
                     rec["status"] = "unattributable"
                     if ranked:
-                        rec["runner_up"] = f"{ranked[0][1]}={ranked[0][0]:.2f}"
-                elif len(over) > 1:
+                        rec["runner_up"] = f"{ranked[0][1]}/{ranked[0][2]}={ranked[0][0]:.2f}"
+                elif len(over_labels) > 1:
                     rec["status"] = "ambiguous"
-                    rec["runner_up"] = ";".join(f"{c}={sh:.2f}" for sh, c in ranked[:3]
-                                                if sh >= SHARE_FLOOR)
+                    seen, parts = set(), []
+                    for sh, c, prod in ranked:
+                        if sh >= SHARE_FLOOR and c not in seen:
+                            seen.add(c)
+                            parts.append(f"{c}/{prod}={sh:.2f}")
+                    rec["runner_up"] = ";".join(parts[:3])
                 else:
                     rec["status"] = "attributable"
                     rec["raw_label"] = ranked[0][1]
+                    rec["raw_product"] = ranked[0][2]
+                    rec["product_agrees"] = product_agrees(item, ranked[0][2])
                     rec["share"] = f"{ranked[0][0]:.4f}"
-                    if len(ranked) > 1:
-                        rec["runner_up"] = f"{ranked[1][1]}={ranked[1][0]:.2f}"
+                    nxt = next((r for r in ranked[1:] if r[1] != ranked[0][1]), None)
+                    if nxt:
+                        rec["runner_up"] = f"{nxt[1]}/{nxt[2]}={nxt[0]:.2f}"
             rows.append(rec)
 
     by_label = defaultdict(set)
@@ -181,8 +234,8 @@ def main() -> int:
             print(f"      {c[:42]:44} <- {'; '.join(sorted(items))[:90]}")
 
     if args.write:
-        cols = ["layer_b_label", "item", "unit", "n_values", "n_distinct", "raw_label", "share",
-                "status", "runner_up", "label_is_mixed"]
+        cols = ["layer_b_label", "item", "unit", "n_values", "n_distinct", "raw_label",
+                "raw_product", "product_agrees", "share", "status", "runner_up", "label_is_mixed"]
         fd, tmp = tempfile.mkstemp(dir=os.path.dirname(OUT), suffix=".tmp")
         os.close(fd)
         with open(tmp, "w", newline="", encoding="utf-8") as fh:
