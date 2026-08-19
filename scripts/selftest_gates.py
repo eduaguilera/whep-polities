@@ -1437,6 +1437,38 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_nesting_verdict_softened(root, gpd, make_valid, affinity):
+    """Downgrade the worst impossible-inclusion pair to `few_violations`, leaving its numbers alone.
+
+    `inclusion` is issue 273's whole finding, and it re-derives exactly from `cells_outer_lt_inner`
+    and `shared_cells` under the generator's thresholds (>=3 cells and >10%). Softening a verdict
+    without touching those numbers is what a hand edit or a partial merge looks like, and the shape
+    matters: 13 of the 20 impossible pairs contradict an already-BANKED verdict, so a verdict quietly
+    downgraded removes evidence AGAINST a recorded decision.
+
+    It trades the count back by promoting a `few_violations` row, so the bidirectional pin on 20 stays
+    satisfied and only the per-row re-derivation can see the swap. Same trick as the edition-conflict
+    and power-of-ten cases, for the same reason: a mutation that tripped the count would also pass
+    against a gate that only counted.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = max((r for r in rows if r["inclusion"] == "impossible_outer_excludes_inner"),
+                 key=lambda r: int(r["cells_outer_lt_inner"]))
+    donor = next(r for r in rows if r["inclusion"] == "few_violations")
+    victim["inclusion"] = "few_violations"
+    donor["inclusion"] = "impossible_outer_excludes_inner"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"downgraded {victim['outer_code']} <- {victim['inner_code']} "
+            f"({victim['cells_outer_lt_inner']} of {victim['shared_cells']} cells) from impossible to "
+            f"few_violations and promoted a lesser pair, so the pinned count of 20 still holds")
+
+
 def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
     """Lower a block's n_items while leaving the item list it describes intact.
 
@@ -3036,6 +3068,14 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_assertion_nesting_flags.py",
+        mutate_nesting_verdict_softened,
+        "give 'impossible_outer_excludes_inner'",
+        "issue 273's worst impossible-inclusion verdict quietly downgraded, its cell counts untouched "
+        "and a lesser pair promoted so the pinned count of 20 still holds — 13 of those 20 are "
+        "evidence against an already-banked verdict, so only the re-derivation can see it",
+    ),
+    (
         "validate_item_blocks.py",
         mutate_item_block_count_lowered,
         "no longer describes the row",
@@ -3640,6 +3680,10 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_isolated_spikes.py": (
         "pipelines/polity-autoimprove/state/isolated_spikes.csv",
+    ),
+    # The case swaps verdicts in assertion_nesting_flags.csv in place, so a real copy.
+    "validate_assertion_nesting_flags.py": (
+        "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv",
     ),
     # The case rewrites item_blocks.csv in place (it edits n_items), so a real copy.
     "validate_item_blocks.py": (
