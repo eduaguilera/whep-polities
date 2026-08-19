@@ -34,3 +34,20 @@ wiki/.obsidian/
 # Python bytecode
 __pycache__/
 *.py[cod]
+
+# ---------------------------------------------------------------------------
+# Source datasets kept LOCAL ONLY (2026-08-19, at the maintainer's request).
+#
+# These are third-party / to-be-published-separately inputs, not products of
+# this repository. They were tracked until now; untracked so they are not
+# redistributed from here.
+#
+# NOTHING IN CI READS THEM. `scripts/crosscheck_matchers.py` mentions
+# before_1961.csv only in a comment; its actual input is the committed
+# `pipelines/pre1961-matching/state/r_crosswalk.csv`. The two scripts that do
+# read these files -- pipelines/pre1961-matching/match.R (needs an R toolchain
+# CI does not have) and pipelines/polity-autoimprove/prepare_federico_tena.py --
+# are not invoked in the workflow. Regenerating either requires a local copy.
+data/external/before_1961.csv
+data/external/federico_tena_polities.xlsx
+data/external/federico_tena/
