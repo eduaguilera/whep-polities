@@ -1531,6 +1531,40 @@ def mutate_collapse_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_pow10_reclassed_as_revised(root, gpd, make_valid, affinity):
+    """Move a power-of-ten revision into `revised`, where nothing is expected to be repaired.
+
+    The three kinds are not interchangeable. `revised` is a source restating an estimate -- 959 cells,
+    median ratio 1.032 -- and its ceiling exists only to catch a volume being double-loaded.
+    `power_of_ten` is 99 cells differing by exactly ten, a hundred or a thousandfold, which no source
+    does when revising: they are dropped digits, and 98 of the 99 hold the smaller value in
+    iia_1933_34 against a 55% base rate.
+
+    The mutation trades one row each way so BOTH ceilings stay satisfied, exactly as a partially
+    regenerated table would. What it cannot preserve is the direction count, because the row it
+    removes from the class was one of the 98 -- so only check D's direction arm can see it. That arm
+    is the one carrying the actual evidence, and it is worth proving it bites.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/edition_conflicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows
+                  if r["kind"] == "power_of_ten"
+                  and (r["volume_a"] if float(r["value_a"]) < float(r["value_b"])
+                       else r["volume_b"]) == "iia_1933_34")
+    donor = next(r for r in rows if r["kind"] == "revised")
+    victim["kind"] = "revised"
+    donor["kind"] = "power_of_ten"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"reclassified the {victim['label']}/{victim['product']} {victim['year']} power-of-ten "
+            f"revision as an ordinary one, trading a revised row back so both ceilings stay "
+            f"satisfied and only the direction count moves")
+
+
 def mutate_edition_zero_reclassed(root, gpd, make_valid, affinity):
     """Move a contradicted zero into the `revised` class, where the ceiling treats it as normal.
 
@@ -2998,6 +3032,14 @@ CASES = (
         "the deepest collapse's factor rewritten to look ordinary while its two values stay put — "
         "row counts and all 117 identity pins unchanged, so only the check that recomputes the "
         "ratio from the numbers beside it can see the table has rotted",
+    ),
+    (
+        "validate_edition_conflicts.py",
+        mutate_pow10_reclassed_as_revised,
+        "THE DIRECTION IS THE EVIDENCE",
+        "a dropped-digit revision reclassified as an ordinary one, with a row traded back so both "
+        "ceilings still pass — only the direction count, which is what distinguishes a systematic "
+        "defect from normal revision, can see it",
     ),
     (
         "validate_edition_conflicts.py",

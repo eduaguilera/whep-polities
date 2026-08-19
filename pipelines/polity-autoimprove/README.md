@@ -378,7 +378,19 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        volume, so most of the 770 zeros cannot be tested — which is why they reach
                        layer B. Where a second opinion exists the pipeline prefers it (1933: 179
                        raw zeros -> 61 in layer B); where none exists they pass through (1935:
-                       148 -> 120). Issue 414. --write refreshes state/edition_conflicts.csv
+                       148 -> 120). 1,141 cells are carried by more than one volume and disagree, in THREE kinds:
+                       83 zero_contradicted (a zero against a real value, ALL in iia_1938_39);
+                       **99 power_of_ten** (differing by exactly 10x/100x/1000x — no source revises
+                       an estimate by a hundredfold, so these are dropped digits); 959 revised.
+                       THE DIRECTION IS THE EVIDENCE for the power-of-ten class: across all 1,032
+                       revisions between iia_1933_34 and iia_1938_39, the 1933-34 volume is the
+                       smaller side 55% of the time — a coin flip — but among the power-of-ten cases
+                       it is smaller 98 times of 99. The x100 cases are ENTIRELY tobacco (53) and
+                       hops (25), i.e. issue 416 from the volume side; the x10 cases span twelve
+                       products and 16 of them reach layer B with the wrong value (issue 424) —
+                       iia/japan/soybeans/ha 1933 reads 32,367 between 341,753 and 336,000, a 10.5x
+                       collapse that sits BELOW 27_series_collapses.py's 20x floor.
+                       Issue 414. --write refreshes state/edition_conflicts.csv
 27_series_collapses.py where does a series COLLAPSE — a year many times BELOW its neighbours, or
                        below its own start/end? 18_isolated_spikes.py is one-directional and skips
                        endpoints, and both left a hole: `iia nauru / p` runs 275,720/245,040/424,896

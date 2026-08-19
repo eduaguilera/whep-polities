@@ -67,8 +67,30 @@ MEASURED = {"production", "area"}
 # A relative gap this small is float noise from the extract's own round-trips.
 EPS = 1e-9
 
+# How close to a clean power of ten a ratio must sit to be called one. The same 5% window
+# 07_yield_consistency.py uses for the identical question about yields, so the two cannot disagree
+# about what "a dropped digit" means. NOT fitted: the observed x10 cases run 9.67 to 10.26 and the
+# x100 cases cluster tightly, while ordinary revisions have a median ratio of 1.032.
+POW10_WINDOW = 0.05
+
 FIELDS = ["label", "product", "variable", "unit", "year", "kind",
           "volume_a", "value_a", "volume_b", "value_b", "ratio"]
+
+
+def power_of_ten(ratio: float) -> int | None:
+    """The exponent if `ratio` is within POW10_WINDOW of 10, 100 or 1000, else None.
+
+    Exponent 0 is excluded on purpose: every ratio is "within 5% of 10**0" once it is close to 1,
+    and calling those power-of-ten cases would swallow the whole `revised` class.
+    """
+    import math
+
+    if ratio <= 0:
+        return None
+    p = round(math.log10(ratio))
+    if p == 0 or abs(p) > 3:
+        return None
+    return p if abs(ratio / (10.0 ** p) - 1.0) <= POW10_WINDOW else None
 
 
 def build(raw_path: str) -> tuple[list[dict], dict]:
@@ -99,10 +121,27 @@ def build(raw_path: str) -> tuple[list[dict], dict]:
                 xa, xb = float(xa), float(xb)
                 if abs(xa - xb) <= max(abs(xa), abs(xb)) * EPS:
                     continue
-                # A zero contradicted by a real value is a different animal from two volumes
-                # revising an estimate, and only the first can be called wrong from here.
+                # THREE KINDS, because the evidence each supports is different.
+                #
+                # `zero_contradicted` -- one volume prints a value and the other prints 0. Provably
+                # wrong whichever way, since a zero publishes as "produced none of this".
+                #
+                # `power_of_ten` -- the two differ by a clean factor of 10, 100 or 1000. A source
+                # does not revise an estimate by exactly a hundredfold; that is a dropped digit or a
+                # units column read as absolute. The DIRECTION is what makes this more than a
+                # pattern: across all 1,032 revisions between iia_1933_34 and iia_1938_39 the
+                # 1933-34 volume is the smaller side 55% of the time -- a coin flip -- but among the
+                # power-of-ten cases it is smaller 98 times out of 99. The x100 cases are ENTIRELY
+                # tobacco (52) and hops (13), which is issue 416 seen from the volume side; the x10
+                # cases span twelve products and are issue 424.
+                #
+                # `revised` -- everything else. A source restating an estimate is normal, and the
+                # ceiling on this class exists to catch a volume being double-loaded, not to convict
+                # a cell.
                 if xa == 0 or xb == 0:
                     kind = "zero_contradicted"
+                elif power_of_ten(max(abs(xa), abs(xb)) / min(abs(xa), abs(xb))):
+                    kind = "power_of_ten"
                 else:
                     kind = "revised"
                 hi, lo = max(abs(xa), abs(xb)), min(abs(xa), abs(xb))
@@ -155,9 +194,12 @@ def main() -> int:
     for vol in sorted(volumes):
         v = volumes[vol]
         print(f"  {vol:14} {v['rows']:>6} rows   zeros {v['zeros']:>4} = {v['zeros']/v['rows']:.2%}")
-    zc = [r for r in rows if r["kind"] == "zero_contradicted"]
+    kinds = {}
+    for r in rows:
+        kinds[r["kind"]] = kinds.get(r["kind"], 0) + 1
     print(f"\ncells carried by >1 volume that disagree: {len(rows)}")
-    print(f"  a zero contradicted by a real value:    {len(zc)}")
+    for k in sorted(kinds):
+        print(f"  {k:20} {kinds[k]}")
 
     if args.check:
         if not os.path.exists(OUT):
