@@ -1,0 +1,118 @@
+source,country,item,unit,indicator,position,year,value,neighbour_value,neighbour_year,factor,series_n
+iia,algeria,flax fibre and tow,tonnes,,interior_collapse,1919,0.1,100,1920,1000.0,5
+iia,algeria,grapes,ha,,interior_collapse,1933,4360,173545,1921,39.8,24
+iia,algeria,linseed,tonnes,,interior_collapse,1920,1.4,120,1921,85.7,18
+iia,algeria,wine,ha,,interior_collapse,1933,373,351952,1932,943.6,20
+iia,australia,flax fibre and tow,ha,,interior_collapse,1923,2,53,1924,26.5,18
+iia,australia,linseed,ha,,interior_collapse,1923,2,53,1924,26.5,6
+iia,canada,"eggs, hen, in shell",tonnes,,interior_collapse,1930,148.764,146659,1929,985.8,17
+iia,czech republic,rye,ha,,interior_collapse,1943,26000,861000,1942,33.1,24
+iia,egypt,"tangerines, mandarins, clementines, satsumas",tonnes,,interior_collapse,1939,2600,55100,1940,21.2,11
+iia,greece,grapes,tonnes,,interior_collapse,1937,3300,672500,1938,203.8,7
+iia,italy,sugar raw centrifugal,tonnes,,interior_collapse,1941,8000,372300,1942,46.5,33
+iia,japan,p,tonnes,,interior_collapse,1930,305,97340,1920,319.1,16
+iia,japan,p,tonnes,,interior_collapse,1932,23804,862401,1931,36.2,16
+iia,libya,wine,ha,,interior_collapse,1933,12,1000,1934,83.3,6
+iia,lithuania,sugar raw centrifugal,tonnes,,interior_collapse,1933,8.1,13700,1934,1691.4,9
+iia,morocco,wine,ha,,interior_collapse,1933,113,8600,1932,76.1,12
+iia,panama,"cacao, beans",tonnes,,interior_collapse,1917,4.5,116.8,1918,26.0,23
+iia,russian federation,flax fibre and tow,ha,,interior_collapse,1918,20,730438,1920,36521.9,26
+iia,russian federation,flax fibre and tow,tonnes,,interior_collapse,1918,10.6,319250,1922,30117.9,20
+iia,russian federation,hemp tow waste,ha,,interior_collapse,1918,5,536848,1917,107369.6,12
+iia,russian federation,rapeseed,ha,,interior_collapse,1914,48,34910,1915,727.3,12
+iia,russian federation,rapeseed,tonnes,,interior_collapse,1914,52.3,41229.5,1915,788.3,9
+iia,russian federation,rye,ha,,interior_collapse,1918,7,9.99363e+06,1917,1427660.9,31
+iia,russian federation,rye,tonnes,,interior_collapse,1918,12.6,1.61999e+07,1917,1285709.9,28
+iia,russian federation,rye,tonnes,,interior_collapse,1931,21990,2.202e+07,1932,1001.4,28
+iia,serbia,rye,ha,,interior_collapse,1943,26000,861000,1942,33.1,22
+iia,syrian arab republic,olives,tonnes,,interior_collapse,1941,1700,35000,1940,20.6,18
+iia,tunisia,wine,ha,,interior_collapse,1933,440,44000,1932,100.0,20
+iia,united states of america,"coffee, green",ha,,interior_collapse,1924,2428,64904,1923,26.7,28
+iia,united states of america,"coffee, green",tonnes,,interior_collapse,1933,50.8,4966,1932,97.8,29
+juan,argentina,grapes,tonnes,,interior_collapse,1932,15875,1.196e+06,1929,75.3,44
+juan,brazil,figs,tonnes,,interior_collapse,1959,0.5,10000,1958,20000.0,9
+juan,bulgaria,flax fibre and tow,ha,,interior_collapse,1899,48.9662,1500,1903,30.6,47
+juan,bulgaria,linseed,ha,,interior_collapse,1899,48.9662,1500,1903,30.6,47
+juan,bulgaria,linseed,tonnes,,interior_collapse,1899,14.2248,871.774,1898,61.3,47
+juan,bulgaria,rapeseed,ha,,interior_collapse,1915,300,6200,1914,20.7,42
+juan,denmark,rapeseed,tonnes,,interior_collapse,1921,7.11238,829.1,1920,116.6,16
+juan,mexico,sugar cane,ha,,interior_collapse,1899,681,24574,1898,36.1,53
+juan,mexico,sugar cane,tonnes,,interior_collapse,1899,27583.6,1.24813e+06,1900,45.2,53
+juan,panama,swine / pigs,heads,,interior_collapse,1921,1095,30000,1916,27.4,18
+juan,spain,canary seed,tonnes,,interior_collapse,1901,2.033,684.266,1902,336.6,98
+juan,spain,"grain, mixed",tonnes,,interior_collapse,1907,766.9,29285,1905,38.2,54
+juan,spain,linseed,tonnes,,interior_collapse,1924,43,1140,1925,26.5,98
+juan,switzerland,plums and sloes,tonnes,,interior_collapse,1887,160,7438,1886,46.5,111
+juan,switzerland,"walnuts, with shell",tonnes,,interior_collapse,1887,98,2221,1886,22.7,111
+mitchell,cameroon,"coffee, green",tonnes,page_11_table_1,interior_collapse,1941,100,4200,1940,42.0,27
+mitchell,"china, mainland","groundnuts, with shell",tonnes,page_7_table_1,interior_collapse,1930,2000,621000,1924,310.5,10
+mitchell,"china, mainland",oats,ha,page_35_table_1,interior_collapse,1952,4000,959000,1951,239.8,13
+mitchell,india,asses,heads,page_36_table_1,interior_collapse,1908,3000,1.231e+06,1905,410.3,30
+mitchell,india,swine / pigs,heads,page_43_table_1,interior_collapse,1947,3000,3.653e+06,1948,1217.7,8
+mitchell,india,"tobacco, unmanufactured",tonnes,page_10_table_1,interior_collapse,1946,4000,246000,1947,61.5,20
+mitchell,korea,barley,ha,page_41_table_1,interior_collapse,1944,18000,712000,1945,39.6,17
+mitchell,nigeria,cattle,heads,page_8_table_1,interior_collapse,1950,13000,3.216e+06,1956,247.4,24
+mitchell,nigeria,goats,heads,page_8_table_1,interior_collapse,1950,13000,6.22e+06,1949,478.5,24
+mitchell,nigeria,sheep,heads,page_8_table_1,interior_collapse,1950,13000,2.43e+06,1948,186.9,23
+fao1952,Canada,horses mules asses,1000 heads,livestock:livestock,leading_collapse,1931,6,2776,1939,462.7,5
+fao1952,United Kingdom,horses mules asses,1000 heads,livestock:livestock,leading_collapse,1938,7,1084,1939,154.9,5
+iia,chile,flax fibre and tow,tonnes,,leading_collapse,1910,2.4,57.5,1911,24.0,5
+iia,czech republic,hemp tow waste,ha,,leading_collapse,1919,477,9934,1920,20.8,10
+iia,czech republic,rye,ha,,leading_collapse,1910,3,732970,1919,244323.3,24
+iia,czech republic,yarn of true hemp,tonnes,,leading_collapse,1919,326.5,8489.1,1920,26.0,15
+iia,dr congo,cotton seed,ha,,leading_collapse,1922,5,7500,1923,1500.0,19
+iia,ivory coast,"cacao, beans",ha,,leading_collapse,1922,1000,50000,1930,50.0,14
+iia,morocco,p,tonnes,,leading_collapse,1921,8232,1.85e+06,1930,224.7,5
+iia,mozambique,cotton lint,ha,,leading_collapse,1922,53,11809,1923,222.8,11
+iia,mozambique,cotton seed,ha,,leading_collapse,1922,53,11809,1923,222.8,6
+iia,syrian arab republic,cotton lint,ha,,leading_collapse,1922,1320,28650,1924,21.7,19
+iia,syrian arab republic,cotton seed,ha,,leading_collapse,1922,1320,28650,1924,21.7,19
+iia,zambia,cotton lint,ha,,leading_collapse,1922,3,943,1923,314.3,6
+iia,zambia,cotton lint,tonnes,,leading_collapse,1922,0.1,86.1,1923,861.0,6
+iia,zambia,cotton seed,ha,,leading_collapse,1922,3,943,1923,314.3,6
+iia,zambia,cotton seed,tonnes,,leading_collapse,1922,0.2,201,1923,1005.0,6
+iia,zambia,"tobacco, unmanufactured",ha,,leading_collapse,1922,29,1401,1923,48.3,11
+iia,zambia,"tobacco, unmanufactured",tonnes,,leading_collapse,1922,8.6,517,1923,60.1,17
+iia,zimbabwe,cotton lint,ha,,leading_collapse,1922,8,1597,1923,199.6,16
+iia,zimbabwe,cotton lint,tonnes,,leading_collapse,1922,0.4,230,1923,575.0,14
+iia,zimbabwe,cotton seed,ha,,leading_collapse,1922,8,1597,1923,199.6,16
+iia,zimbabwe,cotton seed,tonnes,,leading_collapse,1922,1,537,1923,537.0,16
+juan,argentina,artichokes,tonnes,,leading_collapse,1937,58,18360,1945,316.6,8
+juan,argentina,barley,ha,,leading_collapse,1872,1713.08,49000,1900,28.6,62
+juan,argentina,fibre crops nes,tonnes,,leading_collapse,1937,2832,200000,1944,70.6,9
+juan,argentina,garlic,tonnes,,leading_collapse,1937,224.43,7800,1942,34.8,11
+juan,argentina,soybeans,ha,,leading_collapse,1937,2,1315,1942,657.5,19
+juan,argentina,sugar cane,ha,,leading_collapse,1872,2452,50000,1901,20.4,60
+juan,argentina,tea,ha,,leading_collapse,1937,1.3,631,1946,485.4,12
+juan,bulgaria,linseed,tonnes,,leading_collapse,1897,19.305,871.774,1898,45.2,47
+juan,canada,goats,heads,,leading_collapse,1918,367,9364,1924,25.5,9
+juan,colombia,"coffee, green",ha,,leading_collapse,1916,4620.5,200000,1925,43.3,16
+juan,czechoslovakia,hemp tow waste,tonnes,,leading_collapse,1919,320,8480,1920,26.5,33
+juan,czechoslovakia,maize,tonnes,,leading_collapse,1919,11380,245062,1920,21.5,42
+juan,czechoslovakia,sunflower seed,ha,,leading_collapse,1919,651.13,26000,1934,39.9,10
+juan,el salvador,asses,heads,,leading_collapse,1930,2196,114200,1939,52.0,14
+juan,germany,mules and hinnies,heads,,leading_collapse,1912,1000,27000,1921,27.0,14
+juan,haiti,maize,ha,,leading_collapse,1930,2630,120000,1948,45.6,4
+juan,mexico,"oil, cottonseed",tonnes,,leading_collapse,1907,101.378,86000,1925,848.3,36
+juan,peru,chick peas,tonnes,,leading_collapse,1948,1000,21000,1951,21.0,9
+juan,switzerland,apples,tonnes,,leading_collapse,1850,1363,30201,1851,22.2,111
+juan,switzerland,rapeseed,tonnes,,leading_collapse,1909,10,1400,1942,140.0,18
+juan,united states of america,soybeans,ha,,leading_collapse,1909,1000,62320.7,1917,62.3,43
+mitchell,india,asses,heads,page_43_table_1,leading_collapse,1947,3000,1.13e+06,1948,376.7,7
+mitchell,india,buffalo,heads,page_43_table_1,leading_collapse,1947,3000,3.9553e+07,1948,13184.3,7
+mitchell,india,camels,heads,page_43_table_1,leading_collapse,1947,3000,643000,1948,214.3,6
+mitchell,india,cattle,heads,page_43_table_1,leading_collapse,1947,3000,1.33544e+08,1948,44514.7,7
+mitchell,india,goats,heads,page_43_table_1,leading_collapse,1947,3000,4.4271e+07,1948,14757.0,7
+mitchell,india,horses,heads,page_43_table_1,leading_collapse,1947,3000,1.397e+06,1948,465.7,7
+mitchell,india,sheep,heads,page_43_table_1,leading_collapse,1947,3000,3.5816e+07,1948,11938.7,7
+mitchell,natal,"tobacco, unmanufactured",tonnes,copia de page_5_table_2,leading_collapse,1861,0.3,6.2,1862,20.7,37
+iia,hungary,"silk-worm cocoons, reelable",tonnes,,terminal_collapse,1945,4,236,1944,59.0,21
+iia,hungary,sugar raw centrifugal,tonnes,,terminal_collapse,1945,6500,176400,1944,27.1,29
+iia,iran,castor beans seed,tonnes,,terminal_collapse,1944,100,2600,1941,26.0,4
+iia,israel,oranges,tonnes,,terminal_collapse,1939,1300,317000,1937,243.8,9
+iia,mauritius,"coffee, green",tonnes,,terminal_collapse,1915,0.1,3.6,1914,36.0,6
+iia,nauru,p,tonnes,,terminal_collapse,1933,97,424896,1932,4380.4,15
+iia,norway,no3,tonnes,,terminal_collapse,1921,130,148000,1920,1138.5,13
+juan,hungary,castor beans seed,tonnes,,terminal_collapse,1945,200,6000,1943,30.0,4
+mitchell,"china, mainland",millet,ha,page_35_table_1,terminal_collapse,1952,4000,6.524e+06,1951,1631.0,6
+mitchell,tanzania,"cassava, fresh",ha,page_11_table_1,terminal_collapse,1960,7000,487000,1953,69.6,8
