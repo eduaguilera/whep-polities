@@ -894,6 +894,92 @@ def check_exclusive_reporting(d):
     return ok, "; ".join(bits)
 
 
+def check_iia_volume_grid(d):
+    """The claim: the last two IIA volumes report on a 100-unit grid; the earlier four resolve finer.
+
+    This is a PRECISION convention, not a magnitude one, and it exists because its absence made a
+    different diagnosis wrong. Issue 366 argued that constant runs (`india / sesame seed / ha` reading
+    exactly 1,000 for 1934-1945) could not be a reporting-resolution limit, because the same series
+    resolves finer elsewhere. Measured, the finer evidence sits ENTIRELY OUTSIDE the run in 169 of 170
+    cases and INSIDE it in none -- so "resolves finer" was always a comparison against a different
+    era, which is what a change of grid looks like rather than evidence against one.
+
+    BOTH HALVES ARE TESTED, for the same reason check_iia_tobacco_era tests both: a coarse late era is
+    only meaningful against a fine early one. If every volume were coarse this would be a property of
+    the publisher and no boundary would exist to record.
+
+    THE COUNTER-TEST that keeps this separate from issue 414: `iia_1939_45` shares the coarse grid but
+    NOT the false-zero rate (0.39% against `iia_1938_39`'s 6.45%). Two different boundaries live in
+    these volumes -- zeros break at the 1933/34 handover and precision at 1938/39 -- and merging them
+    would send one remedy in the wrong direction. Asserted here so a future rewrite cannot quietly
+    collapse the two.
+    """
+    import os
+    import pandas as pd
+
+    raw = os.path.expanduser(os.environ.get(
+        "WHEP_IIA_RAW",
+        "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"))
+    if not os.path.exists(raw):
+        return False, f"raw IIA extract absent ({raw}); the discriminating test cannot run"
+    r = pd.read_excel(raw)
+    pa = r[r["variable"].astype(str).str.strip().str.lower().isin(("production", "area"))].copy()
+    pa = pa[pa["value"].notna()]
+    if pa.empty:
+        return False, "no production/area rows in the raw extract"
+
+    LATE = ("iia_1938_39", "iia_1939_45")
+    COARSE_MIN, FINE_MAX = 0.80, 0.40      # measured 0.889/0.953 late, 0.108-0.273 early
+
+    def on_100_grid(v):
+        v = float(v)
+        return v == int(v) and int(v) % 100 == 0
+
+    prof = {}
+    for yb, g in pa.groupby(pa["yearbook"].astype(str)):
+        zero = float((g["value"] == 0).mean())
+        # ZEROS ARE EXCLUDED from the grid share, and the exclusion is the point: 0 satisfies every
+        # grid, so counting it makes a volume look coarse in proportion to how many zeros it has.
+        # With zeros in, iia_1938_39 reads 95.4% rather than 88.9% -- the 6.45% gap is exactly its
+        # false-zero rate (issue 414), so the unfiltered number silently imports the OTHER defect
+        # into a precision measurement and the two boundaries this check keeps apart get mixed.
+        nz = g[g["value"] != 0]
+        share = (sum(1 for v in nz["value"] if on_100_grid(v)) / len(nz)) if len(nz) else 0.0
+        prof[yb] = (share, zero, len(nz))
+
+    late = {k: v for k, v in prof.items() if k in LATE}
+    early = {k: v for k, v in prof.items() if k not in LATE}
+    if len(late) != 2 or not early:
+        return False, (f"expected both late volumes and at least one early one, saw "
+                       f"{sorted(prof)}")
+
+    bad = [f"{k} {v[0]:.1%}" for k, v in late.items() if v[0] < COARSE_MIN]
+    if bad:
+        return False, (f"a late volume is no longer coarse ({'; '.join(bad)}), below "
+                       f"{COARSE_MIN:.0%} -- the convention rests on this and issue 366's constant "
+                       f"runs are explained by it")
+    bad = [f"{k} {v[0]:.1%}" for k, v in early.items() if v[0] > FINE_MAX]
+    if bad:
+        return False, (f"an early volume is now coarse too ({'; '.join(bad)}), above "
+                       f"{FINE_MAX:.0%} -- with no fine era there is no boundary to record and the "
+                       f"grid is a property of the publisher, not of these two volumes")
+
+    # The counter-test: precision and zeros must remain SEPARATE boundaries (issues 414, 433).
+    z_late = prof["iia_1939_45"][1]
+    z_worst_other = max(v[1] for k, v in prof.items() if k != "iia_1938_39")
+    if prof["iia_1938_39"][1] < 4 * z_worst_other:
+        return False, (f"iia_1938_39's zero rate {prof['iia_1938_39'][1]:.2%} is no longer an outlier "
+                       f"against {z_worst_other:.2%} elsewhere -- issue 414 was confined to that "
+                       f"volume and this check asserts the two boundaries stay distinct")
+
+    lo = min(v[0] for v in late.values())
+    hi = max(v[0] for v in early.values())
+    return True, (f"100-grid share: late {'/'.join(f'{prof[k][0]:.1%}' for k in LATE)} "
+                  f"(floor {COARSE_MIN:.0%}), early max {hi:.1%} (ceiling {FINE_MAX:.0%}); "
+                  f"iia_1939_45 zero rate {z_late:.2%} vs iia_1938_39 "
+                  f"{prof['iia_1938_39'][1]:.2%} -- precision and zero boundaries still distinct")
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -927,7 +1013,12 @@ CHECKS = {
     ("iia", "*", "p"): check_iia_npk,
     ("iia", "*", "n"): check_iia_npk,
     ("iia", "*", "k"): check_iia_npk,
+    # Volume-wide and item-agnostic, so it takes the ("iia", "*", "*") key -- verified free
+    # before binding: a dict literal lets a later entry win, which silently replaced one
+    # check with another when I reused ("iia", "*", "n").
+    ("iia", "*", "*"): check_iia_volume_grid,
 }
+
 
 
 def registry_keys(path=CONVENTIONS):
