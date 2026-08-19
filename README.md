@@ -140,6 +140,7 @@ python3 scripts/validate_source_splices.py         # a series spliced across sou
 python3 scripts/validate_constant_runs.py           # a value repeated for years must not outlive the resolution that refutes it
 python3 scripts/validate_isolated_spikes.py         # no single year may read many times its own neighbours
 python3 scripts/validate_same_polity_overlaps.py   # two labels of one source may not collide on one polity's cells
+python3 scripts/validate_edition_conflicts.py      # one yearbook volume may not contradict another about a cell
 python3 scripts/validate_item_provenance.py         # no iia label may mix territories across its item series unrecorded
 python3 scripts/validate_item_product_switches.py   # an item series must not switch raw product back and forth
 python3 scripts/validate_item_equivalences.py       # every item/product mapping must be adjudicated

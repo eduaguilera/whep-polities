@@ -1437,6 +1437,40 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_edition_zero_reclassed(root, gpd, make_valid, affinity):
+    """Move a contradicted zero into the `revised` class, where the ceiling treats it as normal.
+
+    The two classes are not interchangeable. `revised` is the source doing its job -- 1,058 cells
+    where a later volume restates an earlier estimate, median 1.032x -- and a ceiling on it exists
+    only to catch a volume being double-loaded. `zero_contradicted` is 83 cells that are PROVABLY
+    WRONG: one volume prints a value and another prints 0 for the same territory, commodity, unit
+    and year, and a zero publishes as "produced none of this".
+
+    Reclassifying one hides it in the class nobody is expected to repair, and it dodges the other
+    signals by construction: both counts stay within their ceilings because one goes down as the
+    other goes up, the volume-asymmetry arm only inspects rows already labelled zero_contradicted,
+    and the ratio is untouched. Only check C's "a revised row must not carry a zero" can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/edition_conflicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["kind"] == "zero_contradicted")
+    # Keep the counts inside both ceilings by trading one row the other way.
+    donor = next(r for r in rows if r["kind"] == "revised")
+    victim["kind"] = "revised"
+    donor["kind"] = "zero_contradicted"
+    donor["value_a"] = "0"
+    donor["ratio"] = "inf"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"reclassified the {victim['label']}/{victim['product']} {victim['year']} contradicted "
+            f"zero as an ordinary revision, trading a revised row the other way so both ceilings "
+            f"stay satisfied")
+
+
 def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
     """Point an overlap row at a polity code that does not exist.
 
@@ -2848,6 +2882,14 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_edition_conflicts.py",
+        mutate_edition_zero_reclassed,
+        "is classed revised but carries a zero",
+        "a provably-wrong cell — 0 in one yearbook volume, a real value in another — reclassified "
+        "as an ordinary revision, with a revised row traded the other way so both ceilings still "
+        "pass and only the class-shape check can see it",
+    ),
+    (
         "validate_same_polity_overlaps.py",
         mutate_overlap_code_not_a_polity,
         "is not a polity in",
@@ -3404,6 +3446,10 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_isolated_spikes.py": (
         "pipelines/polity-autoimprove/state/isolated_spikes.csv",
+    ),
+    # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
+    "validate_edition_conflicts.py": (
+        "pipelines/polity-autoimprove/state/edition_conflicts.csv",
     ),
     # The case rewrites same_polity_overlaps.csv in place (it shrinks a cell count), so a real copy
     # rather than a symlink into the tracked table.
