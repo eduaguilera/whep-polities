@@ -1,0 +1,7 @@
+source,item,unit,label_a,label_b,shared_years,block_years,block_first,block_last,block_distinct,outside_ratio_median,block_spread,smaller_label,block_matches_level_of
+juan,potatoes,ha,luxembourg,malta,49,8,1914,1921,7,4.5,1.2417,luxembourg,luxembourg
+juan,flax fibre and tow,ha,czechoslovakia,sweden,35,7,1939,1945,7,10.85,2.4737,czechoslovakia,czechoslovakia
+juan,hempseed,ha,argentina,chile,11,7,1940,1946,4,0.0067,4,chile,chile
+juan,linseed,ha,czechoslovakia,sweden,35,7,1939,1945,7,10.85,2.4737,czechoslovakia,czechoslovakia
+iia,rye,ha,czech republic,serbia,22,4,1941,1944,4,4.2402,35.1923,czech republic,
+juan,barley,tonnes,finland,france,83,4,1942,1945,4,0.1168,1.2121,france,france

@@ -481,6 +481,14 @@ jobs:
       - name: Sources — post-1933 tobacco/hops verdicts must match their own numbers
         if: '!cancelled()'
         run: python3 scripts/validate_era_shift_verdicts.py
+
+      # Two labels of one source, byte-identical across a CONTIGUOUS block of years and plainly
+      # different outside it: one series was copied into the other for a stretch. 89 pairs show the
+      # shape; 6 survive a 4-distinct-value floor, and every block is a war window. The floor is the
+      # whole screen — without it `estonia`/`iceland` goats qualify.
+      - name: Sources — recorded cross-label duplications must still clear their own conditions
+        if: '!cancelled()'
+        run: python3 scripts/validate_cross_label_duplication.py
       # The consumer collapses duplicate keys with mean(value) over (year, area, item..., unit) — no
       # label and no source in the key — so the step above, which groups by source and reports label
       # PAIRS, cannot see two whole classes: duplicates under a single label (`germany` supplies TEN
