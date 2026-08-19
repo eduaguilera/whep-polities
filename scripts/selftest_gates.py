@@ -1543,6 +1543,56 @@ def mutate_outlier_ratio_rewritten(root, gpd, make_valid, affinity):
             f"ordering contract still holds")
 
 
+
+def mutate_triage_span_outside_candidate(root, gpd, make_valid, affinity):
+    """Reroute one queue row to a LIVE polity whose lifetime its own span misses entirely.
+
+    Arm G exists because two rules in the pipeline disagree: `matchlib.eff_year` dates a
+    period-average row to the period's END year, while `01_match_and_findings.py:110-130` picks that
+    row's polity by maximum COVERAGE of the period. Where a period straddles a boundary the row ends
+    up dated outside the lifetime of the polity it is routed to -- 7 assertions and 337 rows on a
+    freshly generated set (issue 310).
+
+    The target polity is chosen LIVE and by measurement, which is what keeps the other arms quiet: a
+    made-up code would trip arm F (orphaned candidate) and prove nothing about G. The row is also
+    chosen with a three-part key, so changing `candidate` cannot disturb arm A -- only a
+    disambiguated key carries the candidate in it. `key` and `inclusion_impossible` are untouched, so
+    arms B and E stay silent too.
+
+    Verified: this mutation produces exactly ONE failure, from G.
+    """
+    import csv as _csv
+    pol = os.path.join(root, "data/final/polities_database.csv")
+    with open(pol, newline="", encoding="utf-8") as fh:
+        spans = {r["polity_code"]: (r["start_year"], r["end_year"]) for r in _csv.DictReader(fh)}
+    spans = {k: (int(a), int(b)) for k, (a, b) in spans.items()
+             if str(a).isdigit() and str(b).isdigit()}
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/assertion_triage.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = target = None
+    for r in rows:
+        if r["key"].count("|") != 2:
+            continue
+        y0, y1 = (int(v) for v in r["years_observed"].split("-"))
+        for code, (s, e) in sorted(spans.items()):
+            if e < y0 or s > y1:
+                victim, target = r, code
+                break
+        if victim:
+            break
+    was = victim["candidate"]
+    victim["candidate"] = target
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"rerouted {victim['key']} from {was} to {target}, a LIVE polity whose lifetime "
+            f"{spans[target][0]}-{spans[target][1]} its own observed span "
+            f"{victim['years_observed']} misses entirely")
+
+
 def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
     """Lower a block's n_items while leaving the item list it describes intact.
 
@@ -3147,6 +3197,14 @@ CASES = (
         "does not match its own values",
         "a recorded spike's factor column rewritten to look ordinary while its three values stay "
         "put, so the one number every judgement here rests on contradicts the row it describes",
+    ),
+    (
+        "validate_assertion_triage.py",
+        mutate_triage_span_outside_candidate,
+        "lies entirely outside",
+        "a queue row rerouted to a LIVE polity whose lifetime its own observed span misses entirely -- "
+        "the shape issue 310's period-dating rule produces, where a row is dated by its period's END "
+        "year but routed by which polity covers MOST of that period",
     ),
     (
         "validate_assertion_triage.py",
