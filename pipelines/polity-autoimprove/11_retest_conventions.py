@@ -578,111 +578,125 @@ def check_iia_australia_phosphate(d):
     )
 
 
-# The six labels whose meslin/spelt ratio inverts in iia_1938_39, measured 2026-08-19. An IDENTITY
-# pin rather than a count: a count of six would pass if one label dropped out and another dropped in.
-# `spain` and `turkey` qualify and do not invert, and are excluded on the record rather than silently
-# -- in both the ratio sits near 1, so which side of 1 it falls on carries no information.
-EXPECTED_SWAP_LABELS = frozenset({
-    "austria", "belgium", "bulgaria", "germany", "switzerland", "yugoslavia",
-})
+# Commodity pairs transposed in the iia_1938_39 volume, with the labels where the swap is DEMONSTRATED
+# by a mutual value crossover. Measured 2026-08-19; identity pins, not counts, so one label dropping
+# out while another drops in cannot pass.
+#
+# WHY THE TEST CHANGED. The first version asked whether a label's meslin/spelt RATIO sat on the
+# opposite side of 1 in this volume from all its others. That works where the two products differ by a
+# lot and fails where they do not: it reported `spain` as NOT swapped because its ratio hovers near 1
+# (1.00 / 0.83 / 0.95), and `spain` IS swapped -- meslin 46,980 <-> 30,000 alongside spelt
+# 29,935 <-> 47,000. A ratio test cannot see a swap between near-equal values; a crossover test can,
+# because it checks that each volume's figure for one product equals the OTHER volume's figure for the
+# other product. That is a much narrower coincidence to survive.
+SWAPPED_PAIRS = {
+    ("meslin", "spelt"): frozenset({
+        "belgium", "bulgaria", "czechoslovakia", "germany", "spain", "yugoslavia",
+    }),
+    # Norway is the anchor here and it is a documentary one, not a magnitude one: Norway was the home
+    # of the Birkeland-Eyde process, so calcium NITRATE ("Norwegian saltpetre") at ~163,500 t against
+    # ~23,300 t of cyanamide is the expected order, and iia_1938_39 prints 120,400 cyanamide against
+    # 34,650 nitrate.
+    ("fertilizers: calcium cyanamide", "fertilizers: calcium nitrate"): frozenset({
+        "czechoslovakia", "italy", "norway", "poland",
+    }),
+}
+
+# A crossover must hold this closely. 1% rather than exact because the later volume ROUNDS -- bulgaria
+# meslin is 115,096.1 against 115,100 -- so requiring equality would reject every real case.
+SWAP_TOL = 0.01
+
+# Labels where the swap is visible in the RATIO across all years but NOT as an exact 1933 crossover,
+# each for a reason that is itself documented rather than mysterious:
+#
+#   austria      iia_1938_39 prints meslin = 0.0 for 1933, a false zero of issue 414's class, so the
+#                crossover cannot complete -- although the surviving half matches to 0.15%
+#                (1933_34 meslin production 11,582.5 against 1938_39 spelt 11,600)
+#   switzerland  the later volume both rounds and revises (1933_34 spelt 31,365.4 against 1938_39
+#                meslin 28,600), so the crossover misses a 1% tolerance while the ratio inverts
+#                cleanly, 0.43 -> 1.70
+#
+# Kept as a SEPARATE pin from the crossover set. Merging them would let a label move between the two
+# kinds of evidence without anything noticing, and the two are not equally strong.
+RATIO_ONLY_SWAP_LABELS = frozenset({"austria", "switzerland"})
 
 
-def check_iia_meslin_spelt_swap(d):
-    """The claim: the iia_1938_39 volume has MESLIN and SPELT transposed, for every label.
+def _swapped_labels(raw_path, prod_a, prod_b):
+    """Labels where volume X's `prod_a` equals volume Y's `prod_b` and vice versa, at the same year.
 
-    THE TEST IS SELF-CONTROLLED, and it has to be. "Meslin should exceed spelt" is false as a general
-    rule -- Belgium and Switzerland genuinely grew more spelt (epeautre) than meslin -- so a
-    which-is-bigger test would convict the wrong volumes. The question asked instead is whether a
-    volume disagrees with ITS OWN LABEL'S other volumes, which needs no view about any country's
-    agriculture:
-
-        austria       32.5 -> 247.6 -> 725.3 -> 0.00                 inverted in 1938_39
-        bulgaria      15.7 ->  14.0 ->   9.5 -> 0.09 -> 5.1          inverted in 1938_39
-        germany        4.5 ->   4.3 ->  0.12                         inverted in 1938_39
-        yugoslavia     3.8 ->   3.8 ->  0.22                         inverted in 1938_39
-        belgium       0.28 ->  0.28 ->  0.18 -> 4.82 -> 0.47         inverted in 1938_39
-        switzerland   0.37 ->  0.37 ->  0.43 -> 1.70 -> 0.58         inverted in 1938_39
-
-    Belgium and Switzerland are what make it conclusive rather than suggestive: their normal order is
-    spelt above meslin, and 1938_39 flips them the OTHER way.
-
-    SIX OF EIGHT, NOT SIX OF SIX -- I claimed the latter from a hand scan and the check corrected me.
-    Two labels qualify (both products in 1938_39 and elsewhere) and do not invert, and in both the
-    test is simply uninformative rather than contradictory: `spain` runs 1.00 / 0.83 / 0.95 / 0.24, so
-    meslin and spelt are near-equal and which side of 1 a ratio falls on is noise; `turkey` has the
-    two products in only 1938_39 (1.11) and 1939_45 (2.07), both within spitting distance of each
-    other. Neither is evidence against the swap; both are labels the side-of-1 test cannot speak to.
-
-    So the assertion is an IDENTITY PIN on the six, not a threshold on a count. A count would let a
-    label drop out while another dropped in and report PASS.
-
-    The 1933 overlap confirms it cell-for-cell, since both volumes cover that year: bulgaria meslin
-    115,096.1 against 11,900 and spelt 11,889.9 against 115,100 -- mutual and near-exact, the same
-    signature as the Nauru/Australia phosphate transposition in issue 418.
-
-    NO MEASURED EFFECT ON PUBLISHED FIGURES, which is why this is a convention and not a data error.
-    Layer-B `wheat` is drawn from raw spelt and meslin (issue 375: 28 cells matched at the same label,
-    year, variable and a non-round value), but ZERO of those 28 come from iia_1938_39 -- 8 from
-    iia_1925_26, 19 from iia_1933_34, 1 from iia_1939_45. Layer B carries no meslin, spelt or wheat
-    item for Bulgaria at all.
-
-    Needs the raw extract, which is outside the repo. Absent, it reports unavailable rather than
-    passing: a re-test that succeeds because its input vanished is worth less than none (issue 387).
+    Returns the set of labels showing the crossover between iia_1933_34 and iia_1938_39, which is the
+    only volume pair with an overlapping year (1933) and therefore the only one where the test can run.
     """
-    import os
-    import statistics as st
-
     import pandas as pd
 
-    raw = os.path.expanduser(os.environ.get(
-        "WHEP_IIA_RAW",
-        "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"))
-    if not os.path.exists(raw):
-        return False, f"raw IIA extract absent ({raw}); the discriminating test cannot run"
-    r = pd.read_excel(raw)
+    r = pd.read_excel(raw_path)
     r["cl"] = r["country"].astype(str).str.strip().str.lower()
     r["pl"] = r["product"].astype(str).str.strip()
     r["vl"] = r["variable"].astype(str).str.strip().str.lower()
     r["y"] = pd.to_numeric(r["year"], errors="coerce")
-    s = r[(r.pl.isin(["meslin", "spelt"])) & (r.vl == "production")
-          & r.y.notna() & r["value"].notna()]
-    ratios = {}
-    for (lab, vol), g in s.groupby(["cl", "yearbook"]):
-        m, sp = g[g.pl == "meslin"]["value"], g[g.pl == "spelt"]["value"]
-        if len(m) < 2 or len(sp) < 2:
+    r = r[r.y.notna() & r["value"].notna() & r.vl.isin({"production", "area"})]
+
+    def close(x, y):
+        if x == 0 or y == 0:
+            return x == y
+        return abs(x / y - 1.0) <= SWAP_TOL
+
+    out = set()
+    for (lab, var, unit, yr), g in r.groupby(["cl", "vl", "unit", "y"]):
+        cells = {}
+        for t in g.itertuples():
+            if t.pl.startswith(prod_a):
+                cells.setdefault(("a", t.yearbook), []).append(float(t.value))
+            elif t.pl.startswith(prod_b):
+                cells.setdefault(("b", t.yearbook), []).append(float(t.value))
+        a_old = cells.get(("a", "iia_1933_34"))
+        a_new = cells.get(("a", "iia_1938_39"))
+        b_old = cells.get(("b", "iia_1933_34"))
+        b_new = cells.get(("b", "iia_1938_39"))
+        if not (a_old and a_new and b_old and b_new):
             continue
-        msp = st.median(sp)
-        if msp > 0:
-            ratios.setdefault(lab, {})[str(vol)] = st.median(m) / msp
-    inverted, tested = 0, 0
-    inverted_labels = set()
-    for lab, per in ratios.items():
-        if "iia_1938_39" not in per or len(per) < 2:
-            continue
-        others = [v for k, v in per.items() if k != "iia_1938_39"]
-        tested += 1
-        # "Inverted" means the 1938_39 ratio sits on the opposite side of 1 from EVERY other volume
-        # of the same label. That is the whole test: no external view of any crop is needed.
-        here = per["iia_1938_39"]
-        if all((here < 1) != (o < 1) for o in others):
-            inverted += 1
-            inverted_labels.add(lab)
-    if tested < 4:
-        return False, f"only {tested} labels carry both products in 1938_39 and elsewhere; too few"
-    ok = inverted_labels == EXPECTED_SWAP_LABELS
-    missing = sorted(EXPECTED_SWAP_LABELS - inverted_labels)
-    extra = sorted(inverted_labels - EXPECTED_SWAP_LABELS)
-    detail = ""
-    if missing:
-        detail += f"; no longer inverted: {missing}"
-    if extra:
-        detail += f"; newly inverted: {extra}"
-    return ok, (
-        f"{inverted} of {tested} labels carrying meslin and spelt in iia_1938_39 AND in another "
-        f"volume have their ratio inverted in exactly that volume, and the six are exactly the "
-        f"pinned set (belgium and switzerland among them, whose normal order is spelt above "
-        f"meslin){detail}"
-    )
+        # The crossover: old-A matches new-B and old-B matches new-A, and the two products are NOT
+        # already equal (which would make the crossover vacuous).
+        if (any(close(x, y) for x in a_old for y in b_new)
+                and any(close(x, y) for x in b_old for y in a_new)
+                and not any(close(x, y) for x in a_old for y in b_old)):
+            out.add(lab)
+    return out
+
+
+def _check_swap(pair):
+    def check(d):
+        import os
+
+        raw = os.path.expanduser(os.environ.get(
+            "WHEP_IIA_RAW",
+            "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/"
+            "harmonized_data.xlsx"))
+        if not os.path.exists(raw):
+            return False, f"raw IIA extract absent ({raw}); the crossover test cannot run"
+        got = _swapped_labels(raw, *pair)
+        want = SWAPPED_PAIRS[pair]
+        missing, extra = sorted(want - got), sorted(got - want)
+        detail = ""
+        if missing:
+            detail += f"; no longer crossing: {missing}"
+        if extra:
+            detail += f"; newly crossing: {extra}"
+        return got == want, (
+            f"{len(got)} label(s) show a mutual value crossover between {pair[0]!r} and {pair[1]!r} "
+            f"across iia_1933_34 / iia_1938_39 at 1933, exactly the pinned set{detail}"
+        )
+    return check
+
+
+def check_iia_meslin_spelt_swap(d):
+    """The iia_1938_39 volume has MESLIN and SPELT transposed. See SWAPPED_PAIRS for the test."""
+    return _check_swap(("meslin", "spelt"))(d)
+
+
+def check_iia_calcium_fertilizer_swap(d):
+    """The iia_1938_39 volume has CALCIUM CYANAMIDE and CALCIUM NITRATE transposed."""
+    return _check_swap(("fertilizers: calcium cyanamide", "fertilizers: calcium nitrate"))(d)
 
 
 def check_iia_tobacco_era(d):
@@ -905,6 +919,9 @@ CHECKS = {
     ("mitchell", "south africa", "*"): check_mitchell_cape_natal,
     ("iia", "australia", "p"): check_iia_australia_phosphate,
     ("iia", "*", "wheat"): check_iia_meslin_spelt_swap,
+    # NOT keyed ("iia", "*", "n"): check_iia_npk already owns that key and a dict literal lets the
+    # later entry win, so binding this there would have silently replaced one check with the other.
+    ("iia", "*", "fertilizer, mixed"): check_iia_calcium_fertilizer_swap,
     ("iia", "*", "tobacco, unmanufactured"): check_iia_tobacco_era,
     ("iia", "*", "hops"): check_iia_tobacco_era,
     ("iia", "*", "p"): check_iia_npk,
