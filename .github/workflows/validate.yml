@@ -481,6 +481,15 @@ jobs:
       - name: Sources — post-1933 tobacco/hops verdicts must match their own numbers
         if: '!cancelled()'
         run: python3 scripts/validate_era_shift_verdicts.py
+      # The consumer collapses duplicate keys with mean(value) over (year, area, item..., unit) — no
+      # label and no source in the key — so the step above, which groups by source and reports label
+      # PAIRS, cannot see two whole classes: duplicates under a single label (`germany` supplies TEN
+      # rows for population 1937) and duplicates spanning sources. Of 1,995 groups whose members
+      # disagree, only 60 — 3.0% — are reachable by a per-source label-pair screen, and 1,577 are a
+      # true duplicate key (the other 418 are distinct MEASURES sharing an item code, issue 13).
+      - name: Sources — the value the consumer publishes must be a mean of the rows it collapses
+        if: '!cancelled()'
+        run: python3 scripts/validate_collapse_groups.py
 
       # The raw IIA extract names the yearbook VOLUME each row came from, and nothing here had used
       # it. It is the only comparison that can convict a specific extracted cell: the same publisher
