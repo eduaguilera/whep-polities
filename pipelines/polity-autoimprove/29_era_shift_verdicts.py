@@ -56,6 +56,7 @@ from __future__ import annotations
 import argparse
 import csv
 import os
+import re
 import sys
 import tempfile
 
@@ -72,7 +73,7 @@ IMPOSSIBLE_YIELD = 20.0         # t/ha; an order of magnitude above the crop's c
 HIGH_YIELD = 3.0
 LEVEL_SHIFT = 30.0              # x the label's own pre-era median
 
-FIELDS = ("source", "label", "whep_code", "item", "year", "unit", "production", "area_ha",
+FIELDS = ("source", "label", "whep_code", "item", "year", "period", "unit", "production", "area_ha",
           "implied_yield", "own_pre_era_median", "ratio_to_own", "verdict", "convicted")
 
 CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift"}
@@ -90,18 +91,41 @@ def build(matched: str) -> list[dict]:
 
     d = pd.read_parquet(matched)
     t = d[d.source.eq(SOURCE) & d.item.isin(ITEMS)]
-    prod = t[t.unit.eq("tonnes")].dropna(subset=["year"])
-    area = t[t.unit.eq("ha")].dropna(subset=["year"])
+    prod = t[t.unit.eq("tonnes")]
+    area = t[t.unit.eq("ha")]
     key = ["country", "item", "year"]
     # median where a group holds several rows: this screen is about the ERA, not about within-group
     # duplication, which state/collapse_groups.csv covers separately.
-    a = area.groupby(key).value.median()
+    a = area.dropna(subset=["year"]).groupby(key).value.median()
+    # PERIOD ROWS PAIR ON THEIR PERIOD: an area average matches a production average of the same span.
+    a_per = area[area.year.isna() & area.period.notna()].groupby(
+        ["country", "item", "period"]).value.median()
     base = prod[prod.year <= ERA_FROM - 1].groupby(["country", "item"]).value.median()
 
+    # PERIOD ROWS ARE IN THE ERA TOO, and the first version of this screen dropped them silently.
+    # 341 of the 1,037 production rows carry a period label instead of a year, and 99 of those are
+    # `1934-1938` -- squarely inside the era. `prod.year >= ERA_FROM` is False for NaN, so they left no
+    # trace and the era read as 328 rows when its true scope is 427. This is the same blindness that
+    # made #456's diff miss a reroute -- measuring on the raw `year` column while the pipeline reasons
+    # over a period's span -- found the same day, which is why it is stated here rather than just fixed.
+    #
+    # A period is included when it ENDS in the era: 1934-1938 is entirely inside, 1928-1932 entirely
+    # before, and nothing in this source straddles the boundary. The row keeps an EMPTY `year` and
+    # carries its `period`, so a five-year mean can never be read as an observation of one year. Note
+    # these rows are excluded from publication anyway (issue 310, #460), so they are evidence about the
+    # era's EXTENT, not about published figures.
+    def _period_end(p):
+        yy = re.findall(r"\d{4}", str(p or ""))
+        return int(yy[-1]) if yy else None
+
+    per = prod[prod.year.isna() & prod.period.notna()]
+    per = per[per.period.map(lambda p: (_period_end(p) or 0) >= ERA_FROM)]
+
     rows = []
-    for r in prod[prod.year >= ERA_FROM].itertuples():
-        k = (r.country, r.item, r.year)
-        ar = a.get(k)
+    for r in pd.concat([prod[prod.year >= ERA_FROM], per]).itertuples():
+        dated = not pd.isna(r.year)
+        k = (r.country, r.item, r.year) if dated else (r.country, r.item, r.period)
+        ar = (a.get(k) if dated else a_per.get(k))
         bs = base.get((r.country, r.item))
         yld = None
         if ar is not None and float(ar) > 0:
@@ -125,14 +149,15 @@ def build(matched: str) -> list[dict]:
 
         rows.append({
             "source": SOURCE, "label": r.country, "whep_code": r.whep_code, "item": r.item,
-            "year": int(r.year), "unit": r.unit, "production": _n(r.value),
+            "year": (int(r.year) if dated else ""), "period": ("" if dated else str(r.period)),
+            "unit": r.unit, "production": _n(r.value),
             "area_ha": ("" if ar is None else _n(ar)),
             "implied_yield": ("" if yld is None else _n(yld)),
             "own_pre_era_median": ("" if bs is None else _n(bs)),
             "ratio_to_own": ("" if ratio is None else _n(ratio)),
             "verdict": v, "convicted": str(v in CONVICTING),
         })
-    rows.sort(key=lambda r: (r["verdict"], r["label"], r["item"], r["year"]))
+    rows.sort(key=lambda r: (r["verdict"], r["label"], r["item"], str(r["year"]), r["period"]))
     return rows
 
 
