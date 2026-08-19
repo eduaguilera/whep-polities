@@ -323,7 +323,18 @@ json.dump({"summary": {
           },
           "findings": findings},
           open(f"{OUT}/findings.json","w"), indent=1)
-work[["source","country","iso3c","year","item","value","unit","whep_code","match_method"]] \
+# `period` is carried even though nothing in THIS stage needs it downstream: 5.12% of layer B
+# (9,865 rows -- fao1952 3,702, iia 6,163) has a null `year` and carries its year only in a
+# period-average label like `1909-1913`. This stage already recovers those itself (eff_year(),
+# period_span(), and the coverage-scoring at line 131), but it used to DROP the column here, so
+# 00_intake.py could not be given `--period-col` -- the option exists and matchlib.eff_year was
+# written for exactly this -- and every period row reached it as an undatable year=NA row.
+# The consequence was not misrouting (measured: 9,210 of 9,210 routed period rows land in a polity
+# whose life overlaps their period label, and routing is 98.7% vs 99.7% for dated rows). It was that
+# a label/candidate group whose ONLY overlapping rows are period rows got years_observed
+# "None-None", and 12_triage_assertions.py:149 raises ValueError on that -- so the triage queue
+# could not be regenerated AT ALL, which is why it drifted (issue 434).
+work[["source","country","iso3c","year","period","item","value","unit","whep_code","match_method"]] \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 
 # coverage by source after

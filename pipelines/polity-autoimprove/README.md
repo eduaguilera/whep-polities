@@ -575,9 +575,17 @@ python3 pipelines/polity-autoimprove/01_match_and_findings.py     # rebuild matc
 python3 pipelines/polity-autoimprove/00_intake.py \
   --input pipelines/polity-autoimprove/state/matched_rows.parquet \
   --label-col country --year-col year --iso-col iso3c \
-  --value-col value --item-col item --unit-col unit \
+  --value-col value --item-col item --unit-col unit --period-col period \
   --source-col source --prior-code-col whep_code
 ```
+
+`--period-col` is not optional on this input and 00_intake refuses without it (issue 434). 5.12% of
+layer B (9,865 rows: `iia` 6,163, `fao1952` 3,702) has a null `year` and carries its year only in a
+period-average label like `1909-1913`. Omitting the flag changes no row or assertion count -- 189,849
+and 1,074 either way -- but leaves 14 assertions with a `None-None` span, and
+`12_triage_assertions.py:149` raises `ValueError` on those, so the triage queue cannot be regenerated
+at all. It is also what stage 01 had to start carrying: `matched_rows.parquet` did not include the
+column, so the flag could not be passed even deliberately.
 
 `--iso-col` and `--prior-code-col` are what separate the production run from a label-only
 one (88.9% routed against 67.7% for a source that cannot supply them). Run it to `--out` a

@@ -73,6 +73,26 @@ df = pd.read_parquet(A.input) if A.input.endswith(".parquet") else pd.read_csv(A
 n_raw = len(df)
 if A.aggregate_col:
     df = df[~df[A.aggregate_col].astype(bool)]
+
+# REFUSE a period column that is present and unused (issue 434). matchlib.eff_year exists to read
+# "the END year of a period-average label like 1934-1938", and 5.12% of layer B carries its year ONLY
+# there. Without --period-col those rows arrive as year=NA, so any label/candidate group whose only
+# rows are period rows gets years_observed "None-None" -- and 12_triage_assertions.py:149 raises
+# ValueError on that, which froze the triage queue entirely. The failure was silent for exactly the
+# reason a warning would not have helped: the run still printed a healthy routing percentage.
+#
+# Measured on the production input: passing --period-col changes NO row count (189,849 either way) and
+# no assertion count (1,074), but takes null spans 14 -> 0 and reconciles 65 of the 71 triage keys the
+# period-blind run cannot express. So there is no tradeoff to weigh -- an unused period column is
+# always a mistake, which is why this refuses rather than warns.
+if not A.period_col and "period" in getattr(df, "columns", ()):
+    raise SystemExit(
+        "00_intake: the input carries a `period` column but --period-col was not passed, so every "
+        "row whose year lives only in a period label (e.g. '1909-1913') arrives undatable and its "
+        "assertion gets a 'None-None' span that 12_triage_assertions.py cannot parse (issue 434).\n"
+        "  fix: add `--period-col period` to the invocation\n"
+        "  if the column genuinely is not a period-average label, rename it in the input first.")
+
 w = pd.DataFrame({
     "label": df[A.label_col],
     "year":  pd.to_numeric(df[A.year_col], errors="coerce"),
