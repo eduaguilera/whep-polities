@@ -93,6 +93,10 @@ def build(matched: str) -> list[dict]:
     t = d[d.source.eq(SOURCE) & d.item.isin(ITEMS)]
     prod = t[t.unit.eq("tonnes")]
     area = t[t.unit.eq("ha")]
+    def _period_end(p):
+        yy = re.findall(r"\d{4}", str(p or ""))
+        return int(yy[-1]) if yy else None
+
     key = ["country", "item", "year"]
     # median where a group holds several rows: this screen is about the ERA, not about within-group
     # duplication, which state/collapse_groups.csv covers separately.
@@ -100,7 +104,16 @@ def build(matched: str) -> list[dict]:
     # PERIOD ROWS PAIR ON THEIR PERIOD: an area average matches a production average of the same span.
     a_per = area[area.year.isna() & area.period.notna()].groupby(
         ["country", "item", "period"]).value.median()
-    base = prod[prod.year <= ERA_FROM - 1].groupby(["country", "item"]).value.median()
+    # THE BASELINE COUNTS PRE-ERA PERIOD ROWS TOO, and leaving them out was the same exclusion as the
+    # scope bug one block below: `prod.year <= ERA_FROM - 1` is False for NaN. Measured, 50 (label, item)
+    # pairs have ONLY a period baseline -- no dated pre-1934 production at all -- so their era rows had
+    # nothing to compare against and fell to `untestable`, which is the class this screen is least able
+    # to act on. A five-year mean is a legitimate level baseline and arguably a better one than a single
+    # year, being smoother; what it cannot do is date a defect, and it is not asked to.
+    pre_dated = prod[prod.year <= ERA_FROM - 1]
+    pre_per = prod[prod.year.isna() & prod.period.notna()]
+    pre_per = pre_per[pre_per.period.map(lambda p: (_period_end(p) or 9999) < ERA_FROM)]
+    base = pd.concat([pre_dated, pre_per]).groupby(["country", "item"]).value.median()
 
     # PERIOD ROWS ARE IN THE ERA TOO, and the first version of this screen dropped them silently.
     # 341 of the 1,037 production rows carry a period label instead of a year, and 99 of those are
@@ -114,10 +127,6 @@ def build(matched: str) -> list[dict]:
     # carries its `period`, so a five-year mean can never be read as an observation of one year. Note
     # these rows are excluded from publication anyway (issue 310, #460), so they are evidence about the
     # era's EXTENT, not about published figures.
-    def _period_end(p):
-        yy = re.findall(r"\d{4}", str(p or ""))
-        return int(yy[-1]) if yy else None
-
     per = prod[prod.year.isna() & prod.period.notna()]
     per = per[per.period.map(lambda p: (_period_end(p) or 0) >= ERA_FROM)]
 
