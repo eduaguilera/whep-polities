@@ -1917,6 +1917,90 @@ def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
             f"has, leaving the row count, the arithmetic, the floor and every identity pin intact")
 
 
+def mutate_collapse_mean_outside_range(root, gpd, make_valid, affinity):
+    """Publish a "mean" that lies above the largest member of its own group.
+
+    The point of `collapse_groups.csv` is to describe what the consumer's `mean(value)` collapse
+    produces, so the one thing the table can never legitimately say is that the collapsed value sits
+    outside the range of the values collapsed. That is not a threshold judgement -- it is arithmetic,
+    and a row asserting it is describing some other operation (a sum, most likely, which is exactly
+    the confusion issue 367 had to clear up and which issue 451 then repeated).
+
+    It dodges every other arm: the identity fields are untouched, the verdict still matches v_min !=
+    v_max, n_distinct is unchanged, and `ratio_mean_max` is rewritten to stay consistent with the new
+    mean -- so check B's ratio arm and check D stay silent and only the range arm can see it. It picks
+    the largest group by row count rather than by name, because which group is largest moves when the
+    panel is rebuilt.
+
+    IT MUST ALSO AVOID THE CURATED ANCHORS, and that is not hypothetical: the largest group by row
+    count IS one of them (DEU-1920-1938 population 1937, ten rows), so the first version of this
+    mutation tripped check C as well and would have passed with the arithmetic arm deleted entirely.
+    Anchor keys are excluded from the pick for that reason -- a case that fires two arms tests
+    neither.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/collapse_groups.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_vcg", os.path.join(root, "scripts/validate_collapse_groups.py"))
+    vcg = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vcg)
+    anchors = set(vcg.ANCHORS)          # read from the gate, so adding an anchor cannot silently
+                                        # re-collide with this mutation
+    worst = max((r for r in rows if r["verdict"] == "values_differ" and float(r["v_max"]) > 0
+                 and (r["whep_code"], r["item"], r["unit"], r["year"]) not in anchors),
+                key=lambda r: (int(r["n_rows"]), float(r["v_max"])))
+    before = worst["published_mean"]
+    vmax = float(worst["v_max"])
+    worst["published_mean"] = repr(round(vmax * 1.5, 6))
+    worst["ratio_mean_max"] = "1.5"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"moved the published value of {worst['whep_code']} {worst['item']!r} {worst['year']} "
+            f"from {before} to 1.5x its own group maximum, keeping the ratio, the verdict and the "
+            f"composition consistent with it, so only the arithmetic arm can tell that no mean of "
+            f"those {worst['n_rows']} rows can be that number")
+
+
+def mutate_collapse_anchor_silently_agrees(root, gpd, make_valid, affinity):
+    """Make a curated anchor read as though the two territories had always agreed.
+
+    The anchors exist because open issues quote specific groups: KOR-1948-2025 publishing 24,900 from
+    the peninsula's 29,300 and South Korea's 20,500 is the whole of issue 451's decidable case. If
+    that row's value drifts -- from a reroute, an alias, a re-extraction -- the issue text silently
+    stops being true, and nothing else in this gate would notice, because a group whose members agree
+    is a perfectly ordinary row.
+
+    So the mutation is the realistic one rather than a vandalising one: it lifts the smaller member up
+    to the larger, exactly as a "helpful" alias that sent both labels to one series would. Every other
+    arm stays quiet BY CONSTRUCTION -- the verdict is rewritten to values_identical to match the new
+    v_min == v_max, n_distinct drops to 1 with it, and the mean and ratio are recomputed -- so the row
+    is internally flawless and only the pinned anchor can see that the finding evaporated.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/collapse_groups.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    hit = next(r for r in rows if r["whep_code"] == "KOR-1948-2025"
+               and r["item"] == "r_fao_population_1952_10_18" and r["year"] == "1951")
+    before = f"{hit['v_min']}/{hit['v_max']} -> {hit['published_mean']}"
+    hit["v_min"] = hit["v_max"]
+    hit["published_mean"] = hit["v_max"]
+    hit["ratio_mean_max"] = "1"
+    hit["verdict"] = "values_identical"
+    hit["n_distinct"] = "1"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"lifted South Korea's 1951 population to the whole peninsula's ({before}), leaving an "
+            f"internally consistent values_identical row, so issue 451's one decidable case reads as "
+            f"agreement and only the pinned anchor stands between that and a green gate")
+
 def mutate_overlap_shrunk_below_floor(root, gpd, make_valid, affinity):
     """Shrink a pinned containment pair's cell count below the floor that made it sayable.
 
@@ -3401,6 +3485,22 @@ CASES = (
         "between the `if area > 0` guard and 14 exonerated impossible rows",
     ),
     (
+        "validate_collapse_groups.py",
+        mutate_collapse_mean_outside_range,
+        "lies outside",
+        "a published value moved above its own group's maximum, with the ratio, verdict and "
+        "composition all kept consistent with it, so only the arithmetic arm can see that no mean "
+        "of those rows can be that number",
+    ),
+    (
+        "validate_collapse_groups.py",
+        mutate_collapse_anchor_silently_agrees,
+        "expected 'values_differ'",
+        "issue 451's one decidable case -- the Korean peninsula's population beside South Korea's on "
+        "one polity -- rewritten as agreement, internally flawless, so only the pinned anchor can "
+        "tell that the finding evaporated",
+    ),
+    (
         "validate_same_polity_overlaps.py",
         mutate_overlap_code_not_a_polity,
         "is not a polity in",
@@ -3997,6 +4097,11 @@ WRITABLE = {
     # The case rewrites era_shift_verdicts.csv in place (it reclassifies one row), so a real copy.
     "validate_era_shift_verdicts.py": (
         "pipelines/polity-autoimprove/state/era_shift_verdicts.csv",
+    ),
+    # Both cases rewrite collapse_groups.csv in place (one moves a published value, one lifts a
+    # member), so a real copy rather than a symlink into the tracked table.
+    "validate_collapse_groups.py": (
+        "pipelines/polity-autoimprove/state/collapse_groups.csv",
     ),
     # The case rewrites same_polity_overlaps.csv in place (it shrinks a cell count), so a real copy
     # rather than a symlink into the tracked table.
