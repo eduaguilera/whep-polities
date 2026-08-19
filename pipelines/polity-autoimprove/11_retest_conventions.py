@@ -980,6 +980,75 @@ def check_iia_volume_grid(d):
                   f"{prof['iia_1938_39'][1]:.2%} -- precision and zero boundaries still distinct")
 
 
+
+def check_mitchell_thousand_grid(d):
+    """The claim: Mitchell reports in THOUSANDS -- every figure carries roughly +/-500 in its own unit.
+
+    Unlike the IIA grid convention this needs no raw extract: the evidence is in the published panel, so
+    it is re-measurable in full here.
+
+    THE DISCRIMINATING NUMBER IS THE SUB-UNIT COUNT, not the multiple-of-1000 share. A high share of
+    round values can mean a source reports round quantities; **2 values out of 40,664 carrying any
+    fractional part** cannot. No real measurement series is integral to that degree by chance, and it
+    holds across `ha`, `heads` and `tonnes` alike, so it is not an artefact of one unit's convention.
+
+    THE COUNTER-TEST is a sibling source. `fao1952` sits at 1.1% on a 1000-grid with 12.0% sub-unit
+    precision over the same era and the same commodities, so the coarseness is a property of MITCHELL
+    and not of early-twentieth-century agricultural statistics in general. Without that comparison the
+    convention would be unfalsifiable -- which is the failure mode issue 387 named and the reason
+    conventions here are required to be refutable.
+
+    IT IS ALSO FLAT IN TIME, which distinguishes it from the IIA case. Mitchell holds 88-94% per decade
+    from the 1890s to the 1950s -- a publisher convention, not a volume handover -- so unlike
+    check_iia_volume_grid there is no boundary to assert, and a per-source constant is the right shape.
+    """
+    m = d[d["source"] == "mitchell"]
+    m = m[m["value"].notna()]
+    if "is_aggregate" in m.columns:
+        m = m[~m["is_aggregate"].fillna(False).astype(bool)]
+    nz = m[m["value"] != 0]
+    if len(nz) < 1000:
+        return False, f"only {len(nz)} non-zero mitchell rows; too few to measure a grid"
+
+    def on(v, mod):
+        v = float(v)
+        return v == int(v) and int(v) % mod == 0
+
+    k1000 = sum(1 for v in nz["value"] if on(v, 1000)) / len(nz)
+    sub = sum(1 for v in nz["value"] if float(v) != int(float(v)))
+    sub_share = sub / len(nz)
+
+    if k1000 < 0.80:
+        return False, (f"only {k1000:.1%} of mitchell's {len(nz):,} non-zero values sit on a 1000-grid, "
+                       f"below the 80% this convention rests on")
+    if sub_share > 0.01:
+        return False, (f"{sub_share:.1%} of mitchell values carry sub-unit precision ({sub:,} rows), "
+                       f"above the 1% ceiling -- a source that rounds to thousands does not report "
+                       f"fractions, so this is the arm that falsifies the convention rather than the "
+                       f"round-number share")
+
+    # Counter-test: a sibling source over the same era must NOT be coarse, or the finding is about the
+    # period rather than about Mitchell.
+    f = d[(d["source"] == "fao1952") & d["value"].notna()]
+    # SAME FILTERS AS THE SUBJECT, or the comparison is not one: leaving aggregates in moves fao1952
+    # from 1.1% to 2.0% and the convention text stops matching its own re-test.
+    if "is_aggregate" in f.columns:
+        f = f[~f["is_aggregate"].fillna(False).astype(bool)]
+    f = f[f["value"] != 0]
+    if len(f) >= 1000:
+        f1000 = sum(1 for v in f["value"] if on(v, 1000)) / len(f)
+        if f1000 > 0.20:
+            return False, (f"the sibling source fao1952 is now {f1000:.1%} on a 1000-grid too, so "
+                           f"coarseness is not specific to mitchell and this convention claims more "
+                           f"than the evidence supports")
+    else:
+        f1000 = float("nan")
+
+    return True, (f"mitchell {k1000:.1%} of {len(nz):,} non-zero values on a 1000-grid with sub-unit "
+                  f"precision on {sub} row(s) ({sub_share:.2%}); sibling fao1952 {f1000:.1%} on a "
+                  f"1000-grid, so the coarseness is Mitchell's and not the era's")
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -1017,6 +1086,8 @@ CHECKS = {
     # before binding: a dict literal lets a later entry win, which silently replaced one
     # check with another when I reused ("iia", "*", "n").
     ("iia", "*", "*"): check_iia_volume_grid,
+    # Source-wide and item-agnostic; ("mitchell", "*", "*") verified free before binding.
+    ("mitchell", "*", "*"): check_mitchell_thousand_grid,
 }
 
 
