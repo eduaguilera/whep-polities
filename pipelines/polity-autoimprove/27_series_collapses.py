@@ -33,10 +33,31 @@ discriminate (Hungary's sugar collapse at 27x and Iran's castor at 26x sit below
 at 70x, which is not obviously war-related), so the table records the SHAPE and leaves the verdict to
 whoever can check the year. What it guarantees is that the shape can no longer appear silently.
 
+DROPS TO ZERO ARE A FOURTH AND FIFTH POSITION, added 2026-08-19. The first version of this tool
+excluded zeros entirely, deferring them to issue 414 -- and that deferral was wrong, because 414's
+tables cannot reach them: edition_conflicts.csv needs two volumes and only 1933 has them, and
+impossible_pairs.csv needs a paired area. A series that drops to zero and stays there was therefore
+invisible to EVERY detector here, including 17_constant_runs.py, which excludes zeros for the same
+reason. Measured: 81 zero tails and 42 isolated interior zeros.
+
+    zero_tail       a series ending in >=2 consecutive zeros after real output. `juan united
+                    kingdom / mules and hinnies` reads 0.0 for EVERY year 1921-1938 while the same
+                    source and label report asses (10,000 falling to 7,000) and horses (2,055,000
+                    to 1,100,000) throughout -- so the source is reporting draught animals and not
+                    reporting mules, and the zero means "not stated", not "none exist".
+    zero_interior   a single zero with real output on both sides.
+
+68 of the 81 tails begin in 1933-1936, which is the `iia_1938_39` window -- so most of this class is
+issue 414's blank-read-as-0 appearing as a RUN rather than a cell. The rest are not: the UK mules
+run starts in 1921, and `latvia` and `lithuania` sugar beet go to zero in 1940 when both states were
+annexed, where 0 most likely means reported inside Soviet statistics instead.
+
+NO RATIO IS RECORDED for these two positions, because there is none: `factor` is left empty rather
+than filled with a sentinel that later arithmetic might believe.
+
 UNORDERABLE SERIES ARE SKIPPED, not guessed at: 342 series carry two rows for one year with nothing
 in the panel to order them (issue 367), and a series with no defined neighbour has no collapse.
-Zero and negative values are excluded -- a ratio against zero is undefined, and a drop TO zero is the
-separate concern issue 414 measures.
+Negative values are excluded throughout.
 
 WHY A TRACKED TABLE. The panel is gitignored and absent in CI, so this writes
 `state/series_collapses.csv`, that file is committed, and the gate reads it -- the same arrangement as
@@ -80,7 +101,7 @@ def build(panel_path: str) -> list[dict]:
 
     d = pd.read_parquet(panel_path)
     d = d.dropna(subset=["year", "value"])
-    d = d[d["value"] > 0]
+    d = d[d["value"] >= 0]
     out = []
     for k, g in d.groupby(KEY, dropna=False):
         g = g.sort_values("year")
@@ -99,11 +120,36 @@ def build(panel_path: str) -> list[dict]:
                         "neighbour_value": f"{v[nb_i]:g}", "neighbour_year": y[nb_i],
                         "factor": f"{v[nb_i] / v[i]:.1f}", "series_n": len(v)})
 
-        if v[-2] / v[-1] >= COLLAPSE:
+        # --- zero positions, which carry no ratio ---
+        tail = 0
+        for x in reversed(v):
+            if x == 0:
+                tail += 1
+            else:
+                break
+        if tail >= 2 and any(x > 0 for x in v[:len(v) - tail]):
+            i = len(v) - tail
+            out.append({**base, "position": "zero_tail", "year": y[i],
+                        "value": "0", "neighbour_value": f"{v[i - 1]:g}",
+                        "neighbour_year": y[i - 1], "factor": "", "series_n": len(v)})
+        for i in range(1, len(v) - 1):
+            if v[i] == 0 and v[i - 1] > 0 and v[i + 1] > 0:
+                out.append({**base, "position": "zero_interior", "year": y[i],
+                            "value": "0", "neighbour_value": f"{min(v[i - 1], v[i + 1]):g}",
+                            "neighbour_year": y[i - 1], "factor": "", "series_n": len(v)})
+
+        # --- ratio positions ---
+        # Positivity is required PER CELL, not per series. Skipping any series that contains a zero
+        # anywhere would discard legitimate collapses elsewhere in it (8 of them), and the earlier
+        # `value > 0` filter was worse still: it DELETED the zero rows, making non-adjacent years
+        # look adjacent and inventing neighbours that are not neighbours.
+        if v[-1] > 0 and v[-2] > 0 and v[-2] / v[-1] >= COLLAPSE:
             emit("terminal_collapse", len(v) - 1, len(v) - 2)
-        if v[1] / v[0] >= COLLAPSE:
+        if v[0] > 0 and v[1] > 0 and v[1] / v[0] >= COLLAPSE:
             emit("leading_collapse", 0, 1)
         for i in range(1, len(v) - 1):
+            if v[i] <= 0 or v[i - 1] <= 0 or v[i + 1] <= 0:
+                continue
             if v[i - 1] / v[i] >= COLLAPSE and v[i + 1] / v[i] >= COLLAPSE:
                 # Report against the SMALLER neighbour, so `factor` is the weakest claim the row
                 # supports rather than the most impressive one.
