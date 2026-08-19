@@ -212,9 +212,10 @@
  },
  "source_flow_flags": {
   "path": "data/final/source_flow_flags.csv",
-  "sha256": "1a26ffdd18b4d5d91a4f48b9be1139d65cbb3eb8ddd2809dd5fd05ac8de9e821",
-  "flows": 1,
+  "sha256": "45ae25be5c347e57f4c8c1ec08b1b1f0287230109012a29a209e4c0c8996c0ee",
+  "flows": 2,
   "flow_types": [
+   "dependency_output",
    "entrepot_transit"
   ],
   "why": "Rows a source reports under a territory's label that are NOT that territory's production -- entrepot/transit volumes above all. Exclude them from any production aggregate, or reattribute them to `origin_iso3`; do not sum them beside the origin's own series. Match on source + label_pattern + item_pattern, where * means every label or item. ABSENCE IS NOT A GUARANTEE: this lists the cases verified so far, not every entrepot in the data."
