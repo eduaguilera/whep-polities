@@ -144,9 +144,32 @@ banked = [x for x in asserts if x["status"] in ("banked", "banked_legacy")]
 db = pd.read_csv(A.db).set_index("polity_code")
 
 
+# Assertions whose `years_observed` is not a parseable span. Collected rather than counted so the
+# report can name them and the queue can flag them per row.
+NO_SPAN = set()
+
+
 def span(x):
-    y0, y1 = x["years_observed"].split("-")
-    return int(y0), int(y1)
+    """(y0, y1), or (None, None) when the assertion carries no parseable span.
+
+    THIS USED TO CRASH THE WHOLE TOOL (issue 434). `years_observed` can be the literal string
+    "None-None" -- 13 assertions in the current set, all `iia`, covering 70 rows -- and `int("None")`
+    raised ValueError at import time, so the triage queue could not be regenerated AT ALL. That is the
+    mechanism behind the staleness issue 434 describes: the queue is not stale because a step was
+    skipped, it is stale because the step could not run.
+
+    Returning (None, None) rather than dropping the assertion is deliberate. A null span is a reason
+    to FLAG an assertion, never to remove it from the queue -- it is still pending and still needs a
+    decision, and dropping it would make the crash's damage permanent and invisible instead of loud.
+    Every caller below degrades to "no claim" on a null span, and each says so at its site.
+    """
+    raw = (x.get("years_observed") or "").strip()
+    try:
+        y0, y1 = raw.split("-")
+        return int(y0), int(y1)
+    except ValueError:
+        NO_SPAN.add(x["key"])
+        return None, None
 
 
 # ---- source-internal nesting screen -------------------------------------------
@@ -181,6 +204,10 @@ if not A.no_geometry:
     by_source = {}
     for x in asserts:
         y0, y1 = span(x)
+        if y0 is None:
+            continue        # no span: the year-overlap test below has nothing to compare, so this
+                            # assertion cannot be screened for nesting. Counted in NO_SPAN and
+                            # reported; it still reaches the queue.
         by_source.setdefault(x["source"], []).append((x["key"], x["candidate"], y0, y1,
                                                       x["rows"], x["status"]))
     for src, lst in by_source.items():
@@ -254,6 +281,9 @@ if os.path.exists(A.aliases):
 def alias_precedent(x):
     """A ranged alias row naming this candidate and covering the whole segment."""
     y0, y1 = span(x)
+    if y0 is None:
+        return None         # a ranged alias is honoured only when it COVERS the segment, and with no
+                            # segment there is nothing to cover. Absence of precedent, not a denial.
     lab = (x["label_raw"] or "").strip().lower()
     for r in alias_rules:
         if (r.get("source_label") or "").strip().lower() != lab:
@@ -293,7 +323,10 @@ for x in pend:
         verified_equal_reachable=(d is not None and d.wiki_status == "reviewed"),
         nested_reporting=x["key"] in nested_keys,
         inclusion_impossible=x["key"] in exclusion_keys,
-        boundary_year=(d is not None and y1 == int(d.end_year)),
+        # y1 is None for a null span, so this is False rather than raising -- an assertion with no
+        # observed span cannot be sitting on its candidate's boundary year.
+        boundary_year=(d is not None and y1 is not None and y1 == int(d.end_year)),
+        span_missing=(y0 is None),
         alias_precedent_confidence=(ap_conf or ""),
         banked_precedent=(x["label_raw"], c) in banked_lab_cand,
     )
@@ -335,10 +368,39 @@ for tier in TIER_ORDER:
     if len(s):
         print(f"  {tier:<18} {len(s):>7} {int(s['rows'].sum()):>9} {int(s.verified_equal_reachable.sum()):>7}")
 print("\nflags (independent of the tier a row landed in — tiers are first-match):")
-for f in ("inclusion_impossible", "nested_reporting", "boundary_year", "banked_precedent"):
+for f in ("inclusion_impossible", "nested_reporting", "boundary_year", "banked_precedent",
+          "span_missing"):
     print(f"  {f:<18} {int(t[f].sum()):>7} {int(t.loc[t[f], 'rows'].sum()):>9}")
 print(f"  {'alias_precedent':<18} {int((t.alias_precedent_confidence != '').sum()):>7} "
       f"{int(t.loc[t.alias_precedent_confidence != '', 'rows'].sum()):>9}")
+# NULL SPANS ARE REPORTED, NOT SWALLOWED. This tool used to die on them (issue 434), and the
+# tempting repair -- skip the assertion -- would have made the loss permanent and silent. They stay in
+# the queue with `span_missing` set; what they cannot get is the three year-based screens, and that
+# exclusion is printed here rather than left for someone to notice.
+if NO_SPAN:
+    _ns = t[t.span_missing]
+    # NO_SPAN counts distinct KEYS and _ns counts queue ROWS, and the two differ -- which is itself a
+    # consequence worth printing rather than smoothing over. A key is `label|source|years_observed`,
+    # so when the span degrades to "None-None" it stops disambiguating: `ethiopia|iia|None-None`
+    # carries TWO assertions routed to DIFFERENT polities (ETH-1907-1936 and ETH-1936-1941). A key is
+    # supposed to map to one ledger row and one evidence bundle, so a collision silently drops one of
+    # each when verdicts are banked (issue 308). 00_intake.py DOES disambiguate colliding keys by
+    # appending the candidate code, and raises SystemExit if any survive -- so a duplicate reaching
+    # this tool means the assertion set on disk predates that block, which is independent evidence for
+    # issue 434's reading that assertions.json is the stale side, not the queue.
+    if len(_ns) != len(NO_SPAN):
+        print(f"\n{len(_ns) - len(NO_SPAN)} null-span assertion(s) COLLIDE on a key that another "
+              f"null-span assertion already uses, because `years_observed` is what makes a key "
+              f"unique. Re-run 00_intake.py to disambiguate them (it appends the candidate code and "
+              f"refuses to finish while any duplicate remains); the set on disk predates that check.")
+    print(f"\nassertions with NO parseable span: {len(_ns)} over {len(NO_SPAN)} distinct key(s), "
+          f"{int(_ns['rows'].sum())} rows. They are QUEUED but "
+          f"excluded from the nesting screen, the ranged-alias precedent test and the boundary-year "
+          f"flag, none of which can be evaluated without a span. Pass --period-col to 00_intake so "
+          f"the period label supplies the years (issue 434: that recovers 65 of 71 keys).")
+    for _s in sorted({k.split('|')[1] for k in NO_SPAN}):
+        print(f"    {_s}: {sum(1 for k in NO_SPAN if k.split('|')[1] == _s)}")
+
 print(f"\nverified_equal reachable today (candidate page reviewed): "
       f"{int(t.verified_equal_reachable.sum())} of {len(t)} "
       f"({100 * t.verified_equal_reachable.mean():.1f}%) — for the rest a confirm resting only "
