@@ -20,23 +20,30 @@ year) cell can, because a parent and its part disagree there and two synonyms do
 WHAT THE FIRST RUN MEASURED: 37 pairs share at least one cell, 13 of them with enough cells to
 support any verdict at all.
 
-    containment           5    `Germany` over `Germany Western` (22 cells), over `Germany Berlin`
-                               (8); `United Kingdom` over `United Kingdom Great Britain` (6);
-                               mitchell `china, mainland` over `china, manchuria province of` (8)
+    containment           4    `Germany` over `Germany Western` (25 cells) and over `Germany Berlin`
+                               (8); `Germany Berlin` over `Germany Western` (9); mitchell
+                               `china, mainland` over `china, manchuria province of` (8)
     identical             1    mitchell `cape natal` equals `south africa` in all 12 shared cattle
                                cells, 1946-1957, over 12 distinct values -- a province carrying the
                                national series
-    disagreement          1    fao1952 `New Guinea` / `Papua`, 9 cells running both directions
-    orthographic_variant  3    one label reached under two spellings (`Germany  Western` with the
-                               doubled space, `Germany  Berlin`)
+    disagreement          2    fao1952 `New Guinea` / `Papua`, 9 cells running both directions; and
+                               `Korea` / `Korea South`, 5 cells, see the KOR note below
     identical_indistinct  3    equal, but on one cell, which proves nothing
-    undetermined         24    too few shared cells to say anything
+    undetermined         14    too few shared cells to say anything
 
-NONE OF ISSUE 355'S FOUR SURVIVE AS SUPPORTED FINDINGS, which is the main thing this gate records.
+    (Counts as of the fao1952 `indicator` key, issue 451. Before it: 37 pairs, with 5 containment,
+    3 orthographic_variant and 24 undetermined. `orthographic_variant` is now empty and
+    `United Kingdom`/`United Kingdom Great Britain` fell from containment to undetermined at 4 cells,
+    below the floor -- both because their extra "shared" cells were population-indicator artefacts.)
+
+ONE OF ISSUE 355'S FOUR NOW SURVIVES AS A SUPPORTED FINDING, and three still do not.
 `indochina viet nam` no longer routes to FID-1887-1954 at all; RWB's `rwanda`/`rwanda and burundi`
-share no cells; GBM's two labels are disjoint in year; and KOR's `Korea`/`Korea South` has 4 shared
-cells, one below the floor where direction means anything. The overlaps that are real are different
-ones, and a string test could not have found them.
+share no cells; GBM's two labels are disjoint in year. KOR's `Korea`/`Korea South` DOES survive since
+the fao1952 `indicator` key (issue 451): it has 5 shared cells rather than 4, exactly at the floor
+where direction means anything, and classifies as `disagreement`. Before the key it sat one cell below
+that floor -- so the string test issue 355 used happened to name a real pair, but only the cell
+evidence can say which, and it could only say so once the indicator stopped merging cells.
+The other real overlaps are different pairs, which a string test could not have found.
 
 Two signals:
   A. COUNT CEILING   pairs sharing cells may not grow. Bidirectional: reroute some and the ceiling
@@ -57,9 +64,17 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/same_polity_overlaps.csv")
 POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 
-# Measured 2026-08-19 on the first run. BIDIRECTIONAL: rerouting a label must lower this, with a note
-# saying which pair was resolved, so a later regression cannot hide inside the old headroom.
-BASELINE_PAIRS = 37
+# Measured 2026-08-19. BIDIRECTIONAL: rerouting a label must lower this, with a note saying which
+# pair was resolved, so a later regression cannot hide inside the old headroom.
+#
+# LOWERED 37 -> 24 when the generator began keying fao1952 on `indicator` (issue 451). The 13 pairs
+# that went were not resolved by a reroute -- they were never real: their ONLY shared cell was an
+# `r_fao_population_1952_10_18` cell, and that item code carries five distinct indicators (issue 13),
+# so two labels reporting DIFFERENT measures read as sharing one. Three of the 13 carried
+# `orthographic_variant`; that loses a row, not a finding, because the generator's own docstring
+# already records all 30 such fao1952 groups in prose and explains why shared-cell pairs are the
+# only ones tabled.
+BASELINE_PAIRS = 24
 
 # The floor 25_same_polity_overlaps.py needs before it will call a direction; restated here so the
 # gate does not depend on the generator's constant to know what `undetermined` means.
@@ -70,19 +85,23 @@ RELATIONS = {"containment", "identical", "identical_indistinct", "disagreement",
 
 # Every pair with a supported verdict on the first run. GENERATED FROM THE TABLE, never hand-typed --
 # transcribing a baseline from a truncated printout once missed 18 of 30 entries.
+# KOR-1948-2025 enters this set as a `disagreement` only once fao1952 is keyed on `indicator`: with
+# the key, `Korea` and `Korea South` share 5 cells instead of 4, and the added one is decisive --
+# 1951 population, both rows `indicator = population:population total`, 29,300 thousand against
+# 20,500. The first is the whole peninsula and the second is South Korea, so the polity carries a
+# figure for a territory 43% larger than itself alongside the correct one. RECORDED, NOT RESOLVED:
+# `data_errors.csv`'s `layerb-nested-reporting-levels-one-polity` already lists this pair among 52
+# such cells with status `pending_audit`, and the audit is where the reroute decision belongs.
 BASELINE_SUPPORTED = frozenset({
     ('CHN-1950-2025', 'mitchell', 'china, mainland', 'china, manchuria province of', 'containment'),
     ('DEU-1920-1938', 'fao1952', 'Germany', 'Germany Berlin', 'containment'),
     ('DEU-1920-1938', 'fao1952', 'Germany', 'Germany Western', 'containment'),
-    ('DEU-1920-1938', 'fao1952', 'Germany  Western', 'Germany Western', 'orthographic_variant'),
     ('DEU-1920-1938', 'fao1952', 'Germany Berlin', 'Germany Western', 'containment'),
     ('ETH-1907-1936', 'iia', 'ethiopia', 'ethiopia pdr', 'identical_indistinct'),
     ('ETH-1936-1941', 'iia', 'ethiopia', 'ethiopia pdr', 'identical_indistinct'),
     ('ETH-1941-1952', 'iia', 'ethiopia', 'ethiopia pdr', 'identical_indistinct'),
-    ('F78-1949-1990', 'fao1952', 'Germany  Western', 'Germany Western', 'orthographic_variant'),
-    ('GBR-1921-2025', 'fao1952', 'United Kingdom', 'United Kingdom Great Britain', 'containment'),
+    ('KOR-1948-2025', 'fao1952', 'Korea', 'Korea South', 'disagreement'),
     ('PNG-1949-1975', 'fao1952', 'New Guinea', 'Papua', 'disagreement'),
-    ('WBL-1949-1990', 'fao1952', 'Germany  Berlin', 'Germany Berlin', 'orthographic_variant'),
     ('ZAF-1910-2025', 'mitchell', 'cape natal', 'south africa', 'identical'),
 })
 
