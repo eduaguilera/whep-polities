@@ -1,329 +1,428 @@
-source,label,whep_code,item,year,unit,production,area_ha,implied_yield,own_pre_era_median,ratio_to_own,verdict,convicted
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1942,tonnes,15800,1000,15.8,33.75,468.148148,high_yield_3to20,False
-iia,congo,AEF-1910-1960,"tobacco, unmanufactured",1934,tonnes,108500,7000,15.5,311,348.874598,high_yield_3to20,False
-iia,congo,AEF-1910-1960,"tobacco, unmanufactured",1935,tonnes,100000,6000,16.666667,311,321.543408,high_yield_3to20,False
-iia,czech republic,F51-1918-1938,hops,1934,tonnes,707400,109000,6.489908,6651.05,106.359146,high_yield_3to20,False
-iia,czech republic,F51-1918-1938,hops,1935,tonnes,761900,112000,6.802679,6651.05,114.553341,high_yield_3to20,False
-iia,czech republic,F51-1918-1938,hops,1936,tonnes,1208100,114000,10.597368,6651.05,181.640493,high_yield_3to20,False
-iia,czech republic,F51-1918-1938,hops,1937,tonnes,1216500,113000,10.765487,6651.05,182.903451,high_yield_3to20,False
-iia,czech republic,F51-1938-1945,hops,1944,tonnes,46100,7000,6.585714,6651.05,6.931236,high_yield_3to20,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1934,tonnes,27600,3000,9.2,630,43.809524,high_yield_3to20,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1935,tonnes,22100,3000,7.366667,630,35.079365,high_yield_3to20,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1936,tonnes,22000,3000,7.333333,630,34.920635,high_yield_3to20,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1937,tonnes,23500,3000,7.833333,630,37.301587,high_yield_3to20,False
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1944,tonnes,5200,1000,5.2,4,1300,high_yield_3to20,False
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1945,tonnes,5000,1000,5,4,1250,high_yield_3to20,False
-iia,mozambique,MOZ-1891-1975,"tobacco, unmanufactured",1935,tonnes,18700,1000,18.7,0.7,26714.285714,high_yield_3to20,False
-iia,mozambique,MOZ-1891-1975,"tobacco, unmanufactured",1936,tonnes,18700,1000,18.7,0.7,26714.285714,high_yield_3to20,False
-iia,serbia,F248-1920-1947,hops,1934,tonnes,143300,24000,5.970833,1489.55,96.203551,high_yield_3to20,False
-iia,serbia,F248-1920-1947,hops,1935,tonnes,189100,26000,7.273077,1489.55,126.951093,high_yield_3to20,False
-iia,serbia,F248-1920-1947,hops,1936,tonnes,196200,27000,7.266667,1489.55,131.717633,high_yield_3to20,False
-iia,serbia,F248-1920-1947,hops,1937,tonnes,213200,29000,7.351724,1489.55,143.130476,high_yield_3to20,False
-iia,serbia,F248-1920-1947,hops,1938,tonnes,160000,28000,5.714286,1489.55,107.414991,high_yield_3to20,False
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1942,tonnes,60400,6000,10.066667,2835.5,21.301358,high_yield_3to20,False
-iia,algeria,DZA-1919-1962,"tobacco, unmanufactured",1945,tonnes,680400,10000,68.04,,,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1934,tonnes,201700,3000,67.233333,1903.2,105.979403,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1935,tonnes,241400,4000,60.35,1903.2,126.839008,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1936,tonnes,249100,4000,62.275,1903.2,130.884826,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1937,tonnes,218300,4000,54.575,1903.2,114.701555,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1939,tonnes,204900,3000,68.3,1903.2,107.660782,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1940,tonnes,220200,4000,55.05,1903.2,115.699874,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1941,tonnes,273700,5000,54.74,1903.2,143.810425,impossible_yield,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1942,tonnes,357800,6000,59.633333,1903.2,187.999159,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1934,tonnes,93700,4000,23.425,848.35,110.449696,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1935,tonnes,109000,4000,27.25,848.35,128.484706,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1936,tonnes,107800,5000,21.56,848.35,127.070195,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1937,tonnes,103300,4000,25.825,848.35,121.765781,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1939,tonnes,90400,500,180.8,848.35,106.559793,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1940,tonnes,146400,500,292.8,848.35,172.570283,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1941,tonnes,137500,500,275,848.35,162.07933,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1942,tonnes,126000,500,252,848.35,148.523605,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1943,tonnes,133900,500,267.8,848.35,157.835799,impossible_yield,True
-iia,australia,AUS-1901-2025,hops,1944,tonnes,118500,500,237,848.35,139.682914,impossible_yield,True
-iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1934,tonnes,141200,3000,47.066667,873.1,161.722598,impossible_yield,True
-iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1935,tonnes,252100,4000,63.025,873.1,288.741267,impossible_yield,True
-iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1936,tonnes,235800,5000,47.16,873.1,270.072157,impossible_yield,True
-iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1937,tonnes,271200,4000,67.8,873.1,310.617341,impossible_yield,True
-iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1939,tonnes,224800,3000,74.933333,873.1,257.473371,impossible_yield,True
-iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1940,tonnes,248400,3000,82.8,873.1,284.503493,impossible_yield,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1943,tonnes,22900,1000,22.9,33.75,678.518519,impossible_yield,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1944,tonnes,56600,1000,56.6,33.75,1677.037037,impossible_yield,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1945,tonnes,56200,2000,28.1,33.75,1665.185185,impossible_yield,True
-iia,chile,CHL-1902-2025,"tobacco, unmanufactured",1939,tonnes,956500,5000,191.3,8778.2,108.963113,impossible_yield,True
-iia,"china, mainland",CHN-1932-1945,"tobacco, unmanufactured",1940,tonnes,51345800,442000,116.166968,,,impossible_yield,True
-iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1934,tonnes,214000,1000,214,861.7,248.346292,impossible_yield,True
-iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1935,tonnes,203500,1000,203.5,861.7,236.161077,impossible_yield,True
-iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1937,tonnes,261100,1000,261.1,861.7,303.005686,impossible_yield,True
-iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1940,tonnes,471700,4000,117.925,861.7,547.40629,impossible_yield,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1934,tonnes,72500,2000,36.25,27,2685.185185,impossible_yield,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1941,tonnes,21300,1000,21.3,27,788.888889,impossible_yield,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1943,tonnes,68100,2000,34.05,27,2522.222222,impossible_yield,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1944,tonnes,56800,1000,56.8,27,2103.703704,impossible_yield,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1945,tonnes,81300,2000,40.65,27,3011.111111,impossible_yield,True
-iia,czech republic,F51-1938-1945,hops,1939,tonnes,763400,10500,72.704762,6651.05,114.77887,impossible_yield,True
-iia,czech republic,F51-1938-1945,hops,1940,tonnes,457600,8900,51.41573,6651.05,68.801167,impossible_yield,True
-iia,czech republic,F51-1938-1945,hops,1941,tonnes,352700,7500,47.026667,6651.05,53.029221,impossible_yield,True
-iia,czech republic,F51-1938-1945,hops,1942,tonnes,310700,7300,42.561644,6651.05,46.714429,impossible_yield,True
-iia,czech republic,F51-1938-1945,hops,1943,tonnes,315200,6300,50.031746,6651.05,47.391013,impossible_yield,True
-iia,czech republic,F51-1945-1947,hops,1945,tonnes,372100,8300,44.831325,6651.05,55.946054,impossible_yield,True
-iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1934,tonnes,1368300,10000,136.83,6323.05,216.398732,impossible_yield,True
-iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1935,tonnes,1363100,10000,136.31,6323.05,215.576344,impossible_yield,True
-iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1936,tonnes,1507200,10000,150.72,6323.05,238.365978,impossible_yield,True
-iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1937,tonnes,1403600,10000,140.36,6323.05,221.98148,impossible_yield,True
-iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1939,tonnes,933000,6000,155.5,6323.05,147.555373,impossible_yield,True
-iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1940,tonnes,780000,6000,130,6323.05,123.358189,impossible_yield,True
-iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1941,tonnes,691400,5000,138.28,6323.05,109.345964,impossible_yield,True
-iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1942,tonnes,746800,5000,149.36,6323.05,118.107559,impossible_yield,True
-iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1943,tonnes,542900,2000,271.45,6323.05,85.860463,impossible_yield,True
-iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1944,tonnes,392800,3000,130.933333,6323.05,62.121919,impossible_yield,True
-iia,indonesia,IDN-1800-1945,"tobacco, unmanufactured",1940,tonnes,2079600,19000,109.452632,,,impossible_yield,True
-iia,iran,IRN-1828-2025,"tobacco, unmanufactured",1940,tonnes,1270000,13000,97.692308,,,impossible_yield,True
-iia,iraq,IRQ-1932-2025,"tobacco, unmanufactured",1940,tonnes,422000,7000,60.285714,,,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1934,tonnes,101100,2000,50.55,573.75,176.20915,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1935,tonnes,100000,2000,50,573.75,174.291939,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1936,tonnes,123700,3000,41.233333,573.75,215.599129,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1937,tonnes,250400,6000,41.733333,573.75,436.427015,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1939,tonnes,52300,2000,26.15,573.75,91.154684,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1940,tonnes,98500,2000,49.25,573.75,171.67756,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1941,tonnes,58900,1000,58.9,573.75,102.657952,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1942,tonnes,141900,3000,47.3,573.75,247.320261,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1943,tonnes,128900,3000,42.966667,573.75,224.662309,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1944,tonnes,168300,3000,56.1,573.75,293.333333,impossible_yield,True
-iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1945,tonnes,136000,3000,45.333333,573.75,237.037037,impossible_yield,True
-iia,japan,JPN-1895-1945,"tobacco, unmanufactured",1940,tonnes,8705400,49000,177.661224,,,impossible_yield,True
-iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1939,tonnes,62400,1000,62.4,,,impossible_yield,True
-iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1940,tonnes,76000,1000,76,,,impossible_yield,True
-iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1941,tonnes,49700,1000,49.7,,,impossible_yield,True
-iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1942,tonnes,44800,1000,44.8,,,impossible_yield,True
-iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1943,tonnes,23600,1000,23.6,,,impossible_yield,True
-iia,lebanon,LBN-1944-2025,"tobacco, unmanufactured",1944,tonnes,74900,1000,74.9,,,impossible_yield,True
-iia,madagascar,MDG-1882-2025,"tobacco, unmanufactured",1945,tonnes,193300,3000,64.433333,,,impossible_yield,True
-iia,malawi,MWI-1891-1953,"tobacco, unmanufactured",1945,tonnes,101200,2000,50.6,,,impossible_yield,True
-iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1934,tonnes,150000,3000,50,1600,93.75,impossible_yield,True
-iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1935,tonnes,155000,3000,51.666667,1600,96.875,impossible_yield,True
-iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1936,tonnes,150000,1000,150,1600,93.75,impossible_yield,True
-iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1937,tonnes,120000,1000,120,1600,75,impossible_yield,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1939,tonnes,41100,1000,41.1,201.35,204.122175,impossible_yield,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1940,tonnes,60100,1000,60.1,201.35,298.485225,impossible_yield,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1941,tonnes,60500,1000,60.5,201.35,300.471815,impossible_yield,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1942,tonnes,51700,1000,51.7,201.35,256.766824,impossible_yield,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1943,tonnes,103400,1000,103.4,201.35,513.533648,impossible_yield,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1944,tonnes,100500,1000,100.5,201.35,499.130867,impossible_yield,True
-iia,myanmar,MMR-1885-2025,"tobacco, unmanufactured",1940,tonnes,6247200,56000,111.557143,,,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1934,tonnes,50200,1000,50.2,580.25,86.514433,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1935,tonnes,48300,1000,48.3,580.25,83.239983,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1936,tonnes,68700,1000,68.7,580.25,118.397243,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1937,tonnes,79300,1000,79.3,580.25,136.665231,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1939,tonnes,99800,1000,99.8,580.25,171.99483,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1940,tonnes,142100,1000,142.1,580.25,244.894442,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1941,tonnes,123400,1000,123.4,580.25,212.666954,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1942,tonnes,144500,1000,144.5,580.25,249.03059,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1943,tonnes,139100,1000,139.1,580.25,239.724257,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1944,tonnes,149100,1000,149.1,580.25,256.958208,impossible_yield,True
-iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1945,tonnes,158800,1000,158.8,580.25,273.67514,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1934,tonnes,42400,1000,42.4,169.5,250.147493,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1935,tonnes,50000,1000,50,169.5,294.985251,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1937,tonnes,35000,1000,35,169.5,206.489676,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1939,tonnes,36000,1000,36,169.5,212.389381,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1940,tonnes,43000,1000,43,169.5,253.687316,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1941,tonnes,50500,1000,50.5,169.5,297.935103,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1942,tonnes,39800,1000,39.8,169.5,234.80826,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1943,tonnes,48000,1000,48,169.5,283.185841,impossible_yield,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1944,tonnes,47000,1000,47,169.5,277.286136,impossible_yield,True
-iia,philippines,PHL-1800-2025,"tobacco, unmanufactured",1940,tonnes,3440600,72000,47.786111,,,impossible_yield,True
-iia,russian federation,F228-1921-1940,"tobacco, unmanufactured",1934,tonnes,17207000,191000,90.089005,92549.6,185.921927,impossible_yield,True
-iia,russian federation,F228-1921-1940,"tobacco, unmanufactured",1936,tonnes,27600000,203000,135.960591,92549.6,298.218469,impossible_yield,True
-iia,serbia,F248-1920-1947,hops,1939,tonnes,181500,2800,64.821429,1489.55,121.848881,impossible_yield,True
-iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1934,tonnes,604900,7000,86.414286,12693.55,47.654124,impossible_yield,True
-iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1935,tonnes,924900,12000,77.075,12693.55,72.863777,impossible_yield,True
-iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1936,tonnes,1662400,18000,92.355556,12693.55,130.964151,impossible_yield,True
-iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1937,tonnes,2078300,21000,98.966667,12693.55,163.728823,impossible_yield,True
-iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1938,tonnes,1470800,16000,91.925,12693.55,115.869871,impossible_yield,True
-iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1939,tonnes,1543300,18000,85.738889,12693.55,121.581433,impossible_yield,True
-iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1945,tonnes,1270100,14000,90.721429,12693.55,100.058691,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1934,tonnes,1540400,15000,102.693333,13433.25,114.670687,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1935,tonnes,2192100,16000,137.00625,13433.25,163.184635,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1936,tonnes,2062600,17000,121.329412,13433.25,153.544377,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1937,tonnes,2648800,19000,139.410526,13433.25,197.182365,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1938,tonnes,2798400,20000,139.92,13433.25,208.31891,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1939,tonnes,3101900,22000,140.995455,13433.25,230.912102,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1940,tonnes,2924900,22000,132.95,13433.25,217.735842,impossible_yield,True
-iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1941,tonnes,3512000,23000,152.695652,13433.25,261.440828,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1934,tonnes,335600,5000,67.12,2835.5,118.356551,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1935,tonnes,201400,4000,50.35,2835.5,71.028037,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1936,tonnes,540900,7000,77.271429,2835.5,190.760007,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1937,tonnes,517900,6000,86.316667,2835.5,182.648563,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1938,tonnes,341000,4000,85.25,2835.5,120.260977,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1941,tonnes,474500,7000,67.785714,2835.5,167.34262,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1943,tonnes,287500,5000,57.5,2835.5,101.393052,impossible_yield,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1944,tonnes,392500,6000,65.416667,2835.5,138.423558,impossible_yield,True
-iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1939,tonnes,44700,2000,22.35,,,impossible_yield,True
-iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1940,tonnes,52400,2000,26.2,,,impossible_yield,True
-iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1941,tonnes,65900,3000,21.966667,,,impossible_yield,True
-iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1942,tonnes,83000,3000,27.666667,,,impossible_yield,True
-iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1943,tonnes,106900,4000,26.725,,,impossible_yield,True
-iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1944,tonnes,104000,4000,26,,,impossible_yield,True
-iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1945,tonnes,95000,4000,23.75,,,impossible_yield,True
-iia,thailand,THA-1909-2025,"tobacco, unmanufactured",1940,tonnes,937900,8000,117.2375,,,impossible_yield,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1934,tonnes,65000,1000,65,285,228.070175,impossible_yield,True
-iia,turkey,TUR-1920-2025,"tobacco, unmanufactured",1940,tonnes,7135600,78000,91.482051,,,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1934,tonnes,124500,1000,124.5,1275.6,97.601129,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1935,tonnes,111200,1000,111.2,1275.6,87.174663,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1936,tonnes,140100,1000,140.1,1275.6,109.830668,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1937,tonnes,270000,3000,90,1275.6,211.665099,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1939,tonnes,170000,2000,85,1275.6,133.270618,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1940,tonnes,165100,2000,82.55,1275.6,129.429288,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1941,tonnes,240000,3000,80,1275.6,188.146754,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1942,tonnes,249000,3000,83,1275.6,195.202258,impossible_yield,True
-iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1943,tonnes,250000,3000,83.333333,1275.6,195.986203,impossible_yield,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1934,tonnes,70600,1000,70.6,537.7,131.299981,impossible_yield,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1935,tonnes,57800,1000,57.8,537.7,107.494886,impossible_yield,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1936,tonnes,57200,1000,57.2,537.7,106.379022,impossible_yield,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1937,tonnes,93700,2000,46.85,537.7,174.26074,impossible_yield,True
-iia,zimbabwe,ZWE-1900-1953,"tobacco, unmanufactured",1945,tonnes,2141800,35000,61.194286,,,impossible_yield,True
-iia,american samoa,ASM-1900-2025,"tobacco, unmanufactured",1934,tonnes,2000,0,,45.9,43.572985,impossible_yield_zero_area,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1934,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1935,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1936,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1937,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
-iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1934,tonnes,52500,0,,602.05,87.20206,impossible_yield_zero_area,True
-iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1935,tonnes,52500,0,,602.05,87.20206,impossible_yield_zero_area,True
-iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1936,tonnes,23000,0,,602.05,38.202807,impossible_yield_zero_area,True
-iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1935,tonnes,4400,0,,,,impossible_yield_zero_area,True
-iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1936,tonnes,10000,0,,,,impossible_yield_zero_area,True
-iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1937,tonnes,7000,0,,,,impossible_yield_zero_area,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1936,tonnes,13700,0,,27,507.407407,impossible_yield_zero_area,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1937,tonnes,3400,0,,27,125.925926,impossible_yield_zero_area,True
-iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1934,tonnes,3500,0,,27.5,127.272727,impossible_yield_zero_area,True
-iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1935,tonnes,2500,0,,27.5,90.909091,impossible_yield_zero_area,True
-iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1936,tonnes,2700,0,,27.5,98.181818,impossible_yield_zero_area,True
-iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1937,tonnes,2100,0,,27.5,76.363636,impossible_yield_zero_area,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1934,tonnes,11900,0,,223.7,53.196245,impossible_yield_zero_area,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1935,tonnes,12800,0,,223.7,57.21949,impossible_yield_zero_area,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1936,tonnes,9100,0,,223.7,40.679481,impossible_yield_zero_area,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1937,tonnes,10600,0,,223.7,47.38489,impossible_yield_zero_area,True
-iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1934,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
-iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1935,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
-iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1936,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
-iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1937,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
-iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1937,tonnes,9700,0,,13,746.153846,impossible_yield_zero_area,True
-iia,libya,LBY-1934-1943,"tobacco, unmanufactured",1935,tonnes,69600,0,,415.5,167.509025,impossible_yield_zero_area,True
-iia,libya,LBY-1934-1943,"tobacco, unmanufactured",1936,tonnes,68400,0,,415.5,164.620939,impossible_yield_zero_area,True
-iia,libya,LBY-1934-1943,"tobacco, unmanufactured",1937,tonnes,85000,0,,415.5,204.572804,impossible_yield_zero_area,True
-iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1934,tonnes,12600,0,,564.45,22.322615,impossible_yield_zero_area,True
-iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1935,tonnes,13500,0,,564.45,23.917087,impossible_yield_zero_area,True
-iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1936,tonnes,14300,0,,564.45,25.334396,impossible_yield_zero_area,True
-iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1937,tonnes,21100,0,,564.45,37.381522,impossible_yield_zero_area,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1934,tonnes,500,0,,4,125,impossible_yield_zero_area,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1935,tonnes,700,0,,4,175,impossible_yield_zero_area,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1937,tonnes,200,0,,4,50,impossible_yield_zero_area,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1934,tonnes,27600,0,,12.3,2243.902439,impossible_yield_zero_area,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1935,tonnes,32000,0,,12.3,2601.626016,impossible_yield_zero_area,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1936,tonnes,47800,0,,12.3,3886.178862,impossible_yield_zero_area,True
-iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1934,tonnes,1000,0,,1300,0.769231,impossible_yield_zero_area,True
-iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1935,tonnes,1100,0,,1300,0.846154,impossible_yield_zero_area,True
-iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1936,tonnes,400,0,,1300,0.307692,impossible_yield_zero_area,True
-iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1937,tonnes,200,0,,1300,0.153846,impossible_yield_zero_area,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1934,tonnes,32100,0,,201.35,159.423889,impossible_yield_zero_area,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1935,tonnes,17600,0,,201.35,87.409983,impossible_yield_zero_area,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1936,tonnes,47400,0,,201.35,235.410976,impossible_yield_zero_area,True
-iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1937,tonnes,41700,0,,201.35,207.102061,impossible_yield_zero_area,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1935,tonnes,59500,0,,285,208.77193,impossible_yield_zero_area,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1936,tonnes,71700,0,,285,251.578947,impossible_yield_zero_area,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1937,tonnes,55900,0,,285,196.140351,impossible_yield_zero_area,True
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1939,tonnes,5800,,,630,9.206349,no_area_level_consistent,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1940,tonnes,2900,,,630,4.603175,no_area_level_consistent,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1942,tonnes,2800,,,630,4.444444,no_area_level_consistent,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1943,tonnes,3100,,,630,4.920635,no_area_level_consistent,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1944,tonnes,2100,,,630,3.333333,no_area_level_consistent,False
-iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1945,tonnes,7700,,,630,12.222222,no_area_level_consistent,False
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1939,tonnes,100,,,4,25,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1934,tonnes,20000,,,20000,1,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1935,tonnes,20000,,,20000,1,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1936,tonnes,20000,,,20000,1,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1939,tonnes,16500,,,20000,0.825,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1940,tonnes,15200,,,20000,0.76,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1941,tonnes,17600,,,20000,0.88,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1942,tonnes,19600,,,20000,0.98,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1943,tonnes,18400,,,20000,0.92,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1944,tonnes,16900,,,20000,0.845,no_area_level_consistent,False
-iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1945,tonnes,22300,,,20000,1.115,no_area_level_consistent,False
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1943,tonnes,271300,,,1903.2,142.549391,no_area_level_shift,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1944,tonnes,256500,,,1903.2,134.773014,no_area_level_shift,True
-iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1945,tonnes,267800,,,1903.2,140.710383,no_area_level_shift,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1939,tonnes,6900,,,33.75,204.444444,no_area_level_shift,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1940,tonnes,6600,,,33.75,195.555556,no_area_level_shift,True
-iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1941,tonnes,7300,,,33.75,216.296296,no_area_level_shift,True
-iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1936,tonnes,222400,,,861.7,258.094464,no_area_level_shift,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1935,tonnes,26800,,,27,992.592593,no_area_level_shift,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1938,tonnes,1600,,,27,59.259259,no_area_level_shift,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1939,tonnes,5200,,,27,192.592593,no_area_level_shift,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1940,tonnes,16500,,,27,611.111111,no_area_level_shift,True
-iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1942,tonnes,46500,,,27,1722.222222,no_area_level_shift,True
-iia,czech republic,F51-1945-1947,"tobacco, unmanufactured",1945,tonnes,250000,,,6323.05,39.537881,no_area_level_shift,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1939,tonnes,19200,,,223.7,85.829236,no_area_level_shift,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1940,tonnes,15600,,,223.7,69.736254,no_area_level_shift,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1941,tonnes,13200,,,223.7,59.007599,no_area_level_shift,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1942,tonnes,26300,,,223.7,117.568172,no_area_level_shift,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1943,tonnes,16000,,,223.7,71.524363,no_area_level_shift,True
-iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1944,tonnes,15600,,,223.7,69.736254,no_area_level_shift,True
-iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1934,tonnes,1400,,,13,107.692308,no_area_level_shift,True
-iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1935,tonnes,4100,,,13,315.384615,no_area_level_shift,True
-iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1936,tonnes,500,,,13,38.461538,no_area_level_shift,True
-iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1938,tonnes,4300,,,13,330.769231,no_area_level_shift,True
-iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1939,tonnes,3600,,,13,276.923077,no_area_level_shift,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1936,tonnes,6500,,,4,1625,no_area_level_shift,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1940,tonnes,200,,,4,50,no_area_level_shift,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1941,tonnes,300,,,4,75,no_area_level_shift,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1942,tonnes,200,,,4,50,no_area_level_shift,True
-iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1943,tonnes,400,,,4,100,no_area_level_shift,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1939,tonnes,26900,,,12.3,2186.99187,no_area_level_shift,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1940,tonnes,36300,,,12.3,2951.219512,no_area_level_shift,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1941,tonnes,36000,,,12.3,2926.829268,no_area_level_shift,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1942,tonnes,39900,,,12.3,3243.902439,no_area_level_shift,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1943,tonnes,32000,,,12.3,2601.626016,no_area_level_shift,True
-iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1944,tonnes,28700,,,12.3,2333.333333,no_area_level_shift,True
-iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1934,tonnes,3100,,,12.9,240.310078,no_area_level_shift,True
-iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1935,tonnes,2100,,,12.9,162.790698,no_area_level_shift,True
-iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1936,tonnes,7300,,,12.9,565.891473,no_area_level_shift,True
-iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1937,tonnes,18100,,,12.9,1403.100775,no_area_level_shift,True
-iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1938,tonnes,4300,,,12.9,333.333333,no_area_level_shift,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1936,tonnes,65000,,,169.5,383.480826,no_area_level_shift,True
-iia,niger,NER-1922-1947,"tobacco, unmanufactured",1945,tonnes,50000,,,169.5,294.985251,no_area_level_shift,True
-iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1940,tonnes,553500,,,2835.5,195.203668,no_area_level_shift,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1939,tonnes,53600,,,285,188.070175,no_area_level_shift,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1940,tonnes,53200,,,285,186.666667,no_area_level_shift,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1941,tonnes,56900,,,285,199.649123,no_area_level_shift,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1942,tonnes,38100,,,285,133.684211,no_area_level_shift,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1943,tonnes,49700,,,285,174.385965,no_area_level_shift,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1944,tonnes,40900,,,285,143.508772,no_area_level_shift,True
-iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1945,tonnes,25900,,,285,90.877193,no_area_level_shift,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1939,tonnes,100900,,,537.7,187.651107,no_area_level_shift,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1940,tonnes,104300,,,537.7,193.974335,no_area_level_shift,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1941,tonnes,122500,,,537.7,227.822206,no_area_level_shift,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1942,tonnes,98400,,,537.7,183.001674,no_area_level_shift,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1943,tonnes,107900,,,537.7,200.669518,no_area_level_shift,True
-iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1944,tonnes,131500,,,537.7,244.560164,no_area_level_shift,True
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1934,tonnes,4000,2000,2,209.5,19.093079,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1935,tonnes,4000,2000,2,209.5,19.093079,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1939,tonnes,1500,2000,0.75,209.5,7.159905,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1940,tonnes,1500,2000,0.75,209.5,7.159905,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1941,tonnes,3000,2000,1.5,209.5,14.319809,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1942,tonnes,3000,2000,1.5,209.5,14.319809,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1943,tonnes,3000,2000,1.5,209.5,14.319809,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1944,tonnes,4500,4000,1.125,209.5,21.479714,plausible_yield,False
-iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1945,tonnes,6000,6000,1,209.5,28.639618,plausible_yield,False
-iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1939,tonnes,900,,,,,untestable,False
-iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1940,tonnes,800,,,,,untestable,False
-iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1941,tonnes,500,,,,,untestable,False
-iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1943,tonnes,27200,,,,,untestable,False
-iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1944,tonnes,5500,,,,,untestable,False
-iia,germany,DEU-1945-1949,"tobacco, unmanufactured",1945,tonnes,0,,,,,untestable,False
-iia,lebanon,LBN-1944-2025,"tobacco, unmanufactured",1945,tonnes,121400,,,,,untestable,False
-iia,netherlands,NLD-1830-2025,"tobacco, unmanufactured",1945,tonnes,0,,,,,untestable,False
-iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1939,tonnes,2200,,,,,untestable,False
-iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1940,tonnes,1200,,,,,untestable,False
-iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1941,tonnes,1800,,,,,untestable,False
-iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1943,tonnes,400,,,,,untestable,False
-iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1944,tonnes,900,,,,,untestable,False
-iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1945,tonnes,300,,,,,untestable,False
+source,label,whep_code,item,year,period,unit,production,area_ha,implied_yield,own_pre_era_median,ratio_to_own,verdict,convicted
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1942,,tonnes,15800,1000,15.8,33.75,468.148148,high_yield_3to20,False
+iia,congo,AEF-1910-1960,"tobacco, unmanufactured",,1934-1938,tonnes,102100,7000,14.585714,311,328.29582,high_yield_3to20,False
+iia,congo,AEF-1910-1960,"tobacco, unmanufactured",1934,,tonnes,108500,7000,15.5,311,348.874598,high_yield_3to20,False
+iia,congo,AEF-1910-1960,"tobacco, unmanufactured",1935,,tonnes,100000,6000,16.666667,311,321.543408,high_yield_3to20,False
+iia,czech republic,F51-1918-1938,hops,1934,,tonnes,707400,109000,6.489908,6651.05,106.359146,high_yield_3to20,False
+iia,czech republic,F51-1918-1938,hops,1935,,tonnes,761900,112000,6.802679,6651.05,114.553341,high_yield_3to20,False
+iia,czech republic,F51-1918-1938,hops,1936,,tonnes,1208100,114000,10.597368,6651.05,181.640493,high_yield_3to20,False
+iia,czech republic,F51-1918-1938,hops,1937,,tonnes,1216500,113000,10.765487,6651.05,182.903451,high_yield_3to20,False
+iia,czech republic,F51-1938-1945,hops,1944,,tonnes,46100,7000,6.585714,6651.05,6.931236,high_yield_3to20,False
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",,1934-1938,tonnes,13700,4000,3.425,223.7,61.242736,high_yield_3to20,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",,1934-1938,tonnes,20700,3000,6.9,630,32.857143,high_yield_3to20,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1934,,tonnes,27600,3000,9.2,630,43.809524,high_yield_3to20,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1935,,tonnes,22100,3000,7.366667,630,35.079365,high_yield_3to20,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1936,,tonnes,22000,3000,7.333333,630,34.920635,high_yield_3to20,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1937,,tonnes,23500,3000,7.833333,630,37.301587,high_yield_3to20,False
+iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",,1934-1938,tonnes,16000,2000,8,564.45,28.346178,high_yield_3to20,False
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1944,,tonnes,5200,1000,5.2,4,1300,high_yield_3to20,False
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1945,,tonnes,5000,1000,5,4,1250,high_yield_3to20,False
+iia,mozambique,MOZ-1891-1975,"tobacco, unmanufactured",1935,,tonnes,18700,1000,18.7,0.7,26714.285714,high_yield_3to20,False
+iia,mozambique,MOZ-1891-1975,"tobacco, unmanufactured",1936,,tonnes,18700,1000,18.7,0.7,26714.285714,high_yield_3to20,False
+iia,serbia,F248-1920-1947,hops,1934,,tonnes,143300,24000,5.970833,1489.55,96.203551,high_yield_3to20,False
+iia,serbia,F248-1920-1947,hops,1935,,tonnes,189100,26000,7.273077,1489.55,126.951093,high_yield_3to20,False
+iia,serbia,F248-1920-1947,hops,1936,,tonnes,196200,27000,7.266667,1489.55,131.717633,high_yield_3to20,False
+iia,serbia,F248-1920-1947,hops,1937,,tonnes,213200,29000,7.351724,1489.55,143.130476,high_yield_3to20,False
+iia,serbia,F248-1920-1947,hops,1938,,tonnes,160000,28000,5.714286,1489.55,107.414991,high_yield_3to20,False
+iia,sri lanka,LKA-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,95400,6000,15.9,4540,21.013216,high_yield_3to20,False
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1942,,tonnes,60400,6000,10.066667,2835.5,21.301358,high_yield_3to20,False
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",,1934-1938,tonnes,24800,2000,12.4,,,high_yield_3to20,False
+iia,albania,ALB-1913-2025,"tobacco, unmanufactured",,1934-1938,tonnes,161200,2000,80.6,,,impossible_yield,True
+iia,algeria,DZA-1919-1962,"tobacco, unmanufactured",,1934-1938,tonnes,1913900,23000,83.213043,,,impossible_yield,True
+iia,algeria,DZA-1919-1962,"tobacco, unmanufactured",1945,,tonnes,680400,10000,68.04,,,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",,1934-1938,tonnes,237100,4000,59.275,1903.2,124.579655,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1934,,tonnes,201700,3000,67.233333,1903.2,105.979403,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1935,,tonnes,241400,4000,60.35,1903.2,126.839008,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1936,,tonnes,249100,4000,62.275,1903.2,130.884826,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1937,,tonnes,218300,4000,54.575,1903.2,114.701555,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1939,,tonnes,204900,3000,68.3,1903.2,107.660782,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1940,,tonnes,220200,4000,55.05,1903.2,115.699874,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1941,,tonnes,273700,5000,54.74,1903.2,143.810425,impossible_yield,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1942,,tonnes,357800,6000,59.633333,1903.2,187.999159,impossible_yield,True
+iia,argentina,ARG-1902-2025,"tobacco, unmanufactured",,1934-1938,tonnes,1552200,16000,97.0125,,,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,,1934-1938,tonnes,104500,400,261.25,848.35,123.180291,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1934,,tonnes,93700,4000,23.425,848.35,110.449696,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1935,,tonnes,109000,4000,27.25,848.35,128.484706,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1936,,tonnes,107800,5000,21.56,848.35,127.070195,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1937,,tonnes,103300,4000,25.825,848.35,121.765781,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1939,,tonnes,90400,500,180.8,848.35,106.559793,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1940,,tonnes,146400,500,292.8,848.35,172.570283,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1941,,tonnes,137500,500,275,848.35,162.07933,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1942,,tonnes,126000,500,252,848.35,148.523605,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1943,,tonnes,133900,500,267.8,848.35,157.835799,impossible_yield,True
+iia,australia,AUS-1901-2025,hops,1944,,tonnes,118500,500,237,848.35,139.682914,impossible_yield,True
+iia,australia,AUS-1901-2025,"tobacco, unmanufactured",,1934-1938,tonnes,215700,4000,53.925,873.1,247.050739,impossible_yield,True
+iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1934,,tonnes,141200,3000,47.066667,873.1,161.722598,impossible_yield,True
+iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1935,,tonnes,252100,4000,63.025,873.1,288.741267,impossible_yield,True
+iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1936,,tonnes,235800,5000,47.16,873.1,270.072157,impossible_yield,True
+iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1937,,tonnes,271200,4000,67.8,873.1,310.617341,impossible_yield,True
+iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1939,,tonnes,224800,3000,74.933333,873.1,257.473371,impossible_yield,True
+iia,australia,AUS-1901-2025,"tobacco, unmanufactured",1940,,tonnes,248400,3000,82.8,873.1,284.503493,impossible_yield,True
+iia,belgium,BEL-1831-2025,hops,,1934-1938,tonnes,120600,900,134,,,impossible_yield,True
+iia,belgium,BEL-1831-2025,"tobacco, unmanufactured",,1934-1938,tonnes,633800,3000,211.266667,,,impossible_yield,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1943,,tonnes,22900,1000,22.9,33.75,678.518519,impossible_yield,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1944,,tonnes,56600,1000,56.6,33.75,1677.037037,impossible_yield,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1945,,tonnes,56200,2000,28.1,33.75,1665.185185,impossible_yield,True
+iia,bolivia,BOL-1909-1938,"tobacco, unmanufactured",,1934-1938,tonnes,353500,3000,117.833333,,,impossible_yield,True
+iia,brazil,BRA-1909-2025,"tobacco, unmanufactured",,1934-1938,tonnes,9265800,99000,93.593939,45000,205.906667,impossible_yield,True
+iia,bulgaria,BGR-1919-1940,"tobacco, unmanufactured",,1934-1938,tonnes,13056700,34000,384.020588,,,impossible_yield,True
+iia,canada,CAN-1886-1949,hops,,1934-1938,tonnes,73100,400,182.75,,,impossible_yield,True
+iia,canada,CAN-1886-1949,"tobacco, unmanufactured",,1934-1938,tonnes,2846800,24000,118.616667,,,impossible_yield,True
+iia,chile,CHL-1902-2025,"tobacco, unmanufactured",,1934-1938,tonnes,691800,3000,230.6,8778.2,78.808867,impossible_yield,True
+iia,chile,CHL-1902-2025,"tobacco, unmanufactured",1939,,tonnes,956500,5000,191.3,8778.2,108.963113,impossible_yield,True
+iia,"china, mainland",CHN-1932-1945,"tobacco, unmanufactured",,1934-1938,tonnes,64152300,566000,113.343286,,,impossible_yield,True
+iia,"china, mainland",CHN-1932-1945,"tobacco, unmanufactured",1940,,tonnes,51345800,442000,116.166968,,,impossible_yield,True
+iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",,1934-1938,tonnes,225300,1000,225.3,861.7,261.459905,impossible_yield,True
+iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1934,,tonnes,214000,1000,214,861.7,248.346292,impossible_yield,True
+iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1935,,tonnes,203500,1000,203.5,861.7,236.161077,impossible_yield,True
+iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1937,,tonnes,261100,1000,261.1,861.7,303.005686,impossible_yield,True
+iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1940,,tonnes,471700,4000,117.925,861.7,547.40629,impossible_yield,True
+iia,colombia,COL-1922-2025,"tobacco, unmanufactured",,1934-1938,tonnes,1224100,11000,111.281818,,,impossible_yield,True
+iia,costa rica,CRI-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,26500,1000,26.5,,,impossible_yield,True
+iia,cuba,CUB-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,2192100,45000,48.713333,,,impossible_yield,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",,1934-1938,tonnes,23600,1000,23.6,27,874.074074,impossible_yield,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1934,,tonnes,72500,2000,36.25,27,2685.185185,impossible_yield,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1941,,tonnes,21300,1000,21.3,27,788.888889,impossible_yield,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1943,,tonnes,68100,2000,34.05,27,2522.222222,impossible_yield,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1944,,tonnes,56800,1000,56.8,27,2103.703704,impossible_yield,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1945,,tonnes,81300,2000,40.65,27,3011.111111,impossible_yield,True
+iia,czech republic,F51-1918-1938,hops,,1934-1938,tonnes,973500,11300,86.150442,6651.05,146.367867,impossible_yield,True
+iia,czech republic,F51-1938-1945,hops,1939,,tonnes,763400,10500,72.704762,6651.05,114.77887,impossible_yield,True
+iia,czech republic,F51-1938-1945,hops,1940,,tonnes,457600,8900,51.41573,6651.05,68.801167,impossible_yield,True
+iia,czech republic,F51-1938-1945,hops,1941,,tonnes,352700,7500,47.026667,6651.05,53.029221,impossible_yield,True
+iia,czech republic,F51-1938-1945,hops,1942,,tonnes,310700,7300,42.561644,6651.05,46.714429,impossible_yield,True
+iia,czech republic,F51-1938-1945,hops,1943,,tonnes,315200,6300,50.031746,6651.05,47.391013,impossible_yield,True
+iia,czech republic,F51-1945-1947,hops,1945,,tonnes,372100,8300,44.831325,6651.05,55.946054,impossible_yield,True
+iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",,1934-1938,tonnes,41410600,10000,4141.06,6323.05,6549.14954,impossible_yield,True
+iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1934,,tonnes,1368300,10000,136.83,6323.05,216.398732,impossible_yield,True
+iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1935,,tonnes,1363100,10000,136.31,6323.05,215.576344,impossible_yield,True
+iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1936,,tonnes,1507200,10000,150.72,6323.05,238.365978,impossible_yield,True
+iia,czech republic,F51-1918-1938,"tobacco, unmanufactured",1937,,tonnes,1403600,10000,140.36,6323.05,221.98148,impossible_yield,True
+iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1939,,tonnes,933000,6000,155.5,6323.05,147.555373,impossible_yield,True
+iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1940,,tonnes,780000,6000,130,6323.05,123.358189,impossible_yield,True
+iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1941,,tonnes,691400,5000,138.28,6323.05,109.345964,impossible_yield,True
+iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1942,,tonnes,746800,5000,149.36,6323.05,118.107559,impossible_yield,True
+iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1943,,tonnes,542900,2000,271.45,6323.05,85.860463,impossible_yield,True
+iia,czech republic,F51-1938-1945,"tobacco, unmanufactured",1944,,tonnes,392800,3000,130.933333,6323.05,62.121919,impossible_yield,True
+iia,dr congo,COD-1910-1960,"tobacco, unmanufactured",,1934-1938,tonnes,404600,5000,80.92,1100,367.818182,impossible_yield,True
+iia,france,FRA-1919-2025,hops,,1934-1938,tonnes,223900,1800,124.388889,,,impossible_yield,True
+iia,france,FRA-1919-2025,"tobacco, unmanufactured",,1934-1938,tonnes,3566700,18000,198.15,,,impossible_yield,True
+iia,germany,DEU-1920-1938,hops,,1934-1938,tonnes,908700,9600,94.65625,,,impossible_yield,True
+iia,germany,DEU-1920-1938,"tobacco, unmanufactured",,1934-1938,tonnes,3360700,13000,258.515385,,,impossible_yield,True
+iia,greece,GRC-1919-1947,"tobacco, unmanufactured",,1934-1938,tonnes,5737600,89000,64.467416,,,impossible_yield,True
+iia,guatemala,GTM-1821-2025,"tobacco, unmanufactured",,1934-1938,tonnes,82200,2000,41.1,257.7,318.975553,impossible_yield,True
+iia,honduras,HND-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,337300,6000,56.216667,,,impossible_yield,True
+iia,hungary,HUN-1920-1938,hops,,1934-1938,tonnes,6600,100,66,42.2,156.398104,impossible_yield,True
+iia,hungary,HUN-1920-1938,"tobacco, unmanufactured",,1934-1938,tonnes,2047600,15000,136.506667,,,impossible_yield,True
+iia,indonesia,IDN-1800-1945,"tobacco, unmanufactured",,1934-1938,tonnes,3471000,41000,84.658537,,,impossible_yield,True
+iia,indonesia,IDN-1800-1945,"tobacco, unmanufactured",1940,,tonnes,2079600,19000,109.452632,,,impossible_yield,True
+iia,iran,IRN-1828-2025,"tobacco, unmanufactured",,1934-1938,tonnes,1500000,12000,125,,,impossible_yield,True
+iia,iran,IRN-1828-2025,"tobacco, unmanufactured",1940,,tonnes,1270000,13000,97.692308,,,impossible_yield,True
+iia,iraq,IRQ-1932-2025,"tobacco, unmanufactured",,1934-1938,tonnes,510700,4000,127.675,,,impossible_yield,True
+iia,iraq,IRQ-1932-2025,"tobacco, unmanufactured",1940,,tonnes,422000,7000,60.285714,,,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",,1934-1938,tonnes,138600,3000,46.2,573.75,241.568627,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1934,,tonnes,101100,2000,50.55,573.75,176.20915,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1935,,tonnes,100000,2000,50,573.75,174.291939,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1936,,tonnes,123700,3000,41.233333,573.75,215.599129,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1937,,tonnes,250400,6000,41.733333,573.75,436.427015,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1939,,tonnes,52300,2000,26.15,573.75,91.154684,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1940,,tonnes,98500,2000,49.25,573.75,171.67756,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1941,,tonnes,58900,1000,58.9,573.75,102.657952,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1942,,tonnes,141900,3000,47.3,573.75,247.320261,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1943,,tonnes,128900,3000,42.966667,573.75,224.662309,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1944,,tonnes,168300,3000,56.1,573.75,293.333333,impossible_yield,True
+iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1945,,tonnes,136000,3000,45.333333,573.75,237.037037,impossible_yield,True
+iia,italy,ITA-1919-2025,"tobacco, unmanufactured",,1934-1938,tonnes,4375800,33000,132.6,,,impossible_yield,True
+iia,japan,JPN-1895-1945,"tobacco, unmanufactured",,1934-1938,tonnes,6410500,35000,183.157143,,,impossible_yield,True
+iia,japan,JPN-1895-1945,"tobacco, unmanufactured",1940,,tonnes,8705400,49000,177.661224,,,impossible_yield,True
+iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",,1934-1938,tonnes,108000,2000,54,,,impossible_yield,True
+iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1939,,tonnes,62400,1000,62.4,,,impossible_yield,True
+iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1940,,tonnes,76000,1000,76,,,impossible_yield,True
+iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1941,,tonnes,49700,1000,49.7,,,impossible_yield,True
+iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1942,,tonnes,44800,1000,44.8,,,impossible_yield,True
+iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",1943,,tonnes,23600,1000,23.6,,,impossible_yield,True
+iia,lebanon,LBN-1944-2025,"tobacco, unmanufactured",1944,,tonnes,74900,1000,74.9,,,impossible_yield,True
+iia,madagascar,MDG-1882-2025,"tobacco, unmanufactured",,1934-1938,tonnes,559200,7000,79.885714,,,impossible_yield,True
+iia,madagascar,MDG-1882-2025,"tobacco, unmanufactured",1945,,tonnes,193300,3000,64.433333,,,impossible_yield,True
+iia,malawi,MWI-1891-1953,"tobacco, unmanufactured",,1934-1938,tonnes,129900,3000,43.3,,,impossible_yield,True
+iia,malawi,MWI-1891-1953,"tobacco, unmanufactured",1945,,tonnes,101200,2000,50.6,,,impossible_yield,True
+iia,mali,MLI-1890-1960,"tobacco, unmanufactured",,1934-1938,tonnes,139000,2000,69.5,1600,86.875,impossible_yield,True
+iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1934,,tonnes,150000,3000,50,1600,93.75,impossible_yield,True
+iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1935,,tonnes,155000,3000,51.666667,1600,96.875,impossible_yield,True
+iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1936,,tonnes,150000,1000,150,1600,93.75,impossible_yield,True
+iia,mali,MLI-1890-1960,"tobacco, unmanufactured",1937,,tonnes,120000,1000,120,1600,75,impossible_yield,True
+iia,mexico,MEX-1848-2025,"tobacco, unmanufactured",,1934-1938,tonnes,1543100,18000,85.727778,,,impossible_yield,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1939,,tonnes,41100,1000,41.1,201.35,204.122175,impossible_yield,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1940,,tonnes,60100,1000,60.1,201.35,298.485225,impossible_yield,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1941,,tonnes,60500,1000,60.5,201.35,300.471815,impossible_yield,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1942,,tonnes,51700,1000,51.7,201.35,256.766824,impossible_yield,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1943,,tonnes,103400,1000,103.4,201.35,513.533648,impossible_yield,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1944,,tonnes,100500,1000,100.5,201.35,499.130867,impossible_yield,True
+iia,myanmar,MMR-1885-2025,"tobacco, unmanufactured",,1934-1938,tonnes,4519600,40000,112.99,,,impossible_yield,True
+iia,myanmar,MMR-1885-2025,"tobacco, unmanufactured",1940,,tonnes,6247200,56000,111.557143,,,impossible_yield,True
+iia,new zealand,NZL-1840-2025,hops,,1934-1938,tonnes,39700,300,132.333333,358.3,110.801005,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",,1934-1938,tonnes,62000,1000,62,580.25,106.850495,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1934,,tonnes,50200,1000,50.2,580.25,86.514433,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1935,,tonnes,48300,1000,48.3,580.25,83.239983,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1936,,tonnes,68700,1000,68.7,580.25,118.397243,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1937,,tonnes,79300,1000,79.3,580.25,136.665231,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1939,,tonnes,99800,1000,99.8,580.25,171.99483,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1940,,tonnes,142100,1000,142.1,580.25,244.894442,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1941,,tonnes,123400,1000,123.4,580.25,212.666954,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1942,,tonnes,144500,1000,144.5,580.25,249.03059,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1943,,tonnes,139100,1000,139.1,580.25,239.724257,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1944,,tonnes,149100,1000,149.1,580.25,256.958208,impossible_yield,True
+iia,new zealand,NZL-1840-2025,"tobacco, unmanufactured",1945,,tonnes,158800,1000,158.8,580.25,273.67514,impossible_yield,True
+iia,nicaragua,NIC-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,55000,1000,55,,,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",,1934-1938,tonnes,44900,1000,44.9,169.5,264.896755,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1934,,tonnes,42400,1000,42.4,169.5,250.147493,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1935,,tonnes,50000,1000,50,169.5,294.985251,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1937,,tonnes,35000,1000,35,169.5,206.489676,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1939,,tonnes,36000,1000,36,169.5,212.389381,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1940,,tonnes,43000,1000,43,169.5,253.687316,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1941,,tonnes,50500,1000,50.5,169.5,297.935103,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1942,,tonnes,39800,1000,39.8,169.5,234.80826,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1943,,tonnes,48000,1000,48,169.5,283.185841,impossible_yield,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1944,,tonnes,47000,1000,47,169.5,277.286136,impossible_yield,True
+iia,paraguay,PRY-1932-1938,"tobacco, unmanufactured",,1934-1938,tonnes,765300,9000,85.033333,,,impossible_yield,True
+iia,philippines,PHL-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,3212700,65000,49.426154,,,impossible_yield,True
+iia,philippines,PHL-1800-2025,"tobacco, unmanufactured",1940,,tonnes,3440600,72000,47.786111,,,impossible_yield,True
+iia,poland,POL-1921-1945,hops,,1934-1938,tonnes,177200,3200,55.375,1614.1,109.782541,impossible_yield,True
+iia,poland,POL-1921-1945,"tobacco, unmanufactured",,1934-1938,tonnes,1137200,6000,189.533333,,,impossible_yield,True
+iia,romania,ROU-1920-1940,"tobacco, unmanufactured",,1934-1938,tonnes,1132300,16000,70.76875,,,impossible_yield,True
+iia,russian federation,F228-1921-1940,hops,,1934-1938,tonnes,100000,2000,50,4422.7,22.610622,impossible_yield,True
+iia,russian federation,F228-1921-1940,"tobacco, unmanufactured",,1934-1938,tonnes,22403500,199000,112.580402,92549.6,242.070198,impossible_yield,True
+iia,russian federation,F228-1921-1940,"tobacco, unmanufactured",1934,,tonnes,17207000,191000,90.089005,92549.6,185.921927,impossible_yield,True
+iia,russian federation,F228-1921-1940,"tobacco, unmanufactured",1936,,tonnes,27600000,203000,135.960591,92549.6,298.218469,impossible_yield,True
+iia,serbia,F248-1920-1947,hops,,1934-1938,tonnes,180400,2700,66.814815,1489.55,121.110402,impossible_yield,True
+iia,serbia,F248-1920-1947,hops,1939,,tonnes,181500,2800,64.821429,1489.55,121.848881,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",,1934-1938,tonnes,1348200,15000,89.88,12693.55,106.211422,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1934,,tonnes,604900,7000,86.414286,12693.55,47.654124,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1935,,tonnes,924900,12000,77.075,12693.55,72.863777,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1936,,tonnes,1662400,18000,92.355556,12693.55,130.964151,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1937,,tonnes,2078300,21000,98.966667,12693.55,163.728823,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1938,,tonnes,1470800,16000,91.925,12693.55,115.869871,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1939,,tonnes,1543300,18000,85.738889,12693.55,121.581433,impossible_yield,True
+iia,serbia,F248-1920-1947,"tobacco, unmanufactured",1945,,tonnes,1270100,14000,90.721429,12693.55,100.058691,impossible_yield,True
+iia,south africa,ZAF-1910-2025,"tobacco, unmanufactured",,1934-1938,tonnes,913100,14000,65.221429,6609.8,138.143363,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",,1934-1938,tonnes,2252500,17000,132.5,13433.25,167.680941,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1934,,tonnes,1540400,15000,102.693333,13433.25,114.670687,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1935,,tonnes,2192100,16000,137.00625,13433.25,163.184635,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1936,,tonnes,2062600,17000,121.329412,13433.25,153.544377,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1937,,tonnes,2648800,19000,139.410526,13433.25,197.182365,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1938,,tonnes,2798400,20000,139.92,13433.25,208.31891,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1939,,tonnes,3101900,22000,140.995455,13433.25,230.912102,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1940,,tonnes,2924900,22000,132.95,13433.25,217.735842,impossible_yield,True
+iia,south korea,KOR-1800-1945,"tobacco, unmanufactured",1941,,tonnes,3512000,23000,152.695652,13433.25,261.440828,impossible_yield,True
+iia,spain,ESP-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,707100,4000,176.775,,,impossible_yield,True
+iia,switzerland,CHE-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,106700,1000,106.7,,,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",,1934-1938,tonnes,272200,4000,68.05,2835.5,95.997179,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1934,,tonnes,335600,5000,67.12,2835.5,118.356551,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1935,,tonnes,201400,4000,50.35,2835.5,71.028037,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1936,,tonnes,540900,7000,77.271429,2835.5,190.760007,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1937,,tonnes,517900,6000,86.316667,2835.5,182.648563,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1938,,tonnes,341000,4000,85.25,2835.5,120.260977,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1941,,tonnes,474500,7000,67.785714,2835.5,167.34262,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1943,,tonnes,287500,5000,57.5,2835.5,101.393052,impossible_yield,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1944,,tonnes,392500,6000,65.416667,2835.5,138.423558,impossible_yield,True
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1939,,tonnes,44700,2000,22.35,,,impossible_yield,True
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1940,,tonnes,52400,2000,26.2,,,impossible_yield,True
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1941,,tonnes,65900,3000,21.966667,,,impossible_yield,True
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1942,,tonnes,83000,3000,27.666667,,,impossible_yield,True
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1943,,tonnes,106900,4000,26.725,,,impossible_yield,True
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1944,,tonnes,104000,4000,26,,,impossible_yield,True
+iia,tanzania,TAN-1922-1964,"tobacco, unmanufactured",1945,,tonnes,95000,4000,23.75,,,impossible_yield,True
+iia,thailand,THA-1909-2025,"tobacco, unmanufactured",,1934-1938,tonnes,882800,10000,88.28,,,impossible_yield,True
+iia,thailand,THA-1909-2025,"tobacco, unmanufactured",1940,,tonnes,937900,8000,117.2375,,,impossible_yield,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1934,,tonnes,65000,1000,65,285,228.070175,impossible_yield,True
+iia,turkey,TUR-1920-2025,"tobacco, unmanufactured",,1934-1938,tonnes,5543300,72000,76.990278,,,impossible_yield,True
+iia,turkey,TUR-1920-2025,"tobacco, unmanufactured",1940,,tonnes,7135600,78000,91.482051,,,impossible_yield,True
+iia,united kingdom,GBR-1921-2025,hops,,1934-1938,tonnes,1271100,7400,171.77027,,,impossible_yield,True
+iia,united states of america,USA-1867-1959,hops,,1934-1938,tonnes,1768000,14000,126.285714,,,impossible_yield,True
+iia,united states of america,USA-1867-1959,"tobacco, unmanufactured",,1934-1938,tonnes,60387500,627000,96.311802,,,impossible_yield,True
+iia,uruguay,URY-1828-2025,"tobacco, unmanufactured",,1934-1938,tonnes,54000,1000,54,35.4,1525.423729,impossible_yield,True
+iia,venezuela,VEN-1821-2025,"tobacco, unmanufactured",,1934-1938,tonnes,322100,8000,40.2625,,,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",,1934-1938,tonnes,168700,2000,84.35,1275.6,132.251489,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1934,,tonnes,124500,1000,124.5,1275.6,97.601129,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1935,,tonnes,111200,1000,111.2,1275.6,87.174663,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1936,,tonnes,140100,1000,140.1,1275.6,109.830668,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1937,,tonnes,270000,3000,90,1275.6,211.665099,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1939,,tonnes,170000,2000,85,1275.6,133.270618,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1940,,tonnes,165100,2000,82.55,1275.6,129.429288,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1941,,tonnes,240000,3000,80,1275.6,188.146754,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1942,,tonnes,249000,3000,83,1275.6,195.202258,impossible_yield,True
+iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1943,,tonnes,250000,3000,83.333333,1275.6,195.986203,impossible_yield,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",,1934-1938,tonnes,73800,2000,36.9,537.7,137.251255,impossible_yield,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1934,,tonnes,70600,1000,70.6,537.7,131.299981,impossible_yield,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1935,,tonnes,57800,1000,57.8,537.7,107.494886,impossible_yield,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1936,,tonnes,57200,1000,57.2,537.7,106.379022,impossible_yield,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1937,,tonnes,93700,2000,46.85,537.7,174.26074,impossible_yield,True
+iia,zimbabwe,ZWE-1900-1953,"tobacco, unmanufactured",,1934-1938,tonnes,1050600,19000,55.294737,,,impossible_yield,True
+iia,zimbabwe,ZWE-1900-1953,"tobacco, unmanufactured",1945,,tonnes,2141800,35000,61.194286,,,impossible_yield,True
+iia,american samoa,ASM-1900-2025,"tobacco, unmanufactured",1934,,tonnes,2000,0,,45.9,43.572985,impossible_yield_zero_area,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1934,,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1935,,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1936,,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1937,,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
+iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1934,,tonnes,52500,0,,602.05,87.20206,impossible_yield_zero_area,True
+iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1935,,tonnes,52500,0,,602.05,87.20206,impossible_yield_zero_area,True
+iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1936,,tonnes,23000,0,,602.05,38.202807,impossible_yield_zero_area,True
+iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1935,,tonnes,4400,0,,,,impossible_yield_zero_area,True
+iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1936,,tonnes,10000,0,,,,impossible_yield_zero_area,True
+iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1937,,tonnes,7000,0,,,,impossible_yield_zero_area,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1936,,tonnes,13700,0,,27,507.407407,impossible_yield_zero_area,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1937,,tonnes,3400,0,,27,125.925926,impossible_yield_zero_area,True
+iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1934,,tonnes,3500,0,,27.5,127.272727,impossible_yield_zero_area,True
+iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1935,,tonnes,2500,0,,27.5,90.909091,impossible_yield_zero_area,True
+iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1936,,tonnes,2700,0,,27.5,98.181818,impossible_yield_zero_area,True
+iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",1937,,tonnes,2100,0,,27.5,76.363636,impossible_yield_zero_area,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1934,,tonnes,11900,0,,223.7,53.196245,impossible_yield_zero_area,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1935,,tonnes,12800,0,,223.7,57.21949,impossible_yield_zero_area,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1936,,tonnes,9100,0,,223.7,40.679481,impossible_yield_zero_area,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1937,,tonnes,10600,0,,223.7,47.38489,impossible_yield_zero_area,True
+iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1934,,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
+iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1935,,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
+iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1936,,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
+iia,french polynesia,PYF-1800-2025,"tobacco, unmanufactured",1937,,tonnes,300,0,,22,13.636364,impossible_yield_zero_area,True
+iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1937,,tonnes,9700,0,,13,746.153846,impossible_yield_zero_area,True
+iia,libya,LBY-1934-1943,"tobacco, unmanufactured",1935,,tonnes,69600,0,,415.5,167.509025,impossible_yield_zero_area,True
+iia,libya,LBY-1934-1943,"tobacco, unmanufactured",1936,,tonnes,68400,0,,415.5,164.620939,impossible_yield_zero_area,True
+iia,libya,LBY-1934-1943,"tobacco, unmanufactured",1937,,tonnes,85000,0,,415.5,204.572804,impossible_yield_zero_area,True
+iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1934,,tonnes,12600,0,,564.45,22.322615,impossible_yield_zero_area,True
+iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1935,,tonnes,13500,0,,564.45,23.917087,impossible_yield_zero_area,True
+iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1936,,tonnes,14300,0,,564.45,25.334396,impossible_yield_zero_area,True
+iia,malaysia,BNB-1881-1963,"tobacco, unmanufactured",1937,,tonnes,21100,0,,564.45,37.381522,impossible_yield_zero_area,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1934,,tonnes,500,0,,4,125,impossible_yield_zero_area,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1935,,tonnes,700,0,,4,175,impossible_yield_zero_area,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1937,,tonnes,200,0,,4,50,impossible_yield_zero_area,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1934,,tonnes,27600,0,,12.3,2243.902439,impossible_yield_zero_area,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1935,,tonnes,32000,0,,12.3,2601.626016,impossible_yield_zero_area,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1936,,tonnes,47800,0,,12.3,3886.178862,impossible_yield_zero_area,True
+iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1934,,tonnes,1000,0,,1300,0.769231,impossible_yield_zero_area,True
+iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1935,,tonnes,1100,0,,1300,0.846154,impossible_yield_zero_area,True
+iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1936,,tonnes,400,0,,1300,0.307692,impossible_yield_zero_area,True
+iia,micronesia (federated states of),CAR-1920-1945,"tobacco, unmanufactured",1937,,tonnes,200,0,,1300,0.153846,impossible_yield_zero_area,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1934,,tonnes,32100,0,,201.35,159.423889,impossible_yield_zero_area,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1935,,tonnes,17600,0,,201.35,87.409983,impossible_yield_zero_area,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1936,,tonnes,47400,0,,201.35,235.410976,impossible_yield_zero_area,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",1937,,tonnes,41700,0,,201.35,207.102061,impossible_yield_zero_area,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1935,,tonnes,59500,0,,285,208.77193,impossible_yield_zero_area,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1936,,tonnes,71700,0,,285,251.578947,impossible_yield_zero_area,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1937,,tonnes,55900,0,,285,196.140351,impossible_yield_zero_area,True
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1939,,tonnes,5800,,,630,9.206349,no_area_level_consistent,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1940,,tonnes,2900,,,630,4.603175,no_area_level_consistent,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1942,,tonnes,2800,,,630,4.444444,no_area_level_consistent,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1943,,tonnes,3100,,,630,4.920635,no_area_level_consistent,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1944,,tonnes,2100,,,630,3.333333,no_area_level_consistent,False
+iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1945,,tonnes,7700,,,630,12.222222,no_area_level_consistent,False
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1939,,tonnes,100,,,4,25,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1934,,tonnes,20000,,,20000,1,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1935,,tonnes,20000,,,20000,1,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1936,,tonnes,20000,,,20000,1,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1939,,tonnes,16500,,,20000,0.825,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1940,,tonnes,15200,,,20000,0.76,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1941,,tonnes,17600,,,20000,0.88,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1942,,tonnes,19600,,,20000,0.98,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1943,,tonnes,18400,,,20000,0.92,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1944,,tonnes,16900,,,20000,0.845,no_area_level_consistent,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1945,,tonnes,22300,,,20000,1.115,no_area_level_consistent,False
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1943,,tonnes,271300,,,1903.2,142.549391,no_area_level_shift,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1944,,tonnes,256500,,,1903.2,134.773014,no_area_level_shift,True
+iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1945,,tonnes,267800,,,1903.2,140.710383,no_area_level_shift,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",,1934-1938,tonnes,5200,,,33.75,154.074074,no_area_level_shift,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1939,,tonnes,6900,,,33.75,204.444444,no_area_level_shift,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1940,,tonnes,6600,,,33.75,195.555556,no_area_level_shift,True
+iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1941,,tonnes,7300,,,33.75,216.296296,no_area_level_shift,True
+iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",,1934-1938,tonnes,34800,,,602.05,57.802508,no_area_level_shift,True
+iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1936,,tonnes,222400,,,861.7,258.094464,no_area_level_shift,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1935,,tonnes,26800,,,27,992.592593,no_area_level_shift,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1938,,tonnes,1600,,,27,59.259259,no_area_level_shift,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1939,,tonnes,5200,,,27,192.592593,no_area_level_shift,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1940,,tonnes,16500,,,27,611.111111,no_area_level_shift,True
+iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1942,,tonnes,46500,,,27,1722.222222,no_area_level_shift,True
+iia,czech republic,F51-1945-1947,"tobacco, unmanufactured",1945,,tonnes,250000,,,6323.05,39.537881,no_area_level_shift,True
+iia,eritrea,ERI-1889-1952,"tobacco, unmanufactured",,1934-1938,tonnes,2600,,,27.5,94.545455,no_area_level_shift,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1939,,tonnes,19200,,,223.7,85.829236,no_area_level_shift,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1940,,tonnes,15600,,,223.7,69.736254,no_area_level_shift,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1941,,tonnes,13200,,,223.7,59.007599,no_area_level_shift,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1942,,tonnes,26300,,,223.7,117.568172,no_area_level_shift,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1943,,tonnes,16000,,,223.7,71.524363,no_area_level_shift,True
+iia,eswatini,SWZ-1894-2025,"tobacco, unmanufactured",1944,,tonnes,15600,,,223.7,69.736254,no_area_level_shift,True
+iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",,1934-1938,tonnes,4000,,,13,307.692308,no_area_level_shift,True
+iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1934,,tonnes,1400,,,13,107.692308,no_area_level_shift,True
+iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1935,,tonnes,4100,,,13,315.384615,no_area_level_shift,True
+iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1936,,tonnes,500,,,13,38.461538,no_area_level_shift,True
+iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1938,,tonnes,4300,,,13,330.769231,no_area_level_shift,True
+iia,jordan,JOR-1923-1946,"tobacco, unmanufactured",1939,,tonnes,3600,,,13,276.923077,no_area_level_shift,True
+iia,libya,LBY-1934-1943,"tobacco, unmanufactured",,1934-1938,tonnes,75000,,,415.5,180.505415,no_area_level_shift,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",,1934-1938,tonnes,1600,,,4,400,no_area_level_shift,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1936,,tonnes,6500,,,4,1625,no_area_level_shift,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1940,,tonnes,200,,,4,50,no_area_level_shift,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1941,,tonnes,300,,,4,75,no_area_level_shift,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1942,,tonnes,200,,,4,50,no_area_level_shift,True
+iia,mauritania,MRT-1920-1960,"tobacco, unmanufactured",1943,,tonnes,400,,,4,100,no_area_level_shift,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,30200,,,12.3,2455.284553,no_area_level_shift,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1939,,tonnes,26900,,,12.3,2186.99187,no_area_level_shift,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1940,,tonnes,36300,,,12.3,2951.219512,no_area_level_shift,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1941,,tonnes,36000,,,12.3,2926.829268,no_area_level_shift,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1942,,tonnes,39900,,,12.3,3243.902439,no_area_level_shift,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1943,,tonnes,32000,,,12.3,2601.626016,no_area_level_shift,True
+iia,mauritius,MUS-1800-2025,"tobacco, unmanufactured",1944,,tonnes,28700,,,12.3,2333.333333,no_area_level_shift,True
+iia,morocco,MAR-1911-1958,"tobacco, unmanufactured",,1934-1938,tonnes,34700,,,201.35,172.336727,no_area_level_shift,True
+iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1934,,tonnes,3100,,,12.9,240.310078,no_area_level_shift,True
+iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1935,,tonnes,2100,,,12.9,162.790698,no_area_level_shift,True
+iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1936,,tonnes,7300,,,12.9,565.891473,no_area_level_shift,True
+iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1937,,tonnes,18100,,,12.9,1403.100775,no_area_level_shift,True
+iia,namibia,NAM-1920-1990,"tobacco, unmanufactured",1938,,tonnes,4300,,,12.9,333.333333,no_area_level_shift,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1936,,tonnes,65000,,,169.5,383.480826,no_area_level_shift,True
+iia,niger,NER-1922-1947,"tobacco, unmanufactured",1945,,tonnes,50000,,,169.5,294.985251,no_area_level_shift,True
+iia,peru,PER-1922-1942,"tobacco, unmanufactured",,1934-1938,tonnes,92500,,,2900,31.896552,no_area_level_shift,True
+iia,syrian arab republic,SYR-1922-1946,"tobacco, unmanufactured",1940,,tonnes,553500,,,2835.5,195.203668,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",,1934-1938,tonnes,58100,,,285,203.859649,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1939,,tonnes,53600,,,285,188.070175,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1940,,tonnes,53200,,,285,186.666667,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1941,,tonnes,56900,,,285,199.649123,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1942,,tonnes,38100,,,285,133.684211,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1943,,tonnes,49700,,,285,174.385965,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1944,,tonnes,40900,,,285,143.508772,no_area_level_shift,True
+iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1945,,tonnes,25900,,,285,90.877193,no_area_level_shift,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1939,,tonnes,100900,,,537.7,187.651107,no_area_level_shift,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1940,,tonnes,104300,,,537.7,193.974335,no_area_level_shift,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1941,,tonnes,122500,,,537.7,227.822206,no_area_level_shift,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1942,,tonnes,98400,,,537.7,183.001674,no_area_level_shift,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1943,,tonnes,107900,,,537.7,200.669518,no_area_level_shift,True
+iia,zambia,NRH-1911-1953,"tobacco, unmanufactured",1944,,tonnes,131500,,,537.7,244.560164,no_area_level_shift,True
+iia,el salvador,SLV-1821-2025,"tobacco, unmanufactured",,1934-1938,tonnes,21000,63000,0.333333,,,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",,1934-1938,tonnes,3000,2000,1.5,209.5,14.319809,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1934,,tonnes,4000,2000,2,209.5,19.093079,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1935,,tonnes,4000,2000,2,209.5,19.093079,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1939,,tonnes,1500,2000,0.75,209.5,7.159905,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1940,,tonnes,1500,2000,0.75,209.5,7.159905,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1941,,tonnes,3000,2000,1.5,209.5,14.319809,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1942,,tonnes,3000,2000,1.5,209.5,14.319809,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1943,,tonnes,3000,2000,1.5,209.5,14.319809,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1944,,tonnes,4500,4000,1.125,209.5,21.479714,plausible_yield,False
+iia,ivory coast,CIV-1932-1947,"tobacco, unmanufactured",1945,,tonnes,6000,6000,1,209.5,28.639618,plausible_yield,False
+iia,reunion,REU-1816-1946,"tobacco, unmanufactured",,1934-1938,tonnes,19700,108000,0.182407,20000,0.985,plausible_yield,False
+iia,austria,AUT-1919-2025,hops,,1934-1938,tonnes,4900,,,,,untestable,False
+iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",,1934-1938,tonnes,900,,,,,untestable,False
+iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1939,,tonnes,900,,,,,untestable,False
+iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1940,,tonnes,800,,,,,untestable,False
+iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1941,,tonnes,500,,,,,untestable,False
+iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1943,,tonnes,27200,,,,,untestable,False
+iia,cabo verde,CPV-1886-1975,"tobacco, unmanufactured",1944,,tonnes,5500,,,,,untestable,False
+iia,dominican republic,DOM-1800-2025,"tobacco, unmanufactured",,1934-1938,tonnes,696394900,,,,,untestable,False
+iia,ecuador,ECU-1800-1942,"tobacco, unmanufactured",,1934-1938,tonnes,69000,,,,,untestable,False
+iia,germany,DEU-1945-1949,"tobacco, unmanufactured",1945,,tonnes,0,,,,,untestable,False
+iia,ireland,IRL-1921-2025,"tobacco, unmanufactured",,1934-1938,tonnes,18500,,,,,untestable,False
+iia,lebanon,LBN-1944-2025,"tobacco, unmanufactured",1945,,tonnes,121400,,,,,untestable,False
+iia,netherlands,NLD-1830-2025,"tobacco, unmanufactured",1945,,tonnes,0,,,,,untestable,False
+iia,romania,ROU-1920-1940,hops,,1934-1938,tonnes,1900,,,,,untestable,False
+iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",,1934-1938,tonnes,1000,,,,,untestable,False
+iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1939,,tonnes,2200,,,,,untestable,False
+iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1940,,tonnes,1200,,,,,untestable,False
+iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1941,,tonnes,1800,,,,,untestable,False
+iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1943,,tonnes,400,,,,,untestable,False
+iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1944,,tonnes,900,,,,,untestable,False
+iia,suriname,SUR-1886-1954,"tobacco, unmanufactured",1945,,tonnes,300,,,,,untestable,False
+iia,sweden,SWE-1905-2025,"tobacco, unmanufactured",,1934-1938,tonnes,50300,,,,,untestable,False

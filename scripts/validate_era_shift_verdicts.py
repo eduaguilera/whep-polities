@@ -42,12 +42,13 @@ What is pinned is arithmetic and the zero-area rule, neither of which can legiti
 """
 import csv
 import os
+import re
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/era_shift_verdicts.csv")
 
-FIELDS = ["source", "label", "whep_code", "item", "year", "unit", "production", "area_ha",
+FIELDS = ["source", "label", "whep_code", "item", "year", "period", "unit", "production", "area_ha",
           "implied_yield", "own_pre_era_median", "ratio_to_own", "verdict", "convicted"]
 CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift"}
 NOT_CONVICTING = {"high_yield_3to20", "plausible_yield", "no_area_level_consistent", "untestable"}
@@ -72,7 +73,7 @@ def main() -> int:
         rows = list(rd)
 
     for i, r in enumerate(rows, start=2):
-        w = f"line {i} {r['label']}/{r['item']}/{r['year']}"
+        w = f"line {i} {r['label']}/{r['item']}/{r['year'] or r['period']}"
         v = r["verdict"]
         # --- A ---
         if v not in CONVICTING | NOT_CONVICTING:
@@ -84,10 +85,26 @@ def main() -> int:
             problems.append(f"A {w}: verdict {v} but convicted={r['convicted']}")
         prod, ar, yld = _f(r["production"]), _f(r["area_ha"]), _f(r["implied_yield"])
         base, ratio = _f(r["own_pre_era_median"]), _f(r["ratio_to_own"])
-        # --- E ---
-        if int(r["year"]) < ERA_FROM:
-            problems.append(f"E {w}: year {r['year']} precedes the {ERA_FROM} boundary; 1933 is the "
-                            f"last year a second volume offers an opinion (issue 414)")
+        # --- E: the era floor, for a dated row OR a period row ---
+        # 341 of this source's production rows carry a period instead of a year, and 99 of those are
+        # inside the era. The screen's first version compared `year >= 1934`, which is False for NaN,
+        # so it dropped them silently and reported the era as 328 rows instead of 427. A row must
+        # therefore carry EXACTLY ONE of `year` or `period`, and whichever it carries must reach the era.
+        yr, per = (r["year"] or "").strip(), (r["period"] or "").strip()
+        if bool(yr) == bool(per):
+            problems.append(f"E {w}: carries year={yr!r} and period={per!r}; exactly one is required "
+                            f"-- a five-year mean must never be readable as an observation of one year")
+        elif yr:
+            if int(yr) < ERA_FROM:
+                problems.append(f"E {w}: year {yr} precedes the {ERA_FROM} boundary; 1933 is the "
+                                f"last year a second volume offers an opinion (issue 414)")
+        else:
+            yy = re.findall(r"\d{4}", per)
+            if not yy:
+                problems.append(f"E {w}: period {per!r} carries no year")
+            elif int(yy[-1]) < ERA_FROM:
+                problems.append(f"E {w}: period {per} ENDS before the {ERA_FROM} boundary, so it "
+                                f"belongs to the clean era, not this one")
         # --- B ---
         if ar is not None and ar > 0:
             if yld is None:
