@@ -1437,6 +1437,32 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
+    """Lower a block's n_items while leaving the item list it describes intact.
+
+    The blocks are pinned by (source, country, unit, year) and counted against a ceiling, so both of
+    those signals survive a change to the COUNT column. What does not survive is the internal
+    agreement between `n_items` and `items` — and that column is the whole finding, because "eight
+    items agree to the digit" is what distinguishes a broadcast cell from eight coincidences. Dropped
+    to 4 rather than to 1 so it also stays above the generator's floor, leaving only the
+    count-versus-list check able to see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/item_blocks.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    worst = max(rows, key=lambda r: int(r["n_items"]))
+    before = worst["n_items"]
+    worst["n_items"] = "4"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"lowered the {worst['country']} / {worst['unit']} {worst['year']} block's n_items from "
+            f"{before} to 4 while leaving its {before}-item list in place, so the number carrying the "
+            f"finding no longer describes the row it sits in")
+
+
 def mutate_zero_tail_given_a_factor(root, gpd, make_valid, affinity):
     """Fill in a factor on a zero-position row, where no ratio exists.
 
@@ -3010,6 +3036,14 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_item_blocks.py",
+        mutate_item_block_count_lowered,
+        "no longer describes the row",
+        "a broadcast-cell block whose item COUNT was lowered while its item list stayed — the ceiling "
+        "and the identity pin both survive that, and the count is the whole finding since 'eight "
+        "items agree to the digit' is what rules out eight coincidences",
+    ),
+    (
         "validate_series_collapses.py",
         mutate_zero_tail_given_a_factor,
         "there is no ratio against zero",
@@ -3606,6 +3640,10 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_isolated_spikes.py": (
         "pipelines/polity-autoimprove/state/isolated_spikes.csv",
+    ),
+    # The case rewrites item_blocks.csv in place (it edits n_items), so a real copy.
+    "validate_item_blocks.py": (
+        "pipelines/polity-autoimprove/state/item_blocks.csv",
     ),
     # The case rewrites series_collapses.csv in place (it edits the factor column), so a real copy.
     "validate_series_collapses.py": (

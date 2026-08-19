@@ -1,0 +1,6 @@
+source,country,unit,year,n_items,value,items,other_years_median,ratio_to_other_years
+iia,belgium,ha,1934,4,0,grapes;hempseed;rapeseed;yarn of true hemp,17,
+iia,belgium,ha,1935,4,0,grapes;hempseed;rapeseed;yarn of true hemp,17,
+iia,belgium,ha,1936,4,0,grapes;hempseed;rapeseed;yarn of true hemp,17,
+mitchell,india,heads,1947,8,3000,asses;buffalo;camels;cattle;goats;horses;sheep;swine / pigs,2.08955e+07,6965.2
+mitchell,somalia,heads,1959,4,15000,camels;cattle;goats;sheep,1.286e+06,85.7
