@@ -1437,6 +1437,47 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_overlap_shrunk_below_floor(root, gpd, make_valid, affinity):
+    """Shrink a pinned containment pair's cell count below the floor that made it sayable.
+
+    This has to dodge every OTHER signal in the gate or it would pass for the wrong reason, which is
+    the failure mode that made issue 387's selftest case worthless. The identity pins key on
+    (code, source, label_a, label_b, relation) and none of those move; the row count is unchanged, so
+    the bidirectional ceiling is silent; and the direction counts are rewritten to still add to the
+    new total, so the internal-consistency check stays quiet too. ONLY the floor check can see it.
+
+    The floor is the load-bearing constant here -- it is what demoted 18 of 26 first-run containment
+    verdicts to `undetermined`, because on one shared cell "the larger side contains the other" is a
+    coin flip. A table that kept claiming containment underneath it would be back to issue 355's
+    string test, asserting a parent/child relation the evidence does not carry.
+
+    It picks the largest containment by cell count rather than by name, since which pair is largest
+    changes when the panel is rebuilt -- the same reason the splice, spike and constant-run mutators
+    pick by measurement.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/same_polity_overlaps.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    worst = max((r for r in rows if r["relation"] == "containment"),
+                key=lambda r: int(r["shared_cells"]))
+    before = worst["shared_cells"]
+    worst["shared_cells"] = "3"
+    worst["n_equal"] = "0"
+    # Keep the direction the row already claims, so only the COUNT falls under the floor.
+    if int(worst["n_a_gt_b"]) > 0:
+        worst["n_a_gt_b"], worst["n_b_gt_a"] = "3", "0"
+    else:
+        worst["n_a_gt_b"], worst["n_b_gt_a"] = "0", "3"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"shrank the {worst['whep_code']} {worst['label_a']!r}/{worst['label_b']!r} containment "
+            f"from {before} shared cells to 3, keeping its direction and its arithmetic consistent, "
+            f"so a parent/child claim rests on a coin flip while every other signal stays quiet")
+
+
 def mutate_constant_run_shortened(root, gpd, make_valid, affinity):
     """Trim the longest constant run below the pinned length, so it stops being flagged.
 
@@ -2699,6 +2740,14 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_same_polity_overlaps.py",
+        mutate_overlap_shrunk_below_floor,
+        "under the floor of",
+        "a pinned parent/child claim shrunk to three shared cells, keeping its identity, its "
+        "direction and its arithmetic intact, so only the floor that makes direction meaningful "
+        "stands between the table and issue 355's refuted string test",
+    ),
+    (
         "validate_item_axis_aggregates.py",
         mutate_item_total_read_as_siblings,
         "is a double count waved through",
@@ -3222,6 +3271,11 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_isolated_spikes.py": (
         "pipelines/polity-autoimprove/state/isolated_spikes.csv",
+    ),
+    # The case rewrites same_polity_overlaps.csv in place (it shrinks a cell count), so a real copy
+    # rather than a symlink into the tracked table.
+    "validate_same_polity_overlaps.py": (
+        "pipelines/polity-autoimprove/state/same_polity_overlaps.csv",
     ),
     # The case rewrites item_provenance.csv (it lowers a distinct-value count), so a real copy.
     "validate_item_provenance.py": (

@@ -1,0 +1,38 @@
+whep_code,source,label_a,label_b,relation,shared_cells,n_equal,n_a_gt_b,n_b_gt_a,distinct_values,years,rows_a,rows_b
+BLI-1833-1960,fao1952,British West Indies Leeward Islands,Leeward Islands,undetermined,1,0,1,0,2,1951-1951,16,6
+BSW-1841-1963,fao1952,British Borneo Sarawak,Sarawak,undetermined,1,0,1,0,2,1951-1951,44,1
+CHN-1921-1932,mitchell,"china, mainland","china, manchuria province of",undetermined,3,0,3,0,6,1931-1931,25,27
+CHN-1947-1949,fao1952,China,China 22 provinces,undetermined,3,0,3,0,6,1947-1948,7,4
+CHN-1947-1949,fao1952,China,China Manchuria,undetermined,3,0,3,0,6,1947-1947,7,4
+CHN-1947-1949,fao1952,China 22 provinces,China Manchuria,undetermined,3,0,3,0,6,1947-1947,4,4
+CHN-1949-1950,fao1952,China,China 22 provinces,undetermined,2,0,0,2,4,1949-1949,7,29
+CHN-1949-1950,fao1952,China 22 provinces,China Manchuria,undetermined,4,0,4,0,8,1949-1949,29,5
+CHN-1950-2025,fao1952,China 22 provinces,China Manchuria,undetermined,2,0,2,0,3,1950-1951,23,7
+CHN-1950-2025,mitchell,"china, mainland","china, manchuria province of",containment,8,0,8,0,16,1951-1952,305,13
+DEU-1920-1938,fao1952,Germany,Germany  Western,undetermined,1,0,1,0,2,1937-1937,41,3
+DEU-1920-1938,fao1952,Germany,Germany Berlin,containment,8,0,8,0,15,1937-1937,41,14
+DEU-1920-1938,fao1952,Germany,Germany Western,containment,22,0,22,0,43,1937-1937,41,36
+DEU-1920-1938,fao1952,Germany  Western,Germany Berlin,undetermined,1,0,1,0,2,1937-1937,3,14
+DEU-1920-1938,fao1952,Germany  Western,Germany Western,orthographic_variant,1,0,0,1,2,1937-1937,3,36
+DEU-1920-1938,fao1952,Germany Berlin,Germany Western,containment,9,0,0,9,17,1937-1937,14,36
+ETH-1907-1936,iia,ethiopia,ethiopia pdr,identical_indistinct,1,1,0,0,1,,1,4
+ETH-1936-1941,iia,ethiopia,ethiopia pdr,identical_indistinct,1,1,0,0,1,,1,5
+ETH-1941-1952,iia,ethiopia,ethiopia pdr,identical_indistinct,1,1,0,0,1,1945-1945,1,4
+F78-1949-1990,fao1952,Germany  Western,Germany Western,orthographic_variant,1,0,0,1,2,1951-1951,3,209
+GBR-1921-2025,fao1952,United Kingdom,United Kingdom Great Britain,containment,6,0,6,0,10,1937-1951,227,9
+JAM-1800-2025,fao1952,British West Indies Jamaica,British West Indies Jamaica and Dependencies,undetermined,1,0,0,1,2,1951-1951,108,2
+JAM-1800-2025,fao1952,British West Indies Jamaica,Jamaica,undetermined,1,0,0,1,2,1951-1951,108,22
+JAM-1800-2025,fao1952,British West Indies Jamaica and Dependencies,Jamaica,undetermined,1,0,1,0,2,1951-1951,2,22
+JPN-1895-1945,iia,japan,palau,undetermined,4,0,4,0,5,1915-1918,737,4
+KOR-1948-2025,fao1952,Korea,Korea South,undetermined,4,2,2,0,6,1949-1951,11,104
+PAL-1920-1948,fao1952,Israel,Palestine,undetermined,2,0,1,1,4,1937-1937,7,25
+PNG-1949-1975,fao1952,New Guinea,Papua,disagreement,9,1,3,5,15,1950-1951,11,11
+SAA-1947-1957,fao1952,France  Saar,Saar,undetermined,1,0,0,1,2,1951-1951,3,14
+SAC-1935-1947,fao1952,France  Saar,Saar,undetermined,1,0,0,1,2,1937-1937,3,1
+SER-1878-1913,juan,serbia,yugoslav sfr,undetermined,2,0,1,1,3,1909-1910,308,11
+SLV-1821-2025,fao1952,EI Salvador,El Salvador,undetermined,1,0,1,0,2,1937-1937,45,40
+TTO-1800-2025,fao1952,British West Indies Trinidad and Tobago,Trinidad and Tobago,undetermined,1,0,1,0,2,1951-1951,49,3
+VGB-1800-2025,fao1952,British West Indies Virgin Islands,Virgin Islands,undetermined,1,0,1,0,2,1950-1950,3,6
+WBL-1949-1990,fao1952,Germany  Berlin,Germany Berlin,orthographic_variant,1,0,0,1,2,1951-1951,3,21
+ZAF-1910-2025,mitchell,cape natal,south africa,identical,12,12,0,0,12,1946-1957,33,938
+ZAF-1910-2025,mitchell,natal,south africa,undetermined,1,0,0,1,2,1957-1957,7,938

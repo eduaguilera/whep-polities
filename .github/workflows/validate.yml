@@ -465,6 +465,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_isolated_spikes.py
 
+      # validate_composition_sums.py check C needs TWO polity codes to forbid a double count, so the
+      # case where BOTH labels route to the SAME code has no pair to register. Issue 355 found four by
+      # asking whether one label extends another, which matched 39 polities of which 4 were real.
+      # Deriving them from shared (item, unit, year) cells instead finds 37 pairs, 13 with enough
+      # cells to support a verdict, and none of issue 355's four among them.
+      - name: Sources — two labels of one source may not collide on one polity's cells
+        if: '!cancelled()'
+        run: python3 scripts/validate_same_polity_overlaps.py
+
       # A label can be right for one commodity and wrong for another, and no label-level decision can
       # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix
       # raw labels across their item series -- australia's `p` is CHRISTMAS ISLAND phosphate,
