@@ -470,6 +470,55 @@ def check_mitchell_algeria(d):
     )
 
 
+def check_mitchell_cape_natal(d):
+    """The claim: Mitchell's `cape natal` label carries the NATIONAL South African cattle series,
+    not a Cape-plus-Natal provincial one, and its rows are already correctly on ZAF-1910-2025.
+
+    THE EXACT-EQUALITY TEST, which is what makes this falsifiable rather than a magnitude argument.
+    A provincial series and a national one may be close, and arguing from "6.85M head is too many
+    for two provinces" is exactly the reasoning that put three IIA routings wrong (issue 377): a
+    magnitude cannot size a territory. But a province cannot EQUAL its nation, cell for cell, over a
+    dozen years and a dozen distinct values. Measured: `cape natal` and `south africa` share 12
+    (item, unit, year) cattle cells, 1946-1957, and ALL 12 are equal to the digit.
+
+    A DISTINCTNESS FLOOR APPLIES. Twelve equalities over three round numbers would prove nothing --
+    the same trap 16_source_splices.py guards with its fingerprint floor. The 12 shared cells carry
+    12 DISTINCT values (11,513,000 / 11,565,000 / 11,604,000 ... 12,470,000), so the agreement
+    cannot be coincidence of rounding.
+
+    WHY THIS IS A CONVENTION AND NOT A REROUTE. Both labels already resolve to ZAF-1910-2025, so no
+    row moves and no published number changes. The label's 21 remaining cells, 1918-1945, are years
+    where `south africa` carries NO cattle value at all, so they EXTEND the national series rather
+    than duplicating it -- dropping them would lose 21 years of national cattle. What is false is
+    only the subnational basis the label's name implies, and the risk this convention exists to stop
+    is a later pass "correcting" these rows onto a Cape or Natal polity on the strength of the name.
+
+    The label is a single item. `cape natal` has cattle and nothing else, so this says nothing about
+    Mitchell's separate `natal` label (nine items, 1852-1957), which is a genuine provincial series.
+    """
+    z = d[(d["source"] == "mitchell") & (d["country"].isin(["cape natal", "south africa"]))]
+    z = z[z["item"].map(norm) == "cattle"].dropna(subset=["year"])
+    piv = z.pivot_table(index=["item", "unit", "year"], columns="country",
+                        values="value", aggfunc="first")
+    if "cape natal" not in piv or "south africa" not in piv:
+        return False, "one of the two labels has no cattle series; the test is unavailable"
+    both = piv.dropna()
+    if len(both) < 6:
+        return False, f"only {len(both)} shared cells; below the floor where equality means anything"
+    eq = int((both["cape natal"] == both["south africa"]).sum())
+    distinct = len(set(both["cape natal"]) | set(both["south africa"]))
+    only = int((piv["south africa"].isna() & piv["cape natal"].notna()).sum())
+    # A province equal to its nation in EVERY shared cell, over values that are not all the same
+    # number, is one series under two names. Anything short of every cell leaves the provincial
+    # reading alive.
+    ok = eq == len(both) and distinct >= 6
+    return ok, (
+        f"{eq} of {len(both)} shared cattle cells equal to the digit over {distinct} distinct "
+        f"values, 1946-1957; a further {only} cells sit under `cape natal` in years `south africa` "
+        f"has no cattle value, extending the national series rather than duplicating it"
+    )
+
+
 def check_iia_npk(d):
     """The claim: IIA's one-letter items `p`, `n` and `k` are the fertilizer MACRONUTRIENTS --
     phosphate, nitrogen and potash -- and NOT corrupt item labels, but they may not be merged with
@@ -634,6 +683,7 @@ CHECKS = {
     ("juan", "united kingdom", "*"): check_exclusive_reporting,
     ("fao1952", "Japan", "*"): check_exclusive_reporting,
     ("iia", "india", "*"): check_exclusive_reporting,
+    ("mitchell", "south africa", "*"): check_mitchell_cape_natal,
     ("iia", "*", "p"): check_iia_npk,
     ("iia", "*", "n"): check_iia_npk,
     ("iia", "*", "k"): check_iia_npk,
