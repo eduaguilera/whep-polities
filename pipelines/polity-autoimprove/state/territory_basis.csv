@@ -459,7 +459,7 @@ MAC-1800-2025,"China, Macao SAR",1800,2025,gadm-4.1-adm1,,proxy,True,assumed_con
 MAF-2007-2025,Saint-Martin (French part),2007,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MAN-1932-1945,Manchukuo (1932-1945),1932,1945,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,110
 MAN-1945-1950,"Manchuria (region, 1945-1950)",1945,1950,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,7
-MAR-1911-1958,Morocco (to 1958),1911,1958,cshapes-2.0,1912.0,assigned,True,assumed_constant,True,False,single 1912 polygon held across a 47y span (1911-1958); borders may have changed,1283
+MAR-1911-1958,Morocco (to 1958),1911,1958,cshapes-2.0,1912.0,assigned,True,assumed_constant,True,False,single 1912 polygon held across a 47y span (1911-1958); borders may have changed,1282
 MAR-1958-1975,Morocco (1958-1975),1958,1975,cshapes-2.0,1958.0,assigned,True,measured,False,False,vintage 1958 faithful to period 1958-1975,40
 MAR-1975-1979,Morocco (1975-1979),1975,1979,cshapes-2.0,1975.0,assigned,False,measured,False,False,vintage 1975 faithful to period 1975-1979,0
 MAR-1979-2025,Morocco,1979,2025,cshapes-2.0,1979.0,assigned,False,assumed_constant,True,False,single 1979 polygon held across a 46y span (1979-2025); borders may have changed,0
@@ -489,7 +489,7 @@ MNG-1911-1921,Bogd Khanate of Mongolia,1911,1921,cshapes-2.0,1921.0,assigned,Tru
 MNG-1921-2025,Mongolia,1921,2025,cshapes-2.0,1921.0,assigned,True,assumed_constant,True,False,single 1921 polygon held across a 104y span (1921-2025); borders may have changed,8
 MNP-1986-2025,Northern Mariana Islands,1986,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MOR-1800-1904,Morocco (to 1904),1800,1904,cliopatria,1800.0,assigned,True,assumed_constant,True,False,single 1800 polygon held across a 104y span (1800-1904); borders may have changed,0
-MOR-1904-1911,Morocco (1904-1911),1904,1911,cliopatria,1905.0,assigned,True,measured,False,False,vintage 1905 faithful to period 1904-1911,0
+MOR-1904-1911,Morocco (1904-1911),1904,1911,cliopatria,1905.0,assigned,True,measured,False,False,vintage 1905 faithful to period 1904-1911,3
 MOR-1904-1956,Morocco (1904-1956) [superseded],1904,1956,cshapes-2.0,1902.0,assigned,True,back_projected,True,False,polygon vintage 1902 is BEFORE the period starts (1904),0
 MOR-1956-1958,Morocco (1956-1958),1956,1958,cshapes-2.0,1912.0,assigned,True,back_projected,True,False,polygon vintage 1912 is BEFORE the period starts (1956),0
 MOS-1800-1897,Mossi Kingdoms,1800,1897,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
@@ -559,7 +559,7 @@ PAK-1937-1947,"Pakistan (territory within British India, 1937–1947)",1937,1947
 PAK-1947-1949,Pakistan (1947-1949),1947,1949,cshapes-2.0,1947.0,assigned,True,measured,False,False,vintage 1947 faithful to period 1947-1949,27
 PAK-1949-1971,Pakistan (1949-1971),1949,1971,cshapes-2.0,1949.0,assigned,True,measured,False,True,vintage 1949 faithful to period 1949-1971; footnote coverage caveat (FAO/IIA yearbook),370
 PAK-1971-2025,Pakistan,1971,2025,cshapes-2.0,1971.0,assigned,False,assumed_constant,True,False,single 1971 polygon held across a 54y span (1971-2025); borders may have changed,0
-PAL-1920-1948,Palestine (1920-1948),1920,1948,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,True,single 1920 polygon held across a 28y span (1920-1948); borders may have changed,345
+PAL-1920-1948,Palestine (1920-1948),1920,1948,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,True,single 1920 polygon held across a 28y span (1920-1948); borders may have changed,440
 PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",1903,1979,cshapes-2.0,1903.0,assigned,True,assumed_constant,True,True,single 1903 polygon held across a 76y span (1903-1979); borders may have changed,604
 PAN-1979-2025,Panama (post-Canal Zone),1979,2025,cshapes-2.0,1903.0,assigned,False,back_projected,True,False,polygon vintage 1903 is BEFORE the period starts (1979),0
 PAP-1800-1870,Papal States,1800,1870,cliopatria,1814.0,assigned,True,assumed_constant,True,False,single 1814 polygon held across a 70y span (1800-1870); borders may have changed,0
