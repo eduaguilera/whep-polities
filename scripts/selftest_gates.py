@@ -1917,6 +1917,35 @@ def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
             f"has, leaving the row count, the arithmetic, the floor and every identity pin intact")
 
 
+def mutate_ledger_write_untruncated_to_atomic(root, gpd, make_valid, affinity):
+    """Put back the truncating write that issue 431 removed from the ledger writer.
+
+    `review_ledger.csv` holds every verification decision ever banked, and `01_match_and_findings.py`
+    READS it, edits it in memory and writes it back over itself -- so a truncating write that fails
+    part-way destroys the input it just consumed. Issue 431 closed that site and three others; this
+    mutation restores exactly the shape it had before.
+
+    It is written as a `to_csv` rather than an `open(..., "w")` on purpose. The detector that FOUND
+    the original four sites was a grep for `open(x, "w")` and could not see `to_csv` at all -- the
+    issue said so itself and called its own count a floor. So this mutation is the one the old
+    detector would have missed, which makes it the case that justifies the gate parsing an AST
+    instead: if the gate is ever reduced to a regex over `open`, this case goes green while the
+    ledger is once again truncated on every run.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/01_match_and_findings.py")
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    old = "write_csv_atomic(LEDGER, list(_rows[0].keys()), _rows)"
+    if old not in src:
+        raise AssertionError("01_match_and_findings.py no longer writes the ledger atomically; this "
+                             "mutation has nothing to undo, so the case would pass vacuously")
+    src = src.replace(old, "pd.DataFrame(_rows).to_csv(LEDGER, index=False)")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(src)
+    return ("restored the truncating ledger write in 01_match_and_findings.py as a `to_csv` -- the "
+            "call form the grep that found issue 431's four sites was blind to -- so the file that "
+            "holds every banked verdict is truncated on every run of the tool that reads it")
+
 def mutate_collapse_mean_outside_range(root, gpd, make_valid, affinity):
     """Publish a "mean" that lies above the largest member of its own group.
 
@@ -3485,6 +3514,14 @@ CASES = (
         "between the `if area > 0` guard and 14 exonerated impossible rows",
     ),
     (
+        "validate_atomic_state_writes.py",
+        mutate_ledger_write_untruncated_to_atomic,
+        "truncates review_ledger.csv",
+        "the truncating ledger write issue 431 removed, restored as a `to_csv` -- the call form the "
+        "grep that found the original four sites could not see -- so only an AST-based sweep can "
+        "tell that the file holding every banked verdict is truncated again",
+    ),
+    (
         "validate_collapse_groups.py",
         mutate_collapse_mean_outside_range,
         "lies outside",
@@ -4097,6 +4134,11 @@ WRITABLE = {
     # The case rewrites era_shift_verdicts.csv in place (it reclassifies one row), so a real copy.
     "validate_era_shift_verdicts.py": (
         "pipelines/polity-autoimprove/state/era_shift_verdicts.csv",
+    ),
+    # The case rewrites a PIPELINE MODULE rather than a state table (it restores a truncating write),
+    # so the module itself must be materialised as a real copy in the scratch tree.
+    "validate_atomic_state_writes.py": (
+        "pipelines/polity-autoimprove/01_match_and_findings.py",
     ),
     # Both cases rewrite collapse_groups.csv in place (one moves a published value, one lifts a
     # member), so a real copy rather than a symlink into the tracked table.
