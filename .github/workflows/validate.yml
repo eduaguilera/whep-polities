@@ -491,6 +491,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_collapse_groups.py
 
+      # open(path,"w") and pandas.to_csv(path) both truncate on open, so a failure part-way through
+      # loses a tracked file. Issue 431 found the four sites that mattered by grepping for
+      # open(x,"w") — a floor, not a census. Re-swept with an AST there are 48 write sites, not 16;
+      # the regex was blind to ~40 to_csv calls, all of which happen to write regenerable outputs.
+      - name: State — no tool may truncate a state file holding unregenerable adjudications
+        if: '!cancelled()'
+        run: python3 scripts/validate_atomic_state_writes.py
+
       # The raw IIA extract names the yearbook VOLUME each row came from, and nothing here had used
       # it. It is the only comparison that can convict a specific extracted cell: the same publisher
       # printed both numbers for the same territory, commodity and year. 83 cells read 0 in one
