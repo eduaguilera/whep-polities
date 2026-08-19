@@ -1049,6 +1049,67 @@ def check_mitchell_thousand_grid(d):
                   f"1000-grid, so the coarseness is Mitchell's and not the era's")
 
 
+
+def check_juan_heads_thousand_grid(d):
+    """The claim: juan's LIVESTOCK COUNTS are reported in thousands; its crop series are not.
+
+    Scoped to the `heads` unit deliberately. juan as a whole is a MIXTURE -- 47.2% of its non-zero
+    values sit on a 1000-grid with 14.8% carrying sub-unit precision, and the share rises monotonically
+    from 44% in the 1900s to 89% in the 1950s -- so no single constant describes the source and this
+    entry does not claim one. What is clean is the livestock axis.
+
+    THE CONTROL IS INTERNAL, which makes it stronger than the Mitchell entry's cross-source one: juan's
+    OWN other units are measured in the same run and are not coarse. If the coarseness were an artefact
+    of the pipeline or of the era, `ha` and `tonnes` would show it too.
+
+    THE DISCRIMINATING NUMBER IS AGAIN THE SUB-UNIT COUNT, not the round-number share. 89% of values on
+    a 1000-grid could mean a source reports round herd sizes; 2 fractional values out of 13,285 cannot.
+
+    NOT A CLAIM ABOUT LIVESTOCK GENERALLY. Only `juan` and `mitchell` carry the `heads` unit at all, and
+    mitchell rounds everything, so there is no third publisher to separate "livestock is reported in
+    thousands" from "these two compilers round". That generalisation was tested and withdrawn (issue 446).
+    """
+    j = d[(d["source"] == "juan") & d["value"].notna()]
+    if "is_aggregate" in j.columns:
+        j = j[~j["is_aggregate"].fillna(False).astype(bool)]
+    j = j[j["value"] != 0]
+    heads = j[j["unit"] == "heads"]
+    if len(heads) < 1000:
+        return False, f"only {len(heads)} non-zero juan `heads` rows; too few to measure a grid"
+
+    def on(v, mod):
+        v = float(v)
+        return v == int(v) and int(v) % mod == 0
+
+    k1000 = sum(1 for v in heads["value"] if on(v, 1000)) / len(heads)
+    sub = sum(1 for v in heads["value"] if float(v) != int(float(v)))
+    if k1000 < 0.80:
+        return False, (f"only {k1000:.1%} of juan's {len(heads):,} non-zero `heads` values sit on a "
+                       f"1000-grid, below the 80% this convention rests on")
+    if sub / len(heads) > 0.01:
+        return False, (f"{sub / len(heads):.1%} of juan `heads` values carry sub-unit precision "
+                       f"({sub:,} rows), above the 1% ceiling -- a source rounding to thousands does "
+                       f"not report fractions, so this arm is what falsifies the convention")
+
+    # INTERNAL CONTROL: juan's own crop units must NOT be this coarse, or the finding is about the
+    # source or the era rather than about livestock reporting.
+    other = j[j["unit"].isin(("ha", "tonnes"))]
+    if len(other) >= 1000:
+        o1000 = sum(1 for v in other["value"] if on(v, 1000)) / len(other)
+        osub = sum(1 for v in other["value"] if float(v) != int(float(v))) / len(other)
+        if o1000 >= 0.80 or osub <= 0.01:
+            return False, (f"juan's own ha/tonnes rows are now {o1000:.1%} on a 1000-grid with "
+                           f"{osub:.1%} sub-unit precision, so the coarseness is not specific to the "
+                           f"livestock axis and this convention claims more than the evidence supports")
+    else:
+        o1000 = osub = float("nan")
+
+    return True, (f"juan `heads` {k1000:.1%} of {len(heads):,} non-zero values on a 1000-grid with "
+                  f"sub-unit precision on {sub} row(s); internal control juan ha/tonnes {o1000:.1%} on "
+                  f"a 1000-grid with {osub:.1%} sub-unit -- the coarseness is the livestock axis, not "
+                  f"the source")
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -1088,6 +1149,9 @@ CHECKS = {
     ("iia", "*", "*"): check_iia_volume_grid,
     # Source-wide and item-agnostic; ("mitchell", "*", "*") verified free before binding.
     ("mitchell", "*", "*"): check_mitchell_thousand_grid,
+    # Scoped to the `heads` unit in the check, not the key -- item_pattern cannot express
+    # "every livestock item". ("juan", "*", "*") verified free before binding.
+    ("juan", "*", "*"): check_juan_heads_thousand_grid,
 }
 
 
