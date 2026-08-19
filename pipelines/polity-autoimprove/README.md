@@ -587,7 +587,9 @@ pipeline's memory of what still needs judging, and a bad regeneration is silent.
 After the run above: 1,032 -> 1,073 assertions, stale candidates 23 -> 0.
 
 `prepare_federico_tena.py` is what onboarding a new source actually costs: it
-reads the tracked `data/external/federico_tena_polities.xlsx` and writes
+reads `data/external/federico_tena_polities.xlsx` — LOCAL ONLY since 2026-08-19, kept out of the
+repo at the maintainer's request because it may be published separately; obtain a copy before running
+this — and writes
 `state/federico_tena_intake.csv` (gitignored, regenerable), one row per
 (polity, series, year) plus the one magnitude the source carries. `00_intake.py`
 itself needed no change. Full measurements, the three kinds of gap the unrouted

@@ -1,7 +1,9 @@
 # pre1961-matching
 
 Self-contained, reproducible R pipeline that crosslinks the pre-1961
-agricultural / livestock dataset `data/external/before_1961.csv` with the
+agricultural / livestock dataset `data/external/before_1961.csv` (LOCAL ONLY since 2026-08-19 —
+kept out of the repo because it may be published separately; obtain a copy before running the R
+matcher. Nothing in CI reads it: the committed `state/r_crosswalk.csv` is what gates check) with the
 WHEP polity database `data/final/polities_database.csv`.
 
 Everything this pipeline needs is declared in `match.R`.
