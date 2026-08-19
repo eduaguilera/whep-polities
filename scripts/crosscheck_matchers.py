@@ -302,14 +302,22 @@ BASELINE_PRE1961_DIFFERENT = frozenset({
 # Cost of that choice, stated: a NEW unresolved year at an entity already listed here does
 # not fail. "Korea" shows why the entities and not the years are the unit — it resolves by
 # name at 1948 (see the DIFFERENT baseline) and not at 1954 or 1960.
-# 34 probes across these 8 entities as of 2026-08-17.
+# 34 probes across these 8 entities as of 2026-08-17; 7 entities from 2026-08-19, when
+# ("Palestine","PSE") was REMOVED because the Python matcher stopped disagreeing. That
+# entry recorded exactly the remap this list's header names -- `PSE -> PAL` -- and the
+# fallback of issue #448 now reaches PAL-1920-1948 from the NAME instead, so the two
+# matchers agree and the gate said so unprompted. The R side remaps iso codes from a
+# table; Python derives the same answer from the family the name resolves to, which is
+# why the OTHER seven entries did NOT follow: for Libya pre-1912, Somalia pre-1960 and
+# North Korea pre-1948 the name route is year_uncovered too, so those are real gaps in
+# the database rather than routing defects (measured: 53 such rows, against the 97 that
+# the fallback recovered).
 BASELINE_PRE1961_UNRESOLVED = frozenset({
     ("Cape Natal", "-"),            # name_override -> NAT, then ZAF after Union (1910)
     ("Czechoslovakia", "CSK"),      # pre-1918 -> AUH (Austria-Hungary)
     ("Korea", "-"),                 # name_override -> KOR
     ("Libya", "LBY"),               # pre-1912 -> OTT (Ottoman Empire)
     ("North Korea", "PRK"),         # pre-1948 -> KOR (undivided Korea)
-    ("Palestine", "PSE"),           # -> PAL (British Mandate)
     ("Somalia", "SOM"),             # pre-1960 -> ITS (Italian Somaliland)
     ("Yugoslav SFR", "YUG"),        # pre-1918 -> SER (Kingdom of Serbia)
 })

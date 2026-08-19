@@ -413,5 +413,59 @@ class Matcher:
             if fam_cache is not None: fam_cache[key] = (fam, how)
         if fam is None: return (None, "unresolved", how)
         rec, st = self.pick_by_year(fam, year)
-        if rec is None: return (None, st, how)               # year_uncovered / no_year
+        if rec is None:
+            # ISO-RESOLVED FAMILY THAT DOES NOT REACH THE YEAR: try the NAME.
+            # A label's iso code and its name can resolve to DIFFERENT families
+            # when a territory's successor took a new code. Mitchell stamps
+            # `pse` on every Palestine row, but `pse` reaches only
+            # PSE-1948-2025, so 1920-1946 -- the entire British Mandate -- came
+            # back `year_uncovered` and the name route to the live, correct
+            # PAL-1920-1948 was never tried. 97 rows were dropped this way
+            # (95 mitchell/palestine 1920-1946, 2 iia/morocco 1909-1910); the
+            # other 53 `year_uncovered` rows are genuine database gaps, where
+            # name-matching returns `year_uncovered` too, and are unaffected.
+            #
+            # THE ISO PREFERENCE IS PROTECTED STRUCTURALLY, NOT BY THESE
+            # CONDITIONS (issue #448). Names are ambiguous across families,
+            # which is why iso is preferred at all, so the requirement was that
+            # a currently-correct row cannot be rerouted. That holds because
+            # this block sits inside the `rec is None` branch: a row the iso
+            # route MATCHED never reaches it. The explicit conditions below are
+            # documentary, and I measured that rather than assuming it --
+            # removing all three changes ZERO of the panel's 17,599 (label,
+            # iso, source, year) tuples. They are kept because they state the
+            # intended scope at the point of the retry, and because each would
+            # become load-bearing under a plausible future edit; none of them is
+            # what makes the change safe today.
+            #   1. only when the iso route failed on the year -- restates the
+            #      enclosing branch.
+            #   2. only `year_uncovered`, never `no_year`. This one states
+            #      intent and is PROVABLY INERT rather than load-bearing:
+            #      pick_by_year's FIRST line returns `no_year` for a NaN year
+            #      whatever family it is given, so widening the trigger to
+            #      no_year changes no answer -- measured, and the fixture case
+            #      below could not tell the two apart. Issue #310's 9,210
+            #      year-less rows are therefore untouched by construction, not
+            #      by this condition. If pick_by_year ever learns to resolve a
+            #      year-less row, this becomes load-bearing and needs a case
+            #      that bites.
+            #   3. only a DIFFERENT family, and never a second iso route.
+            #      Also inert today: re-picking inside the same family repeats
+            #      the same year test and returns the same refusal, and
+            #      resolve_family(name, None) cannot answer "iso" with no iso
+            #      passed. The condition keeps a same-family retry from ever
+            #      being STAMPED as a fallback, which would misdescribe a row
+            #      that nothing rescued.
+            # The result is stamped `name_after_iso_year_gap`, NOT `name`, so
+            # these rows stay auditable instead of blending into ordinary name
+            # matches -- this repo has been bitten by a routing change that
+            # could not be told apart afterwards.
+            if how == "iso" and st == "year_uncovered":
+                nfam, nhow = self.resolve_family(name, None)
+                if nfam is not None and nhow != "iso" \
+                        and {r[0] for r in nfam} != {r[0] for r in fam}:
+                    nrec, nst = self.pick_by_year(nfam, year)
+                    if nrec is not None:
+                        return (nrec[0], "matched", "name_after_iso_year_gap")
+            return (None, st, how)                           # year_uncovered / no_year
         return (rec[0], "matched", how)
