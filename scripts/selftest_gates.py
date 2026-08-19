@@ -1437,6 +1437,78 @@ def mutate_spike_factor_rewritten(root, gpd, make_valid, affinity):
             f"rests on no longer describes the row it sits in")
 
 
+def mutate_nesting_verdict_softened(root, gpd, make_valid, affinity):
+    """Downgrade the worst impossible-inclusion pair to `few_violations`, leaving its numbers alone.
+
+    `inclusion` is issue 273's whole finding, and it re-derives exactly from `cells_outer_lt_inner`
+    and `shared_cells` under the generator's thresholds (>=3 cells and >10%). Softening a verdict
+    without touching those numbers is what a hand edit or a partial merge looks like, and the shape
+    matters: 13 of the 20 impossible pairs contradict an already-BANKED verdict, so a verdict quietly
+    downgraded removes evidence AGAINST a recorded decision.
+
+    It trades the count back by promoting a `few_violations` row, so the bidirectional pin on 20 stays
+    satisfied and only the per-row re-derivation can see the swap. Same trick as the edition-conflict
+    and power-of-ten cases, for the same reason: a mutation that tripped the count would also pass
+    against a gate that only counted.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = max((r for r in rows if r["inclusion"] == "impossible_outer_excludes_inner"),
+                 key=lambda r: int(r["cells_outer_lt_inner"]))
+    donor = next(r for r in rows if r["inclusion"] == "few_violations")
+    victim["inclusion"] = "few_violations"
+    donor["inclusion"] = "impossible_outer_excludes_inner"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"downgraded {victim['outer_code']} <- {victim['inner_code']} "
+            f"({victim['cells_outer_lt_inner']} of {victim['shared_cells']} cells) from impossible to "
+            f"few_violations and promoted a lesser pair, so the pinned count of 20 still holds")
+
+
+
+def mutate_triage_inclusion_flag_desynced(root, gpd, make_valid, affinity):
+    """Desync `inclusion_impossible` from the table it was copied from, keeping the count.
+
+    `assertion_triage.csv` carries a copy of a verdict computed in `assertion_nesting_flags.csv`, and
+    a copied verdict is the thing that goes stale when its source is regenerated and its consumer is
+    not. This is what that looks like: the flag moves off the pair the arithmetic condemns and onto a
+    pair it does not.
+
+    It TRADES the flag rather than setting one, so the number of flagged rows is unchanged at 17 and
+    no count -- present or later added -- can see it. Only the per-row biconditional against the
+    nesting table can. Same trick as the nesting-flag and edition-conflict cases, for the same reason.
+
+    It also leaves `key`, `label`, `source` and `years_observed` untouched, so arm A still rebuilds
+    every key. An earlier version of this case edited the key instead and was caught by arm A while
+    arm E never spoke -- a mutation that trips a different arm proves nothing about the arm it aims at.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/assertion_triage.csv")
+    nesting = os.path.join(root, "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv")
+    imposs = set()
+    with open(nesting, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            if r["inclusion"] == "impossible_outer_excludes_inner":
+                imposs.update(v for v in (r.get("outer_key"), r.get("inner_key")) if v)
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["key"] in imposs)
+    donor = next(r for r in rows if r["key"] not in imposs)
+    victim["inclusion_impossible"] = "False"
+    donor["inclusion_impossible"] = "True"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"moved the inclusion_impossible flag off {victim['key']!r}, which "
+            f"assertion_nesting_flags.csv condemns, onto {donor['key']!r}, which it does not, "
+            f"leaving 17 rows flagged so no count changes")
+
+
 def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
     """Lower a block's n_items while leaving the item list it describes intact.
 
@@ -3036,6 +3108,22 @@ CASES = (
         "put, so the one number every judgement here rests on contradicts the row it describes",
     ),
     (
+        "validate_assertion_triage.py",
+        mutate_triage_inclusion_flag_desynced,
+        "COPY of that table's verdict",
+        "the inclusion_impossible flag traded off the pair assertion_nesting_flags.csv condemns onto "
+        "one it does not, leaving 17 rows flagged so no count moves -- the triage queue decides what "
+        "gets looked at, so a stale copy here means work never done rather than a wrong number",
+    ),
+    (
+        "validate_assertion_nesting_flags.py",
+        mutate_nesting_verdict_softened,
+        "give 'impossible_outer_excludes_inner'",
+        "issue 273's worst impossible-inclusion verdict quietly downgraded, its cell counts untouched "
+        "and a lesser pair promoted so the pinned count of 20 still holds — 13 of those 20 are "
+        "evidence against an already-banked verdict, so only the re-derivation can see it",
+    ),
+    (
         "validate_item_blocks.py",
         mutate_item_block_count_lowered,
         "no longer describes the row",
@@ -3640,6 +3728,18 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_isolated_spikes.py": (
         "pipelines/polity-autoimprove/state/isolated_spikes.csv",
+    ),
+    # The case swaps verdicts in assertion_nesting_flags.csv in place, so a real copy.
+    "validate_assertion_nesting_flags.py": (
+        "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv",
+    ),
+    # The case trades a flag in assertion_triage.csv in place, so a real copy. The nesting table is
+    # only READ by both gate and mutator, but stage() creates nothing it was not asked for, so it must
+    # be listed anyway or arm E SKIPS ITSELF ("nesting table absent") and the case passes having
+    # checked nothing -- the same trap validate_period_overlaps.py documents above.
+    "validate_assertion_triage.py": (
+        "pipelines/polity-autoimprove/state/assertion_triage.csv",
+        "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv",
     ),
     # The case rewrites item_blocks.csv in place (it edits n_items), so a real copy.
     "validate_item_blocks.py": (

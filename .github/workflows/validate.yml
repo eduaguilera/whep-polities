@@ -498,6 +498,21 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_item_blocks.py
 
+      # Issue 273's table: 234 nesting pairs, 20 where inclusion is arithmetically impossible and 13
+      # of those contradict an already-BANKED verdict. It was read by no gate until 2026-08-19. The
+      # `inclusion` verdict re-derives exactly from cells_outer_lt_inner / shared_cells using the
+      # generator's own thresholds — verified on all 84 rows that carry shared cells.
+      - name: Sources — the nesting-flag verdicts must follow from their own numbers
+        if: '!cancelled()'
+        run: python3 scripts/validate_assertion_nesting_flags.py
+
+      # The triage queue decides WHAT GETS LOOKED AT, so a silent corruption produces work never done
+      # rather than a wrong number. Five of six arms re-derive a column from other columns; the sixth
+      # checks inclusion_impossible against assertion_nesting_flags.csv, the table it was copied from.
+      - name: Sources — the assertion triage queue must describe its own rows
+        if: '!cancelled()'
+        run: python3 scripts/validate_assertion_triage.py
+
       # A label can be right for one commodity and wrong for another, and no label-level decision can
       # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix
       # raw labels across their item series -- australia's `p` is CHRISTMAS ISLAND phosphate,
