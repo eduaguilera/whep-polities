@@ -30,7 +30,7 @@ pre-assertion-era bare-label row with no hash — see the legacy branch below) f
 the verification workflow.
 """
 import pandas as pd, numpy as np, json, csv, os, sys, argparse, hashlib, re
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from matchlib import Matcher, norm, eff_year
@@ -213,6 +213,15 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
     variants = sorted({str(x) for x in grp["label"].unique()})
     yrs = grp.eff_year.dropna()
     y0, y1 = (int(yrs.min()), int(yrs.max())) if len(yrs) else (None, None)
+    # The GROUPING is (label_n, source, code) but the key omits `code`, so two candidates whose rows
+    # happen to span the same years collide. That is not hypothetical: `ethiopia|iia|None-None`
+    # shipped twice, once for ETH-1907-1936 and once for ETH-1936-1941, one row each -- both spans
+    # None-None because neither row carries a year. The comment above says a duplicate key "silently
+    # corrupts banking, since a key maps to one ledger row and one evidence bundle", and it does:
+    # 23_verdict_carryover.py builds `qstatus` as a dict keyed on `key`, so one of the two was simply
+    # dropped on every run. Disambiguated below, AFTER all entries are built, so that only the
+    # colliding keys change and the other 1,071 keep the names their banked verdicts are filed under
+    # -- renaming everything is exactly the orphaning disease of issue 308.
     key = f"{label_n}|{src}|{y0}-{y1}"
     pm = polmeta.get(code)
     ev = {
@@ -319,6 +328,32 @@ for (label, iso, how), grp in un.groupby([un.label, un.iso.fillna(""), un.status
         "years": (f"{int(yrs.min())}-{int(yrs.max())}" if len(yrs) else None),
         "sources": sorted({str(s) for s in grp.source.unique()}),
     })
+
+# ---------- key uniqueness ----------
+# A key maps to ONE ledger row and ONE evidence bundle, so a collision silently corrupts banking:
+# 23_verdict_carryover.py keys a dict on it and drops the loser. Disambiguate the colliding entries
+# ONLY, by appending the candidate code, so every non-colliding key keeps the name its banked verdict
+# is filed under. Sorted by candidate so the suffix a given entry receives is stable across runs --
+# an unstable suffix would orphan the verdict it was meant to protect on the very next intake.
+_by_key = defaultdict(list)
+for a in assertions:
+    _by_key[a["key"]].append(a)
+for k, group in sorted(_by_key.items()):
+    if len(group) < 2:
+        continue
+    for a in sorted(group, key=lambda a: str(a["candidate"])):
+        a["key"] = f"{k}|{a['candidate']}"
+    print(f"  disambiguated {len(group)} entries sharing key {k!r}: "
+          + ", ".join(a["key"] for a in sorted(group, key=lambda a: a["key"])))
+
+# Hard invariant, not a warning. assertions.json is gitignored, so no CI gate can ever read it --
+# this is the only place the guarantee can live, and a silent pass here is what issue 308 documents.
+_dupes = sorted(k for k, g in Counter(a["key"] for a in assertions).items() if g > 1)
+if _dupes:
+    raise SystemExit(
+        f"{len(_dupes)} assertion key(s) are still not unique after disambiguation: "
+        f"{_dupes[:5]}. A key maps to one ledger row and one evidence bundle, so banking would "
+        f"silently drop one of each pair (issue 308)")
 
 assertions.sort(key=lambda a: -a["rows"])
 counts = pd.Series([a["status"] for a in assertions]).value_counts().to_dict() if assertions else {}

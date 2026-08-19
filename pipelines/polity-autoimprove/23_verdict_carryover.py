@@ -42,7 +42,7 @@ import os
 import re
 import sys
 import tempfile
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -105,7 +105,20 @@ def main() -> int:
     banked = applied_keys()
     q = json.load(open(QUEUE, encoding="utf-8"))
     q = q if isinstance(q, list) else q.get("assertions", [])
-    qstatus = {a.get("key"): str(a.get("status") or "") for a in q if a.get("key")}
+    # A dict keyed on `key` DROPS one entry of every colliding pair, which is not hypothetical:
+    # `ethiopia|iia|None-None` shipped twice with different candidates (ETH-1907-1936 and
+    # ETH-1936-1941) and this line silently discarded one of them on every run. 00_intake.py now
+    # disambiguates collisions and raises if any survive, so reaching this branch means the queue
+    # was produced by an intake predating that fix -- refuse it rather than quietly halving it.
+    _keys = [a["key"] for a in q if a.get("key")]
+    _dupes = sorted(k for k, n in Counter(_keys).items() if n > 1)
+    if _dupes:
+        print(f"FAIL: {len(_dupes)} assertion key(s) appear more than once in "
+              f"{os.path.relpath(QUEUE, REPO)}: {_dupes[:5]}. A key maps to one ledger row and one "
+              f"evidence bundle; carrying verdicts across a non-unique key drops one of each pair "
+              f"(issue 308). Re-run 00_intake.py, which disambiguates them.", file=sys.stderr)
+        return 1
+    qstatus = {a["key"]: str(a.get("status") or "") for a in q if a.get("key")}
 
     by_ls = defaultdict(list)
     for k in qstatus:
