@@ -1848,6 +1848,45 @@ def mutate_edition_zero_reclassed(root, gpd, make_valid, affinity):
             f"stay satisfied")
 
 
+def mutate_crosslabel_direction_without_a_level(root, gpd, make_valid, affinity):
+    """Claim a direction for the one duplication whose block has no level.
+
+    `cross_label_duplication.csv` records which side a copied block came FROM, by comparing the
+    block's level against each label's level outside it. That only works when the block HAS a level.
+    The iia `czech republic`/`serbia` rye block does not: 26,000 ha sits beside 915,000 ha in adjacent
+    years, a 35x swing, so its median describes nothing.
+
+    This is not a hypothetical guard. The first version of the generator ignored the spread and
+    answered `serbia` for that pair -- and it is the ONE case whose direction is independently
+    established, running czech -> serbia, proven by yield checks against serbia's own 0.80 t/ha median
+    (issue 433). A meaningless median landed nearer the smaller series by arithmetic accident and got
+    the answer exactly backwards.
+
+    So the mutation fills in the withheld direction while changing nothing else: the block, the
+    distinctness, the contiguity and the outside ratio are all untouched, so arms A, B and C stay
+    quiet and only the arm tying direction to `block_spread` can see it. It picks the row by the
+    largest spread rather than by name, since which pair is worst moves when the panel is rebuilt.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/cross_label_duplication.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    cands = [r for r in rows if not (r["block_matches_level_of"] or "").strip()
+             and (r["block_spread"] or "").strip()]
+    if not cands:
+        raise AssertionError("every row already claims a direction, so this mutation has nothing to "
+                             "fill in and the case would pass vacuously")
+    hit = max(cands, key=lambda r: float(r["block_spread"]))
+    hit["block_matches_level_of"] = hit["smaller_label"]
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"claimed {hit['smaller_label']!r} as the donor for {hit['source']} {hit['item']!r} "
+            f"{hit['label_a']}/{hit['label_b']}, whose block swings {hit['block_spread']}x within "
+            f"its own {hit['block_years']} years -- the exact wrong answer the spread guard exists "
+            f"to prevent")
+
 def mutate_era_zero_area_exonerated(root, gpd, make_valid, affinity):
     """Reclassify a zero-area row as fine, the way the `if area > 0` guard does.
 
@@ -3545,6 +3584,14 @@ CASES = (
         "pass and only the class-shape check can see it",
     ),
     (
+        "validate_cross_label_duplication.py",
+        mutate_crosslabel_direction_without_a_level,
+        "has no level to match",
+        "a direction claimed for the one block that swings 35x within its own four years -- the exact "
+        "wrong answer the generator's first version gave for the only pair whose direction is "
+        "independently known, with every other field left consistent so only the spread arm can see it",
+    ),
+    (
         "validate_era_shift_verdicts.py",
         mutate_era_zero_area_exonerated,
         "implied yield is INFINITE",
@@ -4177,6 +4224,10 @@ WRITABLE = {
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+    ),
+    # The case rewrites cross_label_duplication.csv in place (it fills in a withheld direction).
+    "validate_cross_label_duplication.py": (
+        "pipelines/polity-autoimprove/state/cross_label_duplication.csv",
     ),
     # The case rewrites era_shift_verdicts.csv in place (it reclassifies one row), so a real copy.
     "validate_era_shift_verdicts.py": (
