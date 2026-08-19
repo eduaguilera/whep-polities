@@ -512,6 +512,14 @@ jobs:
       - name: Sources — the assertion triage queue must describe its own rows
         if: '!cancelled()'
         run: python3 scripts/validate_assertion_triage.py
+      # The largest tracked state table (402 KB, 2,718 rows) was read by NO gate until 2026-08-19.
+      # Issue 432: the committed copy had drifted 115 rows AND two whole columns behind its
+      # generator, and still carried six rows on two polity codes that no longer exist. No row-count
+      # baseline here on purpose — CI has no layer-B panel, so freshness is unverifiable, and a count
+      # pin would fail the moment someone legitimately regenerates.
+      - name: Sources — the magnitude outlier table must describe its own rows
+        if: '!cancelled()'
+        run: python3 scripts/validate_magnitude_outliers.py
 
       # A label can be right for one commodity and wrong for another, and no label-level decision can
       # fix that: the alias key is (label, source, years) with no item dimension. 11 iia labels mix

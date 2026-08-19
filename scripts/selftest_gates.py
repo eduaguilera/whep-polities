@@ -1469,7 +1469,6 @@ def mutate_nesting_verdict_softened(root, gpd, make_valid, affinity):
             f"few_violations and promoted a lesser pair, so the pinned count of 20 still holds")
 
 
-
 def mutate_triage_inclusion_flag_desynced(root, gpd, make_valid, affinity):
     """Desync `inclusion_impossible` from the table it was copied from, keeping the count.
 
@@ -1507,6 +1506,41 @@ def mutate_triage_inclusion_flag_desynced(root, gpd, make_valid, affinity):
     return (f"moved the inclusion_impossible flag off {victim['key']!r}, which "
             f"assertion_nesting_flags.csv condemns, onto {donor['key']!r}, which it does not, "
             f"leaving 17 rows flagged so no count changes")
+
+
+def mutate_outlier_ratio_rewritten(root, gpd, make_valid, affinity):
+    """Rewrite the top outlier's ratio while leaving the three numbers it is derived from alone.
+
+    `ratio` is the column the whole table is sorted and judged by, and it is exactly
+    (median_value / area) / item_median_intensity for all 2,718 rows. Nothing else in the row carries
+    that claim, and until 2026-08-19 nothing checked it — this table was the largest tracked state
+    file and no gate read it (issue 432).
+
+    Set to 9.0 rather than something wild so it still clears the --min-ratio floor of 8.0 and the
+    row stays plausible on its face; the polity code, item and observation count are untouched, so
+    the live-code and count arms stay quiet too. Only the re-derivation can see it.
+
+    Picks the largest ratio rather than a named row, since which one is largest changes when the
+    panel is rebuilt — the same reason the splice, spike and collapse mutators pick by measurement.
+    Rewriting the FIRST row also leaves the descending-order contract satisfied, so check D cannot
+    fire either.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/magnitude_outliers.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    worst = max(rows, key=lambda r: float(r["ratio"]))
+    before = worst["ratio"]
+    worst["ratio"] = "9.0"
+    # keep the table sorted so check D stays quiet: move the edited row to the end
+    rows = [r for r in rows if r is not worst] + [worst]
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"rewrote the {worst['whep_code']} / {worst['item']} ratio from {before} to 9.0 while "
+            f"leaving median_value, area and item_median_intensity alone, and re-sorted so the "
+            f"ordering contract still holds")
 
 
 def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
@@ -3124,6 +3158,14 @@ CASES = (
         "evidence against an already-banked verdict, so only the re-derivation can see it",
     ),
     (
+        "validate_magnitude_outliers.py",
+        mutate_outlier_ratio_rewritten,
+        "does not match its own numbers",
+        "the top outlier's ratio rewritten to a value that still clears the floor, with the three "
+        "numbers it derives from left alone and the ordering preserved — so only the re-derivation "
+        "can see that the column the whole table is judged by has stopped describing its row",
+    ),
+    (
         "validate_item_blocks.py",
         mutate_item_block_count_lowered,
         "no longer describes the row",
@@ -3740,6 +3782,10 @@ WRITABLE = {
     "validate_assertion_triage.py": (
         "pipelines/polity-autoimprove/state/assertion_triage.csv",
         "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv",
+    ),
+    # The case rewrites magnitude_outliers.csv in place (it edits the ratio column), so a real copy.
+    "validate_magnitude_outliers.py": (
+        "pipelines/polity-autoimprove/state/magnitude_outliers.csv",
     ),
     # The case rewrites item_blocks.csv in place (it edits n_items), so a real copy.
     "validate_item_blocks.py": (
