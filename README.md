@@ -160,6 +160,12 @@ python3 scripts/validate_trade_mirror_gaps.py      # the flagged trade mirrors: 
 python3 scripts/validate_land_containment.py       # crop area <= arable land: an irrigated-area breach has no multiple-cropping escape
 python3 scripts/validate_trade_direction_tiebreak.py  # and the direction: each verdict re-derived from the exporter's own production + imports
 
+# NOT a gate — a lookup to run BEFORE reporting a finding about a cell, because grep does not
+# work on this table: scope columns are often placeholders like `(16 labels; see summary)` and the
+# specific label/item/year live in the free-text summary. It answers MATCH / INDETERMINATE / no
+# match, and an INDETERMINATE is not a pass.
+python3 scripts/lookup_known_defect.py --source iia --label serbia --item rye --year 1931
+
 # and the one that asks whether the checks above can fail at all
 python3 scripts/selftest_gates.py
 
