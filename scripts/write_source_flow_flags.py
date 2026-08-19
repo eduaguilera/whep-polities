@@ -106,10 +106,22 @@ def resolve_polities(source: str, label: str) -> str:
     """
     if label == "*" or not os.path.exists(ALIAS):
         return ""
+    # A BLANK `source` IS A WILDCARD, NOT AN ABSENCE — such an alias routes its label from ANY
+    # source, which is how the matchers apply it. `validate_composition_sums.py` already carries
+    # this comment because skipping those rows made that check wrong; this function had the same
+    # bug. 188 of the 995 published alias rows (19%), covering 79 distinct labels, have a blank
+    # source, and every one of them resolved to nothing here.
+    #
+    # The consequence was a published flag with an EMPTY polity_code, which
+    # 05_magnitude_screen.py joins on and so could never match — an inert row in a published file.
+    # Found while trying to publish the iia/australia Christmas Island phosphate flag (issue 372),
+    # which I wrongly diagnosed in issue 412 as "australia has no alias row": it has two, both
+    # source-agnostic.
     hits = set()
     with open(ALIAS, encoding="utf-8") as fh:
         for row in csv.DictReader(fh):
-            if row.get("source") != source:
+            row_src = (row.get("source") or "").strip()
+            if row_src and row_src != source:
                 continue
             if (row.get("source_label") or "").lower() != label.lower():
                 continue

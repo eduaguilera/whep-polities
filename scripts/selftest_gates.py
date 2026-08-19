@@ -2573,12 +2573,19 @@ def mutate_convention_flag_without_alias(root, gpd, make_valid, affinity):
     decision and does nothing.
 
     This is not hypothetical: it is what happened when the iia/australia phosphate finding (issue
-    372) was first registered, and every one of the 67 gates passed on the inert result. That is why
-    the finding ended up recorded in `convention` prose instead, and why this case exists.
+    372) was first registered, and every gate passed on the inert result.
 
-    It picks the first convention whose label is genuinely absent from the alias map, so the case
-    does not depend on any one row surviving; and it sets `origin_iso3` too, so check E's "flow with
-    no origin" arm stays quiet and ONLY the alias arm can fire.
+    THE AUSTRALIA CASE TURNED OUT TO HAVE A DIFFERENT CAUSE, and the correction matters for reading
+    this case. I diagnosed it as "australia has no alias row". It has two — both with a BLANK
+    `source`, which is a WILDCARD meaning any source — and both `resolve_polities` and this gate's
+    own `alias_labels()` required an exact source match, so they skipped those rows along with 188
+    of the 995 published aliases covering 81 labels. Fixed; australia now resolves and the flag is
+    published. The failure this case guards is real and unchanged, but "no alias row" now means
+    genuinely none, wildcard included.
+
+    It picks the first convention whose label is absent from the alias map under those corrected
+    semantics, so the case does not depend on any one row surviving; and it sets `origin_iso3` too,
+    so check E's "flow with no origin" arm stays quiet and ONLY the alias arm can fire.
     """
     conv = os.path.join(root, "pipelines/polity-autoimprove/state/source_conventions.csv")
     alias = os.path.join(root, "data/final/label_alias_map.csv")
@@ -3587,9 +3594,9 @@ CASES = (
         "validate_source_conventions.py",
         mutate_convention_flag_without_alias,
         "an inert flag in a published file",
-        "a non-production flow on a label with no alias row, so the published flag resolves an "
-        "empty polity_code and 05_magnitude_screen.py can never join it — all 67 gates passed on "
-        "exactly this when the iia/australia phosphate finding was first registered",
+        "a non-production flow on a label with no alias row at all (wildcard included), so the "
+        "published flag resolves an empty polity_code and 05_magnitude_screen.py can never join "
+        "it — every gate passed on exactly this shape when the phosphate finding was first filed",
     ),
     (
         "validate_source_conventions.py",

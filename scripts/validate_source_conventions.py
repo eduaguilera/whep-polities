@@ -159,9 +159,16 @@ def alias_labels():
         return out
     with open(path, encoding="utf-8") as fh:
         for row in csv.DictReader(fh):
-            if row.get("polity_code"):
-                out.setdefault((row.get("source") or "").strip(), set()).add(
-                    (row.get("source_label") or "").strip().lower())
+            if not row.get("polity_code"):
+                continue
+            src = (row.get("source") or "").strip()
+            label = (row.get("source_label") or "").strip().lower()
+            # A BLANK `source` is a WILDCARD, not an absence: the alias routes its label from ANY
+            # source. Recorded under the sentinel "*" and honoured by every caller, because a check
+            # that treated it as an absence would refuse 81 labels that DO have aliases — which is
+            # what this arm did when I added it, and what made the iia/australia flag look
+            # unpublishable in issue 412.
+            out.setdefault(src or "*", set()).add(label)
     return out
 
 
@@ -285,7 +292,7 @@ def main() -> int:
         lp = (r.get("label_pattern") or "").strip()
         if flow and flow != "production" and lp and lp != "*":
             src = (r.get("source") or "").strip()
-            if lp.lower() not in aliases.get(src, frozenset()):
+            if lp.lower() not in (aliases.get(src, set()) | aliases.get("*", set())):
                 fails.append(
                     f"{who}: flow_type {flow!r} publishes a flow flag, but {lp!r} has no row in "
                     f"data/final/label_alias_map.csv for source {src!r}, so "
