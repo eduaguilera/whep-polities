@@ -139,7 +139,7 @@ they are not equally promising, and one of them does not exist as stated:
 
 | candidate | verdict | measured |
 |---|---|---|
-| area × yield = production | **exploited** — `07_yield_consistency.py` | physical yield bounds; per-cell and per-run correction tables |
+| area × yield = production | **exploited** — `07_yield_consistency.py` | physical yield bounds; per-cell and per-run correction tables. **Also `state/impossible_pairs.csv` since 2026-08-19**: 177 cells report **area = 0 beside a positive production**, an infinite implied yield. They were invisible until then because the tool filtered `area_ha > 0` before dividing — a guard against a divide-by-zero that also deleted the strongest finding, the same shape as the guarded existence check that shipped dead in issue 407. 176 of 177 are `iia` and they cluster on tobacco in 1933–37, where issue 414's false zeros meet issue 416's ×100 inflation: `iia libya / tobacco 1937` is area = 0 with production = 85,000 t, both defects in one cell. `nigeria / cotton lint / ha` = 0 for 1941–45 is self-refuting — the same label reports 15,100 t of cotton seed in those years |
 | meat components = stated total | **exploited** — `10_livestock_consistency.py` | holds to the tonne for 204 of 218 country-years; 11 bad cells, all recovered |
 | carcass weight within physical bounds | **exploited** — `10_livestock_consistency.py` | 5 of 562 cells outside a species' dressed-carcass range |
 | heads × carcass weight = meat | **not available as stated** | standing herd is not annual slaughter (pigs turn over faster than once a year), and `item` = "meat" collapses four yearbook columns under one label |

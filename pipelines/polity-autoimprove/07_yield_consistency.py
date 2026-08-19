@@ -469,6 +469,26 @@ def main() -> int:
     prod = prod.groupby(key, dropna=False)["prod_t"].sum().reset_index()
 
     m = area.merge(prod, on=key, how="inner")
+
+    # A ZERO AREA BESIDE A POSITIVE PRODUCTION IS THE MOST IMPOSSIBLE YIELD THERE IS, AND THIS
+    # FILTER USED TO DISCARD IT. The line below exists to avoid a divide-by-zero, and until
+    # 2026-08-19 that was all it did -- it dropped 177 cells whose implied yield is INFINITE
+    # before any of them could be flagged, so the tool built to find physically impossible
+    # yields was silently throwing away its strongest cases. Same shape as the guarded
+    # existence check that shipped dead in issue 407: a guard written to prevent an exception
+    # also suppressed the finding.
+    #
+    # They are not scattered noise. 176 of the 177 are `iia`, and they cluster on tobacco in
+    # 1933-1937 -- exactly where issue 414's false zeros (the iia_1938_39 volume reads blanks
+    # as 0) meet issue 416's x100 inflation. `iia libya / tobacco 1937` reads area = 0 with
+    # production = 85,000 t: the area is a false zero and the production is a hundred times
+    # its real value, and the two defects are visible together in one cell.
+    #
+    # `nigeria / cotton lint / ha` = 0 for 1941-1945 is the self-refuting case: the SAME label
+    # reports cotton seed of 15,100 / 13,600 / 10,300 / 6,600 tonnes in those years, and no
+    # tonnage comes off zero hectares.
+    impossible = m[(m["area_ha"] == 0) & (m["prod_t"] > 0)].copy()
+
     m = m[(m["area_ha"] > 0) & (m["prod_t"] > 0)].copy()
     m["yield_t_ha"] = m["prod_t"] / m["area_ha"]
 
@@ -505,6 +525,16 @@ def main() -> int:
     ser_path = os.path.join(H, "yield_series_corrections.csv")
     ser.to_csv(ser_path, index=False)
 
+    # Published as its own table rather than folded into yield_corrections.csv, because every
+    # derived column there is defined by a division this class cannot perform: yield_t_ha,
+    # ratio_to_ref and orders_out are all undefined at area = 0, and area_ha_if_prod_ok is the
+    # only repair the arithmetic can offer. A row that had to leave four columns empty would
+    # weaken the gate that re-derives them for every other row.
+    imp = impossible[["source", "country", "item", "year", "area_ha", "prod_t"]].copy()
+    imp = imp.sort_values("prod_t", ascending=False)
+    imp.to_csv(os.path.join(H, "impossible_pairs.csv"), index=False)
+
+    print(f"area == 0 beside a positive production (IMPOSSIBLE): {len(impossible)}")
     n_pow = int(out["looks_like_power_of_ten"].sum())
     print(f"paired (source, country, item, year) with BOTH area and production: {len(m):,}")
     print(f"  items covered: {m['item'].nunique()}   sources: "
