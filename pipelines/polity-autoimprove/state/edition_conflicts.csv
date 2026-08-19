@@ -1,8 +1,106 @@
 label,product,variable,unit,year,kind,volume_a,value_a,volume_b,value_b,ratio
+albania,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,1087.3,iia_1938_39,108700,99.9724
+australia,sugar: cane,production,tonnes,1933,power_of_ten,iia_1933_34,65128.6,iia_1938_39,636200,9.7684
+austria,hops,production,tonnes,1933,power_of_ten,iia_1933_34,67.2,iia_1938_39,6700,99.7024
+belgian ruanda-urundi,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,525,iia_1938_39,52500,100.0000
+belgium,hops,area,hectares,1933,power_of_ten,iia_1933_34,597,iia_1938_39,6000,10.0503
+belgium,hops,production,tonnes,1933,power_of_ten,iia_1933_34,716.7,iia_1938_39,71700,100.0419
+belgium,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,6385.1,iia_1938_39,638500,99.9984
+british antigua,sugar: cane,production,tonnes,1933,power_of_ten,iia_1933_34,2100,iia_1938_39,21000,10.0000
+british borneo,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,179.2,iia_1938_39,17900,99.8884
+british cyprus,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,207.6,iia_1938_39,20800,100.1927
+british jamaica,cacao: raw,area,hectares,1933,power_of_ten,iia_1933_34,390,iia_1938_39,4000,10.2564
+british nyasaland,cottonseed,production,tonnes,1933,power_of_ten,iia_1933_34,1133.5,iia_1938_39,11250,9.9250
+british palestine,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,420.6,iia_1938_39,42100,100.0951
+british transjordan,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,19.9,iia_1938_39,2000,100.5025
+british uganda,groundnut,area,hectares,1933,power_of_ten,iia_1933_34,5103,iia_1938_39,51000,9.9941
+bulgaria,meslin,production,tonnes,1933,power_of_ten,iia_1933_34,115096.1,iia_1938_39,11900,9.6719
+bulgaria,spelt,production,tonnes,1933,power_of_ten,iia_1933_34,11889.9,iia_1938_39,115100,9.6805
+bulgaria,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,24455.6,iia_1938_39,2445600,100.0016
+canada,hops,area,hectares,1933,power_of_ten,iia_1933_34,398,iia_1938_39,4000,10.0503
+canada,hops,production,tonnes,1933,power_of_ten,iia_1933_34,670.1,iia_1938_39,67000,99.9851
+canada,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,20354,iia_1938_39,2036800,100.0688
+cuba,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,16488.9,iia_1938_39,1672200,101.4137
+czechoslovakia,hops,area,hectares,1933,power_of_ten,iia_1933_34,10267,iia_1938_39,103000,10.0321
+czechoslovakia,hops,production,tonnes,1933,power_of_ten,iia_1933_34,6267.7,iia_1938_39,626800,100.0048
+czechoslovakia,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,11777.6,iia_1938_39,1177800,100.0034
+denmark,rye,area,hectares,1933,power_of_ten,iia_1933_34,14302,iia_1938_39,143000,9.9986
+dutch east indies,sesame,area,hectares,1933,power_of_ten,iia_1933_34,1580,iia_1938_39,16000,10.1266
+france,hops,area,hectares,1933,power_of_ten,iia_1933_34,1708,iia_1938_39,17000,9.9532
+france,hops,production,tonnes,1933,power_of_ten,iia_1933_34,1441.7,iia_1938_39,144200,100.0208
+france,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,28429.4,iia_1938_39,2842900,99.9986
+french algeria,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,13086,iia_1938_39,1307500,99.9159
+french annam,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,2800,iia_1938_39,280000,100.0000
+french cambodia,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,7000,iia_1938_39,700000,100.0000
+french dahomey,cacao: raw,production,tonnes,1933,power_of_ten,iia_1933_34,30,iia_1938_39,300,10.0000
+french dahomey,eggs,production,tonnes,1932,power_of_ten,iia_1933_34,129.36,iia_1938_39,1293.6,10.0000
+french equatorial africa,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,1220,iia_1938_39,122000,100.0000
+french guadeloupe,sugar: cane,production,tonnes,1933,power_of_ten,iia_1933_34,4179.7,iia_1938_39,41800,10.0007
+french guinea,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,530,iia_1938_39,53000,100.0000
+french indochine,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,13450,iia_1938_39,1401000,104.1636
+french ivory coast,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,334,iia_1938_39,3300,9.8802
+french laos,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,410,iia_1938_39,41000,100.0000
+french madagascar,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,7700,iia_1938_39,770000,100.0000
+french mauritania,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,4,iia_1938_39,400,100.0000
+french morocco,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,160.9,iia_1938_39,16100,100.0622
+french syria and lebanon,cottonseed,area,hectares,1933,power_of_ten,iia_1933_34,780,iia_1938_39,8000,10.2564
+french syria and lebanon,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,3044.5,iia_1938_39,304400,99.9836
+french tonkin,tea,area,hectares,1933,power_of_ten,iia_1933_34,406,iia_1938_39,4000,9.8522
+french tonkin,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,1100,iia_1938_39,110000,100.0000
+french tunisia,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,510.5,iia_1938_39,51000,99.9021
+german south west africa,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,26.3,iia_1938_39,2600,98.8593
+germany,hops,area,hectares,1933,power_of_ten,iia_1933_34,9566,iia_1938_39,96000,10.0355
+germany,hops,production,tonnes,1933,power_of_ten,iia_1933_34,6793.6,iia_1938_39,679400,100.0059
+germany,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,29433.4,iia_1938_39,2943300,99.9986
+greece,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,54878.4,iia_1938_39,5487800,99.9993
+guatemala,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,120.4,iia_1938_39,12000,99.6678
+hungary,hops,production,tonnes,1933,power_of_ten,iia_1933_34,59.1,iia_1938_39,5900,99.8308
+hungary,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,23851.2,iia_1938_39,2385100,99.9992
+italian dodecanese islands,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,74.3,iia_1938_39,7400,99.5962
+italian eritrea,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,20,iia_1938_39,2000,100.0000
+italian libya: tripolitania,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,336.5,iia_1938_39,33600,99.8514
+italy,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,44380.3,iia_1938_39,4438000,99.9993
+japan,soybean,area,hectares,1933,power_of_ten,iia_1933_34,32367,iia_1938_39,324000,10.0102
+japan,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,66540.1,iia_1938_39,6654000,99.9998
+japanese korea,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,16553.5,iia_1938_39,1655300,99.9970
+japanese taiwan,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,1536.7,iia_1938_39,153700,100.0195
+mexico,sesame,area,hectares,1933,power_of_ten,iia_1933_34,3187,iia_1938_39,32000,10.0408
+mexico,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,9524.2,iia_1938_39,975300,102.4023
+new zealand,hops,area,hectares,1933,power_of_ten,iia_1933_34,206,iia_1938_39,2000,9.7087
+new zealand,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,562.4,iia_1938_39,56200,99.9289
+nicaragua,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,550,iia_1938_39,55000,100.0000
+peru,cottonseed,area,hectares,1933,power_of_ten,iia_1933_34,13048,iia_1938_39,130000,9.9632
+poland,hops,area,hectares,1933,power_of_ten,iia_1933_34,2195,iia_1938_39,22000,10.0228
+poland,hops,production,tonnes,1933,power_of_ten,iia_1933_34,1152.7,iia_1938_39,115300,100.0260
+poland,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,7226.7,iia_1938_39,722700,100.0042
+romania,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,6279.7,iia_1938_39,628000,100.0048
+spain,rye,area,hectares,1933,power_of_ten,iia_1933_34,59073,iia_1938_39,591000,10.0046
+spain,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,7257.7,iia_1938_39,725900,100.0179
+spanish spanish guinea,cacao: raw,area,hectares,1933,power_of_ten,iia_1933_34,600,iia_1938_39,6000,10.0000
+sweden,rye,area,hectares,1933,power_of_ten,iia_1933_34,22103,iia_1938_39,226000,10.2249
+sweden,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,545,iia_1938_39,54500,100.0000
+switzerland,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,1105,iia_1938_39,110500,100.0000
+total general,hops,area,hectares,1933,power_of_ten,iia_1933_34,45000,iia_1938_39,470000,10.4444
+total general,hops,production,tonnes,1933,power_of_ten,iia_1933_34,47600,iia_1938_39,4920000,103.3613
+total general excluding the ussr,rye,area,hectares,1933,power_of_ten,iia_1933_34,18750,iia_1938_39,18760000,1000.5333
+total general including the ussr,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,2200000,iia_1938_39,217000000,98.6364
+total north hemisphere aggregated,hops,area,hectares,1933,power_of_ten,iia_1933_34,44000,iia_1938_39,460000,10.4545
+total north hemisphere aggregated,hops,production,tonnes,1933,power_of_ten,iia_1933_34,46600,iia_1938_39,4770000,102.3605
+total north hemisphere aggregated excluding the ussr,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,1782000,iia_1938_39,180700000,101.4029
+uk,hops,area,hectares,1933,power_of_ten,iia_1933_34,6837,iia_1938_39,68000,9.9459
+uk,hops,production,tonnes,1933,power_of_ten,iia_1933_34,10973.2,iia_1938_39,1097300,99.9982
+us philippines,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,41750.3,iia_1938_39,4175000,99.9993
+us puerto rico,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,7711,iia_1938_39,761300,98.7291
+us samoa,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,34,iia_1938_39,3400,100.0000
+usa,hops,area,hectares,1933,power_of_ten,iia_1933_34,12262,iia_1938_39,123000,10.0310
+usa,hops,production,tonnes,1933,power_of_ten,iia_1933_34,18127.7,iia_1938_39,1812800,100.0017
+usa,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,624883.3,iia_1938_39,62193100,99.5275
+yugoslavia,hops,area,hectares,1933,power_of_ten,iia_1933_34,1694,iia_1938_39,17000,10.0354
+yugoslavia,hops,production,tonnes,1933,power_of_ten,iia_1933_34,1464.3,iia_1938_39,146400,99.9795
+yugoslavia,tobacco,production,tonnes,1933,power_of_ten,iia_1933_34,8750.7,iia_1938_39,875100,100.0034
 albania,rye,area,hectares,1933,revised,iia_1933_34,3482,iia_1938_39,3000,1.1607
 albania,rye,production,tonnes,1933,revised,iia_1933_34,4580.4,iia_1938_39,4800,1.0479
 albania,tobacco,area,hectares,1933,revised,iia_1933_34,1042,iia_1938_39,1000,1.0420
-albania,tobacco,production,tonnes,1933,revised,iia_1933_34,1087.3,iia_1938_39,108700,99.9724
 argentina,cottonseed,area,hectares,1933,revised,iia_1933_34,194258,iia_1938_39,195000,1.0038
 argentina,cottonseed,production,tonnes,1933,revised,iia_1933_34,113000,iia_1938_39,106800,1.0581
 argentina,groundnut,area,hectares,1933,revised,iia_1933_34,83193,iia_1938_39,83000,1.0023
@@ -16,7 +114,6 @@ australia,fertilizers: ammonium sulfate,production,tonnes,1933,revised,iia_1933_
 australia,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,649237,iia_1938_39,759000,1.1691
 australia,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,369516,iia_1938_39,100,3695.1600
 australia,sugar: beet,production,tonnes,1933,revised,iia_1933_34,5388.1,iia_1938_39,5400,1.0022
-australia,sugar: cane,production,tonnes,1933,revised,iia_1933_34,65128.6,iia_1938_39,636200,9.7684
 australia,wine,production,tonnes,1933,revised,iia_1933_34,56420,iia_1938_39,57876,1.0258
 austria,eggs,production,tonnes,1932,revised,iia_1933_34,23716,iia_1938_39,25872,1.0909
 austria,fertilizers: ammonium sulfate,production,tonnes,1933,revised,iia_1933_34,6497,iia_1938_39,6500,1.0005
@@ -25,7 +122,6 @@ austria,flax: fibre,production,tonnes,1933,revised,iia_1933_34,2839.5,iia_1938_3
 austria,hemp: fibre,production,tonnes,1933,revised,iia_1933_34,598.8,iia_1938_39,100,5.9880
 austria,hops,area,hectares,1933,revised,iia_1933_34,56,iia_1938_39,1000,17.8571
 austria,hops,production,tonnes,1920,revised,iia_1909_21,39.3,iia_1925_26,38.9,1.0103
-austria,hops,production,tonnes,1933,revised,iia_1933_34,67.2,iia_1938_39,6700,99.7024
 austria,linseed,area,hectares,1933,revised,iia_1933_34,1127,iia_1938_39,1000,1.1270
 austria,linseed,production,tonnes,1933,revised,iia_1933_34,437.2,iia_1938_39,400,1.0930
 austria,rapeseed,area,hectares,1933,revised,iia_1933_34,1804,iia_1938_39,2000,1.1086
@@ -44,14 +140,11 @@ belgian ruanda-urundi,cottonseed,area,hectares,1933,revised,iia_1933_34,3077,iia
 belgian ruanda-urundi,cottonseed,production,tonnes,1933,revised,iia_1933_34,1190,iia_1938_39,1200,1.0084
 belgian ruanda-urundi,groundnut,area,hectares,1933,revised,iia_1933_34,2330,iia_1938_39,2000,1.1650
 belgian ruanda-urundi,groundnut,production,tonnes,1933,revised,iia_1933_34,1599,iia_1938_39,1600,1.0006
-belgian ruanda-urundi,tobacco,production,tonnes,1933,revised,iia_1933_34,525,iia_1938_39,52500,100.0000
 belgium,fertilizers: copper(ii) sulfate,production,tonnes,1933,revised,iia_1933_34,38386,iia_1938_39,38400,1.0004
 belgium,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,25130,iia_1938_39,25100,1.0012
 belgium,flax: fibre,area,hectares,1933,revised,iia_1933_34,10812,iia_1938_39,11000,1.0174
 belgium,flax: fibre,production,tonnes,1933,revised,iia_1933_34,16864.7,iia_1938_39,7800,2.1621
-belgium,hops,area,hectares,1933,revised,iia_1933_34,597,iia_1938_39,6000,10.0503
 belgium,hops,production,tonnes,1920,revised,iia_1909_21,2285.3,iia_1925_26,1516.7,1.5068
-belgium,hops,production,tonnes,1933,revised,iia_1933_34,716.7,iia_1938_39,71700,100.0419
 belgium,linseed,area,hectares,1933,revised,iia_1933_34,10812,iia_1938_39,11000,1.0174
 belgium,linseed,production,tonnes,1933,revised,iia_1933_34,6080.7,iia_1938_39,6900,1.1347
 belgium,meslin,area,hectares,1933,revised,iia_1933_34,3400,iia_1938_39,14000,4.1176
@@ -64,7 +157,6 @@ belgium,spelt,area,hectares,1933,revised,iia_1933_34,14376,iia_1938_39,3000,4.79
 belgium,spelt,production,tonnes,1933,revised,iia_1933_34,30736.9,iia_1938_39,5700,5.3924
 belgium,sugar: beet,production,tonnes,1933,revised,iia_1933_34,243107.5,iia_1938_39,221000,1.1000
 belgium,tobacco,area,hectares,1933,revised,iia_1933_34,2688,iia_1938_39,3000,1.1161
-belgium,tobacco,production,tonnes,1933,revised,iia_1933_34,6385.1,iia_1938_39,638500,99.9984
 brazil,cacao: raw,production,tonnes,1933,revised,iia_1933_34,90000,iia_1938_39,107900,1.1989
 brazil,coffee: raw,production,tonnes,1933,revised,iia_1933_34,860000,iia_1938_39,1776600,2.0658
 brazil,cottonseed,area,hectares,1933,revised,iia_1933_34,790000,iia_1938_39,1154000,1.4608
@@ -74,11 +166,9 @@ brazil,sugar: cane,production,tonnes,1933,revised,iia_1933_34,650000,iia_1938_39
 brazil,tobacco,production,tonnes,1933,revised,iia_1933_34,110000,iia_1938_39,9954000,90.4909
 brazil,wine,production,tonnes,1933,revised,iia_1933_34,182000,iia_1938_39,47866,3.8023
 british aden,coffee: raw,production,tonnes,1933,revised,iia_1933_34,4485.3,iia_1938_39,4500,1.0033
-british antigua,sugar: cane,production,tonnes,1933,revised,iia_1933_34,2100,iia_1938_39,21000,10.0000
 british barbados,sugar: cane,production,tonnes,1933,revised,iia_1933_34,18693.4,iia_1938_39,56650,3.0305
 british bermuda,eggs,production,tonnes,1932,revised,iia_1933_34,81.4968,iia_1938_39,107.8,1.3228
 british bermuda,eggs,production,tonnes,1933,revised,iia_1933_34,81.4968,iia_1938_39,107.8,1.3228
-british borneo,tobacco,production,tonnes,1933,revised,iia_1933_34,179.2,iia_1938_39,17900,99.8884
 british brunei,eggs,production,tonnes,1932,revised,iia_1933_34,64.68,iia_1938_39,53.9,1.2000
 british brunei,eggs,production,tonnes,1933,revised,iia_1933_34,64.68,iia_1938_39,53.9,1.2000
 british ceylon,cacao: raw,production,tonnes,1933,revised,iia_1933_34,4001,iia_1938_39,4100,1.0247
@@ -95,7 +185,6 @@ british cyprus,linseed,production,tonnes,1933,revised,iia_1933_34,388.7,iia_1938
 british cyprus,olive grove,production,tonnes,1933,revised,iia_1933_34,1626.6,iia_1938_39,1800,1.1066
 british cyprus,olive: oil,production,tonnes,1933,revised,iia_1933_34,191.7,iia_1938_39,200,1.0433
 british cyprus,sesame,area,hectares,1933,revised,iia_1933_34,562,iia_1938_39,1000,1.7794
-british cyprus,tobacco,production,tonnes,1933,revised,iia_1933_34,207.6,iia_1938_39,20800,100.1927
 british cyprus,wine,production,tonnes,1933,revised,iia_1933_34,11425.141,iia_1938_39,9737,1.1734
 british dominica,citrus fruits: limes,production,tonnes,1933,revised,iia_1933_34,2610,iia_1938_39,2600,1.0038
 british fiji islands,sugar: cane,production,tonnes,1933,revised,iia_1933_34,117000,iia_1938_39,106700,1.0965
@@ -107,7 +196,6 @@ british guiana,coffee: raw,area,hectares,1933,revised,iia_1933_34,1874,iia_1938_
 british guiana,sugar: cane,production,tonnes,1933,revised,iia_1933_34,132000,iia_1938_39,134400,1.0182
 british india,rapeseed,production,tonnes,1920,revised,iia_1909_21,585751.05,iia_1925_26,593350,1.0130
 british iraq,cottonseed,production,tonnes,1933,revised,iia_1933_34,216,iia_1938_39,200,1.0800
-british jamaica,cacao: raw,area,hectares,1933,revised,iia_1933_34,390,iia_1938_39,4000,10.2564
 british jamaica,coffee: raw,area,hectares,1933,revised,iia_1933_34,2535,iia_1938_39,3000,1.1834
 british jamaica,sugar: cane,production,tonnes,1933,revised,iia_1933_34,73000,iia_1938_39,73600,1.0082
 british kenya,coffee: raw,area,hectares,1933,revised,iia_1933_34,41374,iia_1938_39,38500,1.0746
@@ -133,7 +221,6 @@ british nigeria,groundnut,production,tonnes,1933,revised,iia_1933_34,296984.8,ii
 british nigeria,sesame,production,tonnes,1933,revised,iia_1933_34,9813,iia_1938_39,9800,1.0013
 british nyasaland,coffee: raw,production,tonnes,1933,revised,iia_1933_34,57.3,iia_1938_39,100,1.7452
 british nyasaland,cottonseed,area,hectares,1933,revised,iia_1933_34,6119,iia_1938_39,6000,1.0198
-british nyasaland,cottonseed,production,tonnes,1933,revised,iia_1933_34,1133.5,iia_1938_39,11250,9.9250
 british nyasaland,tea,area,hectares,1933,revised,iia_1933_34,5597,iia_1938_39,6000,1.0720
 british nyasaland,tea,production,tonnes,1933,revised,iia_1933_34,1383.338,iia_1938_39,1383,1.0002
 british nyasaland,tobacco,area,hectares,1933,revised,iia_1933_34,3182,iia_1938_39,6500,2.0427
@@ -142,7 +229,6 @@ british ocean island,"fertilizers: phosphate, natural",production,tonnes,1933,re
 british palestine,olive grove,production,tonnes,1933,revised,iia_1933_34,3599,iia_1938_39,3600,1.0003
 british palestine,sesame,production,tonnes,1933,revised,iia_1933_34,214,iia_1938_39,200,1.0700
 british palestine,tobacco,area,hectares,1933,revised,iia_1933_34,933,iia_1938_39,1000,1.0718
-british palestine,tobacco,production,tonnes,1933,revised,iia_1933_34,420.6,iia_1938_39,42100,100.0951
 british palestine,wine,production,tonnes,1933,revised,iia_1933_34,2711.254,iia_1938_39,1456,1.8621
 british saint christopher and nevis,cottonseed,production,tonnes,1933,revised,iia_1933_34,60,iia_1938_39,200,3.3333
 british saint christopher and nevis,sugar: cane,production,tonnes,1933,revised,iia_1933_34,28715.5,iia_1938_39,28800,1.0029
@@ -156,7 +242,6 @@ british tanganyika,groundnut,production,tonnes,1933,revised,iia_1933_34,27840,ii
 british tanganyika,sesame,production,tonnes,1933,revised,iia_1933_34,4512.2,iia_1938_39,4500,1.0027
 british transjordan,eggs,production,tonnes,1932,revised,iia_1933_34,1585.3068,iia_1938_39,1563.1,1.0142
 british transjordan,eggs,production,tonnes,1933,revised,iia_1933_34,1619.9645,iia_1938_39,1617,1.0018
-british transjordan,tobacco,production,tonnes,1933,revised,iia_1933_34,19.9,iia_1938_39,2000,100.5025
 british trinidad and tobago,cacao: raw,production,tonnes,1933,revised,iia_1933_34,13180,iia_1938_39,12200,1.0803
 british trinidad and tobago,coffee: raw,production,tonnes,1933,revised,iia_1933_34,153.9,iia_1938_39,200,1.2995
 british trinidad and tobago,sugar: cane,production,tonnes,1933,revised,iia_1933_34,107032,iia_1938_39,107000,1.0003
@@ -164,7 +249,6 @@ british uganda,coffee: raw,area,hectares,1933,revised,iia_1933_34,17029,iia_1938
 british uganda,coffee: raw,production,tonnes,1933,revised,iia_1933_34,5102.8,iia_1938_39,5100,1.0005
 british uganda,cottonseed,area,hectares,1933,revised,iia_1933_34,441364,iia_1938_39,441000,1.0008
 british uganda,cottonseed,production,tonnes,1933,revised,iia_1933_34,118370,iia_1938_39,120800,1.0205
-british uganda,groundnut,area,hectares,1933,revised,iia_1933_34,5103,iia_1938_39,51000,9.9941
 british uganda,sesame,area,hectares,1933,revised,iia_1933_34,81643,iia_1938_39,82000,1.0044
 british uganda,tobacco,area,hectares,1933,revised,iia_1933_34,1644,iia_1938_39,2000,1.2165
 british‑egyptian sudan,cottonseed,area,hectares,1933,revised,iia_1933_34,134818,iia_1938_39,135000,1.0013
@@ -190,7 +274,6 @@ bulgaria,hempseed,area,hectares,1933,revised,iia_1933_34,5272,iia_1938_39,5000,1
 bulgaria,hempseed,production,tonnes,1933,revised,iia_1933_34,1703.9,iia_1938_39,1700,1.0023
 bulgaria,linseed,production,tonnes,1933,revised,iia_1933_34,203.7,iia_1938_39,200,1.0185
 bulgaria,meslin,area,hectares,1933,revised,iia_1933_34,92168,iia_1938_39,12000,7.6807
-bulgaria,meslin,production,tonnes,1933,revised,iia_1933_34,115096.1,iia_1938_39,11900,9.6719
 bulgaria,rapeseed,area,hectares,1933,revised,iia_1933_34,69,iia_1938_39,1000,14.4928
 bulgaria,rapeseed,production,tonnes,1920,revised,iia_1909_21,1391.6,iia_1925_26,434.7,3.2013
 bulgaria,rapeseed,production,tonnes,1933,revised,iia_1933_34,897.3,iia_1938_39,900,1.0030
@@ -199,10 +282,8 @@ bulgaria,rye,production,tonnes,1933,revised,iia_1933_34,245956.7,iia_1938_39,246
 bulgaria,sesame,area,hectares,1933,revised,iia_1933_34,10393,iia_1938_39,10000,1.0393
 bulgaria,sesame,production,tonnes,1933,revised,iia_1933_34,3395.5,iia_1938_39,3400,1.0013
 bulgaria,spelt,area,hectares,1933,revised,iia_1933_34,11784,iia_1938_39,92000,7.8072
-bulgaria,spelt,production,tonnes,1933,revised,iia_1933_34,11889.9,iia_1938_39,115100,9.6805
 bulgaria,sugar: beet,production,tonnes,1933,revised,iia_1933_34,41545.7,iia_1938_39,40400,1.0284
 bulgaria,tobacco,area,hectares,1933,revised,iia_1933_34,27209,iia_1938_39,27000,1.0077
-bulgaria,tobacco,production,tonnes,1933,revised,iia_1933_34,24455.6,iia_1938_39,2445600,100.0016
 bulgaria,wine,production,tonnes,1933,revised,iia_1933_34,217345.492,iia_1938_39,138593,1.5682
 canada,eggs,production,tonnes,1929,revised,iia_1929_30,179872.8701,iia_1933_34,146658.666,1.2265
 canada,eggs,production,tonnes,1932,revised,iia_1933_34,148415.3748,iia_1938_39,148440.6,1.0002
@@ -212,15 +293,12 @@ canada,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_19
 canada,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,2008,iia_1938_39,2000,1.0040
 canada,flax: fibre,area,hectares,1933,revised,iia_1933_34,2060,iia_1938_39,2000,1.0300
 canada,flax: fibre,production,tonnes,1933,revised,iia_1933_34,1385.75,iia_1938_39,2800,2.0206
-canada,hops,area,hectares,1933,revised,iia_1933_34,398,iia_1938_39,4000,10.0503
 canada,hops,production,tonnes,1920,revised,iia_1909_21,391.3,iia_1925_26,308.8,1.2672
-canada,hops,production,tonnes,1933,revised,iia_1933_34,670.1,iia_1938_39,67000,99.9851
 canada,linseed,area,hectares,1933,revised,iia_1933_34,50330,iia_1938_39,50500,1.0034
 canada,linseed,production,tonnes,1933,revised,iia_1933_34,16050,iia_1938_39,8450,1.8994
 canada,rye,area,hectares,1933,revised,iia_1933_34,235969,iia_1938_39,236000,1.0001
 canada,sugar: beet,production,tonnes,1933,revised,iia_1933_34,67730,iia_1938_39,59600,1.1364
 canada,tobacco,area,hectares,1933,revised,iia_1933_34,18596,iia_1938_39,19000,1.0217
-canada,tobacco,production,tonnes,1933,revised,iia_1933_34,20354,iia_1938_39,2036800,100.0688
 chile,fertilizers: sodium nitrate,production,tonnes,1933,revised,iia_1933_34,443000,iia_1938_39,437700,1.0121
 china,cottonseed,area,hectares,1933,revised,iia_1933_34,2485500,iia_1938_39,2485000,1.0002
 china,cottonseed,production,tonnes,1933,revised,iia_1933_34,1376750,iia_1938_39,1359200,1.0129
@@ -234,7 +312,6 @@ cuba,coffee: raw,area,hectares,1933,revised,iia_1933_34,42576,iia_1938_39,56000,
 cuba,coffee: raw,production,tonnes,1933,revised,iia_1933_34,23680.8,iia_1938_39,26400,1.1148
 cuba,sugar: cane,production,tonnes,1933,revised,iia_1933_34,2310798.7,iia_1938_39,2210000,1.0456
 cuba,tobacco,area,hectares,1933,revised,iia_1933_34,45474,iia_1938_39,45000,1.0105
-cuba,tobacco,production,tonnes,1933,revised,iia_1933_34,16488.9,iia_1938_39,1672200,101.4137
 czechoslovakia,fertilizers: ammonium sulfate,production,tonnes,1933,revised,iia_1933_34,31950,iia_1938_39,32000,1.0016
 czechoslovakia,fertilizers: bone superphosphate,production,tonnes,1933,revised,iia_1933_34,3067,iia_1938_39,3100,1.0108
 czechoslovakia,fertilizers: calcium cyanamide,production,tonnes,1933,revised,iia_1933_34,18330,iia_1938_39,16800,1.0911
@@ -246,9 +323,7 @@ czechoslovakia,hemp: fibre,area,hectares,1933,revised,iia_1933_34,7627,iia_1938_
 czechoslovakia,hemp: fibre,production,tonnes,1933,revised,iia_1933_34,5337.8,iia_1938_39,5300,1.0071
 czechoslovakia,hempseed,area,hectares,1933,revised,iia_1933_34,7627,iia_1938_39,8000,1.0489
 czechoslovakia,hempseed,production,tonnes,1933,revised,iia_1933_34,3469,iia_1938_39,3500,1.0089
-czechoslovakia,hops,area,hectares,1933,revised,iia_1933_34,10267,iia_1938_39,103000,10.0321
 czechoslovakia,hops,production,tonnes,1920,revised,iia_1909_21,5265.6,iia_1925_26,5642.1,1.0715
-czechoslovakia,hops,production,tonnes,1933,revised,iia_1933_34,6267.7,iia_1938_39,626800,100.0048
 czechoslovakia,linseed,area,hectares,1933,revised,iia_1933_34,7098,iia_1938_39,7000,1.0140
 czechoslovakia,linseed,production,tonnes,1933,revised,iia_1933_34,2676.7,iia_1938_39,2700,1.0087
 czechoslovakia,meslin,production,tonnes,1933,revised,iia_1933_34,12438.1,iia_1938_39,700,17.7687
@@ -262,11 +337,9 @@ czechoslovakia,spelt,area,hectares,1933,revised,iia_1933_34,440,iia_1938_39,7000
 czechoslovakia,spelt,production,tonnes,1933,revised,iia_1933_34,700.2,iia_1938_39,12400,17.7092
 czechoslovakia,sugar: beet,production,tonnes,1933,revised,iia_1933_34,515766,iia_1938_39,455300,1.1328
 czechoslovakia,tobacco,area,hectares,1933,revised,iia_1933_34,10030,iia_1938_39,10000,1.0030
-czechoslovakia,tobacco,production,tonnes,1933,revised,iia_1933_34,11777.6,iia_1938_39,1177800,100.0034
 czechoslovakia,wine,production,tonnes,1933,revised,iia_1933_34,30727.242,iia_1938_39,30758,1.0010
 denmark,eggs,production,tonnes,1929,revised,iia_1929_30,59424.75,iia_1933_34,62516.6157,1.0520
 denmark,eggs,production,tonnes,1933,revised,iia_1933_34,73074.7094,iia_1938_39,79664.2,1.0902
-denmark,rye,area,hectares,1933,revised,iia_1933_34,14302,iia_1938_39,143000,9.9986
 denmark,rye,production,tonnes,1933,revised,iia_1933_34,251441,iia_1938_39,251400,1.0002
 denmark,sugar: beet,production,tonnes,1933,revised,iia_1933_34,243800,iia_1938_39,229200,1.0637
 dominican republic,cacao: raw,production,tonnes,1933,revised,iia_1933_34,22461,iia_1938_39,22900,1.0195
@@ -276,7 +349,6 @@ dutch east indies,coffee: raw,area,hectares,1933,revised,iia_1933_34,116897,iia_
 dutch east indies,coffee: raw,production,tonnes,1933,revised,iia_1933_34,53222.1,iia_1938_39,53200,1.0004
 dutch east indies,cottonseed,area,hectares,1933,revised,iia_1933_34,8094,iia_1938_39,8000,1.0117
 dutch east indies,cottonseed,production,tonnes,1933,revised,iia_1933_34,2850,iia_1938_39,2900,1.0175
-dutch east indies,sesame,area,hectares,1933,revised,iia_1933_34,1580,iia_1938_39,16000,10.1266
 dutch east indies,sesame,production,tonnes,1933,revised,iia_1933_34,3143.5,iia_1938_39,3100,1.0140
 dutch east indies,sulphur,production,tonnes,1933,revised,iia_1933_34,11213,iia_1938_39,11200,1.0012
 dutch east indies,tea,area,hectares,1933,revised,iia_1933_34,128078,iia_1938_39,128000,1.0006
@@ -334,9 +406,7 @@ france,hemp: fibre,area,hectares,1933,revised,iia_1933_34,2470,iia_1938_39,2000,
 france,hemp: fibre,production,tonnes,1933,revised,iia_1933_34,2626.8,iia_1938_39,2600,1.0103
 france,hempseed,area,hectares,1933,revised,iia_1933_34,2470,iia_1938_39,2000,1.2350
 france,hempseed,production,tonnes,1933,revised,iia_1933_34,626.4,iia_1938_39,600,1.0440
-france,hops,area,hectares,1933,revised,iia_1933_34,1708,iia_1938_39,17000,9.9532
 france,hops,production,tonnes,1920,revised,iia_1909_21,4711.5,iia_1925_26,4055,1.1619
-france,hops,production,tonnes,1933,revised,iia_1933_34,1441.7,iia_1938_39,144200,100.0208
 france,linseed,area,hectares,1933,revised,iia_1933_34,14944,iia_1938_39,15000,1.0037
 france,linseed,production,tonnes,1933,revised,iia_1933_34,4650.3,iia_1938_39,4700,1.0107
 france,olive grove,production,tonnes,1933,revised,iia_1933_34,26705,iia_1938_39,26700,1.0002
@@ -349,7 +419,6 @@ france,rye,production,tonnes,1933,revised,iia_1933_34,897612,iia_1938_39,897600,
 france,slag: basic,production,tonnes,1933,revised,iia_1933_34,988000,iia_1938_39,988500,1.0005
 france,sugar: beet,production,tonnes,1933,revised,iia_1933_34,942901.7,iia_1938_39,851600,1.1072
 france,tobacco,area,hectares,1933,revised,iia_1933_34,17687,iia_1938_39,18000,1.0177
-france,tobacco,production,tonnes,1933,revised,iia_1933_34,28429.4,iia_1938_39,2842900,99.9986
 france,wine,production,tonnes,1933,revised,iia_1933_34,4710693.26,iia_1938_39,4710706,1.0000
 french algeria,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,587750,iia_1938_39,587800,1.0001
 french algeria,olive grove,area,hectares,1933,revised,iia_1933_34,67984,iia_1938_39,68000,1.0002
@@ -358,17 +427,14 @@ french algeria,olive: oil,production,tonnes,1933,revised,iia_1933_34,8311.1,iia_
 french algeria,rye,area,hectares,1933,revised,iia_1933_34,1228,iia_1938_39,1000,1.2280
 french algeria,rye,production,tonnes,1933,revised,iia_1933_34,731.5,iia_1938_39,700,1.0450
 french algeria,tobacco,area,hectares,1933,revised,iia_1933_34,16918,iia_1938_39,17000,1.0048
-french algeria,tobacco,production,tonnes,1933,revised,iia_1933_34,13086,iia_1938_39,1307500,99.9159
 french algeria,wine,production,tonnes,1933,revised,iia_1933_34,1522516.996,iia_1938_39,1522521,1.0000
 french annam,blackberries,area,hectares,1933,revised,iia_1933_34,3500,iia_1938_39,3000,1.1667
 french annam,coffee: raw,area,hectares,1933,revised,iia_1933_34,6500,iia_1938_39,6000,1.0833
 french annam,cottonseed,area,hectares,1933,revised,iia_1933_34,7600,iia_1938_39,8000,1.0526
 french annam,cottonseed,production,tonnes,1933,revised,iia_1933_34,1550,iia_1938_39,1500,1.0333
 french annam,sesame,area,hectares,1933,revised,iia_1933_34,2500,iia_1938_39,2000,1.2500
-french annam,tobacco,production,tonnes,1933,revised,iia_1933_34,2800,iia_1938_39,280000,100.0000
 french cambodia,blackberries,area,hectares,1933,revised,iia_1933_34,1500,iia_1938_39,1000,1.5000
 french cambodia,cottonseed,production,tonnes,1933,revised,iia_1933_34,1290,iia_1938_39,1000,1.2900
-french cambodia,tobacco,production,tonnes,1933,revised,iia_1933_34,7000,iia_1938_39,700000,100.0000
 french cochinchina,blackberries,area,hectares,1933,revised,iia_1933_34,625,iia_1938_39,1000,1.6000
 french cochinchina,blackberries,production,tonnes,1933,revised,iia_1933_34,1203,iia_1938_39,1200,1.0025
 french cochinchina,coffee: raw,area,hectares,1933,revised,iia_1933_34,600,iia_1938_39,1000,1.6667
@@ -377,27 +443,21 @@ french cochinchina,sugar: cane,production,tonnes,1933,revised,iia_1933_34,19400,
 french cochinchina,tea,production,tonnes,1933,revised,iia_1933_34,880,iia_1938_39,236,3.7288
 french cochinchina,tobacco,area,hectares,1933,revised,iia_1933_34,3060,iia_1938_39,3000,1.0200
 french cochinchina,tobacco,production,tonnes,1933,revised,iia_1933_34,2140,iia_1938_39,270000,126.1682
-french dahomey,cacao: raw,production,tonnes,1933,revised,iia_1933_34,30,iia_1938_39,300,10.0000
-french dahomey,eggs,production,tonnes,1932,revised,iia_1933_34,129.36,iia_1938_39,1293.6,10.0000
 french equatorial africa,coffee: raw,production,tonnes,1933,revised,iia_1933_34,179.9,iia_1938_39,200,1.1117
 french equatorial africa,cottonseed,production,tonnes,1933,revised,iia_1933_34,9530,iia_1938_39,9500,1.0032
 french equatorial africa,groundnut,area,hectares,1933,revised,iia_1933_34,12700,iia_1938_39,13000,1.0236
 french equatorial africa,sesame,area,hectares,1933,revised,iia_1933_34,8520,iia_1938_39,8000,1.0650
 french equatorial africa,sesame,production,tonnes,1933,revised,iia_1933_34,1260,iia_1938_39,1300,1.0317
 french equatorial africa,tobacco,area,hectares,1933,revised,iia_1933_34,9250,iia_1938_39,9000,1.0278
-french equatorial africa,tobacco,production,tonnes,1933,revised,iia_1933_34,1220,iia_1938_39,122000,100.0000
 french guadeloupe,coffee: raw,area,hectares,1933,revised,iia_1933_34,7600,iia_1938_39,6000,1.2667
 french guadeloupe,coffee: raw,production,tonnes,1933,revised,iia_1933_34,293.5,iia_1938_39,300,1.0221
-french guadeloupe,sugar: cane,production,tonnes,1933,revised,iia_1933_34,4179.7,iia_1938_39,41800,10.0007
 french guinea,groundnut,area,hectares,1933,revised,iia_1933_34,20500,iia_1938_39,20000,1.0250
 french guinea,groundnut,production,tonnes,1933,revised,iia_1933_34,12274,iia_1938_39,12300,1.0021
-french guinea,tobacco,production,tonnes,1933,revised,iia_1933_34,530,iia_1938_39,53000,100.0000
 french india,groundnut,area,hectares,1933,revised,iia_1933_34,3026,iia_1938_39,3000,1.0087
 french india,groundnut,production,tonnes,1933,revised,iia_1933_34,1201.1,iia_1938_39,1200,1.0009
 french india,sesame,area,hectares,1933,revised,iia_1933_34,677,iia_1938_39,1000,1.4771
 french india,sesame,production,tonnes,1933,revised,iia_1933_34,227.4,iia_1938_39,200,1.1370
 french indochine,tobacco,area,hectares,1933,revised,iia_1933_34,15013,iia_1938_39,15000,1.0009
-french indochine,tobacco,production,tonnes,1933,revised,iia_1933_34,13450,iia_1938_39,1401000,104.1636
 french ivory coast,cacao: raw,production,tonnes,1933,revised,iia_1933_34,31789,iia_1938_39,41600,1.3086
 french ivory coast,coffee: raw,area,hectares,1933,revised,iia_1933_34,24812,iia_1938_39,25000,1.0076
 french ivory coast,coffee: raw,production,tonnes,1933,revised,iia_1933_34,1697.8,iia_1938_39,1700,1.0013
@@ -405,19 +465,15 @@ french ivory coast,eggs,production,tonnes,1929,revised,iia_1929_30,381.612,iia_1
 french ivory coast,groundnut,area,hectares,1933,revised,iia_1933_34,105540,iia_1938_39,106000,1.0044
 french ivory coast,groundnut,production,tonnes,1933,revised,iia_1933_34,49714,iia_1938_39,49700,1.0003
 french ivory coast,tobacco,area,hectares,1933,revised,iia_1933_34,1640,iia_1938_39,2000,1.2195
-french ivory coast,tobacco,production,tonnes,1933,revised,iia_1933_34,334,iia_1938_39,3300,9.8802
 french laos,cottonseed,area,hectares,1933,revised,iia_1933_34,1400,iia_1938_39,1000,1.4000
 french laos,cottonseed,production,tonnes,1933,revised,iia_1933_34,225,iia_1938_39,200,1.1250
 french laos,groundnut,production,tonnes,1933,revised,iia_1933_34,180,iia_1938_39,200,1.1111
 french laos,tobacco,area,hectares,1933,revised,iia_1933_34,500,iia_1938_39,1000,2.0000
-french laos,tobacco,production,tonnes,1933,revised,iia_1933_34,410,iia_1938_39,41000,100.0000
 french madagascar,coffee: raw,area,hectares,1933,revised,iia_1933_34,69500,iia_1938_39,69000,1.0072
 french madagascar,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,13110,iia_1938_39,13100,1.0008
 french madagascar,groundnut,area,hectares,1933,revised,iia_1933_34,4601,iia_1938_39,3000,1.5337
 french madagascar,groundnut,production,tonnes,1933,revised,iia_1933_34,6440,iia_1938_39,2600,2.4769
-french madagascar,tobacco,production,tonnes,1933,revised,iia_1933_34,7700,iia_1938_39,770000,100.0000
 french martinique,sugar: cane,production,tonnes,1933,revised,iia_1933_34,48220,iia_1938_39,50700,1.0514
-french mauritania,tobacco,production,tonnes,1933,revised,iia_1933_34,4,iia_1938_39,400,100.0000
 french morocco,cottonseed,production,tonnes,1933,revised,iia_1933_34,60,iia_1938_39,100,1.6667
 french morocco,eggs,production,tonnes,1933,revised,iia_1933_34,32340,iia_1938_39,53900,1.6667
 french morocco,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,39000,iia_1938_39,28000,1.3929
@@ -425,7 +481,6 @@ french morocco,linseed,area,hectares,1933,revised,iia_1933_34,12115,iia_1938_39,
 french morocco,linseed,production,tonnes,1933,revised,iia_1933_34,3185,iia_1938_39,3200,1.0047
 french morocco,rye,area,hectares,1933,revised,iia_1933_34,1130,iia_1938_39,1000,1.1300
 french morocco,rye,production,tonnes,1933,revised,iia_1933_34,565,iia_1938_39,600,1.0619
-french morocco,tobacco,production,tonnes,1933,revised,iia_1933_34,160.9,iia_1938_39,16100,100.0622
 french morocco,wine,production,tonnes,1933,revised,iia_1933_34,40677,iia_1938_39,40040,1.0159
 french new caledonia,coffee: raw,area,hectares,1933,revised,iia_1933_34,2696,iia_1938_39,3000,1.1128
 french new caledonia,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,6698,iia_1938_39,6700,1.0003
@@ -441,7 +496,6 @@ french syria and lebanon,blackberries,area,hectares,1933,revised,iia_1933_34,245
 french syria and lebanon,blackberries,production,tonnes,1933,revised,iia_1933_34,220000,iia_1938_39,210000,1.0476
 french syria and lebanon,"citrus fruits: oranges, other",area,hectares,1933,revised,iia_1933_34,2504,iia_1938_39,3000,1.1981
 french syria and lebanon,"citrus fruits: oranges, other",production,tonnes,1933,revised,iia_1933_34,32810,iia_1938_39,32800,1.0003
-french syria and lebanon,cottonseed,area,hectares,1933,revised,iia_1933_34,780,iia_1938_39,8000,10.2564
 french syria and lebanon,cottonseed,production,tonnes,1933,revised,iia_1933_34,1940,iia_1938_39,1900,1.0211
 french syria and lebanon,olive grove,area,hectares,1933,revised,iia_1933_34,77620,iia_1938_39,78000,1.0049
 french syria and lebanon,olive grove,production,tonnes,1933,revised,iia_1933_34,24764.75,iia_1938_39,24750,1.0006
@@ -449,7 +503,6 @@ french syria and lebanon,olive: oil,production,tonnes,1933,revised,iia_1933_34,1
 french syria and lebanon,sesame,area,hectares,1933,revised,iia_1933_34,3520,iia_1938_39,4000,1.1364
 french syria and lebanon,sesame,production,tonnes,1933,revised,iia_1933_34,1107,iia_1938_39,1100,1.0064
 french syria and lebanon,tobacco,area,hectares,1933,revised,iia_1933_34,6920,iia_1938_39,7000,1.0116
-french syria and lebanon,tobacco,production,tonnes,1933,revised,iia_1933_34,3044.5,iia_1938_39,304400,99.9836
 french tonkin,blackberries,area,hectares,1933,revised,iia_1933_34,2670,iia_1938_39,3000,1.1236
 french tonkin,coffee: raw,area,hectares,1933,revised,iia_1933_34,3190,iia_1938_39,3000,1.0633
 french tonkin,coffee: raw,production,tonnes,1933,revised,iia_1933_34,1250,iia_1938_39,1200,1.0417
@@ -457,22 +510,16 @@ french tonkin,cottonseed,area,hectares,1933,revised,iia_1933_34,1335,iia_1938_39
 french tonkin,cottonseed,production,tonnes,1933,revised,iia_1933_34,60,iia_1938_39,300,5.0000
 french tonkin,groundnut,area,hectares,1933,revised,iia_1933_34,1370,iia_1938_39,1000,1.3700
 french tonkin,groundnut,production,tonnes,1933,revised,iia_1933_34,1010,iia_1938_39,1000,1.0100
-french tonkin,tea,area,hectares,1933,revised,iia_1933_34,406,iia_1938_39,4000,9.8522
 french tonkin,tobacco,area,hectares,1933,revised,iia_1933_34,1453,iia_1938_39,1000,1.4530
-french tonkin,tobacco,production,tonnes,1933,revised,iia_1933_34,1100,iia_1938_39,110000,100.0000
 french tunisia,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,18550,iia_1938_39,18600,1.0027
 french tunisia,olive: oil,production,tonnes,1933,revised,iia_1933_34,60000,iia_1938_39,33000,1.8182
-french tunisia,tobacco,production,tonnes,1933,revised,iia_1933_34,510.5,iia_1938_39,51000,99.9021
-german south west africa,tobacco,production,tonnes,1933,revised,iia_1933_34,26.3,iia_1938_39,2600,98.8593
 german togoland,cacao: raw,area,hectares,1933,revised,iia_1933_34,15400,iia_1938_39,15000,1.0267
 german togoland,cacao: raw,production,tonnes,1933,revised,iia_1933_34,9038.5,iia_1938_39,11000,1.2170
 german togoland,groundnut,production,tonnes,1933,revised,iia_1933_34,64.3,iia_1938_39,500,7.7760
 germany,eggs,production,tonnes,1933,revised,iia_1933_34,291060,iia_1938_39,334180,1.1481
 germany,flax: fibre,area,hectares,1933,revised,iia_1933_34,4889,iia_1938_39,5000,1.0227
 germany,flax: fibre,production,tonnes,1933,revised,iia_1933_34,3114.8,iia_1938_39,3100,1.0048
-germany,hops,area,hectares,1933,revised,iia_1933_34,9566,iia_1938_39,96000,10.0355
 germany,hops,production,tonnes,1920,revised,iia_1909_21,6025.3,iia_1925_26,6216.1,1.0317
-germany,hops,production,tonnes,1933,revised,iia_1933_34,6793.6,iia_1938_39,679400,100.0059
 germany,meslin,area,hectares,1933,revised,iia_1933_34,371859,iia_1938_39,113000,3.2908
 germany,meslin,production,tonnes,1933,revised,iia_1933_34,715992,iia_1938_39,160500,4.4610
 germany,rapeseed,area,hectares,1933,revised,iia_1933_34,5103,iia_1938_39,5000,1.0206
@@ -484,7 +531,6 @@ germany,spelt,area,hectares,1933,revised,iia_1933_34,113116,iia_1938_39,372000,3
 germany,spelt,production,tonnes,1933,revised,iia_1933_34,160513,iia_1938_39,716000,4.4607
 germany,sugar: beet,production,tonnes,1933,revised,iia_1933_34,1429175.2,iia_1938_39,1285500,1.1118
 germany,tobacco,area,hectares,1933,revised,iia_1933_34,11977,iia_1938_39,12000,1.0019
-germany,tobacco,production,tonnes,1933,revised,iia_1933_34,29433.4,iia_1938_39,2943300,99.9986
 germany,wine,production,tonnes,1933,revised,iia_1933_34,163666.776,iia_1938_39,151970,1.0770
 greece,citrus fruits: cedrats,production,tonnes,1933,revised,iia_1933_34,509.3,iia_1938_39,500,1.0186
 greece,citrus fruits: lemons,production,tonnes,1933,revised,iia_1933_34,10013.5,iia_1938_39,10000,1.0013
@@ -502,13 +548,11 @@ greece,rye,production,tonnes,1933,revised,iia_1933_34,71112.5,iia_1938_39,71100,
 greece,sesame,area,hectares,1933,revised,iia_1933_34,42186,iia_1938_39,42000,1.0044
 greece,sesame,production,tonnes,1933,revised,iia_1933_34,7302,iia_1938_39,7300,1.0003
 greece,tobacco,area,hectares,1933,revised,iia_1933_34,77556,iia_1938_39,78000,1.0057
-greece,tobacco,production,tonnes,1933,revised,iia_1933_34,54878.4,iia_1938_39,5487800,99.9993
 greece,wine,production,tonnes,1933,revised,iia_1933_34,351848.679,iia_1938_39,203294,1.7307
 guatemala,coffee: raw,production,tonnes,1933,revised,iia_1933_34,48000,iia_1938_39,36000,1.3333
 guatemala,eggs,production,tonnes,1932,revised,iia_1933_34,847.9009,iia_1938_39,862.4,1.0171
 guatemala,eggs,production,tonnes,1933,revised,iia_1933_34,903.6874,iia_1938_39,862.4,1.0479
 guatemala,sugar: cane,production,tonnes,1933,revised,iia_1933_34,32500,iia_1938_39,30000,1.0833
-guatemala,tobacco,production,tonnes,1933,revised,iia_1933_34,120.4,iia_1938_39,12000,99.6678
 haiti,coffee: raw,area,hectares,1933,revised,iia_1933_34,141600,iia_1938_39,142000,1.0028
 haiti,coffee: raw,production,tonnes,1933,revised,iia_1933_34,18000,iia_1938_39,34000,1.8889
 haiti,cottonseed,area,hectares,1933,revised,iia_1933_34,109300,iia_1938_39,102000,1.0716
@@ -522,7 +566,6 @@ hungary,hemp: fibre,production,tonnes,1933,revised,iia_1933_34,4051.25,iia_1938_
 hungary,hempseed,area,hectares,1933,revised,iia_1933_34,8694,iia_1938_39,9000,1.0352
 hungary,hempseed,production,tonnes,1933,revised,iia_1933_34,2908.55,iia_1938_39,2950,1.0143
 hungary,hops,area,hectares,1933,revised,iia_1933_34,107,iia_1938_39,1000,9.3458
-hungary,hops,production,tonnes,1933,revised,iia_1933_34,59.1,iia_1938_39,5900,99.8308
 hungary,linseed,area,hectares,1933,revised,iia_1933_34,7942,iia_1938_39,8000,1.0073
 hungary,linseed,production,tonnes,1933,revised,iia_1933_34,5121.6,iia_1938_39,5100,1.0042
 hungary,rapeseed,area,hectares,1933,revised,iia_1933_34,7102,iia_1938_39,7000,1.0146
@@ -531,7 +574,6 @@ hungary,rye,area,hectares,1933,revised,iia_1933_34,678583,iia_1938_39,679000,1.0
 hungary,rye,production,tonnes,1933,revised,iia_1933_34,71112.5,iia_1938_39,956500,13.4505
 hungary,sugar: beet,production,tonnes,1933,revised,iia_1933_34,135579,iia_1938_39,122000,1.1113
 hungary,tobacco,area,hectares,1933,revised,iia_1933_34,18296,iia_1938_39,18000,1.0164
-hungary,tobacco,production,tonnes,1933,revised,iia_1933_34,23851.2,iia_1938_39,2385100,99.9992
 hungary,wine,production,tonnes,1933,revised,iia_1933_34,280591.948,iia_1938_39,263900,1.0633
 ireland,eggs,production,tonnes,1933,revised,iia_1933_34,66404.8,iia_1938_39,66458.7,1.0008
 ireland,fertilizers: ammonium sulfate,production,tonnes,1933,revised,iia_1933_34,2030,iia_1938_39,2000,1.0150
@@ -545,12 +587,9 @@ italian dodecanese islands,citrus fruits: mandarins,production,tonnes,1933,revis
 italian dodecanese islands,citrus fruits: oranges,production,tonnes,1933,revised,iia_1933_34,790,iia_1938_39,800,1.0127
 italian dodecanese islands,olive grove,production,tonnes,1933,revised,iia_1933_34,1767.1,iia_1938_39,1800,1.0186
 italian dodecanese islands,olive: oil,production,tonnes,1933,revised,iia_1933_34,569.5,iia_1938_39,600,1.0536
-italian dodecanese islands,tobacco,production,tonnes,1933,revised,iia_1933_34,74.3,iia_1938_39,7400,99.5962
 italian dodecanese islands,wine,production,tonnes,1933,revised,iia_1933_34,1398.579,iia_1938_39,1365,1.0246
 italian eritrea,cottonseed,production,tonnes,1933,revised,iia_1933_34,460,iia_1938_39,500,1.0870
 italian eritrea,linseed,area,hectares,1933,revised,iia_1933_34,1500,iia_1938_39,1000,1.5000
-italian eritrea,tobacco,production,tonnes,1933,revised,iia_1933_34,20,iia_1938_39,2000,100.0000
-italian libya: tripolitania,tobacco,production,tonnes,1933,revised,iia_1933_34,336.5,iia_1938_39,33600,99.8514
 italy,blackberries,production,tonnes,1933,revised,iia_1933_34,1165429,iia_1938_39,1165400,1.0000
 italy,cottonseed,area,hectares,1933,revised,iia_1933_34,1465,iia_1938_39,1000,1.4650
 italy,cottonseed,production,tonnes,1933,revised,iia_1933_34,520,iia_1938_39,500,1.0400
@@ -575,7 +614,6 @@ italy,rye,production,tonnes,1933,revised,iia_1933_34,171177,iia_1938_39,171200,1
 italy,sugar: beet,production,tonnes,1933,revised,iia_1933_34,304492,iia_1938_39,274000,1.1113
 italy,sulphur,production,tonnes,1933,revised,iia_1933_34,401586,iia_1938_39,401600,1.0000
 italy,tobacco,area,hectares,1933,revised,iia_1933_34,35447,iia_1938_39,35000,1.0128
-italy,tobacco,production,tonnes,1933,revised,iia_1933_34,44380.3,iia_1938_39,4438000,99.9993
 italy,wine,production,tonnes,1933,revised,iia_1933_34,2993922.75,iia_1938_39,3006185,1.0041
 japan,citrus fruits: mandarins,area,hectares,1933,revised,iia_1933_34,30170,iia_1938_39,32000,1.0607
 japan,citrus fruits: mandarins,production,tonnes,1933,revised,iia_1933_34,341144.6,iia_1938_39,267700,1.2744
@@ -598,7 +636,6 @@ japan,rapeseed,area,hectares,1933,revised,iia_1933_34,80813,iia_1938_39,81000,1.
 japan,rapeseed,production,tonnes,1933,revised,iia_1933_34,87951.8,iia_1938_39,87900,1.0006
 japan,sesame,area,hectares,1933,revised,iia_1933_34,4950,iia_1938_39,5000,1.0101
 japan,sesame,production,tonnes,1933,revised,iia_1933_34,3906.7,iia_1938_39,3900,1.0017
-japan,soybean,area,hectares,1933,revised,iia_1933_34,32367,iia_1938_39,324000,10.0102
 japan,soybean,production,tonnes,1933,revised,iia_1933_34,362170.2,iia_1938_39,362200,1.0001
 japan,sugar: beet,production,tonnes,1933,revised,iia_1933_34,25563.9,iia_1938_39,23000,1.1115
 japan,sugar: cane,production,tonnes,1933,revised,iia_1933_34,108683.8,iia_1938_39,70700,1.5373
@@ -606,7 +643,6 @@ japan,sulphur,production,tonnes,1933,revised,iia_1933_34,116000,iia_1938_39,1144
 japan,tea,area,hectares,1933,revised,iia_1933_34,38167,iia_1938_39,38000,1.0044
 japan,tea,production,tonnes,1933,revised,iia_1933_34,21718.498,iia_1938_39,21718.5,1.0000
 japan,tobacco,area,hectares,1933,revised,iia_1933_34,33855,iia_1938_39,34000,1.0043
-japan,tobacco,production,tonnes,1933,revised,iia_1933_34,66540.1,iia_1938_39,6654000,99.9998
 japan: karafuto prefecture,eggs,production,tonnes,1932,revised,iia_1933_34,336.4438,iia_1938_39,323.4,1.0403
 japan: karafuto prefecture,eggs,production,tonnes,1933,revised,iia_1933_34,352.7216,iia_1938_39,377.3,1.0697
 japan: kwantung leased territory,eggs,production,tonnes,1932,revised,iia_1933_34,886.0082,iia_1938_39,862.4,1.0274
@@ -630,7 +666,6 @@ japanese korea,sesame,production,tonnes,1933,revised,iia_1933_34,4102.7,iia_1938
 japanese korea,soybean,area,hectares,1933,revised,iia_1933_34,797208,iia_1938_39,797000,1.0003
 japanese korea,soybean,production,tonnes,1933,revised,iia_1933_34,587658.3,iia_1938_39,587700,1.0001
 japanese korea,tobacco,area,hectares,1933,revised,iia_1933_34,13446,iia_1938_39,13000,1.0343
-japanese korea,tobacco,production,tonnes,1933,revised,iia_1933_34,16553.5,iia_1938_39,1655300,99.9970
 japanese taiwan,blackberries,area,hectares,1933,revised,iia_1933_34,630,iia_1938_39,1000,1.5873
 japanese taiwan,groundnut,area,hectares,1933,revised,iia_1933_34,29800,iia_1938_39,30000,1.0067
 japanese taiwan,groundnut,production,tonnes,1933,revised,iia_1933_34,43825.8,iia_1938_39,43800,1.0006
@@ -645,7 +680,6 @@ japanese taiwan,sugar: cane,production,tonnes,1933,revised,iia_1933_34,647031.6,
 japanese taiwan,tea,area,hectares,1933,revised,iia_1933_34,40663,iia_1938_39,44000,1.0821
 japanese taiwan,tea,production,tonnes,1933,revised,iia_1933_34,9326.925,iia_1938_39,9327,1.0000
 japanese taiwan,tobacco,area,hectares,1933,revised,iia_1933_34,777,iia_1938_39,1000,1.2870
-japanese taiwan,tobacco,production,tonnes,1933,revised,iia_1933_34,1536.7,iia_1938_39,153700,100.0195
 latvia,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,56306,iia_1938_39,56300,1.0001
 latvia,flax: fibre,area,hectares,1933,revised,iia_1933_34,41500,iia_1938_39,41000,1.0122
 latvia,linseed,area,hectares,1933,revised,iia_1933_34,41500,iia_1938_39,41000,1.0122
@@ -674,10 +708,8 @@ mexico,groundnut,area,hectares,1933,revised,iia_1933_34,6520,iia_1938_39,6000,1.
 mexico,groundnut,production,tonnes,1933,revised,iia_1933_34,5162.4,iia_1938_39,5200,1.0073
 mexico,linseed,area,hectares,1933,revised,iia_1933_34,2977,iia_1938_39,3000,1.0077
 mexico,linseed,production,tonnes,1933,revised,iia_1933_34,1792.8,iia_1938_39,1800,1.0040
-mexico,sesame,area,hectares,1933,revised,iia_1933_34,3187,iia_1938_39,32000,10.0408
 mexico,sesame,production,tonnes,1933,revised,iia_1933_34,12505.3,iia_1938_39,12800,1.0236
 mexico,tobacco,area,hectares,1933,revised,iia_1933_34,12565,iia_1938_39,13000,1.0346
-mexico,tobacco,production,tonnes,1933,revised,iia_1933_34,9524.2,iia_1938_39,975300,102.4023
 nepal,jute,production,tonnes,1933,revised,iia_1933_34,10428,iia_1938_39,10400,1.0027
 netherlands,eggs,production,tonnes,1929,revised,iia_1929_30,107800,iia_1933_34,101062.5,1.0667
 netherlands,eggs,production,tonnes,1932,revised,iia_1933_34,118580,iia_1938_39,114537.5,1.0353
@@ -694,22 +726,18 @@ netherlands,rye,area,hectares,1933,revised,iia_1933_34,165295,iia_1938_39,165000
 netherlands,rye,production,tonnes,1933,revised,iia_1933_34,396297.1,iia_1938_39,396300,1.0000
 netherlands,sugar: beet,production,tonnes,1933,revised,iia_1933_34,278024.2,iia_1938_39,261100,1.0648
 new zealand,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,270138,iia_1938_39,270100,1.0001
-new zealand,hops,area,hectares,1933,revised,iia_1933_34,206,iia_1938_39,2000,9.7087
 new zealand,linseed,area,hectares,1933,revised,iia_1933_34,583,iia_1938_39,2000,3.4305
 new zealand,linseed,production,tonnes,1933,revised,iia_1933_34,638.3,iia_1938_39,600,1.0638
 new zealand,rye,production,tonnes,1933,revised,iia_1933_34,93.3,iia_1938_39,100,1.0718
 new zealand,tobacco,area,hectares,1933,revised,iia_1933_34,730,iia_1938_39,1000,1.3699
-new zealand,tobacco,production,tonnes,1933,revised,iia_1933_34,562.4,iia_1938_39,56200,99.9289
 new zealand western samoa,cacao: raw,area,hectares,1933,revised,iia_1933_34,1900,iia_1938_39,2000,1.0526
 new zealand western samoa,cacao: raw,production,tonnes,1933,revised,iia_1933_34,913.4,iia_1938_39,900,1.0149
-nicaragua,tobacco,production,tonnes,1933,revised,iia_1933_34,550,iia_1938_39,55000,100.0000
 norway,fertilizers: calcium cyanamide,production,tonnes,1933,revised,iia_1933_34,20246,iia_1938_39,174550,8.6215
 norway,fertilizers: calcium nitrate,production,tonnes,1933,revised,iia_1933_34,174556,iia_1938_39,20200,8.6414
 norway,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,21031,iia_1938_39,21000,1.0015
 norway,fertilizers: sodium nitrate,production,tonnes,1933,revised,iia_1933_34,83155,iia_1938_39,83200,1.0005
 norway,rye,area,hectares,1933,revised,iia_1933_34,6352,iia_1938_39,6000,1.0587
 norway,rye,production,tonnes,1933,revised,iia_1933_34,11130.3,iia_1938_39,11100,1.0027
-peru,cottonseed,area,hectares,1933,revised,iia_1933_34,13048,iia_1938_39,130000,9.9632
 peru,cottonseed,production,tonnes,1933,revised,iia_1933_34,102390,iia_1938_39,101300,1.0108
 peru,"fertilizers: guano, natural",production,tonnes,1933,revised,iia_1933_34,162358,iia_1938_39,162400,1.0003
 peru,sugar: cane,production,tonnes,1933,revised,iia_1933_34,432643,iia_1938_39,390000,1.1093
@@ -725,8 +753,6 @@ poland,hemp: fibre,area,hectares,1933,revised,iia_1933_34,32047,iia_1938_39,3200
 poland,hemp: fibre,production,tonnes,1933,revised,iia_1933_34,10429.5,iia_1938_39,10400,1.0028
 poland,hempseed,area,hectares,1933,revised,iia_1933_34,32047,iia_1938_39,32000,1.0015
 poland,hempseed,production,tonnes,1933,revised,iia_1933_34,15680.6,iia_1938_39,15700,1.0012
-poland,hops,area,hectares,1933,revised,iia_1933_34,2195,iia_1938_39,22000,10.0228
-poland,hops,production,tonnes,1933,revised,iia_1933_34,1152.7,iia_1938_39,115300,100.0260
 poland,linseed,area,hectares,1933,revised,iia_1933_34,95047,iia_1938_39,95000,1.0005
 poland,linseed,production,tonnes,1933,revised,iia_1933_34,45060.4,iia_1938_39,45100,1.0009
 poland,rapeseed,area,hectares,1933,revised,iia_1933_34,30327,iia_1938_39,30000,1.0109
@@ -736,7 +762,6 @@ poland,rye,area,hectares,1933,revised,iia_1933_34,5775306,iia_1938_39,5775000,1.
 poland,rye,production,tonnes,1933,revised,iia_1933_34,7073289.3,iia_1938_39,7073300,1.0000
 poland,sugar: beet,production,tonnes,1933,revised,iia_1933_34,342913.7,iia_1938_39,308600,1.1112
 poland,tobacco,area,hectares,1933,revised,iia_1933_34,4717,iia_1938_39,5000,1.0600
-poland,tobacco,production,tonnes,1933,revised,iia_1933_34,7226.7,iia_1938_39,722700,100.0042
 portugal,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,180000,iia_1938_39,180700,1.0039
 portugal,olive grove,area,hectares,1933,revised,iia_1933_34,481119,iia_1938_39,481000,1.0002
 portugal,olive: oil,production,tonnes,1933,revised,iia_1933_34,74941.8,iia_1938_39,73600,1.0182
@@ -773,7 +798,6 @@ romania,rye,area,hectares,1933,revised,iia_1933_34,387545,iia_1938_39,388000,1.0
 romania,rye,production,tonnes,1933,revised,iia_1933_34,445918.7,iia_1938_39,445900,1.0000
 romania,sugar: beet,production,tonnes,1933,revised,iia_1933_34,161196,iia_1938_39,105100,1.5337
 romania,tobacco,area,hectares,1933,revised,iia_1933_34,10103,iia_1938_39,10000,1.0103
-romania,tobacco,production,tonnes,1933,revised,iia_1933_34,6279.7,iia_1938_39,628000,100.0048
 romania,wine,production,tonnes,1933,revised,iia_1933_34,683771.634,iia_1938_39,683774,1.0000
 spain,blackberries,production,tonnes,1933,revised,iia_1933_34,24834.7,iia_1938_39,24800,1.0014
 spain,citrus fruits: lemons,production,tonnes,1933,revised,iia_1933_34,59427.8,iia_1938_39,59400,1.0005
@@ -792,24 +816,19 @@ spain,meslin,area,hectares,1933,revised,iia_1933_34,46980,iia_1938_39,30000,1.56
 spain,meslin,production,tonnes,1933,revised,iia_1933_34,24295.2,iia_1938_39,21700,1.1196
 spain,olive grove,production,tonnes,1933,revised,iia_1933_34,1647151,iia_1938_39,1647200,1.0000
 spain,olive: oil,production,tonnes,1933,revised,iia_1933_34,310168.3,iia_1938_39,310200,1.0001
-spain,rye,area,hectares,1933,revised,iia_1933_34,59073,iia_1938_39,591000,10.0046
 spain,rye,production,tonnes,1933,revised,iia_1933_34,525866.9,iia_1938_39,525900,1.0001
 spain,spelt,area,hectares,1933,revised,iia_1933_34,29935,iia_1938_39,47000,1.5701
 spain,spelt,production,tonnes,1933,revised,iia_1933_34,21728.7,iia_1938_39,24300,1.1183
 spain,sugar: beet,production,tonnes,1933,revised,iia_1933_34,220000,iia_1938_39,215800,1.0195
 spain,sugar: cane,production,tonnes,1933,revised,iia_1933_34,14000,iia_1938_39,15700,1.1214
 spain,tobacco,area,hectares,1933,revised,iia_1933_34,5000,iia_1938_39,4000,1.2500
-spain,tobacco,production,tonnes,1933,revised,iia_1933_34,7257.7,iia_1938_39,725900,100.0179
 spain,wine,production,tonnes,1933,revised,iia_1933_34,1798500.704,iia_1938_39,1753570,1.0256
 spanish fernando po,cacao: raw,area,hectares,1933,revised,iia_1933_34,36000,iia_1938_39,35000,1.0286
 spanish fernando po,cacao: raw,production,tonnes,1933,revised,iia_1933_34,11726.6,iia_1938_39,10300,1.1385
-spanish spanish guinea,cacao: raw,area,hectares,1933,revised,iia_1933_34,600,iia_1938_39,6000,10.0000
 spanish spanish guinea,cacao: raw,production,tonnes,1933,revised,iia_1933_34,660.3,iia_1938_39,700,1.0601
 sweden,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,219030,iia_1938_39,219000,1.0001
-sweden,rye,area,hectares,1933,revised,iia_1933_34,22103,iia_1938_39,226000,10.2249
 sweden,rye,production,tonnes,1933,revised,iia_1933_34,460471,iia_1938_39,462700,1.0048
 sweden,sugar: beet,production,tonnes,1933,revised,iia_1933_34,304792,iia_1938_39,274500,1.1104
-sweden,tobacco,production,tonnes,1933,revised,iia_1933_34,545,iia_1938_39,54500,100.0000
 switzerland,fertilizers: ammonium sulfate,production,tonnes,1933,revised,iia_1933_34,909,iia_1938_39,900,1.0100
 switzerland,fertilizers: copper(ii) sulfate,production,tonnes,1933,revised,iia_1933_34,3152,iia_1938_39,3200,1.0152
 switzerland,meslin,area,hectares,1933,revised,iia_1933_34,5505,iia_1938_39,12000,2.1798
@@ -819,7 +838,6 @@ switzerland,rye,production,tonnes,1933,revised,iia_1933_34,39249.8,iia_1938_39,3
 switzerland,spelt,area,hectares,1933,revised,iia_1933_34,12756,iia_1938_39,7000,1.8223
 switzerland,spelt,production,tonnes,1933,revised,iia_1933_34,31365.4,iia_1938_39,15200,2.0635
 switzerland,sugar: beet,production,tonnes,1933,revised,iia_1933_34,8970,iia_1938_39,8100,1.1074
-switzerland,tobacco,production,tonnes,1933,revised,iia_1933_34,1105,iia_1938_39,110500,100.0000
 switzerland,wine,production,tonnes,1933,revised,iia_1933_34,21844.459,iia_1938_39,21840,1.0002
 total,cacao: raw,production,tonnes,1933,revised,iia_1933_34,45000,iia_1938_39,58000,1.2889
 total,cottonseed,area,hectares,1933,revised,iia_1933_34,1595000,iia_1938_39,1795000,1.1254
@@ -861,8 +879,6 @@ total general,"fertilizers: guano, natural",production,tonnes,1933,revised,iia_1
 total general,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,8155000,iia_1938_39,8779000,1.0765
 total general,groundnut,area,hectares,1933,revised,iia_1933_34,6090000,iia_1938_39,6170000,1.0131
 total general,groundnut,production,tonnes,1933,revised,iia_1933_34,5620000,iia_1938_39,5770000,1.0267
-total general,hops,area,hectares,1933,revised,iia_1933_34,45000,iia_1938_39,470000,10.4444
-total general,hops,production,tonnes,1933,revised,iia_1933_34,47600,iia_1938_39,4920000,103.3613
 total general,olive: oil,production,tonnes,1933,revised,iia_1933_34,779000,iia_1938_39,789000,1.0128
 total general,rapeseed,production,tonnes,1933,revised,iia_1933_34,1243000,iia_1938_39,1241000,1.0016
 total general,slag: basic,production,tonnes,1933,revised,iia_1933_34,3340000,iia_1938_39,3389700,1.0149
@@ -881,7 +897,6 @@ total general excluding the ussr,hempseed,area,hectares,1933,revised,iia_1933_34
 total general excluding the ussr,hempseed,production,tonnes,1933,revised,iia_1933_34,51000,iia_1938_39,53700,1.0529
 total general excluding the ussr,linseed,area,hectares,1933,revised,iia_1933_34,4400000,iia_1938_39,4390000,1.0023
 total general excluding the ussr,linseed,production,tonnes,1933,revised,iia_1933_34,2250000,iia_1938_39,2415000,1.0733
-total general excluding the ussr,rye,area,hectares,1933,revised,iia_1933_34,18750,iia_1938_39,18760000,1000.5333
 total general excluding the ussr,rye,production,tonnes,1933,revised,iia_1933_34,26760000,iia_1938_39,26650000,1.0041
 total general excluding the ussr,sugar: beet,production,tonnes,1933,revised,iia_1933_34,7790000,iia_1938_39,7060000,1.1034
 total general including the ussr,cottonseed,area,hectares,1933,revised,iia_1933_34,30270000,iia_1938_39,30640000,1.0122
@@ -896,18 +911,14 @@ total general including the ussr,rye,area,hectares,1933,revised,iia_1933_34,4415
 total general including the ussr,rye,production,tonnes,1933,revised,iia_1933_34,50950000,iia_1938_39,50840000,1.0022
 total general including the ussr,sugar: beet,production,tonnes,1933,revised,iia_1933_34,8873000,iia_1938_39,8050000,1.1022
 total general including the ussr,tobacco,area,hectares,1933,revised,iia_1933_34,2360000,iia_1938_39,2390000,1.0127
-total general including the ussr,tobacco,production,tonnes,1933,revised,iia_1933_34,2200000,iia_1938_39,217000000,98.6364
 total north hemisphere aggregated,groundnut,area,hectares,1933,revised,iia_1933_34,5540000,iia_1938_39,5610000,1.0126
 total north hemisphere aggregated,groundnut,production,tonnes,1933,revised,iia_1933_34,5130000,iia_1938_39,5230000,1.0195
-total north hemisphere aggregated,hops,area,hectares,1933,revised,iia_1933_34,44000,iia_1938_39,460000,10.4545
-total north hemisphere aggregated,hops,production,tonnes,1933,revised,iia_1933_34,46600,iia_1938_39,4770000,102.3605
 total north hemisphere aggregated,tea,area,hectares,1933,revised,iia_1933_34,655000,iia_1938_39,647000,1.0124
 total north hemisphere aggregated,tea,production,tonnes,1933,revised,iia_1933_34,335800,iia_1938_39,335400,1.0012
 total north hemisphere aggregated,wine,production,tonnes,1933,revised,iia_1933_34,13913900,iia_1938_39,14469000,1.0399
 total north hemisphere aggregated excluding the ussr,rye,area,hectares,1933,revised,iia_1933_34,18300000,iia_1938_39,18410000,1.0060
 total north hemisphere aggregated excluding the ussr,rye,production,tonnes,1933,revised,iia_1933_34,26467000,iia_1938_39,26430000,1.0014
 total north hemisphere aggregated excluding the ussr,tobacco,area,hectares,1933,revised,iia_1933_34,1800000,iia_1938_39,1820000,1.0111
-total north hemisphere aggregated excluding the ussr,tobacco,production,tonnes,1933,revised,iia_1933_34,1782000,iia_1938_39,180700000,101.4029
 total south hemisphere aggregated,groundnut,area,hectares,1933,revised,iia_1933_34,550000,iia_1938_39,560000,1.0182
 total south hemisphere aggregated,groundnut,production,tonnes,1933,revised,iia_1933_34,490000,iia_1938_39,540000,1.1020
 total south hemisphere aggregated,linseed,production,tonnes,1933,revised,iia_1933_34,1515000,iia_1938_39,1665000,1.0990
@@ -936,9 +947,7 @@ uk,eggs,production,tonnes,1933,revised,iia_1933_34,219265.2,iia_1938_39,219480.8
 uk,fertilizers: ammonium sulfate,production,tonnes,1933,revised,iia_1933_34,571018,iia_1938_39,571000,1.0000
 uk,fertilizers: calcium superphosphate,production,tonnes,1933,revised,iia_1933_34,382034,iia_1938_39,382000,1.0001
 uk,fertilizers: copper(ii) sulfate,production,tonnes,1933,revised,iia_1933_34,41165,iia_1938_39,41200,1.0009
-uk,hops,area,hectares,1933,revised,iia_1933_34,6837,iia_1938_39,68000,9.9459
 uk,hops,production,tonnes,1920,revised,iia_1909_21,14275.4,iia_1925_26,15291.4,1.0712
-uk,hops,production,tonnes,1933,revised,iia_1933_34,10973.2,iia_1938_39,1097300,99.9982
 uk,rye,area,hectares,1933,revised,iia_1933_34,5804,iia_1938_39,6000,1.0338
 uk,rye,production,tonnes,1933,revised,iia_1933_34,10058.9,iia_1938_39,10100,1.0041
 uk,slag: basic,production,tonnes,1933,revised,iia_1933_34,194065,iia_1938_39,194100,1.0002
@@ -968,13 +977,10 @@ us philippines,hemp: manila,area,hectares,1933,revised,iia_1933_34,447170,iia_19
 us philippines,hemp: manila,production,tonnes,1933,revised,iia_1933_34,134456.3,iia_1938_39,134500,1.0003
 us philippines,sugar: cane,production,tonnes,1933,revised,iia_1933_34,715000,iia_1938_39,749600,1.0484
 us philippines,tobacco,area,hectares,1933,revised,iia_1933_34,74610,iia_1938_39,75000,1.0052
-us philippines,tobacco,production,tonnes,1933,revised,iia_1933_34,41750.3,iia_1938_39,4175000,99.9993
 us puerto rico,coffee: raw,area,hectares,1933,revised,iia_1933_34,80900,iia_1938_39,62000,1.3048
 us puerto rico,coffee: raw,production,tonnes,1933,revised,iia_1933_34,50.8,iia_1938_39,4100,80.7087
 us puerto rico,sugar: cane,production,tonnes,1933,revised,iia_1933_34,890057.1,iia_1938_39,947000,1.0640
 us puerto rico,tobacco,area,hectares,1933,revised,iia_1933_34,10239,iia_1938_39,10000,1.0239
-us puerto rico,tobacco,production,tonnes,1933,revised,iia_1933_34,7711,iia_1938_39,761300,98.7291
-us samoa,tobacco,production,tonnes,1933,revised,iia_1933_34,34,iia_1938_39,3400,100.0000
 us virgin islands,sugar: cane,production,tonnes,1933,revised,iia_1933_34,4800,iia_1938_39,3100,1.5484
 usa,citrus fruits: grapefruits,production,tonnes,1933,revised,iia_1933_34,453304.8,iia_1938_39,498000,1.0986
 usa,citrus fruits: lemons,production,tonnes,1933,revised,iia_1933_34,228250,iia_1938_39,251500,1.1019
@@ -988,9 +994,7 @@ usa,fertilizers: copper(ii) sulfate,production,tonnes,1933,revised,iia_1933_34,2
 usa,"fertilizers: phosphate, natural",production,tonnes,1933,revised,iia_1933_34,2346326,iia_1938_39,2397500,1.0218
 usa,groundnut,area,hectares,1933,revised,iia_1933_34,544308,iia_1938_39,594000,1.0913
 usa,groundnut,production,tonnes,1933,revised,iia_1933_34,410821,iia_1938_39,438900,1.0683
-usa,hops,area,hectares,1933,revised,iia_1933_34,12262,iia_1938_39,123000,10.0310
 usa,hops,production,tonnes,1920,revised,iia_1909_21,15549.1,iia_1925_26,12584.4,1.2356
-usa,hops,production,tonnes,1933,revised,iia_1933_34,18127.7,iia_1938_39,1812800,100.0017
 usa,linseed,area,hectares,1933,revised,iia_1933_34,537428,iia_1938_39,543000,1.0104
 usa,linseed,production,tonnes,1933,revised,iia_1933_34,176460.7,iia_1938_39,175400,1.0060
 usa,olive grove,production,tonnes,1933,revised,iia_1933_34,12700.6,iia_1938_39,12700,1.0000
@@ -1001,7 +1005,6 @@ usa,soybean,production,tonnes,1933,revised,iia_1933_34,304200,iia_1938_39,357800
 usa,sugar: beet,production,tonnes,1933,revised,iia_1933_34,1601700,iia_1938_39,1489600,1.0753
 usa,sulphur,production,tonnes,1933,revised,iia_1933_34,1428626,iia_1938_39,1428600,1.0000
 usa,tobacco,area,hectares,1933,revised,iia_1933_34,710878,iia_1938_39,704000,1.0098
-usa,tobacco,production,tonnes,1933,revised,iia_1933_34,624883.3,iia_1938_39,62193100,99.5275
 usa: hawaii,eggs,production,tonnes,1929,revised,iia_1929_30,1034.88,iia_1933_34,1028.1964,1.0065
 usa: hawaii,eggs,production,tonnes,1932,revised,iia_1933_34,1098.9132,iia_1938_39,1078,1.0194
 usa: hawaii,sugar: cane,production,tonnes,1933,revised,iia_1933_34,933493.4,iia_1938_39,813400,1.1476
@@ -1041,8 +1044,6 @@ yugoslavia,flax: fibre,production,tonnes,1933,revised,iia_1933_34,9927.7,iia_193
 yugoslavia,hemp: fibre,area,hectares,1933,revised,iia_1933_34,30394,iia_1938_39,30000,1.0131
 yugoslavia,hemp: fibre,production,tonnes,1933,revised,iia_1933_34,27863.3,iia_1938_39,27900,1.0013
 yugoslavia,hempseed,production,tonnes,1933,revised,iia_1933_34,1503.8,iia_1938_39,1500,1.0025
-yugoslavia,hops,area,hectares,1933,revised,iia_1933_34,1694,iia_1938_39,17000,10.0354
-yugoslavia,hops,production,tonnes,1933,revised,iia_1933_34,1464.3,iia_1938_39,146400,99.9795
 yugoslavia,linseed,production,tonnes,1933,revised,iia_1933_34,997.5,iia_1938_39,1000,1.0025
 yugoslavia,meslin,area,hectares,1933,revised,iia_1933_34,54584,iia_1938_39,17000,3.2108
 yugoslavia,meslin,production,tonnes,1933,revised,iia_1933_34,55573,iia_1938_39,14400,3.8592
@@ -1055,7 +1056,6 @@ yugoslavia,spelt,area,hectares,1933,revised,iia_1933_34,16716,iia_1938_39,55000,
 yugoslavia,spelt,production,tonnes,1933,revised,iia_1933_34,14415.2,iia_1938_39,55600,3.8570
 yugoslavia,sugar: beet,production,tonnes,1933,revised,iia_1933_34,74466.9,iia_1938_39,67100,1.1098
 yugoslavia,tobacco,area,hectares,1933,revised,iia_1933_34,11144,iia_1938_39,11000,1.0131
-yugoslavia,tobacco,production,tonnes,1933,revised,iia_1933_34,8750.7,iia_1938_39,875100,100.0034
 yugoslavia,wine,production,tonnes,1933,revised,iia_1933_34,259596.155,iia_1938_39,259623,1.0001
 austria,hemp: fibre,area,hectares,1933,zero_contradicted,iia_1933_34,310,iia_1938_39,0,inf
 austria,hempseed,area,hectares,1933,zero_contradicted,iia_1933_34,78,iia_1938_39,0,inf

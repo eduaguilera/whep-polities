@@ -54,12 +54,21 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/edition_conflicts
 # Measured 2026-08-19 on the first run. BIDIRECTIONAL: setting false zeros to missing must lower
 # ZERO_CONTRADICTED with a note saying which cells were repaired.
 BASELINE_ZERO_CONTRADICTED = 83
-BASELINE_REVISED = 1058
+BASELINE_REVISED = 959
+# Measured 2026-08-19 (issue 424). 99 revisions differ by a clean power of ten, and 98 of the 99 hold
+# the SMALLER value in iia_1933_34. The control is what makes that significant rather than a property
+# of the volume: across all 1,032 revisions between the two volumes, iia_1933_34 is the smaller side
+# 55% of the time -- a coin flip. BIDIRECTIONAL, because unlike the zero class these are repairable
+# from the data: the other volume prints the other figure.
+BASELINE_POWER_OF_TEN = 99
+# Of the 99, this many must still hold the smaller value in iia_1933_34. A drop means a value moved.
+BASELINE_POW10_SMALLER_IN_1933 = 98
+POW10_VOLUME = "iia_1933_34"
 
 # Every contradicted zero traced to this one volume. Not a threshold -- an observed 83 of 83.
 ZERO_VOLUME = "iia_1938_39"
 
-KINDS = {"zero_contradicted", "revised"}
+KINDS = {"zero_contradicted", "revised", "power_of_ten"}
 
 
 def main() -> int:
@@ -72,8 +81,10 @@ def main() -> int:
 
     zc = [r for r in rows if r["kind"] == "zero_contradicted"]
     rev = [r for r in rows if r["kind"] == "revised"]
+    p10 = [r for r in rows if r["kind"] == "power_of_ten"]
     print(f"edition conflicts: {len(rows)}  "
           f"(zero_contradicted {len(zc)}/{BASELINE_ZERO_CONTRADICTED}, "
+          f"power_of_ten {len(p10)}/{BASELINE_POWER_OF_TEN}, "
           f"revised {len(rev)}/{BASELINE_REVISED})")
 
     problems = []
@@ -98,6 +109,32 @@ def main() -> int:
         problems.append(
             f"B only {len(rev)} revisions remain, below the pinned ceiling of {BASELINE_REVISED} — "
             f"lower the baseline and say what was reconciled")
+
+    # --- D: the power-of-ten class and its direction ---
+    if len(p10) != BASELINE_POWER_OF_TEN:
+        problems.append(
+            f"D {len(p10)} revisions differ by a clean power of ten, against the pinned "
+            f"{BASELINE_POWER_OF_TEN}. A source does not restate an estimate by exactly a "
+            f"hundredfold — these are dropped digits or a units column read as absolute (issues 416, "
+            f"424) — so a change here means a value moved or the extraction did")
+    smaller = 0
+    for r in p10:
+        try:
+            a, b = float(r["value_a"]), float(r["value_b"])
+        except ValueError:
+            continue
+        if (r["volume_a"] if a < b else r["volume_b"]) == POW10_VOLUME:
+            smaller += 1
+    print(f"power-of-ten revisions holding the smaller value in {POW10_VOLUME}: "
+          f"{smaller}/{len(p10)} (pinned {BASELINE_POW10_SMALLER_IN_1933})")
+    if smaller != BASELINE_POW10_SMALLER_IN_1933:
+        problems.append(
+            f"D {smaller} of {len(p10)} power-of-ten revisions hold the smaller value in "
+            f"{POW10_VOLUME}, against the pinned {BASELINE_POW10_SMALLER_IN_1933}. THE DIRECTION IS "
+            f"THE EVIDENCE: across all revisions between the two volumes {POW10_VOLUME} is the "
+            f"smaller side only 55% of the time, so a near-unanimous split here is what distinguishes "
+            f"a systematic dropped digit from ordinary revision. Losing it means the class has "
+            f"stopped being one phenomenon")
 
     # --- A: the asymmetry that identifies the defect ---
     for r in zc:
