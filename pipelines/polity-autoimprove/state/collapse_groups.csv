@@ -1964,6 +1964,24 @@ PAK-1949-1971,pesticides arsenicals,tonnes,1950,2,2,1,1,values_differ,one_label_
 PAK-1949-1971,poultry,1000 heads,1950,4,4,1,1,values_differ,one_label_one_source,1,22248,6843.25,0.307589,Pakistan,fao1952
 PAL-1920-1948,horses mules asses,1000 heads,1937,3,3,1,1,values_differ,one_label_one_source,9,92,40.333333,0.438406,Palestine,fao1952
 PAL-1920-1948,r_fao_population_1952_10_18,1000 people,1937,3,3,2,1,values_differ,several_labels_one_source,385,576,449,0.779514,Israel | Palestine,fao1952
+PAL-1920-1948,wine,tonnes,1922,2,2,2,2,values_differ,several_labels_several_sources,2696.309,2871,2783.6545,0.969577,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1923,2,2,2,2,values_differ,several_labels_several_sources,2441.005,2475,2458.0025,0.993132,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1924,2,2,2,2,values_differ,several_labels_several_sources,1420.177,1485,1452.5885,0.978174,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1930,2,2,2,2,values_differ,several_labels_several_sources,1980,3568.727,2774.3635,0.77741,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1931,2,2,2,2,values_differ,several_labels_several_sources,2772,3854.101,3313.0505,0.859617,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1932,2,2,2,2,values_differ,several_labels_several_sources,3019.319,8118,5568.6595,0.685964,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1933,2,2,2,2,values_differ,several_labels_several_sources,1584,2890.018,2237.009,0.774047,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1934,2,2,2,2,values_differ,several_labels_several_sources,2328,2376,2352,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1935,2,2,2,2,values_differ,several_labels_several_sources,2425,2574,2499.5,0.971057,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1936,2,2,2,2,values_differ,several_labels_several_sources,2231,2277,2254,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1937,2,2,2,2,values_differ,several_labels_several_sources,2425,2475,2450,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1938,2,2,2,2,values_differ,several_labels_several_sources,2910,2970,2940,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1939,2,2,2,2,values_differ,several_labels_several_sources,3298,3366,3332,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1940,2,2,2,2,values_differ,several_labels_several_sources,3589,3663,3626,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1941,2,2,2,2,values_differ,several_labels_several_sources,3589,3663,3626,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1942,2,2,2,2,values_differ,several_labels_several_sources,3977,4059,4018,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1943,2,2,2,2,values_differ,several_labels_several_sources,4171,4257,4214,0.989899,israel | palestine,iia | mitchell
+PAL-1920-1948,wine,tonnes,1944,2,2,2,2,values_differ,several_labels_several_sources,5335,5445,5390,0.989899,israel | palestine,iia | mitchell
 PAN-1903-1979,horses mules asses,1000 heads,1951,2,2,1,1,values_differ,one_label_one_source,5,158,81.5,0.515823,Panama,fao1952
 PAN-1903-1979,poultry,1000 heads,1951,3,3,1,1,values_differ,one_label_one_source,23,1634,581,0.355569,Panama,fao1952
 PAN-1903-1979,r_fao_population_1952_10_18,1000 people,1937,4,4,1,1,values_differ,one_label_one_source,6,575,198.25,0.344783,Panama,fao1952
