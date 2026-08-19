@@ -519,6 +519,65 @@ def check_mitchell_cape_natal(d):
     )
 
 
+def check_iia_australia_phosphate(d):
+    """The claim: iia `australia` / `p` is CHRISTMAS ISLAND's mined phosphate, not Australia's.
+
+    THE CONTROL IS PRESENT, WHICH IS WHAT MAKES THIS STRONG. The Serbia case (issue 315) turned on
+    availability -- raw `serbia` had zero production rows, so there was nothing else the series could
+    be. Here raw `australia` carries 25 natural-phosphate production rows of its OWN, so the
+    alternative hypothesis is live and has to be beaten on the values rather than assumed away. It
+    loses 16-0.
+
+    THIS IS NOT A MAGNITUDE ARGUMENT. "107,174 t is too much phosphate for Australia" would be the
+    reasoning that put three IIA routings wrong (issue 377). The test is exact equality against two
+    named controls, and the discriminating fact is that layer B matches ONE of them in every dated
+    cell and the OTHER in none -- a statement about identity, not about size. That Australia's own
+    output is 20x-1,000x smaller is reported because it explains WHY the substitution matters, not
+    as the evidence for it.
+
+    Needs the raw extract, which is outside the repo. When it is absent the check reports
+    unavailable rather than passing -- a re-test that silently succeeds because its input vanished is
+    worth less than no re-test (issue 387).
+    """
+    import os
+    import pandas as pd
+
+    raw = os.path.expanduser(os.environ.get(
+        "WHEP_IIA_RAW",
+        "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"))
+    if not os.path.exists(raw):
+        return False, f"raw IIA extract absent ({raw}); the discriminating test cannot run"
+    r = pd.read_excel(raw)
+    r["cl"] = r["country"].astype(str).str.strip().str.lower()
+    r["vl"] = r["variable"].astype(str).str.strip().str.lower()
+    ph = r[(r["product"].astype(str).str.strip() == "fertilizers: phosphate, natural")
+           & (r.vl == "production")].copy()
+    ph["y"] = pd.to_numeric(ph["year"], errors="coerce")
+
+    def series(label):
+        x = ph[(ph.cl == label) & ph.y.notna()]
+        return {int(t.y): t.value for t in x.itertuples()}
+
+    au, ci = series("australia"), series("australian christmas island")
+    lb = d[(d["source"] == "iia") & (d["country"] == "australia")
+           & (d["item"].map(norm) == "p")].dropna(subset=["year"])
+    got = {int(t.year): t.value for t in lb.itertuples()}
+    if not got or not ci:
+        return False, "one of the three series is empty; the test is unavailable"
+    hit_au = sum(1 for y, v in got.items()
+                 if au.get(y) is not None and abs(v - au[y]) <= abs(v) * 1e-6)
+    hit_ci = sum(1 for y, v in got.items()
+                 if ci.get(y) is not None and abs(v - ci[y]) <= abs(v) * 1e-6)
+    # Christmas Island must take EVERY cell and Australia none. A split would mean the label is
+    # mixed rather than substituted, which is a different finding and must not pass as this one.
+    ok = hit_ci == len(got) and hit_au == 0
+    return ok, (
+        f"{hit_ci} of {len(got)} dated values match raw `australian christmas island` production "
+        f"exactly and {hit_au} match raw `australia`, whose own {len(au)}-value phosphate series is "
+        f"present in the same years and 20x-1,000x smaller"
+    )
+
+
 def check_iia_npk(d):
     """The claim: IIA's one-letter items `p`, `n` and `k` are the fertilizer MACRONUTRIENTS --
     phosphate, nitrogen and potash -- and NOT corrupt item labels, but they may not be merged with
@@ -684,6 +743,7 @@ CHECKS = {
     ("fao1952", "Japan", "*"): check_exclusive_reporting,
     ("iia", "india", "*"): check_exclusive_reporting,
     ("mitchell", "south africa", "*"): check_mitchell_cape_natal,
+    ("iia", "australia", "p"): check_iia_australia_phosphate,
     ("iia", "*", "p"): check_iia_npk,
     ("iia", "*", "n"): check_iia_npk,
     ("iia", "*", "k"): check_iia_npk,

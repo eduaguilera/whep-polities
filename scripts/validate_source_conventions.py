@@ -80,7 +80,11 @@ REQUIRED = (
 MIN_EVIDENCE = 80
 MIN_CONVENTION = 40
 
-FLOW_TYPES = frozenset({"production", "entrepot_transit"})
+# `dependency_output` added 2026-08-19 (issue 372): a colony/dependency's MINED output published
+# under the administering power's label. Distinct from `entrepot_transit`, which is goods moving
+# THROUGH a port -- nothing transits here, the rock is dug on the dependency and reported by the
+# metropole. Both are non-production, so check E's origin_iso3 requirement applies unchanged.
+FLOW_TYPES = frozenset({"production", "entrepot_transit", "dependency_output"})
 
 # How a convention earned its place. Two independent corroborators is the bar; the
 # vocabulary is closed so "corroborated" cannot be asserted in free prose.
@@ -142,6 +146,25 @@ def retest_keys() -> set:
     return set(getattr(mod, "CHECKS", {}))
 
 
+def alias_labels():
+    """Which (source, lowercased label) pairs the PUBLISHED alias map can resolve to a polity.
+
+    Read from data/final/label_alias_map.csv because that is exactly the file
+    write_source_flow_flags.py resolves polity_code from -- checking against anything else would
+    let a flag pass here and still publish empty.
+    """
+    path = os.path.join(REPO, "data/final/label_alias_map.csv")
+    out = {}
+    if not os.path.exists(path):
+        return out
+    with open(path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            if row.get("polity_code"):
+                out.setdefault((row.get("source") or "").strip(), set()).add(
+                    (row.get("source_label") or "").strip().lower())
+    return out
+
+
 def iso3_codes() -> set:
     if not os.path.exists(POLDB):
         return set()
@@ -189,6 +212,7 @@ def main() -> int:
     known_sources = {s for s, _ in pairs}
     covered = retest_keys()
     isos = iso3_codes()
+    aliases = alias_labels()
     today = datetime.date.today()
 
     for i, r in enumerate(rows, start=2):
@@ -250,6 +274,25 @@ def main() -> int:
         if flow and flow != "production" and not origin:
             fails.append(f"{who}: flow_type {flow!r} with no origin_iso3 — a consumer "
                          f"can see the rows are not production and not whose they are")
+        # A non-production flow PUBLISHES a row into data/final/source_flow_flags.csv, and
+        # write_source_flow_flags.py resolves its polity_code from the ALIAS MAP. A label that
+        # reaches its polity by iso/name matching has no alias row, so the published flag carries
+        # an EMPTY polity_code -- and 05_magnitude_screen.py joins on (source, polity_code, item),
+        # so it can never match. That is an INERT flag in a published file, which is worse than no
+        # flag: it reads as a recorded decision and does nothing. Found 2026-08-19 while registering
+        # the iia/australia phosphate finding (issue 372), which is why that one is recorded in
+        # `convention` prose instead of being published.
+        lp = (r.get("label_pattern") or "").strip()
+        if flow and flow != "production" and lp and lp != "*":
+            src = (r.get("source") or "").strip()
+            if lp.lower() not in aliases.get(src, frozenset()):
+                fails.append(
+                    f"{who}: flow_type {flow!r} publishes a flow flag, but {lp!r} has no row in "
+                    f"data/final/label_alias_map.csv for source {src!r}, so "
+                    f"write_source_flow_flags.py resolves an EMPTY polity_code and "
+                    f"05_magnitude_screen.py can never join it - an inert flag in a published "
+                    f"file. Add the alias, or record the finding in `convention` prose with no "
+                    f"flow_type")
         if flow == "production" and origin:
             fails.append(f"{who}: origin_iso3 {origin!r} on a `production` row, which "
                          f"is never published; the convention says these ARE its output")
