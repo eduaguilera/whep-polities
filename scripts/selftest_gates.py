@@ -2235,6 +2235,51 @@ def mutate_short_convention_row(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_convention_flag_without_alias(root, gpd, make_valid, affinity):
+    """Give a non-production flow to a convention whose label has no alias row.
+
+    A non-production `flow_type` PUBLISHES the row into data/final/source_flow_flags.csv, and
+    write_source_flow_flags.py resolves its `polity_code` from the alias map. A label that reaches
+    its polity by iso/name matching -- which most do; only 205 of 832 routings come from an alias --
+    has no such row, so the published flag carries an EMPTY polity_code, and 05_magnitude_screen.py
+    joins on (source, polity_code, item) and can never match it. The flag reads as a recorded
+    decision and does nothing.
+
+    This is not hypothetical: it is what happened when the iia/australia phosphate finding (issue
+    372) was first registered, and every one of the 67 gates passed on the inert result. That is why
+    the finding ended up recorded in `convention` prose instead, and why this case exists.
+
+    It picks the first convention whose label is genuinely absent from the alias map, so the case
+    does not depend on any one row surviving; and it sets `origin_iso3` too, so check E's "flow with
+    no origin" arm stays quiet and ONLY the alias arm can fire.
+    """
+    conv = os.path.join(root, "pipelines/polity-autoimprove/state/source_conventions.csv")
+    alias = os.path.join(root, "data/final/label_alias_map.csv")
+    have = set()
+    if os.path.exists(alias):
+        with open(alias, newline="", encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                if row.get("polity_code"):
+                    have.add(((row.get("source") or "").strip(),
+                              (row.get("source_label") or "").strip().lower()))
+    with open(conv, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows
+                  if (r.get("label_pattern") or "").strip() not in ("", "*")
+                  and ((r.get("source") or "").strip(),
+                       (r.get("label_pattern") or "").strip().lower()) not in have)
+    victim["flow_type"] = "entrepot_transit"
+    victim["origin_iso3"] = "ETH"
+    with open(conv, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"flagged {victim['source']}/{victim['label_pattern']} as a non-production flow though "
+            f"its label has no alias row, so the published flag would carry an empty polity_code "
+            f"and no consumer could ever join it")
+
+
 def mutate_dead_convention_pattern(root, gpd, make_valid, affinity):
     """Re-point a live convention's `label_pattern` at a label the source never carries.
 
@@ -3129,6 +3174,14 @@ CASES = (
         "a convention appended with fewer columns than the registry has — the shape "
         "apply_verdicts.py really wrote — whose empty flow_type publishes a transit flow "
         "as production",
+    ),
+    (
+        "validate_source_conventions.py",
+        mutate_convention_flag_without_alias,
+        "an inert flag in a published file",
+        "a non-production flow on a label with no alias row, so the published flag resolves an "
+        "empty polity_code and 05_magnitude_screen.py can never join it — all 67 gates passed on "
+        "exactly this when the iia/australia phosphate finding was first registered",
     ),
     (
         "validate_source_conventions.py",
