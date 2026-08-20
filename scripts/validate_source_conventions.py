@@ -193,6 +193,21 @@ def main() -> int:
         reader = csv.DictReader(fh, restkey="__extra__", restval="__missing__")
         header = tuple(reader.fieldnames or ())
         rows = list(reader)
+    # A FLOOR ON THE REGISTRY, because emptying it is reported only as warnings today. Measured: with
+    # zero rows this gate prints "PASS: 0 problem(s), 33 warning(s)" -- every registered re-test says
+    # its convention "is no longer carried", which is 33 separate notices that the registry was lost,
+    # none of which fails CI. Warnings are the right channel for one check drifting ahead of the
+    # registry; they are the wrong channel for the registry vanishing.
+    #
+    # A floor of ONE, not a pinned count: conventions are added (29 -> 33 today) and are sometimes
+    # WITHDRAWN -- I withdrew a cross-source livestock generalisation as circular earlier -- so
+    # pinning the number would block honest curation. What cannot legitimately happen is all of them
+    # disappearing at once.
+    if not rows:
+        fails.append(
+            "the registry holds no rows. Every convention here is a premise later verifiers inherit, "
+            "so an empty registry is data loss -- and it surfaces today only as one warning per "
+            "orphaned re-test, which does not fail CI")
     if header != COLUMNS:
         missing = [c for c in COLUMNS if c not in header]
         extra = [c for c in header if c not in COLUMNS]

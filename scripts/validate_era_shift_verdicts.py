@@ -147,6 +147,23 @@ def main() -> int:
         if v == "untestable" and (yld is not None or ratio is not None):
             problems.append(f"C {w}: classed untestable but carries yield {yld} / ratio {ratio}")
 
+    # A FLOOR, BECAUSE THIS TABLE IS THE EVIDENCE FOR A CONFIRMED DEFECT. `data_errors.csv` carries
+    # `iia-tobacco-implausible-magnitudes` (status confirmed, 1934-1945, tobacco), and these rows are
+    # what substantiate it. An empty table therefore means the evidence vanished -- a regeneration
+    # failure -- not that the defect was fixed. Measured: emptying it made every arm pass and the gate
+    # print its full PASS message, because each arm is per-row and had no rows to object to.
+    #
+    # It is a FLOOR OF ONE, not a pinned count: repairing the era changes a row's VERDICT (from
+    # `impossible_yield` to `plausible_yield`) and does not delete it, since the rows are simply the
+    # source's 1934+ production rows. So this cannot block a genuine fix, which is the test a floor
+    # has to pass before it is worth having.
+    if not rows:
+        print(f"FAIL: {os.path.relpath(TABLE, REPO)} holds no rows. It is the evidence for "
+              f"`iia-tobacco-implausible-magnitudes` (confirmed, 1934-1945), so an empty table means "
+              f"that evidence was lost in regeneration, not that the defect was repaired -- a repair "
+              f"changes a row's verdict and does not remove the row", file=sys.stderr)
+        return 1
+
     vc = {}
     for r in rows:
         vc[r["verdict"]] = vc.get(r["verdict"], 0) + 1

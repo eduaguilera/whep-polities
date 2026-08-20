@@ -139,7 +139,11 @@ def main() -> int:
             "partial write or a hand merge is the usual cause")
 
     print(f"magnitude outliers: {len(rows)} rows, {len({r.get('whep_code') for r in rows})} "
-          f"polities, min ratio {min(ratios) if ratios else float('nan'):,.4f} "
+          # `float('nan')` here PRINTED "min ratio nan" when the table was empty, which reads as a
+          # computation that went wrong rather than as an absence. A statistic over an empty set has
+          # no value, so say so instead of formatting a nan (same reasoning as withholding a
+          # direction when a block has no level, whep-polities#469).
+          f"polities, min ratio {f'{min(ratios):,.4f}' if ratios else 'n/a (no rows)'} "
           f"(floor {MIN_RATIO}), orphaned codes {len(orphans)}")
 
     for p in problems:
