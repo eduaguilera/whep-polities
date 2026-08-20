@@ -39,6 +39,23 @@ Checks:
      adjudications, so the two cannot drift apart silently.
   C. the AST sweep still finds every write site it found when this gate was written -- a floor on
      coverage, so that a rewrite which stops parsing (and therefore stops checking) is visible.
+  D. every function that calls `mkstemp` also unlinks the temp file on failure.
+
+WHY D EXISTS, AND WHY IT IS NOT ABOUT LOSING DATA. An atomic writer that raises between `mkstemp` and
+`os.replace` leaves a half-written `.tmp` behind. The destination is untouched, so nothing is lost --
+but the orphan lands in `pipelines/polity-autoimprove/state/`, which is TRACKED, and is one
+`git add -A` from being committed as though it were a state table.
+
+Nine tools (16 through 24) were in that shape until 2026-08-20, and the trigger is mundane:
+`csv.DictWriter` raises on a key absent from `fieldnames`, so adding a column to the rows and
+forgetting the field list both loses the write and leaks the file. That is exactly how it was found --
+`17_constant_runs.py` gained two columns, DictWriter raised, and the orphan turned up in `git status`
+while staging an unrelated commit (issue 503). `*.tmp` is now gitignored under the state directories
+too, but the gitignore is defence in depth and this arm is the actual rule.
+
+The check is structural, not behavioural: a function mentioning `mkstemp` must contain a `try` and an
+`unlink`. That is loose enough to accept any correct shape -- `os.fdopen` inside the try, a bare
+`except BaseException`, a `finally` -- and strict enough that the nine old writers all failed it.
 """
 import ast
 import glob
@@ -72,6 +89,10 @@ TEMP_HINTS = ("tmp", "fd", "tempfile", "TMP", "StringIO", "buf")
 
 # C. floor on the sweep's coverage, so a parse regression cannot quietly disable this gate.
 MIN_WRITE_SITES = 40
+
+# D. Functions allowed to call mkstemp without an unlink handler. Empty by design: if a writer has a
+# reason to leave its temp file behind, that reason belongs here in writing.
+MKSTEMP_WITHOUT_CLEANUP_ALLOWED: dict = {}
 
 
 def _consts(tree) -> dict:
@@ -172,6 +193,36 @@ def main() -> int:
                 problems.append(f"B atomic.py no longer mentions {base}, so its docstring and this "
                                 f"gate's registry have drifted apart")
     # --- C. coverage floor ---
+    # D. mkstemp without cleanup on failure
+    n_mkstemp = 0
+    for p in files:
+        if os.path.basename(p) == "selftest_gates.py":
+            continue
+        try:
+            tree = ast.parse(open(p, encoding="utf-8").read())
+        except (SyntaxError, OSError):
+            continue
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                continue
+            dumped = ast.dump(node)
+            if "mkstemp" not in dumped:
+                continue
+            n_mkstemp += 1
+            rel = os.path.relpath(p, REPO)
+            if (rel, node.name) in MKSTEMP_WITHOUT_CLEANUP_ALLOWED:
+                continue
+            has_try = any(isinstance(x, (ast.Try,)) for x in ast.walk(node))
+            unlinks = "unlink" in dumped
+            if not (has_try and unlinks):
+                problems.append(
+                    f"D {rel}::{node.name}() calls mkstemp with no try/except that unlinks the temp "
+                    f"file. If the write raises -- and csv.DictWriter raises on a key missing from "
+                    f"fieldnames -- the half-written .tmp is left in a TRACKED directory, one "
+                    f"`git add -A` from being committed as a state table (issue 503)")
+    print(f"D. mkstemp writers: {n_mkstemp} scanned, "
+          f"{len(MKSTEMP_WITHOUT_CLEANUP_ALLOWED)} exempted")
+
     if n_sites < MIN_WRITE_SITES:
         problems.append(f"C the AST sweep found only {n_sites} truncating write site(s), below the "
                         f"floor of {MIN_WRITE_SITES} recorded when this gate was written. Either a "
