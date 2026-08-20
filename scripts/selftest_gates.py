@@ -1956,6 +1956,42 @@ def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
             f"has, leaving the row count, the arithmetic, the floor and every identity pin intact")
 
 
+def mutate_ledger_unit_kind_typo(root, gpd, make_valid, affinity):
+    """Typo `unit_kind` so the gate's own filter selects nothing, and see whether it still passes.
+
+    `validate_review_ledger` scopes arms A and B with `pol = [r for r in rows if unit_kind ==
+    "polity"]`. So that column decides HOW MUCH the gate checks, and until this case nothing validated
+    it. Measured before the fix: typo'ing it on all 256 polity rows took the checked population from
+    256 to ZERO and the gate printed "PASS: every banked verdict names a polity that exists" -- its
+    strongest claim, on no evidence. That is the shape of issues 407, 412 and 420, this time in the
+    scoping of a gate rather than in an arm.
+
+    The mutation typos EVERY polity row rather than one, because one row leaving the population is a
+    quiet weakening and all of them leaving is the failure mode -- an empty check that reports
+    success. Two arms now catch it: the unit_kind vocabulary, and the floor on how many rows the
+    filter may select. `status` is untouched, so arm C stays quiet.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/review_ledger.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rd = csv.DictReader(fh)
+        rows = list(rd)
+        fields = list(rd.fieldnames)
+    n = 0
+    for r in rows:
+        if (r.get("unit_kind") or "").strip() == "polity":
+            r["unit_kind"] = "polty"
+            n += 1
+    if not n:
+        raise AssertionError("no polity-keyed rows in review_ledger.csv, so this mutation cannot "
+                             "empty the filter and the case would pass vacuously")
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"typo'd unit_kind on all {n} polity-keyed rows, which empties the population arms A and "
+            f"B examine -- before the floor and the vocabulary arm, the gate reported PASS on zero "
+            f"rows")
+
 def mutate_ledger_status_typo(root, gpd, make_valid, affinity):
     """Typo one ledger status, the way a hand edit or a new writer would.
 
@@ -3630,6 +3666,13 @@ CASES = (
         "a row with 85,000 tonnes of production on ZERO hectares reclassified as fine, with "
         "`convicted` flipped to match so arms A, B and C stay quiet -- only the zero-area rule stands "
         "between the `if area > 0` guard and 14 exonerated impossible rows",
+    ),
+    (
+        "validate_review_ledger.py",
+        mutate_ledger_unit_kind_typo,
+        "polity-keyed row(s) of",
+        "the column that SCOPES this gate typo'd on every row, so its arms examine nothing -- before "
+        "the floor, that reported PASS on zero rows while claiming a property of every banked verdict",
     ),
     (
         "validate_review_ledger.py",
