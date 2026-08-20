@@ -497,6 +497,14 @@ jobs:
       # 5,400 t of phosphate rock while the same page prints 999,607 t of superphosphate, 15/15 cells;
       # japan/p reaches 3138x. The count is NOT pinned: the defect is fixable here, and a correct
       # remedy empties the table and collapses its denominator too, so any floor would fail the fix.
+      # Does a source's OWN ARITHMETIC say its nested labels partition a territory or duplicate it?
+      # fao1952 prints rye area 1,666 + 1,209 + 3 = 2,878 for Germany's three subdivisions against
+      # 2,878 for the Reich -- 28 of 28 cells exact. The tree is re-verified from the label text
+      # because an earlier generator filed `guinea-bissau` as a part of `guinea` and every
+      # arithmetic arm stayed green: the ratios were real, the relationship was invented.
+      - name: Sources — nested-label identities must hold, and the label tree must be real
+        if: '!cancelled()'
+        run: python3 scripts/validate_label_hierarchy_identity.py
       - name: Sources — recorded component under-selections must still pick a minor material
         if: '!cancelled()'
         run: python3 scripts/validate_component_underselection.py

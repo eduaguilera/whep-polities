@@ -1,0 +1,25 @@
+source,whole_label,n_kids,n_parts_present,parts_present,cells,exact_cells,median_ratio,min_ratio,max_ratio,verdict,items
+fao1952,canada,1,1,canada newfoundland,7,0,0.0038,0,0.0259,subset_all_parts,r_fao_population_1952_10_18
+fao1952,china,8,1,china manchuria,3,0,0.0637,0.0511,0.2612,subset_partial_parts,oats | use forests woodlands
+fao1952,china,8,1,china taiwan,6,0,0.4951,0.0122,95,subset_partial_parts,buffaloes | meat | r_fao_population_1952_10_18
+fao1952,denmark,1,1,denmark the faeroes,3,0,0.0069,0.0008,0.0074,subset_all_parts,poultry | r_fao_population_1952_10_18
+fao1952,france,3,1,france saar,82,0,0.0053,0.0,1.25,subset_partial_parts,butter | carcass weights calves | carcass weights cattle | carcass weights sheep lambs | cattle | cheese ...
+fao1952,french north africa,3,3,french north africa algeria | french north africa morocco | french north africa tunisia,4,4,1,1,1,partition,commercial phosphoric acid | commercial potash fertilizers
+fao1952,germany,3,1,germany western,8,5,1,0.0032,1,mixed,cheese | dry peas | linseed
+fao1952,germany,3,2,germany eastern | germany western,58,56,1,0.9911,1.0536,partition_of_present_parts,butter | centrifugal sugar noncentrifugal cane sugar | commercial nitrogenous fertilizers | commercial phosphoric acid | commercial potash fertilizers | dry beans ...
+fao1952,germany,3,3,germany berlin | germany eastern | germany western,28,28,1,0.9934,1,partition,butter | cattle | horses mules asses | milk | oats | pigs ...
+fao1952,indochina,6,3,indochina cambodia | indochina laos | indochina viet nam,5,2,0.0173,0.0167,1,subset_partial_parts,buffaloes | r_fao_population_1952_10_18
+fao1952,indonesia,6,1,indonesia estates,4,0,0.3295,0.2667,0.4495,subset_partial_parts,coffee
+fao1952,indonesia,6,3,indonesia bali and lombok | indonesia java and madura | indonesia other islands,6,6,1,1,1,partition_of_present_parts,soybeans
+fao1952,korea,2,1,korea south,21,4,0.5165,0.0435,1.8853,subset_partial_parts,commercial nitrogenous fertilizers | dry beans | hemp fiber | oats | poultry | r_fao_population_1952_10_18 ...
+fao1952,leeward islands,4,3,leeward islands antigua | leeward islands montserrat | leeward islands st kitts & nevis,5,0,0.7925,0.7647,0.9667,subset_partial_parts,use agricultural area arable land orchards | use agricultural area permanent peadows pastures | use builton wasteland | use forests woodlands | use total
+fao1952,madagascar,3,1,madagascar comoro islands,5,0,0.0041,0.0005,0.0206,subset_partial_parts,use agricultural area arable land orchards | use agricultural area permanent peadows pastures | use builton wasteland | use forests woodlands | use total
+fao1952,netherlands,3,1,netherlands w indies,20,0,0.0076,0.0003,1.25,subset_partial_parts,carcass weights calves | carcass weights cattle | carcass weights sheep lambs | cattle | horses mules asses | milk ...
+fao1952,netherlands,3,1,netherlands west indies,10,0,0.0075,0.0021,0.4646,subset_partial_parts,commercial phosphoric acid | pigs | r_fao_population_1952_10_18 | use agricultural area arable land orchards | use builton wasteland | use land ...
+fao1952,panama,1,1,panama canal zone,3,0,0.0193,0.0041,0.1055,subset_all_parts,use agricultural area arable land orchards | use builton wasteland | use total
+fao1952,spain,1,1,spain canary islands,4,0,0.0617,0.0379,0.0909,subset_all_parts,tobacco
+fao1952,united kingdom,5,1,united kingdom dependent territories,11,0,0.0483,0.0025,0.1943,subset_partial_parts,commercial nitrogenous fertilizers | commercial phosphoric acid | commercial potash fertilizers
+fao1952,united kingdom,5,1,united kingdom great britain,4,1,0.9507,0.9489,0.9854,subset_partial_parts,crawler tractors agriculture | total tractors agriculture | tractors all purposes | wheel tractors agriculture
+fao1952,united states,3,1,united states california,3,0,0.0667,0.0479,0.0923,subset_partial_parts,grapes
+fao1952,windward islands,3,3,windward islands grenada | windward islands st lucia | windward islands st vincent,4,0,0.6212,0.2131,0.8438,subset_all_parts,use agricultural area arable land orchards | use builton wasteland | use forests woodlands | use total
+iia,ethiopia,1,1,ethiopia pdr,3,3,1,1,1,duplicate,"coffee, green"
