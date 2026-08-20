@@ -112,6 +112,13 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--layer-b", default=DEFAULT_PANEL)
+    # Every tool from 25 up carries --check; these eight did not, so their tracked tables could drift
+    # undetected. That is not hypothetical: 04's --check caught territory_basis.csv drifting after a
+    # routing fix, and 23's absence let verdict_carryover.csv go stale (issues 308, 472). Safe here
+    # because all eight were verified to regenerate byte-identically with default arguments -- the
+    # precondition 15_label_provenance did NOT meet, where a check would have invited data loss.
+    ap.add_argument("--check", action="store_true",
+                    help="exit 1 if the tracked table is not what this run produces")
     ap.add_argument("--write", action="store_true", help=f"refresh {os.path.relpath(OUT, REPO)}")
     args = ap.parse_args()
 
@@ -134,7 +141,21 @@ def main() -> int:
               f"{float(r['largest']):>10,.0f} == {r['values'].split(';', 1)[1][:34]}")
     print(f"\n   by item: {dict(Counter(r['item'] for r in tot).most_common(8))}")
 
-    if args.write:
+    if args.write or args.check:
+        if args.check:
+            if not os.path.exists(OUT):
+                print(f"MISSING {os.path.relpath(OUT, REPO)}", file=sys.stderr)
+                return 1
+            with open(OUT, newline="", encoding="utf-8") as fh:
+                have = list(csv.DictReader(fh))
+            want = [{k: ("" if v is None else str(v)) for k, v in dict(r).items()} for r in rows]
+            if [{k: r.get(k, "") for k in COLS} for r in have] != \
+                    [{k: r.get(k, "") for k in COLS} for r in want]:
+                print(f"STALE {os.path.relpath(OUT, REPO)}: committed {len(have)} row(s), this run "
+                      f"produces {len(want)}; rerun with --write", file=sys.stderr)
+                return 1
+            print(f"table is current ({len(have)} rows)")
+            return 0
         fd, tmp = tempfile.mkstemp(dir=os.path.dirname(OUT), suffix=".tmp")
         os.close(fd)
         with open(tmp, "w", newline="", encoding="utf-8") as fh:
