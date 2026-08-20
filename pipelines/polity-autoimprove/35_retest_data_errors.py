@@ -122,6 +122,37 @@ def check_fao1952_wrong_group_heading(ctx):
             "the value is Trinidad's 5,128 km2, so the heading is the wrong half")
 
 
+def check_korea_rice_paddy_area(ctx):
+    """645 kha of paddy under 3,699 kt, i.e. 5.73 t/ha, with the part larger than the whole.
+
+    THE YIELD IS THE LOAD-BEARING FIGURE, not the two areas. A part exceeding its whole could be fixed by
+    deciding the labels are not whole and part; an implied 5.73 t/ha of 1930s paddy rice cannot be fixed
+    that way, and it is what makes the AREA the wrong cell rather than the scope. The count of violating
+    cells is re-measured too, because "1 of 17" is what rules out a systematic scope problem.
+    """
+    lb = ctx["panel"]
+    f = lb[lb["source"] == "fao1952"].copy()
+    f["lab"] = f["country"].str.replace(r"\s+", " ", regex=True).str.strip().str.lower()
+    k = f[f["lab"].isin(["korea", "korea south"]) & (f["period"] == "1934-1938")]
+    piv = k.pivot_table(index=["item", "indicator", "unit"], columns="lab", values="value",
+                        aggfunc="sum").dropna()
+    if piv.empty or "korea" not in piv.columns:
+        return [("cells with both labels", 0, 17)], "the label pair is no longer in the panel"
+    ratio = piv["korea south"] / piv["korea"]
+    AK = ("rice paddy", "crops:area", "1000 hectares")
+    PK = ("rice paddy", "crops:production", "1000 tonnes")
+    area = piv.loc[AK] if AK in piv.index else None
+    prod = piv.loc[PK] if PK in piv.index else None
+    yield_t = (float(prod["korea"]) / float(area["korea"])) if area is not None and prod is not None else None
+    return ([("cells with both labels", len(piv), 17),
+             ("cells where the part exceeds the whole", int((ratio > 1.0).sum()), 1),
+             ("`korea` rice paddy area", float(area["korea"]) if area is not None else None, 645.0),
+             ("`korea south` rice paddy area", float(area["korea south"]) if area is not None else None,
+              1216.0),
+             ("implied t/ha", round(yield_t, 2) if yield_t else None, 5.73)],
+            "the impossible yield, not the two areas, is what pins the area cell")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -129,6 +160,7 @@ CHECKS = {
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-china-livestock-cells-implausible": check_fao1952_china_label,
     "fao1952-label-carries-a-wrong-group-heading": check_fao1952_wrong_group_heading,
+    "fao1952-korea-rice-paddy-area-impossible": check_korea_rice_paddy_area,
 }
 
 
