@@ -84,6 +84,27 @@ BASELINE_LONG = frozenset({
 })
 
 
+# THE IN-VOLUME WITNESS ARM (issue 366). `finer_in_volume_year` names the earliest year, in a volume
+# window the run itself touches, where the same series records a value OFF the constant's grid. When it
+# is set the grid cannot explain the run: that volume demonstrably could express the finer figure.
+#
+# Restated here rather than imported, so relaxing the generator and regenerating cannot quietly admit
+# weaker witnesses. The overlap years are the load-bearing part: layer B carries no volume provenance,
+# so a value at a year TWO volumes cover could have come from either and proves nothing. Allowing them
+# takes the count from 17 to 39.
+IIA_VOLUMES = ((1909, 1921), (1920, 1925), (1926, 1929), (1929, 1933), (1932, 1938), (1939, 1945))
+IIA_AMBIGUOUS_YEARS = frozenset(
+    y for y in range(1900, 1960) if sum(1 for a, b in IIA_VOLUMES if a <= y <= b) > 1
+)
+# Pinned in BOTH directions, like the row counts above: a new witness is a finding that wants reading,
+# and a lost one means something was repaired and should be said out loud.
+BASELINE_IN_VOLUME = 17
+
+
+def _volumes_covering(year: int) -> set:
+    return {i for i, (a, b) in enumerate(IIA_VOLUMES) if a <= year <= b}
+
+
 def main() -> int:
     if not os.path.exists(TABLE):
         print(f"SKIP: {os.path.relpath(TABLE, REPO)} missing — run 17_constant_runs.py --write")
@@ -115,6 +136,57 @@ def main() -> int:
         problems.append(
             f"{k[1]} / {k[2]} = {k[4]} from {k[5]} is pinned as a long constant run but is not one "
             f"any more — remove its entry, saying what was repaired")
+
+    n_wit = 0
+    for r in rows:
+        wy, wv = r.get("finer_in_volume_year", ""), r.get("finer_in_volume_value", "")
+        if not wy and not wv:
+            continue
+        who = f"{r['source']} {r['country']} / {r['item']} ({r['unit']})"
+        if bool(wy) != bool(wv):
+            problems.append(f"{who}: finer_in_volume_year and _value must be set together, "
+                            f"got {wy!r} and {wv!r}")
+            continue
+        n_wit += 1
+        if r["source"] != "iia":
+            problems.append(
+                f"{who}: carries an in-volume witness, but only `iia` has known volume windows — "
+                f"for any other source this column cannot mean anything and must be empty")
+            continue
+        try:
+            y = int(wy)
+            wval = float(wv)
+            y0, y1 = int(r["year_first"]), int(r["year_last"])
+            grid = float(r["grid"])
+        except (TypeError, ValueError) as e:
+            problems.append(f"{who}: unparseable witness ({e})")
+            continue
+        if y0 <= y <= y1:
+            problems.append(
+                f"{who}: witness year {y} lies INSIDE the run {y0}-{y1}, where every value equals "
+                f"the constant by definition, so it cannot be evidence against the grid")
+        if y in IIA_AMBIGUOUS_YEARS:
+            problems.append(
+                f"{who}: witness year {y} is covered by two IIA volumes, so the value could have "
+                f"come from either and proves nothing about the run's own volume. Layer B carries no "
+                f"volume provenance, which is why these years are excluded")
+        if not (_volumes_covering(y) & (_volumes_covering(y0) | _volumes_covering(y1))):
+            problems.append(
+                f"{who}: witness year {y} shares no volume window with the run {y0}-{y1}, so it is "
+                f"cross-era evidence — exactly the reading issue 366 withdrew")
+        if grid > 0:
+            q = wval / grid
+            if abs(q - round(q)) < 1e-9:
+                problems.append(
+                    f"{who}: witness value {wval} sits ON the constant's grid of {grid}, so it shows "
+                    f"a different multiple rather than finer precision. `algeria rye` is the trap: a "
+                    f"2,000 constant beside 1,000, both on a 1,000 grid, is no evidence at all")
+    print(f"  with an in-volume witness: {n_wit} (pinned {BASELINE_IN_VOLUME})")
+    if n_wit != BASELINE_IN_VOLUME:
+        problems.append(
+            f"{n_wit} runs carry an in-volume witness against the pinned {BASELINE_IN_VOLUME}. More "
+            f"means a volume was shown to resolve finer for a series it flat-lines, which wants "
+            f"reading; fewer means one was repaired, which wants saying")
 
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)\n")

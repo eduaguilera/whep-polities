@@ -91,6 +91,35 @@ def grid_of(v: float) -> int:
     return g
 
 
+# IIA VOLUME WINDOWS, and why this column exists at all (issue 366).
+#
+# This table only ever contains runs that HAVE finer evidence somewhere in their series -- a run fully
+# consistent with its grid is never emitted. So `n_finer_elsewhere` is positive by construction, and it
+# cannot distinguish the two cases that matter:
+#
+#   * the finer value comes from a DIFFERENT yearbook volume, whose grid was finer. Then the run is a
+#     resolution limit of its own volume and nothing is wrong with it. Issue 366's original headline was
+#     withdrawn on exactly this ground.
+#   * the finer value comes from the SAME volume. Then that volume demonstrably could express the finer
+#     figure and chose a round number for the run's years, which the grid cannot explain.
+#
+# Reading `n_finer_elsewhere` without that split produces the withdrawn claim, which is what happened.
+#
+# LAYER B CARRIES NO VOLUME PROVENANCE, so "same volume" can only be inferred from the year, and the
+# windows OVERLAP -- 1920, 1921, 1929, 1932 and 1933 each fall in two volumes, so a value there could
+# have come from either and proves nothing. Those years are excluded, which is the difference between a
+# defensible 18 and an inflated 39.
+IIA_VOLUMES = ((1909, 1921), (1920, 1925), (1926, 1929), (1929, 1933), (1932, 1938), (1939, 1945))
+IIA_AMBIGUOUS_YEARS = frozenset(
+    y for y in range(1900, 1960)
+    if sum(1 for a, b in IIA_VOLUMES if a <= y <= b) > 1
+)
+
+
+def _iia_volumes_covering(year: int) -> set:
+    return {i for i, (a, b) in enumerate(IIA_VOLUMES) if a <= year <= b}
+
+
 def find_runs(panel_path):
     import pandas as pd
     d = pd.read_parquet(panel_path)
@@ -126,6 +155,22 @@ def find_runs(panel_path):
                     finer = [x for j, x in enumerate(v)
                              if not (start <= j < k)
                              and int(round(x * SCALE)) % g != 0]
+                    # The in-volume witness: the earliest finer value that sits in a volume window the
+                    # run itself touches, at a year only ONE volume covers. Earliest rather than
+                    # closest so the choice is deterministic when the panel is rebuilt.
+                    wit_y, wit_v = "", ""
+                    if finer and source == "iia":
+                        run_vols = (_iia_volumes_covering(years[start])
+                                    | _iia_volumes_covering(years[k - 1]))
+                        for j, x in enumerate(v):
+                            if start <= j < k or int(round(x * SCALE)) % g == 0:
+                                continue
+                            yr = years[j]
+                            if yr in IIA_AMBIGUOUS_YEARS:
+                                continue
+                            if _iia_volumes_covering(yr) & run_vols:
+                                wit_y, wit_v = str(yr), f"{x:.3f}"
+                                break
                     if finer:
                         out.append({
                             "source": source, "country": country, "item": item, "unit": unit,
@@ -134,6 +179,8 @@ def find_runs(panel_path):
                             "series_n": len(v), "grid": f"{g / SCALE:g}",
                             "finest_elsewhere": f"{min(finer, key=abs):.3f}",
                             "n_finer_elsewhere": len(finer),
+                            "finer_in_volume_year": wit_y,
+                            "finer_in_volume_value": wit_v,
                         })
                 start = k
     out.sort(key=lambda r: (-r["n_values"], r["source"], r["country"], r["item"]))
@@ -176,7 +223,8 @@ def main() -> int:
 
     if args.write or args.check:
         cols = ["source", "country", "item", "unit", "constant", "n_values", "year_first",
-                "year_last", "series_n", "grid", "finest_elsewhere", "n_finer_elsewhere"]
+                "year_last", "series_n", "grid", "finest_elsewhere", "n_finer_elsewhere",
+                "finer_in_volume_year", "finer_in_volume_value"]
         if args.check:
             if not os.path.exists(OUT):
                 print(f"MISSING {os.path.relpath(OUT, REPO)}", file=sys.stderr)

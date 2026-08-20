@@ -137,7 +137,7 @@ python3 scripts/validate_review_ledger.py        # a banked verdict must name a 
 python3 scripts/validate_source_conventions.py     # the conventions registry: well-formed, live patterns, corroborated, re-tested
 python3 scripts/validate_iia_label_provenance.py   # 335 raw IIA labels -> 173 countries: no equality claim on a label that mixes territories
 python3 scripts/validate_source_splices.py         # a series spliced across sources must not change scale at the seam
-python3 scripts/validate_constant_runs.py           # a value repeated for years must not outlive the resolution that refutes it
+python3 scripts/validate_constant_runs.py           # a value repeated for years must not outlive the resolution that refutes it, and a same-volume witness must not be cross-era
 python3 scripts/validate_isolated_spikes.py         # no single year may read many times its own neighbours
 python3 scripts/validate_same_polity_overlaps.py   # two labels of one source may not collide on one polity's cells
 python3 scripts/validate_era_shift_verdicts.py     # post-1933 tobacco/hops verdicts must match their own numbers
