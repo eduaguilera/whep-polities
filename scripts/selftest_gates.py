@@ -1956,6 +1956,40 @@ def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
             f"has, leaving the row count, the arithmetic, the floor and every identity pin intact")
 
 
+def mutate_derived_count_drifts(root, gpd, make_valid, affinity):
+    """Set an `n_<thing>` count to a number the list it names does not have.
+
+    A count column drifting from its list is the cheapest instance of the shape that survived review
+    twice: `collapse_groups.ratio_mean_max` disagreeing with its own rounded inputs (issue 457), and
+    `cross_label_duplication.smaller_label` naming the LARGER label in all six rows while the column
+    beside it stayed correct, because both were derived from the same swapped variables (issue 470).
+    Sibling agreement proves nothing when siblings share the defect; only the input does.
+
+    It mutates a row where BOTH the count and the list are populated, which matters: `n_carries` is
+    "0" with an EMPTY `carries` on every matched row, and mutating one of those tests nothing because
+    the gate correctly ignores a row whose list is empty. My first attempt at this mutation did
+    exactly that and reported a miss that was the test's fault, not the gate's.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/collapse_groups.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rd = csv.DictReader(fh)
+        rows = list(rd)
+        fields = list(rd.fieldnames)
+    hit = next((r for r in rows if (r.get("n_labels") or "").strip()
+                and (r.get("labels") or "").strip()), None)
+    if hit is None:
+        raise AssertionError("no row with both n_labels and labels populated, so this mutation tests "
+                             "nothing and the case would pass vacuously")
+    before = hit["n_labels"]
+    hit["n_labels"] = "42"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"set n_labels from {before} to 42 on a row whose `labels` holds "
+            f"{len([x for x in hit['labels'].split('|') if x.strip()])} entry(ies), so the count no "
+            f"longer describes the list it names")
+
 def mutate_ledger_unit_kind_typo(root, gpd, make_valid, affinity):
     """Typo `unit_kind` so the gate's own filter selects nothing, and see whether it still passes.
 
@@ -3668,6 +3702,14 @@ CASES = (
         "between the `if area > 0` guard and 14 exonerated impossible rows",
     ),
     (
+        "validate_derived_counts.py",
+        mutate_derived_count_drifts,
+        "no longer describes" if False else "entry(ies)",
+        "a count column set to a number its own list does not have -- the cheapest instance of a "
+        "derived column disagreeing with its input, which is how two defects survived review while "
+        "the columns beside them read correct",
+    ),
+    (
         "validate_review_ledger.py",
         mutate_ledger_unit_kind_typo,
         "polity-keyed row(s) of",
@@ -4315,6 +4357,11 @@ WRITABLE = {
     # The case rewrites era_shift_verdicts.csv in place (it reclassifies one row), so a real copy.
     "validate_era_shift_verdicts.py": (
         "pipelines/polity-autoimprove/state/era_shift_verdicts.csv",
+    ),
+    # The case rewrites collapse_groups.csv (it sets a count the list does not have), and this gate
+    # walks the whole state directory, so the tables it reads must exist in the scratch tree.
+    "validate_derived_counts.py": (
+        "pipelines/polity-autoimprove/state/collapse_groups.csv",
     ),
     # The case typos one status in review_ledger.csv, so a real copy rather than a symlink.
     "validate_review_ledger.py": (

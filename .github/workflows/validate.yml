@@ -507,6 +507,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_atomic_state_writes.py
 
+      # A derived column can be wrong while every column beside it is right: collapse_groups'
+      # ratio disagreed with its own rounded inputs (#457), and cross_label_duplication's
+      # smaller_label named the LARGER label in all six rows while the column next to it stayed
+      # correct, because both came from the same swapped variables (#470). This checks the cheapest
+      # instance of that comparison generically, so future tables are covered too.
+      - name: State — every n_<thing> column must equal the list it counts
+        if: '!cancelled()'
+        run: python3 scripts/validate_derived_counts.py
+
       # The raw IIA extract names the yearbook VOLUME each row came from, and nothing here had used
       # it. It is the only comparison that can convict a specific extracted cell: the same publisher
       # printed both numbers for the same territory, commodity and year. 83 cells read 0 in one
