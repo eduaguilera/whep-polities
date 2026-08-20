@@ -214,6 +214,23 @@ def main() -> int:
     # candidates span very different populations, and nothing printed them. A number no gate prints is
     # a number nobody can cite, which is the pattern behind every unreproducible figure in this
     # backlog. So print all three distributions and let the definition be pinned to one.
+    # `mixing_observed` IS NOT MAINTAINED BY ANY TOOL, and this report is the only place a reader
+    # meets it. `15_label_provenance.py --write` refreshes exactly four columns -- territory_signal,
+    # fingerprint_note, dominant_raw_label, dominant_share -- so `mixing_observed` is whatever an
+    # earlier derivation or a human last wrote, and it is never re-derived when the panel moves.
+    #
+    # Two wiki pages already record the consequence, with Libya as the worked example
+    # (wiki/polities/lby-1925-1934.md, lby-1943-1949.md): it is "the weaker of the two measures",
+    # `territory_signal` is the stronger, and a queued note once cited `mixing_observed = no` as
+    # corroboration that `libya` was a clean aggregate while `territory_signal` read `mixed`. Citing
+    # the column that supports the conclusion while the other disagrees is the error those pages exist
+    # to record.
+    #
+    # It happened again on issue 483: `kwantung` reads `mixing_observed=no` while 28 of the 264 rows
+    # on its layer-B target are Kwantung's and `territory_signal` reads `redirected`. Printing the
+    # distribution without saying the column is unmaintained invites exactly that reading, so the
+    # report now says it.
+    UNMAINTAINED = {"mixing_observed"}
     for col in ("kind", "mixing_observed", "territory_signal"):
         if not prov or col not in prov[0]:
             continue
@@ -225,7 +242,9 @@ def main() -> int:
         }
         parts = ", ".join(f"{v}={n} rows/{labels[v]} labels"
                           for v, n in sorted(dist.items(), key=lambda kv: -kv[1]))
-        print(f"  {col}: {parts}")
+        note = ("   [NOT MAINTAINED by any tool -- territory_signal is the governing measure]"
+                if col in UNMAINTAINED else "")
+        print(f"  {col}: {parts}{note}")
     print(f"`verified_equal` verdicts on such a label: {len(offenders)} "
           f"(ceiling {BASELINE_VERIFIED_EQUAL_ON_MIXED})")
 
