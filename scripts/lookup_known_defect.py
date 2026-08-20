@@ -189,14 +189,17 @@ def main() -> int:
     if prov:
         print(f"\nLABEL PROVENANCE -- this label already carries a recorded classification ({len(prov)}):")
         for field, r in prov[:6]:
-            print(f"  matched on {field}: raw={r.get('raw_label')!r} -> layer_b={r.get('layer_b_label')!r}"
-                  f" (assigned {r.get('assigned_modern')!r})")
+            print(f"  matched on {field}: raw_label={r.get('raw_label')!r} -> "
+                  f"layer_b={r.get('layer_b_label')!r} (assigned {r.get('assigned_modern')!r})")
             print(f"    kind={r.get('kind')!r} territory_signal={r.get('territory_signal')!r} "
                   f"mixing_observed={r.get('mixing_observed')!r}")
             print(f"    fingerprint: {r.get('fingerprint_note')!r} "
                   f"dominant={r.get('dominant_raw_label')!r} @ {r.get('dominant_share')!r}")
         print("  A classification here means the ROUTING is known. It does NOT quantify how many cells")
         print("  are affected, so a measured count can still be new -- but say what was already recorded.")
+        print("  NOTE `raw_label` is a CANONICAL territory name, not the raw extract's label (it matches")
+        print("  the extract in only 32% of rows). `dominant` IS the extract's label -- 100% of rows --")
+        print("  so join on that: e.g. canonical `cyprus` is `british cyprus` in the extract.")
 
     if not matches and not indet:
         print("no entry can cover this query on the dimensions given.")

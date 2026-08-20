@@ -230,7 +230,19 @@ def main() -> int:
     # on its layer-B target are Kwantung's and `territory_signal` reads `redirected`. Printing the
     # distribution without saying the column is unmaintained invites exactly that reading, so the
     # report now says it.
-    UNMAINTAINED = {"mixing_observed"}
+    # `raw_label` IS A CANONICAL TERRITORY NAME, NOT THE RAW EXTRACT'S LABEL, and the name says the
+    # opposite. Measured: of 335 rows, `raw_label` matches a label in the raw extract in 106 (32%),
+    # while `dominant_raw_label` matches in 302 of 302 (100%). `cyprus` is the canonical name whose
+    # raw label is `british cyprus`; `new hebrides` is `british-french new hebrides`.
+    #
+    # That cost two false alarms in one session: reading `raw_label` as the extract's label, I flagged
+    # 784 layer-B series as having no raw production for their item, and then 229 of 335 rows as naming
+    # a nonexistent raw label. Both were the same misreading. `raw_label` is also not refreshed by
+    # `15_label_provenance.py --write`, which updates only the four columns named below, so like
+    # `mixing_observed` it is whatever the base table carries.
+    #
+    # Use `dominant_raw_label` for anything that must join against the raw extract.
+    UNMAINTAINED = {"mixing_observed", "raw_label"}
     for col in ("kind", "mixing_observed", "territory_signal"):
         if not prov or col not in prov[0]:
             continue
