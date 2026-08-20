@@ -1,0 +1,9 @@
+source,label,item,unit,n_attributable,n_underselected,share_underselected,worst_ratio,worst_year,worst_picked_product,worst_picked_value,worst_max_value
+iia,japan,p,tonnes,8,7,0.875,3138.2262,1930,"fertilizers: phosphate, natural",305,957159
+iia,latvia,p,tonnes,4,4,1,381.4472,1930,slag: basic,123,46918
+iia,spain,p,tonnes,15,15,1,185.1124,1930,"fertilizers: phosphate, natural",5400,999607
+iia,germany,n,tonnes,14,13,0.9286,60.0818,1909,fertilizers: calcium cyanamide,5500,330450
+iia,france,n,tonnes,15,11,0.7333,59.7913,1913,fertilizers: calcium cyanamide,1246,74500
+iia,czech republic,p,tonnes,4,4,1,32.4553,1931,fertilizers: bone superphosphate,3457,112198
+iia,norway,n,tonnes,13,10,0.7692,25.3733,1931,fertilizers: calcium nitrate,14999,380574
+iia,germany,p,tonnes,6,6,1,25.3521,1916,"fertilizers: phosphate, natural",71000,1800000
