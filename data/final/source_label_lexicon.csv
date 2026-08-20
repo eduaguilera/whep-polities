@@ -4,15 +4,16 @@ afrique du sud ouest allemande,South West Africa,
 afrique equatoriale francaise,French Equatorial Africa,
 afrique occidentale francaise,French West Africa,
 afrique orientale allemande,German East Africa,
-alaska,Alaska,
+alaska,Territory of Alaska,"was 'Alaska', which is not a polity_name"
 albanie,Albania,
 algerie,Algeria,
-allemagne,Germany,
+allemagne,Germany,"NOT retargeted to 'German Empire'. That resolves the 1911-1913 statements but breaks the 1921-1937 ones, which is a swap and not a gain: it trades DEU-1920-1938 (6 statements) for DEU-1871-1919 (3). A flat label->name entry cannot serve both, since the correct polity depends on the data year. See issue 195."
 andaman et nicobar,Andaman and Nicobar Islands,
+andorre,Andorra,
 argentine,Argentina,
 australie,Australia,
 autriche,Austria,
-basoutoland,Basutoland,
+basoutoland,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
 basqutoland,Basutoland,OCR: q inserted
 basutoland,Basutoland,
 bechouanaland,Bechuanaland,
@@ -26,7 +27,7 @@ bresil,Brazil,
 bulgarie,Bulgaria,
 cameroun,Cameroon,
 cap vert,Cape Verde,
-ceylan,Ceylon,
+ceylan,Sri Lanka,"was 'Ceylon', which is not a polity_name"
 chili,Chile,
 chine,China,
 chypre,Cyprus,
@@ -34,7 +35,7 @@ colombie,Colombia,
 congo belge,Belgian Congo,
 coree,Korea,
 coree jap,Korea,
-cote de l or,Gold Coast,
+cote de l or,Ghana (1898-1957),"was 'Gold Coast', which is not a polity_name"
 cote de lor,Gold Coast,OCR: lost space
 cote des somalis,French Somaliland,
 danemark,Denmark,
@@ -55,8 +56,9 @@ etats malais non federes,Unfederated Malay States,
 etats malais proteges,Unfederated Malay States,
 etats unis,United States,
 ethiopie,Ethiopia,
-finlande,Finland,
-formose,Taiwan,
+falkland et dependences,Falkland Islands,
+finlande,Finland,NOT retargeted to 'Grand Duchy of Finland': same year-dependence as `allemagne`. That target is historically right for 1911-1913 but trades FIN-1917-1940 (6 statements) for FIN-1809-1917 (3).
+formose,Formosa,"was 'Taiwan', which resolves to the 1945+ row; these statements are 1911-1929"
 formose et pescadores,Taiwan,
 formose et pescadores japonaise,Taiwan,
 fthiopie,Ethiopia,OCR: f for E-acute
@@ -65,33 +67,36 @@ gold coast and togoland,Gold Coast and Br Togoland,
 grande bretagne,United Kingdom,
 grece,Greece,
 groenland,Greenland,
-guinee espagnole,Spanish Guinea,
-guinee portugaise,Portuguese Guinea,
-guyane britannique,British Guiana,
+guadeloupe et dependences,Guadeloupe,
+guam,Territory of Guam,
+guinee espagnole,Equatorial Guinea (1886-1968),"was 'Spanish Guinea', not a polity_name"
+guinee portugaise,Guinea-Bissau (1886-1974),"was 'Portuguese Guinea', not a polity_name"
+guyane britannique,Guyana,"was 'British Guiana', not a polity_name"
 guyane francaise,French Guiana,
 guyane francaise et inini,French Guiana,
-guyane neerlandaise,Surinam,
+guyane neerlandaise,Dutch Guiana,"was 'Surinam', which names only the 1954-1975 row"
 hawai,Hawaii,
 hawai usa,Hawaii,
 honduras britannique,British Honduras,
-hongrie,Hungary,
+hongrie,Hungary,NOT retargeted to 'Kingdom of Hungary (Transleithania)': same year-dependence as `allemagne`. Right for 1911-1913 but trades HUN-1920-1938 (6 statements) for HUN-1800-1918 (3).
 iles de l egee,Dodecanese,
 iles italiennes de l egee,Dodecanese,
 iles italiennes de legee,Dodecanese,OCR: lost space
 iles nouvelles hebrides,New Hebrides,
+iles vierges,United States Virgin Islands,"statements begin 1921, after the 1917 purchase from Denmark"
 inde,India,
 inde britannique,India,
 inde portugaise,Portuguese India,
 indes britanniques,India,
-indes neerlandaises,Netherlands Indies,
-indes orientales neerlandaises,Netherlands Indies,
+indes neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
+indes orientales neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
 indochine,Indochina,
 irak,Iraq,
 irlande,Ireland,
 irlande etat,Ireland,
 islande,Iceland,
 italie,Italy,
-japon,Japan,
+japon,Japanese Empire,"JPN-1895-1945 is the only target that resolves; `japan` itself is routed by alias, not by name. Watch the ratio: iia's japan is metropolitan Japan by a recorded convention, while this polygon is the Empire"
 kenia,Kenya,
 kenia ex afrique orient,Kenya,
 kenya and prot,Kenya,
@@ -101,12 +106,15 @@ lettonie,Latvia,
 libye,Libya,
 lithuanie,Lithuania,
 lybie,Libya,OCR: y/i swap
+macao,"China, Macao SAR",
 madagascar et dependaces,Madagascar,OCR: dropped n
 madagascar et dependances,Madagascar,
 madagascar et dependences,Madagascar,
+malte,Malta,
 mandchoukouo,Manchukuo,
 maroc espagnol,Spanish Morocco,
 maroc francais,French Morocco,
+maurice,Mauritius,
 memel,Memel,
 mexique,Mexico,
 mongolian people s republic,Mongolia,
@@ -119,12 +127,13 @@ nouvelle caledonie et,New Caledonia,
 nouvelle caledonie et dependences,New Caledonia,
 nouvelle guinee,New Guinea,
 nouvelle zelande,New Zealand,
-nouvelles hebrides,New Hebrides,
+nouvelles hebrides,Vanuatu,"was 'New Hebrides', not a polity_name"
 nouvelles hebrides iles,New Hebrides,
 nouvelles hebrides iles frenchbritish,New Hebrides,
 nvassaland,Nyasaland,OCR: v for y
 nyassaland,Nyasaland,
 ouganda,Uganda,
+panama zone du,Panama Canal Zone (US-administered),PANAMA (zone du canal)
 pays bas,Netherlands,
 perou,Peru,
 perse,Iran,
@@ -138,14 +147,20 @@ rio de oro,Rio de Oro,
 roumanie,Romania,
 royaume uni,United Kingdom,
 ruanda urundi belge,Ruanda-Urundi,
+saint marin,San Marino,
+saint pierre et miquelon,Saint Pierre and Miquelon,
+saint thomas et prince,Sao Tome and Principe,
+sainte helene,Saint Helena,
 sakhaline japonaise,Karafuto,
+samoa americaine,Territory of American Samoa,American Samoa; the plain `Samoa` polity is Western Samoa
 samoa occidentale,Western Samoa,
 san salvador,El Salvador,
 siam,Thailand,
+sierra leone,Sierra Leone,
 sierra leone colonie et protectorade,Sierra Leone,
 sokotra,Socotra,
 somalie,Somalia,
-somalie britannique,British Somaliland,
+somalie britannique,British Somaliland Protectorate (1884-1960),
 somalie italienne,Italian Somaliland,
 soudan anglo egyptien,Anglo-Egyptian Sudan,
 spitzberg,Svalbard,
@@ -157,11 +172,11 @@ syrie et liban,Syria and Lebanon,
 tanganvika,Tanganyika,OCR: v for y
 tanganvika terr sous,Tanganyika,OCR: v for y; 'terr sous mandat' truncated
 tchecoslovaquie,Czechoslovakia,
-terre neuve,Newfoundland,
+terre neuve,Dominion of Newfoundland,"was 'Newfoundland', not a polity_name"
 terre neuve labrador,Newfoundland,
 tibet,Tibet,
 timor,Timor,
-timor et kambing,Timor,
+timor et kambing,Timor-Leste,Portuguese Timor and Kambing
 togo,Togo,
 transjordanie,Transjordan,
 trinite et tabago,Trinidad and Tobago,OCR: a for o
@@ -174,5 +189,5 @@ union delafrique du sud,South Africa,OCR: lost spaces
 union sud africaine,South Africa,
 vougoslavie,Yugoslavia,OCR: v for Y
 yougoslavie,Yugoslavia,
-zanzibar,Zanzibar,
+zanzibar,Zanzibar Protectorate,"was 'Zanzibar', not a polity_name"
 zanzibar et pemba,Zanzibar,

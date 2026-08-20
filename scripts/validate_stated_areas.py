@@ -228,10 +228,43 @@ BASELINE = {
         "A UNIT ERROR IN THE SOURCE. FAO states 350 km2 for Norfolk Island, which is 35 km2 -- "
         "exactly 10x, i.e. a figure in km2 recorded under the `1000 hectares` heading. Our 37 is "
         "right.",
-    ("SMR-1800-2025", "fao"):
-        "ROUNDING AT LOW MAGNITUDE. FAO's smallest unit is 1,000 hectares = 10 km2, so San "
-        "Marino's 61 km2 can only be recorded as 6 or 10 -- it is recorded as 10, giving 100. "
-        "Our 66 is right. Anything under a few hundred km2 cannot be checked at this resolution.",
+    # ("SMR-1800-2025", "fao") REMOVED 2026-08-20. The divergence was real and its reason was
+    # right -- FAO's 1,000-hectare grid can only record San Marino's 61 km2 as 100 -- but it is no
+    # longer the polity's stated figure. Retargeting the `saint marin` lexicon entry brought IIA's
+    # nine statements in, and IIA states 61 km2 against our 61 (1.003x), so the polity-level figure
+    # now agrees and this entry baselines a divergence that no longer exists. The FAO row itself is
+    # unchanged and still reads 0.612x with its note; what changed is that a finer source outvotes it.
+    ("JPN-1895-1945", "iia"):
+        "SCOPE, AND IT CORROBORATES A CONVENTION FROM A NEW DIRECTION. IIA states 382,415 km2, "
+        "which is METROPOLITAN Japan (Japan proper is about 382,000 km2). Our polygon is 626,507 "
+        "km2, the Japanese Empire including Korea and Formosa. The convention at (\"iia\", "
+        "\"japan\", \"*\") already records that this source's `japan` label reports metropolitan "
+        "Japan exclusive of Korea and Formosa, established from PRODUCTION arithmetic -- japan falls "
+        "below south korea in 151 of 264 shared cells, which inclusion cannot produce. This is the "
+        "same conclusion reached independently from the AREA side, and the two agree to within a "
+        "percent on what the metropolitan figure should be. Neither number is an error: the polygon "
+        "is right for the polity and the stated area is right for the reporting unit, which is "
+        "exactly the basis mismatch this file exists to publish. Surfaced 2026-08-20 by adding the "
+        "`japon` lexicon entry (issue 195); note that `japan` itself does not resolve by name at all "
+        "and is routed by alias, so the stated-area side had no entry until now.",
+    ("NFL-1907-1949", "iia"):
+        "A REAL SCOPE DIFFERENCE, AND THE MOST CONSEQUENTIAL ONE THIS FILE CARRIES AFTER ALGERIA. "
+        "IIA states 110,679 km2, which is the ISLAND of Newfoundland (about 111,000 km2). Our "
+        "polygon is 398,115 km2, which is the island PLUS LABRADOR (together about 405,000 km2). "
+        "Both are correct for what they describe -- the Dominion did administer Labrador -- so "
+        "neither figure is an error and the polygon is not being changed. But a per-km2 intensity "
+        "computed from a yearbook numerator over this polygon understates by 3.6x, with nothing "
+        "else in the repo to warn of it. Surfaced on 2026-08-20 when the `terre neuve` lexicon "
+        "entry was retargeted from `Newfoundland`, which matches no polity_name, to `Dominion of "
+        "Newfoundland` (issue 195).",
+    ("MAC-1800-2025", "iia"):
+        "THE TERRITORY GREW, AND BOTH FIGURES ARE RIGHT FOR THEIR DATE. IIA states 14 km2 for "
+        "Macao; our polygon is 34 km2. Macao has roughly doubled by land reclamation across the "
+        "20th century, so a 1911-1937 statement of 14 km2 and a modern outline of 34 km2 are both "
+        "accurate and the ratio is a vintage difference rather than a scope one. This is the "
+        "issue 22 shape -- one long row against a territory that moved -- at a magnitude where it "
+        "cannot be checked any other way, since anything under a few hundred km2 sits below this "
+        "source's resolution. Surfaced on 2026-08-20 by the `macao` lexicon retarget (issue 195).",
     ("PRY-1932-1938", "iia"):
         "same polygon as PRY-1870-1932 (293,549) against a stated 457,872 for 1932/1933/1937. "
         "The Chaco War is fought across this row's span, so the stated figure is a claim under "
@@ -258,11 +291,55 @@ BASELINE = {
 # `write_stated_area_basis.py` publishes these into the `note` column so the warning survives
 # outside this file. Nothing here affects pass/fail.
 SOURCE_NOTES = {
-    # Empty today. The JAM-1800-2025/fao note that lived here moved to BASELINE on
-    # 2026-08-17: divergence is computed PER (polity, source), so IIA voting 10,880-11,526 does
-    # not bring JAM inside the band FAO states, and only BASELINE suppresses a failure.
-    # write_stated_area_basis.py reads BOTH dicts, so the published warning survives the move.
-
+    # The JAM-1800-2025/fao note that lived here moved to BASELINE on 2026-08-17: divergence is
+    # computed PER (polity, source), so IIA voting 10,880-11,526 does not bring JAM inside the band
+    # FAO states, and only BASELINE suppresses a failure. write_stated_area_basis.py reads BOTH
+    # dicts, so the published warning survives the move.
+    #
+    # The five entries below were added on 2026-08-20. None suppresses a failure -- the gate is
+    # already green on all of them -- but each was flagged `review` in
+    # source_stated_area_basis.csv with NO published reason, so a reader met a 10x ratio and an
+    # empty note. That is the shape this file warns about elsewhere: an unexplained flag reads as
+    # either an error or an oversight, and there is no way to tell which.
+    ("MCO-1800-2025", "iia"):
+        "A LOST DECIMAL SEPARATOR, TWICE, AT TWO DIFFERENT MAGNITUDES. IIA states 21 km2 for "
+        "Monaco in 1911-1932 and 149 km2 in 1933/1937; Monaco is about 2.0 km2 today and was "
+        "about 1.5 km2 before its land reclamation. So 21 is 2.1 and 149 is 1.49, each with the "
+        "separator dropped -- and the pair is self-corroborating, because two independent "
+        "misreadings of one small number would not both land on Monaco's actual size in different "
+        "eras. Our 2 km2 is right. Nothing under a few hundred km2 can be checked against this "
+        "source without this hazard.",
+    ("GIB-1800-2025", "fao"):
+        "THE SAME UNIT ERROR AS NFK-1914-2025, WHICH IS ALREADY BASELINED. FAO states 60 km2 for "
+        "Gibraltar, which is 6.8 km2 -- a figure recorded under the `1000 hectares` heading and "
+        "read as km2, i.e. 6.8 thousand hectares instead of 0.68. Norfolk Island is the identical "
+        "shape (350 stated, 35 actual), so this is a systematic hazard of that table at small "
+        "magnitudes rather than a one-off slip. Our 7 is right.",
+    ("SLV-1821-2025", "iia"):
+        "A STALE SOURCE FIGURE, NOT A TRANSCRIPTION ERROR, AND THE STABILITY IS THE EVIDENCE. IIA "
+        "states 34,126 km2 for `SAN SALVADOR` in EVERY edition -- 1913, 1925, 1929, 1932, 1933 and "
+        "1937, byte-identical -- against El Salvador's 21,041 km2. A digit slip would not reproduce "
+        "across six editions; a figure the yearbook believed and never revised would. 34,126 is a "
+        "pre-boundary-survey estimate of the kind older gazetteers carried, so this is a vintage "
+        "disagreement about the same territory rather than a different scope. Our 20,558 is right. "
+        "Recorded because a 1.62x ratio with no note reads as a possible routing error, and it is "
+        "not one.",
+    ("GRL-1800-2025", "iia"):
+        "PROBABLY A SCOPE STATEMENT, AND DELIBERATELY HEDGED. IIA states 88,100 km2 for Greenland "
+        "in 1911-1925, then 313,000 in 1932/1933 and 341,700 in 1937, against a total area of "
+        "2,166,000 km2. No unit or digit error explains three different values, and the later two "
+        "sit near Greenland's ICE-FREE area (roughly 410,000 km2), which is the quantity an "
+        "agricultural yearbook would care about. So the likeliest reading is that the source states "
+        "usable rather than total land and revised its estimate twice. I have NOT confirmed that "
+        "against the volumes, so it is not baselined as understood -- the 1909-edition 88,100 is "
+        "additionally dropped by this gate's own digit-error screen as ~10x from the polity median.",
+    ("SMR-1800-2025", "fao"):
+        "ROUNDING AT LOW MAGNITUDE. FAO's smallest unit is 1,000 hectares = 10 km2, so San "
+        "Marino's 61 km2 can only be recorded as 6 or 10 -- it is recorded as 10, giving 100. Our "
+        "61 is right. This lived in BASELINE until 2026-08-20, when retargeting the `saint marin` "
+        "lexicon entry brought IIA's nine statements in; IIA states 61 against our 61, so the "
+        "polity is no longer outside every stated area and the baseline became stale. The FAO row "
+        "still reads 0.612x and still needs explaining, which is what this dict is for.",
 }
 
 _both = sorted(set(BASELINE) & set(SOURCE_NOTES))
