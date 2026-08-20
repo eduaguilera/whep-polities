@@ -3626,6 +3626,44 @@ def mutate_underselection_picked_is_the_maximum(root, gpd, make_valid, affinity)
     return (f"{hit['label']}/{hit['item']} picked value raised to its own same-year maximum "
             f"({float(hit['worst_max_value']):,.0f}), so it under-selects nothing")
 
+
+def mutate_constantrun_witness_is_cross_era(root, gpd, make_valid, affinity):
+    """Point a run's in-volume witness at a year from a different yearbook volume.
+
+    `constant_runs.csv` only ever contains runs that have finer evidence SOMEWHERE in their series --
+    a run consistent with its grid is never emitted -- so `n_finer_elsewhere` is positive by
+    construction and cannot distinguish the two cases that matter (issue 366). If the finer value
+    comes from a different volume, whose grid was finer, the run is its own volume's resolution limit
+    and nothing is wrong. If it comes from the SAME volume, that volume could express the finer figure
+    and printed a round number anyway.
+
+    Reading the cross-era column as though it were the same-volume one is not hypothetical: it is the
+    claim issue 366 was retitled to withdraw. `finer_in_volume_year` exists to make the distinction
+    visible, and this mutation moves a witness to 1910 -- a year in the 1909-1921 volume only, sharing
+    no window with the late-1930s runs that carry witnesses -- so the row asserts same-volume evidence
+    while holding cross-era evidence.
+
+    Nothing else moves: the constant, the grid, the run bounds and the counts are untouched, so only
+    the arm comparing the witness year's volumes against the run's can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/constant_runs.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    cands = [r for r in rows if (r.get("finer_in_volume_year") or "").strip()
+             and int(r["year_first"]) >= 1932]
+    if not cands:
+        raise AssertionError("no run carries an in-volume witness with a late start, so moving one to "
+                             "1910 would not cross a volume boundary and the case would pass vacuously")
+    hit = max(cands, key=lambda r: int(r["n_values"]))
+    hit["finer_in_volume_year"] = "1910"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"{hit['country']}/{hit['item']} witness moved to 1910, which shares no volume window "
+            f"with its {hit['year_first']}-{hit['year_last']} run")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -3789,6 +3827,14 @@ CASES = (
         "a provably-wrong cell — 0 in one yearbook volume, a real value in another — reclassified "
         "as an ordinary revision, with a revised row traded the other way so both ceilings still "
         "pass and only the class-shape check can see it",
+    ),
+    (
+        "validate_constant_runs.py",
+        mutate_constantrun_witness_is_cross_era,
+        "shares no volume window with the run",
+        "an in-volume witness moved to a year from a different yearbook volume, so the row claims "
+        "same-volume evidence while holding the cross-era kind -- the exact reading issue 366 was "
+        "retitled to withdraw, with every other field left intact",
     ),
     (
         "validate_component_underselection.py",
@@ -4442,7 +4488,8 @@ WRITABLE = {
     "validate_source_splices.py": (
         "pipelines/polity-autoimprove/state/source_splices.csv",
     ),
-    # The case rewrites constant_runs.csv in place (it edits n_values), so it must be a real copy.
+    # Two cases rewrite constant_runs.csv in place -- one edits n_values, one moves an in-volume
+    # witness year -- so it must be a real copy rather than a symlink into the tracked table.
     "validate_constant_runs.py": (
         "pipelines/polity-autoimprove/state/constant_runs.csv",
     ),
@@ -4852,7 +4899,11 @@ WRITABLE = {
     # writable because the case mutates the geojson. The master CSV must be a real copy too,
     # not stage()'s symlink: signal A compares it against site/polities.csv byte for byte, and
     # a mutation writing through the symlink would rewrite the committed database.
-    "validate_review_ledger.py": ("pipelines/polity-autoimprove/state/review_ledger.csv",),
+    # ("validate_review_ledger.py") was listed a SECOND time here with the same value until
+    # 2026-08-20. A duplicate key in a dict literal is legal Python and the later one silently wins,
+    # so the two agreeing was luck: adding a file to either entry would have had no effect. The
+    # duplicate-key self-check below now makes that impossible. Its declaration lives above, beside
+    # the case that needs it.
     "validate_site_outputs.py": (
         "polities_database.csv",
         "polities_database.gpkg",
@@ -5038,7 +5089,41 @@ def check_every_gate_runs_in_ci() -> list:
         )
     return problems
 
+def _assert_no_duplicate_registry_keys() -> None:
+    """Fail loudly if CASES or WRITABLE declares the same gate twice.
+
+    A duplicate key in a dict literal is legal Python: the later entry silently replaces the earlier
+    one. WRITABLE carried `validate_review_ledger.py` twice until 2026-08-20 and the two agreed only
+    by luck -- adding a file to the shadowed entry would have had no effect, and the case that needed
+    it would have mutated a symlink into the committed table instead of a scratch copy. That is the
+    failure this harness exists to prevent, so it should not be possible here.
+
+    CASES is a LIST and may legitimately name one gate more than once (a gate with several arms wants
+    a case per arm), so only WRITABLE is checked for uniqueness; CASES is checked for shape.
+    """
+    import ast as _ast
+    src = open(os.path.abspath(__file__), encoding="utf-8").read()
+    tree = _ast.parse(src)
+    for node in tree.body:
+        if not (isinstance(node, _ast.Assign) and isinstance(node.targets[0], _ast.Name)):
+            continue
+        if node.targets[0].id == "WRITABLE" and isinstance(node.value, _ast.Dict):
+            keys = [k.value for k in node.value.keys if isinstance(k, _ast.Constant)]
+            dupes = sorted({k for k in keys if keys.count(k) > 1})
+            if dupes:
+                raise SystemExit(
+                    f"WRITABLE declares {dupes} more than once; a duplicate key silently discards "
+                    f"the earlier entry, so one case would not get the scratch copy it asked for"
+                )
+        if node.targets[0].id == "CASES" and isinstance(node.value, (_ast.List, _ast.Tuple)):
+            bad = [(len(e.elts), e.lineno) for e in node.value.elts
+                   if isinstance(e, _ast.Tuple) and len(e.elts) != 4]
+            if bad:
+                raise SystemExit(f"CASES entries are not all 4-tuples: {bad}")
+
+
 def main() -> int:
+    _assert_no_duplicate_registry_keys()
     ap = argparse.ArgumentParser()
     ap.add_argument("--case", type=int, help="run one case by 1-based number")
     args = ap.parse_args()
