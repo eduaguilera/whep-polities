@@ -3700,6 +3700,39 @@ def mutate_arearevision_verdict_contradicts_span(root, gpd, make_valid, affinity
             f"({hit['polity_start']}-{hit['polity_end']}) has a boundary inside "
             f"{hit['year_before']}-{hit['year_after']}")
 
+
+def mutate_atomicwrite_mkstemp_loses_cleanup(root, gpd, make_valid, affinity):
+    """Strip the unlink handler from an atomic writer, leaving it able to leak its temp file.
+
+    An atomic writer that raises between `mkstemp` and `os.replace` loses nothing -- the destination is
+    untouched -- so this is easy to dismiss. What it leaves behind is a half-written `.tmp` in
+    `pipelines/polity-autoimprove/state/`, which is TRACKED, one `git add -A` from being committed as
+    though it were a state table.
+
+    Nine tools were in that shape until 2026-08-20, and the trigger is mundane: `csv.DictWriter` raises
+    on a key absent from `fieldnames`, so adding a column to the rows and forgetting the field list both
+    loses the write and leaks the file. That is how it was found -- 17_constant_runs.py gained two
+    columns, DictWriter raised, and the orphan surfaced in `git status` while staging an unrelated
+    commit (issue 503).
+
+    The mutation removes only the `if os.path.exists(tmp): os.unlink(tmp)` body, leaving the `try` and
+    the `raise` in place, so the file still parses and still re-raises -- the failure is invisible to
+    every other arm and to any test that only checks the happy path.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/17_constant_runs.py")
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    needle = ("        except BaseException:\n"
+              "            if os.path.exists(tmp):\n"
+              "                os.unlink(tmp)\n"
+              "            raise")
+    if needle not in src:
+        raise AssertionError("17_constant_runs.py no longer carries the unlink handler in the expected "
+                             "shape, so this mutation would silently do nothing")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(src.replace(needle, "        except BaseException:\n            raise", 1))
+    return "17_constant_runs.py's atomic writer can now leak its temp file on any write error"
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -3863,6 +3896,14 @@ CASES = (
         "a provably-wrong cell — 0 in one yearbook volume, a real value in another — reclassified "
         "as an ordinary revision, with a revised row traded the other way so both ceilings still "
         "pass and only the class-shape check can see it",
+    ),
+    (
+        "validate_atomic_state_writes.py",
+        mutate_atomicwrite_mkstemp_loses_cleanup,
+        "no try/except that unlinks",
+        "an atomic writer stripped of its unlink handler, so a DictWriter error leaves a half-written "
+        ".tmp in a tracked state directory -- the try and the raise are left in place, so the module "
+        "still parses and still re-raises and only the mkstemp arm can see it",
     ),
     (
         "validate_area_revision_boundaries.py",
@@ -4605,6 +4646,8 @@ WRITABLE = {
     # so the module itself must be materialised as a real copy in the scratch tree.
     "validate_atomic_state_writes.py": (
         "pipelines/polity-autoimprove/01_match_and_findings.py",
+        # the arm-D case strips this module's unlink handler, so it needs a real copy
+        "pipelines/polity-autoimprove/17_constant_runs.py",
     ),
     # Both cases rewrite collapse_groups.csv in place (one moves a published value, one lifts a
     # member), so a real copy rather than a symlink into the tracked table.
