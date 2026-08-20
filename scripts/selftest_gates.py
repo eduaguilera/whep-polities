@@ -3521,6 +3521,76 @@ def mutate_pre1961_crosswalk_claims_transition_year(root, gpd, make_valid, affin
     )
 
 
+
+def mutate_gridzero_criterion_dropped(root, gpd, make_valid, affinity):
+    """Record a series whose smallest observation sits ABOVE the reporting step.
+
+    `min_nonzero == grid` is the entire criterion of `grid_ambiguous_zeros.csv` (issue 446). Being on
+    a coarse grid is not suspicious by itself: a series of 500,000-tonne harvests on a 1000-grid
+    carries a 0.1% rounding error and its zeros mean exactly what they say. The zeros are ambiguous
+    only where the quantity lives at the grid's resolution FLOOR, so that the step below the smallest
+    observation is zero and any true value from 1 to half a step lands there. 227 zeros sit in a
+    fully-coarse series; 201 survive this condition, and without it the table would grow to every
+    coarse series in the panel while asserting nothing.
+
+    The mutation raises one row's `min_nonzero` to the next grid step and changes nothing else, so the
+    grid still divides the extremes, the zero accounting still closes, the non-zero floor still holds
+    and the total is untouched -- only the criterion arm can see it. It picks the row with the most
+    headroom between its grid and its maximum so the raised value stays inside the series' own range,
+    and picks by that ratio rather than by name because which series is widest moves when the panel is
+    rebuilt.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/grid_ambiguous_zeros.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    cands = [r for r in rows if float(r["max_nonzero"]) >= 2 * float(r["grid"])]
+    if not cands:
+        raise AssertionError("no row has a maximum at least two grid steps above its floor, so the "
+                             "raised value would fall outside the series' own range and the case "
+                             "would fire the wrong arm")
+    hit = max(cands, key=lambda r: float(r["max_nonzero"]) / float(r["grid"]))
+    hit["min_nonzero"] = str(int(float(hit["grid"]) * 2))
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"{hit['source']}/{hit['country']}/{hit['item']} min_nonzero raised to "
+            f"{hit['min_nonzero']} above its grid of {hit['grid']}")
+
+
+def mutate_gridzero_dated_year_dropped(root, gpd, make_valid, affinity):
+    """Drop a dated zero from `zero_years` without decrementing `zeros_dated`.
+
+    This is the bug the table actually shipped with. The generator listed only dated years while
+    counting every zero, because a `.dropna()` discarded the `period` rows silently -- so four rows
+    carried a `zero_years` list shorter than their own `zeros` and nothing in the table explained the
+    gap. The split into `zeros_dated`/`zeros_undated` exists because the two are not equally exposed:
+    a zero on a period row never reaches the R package (`build.R` filters `!is.na(year)`), so
+    `zeros_dated` is the consumer-facing number.
+
+    The mutation removes the last listed year and leaves every count alone, which is exactly the
+    shape of the original defect: the totals all still agree with each other, and only the arm tying
+    the LIST to `zeros_dated` can see that a year has gone missing.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/grid_ambiguous_zeros.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    cands = [r for r in rows if len([y for y in r["zero_years"].split(";") if y.strip()]) >= 2]
+    if not cands:
+        raise AssertionError("no row lists two or more dated zero years, so dropping one would empty "
+                            "the column rather than shorten it")
+    hit = max(cands, key=lambda r: len(r["zero_years"].split(";")))
+    kept = [y for y in hit["zero_years"].split(";") if y.strip()][:-1]
+    hit["zero_years"] = ";".join(kept)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"{hit['source']}/{hit['country']}/{hit['item']} zero_years shortened to {len(kept)} "
+            f"while zeros_dated stays {hit['zeros_dated']}")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -3684,6 +3754,22 @@ CASES = (
         "a provably-wrong cell — 0 in one yearbook volume, a real value in another — reclassified "
         "as an ordinary revision, with a revised row traded the other way so both ceilings still "
         "pass and only the class-shape check can see it",
+    ),
+    (
+        "validate_grid_ambiguous_zeros.py",
+        mutate_gridzero_criterion_dropped,
+        "This is the entire criterion",
+        "a series whose smallest observation sits a full grid step above the reporting floor, so its "
+        "zeros have no rounding path to zero, with the grid, the accounting and the totals all left "
+        "consistent so only the criterion arm can see it",
+    ),
+    (
+        "validate_grid_ambiguous_zeros.py",
+        mutate_gridzero_dated_year_dropped,
+        "means undated zeros are being dropped silently",
+        "a dated zero removed from zero_years while every count still agrees with every other count "
+        "-- the exact shape of the .dropna() that this table shipped with, visible only to the arm "
+        "tying the list to zeros_dated",
     ),
     (
         "validate_cross_label_duplication.py",
@@ -4349,6 +4435,10 @@ WRITABLE = {
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+    ),
+    # Both cases rewrite grid_ambiguous_zeros.csv in place (one raises a floor, one shortens a list).
+    "validate_grid_ambiguous_zeros.py": (
+        "pipelines/polity-autoimprove/state/grid_ambiguous_zeros.csv",
     ),
     # The case rewrites cross_label_duplication.csv in place (it fills in a withheld direction).
     "validate_cross_label_duplication.py": (
