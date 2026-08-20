@@ -3592,6 +3592,90 @@ def mutate_gridzero_dated_year_dropped(root, gpd, make_valid, affinity):
             f"while zeros_dated stays {hit['zeros_dated']}")
 
 
+def mutate_hierarchy_fabricated_tree(root, gpd, make_valid, affinity):
+    """File a label as a part of another that is not its prefix.
+
+    `label_hierarchy_identity.csv` decides whether a source's nested labels PARTITION a territory or
+    DUPLICATE it, using the source's own arithmetic: `fao1952` prints rye area 1,666 + 1,209 + 3 = 2,878
+    for Germany's three subdivisions against 2,878 for the Reich, 28 of 28 cells exact (issues 411, 450).
+
+    THIS IS THE ARM THAT EXISTS BECAUSE THE GENERATOR GOT IT WRONG. An earlier version admitted any
+    non-alphanumeric separator as a hierarchy boundary, so `guinea-bissau` was filed as a part of
+    `guinea` and the table published a fabricated relationship at a plausible 0.89 ratio over 8 cells.
+    Every arithmetic arm stayed green, because the ratios were real -- only the relationship was
+    invented. So the tree must be re-verified from the label text, not inferred from the numbers.
+
+    The mutation appends exactly that row: a hyphen-separated child, with internally consistent
+    arithmetic and a verdict that classify() agrees with, so the schema, arithmetic, verdict and
+    baseline arms all stay quiet and only the tree arm can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/label_hierarchy_identity.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    if not rows:
+        raise AssertionError("the table is empty, so this mutation has nothing to add to and the case "
+                             "would pass vacuously")
+    rows.append({**rows[0], "source": "iia", "whole_label": "guinea", "n_kids": "1",
+                 "n_parts_present": "1", "parts_present": "guinea-bissau", "cells": "8",
+                 "exact_cells": "0", "median_ratio": "0.8926", "min_ratio": "0.8",
+                 "max_ratio": "0.95", "verdict": "subset_all_parts", "items": "rice paddy"})
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+
+
+def mutate_hierarchy_verdict_upgraded(root, gpd, make_valid, affinity):
+    """Promote a shortfall to a proven partition without touching its numbers.
+
+    The verdict is the column other issues quote -- "these labels partition the territory" is a
+    different instruction to a consumer than "they fall short of it". Relabelling is the cheapest way
+    to make the table say something the arithmetic does not, so the gate re-derives every verdict by
+    importing the generator's own classify() and re-running it on the row's recorded numbers.
+
+    The mutation rewrites one `subset` verdict as `partition` and leaves the ratios, cell counts and
+    label tree exactly as they were, so only the re-derivation arm can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/label_hierarchy_identity.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    hit = next((r for r in rows if r["verdict"].startswith("subset")), None)
+    if hit is None:
+        raise AssertionError("no subset row to promote, so this mutation would assert nothing")
+    hit["verdict"] = "partition"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+
+
+def mutate_hierarchy_baseline_identity_dropped(root, gpd, make_valid, affinity):
+    """Delete a baselined identity, the way a silently-narrowed rebuild would.
+
+    The three BASELINE rows are exact identities printed by the source itself and cited on issues 411,
+    449 and 450. The failure mode a count cannot catch is one of them QUIETLY LEAVING the table -- a
+    generator change that narrows the label tree, tightens a floor or drops a source removes the
+    evidence those issues rest on while every surviving row stays perfectly consistent.
+
+    The mutation drops the Germany 3-of-3 row and nothing else. The baseline is bidirectional by
+    design: a legitimate change to one of these identities must update BASELINE in the same commit.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/label_hierarchy_identity.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    keep = [r for r in rows if not (r["whole_label"] == "germany" and r["n_parts_present"] == "3")]
+    if len(keep) == len(rows):
+        raise AssertionError("the Germany 3-of-3 partition row is already absent, so the case would "
+                             "pass vacuously -- the gate's baseline arm should already be failing")
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(keep)
+
+
 def mutate_underselection_picked_is_the_maximum(root, gpd, make_valid, affinity):
     """Record a series whose picked material IS the same-year maximum.
 
@@ -3963,6 +4047,28 @@ CASES = (
         "an in-volume witness moved to a year from a different yearbook volume, so the row claims "
         "same-volume evidence while holding the cross-era kind -- the exact reading issue 366 was "
         "retitled to withdraw, with every other field left intact",
+    ),
+    (
+        "validate_label_hierarchy_identity.py",
+        mutate_hierarchy_fabricated_tree,
+        "fabricated hierarchy",
+        "a label filed as a part of one that is not a space-or-colon-separated prefix of it -- the "
+        "exact bug the generator shipped first, where `guinea-bissau` became a part of `guinea` at a "
+        "plausible 0.89 ratio while every arithmetic arm stayed green",
+    ),
+    (
+        "validate_label_hierarchy_identity.py",
+        mutate_hierarchy_verdict_upgraded,
+        "gives 'subset",
+        "a shortfall relabelled as a proven partition with its numbers untouched, so only the "
+        "re-derivation of classify() from the row's own figures can see it",
+    ),
+    (
+        "validate_label_hierarchy_identity.py",
+        mutate_hierarchy_baseline_identity_dropped,
+        "a proven source identity vanished",
+        "a baselined exact identity quietly removed from the table, the failure a row count cannot "
+        "see because every surviving row stays consistent",
     ),
     (
         "validate_component_underselection.py",
@@ -4659,6 +4765,15 @@ WRITABLE = {
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+    ),
+    # All three cases rewrite label_hierarchy_identity.csv in place (append a row, relabel a verdict,
+    # delete a baselined row), so a real copy. The GENERATOR is staged too, not because any case
+    # mutates it, but because the gate re-derives every verdict by importing its classify() -- without
+    # it the gate dies on the import and still exits 1, so all three cases "passed" while checking
+    # nothing until the message assertion caught it.
+    "validate_label_hierarchy_identity.py": (
+        "pipelines/polity-autoimprove/state/label_hierarchy_identity.csv",
+        "pipelines/polity-autoimprove/36_label_hierarchy_identity.py",
     ),
     # The case rewrites component_underselection.csv in place (it raises one picked value).
     "validate_component_underselection.py": (
