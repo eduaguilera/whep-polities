@@ -482,6 +482,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_era_shift_verdicts.py
 
+      # A published 0 that the source's reporting GRID cannot distinguish from a small positive
+      # value. A 1000-grid cannot express 400, so it rounds to 0 and the panel shows "none". The
+      # criterion is min_nonzero == grid — the quantity must live at the grid's resolution floor,
+      # since a series of 500,000-tonne harvests on the same grid has zeros that mean what they say.
+      # 201 zeros in 24 series, 197 of them dated and consumer-facing; every instance is a minor
+      # commodity in a small territory (iceland goats: 103 observations, vocabulary {0, 1000, 2000}).
+      # A DIFFERENT population from #414's false zeros, which are an extraction artefact upstream.
+      - name: Sources — recorded grid-ambiguous zeros must live at their grid's resolution floor
+        if: '!cancelled()'
+        run: python3 scripts/validate_grid_ambiguous_zeros.py
       # Two labels of one source, byte-identical across a CONTIGUOUS block of years and plainly
       # different outside it: one series was copied into the other for a stretch. 89 pairs show the
       # shape; 6 survive a 4-distinct-value floor, and every block is a war window. The floor is the
