@@ -126,10 +126,56 @@ def check_iia_russia(d):
     # RSFSR cotton area was negligible; anything above ~200k ha is union-scale, and
     # union rye was ~24M ha against a Russia-proper figure well under half that.
     ok = bool(lint and lint > 1_000_000 and rye and rye > 15_000_000)
-    return ok, (
-        f"1922-1940 medians: cotton lint {lint:,.0f} ha (n={nl}), cotton seed "
-        f"{seed:,.0f} ha (n={ns}), rye {rye:,.0f} ha (n={nr})"
-    )
+    note = (f"1922-1940 medians: cotton lint {lint:,.0f} ha (n={nl}), cotton seed "
+            f"{seed:,.0f} ha (n={ns}), rye {rye:,.0f} ha (n={nr})")
+    if not ok:
+        return False, note
+
+    # SECOND ARM: the whole-USSR statement holds for the BULK of the series but not its start.
+    # Before about 1925 the cells come from CONTINENTAL HALVES, which are separate reporting units
+    # in this source with their own printed areas. The median arm above cannot see this -- it starts
+    # at 1922 and a half is still union-scale -- so without this arm the entry would keep asserting
+    # whole-USSR scope for cells that are European USSR only (issue 315).
+    import os
+    import pandas as pd
+
+    stated = os.path.join(REPO, "data/final/source_stated_areas.csv")
+    if os.path.exists(stated):
+        sa = pd.read_csv(stated)
+        lab = sa["label"].astype(str).str.upper()
+        eur = sa[lab.str.contains("SOVIETI") & lab.str.contains("EUROPE")]
+        asi = sa[lab.str.contains("SOVIETI") & lab.str.contains("ASIE")]
+        if eur.empty or asi.empty:
+            return False, (note + "; but the iia stated-area table no longer carries the European and "
+                                  "Asian Soviet units separately, which is the documentary half of the "
+                                  "boundary claim")
+        note += (f"; stated areas print the halves separately (Europe "
+                 f"{eur.stated_area_km2.max():,.0f} km2, Asia {asi.stated_area_km2.max():,.0f} km2)")
+
+    raw = os.path.expanduser(os.environ.get(
+        "WHEP_IIA_RAW",
+        "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"))
+    if not os.path.exists(raw):
+        return True, note + "; raw extract absent, so the per-cell boundary was not re-measured"
+    r = pd.read_excel(raw)
+    r["cl"] = r["country"].astype(str).str.strip().str.lower()
+    r["y"] = r["year"].astype(str).str.strip()
+    hemp = r[(r["product"].astype(str).str.strip().str.lower() == "hempseed")
+             & (r["variable"] == "area") & r["value"].notna()]
+    eu = {(t.y, float(t.value)) for t in hemp[hemp.cl == "ussr in europe"].itertuples()}
+    wh = {(t.y, float(t.value)) for t in hemp[hemp.cl == "ussr"].itertuples()}
+    g2 = _label(d, "iia", "russian federation")
+    g2 = g2[(g2["item"] == "hempseed") & (g2["unit"] == "ha") & g2["value"].notna()]
+    when = g2["period"].where(g2["period"].notna(), g2["year"].astype("string"))
+    cells = [(str(w).strip(), float(v)) for w, v in zip(when, g2["value"])]
+    n_eu = sum(1 for c in cells if c in eu and c not in wh)
+    n_wh = sum(1 for c in cells if c in wh and c not in eu)
+    if n_eu == 0:
+        return False, (note + f"; but NO hempseed cell now matches `ussr in europe` uniquely "
+                              f"({n_wh} match whole-USSR), so the pre-1925 continental-half boundary "
+                              f"this entry records no longer reproduces")
+    return True, (note + f"; hempseed area draws on `ussr in europe` for {n_eu} cell(s) and on whole "
+                         f"`ussr` for {n_wh}, so the early series is a continental half")
 
 
 def check_iia_south_korea(d):
