@@ -56,6 +56,7 @@ etats malais non federes,Unfederated Malay States,
 etats malais proteges,Unfederated Malay States,
 etats unis,United States,
 ethiopie,Ethiopia,
+falkland et dependences,Falkland Islands,
 finlande,Finland,NOT retargeted to 'Grand Duchy of Finland': same year-dependence as `allemagne`. That target is historically right for 1911-1913 but trades FIN-1917-1940 (6 statements) for FIN-1809-1917 (3).
 formose,Formosa,"was 'Taiwan', which resolves to the 1945+ row; these statements are 1911-1929"
 formose et pescadores,Taiwan,
@@ -66,6 +67,7 @@ gold coast and togoland,Gold Coast and Br Togoland,
 grande bretagne,United Kingdom,
 grece,Greece,
 groenland,Greenland,
+guadeloupe et dependences,Guadeloupe,
 guam,Territory of Guam,
 guinee espagnole,Equatorial Guinea (1886-1968),"was 'Spanish Guinea', not a polity_name"
 guinee portugaise,Guinea-Bissau (1886-1974),"was 'Portuguese Guinea', not a polity_name"
@@ -94,7 +96,7 @@ irlande,Ireland,
 irlande etat,Ireland,
 islande,Iceland,
 italie,Italy,
-japon,Japan,
+japon,Japanese Empire,"JPN-1895-1945 is the only target that resolves; `japan` itself is routed by alias, not by name. Watch the ratio: iia's japan is metropolitan Japan by a recorded convention, while this polygon is the Empire"
 kenia,Kenya,
 kenia ex afrique orient,Kenya,
 kenya and prot,Kenya,
@@ -131,6 +133,7 @@ nouvelles hebrides iles frenchbritish,New Hebrides,
 nvassaland,Nyasaland,OCR: v for y
 nyassaland,Nyasaland,
 ouganda,Uganda,
+panama zone du,Panama Canal Zone (US-administered),PANAMA (zone du canal)
 pays bas,Netherlands,
 perou,Peru,
 perse,Iran,
@@ -149,6 +152,7 @@ saint pierre et miquelon,Saint Pierre and Miquelon,
 saint thomas et prince,Sao Tome and Principe,
 sainte helene,Saint Helena,
 sakhaline japonaise,Karafuto,
+samoa americaine,Territory of American Samoa,American Samoa; the plain `Samoa` polity is Western Samoa
 samoa occidentale,Western Samoa,
 san salvador,El Salvador,
 siam,Thailand,
@@ -156,7 +160,7 @@ sierra leone,Sierra Leone,
 sierra leone colonie et protectorade,Sierra Leone,
 sokotra,Socotra,
 somalie,Somalia,
-somalie britannique,British Somaliland,
+somalie britannique,British Somaliland Protectorate (1884-1960),
 somalie italienne,Italian Somaliland,
 soudan anglo egyptien,Anglo-Egyptian Sudan,
 spitzberg,Svalbard,
@@ -172,7 +176,7 @@ terre neuve,Dominion of Newfoundland,"was 'Newfoundland', not a polity_name"
 terre neuve labrador,Newfoundland,
 tibet,Tibet,
 timor,Timor,
-timor et kambing,Timor,
+timor et kambing,Timor-Leste,Portuguese Timor and Kambing
 togo,Togo,
 transjordanie,Transjordan,
 trinite et tabago,Trinidad and Tobago,OCR: a for o

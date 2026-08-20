@@ -234,6 +234,19 @@ BASELINE = {
     # nine statements in, and IIA states 61 km2 against our 61 (1.003x), so the polity-level figure
     # now agrees and this entry baselines a divergence that no longer exists. The FAO row itself is
     # unchanged and still reads 0.612x with its note; what changed is that a finer source outvotes it.
+    ("JPN-1895-1945", "iia"):
+        "SCOPE, AND IT CORROBORATES A CONVENTION FROM A NEW DIRECTION. IIA states 382,415 km2, "
+        "which is METROPOLITAN Japan (Japan proper is about 382,000 km2). Our polygon is 626,507 "
+        "km2, the Japanese Empire including Korea and Formosa. The convention at (\"iia\", "
+        "\"japan\", \"*\") already records that this source's `japan` label reports metropolitan "
+        "Japan exclusive of Korea and Formosa, established from PRODUCTION arithmetic -- japan falls "
+        "below south korea in 151 of 264 shared cells, which inclusion cannot produce. This is the "
+        "same conclusion reached independently from the AREA side, and the two agree to within a "
+        "percent on what the metropolitan figure should be. Neither number is an error: the polygon "
+        "is right for the polity and the stated area is right for the reporting unit, which is "
+        "exactly the basis mismatch this file exists to publish. Surfaced 2026-08-20 by adding the "
+        "`japon` lexicon entry (issue 195); note that `japan` itself does not resolve by name at all "
+        "and is routed by alias, so the stated-area side had no entry until now.",
     ("NFL-1907-1949", "iia"):
         "A REAL SCOPE DIFFERENCE, AND THE MOST CONSEQUENTIAL ONE THIS FILE CARRIES AFTER ALGERIA. "
         "IIA states 110,679 km2, which is the ISLAND of Newfoundland (about 111,000 km2). Our "
