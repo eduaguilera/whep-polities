@@ -209,15 +209,20 @@ BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # open question; this is a CEILING so the avoidable set cannot GROW while that is decided. A new
 # row copying its own polygon's area, where a stated figure was available, fails here.
 #
-# 28 -> 33 on 2026-08-20, and the direction of causation matters because a raised ceiling normally
+# 28 -> 32 on 2026-08-20, and the direction of causation matters because a raised ceiling normally
 # means drift. Nothing declared a new self-referential area. The ceiling counts rows that COULD
-# have compared against a source, so it grows when the SOURCE side grows: retargeting 17
+# have compared against a source, so it grows when the SOURCE side grows: retargeting 14
 # `source_label_lexicon.csv` entries from English exonyms (`Ceylon`, `Gold Coast`, `Newfoundland`)
-# to actual polity_names took `source_stated_area_basis.csv` from 205 polities to 223, and 5 of the
-# 21 newly-covered rows already declared their own geometry's area. So this arm gained reach over
-# 5 rows rather than losing ground on 5, which is the outcome issue 195 asks for -- and the arm now
-# reports on 33 rows where check A is silent while a yearbook figure exists.
-BASELINE_AVOIDABLE_SELF_REF = 33
+# to actual polity_names took `source_stated_area_basis.csv` from 205 polities to 223, and 4 of the
+# 18 newly-covered rows already declared their own geometry's area. So this arm gained reach over
+# 4 rows rather than losing ground on 4, which is the outcome issue 195 asks for -- and the arm now
+# reports on 32 rows where check A is silent while a yearbook figure exists.
+#
+# It was briefly set to 33, from a first version of that change that also retargeted `allemagne`,
+# `finlande` and `hongrie`. Those three are year-dependent and were reverted, which is why the
+# number is 32 and not 33: a ceiling one above the true count would let a real regression in
+# unnoticed, so it is pinned at the measured value in both directions.
+BASELINE_AVOIDABLE_SELF_REF = 32
 
 #
 

@@ -7,7 +7,7 @@ afrique orientale allemande,German East Africa,
 alaska,Territory of Alaska,"was 'Alaska', which is not a polity_name"
 albanie,Albania,
 algerie,Algeria,
-allemagne,German Empire,"was 'Germany', whose family starts at 1919; these statements are 1911-1913"
+allemagne,Germany,"NOT retargeted to 'German Empire'. That resolves the 1911-1913 statements but breaks the 1921-1937 ones, which is a swap and not a gain: it trades DEU-1920-1938 (6 statements) for DEU-1871-1919 (3). A flat label->name entry cannot serve both, since the correct polity depends on the data year. See issue 195."
 andaman et nicobar,Andaman and Nicobar Islands,
 andorre,Andorra,
 argentine,Argentina,
@@ -56,7 +56,7 @@ etats malais non federes,Unfederated Malay States,
 etats malais proteges,Unfederated Malay States,
 etats unis,United States,
 ethiopie,Ethiopia,
-finlande,Grand Duchy of Finland,was 'Finland'; 1911-1913 Finland was a Russian grand duchy
+finlande,Finland,NOT retargeted to 'Grand Duchy of Finland': same year-dependence as `allemagne`. That target is historically right for 1911-1913 but trades FIN-1917-1940 (6 statements) for FIN-1809-1917 (3).
 formose,Formosa,"was 'Taiwan', which resolves to the 1945+ row; these statements are 1911-1929"
 formose et pescadores,Taiwan,
 formose et pescadores japonaise,Taiwan,
@@ -76,7 +76,7 @@ guyane neerlandaise,Dutch Guiana,"was 'Surinam', which names only the 1954-1975 
 hawai,Hawaii,
 hawai usa,Hawaii,
 honduras britannique,British Honduras,
-hongrie,Kingdom of Hungary (Transleithania),"was 'Hungary', whose family starts at 1918"
+hongrie,Hungary,NOT retargeted to 'Kingdom of Hungary (Transleithania)': same year-dependence as `allemagne`. Right for 1911-1913 but trades HUN-1920-1938 (6 statements) for HUN-1800-1918 (3).
 iles de l egee,Dodecanese,
 iles italiennes de l egee,Dodecanese,
 iles italiennes de legee,Dodecanese,OCR: lost space
