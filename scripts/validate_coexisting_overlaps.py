@@ -48,13 +48,37 @@ artefact and only its size is gated.
                    uninteresting and collectively 5,000 km2 that a consumer double-counts.
 
 WHY YEARS >= 1990 ONLY. The checked years are 1990, 2000, 2010, 2015 and 2020. Earlier
-slices are dominated by the class-2 convention at colonial scale -- measured, 1925 has 50
-substantial pairs totalling 11.46 Mha (`AOF`/`MLI`, `AEF`/`TCD`, `ALK`/`USA` and so on),
-every one of them the gross-polygon decision working as decided -- and enumerating 50
-federation/member pairs per year here would restate `validate_spatial_containment.py`'s
-container list in a second place, where it would rot. The consequence is a real gap and it
-is named rather than hidden: a NEW pre-1990 whole-territory mis-binding is not caught by
-this gate. It is caught by `validate_shared_polygons` if the polygon is shared, by
+slices are dominated by the class-2 convention at colonial scale -- measured, 1925 has ~50
+substantial pairs totalling 11.46 MILLION KM2, which is 1,145.68 Mha (`AOF`/`MLI`,
+`AEF`/`TCD`, `ALK`/`USA` and so on), every one of them the gross-polygon decision working as
+decided -- and enumerating 50 federation/member pairs per year here would restate
+`validate_spatial_containment.py`'s container list in a second place, where it would rot.
+THE UNIT MATTERS AND THIS LINE HAD IT WRONG BY 100x: it read "11.46 Mha", which is 114,600
+km2 -- smaller than the single pair `AOF-1895-1960`/`NER-1922-1947` at 1,181,744 km2. The
+repo's convention is km2 x 100 (issue 143's headline: `331,429 km2 (33.14 Mha)`), so the
+figure understated the excluded exposure by two orders of magnitude and made the gap read as
+a third of issue 143's 33.14 Mha at 2015 when it is about 35x larger. Re-measured per slice
+(live real rows, ESRI:54034, >1 km2, substantial = >=10% of the smaller):
+
+    1900  229 pairs  11,656,352 km2   70 substantial      1950  279  13,931,690  68
+    1910  237        12,803,414       69                  1960  215   2,243,354  33
+    1925  236        11,488,670       55                  1975  173     916,741  15
+    1938  243        11,879,720       59
+
+The exclusion itself stands on its stated reason -- these are the convention working as
+decided -- and not on the size, which is why correcting the size changes no behaviour here.
+
+The consequence is a real gap and it is named rather than hidden: a NEW pre-1990
+whole-territory mis-binding is not caught by this gate. The fallback below is also narrower
+than it looks: `validate_spatial_containment` reports a CONTAINER only where a polygon holds
+THREE OR MORE contemporaneous rows of other families, so a parent nesting one or two
+children is invisible to it by construction. Measured across the seven slices above, of 158
+substantial pre-1990 pairs, 101 are covered by LEGITIMATE_CONTAINERS and 2 by
+polity_composition.csv, leaving 55 pairs and 8,482,403 km2 in neither registry --
+`IND-1937-1947`/`PAK-1937-1947`, `OTT`/`TUR`, `IND`/`MMR` (Burma inside British India),
+`SNW`/`SWE`, `F248`/`SER`, `KOR`/`KRS`. Those are unwatched rather than wrong, and
+`HYD`/`IND` shows the drift is real: it was a documented container until a geometry change
+left it holding one row (issue 143). It is caught by `validate_shared_polygons` if the polygon is shared, by
 `validate_composition_sums` if the pair sits inside a documented federation, and by
 `validate_polygons` if the area is recorded.
 
