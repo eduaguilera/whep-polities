@@ -3592,6 +3592,37 @@ def mutate_gridzero_dated_year_dropped(root, gpd, make_valid, affinity):
             f"while zeros_dated stays {hit['zeros_dated']}")
 
 
+def mutate_hierarchy_subfloor_without_the_exemption(root, gpd, make_valid, affinity):
+    """Keep a below-floor row while removing what earns it its place.
+
+    The generator's floor is MIN_CELLS = 3, with ONE narrow exemption: a group of fewer cells survives
+    only if every named child is present, there are at least two of them, every cell is exact, and at
+    least one cell's whole is not a round number. That is what makes a single cell proof --
+    `Korea` = `Korea South` + `Korea North`, 108.9 = 98.9 + 10.0, which settled a question two issues
+    had left open (#355, #407).
+
+    An exemption is the natural place for a weak row to hide, so the gate RE-DERIVES it rather than
+    trusting that a sub-floor row earned its way in. The mutation keeps the row and its cell count but
+    reduces it to a single present part, which is exactly the shape the exemption refuses -- one child
+    equal to its parent in one cell is a duplicate or a coincidence, and one cell cannot tell which.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/label_hierarchy_identity.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    hit = next((r for r in rows if int(r["cells"]) < 3), None)
+    if hit is None:
+        raise AssertionError("no below-floor row present, so the exemption is unexercised and this "
+                             "case would pass vacuously")
+    hit["n_parts_present"] = "1"
+    hit["parts_present"] = hit["parts_present"].split("|")[0].strip()
+    hit["verdict"] = "duplicate_of_whole_by_one_child"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+
+
 def mutate_hierarchy_fabricated_tree(root, gpd, make_valid, affinity):
     """File a label as a part of another that is not its prefix.
 
@@ -4047,6 +4078,13 @@ CASES = (
         "an in-volume witness moved to a year from a different yearbook volume, so the row claims "
         "same-volume evidence while holding the cross-era kind -- the exact reading issue 366 was "
         "retitled to withdraw, with every other field left intact",
+    ),
+    (
+        "validate_label_hierarchy_identity.py",
+        mutate_hierarchy_subfloor_without_the_exemption,
+        "does not meet the exact-full-partition exemption",
+        "a below-floor row stripped of the full-partition property that earns it its exemption, so it "
+        "survives on a single child in a single cell -- the shape a coincidence produces",
     ),
     (
         "validate_label_hierarchy_identity.py",

@@ -1,4 +1,5 @@
 source,whole_label,n_kids,n_parts_present,parts_present,cells,exact_cells,median_ratio,min_ratio,max_ratio,verdict,items
+fao1952,british borneo,3,3,british borneo brunei | british borneo north borneo | british borneo sarawak,2,2,1,1,1,partition,r_fao_population_1952_10_18
 fao1952,canada,1,1,canada newfoundland,7,0,0.0038,0,0.0259,subset_all_parts,r_fao_population_1952_10_18
 fao1952,china,8,1,china manchuria,3,0,0.0637,0.0511,0.2612,subset_partial_parts,oats | use forests woodlands
 fao1952,china,8,1,china taiwan,6,0,0.4951,0.0122,95,subset_partial_parts,buffaloes | meat | r_fao_population_1952_10_18
@@ -12,6 +13,7 @@ fao1952,indochina,6,3,indochina cambodia | indochina laos | indochina viet nam,5
 fao1952,indonesia,6,1,indonesia estates,4,0,0.3295,0.2667,0.4495,subset_partial_parts,coffee
 fao1952,indonesia,6,3,indonesia bali and lombok | indonesia java and madura | indonesia other islands,6,6,1,1,1,partition_of_present_parts,soybeans
 fao1952,korea,2,1,korea south,21,4,0.5165,0.0435,1.8853,subset_partial_parts,commercial nitrogenous fertilizers | dry beans | hemp fiber | oats | poultry | r_fao_population_1952_10_18 ...
+fao1952,korea,2,2,korea north | korea south,1,1,1,1,1,partition,commercial nitrogenous fertilizers
 fao1952,leeward islands,4,3,leeward islands antigua | leeward islands montserrat | leeward islands st kitts & nevis,5,0,0.7925,0.7647,0.9667,subset_partial_parts,use agricultural area arable land orchards | use agricultural area permanent peadows pastures | use builton wasteland | use forests woodlands | use total
 fao1952,madagascar,3,1,madagascar comoro islands,5,0,0.0041,0.0005,0.0206,subset_partial_parts,use agricultural area arable land orchards | use agricultural area permanent peadows pastures | use builton wasteland | use forests woodlands | use total
 fao1952,netherlands,3,1,netherlands w indies,20,0,0.0076,0.0003,1.25,subset_partial_parts,carcass weights calves | carcass weights cattle | carcass weights sheep lambs | cattle | horses mules asses | milk ...
