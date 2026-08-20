@@ -94,12 +94,41 @@ def check_fao1952_china_label(ctx):
     return ([("`China` rows", len(ch), 33)], "denominator unchanged")
 
 
+def check_fao1952_wrong_group_heading(ctx):
+    """Seven fao1952 labels for one territory, two of them carrying a group heading it was never in, and
+    the 513 that decides WHICH HALF of the label is wrong.
+
+    The load-bearing claim is not the row counts -- it is that the value belongs to Trinidad. If the
+    heading were right and the territory name had bled in from an adjacent row, 513 thousand ha would be
+    a Leeward Islands figure and this would be a wrong VALUE rather than a wrong label. 513 thousand ha
+    is 5,130 km2 and Trinidad and Tobago is 5,128 km2, so the check re-measures that cell: if a
+    re-extraction ever changes it, the entry's reasoning has to be redone rather than its count nudged.
+
+    The zero is load-bearing too, in the other direction: 0 colliding cells against the five correctly
+    parented labels is what makes these rows recoverable data rather than a double count.
+    """
+    lb = ctx["panel"]
+    f = lb[lb["source"] == "fao1952"].copy()
+    f["_l"] = f["country"].str.replace(r"\s+", " ", regex=True).str.strip().str.lower()
+    t = f[f["_l"].str.contains("trinidad", na=False)]
+    BAD = ["leeward islands trinidad and tobago", "jamaica trinidad and tobago"]
+    bad, good = t[t["_l"].isin(BAD)], t[~t["_l"].isin(BAD)]
+    coll = bad.merge(good, on=["item", "indicator", "year", "unit"], suffixes=("_b", "_g"))
+    tot = bad[(bad["_l"] == BAD[0]) & (bad["item"] == "use total")]["value"]
+    return ([("trinidad label variants", int(t["_l"].nunique()), 7),
+             ("rows under the wrong heading", len(bad), 7),
+             ("cells colliding with the correct labels", len(coll), 0),
+             ("`use total` under the Leeward heading", float(tot.iloc[0]) if len(tot) else None, 513.0)],
+            "the value is Trinidad's 5,128 km2, so the heading is the wrong half")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-china-livestock-cells-implausible": check_fao1952_china_label,
+    "fao1952-label-carries-a-wrong-group-heading": check_fao1952_wrong_group_heading,
 }
 
 
