@@ -1110,6 +1110,76 @@ def check_juan_heads_thousand_grid(d):
                   f"the source")
 
 
+def check_fao1952_group_item_order(d):
+    """The claim: fao1952's `horses mules asses` holds one row per member, ordered ALPHABETICALLY.
+
+    THE ORDER IS THE WHOLE CLAIM, and it is counter-intuitive: alphabetical (asses, horses, mules), not
+    the sequence the item name prints (horses, mules, asses). A future reader who trusts the item name
+    mislabels every row, so this re-test exists to keep the established order from drifting back to the
+    intuitive one.
+
+    THE TEST IS CROSS-SOURCE, which is what earns the entry its `two_independent_sources` corroboration.
+    `juan` and `mitchell` carry `asses`, `horses` and `mules and hinnies` as separate items; every one of
+    the six position-to-member permutations is scored against them and the winner must be alphabetical.
+
+    UNITS MUST BE ALIGNED FIRST. The reference is in `heads`, fao1952 in `1000 heads`. Without the
+    conversion the unit mismatch dominates every distance and each position matches whichever member is
+    smallest -- which produced a "all three positions are the same animal" result on the first run. A
+    uniform answer from a test that should discriminate is the tell, not a finding.
+    """
+    import itertools
+
+    f = d[(d["source"] == "fao1952") & (d["item"] == "horses mules asses")]
+    f = f[f["value"].notna() & f["year"].notna() & (d["unit"] == "1000 heads")].copy()
+    if f.empty:
+        return False, "no fao1952 `horses mules asses` rows in the panel at all"
+    f["pos"] = f.groupby(["country", "year", "indicator", "unit"], dropna=False).cumcount()
+    size = f.groupby(["country", "year", "indicator", "unit"], dropna=False)["value"].transform("size")
+    f = f[size == 3]
+
+    ref = d[d["item"].isin(["asses", "horses", "mules and hinnies"])]
+    ref = ref[ref["value"].notna() & ref["year"].notna()].copy()
+    ref["m"] = ref["item"].map({"asses": "asses", "horses": "horses", "mules and hinnies": "mules"})
+    # `heads` -> `1000 heads`; without this every position matches the smallest member
+    ref["v"] = [v / 1000 if u == "heads" else v for v, u in zip(ref["value"], ref["unit"])]
+    R = {}
+    for t in ref.itertuples():
+        R.setdefault((str(t.country).strip().lower(), int(t.year)), {}).setdefault(t.m, set()).add(
+            round(float(t.v), 3))
+
+    ORD = ["asses", "horses", "mules"]
+    tested = unique = exact = alpha = 0
+    for _, g in f.groupby(["country", "year", "indicator", "unit"], dropna=False):
+        key = (str(g["country"].iloc[0]).strip().lower(), int(g["year"].iloc[0]))
+        r = R.get(key)
+        if not r or len(r) < 3:
+            continue
+        tested += 1
+        vals = [float(v) for v in g.sort_values("pos")["value"]]
+        scores = {}
+        for perm in itertools.permutations(ORD):
+            scores[perm] = sum(
+                1 for v, m in zip(vals, perm)
+                if any(abs(v - x) <= max(0.02 * max(abs(x), 1e-9), 0.5) for x in r[m]))
+        top = max(scores.values())
+        winners = [p for p, sc in scores.items() if sc == top]
+        if top > 0 and len(winners) == 1:
+            unique += 1
+            if tuple(winners[0]) == tuple(ORD):
+                alpha += 1
+            if top == 3:
+                exact += 1
+    if tested < 20:
+        return False, f"only {tested} testable 3-row groups; too few to establish an order"
+    if unique == 0:
+        return False, f"{tested} groups testable but none has a unique best permutation"
+    if alpha != unique:
+        return False, (f"{unique - alpha} of {unique} groups favour a permutation OTHER than "
+                       f"alphabetical (asses, horses, mules) -- the recorded order no longer holds")
+    return True, (f"{tested} testable groups, {unique} with a unique best permutation ({exact} matching "
+                  f"all three), and alphabetical wins {alpha} of {unique}")
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -1120,6 +1190,7 @@ CHECKS = {
     ("iia", "antigua and barbuda", "*"): check_iia_antigua,
     ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
+    ("fao1952", "*", "horses mules asses"): check_fao1952_group_item_order,
     ("iia", "russian federation", "*"): check_iia_russia,
     ("iia", "south korea", "*"): check_iia_south_korea,
     ("juan", "germany", "*"): check_juan_germany,

@@ -92,6 +92,14 @@ CORROBORATION = {
     "two_independent_verifiers": True,     # two blind verifiers reached it separately
     "verifier_plus_measurement": True,     # a verdict plus an independent re-measurement
     "verifier_plus_external_source": True, # a verdict plus documentary evidence outside the panel
+    # A measurement on one source CHECKED AGAINST A DIFFERENT SOURCE in the panel. Added 2026-08-21
+    # because the four values above all presume a verifier VERDICT exists, and the strongest
+    # corroboration available for some conventions has no verdict in it at all: fao1952's
+    # `horses mules asses` row order was established by scoring all six position-to-member
+    # permutations against `juan`/`mitchell`, which carry the three animals as separate items. Two
+    # different publications agreeing is independence in the sense the rule is about -- not the same
+    # instrument on the same data, which is what SINGLE_CORROBORATOR_BASELINE's note warns against.
+    "two_independent_sources": True,
     "single_verifier": False,              # one agent, one pass — below the bar
 }
 
