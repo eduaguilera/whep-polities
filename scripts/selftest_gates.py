@@ -3733,6 +3733,41 @@ def mutate_atomicwrite_mkstemp_loses_cleanup(root, gpd, make_valid, affinity):
         fh.write(src.replace(needle, "        except BaseException:\n            raise", 1))
     return "17_constant_runs.py's atomic writer can now leak its temp file on any write error"
 
+
+def mutate_arearevision_footnote_split_collapsed(root, gpd, make_valid, affinity):
+    """Add a second row for the same label and years, differing only by footnote.
+
+    A label string does not always identify a reporting unit. `INDE BRITANNIQUE:` carries 2,646,259 km2
+    footnoted `british` and 2,012,967 footnoted `india indigenous states` at the SAME data year -- the
+    directly administered provinces and the princely states, summing exactly to the 4,659,226 total.
+    Keyed on the label alone they read as two estimates of one territory and the 31% gap between them as
+    a revision, reported against whatever polity the label routes to (issue 503).
+
+    That label is the only same-year collision in the file today and its spread is under the screen's
+    50% floor, so nothing false was ever published -- the protection was a threshold coincidence rather
+    than a design, which is why the generator keys on the footnote and this arm exists.
+
+    The mutation duplicates a row with a different footnote, which is exactly the shape the generator
+    would produce if it went back to keying on the label. Every other field is a copy, so the
+    arithmetic, verdict, exclusion and corroboration arms all stay quiet.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/area_revision_boundaries.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    if "footnote" not in fields:
+        raise AssertionError("the table has no footnote column, so the unit cannot be keyed on it and "
+                             "this case would pass vacuously")
+    dup = dict(rows[0])
+    dup["footnote"] = "british"
+    rows.append(dup)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"added a second {rows[0]['label']} row differing only by footnote, as keying on the label "
+            f"alone would produce")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -3904,6 +3939,14 @@ CASES = (
         "an atomic writer stripped of its unlink handler, so a DictWriter error leaves a half-written "
         ".tmp in a tracked state directory -- the try and the raise are left in place, so the module "
         "still parses and still re-raises and only the mkstemp arm can see it",
+    ),
+    (
+        "validate_area_revision_boundaries.py",
+        mutate_arearevision_footnote_split_collapsed,
+        "differing only by footnote",
+        "two rows for one label and year pair separated only by footnote -- the shape a generator keyed "
+        "on the label alone produces, where the princely states and the directly administered provinces "
+        "read as two estimates of one territory",
     ),
     (
         "validate_area_revision_boundaries.py",
