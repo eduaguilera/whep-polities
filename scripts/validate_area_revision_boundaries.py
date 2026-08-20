@@ -21,7 +21,14 @@ halves and BOTH are load-bearing:
      worklist: a diagnosed source defect leaves the table by being diagnosed. Without it, 4 of the
      spanning rows are MONACO's dropped decimal, GREENLAND's re-estimates and TIEN-TSIN, and the table
      reads as a false-positive generator.
-  D  THE CORROBORATION HALF MUST NOT VANISH. At least MIN_AGREEING rows must agree. If that number
+  D  THE UNIT MUST BE UNIQUE, NOT THE LABEL. A label string does not always identify a reporting unit:
+     `INDE BRITANNIQUE:` carries 2,646,259 km2 footnoted `british` and 2,012,967 footnoted
+     `india indigenous states` at the SAME data year, which are the directly administered provinces and
+     the princely states, summing exactly to the 4,659,226 total. Grouped on the label alone they read
+     as two estimates of one territory and the gap between them as a revision. So rows must be unique
+     on (label, footnote, source, year_before, year_after), and two rows sharing everything but the
+     footnote is the shape that says the generator went back to keying on the label.
+  E  THE CORROBORATION HALF MUST NOT VANISH. At least MIN_AGREEING rows must agree. If that number
      goes to zero the periodisation did not suddenly stop matching the source -- the label resolution
      broke, which is the failure mode this whole area is prone to (issue 195: 1,190 of 2,225
      statements resolved to nothing until the lexicon was retargeted).
@@ -43,7 +50,7 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/area_revision_bou
 POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 BASIS = os.path.join(REPO, "data/final/source_stated_area_basis.csv")
 
-FIELDS = ["label", "source", "step_pct", "year_before", "year_after", "area_before", "area_after",
+FIELDS = ["label", "footnote", "source", "step_pct", "year_before", "year_after", "area_before", "area_after",
           "polity_code", "polity_start", "polity_end", "verdict"]
 
 VERDICTS = {"one_polity_spans_the_revision", "our_boundary_falls_between"}
@@ -133,12 +140,32 @@ def main() -> int:
         print(f"  {r['label'][:26]:28}{float(r['step_pct']):>6.0f}%  {r['year_before']}->"
               f"{r['year_after']:<6}{r['polity_code']:20} {m}")
 
-    if n_agree < MIN_AGREEING:                                                     # D
+    seen = {}
+    for r in rows:
+        k = (r["label"], r["footnote"], r["source"], r["year_before"], r["year_after"])
+        if k in seen:
+            problems.append(
+                f"{r['label']} / {r['source']}: two rows share (label, footnote, source, years), so "
+                f"the same unit is reported twice")
+        seen[k] = True
+    by_label = {}
+    for r in rows:
+        by_label.setdefault((r["label"], r["source"], r["year_before"], r["year_after"]), set()).add(
+            r["footnote"])
+    for k, fns in by_label.items():
+        if len(fns) > 1:                                                            # D
+            problems.append(
+                f"{k[0]} / {k[1]}: rows differing only by footnote ({sorted(fns)}) over the same "
+                f"years. A footnote can carry the unit's identity — `INDE BRITANNIQUE:` splits into "
+                f"the directly administered provinces and the princely states that way — so two such "
+                f"rows are one unit reported twice or two units compared against each other")
+
+    if n_agree < MIN_AGREEING:                                                     # E
         problems.append(
             f"only {n_agree} revision(s) agree with a span boundary, below the floor of "
             f"{MIN_AGREEING}. The periodisation did not stop matching the source — far more likely the "
             f"label resolution broke, which is exactly what issue 195 found when 1,190 of 2,225 "
-            f"statements resolved to nothing")
+            f"statements resolved to nothing")   # E
 
     if problems:
         print(f"FAIL: {len(problems)} area-revision problem(s)", file=sys.stderr)

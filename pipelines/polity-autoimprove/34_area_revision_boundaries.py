@@ -67,7 +67,7 @@ POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 # plainly surveys (`TRANSJORDANIE` 40,000 -> 89,975 as its desert frontier was fixed).
 MIN_STEP = 0.50
 
-FIELDS = ("label", "source", "step_pct", "year_before", "year_after", "area_before", "area_after",
+FIELDS = ("label", "footnote", "source", "step_pct", "year_before", "year_after", "area_before", "area_after",
           "polity_code", "polity_start", "polity_end", "verdict")
 
 
@@ -99,8 +99,19 @@ def build() -> list[dict]:
     st = pd.read_csv(STATED)
     st = st[st.stated_area_km2 > 0]
 
+    # KEY ON THE FOOTNOTE TOO, because the label alone does not always identify a reporting unit.
+    # `INDE BRITANNIQUE:` carries TWO areas at the same data year -- 2,646,259 footnoted `british` and
+    # 2,012,967 footnoted `india indigenous states` -- which are the directly administered provinces and
+    # the princely states, summing exactly to the 4,659,226 total. Grouped on the label alone they read
+    # as two estimates of one territory and the 31% gap between them as a revision.
+    #
+    # That label is the only one in the file with a same-year collision, and at 1.31x it sits under
+    # MIN_STEP, so nothing false was published -- but the protection was a threshold coincidence, not a
+    # design. Only 10 of 2,225 statements carry a footnote at all (4 distinct values), so this changes
+    # no current row: the table is byte-identical before and after.
+    st = st.assign(_fn=st.footnote.fillna("").astype(str).str.strip())
     rows = []
-    for (source, label), g in st.groupby(["source", "label"], sort=True):
+    for (source, label, footnote), g in st.groupby(["source", "label", "_fn"], sort=True):
         if g.stated_area_km2.nunique() < 2:
             continue
         seq = [(int(r.data_year), float(r.stated_area_km2))
@@ -129,7 +140,7 @@ def build() -> list[dict]:
             continue                      # a diagnosed source defect leaves by being diagnosed
         a, b = int(db.at[code, "start_year"]), int(db.at[code, "end_year"])
         rows.append({
-            "label": label, "source": source, "step_pct": _n(round(step * 100, 1)),
+            "label": label, "footnote": footnote, "source": source, "step_pct": _n(round(step * 100, 1)),
             "year_before": y0, "year_after": y1,
             "area_before": _n(a0), "area_after": _n(a1),
             "polity_code": code, "polity_start": a, "polity_end": b,
