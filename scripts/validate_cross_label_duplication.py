@@ -99,6 +99,21 @@ def main() -> int:
                 problems.append(f"D {w}: block_spread {spread!r} is not numeric")
         if (r["smaller_label"] or "").strip() not in (r["label_a"], r["label_b"]):
             problems.append(f"D {w}: smaller_label {r['smaller_label']!r} names neither label")
+        # --- E: smaller_label must AGREE with the ratio it is derived from ---
+        # `outside_ratio_median` is median(label_a / label_b) over the differing years, so a value
+        # below 1 means label_a is the smaller series. The generator's first version wrote
+        # `a if om > 1 else b` and shipped this column naming the LARGER label in all six rows. It
+        # survived review because `block_matches_level_of` stayed correct -- names and levels were
+        # swapped together, so the double swap cancelled and the column anyone would sanity-check read
+        # right while this one was wrong. Checking a derived column against its own input is the only
+        # thing that catches that.
+        want_smaller = r["label_a"] if om < 1 else r["label_b"]
+        if (r["smaller_label"] or "").strip() != want_smaller:
+            problems.append(
+                f"E {w}: smaller_label is {r['smaller_label']!r} but outside_ratio_median {om} says "
+                f"{want_smaller!r} is the smaller series (the ratio is a/b, so below 1 means a). An "
+                f"inverted direction column reads as authoritative and points remediation at the "
+                f"wrong label")
 
     by_src = {}
     for r in rows:

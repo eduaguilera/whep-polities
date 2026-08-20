@@ -120,10 +120,18 @@ def build(matched: str) -> list[dict]:
                 continue                                   # effectively one series outside too
             # DIRECTION: outside the block one label is consistently larger. The block's own level
             # tells which one it came from, and that side is the donor.
-            smaller = a if om > 1 else b                   # om = median(a/b) over differing years
-            larger = b if om > 1 else a
-            lvl_s = float(x[both][~eq].median() if smaller == a else y[both][~eq].median())
-            lvl_l = float(y[both][~eq].median() if smaller == a else x[both][~eq].median())
+            # om = median(a/b) over the DIFFERING years, so om < 1 means a is the smaller series.
+            # The first version had this backwards -- `a if om > 1 else b` -- and shipped a
+            # `smaller_label` column that named the LARGER label in all six rows. It went unnoticed
+            # because `block_matches_level_of` stayed correct: the names and the levels were swapped
+            # together and the double swap cancelled, so the one column anybody would sanity-check
+            # read right while the other was wrong. Gate arm E now ties this column to
+            # `outside_ratio_median` so an inversion cannot pass again.
+            smaller = a if om < 1 else b
+            larger = b if om < 1 else a
+            lvl_a = float(x[both][~eq].median())
+            lvl_b = float(y[both][~eq].median())
+            lvl_s, lvl_l = (lvl_a, lvl_b) if smaller == a else (lvl_b, lvl_a)
             bl = float(block.median())
             # A LEVEL COMPARISON NEEDS THE BLOCK TO HAVE A LEVEL. The first version of this column
             # answered "serbia" for the iia czech/serbia case -- the one instance whose direction is
