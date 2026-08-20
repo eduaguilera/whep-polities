@@ -57,6 +57,19 @@ BASELINE_RETIRED_CORRECT = 7
 # The five statuses the ledger actually carries. `correct` and `fixed` mean judged; `issue` means a
 # verdict recorded a problem; `unreviewed` is not yet looked at; `suppressed` is deliberately excluded.
 LEDGER_STATUSES = frozenset({"correct", "fixed", "issue", "unreviewed", "suppressed"})
+# `unit_kind` says what a ledger row is ABOUT, and this gate's arms A and B are scoped by it:
+# `pol = [r for r in rows if unit_kind == "polity"]`. So the filter decides how much the gate checks,
+# and nothing validated it. Measured: typo'ing it on all 256 polity rows takes the checked population
+# from 256 to ZERO and the gate still prints "PASS: every banked verdict names a polity that exists"
+# -- vacuously true, the exact shape of issues 407, 412 and 420. `unit_kind` is ALSO what separates an
+# assertion verdict from a polity decision when counting banked work (issue 308: ignoring it produced
+# a 55.4% orphan rate against a true 15.7%, because 415 polity-level rows were counted as orphaned
+# assertions).
+LEDGER_UNIT_KINDS = frozenset({"match", "polity", "ingest"})
+# A floor, not a pinned count: the population moves as work is banked, but it cannot legitimately be
+# empty while the ledger holds 993 rows. This is what catches the filter emptying for ANY reason,
+# including ones a vocabulary check cannot see.
+MIN_POLITY_KEYED = 1
 
 
 def main() -> int:
@@ -97,6 +110,12 @@ def main() -> int:
     # A count is NOT pinned here: `unreviewed` and `issue` rows come and go legitimately. What is
     # pinned is the SET, so a new status has to be added deliberately and its effect on those four
     # filters considered at that moment rather than discovered later.
+    seen_kind = {}
+    for r in rows:
+        k = (r.get("unit_kind") or "").strip()
+        seen_kind[k] = seen_kind.get(k, 0) + 1
+    unknown_kind = {k: v for k, v in seen_kind.items() if k not in LEDGER_UNIT_KINDS}
+
     seen_status = {}
     for r in rows:
         st = (r.get("status") or "").strip()
@@ -107,8 +126,20 @@ def main() -> int:
     print(f"A. keys absent from the database: {len(dead_key)}")
     print(f"B. keys that are retired or superseded but judged `correct`: {len(retired_key)}")
     print(f"C. status vocabulary: " + ", ".join(f"{k}={v}" for k, v in sorted(seen_status.items())))
+    print(f"D. unit_kind vocabulary: " + ", ".join(f"{k}={v}" for k, v in sorted(seen_kind.items())))
 
     problems = []
+    if len(pol) < MIN_POLITY_KEYED:
+        problems.append(
+            f"D {len(pol)} polity-keyed row(s) of {len(rows)}, below the floor of {MIN_POLITY_KEYED}. "
+            f"Arms A and B are scoped by `unit_kind == \"polity\"`, so an empty selection makes them "
+            f"check nothing while this gate still reports success -- measured, typo'ing that column "
+            f"takes the checked population from 256 to 0 and the gate passes vacuously")
+    for k, n in sorted(unknown_kind.items()):
+        problems.append(
+            f"D unit_kind {k!r} on {n} row(s) is not one of {sorted(LEDGER_UNIT_KINDS)}. This column "
+            f"scopes arms A and B and separates assertion verdicts from polity decisions when banked "
+            f"work is counted (issue 308), so an unrecognised value silently shrinks both")
     for st, n in sorted(unknown_status.items()):
         problems.append(
             f"C status {st!r} on {n} row(s) is not one of {sorted(LEDGER_STATUSES)}. Four tools "
@@ -147,7 +178,11 @@ def main() -> int:
             print(f"  {p}")
         return 1
 
-    print("\nPASS: every banked verdict names a polity that exists")
+    # SAY HOW MUCH WAS CHECKED, not just that it passed. The old message asserted a property of
+    # "every banked verdict" while the population it examined was whatever the unit_kind filter
+    # happened to select -- so at zero rows it made its strongest claim on no evidence.
+    print(f"\nPASS: all {len(pol)} polity-keyed row(s) name a live polity; {len(rows)} ledger rows "
+          f"carry a known status and unit_kind")
     return 0
 
 
