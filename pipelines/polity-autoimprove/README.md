@@ -498,6 +498,15 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        validate_iia_label_provenance.py enforces, so tool and table cannot
                        drift — they already did once, when a hand-rolled derivation kept a
                        share-ratio test this script had replaced with a union-gain test.
+                       THE INVOCATION THAT BUILDS THE TABLE IS `--write` OR `--check` WITH NO
+                       `--min-rows`, which defaults to 1 for those modes (30 for the ranked
+                       report, where a fingerprint over fewer values is noise). That was
+                       unrecorded until issue 472 and cost real trouble: `--write` used to
+                       overwrite every row the run had not covered with `unknown`, so a default
+                       run destroyed 61 of 302 recorded fingerprints, and nothing said what
+                       argument would reproduce them. At the table floor the run recomputes all
+                       302 rows carrying a layer_b_label and they match exactly; the other 33 have
+                       no layer_b_label at all, so a fingerprint has nothing to assert about them.
                        `--assertion 'label|source|LO-HI'` measures ONE assertion's own span,
                        which is what verification actually asks. A label-level signal averages
                        over all years and misses a problem confined to one era: `russian

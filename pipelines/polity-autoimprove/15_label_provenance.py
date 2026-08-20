@@ -60,6 +60,9 @@ from collections import defaultdict
 DEFAULT_RAW = os.path.expanduser(
     "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"
 )
+# Floors for the two modes; see the note in main() for how MIN_ROWS_TABLE was recovered.
+MIN_ROWS_REPORT = 30    # ranked report: a fingerprint over <30 values is noise
+MIN_ROWS_TABLE = 1      # the tracked table: reproduces all 302 fingerprinted rows exactly
 DEFAULT_PROV = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "state/iia_label_provenance.csv")
 DEFAULT_ASSERT = os.path.join(
@@ -263,8 +266,12 @@ def main() -> int:
                          "its 1909-1917 values draw on `russia`, `russia in europe` AND "
                          "`russia in asia` -- the empire plus both halves -- while 1922-1940 is "
                          "cleanly 73% `ussr`. Verification asks about a SPAN, so this does too.")
-    ap.add_argument("--min-rows", type=int, default=30,
-                    help="skip labels with fewer dated values (default: %(default)s)")
+    # DEFAULT None, NOT 30, so the code below can tell "the caller chose 30" from "the caller said
+    # nothing" -- the distinction --check needs. See MIN_ROWS_REPORT / MIN_ROWS_TABLE.
+    ap.add_argument("--min-rows", type=int, default=None,
+                    help=f"skip labels with fewer dated values (default: {MIN_ROWS_REPORT} for the "
+                         f"ranked report, {MIN_ROWS_TABLE} for --check/--write, which is what the "
+                         f"tracked table was built with)")
     ap.add_argument("--write-assertions", metavar="CSV", nargs="?", const=DEFAULT_ASSERT,
                     help="write a PER-ASSERTION provenance table (default: %(const)s) from the "
                          "pending/banked IIA assertion keys. The label table averages over all a "
@@ -278,12 +285,11 @@ def main() -> int:
     # erasing measurements it did not take, a default run is IDEMPOTENT -- it reproduces the tracked
     # table byte for byte.
     #
-    # But idempotent is not the same as fully regenerated, and the difference is the check's reach.
-    # A default run recomputes 241 of the 335 rows; the other 94 hold a measurement this run does not
-    # cover and are carried forward UNCHECKED. Verified by setting `territory_signal` on all 335 rows
-    # and re-checking: 204 are caught. The 37-row gap is not a blind spot -- 37 rows legitimately read
-    # `mixed`, so the mutation was a no-op there, and 241 - 37 = 204 closes exactly. So the guard
-    # covers 241 rows and cannot see 94, which is worth having and worth not overstating.
+    # AND NOW COMPLETE, which it was not when first added. With --min-rows defaulting to 30 for every
+    # mode, a check recomputed only 241 of 335 rows and 94 were carried forward unchecked -- so a
+    # corrupted `albania` row passed as "current". At MIN_ROWS_TABLE the check recomputes all 302 rows
+    # that have a layer_b_label, and the remaining 33 have none at all, so there is nothing about them
+    # a fingerprint could assert. The same albania mutation is now caught.
     ap.add_argument("--check", action="store_true",
                     help="exit 1 if the 204 rows a default run recomputes differ from the tracked table")
     ap.add_argument("--write", metavar="CSV", nargs="?", const=DEFAULT_PROV,
@@ -293,6 +299,18 @@ def main() -> int:
                          "already did once, when a hand-rolled derivation used a share-ratio test "
                          "this script had replaced with a union-gain test")
     args = ap.parse_args()
+    # THE INVOCATION THAT PRODUCED THE TRACKED TABLE IS NOW RECORDED HERE, which issue 472 asked for:
+    # it was nowhere, so the table could not be reproduced without guessing and every default run
+    # degraded it. Recovered empirically -- at --min-rows 1 the run recomputes 302 of the 335 rows and
+    # ALL 302 match the tracked table; the other 33 carry a BLANK layer_b_label, i.e. raw labels with
+    # no layer-B counterpart, so there is nothing to fingerprint and "not measured" is correct for
+    # them rather than a floor artefact. The table is therefore fully verified at this setting.
+    #
+    # The ranked report keeps 30, because a floor of 1 fills it with one-value labels whose
+    # fingerprint means nothing (the MIN_SPAN_VALUES logic exists for exactly that). So the two modes
+    # want different floors and the flag now defaults per mode instead of globally.
+    if args.min_rows is None:
+        args.min_rows = MIN_ROWS_TABLE if (args.check or args.write) else MIN_ROWS_REPORT
 
     for path, what in ((args.raw, "raw extract"), (args.layer_b, "layer-B panel")):
         if not os.path.exists(path):
@@ -615,8 +633,8 @@ def main() -> int:
                 print(f"STALE {os.path.basename(DEFAULT_PROV)}: {changed} signal(s) would change; "
                       f"rerun with --write", file=sys.stderr)
                 return 1
-            print(f"table is current: the {len(table) - kept} row(s) this run recomputes match the "
-                  f"tracked table; {kept} row(s) it does not cover were carried forward unchecked")
+            print(f"table is current: all {len(table) - kept} fingerprinted row(s) match the tracked "
+                  f"table; the other {kept} carry no layer_b_label, so there is nothing to fingerprint")
             return 0
         with open(args.write, "w", newline="", encoding="utf-8") as fh:
             w = csv.DictWriter(fh, fieldnames=fields)
