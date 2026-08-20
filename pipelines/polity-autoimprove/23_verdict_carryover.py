@@ -97,6 +97,14 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--write", action="store_true", help=f"refresh {os.path.relpath(OUT, REPO)}")
+    # THIS TOOL WAS THE ONLY ONE WRITING A TRACKED TABLE WITHOUT A STALENESS MODE, and the table was
+    # in fact stale when the mode was added: it read `matched 408, carried 50, uncarried 2` while the
+    # current assertion set produces `398 / 61 / 1`. Eight sibling tools (04, 08, 25-31) all carry
+    # --check, and 04's is what caught territory_basis.csv drifting after a routing fix. Without one
+    # here, a carryover table can silently describe an assertion set that no longer exists -- and this
+    # table is the ONLY record of five verdicts that never reached the ledger at all (issue 308).
+    ap.add_argument("--check", action="store_true",
+                    help="exit 1 if the tracked table does not match the current assertion set")
     args = ap.parse_args()
 
     if not os.path.exists(QUEUE):
@@ -183,6 +191,27 @@ def main() -> int:
     rows = out
     from collections import Counter as _C
     print("\n  per-verdict outcome:", dict(_C(r["queue_state"] for r in rows)))
+
+    if args.check:
+        if not os.path.exists(OUT):
+            print(f"MISSING {os.path.relpath(OUT, REPO)}", file=sys.stderr)
+            return 1
+        with open(OUT, newline="", encoding="utf-8") as fh:
+            have = list(csv.DictReader(fh))
+        want = [{k: str(v) for k, v in r.items()} for r in rows]
+        if have != want:
+            hs = {}
+            for r in have:
+                hs[r["queue_state"]] = hs.get(r["queue_state"], 0) + 1
+            ws = {}
+            for r in want:
+                ws[r["queue_state"]] = ws.get(r["queue_state"], 0) + 1
+            print(f"STALE {os.path.relpath(OUT, REPO)}: committed {len(have)} rows {hs}, "
+                  f"current assertion set gives {len(want)} rows {ws}; rerun with --write",
+                  file=sys.stderr)
+            return 1
+        print("table is current")
+        return 0
 
     if args.write:
         fd, tmp = tempfile.mkstemp(dir=os.path.dirname(OUT), suffix=".tmp")
