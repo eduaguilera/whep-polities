@@ -37,6 +37,13 @@ Checks:
   E. THE ERA FLOOR -- every row is 1934 or later, since 1933 is the last year a second yearbook volume
      offers an opinion (issue 414) and a row before it belongs to a different question.
 
+ALL 5 ARMS WERE VERIFIED TO FIRE on 2026-08-20, by mutating this table to trigger each in turn.
+An arm that cannot fire passes every run while asserting nothing, and this repo has shipped three of
+those (issues 407, 412, 420), so "the gate is green" is only meaningful once each arm is known live.
+Verified: an unknown verdict (A); an implied_yield disagreeing with production/area (B); an
+`impossible_yield` row pushed below the 20 t/ha line (C); a zero-area row reclassified (D, which
+also carries the permanent selftest case); a row dated before 1934 (E).
+
 The class COUNTS are printed, not pinned: they move whenever the panel or the matcher legitimately moves.
 What is pinned is arithmetic and the zero-area rule, neither of which can legitimately break.
 """
