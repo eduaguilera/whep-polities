@@ -81,6 +81,40 @@ do with it:
 | `state/source_conventions.csv` | what a source's labels actually measure | #24, #13 |
 | `scripts/validate_polygons_baseline.txt` | polities claiming a polygon they lack — **empty since 2026-08-13**, the queue is drained | #3 (closed) |
 
+#### Item keys: half these tables store NORMALISED names, half store the panel's
+
+A join against a state table on `item` fails silently if the two sides disagree about punctuation, and
+they often do. `norm()` in the older tools is `re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()`, so
+`groundnuts, with shell` is written as `groundnuts with shell` and `beans, dry` as `beans dry`.
+
+**Stores normalised item names** — join with `norm()` on both sides:
+`item_equivalences.csv`, `item_provenance.csv`, `constant_runs.csv`, `source_splices.csv`,
+`isolated_spikes.csv`, `entrepot_census.csv`, `trade_mirror_gaps.csv`, `trade_entrepot_flags.csv`,
+`trade_mirror_direction.csv`.
+
+**Stores the panel's item names verbatim** — join directly:
+`collapse_groups.csv`, `series_collapses.csv`, `impossible_pairs.csv`, `item_axis_aggregates.csv`,
+`item_product_switches.csv`, `subnational_sums.csv`, `yield_corrections.csv`,
+`yield_series_corrections.csv`, `landuse_corrections.csv`, `magnitude_outliers.csv`,
+`magnitude_impossible_area.csv`, `era_shift_verdicts.csv`, `cross_label_duplication.csv`,
+`grid_ambiguous_zeros.csv`, `component_underselection.csv`.
+
+**Uses the RAW extract's product vocabulary, not layer B's items at all**: `edition_conflicts.csv`
+(column `product`) — `sugar: cane`, `cotton: ginned`, `fertilizers: calcium superphosphate`. Only 11 of
+its 45 values coincide with a panel item name.
+
+The split runs by tool generation rather than by intent: tools 16–24 normalise, 25 onward do not. Both
+conventions are defensible and neither is being changed here; what costs time is not knowing which a table
+uses.
+
+**The failure mode is a silent empty join, and it goes both ways.** On 2026-08-20 it produced two wrong
+answers in one session: joining raw item strings against `constant_runs.csv` lost 31 of 79 rows and they
+were reported as "untestable" (issue 366), and looking up `item_equivalences['beans, dry']` returned an
+empty product set and was reported as the registry not recording that item at all (issue 375) — it is
+there as `beans dry`, and the registry covers 48 of the 49 iia items. **The tell in both cases was a
+lookup returning empty for EVERY case rather than for some**; a real gap is patchy.
+
+
 #### The rule for registering a source convention (issue 24)
 
 A convention is not one opinion about one row. `00_intake.py` attaches every matching
