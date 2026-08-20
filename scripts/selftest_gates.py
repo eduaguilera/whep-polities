@@ -3664,6 +3664,42 @@ def mutate_constantrun_witness_is_cross_era(root, gpd, make_valid, affinity):
     return (f"{hit['country']}/{hit['item']} witness moved to 1910, which shares no volume window "
             f"with its {hit['year_first']}-{hit['year_last']} run")
 
+
+def mutate_arearevision_verdict_contradicts_span(root, gpd, make_valid, affinity):
+    """Flip a revision's verdict so it contradicts its own polity span.
+
+    `area_revision_boundaries.csv` has two halves and the verdict IS the finding (issue 503): either our
+    period boundary falls between the source's two figures, which corroborates the periodisation from
+    data rather than from historical reading, or one polity spans the revision and is asserting a
+    constant territory the source contradicts in its own area column.
+
+    Because the verdict is a written field beside the span it describes, nothing but a gate stops the two
+    disagreeing -- and a row claiming `our_boundary_falls_between` while one polity covers both figures
+    would hide exactly the case the table exists to surface. The mutation takes an agreeing row and
+    relabels it as spanning, leaving the years, the areas, the step and the polity bounds untouched, so
+    only the arm deriving the verdict from the span can see it.
+
+    It picks the agreeing row with the largest step, so the case does not depend on which labels happen
+    to resolve when the lexicon changes.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/area_revision_boundaries.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    cands = [r for r in rows if r["verdict"] == "our_boundary_falls_between"]
+    if not cands:
+        raise AssertionError("no revision currently agrees with a period boundary, so there is nothing "
+                             "to relabel and the case would pass vacuously")
+    hit = max(cands, key=lambda r: float(r["step_pct"]))
+    hit["verdict"] = "one_polity_spans_the_revision"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"{hit['label']} relabelled as spanning, though {hit['polity_code']} "
+            f"({hit['polity_start']}-{hit['polity_end']}) has a boundary inside "
+            f"{hit['year_before']}-{hit['year_after']}")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -3827,6 +3863,14 @@ CASES = (
         "a provably-wrong cell — 0 in one yearbook volume, a real value in another — reclassified "
         "as an ordinary revision, with a revised row traded the other way so both ceilings still "
         "pass and only the class-shape check can see it",
+    ),
+    (
+        "validate_area_revision_boundaries.py",
+        mutate_arearevision_verdict_contradicts_span,
+        "must follow from the span",
+        "a revision whose verdict claims one polity spans it while that polity's own bounds put a "
+        "boundary between the source's two figures -- hiding the case the table exists to surface, "
+        "with the years, areas, step and bounds all left intact",
     ),
     (
         "validate_constant_runs.py",
@@ -4487,6 +4531,12 @@ WRITABLE = {
     # to tell a retracted verdict from a live one.
     "validate_source_splices.py": (
         "pipelines/polity-autoimprove/state/source_splices.csv",
+    ),
+    # The case rewrites area_revision_boundaries.csv in place (it flips one verdict).
+    "validate_area_revision_boundaries.py": (
+        "pipelines/polity-autoimprove/state/area_revision_boundaries.csv",
+        # arm C reads the published note column here, so the scratch tree needs it materialised
+        "data/final/source_stated_area_basis.csv",
     ),
     # Two cases rewrite constant_runs.csv in place -- one edits n_values, one moves an in-volume
     # witness year -- so it must be a real copy rather than a symlink into the tracked table.

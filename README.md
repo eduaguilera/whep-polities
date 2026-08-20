@@ -141,6 +141,7 @@ python3 scripts/validate_constant_runs.py           # a value repeated for years
 python3 scripts/validate_isolated_spikes.py         # no single year may read many times its own neighbours
 python3 scripts/validate_same_polity_overlaps.py   # two labels of one source may not collide on one polity's cells
 python3 scripts/validate_era_shift_verdicts.py     # post-1933 tobacco/hops verdicts must match their own numbers
+python3 scripts/validate_area_revision_boundaries.py # stated-area revisions must agree with their own verdict and our spans
 python3 scripts/validate_component_underselection.py # recorded component under-selections must still pick a minor material
 python3 scripts/validate_grid_ambiguous_zeros.py  # recorded grid-ambiguous zeros must live at their grid's resolution floor
 python3 scripts/validate_cross_label_duplication.py # recorded cross-label duplications must still clear their own conditions
