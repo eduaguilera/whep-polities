@@ -51,3 +51,8 @@ __pycache__/
 data/external/before_1961.csv
 data/external/federico_tena_polities.xlsx
 data/external/federico_tena/
+
+# Leaked atomic-write temp files. The writers unlink these on failure (2026-08-20), but the
+# state directory is tracked and a stray .tmp is one `git add -A` away from being committed.
+pipelines/polity-autoimprove/state/*.tmp
+data/final/*.tmp

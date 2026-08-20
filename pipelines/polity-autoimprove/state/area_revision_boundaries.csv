@@ -1,19 +1,13 @@
 label,source,step_pct,year_before,year_after,area_before,area_after,polity_code,polity_start,polity_end,verdict
-ESTHONIE,iia,601.8,1921,1925,6775,47549,EST-1918-1940,1918,1940,one_polity_spans_the_revision
 ALGÉRIE,iia,281.8,1921,1932,575289,2196294,DZA-1919-1962,1919,1962,one_polity_spans_the_revision
 algérie,iia,281.1,1913,1929,576000,2195097,DZA-1919-1962,1919,1962,our_boundary_falls_between
 yougoslavie,iia,183.1,1913,1929,87776,248494,F248-1920-1947,1920,1947,our_boundary_falls_between
 ETAT SERBE-CROATE-SLOVENE,iia,182.4,1913,1921,87776,247916,F248-1920-1947,1920,1947,our_boundary_falls_between
-EQUATEUR,iia,133.1,1933,1937,306644,714860,ECU-1800-1942,1800,1942,one_polity_spans_the_revision
 GRÈCE,iia,127.2,1911,1921,63211,143641,GRC-1919-1947,1919,1947,our_boundary_falls_between
 roumanie,iia,113.8,1913,1929,137903,294892,ROU-1920-1940,1920,1940,our_boundary_falls_between
 ROUMANIE,iia,113.7,1913,1921,137903,294695,ROU-1920-1940,1920,1940,our_boundary_falls_between
-CÔTE DES SOMALIS,iia,81.7,1921,1937,120000,21963,FRS-1884-1977,1884,1977,one_polity_spans_the_revision
 AUTRICHE,iia,74,1913,1921,300004,78061,AUT-1919-2025,1919,2025,our_boundary_falls_between
 autriche,iia,72.1,1913,1929,300004,83833,AUT-1919-2025,1919,2025,our_boundary_falls_between
 hongrie,iia,71.4,1913,1929,325411,93005,HUN-1920-1938,1920,1938,our_boundary_falls_between
 HONGRIE,iia,70.5,1913,1921,325411,96114,HUN-1920-1938,1920,1938,our_boundary_falls_between
-LITHUANIE,iia,62.9,1921,1925,150000,55658,LTU-1918-1940,1918,1940,one_polity_spans_the_revision
 MONTÉNÉGRO,iia,59.8,1911,1913,9080,14512,MNE-1913-1918,1913,1918,our_boundary_falls_between
-ALBANIE,iia,57.9,1921,1925,28500,45000,ALB-1913-2025,1913,2025,one_polity_spans_the_revision
-SOMALIE BRITANNIQUE british,iia,51.1,1913,1925,176000,86000,BSS-1884-1960,1884,1960,one_polity_spans_the_revision

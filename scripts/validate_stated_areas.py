@@ -301,6 +301,46 @@ SOURCE_NOTES = {
     # source_stated_area_basis.csv with NO published reason, so a reader met a 10x ratio and an
     # empty note. That is the shape this file warns about elsewhere: an unexplained flag reads as
     # either an error or an oversight, and there is no way to tell which.
+    # SIX SINGLE-EDITION AREA OUTLIERS, added 2026-08-20. Each was surfaced by
+    # 34_area_revision_boundaries.py as a >=50% revision that ONE POLITY SPANS -- i.e. a candidate
+    # missing period boundary. Each is instead a bad figure in one edition, and the test is the one
+    # this file's own failure message prescribes: check which side is wrong first. In every case the
+    # polygon sits within 0-11% of one stated figure and 36-628% from the other, and the remaining
+    # editions agree with the figure the polygon backs. Recording them here removes them from that
+    # screen, which is the point of its exclusion: a diagnosed source defect leaves by being diagnosed.
+    ("EST-1918-1940", "iia"):
+        "A SINGLE-EDITION OUTLIER. The 1909 edition states 6,775 km2 for `ESTHONIE`; the 1925 edition "
+        "states 47,549, and our polygon is 49,303 -- 4% from the later figure and 628% from the "
+        "earlier. 47,549 km2 is interwar Estonia including Petserimaa and Narva-taguse, so the 1925 "
+        "figure is right and the 1909 one is wrong by a factor of seven. Not a periodisation gap.",
+    ("FRS-1884-1977", "iia"):
+        "A SINGLE-EDITION OUTLIER. `CÔTE DES SOMALIS` reads 120,000 km2 in the 1909 edition (applied to "
+        "1911 and 1921) and 21,963 in 1937; our polygon is 21,481, i.e. 2% from the later figure and "
+        "82% from the earlier. French Somaliland was about 23,000 km2, so 120,000 is the error.",
+    ("LTU-1918-1940", "iia"):
+        "A SINGLE-EDITION OUTLIER, and the later editions are unanimous. `LITHUANIE` reads 150,000 km2 "
+        "in the 1909 edition and then 55,658 / 55,670 / 55,670 / 55,670 across 1925-1937; our polygon "
+        "is 55,904, within 0% of those. Interwar Lithuania was about 55,700 km2 without Vilnius, so "
+        "150,000 is the error and four editions agree against it.",
+    ("BSS-1884-1960", "iia"):
+        "A SINGLE-EDITION OUTLIER, in the other direction. `SOMALIE BRITANNIQUE` reads 176,000 km2 in "
+        "1913 and 86,000 in 1925; our polygon is 171,627, which is 2% from the EARLIER figure and 100% "
+        "from the later. British Somaliland was about 176,000 km2, so here it is the 1925 edition that "
+        "is wrong -- which is why this class cannot be handled by preferring later editions.",
+    ("ALB-1913-2025", "iia"):
+        "TWO EDITIONS CARRY A FIGURE 60% TOO LARGE, and they are not consecutive. `ALBANIE` reads "
+        "45,000 km2 at 1913, 28,500 at 1921, 45,000 again at 1925, then 27,538 for 1932/1933/1937; our "
+        "polygon is 28,624. Albania is about 28,750 km2, so the ~28,000 figures are right and 45,000 is "
+        "wrong -- appearing, disappearing and reappearing, which is the product-switch shape "
+        "(21_item_product_switches.py) applied to an area column rather than a single bad edition.",
+    ("ECU-1800-1942", "iia"):
+        "A CLAIM, NOT A DEFECT AND NOT A BOUNDARY CHANGE. `EQUATEUR` reads 307,243 km2 in four "
+        "editions, 451,180 in 1932, 306,644 in 1933 and 714,860 in 1937; our polygon is 341,715, "
+        "closest to the 307,243 cluster. 714,860 km2 is Ecuador's CLAIMED Amazon territory before the "
+        "1942 Rio Protocol, and 451,180 is an intermediate claim -- so the source is tracking what "
+        "Ecuador asserted rather than what it administered. Neither figure is an error in the source "
+        "and neither implies a missing period boundary; the polity's own span ends at 1942, which is "
+        "the year the claim was settled.",
     ("MCO-1800-2025", "iia"):
         "A LOST DECIMAL SEPARATOR, TWICE, AT TWO DIFFERENT MAGNITUDES. IIA states 21 km2 for "
         "Monaco in 1911-1932 and 149 km2 in 1933/1937; Monaco is about 2.0 km2 today and was "
