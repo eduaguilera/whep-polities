@@ -72,7 +72,8 @@ STATE = os.path.join(HERE, "state")
 OUT = os.path.join(STATE, "label_hierarchy_identity.csv")
 MATCHED = os.path.join(STATE, "matched_rows.parquet")
 
-MIN_CELLS = 3        # two cells cannot separate an identity from a coincidence
+MIN_CELLS = 3        # two cells cannot separate an identity from a coincidence, EXCEPT under
+                     # exact_identity_below_floor(): see its docstring for the one narrow exemption
 TOL = 0.02           # "sums to the whole" band; the Germany control sits at 0.000
 EXACT_SHARE = 0.80   # a verdict needs most of its cells inside TOL, not just the median
 
@@ -103,6 +104,45 @@ def classify(n_kids: int, n_present: int, median: float, exact_share: float) -> 
         # the count as a defect count.
         return "subset_all_parts" if n_present == n_kids else "subset_partial_parts"
     return "mixed"
+
+
+def is_round(v: float) -> bool:
+    """A value a coincidence could reach. Small round numbers match anything -- the floor discipline
+    used by 16_source_splices.py and 25_same_polity_overlaps.py for the same reason."""
+    a = abs(float(v))
+    return a == 0 or (a >= 10 and a % 10 == 0)
+
+
+def exact_identity_below_floor(present, klist, vals) -> bool:
+    """Keep a group with fewer than MIN_CELLS cells when a SINGLE cell is already proof.
+
+    THE CASE THIS EXISTS FOR, and it is a case the floor hid from the tool built to find it. fao1952
+    prints `Korea`, `Korea South` and `Korea North`, and in the one cell carrying all three:
+
+        commercial nitrogenous fertilizers, consumption, 1949    108.9  =  98.9 + 10.0
+
+    That settles a question two issues had left open -- whether the bare `Korea` label means the
+    peninsula or the ROK -- and it settles it inside the disputed years. But it is ONE cell, so
+    MIN_CELLS = 3 dropped it, and the group survived only as a 21-cell `n_parts_present = 1` row at a
+    median 0.53, which proves nothing on its own and should not have (issue 355).
+
+    THE FLOOR IS STILL DOING ITS JOB FOR EVERYTHING ELSE. The exemption is deliberately narrow: EVERY
+    named child present (so nothing is missing from the sum), EVERY cell exact (not a median), at least
+    two children (a single child equal to its parent is a duplicate, and one cell cannot tell that from
+    a coincidence), and the whole's value NOT round in any cell. 108.9 = 98.9 + 10.0 carries four
+    significant digits; 100 = 90 + 10 would be admitted by arithmetic alone and is worth nothing.
+    """
+    if len(present) != len(klist) or len(klist) < 2:
+        return False
+    if not all(abs(r - 1.0) <= TOL for r, _, w in vals):
+        return False
+    # AT LEAST ONE cell must have a non-round whole, not every cell. Requiring it of all of them was
+    # too strict and excluded a plainly real identity: fao1952 `British Borneo` = Brunei + North
+    # Borneo + Sarawak twice over, 770 = 35 + 295 + 440 at 1937 and 953 = 47 + 335 + 571 at 1951. The
+    # first total is round, so an all() dropped the pair -- while a three-term sum landing exactly in
+    # two independent years is much stronger evidence than the single cell this exemption was written
+    # for. The guard is still load-bearing: it is what keeps a lone 100 = 90 + 10 out.
+    return any(not is_round(w) for _, _, w in vals)
 
 
 def build(matched: str) -> list[dict]:
@@ -147,16 +187,16 @@ def build(matched: str) -> list[dict]:
                 if w == 0:                            # a zero whole makes the ratio meaningless
                     continue
                 key = tuple(sorted(pr._lab.unique()))
-                groups[key].append((float(pr.value.sum()) / w, str(gg["item"].iloc[0])))
+                groups[key].append((float(pr.value.sum()) / w, str(gg["item"].iloc[0]), w))
 
             for present, vals in sorted(groups.items()):
-                if len(vals) < MIN_CELLS:
+                if len(vals) < MIN_CELLS and not exact_identity_below_floor(present, klist, vals):
                     continue
-                ratios = sorted(v for v, _ in vals)
+                ratios = sorted(v for v, _, _ in vals)
                 mid = ratios[len(ratios) // 2] if len(ratios) % 2 else (
                     ratios[len(ratios) // 2 - 1] + ratios[len(ratios) // 2]) / 2
                 exact = sum(1 for r in ratios if abs(r - 1.0) <= TOL)
-                items = sorted({i for _, i in vals})
+                items = sorted({i for _, i, _ in vals})
                 rows.append({
                     "source": src,
                     "whole_label": whole,
@@ -202,8 +242,9 @@ def main() -> int:
         return 0
     rows = build(MATCHED)
     by = collections.Counter(r["verdict"] for r in rows)
-    print(f"{len(rows)} prefix-hierarchy group(s) with at least {MIN_CELLS} cells carrying the whole "
-          f"and at least one part")
+    sub = sum(1 for r in rows if int(r["cells"]) < MIN_CELLS)
+    print(f"{len(rows)} prefix-hierarchy group(s) carrying the whole and at least one part, with at "
+          f"least {MIN_CELLS} cells or ({sub}) a single exact full-partition identity")
     for v, n in sorted(by.items()):
         print(f"  {v:34} {n}")
     for r in rows:

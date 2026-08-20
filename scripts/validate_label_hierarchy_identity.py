@@ -41,6 +41,14 @@ BASELINE = {
      "french north africa algeria | french north africa morocco | french north africa tunisia"):
         (4, 4, "partition"),
     ("iia", "ethiopia", "ethiopia pdr"): (3, 3, "duplicate"),
+    # A SINGLE cell, admitted below the generator's floor because it is already proof: 108.9 = 98.9 +
+    # 10.0, four significant digits, in the exact years two issues had left undecided (#355, #407).
+    ("fao1952", "korea", "korea north | korea south"): (1, 1, "partition"),
+    # Two cells, both exact three-term sums: 770 = 35 + 295 + 440 (1937) and 953 = 47 + 335 + 571
+    # (1951). Also below the generator's floor, and also admitted as already proof.
+    ("fao1952", "british borneo",
+     "british borneo brunei | british borneo north borneo | british borneo sarawak"):
+        (2, 2, "partition"),
 }
 
 
@@ -87,7 +95,17 @@ def main() -> int:
             fails.append(f"{who}: unparseable numeric ({e})")
             continue
         if cells < tool.MIN_CELLS:
-            fails.append(f"{who}: cells {cells} below MIN_CELLS {tool.MIN_CELLS}")
+            # The generator admits ONE narrow exemption to its own floor: a single cell that is
+            # already proof -- every named child present, at least two of them, the sum exact, and the
+            # whole not a round number (issue 355's `Korea` = `Korea South` + `Korea North`,
+            # 108.9 = 98.9 + 10.0). Re-derived here rather than trusted, so a hand-added sub-floor row
+            # cannot borrow the exemption without meeting it.
+            ok = (npp == nk >= 2 and exact == cells
+                  and abs(mid - 1.0) <= tool.TOL and r["verdict"] == "partition")
+            if not ok:
+                fails.append(f"{who}: cells {cells} below MIN_CELLS {tool.MIN_CELLS} and this row does "
+                             f"not meet the exact-full-partition exemption (all {nk} kids present, "
+                             f"every cell exact, verdict `partition`)")
         if not 0 <= exact <= cells:
             fails.append(f"{who}: exact_cells {exact} outside 0..{cells}")
         if not lo <= mid <= hi:
