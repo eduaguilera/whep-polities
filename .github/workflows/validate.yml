@@ -482,6 +482,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_era_shift_verdicts.py
 
+      # A layer-B nutrient series that consistently publishes the SMALLEST of several raw materials
+      # the source prints side by side. Issue 379 gates raw-product switching on OSCILLATION, which a
+      # series that never switches cannot trigger — so 7 of these 8 are invisible to it. spain/p reads
+      # 5,400 t of phosphate rock while the same page prints 999,607 t of superphosphate, 15/15 cells;
+      # japan/p reaches 3138x. The count is NOT pinned: the defect is fixable here, and a correct
+      # remedy empties the table and collapses its denominator too, so any floor would fail the fix.
+      - name: Sources — recorded component under-selections must still pick a minor material
+        if: '!cancelled()'
+        run: python3 scripts/validate_component_underselection.py
       # A published 0 that the source's reporting GRID cannot distinguish from a small positive
       # value. A 1000-grid cannot express 400, so it rounds to 0 and the panel shows "none". The
       # criterion is min_nonzero == grid — the quantity must live at the grid's resolution floor,

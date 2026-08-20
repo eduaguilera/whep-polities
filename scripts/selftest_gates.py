@@ -3591,6 +3591,41 @@ def mutate_gridzero_dated_year_dropped(root, gpd, make_valid, affinity):
     return (f"{hit['source']}/{hit['country']}/{hit['item']} zero_years shortened to {len(kept)} "
             f"while zeros_dated stays {hit['zeros_dated']}")
 
+
+def mutate_underselection_picked_is_the_maximum(root, gpd, make_valid, affinity):
+    """Record a series whose picked material IS the same-year maximum.
+
+    `component_underselection.csv` records `iia` nutrient series that consistently publish the SMALLEST
+    of several materials the source prints side by side (issue 490). `spain / p` reads 5,400 t of
+    phosphate rock while the same page prints 999,607 t of calcium superphosphate, 15 of 15 cells.
+
+    The condition that a picked value be under HALF the same-year maximum is the finding itself, and it
+    is what separates this class from issue 379's oscillation gate: a series that picks the largest
+    material, or a middling one, is not under-selecting anything. Without the condition the table would
+    admit every nutrient series in the panel while asserting nothing.
+
+    The mutation sets one row's picked value equal to its own maximum and updates `worst_ratio` to 1 to
+    match, so the arithmetic arm stays quiet and only the under-selection arm can see it -- the counts,
+    the share, the floor and the vocabulary are all left untouched. It picks the row by the largest
+    ratio rather than by name, since which series is worst moves when the panel is rebuilt.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/component_underselection.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    if not rows:
+        raise AssertionError("the table is empty, so this mutation has nothing to weaken and the "
+                             "case would pass vacuously")
+    hit = max(rows, key=lambda r: float(r["worst_ratio"]))
+    hit["worst_picked_value"] = hit["worst_max_value"]
+    hit["worst_ratio"] = "1"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"{hit['label']}/{hit['item']} picked value raised to its own same-year maximum "
+            f"({float(hit['worst_max_value']):,.0f}), so it under-selects nothing")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -3754,6 +3789,14 @@ CASES = (
         "a provably-wrong cell — 0 in one yearbook volume, a real value in another — reclassified "
         "as an ordinary revision, with a revised row traded the other way so both ceilings still "
         "pass and only the class-shape check can see it",
+    ),
+    (
+        "validate_component_underselection.py",
+        mutate_underselection_picked_is_the_maximum,
+        "That is the finding itself",
+        "a series whose picked material is the same-year MAXIMUM rather than a minor one, with its "
+        "ratio updated to match so the arithmetic stays consistent and only the under-selection "
+        "condition can see it",
     ),
     (
         "validate_grid_ambiguous_zeros.py",
@@ -4435,6 +4478,10 @@ WRITABLE = {
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+    ),
+    # The case rewrites component_underselection.csv in place (it raises one picked value).
+    "validate_component_underselection.py": (
+        "pipelines/polity-autoimprove/state/component_underselection.csv",
     ),
     # Both cases rewrite grid_ambiguous_zeros.csv in place (one raises a floor, one shortens a list).
     "validate_grid_ambiguous_zeros.py": (
