@@ -272,6 +272,20 @@ def main() -> int:
                          "`italian libya` while the LABEL is mixed, so a label-level gate refuses a "
                          "span that is clean. Requires state/assertions.json, which is gitignored, "
                          "so the OUTPUT is tracked and CI reads that.")
+    # SAFE ONLY NOW, AND ONLY PARTIAL. A staleness mode on this tool used to be a hazard rather than a
+    # help: a default run overwrote 61 of 302 recorded fingerprints with `unknown`, so `--check` would
+    # have reported STALE and invited someone to destroy them (issue 472). With the merge no longer
+    # erasing measurements it did not take, a default run is IDEMPOTENT -- it reproduces the tracked
+    # table byte for byte.
+    #
+    # But idempotent is not the same as fully regenerated, and the difference is the check's reach.
+    # A default run recomputes 241 of the 335 rows; the other 94 hold a measurement this run does not
+    # cover and are carried forward UNCHECKED. Verified by setting `territory_signal` on all 335 rows
+    # and re-checking: 204 are caught. The 37-row gap is not a blind spot -- 37 rows legitimately read
+    # `mixed`, so the mutation was a no-op there, and 241 - 37 = 204 closes exactly. So the guard
+    # covers 241 rows and cannot see 94, which is worth having and worth not overstating.
+    ap.add_argument("--check", action="store_true",
+                    help="exit 1 if the 204 rows a default run recomputes differ from the tracked table")
     ap.add_argument("--write", metavar="CSV", nargs="?", const=DEFAULT_PROV,
                     help="re-derive the TRACKED provenance table (default: %(const)s). The "
                          "classification the gate enforces is computed HERE, so writing it from "
@@ -519,7 +533,7 @@ def main() -> int:
             print(f"   CLEAN IN THIS SPAN: {top_label} at {100 * top / len(fp):.0f}%")
         return 0
 
-    if args.write:
+    if args.write or args.check:
         # Re-derive the tracked table: keep every column the mapping supplies, and overwrite the
         # measured ones from the fingerprints computed above.
         signal_by_label = {}
@@ -557,32 +571,59 @@ def main() -> int:
                 sig, note = "unknown", "no raw label matches"
             signal_by_label[label] = (sig, note, scored[0][1] if scored else "",
                                       f"{scored[0][0] / _n:.2f}" if scored else "")
-        with open(args.write, newline="", encoding="utf-8") as fh:
+        # `--write PATH` MERGES into an existing table, so a fresh path had nowhere to start from and
+        # raised FileNotFoundError -- which meant the only way to see what a run would produce was to
+        # write over the tracked copy. Fall back to the tracked table as the base so the output can be
+        # diffed before anything is replaced (issue 472).
+        base = args.write if (args.write and os.path.exists(args.write)) else DEFAULT_PROV
+        with open(base, newline="", encoding="utf-8") as fh:
             table = list(csv.DictReader(fh))
             fields = list(table[0])
         for col in ("territory_signal", "fingerprint_note", "dominant_raw_label", "dominant_share"):
             if col not in fields:
                 fields.append(col)
         changed = 0
+        kept = 0
         for r in table:
             lab = r.get("layer_b_label") or ""
             got = signal_by_label.get(lab)
             if not got:
-                if r.get("territory_signal") != "unknown":
+                # A LABEL THIS RUN DID NOT MEASURE KEEPS WHATEVER WAS RECORDED. Overwriting it with
+                # `unknown` treats "I did not measure it this time" as "it is unknown", and it
+                # destroyed 61 of 302 recorded fingerprints on a single default run (issue 472):
+                # `albania` went from `albania 100% / clean` to `not measured / unknown` while KEEPING
+                # `dominant_raw_label=albania, 1.00`, leaving the row contradicting itself. Which
+                # labels a run measures depends on `--min-rows` and on the raw extract's reach, so a
+                # narrower run must not be able to erase a wider one's results.
+                if not (r.get("fingerprint_note") or "").strip():
+                    r["territory_signal"] = "unknown"
+                    r["fingerprint_note"] = "label not measured (absent, or under --min-rows)"
                     changed += 1
-                r["territory_signal"] = "unknown"
-                r["fingerprint_note"] = "label not measured (absent, or under --min-rows)"
+                else:
+                    kept += 1
                 continue
             sig, note, dom, share = got
             if r.get("territory_signal") != sig:
                 changed += 1
             r["territory_signal"], r["fingerprint_note"] = sig, note
             r["dominant_raw_label"], r["dominant_share"] = dom, share
+        if args.check:
+            with open(DEFAULT_PROV, newline="", encoding="utf-8") as fh:
+                have = list(csv.DictReader(fh))
+            want = [{k: str(v) for k, v in r.items()} for r in table]
+            if have != want:
+                print(f"STALE {os.path.basename(DEFAULT_PROV)}: {changed} signal(s) would change; "
+                      f"rerun with --write", file=sys.stderr)
+                return 1
+            print(f"table is current: the {len(table) - kept} row(s) this run recomputes match the "
+                  f"tracked table; {kept} row(s) it does not cover were carried forward unchecked")
+            return 0
         with open(args.write, "w", newline="", encoding="utf-8") as fh:
             w = csv.DictWriter(fh, fieldnames=fields)
             w.writeheader()
             w.writerows(table)
-        print(f"wrote {len(table)} rows to {args.write}; {changed} signals changed")
+        print(f"wrote {len(table)} rows to {args.write}; {changed} signals changed, "
+              f"{kept} existing measurement(s) kept because this run did not cover them")
         return 0
 
     if args.label:
