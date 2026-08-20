@@ -56,6 +56,12 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATE = os.path.join(REPO, "pipelines/polity-autoimprove/state")
 ERRORS = os.path.join(STATE, "data_errors.csv")
 CONVENTIONS = os.path.join(STATE, "source_conventions.csv")
+# The label-provenance table is the SECOND place a claim about a label is likely already recorded, and
+# covering only data_errors is why this tool did not prevent its own author from filing whep-polities#483
+# as new: `kwantung` was already there as `shares_target / redirected`, assigned to China, mainland, with
+# china at 62% dominance. I had read that file earlier the same session. A lookup that covers one
+# registry teaches you to trust it for all of them, which is worse than no lookup for the ones it omits.
+PROVENANCE = os.path.join(STATE, "iia_label_provenance.csv")
 
 # A scope cell that names a count or defers to prose instead of listing members. Coverage cannot be
 # decided from these, which is exactly why they must not read as "no match".
@@ -142,6 +148,20 @@ def main() -> int:
         elif any(v is True for v in vals):
             matches.append((r, verdicts))  # every constrained dimension is covered
 
+    # --- label provenance: does a raw or layer-B label already have a recorded classification? ---
+    # TOKEN matching, not substring. A substring test made `--label china` return `cochinchina` and
+    # `indochina` -- both contain "china" and neither has anything to do with the query. Same
+    # naming-heuristic trap as assuming a delimiter or reading "share" inside "shared".
+    prov = []
+    if a.label and os.path.exists(PROVENANCE):
+        want = set(norm(a.label).split())
+        for r in csv.DictReader(open(PROVENANCE, newline="")):
+            for field in ("raw_label", "layer_b_label", "assigned_modern"):
+                have = set(norm(r.get(field)).split())
+                if have and (want <= have or have <= want):
+                    prov.append((field, r))
+                    break
+
     given = {k: v for k, v in (("source", a.source), ("label", a.label),
                                ("item", a.item), ("year", a.year)) if v}
     print(f"query: {given}")
@@ -158,6 +178,26 @@ def main() -> int:
         for r, v in indet:
             why = ", ".join(f"{k} unresolved" for k, x in v.items() if x == UNRESOLVED) or "partial"
             print(f"  {r['issue_id']}  [{r['status']}]  {r['year_min']}-{r['year_max']}  ({why})")
+    if a.label and not prov and os.path.exists(PROVENANCE):
+        print(f"\nLABEL PROVENANCE -- no row matches {a.label!r} BY NAME, which is NOT proof the "
+              f"territory is unrecorded.")
+        print("  The table keys on the raw label's own spelling, and a territory is often filed under a")
+        print("  different one: KARAFUTO is recorded as `japan: sakhalin`, so `--label karafuto` finds")
+        print("  nothing while the routing is documented. Grep the table for the territory's other")
+        print("  names before concluding it is absent:")
+        print(f"    {os.path.relpath(PROVENANCE, REPO)}")
+    if prov:
+        print(f"\nLABEL PROVENANCE -- this label already carries a recorded classification ({len(prov)}):")
+        for field, r in prov[:6]:
+            print(f"  matched on {field}: raw={r.get('raw_label')!r} -> layer_b={r.get('layer_b_label')!r}"
+                  f" (assigned {r.get('assigned_modern')!r})")
+            print(f"    kind={r.get('kind')!r} territory_signal={r.get('territory_signal')!r} "
+                  f"mixing_observed={r.get('mixing_observed')!r}")
+            print(f"    fingerprint: {r.get('fingerprint_note')!r} "
+                  f"dominant={r.get('dominant_raw_label')!r} @ {r.get('dominant_share')!r}")
+        print("  A classification here means the ROUTING is known. It does NOT quantify how many cells")
+        print("  are affected, so a measured count can still be new -- but say what was already recorded.")
+
     if not matches and not indet:
         print("no entry can cover this query on the dimensions given.")
         print("That is a definite NO only for the dimensions you constrained -- narrow queries")
