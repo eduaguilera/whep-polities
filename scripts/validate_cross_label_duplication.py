@@ -22,6 +22,14 @@ turns the screen into a false-positive generator:
      whose direction is independently established, and it runs the other way (issue 433). Its block
      swings 35x, so it has no level to match; blocks that do swing 1.2x-2.4x.
 
+ALL 5 ARMS WERE VERIFIED TO FIRE on 2026-08-20, by mutating this table to trigger each in turn.
+An arm that cannot fire passes every run while asserting nothing, and this repo has shipped three of
+those (issues 407, 412, 420), so "the gate is green" is only meaningful once each arm is known live.
+Verified: a block below the distinctness floor (A); a non-contiguous block (B); a pair that does
+not differ outside its block (C); a direction claimed on a block with no level (D, permanent
+case); a smaller_label contradicting its own ratio (E, which shipped INVERTED in all six rows and
+is why arm E exists at all).
+
 The COUNT is printed, not pinned: a new instance is a finding, not a regression, and pinning it would
 make an honest discovery fail CI.
 """

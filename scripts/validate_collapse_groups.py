@@ -23,6 +23,13 @@ A label-pair screen is therefore not a partial view of this defect; it is very n
 
 WHAT IS PINNED, AND WHAT DELIBERATELY IS NOT. The group counts above are a routine SCREENING total:
 they move whenever the panel or the matcher legitimately moves, and a gate that pinned them would fail
+ALL 5 ARMS WERE VERIFIED TO FIRE on 2026-08-20, by mutating this table to trigger each in turn.
+An arm that cannot fire passes every run while asserting nothing, and this repo has shipped three of
+those (issues 407, 412, 420), so "the gate is green" is only meaningful once each arm is known live.
+Verified: an unknown verdict (A); a mean outside its group's range (B, permanent case); an anchor
+rewritten as agreement (C, permanent case); a composition contradicting n_labels (D); a
+duplicate_class contradicting n_indicators (E, permanent case).
+
 on every honest regeneration. They are printed, not asserted. What IS pinned both ways is the handful of
 CURATED anchors below -- the specific groups quoted in issues 411, 449 and 451 -- because those are
 findings a human confirmed, and if one silently changes its value the issue text has gone stale.
