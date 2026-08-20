@@ -51,7 +51,12 @@ QUEUE = os.path.join(STATE, "assertions.json")
 # Orphans with no overlapping queue key at all. Both are single-year spans whose label|source was
 # re-split into ranges that exclude them, so there is genuinely nothing to carry prior work onto.
 BASELINE_UNCARRIED = frozenset({
-    "ethiopia|iia|1938-1938",
+    # `ethiopia|iia|1938-1938` WAS here and is not any more, which is what this baseline exists to
+    # force someone to say out loud. It is now `matched`, not carried: the current assertion set
+    # carries that exact key (candidate ETH-1936-1941, 1 row, pending), so there is nothing to carry
+    # a verdict TO -- the verdict lands on its own key again. The change came from regenerating
+    # `assertions.json` with `--period-col` (issue 434, PR #458), which moved spans and reunited this
+    # judgement with its assertion. `ethiopia|iia` now carries 1932-1932, 1938-1938 and 1945-1945.
     "malaysia|iia|1945-1945",
 })
 

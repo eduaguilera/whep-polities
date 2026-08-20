@@ -12,8 +12,8 @@ algeria|mitchell|1919-1960,algeria,mitchell,1919-1960,matched,0,,confirm
 algeria|mitchell|1920-1960,algeria,mitchell,1920-1960,carried,1,algeria|mitchell|1919-1960@1.0000,confirm
 american samoa|fao1952|1937-1951,american samoa,fao1952,1937-1951,matched,0,,confirm
 american samoa|iia|1930-1934,american samoa,iia,1930-1934,matched,0,,confirm
-angola|iia|1913-1945,angola,iia,1913-1945,carried,1,angola|iia|1930-1945@0.4848,confirm
-angola|iia|1930-1945,angola,iia,1930-1945,matched,0,,confirm
+angola|iia|1913-1945,angola,iia,1913-1945,matched,0,,confirm
+angola|iia|1930-1945,angola,iia,1930-1945,carried,1,angola|iia|1913-1945@1.0000,confirm
 angola|mitchell|1908-1960,angola,mitchell,1908-1960,matched,0,,confirm
 antigua and barbuda|iia|1909-1945,antigua and barbuda,iia,1909-1945,matched,0,,confirm
 argentina|fao1952|1937-1951,argentina,fao1952,1937-1951,matched,0,,confirm
@@ -28,14 +28,14 @@ austria|iia|1918-1918,austria,iia,1918-1918,matched,0,,confirm
 austria|iia|1919-1945,austria,iia,1919-1945,matched,0,,confirm
 austria|juan|1851-1917,austria,juan,1851-1917,matched,0,,confirm
 austria|juan|1919-1960,austria,juan,1919-1960,matched,0,,confirm
-azerbaijan|iia|1930-1940,azerbaijan,iia,1930-1940,matched,0,,confirm
+azerbaijan|iia|1930-1940,azerbaijan,iia,1930-1940,carried,1,azerbaijan|iia|1929-1940@1.0000,confirm
 barbados|mitchell|1850-1960,barbados,mitchell,1850-1960,matched,0,,confirm
 basutoland|fao1952|1937-1951,basutoland,fao1952,1937-1951,matched,0,,confirm
 bechuanaland|fao1952|1937-1951,bechuanaland,fao1952,1937-1951,matched,0,,confirm
 belgian congo|fao1952|1937-1951,belgian congo,fao1952,1937-1951,matched,0,,confirm
 belgium|fao1952|1937-1951,belgium,fao1952,1937-1951,matched,0,,confirm
 belgium|iia|1909-1945,belgium,iia,1909-1945,matched,0,,confirm
-benin|iia|1930-1945,benin,iia,1930-1945,matched,0,,confirm
+benin|iia|1930-1945,benin,iia,1930-1945,carried,1,benin|iia|1929-1945@1.0000,confirm
 benin|mitchell|1921-1959,benin,mitchell,1921-1959,matched,0,,confirm
 berlin|fao1952|1949-1949,berlin,fao1952,1949-1949,matched,0,,confirm
 bermuda|fao1952|1937-1951,bermuda,fao1952,1937-1951,matched,0,,confirm
@@ -60,7 +60,7 @@ british togoland|fao1952|1937-1951,british togoland,fao1952,1937-1951,matched,0,
 british virgin islands|iia|1909-1925,british virgin islands,iia,1909-1925,matched,0,,confirm
 british west indies bahama islands|fao1952|1937-1951,british west indies bahama islands,fao1952,1937-1951,matched,0,,confirm
 british west indies barbados|fao1952|1935-1951,british west indies barbados,fao1952,1935-1951,matched,0,,confirm
-british west indies grenada|fao1952|1938-1951,british west indies grenada,fao1952,1938-1951,carried,1,british west indies grenada|fao1952|1949-1951@0.2143,confirm
+british west indies grenada|fao1952|1938-1951,british west indies grenada,fao1952,1938-1951,matched,0,,confirm
 british west indies leeward islands|fao1952|1937-1951,british west indies leeward islands,fao1952,1937-1951,matched,0,,confirm
 british west indies st vincent|fao1952|1939-1951,british west indies st vincent,fao1952,1939-1951,matched,0,,confirm
 british west indies trinidad and tobago|fao1952|1937-1951,british west indies trinidad and tobago,fao1952,1937-1951,matched,0,,confirm
@@ -88,7 +88,7 @@ chile|mitchell|1902-1960,chile,mitchell,1902-1960,matched,0,,confirm
 china 22 provinces|fao1952|1947-1948,china 22 provinces,fao1952,1947-1948,matched,0,,uncertain
 china 22 provinces|fao1952|1949-1949,china 22 provinces,fao1952,1949-1949,matched,0,,uncertain
 china 22 provinces|fao1952|1950-1951,china 22 provinces,fao1952,1950-1951,matched,0,,uncertain
-china mainland|iia|1922-1931,china mainland,iia,1922-1931,matched,0,,confirm
+china mainland|iia|1922-1931,china mainland,iia,1922-1931,carried,1,china mainland|iia|1922-1932@1.0000,confirm
 china mainland|iia|1932-1944,china mainland,iia,1932-1944,matched,0,,confirm
 china mainland|iia|1933-1945,china mainland,iia,1933-1945,carried,2,china mainland|iia|1932-1944@0.9231;china mainland|iia|1945-1945@0.0769,confirm
 china mainland|mitchell|1932-1944,china mainland,mitchell,1932-1944,matched,0,,confirm
@@ -104,14 +104,14 @@ china taiwan|fao1952|1948-1951,china taiwan,fao1952,1948-1951,matched,0,,confirm
 colombia|fao1952|1937-1951,colombia,fao1952,1937-1951,matched,0,,confirm
 colombia|juan|1922-1960,colombia,juan,1922-1960,matched,0,,confirm
 colombia|mitchell|1922-1960,colombia,mitchell,1922-1960,matched,0,,confirm
-congo|iia|1919-1945,congo,iia,1919-1945,matched,0,,confirm
+congo|iia|1919-1945,congo,iia,1919-1945,carried,1,congo|iia|1913-1945@1.0000,confirm
 costa rica|juan|1900-1960,costa rica,juan,1900-1960,matched,0,,confirm
 cuba|fao1952|1937-1951,cuba,fao1952,1937-1951,matched,0,,confirm
 cuba|mitchell|1850-1960,cuba,mitchell,1850-1960,matched,0,,confirm
 cyprus|fao1952|1937-1951,cyprus,fao1952,1937-1951,matched,0,,confirm
 cyprus|iia|1909-1945,cyprus,iia,1909-1945,matched,0,,confirm
 cyprus|mitchell|1897-1960,cyprus,mitchell,1897-1960,matched,0,,confirm
-czech republic|iia|1919-1937,czech republic,iia,1919-1937,matched,0,,confirm
+czech republic|iia|1919-1937,czech republic,iia,1919-1937,carried,1,czech republic|iia|1919-1938@1.0000,confirm
 czech republic|iia|1938-1944,czech republic,iia,1938-1944,matched,0,,uncertain
 czech republic|mitchell|1946-1946,czech republic,mitchell,1946-1946,carried,1,czech republic|mitchell|1945-1946@1.0000,confirm
 czechoslovakia|fao1952|1947-1951,czechoslovakia,fao1952,1947-1951,matched,0,,confirm
@@ -124,11 +124,11 @@ denmark the faeroes|fao1952|1935-1951,denmark the faeroes,fao1952,1935-1951,matc
 denmark|fao1952|1937-1951,denmark,fao1952,1937-1951,matched,0,,confirm
 denmark|juan|1866-1919,denmark,juan,1866-1919,matched,0,,confirm
 denmark|juan|1920-1960,denmark,juan,1920-1960,matched,0,,confirm
-djibouti|iia|1929-1945,djibouti,iia,1929-1945,carried,1,djibouti|iia|1930-1945@0.9412,confirm
+djibouti|iia|1929-1945,djibouti,iia,1929-1945,matched,0,,confirm
 dominican republic|fao1952|1937-1951,dominican republic,fao1952,1937-1951,matched,0,,confirm
 dominican republic|mitchell|1901-1960,dominican republic,mitchell,1901-1960,matched,0,,confirm
 dominica|iia|1909-1944,dominica,iia,1909-1944,matched,0,,confirm
-dr congo|iia|1915-1945,dr congo,iia,1915-1945,matched,0,,confirm
+dr congo|iia|1915-1945,dr congo,iia,1915-1945,carried,1,dr congo|iia|1913-1945@1.0000,confirm
 dr congo|mitchell|1910-1959,dr congo,mitchell,1910-1959,matched,0,,confirm
 ecuador|juan|1900-1941,ecuador,juan,1900-1941,matched,0,,confirm
 ecuador|juan|1942-1960,ecuador,juan,1942-1960,matched,0,,confirm
@@ -145,12 +145,12 @@ el salvador|iia|1910-1944,el salvador,iia,1910-1944,matched,0,,confirm
 el salvador|mitchell|1894-1960,el salvador,mitchell,1894-1960,matched,0,,confirm
 equatorial guinea|iia|1910-1945,equatorial guinea,iia,1910-1945,matched,0,,confirm
 eritrea|fao1952|1937-1951,eritrea,fao1952,1937-1951,matched,0,,confirm
-eritrea|iia|1922-1937,eritrea,iia,1922-1937,matched,0,,confirm
+eritrea|iia|1922-1937,eritrea,iia,1922-1937,carried,1,eritrea|iia|1922-1938@1.0000,confirm
 estonia|iia|1944-1944,estonia,iia,1944-1944,carried,1,estonia|iia|1940-1944@1.0000,confirm
 estonia|juan|1919-1939,estonia,juan,1919-1939,matched,0,,confirm
 ethiopia|fao1952|1937-1937,ethiopia,fao1952,1937-1937,matched,0,,reroute
 ethiopia|fao1952|1948-1951,ethiopia,fao1952,1948-1951,matched,0,,confirm
-ethiopia|iia|1938-1938,ethiopia,iia,1938-1938,uncarried,0,,reroute
+ethiopia|iia|1938-1938,ethiopia,iia,1938-1938,matched,0,,reroute
 falkland islands|fao1952|1937-1951,falkland islands,fao1952,1937-1951,matched,0,,confirm
 falkland islands|iia|1914-1919,falkland islands,iia,1914-1919,matched,0,,confirm
 fiji|iia|1909-1945,fiji,iia,1909-1945,matched,0,,confirm
@@ -165,20 +165,20 @@ france|fao1952|1937-1951,france,fao1952,1937-1951,matched,0,,confirm
 france|iia|1919-1945,france,iia,1919-1945,matched,0,,confirm
 france|juan|1850-1870,france,juan,1850-1870,matched,0,,confirm
 french cameroons|fao1952|1937-1951,french cameroons,fao1952,1937-1951,matched,0,,confirm
-french equat africa|fao1952|1938-1951,french equat africa,fao1952,1938-1951,carried,1,french equat africa|fao1952|1939-1951@0.9286,confirm
-french guiana|fao1952|1937-1938,french guiana,fao1952,1937-1938,carried,1,french guiana|fao1952|1937-1937@0.5000,confirm
+french equat africa|fao1952|1938-1951,french equat africa,fao1952,1938-1951,matched,0,,confirm
+french guiana|fao1952|1937-1938,french guiana,fao1952,1937-1938,matched,0,,confirm
 french guiana|fao1952|1949-1951,french guiana,fao1952,1949-1951,matched,0,,confirm
 french guiana|iia|1909-1945,french guiana,iia,1909-1945,matched,0,,confirm
 french morocco|fao1952|1937-1951,french morocco,fao1952,1937-1951,matched,0,,confirm
 french oceania|fao1952|1937-1951,french oceania,fao1952,1937-1951,matched,0,,confirm
-french polynesia|iia|1909-1937,french polynesia,iia,1909-1937,matched,0,,confirm
-french polynesia|iia|1909-1938,french polynesia,iia,1909-1938,carried,1,french polynesia|iia|1909-1937@0.9667,confirm
+french polynesia|iia|1909-1937,french polynesia,iia,1909-1937,carried,1,french polynesia|iia|1909-1938@1.0000,confirm
+french polynesia|iia|1909-1938,french polynesia,iia,1909-1938,matched,0,,confirm
 french somaliland|fao1952|1936-1951,french somaliland,fao1952,1936-1951,matched,0,,confirm
 french west africa|fao1952|1937-1951,french west africa,fao1952,1937-1951,matched,0,,confirm
-germany berlin|fao1952|1937-1937,germany berlin,fao1952,1937-1937,matched,0,,uncertain
-germany western|fao1952|1937-1937,germany western,fao1952,1937-1937,matched,0,,uncertain
+germany berlin|fao1952|1937-1937,germany berlin,fao1952,1937-1937,carried,1,germany berlin|fao1952|1937-1938@1.0000,uncertain
+germany western|fao1952|1937-1937,germany western,fao1952,1937-1937,carried,1,germany western|fao1952|1937-1938@1.0000,uncertain
 germany western|fao1952|1949-1951,germany western,fao1952,1949-1951,matched,0,,confirm
-germany|iia|1920-1937,germany,iia,1920-1937,matched,0,,confirm
+germany|iia|1920-1937,germany,iia,1920-1937,carried,1,germany|iia|1920-1938@1.0000,confirm
 germany|juan|1850-1865,germany,juan,1850-1865,matched,0,,new_polity
 germany|juan|1871-1918,germany,juan,1871-1918,matched,0,,confirm
 germany|juan|1920-1937,germany,juan,1920-1937,matched,0,,confirm
@@ -191,7 +191,7 @@ germany|juan|1950-1960,germany,juan,1950-1960,carried,1,germany|juan|1949-1960@1
 ghana|iia|1909-1945,ghana,iia,1909-1945,matched,0,,uncertain
 ghana|mitchell|1898-1956,ghana,mitchell,1898-1956,matched,0,,confirm
 gold coast and br togoland|fao1952|1938-1951,gold coast and br togoland,fao1952,1938-1951,matched,0,,confirm
-gold coast and british togoland|fao1952|1938-1951,gold coast and british togoland,fao1952,1938-1951,carried,1,gold coast and british togoland|fao1952|1949-1951@0.2143,confirm
+gold coast and british togoland|fao1952|1938-1951,gold coast and british togoland,fao1952,1938-1951,matched,0,,confirm
 gold coast|fao1952|1937-1951,gold coast,fao1952,1937-1951,matched,0,,confirm
 greece|fao1952|1947-1951,greece,fao1952,1947-1951,matched,0,,confirm
 greece|iia|1919-1945,greece,iia,1919-1945,matched,0,,confirm
@@ -215,7 +215,7 @@ haiti|juan|1900-1960,haiti,juan,1900-1960,matched,0,,confirm
 honduras|fao1952|1930-1951,honduras,fao1952,1930-1951,matched,0,,confirm
 honduras|juan|1900-1960,honduras,juan,1900-1960,matched,0,,confirm
 honduras|mitchell|1925-1960,honduras,mitchell,1925-1960,matched,0,,confirm
-hungary|iia|1920-1937,hungary,iia,1920-1937,matched,0,,confirm
+hungary|iia|1920-1937,hungary,iia,1920-1937,carried,1,hungary|iia|1920-1938@1.0000,confirm
 hungary|juan|1851-1917,hungary,juan,1851-1917,matched,0,,confirm
 hungary|juan|1920-1937,hungary,juan,1920-1937,matched,0,,confirm
 hungary|juan|1940-1943,hungary,juan,1940-1943,matched,0,,confirm
@@ -223,7 +223,7 @@ hungary|juan|1944-1946,hungary,juan,1944-1946,matched,0,,confirm
 hungary|juan|1947-1960,hungary,juan,1947-1960,matched,0,,confirm
 iceland|fao1952|1937-1951,iceland,fao1952,1937-1951,matched,0,,confirm
 india|fao1952|1949-1951,india,fao1952,1949-1951,matched,0,,confirm
-india|iia|1914-1936,india,iia,1914-1936,matched,0,,confirm
+india|iia|1914-1936,india,iia,1914-1936,carried,1,india|iia|1914-1938@1.0000,confirm
 india|mitchell|1893-1913,india,mitchell,1893-1913,matched,0,,confirm
 india|mitchell|1914-1936,india,mitchell,1914-1936,matched,0,,split_reroute
 india|mitchell|1915-1937,india,mitchell,1915-1937,carried,2,india|mitchell|1914-1936@0.9565;india|mitchell|1937-1946@0.0435,uncertain
@@ -237,7 +237,7 @@ indonesia|mitchell|1850-1944,indonesia,mitchell,1850-1944,matched,0,,confirm
 indonesia|mitchell|1889-1944,indonesia,mitchell,1889-1944,carried,1,indonesia|mitchell|1850-1944@1.0000,confirm
 indonesia|mitchell|1949-1960,indonesia,mitchell,1949-1960,matched,0,,confirm
 iran|fao1952|1937-1951,iran,fao1952,1937-1951,matched,0,,confirm
-iran|iia|1922-1945,iran,iia,1922-1945,matched,0,,confirm
+iran|iia|1922-1945,iran,iia,1922-1945,carried,1,iran|iia|1913-1945@1.0000,confirm
 iran|mitchell|1905-1960,iran,mitchell,1905-1960,matched,0,,confirm
 iraq|fao1952|1937-1951,iraq,fao1952,1937-1951,matched,0,,confirm
 iraq|mitchell|1923-1931,iraq,mitchell,1923-1931,matched,0,,confirm
@@ -263,7 +263,7 @@ japan|mitchell|1895-1944,japan,mitchell,1895-1944,matched,0,,confirm
 japan|mitchell|1945-1951,japan,mitchell,1945-1951,matched,0,,confirm
 japan|mitchell|1952-1960,japan,mitchell,1952-1960,matched,0,,confirm
 kenya|fao1952|1937-1951,kenya,fao1952,1937-1951,matched,0,,confirm
-kenya|iia|1930-1945,kenya,iia,1930-1945,matched,0,,confirm
+kenya|iia|1930-1945,kenya,iia,1930-1945,carried,1,kenya|iia|1929-1945@1.0000,confirm
 kenya|mitchell|1926-1960,kenya,mitchell,1926-1960,matched,0,,confirm
 korea south|fao1952|1948-1951,korea south,fao1952,1948-1951,matched,0,,confirm
 korea|mitchell|1909-1944,korea,mitchell,1909-1944,matched,0,,confirm
@@ -279,7 +279,7 @@ libya|iia|1934-1942,libya,iia,1934-1942,matched,0,,confirm
 libya|iia|1943-1945,libya,iia,1943-1945,matched,0,,confirm
 lithuania|juan|1919-1939,lithuania,juan,1919-1939,matched,0,,confirm
 luxembourg|fao1952|1937-1951,luxembourg,fao1952,1937-1951,matched,0,,confirm
-madagascar|fao1952|1939-1951,madagascar,fao1952,1939-1951,matched,0,,confirm
+madagascar|fao1952|1939-1951,madagascar,fao1952,1939-1951,carried,1,madagascar|fao1952|1938-1951@1.0000,confirm
 madagascar|iia|1911-1945,madagascar,iia,1911-1945,matched,0,,confirm
 madagascar|mitchell|1905-1960,madagascar,mitchell,1905-1960,matched,0,,confirm
 makatea|fao1952|1949-1951,makatea,fao1952,1949-1951,matched,0,,confirm
@@ -289,7 +289,7 @@ malaysia|iia|1909-1944,malaysia,iia,1909-1944,matched,0,,reroute
 malaysia|iia|1945-1945,malaysia,iia,1945-1945,uncarried,0,,uncertain
 mali|mitchell|1920-1959,mali,mitchell,1920-1959,matched,0,,confirm
 malta|iia|1909-1945,malta,iia,1909-1945,matched,0,,confirm
-marcinique|fao1952|1938-1951,marcinique,fao1952,1938-1951,carried,1,marcinique|fao1952|1949-1951@0.2143,confirm
+marcinique|fao1952|1938-1951,marcinique,fao1952,1938-1951,matched,0,,confirm
 martinique|mitchell|1850-1960,martinique,mitchell,1850-1960,matched,0,,confirm
 mauritius|iia|1909-1945,mauritius,iia,1909-1945,matched,0,,confirm
 mauritius|mitchell|1856-1960,mauritius,mitchell,1856-1960,matched,0,,confirm
@@ -299,18 +299,18 @@ mexico|mitchell|1877-1960,mexico,mitchell,1877-1960,matched,0,,confirm
 montserrat|iia|1909-1945,montserrat,iia,1909-1945,matched,0,,confirm
 morocco|iia|1911-1945,morocco,iia,1911-1945,matched,0,,confirm
 morocco|mitchell|1915-1957,morocco,mitchell,1915-1957,matched,0,,confirm
-mozambique|iia|1922-1937,mozambique,iia,1922-1937,matched,0,,confirm
+mozambique|iia|1922-1937,mozambique,iia,1922-1937,carried,1,mozambique|iia|1913-1937@1.0000,confirm
 mozambique|mitchell|1901-1960,mozambique,mitchell,1901-1960,matched,0,,confirm
-myanmar|iia|1932-1945,myanmar,iia,1932-1945,carried,1,myanmar|iia|1933-1945@0.9286,confirm
-myanmar|iia|1933-1945,myanmar,iia,1933-1945,matched,0,,confirm
+myanmar|iia|1932-1945,myanmar,iia,1932-1945,matched,0,,confirm
+myanmar|iia|1933-1945,myanmar,iia,1933-1945,carried,1,myanmar|iia|1932-1945@1.0000,confirm
 myanmar|mitchell|1885-1960,myanmar,mitchell,1885-1960,matched,0,,confirm
 natal|mitchell|1852-1894,natal,mitchell,1852-1894,matched,0,,confirm
 neth west indies|fao1952|1949-1951,neth west indies,fao1952,1949-1951,matched,0,,confirm
 netherlands w indies|fao1952|1936-1951,netherlands w indies,fao1952,1936-1951,matched,0,,confirm
-netherlandswest indies|fao1952|1938-1951,netherlandswest indies,fao1952,1938-1951,carried,1,netherlandswest indies|fao1952|1949-1951@0.2143,confirm
+netherlandswest indies|fao1952|1938-1951,netherlandswest indies,fao1952,1938-1951,matched,0,,confirm
 netherlands|fao1952|1937-1951,netherlands,fao1952,1937-1951,matched,0,,confirm
 netherlands|iia|1909-1945,netherlands,iia,1909-1945,matched,0,,confirm
-new caledonia|iia|1913-1945,new caledonia,iia,1913-1945,carried,1,new caledonia|iia|1922-1945@0.7273,confirm
+new caledonia|iia|1913-1945,new caledonia,iia,1913-1945,matched,0,,confirm
 new guinea|fao1952|1937-1949,new guinea,fao1952,1937-1949,matched,0,,confirm
 new guinea|fao1952|1950-1951,new guinea,fao1952,1950-1951,matched,0,,uncertain
 new hebrides|fao1952|1937-1951,new hebrides,fao1952,1937-1951,matched,0,,confirm
@@ -379,11 +379,11 @@ saint vincent and the grenadines|iia|1909-1945,saint vincent and the grenadines,
 samoa|iia|1910-1945,samoa,iia,1910-1945,matched,0,,confirm
 sarawak|fao1952|1951-1951,sarawak,fao1952,1951-1951,matched,0,,confirm
 senegal|mitchell|1886-1959,senegal,mitchell,1886-1959,matched,0,,confirm
-serbia|iia|1909-1911,serbia,iia,1909-1911,matched,0,,confirm
+serbia|iia|1909-1911,serbia,iia,1909-1911,carried,1,serbia|iia|1909-1913@1.0000,confirm
 serbia|iia|1913-1916,serbia,iia,1913-1916,matched,0,,confirm
-serbia|iia|1920-1944,serbia,iia,1920-1944,matched,0,,confirm
-serbia|iia|1921-1945,serbia,iia,1921-1945,carried,2,serbia|iia|1920-1944@0.9600;serbia|iia|1945-1945@0.0400,confirm
-serbia|iia|1945-1945,serbia,iia,1945-1945,matched,0,,confirm
+serbia|iia|1920-1944,serbia,iia,1920-1944,carried,1,serbia|iia|1920-1945@1.0000,confirm
+serbia|iia|1921-1945,serbia,iia,1921-1945,carried,1,serbia|iia|1920-1945@1.0000,confirm
+serbia|iia|1945-1945,serbia,iia,1945-1945,carried,1,serbia|iia|1920-1945@1.0000,confirm
 serbia|juan|1890-1912,serbia,juan,1890-1912,matched,0,,confirm
 south africa|iia|1910-1945,south africa,iia,1910-1945,matched,0,,confirm
 south africa|mitchell|1852-1894,south africa,mitchell,1852-1894,matched,0,,confirm
@@ -434,7 +434,7 @@ united kingdom great britain|fao1952|1937-1951,united kingdom great britain,fao1
 united kingdom|fao1952|1937-1951,united kingdom,fao1952,1937-1951,matched,0,,confirm
 united kingdom|juan|1867-1920,united kingdom,juan,1867-1920,matched,0,,confirm
 united kingdom|juan|1921-1960,united kingdom,juan,1921-1960,matched,0,,confirm
-united states and dependent territories|fao1952|1938-1951,united states and dependent territories,fao1952,1938-1951,carried,1,united states and dependent territories|fao1952|1949-1951@0.2143,confirm
+united states and dependent territories|fao1952|1938-1951,united states and dependent territories,fao1952,1938-1951,matched,0,,confirm
 united states of america|iia|1909-1945,united states of america,iia,1909-1945,matched,0,,confirm
 united states of america|juan|1900-1958,united states of america,juan,1900-1958,matched,0,,confirm
 united states of america|juan|1959-1960,united states of america,juan,1959-1960,matched,0,,confirm
@@ -447,7 +447,7 @@ venezuela|fao1952|1937-1951,venezuela,fao1952,1937-1951,matched,0,,confirm
 venezuela|juan|1900-1960,venezuela,juan,1900-1960,matched,0,,confirm
 venezuela|mitchell|1873-1960,venezuela,mitchell,1873-1960,matched,0,,confirm
 victoria|sa_colonial|1854-1898,victoria,sa_colonial,1854-1898,matched,0,,confirm
-viet nam|iia|1930-1944,viet nam,iia,1930-1944,matched,0,,confirm
+viet nam|iia|1930-1944,viet nam,iia,1930-1944,carried,1,viet nam|iia|1929-1944@1.0000,confirm
 western australia|sa_colonial|1854-1898,western australia,sa_colonial,1854-1898,matched,0,,confirm
 yugoslav sfr|juan|1909-1911,yugoslav sfr,juan,1909-1911,matched,0,,uncertain
 yugoslav sfr|juan|1920-1946,yugoslav sfr,juan,1920-1946,matched,0,,confirm
