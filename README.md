@@ -133,7 +133,7 @@ python3 scripts/validate_data_without_geometry.py  # joins matching to geometry:
 python3 scripts/validate_landuse_corrections.py    # a repair table's stated reason must match its own numbers
 python3 scripts/validate_yield_corrections.py      # and the area x yield repairs: which column moved, by what factor, and whether it may be repaired unseen
 python3 scripts/validate_subnational_sums.py       # and the whole/part sums: an "exact aggregate" row may not carry a residual
-python3 scripts/validate_review_ledger.py        # a banked verdict must name a live polity
+python3 scripts/validate_review_ledger.py        # a banked verdict must name a live polity, and its status must be a known one
 python3 scripts/validate_source_conventions.py     # the conventions registry: well-formed, live patterns, corroborated, re-tested
 python3 scripts/validate_iia_label_provenance.py   # 335 raw IIA labels -> 173 countries: no equality claim on a label that mixes territories
 python3 scripts/validate_source_splices.py         # a series spliced across sources must not change scale at the seam

@@ -54,6 +54,11 @@ BASELINE_DEAD_KEYS = frozenset()
 BASELINE_RETIRED_CORRECT = 7
 
 
+# The five statuses the ledger actually carries. `correct` and `fixed` mean judged; `issue` means a
+# verdict recorded a problem; `unreviewed` is not yet looked at; `suppressed` is deliberately excluded.
+LEDGER_STATUSES = frozenset({"correct", "fixed", "issue", "unreviewed", "suppressed"})
+
+
 def main() -> int:
     for path in (LEDGER, DB):
         if not os.path.exists(path):
@@ -80,11 +85,38 @@ def main() -> int:
         elif live.get(key) in DEAD and (r.get("status") or "") == "correct":
             retired_key.append((key, r.get("status"), r.get("last_run")))
 
+    # --- C. the STATUS VOCABULARY, because four tools gate on it ---
+    # `00_intake.py`, `01_match_and_findings.py`, `02_territorial_evidence.py` and
+    # `reconcile_quarantine.py` all select ledger rows with `status in ("correct", "fixed")`. So a
+    # typo'd status does not raise anywhere -- it silently drops a banked verdict out of the filter
+    # that decides what has already been judged, and the assertion is re-selected for verification as
+    # though nobody had looked at it. Nothing pinned this vocabulary, and the ledger is written by
+    # several tools (issue 308 found 6 applied verdicts with no ledger row and 55 banked rows with no
+    # applied record, so this file does drift).
+    #
+    # A count is NOT pinned here: `unreviewed` and `issue` rows come and go legitimately. What is
+    # pinned is the SET, so a new status has to be added deliberately and its effect on those four
+    # filters considered at that moment rather than discovered later.
+    seen_status = {}
+    for r in rows:
+        st = (r.get("status") or "").strip()
+        seen_status[st] = seen_status.get(st, 0) + 1
+    unknown_status = {k: v for k, v in seen_status.items() if k not in LEDGER_STATUSES}
+
     print(f"ledger rows: {len(rows)} ({len(pol)} polity-keyed)")
     print(f"A. keys absent from the database: {len(dead_key)}")
     print(f"B. keys that are retired or superseded but judged `correct`: {len(retired_key)}")
+    print(f"C. status vocabulary: " + ", ".join(f"{k}={v}" for k, v in sorted(seen_status.items())))
 
     problems = []
+    for st, n in sorted(unknown_status.items()):
+        problems.append(
+            f"C status {st!r} on {n} row(s) is not one of {sorted(LEDGER_STATUSES)}. Four tools "
+            f"select banked work with `status in (\"correct\", \"fixed\")` -- 00_intake, 01, 02 and "
+            f"reconcile_quarantine -- so an unrecognised status silently drops those rows out of the "
+            f"filter that decides what has already been judged, and the assertions are re-verified "
+            f"as though nobody had looked at them. If this status is intended, add it to "
+            f"LEDGER_STATUSES and say what those four filters should do with it")
     for key, status, last in sorted(dead_key):
         if key in BASELINE_DEAD_KEYS:
             continue
