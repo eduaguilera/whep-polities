@@ -482,6 +482,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_era_shift_verdicts.py
 
+      # Where a source REVISES its own stated area by >=50%, does our periodisation have a boundary
+      # there? 11 of 18 agree — Serbia -> Yugoslavia 87,776 -> 247,916, Romania's Transylvania gains,
+      # Trianon — which corroborates the spans from data rather than from historical reading, and no
+      # other check here does that. 7 have one polity spanning the revision. Rows whose cause is
+      # already recorded in validate_stated_areas' BASELINE/SOURCE_NOTES are excluded, so a diagnosed
+      # source defect leaves the table by being diagnosed and this stays a worklist.
+      - name: Sources — stated-area revisions must agree with their own verdict and our spans
+        if: '!cancelled()'
+        run: python3 scripts/validate_area_revision_boundaries.py
       # A layer-B nutrient series that consistently publishes the SMALLEST of several raw materials
       # the source prints side by side. Issue 379 gates raw-product switching on OSCILLATION, which a
       # series that never switches cannot trigger — so 7 of these 8 are invisible to it. spain/p reads
