@@ -228,10 +228,30 @@ BASELINE = {
         "A UNIT ERROR IN THE SOURCE. FAO states 350 km2 for Norfolk Island, which is 35 km2 -- "
         "exactly 10x, i.e. a figure in km2 recorded under the `1000 hectares` heading. Our 37 is "
         "right.",
-    ("SMR-1800-2025", "fao"):
-        "ROUNDING AT LOW MAGNITUDE. FAO's smallest unit is 1,000 hectares = 10 km2, so San "
-        "Marino's 61 km2 can only be recorded as 6 or 10 -- it is recorded as 10, giving 100. "
-        "Our 66 is right. Anything under a few hundred km2 cannot be checked at this resolution.",
+    # ("SMR-1800-2025", "fao") REMOVED 2026-08-20. The divergence was real and its reason was
+    # right -- FAO's 1,000-hectare grid can only record San Marino's 61 km2 as 100 -- but it is no
+    # longer the polity's stated figure. Retargeting the `saint marin` lexicon entry brought IIA's
+    # nine statements in, and IIA states 61 km2 against our 61 (1.003x), so the polity-level figure
+    # now agrees and this entry baselines a divergence that no longer exists. The FAO row itself is
+    # unchanged and still reads 0.612x with its note; what changed is that a finer source outvotes it.
+    ("NFL-1907-1949", "iia"):
+        "A REAL SCOPE DIFFERENCE, AND THE MOST CONSEQUENTIAL ONE THIS FILE CARRIES AFTER ALGERIA. "
+        "IIA states 110,679 km2, which is the ISLAND of Newfoundland (about 111,000 km2). Our "
+        "polygon is 398,115 km2, which is the island PLUS LABRADOR (together about 405,000 km2). "
+        "Both are correct for what they describe -- the Dominion did administer Labrador -- so "
+        "neither figure is an error and the polygon is not being changed. But a per-km2 intensity "
+        "computed from a yearbook numerator over this polygon understates by 3.6x, with nothing "
+        "else in the repo to warn of it. Surfaced on 2026-08-20 when the `terre neuve` lexicon "
+        "entry was retargeted from `Newfoundland`, which matches no polity_name, to `Dominion of "
+        "Newfoundland` (issue 195).",
+    ("MAC-1800-2025", "iia"):
+        "THE TERRITORY GREW, AND BOTH FIGURES ARE RIGHT FOR THEIR DATE. IIA states 14 km2 for "
+        "Macao; our polygon is 34 km2. Macao has roughly doubled by land reclamation across the "
+        "20th century, so a 1911-1937 statement of 14 km2 and a modern outline of 34 km2 are both "
+        "accurate and the ratio is a vintage difference rather than a scope one. This is the "
+        "issue 22 shape -- one long row against a territory that moved -- at a magnitude where it "
+        "cannot be checked any other way, since anything under a few hundred km2 sits below this "
+        "source's resolution. Surfaced on 2026-08-20 by the `macao` lexicon retarget (issue 195).",
     ("PRY-1932-1938", "iia"):
         "same polygon as PRY-1870-1932 (293,549) against a stated 457,872 for 1932/1933/1937. "
         "The Chaco War is fought across this row's span, so the stated figure is a claim under "

@@ -4,15 +4,16 @@ afrique du sud ouest allemande,South West Africa,
 afrique equatoriale francaise,French Equatorial Africa,
 afrique occidentale francaise,French West Africa,
 afrique orientale allemande,German East Africa,
-alaska,Alaska,
+alaska,Territory of Alaska,"was 'Alaska', which is not a polity_name"
 albanie,Albania,
 algerie,Algeria,
-allemagne,Germany,
+allemagne,German Empire,"was 'Germany', whose family starts at 1919; these statements are 1911-1913"
 andaman et nicobar,Andaman and Nicobar Islands,
+andorre,Andorra,
 argentine,Argentina,
 australie,Australia,
 autriche,Austria,
-basoutoland,Basutoland,
+basoutoland,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
 basqutoland,Basutoland,OCR: q inserted
 basutoland,Basutoland,
 bechouanaland,Bechuanaland,
@@ -26,7 +27,7 @@ bresil,Brazil,
 bulgarie,Bulgaria,
 cameroun,Cameroon,
 cap vert,Cape Verde,
-ceylan,Ceylon,
+ceylan,Sri Lanka,"was 'Ceylon', which is not a polity_name"
 chili,Chile,
 chine,China,
 chypre,Cyprus,
@@ -34,7 +35,7 @@ colombie,Colombia,
 congo belge,Belgian Congo,
 coree,Korea,
 coree jap,Korea,
-cote de l or,Gold Coast,
+cote de l or,Ghana (1898-1957),"was 'Gold Coast', which is not a polity_name"
 cote de lor,Gold Coast,OCR: lost space
 cote des somalis,French Somaliland,
 danemark,Denmark,
@@ -55,8 +56,8 @@ etats malais non federes,Unfederated Malay States,
 etats malais proteges,Unfederated Malay States,
 etats unis,United States,
 ethiopie,Ethiopia,
-finlande,Finland,
-formose,Taiwan,
+finlande,Grand Duchy of Finland,was 'Finland'; 1911-1913 Finland was a Russian grand duchy
+formose,Formosa,"was 'Taiwan', which resolves to the 1945+ row; these statements are 1911-1929"
 formose et pescadores,Taiwan,
 formose et pescadores japonaise,Taiwan,
 fthiopie,Ethiopia,OCR: f for E-acute
@@ -65,26 +66,28 @@ gold coast and togoland,Gold Coast and Br Togoland,
 grande bretagne,United Kingdom,
 grece,Greece,
 groenland,Greenland,
-guinee espagnole,Spanish Guinea,
-guinee portugaise,Portuguese Guinea,
-guyane britannique,British Guiana,
+guam,Territory of Guam,
+guinee espagnole,Equatorial Guinea (1886-1968),"was 'Spanish Guinea', not a polity_name"
+guinee portugaise,Guinea-Bissau (1886-1974),"was 'Portuguese Guinea', not a polity_name"
+guyane britannique,Guyana,"was 'British Guiana', not a polity_name"
 guyane francaise,French Guiana,
 guyane francaise et inini,French Guiana,
-guyane neerlandaise,Surinam,
+guyane neerlandaise,Dutch Guiana,"was 'Surinam', which names only the 1954-1975 row"
 hawai,Hawaii,
 hawai usa,Hawaii,
 honduras britannique,British Honduras,
-hongrie,Hungary,
+hongrie,Kingdom of Hungary (Transleithania),"was 'Hungary', whose family starts at 1918"
 iles de l egee,Dodecanese,
 iles italiennes de l egee,Dodecanese,
 iles italiennes de legee,Dodecanese,OCR: lost space
 iles nouvelles hebrides,New Hebrides,
+iles vierges,United States Virgin Islands,"statements begin 1921, after the 1917 purchase from Denmark"
 inde,India,
 inde britannique,India,
 inde portugaise,Portuguese India,
 indes britanniques,India,
-indes neerlandaises,Netherlands Indies,
-indes orientales neerlandaises,Netherlands Indies,
+indes neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
+indes orientales neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
 indochine,Indochina,
 irak,Iraq,
 irlande,Ireland,
@@ -101,12 +104,15 @@ lettonie,Latvia,
 libye,Libya,
 lithuanie,Lithuania,
 lybie,Libya,OCR: y/i swap
+macao,"China, Macao SAR",
 madagascar et dependaces,Madagascar,OCR: dropped n
 madagascar et dependances,Madagascar,
 madagascar et dependences,Madagascar,
+malte,Malta,
 mandchoukouo,Manchukuo,
 maroc espagnol,Spanish Morocco,
 maroc francais,French Morocco,
+maurice,Mauritius,
 memel,Memel,
 mexique,Mexico,
 mongolian people s republic,Mongolia,
@@ -119,7 +125,7 @@ nouvelle caledonie et,New Caledonia,
 nouvelle caledonie et dependences,New Caledonia,
 nouvelle guinee,New Guinea,
 nouvelle zelande,New Zealand,
-nouvelles hebrides,New Hebrides,
+nouvelles hebrides,Vanuatu,"was 'New Hebrides', not a polity_name"
 nouvelles hebrides iles,New Hebrides,
 nouvelles hebrides iles frenchbritish,New Hebrides,
 nvassaland,Nyasaland,OCR: v for y
@@ -138,10 +144,15 @@ rio de oro,Rio de Oro,
 roumanie,Romania,
 royaume uni,United Kingdom,
 ruanda urundi belge,Ruanda-Urundi,
+saint marin,San Marino,
+saint pierre et miquelon,Saint Pierre and Miquelon,
+saint thomas et prince,Sao Tome and Principe,
+sainte helene,Saint Helena,
 sakhaline japonaise,Karafuto,
 samoa occidentale,Western Samoa,
 san salvador,El Salvador,
 siam,Thailand,
+sierra leone,Sierra Leone,
 sierra leone colonie et protectorade,Sierra Leone,
 sokotra,Socotra,
 somalie,Somalia,
@@ -157,7 +168,7 @@ syrie et liban,Syria and Lebanon,
 tanganvika,Tanganyika,OCR: v for y
 tanganvika terr sous,Tanganyika,OCR: v for y; 'terr sous mandat' truncated
 tchecoslovaquie,Czechoslovakia,
-terre neuve,Newfoundland,
+terre neuve,Dominion of Newfoundland,"was 'Newfoundland', not a polity_name"
 terre neuve labrador,Newfoundland,
 tibet,Tibet,
 timor,Timor,
@@ -174,5 +185,5 @@ union delafrique du sud,South Africa,OCR: lost spaces
 union sud africaine,South Africa,
 vougoslavie,Yugoslavia,OCR: v for Y
 yougoslavie,Yugoslavia,
-zanzibar,Zanzibar,
+zanzibar,Zanzibar Protectorate,"was 'Zanzibar', not a polity_name"
 zanzibar et pemba,Zanzibar,

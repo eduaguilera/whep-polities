@@ -208,7 +208,16 @@ BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # WHICH number each should declare is a judgement about published figures and is issue 195's
 # open question; this is a CEILING so the avoidable set cannot GROW while that is decided. A new
 # row copying its own polygon's area, where a stated figure was available, fails here.
-BASELINE_AVOIDABLE_SELF_REF = 28
+#
+# 28 -> 33 on 2026-08-20, and the direction of causation matters because a raised ceiling normally
+# means drift. Nothing declared a new self-referential area. The ceiling counts rows that COULD
+# have compared against a source, so it grows when the SOURCE side grows: retargeting 17
+# `source_label_lexicon.csv` entries from English exonyms (`Ceylon`, `Gold Coast`, `Newfoundland`)
+# to actual polity_names took `source_stated_area_basis.csv` from 205 polities to 223, and 5 of the
+# 21 newly-covered rows already declared their own geometry's area. So this arm gained reach over
+# 5 rows rather than losing ground on 5, which is the outcome issue 195 asks for -- and the arm now
+# reports on 33 rows where check A is silent while a yearbook figure exists.
+BASELINE_AVOIDABLE_SELF_REF = 33
 
 #
 
