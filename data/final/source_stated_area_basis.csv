@@ -6,7 +6,7 @@ AFG-1893-1919,Afghanistan (1893-1919),iia,635000,3,1909;1925;1929,AFGHANISTAN;af
 AFG-1919-2025,Afghanistan,fao,600000,1,1952,Afghanistan,641971,1.070,agrees,
 AFG-1919-2025,Afghanistan,iia,650000,6,1909;1925;1929;1932;1933;1938,AFGHANISTAN;afghanistan,641971,0.988,agrees,
 ALB-1913-2025,Albania (1913-2025),fao,28750,1,1952,Albania,28624,0.996,agrees,
-ALB-1913-2025,Albania (1913-2025),iia,36750,8,1909;1925;1929;1932;1933;1938,ALBANIE;albanie,28624,0.779,agrees,
+ALB-1913-2025,Albania (1913-2025),iia,36750,8,1909;1925;1929;1932;1933;1938,ALBANIE;albanie,28624,0.779,agrees,"TWO EDITIONS CARRY A FIGURE 60% TOO LARGE, and they are not consecutive. `ALBANIE` reads 45,000 km2 at 1913, 28,500 at 1921, 45,000 again at 1925, then 27,538 for 1932/1933/1937; our polygon is 28,624. Albania is about 28,750 km2, so the ~28,000 figures are right and 45,000 is wrong -- appearing, disappearing and reappearing, which is the product-switch shape (21_item_product_switches.py) applied to an area column rather than a single bad edition."
 ALK-1867-1959,Territory of Alaska,fao,1519000,1,1952,Alaska,1505805,0.991,agrees,
 ALK-1867-1959,Territory of Alaska,iia,1530399,9,1909;1925;1929;1932;1933;1938,ALASKA;alaska,1505805,0.984,agrees,
 AND-1800-2025,Andorra,fao,460,1,1952,Andorra,498,1.083,agrees,
@@ -38,7 +38,7 @@ BOL-1938-2025,Bolivia,fao,1069100,1,1952,Bolivia,1086608,1.016,agrees,
 BRA-1909-2025,Brazil,fao,8516040,1,1952,Brazil,8471741,0.995,agrees,
 BRA-1909-2025,Brazil,iia,8511189,9,1909;1925;1929;1932;1933;1938,BRESIL;BRÉSIL;brésil,8471741,0.995,agrees,
 BRN-1888-2025,Brunei Darussalam,fao,5770,1,1952,British Borneo Brunei,5685,0.985,agrees,
-BSS-1884-1960,British Somaliland Protectorate (1884-1960),iia,176000,9,1909;1925;1929;1932;1933;1938,SOMALIE BRITANNIQUE;SOMALIE BRITANNIQUE british;somalie britannique,171627,0.975,agrees,
+BSS-1884-1960,British Somaliland Protectorate (1884-1960),iia,176000,9,1909;1925;1929;1932;1933;1938,SOMALIE BRITANNIQUE;SOMALIE BRITANNIQUE british;somalie britannique,171627,0.975,agrees,"A SINGLE-EDITION OUTLIER, in the other direction. `SOMALIE BRITANNIQUE` reads 176,000 km2 in 1913 and 86,000 in 1925; our polygon is 171,627, which is 2% from the EARLIER figure and 100% from the later. British Somaliland was about 176,000 km2, so here it is the 1925 edition that is wrong -- which is why this class cannot be handled by preferring later editions."
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),fao,121910,1,1952,British Borneo Sarawak,124230,1.019,agrees,
 BTL-1920-1957,British Togoland (1920-1957),iia,34200,1,1925,TOGOLAND british,26545,0.776,agrees,
 BTN-1800-2025,Bhutan,fao,46600,1,1952,Bhutan,39799,0.854,agrees,
@@ -77,7 +77,7 @@ DOM-1800-2025,Dominican Republic,iia,50070,9,1909;1925;1929;1932;1933;1938,REPUB
 DZA-1902-1919,Algeria (1902-1919),iia,575511,3,1909;1925;1929,ALGÉRIE;ALGÉRIE french;algérie,2442683,4.244,review,"SCOPE, and the more interesting direction. IIA states 575,511 km2 -- NORTHERN Algeria, the three civil departments -- while our polygon is 2,442,844 including the Southern Territories. Both are 'Algeria'; only one is the basis French agricultural statistics were collected on. A per-km2 denominator using our polygon understates by 4.2x for any series the yearbook drew from the civil departments."
 DZA-1919-1962,Algeria (1919-1962),fao,2204860,1,1952,Algeria,2318386,1.051,agrees,
 DZA-1919-1962,Algeria (1919-1962),iia,2195696,6,1909;1925;1929;1932;1933;1938,ALGÉRIE;ALGÉRIE french;algérie,2318386,1.056,agrees,
-ECU-1800-1942,Ecuador (to 1942),iia,307243,9,1909;1925;1929;1932;1933;1938,EQUATEUR;equateur,341715,1.112,agrees,
+ECU-1800-1942,Ecuador (to 1942),iia,307243,9,1909;1925;1929;1932;1933;1938,EQUATEUR;equateur,341715,1.112,agrees,"A CLAIM, NOT A DEFECT AND NOT A BOUNDARY CHANGE. `EQUATEUR` reads 307,243 km2 in four editions, 451,180 in 1932, 306,644 in 1933 and 714,860 in 1937; our polygon is 341,715, closest to the 307,243 cluster. 714,860 km2 is Ecuador's CLAIMED Amazon territory before the 1942 Rio Protocol, and 451,180 is an intermediate claim -- so the source is tracking what Ecuador asserted rather than what it administered. Neither figure is an error in the source and neither implies a missing period boundary; the polity's own span ends at 1942, which is the year the claim was settled."
 ECU-1942-2025,Ecuador,fao,275000,1,1952,Ecuador,255241,0.928,agrees,
 EGY-1899-1925,Egypt (1899-1925),iia,1027996,4,1909;1925;1929,EGYPTE;egypte,1517113,1.476,agrees,"SCOPE, verified by containment rather than assumed. Our polygon is 1,517,144 km2 against IIA's 1,027,996 and a modern Egypt of 1,001,450 -- but Cairo, Aswan and Sinai are inside it while Wadi Halfa, Khartoum and Port Sudan are OUTSIDE, so it is not silently carrying Sudan. The extra ~500,000 km2 is the Libyan Desert: Egypt's western boundary with Cyrenaica was undefined until 1925 and CShapes encodes the maximal claim. IIA states the administered territory, which is the basis its agricultural figures were collected on."
 EGY-1925-1967,Egypt (1925-1967),fao,1000000,1,1952,Egypt,998328,0.998,agrees,
@@ -86,7 +86,7 @@ ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",fao,124320,1,1952,Eri
 ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",iia,119000,8,1909;1925;1929;1932;1933,ERYTHREE;ERYTHREE italian;ERYTHRÉE;erythrée,120803,1.015,agrees,
 ESP-1800-2025,Spain,fao,503060,1,1952,Spain,506132,1.006,agrees,
 ESP-1800-2025,Spain,iia,505208,9,1909;1925;1929;1932;1933;1938,ESPAGNE;espagne,506132,1.002,agrees,
-EST-1918-1940,Estonia (interwar republic),iia,47549,6,1909;1925;1929;1932;1933;1938,ESTHONIE;ESTONIE;estonie,49303,1.037,agrees,
+EST-1918-1940,Estonia (interwar republic),iia,47549,6,1909;1925;1929;1932;1933;1938,ESTHONIE;ESTONIE;estonie,49303,1.037,agrees,"A SINGLE-EDITION OUTLIER. The 1909 edition states 6,775 km2 for `ESTHONIE`; the 1925 edition states 47,549, and our polygon is 49,303 -- 4% from the later figure and 628% from the earlier. 47,549 km2 is interwar Estonia including Petserimaa and Narva-taguse, so the 1925 figure is right and the 1909 one is wrong by a factor of seven. Not a periodisation gap."
 ETH-1907-1936,Ethiopia (1907-1936),iia,900000,8,1909;1925;1929;1932;1933,ETHIOPIE;FTHIOPIE;ethiopie,1127539,1.253,agrees,"OURS IS RIGHT. Ethiopia is ~1,104,300 km2 and our polygon is 1,127,533. IIA's 900,000 is a pre-survey estimate from before the interior was mapped."
 ETH-1941-1952,Ethiopia (1941-1952),fao,1060000,1,1952,Ethiopia,1127539,1.064,agrees,
 F228-1945-1991,USSR (1945-1991),fao,22270000,1,1952,USSR,22065490,0.991,agrees,
@@ -108,7 +108,7 @@ FRA-1919-2025,France,fao,551600,1,1952,France,548058,0.994,agrees,
 FRA-1919-2025,France,iia,550986,6,1909;1925;1929;1932;1933;1938,FRANCE;france,548058,0.995,agrees,
 FRIN-1816-1954,French India (Établissements français dans l'Inde),fao,510,1,1952,French India,547,1.072,agrees,
 FRS-1884-1977,French Somaliland,fao,23000,1,1952,French Somaliland,21481,0.934,agrees,
-FRS-1884-1977,French Somaliland,iia,22000,9,1909;1925;1929;1932;1933;1938,COTE DES SOMALIS;COTE DES SOMALIS french;CÔTE DES SOMALIS;côte des somalis,21481,0.976,agrees,
+FRS-1884-1977,French Somaliland,iia,22000,9,1909;1925;1929;1932;1933;1938,COTE DES SOMALIS;COTE DES SOMALIS french;CÔTE DES SOMALIS;côte des somalis,21481,0.976,agrees,"A SINGLE-EDITION OUTLIER. `CÔTE DES SOMALIS` reads 120,000 km2 in the 1909 edition (applied to 1911 and 1921) and 21,963 in 1937; our polygon is 21,481, i.e. 2% from the later figure and 82% from the earlier. French Somaliland was about 23,000 km2, so 120,000 is the error."
 FTO-1920-1960,French Togoland (1920-1960),fao,55000,1,1952,French Togoland,57137,1.039,agrees,
 GBR-1800-1921,United Kingdom (to 1921),iia,230616,3,1909;1925;1929,GRANDE-BRETAGNE;grande-bretagne,313550,1.360,agrees,"THE LABEL IS NARROWER THAN THE POLITY. IIA's `royaume uni` states 230,616 km2, which is GREAT BRITAIN without Ireland. Our 313,550 includes all of Ireland, which is correct for the United Kingdom of 1800-1921. Ours is right; the label needs a separate GB row if any data actually arrives under it."
 GBR-1921-2025,United Kingdom,fao,244010,1,1952,United Kingdom,243964,1.000,agrees,
@@ -188,7 +188,7 @@ LIE-1800-2025,Liechtenstein,fao,160,1,1952,Liechtenstein,177,1.106,agrees,
 LIE-1800-2025,Liechtenstein,iia,159,9,1909;1925;1929;1932;1933;1938,LIECHTENSTEIN;liechtenstein,177,1.113,agrees,
 LKA-1800-2025,Sri Lanka,iia,65608,9,1909;1925;1929;1932;1933;1938,CEYLAN;ceylan,65955,1.005,agrees,
 LSO-1886-1966,Lesotho (1886-1966),iia,30344,5,1929;1932;1933;1938,BASOUTOLAND;basoutoland,30503,1.005,agrees,
-LTU-1918-1940,Lithuania (interwar republic),iia,55670,6,1909;1925;1929;1932;1933;1938,LITHUANIE;lithuanie,55904,1.004,agrees,
+LTU-1918-1940,Lithuania (interwar republic),iia,55670,6,1909;1925;1929;1932;1933;1938,LITHUANIE;lithuanie,55904,1.004,agrees,"A SINGLE-EDITION OUTLIER, and the later editions are unanimous. `LITHUANIE` reads 150,000 km2 in the 1909 edition and then 55,658 / 55,670 / 55,670 / 55,670 across 1925-1937; our polygon is 55,904, within 0% of those. Interwar Lithuania was about 55,700 km2 without Vilnius, so 150,000 is the error and four editions agree against it."
 LUX-1839-2025,Luxembourg,fao,2590,1,1952,Luxembourg,2591,1.000,agrees,
 LUX-1839-2025,Luxembourg,iia,2586,9,1909;1925;1929;1932;1933;1938,LUXEMBOURG;luxembourg,2591,1.002,agrees,
 LVA-1918-1940,Latvia (interwar republic),iia,65791,6,1909;1925;1929;1932;1933;1938,LETTONIE;lettonie,65978,1.003,agrees,

@@ -211,11 +211,20 @@ def main() -> int:
             return 0
         fd, tmp = tempfile.mkstemp(dir=os.path.dirname(OUT), suffix=".tmp")
         os.close(fd)
-        with open(tmp, "w", newline="", encoding="utf-8") as fh:
-            w = csv.DictWriter(fh, fieldnames=cols)
-            w.writeheader()
-            w.writerows(rows)
-        os.replace(tmp, OUT)
+        # The unlink matters: a DictWriter raises on an unexpected key, and without this the
+        # half-written .tmp is left behind in a TRACKED state directory where `git add -A`
+        # can commit it. That happened on 2026-08-20 when a column was added to the rows but
+        # not to the fieldnames.
+        try:
+            with open(tmp, "w", newline="", encoding="utf-8") as fh:
+                w = csv.DictWriter(fh, fieldnames=cols)
+                w.writeheader()
+                w.writerows(rows)
+            os.replace(tmp, OUT)
+        except BaseException:
+            if os.path.exists(tmp):
+                os.unlink(tmp)
+            raise
         print(f"\nwrote {len(rows)} overlaps to {os.path.relpath(OUT, REPO)}")
     return 0
 
