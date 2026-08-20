@@ -1956,6 +1956,38 @@ def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
             f"has, leaving the row count, the arithmetic, the floor and every identity pin intact")
 
 
+def mutate_ledger_status_typo(root, gpd, make_valid, affinity):
+    """Typo one ledger status, the way a hand edit or a new writer would.
+
+    `review_ledger.csv` is the record of what has already been judged, and FOUR tools select banked
+    work from it with `status in ("correct", "fixed")` -- 00_intake, 01_match_and_findings,
+    02_territorial_evidence and reconcile_quarantine. A status they do not recognise raises nothing:
+    the row simply falls out of the filter, so a verdict that WAS reached stops counting as reached
+    and its assertion is re-selected for verification as though nobody had looked at it. Nothing
+    pinned the vocabulary before this case.
+
+    The mutation is one character on one row -- `correct` -> `corrct` -- because that is the realistic
+    failure and because it leaves every other signal quiet: the key still names a live polity, so arm
+    A stays silent, and the row is no longer `correct` so arm B (retired-but-judged-correct) cannot
+    fire either. Only the vocabulary arm can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/review_ledger.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rd = csv.DictReader(fh)
+        rows = list(rd)
+        fields = list(rd.fieldnames)
+    hit = next((r for r in rows if (r.get("status") or "").strip() == "correct"), None)
+    if hit is None:
+        raise AssertionError("no `correct` row in review_ledger.csv, so this mutation has nothing to "
+                             "typo and the case would pass vacuously")
+    hit["status"] = "corrct"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"typo'd the status of {hit.get('key')!r} from `correct` to `corrct`, which drops a "
+            f"banked verdict out of the filter four tools use to decide what has already been judged")
+
 def mutate_ledger_write_untruncated_to_atomic(root, gpd, make_valid, affinity):
     """Put back the truncating write that issue 431 removed from the ledger writer.
 
@@ -3600,6 +3632,14 @@ CASES = (
         "between the `if area > 0` guard and 14 exonerated impossible rows",
     ),
     (
+        "validate_review_ledger.py",
+        mutate_ledger_status_typo,
+        "is not one of",
+        "one character changed in one ledger status, which silently drops a banked verdict out of "
+        "the filter four tools use to decide what has already been judged -- arms A and B both stay "
+        "quiet, so only the vocabulary arm can see it",
+    ),
+    (
         "validate_atomic_state_writes.py",
         mutate_ledger_write_untruncated_to_atomic,
         "truncates review_ledger.csv",
@@ -4232,6 +4272,10 @@ WRITABLE = {
     # The case rewrites era_shift_verdicts.csv in place (it reclassifies one row), so a real copy.
     "validate_era_shift_verdicts.py": (
         "pipelines/polity-autoimprove/state/era_shift_verdicts.csv",
+    ),
+    # The case typos one status in review_ledger.csv, so a real copy rather than a symlink.
+    "validate_review_ledger.py": (
+        "pipelines/polity-autoimprove/state/review_ledger.csv",
     ),
     # The case rewrites a PIPELINE MODULE rather than a state table (it restores a truncating write),
     # so the module itself must be materialised as a real copy in the scratch tree.
