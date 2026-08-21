@@ -535,6 +535,69 @@ def check_iia_flax_is_mostly_linseed(ctx):
             "joined on the extract's own label; the canonical join gives 137/57/50 instead")
 
 
+def check_malaya_female_agric_is_total(ctx):
+    """One cell, proven by its own sibling rows: a female subtotal equal to its parent total.
+
+    `Malaya Federation of and Singapore` 1937 reports population female agricultural = 1,171 and
+    population agricultural TOTAL = 1,171 -- the same number. A female subtotal cannot be 100% of its
+    parent. The 1951 rows of the SAME label show what the correct structure looks like and are measured
+    here as the control: total 1,186 = female 347 + male 839, summing exactly. And the 1937 MALE row is
+    ABSENT, which is what makes the signature a column shift at extraction rather than a bad value: the
+    total's figure landed in the female column and the male figure was lost.
+
+    All three claims are pinned because each rules out a different alternative. Equality alone could be
+    coincidence; the 1951 sum shows the columns are normally consistent; the missing male row shows
+    something was dropped rather than mistyped.
+    """
+    lb = ctx["panel"]
+    m = lb[(lb["source"] == "fao1952")
+           & lb["country"].str.contains("Malaya Fed", na=False)
+           & lb["indicator"].str.contains("population", na=False)]
+
+    def v(ind_part, year):
+        r = m[m["indicator"].str.contains(ind_part, na=False) & (m["year"] == year)]["value"]
+        return round(float(r.iloc[0]), 6) if len(r) == 1 else None
+
+    # MATCH ON "population male", NOT "male agricultural": the string "female agricultural" CONTAINS
+    # "male agricultural", so the obvious substring counts the female row as a male one. The first
+    # version of this check reported 1 male 1937 row where there are none, i.e. it refuted the entry
+    # using the entry's own evidence.
+    fem37, tot37 = v("population female", 1937), v("agricultural ocupati", 1937)
+    fem51, male51, tot51 = (v("population female", 1951), v("population male", 1951),
+                            v("agricultural ocupati", 1951))
+    male37 = m[m["indicator"].str.contains("population male", na=False) & (m["year"] == 1937)]
+    return ([("1937 female agricultural", fem37, 1171.0),
+             ("1937 agricultural total (IDENTICAL to it)", tot37, 1171.0),
+             ("1937 MALE rows present", len(male37), 0),
+             ("1951 female + male (the control)",
+              round(fem51 + male51, 6) if None not in (fem51, male51) else None, 1186.0),
+             ("1951 agricultural total", tot51, 1186.0)],
+            "the 1951 sum shows the columns are normally consistent; 1937's male row is gone")
+
+
+def check_nigeria_cotton_area_zero(ctx):
+    """Five zero area cells refuted by the same label's own tonnage.
+
+    `iia`/`nigeria`/`cotton lint`/`ha` reads 0.0 for every year 1941-1945 -- the whole tail of the
+    series -- while the SAME label reports cotton seed production of 15,100 / 13,600 / 10,300 / 6,600 t
+    for 1941-1944. No tonnage comes off zero hectares, so the zeros are self-refuting without any
+    external reference.
+
+    BOTH SIDES ARE PINNED. The zeros alone would be consistent with the crop having stopped; it is the
+    surviving tonnage that refutes them, so a re-test measuring only the zeros could pass while the
+    evidence against them disappeared.
+    """
+    lb = ctx["panel"]
+    g = lb[(lb["source"] == "iia") & (lb["country"] == "nigeria") & lb["year"].notna()]
+    area = g[(g["item"] == "cotton lint") & (g["unit"] == "ha") & (g["year"] >= 1941)]
+    seed = g[(g["item"] == "cotton seed") & (g["unit"] == "tonnes") & (g["year"] >= 1941)]
+    return ([("cotton lint area cells 1941+", len(area), 5),
+             ("of those equal to zero", int((area["value"] == 0).sum()), 5),
+             ("cotton seed production cells 1941+ (the refutation)", len(seed), 4),
+             ("their total tonnage", round(float(seed["value"].sum()), 6), 45600.0)],
+            "the surviving tonnage is what refutes the zeros; the zeros alone prove nothing")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -551,6 +614,8 @@ CHECKS = {
     "iia-item-series-switch-raw-products": check_item_product_switches,
     "mitchell-flax-fibre-area-is-linseed": check_mitchell_flax_is_linseed,
     "iia-flax-fibre-item-is-mostly-linseed": check_iia_flax_is_mostly_linseed,
+    "fao1952-malaya-female-agric-1937-is-total": check_malaya_female_agric_is_total,
+    "nga-1941-1945-cotton-area-zero": check_nigeria_cotton_area_zero,
 }
 
 
