@@ -937,6 +937,59 @@ def check_china_groundnut_audit(ctx):
             "the aggregation is additive; the audit found its degenerate case")
 
 
+def check_reunion_tobacco_baseline(ctx):
+    """The contaminated-baseline entry, whose load-bearing claim is an exact arithmetic identity.
+
+    Reunion's ten exonerations rest on a baseline of 20,000 t drawn from the inflated volume, so every
+    era row divides one inflated number by another. That much is a count. The MECHANISM claim -- that a
+    pre-era baseline is contaminated by any inflated PERIOD row regardless of how many clean dated years
+    exist -- rests on romania/hops, whose recorded baseline is exactly the mean of one clean and one
+    inflated period row: (3,500 + 40.6) / 2 = 1,770.3. That identity is pinned to the digit, because it
+    is the only thing separating this entry's general condition from a single-label anecdote.
+
+    Two of the entry's counts have drifted, and the second matters. `the other ten` exonerations are
+    ELEVEN, and the eleventh is not in the stated 3.2x-27.1x band at all: `germany / tobacco / 1945`
+    sits at 0.0, a ZERO production filed `no_area_level_consistent`. That is not the
+    conservative-threshold case the entry describes; it is a one-sided test. The screen convicts at
+    >=30x and exonerates everything below, so a value cannot be too SMALL to pass. Germany's row escapes
+    the `impossible_yield_zero_area` arm too, because that arm needs `area == 0` and this row's area is
+    BLANK. Exposure is exactly one row -- the only other cells at <=0.34x their own baseline are
+    micronesia's two, and both are convicted by the zero-area arm -- so this is a real gap with a small
+    live population, which is worth stating precisely rather than as a class."""
+    era = ctx["era"]
+    nac = [r for r in era if r["verdict"] == "no_area_level_consistent"]
+    reu = [r for r in nac if r["label"].strip().lower() == "reunion"]
+    rom = [r for r in nac if r["label"].strip().lower() == "romania"]
+    others = [r for r in nac if r["label"].strip().lower() not in ("reunion", "romania")]
+
+    def ratio(r):
+        try:
+            return float(r["ratio_to_own"])
+        except (TypeError, ValueError):
+            return None
+
+    orat = sorted(v for v in (ratio(r) for r in others) if v is not None)
+    # `(ratio(r) or 1.0)` would be wrong here and wrongly in the one way that matters: 0.0 is falsy,
+    # so the zero row this check exists to find would be replaced by 1.0 and dropped. That is the same
+    # shape as the defect below -- a zero slipping through a test that never contemplated it.
+    lows = [r for r in era if ratio(r) is not None and ratio(r) <= 0.34]
+    low_exonerated = [r for r in lows if r["verdict"] == "no_area_level_consistent"]
+    convicted = sum(1 for r in era if str(r["convicted"]).strip().lower() in ("1", "true", "yes"))
+    return ([("reunion exonerations", len(reu), 10),
+             ("  its baseline", float(reu[0]["own_pre_era_median"]) if reu else None, 20000.0),
+             ("  ratios at 1934-1936", sum(1 for r in reu if ratio(r) == 1.0
+                                           and r["year"] in ("1934", "1935", "1936")), 3),
+             ("romania hops baseline", float(rom[0]["own_pre_era_median"]) if rom else None, 1770.3),
+             ("  == (3500 + 40.6) / 2", round((3500 + 40.6) / 2, 4), 1770.3),
+             ("no_area_level_consistent", len(nac), 22),
+             ("  neither reunion nor romania", len(others), 11),
+             ("  their lowest ratio", orat[0] if orat else None, 0.0),
+             ("rows at <=0.34x own baseline", len(lows), 3),
+             ("  exonerated rather than convicted", len(low_exonerated), 1),
+             ("convicted rows", convicted, 349)],
+            "the level test is one-sided: nothing can be too small to pass it")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -963,6 +1016,7 @@ CHECKS = {
     "som-1959-livestock-broadcast-15000": check_somalia_1959_broadcast,
     "rus-1918-is-karafuto-prefecture": check_russia_1918_is_karafuto,
     "chn-1895-1913-groundnut-outlier-data-error": check_china_groundnut_audit,
+    "iia-reunion-tobacco-baseline-contaminated": check_reunion_tobacco_baseline,
 }
 
 
