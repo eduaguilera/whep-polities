@@ -19,12 +19,18 @@ refutable -- its magnitude evidence cited `wheat`, which in this source is spelt
 flagged it; it took re-deriving the entry by hand. `iia-reunion-tobacco-baseline-contaminated`, written the
 same day, had its stated condition refuted within the hour by the one row not checked.
 
-WHAT THIS COVERS, AND WHAT IT DELIBERATELY DOES NOT. Only entries resting on a REPRODUCIBLE FIGURE -- a row
-count, a label count, an absence -- can be re-tested mechanically. Most of this file is single attributable
-cells with no measurement behind them (`nru-1933-phosphate-transposed-with-australia`,
-`cze-1910-rye-area-orphan-3ha`), and several are explicitly unrepairable, so there is nothing to re-run.
-Those are out of scope by design rather than by omission, and this script says so rather than implying
-coverage it does not have.
+WHAT THIS COVERS, AND A CLAIM IT USED TO MAKE THAT WAS WRONG. Only entries resting on a REPRODUCIBLE
+FIGURE -- a row count, a label count, an absence -- can be re-tested mechanically. This docstring used to
+say that most of the file was "single attributable cells with no measurement behind them", and named
+`nru-1933-phosphate-transposed-with-australia` and `cze-1910-rye-area-orphan-3ha` as its examples. Both are
+now re-tested, which refutes the claim: A SINGLE CELL IS A REPRODUCIBLE FIGURE. Its value is printed in the
+source, and for a transposition or a wrong-volume pick the SET of cells carrying the argument is pinnable
+too -- all four raw cells of the Nauru swap, both volumes of the Lithuania pick.
+
+So the uncovered entries were UNREACHED, not out of scope, and saying "by design" made a gap look like a
+boundary. What genuinely cannot be re-tested here is narrower: an entry whose evidence is a judgement about
+an external source (whether a yearbook page means one thing or another), or a remedy nobody has chosen. The
+count below reports what is covered and does not claim the remainder is uncoverable.
 
 A FIGURE MISMATCH IS NOT AUTOMATICALLY AN ERROR, the same distinction 11_retest_conventions.py draws: a
 count can move because the panel was reconsolidated while the diagnosis stays true. The check reports what
@@ -732,6 +738,145 @@ def check_1933_x10_provenance_linked(ctx):
             "label-level provenance reproduces 14; item-level gives only 9")
 
 
+def check_nauru_1933_transposition(ctx):
+    """The 1933 natural-phosphate values for `british nauru` and `australia` are swapped between the two
+    volumes that cover 1933, and layer B took the wrong one.
+
+    The load-bearing claim is not the collapse -- it is that the swap is MUTUAL and near-exact
+    (369,516 vs 369,500; 97 vs 100), which is what distinguishes a transposed pair from two independent
+    errors. So all four raw cells are pinned, not just the one layer B published. If a re-extraction
+    fixed only one side the mutuality would break and this check would say so."""
+    raw, lb = ctx["raw"], ctx["panel"]
+    r = raw[(raw["_p"] == "fertilizers: phosphate, natural") & (raw["_v"] == "production")]
+    r = r[pd.to_numeric(r["year"], errors="coerce") == 1933]
+
+    def one(country, book):
+        v = r[(r["_c"] == country) & (r["yearbook"] == book)]["value"]
+        return float(v.iloc[0]) if len(v) == 1 else None
+
+    n = lb[(lb["source"] == "iia") & (lb["country"].str.lower() == "nauru")
+           & (lb["item"].str.lower() == "p")]
+    published = n[n["year"] == 1933]["value"]
+    return ([("iia_1933_34 nauru", one("british nauru", "iia_1933_34"), 97.0),
+             ("iia_1933_34 australia", one("australia", "iia_1933_34"), 369516.0),
+             ("iia_1938_39 nauru", one("british nauru", "iia_1938_39"), 369500.0),
+             ("iia_1938_39 australia", one("australia", "iia_1938_39"), 100.0),
+             ("layer B published 1933", float(published.iloc[0]) if len(published) == 1 else None,
+              97.0)],
+            "the swap is mutual and near-exact, and layer B carries the wrong side")
+
+
+def check_lithuania_1933_sugar_volume(ctx):
+    """Layer B took the iia_1933_34 value (8.1 t) for a 1933 cell where iia_1938_39 prints 7,300 t.
+
+    The correct value is printed by the SOURCE, so this is not argued from magnitude -- and the pin that
+    carries that argument is the neighbouring pair, because 7,300 fitting between 18,218 and 13,700 is
+    the whole case. Same shape as the Nauru transposition: 1933 is the only year two volumes cover, so
+    it is the only year a wrong-volume pick is possible at all."""
+    raw, lb = ctx["raw"], ctx["panel"]
+    r = raw[(raw["_c"] == "lithuania") & (raw["_p"] == "sugar: beet") & (raw["_v"] == "production")]
+    r = r.assign(y_=pd.to_numeric(r["year"], errors="coerce"))
+
+    def rawv(year, book):
+        v = r[(r["y_"] == year) & (r["yearbook"] == book)]["value"]
+        return float(v.iloc[0]) if len(v) == 1 else None
+
+    l = lb[(lb["source"] == "iia") & (lb["country"].str.lower() == "lithuania")
+           & (lb["item"].str.lower() == "sugar raw centrifugal")]
+    pub = {int(t.year): float(t.value) for t in l[l["year"].notna()].itertuples()}
+    return ([("raw iia_1933_34 at 1933", rawv(1933, "iia_1933_34"), 8.1),
+             ("raw iia_1938_39 at 1933", rawv(1933, "iia_1938_39"), 7300.0),
+             ("layer B published 1933", pub.get(1933), 8.1),
+             ("layer B 1932 neighbour", pub.get(1932), 18218.0),
+             ("layer B 1934 neighbour", pub.get(1934), 13700.0)],
+            "the source prints the correct value in the other volume covering 1933")
+
+
+def _broadcast_block(lb, country, year, value, items):
+    """Shared shape for the two mitchell broadcast blocks: every listed livestock item in one label-year
+    reading exactly the same figure. Returns (how many hit the value, how many items were found)."""
+    m = lb[(lb["source"] == "mitchell") & (lb["country"].str.lower() == country)
+           & (lb["year"] == year) & (lb["unit"] == "heads")]
+    found = {str(t.item).lower(): float(t.value) for t in m.itertuples()}
+    hit = sum(1 for i in items if found.get(i) == value)
+    return hit, len(found)
+
+
+def check_india_1947_broadcast(ctx):
+    """All eight mitchell india livestock items read exactly 3,000 head in 1947.
+
+    The cross-item agreement IS the diagnosis, so the pin is the COUNT of items at the value, not any
+    one cell -- eight independent errors landing on one number is not a hypothesis anyone weighs. The
+    third claim is the entry's own counter-argument and matters just as much: 3,000 occurs 148 times
+    across 48 mitchell labels legitimately, so the value proves nothing on its own and only the
+    coincidence within a label-year carries signal. If that count collapsed, the entry's reasoning
+    would need restating even though its verdict would stand."""
+    lb = ctx["panel"]
+    items = ["asses", "buffalo", "camels", "cattle", "goats", "horses", "sheep", "swine / pigs"]
+    hit, found = _broadcast_block(lb, "india", 1947, 3000.0, items)
+    mit = lb[lb["source"] == "mitchell"]
+    at3000 = mit[mit["value"] == 3000.0]
+    asses08 = lb[(lb["source"] == "mitchell") & (lb["country"].str.lower() == "india")
+                 & (lb["item"].str.lower() == "asses") & (lb["year"] == 1908)]["value"]
+    return ([("livestock items at 3,000", hit, 8),
+             ("head items in the label-year", found, 8),
+             ("3,000 elsewhere in mitchell", len(at3000), 148),
+             ("  across labels", at3000["country"].nunique(), 48),
+             ("the ninth instance, asses 1908",
+              float(asses08.iloc[0]) if len(asses08) == 1 else None, 3000.0)],
+            "the coincidence within the label-year is the signal; the value itself is common")
+
+
+def check_somalia_1959_broadcast(ctx):
+    """The same shape as india 1947, in a different label and decade -- which is what makes it a class
+    rather than an incident. Four species agreeing to the digit is the claim; 1960 being sound is what
+    confines it to one year."""
+    lb = ctx["panel"]
+    hit, found = _broadcast_block(lb, "somalia", 1959, 15000.0,
+                                  ["camels", "cattle", "goats", "sheep"])
+    nxt = lb[(lb["source"] == "mitchell") & (lb["country"].str.lower() == "somalia")
+             & (lb["year"] == 1960) & (lb["unit"] == "heads")]
+    return ([("livestock items at 15,000", hit, 4),
+             ("head items in the label-year", found, 4),
+             ("1960 items, all sound", len(nxt), 4),
+             ("  none of them at 15,000", int((nxt["value"] == 15000.0).sum()), 0)],
+            "a second instance of the india 1947 shape, and only 1959 is affected")
+
+
+def check_russia_1918_is_karafuto(ctx):
+    """Layer B's eight iia `russian federation` rows at 1918 are Karafuto Prefecture's, value for value.
+
+    Three claims, in increasing strength. The eight values matching is the identification. The RAW
+    RUSSIAN LABELS HAVING NO 1918 ROWS AT ALL is why it happened -- nothing competed for the slot -- and
+    that absence is the most falsifiable thing here: one 1918 Russian row in a re-extraction and the
+    explanation changes. The 21-vs-2 fingerprint is the scope claim: the misrouting is general and 1918
+    is merely where it becomes visible."""
+    raw, lb = ctx["raw"], ctx["panel"]
+    r = raw.assign(y_=pd.to_numeric(raw["year"], errors="coerce"))
+    kara = r[(r["_c"] == "japan: karafuto prefecture") & r["_v"].isin(["production", "area"])
+             & r["value"].notna()]
+    ru1918 = r[r["_c"].isin(["russia in europe", "russia in asia"]) & (r["y_"] == 1918)]
+    lb18 = lb[(lb["source"] == "iia") & (lb["country"].str.lower() == "russian federation")
+              & (lb["year"] == 1918)]
+    kv = {(float(t.value)) for t in kara.itertuples()}
+    matched = sum(1 for t in lb18.itertuples() if float(t.value) in kv)
+    # scope: Karafuto's dated (year, value) pairs against every layer-B label
+    pairs = {(int(t.y_), float(t.value)) for t in kara.itertuples() if pd.notna(t.y_)}
+    d = lb[lb["source"] == "iia"].dropna(subset=["year"])
+    take = collections.Counter(
+        str(c).lower() for c, y, v in zip(d["country"], d["year"], d["value"])
+        if (int(y), float(v)) in pairs)
+    ranked = take.most_common()
+    second = ranked[1][1] if len(ranked) > 1 else 0
+    return ([("layer B russian rows at 1918", len(lb18), 8),
+             ("  matching a Karafuto value", matched, 8),
+             ("raw Russian rows at 1918", len(ru1918), 0),
+             ("Karafuto dated pairs", len(pairs), 73),
+             ("  taken by `russian federation`", take.get("russian federation", 0), 21),
+             ("  taken by the next label", second, 2)],
+            "nothing competed for 1918, and the misrouting is general beyond it")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -752,6 +897,11 @@ CHECKS = {
     "nga-1941-1945-cotton-area-zero": check_nigeria_cotton_area_zero,
     "cze-1910-rye-area-orphan-3ha": check_cze_1910_rye_orphan,
     "iia-1933-x10-wrong-volume-cells": check_1933_x10_provenance_linked,
+    "nru-1933-phosphate-transposed-with-australia": check_nauru_1933_transposition,
+    "ltu-1933-sugar-wrong-volume": check_lithuania_1933_sugar_volume,
+    "ind-1947-livestock-broadcast-3000": check_india_1947_broadcast,
+    "som-1959-livestock-broadcast-15000": check_somalia_1959_broadcast,
+    "rus-1918-is-karafuto-prefecture": check_russia_1918_is_karafuto,
 }
 
 
@@ -799,8 +949,8 @@ def main() -> int:
         print(f"       -> {note}")
 
     print(f"\n{len(CHECKS)} entr(ies) re-tested over {tested} claim(s); "
-          f"{len(ids) - len(CHECKS)} of {len(ids)} entries carry no reproducible figure and are out of "
-          f"scope by design")
+          f"{len(ids) - len(CHECKS)} of {len(ids)} entries are not yet re-tested -- unreached rather "
+          f"than uncoverable; see the docstring")
     if problems:
         print(f"\nFAIL: {len(problems)} claim(s) no longer reproduce", file=sys.stderr)
         for p in problems:
