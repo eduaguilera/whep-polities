@@ -4884,6 +4884,9 @@ WRITABLE = {
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
         "pipelines/polity-autoimprove/26_edition_conflicts.py",
+        # the gate cross-checks the generator's hardcoded LATE_GRID against this table's
+        # (iia, ha/tonnes, 1934+) verdicts, so it must be present or that arm reports a missing row
+        "pipelines/polity-autoimprove/state/source_value_precision.csv",
     ),
     # The case appends a row to cell_attribution.csv; the gate imports the generator and reads both
     # item_provenance.csv and item_equivalences.csv, so all four are staged.
