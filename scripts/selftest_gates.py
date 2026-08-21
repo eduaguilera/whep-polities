@@ -4877,9 +4877,13 @@ WRITABLE = {
     "validate_series_collapses.py": (
         "pipelines/polity-autoimprove/state/series_collapses.csv",
     ),
-    # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
+    # The cases rewrite edition_conflicts.csv in place (they reclassify rows), so a real copy. The
+    # GENERATOR is staged too, not because a case mutates it, but because the gate now imports its
+    # zero_grid_verdict() to re-derive the grid/blank split -- without it the gate dies on the import
+    # and still exits 1, which made two unrelated cases "pass" while checking nothing.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+        "pipelines/polity-autoimprove/26_edition_conflicts.py",
     ),
     # The case appends a row to cell_attribution.csv; the gate imports the generator and reads both
     # item_provenance.csv and item_equivalences.csv, so all four are staged.
