@@ -129,6 +129,16 @@ whole-territory mis-binding is not caught by this gate — it is caught by
 pair sits inside a documented federation, and by `validate_polygons` if the area is
 recorded.
 
+> **Correction, 2026-08-21.** The figure above is wrong by 100x. The 1925 slice totals 11.46
+> **million km2**, i.e. **1,145.68 Mha** — "11.46 Mha" would be 114,600 km2, smaller than the
+> single pair `AOF-1895-1960`/`NER-1922-1947` at 1,181,744 km2. The repo's convention is
+> km2 x 100 (issue 143's headline reads `331,429 km2 (33.14 Mha)`). The error understated the
+> exposure this gate deliberately excludes by two orders of magnitude, making it read as a third
+> of issue 143's 2015 figure when it is about 35x larger. The gate's own docstring and the README
+> row were corrected; this entry keeps its original wording with the correction appended rather
+> than being rewritten.
+
+
 **The self-test case is a partial overlap on purpose**, because that is the class no
 existing gate reaches. Shifting `NPL-1816-2025`'s polygon one degree north puts 54.9% of
 Nepal inside China's polygon; measured against a freshly mutated copy,
