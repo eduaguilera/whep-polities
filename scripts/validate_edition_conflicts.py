@@ -107,6 +107,35 @@ def main() -> int:
     problems = []
     tool = load_generator()
 
+    # --- LATE_GRID must match the precision table it cites ---
+    # 26_edition_conflicts.py HARDCODES {"area": 1000, "production": 100} with a comment citing
+    # state/source_value_precision.csv. A comment is not a dependency: if that table is rebuilt and the
+    # late-volume verdict changes, the hardcoded constant goes stale silently and every zero_grid_verdict
+    # in this file becomes a claim about a grid the data no longer shows. This is the sibling-copy
+    # failure the repo keeps hitting (the 100x unit figure survived its own correction in three places),
+    # so the two are tied here rather than trusted to stay in step.
+    PREC = os.path.join(REPO, "pipelines/polity-autoimprove/state/source_value_precision.csv")
+    EXPECT = {"area": ("ha", "coarse_1000", 1000.0), "production": ("tonnes", "coarse_100", 100.0)}
+    if os.path.exists(PREC):
+        with open(PREC, encoding="utf-8") as fh:
+            prec = {(r["source"], r["unit"], r["era"]): r["verdict"] for r in csv.DictReader(fh)}
+        for variable, (unit, want_verdict, want_grid) in sorted(EXPECT.items()):
+            got = prec.get(("iia", unit, "1934+"))
+            if got is None:
+                problems.append(
+                    f"source_value_precision.csv has no (iia, {unit}, 1934+) row, so the LATE_GRID "
+                    f"constant {tool.LATE_GRID.get(variable)} for `{variable}` cites a measurement that "
+                    f"is no longer there")
+            elif got != want_verdict:
+                problems.append(
+                    f"(iia, {unit}, 1934+) is now {got!r}, not {want_verdict!r}, so the hardcoded "
+                    f"LATE_GRID {tool.LATE_GRID.get(variable)} for `{variable}` no longer matches the "
+                    f"table it cites -- every zero_grid_verdict here rests on it")
+            elif tool.LATE_GRID.get(variable) != want_grid:
+                problems.append(
+                    f"LATE_GRID[{variable!r}] is {tool.LATE_GRID.get(variable)}, but {want_verdict} "
+                    f"means a grid of {want_grid:g}")
+
     # --- the zero/grid split, RE-DERIVED rather than trusted ---
     import collections as _c
     seen = _c.Counter()
