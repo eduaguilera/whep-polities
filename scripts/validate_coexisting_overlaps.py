@@ -294,8 +294,10 @@ def enclave_pin_problems(live: dict) -> list:
     """Check the pre-1990 enclave pairs pinned for issue 197, at the year each is pinned at.
 
     Independent of the YEARS grid on purpose: adding a pre-1990 slice there would pull in the
-    whole colonial-era gross-polygon class (the 1925 slice alone has 50 substantial pairs over
-    11.46 Mha), which needs the convention decision this gate deliberately does not make.
+    whole colonial-era gross-polygon class (the 1925 slice alone has ~50 substantial pairs over
+    11.46 MILLION KM2 = 1,145.68 Mha), which needs the convention decision this gate
+    deliberately does not make. The unit is spelled out because the module docstring above
+    records that this very figure was wrong by 100x, and this copy still carried the old form.
     Same CRS and the same buffer(0) as overlaps_by_year, so the numbers are comparable.
     """
     import geopandas as gpd
