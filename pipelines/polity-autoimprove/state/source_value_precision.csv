@@ -1,0 +1,21 @@
+source,unit,era,n_nonzero,share_grid_1000,share_grid_100,share_subunit,verdict
+fao1952,1000 heads,all,3067,0.0251,0.0649,0,fine
+fao1952,1000 hectares,all,5037,0.0159,0.0405,0.0203,fine
+fao1952,1000 people,all,830,0.0157,0.0651,0,fine
+fao1952,1000 tonnes,all,10240,0.0003,0.0104,0.2297,fine
+fao1952,kilograms,all,562,0,0.0231,0,fine
+fao1952,number,all,952,0.0494,0.105,0,fine
+fao1952,tonnes,all,906,0.0088,0.0552,0.1424,fine
+iia,ha,1934+,3393,0.9632,1,0,coarse_1000
+iia,ha,all,9996,0.504,0.5674,0,mixed
+iia,ha,pre-1934,4192,0.098,0.1937,0,fine
+iia,tonnes,1934+,5459,0.1301,0.8637,0.0427,coarse_100
+iia,tonnes,all,15398,0.0849,0.493,0.2997,mixed
+iia,tonnes,pre-1934,6339,0.0588,0.1453,0.5307,fine
+juan,ha,all,38468,0.4932,0.688,0.1299,mixed
+juan,heads,all,13285,0.8908,0.9252,0.0002,coarse_1000
+juan,tonnes,all,48505,0.3406,0.5895,0.2028,mixed
+mitchell,ha,all,8770,0.9995,1,0,coarse_1000
+mitchell,heads,all,10473,1,1,0,coarse_1000
+mitchell,tonnes,all,21191,0.7816,0.8509,0.0001,coarse_100
+sa_colonial,Bushels,all,825,0.0048,0.0182,0,fine
