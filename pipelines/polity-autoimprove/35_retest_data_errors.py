@@ -441,6 +441,43 @@ def check_item_product_switches(ctx):
             "the exhibit carries two mechanisms; the 1925 cell is australia administered islands")
 
 
+def check_mitchell_flax_is_linseed(ctx):
+    """55 mitchell flax-fibre values equal a juan LINSEED value; 1 equals a juan flax-fibre value.
+
+    THE CONTROL IS HALF THE EVIDENCE and it is why this entry is `confirmed` rather than suggestive. That
+    55 of 204 values match another source's linseed series exactly would be interesting on its own; that
+    only ONE matches the same source's flax-fibre series is what rules out coincidence, because a
+    coincidence has no reason to prefer one item over the other by 55 to 1. So both counts are pinned,
+    and a rise in the control would undo the conclusion even with the 55 intact.
+
+    Needs the panel only -- no raw extract -- because the proof is one source's series against another's.
+    """
+    lb = ctx["panel"]
+
+    def index(src, item):
+        g = lb[(lb["source"] == src) & (lb["item"] == item) & (lb["unit"] == "ha")
+               & lb["value"].notna()]
+        out = collections.defaultdict(set)
+        for c, v in zip(g["country"], g["value"]):
+            out[str(c).strip().lower()].add(round(float(v), 6))
+        return g, out
+
+    m, _ = index("mitchell", "flax fibre and tow")
+    _, juan_linseed = index("juan", "linseed")
+    _, juan_flax = index("juan", "flax fibre and tow")
+    lin = flax = 0
+    for c, v in zip(m["country"], m["value"]):
+        c, v = str(c).strip().lower(), round(float(v), 6)
+        if v in juan_linseed.get(c, ()):
+            lin += 1
+        if v in juan_flax.get(c, ()):
+            flax += 1
+    return ([("mitchell flax-fibre (ha) values", len(m), 204),
+             ("equal to a juan LINSEED value, same country", lin, 55),
+             ("equal to a juan FLAX-FIBRE value (the CONTROL)", flax, 1)],
+            "the control is what rules out coincidence: 55 against 1, not 55 alone")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -455,6 +492,7 @@ CHECKS = {
     "iia-hops-x100": check_hops_x100_and_area_x10,
     "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
     "iia-item-series-switch-raw-products": check_item_product_switches,
+    "mitchell-flax-fibre-area-is-linseed": check_mitchell_flax_is_linseed,
 }
 
 
