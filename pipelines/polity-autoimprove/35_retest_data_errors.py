@@ -877,6 +877,66 @@ def check_russia_1918_is_karafuto(ctx):
             "nothing competed for 1918, and the misrouting is general beyond it")
 
 
+def check_china_groundnut_audit(ctx):
+    """The discharged audit of the china groundnut outliers, plus the mechanism behind it.
+
+    Three of the audit's findings are pinned as stated: the two low values are Kwantung's, carried in the
+    raw as hectares and tonnes (which is what refutes the thousand-piculs unit hypothesis -- there is no
+    conversion anywhere in the chain); the source repeats the identical pair in a second volume under a
+    renamed product; and the high value it worried about (2,460,450 t) exists nowhere in either the raw
+    extract or the panel.
+
+    The fourth block is the mechanism, and it is what makes the audit's "a value belonging to one label
+    surfacing under another" too narrow. Layer B's `china, mainland` cell is the ARITHMETIC SUM of raw
+    `china` and raw `japan: kwantung leased territory`. Where china has no figure the sum degenerates to
+    Kwantung alone, which is the case the audit found; where china does have one, Kwantung is ADDED to
+    it, and those cells are invisible to any test that attributes a published value to a single raw
+    label. Issue 483 counts 25 uniquely-attributable Kwantung cells; the additive ones are a disjoint
+    population."""
+    raw, lb = ctx["raw"], ctx["panel"]
+    r = raw.assign(k_=raw["year"].astype(str).str.strip())
+    gnut = r[r["_p"].str.contains("groundnut", na=False) & r["value"].notna()]
+    KW = "japan: kwantung leased territory"
+    kwrows = gnut[(gnut["_c"] == KW) & gnut["value"].isin([2663.0, 2873.5])]
+    units = sorted(set(kwrows["unit"].astype(str)))
+    books = sorted(set(kwrows["yearbook"]))
+    # 2,460,450 t: gone from both sides
+    gl = lb[lb["item"].astype(str).str.contains("groundnut", case=False, na=False)]
+    near = gl[(gl["value"] > 2460450 * 0.99) & (gl["value"] < 2460450 * 1.01)]
+
+    # the additive identity, over every china,mainland cell with a same-family Kwantung row
+    kw = r[(r["_c"] == KW) & r["value"].notna()]
+    c = lb[(lb["source"] == "iia") & (lb["country"].str.lower() == "china, mainland")]
+    only = summed = 0
+    for t in c.itertuples():
+        key = str(t.period) if pd.isna(t.year) else str(int(t.year))
+        var = "area" if t.unit == "ha" else "production"
+        fam = str(t.item).split(",")[0].strip().split()[0].lower()[:5]
+        k2 = kw[(kw["variable"] == var) & (kw["k_"] == key)
+                & kw["_p"].str.startswith(fam, na=False)]["value"]
+        if k2.empty:
+            continue
+        v, kwv = float(t.value), float(k2.max())
+        if v == 0 or kwv == 0:      # a zero matches anything
+            continue
+        ch = r[(r["_c"] == "china") & (r["variable"] == var) & (r["k_"] == key)
+               & r["_p"].str.startswith(fam, na=False) & r["value"].notna()]["value"]
+        chv = float(ch.max()) if len(ch) else None
+        if chv is not None and abs(chv + kwv - v) < 1.0:
+            summed += 1
+        elif abs(kwv - v) < 0.6:
+            only += 1
+    return ([("raw rows at the two values", len(kwrows), 4),
+             ("  all under Kwantung", int((kwrows["_c"] == KW).all()), 1),
+             ("  units as printed", "|".join(units), "hectares|tonnes"),
+             ("  volumes repeating the pair", "|".join(books), "iia_1925_26|iia_1929_30"),
+             ("2,460,450 t within 1%", len(near), 0),
+             ("  exact, anywhere in raw", int((raw["value"] == 2460450).sum()), 0),
+             ("Kwantung-ONLY cells", only, 25),
+             ("Kwantung-ADDED cells", summed, 21)],
+            "the aggregation is additive; the audit found its degenerate case")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -902,6 +962,7 @@ CHECKS = {
     "ind-1947-livestock-broadcast-3000": check_india_1947_broadcast,
     "som-1959-livestock-broadcast-15000": check_somalia_1959_broadcast,
     "rus-1918-is-karafuto-prefecture": check_russia_1918_is_karafuto,
+    "chn-1895-1913-groundnut-outlier-data-error": check_china_groundnut_audit,
 }
 
 
