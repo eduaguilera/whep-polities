@@ -5475,6 +5475,55 @@ def check_every_gate_runs_in_ci() -> list:
         )
     return problems
 
+def _assert_imported_generators_are_staged() -> None:
+    """A gate that IMPORTS a pipeline file must have that file staged, or it dies before it checks.
+
+    THIS HAS BITTEN TWICE, both times in the same shape and both times invisible. `stage()` copies only
+    `scripts/<gate>` plus the WRITABLE files a case asks for, so a gate calling
+    `spec_from_file_location` on `pipelines/polity-autoimprove/<tool>.py` raises ImportError in the
+    scratch root -- and exits 1, which is exactly what a passing case looks like. On 2026-08-21
+    `validate_label_hierarchy_identity.py` had three brand-new cases "pass" that way, and
+    `validate_edition_conflicts.py` had TWO PRE-EXISTING, unrelated cases silently stop checking when an
+    import was added to it. The message assertion caught both, but only because each case pins a
+    substring; a case that merely required exit 1 would still be green today.
+
+    The rule is narrow on purpose. Reading a data file and finding it absent is often legitimate -- some
+    gates SKIP by design -- but an IMPORT can never degrade gracefully, so this checks only paths passed
+    to spec_from_file_location. Anything under `pipelines/` that a gate imports must appear in that
+    gate's WRITABLE tuple.
+    """
+    import ast as _ast
+    import re as _re
+    src = open(os.path.abspath(__file__), encoding="utf-8").read()
+    tree = _ast.parse(src)
+    writable = {}
+    for node in tree.body:
+        if (isinstance(node, _ast.Assign) and isinstance(node.targets[0], _ast.Name)
+                and node.targets[0].id == "WRITABLE" and isinstance(node.value, _ast.Dict)):
+            for k, v in zip(node.value.keys, node.value.values):
+                if isinstance(k, _ast.Constant) and isinstance(v, (_ast.Tuple, _ast.List)):
+                    writable[k.value] = {e.value for e in v.elts if isinstance(e, _ast.Constant)}
+    gates = sorted({c[0] for c in CASES})
+    problems = []
+    for gate in gates:
+        path = os.path.join(REPO, "scripts", gate)
+        if not os.path.exists(path):
+            continue
+        gsrc = open(path, encoding="utf-8").read()
+        if "spec_from_file_location" not in gsrc:
+            continue
+        # the repo-relative paths this gate builds; an imported one must be staged
+        wanted = {m for m in _re.findall(r'os\.path\.join\(REPO,\s*"([^"]+)"\)', gsrc)
+                  if m.startswith("pipelines/") and m.endswith(".py")}
+        missing = sorted(wanted - writable.get(gate, set()))
+        if missing:
+            problems.append(f"{gate} imports {missing} but they are not in its WRITABLE tuple, so the "
+                            f"gate will die on the import in the scratch root and exit 1 -- which is "
+                            f"indistinguishable from working")
+    if problems:
+        raise SystemExit("\n".join(problems))
+
+
 def _assert_no_duplicate_registry_keys() -> None:
     """Fail loudly if CASES or WRITABLE declares the same gate twice.
 
@@ -5510,6 +5559,7 @@ def _assert_no_duplicate_registry_keys() -> None:
 
 def main() -> int:
     _assert_no_duplicate_registry_keys()
+    _assert_imported_generators_are_staged()
     ap = argparse.ArgumentParser()
     ap.add_argument("--case", type=int, help="run one case by 1-based number")
     args = ap.parse_args()
