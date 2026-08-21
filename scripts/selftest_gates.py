@@ -3592,6 +3592,42 @@ def mutate_gridzero_dated_year_dropped(root, gpd, make_valid, affinity):
             f"while zeros_dated stays {hit['zeros_dated']}")
 
 
+def mutate_attribution_outside_the_blind_spot(root, gpd, make_valid, affinity):
+    """Claim a cell provenance for a series that already has one.
+
+    `cell_attribution.csv` exists to fill `item_provenance`'s blind spot: the 134 series its 60% share
+    floor can only call `unattributable` (issues 372, 443). Its authority depends entirely on staying
+    inside that scope -- a row for an `attributable` series asserts a SECOND, competing provenance for a
+    series the other table already names, and a consumer joining both would get two answers with nothing
+    to choose between them.
+
+    The mutation appends a row for a series that is `attributable` in item_provenance, with its counts
+    made self-consistent and its product taken from the crosswalk, so the schema, arithmetic and
+    crosswalk arms all stay quiet and only the scope arm can see it. Getting that isolation right
+    mattered: the first version left the counts inconsistent and tripped the arithmetic arm instead,
+    which would have left the scope arm unproven.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/cell_attribution.csv")
+    prov = os.path.join(root, "pipelines/polity-autoimprove/state/item_provenance.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0])
+    with open(prov, newline="", encoding="utf-8") as fh:
+        ok = [r for r in _csv.DictReader(fh) if r["status"] == "attributable" and r["raw_product"]]
+    if not rows or not ok:
+        raise AssertionError("no rows, or no attributable series to borrow, so this mutation would "
+                             "assert nothing")
+    t = ok[0]
+    rows.append({**rows[0], "layer_b_label": t["layer_b_label"], "item": t["item"],
+                 "unit": t["unit"], "raw_product": t["raw_product"], "raw_label": t["raw_label"],
+                 "cells_for_this_label": "1", "cells_in_series": "1"})
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+
+
 def mutate_precision_contradicts_the_registry(root, gpd, make_valid, affinity):
     """Give a source a coarse grid it has no convention for.
 
@@ -4105,6 +4141,13 @@ CASES = (
         "an in-volume witness moved to a year from a different yearbook volume, so the row claims "
         "same-volume evidence while holding the cross-era kind -- the exact reading issue 366 was "
         "retitled to withdraw, with every other field left intact",
+    ),
+    (
+        "validate_cell_attribution.py",
+        mutate_attribution_outside_the_blind_spot,
+        "not `unattributable`",
+        "a cell provenance claimed for a series item_provenance already attributes, with counts and "
+        "crosswalk made consistent so only the scope arm can see it",
     ),
     (
         "validate_value_precision.py",
@@ -4837,6 +4880,14 @@ WRITABLE = {
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+    ),
+    # The case appends a row to cell_attribution.csv; the gate imports the generator and reads both
+    # item_provenance.csv and item_equivalences.csv, so all four are staged.
+    "validate_cell_attribution.py": (
+        "pipelines/polity-autoimprove/state/cell_attribution.csv",
+        "pipelines/polity-autoimprove/38_cell_attribution.py",
+        "pipelines/polity-autoimprove/state/item_provenance.csv",
+        "pipelines/polity-autoimprove/state/item_equivalences.csv",
     ),
     # The case rewrites source_value_precision.csv in place (it promotes one row's verdict), and the
     # gate imports the generator's classify() and reads the conventions registry, so all three are

@@ -505,6 +505,12 @@ jobs:
       # The machine-readable half of issue 446: how coarse is each source's reporting grid, keyed on
       # (source, unit) because juan's `heads` is 89% on a 1000-grid while its `ha` is 49%. Cross-checked
       # against source_conventions.csv so the table and the registry that justifies it cannot drift.
+      # Per-CELL provenance for the 134 series item_provenance can only call `unattributable`, because
+      # its 60% share floor is a series-level test and a cell needs only itself. Re-finds issue 372's
+      # Ghana split (10 Gold Coast / 10 Togoland) that the floor hid.
+      - name: Sources — cell attributions must stay inside the blind spot and the crosswalk
+        if: '!cancelled()'
+        run: python3 scripts/validate_cell_attribution.py
       - name: Sources — the value-precision table must agree with the grid conventions
         if: '!cancelled()'
         run: python3 scripts/validate_value_precision.py
