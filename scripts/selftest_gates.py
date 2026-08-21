@@ -3592,6 +3592,33 @@ def mutate_gridzero_dated_year_dropped(root, gpd, make_valid, affinity):
             f"while zeros_dated stays {hit['zeros_dated']}")
 
 
+def mutate_precision_contradicts_the_registry(root, gpd, make_valid, affinity):
+    """Give a source a coarse grid it has no convention for.
+
+    `source_value_precision.csv` is the machine-readable form of grids already registered in
+    `source_conventions.csv` with their own re-tests (issue 446). Its value depends entirely on the two
+    agreeing: a precision table that contradicts the registry justifying it is worse than no table,
+    because a consumer joining it inherits a claim about a source with nothing standing behind it.
+
+    The mutation promotes a `fao1952` row to `coarse_1000` -- fao1952 is genuinely fine (1.1% on a
+    1000-grid, 12% sub-unit) and has no grid convention. Its shares are raised to match so the
+    arithmetic and verdict-re-derivation arms stay quiet and only the cross-check can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/source_value_precision.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    hit = next((r for r in rows if r["source"] == "fao1952"), None)
+    if hit is None:
+        raise AssertionError("no fao1952 row to promote, so this mutation would assert nothing")
+    hit["share_grid_1000"], hit["share_grid_100"] = "0.95", "0.99"
+    hit["verdict"] = "coarse_1000"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+
+
 def mutate_hierarchy_subfloor_without_the_exemption(root, gpd, make_valid, affinity):
     """Keep a below-floor row while removing what earns it its place.
 
@@ -4078,6 +4105,13 @@ CASES = (
         "an in-volume witness moved to a year from a different yearbook volume, so the row claims "
         "same-volume evidence while holding the cross-era kind -- the exact reading issue 366 was "
         "retitled to withdraw, with every other field left intact",
+    ),
+    (
+        "validate_value_precision.py",
+        mutate_precision_contradicts_the_registry,
+        "has no registered grid convention",
+        "a genuinely fine source promoted to a coarse grid it has no convention for, with its shares "
+        "raised to match so only the cross-check against source_conventions.csv can see it",
     ),
     (
         "validate_label_hierarchy_identity.py",
@@ -4803,6 +4837,14 @@ WRITABLE = {
     # The case rewrites edition_conflicts.csv in place (it reclassifies rows), so a real copy.
     "validate_edition_conflicts.py": (
         "pipelines/polity-autoimprove/state/edition_conflicts.csv",
+    ),
+    # The case rewrites source_value_precision.csv in place (it promotes one row's verdict), and the
+    # gate imports the generator's classify() and reads the conventions registry, so all three are
+    # staged.
+    "validate_value_precision.py": (
+        "pipelines/polity-autoimprove/state/source_value_precision.csv",
+        "pipelines/polity-autoimprove/37_value_precision.py",
+        "pipelines/polity-autoimprove/state/source_conventions.csv",
     ),
     # All three cases rewrite label_hierarchy_identity.csv in place (append a row, relabel a verdict,
     # delete a baselined row), so a real copy. The GENERATOR is staged too, not because any case

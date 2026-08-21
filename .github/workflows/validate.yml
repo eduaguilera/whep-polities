@@ -502,6 +502,12 @@ jobs:
       # 2,878 for the Reich -- 28 of 28 cells exact. The tree is re-verified from the label text
       # because an earlier generator filed `guinea-bissau` as a part of `guinea` and every
       # arithmetic arm stayed green: the ratios were real, the relationship was invented.
+      # The machine-readable half of issue 446: how coarse is each source's reporting grid, keyed on
+      # (source, unit) because juan's `heads` is 89% on a 1000-grid while its `ha` is 49%. Cross-checked
+      # against source_conventions.csv so the table and the registry that justifies it cannot drift.
+      - name: Sources — the value-precision table must agree with the grid conventions
+        if: '!cancelled()'
+        run: python3 scripts/validate_value_precision.py
       - name: Sources — nested-label identities must hold, and the label tree must be real
         if: '!cancelled()'
         run: python3 scripts/validate_label_hierarchy_identity.py
