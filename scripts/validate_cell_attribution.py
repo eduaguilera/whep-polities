@@ -16,6 +16,11 @@ reach into other tracked tables:
      fill that status's blind spot, and a row for an `attributable` series would be asserting a second,
      competing provenance for a series that already has one.
   E  BASELINE pins the multi-label splits cited on issues. BIDIRECTIONAL.
+  F  `series_time_structure` is RE-DERIVED from the rows' own years by importing the generator's
+     time_structure(). It is the column that decides whether a date-keyed reroute is even possible --
+     `partition` means there is a boundary year, `interleaved` means the label's own dates carry none --
+     so a wrong value here is the most consequential kind of wrong this table can be. 30 of 52
+     multi-label series are `interleaved`, so the distinction is not a formality.
 """
 from __future__ import annotations
 
@@ -120,6 +125,32 @@ def main() -> int:
                 fails.append(f"{who}: item_provenance says this series is {st!r}, not `unattributable`. "
                              f"This table fills that status's blind spot; a row here asserts a second "
                              f"provenance for a series that already has one")
+
+    # --- F: re-derive the per-series time structure ---
+    import re as _re
+    spans = collections.defaultdict(dict)
+    datable = collections.defaultdict(lambda: True)
+    declared = {}
+    for r in rows:
+        k = (r["layer_b_label"], r["item"], r["unit"])
+        declared.setdefault(k, set()).add(r["series_time_structure"])
+        m = _re.match(r"^(\d{4})(?:-(\d{4}))?$", r["when"].strip())
+        if not m:
+            datable[k] = False
+            continue
+        lo, hi = int(m.group(1)), int(m.group(2) or m.group(1))
+        cur = spans[k].get(r["raw_label"])
+        spans[k][r["raw_label"]] = (min(lo, cur[0]), max(hi, cur[1])) if cur else (lo, hi)
+    for k, decl in sorted(declared.items()):
+        if len(decl) > 1:
+            fails.append(f"{k}: rows disagree about series_time_structure {sorted(decl)} -- it is a "
+                         f"per-series property and must be identical on every row of the series")
+            continue
+        want = tool.time_structure(spans[k]) if datable[k] else "undatable"
+        got = next(iter(decl))
+        if got != want:
+            fails.append(f"{k}: series_time_structure is {got!r}, but the rows' own years give {want!r} "
+                         f"({ {l: v for l, v in sorted(spans[k].items())} })")
 
     # --- E ---
     for k, want in sorted(BASELINE.items()):

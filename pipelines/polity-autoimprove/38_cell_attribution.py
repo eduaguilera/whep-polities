@@ -63,7 +63,7 @@ UNIT_VARIABLE = {"ha": "area", "tonnes": "production"}
 
 FIELDS = ("layer_b_label", "item", "unit", "when", "value", "raw_label", "raw_product",
           "variable", "n_products_searched", "n_raw_rows_in_cell", "cells_for_this_label",
-          "cells_in_series")
+          "cells_in_series", "series_time_structure")
 
 
 # COLUMN NAMES CARRY A TRAILING UNDERSCORE, NOT A LEADING ONE. `DataFrame.itertuples()` silently renames
@@ -72,6 +72,37 @@ FIELDS = ("layer_b_label", "item", "unit", "when", "value", "raw_label", "raw_pr
 # scripts, always with an error pointing at a column that plainly exists.
 def norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(s).lower()).strip()
+
+
+def time_structure(spans: dict) -> str:
+    """Do a series' raw labels PARTITION time, or INTERLEAVE? This is the column that decides whether a
+    date-keyed reroute is even possible, so it travels with the rows rather than being re-derived.
+
+    `partition` -- the labels' year ranges are disjoint, so there is a boundary year and the split is a
+    SUCCESSION: `austria-hungary` 1909-1914 then `austria` 1925-1932 at the dissolution;
+    `italian libya: tripolitania` 1924-1925 then `italian libya` 1928-1939 at the 1934 unification. This
+    is the shape issue 443's `split_candidate` models, and requiring separation is what keeps it honest.
+
+    `interleaved` -- the ranges overlap, and then the label's own dates carry NO boundary. Two sub-shapes,
+    both fatal to a date-keyed repair, and the column does not try to separate them because the arithmetic
+    cannot: (a) a whole reported concurrently with its part, `australia` beside `australia: queensland`,
+    `dutch east indies` beside `dutch java and madura`; (b) a PERSISTENT COLUMN HEADER whose dates
+    contradict the entity's -- `italian east africa` supplies 1928-1935 though Italian East Africa existed
+    1936-1941, and `ethiopian empire` supplies 1939-1940, during the occupation. Issue 372 names this for
+    `german togoland`. A reroute keyed on the label's name would be wrong in both directions.
+
+    30 of 52 multi-label series are `interleaved`, which is also the measure of how much work the
+    separation criterion is doing: without it they would all read as successions.
+    """
+    labels = sorted(spans)
+    if len(labels) < 2:
+        return "single_label"
+    for i in range(len(labels) - 1):
+        for j in range(i + 1, len(labels)):
+            a, b = spans[labels[i]], spans[labels[j]]
+            if a[0] <= b[1] and b[0] <= a[1]:
+                return "interleaved"
+    return "partition"
 
 
 def build(panel_path: str, raw_path: str) -> list[dict]:
@@ -152,6 +183,23 @@ def build(panel_path: str, raw_path: str) -> list[dict]:
         k = (r["layer_b_label"], r["item"], r["unit"])
         r["cells_for_this_label"] = per[(*k, r["raw_label"])]
         r["cells_in_series"] = tot[k]
+
+    # Per-series time structure. An undatable `when` (a period this regex does not parse) leaves the
+    # series `undatable` rather than being guessed at.
+    spans = collections.defaultdict(dict)
+    ok = collections.defaultdict(lambda: True)
+    for r in rows:
+        k = (r["layer_b_label"], r["item"], r["unit"])
+        m = re.match(r"^(\d{4})(?:-(\d{4}))?$", r["when"].strip())
+        if not m:
+            ok[k] = False
+            continue
+        lo, hi = int(m.group(1)), int(m.group(2) or m.group(1))
+        cur = spans[k].get(r["raw_label"])
+        spans[k][r["raw_label"]] = (min(lo, cur[0]), max(hi, cur[1])) if cur else (lo, hi)
+    for r in rows:
+        k = (r["layer_b_label"], r["item"], r["unit"])
+        r["series_time_structure"] = time_structure(spans[k]) if ok[k] else "undatable"
     rows.sort(key=lambda r: (r["layer_b_label"], r["item"], r["unit"], r["when"]))
     return rows
 
