@@ -153,6 +153,69 @@ def check_korea_rice_paddy_area(ctx):
             "the impossible yield, not the two areas, is what pins the area cell")
 
 
+def check_russia_asian_component(ctx):
+    """Eight tobacco cells equal to `russia in europe` to the digit, with the Asian half never added.
+
+    EXACT EQUALITY IS THE CLAIM, not the size of the gap. An approximate match to one component would be
+    consistent with a revision or with a different volume; equality to the digit in eight consecutive
+    years says the component was never added. So the check counts EXACT matches (1e-6 relative) and
+    fails if any of the eight stops being one.
+
+    THE SECOND LEG IS RE-MEASURED TOO, because without it the finding is indistinguishable from "this
+    label never sums anything". The entry cites 72 correctly-summed cells across all items; re-deriving
+    that number needs the item crosswalk and multi-product pooling, which is where my own first pass
+    manufactured five spurious `flax fibre and tow` rows. So the leg is re-tested on RYE instead --
+    same label, one raw product, no crosswalk -- where 1909-1916 must sum both components and 1917/1920
+    must not. That is the same claim on ground that cannot be got wrong the same way.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    tob = raw[(raw["_p"] == "tobacco") & (raw["_v"] == "production") & raw["value"].notna()]
+    eu = {str(t.year).strip(): float(t.value) for t in tob[tob["_c"] == "russia in europe"].itertuples()}
+    asi = {str(t.year).strip(): float(t.value) for t in tob[tob["_c"] == "russia in asia"].itertuples()}
+    g = lb[(lb["source"] == "iia") & (lb["country"] == "russian federation")
+           & (lb["item"] == "tobacco, unmanufactured") & (lb["unit"] == "tonnes") & lb["value"].notna()]
+    when = g["period"].where(g["period"].notna(), g["year"].astype("string"))
+    exact_eu = both = 0
+    for w, v in zip(when, g["value"]):
+        k = str(w).strip()
+        if k not in eu or k not in asi:
+            continue
+        both += 1
+        if abs(float(v) - eu[k]) <= 1e-6 * max(abs(eu[k]), 1.0):
+            exact_eu += 1
+    # Second leg: rye, where the SAME label sums both components in the early years and drops the
+    # Asian one at 1917 and 1920. One raw product, so no crosswalk and no pooling to get wrong.
+    rye = raw[(raw["_p"] == "rye") & (raw["_v"] == "area") & raw["value"].notna()]
+    # SUM the rows per year, do not take one. `russia in asia` carries TWO rye rows for each of
+    # 1909-1916 (e.g. 918,720 and 318,737 at 1909) and one for 1917 and 1920 -- it is itself a group
+    # label. Keeping a single row understates the component by about 3% and made this leg report 0
+    # correctly-summed cells when the answer is 8; issue 422's three-term identity
+    # (28,161,536 + 918,720 + 318,737 = 29,398,993) is the same fact seen from the other side.
+    reu = rye[rye["_c"] == "russia in europe"].groupby(
+        rye["year"].astype(str).str.strip())["value"].sum().to_dict()
+    ras = rye[rye["_c"] == "russia in asia"].groupby(
+        rye["year"].astype(str).str.strip())["value"].sum().to_dict()
+    gr = lb[(lb["source"] == "iia") & (lb["country"] == "russian federation")
+            & (lb["item"] == "rye") & (lb["unit"] == "ha") & lb["value"].notna()]
+    rwhen = gr["period"].where(gr["period"].notna(), gr["year"].astype("string"))
+    summed = eu_only = 0
+    for w, v in zip(rwhen, gr["value"]):
+        k = str(w).strip()
+        if k not in reu or k not in ras:
+            continue
+        v = float(v)
+        reu_k, ras_k = float(reu[k]), float(ras[k])
+        if abs(v - (reu_k + ras_k)) <= 0.02 * (reu_k + ras_k):
+            summed += 1
+        elif abs(v - reu_k) <= 0.001 * max(reu_k, 1.0):
+            eu_only += 1
+    return ([("tobacco cells with both components", both, 8),
+             ("of those, EXACTLY equal to europe alone", exact_eu, 8),
+             ("rye cells that DO sum both components", summed, 8),
+             ("rye cells that are europe-only", eu_only, 2)],
+            "the summing works for rye in the same label, so this is a per-item omission")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -161,6 +224,7 @@ CHECKS = {
     "fao1952-china-livestock-cells-implausible": check_fao1952_china_label,
     "fao1952-label-carries-a-wrong-group-heading": check_fao1952_wrong_group_heading,
     "fao1952-korea-rice-paddy-area-impossible": check_korea_rice_paddy_area,
+    "iia-russia-asian-component-dropped": check_russia_asian_component,
 }
 
 
