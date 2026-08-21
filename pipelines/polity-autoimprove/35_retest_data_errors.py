@@ -349,6 +349,49 @@ def check_hops_x100_and_area_x10(ctx):
             "the tobacco-area control is what makes these two defects rather than one")
 
 
+def check_hemp_germany_glued(ctx):
+    """The parent/child identity that proves three fao1952 hemp labels are Germany's, and the row count
+    the entry understates.
+
+    THE IDENTITY IS THE PROOF and it needs no source page: in the hemp-fibre table
+    `France Eastern` + `Western` equals `France Germany` on BOTH indicators, exactly --
+    production 2.9 + 1.2 = 4.1 and area 4.0 + 2.0 = 6.0 (1934-1938). Two supporting absences make it
+    unambiguous: the table carries NO bare `Germany` label, and `France` is present separately at 3.9,
+    so a France-plus-Germany aggregate is ruled out in both directions.
+
+    THE ROW COUNT IS LARGER THAN THE ENTRY SAYS, and the re-test measures it rather than repeating the
+    figure. The entry records "6 rows (2 per label)", which counts the 1934-1938 triple that carries the
+    identity. But `Western` also appears at 1949, 1950 and 1951 on both indicators -- 8 `Western` rows in
+    total, not 2 -- and those rows carry the same uninformative label without being part of the
+    arithmetic. Twelve rows in the table are labelled with one of the three, so a repair keyed on the
+    identity would leave six of them behind.
+    """
+    lb = ctx["panel"]
+    f = lb[(lb["source"] == "fao1952") & lb["item"].str.contains("hemp", case=False, na=False)].copy()
+    f["lab"] = f["country"].str.replace(r"\s+", " ", regex=True).str.strip()
+
+    def val(lab, ind):
+        v = f[(f["lab"] == lab) & (f["indicator"] == ind) & (f["period"] == "1934-1938")]["value"]
+        return round(float(v.iloc[0]), 6) if len(v) == 1 else None
+
+    pe, pw, pg = (val("France Eastern", "crops:production"), val("Western", "crops:production"),
+                  val("France Germany", "crops:production"))
+    ae, aw, ag = (val("France Eastern", "crops:area"), val("Western", "crops:area"),
+                  val("France Germany", "crops:area"))
+    return ([("production: France Eastern + Western",
+              round(pe + pw, 6) if None not in (pe, pw) else None, 4.1),
+             ("production: France Germany", pg, 4.1),
+             ("area: France Eastern + Western",
+              round(ae + aw, 6) if None not in (ae, aw) else None, 6.0),
+             ("area: France Germany", ag, 6.0),
+             ("bare `Germany` labels in the hemp table", int((f["lab"] == "Germany").sum()), 0),
+             ("`France` production 1934-1938 (present separately)",
+              val("France", "crops:production"), 3.9),
+             ("rows carrying one of the three glued labels",
+              int(f["lab"].isin(["France Eastern", "Western", "France Germany"]).sum()), 12)],
+            "the identity holds on both indicators; 12 rows carry these labels, not the 6 in the entry")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -361,6 +404,7 @@ CHECKS = {
     "layerb-nested-reporting-levels-one-polity": check_nested_reporting_levels,
     "iia-layerb-magnitude-scale-inconsistent": check_iia_scale_is_common,
     "iia-hops-x100": check_hops_x100_and_area_x10,
+    "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
 }
 
 
