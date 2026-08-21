@@ -73,7 +73,7 @@ EPS = 1e-9
 # x100 cases cluster tightly, while ordinary revisions have a median ratio of 1.032.
 POW10_WINDOW = 0.05
 
-FIELDS = ["label", "product", "variable", "unit", "year", "kind",
+FIELDS = ["label", "product", "variable", "unit", "year", "kind", "zero_grid_verdict",
           "volume_a", "value_a", "volume_b", "value_b", "ratio"]
 
 
@@ -91,6 +91,46 @@ def power_of_ten(ratio: float) -> int | None:
     if p == 0 or abs(p) > 3:
         return None
     return p if abs(ratio / (10.0 ** p) - 1.0) <= POW10_WINDOW else None
+
+
+
+# THE LATE VOLUMES' REPORTING GRID, from state/source_value_precision.csv (issue 446, PR 528): `iia` from
+# 1934 sits at 96.3% on a 1000-grid for `ha` and 86.4% on a 100-grid for `tonnes`. These are the windows
+# iia_1938_39 and iia_1939_45 cover.
+LATE_GRID = {"area": 1000.0, "production": 100.0}
+
+
+def zero_grid_verdict(variable: str, contradicting_value: float, zero_volume: str) -> str:
+    """Is a contradicted zero a MISREAD BLANK, or a value correctly rounded to zero?
+
+    THE DISCRIMINATING PREDICTION, which is why this column exists rather than a note on the issue. A
+    blank read as 0 has no reason to correlate with the magnitude of the value the other volume prints.
+    Rounding to a coarse grid does: it can only produce 0 when the true value is below HALF the grid. So
+    the two explanations are separable per cell, and on the 83 rows here they separate sharply --
+    57 of 62 area cells sit under 500 against a 1000-hectare step (median 178), and 19 of 21 production
+    cells under 50 against a 100-tonne step (median 21.5). `belgium` hemp fibre is 17 ha; against a
+    1000-hectare grid, 17 IS zero.
+
+    This does not weaken issue 414's asymmetry (83 contradicted zeros one way, 0 the other) -- it
+    explains it, since the coarseness is one-way too. What it changes is the reading of the cells: most
+    are a resolution floor, which issue 446 owns and which needs no repair, not an extraction fault
+    needing recovery.
+
+    `grid_explains` requires the zero to be in a LATE volume, because the grid claim is about those
+    windows; a zero in an early volume gets `not_applicable` rather than being waved through.
+    """
+    if zero_volume not in ("iia_1938_39", "iia_1939_45"):
+        return "not_applicable"
+    grid = LATE_GRID.get(variable)
+    if grid is None:
+        return "unknown_variable"
+    if abs(contradicting_value) < grid / 2:
+        return "grid_explains"
+    if abs(contradicting_value) == grid / 2:
+        # Exactly at the boundary the rounding direction is a convention, not arithmetic -- three of
+        # these 83 sit at 500-535 ha and are undecidable in principle rather than in practice.
+        return "at_grid_boundary"
+    return "grid_cannot_explain"
 
 
 def build(raw_path: str) -> tuple[list[dict], dict]:
@@ -148,6 +188,9 @@ def build(raw_path: str) -> tuple[list[dict], dict]:
                 rows.append({
                     "label": k[0], "product": k[1], "variable": k[2], "unit": k[3],
                     "year": int(k[4]), "kind": kind,
+                    "zero_grid_verdict": (
+                        zero_grid_verdict(k[2], xa if xb == 0 else xb, vb if xb == 0 else va)
+                        if kind == "zero_contradicted" else ""),
                     # .12g, not .6g: the volumes differ by rounding as well as by revision --
                     # french algeria wine 1933 is 1,522,516.996 in iia_1933_34 and 1,522,521.0 in
                     # iia_1938_39 -- and at six significant figures both print identically, so the

@@ -45,15 +45,32 @@ Usage:
 from __future__ import annotations
 
 import csv
+import importlib.util
 import os
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/edition_conflicts.csv")
+GENERATOR = os.path.join(REPO, "pipelines/polity-autoimprove/26_edition_conflicts.py")
+
+
+def load_generator():
+    """The zero/grid verdict is re-derived by importing the generator's own classifier, so a
+    hand-edited verdict cannot stand while its own values refute it."""
+    spec = importlib.util.spec_from_file_location("edition_conflicts", GENERATOR)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
 
 # Measured 2026-08-19 on the first run. BIDIRECTIONAL: setting false zeros to missing must lower
 # ZERO_CONTRADICTED with a note saying which cells were repaired.
 BASELINE_ZERO_CONTRADICTED = 83
+# The zero_contradicted rows split by whether the LATE volume's reporting grid can produce the zero
+# (issue 414, using the grids recorded for issue 446). A blank read as 0 does not correlate with the
+# magnitude of the value the other volume prints; rounding to a coarse grid can only produce 0 below
+# HALF the grid. So these three numbers are the split between "resolution floor" and "recoverable
+# blank", and they are what anyone acting on 414 would act on.
+BASELINE_ZERO_GRID = {"grid_explains": 76, "grid_cannot_explain": 6, "at_grid_boundary": 1}
 BASELINE_REVISED = 959
 # Measured 2026-08-19 (issue 424). 99 revisions differ by a clean power of ten, and 98 of the 99 hold
 # the SMALLER value in iia_1933_34. The control is what makes that significant rather than a property
@@ -88,6 +105,29 @@ def main() -> int:
           f"revised {len(rev)}/{BASELINE_REVISED})")
 
     problems = []
+    tool = load_generator()
+
+    # --- the zero/grid split, RE-DERIVED rather than trusted ---
+    import collections as _c
+    seen = _c.Counter()
+    for r in zc:
+        want = tool.zero_grid_verdict(
+            r["variable"],
+            float(r["value_a"]) if float(r["value_b"]) == 0 else float(r["value_b"]),
+            r["volume_b"] if float(r["value_b"]) == 0 else r["volume_a"])
+        seen[r["zero_grid_verdict"]] += 1
+        if r["zero_grid_verdict"] != want:
+            problems.append(
+                f"{r['label']}/{r['product']}/{r['variable']}/{r['year']}: zero_grid_verdict is "
+                f"{r['zero_grid_verdict']!r}, but the row's own values give {want!r}")
+    for k, n in sorted(BASELINE_ZERO_GRID.items()):
+        if seen.get(k, 0) != n:
+            problems.append(
+                f"zero_grid_verdict {k!r} is {seen.get(k, 0)}, baseline {n}. This split is what "
+                f"separates a resolution floor from a recoverable blank on issue 414; if a rebuild "
+                f"moves it, say which cells moved and update the baseline in the same commit")
+    for k in sorted(set(seen) - set(BASELINE_ZERO_GRID) - {""}):
+        problems.append(f"unexpected zero_grid_verdict {k!r} on {seen[k]} row(s)")
 
     # --- B: ceilings ---
     if len(zc) > BASELINE_ZERO_CONTRADICTED:

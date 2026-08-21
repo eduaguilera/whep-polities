@@ -470,6 +470,14 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        products and 16 of them reach layer B with the wrong value (issue 424) —
                        iia/japan/soybeans/ha 1933 reads 32,367 between 341,753 and 336,000, a 10.5x
                        collapse that sits BELOW 27_series_collapses.py's 20x floor.
+                       ZERO_GRID_VERDICT splits the 83 contradicted zeros by whether the LATE
+                       volume's own grid can produce the zero: a blank read as 0 does not correlate
+                       with the magnitude of the other volume's value, while rounding to a coarse
+                       grid can only give 0 BELOW HALF the grid, so the two explanations separate per
+                       cell. 76 grid_explains, 6 grid_cannot_explain, 1 at_grid_boundary — `belgium`
+                       hemp fibre is 17 ha against a 1,000-hectare step, i.e. correctly rounded,
+                       while `austria` meslin at 8,588 ha cannot be. Grids from
+                       state/source_value_precision.csv (issue 446).
                        Issue 414. --write refreshes state/edition_conflicts.csv
 27_series_collapses.py where does a series COLLAPSE — a year many times BELOW its neighbours, or
                        below its own start/end? 18_isolated_spikes.py is one-directional and skips
