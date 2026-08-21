@@ -1268,6 +1268,82 @@ def check_fao1952_poultry_order(d):
         ["chickens", "ducks", "geese", "turkeys"])
 
 
+def check_fao1952_meat_total_last(d):
+    """fao1952 `meat` groups carry a TOTAL in their last row -- and an independent source agrees.
+
+    TWO INSTRUMENTS, which is what makes this registrable where the positional claim alone was not.
+
+    (1) INTERNAL IDENTITY. The last value equals the sum of the others: Algeria 1949 reads
+        10 + 12 + 16 = 38, 1950 12 + 11 + 17 = 40. Across the panel this holds in the large majority
+        of multi-row groups, and the last row is the maximum in ~94%.
+
+    (2) CROSS-SOURCE. `mitchell` publishes a national `meat` tonnage. Where both sources cover a
+        country-year it matches the fao1952 LAST row and NEVER one of the parts -- Brazil 1949 fao
+        [955, 233, 30, 1218] against mitchell 1218; Mexico [131, 58, 12, 201] against 201. The zero
+        is the discriminating half: a coincidence would sometimes land on a part.
+
+    WHY THIS IS NOT THE SAME CLAIM AS THE ORDER CONVENTIONS. `horses mules asses` and `poultry` hold
+    one row per MEMBER with no total; `meat` holds parts PLUS their total. A rule that promotes the last
+    row to a national total is right here and wrong for those -- the last row is the maximum in 2 of 211
+    `poultry` groups. So this entry establishes structure, not member identity: which meat types the
+    parts are is NOT established, because they exist nowhere else in the panel.
+    """
+    f = d[(d["source"] == "fao1952") & (d["item"] == "meat") & (d["unit"] == "1000 tonnes")]
+    f = f[f["value"].notna()].copy()
+    if f.empty:
+        return False, "no fao1952 `meat` rows in the panel at all"
+    key = ["country", "year", "indicator", "unit", "period"]
+    f["pos"] = f.groupby(key, dropna=False).cumcount()
+    multi = ident = lastmax = 0
+    for _, g in f.groupby(key, dropna=False):
+        v = [float(x) for x in g.sort_values("pos")["value"]]
+        if len(v) < 2:
+            continue
+        multi += 1
+        if abs(v[-1] - sum(v[:-1])) <= max(0.02 * sum(v[:-1]), 0.05):
+            ident += 1
+        if abs(v[-1] - max(v)) < 1e-9:
+            lastmax += 1
+    if multi < 100:
+        return False, f"only {multi} multi-row `meat` groups; too few to establish a structure"
+    if ident / multi < 0.80 or lastmax / multi < 0.85:
+        return False, (f"the parts-plus-total identity holds in {ident}/{multi} groups and the last row "
+                       f"is the maximum in {lastmax}/{multi} -- below the 80%/85% this entry rests on")
+
+    # Cross-source arm. Zero non-last matches is the discriminating condition.
+    m = d[(d["source"] == "mitchell") & (d["item"] == "meat")]
+    m = m[m["value"].notna() & m["year"].notna()]
+    M = {}
+    for t in m.itertuples():
+        v = float(t.value) / 1000 if t.unit == "tonnes" else float(t.value)
+        M.setdefault((str(t.country).strip().lower(), int(t.year)), set()).add(round(v, 3))
+    last_hit = part_hit = 0
+    for _, g in f[f["year"].notna()].groupby(key, dropna=False):
+        v = [float(x) for x in g.sort_values("pos")["value"]]
+        if len(v) < 3:
+            continue
+        r = M.get((str(g["country"].iloc[0]).strip().lower(), int(g["year"].iloc[0])))
+        if not r:
+            continue
+
+        def near(x):
+            return any(abs(x - y) <= max(0.05 * max(abs(y), 1e-9), 0.5) for y in r)
+
+        if near(v[-1]):
+            last_hit += 1
+        elif any(near(x) for x in v[:-1]):
+            part_hit += 1
+    if last_hit < 8:
+        return False, (f"only {last_hit} country-years where mitchell's national meat total matches the "
+                       f"last row; the cross-source half of this entry no longer reproduces")
+    if part_hit > 0:
+        return False, (f"mitchell's total matches a NON-last row in {part_hit} country-year(s) -- the "
+                       f"zero is the discriminating condition, so the total's position is in doubt")
+    return True, (f"parts+total identity {ident}/{multi} groups, last row is the maximum {lastmax}/{multi}; "
+                  f"mitchell's national total matches the LAST row in {last_hit} country-years and a part "
+                  f"in {part_hit}")
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -1280,6 +1356,7 @@ CHECKS = {
     ("fao1952", "*", "population"): check_fao1952_population,
     ("fao1952", "*", "horses mules asses"): check_fao1952_group_item_order,
     ("fao1952", "*", "poultry"): check_fao1952_poultry_order,
+    ("fao1952", "*", "meat"): check_fao1952_meat_total_last,
     ("iia", "russian federation", "*"): check_iia_russia,
     ("iia", "south korea", "*"): check_iia_south_korea,
     ("juan", "germany", "*"): check_juan_germany,
