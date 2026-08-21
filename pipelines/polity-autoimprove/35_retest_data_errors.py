@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import pandas as pd
 import csv
 import os
 import sys
@@ -598,6 +599,35 @@ def check_nigeria_cotton_area_zero(ctx):
             "the surviving tonnage is what refutes the zeros; the zeros alone prove nothing")
 
 
+def check_cze_1910_rye_orphan(ctx):
+    """A 3-hectare rye area in 1910, and the pre-1919 row count that convicts it without a magnitude
+    argument.
+
+    THE ROW COUNT IS THE ARGUMENT, not the size of the number. Raw `czechoslovakia` carries exactly THREE
+    rows dated before 1919 -- this rye area of 3.0 ha at 1910, a 1918 sugar-beet production of 640,816.1 t
+    and a 1918 potato export of 0.1 t -- and the state was founded in October 1918. A label with three
+    pre-existence rows is not reporting a country's 1910 rye crop; the 1918 sugar beet is defensible as
+    the harvest of a territory that became Czechoslovakia weeks later, and the 1910 row has no such
+    reading.
+
+    So the check pins the COUNT (3) as well as the cell, because the count is what makes this an orphan
+    rather than a small value. It also pins the next observation, 732,970 ha at 1919: the gap is what
+    rules out 3.0 being a plausible early figure on the same series.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    r = raw[(raw["_c"] == "czechoslovakia") & raw["value"].notna()]
+    yn = pd.to_numeric(r["year"], errors="coerce")
+    pre = r[yn < 1919]
+    g = lb[(lb["source"] == "iia") & (lb["country"] == "czech republic") & (lb["item"] == "rye")
+           & (lb["unit"] == "ha") & lb["value"].notna() & lb["year"].notna()].sort_values("year")
+    first = round(float(g["value"].iloc[0]), 6) if len(g) else None
+    nxt = round(float(g["value"].iloc[1]), 6) if len(g) > 1 else None
+    return ([("raw `czechoslovakia` rows dated before 1919", len(pre), 3),
+             ("layer-B czech rye ha, earliest cell", first, 3.0),
+             ("its next observation", nxt, 732970.0)],
+            "three pre-existence rows is the argument; the 3.0 is only the cell")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -616,6 +646,7 @@ CHECKS = {
     "iia-flax-fibre-item-is-mostly-linseed": check_iia_flax_is_mostly_linseed,
     "fao1952-malaya-female-agric-1937-is-total": check_malaya_female_agric_is_total,
     "nga-1941-1945-cotton-area-zero": check_nigeria_cotton_area_zero,
+    "cze-1910-rye-area-orphan-3ha": check_cze_1910_rye_orphan,
 }
 
 
