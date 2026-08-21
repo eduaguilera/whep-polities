@@ -2315,6 +2315,25 @@ def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
             f"was")
 
 
+def mutate_lookup_prints_unmaintained_column_bare(root, gpd, make_valid, affinity):
+    """Strip the UNMAINTAINED marker from `lookup_known_defect.py`'s provenance line.
+
+    Arm E's whole point is that the marker cannot be quietly removed. The mutation is the exact
+    regression it guards: printing `mixing_observed` bare, beside `territory_signal`, which is the
+    juxtaposition behind both recorded misreadings (libya in the wiki notes, kwantung on issue 483).
+    Nothing about the file's behaviour changes -- it still runs, still prints a provenance block --
+    so no other gate and no test can see it."""
+    path = os.path.join(root, "scripts", "lookup_known_defect.py")
+    src = open(path, encoding="utf-8").read()
+    old = ("f\"[STRONGER] mixing_observed={r.get('mixing_observed')!r} \"\n"
+           "                  f\"[UNMAINTAINED -- never cite]\")")
+    assert old in src, "anchor gone -- re-read the emitting line before trusting this mutator"
+    new = "f\"mixing_observed={r.get('mixing_observed')!r}\")"
+    open(path, "w", encoding="utf-8").write(src.replace(old, new))
+    return ("removed the `[UNMAINTAINED -- never cite]` marker from lookup_known_defect.py's "
+            "provenance line, so the column nothing maintains prints bare beside the one that governs")
+
+
 def mutate_label_provenance_hides_mixing(root, gpd, make_valid, affinity):
     """Mark a span whose values come from ONE territory as coming from two.
 
@@ -4357,6 +4376,14 @@ CASES = (
     ),
     (
         "validate_iia_label_provenance.py",
+        mutate_lookup_prints_unmaintained_column_bare,
+        "UNMAINTAINED",
+        "a consumer printing the unmaintained `mixing_observed` beside the governing "
+        "`territory_signal` with no marker — the file still runs and still prints, so nothing "
+        "else in this harness or in CI can see the annotation go missing",
+    ),
+    (
+        "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
         "verified_equal",
         "a per-SPAN provenance row that hides an observed whole-plus-parts merge, so equality "
@@ -4794,6 +4821,12 @@ ARGS = {
 # FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
 # half of this script is what caught that; exit-code alone would have passed it.
 EXTRA_SCRIPTS = {
+    # Arm E of this gate reads `lookup_known_defect.py`'s SOURCE to require that the unmaintained
+    # `mixing_observed` column is never printed without its marker. Staged without the file, the arm
+    # reports "no longer exists -- repoint it" on every run, so the gate would exit 1 unconditionally
+    # and its case would pass whether or not the mutation bit. The runner only checks post-mutation
+    # exit != 0, so nothing else here would have caught that.
+    "validate_iia_label_provenance.py": ("lookup_known_defect.py",),
     "validate_polygon_binding_determinism.py": ("sources.yaml",),
     # The s2 gate imports s2_failure()/geodesic_area_km2() from the repair script, so the two
     # cannot disagree about what "s2 can measure this" means. Staged without it the gate dies on
