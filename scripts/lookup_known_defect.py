@@ -240,12 +240,23 @@ def main() -> int:
         for field, r in prov[:6]:
             print(f"  matched on {field}: raw_label={r.get('raw_label')!r} -> "
                   f"layer_b={r.get('layer_b_label')!r} (assigned {r.get('assigned_modern')!r})")
+            # `mixing_observed` is printed with its status attached, never bare. No tool maintains it
+            # -- `15_label_provenance.py --write` refreshes only territory_signal, fingerprint_note,
+            # dominant_raw_label and dominant_share -- so it is whatever was last written by hand and
+            # is never re-derived when the panel moves. Citing it as corroboration has already gone
+            # wrong twice (libya in the wiki notes, kwantung on issue 483, both times because it read
+            # `no` while `territory_signal` read something else). validate_iia_label_provenance.py
+            # says so in its own report; this tool is where the pre-check happens, so it says so here.
             print(f"    kind={r.get('kind')!r} territory_signal={r.get('territory_signal')!r} "
-                  f"mixing_observed={r.get('mixing_observed')!r}")
+                  f"[STRONGER] mixing_observed={r.get('mixing_observed')!r} "
+                  f"[UNMAINTAINED -- never cite]")
             print(f"    fingerprint: {r.get('fingerprint_note')!r} "
                   f"dominant={r.get('dominant_raw_label')!r} @ {r.get('dominant_share')!r}")
         print("  A classification here means the ROUTING is known. It does NOT quantify how many cells")
         print("  are affected, so a measured count can still be new -- but say what was already recorded.")
+        print("  NOTE `mixing_observed` is maintained by NOTHING and is never re-derived when the panel")
+        print("  moves; `territory_signal` is the stronger measure. Where the two disagree, the stale")
+        print("  one is not evidence -- citing it has already produced two wrong conclusions.")
         print("  NOTE `raw_label` is a CANONICAL territory name, not the raw extract's label (it matches")
         print("  the extract in only 32% of rows). `dominant` IS the extract's label -- 100% of rows --")
         print("  so join on that: e.g. canonical `cyprus` is `british cyprus` in the extract.")

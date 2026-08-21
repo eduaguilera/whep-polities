@@ -261,6 +261,36 @@ def main() -> int:
           f"(ceiling {BASELINE_VERIFIED_EQUAL_ON_MIXED})")
 
     problems = []
+
+    # E. ANY TOOL THAT SURFACES `mixing_observed` MUST SAY IT IS UNMAINTAINED.
+    # This report says so (arm above), but the report is not where the column gets cited -- the
+    # pre-check is. `lookup_known_defect.py` prints the provenance row for a queried label, and it
+    # printed `mixing_observed` bare, on the same line as `territory_signal`, for as long as it has
+    # existed. That is the exact juxtaposition behind both recorded misreadings (libya, kwantung
+    # on #483): the stale column reads `no`, the governing one disagrees, and the reader cites the
+    # one that agrees with them. Annotating the value is only durable if something forbids removing
+    # the annotation, so this arm reads the consumer's source and requires the marker beside it.
+    for rel in ("scripts/lookup_known_defect.py",):
+        consumer = os.path.join(REPO, rel)
+        if not os.path.exists(consumer):
+            problems.append(f"{rel} no longer exists; this arm is checking nothing -- repoint it")
+            continue
+        src = open(consumer, encoding="utf-8").read()
+        emitting = [ln for ln in src.splitlines()
+                    if "mixing_observed=" in ln and "print" in ln or
+                    ("mixing_observed" in ln and "f\"" in ln and "get(" in ln)]
+        for ln in emitting:
+            if "UNMAINTAINED" not in ln and "UNMAINTAINED" not in src[src.index(ln):src.index(ln) + 400]:
+                problems.append(
+                    f"{rel} prints `mixing_observed` without the UNMAINTAINED marker beside it: "
+                    f"{ln.strip()[:80]}. No tool maintains that column and territory_signal is the "
+                    f"governing measure; printing it bare next to territory_signal is what produced "
+                    f"the libya and kwantung misreadings")
+        if not emitting:
+            problems.append(
+                f"{rel} no longer prints `mixing_observed` at all -- if that is intended, drop this "
+                f"arm; otherwise the marker check has silently stopped applying")
+
     if len(offenders) > BASELINE_VERIFIED_EQUAL_ON_MIXED:
         for key, code in sorted(offenders):
             print(f"   {key:40} -> {code}")
