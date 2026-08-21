@@ -1156,6 +1156,74 @@ def check_juan_heads_thousand_grid(d):
                   f"the source")
 
 
+def _group_item_order(d, item, unit, refmap, order, min_groups=20):
+    """Shared engine for fao1952 GROUP-ITEM order: score every position-to-member permutation against
+    an independent source that carries the members separately.
+
+    `refmap` maps a reference item name to a member key; `order` is the recorded position order. TWO
+    items use this -- `horses mules asses` and `poultry` -- and both are ALPHABETICAL, which is why the
+    engine is shared rather than copied: a third item should be tested with the same instrument, not a
+    re-implementation of it.
+
+    UNITS ARE ALIGNED FIRST, unconditionally. The reference series are in `heads` and fao1952 in
+    `1000 heads`; without the conversion the unit mismatch dominates every distance and each position
+    matches whichever member is smallest. That produced an "all positions are the same member" result
+    the first time it was written, and a uniform answer from a test that should discriminate is the
+    tell, not a finding.
+    """
+    import itertools
+
+    f = d[(d["source"] == "fao1952") & (d["item"] == item) & (d["unit"] == unit)]
+    f = f[f["value"].notna() & f["year"].notna()].copy()
+    if f.empty:
+        return False, f"no fao1952 `{item}` rows in the panel at all"
+    n = len(order)
+    f["pos"] = f.groupby(["country", "year", "indicator", "unit"], dropna=False).cumcount()
+    size = f.groupby(["country", "year", "indicator", "unit"], dropna=False)["value"].transform("size")
+    f = f[size == n]
+
+    ref = d[d["item"].isin(refmap)]
+    ref = ref[ref["value"].notna() & ref["year"].notna()].copy()
+    ref["m"] = ref["item"].map(refmap)
+    ref["v"] = [v / 1000 if u == "heads" else v for v, u in zip(ref["value"], ref["unit"])]
+    R = {}
+    for t in ref.itertuples():
+        R.setdefault((str(t.country).strip().lower(), int(t.year)), {}).setdefault(t.m, set()).add(
+            round(float(t.v), 3))
+
+    tested = unique = exact = agree = 0
+    for _, g in f.groupby(["country", "year", "indicator", "unit"], dropna=False):
+        r = R.get((str(g["country"].iloc[0]).strip().lower(), int(g["year"].iloc[0])))
+        if not r or len(r) < n:
+            continue
+        tested += 1
+        vals = [float(v) for v in g.sort_values("pos")["value"]]
+        scores = {}
+        for perm in itertools.permutations(order):
+            scores[perm] = sum(
+                1 for v, m in zip(vals, perm)
+                if any(abs(v - x) <= max(0.02 * max(abs(x), 1e-9), 0.5) for x in r[m]))
+        top = max(scores.values())
+        winners = [pp for pp, sc in scores.items() if sc == top]
+        if top > 0 and len(winners) == 1:
+            unique += 1
+            if tuple(winners[0]) == tuple(order):
+                agree += 1
+            if top == n:
+                exact += 1
+    if tested < min_groups:
+        return False, f"only {tested} testable {n}-row groups; too few to establish an order"
+    if unique == 0:
+        return False, f"{tested} groups testable but none has a unique best permutation"
+    # A 10% minority is tolerated: `poultry` has one dissenting group of 28 (turkeys/geese swapped).
+    # Demanding unanimity would make a single ambiguous group fail a rule 27 groups support.
+    if agree < unique - max(1, unique // 10):
+        return False, (f"{unique - agree} of {unique} groups favour a permutation OTHER than "
+                       f"{', '.join(order)} -- the recorded order no longer holds")
+    return True, (f"{tested} testable groups, {unique} with a unique best permutation ({exact} matching "
+                  f"all {n}), and the recorded order wins {agree} of {unique}")
+
+
 def check_fao1952_group_item_order(d):
     """The claim: fao1952's `horses mules asses` holds one row per member, ordered ALPHABETICALLY.
 
@@ -1173,57 +1241,31 @@ def check_fao1952_group_item_order(d):
     smallest -- which produced a "all three positions are the same animal" result on the first run. A
     uniform answer from a test that should discriminate is the tell, not a finding.
     """
-    import itertools
+    return _group_item_order(
+        d, "horses mules asses", "1000 heads",
+        {"asses": "asses", "horses": "horses", "mules and hinnies": "mules"},
+        ["asses", "horses", "mules"])
 
-    f = d[(d["source"] == "fao1952") & (d["item"] == "horses mules asses")]
-    f = f[f["value"].notna() & f["year"].notna() & (d["unit"] == "1000 heads")].copy()
-    if f.empty:
-        return False, "no fao1952 `horses mules asses` rows in the panel at all"
-    f["pos"] = f.groupby(["country", "year", "indicator", "unit"], dropna=False).cumcount()
-    size = f.groupby(["country", "year", "indicator", "unit"], dropna=False)["value"].transform("size")
-    f = f[size == 3]
 
-    ref = d[d["item"].isin(["asses", "horses", "mules and hinnies"])]
-    ref = ref[ref["value"].notna() & ref["year"].notna()].copy()
-    ref["m"] = ref["item"].map({"asses": "asses", "horses": "horses", "mules and hinnies": "mules"})
-    # `heads` -> `1000 heads`; without this every position matches the smallest member
-    ref["v"] = [v / 1000 if u == "heads" else v for v, u in zip(ref["value"], ref["unit"])]
-    R = {}
-    for t in ref.itertuples():
-        R.setdefault((str(t.country).strip().lower(), int(t.year)), {}).setdefault(t.m, set()).add(
-            round(float(t.v), 3))
+def check_fao1952_poultry_order(d):
+    """`poultry` is a GROUP of four species in ALPHABETICAL order: chickens, ducks, geese, turkeys.
 
-    ORD = ["asses", "horses", "mules"]
-    tested = unique = exact = alpha = 0
-    for _, g in f.groupby(["country", "year", "indicator", "unit"], dropna=False):
-        key = (str(g["country"].iloc[0]).strip().lower(), int(g["year"].iloc[0]))
-        r = R.get(key)
-        if not r or len(r) < 3:
-            continue
-        tested += 1
-        vals = [float(v) for v in g.sort_values("pos")["value"]]
-        scores = {}
-        for perm in itertools.permutations(ORD):
-            scores[perm] = sum(
-                1 for v, m in zip(vals, perm)
-                if any(abs(v - x) <= max(0.02 * max(abs(x), 1e-9), 0.5) for x in r[m]))
-        top = max(scores.values())
-        winners = [p for p, sc in scores.items() if sc == top]
-        if top > 0 and len(winners) == 1:
-            unique += 1
-            if tuple(winners[0]) == tuple(ORD):
-                alpha += 1
-            if top == 3:
-                exact += 1
-    if tested < 20:
-        return False, f"only {tested} testable 3-row groups; too few to establish an order"
-    if unique == 0:
-        return False, f"{tested} groups testable but none has a unique best permutation"
-    if alpha != unique:
-        return False, (f"{unique - alpha} of {unique} groups favour a permutation OTHER than "
-                       f"alphabetical (asses, horses, mules) -- the recorded order no longer holds")
-    return True, (f"{tested} testable groups, {unique} with a unique best permutation ({exact} matching "
-                  f"all three), and alphabetical wins {alpha} of {unique}")
+    The SECOND instance of the alphabetical rule, which is what turns it from a single-item quirk into a
+    property of this source's group items. Verified the same way as the equines, against `juan`, which
+    carries `chickens`, `ducks`, `geese and guinea fowls` and `turkeys` separately.
+
+    STRUCTURE IS NOT SHARED EVEN WHERE ORDER IS, and this is the trap. fao1952 `meat` groups carry a
+    TOTAL in their last row -- the last value is the sum of the others in 219 of 241 groups and is the
+    maximum in 94% -- while `poultry` groups carry no total at all: the last row is the maximum in 2 of
+    211. So a rule that promotes the last or largest row to a national total is right for `meat` and
+    wrong here, and the order established by this check says nothing about which item has a total
+    (issue 367).
+    """
+    return _group_item_order(
+        d, "poultry", "1000 heads",
+        {"chickens": "chickens", "ducks": "ducks", "geese and guinea fowls": "geese",
+         "turkeys": "turkeys"},
+        ["chickens", "ducks", "geese", "turkeys"])
 
 
 CHECKS = {
@@ -1237,6 +1279,7 @@ CHECKS = {
     ("mitchell", "algeria", "*"): check_mitchell_algeria,
     ("fao1952", "*", "population"): check_fao1952_population,
     ("fao1952", "*", "horses mules asses"): check_fao1952_group_item_order,
+    ("fao1952", "*", "poultry"): check_fao1952_poultry_order,
     ("iia", "russian federation", "*"): check_iia_russia,
     ("iia", "south korea", "*"): check_iia_south_korea,
     ("juan", "germany", "*"): check_juan_germany,
