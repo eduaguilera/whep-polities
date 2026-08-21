@@ -216,6 +216,46 @@ def check_russia_asian_component(ctx):
             "the summing works for rye in the same label, so this is a per-item omission")
 
 
+def check_nested_reporting_levels(ctx):
+    """72 cells receive more than one source label, and 7 of them now share a value.
+
+    THIS ENTRY IS WHY THE RE-TEST EXISTS. Written 2026-08-17 with 52 cells and 110 rows, it also
+    claimed "NONE of the colliding values are equal, so this is not duplicate ingestion but genuinely
+    different series landing on one key" -- the sentence its whole argument rests on. Both halves had
+    moved by 2026-08-21 and nothing noticed: the counts had drifted 38%, and the equality claim was
+    false in 7 cells, SIX of them explained by work recorded elsewhere in this repo after the entry was
+    written (`ethiopia`/`ethiopia pdr` is the pure duplicate of issues 451 and 519; the three Korea cells
+    are 1950-51, where the peninsula total equals the South because the North was not reported, issues
+    451 and 521).
+
+    THE EQUALITY COUNT IS THE LOAD-BEARING CLAIM, not the cell count. A drifting count means the panel
+    moved; a rising equality count means the entry's DIAGNOSIS is wrong, because equal values across two
+    labels are duplicate ingestion rather than two different series. So it is measured per pair of
+    labels rather than by comparing distinct-value counts, which cannot tell "two labels agree" from
+    "one label repeats itself".
+    """
+    mr = ctx.get("matched")
+    if mr is None:
+        return [("cells with more than one source label", None, 72)], "matched_rows.parquet absent"
+    d = mr[mr["value"].notna() & mr["whep_code"].notna()]
+    K = ["whep_code", "source", "item", "indicator", "year", "unit"]
+    cells = rows = shared = 0
+    for _, g in d.groupby(K, dropna=False):
+        if g["country"].nunique() < 2:
+            continue
+        cells += 1
+        rows += len(g)
+        per = {lab: set(v.round(6)) for lab, v in g.groupby("country")["value"]}
+        labs = sorted(per)
+        if any(per[labs[i]] & per[labs[j]]
+               for i in range(len(labs) - 1) for j in range(i + 1, len(labs))):
+            shared += 1
+    return ([("cells with more than one source label", cells, 72),
+             ("rows in those cells", rows, 173),
+             ("cells where two DIFFERENT labels share a value", shared, 7)],
+            "the equality count is the diagnosis; the cell count is only the panel's size")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -225,6 +265,7 @@ CHECKS = {
     "fao1952-label-carries-a-wrong-group-heading": check_fao1952_wrong_group_heading,
     "fao1952-korea-rice-paddy-area-impossible": check_korea_rice_paddy_area,
     "iia-russia-asian-component-dropped": check_russia_asian_component,
+    "layerb-nested-reporting-levels-one-polity": check_nested_reporting_levels,
 }
 
 
@@ -247,7 +288,11 @@ def main() -> int:
                      _v=raw["variable"].astype(str).str.lower())
     with open(os.path.join(STATE, "era_shift_verdicts.csv"), newline="", encoding="utf-8") as fh:
         era = list(csv.DictReader(fh))
-    ctx = {"raw": raw, "panel": pd.read_parquet(a.layer_b), "era": era}
+    matched_path = os.path.join(STATE, "matched_rows.parquet")
+    ctx = {"raw": raw, "panel": pd.read_parquet(a.layer_b), "era": era,
+           # matched_rows carries the polity assignment, which the panel does not; an entry keyed on
+           # (polity, source, item, ...) cannot be re-tested without it.
+           "matched": pd.read_parquet(matched_path) if os.path.exists(matched_path) else None}
 
     with open(ERRORS, newline="", encoding="utf-8") as fh:
         entries = list(csv.DictReader(fh))
