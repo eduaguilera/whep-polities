@@ -628,6 +628,51 @@ def check_cze_1910_rye_orphan(ctx):
             "three pre-existence rows is the argument; the 3.0 is only the cell")
 
 
+def check_1933_x10_provenance_linked(ctx):
+    """The 14 provenance-linked x10 cells -- and the entry names the wrong provenance table.
+
+    THE THIRD CONDITION IS WHAT MAKES THIS CLASS CONFIRMABLE. Matching a small round value against the
+    extract by value and year alone left 9 of 16 uncertain, because 30, 300 and 2,100 appear all over
+    the panel. Requiring the layer-B label carrying the value to be one the provenance table attributes
+    to that RAW label removes the coincidences: a chance collision has no reason to land on the
+    provenance-linked label.
+
+    THE ENTRY CITES `item_provenance.csv` FOR THAT LINK; the reproduction needs
+    `iia_label_provenance.csv`. Item-level provenance yields only 9 of the 14, because five of them --
+    french dahomey cacao and eggs, french ivory coast tobacco, british jamaica cacao, australia sugar --
+    sit in series too small for `item_provenance` to attribute, so their `raw_label` there is blank.
+    Label-level provenance reproduces all 14 exactly, and the 14 match the enumeration on issue 424 cell
+    for cell. So the entry's figure is right and its method description names the wrong table; this check
+    uses the one that works and says so.
+    """
+    lb = ctx["panel"]
+    with open(os.path.join(STATE, "edition_conflicts.csv"), newline="", encoding="utf-8") as fh:
+        ec = [r for r in csv.DictReader(fh)
+              if r["kind"] == "power_of_ten" and 9.5 <= float(r["ratio"]) <= 10.5]
+    cand = [r for r in ec if r["volume_a"] == "iia_1933_34"
+            and float(r["value_a"]) < float(r["value_b"])]
+    lab2lb = collections.defaultdict(set)
+    with open(os.path.join(STATE, "iia_label_provenance.csv"), newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            for col in ("dominant_raw_label", "raw_label"):
+                v = (r.get(col) or "").strip().lower()
+                if v:
+                    lab2lb[v].add(r["layer_b_label"])
+    g = lb[(lb["source"] == "iia") & lb["value"].notna()]
+    when = g["period"].where(g["period"].notna(), g["year"].astype("string"))
+    by = collections.defaultdict(set)
+    for c, w, v in zip(g["country"], when, g["value"]):
+        by[str(c)].add((str(w).strip(), round(float(v), 6)))
+    confirmed = 0
+    for r in cand:
+        s, y = round(float(r["value_a"]), 6), str(r["year"]).strip()
+        if any((y, s) in by.get(t, ()) for t in lab2lb.get(r["label"].strip().lower(), ())):
+            confirmed += 1
+    return ([("x10 candidates with iia_1933_34 holding the smaller value", len(cand), 32),
+             ("of those, PROVENANCE-LINKED into layer B", confirmed, 14)],
+            "label-level provenance reproduces 14; item-level gives only 9")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -647,6 +692,7 @@ CHECKS = {
     "fao1952-malaya-female-agric-1937-is-total": check_malaya_female_agric_is_total,
     "nga-1941-1945-cotton-area-zero": check_nigeria_cotton_area_zero,
     "cze-1910-rye-area-orphan-3ha": check_cze_1910_rye_orphan,
+    "iia-1933-x10-wrong-volume-cells": check_1933_x10_provenance_linked,
 }
 
 
