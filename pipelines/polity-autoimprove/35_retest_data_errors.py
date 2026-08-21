@@ -64,8 +64,67 @@ def check_corrupted_country_labels(ctx):
     e = raw[raw["_c"].str.startswith("[error]")]
     prod_broken = int(raw["_p"].str.startswith("[error]").sum())
     return ([("rows", len(e), 1237), ("distinct labels", e["_c"].nunique(), 93),
-             ("broken product labels", prod_broken, 0)],
+             ("broken product labels", prod_broken, 0)]
+            + _corrupted_labels_split_claims(ctx),
             "the country axis is corrupted and the product axis is not")
+
+
+def _corrupted_labels_split_claims(ctx):
+    """The class's variable split, and the 102 undated production-side rows the published exposure
+    omits.
+
+    Issue 493 reports the split as `production/area 573, trade 521, other 143`. Those three do not
+    partition the class by `variable`: 573 is the DATED production/area count, the trade figure is an
+    all-rows count, and "other" is the arithmetic remainder, so it absorbs 96 undated production/area
+    rows while its parenthetical describes only the 45 rows whose variable really is something else.
+    The load-bearing assertion here is the PARTITION, which is what makes a residual class impossible
+    to reintroduce: the three variable groups must sum to the class exactly.
+
+    The omission matters because the undated rows are not junk -- every one carries a quinquennial
+    period string (`1928-1932`, `1934-1938`), so they are period averages, and 75 of the 102 sit in the
+    five legible blocks that are the recovery candidates.
+
+    The entry's 503 recoverable cells and the issue's ~509 exposure are NOT the same population and
+    neither is a subset error: 503 counts complementary production-side ROWS and includes 75 undated
+    period rows; 509 counts DATED fingerprint cells clearing a distinctness floor. Two figures three
+    apart, measuring different things, is exactly the shape that invites a false reconciliation."""
+    import pandas as pd
+    raw = ctx["raw"]
+    e = raw[raw["_c"].str.startswith("[error]") & raw["value"].notna()].copy()
+    # trailing underscore: itertuples renames a leading-underscore column to a positional alias
+    e["y_"] = pd.to_numeric(e["year"], errors="coerce")
+    PA = {"area", "production"}
+    TRADE = {"imports", "exports", "reexports", "consumption"}
+    pa = e[e["_v"].isin(PA)]
+    tr = e[e["_v"].isin(TRADE)]
+    oth = e[~e["_v"].isin(PA | TRADE)]
+    # the wider production side: the four legible blocks' published sizes include `bearing area`
+    WIDE = PA | {"bearing area", "planted area", "dry production",
+                 "production of cocoons", "laying hens"}
+    und = e[e["_v"].isin(WIDE) & e["y_"].isna()]
+    legible = ("inde", "togo", "cameroun", "syrie", "palestine")
+    und_leg = und[und["_c"].str.contains("|".join(legible))]
+    pal = e[e["_c"].str.contains("palestine")]
+    pal_pa = pal[pal["_v"].isin(PA)]
+    pal_wide = pal[pal["_v"].isin(WIDE)]
+    five = len(e[e["_c"].str.contains("|".join(legible)) & e["_v"].isin(WIDE)])
+    with_period = int(und["year"].astype(str).str.contains("-").sum())
+    return [("area+production rows", len(pa), 669),
+             ("  of those, dated", int(pa["y_"].notna().sum()), 573),
+             ("  of those, undated", int(pa["y_"].isna().sum()), 96),
+             ("trade rows", len(tr), 523),
+             ("genuinely-other rows", len(oth), 45),
+             ("the three partition the class", len(pa) + len(tr) + len(oth), len(e)),
+             ("undated production-side rows", len(und), 102),
+             ("  each carrying a period", with_period, 102),
+             ("  in the five legible blocks", len(und_leg), 75),
+             # The entry states palestine as both 10 and 12 cells. Both are right: 10 on
+             # area+production, 12 once `bearing area` is included. The recoverable set uses the
+             # wider filter throughout, so 12 is the figure consistent with its 503 total.
+             ("palestine, area+production", len(pal_pa), 10),
+             ("palestine, production-side", len(pal_wide), 12),
+             ("five blocks, production-side", five, 529),
+             ("  less inde's 26 duplicates", five - 26, 503)]
 
 
 def check_wheat_is_spelt_and_meslin(ctx):
