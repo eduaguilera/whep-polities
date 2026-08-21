@@ -173,6 +173,9 @@ python3 scripts/validate_trade_direction_tiebreak.py  # and the direction: each 
 # specific label/item/year live in the free-text summary. It answers MATCH / INDETERMINATE / no
 # match, and an INDETERMINATE is not a pass.
 python3 scripts/lookup_known_defect.py --source iia --label serbia --item rye --year 1931
+# (it also greps the pipeline and gate SOURCE for the label and item, because a convention, swap or
+#  exclusion list is written where it is re-tested and no state table indexes that -- lines naming
+#  both the label and the item are shown first)
 
 # and the one that asks whether the checks above can fail at all -- it also self-checks its own
 # registries: no duplicate WRITABLE key, and any gate that IMPORTS its generator must have that

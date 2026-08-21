@@ -109,6 +109,55 @@ def covers_year(lo, hi, year):
     return lo_i <= year <= hi_i
 
 
+
+# Directories whose SOURCE documents established mechanisms. A convention, a swap, a scope rule or an
+# exclusion is written where it is RE-TESTED, in a docstring or a constant block, and no state table
+# indexes that.
+MECHANISM_DIRS = ("pipelines/polity-autoimprove", "scripts")
+
+# Labels this common match everything and their hits carry no information.
+TOO_COMMON = frozenset({"total", "world", "other", "all", "none"})
+
+
+def mechanism_hits(needles: list) -> list:
+    """Where in the TOOL SOURCE is this label or item already discussed?
+
+    WHY THIS ARM EXISTS. On 2026-08-21 the same mistake was made three times in one day: a mechanism was
+    published as a finding when it was already written down -- and each time the record was in a place
+    this tool did not read. The worst was `austria`'s meslin false zero, documented in
+    `11_retest_conventions.py`'s RATIO_ONLY_SWAP_LABELS comment with the same cell, the same 0.15% match
+    and an explicit attribution to issue 414, while data_errors.csv and the provenance tables (which this
+    tool did read) said nothing. A grep would have found it in one second.
+
+    So this reports FILE AND LINE for every mention of the queried label or item in the pipeline and gate
+    source. It is deliberately dumb -- a substring match on comments, docstrings and constants alike --
+    because the exclusion lists that matter (RATIO_ONLY_SWAP_LABELS, SWAPPED_PAIRS, BASELINE,
+    SOURCE_NOTES) are literals, and a smarter parser would miss the prose around them.
+
+    Hits are NOT evidence that a finding is already recorded; they are places to read before claiming it
+    is not. The distinction matters because a common label appears in dozens of unrelated files.
+    """
+    out = []
+    for d in MECHANISM_DIRS:
+        base = os.path.join(REPO, d)
+        if not os.path.isdir(base):
+            continue
+        for name in sorted(os.listdir(base)):
+            if not name.endswith(".py"):
+                continue
+            path = os.path.join(base, name)
+            try:
+                lines = open(path, encoding="utf-8").read().splitlines()
+            except OSError:
+                continue
+            for i, line in enumerate(lines, 1):
+                low = line.lower()
+                hit = [n for n in needles if n in low]
+                if hit:
+                    out.append((os.path.join(d, name), i, hit, line.strip()[:130]))
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -200,6 +249,35 @@ def main() -> int:
         print("  NOTE `raw_label` is a CANONICAL territory name, not the raw extract's label (it matches")
         print("  the extract in only 32% of rows). `dominant` IS the extract's label -- 100% of rows --")
         print("  so join on that: e.g. canonical `cyprus` is `british cyprus` in the extract.")
+
+    # --- mechanisms documented in tool source, which no state table indexes ---
+    needles = [n for n in (str(a.label or "").strip().lower(), str(a.item or "").strip().lower())
+               if n and n not in TOO_COMMON and len(n) >= 4]
+    if needles:
+        hits = mechanism_hits(needles)
+        if hits:
+            byfile = {}
+            for f, ln, needle, text in hits:
+                byfile.setdefault(f, []).append((ln, needle, text))
+            print(f"\nMECHANISMS IN TOOL SOURCE -- {len(hits)} mention(s) across {len(byfile)} file(s). "
+                  f"These are NOT")
+            print("  proof the finding is recorded, but they are where a convention, swap, scope rule or")
+            print("  exclusion list would be written, and no state table indexes them. READ THEM FIRST:")
+            for f in sorted(byfile, key=lambda k: -len(byfile[k]))[:8]:
+                # A LINE MENTIONING EVERY NEEDLE COMES FIRST. That ranking is the whole point: the line
+                # this tool was written for -- 11_retest_conventions.py's
+                # "austria  iia_1938_39 prints meslin = 0.0 for 1933, a false zero of issue 414's class"
+                # -- names BOTH the label and the item, while the 19 other `austria` mentions in that file
+                # name only one. Showing hits in line order buried it under a docstring.
+                rows = sorted(byfile[f], key=lambda r: (-len(r[1]), r[0]))
+                print(f"  {f}  ({len(rows)} mention(s))")
+                for ln, hit, text in rows[:3]:
+                    print(f"    :{ln}  [{'+'.join(hit)}]  {text}")
+                if len(rows) > 3:
+                    print(f"    ... and {len(rows) - 3} more in this file")
+        else:
+            print(f"\nMECHANISMS IN TOOL SOURCE -- no mention of {needles} in the pipeline or gate "
+                  f"source.")
 
     if not matches and not indet:
         print("no entry can cover this query on the dimensions given.")
