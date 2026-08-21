@@ -174,7 +174,9 @@ python3 scripts/validate_trade_direction_tiebreak.py  # and the direction: each 
 # match, and an INDETERMINATE is not a pass.
 python3 scripts/lookup_known_defect.py --source iia --label serbia --item rye --year 1931
 
-# and the one that asks whether the checks above can fail at all
+# and the one that asks whether the checks above can fail at all -- it also self-checks its own
+# registries: no duplicate WRITABLE key, and any gate that IMPORTS its generator must have that
+# generator staged, because an unstaged import dies and exits 1, which looks exactly like passing
 python3 scripts/selftest_gates.py
 
 # the external-data guards, whose self-test uses synthetic frames and so runs anywhere
