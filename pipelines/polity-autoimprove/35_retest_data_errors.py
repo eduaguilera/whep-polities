@@ -38,6 +38,7 @@ Exit 1 if a claim no longer reproduces; 0 on pass, or on SKIP when the inputs ar
 from __future__ import annotations
 
 import argparse
+import collections
 import csv
 import os
 import sys
@@ -256,6 +257,51 @@ def check_nested_reporting_levels(ctx):
             "the equality count is the diagnosis; the cell count is only the panel's size")
 
 
+def check_iia_scale_is_common(ctx):
+    """The POSITIVE test the magnitude-scale entry says it is waiting for.
+
+    `iia-layerb-magnitude-scale-inconsistent` records that every leg of its own diagnosis was refuted,
+    then leaves its status at pending_audit for an explicit reason: *"refuting the evidence offered is
+    not the same as proving iia magnitudes ARE on a common scale, which should rest on a positive
+    test"*. This is that test, run mechanically instead of quoted in prose.
+
+    THE LOGIC. If layer-B consolidation applied a per-publication or per-table multiplier -- the
+    mechanism the entry asked to be traced -- then layer-B values would NOT appear verbatim among the
+    raw extract's own production figures. A high verbatim rate is incompatible with per-table
+    rescaling, and it is the verbatim COUNT rather than the refutations that licenses lifting the
+    verifier instruction.
+
+    WHAT THE TEST IS NOT. Matching a value against every raw production figure for the same year is a
+    WEAK match -- it does not check that the value came from the right label or product, and a common
+    round number will find a partner. It is the right test for this claim anyway, because the claim is
+    about SCALE: a rescaled panel would fail it however the labels line up. For per-cell provenance the
+    strict join is `cell_attribution.csv` (issues 372, 443), which constrains product, variable, year
+    and value together.
+
+    The population is dated rows only (`year` present), which is what reproduces the entry's own
+    12,052 -- period averages are excluded because a period's value has no single raw year to match.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    prod = raw[(raw["_v"] == "production") & raw["value"].notna()]
+    by_year = collections.defaultdict(set)
+    for t in prod.itertuples():
+        by_year[str(t.year).strip()].add(round(float(t.value), 6))
+    g = lb[(lb["source"] == "iia") & (lb["unit"] == "tonnes")
+           & lb["value"].notna() & lb["year"].notna()]
+    verbatim = pow10 = 0
+    for y, v in zip(g["year"], g["value"]):
+        s = by_year.get(str(int(y)), ())
+        v = round(float(v), 6)
+        if v in s:
+            verbatim += 1
+        elif any(round(v * f, 6) in s or round(v / f, 6) in s for f in (10, 100, 1000)):
+            pow10 += 1
+    return ([("dated iia tonnes rows", len(g), 12052),
+             ("of those, VERBATIM in the raw extract at the same year", verbatim, 10810),
+             ("needing a power of ten", pow10, 112)],
+            "a per-table rescaling would make the verbatim rate LOW; 89.7% is incompatible with it")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -266,6 +312,7 @@ CHECKS = {
     "fao1952-korea-rice-paddy-area-impossible": check_korea_rice_paddy_area,
     "iia-russia-asian-component-dropped": check_russia_asian_component,
     "layerb-nested-reporting-levels-one-polity": check_nested_reporting_levels,
+    "iia-layerb-magnitude-scale-inconsistent": check_iia_scale_is_common,
 }
 
 
