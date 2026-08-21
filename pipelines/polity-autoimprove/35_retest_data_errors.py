@@ -302,6 +302,53 @@ def check_iia_scale_is_common(ctx):
             "a per-table rescaling would make the verbatim rate LOW; 89.7% is incompatible with it")
 
 
+def check_hops_x100_and_area_x10(ctx):
+    """Two distinct hops defects and the control that separates them.
+
+    The entry records that hops PRODUCTION is 100x too large from 1934 and that hops AREA carries a
+    SEPARATE x10 -- and that its remedy "is incomplete without" the second. Those are different repairs
+    on the same commodity, so a re-test that measured only one would let the other drift away.
+
+    THE TOBACCO-AREA CONTROL IS THE THIRD CLAIM AND IT IS LOAD-BEARING. Tobacco and hops share the x100
+    production defect, but tobacco AREA is clean (median 1.00x). That is what establishes the x100 as
+    production-only and the hops area x10 as a second fault rather than the same one seen twice. If the
+    control ever moved to 10x or 100x, the two defects would have merged and the entry's whole structure
+    would need rewriting -- so it is measured here beside them, not assumed.
+
+    Measured on 1933, the only year iia_1933_34 and iia_1938_39 both cover, which is what makes an
+    intra-source factor measurable at all.
+    """
+    raw = ctx["raw"]
+    r = raw[(raw["year"].astype(str).str.strip() == "1933") & raw["value"].notna()
+            & raw["yearbook"].isin(["iia_1933_34", "iia_1938_39"])]
+
+    def factors(prod, var):
+        out = []
+        sub = r[(r["_p"] == prod) & (r["_v"] == var)]
+        for _, g in sub.groupby("_c"):
+            a = g[g["yearbook"] == "iia_1933_34"]["value"]
+            b = g[g["yearbook"] == "iia_1938_39"]["value"]
+            if len(a) and len(b):
+                av, bv = float(a.max()), float(b.max())
+                if av > 0 and bv > 0:
+                    out.append(bv / av)
+        return sorted(out)
+
+    def med(xs):
+        return None if not xs else (xs[len(xs) // 2] if len(xs) % 2
+                                    else (xs[len(xs) // 2 - 1] + xs[len(xs) // 2]) / 2)
+
+    hp, ha, ta = factors("hops", "production"), factors("hops", "area"), factors("tobacco", "area")
+    return ([("hops production 1933 pairs", len(hp), 15),
+             ("of those within 20% of 100x", sum(1 for x in hp if 80 <= x <= 120), 15),
+             ("hops area 1933 pairs", len(ha), 16),
+             ("of those within 20% of 10x", sum(1 for x in ha if 8 <= x <= 12), 14),
+             ("tobacco area 1933 pairs (the CONTROL)", len(ta), 46),
+             ("of those within 5% of 1x", sum(1 for x in ta if 0.95 <= x <= 1.05), 32),
+             ("hops area median factor", round(med(ha), 2) if ha else None, 10.04)],
+            "the tobacco-area control is what makes these two defects rather than one")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -313,6 +360,7 @@ CHECKS = {
     "iia-russia-asian-component-dropped": check_russia_asian_component,
     "layerb-nested-reporting-levels-one-polity": check_nested_reporting_levels,
     "iia-layerb-magnitude-scale-inconsistent": check_iia_scale_is_common,
+    "iia-hops-x100": check_hops_x100_and_area_x10,
 }
 
 
