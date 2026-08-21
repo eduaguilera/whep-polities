@@ -392,6 +392,55 @@ def check_hemp_germany_glued(ctx):
             "the identity holds on both indicators; 12 rows carry these labels, not the 6 in the entry")
 
 
+def check_item_product_switches(ctx):
+    """The australia sugar exhibit, cell by cell -- and one of its cells is a different TERRITORY.
+
+    The entry's clearest case is `australia / sugar raw centrifugal / tonnes`, described as a series
+    stitched from `sugar: cane`, `sugar: beet` and `sugar: cane, unrefined`. Re-measuring each cell
+    against the raw extract's own (label, product, year, value):
+
+        19  australia / sugar: cane          the real series
+        17  australia / sugar: beet          about 1/300 of it -- the defect
+         1  australia administered islands / sugar: cane, unrefined      <- NOT a product switch
+
+    THE THIRD "PRODUCT" IS A LABEL CONTAMINATION. 537,211.5 at 1925 is not australia's under a third
+    product name; it is `australia administered islands`, a different territory, and `australia` has no
+    1925 cane row at all. cell_attribution.csv flags the same cell independently
+    (`australia / sugar raw centrifugal`: australia 36, australia administered islands 1). So this
+    exhibit carries TWO mechanisms and the entry attributes both to product switching -- the cane/beet
+    alternation is real and is this entry's subject; the 1925 cell belongs with issues 372 and 483.
+
+    THE COUNTS ARE MEASURED, NOT QUOTED. The entry says "33 cells" with "12 of the 33" on the wrong
+    product; the series now has 37 cells with 17 on beet. Pinning its own figures would have failed on
+    the panel it describes.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    R = raw[(raw["_v"] == "production") & raw["value"].notna()
+            & raw["_p"].str.startswith("sugar", na=False)]
+    g = lb[(lb["source"] == "iia") & (lb["country"] == "australia")
+           & (lb["item"] == "sugar raw centrifugal") & lb["value"].notna()]
+    when = g["period"].where(g["period"].notna(), g["year"].astype("string"))
+    cane = beet = foreign = 0
+    for w, v in zip(when, g["value"]):
+        m = R[(R["year"].astype(str).str.strip() == str(w).strip())
+              & (R["value"].round(6) == round(float(v), 6))]
+        labs = sorted(set(zip(m["_c"], m["_p"])))
+        if len(labs) != 1:
+            continue
+        c, prod = labs[0]
+        if c != "australia":
+            foreign += 1
+        elif prod == "sugar: cane":
+            cane += 1
+        elif prod == "sugar: beet":
+            beet += 1
+    return ([("australia sugar series cells", len(g), 37),
+             ("from australia / sugar: cane", cane, 19),
+             ("from australia / sugar: beet (the defect)", beet, 17),
+             ("from a DIFFERENT LABEL (not a product switch)", foreign, 1)],
+            "the exhibit carries two mechanisms; the 1925 cell is australia administered islands")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -405,6 +454,7 @@ CHECKS = {
     "iia-layerb-magnitude-scale-inconsistent": check_iia_scale_is_common,
     "iia-hops-x100": check_hops_x100_and_area_x10,
     "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
+    "iia-item-series-switch-raw-products": check_item_product_switches,
 }
 
 
