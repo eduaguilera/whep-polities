@@ -478,6 +478,63 @@ def check_mitchell_flax_is_linseed(ctx):
             "the control is what rules out coincidence: 55 against 1, not 55 alone")
 
 
+def check_iia_flax_is_mostly_linseed(ctx):
+    """The iia `flax fibre and tow` item is majority linseed -- and the count depends on which label
+    column you join, which is why this check states its own join.
+
+    THE DIRECTION IS ROBUST AND THE MAGNITUDE IS NOT. Joining the layer-B label to the extract through
+    `dominant_raw_label` -- the extract's OWN label, which is the correct join per the provenance table's
+    own note -- gives 209 cells matching raw `linseed` alone against 107 matching raw `flax: fibre`
+    alone. Joining through the CANONICAL `raw_label` instead gives 137 against 57. Either way linseed
+    leads by about 2:1, so the entry's conclusion holds; but the entry's own figures (110 / 51 / 58) are
+    reproducible by NEITHER join, and sit closest to the canonical one.
+
+    So this check pins the defensible join and says which it is, rather than pinning numbers whose
+    derivation cannot be recovered. `raw_label` matches the extract in only 32% of rows -- the trap the
+    provenance table documents in its own notes -- so a measurement built on it understates any
+    label-matched count, which is the direction the entry's figures sit in.
+
+    The population is dated rows with a provenance-mapped label, which is what reproduces the entry's
+    543 exactly; that part of its method is recoverable and confirmed.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    prov = {}
+    with open(os.path.join(STATE, "iia_label_provenance.csv"), newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            d = (r.get("dominant_raw_label") or "").strip().lower()
+            if d:
+                prov.setdefault(r["layer_b_label"], d)
+    # ZIP OVER THE COLUMNS, NOT itertuples(). The ctx frame's helper columns are named `_c`, `_p`, `_v`,
+    # and itertuples() silently renames any attribute starting with "_" to a positional alias -- so
+    # `t._p` raises AttributeError while the column is present and correct. That trap cost four separate
+    # debugging rounds on 2026-08-21 across four different scripts.
+    idx = collections.defaultdict(set)
+    r = raw[raw["value"].notna()]
+    for p_, var_, c_, y_, v_ in zip(r["_p"], r["variable"], r["_c"], r["year"], r["value"]):
+        idx[(p_, var_, c_, str(y_).strip())].add(round(float(v_), 6))
+    g = lb[(lb["source"] == "iia") & (lb["item"] == "flax fibre and tow")
+           & lb["value"].notna() & lb["year"].notna() & lb["country"].isin(prov)]
+    units = {"ha": "area", "tonnes": "production"}
+    lin = flax = both = 0
+    for c, u, y, v in zip(g["country"], g["unit"], g["year"], g["value"]):
+        var, lab = units.get(u), prov[c]
+        key_l = ("linseed", var, lab, str(int(y)))
+        key_f = ("flax: fibre", var, lab, str(int(y)))
+        v = round(float(v), 6)
+        a, b = v in idx.get(key_l, ()), v in idx.get(key_f, ())
+        if a and b:
+            both += 1
+        elif a:
+            lin += 1
+        elif b:
+            flax += 1
+    return ([("cells (dated, provenance-mapped label)", len(g), 543),
+             ("matching raw `linseed` alone", lin, 209),
+             ("matching raw `flax: fibre` alone", flax, 107),
+             ("matching BOTH (ambiguous)", both, 88)],
+            "joined on the extract's own label; the canonical join gives 137/57/50 instead")
+
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -493,6 +550,7 @@ CHECKS = {
     "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
     "iia-item-series-switch-raw-products": check_item_product_switches,
     "mitchell-flax-fibre-area-is-linseed": check_mitchell_flax_is_linseed,
+    "iia-flax-fibre-item-is-mostly-linseed": check_iia_flax_is_mostly_linseed,
 }
 
 
