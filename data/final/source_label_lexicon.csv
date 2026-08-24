@@ -228,6 +228,7 @@ union del afrique du sud,South Africa,OCR: lost space
 union delafrique du sud,South Africa,OCR: lost spaces
 union sud africaine,South Africa,
 vougoslavie,Yugoslavia,OCR: v for Y
+western samoa,Samoa,"Added 2026-08-24: the FAO 1952 form of a label already reachable from IIA's `SAMOA OCCIDENTALE`. Area 2,930 stated vs a 2,835 polygon, 0.032; exactly one raw label maps to this normalised form, so it is not a colliding key (arm F)."
 yougoslavie,Yugoslavia,
 zanzibar,Zanzibar Protectorate,"was 'Zanzibar', not a polity_name"
 zanzibar et pemba,Zanzibar Protectorate,"Retargeted 2026-08-24 (#195): source label ZANZIBAR ET PEMBA is Zanzibar plus Pemba, i.e. the Protectorate, ZNZ-1890-1963. Corroborated by area: stated 2,642 vs polygon 2,587, ratio 0.979."
