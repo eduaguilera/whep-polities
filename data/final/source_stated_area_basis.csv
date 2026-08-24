@@ -49,7 +49,7 @@ BRN-1888-2025,Brunei Darussalam,fao,5770,1,1952,British Borneo Brunei,5685,0.985
 BSS-1884-1960,British Somaliland Protectorate (1884-1960),iia,176000,9,1909;1925;1929;1932;1933;1938,SOMALIE BRITANNIQUE;SOMALIE BRITANNIQUE british;somalie britannique,171627,0.975,agrees,"A SINGLE-EDITION OUTLIER, in the other direction. `SOMALIE BRITANNIQUE` reads 176,000 km2 in 1913 and 86,000 in 1925; our polygon is 171,627, which is 2% from the EARLIER figure and 100% from the later. British Somaliland was about 176,000 km2, so here it is the 1925 edition that is wrong -- which is why this class cannot be handled by preferring later editions."
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),fao,121910,1,1952,British Borneo Sarawak,124230,1.019,agrees,
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),iia,129498,9,1909;1925;1929;1932;1933;1938,BORNEO BRITANNIQUE: SARAWAK;BORNÉO BRITANNIQUE: SARAWAK;borneo britannique: sarawak,124230,0.959,agrees,
-BTL-1920-1957,British Togoland (1920-1957),iia,34200,1,1925,TOGOLAND british,26545,0.776,agrees,
+BTL-1920-1957,British Togoland (1920-1957),iia,33988,4,1925;1929;1932;1938,CÔTE DE L'OR: TOGOLAND br;CôTE DE L'OR: TOGOLAND br;TOGOLAND british;côte de l'or: togoland br,26545,0.781,agrees,
 BTN-1800-2025,Bhutan,fao,46600,1,1952,Bhutan,39799,0.854,agrees,
 BTN-1800-2025,Bhutan,iia,51800,9,1909;1925;1929;1932;1933;1938,BOUTAN;boutan,39799,0.768,agrees,
 CAN-1886-1949,Canada (to the Newfoundland accession),iia,9659653,9,1909;1925;1929;1932;1933;1938,CANADA;canada,9551195,0.989,agrees,
@@ -257,6 +257,7 @@ NPL-1816-2025,Nepal,iia,140000,9,1909;1925;1929;1932;1933;1938,NEPAL;NÉPAL;NÉP
 NRH-1911-1953,Northern Rhodesia (1911-1953),fao,746240,1,1952,Northern Rhodesia,752073,1.008,agrees,
 NRH-1911-1953,Northern Rhodesia (1911-1953),iia,745777,3,1932;1933;1938,RHODESIE SEPTENTRIONALE;RHODÉSIE SEPTENTRIONALE,752073,1.008,agrees,
 NRU-1888-2025,Nauru,fao,20,1,1952,Nauru,22,1.101,agrees,
+NRU-1888-2025,Nauru,iia,22,6,1909;1925;1929;1932;1933;1938,ILES DU PACIFIQUE: NAURU;ILES DU PACIFIQUE: NAURU (terr sous;ILES DU PACIFIQUE: NAURU br;ILES DU PACIFIQUE: NAURU british;iles du pacifique: nauru,22,1.001,agrees,
 NZL-1840-2025,New Zealand,fao,268670,1,1952,New Zealand,268690,1.000,agrees,
 NZL-1840-2025,New Zealand,iia,268998,9,1909;1925;1929;1932;1933;1938,NOCVELLE-ZÉLANDE british;NOUVELLE-ZELANDE;NOUVELLE-ZÉLANDE;nouvelle-zélande,268690,0.999,agrees,
 PAK-1947-1949,Pakistan (1947-1949),fao,976360,1,1952,Pakistan,932577,0.955,agrees,
