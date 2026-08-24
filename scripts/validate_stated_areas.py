@@ -103,6 +103,35 @@ BASELINE = {
     # OURS IS NOT THE SIDE THAT IS WRONG, and the evidence is independent of our geometry: the
     # publisher's own last word agrees with us. Transjordan's area was ~34,750 sq mi (~90,000 km2)
     # once the eastern desert was included, which is what the 1938 figure reflects.
+    # OMN-1856-2025, added 2026-08-24 with the `oman` / `muscat and oman` lexicon entries (issue 553).
+    # Two independent publishers, 37 years apart, agree almost exactly: IIA states 212,376 km2 (1911 and
+    # 1921 editions) and FAO 1952 states 212,400 for 1948. The agreement is not independent corroboration
+    # of the TERRITORY, though -- it is one number with a traceable provenance. 82,000 square miles is
+    # 212,379 km2, which is 3 km2 from IIA's figure and is FAO's rounded to the nearest hundred. Both are
+    # reprinting the same imperial-era estimate.
+    #
+    # OURS IS NOT THE SIDE THAT IS WRONG: our polygon is 314,239 km2 against a present-day Oman of about
+    # 309,500, a 1.5% overshoot in line with the rest of the database. The gap is the era, not the
+    # geometry -- Oman's interior boundary with Saudi Arabia across the Rub al Khali was undefined until
+    # the 1990 treaty, so pre-war gazetteers counted only the settled and administered ground.
+    #
+    # Deliberately NOT argued from size: subtracting Dhofar (~99,300 km2) from our polygon also lands
+    # near 212,400, and that arithmetic is not evidence of what the publishers counted. Recorded here so
+    # nobody re-derives it as a finding.
+    # Keyed PER SOURCE, not as ("OMN-1856-2025", "fao/iia"): divergence is suppressed on the polity code
+    # alone, but `write_stated_area_basis.py` looks the note up as BASELINE[(code, source)], so a
+    # combined key suppresses the failure and then publishes both basis rows with an EMPTY note.
+    ("OMN-1856-2025", "iia"):
+        "IIA states 212,376 km2 (1911 and 1921 editions) against our 314,239. This is not an independent "
+        "measurement from FAO's 212,400: 82,000 square miles is 212,379 km2, so both publishers are "
+        "reprinting one imperial-era estimate. Our polygon is 1.015x present-day Oman, so the gap is the "
+        "era rather than the geometry -- the Rub al Khali boundary was undefined until 1990. Surfaced by "
+        "adding the `oman` lexicon entry, which had no rule scoped to iia.",
+    ("OMN-1856-2025", "fao"):
+        "FAO 1952 states 212,400 km2 for 1948 against our 314,239 -- the same 82,000-square-mile figure "
+        "IIA prints as 212,376, rounded to the nearest hundred, so the two sources agreeing is one "
+        "source agreeing with itself. See the iia entry. Surfaced by retargeting `muscat and oman`, "
+        "whose target `Oman` was inert because no polity carries that name.",
     ("JOR-1923-1946", "iia"):
         "IIA states 40,000 km2 in four editions (1925-1933) and 89,975 in 1938 against our 89,270 "
         "(0.99x the revised figure, 2.23x the reprinted one). The source revised itself and its "
@@ -564,7 +593,7 @@ BASELINE_COLLIDING_LEXICON_FORMS = 28
 BASELINE_LABEL_SPREAD = 6
 LABEL_SPREAD_FACTOR = 2.0
 
-BASELINE_INERT_LEXICON = 20
+BASELINE_INERT_LEXICON = 19
 
 
 def normalise_label(raw: str) -> str:

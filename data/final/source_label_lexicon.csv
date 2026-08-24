@@ -157,7 +157,7 @@ maurice et dependances,Mauritius,"Added 2026-08-24 (#195): top-level label with 
 memel,Memel,
 mexique,Mexico,
 mongolian people s republic,Mongolia,
-muscat and oman,Oman,
+muscat and oman,Sultanate of Oman,"Retargeted 2026-08-24 (#553): was `Oman`, which is INERT -- no polity carries that name; the periods are `Omani Empire` (OMN-1800-1856) and `Sultanate of Oman` (OMN-1856-2025). OMN-1856-2025 covers the stated year 1948. Distinct normalised form from `trucial oman`, which is the Trucial States at 5,000 km2 and is NOT this polity."
 nigerie,Nigeria,
 nocvelle zelande,New Zealand,OCR: c for u
 norvege,Norway,
@@ -171,6 +171,7 @@ nouvelles hebrides iles,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French 
 nouvelles hebrides iles frenchbritish,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
 nvassaland,Nyasaland,OCR: v for y
 nyassaland,Nyasaland,
+oman,Sultanate of Oman,"Added 2026-08-24 (#553): iia `OMAN` had no rule scoped to iia -- the only aliases were under faostat and lassaletta-grassland-share, and matchlib DISCARDS a source-mismatched rule rather than falling back. OMN-1856-2025 covers both stated years (1911, 1921). The area deliberately does not corroborate; see the BASELINE entry for the 82,000-square-mile figure."
 ouganda,Uganda,
 palestine,Palestine (1920-1948),"Added 2026-08-24 (#195): top-level label with no lexicon entry. the Mandate, stated 23,000-27,000 across editions against a 27,009 polygon. Territory read from the French name, area used only as the check (worst deviation 0.174, span covers every stated year)."
 panama zone du,Panama Canal Zone (US-administered),PANAMA (zone du canal)
