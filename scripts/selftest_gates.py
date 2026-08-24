@@ -2316,6 +2316,90 @@ def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
             f"was")
 
 
+def mutate_alias_loses_its_upper_bound(root, gpd, make_valid, affinity):
+    """Blank an alias's `year_end` so it can still fire after its target polity stopped existing.
+
+    What matters to this gate is the UPPER bound alone -- a blank `year_start` is a separate arm --
+    so the mutation clears `year_end` on an `Abyssinia` row targeting ETH-1800-1889 and leaves
+    `year_start` at 1800. The alias then resolves every year after 1889 to a polity that ended then,
+    which is the shape that put 46 `Turkey` rows on TUR-1920-2025 for years 1880-1919.
+
+    `('Abyssinia', '')` is deliberately NOT one of the 10 baselined pairs, so the mutation adds an
+    entry rather than perturbing an accepted one.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/label_alias_map.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows
+           if (r.get("source_label") or "").strip() == "Abyssinia"
+           and r["polity_code"] == "ETH-1800-1889"]
+    assert hit, "the Abyssinia/ETH-1800-1889 alias is gone -- pick another non-baselined row"
+    was = hit[0]["year_end"]
+    hit[0]["year_end"] = ""
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"cleared the `Abyssinia` -> ETH-1800-1889 alias's year_end (was {was!r}), so it is "
+            f"unbounded above and resolves years after the polity ended")
+
+
+def mutate_live_polity_advertises_a_non_iso_code(root, gpd, make_valid, affinity):
+    """Set a live polity's `iso3_code` to a string that is not an ISO 3166-1 alpha-3 code.
+
+    `iso3_code` is what a consumer holding a country code joins on, so a non-ISO value makes the
+    polity unreachable by that route SILENTLY -- there is nothing to fail. That is the failure this
+    gate exists for, and it has happened twice for real (FRS-1977-2025 carrying `FRS`, and
+    SUD-1956-2011 carrying `SUD` while a consumer held SDN).
+
+    ABW-1800-2025 is chosen because it is live, is not in the gate's EXEMPT set, and is not an
+    aggregate prefix, so exactly one arm can fire.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["polity_code"] == "ABW-1800-2025"]
+    assert hit, "ABW-1800-2025 is gone -- pick another live, non-exempt row"
+    was = hit[0]["iso3_code"]
+    hit[0]["iso3_code"] = "ZZZ"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"set ABW-1800-2025's iso3_code from {was!r} to 'ZZZ', which is not an ISO 3166-1 "
+            f"alpha-3 code, so a consumer joining on ABW reaches nothing")
+
+
+def mutate_new_cow_code_collision(root, gpd, make_valid, affinity):
+    """Give a polity a COW code already held by a polity whose years it overlaps.
+
+    A mis-typed COW code looks EXACTLY like one of the 29 deliberate metropole/colony shares, which
+    is why this gate baselines the set rather than forbidding it. AMI-1946-1953 currently carries no
+    code and its span overlaps only AFG-1919-2025 among the three cow-700 rows (the AFG spans are
+    consecutive, so they do not overlap each other), so this adds exactly ONE pair and removes none
+    -- the `NEW collision` arm fires and the `no longer share` arm stays quiet.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["polity_code"] == "AMI-1946-1953"]
+    assert hit, "AMI-1946-1953 is gone -- pick another live row with no cow_code"
+    assert not (hit[0].get("cow_code") or "").strip(), "AMI now HAS a cow_code -- pick another row"
+    hit[0]["cow_code"] = "700"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return ("gave AMI-1946-1953 cow_code 700, which is Afghanistan's and is held by AFG-1919-2025 "
+            "over overlapping years, so one new collision appears and no baselined pair leaves")
+
+
 def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
     """Add a lexicon entry whose English target names no polity, pushing the inert count past its
     ceiling.
@@ -4402,6 +4486,27 @@ CASES = (
         "distinctness filter all stay identical",
     ),
     (
+        "validate_unranged_aliases.py",
+        mutate_alias_loses_its_upper_bound,
+        "Abyssinia",
+        "an alias that can still fire after its target polity ended — structural, so it is caught "
+        "whether or not data happens to fall in the exposed years",
+    ),
+    (
+        "validate_iso_codes.py",
+        mutate_live_polity_advertises_a_non_iso_code,
+        "ABW-1800-2025",
+        "a live polity advertising a non-ISO value in the field consumers join on — reachable by "
+        "polity code but not by country code, and nothing else in the repo notices",
+    ),
+    (
+        "validate_cow_codes.py",
+        mutate_new_cow_code_collision,
+        "AMI-1946-1953",
+        "a mis-typed COW code, which is indistinguishable from the 29 deliberate metropole/colony "
+        "shares except by being NEW — so only a baselined set can tell them apart",
+    ),
+    (
         "validate_stated_areas.py",
         mutate_lexicon_entry_routes_nowhere,
         "resolve to no polity",
@@ -5047,6 +5152,9 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
         "pipelines/polity-autoimprove/state/assertions.json",
     ),
+    "validate_unranged_aliases.py": ("label_alias_map.csv",),
+    "validate_iso_codes.py": ("polities_database.csv",),
+    "validate_cow_codes.py": ("polities_database.csv",),
     # This gate SKIPs unless it can read the geometry, the database, the statements, the lexicon
     # AND import matchlib off `pipelines/polity-autoimprove` -- which is why it had no case for as
     # long as it has existed. A SKIP exits 0, so a case that did not stage all five would report
@@ -5473,7 +5581,7 @@ WRITABLE = {
 #
 # The ceiling is what makes the gap visible rather than implied: a NEW gate landing without a case
 # pushes it up, and covering one pushes it down and demands the ceiling follow.
-BASELINE_GATES_WITHOUT_A_CASE = 10
+BASELINE_GATES_WITHOUT_A_CASE = 7
 
 
 def _gates_without_a_case() -> list:
