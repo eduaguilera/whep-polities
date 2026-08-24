@@ -3,6 +3,11 @@ afrique allemande du sud ouest,South West Africa,
 afrique du sud ouest allemande,South West Africa,
 afrique equatoriale francaise,French Equatorial Africa,
 afrique occidentale francaise,French West Africa,
+afrique occidentale francaise: guinee francaise,Guinea (1894-1958),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.058 across the whole stated range, span covers every stated year. NOT New Guinea: an area-ranked search paired this label with TNGU-1920-1949 at w=0.054 purely because `guinea` is a substring of `New Guinea`. GIN-1894-1958 is French Guinea and its span covers every stated year. The source's own variants include OCR damage (`Guinee trancaise`), which normalisation absorbs."
+afrique occidentale francaise: guinee trancaise,Guinea (1894-1958),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.058 across the whole stated range, span covers every stated year. NOT New Guinea: an area-ranked search paired this label with TNGU-1920-1949 at w=0.054 purely because `guinea` is a substring of `New Guinea`. GIN-1894-1958 is French Guinea and its span covers every stated year. The source's own variants include OCR damage (`Guinee trancaise`), which normalisation absorbs."
+afrique occidentale francaise: niger,Colonial Niger (1922-1947),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.105 across the whole stated range, span covers every stated year."
+afrique occidentale francaise: senegal,Senegal (1886-1960),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.026 across the whole stated range, span covers every stated year."
+afrique occidentale francaise: senegal et dakar,Senegal (1886-1960),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.026 across the whole stated range, span covers every stated year."
 afrique orientale allemande,Tanzania (1891-1920),"Retargeted 2026-08-24 (#195): AFRIQUE ORIENTALE ALLEMANDE is German East Africa, which is TAN-1891-1920 -- the era-specific row, whose span covers both stated years 1911 and 1913. Area 995,000 stated vs 991,218 polygon, ratio 0.996. I had previously reported this territory as having no polity at all; that was a token-search error (I checked `tanganyika`, not `tanzania`)."
 alaska,Territory of Alaska,"was 'Alaska', which is not a polity_name"
 albanie,Albania,
@@ -23,6 +28,8 @@ bechuanaland,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195)
 belgique,Belgium,
 birmanie,Burma,
 bolivie,Bolivia,
+borneo britannique: borneo septentrional,British North Borneo,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.099 across the whole stated range, span covers every stated year. North Borneo likewise has its own polity."
+borneo britannique: sarawak,Sarawak (Brooke Raj / Crown Colony),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.142 across the whole stated range, span covers every stated year. Sarawak has its OWN polity, which is why this is a routing gap rather than an undivided-parent question -- I had said otherwise on #195 before checking."
 bosnie et herzegovine,Bosnia and Herzegovina,
 boutan,Bhutan,
 bresil,Brazil,
