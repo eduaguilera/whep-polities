@@ -3,7 +3,7 @@ afrique allemande du sud ouest,South West Africa,
 afrique du sud ouest allemande,South West Africa,
 afrique equatoriale francaise,French Equatorial Africa,
 afrique occidentale francaise,French West Africa,
-afrique orientale allemande,German East Africa,
+afrique orientale allemande,Tanzania (1891-1920),"Retargeted 2026-08-24 (#195): AFRIQUE ORIENTALE ALLEMANDE is German East Africa, which is TAN-1891-1920 -- the era-specific row, whose span covers both stated years 1911 and 1913. Area 995,000 stated vs 991,218 polygon, ratio 0.996. I had previously reported this territory as having no polity at all; that was a token-search error (I checked `tanganyika`, not `tanzania`)."
 alaska,Territory of Alaska,"was 'Alaska', which is not a polity_name"
 albanie,Albania,
 algerie,Algeria,

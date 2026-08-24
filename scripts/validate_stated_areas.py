@@ -427,6 +427,24 @@ _NATIONALITY = re.compile(
 )
 
 
+# 22 -> 21 on 2026-08-24, third batch (one entry): `German East Africa` -> `Tanzania (1891-1920)`.
+# Found by asking, for each remaining inert target, whether an ERA-SPECIFIC polity covers its stated
+# years -- the earlier passes had guessed one destination per territory and stopped. TAN-1891-1920 is
+# German East Africa's own period and its area agrees to 0.4% (995,000 stated vs 991,218). 0 lost,
+# 2 gained.
+#
+# The same sweep refuted three others that looked promising, and the reasons are worth keeping:
+#   `New Guinea`         the label is `NOUVELLE-GUINÉE german`, i.e. GERMAN New Guinea, 1911-1913.
+#                        TNGU-1920-1949 is the same territory under the later Australian mandate and
+#                        its area matches (237,462 vs 240,000, 0.989) but its span starts in 1920.
+#                        TPAP-1906-1949 covers the years and is the wrong half of the island.
+#   `Syria and Lebanon`  a combined reporting unit whose stated area swings 130,600 / 200,000 /
+#                        203,000 / 241,400 -- no polity agrees across that range, and SYL-1944-1953
+#                        exists for a LATER period only.
+#   `Togo` / `South West Africa`   no single polity covers their stated years at all: Togo splits into
+#                        British and French mandates in 1920, and Namibia's spans break at 1915 and
+#                        1920. A flat label->name lexicon cannot express either.
+#
 # 28 -> 22 on 2026-08-24, second batch: six RENAME cases, where the destination polity carries a
 # different name than the source's exonym so bare-name matching could never find it -- `Swaziland` ->
 # Eswatini, `Basutoland` -> Lesotho (1886-1966), `Transjordan` -> Jordan (1923-1946), `French Oceania`
@@ -462,7 +480,7 @@ _NATIONALITY = re.compile(
 # `Socotra`, `Svalbard` among them) name territories this database has no polity for -- issue 400.
 # The ceiling holds the rest: a new entry pointing nowhere, or a polity rename stranding an old one,
 # both push it up.
-BASELINE_INERT_LEXICON = 22
+BASELINE_INERT_LEXICON = 21
 
 
 def normalise_label(raw: str) -> str:
