@@ -55,6 +55,21 @@ df = pd.read_parquet(LB)
 valid_codes = set(pol["polity_code"])
 df = extdata.rename_layer_b_misnamed(df, polity_codes=valid_codes, where="layer B")
 work = df[~df.is_aggregate].copy()
+
+# OCR SPELLING CORRECTIONS (issue 552). A dozen fao1952 labels are misreadings of a label the
+# same source also prints correctly -- `Afghaniscan`, `Crechoslovakia`, `Madagascar 4`. Applied
+# as a RENAME rather than as aliases, deliberately: `Czechoslovakia` routes per year across
+# three F51 periods, so an alias would have to hard-code a span that the year-resolution
+# machinery below already gets right. Correcting the spelling defers that decision instead of
+# duplicating it. The corrected cells are disjoint from their correctly-spelled sibling's on
+# (item, unit, year) in every pair, so this adds observations rather than double-counting them.
+_ocr = extdata.load_ocr_corrections()
+_before = work["country"].copy()
+for (_src, _bad), _good in _ocr.items():
+    _hit = (work["source"] == _src) & (work["country"] == _bad)
+    work.loc[_hit, "country"] = _good
+_n_ocr = int((work["country"] != _before).sum())
+print(f"OCR label corrections applied: {_n_ocr:,} row(s) across {len(_ocr)} tabled spelling(s)")
 # trust a prior code ONLY if it is a real period-specific WHEP polity_code. Bare-iso
 # stubs (deu, gbr, jpn) carry no period/territory -> do NOT trust them; send them to
 # the resolver so iso+year-containment resolves each to its period polity. Measured

@@ -31,6 +31,7 @@ copes with a renamed column is how the rename goes unnoticed; the point is to st
 """
 from __future__ import annotations
 
+import csv
 import os
 
 # --------------------------------------------------------------------------------------
@@ -357,6 +358,39 @@ def refuse_orphan_codes(counts, what: str, fix: str, path: str | None = None) ->
         print(f"  {code}  {n:,} row(s)  [{why}]")
     print(f"  refusing to write. {fix}")
     raise SystemExit(1)
+
+
+# Tracked in this repo, unlike LAYER_B/WHEP_CROPS above -- these corrections ARE repo data.
+OCR_CORRECTIONS = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data/final/source_label_ocr_corrections.csv",
+)
+
+
+def load_ocr_corrections(path: str | None = None):
+    """Load the tabled OCR spelling corrections as {(source, ocr_label): correct_label}.
+
+    These are source labels that a yearbook extraction misread -- `Afghaniscan`, `Crechoslovakia`,
+    `Madagascar 4` -- where the SAME source also prints the correct spelling. They are corrected
+    rather than aliased so that year resolution, not a hand-picked alias window, decides which
+    period polity each row lands on (issue 552).
+
+    Raises if the file is missing: it is tracked, and silently skipping the corrections would
+    quietly restore 25 unresolved rows while every count still looked plausible.
+    """
+    path = path or OCR_CORRECTIONS
+    if not os.path.exists(path):
+        raise ExternalDataError(f"tracked OCR correction table missing: {path}")
+    out = {}
+    with open(path, newline="", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            key = (row["source"], row["ocr_label"])
+            if key in out:
+                raise ExternalDataError(f"duplicate OCR correction key: {key}")
+            if row["ocr_label"] == row["correct_label"]:
+                raise ExternalDataError(f"OCR correction is a no-op: {key}")
+            out[key] = row["correct_label"]
+    return out
 
 
 def rename_layer_b_misnamed(df, polity_codes=None, where: str = "layer B"):

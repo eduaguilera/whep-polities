@@ -1,0 +1,13 @@
+source,ocr_label,correct_label,note
+fao1952,Afghaniscan,Afghanistan,"OCR t->c. 1 row, 1951."
+fao1952,Anglo-Eg Sudan,Anglo-Egypt Sudan,"Truncated word. 1 row, 1949."
+fao1952,Bricish Guiana,British Guiana,"OCR t->c. 3 rows, 1949. Routes to GUY-1800-2025, confirmed by running the pipeline. I first recorded the opposite here: a standalone probe said `British Guiana` resolves to nothing, so I nearly published that issue 552 was wrong about this pair. The probe was wrong -- it built `matchlib.Matcher` WITHOUT `common_names_csv`, which the pipeline passes. Same label, same source, same year, different matcher configuration."
+fao1952,British Solomon,British Solomon Is,"Truncated word. 2 rows, 1949-1950."
+fao1952,Crechoslovakia,Czechoslovakia,"OCR z->c. 2 rows, 1947-1948. Deliberately NOT an alias: the correct spelling routes per year across F51-1918-1938, F51-1938-1945 and F51-1947-1993, so an alias would have to hard-code a span the year-resolution machinery already gets right."
+fao1952,French Equat Airica,French Equat Africa,"OCR f->i. 2 rows, 1950."
+fao1952,Guatemal,Guatemala,"Dropped final letter. 2 rows, 1949 and one 1934-1938 period row."
+fao1952,Madagascar 4,Madagascar,"Footnote marker read as text. 1 row, 1951."
+fao1952,Mauritius a,Mauritius,"Footnote marker read as text. 3 rows, 1949-1951."
+fao1952,Portuguese Timor a,Portuguese Timor,"Footnote marker read as text. 3 rows, 1949-1950 and one 1934-1938 period row."
+fao1952,Sho Tomé and Principe,São Tomé and Principe,"OCR ao->ho. 3 rows, 1949-1950 and one 1934-1938 period row."
+fao1952,São Tomé & Principe,São Tomé and Principe,"Ampersand for `and`. 2 rows, 1937 and 1951."

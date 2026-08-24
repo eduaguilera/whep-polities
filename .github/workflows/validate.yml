@@ -705,6 +705,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_stated_areas.py
 
+      - name: Tabled OCR label corrections are still needed and still route
+        if: '!cancelled()'
+        run: python3 scripts/validate_ocr_corrections.py
+
       - name: Wiki pages only name things that exist
         if: '!cancelled()'
         run: python3 scripts/validate_references.py
