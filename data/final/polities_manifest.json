@@ -201,8 +201,8 @@
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 317,
-  "polities": 226,
+  "bases": 320,
+  "polities": 227,
   "sources": [
    "fao",
    "iia"

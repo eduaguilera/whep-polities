@@ -409,12 +409,26 @@ _NATIONALITY = re.compile(
 )
 
 
+# 32 -> 28 on 2026-08-24: four entries retargeted (#195) -- `Taiwan`, `Zanzibar`, `Bechuanaland`,
+# `Timor` -- each verified to ADD coverage rather than swap it, the failure that reverted three
+# retargets in a0fe282. The resolved (polity, source, year) set is a strict SUPERSET: 0 lost, 14
+# gained (BEC +9, TWN +3, TLS +1, ZNZ +1).
+#
+# Three more had an unambiguous destination and were deliberately NOT retargeted:
+#   `Dodecanese`   -> ITAEG-1912-1947 has no polygon, so the statement still would not resolve
+#   `Gold Coast`   -> the only candidate is GCT-1919-1956, Gold Coast PLUS British Togoland, while
+#                     the source label COTE DE LOR states 203,700 -- the colony alone. Retargeting
+#                     would compare two different territories and manufacture a 17% divergence.
+#   `Oman`         -> stated 212,400 (Muscat and Oman, 1948) against a 314,239 polygon, ratio 1.479.
+#                     That is past the 0.25 tolerance, so it would need a baseline entry and a
+#                     judgement about which figure is right -- not mine to make.
+#
 # Lexicon targets that resolve to no polity at any year their source states a figure for. Not zero,
 # and not reachable while 11 of them (`Karafuto`, `Kwantung`, `Tibet`, `Memel`, `Rio de Oro`,
 # `Socotra`, `Svalbard` among them) name territories this database has no polity for -- issue 400.
 # The ceiling holds the rest: a new entry pointing nowhere, or a polity rename stranding an old one,
 # both push it up.
-BASELINE_INERT_LEXICON = 32
+BASELINE_INERT_LEXICON = 28
 
 
 def normalise_label(raw: str) -> str:

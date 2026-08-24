@@ -16,8 +16,8 @@ autriche,Austria,
 basoutoland,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
 basqutoland,Basutoland,OCR: q inserted
 basutoland,Basutoland,
-bechouanaland,Bechuanaland,
-bechuanaland,Bechuanaland,
+bechouanaland,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
+bechuanaland,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
 belgique,Belgium,
 birmanie,Burma,
 bolivie,Bolivia,
@@ -59,8 +59,8 @@ ethiopie,Ethiopia,
 falkland et dependences,Falkland Islands,
 finlande,Finland,NOT retargeted to 'Grand Duchy of Finland': same year-dependence as `allemagne`. That target is historically right for 1911-1913 but trades FIN-1917-1940 (6 statements) for FIN-1809-1917 (3).
 formose,Formosa,"was 'Taiwan', which resolves to the 1945+ row; these statements are 1911-1929"
-formose et pescadores,Taiwan,
-formose et pescadores japonaise,Taiwan,
+formose et pescadores,Formosa (Japanese Taiwan),"Retargeted 2026-08-24 (#195): source label FORMOSE ET PESCADORES is Formosa plus the Pescadores, which is TWN-1895-1945. Corroborated by area: stated 35,843-35,974 vs our polygon 35,994, ratio 1.001."
+formose et pescadores japonaise,Formosa (Japanese Taiwan),"Retargeted 2026-08-24 (#195): source label FORMOSE ET PESCADORES is Formosa plus the Pescadores, which is TWN-1895-1945. Corroborated by area: stated 35,843-35,974 vs our polygon 35,994, ratio 1.001."
 fthiopie,Ethiopia,OCR: f for E-acute
 gambie,Gambia,
 gold coast and togoland,Gold Coast and Br Togoland,
@@ -175,7 +175,7 @@ tchecoslovaquie,Czechoslovakia,
 terre neuve,Dominion of Newfoundland,"was 'Newfoundland', not a polity_name"
 terre neuve labrador,Newfoundland,
 tibet,Tibet,
-timor,Timor,
+timor,Timor-Leste,"Retargeted 2026-08-24 (#195): source label `Portuguese Timor` is East Timor, TLS-1800-2025. Stated 18,990 vs polygon 14,978, ratio 0.789 -- the classic Portuguese Timor figure against a modern coastline, inside tolerance and worth comparing."
 timor et kambing,Timor-Leste,Portuguese Timor and Kambing
 togo,Togo,
 transjordanie,Transjordan,
@@ -190,4 +190,4 @@ union sud africaine,South Africa,
 vougoslavie,Yugoslavia,OCR: v for Y
 yougoslavie,Yugoslavia,
 zanzibar,Zanzibar Protectorate,"was 'Zanzibar', not a polity_name"
-zanzibar et pemba,Zanzibar,
+zanzibar et pemba,Zanzibar Protectorate,"Retargeted 2026-08-24 (#195): source label ZANZIBAR ET PEMBA is Zanzibar plus Pemba, i.e. the Protectorate, ZNZ-1890-1963. Corroborated by area: stated 2,642 vs polygon 2,587, ratio 0.979."
