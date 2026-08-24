@@ -229,7 +229,16 @@ BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # 195's option B (declare the source's figure instead of the polygon's own measurement) is available
 # without a schema change. It is pinned at the measurement in both directions, as a0fe282 established,
 # so a real regression cannot hide under a loose ceiling.
-BASELINE_AVOIDABLE_SELF_REF = 33
+# 33 -> 34, same day and same cause: NER-1922-1947 declares 1,182,017 km2 against a 1,181,761
+# polygon (0.02%) and has just acquired an independent figure -- IIA's
+# `AFRIQUE OCCIDENTALE FRANÇAISE: Niger` states 1,250,850-1,293,810, routed for the first time by a
+# lexicon entry in the same change. TPAP-1906-1949 was the previous one, for the identical reason.
+#
+# Both are issue 195's option B becoming available, not a regression, and the pattern is now clear
+# enough to state: every lexicon entry that routes a stated figure to a polity whose declared area was
+# read off its own geometry moves this metric UP by one. That is the metric doing its job -- it counts
+# rows where a real comparison is possible and is not being made.
+BASELINE_AVOIDABLE_SELF_REF = 34
 
 #
 

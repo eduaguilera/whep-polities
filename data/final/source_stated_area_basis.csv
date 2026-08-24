@@ -39,6 +39,7 @@ BHS-1800-2025,Bahamas,iia,11406,9,1909;1925;1929;1932;1933;1938,INDES OCCIDENTAL
 BLZ-1886-1970,British Honduras,fao,22970,1,1952,British Honduras,22076,0.961,agrees,
 BLZ-1886-1970,British Honduras,iia,22268,9,1909;1925;1929;1932;1933;1938,HONDURAS BRITANNIQUE;honduras britannique,22076,0.991,agrees,
 BNB-1881-1963,British North Borneo,fao,76110,1,1952,British Borneo North Borneo,72557,0.953,agrees,
+BNB-1881-1963,British North Borneo,iia,80289,9,1909;1925;1929;1932;1933;1938,BORNEO BRITANNIQUE: BORNEO SEPTENTRIONAL;BORNÉO BRITANNIQUE: BORNÉO SEPTENTRIONAL;borneo britannique: bornéo septentrional,72557,0.904,agrees,
 BOL-1909-1938,Bolivia (1909-1938),iia,1332808,9,1909;1925;1929;1932;1933;1938,BOLIVIE;bolivie,1191848,0.894,agrees,
 BOL-1938-2025,Bolivia,fao,1069100,1,1952,Bolivia,1086608,1.016,agrees,
 BRA-1909-2025,Brazil,fao,8516040,1,1952,Brazil,8471741,0.995,agrees,
@@ -47,6 +48,7 @@ BRB-1800-2025,Barbados,iia,430,9,1909;1925;1929;1932;1933;1938,INDES OCCIDENTALE
 BRN-1888-2025,Brunei Darussalam,fao,5770,1,1952,British Borneo Brunei,5685,0.985,agrees,
 BSS-1884-1960,British Somaliland Protectorate (1884-1960),iia,176000,9,1909;1925;1929;1932;1933;1938,SOMALIE BRITANNIQUE;SOMALIE BRITANNIQUE british;somalie britannique,171627,0.975,agrees,"A SINGLE-EDITION OUTLIER, in the other direction. `SOMALIE BRITANNIQUE` reads 176,000 km2 in 1913 and 86,000 in 1925; our polygon is 171,627, which is 2% from the EARLIER figure and 100% from the later. British Somaliland was about 176,000 km2, so here it is the 1925 edition that is wrong -- which is why this class cannot be handled by preferring later editions."
 BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),fao,121910,1,1952,British Borneo Sarawak,124230,1.019,agrees,
+BSW-1841-1963,Sarawak (Brooke Raj / Crown Colony),iia,129498,9,1909;1925;1929;1932;1933;1938,BORNEO BRITANNIQUE: SARAWAK;BORNÉO BRITANNIQUE: SARAWAK;borneo britannique: sarawak,124230,0.959,agrees,
 BTL-1920-1957,British Togoland (1920-1957),iia,34200,1,1925,TOGOLAND british,26545,0.776,agrees,
 BTN-1800-2025,Bhutan,fao,46600,1,1952,Bhutan,39799,0.854,agrees,
 BTN-1800-2025,Bhutan,iia,51800,9,1909;1925;1929;1932;1933;1938,BOUTAN;boutan,39799,0.768,agrees,
@@ -127,6 +129,7 @@ GBR-1921-2025,United Kingdom,iia,230893,6,1909;1925;1929;1932;1933;1938,GRANDE-B
 GHA-1898-1957,Ghana (1898-1957),iia,205949,8,1909;1925;1929;1932;1938,COTE DE L'OR;COTE DE L'OR british;CÔTE DE L'OR;CôTE DE L'OR;côte de l'or,212451,1.032,agrees,
 GIB-1800-2025,Gibraltar,fao,60,1,1952,Gibraltar,7,0.119,review,"THE SAME UNIT ERROR AS NFK-1914-2025, WHICH IS ALREADY BASELINED. FAO states 60 km2 for Gibraltar, which is 6.8 km2 -- a figure recorded under the `1000 hectares` heading and read as km2, i.e. 6.8 thousand hectares instead of 0.68. Norfolk Island is the identical shape (350 stated, 35 actual), so this is a systematic hazard of that table at small magnitudes rather than a one-off slip. Our 7 is right."
 GIB-1800-2025,Gibraltar,iia,5,7,1909;1925;1932;1933;1938,GIBRALTAR,7,1.430,agrees,
+GIN-1894-1958,Guinea (1894-1958),iia,250875,5,1909;1925;1929;1933;1938,AFRIQUE OCCIDENTALE FRANÇAISE: Guinee française;AFRIQUE OCCIDENTALE FRANÇAISE: Guinee trancaise;AFRIQUE OCCIDENTALE FRANÇAISE: Guinée française;afrique occidentale française: guinée francaise,245067,0.977,agrees,
 GKM-1884-1912,German Kamerun (1884-1912),iia,790000,1,1909,CAMEROUN,510433,0.646,review,"VINTAGE. IIA states 790,000 km2, which is German Kamerun AFTER the 1911 Neukamerun cession from French Equatorial Africa; our 510,422 is the pre-1911 colony. The row spans 1884-1912, so both are inside it and the polygon represents most of the span."
 GKM-1912-1916,German Kamerun (1912-1916),iia,789312,2,1925;1929,CAMEROUN german;cameroun,799945,1.013,agrees,
 GLP-1816-2025,Guadeloupe,fao,1780,1,1952,Guadeloupe,1650,0.927,agrees,
@@ -239,6 +242,7 @@ MWI-1891-1953,Nyasaland (1891-1953),iia,102492,9,1909;1925;1929;1932;1933;1938,N
 MYS-1946-1957,Malayan Union / Federation of Malaya (1946-1957),fao,131290,1,1952,Malaya Federation of,131452,1.001,agrees,
 NCL-1800-2025,New Caledonia,fao,18600,1,1952,New Caledonia,18798,1.011,agrees,
 NCL-1800-2025,New Caledonia,iia,18653,9,1909;1925;1929;1932;1933;1938,NOUV-CALÉDONIE et dependences;NOUVELLE-CALEDONIE et dependences french;NOUVELLE-CALÉDONIE (et;NOUv-CALEDONIE et dependences;NOuv-CALEDONIE et dependences;nouvelle-calédonie (et dependences,18798,1.008,agrees,
+NER-1922-1947,Colonial Niger (1922-1947),iia,1293810,3,1929;1933;1938,AFRIQUE OCCIDENTALE FRANÇAISE: Niger;afrique occidentale française: niger,1181761,0.913,agrees,
 NFK-1914-2025,Norfolk Island (Australian Territory),fao,350,1,1952,Norfolk Islands,41,0.116,review,"A UNIT ERROR IN THE SOURCE. FAO states 350 km2 for Norfolk Island, which is 35 km2 -- exactly 10x, i.e. a figure in km2 recorded under the `1000 hectares` heading. Our 37 is right."
 NFL-1907-1949,Dominion of Newfoundland,iia,110679,9,1909;1925;1929;1932;1933;1938,TERRE-NEUVE;terre-neuve,398115,3.597,review,"A REAL SCOPE DIFFERENCE, AND THE MOST CONSEQUENTIAL ONE THIS FILE CARRIES AFTER ALGERIA. IIA states 110,679 km2, which is the ISLAND of Newfoundland (about 111,000 km2). Our polygon is 398,115 km2, which is the island PLUS LABRADOR (together about 405,000 km2). Both are correct for what they describe -- the Dominion did administer Labrador -- so neither figure is an error and the polygon is not being changed. But a per-km2 intensity computed from a yearbook numerator over this polygon understates by 3.6x, with nothing else in the repo to warn of it. Surfaced on 2026-08-20 when the `terre neuve` lexicon entry was retargeted from `Newfoundland`, which matches no polity_name, to `Dominion of Newfoundland` (issue 195)."
 NGA-1914-1960,Nigeria (1914-1960),iia,876745,5,1909;1929;1932;1933;1938,NIGERIA;NIGERIE;NIGÉRIA;nigéria,862491,0.984,agrees,
@@ -288,6 +292,7 @@ RWB-1922-1962,Ruanda-Urundi (1922-1962),iia,54000,5,1925;1929;1932;1933;1938,RUA
 RYU-1945-1972,Ryukyu Islands (US Administration),fao,3410,1,1952,Ryukyu Islands,2337,0.685,agrees,"SCOPE MISMATCH, explained. FAO states 3,410 km2 against our 2,270. The US-administered Ryukyus included Amami Oshima (~1,200 km2) until it returned to Japan in 1953, and 2,270 + 1,200 = 3,470, within 2% of the stated figure. Our polygon is Okinawa Prefecture, so the gap is Amami and the divergence is real rather than wrong."
 SAA-1947-1957,Saar Protectorate,fao,2570,1,1952,Saar,2565,0.998,agrees,
 SAU-1924-2025,Saudi Arabia,fao,1546000,1,1952,Saudi Arabia,1954367,1.264,agrees,"GENUINE HISTORICAL UNCERTAINTY. FAO states 1,546,000 km2 against our 1,954,454 and a modern 2,149,690. Saudi Arabia's southern and eastern desert boundaries were not settled until the 1990s, so contemporary figures varied by hundreds of thousands of km2. Neither side is wrong; the territory was not agreed."
+SEN-1886-1960,Senegal (1886-1960),iia,201000,5,1909;1925;1929;1933;1938,AFRIQUE OCCIDENTALE FRANÇAISE: Senegal;AFRIQUE OCCIDENTALE FRANÇAISE: Sénégal;afrique occidentale française: sénégal et dakar,196150,0.976,agrees,
 SHN-1834-1967,Saint Helena (Crown Colony),iia,122,9,1909;1925;1929;1932;1933;1938,SAINTE-HELENE;SAINTE-HELENE british;SAINTE-HÉLÈNE;sainte-hélène,123,1.007,agrees,
 SLE-1889-1961,Sierra Leone (1889-1961),fao,72330,1,1952,Sierra Leone,72503,1.002,agrees,
 SLE-1889-1961,Sierra Leone (1889-1961),iia,70580,9,1909;1925;1929;1932;1933;1938,SIERRA LEONE;SIERRA LEONE colonie et protectorade;SIERRA-LEONE;SIERRA-LEONE british;sierra leone,72503,1.027,agrees,
