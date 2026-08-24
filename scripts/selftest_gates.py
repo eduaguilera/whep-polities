@@ -867,6 +867,26 @@ def mutate_partial_territory_claimed_twice(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_site_page_copy_drifts(root, gpd, make_valid, affinity):
+    """Edit a published page copy so it no longer matches the wiki page it was copied from.
+
+    `site/build_wiki.sh` `cp`s `wiki/polities/*.md` into `site/wiki/polities/` and `pages.yml`
+    publishes `site/**`, so the copies ARE published output. Arms A-C compared the CSV and the geojson
+    and nothing looked at the pages -- which is how 45 of them served text from before 9dc37c0
+    (2026-08-18) for six days while every gate stayed green.
+
+    The mutation appends a comment rather than changing anything semantic, deliberately: the page still
+    parses, still has valid frontmatter, and still passes `validate_citations`. Only a byte comparison
+    against its source can see it, which is exactly the arm under test.
+    """
+    src = os.path.join(root, "site/wiki/polities/atg-1800-2025.md")
+    assert os.path.exists(src), "the staged site page copy is missing -- check WRITABLE"
+    with open(src, "a", encoding="utf-8") as fh:
+        fh.write("\n<!-- selftest: published copy edited without rebuilding -->\n")
+    return ("appended a comment to site/wiki/polities/atg-1800-2025.md so the published copy no "
+            "longer matches wiki/polities/atg-1800-2025.md")
+
+
 def mutate_site_shows_withdrawn(root, gpd, make_valid, affinity):
     """Put a retired polity back into site/polities.geojson, which is how the site
     drew Argentina twice.
@@ -4996,6 +5016,13 @@ CASES = (
     ),
     (
         "validate_site_outputs.py",
+        mutate_site_page_copy_drifts,
+        "differ from",
+        "a published wiki page copy that no longer matches its source — the page still parses and "
+        "still passes the citation gate, so only a byte comparison against the repository sees it",
+    ),
+    (
+        "validate_site_outputs.py",
         mutate_site_shows_withdrawn,
         "ARG-1800-2025",
         "a withdrawn polity drawn on the published map, over the rows that replaced it",
@@ -5769,6 +5796,10 @@ WRITABLE = {
     # duplicate-key self-check below now makes that impossible. Its declaration lives above, beside
     # the case that needs it.
     "validate_site_outputs.py": (
+        # arm D byte-compares the published page copies against their sources, so BOTH trees
+        # must be staged -- the site copy to mutate, the wiki page to compare it against.
+        "wiki/polities",
+        "site/wiki/polities",
         "polities_database.csv",
         "polities_database.gpkg",
         "site/polities.csv",
