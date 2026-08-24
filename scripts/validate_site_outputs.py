@@ -205,6 +205,52 @@ def main() -> int:
             f"that replaced it"
         )
 
+    # D ------------------------------------------------------------------------------------
+    # THE PAGE COPIES DRIFTED FOR SIX DAYS WITHOUT THIS ARM (added 2026-08-24, issue 554).
+    # `site/build_wiki.sh` copies `wiki/polities/*.md` and `wiki/sources/*.md` into `site/wiki/`
+    # verbatim, and `pages.yml` publishes `site/**`. So the copies are published output and the
+    # same argument as arm A applies to them: a straight copy that differs means the site is
+    # describing a different wiki.
+    #
+    # Arms A-C compared the CSV and the geojson and nothing looked at the pages, so when
+    # 9dc37c0 (2026-08-18) added prose to 45 polity pages, the site kept serving the old text
+    # and every gate stayed green. It surfaced only because adding two polities forced a site
+    # rebuild, which then showed 45 unrelated files changing.
+    #
+    # Byte comparison rather than mtime: the copy is `cp`, so equality is the whole contract,
+    # and an mtime check would fire on any checkout.
+    for sub in ("polities", "sources"):
+        src_dir = os.path.join(REPO, "wiki", sub)
+        dst_dir = os.path.join(REPO, "site", "wiki", sub)
+        if not os.path.isdir(src_dir):
+            continue
+        if not os.path.isdir(dst_dir):
+            problems.append(f"site/wiki/{sub}/ is missing entirely -- run bash site/build_wiki.sh")
+            continue
+        src = {n for n in os.listdir(src_dir) if n.endswith(".md")}
+        dst = {n for n in os.listdir(dst_dir) if n.endswith(".md")}
+        for n in sorted(src - dst):
+            problems.append(f"wiki/{sub}/{n} has no copy in site/wiki/{sub}/ -- the site is behind")
+        for n in sorted(dst - src):
+            problems.append(f"site/wiki/{sub}/{n} has no source page -- the site is ahead, or a "
+                            f"page was renamed and the old copy left behind")
+        stale = []
+        for n in sorted(src & dst):
+            with open(os.path.join(src_dir, n), encoding="utf-8") as fh:
+                a = fh.read().replace("\r\n", "\n")
+            with open(os.path.join(dst_dir, n), encoding="utf-8") as fh:
+                b = fh.read().replace("\r\n", "\n")
+            if a != b:
+                stale.append(n)
+        if stale:
+            problems.append(
+                f"{len(stale)} page(s) in site/wiki/{sub}/ differ from wiki/{sub}/, e.g. "
+                f"{', '.join(stale[:5])} -- the copies are `cp`d verbatim, so any difference "
+                f"means the published page is not the one in the repository"
+            )
+        print(f"site/wiki/{sub}: {len(src & dst)} copies compared, {len(stale)} stale, "
+              f"{len(src - dst)} missing, {len(dst - src)} orphaned")
+
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)\n")
         for p in problems:
