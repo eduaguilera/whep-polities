@@ -2316,6 +2316,54 @@ def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
             f"was")
 
 
+def mutate_matcher_dead_status_drifts(root, gpd, make_valid, affinity):
+    """Drop `superseded` from the MATCHER's copy of DEAD_STATUS, leaving five other copies intact.
+
+    This is the failure the gate's docstring names: "If the matcher's copy drifted from the
+    manifest's, the matcher would route data to a row the published contract calls dead -- the exact
+    failure the contract exists to prevent, arriving through the back door." DEAD_STATUS is defined
+    six times because the scripts and the matcher are independent programs with no shared module, so
+    a one-file edit is all it takes and nothing else in the repo compares them.
+
+    The expected string is `DEAD_STATUS disagrees` rather than a filename, deliberately: this gate
+    PRINTS every definition and its file on a passing run too, so asserting on `matchlib.py` would
+    be satisfied whether or not the mutation bit.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/matchlib.py")
+    with open(path, encoding="utf-8") as fh:
+        txt = fh.read()
+    old = 'DEAD_STATUS = ("retired", "superseded")'
+    assert old in txt, "matchlib's DEAD_STATUS literal moved -- re-read it before trusting this"
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(txt.replace(old, 'DEAD_STATUS = ("retired",)', 1))
+    return ("dropped `superseded` from matchlib.Matcher.DEAD_STATUS, so the matcher would route data "
+            "to rows the other five definitions call dead")
+
+
+def mutate_citation_anchor_no_heading_produces(root, gpd, make_valid, affinity):
+    """Repoint a wiki citation at an anchor no heading produces.
+
+    The gate's argument is that this is WORSE than no citation: it looks like evidence and is not,
+    and the risk is highest when pages are written at scale by a person or an agent -- which is
+    exactly what has been happening in this repo. Nothing else can see it, because the markdown is
+    still well-formed and the target file still exists; only the anchor is dead.
+
+    `#argentine-republic` is chosen over an obviously-broken string because the realistic failure is
+    a RENAMED heading: `biger-1995.md` offers `#argentina`, and a plausible alternative name for the
+    same section resolves to nothing. `arg-1899-1902.md` carries exactly one anchored citation, so
+    the mutation cannot be masked by a second failure on the same page.
+    """
+    path = os.path.join(root, "wiki/polities/arg-1899-1902.md")
+    with open(path, encoding="utf-8") as fh:
+        txt = fh.read()
+    old = "](../sources/biger-1995.md#argentina)"
+    assert old in txt, "the arg-1899-1902 citation moved -- re-read the page before trusting this"
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(txt.replace(old, "](../sources/biger-1995.md#argentine-republic)", 1))
+    return ("repointed arg-1899-1902.md's only anchored citation from biger-1995.md#argentina to "
+            "#argentine-republic, which no heading in that source produces")
+
+
 def mutate_succession_link_crosses_a_continent(root, gpd, make_valid, affinity):
     """Re-inject the exact defect this gate was written to catch.
 
@@ -4615,6 +4663,20 @@ CASES = (
         "distinctness filter all stay identical",
     ),
     (
+        "validate_constants.py",
+        mutate_matcher_dead_status_drifts,
+        "DEAD_STATUS disagrees",
+        "one of six copies of a load-bearing constant drifting — the scripts and the matcher are "
+        "independent programs with no shared module, so nothing else compares them",
+    ),
+    (
+        "validate_citations.py",
+        mutate_citation_anchor_no_heading_produces,
+        "arg-1899-1902",
+        "a citation whose anchor no heading produces — the markdown is well-formed and the source "
+        "file exists, so it reads as evidence while pointing at nothing",
+    ),
+    (
         "validate_succession_geography.py",
         mutate_succession_link_crosses_a_continent,
         "NWR-1900-1905",
@@ -5117,6 +5179,17 @@ ARGS = {
 # FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
 # half of this script is what caught that; exit-code alone would have passed it.
 EXTRA_SCRIPTS = {
+    # This gate reads NINE files to compare constants defined in more than one place. The five
+    # `validate_*`/`write_*` scripts come in through EXTRA_SCRIPTS; matchlib, match.R and the wiki
+    # README are repo-relative and come in through WRITABLE, because the mutation edits matchlib.
+    "validate_constants.py": (
+        "write_manifest.py",
+        "validate_polygons.py",
+        "validate_aliases.py",
+        "validate_spatial_containment.py",
+        "validate_shared_polygons.py",
+        "build_database.py",
+    ),
     # Arm E of this gate reads `lookup_known_defect.py`'s SOURCE to require that the unmaintained
     # `mixing_observed` column is never printed without its marker. Staged without the file, the arm
     # reports "no longer exists -- repoint it" on every run, so the gate would exit 1 unconditionally
@@ -5309,6 +5382,12 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
         "pipelines/polity-autoimprove/state/assertions.json",
     ),
+    "validate_constants.py": (
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/faostat-era-matching/match.R",
+        "wiki/README.md",
+    ),
+    "validate_citations.py": ("wiki/polities", "wiki/sources"),
     "validate_succession_geography.py": ("polities_database.csv", "polities_database.gpkg"),
     "validate_cross_family_names.py": ("polities_database.csv",),
     "validate_iso_collisions.py": ("polities_database.csv",),
@@ -5741,7 +5820,7 @@ WRITABLE = {
 #
 # The ceiling is what makes the gap visible rather than implied: a NEW gate landing without a case
 # pushes it up, and covering one pushes it down and demands the ceiling follow.
-BASELINE_GATES_WITHOUT_A_CASE = 3
+BASELINE_GATES_WITHOUT_A_CASE = 1
 
 
 def _gates_without_a_case() -> list:
