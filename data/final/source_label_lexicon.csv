@@ -20,6 +20,7 @@ australie,Australia,
 australie: papouasie,Territory of Papua,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against TPAP-1906-1949 -- worst deviation 0.044 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
 autriche,Austria,
 bahrein,Bahrain,"Added 2026-08-24 (#195): top-level label with no lexicon entry. stated 552 km2 against a 629 polygon. Bahrain was about 550 km2 before the reclamation that took the modern state past 750, so the gap is a vintage question rather than an error. Territory read from the French name, area used only as the check (worst deviation 0.140, span covers every stated year)."
+bahrein islands,Bahrain,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.048, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
 basoutoland,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
 basqutoland,Lesotho (1886-1966),"OCR: q inserted Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
 basutoland,Lesotho (1886-1966),"Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
@@ -37,7 +38,9 @@ bulgarie,Bulgaria,
 cameroun,Cameroon,
 cap vert,Cape Verde,
 ceylan,Sri Lanka,"was 'Ceylon', which is not a polity_name"
+ceylon,Sri Lanka,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.005, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
 chili,Chile,
+china taiwan inc pescadores,Taiwan,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.001, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
 chine,China,
 chypre,Cyprus,
 colombie,Colombia,
@@ -140,9 +143,11 @@ libye,Libya,
 lithuanie,Lithuania,
 lybie,Libya,OCR: y/i swap
 macao,"China, Macao SAR",
+madagascar comoro islands,Comoros (1946-1975),"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.224, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
 madagascar et dependaces,Madagascar,OCR: dropped n
 madagascar et dependances,Madagascar,
 madagascar et dependences,Madagascar,
+maldive islands,Maldives,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.001, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
 malte,Malta,
 mandchoukouo,Manchukuo,
 maroc espagnol,Spanish Morocco,

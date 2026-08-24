@@ -65,6 +65,7 @@ be removed.
 """
 from __future__ import annotations
 
+import collections
 import csv
 import os
 import re
@@ -548,6 +549,9 @@ _NATIONALITY = re.compile(
 # 21 -> 20 on 2026-08-24: the source-scope synonym (issue 553) let one more lexicon target resolve --
 # its statements carry source `fao` while its alias is scoped `fao1952`, so the target was inert for a
 # reason that had nothing to do with the lexicon entry itself.
+# Lexicon forms that merge raw labels with materially different stated areas. See arm F.
+BASELINE_COLLIDING_LEXICON_FORMS = 28
+
 BASELINE_INERT_LEXICON = 20
 
 
@@ -815,6 +819,55 @@ def main() -> int:
     # polity at all, so zero is not reachable until issue 400 is decided. What the ceiling protects
     # against is the number GROWING -- a new lexicon entry that routes nowhere, or a polity rename
     # that quietly strands an existing one.
+    # F ------------------------------------------------------------------------------------
+    # A LEXICON ENTRY MUST NOT SIT ON A NORMALISED FORM THAT MERGES DIFFERENT TERRITORIES.
+    # `normalise_label` strips a nationality qualifier on purpose -- it is what collapses
+    # `TUNISIE french` onto `tunisie` -- but nationality is exactly what distinguishes a colonial
+    # territory from its neighbour, so the same rule merges labels that are NOT the same place:
+    #
+    #     British Guiana 215,000  +  French Guiana 90,000                        -> `guiana`
+    #     French India 510 + Portuguese India 3,980 + India 3,281,170            -> `india`
+    #     British Somaliland 176,000 + French Somaliland 23,000                  -> `somaliland`
+    #     CAMEROUN br 77,670 + CAMEROUN fr 419,028 + CAMEROUN german 789,312     -> `cameroun`
+    #
+    # An entry keyed on such a form routes every one of them to a single polity. This is a live
+    # hazard on the maintenance path, not a hypothetical: adding `guiana -> Guyana` is the obvious
+    # next step when clearing unrouted FAO labels, and it would silently give French Guiana British
+    # Guiana's destination. It was caught here by running this check before adding the entry.
+    #
+    # BASELINED rather than required to be zero, because most current members are not conflations:
+    # a key covers several raw labels whose areas differ because the SOURCE revised itself across
+    # editions (`autriche` 78,061-300,004 spans 1918, `hongrie` spans Trianon), which issue 503
+    # measured at 38% of repeated statements. Only GROWTH is a new hazard.
+    dup = collections.defaultdict(lambda: collections.defaultdict(set))
+    for row in statements:
+        if not (row.get("stated_area_km2") or "").strip():
+            continue
+        try:
+            dup[normalise_label(row["label"])][row["label"].strip()].add(float(row["stated_area_km2"]))
+        except ValueError:
+            continue
+    colliding = sorted(
+        form for form, labels in dup.items()
+        if len(labels) >= 2 and form in lexicon
+        and (lambda v: v and min(v) > 0 and max(v) / min(v) > 1.25)(
+            [x for s2 in labels.values() for x in s2])
+    )
+    print(f"  lexicon forms merging >1 raw label with areas >25% apart: {len(colliding)} "
+          f"(ceiling {BASELINE_COLLIDING_LEXICON_FORMS})")
+    if len(colliding) > BASELINE_COLLIDING_LEXICON_FORMS:
+        problems.append(
+            f"{len(colliding)} lexicon form(s) merge raw labels whose stated areas differ by more "
+            f"than 25%, above the ceiling of {BASELINE_COLLIDING_LEXICON_FORMS}. `normalise_label` "
+            f"strips nationality, so `British Guiana` and `French Guiana` share one form and an "
+            f"entry there routes both to one polity: {', '.join(colliding[:6])}"
+        )
+    elif len(colliding) < BASELINE_COLLIDING_LEXICON_FORMS:
+        problems.append(
+            f"only {len(colliding)} colliding lexicon form(s), below the ceiling of "
+            f"{BASELINE_COLLIDING_LEXICON_FORMS} -- lower it so the improvement is held"
+        )
+
     if len(lex_inert) > BASELINE_INERT_LEXICON:
         problems.append(
             f"{len(lex_inert)} lexicon target(s) resolve to no polity at any year their source "
