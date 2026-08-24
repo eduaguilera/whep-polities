@@ -2316,6 +2316,74 @@ def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
             f"was")
 
 
+def mutate_cross_family_name_duplicate(root, gpd, make_valid, affinity):
+    """Rename one French federation to the other, so two prefixes claim one name over shared years.
+
+    AEF-1910-1960 (French Equatorial Africa) and AOF-1895-1960 (French West Africa) are different
+    federations, adjacent, both French, and overlapping 1910-1960 -- confusing one for the other is
+    a plausible entry error, and it is invisible to `validate_period_overlaps`, which only compares
+    within a prefix. That is the whole reason this gate exists.
+
+    THE FIRST VERSION OF THIS MUTATION WAS INERT and the harness caught it, which is worth recording
+    because both reasons are traps. I renamed ANG-1800-1890 (`Angola (to 1890)`) to AGO-1816-2025's
+    `Angola`, expecting the era suffix to be what kept them apart. It is not: `normalise()` already
+    strips a parenthetical, so the two names were ALREADY equal -- and AGO-1816-2025 is `retired`, so
+    the gate excludes it anyway. A mutation has to be checked against the gate's OWN normaliser and
+    status filter, not against the raw strings.
+
+    No realistic same-territory duplicate survives among live rows, which is the point: the gate's
+    baseline is down to a single pair (TAN/TZA) because the real ones were repaired.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["polity_code"] == "AEF-1910-1960"]
+    twin = [r for r in rows if r["polity_code"] == "AOF-1895-1960"]
+    assert hit and twin, "the AEF/AOF pair is gone -- pick another live overlapping cross-family pair"
+    was = hit[0]["polity_name"]
+    hit[0]["polity_name"] = twin[0]["polity_name"]
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"renamed AEF-1910-1960 from {was!r} to {twin[0]['polity_name']!r}, which AOF-1895-1960 "
+            f"carries over the overlapping years 1910-1960, so two prefixes claim one name")
+
+
+def mutate_new_iso_collision(root, gpd, make_valid, affinity):
+    """Give a historical polity the ISO code of the modern country whose territory it was, where
+    the spans OVERLAP.
+
+    This is the gate's own worked risk, not an invented one. Its docstring records three `iso3`
+    fields corrected on the principle that the field names the TERRITORY rather than the era, and
+    warns that the same pattern "could introduce ambiguity if applied to a pair whose spans
+    OVERLAP". The Amami Islands were Japanese territory under US administration 1946-1953, so `JPN`
+    is the answer that principle gives -- and AMI-1946-1953 overlaps both JPN-1945-1952 and
+    JPN-1952-2025, so it adds TWO pairs to a set the matcher already has to tie-break, and removes
+    none.
+
+    AMI carries no iso3_code today and its span ends before 1974, so `validate_iso_codes` has
+    nothing to say about it either way.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["polity_code"] == "AMI-1946-1953"]
+    assert hit, "AMI-1946-1953 is gone -- pick another pre-1974 row with no iso3_code"
+    assert not (hit[0].get("iso3_code") or "").strip(), "AMI now HAS an iso3_code -- pick another row"
+    hit[0]["iso3_code"] = "JPN"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return ("gave AMI-1946-1953 iso3_code JPN, which JPN-1945-1952 and JPN-1952-2025 both carry over "
+            "overlapping years, adding two pairs the matcher must tie-break between")
+
+
 def mutate_alias_loses_its_upper_bound(root, gpd, make_valid, affinity):
     """Blank an alias's `year_end` so it can still fire after its target polity stopped existing.
 
@@ -4486,6 +4554,20 @@ CASES = (
         "distinctness filter all stay identical",
     ),
     (
+        "validate_cross_family_names.py",
+        mutate_cross_family_name_duplicate,
+        "AEF-1910-1960",
+        "one territory under two prefixes sharing a name over overlapping years — invisible to "
+        "validate_period_overlaps, which only compares within a prefix",
+    ),
+    (
+        "validate_iso_collisions.py",
+        mutate_new_iso_collision,
+        "AMI-1946-1953",
+        "a historical polity newly sharing its modern country's ISO code over overlapping years — "
+        "by design for 59 existing pairs, so only growth of the set distinguishes a mistake",
+    ),
+    (
         "validate_unranged_aliases.py",
         mutate_alias_loses_its_upper_bound,
         "Abyssinia",
@@ -5152,6 +5234,8 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
         "pipelines/polity-autoimprove/state/assertions.json",
     ),
+    "validate_cross_family_names.py": ("polities_database.csv",),
+    "validate_iso_collisions.py": ("polities_database.csv",),
     "validate_unranged_aliases.py": ("label_alias_map.csv",),
     "validate_iso_codes.py": ("polities_database.csv",),
     "validate_cow_codes.py": ("polities_database.csv",),
@@ -5581,7 +5665,7 @@ WRITABLE = {
 #
 # The ceiling is what makes the gap visible rather than implied: a NEW gate landing without a case
 # pushes it up, and covering one pushes it down and demands the ceiling follow.
-BASELINE_GATES_WITHOUT_A_CASE = 7
+BASELINE_GATES_WITHOUT_A_CASE = 5
 
 
 def _gates_without_a_case() -> list:
