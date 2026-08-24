@@ -90,6 +90,24 @@ BASELINE = {
     # A stated area can be a transcription or unit error, so a divergence is a question, not a
     # verdict -- and a majority of editions agreeing proves nothing, because yearbooks reprint
     # each other's area tables.
+    # Added 2026-08-24 with the `Transjordan` lexicon retarget (#195), and it is the case this
+    # file's own comment above predicts: "a majority of editions agreeing proves nothing, because
+    # yearbooks reprint each other's area tables."
+    #
+    # IIA carries 40,000 km2 for Transjordan in FOUR editions (1925, 1929, 1932, 1933) and then
+    # 89,975 in the 1938 edition. Our polygon is 89,270 -- within 0.8% of the revised figure and
+    # 2.23x the reprinted one. So the source corrected ITSELF, and the consensus rule picks the
+    # outdated majority precisely because four editions copied it.
+    #
+    # OURS IS NOT THE SIDE THAT IS WRONG, and the evidence is independent of our geometry: the
+    # publisher's own last word agrees with us. Transjordan's area was ~34,750 sq mi (~90,000 km2)
+    # once the eastern desert was included, which is what the 1938 figure reflects.
+    ("JOR-1923-1946", "iia"):
+        "IIA states 40,000 km2 in four editions (1925-1933) and 89,975 in 1938 against our 89,270 "
+        "(0.99x the revised figure, 2.23x the reprinted one). The source revised itself and its "
+        "later value corroborates our polygon; the consensus rule picks the outdated majority "
+        "because yearbooks reprint area tables. Surfaced by retargeting the `transjordanie` "
+        "lexicon entry, which routed these five statements for the first time.",
     ("PRY-1870-1932", "iia"):
         "IIA states 450,000 km2 for 1913 against our 293,549 (0.65x). Modern Paraguay is "
         "406,752, so OUR POLYGON IS 28% BELOW even the present-day country, which makes this "
@@ -409,6 +427,22 @@ _NATIONALITY = re.compile(
 )
 
 
+# 28 -> 22 on 2026-08-24, second batch: six RENAME cases, where the destination polity carries a
+# different name than the source's exonym so bare-name matching could never find it -- `Swaziland` ->
+# Eswatini, `Basutoland` -> Lesotho (1886-1966), `Transjordan` -> Jordan (1923-1946), `French Oceania`
+# -> French Polynesia, `New Hebrides` -> Vanuatu, `Western Samoa` -> Samoa. Superset again: 0 lost, 33
+# gained. Every one is corroborated by area (0.951-1.005, except New Hebrides at 0.823 inside
+# tolerance), and `Western Samoa` additionally REFUTES its alternative -- ASM-1900-2025 is 204 km2
+# against a stated 2,572-2,934, ratio 0.069.
+#
+# Six more remain unretargeted because the destination's span does NOT cover every stated year, which
+# is the a0fe282 failure: `South West Africa` (stmts from 1911, NAM-1920-1990 starts 1920),
+# `German East Africa` (1911-1913, TAN-1922-1964), `Rio de Oro` (1911-1937, ESH-1958-1975),
+# `Bosnia and Herzegovina` (1911-1913, BIH-1992-2025), `New Guinea` (1911-1913, NNG-1949-1963). And
+# `Newfoundland` -> NFL-1907-1949 covers the years but the areas are 601,905 vs 398,115, ratio 0.661,
+# past the 0.25 tolerance -- almost certainly the pre-1927 Labrador boundary claim, which needs a
+# judgement rather than a retarget.
+#
 # 32 -> 28 on 2026-08-24: four entries retargeted (#195) -- `Taiwan`, `Zanzibar`, `Bechuanaland`,
 # `Timor` -- each verified to ADD coverage rather than swap it, the failure that reverted three
 # retargets in a0fe282. The resolved (polity, source, year) set is a strict SUPERSET: 0 lost, 14
@@ -428,7 +462,7 @@ _NATIONALITY = re.compile(
 # `Socotra`, `Svalbard` among them) name territories this database has no polity for -- issue 400.
 # The ceiling holds the rest: a new entry pointing nowhere, or a polity rename stranding an old one,
 # both push it up.
-BASELINE_INERT_LEXICON = 28
+BASELINE_INERT_LEXICON = 22
 
 
 def normalise_label(raw: str) -> str:

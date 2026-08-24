@@ -14,8 +14,8 @@ argentine,Argentina,
 australie,Australia,
 autriche,Austria,
 basoutoland,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
-basqutoland,Basutoland,OCR: q inserted
-basutoland,Basutoland,
+basqutoland,Lesotho (1886-1966),"OCR: q inserted Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
+basutoland,Lesotho (1886-1966),"Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
 bechouanaland,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
 bechuanaland,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
 belgique,Belgium,
@@ -45,9 +45,9 @@ erythree,Eritrea,
 espagne,Spain,
 esthonie,Estonia,
 estonie,Estonia,
-etabl francais de l oceanie,French Oceania,
+etabl francais de l oceanie,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
 etablissements du detroit,Straits Settlements,
-etablissements francais de l oceanie,French Oceania,
+etablissements francais de l oceanie,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
 etat libre d irlande,Ireland,
 etat libre dirlande,Ireland,OCR: lost space
 etat serbe croate slovene,Yugoslavia,"the Kingdom of Serbs, Croats and Slovenes"
@@ -82,7 +82,7 @@ hongrie,Hungary,NOT retargeted to 'Kingdom of Hungary (Transleithania)': same ye
 iles de l egee,Dodecanese,
 iles italiennes de l egee,Dodecanese,
 iles italiennes de legee,Dodecanese,OCR: lost space
-iles nouvelles hebrides,New Hebrides,
+iles nouvelles hebrides,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
 iles vierges,United States Virgin Islands,"statements begin 1921, after the 1917 purchase from Denmark"
 inde,India,
 inde britannique,India,
@@ -128,8 +128,8 @@ nouvelle caledonie et dependences,New Caledonia,
 nouvelle guinee,New Guinea,
 nouvelle zelande,New Zealand,
 nouvelles hebrides,Vanuatu,"was 'New Hebrides', not a polity_name"
-nouvelles hebrides iles,New Hebrides,
-nouvelles hebrides iles frenchbritish,New Hebrides,
+nouvelles hebrides iles,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
+nouvelles hebrides iles frenchbritish,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
 nvassaland,Nyasaland,OCR: v for y
 nyassaland,Nyasaland,
 ouganda,Uganda,
@@ -153,7 +153,7 @@ saint thomas et prince,Sao Tome and Principe,
 sainte helene,Saint Helena,
 sakhaline japonaise,Karafuto,
 samoa americaine,Territory of American Samoa,American Samoa; the plain `Samoa` polity is Western Samoa
-samoa occidentale,Western Samoa,
+samoa occidentale,Samoa,"Retargeted 2026-08-24 (#195): WSM-1900-2025. Area 2,572-2,934 vs polygon 2,835, ratio 0.966, and the alternative is refuted -- ASM-1900-2025 (American Samoa) is 204 km2, ratio 0.069."
 san salvador,El Salvador,
 siam,Thailand,
 sierra leone,Sierra Leone,
@@ -166,8 +166,8 @@ soudan anglo egyptien,Anglo-Egyptian Sudan,
 spitzberg,Svalbard,
 suede,Sweden,
 suisse,Switzerland,
-swazieland,Swaziland,OCR: e inserted
-swaziland,Swaziland,
+swazieland,Eswatini,"OCR: e inserted Retargeted 2026-08-24 (#195): SWZ-1894-2025 is the same territory under its modern name, which is why bare-name matching missed it. Corroborated by area: stated 17,366 vs polygon 17,103, 0.985."
+swaziland,Eswatini,"Retargeted 2026-08-24 (#195): SWZ-1894-2025 is the same territory under its modern name, which is why bare-name matching missed it. Corroborated by area: stated 17,366 vs polygon 17,103, 0.985."
 syrie et liban,Syria and Lebanon,
 tanganvika,Tanganyika,OCR: v for y
 tanganvika terr sous,Tanganyika,OCR: v for y; 'terr sous mandat' truncated
@@ -178,7 +178,7 @@ tibet,Tibet,
 timor,Timor-Leste,"Retargeted 2026-08-24 (#195): source label `Portuguese Timor` is East Timor, TLS-1800-2025. Stated 18,990 vs polygon 14,978, ratio 0.789 -- the classic Portuguese Timor figure against a modern coastline, inside tolerance and worth comparing."
 timor et kambing,Timor-Leste,Portuguese Timor and Kambing
 togo,Togo,
-transjordanie,Transjordan,
+transjordanie,Jordan (1923-1946),"Retargeted 2026-08-24 (#195): JOR-1923-1946 covers all stated years 1925-1937. Area 89,975 vs 89,270, ratio 0.992."
 trinite et tabago,Trinidad and Tobago,OCR: a for o
 trinite et tobago,Trinidad and Tobago,
 tunisie,Tunisia,
