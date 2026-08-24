@@ -108,6 +108,44 @@ BASELINE = {
         "later value corroborates our polygon; the consensus rule picks the outdated majority "
         "because yearbooks reprint area tables. Surfaced by retargeting the `transjordanie` "
         "lexicon entry, which routed these five statements for the first time.",
+    # --- FIVE ADDED 2026-08-24 with the source-scope synonym (issue 553). Each is a divergence that
+    # --- only became visible once 39 FAO statements stopped being discarded, and each says WHICH SIDE.
+
+    ("BLI-1833-1960", "fao"):
+        "OUR POLYGON IS THE LARGER TERRITORY, and the difference is Dominica. FAO 1952 states 1,090 "
+        "km2 for the Leeward Islands at 1950 and lists its members separately -- Antigua 440, St Kitts "
+        "& Nevis 390, Montserrat 80 -- while our polygon is 1,693 and 43.9% of it is DMA-1800-2025 "
+        "(~747 km2). Dominica was transferred from the Leeward Islands to the Windwards in 1940, so a "
+        "1950 figure excludes it and a polygon drawn for the 1833-1960 span includes it. A composition "
+        "difference across the span, not an error on either side.",
+
+    ("CHN-1947-1949", "fao"):
+        "THE SOURCE'S LABEL IS A PARTIAL CHINA. FAO 1952 states 5,071,820 km2, which is its `China 22 "
+        "provinces` figure -- the same value it gives for `China 22 provinces & Taiwan` -- against our "
+        "7,593,571 for the whole country. Not a measurement disagreement: the yearbook is counting a "
+        "subset of the territory the polity covers. See issue 449 for the whole-and-parts structure of "
+        "FAO 1952's China labels.",
+
+    ("KNA-1800-2025", "fao"):
+        "THE SOURCE'S REPORTING UNIT INCLUDES ANGUILLA AND THIS POLITY DOES NOT. FAO states 390 km2 and "
+        "IIA states 388-396 across six editions -- two independent sources agreeing -- against our 263, "
+        "which is St Kitts (~168) plus Nevis (~93). The colonial unit was St Kitts-Nevis-Anguilla; "
+        "Anguilla is modelled here as its own polity AIA-1800-2025, so the source's territory is larger "
+        "than ours by construction. That two sources agree is what makes this a scope difference rather "
+        "than a bad figure.",
+
+    ("KOR-1948-2025", "fao"):
+        "THE SOURCE'S LABEL IS THE WHOLE PENINSULA. FAO states 201,890 km2 against our 97,097 for South "
+        "Korea; 201,890 is Korea north and south together. Same shape as the China entry above -- the "
+        "yearbook's reporting unit predates or ignores the division, and the polity does not.",
+
+    ("TCA-1800-2025", "fao"):
+        "A VINTAGE DIFFERENCE, and ours is the modern figure. FAO states 520 km2 and IIA states 430-438 "
+        "across six editions, against our polygon's 974 -- and the present-day land area of the Turks "
+        "and Caicos is about 948, which our polygon matches. The historical figures count the principal "
+        "islands; the modern outline includes the full cay chain. Recorded rather than repaired because "
+        "the polygon is right for what it is, a present-day GADM outline.",
+
     ("PRY-1870-1932", "iia"):
         "IIA states 450,000 km2 for 1913 against our 293,549 (0.65x). Modern Paraguay is "
         "406,752, so OUR POLYGON IS 28% BELOW even the present-day country, which makes this "
@@ -507,7 +545,10 @@ _NATIONALITY = re.compile(
 # `Socotra`, `Svalbard` among them) name territories this database has no polity for -- issue 400.
 # The ceiling holds the rest: a new entry pointing nowhere, or a polity rename stranding an old one,
 # both push it up.
-BASELINE_INERT_LEXICON = 21
+# 21 -> 20 on 2026-08-24: the source-scope synonym (issue 553) let one more lexicon target resolve --
+# its statements carry source `fao` while its alias is scoped `fao1952`, so the target was inert for a
+# reason that had nothing to do with the lexicon entry itself.
+BASELINE_INERT_LEXICON = 20
 
 
 def normalise_label(raw: str) -> str:
@@ -631,14 +672,31 @@ def analyse():
             stated = float(row["stated_area_km2"])
         except (KeyError, TypeError, ValueError):
             continue
+        # SOURCE-SCOPE SYNONYMS (issue 553). `08_source_stated_areas.py` writes `source: "fao"` for
+        # the FAO 1952 land-use table, while the aliases for those same labels are scoped `fao1952`
+        # -- and `matchlib.assign` DISCARDS a rule whose `src` differs rather than ranking it below a
+        # blanket rule (matchlib.py: `if ru["src"] is not None and ru["src"] != src: continue`). So
+        # 57 statements across 51 labels resolved to nothing even though the alias table knew their
+        # polity.
+        #
+        # The fix is applied HERE rather than by changing the emitted `source` string, deliberately:
+        # `source_stated_area_basis.csv` is keyed on (polity_code, source) and this gate's BASELINE
+        # and SOURCE_NOTES are keyed on (code, "fao"), so renaming the source would move every one of
+        # those keys. Trying the synonym only widens which aliases are considered; nothing published
+        # changes name, and a statement that already resolved keeps resolving to the same polity
+        # because the first attempt is unchanged.
+        SOURCE_SYNONYMS = {"fao": ("fao1952",), "iia": ()}
         code = None
         for candidate in (row["label"], lexicon.get(normalise_label(row["label"]))):
             if not candidate:
                 continue
-            try:
-                code = matcher.assign(candidate, None, row["source"], year)[0]
-            except Exception:
-                code = None
+            for src_try in (row["source"], *SOURCE_SYNONYMS.get(row["source"], ())):
+                try:
+                    code = matcher.assign(candidate, None, src_try, year)[0]
+                except Exception:
+                    code = None
+                if code:
+                    break
             if code:
                 break
         # INERT LEXICON ENTRIES. The lexicon exists for exactly one purpose -- to turn IIA's French
