@@ -2316,6 +2316,67 @@ def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
             f"was")
 
 
+def mutate_succession_link_crosses_a_continent(root, gpd, make_valid, affinity):
+    """Re-inject the exact defect this gate was written to catch.
+
+    `NWR-1900-1905` (Northwestern Rhodesia) once listed its successor as `NNI-1904-1913` -- Northern
+    NIGERIA, roughly 4,000 km away on the other side of Africa -- almost certainly a confusion
+    between two codes that both begin "Northern". It is corrected in the database (`NRH-1911-1953`,
+    Northern Rhodesia) and the gate's docstring names it as its reason for existing, so restoring it
+    is the truest possible mutation: a link that names a REAL, LIVE polity and is still wrong, which
+    is the case the dangling-link checks of issue 34 cannot see.
+
+    Non-intersection is a SCREEN rather than a verdict here -- nine links legitimately join
+    territories that never touched, because succession also covers colonial transfer -- so what the
+    gate holds is the baselined SET, and this adds one member to it without removing any.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["polity_code"] == "NWR-1900-1905"]
+    assert hit, "NWR-1900-1905 is gone -- pick another link whose polygons do not touch"
+    was = hit[0]["successor"]
+    assert "NNI" not in was, f"NWR already points at Northern Nigeria ({was!r}) -- the bug is back"
+    hit[0]["successor"] = "NNI-1904-1913"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"pointed NWR-1900-1905's successor from {was!r} back at NNI-1904-1913 -- Northern "
+            f"Nigeria rather than Northern Rhodesia, ~4,000 km away and not touching")
+
+
+def mutate_self_intersecting_polygon(root, gpd, make_valid, affinity):
+    """Replace one polity's geometry with a self-intersecting bow-tie.
+
+    Both of this gate's baselines are EMPTY -- zero invalid polygons, down from 44 -- so any invalid
+    geometry is a new one. The reason that matters beyond tidiness is in the gate's own docstring:
+    `validate_spatial_containment` and `validate_family_areas` read these same geometries, and an
+    invalid polygon makes `contains`, `intersects` and `area` unreliable rather than raising. So it
+    weakens two OTHER gates silently, which is exactly the failure a mutation harness should be able
+    to demonstrate.
+
+    A bow-tie is used rather than a subtler defect because `is_valid` is the predicate under test:
+    the ring crosses itself, so GEOS reports `Self-intersection` -- the second-largest category in
+    the 44 this gate cleared.
+    """
+    from shapely.geometry import Polygon
+    g = gpd.read_file(GPKG)
+    idx = g.index[g.polity_code == "ABW-1800-2025"]
+    assert len(idx), "ABW-1800-2025 has no geometry -- pick another polity with a polygon"
+    i = idx[0]
+    minx, miny, maxx, maxy = g.loc[i, "geometry"].bounds
+    # a ring that crosses itself inside the polity's own bounding box, so nothing else moves
+    bowtie = Polygon([(minx, miny), (maxx, maxy), (minx, maxy), (maxx, miny), (minx, miny)])
+    assert not bowtie.is_valid, "the bow-tie is valid -- GEOS would not flag it"
+    g.loc[i, "geometry"] = bowtie
+    g.to_file(os.path.join(root, "data/final/polities_database.gpkg"), driver="GPKG")
+    return ("replaced ABW-1800-2025's polygon with a self-intersecting bow-tie inside its own "
+            "bounding box, so `is_valid` fails while no other polity's geometry moves")
+
+
 def mutate_cross_family_name_duplicate(root, gpd, make_valid, affinity):
     """Rename one French federation to the other, so two prefixes claim one name over shared years.
 
@@ -4554,6 +4615,20 @@ CASES = (
         "distinctness filter all stay identical",
     ),
     (
+        "validate_succession_geography.py",
+        mutate_succession_link_crosses_a_continent,
+        "NWR-1900-1905",
+        "a succession link naming a real, live polity on the wrong continent — indistinguishable "
+        "from a correct link to every check that only asks whether the target exists",
+    ),
+    (
+        "validate_polygon_validity.py",
+        mutate_self_intersecting_polygon,
+        "ABW-1800-2025",
+        "an invalid geometry, which does not raise but makes `contains`, `intersects` and `area` "
+        "unreliable — so it silently weakens validate_spatial_containment and validate_family_areas",
+    ),
+    (
         "validate_cross_family_names.py",
         mutate_cross_family_name_duplicate,
         "AEF-1910-1960",
@@ -5234,6 +5309,7 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
         "pipelines/polity-autoimprove/state/assertions.json",
     ),
+    "validate_succession_geography.py": ("polities_database.csv", "polities_database.gpkg"),
     "validate_cross_family_names.py": ("polities_database.csv",),
     "validate_iso_collisions.py": ("polities_database.csv",),
     "validate_unranged_aliases.py": ("label_alias_map.csv",),
@@ -5665,7 +5741,7 @@ WRITABLE = {
 #
 # The ceiling is what makes the gap visible rather than implied: a NEW gate landing without a case
 # pushes it up, and covering one pushes it down and demands the ceiling follow.
-BASELINE_GATES_WITHOUT_A_CASE = 5
+BASELINE_GATES_WITHOUT_A_CASE = 3
 
 
 def _gates_without_a_case() -> list:
