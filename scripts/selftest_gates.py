@@ -2697,6 +2697,36 @@ def mutate_source_files_two_territories_as_one(root, gpd, make_valid, affinity):
             "statements of about 2,385,120, so one polity's iia basis now spans two territories")
 
 
+def mutate_ocr_correction_target_routes_nowhere(root, gpd, make_valid, affinity):
+    """Point a tabled OCR correction at a spelling that resolves to nothing.
+
+    This is the failure the table can actually have, and it is invisible everywhere else: the
+    entry stays well-formed, the count stays at 12, the OCR label still gets rewritten -- and the
+    row lands on a DIFFERENT unresolved label instead of the one it started on. Nothing in the
+    pipeline's output distinguishes "unresolved because the spelling was wrong" from "unresolved
+    because the correction was wrong", so only a check on the target can see it.
+
+    Mutates `Guatemal`, whose target `Guatemala` resolves to GTM-1821-2025 -- deliberately NOT
+    `Bricish Guiana`, the one entry whose target is already expected not to resolve from CI.
+    Mutating that one would raise the count to 2 and fire the same arm for the wrong reason.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_label_ocr_corrections.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["ocr_label"] == "Guatemal"]
+    assert hit, "the `Guatemal` correction moved -- pick another live target"
+    assert hit[0]["correct_label"] == "Guatemala", "unexpected target"
+    hit[0]["correct_label"] = "Guatemalia"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return ("retargeted the `Guatemal` OCR correction to `Guatemalia`, a spelling no polity "
+            "carries, so its two rows would be rewritten onto a label that still routes nowhere")
+
+
 def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
     """Add a lexicon entry whose English target names no polity, pushing the inert count past its
     ceiling.
@@ -4860,6 +4890,12 @@ CASES = (
         "pointing at a real polity, and invisible to every other figure the gate prints",
     ),
     (
+        "validate_ocr_corrections.py",
+        mutate_ocr_correction_target_routes_nowhere,
+        "resolve to no polity",
+        "an OCR correction pointing at a spelling that routes nowhere — the table stays well-formed "
+        "and the right size, and the row simply lands on a different unresolved label",
+    ),    (
         "validate_stated_areas.py",
         mutate_source_files_two_territories_as_one,
         "collapse raw labels whose stated areas differ",
@@ -5551,6 +5587,14 @@ WRITABLE = {
     # long as it has existed. A SKIP exits 0, so a case that did not stage all five would report
     # "gate PASSED a mutation it claims to catch" and look like a gate defect rather than a staging
     # one.
+    # Needs the polities DB and matchlib to decide whether each target routes; the correction
+    # table itself is what the mutation rewrites.
+    "validate_ocr_corrections.py": (
+        "polities_database.csv",
+        "source_label_ocr_corrections.csv",
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
     "validate_stated_areas.py": (
         "polities_database.csv",
         "polities_database.gpkg",
