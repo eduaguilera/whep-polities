@@ -143,7 +143,7 @@ GBR-1800-1921,United Kingdom (to 1921),iia,230616,3,1909;1925;1929,GRANDE-BRETAG
 GBR-1921-2025,United Kingdom,fao,244010,1,1952,United Kingdom,243964,1.000,agrees,
 GBR-1921-2025,United Kingdom,iia,230893,6,1909;1925;1929;1932;1933;1938,GRANDE-BRETAGNE;ROYAUME-UNI;grande-bretagne,243964,1.057,agrees,
 GCT-1919-1956,Gold Coast and British Togoland (1919-1956),fao,237880,1,1952,Gold Coast and Br Togoland,239020,1.005,agrees,
-GHA-1898-1957,Ghana (1898-1957),iia,205949,8,1909;1925;1929;1932;1938,COTE DE L'OR;COTE DE L'OR british;CÔTE DE L'OR;CôTE DE L'OR;côte de l'or,212451,1.032,agrees,
+GHA-1898-1957,Ghana (1898-1957),iia,204093,9,1909;1925;1929;1932;1933;1938,COTE DE L'OR;COTE DE L'OR british;COTE DE LOR;CÔTE DE L'OR;CôTE DE L'OR;côte de l'or,212451,1.041,agrees,
 GIB-1800-2025,Gibraltar,fao,60,1,1952,Gibraltar,7,0.119,review,"THE SAME UNIT ERROR AS NFK-1914-2025, WHICH IS ALREADY BASELINED. FAO states 60 km2 for Gibraltar, which is 6.8 km2 -- a figure recorded under the `1000 hectares` heading and read as km2, i.e. 6.8 thousand hectares instead of 0.68. Norfolk Island is the identical shape (350 stated, 35 actual), so this is a systematic hazard of that table at small magnitudes rather than a one-off slip. Our 7 is right."
 GIB-1800-2025,Gibraltar,iia,5,7,1909;1925;1932;1933;1938,GIBRALTAR,7,1.430,agrees,
 GIN-1894-1958,Guinea (1894-1958),iia,250875,5,1909;1925;1929;1933;1938,AFRIQUE OCCIDENTALE FRANÇAISE: Guinee française;AFRIQUE OCCIDENTALE FRANÇAISE: Guinee trancaise;AFRIQUE OCCIDENTALE FRANÇAISE: Guinée française;afrique occidentale française: guinée francaise,245067,0.977,agrees,
