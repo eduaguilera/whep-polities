@@ -14,6 +14,7 @@ argentine,Argentina,
 australie,Australia,
 australie: papouasie,Territory of Papua,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against TPAP-1906-1949 -- worst deviation 0.044 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
 autriche,Austria,
+bahrein,Bahrain,"Added 2026-08-24 (#195): top-level label with no lexicon entry. stated 552 km2 against a 629 polygon. Bahrain was about 550 km2 before the reclamation that took the modern state past 750, so the gap is a vintage question rather than an error. Territory read from the French name, area used only as the check (worst deviation 0.140, span covers every stated year)."
 basoutoland,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
 basqutoland,Lesotho (1886-1966),"OCR: q inserted Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
 basutoland,Lesotho (1886-1966),"Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
@@ -51,6 +52,7 @@ esthonie,Estonia,
 estonie,Estonia,
 etabl francais de l oceanie,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
 etablissements du detroit,Straits Settlements,
+etablissements franc de l inde,French India (Établissements français dans l'Inde),"Added 2026-08-24 (#195): top-level label with no lexicon entry. ETABLISSEMENTS FRANCAIS DE L'INDE is French India -- Pondicherry, Karikal, Yanaon, Mahe and Chandernagor -- stated 513 km2 against a 547 polygon. Territory read from the French name, area used only as the check (worst deviation 0.066, span covers every stated year)."
 etablissements francais de l oceanie,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
 etat libre d irlande,Ireland,
 etat libre dirlande,Ireland,OCR: lost space
@@ -136,6 +138,7 @@ mandchoukouo,Manchukuo,
 maroc espagnol,Spanish Morocco,
 maroc francais,French Morocco,
 maurice,Mauritius,
+maurice et dependances,Mauritius,"Added 2026-08-24 (#195): top-level label with no lexicon entry. MAURICE ET DEPENDANCES is Mauritius with Rodrigues and the outer islands, stated 2,090-2,095 against a 2,106 polygon. Territory read from the French name, area used only as the check (worst deviation 0.008, span covers every stated year)."
 memel,Memel,
 mexique,Mexico,
 mongolian people s republic,Mongolia,
@@ -154,6 +157,7 @@ nouvelles hebrides iles frenchbritish,Vanuatu,"Retargeted 2026-08-24 (#195): the
 nvassaland,Nyasaland,OCR: v for y
 nyassaland,Nyasaland,
 ouganda,Uganda,
+palestine,Palestine (1920-1948),"Added 2026-08-24 (#195): top-level label with no lexicon entry. the Mandate, stated 23,000-27,000 across editions against a 27,009 polygon. Territory read from the French name, area used only as the check (worst deviation 0.174, span covers every stated year)."
 panama zone du,Panama Canal Zone (US-administered),PANAMA (zone du canal)
 pays bas,Netherlands,
 perou,Peru,
