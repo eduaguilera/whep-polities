@@ -45,6 +45,7 @@ congo belge,Belgian Congo,
 coree,Korea,
 coree jap,Korea,
 cote de l or,Ghana (1898-1957),"was 'Gold Coast', which is not a polity_name"
+cote de l or: togoland,British Togoland (1920-1957),"Added 2026-08-24 (#195): sub-label with no lexicon entry. COTE DE L'OR: TOGOLAND is the Togoland mandate administered WITH the Gold Coast, i.e. British Togoland -- not GCT-1919-1956, which is the combined Gold-Coast-plus-Togoland reporting unit. Stated 33,770-33,776 against a 26,545 polygon: British Togoland was about 33,800 km2, so the SOURCE looks right and the 21% gap is a question about our geometry. Inside tolerance, and surfacing it is the point. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.224, span covers every stated year."
 cote de lor,Gold Coast,OCR: lost space
 cote des somalis,French Somaliland,
 curacao et dependences,Dutch Caribbean (colonial),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against ANT-1816-1961 -- worst deviation 0.172 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
@@ -94,6 +95,8 @@ honduras britannique,British Honduras,
 hongrie,Hungary,NOT retargeted to 'Kingdom of Hungary (Transleithania)': same year-dependence as `allemagne`. Right for 1911-1913 but trades HUN-1920-1938 (6 statements) for HUN-1800-1918 (3).
 iles de l egee,Dodecanese,
 iles du pacifique: fidji ou viti,Fiji,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against FJI-1800-2025 (worst ratio deviation 0.032 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+iles du pacifique: nauru,Nauru,"Added 2026-08-24 (#195): sub-label with no lexicon entry. stated 22-26 km2 against a 21 km2 polygon. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.153, span covers every stated year."
+iles du pacifique: nauru terr sous,Nauru,"Added 2026-08-24 (#195): sub-label with no lexicon entry. stated 22-26 km2 against a 21 km2 polygon. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.153, span covers every stated year."
 iles italiennes de l egee,Dodecanese,
 iles italiennes de legee,Dodecanese,OCR: lost space
 iles nouvelles hebrides,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
