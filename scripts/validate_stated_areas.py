@@ -287,17 +287,25 @@ BASELINE = {
         "same polygon as PRY-1870-1932 (293,549) against a stated 457,872 for 1932/1933/1937. "
         "The Chaco War is fought across this row's span, so the stated figure is a claim under "
         "active dispute -- but the polygon does not move at all, which is the issue 22 problem.",
-    ("JAM-1800-2025", "fao"):
-        "A TRANSCRIPTION ERROR IN THIS SOURCE, and NOT a x10 one. FAO 1952's `British West "
-        "Indies Jamaica` states 142 thousand ha = 1,420 km2 for an island of 10,991. A decimal "
-        "shift gives 14,200 (1.29x, too large); restoring a dropped leading digit gives 11,420 "
-        "(1.039x). IIA's own `JAMAIQUE` line states 10,880-11,526 across six editions and our "
-        "polygon is 11,001, so the polygon and the alias are right and this one figure is wrong. "
-        "Its BWI neighbours in the same FAO table are right (Barbados 450 vs 435; Cayman Islands "
-        "240 vs 281), which is what makes it one bad cell rather than a narrower basis for the "
-        "block. DO NOT use 1,420 km2 as a denominator for Jamaican FAO 1952 rows. Logged with "
-        "the sibling Bahamas error in pipelines/polity-autoimprove/state/data_errors.csv; the "
-        "figure is not corrected, because this repo carries what the yearbook printed.",
+    # ("JAM-1800-2025", "fao") WAS BASELINED HERE AND THE GATE REMOVED IT, 2026-08-24 -- the second
+    # time this file has recorded that, and for the same reason as Monaco above.
+    #
+    # The entry read: FAO 1952's `British West Indies Jamaica` states 142 thousand ha = 1,420 km2 for
+    # an island of 10,991; a decimal shift gives 14,200 (1.29x, too large) while restoring a dropped
+    # leading digit gives 11,420 (1.039x); "IIA's own `JAMAIQUE` line states 10,880-11,526 across six
+    # editions and our polygon is 11,001, so the polygon and the alias are right and this one figure
+    # is wrong."
+    #
+    # That reasoning was written from evidence THIS GATE COULD NOT SEE: `indes occidentales
+    # britanniques: jamaique` had no lexicon entry, so IIA's nine statements reached no polity and
+    # only FAO voted. Adding the entry routed them, the accepted band became 1,420-11,526, and the
+    # 11,001 polygon stopped diverging -- one vote per source, exactly as the Monaco note describes.
+    #
+    # THE FAO FIGURE IS UNCHANGED AND STILL WRONG. Do not use 1,420 km2 as a denominator for Jamaican
+    # FAO 1952 rows. `source_stated_area_basis.csv` still carries JAM-1800-2025/fao at stated 1,420
+    # with ratio 7.747, beside a new JAM-1800-2025/iia row near 11,000, so a per-source consumer sees
+    # both; and the defect stays logged with its sibling Bahamas error in
+    # pipelines/polity-autoimprove/state/data_errors.csv, where it is re-tested.
 }
 
 # (polity_code, source) -> why ONE SOURCE's figure is wrong for a polity the gate does NOT fail on.
@@ -309,10 +317,29 @@ BASELINE = {
 # `write_stated_area_basis.py` publishes these into the `note` column so the warning survives
 # outside this file. Nothing here affects pass/fail.
 SOURCE_NOTES = {
-    # The JAM-1800-2025/fao note that lived here moved to BASELINE on 2026-08-17: divergence is
-    # computed PER (polity, source), so IIA voting 10,880-11,526 does not bring JAM inside the band
-    # FAO states, and only BASELINE suppresses a failure. write_stated_area_basis.py reads BOTH
-    # dicts, so the published warning survives the move.
+    # THE JAM-1800-2025/fao NOTE IS BACK HERE, 2026-08-24, and the comment that sent it to BASELINE
+    # on 2026-08-17 was wrong about the mechanism. It said "divergence is computed PER
+    # (polity, source), so IIA voting 10,880-11,526 does not bring JAM inside the band FAO states".
+    # Divergence is computed per POLITY over a band built with ONE VOTE PER SOURCE (see the long
+    # comment on BASELINE above, and the Monaco control case). IIA's votes were absent then for a
+    # reason that had nothing to do with the rule: `indes occidentales britanniques: jamaique` had no
+    # lexicon entry, so its nine statements reached no polity at all and FAO was the only voter.
+    # Once the entry was added the band became 1,420-11,526, the 11,001 polygon stopped diverging,
+    # and the gate itself demanded the BASELINE entry be removed.
+    #
+    # So the note belongs in SOURCE_NOTES, which is what it is for: it warns a consumer without
+    # suppressing a failure. The failure no longer needs suppressing.
+    ("JAM-1800-2025", "fao"):
+        "A TRANSCRIPTION ERROR IN THIS SOURCE, and NOT a x10 one. FAO 1952's `British West "
+        "Indies Jamaica` states 142 thousand ha = 1,420 km2 for an island of 10,991. A decimal "
+        "shift gives 14,200 (1.29x, too large); restoring a dropped leading digit gives 11,420 "
+        "(1.039x). IIA's own `JAMAIQUE` line states 10,880-11,526 across six editions and our "
+        "polygon is 11,001, so the polygon and the alias are right and this one figure is wrong. "
+        "Its BWI neighbours in the same FAO table are right (Barbados 450 vs 435; Cayman Islands "
+        "240 vs 281), which is what makes it one bad cell rather than a narrower basis for the "
+        "block. DO NOT use 1,420 km2 as a denominator for Jamaican FAO 1952 rows. Logged with "
+        "the sibling Bahamas error in pipelines/polity-autoimprove/state/data_errors.csv; the "
+        "figure is not corrected, because this repo carries what the yearbook printed.",
     #
     # The five entries below were added on 2026-08-20. None suppresses a failure -- the gate is
     # already green on all of them -- but each was flagged `review` in
