@@ -222,7 +222,14 @@ BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # `finlande` and `hongrie`. Those three are year-dependent and were reverted, which is why the
 # number is 32 and not 33: a ceiling one above the true count would let a real regression in
 # unnoticed, so it is pinned at the measured value in both directions.
-BASELINE_AVOIDABLE_SELF_REF = 32
+# 32 -> 33 on 2026-08-24. The new one is TPAP-1906-1949, which declares 224,148 km2 against a
+# 224,156 polygon -- self-referential to 0.004% -- and has just acquired an INDEPENDENT figure: IIA's
+# `AUSTRALIE: PAPOUASIE` states 234,494, routed for the first time by a lexicon entry added in the
+# same change (#195). So this is the metric MOVING IN THE RIGHT DIRECTION: one more row where issue
+# 195's option B (declare the source's figure instead of the polygon's own measurement) is available
+# without a schema change. It is pinned at the measurement in both directions, as a0fe282 established,
+# so a real regression cannot hide under a loose ceiling.
+BASELINE_AVOIDABLE_SELF_REF = 33
 
 #
 
