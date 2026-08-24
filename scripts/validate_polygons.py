@@ -244,7 +244,16 @@ BASELINE_SELF_REFERENTIAL = 105     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # enough to state: every lexicon entry that routes a stated figure to a polity whose declared area was
 # read off its own geometry moves this metric UP by one. That is the metric doing its job -- it counts
 # rows where a real comparison is possible and is not being made.
-BASELINE_AVOIDABLE_SELF_REF = 34
+# 34 -> 38 on 2026-08-24 (issue 553): CYR-1943-1949, FEZ-1943-1951, TRP-1943-1951 and GCT-1919-1956
+# each declare their own polygon's area and have just acquired an independent one, because the
+# source-scope synonym stopped 39 FAO statements being discarded. The first three are the Libyan
+# occupation territories, which issue 156 records as having no independent figure at all -- they now
+# have one.
+#
+# Same direction as the earlier moves in this constant: every statement that starts resolving to a
+# self-declared row makes issue 195's option B available for one more polity. The metric counts
+# opportunities, not defects.
+BASELINE_AVOIDABLE_SELF_REF = 38
 
 #
 

@@ -201,13 +201,13 @@
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 350,
-  "polities": 247,
+  "bases": 389,
+  "polities": 264,
   "sources": [
    "fao",
    "iia"
   ],
-  "review_flagged": 21,
+  "review_flagged": 26,
   "why": "Per (polity, source), the area the SOURCE stated for its own reporting unit beside the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more and are BOTH defensible -- a per-km2 denominator has to choose which territory the numerator was collected over. An empty `note` on such a row means no reason has been recorded for THAT source, not that the divergence is understood."
  },
  "source_flow_flags": {
