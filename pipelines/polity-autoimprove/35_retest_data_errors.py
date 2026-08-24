@@ -990,6 +990,175 @@ def check_reunion_tobacco_baseline(ctx):
             "the level test is one-sided: nothing can be too small to pass it")
 
 
+def _unrouted(panel, label):
+    """How a compound/erroneous label sits in the assignment artefact: rows, and whether any reach a
+    polity. Several entries below turn on a label being deliberately unrouted, and `matched_rows` is
+    the only artefact that records that -- the panel carries no polity for these at all."""
+    m = MATCHED_DF[0]
+    if m is None:
+        return None, None
+    d = m[m["country"].astype(str).str.strip() == label]
+    routed = sum(1 for x in d["whep_code"].fillna("") if str(x).strip())
+    return len(d), routed
+
+
+def check_china_goats_x1001(ctx):
+    """The import applied x1001 where it should have applied x1000, and the proof is DIVISIBILITY.
+
+    Eleven consecutive values each dividing by 1001 into a whole thousand is not a coincidence any
+    alternative explanation survives, so that count is the claim rather than any single cell. 1945-1947
+    carry a different factor (x2000 = 2 x 1000) and reproduce the raw Excel integers exactly.
+
+    ONE REFINEMENT on re-test: the entry calls 1949 "only 0.1% above the correct ~16130000 and is
+    plausible", which reads as a cell needing no repair. It is not a separate benign case --
+    16,146,130 is EXACTLY 16,130 x 1001, i.e. the identical wrong multiplier with the x1000 unit factor
+    missing (the source cell is the text annotation `16130 millions`, so the unit multiplier never
+    applied). 1949 is in fact the cleanest demonstration of the mechanism, because with the unit factor
+    absent, 1001-instead-of-1000 shows up as precisely 0.1%. The correct value is derivable --
+    16,130,000 -- so the remedy should cover 1949 rather than leave it."""
+    d = ctx.get("pre1961")
+    if d is None:
+        return None
+    g = d[(d["item"].astype(str).str.lower() == "goats") & (d["country"] == "China, mainland")]
+    v = {int(t.year): float(t.value) for t in g.itertuples()}
+    clean = sum(1 for y in range(1950, 1961)
+                if abs(v[y] / 1001 - round(v[y] / 1001)) < 1e-6 and round(v[y] / 1001) % 1000 == 0)
+    x2000 = sum(1 for y, r in ((1945, 13249), (1946, 13609), (1947, 13976)) if v[y] / 2000 == r)
+    return ([("years 1950-1960 present", sum(1 for y in range(1950, 1961) if y in v), 11),
+             ("  each /1001 a whole thousand", clean, 11),
+             ("1945-1947 /2000 == raw integers", x2000, 3),
+             ("1950 as published", v.get(1950), 1822821000.0),
+             ("  its repaired value", round(v[1950] / 1001), 1821000),
+             ("1949 == 16130 * 1001", int(v.get(1949) == 16130 * 1001), 1),
+             ("  so 1949 is x1001 too", round(v[1949] / (16130 * 1000), 4), 1.001)],
+            "eleven exact divisions, and 1949 carries the same multiplier rather than being benign")
+
+
+def check_australia_fiji_merged(ctx):
+    """Two adjacent OCEANIA rows merged into one label, with Fiji's leading `1` absorbed into
+    Australia's figures.
+
+    The convicting evidence is the IMPLIED YIELD, not the digit pattern: 81 thousand tonnes on 7
+    thousand ha is 11.6 t/ha, which no groundnut crop reaches, while the entry's repaired 8 gives 1.14
+    -- an ordinary yield. And the label must reach no polity for the entry's "must not be routed
+    anywhere" to hold, so that is asserted too rather than assumed."""
+    lb = ctx["panel"]
+    a = lb[lb["country"].astype(str).str.strip() == "Australia Fiji"]
+    prod = {int(t.year): float(t.value) for t in a.itertuples()
+            if t.unit == "1000 tonnes" and pd.notna(t.year)}
+    area = {int(t.year): float(t.value) for t in a.itertuples()
+            if t.unit == "1000 hectares" and pd.notna(t.year)}
+    rows, routed = _unrouted(lb, "Australia Fiji")
+    sib = sum(1 for n in ("Australia", "Fiji")
+              if len(lb[(lb["source"] == "fao1952") & (lb["country"].astype(str).str.strip() == n)]))
+    return ([("1949 production", prod.get(1949), 81.0),
+             ("1950 production", prod.get(1950), 61.0),
+             ("1949 area", area.get(1949), 7.0),
+             ("implied yield at 1949", round(prod[1949] / area[1949], 2), 11.57),
+             ("  repaired (8 / 7)", round(8.0 / area[1949], 2), 1.14),
+             ("both peers exist separately", sib, 2),
+             ("rows reaching a polity", routed, 0)],
+            "11.6 t/ha convicts the cell; the repaired 1.14 is ordinary")
+
+
+def check_california_double_count(ctx):
+    """California's grapes against the US national total in the same source.
+
+    The entry's exclusion rests on the ratio, so both sides are pinned. Its stated range `161-225` kt
+    omits 1951: the label also carries 147 at 1951, inside the entry's own 1949-1951 scope, so the
+    range is 147-225. That does not change the verdict -- California is 5-9% of the national figure in
+    every year, and routing it to USA-1867-1959 would double-count in all three."""
+    lb = ctx["panel"]
+    ca = lb[lb["country"].astype(str).str.strip() == "United States California"]
+    us = lb[(lb["source"] == "fao1952") & (lb["country"].astype(str).str.strip() == "United States")
+            & (lb["item"].astype(str) == "grapes")]
+    cav = {int(t.year): float(t.value) for t in ca.itertuples()
+           if t.unit == "1000 tonnes" and pd.notna(t.year)}
+    usv = {int(t.year): float(t.value) for t in us.itertuples()
+           if t.unit == "1000 tonnes" and pd.notna(t.year)}
+    rows, routed = _unrouted(lb, "United States California")
+    return ([("california 1949", cav.get(1949), 161.0),
+             ("california 1950", cav.get(1950), 225.0),
+             ("california 1951", cav.get(1951), 147.0),
+             ("national 1949", usv.get(1949), 2415.0),
+             ("national 1951", usv.get(1951), 3071.0),
+             ("max california share %", round(100 * max(cav[y] / usv[y] for y in cav if y in usv), 1),
+              9.2),
+             ("rows reaching a polity", routed, 0)],
+            "the entry's 161-225 omits 1951's 147; the exclusion is unaffected")
+
+
+def check_bahamas_area_x10(ctx):
+    """The x10 land-area cell, its correct siblings, and the entry's own prediction that this statement
+    never reaches the stated-area gate.
+
+    That prediction is the most falsifiable part and it holds: the alias for the label is scoped to
+    source `fao1952` while `08_source_stated_areas.py` writes the source as `fao`, so the statement
+    resolves to no polity and NO row for it exists in source_stated_area_basis.csv. Barbados and the
+    Caymans are absent for the same reason, so the sibling comparison the entry makes is not reachable
+    from the tracked artefacts either -- Jamaica alone gets through, which is the asymmetry worth
+    holding onto.
+
+    One correction: the entry says IIA states this territory across `six editions (1909-1938)`. There
+    are seven statements over FIVE editions, and none from 1909."""
+    st, ba = ctx["stated"], ctx["basis"]
+    if st is None or ba is None:
+        return None
+    fao = {r["label"]: float(r["stated_area_km2"]) for r in st
+           if r["source"] == "fao" and r["stated_area_km2"]}
+    iia = [r for r in st if r["source"] == "iia" and "bahamas" in r["label"].lower()]
+    vals = sorted({float(r["stated_area_km2"]) for r in iia if r["stated_area_km2"]})
+    eds = sorted({r["edition"] for r in iia})
+    return ([("the cell, in km2", fao.get("British West Indies Bahamas"), 1400.0),
+             ("sibling Cayman Islands", fao.get("British West Indies Cayman Islands"), 240.0),
+             ("sibling Barbados", fao.get("British West Indies Barbados"), 450.0),
+             ("IIA statements", len(iia), 7),
+             ("  over editions", len(eds), 5),
+             ("  none from 1909", int("1909" not in eds), 1),
+             ("  its distinct values", "|".join(f"{v:.0f}" for v in vals), "11385|11406"),
+             ("rows in the basis table", sum(1 for r in ba if "Bahamas" in r["source_labels"]), 0)],
+            "the statement never reaches the gate, exactly as the entry predicts")
+
+
+def check_jamaica_dropped_digit(ctx):
+    """The dropped-leading-digit cell, and the 7.7x discrepancy the gate carries without failing.
+
+    Unlike its Bahamas neighbour this statement DOES reach `source_stated_area_basis.csv`, where it sits
+    at ratio 7.747 against an 11,001 km2 polygon and `08_source_stated_areas.py --check` passes on it --
+    which is the entry's point that the yearbook's printed figure is carried rather than repaired.
+
+    The arithmetic that distinguishes this from the Bahamas x10 is pinned: x10 gives 14,200 (1.29x too
+    large) while restoring a leading 1 gives 11,420 (1.039x), so a decimal shift does not explain it."""
+    st, ba = ctx["stated"], ctx["basis"]
+    if st is None or ba is None:
+        return None
+    fao = {r["label"]: float(r["stated_area_km2"]) for r in st
+           if r["source"] == "fao" and r["stated_area_km2"]}
+    cell = fao.get("British West Indies Jamaica")
+    # The territory's own line, not its indented sub-labels: the table holds
+    # `...: JAMAIQUE`, `...: JAMAIQUE: CAIMANS` and `...: JAMAIQUE: TURQUES ET CAIQUES`, and the
+    # editions differ in case, so match on the lowercased label ENDING at `jamaique`.
+    iia = [r for r in st if r["source"] == "iia" and r["label"].strip().lower().endswith("jamaique")]
+    vals = sorted({float(r["stated_area_km2"]) for r in iia if r["stated_area_km2"]})
+    row = [r for r in ba if r["polity_code"] == "JAM-1800-2025" and r["source"] == "fao"]
+    return ([("the cell, in km2", cell, 1420.0),
+             # The entry says "across six editions" and that is right; the STATEMENT count is 9,
+             # because the 1909 and 1925 volumes each print the line for two data years.
+             ("IIA statements for Jamaica itself", len(iia), 9),
+             ("  over editions", len({r["edition"] for r in iia}), 6),
+             ("  its distinct values", "|".join(f"{v:.0f}" for v in vals),
+              "10880|10896|11525|11526"),
+             ("x10 reading", cell * 10, 14200.0),
+             ("restored leading 1", cell + 10000, 11420.0),
+             ("basis rows (unlike the Bahamas)", len(row), 1),
+             ("  its polygon km2", float(row[0]["polygon_area_km2"]) if row else None, 11001.0),
+             ("  its carried ratio", round(float(row[0]["ratio_polygon_over_stated"]), 3)
+              if row else None, 7.747)],
+            "a decimal shift does not explain it, and the gate passes on a 7.7x gap")
+
+
+MATCHED_DF = [None]   # filled by main(); _unrouted() reads the assignment artefact through it
+
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
@@ -1017,6 +1186,11 @@ CHECKS = {
     "rus-1918-is-karafuto-prefecture": check_russia_1918_is_karafuto,
     "chn-1895-1913-groundnut-outlier-data-error": check_china_groundnut_audit,
     "iia-reunion-tobacco-baseline-contaminated": check_reunion_tobacco_baseline,
+    "chn-1949-1950-goats-mitchell-data-error": check_china_goats_x1001,
+    "australia-fiji-fao1952-data-error": check_australia_fiji_merged,
+    "united-states-california-double-count": check_california_double_count,
+    "fao1952-bwi-bahamas-land-area-x10": check_bahamas_area_x10,
+    "fao1952-bwi-jamaica-dropped-leading-digit": check_jamaica_dropped_digit,
 }
 
 
@@ -1040,21 +1214,41 @@ def main() -> int:
     with open(os.path.join(STATE, "era_shift_verdicts.csv"), newline="", encoding="utf-8") as fh:
         era = list(csv.DictReader(fh))
     matched_path = os.path.join(STATE, "matched_rows.parquet")
+    stated = os.path.join(REPO, "data/final/source_stated_areas.csv")
+    basis = os.path.join(REPO, "data/final/source_stated_area_basis.csv")
+    # `before_1961.csv` is an 18 MB machine-local input, deliberately gitignored ("Untrack the source
+    # datasets, keeping them local"), so it is OPTIONAL rather than required: adding it to the required
+    # list above would make this whole tool SKIP on any machine without it. A check that needs it
+    # returns None, and main() reports those separately instead of counting them as re-tested -- an
+    # absent input must not read as a passing claim.
+    pre1961 = os.path.join(REPO, "data/external/before_1961.csv")
     ctx = {"raw": raw, "panel": pd.read_parquet(a.layer_b), "era": era,
+           "stated": list(csv.DictReader(open(stated, newline="", encoding="utf-8")))
+           if os.path.exists(stated) else None,
+           "basis": list(csv.DictReader(open(basis, newline="", encoding="utf-8")))
+           if os.path.exists(basis) else None,
+           "pre1961": pd.read_csv(pre1961, low_memory=False) if os.path.exists(pre1961) else None,
            # matched_rows carries the polity assignment, which the panel does not; an entry keyed on
            # (polity, source, item, ...) cannot be re-tested without it.
            "matched": pd.read_parquet(matched_path) if os.path.exists(matched_path) else None}
+
+    MATCHED_DF[0] = ctx["matched"]
 
     with open(ERRORS, newline="", encoding="utf-8") as fh:
         entries = list(csv.DictReader(fh))
     ids = {r["issue_id"] for r in entries}
 
-    problems, tested = [], 0
+    problems, tested, skipped = [], 0, []
     for eid, fn in sorted(CHECKS.items()):
         if eid not in ids:
             problems.append(f"{eid}: has a re-test here but no longer exists in data_errors.csv")
             continue
-        claims, note = fn(ctx)
+        out = fn(ctx)
+        if out is None:
+            skipped.append(eid)
+            print(f"  SKIP {eid[:42]:44}re-test needs a local input absent on this machine")
+            continue
+        claims, note = out
         for label, now, stated in claims:
             tested += 1
             ok = now == stated
@@ -1063,7 +1257,10 @@ def main() -> int:
                 problems.append(f"{eid}: {label} is now {now}, the entry states {stated}")
         print(f"       -> {note}")
 
-    print(f"\n{len(CHECKS)} entr(ies) re-tested over {tested} claim(s); "
+    if skipped:
+        print(f"\n{len(skipped)} entr(y/ies) NOT re-tested here for want of a local input: "
+              f"{', '.join(sorted(skipped))}")
+    print(f"\n{len(CHECKS) - len(skipped)} entr(ies) re-tested over {tested} claim(s); "
           f"{len(ids) - len(CHECKS)} of {len(ids)} entries are not yet re-tested -- unreached rather "
           f"than uncoverable; see the docstring")
     if problems:
