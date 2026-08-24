@@ -2633,6 +2633,34 @@ def mutate_new_cow_code_collision(root, gpd, make_valid, affinity):
             "over overlapping years, so one new collision appears and no baselined pair leaves")
 
 
+def mutate_lexicon_entry_on_a_colliding_form(root, gpd, make_valid, affinity):
+    """Add the `guiana` lexicon entry, which merges two different colonies.
+
+    `normalise_label` strips a nationality qualifier -- deliberately, since that is what collapses
+    `TUNISIE french` onto `tunisie` -- so `British Guiana` (215,000 km2) and `French Guiana` (90,000)
+    both normalise to `guiana`. An entry keyed there routes both to one polity.
+
+    This is not an invented hazard. Clearing unrouted FAO labels, `British Guiana` was on my candidate
+    list and `guiana -> Guyana` is the obvious entry to write; arm F is what stopped it. So the
+    mutation IS the mistake, and every other figure the gate prints is unchanged by it -- the entry is
+    well-formed, points at a real polity, and only the collision check can see the problem.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_label_lexicon.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    assert not any(r["normalised_form"] == "guiana" for r in rows), "`guiana` is already mapped"
+    rows.append({"normalised_form": "guiana", "english_label": "Guyana",
+                 "note": "selftest: merges British and French Guiana"})
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return ("added a lexicon entry for `guiana`, the normalised form shared by British Guiana "
+            "(215,000 km2) and French Guiana (90,000), so both would route to one polity")
+
+
 def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
     """Add a lexicon entry whose English target names no polity, pushing the inert count past its
     ceiling.
@@ -4787,6 +4815,13 @@ CASES = (
         "AMI-1946-1953",
         "a mis-typed COW code, which is indistinguishable from the 29 deliberate metropole/colony "
         "shares except by being NEW — so only a baselined set can tell them apart",
+    ),
+    (
+        "validate_stated_areas.py",
+        mutate_lexicon_entry_on_a_colliding_form,
+        "routes both to one polity",
+        "a lexicon entry on a normalised form that merges two different colonies — well-formed, "
+        "pointing at a real polity, and invisible to every other figure the gate prints",
     ),
     (
         "validate_stated_areas.py",
