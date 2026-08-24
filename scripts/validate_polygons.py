@@ -192,7 +192,13 @@ for r in documented.itertuples():
 # improved. A row can only ENTER the band by someone re-deriving a declared figure from a
 # polygon, which is a human act and worth failing on. So this is a ceiling.
 SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
-BASELINE_SELF_REFERENTIAL = 104     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
+# 105 on 2026-08-24 (issue 554): BES-2010-2025 declares 325 km2 against a 324.9 km2 polygon.
+# That is deliberate and the alternative was worse: the reference land area for Bonaire +
+# Sint Eustatius + Saba is 328 km2, and declaring 328 would make the declared figure disagree
+# with the geometry it is bound to for no gain -- the GADM outline for BES is accurate to 0.99x,
+# unusually good for a small-island outline (see issue 570), so there is nothing to correct.
+# The page says in prose that the figure is the polygon's own measurement.
+BASELINE_SELF_REFERENTIAL = 105     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
 
 # A2b: OF the self-referential areas, how many were AVOIDABLE -- i.e. an INDEPENDENT figure
 # for that (polity, source) already exists in data/final/source_stated_area_basis.csv and the

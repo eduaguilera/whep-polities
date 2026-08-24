@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "830f1fda508f1a0861e17a556ec55e3580dd8a77c4637ba3f579d1467380a6e4",
+ "identity_sha256": "38bb5e19ae3917bbe85f9f670dc67bd65b1ee87aa4e14e8a7684aaa0f4a57b4d",
  "counts": {
-  "total": 779,
-  "live": 735,
+  "total": 781,
+  "live": 737,
   "dead": 44
  },
  "dead_status": [
@@ -195,9 +195,9 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "f98ae67acc6068f9d08de12fd008fb531e0c98f2672b9e4830c5dd82792adea5",
-  "relations": 5274,
-  "modern_iso3": 77
+  "sha256": "110262642c1717d1efdc44045757a65341bf077711e4a347a32a9ce40941fc16",
+  "relations": 5754,
+  "modern_iso3": 80
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
@@ -240,6 +240,13 @@
     "family": "DHY",
     "year_min": 1850,
     "year_max": 1893
+   }
+  ],
+  "BES": [
+   {
+    "family": "ANT",
+    "year_min": 1961,
+    "year_max": 2009
    }
   ],
   "BFA": [
@@ -294,6 +301,13 @@
     "family": "CZE",
     "year_min": 1850,
     "year_max": 1907
+   }
+  ],
+  "CUW": [
+   {
+    "family": "ANT",
+    "year_min": 1961,
+    "year_max": 2009
    }
   ],
   "CXR": [
@@ -650,6 +664,13 @@
     "year_max": 1893
    }
   ],
+  "SXM": [
+   {
+    "family": "ANT",
+    "year_min": 1961,
+    "year_max": 2009
+   }
+  ],
   "SYC": [
    {
     "family": "MUS",
@@ -835,6 +856,7 @@
   "BEN-1895-1898",
   "BEN-1898-1960",
   "BEN-1960-2025",
+  "BES-2010-2025",
   "BFA-1919-1932",
   "BFA-1947-1960",
   "BFA-1960-2025",
@@ -1431,6 +1453,7 @@
   "SWE-1905-2025",
   "SWK-1800-1894",
   "SWZ-1894-2025",
+  "SXM-2010-2025",
   "SYC-1903-2025",
   "SYL-1944-1953",
   "SYR-1920-1922",
