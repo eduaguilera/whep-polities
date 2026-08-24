@@ -13,6 +13,10 @@
 # ZNZ Zanzibar, plus this project's own aggregates ROW/RAFR/RASI/REUR/RLAM/RNAM/ROCE).
 # They are marked `local` below. A consumer cannot match them against ISO-keyed data.
 # See the README section on iso3_code, and issue 55 on publishing the distinction.
+     # it is not TGO because the colony also became the British Togoland third of Ghana
+     # the three USSR-era F228 rows, which previously carried nothing and so belonged to no
+     # ISO family. Not in a 3166-1 list by construction: 3166-3 is the register of codes
+     # withdrawn because the entity no longer exists.
 ABW
 AEF  # local
 AFG
@@ -38,6 +42,7 @@ BDI
 BEC  # local
 BEL
 BEN
+BES
 BFA
 BGD
 BGR
@@ -119,7 +124,6 @@ GRD
 GRL
 GTM
 GTO  # local -- German Togoland 1884-1920, added 2026-08-17 (issue 171); no ISO code, and
-     # it is not TGO because the colony also became the British Togoland third of Ghana
 GUF
 GUM
 GUY
@@ -263,15 +267,13 @@ SSD
 STP
 SUD  # local
 SUN  # local -- ISO 3166-3 SUHH, the USSR's former alpha-3. Added 2026-08-13 (issue 55) to
-     # the three USSR-era F228 rows, which previously carried nothing and so belonged to no
-     # ISO family. Not in a 3166-1 list by construction: 3166-3 is the register of codes
-     # withdrawn because the entity no longer exists.
 SUR
 SVK
 SVN
 SWA  # local
 SWE
 SWZ
+SXM
 SYC
 SYR
 TAN  # local

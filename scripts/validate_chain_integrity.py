@@ -212,7 +212,11 @@ BASELINE_ASYMMETRY = {
     # GRD-1800-2025 would assert that Grenada's territory was the colony's BEFORE 1800, which is
     # false, and it would point a predecessor edge at a row that begins 33 years later. The
     # forward direction is the true one: the colony dissolved INTO these four in 1960.
-    "successor_only": 192,
+    # 192 -> 191 on 2026-08-24 (issue 554): CUW-2010-2025 gained the reverse of the successor
+    # edge ANT-1961-2010 already asserted, so one successor-only edge became symmetric. No new
+    # historical claim -- the forward edge is stated on the federation's page and the polygon
+    # was already composed from CUW/SXM/BES by scripts/sources/reporting-areas/build.py.
+    "successor_only": 191,
     # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
     # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
     # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to
