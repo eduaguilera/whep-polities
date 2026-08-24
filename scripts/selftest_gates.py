@@ -2316,6 +2316,42 @@ def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
             f"was")
 
 
+def mutate_short_period_gap(root, gpd, make_valid, affinity):
+    """Shorten a family's earlier period by one year, leaving a year covered by nothing.
+
+    This is the exact shape of every short gap this gate has ever recorded -- "a boundary written as
+    if `end_year` were inclusive". `end_year` is EXCLUSIVE, so renaming AFG-1800-1893 to
+    AFG-1800-1892 leaves 1892 in no AFG period at all, while AFG-1893-1919 still starts at 1893.
+
+    A hole is worse than an overlap, which is the gate's own point: an overlap produces a wrong
+    attribution someone may eventually query, a hole produces a dropped row -- or a fallback to a
+    neighbouring period, attributing a figure to a polity that did not hold the territory that year.
+
+    A gap of two years or less FAILS whatever the baseline says, and there are zero today, so this
+    needs no baseline interaction: the six baselined gaps are 11 years or longer and none is in the
+    AFG family. The gate derives its years from `polity_code` alone, so the rename is the whole
+    mutation -- but `end_year` is moved too, so the row stays internally consistent and the mutation
+    reads as the real defect rather than a corrupt row.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["polity_code"] == "AFG-1800-1893"]
+    nxt = [r for r in rows if r["polity_code"] == "AFG-1893-1919"]
+    assert hit and nxt, "the AFG-1800-1893 / AFG-1893-1919 pair is gone -- pick another family"
+    hit[0]["polity_code"] = "AFG-1800-1892"
+    if "end_year" in fields:
+        hit[0]["end_year"] = "1892"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return ("renamed AFG-1800-1893 to AFG-1800-1892 (end_year is EXCLUSIVE), so 1892 falls in no "
+            "AFG period while AFG-1893-1919 still begins at 1893")
+
+
 def mutate_matcher_dead_status_drifts(root, gpd, make_valid, affinity):
     """Drop `superseded` from the MATCHER's copy of DEAD_STATUS, leaving five other copies intact.
 
@@ -4663,6 +4699,13 @@ CASES = (
         "distinctness filter all stay identical",
     ),
     (
+        "validate_period_gaps.py",
+        mutate_short_period_gap,
+        "AFG-1800-1892",
+        "a year covered by no period of its family — a matcher gets NO answer and either drops the "
+        "row or falls back to a neighbour that did not hold the territory",
+    ),
+    (
         "validate_constants.py",
         mutate_matcher_dead_status_drifts,
         "DEAD_STATUS disagrees",
@@ -5382,6 +5425,11 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
         "pipelines/polity-autoimprove/state/assertions.json",
     ),
+    "validate_period_gaps.py": (
+        "polities_database.csv",
+        "iso3_successor_map.csv",
+        "label_alias_map.csv",
+    ),
     "validate_constants.py": (
         "pipelines/polity-autoimprove/matchlib.py",
         "pipelines/faostat-era-matching/match.R",
@@ -5820,7 +5868,11 @@ WRITABLE = {
 #
 # The ceiling is what makes the gap visible rather than implied: a NEW gate landing without a case
 # pushes it up, and covering one pushes it down and demands the ceiling follow.
-BASELINE_GATES_WITHOUT_A_CASE = 1
+# Now ZERO: every `validate_*` gate has at least one case. The constant stays because the arm that
+# reads it is the one that catches a NEW gate landing without a case -- the direction that can still
+# regress. The "below the ceiling" arm is unreachable at 0 and is kept only so the pair stays
+# symmetric with every other baseline in this file.
+BASELINE_GATES_WITHOUT_A_CASE = 0
 
 
 def _gates_without_a_case() -> list:
@@ -5933,10 +5985,15 @@ def check_every_gate_runs_in_ci() -> list:
         )
 
     if not problems:
+        tail = (
+            "and EVERY `validate_*` gate has at least one case here"
+            if not uncovered else
+            f"but {len(uncovered)} have no case here and are NOT exercised by this harness: "
+            + ", ".join(g.replace("validate_", "") for g in uncovered)
+        )
         print(
             f"every gate runs in CI and is named in the README "
-            f"({len(scripts)} scripts); {len(uncovered)} have no case here and are NOT "
-            f"exercised by this harness: {', '.join(g.replace('validate_', '') for g in uncovered)}"
+            f"({len(scripts)} scripts), {tail}"
         )
     return problems
 
