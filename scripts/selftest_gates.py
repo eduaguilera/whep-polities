@@ -97,6 +97,7 @@ import argparse
 import csv
 import json
 import math
+import glob
 import os
 import re
 import shutil
@@ -2315,6 +2316,32 @@ def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
             f"was")
 
 
+def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
+    """Add a lexicon entry whose English target names no polity, pushing the inert count past its
+    ceiling.
+
+    The lexicon's only purpose is to turn a source's own label into something the matcher can route,
+    so an entry that resolves to nothing is inert by construction -- it cannot contribute a
+    resolution, and every other number this gate prints is unchanged by it. That is what makes the
+    ceiling the only thing that can notice: statements stay at 2,225, resolved pairs stay put, and no
+    polygon moves.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_label_lexicon.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    # reuse a label the statements actually carry, so the entry is exercised rather than ignored
+    rows.append({"normalised_form": "groenland", "english_label": "Erewhon Crown Colony",
+                 "note": "selftest: target names no polity"})
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return ("added a lexicon entry mapping `groenland` to `Erewhon Crown Colony`, a target no polity "
+            "carries, so the entry can never contribute a resolution")
+
+
 def mutate_lookup_prints_unmaintained_column_bare(root, gpd, make_valid, affinity):
     """Strip the UNMAINTAINED marker from `lookup_known_defect.py`'s provenance line.
 
@@ -4375,6 +4402,13 @@ CASES = (
         "distinctness filter all stay identical",
     ),
     (
+        "validate_stated_areas.py",
+        mutate_lexicon_entry_routes_nowhere,
+        "resolve to no polity",
+        "a lexicon entry whose target routes nowhere — inert by construction, and invisible in every "
+        "other figure this gate prints, so only the ceiling on inert targets can catch it",
+    ),
+    (
         "validate_iia_label_provenance.py",
         mutate_lookup_prints_unmaintained_column_bare,
         "UNMAINTAINED",
@@ -5013,6 +5047,19 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/verdicts_applied.jsonl",
         "pipelines/polity-autoimprove/state/assertions.json",
     ),
+    # This gate SKIPs unless it can read the geometry, the database, the statements, the lexicon
+    # AND import matchlib off `pipelines/polity-autoimprove` -- which is why it had no case for as
+    # long as it has existed. A SKIP exits 0, so a case that did not stage all five would report
+    # "gate PASSED a mutation it claims to catch" and look like a gate defect rather than a staging
+    # one.
+    "validate_stated_areas.py": (
+        "polities_database.csv",
+        "polities_database.gpkg",
+        "source_stated_areas.csv",
+        "source_label_lexicon.csv",
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
     "validate_iia_label_provenance.py": (
         "pipelines/polity-autoimprove/state/iia_assertion_provenance.csv",
         "pipelines/polity-autoimprove/state/iia_label_provenance.csv",
@@ -5418,6 +5465,27 @@ WRITABLE = {
 
 
 
+# How many `validate_*.py` gates have NO case in this harness. Not zero, and this harness used to
+# imply it was: its final line reads "N gate(s) fail on an injected defect and name it, and every
+# gate runs in CI", which is true of the CASES entries and of CI registration, and says nothing
+# about gates the mutation harness never exercises. Those gates can be green on real data forever
+# without anyone having shown they can go red.
+#
+# The ceiling is what makes the gap visible rather than implied: a NEW gate landing without a case
+# pushes it up, and covering one pushes it down and demands the ceiling follow.
+BASELINE_GATES_WITHOUT_A_CASE = 10
+
+
+def _gates_without_a_case() -> list:
+    """`validate_*.py` scripts that no CASES entry exercises."""
+    have = {c[0] for c in CASES}
+    return sorted(
+        os.path.basename(p)
+        for p in glob.glob(os.path.join(REPO, "scripts", "validate_*.py"))
+        if os.path.basename(p) not in have
+    )
+
+
 def check_every_gate_runs_in_ci() -> list:
     """Every gate script must appear in the workflow that claims to run them all.
 
@@ -5504,10 +5572,24 @@ def check_every_gate_runs_in_ci() -> list:
                 f"README.md: {undocumented}"
             )
 
+    uncovered = _gates_without_a_case()
+    if len(uncovered) > BASELINE_GATES_WITHOUT_A_CASE:
+        problems.append(
+            f"{len(uncovered)} gate(s) have no case in this harness, above the ceiling of "
+            f"{BASELINE_GATES_WITHOUT_A_CASE} -- a gate nothing mutates has never been shown able "
+            f"to fail: {', '.join(uncovered)}"
+        )
+    elif len(uncovered) < BASELINE_GATES_WITHOUT_A_CASE:
+        problems.append(
+            f"only {len(uncovered)} gate(s) now lack a case, below the ceiling of "
+            f"{BASELINE_GATES_WITHOUT_A_CASE} -- lower it so the coverage is held"
+        )
+
     if not problems:
         print(
             f"every gate runs in CI and is named in the README "
-            f"({len(scripts)} scripts)"
+            f"({len(scripts)} scripts); {len(uncovered)} have no case here and are NOT "
+            f"exercised by this harness: {', '.join(g.replace('validate_', '') for g in uncovered)}"
         )
     return problems
 

@@ -409,6 +409,14 @@ _NATIONALITY = re.compile(
 )
 
 
+# Lexicon targets that resolve to no polity at any year their source states a figure for. Not zero,
+# and not reachable while 11 of them (`Karafuto`, `Kwantung`, `Tibet`, `Memel`, `Rio de Oro`,
+# `Socotra`, `Svalbard` among them) name territories this database has no polity for -- issue 400.
+# The ceiling holds the rest: a new entry pointing nowhere, or a polity rename stranding an old one,
+# both push it up.
+BASELINE_INERT_LEXICON = 32
+
+
 def normalise_label(raw: str) -> str:
     text = unicodedata.normalize("NFKD", str(raw)).encode("ascii", "ignore").decode().lower()
     text = re.sub(r"-\s+", "", text)          # OCR hyphenation across a line break
@@ -469,6 +477,7 @@ def analyse():
     )
 
     lexicon = load_lexicon()
+    lex_tried, lex_live = {}, set()
     with open(STATED_PATH, encoding="utf-8") as fh:
         statements = list(csv.DictReader(fh))
 
@@ -539,6 +548,21 @@ def analyse():
                 code = None
             if code:
                 break
+        # INERT LEXICON ENTRIES. The lexicon exists for exactly one purpose -- to turn IIA's French
+        # label into something the matcher can route -- so an entry whose English target resolves to
+        # NOTHING at any year the source states, under either source string, can never contribute a
+        # resolution. Three failure shapes are demonstrable and they need different fixes, which is
+        # why this arm counts rather than repairs: the target names a polity whose SPAN excludes the
+        # stated years (`Basutoland` -> LSO-1868-1886, while statements run 1911-1951); the territory
+        # has a polity under a longer name (`Zanzibar` vs `Zanzibar Protectorate`, `Bechuanaland` vs
+        # `Bechuanaland Protectorate`); or no polity exists at all (`Karafuto`, `Kwantung` -- both
+        # blocked on issue 400). Retargeting an entry is an established remedy here: the `saint marin`,
+        # `terre neuve` and `macao` entries were each retargeted under issue 195.
+        target = lexicon.get(normalise_label(row["label"]))
+        if target:
+            lex_tried.setdefault(target, set()).add((row["source"], year))
+            if code:
+                lex_live.add(target)
         if not code or code not in ours or stated <= 0:
             continue
         pairs[(code, row["source"], year)] = ours[code] / stated
@@ -598,6 +622,7 @@ def analyse():
         "names": names,
         "statements": statements,
         "lexicon": lexicon,
+        "lex_inert": sorted(t for t in lex_tried if t not in lex_live),
         "pairs": pairs,
         "allstated": allstated,
         "per_source": per_source,
@@ -613,6 +638,7 @@ def main() -> int:
         return 0
     ours = result["ours"]
     statements, lexicon, pairs = result["statements"], result["lexicon"], result["pairs"]
+    lex_inert = result["lex_inert"]
     allstated, suspect, diverged = result["allstated"], result["suspect"], result["diverged"]
 
     problems = []
@@ -634,8 +660,27 @@ def main() -> int:
                 f"{TOLERANCE:.0%} -- remove its entry"
             )
 
+    # A count, with a ceiling rather than a target of zero: 11 of these name territories with no
+    # polity at all, so zero is not reachable until issue 400 is decided. What the ceiling protects
+    # against is the number GROWING -- a new lexicon entry that routes nowhere, or a polity rename
+    # that quietly strands an existing one.
+    if len(lex_inert) > BASELINE_INERT_LEXICON:
+        problems.append(
+            f"{len(lex_inert)} lexicon target(s) resolve to no polity at any year their source "
+            f"states, above the ceiling of {BASELINE_INERT_LEXICON}. An entry that routes nowhere "
+            f"cannot contribute a resolution, which is the lexicon's only purpose: "
+            f"{', '.join(lex_inert[:6])}"
+        )
+    elif len(lex_inert) < BASELINE_INERT_LEXICON:
+        problems.append(
+            f"only {len(lex_inert)} lexicon target(s) are inert, below the ceiling of "
+            f"{BASELINE_INERT_LEXICON} -- lower it so the improvement is held"
+        )
+
     within10 = sum(1 for r in pairs.values() if abs(r - 1) <= 0.10)
     print(f"stated-area statements: {len(statements):,}   lexicon entries: {len(lexicon)}")
+    print(f"  lexicon targets that resolve to NOTHING at any stated year: {len(lex_inert)} "
+          f"(ceiling {BASELINE_INERT_LEXICON})")
     print(f"(polity, source, year) pairs resolved: {len(pairs)}   polities: {len({k[0] for k in pairs})}")
     print(f"  within 10%: {within10}   within {TOLERANCE:.0%}: "
           f"{sum(1 for r in pairs.values() if abs(r - 1) <= TOLERANCE)}")
