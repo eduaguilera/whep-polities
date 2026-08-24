@@ -39,6 +39,7 @@ cote de l or,Ghana (1898-1957),"was 'Gold Coast', which is not a polity_name"
 cote de lor,Gold Coast,OCR: lost space
 cote des somalis,French Somaliland,
 danemark,Denmark,
+danemark: islande,Iceland,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against ISL-1800-2025 (worst ratio deviation 0.020 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
 egypte,Egypt,
 equateur,Ecuador,
 erythree,Eritrea,
@@ -80,6 +81,7 @@ hawai usa,Hawaii,
 honduras britannique,British Honduras,
 hongrie,Hungary,NOT retargeted to 'Kingdom of Hungary (Transleithania)': same year-dependence as `allemagne`. Right for 1911-1913 but trades HUN-1920-1938 (6 statements) for HUN-1800-1918 (3).
 iles de l egee,Dodecanese,
+iles du pacifique: fidji ou viti,Fiji,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against FJI-1800-2025 (worst ratio deviation 0.032 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
 iles italiennes de l egee,Dodecanese,
 iles italiennes de legee,Dodecanese,OCR: lost space
 iles nouvelles hebrides,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
@@ -89,8 +91,13 @@ inde britannique,India,
 inde portugaise,Portuguese India,
 indes britanniques,India,
 indes neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
+indes occidentales britanniques: barbade,Barbados,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against BRB-1800-2025 (worst ratio deviation 0.011 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+indes occidentales britanniques: iles du vent: barbade,Barbados,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against BRB-1800-2025 (worst ratio deviation 0.011 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+indes occidentales britanniques: iles du vent: grenade,Grenada,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against GRD-1800-2025 (worst ratio deviation 0.045 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
 indes orientales neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
 indochine,Indochina,
+indochine: cambodge,Cambodia (1907-1953),"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against KHM-1907-1953 (worst ratio deviation 0.035 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+indochine: laos,Laos (1893-1954),"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against LAO-1893-1954 (worst ratio deviation 0.007 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
 irak,Iraq,
 irlande,Ireland,
 irlande etat,Ireland,
