@@ -2661,6 +2661,42 @@ def mutate_lexicon_entry_on_a_colliding_form(root, gpd, make_valid, affinity):
             "(215,000 km2) and French Guiana (90,000), so both would route to one polity")
 
 
+def mutate_source_files_two_territories_as_one(root, gpd, make_valid, affinity):
+    """File a second, territorially different label under a polity a source already covers.
+
+    This is the whole-and-parts shape arm G exists for, and it is not invented: FAO-1952 states
+    `China` (9,736,290 km2) beside its own `China 22 provinces` (5,071,820) and `China Manchuria`
+    (1,069,300), and all three route to CHN-1947-1949 -- so the published basis for that pair is the
+    MEDIAN of a whole and two of its parts, 5,071,820, while the polygon actually agrees with the
+    whole (0.78x).
+
+    The mutation adds one statement, on a label the matcher already resolves, to a source group that
+    has nine of them. That is deliberate: with nine editions behind it the source's consensus barely
+    moves, so the divergence arm stays quiet and NO other figure this gate prints changes. Only the
+    spread ceiling can see it -- which is the point, since a source quietly filing two territories
+    under one polity is invisible to every per-polity total.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_stated_areas.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    donor = [r for r in rows if r["source"] == "iia" and r["label"].strip().lower() == "congo belge"]
+    assert donor, "no `congo belge` statement to vary -- the fixture moved"
+    assert not any(r["label"] == "Congo Belge" for r in rows), "`Congo Belge` already present"
+    new = dict(donor[0])
+    # a THIRD verbatim spelling, resolving to the same polity, carrying a plainly smaller territory
+    new["label"] = "Congo Belge"
+    new["stated_area_km2"] = "200000"
+    rows.append(new)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return ("filed `Congo Belge` at 200,000 km2 alongside the existing `CONGO BELGE`/`congo belge` "
+            "statements of about 2,385,120, so one polity's iia basis now spans two territories")
+
+
 def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
     """Add a lexicon entry whose English target names no polity, pushing the inert count past its
     ceiling.
@@ -4824,6 +4860,12 @@ CASES = (
         "pointing at a real polity, and invisible to every other figure the gate prints",
     ),
     (
+        "validate_stated_areas.py",
+        mutate_source_files_two_territories_as_one,
+        "collapse raw labels whose stated areas differ",
+        "a source filing two territorially different labels under one polity — the published basis "
+        "then picks one value out of a whole and its parts, and no per-polity total can show it",
+    ),    (
         "validate_stated_areas.py",
         mutate_lexicon_entry_routes_nowhere,
         "resolve to no polity",

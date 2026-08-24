@@ -121,11 +121,15 @@ BASELINE = {
         "difference across the span, not an error on either side.",
 
     ("CHN-1947-1949", "fao"):
-        "THE SOURCE'S LABEL IS A PARTIAL CHINA. FAO 1952 states 5,071,820 km2, which is its `China 22 "
-        "provinces` figure -- the same value it gives for `China 22 provinces & Taiwan` -- against our "
-        "7,593,571 for the whole country. Not a measurement disagreement: the yearbook is counting a "
-        "subset of the territory the polity covers. See issue 449 for the whole-and-parts structure of "
-        "FAO 1952's China labels.",
+        "NEITHER SIDE IS WRONG -- THE WHOLE AND ITS PARTS COLLAPSE INTO ONE VOTE. Corrected 2026-08-24; "
+        "the first version of this entry said `the source's label is a partial China`, which is not what "
+        "happens. THREE FAO labels route to this polity -- `China` 9,736,290, `China 22 provinces` "
+        "5,071,820 and `China Manchuria` 1,069,300 -- so the one-vote-per-source rule takes their median "
+        "and publishes 5,071,820, a PART's area, as this (polity, source) basis. Against the WHOLE our "
+        "polygon is 7,593,571/9,736,290 = 0.780, comfortably inside the 25% tolerance; the divergence is "
+        "an artefact of routing, not of measurement. FAO's own partition is exact: 22 provinces + "
+        "Manchuria + Sinkiang + Sikang + Jehol + Tibet + Taiwan = 9,736,290 to the km2, which is issue "
+        "449's open question about what the `China` label is, answered by the source's arithmetic.",
 
     ("KNA-1800-2025", "fao"):
         "THE SOURCE'S REPORTING UNIT INCLUDES ANGUILLA AND THIS POLITY DOES NOT. FAO states 390 km2 and "
@@ -552,6 +556,14 @@ _NATIONALITY = re.compile(
 # Lexicon forms that merge raw labels with materially different stated areas. See arm F.
 BASELINE_COLLIDING_LEXICON_FORMS = 28
 
+# (polity, source) groups whose several raw labels state areas >=2x apart -- the whole-and-parts /
+# outlier-edition class. See arm G. All six current members are explained in SOURCE_NOTES or BASELINE:
+# CHN (FAO's China beside two of its own parts), FRS + LTU (a single 1909 edition outlier), MCO (a lost
+# decimal separator), DZA (`ALGERIE french` is northern Algeria alone), JOR (IIA revised itself in 1938).
+# A SEVENTH is the thing worth looking at: it means a source is filing two territories under one polity.
+BASELINE_LABEL_SPREAD = 6
+LABEL_SPREAD_FACTOR = 2.0
+
 BASELINE_INERT_LEXICON = 20
 
 
@@ -866,6 +878,35 @@ def main() -> int:
         problems.append(
             f"only {len(colliding)} colliding lexicon form(s), below the ceiling of "
             f"{BASELINE_COLLIDING_LEXICON_FORMS} -- lower it so the improvement is held"
+        )
+
+    spread = []
+    for code, obs in allstated.items():
+        by_src: dict[str, dict[str, list[float]]] = {}
+        for val, src, _ed, lab in obs:
+            by_src.setdefault(src, {}).setdefault(lab, []).append(val)
+        for src, labs in by_src.items():
+            if len(labs) < 2:
+                continue
+            # One representative per verbatim label: repeated editions of the SAME label are not a
+            # spread, they are the source restating itself.
+            reps = [max(v) for v in labs.values()]
+            if min(reps) > 0 and max(reps) / min(reps) >= LABEL_SPREAD_FACTOR:
+                spread.append((max(reps) / min(reps), code, src))
+    spread.sort(reverse=True)
+    print(f"  (polity, source) groups whose labels state areas >={LABEL_SPREAD_FACTOR:g}x apart: "
+          f"{len(spread)} (ceiling {BASELINE_LABEL_SPREAD})")
+    if len(spread) > BASELINE_LABEL_SPREAD:
+        problems.append(
+            f"{len(spread)} (polity, source) group(s) collapse raw labels whose stated areas differ "
+            f"by {LABEL_SPREAD_FACTOR:g}x or more, above the ceiling of {BASELINE_LABEL_SPREAD}. The "
+            f"published basis is then one value chosen from territorially different labels: "
+            + ", ".join(f"{c}/{s2} {r:.1f}x" for r, c, s2 in spread[:6])
+        )
+    elif len(spread) < BASELINE_LABEL_SPREAD:
+        problems.append(
+            f"only {len(spread)} label-spread group(s), below the ceiling of "
+            f"{BASELINE_LABEL_SPREAD} -- lower it so the improvement is held"
         )
 
     if len(lex_inert) > BASELINE_INERT_LEXICON:
