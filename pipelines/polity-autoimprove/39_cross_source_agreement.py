@@ -17,6 +17,21 @@ it is a defect this repo has already recorded: wheat is spelt and meslin, tobacc
 different territorial levels. A cell in the tail with NO entry behind it would be new, and there is
 currently no such cell -- which is what makes zero a usable ceiling rather than an aspiration.
 
+THE KEY DELIBERATELY EXCLUDES `indicator`, and that is not an oversight. The column carries a
+different KIND of value per source: fao1952 and iia use a measurement type (`crops:production`,
+`livestock:production`), while mitchell uses a page reference (`page_12_table_1`). Adding it to the
+key separates iia from mitchell on a field that does not mean the same thing in each, which destroys
+exactly the comparisons this table exists for -- 53 of the 804 cells pair a null indicator against a
+mitchell page string. `unit` already separates production from area, which is what the column would
+otherwise be protecting against.
+
+Two things make that easy to get wrong. 126,631 of 189,578 rows have a NULL indicator, so
+`groupby(..., dropna=True)` -- the default -- silently drops two thirds of the panel and returns ZERO
+multi-source cells, which reads as "the key needs no fixing" for the wrong reason. And `nunique()`
+excludes nulls too, so a check for "does this cell mix indicators" answers 0 when half its rows have
+none. Arm E in the gate tests the thing that WOULD invalidate a comparison -- both sides annotated and
+disagreeing -- rather than the presence of the column.
+
 NO --check MODE, DELIBERATELY. This reads layer B, which is not redistributable and is absent in CI,
 so a check comparing the committed table against a regeneration could only ever run on a developer
 machine -- and would report OK in CI by comparing nothing. That is the failure issue 573 describes.
@@ -42,7 +57,7 @@ OUT = os.path.join(HERE, "state/cross_source_agreement.csv")
 # this" when it means "never tested". Same shape as the one-sided thresholds recorded in the
 # retest registry: the excluded tail was the interesting one.
 BIG_RATIO = 10.0
-COLUMNS = ("polity_code", "item", "unit", "year", "sources", "labels",
+COLUMNS = ("polity_code", "item", "unit", "year", "sources", "labels", "indicators",
            "value_min", "value_max", "ratio", "known_defect")
 
 
@@ -84,11 +99,16 @@ def main() -> int:
     frame["yr"] = frame["year"].astype(str)
     key = ["whep_code", "item", "unit", "yr"]
     multi = frame[frame.groupby(key)["source"].transform("nunique") > 1]
-    agg = multi.groupby(key).agg(
+    # dropna=False on every groupby whose key can hold a null. `indicator` is not in this key, but
+    # `unit` and `item` can be blank, and the default would drop those rows without saying so.
+    agg = multi.groupby(key, dropna=False).agg(
         value_min=("value", "min"),
         value_max=("value", "max"),
         sources=("source", lambda s: ";".join(sorted(set(s)))),
         labels=("country", lambda s: ";".join(sorted({str(x).lower() for x in s}))),
+        # Nulls counted as their own value -- see the docstring on why nunique() would not do.
+        indicators=("indicator", lambda s: ";".join(sorted({
+            "" if pd.isna(x) else str(x) for x in s}))),
     ).reset_index()
     agg = agg[agg.value_min > 0].copy()
     agg["ratio"] = agg.value_max / agg.value_min
@@ -99,7 +119,7 @@ def main() -> int:
     rows = []
     for r in agg.itertuples():
         row = {"polity_code": r.whep_code, "item": r.item, "unit": r.unit, "year": r.yr,
-               "sources": r.sources, "labels": r.labels,
+               "sources": r.sources, "labels": r.labels, "indicators": r.indicators,
                "value_min": f"{r.value_min:.4g}", "value_max": f"{r.value_max:.4g}",
                "ratio": f"{r.ratio:.4f}", "known_defect": ""}
         # Coverage is computed for EVERY cell, not only the large ones, so an empty column always

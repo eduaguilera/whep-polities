@@ -35,6 +35,16 @@ BIG_RATIO = 10.0
 BASELINE_UNEXPLAINED = 0        # reachable today; a new one is a finding
 BASELINE_MIN_CELLS = 700        # 804 today. A floor, so the surface cannot quietly disappear.
 
+# Arm E. The key excludes `indicator` on purpose -- the column holds a measurement type for fao1952
+# and iia (`crops:production`) and a PAGE REFERENCE for mitchell (`page_12_table_1`), so keying on it
+# would split iia from mitchell on a field that does not mean the same thing in each and destroy the
+# comparison. `unit` already separates production from area.
+#
+# What would genuinely invalidate a cell is both sides being annotated and DISAGREEING, which is a
+# different test from "is the column in the key". Zero today: every mismatch is a null against a
+# mitchell page string.
+BASELINE_INDICATOR_CONFLICTS = 0
+
 
 def main() -> int:
     if not os.path.exists(TABLE):
@@ -47,7 +57,7 @@ def main() -> int:
         known_ids = {e["issue_id"] for e in csv.DictReader(fh)}
 
     problems = []
-    big, unexplained, dangling = [], [], []
+    big, unexplained, dangling, conflicts = [], [], [], []
     for r in rows:
         try:
             lo, hi, ratio = float(r["value_min"]), float(r["value_max"]), float(r["ratio"])
@@ -69,6 +79,11 @@ def main() -> int:
         for issue_id in filter(None, r["known_defect"].split(";")):
             if issue_id not in known_ids:
                 dangling.append(f"{r['polity_code']}/{r['item']}/{r['year']} -> {issue_id}")
+        # nulls are written as an empty segment, so a cell reads e.g. ";page_14_table_1"
+        annotated = {x for x in r.get("indicators", "").split(";") if x}
+        if len(annotated) > 1:
+            conflicts.append(f"{r['polity_code']}/{r['item']}/{r['year']}: "
+                             f"{sorted(annotated)} across {r['sources']}")
         if ratio >= BIG_RATIO:
             big.append(r)
             if not r["known_defect"]:
@@ -98,6 +113,14 @@ def main() -> int:
     elif len(unexplained) < BASELINE_UNEXPLAINED:
         problems.append(f"only {len(unexplained)} unexplained cell(s), below the ceiling of "
                         f"{BASELINE_UNEXPLAINED} -- lower it so the improvement is held")
+    print(f"  cells whose sources give DIFFERENT non-null indicators: {len(conflicts)} "
+          f"(ceiling {BASELINE_INDICATOR_CONFLICTS})")
+    if len(conflicts) > BASELINE_INDICATOR_CONFLICTS:
+        problems.append(
+            f"{len(conflicts)} cell(s) compare two sources that annotate DIFFERENT indicators, so "
+            f"the two numbers are not measuring the same thing and their ratio means nothing: "
+            + "; ".join(conflicts[:4]))
+
     if dangling:
         problems.append(
             f"{len(dangling)} cell(s) cite a data_errors entry that no longer exists, so the "
