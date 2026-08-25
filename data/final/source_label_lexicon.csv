@@ -1,235 +1,238 @@
-normalised_form,english_label,note
-afrique allemande du sud ouest,South West Africa,
-afrique du sud ouest allemande,South West Africa,
-afrique equatoriale francaise,French Equatorial Africa,
-afrique occidentale francaise,French West Africa,
-afrique occidentale francaise: guinee francaise,Guinea (1894-1958),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.058 across the whole stated range, span covers every stated year. NOT New Guinea: an area-ranked search paired this label with TNGU-1920-1949 at w=0.054 purely because `guinea` is a substring of `New Guinea`. GIN-1894-1958 is French Guinea and its span covers every stated year. The source's own variants include OCR damage (`Guinee trancaise`), which normalisation absorbs."
-afrique occidentale francaise: guinee trancaise,Guinea (1894-1958),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.058 across the whole stated range, span covers every stated year. NOT New Guinea: an area-ranked search paired this label with TNGU-1920-1949 at w=0.054 purely because `guinea` is a substring of `New Guinea`. GIN-1894-1958 is French Guinea and its span covers every stated year. The source's own variants include OCR damage (`Guinee trancaise`), which normalisation absorbs."
-afrique occidentale francaise: niger,Colonial Niger (1922-1947),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.105 across the whole stated range, span covers every stated year."
-afrique occidentale francaise: senegal,Senegal (1886-1960),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.026 across the whole stated range, span covers every stated year."
-afrique occidentale francaise: senegal et dakar,Senegal (1886-1960),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.026 across the whole stated range, span covers every stated year."
-afrique orientale allemande,Tanzania (1891-1920),"Retargeted 2026-08-24 (#195): AFRIQUE ORIENTALE ALLEMANDE is German East Africa, which is TAN-1891-1920 -- the era-specific row, whose span covers both stated years 1911 and 1913. Area 995,000 stated vs 991,218 polygon, ratio 0.996. I had previously reported this territory as having no polity at all; that was a token-search error (I checked `tanganyika`, not `tanzania`)."
-alaska,Territory of Alaska,"was 'Alaska', which is not a polity_name"
-albanie,Albania,
-algerie,Algeria,
-allemagne,Germany,"NOT retargeted to 'German Empire'. That resolves the 1911-1913 statements but breaks the 1921-1937 ones, which is a swap and not a gain: it trades DEU-1920-1938 (6 statements) for DEU-1871-1919 (3). A flat label->name entry cannot serve both, since the correct polity depends on the data year. See issue 195."
-andaman et nicobar,Andaman and Nicobar Islands,
-andorre,Andorra,
-argentine,Argentina,
-australie,Australia,
-australie: papouasie,Territory of Papua,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against TPAP-1906-1949 -- worst deviation 0.044 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-autriche,Austria,
-bahrein,Bahrain,"Added 2026-08-24 (#195): top-level label with no lexicon entry. stated 552 km2 against a 629 polygon. Bahrain was about 550 km2 before the reclamation that took the modern state past 750, so the gap is a vintage question rather than an error. Territory read from the French name, area used only as the check (worst deviation 0.140, span covers every stated year)."
-bahrein islands,Bahrain,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.048, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
-basoutoland,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
-basqutoland,Lesotho (1886-1966),"OCR: q inserted Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
-basutoland,Lesotho (1886-1966),"Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
-bechouanaland,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
-bechuanaland,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
-belgique,Belgium,
-birmanie,Burma,
-bolivie,Bolivia,
-borneo britannique: borneo septentrional,British North Borneo,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.099 across the whole stated range, span covers every stated year. North Borneo likewise has its own polity."
-borneo britannique: sarawak,Sarawak (Brooke Raj / Crown Colony),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.142 across the whole stated range, span covers every stated year. Sarawak has its OWN polity, which is why this is a routing gap rather than an undivided-parent question -- I had said otherwise on #195 before checking."
-bosnie et herzegovine,Bosnia and Herzegovina,
-boutan,Bhutan,
-bresil,Brazil,
-bulgarie,Bulgaria,
-cameroun,Cameroon,
-cap vert,Cape Verde,
-ceylan,Sri Lanka,"was 'Ceylon', which is not a polity_name"
-ceylon,Sri Lanka,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.005, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
-chili,Chile,
-china taiwan inc pescadores,Taiwan,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.001, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
-chine,China,
-chypre,Cyprus,
-colombie,Colombia,
-congo belge,Belgian Congo,
-coree,Korea,
-coree jap,Korea,
-cote de l or,Ghana (1898-1957),"was 'Gold Coast', which is not a polity_name"
-cote de l or: togoland,British Togoland (1920-1957),"Added 2026-08-24 (#195): sub-label with no lexicon entry. COTE DE L'OR: TOGOLAND is the Togoland mandate administered WITH the Gold Coast, i.e. British Togoland -- not GCT-1919-1956, which is the combined Gold-Coast-plus-Togoland reporting unit. Stated 33,770-33,776 against a 26,545 polygon: British Togoland was about 33,800 km2, so the SOURCE looks right and the 21% gap is a question about our geometry. Inside tolerance, and surfacing it is the point. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.224, span covers every stated year."
-cote de lor,Ghana (1898-1957),"OCR: lost space. Retargeted 2026-08-24 (#553): was `Gold Coast`, which resolves under fao1952 but NOT under iia, the source that states this label -- so it was inert here while looking live. Same correction its spaced sibling `cote de l or` already carries. Area corroborates: stated 203,700 for 1933 against a 212,451 polygon, ratio 1.043."
-cote des somalis,French Somaliland,
-curacao et dependences,Dutch Caribbean (colonial),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against ANT-1816-1961 -- worst deviation 0.172 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-danemark,Denmark,
-danemark: iles feroe,Faroe Islands,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against FRO-1800-2025 -- worst deviation 0.029 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-danemark: islande,Iceland,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against ISL-1800-2025 (worst ratio deviation 0.020 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
-egypte,Egypt,
-equateur,Ecuador,
-erythree,Eritrea,
-espagne,Spain,
-esthonie,Estonia,
-estonie,Estonia,
-etabl francais de l oceanie,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
-etablissements du detroit,Straits Settlements,
-etablissements franc de l inde,French India (Établissements français dans l'Inde),"Added 2026-08-24 (#195): top-level label with no lexicon entry. ETABLISSEMENTS FRANCAIS DE L'INDE is French India -- Pondicherry, Karikal, Yanaon, Mahe and Chandernagor -- stated 513 km2 against a 547 polygon. Territory read from the French name, area used only as the check (worst deviation 0.066, span covers every stated year)."
-etablissements francais de l oceanie,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
-etat libre d irlande,Ireland,
-etat libre dirlande,Ireland,OCR: lost space
-etat serbe croate slovene,Yugoslavia,"the Kingdom of Serbs, Croats and Slovenes"
-etats malais federes,Federated Malay States,
-etats malais non federes,Unfederated Malay States,
-etats malais proteges,Unfederated Malay States,
-etats unis,United States,
-ethiopie,Ethiopia,
-falkland et dependences,Falkland Islands,
-finlande,Finland,NOT retargeted to 'Grand Duchy of Finland': same year-dependence as `allemagne`. That target is historically right for 1911-1913 but trades FIN-1917-1940 (6 statements) for FIN-1809-1917 (3).
-formose,Formosa,"was 'Taiwan', which resolves to the 1945+ row; these statements are 1911-1929"
-formose et pescadores,Formosa (Japanese Taiwan),"Retargeted 2026-08-24 (#195): source label FORMOSE ET PESCADORES is Formosa plus the Pescadores, which is TWN-1895-1945. Corroborated by area: stated 35,843-35,974 vs our polygon 35,994, ratio 1.001."
-formose et pescadores japonaise,Formosa (Japanese Taiwan),"Retargeted 2026-08-24 (#195): source label FORMOSE ET PESCADORES is Formosa plus the Pescadores, which is TWN-1895-1945. Corroborated by area: stated 35,843-35,974 vs our polygon 35,994, ratio 1.001."
-fthiopie,Ethiopia,OCR: f for E-acute
-gambie,Gambia,
-gold coast and togoland,Gold Coast and Br Togoland,
-grande bretagne,United Kingdom,
-grece,Greece,
-groenland,Greenland,
-guadeloupe et dependences,Guadeloupe,
-guam,Territory of Guam,
-guinee espagnole,Equatorial Guinea (1886-1968),"was 'Spanish Guinea', not a polity_name"
-guinee portugaise,Guinea-Bissau (1886-1974),"was 'Portuguese Guinea', not a polity_name"
-guyane britannique,Guyana,"was 'British Guiana', not a polity_name"
-guyane francaise,French Guiana,
-guyane francaise et inini,French Guiana,
-guyane neerlandaise,Dutch Guiana,"was 'Surinam', which names only the 1954-1975 row"
-hawai,Hawaii,
-hawai usa,Hawaii,
-honduras britannique,British Honduras,
-hongrie,Hungary,NOT retargeted to 'Kingdom of Hungary (Transleithania)': same year-dependence as `allemagne`. Right for 1911-1913 but trades HUN-1920-1938 (6 statements) for HUN-1800-1918 (3).
-iles de l egee,Dodecanese,
-iles du pacifique: fidji ou viti,Fiji,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against FJI-1800-2025 (worst ratio deviation 0.032 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
-iles du pacifique: nauru,Nauru,"Added 2026-08-24 (#195): sub-label with no lexicon entry. stated 22-26 km2 against a 21 km2 polygon. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.153, span covers every stated year."
-iles du pacifique: nauru terr sous,Nauru,"Added 2026-08-24 (#195): sub-label with no lexicon entry. stated 22-26 km2 against a 21 km2 polygon. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.153, span covers every stated year."
-iles italiennes de l egee,Dodecanese,
-iles italiennes de legee,Dodecanese,OCR: lost space
-iles nouvelles hebrides,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
-iles vierges,United States Virgin Islands,"statements begin 1921, after the 1917 purchase from Denmark"
-inde,India,
-inde britannique,India,
-inde portugaise,Portuguese India,
-indes britanniques,India,
-indes neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
-indes occidentales britanniques: bahama,Bahamas,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against BHS-1800-2025 -- worst deviation 0.166 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: bahamas,Bahamas,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against BHS-1800-2025 -- worst deviation 0.166 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: barbade,Barbados,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against BRB-1800-2025 (worst ratio deviation 0.011 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
-indes occidentales britanniques: iles du vent: barbade,Barbados,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against BRB-1800-2025 (worst ratio deviation 0.011 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
-indes occidentales britanniques: iles du vent: grenade,Grenada,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against GRD-1800-2025 (worst ratio deviation 0.045 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
-indes occidentales britanniques: iles du vent: saint vincent,Saint Vincent and the Grenadines,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against VCT-1833-2025 -- worst deviation 0.085 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: iles du vent: sainte lucie,Saint Lucia,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against LCA-1838-2025 -- worst deviation 0.018 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: iles sous le vent: antigua et,Antigua and Barbuda,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against ATG-1800-2025 -- worst deviation 0.018 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: iles sous le vent: antigua et dependences,Antigua and Barbuda,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against ATG-1800-2025 -- worst deviation 0.018 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: iles sous le vent: dominique,Dominica,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against DMA-1800-2025 -- worst deviation 0.055 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: iles sous le vent: iles vierges,British Virgin Islands,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against VGB-1800-2025 -- worst deviation 0.120 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: iles sous le vent: montserrat et,Montserrat,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against MSR-1800-2025 -- worst deviation 0.203 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: iles sous le vent: montserrat et dependences,Montserrat,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against MSR-1800-2025 -- worst deviation 0.203 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes occidentales britanniques: jamaique,Jamaica,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against JAM-1800-2025 -- worst deviation 0.046 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
-indes orientales neerlandaises,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
-indochine,Indochina,
-indochine: cambodge,Cambodia (1907-1953),"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against KHM-1907-1953 (worst ratio deviation 0.035 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
-indochine: laos,Laos (1893-1954),"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against LAO-1893-1954 (worst ratio deviation 0.007 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
-irak,Iraq,
-irlande,Ireland,
-irlande etat,Ireland,
-islande,Iceland,
-italie,Italy,
-japon,Japanese Empire,"JPN-1895-1945 is the only target that resolves; `japan` itself is routed by alias, not by name. Watch the ratio: iia's japan is metropolitan Japan by a recorded convention, while this polygon is the Empire"
-kenia,Kenya,
-kenia ex afrique orient,Kenya,
-kenya and prot,Kenya,
-kouang toung,Kwantung,
-kouang toung japonaise,Kwantung,
-lettonie,Latvia,
-libye,Libya,
-lithuanie,Lithuania,
-lybie,Libya,OCR: y/i swap
-macao,"China, Macao SAR",
-madagascar comoro islands,Comoros (1946-1975),"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.224, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
-madagascar et dependaces,Madagascar,OCR: dropped n
-madagascar et dependances,Madagascar,
-madagascar et dependences,Madagascar,
-maldive islands,Maldives,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.001, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
-malte,Malta,
-mandchoukouo,Manchukuo,
-maroc espagnol,Spanish Morocco,
-maroc francais,French Morocco,
-maurice,Mauritius,
-maurice et dependances,Mauritius,"Added 2026-08-24 (#195): top-level label with no lexicon entry. MAURICE ET DEPENDANCES is Mauritius with Rodrigues and the outer islands, stated 2,090-2,095 against a 2,106 polygon. Territory read from the French name, area used only as the check (worst deviation 0.008, span covers every stated year)."
-memel,Memel,
-mexique,Mexico,
-mongolian people s republic,Mongolia,
-muscat and oman,Sultanate of Oman,"Retargeted 2026-08-24 (#553): was `Oman`, which is INERT -- no polity carries that name; the periods are `Omani Empire` (OMN-1800-1856) and `Sultanate of Oman` (OMN-1856-2025). OMN-1856-2025 covers the stated year 1948. Distinct normalised form from `trucial oman`, which is the Trucial States at 5,000 km2 and is NOT this polity."
-nigerie,Nigeria,
-nocvelle zelande,New Zealand,OCR: c for u
-norvege,Norway,
-nouv caledonie et dependences,New Caledonia,
-nouvelle caledonie et,New Caledonia,
-nouvelle caledonie et dependences,New Caledonia,
-nouvelle guinee,New Guinea,
-nouvelle zelande,New Zealand,
-nouvelles hebrides,Vanuatu,"was 'New Hebrides', not a polity_name"
-nouvelles hebrides iles,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
-nouvelles hebrides iles frenchbritish,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
-nvassaland,Nyasaland,OCR: v for y
-nyassaland,Nyasaland,
-oman,Sultanate of Oman,"Added 2026-08-24 (#553): iia `OMAN` had no rule scoped to iia -- the only aliases were under faostat and lassaletta-grassland-share, and matchlib DISCARDS a source-mismatched rule rather than falling back. OMN-1856-2025 covers both stated years (1911, 1921). The area deliberately does not corroborate; see the BASELINE entry for the 82,000-square-mile figure."
-ouganda,Uganda,
-palestine,Palestine (1920-1948),"Added 2026-08-24 (#195): top-level label with no lexicon entry. the Mandate, stated 23,000-27,000 across editions against a 27,009 polygon. Territory read from the French name, area used only as the check (worst deviation 0.174, span covers every stated year)."
-panama zone du,Panama Canal Zone (US-administered),PANAMA (zone du canal)
-pays bas,Netherlands,
-perou,Peru,
-perse,Iran,
-pologne,Poland,
-porto rico,Puerto Rico,
-protectorat de l afrique sudoccidentale,South West Africa,
-republique dominicaine,Dominican Republic,
-rhodesie meridionale,Southern Rhodesia,
-rhodesie septentrionale,Northern Rhodesia,
-rio de oro,Rio de Oro,
-roumanie,Romania,
-royaume uni,United Kingdom,
-ruanda urundi belge,Ruanda-Urundi,
-saint marin,San Marino,
-saint pierre et miquelon,Saint Pierre and Miquelon,
-saint thomas et prince,Sao Tome and Principe,
-sainte helene,Saint Helena,
-sakhaline japonaise,Karafuto,
-samoa americaine,Territory of American Samoa,American Samoa; the plain `Samoa` polity is Western Samoa
-samoa occidentale,Samoa,"Retargeted 2026-08-24 (#195): WSM-1900-2025. Area 2,572-2,934 vs polygon 2,835, ratio 0.966, and the alternative is refuted -- ASM-1900-2025 (American Samoa) is 204 km2, ratio 0.069."
-san salvador,El Salvador,
-siam,Thailand,
-sierra leone,Sierra Leone,
-sierra leone colonie et protectorade,Sierra Leone,
-sokotra,Socotra,
-somalie,Somalia,
-somalie britannique,British Somaliland Protectorate (1884-1960),
-somalie italienne,Italian Somaliland,
-soudan anglo egyptien,Anglo-Egyptian Sudan,
-spitzberg,Svalbard,
-suede,Sweden,
-suisse,Switzerland,
-swazieland,Eswatini,"OCR: e inserted Retargeted 2026-08-24 (#195): SWZ-1894-2025 is the same territory under its modern name, which is why bare-name matching missed it. Corroborated by area: stated 17,366 vs polygon 17,103, 0.985."
-swaziland,Eswatini,"Retargeted 2026-08-24 (#195): SWZ-1894-2025 is the same territory under its modern name, which is why bare-name matching missed it. Corroborated by area: stated 17,366 vs polygon 17,103, 0.985."
-syrie et liban,Syria and Lebanon,
-tanganvika,Tanganyika,OCR: v for y
-tanganvika terr sous,Tanganyika,OCR: v for y; 'terr sous mandat' truncated
-tchecoslovaquie,Czechoslovakia,
-terre neuve,Dominion of Newfoundland,"was 'Newfoundland', not a polity_name"
-terre neuve labrador,Newfoundland,
-tibet,Tibet,
-timor,Timor-Leste,"Retargeted 2026-08-24 (#195): source label `Portuguese Timor` is East Timor, TLS-1800-2025. Stated 18,990 vs polygon 14,978, ratio 0.789 -- the classic Portuguese Timor figure against a modern coastline, inside tolerance and worth comparing."
-timor et kambing,Timor-Leste,Portuguese Timor and Kambing
-togo,Togo,
-transjordanie,Jordan (1923-1946),"Retargeted 2026-08-24 (#195): JOR-1923-1946 covers all stated years 1925-1937. Area 89,975 vs 89,270, ratio 0.992."
-trinite et tabago,Trinidad and Tobago,OCR: a for o
-trinite et tobago,Trinidad and Tobago,
-tunisie,Tunisia,
-u of s africa,South Africa,
-union de l afrique du sud,South Africa,
-union del afrique du sud,South Africa,OCR: lost space
-union delafrique du sud,South Africa,OCR: lost spaces
-union sud africaine,South Africa,
-vougoslavie,Yugoslavia,OCR: v for Y
-western samoa,Samoa,"Added 2026-08-24: the FAO 1952 form of a label already reachable from IIA's `SAMOA OCCIDENTALE`. Area 2,930 stated vs a 2,835 polygon, 0.032; exactly one raw label maps to this normalised form, so it is not a colliding key (arm F)."
-yougoslavie,Yugoslavia,
-zanzibar,Zanzibar Protectorate,"was 'Zanzibar', not a polity_name"
-zanzibar et pemba,Zanzibar Protectorate,"Retargeted 2026-08-24 (#195): source label ZANZIBAR ET PEMBA is Zanzibar plus Pemba, i.e. the Protectorate, ZNZ-1890-1963. Corroborated by area: stated 2,642 vs polygon 2,587, ratio 0.979."
+normalised_form,year_start,year_end,english_label,note
+afrique allemande du sud ouest,,,South West Africa,
+afrique du sud ouest allemande,,,South West Africa,
+afrique equatoriale francaise,,,French Equatorial Africa,
+afrique occidentale francaise,,,French West Africa,
+afrique occidentale francaise: guinee francaise,,,Guinea (1894-1958),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.058 across the whole stated range, span covers every stated year. NOT New Guinea: an area-ranked search paired this label with TNGU-1920-1949 at w=0.054 purely because `guinea` is a substring of `New Guinea`. GIN-1894-1958 is French Guinea and its span covers every stated year. The source's own variants include OCR damage (`Guinee trancaise`), which normalisation absorbs."
+afrique occidentale francaise: guinee trancaise,,,Guinea (1894-1958),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.058 across the whole stated range, span covers every stated year. NOT New Guinea: an area-ranked search paired this label with TNGU-1920-1949 at w=0.054 purely because `guinea` is a substring of `New Guinea`. GIN-1894-1958 is French Guinea and its span covers every stated year. The source's own variants include OCR damage (`Guinee trancaise`), which normalisation absorbs."
+afrique occidentale francaise: niger,,,Colonial Niger (1922-1947),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.105 across the whole stated range, span covers every stated year."
+afrique occidentale francaise: senegal,,,Senegal (1886-1960),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.026 across the whole stated range, span covers every stated year."
+afrique occidentale francaise: senegal et dakar,,,Senegal (1886-1960),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.026 across the whole stated range, span covers every stated year."
+afrique orientale allemande,,,Tanzania (1891-1920),"Retargeted 2026-08-24 (#195): AFRIQUE ORIENTALE ALLEMANDE is German East Africa, which is TAN-1891-1920 -- the era-specific row, whose span covers both stated years 1911 and 1913. Area 995,000 stated vs 991,218 polygon, ratio 0.996. I had previously reported this territory as having no polity at all; that was a token-search error (I checked `tanganyika`, not `tanzania`)."
+alaska,,,Territory of Alaska,"was 'Alaska', which is not a polity_name"
+albanie,,,Albania,
+algerie,,,Algeria,
+allemagne,,,Germany,"NOT retargeted to 'German Empire'. That resolves the 1911-1913 statements but breaks the 1921-1937 ones, which is a swap and not a gain: it trades DEU-1920-1938 (6 statements) for DEU-1871-1919 (3). A flat label->name entry cannot serve both, since the correct polity depends on the data year. See issue 195."
+andaman et nicobar,,,Andaman and Nicobar Islands,
+andorre,,,Andorra,
+argentine,,,Argentina,
+australie,,,Australia,
+australie: papouasie,,,Territory of Papua,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against TPAP-1906-1949 -- worst deviation 0.044 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+autriche,,,Austria,
+bahrein,,,Bahrain,"Added 2026-08-24 (#195): top-level label with no lexicon entry. stated 552 km2 against a 629 polygon. Bahrain was about 550 km2 before the reclamation that took the modern state past 750, so the gap is a vintage question rather than an error. Territory read from the French name, area used only as the check (worst deviation 0.140, span covers every stated year)."
+bahrein islands,,,Bahrain,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.048, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
+basoutoland,,,Lesotho (1886-1966),"was 'Basutoland', which names only the 1868-1886 row"
+basqutoland,,,Lesotho (1886-1966),"OCR: q inserted Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
+basutoland,,,Lesotho (1886-1966),"Retargeted 2026-08-24 (#195): LSO-1886-1966, the colonial-era row, NOT LSO-1868-1886 whose span ends before every stated year (1911-1951). Area 30,350 vs 30,503, ratio 1.005."
+bechouanaland,,,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
+bechuanaland,,,Bechuanaland Protectorate (1885-1966),"Retargeted 2026-08-24 (#195): BEC-1885-1966, whose span covers every stated year 1911-1951. The areas differ by 19% (stated 712,000 vs polygon 578,425) and that gap is the POINT -- it is a real basis question the comparison should surface, not a reason to leave the statements unrouted."
+belgique,,,Belgium,
+birmanie,,,Burma,
+bolivie,,,Bolivia,
+borneo britannique: borneo septentrional,,,British North Borneo,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.099 across the whole stated range, span covers every stated year. North Borneo likewise has its own polity."
+borneo britannique: sarawak,,,Sarawak (Brooke Raj / Crown Colony),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry. Territory read from the French name, area used only as the check -- worst deviation 0.142 across the whole stated range, span covers every stated year. Sarawak has its OWN polity, which is why this is a routing gap rather than an undivided-parent question -- I had said otherwise on #195 before checking."
+bosnie et herzegovine,,,Bosnia and Herzegovina,
+boutan,,,Bhutan,
+bresil,,,Brazil,
+bulgarie,,,Bulgaria,
+cameroun,,,Cameroon,
+cap vert,,,Cape Verde,
+ceylan,,,Sri Lanka,"was 'Ceylon', which is not a polity_name"
+ceylon,,,Sri Lanka,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.005, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
+chili,,,Chile,
+china taiwan inc pescadores,,,Taiwan,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.001, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
+chine,,,China,
+chypre,,,Cyprus,
+colombie,,,Colombia,
+congo belge,,,Belgian Congo,
+coree,,,Korea,
+coree jap,,,Korea,
+cote de l or,,,Ghana (1898-1957),"was 'Gold Coast', which is not a polity_name"
+cote de l or: togoland,,,British Togoland (1920-1957),"Added 2026-08-24 (#195): sub-label with no lexicon entry. COTE DE L'OR: TOGOLAND is the Togoland mandate administered WITH the Gold Coast, i.e. British Togoland -- not GCT-1919-1956, which is the combined Gold-Coast-plus-Togoland reporting unit. Stated 33,770-33,776 against a 26,545 polygon: British Togoland was about 33,800 km2, so the SOURCE looks right and the 21% gap is a question about our geometry. Inside tolerance, and surfacing it is the point. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.224, span covers every stated year."
+cote de lor,,,Ghana (1898-1957),"OCR: lost space. Retargeted 2026-08-24 (#553): was `Gold Coast`, which resolves under fao1952 but NOT under iia, the source that states this label -- so it was inert here while looking live. Same correction its spaced sibling `cote de l or` already carries. Area corroborates: stated 203,700 for 1933 against a 212,451 polygon, ratio 1.043."
+cote des somalis,,,French Somaliland,
+curacao et dependences,,,Dutch Caribbean (colonial),"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against ANT-1816-1961 -- worst deviation 0.172 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+danemark,,,Denmark,
+danemark: iles feroe,,,Faroe Islands,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against FRO-1800-2025 -- worst deviation 0.029 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+danemark: islande,,,Iceland,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against ISL-1800-2025 (worst ratio deviation 0.020 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+egypte,,,Egypt,
+equateur,,,Ecuador,
+erythree,,,Eritrea,
+espagne,,,Spain,
+esthonie,,,Estonia,
+estonie,,,Estonia,
+etabl francais de l oceanie,,,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
+etablissements du detroit,,,Straits Settlements,
+etablissements franc de l inde,,,French India (Établissements français dans l'Inde),"Added 2026-08-24 (#195): top-level label with no lexicon entry. ETABLISSEMENTS FRANCAIS DE L'INDE is French India -- Pondicherry, Karikal, Yanaon, Mahe and Chandernagor -- stated 513 km2 against a 547 polygon. Territory read from the French name, area used only as the check (worst deviation 0.066, span covers every stated year)."
+etablissements francais de l oceanie,,,French Polynesia,"Retargeted 2026-08-24 (#195): ETABLISSEMENTS FRANÇAIS DE L'OCÉANIE is the French Establishments in Oceania, today PYF-1800-2025. Area 4,210 vs 4,003, ratio 0.951."
+etat libre d irlande,,,Ireland,
+etat libre dirlande,,,Ireland,OCR: lost space
+etat serbe croate slovene,,,Yugoslavia,"the Kingdom of Serbs, Croats and Slovenes"
+etats malais federes,,,Federated Malay States,
+etats malais non federes,,,Unfederated Malay States,
+etats malais proteges,,,Unfederated Malay States,
+etats unis,,,United States,
+ethiopie,,,Ethiopia,
+falkland et dependences,,,Falkland Islands,
+finlande,,,Finland,NOT retargeted to 'Grand Duchy of Finland': same year-dependence as `allemagne`. That target is historically right for 1911-1913 but trades FIN-1917-1940 (6 statements) for FIN-1809-1917 (3).
+finlande,1800,1917,Grand Duchy of Finland,"Added 2026-08-25 (#581). The blanket `finlande` entry targets `Finland`, which resolves only to FIN-1917-1940 and later; the 1911 and 1913 statements predate it. This row covers them without touching the six the blanket entry already resolves -- the trade the blanket-only lexicon forced, and the reason a previous retarget was declined. Area corroborates: stated 377,426 against a 388,750 polygon, ratio 1.030."
+formose,,,Formosa,"was 'Taiwan', which resolves to the 1945+ row; these statements are 1911-1929"
+formose et pescadores,,,Formosa (Japanese Taiwan),"Retargeted 2026-08-24 (#195): source label FORMOSE ET PESCADORES is Formosa plus the Pescadores, which is TWN-1895-1945. Corroborated by area: stated 35,843-35,974 vs our polygon 35,994, ratio 1.001."
+formose et pescadores japonaise,,,Formosa (Japanese Taiwan),"Retargeted 2026-08-24 (#195): source label FORMOSE ET PESCADORES is Formosa plus the Pescadores, which is TWN-1895-1945. Corroborated by area: stated 35,843-35,974 vs our polygon 35,994, ratio 1.001."
+fthiopie,,,Ethiopia,OCR: f for E-acute
+gambie,,,Gambia,
+gold coast and togoland,,,Gold Coast and Br Togoland,
+grande bretagne,,,United Kingdom,
+grece,,,Greece,
+groenland,,,Greenland,
+guadeloupe et dependences,,,Guadeloupe,
+guam,,,Territory of Guam,
+guinee espagnole,,,Equatorial Guinea (1886-1968),"was 'Spanish Guinea', not a polity_name"
+guinee portugaise,,,Guinea-Bissau (1886-1974),"was 'Portuguese Guinea', not a polity_name"
+guyane britannique,,,Guyana,"was 'British Guiana', not a polity_name"
+guyane francaise,,,French Guiana,
+guyane francaise et inini,,,French Guiana,
+guyane neerlandaise,,,Dutch Guiana,"was 'Surinam', which names only the 1954-1975 row"
+hawai,,,Hawaii,
+hawai usa,,,Hawaii,
+honduras britannique,,,British Honduras,
+hongrie,,,Hungary,NOT retargeted to 'Kingdom of Hungary (Transleithania)': same year-dependence as `allemagne`. Right for 1911-1913 but trades HUN-1920-1938 (6 statements) for HUN-1800-1918 (3).
+iles de l egee,,,Dodecanese,
+iles du pacifique: fidji ou viti,,,Fiji,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against FJI-1800-2025 (worst ratio deviation 0.032 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+iles du pacifique: nauru,,,Nauru,"Added 2026-08-24 (#195): sub-label with no lexicon entry. stated 22-26 km2 against a 21 km2 polygon. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.153, span covers every stated year."
+iles du pacifique: nauru terr sous,,,Nauru,"Added 2026-08-24 (#195): sub-label with no lexicon entry. stated 22-26 km2 against a 21 km2 polygon. Territory read from the name (whole-word match on the child segment, which is what keeps `guinee` off New Guinea), area used only as the check -- worst deviation 0.153, span covers every stated year."
+iles italiennes de l egee,,,Dodecanese,
+iles italiennes de legee,,,Dodecanese,OCR: lost space
+iles nouvelles hebrides,,,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
+iles vierges,,,United States Virgin Islands,"statements begin 1921, after the 1917 purchase from Denmark"
+inde,,,India,
+inde britannique,,,India,
+inde portugaise,,,Portuguese India,
+indes britanniques,,,India,
+indes neerlandaises,,,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
+indes occidentales britanniques: bahama,,,Bahamas,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against BHS-1800-2025 -- worst deviation 0.166 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: bahamas,,,Bahamas,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against BHS-1800-2025 -- worst deviation 0.166 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: barbade,,,Barbados,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against BRB-1800-2025 (worst ratio deviation 0.011 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+indes occidentales britanniques: iles du vent: barbade,,,Barbados,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against BRB-1800-2025 (worst ratio deviation 0.011 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+indes occidentales britanniques: iles du vent: grenade,,,Grenada,"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against GRD-1800-2025 (worst ratio deviation 0.045 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+indes occidentales britanniques: iles du vent: saint vincent,,,Saint Vincent and the Grenadines,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against VCT-1833-2025 -- worst deviation 0.085 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: iles du vent: sainte lucie,,,Saint Lucia,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against LCA-1838-2025 -- worst deviation 0.018 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: iles sous le vent: antigua et,,,Antigua and Barbuda,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against ATG-1800-2025 -- worst deviation 0.018 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: iles sous le vent: antigua et dependences,,,Antigua and Barbuda,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against ATG-1800-2025 -- worst deviation 0.018 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: iles sous le vent: dominique,,,Dominica,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against DMA-1800-2025 -- worst deviation 0.055 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: iles sous le vent: iles vierges,,,British Virgin Islands,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against VGB-1800-2025 -- worst deviation 0.120 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: iles sous le vent: montserrat et,,,Montserrat,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against MSR-1800-2025 -- worst deviation 0.203 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: iles sous le vent: montserrat et dependences,,,Montserrat,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against MSR-1800-2025 -- worst deviation 0.203 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes occidentales britanniques: jamaique,,,Jamaica,"Added 2026-08-24 (#195): colonial sub-label with no lexicon entry, so its stated area reached no polity. Territory read from the French name, then corroborated by area against JAM-1800-2025 -- worst deviation 0.046 across the whole stated range, span covers every stated year. Area was not used to FIND the destination."
+indes orientales neerlandaises,,,Dutch East Indies,"was 'Netherlands Indies', not a polity_name"
+indochine,,,Indochina,
+indochine: cambodge,,,Cambodia (1907-1953),"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against KHM-1907-1953 (worst ratio deviation 0.035 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+indochine: laos,,,Laos (1893-1954),"Added 2026-08-24 (#195): a colonial SUB-label with no lexicon entry, so its stated area reached no polity. Identified from the French name and then corroborated by area against LAO-1893-1954 (worst ratio deviation 0.007 across the whole stated range, span covers every stated year). Area was NOT used to find the destination -- searching by area pairs PESCADORES with Saint Helena and BAHREIN with Guam."
+irak,,,Iraq,
+irlande,,,Ireland,
+irlande etat,,,Ireland,
+islande,,,Iceland,
+italie,,,Italy,
+japon,,,Japanese Empire,"JPN-1895-1945 is the only target that resolves; `japan` itself is routed by alias, not by name. Watch the ratio: iia's japan is metropolitan Japan by a recorded convention, while this polygon is the Empire"
+kenia,,,Kenya,
+kenia ex afrique orient,,,Kenya,
+kenya and prot,,,Kenya,
+kouang toung,,,Kwantung,
+kouang toung japonaise,,,Kwantung,
+lettonie,,,Latvia,
+libye,,,Libya,
+lithuanie,,,Lithuania,
+lybie,,,Libya,OCR: y/i swap
+macao,,,"China, Macao SAR",
+madagascar comoro islands,,,Comoros (1946-1975),"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.224, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
+madagascar et dependaces,,,Madagascar,OCR: dropped n
+madagascar et dependances,,,Madagascar,
+madagascar et dependences,,,Madagascar,
+maldive islands,,,Maldives,"Added 2026-08-24 (#553 residue): FAO 1952 label with no lexicon entry. Territory read from the name, area used only as the check -- worst deviation 0.001, span covers every stated year. Verified NOT to sit on a colliding normalised key: exactly one raw label maps to this form."
+malte,,,Malta,
+mandchoukouo,,,Manchukuo,
+maroc espagnol,,,Spanish Morocco,
+maroc francais,,,French Morocco,
+maurice,,,Mauritius,
+maurice et dependances,,,Mauritius,"Added 2026-08-24 (#195): top-level label with no lexicon entry. MAURICE ET DEPENDANCES is Mauritius with Rodrigues and the outer islands, stated 2,090-2,095 against a 2,106 polygon. Territory read from the French name, area used only as the check (worst deviation 0.008, span covers every stated year)."
+memel,,,Memel,
+mexique,,,Mexico,
+mongolian people s republic,,,Mongolia,
+muscat and oman,,,Sultanate of Oman,"Retargeted 2026-08-24 (#553): was `Oman`, which is INERT -- no polity carries that name; the periods are `Omani Empire` (OMN-1800-1856) and `Sultanate of Oman` (OMN-1856-2025). OMN-1856-2025 covers the stated year 1948. Distinct normalised form from `trucial oman`, which is the Trucial States at 5,000 km2 and is NOT this polity."
+nigeria,1800,1914,Colonial Nigeria,"Added 2026-08-25 (#581). `nigeria` is what `NIGÉRIA` normalises to once accents are stripped; its 1913 statement is 871,470 against 862,491, ratio 0.990."
+nigerie,,,Nigeria,
+nigerie,1800,1914,Colonial Nigeria,"Added 2026-08-25 (#581). `Nigeria` resolves to NGA-1914-1960 onward, so the 1911 statement fell outside it. Stated 869,447 against NGA-1886-1914's 862,491, ratio 0.992."
+nocvelle zelande,,,New Zealand,OCR: c for u
+norvege,,,Norway,
+nouv caledonie et dependences,,,New Caledonia,
+nouvelle caledonie et,,,New Caledonia,
+nouvelle caledonie et dependences,,,New Caledonia,
+nouvelle guinee,,,New Guinea,
+nouvelle zelande,,,New Zealand,
+nouvelles hebrides,,,Vanuatu,"was 'New Hebrides', not a polity_name"
+nouvelles hebrides iles,,,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
+nouvelles hebrides iles frenchbritish,,,Vanuatu,"Retargeted 2026-08-24 (#195): the Anglo-French condominium is today VUT-1800-2025. Area 14,800 vs 12,182, ratio 0.823 -- inside tolerance, and the gap is a basis question worth surfacing."
+nvassaland,,,Nyasaland,OCR: v for y
+nyassaland,,,Nyasaland,
+oman,,,Sultanate of Oman,"Added 2026-08-24 (#553): iia `OMAN` had no rule scoped to iia -- the only aliases were under faostat and lassaletta-grassland-share, and matchlib DISCARDS a source-mismatched rule rather than falling back. OMN-1856-2025 covers both stated years (1911, 1921). The area deliberately does not corroborate; see the BASELINE entry for the 82,000-square-mile figure."
+ouganda,,,Uganda,
+palestine,,,Palestine (1920-1948),"Added 2026-08-24 (#195): top-level label with no lexicon entry. the Mandate, stated 23,000-27,000 across editions against a 27,009 polygon. Territory read from the French name, area used only as the check (worst deviation 0.174, span covers every stated year)."
+panama zone du,,,Panama Canal Zone (US-administered),PANAMA (zone du canal)
+pays bas,,,Netherlands,
+perou,,,Peru,
+perse,,,Iran,
+pologne,,,Poland,
+porto rico,,,Puerto Rico,
+protectorat de l afrique sudoccidentale,,,South West Africa,
+republique dominicaine,,,Dominican Republic,
+rhodesie meridionale,,,Southern Rhodesia,
+rhodesie septentrionale,,,Northern Rhodesia,
+rio de oro,,,Rio de Oro,
+roumanie,,,Romania,
+royaume uni,,,United Kingdom,
+ruanda urundi belge,,,Ruanda-Urundi,
+saint marin,,,San Marino,
+saint pierre et miquelon,,,Saint Pierre and Miquelon,
+saint thomas et prince,,,Sao Tome and Principe,
+sainte helene,,,Saint Helena,
+sakhaline japonaise,,,Karafuto,
+samoa americaine,,,Territory of American Samoa,American Samoa; the plain `Samoa` polity is Western Samoa
+samoa occidentale,,,Samoa,"Retargeted 2026-08-24 (#195): WSM-1900-2025. Area 2,572-2,934 vs polygon 2,835, ratio 0.966, and the alternative is refuted -- ASM-1900-2025 (American Samoa) is 204 km2, ratio 0.069."
+san salvador,,,El Salvador,
+siam,,,Thailand,
+sierra leone,,,Sierra Leone,
+sierra leone colonie et protectorade,,,Sierra Leone,
+sokotra,,,Socotra,
+somalie,,,Somalia,
+somalie britannique,,,British Somaliland Protectorate (1884-1960),
+somalie italienne,,,Italian Somaliland,
+soudan anglo egyptien,,,Anglo-Egyptian Sudan,
+spitzberg,,,Svalbard,
+suede,,,Sweden,
+suisse,,,Switzerland,
+swazieland,,,Eswatini,"OCR: e inserted Retargeted 2026-08-24 (#195): SWZ-1894-2025 is the same territory under its modern name, which is why bare-name matching missed it. Corroborated by area: stated 17,366 vs polygon 17,103, 0.985."
+swaziland,,,Eswatini,"Retargeted 2026-08-24 (#195): SWZ-1894-2025 is the same territory under its modern name, which is why bare-name matching missed it. Corroborated by area: stated 17,366 vs polygon 17,103, 0.985."
+syrie et liban,,,Syria and Lebanon,
+tanganvika,,,Tanganyika,OCR: v for y
+tanganvika terr sous,,,Tanganyika,OCR: v for y; 'terr sous mandat' truncated
+tchecoslovaquie,,,Czechoslovakia,
+terre neuve,,,Dominion of Newfoundland,"was 'Newfoundland', not a polity_name"
+terre neuve labrador,,,Newfoundland,
+tibet,,,Tibet,
+timor,,,Timor-Leste,"Retargeted 2026-08-24 (#195): source label `Portuguese Timor` is East Timor, TLS-1800-2025. Stated 18,990 vs polygon 14,978, ratio 0.789 -- the classic Portuguese Timor figure against a modern coastline, inside tolerance and worth comparing."
+timor et kambing,,,Timor-Leste,Portuguese Timor and Kambing
+togo,,,Togo,
+transjordanie,,,Jordan (1923-1946),"Retargeted 2026-08-24 (#195): JOR-1923-1946 covers all stated years 1925-1937. Area 89,975 vs 89,270, ratio 0.992."
+trinite et tabago,,,Trinidad and Tobago,OCR: a for o
+trinite et tobago,,,Trinidad and Tobago,
+tunisie,,,Tunisia,
+u of s africa,,,South Africa,
+union de l afrique du sud,,,South Africa,
+union del afrique du sud,,,South Africa,OCR: lost space
+union delafrique du sud,,,South Africa,OCR: lost spaces
+union sud africaine,,,South Africa,
+vougoslavie,,,Yugoslavia,OCR: v for Y
+western samoa,,,Samoa,"Added 2026-08-24: the FAO 1952 form of a label already reachable from IIA's `SAMOA OCCIDENTALE`. Area 2,930 stated vs a 2,835 polygon, 0.032; exactly one raw label maps to this normalised form, so it is not a colliding key (arm F)."
+yougoslavie,,,Yugoslavia,
+zanzibar,,,Zanzibar Protectorate,"was 'Zanzibar', not a polity_name"
+zanzibar et pemba,,,Zanzibar Protectorate,"Retargeted 2026-08-24 (#195): source label ZANZIBAR ET PEMBA is Zanzibar plus Pemba, i.e. the Protectorate, ZNZ-1890-1963. Corroborated by area: stated 2,642 vs polygon 2,587, ratio 0.979."
