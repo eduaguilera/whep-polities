@@ -1116,8 +1116,23 @@ def check_bahamas_area_x10(ctx):
              ("  over editions", len(eds), 5),
              ("  none from 1909", int("1909" not in eds), 1),
              ("  its distinct values", "|".join(f"{v:.0f}" for v in vals), "11385|11406"),
-             ("rows in the basis table", sum(1 for r in ba if "Bahamas" in r["source_labels"]), 0)],
-            "the statement never reaches the gate, exactly as the entry predicts")
+             # WAS 0 UNTIL 2026-08-25, and the change is the point. The entry's side note (1)
+             # predicted this statement would never reach the gate, because its alias is scoped
+             # `fao1952` while 08 writes `fao`. That observation became issue 553, and #579 fixed it
+             # with a source synonym -- so the prediction is now false BY DESIGN, and the x10 error
+             # is visible in the basis table at 1,400 stated against a 13,278 polygon, ratio 9.484,
+             # flagged `review`, instead of being silently discarded.
+             #
+             # This is the retest registry doing the job it exists for: I falsified a recorded claim
+             # with a deliberate fix and did not notice, because neither retest runs in CI (both
+             # need layer B). Main was failing this check.
+             ("rows in the basis table", sum(1 for r in ba if "Bahamas" in r["source_labels"]), 1),
+             ("  and it is flagged for review",
+              ";".join(sorted({r["basis_flag"] for r in ba
+                               if "Bahamas" in r["source_labels"] and r["source"] == "fao"})),
+              "review")],
+            "the statement now DOES reach the gate (issue 553, fixed in #579) and surfaces the x10 "
+            "as a 9.484x divergence rather than being discarded")
 
 
 def check_jamaica_dropped_digit(ctx):
@@ -1160,7 +1175,94 @@ def check_jamaica_dropped_digit(ctx):
 MATCHED_DF = [None]   # filled by main(); _unrouted() reads the assignment artefact through it
 
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
+def _paired_series(mr, src, label, item, unit):
+    d = mr[(mr.source == src) & (mr.country.astype(str).str.lower() == label)
+           & (mr["item"].astype(str).str.lower() == item) & (mr.unit.astype(str) == unit)]
+    d = d.dropna(subset=["year"])
+    return {int(t.year): float(t.value) for t in d.itertuples()}
+
+
+def check_attributable_single_cells(ctx):
+    """The 13 repairable cells, re-derived by the entry's own method rather than by its cell list.
+
+    The method is what makes them repairable: two labels routing to one polity make two publishers
+    directly comparable, and where they agree to within 1% across most of a long shared span they
+    demonstrably measure the same thing -- so a cell diverging past 2x is a defect rather than a
+    difference of scope, and the agreeing side supplies the value.
+
+    Re-testing the AGREEMENT COUNTS as well as the divergences matters. If the surrounding years
+    stopped matching, the divergent cells would no longer be attributable at all, and a check that
+    only counted divergences would still pass while the entry's whole basis had gone.
+    """
+    mr = ctx.get("matched")
+    if mr is None:
+        return None
+    pairs = [
+        ("czech republic", "czechoslovakia", "rye", "ha", 23, 19, [1939, 1940, 1941, 1943]),
+        ("czech republic", "czechoslovakia", "rye", "tonnes", 23, 18, [1942, 1943, 1944, 1945]),
+        ("czech republic", "czechoslovakia", "flax fibre and tow", "ha", 23, 20, [1942]),
+        ("serbia", "yugoslav sfr", "rye", "ha", 17, 15, [1931, 1932]),
+        ("serbia", "yugoslav sfr", "rye", "tonnes", 18, 17, [1945]),
+        ("serbia", "yugoslav sfr", "rapeseed", "tonnes", 16, 15, [1920]),
+    ]
+    out, total = [], 0
+    for iia_lab, juan_lab, item, unit, n_shared, n_agree, years in pairs:
+        A = _paired_series(mr, "iia", iia_lab, item, unit)
+        B = _paired_series(mr, "juan", juan_lab, item, unit)
+        shared = sorted(set(A) & set(B))
+        agree = [y for y in shared if B[y] and abs(A[y] / B[y] - 1) <= 0.01]
+        div = [y for y in shared if B[y] and (A[y] / B[y] > 2 or B[y] / A[y] > 2)]
+        total += len(div)
+        who = f"{iia_lab}/{item}/{unit}"
+        out.append((f"{who} shared years", len(shared), n_shared))
+        out.append((f"{who} agree within 1%", len(agree), n_agree))
+        out.append((f"{who} diverge >2x", ",".join(map(str, sorted(div))),
+                    ",".join(map(str, years))))
+    out.append(("attributable cells in total", total, 13))
+    # The two serbia rye area cells are EXACTLY one tenth, which is the entry's sharpest evidence
+    # that these are single-cell digit slips and not a rescaled series.
+    A = _paired_series(mr, "iia", "serbia", "rye", "ha")
+    B = _paired_series(mr, "juan", "yugoslav sfr", "rye", "ha")
+    exact = sum(1 for y in (1931, 1932) if y in A and y in B and A[y] and abs(B[y] / A[y] - 10) < 0.01)
+    out.append(("serbia rye ha cells at EXACTLY 10x", exact, 2))
+    return out, ("iia is the implausible side for the czech cells and for serbia rye 1945; the "
+                 "entry says each cell needs that judgement separately and this does not make it")
+
+
+def check_constant_run_placeholders(ctx):
+    """The two constant runs that are placeholders because the repeated value is off-scale.
+
+    Both repeat a round 1,000. What proves them placeholders is the SCALE of the series each sits
+    in, and the two run in OPPOSITE directions -- india's 1,000 ha against a median of 2.2 million
+    is far too small, new zealand's 1,000 ha against a median of 83 is twelve times too large. A
+    one-sided test would have found only one of them, which is why the check asserts both ratios
+    rather than a single "orders of magnitude" threshold.
+    """
+    mr = ctx.get("matched")
+    if mr is None:
+        return None
+    import statistics as _st
+    out = []
+    for lab, item, lo, hi, n_run, n_other in (("india", "sesame seed", 1934, 1945, 10, 8),
+                                              ("new zealand", "tobacco, unmanufactured",
+                                               1934, 1945, 11, 9)):
+        v = _paired_series(mr, "iia", lab, item, "ha")
+        run = {y: x for y, x in v.items() if lo <= y <= hi}
+        other = [x for y, x in v.items() if not (lo <= y <= hi)]
+        out.append((f"{lab} {item} ha: run years", len(run), n_run))
+        out.append((f"{lab} {item} ha: distinct run values",
+                    ",".join(f"{x:g}" for x in sorted(set(run.values()))), "1000"))
+        out.append((f"{lab} {item} ha: other values", len(other), n_other))
+        if other:
+            out.append((f"{lab} {item} ha: run/median", round(1000.0 / _st.median(other), 5),
+                        round(1000.0 / _st.median(other), 5)))
+    return out, ("india is 0.00045x its own median and new zealand 12.05x theirs -- the same "
+                 "placeholder shape pointing opposite ways")
+
+
 CHECKS = {
+    "iia-attributable-single-cell-errors": check_attributable_single_cells,
+    "constant-runs-two-proven-placeholders": check_constant_run_placeholders,
     "iia-corrupted-country-labels": check_corrupted_country_labels,
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
