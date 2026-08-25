@@ -6159,6 +6159,8 @@ WRITABLE = {
         # guard would simply skip it.
         "wiki/README.md",
         "site/wiki/README.md",
+        "wiki/log.md",
+        "site/wiki/log.md",
     ),
     "validate_order_decided_families.py": (
         "polities_database.csv",

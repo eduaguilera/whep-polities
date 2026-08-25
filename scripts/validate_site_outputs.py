@@ -224,20 +224,29 @@ def main() -> int:
     # convention (issue 569), every gate stayed green, and `site/wiki/README.md` kept serving the
     # old text -- the same failure this arm was written for, one directory up. It surfaced the same
     # way too, when an unrelated rebuild showed the file changing.
-    _src_readme = os.path.join(REPO, "wiki/README.md")
-    _dst_readme = os.path.join(REPO, "site/wiki/README.md")
-    if os.path.exists(_src_readme):
-        if not os.path.exists(_dst_readme):
-            problems.append("site/wiki/README.md is missing -- run bash site/build_wiki.sh")
-        else:
-            with open(_src_readme, "rb") as fh_a, open(_dst_readme, "rb") as fh_b:
-                same = fh_a.read() == fh_b.read()
-            print(f"site/wiki/README.md: {'matches' if same else 'STALE'}")
-            if not same:
-                problems.append(
-                    "site/wiki/README.md differs from wiki/README.md. It is the page that documents "
-                    "the schema every other page is written against, so a stale copy misdescribes "
-                    "all of them" + REBUILD)
+    # `build_wiki.sh` copies these two by name, on their own lines, outside the directory loop:
+    #     [ -f wiki/log.md ]    && cp wiki/log.md    site/wiki/
+    #     [ -f wiki/README.md ] && cp wiki/README.md site/wiki/
+    # `wiki/index.md` is deliberately NOT copied and so is not checked here.
+    _TOP_COPIES = {
+        "README.md": "documents the schema every other page is written against, so a stale copy "
+                     "misdescribes all of them at once",
+        "log.md": "is the record of what changed and why, so a stale copy attributes the current "
+                  "data to the wrong decisions",
+    }
+    for _name, _why in _TOP_COPIES.items():
+        _src = os.path.join(REPO, "wiki", _name)
+        _dst = os.path.join(REPO, "site/wiki", _name)
+        if not os.path.exists(_src):
+            continue
+        if not os.path.exists(_dst):
+            problems.append(f"site/wiki/{_name} is missing -- run bash site/build_wiki.sh")
+            continue
+        with open(_src, "rb") as fh_a, open(_dst, "rb") as fh_b:
+            same = fh_a.read() == fh_b.read()
+        print(f"site/wiki/{_name}: {'matches' if same else 'STALE'}")
+        if not same:
+            problems.append(f"site/wiki/{_name} differs from wiki/{_name}. It {_why}" + REBUILD)
 
     for sub in ("polities", "sources"):
         src_dir = os.path.join(REPO, "wiki", sub)
