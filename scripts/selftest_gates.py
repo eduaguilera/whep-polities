@@ -751,6 +751,35 @@ def mutate_observed_area_backdated_before_the_reporting_era(root, gpd, make_vali
     )
 
 
+def mutate_cross_source_defect_citation_vanishes(root, gpd, make_valid, affinity):
+    """Strip the recorded explanation from a large cross-source disagreement.
+
+    Two independent publishers differing by an order of magnitude on the same polity, item, unit and
+    year is either a routing that put incompatible series together or a defect nobody has recorded.
+    Every such cell in this table currently cites a `data_errors.csv` entry, which is what makes the
+    ceiling zero and reachable.
+
+    Clearing one citation is precisely what happens when an entry is renamed or retired without the
+    cells that leaned on it being revisited: the disagreement is still there, still a full order of
+    magnitude, and now nothing explains it. No count changes -- the cell stays in the table, the
+    ratio is untouched, the arithmetic still checks out -- so only the unexplained ceiling can see it.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/cross_source_agreement.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = next((r for r in rows if float(r["ratio"]) >= 10.0 and r["known_defect"]), None)
+    assert hit, "no large disagreement carries a citation -- the table's shape changed"
+    hit["known_defect"] = ""
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return (f"cleared the recorded defect behind {hit['polity_code']}/{hit['item']}/{hit['year']}, "
+            f"which still disagrees by {float(hit['ratio']):.0f}x between two sources")
+
+
 def mutate_declared_areas_switch_to_geodesic(root, gpd, make_valid, affinity):
     """Recompute every declared area on the OTHER convention, the way a maintainer plausibly would.
 
@@ -5148,6 +5177,12 @@ CASES = (
         "not reach and where the enclave declares no area for check A to notice",
     ),
     (
+        "validate_cross_source_agreement.py",
+        mutate_cross_source_defect_citation_vanishes,
+        "with no entry in data_errors.csv explaining them",
+        "a large cross-source disagreement losing the entry that explained it — the cell, the ratio "
+        "and every count stay exactly as they were, so only the unexplained ceiling can see it",
+    ),    (
         "validate_area_convention.py",
         mutate_declared_areas_switch_to_geodesic,
         "no longer track the projected convention",
@@ -6096,6 +6131,10 @@ WRITABLE = {
     # it, and that combination is a trap -- see write_gpkg(). Use that helper, not to_file().
     # Needs the geopackage (mutated), the CSV it reads declared areas from, and the geodesic
     # measurement, which lives in a sibling script rather than in the gate.
+    "validate_cross_source_agreement.py": (
+        "pipelines/polity-autoimprove/state/cross_source_agreement.csv",
+        "pipelines/polity-autoimprove/state/data_errors.csv",
+    ),
     "validate_area_convention.py": (
         "polities_database.gpkg",
         "scripts/repair_s2_polygons.py",
