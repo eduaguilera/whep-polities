@@ -525,7 +525,7 @@ NER-1911-1922,"Niger (Military Territory, 1911-1922)",1911,1922,national,NER,436
 NER-1922-1947,Colonial Niger (1922-1947),1922,1947,national,NER,436,Africa,draft,2026-08-13,cshapes-2.0,436,1926,assigned,1182017,AOF-1895-1960,NER-1947-1960,
 NER-1947-1960,Niger (1947-1960),1947,1960,national,NER,436,Africa,draft,2026-08-13,cshapes-2.0,436,1947,assigned,1182017,NER-1922-1947,NER-1960-2025,
 NER-1960-2025,Niger,1960,2025,national,NER,436,Africa,draft,2026-04-13,cshapes-2.0,436,1960,assigned,,DMG-1800-1899,,
-NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,territory,NFK,,Oceania,draft,2026-07-01,gadm-4.1-adm0,NFK,2023,assigned,35,,,
+NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,territory,NFK,,Oceania,draft,2026-07-01,gadm-4.1-adm0,NFK,2023,proxy,36.6,,,
 NFL-1800-1907,Colony of Newfoundland,1800,1907,colonial,NFL,,North America,draft,2026-08-17,cshapes-2.0,21,1886,proxy,,,NFL-1907-1949,
 NFL-1907-1949,Dominion of Newfoundland,1907,1949,national,NFL,21,North America,draft,2026-06-25,cshapes-2.0,21,1920,assigned,398416,NFL-1800-1907,CAN-1949-2025,
 NGA-1886-1914,Colonial Nigeria,1886,1914,national,NGA,,Africa,draft,2026-04-16,cshapes-2.0,475,1914,assigned,,,NGA-1914-1960,

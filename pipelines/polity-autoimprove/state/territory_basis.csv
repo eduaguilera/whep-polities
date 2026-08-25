@@ -525,7 +525,7 @@ NER-1911-1922,"Niger (Military Territory, 1911-1922)",1911,1922,cshapes-2.0,1926
 NER-1922-1947,Colonial Niger (1922-1947),1922,1947,cshapes-2.0,1926.0,assigned,True,assumed_constant,True,False,single 1926 polygon held across a 25y span (1922-1947); borders may have changed,288
 NER-1947-1960,Niger (1947-1960),1947,1960,cshapes-2.0,1947.0,assigned,True,measured,False,False,vintage 1947 faithful to period 1947-1960,82
 NER-1960-2025,Niger,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 65y span (1960-2025); borders may have changed,9
-NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,True,single 2023 polygon held across a 111y span (1914-2025); borders may have changed,9
+NFK-1914-2025,Norfolk Island (Australian Territory),1914,2025,gadm-4.1-adm0,2023.0,proxy,True,assumed_constant,True,True,single 2023 polygon held across a 111y span (1914-2025); borders may have changed,9
 NFL-1800-1907,Colony of Newfoundland,1800,1907,cshapes-2.0,1886.0,proxy,True,assumed_constant,True,False,single 1886 polygon held across a 107y span (1800-1907); borders may have changed,0
 NFL-1907-1949,Dominion of Newfoundland,1907,1949,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,False,single 1920 polygon held across a 42y span (1907-1949); borders may have changed,0
 NGA-1886-1914,Colonial Nigeria,1886,1914,cshapes-2.0,1914.0,assigned,True,assumed_constant,True,False,single 1914 polygon held across a 28y span (1886-1914); borders may have changed,58
