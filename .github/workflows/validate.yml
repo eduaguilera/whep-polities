@@ -709,6 +709,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_area_convention.py
 
+      - name: Every large cross-source disagreement is a recorded defect
+        if: '!cancelled()'
+        run: python3 scripts/validate_cross_source_agreement.py
+
       - name: Tabled OCR label corrections are still needed and still route
         if: '!cancelled()'
         run: python3 scripts/validate_ocr_corrections.py
