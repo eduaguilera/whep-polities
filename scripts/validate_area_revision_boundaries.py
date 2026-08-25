@@ -57,6 +57,17 @@ VERDICTS = {"one_polity_spans_the_revision", "our_boundary_falls_between"}
 MIN_STEP_PCT = 50.0     # restated, not imported
 MIN_AGREEING = 6        # arm D: 11 today; a floor well below it, so a real change is a finding
 
+# Arm F. A polity carrying BOTH verdicts is reporting one scope change through two different pairs of
+# data years, and only one of those pairs happens to straddle a span boundary. DZA-1919-1962 is the
+# case: `ALGERIE` 1921->1932 spans it, `algerie` 1913->1929 "agrees" with it -- same revision, and the
+# 1919 boundary explains neither, because nothing territorial happened. The Southern Territories were
+# attached in 1902; the yearbook simply began counting them, between editions rather than at a year.
+#
+# So `our_boundary_falls_between` establishes that a boundary EXISTS in the interval, never that it
+# explains the revision -- and this pairing is the only signal in the table that can tell the
+# difference. Pinned rather than forbidden: the one live case is understood and is not a defect.
+BASELINE_SELF_REFUTING_POLITIES = 1
+
 
 def main() -> int:
     if not os.path.exists(TABLE):
@@ -159,6 +170,28 @@ def main() -> int:
                 f"years. A footnote can carry the unit's identity — `INDE BRITANNIQUE:` splits into "
                 f"the directly administered provinces and the princely states that way — so two such "
                 f"rows are one unit reported twice or two units compared against each other")
+
+    both = sorted(
+        code for code in {r["polity_code"] for r in rows}
+        if {r["verdict"] for r in rows if r["polity_code"] == code}
+        == {"one_polity_spans_the_revision", "our_boundary_falls_between"}
+    )
+    print(f"  polities carrying BOTH verdicts (agreement is coincidental): {len(both)} "
+          f"(expected {BASELINE_SELF_REFUTING_POLITIES})"
+          + (f" -- {', '.join(both)}" if both else ""))
+    print(f"  agreements that are independent of a known coincidence: {n_agree - len(both)}")
+    if len(both) > BASELINE_SELF_REFUTING_POLITIES:                                 # F
+        problems.append(
+            f"{len(both)} polity/polities carry both verdicts ({', '.join(both)}), above the expected "
+            f"{BASELINE_SELF_REFUTING_POLITIES}. The same revision seen through two edition year-pairs "
+            f"cannot both span a boundary and be explained by it, so the agreeing row is corroborating "
+            f"by accident of which years its edition tabulates"
+        )
+    elif len(both) < BASELINE_SELF_REFUTING_POLITIES:
+        problems.append(
+            f"only {len(both)} polity/polities carry both verdicts, below the expected "
+            f"{BASELINE_SELF_REFUTING_POLITIES} -- lower it so the improvement is held"
+        )
 
     if n_agree < MIN_AGREEING:                                                     # E
         problems.append(

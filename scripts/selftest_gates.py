@@ -4300,6 +4300,39 @@ def mutate_constantrun_witness_is_cross_era(root, gpd, make_valid, affinity):
             f"with its {hit['year_first']}-{hit['year_last']} run")
 
 
+def mutate_arearevision_second_coincidental_agreement(root, gpd, make_valid, affinity):
+    """Give a SECOND polity both verdicts, so one of its agreements is coincidental.
+
+    DZA-1919-1962 is the live case and is understood: `ALGERIE` 1921->1932 spans it while `algerie`
+    1913->1929 "agrees" with it -- one scope change seen through two edition year-pairs, where the
+    1919 boundary explains neither. That pairing is the only signal in this table distinguishing a
+    boundary that EXPLAINS a revision from one that merely sits inside the interval.
+
+    The mutation moves `roumanie`'s year_before from 1913 to 1921, putting both its years inside
+    ROU-1920-1940, and sets the verdict the span now implies. Every other arm stays quiet by
+    construction: the areas and step_pct are untouched (arm A), the new verdict is exactly the one
+    the span requires (arm B), the years still ascend, and the (label, footnote, source, years) key
+    stays unique (arm D). Only the both-verdicts pairing changes.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/area_revision_boundaries.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["label"] == "roumanie"]
+    assert hit, "the `roumanie` row moved -- pick another ROU row"
+    assert hit[0]["verdict"] == "our_boundary_falls_between", "unexpected starting verdict"
+    assert hit[0]["polity_code"] == "ROU-1920-1940", "unexpected polity"
+    hit[0]["year_before"] = "1921"
+    hit[0]["verdict"] = "one_polity_spans_the_revision"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return ("moved `roumanie` inside ROU-1920-1940 so that polity now carries BOTH verdicts, making "
+            "its surviving agreement corroborate by accident rather than by explaining the revision")
+
+
 def mutate_arearevision_verdict_contradicts_span(root, gpd, make_valid, affinity):
     """Flip a revision's verdict so it contradicts its own polity span.
 
@@ -4584,6 +4617,13 @@ CASES = (
         "read as two estimates of one territory",
     ),
     (
+        "validate_area_revision_boundaries.py",
+        mutate_arearevision_second_coincidental_agreement,
+        "corroborating by accident",
+        "a second polity carrying both verdicts — the same revision seen through two edition "
+        "year-pairs, where the agreeing row corroborates by accident of which years its edition "
+        "tabulates rather than because the boundary explains the step",
+    ),    (
         "validate_area_revision_boundaries.py",
         mutate_arearevision_verdict_contradicts_span,
         "must follow from the span",
