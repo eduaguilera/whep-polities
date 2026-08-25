@@ -85,7 +85,7 @@ UNDERSEL_SHARE = 0.60   # this fraction of attributable cells must be under-sele
 SMALLER_THAN = 0.50     # "under-selected" = the picked product is under half the same-year maximum
 TOL = 0.005             # relative tolerance for matching a layer-B value to a raw one
 
-FIELDS = ("source", "label", "item", "unit", "n_attributable", "n_underselected",
+FIELDS = ("source", "label", "item", "unit", "verdict", "n_attributable", "n_underselected",
           "share_underselected", "worst_ratio", "worst_year", "worst_picked_product",
           "worst_picked_value", "worst_max_value")
 
@@ -143,16 +143,35 @@ def build(matched: str, rawpath: str) -> list[dict]:
                 ratio = mx / picked
                 if worst is None or ratio > worst[0]:
                     worst = (ratio, int(x.year), hit._p.iloc[0], picked, mx)
+        # A CENSUS, NOT A FINDINGS LIST -- every in-scope series gets a row, including the clean
+        # ones. The gate's own note recorded that neither the defect count nor `n_attributable`
+        # could be floored, because a remedy publishing a genuine P2O5 total makes the value match
+        # no raw material and collapses BOTH alongside the fix. That left "a regeneration silently
+        # returning zero rows passes" as a stated residual risk.
+        #
+        # The series themselves survive a remedy: iia still publishes a `p` series for spain, with
+        # different values. So the row count is the one quantity that a correct fix leaves alone and
+        # a broken regeneration destroys, and it can carry a floor.
         if n_attr >= MIN_CELLS and n_under >= n_attr * UNDERSEL_SHARE and worst:
-            rows.append({
-                "source": "iia", "label": label, "item": item, "unit": "tonnes",
-                "n_attributable": n_attr, "n_underselected": n_under,
-                "share_underselected": _n(n_under / n_attr),
-                "worst_ratio": _n(worst[0]), "worst_year": worst[1],
-                "worst_picked_product": worst[2],
-                "worst_picked_value": _n(worst[3]), "worst_max_value": _n(worst[4]),
-            })
-    rows.sort(key=lambda r: (-float(r["worst_ratio"]), r["label"], r["item"]))
+            verdict = "underselects_minor_component"
+        elif n_attr >= MIN_CELLS:
+            verdict = "attributable_no_underselection"
+        else:
+            verdict = "too_few_attributable_cells"
+        rows.append({
+            "source": "iia", "label": label, "item": item, "unit": "tonnes",
+            "verdict": verdict,
+            "n_attributable": n_attr, "n_underselected": n_under,
+            "share_underselected": _n(n_under / n_attr) if n_attr else "",
+            "worst_ratio": _n(worst[0]) if worst else "",
+            "worst_year": worst[1] if worst else "",
+            "worst_picked_product": worst[2] if worst else "",
+            "worst_picked_value": _n(worst[3]) if worst else "",
+            "worst_max_value": _n(worst[4]) if worst else "",
+        })
+    rows.sort(key=lambda r: (r["verdict"] != "underselects_minor_component",
+                             -(float(r["worst_ratio"]) if r["worst_ratio"] else 0),
+                             r["label"], r["item"]))
     return rows
 
 
@@ -186,12 +205,13 @@ def main() -> int:
             return 0
 
     rows = build(a.matched, a.raw)
-    tot = sum(int(r["n_underselected"]) for r in rows)
-    att = sum(int(r["n_attributable"]) for r in rows)
-    print(f"{len(rows)} series publish a minor component as the nutrient category "
-          f"({tot} of {att} attributable non-zero cells; floor {MIN_CELLS} cells, "
-          f"{UNDERSEL_SHARE:.0%} of them under half the same-year maximum)")
-    for r in rows:
+    bad = [r for r in rows if r["verdict"] == "underselects_minor_component"]
+    tot = sum(int(r["n_underselected"]) for r in bad)
+    att = sum(int(r["n_attributable"]) for r in bad)
+    print(f"{len(rows)} iia fertilizer series in scope; {len(bad)} publish a minor component as "
+          f"the nutrient category ({tot} of {att} attributable non-zero cells; floor {MIN_CELLS} "
+          f"cells, {UNDERSEL_SHARE:.0%} of them under half the same-year maximum)")
+    for r in bad:
         print(f"  {r['label'][:18]:19}{r['item']:3}{r['n_underselected']:>4}/"
               f"{r['n_attributable']:<4} worst {float(r['worst_ratio']):>7.0f}x  "
               f"{r['worst_year']}: {r['worst_picked_product'][:34]:36}"

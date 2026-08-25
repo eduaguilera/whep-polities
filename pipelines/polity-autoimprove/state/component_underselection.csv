@@ -1,9 +1,82 @@
-source,label,item,unit,n_attributable,n_underselected,share_underselected,worst_ratio,worst_year,worst_picked_product,worst_picked_value,worst_max_value
-iia,japan,p,tonnes,8,7,0.875,3138.2262,1930,"fertilizers: phosphate, natural",305,957159
-iia,latvia,p,tonnes,4,4,1,381.4472,1930,slag: basic,123,46918
-iia,spain,p,tonnes,15,15,1,185.1124,1930,"fertilizers: phosphate, natural",5400,999607
-iia,germany,n,tonnes,14,13,0.9286,60.0818,1909,fertilizers: calcium cyanamide,5500,330450
-iia,france,n,tonnes,15,11,0.7333,59.7913,1913,fertilizers: calcium cyanamide,1246,74500
-iia,czech republic,p,tonnes,4,4,1,32.4553,1931,fertilizers: bone superphosphate,3457,112198
-iia,norway,n,tonnes,13,10,0.7692,25.3733,1931,fertilizers: calcium nitrate,14999,380574
-iia,germany,p,tonnes,6,6,1,25.3521,1916,"fertilizers: phosphate, natural",71000,1800000
+source,label,item,unit,verdict,n_attributable,n_underselected,share_underselected,worst_ratio,worst_year,worst_picked_product,worst_picked_value,worst_max_value
+iia,japan,p,tonnes,underselects_minor_component,8,7,0.875,3138.2262,1930,"fertilizers: phosphate, natural",305,957159
+iia,latvia,p,tonnes,underselects_minor_component,4,4,1,381.4472,1930,slag: basic,123,46918
+iia,spain,p,tonnes,underselects_minor_component,15,15,1,185.1124,1930,"fertilizers: phosphate, natural",5400,999607
+iia,germany,n,tonnes,underselects_minor_component,14,13,0.9286,60.0818,1909,fertilizers: calcium cyanamide,5500,330450
+iia,france,n,tonnes,underselects_minor_component,15,11,0.7333,59.7913,1913,fertilizers: calcium cyanamide,1246,74500
+iia,czech republic,p,tonnes,underselects_minor_component,4,4,1,32.4553,1931,fertilizers: bone superphosphate,3457,112198
+iia,norway,n,tonnes,underselects_minor_component,13,10,0.7692,25.3733,1931,fertilizers: calcium nitrate,14999,380574
+iia,germany,p,tonnes,underselects_minor_component,6,6,1,25.3521,1916,"fertilizers: phosphate, natural",71000,1800000
+iia,canada,p,tonnes,too_few_attributable_cells,3,3,1,446.3611,1930,"fertilizers: phosphate, natural",36,16069
+iia,japan,n,tonnes,attributable_no_underselection,13,7,0.5385,186.795,1916,fertilizers: calcium cyanamide,200,37359
+iia,sweden,p,tonnes,attributable_no_underselection,16,3,0.1875,25.0023,1932,slag: basic,7730,193268
+iia,france,p,tonnes,attributable_no_underselection,16,9,0.5625,14,1916,"fertilizers: phosphate, natural",25000,350000
+iia,united states of america,n,tonnes,too_few_attributable_cells,3,3,1,8.4717,1930,fertilizers: ammonium sulfate,88962,753661
+iia,united kingdom,p,tonnes,attributable_no_underselection,16,3,0.1875,4.9268,1913,fertilizers: calcium superphosphate,82000,404000
+iia,poland,n,tonnes,too_few_attributable_cells,3,1,0.3333,4.882,1932,fertilizers: calcium cyanamide,11118,54278
+iia,belgium,p,tonnes,attributable_no_underselection,13,6,0.4615,4.1772,1919,"fertilizers: phosphate, natural",90970,380000
+iia,czech republic,n,tonnes,too_few_attributable_cells,3,2,0.6667,2.9608,1930,fertilizers: calcium cyanamide,27352,80985
+iia,poland,p,tonnes,too_few_attributable_cells,1,1,1,2.5797,1933,fertilizers: bone superphosphate,4923,12700
+iia,sweden,n,tonnes,attributable_no_underselection,10,1,0.1,2.3741,1911,fertilizers: calcium cyanamide,556,1320
+iia,united states of america,p,tonnes,attributable_no_underselection,14,1,0.0714,2.2973,1909,"fertilizers: calcium superphosphate, mixed, unmixed",1089600,2503186
+iia,algeria,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,algeria,p,tonnes,attributable_no_underselection,4,0,0,,,,,
+iia,australia,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,australia,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,austria,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,austria,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,belgium,n,tonnes,too_few_attributable_cells,1,0,0,,,,,
+iia,canada,n,tonnes,attributable_no_underselection,4,0,0,,,,,
+iia,chile,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,denmark,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,denmark,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,egypt,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,egypt,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,estonia,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,finland,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,france,k,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,french guiana,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,germany,k,tonnes,attributable_no_underselection,4,0,0,,,,,
+iia,greece,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,hungary,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,hungary,p,tonnes,too_few_attributable_cells,1,0,0,,,,,
+iia,india,k,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,india,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,india,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,indonesia,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,ireland,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,ireland,p,tonnes,too_few_attributable_cells,1,0,0,,,,,
+iia,italy,n,tonnes,attributable_no_underselection,15,0,0,,,,,
+iia,italy,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,japan,k,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,kiribati,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,lithuania,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,luxembourg,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,madagascar,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,morocco,p,tonnes,attributable_no_underselection,4,0,0,,,,,
+iia,nauru,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,netherlands,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,netherlands,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,new caledonia,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,new zealand,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,norway,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,palau,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,poland,k,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,portugal,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,portugal,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,romania,n,tonnes,too_few_attributable_cells,2,0,0,,,,,
+iia,romania,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,russian federation,k,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,russian federation,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,russian federation,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,serbia,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,serbia,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,south africa,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,south korea,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,spain,k,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,spain,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,switzerland,n,tonnes,too_few_attributable_cells,3,0,0,,,,,
+iia,switzerland,p,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,tunisia,p,tonnes,attributable_no_underselection,4,0,0,,,,,
+iia,united kingdom,n,tonnes,too_few_attributable_cells,0,0,,,,,,
+iia,united states of america,k,tonnes,too_few_attributable_cells,0,0,,,,,,

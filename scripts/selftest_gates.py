@@ -4412,6 +4412,34 @@ def mutate_hierarchy_baseline_identity_dropped(root, gpd, make_valid, affinity):
         w.writerows(keep)
 
 
+def mutate_underselection_census_becomes_a_findings_list(root, gpd, make_valid, affinity):
+    """Drop the clean series, leaving only the eight findings -- the table's own previous shape.
+
+    This gate used to record, correctly, that neither the defect count nor `n_attributable` could
+    carry a floor: a remedy publishing a genuine P2O5 total makes the published value match no raw
+    material, so attribution collapses alongside the fix and both counts go to zero. "A regeneration
+    silently returning zero rows passes" was left as a stated residual risk.
+
+    Making the table a CENSUS of in-scope series closes it, because the series survive a remedy while
+    a broken regeneration destroys them. This mutation is the failure that floor exists for, in its
+    most plausible form: every surviving row is still internally consistent, every finding is still
+    present and correct, and the eight defects still print. Only the count of series in scope moves.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/component_underselection.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    keep = [r for r in rows if r["verdict"] == "underselects_minor_component"]
+    assert keep and len(keep) < len(rows), "the table is no longer a census -- this case is obsolete"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(keep)
+    return (f"dropped the {len(rows) - len(keep)} clean series, leaving only the {len(keep)} "
+            f"findings -- every one still correct, and nothing but the census count changed")
+
+
 def mutate_underselection_picked_is_the_maximum(root, gpd, make_valid, affinity):
     """Record a series whose picked material IS the same-year maximum.
 
@@ -4433,10 +4461,15 @@ def mutate_underselection_picked_is_the_maximum(root, gpd, make_valid, affinity)
     with open(path, newline="", encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
         fields = list(rows[0])
-    if not rows:
-        raise AssertionError("the table is empty, so this mutation has nothing to weaken and the "
+    # FLAGGED ROWS ONLY. The table became a CENSUS of in-scope series, so most rows are clean and
+    # carry an empty `worst_ratio`; `max()` over all of them raises on the empty string. The gate was
+    # right and this mutation had simply stopped being able to run -- caught by the harness, not by
+    # anything in the gate.
+    flagged = [r for r in rows if r.get("verdict") == "underselects_minor_component"]
+    if not flagged:
+        raise AssertionError("no flagged series, so this mutation has nothing to weaken and the "
                              "case would pass vacuously")
-    hit = max(rows, key=lambda r: float(r["worst_ratio"]))
+    hit = max(flagged, key=lambda r: float(r["worst_ratio"]))
     hit["worst_picked_value"] = hit["worst_max_value"]
     hit["worst_ratio"] = "1"
     with open(path, "w", newline="", encoding="utf-8") as fh:
@@ -4868,6 +4901,12 @@ CASES = (
         "see because every surviving row stays consistent",
     ),
     (
+        "validate_component_underselection.py",
+        mutate_underselection_census_becomes_a_findings_list,
+        "below the floor of",
+        "the census reduced to its own findings — every remaining row correct and every defect still "
+        "reported, so only a floor on the in-scope count can tell a shrunk table from a clean one",
+    ),    (
         "validate_component_underselection.py",
         mutate_underselection_picked_is_the_maximum,
         "That is the finding itself",
