@@ -20,7 +20,7 @@ double the real polity total.)
 | `status: draft` | 678 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 21 / 23 |
-| Pages with no source citation | 195 |
+| Pages with no source citation | 194 |
 | Pages citing biger-1995 | 411 |
 | Open questions (`### oq-`) | 860 |
 

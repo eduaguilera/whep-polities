@@ -158,7 +158,7 @@ burma,mitchell,1852,1885,MMR-LWR-1852-1885,British Lower Burma (1852-1885),high,
 Burundi,faostat,1961,1961,BDI-1922-1962,Burundi (within Ruanda-Urundi),high,62205
 Burundi,faostat,1962,2024,BDI-1962-2025,Burundi,high,62205
 burundi,iia,1919,1921,RWB-1919-1922,Ruanda-Urundi (occupation),high,
-burundi,iia,1922,1961,RWB-1922-1962,Ruanda-Urundi,high,
+burundi,iia,1922,1961,BDI-1922-1962,Burundi (within Ruanda-Urundi),high,
 Burundi,lassaletta-grassland-share,1961,1961,BDI-1922-1962,Burundi (within Ruanda-Urundi),high,
 Burundi,lassaletta-grassland-share,1962,2009,BDI-1962-2025,Burundi,high,
 BZE,mueller-synthetic-n,1981,2025,BLZ-1981-2025,Belize,high,
@@ -758,7 +758,7 @@ Rwanda,faostat,1961,1961,RWA-1922-1962,Rwanda (within Ruanda-Urundi),high,162034
 Rwanda,faostat,1962,2024,RWA-1962-2025,Rwanda,high,162034
 Rwanda,lassaletta-grassland-share,1961,1961,RWA-1922-1962,Rwanda (within Ruanda-Urundi),high,
 Rwanda,lassaletta-grassland-share,1962,2009,RWA-1962-2025,Rwanda,high,
-rwanda,mitchell,1953,1960,RWB-1922-1962,Ruanda-Urundi,high,
+rwanda,mitchell,1953,1960,RWA-1922-1962,Rwanda (within Ruanda-Urundi),high,
 rwanda and burundi,,,,RWB-1922-1962,Ruanda-Urundi,high,155
 Ryukyu Islands,,1937,1944,RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),high,
 Ryukyu Islands,,1945,1951,RYU-1945-1972,Ryukyu Islands (US Administration),high,

@@ -44,7 +44,7 @@ AUWA-1829-1900,Western Australia (to 1900),1829,1900,cshapes-2.0,1886.0,assigned
 AZE-1991-2025,Azerbaijan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 AZE-SSR-1920-1991,Azerbaijan SSR,1920,1991,cshapes-2.0,1991.0,proxy,True,assumed_constant,True,False,single 1991 polygon held across a 71y span (1920-1991); borders may have changed,27
 BCM-1916-1961,British Cameroons,1916,1961,cshapes-2.0,1953.0,assigned,True,assumed_constant,True,False,single 1953 polygon held across a 45y span (1916-1961); borders may have changed,23
-BDI-1922-1962,Burundi (within Ruanda-Urundi),1922,1962,cshapes-2.0,1962.0,assigned,True,assumed_constant,True,False,single 1962 polygon held across a 40y span (1922-1962); borders may have changed,0
+BDI-1922-1962,Burundi (within Ruanda-Urundi),1922,1962,cshapes-2.0,1962.0,assigned,True,assumed_constant,True,False,single 1962 polygon held across a 40y span (1922-1962); borders may have changed,82
 BDI-1962-2025,Burundi,1962,2025,cshapes-2.0,1962.0,assigned,False,assumed_constant,True,False,single 1962 polygon held across a 63y span (1962-2025); borders may have changed,0
 BDK-1800-1890,Kingdom of Burundi,1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 BEC-1885-1966,Bechuanaland Protectorate (1885-1966),1885,1966,cshapes-2.0,1938.0,assigned,True,assumed_constant,True,True,single 1938 polygon held across a 81y span (1885-1966); borders may have changed,176
@@ -624,10 +624,10 @@ RSFSR-1917-1991,Russian SFSR (1917-1991),1917,1991,cshapes-2.0,1991.0,unassigned
 RUS-1991-2014,Russia (1991-2014),1991,2014,cshapes-2.0,1992.0,assigned,False,measured,False,False,vintage 1992 faithful to period 1991-2014,0
 RUS-2014-2025,Russia,2014,2025,cshapes-2.0,2014.0,assigned,False,measured,False,False,vintage 2014 faithful to period 2014-2025,0
 RVN-1954-1975,Republic of Vietnam (South Vietnam),1954,1975,cshapes-2.0,1960.0,assigned,True,measured,False,False,vintage 1960 faithful to period 1954-1975,93
-RWA-1922-1962,Rwanda (within Ruanda-Urundi),1922,1962,cshapes-2.0,1962.0,assigned,True,assumed_constant,True,False,single 1962 polygon held across a 40y span (1922-1962); borders may have changed,0
+RWA-1922-1962,Rwanda (within Ruanda-Urundi),1922,1962,cshapes-2.0,1962.0,assigned,True,assumed_constant,True,False,single 1962 polygon held across a 40y span (1922-1962); borders may have changed,24
 RWA-1962-2025,Rwanda,1962,2025,cshapes-2.0,1962.0,assigned,False,assumed_constant,True,False,single 1962 polygon held across a 63y span (1962-2025); borders may have changed,0
 RWB-1919-1922,Rwanda and Burundi,1919,1922,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
-RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,cshapes-2.0,1922.0,assigned,True,assumed_constant,True,False,single 1922 polygon held across a 40y span (1922-1962); borders may have changed,368
+RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,cshapes-2.0,1922.0,assigned,True,assumed_constant,True,False,single 1922 polygon held across a 40y span (1922-1962); borders may have changed,262
 RWK-1800-1890,Kingdom of Rwanda,1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,5
 RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year; footnote coverage caveat (FAO/IIA yearbook),53
