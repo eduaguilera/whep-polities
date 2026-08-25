@@ -751,6 +751,35 @@ def mutate_observed_area_backdated_before_the_reporting_era(root, gpd, make_vali
     )
 
 
+def mutate_cross_source_indicators_disagree(root, gpd, make_valid, affinity):
+    """Make one cell's two sources annotate different measurements.
+
+    The cross-source key excludes `indicator` deliberately: fao1952 and iia use it for a measurement
+    type (`crops:production`) while mitchell uses it for a PAGE REFERENCE (`page_12_table_1`), so
+    keying on it would split iia from mitchell on a field that does not mean the same thing in each
+    and destroy the comparison the table exists for. `unit` already separates production from area.
+
+    What WOULD invalidate a cell is both sides being annotated and disagreeing -- then the ratio is
+    between two different measurements and means nothing. Zero such cells today. This mutation
+    creates one while leaving the ratio, the values, the sources, the count and the recorded defect
+    exactly as they were, so no other arm moves.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/cross_source_agreement.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    assert "indicators" in fields, "the table no longer publishes indicators -- case obsolete"
+    rows[0]["indicators"] = "crops:area;crops:production"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return (f"gave {rows[0]['polity_code']}/{rows[0]['item']}/{rows[0]['year']} two sources "
+            f"annotating `crops:area` and `crops:production`, so its ratio compares an area with a "
+            f"tonnage")
+
+
 def mutate_cross_source_defect_citation_vanishes(root, gpd, make_valid, affinity):
     """Strip the recorded explanation from a large cross-source disagreement.
 
@@ -5251,6 +5280,12 @@ CASES = (
         "not reach and where the enclave declares no area for check A to notice",
     ),
     (
+        "validate_cross_source_agreement.py",
+        mutate_cross_source_indicators_disagree,
+        "annotate DIFFERENT indicators",
+        "two sources compared across different measurements — the ratio, values, sources and "
+        "recorded defect all stay exactly as they were, so nothing but the indicator arm moves",
+    ),    (
         "validate_cross_source_agreement.py",
         mutate_cross_source_defect_citation_vanishes,
         "with no entry in data_errors.csv explaining them",
