@@ -751,6 +751,53 @@ def mutate_observed_area_backdated_before_the_reporting_era(root, gpd, make_vali
     )
 
 
+def mutate_declared_areas_switch_to_geodesic(root, gpd, make_valid, affinity):
+    """Recompute every declared area on the OTHER convention, the way a maintainer plausibly would.
+
+    Two area conventions coexist here (issue 569): planar `.area` in ESRI:54034, which ~20 scripts and
+    every published ratio use, and s2/geodesic in `repair_s2_polygons.py`. Both are spherical; they
+    disagree monotonically with latitude because one joins vertices with straight lines in the plane
+    and the other with great circles.
+
+    Nothing about a switch looks wrong. Each individual figure stays plausible -- the gap is 0.4% in
+    the median and never more than 0.8% -- so check A's 25% tolerance, the self-referential arm, and
+    every stated-area verdict all stay exactly where they were. What changes is that hundreds of
+    published `polygon_area_km2` and `ratio_polygon_over_stated` values silently move onto a different
+    definition of "the polygon's area". Only a check that measures BOTH can see it.
+
+    Rewrites the geopackage, which is where the gate reads BOTH the declared area and the geometry.
+    That mattered: the gate's first version read declared areas from the CSV and this case passed
+    against it, which is how the split was found.
+    """
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(root, "scripts"))
+    from repair_s2_polygons import geodesic_area_km2
+
+    g = gpd.read_file(GPKG)
+    live = g[g.geometry.notna() & ~g.geometry.is_empty]
+    n = 0
+    for idx, r in live.iterrows():
+        try:
+            dec = float(r["polygon_area_km2"])
+        except (TypeError, ValueError):
+            continue
+        if dec <= 0:
+            continue
+        try:
+            geo = float(geodesic_area_km2(r.geometry))
+        except Exception:
+            continue
+        if geo > 0:
+            # STRING, not float: the column's dtype is str, and newer pandas raises on a numeric
+            # assignment while older pandas accepts it -- the trap a neighbouring mutator records.
+            g.loc[g.polity_code == r["polity_code"], "polygon_area_km2"] = str(round(geo, 1))
+            n += 1
+    assert n > 50, f"only {n} declared areas rewritten -- too few to move the median"
+    write_gpkg(g, root)
+    return (f"recomputed {n} declared areas on the geodesic convention instead of the projected one, "
+            f"which moves no figure by more than 0.8% and changes what they all mean")
+
+
 def mutate_subfloor_assigned_area_diverges(root, gpd, make_valid, affinity):
     """Claim `assigned` on a tiny polygon whose own declared area contradicts it.
 
@@ -5076,6 +5123,12 @@ CASES = (
         "not reach and where the enclave declares no area for check A to notice",
     ),
     (
+        "validate_area_convention.py",
+        mutate_declared_areas_switch_to_geodesic,
+        "no longer track the projected convention",
+        "every declared area recomputed on the other area convention — each figure stays plausible "
+        "and no tolerance anywhere is exceeded, while hundreds of published values change meaning",
+    ),    (
         "validate_polygons.py",
         mutate_subfloor_assigned_area_diverges,
         "the claim is untested rather than true",
@@ -6010,6 +6063,12 @@ WRITABLE = {
     #
     # NOTE FOR THE NEXT AUTHOR: this is the ONLY gate that both stages the GeoPackage and mutates
     # it, and that combination is a trap -- see write_gpkg(). Use that helper, not to_file().
+    # Needs the geopackage (mutated), the CSV it reads declared areas from, and the geodesic
+    # measurement, which lives in a sibling script rather than in the gate.
+    "validate_area_convention.py": (
+        "polities_database.gpkg",
+        "scripts/repair_s2_polygons.py",
+    ),
     "validate_polygons.py": ("polities_database.gpkg",),
     # The GeoPackage is mutated, so it must be a real copy, and write_gpkg() must be used to
     # replace it -- see that helper: `to_file` over an existing .gpkg APPENDS a layer and the
