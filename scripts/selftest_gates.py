@@ -2673,6 +2673,38 @@ def mutate_new_cow_code_collision(root, gpd, make_valid, affinity):
             "over overlapping years, so one new collision appears and no baselined pair leaves")
 
 
+def mutate_lexicon_year_ranges_overlap(root, gpd, make_valid, affinity):
+    """Give one lexicon form two dated entries whose ranges overlap on different targets.
+
+    The lexicon became year-aware for issue 581, so a form may carry several dated rows -- `finlande`
+    resolves to `Grand Duchy of Finland` for 1800-1917 and to `Finland` otherwise. That only works
+    while the dated ranges are disjoint: two overlapping rows make the answer depend on which row the
+    reader happens to hit first, i.e. on file order, and BOTH answers look correct in isolation.
+
+    Nothing else can see it. The entry is well-formed, points at a real polity, resolves for every
+    year it claims, and changes no count -- forms, inert targets and colliding forms all stay put,
+    because the overlapping row targets a polity the form already reaches for a neighbouring year.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_label_lexicon.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    assert "year_start" in fields, "the lexicon is no longer year-aware -- this case is obsolete"
+    hit = [r for r in rows if r["normalised_form"] == "finlande" and r["year_start"]]
+    assert hit, "the dated `finlande` row moved -- pick another ranged form"
+    assert hit[0]["year_end"] == "1917", "unexpected range"
+    rows.append({"normalised_form": "finlande", "year_start": "1900", "year_end": "1940",
+                 "english_label": "Finland (1917-1940)",
+                 "note": "selftest: overlaps the 1800-1917 row"})
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return ("added a second dated `finlande` entry covering 1900-1940 against the existing 1800-1917 "
+            "one, so 1900-1917 resolves by file order rather than by year")
+
+
 def mutate_lexicon_entry_on_a_colliding_form(root, gpd, make_valid, affinity):
     """Add the `guiana` lexicon entry, which merges two different colonies.
 
@@ -2782,14 +2814,26 @@ def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
     with open(path, newline="", encoding="utf-8") as fh:
         rows = list(_csv.DictReader(fh))
         fields = list(rows[0].keys())
-    # reuse a label the statements actually carry, so the entry is exercised rather than ignored
-    rows.append({"normalised_form": "groenland", "english_label": "Erewhon Crown Colony",
-                 "note": "selftest: target names no polity"})
+    # Reuse a label the statements actually carry, so the entry is exercised rather than ignored.
+    #
+    # REWRITTEN IN PLACE, not appended (2026-08-25, issue 581). This case used to APPEND a second
+    # `groenland` row, which worked only because `load_lexicon` was a dict comprehension where the
+    # last row silently won. Once the lexicon became year-aware, `lexicon_target` began preferring a
+    # dated row and then the FIRST undated one -- so the appended row never resolved, the inert count
+    # never moved, and the case failed with "does not name resolve to no polity" while a NEW arm
+    # (duplicate undated entries) fired instead. The gate was right both times; the mutation had
+    # stopped testing what it claimed. Overwriting keeps the entry count fixed so only the inert
+    # ceiling can move.
+    hit = [r for r in rows if r["normalised_form"] == "groenland"]
+    assert hit, "the `groenland` entry moved -- pick another form the statements carry"
+    assert hit[0]["english_label"] == "Greenland", "unexpected `groenland` target"
+    hit[0]["english_label"] = "Erewhon Crown Colony"
+    hit[0]["note"] = "selftest: target names no polity"
     with open(path, "w", newline="", encoding="utf-8") as fh:
-        w = _csv.DictWriter(fh, fieldnames=fields)
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
-    return ("added a lexicon entry mapping `groenland` to `Erewhon Crown Colony`, a target no polity "
+    return ("retargeted the `groenland` lexicon entry to `Erewhon Crown Colony`, a target no polity "
             "carries, so the entry can never contribute a resolution")
 
 
@@ -4963,6 +5007,12 @@ CASES = (
         "shares except by being NEW — so only a baselined set can tell them apart",
     ),
     (
+        "validate_stated_areas.py",
+        mutate_lexicon_year_ranges_overlap,
+        "OVERLAPPING year ranges",
+        "two dated lexicon rows for one form whose ranges overlap on different targets — both are "
+        "well-formed and both resolve, so which one wins depends on file order",
+    ),    (
         "validate_stated_areas.py",
         mutate_lexicon_entry_on_a_colliding_form,
         "routes both to one polity",

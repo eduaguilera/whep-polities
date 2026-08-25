@@ -605,14 +605,51 @@ def normalise_label(raw: str) -> str:
 
 
 def load_lexicon() -> dict:
+    """Map each normalised source label to the English label(s) the matcher can route.
+
+    YEAR-AWARE SINCE ISSUE 581. A form maps to a LIST of (year_start, year_end, english_label),
+    because polity names in this database are era-specific while a source label is not: `FINLANDE`
+    is one label whose 1911 statement belongs to `Grand Duchy of Finland` and whose 1929 one belongs
+    to `Finland (1917-1940)`. With one target per form, routing either era meant losing the other --
+    a trade the superset rule forbids, which is why two separate retargets were correctly declined
+    before the shape changed.
+
+    A blank year pair means "any year" and is stored as (None, None); those are the 234 entries that
+    predate this and the default for new ones. `lexicon_target()` prefers a dated row whose range
+    contains the year, and falls back to the blanket row, so adding a dated row can only ADD
+    resolutions.
+    """
     if not os.path.exists(LEXICON_PATH):
         return {}
+    out: dict[str, list] = {}
     with open(LEXICON_PATH, encoding="utf-8") as fh:
-        return {
-            r["normalised_form"]: r["english_label"]
-            for r in csv.DictReader(fh)
-            if r.get("normalised_form") and r.get("english_label")
-        }
+        for r in csv.DictReader(fh):
+            form, label = r.get("normalised_form"), r.get("english_label")
+            if not form or not label:
+                continue
+            y0 = int(r["year_start"]) if (r.get("year_start") or "").strip() else None
+            y1 = int(r["year_end"]) if (r.get("year_end") or "").strip() else None
+            out.setdefault(form, []).append((y0, y1, label))
+    return out
+
+
+def lexicon_target(lexicon: dict, form: str, year=None):
+    """The English label for `form` at `year`: a dated row that contains it, else the blanket row.
+
+    Dated rows are tried FIRST and are inclusive at both ends. Ordering matters only if two dated
+    rows overlap, which `validate_stated_areas` forbids -- see the overlap arm in main().
+    """
+    rows = lexicon.get(form)
+    if not rows:
+        return None
+    if year is not None:
+        for y0, y1, label in rows:
+            if y0 is not None and y1 is not None and y0 <= year <= y1:
+                return label
+    for y0, y1, label in rows:
+        if y0 is None and y1 is None:
+            return label
+    return None
 
 
 def analyse():
@@ -732,7 +769,7 @@ def analyse():
         # because the first attempt is unchanged.
         SOURCE_SYNONYMS = {"fao": ("fao1952",), "iia": ()}
         code = None
-        for candidate in (row["label"], lexicon.get(normalise_label(row["label"]))):
+        for candidate in (row["label"], lexicon_target(lexicon, normalise_label(row["label"]), year)):
             if not candidate:
                 continue
             for src_try in (row["source"], *SOURCE_SYNONYMS.get(row["source"], ())):
@@ -754,7 +791,7 @@ def analyse():
         # `Bechuanaland Protectorate`); or no polity exists at all (`Karafuto`, `Kwantung` -- both
         # blocked on issue 400). Retargeting an entry is an established remedy here: the `saint marin`,
         # `terre neuve` and `macao` entries were each retargeted under issue 195.
-        target = lexicon.get(normalise_label(row["label"]))
+        target = lexicon_target(lexicon, normalise_label(row["label"]), year)
         if target:
             lex_tried.setdefault(target, set()).add((row["source"], year))
             if code:
@@ -907,6 +944,31 @@ def main() -> int:
         problems.append(
             f"only {len(colliding)} colliding lexicon form(s), below the ceiling of "
             f"{BASELINE_COLLIDING_LEXICON_FORMS} -- lower it so the improvement is held"
+        )
+
+    overlaps, undated_dup = [], []
+    for form, entries in sorted(lexicon.items()):
+        dated = [(y0, y1, lab) for y0, y1, lab in entries if y0 is not None and y1 is not None]
+        blanket = [lab for y0, y1, lab in entries if y0 is None and y1 is None]
+        if len(blanket) > 1:
+            undated_dup.append(f"{form} ({', '.join(sorted(blanket))})")
+        for i, (a0, a1, la) in enumerate(dated):
+            for b0, b1, lb in dated[i + 1:]:
+                if a0 <= b1 and b0 <= a1 and la != lb:
+                    overlaps.append(f"{form}: {a0}-{a1} -> {la} overlaps {b0}-{b1} -> {lb}")
+    n_dated = sum(1 for e in lexicon.values() for y0, y1, _ in e if y0 is not None)
+    print(f"  lexicon forms: {len(lexicon)}  entries: {sum(len(e) for e in lexicon.values())} "
+          f"({n_dated} year-ranged)")
+    if overlaps:                                                                    # issue 581
+        problems.append(
+            f"{len(overlaps)} lexicon form(s) carry OVERLAPPING year ranges pointing at different "
+            f"labels, so which one resolves depends on file order rather than on the year: "
+            + "; ".join(overlaps[:4])
+        )
+    if undated_dup:
+        problems.append(
+            f"{len(undated_dup)} lexicon form(s) carry more than one undated entry, so the fallback "
+            f"target is whichever row is read first: " + "; ".join(undated_dup[:4])
         )
 
     spread = []
