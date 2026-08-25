@@ -264,9 +264,9 @@ iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1934,,tonnes,4000,0,,33.75,118
 iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1935,,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
 iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1936,,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
 iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1937,,tonnes,4000,0,,33.75,118.518519,impossible_yield_zero_area,True
-iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1934,,tonnes,52500,0,,604.7,86.819911,impossible_yield_zero_area,True
-iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1935,,tonnes,52500,0,,604.7,86.819911,impossible_yield_zero_area,True
-iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",1936,,tonnes,23000,0,,604.7,38.035389,impossible_yield_zero_area,True
+iia,burundi,BDI-1922-1962,"tobacco, unmanufactured",1934,,tonnes,52500,0,,604.7,86.819911,impossible_yield_zero_area,True
+iia,burundi,BDI-1922-1962,"tobacco, unmanufactured",1935,,tonnes,52500,0,,604.7,86.819911,impossible_yield_zero_area,True
+iia,burundi,BDI-1922-1962,"tobacco, unmanufactured",1936,,tonnes,23000,0,,604.7,38.035389,impossible_yield_zero_area,True
 iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1935,,tonnes,4400,0,,7700,0.571429,impossible_yield_zero_area,True
 iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1936,,tonnes,10000,0,,7700,1.298701,impossible_yield_zero_area,True
 iia,cameroon,FCM-1920-1960,"tobacco, unmanufactured",1937,,tonnes,7000,0,,7700,0.909091,impossible_yield_zero_area,True
@@ -338,7 +338,7 @@ iia,benin,BEN-1898-1960,"tobacco, unmanufactured",,1934-1938,tonnes,5200,,,33.75
 iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1939,,tonnes,6900,,,33.75,204.444444,no_area_level_shift,True
 iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1940,,tonnes,6600,,,33.75,195.555556,no_area_level_shift,True
 iia,benin,BEN-1898-1960,"tobacco, unmanufactured",1941,,tonnes,7300,,,33.75,216.296296,no_area_level_shift,True
-iia,burundi,RWB-1922-1962,"tobacco, unmanufactured",,1934-1938,tonnes,34800,,,604.7,57.549198,no_area_level_shift,True
+iia,burundi,BDI-1922-1962,"tobacco, unmanufactured",,1934-1938,tonnes,34800,,,604.7,57.549198,no_area_level_shift,True
 iia,"china, taiwan province of",TWN-1895-1945,"tobacco, unmanufactured",1936,,tonnes,222400,,,940.4,236.495108,no_area_level_shift,True
 iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1935,,tonnes,26800,,,41.45,646.562123,no_area_level_shift,True
 iia,cyprus,CYP-1879-2025,"tobacco, unmanufactured",1938,,tonnes,1600,,,41.45,38.600724,no_area_level_shift,True

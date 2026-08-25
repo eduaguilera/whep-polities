@@ -125,7 +125,12 @@ def build() -> list[dict]:
         y0, a0 = seq[i]
         y1, a1 = seq[i + 1]
         code = None
-        for cand in (label, lex.get(V.normalise_label(label))):
+        # `V.lexicon_target(...)`, NOT `lex.get(...)`. The lexicon became YEAR-AWARE in #587 and
+        # `load_lexicon()` now returns {form: [(year_start, year_end, english_label), ...]}, so a bare
+        # `.get` hands `matcher.assign` a LIST and every lexicon-routed label silently stops
+        # resolving. That is what happened here: this table went from 12 rows to 1, and nothing
+        # noticed because `--check` on this script needs layer B and so cannot run in CI.
+        for cand in (label, V.lexicon_target(lex, V.normalise_label(label), y1)):
             if not cand:
                 continue
             try:

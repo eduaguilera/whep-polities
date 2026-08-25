@@ -1460,6 +1460,7 @@ GUM-1950-2025,poultry,1000 heads,1951,2,2,1,1,1,values_differ,one_label_one_sour
 GUY-1800-2025,horses mules asses,1000 heads,1939,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2,8,4.333333,0.541667,British Guiana,fao1952
 GUY-1800-2025,horses mules asses,1000 heads,1949,3,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2,9,4.333333,0.481481,British Guiana,fao1952
 GUY-1800-2025,horses mules asses,1000 heads,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2,6,3.666667,0.611111,British Guiana,fao1952
+GUY-1800-2025,meat,1000 tonnes,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1,4,2.666667,0.666667,British Guiana,fao1952
 GUY-1800-2025,poultry,1000 heads,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,6,422,162.666667,0.385466,British Guiana,fao1952
 GUY-1800-2025,poultry,1000 heads,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,6,386,149,0.38601,British Guiana,fao1952
 GUY-1800-2025,r_fao_population_1952_10_18,1000 people,1937,4,4,1,1,4,values_differ,one_label_one_source,item_code_collision,25,333,120.75,0.362613,British Guiana,fao1952
