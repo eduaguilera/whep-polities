@@ -751,6 +751,46 @@ def mutate_observed_area_backdated_before_the_reporting_era(root, gpd, make_vali
     )
 
 
+def mutate_subfloor_assigned_area_diverges(root, gpd, make_valid, affinity):
+    """Claim `assigned` on a tiny polygon whose own declared area contradicts it.
+
+    Below check A's 200 km2 floor nothing compares a declared area against its geometry. That floor
+    exists for projection noise, worth about half a percent -- issue 569 measured the two area
+    conventions at -0.43% to +0.60% -- while issue 570 measured the 100-1,000 km2 band running ~4%
+    large with 22 of 28 comparisons on one side, and every polity it named but one sits under the
+    floor. The check is blindest exactly where the bias is strongest.
+
+    Flips only the STATUS of a row that already diverges far past tolerance and honestly says so.
+    `estimate` is the correct label for a polygon that is not exactly the territory; `assigned` claims
+    it IS. Nothing else moves: no area, no geometry, check A still skips the row for being too small,
+    and A2's self-referential arm still ignores it because the two figures are nowhere near each other.
+
+    Written against the GEOPACKAGE, not the CSV or the wiki page -- `have` takes both `claimed` and
+    `polygon_status` from the .gpkg attribute table, as the mutator below the docstring of
+    `mutate_area_read_off_its_own_polygon` records learning the hard way.
+    """
+    g = gpd.read_file(GPKG)
+    live = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
+    live["km2"] = live.to_crs("ESRI:54034").geometry.area / 1e6
+    hit = None
+    for r in live.itertuples():
+        try:
+            dec = float(r.polygon_area_km2)
+        except (TypeError, ValueError):
+            continue
+        # both sides under the floor, so check A cannot see it; and far enough out that the
+        # divergence is a contradiction rather than projection noise
+        if 0 < dec < 200 and r.km2 < 200 and abs(r.km2 / dec - 1) > 0.25 \
+                and str(r.polygon_status) != "assigned":
+            hit, dev = r.polity_code, abs(r.km2 / dec - 1)
+            break
+    assert hit, "no sub-floor row diverging >25% with a non-assigned status"
+    g.loc[g.polity_code == hit, "polygon_status"] = "assigned"
+    write_gpkg(g, root)
+    return (f"flipped {hit} to polygon_status=assigned while its declared area and its polygon "
+            f"disagree by {dev*100:.0f}%, in the size band where check A never compares them")
+
+
 def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
     """Rewrite a declared area to exactly what its own polygon measures, which is the
     tautology check A2 counts.
@@ -4986,6 +5026,12 @@ CASES = (
         "not reach and where the enclave declares no area for check A to notice",
     ),
     (
+        "validate_polygons.py",
+        mutate_subfloor_assigned_area_diverges,
+        "the claim is untested rather than true",
+        "an `assigned` claim on a polygon under check A's size floor that the row's own declared "
+        "area contradicts — the band issue 570 measured the bias in, where nothing compares them",
+    ),    (
         "validate_polygons.py",
         mutate_avoidable_self_referential_area,
         "AFG-1893-1919",

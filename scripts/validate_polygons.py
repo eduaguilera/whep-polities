@@ -132,6 +132,13 @@ for r in declared_none.itertuples():
     print(f"   FAIL {r.polity_code:18s} polygon_status={r.polygon_status!r} but carries "
           f"{r.polygon_source}/{r.polygon_feature_id}")
 
+# Arm A3. An `assigned` row under check A's size floor whose polygon disagrees with the declared
+# territory by more than check A's own tolerance. Zero today, and zero is reachable -- the rows that
+# diverge that far (TUV 60%, TKL 31%, BMU 26%) all declare `estimate` or `proxy`, which is the honest
+# label for a polygon that is not exactly the territory. So this fires only on a row claiming
+# certainty it does not have, in the band where nothing else looks.
+BASELINE_SUBFLOOR_ASSIGNED = 0
+
 # ---------- A: area agreement ----------
 have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
 # Skip only when BOTH the claimed and the measured area are small — a genuine
@@ -156,6 +163,32 @@ EXACT_CLAIM = {"assigned"}
 st = diverging.get("polygon_status").astype(str)
 bad_area = diverging[st.isin(EXACT_CLAIM)]
 documented = diverging[~st.isin(EXACT_CLAIM)]
+
+# A3. THE POPULATION CHECK A SKIPS. The 200 km2 floor above exists for projection noise, which is
+# worth about half a percent (see issue 569's measurement of the two area conventions: -0.43% to
+# +0.60%). It is currently excluding errors two orders of magnitude larger than that. Issue 570
+# measured the 100-1,000 km2 band running ~4% large with 22 of 28 comparisons on the same side, and
+# every polity it named except one sits under this floor -- so the check is blindest exactly where
+# the bias is strongest.
+#
+# This does not lower the floor, which would be a policy change: a small polygon really is noisier,
+# and `estimate`/`proxy` rows are documenting their own inexactness honestly. It applies check A's
+# OWN rule -- an `assigned` row claims the polygon IS the territory, so a divergence there is a
+# contradiction -- to the rows the floor exempts, and pins the count.
+_sub = have[
+    have.claimed.notna() & (have.claimed > 0) & have.measured_km2.notna()
+    & (have.claimed < A.min_km2) & (have.measured_km2 < A.min_km2)
+    & ~have.get("wiki_status").isin(DEAD_STATUS)
+].copy()
+_sub["dev"] = (_sub.measured_km2 - _sub.claimed).abs() / _sub.claimed
+_sub_bad = _sub[(_sub.dev > A.tolerance) & _sub.get("polygon_status").astype(str).isin(EXACT_CLAIM)]
+_sub_soft = _sub[_sub.dev > 0.10]
+print(f"\nA3. BELOW CHECK A'S {A.min_km2:.0f} km2 FLOOR — {len(_sub)} live row(s) declare an area that "
+      f"check A never compares; {len(_sub_soft)} diverge >10%, {len(_sub_bad)} of those claim "
+      f"polygon_status=assigned (ceiling {BASELINE_SUBFLOOR_ASSIGNED})")
+for r in _sub_soft.sort_values("dev", ascending=False).itertuples():
+    print(f"   {r.dev*100:6.1f}%  {r.polity_code:18s} declared {r.claimed:>8,.1f} km2  "
+          f"polygon {r.measured_km2:>8,.1f}  status={r.polygon_status}")
 print(f"\nA. AREA AGREEMENT — {len(chk)} polities state an area; {len(diverging)} diverge "
       f"from their geometry by >{A.tolerance:.0%} ({len(bad_area)} claim polygon_status=assigned)")
 for r in bad_area.itertuples():
@@ -508,14 +541,22 @@ if os.path.exists(CSHAPES):
 else:
     print("\nB. IDENTITY — skipped, CShapes source not fetched")
 
+_subfloor_over = len(_sub_bad) - BASELINE_SUBFLOOR_ASSIGNED
+for _r in _sub_bad.itertuples():                                                    # A3
+    print(f"   FAIL {_r.dev*100:6.1f}%  {_r.polity_code:18s} declares polygon_status=assigned with "
+          f"{_r.claimed:,.1f} km2 against a polygon of {_r.measured_km2:,.1f}. `assigned` says the "
+          f"polygon IS this territory; below check A's {A.min_km2:.0f} km2 floor nothing else "
+          f"compares them, so the claim is untested rather than true")
+
 fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
         or len(stale_baseline) > 0 or len(undoc) > 0 or len(off_vocab) > 0
-        or selfref_over > 0 or avoidable_over > 0
+        or selfref_over > 0 or avoidable_over > 0 or _subfloor_over > 0
         or (A.strict and mismatch))
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(off_vocab)} off-vocabulary status(es), "
       f"{len(bad_area)} area disagreement(s), "
       f"{max(selfref_over, 0)} self-referential area(s) above the ceiling, "
       f"{len(declared_none)} declares-none-but-has-one, "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
+      + f", {max(_subfloor_over, 0)} sub-floor assigned area(s) above the ceiling"
       + (f", {len(mismatch)} identity mismatch(es)" if A.strict else ""))
 sys.exit(1 if fail else 0)

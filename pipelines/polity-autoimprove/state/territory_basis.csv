@@ -79,7 +79,7 @@ BLZ-1970-1981,Belize (pre-independence),1970,1981,cshapes-2.0,1886.0,assigned,Fa
 BLZ-1981-2025,Belize,1981,2025,cshapes-2.0,1886.0,assigned,False,back_projected,True,False,polygon vintage 1886 is BEFORE the period starts (1981),0
 BMB-1800-1899,Bemba Kingdom,1800,1899,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 BMU-1684-1968,British Crown Colony of Bermuda,1684,1968,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,58
-BMU-1968-2025,Bermuda,1968,2025,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BMU-1968-2025,Bermuda,1968,2025,gadm-4.1-adm0,,proxy,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 BNB-1881-1963,British North Borneo,1881,1963,cshapes-2.0,1889.0,assigned,True,assumed_constant,True,True,single 1889 polygon held across a 82y span (1881-1963); borders may have changed,185
 BND-1800-1887,Kingdom of Bundu,1800,1887,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 BNU-1800-1893,Bornu Empire,1800,1893,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
