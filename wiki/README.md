@@ -145,6 +145,14 @@ source files on disk.
   this table against the enforced set.
 - `polygon_area_km2` — optional sanity-check, and it means **the area of the territory this
   polygon represents**, not the area of the geometry this repository happens to ship.
+
+  **Which measurement, when the geometry is measured at all: the PROJECTED one** — planar `.area`
+  in `ESRI:54034`. That is what ~20 scripts use, including `validate_stated_areas.py` and the
+  published `ratio_polygon_over_stated`. The s2/geodesic measurement in `repair_s2_polygons.py` is a
+  different number: both are spherical, but `.area` joins vertices with straight lines in the plane
+  while s2 joins them with great circles, so the two disagree monotonically with latitude — −0.43%
+  at the equator to +0.60% above 60° (issue 569). `validate_area_convention.py` holds the choice,
+  because switching would move ~500 published figures by up to 0.8%.
   Issue 71 asked which, because the two had come apart: `build_database.py` simplifies,
   densifies and repairs before writing, and simplification alone once deleted 42% of the
   Maldives (299.68 km² at source, 172.62 shipped, 791 atolls almost all smaller than the
