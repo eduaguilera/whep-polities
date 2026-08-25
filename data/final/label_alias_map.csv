@@ -355,6 +355,7 @@ French Oceania,fao1952,1937,1951,PYF-1800-2025,French Polynesia,high,50
 French Polynesia,faostat,1961,2024,PYF-1800-2025,French Polynesia,high,170270
 French W Africa,,,,AOF-1895-1960,French West Africa (AOF),high,12
 French West Africa,,,,AOF-1895-1960,French West Africa (AOF),high,150
+FrenchWest Africa,fao1952,1934,1938,AOF-1895-1960,French West Africa (AOF),high,
 FrenchWest Africa,fao1952,1949,1950,AOF-1895-1960,French West Africa (AOF),high,6
 FSU,lassaletta-grassland-share,1961,1991,F228-1945-1991,Soviet Union,high,
 Gabon,faostat,1961,2024,GAB-1960-2025,Gabon,high,162217
@@ -546,10 +547,12 @@ Libya Tripolitania,mitchell,1948,1950,TRP-1943-1951,British Military Administrat
 Libya: Cyrenaica,mitchell,1949,1950,CYR-1949-1951,Emirate of Cyrenaica,high,5
 Liechtenstein,faostat,1850,2025,LIE-1800-2025,Liechtenstein,high,0
 Lithuania,faostat,1992,2024,LTU-1991-2025,Lithuania,high,123044
+ltaly,fao1952,1934,1938,ITA-1919-2025,Italy,high,
 ltaly,fao1952,1949,1951,ITA-1919-2025,Italy,high,3
 Luxembourg,faostat,2000,2024,LUX-1839-2025,Luxembourg,high,94451
 Madagascar,faostat,1961,2024,MDG-1882-2025,Madagascar,high,207040
 Madagascar,lassaletta-grassland-share,1961,2009,MDG-1882-2025,Madagascar,high,
+Makatea,fao1952,1934,1938,PYF-1800-2025,French Polynesia,high,
 Makatea,fao1952,1949,1951,PYF-1800-2025,French Polynesia,high,8
 malawi,,1954,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high,
 Malawi,faostat,1961,1963,MWI-1953-1964,Nyasaland within Federation of Rhodesia and Nyasaland,high,185999
@@ -558,6 +561,7 @@ Malawi,lassaletta-grassland-share,1964,2009,MWI-1964-2025,Malawi,high,
 Malaya Fed of,fao1952,1949,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,25
 Malaya Federation,mitchell,1937,1937,GBM-1895-1946,British Malaya (1895-1946),high,1
 Malaya Federation of,fao,1948,1951,MYS-1946-1957,Malayan Union / Federation of Malaya (1946-1957),high,1
+Malaya Federation of,fao1952,1934,1938,GBM-1895-1946,British Malaya,high,
 Malaya Federation of,fao1952,1939,1945,GBM-1895-1946,British Malaya,high,
 Malaya Federation of,fao1952,1946,1951,MYS-1946-1957,Malayan Union / Federation of Malaya,high,
 Malaya Federation of,mitchell,1939,1939,GBM-1895-1946,British Malaya (1895-1946),high,2
@@ -616,6 +620,7 @@ Namibia,lassaletta-grassland-share,1961,1989,NAM-1920-1990,Namibia (1920-1990),h
 Namibia,lassaletta-grassland-share,1990,2009,NAM-1990-2025,Namibia (1990-2025),high,
 natal,,1910,1957,ZAF-1910-2025,Natal province (South Africa),medium,
 Nauru,faostat,1961,2024,NRU-1888-2025,Nauru,high,21491
+Necherlands,fao1952,1934,1938,NLD-1830-2025,Netherlands,high,
 Necherlands,fao1952,1949,1951,NLD-1830-2025,Netherlands,high,8
 Nepal,faostat,1961,2024,NPL-1816-2025,Nepal,high,193378
 Nepal,lassaletta-grassland-share,1961,2009,NPL-1816-2025,Nepal,high,
@@ -807,6 +812,7 @@ Singapore Christmas Island,fao1952,1949,1951,CXR-1946-1958,Christmas Island (und
 Slovakia,faostat,1993,2024,SVK-1993-2025,Slovakia,high,124405
 Slovenia,faostat,1992,2024,SVN-1992-2025,Slovenia,high,127691
 Solomon Islands,faostat,1961,2024,SLB-1800-2025,Solomon Islands,high,120550
+Somalia,fao1952,1934,1938,ITS-1908-1960,Italian Somaliland,high,
 Somalia,fao1952,1939,1951,ITS-1908-1960,Italian Somaliland,high,
 Somalia,faostat,1961,2024,SOM-1960-2025,Somalia,high,62074
 somalia,iia,1920,1959,ITS-1908-1960,Italian Somaliland,high,81
@@ -857,6 +863,7 @@ Syrian Arab Republic,faostat,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-
 Syrian Arab Republic,faostat,1967,2024,SYR-1967-2025,Syrian Arab Republic,high,113504
 Syrian Arab Republic,lassaletta-grassland-share,1961,1966,SYR-1946-1967,Syrian Arab Republic (1946-1967),high,
 Syrian Arab Republic,lassaletta-grassland-share,1967,2009,SYR-1967-2025,Syrian Arab Republic,high,
+Taiwan,fao1952,1934,1938,TWN-1895-1945,Japanese Formosa,high,
 Tajikistan,faostat,1992,2024,TJK-1991-2025,Tajikistan,high,71520
 tanganyika,,1922,1960,TAN-1922-1964,,medium,
 tanganyika,,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high,
@@ -985,6 +992,7 @@ Zambia,faostat,1964,2024,ZMB-1964-2025,Zambia,high,199421
 Zambia,lassaletta-grassland-share,1961,1963,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),high,
 Zambia,lassaletta-grassland-share,1964,2009,ZMB-1964-2025,Zambia,high,
 zambia,mitchell,1953,1964,NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland,high,
+Zanzibar,fao1952,1934,1938,ZNZ-1890-1963,Zanzibar Protectorate,high,
 Zanzibar,fao1952,1949,1951,ZNZ-1890-1963,Zanzibar Protectorate,high,7
 Zanzibar and Pemba,fao1952,1890,1963,ZNZ-1890-1963,Zanzibar Protectorate,high,71
 ZAR,mueller-synthetic-n,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,
