@@ -46,7 +46,7 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/component_underselection.csv")
 
-FIELDS = ["source", "label", "item", "unit", "n_attributable", "n_underselected",
+FIELDS = ["source", "label", "item", "unit", "verdict", "n_attributable", "n_underselected",
           "share_underselected", "worst_ratio", "worst_year", "worst_picked_product",
           "worst_picked_value", "worst_max_value"]
 
@@ -54,6 +54,19 @@ ITEMS = {"p", "n", "k"}
 MIN_CELLS = 4            # B: restated, not imported
 UNDERSEL_SHARE = 0.60    # B: restated, not imported
 SMALLER_THAN = 0.50      # A: the under-selection condition
+VERDICTS = {"underselects_minor_component", "attributable_no_underselection",
+            "too_few_attributable_cells"}
+
+# THE TABLE IS A CENSUS OF IN-SCOPE SERIES, NOT A LIST OF FINDINGS, and that is what makes a floor
+# possible. This gate previously recorded, correctly, that neither the defect count nor
+# `n_attributable` can be floored: a remedy publishing a genuine P2O5 total makes the published value
+# match no raw material, so attribution collapses alongside the fix and both counts go to zero. That
+# left "a regeneration silently returning zero rows passes" as a stated, unresolved risk.
+#
+# The SERIES survive a remedy -- iia still publishes a `p` series for spain, with different values --
+# so the census row count is the one quantity a correct fix leaves alone and a broken regeneration
+# destroys. 81 today; the floor is well below it because the scope moves when routing changes.
+BASELINE_MIN_SERIES = 65
 
 
 def main() -> int:
@@ -69,14 +82,35 @@ def main() -> int:
         rows = list(rdr)
 
     problems = []
+    bad_rows = [r for r in rows if r.get("verdict") == "underselects_minor_component"]
     for r in rows:
         who = f"{r['source']}/{r['label']}/{r['item']}"
         try:
             na, nu = int(r["n_attributable"]), int(r["n_underselected"])
+        except (TypeError, ValueError) as e:
+            problems.append(f"{who}: unparseable count ({e})")
+            continue
+        flagged = r.get("verdict") == "underselects_minor_component"
+        if r.get("verdict") not in VERDICTS:                                        # D
+            problems.append(f"{who}: verdict {r.get('verdict')!r} not in {sorted(VERDICTS)}")
+        # E. THE VERDICT MUST FOLLOW FROM THE COUNTS. Without this the census could carry a series
+        # that meets every criterion while labelled clean, which is the one way a defect could hide
+        # inside a table whose whole point is to enumerate them.
+        want = ("underselects_minor_component" if na >= MIN_CELLS and nu >= na * UNDERSEL_SHARE
+                else "attributable_no_underselection" if na >= MIN_CELLS
+                else "too_few_attributable_cells")
+        if r.get("verdict") in VERDICTS and r["verdict"] != want:
+            problems.append(
+                f"{who}: verdict {r['verdict']!r} but {nu}/{na} attributable cells make it {want!r}")
+        if not flagged:
+            if nu > na:                                                             # C
+                problems.append(f"{who}: n_underselected {nu} exceeds n_attributable {na}")
+            continue
+        try:
             share, ratio = float(r["share_underselected"]), float(r["worst_ratio"])
             picked, mx = float(r["worst_picked_value"]), float(r["worst_max_value"])
         except (TypeError, ValueError) as e:
-            problems.append(f"{who}: unparseable numeric field ({e})")
+            problems.append(f"{who}: flagged row with unparseable numeric field ({e})")
             continue
 
         if r["source"] != "iia":                                                    # D
@@ -111,12 +145,19 @@ def main() -> int:
                 f"{who}: {nu}/{na} under-selected is below the {UNDERSEL_SHARE:.0%} share this table "
                 f"requires; an occasional small pick is a switch, which issue 379's gate owns")
 
-    tot_u = sum(int(r["n_underselected"]) for r in rows)
-    tot_a = sum(int(r["n_attributable"]) for r in rows)
-    print(f"{len(rows)} series publishing a minor component as the nutrient category "
-          f"({tot_u} of {tot_a} attributable non-zero cells); count printed, NOT pinned — a correct "
-          f"remedy empties this table and collapses its denominator too")
-    for r in rows:
+    tot_u = sum(int(r["n_underselected"]) for r in bad_rows)
+    tot_a = sum(int(r["n_attributable"]) for r in bad_rows)
+    print(f"{len(rows)} iia fertilizer series in scope (floor {BASELINE_MIN_SERIES}); "
+          f"{len(bad_rows)} publish a minor component as the nutrient category "
+          f"({tot_u} of {tot_a} attributable non-zero cells) — that count is printed, NOT pinned, "
+          f"because a correct remedy empties it and collapses its denominator too")
+    if len(rows) < BASELINE_MIN_SERIES:
+        problems.append(
+            f"only {len(rows)} series in scope, below the floor of {BASELINE_MIN_SERIES}. This is a "
+            f"CENSUS of iia p/n/k series, so it shrinks only when routing changes or the "
+            f"regeneration broke -- and it is the one count a correct remedy does NOT move, which is "
+            f"why it can carry a floor where the defect count cannot")
+    for r in bad_rows:
         print(f"  {r['label'][:18]:19}{r['item']:3}{r['n_underselected']:>4}/{r['n_attributable']:<4}"
               f" worst {float(r['worst_ratio']):>7.0f}x  {r['worst_year']}: "
               f"{r['worst_picked_product'][:32]:34}{float(r['worst_picked_value']):>10,.0f}"
