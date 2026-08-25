@@ -219,6 +219,26 @@ def main() -> int:
     #
     # Byte comparison rather than mtime: the copy is `cp`, so equality is the whole contract,
     # and an mtime check would fire on any checkout.
+    # `wiki/README.md` is copied too and was NOT covered by the loop below, which walks only the
+    # two subdirectories. Found on 2026-08-25: a PR edited `wiki/README.md` to state the area
+    # convention (issue 569), every gate stayed green, and `site/wiki/README.md` kept serving the
+    # old text -- the same failure this arm was written for, one directory up. It surfaced the same
+    # way too, when an unrelated rebuild showed the file changing.
+    _src_readme = os.path.join(REPO, "wiki/README.md")
+    _dst_readme = os.path.join(REPO, "site/wiki/README.md")
+    if os.path.exists(_src_readme):
+        if not os.path.exists(_dst_readme):
+            problems.append("site/wiki/README.md is missing -- run bash site/build_wiki.sh")
+        else:
+            with open(_src_readme, "rb") as fh_a, open(_dst_readme, "rb") as fh_b:
+                same = fh_a.read() == fh_b.read()
+            print(f"site/wiki/README.md: {'matches' if same else 'STALE'}")
+            if not same:
+                problems.append(
+                    "site/wiki/README.md differs from wiki/README.md. It is the page that documents "
+                    "the schema every other page is written against, so a stale copy misdescribes "
+                    "all of them" + REBUILD)
+
     for sub in ("polities", "sources"):
         src_dir = os.path.join(REPO, "wiki", sub)
         dst_dir = os.path.join(REPO, "site", "wiki", sub)

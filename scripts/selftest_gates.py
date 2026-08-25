@@ -954,6 +954,31 @@ def mutate_partial_territory_claimed_twice(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_site_readme_copy_drifts(root, gpd, make_valid, affinity):
+    """Let the site's copy of the schema README fall behind the wiki's.
+
+    `site/build_wiki.sh` copies `wiki/README.md` alongside the two page directories, but the
+    comparison arm walked only `polities/` and `sources/`. On 2026-08-25 a PR edited
+    `wiki/README.md` to state which area convention the repo means (issue 569), every gate stayed
+    green, and the published copy kept serving the old text -- the same failure the page-copy arm
+    exists for, one directory up, and it surfaced only when an unrelated rebuild showed the file
+    changing.
+
+    This is the README that documents the schema every polity page is written against, so a stale
+    copy misdescribes all of them at once. Nothing else can see it: no polity page changes, no count
+    moves, and the geojson and CSV arms never look at markdown.
+    """
+    path = os.path.join(root, "wiki/README.md")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    marker = "\n\n<!-- selftest: the site copy no longer matches this file -->\n"
+    assert marker not in text, "marker already present"
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text + marker)
+    return ("appended a line to wiki/README.md without rebuilding, so site/wiki/README.md now "
+            "serves a different schema description from the one the pages are written against")
+
+
 def mutate_site_page_copy_drifts(root, gpd, make_valid, affinity):
     """Edit a published page copy so it no longer matches the wiki page it was copied from.
 
@@ -5318,6 +5343,12 @@ CASES = (
     ),
     (
         "validate_site_outputs.py",
+        mutate_site_readme_copy_drifts,
+        "site/wiki/README.md differs",
+        "the published copy of the schema README falling behind the wiki's — it documents what every "
+        "polity page means, and no page, count or geometry changes when it goes stale",
+    ),    (
+        "validate_site_outputs.py",
         mutate_site_page_copy_drifts,
         "differ from",
         "a published wiki page copy that no longer matches its source — the page still parses and "
@@ -6123,6 +6154,11 @@ WRITABLE = {
         # site/pre1961 is a DIRECTORY and must be a real copy: the case rewrites the deployed
         # summary, and through stage()'s symlink that write would land in the committed site.
         "site/pre1961",
+        # The README arm compares these two directly. Without both staged, the mutation would edit a
+        # file the gate never reads and the case would pass vacuously -- the arm's own os.path.exists
+        # guard would simply skip it.
+        "wiki/README.md",
+        "site/wiki/README.md",
     ),
     "validate_order_decided_families.py": (
         "polities_database.csv",
