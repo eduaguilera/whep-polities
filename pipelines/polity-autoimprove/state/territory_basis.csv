@@ -10,7 +10,7 @@ AGO-1975-2025,"Angola (independent, 1975–2025)",1975,2025,cshapes-2.0,1975.0,a
 AIA-1800-2025,Anguilla,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ALB-1913-2025,Albania (1913-2025),1913,2025,cshapes-2.0,1913.0,assigned,True,assumed_constant,True,False,single 1913 polygon held across a 112y span (1913-2025); borders may have changed,534
 ALK-1867-1959,Territory of Alaska,1867,1959,gadm-4.1-adm1,2020.0,assigned,True,back_projected,True,True,polygon vintage 2020 is AFTER the period ends (1959) — later/modern border applied back,39
-AMI-1946-1953,Amami Islands (US-administered),1946,1953,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+AMI-1946-1953,Amami Islands (US-administered),1946,1953,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 AND-1800-2025,Andorra,1800,2025,cshapes-europe,1816.0,assigned,True,assumed_constant,True,False,single 1816 polygon held across a 225y span (1800-2025); borders may have changed,4
 ANG-1800-1890,Angola (to 1890),1800,1890,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 90y span (1800-1890); borders may have changed,0
 ANG-1890-1891,Angola (1890-1891),1890,1891,cshapes-2.0,1890.0,assigned,True,measured,False,False,vintage 1890 faithful to period 1890-1891,0
@@ -331,7 +331,7 @@ GUF-1946-2025,French Guiana (Overseas Department),1946,2025,cshapes-2.0,1946.0,a
 GUM-1898-1950,Territory of Guam,1898,1950,gadm-4.1-adm0,2023.0,assigned,True,back_projected,True,False,polygon vintage 2023 is AFTER the period ends (1950) — later/modern border applied back,19
 GUM-1950-2025,Guam (US Territory),1950,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,False,single 2023 polygon held across a 75y span (1950-2025); borders may have changed,28
 GUY-1800-2025,Guyana,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,551
-HATAY-1938-1939,Sanjak of Alexandretta / Hatay State,1938,1939,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+HATAY-1938-1939,Sanjak of Alexandretta / Hatay State,1938,1939,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 HAWI-1898-1959,Territory of Hawaii,1898,1959,cshapes-2.0,1898.0,assigned,True,assumed_constant,True,False,single 1898 polygon held across a 61y span (1898-1959); borders may have changed,102
 HKG-1842-2025,Hong Kong,1842,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,70
 HND-1800-2025,Honduras,1800,2025,cshapes-2.0,1886.0,polygon_vintage_drift,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,899
@@ -387,7 +387,7 @@ ITA-1861-1919,Italy (to 1919),1861,1919,cshapes-europe,1886.0,assigned,True,assu
 ITA-1866-1870,Italy (1866-1870),1866,1870,cshapes-europe,1867.0,assigned,True,measured,False,False,vintage 1867 faithful to period 1866-1870,98
 ITA-1870-1919,Italy (1870-1919),1870,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 49y span (1870-1919); borders may have changed,1873
 ITA-1919-2025,Italy,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),5024
-ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,185
 JAM-1800-2025,Jamaica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,964
 JOL-1800-1890,Kingdom of Jolof,1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
@@ -586,7 +586,7 @@ POL-1945-2025,Poland (1945-2025),1945,2025,cshapes-2.0,1945.0,assigned,True,assu
 PRI-1800-2025,Puerto Rico,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,936
 PRK-1948-2025,North Korea,1948,2025,cshapes-2.0,1948.0,assigned,True,assumed_constant,True,False,single 1948 polygon held across a 77y span (1948-2025); borders may have changed,30
 PRT-1800-2025,Portugal,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,1816
-PRY-1811-1870,Paraguay (pre-Triple Alliance),1811,1870,ESTIMATE,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+PRY-1811-1870,Paraguay (pre-Triple Alliance),1811,1870,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 PRY-1811-1938,Paraguay (to 1938),1811,1938,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 127y span (1811-1938); borders may have changed,0
 PRY-1870-1932,Paraguay (post-Triple Alliance),1870,1932,cshapes-2.0,1886.0,estimate,True,assumed_constant,True,False,single 1886 polygon held across a 62y span (1870-1932); borders may have changed,287
 PRY-1932-1938,Paraguay (Chaco War period),1932,1938,cshapes-2.0,1886.0,assigned,True,back_projected,True,False,polygon vintage 1886 is BEFORE the period starts (1932),126
@@ -632,7 +632,7 @@ RWK-1800-1890,Kingdom of Rwanda,1800,1890,paine-2024,,assigned,True,assumed_cons
 RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,5
 RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year; footnote coverage caveat (FAO/IIA yearbook),53
 SAA-1947-1957,Saar Protectorate,1947,1957,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,132
-SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),14
 SAR-1800-1860,Sardinia,1800,1860,cliopatria,1815.0,assigned,True,assumed_constant,True,False,single 1815 polygon held across a 60y span (1800-1860); borders may have changed,0
 SAU-1924-2025,Saudi Arabia,1924,2025,cshapes-2.0,1935.0,assigned,True,assumed_constant,True,True,single 1935 polygon held across a 101y span (1924-2025); borders may have changed,18

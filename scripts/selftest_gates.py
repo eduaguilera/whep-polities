@@ -1125,6 +1125,41 @@ def mutate_page_back_to_a_stub(root, gpd, make_valid, affinity):
     return "gutted fra-1919-2025.md back to a CSV-derived stub"
 
 
+def mutate_polygon_source_names_a_status(root, gpd, make_valid, affinity):
+    """Put a STATUS word in the field documented to take a source slug.
+
+    `wiki/README.md` says `polygon_source` is the "slug of a source registered in
+    scripts/sources.yaml", and `write_feature_index.py` has always MEASURED the violations -- and
+    only printed them. `pry-1811-1870` carried `polygon_source: ESTIMATE` under exactly that gap: a
+    status word duplicating what its own `polygon_status: unassigned` already said, naming no source
+    at all, on a page whose prose confirms none exists.
+
+    Nothing else can see it. The value is non-empty so no missing-field check fires, it is not a
+    slug so no unregistered-slug arm reaches it (those read `sources:`, not this field), and the row
+    declares no polygon so every geometry arm skips it entirely.
+
+    Targets whichever page currently declares `none`, rather than a fixed page, because which rows
+    have no polygon changes as sources are added.
+    """
+    import glob as _glob
+    import re as _re
+    hit = None
+    for page in sorted(_glob.glob(os.path.join(root, "wiki/polities/*.md"))):
+        if os.path.basename(page).startswith("_"):
+            continue
+        text = open(page, encoding="utf-8").read()
+        if _re.search(r"^polygon_source: none$", text, _re.M):
+            hit = (page, text)
+            break
+    assert hit, "no page declares `polygon_source: none` -- this case is obsolete"
+    page, text = hit
+    with open(page, "w", encoding="utf-8") as fh:
+        fh.write(_re.sub(r"^polygon_source: none$", "polygon_source: ESTIMATE", text, count=1,
+                         flags=_re.M))
+    return (f"wrote `polygon_source: ESTIMATE` on {os.path.basename(page)} -- a status word in the "
+            f"field that must name a registered source slug or `none`")
+
+
 def mutate_unregistered_declared_source(root, gpd, make_valid, affinity):
     """Add a source slug to a page's `sources:` frontmatter that resolves to no record.
 
@@ -5332,6 +5367,13 @@ CASES = (
     ),
     (
         "validate_declared_sources.py",
+        mutate_polygon_source_names_a_status,
+        "names no source in scripts/sources.yaml",
+        "a status word written into `polygon_source` — non-empty so no missing-field check fires, "
+        "not a `sources:` slug so no registration arm reaches it, and the row declares no polygon "
+        "so every geometry arm skips it",
+    ),    (
+        "validate_declared_sources.py",
         mutate_unregistered_declared_source,
         "biger-1996",
         "a page declaring a source slug that resolves to no record, which reads as the "
@@ -5656,6 +5698,10 @@ ARGS = {
 # FileNotFoundError -- exit 1 for entirely the wrong reason. The "must name the defect"
 # half of this script is what caught that; exit-code alone would have passed it.
 EXTRA_SCRIPTS = {
+    # Arm D reads the source registry to decide whether a `polygon_source` value names anything.
+    # Without it staged the gate raises on a missing file, which still exits non-zero -- so the case
+    # would look like it passed while testing nothing but the traceback.
+    "validate_declared_sources.py": ("sources.yaml",),
     # This gate reads NINE files to compare constants defined in more than one place. The five
     # `validate_*`/`write_*` scripts come in through EXTRA_SCRIPTS; matchlib, match.R and the wiki
     # README are repo-relative and come in through WRITABLE, because the mutation edits matchlib.

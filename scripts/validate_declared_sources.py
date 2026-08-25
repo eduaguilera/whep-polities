@@ -68,9 +68,21 @@ FAILS ON:
     the next page that mistypes that slug)
   - a data-receiving polity whose page names no source at all
 
+ARM D, ADDED 2026-08-25: `polygon_source` must name a slug registered in `scripts/sources.yaml`,
+or be exactly `none`. wiki/README.md already states that contract ("slug of a source registered
+in scripts/sources.yaml") and `write_feature_index.py` already MEASURES the violations -- and only
+prints them. Five pages were outside it: `pry-1811-1870` wrote `polygon_source: ESTIMATE`, a status
+word duplicating what its own `polygon_status: unassigned` already said, and four others spelled
+"no source" as ``, `null` and `""` against the `none` that eight pages and the template use.
+
+That is a narrower check than the one below, and it is the part of it that IS mechanical: this gate
+cannot tell whether a page cites the source it really used, but it can tell that the field naming
+the polygon's source names nothing at all.
+
 DELIBERATELY NOT CHECKED: whether the source SUPPORTS the page's claims, and whether the
 page cites the source it actually used. `sources: [cshapes-2.0]` on a page whose polygon
-came from GADM is a lie this gate cannot see. Nor does it require an inline citation:
+came from GADM is a lie this gate cannot see -- arm D only rules out the field being
+meaningless, not its being wrong. Nor does it require an inline citation:
 requiring one would have flagged 115 pages of which 113 do cite something, and a gate that
 is 98% false alarm gets ignored.
 
@@ -167,6 +179,34 @@ def main() -> int:
         print(f"FAIL: no polity pages found under {POLITIES}")
         return 1
 
+    # ---------- D: polygon_source names a registered slug, or exactly `none` ----------
+    import re as _re
+    import yaml as _yaml
+    with open(os.path.join(REPO, "scripts/sources.yaml"), encoding="utf-8") as fh:
+        _y = _yaml.safe_load(fh)["sources"]
+    poly_slugs = set(_y) if isinstance(_y, dict) else {
+        x if isinstance(x, str) else (x.get("slug") or x.get("id")) for x in _y}
+    bad_poly = []
+    for page in pages:
+        fm = open(page, encoding="utf-8").read().split("---", 2)
+        if len(fm) < 3:
+            continue
+        # `[ \t]*`, NOT `\s*`: `\s` matches newlines, so on a page whose field is empty the
+        # pattern happily captures the NEXT line and reports it as the value. That produced two
+        # phantom violations reading `polygon_feature_id:` before I anchored it.
+        m = _re.search(r"^polygon_source:[ \t]*(.*)$", fm[1], _re.M)
+        if not m:
+            continue
+        val = m.group(1).strip()
+        if val == "none" or val in poly_slugs:
+            continue
+        bad_poly.append((os.path.basename(page), val))
+    print(f"D. polygon_source vocabulary: {len(pages)} page(s) checked against "
+          f"{len(poly_slugs)} registered slug(s) plus `none`; {len(bad_poly)} outside it")
+    for name, val in bad_poly[:8]:
+        print(f"   FAIL {name}: polygon_source {val!r} names no source in scripts/sources.yaml "
+              f"and is not `none`")
+
     # slug -> [pages, data-receiving pages, layer-B rows]
     unregistered = defaultdict(lambda: [0, 0, 0])
     no_evidence = {}
@@ -223,10 +263,10 @@ def main() -> int:
               f"inline ../sources/ citation and no `sources:` frontmatter -- the "
               f"verification pipeline reads this page as evidence and it names none")
 
-    fail = bool(new or gone or no_evidence)
+    fail = bool(new or gone or no_evidence or bad_poly)
     print(f"\n{'FAIL' if fail else 'PASS'}: {len(new)} unbaselined unregistered slug(s), "
           f"{len(gone)} stale baseline entry(ies), {len(no_evidence)} page(s) naming no "
-          f"source at all")
+          f"source at all, {len(bad_poly)} polygon_source value(s) naming nothing")
     return 1 if fail else 0
 
 
