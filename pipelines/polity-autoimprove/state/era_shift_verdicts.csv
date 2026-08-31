@@ -311,7 +311,6 @@ iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1936,,tonnes,71700,0,,294.7,
 iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1937,,tonnes,55900,0,,294.7,189.684425,impossible_yield_zero_area,True
 iia,austria,AUT-1919-2025,hops,,1934-1938,tonnes,4900,,,327.5,14.961832,no_area_level_consistent,False
 iia,ecuador,ECU-1800-1942,"tobacco, unmanufactured",,1934-1938,tonnes,69000,,,12751.05,5.411319,no_area_level_consistent,False
-iia,germany,DEU-1945-1949,"tobacco, unmanufactured",1945,,tonnes,0,,,25833.9,0,no_area_level_consistent,False
 iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1939,,tonnes,5800,,,654,8.868502,no_area_level_consistent,False
 iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1940,,tonnes,2900,,,654,4.434251,no_area_level_consistent,False
 iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1942,,tonnes,2800,,,654,4.281346,no_area_level_consistent,False
@@ -331,6 +330,7 @@ iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1943,,tonnes,18400,,,20000,0
 iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1944,,tonnes,16900,,,20000,0.845,no_area_level_consistent,False
 iia,reunion,REU-1816-1946,"tobacco, unmanufactured",1945,,tonnes,22300,,,20000,1.115,no_area_level_consistent,False
 iia,romania,ROU-1920-1940,hops,,1934-1938,tonnes,1900,,,1770.3,1.073264,no_area_level_consistent,False
+iia,germany,DEU-1945-1949,"tobacco, unmanufactured",1945,,tonnes,0,,,25833.9,0,no_area_level_drop,True
 iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1943,,tonnes,271300,,,1903.2,142.549391,no_area_level_shift,True
 iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1944,,tonnes,256500,,,1903.2,134.773014,no_area_level_shift,True
 iia,angola,ANG-1905-1975,"tobacco, unmanufactured",1945,,tonnes,267800,,,1903.2,140.710383,no_area_level_shift,True

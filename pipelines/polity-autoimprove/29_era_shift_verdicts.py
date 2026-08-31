@@ -33,6 +33,8 @@ THE CLASSES, strongest evidence first:
                               that item. Weaker than a yield test -- it assumes the label's own history
                               is the right baseline -- but it needs no area, which is what makes the 87
                               unpaired rows reachable at all.
+  no_area_level_drop          the SAME 30x against the same baseline, on the other side: <= 1/30 of the
+                              label's own pre-1934 median. See "THE RATIO TEST WAS ONE-SIDED" below.
   high_yield_3to20            elevated and not impossible. NOT convicted: a 5 t/ha tobacco yield is
                               wrong for a field but not arithmetically impossible, and calling it a
                               defect would be the magnitude argument this repo has been burned by.
@@ -42,9 +44,60 @@ THE CLASSES, strongest evidence first:
                               convicted -- an untestable row is not an innocent one, and saying so is
                               the difference between this table and a correction list.
 
+THE RATIO TEST WAS ONE-SIDED, AND A VALUE COULD NOT BE TOO SMALL TO FAIL. The level arm convicted at
+`ratio >= 30` and filed EVERYTHING else `no_area_level_consistent`. There was no filter to grep for --
+the exoneration was the `else` branch -- so the shape only shows up in what the table says about a
+particular row:
+
+    germany / tobacco, unmanufactured / 1945    production 0    baseline 25,833.9    ratio 0.0
+    verdict: no_area_level_consistent
+
+A production of ZERO filed as consistent with a 25,834 t baseline. Nothing about the row was mislabelled;
+the classifier simply had no way to say "too small", so the maximal disagreement a ratio can express fell
+into the class reserved for agreement. `no_area_level_drop` is that missing arm, at the same 30x, and
+`LEVEL_DROP = 1 / LEVEL_SHIFT` rather than a second tunable so the two sides cannot drift apart.
+
+THE BOUND IS NOT FITTED, and the way to show that is that it does not matter. Measured over all 393 era
+rows that carry a ratio:
+
+    ratio <= 1/100    1 row        ratio <= 1/10     1 row
+    ratio <= 1/30     1 row        ratio <= 1/3      3 rows
+
+and the two extra rows at 1/3 (micronesia 1936 and 1937, at 0.296 and 0.148) are ALREADY convicted by the
+zero-area arm, which runs first. So every bound from 1/100 to 1/3 convicts the same single row today. A
+threshold whose live population is invariant across a 33x range of the threshold is not tuned to its
+population.
+
+WHY THAT ROW IS CONVICTED AND NOT MERELY FLAGGED, on evidence outside this table. In the raw extract
+germany's tobacco production series in `iia_1939_45` runs 1939-1943 and then jumps to a 1945 cell of 0,
+skipping 1944 -- while the AREA series beside it runs 1939-1944 with no gap and no 1945 cell at all. And
+germany has exactly ONE cell at 1945 in that entire volume, against 20 to 36 cells in every other year
+from 1939 to 1944. A country that reported nothing else in 1945 did not report a tobacco harvest of
+precisely zero; the cell sits at the table's edge, and it is the edge rather than a harvest. What is
+convicted is therefore the CELL, not a claim about German output.
+
+The 1945 zeros are NOT a general blank-as-zero artefact of that volume, and the check that would have
+made them one fails: 1945 carries 7 zeros in 973 production cells (0.72%), no higher than 1939-1944
+(0.22%-0.57%), so "the last year was read as blank" is refuted at the volume level. The association is
+with a THIN year-block, not with the year: among labels holding exactly one 1945 cell, 3 of 30 are zero;
+among labels with a populated 1945 block, 10 of 1,607. That is n=3 and stated as an association.
+
+TWO THINGS THIS ARM DOES NOT REACH. `netherlands / tobacco / 1945` is also a zero, sits in a POPULATED
+1945 block (20 cells), and is the only netherlands tobacco cell in the whole corpus -- so it has no
+pre-era baseline, no ratio, and stays `untestable`. And a row with area EXACTLY 0 and production 0 would
+escape the zero-area arm, whose guard is `production > 0`; with this arm it now lands on the ratio test
+instead of on `no_area_level_consistent`, though the live population of that shape is 0 rows today.
+
+The falsy-zero rule matters here and is not decoration: `ratio` for the germany row is 0.0, so any
+`if ratio:` or `ratio or default` writes it out of existence. It is tested with `is not None`
+throughout, and this repo has already turned a real 0.0 into 1.0 in exactly this measurement.
+
 WHAT THIS DOES NOT DO. It does not write corrections and it does not name a factor per row. The implied
 factors run 21x to 293x with a median of 68x, so no single divisor fits, and `yield_series_corrections.csv`
-remains the place a repair is proposed with its anchor. This is the evidence a repair would rest on.
+remains the place a repair is proposed with its anchor. This is the evidence a repair would rest on. The
+per-row VOLUME attribution -- which yearbook edition each era cell came from, and the 100x/10x factor
+measured from that label's own volume overlap -- is `40_era_volume_attribution.py`, which needs the raw
+extract and therefore cannot live here.
 
 Usage:
   python3 pipelines/polity-autoimprove/29_era_shift_verdicts.py            # report only
@@ -72,11 +125,15 @@ ERA_FROM = 1934                 # the boundary issue 414 explains: the last year
 IMPOSSIBLE_YIELD = 20.0         # t/ha; an order of magnitude above the crop's ceiling, not a fitted value
 HIGH_YIELD = 3.0
 LEVEL_SHIFT = 30.0              # x the label's own pre-era median
+# THE OTHER SIDE OF THE SAME TEST, derived rather than tuned. A second free constant could be edited
+# to 0.0 and the low arm would silently stop firing while the high arm kept working.
+LEVEL_DROP = 1.0 / LEVEL_SHIFT
 
 FIELDS = ("source", "label", "whep_code", "item", "year", "period", "unit", "production", "area_ha",
           "implied_yield", "own_pre_era_median", "ratio_to_own", "verdict", "convicted")
 
-CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift"}
+CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift",
+              "no_area_level_drop"}
 
 
 def _n(x, nd=6):
@@ -151,6 +208,10 @@ def build(matched: str) -> list[dict]:
             v = "plausible_yield"
         elif ratio is not None and ratio >= LEVEL_SHIFT:
             v = "no_area_level_shift"
+        # `ratio is not None`, never `if ratio`: the one row this arm convicts has ratio 0.0, and a
+        # truthiness test here reinstates exactly the exoneration the arm exists to remove.
+        elif ratio is not None and ratio <= LEVEL_DROP:
+            v = "no_area_level_drop"
         elif ratio is not None:
             v = "no_area_level_consistent"
         else:
@@ -199,7 +260,8 @@ def main() -> int:
 
     rows = build(args.matched)
     order = ("impossible_yield_zero_area", "impossible_yield", "no_area_level_shift",
-             "high_yield_3to20", "plausible_yield", "no_area_level_consistent", "untestable")
+             "no_area_level_drop", "high_yield_3to20", "plausible_yield",
+             "no_area_level_consistent", "untestable")
     vc = {k: sum(1 for r in rows if r["verdict"] == k) for k in order}
     conv = sum(1 for r in rows if r["convicted"] == "True")
     print(f"{len(rows)} {SOURCE} tobacco/hops production row(s) from {ERA_FROM}, "
