@@ -2560,6 +2560,43 @@ def mutate_constant_run_shortened(root, gpd, make_valid, affinity):
             f"to be a rounding floor stops being pinned while the total stays put")
 
 
+def mutate_period_screen_leaked_to_wheat(root, gpd, make_valid, affinity):
+    """Relabel one screened row's item as `wheat`, as a widened screen scope would leave it.
+
+    The 500,000 t threshold in this table means something only because it is confined to tobacco and
+    hops: against a world tobacco total of 2-3 Mt a 500 kt national figure is impossible, while 500 kt
+    of wheat is an ordinary harvest. So the danger here is not a wrong count -- it is the screen
+    reaching an item where the threshold carries no information, which would publish large harvests as
+    defects and read as the defect class growing.
+
+    That regression is invisible in every other signal, which is why the mutation rewrites an item in
+    place rather than adding a row. The row keeps its period, volume, value and flag, so the row total
+    stays 6,163, the screened total stays 341, all four per-period screen counts stay put, the
+    late-volume count stays 3,602 and the two clean-volume exonerations are untouched. Only arm E can
+    see it.
+
+    It picks a row that is NOT implausible and sits in a LATE volume, so the mutation cannot add a
+    clean-volume hit (arm G) or move the era-scope pins (arm H) and make the case pass for the wrong
+    reason. Verified: on the committed table this fires arm E and nothing else.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/period_volume_provenance.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["implausible_tobacco_hops"] == "no"
+                  and r["volume_is_late"] == "yes" and r["era_screened"] == "no")
+    was = victim["item"]
+    victim["item"] = "wheat"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"relabelled the {victim['country']} / {was} {victim['period']} row "
+            f"({victim['value']} t, {victim['volume']}) as `wheat`, so the 500,000 t tobacco screen "
+            f"now covers a crop for which 500 kt is an ordinary harvest, while every count in the "
+            f"table stays exactly where it was pinned")
+
+
 def mutate_provenance_raw_product_erased(root, gpd, make_valid, affinity):
     """Blank the raw_product on every attributable row, as an index built per LABEL would leave it.
 
@@ -4896,6 +4933,14 @@ CASES = (
         "values stops being flagged and reads as a genuinely unchanging series",
     ),
     (
+        "validate_period_volume_provenance.py",
+        mutate_period_screen_leaked_to_wheat,
+        "outside tobacco/hops",
+        "a magnitude screen calibrated for tobacco leaking to an item whose ordinary harvests exceed "
+        "its threshold, which would publish them as defects while every pinned count in the table "
+        "stays exactly where it is",
+    ),
+    (
         "validate_isolated_spikes.py",
         mutate_spike_factor_rewritten,
         "does not match its own values",
@@ -5932,6 +5977,11 @@ WRITABLE = {
     "validate_constant_run_verdicts.py": (
         "pipelines/polity-autoimprove/state/source_value_precision.csv",
         "pipelines/polity-autoimprove/state/constant_runs.csv",
+    ),
+    # The case rewrites period_volume_provenance.csv in place (it edits the item column), so a real
+    # copy rather than a symlink into the tracked table.
+    "validate_period_volume_provenance.py": (
+        "pipelines/polity-autoimprove/state/period_volume_provenance.csv",
     ),
     # The case rewrites isolated_spikes.csv in place (it edits the factor column), so it must be a
     # real copy rather than a symlink into the tracked table.
