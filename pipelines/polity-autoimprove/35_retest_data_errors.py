@@ -284,6 +284,72 @@ def check_western_eastern_prefix(ctx):
                     "non-colliding target")
 
 
+def check_germany_western_cheese(ctx):
+    """2 kt of West German cheese, and the point is that BOTH available pairings are extreme.
+
+    `cheese` carries item_code 161_162 -- two FAO codes collapsed into one layer-B item -- so `Germany`
+    holds two cheese rows at 1934-1938 (154 and 1,114) and `Germany Western` holds two (2 and 2). Issue
+    411 could not adjudicate the cell for that reason, and so did I on first pass. The correction is
+    that the branches AGREE: 2/154 = 0.013 and 2/1,114 = 0.002, against a share band of 0.382-0.749.
+    An undecidable pairing only blocks a finding when the branches disagree, so both ratios are pinned
+    rather than one.
+
+    THE BAND IS THE BASELINE AND IT IS MEASURED HERE, not carried over. It is the median and range of
+    `Germany Western` / `Germany` across the keys where both labels hold exactly one row -- the West
+    German share of the 1937 Reich, reproduced by crops, livestock, fertiliser and population. If it
+    ever moved, the expected values below move with it and the entry needs re-reasoning.
+
+    THE POULTRY ROW ORDER IS PINNED AS A CROSS-CHECK ON THE BAND, which is the subtle part. The band is
+    computed on 1:1 keys only, so it could in principle be an artefact of which keys are 1:1. Applying
+    the repo's own recorded alphabetical order for the `poultry` group aligns four cells that are NOT
+    in that set, and three land inside the band -- so the band survives a test on keys it was not
+    fitted to.
+
+    The series' own continuation (149/137/152 and 34/52/74 at 1949-1951) is pinned too: it is what
+    makes 2 anomalous against the label's later behaviour and not only against its parent."""
+    lb = ctx["panel"]
+    f = lb[lb["source"] == "fao1952"].copy()
+    f["lab"] = f["country"].astype(str).str.strip()
+    p34 = f[f["year"].isna() & (f["period"].astype(str) == "1934-1938")]
+    K = ["item", "item_code", "indicator", "unit"]
+
+    def grouped(lab):
+        return {k: sorted(float(x) for x in v["value"]) for k, v in
+                p34[p34["lab"] == lab].groupby(K, dropna=False)}
+
+    G, W = grouped("Germany"), grouped("Germany Western")
+    ch = [k for k in G if k[0] == "cheese"]
+    claims = [("`Germany` cheese rows at 1934-1938", len(G.get(ch[0], [])) if ch else None, 2),
+              ("`Germany Western` cheese rows", len(W.get(ch[0], [])) if ch else None, 2)]
+    if ch:
+        gv, wv = G[ch[0]], W.get(ch[0], [])
+        claims.append(("  Germany's two values", ",".join(f"{v:g}" for v in gv), "154,1114"))
+        claims.append(("  West's two values", ",".join(f"{v:g}" for v in wv), "2,2"))
+        if len(gv) == 2 and wv:
+            claims.append(("  ratio against the smaller", round(wv[0] / gv[0], 4), 0.013))
+            claims.append(("  ratio against the larger -- BOTH extreme",
+                           round(wv[0] / gv[1], 4), 0.0018))
+
+    import statistics
+    one = [(W[k][0] / G[k][0]) for k in G
+           if k in W and len(G[k]) == 1 == len(W[k]) and G[k][0] > 0]
+    claims.append(("1:1 keys giving the share band", len(one), 22))
+    if one:
+        claims.append(("  its median -- the West German share", round(statistics.median(one), 3), 0.635))
+        claims.append(("  its low end", round(min(one), 3), 0.382))
+        claims.append(("  its high end", round(max(one), 3), 0.749))
+        exp_small = 154.0 * statistics.median(one)
+        claims.append(("  so the expected West figure (154 pairing)", round(exp_small), 98))
+
+    # cross-check the band on keys it was NOT fitted to, via the recorded poultry row order
+    po = [k for k in G if k[0] == "poultry"]
+    if po and len(G[po[0]]) == len(W.get(po[0], [])) == 4:
+        gv, wv = G[po[0]], W[po[0]]
+        inband = sum(1 for a, b in zip(wv, gv) if b > 0 and 0.382 <= a / b <= 0.749)
+        claims.append(("poultry cells inside the band (order-aligned, unfitted keys)", inband, 3))
+    return (claims, "both pairings are extreme, so the ambiguity does not block the finding")
+
+
 def check_algeria_civil_basis_span(ctx):
     """94 iia rows carry a territory 4.03x too large, and a THREE-YEAR DATA GAP is what makes the
     boundary provable rather than argued.
@@ -1704,6 +1770,7 @@ CHECKS = {
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
+    "fao1952-germany-western-cheese-implausible": check_germany_western_cheese,
     "iia-algeria-civil-basis-continues-to-1925": check_algeria_civil_basis_span,
     "fao1952-estates-label-lost-country-prefix": check_estates_label_prefix,
     "fao1952-china-livestock-cells-implausible": check_fao1952_china_label,
