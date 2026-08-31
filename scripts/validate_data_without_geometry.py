@@ -296,6 +296,50 @@ BASELINE = frozenset({
     # Canada step before 1932-1948; the legacy polities_polygons.gpkg's CAN-1866-1948 is modern
     # Canada at 9,553,644 km2. Both Canada rows need a source this repo does not have.
     "CAN-1866-1870",
+    # 418 rows, the LARGEST block this class has ever held (the previous largest was
+    # CHL-1810-1884's 168, and TRS's 78 is the largest of the five above). Added 2026-08-31
+    # with the row itself, under the maintainer's decision on issue #400 case 2: the three CIVIL
+    # DEPARTMENTS of northern Algeria (Alger, Oran, Constantine), which is the basis French
+    # colonial agricultural statistics were collected on. IIA states the territory's area itself
+    # -- 575,289 / 575,511 / 576,000 km2 across its 1909, 1925 and 1929 editions, agreeing to
+    # 0.12% -- so the row carries a declared area with no geometry, the CAN-1866-1870 /
+    # PRY-1811-1870 / SAC-1935-1947 shape. Accepting 418 rows into this class is a real cost and
+    # is the lesser one: before this row they sat on DZA-1902-1919's 2,442,683 km2 polygon, so
+    # every per-km2 use of them was wrong by 4.244x with a POLYGON attached to make it look fine.
+    # A declared area with no geometry is at least visible to the check that reads this file.
+    #
+    # NO SOURCE HAS IT, tested against the actual files in data/geodata and against BOTH
+    # constructibility forms this baseline's own history says to try:
+    #
+    #   * THE OPERATION FORM fails on its operand, not on its definition. The departments ARE
+    #     definable as "the pre-1902 colony minus the Territoires du Sud" -- CShapes feature 615
+    #     at 1886 is 655,282 km2 and the stated 575,511 is 1.139x smaller, so the 79,771 km2 to
+    #     subtract is even quantified -- but nothing fetched delineates the internal civil/military
+    #     line, so there is no geometry to subtract.
+    #   * THE DIFFERENCE FORM fails on direction. The only step any fetched source records for
+    #     Algeria in this window is 1902, and it ADDS the Sahara (655,282 -> 2,442,683 km2). No
+    #     source records a 1902 step in which the civil territory shrinks.
+    #
+    # Per source: CShapes 2.0 carries cowcode 615 in five steps (1886-1901, 1901-1902, 1902-1919,
+    # 1919-1962, 1962-2019), every one the whole colony, and no sub-national Algerian feature at
+    # any step. GADM 4.1 AS FETCHED HAS NO ALGERIA AT ALL -- 0 features where GID_0='DZA' at adm0,
+    # adm1 and adm2, and no gadm41_DZA.gpkg in the per-country set -- so this is the TRS shape: a
+    # data-acquisition task, not a rebinding one. Cliopatria's 15,690 features contain no Algerian
+    # sub-polity (its 46 `alger|oran|constantine` name matches are the Principality of ORANge and
+    # the Cimmerian Bosporus). CShapes-Europe is Europe only; Paine 2024 is precolonial;
+    # subnational_polygons.gpkg's 91 features hold 0 Algerian units; and the legacy
+    # polities_polygons.gpkg's ALG-1800-1902 measures 655,581 km2, i.e. the whole pre-1902 colony
+    # again, 0.05% from CShapes' figure for the same thing.
+    #
+    # THE 1.139x PROXY IS REFUSED RATHER THAN MISSING, which is the part worth keeping visible.
+    # DZA-1886-1902's 1886 CShapes polygon is on disk and is only 14% out, against the 4.244x this
+    # row exists to escape. It is not bound because it is a DIFFERENT TERRITORY, not a coarse
+    # version of this one: the pre-1902 colony still contained precisely the land the 1902
+    # reorganisation removed from the reporting basis. Binding it would also put a 1886 vintage on
+    # a 1902-1919 span and share one feature between two rows this database is asserting are not
+    # the same territory. Unblocking this needs GADM Algeria or a colonial-era departmental GIS,
+    # tracked as oq-dza-cvd-polygon.
+    "DZA-CVD-1902-1919",
 })
 
 

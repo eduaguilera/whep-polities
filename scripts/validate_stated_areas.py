@@ -209,12 +209,23 @@ BASELINE = {
         "1938 edition drops to 9,870,000 once Mongolia is excluded. Our polygon is effective "
         "Republican control, which is the right basis for production data.",
     ("CHN-1932-1945", "iia"): "same as CHN-1921-1932, against the 1932 edition's 11,084,000.",
-    ("DZA-1902-1919", "iia"):
-        "SCOPE, and the more interesting direction. IIA states 575,511 km2 -- NORTHERN Algeria, "
-        "the three civil departments -- while our polygon is 2,442,844 including the Southern "
-        "Territories. Both are 'Algeria'; only one is the basis French agricultural statistics "
-        "were collected on. A per-km2 denominator using our polygon understates by 4.2x for any "
-        "series the yearbook drew from the civil departments.",
+    # DZA-1902-1919/iia WAS HERE AND IS RESOLVED, 2026-08-31 (issue #400 case 2). It read: "SCOPE,
+    # and the more interesting direction. IIA states 575,511 km2 -- NORTHERN Algeria, the three
+    # civil departments -- while our polygon is 2,442,844 including the Southern Territories."
+    # Every word of that was right, and the fix was not a polygon: the maintainer decided on #400
+    # that a statistical reporting unit which was not a sovereign state gets its own row, so
+    # DZA-CVD-1902-1919 now exists and IIA's `algerie` for 1902-1918 resolves there. This pair
+    # therefore has ZERO statements left and the bidirectional arm demanded the entry go.
+    #
+    # NO ENTRY IS ADDED FOR THE NEW ROW, deliberately. `analyse()` compares a stated area only
+    # against a polity that HAS geometry (`if not code or code not in ours: continue`), and
+    # DZA-CVD-1902-1919 has none -- no source in data/geodata carries the civil departments, which
+    # is recorded and measured per source on its wiki page. So the pair is not evaluated at all and
+    # a baseline entry for it would be stale from the day it was written, in exactly the way this
+    # dict's bidirectionality exists to prevent. The reasoning now lives on
+    # wiki/polities/dza-cvd-1902-1919.md and wiki/polities/dza-1902-1919.md, and the consequence --
+    # that source_stated_area_basis.csv loses a published `review` row along with the problem it
+    # warned about -- is written on both.
     ("ETH-1907-1936", "iia"):
         "OURS IS RIGHT. Ethiopia is ~1,104,300 km2 and our polygon is 1,127,533. IIA's 900,000 "
         "is a pre-survey estimate from before the interior was mapped.",

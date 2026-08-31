@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "38bb5e19ae3917bbe85f9f670dc67bd65b1ee87aa4e14e8a7684aaa0f4a57b4d",
+ "identity_sha256": "1ab1675b89cf93db64fe7ddb32122c4ebe96a084234f30465785d4abd66b5dac",
  "counts": {
-  "total": 781,
-  "live": 737,
+  "total": 782,
+  "live": 738,
   "dead": 44
  },
  "dead_status": [
@@ -172,8 +172,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "4d6ced75d6e8d485ffa3e6abba3143c5e96f82f305264c1eff0e97fb404dfe62",
-  "aliases": 1003,
+  "sha256": "1605eff0055cc0b66cabbc5c5f307d44b3ff22a49864ee5b2262f90e0069dfda",
+  "aliases": 1005,
   "labels": 524,
   "sources": [
    "crops-manure-n",
@@ -201,13 +201,13 @@
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 399,
-  "polities": 270,
+  "bases": 398,
+  "polities": 269,
   "sources": [
    "fao",
    "iia"
   ],
-  "review_flagged": 26,
+  "review_flagged": 25,
   "why": "Per (polity, source), the area the SOURCE stated for its own reporting unit beside the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more and are BOTH defensible -- a per-km2 denominator has to choose which territory the numerator was collected over. An empty `note` on such a row means no reason has been recorded for THAT source, not that the divergence is understood."
  },
  "source_flow_flags": {
@@ -1001,6 +1001,7 @@
   "DZA-1902-1919",
   "DZA-1919-1962",
   "DZA-1962-2025",
+  "DZA-CVD-1902-1919",
   "ECU-1800-1942",
   "ECU-1942-2025",
   "EGB-1830-1914",
