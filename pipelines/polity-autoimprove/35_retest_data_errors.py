@@ -1260,7 +1260,161 @@ def check_constant_run_placeholders(ctx):
                  "placeholder shape pointing opposite ways")
 
 
+def _iia_grid(pa, vol, unit, step):
+    """`k/n` non-zero values in (vol, unit) that are exact multiples of `step`."""
+    import numpy as np
+    v = pa[(pa["yearbook"] == vol) & (pa["unit"] == unit) & (pa["value"] != 0)]["value"].to_numpy(float)
+    r = np.mod(v, step)
+    return f"{int((np.isclose(r, 0.0) | np.isclose(r, step)).sum())}/{len(v)}"
+
+
+def _iia_paired(pa, vol):
+    """(cells, bands): one row per (country, product, year) in `vol` with both axes, and the
+    volume's own 10th-90th percentile yield band per product measured on the both-positive cells."""
+    import numpy as np
+    v = pa[(pa["yearbook"] == vol) & pa["_y"].notna()].copy()
+    v["_y"] = v["_y"].astype(int)
+    a = v[v["_v"] == "area"].groupby(["_c", "_p", "_y"])["value"].max()
+    p = v[v["_v"] == "production"].groupby(["_c", "_p", "_y"])["value"].max()
+    j = pd.concat({"area": a, "prod": p}, axis=1).reset_index()
+    both = j[(j["area"] > 0) & (j["prod"] > 0)].copy()
+    both["_y2"] = both["prod"] / both["area"]
+    bands = {prod: (float(np.percentile(g, 10)), float(np.percentile(g, 90)), len(g))
+             for prod, g in both.groupby("_p")["_y2"] if len(g) >= 8}
+    return j, bands
+
+
+def check_zero_refuted_by_paired_axis(ctx):
+    """The 11 zeros the volume's own grid cannot produce, and the 278 in `iia_1938_39` that it can.
+
+    RE-DERIVED HERE RATHER THAN READ from `state/zero_grid_floor.csv`, so a change in
+    40_zero_grid_floor.py that moves a verdict fails this instead of silently agreeing with itself.
+    The two implementations must agree numerically while sharing no code.
+
+    BOTH DIRECTIONS ARE PINNED, and the negative half is the load-bearing one. The entry's claim is
+    not only that 11 cells are refuted -- it is that `iia_1938_39`, which holds 940 of the extract's
+    1,102 production/area zeros, refutes NONE. If a re-extraction, a grid change or a threshold change
+    turned any of its 251 grid-explicable cells into a refutation, the entry's reading of issue 414
+    (a resolution floor, not blank cells) would be wrong while every per-cell figure below still
+    reproduced. So the verdict census is asserted as well as the cells.
+
+    The grid measurement is pinned too, because the whole test rests on it: half a grid step is the
+    largest value that can round to zero, so if the volumes were NOT on a 1000/100 grid the bounds
+    would be wrong in the direction that manufactures refutations.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    pa = raw[raw["_v"].isin(("production", "area")) & raw["value"].notna()].copy()
+    pa["_y"] = pd.to_numeric(pa["year"], errors="coerce")
+    out = [("iia_1938_39 ha on a 1000-grid", _iia_grid(pa, "iia_1938_39", "hectares", 1000.0),
+            "4632/4634"),
+           ("iia_1938_39 t on a 100-grid", _iia_grid(pa, "iia_1938_39", "tonnes", 100.0), "8314/8991"),
+           ("iia_1939_45 ha on a 1000-grid", _iia_grid(pa, "iia_1939_45", "hectares", 1000.0),
+            "6083/6311"),
+           ("iia_1939_45 t on a 100-grid", _iia_grid(pa, "iia_1939_45", "tonnes", 100.0),
+            "9514/10235")]
+
+    CELLS = [  # volume, country, product, zero axis, year, paired value, factor outside the band
+        ("iia_1939_45", "british nigeria", "cotton: ginned", "area", 1939, 9200.0, 54.3),
+        ("iia_1939_45", "british nigeria", "cotton: ginned", "area", 1940, 13300.0, 78.5),
+        ("iia_1939_45", "british nigeria", "cotton: ginned", "area", 1941, 6600.0, 38.9),
+        ("iia_1939_45", "british nigeria", "cotton: ginned", "area", 1942, 5900.0, 34.8),
+        ("iia_1939_45", "british nigeria", "cotton: ginned", "area", 1943, 4500.0, 26.6),
+        ("iia_1939_45", "british nigeria", "cotton: ginned", "area", 1944, 2900.0, 17.1),
+        ("iia_1939_45", "french equatorial africa", "cotton: ginned", "area", 1939, 8800.0, 51.9),
+        ("iia_1939_45", "dominican republic", "tobacco", "area", 1939, 871400.0, 12.0),
+        ("iia_1939_45", "british uganda", "tobacco", "production", 1942, 5000.0, 3308.2),
+        ("iia_1939_45", "british uganda", "tobacco", "production", 1943, 5000.0, 3308.2),
+        ("iia_1939_45", "british uganda", "tobacco", "production", 1944, 3000.0, 1984.9),
+    ]
+    cache = {}
+    for vol, c, prod, zero_axis, year, paired, factor in CELLS:
+        if vol not in cache:
+            cache[vol] = _iia_paired(pa, vol)
+        j, bands = cache[vol]
+        row = j[(j["_c"] == c) & (j["_p"] == prod) & (j["_y"] == year)]
+        who = f"{c[:16]}/{prod[:10]}/{zero_axis[:4]}/{year}"
+        if len(row) != 1 or prod not in bands:
+            out.append((f"{who} present", len(row), 1))
+            continue
+        r = row.iloc[0]
+        other = "prod" if zero_axis == "area" else "area"
+        grid = 1000.0 if zero_axis == "area" else 100.0
+        p10, p90, _ = bands[prod]
+        if zero_axis == "area":
+            fac = (float(r["prod"]) / (grid / 2)) / p90
+        else:
+            fac = p10 / ((grid / 2) / float(r["area"]))
+        out.append((f"{who} zero", float(r[zero_axis if zero_axis == "area" else "prod"]), 0.0))
+        out.append((f"{who} paired", float(r[other]), paired))
+        out.append((f"{who} x outside band", round(fac, 1), factor))
+
+    # the verdict census over every testable cell, both volumes
+    counts = {}
+    for vol in ("iia_1938_39", "iia_1939_45"):
+        if vol not in cache:
+            cache[vol] = _iia_paired(pa, vol)
+        j, bands = cache[vol]
+        med = (pa[pa["value"] > 0].groupby(["yearbook", "_c", "_p", "_v"])["value"]
+               .agg(["median", "size"]))
+        # THE FALLBACK IS PART OF THE CRITERION, not of the tool. Written without it, this re-test
+        # disagreed with 40_zero_grid_floor.py on exactly one cell -- `french guadeloupe` cottonseed
+        # production, whose own volume carries only TWO positive values (100.0 and 3,884,600.0) and so
+        # has no median worth comparing against. The extract-wide series gives 12 positives with a
+        # median of 72.5, which is what makes the 3.88 Mt an outlier rather than the zero beside it a
+        # defect. A per-volume-only median leaves that cell classed `refuted` and would have this
+        # entry claiming a false zero in `iia_1938_39` on the strength of an impossible tonnage.
+        allmed = (pa[pa["value"] > 0].groupby(["_c", "_p", "_v"])["value"].agg(["median", "size"]))
+        for r in j.itertuples():
+            for zero_axis, other, grid in (("area", "prod", 1000.0), ("prod", "area", 100.0)):
+                zv, pv = getattr(r, zero_axis), getattr(r, other)
+                if not (zv == 0 and pv == pv and pv > 0):
+                    continue
+                if r._2 not in bands:
+                    v = "no_product_reference"
+                else:
+                    p10, p90, _ = bands[r._2]
+                    fac = ((float(pv) / (grid / 2)) / p90 if zero_axis == "area"
+                           else p10 / ((grid / 2) / float(pv)))
+                    v = "refuted" if fac > 10.0 else "grid_can_explain"
+                    k = (vol, r._1, r._2, "production" if other == "prod" else "area")
+                    m = None
+                    if k in med.index and int(med.at[k, "size"]) >= 4:
+                        m = float(med.at[k, "median"])
+                    elif k[1:] in allmed.index and int(allmed.at[k[1:], "size"]) >= 4:
+                        m = float(allmed.at[k[1:], "median"])
+                    if v == "refuted" and m is not None and m > 0 and float(pv) / m > 10.0:
+                        v = "paired_value_is_the_outlier"
+                counts[(vol, v)] = counts.get((vol, v), 0) + 1
+    for vol, v, want in (("iia_1938_39", "refuted", 0), ("iia_1938_39", "grid_can_explain", 253),
+                         ("iia_1938_39", "no_product_reference", 23),
+                         ("iia_1938_39", "paired_value_is_the_outlier", 2),
+                         ("iia_1939_45", "refuted", 11),
+                         ("iia_1939_45", "grid_can_explain", 2),
+                         ("iia_1939_45", "no_product_reference", 0),
+                         ("iia_1939_45", "paired_value_is_the_outlier", 0)):
+        out.append((f"{vol} {v}", counts.get((vol, v), 0), want))
+
+    # layer-B exposure: 9 rows, and the two-observation series whose mean the zero halves
+    g = lb[(lb["source"] == "iia") & lb["year"].notna()]
+    nga = g[(g["country"] == "nigeria") & (g["item"] == "cotton lint") & (g["unit"] == "ha")
+            & (g["year"] >= 1939)]
+    cog = g[(g["country"] == "congo") & (g["item"] == "cotton lint") & (g["unit"] == "ha")
+            & (g["year"] == 1939)]
+    dom = lb[(lb["source"] == "iia") & (lb["country"] == "dominican republic")
+             & (lb["item"] == "tobacco, unmanufactured") & (lb["unit"] == "ha")]
+    uga = lb[(lb["source"] == "iia") & (lb["country"] == "uganda")]
+    out += [("layer B nigeria cotton lint ha 1939+", len(nga), 7),
+            ("  of those zero", int((nga["value"] == 0).sum()), 7),
+            ("layer B congo cotton lint ha 1939", float(cog["value"].sum()), 0.0),
+            ("layer B dominican tobacco ha rows", len(dom), 2),
+            ("  their values", ";".join(f"{float(x):g}" for x in sorted(dom["value"])), "0;16000"),
+            ("layer B uganda rows (all items)", len(uga), 0)]
+    return out, ("11 refuted cells in iia_1939_45 and NONE in iia_1938_39; the negative half is what "
+                 "makes this issue 446's resolution floor rather than issue 414's blank cells")
+
+
 CHECKS = {
+    "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
     "iia-attributable-single-cell-errors": check_attributable_single_cells,
     "constant-runs-two-proven-placeholders": check_constant_run_placeholders,
     "iia-corrupted-country-labels": check_corrupted_country_labels,
