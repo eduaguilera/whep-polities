@@ -1,0 +1,292 @@
+volume,country,product,variable,unit,year,grid,verdict,paired_variable,paired_value,implied_yield_bound,ref_p10,ref_p90,ref_n,factor_outside,paired_vs_series_median,series_zeros,series_positives
+iia_1939_45,british uganda,tobacco,production,tonnes,1942,100,refuted_by_paired_axis,area,5000,0.01,33.0824,145.3879,369,3308.2366,1.6667,3,0
+iia_1939_45,british uganda,tobacco,production,tonnes,1943,100,refuted_by_paired_axis,area,5000,0.01,33.0824,145.3879,369,3308.2366,1.6667,3,0
+iia_1939_45,british uganda,tobacco,production,tonnes,1944,100,refuted_by_paired_axis,area,3000,0.0167,33.0824,145.3879,369,1984.9419,1,3,0
+iia_1939_45,british nigeria,cotton: ginned,area,hectares,1940,1000,refuted_by_paired_axis,production,13300,26.6,0.0667,0.3389,329,78.4839,2.0152,7,0
+iia_1939_45,british nigeria,cotton: ginned,area,hectares,1939,1000,refuted_by_paired_axis,production,9200,18.4,0.0667,0.3389,329,54.2896,1.3939,7,0
+iia_1939_45,french equatorial africa,cotton: ginned,area,hectares,1939,1000,refuted_by_paired_axis,production,8800,17.6,0.0667,0.3389,329,51.9292,0.7652,1,0
+iia_1939_45,british nigeria,cotton: ginned,area,hectares,1941,1000,refuted_by_paired_axis,production,6600,13.2,0.0667,0.3389,329,38.9469,1,7,0
+iia_1939_45,british nigeria,cotton: ginned,area,hectares,1942,1000,refuted_by_paired_axis,production,5900,11.8,0.0667,0.3389,329,34.8162,0.8939,7,0
+iia_1939_45,british nigeria,cotton: ginned,area,hectares,1943,1000,refuted_by_paired_axis,production,4500,9,0.0667,0.3389,329,26.5547,0.6818,7,0
+iia_1939_45,british nigeria,cotton: ginned,area,hectares,1944,1000,refuted_by_paired_axis,production,2900,5.8,0.0667,0.3389,329,17.113,0.4394,7,0
+iia_1939_45,dominican republic,tobacco,area,hectares,1939,1000,refuted_by_paired_axis,production,871400,1742.8,33.0824,145.3879,369,11.9872,0.6371,1,0
+iia_1938_39,french guadeloupe,cottonseed,area,hectares,1934,1000,paired_value_is_the_outlier,production,3884600,7769.2,0.15,0.6096,266,12744.6939,53580.6897,3,0
+iia_1938_39,british antigua,cottonseed,area,hectares,1934,1000,paired_value_is_the_outlier,production,14400,28.8,0.15,0.6096,266,47.2439,72,4,2
+iia_1938_39,australia,citrus fruits: other,area,hectares,1933,1000,no_product_reference,production,1700,,,,0,,0.85,5,0
+iia_1938_39,australia,citrus fruits: other,area,hectares,1934,1000,no_product_reference,production,1900,,,,0,,0.95,5,0
+iia_1938_39,australia,citrus fruits: other,area,hectares,1935,1000,no_product_reference,production,2100,,,,0,,1.05,5,0
+iia_1938_39,australia,citrus fruits: other,area,hectares,1936,1000,no_product_reference,production,2100,,,,0,,1.05,5,0
+iia_1938_39,australia,citrus fruits: other,area,hectares,1937,1000,no_product_reference,production,2700,,,,0,,1.35,5,0
+iia_1938_39,british cyprus,citrus fruits: sweet limes,area,hectares,1935,1000,no_product_reference,production,200,,,,0,,1,4,0
+iia_1938_39,british cyprus,citrus fruits: sweet limes,area,hectares,1936,1000,no_product_reference,production,200,,,,0,,1,4,0
+iia_1938_39,british dominica,citrus fruits: limes,area,hectares,1933,1000,no_product_reference,production,2600,,,,0,,1,3,2
+iia_1938_39,british dominica,citrus fruits: limes,area,hectares,1934,1000,no_product_reference,production,2000,,,,0,,0.7692,3,2
+iia_1938_39,british dominica,citrus fruits: limes,area,hectares,1935,1000,no_product_reference,production,2000,,,,0,,0.7692,3,2
+iia_1938_39,british montserrat,citrus fruits: limes,area,hectares,1933,1000,no_product_reference,production,600,,,,0,,1.2,2,0
+iia_1938_39,british montserrat,citrus fruits: limes,area,hectares,1934,1000,no_product_reference,production,500,,,,0,,1,2,0
+iia_1938_39,british northern rhodesia,"citrus fruits: lemons, other",area,hectares,1936,1000,no_product_reference,production,100,,,,0,,,5,0
+iia_1938_39,british northern rhodesia,"citrus fruits: lemons, other",area,hectares,1937,1000,no_product_reference,production,100,,,,0,,,5,0
+iia_1938_39,british saint lucia,citrus fruits: limes,area,hectares,1933,1000,no_product_reference,production,7100,,,,0,,1.136,1,2
+iia_1938_39,british saint vincent,cottonseed: sea island,area,hectares,1933,1000,no_product_reference,production,100,,,,0,,0.2,1,5
+iia_1938_39,french algeria,"citrus fruits: lemons, other",area,hectares,1933,1000,no_product_reference,production,3900,,,,0,,1.0263,5,0
+iia_1938_39,french algeria,"citrus fruits: lemons, other",area,hectares,1934,1000,no_product_reference,production,3400,,,,0,,0.8947,5,0
+iia_1938_39,french algeria,"citrus fruits: lemons, other",area,hectares,1935,1000,no_product_reference,production,3500,,,,0,,0.9211,5,0
+iia_1938_39,french algeria,"citrus fruits: lemons, other",area,hectares,1936,1000,no_product_reference,production,3800,,,,0,,1,5,0
+iia_1938_39,french algeria,"citrus fruits: lemons, other",area,hectares,1937,1000,no_product_reference,production,4000,,,,0,,1.0526,5,0
+iia_1938_39,french senegal,citrus fruits,area,hectares,1933,1000,no_product_reference,production,100,,,,0,,1,2,0
+iia_1938_39,french senegal,citrus fruits,area,hectares,1934,1000,no_product_reference,production,100,,,,0,,1,2,0
+iia_1939_45,british kenya,beans: dried,production,tonnes,1942,100,grid_can_explain,area,2000,0.025,0.1443,1.3832,233,5.771,2,2,0
+iia_1938_39,british cyprus,sesame,production,tonnes,1933,100,grid_can_explain,area,1000,0.05,0.1925,0.8883,148,3.851,1,1,5
+iia_1938_39,belgium,vineyards: all,area,hectares,1936,1000,grid_can_explain,production,11800,23.6,1.5278,7.7154,110,3.0588,1.1626,4,0
+iia_1938_39,british ceylon,cottonseed,production,tonnes,1933,100,grid_can_explain,area,1000,0.05,0.15,0.6096,266,3.0,1,1,3
+iia_1939_45,british kenya,beans: dried,production,tonnes,1943,100,grid_can_explain,area,1000,0.05,0.1443,1.3832,233,2.8855,1,2,0
+iia_1938_39,belgium,vineyards: all,area,hectares,1935,1000,grid_can_explain,production,10300,20.6,1.5278,7.7154,110,2.67,1.0148,4,0
+iia_1938_39,belgium,vineyards: all,area,hectares,1934,1000,grid_can_explain,production,10000,20,1.5278,7.7154,110,2.5922,0.9852,4,0
+iia_1938_39,belgium,vineyards: all,area,hectares,1933,1000,grid_can_explain,production,9700,19.4,1.5278,7.7154,110,2.5144,0.9557,4,0
+iia_1938_39,british ceylon,cotton: ginned,production,tonnes,1933,100,grid_can_explain,area,1000,0.05,0.075,0.3007,267,1.5,1,5,0
+iia_1938_39,british ceylon,cotton: ginned,production,tonnes,1934,100,grid_can_explain,area,1000,0.05,0.075,0.3007,267,1.5,1,5,0
+iia_1938_39,british ceylon,cotton: ginned,production,tonnes,1935,100,grid_can_explain,area,1000,0.05,0.075,0.3007,267,1.5,1,5,0
+iia_1938_39,british ceylon,cotton: ginned,production,tonnes,1936,100,grid_can_explain,area,1000,0.05,0.075,0.3007,267,1.5,1,5,0
+iia_1938_39,british ceylon,cotton: ginned,production,tonnes,1937,100,grid_can_explain,area,1000,0.05,0.075,0.3007,267,1.5,1,5,0
+iia_1938_39,french laos,cotton: ginned,production,tonnes,1936,100,grid_can_explain,area,1000,0.05,0.075,0.3007,267,1.5,1,1,3
+iia_1938_39,french cochinchina,coffee: raw,production,tonnes,1933,100,grid_can_explain,area,1000,0.05,0.0669,0.5912,133,1.3387,1,4,2
+iia_1938_39,french cochinchina,coffee: raw,production,tonnes,1934,100,grid_can_explain,area,1000,0.05,0.0669,0.5912,133,1.3387,1,4,2
+iia_1938_39,italian libya: tripolitania,tobacco,area,hectares,1937,1000,grid_can_explain,production,85000,170,44.1233,174.4262,325,0.9746,1.2427,5,0
+iia_1938_39,australia,olive grove,area,hectares,1936,1000,grid_can_explain,production,700,1.4,0.2134,1.5526,35,0.9017,1.5556,5,0
+iia_1938_39,italy,sesame,area,hectares,1936,1000,grid_can_explain,production,400,0.8,0.1925,0.8883,148,0.9006,1.3333,3,0
+iia_1938_39,italy,sesame,area,hectares,1937,1000,grid_can_explain,production,400,0.8,0.1925,0.8883,148,0.9006,1.3333,3,0
+iia_1938_39,french dahomey,cacao: raw,area,hectares,1933,1000,grid_can_explain,production,300,0.6,0.05,0.7092,113,0.8461,1,4,0
+iia_1938_39,french dahomey,cacao: raw,area,hectares,1934,1000,grid_can_explain,production,300,0.6,0.05,0.7092,113,0.8461,1,4,0
+iia_1938_39,french dahomey,cacao: raw,area,hectares,1935,1000,grid_can_explain,production,300,0.6,0.05,0.7092,113,0.8461,1,4,0
+iia_1938_39,french dahomey,cacao: raw,area,hectares,1936,1000,grid_can_explain,production,300,0.6,0.05,0.7092,113,0.8461,1,4,0
+iia_1938_39,french tunisia,tobacco,area,hectares,1936,1000,grid_can_explain,production,71700,143.4,44.1233,174.4262,325,0.8221,1.2184,4,1
+iia_1938_39,french tunisia,linseed,area,hectares,1933,1000,grid_can_explain,production,300,0.6,0.2695,0.7352,185,0.8161,1.5,6,0
+iia_1938_39,new zealand,linseed,area,hectares,1937,1000,grid_can_explain,production,300,0.6,0.2695,0.7352,185,0.8161,0.5,2,4
+iia_1938_39,italian libya: tripolitania,tobacco,area,hectares,1935,1000,grid_can_explain,production,69600,139.2,44.1233,174.4262,325,0.798,1.0175,5,0
+iia_1938_39,italian libya: tripolitania,tobacco,area,hectares,1936,1000,grid_can_explain,production,68400,136.8,44.1233,174.4262,325,0.7843,1,5,0
+iia_1938_39,sweden,tobacco,area,hectares,1936,1000,grid_can_explain,production,61900,123.8,44.1233,174.4262,325,0.7098,1.1358,6,0
+iia_1938_39,french tunisia,tobacco,area,hectares,1935,1000,grid_can_explain,production,59500,119,44.1233,174.4262,325,0.6822,1.011,4,1
+iia_1938_39,british trinidad and tobago,coffee: raw,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.0669,0.5912,133,0.6766,0.3636,1,2
+iia_1938_39,italy,sesame,area,hectares,1938,1000,grid_can_explain,production,300,0.6,0.1925,0.8883,148,0.6754,1,3,0
+iia_1938_39,sweden,tobacco,area,hectares,1935,1000,grid_can_explain,production,58400,116.8,44.1233,174.4262,325,0.6696,1.0716,6,0
+iia_1938_39,british antigua,cotton: ginned,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.075,0.3007,267,0.665,1,4,2
+iia_1938_39,british saint christopher and nevis,cotton: ginned,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.075,0.3007,267,0.665,0.5,1,5
+iia_1938_39,french algeria,cotton: ginned,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.075,0.3007,267,0.665,1,5,0
+iia_1938_39,french india,cotton: ginned,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.075,0.3007,267,0.665,1,5,0
+iia_1938_39,french india,cotton: ginned,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.075,0.3007,267,0.665,1,5,0
+iia_1938_39,british antigua,cottonseed,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,1,4,2
+iia_1938_39,british saint christopher and nevis,cottonseed,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,0.3333,1,5
+iia_1938_39,french algeria,cottonseed,area,hectares,1937,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,0.3333,5,0
+iia_1938_39,french guadeloupe and dependencies: marie‑galante,cottonseed,area,hectares,1934,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,2,6,0
+iia_1938_39,french india,cottonseed,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,1,5,0
+iia_1938_39,french india,cottonseed,area,hectares,1934,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,1,5,0
+iia_1938_39,french india,cottonseed,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,1,5,0
+iia_1938_39,french morocco,cottonseed,area,hectares,1937,1000,grid_can_explain,production,200,0.4,0.15,0.6096,266,0.6562,0.9756,3,0
+iia_1938_39,australia,olive grove,area,hectares,1935,1000,grid_can_explain,production,500,1,0.2134,1.5526,35,0.6441,1.1111,5,0
+iia_1938_39,french tunisia,tobacco,area,hectares,1937,1000,grid_can_explain,production,55900,111.8,44.1233,174.4262,325,0.641,0.9499,4,1
+iia_1938_39,sweden,tobacco,area,hectares,1933,1000,grid_can_explain,production,54500,109,44.1233,174.4262,325,0.6249,1,6,0
+iia_1938_39,czechoslovakia,meslin,area,hectares,1933,1000,grid_can_explain,production,700,1.4,0.6778,2.2817,46,0.6136,0.0474,1,0
+iia_1938_39,belgian ruanda-urundi,tobacco,area,hectares,1933,1000,grid_can_explain,production,52500,105,44.1233,174.4262,325,0.602,1,4,0
+iia_1938_39,belgian ruanda-urundi,tobacco,area,hectares,1934,1000,grid_can_explain,production,52500,105,44.1233,174.4262,325,0.602,1,4,0
+iia_1938_39,belgian ruanda-urundi,tobacco,area,hectares,1935,1000,grid_can_explain,production,52500,105,44.1233,174.4262,325,0.602,1,4,0
+iia_1938_39,french tunisia,tobacco,area,hectares,1933,1000,grid_can_explain,production,51000,102,44.1233,174.4262,325,0.5848,0.8666,4,1
+iia_1938_39,british cyprus,beans: dried,area,hectares,1934,1000,grid_can_explain,production,400,0.8,0.2,1.3737,163,0.5824,1,2,4
+iia_1938_39,sweden,tobacco,area,hectares,1937,1000,grid_can_explain,production,50000,100,44.1233,174.4262,325,0.5733,0.9174,6,0
+iia_1938_39,switzerland,tobacco,area,hectares,1936,1000,grid_can_explain,production,50000,100,44.1233,174.4262,325,0.5733,0.4621,1,4
+iia_1938_39,sweden,tobacco,area,hectares,1934,1000,grid_can_explain,production,49600,99.2,44.1233,174.4262,325,0.5687,0.9101,6,0
+iia_1938_39,british mauritius,tobacco,area,hectares,1936,1000,grid_can_explain,production,47800,95.6,44.1233,174.4262,325,0.5481,1.2163,4,0
+iia_1938_39,australia,linseed,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.2695,0.7352,185,0.5441,1,6,0
+iia_1938_39,australia,linseed,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.2695,0.7352,185,0.5441,1,6,0
+iia_1938_39,bulgaria,linseed,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.2695,0.7352,185,0.5441,0.25,1,5
+iia_1938_39,french tunisia,linseed,area,hectares,1934,1000,grid_can_explain,production,200,0.4,0.2695,0.7352,185,0.5441,1,6,0
+iia_1938_39,french tunisia,linseed,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.2695,0.7352,185,0.5441,1,6,0
+iia_1938_39,french morocco,tobacco,area,hectares,1936,1000,grid_can_explain,production,47400,94.8,44.1233,174.4262,325,0.5435,1.8772,5,0
+iia_1938_39,british mauritius,tobacco,area,hectares,1933,1000,grid_can_explain,production,46900,93.8,44.1233,174.4262,325,0.5378,1.1934,4,0
+iia_1938_39,australia,olive grove,area,hectares,1934,1000,grid_can_explain,production,400,0.8,0.2134,1.5526,35,0.5153,0.8889,5,0
+iia_1938_39,australia,olive grove,area,hectares,1937,1000,grid_can_explain,production,400,0.8,0.2134,1.5526,35,0.5153,0.8889,5,0
+iia_1938_39,austria,soybean,area,hectares,1933,1000,grid_can_explain,production,300,0.6,0.5429,1.1765,71,0.51,1.5,5,0
+iia_1938_39,austria,soybean,area,hectares,1937,1000,grid_can_explain,production,300,0.6,0.5429,1.1765,71,0.51,1.5,5,0
+iia_1938_39,french morocco,tobacco,area,hectares,1937,1000,grid_can_explain,production,41700,83.4,44.1233,174.4262,325,0.4781,1.6515,5,0
+iia_1938_39,ireland,flax: fibre,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.2433,0.8534,156,0.4687,0.2857,1,5
+iia_1938_39,sweden,tobacco,area,hectares,1938,1000,grid_can_explain,production,40000,80,44.1233,174.4262,325,0.4586,0.7339,6,0
+iia_1938_39,japanese korea,vineyards: all,area,hectares,1937,1000,grid_can_explain,production,1700,3.4,1.5278,7.7154,110,0.4407,0.8293,1,0
+iia_1938_39,french algeria,beans: dried,area,hectares,1935,1000,grid_can_explain,production,300,0.6,0.2,1.3737,163,0.4368,0.75,3,3
+iia_1938_39,french algeria,beans: dried,area,hectares,1936,1000,grid_can_explain,production,300,0.6,0.2,1.3737,163,0.4368,0.75,3,3
+iia_1938_39,french algeria,beans: dried,area,hectares,1938,1000,grid_can_explain,production,300,0.6,0.2,1.3737,163,0.4368,0.75,3,3
+iia_1938_39,australia,olive grove,area,hectares,1933,1000,grid_can_explain,production,300,0.6,0.2134,1.5526,35,0.3865,0.6667,5,0
+iia_1938_39,italian libya: tripolitania,tobacco,area,hectares,1933,1000,grid_can_explain,production,33600,67.2,44.1233,174.4262,325,0.3853,0.4912,5,0
+iia_1938_39,french morocco,tobacco,area,hectares,1934,1000,grid_can_explain,production,32100,64.2,44.1233,174.4262,325,0.3681,1.2713,5,0
+iia_1938_39,british mauritius,tobacco,area,hectares,1935,1000,grid_can_explain,production,32000,64,44.1233,174.4262,325,0.3669,0.8142,4,0
+iia_1938_39,ireland,tobacco,area,hectares,1934,1000,grid_can_explain,production,30800,61.6,44.1233,174.4262,325,0.3532,1.5876,6,0
+iia_1938_39,bulgaria,groundnut,area,hectares,1933,1000,grid_can_explain,production,300,0.6,0.4,1.7062,226,0.3516,0.1579,1,5
+iia_1938_39,austria,soybean,area,hectares,1934,1000,grid_can_explain,production,200,0.4,0.5429,1.1765,71,0.34,1,5,0
+iia_1938_39,austria,soybean,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.5429,1.1765,71,0.34,1,5,0
+iia_1938_39,austria,soybean,area,hectares,1936,1000,grid_can_explain,production,200,0.4,0.5429,1.1765,71,0.34,1,5,0
+iia_1938_39,british nyasaland,coffee: raw,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.0669,0.5912,133,0.3383,1,6,0
+iia_1938_39,british nyasaland,coffee: raw,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.0669,0.5912,133,0.3383,1,6,0
+iia_1938_39,british nyasaland,coffee: raw,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.0669,0.5912,133,0.3383,1,6,0
+iia_1938_39,french cochinchina,coffee: raw,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.0669,0.5912,133,0.3383,1,3,2
+iia_1938_39,belgium,hemp: fibre,area,hectares,1938,1000,grid_can_explain,production,200,0.4,0.3923,1.1987,93,0.3337,6.5359,6,0
+iia_1938_39,austria,hempseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.0971,0.6031,77,0.3316,0.81,5,0
+iia_1938_39,austria,hempseed,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.0971,0.6031,77,0.3316,0.81,5,0
+iia_1938_39,british antigua,cottonseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,0.5,4,2
+iia_1938_39,british‑french new hebrides,cottonseed,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,0.1739,3,0
+iia_1938_39,french algeria,cottonseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,0.1667,5,0
+iia_1938_39,french guadeloupe and dependencies: marie‑galante,cottonseed,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,1,6,0
+iia_1938_39,french guadeloupe and dependencies: marie‑galante,cottonseed,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,1,6,0
+iia_1938_39,french guadeloupe and dependencies: marie‑galante,cottonseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,1,6,0
+iia_1938_39,french guadeloupe and dependencies: marie‑galante,cottonseed,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,1,6,0
+iia_1938_39,french guadeloupe and dependencies: marie‑galante,cottonseed,area,hectares,1938,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,1,6,0
+iia_1938_39,french india,cottonseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,0.5,5,0
+iia_1938_39,french madagascar,cottonseed,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,1.25,3,0
+iia_1938_39,french morocco,cottonseed,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,0.4878,3,0
+iia_1938_39,guatemala,cottonseed,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,0.3135,2,0
+iia_1938_39,us puerto rico,cottonseed,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.15,0.6096,266,0.3281,0.3333,1,1
+iia_1938_39,british mauritius,tobacco,area,hectares,1934,1000,grid_can_explain,production,27600,55.2,44.1233,174.4262,325,0.3165,0.7023,4,0
+iia_1938_39,austria,hops,area,hectares,1936,1000,grid_can_explain,production,2700,5.4,5.4452,17.1425,90,0.315,0.45,2,3
+iia_1938_39,ireland,tobacco,area,hectares,1933,1000,grid_can_explain,production,27200,54.4,44.1233,174.4262,325,0.3119,1.4021,6,0
+iia_1938_39,british cyprus,beans: dried,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.2,1.3737,163,0.2912,0.5,2,4
+iia_1938_39,australia,linseed,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.2695,0.7352,185,0.272,0.5,6,0
+iia_1938_39,australia,linseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.2695,0.7352,185,0.272,0.5,6,0
+iia_1938_39,british kenya,linseed,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.2695,0.7352,185,0.272,0.3333,1,2
+iia_1938_39,french tunisia,linseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.2695,0.7352,185,0.272,0.5,6,0
+iia_1938_39,french tunisia,linseed,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.2695,0.7352,185,0.272,0.5,6,0
+iia_1938_39,french tunisia,linseed,area,hectares,1938,1000,grid_can_explain,production,100,0.2,0.2695,0.7352,185,0.272,0.5,6,0
+iia_1938_39,belgian ruanda-urundi,tobacco,area,hectares,1936,1000,grid_can_explain,production,23000,46,44.1233,174.4262,325,0.2637,0.4381,4,0
+iia_1938_39,french niger,tobacco,area,hectares,1933,1000,grid_can_explain,production,22000,44,44.1233,174.4262,325,0.2523,0.5685,1,3
+iia_1938_39,japanese taiwan,rapeseed,area,hectares,1937,1000,grid_can_explain,production,200,0.4,0.4457,1.6243,89,0.2463,2,6,0
+iia_1938_39,british borneo,tobacco,area,hectares,1937,1000,grid_can_explain,production,21100,42.2,44.1233,174.4262,325,0.2419,1.3106,5,0
+iia_1938_39,british cyprus,tobacco,area,hectares,1933,1000,grid_can_explain,production,20800,41.6,44.1233,174.4262,325,0.2385,1.1818,3,1
+iia_1938_39,ireland,tobacco,area,hectares,1935,1000,grid_can_explain,production,20800,41.6,44.1233,174.4262,325,0.2385,1.0722,6,0
+iia_1938_39,bulgaria,flax: fibre,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.2433,0.8534,156,0.2344,0.3333,1,5
+iia_1938_39,french laos,groundnut,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.4,1.7062,226,0.2344,2,2,0
+iia_1938_39,french laos,groundnut,area,hectares,1934,1000,grid_can_explain,production,200,0.4,0.4,1.7062,226,0.2344,2,2,0
+iia_1938_39,sweden,flax: fibre,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.2433,0.8534,156,0.2344,1,5,0
+iia_1938_39,sweden,flax: fibre,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.2433,0.8534,156,0.2344,1,5,0
+iia_1938_39,sweden,flax: fibre,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.2433,0.8534,156,0.2344,1,5,0
+iia_1938_39,sweden,flax: fibre,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.2433,0.8534,156,0.2344,1,5,0
+iia_1938_39,italian somaliland,sesame,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.1925,0.8883,148,0.2251,0.0625,1,2
+iia_1938_39,japan: kwantung leased territory,sesame,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.1925,0.8883,148,0.2251,2.924,4,0
+iia_1938_39,japan: kwantung leased territory,sesame,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.1925,0.8883,148,0.2251,2.924,4,0
+iia_1938_39,french annam,jute,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.9745,1.7943,25,0.2229,1,5,0
+iia_1938_39,french annam,jute,area,hectares,1934,1000,grid_can_explain,production,200,0.4,0.9745,1.7943,25,0.2229,1,5,0
+iia_1938_39,french annam,jute,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.9745,1.7943,25,0.2229,1,5,0
+iia_1938_39,french annam,jute,area,hectares,1936,1000,grid_can_explain,production,200,0.4,0.9745,1.7943,25,0.2229,1,5,0
+iia_1938_39,french annam,jute,area,hectares,1937,1000,grid_can_explain,production,200,0.4,0.9745,1.7943,25,0.2229,1,5,0
+iia_1938_39,french tonkin,jute,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.9745,1.7943,25,0.2229,1.3333,5,0
+iia_1938_39,french tonkin,jute,area,hectares,1936,1000,grid_can_explain,production,200,0.4,0.9745,1.7943,25,0.2229,1.3333,5,0
+iia_1938_39,british honduras,citrus fruits: grapefruits,area,hectares,1934,1000,grid_can_explain,production,800,1.6,1.05,7.6567,12,0.209,1,2,1
+iia_1938_39,ireland,tobacco,area,hectares,1937,1000,grid_can_explain,production,18000,36,44.1233,174.4262,325,0.2064,0.9278,6,0
+iia_1938_39,british borneo,tobacco,area,hectares,1933,1000,grid_can_explain,production,17900,35.8,44.1233,174.4262,325,0.2052,1.1118,5,0
+iia_1938_39,french morocco,tobacco,area,hectares,1935,1000,grid_can_explain,production,17600,35.2,44.1233,174.4262,325,0.2018,0.697,5,0
+iia_1938_39,new zealand,rye,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.6,1.9862,243,0.2014,1.3333,5,0
+iia_1938_39,new zealand,rye,area,hectares,1937,1000,grid_can_explain,production,200,0.4,0.6,1.9862,243,0.2014,1.3333,5,0
+iia_1938_39,british swaziland,tobacco,area,hectares,1933,1000,grid_can_explain,production,17000,34,44.1233,174.4262,325,0.1949,1.3765,5,0
+iia_1938_39,french morocco,tobacco,area,hectares,1933,1000,grid_can_explain,production,16100,32.2,44.1233,174.4262,325,0.1846,0.6376,5,0
+iia_1938_39,british honduras,citrus fruits: grapefruits,area,hectares,1933,1000,grid_can_explain,production,700,1.4,1.05,7.6567,12,0.1828,0.875,2,1
+iia_1938_39,austria,hemp: fibre,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,austria,hemp: fibre,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,austria,hemp: fibre,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,austria,hemp: fibre,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,austria,hemp: fibre,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,british cyprus,hemp: fibre,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,british cyprus,hemp: fibre,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,british cyprus,hemp: fibre,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,british cyprus,hemp: fibre,area,hectares,1938,1000,grid_can_explain,production,100,0.2,0.3923,1.1987,93,0.1669,1,6,0
+iia_1938_39,british borneo,tobacco,area,hectares,1936,1000,grid_can_explain,production,14300,28.6,44.1233,174.4262,325,0.164,0.8882,5,0
+iia_1938_39,french laos,blackberries,area,hectares,1934,1000,grid_can_explain,production,800,1.6,1.27,10.045,18,0.1593,1.6,2,0
+iia_1938_39,ireland,tobacco,area,hectares,1936,1000,grid_can_explain,production,13800,27.6,44.1233,174.4262,325,0.1582,0.7113,6,0
+iia_1938_39,british cyprus,tobacco,area,hectares,1936,1000,grid_can_explain,production,13700,27.4,44.1233,174.4262,325,0.1571,0.7784,3,1
+iia_1938_39,british borneo,tobacco,area,hectares,1935,1000,grid_can_explain,production,13500,27,44.1233,174.4262,325,0.1548,0.8385,5,0
+iia_1938_39,british swaziland,tobacco,area,hectares,1935,1000,grid_can_explain,production,12800,25.6,44.1233,174.4262,325,0.1468,1.0364,5,0
+iia_1938_39,british borneo,tobacco,area,hectares,1934,1000,grid_can_explain,production,12600,25.2,44.1233,174.4262,325,0.1445,0.7826,5,0
+iia_1938_39,guatemala,tobacco,area,hectares,1933,1000,grid_can_explain,production,12000,24,44.1233,174.4262,325,0.1376,57.4163,1,0
+iia_1938_39,british swaziland,tobacco,area,hectares,1934,1000,grid_can_explain,production,11900,23.8,44.1233,174.4262,325,0.1364,0.9636,5,0
+iia_1938_39,belgium,rapeseed,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,belgium,rapeseed,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,belgium,rapeseed,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,belgium,rapeseed,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,belgium,rapeseed,area,hectares,1938,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,japanese taiwan,rapeseed,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,japanese taiwan,rapeseed,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,japanese taiwan,rapeseed,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.4457,1.6243,89,0.1231,1,6,0
+iia_1938_39,british swaziland,tobacco,area,hectares,1937,1000,grid_can_explain,production,10600,21.2,44.1233,174.4262,325,0.1215,0.8583,5,0
+iia_1938_39,french cochinchina,blackberries,area,hectares,1936,1000,grid_can_explain,production,600,1.2,1.27,10.045,18,0.1195,0.5714,2,3
+iia_1938_39,dutch guiana,citrus fruits: oranges,area,hectares,1933,1000,grid_can_explain,production,700,1.4,0.16,11.7368,35,0.1193,1.1667,3,0
+iia_1938_39,british mauritius,groundnut,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,british mauritius,groundnut,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,british mauritius,groundnut,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,british mauritius,groundnut,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,british mauritius,groundnut,area,hectares,1937,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,british northern rhodesia,groundnut,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,british northern rhodesia,groundnut,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,british northern rhodesia,groundnut,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,5,0
+iia_1938_39,guatemala,groundnut,area,hectares,1935,1000,grid_can_explain,production,100,0.2,0.4,1.7062,226,0.1172,1,3,0
+iia_1938_39,british‑french cameroon,tobacco,area,hectares,1936,1000,grid_can_explain,production,10000,20,44.1233,174.4262,325,0.1147,1.3605,4,0
+iia_1938_39,french tonkin,jute,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.9745,1.7943,25,0.1115,0.6667,5,0
+iia_1938_39,british transjordan,tobacco,area,hectares,1937,1000,grid_can_explain,production,9700,19.4,44.1233,174.4262,325,0.1112,4.85,1,0
+iia_1938_39,ireland,tobacco,area,hectares,1938,1000,grid_can_explain,production,9400,18.8,44.1233,174.4262,325,0.1078,0.4845,6,0
+iia_1938_39,romania,hops,area,hectares,1938,1000,grid_can_explain,production,900,1.8,5.4452,17.1425,90,0.105,0.9,1,5
+iia_1938_39,british swaziland,tobacco,area,hectares,1936,1000,grid_can_explain,production,9100,18.2,44.1233,174.4262,325,0.1043,0.7368,5,0
+iia_1938_39,dutch guiana,citrus fruits: oranges,area,hectares,1935,1000,grid_can_explain,production,600,1.2,0.16,11.7368,35,0.1022,1,3,0
+iia_1938_39,new zealand,rye,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.6,1.9862,243,0.1007,0.6667,5,0
+iia_1938_39,new zealand,rye,area,hectares,1934,1000,grid_can_explain,production,100,0.2,0.6,1.9862,243,0.1007,0.6667,5,0
+iia_1938_39,new zealand,rye,area,hectares,1936,1000,grid_can_explain,production,100,0.2,0.6,1.9862,243,0.1007,0.6667,5,0
+iia_1938_39,french laos,blackberries,area,hectares,1933,1000,grid_can_explain,production,500,1,1.27,10.045,18,0.0996,1,2,0
+iia_1938_39,dutch guiana,citrus fruits: oranges,area,hectares,1934,1000,grid_can_explain,production,500,1,0.16,11.7368,35,0.0852,0.8333,3,0
+iia_1938_39,british‑french cameroon,tobacco,area,hectares,1937,1000,grid_can_explain,production,7000,14,44.1233,174.4262,325,0.0803,0.9524,4,0
+iia_1938_39,british mauritius,tea,area,hectares,1935,1000,grid_can_explain,production,40,0.08,0.201,1,91,0.08,1.6667,5,0
+iia_1938_39,british mauritius,tea,area,hectares,1937,1000,grid_can_explain,production,38,0.076,0.201,1,91,0.076,1.5833,5,0
+iia_1938_39,british dominica,citrus fruits: oranges,area,hectares,1936,1000,grid_can_explain,production,400,0.8,0.16,11.7368,35,0.0682,1.3333,4,0
+iia_1938_39,british malta,"citrus fruits: lemons, mandarins, oranges",area,hectares,1933,1000,grid_can_explain,production,400,0.8,1.42,11.7836,9,0.0679,1.3333,5,0
+iia_1938_39,british mauritius,tea,area,hectares,1936,1000,grid_can_explain,production,31,0.062,0.201,1,91,0.062,1.2917,5,0
+iia_1938_39,french cochinchina,blackberries,area,hectares,1937,1000,grid_can_explain,production,300,0.6,1.27,10.045,18,0.0597,0.2857,2,3
+iia_1938_39,british dominica,citrus fruits: grapefruits,area,hectares,1933,1000,grid_can_explain,production,200,0.4,1.05,7.6567,12,0.0522,2,4,0
+iia_1938_39,british dominica,citrus fruits: oranges,area,hectares,1933,1000,grid_can_explain,production,300,0.6,0.16,11.7368,35,0.0511,1,4,0
+iia_1938_39,british dominica,citrus fruits: oranges,area,hectares,1934,1000,grid_can_explain,production,300,0.6,0.16,11.7368,35,0.0511,1,4,0
+iia_1938_39,british dominica,citrus fruits: oranges,area,hectares,1935,1000,grid_can_explain,production,300,0.6,0.16,11.7368,35,0.0511,1,4,0
+iia_1938_39,british northern rhodesia,citrus fruits: oranges,area,hectares,1936,1000,grid_can_explain,production,300,0.6,0.16,11.7368,35,0.0511,1.5,5,0
+iia_1938_39,british northern rhodesia,citrus fruits: oranges,area,hectares,1937,1000,grid_can_explain,production,300,0.6,0.16,11.7368,35,0.0511,1.5,5,0
+iia_1938_39,british malta,"citrus fruits: lemons, mandarins, oranges",area,hectares,1935,1000,grid_can_explain,production,300,0.6,1.42,11.7836,9,0.0509,1,5,0
+iia_1938_39,british malta,"citrus fruits: lemons, mandarins, oranges",area,hectares,1936,1000,grid_can_explain,production,300,0.6,1.42,11.7836,9,0.0509,1,5,0
+iia_1938_39,british malta,"citrus fruits: lemons, mandarins, oranges",area,hectares,1937,1000,grid_can_explain,production,300,0.6,1.42,11.7836,9,0.0509,1,5,0
+iia_1938_39,british‑french cameroon,tobacco,area,hectares,1935,1000,grid_can_explain,production,4400,8.8,44.1233,174.4262,325,0.0505,0.5986,4,0
+iia_1938_39,french dahomey,tobacco,area,hectares,1934,1000,grid_can_explain,production,4000,8,44.1233,174.4262,325,0.0459,1,5,0
+iia_1938_39,french dahomey,tobacco,area,hectares,1935,1000,grid_can_explain,production,4000,8,44.1233,174.4262,325,0.0459,1,5,0
+iia_1938_39,french dahomey,tobacco,area,hectares,1936,1000,grid_can_explain,production,4000,8,44.1233,174.4262,325,0.0459,1,5,0
+iia_1938_39,french dahomey,tobacco,area,hectares,1937,1000,grid_can_explain,production,4000,8,44.1233,174.4262,325,0.0459,1,5,0
+iia_1938_39,italian eritrea,tobacco,area,hectares,1934,1000,grid_can_explain,production,3500,7,44.1233,174.4262,325,0.0401,1.5217,5,0
+iia_1938_39,british cyprus,tobacco,area,hectares,1937,1000,grid_can_explain,production,3400,6.8,44.1233,174.4262,325,0.039,0.1932,3,1
+iia_1938_39,us samoa,tobacco,area,hectares,1933,1000,grid_can_explain,production,3400,6.8,44.1233,174.4262,325,0.039,72.6496,2,0
+iia_1938_39,french dahomey,tobacco,area,hectares,1933,1000,grid_can_explain,production,3000,6,44.1233,174.4262,325,0.0344,0.75,5,0
+iia_1938_39,british northern rhodesia,citrus fruits: oranges,area,hectares,1933,1000,grid_can_explain,production,200,0.4,0.16,11.7368,35,0.0341,1,5,0
+iia_1938_39,british northern rhodesia,citrus fruits: oranges,area,hectares,1934,1000,grid_can_explain,production,200,0.4,0.16,11.7368,35,0.0341,1,5,0
+iia_1938_39,british northern rhodesia,citrus fruits: oranges,area,hectares,1935,1000,grid_can_explain,production,200,0.4,0.16,11.7368,35,0.0341,1,5,0
+iia_1938_39,british mauritius,tea,area,hectares,1934,1000,grid_can_explain,production,17,0.034,0.201,1,91,0.034,0.7083,5,0
+iia_1938_39,british malta,"citrus fruits: lemons, mandarins, oranges",area,hectares,1934,1000,grid_can_explain,production,200,0.4,1.42,11.7836,9,0.0339,0.6667,5,0
+iia_1938_39,british mauritius,tea,area,hectares,1933,1000,grid_can_explain,production,16,0.032,0.201,1,91,0.032,0.6667,5,0
+iia_1938_39,italian eritrea,tobacco,area,hectares,1936,1000,grid_can_explain,production,2700,5.4,44.1233,174.4262,325,0.031,1.1739,5,0
+iia_1938_39,italian eritrea,tobacco,area,hectares,1935,1000,grid_can_explain,production,2500,5,44.1233,174.4262,325,0.0287,1.087,5,0
+iia_1938_39,british dominica,citrus fruits: grapefruits,area,hectares,1934,1000,grid_can_explain,production,100,0.2,1.05,7.6567,12,0.0261,1,4,0
+iia_1938_39,british dominica,citrus fruits: grapefruits,area,hectares,1935,1000,grid_can_explain,production,100,0.2,1.05,7.6567,12,0.0261,1,4,0
+iia_1938_39,british dominica,citrus fruits: grapefruits,area,hectares,1936,1000,grid_can_explain,production,100,0.2,1.05,7.6567,12,0.0261,1,4,0
+iia_1938_39,usa: hawaii,vineyards: all,area,hectares,1933,1000,grid_can_explain,production,100,0.2,1.5278,7.7154,110,0.0259,,3,0
+iia_1938_39,usa: hawaii,vineyards: all,area,hectares,1934,1000,grid_can_explain,production,100,0.2,1.5278,7.7154,110,0.0259,,3,0
+iia_1938_39,italian eritrea,tobacco,area,hectares,1937,1000,grid_can_explain,production,2100,4.2,44.1233,174.4262,325,0.0241,0.913,5,0
+iia_1938_39,italian eritrea,tobacco,area,hectares,1933,1000,grid_can_explain,production,2000,4,44.1233,174.4262,325,0.0229,0.8696,5,0
+iia_1938_39,us samoa,tobacco,area,hectares,1934,1000,grid_can_explain,production,2000,4,44.1233,174.4262,325,0.0229,42.735,2,0
+iia_1938_39,french cambodia,citrus fruits: oranges,area,hectares,1933,1000,grid_can_explain,production,100,0.2,0.16,11.7368,35,0.017,,3,0
+iia_1938_39,japanese south pacific,tobacco,area,hectares,1933,1000,grid_can_explain,production,1300,2.6,44.1233,174.4262,325,0.0149,1.2381,5,0
+iia_1938_39,japanese south pacific,tobacco,area,hectares,1935,1000,grid_can_explain,production,1100,2.2,44.1233,174.4262,325,0.0126,1.0476,5,0
+iia_1938_39,japanese south pacific,tobacco,area,hectares,1934,1000,grid_can_explain,production,1000,2,44.1233,174.4262,325,0.0115,0.9524,5,0
+iia_1938_39,french mauritania,tobacco,area,hectares,1935,1000,grid_can_explain,production,700,1.4,44.1233,174.4262,325,0.008,1.5556,4,0
+iia_1938_39,french mauritania,tobacco,area,hectares,1934,1000,grid_can_explain,production,500,1,44.1233,174.4262,325,0.0057,1.1111,4,0
+iia_1938_39,french mauritania,tobacco,area,hectares,1933,1000,grid_can_explain,production,400,0.8,44.1233,174.4262,325,0.0046,0.8889,4,0
+iia_1938_39,japanese south pacific,tobacco,area,hectares,1936,1000,grid_can_explain,production,400,0.8,44.1233,174.4262,325,0.0046,0.381,5,0
+iia_1938_39,french oceania,tobacco,area,hectares,1933,1000,grid_can_explain,production,300,0.6,44.1233,174.4262,325,0.0034,1,5,0
+iia_1938_39,french oceania,tobacco,area,hectares,1934,1000,grid_can_explain,production,300,0.6,44.1233,174.4262,325,0.0034,1,5,0
+iia_1938_39,french oceania,tobacco,area,hectares,1935,1000,grid_can_explain,production,300,0.6,44.1233,174.4262,325,0.0034,1,5,0
+iia_1938_39,french oceania,tobacco,area,hectares,1936,1000,grid_can_explain,production,300,0.6,44.1233,174.4262,325,0.0034,1,5,0
+iia_1938_39,french oceania,tobacco,area,hectares,1937,1000,grid_can_explain,production,300,0.6,44.1233,174.4262,325,0.0034,1,5,0
+iia_1938_39,french mauritania,tobacco,area,hectares,1937,1000,grid_can_explain,production,200,0.4,44.1233,174.4262,325,0.0023,0.4444,4,0
+iia_1938_39,japanese south pacific,tobacco,area,hectares,1937,1000,grid_can_explain,production,200,0.4,44.1233,174.4262,325,0.0023,0.1905,5,0
