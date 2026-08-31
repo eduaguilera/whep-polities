@@ -41,6 +41,50 @@ bare run: a real constant would not sit in a series that resolves finer than it.
 A run is counted over consecutive OBSERVATIONS, not consecutive years, since the panel is not
 gap-free; `year_first`/`year_last` give the real span and `n_values` the number of rows.
 
+IS THE RUN A RESOLUTION LIMIT AFTER ALL? THE `verdict` COLUMN (issue 366). Everything above tests a
+run against its OWN series, which cannot see the one explanation that would exonerate it: a source
+whose reporting grid in that unit and era is coarser than the run's constant prints the same figure
+every year without anybody filling a gap. Issue 366's headline argument was withdrawn on exactly that
+ground, and `state/source_value_precision.csv` (issue 446, written by 37_value_precision.py) is the
+table that answers it -- it measures, per (source, unit, era), what share of non-zero values sit on a
+1000- and a 100-grid and reduces that to `coarse_1000` / `coarse_100` / `mixed` / `fine`.
+
+Joining the two settles each run five ways, which is what `verdict` records:
+
+    EXPLAINED         the era's grid is coarse and the constant sits ON it, so rounding produces it
+    UNDETERMINED      the era is `mixed`: the grid COULD account for the run, but the source also
+                      reports finer there, so nothing is settled either way
+    REFUTED           the era is `fine`: that source demonstrably reports finer in this unit, so the
+                      grid is not available as an explanation
+    OFF-GRID          the era's grid is coarse but the constant is NOT a multiple of it, so rounding
+                      to that grid cannot produce the constant however coarse the era is
+    NOT ATTRIBUTABLE  the run straddles the source's own era boundary, so it has no single grid
+
+`precision_era` and `precision_grid` record WHICH row of the precision table the verdict was read
+from and what grid that row implies, so the judgement is legible without re-deriving the join.
+
+THE ERA PARTITION IS READ OFF THE PRECISION TABLE, NOT RESTATED HERE. 37_value_precision.py splits
+only `iia`, and only because its 1934 volume handover is independently registered (#445); the cut is
+recovered from the `<year>+` era labels the table carries, so removing or moving the split there
+cannot leave a stale boundary here. A run whose years fall on both sides of the cut is
+NOT ATTRIBUTABLE rather than being assigned to the era it spends more years in: the panel carries no
+volume provenance, so which volume printed the run's flat years is not knowable from the row.
+
+WHAT THE VERDICT IS NOT. `coarse_1000` is a statement about a SOURCE, not about a cell -- 96.3% of
+`iia` `ha` values from 1934 sit on the 1000-grid, not 100% -- so EXPLAINED means "consistent with the
+grid", never "measured". Nor is REFUTED a repair: a run that is not a rounding artifact may still be a
+real plateau, a carried-forward figure or a filled gap, and separating those needs the source page.
+
+WHAT THE RUN THAT ADDED THE VERDICT MEASURED (2026-08-31), reproducing by code the classification
+that had lived only in a comment on issue 366:
+
+     68  EXPLAINED          iia 54, mitchell 11, juan 3 (its `heads`)
+    153  UNDETERMINED       all `juan` -- its `ha` and `tonnes` are both `mixed`
+     11  REFUTED            all `iia`, all pre-1934, where `ha` is 9.8% on a 1000-grid
+      4  OFF-GRID           iia australia/new zealand hops 500/200 ha on a 1000 grid, france eggs
+                            5.390 t and madagascar wine 291 t on a 100 grid
+     10  NOT ATTRIBUTABLE   iia runs crossing 1934
+
 Usage:
   python3 pipelines/polity-autoimprove/17_constant_runs.py            # report only
   python3 pipelines/polity-autoimprove/17_constant_runs.py --write    # refresh the tracked table
@@ -118,6 +162,64 @@ IIA_AMBIGUOUS_YEARS = frozenset(
 
 def _iia_volumes_covering(year: int) -> set:
     return {i for i, (a, b) in enumerate(IIA_VOLUMES) if a <= year <= b}
+
+
+# THE PRECISION JOIN (issue 366). See the docstring for the five verdicts.
+PRECISION = os.path.join(HERE, "state/source_value_precision.csv")
+
+# The precision table's verdict word -> the grid, in the series' own unit, that it asserts. `mixed`
+# and `fine` name no single grid, which is why they are absent rather than mapped to 1.
+ERA_GRID = {"coarse_1000": 1000, "coarse_100": 100}
+
+
+def load_precision(path: str):
+    """-> {(source, unit, era): verdict}, {source: era cut year}.
+
+    The cut is RECOVERED from the era labels rather than restated, so this file cannot hold a
+    boundary 37_value_precision.py has moved. A source with two cuts would make `era_of` ambiguous
+    and is refused rather than guessed at.
+    """
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+    prec = {(r["source"], r["unit"], r["era"]): r["verdict"] for r in rows}
+    cuts = defaultdict(set)
+    for r in rows:
+        m = re.fullmatch(r"(\d{4})\+", r["era"])
+        if m:
+            cuts[r["source"]].add(int(m.group(1)))
+    for src, cs in cuts.items():
+        if len(cs) != 1:
+            raise SystemExit(f"{os.path.basename(path)}: {src} carries {len(cs)} era cuts {sorted(cs)};"
+                             f" a run spanning two of them has no single grid to be judged against")
+    return prec, {src: cs.pop() for src, cs in cuts.items()}
+
+
+def judge(row: dict, prec: dict, cuts: dict) -> dict:
+    """The five-way verdict for one run, plus the precision row it was read from."""
+    src, unit = row["source"], row["unit"]
+    cut = cuts.get(src)
+    if cut is None:
+        era = "all"
+    elif int(row["year_first"]) < cut <= int(row["year_last"]):
+        # No volume provenance in the panel, so a run crossing the cut cannot be assigned to either
+        # side, and the two sides have different grids. Assigning it by majority of years would
+        # invent the provenance the row does not carry.
+        return {"verdict": "NOT ATTRIBUTABLE", "precision_era": f"straddles-{cut}",
+                "precision_grid": ""}
+    else:
+        era = f"{cut}+" if int(row["year_first"]) >= cut else f"pre-{cut}"
+    word = prec.get((src, unit, era))
+    if word is None:
+        # Below 37_value_precision.py's MIN_ROWS the source's grid in this unit and era is not
+        # measured, so the innocent explanation is neither available nor excluded.
+        return {"verdict": "UNDETERMINED", "precision_era": era, "precision_grid": "unmeasured"}
+    grid = ERA_GRID.get(word)
+    if grid is None:
+        return {"verdict": "UNDETERMINED" if word == "mixed" else "REFUTED",
+                "precision_era": era, "precision_grid": word}
+    on_grid = int(round(float(row["constant"]) * SCALE)) % (grid * SCALE) == 0
+    return {"verdict": "EXPLAINED" if on_grid else "OFF-GRID",
+            "precision_era": era, "precision_grid": str(grid)}
 
 
 def find_runs(panel_path):
@@ -205,7 +307,15 @@ def main() -> int:
         print(f"SKIP: layer-B panel not present at {args.layer_b}")
         return 0
 
+    if not os.path.exists(PRECISION):
+        print(f"MISSING {os.path.relpath(PRECISION, REPO)}; run 37_value_precision.py --write first",
+              file=sys.stderr)
+        return 1
+    prec, cuts = load_precision(PRECISION)
+
     rows, n_series, n_runs_all, n_rows_all = find_runs(args.layer_b)
+    for r in rows:
+        r.update(judge(r, prec, cuts))
     print(f"series (country, item, unit, source) with >={MIN_SERIES} values: {n_series:,}")
     print(f"constant runs of >={MIN_RUN} identical values: {n_runs_all:,} ({n_rows_all:,} rows)")
     print(f"  refuted as rounding by their own series: {len(rows):,} "
@@ -214,6 +324,10 @@ def main() -> int:
     print("  by source:",
           dict(Counter({s: sum(r["n_values"] for r in rows if r["source"] == s)
                         for s in {r["source"] for r in rows}}).most_common()))
+    print("  against each source's own reporting grid (issue 366):")
+    for v, n in sorted(Counter(r["verdict"] for r in rows).items(), key=lambda kv: -kv[1]):
+        print(f"    {n:>4}  {v:17} "
+              f"{dict(Counter(r['source'] for r in rows if r['verdict'] == v).most_common())}")
     print("\nlongest refuted runs (the series resolves finer than the value it repeats):")
     for r in rows[:14]:
         print(f"   {r['source']:9} {r['country'][:17]:18} {r['item'][:21]:22} {r['unit']:7} "
@@ -224,7 +338,8 @@ def main() -> int:
     if args.write or args.check:
         cols = ["source", "country", "item", "unit", "constant", "n_values", "year_first",
                 "year_last", "series_n", "grid", "finest_elsewhere", "n_finer_elsewhere",
-                "finer_in_volume_year", "finer_in_volume_value"]
+                "finer_in_volume_year", "finer_in_volume_value", "verdict", "precision_era",
+                "precision_grid"]
         if args.check:
             if not os.path.exists(OUT):
                 print(f"MISSING {os.path.relpath(OUT, REPO)}", file=sys.stderr)

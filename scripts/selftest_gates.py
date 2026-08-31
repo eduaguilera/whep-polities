@@ -4582,6 +4582,54 @@ def mutate_constantrun_witness_is_cross_era(root, gpd, make_valid, affinity):
             f"with its {hit['year_first']}-{hit['year_last']} run")
 
 
+def mutate_precision_row_recoarsened(root, gpd, make_valid, affinity):
+    """Re-coarsen ONE row of the precision table, leaving constant_runs.csv untouched.
+
+    The verdict column in `constant_runs.csv` is a JOIN of two committed tables, and the failure a
+    join has that neither table has alone is one side moving without the other. `iia`'s pre-1934 `ha`
+    grid is the load-bearing row: it is measured `fine` (9.8% on a 1000-grid), which is what makes
+    eight of the eleven REFUTED runs refuted -- saint vincent's 400 ha for nine years is only a
+    finding because that volume reported to the hectare. Flip that one word to `coarse_1000` and the
+    innocent explanation covers them, so the residue this issue exists to isolate evaporates.
+
+    The point of mutating the PRECISION table rather than the verdict is that every count stays put:
+    `constant_runs.csv` still says REFUTED eleven times, the 15-run residue is unchanged by identity,
+    and the schema arm is satisfied. Only the arm that RE-DERIVES each verdict from the other table can
+    see it -- which is why that arm restates the rule instead of importing the generator's `judge()`,
+    since an imported rule would move with the table it reads.
+
+    Nothing else in this harness would catch it either: `validate_value_precision.py` re-derives its
+    verdict from the row's own shares and would reject this edit, but it knows nothing about the runs,
+    so a rebuild of the precision table that legitimately moved the row would pass there and silently
+    reclass eight runs here.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/source_value_precision.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    hit = [r for r in rows if (r["source"], r["unit"], r["era"]) == ("iia", "ha", "pre-1934")]
+    if len(hit) != 1 or hit[0]["verdict"] != "fine":
+        raise AssertionError(
+            "iia/ha/pre-1934 is no longer a single `fine` row in source_value_precision.csv, so "
+            "re-coarsening it would not reclass the runs that rest on it and the case would pass "
+            "vacuously")
+    runs = os.path.join(root, "pipelines/polity-autoimprove/state/constant_runs.csv")
+    with open(runs, newline="", encoding="utf-8") as fh:
+        affected = [r for r in csv.DictReader(fh)
+                    if (r["source"], r["unit"], r["precision_era"]) == ("iia", "ha", "pre-1934")]
+    if not any(r["country"] == "fiji" for r in affected):
+        raise AssertionError("no fiji run is judged against iia/ha/pre-1934 any more; the case pins "
+                             "that name, so it would fire without naming the defect")
+    hit[0]["verdict"] = "coarse_1000"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"iia/ha/pre-1934 re-coarsened from `fine` to `coarse_1000`, so the {len(affected)} runs "
+            f"judged against it now have an innocent explanation the committed verdicts deny, with "
+            f"every count and the pinned residue untouched")
+
+
 def mutate_arearevision_second_coincidental_agreement(root, gpd, make_valid, affinity):
     """Give a SECOND polity both verdicts, so one of its agreements is coincidental.
 
@@ -4779,6 +4827,14 @@ CASES = (
         "not one any more",
         "a recorded source seam deleted from the table, so a x100 scale break at a splice goes "
         "unaccounted for and the count ceiling silently gains headroom",
+    ),
+    (
+        "validate_constant_run_verdicts.py",
+        mutate_precision_row_recoarsened,
+        "fiji / tea (ha)",
+        "one side of a two-table join moved without the other, so 8 runs the source's own measured "
+        "precision now explains are still published as REFUTED — the counts, the residue and the "
+        "schema all stay exactly where they were pinned",
     ),
     (
         "validate_constant_runs.py",
@@ -5806,6 +5862,14 @@ WRITABLE = {
     # Two cases rewrite constant_runs.csv in place -- one edits n_values, one moves an in-volume
     # witness year -- so it must be a real copy rather than a symlink into the tracked table.
     "validate_constant_runs.py": (
+        "pipelines/polity-autoimprove/state/constant_runs.csv",
+    ),
+    # The case rewrites source_value_precision.csv in place (it re-coarsens the iia/ha/pre-1934 row),
+    # so that one must be a real copy. constant_runs.csv is read-only for both gate and mutator, but
+    # stage() creates nothing it was not asked for and this gate SKIPS when the table is absent --
+    # exit 0, which the runner reads as "the gate cannot fail". It has to be listed.
+    "validate_constant_run_verdicts.py": (
+        "pipelines/polity-autoimprove/state/source_value_precision.csv",
         "pipelines/polity-autoimprove/state/constant_runs.csv",
     ),
     # The case rewrites isolated_spikes.csv in place (it edits the factor column), so it must be a

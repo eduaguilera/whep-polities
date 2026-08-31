@@ -324,6 +324,16 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        54,100. 246 runs, 1,619 rows, 210 series (juan 1,035, iia 522, mitchell 62;
                        fao1952 nil, as its values are non-integer and have no coarse grid to sit
                        on). --write refreshes state/constant_runs.csv for validate_constant_runs.py
+                       and validate_constant_run_verdicts.py. Each run also carries a `verdict`
+                       joined from state/source_value_precision.csv (37_value_precision.py), which
+                       answers the one explanation a series cannot test against itself — a source
+                       whose grid in that unit and era is coarser than the constant prints the same
+                       figure every year with nothing filled in. 68 EXPLAINED, 153 UNDETERMINED (all
+                       juan: its ha and tonnes are both `mixed`), 11 REFUTED, 4 OFF-GRID, 10 NOT
+                       ATTRIBUTABLE for runs straddling iia's 1934 boundary. `precision_era` and
+                       `precision_grid` record which row of the precision table each verdict was
+                       read from; the era cut is recovered from that table's own labels rather than
+                       restated here
 18_isolated_spikes.py  does one year read many times its own neighbours? 05_magnitude_screen.py
                        screens series MEDIANS, so a single bad year is invisible to it: iia
                        cameroon groundnuts runs 61,000 / 620,004,098 / 62,000 ha, median 71,000,
