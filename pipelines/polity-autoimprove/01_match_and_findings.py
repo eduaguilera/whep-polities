@@ -36,7 +36,7 @@ if os.path.exists(LEDGER):
 # year containment); assertion-level verification is agent work downstream.
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from matchlib import Matcher, norm, toks, eff_year as _eff_year
+from matchlib import Matcher, norm, toks, eff_year as _eff_year, covers as _year_covers
 import extdata
 from atomic import write_csv_atomic
 
@@ -111,12 +111,91 @@ def period_span(period):
 
 
 def _covers(code, first, last):
-    """How many years of [first, last] the polity is live for. end_year is EXCLUSIVE."""
+    """How many years of [first, last] the polity is live for.
+
+    `end_year` is EXCLUSIVE, and that reading is NOT re-implemented here as a bare `<`: it is
+    matchlib.covers, the single place this repository's Python side decides whether a period
+    contains a year (scripts/validate_year_semantics.py is why there is only one). The bare
+    comparison this function used to hold was the same shape issue #131 came from, and it is
+    also what made the two straddle measurements below disagree by 480 rows.
+    """
     span = _SPAN.get(code)
     if not span:
         return 0
     s, e = span
-    return sum(1 for y in range(first, last + 1) if s <= y < e)
+    return sum(1 for y in range(first, last + 1) if _year_covers(s, e, y))
+
+
+def period_straddle(code, period):
+    """(years_before_start, years_after_end) of a period average that pokes outside its polity.
+
+    Returns (0, 0) for a row that is not a period average, has no polity, or whose average fits
+    entirely inside the polity's life. NOTHING IS REASSIGNED HERE -- this is the publish-the-fact
+    option, so a consumer can filter by severity while the routing rule is still undecided.
+
+    WHAT A STRADDLE IS. A yearbook prints "average 1934-1938" as one number. `assign()` below
+    routes it to whichever candidate is live for the MOST of those five years (#383). That can
+    still leave years of the averaged window outside the polity's life, at a founding or a
+    dissolution: the Union of South Africa was founded in 1910 and IIA prints a 1909-1913
+    average, so one of the five years predates the polity that gets the row. That is a property
+    of the source, not a mistake by the matcher, which is why it is PUBLISHED rather than fixed.
+
+    THE COUNT DEPENDS ON THE end_year CONVENTION, AND ONLY ONE OF THE TWO IS THIS REPO'S.
+    Measured 2026-08-31 on 9,237 routed period-average rows:
+
+        end_year EXCLUSIVE (matchlib.covers, this repo)      641 rows over 46 (polity, period)
+        end_year read as inclusive                           161 rows over 24
+        period lands completely outside its polity, either      0
+
+    The 480-row difference is not two answers to one question. Every one of those 480 rows has
+    its period's LAST year equal to its polity's `end_year` and nothing else outside -- IND
+    1934-1938 on IND-1914-1937, DEU 1934-1938 on DEU-1920-1938 -- and under this repo's
+    convention that year belongs to the SUCCESSOR (IND-1937-1947, DEU-1938-1945). So the
+    inclusive reading does not find fewer straddles, it silently credits the predecessor with a
+    year it does not have. Issue #310's comment of 2026-08-31 reported 161/24; that is the
+    inclusive number, and the exclusive one is what the matcher itself acts on.
+
+    THE THREE CANDIDATE RULES, AND WHAT EACH WOULD MOVE. The owner has not chosen. Counts are
+    over the 641 flagged rows, re-deriving each rule's answer through `M.assign` so aliases,
+    family ranking and the transition-year tie-break apply as they do in production (the 161-row
+    inclusive subset is given second, since that is the number the issue quotes):
+
+      1. MOST YEARS OF THE PERIOD -- moves 0 rows (641) / 0 (161). Already in force: this IS
+         what `assign()` does since #383, and re-derivation confirms the stored code equals the
+         max-coverage choice on 641 of 641. Read STRICTLY, as "the polity must hold a strict
+         MAJORITY", it moves 53 (641) / 52 (161) -- but for all 53 no reachable candidate holds
+         a majority either, so it is a DROP rule, not a reassignment rule: 29 SBZ-1938-1949 and
+         18 PAK-1937-1947 rows become unassigned, because the Soviet zone and Pakistan have no
+         predecessor in their own family to hand a 1934-1938 average back to.
+
+      2. PERIOD MIDPOINT -- moves 105 rows (641) / 57 (161), and 98 of the 105 land on NO
+         polity at all. Only 7 move to another polity (6 AEF-1910-1960 -> COG-1906-1912, 1
+         KEN-1907-1924 -> KEN-1902-1907). The 98 are labels routed by an applied alias whose
+         year range does not reach the midpoint -- `Germany Berlin` and `Germany Western` in
+         fao1952 resolve only from 1937, so asking for 1936 returns nothing. This is worse than
+         the earlier measurement recorded in `assign()` suggested (219 better / 22 worse against
+         the old end-year rule): a midpoint is a proxy for coverage, and where the proxy misses
+         it does not degrade, it strands the row.
+
+      3. FLAG AND LET CONSUMERS DECIDE -- moves 0 rows. Implemented here and in
+         `state/period_straddles.csv`.
+
+    So the decision is between accepting 641 flagged-but-routed rows, dropping 53, or stranding
+    98. Two of the three candidates cost more rows than the straddle does.
+    """
+    span = period_span(period)
+    pol_span = _SPAN.get(code)
+    if span is None or pol_span is None:
+        return (0, 0)
+    first, last = span
+    s, e = pol_span
+    before = sum(1 for y in range(first, last + 1) if y < s)
+    # "after" is every averaged year at or past the polity's death, and it is phrased as
+    # `not matchlib.covers` rather than `y >= e` on purpose: `y >= e` is the bare comparison that
+    # made the 480-row discrepancy above, and writing it here would put a second reading of
+    # `end_year` in the same file as the first.
+    after = sum(1 for y in range(first, last + 1) if y >= s and not _year_covers(s, e, y))
+    return (before, after)
 
 
 def assign(row):
@@ -332,6 +411,65 @@ extdata.refuse_orphan_codes(
          "  then re-run this stage."),
 )
 
+# ---- PERIOD-AVERAGE STRADDLES (issue 310) --------------------------------------------------
+# The flag rides on matched_rows.parquet rather than in a table of its own, because every
+# consumer of a period-average row already reads that file and none of them can currently tell a
+# 1934-1938 average that fits inside its polity from one that does not. `period_straddles.csv`
+# beside it is the WORKLIST -- one row per (polity, period) -- not a second copy of the data.
+# See period_straddle() for the three candidate routing rules and what each would move.
+#
+# Zero, not null, where the question does not apply (a dated row, or an unrouted one). A consumer
+# separates "no straddle" from "not a period average" with the columns it already has -- `year`
+# is non-null for exactly the rows this cannot speak about -- and a nullable Int64 here would
+# change the dtype of a column 20-odd downstream tools read positionally-in-spirit.
+work["period_years_before_start"] = 0
+work["period_years_after_end"] = 0
+_pm = work.year.isna() & work.period.notna() & work.whep_code.notna()
+if _pm.any():
+    _ovh = {(c, p): period_straddle(c, p)
+            for c, p in work.loc[_pm, ["whep_code", "period"]].drop_duplicates().itertuples(index=False)}
+    _pk = list(zip(work.loc[_pm, "whep_code"], work.loc[_pm, "period"]))
+    work.loc[_pm, "period_years_before_start"] = [_ovh[k][0] for k in _pk]
+    work.loc[_pm, "period_years_after_end"] = [_ovh[k][1] for k in _pk]
+work["period_years_before_start"] = work["period_years_before_start"].astype("int64")
+work["period_years_after_end"] = work["period_years_after_end"].astype("int64")
+work["period_straddles_polity_span"] = ((work.period_years_before_start > 0)
+                                        | (work.period_years_after_end > 0))
+
+_str = work[work.period_straddles_polity_span]
+_rows = []
+for (_code, _period), _g in _str.groupby(["whep_code", "period"]):
+    _b, _a = period_straddle(_code, _period)
+    _s, _e = _SPAN[_code]
+    _f, _l = period_span(_period)
+    _srcs = sorted(_g.source.dropna().unique().tolist())
+    _rows.append({
+        "polity_code": _code, "start_year": _s, "end_year": _e, "period": _period,
+        "period_first": _f, "period_last": _l,
+        "years_before_start": _b, "years_after_end": _a,
+        "direction": "both" if _b and _a else ("before" if _b else "after"),
+        "years_covered": _covers(_code, _f, _l), "period_years": _l - _f + 1,
+        # yes == the whole overhang is the single year equal to `end_year`, which under this
+        # repo's EXCLUSIVE reading belongs to the successor. These are the pairs that vanish if
+        # someone measures with an inclusive `end_year`; 480 of the 641 rows sit here, so the
+        # column is what makes the two numbers in period_straddle()'s docstring reconcilable
+        # from the table instead of on trust.
+        "end_year_boundary_only": "yes" if (_b == 0 and _a == 1 and _l == _e) else "no",
+        "observed_rows": int(len(_g)), "sources": ";".join(_srcs), "n_sources": len(_srcs),
+    })
+_rows.sort(key=lambda r: (-r["observed_rows"], r["polity_code"], r["period"]))
+# Atomic, and via the shared helper rather than to_csv: this is a tracked file, and a run that
+# dies between the truncate and the last row would leave a half-written worklist that reads as a
+# shorter problem than it is (issue 431).
+write_csv_atomic(f"{OUT}/period_straddles.csv",
+                 ["polity_code", "start_year", "end_year", "period", "period_first", "period_last",
+                  "years_before_start", "years_after_end", "direction", "years_covered",
+                  "period_years", "end_year_boundary_only", "observed_rows", "sources",
+                  "n_sources"],
+                 _rows)
+print(f"period averages: {int(_pm.sum()):,} routed; {len(_str):,} straddle their polity's span "
+      f"across {len(_rows)} (polity, period) pair(s) -> state/period_straddles.csv")
+
 json.dump({"summary": {
             "total_rows": int(len(work)),
             "matched_rows": int(matched.sum()),
@@ -357,7 +495,11 @@ json.dump({"summary": {
 # PROVENANCE (152 values: `page_17_table_1`, `copia de page_17_table_1`). A consumer must decide
 # per source; see 25_same_polity_overlaps.py, where keying on it for mitchell would separate the
 # very duplicates the table exists to find.
-work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method"]] \
+# The three `period_*` columns are APPENDED, after `match_method`, so nothing that reads this
+# file by position shifts. They answer, per row, the question `period` alone cannot: whether the
+# averaged window pokes outside the polity it was routed to, and by how many years at which end.
+work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method",
+      "period_straddles_polity_span","period_years_before_start","period_years_after_end"]] \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 
 # coverage by source after
