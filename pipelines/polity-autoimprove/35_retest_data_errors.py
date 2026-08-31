@@ -284,6 +284,76 @@ def check_western_eastern_prefix(ctx):
                     "non-colliding target")
 
 
+def check_tractors_total_beside_parts(ctx):
+    """`total tractors agriculture` IS wheel plus crawler, to the digit -- and a fourth item on the
+    same code is not a component of it.
+
+    THE IDENTITY IS THE FINDING, so it is pinned as a ratio rather than as a row count. Across the
+    groups holding the total and both named parts, total / (wheel + crawler) has median 1.0000. A count
+    would survive the parts being renamed or the total being recomputed; the identity would not.
+
+    THE FOURTH ITEM IS THE TRAP AND IS PINNED SEPARATELY. `tractors all purposes` is a broader measure
+    including non-agricultural machines -- Alaska 1950 reads total 160 = wheel 150 + crawler 10 while
+    all-purposes reads 700 -- so this item_code holds two DIFFERENT correct measures plus the
+    components of one of them. If `tractors all purposes` ever satisfied the identity too, the four
+    items would be one nested family and this entry's reasoning would need redoing, so the check
+    asserts it does NOT.
+
+    THE is_aggregate GAP IS WHY THIS IS INVISIBLE, and it is pinned in both directions: every
+    is_aggregate=True fao1952 row is a GEOGRAPHIC aggregate, so 267 rows of an item literally named
+    `total ...` carry False and reach matching. If that count ever fell, an item-axis flag has been
+    introduced and the entry should be revisited rather than left passing."""
+    lb = ctx["panel"]
+    f = lb[(lb["source"] == "fao1952") & (lb["item_code"] == "192_194")].copy()
+    f["lab"] = f["country"].astype(str).str.strip()
+    f["_p"] = f["period"].astype(str).where(f["year"].isna(), f["year"].astype("Int64").astype(str))
+    nonagg = f[f["is_aggregate"] == False]  # noqa: E712 -- a pandas mask, not a truth test
+    counts = {str(k): int(v) for k, v in nonagg["item"].value_counts().items()}
+    TOT, WHEEL, CRAWL, ALL = ("total tractors agriculture", "wheel tractors agriculture",
+                              "crawler tractors agriculture", "tractors all purposes")
+    claims = [("non-aggregate rows on item_code 192_194", len(nonagg), 952),
+              (f"  `{TOT}`", counts.get(TOT), 267),
+              (f"  `{ALL}` -- NOT a component", counts.get(ALL), 298),
+              (f"  `{WHEEL}`", counts.get(WHEEL), 207),
+              (f"  `{CRAWL}`", counts.get(CRAWL), 180)]
+
+    import statistics
+    rat, allr, full = [], [], 0
+    for _, d in nonagg.groupby(["lab", "_p", "indicator", "unit"]):
+        piv = {r["item"]: float(r["value"]) for _, r in d.iterrows() if pd.notna(r["value"])}
+        if TOT in piv and WHEEL in piv and CRAWL in piv:
+            full += 1
+            s2 = piv[WHEEL] + piv[CRAWL]
+            if s2 > 0:
+                rat.append(piv[TOT] / s2)
+                if ALL in piv:
+                    allr.append(piv[ALL] / s2)
+    claims.append(("groups holding the total and both parts", full, 177))
+    if rat:
+        claims.append(("  median total / (wheel + crawler)", round(statistics.median(rat), 4), 1.0))
+        claims.append(("  of those, within 2% of 1.0",
+                       sum(1 for x in rat if 0.98 <= x <= 1.02), 172))
+    if allr:
+        # `all purposes` is a SUPERSET, not a component: always >= the agricultural total, equal
+        # wherever a country had no non-agricultural tractors. Both halves are pinned, because the
+        # coincidence is what makes the four items easy to mistake for one nested family -- and
+        # because a superset that DROPPED below its own subset would be a new defect entirely.
+        claims.append(("  `all purposes` within 2% of the total (it coincides often)",
+                       sum(1 for x in allr if 0.98 <= x <= 1.02), 123))
+        claims.append(("  `all purposes` strictly LARGER (the non-agricultural machines)",
+                       sum(1 for x in allr if x > 1.02), 54))
+        claims.append(("  `all purposes` ever SMALLER than the total it contains",
+                       sum(1 for x in allr if x < 0.98), 0))
+
+    whole = lb[lb["source"] == "fao1952"]
+    agg = whole[whole["is_aggregate"] == True]  # noqa: E712
+    named_total = whole[whole["item"].astype(str).str.strip().str.lower().str.startswith("total")]
+    claims.append(("fao1952 is_aggregate=True rows (all GEOGRAPHIC)", len(agg), 2141))
+    claims.append(("rows whose ITEM name begins `total` yet is_aggregate=False",
+                   int((named_total["is_aggregate"] == False).sum()), 267))  # noqa: E712
+    return (claims, "the total is identifiable by name and by source file, and flagged by neither")
+
+
 def check_germany_western_cheese(ctx):
     """2 kt of West German cheese, and the point is that BOTH available pairings are extreme.
 
@@ -1770,6 +1840,7 @@ CHECKS = {
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
+    "fao1952-tractors-total-beside-its-own-parts": check_tractors_total_beside_parts,
     "fao1952-germany-western-cheese-implausible": check_germany_western_cheese,
     "iia-algeria-civil-basis-continues-to-1925": check_algeria_civil_basis_span,
     "fao1952-estates-label-lost-country-prefix": check_estates_label_prefix,
