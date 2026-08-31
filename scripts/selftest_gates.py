@@ -2560,6 +2560,41 @@ def mutate_constant_run_shortened(root, gpd, make_valid, affinity):
             f"to be a rounding floor stops being pinned while the total stays put")
 
 
+def mutate_period_volume_relabelled(root, gpd, make_valid, affinity):
+    """Move one row to a different yearbook volume, leaving its ratio and verdict untouched.
+
+    THE CONTROL IS WHAT THIS GATE PROTECTS, and it is the thing a count cannot protect. The table's
+    inference -- that a ratio near a power of ten is a defect -- is available only because the median
+    ratio is 1.000 in every volume across 1,655 pairs, i.e. the source computes its own multi-year
+    averages correctly as a rule. Group the rows by the wrong volume and that per-volume statistic
+    silently changes meaning, while every outlier count stays exactly where it was pinned.
+
+    The period -> volume map is now RESTATED IN THREE PLACES (42_period_volume_provenance.py, its
+    gate, and 43_period_vs_dated_consistency.py), so the three drifting apart is a live risk rather
+    than a hypothetical one. This mutation is that drift, in its smallest form.
+
+    Relabelling rather than deleting is the sharper test: a deleted row would move the total and the
+    verdict counts too, so the case could pass on arm A or D having never exercised the control.
+    Verified: on the committed table this fires arm B and nothing else.
+    """
+    path = os.path.join(root,
+                        "pipelines/polity-autoimprove/state/period_vs_dated_consistency.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows
+                  if r["volume"] == "iia_1925_26" and r["verdict"] == "consistent")
+    was = victim["volume"]
+    victim["volume"] = "iia_1939_45"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"moved the {victim['label']} / {victim['item']} {victim['period']} pair from {was} to "
+            f"iia_1939_45, so the per-volume control statistic is computed over the wrong grouping "
+            f"while every ratio, verdict and outlier count stays exactly where it is pinned")
+
+
 def mutate_period_screen_leaked_to_wheat(root, gpd, make_valid, affinity):
     """Relabel one screened row's item as `wheat`, as a widened screen scope would leave it.
 
@@ -4933,6 +4968,14 @@ CASES = (
         "values stops being flagged and reads as a genuinely unchanging series",
     ),
     (
+        "validate_period_vs_dated_consistency.py",
+        mutate_period_volume_relabelled,
+        "pairs, recorded",
+        "the per-volume CONTROL computed over a wrong grouping — the median ratio of 1.000 is the "
+        "only reason an outlier in this table counts as a defect, and every outlier count stays "
+        "identical while it drifts",
+    ),
+    (
         "validate_period_volume_provenance.py",
         mutate_period_screen_leaked_to_wheat,
         "outside tobacco/hops",
@@ -5977,6 +6020,11 @@ WRITABLE = {
     "validate_constant_run_verdicts.py": (
         "pipelines/polity-autoimprove/state/source_value_precision.csv",
         "pipelines/polity-autoimprove/state/constant_runs.csv",
+    ),
+    # The case rewrites period_vs_dated_consistency.csv in place (it edits the volume column), so a
+    # real copy rather than a symlink into the tracked table.
+    "validate_period_vs_dated_consistency.py": (
+        "pipelines/polity-autoimprove/state/period_vs_dated_consistency.csv",
     ),
     # The case rewrites period_volume_provenance.csv in place (it edits the item column), so a real
     # copy rather than a symlink into the tracked table.
