@@ -284,6 +284,74 @@ def check_western_eastern_prefix(ctx):
                     "non-colliding target")
 
 
+def check_china_whole_and_five_parts(ctx):
+    """The decomposition closes to Tibet, which is what proves the labels are a whole-and-parts family.
+
+    THE RESIDUAL IS THE EVIDENCE. Five reported parts sum to 87.1% of the whole, and the missing
+    125,174 kha is 1,251,740 km2 against Tibet's ~1,228,400 -- a ratio of 1.019. That near-closure is
+    what distinguishes a genuine territorial decomposition from an accidental collection of labels
+    sharing a prefix, so the residual ratio is pinned rather than only the sum.
+
+    THE ROUTED/UNROUTED SPLIT IS PINNED BECAUSE IT IS A TRAP. Only two parts reach CHN-1947-1949, so a
+    collision census sees 63% of the whole double-counted; the other three carry 24% of China's land
+    and route nowhere. Routing them -- the ordinary repair for an unrouted label, and the one applied
+    in PR 610 -- would take the double-count from 63% to 87%. If any of the three ever acquires a
+    whep_code, this check fails, which is the intended behaviour: it should be a deliberate decision
+    taken with the whole-versus-parts question, not a routine routing fix.
+
+    THE ITEM-LEVEL MIXING IS PINNED AS A PAIR, land against livestock, because either number alone
+    looks unremarkable. `use total` matching China's actual area to 1.4% is what makes 95,000 pigs
+    impossible rather than merely small."""
+    m = MATCHED_DF[0]
+    if m is None:
+        return None
+    f = m[(m["source"] == "fao1952") & m["value"].notna()].copy()
+    f["lab"] = f["country"].astype(str).str.strip()
+    u = f[(f["item"] == "use total") & (f["year"] == 1947)]
+    val = {r["lab"]: float(r["value"]) for _, r in u.iterrows()}
+    PARTS = ["China 22 provinces", "China Manchuria", "China Sinkiang", "China Sikang", "China Jehol"]
+    WANT = {"China": 973629.0, "China 22 provinces": 507182.0, "China Manchuria": 106930.0,
+            "China Sinkiang": 171193.0, "China Sikang": 45152.0, "China Jehol": 17998.0}
+    claims = [(f"`{k}` use total 1947", val.get(k), v) for k, v in WANT.items()]
+    if all(k in val for k in WANT):
+        whole = val["China"]
+        s5 = sum(val[k] for k in PARTS)
+        claims.append(("  five parts summed", round(s5, 1), 848455.0))
+        claims.append(("  as a share of the whole", round(100 * s5 / whole, 1), 87.1))
+        # Tibet ~1,228,400 km2 = 122,840 kha. The near-closure is the proof.
+        claims.append(("  residual / Tibet (1,228,400 km2)", round((whole - s5) / 122840.0, 3), 1.019))
+        r2 = val["China 22 provinces"] + val["China Manchuria"]
+        claims.append(("  the VISIBLE double-count (routed parts only)",
+                       round(100 * r2 / whole, 0), 63.0))
+
+    def routed(lab):
+        d = f[f["lab"] == lab]
+        return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
+
+    for lab in ("China 22 provinces", "China Manchuria"):
+        r, n = routed(lab)
+        claims.append((f"`{lab}` routed", "yes" if r else "no", "yes"))
+    for lab in ("China Sinkiang", "China Sikang", "China Jehol"):
+        r, n = routed(lab)
+        # Bidirectional on purpose: routing these WORSENS the double-count.
+        claims.append((f"`{lab}` routed -- must stay NO", "yes" if r else "no", "no"))
+
+    ch = f[f["lab"] == "China"]
+
+    def cell(item, yr):
+        d = ch[(ch["item"] == item) & (ch["year"] == yr)]
+        return float(d["value"].iloc[0]) if len(d) else None
+
+    claims.append(("`China` population 1937 (thousand) -- the whole country",
+                   cell("r_fao_population_1952_10_18", 1937), 452460.0))
+    claims.append(("`China` pigs 1949 (thousand) -- impossible for it",
+                   cell("pigs", 1949), 95.0))
+    claims.append(("`China` buffaloes 1949/1950/1951 -- a coherent series",
+                   ",".join(str(cell("buffaloes", y)) for y in (1949, 1950, 1951)),
+                   "658.0,656.0,568.0"))
+    return (claims, "the decomposition closes to Tibet; routing the three unrouted parts makes it worse")
+
+
 def check_tractors_total_beside_parts(ctx):
     """`total tractors agriculture` IS wheel plus crawler, to the digit -- and a fourth item on the
     same code is not a component of it.
@@ -1840,6 +1908,7 @@ CHECKS = {
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
+    "fao1952-china-whole-and-five-parts": check_china_whole_and_five_parts,
     "fao1952-tractors-total-beside-its-own-parts": check_tractors_total_beside_parts,
     "fao1952-germany-western-cheese-implausible": check_germany_western_cheese,
     "iia-algeria-civil-basis-continues-to-1925": check_algeria_civil_basis_span,
