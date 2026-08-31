@@ -78,6 +78,50 @@ Ingest implication: CShapes, Euratlas, Cliopatria, and historical atlases
 polity. COW, GW, Polity V, V-Dem (state-system-membership sources) can
 inform regime/status notes but **must not** drive start or end years.
 
+## Data attaches to a polity whose territory the data describes
+
+The other basis of this project, and the companion to the rule above: **data
+attaches to a faithful polity.** A polity row exists for the territory the
+numbers were actually collected on. Where the reporting territory is clearly
+different from every existing row's territory, **we need a polity for that
+territory** — not the nearest larger row carrying the data with a note. The
+full rule is in `wiki/log.md` 2026-08-31
+`decision-faithful-territory-for-reporting-units`
+([issue 400](https://github.com/eduaguilera/whep-polities/issues/400)). In
+short:
+
+- **A reporting unit does not have to have been a sovereign state to get a
+  row.** A customs union, a colony's civil zone as distinct from its military
+  territory, an occupation administration, a constituent republic of a
+  federation, a sub-federal territory inside a trust territory — each is a
+  WHEP polity if production or trade statistics were collected on it. This
+  follows from *territorial-economic unit, not Westphalian legal state*
+  above; it is written down separately because it was being re-decided case
+  by case instead of applied.
+- **Small approximations make sense; clear mismatches do not.** A polygon a
+  few percent off its territory, or a vintage that lags a minor border
+  adjustment, is an approximation — record it as one (`polygon_status: proxy`,
+  `polygon_vintage_drift`) and move on. A territory that differs by a *factor*
+  is a different territory. The three Algerian civil departments the yearbooks
+  measured are 575,511 km²; `DZA-1902-1919` including the Sahara is
+  2,442,844 km². That is a 4.2× per-km² error, and it is not an
+  approximation.
+- **"Best available" is not a resting place.** Routing data onto a territory
+  already known to be the wrong one, and recording that as best-available, is
+  the option that misleads: every per-km² figure derived from it — a yield, a
+  density, a constant-territory denominator — is wrong, and nothing in the
+  published data warns the consumer. Either create the faithful row, or mark
+  the rows as attributable to no polity. Do not route them to the nearest
+  larger row and leave them there.
+- **The test is the data's territory, not its sovereign.** Ask what ground the
+  numbers were collected on, then ask whether some row describes that ground.
+  If the answer is no, that is a polity-creation task, not a routing puzzle.
+
+Creating such a row is still a **structural change** — follow the
+structural-change checklist under *Workflows* below, and give the new page a
+`Data routing` section saying which source labels and years it takes over and
+from which row.
+
 ## Sister Wiki — WHEP Project Wiki
 
 This polities wiki is one of two LLM wikis in the WHEP project:
@@ -608,6 +652,14 @@ and the layer-B dataset; the human steps (writing the page, the `log.md`
    entry of `kind: decision`, a commit message with rationale). If no
    evidence exists, say so explicitly on the polity page and flag it as
    a candidate oddity.
+8. **Do not park data on a territory it does not describe.** When a source's
+   reporting unit is clearly a different territory from the row you would
+   route it to, the answer is a polity for that territory — see *Data attaches
+   to a polity whose territory the data describes* above. Small approximations
+   are fine and should be recorded as such; a factor-scale mismatch is a
+   polity-creation task, and the unit does not need to have been a sovereign
+   state to get a row. Never write it up as "best available" onto a territory
+   you have already established is the wrong one.
 
 ## Critical stance: audit, don't deferentially cite
 

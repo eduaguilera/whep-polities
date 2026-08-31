@@ -26,6 +26,56 @@ Kinds:
 
 ---
 
+## decision-faithful-territory-for-reporting-units
+**Date:** 2026-08-31
+**Touched:** DEU-1800-1866, DEU-1866-1871, DZA-1902-1919, F51-1938-1945,
+RWB-1922-1962, AZE-1991-2025, IND-1914-1937, SER-1918-1945 (none edited — this
+entry records the rule, not its application)
+**Source:** none
+**Kind:** decision
+
+**Data attaches to a faithful polity.** [Issue
+400](https://github.com/eduaguilera/whep-polities/issues/400) consolidated nine
+separately-investigated cases that all ended in the same sentence — the data is
+correctly identified and there is no polity to route it to — and asked whether
+this database admits polity rows for reporting units that were not sovereign
+states. It does. The owner's answer, verbatim:
+
+> the idea is the data is attached to a faithful polity. if the territory is
+> clearly different, we need a polity for that territory, thats another basis of
+> this project, so write that down. if its not clear, of course small
+> approximations make sense, but for the one you mentioned its clear we need a
+> separate territory defined.
+
+So the rule, now stated in `wiki/README.md` under *Data attaches to a polity
+whose territory the data describes* and as agent rule 8: a polity row exists for
+the territory the numbers were collected on. **A reporting unit does not have to
+have been a sovereign state to get a row** — a customs union, a colony's civil
+zone as distinct from its military territory, an occupation administration, a
+constituent republic of a federation, a sub-federal territory inside a trust
+territory all qualify if production or trade statistics were collected on them.
+Small approximations are acceptable and should be recorded as such
+(`polygon_status: proxy`, `polygon_vintage_drift`). A **clear** mismatch is not:
+the yearbooks' three Algerian civil departments are 575,511 km² against
+`DZA-1902-1919`'s 2,442,844 km² including the Sahara, a 4.2× per-km² error, and
+that is the case the answer names as clear. This is the companion to
+`decision-whep-polity-definition` (2026-04-11): that rule says a polity is a
+territory rather than a legal state, and this one says the *data's* territory is
+what a row has to match.
+
+The consequence for the ~840 rows issue 400 counted is that they are no longer
+blocked on a definition question. Each of the nine becomes an ordinary
+polity-creation task — and therefore a **structural change**, subject to the
+eleven-step checklist in `pipelines/polity-autoimprove/README.md`, because
+creating these rows silently re-routes the data that currently matches the
+larger polity. What is explicitly *not* licensed by this entry is bulk creation:
+each row still needs a page with sourced territorial extent, and several of the
+nine have a documented area from the source itself (IIA states 575,511 km² for
+northern Algeria) that the page should declare and cite rather than read off a
+polygon (issue 195). Nothing was created here; this entry is the rule only.
+
+Signed off by: Catalin Covaci. Written up by Claude (Claude Code), issue 400.
+
 ## decision-chl-pre-1884-clip-at-24s
 **Date:** 2026-08-17
 **Touched:** CHL-1810-1884
