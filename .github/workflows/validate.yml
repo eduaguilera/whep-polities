@@ -457,6 +457,18 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_constant_runs.py
 
+      # And is each of those runs innocent? A source whose grid in that unit and era is coarser than
+      # the run's constant prints the same figure every year without anybody filling a gap -- the
+      # ground on which issue 366's headline was withdrawn. 17_constant_runs.py joins
+      # source_value_precision.csv (#446) and writes a verdict per run: 68 EXPLAINED, 153 UNDETERMINED
+      # (all juan, whose ha and tonnes are both `mixed`), 11 REFUTED, 4 OFF-GRID, 10 NOT ATTRIBUTABLE.
+      # The 15 refuted and off-grid runs are the residue the issue exists to isolate, and the split
+      # lived only in a comment until this gate; the counts and those 15 identities are pinned, and
+      # every verdict is re-derived from the other table so the two cannot drift apart.
+      - name: Sources — a constant run's verdict must re-derive from its source's measured precision
+        if: '!cancelled()'
+        run: python3 scripts/validate_constant_run_verdicts.py
+
       # 05_magnitude_screen.py screens series MEDIANS against polity area, so a single bad year is
       # invisible to it: iia cameroon groundnuts runs 61,000 / 620,004,098 / 62,000 ha and its median
       # is 71,000, while Cameroon's whole land area is ~47.5M ha. No source seam either -- spike and
