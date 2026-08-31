@@ -22,7 +22,7 @@ WHY THE JOIN IS BY VALUE AND KEY, WITH THE NAME AS CONFIRMATION. A bare NAME joi
 and layer B reports "absent in raw" for nearly everything, because the raw labels are colonial
 (`japanese taiwan`, `british nyasaland`, `uk`) and layer B's are modern. `state/iia_label_provenance.csv`
 maps 335 of them but not all -- 32 of the 72 labels in `edition_conflicts.csv` for these two items have no
-entry -- so a provenance-only join reaches 154 era rows where a value join reaches 246. The join used here
+entry -- so a provenance-only join reaches 154 era rows where a value join reaches 247. The join used here
 is therefore (raw product, variable, year-or-period, exact value), with the provenance map and a
 colonial-prefix rename test used to CONFIRM the label rather than to find it, and `name_confirmed`
 recording which rows got that second opinion.
@@ -52,7 +52,8 @@ WHAT THE ATTRIBUTION ESTABLISHES, and it is stronger than the year heuristic alr
     in a volume that also prints an era year, so the source offers no second opinion and no factor
     can be derived FOR THAT LABEL. Counted, never assigned a divisor -- 122 of them are convicted by
     29 on their own arithmetic, which is a separate and sufficient basis;
-  * `ambiguous_raw_label` (6 rows) and `overlap_other` (6 rows) are named rather than folded in.
+  * `ambiguous_raw_label` (3 rows), `component_factor_incomplete` (3) and `overlap_other` (6) are
+    named rather than folded in.
 
 AND IT REFUTES A BLANKET DIVISION ON TEN ROWS, WHICH IS THE POINT OF DOING IT PER ROW. The 10
 `overlap_10x` rows are all `ivory coast` tobacco, and all 10 carry 29's verdict `plausible_yield` --
@@ -304,7 +305,16 @@ def build(raw_path: str, matched: str) -> tuple[list[dict], dict]:
             if not vals:
                 return None, []
             lo, hi = min(vals), max(vals)
-            if lo > 0 and (hi - lo) > FACTOR_BAND * lo:
+            # A NON-POSITIVE FACTOR IS A MEASUREMENT, NOT A MISSING VALUE: 84 rows have an AREA
+            # factor of exactly 0, because the late volume printed a zero area where the clean one
+            # printed a positive one (`edition_conflicts.csv` calls that `zero_contradicted`). It is
+            # kept and reported, and the division guards on `> 0` so it is never used as a divisor.
+            # What must not happen is averaging a 0 with a 10: `lo > 0` would skip the band test
+            # entirely and return a median of 5, a number describing neither candidate.
+            if lo <= 0:
+                if hi != lo:
+                    return None, []
+            elif (hi - lo) > FACTOR_BAND * lo:
                 return None, []
             return statistics.median(vals), sorted({y for c in cands for y in c[1][1]})
 
@@ -316,7 +326,13 @@ def build(raw_path: str, matched: str) -> tuple[list[dict], dict]:
         if not got:
             attribution = "unresolved_in_raw"
         elif ambiguous:
-            attribution = "ambiguous_raw_label"
+            # Two shapes, kept apart because they mean different things. A COMPONENT SUM whose parts
+            # do not both carry a factor is incomplete evidence about a known composition; two
+            # candidate labels for one value is a genuine ambiguity about which territory the cell
+            # belongs to. Calling both "ambiguous" would hide that the china and indonesia rows have
+            # a settled provenance and only lack one part's overlap.
+            attribution = ("component_factor_incomplete" if resolution == "component_sum"
+                           else "ambiguous_raw_label")
         elif pf is None:
             attribution = "no_overlap_pair"
         elif abs(pf - 100.0) <= FACTOR_BAND * 100.0:
@@ -401,7 +417,7 @@ def main() -> int:
               file=sys.stderr)
 
     order = ("overlap_100x", "overlap_10x", "overlap_other", "ambiguous_raw_label",
-             "no_overlap_pair", "unresolved_in_raw")
+             "component_factor_incomplete", "no_overlap_pair", "unresolved_in_raw")
     ac = {k: sum(1 for r in rows if r["attribution"] == k) for k in order}
     print(f"{len(rows)} era row(s), {len({r['label'] for r in rows})} label(s)")
     for k in order:

@@ -1,10 +1,10 @@
 source,label,item,year,period,verdict,convicted,production,area_ha,raw_label,n_raw_labels,volume,n_volumes,name_confirmed,resolution,overlap_years,n_overlap_years,prod_factor,area_factor,area_factor_pairs,corrected_production,corrected_area,corrected_yield,attribution,plausible_after
 iia,benin,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,4000,0,french dahomey|french ivory coast,2,iia_1938_39,1,False,single_cell,,0,,,0,,0,,ambiguous_raw_label,
 iia,benin,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,4000,0,french dahomey|french ivory coast,2,iia_1938_39,1,False,single_cell,,0,,,0,,0,,ambiguous_raw_label,
-iia,"china, mainland","tobacco, unmanufactured",,1934-1938,impossible_yield,True,64152300,566000,china|china: manchuria,2,iia_1939_45,1,False,component_sum,,0,,,0,,566000,,ambiguous_raw_label,
-iia,indonesia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,3471000,41000,dutch java and madura|dutch sumatra,2,iia_1939_45,1,False,component_sum,,0,,,0,,41000,,ambiguous_raw_label,
-iia,indonesia,"tobacco, unmanufactured",1940,,impossible_yield,True,2079600,19000,dutch java and madura|dutch sumatra,2,iia_1939_45,1,False,component_sum,,0,,,0,,19000,,ambiguous_raw_label,
 iia,micronesia (federated states of),"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,200,0,french mauritania|japanese south pacific,2,iia_1938_39,1,False,single_cell,,0,,,0,,0,,ambiguous_raw_label,
+iia,"china, mainland","tobacco, unmanufactured",,1934-1938,impossible_yield,True,64152300,566000,china|china: manchuria,2,iia_1939_45,1,False,component_sum,,0,,,0,,566000,,component_factor_incomplete,
+iia,indonesia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,3471000,41000,dutch java and madura|dutch sumatra,2,iia_1939_45,1,False,component_sum,,0,,,0,,41000,,component_factor_incomplete,
+iia,indonesia,"tobacco, unmanufactured",1940,,impossible_yield,True,2079600,19000,dutch java and madura|dutch sumatra,2,iia_1939_45,1,False,component_sum,,0,,,0,,19000,,component_factor_incomplete,
 iia,angola,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,237100,4000,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
 iia,angola,"tobacco, unmanufactured",1934,,impossible_yield,True,201700,3000,portuguese angola,1,iia_1938_39,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
 iia,angola,"tobacco, unmanufactured",1935,,impossible_yield,True,241400,4000,portuguese angola,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
