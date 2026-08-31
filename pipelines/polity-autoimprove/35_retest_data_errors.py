@@ -986,15 +986,36 @@ def check_reunion_tobacco_baseline(ctx):
     inflated period row: (3,500 + 40.6) / 2 = 1,770.3. That identity is pinned to the digit, because it
     is the only thing separating this entry's general condition from a single-label anecdote.
 
-    Two of the entry's counts have drifted, and the second matters. `the other ten` exonerations are
-    ELEVEN, and the eleventh is not in the stated 3.2x-27.1x band at all: `germany / tobacco / 1945`
-    sits at 0.0, a ZERO production filed `no_area_level_consistent`. That is not the
-    conservative-threshold case the entry describes; it is a one-sided test. The screen convicts at
-    >=30x and exonerates everything below, so a value cannot be too SMALL to pass. Germany's row escapes
-    the `impossible_yield_zero_area` arm too, because that arm needs `area == 0` and this row's area is
-    BLANK. Exposure is exactly one row -- the only other cells at <=0.34x their own baseline are
-    micronesia's two, and both are convicted by the zero-area arm -- so this is a real gap with a small
-    live population, which is worth stating precisely rather than as a class."""
+    THE ONE-SIDED-TEST GAP THIS CHECK DOCUMENTED IS NOW FIXED, and the fix is what moved five of the
+    pins below (2026-08-31, PR #603). The gap was real: the screen convicted at >=30x the label's own
+    pre-1934 median and filed everything below as `no_area_level_consistent`, so a value could not be
+    too SMALL to pass, and `germany / tobacco / 1945` sat at ratio 0.0 -- a ZERO production -- filed
+    consistent. It escaped the `impossible_yield_zero_area` arm as well, because that arm needs
+    `area == 0` and this row's area is BLANK, so blank-vs-zero (#414's subject) decided which arm saw
+    it. #603 gave the screen the low side of its own ratio test as the verdict `no_area_level_drop`,
+    and the row is now convicted under it.
+
+    WHAT THAT DID TO THE COUNTS, and why every one of them is re-recorded rather than adjusted:
+    `no_area_level_consistent` 22 -> 21, `neither reunion nor romania` 11 -> 10, their lowest ratio
+    0.0 -> 3.211009, `exonerated rather than convicted` 1 -> 0, and convicted rows 349 -> 350. A
+    recorded baseline is bidirectional precisely so a FALL has to be explained too, and here the fall
+    is the fix landing.
+
+    THE ENTRY'S OWN BAND IS THEREBY RESTORED, which is the cleanest evidence the germany row was the
+    anomaly and not a symptom. The entry describes ten exonerations at 3.2x-27.1x; with the eleventh
+    convicted the ten that remain span exactly 3.211009 to 27.100271, so the figure the entry recorded
+    was right all along and the drift was one row that did not belong in the class. Both ends are
+    pinned below for that reason.
+
+    NONE OF THIS TOUCHES THE ENTRY'S SUBJECT. Reunion's ten exonerations still rest on a baseline of
+    20,000 t drawn from the inflated volume, so each still divides one inflated number by another, and
+    romania/hops' baseline is still exactly the mean of one clean and one inflated period row --
+    (3,500 + 40.6) / 2 = 1,770.3, pinned to the digit because it is the only thing separating this
+    entry's general condition from a single-label anecdote. The contaminated-baseline defect is open.
+
+    All three rows at <=0.34x their own baseline are now convicted: micronesia's two by the zero-area
+    arm and germany's by the new drop arm. Germany's verdict is pinned by NAME, so a regression that
+    re-exonerates it fails here rather than only moving a count."""
     era = ctx["era"]
     nac = [r for r in era if r["verdict"] == "no_area_level_consistent"]
     reu = [r for r in nac if r["label"].strip().lower() == "reunion"]
@@ -1014,19 +1035,23 @@ def check_reunion_tobacco_baseline(ctx):
     lows = [r for r in era if ratio(r) is not None and ratio(r) <= 0.34]
     low_exonerated = [r for r in lows if r["verdict"] == "no_area_level_consistent"]
     convicted = sum(1 for r in era if str(r["convicted"]).strip().lower() in ("1", "true", "yes"))
+    germany = [r for r in era if r["label"].strip().lower() == "germany" and r["year"] == "1945"]
     return ([("reunion exonerations", len(reu), 10),
              ("  its baseline", float(reu[0]["own_pre_era_median"]) if reu else None, 20000.0),
              ("  ratios at 1934-1936", sum(1 for r in reu if ratio(r) == 1.0
                                            and r["year"] in ("1934", "1935", "1936")), 3),
              ("romania hops baseline", float(rom[0]["own_pre_era_median"]) if rom else None, 1770.3),
              ("  == (3500 + 40.6) / 2", round((3500 + 40.6) / 2, 4), 1770.3),
-             ("no_area_level_consistent", len(nac), 22),
-             ("  neither reunion nor romania", len(others), 11),
-             ("  their lowest ratio", orat[0] if orat else None, 0.0),
+             ("no_area_level_consistent", len(nac), 21),
+             ("  neither reunion nor romania", len(others), 10),
+             ("  their lowest ratio", orat[0] if orat else None, 3.211009),
+             ("  their highest ratio", orat[-1] if orat else None, 27.100271),
              ("rows at <=0.34x own baseline", len(lows), 3),
-             ("  exonerated rather than convicted", len(low_exonerated), 1),
-             ("convicted rows", convicted, 349)],
-            "the level test is one-sided: nothing can be too small to pass it")
+             ("  exonerated rather than convicted", len(low_exonerated), 0),
+             ("germany/1945 verdict, was exonerated at 0.0",
+              germany[0]["verdict"] if germany else None, "no_area_level_drop"),
+             ("convicted rows", convicted, 350)],
+            "the one-sided test is fixed (#603); the contaminated baseline itself is still open")
 
 
 def _unrouted(panel, label):
