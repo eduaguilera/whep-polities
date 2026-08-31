@@ -365,6 +365,52 @@ honoured over the exclusive bound. A **blanket** alias asserts nothing about any
 boundary year, so it gets no such deference and falls through to year-containment
 in the target's family, exactly like an unaliased label.
 
+## Period rows: data with no year
+
+The convention above is about **polity** spans. The *data* has a second time
+axis that has caused more mistakes than the first, and it is documented here
+because it was documented nowhere — five separate issues have now read a period
+row as though it were a dated one.
+
+Two sources publish **multi-year averages** as rows with a NULL `year` and a
+`period` label such as `1934-1938`:
+
+    iia        6,163 period rows    1900-1913, 1909-1913, 1925-1929,
+                                    1928-1932, 1934-1938
+    fao1952    3,702 period rows    mostly 1934-1938
+
+Nothing else in the panel has them. `matchlib.eff_year()` resolves such a row to
+the **END** year of its period — `1934-1938` becomes 1938 — which is why a
+period can straddle a polity's exclusive `end_year` and land one year past the
+polity it describes (`state/period_straddles.csv` records 46 such pairs).
+
+**The trap runs in both directions, and that is what makes it easy to miss:**
+
+- **Filtering or grouping by `year` silently DROPS them.** A count computed with
+  `year.notna()`, or a `groupby` on a key containing `year` with pandas' default
+  `dropna=True`, returns a number that looks complete and is not. This is how
+  `iia-tobacco-implausible-magnitudes` came to record "40 of the 607 iia tobacco
+  rows" when layer B holds 893, and how issue 414's "629 layer-B zeros" missed
+  152 more — 146 of them in the single volume that issue is about.
+- **Sorting or displaying them beside dated rows silently MERGES them.** A period
+  row sorted into a dated series looks like a duplicate year. Issue 443 read
+  `united states / sugar` as carrying 1938 twice, at 2,153,800 and 361,500; the
+  second figure is the `1934-1938` average, and with it set aside the series is
+  an ordinary dated succession.
+
+**A period label names its yearbook EDITION, not just its years.** Across the
+IIA extract's 42,587 multi-year rows there are seven period labels and each is
+printed by exactly one volume, so `period` attributes a row to its edition with
+no crosswalk and no value matching (`state/period_volume_provenance.csv`, all
+6,163 rows). The consequence is not academic: `1928-1932` covers years entirely
+**before** 1934 yet is printed by the late `iia_1938_39`, so a screen keyed on
+the years in the label attributes those rows to the wrong volume — 34 tobacco
+rows above 500,000 t sit there, outside any window written as `1934-1945`.
+
+**So when you write a count, a filter or a screen over source data, say which
+axis it covers.** A figure quoted without that is ambiguous, and in this repo it
+has usually meant dated-only.
+
 ## Which date a boundary year takes
 
 The year convention above says what a boundary year *means*. This says **which

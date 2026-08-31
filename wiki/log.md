@@ -26,6 +26,47 @@ Kinds:
 
 ---
 
+## convention-period-rows-are-a-second-time-axis
+**Date:** 2026-09-01
+**Touched:** none (documents an existing convention; no polity row changed)
+**Source:** none
+**Kind:** convention
+
+**A period row is not a dated row, and reading one as the other has now caused
+five separate mistakes.** `iia` publishes 6,163 multi-year averages and
+`fao1952` 3,702, as rows with a NULL `year` and a `period` label such as
+`1934-1938`. Nothing else in the panel has them.
+
+The trap runs in both directions, which is why it kept recurring. Filtering or
+grouping by `year` silently DROPS them — that is how
+`iia-tobacco-implausible-magnitudes` recorded "40 of the 607 iia tobacco rows"
+when layer B holds 893, and how [issue
+414](https://github.com/eduaguilera/whep-polities/issues/414)'s "629 layer-B
+zeros" missed 152 more, 146 of them in the very volume that issue is about.
+Displaying them beside dated rows silently MERGES them — that is how [issue
+443](https://github.com/eduaguilera/whep-polities/issues/443) read
+`united states / sugar` as carrying 1938 twice, at 2,153,800 and 361,500, when
+the second figure is the `1934-1938` average and the series is an ordinary
+dated succession once it is set aside.
+
+Two further instances: [issue
+411](https://github.com/eduaguilera/whep-polities/issues/411) describes its
+collision at dated 1937 while 84 of the 90 rows carry `period = 1934-1938`, and
+[issue 310](https://github.com/eduaguilera/whep-polities/issues/310)'s straddle
+count was first published against an inclusive `end_year`.
+
+**A period label also names its yearbook EDITION.** Across the IIA extract's
+42,587 multi-year rows there are seven period labels, each printed by exactly
+one volume, so `period` attributes a row to its edition with no crosswalk and no
+value matching. `1928-1932` covers years entirely before 1934 yet comes from the
+late `iia_1938_39`, so a screen keyed on the years in a label attributes those
+rows to the wrong volume.
+
+Recorded in `wiki/README.md` under "Period rows: data with no year", beside the
+year convention it is most often confused with. Like [issue
+131](https://github.com/eduaguilera/whep-polities/issues/131) before it, the
+rule was known in individual issues and stated nowhere central.
+
 ## decision-faithful-territory-for-reporting-units
 **Date:** 2026-08-31
 **Touched:** DEU-1800-1866, DEU-1866-1871, DZA-1902-1919, F51-1938-1945,
