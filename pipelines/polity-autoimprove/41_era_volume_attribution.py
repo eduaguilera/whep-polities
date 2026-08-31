@@ -75,9 +75,9 @@ a generated table is one re-run from being erased. `corrected_*` columns are wha
 WOULD produce, so that a decision to repair can be judged against agronomy before it is taken.
 
 Usage:
-  python3 pipelines/polity-autoimprove/40_era_volume_attribution.py            # report only
-  python3 pipelines/polity-autoimprove/40_era_volume_attribution.py --write    # refresh the table
-  python3 pipelines/polity-autoimprove/40_era_volume_attribution.py --check    # fail if stale
+  python3 pipelines/polity-autoimprove/41_era_volume_attribution.py            # report only
+  python3 pipelines/polity-autoimprove/41_era_volume_attribution.py --write    # refresh the table
+  python3 pipelines/polity-autoimprove/41_era_volume_attribution.py --check    # fail if stale
 """
 from __future__ import annotations
 

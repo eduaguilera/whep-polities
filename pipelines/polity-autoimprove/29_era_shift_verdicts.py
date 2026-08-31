@@ -96,7 +96,7 @@ WHAT THIS DOES NOT DO. It does not write corrections and it does not name a fact
 factors run 21x to 293x with a median of 68x, so no single divisor fits, and `yield_series_corrections.csv`
 remains the place a repair is proposed with its anchor. This is the evidence a repair would rest on. The
 per-row VOLUME attribution -- which yearbook edition each era cell came from, and the 100x/10x factor
-measured from that label's own volume overlap -- is `40_era_volume_attribution.py`, which needs the raw
+measured from that label's own volume overlap -- is `41_era_volume_attribution.py`, which needs the raw
 extract and therefore cannot live here.
 
 Usage:

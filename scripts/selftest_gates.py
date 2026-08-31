@@ -2152,6 +2152,58 @@ def mutate_era_zero_area_exonerated(root, gpd, make_valid, affinity):
             f"ZERO hectares -- from {before} to no_area_level_consistent, i.e. reported as fine, with "
             f"`convicted` flipped to match so every other arm stays quiet")
 
+def mutate_era_level_drop_exonerated(root, gpd, make_valid, affinity):
+    """Put the low-side row back where the ONE-SIDED ratio test left it: reported as fine.
+
+    Until issue 416, `29_era_shift_verdicts.py` convicted a no-area row at `>= 30x` the label's own
+    pre-1934 median and filed everything else `no_area_level_consistent`. There was no filter to grep
+    for -- the exoneration was the `else` branch -- so a value could not be too SMALL to fail:
+
+        germany / tobacco, unmanufactured / 1945   production 0   baseline 25,833.9   ratio 0.0
+        verdict: no_area_level_consistent
+
+    A production of ZERO reported as consistent with a 25,834 t baseline, which is the LARGEST
+    disagreement a ratio can express rather than a small one.
+
+    WHY THIS CASE IS NEEDED AND THE OBVIOUS ONE IS NOT ENOUGH. The tempting case is a
+    `no_area_level_drop` row whose ratio has been pushed above 1/30 -- the class contradicting its own
+    number. That fires, but it only protects the new class from being MISLABELLED. It does nothing
+    about the low arm being DELETED: drop it from the tool and its row goes back to
+    `no_area_level_consistent`, exactly the pre-fix state, and a gate that only checks the drop class
+    has no drop rows left to check and passes. So this mutation reproduces the DELETION rather than a
+    typo, and the only arm that can see it is the one requiring `no_area_level_consistent` to sit
+    strictly between 1/30 and 30x.
+
+    Every other arm stays quiet BY CONSTRUCTION. `convicted` is flipped to False so arm A agrees with
+    the new verdict; the row carries no area and therefore no implied_yield, so arms B and D have
+    nothing to say; its year is 1945, so arm E is satisfied; and `ratio_to_own` is left untouched at
+    its true 0.0, because the whole point is that the NUMBER was always there and the classifier had
+    no way to say "too small" about it.
+
+    It picks the row by verdict rather than by name, since which label occupies this class moves when
+    the panel is rebuilt, and it refuses to pass vacuously if the class is empty.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/era_shift_verdicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    drops = [r for r in rows if r["verdict"] == "no_area_level_drop"]
+    if not drops:
+        raise AssertionError("no no_area_level_drop rows in era_shift_verdicts.csv, so this mutation "
+                             "has nothing to exonerate and the case would pass vacuously")
+    # The most absurd one to clear: the ratio furthest below the line, which is the smallest ratio.
+    hit = min(drops, key=lambda r: float(r["ratio_to_own"]))
+    hit["verdict"] = "no_area_level_consistent"
+    hit["convicted"] = "False"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"refiled {hit['label']} {hit['item']!r} {hit['year']} -- production "
+            f"{hit['production']} against a pre-era median of {hit['own_pre_era_median']}, ratio "
+            f"{hit['ratio_to_own']} -- as no_area_level_consistent, i.e. reported as fine, which is "
+            f"the state the one-sided ratio test left it in")
+
 def mutate_overlap_code_not_a_polity(root, gpd, make_valid, affinity):
     """Point an overlap row at a polity code that does not exist.
 
@@ -5065,6 +5117,15 @@ CASES = (
         "a row with 85,000 tonnes of production on ZERO hectares reclassified as fine, with "
         "`convicted` flipped to match so arms A, B and C stay quiet -- only the zero-area rule stands "
         "between the `if area > 0` guard and 14 exonerated impossible rows",
+    ),
+    (
+        "validate_era_shift_verdicts.py",
+        mutate_era_level_drop_exonerated,
+        "outside the band",
+        "a production of ZERO refiled as consistent with a 25,834 t pre-era median -- the state the "
+        "one-sided ratio test left it in, where a value could not be too SMALL to fail. It reproduces "
+        "the low arm being DELETED rather than mislabelled, which the class's own threshold clause "
+        "cannot see: with the arm gone there are no drop rows left for that clause to check",
     ),
     (
         "validate_derived_counts.py",
