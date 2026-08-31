@@ -192,6 +192,72 @@ def check_tobacco_era_scope(ctx):
             "607 is the dated count, so the entry under-scoped by 286 rows and 73 implausible ones")
 
 
+def check_estates_label_prefix(ctx):
+    """`Estates` is the AREA half of `Indonesia Estates`, and the yield identity is what proves it.
+
+    Issue 450 recorded `Estates` as a label it could not identify. The name never identifies it -- what
+    does is that the two labels carry one item over the same four reporting periods with complementary
+    indicators, so dividing one by the other has to produce a believable coffee yield, and it does:
+    0.492, 0.330, 0.271 and 0.300 t/ha. A wrong pairing would not survive that test, which is why the
+    four value PAIRS are pinned rather than a row count. An estate area falling to a third of its
+    pre-war extent by 1949 is also the expected post-war history.
+
+    THE COLLISION PREMISE IS PINNED TOO, because it is what makes this a decision rather than a free
+    alias fix. `Indonesia` routes 144 of 144 and carries its own 4 coffee rows, so the estate rows are
+    a tenure sub-category of a total that already lands; routing them onto the same polity reproduces
+    the total-beside-parts collision of issues 367, 411 and 449, and the consumer means duplicate keys
+    rather than choosing the total. If `Indonesia`'s coffee rows ever stopped landing, or the estate
+    labels started to, that premise would have changed and this entry has to be re-reasoned rather
+    than kept.
+
+    Routing is read from `matched_rows.parquet`: layer B's `polity_code` is empty for every fao1952
+    row including the ones that DO route, so the panel cannot answer the routing question at all."""
+    lb = ctx["panel"]
+    f = lb[lb["source"] == "fao1952"].copy()
+    f["lab"] = f["country"].astype(str).str.strip()
+
+    def cell(lab, indicator, year, period):
+        d = f[(f["lab"] == lab) & (f["item"] == "coffee") & (f["indicator"] == indicator)]
+        d = d[d["year"].isna()] if period else d[d["year"].astype("Float64") == year]
+        if period:
+            d = d[d["period"].astype(str) == period]
+        return float(d["value"].iloc[0]) if len(d) == 1 else None
+
+    PAIRS = [("1934-1938", None, 55.6, 113.0), (None, 1949, 10.9, 33.0),
+             (None, 1950, 11.1, 41.0), (None, 1951, 12.0, 40.0)]
+    claims = [("`Estates` rows (all coffee area)",
+               len(f[(f["lab"] == "Estates")]), 4),
+              ("`Indonesia Estates` rows (all coffee production)",
+               len(f[(f["lab"] == "Indonesia Estates")]), 4)]
+    for period, year, want_prod, want_area in PAIRS:
+        tag = period or str(year)
+        prod = cell("Indonesia Estates", "crops:production", year, period)
+        area = cell("Estates", "crops:area", year, period)
+        claims.append((f"  {tag} production", prod, want_prod))
+        claims.append((f"  {tag} area", area, want_area))
+        y = round(prod / area, 3) if prod and area else None
+        claims.append((f"  {tag} implied t/ha", y, round(want_prod / want_area, 3)))
+
+    m = MATCHED_DF[0]
+    if m is None:
+        return None
+    mm = m[m["source"] == "fao1952"].copy()
+    mm["lab"] = mm["country"].astype(str).str.strip()
+
+    def routed(lab):
+        d = mm[mm["lab"] == lab]
+        return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
+
+    ind_r, ind_n = routed("Indonesia")
+    claims.append(("`Indonesia` rows routed -- the collision premise", f"{ind_r}/{ind_n}", "144/144"))
+    claims.append(("`Indonesia` coffee rows",
+                   len(f[(f["lab"] == "Indonesia") & (f["item"] == "coffee")]), 4))
+    for lab in ("Estates", "Indonesia Estates"):
+        r, n = routed(lab)
+        claims.append((f"`{lab}` routed", f"{r}/{n}", "0/4"))
+    return (claims, "the yield identity names the label; the parent total is why it is still a decision")
+
+
 def check_fao1952_china_label(ctx):
     """The `China` label carries 33 rows. The entry's argument is that the label is a correct national
     total with six broken livestock cells inside it, and the row count is the denominator of that claim."""
@@ -1484,6 +1550,7 @@ CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
+    "fao1952-estates-label-lost-country-prefix": check_estates_label_prefix,
     "fao1952-china-livestock-cells-implausible": check_fao1952_china_label,
     "fao1952-label-carries-a-wrong-group-heading": check_fao1952_wrong_group_heading,
     "fao1952-korea-rice-paddy-area-impossible": check_korea_rice_paddy_area,
