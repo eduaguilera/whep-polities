@@ -68,6 +68,18 @@ VERDICTS = {"underselects_minor_component", "attributable_no_underselection",
 # destroys. 81 today; the floor is well below it because the scope moves when routing changes.
 BASELINE_MIN_SERIES = 65
 
+# POTASSIUM IS CLEAN, AND THAT IS A SCOPE CLAIM WORTH CHECKING RATHER THAN RESTATING. The table
+# carries 8 `k` series and not one under-selected cell among them (`germany / k` has 4 attributable
+# cells and 0 under-selected; the other 7 have none), so the defect is confined to `n` and `p`. That
+# matters for the remedy: a fix framed as "nutrient series publish the smallest material" would imply
+# potash needs the same treatment, and it does not.
+#
+# Unlike the defect count, this pin is safe against a correct remedy. A remedy collapses attribution
+# for the affected series and drives their counts to zero -- which is exactly why the comment above
+# refuses to floor them -- but `k` is already at zero, so a remedy cannot move it. Only a NEW finding
+# can, and catching that is the point.
+K_UNDERSELECTED = 0
+
 
 def main() -> int:
     if not os.path.exists(TABLE):
@@ -151,6 +163,14 @@ def main() -> int:
           f"{len(bad_rows)} publish a minor component as the nutrient category "
           f"({tot_u} of {tot_a} attributable non-zero cells) — that count is printed, NOT pinned, "
           f"because a correct remedy empties it and collapses its denominator too")
+    k_bad = [r for r in rows if r["item"] == "k" and int(r["n_underselected"] or 0) > 0]
+    if len(k_bad) != K_UNDERSELECTED:
+        problems.append(
+            f"{len(k_bad)} `k` series now show an under-selected cell, recorded {K_UNDERSELECTED} "
+            f"({', '.join(r['label'] for r in k_bad)}). The class has been confined to `n` and `p`, "
+            f"and that is a published scope claim (issue 490); potash joining it is a new finding "
+            f"and must not land silently. A remedy cannot cause this, because `k` is already at zero")
+
     if len(rows) < BASELINE_MIN_SERIES:
         problems.append(
             f"only {len(rows)} series in scope, below the floor of {BASELINE_MIN_SERIES}. This is a "
@@ -168,9 +188,10 @@ def main() -> int:
         for p in problems[:25]:
             print("  - " + p, file=sys.stderr)
         return 1
-    print(f"PASS: all {len(rows)} series pick a material under half the same-year maximum, in at "
-          f"least {UNDERSEL_SHARE:.0%} of at least {MIN_CELLS} attributable cells, with their shares "
-          f"and ratios consistent with their own counts")
+    print(f"PASS: {len(rows)} iia p/n/k series checked; the {len(bad_rows)} flagged ones each pick a "
+          f"material under half the same-year maximum in at least {UNDERSEL_SHARE:.0%} of at least "
+          f"{MIN_CELLS} attributable cells, every row's share and ratio agrees with its own counts, "
+          f"and no `k` series under-selects")
     return 0
 
 
