@@ -284,6 +284,67 @@ def check_western_eastern_prefix(ctx):
                     "non-colliding target")
 
 
+def check_algeria_civil_basis_span(ctx):
+    """94 iia rows carry a territory 4.03x too large, and a THREE-YEAR DATA GAP is what makes the
+    boundary provable rather than argued.
+
+    #605 created DZA-CVD-1902-1919 for IIA's Algeria data on the three civil departments. IIA's own
+    stated areas show that basis running to data year 1925 -- 575,289 at 1921 and 575,511 at 1925,
+    then 2,195,097 at 1929 -- so the rows at 1919-1925 sit on the whole-colony polity while the source
+    says they describe a territory a quarter of its size.
+
+    THE GAP IS THE LOAD-BEARING PIN. iia has ZERO Algeria rows at 1926, 1927 and 1928, so any boundary
+    placed in those three years partitions the data identically and the basis change needs no dating by
+    inference. If a re-extraction ever supplied rows there, the boundary becomes a judgement call and
+    this entry's central claim has to be re-argued rather than kept -- which is why the zero is checked
+    and not merely mentioned.
+
+    Both stated areas are pinned as well, because the factor is the finding: if either moved, the 4.03x
+    moves with it. And the period rows are pinned by PERIOD, because the two that straddle the switch
+    are the ones no routing can fix, and a count alone would not notice 1925-1929 being swapped for
+    1934-1938."""
+    m = MATCHED_DF[0]
+    if m is None:
+        return None
+    a = m[(m["country"].astype(str).str.strip().str.lower() == "algeria") & (m["source"] == "iia")]
+    dated = a[a["year"].notna()]
+
+    def band(lo, hi):
+        return dated[(dated["year"] >= lo) & (dated["year"] <= hi)]
+
+    def codes(d):
+        return ",".join(sorted({str(x) for x in d["whep_code"].dropna()}))
+
+    b1925 = band(1919, 1925)
+    claims = [("iia Algeria rows 1919-1925 -- the wrong territory", len(b1925), 94),
+              ("  their destination", codes(b1925), "DZA-1919-1962"),
+              ("iia Algeria rows 1926-1928 -- THE GAP that dates the boundary",
+               len(band(1926, 1928)), 0),
+              ("iia Algeria rows 1929-1935 (correctly whole-colony)", len(band(1929, 1935)), 111),
+              ("iia Algeria rows 1917-1918 (fixed by #605)", len(band(1917, 1918)), 17),
+              ("  their destination", codes(band(1917, 1918)), "DZA-CVD-1902-1919")]
+
+    with open(os.path.join(REPO, "data", "final", "source_stated_areas.csv"),
+              newline="", encoding="utf-8") as fh:
+        sa = [r for r in csv.DictReader(fh) if "alg" in r["label"].lower()]
+    for dy, want in (("1925", 575511.0), ("1929", 2195097.0)):
+        hit = [float(r["stated_area_km2"]) for r in sa if str(r["data_year"]) == dy]
+        claims.append((f"IIA's stated km2 at data year {dy}", hit[0] if hit else None, want))
+    if len(sa) >= 2:
+        civil = [float(r["stated_area_km2"]) for r in sa if str(r["data_year"]) == "1925"]
+        whole = [float(r["stated_area_km2"]) for r in sa if str(r["data_year"]) == "1929"]
+        if civil and whole:
+            claims.append(("  the source's own step, whole / civil",
+                           round(whole[0] / civil[0], 2), 3.81))
+
+    per = a[a["year"].isna()]
+    counts = {str(k): int(v) for k, v in per["period"].astype(str).value_counts().items()}
+    for p, want in (("1925-1929", 24), ("1928-1932", 25)):
+        claims.append((f"period {p} rows -- STRADDLES the switch, unroutable", counts.get(p), want))
+    claims.append(("period 1909-1913 rows (on DZA-CVD, correct)", counts.get("1909-1913"), 19))
+    return (claims, "the 1926-1928 gap is what makes the boundary provable; 49 period rows straddle it")
+
+
 def check_estates_label_prefix(ctx):
     """`Estates` is the AREA half of `Indonesia Estates`, and the yield identity is what proves it.
 
@@ -1643,6 +1704,7 @@ CHECKS = {
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
+    "iia-algeria-civil-basis-continues-to-1925": check_algeria_civil_basis_span,
     "fao1952-estates-label-lost-country-prefix": check_estates_label_prefix,
     "fao1952-china-livestock-cells-implausible": check_fao1952_china_label,
     "fao1952-label-carries-a-wrong-group-heading": check_fao1952_wrong_group_heading,
