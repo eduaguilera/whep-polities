@@ -2560,6 +2560,42 @@ def mutate_constant_run_shortened(root, gpd, make_valid, affinity):
             f"to be a rounding floor stops being pinned while the total stays put")
 
 
+def mutate_potash_joins_the_class(root, gpd, make_valid, affinity):
+    """Give a `k` series one under-selected cell, as a widened class would.
+
+    The table's published scope claim is that this defect is confined to `n` and `p`: 8 potassium
+    series carry ZERO under-selected cells between them. That claim is load-bearing for the remedy,
+    because a fix framed as "nutrient series publish the smallest material" implies potash needs the
+    same treatment, and it does not.
+
+    This mutation is the smallest form of that claim breaking, and it is invisible to every other arm.
+    `germany / k` has 4 attributable cells and 0 under-selected, so moving it to 1 leaves the census
+    row count at 81 (the floor arm), leaves all 8 flagged series untouched (the share, ratio and
+    arithmetic arms), and keeps the row's own share consistent with its counts. The verdict stays
+    `attributable_no_underselection`, correctly -- 1 of 4 is 25%, below the 60% threshold -- so the
+    class-membership arms have nothing to say either. Only the potash scope pin can see it.
+
+    Note the direction: this pin cannot be tripped by a correct REMEDY, which is what separates it
+    from the defect count the floor comment deliberately refuses to pin. A remedy drives attribution
+    to zero, and `k` is already at zero, so the only thing that moves it is a new finding.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/component_underselection.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["item"] == "k" and int(r["n_attributable"] or 0) >= 1)
+    na = int(victim["n_attributable"])
+    victim["n_underselected"] = "1"
+    victim["share_underselected"] = str(round(1 / na, 4))
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"gave {victim['label']} / k one under-selected cell of its {na} attributable, so potash "
+            f"joins a class this repo has published as confined to nitrogen and phosphorus, while "
+            f"the census count, all 8 findings and every share/ratio identity stay exactly as pinned")
+
+
 def mutate_period_volume_relabelled(root, gpd, make_valid, affinity):
     """Move one row to a different yearbook volume, leaving its ratio and verdict untouched.
 
@@ -4966,6 +5002,13 @@ CASES = (
         "not one any more",
         "a long constant run trimmed below the pinned length, so a decade of carried-forward "
         "values stops being flagged and reads as a genuinely unchanging series",
+    ),
+    (
+        "validate_component_underselection.py",
+        mutate_potash_joins_the_class,
+        "`k` series now show an under-selected cell",
+        "potash joining a class published as confined to nitrogen and phosphorus, while the census "
+        "count, all eight findings and every share/ratio identity stay exactly where they are pinned",
     ),
     (
         "validate_period_vs_dated_consistency.py",
