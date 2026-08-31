@@ -731,6 +731,44 @@ not because the matcher is worse but because it names reporting units — Trucia
 pre-Confederation Canadian provinces — that no 20th-century source does. That
 list is the value.
 
+### Period averages that straddle a polity boundary (issue #310)
+
+A period average is one number over several years, and `assign()` routes it to whichever candidate
+is live for the most of them (#383). That still leaves averages with years outside the polity that
+got the row, at a founding or a dissolution. Stage 01 now PUBLISHES that rather than resolving it,
+because the routing rule is the owner's decision and no rule is in force yet:
+
+* `matched_rows.parquet` carries `period_straddles_polity_span`, `period_years_before_start` and
+  `period_years_after_end` — appended after `match_method`, zero where the question does not apply
+  (a dated row, or an unrouted one), so a consumer can filter by severity and not just by fact.
+* `state/period_straddles.csv` is the worklist: one row per (polity, period), with the direction,
+  the overhang in years at each end, how many of the averaged years the polity actually covers, and
+  the rows behind it. 46 pairs, 641 rows, measured 2026-08-31.
+
+**The count depends on the `end_year` convention and only one of the two is this repo's.** Under
+`matchlib.covers` (`end_year` EXCLUSIVE) it is 641 rows over 46 pairs; reading `end_year` as
+inclusive gives 161 over 24, which is the figure issue #310's comment of 2026-08-19 reports. The
+480-row difference is one shape, not two answers: every one of those rows has its period's LAST
+year equal to its polity's `end_year` and nothing else outside — IIA/fao1952 `1934-1938` on
+`DEU-1920-1938`, `IND-1914-1937`, `F51-1918-1938` — and that year belongs to the SUCCESSOR here.
+`end_year_boundary_only` in the table marks them, so the two numbers reconcile from the data.
+This is the shape `scripts/validate_year_semantics.py` exists for, one level up: not a component
+implementing the wrong convention, but a MEASUREMENT taken with it.
+
+**Why nothing is reassigned.** All three candidate rules were re-derived through `M.assign` (counts
+over the 641; the docstring of `period_straddle()` carries the detail):
+
+| rule | rows moved | where they land |
+|---|---|---|
+| most years of the period | **0** | already in force since #383 — the stored code equals the max-coverage choice on 641 of 641 |
+| … requiring a strict MAJORITY | **53** | none to another polity; all 53 UNASSIGNED, because SBZ-1938-1949 (29) and PAK-1937-1947 (18) have no predecessor in their own family |
+| period midpoint | **105** | 7 to another polity; **98 to no polity at all** — `Germany Berlin`/`Germany Western` resolve only from 1937, so asking for 1936 returns nothing |
+| flag and let consumers decide | **0** | this section |
+
+So the choice is between accepting 641 flagged-but-routed rows, dropping 53, or stranding 98. Two
+of the three alternatives cost more rows than the straddle does, which is why the flag shipped
+first and the rule did not.
+
 ### Protocol version — reopening when the RULES change
 
 The evidence hash answers "did the data change since we judged this?". It cannot
