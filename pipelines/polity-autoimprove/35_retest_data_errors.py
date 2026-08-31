@@ -192,6 +192,89 @@ def check_tobacco_era_scope(ctx):
             "607 is the dated count, so the entry under-scoped by 286 rows and 73 implausible ones")
 
 
+def check_western_eastern_prefix(ctx):
+    """`Western` and `Eastern` are Germany's zones, proved by an additive identity, not by their names.
+
+    THE RESIDUAL IS THE EVIDENCE, AND ITS CONSTANCY IS WHAT MAKES IT EVIDENCE. Germany's total minus
+    the two zones is +17 (1000 people) in both 1937 and 1951, and +5 (1000 head of goats) in each of
+    1949, 1950 and 1951 -- five year-observations over ten distinct component values, with the offset
+    constant within a variable and different between variables. That is the signature of a real third
+    component (`Germany Berlin` exists with 42 rows) rather than a coincidence or a rounding artefact.
+    A wrong pairing could not reproduce one offset across a 14-year gap and another across three
+    consecutive years, so the identity is pinned per year rather than as an average.
+
+    The panel carries no Berlin agricultural-population row, so this check pins that the residual is
+    CONSTANT and does not assert it is Berlin's.
+
+    THE EXECUTABILITY PREMISE IS PINNED TOO, because it is the actionable half. For 1949-1951 the
+    prefixed twins route to F78/F77 while the `Germany` total routes to DEU-1949-1990, so total and
+    parts sit on different polities and nothing collides; for 1937 the twin and the total share
+    DEU-1920-1938, which is issue 411's defect. If those routings ever converge or diverge differently
+    the 14-of-18 split has to be recomputed, not carried forward. Zero shared keys with the twins is
+    pinned as well: it is what makes these rows new data rather than duplicates.
+
+    Routing is read from `matched_rows.parquet`, since layer B's `polity_code` is empty for every
+    fao1952 row including the ones that do route."""
+    lb = ctx["panel"]
+    f = lb[lb["source"] == "fao1952"].copy()
+    f["lab"] = f["country"].astype(str).str.strip()
+
+    def val(lab, item, ind, year):
+        d = f[(f["lab"] == lab) & (f["item"] == item) & (f["indicator"] == ind)
+              & (f["year"].astype("Float64") == year)]
+        return float(d["value"].iloc[0]) if len(d) == 1 else None
+
+    POP = ("r_fao_population_1952_10_18", "population:population agricultural")
+    GOAT = ("goats", "livestock:livestock")
+    claims = [("`Western` rows", len(f[f["lab"] == "Western"]), 13),
+              ("`Eastern` rows", len(f[f["lab"] == "Eastern"]), 5)]
+    for (item, ind), years, resid, tag in ((POP, (1937, 1951), 17.0, "people"),
+                                           (GOAT, (1949, 1950, 1951), 5.0, "goats")):
+        for yr in years:
+            tot, w, e = (val("Germany", item, ind, yr), val("Western", item, ind, yr),
+                         val("Eastern", item, ind, yr))
+            got = round(tot - w - e, 6) if None not in (tot, w, e) else None
+            claims.append((f"  {yr} {tag}: Germany - (W+E)", got, resid))
+            claims.append((f"    {yr} Germany", tot, {
+                (1937, "people"): 13145.0, (1951, "people"): 11601.0,
+                (1949, "goats"): 2831.0, (1950, "goats"): 3094.0, (1951, "goats"): 2962.0,
+            }[(yr, tag)]))
+
+    m = MATCHED_DF[0]
+    if m is None:
+        return None
+    mm = m[m["source"] == "fao1952"].copy()
+    mm["lab"] = mm["country"].astype(str).str.strip()
+    KEY = ["item", "indicator", "unit", "year", "period"]
+
+    def routed(lab):
+        d = mm[mm["lab"] == lab]
+        return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
+
+    for orphan, twin, n in (("Western", "Germany Western", 13), ("Eastern", "Germany Eastern", 5)):
+        r, tot = routed(orphan)
+        claims.append((f"`{orphan}` routed", f"{r}/{tot}", f"0/{n}"))
+        tr, tn = routed(twin)
+        claims.append((f"`{twin}` routed -- the target exists", f"{tr}/{tn}",
+                       {"Germany Western": "254/254", "Germany Eastern": "109/109"}[twin]))
+        o = mm[mm["lab"] == orphan].copy()
+        t = mm[mm["lab"] == twin].copy()
+        ok = set(o[KEY].astype(str).agg("|".join, axis=1))
+        tk = set(t[KEY].astype(str).agg("|".join, axis=1))
+        claims.append((f"  keys `{orphan}` shares with its twin", len(ok & tk), 0))
+
+    def codes(lab, yr):
+        d = mm[(mm["lab"] == lab) & (mm["year"] == yr)]
+        return ",".join(sorted(set(d["whep_code"].dropna().astype(str))))
+
+    claims.append(("1949 total vs part polity", f"{codes('Germany', 1949)} vs "
+                   f"{codes('Germany Western', 1949)}", "DEU-1949-1990 vs F78-1949-1990"))
+    claims.append(("1937 total vs part polity -- issue 411", f"{codes('Germany', 1937)} vs "
+                   f"{codes('Germany Western', 1937)}", "DEU-1920-1938 vs DEU-1920-1938"))
+    return (claims, "a residual constant per variable identifies the zones; 14 of 18 rows have a "
+                    "non-colliding target")
+
+
 def check_estates_label_prefix(ctx):
     """`Estates` is the AREA half of `Indonesia Estates`, and the yield identity is what proves it.
 
@@ -1550,6 +1633,7 @@ CHECKS = {
     "iia-corrupted-country-labels": check_corrupted_country_labels,
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
+    "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
     "fao1952-estates-label-lost-country-prefix": check_estates_label_prefix,
     "fao1952-china-livestock-cells-implausible": check_fao1952_china_label,
     "fao1952-label-carries-a-wrong-group-heading": check_fao1952_wrong_group_heading,
