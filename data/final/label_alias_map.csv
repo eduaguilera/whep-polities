@@ -295,6 +295,7 @@ DPRepublic of Korea,lassaletta-grassland-share,1961,2009,PRK-1948-2025,Democrati
 DR Congo,,1960,2025,COD-1960-2025,Democratic Republic of the Congo,high,0
 Dutch Caribbean,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,
 Dutch Guiana,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,
+Eastern,fao1952,1949,1951,F77-1949-1990,East Germany,high,
 Ecuador,faostat,1961,2024,ECU-1942-2025,Ecuador,high,221065
 Ecuador,lassaletta-grassland-share,1961,2009,ECU-1942-2025,Ecuador,high,
 Egypt,faostat,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,243914
@@ -968,6 +969,7 @@ Viet Nam,faostat,1975,2024,VNM-1975-2025,Vietnam,high,170522
 viet nam,iia,,,VNM-1887-1954,Vietnam (French Indochina),high,58
 Virgin Is US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high,
 Virgin Islands US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high,
+Western,fao1952,1949,1951,F78-1949-1990,West Germany,high,
 Western Australia,sa_colonial,1829,1900,AUWA-1829-1900,Western Australia (colonial),high,
 Western Sahara,faostat,1958,1975,ESH-1958-1975,Western Sahara (1958-1975),high,0
 Western Sahara,faostat,1975,2025,ESH-1975-2025,Western Sahara,high,0

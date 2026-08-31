@@ -251,9 +251,18 @@ def check_western_eastern_prefix(ctx):
         d = mm[mm["lab"] == lab]
         return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
 
+    ROUTED_NOW = {"Western": "10/13", "Eastern": "4/5"}
     for orphan, twin, n in (("Western", "Germany Western", 13), ("Eastern", "Germany Eastern", 5)):
         r, tot = routed(orphan)
-        claims.append((f"`{orphan}` routed", f"{r}/{tot}", f"0/{n}"))
+        claims.append((f"`{orphan}` routed", f"{r}/{tot}", ROUTED_NOW[orphan]))
+        # The rows deliberately left unrouted are the back-projected ones, and which they are is the
+        # claim -- a count alone would pass if a 1949 row were dropped and a 1937 one gained.
+        left = mm[(mm["lab"] == orphan)
+                  & mm["whep_code"].fillna("").astype(str).str.strip().eq("")]
+        tags = sorted({(str(int(x)) if pd.notna(x) else str(pp))
+                       for x, pp in zip(left["year"], left["period"])})
+        claims.append((f"  `{orphan}` still unrouted, by year/period", ",".join(tags),
+                       {"Western": "1934-1938,1937", "Eastern": "1937"}[orphan]))
         tr, tn = routed(twin)
         claims.append((f"`{twin}` routed -- the target exists", f"{tr}/{tn}",
                        {"Germany Western": "254/254", "Germany Eastern": "109/109"}[twin]))
