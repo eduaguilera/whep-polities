@@ -63,6 +63,16 @@ BASELINE = frozenset({
     # BEL pair removed 2026-08-05: BLX-1921-1999 is retired as a duplicate of the
     # BLX-1850-1999 reporting row (issue 40). Its iso3 was BEL, which is what put a
     # Belgium-Luxembourg row in Belgium's family in the first place.
+    # DZA-CVD-1902-1919 joined on 2026-08-31 (issue #400 case 2): the three CIVIL DEPARTMENTS of
+    # northern Algeria, created because 418 `mitchell` + `iia` rows measure them (IIA states
+    # 575,511 km2) while DZA-1902-1919's polygon is 2,442,683 including the Southern Territories,
+    # a 4.244x denominator error. Exactly the shape of the MMR pair below -- a whole and its part
+    # must share the grouping key, because `iso3` names the modern country whose territory the
+    # entity belongs to and both of these are Algeria. Resolved the same two ways: by polity_type
+    # (this row is `subnational`, DZA-1902-1919 is `national`) and by explicit alias, since the two
+    # rules that reroute the data are source-scoped and the unscoped `algeria` rule still sends
+    # every other source to the colony.
+    ("DZA", "DZA-1902-1919", "DZA-CVD-1902-1919"),
     ("CMR", "BCM-1916-1961", "CMR-1960-1961"),
     ("CMR", "BCM-1916-1961", "FCM-1920-1960"),
     ("COD", "COD-1910-1960", "CODRU-1922-1960"),

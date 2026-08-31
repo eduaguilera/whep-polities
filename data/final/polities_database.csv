@@ -207,6 +207,7 @@ DZA-1886-1902,Algeria (1886-1902),1886,1902,national,DZA,615,Africa,draft,2026-0
 DZA-1902-1919,Algeria (1902-1919),1902,1919,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1902,assigned,,DZA-1886-1902,DZA-1919-1962,
 DZA-1919-1962,Algeria (1919-1962),1919,1962,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1919,assigned,,DZA-1902-1919,DZA-1962-2025,
 DZA-1962-2025,Algeria (1962-2025),1962,2025,national,DZA,615,Africa,draft,2026-04-13,cshapes-2.0,615,1962,assigned,,DZA-1919-1962,,
+DZA-CVD-1902-1919,"Algerian civil departments (Alger, Oran, Constantine, 1902-1919)",1902,1919,subnational,DZA,,Africa,draft,2026-08-31,none,,,unassigned,575511,,,
 ECU-1800-1942,Ecuador (to 1942),1800,1942,national,ECU,130,South America,draft,2026-04-12,cshapes-2.0,130,1886,assigned,,,ECU-1942-2025,
 ECU-1942-2025,Ecuador,1942,2025,national,ECU,130,South America,reviewed,2026-04-12,cshapes-2.0,130,1942,assigned,,ECU-1800-1942,,
 EGB-1830-1914,Egba United Government (Abeokuta),1830,1914,national,,,Africa,draft,2026-04-15,paine-2024,Egba,,assigned,,,NGA-1961-2025,

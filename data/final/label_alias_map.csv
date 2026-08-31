@@ -18,6 +18,8 @@ algeria,,1919,1962,DZA-1919-1962,Algeria,high,
 algeria,,1962,2025,DZA-1962-2025,Algeria,high,
 Algeria,faostat,1961,1961,DZA-1919-1962,Algeria (1919-1962),high,208548
 Algeria,faostat,1962,2024,DZA-1962-2025,Algeria (1962-2025),high,208548
+algeria,iia,1902,1918,DZA-CVD-1902-1919,"Algerian civil departments (Alger, Oran, Constantine, 1902-1919)",high,121
+algeria,mitchell,1902,1918,DZA-CVD-1902-1919,"Algerian civil departments (Alger, Oran, Constantine, 1902-1919)",high,297
 American Samoa,,,,ASM-1900-2025,Territory of American Samoa,high,
 American Samoa,faostat,1900,2025,ASM-1900-2025,Territory of American Samoa,high,0
 Andorra,faostat,1850,2025,AND-1800-2025,Andorra,high,0

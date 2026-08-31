@@ -204,9 +204,10 @@ DRV-1954-1975,Democratic Republic of Vietnam (North Vietnam),1954,1975,cshapes-2
 DWI-1800-1917,Danish West Indies,1800,1917,gadm-4.1-adm0,2023.0,proxy,True,back_projected,True,True,polygon vintage 2023 is AFTER the period ends (1917) — later/modern border applied back,9
 DZA-1831-1886,Algeria,1831,1886,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 55y span (1831-1886); borders may have changed,237
 DZA-1886-1902,Algeria (1886-1902),1886,1902,cshapes-2.0,1886.0,assigned,True,measured,False,False,vintage 1886 faithful to period 1886-1902,241
-DZA-1902-1919,Algeria (1902-1919),1902,1919,cshapes-2.0,1902.0,assigned,True,measured,False,False,vintage 1902 faithful to period 1902-1919,418
+DZA-1902-1919,Algeria (1902-1919),1902,1919,cshapes-2.0,1902.0,assigned,True,measured,False,False,vintage 1902 faithful to period 1902-1919,0
 DZA-1919-1962,Algeria (1919-1962),1919,1962,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 43y span (1919-1962); borders may have changed,1535
 DZA-1962-2025,Algeria (1962-2025),1962,2025,cshapes-2.0,1962.0,assigned,False,assumed_constant,True,False,single 1962 polygon held across a 63y span (1962-2025); borders may have changed,0
+DZA-CVD-1902-1919,"Algerian civil departments (Alger, Oran, Constantine, 1902-1919)",1902,1919,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),418
 ECU-1800-1942,Ecuador (to 1942),1800,1942,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 142y span (1800-1942); borders may have changed,376
 ECU-1942-2025,Ecuador,1942,2025,cshapes-2.0,1942.0,assigned,True,assumed_constant,True,False,single 1942 polygon held across a 83y span (1942-2025); borders may have changed,754
 EGB-1830-1914,Egba United Government (Abeokuta),1830,1914,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
