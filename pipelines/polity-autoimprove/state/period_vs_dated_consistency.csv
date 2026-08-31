@@ -1,0 +1,1656 @@
+source,label,item,unit,period,volume,period_value,dated_mean,dated_n,dated_first,dated_last,ratio,verdict
+iia,algeria,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,4.9,4.9004,5,1909,1913,0.999918,consistent
+iia,bulgaria,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,2050.0,1314.9456,5,1909,1913,1.559,consistent
+iia,france,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,5725.442,5725.4422,5,1909,1913,1.0,consistent
+iia,italy,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,40804.0,40804.0,5,1909,1913,1.0,consistent
+iia,japan,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,93393.39,15615.1682,5,1909,1913,5.98094,unexplained_period_higher
+iia,romania,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,212.292,212.2924,5,1909,1913,0.999998,consistent
+iia,russian federation,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,10443.1,8970.7668,4,1910,1913,1.164126,consistent
+iia,south korea,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,841.924,841.9238,5,1909,1913,1.0,consistent
+iia,spain,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,1287.601,1287.6012,5,1909,1913,1.0,consistent
+iia,switzerland,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,46.854,46.854,5,1909,1913,1.0,consistent
+iia,turkey,"silk-worm cocoons, reelable",tonnes,1900-1913,iia_1925_26,15023.775,15023.7753,3,1909,1911,1.0,consistent
+iia,costa rica,"cacao, beans",tonnes,1909-1913,iia_1925_26,291.2,301.16,5,1909,1913,0.966928,consistent
+iia,cuba,"cacao, beans",tonnes,1909-1913,iia_1925_26,1588.4,1588.44,5,1909,1913,0.999975,consistent
+iia,dominica,"cacao, beans",tonnes,1909-1913,iia_1925_26,544.7,544.68,5,1909,1913,1.000037,consistent
+iia,grenada,"cacao, beans",tonnes,1909-1913,iia_1925_26,5616.1,5582.74,5,1909,1913,1.005976,consistent
+iia,guadeloupe,"cacao, beans",tonnes,1909-1913,iia_1925_26,861.4,861.56,5,1909,1913,0.999814,consistent
+iia,guyana,"cacao, beans",ha,1909-1913,iia_1925_26,898.0,898.4,5,1909,1913,0.999555,consistent
+iia,indonesia,"cacao, beans",tonnes,1909-1913,iia_1925_26,2345.0,1632.02,5,1909,1913,1.43687,consistent
+iia,jamaica,"cacao, beans",ha,1909-1913,iia_1925_26,4714.0,4713.8,5,1909,1913,1.000042,consistent
+iia,jamaica,"cacao, beans",tonnes,1909-1913,iia_1925_26,2643.3,2643.32,5,1909,1913,0.999992,consistent
+iia,martinique,"cacao, beans",tonnes,1909-1913,iia_1925_26,558.6,558.62,5,1909,1913,0.999964,consistent
+iia,papua new guinea,"cacao, beans",ha,1909-1913,iia_1925_26,384.0,389.75,4,1910,1913,0.985247,consistent
+iia,saint lucia,"cacao, beans",ha,1909-1913,iia_1925_26,2400.0,2400.0,4,1910,1913,1.0,consistent
+iia,saint lucia,"cacao, beans",tonnes,1909-1913,iia_1925_26,855.5,855.52,5,1909,1913,0.999977,consistent
+iia,saint vincent and the grenadines,"cacao, beans",ha,1909-1913,iia_1925_26,400.0,400.0,5,1909,1913,1.0,consistent
+iia,saint vincent and the grenadines,"cacao, beans",tonnes,1909-1913,iia_1925_26,108.9,108.88,5,1909,1913,1.000184,consistent
+iia,samoa,"cacao, beans",ha,1909-1913,iia_1925_26,2517.0,2159.5,4,1910,1913,1.165548,consistent
+iia,samoa,"cacao, beans",tonnes,1909-1913,iia_1925_26,692.4,706.175,4,1910,1913,0.980494,consistent
+iia,sri lanka,"cacao, beans",ha,1909-1913,iia_1925_26,13191.0,13190.75,4,1909,1913,1.000019,consistent
+iia,sri lanka,"cacao, beans",tonnes,1909-1913,iia_1925_26,3597.8,3597.84,5,1909,1913,0.999989,consistent
+iia,suriname,"cacao, beans",ha,1909-1913,iia_1925_26,9751.0,9751.4,5,1909,1913,0.999959,consistent
+iia,suriname,"cacao, beans",tonnes,1909-1913,iia_1925_26,1496.8,1496.82,5,1909,1913,0.999987,consistent
+iia,trinidad and tobago,"cacao, beans",ha,1909-1913,iia_1925_26,123000.0,123028.6,5,1909,1913,0.999768,consistent
+iia,australia,"coffee, green",ha,1909-1913,iia_1925_26,80.0,80.4,5,1909,1913,0.995025,consistent
+iia,australia,"coffee, green",tonnes,1909-1913,iia_1925_26,48.2,48.24,5,1909,1913,0.999171,consistent
+iia,guadeloupe,"coffee, green",tonnes,1909-1913,iia_1925_26,859.2,859.24,5,1909,1913,0.999953,consistent
+iia,guyana,"coffee, green",ha,1909-1913,iia_1925_26,1036.0,1035.6,5,1909,1913,1.000386,consistent
+iia,india,"coffee, green",ha,1909-1913,iia_1925_26,84062.0,84001.8,5,1909,1913,1.000717,consistent
+iia,jamaica,"coffee, green",ha,1909-1913,iia_1925_26,8875.0,9445.8,5,1909,1913,0.939571,consistent
+iia,jamaica,"coffee, green",tonnes,1909-1913,iia_1925_26,3887.4,3809.36,5,1909,1913,1.020486,consistent
+iia,madagascar,"coffee, green",ha,1909-1913,iia_1925_26,8579.0,8579.0,3,1911,1913,1.0,consistent
+iia,malawi,"coffee, green",ha,1909-1913,iia_1925_26,1479.0,1479.4,5,1909,1913,0.99973,consistent
+iia,malawi,"coffee, green",tonnes,1909-1913,iia_1925_26,202.1,178.16,5,1909,1913,1.134374,consistent
+iia,sri lanka,"coffee, green",ha,1909-1913,iia_1925_26,574.0,573.8,5,1909,1913,1.000349,consistent
+iia,sri lanka,"coffee, green",tonnes,1909-1913,iia_1925_26,230.7,230.7,3,1911,1913,1.0,consistent
+iia,suriname,"coffee, green",tonnes,1909-1913,iia_1925_26,247.5,247.48,5,1909,1913,1.000081,consistent
+iia,tanzania,"coffee, green",ha,1909-1913,iia_1925_26,3116.0,3116.0,4,1910,1913,1.0,consistent
+iia,trinidad and tobago,"coffee, green",ha,1909-1913,iia_1925_26,1700.0,1700.0,5,1909,1913,1.0,consistent
+iia,united states of america,"coffee, green",ha,1909-1913,iia_1925_26,64970.0,63839.25,4,1909,1913,1.017712,consistent
+iia,united states of america,"coffee, green",tonnes,1909-1913,iia_1925_26,24350.9,21587.08,5,1909,1913,1.128031,consistent
+iia,algeria,cotton lint,ha,1909-1913,iia_1925_26,647.0,646.6667,3,1911,1913,1.000515,consistent
+iia,algeria,cotton lint,tonnes,1909-1913,iia_1925_26,297.1,297.1,3,1909,1913,1.0,consistent
+iia,antigua and barbuda,cotton lint,ha,1909-1913,iia_1925_26,305.0,303.4,5,1909,1913,1.005274,consistent
+iia,antigua and barbuda,cotton lint,tonnes,1909-1913,iia_1925_26,53.3,40.26,5,1909,1913,1.323895,consistent
+iia,australia,cotton lint,ha,1909-1913,iia_1925_26,150.0,140.2,5,1909,1913,1.0699,consistent
+iia,australia,cotton lint,tonnes,1909-1913,iia_1925_26,16.3,19.625,4,1909,1912,0.830573,consistent
+iia,barbados,cotton lint,ha,1909-1913,iia_1925_26,1658.0,1476.4,5,1909,1913,1.123002,consistent
+iia,barbados,cotton lint,tonnes,1909-1913,iia_1925_26,229.8,206.6,5,1909,1913,1.112294,consistent
+iia,british virgin islands,cotton lint,tonnes,1909-1913,iia_1925_26,17.6,17.58,5,1909,1913,1.001138,consistent
+iia,bulgaria,cotton lint,ha,1909-1913,iia_1925_26,1028.0,778.6,5,1909,1913,1.320319,consistent
+iia,cyprus,cotton lint,tonnes,1909-1913,iia_1925_26,430.1,317.0,5,1909,1913,1.356782,consistent
+iia,egypt,cotton lint,ha,1909-1913,iia_1925_26,723086.0,720585.6,5,1909,1913,1.00347,consistent
+iia,ghana,cotton lint,tonnes,1909-1913,iia_1925_26,501.2,22.4,5,1909,1913,22.375,unexplained_period_higher
+iia,grenada,cotton lint,tonnes,1909-1913,iia_1925_26,152.3,123.08,5,1909,1913,1.237407,consistent
+iia,india,cotton lint,ha,1909-1913,iia_1925_26,9102104.0,9102147.6,5,1909,1913,0.999995,consistent
+iia,indonesia,cotton lint,ha,1909-1913,iia_1925_26,145.0,144.75,4,1910,1913,1.001727,consistent
+iia,indonesia,cotton lint,tonnes,1909-1913,iia_1925_26,3990.2,38.9667,3,1910,1912,102.400342,disagree_x100_period_higher
+iia,jamaica,cotton lint,ha,1909-1913,iia_1925_26,51.0,50.6,5,1909,1913,1.007905,consistent
+iia,jamaica,cotton lint,tonnes,1909-1913,iia_1925_26,14.4,10.1,4,1909,1912,1.425743,consistent
+iia,japan,cotton lint,ha,1909-1913,iia_1925_26,3071.0,3071.0,5,1909,1913,1.0,consistent
+iia,japan,cotton lint,tonnes,1909-1913,iia_1925_26,1071.0,1071.0,5,1909,1913,1.0,consistent
+iia,malawi,cotton lint,ha,1909-1913,iia_1925_26,12431.0,12431.25,4,1910,1913,0.99998,consistent
+iia,malawi,cotton lint,tonnes,1909-1913,iia_1925_26,1093.2,1093.3,4,1910,1913,0.999909,consistent
+iia,malta,cotton lint,ha,1909-1913,iia_1925_26,403.0,404.6,5,1909,1913,0.996045,consistent
+iia,mexico,cotton lint,ha,1909-1913,iia_1925_26,99342.0,99342.25,4,1910,1913,0.999997,consistent
+iia,montserrat,cotton lint,ha,1909-1913,iia_1925_26,859.0,859.0,5,1909,1913,1.0,consistent
+iia,montserrat,cotton lint,tonnes,1909-1913,iia_1925_26,142.5,142.46,5,1909,1913,1.000281,consistent
+iia,russian federation,cotton lint,ha,1909-1913,iia_1925_26,635656.0,460389.4,5,1909,1913,1.380692,consistent
+iia,russian federation,cotton lint,tonnes,1909-1913,iia_1925_26,196494.6,105896.92,5,1909,1913,1.855527,consistent
+iia,saint kitts and nevis,cotton lint,ha,1909-1913,iia_1925_26,1825.0,1824.2,5,1909,1913,1.000439,consistent
+iia,saint kitts and nevis,cotton lint,tonnes,1909-1913,iia_1925_26,292.0,302.02,5,1909,1913,0.966823,consistent
+iia,saint vincent and the grenadines,cotton lint,ha,1909-1913,iia_1925_26,1562.0,1973.4,5,1909,1913,0.791527,consistent
+iia,saint vincent and the grenadines,cotton lint,tonnes,1909-1913,iia_1925_26,222.5,222.38,5,1909,1913,1.00054,consistent
+iia,south africa,cotton lint,ha,1909-1913,iia_1925_26,97.0,97.4,5,1909,1913,0.995893,consistent
+iia,south korea,cotton lint,ha,1909-1913,iia_1925_26,59203.0,59204.4,5,1909,1913,0.999976,consistent
+iia,south korea,cotton lint,tonnes,1909-1913,iia_1925_26,4198.0,4199.56,5,1909,1913,0.999629,consistent
+iia,tanzania,cotton lint,ha,1909-1913,iia_1925_26,12317.0,12091.75,4,1910,1913,1.018628,consistent
+iia,thailand,cotton lint,ha,1909-1913,iia_1925_26,4790.0,4790.0,3,1911,1913,1.0,consistent
+iia,algeria,flax fibre and tow,ha,1909-1913,iia_1925_26,553.0,558.8,5,1909,1913,0.989621,consistent
+iia,chile,flax fibre and tow,tonnes,1909-1913,iia_1925_26,57.6,75.8333,3,1910,1913,0.75956,consistent
+iia,japan,flax fibre and tow,ha,1909-1913,iia_1925_26,4912.0,4912.2,5,1909,1913,0.999959,consistent
+iia,japan,flax fibre and tow,tonnes,1909-1913,iia_1925_26,2332.2,2332.2,5,1909,1913,1.0,consistent
+iia,russian federation,flax fibre and tow,ha,1909-1913,iia_1925_26,1235000.0,1269902.2,5,1909,1913,0.972516,consistent
+iia,russian federation,flax fibre and tow,tonnes,1909-1913,iia_1925_26,490100.0,627090.06,5,1909,1913,0.781546,consistent
+iia,australia,grapes,ha,1909-1913,iia_1925_26,24398.0,20793.6,5,1909,1913,1.173342,consistent
+iia,australia,grapes,tonnes,1909-1913,iia_1925_26,88521.7,88521.66,5,1909,1913,1.0,consistent
+iia,cyprus,grapes,ha,1909-1913,iia_1925_26,18502.0,18844.6667,3,1911,1913,0.981816,consistent
+iia,cyprus,grapes,tonnes,1909-1913,iia_1925_26,31263.0,31262.95,4,1909,1912,1.000002,consistent
+iia,france,grapes,tonnes,1909-1913,iia_1925_26,64737.3,64722.3,3,1911,1913,1.000232,consistent
+iia,japan,grapes,tonnes,1909-1913,iia_1925_26,13044.0,13043.98,5,1909,1913,1.000002,consistent
+iia,russian federation,hempseed,tonnes,1909-1913,iia_1925_26,389000.0,408775.56,5,1909,1913,0.951622,consistent
+iia,australia,hops,ha,1909-1913,iia_1925_26,507.0,421.8,5,1909,1913,1.201991,consistent
+iia,australia,hops,tonnes,1909-1913,iia_1925_26,728.8,728.8,5,1909,1913,1.0,consistent
+iia,new zealand,hops,ha,1909-1913,iia_1925_26,267.0,267.4,5,1909,1913,0.998504,consistent
+iia,russian federation,hops,tonnes,1909-1913,iia_1925_26,4409.6,4409.62,5,1909,1913,0.999995,consistent
+iia,"china, taiwan province of",jute,ha,1909-1913,iia_1925_26,2174.0,2174.4,5,1909,1913,0.999816,consistent
+iia,"china, taiwan province of",jute,tonnes,1909-1913,iia_1925_26,2421.9,2421.94,5,1909,1913,0.999983,consistent
+iia,india,jute,ha,1909-1913,iia_1925_26,1198946.0,1198945.6,5,1909,1913,1.0,consistent
+iia,india,jute,tonnes,1909-1913,iia_1925_26,1528062.4,1528062.42,5,1909,1913,1.0,consistent
+iia,algeria,linseed,tonnes,1909-1913,iia_1925_26,335.6,335.56,5,1909,1913,1.000119,consistent
+iia,japan,linseed,tonnes,1909-1913,iia_1925_26,2493.5,2493.55,4,1910,1913,0.99998,consistent
+iia,russian federation,linseed,tonnes,1909-1913,iia_1925_26,460600.0,594314.14,5,1909,1913,0.775011,consistent
+iia,tunisia,linseed,tonnes,1909-1913,iia_1925_26,942.0,924.0,5,1909,1913,1.019481,consistent
+iia,algeria,olives,tonnes,1909-1913,iia_1925_26,231701.6,257723.42,5,1909,1913,0.899032,consistent
+iia,india,rapeseed,ha,1909-1913,iia_1925_26,974300.0,1611451.8,5,1909,1913,0.60461,consistent
+iia,india,rapeseed,tonnes,1909-1913,iia_1925_26,530400.0,705014.7,5,1909,1913,0.752325,consistent
+iia,japan,rapeseed,ha,1909-1913,iia_1925_26,135876.0,135876.0,5,1909,1913,1.0,consistent
+iia,japan,rapeseed,tonnes,1909-1913,iia_1925_26,121913.8,121913.84,5,1909,1913,1.0,consistent
+iia,algeria,rye,ha,1909-1913,iia_1925_26,1132.0,687.2,5,1909,1913,1.647264,consistent
+iia,algeria,rye,tonnes,1909-1913,iia_1925_26,995.0,995.04,5,1909,1913,0.99996,consistent
+iia,australia,rye,ha,1909-1913,iia_1925_26,3579.0,3579.4,5,1909,1913,0.999888,consistent
+iia,australia,rye,tonnes,1909-1913,iia_1925_26,2886.6,2886.6,5,1909,1913,1.0,consistent
+iia,new zealand,rye,ha,1909-1913,iia_1925_26,1942.0,1942.0,3,1909,1911,1.0,consistent
+iia,new zealand,rye,tonnes,1909-1913,iia_1925_26,2446.6,2446.575,4,1909,1912,1.00001,consistent
+iia,russian federation,rye,ha,1909-1913,iia_1925_26,24769000.0,29821579.0,5,1909,1913,0.830573,consistent
+iia,russian federation,rye,tonnes,1909-1913,iia_1925_26,18716400.0,23206265.82,5,1909,1913,0.806524,consistent
+iia,antigua and barbuda,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,12581.7,12581.7,5,1909,1913,1.0,consistent
+iia,australia,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,922.5,142581.84,5,1909,1913,0.00647,unexplained_dated_higher
+iia,austria,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,1061198.2,1061198.16,5,1909,1913,1.0,consistent
+iia,belgium,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,259477.5,259477.5,5,1909,1913,1.0,consistent
+iia,bulgaria,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,3305.0,3305.02,5,1909,1913,0.999994,consistent
+iia,canada,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,11515.6,11515.62,5,1909,1913,0.999998,consistent
+iia,"china, taiwan province of",sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,174471.8,174473.78,5,1909,1913,0.999989,consistent
+iia,denmark,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,115296.0,115296.0,5,1909,1913,1.0,consistent
+iia,egypt,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,60897.8,60901.8,5,1909,1913,0.999934,consistent
+iia,fiji,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,76773.4,76773.6,5,1909,1913,0.999997,consistent
+iia,france,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,732909.8,732908.46,5,1909,1913,1.000002,consistent
+iia,germany,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,2309437.1,2309437.12,5,1909,1913,1.0,consistent
+iia,hungary,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,458531.4,453531.38,5,1909,1913,1.011025,consistent
+iia,india,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,2403560.0,2403560.8,5,1909,1913,1.0,consistent
+iia,indonesia,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,1347397.9,1335397.86,5,1909,1913,1.008986,consistent
+iia,italy,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,210343.2,189308.88,5,1909,1913,1.111111,consistent
+iia,japan,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,64128.1,64128.12,5,1909,1913,1.0,consistent
+iia,mauritius,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,221427.2,221427.2,5,1909,1913,1.0,consistent
+iia,netherlands,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,223479.2,223479.38,5,1909,1913,0.999999,consistent
+iia,paraguay,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,1236.4,1236.36,5,1909,1913,1.000032,consistent
+iia,philippines,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,370442.7,198279.8,5,1909,1913,1.868283,consistent
+iia,reunion,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,37791.9,37791.86,5,1909,1913,1.000001,consistent
+iia,romania,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,33994.1,33994.1,5,1909,1913,1.0,consistent
+iia,russian federation,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,1436672.5,1658341.5,5,1909,1913,0.866331,consistent
+iia,saint kitts and nevis,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,11348.6,11348.62,5,1909,1913,0.999998,consistent
+iia,saint lucia,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,4581.4,4581.4,5,1909,1913,1.0,consistent
+iia,serbia,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,8810.7,8810.75,4,1909,1913,0.999994,consistent
+iia,south africa,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,82736.3,82736.32,5,1909,1913,1.0,consistent
+iia,spain,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,104986.6,104986.6,5,1909,1913,1.0,consistent
+iia,suriname,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,12006.4,12006.36,5,1909,1913,1.000003,consistent
+iia,sweden,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,139327.7,139327.72,5,1909,1913,1.0,consistent
+iia,switzerland,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,2746.0,2746.02,5,1909,1913,0.999993,consistent
+iia,united states of america,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,265331.7,628450.0,5,1909,1913,0.4222,unexplained_dated_higher
+iia,united states virgin islands,sugar raw centrifugal,tonnes,1909-1913,iia_1925_26,8720.0,8721.4,5,1909,1913,0.999839,consistent
+iia,"china, taiwan province of",tea,ha,1909-1913,iia_1925_26,33489.0,33488.6,5,1909,1913,1.000012,consistent
+iia,fiji,tea,ha,1909-1913,iia_1925_26,88.0,88.0,5,1909,1913,1.0,consistent
+iia,fiji,tea,tonnes,1909-1913,iia_1925_26,24.985,24.9852,5,1909,1913,0.999992,consistent
+iia,india,tea,ha,1909-1913,iia_1925_26,234340.0,234404.8,5,1909,1913,0.999724,consistent
+iia,india,tea,tonnes,1909-1913,iia_1925_26,253127.94,124810.234,5,1909,1913,2.028102,unexplained_period_higher
+iia,japan,tea,ha,1909-1913,iia_1925_26,48690.0,48690.4,5,1909,1913,0.999992,consistent
+iia,malawi,tea,ha,1909-1913,iia_1925_26,808.0,808.0,5,1909,1913,1.0,consistent
+iia,malawi,tea,tonnes,1909-1913,iia_1925_26,52.224,28.1103,3,1909,1912,1.857822,consistent
+iia,mauritius,tea,ha,1909-1913,iia_1925_26,147.0,147.5,4,1910,1913,0.99661,consistent
+iia,mauritius,tea,tonnes,1909-1913,iia_1925_26,37.25,37.25,4,1910,1913,1.0,consistent
+iia,russian federation,tea,ha,1909-1913,iia_1925_26,754.0,754.2,5,1909,1913,0.999735,consistent
+iia,russian federation,tea,tonnes,1909-1913,iia_1925_26,101.416,101.5144,5,1909,1913,0.999031,consistent
+iia,south africa,tea,ha,1909-1913,iia_1925_26,1811.0,1811.3333,3,1911,1913,0.999816,consistent
+iia,south africa,tea,tonnes,1909-1913,iia_1925_26,787.312,787.3123,3,1911,1913,1.0,consistent
+iia,sri lanka,tea,ha,1909-1913,iia_1925_26,162000.0,203486.4,5,1909,1913,0.796122,consistent
+iia,algeria,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,10085.0,10170.4,5,1909,1913,0.991603,consistent
+iia,australia,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,984.0,983.8,5,1909,1913,1.000203,consistent
+iia,australia,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,968.5,968.54,5,1909,1913,0.999959,consistent
+iia,"china, taiwan province of","tobacco, unmanufactured",ha,1909-1913,iia_1925_26,419.0,418.8,5,1909,1913,1.000478,consistent
+iia,"china, taiwan province of","tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,508.2,508.16,5,1909,1913,1.000079,consistent
+iia,cyprus,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,1.1,1.1333,3,1911,1913,0.970588,consistent
+iia,denmark,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,125.0,67.0,3,1909,1911,1.865672,consistent
+iia,fiji,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,44.0,43.6,5,1909,1913,1.009174,consistent
+iia,fiji,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,19.1,19.1,5,1909,1913,1.0,consistent
+iia,guatemala,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,116.2,116.2333,3,1911,1913,0.999713,consistent
+iia,india,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,423815.0,423814.6,5,1909,1913,1.000001,consistent
+iia,indonesia,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,115059.0,162134.6,5,1909,1913,0.709651,consistent
+iia,jamaica,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,377.0,376.8,5,1909,1913,1.000531,consistent
+iia,jamaica,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,222.2,222.2,3,1911,1913,1.0,consistent
+iia,japan,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,29301.0,29301.0,5,1909,1913,1.0,consistent
+iia,madagascar,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,3742.0,3742.3333,3,1911,1913,0.999911,consistent
+iia,malawi,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,2851.0,2851.0,5,1909,1913,1.0,consistent
+iia,philippines,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,62167.0,62167.5,4,1910,1913,0.999992,consistent
+iia,russian federation,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,67000.0,70640.0,5,1909,1913,0.948471,consistent
+iia,russian federation,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,104500.0,93085.1,5,1909,1913,1.122629,consistent
+iia,south korea,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,20551.0,20551.2,5,1909,1913,0.99999,consistent
+iia,south korea,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,11571.2,11571.22,5,1909,1913,0.999998,consistent
+iia,sri lanka,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,5743.0,5742.75,4,1909,1913,1.000044,consistent
+iia,tunisia,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,89.0,89.2,5,1909,1913,0.997758,consistent
+iia,tunisia,"tobacco, unmanufactured",tonnes,1909-1913,iia_1925_26,120.4,118.64,5,1909,1913,1.014835,consistent
+iia,zimbabwe,"tobacco, unmanufactured",ha,1909-1913,iia_1925_26,1790.0,1789.6667,3,1911,1913,1.000186,consistent
+iia,austria,wine,tonnes,1909-1913,iia_1925_26,689235.731,406601.5542,5,1909,1913,1.695113,consistent
+iia,bulgaria,wine,tonnes,1909-1913,iia_1925_26,31167.555,63473.9676,5,1909,1913,0.491029,unexplained_dated_higher
+iia,france,wine,tonnes,1909-1913,iia_1925_26,4871924.716,4506161.966,5,1909,1913,1.081169,consistent
+iia,germany,wine,tonnes,1909-1913,iia_1925_26,80006.376,170991.2896,5,1909,1913,0.467897,unexplained_dated_higher
+iia,hungary,wine,tonnes,1909-1913,iia_1925_26,185039.334,414509.3046,5,1909,1913,0.446406,unexplained_dated_higher
+iia,italy,wine,tonnes,1909-1913,iia_1925_26,2268577.8,2195032.4,5,1909,1913,1.033505,consistent
+iia,luxembourg,wine,tonnes,1909-1913,iia_1925_26,4710.514,4710.5334,5,1909,1913,0.999996,consistent
+iia,mexico,wine,tonnes,1909-1913,iia_1925_26,662.801,662.8333,3,1911,1913,0.999951,consistent
+iia,portugal,wine,tonnes,1909-1913,iia_1925_26,7393.34,139149.2483,3,1911,1913,0.053132,unexplained_dated_higher
+iia,romania,wine,tonnes,1909-1913,iia_1925_26,137461.319,137461.2802,5,1909,1913,1.0,consistent
+iia,spain,wine,tonnes,1909-1913,iia_1925_26,1441748.733,1441748.7136,5,1909,1913,1.0,consistent
+iia,switzerland,wine,tonnes,1909-1913,iia_1925_26,43482.093,43482.0736,5,1909,1913,1.0,consistent
+iia,austria,yarn of true hemp,tonnes,1909-1913,iia_1925_26,422.4,13096.46,5,1909,1913,0.032253,unexplained_dated_higher
+iia,bulgaria,yarn of true hemp,tonnes,1909-1913,iia_1925_26,1158.1,1109.02,5,1909,1913,1.044255,consistent
+iia,chile,yarn of true hemp,tonnes,1909-1913,iia_1925_26,548.1,548.06,5,1909,1913,1.000073,consistent
+iia,france,yarn of true hemp,tonnes,1909-1913,iia_1925_26,18309.2,13309.22,5,1909,1913,1.375678,consistent
+iia,hungary,yarn of true hemp,tonnes,1909-1913,iia_1925_26,10988.6,52287.8,5,1909,1913,0.210156,unexplained_dated_higher
+iia,italy,yarn of true hemp,tonnes,1909-1913,iia_1925_26,83500.0,83500.0,5,1909,1913,1.0,consistent
+iia,japan,yarn of true hemp,tonnes,1909-1913,iia_1925_26,9380.6,7585.5,5,1909,1913,1.236649,consistent
+iia,romania,yarn of true hemp,tonnes,1909-1913,iia_1925_26,1997.1,1997.1,5,1909,1913,1.0,consistent
+iia,russian federation,yarn of true hemp,tonnes,1909-1913,iia_1925_26,324400.0,346097.84,5,1909,1913,0.937307,consistent
+iia,serbia,yarn of true hemp,tonnes,1909-1913,iia_1925_26,7393.4,7393.4333,3,1909,1911,0.999995,consistent
+iia,south korea,yarn of true hemp,tonnes,1909-1913,iia_1925_26,7510.1,7510.14,5,1909,1913,0.999995,consistent
+iia,benin,"cacao, beans",ha,1928-1932,iia_1938_39,2000.0,165.0,3,1930,1932,12.121212,unexplained_period_higher
+iia,benin,"cacao, beans",tonnes,1928-1932,iia_1938_39,400.0,26.6667,3,1930,1932,15.0,unexplained_period_higher
+iia,brazil,"cacao, beans",tonnes,1928-1932,iia_1938_39,82800.0,89783.8667,3,1930,1932,0.922215,consistent
+iia,cameroon,"cacao, beans",ha,1928-1932,iia_1938_39,35000.0,27333.3333,3,1930,1932,1.280488,consistent
+iia,congo,"cacao, beans",tonnes,1928-1932,iia_1938_39,200.0,165.2333,3,1930,1932,1.21041,consistent
+iia,costa rica,"cacao, beans",tonnes,1928-1932,iia_1938_39,6800.0,6906.2,3,1930,1932,0.984623,consistent
+iia,dominica,"cacao, beans",ha,1928-1932,iia_1938_39,3000.0,333.3333,3,1930,1932,9.0,disagree_x10_period_higher
+iia,dominica,"cacao, beans",tonnes,1928-1932,iia_1938_39,100.0,126.5333,3,1930,1932,0.790306,consistent
+iia,dr congo,"cacao, beans",ha,1928-1932,iia_1938_39,4000.0,4656.3333,3,1930,1932,0.859045,consistent
+iia,dr congo,"cacao, beans",tonnes,1928-1932,iia_1938_39,1100.0,1152.3333,3,1930,1932,0.954585,consistent
+iia,equatorial guinea,"cacao, beans",ha,1928-1932,iia_1938_39,35000.0,31466.6667,3,1930,1932,1.112288,consistent
+iia,ghana,"cacao, beans",ha,1928-1932,iia_1938_39,366000.0,379200.0,3,1930,1932,0.96519,consistent
+iia,grenada,"cacao, beans",tonnes,1928-1932,iia_1938_39,4300.0,4385.3333,3,1930,1932,0.980541,consistent
+iia,guadeloupe,"cacao, beans",ha,1928-1932,iia_1938_39,3000.0,3000.0,3,1930,1932,1.0,consistent
+iia,guatemala,"cacao, beans",ha,1928-1932,iia_1938_39,1000.0,590.6667,3,1930,1932,1.693002,consistent
+iia,guyana,"cacao, beans",ha,1928-1932,iia_1938_39,5000.0,439.3333,3,1930,1932,11.38088,disagree_x10_period_higher
+iia,haiti,"cacao, beans",ha,1928-1932,iia_1938_39,16000.0,16000.0,3,1930,1932,1.0,consistent
+iia,haiti,"cacao, beans",tonnes,1928-1932,iia_1938_39,1300.0,959.7333,3,1930,1932,1.354543,consistent
+iia,indonesia,"cacao, beans",ha,1928-1932,iia_1938_39,5000.0,5584.3333,3,1930,1932,0.895362,consistent
+iia,indonesia,"cacao, beans",tonnes,1928-1932,iia_1938_39,1400.0,2949.5333,3,1930,1932,0.474651,unexplained_dated_higher
+iia,ivory coast,"cacao, beans",ha,1928-1932,iia_1938_39,55000.0,62000.0,3,1930,1932,0.887097,consistent
+iia,jamaica,"cacao, beans",ha,1928-1932,iia_1938_39,800.0,774.0,3,1930,1932,1.033592,consistent
+iia,jamaica,"cacao, beans",tonnes,1928-1932,iia_1938_39,2500.0,2202.9,3,1930,1932,1.134868,consistent
+iia,madagascar,"cacao, beans",tonnes,1928-1932,iia_1938_39,300.0,295.3333,3,1930,1932,1.015801,consistent
+iia,martinique,"cacao, beans",tonnes,1928-1932,iia_1938_39,400.0,268.7,3,1930,1932,1.488649,consistent
+iia,mexico,"cacao, beans",ha,1928-1932,iia_1938_39,7000.0,6379.0,3,1930,1932,1.097351,consistent
+iia,nicaragua,"cacao, beans",tonnes,1928-1932,iia_1938_39,200.0,156.5667,3,1930,1932,1.277411,consistent
+iia,panama,"cacao, beans",tonnes,1928-1932,iia_1938_39,3200.0,3182.4,3,1930,1932,1.00553,consistent
+iia,papua new guinea,"cacao, beans",ha,1928-1932,iia_1938_39,7000.0,379.3333,3,1930,1932,18.453427,unexplained_period_higher
+iia,papua new guinea,"cacao, beans",tonnes,1928-1932,iia_1938_39,900.0,84.3333,3,1930,1932,10.671937,disagree_x10_period_higher
+iia,philippines,"cacao, beans",ha,1928-1932,iia_1938_39,2000.0,1582.6667,3,1930,1932,1.26369,consistent
+iia,philippines,"cacao, beans",tonnes,1928-1932,iia_1938_39,1100.0,1069.1,3,1930,1932,1.028903,consistent
+iia,saint lucia,"cacao, beans",ha,1928-1932,iia_1938_39,2000.0,2248.3333,3,1930,1932,0.889548,consistent
+iia,saint lucia,"cacao, beans",tonnes,1928-1932,iia_1938_39,400.0,417.6667,3,1930,1932,0.957702,consistent
+iia,saint vincent and the grenadines,"cacao, beans",ha,1928-1932,iia_1938_39,4000.0,270.0,3,1930,1932,14.814815,unexplained_period_higher
+iia,samoa,"cacao, beans",ha,1928-1932,iia_1938_39,2000.0,1866.6667,3,1930,1932,1.071429,consistent
+iia,samoa,"cacao, beans",tonnes,1928-1932,iia_1938_39,800.0,778.6333,3,1930,1932,1.027441,consistent
+iia,sri lanka,"cacao, beans",ha,1928-1932,iia_1938_39,14000.0,14000.0,3,1930,1932,1.0,consistent
+iia,sri lanka,"cacao, beans",tonnes,1928-1932,iia_1938_39,3900.0,3796.9,3,1930,1932,1.027154,consistent
+iia,suriname,"cacao, beans",ha,1928-1932,iia_1938_39,1000.0,1443.6667,3,1930,1932,0.692681,consistent
+iia,suriname,"cacao, beans",tonnes,1928-1932,iia_1938_39,200.0,137.1667,3,1930,1932,1.45808,consistent
+iia,vanuatu,"cacao, beans",tonnes,1928-1932,iia_1938_39,1900.0,1736.1,3,1930,1932,1.094407,consistent
+iia,congo,"coffee, green",ha,1928-1932,iia_1938_39,13000.0,13936.6667,3,1930,1932,0.932791,consistent
+iia,congo,"coffee, green",tonnes,1928-1932,iia_1938_39,100.0,98.6333,3,1930,1932,1.013856,consistent
+iia,dr congo,"coffee, green",ha,1928-1932,iia_1938_39,26000.0,35949.3333,3,1930,1932,0.72324,consistent
+iia,guadeloupe,"coffee, green",ha,1928-1932,iia_1938_39,7000.0,7333.3333,3,1930,1932,0.954545,consistent
+iia,guadeloupe,"coffee, green",tonnes,1928-1932,iia_1938_39,300.0,310.0667,3,1930,1932,0.967534,consistent
+iia,guyana,"coffee, green",ha,1928-1932,iia_1938_39,2000.0,2166.3333,3,1930,1932,0.923219,consistent
+iia,guyana,"coffee, green",tonnes,1928-1932,iia_1938_39,400.0,452.5333,3,1930,1932,0.883913,consistent
+iia,indonesia,"coffee, green",ha,1928-1932,iia_1938_39,227000.0,232261.0,3,1930,1932,0.977349,consistent
+iia,ivory coast,"coffee, green",ha,1928-1932,iia_1938_39,12000.0,13818.3333,3,1930,1932,0.868412,consistent
+iia,jamaica,"coffee, green",ha,1928-1932,iia_1938_39,2000.0,2382.3333,3,1930,1932,0.839513,consistent
+iia,jamaica,"coffee, green",tonnes,1928-1932,iia_1938_39,3700.0,4215.2333,3,1930,1932,0.877769,consistent
+iia,kenya,"coffee, green",ha,1928-1932,iia_1938_39,39000.0,39921.6667,3,1930,1932,0.976913,consistent
+iia,madagascar,"coffee, green",ha,1928-1932,iia_1938_39,66000.0,65284.6667,3,1930,1932,1.010957,consistent
+iia,malawi,"coffee, green",ha,1928-1932,iia_1938_39,1000.0,572.6667,3,1930,1932,1.746217,consistent
+iia,malawi,"coffee, green",tonnes,1928-1932,iia_1938_39,100.0,54.6667,3,1930,1932,1.829268,consistent
+iia,malaysia,"coffee, green",ha,1928-1932,iia_1938_39,5000.0,5824.6667,3,1930,1932,0.858418,consistent
+iia,new caledonia,"coffee, green",ha,1928-1932,iia_1938_39,3000.0,3000.0,3,1930,1932,1.0,consistent
+iia,new caledonia,"coffee, green",tonnes,1928-1932,iia_1938_39,1000.0,1059.5333,3,1930,1932,0.943812,consistent
+iia,philippines,"coffee, green",ha,1928-1932,iia_1938_39,1000.0,1328.3333,3,1930,1932,0.752823,consistent
+iia,philippines,"coffee, green",tonnes,1928-1932,iia_1938_39,1200.0,1170.3333,3,1930,1932,1.025349,consistent
+iia,sao tome and principe,"coffee, green",tonnes,1928-1932,iia_1938_39,500.0,573.0,3,1930,1932,0.8726,consistent
+iia,sierra leone,"coffee, green",tonnes,1928-1932,iia_1938_39,100.0,90.0,3,1930,1932,1.111111,consistent
+iia,suriname,"coffee, green",tonnes,1928-1932,iia_1938_39,3200.0,3406.7,3,1930,1932,0.939325,consistent
+iia,timor-leste,"coffee, green",tonnes,1928-1932,iia_1938_39,1700.0,1535.0,3,1930,1932,1.107492,consistent
+iia,trinidad and tobago,"coffee, green",tonnes,1928-1932,iia_1938_39,300.0,340.6333,3,1930,1932,0.880712,consistent
+iia,united states of america,"coffee, green",ha,1928-1932,iia_1938_39,79000.0,83106.6667,3,1930,1932,0.950586,consistent
+iia,united states of america,"coffee, green",tonnes,1928-1932,iia_1938_39,8700.0,4661.7667,3,1930,1932,1.866245,consistent
+iia,vanuatu,"coffee, green",tonnes,1928-1932,iia_1938_39,100.0,158.8333,3,1930,1932,0.629591,consistent
+iia,viet nam,"coffee, green",ha,1928-1932,iia_1938_39,4000.0,3657.0,3,1930,1932,1.093793,consistent
+iia,yemen,"coffee, green",tonnes,1928-1932,iia_1938_39,4400.0,4513.1,3,1930,1932,0.97494,consistent
+iia,algeria,cotton lint,ha,1928-1932,iia_1938_39,3000.0,2057.3333,3,1930,1932,1.458198,consistent
+iia,algeria,cotton lint,tonnes,1928-1932,iia_1938_39,900.0,497.3667,3,1930,1932,1.80953,consistent
+iia,australia,cotton lint,ha,1928-1932,iia_1938_39,13000.0,16274.6667,3,1930,1932,0.798787,consistent
+iia,australia,cotton lint,tonnes,1928-1932,iia_1938_39,1900.0,1977.3333,3,1930,1932,0.96089,consistent
+iia,bulgaria,cotton lint,ha,1928-1932,iia_1938_39,6000.0,6344.3333,3,1930,1932,0.945726,consistent
+iia,burundi,cotton lint,ha,1928-1932,iia_1938_39,1000.0,1743.3333,3,1930,1932,0.573614,consistent
+iia,burundi,cotton lint,tonnes,1928-1932,iia_1938_39,200.0,193.2667,3,1930,1932,1.03484,consistent
+iia,"china, mainland",cotton lint,ha,1928-1932,iia_1938_39,2114000.0,2177633.3333,3,1930,1932,0.970779,consistent
+iia,congo,cotton lint,ha,1928-1932,iia_1938_39,26000.0,36278.0,3,1930,1932,0.716688,consistent
+iia,congo,cotton lint,tonnes,1928-1932,iia_1938_39,1300.0,1766.6667,3,1930,1932,0.735849,consistent
+iia,cyprus,cotton lint,ha,1928-1932,iia_1938_39,5000.0,5207.0,3,1930,1932,0.960246,consistent
+iia,cyprus,cotton lint,tonnes,1928-1932,iia_1938_39,500.0,529.9667,3,1930,1932,0.943456,consistent
+iia,dr congo,cotton lint,ha,1928-1932,iia_1938_39,142000.0,158711.0,3,1930,1932,0.894708,consistent
+iia,egypt,cotton lint,ha,1928-1932,iia_1938_39,856000.0,822440.0,3,1930,1932,1.040805,consistent
+iia,eritrea,cotton lint,ha,1928-1932,iia_1938_39,3000.0,2558.3333,3,1930,1932,1.172638,consistent
+iia,eritrea,cotton lint,tonnes,1928-1932,iia_1938_39,300.0,256.6667,3,1930,1932,1.168831,consistent
+iia,greece,cotton lint,ha,1928-1932,iia_1938_39,19000.0,19632.6667,3,1930,1932,0.967775,consistent
+iia,grenada,cotton lint,tonnes,1928-1932,iia_1938_39,200.0,146.6667,3,1930,1932,1.363636,consistent
+iia,guadeloupe,cotton lint,ha,1928-1932,iia_1938_39,1000.0,566.6667,3,1930,1932,1.764706,consistent
+iia,haiti,cotton lint,ha,1928-1932,iia_1938_39,85000.0,91100.0,3,1930,1932,0.933041,consistent
+iia,indonesia,cotton lint,ha,1928-1932,iia_1938_39,9000.0,8572.6667,3,1930,1932,1.049848,consistent
+iia,indonesia,cotton lint,tonnes,1928-1932,iia_1938_39,900.0,890.4,3,1930,1932,1.010782,consistent
+iia,iraq,cotton lint,tonnes,1928-1932,iia_1938_39,500.0,285.9333,3,1930,1932,1.748659,consistent
+iia,italy,cotton lint,ha,1928-1932,iia_1938_39,3000.0,2237.6667,3,1930,1932,1.340682,consistent
+iia,japan,cotton lint,ha,1928-1932,iia_1938_39,1000.0,631.0,3,1930,1932,1.584786,consistent
+iia,japan,cotton lint,tonnes,1928-1932,iia_1938_39,200.0,134.3667,3,1930,1932,1.488464,consistent
+iia,kenya,cotton lint,tonnes,1928-1932,iia_1938_39,300.0,337.1,3,1930,1932,0.889944,consistent
+iia,montserrat,cotton lint,ha,1928-1932,iia_1938_39,1000.0,1214.6667,3,1930,1932,0.823271,consistent
+iia,montserrat,cotton lint,tonnes,1928-1932,iia_1938_39,200.0,200.3667,3,1930,1932,0.99817,consistent
+iia,mozambique,cotton lint,ha,1928-1932,iia_1938_39,22000.0,9112.6667,3,1930,1932,2.414222,unexplained_period_higher
+iia,mozambique,cotton lint,tonnes,1928-1932,iia_1938_39,2300.0,654.7667,3,1930,1932,3.512702,unexplained_period_higher
+iia,new caledonia,cotton lint,tonnes,1928-1932,iia_1938_39,100.0,70.8,3,1930,1932,1.412429,consistent
+iia,niger,cotton lint,tonnes,1928-1932,iia_1938_39,2500.0,243.3333,3,1930,1932,10.273973,disagree_x10_period_higher
+iia,philippines,cotton lint,ha,1928-1932,iia_1938_39,1000.0,650.3333,3,1930,1932,1.537673,consistent
+iia,philippines,cotton lint,tonnes,1928-1932,iia_1938_39,100.0,132.6,3,1930,1932,0.754148,consistent
+iia,russian federation,cotton lint,ha,1928-1932,iia_1938_39,1584000.0,1964066.6667,3,1930,1932,0.80649,consistent
+iia,russian federation,cotton lint,tonnes,1928-1932,iia_1938_39,334100.0,379233.3333,3,1930,1932,0.880988,consistent
+iia,saint kitts and nevis,cotton lint,ha,1928-1932,iia_1938_39,1000.0,1201.0,3,1930,1932,0.832639,consistent
+iia,saint kitts and nevis,cotton lint,tonnes,1928-1932,iia_1938_39,100.0,170.7333,3,1930,1932,0.585709,consistent
+iia,saint vincent and the grenadines,cotton lint,ha,1928-1932,iia_1938_39,1000.0,867.0,3,1930,1932,1.153403,consistent
+iia,saint vincent and the grenadines,cotton lint,tonnes,1928-1932,iia_1938_39,100.0,135.0333,3,1930,1932,0.740558,consistent
+iia,serbia,cotton lint,ha,1928-1932,iia_1938_39,1000.0,988.0,3,1930,1932,1.012146,consistent
+iia,serbia,cotton lint,tonnes,1928-1932,iia_1938_39,100.0,108.8667,3,1930,1932,0.918555,consistent
+iia,south africa,cotton lint,tonnes,1928-1932,iia_1938_39,1600.0,771.1667,3,1930,1932,2.074778,unexplained_period_higher
+iia,south korea,cotton lint,ha,1928-1932,iia_1938_39,186000.0,180063.6667,3,1930,1932,1.032968,consistent
+iia,south korea,cotton lint,tonnes,1928-1932,iia_1938_39,28900.0,27898.1667,3,1930,1932,1.03591,consistent
+iia,spain,cotton lint,ha,1928-1932,iia_1938_39,10000.0,10762.6667,3,1930,1932,0.929138,consistent
+iia,sri lanka,cotton lint,ha,1928-1932,iia_1938_39,1000.0,843.3333,3,1930,1932,1.185771,consistent
+iia,syrian arab republic,cotton lint,ha,1928-1932,iia_1938_39,19000.0,21531.0,3,1930,1932,0.882449,consistent
+iia,syrian arab republic,cotton lint,tonnes,1928-1932,iia_1938_39,2300.0,2506.6333,3,1930,1932,0.917565,consistent
+iia,turkey,cotton lint,ha,1928-1932,iia_1938_39,155000.0,196704.3333,3,1930,1932,0.787985,consistent
+iia,vanuatu,cotton lint,tonnes,1928-1932,iia_1938_39,300.0,216.0667,3,1930,1932,1.38846,consistent
+iia,viet nam,cotton lint,ha,1928-1932,iia_1938_39,1000.0,1257.3333,3,1930,1932,0.795334,consistent
+iia,viet nam,cotton lint,tonnes,1928-1932,iia_1938_39,100.0,84.6,3,1930,1932,1.182033,consistent
+iia,zimbabwe,cotton lint,ha,1928-1932,iia_1938_39,2000.0,1937.6667,3,1930,1932,1.032169,consistent
+iia,zimbabwe,cotton lint,tonnes,1928-1932,iia_1938_39,200.0,165.1,3,1930,1932,1.211387,consistent
+iia,algeria,cotton seed,ha,1928-1932,iia_1938_39,3000.0,2057.3333,3,1930,1932,1.458198,consistent
+iia,algeria,cotton seed,tonnes,1928-1932,iia_1938_39,1800.0,960.0,3,1930,1932,1.875,consistent
+iia,antigua and barbuda,cotton seed,tonnes,1928-1932,iia_1938_39,100.0,77.3333,3,1930,1932,1.293103,consistent
+iia,argentina,cotton seed,ha,1928-1932,iia_1938_39,125000.0,134017.6667,3,1930,1932,0.932713,consistent
+iia,australia,cotton seed,ha,1928-1932,iia_1938_39,13000.0,16274.6667,3,1930,1932,0.798787,consistent
+iia,australia,cotton seed,tonnes,1928-1932,iia_1938_39,3700.0,3956.6667,3,1930,1932,0.935131,consistent
+iia,barbados,cotton seed,tonnes,1928-1932,iia_1938_39,100.0,184.6667,3,1930,1932,0.541516,consistent
+iia,brazil,cotton seed,ha,1928-1932,iia_1938_39,689000.0,689716.6667,3,1930,1932,0.998961,consistent
+iia,bulgaria,cotton seed,ha,1928-1932,iia_1938_39,6000.0,6344.3333,3,1930,1932,0.945726,consistent
+iia,bulgaria,cotton seed,tonnes,1928-1932,iia_1938_39,2300.0,2453.3333,3,1930,1932,0.9375,consistent
+iia,burundi,cotton seed,ha,1928-1932,iia_1938_39,1000.0,1743.3333,3,1930,1932,0.573614,consistent
+iia,burundi,cotton seed,tonnes,1928-1932,iia_1938_39,400.0,450.0,3,1930,1932,0.888889,consistent
+iia,"china, mainland",cotton seed,ha,1928-1932,iia_1938_39,2114000.0,2177633.3333,3,1930,1932,0.970779,consistent
+iia,"china, mainland",cotton seed,tonnes,1928-1932,iia_1938_39,1105300.0,1094680.0,3,1930,1932,1.009701,consistent
+iia,congo,cotton seed,ha,1928-1932,iia_1938_39,26000.0,36278.0,3,1930,1932,0.716688,consistent
+iia,congo,cotton seed,tonnes,1928-1932,iia_1938_39,1900.0,3746.6667,3,1930,1932,0.507117,consistent
+iia,cyprus,cotton seed,ha,1928-1932,iia_1938_39,5000.0,5207.0,3,1930,1932,0.960246,consistent
+iia,cyprus,cotton seed,tonnes,1928-1932,iia_1938_39,1200.0,1233.3333,3,1930,1932,0.972973,consistent
+iia,dr congo,cotton seed,ha,1928-1932,iia_1938_39,142000.0,158711.0,3,1930,1932,0.894708,consistent
+iia,dr congo,cotton seed,tonnes,1928-1932,iia_1938_39,22400.0,25476.6667,3,1930,1932,0.879236,consistent
+iia,egypt,cotton seed,ha,1928-1932,iia_1938_39,856000.0,822440.0,3,1930,1932,1.040805,consistent
+iia,egypt,cotton seed,tonnes,1928-1932,iia_1938_39,733800.0,670840.0,3,1930,1932,1.093852,consistent
+iia,el salvador,cotton seed,tonnes,1928-1932,iia_1938_39,100.0,76.6667,3,1930,1932,1.304348,consistent
+iia,eritrea,cotton seed,ha,1928-1932,iia_1938_39,3000.0,2558.3333,3,1930,1932,1.172638,consistent
+iia,eritrea,cotton seed,tonnes,1928-1932,iia_1938_39,500.0,503.3333,3,1930,1932,0.993377,consistent
+iia,fiji,cotton seed,tonnes,1928-1932,iia_1938_39,100.0,137.0,3,1930,1932,0.729927,consistent
+iia,greece,cotton seed,ha,1928-1932,iia_1938_39,19000.0,19632.6667,3,1930,1932,0.967775,consistent
+iia,greece,cotton seed,tonnes,1928-1932,iia_1938_39,8300.0,8736.6667,3,1930,1932,0.950019,consistent
+iia,grenada,cotton seed,tonnes,1928-1932,iia_1938_39,400.0,355.3333,3,1930,1932,1.125704,consistent
+iia,guadeloupe,cotton seed,ha,1928-1932,iia_1938_39,1000.0,566.6667,3,1930,1932,1.764706,consistent
+iia,guadeloupe,cotton seed,tonnes,1928-1932,iia_1938_39,200.0,80.0,3,1930,1932,2.5,unexplained_period_higher
+iia,guatemala,cotton seed,tonnes,1928-1932,iia_1938_39,100.0,139.6667,3,1930,1932,0.71599,consistent
+iia,haiti,cotton seed,ha,1928-1932,iia_1938_39,85000.0,91100.0,3,1930,1932,0.933041,consistent
+iia,haiti,cotton seed,tonnes,1928-1932,iia_1938_39,12200.0,12680.0,3,1930,1932,0.962145,consistent
+iia,india,cotton seed,ha,1928-1932,iia_1938_39,7000.0,9444990.6667,3,1930,1932,0.000741,unexplained_dated_higher
+iia,india,cotton seed,tonnes,1928-1932,iia_1938_39,2700.0,1957370.0,3,1930,1932,0.001379,unexplained_dated_higher
+iia,indonesia,cotton seed,ha,1928-1932,iia_1938_39,9000.0,8572.6667,3,1930,1932,1.049848,consistent
+iia,indonesia,cotton seed,tonnes,1928-1932,iia_1938_39,2100.0,2076.6667,3,1930,1932,1.011236,consistent
+iia,iran,cotton seed,tonnes,1928-1932,iia_1938_39,44700.0,37785.0,3,1930,1932,1.183009,consistent
+iia,iraq,cotton seed,tonnes,1928-1932,iia_1938_39,1200.0,666.3333,3,1930,1932,1.8009,consistent
+iia,italy,cotton seed,ha,1928-1932,iia_1938_39,3000.0,2237.6667,3,1930,1932,1.340682,consistent
+iia,italy,cotton seed,tonnes,1928-1932,iia_1938_39,1000.0,920.0,3,1930,1932,1.086957,consistent
+iia,japan,cotton seed,ha,1928-1932,iia_1938_39,1000.0,631.0,3,1930,1932,1.584786,consistent
+iia,japan,cotton seed,tonnes,1928-1932,iia_1938_39,500.0,403.0,3,1930,1932,1.240695,consistent
+iia,kenya,cotton seed,tonnes,1928-1932,iia_1938_39,800.0,783.3333,3,1930,1932,1.021277,consistent
+iia,malawi,cotton seed,tonnes,1928-1932,iia_1938_39,100.0,44.6667,3,1930,1932,2.238806,unexplained_period_higher
+iia,malta,cotton seed,tonnes,1928-1932,iia_1938_39,100.0,65.0,3,1930,1932,1.538462,consistent
+iia,mexico,cotton seed,ha,1928-1932,iia_1938_39,153000.0,121637.3333,3,1930,1932,1.257838,consistent
+iia,montserrat,cotton seed,ha,1928-1932,iia_1938_39,1000.0,1214.6667,3,1930,1932,0.823271,consistent
+iia,montserrat,cotton seed,tonnes,1928-1932,iia_1938_39,600.0,466.6667,3,1930,1932,1.285714,consistent
+iia,mozambique,cotton seed,ha,1928-1932,iia_1938_39,15000.0,9112.6667,3,1930,1932,1.64606,consistent
+iia,mozambique,cotton seed,tonnes,1928-1932,iia_1938_39,4100.0,1523.3333,3,1930,1932,2.691466,unexplained_period_higher
+iia,new caledonia,cotton seed,tonnes,1928-1932,iia_1938_39,300.0,213.3333,3,1930,1932,1.40625,consistent
+iia,niger,cotton seed,tonnes,1928-1932,iia_1938_39,7000.0,600.0,3,1930,1932,11.666667,unexplained_period_higher
+iia,nigeria,cotton seed,tonnes,1928-1932,iia_1938_39,10500.0,6973.3333,3,1930,1932,1.505736,consistent
+iia,peru,cotton seed,ha,1928-1932,iia_1938_39,125000.0,127881.0,3,1930,1932,0.977471,consistent
+iia,philippines,cotton seed,ha,1928-1932,iia_1938_39,1000.0,650.3333,3,1930,1932,1.537673,consistent
+iia,philippines,cotton seed,tonnes,1928-1932,iia_1938_39,300.0,308.6667,3,1930,1932,0.971922,consistent
+iia,russian federation,cotton seed,ha,1928-1932,iia_1938_39,1584000.0,1964066.6667,3,1930,1932,0.80649,consistent
+iia,russian federation,cotton seed,tonnes,1928-1932,iia_1938_39,707500.0,807400.0,3,1930,1932,0.87627,consistent
+iia,saint kitts and nevis,cotton seed,ha,1928-1932,iia_1938_39,1000.0,1201.0,3,1930,1932,0.832639,consistent
+iia,saint kitts and nevis,cotton seed,tonnes,1928-1932,iia_1938_39,400.0,486.6667,3,1930,1932,0.821918,consistent
+iia,saint vincent and the grenadines,cotton seed,ha,1928-1932,iia_1938_39,1000.0,867.0,3,1930,1932,1.153403,consistent
+iia,saint vincent and the grenadines,cotton seed,tonnes,1928-1932,iia_1938_39,400.0,403.3333,3,1930,1932,0.991736,consistent
+iia,serbia,cotton seed,ha,1928-1932,iia_1938_39,1000.0,988.0,3,1930,1932,1.012146,consistent
+iia,serbia,cotton seed,tonnes,1928-1932,iia_1938_39,200.0,254.0,3,1930,1932,0.787402,consistent
+iia,south africa,cotton seed,tonnes,1928-1932,iia_1938_39,3500.0,1580.0,3,1930,1932,2.21519,unexplained_period_higher
+iia,south korea,cotton seed,ha,1928-1932,iia_1938_39,186000.0,180063.6667,3,1930,1932,1.032968,consistent
+iia,south korea,cotton seed,tonnes,1928-1932,iia_1938_39,59900.0,65003.3333,3,1930,1932,0.921491,consistent
+iia,spain,cotton seed,ha,1928-1932,iia_1938_39,10000.0,10762.6667,3,1930,1932,0.929138,consistent
+iia,spain,cotton seed,tonnes,1928-1932,iia_1938_39,2000.0,2196.6667,3,1930,1932,0.91047,consistent
+iia,syrian arab republic,cotton seed,ha,1928-1932,iia_1938_39,19000.0,21531.0,3,1930,1932,0.882449,consistent
+iia,syrian arab republic,cotton seed,tonnes,1928-1932,iia_1938_39,4900.0,5264.0,3,1930,1932,0.930851,consistent
+iia,tanzania,cotton seed,tonnes,1928-1932,iia_1938_39,9600.0,7413.3333,3,1930,1932,1.294964,consistent
+iia,turkey,cotton seed,ha,1928-1932,iia_1938_39,155000.0,196704.3333,3,1930,1932,0.787985,consistent
+iia,turkey,cotton seed,tonnes,1928-1932,iia_1938_39,47700.0,32542.3333,3,1930,1932,1.465783,consistent
+iia,united states of america,cotton seed,ha,1928-1932,iia_1938_39,16412000.0,15799931.3333,3,1930,1932,1.038739,consistent
+iia,vanuatu,cotton seed,tonnes,1928-1932,iia_1938_39,700.0,506.6667,3,1930,1932,1.381579,consistent
+iia,viet nam,cotton seed,ha,1928-1932,iia_1938_39,1000.0,1257.3333,3,1930,1932,0.795334,consistent
+iia,viet nam,cotton seed,tonnes,1928-1932,iia_1938_39,400.0,162.0,3,1930,1932,2.469136,unexplained_period_higher
+iia,zimbabwe,cotton seed,ha,1928-1932,iia_1938_39,2000.0,1937.6667,3,1930,1932,1.032169,consistent
+iia,zimbabwe,cotton seed,tonnes,1928-1932,iia_1938_39,400.0,385.0,3,1930,1932,1.038961,consistent
+iia,cyprus,flax fibre and tow,ha,1928-1932,iia_1938_39,1000.0,662.3333,3,1930,1932,1.509814,consistent
+iia,cyprus,flax fibre and tow,tonnes,1928-1932,iia_1938_39,400.0,81.0,3,1930,1932,4.938272,unexplained_period_higher
+iia,czech republic,flax fibre and tow,ha,1928-1932,iia_1938_39,13000.0,9386.3333,3,1930,1932,1.384992,consistent
+iia,czech republic,flax fibre and tow,tonnes,1928-1932,iia_1938_39,5100.0,4162.1667,3,1930,1932,1.225323,consistent
+iia,egypt,flax fibre and tow,ha,1928-1932,iia_1938_39,1000.0,1039.0,3,1930,1932,0.962464,consistent
+iia,egypt,flax fibre and tow,tonnes,1928-1932,iia_1938_39,900.0,714.6333,3,1930,1932,1.259387,consistent
+iia,japan,flax fibre and tow,ha,1928-1932,iia_1938_39,9000.0,9399.0,3,1930,1932,0.957549,consistent
+iia,japan,flax fibre and tow,tonnes,1928-1932,iia_1938_39,2800.0,2555.6,3,1930,1932,1.095633,consistent
+iia,russian federation,flax fibre and tow,ha,1928-1932,iia_1938_39,2466000.0,2216763.3333,3,1930,1932,1.112433,consistent
+iia,russian federation,flax fibre and tow,tonnes,1928-1932,iia_1938_39,733700.0,496792.2,3,1930,1932,1.476875,consistent
+iia,serbia,flax fibre and tow,ha,1928-1932,iia_1938_39,12000.0,12072.6667,3,1930,1932,0.993981,consistent
+iia,serbia,flax fibre and tow,tonnes,1928-1932,iia_1938_39,1100.0,10260.3667,3,1930,1932,0.107209,disagree_x10_dated_higher
+iia,jamaica,grapefruit (inc. pomelos),tonnes,1928-1932,iia_1938_39,6000.0,6456.7333,3,1930,1932,0.929262,consistent
+iia,philippines,grapefruit (inc. pomelos),ha,1928-1932,iia_1938_39,2000.0,1606.0,3,1930,1932,1.24533,consistent
+iia,philippines,grapefruit (inc. pomelos),tonnes,1928-1932,iia_1938_39,7600.0,7615.4667,3,1930,1932,0.997969,consistent
+iia,australia,grapes,ha,1928-1932,iia_1938_39,46000.0,2942.3333,3,1930,1932,15.633851,unexplained_period_higher
+iia,australia,grapes,tonnes,1928-1932,iia_1938_39,13900.0,14060.4,3,1930,1932,0.988592,consistent
+iia,cyprus,grapes,ha,1928-1932,iia_1938_39,43000.0,46741.3333,3,1930,1932,0.919957,consistent
+iia,cyprus,grapes,tonnes,1928-1932,iia_1938_39,17300.0,47005.0,3,1930,1932,0.368046,unexplained_dated_higher
+iia,czech republic,grapes,ha,1928-1932,iia_1938_39,18000.0,17.0,3,1930,1932,1058.823529,unexplained_period_higher
+iia,czech republic,grapes,tonnes,1928-1932,iia_1938_39,6700.0,50236.0,3,1930,1932,0.13337,unexplained_dated_higher
+iia,egypt,grapes,ha,1928-1932,iia_1938_39,2000.0,2285.3333,3,1930,1932,0.875146,consistent
+iia,egypt,grapes,tonnes,1928-1932,iia_1938_39,21000.0,20184.8667,3,1930,1932,1.040383,consistent
+iia,france,grapes,tonnes,1928-1932,iia_1938_39,114200.0,103837.6667,3,1930,1932,1.099794,consistent
+iia,israel,grapes,tonnes,1928-1932,iia_1938_39,7000.0,11961.3333,3,1930,1932,0.585219,consistent
+iia,japan,grapes,tonnes,1928-1932,iia_1938_39,53100.0,56558.8667,3,1930,1932,0.938845,consistent
+iia,libya,grapes,ha,1928-1932,iia_1938_39,4000.0,4244.3333,3,1930,1932,0.942433,consistent
+iia,libya,grapes,tonnes,1928-1932,iia_1938_39,800.0,1877.5,3,1930,1932,0.426099,unexplained_dated_higher
+iia,morocco,grapes,ha,1928-1932,iia_1938_39,11000.0,6266.6667,3,1930,1932,1.755319,consistent
+iia,morocco,grapes,tonnes,1928-1932,iia_1938_39,30300.0,27033.3333,3,1930,1932,1.120838,consistent
+iia,south korea,grapes,tonnes,1928-1932,iia_1938_39,1000.0,1067.5667,3,1930,1932,0.93671,consistent
+iia,syrian arab republic,grapes,ha,1928-1932,iia_1938_39,42000.0,43788.3333,3,1930,1932,0.95916,consistent
+iia,syrian arab republic,grapes,tonnes,1928-1932,iia_1938_39,134000.0,124787.6667,3,1930,1932,1.073824,consistent
+iia,tunisia,grapes,ha,1928-1932,iia_1938_39,43000.0,4000.0,3,1930,1932,10.75,disagree_x10_period_higher
+iia,tunisia,grapes,tonnes,1928-1932,iia_1938_39,6000.0,5833.3333,3,1930,1932,1.028571,consistent
+iia,uruguay,grapes,tonnes,1928-1932,iia_1938_39,66400.0,70223.0,3,1930,1932,0.945559,consistent
+iia,australia,"groundnuts, with shell",ha,1928-1932,iia_1938_39,2000.0,1320.3333,3,1930,1932,1.514769,consistent
+iia,australia,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,2600.0,1529.5333,3,1930,1932,1.699865,consistent
+iia,benin,"groundnuts, with shell",ha,1928-1932,iia_1938_39,3000.0,60223.3333,3,1930,1932,0.049815,unexplained_dated_higher
+iia,benin,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,500.0,19786.0,3,1930,1932,0.02527,unexplained_dated_higher
+iia,burkina faso,"groundnuts, with shell",ha,1928-1932,iia_1938_39,86000.0,101816.6667,3,1930,1932,0.844655,consistent
+iia,burkina faso,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,40300.0,39453.6667,3,1930,1932,1.021451,consistent
+iia,burundi,"groundnuts, with shell",ha,1928-1932,iia_1938_39,3000.0,3094.6667,3,1930,1932,0.96941,consistent
+iia,burundi,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,2500.0,2623.2333,3,1930,1932,0.953022,consistent
+iia,cameroon,"groundnuts, with shell",ha,1928-1932,iia_1938_39,58000.0,206707699.3333,3,1930,1932,0.000281,unexplained_dated_higher
+iia,"china, mainland","groundnuts, with shell",ha,1928-1932,iia_1938_39,34000.0,34517.0,3,1930,1932,0.985022,consistent
+iia,"china, taiwan province of","groundnuts, with shell",ha,1928-1932,iia_1938_39,27000.0,27134.3333,3,1930,1932,0.995049,consistent
+iia,congo,"groundnuts, with shell",ha,1928-1932,iia_1938_39,13000.0,14240.0,3,1930,1932,0.912921,consistent
+iia,congo,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,10800.0,11006.6667,3,1930,1932,0.981224,consistent
+iia,dr congo,"groundnuts, with shell",ha,1928-1932,iia_1938_39,108000.0,103620.6667,3,1930,1932,1.042263,consistent
+iia,egypt,"groundnuts, with shell",ha,1928-1932,iia_1938_39,26000.0,21008.0,3,1930,1932,1.237624,consistent
+iia,egypt,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,27100.0,23699.8667,3,1930,1932,1.143466,consistent
+iia,ghana,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,100.0,133.2333,3,1930,1932,0.750563,consistent
+iia,india,"groundnuts, with shell",ha,1928-1932,iia_1938_39,8000.0,2592248.3333,3,1930,1932,0.003086,unexplained_dated_higher
+iia,indonesia,"groundnuts, with shell",ha,1928-1932,iia_1938_39,214000.0,209900.0,3,1930,1932,1.019533,consistent
+iia,ivory coast,"groundnuts, with shell",ha,1928-1932,iia_1938_39,24000.0,31250.0,3,1930,1932,0.768,consistent
+iia,japan,"groundnuts, with shell",ha,1928-1932,iia_1938_39,6000.0,6047.3333,3,1930,1932,0.992173,consistent
+iia,kenya,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,1100.0,775.6,3,1930,1932,1.418257,consistent
+iia,madagascar,"groundnuts, with shell",ha,1928-1932,iia_1938_39,9000.0,7255.6667,3,1930,1932,1.24041,consistent
+iia,mali,"groundnuts, with shell",ha,1928-1932,iia_1938_39,115000.0,132833.3333,3,1930,1932,0.865747,consistent
+iia,mauritania,"groundnuts, with shell",ha,1928-1932,iia_1938_39,5000.0,6800.0,3,1930,1932,0.735294,consistent
+iia,mauritania,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,3900.0,5206.6667,3,1930,1932,0.74904,consistent
+iia,mauritius,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,200.0,100.0,3,1930,1932,2.0,consistent
+iia,niger,"groundnuts, with shell",ha,1928-1932,iia_1938_39,31000.0,27033.3333,3,1930,1932,1.146732,consistent
+iia,philippines,"groundnuts, with shell",ha,1928-1932,iia_1938_39,8000.0,7760.0,3,1930,1932,1.030928,consistent
+iia,philippines,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,6100.0,6286.7667,3,1930,1932,0.970292,consistent
+iia,saint vincent and the grenadines,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,100.0,79.5333,3,1930,1932,1.257334,consistent
+iia,senegal,"groundnuts, with shell",ha,1928-1932,iia_1938_39,612000.0,569333.3333,3,1930,1932,1.074941,consistent
+iia,sierra leone,"groundnuts, with shell",ha,1928-1932,iia_1938_39,2000.0,2000.0,3,1930,1932,1.0,consistent
+iia,sierra leone,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,2000.0,2000.0,3,1930,1932,1.0,consistent
+iia,south korea,"groundnuts, with shell",ha,1928-1932,iia_1938_39,1000.0,1195.3333,3,1930,1932,0.836587,consistent
+iia,south korea,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,2000.0,2237.3667,3,1930,1932,0.893908,consistent
+iia,viet nam,"groundnuts, with shell",ha,1928-1932,iia_1938_39,2000.0,2236.6667,3,1930,1932,0.894188,consistent
+iia,zambia,"groundnuts, with shell",tonnes,1928-1932,iia_1938_39,300.0,174.6,3,1930,1932,1.718213,consistent
+iia,zimbabwe,"groundnuts, with shell",ha,1928-1932,iia_1938_39,3000.0,2612.0,3,1930,1932,1.148545,consistent
+iia,czech republic,hempseed,ha,1928-1932,iia_1938_39,9000.0,7422.3333,3,1930,1932,1.212557,consistent
+iia,czech republic,hempseed,tonnes,1928-1932,iia_1938_39,4000.0,3144.0,3,1930,1932,1.272265,consistent
+iia,russian federation,hempseed,ha,1928-1932,iia_1938_39,880000.0,871203.3333,3,1930,1932,1.010097,consistent
+iia,russian federation,hempseed,tonnes,1928-1932,iia_1938_39,388000.0,323333.3333,3,1930,1932,1.2,consistent
+iia,serbia,hempseed,tonnes,1928-1932,iia_1938_39,1300.0,1333.2,3,1930,1932,0.975098,consistent
+iia,syrian arab republic,hempseed,ha,1928-1932,iia_1938_39,3000.0,2538.6667,3,1930,1932,1.181723,consistent
+iia,syrian arab republic,hempseed,tonnes,1928-1932,iia_1938_39,400.0,376.6667,3,1930,1932,1.061947,consistent
+iia,australia,hops,ha,1928-1932,iia_1938_39,5000.0,425.6667,3,1930,1932,11.74628,unexplained_period_higher
+iia,australia,hops,tonnes,1928-1932,iia_1938_39,91900.0,824.3667,3,1930,1932,111.47952,disagree_x100_period_higher
+iia,czech republic,hops,ha,1928-1932,iia_1938_39,140000.0,12447.3333,3,1930,1932,11.247389,disagree_x10_period_higher
+iia,czech republic,hops,tonnes,1928-1932,iia_1938_39,1116500.0,11524.9,3,1930,1932,96.877196,disagree_x100_period_higher
+iia,new zealand,hops,ha,1928-1932,iia_1938_39,2000.0,196.6667,3,1930,1932,10.169492,disagree_x10_period_higher
+iia,romania,hops,ha,1928-1932,iia_1938_39,1000.0,61.6667,3,1930,1932,16.216216,unexplained_period_higher
+iia,serbia,hops,ha,1928-1932,iia_1938_39,41000.0,2208.6667,3,1930,1932,18.563236,unexplained_period_higher
+iia,serbia,hops,tonnes,1928-1932,iia_1938_39,279400.0,1389.6,3,1930,1932,201.065055,unexplained_period_higher
+iia,"china, taiwan province of",jute,ha,1928-1932,iia_1938_39,3000.0,2513.6667,3,1930,1932,1.193476,consistent
+iia,"china, taiwan province of",jute,tonnes,1928-1932,iia_1938_39,4100.0,4127.0,3,1930,1932,0.993458,consistent
+iia,japan,jute,ha,1928-1932,iia_1938_39,1000.0,559.0,3,1930,1932,1.788909,consistent
+iia,japan,jute,tonnes,1928-1932,iia_1938_39,1000.0,1017.2333,3,1930,1932,0.983059,consistent
+iia,nepal,jute,tonnes,1928-1932,iia_1938_39,12600.0,10750.1,3,1930,1932,1.172082,consistent
+iia,australia,lemons and limes,ha,1928-1932,iia_1938_39,2000.0,1551.6667,3,1930,1932,1.288937,consistent
+iia,australia,lemons and limes,tonnes,1928-1932,iia_1938_39,11100.0,11138.2333,3,1930,1932,0.996567,consistent
+iia,dominica,lemons and limes,ha,1928-1932,iia_1938_39,1000.0,800.0,3,1930,1932,1.25,consistent
+iia,dominica,lemons and limes,tonnes,1928-1932,iia_1938_39,8300.0,5563.3333,3,1930,1932,1.491911,consistent
+iia,israel,lemons and limes,tonnes,1928-1932,iia_1938_39,300.0,476.4333,3,1930,1932,0.629679,consistent
+iia,montserrat,lemons and limes,tonnes,1928-1932,iia_1938_39,200.0,284.2333,3,1930,1932,0.703647,consistent
+iia,saint lucia,lemons and limes,ha,1928-1932,iia_1938_39,1000.0,1070.0,3,1930,1932,0.934579,consistent
+iia,saint lucia,lemons and limes,tonnes,1928-1932,iia_1938_39,6900.0,7362.1,3,1930,1932,0.937233,consistent
+iia,south africa,lemons and limes,tonnes,1928-1932,iia_1938_39,600.0,495.3,3,1930,1932,1.211387,consistent
+iia,tunisia,lemons and limes,tonnes,1928-1932,iia_1938_39,700.0,766.6667,3,1930,1932,0.913043,consistent
+iia,philippines,manila fibre (abaca),ha,1928-1932,iia_1938_39,483000.0,482666.6667,3,1930,1932,1.000691,consistent
+iia,philippines,manila fibre (abaca),tonnes,1928-1932,iia_1938_39,176000.0,162692.7,3,1930,1932,1.081794,consistent
+iia,cyprus,"oil, olive, virgin",tonnes,1928-1932,iia_1938_39,1100.0,1011.8333,3,1930,1932,1.087136,consistent
+iia,libya,"oil, olive, virgin",tonnes,1928-1932,iia_1938_39,2900.0,2371.3333,3,1930,1932,1.222941,consistent
+iia,serbia,"oil, olive, virgin",tonnes,1928-1932,iia_1938_39,4900.0,3023.8,3,1930,1932,1.620478,consistent
+iia,algeria,olives,tonnes,1928-1932,iia_1938_39,155100.0,138374.2,3,1930,1932,1.120874,consistent
+iia,australia,olives,tonnes,1928-1932,iia_1938_39,500.0,446.3667,3,1930,1932,1.120155,consistent
+iia,cyprus,olives,tonnes,1928-1932,iia_1938_39,6300.0,5989.0,3,1930,1932,1.051929,consistent
+iia,israel,olives,tonnes,1928-1932,iia_1938_39,12300.0,14486.0,3,1930,1932,0.849096,consistent
+iia,libya,olives,ha,1928-1932,iia_1938_39,53000.0,55462.6667,3,1930,1932,0.955598,consistent
+iia,libya,olives,tonnes,1928-1932,iia_1938_39,19300.0,17706.6667,3,1930,1932,1.089985,consistent
+iia,morocco,olives,tonnes,1928-1932,iia_1938_39,63400.0,71401.2333,3,1930,1932,0.88794,consistent
+iia,syrian arab republic,olives,ha,1928-1932,iia_1938_39,76000.0,76676.6667,3,1930,1932,0.991175,consistent
+iia,syrian arab republic,olives,tonnes,1928-1932,iia_1938_39,51800.0,34392.5667,3,1930,1932,1.506139,consistent
+iia,turkey,olives,tonnes,1928-1932,iia_1938_39,182500.0,7733.3333,3,1930,1932,23.599138,unexplained_period_higher
+iia,algeria,oranges,ha,1928-1932,iia_1938_39,5000.0,4732.3333,3,1930,1932,1.056561,consistent
+iia,algeria,oranges,tonnes,1928-1932,iia_1938_39,31600.0,33409.4333,3,1930,1932,0.945841,consistent
+iia,australia,oranges,ha,1928-1932,iia_1938_39,15000.0,15634.6667,3,1930,1932,0.959406,consistent
+iia,australia,oranges,tonnes,1928-1932,iia_1938_39,77900.0,82220.0667,3,1930,1932,0.947457,consistent
+iia,egypt,oranges,ha,1928-1932,iia_1938_39,5000.0,6594.6667,3,1930,1932,0.758188,consistent
+iia,israel,oranges,tonnes,1928-1932,iia_1938_39,97900.0,114777.9,3,1930,1932,0.852952,consistent
+iia,jamaica,oranges,tonnes,1928-1932,iia_1938_39,1300.0,1839.8333,3,1930,1932,0.706586,consistent
+iia,japan,oranges,ha,1928-1932,iia_1938_39,7000.0,7082.6667,3,1930,1932,0.988328,consistent
+iia,japan,oranges,tonnes,1928-1932,iia_1938_39,76700.0,75260.7667,3,1930,1932,1.019123,consistent
+iia,philippines,oranges,ha,1928-1932,iia_1938_39,2000.0,1571.3333,3,1930,1932,1.272804,consistent
+iia,philippines,oranges,tonnes,1928-1932,iia_1938_39,2200.0,2108.7,3,1930,1932,1.043297,consistent
+iia,suriname,oranges,tonnes,1928-1932,iia_1938_39,600.0,717.7,3,1930,1932,0.836004,consistent
+iia,syrian arab republic,oranges,ha,1928-1932,iia_1938_39,3000.0,2555.3333,3,1930,1932,1.174015,consistent
+iia,syrian arab republic,oranges,tonnes,1928-1932,iia_1938_39,39800.0,41308.3333,3,1930,1932,0.963486,consistent
+iia,tunisia,oranges,tonnes,1928-1932,iia_1938_39,2500.0,3000.0,3,1930,1932,0.833333,consistent
+iia,zambia,oranges,tonnes,1928-1932,iia_1938_39,100.0,134.7333,3,1930,1932,0.742207,consistent
+iia,zimbabwe,oranges,tonnes,1928-1932,iia_1938_39,5800.0,5563.1333,3,1930,1932,1.042578,consistent
+iia,bulgaria,other berries and fruits of the genus vaccinium n.e.c.,ha,1928-1932,iia_1938_39,4000.0,4810.0,3,1930,1932,0.831601,consistent
+iia,bulgaria,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1928-1932,iia_1938_39,20800.0,23118.3333,3,1930,1932,0.899719,consistent
+iia,"china, taiwan province of",other berries and fruits of the genus vaccinium n.e.c.,ha,1928-1932,iia_1938_39,1000.0,585.0,3,1930,1932,1.709402,consistent
+iia,france,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1928-1932,iia_1938_39,79000.0,64826.0,3,1930,1932,1.218647,consistent
+iia,italy,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1928-1932,iia_1938_39,1388900.0,1336924.0,3,1930,1932,1.038877,consistent
+iia,japan,other berries and fruits of the genus vaccinium n.e.c.,ha,1928-1932,iia_1938_39,651000.0,677509.6667,3,1930,1932,0.960872,consistent
+iia,south korea,other berries and fruits of the genus vaccinium n.e.c.,ha,1928-1932,iia_1938_39,74000.0,77368.0,3,1930,1932,0.956468,consistent
+iia,spain,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1928-1932,iia_1938_39,27400.0,26414.3667,3,1930,1932,1.037314,consistent
+iia,syrian arab republic,other berries and fruits of the genus vaccinium n.e.c.,ha,1928-1932,iia_1938_39,25000.0,23622.6667,3,1930,1932,1.058306,consistent
+iia,syrian arab republic,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1928-1932,iia_1938_39,203800.0,203000.0,3,1930,1932,1.003941,consistent
+iia,viet nam,other berries and fruits of the genus vaccinium n.e.c.,ha,1928-1932,iia_1938_39,3000.0,3162.0,3,1930,1932,0.948767,consistent
+iia,france,"other citrus fruit, n.e.c.",tonnes,1928-1932,iia_1938_39,1000.0,900.0,3,1930,1932,1.111111,consistent
+iia,greece,"other citrus fruit, n.e.c.",tonnes,1928-1932,iia_1938_39,600.0,689.5,3,1930,1932,0.870196,consistent
+iia,australia,other sugar crops n.e.c.,tonnes,1928-1932,iia_1938_39,1500.0,1560.3667,3,1930,1932,0.961313,consistent
+iia,australia,raisins,tonnes,1928-1932,iia_1938_39,67800.0,240171.8333,3,1930,1932,0.282298,unexplained_dated_higher
+iia,cyprus,raisins,tonnes,1928-1932,iia_1938_39,4200.0,4739.7,3,1930,1932,0.886132,consistent
+iia,greece,raisins,tonnes,1928-1932,iia_1938_39,160000.0,153511.1333,3,1930,1932,1.04227,consistent
+iia,spain,raisins,tonnes,1928-1932,iia_1938_39,15800.0,49490.6,3,1930,1932,0.319253,unexplained_dated_higher
+iia,turkey,raisins,tonnes,1928-1932,iia_1938_39,55500.0,126136.0,3,1930,1932,0.440001,unexplained_dated_higher
+iia,united states of america,raisins,tonnes,1928-1932,iia_1938_39,199400.0,788113.3333,3,1930,1932,0.253009,unexplained_dated_higher
+iia,"china, mainland",rapeseed,tonnes,1928-1932,iia_1938_39,2259300.0,33561.3333,3,1930,1932,67.318541,unexplained_period_higher
+iia,"china, taiwan province of",rapeseed,tonnes,1928-1932,iia_1938_39,100.0,84.8667,3,1930,1932,1.178319,consistent
+iia,czech republic,rapeseed,ha,1928-1932,iia_1938_39,2000.0,1571.3333,3,1930,1932,1.272804,consistent
+iia,czech republic,rapeseed,tonnes,1928-1932,iia_1938_39,1700.0,1581.4333,3,1930,1932,1.074974,consistent
+iia,japan,rapeseed,ha,1928-1932,iia_1938_39,74000.0,76716.6667,3,1930,1932,0.964588,consistent
+iia,japan,rapeseed,tonnes,1928-1932,iia_1938_39,78500.0,82134.9,3,1930,1932,0.955745,consistent
+iia,serbia,rapeseed,ha,1928-1932,iia_1938_39,8000.0,7414.6667,3,1930,1932,1.078943,consistent
+iia,serbia,rapeseed,tonnes,1928-1932,iia_1938_39,5200.0,4181.0,3,1930,1932,1.243722,consistent
+iia,algeria,rye,ha,1928-1932,iia_1938_39,1000.0,1490.6667,3,1930,1932,0.670841,consistent
+iia,algeria,rye,tonnes,1928-1932,iia_1938_39,1200.0,1079.3667,3,1930,1932,1.111763,consistent
+iia,australia,rye,ha,1928-1932,iia_1938_39,2000.0,2106.6667,3,1930,1932,0.949367,consistent
+iia,australia,rye,tonnes,1928-1932,iia_1938_39,1900.0,1812.3667,3,1930,1932,1.048353,consistent
+iia,czech republic,rye,ha,1928-1932,iia_1938_39,1035000.0,1028532.3333,3,1930,1932,1.006288,consistent
+iia,czech republic,rye,tonnes,1928-1932,iia_1938_39,1792800.0,1783714.9667,3,1930,1932,1.005093,consistent
+iia,morocco,rye,ha,1928-1932,iia_1938_39,1000.0,912.3333,3,1930,1932,1.096091,consistent
+iia,morocco,rye,tonnes,1928-1932,iia_1938_39,600.0,444.9,3,1930,1932,1.348618,consistent
+iia,new zealand,rye,tonnes,1928-1932,iia_1938_39,200.0,154.5667,3,1930,1932,1.29394,consistent
+iia,russian federation,rye,ha,1928-1932,iia_1938_39,26455000.0,27566666.6667,3,1930,1932,0.959674,consistent
+iia,russian federation,rye,tonnes,1928-1932,iia_1938_39,21452700.0,15213996.6667,3,1930,1932,1.410063,consistent
+iia,serbia,rye,ha,1928-1932,iia_1938_39,235000.0,98545.0,3,1930,1932,2.384697,unexplained_period_higher
+iia,serbia,rye,tonnes,1928-1932,iia_1938_39,201000.0,201228.7667,3,1930,1932,0.998863,consistent
+iia,turkey,rye,ha,1928-1932,iia_1938_39,264000.0,256348.3333,3,1930,1932,1.029849,consistent
+iia,turkey,rye,tonnes,1928-1932,iia_1938_39,269100.0,302154.4,3,1930,1932,0.890604,consistent
+iia,cameroon,sesame seed,ha,1928-1932,iia_1938_39,10000.0,10466.6667,3,1930,1932,0.955414,consistent
+iia,cameroon,sesame seed,tonnes,1928-1932,iia_1938_39,3100.0,3146.5,3,1930,1932,0.985222,consistent
+iia,"china, taiwan province of",sesame seed,ha,1928-1932,iia_1938_39,3000.0,3204.3333,3,1930,1932,0.936232,consistent
+iia,"china, taiwan province of",sesame seed,tonnes,1928-1932,iia_1938_39,1100.0,1053.8333,3,1930,1932,1.043808,consistent
+iia,congo,sesame seed,ha,1928-1932,iia_1938_39,8000.0,8400.0,3,1930,1932,0.952381,consistent
+iia,congo,sesame seed,tonnes,1928-1932,iia_1938_39,1000.0,1020.0,3,1930,1932,0.980392,consistent
+iia,cyprus,sesame seed,ha,1928-1932,iia_1938_39,2000.0,1991.6667,3,1930,1932,1.004184,consistent
+iia,cyprus,sesame seed,tonnes,1928-1932,iia_1938_39,300.0,327.2667,3,1930,1932,0.916684,consistent
+iia,dr congo,sesame seed,ha,1928-1932,iia_1938_39,13000.0,13350.3333,3,1930,1932,0.973758,consistent
+iia,dr congo,sesame seed,tonnes,1928-1932,iia_1938_39,7400.0,6042.4333,3,1930,1932,1.224672,consistent
+iia,egypt,sesame seed,ha,1928-1932,iia_1938_39,75000.0,81583.0,3,1930,1932,0.919309,consistent
+iia,egypt,sesame seed,tonnes,1928-1932,iia_1938_39,28200.0,28467.6,3,1930,1932,0.9906,consistent
+iia,india,sesame seed,ha,1928-1932,iia_1938_39,1000.0,2363237.3333,3,1930,1932,0.000423,unexplained_dated_higher
+iia,india,sesame seed,tonnes,1928-1932,iia_1938_39,300.0,526308.1667,3,1930,1932,0.00057,unexplained_dated_higher
+iia,indonesia,sesame seed,ha,1928-1932,iia_1938_39,16000.0,15829.0,3,1930,1932,1.010803,consistent
+iia,indonesia,sesame seed,tonnes,1928-1932,iia_1938_39,5400.0,5770.4,3,1930,1932,0.93581,consistent
+iia,israel,sesame seed,tonnes,1928-1932,iia_1938_39,2200.0,1612.6667,3,1930,1932,1.3642,consistent
+iia,japan,sesame seed,ha,1928-1932,iia_1938_39,5000.0,4669.6667,3,1930,1932,1.07074,consistent
+iia,japan,sesame seed,tonnes,1928-1932,iia_1938_39,3500.0,3511.7667,3,1930,1932,0.996649,consistent
+iia,kenya,sesame seed,tonnes,1928-1932,iia_1938_39,1300.0,1316.1,3,1930,1932,0.987767,consistent
+iia,nigeria,sesame seed,tonnes,1928-1932,iia_1938_39,7600.0,8762.3667,3,1930,1932,0.867346,consistent
+iia,russian federation,sesame seed,ha,1928-1932,iia_1938_39,51000.0,67766.6667,3,1930,1932,0.752582,consistent
+iia,russian federation,sesame seed,tonnes,1928-1932,iia_1938_39,15800.0,21073.3333,3,1930,1932,0.749763,consistent
+iia,sierra leone,sesame seed,tonnes,1928-1932,iia_1938_39,100.0,82.6333,3,1930,1932,1.210165,consistent
+iia,south korea,sesame seed,ha,1928-1932,iia_1938_39,10000.0,9732.3333,3,1930,1932,1.027503,consistent
+iia,south korea,sesame seed,tonnes,1928-1932,iia_1938_39,4400.0,4036.5667,3,1930,1932,1.090035,consistent
+iia,syrian arab republic,sesame seed,ha,1928-1932,iia_1938_39,4000.0,3318.3333,3,1930,1932,1.205424,consistent
+iia,syrian arab republic,sesame seed,tonnes,1928-1932,iia_1938_39,2400.0,1862.5,3,1930,1932,1.288591,consistent
+iia,tanzania,sesame seed,tonnes,1928-1932,iia_1938_39,3900.0,3979.8667,3,1930,1932,0.979932,consistent
+iia,turkey,sesame seed,ha,1928-1932,iia_1938_39,50000.0,52132.3333,3,1930,1932,0.959098,consistent
+iia,turkey,sesame seed,tonnes,1928-1932,iia_1938_39,30200.0,26928.1,3,1930,1932,1.121505,consistent
+iia,viet nam,sesame seed,tonnes,1928-1932,iia_1938_39,400.0,578.2667,3,1930,1932,0.691722,consistent
+iia,bulgaria,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,1805.0,1559.7837,3,1930,1932,1.157212,consistent
+iia,"china, taiwan province of","silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,74.0,72.9293,3,1930,1932,1.014681,consistent
+iia,cyprus,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,216.0,197.3837,3,1930,1932,1.094315,consistent
+iia,czech republic,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,19.0,21.4333,3,1930,1932,0.88647,consistent
+iia,egypt,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,36.0,34.0,3,1930,1932,1.058824,consistent
+iia,france,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,1807.0,1270.2807,3,1930,1932,1.42252,consistent
+iia,greece,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,2132.0,1838.69,3,1930,1932,1.159521,consistent
+iia,hungary,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,568.0,626.552,3,1930,1932,0.906549,consistent
+iia,italy,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,46255.0,41812.7733,3,1930,1932,1.106241,consistent
+iia,japan,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,191489.0,193952.2987,3,1930,1932,0.987299,consistent
+iia,libya,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,2.0,0.9017,3,1930,1932,2.218115,unexplained_period_higher
+iia,romania,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,386.0,309.3333,3,1930,1932,1.247845,consistent
+iia,russian federation,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,15586.0,16255.0,3,1930,1932,0.958843,consistent
+iia,serbia,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,984.0,838.7173,3,1930,1932,1.17322,consistent
+iia,south korea,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,16559.0,18344.6043,3,1930,1932,0.902663,consistent
+iia,spain,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,708.0,593.5257,3,1930,1932,1.192872,consistent
+iia,syrian arab republic,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,3004.0,2713.3333,3,1930,1932,1.107125,consistent
+iia,turkey,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,1275.0,1401.6667,3,1930,1932,0.909631,consistent
+iia,viet nam,"silk-worm cocoons, reelable",tonnes,1928-1932,iia_1938_39,3632.0,14975.0627,3,1930,1932,0.242537,unexplained_dated_higher
+iia,"china, mainland",soybeans,ha,1928-1932,iia_1938_39,5357000.0,4106439.0,3,1930,1932,1.304537,consistent
+iia,"china, mainland",soybeans,tonnes,1928-1932,iia_1938_39,6153400.0,4949359.7667,3,1930,1932,1.243272,consistent
+iia,"china, taiwan province of",soybeans,ha,1928-1932,iia_1938_39,9000.0,8302.0,3,1930,1932,1.084076,consistent
+iia,"china, taiwan province of",soybeans,tonnes,1928-1932,iia_1938_39,4900.0,4896.7667,3,1930,1932,1.00066,consistent
+iia,indonesia,soybeans,ha,1928-1932,iia_1938_39,206000.0,213146.6667,3,1930,1932,0.966471,consistent
+iia,indonesia,soybeans,tonnes,1928-1932,iia_1938_39,125800.0,135066.6667,3,1930,1932,0.931392,consistent
+iia,japan,soybeans,ha,1928-1932,iia_1938_39,351000.0,346283.3333,3,1930,1932,1.013621,consistent
+iia,japan,soybeans,tonnes,1928-1932,iia_1938_39,349900.0,341036.9,3,1930,1932,1.025989,consistent
+iia,russian federation,soybeans,ha,1928-1932,iia_1938_39,244000.0,366524.3333,3,1930,1932,0.665713,consistent
+iia,russian federation,soybeans,tonnes,1928-1932,iia_1938_39,118900.0,166423.9333,3,1930,1932,0.714441,consistent
+iia,south korea,soybeans,ha,1928-1932,iia_1938_39,791000.0,791951.6667,3,1930,1932,0.998798,consistent
+iia,south korea,soybeans,tonnes,1928-1932,iia_1938_39,533300.0,555956.2667,3,1930,1932,0.959248,consistent
+iia,angola,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,15400.0,17209.5333,3,1930,1932,0.894853,consistent
+iia,antigua and barbuda,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,15700.0,16393.2333,3,1930,1932,0.957712,consistent
+iia,australia,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,524800.0,565838.9333,3,1930,1932,0.927472,consistent
+iia,austria,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,124200.0,159236.0333,3,1930,1932,0.779974,consistent
+iia,belgium,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,229000.0,245386.7667,3,1930,1932,0.933221,consistent
+iia,bulgaria,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,33500.0,35870.9333,3,1930,1932,0.933904,consistent
+iia,canada,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,42400.0,57346.6667,3,1930,1932,0.739363,consistent
+iia,"china, taiwan province of",sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,804000.0,806690.4,3,1930,1932,0.996665,consistent
+iia,czech republic,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,822800.0,865894.3,3,1930,1932,0.950231,consistent
+iia,denmark,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,141200.0,152100.0,3,1930,1932,0.928337,consistent
+iia,dr congo,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,2900.0,3649.3333,3,1930,1932,0.794666,consistent
+iia,egypt,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,131200.0,146493.0,3,1930,1932,0.895606,consistent
+iia,fiji,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,94200.0,102424.6667,3,1930,1932,0.9197,consistent
+iia,finland,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,3400.0,4421.2,3,1930,1932,0.769022,consistent
+iia,france,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,886500.0,1033750.3,3,1930,1932,0.857557,consistent
+iia,germany,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,1634900.0,1744880.3667,3,1930,1932,0.93697,consistent
+iia,hungary,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,167300.0,154266.3333,3,1930,1932,1.084488,consistent
+iia,indonesia,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,2498400.0,2235070.0,3,1930,1932,1.117817,consistent
+iia,ireland,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,18600.0,19300.8333,3,1930,1932,0.963689,consistent
+iia,italy,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,356500.0,375762.5,3,1930,1932,0.948738,consistent
+iia,japan,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,78200.0,89887.9667,3,1930,1932,0.869972,consistent
+iia,kenya,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,6600.0,6683.8333,3,1930,1932,0.987457,consistent
+iia,latvia,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,9000.0,15288.7,3,1930,1932,0.58867,consistent
+iia,madagascar,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,6000.0,6766.6667,3,1930,1932,0.8867,consistent
+iia,mauritius,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,224700.0,210737.0,3,1930,1932,1.066258,consistent
+iia,montserrat,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,100.0,75.3333,3,1930,1932,1.327434,consistent
+iia,mozambique,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,81900.0,24289.5,3,1930,1932,3.371827,unexplained_period_higher
+iia,netherlands,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,232800.0,228572.8667,3,1930,1932,1.018494,consistent
+iia,paraguay,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,6700.0,7644.8667,3,1930,1932,0.876405,consistent
+iia,philippines,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,946000.0,1021717.7667,3,1930,1932,0.925892,consistent
+iia,poland,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,602500.0,562009.6667,3,1930,1932,1.072046,consistent
+iia,reunion,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,47300.0,49216.1333,3,1930,1932,0.961067,consistent
+iia,romania,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,94600.0,103208.6667,3,1930,1932,0.91659,consistent
+iia,russian federation,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,1199800.0,1280900.0,3,1930,1932,0.936685,consistent
+iia,saint kitts and nevis,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,18000.0,19020.0333,3,1930,1932,0.946371,consistent
+iia,saint lucia,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,5200.0,5248.9,3,1930,1932,0.990684,consistent
+iia,saint vincent and the grenadines,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,1900.0,1290.6667,3,1930,1932,1.472107,consistent
+iia,serbia,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,96500.0,89516.2667,3,1930,1932,1.078016,consistent
+iia,south africa,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,303500.0,325994.8,3,1930,1932,0.930996,consistent
+iia,south korea,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,900.0,835.4,3,1930,1932,1.077328,consistent
+iia,spain,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,15400.0,17319.4,3,1930,1932,0.889176,consistent
+iia,suriname,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,20200.0,21836.5,3,1930,1932,0.925057,consistent
+iia,sweden,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,152700.0,188547.6667,3,1930,1932,0.809875,consistent
+iia,switzerland,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,5700.0,6233.3333,3,1930,1932,0.914439,consistent
+iia,turkey,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,15200.0,21094.0,3,1930,1932,0.720584,consistent
+iia,united kingdom,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,298900.0,366311.5,3,1930,1932,0.815972,consistent
+iia,united states of america,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,1699200.0,1880382.4,3,1930,1932,0.903646,consistent
+iia,united states virgin islands,sugar raw centrifugal,tonnes,1928-1932,iia_1938_39,3900.0,3417.4,3,1930,1932,1.141218,consistent
+iia,algeria,"tangerines, mandarins, clementines, satsumas",ha,1928-1932,iia_1938_39,3000.0,3606.0,3,1930,1932,0.831947,consistent
+iia,algeria,"tangerines, mandarins, clementines, satsumas",tonnes,1928-1932,iia_1938_39,27600.0,28762.4,3,1930,1932,0.959586,consistent
+iia,japan,"tangerines, mandarins, clementines, satsumas",ha,1928-1932,iia_1938_39,29000.0,28867.3333,3,1930,1932,1.004596,consistent
+iia,japan,"tangerines, mandarins, clementines, satsumas",tonnes,1928-1932,iia_1938_39,310100.0,311587.4333,3,1930,1932,0.995226,consistent
+iia,philippines,"tangerines, mandarins, clementines, satsumas",ha,1928-1932,iia_1938_39,2000.0,2103.6667,3,1930,1932,0.950721,consistent
+iia,philippines,"tangerines, mandarins, clementines, satsumas",tonnes,1928-1932,iia_1938_39,2300.0,2415.7,3,1930,1932,0.952105,consistent
+iia,south africa,"tangerines, mandarins, clementines, satsumas",tonnes,1928-1932,iia_1938_39,900.0,56753.8333,3,1930,1932,0.015858,unexplained_dated_higher
+iia,azerbaijan,tea,ha,1928-1932,iia_1938_39,15000.0,21646.6667,3,1930,1932,0.692947,consistent
+iia,"china, mainland",tea,tonnes,1928-1932,iia_1938_39,47453.0,41325.8667,3,1930,1932,1.148264,consistent
+iia,"china, taiwan province of",tea,ha,1928-1932,iia_1938_39,45000.0,44816.6667,3,1930,1932,1.004091,consistent
+iia,indonesia,tea,ha,1928-1932,iia_1938_39,126000.0,131380.0,3,1930,1932,0.95905,consistent
+iia,japan,tea,ha,1928-1932,iia_1938_39,40000.0,37867.3333,3,1930,1932,1.056319,consistent
+iia,kenya,tea,ha,1928-1932,iia_1938_39,4000.0,4498.0,3,1930,1932,0.889284,consistent
+iia,kenya,tea,tonnes,1928-1932,iia_1938_39,506.0,733.533,3,1930,1932,0.689812,consistent
+iia,malawi,tea,ha,1928-1932,iia_1938_39,4000.0,4545.3333,3,1930,1932,0.880023,consistent
+iia,malaysia,tea,ha,1928-1932,iia_1938_39,1000.0,840.6667,3,1930,1932,1.189532,consistent
+iia,mauritius,tea,tonnes,1928-1932,iia_1938_39,17.0,17.7333,3,1930,1932,0.958647,consistent
+iia,south africa,tea,ha,1928-1932,iia_1938_39,1000.0,841.3333,3,1930,1932,1.18859,consistent
+iia,south africa,tea,tonnes,1928-1932,iia_1938_39,288.0,276.7137,3,1930,1932,1.040787,consistent
+iia,sri lanka,tea,ha,1928-1932,iia_1938_39,185000.0,185000.0,3,1930,1932,1.0,consistent
+iia,viet nam,tea,ha,1928-1932,iia_1938_39,5000.0,4056.0,3,1930,1932,1.232742,consistent
+iia,algeria,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,24000.0,23397.6667,3,1930,1932,1.025743,consistent
+iia,american samoa,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,4600.0,46.2,3,1930,1932,99.5671,disagree_x100_period_higher
+iia,australia,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,4000.0,6389.0,3,1930,1932,0.626076,consistent
+iia,australia,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,227000.0,3247.3,3,1930,1932,69.904228,unexplained_period_higher
+iia,benin,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,2900.0,30.5,3,1930,1932,95.081967,disagree_x100_period_higher
+iia,burundi,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,1000.0,505.0,3,1930,1932,1.980198,consistent
+iia,burundi,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,60500.0,605.2333,3,1930,1932,99.961447,disagree_x100_period_higher
+iia,"china, taiwan province of","tobacco, unmanufactured",ha,1928-1932,iia_1938_39,1000.0,767.3333,3,1930,1932,1.303215,consistent
+iia,"china, taiwan province of","tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,141200.0,1350.6,3,1930,1932,104.546128,disagree_x100_period_higher
+iia,congo,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,11000.0,11210.0,3,1930,1932,0.981267,consistent
+iia,congo,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,95200.0,1020.0,3,1930,1932,93.333333,disagree_x100_period_higher
+iia,cyprus,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,17600.0,96.1667,3,1930,1932,183.015598,unexplained_period_higher
+iia,czech republic,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,8000.0,8849.6667,3,1930,1932,0.903989,consistent
+iia,czech republic,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,1137900.0,13640.0,3,1930,1932,83.423754,unexplained_period_higher
+iia,eritrea,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,2100.0,29.4,3,1930,1932,71.428571,unexplained_period_higher
+iia,eswatini,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,28900.0,197.3,3,1930,1932,146.477446,unexplained_period_higher
+iia,french polynesia,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,600.0,21.3333,3,1930,1932,28.125,unexplained_period_higher
+iia,indonesia,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,50000.0,50505.6667,3,1930,1932,0.989988,consistent
+iia,israel,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,2000.0,1643.6667,3,1930,1932,1.216792,consistent
+iia,israel,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,71400.0,676.4667,3,1930,1932,105.548438,disagree_x100_period_higher
+iia,japan,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,36000.0,35457.6667,3,1930,1932,1.015295,consistent
+iia,jordan,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,1100.0,10.6667,3,1930,1932,103.125,disagree_x100_period_higher
+iia,madagascar,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,10000.0,11585.3333,3,1930,1932,0.86316,consistent
+iia,malawi,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,7000.0,6107.6667,3,1930,1932,1.146101,consistent
+iia,malaysia,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,33700.0,339.2333,3,1930,1932,99.341653,disagree_x100_period_higher
+iia,mali,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,2000.0,2145.0,3,1930,1932,0.932401,consistent
+iia,mali,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,138400.0,1492.3333,3,1930,1932,92.740675,disagree_x100_period_higher
+iia,mauritius,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,1000.0,698.0,3,1930,1932,1.432665,consistent
+iia,mauritius,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,39300.0,371.3333,3,1930,1932,105.834829,disagree_x100_period_higher
+iia,morocco,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,18400.0,231.9333,3,1930,1932,79.333142,unexplained_period_higher
+iia,mozambique,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,39000.0,1.4667,3,1930,1932,26590.909091,unexplained_period_higher
+iia,new zealand,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,1000.0,645.0,3,1930,1932,1.550388,consistent
+iia,new zealand,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,50300.0,578.4,3,1930,1932,86.964039,disagree_x100_period_higher
+iia,niger,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,11000.0,154.6667,3,1930,1932,71.12069,unexplained_period_higher
+iia,philippines,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,79000.0,77536.6667,3,1930,1932,1.018873,consistent
+iia,russian federation,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,143000.0,180666.6667,3,1930,1932,0.791513,consistent
+iia,russian federation,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,13728800.0,150883.3333,3,1930,1932,90.989506,disagree_x100_period_higher
+iia,serbia,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,16000.0,18703.3333,3,1930,1932,0.855462,consistent
+iia,serbia,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,1283000.0,14829.0667,3,1930,1932,86.519268,disagree_x100_period_higher
+iia,south korea,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,17000.0,14247.3333,3,1930,1932,1.193206,consistent
+iia,south korea,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,2000000.0,17151.2667,3,1930,1932,116.609463,unexplained_period_higher
+iia,sri lanka,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,6000.0,5700.0,3,1930,1932,1.052632,consistent
+iia,syrian arab republic,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,5000.0,5601.6667,3,1930,1932,0.892591,consistent
+iia,syrian arab republic,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,309800.0,3693.5,3,1930,1932,83.877081,unexplained_period_higher
+iia,tunisia,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,1000.0,541.6667,3,1930,1932,1.846154,consistent
+iia,tunisia,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,58200.0,593.2667,3,1930,1932,98.10091,disagree_x100_period_higher
+iia,turkey,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,54000.0,53305.6667,3,1930,1932,1.013026,consistent
+iia,viet nam,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,2000.0,1710.6667,3,1930,1932,1.169135,consistent
+iia,viet nam,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,131000.0,1450.4,3,1930,1932,90.319912,disagree_x100_period_higher
+iia,zambia,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,1000.0,949.0,3,1930,1932,1.053741,consistent
+iia,zambia,"tobacco, unmanufactured",tonnes,1928-1932,iia_1938_39,56400.0,521.9333,3,1930,1932,108.059778,disagree_x100_period_higher
+iia,zimbabwe,"tobacco, unmanufactured",ha,1928-1932,iia_1938_39,8000.0,10236.0,3,1930,1932,0.781555,consistent
+iia,czech republic,wheat,ha,1928-1932,iia_1938_39,9000.0,558.3333,3,1930,1932,16.119403,unexplained_period_higher
+iia,czech republic,wheat,tonnes,1928-1932,iia_1938_39,13600.0,625.9333,3,1930,1932,21.727554,unexplained_period_higher
+iia,serbia,wheat,ha,1928-1932,iia_1938_39,50000.0,17114.3333,3,1930,1932,2.921528,unexplained_period_higher
+iia,serbia,wheat,tonnes,1928-1932,iia_1938_39,44600.0,11145.5667,3,1930,1932,4.001591,unexplained_period_higher
+iia,algeria,wine,ha,1928-1932,iia_1938_39,277000.0,311770.3333,3,1930,1932,0.888475,consistent
+iia,australia,wine,ha,1928-1932,iia_1938_39,19000.0,19139.0,3,1930,1932,0.992737,consistent
+iia,austria,wine,ha,1928-1932,iia_1938_39,30000.0,29160.0,3,1930,1932,1.028807,consistent
+iia,austria,wine,tonnes,1928-1932,iia_1938_39,97291.0,118516.0873,3,1930,1932,0.82091,consistent
+iia,bulgaria,wine,ha,1928-1932,iia_1938_39,76000.0,81902.6667,3,1930,1932,0.927931,consistent
+iia,bulgaria,wine,tonnes,1928-1932,iia_1938_39,119407.0,193188.3687,3,1930,1932,0.618086,consistent
+iia,czech republic,wine,ha,1928-1932,iia_1938_39,15000.0,16119.6667,3,1930,1932,0.93054,consistent
+iia,czech republic,wine,tonnes,1928-1932,iia_1938_39,37054.0,44096.0707,3,1930,1932,0.840302,consistent
+iia,france,wine,ha,1928-1932,iia_1938_39,1529000.0,1539220.0,3,1930,1932,0.99336,consistent
+iia,france,wine,tonnes,1928-1932,iia_1938_39,5429575.0,4996746.45,3,1930,1932,1.086622,consistent
+iia,germany,wine,ha,1928-1932,iia_1938_39,72000.0,71346.6667,3,1930,1932,1.009157,consistent
+iia,germany,wine,tonnes,1928-1932,iia_1938_39,206610.0,238457.7513,3,1930,1932,0.866443,consistent
+iia,greece,wine,ha,1928-1932,iia_1938_39,135000.0,129928.6667,3,1930,1932,1.039032,consistent
+iia,greece,wine,tonnes,1928-1932,iia_1938_39,37830.0,257677.2667,3,1930,1932,0.146812,unexplained_dated_higher
+iia,hungary,wine,ha,1928-1932,iia_1938_39,201000.0,205546.0,3,1930,1932,0.977883,consistent
+iia,hungary,wine,tonnes,1928-1932,iia_1938_39,311370.0,371117.8613,3,1930,1932,0.839006,consistent
+iia,israel,wine,tonnes,1928-1932,iia_1938_39,2813.0,3480.7157,3,1930,1932,0.808167,consistent
+iia,italy,wine,ha,1928-1932,iia_1938_39,936000.0,903628.0,3,1930,1932,1.035824,consistent
+iia,italy,wine,tonnes,1928-1932,iia_1938_39,3995430.0,3817815.5633,3,1930,1932,1.046523,consistent
+iia,libya,wine,ha,1928-1932,iia_1938_39,1000.0,4244.3333,3,1930,1932,0.235608,unexplained_dated_higher
+iia,libya,wine,tonnes,1928-1932,iia_1938_39,679.0,541.9067,3,1930,1932,1.252983,consistent
+iia,luxembourg,wine,ha,1928-1932,iia_1938_39,1000.0,1230.6667,3,1930,1932,0.812568,consistent
+iia,luxembourg,wine,tonnes,1928-1932,iia_1938_39,5529.0,5270.3333,3,1930,1932,1.04908,consistent
+iia,malta,wine,tonnes,1928-1932,iia_1938_39,4074.0,3740.9667,3,1930,1932,1.089023,consistent
+iia,morocco,wine,ha,1928-1932,iia_1938_39,6000.0,8400.0,3,1930,1932,0.714286,consistent
+iia,portugal,wine,ha,1928-1932,iia_1938_39,351000.0,351370.0,3,1930,1932,0.998947,consistent
+iia,portugal,wine,tonnes,1928-1932,iia_1938_39,599169.0,634901.6013,3,1930,1932,0.943719,consistent
+iia,romania,wine,ha,1928-1932,iia_1938_39,210000.0,250948.3333,3,1930,1932,0.836826,consistent
+iia,romania,wine,tonnes,1928-1932,iia_1938_39,720128.0,806683.234,3,1930,1932,0.892702,consistent
+iia,serbia,wine,ha,1928-1932,iia_1938_39,186000.0,191451.0,3,1930,1932,0.971528,consistent
+iia,serbia,wine,tonnes,1928-1932,iia_1938_39,390425.0,417000.672,3,1930,1932,0.936269,consistent
+iia,spain,wine,ha,1928-1932,iia_1938_39,1341000.0,1343159.0,3,1930,1932,0.998393,consistent
+iia,spain,wine,tonnes,1928-1932,iia_1938_39,1996939.0,1891169.1977,3,1930,1932,1.055928,consistent
+iia,switzerland,wine,ha,1928-1932,iia_1938_39,13000.0,12567.0,3,1930,1932,1.034455,consistent
+iia,switzerland,wine,tonnes,1928-1932,iia_1938_39,56066.0,47990.7177,3,1930,1932,1.168268,consistent
+iia,tunisia,wine,ha,1928-1932,iia_1938_39,36000.0,39743.6667,3,1930,1932,0.905805,consistent
+iia,austria,yarn of true hemp,tonnes,1928-1932,iia_1938_39,200.0,739.9667,3,1930,1932,0.270282,unexplained_dated_higher
+iia,bulgaria,yarn of true hemp,ha,1928-1932,iia_1938_39,4000.0,4004.0,3,1930,1932,0.999001,consistent
+iia,bulgaria,yarn of true hemp,tonnes,1928-1932,iia_1938_39,1400.0,1557.3667,3,1930,1932,0.898953,consistent
+iia,cyprus,yarn of true hemp,tonnes,1928-1932,iia_1938_39,100.0,68.3,3,1930,1932,1.464129,consistent
+iia,czech republic,yarn of true hemp,ha,1928-1932,iia_1938_39,9000.0,7427.3333,3,1930,1932,1.21174,consistent
+iia,czech republic,yarn of true hemp,tonnes,1928-1932,iia_1938_39,5500.0,4729.8667,3,1930,1932,1.162823,consistent
+iia,france,yarn of true hemp,ha,1928-1932,iia_1938_39,4000.0,3362.0,3,1930,1932,1.189768,consistent
+iia,france,yarn of true hemp,tonnes,1928-1932,iia_1938_39,4100.0,3711.5333,3,1930,1932,1.104665,consistent
+iia,hungary,yarn of true hemp,ha,1928-1932,iia_1938_39,8000.0,7524.3333,3,1930,1932,1.063217,consistent
+iia,hungary,yarn of true hemp,tonnes,1928-1932,iia_1938_39,5500.0,5310.7333,3,1930,1932,1.035639,consistent
+iia,italy,yarn of true hemp,ha,1928-1932,iia_1938_39,75000.0,65724.3333,3,1930,1932,1.14113,consistent
+iia,italy,yarn of true hemp,tonnes,1928-1932,iia_1938_39,75100.0,66750.6667,3,1930,1932,1.125082,consistent
+iia,japan,yarn of true hemp,ha,1928-1932,iia_1938_39,7000.0,6609.3333,3,1930,1932,1.059108,consistent
+iia,japan,yarn of true hemp,tonnes,1928-1932,iia_1938_39,8200.0,8030.8,3,1930,1932,1.021069,consistent
+iia,poland,yarn of true hemp,ha,1928-1932,iia_1938_39,32000.0,31524.6667,3,1930,1932,1.015078,consistent
+iia,poland,yarn of true hemp,tonnes,1928-1932,iia_1938_39,17600.0,15142.2667,3,1930,1932,1.162309,consistent
+iia,romania,yarn of true hemp,ha,1928-1932,iia_1938_39,41000.0,43325.3333,3,1930,1932,0.946329,consistent
+iia,romania,yarn of true hemp,tonnes,1928-1932,iia_1938_39,21100.0,23361.2667,3,1930,1932,0.903204,consistent
+iia,russian federation,yarn of true hemp,ha,1928-1932,iia_1938_39,880000.0,871233.3333,3,1930,1932,1.010062,consistent
+iia,russian federation,yarn of true hemp,tonnes,1928-1932,iia_1938_39,268800.0,225566.6667,3,1930,1932,1.191665,consistent
+iia,serbia,yarn of true hemp,ha,1928-1932,iia_1938_39,30000.0,29585.6667,3,1930,1932,1.014005,consistent
+iia,serbia,yarn of true hemp,tonnes,1928-1932,iia_1938_39,24100.0,25434.2667,3,1930,1932,0.947541,consistent
+iia,south korea,yarn of true hemp,ha,1928-1932,iia_1938_39,28000.0,28010.3333,3,1930,1932,0.999631,consistent
+iia,south korea,yarn of true hemp,tonnes,1928-1932,iia_1938_39,20200.0,20125.5333,3,1930,1932,1.0037,consistent
+iia,spain,yarn of true hemp,ha,1928-1932,iia_1938_39,5000.0,5026.6667,3,1930,1932,0.994695,consistent
+iia,spain,yarn of true hemp,tonnes,1928-1932,iia_1938_39,5700.0,5054.6,3,1930,1932,1.127686,consistent
+iia,syrian arab republic,yarn of true hemp,ha,1928-1932,iia_1938_39,3000.0,2538.6667,3,1930,1932,1.181723,consistent
+iia,syrian arab republic,yarn of true hemp,tonnes,1928-1932,iia_1938_39,1700.0,1454.8333,3,1930,1932,1.168519,consistent
+iia,algeria,"beans, dry",tonnes,1934-1938,iia_1939_45,300.0,340.0,5,1934,1938,0.882353,consistent
+iia,angola,"beans, dry",ha,1934-1938,iia_1939_45,56000.0,55250.0,4,1934,1937,1.013575,consistent
+iia,angola,"beans, dry",tonnes,1934-1938,iia_1939_45,28000.0,27400.0,4,1934,1937,1.021898,consistent
+iia,cyprus,"beans, dry",ha,1934-1938,iia_1939_45,1000.0,800.0,5,1934,1938,1.25,consistent
+iia,cyprus,"beans, dry",tonnes,1934-1938,iia_1939_45,500.0,420.0,5,1934,1938,1.190476,consistent
+iia,czech republic,"beans, dry",ha,1934-1938,iia_1939_45,6000.0,6200.0,5,1934,1938,0.967742,consistent
+iia,czech republic,"beans, dry",tonnes,1934-1938,iia_1939_45,6500.0,6480.0,5,1934,1938,1.003086,consistent
+iia,egypt,"beans, dry",tonnes,1934-1938,iia_1939_45,9600.0,9733.3333,3,1935,1937,0.986301,consistent
+iia,iraq,"beans, dry",tonnes,1934-1938,iia_1939_45,17000.0,16980.0,5,1934,1938,1.001178,consistent
+iia,japan,"beans, dry",ha,1934-1938,iia_1939_45,193000.0,194000.0,4,1934,1937,0.994845,consistent
+iia,japan,"beans, dry",tonnes,1934-1938,iia_1939_45,175300.0,172175.0,4,1934,1937,1.01815,consistent
+iia,kenya,"beans, dry",ha,1934-1938,iia_1939_45,1000.0,750.0,4,1934,1938,1.333333,consistent
+iia,madagascar,"beans, dry",ha,1934-1938,iia_1939_45,33000.0,34250.0,4,1934,1937,0.963504,consistent
+iia,madagascar,"beans, dry",tonnes,1934-1938,iia_1939_45,23300.0,23725.0,4,1934,1937,0.982086,consistent
+iia,mauritania,"beans, dry",ha,1934-1938,iia_1939_45,10000.0,10000.0,4,1934,1937,1.0,consistent
+iia,mauritania,"beans, dry",tonnes,1934-1938,iia_1939_45,4800.0,4975.0,4,1934,1937,0.964824,consistent
+iia,morocco,"beans, dry",ha,1934-1938,iia_1939_45,1000.0,1000.0,5,1934,1938,1.0,consistent
+iia,morocco,"beans, dry",tonnes,1934-1938,iia_1939_45,300.0,280.0,5,1934,1938,1.071429,consistent
+iia,senegal,"beans, dry",ha,1934-1938,iia_1939_45,46000.0,42250.0,4,1934,1937,1.088757,consistent
+iia,senegal,"beans, dry",tonnes,1934-1938,iia_1939_45,23500.0,23475.0,4,1934,1937,1.001065,consistent
+iia,serbia,"beans, dry",ha,1934-1938,iia_1939_45,32000.0,31600.0,5,1934,1938,1.012658,consistent
+iia,serbia,"beans, dry",tonnes,1934-1938,iia_1939_45,31200.0,31200.0,5,1934,1938,1.0,consistent
+iia,turkey,"beans, dry",ha,1934-1938,iia_1939_45,75000.0,83750.0,4,1934,1937,0.895522,consistent
+iia,turkey,"beans, dry",tonnes,1934-1938,iia_1939_45,63600.0,67975.0,4,1934,1937,0.935638,consistent
+iia,zimbabwe,"beans, dry",tonnes,1934-1938,iia_1939_45,500.0,475.0,4,1934,1937,1.052632,consistent
+iia,brazil,"cacao, beans",ha,1934-1938,iia_1939_45,185000.0,185333.3333,3,1934,1936,0.998201,consistent
+iia,brazil,"cacao, beans",tonnes,1934-1938,iia_1939_45,129900.0,127250.0,4,1934,1937,1.020825,consistent
+iia,cameroon,"cacao, beans",ha,1934-1938,iia_1939_45,55000.0,31000.0,3,1934,1936,1.774194,consistent
+iia,congo,"cacao, beans",ha,1934-1938,iia_1939_45,18000.0,17333.3333,3,1934,1936,1.038462,consistent
+iia,congo,"cacao, beans",tonnes,1934-1938,iia_1939_45,800.0,733.3333,3,1934,1936,1.090909,consistent
+iia,costa rica,"cacao, beans",tonnes,1934-1938,iia_1939_45,6800.0,6466.6667,3,1934,1936,1.051546,consistent
+iia,dominica,"cacao, beans",tonnes,1934-1938,iia_1939_45,100.0,175.0,4,1934,1937,0.571429,consistent
+iia,dr congo,"cacao, beans",ha,1934-1938,iia_1939_45,6000.0,6000.0,3,1934,1936,1.0,consistent
+iia,dr congo,"cacao, beans",tonnes,1934-1938,iia_1939_45,1300.0,1300.0,3,1934,1936,1.0,consistent
+iia,equatorial guinea,"cacao, beans",ha,1934-1938,iia_1939_45,38000.0,48000.0,4,1934,1937,0.791667,consistent
+iia,ghana,"cacao, beans",ha,1934-1938,iia_1939_45,388000.0,413250.0,4,1934,1937,0.938899,consistent
+iia,grenada,"cacao, beans",ha,1934-1938,iia_1939_45,8000.0,8250.0,4,1934,1937,0.969697,consistent
+iia,grenada,"cacao, beans",tonnes,1934-1938,iia_1939_45,3700.0,3850.0,4,1934,1937,0.961039,consistent
+iia,guadeloupe,"cacao, beans",ha,1934-1938,iia_1939_45,3000.0,3000.0,4,1934,1937,1.0,consistent
+iia,haiti,"cacao, beans",tonnes,1934-1938,iia_1939_45,1500.0,1425.0,4,1934,1937,1.052632,consistent
+iia,indonesia,"cacao, beans",ha,1934-1938,iia_1939_45,5000.0,6000.0,3,1934,1936,0.833333,consistent
+iia,indonesia,"cacao, beans",tonnes,1934-1938,iia_1939_45,1600.0,1550.0,4,1934,1937,1.032258,consistent
+iia,jamaica,"cacao, beans",tonnes,1934-1938,iia_1939_45,2200.0,2125.0,4,1934,1937,1.035294,consistent
+iia,madagascar,"cacao, beans",tonnes,1934-1938,iia_1939_45,300.0,275.0,4,1934,1937,1.090909,consistent
+iia,martinique,"cacao, beans",ha,1934-1938,iia_1939_45,1000.0,5250.0,4,1934,1937,0.190476,unexplained_dated_higher
+iia,martinique,"cacao, beans",tonnes,1934-1938,iia_1939_45,200.0,200.0,4,1934,1937,1.0,consistent
+iia,mexico,"cacao, beans",ha,1934-1938,iia_1939_45,8000.0,8000.0,3,1934,1936,1.0,consistent
+iia,nicaragua,"cacao, beans",tonnes,1934-1938,iia_1939_45,400.0,300.0,3,1934,1936,1.333333,consistent
+iia,panama,"cacao, beans",tonnes,1934-1938,iia_1939_45,4800.0,4933.3333,3,1934,1936,0.972973,consistent
+iia,papua new guinea,"cacao, beans",ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,papua new guinea,"cacao, beans",tonnes,1934-1938,iia_1939_45,100.0,300.0,4,1934,1937,0.333333,unexplained_dated_higher
+iia,philippines,"cacao, beans",ha,1934-1938,iia_1939_45,2000.0,2000.0,3,1934,1936,1.0,consistent
+iia,philippines,"cacao, beans",tonnes,1934-1938,iia_1939_45,800.0,800.0,3,1934,1936,1.0,consistent
+iia,saint lucia,"cacao, beans",ha,1934-1938,iia_1939_45,2000.0,2000.0,4,1934,1937,1.0,consistent
+iia,saint lucia,"cacao, beans",tonnes,1934-1938,iia_1939_45,300.0,300.0,4,1934,1937,1.0,consistent
+iia,samoa,"cacao, beans",ha,1934-1938,iia_1939_45,2000.0,2000.0,4,1934,1937,1.0,consistent
+iia,samoa,"cacao, beans",tonnes,1934-1938,iia_1939_45,1100.0,1000.0,4,1934,1937,1.1,consistent
+iia,sierra leone,"cacao, beans",tonnes,1934-1938,iia_1939_45,300.0,266.6667,3,1934,1936,1.125,consistent
+iia,sri lanka,"cacao, beans",ha,1934-1938,iia_1939_45,14000.0,14000.0,4,1934,1937,1.0,consistent
+iia,sri lanka,"cacao, beans",tonnes,1934-1938,iia_1939_45,3600.0,3550.0,4,1934,1937,1.014085,consistent
+iia,suriname,"cacao, beans",tonnes,1934-1938,iia_1939_45,100.0,133.3333,3,1934,1936,0.75,consistent
+iia,trinidad and tobago,"cacao, beans",ha,1934-1938,iia_1939_45,87000.0,80250.0,4,1934,1937,1.084112,consistent
+iia,vanuatu,"cacao, beans",ha,1934-1938,iia_1939_45,4000.0,4000.0,3,1934,1936,1.0,consistent
+iia,vanuatu,"cacao, beans",tonnes,1934-1938,iia_1939_45,1800.0,1450.0,4,1934,1937,1.241379,consistent
+iia,angola,"coffee, green",ha,1934-1938,iia_1939_45,36000.0,32750.0,4,1934,1937,1.099237,consistent
+iia,congo,"coffee, green",ha,1934-1938,iia_1939_45,30000.0,29750.0,4,1934,1937,1.008403,consistent
+iia,congo,"coffee, green",tonnes,1934-1938,iia_1939_45,1300.0,1340.0,5,1934,1938,0.970149,consistent
+iia,dr congo,"coffee, green",ha,1934-1938,iia_1939_45,55000.0,53500.0,4,1934,1937,1.028037,consistent
+iia,ethiopia pdr,"coffee, green",tonnes,1934-1938,iia_1939_45,16300.0,17425.0,4,1934,1937,0.935438,consistent
+iia,guadeloupe,"coffee, green",ha,1934-1938,iia_1939_45,5000.0,6750.0,4,1934,1937,0.740741,consistent
+iia,guadeloupe,"coffee, green",tonnes,1934-1938,iia_1939_45,3500.0,420.0,5,1934,1938,8.333333,unexplained_period_higher
+iia,guyana,"coffee, green",ha,1934-1938,iia_1939_45,1000.0,1750.0,4,1934,1937,0.571429,consistent
+iia,guyana,"coffee, green",tonnes,1934-1938,iia_1939_45,100.0,200.0,4,1934,1937,0.5,consistent
+iia,indonesia,"coffee, green",ha,1934-1938,iia_1939_45,217000.0,221000.0,4,1934,1937,0.9819,consistent
+iia,ivory coast,"coffee, green",ha,1934-1938,iia_1939_45,88000.0,71666.6667,3,1934,1936,1.227907,consistent
+iia,jamaica,"coffee, green",tonnes,1934-1938,iia_1939_45,3900.0,3860.0,5,1934,1938,1.010363,consistent
+iia,kenya,"coffee, green",ha,1934-1938,iia_1939_45,40000.0,40000.0,4,1934,1937,1.0,consistent
+iia,madagascar,"coffee, green",ha,1934-1938,iia_1939_45,93000.0,95200.0,5,1934,1938,0.976891,consistent
+iia,malaysia,"coffee, green",ha,1934-1938,iia_1939_45,8000.0,7250.0,4,1934,1937,1.103448,consistent
+iia,new caledonia,"coffee, green",ha,1934-1938,iia_1939_45,4000.0,4000.0,4,1934,1937,1.0,consistent
+iia,new caledonia,"coffee, green",tonnes,1934-1938,iia_1939_45,1500.0,1660.0,5,1934,1938,0.903614,consistent
+iia,philippines,"coffee, green",ha,1934-1938,iia_1939_45,2000.0,2000.0,4,1934,1937,1.0,consistent
+iia,philippines,"coffee, green",tonnes,1934-1938,iia_1939_45,800.0,825.0,4,1934,1937,0.969697,consistent
+iia,suriname,"coffee, green",ha,1934-1938,iia_1939_45,8000.0,8250.0,4,1934,1937,0.969697,consistent
+iia,suriname,"coffee, green",tonnes,1934-1938,iia_1939_45,3400.0,3860.0,5,1934,1938,0.880829,consistent
+iia,timor-leste,"coffee, green",tonnes,1934-1938,iia_1939_45,1100.0,1066.6667,3,1934,1936,1.03125,consistent
+iia,trinidad and tobago,"coffee, green",tonnes,1934-1938,iia_1939_45,500.0,700.0,4,1934,1937,0.714286,consistent
+iia,united states of america,"coffee, green",ha,1934-1938,iia_1939_45,61000.0,58250.0,4,1934,1937,1.04721,consistent
+iia,united states of america,"coffee, green",tonnes,1934-1938,iia_1939_45,11900.0,11700.0,4,1934,1937,1.017094,consistent
+iia,vanuatu,"coffee, green",ha,1934-1938,iia_1939_45,3000.0,2500.0,4,1934,1937,1.2,consistent
+iia,vanuatu,"coffee, green",tonnes,1934-1938,iia_1939_45,400.0,375.0,4,1934,1937,1.066667,consistent
+iia,viet nam,"coffee, green",ha,1934-1938,iia_1939_45,3000.0,2750.0,4,1934,1937,1.090909,consistent
+iia,viet nam,"coffee, green",tonnes,1934-1938,iia_1939_45,1000.0,1100.0,3,1935,1937,0.909091,consistent
+iia,yemen,"coffee, green",tonnes,1934-1938,iia_1939_45,4300.0,4233.3333,3,1935,1937,1.015748,consistent
+iia,angola,cotton lint,ha,1934-1938,iia_1939_45,21000.0,19750.0,4,1934,1937,1.063291,consistent
+iia,angola,cotton lint,tonnes,1934-1938,iia_1939_45,2100.0,1700.0,4,1934,1937,1.235294,consistent
+iia,antigua and barbuda,cotton lint,tonnes,1934-1938,iia_1939_45,100.0,60.0,5,1934,1938,1.666667,consistent
+iia,australia,cotton lint,ha,1934-1938,iia_1939_45,22000.0,23400.0,5,1934,1938,0.940171,consistent
+iia,australia,cotton lint,tonnes,1934-1938,iia_1939_45,2600.0,2640.0,5,1934,1938,0.984848,consistent
+iia,bulgaria,cotton lint,ha,1934-1938,iia_1939_45,39000.0,38200.0,5,1934,1938,1.020942,consistent
+iia,burundi,cotton lint,ha,1934-1938,iia_1939_45,4000.0,3500.0,4,1934,1937,1.142857,consistent
+iia,burundi,cotton lint,tonnes,1934-1938,iia_1939_45,700.0,600.0,4,1934,1937,1.166667,consistent
+iia,"china, mainland",cotton lint,ha,1934-1938,iia_1939_45,3087000.0,3080750.0,4,1934,1937,1.002029,consistent
+iia,colombia,cotton lint,ha,1934-1938,iia_1939_45,35000.0,27000.0,3,1934,1936,1.296296,consistent
+iia,congo,cotton lint,ha,1934-1938,iia_1939_45,154000.0,142000.0,4,1934,1937,1.084507,consistent
+iia,congo,cotton lint,tonnes,1934-1938,iia_1939_45,7700.0,7325.0,4,1934,1937,1.051195,consistent
+iia,cyprus,cotton lint,ha,1934-1938,iia_1939_45,5000.0,4800.0,5,1934,1938,1.041667,consistent
+iia,cyprus,cotton lint,tonnes,1934-1938,iia_1939_45,600.0,580.0,5,1934,1938,1.034483,consistent
+iia,dr congo,cotton lint,ha,1934-1938,iia_1939_45,329000.0,340600.0,5,1934,1938,0.965942,consistent
+iia,egypt,cotton lint,ha,1934-1938,iia_1939_45,919000.0,918600.0,5,1934,1938,1.000435,consistent
+iia,el salvador,cotton lint,ha,1934-1938,iia_1939_45,2000.0,1666.6667,3,1934,1936,1.2,consistent
+iia,eritrea,cotton lint,ha,1934-1938,iia_1939_45,3000.0,3750.0,4,1934,1937,0.8,consistent
+iia,eritrea,cotton lint,tonnes,1934-1938,iia_1939_45,200.0,200.0,4,1934,1937,1.0,consistent
+iia,greece,cotton lint,ha,1934-1938,iia_1939_45,57000.0,58400.0,5,1934,1938,0.976027,consistent
+iia,grenada,cotton lint,ha,1934-1938,iia_1939_45,2000.0,2000.0,5,1934,1938,1.0,consistent
+iia,grenada,cotton lint,tonnes,1934-1938,iia_1939_45,100.0,120.0,5,1934,1938,0.833333,consistent
+iia,indonesia,cotton lint,ha,1934-1938,iia_1939_45,12000.0,12500.0,4,1934,1937,0.96,consistent
+iia,indonesia,cotton lint,tonnes,1934-1938,iia_1939_45,1700.0,1600.0,4,1934,1937,1.0625,consistent
+iia,iran,cotton lint,ha,1934-1938,iia_1939_45,158000.0,109666.6667,3,1934,1936,1.440729,consistent
+iia,iraq,cotton lint,ha,1934-1938,iia_1939_45,16000.0,23000.0,3,1936,1938,0.695652,consistent
+iia,iraq,cotton lint,tonnes,1934-1938,iia_1939_45,1800.0,1900.0,5,1934,1938,0.947368,consistent
+iia,italy,cotton lint,ha,1934-1938,iia_1939_45,15000.0,15400.0,5,1934,1938,0.974026,consistent
+iia,japan,cotton lint,ha,1934-1938,iia_1939_45,1000.0,1000.0,3,1935,1937,1.0,consistent
+iia,japan,cotton lint,tonnes,1934-1938,iia_1939_45,200.0,150.0,4,1934,1937,1.333333,consistent
+iia,kenya,cotton lint,tonnes,1934-1938,iia_1939_45,2800.0,3125.0,4,1934,1937,0.896,consistent
+iia,malawi,cotton lint,ha,1934-1938,iia_1939_45,1000.0,750.0,4,1934,1937,1.333333,consistent
+iia,malawi,cotton lint,tonnes,1934-1938,iia_1939_45,100.0,925.0,4,1934,1937,0.108108,disagree_x10_dated_higher
+iia,montserrat,cotton lint,ha,1934-1938,iia_1939_45,2000.0,1800.0,5,1934,1938,1.111111,consistent
+iia,montserrat,cotton lint,tonnes,1934-1938,iia_1939_45,300.0,320.0,5,1934,1938,0.9375,consistent
+iia,myanmar,cotton lint,ha,1934-1938,iia_1939_45,198000.0,191200.0,5,1934,1938,1.035565,consistent
+iia,myanmar,cotton lint,tonnes,1934-1938,iia_1939_45,20600.0,20640.0,5,1934,1938,0.998062,consistent
+iia,niger,cotton lint,tonnes,1934-1938,iia_1939_45,3600.0,3800.0,4,1934,1937,0.947368,consistent
+iia,philippines,cotton lint,ha,1934-1938,iia_1939_45,2000.0,1666.6667,3,1934,1936,1.2,consistent
+iia,philippines,cotton lint,tonnes,1934-1938,iia_1939_45,500.0,400.0,3,1934,1936,1.25,consistent
+iia,romania,cotton lint,ha,1934-1938,iia_1939_45,2000.0,2000.0,5,1934,1938,1.0,consistent
+iia,russian federation,cotton lint,ha,1934-1938,iia_1939_45,2027000.0,2016800.0,5,1934,1938,1.005058,consistent
+iia,russian federation,cotton lint,tonnes,1934-1938,iia_1939_45,673300.0,665440.0,5,1934,1938,1.011812,consistent
+iia,saint kitts and nevis,cotton lint,ha,1934-1938,iia_1939_45,1000.0,1600.0,5,1934,1938,0.625,consistent
+iia,saint kitts and nevis,cotton lint,tonnes,1934-1938,iia_1939_45,200.0,200.0,5,1934,1938,1.0,consistent
+iia,saint vincent and the grenadines,cotton lint,ha,1934-1938,iia_1939_45,2000.0,1600.0,5,1934,1938,1.25,consistent
+iia,saint vincent and the grenadines,cotton lint,tonnes,1934-1938,iia_1939_45,200.0,200.0,5,1934,1938,1.0,consistent
+iia,serbia,cotton lint,ha,1934-1938,iia_1939_45,2000.0,2400.0,5,1934,1938,0.833333,consistent
+iia,serbia,cotton lint,tonnes,1934-1938,iia_1939_45,500.0,540.0,5,1934,1938,0.925926,consistent
+iia,somalia,cotton lint,tonnes,1934-1938,iia_1939_45,500.0,533.3333,3,1934,1936,0.9375,consistent
+iia,south africa,cotton lint,tonnes,1934-1938,iia_1939_45,400.0,425.0,4,1934,1937,0.941176,consistent
+iia,south korea,cotton lint,ha,1934-1938,iia_1939_45,216000.0,216400.0,5,1934,1938,0.998152,consistent
+iia,south korea,cotton lint,tonnes,1934-1938,iia_1939_45,40400.0,40440.0,5,1934,1938,0.999011,consistent
+iia,sri lanka,cotton lint,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,syrian arab republic,cotton lint,ha,1934-1938,iia_1939_45,32000.0,31800.0,5,1934,1938,1.006289,consistent
+iia,syrian arab republic,cotton lint,tonnes,1934-1938,iia_1939_45,5800.0,5840.0,5,1934,1938,0.993151,consistent
+iia,thailand,cotton lint,ha,1934-1938,iia_1939_45,6000.0,6000.0,4,1934,1937,1.0,consistent
+iia,thailand,cotton lint,tonnes,1934-1938,iia_1939_45,1300.0,1475.0,4,1934,1937,0.881356,consistent
+iia,turkey,cotton lint,ha,1934-1938,iia_1939_45,249000.0,251600.0,5,1934,1938,0.989666,consistent
+iia,viet nam,cotton lint,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,viet nam,cotton lint,tonnes,1934-1938,iia_1939_45,100.0,100.0,4,1934,1937,1.0,consistent
+iia,zimbabwe,cotton lint,ha,1934-1938,iia_1939_45,1000.0,1250.0,4,1934,1937,0.8,consistent
+iia,algeria,cotton seed,tonnes,1934-1938,iia_1939_45,100.0,75.0,4,1935,1938,1.333333,consistent
+iia,angola,cotton seed,ha,1934-1938,iia_1939_45,21000.0,19750.0,4,1934,1937,1.063291,consistent
+iia,angola,cotton seed,tonnes,1934-1938,iia_1939_45,5600.0,4500.0,4,1934,1937,1.244444,consistent
+iia,argentina,cotton seed,ha,1934-1938,iia_1939_45,311000.0,324200.0,5,1934,1938,0.959284,consistent
+iia,australia,cotton seed,ha,1934-1938,iia_1939_45,22000.0,23400.0,5,1934,1938,0.940171,consistent
+iia,australia,cotton seed,tonnes,1934-1938,iia_1939_45,4600.0,4660.0,5,1934,1938,0.987124,consistent
+iia,brazil,cotton seed,ha,1934-1938,iia_1939_45,2095000.0,2113800.0,5,1934,1938,0.991106,consistent
+iia,bulgaria,cotton seed,ha,1934-1938,iia_1939_45,39000.0,38200.0,5,1934,1938,1.020942,consistent
+iia,bulgaria,cotton seed,tonnes,1934-1938,iia_1939_45,16000.0,15960.0,5,1934,1938,1.002506,consistent
+iia,burundi,cotton seed,ha,1934-1938,iia_1939_45,4000.0,3500.0,4,1934,1937,1.142857,consistent
+iia,burundi,cotton seed,tonnes,1934-1938,iia_1939_45,1600.0,1466.6667,3,1935,1937,1.090909,consistent
+iia,cameroon,cotton seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,cameroon,cotton seed,tonnes,1934-1938,iia_1939_45,100.0,100.0,3,1934,1936,1.0,consistent
+iia,"china, mainland",cotton seed,ha,1934-1938,iia_1939_45,3087000.0,3080750.0,4,1934,1937,1.002029,consistent
+iia,"china, mainland",cotton seed,tonnes,1934-1938,iia_1939_45,1300700.0,1547150.0,4,1934,1937,0.840707,consistent
+iia,colombia,cotton seed,ha,1934-1938,iia_1939_45,35000.0,27000.0,3,1934,1936,1.296296,consistent
+iia,congo,cotton seed,ha,1934-1938,iia_1939_45,154000.0,142000.0,4,1934,1937,1.084507,consistent
+iia,congo,cotton seed,tonnes,1934-1938,iia_1939_45,17200.0,16100.0,4,1934,1937,1.068323,consistent
+iia,cyprus,cotton seed,ha,1934-1938,iia_1939_45,5000.0,4800.0,5,1934,1938,1.041667,consistent
+iia,cyprus,cotton seed,tonnes,1934-1938,iia_1939_45,1300.0,1300.0,5,1934,1938,1.0,consistent
+iia,dr congo,cotton seed,ha,1934-1938,iia_1939_45,329000.0,340600.0,5,1934,1938,0.965942,consistent
+iia,dr congo,cotton seed,tonnes,1934-1938,iia_1939_45,67600.0,68940.0,5,1934,1938,0.980563,consistent
+iia,egypt,cotton seed,ha,1934-1938,iia_1939_45,919000.0,918600.0,5,1934,1938,1.000435,consistent
+iia,egypt,cotton seed,tonnes,1934-1938,iia_1939_45,874600.0,888860.0,5,1934,1938,0.983957,consistent
+iia,el salvador,cotton seed,ha,1934-1938,iia_1939_45,2000.0,1666.6667,3,1934,1936,1.2,consistent
+iia,el salvador,cotton seed,tonnes,1934-1938,iia_1939_45,2200.0,2200.0,3,1934,1936,1.0,consistent
+iia,eritrea,cotton seed,ha,1934-1938,iia_1939_45,3000.0,3750.0,4,1934,1937,0.8,consistent
+iia,eritrea,cotton seed,tonnes,1934-1938,iia_1939_45,700.0,750.0,4,1934,1937,0.933333,consistent
+iia,greece,cotton seed,ha,1934-1938,iia_1939_45,57000.0,58400.0,5,1934,1938,0.976027,consistent
+iia,greece,cotton seed,tonnes,1934-1938,iia_1939_45,28500.0,28940.0,5,1934,1938,0.984796,consistent
+iia,grenada,cotton seed,ha,1934-1938,iia_1939_45,2000.0,2000.0,5,1934,1938,1.0,consistent
+iia,grenada,cotton seed,tonnes,1934-1938,iia_1939_45,300.0,260.0,5,1934,1938,1.153846,consistent
+iia,guadeloupe,cotton seed,tonnes,1934-1938,iia_1939_45,100.0,777040.0,5,1934,1938,0.000129,unexplained_dated_higher
+iia,haiti,cotton seed,tonnes,1934-1938,iia_1939_45,12400.0,12300.0,3,1935,1937,1.00813,consistent
+iia,india,cotton seed,tonnes,1934-1938,iia_1939_45,200.0,1500.0,3,1934,1936,0.133333,unexplained_dated_higher
+iia,indonesia,cotton seed,ha,1934-1938,iia_1939_45,12000.0,12500.0,4,1934,1937,0.96,consistent
+iia,indonesia,cotton seed,tonnes,1934-1938,iia_1939_45,4500.0,3700.0,4,1934,1937,1.216216,consistent
+iia,iran,cotton seed,ha,1934-1938,iia_1939_45,158000.0,109666.6667,3,1934,1936,1.440729,consistent
+iia,iran,cotton seed,tonnes,1934-1938,iia_1939_45,74300.0,70900.0,3,1934,1936,1.047955,consistent
+iia,iraq,cotton seed,ha,1934-1938,iia_1939_45,16000.0,23000.0,3,1936,1938,0.695652,consistent
+iia,iraq,cotton seed,tonnes,1934-1938,iia_1939_45,4300.0,5300.0,4,1935,1938,0.811321,consistent
+iia,italy,cotton seed,ha,1934-1938,iia_1939_45,15000.0,15400.0,5,1934,1938,0.974026,consistent
+iia,italy,cotton seed,tonnes,1934-1938,iia_1939_45,6200.0,6580.0,5,1934,1938,0.942249,consistent
+iia,japan,cotton seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,japan,cotton seed,tonnes,1934-1938,iia_1939_45,500.0,466.6667,3,1935,1937,1.071429,consistent
+iia,kenya,cotton seed,tonnes,1934-1938,iia_1939_45,6500.0,7250.0,4,1934,1937,0.896552,consistent
+iia,malawi,cotton seed,ha,1934-1938,iia_1939_45,1000.0,750.0,4,1934,1937,1.333333,consistent
+iia,malawi,cotton seed,tonnes,1934-1938,iia_1939_45,200.0,200.0,4,1934,1937,1.0,consistent
+iia,mexico,cotton seed,ha,1934-1938,iia_1939_45,270000.0,272250.0,4,1934,1937,0.991736,consistent
+iia,montserrat,cotton seed,ha,1934-1938,iia_1939_45,2000.0,1800.0,5,1934,1938,1.111111,consistent
+iia,montserrat,cotton seed,tonnes,1934-1938,iia_1939_45,800.0,680.0,5,1934,1938,1.176471,consistent
+iia,myanmar,cotton seed,ha,1934-1938,iia_1939_45,198000.0,191200.0,5,1934,1938,1.035565,consistent
+iia,myanmar,cotton seed,tonnes,1934-1938,iia_1939_45,39100.0,48060.0,5,1934,1938,0.813566,consistent
+iia,nicaragua,cotton seed,tonnes,1934-1938,iia_1939_45,2000.0,33300.0,3,1934,1936,0.06006,unexplained_dated_higher
+iia,niger,cotton seed,tonnes,1934-1938,iia_1939_45,9000.0,9925.0,4,1934,1937,0.906801,consistent
+iia,nigeria,cotton seed,tonnes,1934-1938,iia_1939_45,18500.0,22400.0,3,1934,1936,0.825893,consistent
+iia,peru,cotton seed,ha,1934-1938,iia_1939_45,165000.0,158500.0,4,1934,1937,1.041009,consistent
+iia,philippines,cotton seed,ha,1934-1938,iia_1939_45,2000.0,1666.6667,3,1934,1936,1.2,consistent
+iia,romania,cotton seed,ha,1934-1938,iia_1939_45,2000.0,2000.0,5,1934,1938,1.0,consistent
+iia,romania,cotton seed,tonnes,1934-1938,iia_1939_45,700.0,550.0,4,1934,1937,1.272727,consistent
+iia,russian federation,cotton seed,ha,1934-1938,iia_1939_45,2027000.0,2016800.0,5,1934,1938,1.005058,consistent
+iia,russian federation,cotton seed,tonnes,1934-1938,iia_1939_45,1424200.0,1424180.0,5,1934,1938,1.000014,consistent
+iia,saint kitts and nevis,cotton seed,ha,1934-1938,iia_1939_45,1000.0,1600.0,5,1934,1938,0.625,consistent
+iia,saint kitts and nevis,cotton seed,tonnes,1934-1938,iia_1939_45,600.0,740.0,5,1934,1938,0.810811,consistent
+iia,saint vincent and the grenadines,cotton seed,ha,1934-1938,iia_1939_45,2000.0,1600.0,5,1934,1938,1.25,consistent
+iia,saint vincent and the grenadines,cotton seed,tonnes,1934-1938,iia_1939_45,600.0,600.0,5,1934,1938,1.0,consistent
+iia,serbia,cotton seed,ha,1934-1938,iia_1939_45,2000.0,2400.0,5,1934,1938,0.833333,consistent
+iia,serbia,cotton seed,tonnes,1934-1938,iia_1939_45,1200.0,1220.0,5,1934,1938,0.983607,consistent
+iia,south africa,cotton seed,tonnes,1934-1938,iia_1939_45,700.0,700.0,5,1934,1938,1.0,consistent
+iia,south korea,cotton seed,ha,1934-1938,iia_1939_45,216000.0,216400.0,5,1934,1938,0.998152,consistent
+iia,south korea,cotton seed,tonnes,1934-1938,iia_1939_45,81500.0,81520.0,5,1934,1938,0.999755,consistent
+iia,sri lanka,cotton seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,sri lanka,cotton seed,tonnes,1934-1938,iia_1939_45,100.0,166.6667,3,1934,1937,0.6,consistent
+iia,syrian arab republic,cotton seed,ha,1934-1938,iia_1939_45,32000.0,31800.0,5,1934,1938,1.006289,consistent
+iia,syrian arab republic,cotton seed,tonnes,1934-1938,iia_1939_45,11100.0,13925.0,4,1935,1938,0.797127,consistent
+iia,tanzania,cotton seed,tonnes,1934-1938,iia_1939_45,22900.0,23100.0,5,1934,1938,0.991342,consistent
+iia,thailand,cotton seed,ha,1934-1938,iia_1939_45,6000.0,6000.0,4,1934,1937,1.0,consistent
+iia,thailand,cotton seed,tonnes,1934-1938,iia_1939_45,3400.0,3900.0,3,1935,1937,0.871795,consistent
+iia,turkey,cotton seed,ha,1934-1938,iia_1939_45,249000.0,251600.0,5,1934,1938,0.989666,consistent
+iia,turkey,cotton seed,tonnes,1934-1938,iia_1939_45,103700.0,130750.0,4,1935,1938,0.793117,consistent
+iia,united states of america,cotton seed,ha,1934-1938,iia_1939_45,11493000.0,11493600.0,5,1934,1938,0.999948,consistent
+iia,viet nam,cotton seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,viet nam,cotton seed,tonnes,1934-1938,iia_1939_45,200.0,133.3333,3,1935,1937,1.5,consistent
+iia,zimbabwe,cotton seed,ha,1934-1938,iia_1939_45,1000.0,1333.3333,3,1934,1937,0.75,consistent
+iia,zimbabwe,cotton seed,tonnes,1934-1938,iia_1939_45,100.0,133.3333,3,1935,1937,0.75,consistent
+iia,albania,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,7707.7,7707.7,5,1934,1938,1.0,consistent
+iia,belgium,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,96481.0,88643.94,5,1934,1938,1.088411,consistent
+iia,bermuda,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,107.8,129.36,5,1934,1938,0.833333,consistent
+iia,brunei darussalam,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,107.8,94.325,4,1935,1938,1.142857,consistent
+iia,canada,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,143050.6,143018.26,5,1934,1938,1.000226,consistent
+iia,"china, mainland","eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,1293.6,1221.7333,3,1934,1936,1.058824,consistent
+iia,denmark,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,107099.3,97052.34,5,1934,1938,1.103521,consistent
+iia,egypt,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,38861.9,38848.425,4,1934,1937,1.000347,consistent
+iia,estonia,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,6683.6,6926.15,4,1935,1938,0.964981,consistent
+iia,french polynesia,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,107.8,107.8,3,1935,1937,1.0,consistent
+iia,greece,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,29698.9,29793.225,4,1934,1937,0.996834,consistent
+iia,ireland,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,57834.7,59411.275,4,1934,1937,0.973463,consistent
+iia,japan,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,191830.1,191840.88,5,1934,1938,0.999944,consistent
+iia,jordan,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,1401.4,1390.62,5,1934,1938,1.007752,consistent
+iia,kenya,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,539.0,53.9,3,1934,1938,10.0,disagree_x10_period_higher
+iia,madagascar,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,7653.8,7680.75,4,1934,1937,0.996491,consistent
+iia,micronesia (federated states of),"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,161.7,148.225,4,1934,1937,1.090909,consistent
+iia,morocco,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,53900.0,53900.0,4,1934,1937,1.0,consistent
+iia,netherlands,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,106614.2,106614.2,5,1934,1938,1.0,consistent
+iia,norway,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,19889.1,19899.88,5,1934,1938,0.999458,consistent
+iia,philippines,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,6899.2,6710.55,4,1934,1937,1.028112,consistent
+iia,south korea,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,12774.3,12343.1,3,1934,1936,1.034934,consistent
+iia,switzerland,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,22799.7,22799.7,4,1934,1937,1.0,consistent
+iia,syrian arab republic,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,4958.8,12979.12,5,1934,1938,0.38206,unexplained_dated_higher
+iia,tunisia,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,8085.0,8085.0,3,1934,1936,1.0,consistent
+iia,turkey,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,54061.7,54358.15,4,1934,1937,0.994546,consistent
+iia,united kingdom,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,415892.4,312900.28,5,1934,1938,1.329153,consistent
+iia,united states of america,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,1917654.2,1901613.56,5,1934,1938,1.008435,consistent
+iia,zimbabwe,"eggs, hen, in shell",tonnes,1934-1938,iia_1939_45,539.0,521.0333,3,1934,1937,1.034483,consistent
+iia,argentina,flax fibre and tow,tonnes,1934-1938,iia_1939_45,1702100.0,1684000.0,5,1934,1938,1.010748,consistent
+iia,australia,flax fibre and tow,tonnes,1934-1938,iia_1939_45,100.0,133.3333,3,1934,1936,0.75,consistent
+iia,cyprus,flax fibre and tow,ha,1934-1938,iia_1939_45,1000.0,800.0,5,1934,1938,1.25,consistent
+iia,cyprus,flax fibre and tow,tonnes,1934-1938,iia_1939_45,800.0,640.0,5,1934,1938,1.25,consistent
+iia,czech republic,flax fibre and tow,ha,1934-1938,iia_1939_45,15000.0,14800.0,5,1934,1938,1.013514,consistent
+iia,czech republic,flax fibre and tow,tonnes,1934-1938,iia_1939_45,1986600.0,6575.0,4,1934,1937,302.144487,unexplained_period_higher
+iia,egypt,flax fibre and tow,ha,1934-1938,iia_1939_45,3000.0,2600.0,5,1934,1938,1.153846,consistent
+iia,egypt,flax fibre and tow,tonnes,1934-1938,iia_1939_45,2000.0,2060.0,5,1934,1938,0.970874,consistent
+iia,eritrea,flax fibre and tow,ha,1934-1938,iia_1939_45,2000.0,1750.0,4,1934,1937,1.142857,consistent
+iia,eritrea,flax fibre and tow,tonnes,1934-1938,iia_1939_45,800.0,825.0,4,1934,1937,0.969697,consistent
+iia,japan,flax fibre and tow,ha,1934-1938,iia_1939_45,17000.0,15500.0,4,1934,1937,1.096774,consistent
+iia,japan,flax fibre and tow,tonnes,1934-1938,iia_1939_45,4700.0,3875.0,4,1934,1937,1.212903,consistent
+iia,mexico,flax fibre and tow,ha,1934-1938,iia_1939_45,5000.0,5000.0,3,1934,1936,1.0,consistent
+iia,mexico,flax fibre and tow,tonnes,1934-1938,iia_1939_45,2400.0,2066.6667,3,1934,1936,1.16129,consistent
+iia,morocco,flax fibre and tow,ha,1934-1938,iia_1939_45,19000.0,18600.0,5,1934,1938,1.021505,consistent
+iia,morocco,flax fibre and tow,tonnes,1934-1938,iia_1939_45,7900.0,7960.0,5,1934,1938,0.992462,consistent
+iia,new zealand,flax fibre and tow,ha,1934-1938,iia_1939_45,1000.0,600.0,5,1934,1938,1.666667,consistent
+iia,new zealand,flax fibre and tow,tonnes,1934-1938,iia_1939_45,500.0,500.0,4,1934,1937,1.0,consistent
+iia,russian federation,flax fibre and tow,ha,1934-1938,iia_1939_45,2351000.0,2351600.0,5,1934,1938,0.999745,consistent
+iia,russian federation,flax fibre and tow,tonnes,1934-1938,iia_1939_45,737300.0,624460.0,5,1934,1938,1.1807,consistent
+iia,serbia,flax fibre and tow,ha,1934-1938,iia_1939_45,13000.0,12800.0,5,1934,1938,1.015625,consistent
+iia,serbia,flax fibre and tow,tonnes,1934-1938,iia_1939_45,1200.0,1180.0,5,1934,1938,1.016949,consistent
+iia,tunisia,flax fibre and tow,tonnes,1934-1938,iia_1939_45,100.0,140.0,5,1934,1938,0.714286,consistent
+iia,turkey,flax fibre and tow,ha,1934-1938,iia_1939_45,17000.0,16400.0,5,1934,1938,1.036585,consistent
+iia,turkey,flax fibre and tow,tonnes,1934-1938,iia_1939_45,6900.0,6980.0,5,1934,1938,0.988539,consistent
+iia,united states of america,flax fibre and tow,tonnes,1934-1938,iia_1939_45,208600.0,206840.0,5,1934,1938,1.008509,consistent
+iia,uruguay,flax fibre and tow,tonnes,1934-1938,iia_1939_45,89300.0,89280.0,5,1934,1938,1.000224,consistent
+iia,belize,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,1400.0,950.0,4,1934,1937,1.473684,consistent
+iia,cyprus,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,100.0,25.0,4,1935,1938,4.0,unexplained_period_higher
+iia,dominica,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,100.0,100.0,4,1934,1937,1.0,consistent
+iia,israel,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,46500.0,42140.0,5,1934,1938,1.103465,consistent
+iia,jamaica,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,7900.0,7525.0,4,1934,1937,1.049834,consistent
+iia,philippines,grapefruit (inc. pomelos),ha,1934-1938,iia_1939_45,2000.0,2000.0,3,1934,1936,1.0,consistent
+iia,philippines,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,6200.0,6066.6667,3,1934,1936,1.021978,consistent
+iia,south africa,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,11500.0,11275.0,4,1934,1937,1.019956,consistent
+iia,trinidad and tobago,grapefruit (inc. pomelos),tonnes,1934-1938,iia_1939_45,1600.0,1633.3333,3,1934,1936,0.979592,consistent
+iia,algeria,grapes,ha,1934-1938,iia_1939_45,406000.0,404000.0,5,1934,1938,1.00495,consistent
+iia,australia,grapes,ha,1934-1938,iia_1939_45,3000.0,48750.0,4,1934,1937,0.061538,unexplained_dated_higher
+iia,australia,grapes,tonnes,1934-1938,iia_1939_45,14300.0,14200.0,4,1934,1937,1.007042,consistent
+iia,austria,grapes,tonnes,1934-1938,iia_1939_45,1300.0,1266.6667,3,1934,1936,1.026316,consistent
+iia,cyprus,grapes,ha,1934-1938,iia_1939_45,50000.0,49400.0,5,1934,1938,1.012146,consistent
+iia,cyprus,grapes,tonnes,1934-1938,iia_1939_45,16300.0,15640.0,5,1934,1938,1.042199,consistent
+iia,czech republic,grapes,ha,1934-1938,iia_1939_45,2000.0,24600.0,5,1934,1938,0.081301,unexplained_dated_higher
+iia,czech republic,grapes,tonnes,1934-1938,iia_1939_45,8100.0,8150.0,4,1934,1937,0.993865,consistent
+iia,egypt,grapes,ha,1934-1938,iia_1939_45,3000.0,3000.0,5,1934,1938,1.0,consistent
+iia,egypt,grapes,tonnes,1934-1938,iia_1939_45,23000.0,22960.0,5,1934,1938,1.001742,consistent
+iia,france,grapes,tonnes,1934-1938,iia_1939_45,143300.0,158625.0,4,1934,1937,0.903388,consistent
+iia,germany,grapes,tonnes,1934-1938,iia_1939_45,2400.0,2925.0,4,1934,1937,0.820513,consistent
+iia,greece,grapes,tonnes,1934-1938,iia_1939_45,4500.0,272960.0,5,1934,1938,0.016486,unexplained_dated_higher
+iia,hungary,grapes,tonnes,1934-1938,iia_1939_45,14900.0,18360.0,5,1934,1938,0.811547,consistent
+iia,iran,grapes,tonnes,1934-1938,iia_1939_45,400000.0,433333.3333,3,1934,1936,0.923077,consistent
+iia,israel,grapes,tonnes,1934-1938,iia_1939_45,40100.0,32380.0,5,1934,1938,1.238419,consistent
+iia,japan,grapes,ha,1934-1938,iia_1939_45,8000.0,8000.0,4,1934,1937,1.0,consistent
+iia,japan,grapes,tonnes,1934-1938,iia_1939_45,65200.0,66425.0,4,1934,1937,0.981558,consistent
+iia,jordan,grapes,tonnes,1934-1938,iia_1939_45,19900.0,20000.0,3,1936,1938,0.995,consistent
+iia,libya,grapes,ha,1934-1938,iia_1939_45,9000.0,8000.0,4,1934,1937,1.125,consistent
+iia,morocco,grapes,ha,1934-1938,iia_1939_45,24000.0,24400.0,5,1934,1938,0.983607,consistent
+iia,morocco,grapes,tonnes,1934-1938,iia_1939_45,6900.0,60925.0,4,1934,1937,0.113254,disagree_x10_dated_higher
+iia,netherlands,grapes,ha,1934-1938,iia_1939_45,1000.0,1000.0,5,1934,1938,1.0,consistent
+iia,serbia,grapes,ha,1934-1938,iia_1939_45,211000.0,210800.0,5,1934,1938,1.000949,consistent
+iia,serbia,grapes,tonnes,1934-1938,iia_1939_45,712600.0,712325.0,4,1935,1938,1.000386,consistent
+iia,south africa,grapes,ha,1934-1938,iia_1939_45,5000.0,106500.0,4,1934,1937,0.046948,unexplained_dated_higher
+iia,south africa,grapes,tonnes,1934-1938,iia_1939_45,8900.0,8900.0,4,1934,1937,1.0,consistent
+iia,south korea,grapes,tonnes,1934-1938,iia_1939_45,2100.0,2150.0,4,1934,1937,0.976744,consistent
+iia,syrian arab republic,grapes,ha,1934-1938,iia_1939_45,42000.0,46600.0,5,1934,1938,0.901288,consistent
+iia,syrian arab republic,grapes,tonnes,1934-1938,iia_1939_45,92000.0,143700.0,5,1934,1938,0.640223,consistent
+iia,tunisia,grapes,ha,1934-1938,iia_1939_45,4000.0,48600.0,5,1934,1938,0.082305,unexplained_dated_higher
+iia,tunisia,grapes,tonnes,1934-1938,iia_1939_45,2800.0,6440.0,5,1934,1938,0.434783,unexplained_dated_higher
+iia,turkey,grapes,ha,1934-1938,iia_1939_45,359000.0,347400.0,5,1934,1938,1.033391,consistent
+iia,turkey,grapes,tonnes,1934-1938,iia_1939_45,440000.0,531900.0,4,1934,1937,0.827223,consistent
+iia,angola,"groundnuts, with shell",ha,1934-1938,iia_1939_45,7000.0,9750.0,4,1934,1937,0.717949,consistent
+iia,angola,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,5600.0,6825.0,4,1934,1937,0.820513,consistent
+iia,australia,"groundnuts, with shell",ha,1934-1938,iia_1939_45,6000.0,5500.0,4,1934,1937,1.090909,consistent
+iia,australia,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,6400.0,5575.0,4,1934,1937,1.147982,consistent
+iia,benin,"groundnuts, with shell",ha,1934-1938,iia_1939_45,22000.0,7000.0,4,1934,1937,3.142857,unexplained_period_higher
+iia,benin,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,9900.0,2875.0,4,1934,1937,3.443478,unexplained_period_higher
+iia,burundi,"groundnuts, with shell",ha,1934-1938,iia_1939_45,3000.0,2333.3333,3,1934,1936,1.285714,consistent
+iia,burundi,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,300.0,1600.0,3,1934,1936,0.1875,unexplained_dated_higher
+iia,"china, mainland","groundnuts, with shell",ha,1934-1938,iia_1939_45,1448000.0,1438333.3333,3,1934,1936,1.006721,consistent
+iia,"china, taiwan province of","groundnuts, with shell",ha,1934-1938,iia_1939_45,31000.0,31000.0,4,1934,1937,1.0,consistent
+iia,congo,"groundnuts, with shell",ha,1934-1938,iia_1939_45,37000.0,36500.0,4,1934,1937,1.013699,consistent
+iia,egypt,"groundnuts, with shell",ha,1934-1938,iia_1939_45,23000.0,23400.0,5,1934,1938,0.982906,consistent
+iia,egypt,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,21000.0,20640.0,5,1934,1938,1.017442,consistent
+iia,eritrea,"groundnuts, with shell",ha,1934-1938,iia_1939_45,6000.0,500.0,4,1934,1937,12.0,unexplained_period_higher
+iia,eritrea,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,100.0,100.0,4,1934,1937,1.0,consistent
+iia,guinea,"groundnuts, with shell",ha,1934-1938,iia_1939_45,49000.0,48750.0,4,1934,1937,1.005128,consistent
+iia,india,"groundnuts, with shell",ha,1934-1938,iia_1939_45,3000.0,3000.0,3,1934,1936,1.0,consistent
+iia,indonesia,"groundnuts, with shell",ha,1934-1938,iia_1939_45,237000.0,225000.0,5,1934,1938,1.053333,consistent
+iia,ivory coast,"groundnuts, with shell",ha,1934-1938,iia_1939_45,129000.0,130666.6667,3,1934,1936,0.987245,consistent
+iia,japan,"groundnuts, with shell",ha,1934-1938,iia_1939_45,8000.0,8000.0,4,1934,1937,1.0,consistent
+iia,kenya,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,2000.0,1425.0,4,1934,1937,1.403509,consistent
+iia,madagascar,"groundnuts, with shell",ha,1934-1938,iia_1939_45,5000.0,5000.0,4,1934,1937,1.0,consistent
+iia,mali,"groundnuts, with shell",ha,1934-1938,iia_1939_45,204000.0,203500.0,4,1934,1937,1.002457,consistent
+iia,mauritania,"groundnuts, with shell",ha,1934-1938,iia_1939_45,3000.0,3000.0,4,1934,1937,1.0,consistent
+iia,mauritania,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,1500.0,1500.0,4,1934,1937,1.0,consistent
+iia,mauritius,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,100.0,100.0,4,1934,1937,1.0,consistent
+iia,myanmar,"groundnuts, with shell",ha,1934-1938,iia_1939_45,306000.0,306800.0,5,1934,1938,0.997392,consistent
+iia,myanmar,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,165900.0,165920.0,5,1934,1938,0.999879,consistent
+iia,niger,"groundnuts, with shell",ha,1934-1938,iia_1939_45,113000.0,128250.0,4,1934,1937,0.881092,consistent
+iia,philippines,"groundnuts, with shell",ha,1934-1938,iia_1939_45,6000.0,6000.0,4,1934,1937,1.0,consistent
+iia,philippines,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,5200.0,5150.0,4,1934,1937,1.009709,consistent
+iia,russian federation,"groundnuts, with shell",ha,1934-1938,iia_1939_45,10000.0,10750.0,4,1934,1938,0.930233,consistent
+iia,senegal,"groundnuts, with shell",ha,1934-1938,iia_1939_45,684000.0,666750.0,4,1934,1937,1.025872,consistent
+iia,somalia,"groundnuts, with shell",ha,1934-1938,iia_1939_45,2000.0,1666.6667,3,1934,1936,1.2,consistent
+iia,somalia,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,1500.0,1533.3333,3,1934,1936,0.978261,consistent
+iia,south africa,"groundnuts, with shell",ha,1934-1938,iia_1939_45,22000.0,21333.3333,3,1934,1936,1.03125,consistent
+iia,south korea,"groundnuts, with shell",ha,1934-1938,iia_1939_45,3000.0,2750.0,4,1934,1937,1.090909,consistent
+iia,south korea,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,6600.0,6575.0,4,1934,1937,1.003802,consistent
+iia,viet nam,"groundnuts, with shell",ha,1934-1938,iia_1939_45,2000.0,2000.0,4,1934,1937,1.0,consistent
+iia,viet nam,"groundnuts, with shell",tonnes,1934-1938,iia_1939_45,1800.0,1500.0,4,1934,1937,1.2,consistent
+iia,zimbabwe,"groundnuts, with shell",ha,1934-1938,iia_1939_45,2000.0,2250.0,4,1934,1937,0.888889,consistent
+iia,czech republic,hempseed,tonnes,1934-1938,iia_1939_45,3700.0,3800.0,4,1934,1937,0.973684,consistent
+iia,russian federation,hempseed,ha,1934-1938,iia_1939_45,498000.0,573000.0,5,1934,1938,0.86911,consistent
+iia,russian federation,hempseed,tonnes,1934-1938,iia_1939_45,226000.0,230000.0,3,1934,1936,0.982609,consistent
+iia,serbia,hempseed,tonnes,1934-1938,iia_1939_45,2800.0,2780.0,5,1934,1938,1.007194,consistent
+iia,syrian arab republic,hempseed,ha,1934-1938,iia_1939_45,4000.0,46200.0,5,1934,1938,0.08658,unexplained_dated_higher
+iia,syrian arab republic,hempseed,tonnes,1934-1938,iia_1939_45,600.0,580.0,5,1934,1938,1.034483,consistent
+iia,turkey,hempseed,ha,1934-1938,iia_1939_45,12000.0,13000.0,4,1934,1938,0.923077,consistent
+iia,turkey,hempseed,tonnes,1934-1938,iia_1939_45,2800.0,2860.0,5,1934,1938,0.979021,consistent
+iia,australia,hops,ha,1934-1938,iia_1939_45,400.0,4250.0,4,1934,1937,0.094118,disagree_x10_dated_higher
+iia,australia,hops,tonnes,1934-1938,iia_1939_45,104500.0,103450.0,4,1934,1937,1.01015,consistent
+iia,czech republic,hops,ha,1934-1938,iia_1939_45,11300.0,112800.0,5,1934,1938,0.100177,disagree_x10_dated_higher
+iia,czech republic,hops,tonnes,1934-1938,iia_1939_45,973500.0,973475.0,4,1934,1937,1.000026,consistent
+iia,new zealand,hops,ha,1934-1938,iia_1939_45,300.0,2750.0,4,1934,1937,0.109091,disagree_x10_dated_higher
+iia,serbia,hops,ha,1934-1938,iia_1939_45,2700.0,26800.0,5,1934,1938,0.100746,disagree_x10_dated_higher
+iia,serbia,hops,tonnes,1934-1938,iia_1939_45,180400.0,180360.0,5,1934,1938,1.000222,consistent
+iia,"china, taiwan province of",jute,ha,1934-1938,iia_1939_45,6000.0,5666.6667,3,1934,1936,1.058824,consistent
+iia,"china, taiwan province of",jute,tonnes,1934-1938,iia_1939_45,10300.0,10333.3333,3,1934,1936,0.996774,consistent
+iia,iran,jute,ha,1934-1938,iia_1939_45,3000.0,3333.3333,3,1934,1936,0.9,consistent
+iia,iran,jute,tonnes,1934-1938,iia_1939_45,3500.0,3433.3333,3,1934,1936,1.019417,consistent
+iia,japan,jute,tonnes,1934-1938,iia_1939_45,1200.0,1150.0,4,1934,1937,1.043478,consistent
+iia,nepal,jute,tonnes,1934-1938,iia_1939_45,10400.0,10400.0,5,1934,1938,1.0,consistent
+iia,viet nam,jute,tonnes,1934-1938,iia_1939_45,200.0,166.6667,3,1934,1936,1.2,consistent
+iia,algeria,lemons and limes,tonnes,1934-1938,iia_1939_45,3500.0,3675.0,4,1934,1937,0.952381,consistent
+iia,australia,lemons and limes,ha,1934-1938,iia_1939_45,2000.0,2000.0,4,1934,1937,1.0,consistent
+iia,australia,lemons and limes,tonnes,1934-1938,iia_1939_45,11100.0,11175.0,4,1934,1937,0.993289,consistent
+iia,cyprus,lemons and limes,tonnes,1934-1938,iia_1939_45,1800.0,1760.0,5,1934,1938,1.022727,consistent
+iia,dominica,lemons and limes,ha,1934-1938,iia_1939_45,1000.0,500.0,4,1934,1937,2.0,consistent
+iia,dominica,lemons and limes,tonnes,1934-1938,iia_1939_45,3200.0,2325.0,4,1934,1937,1.376344,consistent
+iia,egypt,lemons and limes,tonnes,1934-1938,iia_1939_45,114200.0,114220.0,5,1934,1938,0.999825,consistent
+iia,israel,lemons and limes,tonnes,1934-1938,iia_1939_45,2500.0,2000.0,4,1934,1937,1.25,consistent
+iia,japan,lemons and limes,tonnes,1934-1938,iia_1939_45,22100.0,21400.0,3,1934,1936,1.03271,consistent
+iia,montserrat,lemons and limes,tonnes,1934-1938,iia_1939_45,500.0,525.0,4,1934,1937,0.952381,consistent
+iia,new zealand,lemons and limes,tonnes,1934-1938,iia_1939_45,2400.0,2533.3333,3,1935,1937,0.947368,consistent
+iia,saint lucia,lemons and limes,tonnes,1934-1938,iia_1939_45,2500.0,5150.0,4,1934,1937,0.485437,unexplained_dated_higher
+iia,saint vincent and the grenadines,lemons and limes,tonnes,1934-1938,iia_1939_45,100.0,80.0,5,1934,1938,1.25,consistent
+iia,serbia,lemons and limes,tonnes,1934-1938,iia_1939_45,100.0,80.0,5,1934,1938,1.25,consistent
+iia,south africa,lemons and limes,tonnes,1934-1938,iia_1939_45,1300.0,1325.0,4,1934,1937,0.981132,consistent
+iia,tunisia,lemons and limes,tonnes,1934-1938,iia_1939_45,1200.0,1200.0,4,1934,1937,1.0,consistent
+iia,zambia,lemons and limes,tonnes,1934-1938,iia_1939_45,100.0,50.0,4,1934,1937,2.0,consistent
+iia,philippines,manila fibre (abaca),ha,1934-1938,iia_1939_45,487000.0,482250.0,4,1934,1937,1.00985,consistent
+iia,philippines,manila fibre (abaca),tonnes,1934-1938,iia_1939_45,188300.0,194125.0,4,1934,1937,0.969994,consistent
+iia,cyprus,"oil, olive, virgin",tonnes,1934-1938,iia_1939_45,1600.0,1620.0,5,1934,1938,0.987654,consistent
+iia,egypt,"oil, olive, virgin",tonnes,1934-1938,iia_1939_45,100.0,100.0,3,1935,1937,1.0,consistent
+iia,israel,"oil, olive, virgin",tonnes,1934-1938,iia_1939_45,6100.0,6040.0,5,1934,1938,1.009934,consistent
+iia,libya,"oil, olive, virgin",tonnes,1934-1938,iia_1939_45,1900.0,1300.0,4,1934,1937,1.461538,consistent
+iia,serbia,"oil, olive, virgin",tonnes,1934-1938,iia_1939_45,4400.0,4440.0,5,1934,1938,0.990991,consistent
+iia,algeria,olives,ha,1934-1938,iia_1939_45,77000.0,75750.0,4,1934,1937,1.016502,consistent
+iia,algeria,olives,tonnes,1934-1938,iia_1939_45,96300.0,100100.0,4,1934,1937,0.962038,consistent
+iia,australia,olives,tonnes,1934-1938,iia_1939_45,500.0,500.0,4,1934,1937,1.0,consistent
+iia,cyprus,olives,tonnes,1934-1938,iia_1939_45,9200.0,9140.0,5,1934,1938,1.006565,consistent
+iia,egypt,olives,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1938,1.0,consistent
+iia,egypt,olives,tonnes,1934-1938,iia_1939_45,8100.0,1625.0,4,1934,1937,4.984615,unexplained_period_higher
+iia,israel,olives,ha,1934-1938,iia_1939_45,52000.0,51750.0,4,1935,1938,1.004831,consistent
+iia,israel,olives,tonnes,1934-1938,iia_1939_45,3075400.0,30660.0,5,1934,1938,100.306588,disagree_x100_period_higher
+iia,libya,olives,ha,1934-1938,iia_1939_45,61000.0,60750.0,4,1934,1937,1.004115,consistent
+iia,libya,olives,tonnes,1934-1938,iia_1939_45,1610700.0,8900.0,3,1934,1937,180.977528,unexplained_period_higher
+iia,morocco,olives,tonnes,1934-1938,iia_1939_45,67700.0,67666.6667,3,1934,1936,1.000493,consistent
+iia,serbia,olives,tonnes,1934-1938,iia_1939_45,27200.0,55980.0,5,1934,1938,0.485888,unexplained_dated_higher
+iia,syrian arab republic,olives,ha,1934-1938,iia_1939_45,72000.0,87400.0,5,1934,1938,0.823799,consistent
+iia,turkey,olives,ha,1934-1938,iia_1939_45,700000.0,702000.0,5,1934,1938,0.997151,consistent
+iia,turkey,olives,tonnes,1934-1938,iia_1939_45,229000.0,226960.0,5,1934,1938,1.008988,consistent
+iia,algeria,oranges,ha,1934-1938,iia_1939_45,6000.0,5500.0,4,1934,1937,1.090909,consistent
+iia,algeria,oranges,tonnes,1934-1938,iia_1939_45,48300.0,43975.0,4,1934,1937,1.098351,consistent
+iia,australia,oranges,ha,1934-1938,iia_1939_45,15000.0,15500.0,4,1934,1937,0.967742,consistent
+iia,australia,oranges,tonnes,1934-1938,iia_1939_45,87100.0,84975.0,4,1934,1937,1.025007,consistent
+iia,"china, taiwan province of",oranges,tonnes,1934-1938,iia_1939_45,9000.0,8375.0,4,1934,1937,1.074627,consistent
+iia,cyprus,oranges,tonnes,1934-1938,iia_1939_45,12000.0,12060.0,5,1934,1938,0.995025,consistent
+iia,dominica,oranges,tonnes,1934-1938,iia_1939_45,400.0,340.0,5,1934,1938,1.176471,consistent
+iia,egypt,oranges,ha,1934-1938,iia_1939_45,11000.0,10400.0,5,1934,1938,1.057692,consistent
+iia,egypt,oranges,tonnes,1934-1938,iia_1939_45,74600.0,74660.0,5,1934,1938,0.999196,consistent
+iia,iran,oranges,tonnes,1934-1938,iia_1939_45,21700.0,24033.3333,3,1934,1936,0.902913,consistent
+iia,israel,oranges,ha,1934-1938,iia_1939_45,29000.0,28250.0,4,1934,1937,1.026549,consistent
+iia,israel,oranges,tonnes,1934-1938,iia_1939_45,1300.0,253300.0,4,1934,1937,0.005132,unexplained_dated_higher
+iia,jamaica,oranges,tonnes,1934-1938,iia_1939_45,8200.0,7925.0,4,1934,1937,1.0347,consistent
+iia,japan,oranges,ha,1934-1938,iia_1939_45,8000.0,8000.0,3,1934,1936,1.0,consistent
+iia,japan,oranges,tonnes,1934-1938,iia_1939_45,85700.0,78900.0,3,1934,1936,1.086185,consistent
+iia,philippines,oranges,ha,1934-1938,iia_1939_45,2000.0,2000.0,3,1934,1936,1.0,consistent
+iia,philippines,oranges,tonnes,1934-1938,iia_1939_45,1800.0,1800.0,3,1934,1936,1.0,consistent
+iia,portugal,oranges,tonnes,1934-1938,iia_1939_45,100.0,66.6667,3,1934,1936,1.5,consistent
+iia,russian federation,oranges,ha,1934-1938,iia_1939_45,4000.0,4400.0,5,1934,1938,0.909091,consistent
+iia,russian federation,oranges,tonnes,1934-1938,iia_1939_45,10500.0,10000.0,4,1934,1937,1.05,consistent
+iia,serbia,oranges,tonnes,1934-1938,iia_1939_45,400.0,380.0,5,1934,1938,1.052632,consistent
+iia,south africa,oranges,tonnes,1934-1938,iia_1939_45,97500.0,88250.0,4,1934,1937,1.104816,consistent
+iia,suriname,oranges,tonnes,1934-1938,iia_1939_45,800.0,600.0,4,1934,1937,1.333333,consistent
+iia,syrian arab republic,oranges,ha,1934-1938,iia_1939_45,1000.0,3800.0,5,1934,1938,0.263158,unexplained_dated_higher
+iia,syrian arab republic,oranges,tonnes,1934-1938,iia_1939_45,4300.0,48820.0,5,1934,1938,0.088079,disagree_x10_dated_higher
+iia,tunisia,oranges,tonnes,1934-1938,iia_1939_45,10700.0,6550.0,4,1934,1937,1.633588,consistent
+iia,zambia,oranges,tonnes,1934-1938,iia_1939_45,300.0,250.0,4,1934,1937,1.2,consistent
+iia,zimbabwe,oranges,tonnes,1934-1938,iia_1939_45,5800.0,5366.6667,3,1934,1936,1.080745,consistent
+iia,bulgaria,other berries and fruits of the genus vaccinium n.e.c.,ha,1934-1938,iia_1939_45,4000.0,4000.0,5,1934,1938,1.0,consistent
+iia,bulgaria,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1934-1938,iia_1939_45,30400.0,30450.0,4,1934,1938,0.998358,consistent
+iia,"china, taiwan province of",other berries and fruits of the genus vaccinium n.e.c.,ha,1934-1938,iia_1939_45,1000.0,500.0,4,1934,1937,2.0,consistent
+iia,france,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1934-1938,iia_1939_45,45600.0,47225.0,4,1934,1937,0.96559,consistent
+iia,greece,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1934-1938,iia_1939_45,76200.0,74220.0,5,1934,1938,1.026677,consistent
+iia,italy,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1934-1938,iia_1939_45,1016200.0,1016340.0,5,1934,1938,0.999862,consistent
+iia,japan,other berries and fruits of the genus vaccinium n.e.c.,ha,1934-1938,iia_1939_45,572000.0,578500.0,4,1934,1937,0.988764,consistent
+iia,libya,other berries and fruits of the genus vaccinium n.e.c.,ha,1934-1938,iia_1939_45,30000.0,28333.3333,3,1935,1937,1.058824,consistent
+iia,south korea,other berries and fruits of the genus vaccinium n.e.c.,ha,1934-1938,iia_1939_45,77000.0,76750.0,4,1934,1937,1.003257,consistent
+iia,viet nam,other berries and fruits of the genus vaccinium n.e.c.,ha,1934-1938,iia_1939_45,2000.0,2000.0,4,1934,1937,1.0,consistent
+iia,france,"other citrus fruit, n.e.c.",tonnes,1934-1938,iia_1939_45,700.0,725.0,4,1934,1937,0.965517,consistent
+iia,greece,"other citrus fruit, n.e.c.",tonnes,1934-1938,iia_1939_45,500.0,520.0,5,1934,1938,0.961538,consistent
+iia,australia,other sugar crops n.e.c.,tonnes,1934-1938,iia_1939_45,2400.0,2200.0,4,1934,1937,1.090909,consistent
+iia,australia,raisins,tonnes,1934-1938,iia_1939_45,75700.0,75625.0,4,1934,1937,1.000992,consistent
+iia,cyprus,raisins,tonnes,1934-1938,iia_1939_45,4300.0,4260.0,5,1934,1938,1.00939,consistent
+iia,greece,raisins,tonnes,1934-1938,iia_1939_45,194800.0,195020.0,5,1934,1938,0.998872,consistent
+iia,iran,raisins,tonnes,1934-1938,iia_1939_45,54200.0,61100.0,3,1934,1936,0.88707,consistent
+iia,morocco,raisins,tonnes,1934-1938,iia_1939_45,2500.0,2500.0,4,1934,1937,1.0,consistent
+iia,south africa,raisins,tonnes,1934-1938,iia_1939_45,8000.0,8133.3333,3,1934,1936,0.983607,consistent
+iia,syrian arab republic,raisins,tonnes,1934-1938,iia_1939_45,8000.0,6933.3333,3,1936,1938,1.153846,consistent
+iia,turkey,raisins,tonnes,1934-1938,iia_1939_45,83000.0,88333.3333,3,1935,1937,0.939623,consistent
+iia,united states of america,raisins,tonnes,1934-1938,iia_1939_45,198300.0,194120.0,5,1934,1938,1.021533,consistent
+iia,"china, mainland",rapeseed,ha,1934-1938,iia_1939_45,3908000.0,3818250.0,4,1934,1937,1.023506,consistent
+iia,"china, mainland",rapeseed,tonnes,1934-1938,iia_1939_45,2394700.0,2381125.0,4,1934,1937,1.005701,consistent
+iia,"china, taiwan province of",rapeseed,tonnes,1934-1938,iia_1939_45,200.0,133.3333,3,1934,1937,1.5,consistent
+iia,czech republic,rapeseed,ha,1934-1938,iia_1939_45,5000.0,5000.0,5,1934,1938,1.0,consistent
+iia,czech republic,rapeseed,tonnes,1934-1938,iia_1939_45,7200.0,7160.0,5,1934,1938,1.005587,consistent
+iia,japan,rapeseed,ha,1934-1938,iia_1939_45,103000.0,103800.0,5,1934,1938,0.992293,consistent
+iia,japan,rapeseed,tonnes,1934-1938,iia_1939_45,119900.0,119900.0,5,1934,1938,1.0,consistent
+iia,serbia,rapeseed,ha,1934-1938,iia_1939_45,16000.0,16200.0,5,1934,1938,0.987654,consistent
+iia,serbia,rapeseed,tonnes,1934-1938,iia_1939_45,10800.0,10740.0,5,1934,1938,1.005587,consistent
+iia,brunei darussalam,"rubber, natural",ha,1934-1938,iia_1939_45,6200.0,6180.0,5,1934,1938,1.003236,consistent
+iia,cameroon,"rubber, natural",ha,1934-1938,iia_1939_45,7100.0,11560.0,5,1934,1938,0.614187,consistent
+iia,dr congo,"rubber, natural",ha,1934-1938,iia_1939_45,5800.0,5400.0,4,1934,1937,1.074074,consistent
+iia,indonesia,"rubber, natural",ha,1934-1938,iia_1939_45,596400.0,596550.0,4,1934,1937,0.999749,consistent
+iia,malawi,"rubber, natural",ha,1934-1938,iia_1939_45,500.0,500.0,5,1934,1938,1.0,consistent
+iia,malaysia,"rubber, natural",ha,1934-1938,iia_1939_45,93900.0,93940.0,5,1934,1938,0.999574,consistent
+iia,myanmar,"rubber, natural",ha,1934-1938,iia_1939_45,42800.0,42750.0,4,1934,1937,1.00117,consistent
+iia,nigeria,"rubber, natural",ha,1934-1938,iia_1939_45,2700.0,2700.0,4,1934,1937,1.0,consistent
+iia,philippines,"rubber, natural",ha,1934-1938,iia_1939_45,3800.0,3750.0,4,1934,1937,1.013333,consistent
+iia,sri lanka,"rubber, natural",ha,1934-1938,iia_1939_45,244800.0,244820.0,5,1934,1938,0.999918,consistent
+iia,trinidad and tobago,"rubber, natural",ha,1934-1938,iia_1939_45,300.0,300.0,5,1934,1938,1.0,consistent
+iia,algeria,rye,ha,1934-1938,iia_1939_45,1000.0,1200.0,5,1934,1938,0.833333,consistent
+iia,algeria,rye,tonnes,1934-1938,iia_1939_45,900.0,840.0,5,1934,1938,1.071429,consistent
+iia,australia,rye,ha,1934-1938,iia_1939_45,5000.0,3750.0,4,1934,1937,1.333333,consistent
+iia,australia,rye,tonnes,1934-1938,iia_1939_45,3300.0,3025.0,4,1934,1937,1.090909,consistent
+iia,czech republic,rye,ha,1934-1938,iia_1939_45,988000.0,997800.0,5,1934,1938,0.990178,consistent
+iia,czech republic,rye,tonnes,1934-1938,iia_1939_45,1597800.0,1597760.0,5,1934,1938,1.000025,consistent
+iia,morocco,rye,ha,1934-1938,iia_1939_45,3000.0,2600.0,5,1934,1938,1.153846,consistent
+iia,morocco,rye,tonnes,1934-1938,iia_1939_45,800.0,780.0,5,1934,1938,1.025641,consistent
+iia,new zealand,rye,tonnes,1934-1938,iia_1939_45,100.0,150.0,4,1934,1937,0.666667,consistent
+iia,russian federation,rye,ha,1934-1938,iia_1939_45,22730000.0,22789600.0,5,1934,1938,0.997385,consistent
+iia,russian federation,rye,tonnes,1934-1938,iia_1939_45,21967200.0,20498666.6667,3,1934,1938,1.07164,consistent
+iia,serbia,rye,ha,1934-1938,iia_1939_45,252000.0,252400.0,5,1934,1938,0.998415,consistent
+iia,serbia,rye,tonnes,1934-1938,iia_1939_45,206200.0,206240.0,5,1934,1938,0.999806,consistent
+iia,south africa,rye,ha,1934-1938,iia_1939_45,48000.0,51333.3333,3,1934,1936,0.935065,consistent
+iia,south africa,rye,tonnes,1934-1938,iia_1939_45,20800.0,21225.0,4,1934,1937,0.979976,consistent
+iia,turkey,rye,ha,1934-1938,iia_1939_45,350000.0,350200.0,5,1934,1938,0.999429,consistent
+iia,turkey,rye,tonnes,1934-1938,iia_1939_45,335500.0,338860.0,5,1934,1938,0.990084,consistent
+iia,angola,sesame seed,ha,1934-1938,iia_1939_45,1000.0,9500.0,4,1934,1937,0.105263,disagree_x10_dated_higher
+iia,angola,sesame seed,tonnes,1934-1938,iia_1939_45,700.0,800.0,4,1934,1937,0.875,consistent
+iia,cameroon,sesame seed,ha,1934-1938,iia_1939_45,3000.0,3750.0,4,1934,1937,0.8,consistent
+iia,cameroon,sesame seed,tonnes,1934-1938,iia_1939_45,1100.0,1125.0,4,1934,1937,0.977778,consistent
+iia,"china, mainland",sesame seed,ha,1934-1938,iia_1939_45,1424000.0,1401333.3333,3,1934,1936,1.016175,consistent
+iia,"china, mainland",sesame seed,tonnes,1934-1938,iia_1939_45,818100.0,825233.3333,3,1934,1936,0.991356,consistent
+iia,"china, taiwan province of",sesame seed,ha,1934-1938,iia_1939_45,4000.0,3500.0,4,1934,1937,1.142857,consistent
+iia,"china, taiwan province of",sesame seed,tonnes,1934-1938,iia_1939_45,1400.0,1400.0,4,1934,1937,1.0,consistent
+iia,congo,sesame seed,ha,1934-1938,iia_1939_45,8000.0,7666.6667,3,1934,1937,1.043478,consistent
+iia,cyprus,sesame seed,ha,1934-1938,iia_1939_45,1000.0,1400.0,5,1934,1938,0.714286,consistent
+iia,cyprus,sesame seed,tonnes,1934-1938,iia_1939_45,300.0,280.0,5,1934,1938,1.071429,consistent
+iia,egypt,sesame seed,ha,1934-1938,iia_1939_45,103000.0,103200.0,5,1934,1938,0.998062,consistent
+iia,egypt,sesame seed,tonnes,1934-1938,iia_1939_45,36000.0,36740.0,5,1934,1938,0.979858,consistent
+iia,eritrea,sesame seed,ha,1934-1938,iia_1939_45,2000.0,1750.0,4,1934,1937,1.142857,consistent
+iia,eritrea,sesame seed,tonnes,1934-1938,iia_1939_45,500.0,475.0,4,1934,1937,1.052632,consistent
+iia,guinea,sesame seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,guinea,sesame seed,tonnes,1934-1938,iia_1939_45,700.0,766.6667,3,1935,1937,0.913043,consistent
+iia,india,sesame seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,3,1934,1936,1.0,consistent
+iia,india,sesame seed,tonnes,1934-1938,iia_1939_45,300.0,300.0,3,1934,1936,1.0,consistent
+iia,indonesia,sesame seed,ha,1934-1938,iia_1939_45,16000.0,15750.0,4,1934,1937,1.015873,consistent
+iia,indonesia,sesame seed,tonnes,1934-1938,iia_1939_45,3500.0,3420.0,5,1934,1938,1.023392,consistent
+iia,iran,sesame seed,tonnes,1934-1938,iia_1939_45,6300.0,5900.0,3,1934,1936,1.067797,consistent
+iia,israel,sesame seed,ha,1934-1938,iia_1939_45,21000.0,18750.0,4,1935,1938,1.12,consistent
+iia,israel,sesame seed,tonnes,1934-1938,iia_1939_45,5400.0,4920.0,5,1934,1938,1.097561,consistent
+iia,ivory coast,sesame seed,ha,1934-1938,iia_1939_45,7000.0,7000.0,3,1934,1936,1.0,consistent
+iia,ivory coast,sesame seed,tonnes,1934-1938,iia_1939_45,13900.0,3900.0,3,1934,1936,3.564103,unexplained_period_higher
+iia,japan,sesame seed,ha,1934-1938,iia_1939_45,5000.0,5000.0,4,1934,1937,1.0,consistent
+iia,japan,sesame seed,tonnes,1934-1938,iia_1939_45,3900.0,3800.0,4,1934,1937,1.026316,consistent
+iia,jordan,sesame seed,tonnes,1934-1938,iia_1939_45,200.0,180.0,5,1934,1938,1.111111,consistent
+iia,kenya,sesame seed,tonnes,1934-1938,iia_1939_45,3800.0,1775.0,4,1934,1937,2.140845,unexplained_period_higher
+iia,myanmar,sesame seed,ha,1934-1938,iia_1939_45,575000.0,571800.0,5,1934,1938,1.005596,consistent
+iia,myanmar,sesame seed,tonnes,1934-1938,iia_1939_45,50300.0,50380.0,5,1934,1938,0.998412,consistent
+iia,nigeria,sesame seed,tonnes,1934-1938,iia_1939_45,13300.0,12150.0,4,1934,1937,1.09465,consistent
+iia,russian federation,sesame seed,ha,1934-1938,iia_1939_45,38000.0,41400.0,5,1934,1938,0.917874,consistent
+iia,serbia,sesame seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,5,1934,1938,1.0,consistent
+iia,serbia,sesame seed,tonnes,1934-1938,iia_1939_45,300.0,320.0,5,1934,1938,0.9375,consistent
+iia,sierra leone,sesame seed,tonnes,1934-1938,iia_1939_45,300.0,333.3333,3,1934,1936,0.9,consistent
+iia,somalia,sesame seed,ha,1934-1938,iia_1939_45,3000.0,3333.3333,3,1934,1936,0.9,consistent
+iia,south korea,sesame seed,ha,1934-1938,iia_1939_45,10000.0,9800.0,5,1934,1938,1.020408,consistent
+iia,south korea,sesame seed,tonnes,1934-1938,iia_1939_45,4300.0,4260.0,5,1934,1938,1.00939,consistent
+iia,syrian arab republic,sesame seed,ha,1934-1938,iia_1939_45,5000.0,4800.0,5,1934,1938,1.041667,consistent
+iia,syrian arab republic,sesame seed,tonnes,1934-1938,iia_1939_45,3300.0,3480.0,5,1934,1938,0.948276,consistent
+iia,tanzania,sesame seed,tonnes,1934-1938,iia_1939_45,4700.0,4560.0,5,1934,1938,1.030702,consistent
+iia,thailand,sesame seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,thailand,sesame seed,tonnes,1934-1938,iia_1939_45,1000.0,875.0,4,1934,1937,1.142857,consistent
+iia,turkey,sesame seed,ha,1934-1938,iia_1939_45,65000.0,65200.0,5,1934,1938,0.996933,consistent
+iia,turkey,sesame seed,tonnes,1934-1938,iia_1939_45,27200.0,27080.0,5,1934,1938,1.004431,consistent
+iia,viet nam,sesame seed,ha,1934-1938,iia_1939_45,1000.0,1000.0,3,1934,1936,1.0,consistent
+iia,viet nam,sesame seed,tonnes,1934-1938,iia_1939_45,400.0,400.0,3,1934,1936,1.0,consistent
+iia,bulgaria,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,1608.0,1608.6,5,1934,1938,0.999627,consistent
+iia,"china, mainland","silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,43780.0,36638.8,5,1934,1938,1.194908,consistent
+iia,"china, taiwan province of","silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,56.0,55.5,4,1934,1937,1.009009,consistent
+iia,cyprus,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,134.0,133.8,5,1934,1938,1.001495,consistent
+iia,czech republic,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,7.0,7.3333,3,1935,1937,0.954545,consistent
+iia,egypt,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,28.0,22.6667,3,1935,1937,1.235294,consistent
+iia,france,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,710.0,710.2,5,1934,1938,0.999718,consistent
+iia,greece,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,2910.0,2906.6,5,1934,1938,1.00117,consistent
+iia,hungary,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,338.0,355.25,4,1934,1937,0.951443,consistent
+iia,iran,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,1782.0,1874.75,4,1934,1937,0.950527,consistent
+iia,italy,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,26095.0,26092.8,5,1934,1938,1.000084,consistent
+iia,japan,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,165245.0,165244.2,5,1934,1938,1.000005,consistent
+iia,romania,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,141.0,126.5,4,1934,1937,1.114625,consistent
+iia,russian federation,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,19714.0,19713.8,5,1934,1938,1.00001,consistent
+iia,serbia,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,573.0,532.4,5,1934,1938,1.076258,consistent
+iia,south korea,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,8116.0,22722.4,5,1934,1938,0.357181,unexplained_dated_higher
+iia,spain,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,454.0,402.3333,3,1935,1937,1.128418,consistent
+iia,syrian arab republic,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,371.0,1210.0,5,1934,1938,0.306612,unexplained_dated_higher
+iia,turkey,"silk-worm cocoons, reelable",tonnes,1934-1938,iia_1939_45,2100.0,2035.5,4,1934,1937,1.031688,consistent
+iia,bulgaria,soybeans,ha,1934-1938,iia_1939_45,11000.0,11250.0,4,1935,1938,0.977778,consistent
+iia,"china, mainland",soybeans,ha,1934-1938,iia_1939_45,8559000.0,5152666.6667,3,1934,1936,1.661082,consistent
+iia,"china, mainland",soybeans,tonnes,1934-1938,iia_1939_45,9506000.0,5545033.3333,3,1934,1936,1.714327,consistent
+iia,"china, taiwan province of",soybeans,ha,1934-1938,iia_1939_45,7000.0,7250.0,4,1934,1937,0.965517,consistent
+iia,"china, taiwan province of",soybeans,tonnes,1934-1938,iia_1939_45,4200.0,4150.0,4,1934,1937,1.012048,consistent
+iia,czech republic,soybeans,tonnes,1934-1938,iia_1939_45,900.0,850.0,4,1934,1937,1.058824,consistent
+iia,indonesia,soybeans,ha,1934-1938,iia_1939_45,337000.0,318500.0,4,1934,1937,1.058085,consistent
+iia,indonesia,soybeans,tonnes,1934-1938,iia_1939_45,245400.0,223600.0,4,1934,1937,1.097496,consistent
+iia,japan,soybeans,ha,1934-1938,iia_1939_45,330000.0,331250.0,4,1934,1937,0.996226,consistent
+iia,japan,soybeans,tonnes,1934-1938,iia_1939_45,325100.0,319325.0,4,1934,1937,1.018085,consistent
+iia,romania,soybeans,ha,1934-1938,iia_1939_45,56000.0,55250.0,4,1935,1938,1.013575,consistent
+iia,russian federation,soybeans,ha,1934-1938,iia_1939_45,141000.0,142400.0,5,1934,1938,0.990169,consistent
+iia,serbia,soybeans,ha,1934-1938,iia_1939_45,1000.0,1750.0,4,1935,1938,0.571429,consistent
+iia,serbia,soybeans,tonnes,1934-1938,iia_1939_45,1500.0,1520.0,5,1934,1938,0.986842,consistent
+iia,south korea,soybeans,ha,1934-1938,iia_1939_45,780000.0,779400.0,5,1934,1938,1.00077,consistent
+iia,south korea,soybeans,tonnes,1934-1938,iia_1939_45,521900.0,521860.0,5,1934,1938,1.000077,consistent
+iia,angola,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,29800.0,29225.0,4,1934,1937,1.019675,consistent
+iia,antigua and barbuda,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,23300.0,24160.0,5,1934,1938,0.964404,consistent
+iia,australia,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,4400.0,706460.0,5,1934,1938,0.006228,unexplained_dated_higher
+iia,austria,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,161100.0,161725.0,4,1934,1937,0.996135,consistent
+iia,belgium,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,213400.0,213400.0,5,1934,1938,1.0,consistent
+iia,bulgaria,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,1600.0,16140.0,5,1934,1938,0.099133,disagree_x10_dated_higher
+iia,canada,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,59300.0,59280.0,5,1934,1938,1.000337,consistent
+iia,"china, taiwan province of",sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,1078600.0,1065340.0,5,1934,1938,1.012447,consistent
+iia,czech republic,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,569900.0,568360.0,5,1934,1938,1.00271,consistent
+iia,denmark,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,176800.0,178140.0,5,1934,1938,0.992478,consistent
+iia,egypt,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,145800.0,145760.0,5,1934,1938,1.000274,consistent
+iia,fiji,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,129200.0,131180.0,5,1934,1938,0.984906,consistent
+iia,finland,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,10200.0,10240.0,5,1934,1938,0.996094,consistent
+iia,france,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,872500.0,883120.0,5,1934,1938,0.987974,consistent
+iia,french guiana,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,100.0,100.0,3,1934,1936,1.0,consistent
+iia,french polynesia,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,200.0,166.6667,3,1935,1937,1.2,consistent
+iia,germany,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,1662600.0,1707600.0,5,1934,1938,0.973647,consistent
+iia,hungary,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,111400.0,116140.0,5,1934,1938,0.959187,consistent
+iia,indonesia,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,1080500.0,1082640.0,5,1934,1938,0.998023,consistent
+iia,iran,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,15100.0,15575.0,4,1934,1937,0.969502,consistent
+iia,ireland,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,74100.0,74140.0,5,1934,1938,0.99946,consistent
+iia,italy,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,319500.0,320320.0,5,1934,1938,0.99744,consistent
+iia,japan,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,40100.0,109160.0,5,1934,1938,0.367351,unexplained_dated_higher
+iia,kenya,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,13500.0,13475.0,4,1934,1937,1.001855,consistent
+iia,latvia,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,43100.0,41420.0,5,1934,1938,1.04056,consistent
+iia,lithuania,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,20500.0,20500.0,5,1934,1938,1.0,consistent
+iia,madagascar,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,11800.0,10920.0,5,1934,1938,1.080586,consistent
+iia,mauritius,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,279000.0,278960.0,5,1934,1938,1.000143,consistent
+iia,micronesia (federated states of),sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,63900.0,62350.0,4,1934,1937,1.02486,consistent
+iia,montserrat,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,100.0,75.0,4,1934,1937,1.333333,consistent
+iia,netherlands,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,212900.0,213160.0,5,1934,1938,0.99878,consistent
+iia,paraguay,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,5700.0,1100.0,3,1934,1936,5.181818,unexplained_period_higher
+iia,philippines,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,887200.0,871533.3333,3,1934,1936,1.017976,consistent
+iia,poland,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,442000.0,442020.0,5,1934,1938,0.999955,consistent
+iia,reunion,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,80800.0,81140.0,5,1934,1938,0.99581,consistent
+iia,romania,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,99200.0,99220.0,5,1934,1938,0.999798,consistent
+iia,russian federation,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,2074900.0,2006820.0,5,1934,1938,1.033924,consistent
+iia,saint kitts and nevis,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,31700.0,30040.0,5,1934,1938,1.05526,consistent
+iia,saint lucia,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,8100.0,7933.3333,3,1934,1936,1.021008,consistent
+iia,saint vincent and the grenadines,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,1500.0,2400.0,4,1934,1937,0.625,consistent
+iia,serbia,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,67900.0,67860.0,5,1934,1938,1.000589,consistent
+iia,south africa,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,408700.0,408640.0,5,1934,1938,1.000147,consistent
+iia,spain,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,261000.0,15540.0,5,1934,1938,16.795367,unexplained_period_higher
+iia,suriname,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,16300.0,17300.0,4,1934,1937,0.942197,consistent
+iia,sweden,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,270700.0,270740.0,5,1934,1938,0.999852,consistent
+iia,switzerland,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,9400.0,9400.0,5,1934,1938,1.0,consistent
+iia,turkey,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,54500.0,55260.0,5,1934,1938,0.986247,consistent
+iia,united kingdom,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,479500.0,462340.0,5,1934,1938,1.037116,consistent
+iia,united states of america,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,361500.0,2005240.0,5,1934,1938,0.180278,unexplained_dated_higher
+iia,united states virgin islands,sugar raw centrifugal,tonnes,1934-1938,iia_1939_45,4100.0,5000.0,4,1934,1937,0.82,consistent
+iia,algeria,"tangerines, mandarins, clementines, satsumas",ha,1934-1938,iia_1939_45,4000.0,4250.0,4,1934,1937,0.941176,consistent
+iia,algeria,"tangerines, mandarins, clementines, satsumas",tonnes,1934-1938,iia_1939_45,39800.0,39850.0,4,1934,1937,0.998745,consistent
+iia,cyprus,"tangerines, mandarins, clementines, satsumas",tonnes,1934-1938,iia_1939_45,500.0,525.0,4,1935,1938,0.952381,consistent
+iia,egypt,"tangerines, mandarins, clementines, satsumas",tonnes,1934-1938,iia_1939_45,41900.0,41880.0,5,1934,1938,1.000478,consistent
+iia,japan,"tangerines, mandarins, clementines, satsumas",ha,1934-1938,iia_1939_45,35000.0,34000.0,3,1934,1936,1.029412,consistent
+iia,japan,"tangerines, mandarins, clementines, satsumas",tonnes,1934-1938,iia_1939_45,378600.0,388233.3333,3,1934,1936,0.975187,consistent
+iia,philippines,"tangerines, mandarins, clementines, satsumas",ha,1934-1938,iia_1939_45,2000.0,2000.0,3,1934,1936,1.0,consistent
+iia,philippines,"tangerines, mandarins, clementines, satsumas",tonnes,1934-1938,iia_1939_45,2400.0,2366.6667,3,1934,1936,1.014085,consistent
+iia,south africa,"tangerines, mandarins, clementines, satsumas",tonnes,1934-1938,iia_1939_45,400.0,375.0,4,1934,1937,1.066667,consistent
+iia,azerbaijan,tea,ha,1934-1938,iia_1939_45,40000.0,40200.0,5,1934,1938,0.995025,consistent
+iia,azerbaijan,tea,tonnes,1934-1938,iia_1939_45,5059.0,5059.0,5,1934,1938,1.0,consistent
+iia,"china, mainland",tea,tonnes,1934-1938,iia_1939_45,40951.0,40951.0,5,1934,1938,1.0,consistent
+iia,"china, taiwan province of",tea,ha,1934-1938,iia_1939_45,42000.0,41500.0,4,1934,1937,1.012048,consistent
+iia,indonesia,tea,ha,1934-1938,iia_1939_45,201000.0,138500.0,4,1934,1937,1.451264,consistent
+iia,iran,tea,ha,1934-1938,iia_1939_45,3000.0,3000.0,3,1934,1936,1.0,consistent
+iia,iran,tea,tonnes,1934-1938,iia_1939_45,954.0,963.3333,3,1934,1936,0.990311,consistent
+iia,japan,tea,ha,1934-1938,iia_1939_45,39000.0,39400.0,5,1934,1938,0.989848,consistent
+iia,kenya,tea,ha,1934-1938,iia_1939_45,5000.0,5000.0,4,1934,1937,1.0,consistent
+iia,malawi,tea,ha,1934-1938,iia_1939_45,7000.0,6500.0,4,1934,1937,1.076923,consistent
+iia,malaysia,tea,ha,1934-1938,iia_1939_45,2000.0,1250.0,4,1934,1937,1.6,consistent
+iia,malaysia,tea,tonnes,1934-1938,iia_1939_45,503.0,453.25,4,1935,1938,1.109763,consistent
+iia,mauritius,tea,tonnes,1934-1938,iia_1939_45,35.0,31.5,4,1934,1937,1.111111,consistent
+iia,myanmar,tea,ha,1934-1938,iia_1939_45,22000.0,22000.0,4,1934,1937,1.0,consistent
+iia,south africa,tea,ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,south africa,tea,tonnes,1934-1938,iia_1939_45,374.0,369.5,4,1934,1937,1.012179,consistent
+iia,sri lanka,tea,ha,1934-1938,iia_1939_45,226000.0,225400.0,5,1934,1938,1.002662,consistent
+iia,viet nam,tea,ha,1934-1938,iia_1939_45,5000.0,4250.0,4,1934,1937,1.176471,consistent
+iia,viet nam,tea,tonnes,1934-1938,iia_1939_45,1611.0,1756.6667,3,1935,1937,0.917078,consistent
+iia,algeria,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,23000.0,23000.0,5,1934,1938,1.0,consistent
+iia,angola,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,4000.0,3750.0,4,1934,1937,1.066667,consistent
+iia,angola,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,237100.0,227625.0,4,1934,1937,1.041625,consistent
+iia,australia,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,4000.0,4000.0,4,1934,1937,1.0,consistent
+iia,australia,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,215700.0,225075.0,4,1934,1937,0.958347,consistent
+iia,benin,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,5200.0,4000.0,4,1934,1937,1.3,consistent
+iia,burundi,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,34800.0,42666.6667,3,1934,1936,0.815625,consistent
+iia,"china, mainland","tobacco, unmanufactured",ha,1934-1938,iia_1939_45,566000.0,540333.3333,3,1934,1936,1.047502,consistent
+iia,"china, taiwan province of","tobacco, unmanufactured",ha,1934-1938,iia_1939_45,1000.0,1000.0,3,1934,1937,1.0,consistent
+iia,"china, taiwan province of","tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,225300.0,225250.0,4,1934,1937,1.000222,consistent
+iia,congo,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,7000.0,7000.0,4,1934,1937,1.0,consistent
+iia,cyprus,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,1000.0,666.6667,3,1934,1937,1.5,consistent
+iia,cyprus,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,23600.0,23600.0,5,1934,1938,1.0,consistent
+iia,czech republic,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,10000.0,9800.0,5,1934,1938,1.020408,consistent
+iia,czech republic,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,41410600.0,1410550.0,4,1934,1937,29.357768,unexplained_period_higher
+iia,eritrea,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,2600.0,2700.0,4,1934,1937,0.962963,consistent
+iia,eswatini,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,13700.0,11100.0,4,1934,1937,1.234234,consistent
+iia,guinea,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,3000.0,3000.0,4,1934,1937,1.0,consistent
+iia,guinea,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,20700.0,23800.0,4,1934,1937,0.869748,consistent
+iia,indonesia,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,41000.0,39000.0,4,1934,1937,1.051282,consistent
+iia,iran,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,12000.0,12000.0,4,1934,1937,1.0,consistent
+iia,israel,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,3000.0,3250.0,4,1934,1937,0.923077,consistent
+iia,israel,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,138600.0,143800.0,4,1934,1937,0.963839,consistent
+iia,japan,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,35000.0,35200.0,5,1934,1938,0.994318,consistent
+iia,jordan,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,4000.0,4000.0,5,1934,1938,1.0,consistent
+iia,libya,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,75000.0,74333.3333,3,1935,1937,1.008969,consistent
+iia,madagascar,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,7000.0,8500.0,4,1934,1937,0.823529,consistent
+iia,malawi,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,3000.0,2750.0,4,1934,1937,1.090909,consistent
+iia,malaysia,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,16000.0,15375.0,4,1934,1937,1.04065,consistent
+iia,mali,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,2000.0,2000.0,4,1934,1937,1.0,consistent
+iia,mali,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,139000.0,143750.0,4,1934,1937,0.966957,consistent
+iia,mauritania,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,1600.0,1975.0,4,1934,1937,0.810127,consistent
+iia,mauritius,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,30200.0,35800.0,3,1934,1936,0.843575,consistent
+iia,morocco,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,34700.0,34700.0,4,1934,1937,1.0,consistent
+iia,myanmar,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,40000.0,40800.0,5,1934,1938,0.980392,consistent
+iia,new zealand,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,1000.0,1000.0,4,1934,1937,1.0,consistent
+iia,new zealand,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,62000.0,61625.0,4,1934,1937,1.006085,consistent
+iia,niger,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,1000.0,1000.0,3,1934,1937,1.0,consistent
+iia,niger,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,44900.0,48100.0,4,1934,1937,0.933472,consistent
+iia,philippines,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,65000.0,64000.0,4,1934,1937,1.015625,consistent
+iia,reunion,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,19700.0,20000.0,3,1934,1936,0.985,consistent
+iia,russian federation,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,199000.0,199600.0,5,1934,1938,0.996994,consistent
+iia,serbia,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,15000.0,14800.0,5,1934,1938,1.013514,consistent
+iia,serbia,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,1348200.0,1348260.0,5,1934,1938,0.999955,consistent
+iia,south africa,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,14000.0,12666.6667,3,1934,1936,1.105263,consistent
+iia,south korea,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,17000.0,17400.0,5,1934,1938,0.977011,consistent
+iia,south korea,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,2252500.0,2248460.0,5,1934,1938,1.001797,consistent
+iia,sri lanka,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,6000.0,6000.0,5,1934,1938,1.0,consistent
+iia,syrian arab republic,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,4000.0,5200.0,5,1934,1938,0.769231,consistent
+iia,syrian arab republic,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,272200.0,387360.0,5,1934,1938,0.702705,consistent
+iia,thailand,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,10000.0,10250.0,4,1934,1937,0.97561,consistent
+iia,tunisia,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,58100.0,63025.0,4,1934,1937,0.921856,consistent
+iia,turkey,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,72000.0,74000.0,5,1934,1938,0.972973,consistent
+iia,viet nam,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,2000.0,1500.0,4,1934,1937,1.333333,consistent
+iia,viet nam,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,168700.0,161450.0,4,1934,1937,1.044906,consistent
+iia,zambia,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,2000.0,1250.0,4,1934,1937,1.6,consistent
+iia,zambia,"tobacco, unmanufactured",tonnes,1934-1938,iia_1939_45,73800.0,69825.0,4,1934,1937,1.056928,consistent
+iia,zimbabwe,"tobacco, unmanufactured",ha,1934-1938,iia_1939_45,19000.0,18000.0,4,1934,1937,1.055556,consistent
+iia,czech republic,wheat,ha,1934-1938,iia_1939_45,6000.0,6000.0,5,1934,1938,1.0,consistent
+iia,czech republic,wheat,tonnes,1934-1938,iia_1939_45,9500.0,9460.0,5,1934,1938,1.004228,consistent
+iia,serbia,wheat,ha,1934-1938,iia_1939_45,17000.0,63400.0,5,1934,1938,0.268139,unexplained_dated_higher
+iia,serbia,wheat,tonnes,1934-1938,iia_1939_45,12300.0,53800.0,5,1934,1938,0.228625,unexplained_dated_higher
+iia,algeria,wine,ha,1934-1938,iia_1939_45,394000.0,394400.0,5,1934,1938,0.998986,consistent
+iia,australia,wine,ha,1934-1938,iia_1939_45,20000.0,19750.0,4,1934,1937,1.012658,consistent
+iia,austria,wine,ha,1934-1938,iia_1939_45,29000.0,29250.0,4,1934,1937,0.991453,consistent
+iia,austria,wine,tonnes,1934-1938,iia_1939_45,98843.0,100031.25,4,1934,1937,0.988121,consistent
+iia,bulgaria,wine,ha,1934-1938,iia_1939_45,89000.0,88800.0,5,1934,1938,1.002252,consistent
+iia,bulgaria,wine,tonnes,1934-1938,iia_1939_45,158110.0,158110.0,5,1934,1938,1.0,consistent
+iia,canada,wine,tonnes,1934-1938,iia_1939_45,11543.0,11575.3333,3,1934,1936,0.997207,consistent
+iia,czech republic,wine,ha,1934-1938,iia_1939_45,19000.0,19000.0,5,1934,1938,1.0,consistent
+iia,czech republic,wine,tonnes,1934-1938,iia_1939_45,48500.0,48500.0,4,1934,1937,1.0,consistent
+iia,france,wine,ha,1934-1938,iia_1939_45,1529000.0,1532800.0,5,1934,1938,0.997521,consistent
+iia,france,wine,tonnes,1934-1938,iia_1939_45,6076565.0,6076584.4,5,1934,1938,0.999997,consistent
+iia,germany,wine,ha,1934-1938,iia_1939_45,73000.0,72800.0,5,1934,1938,1.002747,consistent
+iia,germany,wine,tonnes,1934-1938,iia_1939_45,306423.0,306326.0,5,1934,1938,1.000317,consistent
+iia,greece,wine,ha,1934-1938,iia_1939_45,155000.0,153400.0,5,1934,1938,1.01043,consistent
+iia,greece,wine,tonnes,1934-1938,iia_1939_45,30264.0,104507.8,5,1934,1938,0.289586,unexplained_dated_higher
+iia,hungary,wine,ha,1934-1938,iia_1939_45,189000.0,189666.6667,3,1934,1936,0.996485,consistent
+iia,hungary,wine,tonnes,1934-1938,iia_1939_45,323204.0,322040.0,5,1934,1938,1.003614,consistent
+iia,israel,wine,tonnes,1934-1938,iia_1939_45,2425.0,2463.8,5,1934,1938,0.984252,consistent
+iia,italy,wine,ha,1934-1938,iia_1939_45,920000.0,947666.6667,3,1934,1936,0.970805,consistent
+iia,italy,wine,tonnes,1934-1938,iia_1939_45,5683424.0,3235454.4,5,1934,1938,1.756608,consistent
+iia,libya,wine,tonnes,1934-1938,iia_1939_45,3686.0,2845.3333,3,1934,1937,1.295455,consistent
+iia,luxembourg,wine,tonnes,1934-1938,iia_1939_45,7663.0,7643.6,5,1934,1938,1.002538,consistent
+iia,madagascar,wine,ha,1934-1938,iia_1939_45,1000.0,200.0,5,1934,1938,5.0,unexplained_period_higher
+iia,malta,wine,tonnes,1934-1938,iia_1939_45,2425.0,2754.8,5,1934,1938,0.880282,consistent
+iia,morocco,wine,ha,1934-1938,iia_1939_45,18000.0,18500.0,4,1934,1937,0.972973,consistent
+iia,peru,wine,tonnes,1934-1938,iia_1939_45,10864.0,10831.6667,3,1934,1936,1.002985,consistent
+iia,portugal,wine,tonnes,1934-1938,iia_1939_45,773090.0,771518.6,5,1934,1938,1.002037,consistent
+iia,romania,wine,tonnes,1934-1938,iia_1939_45,901227.0,901246.4,5,1934,1938,0.999978,consistent
+iia,serbia,wine,ha,1934-1938,iia_1939_45,211000.0,210800.0,5,1934,1938,1.000949,consistent
+iia,serbia,wine,tonnes,1934-1938,iia_1939_45,428255.0,402065.0,5,1934,1938,1.065139,consistent
+iia,spain,wine,tonnes,1934-1938,iia_1939_45,1868414.0,1697257.5,4,1934,1937,1.100843,consistent
+iia,switzerland,wine,tonnes,1934-1938,iia_1939_45,63050.0,62894.8,5,1934,1938,1.002468,consistent
+iia,syrian arab republic,wine,tonnes,1934-1938,iia_1939_45,3395.0,3880.0,5,1934,1938,0.875,consistent
+iia,tunisia,wine,ha,1934-1938,iia_1939_45,43000.0,43400.0,5,1934,1938,0.990783,consistent
+iia,united states of america,wine,ha,1934-1938,iia_1939_45,70000.0,69600.0,5,1934,1938,1.005747,consistent
+iia,united states of america,wine,tonnes,1934-1938,iia_1939_45,83226.0,341866.8,5,1934,1938,0.243446,unexplained_dated_higher

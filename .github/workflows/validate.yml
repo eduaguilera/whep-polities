@@ -505,6 +505,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_period_volume_provenance.py
 
+      # A multi-year average must equal the mean of the years it covers, which makes this the only
+      # IIA magnitude test that needs no second opinion — no other volume, no other source, no
+      # absolute threshold. Over 1,655 comparable pairs the median ratio is 1.000 in EVERY volume,
+      # and that built-in control is what licenses reading the tails: 20 pairs sit at ~100x (18 of
+      # them tobacco/hops, i.e. issue 416 arriving through the period rows) and 10 at ~1/10. It also
+      # catches a class issue 424 shows sits under the shared 20x collapse/spike floor.
+      - name: Sources — a period average must match the mean of its own dated years
+        if: '!cancelled()'
+        run: python3 scripts/validate_period_vs_dated_consistency.py
+
       # Where a source REVISES its own stated area by >=50%, does our periodisation have a boundary
       # there? 11 of 18 agree — Serbia -> Yugoslavia 87,776 -> 247,916, Romania's Transylvania gains,
       # Trianon — which corroborates the spans from data rather than from historical reading, and no
