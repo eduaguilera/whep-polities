@@ -27,15 +27,26 @@ blank cells as 0 and its window is exactly this era -- so two open defects inter
 area disables the yield test for the production row beside it.
 
 Checks:
-  A. VOCABULARY -- seven verdicts, and `convicted` agrees with which of them convict.
+  A. VOCABULARY -- eight verdicts, and `convicted` agrees with which of them convict.
   B. ARITHMETIC -- `implied_yield` is production/area where area > 0, `ratio_to_own` is
      production/own_pre_era_median, and a row with no area carries no yield.
   C. THRESHOLD COHERENCE -- each verdict's own numbers must place it in that class: nothing called
-     impossible below 20 t/ha, nothing called plausible above 3, nothing called a level shift below 30x.
-     This is what stops a threshold being edited in the tool while the table keeps its old labels.
+     impossible below 20 t/ha, nothing called plausible above 3, nothing called a level shift below 30x,
+     nothing called a level DROP above 1/30, and nothing called level-CONSISTENT outside the band
+     between the two. This is what stops a threshold being edited in the tool while the table keeps
+     its old labels.
   D. ZERO AREA IS A VERDICT, NOT A SKIP (see above).
   E. THE ERA FLOOR -- every row is 1934 or later, since 1933 is the last year a second yearbook volume
      offers an opinion (issue 414) and a row before it belongs to a different question.
+
+THE RATIO TEST WAS ONE-SIDED IN BOTH THE TOOL AND THIS GATE (issue 416). The level arm convicted at
+`ratio >= 30` and filed everything else `no_area_level_consistent`, so a value could not be too SMALL
+to fail: `germany / tobacco, unmanufactured / 1945` carried production 0 against a pre-era median of
+25,833.9 t and was reported as consistent with it. The tool could not be fixed alone -- arm A here
+pins the verdict names and the header check forbids adding a column -- so `no_area_level_drop` and
+the two clauses that hold it landed in the same change. What that adds to the earlier lesson about
+dead arms is a narrower shape: EVERY arm here fired, on the half of the ratio axis it could see. A
+mutation test proves an arm is live; it does not prove the arm's rule is complete.
 
 ALL 5 ARMS WERE VERIFIED TO FIRE on 2026-08-20, by mutating this table to trigger each in turn.
 An arm that cannot fire passes every run while asserting nothing, and this repo has shipped three of
@@ -43,6 +54,15 @@ those (issues 407, 412, 420), so "the gate is green" is only meaningful once eac
 Verified: an unknown verdict (A); an implied_yield disagreeing with production/area (B); an
 `impossible_yield` row pushed below the 20 t/ha line (C); a zero-area row reclassified (D, which
 also carries the permanent selftest case); a row dated before 1934 (E).
+
+RE-VERIFIED on 2026-08-31 for the two-sided clauses, and the second one is the load-bearing test. It
+is not enough to check that a `no_area_level_drop` row really sits below 1/30: with only that clause,
+DELETING the low arm from the tool would send its row back to `no_area_level_consistent` and this
+gate would pass -- the pre-fix state restored with nothing objecting. The consistent-band clause is
+what closes that, and it carries the second permanent selftest case
+(`mutate_era_level_drop_exonerated`). Both were confirmed by mutating the committed table: the
+germany row reclassified to `no_area_level_consistent` is reported, and so is a `no_area_level_drop`
+row whose ratio is raised above 1/30.
 
 The class COUNTS are printed, not pinned: they move whenever the panel or the matcher legitimately moves.
 What is pinned is arithmetic and the zero-area rule, neither of which can legitimately break.
@@ -57,9 +77,31 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/era_shift_verdict
 
 FIELDS = ["source", "label", "whep_code", "item", "year", "period", "unit", "production", "area_ha",
           "implied_yield", "own_pre_era_median", "ratio_to_own", "verdict", "convicted"]
-CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift"}
+# THIS SET IS RESTATED HERE RATHER THAN IMPORTED from `29_era_shift_verdicts.py`, deliberately: an
+# imported rule moves with the table it is meant to check, so the two copies must change in lockstep
+# and this is the line that was missed when the low arm was added. That is also the reason the arm-C
+# clauses below restate the thresholds instead of reading the tool's.
+#
+# `no_area_level_drop` CONVICTS, and the choice is deliberate rather than symmetric-for-tidiness.
+# What the level arm asserts is that a row disagreeing with the label's own pre-era level by 30x is
+# not a usable observation of that label in that year. That claim does not depend on the sign: a
+# production of 0 against a pre-era median of 25,833.9 t is the LARGEST disagreement a ratio can
+# express, not a small one, and filing it as a neutral class would say the screen looked at the row
+# and found nothing -- which is exactly the failure the arm was added to remove. The alternative
+# reading, that a crop can genuinely collapse in a war year, is a claim about the WORLD; this table's
+# verdicts are claims about a CELL, and the sole live member is independently corroborated (germany
+# holds one cell in the whole of 1945 in `iia_1939_45` against 20-36 in every other year, and the
+# tobacco area series beside it has no 1945 cell at all). If a future member of this class turns out
+# to be a real collapse, the honest fix is a new non-convicting verdict for it, not a silent
+# demotion of the whole arm back to one side.
+CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift",
+              "no_area_level_drop"}
 NOT_CONVICTING = {"high_yield_3to20", "plausible_yield", "no_area_level_consistent", "untestable"}
 IMPOSSIBLE_YIELD, HIGH_YIELD, LEVEL_SHIFT, ERA_FROM = 20.0, 3.0, 30.0, 1934
+# DERIVED, NOT A SECOND TUNABLE. Two independent constants can be edited apart, and an arm whose
+# threshold has drifted to 0.0 stops firing while its twin keeps working -- silently, because each
+# arm is checked on its own rows.
+LEVEL_DROP = 1.0 / LEVEL_SHIFT
 
 
 def _f(s):
@@ -144,6 +186,29 @@ def main() -> int:
         if v == "no_area_level_shift" and (ratio is None or ratio < LEVEL_SHIFT):
             problems.append(f"C {w}: classed no_area_level_shift with ratio_to_own {ratio}, not at "
                             f"least {LEVEL_SHIFT}")
+        # ARM C WAS ITSELF ONE-SIDED, and that is why the tool could not be fixed alone. It pinned
+        # the high class at `ratio >= 30` and offered no low counterpart, so a low-side conviction
+        # was not merely unimplemented -- it was unrepresentable: arm A rejects any verdict name
+        # outside its set and the header check forbids adding a column instead. Note this is a
+        # narrower failure than a dead arm and a mutation test cannot see it: every arm here DID
+        # fire, on the half of the ratio axis it could see.
+        if v == "no_area_level_drop" and (ratio is None or ratio > LEVEL_DROP):
+            problems.append(f"C {w}: classed no_area_level_drop with ratio_to_own {ratio}, not at "
+                            f"most {LEVEL_DROP:.6f}; a value is convicted for being too SMALL "
+                            f"against the label's own pre-era median, at the same {LEVEL_SHIFT}x "
+                            f"the high arm uses")
+        # AND THE CONSISTENT CLASS MUST NOW SIT BETWEEN THE TWO, which is the arm that stops the
+        # low side from being deleted later: with only the clause above, dropping the low arm from
+        # the tool would send its row back to `no_area_level_consistent` and nothing would object.
+        # Verified by mutation -- reclassifying the germany row to `no_area_level_consistent` (the
+        # exact pre-fix state) is reported here, which the vocabulary and threshold arms cannot see.
+        if v == "no_area_level_consistent" and ratio is not None and not (
+                LEVEL_DROP < ratio < LEVEL_SHIFT):
+            problems.append(f"C {w}: classed no_area_level_consistent with ratio_to_own {ratio}, "
+                            f"outside the band {LEVEL_DROP:.6f}-{LEVEL_SHIFT} it names. A "
+                            f"production of 0 against a positive baseline is the MAXIMAL "
+                            f"disagreement a ratio can express, and it sat in this class until the "
+                            f"level arm became two-sided (issue 416)")
         if v == "untestable" and (yld is not None or ratio is not None):
             problems.append(f"C {w}: classed untestable but carries yield {yld} / ratio {ratio}")
 

@@ -1,0 +1,428 @@
+source,label,item,year,period,verdict,convicted,production,area_ha,raw_label,n_raw_labels,volume,n_volumes,name_confirmed,resolution,overlap_years,n_overlap_years,prod_factor,area_factor,area_factor_pairs,corrected_production,corrected_area,corrected_yield,attribution,plausible_after
+iia,benin,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,4000,0,french dahomey|french ivory coast,2,iia_1938_39,1,False,single_cell,,0,,,0,,0,,ambiguous_raw_label,
+iia,benin,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,4000,0,french dahomey|french ivory coast,2,iia_1938_39,1,False,single_cell,,0,,,0,,0,,ambiguous_raw_label,
+iia,micronesia (federated states of),"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,200,0,french mauritania|japanese south pacific,2,iia_1938_39,1,False,single_cell,,0,,,0,,0,,ambiguous_raw_label,
+iia,"china, mainland","tobacco, unmanufactured",,1934-1938,impossible_yield,True,64152300,566000,china|china: manchuria,2,iia_1939_45,1,False,component_sum,,0,,,0,,566000,,component_factor_incomplete,
+iia,indonesia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,3471000,41000,dutch java and madura|dutch sumatra,2,iia_1939_45,1,False,component_sum,,0,,,0,,41000,,component_factor_incomplete,
+iia,indonesia,"tobacco, unmanufactured",1940,,impossible_yield,True,2079600,19000,dutch java and madura|dutch sumatra,2,iia_1939_45,1,False,component_sum,,0,,,0,,19000,,component_factor_incomplete,
+iia,angola,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,237100,4000,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1934,,impossible_yield,True,201700,3000,portuguese angola,1,iia_1938_39,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1935,,impossible_yield,True,241400,4000,portuguese angola,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1936,,impossible_yield,True,249100,4000,portuguese angola,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1937,,impossible_yield,True,218300,4000,portuguese angola,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1939,,impossible_yield,True,204900,3000,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1940,,impossible_yield,True,220200,4000,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1941,,impossible_yield,True,273700,5000,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,5000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1942,,impossible_yield,True,357800,6000,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,6000,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1943,,no_area_level_shift,True,271300,,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1944,,no_area_level_shift,True,256500,,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,angola,"tobacco, unmanufactured",1945,,no_area_level_shift,True,267800,,portuguese angola,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,argentina,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1552200,16000,argentina,1,iia_1939_45,1,True,single_cell,,0,,,0,,16000,,no_overlap_pair,
+iia,australia,hops,,1934-1938,impossible_yield,True,104500,400,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,400,,no_overlap_pair,
+iia,australia,hops,1934,,impossible_yield,True,93700,4000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,australia,hops,1935,,impossible_yield,True,109000,4000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,australia,hops,1936,,impossible_yield,True,107800,5000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,5000,,no_overlap_pair,
+iia,australia,hops,1937,,impossible_yield,True,103300,4000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,australia,hops,1939,,impossible_yield,True,90400,500,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,500,,no_overlap_pair,
+iia,australia,hops,1940,,impossible_yield,True,146400,500,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,500,,no_overlap_pair,
+iia,australia,hops,1941,,impossible_yield,True,137500,500,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,500,,no_overlap_pair,
+iia,australia,hops,1942,,impossible_yield,True,126000,500,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,500,,no_overlap_pair,
+iia,australia,hops,1943,,impossible_yield,True,133900,500,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,500,,no_overlap_pair,
+iia,australia,hops,1944,,impossible_yield,True,118500,500,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,500,,no_overlap_pair,
+iia,australia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,215700,4000,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,australia,"tobacco, unmanufactured",1934,,impossible_yield,True,141200,3000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,australia,"tobacco, unmanufactured",1935,,impossible_yield,True,252100,4000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,australia,"tobacco, unmanufactured",1936,,impossible_yield,True,235800,5000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,5000,,no_overlap_pair,
+iia,australia,"tobacco, unmanufactured",1937,,impossible_yield,True,271200,4000,australia,1,iia_1938_39,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,australia,"tobacco, unmanufactured",1939,,impossible_yield,True,224800,3000,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,australia,"tobacco, unmanufactured",1940,,impossible_yield,True,248400,3000,australia,1,iia_1939_45,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,5200,,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,4000,0,french dahomey,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,4000,0,french dahomey,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1939,,no_area_level_shift,True,6900,,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1940,,no_area_level_shift,True,6600,,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1941,,no_area_level_shift,True,7300,,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1942,,high_yield_3to20,False,15800,1000,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1943,,impossible_yield,True,22900,1000,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1944,,impossible_yield,True,56600,1000,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,benin,"tobacco, unmanufactured",1945,,impossible_yield,True,56200,2000,french dahomey,1,iia_1939_45,1,False,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,bolivia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,353500,3000,bolivia,1,iia_1939_45,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,cabo verde,"tobacco, unmanufactured",,1934-1938,untestable,False,900,,portuguese cape verde,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,cabo verde,"tobacco, unmanufactured",1939,,untestable,False,900,,portuguese cape verde,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,cabo verde,"tobacco, unmanufactured",1940,,untestable,False,800,,portuguese cape verde,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,cabo verde,"tobacco, unmanufactured",1941,,untestable,False,500,,portuguese cape verde,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,cabo verde,"tobacco, unmanufactured",1943,,untestable,False,27200,,portuguese cape verde,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,cabo verde,"tobacco, unmanufactured",1944,,untestable,False,5500,,portuguese cape verde,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,cameroon,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,4400,0,british‑french cameroon,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,cameroon,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,10000,0,british‑french cameroon,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,cameroon,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,7000,0,british‑french cameroon,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,chile,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,691800,3000,chile,1,iia_1939_45,1,True,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,chile,"tobacco, unmanufactured",1939,,impossible_yield,True,956500,5000,chile,1,iia_1939_45,1,True,single_cell,,0,,,0,,5000,,no_overlap_pair,
+iia,"china, mainland","tobacco, unmanufactured",1940,,impossible_yield,True,51345800,442000,china,1,iia_1939_45,1,True,single_cell,,0,,,0,,442000,,no_overlap_pair,
+iia,colombia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1224100,11000,colombia,1,iia_1939_45,1,True,single_cell,,0,,,0,,11000,,no_overlap_pair,
+iia,costa rica,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,26500,1000,costa rica,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,dominican republic,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,696394900,,dominican republic,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,dr congo,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,404600,5000,belgian congo,1,iia_1939_45,1,True,single_cell,,0,,,0,,5000,,no_overlap_pair,
+iia,ecuador,"tobacco, unmanufactured",,1934-1938,no_area_level_consistent,False,69000,,ecuador,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,el salvador,"tobacco, unmanufactured",,1934-1938,plausible_yield,False,21000,63000,el salvador,1,iia_1939_45,1,True,single_cell,,0,,,0,,63000,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",,1934-1938,high_yield_3to20,False,13700,4000,british swaziland,1,iia_1939_45,1,False,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,11900,0,british swaziland,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,12800,0,british swaziland,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,9100,0,british swaziland,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,10600,0,british swaziland,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1939,,no_area_level_shift,True,19200,,british swaziland,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1940,,no_area_level_shift,True,15600,,british swaziland,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1941,,no_area_level_shift,True,13200,,british swaziland,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1942,,no_area_level_shift,True,26300,,british swaziland,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1943,,no_area_level_shift,True,16000,,british swaziland,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,eswatini,"tobacco, unmanufactured",1944,,no_area_level_shift,True,15600,,british swaziland,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,honduras,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,337300,6000,honduras,1,iia_1939_45,1,True,single_cell,,0,,,0,,6000,,no_overlap_pair,
+iia,iran,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1500000,12000,iran,1,iia_1939_45,1,True,single_cell,,0,,,0,,12000,,no_overlap_pair,
+iia,iran,"tobacco, unmanufactured",1940,,impossible_yield,True,1270000,13000,iran,1,iia_1939_45,1,True,single_cell,,0,,,0,,13000,,no_overlap_pair,
+iia,iraq,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,510700,4000,british iraq,1,iia_1939_45,1,True,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,iraq,"tobacco, unmanufactured",1940,,impossible_yield,True,422000,7000,british iraq,1,iia_1939_45,1,True,single_cell,,0,,,0,,7000,,no_overlap_pair,
+iia,ireland,"tobacco, unmanufactured",,1934-1938,untestable,False,18500,,ireland,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,108000,2000,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",1939,,impossible_yield,True,62400,1000,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",1940,,impossible_yield,True,76000,1000,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",1941,,impossible_yield,True,49700,1000,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",1942,,impossible_yield,True,44800,1000,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",1943,,impossible_yield,True,23600,1000,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",1944,,impossible_yield,True,74900,1000,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,lebanon,"tobacco, unmanufactured",1945,,untestable,False,121400,,french lebanon,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,libya,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,75000,,italian libya,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,30200,,british mauritius,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,27600,0,british mauritius,1,iia_1938_39,1,True,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,32000,0,british mauritius,1,iia_1938_39,1,True,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,47800,0,british mauritius,1,iia_1938_39,1,True,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1939,,no_area_level_shift,True,26900,,british mauritius,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1940,,no_area_level_shift,True,36300,,british mauritius,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1941,,no_area_level_shift,True,36000,,british mauritius,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1942,,no_area_level_shift,True,39900,,british mauritius,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1943,,no_area_level_shift,True,32000,,british mauritius,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,mauritius,"tobacco, unmanufactured",1944,,no_area_level_shift,True,28700,,british mauritius,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,micronesia (federated states of),"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,1000,0,japanese south pacific,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,micronesia (federated states of),"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,1100,0,japanese south pacific,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,micronesia (federated states of),"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,400,0,japanese south pacific,1,iia_1938_39,1,False,single_cell,,0,,,0,,0,,no_overlap_pair,
+iia,mozambique,"tobacco, unmanufactured",1935,,high_yield_3to20,False,18700,1000,portuguese mozambique: company concession,1,iia_1938_39,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,mozambique,"tobacco, unmanufactured",1936,,high_yield_3to20,False,18700,1000,portuguese mozambique: province,1,iia_1938_39,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,myanmar,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,4519600,40000,british burma,1,iia_1939_45,1,False,single_cell,,0,,,0,,40000,,no_overlap_pair,
+iia,myanmar,"tobacco, unmanufactured",1940,,impossible_yield,True,6247200,56000,british burma,1,iia_1939_45,1,False,single_cell,,0,,,0,,56000,,no_overlap_pair,
+iia,netherlands,"tobacco, unmanufactured",1945,,untestable,False,0,,netherlands,1,iia_1939_45,1,True,single_cell,,0,,0,1,,,,no_overlap_pair,
+iia,new zealand,hops,,1934-1938,impossible_yield,True,39700,300,new zealand,1,iia_1939_45,1,True,single_cell,,0,,9.7087,1,,30.9,,no_overlap_pair,
+iia,paraguay,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,765300,9000,paraguay,1,iia_1939_45,1,True,single_cell,,0,,,0,,9000,,no_overlap_pair,
+iia,peru,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,92500,,peru,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",,1934-1938,plausible_yield,False,19700,108000,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,108000,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1934,,no_area_level_consistent,False,20000,,french reunion,1,iia_1938_39,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1935,,no_area_level_consistent,False,20000,,french reunion,1,iia_1938_39,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1936,,no_area_level_consistent,False,20000,,french reunion,1,iia_1938_39,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1939,,no_area_level_consistent,False,16500,,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1940,,no_area_level_consistent,False,15200,,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1941,,no_area_level_consistent,False,17600,,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1942,,no_area_level_consistent,False,19600,,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1943,,no_area_level_consistent,False,18400,,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1944,,no_area_level_consistent,False,16900,,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,reunion,"tobacco, unmanufactured",1945,,no_area_level_consistent,False,22300,,french reunion,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,russian federation,hops,,1934-1938,impossible_yield,True,100000,2000,ussr,1,iia_1939_45,1,False,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,sri lanka,"tobacco, unmanufactured",,1934-1938,high_yield_3to20,False,95400,6000,british ceylon,1,iia_1939_45,1,False,single_cell,,0,,1.0526,1,,5700,,no_overlap_pair,
+iia,suriname,"tobacco, unmanufactured",,1934-1938,untestable,False,1000,,dutch guiana,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,suriname,"tobacco, unmanufactured",1939,,untestable,False,2200,,dutch guiana,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,suriname,"tobacco, unmanufactured",1940,,untestable,False,1200,,dutch guiana,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,suriname,"tobacco, unmanufactured",1941,,untestable,False,1800,,dutch guiana,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,suriname,"tobacco, unmanufactured",1943,,untestable,False,400,,dutch guiana,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,suriname,"tobacco, unmanufactured",1944,,untestable,False,900,,dutch guiana,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,suriname,"tobacco, unmanufactured",1945,,untestable,False,300,,dutch guiana,1,iia_1939_45,1,True,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,syrian arab republic,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,272200,4000,french syria,1,iia_1939_45,1,False,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,syrian arab republic,"tobacco, unmanufactured",1940,,no_area_level_shift,True,553500,,french syria,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,syrian arab republic,"tobacco, unmanufactured",1941,,impossible_yield,True,474500,7000,french syria,1,iia_1939_45,1,False,single_cell,,0,,,0,,7000,,no_overlap_pair,
+iia,syrian arab republic,"tobacco, unmanufactured",1942,,high_yield_3to20,False,60400,6000,french syria,1,iia_1939_45,1,False,single_cell,,0,,,0,,6000,,no_overlap_pair,
+iia,syrian arab republic,"tobacco, unmanufactured",1943,,impossible_yield,True,287500,5000,french syria,1,iia_1939_45,1,False,single_cell,,0,,,0,,5000,,no_overlap_pair,
+iia,syrian arab republic,"tobacco, unmanufactured",1944,,impossible_yield,True,392500,6000,french syria,1,iia_1939_45,1,False,single_cell,,0,,,0,,6000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",,1934-1938,high_yield_3to20,False,24800,2000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",1939,,impossible_yield,True,44700,2000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",1940,,impossible_yield,True,52400,2000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",1941,,impossible_yield,True,65900,3000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",1942,,impossible_yield,True,83000,3000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,3000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",1943,,impossible_yield,True,106900,4000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",1944,,impossible_yield,True,104000,4000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,tanzania,"tobacco, unmanufactured",1945,,impossible_yield,True,95000,4000,british tanganyika,1,iia_1939_45,1,False,single_cell,,0,,,0,,4000,,no_overlap_pair,
+iia,thailand,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,882800,10000,siam,1,iia_1939_45,1,True,single_cell,,0,,,0,,10000,,no_overlap_pair,
+iia,thailand,"tobacco, unmanufactured",1940,,impossible_yield,True,937900,8000,siam,1,iia_1939_45,1,True,single_cell,,0,,,0,,8000,,no_overlap_pair,
+iia,uruguay,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,54000,1000,uruguay,1,iia_1939_45,1,True,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,venezuela,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,322100,8000,venezuela,1,iia_1939_45,1,True,single_cell,,0,,,0,,8000,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,73800,2000,british northern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1934,,impossible_yield,True,70600,1000,british northern rhodesia,1,iia_1938_39,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1935,,impossible_yield,True,57800,1000,british northern rhodesia,1,iia_1938_39,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1936,,impossible_yield,True,57200,1000,british northern rhodesia,1,iia_1938_39,1,False,single_cell,,0,,,0,,1000,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1937,,impossible_yield,True,93700,2000,british northern rhodesia,1,iia_1938_39,1,False,single_cell,,0,,,0,,2000,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1939,,no_area_level_shift,True,100900,,british northern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1940,,no_area_level_shift,True,104300,,british northern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1941,,no_area_level_shift,True,122500,,british northern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1942,,no_area_level_shift,True,98400,,british northern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1943,,no_area_level_shift,True,107900,,british northern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,zambia,"tobacco, unmanufactured",1944,,no_area_level_shift,True,131500,,british northern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,,,no_overlap_pair,
+iia,zimbabwe,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1050600,19000,british southern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,19000,,no_overlap_pair,
+iia,zimbabwe,"tobacco, unmanufactured",1945,,impossible_yield,True,2141800,35000,british southern rhodesia,1,iia_1939_45,1,False,single_cell,,0,,,0,,35000,,no_overlap_pair,
+iia,albania,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,161200,2000,albania,1,iia_1939_45,1,True,single_cell,1933,1,99.9724,0.9597,1,1612.4449,2084,0.7737,overlap_100x,True
+iia,algeria,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1913900,23000,french algeria,1,iia_1939_45,1,True,single_cell,1933,1,99.9159,1.0048,1,19155.1016,22889.0588,0.8369,overlap_100x,True
+iia,algeria,"tobacco, unmanufactured",1945,,impossible_yield,True,680400,10000,french algeria,1,iia_1939_45,1,True,single_cell,1933,1,99.9159,1.0048,1,6809.7242,9951.7647,0.6843,overlap_100x,True
+iia,american samoa,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,2000,0,us samoa,1,iia_1938_39,1,False,single_cell,1933,1,100,0,1,20,0,,overlap_100x,
+iia,austria,hops,,1934-1938,no_area_level_consistent,False,4900,,austria,1,iia_1939_45,1,True,single_cell,1933,1,99.7024,17.8571,1,49.1463,,,overlap_100x,
+iia,belgium,hops,,1934-1938,impossible_yield,True,120600,900,belgium,1,iia_1939_45,1,True,single_cell,1933,1,100.0419,10.0503,1,1205.4954,89.55,13.4617,overlap_100x,False
+iia,belgium,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,633800,3000,belgium,1,iia_1939_45,1,True,single_cell,1933,1,99.9984,1.1161,1,6338.0993,2688,2.3579,overlap_100x,True
+iia,brazil,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,9265800,99000,brazil,1,iia_1939_45,1,True,single_cell,1933,1,90.4909,,0,102394.8162,99000,1.0343,overlap_100x,True
+iia,bulgaria,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,13056700,34000,bulgaria,1,iia_1939_45,1,True,single_cell,1933,1,100.0016,0.9923,1,130564.8645,34263.1852,3.8106,overlap_100x,False
+iia,burundi,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,34800,,belgian ruanda-urundi,1,iia_1939_45,1,False,single_cell,1933,1,100,0,1,348,,,overlap_100x,
+iia,burundi,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,52500,0,belgian ruanda-urundi,1,iia_1938_39,1,False,single_cell,1933,1,100,0,1,525,0,,overlap_100x,
+iia,burundi,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,52500,0,belgian ruanda-urundi,1,iia_1938_39,1,False,single_cell,1933,1,100,0,1,525,0,,overlap_100x,
+iia,burundi,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,23000,0,belgian ruanda-urundi,1,iia_1938_39,1,False,single_cell,1933,1,100,0,1,230,0,,overlap_100x,
+iia,canada,hops,,1934-1938,impossible_yield,True,73100,400,canada,1,iia_1939_45,1,True,single_cell,1933,1,99.9851,10.0503,1,731.1091,39.8,18.3696,overlap_100x,False
+iia,canada,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,2846800,24000,canada,1,iia_1939_45,1,True,single_cell,1933,1,100.0688,1.0217,1,28448.4324,23489.6842,1.2111,overlap_100x,True
+iia,"china, taiwan province of","tobacco, unmanufactured",,1934-1938,impossible_yield,True,225300,1000,japanese taiwan,1,iia_1939_45,1,False,single_cell,1933,1,100.0195,1.287,1,2252.5602,777,2.899,overlap_100x,True
+iia,"china, taiwan province of","tobacco, unmanufactured",1934,,impossible_yield,True,214000,1000,japanese taiwan,1,iia_1938_39,1,False,single_cell,1933,1,100.0195,1.287,1,2139.5823,777,2.7536,overlap_100x,True
+iia,"china, taiwan province of","tobacco, unmanufactured",1935,,impossible_yield,True,203500,1000,japanese taiwan,1,iia_1938_39,1,False,single_cell,1933,1,100.0195,1.287,1,2034.6028,777,2.6185,overlap_100x,True
+iia,"china, taiwan province of","tobacco, unmanufactured",1936,,no_area_level_shift,True,222400,,japanese taiwan,1,iia_1938_39,1,False,single_cell,1933,1,100.0195,1.287,1,2223.5659,,,overlap_100x,
+iia,"china, taiwan province of","tobacco, unmanufactured",1937,,impossible_yield,True,261100,1000,japanese taiwan,1,iia_1938_39,1,False,single_cell,1933,1,100.0195,1.287,1,2610.4904,777,3.3597,overlap_100x,False
+iia,"china, taiwan province of","tobacco, unmanufactured",1940,,impossible_yield,True,471700,4000,japanese taiwan,1,iia_1939_45,1,False,single_cell,1933,1,100.0195,1.287,1,4716.0793,3108,1.5174,overlap_100x,True
+iia,congo,"tobacco, unmanufactured",,1934-1938,high_yield_3to20,False,102100,7000,french equatorial africa,1,iia_1939_45,1,True,single_cell,1933,1,100,0.973,1,1021,7194.4444,0.1419,overlap_100x,False
+iia,congo,"tobacco, unmanufactured",1934,,high_yield_3to20,False,108500,7000,french equatorial africa,1,iia_1938_39,1,True,single_cell,1933,1,100,0.973,1,1085,7194.4444,0.1508,overlap_100x,False
+iia,congo,"tobacco, unmanufactured",1935,,high_yield_3to20,False,100000,6000,french equatorial africa,1,iia_1938_39,1,True,single_cell,1933,1,100,0.973,1,1000,6166.6667,0.1622,overlap_100x,False
+iia,cuba,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,2192100,45000,cuba,1,iia_1939_45,1,True,single_cell,1933,1,101.4137,0.9896,1,21615.4274,45474,0.4753,overlap_100x,True
+iia,cyprus,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,23600,1000,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,235.5462,1000,0.2355,overlap_100x,True
+iia,cyprus,"tobacco, unmanufactured",1934,,impossible_yield,True,72500,2000,british cyprus,1,iia_1938_39,1,True,single_cell,1933,1,100.1927,0,1,723.6058,2000,0.3618,overlap_100x,True
+iia,cyprus,"tobacco, unmanufactured",1935,,no_area_level_shift,True,26800,,british cyprus,1,iia_1938_39,1,True,single_cell,1933,1,100.1927,0,1,267.4846,,,overlap_100x,
+iia,cyprus,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,13700,0,british cyprus,1,iia_1938_39,1,True,single_cell,1933,1,100.1927,0,1,136.7365,0,,overlap_100x,
+iia,cyprus,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,3400,0,british cyprus,1,iia_1938_39,1,True,single_cell,1933,1,100.1927,0,1,33.9346,0,,overlap_100x,
+iia,cyprus,"tobacco, unmanufactured",1938,,no_area_level_shift,True,1600,,british cyprus,1,iia_1938_39,1,True,single_cell,1933,1,100.1927,0,1,15.9692,,,overlap_100x,
+iia,cyprus,"tobacco, unmanufactured",1939,,no_area_level_shift,True,5200,,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,51.9,,,overlap_100x,
+iia,cyprus,"tobacco, unmanufactured",1940,,no_area_level_shift,True,16500,,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,164.6827,,,overlap_100x,
+iia,cyprus,"tobacco, unmanufactured",1941,,impossible_yield,True,21300,1000,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,212.5904,1000,0.2126,overlap_100x,True
+iia,cyprus,"tobacco, unmanufactured",1942,,no_area_level_shift,True,46500,,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,464.1058,,,overlap_100x,
+iia,cyprus,"tobacco, unmanufactured",1943,,impossible_yield,True,68100,2000,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,679.6904,2000,0.3398,overlap_100x,True
+iia,cyprus,"tobacco, unmanufactured",1944,,impossible_yield,True,56800,1000,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,566.9077,1000,0.5669,overlap_100x,True
+iia,cyprus,"tobacco, unmanufactured",1945,,impossible_yield,True,81300,2000,british cyprus,1,iia_1939_45,1,True,single_cell,1933,1,100.1927,0,1,811.4365,2000,0.4057,overlap_100x,True
+iia,czech republic,hops,,1934-1938,impossible_yield,True,973500,11300,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,9734.5341,1126.3796,8.6423,overlap_100x,False
+iia,czech republic,hops,1934,,high_yield_3to20,False,707400,109000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0048,10.0321,1,7073.6614,10865.0777,0.651,overlap_100x,True
+iia,czech republic,hops,1935,,high_yield_3to20,False,761900,112000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0048,10.0321,1,7618.6353,11164.1165,0.6824,overlap_100x,True
+iia,czech republic,hops,1936,,high_yield_3to20,False,1208100,114000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0048,10.0321,1,12080.4218,11363.4757,1.0631,overlap_100x,True
+iia,czech republic,hops,1937,,high_yield_3to20,False,1216500,113000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0048,10.0321,1,12164.4178,11263.7961,1.08,overlap_100x,True
+iia,czech republic,hops,1939,,impossible_yield,True,763400,10500,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,7633.6346,1046.6359,7.2935,overlap_100x,False
+iia,czech republic,hops,1940,,impossible_yield,True,457600,8900,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,4575.781,887.1485,5.1579,overlap_100x,False
+iia,czech republic,hops,1941,,impossible_yield,True,352700,7500,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,3526.8312,747.5971,4.7176,overlap_100x,False
+iia,czech republic,hops,1942,,impossible_yield,True,310700,7300,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,3106.8513,727.6612,4.2696,overlap_100x,False
+iia,czech republic,hops,1943,,impossible_yield,True,315200,6300,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,3151.8491,627.9816,5.019,overlap_100x,False
+iia,czech republic,hops,1944,,high_yield_3to20,False,46100,7000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,460.9779,697.7573,0.6607,overlap_100x,True
+iia,czech republic,hops,1945,,impossible_yield,True,372100,8300,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,10.0321,1,3720.8219,827.3408,4.4973,overlap_100x,False
+iia,czech republic,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,41410600,10000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,414091.9363,10030,41.2853,overlap_100x,False
+iia,czech republic,"tobacco, unmanufactured",1934,,impossible_yield,True,1368300,10000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.997,1,13682.5353,10030,1.3642,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1935,,impossible_yield,True,1363100,10000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.997,1,13630.5371,10030,1.359,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1936,,impossible_yield,True,1507200,10000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.997,1,15071.4881,10030,1.5026,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1937,,impossible_yield,True,1403600,10000,czechoslovakia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.997,1,14035.5233,10030,1.3994,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1939,,impossible_yield,True,933000,6000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,9329.6831,6018,1.5503,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1940,,impossible_yield,True,780000,6000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,7799.7351,6018,1.2961,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1941,,impossible_yield,True,691400,5000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,6913.7652,5015,1.3786,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1942,,impossible_yield,True,746800,5000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,7467.7464,5015,1.4891,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1943,,impossible_yield,True,542900,2000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,5428.8156,2006,2.7063,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1944,,impossible_yield,True,392800,3000,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,3927.8666,3009,1.3054,overlap_100x,True
+iia,czech republic,"tobacco, unmanufactured",1945,,no_area_level_shift,True,250000,,czechoslovakia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.997,1,2499.9151,,,overlap_100x,
+iia,eritrea,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,2600,,italian eritrea,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,26,,,overlap_100x,
+iia,eritrea,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,3500,0,italian eritrea,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,35,0,,overlap_100x,
+iia,eritrea,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,2500,0,italian eritrea,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,25,0,,overlap_100x,
+iia,eritrea,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,2700,0,italian eritrea,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,27,0,,overlap_100x,
+iia,eritrea,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,2100,0,italian eritrea,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,21,0,,overlap_100x,
+iia,france,hops,,1934-1938,impossible_yield,True,223900,1800,france,1,iia_1939_45,1,True,single_cell,1933,1,100.0208,9.9532,1,2238.5342,180.8471,12.3781,overlap_100x,False
+iia,france,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,3566700,18000,france,1,iia_1939_45,1,True,single_cell,1933,1,99.9986,1.0177,1,35667.5018,17687,2.0166,overlap_100x,True
+iia,germany,hops,,1934-1938,impossible_yield,True,908700,9600,germany,1,iia_1939_45,1,True,single_cell,1933,1,100.0059,10.0355,1,9086.465,956.6,9.4987,overlap_100x,False
+iia,germany,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,3360700,13000,germany,1,iia_1939_45,1,True,single_cell,1933,1,99.9986,1.0019,1,33607.4567,12975.0833,2.5902,overlap_100x,True
+iia,germany,"tobacco, unmanufactured",1945,,no_area_level_drop,True,0,,germany,1,iia_1939_45,1,True,single_cell,1933,1,99.9986,1.0019,1,0,,,overlap_100x,
+iia,greece,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,5737600,89000,greece|italian dodecanese islands,2,iia_1939_45,1,False,component_sum,1933,1,99.7978,1.0057,1,57492.2774,88493.3846,0.6497,overlap_100x,True
+iia,guatemala,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,82200,2000,guatemala,1,iia_1939_45,1,True,single_cell,1933,1,99.6678,,0,824.74,2000,0.4124,overlap_100x,True
+iia,guinea,"tobacco, unmanufactured",,1934-1938,high_yield_3to20,False,20700,3000,french guinea,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,207,3000,0.069,overlap_100x,False
+iia,guinea,"tobacco, unmanufactured",1934,,high_yield_3to20,False,27600,3000,french guinea,1,iia_1938_39,1,True,single_cell,1933,1,100,,0,276,3000,0.092,overlap_100x,False
+iia,guinea,"tobacco, unmanufactured",1935,,high_yield_3to20,False,22100,3000,french guinea,1,iia_1938_39,1,True,single_cell,1933,1,100,,0,221,3000,0.0737,overlap_100x,False
+iia,guinea,"tobacco, unmanufactured",1936,,high_yield_3to20,False,22000,3000,french guinea,1,iia_1938_39,1,True,single_cell,1933,1,100,,0,220,3000,0.0733,overlap_100x,False
+iia,guinea,"tobacco, unmanufactured",1937,,high_yield_3to20,False,23500,3000,french guinea,1,iia_1938_39,1,True,single_cell,1933,1,100,,0,235,3000,0.0783,overlap_100x,False
+iia,guinea,"tobacco, unmanufactured",1939,,no_area_level_consistent,False,5800,,french guinea,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,58,,,overlap_100x,
+iia,guinea,"tobacco, unmanufactured",1940,,no_area_level_consistent,False,2900,,french guinea,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,29,,,overlap_100x,
+iia,guinea,"tobacco, unmanufactured",1942,,no_area_level_consistent,False,2800,,french guinea,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,28,,,overlap_100x,
+iia,guinea,"tobacco, unmanufactured",1943,,no_area_level_consistent,False,3100,,french guinea,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,31,,,overlap_100x,
+iia,guinea,"tobacco, unmanufactured",1944,,no_area_level_consistent,False,2100,,french guinea,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,21,,,overlap_100x,
+iia,guinea,"tobacco, unmanufactured",1945,,no_area_level_consistent,False,7700,,french guinea,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,77,,,overlap_100x,
+iia,hungary,hops,,1934-1938,impossible_yield,True,6600,100,hungary,1,iia_1939_45,1,True,single_cell,1933,1,99.8308,9.3458,1,66.1119,10.7,6.1787,overlap_100x,False
+iia,hungary,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,2047600,15000,hungary,1,iia_1939_45,1,True,single_cell,1933,1,99.9992,0.9838,1,20476.1717,15246.6667,1.343,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,138600,3000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,1384.6831,2799,0.4947,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1934,,impossible_yield,True,101100,2000,british palestine,1,iia_1938_39,1,False,single_cell,1933,1,100.0951,1.0718,1,1010.0394,1866,0.5413,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1935,,impossible_yield,True,100000,2000,british palestine|french equatorial africa,2,iia_1938_39,1,False,single_cell,1933,1,100.0476,1.0224,1,999.5247,1956.1965,0.511,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1936,,impossible_yield,True,123700,3000,british palestine,1,iia_1938_39,1,False,single_cell,1933,1,100.0951,1.0718,1,1235.8247,2799,0.4415,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1937,,impossible_yield,True,250400,6000,british palestine,1,iia_1938_39,1,False,single_cell,1933,1,100.0951,1.0718,1,2501.6209,5598,0.4469,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1939,,impossible_yield,True,52300,2000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,522.5031,1866,0.28,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1940,,impossible_yield,True,98500,2000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,984.0641,1866,0.5274,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1941,,impossible_yield,True,58900,1000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,588.4404,933,0.6307,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1942,,impossible_yield,True,141900,3000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,1417.6518,2799,0.5065,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1943,,impossible_yield,True,128900,3000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,1287.7753,2799,0.4601,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1944,,impossible_yield,True,168300,3000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,1681.401,2799,0.6007,overlap_100x,True
+iia,israel,"tobacco, unmanufactured",1945,,impossible_yield,True,136000,3000,british palestine,1,iia_1939_45,1,False,single_cell,1933,1,100.0951,1.0718,1,1358.7078,2799,0.4854,overlap_100x,True
+iia,italy,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,4375800,33000,italy,1,iia_1939_45,1,True,single_cell,1933,1,99.9993,0.9874,1,43758.2958,33421.4571,1.3093,overlap_100x,True
+iia,japan,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,6410500,35000,japan,1,iia_1939_45,1,True,single_cell,1933,1,99.9998,1.0043,1,64105.0963,34850.7353,1.8394,overlap_100x,True
+iia,japan,"tobacco, unmanufactured",1940,,impossible_yield,True,8705400,49000,japan,1,iia_1939_45,1,True,single_cell,1933,1,99.9998,1.0043,1,87054.1308,48791.0294,1.7842,overlap_100x,True
+iia,jordan,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,4000,,british transjordan,1,iia_1939_45,1,False,single_cell,1933,1,100.5025,,0,39.8,,,overlap_100x,
+iia,jordan,"tobacco, unmanufactured",1934,,no_area_level_shift,True,1400,,british transjordan,1,iia_1938_39,1,False,single_cell,1933,1,100.5025,,0,13.93,,,overlap_100x,
+iia,jordan,"tobacco, unmanufactured",1935,,no_area_level_shift,True,4100,,british transjordan,1,iia_1938_39,1,False,single_cell,1933,1,100.5025,,0,40.795,,,overlap_100x,
+iia,jordan,"tobacco, unmanufactured",1936,,no_area_level_consistent,False,500,,british transjordan,1,iia_1938_39,1,False,single_cell,1933,1,100.5025,,0,4.975,,,overlap_100x,
+iia,jordan,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,9700,0,british transjordan,1,iia_1938_39,1,False,single_cell,1933,1,100.5025,,0,96.515,0,,overlap_100x,
+iia,jordan,"tobacco, unmanufactured",1938,,no_area_level_shift,True,4300,,british transjordan|german south west africa,2,iia_1938_39,1,False,single_cell,1933,1,99.6809,,0,43.1376,,,overlap_100x,
+iia,jordan,"tobacco, unmanufactured",1939,,no_area_level_shift,True,3600,,british transjordan,1,iia_1939_45,1,False,single_cell,1933,1,100.5025,,0,35.82,,,overlap_100x,
+iia,libya,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,69600,0,italian libya: tripolitania,1,iia_1938_39,1,False,single_cell,1933,1,99.8514,0,1,697.0357,0,,overlap_100x,
+iia,libya,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,68400,0,italian libya: tripolitania,1,iia_1938_39,1,False,single_cell,1933,1,99.8514,0,1,685.0179,0,,overlap_100x,
+iia,libya,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,85000,0,italian libya: tripolitania,1,iia_1938_39,1,False,single_cell,1933,1,99.8514,0,1,851.2649,0,,overlap_100x,
+iia,madagascar,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,559200,7000,french madagascar,1,iia_1939_45,1,True,single_cell,1933,1,100,1,1,5592,7000,0.7989,overlap_100x,True
+iia,madagascar,"tobacco, unmanufactured",1945,,impossible_yield,True,193300,3000,french madagascar,1,iia_1939_45,1,True,single_cell,1933,1,100,1,1,1933,3000,0.6443,overlap_100x,True
+iia,malaysia,"tobacco, unmanufactured",,1934-1938,high_yield_3to20,False,16000,2000,british borneo,1,iia_1939_45,1,False,single_cell,1933,1,99.8884,0,1,160.1788,2000,0.0801,overlap_100x,False
+iia,malaysia,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,12600,0,british borneo,1,iia_1938_39,1,False,single_cell,1933,1,99.8884,0,1,126.1408,0,,overlap_100x,
+iia,malaysia,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,13500,0,british borneo,1,iia_1938_39,1,False,single_cell,1933,1,99.8884,0,1,135.1508,0,,overlap_100x,
+iia,malaysia,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,14300,0,british borneo,1,iia_1938_39,1,False,single_cell,1933,1,99.8884,0,1,143.1598,0,,overlap_100x,
+iia,malaysia,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,21100,0,british borneo,1,iia_1938_39,1,False,single_cell,1933,1,99.8884,0,1,211.2358,0,,overlap_100x,
+iia,mali,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,139000,2000,french sudan,1,iia_1939_45,1,False,single_cell,1933,1,111.245,1.3423,1,1249.4946,1490,0.8386,overlap_100x,True
+iia,mali,"tobacco, unmanufactured",1934,,impossible_yield,True,150000,3000,french sudan,1,iia_1938_39,1,False,single_cell,1933,1,111.245,1.3423,1,1348.3755,2235,0.6033,overlap_100x,True
+iia,mali,"tobacco, unmanufactured",1935,,impossible_yield,True,155000,3000,french sudan,1,iia_1938_39,1,False,single_cell,1933,1,111.245,1.3423,1,1393.3213,2235,0.6234,overlap_100x,True
+iia,mali,"tobacco, unmanufactured",1936,,impossible_yield,True,150000,1000,french sudan,1,iia_1938_39,1,False,single_cell,1933,1,111.245,1.3423,1,1348.3755,745,1.8099,overlap_100x,True
+iia,mali,"tobacco, unmanufactured",1937,,impossible_yield,True,120000,1000,french sudan,1,iia_1938_39,1,False,single_cell,1933,1,111.245,1.3423,1,1078.7004,745,1.4479,overlap_100x,True
+iia,mauritania,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,1600,,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,16,,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,500,0,french mauritania,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,5,0,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,700,0,french mauritania,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,7,0,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1936,,no_area_level_shift,True,6500,,french mauritania,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,65,,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,200,0,french mauritania,1,iia_1938_39,1,True,single_cell,1933,1,100,0,1,2,0,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1939,,no_area_level_consistent,False,100,,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,1,,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1940,,no_area_level_shift,True,200,,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,2,,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1941,,no_area_level_shift,True,300,,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,3,,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1942,,no_area_level_shift,True,200,,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,2,,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1943,,no_area_level_shift,True,400,,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,4,,,overlap_100x,
+iia,mauritania,"tobacco, unmanufactured",1944,,high_yield_3to20,False,5200,1000,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,52,1000,0.052,overlap_100x,False
+iia,mauritania,"tobacco, unmanufactured",1945,,high_yield_3to20,False,5000,1000,french mauritania,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,50,1000,0.05,overlap_100x,False
+iia,mexico,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1543100,18000,mexico,1,iia_1939_45,1,True,single_cell,1933,1,102.4023,1.0346,1,15068.9973,17397.6923,0.8661,overlap_100x,True
+iia,morocco,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,34700,,french morocco,1,iia_1939_45,1,True,single_cell,1933,1,100.0622,0,1,346.7845,,,overlap_100x,
+iia,morocco,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,32100,0,french morocco,1,iia_1938_39,1,True,single_cell,1933,1,100.0622,0,1,320.8006,0,,overlap_100x,
+iia,morocco,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,17600,0,french morocco,1,iia_1938_39,1,True,single_cell,1933,1,100.0622,0,1,175.8907,0,,overlap_100x,
+iia,morocco,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,47400,0,french morocco,1,iia_1938_39,1,True,single_cell,1933,1,100.0622,0,1,473.7056,0,,overlap_100x,
+iia,morocco,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,41700,0,french morocco,1,iia_1938_39,1,True,single_cell,1933,1,100.0622,0,1,416.741,0,,overlap_100x,
+iia,morocco,"tobacco, unmanufactured",1939,,impossible_yield,True,41100,1000,french morocco,1,iia_1939_45,1,True,single_cell,1933,1,100.0622,0,1,410.7447,1000,0.4107,overlap_100x,True
+iia,morocco,"tobacco, unmanufactured",1940,,impossible_yield,True,60100,1000,french morocco,1,iia_1939_45,1,True,single_cell,1933,1,100.0622,0,1,600.6267,1000,0.6006,overlap_100x,True
+iia,morocco,"tobacco, unmanufactured",1941,,impossible_yield,True,60500,1000,french morocco,1,iia_1939_45,1,True,single_cell,1933,1,100.0622,0,1,604.6242,1000,0.6046,overlap_100x,True
+iia,morocco,"tobacco, unmanufactured",1942,,impossible_yield,True,51700,1000,french morocco,1,iia_1939_45,1,True,single_cell,1933,1,100.0622,0,1,516.6789,1000,0.5167,overlap_100x,True
+iia,morocco,"tobacco, unmanufactured",1943,,impossible_yield,True,103400,1000,french morocco,1,iia_1939_45,1,True,single_cell,1933,1,100.0622,0,1,1033.3578,1000,1.0334,overlap_100x,True
+iia,morocco,"tobacco, unmanufactured",1944,,impossible_yield,True,100500,1000,french morocco,1,iia_1939_45,1,True,single_cell,1933,1,100.0622,0,1,1004.3758,1000,1.0044,overlap_100x,True
+iia,namibia,"tobacco, unmanufactured",1934,,no_area_level_shift,True,3100,,german south west africa,1,iia_1938_39,1,False,single_cell,1933,1,98.8593,,0,31.3577,,,overlap_100x,
+iia,namibia,"tobacco, unmanufactured",1935,,no_area_level_shift,True,2100,,german south west africa,1,iia_1938_39,1,False,single_cell,1933,1,98.8593,,0,21.2423,,,overlap_100x,
+iia,namibia,"tobacco, unmanufactured",1936,,no_area_level_shift,True,7300,,german south west africa,1,iia_1938_39,1,False,single_cell,1933,1,98.8593,,0,73.8423,,,overlap_100x,
+iia,namibia,"tobacco, unmanufactured",1937,,no_area_level_shift,True,18100,,german south west africa,1,iia_1938_39,1,False,single_cell,1933,1,98.8593,,0,183.0885,,,overlap_100x,
+iia,namibia,"tobacco, unmanufactured",1938,,no_area_level_shift,True,4300,,british transjordan|german south west africa,2,iia_1938_39,1,False,single_cell,1933,1,99.6809,,0,43.1376,,,overlap_100x,
+iia,new zealand,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,62000,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,620.4413,730,0.8499,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1934,,impossible_yield,True,50200,1000,new zealand,1,iia_1938_39,1,True,single_cell,1933,1,99.9289,1.3699,1,502.3573,730,0.6882,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1935,,impossible_yield,True,48300,1000,new zealand,1,iia_1938_39,1,True,single_cell,1933,1,99.9289,1.3699,1,483.3438,730,0.6621,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1936,,impossible_yield,True,68700,1000,new zealand,1,iia_1938_39,1,True,single_cell,1933,1,99.9289,1.3699,1,687.489,730,0.9418,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1937,,impossible_yield,True,79300,1000,new zealand,1,iia_1938_39,1,True,single_cell,1933,1,99.9289,1.3699,1,793.5644,730,1.0871,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1939,,impossible_yield,True,99800,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,998.7103,730,1.3681,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1940,,impossible_yield,True,142100,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,1422.0114,730,1.948,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1941,,impossible_yield,True,123400,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,1234.8783,730,1.6916,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1942,,impossible_yield,True,144500,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,1446.0285,730,1.9809,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1943,,impossible_yield,True,139100,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,1391.99,730,1.9068,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1944,,impossible_yield,True,149100,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,1492.0612,730,2.0439,overlap_100x,True
+iia,new zealand,"tobacco, unmanufactured",1945,,impossible_yield,True,158800,1000,new zealand,1,iia_1939_45,1,True,single_cell,1933,1,99.9289,1.3699,1,1589.1302,730,2.1769,overlap_100x,True
+iia,nicaragua,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,55000,1000,nicaragua,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,550,1000,0.55,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,44900,1000,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,510.2273,1000,0.5102,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1934,,impossible_yield,True,42400,1000,french niger,1,iia_1938_39,1,True,single_cell,1933,1,88,0,1,481.8182,1000,0.4818,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1935,,impossible_yield,True,50000,1000,french niger,1,iia_1938_39,1,True,single_cell,1933,1,88,0,1,568.1818,1000,0.5682,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1936,,no_area_level_shift,True,65000,,french niger,1,iia_1938_39,1,True,single_cell,1933,1,88,0,1,738.6364,,,overlap_100x,
+iia,niger,"tobacco, unmanufactured",1937,,impossible_yield,True,35000,1000,french niger,1,iia_1938_39,1,True,single_cell,1933,1,88,0,1,397.7273,1000,0.3977,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1939,,impossible_yield,True,36000,1000,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,409.0909,1000,0.4091,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1940,,impossible_yield,True,43000,1000,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,488.6364,1000,0.4886,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1941,,impossible_yield,True,50500,1000,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,573.8636,1000,0.5739,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1942,,impossible_yield,True,39800,1000,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,452.2727,1000,0.4523,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1943,,impossible_yield,True,48000,1000,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,545.4545,1000,0.5455,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1944,,impossible_yield,True,47000,1000,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,534.0909,1000,0.5341,overlap_100x,True
+iia,niger,"tobacco, unmanufactured",1945,,no_area_level_shift,True,50000,,french niger,1,iia_1939_45,1,True,single_cell,1933,1,88,0,1,568.1818,,,overlap_100x,
+iia,philippines,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,3212700,65000,us philippines,1,iia_1939_45,1,True,single_cell,1933,1,99.9993,1.0052,1,32127.2309,64662.0,0.4968,overlap_100x,True
+iia,philippines,"tobacco, unmanufactured",1940,,impossible_yield,True,3440600,72000,us philippines,1,iia_1939_45,1,True,single_cell,1933,1,99.9993,1.0052,1,34406.2472,71625.6,0.4804,overlap_100x,True
+iia,poland,hops,,1934-1938,impossible_yield,True,177200,3200,poland,1,iia_1939_45,1,True,single_cell,1933,1,100.026,10.0228,1,1771.5389,319.2727,5.5487,overlap_100x,False
+iia,poland,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1137200,6000,poland,1,iia_1939_45,1,True,single_cell,1933,1,100.0042,1.06,1,11371.5279,5660.4,2.009,overlap_100x,True
+iia,romania,hops,,1934-1938,no_area_level_consistent,False,1900,,romania,1,iia_1939_45,1,True,single_cell,1933,1,94.7368,500,1,20.0556,,,overlap_100x,
+iia,romania,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1132300,16000,romania,1,iia_1939_45,1,True,single_cell,1933,1,100.0048,0.9898,1,11322.4591,16164.8,0.7004,overlap_100x,True
+iia,russian federation,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,22403500,199000,ussr,1,iia_1939_45,1,False,single_cell,1933,1,87.6101,1.042,1,255718.244,190979.0816,1.339,overlap_100x,True
+iia,russian federation,"tobacco, unmanufactured",1934,,impossible_yield,True,17207000,191000,ussr,1,iia_1938_39,1,False,single_cell,1933,1,87.6101,1.042,1,196404.304,183301.5306,1.0715,overlap_100x,True
+iia,russian federation,"tobacco, unmanufactured",1936,,impossible_yield,True,27600000,203000,ussr,1,iia_1938_39,1,False,single_cell,1933,1,87.6101,1.042,1,315032.1841,194817.8571,1.6171,overlap_100x,True
+iia,serbia,hops,,1934-1938,impossible_yield,True,180400,2700,yugoslavia,1,iia_1939_45,1,True,single_cell,1933,1,99.9795,10.0354,1,1804.3697,269.0471,6.7065,overlap_100x,False
+iia,serbia,hops,1934,,high_yield_3to20,False,143300,24000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,99.9795,10.0354,1,1433.2936,2391.5294,0.5993,overlap_100x,True
+iia,serbia,hops,1935,,high_yield_3to20,False,189100,26000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,99.9795,10.0354,1,1891.3875,2590.8235,0.73,overlap_100x,True
+iia,serbia,hops,1936,,high_yield_3to20,False,196200,27000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,99.9795,10.0354,1,1962.402,2690.4706,0.7294,overlap_100x,True
+iia,serbia,hops,1937,,high_yield_3to20,False,213200,29000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,99.9795,10.0354,1,2132.4369,2889.7647,0.7379,overlap_100x,True
+iia,serbia,hops,1938,,high_yield_3to20,False,160000,28000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,99.9795,10.0354,1,1600.3279,2790.1176,0.5736,overlap_100x,True
+iia,serbia,hops,1939,,impossible_yield,True,181500,2800,yugoslavia,1,iia_1939_45,1,True,single_cell,1933,1,99.9795,10.0354,1,1815.3719,279.0118,6.5064,overlap_100x,False
+iia,serbia,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,1348200,15000,yugoslavia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.9871,1,13481.5378,15196.3636,0.8872,overlap_100x,True
+iia,serbia,"tobacco, unmanufactured",1934,,impossible_yield,True,604900,7000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.9871,1,6048.7926,7091.6364,0.8529,overlap_100x,True
+iia,serbia,"tobacco, unmanufactured",1935,,impossible_yield,True,924900,12000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.9871,1,9248.6829,12157.0909,0.7608,overlap_100x,True
+iia,serbia,"tobacco, unmanufactured",1936,,impossible_yield,True,1662400,18000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.9871,1,16623.4301,18235.6364,0.9116,overlap_100x,True
+iia,serbia,"tobacco, unmanufactured",1937,,impossible_yield,True,2078300,21000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.9871,1,20782.2875,21274.9091,0.9768,overlap_100x,True
+iia,serbia,"tobacco, unmanufactured",1938,,impossible_yield,True,1470800,16000,yugoslavia,1,iia_1938_39,1,True,single_cell,1933,1,100.0034,0.9871,1,14707.4958,16209.4545,0.9073,overlap_100x,True
+iia,serbia,"tobacco, unmanufactured",1939,,impossible_yield,True,1543300,18000,yugoslavia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.9871,1,15432.4709,18235.6364,0.8463,overlap_100x,True
+iia,serbia,"tobacco, unmanufactured",1945,,impossible_yield,True,1270100,14000,yugoslavia,1,iia_1939_45,1,True,single_cell,1933,1,100.0034,0.9871,1,12700.5646,14183.2727,0.8955,overlap_100x,True
+iia,south africa,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,913100,14000,union of south africa,1,iia_1939_45,1,True,single_cell,1933,1,92.0866,,0,9915.6706,14000,0.7083,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,2252500,17000,japanese korea,1,iia_1939_45,1,False,single_cell,1933,1,99.997,0.9668,1,22525.6804,17583.2308,1.2811,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1934,,impossible_yield,True,1540400,15000,japanese korea,1,iia_1938_39,1,False,single_cell,1933,1,99.997,0.9668,1,15404.4653,15514.6154,0.9929,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1935,,impossible_yield,True,2192100,16000,japanese korea,1,iia_1938_39,1,False,single_cell,1933,1,99.997,0.9668,1,21921.6621,16548.9231,1.3247,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1936,,impossible_yield,True,2062600,17000,japanese korea,1,iia_1938_39,1,False,single_cell,1933,1,99.997,0.9668,1,20626.623,17583.2308,1.1731,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1937,,impossible_yield,True,2648800,19000,japanese korea,1,iia_1938_39,1,False,single_cell,1933,1,99.997,0.9668,1,26488.8001,19651.8462,1.3479,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1938,,impossible_yield,True,2798400,20000,japanese korea,1,iia_1938_39,1,False,single_cell,1933,1,99.997,0.9668,1,27984.8453,20686.1538,1.3528,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1939,,impossible_yield,True,3101900,22000,japanese korea,1,iia_1939_45,1,False,single_cell,1933,1,99.997,0.9668,1,31019.937,22754.7692,1.3632,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1940,,impossible_yield,True,2924900,22000,japanese korea,1,iia_1939_45,1,False,single_cell,1933,1,99.997,0.9668,1,29249.8835,22754.7692,1.2854,overlap_100x,True
+iia,south korea,"tobacco, unmanufactured",1941,,impossible_yield,True,3512000,23000,japanese korea,1,iia_1939_45,1,False,single_cell,1933,1,99.997,0.9668,1,35121.0608,23789.0769,1.4764,overlap_100x,True
+iia,spain,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,707100,4000,spain,1,iia_1939_45,1,True,single_cell,1933,1,100.0179,0.8,1,7069.7337,5000,1.4139,overlap_100x,True
+iia,sweden,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,50300,,sweden,1,iia_1939_45,1,True,single_cell,1933,1,100,0,1,503,,,overlap_100x,
+iia,switzerland,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,106700,1000,switzerland,1,iia_1939_45,1,True,single_cell,1933,1,100,,0,1067,1000,1.067,overlap_100x,True
+iia,syrian arab republic,"tobacco, unmanufactured",1934,,impossible_yield,True,335600,5000,french syria and lebanon,1,iia_1938_39,1,False,single_cell,1933,1,99.9836,1.0116,1,3356.5512,4942.8571,0.6791,overlap_100x,True
+iia,syrian arab republic,"tobacco, unmanufactured",1935,,impossible_yield,True,201400,4000,french syria and lebanon,1,iia_1938_39,1,False,single_cell,1933,1,99.9836,1.0116,1,2014.3308,3954.2857,0.5094,overlap_100x,True
+iia,syrian arab republic,"tobacco, unmanufactured",1936,,impossible_yield,True,540900,7000,french syria and lebanon,1,iia_1938_39,1,False,single_cell,1933,1,99.9836,1.0116,1,5409.8885,6920.0,0.7818,overlap_100x,True
+iia,syrian arab republic,"tobacco, unmanufactured",1937,,impossible_yield,True,517900,6000,french syria and lebanon,1,iia_1938_39,1,False,single_cell,1933,1,99.9836,1.0116,1,5179.8507,5931.4286,0.8733,overlap_100x,True
+iia,syrian arab republic,"tobacco, unmanufactured",1938,,impossible_yield,True,341000,4000,french syria and lebanon,1,iia_1938_39,1,False,single_cell,1933,1,99.9836,1.0116,1,3410.5601,3954.2857,0.8625,overlap_100x,True
+iia,tunisia,"tobacco, unmanufactured",,1934-1938,no_area_level_shift,True,58100,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,581.5696,,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1934,,impossible_yield,True,65000,1000,french tunisia,1,iia_1938_39,1,True,single_cell,1933,1,99.9021,0,1,650.6373,1000,0.6506,overlap_100x,True
+iia,tunisia,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,59500,0,french tunisia,1,iia_1938_39,1,True,single_cell,1933,1,99.9021,0,1,595.5833,0,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,71700,0,french tunisia,1,iia_1938_39,1,True,single_cell,1933,1,99.9021,0,1,717.7029,0,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,55900,0,french tunisia,1,iia_1938_39,1,True,single_cell,1933,1,99.9021,0,1,559.548,0,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1939,,no_area_level_shift,True,53600,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,536.5255,,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1940,,no_area_level_shift,True,53200,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,532.5216,,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1941,,no_area_level_shift,True,56900,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,569.5578,,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1942,,no_area_level_shift,True,38100,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,381.3735,,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1943,,no_area_level_shift,True,49700,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,497.4873,,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1944,,no_area_level_shift,True,40900,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,409.401,,,overlap_100x,
+iia,tunisia,"tobacco, unmanufactured",1945,,no_area_level_shift,True,25900,,french tunisia,1,iia_1939_45,1,True,single_cell,1933,1,99.9021,0,1,259.2539,,,overlap_100x,
+iia,turkey,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,5543300,72000,turkey,1,iia_1939_45,1,True,single_cell,1933,1,113.5179,0.9994,1,48831.9332,72045.1765,0.6778,overlap_100x,True
+iia,turkey,"tobacco, unmanufactured",1940,,impossible_yield,True,7135600,78000,turkey,1,iia_1939_45,1,True,single_cell,1933,1,113.5179,0.9994,1,62858.7922,78048.9412,0.8054,overlap_100x,True
+iia,united kingdom,hops,,1934-1938,impossible_yield,True,1271100,7400,uk,1,iia_1939_45,1,False,single_cell,1933,1,99.9982,9.9459,1,12711.2317,744.0265,17.0844,overlap_100x,False
+iia,united states of america,hops,,1934-1938,impossible_yield,True,1768000,14000,usa,1,iia_1939_45,1,False,single_cell,1933,1,100.0017,10.031,1,17679.7074,1395.6748,12.6675,overlap_100x,False
+iia,united states of america,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,60387500,627000,us puerto rico|usa,2,iia_1939_45,1,False,component_sum,1933,1,99.1283,0.9835,1,609185.1694,637524.7308,0.9555,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,168700,2000,french tonkin,1,iia_1939_45,1,False,single_cell,1933,1,100,0.6882,1,1687,2906,0.5805,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1934,,impossible_yield,True,124500,1000,french tonkin,1,iia_1938_39,1,False,single_cell,1933,1,100,0.6882,1,1245,1453,0.8568,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1935,,impossible_yield,True,111200,1000,french tonkin,1,iia_1938_39,1,False,single_cell,1933,1,100,0.6882,1,1112,1453,0.7653,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1936,,impossible_yield,True,140100,1000,french tonkin,1,iia_1938_39,1,False,single_cell,1933,1,100,0.6882,1,1401,1453,0.9642,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1937,,impossible_yield,True,270000,3000,french tonkin,1,iia_1938_39,1,False,single_cell,1933,1,100,0.6882,1,2700,4359,0.6194,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1939,,impossible_yield,True,170000,2000,french tonkin,1,iia_1939_45,1,False,single_cell,1933,1,100,0.6882,1,1700,2906,0.585,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1940,,impossible_yield,True,165100,2000,french tonkin,1,iia_1939_45,1,False,single_cell,1933,1,100,0.6882,1,1651,2906,0.5681,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1941,,impossible_yield,True,240000,3000,french tonkin,1,iia_1939_45,1,False,single_cell,1933,1,100,0.6882,1,2400,4359,0.5506,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1942,,impossible_yield,True,249000,3000,french tonkin,1,iia_1939_45,1,False,single_cell,1933,1,100,0.6882,1,2490,4359,0.5712,overlap_100x,True
+iia,viet nam,"tobacco, unmanufactured",1943,,impossible_yield,True,250000,3000,french tonkin,1,iia_1939_45,1,False,single_cell,1933,1,100,0.6882,1,2500,4359,0.5735,overlap_100x,True
+iia,ivory coast,"tobacco, unmanufactured",,1934-1938,plausible_yield,False,3000,2000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,303.6364,1640,0.1851,overlap_10x,False
+iia,ivory coast,"tobacco, unmanufactured",1934,,plausible_yield,False,4000,2000,french ivory coast,1,iia_1938_39,1,True,single_cell,1933,1,9.8802,1.2195,1,404.8485,1640,0.2469,overlap_10x,True
+iia,ivory coast,"tobacco, unmanufactured",1935,,plausible_yield,False,4000,2000,french ivory coast,1,iia_1938_39,1,True,single_cell,1933,1,9.8802,1.2195,1,404.8485,1640,0.2469,overlap_10x,True
+iia,ivory coast,"tobacco, unmanufactured",1939,,plausible_yield,False,1500,2000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,151.8182,1640,0.0926,overlap_10x,False
+iia,ivory coast,"tobacco, unmanufactured",1940,,plausible_yield,False,1500,2000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,151.8182,1640,0.0926,overlap_10x,False
+iia,ivory coast,"tobacco, unmanufactured",1941,,plausible_yield,False,3000,2000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,303.6364,1640,0.1851,overlap_10x,False
+iia,ivory coast,"tobacco, unmanufactured",1942,,plausible_yield,False,3000,2000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,303.6364,1640,0.1851,overlap_10x,False
+iia,ivory coast,"tobacco, unmanufactured",1943,,plausible_yield,False,3000,2000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,303.6364,1640,0.1851,overlap_10x,False
+iia,ivory coast,"tobacco, unmanufactured",1944,,plausible_yield,False,4500,4000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,455.4545,3280,0.1389,overlap_10x,False
+iia,ivory coast,"tobacco, unmanufactured",1945,,plausible_yield,False,6000,6000,french ivory coast,1,iia_1939_45,1,True,single_cell,1933,1,9.8802,1.2195,1,607.2727,4920,0.1234,overlap_10x,False
+iia,french polynesia,"tobacco, unmanufactured",1934,,impossible_yield_zero_area,True,300,0,french oceania,1,iia_1938_39,1,False,single_cell,1933,1,13.6364,0,1,22,0,,overlap_other,
+iia,french polynesia,"tobacco, unmanufactured",1935,,impossible_yield_zero_area,True,300,0,french oceania,1,iia_1938_39,1,False,single_cell,1933,1,13.6364,0,1,22,0,,overlap_other,
+iia,french polynesia,"tobacco, unmanufactured",1936,,impossible_yield_zero_area,True,300,0,french oceania,1,iia_1938_39,1,False,single_cell,1933,1,13.6364,0,1,22,0,,overlap_other,
+iia,french polynesia,"tobacco, unmanufactured",1937,,impossible_yield_zero_area,True,300,0,french oceania,1,iia_1938_39,1,False,single_cell,1933,1,13.6364,0,1,22,0,,overlap_other,
+iia,malawi,"tobacco, unmanufactured",,1934-1938,impossible_yield,True,129900,3000,british nyasaland,1,iia_1939_45,1,False,single_cell,1933,1,180.8988,2.0427,1,718.081,1468.6154,0.489,overlap_other,True
+iia,malawi,"tobacco, unmanufactured",1945,,impossible_yield,True,101200,2000,british nyasaland,1,iia_1939_45,1,False,single_cell,1933,1,180.8988,2.0427,1,559.4288,979.0769,0.5714,overlap_other,True
