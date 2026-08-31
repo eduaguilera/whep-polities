@@ -494,6 +494,17 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_era_shift_verdicts.py
 
+      # The `period` label on an IIA multi-year average names its yearbook VOLUME exactly: across the
+      # extract's 42,587 multi-year rows there are seven period labels and each is printed by exactly
+      # one volume, so `period` is the provenance column layer B otherwise lacks (all 6,163 iia period
+      # rows attributed, no crosswalk and no value matching). It also moves the boundary this class
+      # rests on off the wrong axis: `1928-1932` covers pre-1934 years but is printed by the late
+      # `iia_1938_39`, and 38 of its 97 tobacco/hops rows exceed 500,000 t against 0 of 145 in the
+      # clean volumes' averages — so the defect follows the EDITION, not the years in the label.
+      - name: Sources — an IIA period label must name exactly one yearbook volume
+        if: '!cancelled()'
+        run: python3 scripts/validate_period_volume_provenance.py
+
       # Where a source REVISES its own stated area by >=50%, does our periodisation have a boundary
       # there? 11 of 18 agree — Serbia -> Yugoslavia 87,776 -> 247,916, Romania's Transylvania gains,
       # Trianon — which corroborates the spans from data rather than from historical reading, and no

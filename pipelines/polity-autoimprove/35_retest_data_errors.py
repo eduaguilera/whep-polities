@@ -145,12 +145,51 @@ def check_wheat_is_spelt_and_meslin(ctx):
 
 
 def check_tobacco_era_scope(ctx):
-    """The era table holds 427 rows across 93 labels. Both numbers are quoted in
-    iia-tobacco-implausible-magnitudes and in issue 416's own scope, and the label count is the one that
-    matters: it is what says the defect is source-wide rather than a few series."""
+    """The era table holds 427 rows across 93 labels, and the entry's own 40-of-607 is DATED-ONLY.
+
+    The first two numbers are quoted in iia-tobacco-implausible-magnitudes and in issue 416's own
+    scope, and the label count is the one that matters: it is what says the defect is source-wide
+    rather than a few series.
+
+    THE REST OF THIS CHECK GUARDS THE ENTRY'S SCOPE, which was wrong in a way no count could reveal.
+    607 is exactly the number of iia tobacco rows in tonnes that carry a `year`; layer B holds 893, so
+    286 rows with a `period` and a null `year` were outside every figure the entry recorded. The
+    period rows are not a rounding error on the class -- they add 73 more above 500,000 t.
+
+    THE PERIOD LABEL NAMES THE YEARS, NOT THE EDITION, which is why the entry's 1934-1945 window could
+    not see them: `1928-1932` is a retrospective average printed by the LATE `iia_1938_39`, so 34 of
+    its 83 tobacco rows exceed 500,000 t while the clean volumes' averages hold 2 of 119 -- and both
+    of those two (`india` 612,500 t, `united states of america` 630,805.5 t) are CORRECT figures that
+    a crude threshold over-flags. Pinning the clean-volume count at 2 is therefore an exoneration: a
+    third would be a real finding, and losing these two would mean the screen or the extract moved.
+
+    The last pin is the gap. era_shift_verdicts.csv reaches period rows only at 1934-1938, so no
+    1928-1932 row carries a verdict of any kind. If that ever becomes non-zero the era table has been
+    widened to reach them, which is good news that must still re-record this check rather than pass
+    through it silently.
+    """
     v = ctx["era"]
-    return ([("era rows", len(v), 427), ("labels", len({r["label"] for r in v}), 93)],
-            "scope unchanged")
+    lb = ctx["panel"]
+    t = lb[(lb["source"] == "iia") & (lb["item"] == "tobacco, unmanufactured")
+           & (lb["unit"] == "tonnes") & lb["value"].notna()]
+    dated = t[t["year"].notna()]
+    per = t[t["year"].isna()]
+    big = per[per["value"] > 500_000]
+    p2832 = per[per["period"].astype(str) == "1928-1932"]
+    CLEAN = {"1909-1913", "1925-1929"}
+    clean_hits = big[big["period"].astype(str).isin(CLEAN)]
+    era_periods = {str(r["period"]).strip() for r in v if str(r.get("period") or "").strip()}
+    return ([("era rows", len(v), 427),
+             ("labels", len({r["label"] for r in v}), 93),
+             ("iia tobacco (tonnes) rows, dated -- the entry's denominator", len(dated), 607),
+             ("the same rows carrying a period instead", len(per), 286),
+             ("period rows above 500,000 t", len(big), 73),
+             ("of those, in the late 1928-1932 average", len(big[big["period"].astype(str)
+                                                                == "1928-1932"]), 34),
+             ("1928-1932 tobacco rows in total", len(p2832), 83),
+             ("clean-volume hits (india and the USA, both CORRECT)", len(clean_hits), 2),
+             ("1928-1932 periods reached by the era table", len(era_periods & {"1928-1932"}), 0)],
+            "607 is the dated count, so the entry under-scoped by 286 rows and 73 implausible ones")
 
 
 def check_fao1952_china_label(ctx):
