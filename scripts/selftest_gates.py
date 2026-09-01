@@ -5051,6 +5051,40 @@ def mutate_data_errors_entry_uncovered(root, gpd, make_valid, affinity):
         w.writerows(rows)
     return "data_errors.csv now carries an entry that no re-test in 35_retest_data_errors.py covers"
 
+def mutate_crosssource_one_entry_absorbs_all(root, gpd, make_valid, affinity):
+    """Attribute every cross-source cell to one registry entry, making the zero ceiling unreachable.
+
+    `BASELINE_UNEXPLAINED = 0` is only a check if some cell CAN be unexplained. Until issue 635 none
+    could: `coverage()` ignored the registry's `polity_code` column, so an entry declaring 17 codes
+    with `commodity = (all)` and a placeholder label matched 804 of 804 cells. The arm had never
+    convicted anything, and it was masking 8 real disagreements at 10-14x -- czech `beans, dry` x7
+    (the yearbooks print two series and layer B keeps one) and yugoslav `sunflower seed` (production
+    x10 on an area both sources agree on), both since registered.
+
+    The mutation rewrites only `known_defect`, setting every cell to that one entry. Every other
+    column is untouched, every citation still resolves, every ratio still matches its own values,
+    and no cell becomes unexplained -- so arms A-E stay green and the table looks better attributed,
+    not worse. That is the shape of the original defect: each individual attribution was defensible
+    and the aggregate made the gate blind.
+    """
+    import csv as _csv
+
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/cross_source_agreement.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    if not rows:
+        raise AssertionError("cross_source_agreement.csv is empty, so this mutation would do nothing")
+    ids = sorted({i for r in rows for i in r["known_defect"].split(";") if i})
+    if not ids:
+        raise AssertionError("no cell carries a known_defect, so there is no entry to widen")
+    for r in rows:
+        r["known_defect"] = ids[0]
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+    return f"every cross-source cell is now attributed to {ids[0]!r}, so nothing can be unexplained"
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6111,6 +6145,14 @@ CASES = (
         "a defect-registry entry covered by no re-test, so the adjudication it records is a claim "
         "with nothing behind it -- invisible to CI, because the suite that would re-measure it "
         "needs the gitignored layer-B panel and runs by hand",
+    ),
+    (
+        "validate_cross_source_agreement.py",
+        mutate_crosssource_one_entry_absorbs_all,
+        "attributed to ALL",
+        "one registry entry attributed to every cross-source cell, so the zero ceiling on "
+        "unexplained disagreements cannot be exceeded by anything -- the gate reads as fully "
+        "explained while being unable to convict, which is how it hid 8 real defects",
     ),
 )
 

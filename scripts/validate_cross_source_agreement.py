@@ -20,9 +20,25 @@ any of them -- every other check compares a series against itself, its neighbour
 
 NO REGENERATION CHECK, deliberately: the table is built from layer B, which is absent in CI, so a
 `--check` could only compare nothing and report OK (issue 573). This gate reads the committed table.
+
+AND THE CEILING ABOVE IS ONLY A CHECK IF SOME CELL CAN BE UNEXPLAINED (arm F, issue 635). Until
+2026-09-01 none could. `coverage()` in 39_cross_source_agreement.py ignored the registry's
+`polity_code` column, so `layerb-nested-reporting-levels-one-polity` -- seventeen declared codes,
+`commodity = (all)`, a placeholder label, all four sources, years 1909-1960 -- was attributed to 804
+of 804 cells. The zero ceiling could not be exceeded by anything, and it was masking eight real
+disagreements at 10-14x on polities absent from that entry's own list. Both are registered now
+(#636): czech `beans, dry` x7, where the yearbooks print TWO series per year and layer B keeps the
+smaller while juan carries their sum; and yugoslav `sunflower seed`, where both sources carry the
+same 19,000 ha and iia's production implies 0.10 t/ha against juan's 0.63-1.44.
+
+`coverage()` now honours `polity_code` -- attribution narrowed from 804 to 570 of 804 cells, widest
+entry 227 -- and arm F forbids any entry being attributed to ALL cells. That arm exists because the
+failure is invisible per-cell: every individual attribution looked defensible, and only the aggregate
+blinded the gate. An entry that should cover broadly leaves `polity_code` blank.
 """
 from __future__ import annotations
 
+import collections
 import csv
 import os
 import sys
@@ -100,6 +116,30 @@ def main() -> int:
             f"because several labels route to one polity, so it SHRINKS when a reroute separates "
             f"them -- which may be correct, but it removes the only place two publishers are "
             f"comparable and should be a deliberate act")
+    # ARM F -- THE CEILING MUST BE REACHABLE (issue 635). BASELINE_UNEXPLAINED = 0 above is only a
+    # check if some cell CAN be unexplained. It could not be: `coverage()` ignored the registry's
+    # `polity_code` column, so one entry with 17 declared codes, `commodity = (all)` and a
+    # placeholder label matched 804 of 804 cells and pre-absorbed everything. The arm had never been
+    # able to convict, and it was masking 8 real disagreements at 10-14x (both since registered,
+    # #636). Fixed in 39_cross_source_agreement.py by honouring polity_code; this arm is what stops
+    # it coming back, because the failure is invisible from any per-cell test -- every individual
+    # attribution looked defensible.
+    absorbed = collections.Counter()
+    for r in rows:
+        for issue_id in filter(None, r["known_defect"].split(";")):
+            absorbed[issue_id] += 1
+    universal = sorted(i for i, n in absorbed.items() if n == len(rows))
+    if rows and universal:
+        problems.append(
+            f"entry/entries {universal} are attributed to ALL {len(rows)} cells, so no cell can ever "
+            f"appear as unexplained and the ceiling of {BASELINE_UNEXPLAINED} above cannot be "
+            f"exceeded by anything. An entry that covers everything explains nothing. Scope it with "
+            f"`polity_code`, `commodity` or `label` in data_errors.csv -- see issue 635, where this "
+            f"state hid 8 disagreements at 10-14x.")
+    print(f"  attribution: {sum(1 for r in rows if r['known_defect'])} of {len(rows)} cells carry a "
+          f"recorded defect; widest entry covers "
+          f"{max(absorbed.values()) if absorbed else 0} of {len(rows)}")
+
     if len(unexplained) > BASELINE_UNEXPLAINED:
         for r in unexplained[:8]:
             print(f"   UNEXPLAINED {r['polity_code']:16}{r['item'][:22]:24}{r['unit'][:8]:10}"

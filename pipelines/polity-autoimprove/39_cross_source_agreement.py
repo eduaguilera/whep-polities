@@ -73,6 +73,21 @@ def coverage(row, errors):
     for e in errors:
         if e["source"] and not any(s in e["source"].split(";") for s in row["sources"].split(";")):
             continue
+        # POLITY SCOPE (issue 635). An entry that names polity codes concerns THOSE polities, and
+        # this filter is what makes that true of the matching as well as of the entry. Without it
+        # `layerb-nested-reporting-levels-one-polity` -- 17 declared codes, `commodity = (all)`, a
+        # placeholder label, all four sources, 1909-1960 -- matched 804 of 804 cells, so
+        # BASELINE_UNEXPLAINED = 0 could never be exceeded and the gate's headline arm was dead.
+        # It also attributed 8 real disagreements to itself: czech `beans, dry` x7 (two raw series,
+        # layer B keeps one) and yugoslav `sunflower seed` (production x10), on polities absent from
+        # its own list and commodities its summary never mentions. Both are now registered in their
+        # own right (#636), which is why this filter does not turn the gate red.
+        #
+        # An entry that legitimately covers broadly leaves `polity_code` BLANK; declaring codes is
+        # what opts an entry into being scoped.
+        codes = [c for c in (e.get("polity_code") or "").split(";") if c.strip()]
+        if codes and row["polity_code"] not in [c.strip() for c in codes]:
+            continue
         try:
             if e["year_min"] and e["year_max"] and not (
                     int(e["year_min"]) <= int(row["year"]) <= int(e["year_max"])):
