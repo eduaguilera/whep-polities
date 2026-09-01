@@ -284,6 +284,76 @@ def check_western_eastern_prefix(ctx):
                     "non-colliding target")
 
 
+def check_malawi_cotton_deflation(ctx):
+    """A ~30x deflation on BOTH axes, and the preserved yield is what makes it one fault not two.
+
+    fao1952 publishes `Nyasaland` on the same polity and the same 1934-1938 period at 3,000 t and
+    34,000 ha; iia publishes 100 t and 1,000 ha. Either figure alone would only say the two sources
+    disagree. Together they say something stronger: the implied yields are 0.100 and 0.088 t/ha, a
+    ratio of 1.13, so whatever divided the production also divided the area. The YIELD RATIO is
+    therefore pinned alongside the two axes -- if it ever drifted, this would become two independent
+    errors and the entry's reasoning would have to be redone.
+
+    THE COMPARISON DEPENDS ON TWO THINGS THIS REPO ONLY RECENTLY HAS. It is a POLITY-level comparison
+    across different labels (issue 375), and it needs fao1952's `1000 tonnes` normalised against iia's
+    `tonnes` (issue 612) -- with raw unit strings the two series never meet. The check therefore
+    asserts the two labels really do land on one polity, because if that routing changed the
+    comparison would vanish silently rather than fail.
+
+    THE SPIKE-TABLE CONSEQUENCE IS PINNED because it is the transferable part: isolated_spikes.csv
+    records 1935 = 3,400 as an anomaly, and 3,400 is the one cell in the window that matches fao. A
+    neighbour-ratio screen names the sound cell whenever a correct value sits among corrupted ones."""
+    lb = ctx["panel"]
+    m = MATCHED_DF[0]
+    if m is None:
+        return None
+    iia = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "malawi")
+             & (lb["item"].astype(str).str.lower() == "cotton lint")]
+    fao = lb[(lb["source"] == "fao1952")
+             & lb["country"].astype(str).str.contains("Nyasaland", case=False, na=False)
+             & (lb["item"].astype(str).str.lower() == "cotton lint")]
+
+    def per(frame, unit, p="1934-1938"):
+        h = frame[(frame["unit"] == unit) & frame["year"].isna()
+                  & (frame["period"].astype(str) == p)]
+        return float(h["value"].iloc[0]) if len(h) else None
+
+    it, ia = per(iia, "tonnes"), per(iia, "ha")
+    ft, fa = per(fao, "1000 tonnes"), per(fao, "1000 hectares")
+    claims = [("iia 1934-1938 production (t)", it, 100.0),
+              ("iia 1934-1938 area (ha)", ia, 1000.0),
+              ("fao1952 Nyasaland 1934-1938 (1000 t)", ft, 3.0),
+              ("fao1952 Nyasaland 1934-1938 (1000 ha)", fa, 34.0)]
+    if None not in (it, ia, ft, fa):
+        claims.append(("  production factor fao/iia", round(ft * 1000 / it, 1), 30.0))
+        claims.append(("  area factor fao/iia", round(fa * 1000 / ia, 1), 34.0))
+        # The yield ratio is the evidence that one slip hit both axes.
+        claims.append(("  YIELD ratio iia/fao -- must stay ~1",
+                       round((it / ia) / (ft * 1000 / (fa * 1000)), 2), 1.13))
+    dated = {int(r.year): float(r.value) for r in
+             iia[(iia["unit"] == "tonnes") & iia["year"].between(1934, 1937)].itertuples()}
+    claims.append(("iia dated 1934/1935/1936/1937 (t)",
+                   ",".join(str(int(dated.get(y, -1))) for y in (1934, 1935, 1936, 1937)),
+                   "100,3400,100,100"))
+    mm = m[m["value"].notna()]
+    pol = sorted({str(x) for x in mm[(mm["source"] == "iia")
+                                     & (mm["country"].astype(str).str.lower() == "malawi")
+                                     & (mm["item"].astype(str).str.lower() == "cotton lint")
+                                     ]["whep_code"].dropna()})
+    fpol = sorted({str(x) for x in mm[(mm["source"] == "fao1952")
+                                      & mm["country"].astype(str).str.contains("Nyasaland", case=False,
+                                                                               na=False)
+                                      ]["whep_code"].dropna()})
+    claims.append(("both labels land on one polity", f"{','.join(pol)}|{','.join(fpol)}",
+                   "MWI-1891-1953|MWI-1891-1953"))
+    with open(os.path.join(REPO, "pipelines", "polity-autoimprove", "state",
+                           "isolated_spikes.csv"), newline="", encoding="utf-8") as fh:
+        sp = [r for r in csv.DictReader(fh)
+              if r["country"] == "malawi" and r["item"] == "cotton lint"]
+    claims.append(("isolated_spikes flags the SOUND cell", sp[0]["year"] if sp else None, "1935"))
+    return (claims, "the preserved yield makes it one scale slip; the spike table names the good cell")
+
+
 def check_libya_olives_period_cell(ctx):
     """One inflated olive cell, and the CONTROL is what keeps it a cell rather than a class.
 
@@ -1982,6 +2052,7 @@ CHECKS = {
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
+    "iia-malawi-cotton-1934-1938-deflated": check_malawi_cotton_deflation,
     "iia-libya-olives-1934-1938-inflated": check_libya_olives_period_cell,
     "fao1952-china-whole-and-five-parts": check_china_whole_and_five_parts,
     "fao1952-tractors-total-beside-its-own-parts": check_tractors_total_beside_parts,
