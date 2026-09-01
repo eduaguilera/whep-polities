@@ -2254,8 +2254,95 @@ def check_zero_refuted_by_paired_axis(ctx):
                  "makes this issue 446's resolution floor rather than issue 414's blank cells")
 
 
+def check_iia_indonesia_is_java_and_madura(ctx):
+    """layer-B iia `indonesia` is Java and Madura, ~7% of the territory it is routed to.
+
+    THE TEST IS IDENTITY, NOT MAGNITUDE (issue 377's lesson). "1.6 Mt of sugar is too much for Java"
+    would be the reasoning that put three IIA routings wrong. Here the raw carries eight distinct
+    archipelago labels, layer B kept one, and the surviving series matches ONE of them digit for
+    digit in every dated year -- a statement about which cell was copied, not about how big it is.
+
+    SINGLE PRODUCT, DELIBERATELY. Pooling every product whose name contains "sugar" over-matches:
+    `dutch java and madura` carries both `sugar: cane` and `sugar: cane, unrefined`, and counting a
+    year as a hit when ANY of them matches inflated this from 29/29 to 33/34 when I first measured
+    it. Attribute a cell only through one product.
+
+    THE ALTERNATIVES LOSE ON AVAILABILITY, NOT ON DISAGREEMENT, and saying which matters: `dutch
+    east indies` and `dutch east indies: outer provinces` carry NO `sugar: cane` production rows at
+    all, so their score is 0 of 0 shared years rather than 0 of 29. That is the weaker of the two
+    argument shapes in reference terms, so the soybean identity below is what carries the entry.
+
+    THE LABEL IS NOT INTERNALLY CONSTANT, which no single-label reroute can fix: soybeans at 1939 is
+    332,500 = java+madura 317,600 + bali+lombok 14,900, and NO raw row anywhere carries 332,500 in
+    1939. So some cells are one island pair and some are a sum of two -- an additive composition,
+    invisible to any value-matching test that asks only which single label a value came from.
+
+    Registers the defect only. The remedy is issue 312's open question (no Java+Madura polity
+    exists, and creating one changes what the remaining Dutch East Indies rows mean).
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    out = []
+
+    # 1. the eight archipelago labels the source distinguishes and layer B collapsed
+    for lab, want in (("dutch east indies", 1932), ("dutch java and madura", 1599),
+                      ("dutch east indies: outer provinces", 1175), ("dutch new guinea", 110),
+                      ("dutch sumatra", 23), ("dutch bali and lombok", 18),
+                      ("dutch java and sumatra", 8),
+                      ("dutch java, madura and outer provinces", 6)):
+        out.append((f"raw `{lab[:26]}`", int((raw["_c"] == lab).sum()), want))
+
+    # 2. what layer B kept. Stated on BOTH time axes: filtering on `year` alone would silently drop
+    #    the 75 period rows, which is the trap this repo documented in issue 618.
+    ind = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.strip().str.lower() == "indonesia")]
+    out += [("layer-B iia `indonesia` rows", len(ind), 378),
+            ("  dated", int(ind["year"].notna().sum()), 303),
+            ("  period", int(ind["year"].isna().sum()), 75)]
+
+    # 3. sugar: one product, exact equality, per label
+    import pandas as pd
+
+    prod = raw[(raw["_v"] == "production") & raw["value"].notna()].copy()
+    prod["_y"] = pd.to_numeric(prod["year"], errors="coerce")
+    s_lb = ind[ind["item"] == "sugar raw centrifugal"]
+    lbmap = {int(y): float(v) for y, v in
+             zip(pd.to_numeric(s_lb["year"], errors="coerce"), s_lb["value"]) if pd.notna(y)}
+    for lab, want_exact, want_shared in (("dutch java and madura", 29, 29),
+                                         ("dutch east indies", 0, 0),
+                                         ("dutch east indies: outer provinces", 0, 0)):
+        g = prod[(prod["_c"] == lab) & (prod["product"] == "sugar: cane") & prod["_y"].notna()]
+        per_year = g.groupby("_y")["value"].apply(list)
+        shared = [y for y in per_year.index if int(y) in lbmap]
+        exact = [y for y in shared if any(abs(v - lbmap[int(y)]) < 0.05 for v in per_year[y])]
+        out.append((f"sugar vs `{lab[:22]}`", f"{len(exact)}/{len(shared)}",
+                    f"{want_exact}/{want_shared}"))
+
+    # 4. the additive cell: a sum that exists in no raw row
+    soy = prod[prod["product"] == "soybean"]
+    def _s(lab):
+        g = soy[(soy["_c"] == lab) & (soy["_y"] == 1939)]
+        return float(g["value"].sum()) if len(g) else 0.0
+    jm, bl = _s("dutch java and madura"), _s("dutch bali and lombok")
+    # UNIT IS PART OF THE KEY. Without it this sums the 1939 area row (431,000 ha) into the
+    # production row (332,500 t) and reports 763,500 -- which the re-test caught on the first run.
+    lb39 = ind[(ind["item"] == "soybeans") & (ind["unit"] == "tonnes")
+               & (pd.to_numeric(ind["year"], errors="coerce") == 1939)]
+    allv = pd.to_numeric(raw["value"], errors="coerce")
+    ally = pd.to_numeric(raw["year"], errors="coerce")
+    out += [("soybeans 1939 java+madura", jm, 317600.0),
+            ("  bali+lombok", bl, 14900.0),
+            ("  their sum", jm + bl, 332500.0),
+            ("  layer-B value", float(lb39["value"].sum()), 332500.0),
+            # the sum exists in no single raw row, which is what makes it a composition rather
+            # than a copy -- and it is the claim a value-matching attribution test cannot reach
+            ("  raw rows = 332,500 at 1939",
+             int(len(raw[((allv - 332500).abs() < 0.5) & (ally == 1939)])), 0)]
+    return out, ("sugar is java+madura alone in 29 of 29 dated years; soybeans 1939 is java+madura "
+                 "PLUS bali+lombok, a sum carried by no raw row -- so the label is not one territory")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "iia-indonesia-is-java-and-madura": check_iia_indonesia_is_java_and_madura,
     "iia-attributable-single-cell-errors": check_attributable_single_cells,
     "constant-runs-two-proven-placeholders": check_constant_run_placeholders,
     "iia-corrupted-country-labels": check_corrupted_country_labels,
