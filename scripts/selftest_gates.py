@@ -5085,6 +5085,37 @@ def mutate_crosssource_one_entry_absorbs_all(root, gpd, make_valid, affinity):
         w.writerows(rows)
     return f"every cross-source cell is now attributed to {ids[0]!r}, so nothing can be unexplained"
 
+def mutate_containment_edge_dropped(root, gpd, make_valid, affinity):
+    """Drop one subnational polity's containment edge, restoring the parent-in-the-name pattern.
+
+    The edge set (whep#51) replaces parents encoded in name strings -- "Burundi (within
+    Ruanda-Urundi)" -- which no consumer can read. What makes that a vocabulary rather than a habit
+    is coverage: every subnational polity must state what contains it. Without that arm a new
+    subnational row lands with its parent in its title and nothing fails.
+
+    The mutation removes one member's edge from the emitted table. The file stays valid CSV, every
+    remaining edge still names real polities and still sits inside both spans, and the interval
+    checks stay quiet -- so arms A-D and F pass and only the coverage arm can see it. That is the
+    shape of the failure it exists for: the table looks well-formed and has quietly stopped being
+    the answer to "what contains this".
+    """
+    import csv as _csv
+
+    path = os.path.join(root, "data/final/polity_containment.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    if not rows:
+        raise AssertionError("polity_containment.csv is empty, so this mutation would trip the "
+                             "liveness arm instead of the coverage arm")
+    victim = rows[0]["member_code"]
+    kept = [r for r in rows if r["member_code"] != victim]
+    if len(kept) == len(rows):
+        raise AssertionError("no row matched the victim member; the mutation would do nothing")
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(kept)
+    return f"{victim} no longer states what contains it, with the table otherwise well-formed"
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6154,6 +6185,14 @@ CASES = (
         "unexplained disagreements cannot be exceeded by anything -- the gate reads as fully "
         "explained while being unable to convict, which is how it hid 8 real defects",
     ),
+    (
+        "validate_polity_containment.py",
+        mutate_containment_edge_dropped,
+        "declares no container",
+        "a subnational polity whose containment edge has been dropped, so its parent exists only in "
+        "its name string where no consumer can read it -- the table stays valid CSV and every "
+        "remaining edge still checks out, so only the coverage arm can see it",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -6882,6 +6921,12 @@ WRITABLE = {
     "validate_data_errors_registry.py": (
         "pipelines/polity-autoimprove/state/data_errors.csv",
         "pipelines/polity-autoimprove/35_retest_data_errors.py",
+    ),
+    # the case rewrites the emitted edge table, so it needs a real copy rather than stage()'s
+    # symlink. polities_database.csv is deliberately NOT listed: stage() already provides it, and
+    # naming it again raises SameFileError -- which is how this entry was first written.
+    "validate_polity_containment.py": (
+        "data/final/polity_containment.csv",
     ),
 }
 
