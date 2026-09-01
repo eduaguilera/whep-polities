@@ -2457,8 +2457,69 @@ def check_iia_yugoslavia_sunflower_x10(ctx):
                  "0.63-1.44 makes the iia figure impossible, and x10 lands it at 1.00")
 
 
+def check_nga_1950_livestock_broadcast(ctx):
+    """Four mitchell nigeria livestock items read exactly 13,000 head in 1950.
+
+    THE CROSS-ITEM AGREEMENT IS THE DIAGNOSIS, and it is the whole method: cattle, goats, sheep and
+    swine have wildly different populations, so four unrelated species cannot agree to the digit.
+    Their own medians elsewhere are 2.94M, 5.02M, 1.89M and 51,000 -- 226x, 386x, 145x and 4x above
+    13,000.
+
+    SWINE AT 4x IS WHY A PER-SERIES TEST CANNOT FIND THIS. 13,000 against a 51,000 median is low and
+    entirely possible; no spike, constant-run or magnitude screen would convict it, and it is only
+    guilty by being the same number as the other three. The corollary is that the repair must cover
+    it too, which a per-cell verdict would not.
+
+    TWO CONTROLS, both inside the same year. Asses (941,000) and horses (212,000) at 1950 are NOT
+    13,000, so this is not a whole-column failure -- it is four of the six livestock items. And the
+    non-livestock items at 1950 are varied and plausible (millet 973,000, sorghum 1,862,000, cacao
+    112,000), so the year itself is sound.
+
+    13,000 IS NOT AN ANOMALOUS NUMBER IN THIS LABEL, which matters for stating the claim correctly:
+    it also appears four times as `cotton lint` in tonnes (1908, 1946-1948), where it is a perfectly
+    ordinary tonnage. The claim is the agreement among the four livestock items at one year, not
+    that 13,000 is odd.
+
+    THIRD INSTANCE OF A REGISTERED CLASS -- see ind-1947-livestock-broadcast-3000 (eight items) and
+    som-1959-livestock-broadcast-15000 (four items). A third label and a third decade is what makes
+    it a class rather than three incidents. Found 2026-09-01 through issue 612's unit normalisation,
+    which is the first thing to make mitchell and fao1952 comparable on `heads` at all.
+    """
+    m = ctx["matched"]
+    if m is None:
+        return None
+    import pandas as pd
+
+    g = m[m.whep_code.notna() & m.value.notna()]
+    g = g[(g.source == "mitchell") & (g.country.astype(str).str.lower() == "nigeria")]
+    out = []
+    BROADCAST = ("cattle", "goats", "sheep", "swine / pigs")
+    for item in BROADCAST:
+        v = g[(g["item"] == item) & (g["year"] == 1950)]["value"]
+        out.append((f"1950 {item[:16]}", float(v.iloc[0]) if len(v) else 0.0, 13000.0))
+    # each item's own median in every OTHER year, and the factor
+    for item, want_med, want_ratio in (("cattle", 2942000.0, 226), ("goats", 5024500.0, 386),
+                                       ("sheep", 1888000.0, 145), ("swine / pigs", 51000.0, 4)):
+        o = g[(g["item"] == item) & (g["value"] != 13000)]["value"]
+        med = float(o.median()) if len(o) else 0.0
+        out += [(f"  {item[:14]} median elsewhere", med, want_med),
+                (f"    factor", int(round(med / 13000.0)) if med else 0, want_ratio)]
+    # controls: two livestock items in the SAME year that are not 13,000
+    for item, want in (("asses", 941000.0), ("horses", 212000.0)):
+        v = g[(g["item"] == item) & (g["year"] == 1950)]["value"]
+        out.append((f"1950 {item} -- a control", float(v.iloc[0]) if len(v) else 0.0, want))
+    # 13,000 elsewhere in this label is legitimate cotton tonnage, not livestock
+    o = g[g["value"] == 13000]
+    out += [("rows equal to 13,000 in all", len(o), 8),
+            ("  of those, livestock", int((o["item"].isin(BROADCAST)).sum()), 4),
+            ("  the rest, all cotton lint", int((o["item"] == "cotton lint").sum()), 4)]
+    return out, ("four species agreeing to the digit at one year, with asses and horses in the same "
+                 "year untouched; swine's own factor is only 4x, so no per-series test reaches it")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "nga-1950-livestock-broadcast-13000": check_nga_1950_livestock_broadcast,
     "iia-czechoslovakia-beans-component-only": check_iia_czechoslovakia_beans_component,
     "iia-yugoslavia-sunflower-production-x10": check_iia_yugoslavia_sunflower_x10,
     "iia-indonesia-is-java-and-madura": check_iia_indonesia_is_java_and_madura,
