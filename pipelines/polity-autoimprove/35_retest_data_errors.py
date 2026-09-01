@@ -2774,8 +2774,66 @@ def check_cmr_1932_groundnut_area(ctx):
                  "excluding it and agreeing with the neighbours")
 
 
+def check_bgr_beans_1934_1938_x1000(ctx):
+    """iia bulgaria dry-bean production 1934-1938 is x1000, and the yield identity names the factor.
+
+    THE PAIRED AREA IS CLEAN, so this is not a territory, scope or label fault -- those move both
+    axes. 80,000 ha follows the previous volume's 71,000 and sits under fao1952's 110,000 for the
+    same span. Only production moves.
+
+    THE FACTOR IS RECOVERABLE, WHICH IS THE POINT. 44,016,400 t on 80,000 ha implies 550 t/ha, and
+    dry beans yield 0.5-1.5. Divide by 1000 and it is 44,016 t at 0.55 t/ha -- against fao1952's
+    65,000 t on 110,000 ha, or 0.59, and the previous volume's 47,600 on 71,000, or 0.67. Three
+    yields within 0.55-0.67 and one at 550: the correction is not a guess, it is the only factor that
+    lands the cell inside its own neighbours' range.
+
+    NOTE THE RATIO IS NOT THE FACTOR. Against the previous volume the cell is 925x and against
+    fao1952 it is 677x, so a screen reading either ratio would infer x1000 wrongly or not at all --
+    the yield identity is what fixes it, because the area is independent evidence.
+
+    IT IS ALSO THE PANEL'S LARGEST DRY-BEAN VALUE, across 1,309 rows whose median is 36,000 t, and
+    about six to nine times the entire world crop of the 1930s. That is context rather than
+    argument: the yield is the argument.
+    """
+    lb = ctx["panel"]
+    g = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "bulgaria")
+           & (lb["item"] == "beans, dry") & lb["value"].notna()]
+
+    def per(span, unit):
+        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
+              & (g["unit"].astype(str) == unit)]["value"]
+        return float(h.max()) if len(h) else 0.0
+
+    p38, a38 = per("1934-1938", "tonnes"), per("1934-1938", "ha")
+    p32, a32 = per("1928-1932", "tonnes"), per("1928-1932", "ha")
+    fa = lb[(lb["source"] == "fao1952")
+            & lb["country"].astype(str).str.lower().str.startswith("bulgaria")
+            & (lb["item"].astype(str) == "dry beans") & lb["value"].notna() & lb["year"].isna()]
+    f_t = float(fa[fa["unit"].astype(str) == "1000 tonnes"]["value"].max()) if len(fa) else 0.0
+    f_a = float(fa[fa["unit"].astype(str) == "1000 hectares"]["value"].max()) if len(fa) else 0.0
+    w = lb[(lb["item"] == "beans, dry") & (lb["unit"].astype(str) == "tonnes") & lb["value"].notna()]
+    out = [("1934-38 production (t)", p38, 44016400.0),
+           ("  its paired area (ha) -- clean", a38, 80000.0),
+           ("  implied yield t/ha", round(p38 / a38, 1) if a38 else 0.0, 550.2),
+           ("  yield after dividing by 1000", round(p38 / 1000 / a38, 2) if a38 else 0.0, 0.55),
+           ("1928-32 production (t)", p32, 47600.0),
+           ("  its area (ha)", a32, 71000.0),
+           ("  its yield", round(p32 / a32, 2) if a32 else 0.0, 0.67),
+           ("fao1952 1934-38 (1000 t)", f_t, 65.0),
+           ("  its area (1000 ha)", f_a, 110.0),
+           ("  its yield", round(f_t / f_a, 2) if f_a else 0.0, 0.59),
+           ("ratio vs the previous volume", int(round(p38 / p32)) if p32 else 0, 925),
+           ("ratio vs fao1952", int(round(p38 / (f_t * 1000))) if f_t else 0, 677),
+           ("panel-wide dry-bean rows (t)", len(w), 1309),
+           ("  this cell is the maximum", 1 if p38 == float(w["value"].max()) else 0, 1),
+           ("  their median", float(w["value"].median()), 36000.0)]
+    return out, ("clean area, 550 t/ha where beans yield 0.5-1.5, and dividing by 1000 gives 0.55 "
+                 "against fao1952's 0.59 -- the factor is identified by the yield, not the ratio")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "bgr-beans-1934-1938-production-x1000": check_bgr_beans_1934_1938_x1000,
     "cmr-1932-groundnut-area-620-million-ha": check_cmr_1932_groundnut_area,
     "iia-sugar-1934-1938-deflated": check_iia_sugar_1934_1938_deflated,
     "iia-olives-1934-1938-scale-scrambled": check_iia_olives_1934_1938_scale,
