@@ -174,6 +174,43 @@ if DRY:
     print(f"dry run: would drop {len(resolved)} row(s) and archive them to {RESOLVED}")
     sys.exit(0)
 
+# A FALLBACK ROUTE MAY REPORT; IT MAY NOT CLOSE AN ADJUDICATION (issue 627).
+#
+# assertions.json is gitignored per-run state, so it is absent on any fresh checkout, and the
+# (b) fallback above re-derives routes through the deterministic matcher. That matcher CANNOT
+# reproduce an adjudicated routing -- reproducing it is exactly what the adjudication exists to
+# record -- so a row whose recorded candidate was decided rather than derived looks "changed" to
+# the fallback and is dropped and archived as resolved.
+#
+# Measured 2026-09-01: 10 of 43 quarantine rows carry a candidate the matcher cannot re-derive,
+# 7 of them with a bundle that AGREES the route is unchanged. Toggling only this file's presence
+# moves `rwanda|mitchell|1953-1960` from KEEP to DROP -- recorded verdict `uncertain`, basis "the
+# label is the Rwanda half of the Belgian trust territory", matcher says RWA-1922-1962 against
+# the recorded RWB-1922-1962 (Ruanda-Urundi, both halves). One character apart, and the whole
+# point of the adjudication.
+#
+# Seven of the ten are shielded only because the matcher returns NOTHING for them, which this
+# tool already treats as "not resolvable -- kept". The exposed class is the narrower one where it
+# returns something DIFFERENT, and which rows those are moves with the alias and span tables.
+#
+# So: reporting on fallback routes is fine (--dry-run still prints the full classification), and
+# resolving on them is not. This refuses rather than silently keeping, because "kept" and
+# "resolved" are both claims and a run that cannot tell them apart should make neither.
+if not os.path.exists(ASSERTIONS) and "--allow-fallback-routes" not in sys.argv[1:]:
+    _nonderivable = [(row.get("key"), row.get("candidate"), reason)
+                     for row, _res, reason, _now in resolved]
+    print(f"REFUSING TO RESOLVE: {ASSERTIONS} is absent, so every route below was re-derived by "
+          f"the deterministic matcher, which cannot reproduce an adjudicated routing.")
+    print(f"  {len(resolved)} row(s) would be dropped from quarantine.csv and archived as resolved:")
+    for _k, _c, _r in _nonderivable:
+        print(f"    {_k}  (recorded candidate {_c})")
+        print(f"        {_r}")
+    print("Fix: regenerate the assertion bundles first, or re-run with --dry-run to inspect "
+          "without writing.")
+    print("Or pass --allow-fallback-routes to resolve on re-derived routes deliberately. "
+          "See issue 627.")
+    sys.exit(1)
+
 # ---------- archive, then rewrite ----------
 n_arch = 0
 for row, resolution, reason, now in resolved:
