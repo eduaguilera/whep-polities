@@ -2717,8 +2717,66 @@ def check_iia_sugar_1934_1938_deflated(ctx):
                  "that copies one deflated year instead of averaging")
 
 
+def check_cmr_1932_groundnut_area(ctx):
+    """iia cameroon groundnut area 1932 reads 620,004,098 ha -- 13x the whole country.
+
+    NO JUDGEMENT IS REQUIRED ON THIS ONE. Cameroon's total land area is about 47,540,000 ha, so the
+    cell exceeds the country by 13x and is about 4.8% of Earth's land surface. Its own neighbours are
+    61,000 (1931) and 62,000 (1933).
+
+    THE PERIOD ROW IS INDEPENDENT EVIDENCE, and it is what makes the correct value recoverable rather
+    than merely bounded: iia's own `1928-1932` average for this series is 58,000 ha, computed by the
+    yearbook from its five years. Had 620 million been among them the average could not be 58,000, so
+    the source's own arithmetic excludes this value -- and 58,000 sits with the neighbours.
+
+    This is the INVERSE of the australia sugar case registered beside it: there a period average was
+    broken while the dated years were sound; here the dated year is broken and the period average is
+    sound. Both were found by the same comparison, which is an argument for keeping it symmetric.
+
+    NOT CLAIMED: the mechanism. The digits split as 62000|4098, and 62,000 is exactly the 1933 value,
+    which is the shape of the adjacent-cell merging recorded for LABELS in issue 493. That is
+    suggestive and not demonstrated -- what 4098 would be is unknown, and a single coincidence of
+    digits is not evidence.
+    """
+    lb = ctx["panel"]
+    import pandas as pd
+
+    g = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "cameroon")
+           & (lb["item"] == "groundnuts, with shell") & lb["value"].notna()]
+    a = g[g["unit"].astype(str) == "ha"].copy()
+    a["y"] = pd.to_numeric(a["year"], errors="coerce")
+
+    def yr(y):
+        h = a[a.y == y]["value"]
+        return float(h.iloc[0]) if len(h) else 0.0
+
+    def per(span):
+        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
+              & (g["unit"].astype(str) == "ha")]["value"]
+        return float(h.max()) if len(h) else 0.0
+
+    CAMEROON_HA = 47540000.0     # restated, not derived: ~475,400 km2
+    out = [("1932 area (ha)", yr(1932), 620004098.0),
+           ("  1931, the year before", yr(1931), 61000.0),
+           ("  1933, the year after", yr(1933), 62000.0),
+           ("  times the whole country", int(round(yr(1932) / CAMEROON_HA)), 13),
+           ("iia's own 1928-1932 average", per("1928-1932"), 58000.0),
+           ("  and its 1925-1929 average", per("1925-1929"), 49200.0),
+           ("mean of the dated 1928-1932 rows", round(float(a[a.y.between(1928, 1932)]["value"].mean()), 1),
+            206707699.3),
+           ("  dated rows in that span", len(a[a.y.between(1928, 1932)]), 3),
+           # `a` is every ha row INCLUDING the two period rows, so the dated count needs the
+           # notna filter -- an earlier draft pinned 10 here and the re-test returned 12.
+           ("all area rows (dated + period)", len(a), 12),
+           ("  of those, dated", int(a["y"].notna().sum()), 10),
+           ("  how many exceed the country", int((a["value"] > CAMEROON_HA).sum()), 1)]
+    return out, ("one cell 13x the country's area, with the source's own period average (58,000) "
+                 "excluding it and agreeing with the neighbours")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "cmr-1932-groundnut-area-620-million-ha": check_cmr_1932_groundnut_area,
     "iia-sugar-1934-1938-deflated": check_iia_sugar_1934_1938_deflated,
     "iia-olives-1934-1938-scale-scrambled": check_iia_olives_1934_1938_scale,
     "mitchell-japan-rye-is-not-rye": check_mitchell_japan_rye_is_not_rye,
