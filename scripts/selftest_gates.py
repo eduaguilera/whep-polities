@@ -4926,6 +4926,38 @@ def mutate_arearevision_footnote_split_collapsed(root, gpd, make_valid, affinity
     return (f"added a second {rows[0]['label']} row differing only by footnote, as keying on the label "
             f"alone would produce")
 
+def mutate_territorybasis_write_guard_removed(root, gpd, make_valid, affinity):
+    """Strip 04_territory_basis.py's refusal, restoring the silent destructive write of issue 573.
+
+    Two of that script's inputs are untracked, and when one is absent the column it feeds does not
+    go missing -- it COLLAPSES to a constant. Writing then publishes the collapse over real values
+    and exits 0. Measured 2026-09-01: `priority_review` 116 True -> 27 True, 89 flags deleted, and
+    `pipelines/footnote-territory-extraction/validate_proposals.py` reads that column.
+
+    The tool's own `--check` cannot see it. The same absent input makes the check SKIP the column,
+    so it is green exactly where it cannot look -- which is why the protection has to be a refusal
+    at the write and why removing it must fail something.
+
+    The mutation deletes only the guard block, leaving the write, the `_VOLATILE` map and every
+    other line intact, so the module still parses and still runs. Nothing else in the harness can
+    see it: no data file changes, and the tool exits 0 either way -- the difference is only whether
+    it exits 0 having written a collapse or refused to.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/04_territory_basis.py")
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    start = "if _missing and os.path.exists(_DEST)"
+    end = "out.to_csv(_DEST, index=False)"
+    if start not in src or end not in src:
+        raise AssertionError("04_territory_basis.py no longer carries the write guard and the write "
+                             "in the expected shape, so this mutation would silently do nothing")
+    i, j = src.index(start), src.index(end)
+    if i > j:
+        raise AssertionError("the guard already follows the write, which is the defect itself")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(src[:i] + src[j:])
+    return "04_territory_basis.py can now overwrite priority_review with its collapsed value, exit 0"
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -5955,6 +5987,14 @@ CASES = (
         "validity are all fine — a rigid offset, which validate_shared_polygons and "
         "validate_polygons both provably pass on (verified, exit 0, NPL unnamed)",
     ),
+    (
+        "validate_territory_basis_write_guard.py",
+        mutate_territorybasis_write_guard_removed,
+        "no module-level guard",
+        "a pipeline tool whose write-path refusal has been removed, so running it while an "
+        "untracked input is absent republishes a collapsed column over 89 real flags and exits 0 "
+        "-- invisible to the tool's own --check, which skips that column for the same reason",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -6665,6 +6705,11 @@ WRITABLE = {
         "pipelines/pre1961-matching/match.R",
         "pipelines/faostat-era-matching/match.R",
         "wiki/README.md",
+    ),
+    # the case strips the write guard out of this module, so it needs a real copy rather than
+    # stage()'s symlink -- otherwise the mutation edits the committed pipeline tool in place.
+    "validate_territory_basis_write_guard.py": (
+        "pipelines/polity-autoimprove/04_territory_basis.py",
     ),
 }
 
