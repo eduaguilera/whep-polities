@@ -2649,8 +2649,77 @@ def check_iia_olives_1934_1938_scale(ctx):
                  "so only production is scrambled -- israel/USA/libya up, ITALY down")
 
 
+def check_iia_sugar_1934_1938_deflated(ctx):
+    """Two iia sugar labels' `1934-1938` averages are deflated ~180x, and australia has two more.
+
+    THE PERIOD SEQUENCE IS THE ARGUMENT, not the size of any one cell. Each label's own averages run
+    at a consistent scale across four volumes and then collapse in the last one, while fao1952's
+    `1934-1938` figure agrees with the earlier volumes rather than with iia's:
+
+        argentina   175,862 -> 398,986 -> 356,500 -> 2,200      fao1952 410,000
+        australia     922(!) -> 511,803 -> 524,800 -> 4,400      fao1952 752,000
+
+    AUSTRALIA CARRIES TWO FURTHER FAULTS, and the second one names a mechanism.
+
+    First, a DATED BLOCK: seven consecutive years 1913-1919 read 569-1,979 t between 131,961 (1912)
+    and 165,616 (1920) -- a factor of 98 against the surrounding median of 193,658. Seven consecutive
+    years is not a transcription slip.
+
+    Second, THE `1909-1913` AVERAGE IS NOT AN AVERAGE. It reads 922.5 where the mean of its own five
+    dated years is 142,581.8 -- and 922.5 is exactly the 1913 dated value, the one deflated year in
+    the span. So that period row copies a single year rather than averaging the span, and it copied
+    the broken one. Recorded as an observation about this cell; whether other period rows do the same
+    is untested here.
+
+    NOT CLAIMED: a common cause. The 1913-1919 dated block and the 1934-1938 average sit in different
+    volumes, and nothing here shows one mechanism behind both.
+    """
+    lb = ctx["panel"]
+    import pandas as pd
+
+    g = lb[(lb["source"] == "iia") & (lb["item"] == "sugar raw centrifugal")]
+    fa = lb[(lb["source"] == "fao1952")
+            & lb["item"].astype(str).str.contains("sugar", case=False, na=False)]
+
+    def per(label, span):
+        h = g[(g["country"].astype(str).str.lower() == label) & (g["year"].isna())
+              & (g["period"].astype(str) == span)]
+        return round(float(h["value"].max()), 1) if len(h) else 0.0
+
+    out = []
+    for lab, want in (("argentina", (175862.4, 398986.2, 356500.0, 2200.0, 410.0)),
+                      ("australia", (922.5, 511802.8, 524800.0, 4400.0, 752.0))):
+        for span, w in zip(("1909-1913", "1925-1929", "1928-1932", "1934-1938"), want):
+            out.append((f"{lab[:9]} {span}", per(lab, span), w))
+        f2 = fa[(fa["country"].astype(str).str.lower().str.startswith(lab[:6])) & (fa["year"].isna())]
+        out.append((f"  fao1952 1934-38 (1000 t)", float(f2["value"].max()) if len(f2) else 0.0, want[4]))
+
+    # australia's dated block
+    d = g[(g["country"].astype(str).str.lower() == "australia") & g["year"].notna()].copy()
+    d["y"] = pd.to_numeric(d["year"], errors="coerce")
+    blk = d[d.y.between(1913, 1919)]
+    nrm = d[(d.y.between(1909, 1912)) | (d.y.between(1920, 1932))]
+    out += [("australia dated 1913-1919 rows", len(blk), 7),
+            # exact floats: an earlier draft pinned 1979 and 193658, truncated by an int() in the
+            # exploratory query, and the re-test caught both.
+            ("  their maximum", float(blk["value"].max()) if len(blk) else 0.0, 1979.3),
+            ("  surrounding median", float(nrm["value"].median()) if len(nrm) else 0.0, 193658.5),
+            ("  factor", int(round(nrm["value"].median() / blk["value"].max())) if len(blk) else 0, 98)]
+    # the period row that is not an average
+    m0913 = round(float(d[d.y.between(1909, 1913)]["value"].mean()), 1)
+    out += [("australia dated 1909-1913 mean", m0913, 142581.8),
+            ("  but its 1909-1913 period row", per("australia", "1909-1913"), 922.5),
+            ("  == its 1913 dated value", round(float(d[d.y == 1913]["value"].iloc[0]), 1), 922.5),
+            ("argentina dated rows (all years)",
+             len(g[(g["country"].astype(str).str.lower() == "argentina") & g["year"].notna()]), 1)]
+    return out, ("both labels' 1934-38 averages collapse ~180x against their own earlier volumes and "
+                 "against fao1952; australia also has a 7-year dated block at 98x and a period row "
+                 "that copies one deflated year instead of averaging")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "iia-sugar-1934-1938-deflated": check_iia_sugar_1934_1938_deflated,
     "iia-olives-1934-1938-scale-scrambled": check_iia_olives_1934_1938_scale,
     "mitchell-japan-rye-is-not-rye": check_mitchell_japan_rye_is_not_rye,
     "nga-1950-livestock-broadcast-13000": check_nga_1950_livestock_broadcast,
