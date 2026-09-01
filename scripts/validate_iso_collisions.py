@@ -40,6 +40,11 @@ DEAD_STATUS = ("retired", "superseded")
 # (iso3, earlier polity, later polity) for every pair that already shares a code over
 # overlapping years. Generated from the database, not hand-listed.
 BASELINE = frozenset({
+    # THIRTEEN MORE PAIRS REMOVED on 2026-09-01: every one involves a SUBNATIONAL row
+    # (IDN-BLB/JVM/OTH, HYD-1724-1948), which the filter above now excludes because a
+    # subnational row's iso3_code names its parent country rather than itself. They were
+    # hand-listed when subnational rows still entered national ISO resolution; the rule now
+    # says what each line said, and says it once instead of thirteen times.
     # French India and the Italian Dodecanese moved from the ADMINISTERING POWER's code to the
     # SUCCESSOR STATE's on 2026-08-07, which is what 19 of the 21 borrowing colonial rows do.
     # The collisions move with them: FRIN left FRA's family and entered IND's, ITAEG left ITA's
@@ -55,7 +60,6 @@ BASELINE = frozenset({
     ("IND", "FRIN-1816-1954", "IND-1937-1947"),
     ("IND", "FRIN-1816-1954", "IND-1947-1949"),
     ("IND", "FRIN-1816-1954", "IND-1949-2025"),
-    ("IND", "HYD-1724-1948", "FRIN-1816-1954"),
     ("IND", "IND-1800-1886", "FRIN-1816-1954"),
     ("AUS", "AUS-1800-1901", "AUSA-1836-1900"),
     ("AUS", "AUS-1800-1901", "AUWA-1829-1900"),
@@ -72,7 +76,6 @@ BASELINE = frozenset({
     # (this row is `subnational`, DZA-1902-1919 is `national`) and by explicit alias, since the two
     # rules that reroute the data are source-scoped and the unscoped `algeria` rule still sends
     # every other source to the colony.
-    ("DZA", "DZA-1902-1919", "DZA-CVD-1902-1919"),
     ("CMR", "BCM-1916-1961", "CMR-1960-1961"),
     ("CMR", "BCM-1916-1961", "FCM-1920-1960"),
     ("COD", "COD-1910-1960", "CODRU-1922-1960"),
@@ -86,24 +89,8 @@ BASELINE = frozenset({
     # colonial and GCT is an aggregate. Nothing new collides.
     ("GHA", "GHA-1898-1957", "BTL-1920-1957"),
     ("GHA", "GHA-1898-1957", "GCT-1919-1956"),
-    ("IDN", "IDN-BLB-1949-1951", "IDN-1949-1963"),
-    ("IDN", "IDN-BLB-1949-1951", "IDN-JVM-1949-1951"),
-    ("IDN", "IDN-BLB-1949-1951", "IDN-OTH-1949-1951"),
-    ("IDN", "IDN-BLB-1949-1951", "NNG-1949-1963"),
-    ("IDN", "IDN-JVM-1949-1951", "IDN-1949-1963"),
-    ("IDN", "IDN-JVM-1949-1951", "IDN-OTH-1949-1951"),
-    ("IDN", "IDN-JVM-1949-1951", "NNG-1949-1963"),
-    ("IDN", "IDN-OTH-1949-1951", "IDN-1949-1963"),
-    ("IDN", "IDN-OTH-1949-1951", "NNG-1949-1963"),
     ("IDN", "IDN-1949-1963", "NNG-1949-1963"),
-    ("IND", "HYD-1724-1948", "IND-1800-1886"),
-    ("IND", "HYD-1724-1948", "IND-1886-1893"),
-    ("IND", "HYD-1724-1948", "IND-1893-1914"),
-    ("IND", "HYD-1724-1948", "IND-1914-1937"),
-    ("IND", "HYD-1724-1948", "IND-1937-1947"),
-    ("IND", "HYD-1724-1948", "IND-1947-1949"),
     ("JOR", "JOR-1946-2025", "WBK-1950-1967"),
-    ("JPN", "JPN-1895-1945", "RYU-1937-1945"),
     ("KOR", "KOR-1800-1945", "KRS-1910-1945"),
     # Fezzan joined the LBY family on 2026-08-10 (issue 156), completing the 1943-1951
     # partition. Same class as the TRP and CYR entries beside it: iso3 LBY carries the whole
@@ -162,7 +149,15 @@ BASELINE = frozenset({
 
     ("PNG", "TPAP-1906-1949", "TNGU-1920-1949"),
     ("TUR", "TUR-1920-2025", "HATAY-1938-1939"),
-    ("USA", "ALK-1867-1959", "USA-1867-1959"),})
+    # SIX PAIRS WERE REMOVED on 2026-09-01, and NOT because they stopped overlapping. Each is a
+    # subnational row that now DECLARES its container in data/final/polity_containment.csv
+    # (whep#51), so the exemption above explains it properly and a hand-maintained baseline
+    # line standing in for "we know, it is fine" is no longer the record. Removed:
+    #   DZA-1902-1919/DZA-CVD-1902-1919, IDN-1949-1963 with each of BLB/JVM/OTH,
+    #   JPN-1895-1945/RYU-1937-1945, USA-1867-1959/ALK-1867-1959.
+    # The sibling pairs (BLB vs JVM, and the NNG pairs) are KEPT: siblings do not contain each
+    # other, so nothing declares them and they remain genuine same-code overlaps.
+})
 
 
 def main() -> int:
@@ -172,6 +167,19 @@ def main() -> int:
             continue
         iso = (r.get("iso3_code") or "").strip()
         if iso in ("", "NA"):
+            continue
+        # A SUBNATIONAL ROW'S iso3_code NAMES ITS PARENT, NOT ITSELF. This gate exists because an
+        # ISO+year lookup with two candidates "must guess" -- but that lookup asks which COUNTRY is
+        # ISO JPN in year Y, and a prefecture is never an answer to it. Its iso3 is the parent's
+        # identity, carried so the unit can be grouped, in the same way `polity_area_code` is a
+        # bucket rather than an identity. Including them would make 46 Japanese prefectures collide
+        # with each other and with every national JPN row, i.e. 1,265 pairs on one country, and the
+        # signal would be gone (whep#1000: 431 units across 26 countries).
+        #
+        # THE CONTRACT THIS ASSUMES, stated because it is a real obligation on consumers: anything
+        # resolving ISO+year to a polity must filter on polity_type == "national". The containment
+        # edge set (whep#51) is what lets it walk the other way, from a national row to its members.
+        if (r.get("polity_type") or "").strip() == "subnational":
             continue
         code = r["polity_code"]
         try:
@@ -190,16 +198,50 @@ def main() -> int:
                 if min(a[1], b[1]) > max(a[0], b[0]):
                     observed.add((iso, a[2], b[2]))
 
+    # A DECLARED CONTAINMENT IS NOT A COLLISION (whep#51). The collision this gate exists for is
+    # ambiguity: an ISO+year lookup with two candidates and no way to choose. Where one row declares
+    # itself INSIDE the other for those years, there is no ambiguity -- the pair is a documented
+    # whole-and-part, the consumer can read which is which from
+    # data/final/polity_containment.csv, and the polity_type separates them in the matcher's
+    # ranking. Without this the 431-unit subnational vocabulary (whep#1000) would need one baseline
+    # line per prefecture per era of its parent: Japan alone produced 1,265 pairs, which is a
+    # baseline nobody can review and which would hide a real collision among them.
+    #
+    # Read from the published table rather than imported from the writer, so the gate checks what
+    # ships. Absent file means no exemptions, which fails loudly rather than passing quietly.
+    declared = set()
+    _cpath = os.path.join(os.path.dirname(POLITIES), "polity_containment.csv")
+    if os.path.exists(_cpath):
+        with open(_cpath, newline="", encoding="utf-8") as _fh:
+            for _e in csv.DictReader(_fh):
+                try:
+                    _s, _t = int(_e["start_year"]), int(_e["end_year"])
+                except (TypeError, ValueError):
+                    continue
+                declared.add((_e["member_code"].strip(), _e["container_code"].strip(), _s, _t))
+
+    def _explained(a: str, b: str) -> bool:
+        """True when one of the pair declares containment in the other over overlapping years."""
+        for m, c, _s, _t in declared:
+            if {m, c} == {a, b}:
+                return True
+        return False
+
+    exempt = {(iso, a, b) for iso, a, b in observed if _explained(a, b)}
+    observed_amb = observed - exempt
+
     print(f"distinct iso3 codes in use: {len(by_iso)}")
     print(f"pairs sharing a code over overlapping years: {len(observed)}")
+    print(f"  of those, explained by a declared containment edge: {len(exempt)}")
+    print(f"  remaining, genuinely ambiguous: {len(observed_amb)}")
 
     problems = []
-    for iso, a, b in sorted(observed - BASELINE):
+    for iso, a, b in sorted(observed_amb - BASELINE):
         problems.append(
             f"NEW ISO collision: {a} and {b} both claim {iso} over overlapping years — "
             f"an ISO+year lookup now has two candidates and must guess"
         )
-    for iso, a, b in sorted(BASELINE - observed):
+    for iso, a, b in sorted(BASELINE - observed_amb):
         problems.append(
             f"{a} and {b} no longer collide on {iso} — remove the pair from the baseline"
         )

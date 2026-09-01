@@ -86,6 +86,12 @@ g["is_nat"] = g.polity_type.astype(str) == "national"
 # different territories and no label should resolve between them by type alone.
 # Bidirectional: a new pair fails, and one that stops tying must be removed.
 BASELINE = {
+    # THREE INDONESIAN SIBLING PAIRS REMOVED on 2026-09-01, and not because they stopped
+    # overlapping. All three are subnational-vs-subnational, which the tie filter now exempts:
+    # two components of a partition compete for no labels, so family ordering never decides
+    # between them. Their reason ("partition, disjoint by construction") is now expressed by
+    # the exemption rather than by a hand-maintained line, and the same rule keeps the signal
+    # usable at 431 subnational units instead of thousands of sibling pairs.
     # Two distinct Australian-administered territories on one island, similar in size.
     # A label naming either should route by alias, not by rank.
     "TPAP-1906-1949 / TNGU-1920-1949": "Papua and New Guinea, different territories",
@@ -134,9 +140,6 @@ BASELINE = {
     # The audit cannot tell a partition from a containment, because both look like one large row
     # and one small row sharing an iso3 and a span. 171x between Bali/Lombok and the other islands
     # is the most extreme instance and the most obviously benign.
-    "IDN-BLB-1949-1951 / IDN-OTH-1949-1951": "partition, disjoint by construction (171x, 0.0 km2 intersection)",
-    "IDN-JVM-1949-1951 / IDN-OTH-1949-1951": "partition, disjoint by construction (13.1x, 0.0 km2 intersection)",
-    "IDN-BLB-1949-1951 / IDN-JVM-1949-1951": "partition, disjoint by construction (13.1x, 0.0 km2 intersection)",
     "IDN-BLB-1949-1951 / NNG-1949-1963": "Bali/Lombok and West Papua: disjoint (0.0 km2 intersection)",
     # AND ONE THAT WAS NOT BENIGN, now fixed -- kept here with both numbers, because the pair still
     # TIES on area ratio (3.3x) even though it no longer overlaps, and PINNED_DISJOINT below is what
@@ -296,6 +299,25 @@ for iso, fam in g.groupby("iso3_code"):
             lo, hi = max(a.s, b.s), min(a.e, b.e)
             if pd.isna(lo) or pd.isna(hi) or hi - lo < 1: continue   # no real overlap
             if a.is_nat != b.is_nat: continue                        # rank breaks the tie
+            # TWO SUBNATIONAL SIBLINGS ARE NOT SHADOWING EACH OTHER. This audit exists for the
+            # failure recorded in the structural-change checklist: the India split typed its new
+            # rows `colonial`, tying them with Hyderabad on rank, and Hyderabad took 36 rows. That
+            # is a contest between rows COMPETING FOR THE SAME LABELS, decided by family order.
+            #
+            # Two prefectures of a country compete for nothing. Measured on the 46 Japanese
+            # prefectures added under issue 400: the matcher moved ZERO rows (total 190,009 before
+            # and after, 0 polities changed count, 0 labels stopped resolving), because no label
+            # resolves to a prefecture at all -- they exist to receive subnational data the matcher
+            # does not yet route. What the audit was reporting is that Japan's prefectures are
+            # similar in SIZE (Ishikawa 4,230 km2 against Fukui 4,234), which is a fact about Japan.
+            #
+            # Left in the signal, 431 subnational units (whep#1000) produce thousands of such pairs
+            # -- Japan alone gave 1,081 -- and a real type-rank tie would be invisible among them.
+            # Same failure shape as the ISO-collision gate before it became containment-aware.
+            #
+            # Deliberately narrow: only pairs where BOTH rows are subnational are exempt. A
+            # subnational row tying with a NATIONAL one still flags, which is the Hyderabad case.
+            if a.polity_type == "subnational" and b.polity_type == "subnational": continue
             big, small = (a, b) if a.area_km2 >= b.area_km2 else (b, a)
             if small.area_km2 <= 0: continue
             ratio = big.area_km2 / small.area_km2
