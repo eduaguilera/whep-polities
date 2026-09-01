@@ -4990,6 +4990,32 @@ def mutate_quarantine_fallback_resolves(root, gpd, make_valid, affinity):
         fh.write(src[:i] + src[j:])
     return "reconcile_quarantine.py can now close adjudications on re-derived routes"
 
+def mutate_layerb_panel_env_split(root, gpd, make_valid, affinity):
+    """Make one tool read only one spelling of the panel's environment variable.
+
+    The panel is located by an environment variable, and there were TWO of them: WHEP_LAYERB in
+    01_match_and_findings.py and extdata.py, WHEP_LAYER_B in the other 17 tools. Neither name
+    redirected the whole pipeline, so pointing it at a different panel left stage 01 -- which
+    produces the matched_rows.parquet everything downstream consumes -- matching against one panel
+    while the analysis stages measured another. Silent whenever both paths exist (issue 629).
+
+    The mutation drops the second spelling from extdata.py, leaving valid Python that still
+    resolves a panel path -- `os.environ.get(NAME)` with one argument simply returns None and falls
+    through to the default. So nothing errors, nothing else in the harness changes, and the tool
+    keeps working on any machine that sets neither variable, which is every CI machine. It is
+    visible only to an arm that asks whether the readers AGREE about where the panel is.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/extdata.py")
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    needle = '    os.environ.get("WHEP_LAYER_B")\n    or os.environ.get("WHEP_LAYERB")\n'
+    if needle not in src:
+        raise AssertionError("extdata.py no longer resolves the panel from both spellings in the "
+                             "expected shape, so this mutation would silently do nothing")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(src.replace(needle, '    os.environ.get("WHEP_LAYERB")\n', 1))
+    return "extdata.py now reads only WHEP_LAYERB, so WHEP_LAYER_B redirects the pipeline past it"
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6034,6 +6060,14 @@ CASES = (
         "a tool that resolves quarantined series on a fallback route source, so an open "
         "`uncertain` adjudication is archived as resolved -- with a reason produced by a "
         "gitignored file's absence -- whenever that file is not on disk",
+    ),
+    (
+        "validate_layer_b_column_guard.py",
+        mutate_layerb_panel_env_split,
+        "reads only WHEP_LAYERB",
+        "one tool reading a different environment variable for the panel than its neighbours, so "
+        "redirecting the pipeline at a new panel moves some stages and not others -- valid Python "
+        "that works on any machine setting neither variable, which is every CI machine",
     ),
 )
 

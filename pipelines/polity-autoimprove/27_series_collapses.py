@@ -80,8 +80,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 STATE = os.path.join(HERE, "state")
 OUT = os.path.join(STATE, "series_collapses.csv")
-DEFAULT_PANEL = os.path.expanduser(os.environ.get(
-    "WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"))
+DEFAULT_PANEL = os.path.expanduser(os.environ.get("WHEP_LAYER_B") or os.environ.get("WHEP_LAYERB")
+    # ONE PANEL, EITHER SPELLING (issue 629). Two names were in use -- WHEP_LAYERB in
+    # 01_match_and_findings.py and extdata.py, WHEP_LAYER_B in the other 17 tools -- so
+    # neither redirected the whole pipeline and setting one left stage 01 matching against
+    # a different panel than the analysis stages measured.
+    or "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
 
 # The same factor 18_isolated_spikes.py uses, deliberately: this is its mirror, and two detectors for
 # one phenomenon that disagreed about what counts as extreme would be worse than either alone.

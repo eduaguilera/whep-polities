@@ -56,7 +56,12 @@ REGISTRY = os.path.join(STATE, "polity_composition.csv")
 ALIASES = os.path.join(STATE, "applied_aliases.csv")
 ROUTINGS = os.path.join(STATE, "match_confidence.csv")
 DEFAULT_PANEL = os.path.expanduser(
-    os.environ.get("WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"))
+    os.environ.get("WHEP_LAYER_B") or os.environ.get("WHEP_LAYERB")
+    # ONE PANEL, EITHER SPELLING (issue 629). Two names were in use -- WHEP_LAYERB in
+    # 01_match_and_findings.py and extdata.py, WHEP_LAYER_B in the other 17 tools -- so
+    # neither redirected the whole pipeline and setting one left stage 01 matching against
+    # a different panel than the analysis stages measured.
+    or "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
 
 
 def norm(s) -> str:

@@ -61,7 +61,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 STATE = os.path.join(HERE, "state")
 OUT = os.path.join(STATE, "period_vs_dated_consistency.csv")
 DEFAULT_PANEL = os.path.expanduser(
-    os.environ.get("WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"))
+    os.environ.get("WHEP_LAYER_B") or os.environ.get("WHEP_LAYERB")
+    # ONE PANEL, EITHER SPELLING (issue 629). Two names were in use -- WHEP_LAYERB in
+    # 01_match_and_findings.py and extdata.py, WHEP_LAYER_B in the other 17 tools -- so
+    # neither redirected the whole pipeline and setting one left stage 01 matching against
+    # a different panel than the analysis stages measured.
+    or "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
 
 # Restated from 42_period_volume_provenance.py: each period label is printed by exactly one volume.
 VOL = {"1900-1913": "iia_1925_26", "1909-1913": "iia_1925_26", "1921-1925": "iia_1929_30",

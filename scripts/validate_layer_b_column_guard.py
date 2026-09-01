@@ -55,6 +55,7 @@ RENAMED_TO = "iso3_lower"
 
 # How a file says "this path is layer B". The env var name, the file's own basename, and the
 # module-level constants that hold them.
+PANEL_ENV_NAMES = ("WHEP_LAYERB", "WHEP_LAYER_B")
 LAYER_B_MARKERS = ("WHEP_LAYERB", "consolidated_layer_b")
 
 # Any ONE of these in the same file counts as passing the column through the guard:
@@ -209,6 +210,68 @@ def main() -> int:
     for rel, hits in readers:
         print(f"  {rel}  <- {', '.join(sorted(set(hits)))}")
     print(f"polity codes available to the reverse guard: {len(codes):,}")
+
+    # ONE PANEL, EITHER SPELLING (issue 629). The panel's location is read from an environment
+    # variable, and for a long time there were TWO of them: WHEP_LAYERB in 01_match_and_findings.py
+    # and extdata.py, WHEP_LAYER_B in the other 17 tools. Neither redirected the whole pipeline, so
+    # pointing it at a different panel left stage 01 -- which produces matched_rows.parquet that
+    # everything downstream consumes -- matching against one panel while the analysis stages
+    # measured another, silently, whenever both paths happened to exist.
+    #
+    # THIS ARM ENUMERATES THE SITES ITSELF rather than reusing `readers` above. It has to: `readers`
+    # finds 3 files (build.R, 01_match_and_findings.py, extdata.py) because it looks for the RENAME
+    # pattern this gate's other arms are about, and 17 of the 19 environment reads are not in it.
+    # The first version of this arm did reuse `readers`, reported "3 of 3", and could not have seen
+    # a regression in any of the 17 -- a check scoped to the wrong population passes for the wrong
+    # reason. build.R is excluded on purpose: it takes the panel path as argv[1], not from the
+    # environment, so it is not part of this split.
+    #
+    # Source text only -- no existence check on the panel, which is outside the repo and absent in
+    # CI. A tool may read either spelling; it may not read only one, because that is the split.
+    import ast as _ast
+
+    def _env_names(tree):
+        found = set()
+        for n in _ast.walk(tree):
+            if (isinstance(n, _ast.Call) and isinstance(n.func, _ast.Attribute)
+                    and n.func.attr == "get"
+                    and isinstance(n.func.value, _ast.Attribute)
+                    and n.func.value.attr == "environ"
+                    and n.args and isinstance(n.args[0], _ast.Constant)
+                    and n.args[0].value in PANEL_ENV_NAMES):
+                found.add(n.args[0].value)
+        return found
+
+    split, total = [], 0
+    for sub in ("pipelines", "scripts"):
+        base = os.path.join(REPO, sub)
+        for dirpath, _dirs, files in os.walk(base):
+            for fn in sorted(files):
+                if not fn.endswith(".py"):
+                    continue
+                full = os.path.join(dirpath, fn)
+                try:
+                    names = _env_names(_ast.parse(open(full, encoding="utf-8").read()))
+                except (SyntaxError, UnicodeDecodeError):
+                    continue
+                if not names:
+                    continue
+                total += 1
+                if len(names) == 1:
+                    split.append((os.path.relpath(full, REPO), names.pop()))
+    if not total:
+        problems.append(
+            "no module reads the panel path from the environment at all, which cannot be right -- "
+            "this arm has lost its subject and would pass forever. Check PANEL_ENV_NAMES.")
+    for rel, only in sorted(split):
+        other = [n for n in PANEL_ENV_NAMES if n != only][0]
+        problems.append(
+            f"{rel}: reads only {only} and not {other}, so setting {other} redirects the rest of "
+            f"the pipeline and not this tool. Both spellings must resolve the panel -- "
+            f"`os.environ.get(\"WHEP_LAYER_B\") or os.environ.get(\"WHEP_LAYERB\") or <default>` "
+            f"-- or stage 01 and the analysis stages can read different panels with nothing to show "
+            f"for it. See issue 629.")
+    print(f"panel-path readers honouring both spellings: {total - len(split)} of {total}")
 
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)\n")
