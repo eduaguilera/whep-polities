@@ -2902,8 +2902,68 @@ def check_iia_1934_1938_single_axis_deflated(ctx):
                  "source, and israel's value is copied from a dated year OUTSIDE its own span")
 
 
+def check_ago_1936_sesame_area(ctx):
+    """iia angola sesame area 1936 reads 31,000 ha, implying 0.013 t/ha.
+
+    THE PERIOD ROW IS INNOCENT HERE, which is the point worth carrying. The corrected out-of-span
+    screen flagged this series because its `1934-1938` AREA average (1,000 ha) is 9.5x below the mean
+    of its own dated years in the span (9,500). But the production side agrees closely -- period 700 t
+    against a dated mean of 800, 12% apart -- and the area mean is inflated by ONE dated cell. So the
+    screen's "period disagrees with its dated mean" fires in two different situations, and the axis
+    that agrees tells you which: a broken period row, or a broken dated year. This is the second kind,
+    like cmr-1932-groundnut-area-620-million-ha.
+
+    THE YIELD CONVICTS THE CELL. 400 t on 31,000 ha is 0.013 t/ha where sesame yields 0.3-0.6, and
+    every other year of this label runs 0.10-1.30. Its neighbours are 1,000 ha (1935) and 2,000 ha
+    (1937), with 2,000 in each of 1939-1942, so 31,000 is 15-31x the series and unique in it.
+
+    NOT CLAIMED: a mechanism or a correction. 31,000 is not a round multiple of any neighbour, so
+    unlike the bulgaria x1000 case the yield identity refutes the cell without naming a replacement.
+    """
+    lb = ctx["panel"]
+    import pandas as pd
+
+    g = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "angola")
+           & (lb["item"] == "sesame seed") & lb["value"].notna()]
+    d = g[g["year"].notna()].copy(); d["y"] = pd.to_numeric(d["year"], errors="coerce")
+    a = d[d["unit"].astype(str) == "ha"]
+    t = d[d["unit"].astype(str) == "tonnes"]
+
+    def yr(frame, y):
+        h = frame[frame.y == y]["value"]
+        return float(h.iloc[0]) if len(h) else 0.0
+
+    def per(span, unit):
+        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
+              & (g["unit"].astype(str) == unit)]["value"]
+        return float(h.max()) if len(h) else 0.0
+
+    a36, t36 = yr(a, 1936), yr(t, 1936)
+    other = a[a.y != 1936]["value"]
+    out = [("1936 area (ha)", a36, 31000.0),
+           ("  its paired production (t)", t36, 400.0),
+           ("  implied yield t/ha", round(t36 / a36, 3), 0.013),
+           ("  1935 area, the year before", yr(a, 1935), 1000.0),
+           ("  1937 area, the year after", yr(a, 1937), 2000.0),
+           ("  max area in every OTHER year", float(other.max()), 4000.0),
+           ("  times that maximum", round(a36 / float(other.max()), 1), 7.8),
+           # the control that makes this a dated-cell fault and not a period-row fault
+           ("PERIOD 1934-38 production", per("1934-1938", "tonnes"), 700.0),
+           ("  its dated mean in span", round(float(t[t.y.between(1934, 1938)]["value"].mean()), 1), 800.0),
+           ("  they agree within", round(abs(per("1934-1938", "tonnes")
+                                             / float(t[t.y.between(1934, 1938)]["value"].mean()) - 1), 3), 0.125),
+           ("PERIOD 1934-38 area", per("1934-1938", "ha"), 1000.0),
+           ("  its dated mean in span -- inflated by 1936",
+            round(float(a[a.y.between(1934, 1938)]["value"].mean()), 1), 9500.0),
+           ("  that mean without 1936",
+            round(float(a[a.y.between(1934, 1938) & (a.y != 1936)]["value"].mean()), 1), 2333.3)]
+    return out, ("one dated area cell at 0.013 t/ha; the production axis agrees with its period row "
+                 "to 12%, so the period row is sound and the dated year is not")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "ago-1936-sesame-area-31000-ha": check_ago_1936_sesame_area,
     "iia-1934-1938-single-axis-deflated": check_iia_1934_1938_single_axis_deflated,
     "bgr-beans-1934-1938-production-x1000": check_bgr_beans_1934_1938_x1000,
     "cmr-1932-groundnut-area-620-million-ha": check_cmr_1932_groundnut_area,
