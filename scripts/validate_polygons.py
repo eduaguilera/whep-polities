@@ -231,7 +231,19 @@ SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source w
 # with the geometry it is bound to for no gain -- the GADM outline for BES is accurate to 0.99x,
 # unusually good for a small-island outline (see issue 570), so there is nothing to correct.
 # The page says in prose that the figure is the polygon's own measurement.
-BASELINE_SELF_REFERENTIAL = 105     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
+BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
+#
+# 105 -> 106 on 2026-09-01 with MAN-1950-1955 (issue 400). This one cannot be fixed the way the
+# message above asks, and the reason is worth stating rather than absorbing silently. The row
+# reuses feature MAN-1932-1945, shared with its two siblings, so its declared 791,708 km2 IS
+# that feature's measured area -- there is no independent measurement of this shape to declare
+# instead. Two yearbook figures for the territory exist and BOTH describe something larger:
+# iia 1938 states 1,303,143 km2 for Manchukuo (already in source_stated_area_basis.csv with
+# basis_flag review) and fao1952 states 1,069,300 km2 for `China Manchuria` at 1947, which is
+# 1.35x the polygon. Declaring either would manufacture a >25% disagreement in check A against
+# a geometry that is not wrong, only smaller than the reporting unit -- so the honest record is
+# polygon_status: proxy plus the stated figures documented on the page, which is what
+# wiki/polities/man-1950-1955.md does under oq-three-province-proxy-under-covers-by-26pc.
 
 # A2b: OF the self-referential areas, how many were AVOIDABLE -- i.e. an INDEPENDENT figure
 # for that (polity, source) already exists in data/final/source_stated_area_basis.csv and the
