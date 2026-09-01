@@ -5016,6 +5016,41 @@ def mutate_layerb_panel_env_split(root, gpd, make_valid, affinity):
         fh.write(src.replace(needle, '    os.environ.get("WHEP_LAYERB")\n', 1))
     return "extdata.py now reads only WHEP_LAYERB, so WHEP_LAYER_B redirects the pipeline past it"
 
+def mutate_data_errors_entry_uncovered(root, gpd, make_valid, affinity):
+    """Append a defect-registry entry that no re-test covers.
+
+    `state/data_errors.csv` holds this repo's per-cell adjudications, and the sentence they are
+    trusted on -- "42 entries / 404 claims still reproduce" -- comes from 35_retest_data_errors.py,
+    which needs the gitignored layer-B panel and cannot run in CI. Before issue 631 nothing else
+    checked coverage either: measured 2026-09-01, a fabricated entry left ALL 90 gates green, and
+    only the hand-run suite noticed ("1 of 43 entries are not yet re-tested"), and only when
+    somebody ran it.
+
+    The mutation appends one well-formed row with a fresh issue_id and no matching CHECKS key. The
+    file stays valid CSV, every other entry keeps its check, and no measurement changes -- so every
+    other arm and every other gate stays quiet. It is visible only to a check that asks whether the
+    registry and its re-test still describe the same set.
+    """
+    import csv as _csv
+
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/data_errors.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    if not rows:
+        raise AssertionError("data_errors.csv is empty, so this mutation would add the only entry "
+                             "and the gate's liveness arm would fire instead of its coverage arm")
+    fields = list(rows[0].keys())
+    new = {f: "" for f in fields}
+    new.update({"issue_id": "zzz-selftest-uncovered-entry", "source": "iia", "label": "atlantis",
+                "commodity": "unobtainium",
+                "summary": "Injected by selftest_gates.py: an entry no re-test covers."})
+    rows.append(new)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return "data_errors.csv now carries an entry that no re-test in 35_retest_data_errors.py covers"
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6069,6 +6104,14 @@ CASES = (
         "redirecting the pipeline at a new panel moves some stages and not others -- valid Python "
         "that works on any machine setting neither variable, which is every CI machine",
     ),
+    (
+        "validate_data_errors_registry.py",
+        mutate_data_errors_entry_uncovered,
+        "has no check in",
+        "a defect-registry entry covered by no re-test, so the adjudication it records is a claim "
+        "with nothing behind it -- invisible to CI, because the suite that would re-measure it "
+        "needs the gitignored layer-B panel and runs by hand",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -6789,6 +6832,14 @@ WRITABLE = {
     # than stage()'s symlink -- otherwise the mutation edits the committed pipeline tool.
     "validate_quarantine_resolution_guard.py": (
         "pipelines/polity-autoimprove/reconcile_quarantine.py",
+    ),
+    # the case appends a row to the registry, and the gate IMPORTS the re-test module to read its
+    # CHECKS dict, so both need real copies rather than stage()'s symlinks -- the registry because
+    # the mutation writes it, the re-test because an unimportable module fires the gate's arm E
+    # instead of the arm this case is about.
+    "validate_data_errors_registry.py": (
+        "pipelines/polity-autoimprove/state/data_errors.csv",
+        "pipelines/polity-autoimprove/35_retest_data_errors.py",
     ),
 }
 

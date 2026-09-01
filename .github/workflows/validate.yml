@@ -427,6 +427,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_source_conventions.py
 
+      # The DEFECT registry is the same kind of object as the conventions registry above and was
+      # not gated: `35_retest_data_errors.py` needs the gitignored panel and runs by hand, so a
+      # fabricated entry covered by no re-test left all 90 gates green. Whether an entry is COVERED
+      # is checkable from tracked files even when whether it is TRUE is not — the same line the
+      # conventions gate draws, applied to the registry that carries the adjudications (issue 631).
+      - name: The defect registry is well-formed and every entry has a re-test
+        if: '!cancelled()'
+        run: python3 scripts/validate_data_errors_registry.py
+
       # 335 raw IIA yearbook labels were collapsed onto 173 modern countries, and until the
       # mapping was tracked nothing here recorded which went where -- so `serbia` meaning
       # Yugoslavia and `viet nam` meaning Tonkin were both invisible. Layer B deduplicates, so a
