@@ -436,6 +436,18 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_data_errors_registry.py
 
+      # CONTAINMENT (whep#51). `predecessor`/`successor` express succession and cannot say that a
+      # member sits INSIDE an aggregate. The interval lives on the edge, not the polity, because a
+      # container can change while the territory persists (Alsace-Lorraine: Germany 1871-1918,
+      # France otherwise) and because it nests deeper than two levels. Two members already need it.
+      - name: Containment edges are well-formed and cover every subnational polity
+        if: '!cancelled()'
+        run: python3 scripts/validate_polity_containment.py
+
+      - name: polity_containment.csv matches what the wiki declares
+        if: '!cancelled()'
+        run: python3 scripts/write_polity_containment.py --check
+
       # 335 raw IIA yearbook labels were collapsed onto 173 modern countries, and until the
       # mapping was tracked nothing here recorded which went where -- so `serbia` meaning
       # Yugoslavia and `viet nam` meaning Tonkin were both invisible. Layer B deduplicates, so a

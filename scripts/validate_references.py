@@ -128,6 +128,12 @@ CSV_ONLY_KEYS = {c: k for c, k in CSV_COLUMN_TO_FM_KEY.items() if c != k}
 # the CSV. Anything outside this set plus BUILDER_KEYS is reported.
 DESCRIPTIVE_KEYS = {
     "sources",                      # source slugs cited by the page
+    # `container` declares the member -> container edges this page asserts, each with its own
+    # validity interval, and is emitted to data/final/polity_containment.csv by
+    # scripts/write_polity_containment.py rather than to a CSV column (whep#51). It is descriptive
+    # here for the same reason the polygon-decision keys are: the builder does not read it, a
+    # separate writer does. Its shape is checked by scripts/validate_polity_containment.py.
+    "container",
     "redirect",                     # retired row -> the row that replaced it
     "superseded_by", "superseded_date", "superseded_reason",
     "retired_date", "retired_reason",

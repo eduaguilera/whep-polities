@@ -1,0 +1,17 @@
+member_code,container_code,start_year,end_year,basis
+ALK-1867-1959,USA-1867-1959,1867,1959,"the Territory of Alaska inside the United States, from the 1867 purchase to statehood in 1959"
+BDI-1922-1962,RWB-1922-1962,1922,1962,Burundi as the southern half of the Ruanda-Urundi mandate/trust territory
+DZA-CVD-1902-1919,DZA-1902-1919,1902,1919,the three civil departments inside Algeria as constituted after the 1902 Saharan annexation
+IDN-BLB-1949-1951,IDN-1949-1963,1949,1951,Bali and Lombok as a reporting unit inside Indonesia
+IDN-JVM-1949-1951,IDN-1949-1963,1949,1951,Java and Madura as a reporting unit inside Indonesia
+IDN-OTH-1949-1951,IDN-1949-1963,1949,1951,the residual outer islands as a reporting unit inside Indonesia
+MAN-1945-1950,CHN-1945-1947,1945,1947,"the Manchuria region inside the Republic of China, post-surrender"
+MAN-1945-1950,CHN-1947-1949,1947,1949,"same territory, the ROC's 1947 constitutional period"
+MAN-1945-1950,CHN-1949-1950,1949,1950,"same territory, the PRC's first months"
+MAN-1950-1955,CHN-1950-2025,1950,1955,"the Manchuria region inside the People's Republic, until the Northeast administrative tier was abolished in 1954"
+RWA-1922-1962,RWB-1922-1962,1922,1962,Rwanda as the northern half of the Ruanda-Urundi mandate/trust territory
+RYU-1937-1945,JPN-1895-1945,1937,1945,"Okinawa Prefecture inside the Japanese Empire, for the years the Ryukyu series is reported separately"
+SER-1918-1945,F248-1918-1919,1918,1919,"Serbia inside the new Kingdom of Serbs, Croats and Slovenes"
+SER-1918-1945,F248-1919-1920,1919,1920,"same territory, the 1919 boundary settlement"
+SER-1918-1945,F248-1920-1947,1920,1945,"same territory, interwar Yugoslavia; capped at this member's own end_year"
+SGP-1963-1965,MYS-1963-1965,1963,1965,"the State of Singapore inside Malaysia, from the 1963 federation to the 1965 separation"
