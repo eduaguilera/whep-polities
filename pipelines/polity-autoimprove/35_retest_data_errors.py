@@ -397,8 +397,30 @@ def check_western_eastern_prefix(ctx):
                    f"{codes('Germany Western', 1949)}", "DEU-1949-1990 vs F78-1949-1990"))
     claims.append(("1937 total vs part polity -- issue 411", f"{codes('Germany', 1937)} vs "
                    f"{codes('Germany Western', 1937)}", "DEU-1920-1938 vs DEU-1920-1938"))
-    return (claims, "a residual constant per variable identifies the zones; 14 of 18 rows have a "
-                    "non-colliding target")
+    # The class this pair belongs to, found structurally rather than by identity proof.
+    fr = mm[mm["whep_code"].fillna("").astype(str).str.strip() == ""]
+    rt = mm[mm["whep_code"].notna()]
+    cleanlabs = sorted({str(x).strip() for x in rt["lab"]})
+    frag = []
+    for lab2 in sorted({str(x).strip() for x in fr["lab"]}):
+        low = lab2.lower()
+        par = [c for c in cleanlabs if len(low) > 3 and low in c.lower() and low != c.lower()]
+        if par:
+            codes = sorted({str(x) for x in rt[rt["lab"].isin(par)]["whep_code"].dropna()})
+            frag.append((lab2, int((fr["lab"] == lab2).sum()), codes))
+    uniq = [x for x in frag if len(x[2]) == 1]
+    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 21))
+    claims.append(("  rows they carry", sum(x[1] for x in frag), 42))
+    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 11))
+    claims.append(("  with several candidate polities", len(frag) - len(uniq), 10))
+    # `Portuga` is the counter-example: structurally unambiguous, three values on one key.
+    pg = mm[(mm["lab"] == "Portuga")]
+    claims.append(("`Portuga` distinct values on its single key",
+                   int(pg["value"].nunique()), 3))
+    claims.append(("  it is in the unambiguous list -- structure is NOT sufficiency",
+                   "yes" if any(x[0] == "Portuga" for x in uniq) else "no", "yes"))
+    return (claims, "a residual constant per variable identifies the zones; the prefix loss is a "
+                    "class of 21, and structural unambiguity does not clear a label")
 
 
 def check_malawi_cotton_deflation(ctx):
