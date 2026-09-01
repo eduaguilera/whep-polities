@@ -2961,8 +2961,78 @@ def check_ago_1936_sesame_area(ctx):
                  "to 12%, so the period row is sound and the dated year is not")
 
 
+def check_iia_mex_oats_arg_rapeseed_scale(ctx):
+    """Two more iia scale faults where the CLEAN axis names the factor -- and they differ.
+
+    MEXICO / OATS -- PRODUCTION x1000. The area is clean: 6,000 ha against fao1952's 8,000 for the
+    same span. Production reads 3,393,900 t, so 565.65 t/ha where oats yield 1-2. Divide by 1000 and
+    it is 3,394 t at 0.57 t/ha, against fao1952's 5,000 t at 0.63 -- 10% apart, which is an ordinary
+    cross-source gap.
+
+    ARGENTINA / RAPESEED -- AREA x100, the other axis and a different factor. Production is clean:
+    46,000 t against fao1952's 50,000, 8% apart. Area reads 3,730,000 ha, so 0.012 t/ha where
+    rapeseed yields 0.8-1.5. Divide by 100 and it is 37,300 ha at 1.23 t/ha, against fao1952's 45,000
+    at 1.11.
+
+    AND ARGENTINA'S DATED 1939 ROW CARRIES THE SAME FAULT, which is what makes it a series property
+    rather than one bad average: 54,000 t on 4,340,000 ha is 0.012 t/ha, the identical impossible
+    yield. So the repair cannot be scoped to the period row.
+
+    THE TWO FACTORS DIFFER (x1000 and x100) AND THE BROKEN AXES DIFFER, in the same volume and the
+    same span. That is the argument for fixing the factor per series from its own clean axis rather
+    than applying one correction to the volume -- and for pinning the clean axis in every such entry,
+    because the ratio against another source names neither factor here (679x and 83x).
+    """
+    lb = ctx["panel"]
+    import pandas as pd
+
+    def rows(src, label, item):
+        return lb[(lb["source"] == src) & (lb["country"].astype(str).str.lower().str.startswith(label))
+                  & (lb["item"].astype(str) == item) & lb["value"].notna()]
+
+    def per(g, unit, span="1934-1938"):
+        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
+              & (g["unit"].astype(str) == unit)]["value"]
+        return float(h.max()) if len(h) else 0.0
+
+    out = []
+    # mexico oats: production is the broken axis
+    m = rows("iia", "mexico", "oats"); fm = rows("fao1952", "mexico", "oats")
+    mp, ma = per(m, "tonnes"), per(m, "ha")
+    fp, fa_ = per(fm, "1000 tonnes"), per(fm, "1000 hectares")
+    out += [("mex oats production (t)", mp, 3393900.0),
+            ("  its area (ha) -- CLEAN", ma, 6000.0),
+            ("  fao1952 area (1000 ha)", fa_, 8.0),
+            ("  implied yield t/ha", round(mp / ma, 2), 565.65),
+            ("  yield after /1000", round(mp / 1000 / ma, 2), 0.57),
+            # 5,000/8,000 is 0.625, and round() gives 0.62 -- banker's rounding, not 0.63.
+            # Pinned as computed; an earlier draft said 0.63 and the re-test rejected it.
+            ("  fao1952 yield", round(fp / fa_, 2), 0.62),
+            ("  ratio vs fao1952 -- NOT the factor", int(round(mp / (fp * 1000))), 679)]
+    # argentina rapeseed: area is the broken axis, and a dated row shares it
+    a = rows("iia", "argentina", "rapeseed"); fa2 = rows("fao1952", "argentina", "rapeseed")
+    ap, aa = per(a, "tonnes"), per(a, "ha")
+    f2p, f2a = per(fa2, "1000 tonnes"), per(fa2, "1000 hectares")
+    d = a[a["year"].notna()].copy(); d["y"] = pd.to_numeric(d["year"], errors="coerce")
+    d39p = float(d[(d["unit"].astype(str) == "tonnes") & (d.y == 1939)]["value"].iloc[0])
+    d39a = float(d[(d["unit"].astype(str) == "ha") & (d.y == 1939)]["value"].iloc[0])
+    out += [("arg rapeseed area (ha)", aa, 3730000.0),
+            ("  its production (t) -- CLEAN", ap, 46000.0),
+            ("  fao1952 production (1000 t)", f2p, 50.0),
+            ("  implied yield t/ha", round(ap / aa, 3), 0.012),
+            ("  yield after /100", round(ap / (aa / 100), 2), 1.23),
+            ("  fao1952 yield", round(f2p / f2a, 2), 1.11),
+            ("  ratio vs fao1952 -- NOT the factor", int(round(aa / (f2a * 1000))), 83),
+            ("  dated 1939 area", d39a, 4340000.0),
+            ("    its production", d39p, 54000.0),
+            ("    its yield -- the same fault", round(d39p / d39a, 3), 0.012)]
+    return out, ("mexico oats is production x1000 and argentina rapeseed is area x100 -- different "
+                 "axes, different factors, one volume; and argentina's dated 1939 row shares it")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "iia-mex-oats-arg-rapeseed-scale-factors": check_iia_mex_oats_arg_rapeseed_scale,
     "ago-1936-sesame-area-31000-ha": check_ago_1936_sesame_area,
     "iia-1934-1938-single-axis-deflated": check_iia_1934_1938_single_axis_deflated,
     "bgr-beans-1934-1938-production-x1000": check_bgr_beans_1934_1938_x1000,
