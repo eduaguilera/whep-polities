@@ -2575,8 +2575,83 @@ def check_mitchell_japan_rye_is_not_rye(ctx):
                  "on rye -- so the sources are sound and the item label is not")
 
 
+def check_iia_olives_1934_1938_scale(ctx):
+    """The iia `1934-1938` olive PRODUCTION averages are scrambled ~100x, in both directions.
+
+    THREE INDEPENDENT REFERENCES AGREE ON EACH CELL, which is what makes this a diagnosis and not a
+    magnitude complaint: the series' own dated years inside the span, the same series' `1928-1932`
+    average from the previous volume, and fao1952's own `1934-1938` average. For israel the dated
+    mean is about 30,660 t and fao1952 says 31,000 -- to within 1% -- while the period row reads
+    3,075,400.
+
+    THE PAIRED AREA AXIS IS CLEAN IN EVERY CASE, and that is the load-bearing control. israel's
+    period area (52,000 ha) matches its own dated mean (51,750); italy's 1,358,000 ha follows its
+    1928-32 figure of 1,530,000; the USA's 10,000 follows 12,000. So this is not a territory, a
+    scope or a label problem -- those move both axes -- and the implied yields are physically
+    impossible: israel at 3,075,400 / 52,000 = 59.1 t/ha where olives yield 1-3.
+
+    BOTH DIRECTIONS, SAME VOLUME, SAME ITEM. israel, the USA and libya are inflated; ITALY IS
+    DEFLATED, 10,300 t against its own 1,325,100 and fao1952's 1,267,000. A single multiplier cannot
+    produce both, so this is a scale scramble rather than a unit error, and the correct value is
+    recoverable in each case because two references agree on it.
+
+    libya is registered separately (iia-libya-olives-1934-1938-inflated) and one of its figures is
+    pinned here too, as the fourth instance -- the point of this entry is the CLASS, and a class of
+    one is an incident. That entry owns the full libya analysis; this one owns the class.
+
+    AND IT DOES NOT CONTRADICT THAT ENTRY, which is worth stating because it looks as though it
+    might. The libya entry pins "labels breaking >=50x: 0" with a median era break of 1.195, and
+    that measurement is over DATED means either side of 1934 -- it says the dated olive series are
+    not era-scaled, which remains true. This entry is about the PERIOD rows, a different axis, and
+    the two together are the actual picture: the dated series are sound and the `1934-1938` averages
+    computed from them are not.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    import pandas as pd
+
+    g = lb[(lb["source"] == "iia") & (lb["item"] == "olives")]
+    fa = lb[(lb["source"] == "fao1952")
+            & lb["item"].astype(str).str.contains("olive", case=False, na=False)]
+
+    def per(frame, label, unit, span):
+        h = frame[(frame["country"].astype(str).str.lower() == label)
+                  & (frame["unit"].astype(str) == unit) & (frame["year"].isna())
+                  & (frame["period"].astype(str) == span)]
+        return float(h["value"].max()) if len(h) else 0.0
+
+    out = []
+    # inflated: the period row, its own previous-volume average, and fao1952's
+    for lab, want_p, want_prev, want_fao in (("israel", 3075400.0, 12300.0, 31.0),
+                                             ("united states of america", 1127200.0, 18700.0, 27.0),
+                                             ("libya", 1610700.0, 19300.0, 11.0)):
+        out += [(f"{lab[:14]} 1934-38 production", per(g, lab, "tonnes", "1934-1938"), want_p),
+                (f"  its 1928-32 average", per(g, lab, "tonnes", "1928-1932"), want_prev)]
+        f2 = fa[(fa["country"].astype(str).str.lower().str.startswith(lab.split()[0]))
+                & (fa["year"].isna())]
+        out.append((f"  fao1952 1934-38 (1000 t)", float(f2["value"].max()) if len(f2) else 0.0, want_fao))
+    # deflated: italy, the direction that rules out a single multiplier
+    out += [("italy 1934-38 production -- LOW", per(g, "italy", "tonnes", "1934-1938"), 10300.0),
+            ("  its 1928-32 average", per(g, "italy", "tonnes", "1928-1932"), 1325100.0)]
+    f2 = fa[(fa["country"].astype(str).str.lower().str.startswith("italy")) & (fa["year"].isna())]
+    out.append(("  fao1952 1934-38 (1000 t)", float(f2["value"].max()) if len(f2) else 0.0, 1267.0))
+    # THE CONTROL: the paired AREA axis is clean for all four
+    for lab, want in (("israel", 52000.0), ("italy", 1358000.0),
+                      ("united states of america", 10000.0), ("libya", 61000.0)):
+        out.append((f"AREA 1934-38 {lab[:12]} -- clean", per(g, lab, "ha", "1934-1938"), want))
+    # and israel's own dated mean inside the span, the third reference
+    d = g[(g["country"].astype(str).str.lower() == "israel") & (g["unit"].astype(str) == "tonnes")
+          & g["year"].notna()]
+    d = d[pd.to_numeric(d["year"], errors="coerce").between(1934, 1938)]
+    out += [("israel dated 1934-38 rows", len(d), 5),
+            ("  their mean", round(float(d["value"].mean()), 1), 30660.0),
+            ("  israel implied yield t/ha", round(3075400.0 / 52000.0, 1), 59.1)]
+    return out, ("three references agree on each cell and the paired area axis is clean in all four, "
+                 "so only production is scrambled -- israel/USA/libya up, ITALY down")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "iia-olives-1934-1938-scale-scrambled": check_iia_olives_1934_1938_scale,
     "mitchell-japan-rye-is-not-rye": check_mitchell_japan_rye_is_not_rye,
     "nga-1950-livestock-broadcast-13000": check_nga_1950_livestock_broadcast,
     "iia-czechoslovakia-beans-component-only": check_iia_czechoslovakia_beans_component,
