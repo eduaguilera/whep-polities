@@ -225,6 +225,22 @@ TAIL_GROWTH_TOLERANCE = 0.01
 TAIL_SHRINK_TOLERANCE = 0.10
 
 
+_CONTAINMENT = os.path.join(os.path.dirname(CSV), "polity_containment.csv")
+
+
+def _declares_container() -> set:
+    """Codes that declare a container edge. Read from the published table, so the gate checks what
+    ships rather than what a writer intends; absent file means no exemptions, which fails loudly."""
+    if not hasattr(_declares_container, "_cache"):
+        out = set()
+        if os.path.exists(_CONTAINMENT):
+            with open(_CONTAINMENT, newline="", encoding="utf-8") as fh:
+                for e in csv.DictReader(fh):
+                    out.add(e["member_code"].strip())
+        _declares_container._cache = out
+    return _declares_container._cache
+
+
 def read_live() -> dict:
     """Live REAL polities and their spans. Aggregates are excluded because an aggregate's
     polygon is a union of its members BY DEFINITION -- reporting it as an overlap would be
@@ -236,6 +252,23 @@ def read_live() -> dict:
             if (r.get("wiki_status") or "") in DEAD_STATUS:
                 continue
             if (r.get("polity_type") or "") == "aggregate":
+                continue
+            # THE SAME REASONING, ONE LEVEL DOWN (whep#51). The exclusion above says an aggregate's
+            # polygon is a union of its members BY DEFINITION, so reporting the overlap would be
+            # reporting the definition. A subnational unit that DECLARES a container is the mirror
+            # image: its ground lies inside that container's by definition, and the declaration is
+            # what makes it a definition rather than an accident -- it is machine-readable in
+            # data/final/polity_containment.csv, with the years on the edge.
+            #
+            # Without this, 46 Japanese prefectures produce 235 problems, each of them the
+            # statement "a prefecture is inside Japan", and at 431 units (whep#1000) a real
+            # coexisting overlap would be invisible among them.
+            #
+            # Deliberately keyed on the DECLARATION, not on polity_type: a subnational row that
+            # declares no container is still checked, so the exemption cannot be had by typing a row
+            # `subnational` and saying nothing about where it sits.
+            if (r.get("polity_type") or "") == "subnational" \
+                    and r["polity_code"] in _declares_container():
                 continue
             try:
                 live[r["polity_code"]] = (int(r["start_year"]), int(r["end_year"]))

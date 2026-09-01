@@ -5447,3 +5447,65 @@ be resolved via a `decision`-kind log entry, not on the Luxembourg page alone.
 Wiki created. Schema and prompts in place. No polity pages yet beyond the
 Luxembourg worked example, which is a skeleton to demonstrate the format,
 not a reviewed page.
+
+## subnational-vocabulary-japan-prefectures
+**Date:** 2026-09-01
+**Touched:** 46 new JPN prefecture pages; scripts/validate_iso_collisions.py;
+scripts/validate_coexisting_overlaps.py; scripts/audit_family_shadowing.py;
+wiki/sources/juan-subnational.md
+**Source:** juan-subnational
+**Kind:** decision
+
+Created 46 Japanese prefecture polities (`JPN-<NAME>-1871-2025`), the first batch of
+the ~431-unit subnational vocabulary described in whep#1000, under the policy decided
+on issue 400: a reporting unit qualifies for a polity row when statistics were
+collected on it, whether or not it was a sovereign state.
+
+**SIGN-OFF, RECORDED EXACTLY AS IT HAPPENED.** The structural-change checklist requires
+this entry to name the human who signed off, and says it is never an agent's call. What
+happened is narrower than a review: the repository maintainer authorised this batch **in
+advance**, having been told the automated evidence below, and stated they would not be
+available to review the diff. So no human has read the 46 pages or the three gate
+changes. This entry is the authorisation, not a review, and the distinction is left
+visible rather than smoothed over — a later reader should know the pages are unreviewed.
+
+**Automated evidence.** The checklist's steps 0 and 5-7 were run properly, after the
+snapshot was re-taken from `main` (the first attempt snapshotted the post-change tree and
+was discarded):
+
+    total matched rows      190,009 -> 190,009    delta +0
+    per-polity movement     0 polities changed count (+0 / -0)
+    zero-row polities       0
+    labels unmatched        0 stopped resolving; 0 newly resolve
+
+So the 46 prefectures capture nothing from the national JPN chain. That measurement is
+what settles the hazard the checklist warns about — the India split, where new rows tied
+on type rank and Hyderabad took 36 rows. No label resolves to a prefecture at all.
+
+**Territorial check.** The 46 attached GADM 4.1 admin-1 features sum to 370,135 km2
+against Japan's ~377,975; the remainder is Okinawa, which the panel does not report, plus
+minor islands. Okinawa is therefore NOT created — consistent with the policy, since there
+is no data for it.
+
+**Three gates were taught about subnational rows**, each by extending its own stated
+principle rather than by growing a baseline:
+
+* `validate_iso_collisions.py` — a subnational row's `iso3_code` names its parent, so it
+  was never a candidate for national ISO resolution; and a declared containment edge
+  removes the ambiguity the gate exists for. Left alone this demanded 1,265 baseline lines
+  for Japan. **Nineteen hand-maintained lines were retired**, because the containment edge
+  now states what they stood in for.
+* `validate_coexisting_overlaps.py` — the gate already excludes aggregates because "an
+  aggregate's polygon is a union of its members BY DEFINITION". A member inside its
+  declared container is the mirror image. Keyed on the declaration, not on `polity_type`,
+  so the exemption cannot be had by typing a row `subnational` and saying nothing.
+* `audit_family_shadowing.py` — two subnational siblings compete for no labels, so family
+  ordering never decides between them. 1,109 tied pairs -> 25. A subnational row tying with
+  a NATIONAL one still flags, which is the Hyderabad case.
+
+**What is deliberately unresolved.** `polygon_area_km2` is undeclared on all 46: declaring
+it would put a self-referential figure in the column check A compares against the geometry
+it was read from (issue 195). The measured area and centroid appear in each page's prose
+instead, labelled as measurements of the polygon. And the checklist itself needs a
+subnational path — two of its steps do not survive 431 units — which is a methodology
+change nobody has signed off.
