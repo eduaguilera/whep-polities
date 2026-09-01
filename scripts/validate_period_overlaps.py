@@ -222,6 +222,15 @@ BASELINE_CROSS_FAMILY = frozenset({
     # coverage, so closing a hole removes a link that was standing in for one. Same shape as
     # issue 82. Nothing is re-baselined to paper over it, because inventing a pair the
     # published contract does not assert is what this gate was written to stop.
+    #
+    # China and the Manchuria region, 1950-1954. Added 2026-09-01 with MAN-1950-1955, under the
+    # policy decided in issue 400: a reporting unit qualifies for a polity row when statistics
+    # were collected on it, whether or not it was a sovereign state. So a subnational region and
+    # the state containing it are BOTH live rows by design -- the same shape as the AOF pairs
+    # above, and as the pre-existing CHN-1949-1950 / MAN-1945-1950 overlap that this gate already
+    # reports as latent. `type: subnational` on the MAN row is what keeps it out of the matcher's
+    # sovereignty ranking; the overlap is the intended consequence, not a defect.
+    ("CHN-1950-2025", "MAN-1950-1955"),                 #   5y 1950-1955
 })
 
 CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")

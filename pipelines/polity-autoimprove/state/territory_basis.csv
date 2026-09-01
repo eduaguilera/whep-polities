@@ -461,6 +461,7 @@ MAC-1800-2025,"China, Macao SAR",1800,2025,gadm-4.1-adm1,,proxy,True,assumed_con
 MAF-2007-2025,Saint-Martin (French part),2007,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MAN-1932-1945,Manchukuo (1932-1945),1932,1945,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,110
 MAN-1945-1950,"Manchuria (region, 1945-1950)",1945,1950,constructed,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,7
+MAN-1950-1955,"Manchuria (region, 1950-1955)",1950,1955,constructed,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MAR-1911-1958,Morocco (to 1958),1911,1958,cshapes-2.0,1912.0,assigned,True,assumed_constant,True,False,single 1912 polygon held across a 47y span (1911-1958); borders may have changed,1282
 MAR-1958-1975,Morocco (1958-1975),1958,1975,cshapes-2.0,1958.0,assigned,True,measured,False,False,vintage 1958 faithful to period 1958-1975,40
 MAR-1975-1979,Morocco (1975-1979),1975,1979,cshapes-2.0,1975.0,assigned,False,measured,False,False,vintage 1975 faithful to period 1975-1979,0

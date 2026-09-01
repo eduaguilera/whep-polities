@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "1ab1675b89cf93db64fe7ddb32122c4ebe96a084234f30465785d4abd66b5dac",
+ "identity_sha256": "f358092990b308ff50021751f2b2ced52b76d78228337bf5f7f24ede09af14ce",
  "counts": {
-  "total": 782,
-  "live": 738,
+  "total": 783,
+  "live": 739,
   "dead": 44
  },
  "dead_status": [
@@ -1239,6 +1239,7 @@
   "MAF-2007-2025",
   "MAN-1932-1945",
   "MAN-1945-1950",
+  "MAN-1950-1955",
   "MAR-1911-1958",
   "MAR-1958-1975",
   "MAR-1975-1979",
