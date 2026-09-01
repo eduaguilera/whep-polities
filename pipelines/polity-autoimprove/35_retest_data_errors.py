@@ -284,6 +284,80 @@ def check_western_eastern_prefix(ctx):
                     "non-colliding target")
 
 
+def check_libya_olives_period_cell(ctx):
+    """One inflated olive cell, and the CONTROL is what keeps it a cell rather than a class.
+
+    The four comparisons are pinned together because no one of them is decisive alone: 181x its own
+    dated span could be a bad baseline, 26.40 t/ha could be a bad area, and a cross-source gap could be
+    a scope difference. Together, with the area row independently correct, they leave nothing else the
+    cell can be.
+
+    THE PAIRED AREA ROW IS THE LOAD-BEARING ONE. Its `1934-1938` area is within 0.4% of the dated mean
+    for the same years, so the tonnage cannot be excused as covering a larger territory -- it converts
+    a big number into an impossible YIELD. That is issue 416's signature (production inflated, area
+    clean) on an item 416 does not cover.
+
+    THE ITEM-LEVEL CONTROL IS PINNED TOO, and it is what stops this becoming a claimed x100 class:
+    across the iia labels with dated olive series either side of 1934 the median era break is 1.195 and
+    none reaches 50x. If that median ever moved, olives WOULD be an era-scaled item and this entry
+    would need rewriting as a class rather than two cells.
+
+    The sibling `1928-1932` row is pinned as the negative: the same label's other multi-year average is
+    sound, so the defect is one cell and not the label's period rows in general."""
+    lb = ctx["panel"]
+    d = lb[(lb["source"] == "iia") & (lb["country"] == "libya")
+           & (lb["item"].astype(str).str.lower() == "olives")]
+    t = d[d["unit"] == "tonnes"]
+    a = d[d["unit"] == "ha"]
+
+    def per(frame, p):
+        h = frame[frame["year"].isna() & (frame["period"].astype(str) == p)]
+        return float(h["value"].iloc[0]) if len(h) else None
+
+    def dated_mean(frame, lo, hi):
+        w = frame[(frame["year"] >= lo) & (frame["year"] <= hi)]
+        return round(float(w["value"].mean()), 1) if len(w) else None
+
+    pt, pa = per(t, "1934-1938"), per(a, "1934-1938")
+    dt, da = dated_mean(t, 1934, 1938), dated_mean(a, 1934, 1938)
+    claims = [("period 1934-1938 production (t)", pt, 1610700.0),
+              ("  its dated 1934-1938 mean", dt, 8900.0),
+              ("  ratio -- the cell against its own years", round(pt / dt, 1) if pt and dt else None,
+               181.0),
+              ("period 1934-1938 area (ha) -- must stay CLEAN", pa, 61000.0),
+              ("  its dated 1934-1938 mean", da, 60750.0),
+              ("  area ratio (clean means ~1.0)", round(pa / da, 3) if pa and da else None, 1.004),
+              ("  implied yield t/ha, period", round(pt / pa, 2) if pt and pa else None, 26.4),
+              ("  implied yield t/ha, dated (real olives are 1-3)",
+               round(dt / da, 2) if dt and da else None, 0.15),
+              ("sibling period 1928-1932 (t) -- the NEGATIVE", per(t, "1928-1932"), 19300.0),
+              ("  its dated 1928-1932 mean", dated_mean(t, 1928, 1932), 17706.7)]
+
+    # cross-source: fao1952 publishes the same period, in thousands
+    fo = lb[(lb["source"] == "fao1952")
+            & lb["country"].astype(str).str.contains("Libya", case=False, na=False)
+            & (lb["item"].astype(str).str.lower() == "olives")]
+    fp = fo[fo["year"].isna() & (fo["period"].astype(str) == "1934-1938")]
+    claims.append(("fao1952 same period (1000 t)",
+                   float(fp["value"].iloc[0]) if len(fp) else None, 11.0))
+
+    # the item-level control: olives is NOT an era-scaled item
+    import statistics
+    ol = lb[(lb["source"] == "iia") & (lb["item"].astype(str).str.lower() == "olives")
+            & (lb["unit"] == "tonnes") & lb["value"].notna()]
+    breaks = []
+    for lab, g in ol.groupby("country"):
+        pre = g[g["year"].notna() & (g["year"] < 1934)]["value"]
+        post = g[g["year"].notna() & (g["year"] >= 1934)]["value"]
+        if len(pre) >= 3 and len(post) >= 3 and statistics.median(pre) > 0:
+            breaks.append(statistics.median(post) / statistics.median(pre))
+    claims.append(("labels with a dated series either side of 1934", len(breaks), 8))
+    claims.append(("  median era break -- olives is NOT x100",
+                   round(statistics.median(breaks), 3) if breaks else None, 1.195))
+    claims.append(("  labels breaking >=50x", sum(1 for b in breaks if b >= 50), 0))
+    return (claims, "the clean area row makes it a yield, and the 1.195 control makes it a cell")
+
+
 def check_china_whole_and_five_parts(ctx):
     """The decomposition closes to Tibet, which is what proves the labels are a whole-and-parts family.
 
@@ -1908,6 +1982,7 @@ CHECKS = {
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
+    "iia-libya-olives-1934-1938-inflated": check_libya_olives_period_cell,
     "fao1952-china-whole-and-five-parts": check_china_whole_and_five_parts,
     "fao1952-tractors-total-beside-its-own-parts": check_tractors_total_beside_parts,
     "fao1952-germany-western-cheese-implausible": check_germany_western_cheese,
