@@ -62,6 +62,60 @@ DEFAULT_PANEL = os.path.expanduser(
     os.environ.get("WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"))
 
 
+def _corrupted_label_class_claims(ctx):
+    """The 93 broken labels split three ways, and the split is what makes the exposure actionable.
+
+    THE LANGUAGE MISMATCH IS PINNED FIRST because it explains every failed identification route in
+    this entry: the broken labels are French and the clean ones English, so stripping the prefix and
+    looking for a clean twin yields ZERO exact matches out of 93. If that ever became non-zero the
+    extract's label vocabulary has changed and the class needs re-deriving, not re-counting.
+
+    The three classes are pinned by ROW COUNT rather than by label list, because the regexes below are
+    a reading of the text and a future re-extraction may spell a label differently; the counts are what
+    the entry's argument rests on. Only the first class is recoverable data -- the second is column
+    headings that landed in the country field, and the third is continents, which belong out of the
+    panel the way fao1952's `Total` does."""
+    import re as _re
+    raw = ctx["raw"]
+    e = raw[raw["_c"].str.startswith("[error]")]
+    clean = {c for c in set(raw["_c"]) if not c.startswith("[error]")}
+    exact = sum(1 for lab in set(e["_c"]) if lab.replace("[error]", "").strip() in clean)
+    STRUCT = _re.compile(r"commerce avec|comm avec|commavec|^\[error\]\s*par terre|exportations|"
+                         r"importations|culture des|culture associee|cocons|douanes|"
+                         r"^\[error\]\s*protectorat$|^\[error\]\s*republique$|"
+                         r"^\[error\]\s*continent$|^\[error\]\s*avec les|y compris|signable|"
+                         r"possessions exterieur", _re.I)
+    CONT = _re.compile(r"^\[error\]\s*(asie|afrique|oceanie|amerique|europe)\b|"
+                       r"amerique du nord|amerique septentrionale", _re.I)
+    COUNTRY = _re.compile(r"inde|cameroun|syrie|liban|togo|palestine|afrique du sud|afr du sud|"
+                          r"occidentale francaise|occident francaise|papouasie|nouvelle-guinee|"
+                          r"honduras|borneo|malais|erythree|somalie|mozamb|russic|suisse|sttisse|"
+                          r"tchecoslovaquie|tehecoslovaquie|bresil|etats-unis|etais-unis|japon|"
+                          r"turquie|senegal|porto-rico|guadeloupe|trinite|ceylan|birmanie|aden|"
+                          r"formose|coree|hawai|alaska|indes|grande-bretagne|canada|costa-rica|"
+                          r"miquelon|eustache|martin|reunion|nyassaland|congo|guinee|christmas",
+                          _re.I)
+
+    def cls(lab):
+        if STRUCT.search(lab):
+            return "struct"
+        if CONT.search(lab):
+            return "continent"
+        if COUNTRY.search(lab):
+            return "country"
+        return "other"
+
+    k = e["_c"].map(cls)
+    pa = e["_v"].isin(["production", "area"])
+    out = [("broken labels with an EXACT clean twin -- the language gap", exact, 0)]
+    for name, want_rows, want_pa in (("country", 904, 610), ("struct", 227, 34),
+                                     ("continent", 70, 7), ("other", 36, 18)):
+        out.append((f"  {name} rows", int((k == name).sum()), want_rows))
+        out.append((f"    of those production/area", int(((k == name) & pa).sum()), want_pa))
+    out.append(("the four classes partition the 1,237", int(k.notna().sum()), 1237))
+    return out
+
+
 def check_corrupted_country_labels(ctx):
     """1,237 rows carry a country label beginning `[error]`, across 93 distinct labels, and the PRODUCT
     column is clean. The product-side zero is the load-bearing half: it is what makes the corruption
@@ -71,8 +125,9 @@ def check_corrupted_country_labels(ctx):
     prod_broken = int(raw["_p"].str.startswith("[error]").sum())
     return ([("rows", len(e), 1237), ("distinct labels", e["_c"].nunique(), 93),
              ("broken product labels", prod_broken, 0)]
-            + _corrupted_labels_split_claims(ctx),
-            "the country axis is corrupted and the product axis is not")
+            + _corrupted_labels_split_claims(ctx)
+            + _corrupted_label_class_claims(ctx),
+            "the country axis is corrupted, the product axis is not, and the labels are French")
 
 
 def _corrupted_labels_split_claims(ctx):
