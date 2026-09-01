@@ -598,6 +598,15 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_territory_basis_write_guard.py
 
+      # A FALLBACK ROUTE MAY REPORT; IT MAY NOT CLOSE AN ADJUDICATION. assertions.json is gitignored
+      # per-run state, so reconcile_quarantine.py falls back to the deterministic matcher — which
+      # cannot reproduce an ADJUDICATED routing, that being what adjudication records. 10 of 43
+      # quarantine rows carry such a candidate, 7 with a bundle agreeing the route is unchanged;
+      # toggling only that file's presence archives `rwanda|mitchell|1953-1960` as resolved (issue 627).
+      - name: Quarantine — a fallback route may not close an adjudication
+        if: '!cancelled()'
+        run: python3 scripts/validate_quarantine_resolution_guard.py
+
       # A derived column can be wrong while every column beside it is right: collapse_groups'
       # ratio disagreed with its own rounded inputs (#457), and cross_label_duplication's
       # smaller_label named the LARGER label in all six rows while the column next to it stayed

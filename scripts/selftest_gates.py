@@ -4958,6 +4958,38 @@ def mutate_territorybasis_write_guard_removed(root, gpd, make_valid, affinity):
         fh.write(src[:i] + src[j:])
     return "04_territory_basis.py can now overwrite priority_review with its collapsed value, exit 0"
 
+def mutate_quarantine_fallback_resolves(root, gpd, make_valid, affinity):
+    """Strip reconcile_quarantine.py's refusal, letting a fallback route close an adjudication.
+
+    assertions.json is gitignored per-run state, absent on any fresh checkout, and the tool then
+    re-derives routes through the deterministic matcher. That matcher cannot reproduce an
+    ADJUDICATED routing -- reproducing it is what the adjudication exists to record -- so a row
+    decided rather than derived reads as "route_changed" and is dropped and archived as resolved.
+
+    Measured 2026-09-01: 10 of 43 quarantine rows carry a candidate the matcher cannot re-derive,
+    7 with a bundle agreeing the route is unchanged. Toggling only that file's presence moves
+    `rwanda|mitchell|1953-1960` from KEEP to DROP, and the archived row would carry the reason
+    "the recorded disagreement ... no longer applies" -- produced by a missing file, not the data.
+
+    The mutation removes only the guard, leaving the --dry-run exit, the write and the classifier
+    intact, so the module parses and runs and every other arm stays quiet. Nothing else in the
+    harness can see it: with assertions.json present the tool behaves identically either way.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/reconcile_quarantine.py")
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    start = "if not os.path.exists(ASSERTIONS)"
+    end = "# ---------- archive, then rewrite ----------"
+    if start not in src or end not in src:
+        raise AssertionError("reconcile_quarantine.py no longer carries the fallback guard and the "
+                             "archive block in the expected shape; this mutation would do nothing")
+    i, j = src.index(start), src.index(end)
+    if i > j:
+        raise AssertionError("the guard already follows the write, which is the defect itself")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(src[:i] + src[j:])
+    return "reconcile_quarantine.py can now close adjudications on re-derived routes"
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -5995,6 +6027,14 @@ CASES = (
         "untracked input is absent republishes a collapsed column over 89 real flags and exits 0 "
         "-- invisible to the tool's own --check, which skips that column for the same reason",
     ),
+    (
+        "validate_quarantine_resolution_guard.py",
+        mutate_quarantine_fallback_resolves,
+        "no module-level guard",
+        "a tool that resolves quarantined series on a fallback route source, so an open "
+        "`uncertain` adjudication is archived as resolved -- with a reason produced by a "
+        "gitignored file's absence -- whenever that file is not on disk",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -6710,6 +6750,11 @@ WRITABLE = {
     # stage()'s symlink -- otherwise the mutation edits the committed pipeline tool in place.
     "validate_territory_basis_write_guard.py": (
         "pipelines/polity-autoimprove/04_territory_basis.py",
+    ),
+    # the case strips the fallback guard out of this module, so it needs a real copy rather
+    # than stage()'s symlink -- otherwise the mutation edits the committed pipeline tool.
+    "validate_quarantine_resolution_guard.py": (
+        "pipelines/polity-autoimprove/reconcile_quarantine.py",
     ),
 }
 
