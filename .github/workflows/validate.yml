@@ -588,6 +588,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_atomic_state_writes.py
 
+      # A CHECK MAY DEGRADE ON A MISSING INPUT; A WRITE MAY NOT. 04_territory_basis.py has two
+      # untracked inputs, and when one is absent the column it feeds collapses to a constant rather
+      # than going missing — so writing republishes the collapse over real values and exits 0.
+      # Measured 2026-09-01: priority_review 116 True -> 27 True, 89 flags deleted, a column
+      # footnote-territory-extraction reads. The tool's own --check is blind to it, because the same
+      # absent input makes it skip that column: green exactly where it cannot look (issue 573).
+      - name: Territory basis — the write refuses a column this run could not compute
+        if: '!cancelled()'
+        run: python3 scripts/validate_territory_basis_write_guard.py
+
       # A derived column can be wrong while every column beside it is right: collapse_groups'
       # ratio disagreed with its own rounded inputs (#457), and cross_label_duplication's
       # smaller_label named the LARGER label in all six rows while the column next to it stayed

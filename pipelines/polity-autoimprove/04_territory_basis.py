@@ -161,6 +161,15 @@ _DEST = os.path.join(H, "territory_basis.csv")
 # territory-basis assessment that answers "is WHEP carrying 1860-1961 data on borders that
 # were not the real territory" -- so 28 missing rows read as 28 polities with nothing to
 # worry about.
+# THE TWO UNTRACKED INPUTS, named once and used by BOTH paths below. --check skips these
+# columns when their input is absent; the write path REFUSES, because the same absence that
+# makes a column uncomparable also makes it destructive to write (issue 573).
+_VOLATILE = {
+    "layerb_data_rows": os.path.join(H, "matched_rows.parquet"),
+    "priority_review": os.path.join(H, "territorial_flagged.json"),
+}
+_missing = sorted(c for c, src in _VOLATILE.items() if not os.path.exists(src))
+
 if "--check" in sys.argv:
     import io
     import csv as _csv
@@ -180,11 +189,6 @@ if "--check" in sys.argv:
     # columns that ARE reproducible -- which still catches the failure this check exists for
     # (a polity missing from the file, or a basis reclassified), and says which comparison it
     # performed rather than implying full coverage.
-    _VOLATILE = {
-        "layerb_data_rows": os.path.join(H, "matched_rows.parquet"),
-        "priority_review": os.path.join(H, "territorial_flagged.json"),
-    }
-    _missing = sorted(c for c, src in _VOLATILE.items() if not os.path.exists(src))
 
     if not os.path.exists(_DEST):
         print(f"FAIL: {_DEST} missing; run this script without --check")
@@ -234,6 +238,56 @@ if "--check" in sys.argv:
         print(f"OK: territory_basis.csv matches the database ({len(fresh)} polities, "
               f"all {len(fresh.columns)} columns)")
     raise SystemExit(0)
+
+# REFUSE TO WRITE A COLUMN THIS RUN CANNOT COMPUTE (issue 573).
+#
+# Both volatile columns collapse to a constant when their input is absent -- `priority_review`
+# to False, `layerb_data_rows` to 0 -- and `out.to_csv` then publishes that collapse over real
+# values, exit 0, no output naming the loss. Measured on 2026-09-01 with territorial_flagged.json
+# absent: priority_review went 116 True -> 27 True, DELETING 89 flags that
+# pipelines/footnote-territory-extraction/validate_proposals.py reads. #573 records that this
+# regeneration was run and very nearly committed during that investigation.
+#
+# The asymmetry is the whole point. --check can safely DEGRADE on a missing input, because
+# comparing fewer columns is merely weaker. The write path cannot: writing fewer columns' worth
+# of truth is not weaker, it is wrong, and it overwrites the only copy. So the same condition
+# that makes --check skip a column makes writing refuse.
+#
+# This does NOT decide #573's remedy (exclude the column / commit the input / drop the column).
+# It removes the destructive path, which every one of those options requires anyway.
+#
+# Deliberately conditioned on _DEST existing, so bootstrapping a fresh file still works -- there
+# is nothing to destroy when there is no committed file, and requiring untracked inputs to create
+# one would make the file unbootstrappable on a clean checkout.
+if _missing and os.path.exists(_DEST) and "--allow-collapsed-columns" not in sys.argv:
+    _prior = pd.read_csv(_DEST, keep_default_na=False, dtype=str)
+    _lost = []
+    for _c in _missing:
+        if _c not in _prior.columns:
+            continue
+        _now = out[_c].astype(str).reset_index(drop=True)
+        _was = _prior[_c].astype(str).reset_index(drop=True)
+        if len(_now) == len(_was):
+            _n = int((_now != _was).sum())
+            if _n:
+                _lost.append(f"{_c}: {_n} of {len(_was)} rows would change "
+                             f"(input {os.path.basename(_VOLATILE[_c])} is absent)")
+    print("REFUSING TO WRITE: this run cannot compute "
+          + ", ".join(f"`{c}`" for c in _missing)
+          + ", so writing would overwrite committed values with collapsed ones.")
+    for _m in _lost:
+        print(f"  {_m}")
+    if not _lost:
+        print("  (no rows would change right now, but the inputs are still absent -- "
+              "refusing rather than relying on that holding)")
+    print("Fix: regenerate the missing input(s) first --")
+    for _c in _missing:
+        _src = _VOLATILE[_c]
+        _stage = ("01_match_and_findings.py" if _src.endswith(".parquet")
+                  else "02_territorial_evidence.py")
+        print(f"  {_c:<18s} needs state/{os.path.basename(_src)}  (run {_stage})")
+    print("Or pass --allow-collapsed-columns to write the collapse deliberately. See issue 573.")
+    raise SystemExit(1)
 
 out.to_csv(_DEST, index=False)
 
