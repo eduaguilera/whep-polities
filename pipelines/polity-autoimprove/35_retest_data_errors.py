@@ -2340,8 +2340,127 @@ def check_iia_indonesia_is_java_and_madura(ctx):
                  "PLUS bali+lombok, a sum carried by no raw row -- so the label is not one territory")
 
 
+def check_iia_czechoslovakia_beans_component(ctx):
+    """layer-B iia Czechoslovak `beans, dry` is ONE of two raw series; juan is their sum.
+
+    NOT A PUBLISHER DISAGREEMENT, which is how it presents. The IIA yearbooks print TWO
+    `beans: dried` rows for `czechoslovakia` in every year from 1934 -- one small, one large -- and
+    layer B keeps the SMALLER while juan carries their SUM. At 1933 the raw prints a single value
+    and both sources publish it identically, which is why the series agree exactly there and
+    diverge from 1934 on.
+
+    THE IDENTITY IS EXACT ON BOTH AXES, 12 of 12 years each, so this is arithmetic rather than
+    inference: juan == small + large, and layer-B iia == small. Testing the identity is what
+    distinguishes a dropped component from two publishers differing -- a magnitude argument could
+    not, and the ratio alone (8x-14x on area, 3x-4x on production) looks like a scale error while
+    being nothing of the kind.
+
+    WHY THE TWO RATIOS DIFFER, which is the tell that it is not a scale bug: the dropped component
+    has a lower yield than the kept one, so area and production are dropped in different
+    proportions. A single multiplier would move both alike.
+
+    NOT CLAIMED: which territories the two rows are. The raw carries one label, `czechoslovakia`,
+    for both, so the split is inside the yearbook's own table and this extract does not name it.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    import pandas as pd
+
+    out = []
+    r = raw[(raw["_c"] == "czechoslovakia") & (raw["_p"] == "beans: dried")].copy()
+    r["_y"] = pd.to_numeric(r["year"], errors="coerce")
+    m = ctx["matched"]
+    if m is None:
+        return None
+    m = m[m.whep_code.notna() & m.value.notna()]
+    for var, unit in (("area", "ha"), ("production", "tonnes")):
+        b = r[(r["_v"] == var) & r["_y"].notna()]
+        J = {int(x.year): float(x.value) for x in
+             m[(m.source == "juan") & (m["item"] == "beans, dry") & (m["unit"] == unit)
+               & (m.country.astype(str).str.lower() == "czechoslovakia")].itertuples()
+             if pd.notna(x.year)}
+        I = {int(x.year): float(x.value) for x in
+             m[(m.source == "iia") & (m["item"] == "beans, dry") & (m["unit"] == unit)
+               & (m.country.astype(str).str.lower() == "czech republic")].itertuples()
+             if pd.notna(x.year)}
+        two = sums = smalls = 0
+        for y in sorted({int(v) for v in b["_y"]}):
+            vs = sorted(float(v) for v in b[b["_y"] == y]["value"].dropna())
+            if len(vs) != 2:
+                continue
+            two += 1
+            sums += abs(vs[0] + vs[1] - J.get(y, -1)) < 0.5
+            smalls += abs(vs[0] - I.get(y, -1)) < 0.5
+        out += [(f"{var}: raw years with TWO values", two, 12),
+                (f"  juan == small + large", sums, 12),
+                (f"  layer-B iia == the SMALLER", smalls, 12)]
+    # 1933, the single-valued year both sources agree on -- the control
+    for var, unit, want in (("area", "ha", 7000.0), ("production", "tonnes", 6600.0)):
+        vs = [float(v) for v in r[(r["_v"] == var) & (r["_y"] == 1933)]["value"].dropna()]
+        out.append((f"1933 raw {var} values", len(vs), 1))
+        out.append((f"  its value", vs[0] if vs else 0.0, want))
+    return out, ("iia publishes the smaller of two raw Czechoslovak bean series and juan their sum, "
+                 "exactly, 12 of 12 years on each axis; 1933 has one raw value and agrees")
+
+
+def check_iia_yugoslavia_sunflower_x10(ctx):
+    """iia's Yugoslav sunflower production is ten times too small, and the paired area proves it.
+
+    THE AREA AGREES EXACTLY. iia and juan both carry 19,000 ha for 1939; only production differs,
+    1,900 t against 27,300 t. So this cannot be a territory or scope difference -- those move both
+    axes -- and it is the one situation where magnitude reasoning is legitimate, because the ratio
+    is fixed by agronomy rather than chosen by an economy.
+
+    0.10 t/ha IS NOT A SUNFLOWER YIELD. juan's own Yugoslav series runs 0.63-1.21 t/ha across
+    1949-1957 and 1.44 in 1939. Multiplying iia's production by ten gives 1.00 t/ha, inside that
+    range -- and the residual difference from juan is then an ordinary cross-source gap rather than
+    an impossibility.
+
+    BOTH IIA CELLS CARRY THE SAME DEFECT, which is what makes it a series fault rather than a
+    transcription slip: the dated 1939 row and the volume's period row are 19,000/1,900 and
+    8,000/800, and both give exactly 0.10.
+    """
+    raw = ctx["raw"]
+    import pandas as pd
+
+    m = ctx["matched"]
+    if m is None:
+        return None
+    m = m[m.whep_code.notna() & m.value.notna()]
+    # `_y` is not one of the columns the harness precomputes (it supplies _c, _p, _v only), so
+    # derive it here rather than assuming it -- the first version of this check raised KeyError.
+    r = raw[(raw["_c"] == "yugoslavia")
+            & raw["product"].astype(str).str.contains("sunflower", case=False, na=False)].copy()
+    r["_y"] = pd.to_numeric(r["year"], errors="coerce")
+    # ROWS, not year-cells: two years (dated 1939 and the volume period row) x two variables
+    # (area, production). Pinned as 4 after a first version said 2 and the re-test caught it.
+    out = [("raw yugoslavia sunflower rows", len(r), 4),
+           ("  distinct year-cells", len({("period" if pd.isna(v) else int(v))
+                                          for v in r["_y"]}), 2)]
+    cells = {}
+    for _, x in r.iterrows():
+        tag = int(x["_y"]) if pd.notna(x["_y"]) else "period"
+        cells.setdefault(tag, {})[x["_v"]] = float(x["value"])
+    for tag, want_a, want_p in ((1939, 19000.0, 1900.0), ("period", 8000.0, 800.0)):
+        d = cells.get(tag, {})
+        a, pr = d.get("area", 0.0), d.get("production", 0.0)
+        out += [(f"{tag} raw area", a, want_a), (f"  production", pr, want_p),
+                (f"  implied yield t/ha", round(pr / a, 2) if a else 0.0, 0.1)]
+    j = m[(m.source == "juan") & (m["item"] == "sunflower seed")
+          & (m.country.astype(str).str.lower() == "yugoslav sfr")]
+    j39a = j[(j["unit"] == "ha") & (pd.to_numeric(j["year"], errors="coerce") == 1939)]["value"].sum()
+    j39p = j[(j["unit"] == "tonnes") & (pd.to_numeric(j["year"], errors="coerce") == 1939)]["value"].sum()
+    out += [("juan 1939 area -- IDENTICAL to iia", float(j39a), 19000.0),
+            ("  juan 1939 production", float(j39p), 27300.0),
+            ("  juan implied yield", round(float(j39p) / float(j39a), 2), 1.44),
+            ("iia yield x10 correction", round(1900.0 * 10 / 19000.0, 2), 1.0)]
+    return out, ("area agrees to the digit and production is 14.4x apart; 0.10 t/ha against juan's "
+                 "0.63-1.44 makes the iia figure impossible, and x10 lands it at 1.00")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "iia-czechoslovakia-beans-component-only": check_iia_czechoslovakia_beans_component,
+    "iia-yugoslavia-sunflower-production-x10": check_iia_yugoslavia_sunflower_x10,
     "iia-indonesia-is-java-and-madura": check_iia_indonesia_is_java_and_madura,
     "iia-attributable-single-cell-errors": check_attributable_single_cells,
     "constant-runs-two-proven-placeholders": check_constant_run_placeholders,
