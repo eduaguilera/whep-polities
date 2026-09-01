@@ -354,6 +354,69 @@ def check_malawi_cotton_deflation(ctx):
     return (claims, "the preserved yield makes it one scale slip; the spike table names the good cell")
 
 
+def check_error_inde_is_india(ctx):
+    """`[error] inde` is India, established three ways, and 99% of it never reaches layer B.
+
+    THE THREE ROUTES ARE PINNED SEPARATELY because no one of them identifies the label alone. A French
+    name could be coincidence; India-scale magnitudes could fit several territories; complementary
+    coverage could be two unrelated series. Together they leave one reading, and if any single route
+    stopped holding the identification would need re-arguing rather than adjusting.
+
+    THE COVERAGE ROUTE IS THE STRONGEST and is the one a value-fingerprint cannot see: `british india`
+    runs to 1938 and never appears in `iia_1939_45`, while this label appears ONLY in the two late
+    volumes and covers 1939-1945, which no other India label reaches. That is also exactly why issue
+    493's fingerprint scored it as noise -- the method needs the broken label's data to exist under a
+    clean label too, so it is blind to labels carrying unique data.
+
+    THE EXPOSURE IS PINNED IN BOTH DIRECTIONS. 410 of 414 rows absent is the finding; if that number
+    fell, some of the block has been recovered and this entry should be re-recorded rather than left
+    passing."""
+    raw = ctx["raw"]
+    lb = ctx["panel"]
+    r = raw[(raw["_c"] == "[error] inde") & raw["_v"].isin(["production", "area"])
+            & raw["value"].notna()]
+    claims = [("`[error] inde` production/area rows", len(r), 414)]
+    vols = collections.Counter(str(x) for x in r["yearbook"])
+    claims.append(("  from iia_1938_39", vols.get("iia_1938_39"), 210))
+    claims.append(("  from iia_1939_45", vols.get("iia_1939_45"), 204))
+    claims.append(("  from any OTHER volume -- must stay 0",
+                   len(r) - vols.get("iia_1938_39", 0) - vols.get("iia_1939_45", 0), 0))
+
+    # route 3: british india stops where this label starts
+    bi = raw[(raw["_c"] == "british india") & raw["value"].notna()]
+    bys = sorted({int(y) for y in bi["year"].astype(str).str.strip() if y.isdigit()})
+    eys = sorted({int(y) for y in r["year"].astype(str).str.strip() if y.isdigit()})
+    claims.append(("`british india` last dated year", max(bys) if bys else None, 1938))
+    claims.append(("`[error] inde` last dated year", max(eys) if eys else None, 1945))
+    claims.append(("  years ONLY under the broken label",
+                   ",".join(str(y) for y in sorted(set(eys) - set(bys))),
+                   "1939,1940,1941,1942,1943,1944,1945"))
+    claims.append(("`british india` rows in iia_1939_45 -- must stay 0",
+                   int((bi["yearbook"].astype(str) == "iia_1939_45").sum()), 0))
+
+    # route 2: the magnitude profile
+    def med(frame, prod, var):
+        d = frame[(frame["_p"] == prod) & (frame["_v"] == var)]["value"]
+        return round(float(d.median()), 1) if len(d) else None
+    claims.append(("cottonseed production median, broken label",
+                   med(r, "cottonseed", "production"), 2027900.0))
+    claims.append(("  the same under `british india`",
+                   med(bi[bi["_v"] == "production"], "cottonseed", "production"), 2181804.0))
+
+    # the exposure
+    i = lb[(lb["source"] == "iia")
+           & (lb["country"].astype(str).str.strip().str.lower() == "india") & lb["value"].notna()]
+    seen = collections.defaultdict(set)
+    for x in i.itertuples():
+        k = str(int(x.year)) if pd.notna(x.year) else str(x.period)
+        seen[k].add(round(float(x.value), 4))
+    present = sum(1 for x in r.itertuples()
+                  if round(float(x.value), 4) in seen.get(str(x.year).strip(), ()))
+    claims.append(("rows present in layer-B iia/india", present, 4))
+    claims.append(("rows ABSENT -- the exposure", len(r) - present, 410))
+    return (claims, "identified by name, magnitude and complementary coverage; 99% never lands")
+
+
 def check_libya_olives_period_cell(ctx):
     """One inflated olive cell, and the CONTROL is what keeps it a cell rather than a class.
 
@@ -2053,6 +2116,7 @@ CHECKS = {
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
     "iia-malawi-cotton-1934-1938-deflated": check_malawi_cotton_deflation,
+    "iia-error-inde-is-india": check_error_inde_is_india,
     "iia-libya-olives-1934-1938-inflated": check_libya_olives_period_cell,
     "fao1952-china-whole-and-five-parts": check_china_whole_and_five_parts,
     "fao1952-tractors-total-beside-its-own-parts": check_tractors_total_beside_parts,
