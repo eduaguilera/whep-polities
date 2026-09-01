@@ -37,9 +37,13 @@ import os
 # --------------------------------------------------------------------------------------
 # Paths. Overridable by environment variable, matching 01_match_and_findings.py's WHEP_LAYERB.
 # --------------------------------------------------------------------------------------
-LAYER_B = os.environ.get(
-    "WHEP_LAYERB",
-    os.path.expanduser("~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"),
+# ONE PANEL, EITHER SPELLING (issue 629). The comment above used to say this matched
+# 01_match_and_findings.py -- it did, and both differed from the 17 tools reading
+# WHEP_LAYER_B, so neither name redirected the whole pipeline.
+LAYER_B = (
+    os.environ.get("WHEP_LAYER_B")
+    or os.environ.get("WHEP_LAYERB")
+    or os.path.expanduser("~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
 )
 
 # The reconciled crop panel (whep_crops v1.0, from Juan). Lives under a gitignored path inside

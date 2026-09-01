@@ -17,7 +17,12 @@ REPO  = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 OUT   = os.path.join(REPO, "pipelines/polity-autoimprove/state")
 POLDB = os.path.join(REPO, "data/final/polities_database.csv")          # in repo
 # the consolidated layer-B dataset and alias table live in personal Nextcloud (not redistributable)
-LB           = os.environ.get("WHEP_LAYERB", "/home/usuario/Nextcloud/whep/layer_b/consolidated_layer_b.parquet")
+# ONE PANEL, EITHER SPELLING (issue 629), and no hardcoded home directory: this default was
+# an absolute /home/usuario path while the other 17 tools used ~/, so stage 01 was the one
+# stage another user could not run without discovering that its variable is spelled
+# differently from the one everything downstream reads.
+LB           = (os.environ.get("WHEP_LAYER_B") or os.environ.get("WHEP_LAYERB")
+                or os.path.expanduser("~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"))
 COMMON_NAMES = os.environ.get("WHEP_COMMON_NAMES",
     "/home/usuario/Nextcloud/WHEP_ERC 2025/Sources/datasets/unclassified_datasets/Other polities/data/whep-source/common_names.csv")
 os.makedirs(OUT, exist_ok=True)
