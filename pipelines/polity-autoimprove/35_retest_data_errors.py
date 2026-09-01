@@ -2831,8 +2831,80 @@ def check_bgr_beans_1934_1938_x1000(ctx):
                  "against fao1952's 0.59 -- the factor is identified by the yield, not the ratio")
 
 
+def check_iia_1934_1938_single_axis_deflated(ctx):
+    """Two iia `1934-1938` rows deflate ONE axis while the other stays clean -- opposite axes.
+
+    THE INTERNAL YIELD IDENTITY IS SUFFICIENT IN BOTH, needing no second source: each label's
+    surviving axis is corroborated by its own three earlier volumes, so the broken one is convicted
+    by arithmetic rather than by comparison.
+
+    UNITED STATES / RYE -- the AREA is wrong. Production runs 916,808 -> 1,038,007 -> 970,600 ->
+    1,027,800 across four volumes, steady, and fao1952 independently gives 1,028,000 for the same
+    span (0.02% apart). Area runs 905,049 -> 1,383,797 -> 1,341,000 -> 25,000. So 1,027,800 t on
+    25,000 ha implies 41.1 t/ha where rye yields 0.8-1.5; against the previous volume's area the
+    same series is 0.72.
+
+    ISRAEL / ORANGES -- the PRODUCTION is wrong, the mirror case. The area period row (29,000 ha)
+    matches the mean of its own dated years in the span (28,250), while production reads 1,300 t
+    against a dated mean of 253,300. That is 0.045 t/ha where oranges yield 5-15; the dated mean over
+    the same area gives 8.7.
+
+    AND ISRAEL NAMES A GAP IN MY OWN EARLIER TEST. Its 1,300 is exactly the dated 1939 value -- so
+    this is another "period row copies a single dated year", like australia sugar, but the year it
+    copied is OUTSIDE the 1934-1938 span. The screen I ran for that mechanism only compared against
+    IN-SPAN dated years, so it could not see this one, and my conclusion that the mechanism does not
+    generalise rests on a test that was narrower than the mechanism. Two instances, not one.
+
+    NOT CLAIMED: that the 1939 dated cell is itself correct. 1,300 t against 317,000 in 1937 is a
+    244x collapse in two years, which is implausible on its own, but nothing here decides whether the
+    dated cell or the copy came first.
+    """
+    lb = ctx["panel"]
+    import pandas as pd
+
+    def rows(label, item):
+        return lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == label)
+                  & (lb["item"] == item) & lb["value"].notna()]
+
+    def per(g, span, unit):
+        h = g[(g["year"].isna()) & (g["period"].astype(str) == span) & (g["unit"].astype(str) == unit)]["value"]
+        return float(h.max()) if len(h) else 0.0
+
+    out = []
+    r = rows("united states of america", "rye")
+    for span, w in (("1909-1913", 916808.5), ("1925-1929", 1038006.8),
+                    ("1928-1932", 970600.0), ("1934-1938", 1027800.0)):
+        out.append((f"usa rye production {span}", per(r, span, "tonnes"), w))
+    for span, w in (("1928-1932", 1341000.0), ("1934-1938", 25000.0)):
+        out.append((f"usa rye AREA {span}", per(r, span, "ha"), w))
+    out += [("  usa implied yield 1934-38",
+             round(per(r, "1934-1938", "tonnes") / per(r, "1934-1938", "ha"), 1), 41.1),
+            ("  same production, previous area",
+             round(per(r, "1928-1932", "tonnes") / per(r, "1928-1932", "ha"), 2), 0.72)]
+
+    o = rows("israel", "oranges")
+    d = o[o["year"].notna()].copy(); d["y"] = pd.to_numeric(d["year"], errors="coerce")
+    dt = d[(d["unit"].astype(str) == "tonnes") & d.y.between(1934, 1938)]["value"]
+    da = d[(d["unit"].astype(str) == "ha") & d.y.between(1934, 1938)]["value"]
+    out += [("israel oranges production 1934-38", per(o, "1934-1938", "tonnes"), 1300.0),
+            ("  its dated mean in span", round(float(dt.mean()), 1), 253300.0),
+            ("  its AREA period row", per(o, "1934-1938", "ha"), 29000.0),
+            ("  its dated area mean -- clean", round(float(da.mean()), 1), 28250.0),
+            ("  implied yield as published",
+             round(per(o, "1934-1938", "tonnes") / per(o, "1934-1938", "ha"), 3), 0.045),
+            ("  implied yield from the dated mean",
+             round(float(dt.mean()) / per(o, "1934-1938", "ha"), 1), 8.7),
+            ("  the dated 1939 value it equals",
+             float(d[(d["unit"].astype(str) == "tonnes") & (d.y == 1939)]["value"].iloc[0]), 1300.0),
+            ("  1939 is outside the span", 1 if not (1934 <= 1939 <= 1938) else 0, 1)]
+    return out, ("usa rye deflates the AREA and israel oranges the PRODUCTION; each label's other "
+                 "axis holds across four volumes, so the yield identity convicts without a second "
+                 "source, and israel's value is copied from a dated year OUTSIDE its own span")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "iia-1934-1938-single-axis-deflated": check_iia_1934_1938_single_axis_deflated,
     "bgr-beans-1934-1938-production-x1000": check_bgr_beans_1934_1938_x1000,
     "cmr-1932-groundnut-area-620-million-ha": check_cmr_1932_groundnut_area,
     "iia-sugar-1934-1938-deflated": check_iia_sugar_1934_1938_deflated,
