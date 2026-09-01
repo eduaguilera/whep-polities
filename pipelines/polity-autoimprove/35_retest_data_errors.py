@@ -2517,8 +2517,67 @@ def check_nga_1950_livestock_broadcast(ctx):
                  "year untouched; swine's own factor is only 4x, so no per-series test reaches it")
 
 
+def check_mitchell_japan_rye_is_not_rye(ctx):
+    """mitchell's Japanese `rye` is ~565,000 ha where fao1952 reports 3,000-6,000.
+
+    THE CONTROL IS WHAT CONVICTS, and it is unusually strong. The two sources agree TO THE DIGIT on
+    Japanese rice paddy in all three shared years (2,970,000 / 2,994,000 / 3,004,000, ratio 1.000)
+    and to 0.3% on sweet potatoes -- so they describe the same country, the same years and the same
+    conventions, and neither extraction is broken. Against that, differing 94x-186x on one item is
+    an item-IDENTITY problem, not a data-quality gradient.
+
+    NEITHER SIDE IS INTERNALLY IMPOSSIBLE, which is why no per-series test finds this. mitchell's
+    series runs smoothly from 1877 to 1960 at 400,000-720,000 ha with yields of 1.0-2.5 t/ha, and
+    fao1952's 6,000 ha at 1.33 t/ha is equally ordinary. There is no spike, no constant run, no
+    impossible yield. Only the cross-source comparison reaches it.
+
+    NOT CLAIMED: what mitchell's series actually is. The magnitude points to naked barley -- mitchell
+    carries a SEPARATE `barley` at 420,000-440,000 ha, the two sum to 979,000-1,020,000, and fao1952
+    carries NO barley for Japan at all -- but that is an inference from size, which this repo has
+    been wrong about before. What is established is the negative: it is not rye.
+
+    Consequence for the panel: any aggregation over Japanese rye takes mitchell's figure, so the
+    published series is ~100x the crop it names.
+    """
+    m = ctx["matched"]
+    if m is None:
+        return None
+    import pandas as pd
+
+    g = m[m.whep_code.notna() & m.value.notna()]
+    jp = g[g.country.astype(str).str.lower().str.contains("japan")]
+
+    def ser(src, item, unit):
+        h = jp[(jp.source == src) & (jp["item"] == item) & (jp["unit"].astype(str) == unit)]
+        return {int(r.year): float(r.value) for _, r in h.iterrows() if pd.notna(r.year)}
+
+    out = []
+    # the control: agreement on other crops, same years
+    for mi, fi, want in (("rice, paddy", "rice paddy", (1.0, 1.0, 1.0)),
+                         ("sweet potatoes", "sweet potatoes yams", (1.002, 1.003, 1.0))):
+        M, F = ser("mitchell", mi, "ha"), ser("fao1952", fi, "1000 hectares")
+        for y, w in zip((1949, 1950, 1951), want):
+            r = round(M[y] / (F[y] * 1000), 3) if (y in M and y in F and F[y]) else 0.0
+            out.append((f"{mi[:12]} {y} ratio", r, w))
+    # the disagreement
+    M, F = ser("mitchell", "rye", "ha"), ser("fao1952", "rye", "1000 hectares")
+    for y, w in ((1949, 94.2), (1950, 98.5), (1951, 186.3)):
+        out.append((f"rye {y} ratio", round(M[y] / (F[y] * 1000), 1) if (y in M and y in F and F[y]) else 0.0, w))
+    for y, w in ((1949, 6.0), (1950, 6.0), (1951, 3.0)):
+        out.append((f"  fao1952 rye {y} (1000 ha)", F.get(y, 0.0), w))
+    # the size argument, recorded but NOT claimed as the identification
+    B = ser("mitchell", "barley", "ha")
+    for y, w in ((1949, 1005000.0), (1950, 1020000.0), (1951, 979000.0)):
+        out.append((f"  mitchell barley + `rye` {y}", B.get(y, 0.0) + M.get(y, 0.0), w))
+    out.append(("fao1952 barley items for japan",
+                len({str(i) for i in jp[jp.source == "fao1952"]["item"] if "barl" in str(i).lower()}), 0))
+    return out, ("agreement to the digit on rice paddy and 0.3% on sweet potatoes, against 94x-186x "
+                 "on rye -- so the sources are sound and the item label is not")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
+    "mitchell-japan-rye-is-not-rye": check_mitchell_japan_rye_is_not_rye,
     "nga-1950-livestock-broadcast-13000": check_nga_1950_livestock_broadcast,
     "iia-czechoslovakia-beans-component-only": check_iia_czechoslovakia_beans_component,
     "iia-yugoslavia-sunflower-production-x10": check_iia_yugoslavia_sunflower_x10,
