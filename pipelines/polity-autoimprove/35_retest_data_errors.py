@@ -688,9 +688,12 @@ def check_china_whole_and_five_parts(ctx):
         d = ch[(ch["item"] == item) & (ch["year"] == yr)]
         return float(d["value"].iloc[0]) if len(d) else None
 
-    claims.append(("`China` population 1937 (thousand) -- the whole country",
+    # The label IS China -- see fao1952-china-livestock-cells-implausible, which rebuts the
+    # "different territory" reading. These two are pinned as a PAIR to keep that entry and this one
+    # describing the same thing: a correct national total with damaged livestock cells inside it.
+    claims.append(("`China` population 1937 (thousand) -- the label IS China",
                    cell("r_fao_population_1952_10_18", 1937), 452460.0))
-    claims.append(("`China` pigs 1949 (thousand) -- impossible for it",
+    claims.append(("`China` pigs 1949 (thousand) -- a damaged cell, not another territory",
                    cell("pigs", 1949), 95.0))
     claims.append(("`China` buffaloes 1949/1950/1951 -- a coherent series",
                    ",".join(str(cell("buffaloes", y)) for y in (1949, 1950, 1951)),
