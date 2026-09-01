@@ -62,6 +62,67 @@ DEFAULT_PANEL = os.path.expanduser(
     os.environ.get("WHEP_LAYER_B", "~/Nextcloud/whep/layer_b/consolidated_layer_b.parquet"))
 
 
+def _corrupted_label_merge_claims(ctx):
+    """The corruption is ADJACENT-CELL MERGING, and 43 of the 93 labels show it outright.
+
+    Decomposing each broken label into the French tokens it contains -- territory names, the six
+    section headings, the column headings -- separates a label that absorbed its neighbour from one
+    that is merely truncated. `asie ceylan` is a section heading plus a country row; `commerce avec
+    formose` is a column heading plus a country row; `aden: birmanie` is two country rows.
+
+    THIS IS PINNED BY COUNT AND NOT BY LABEL LIST, deliberately. The decomposition is token matching
+    against a hand-built vocabulary, so it is a reading rather than a parse: a short token can sit
+    inside a longer word, and the unrecognised group may simply use tokens the list omits. What the
+    entry's argument rests on is the SHAPE of the distribution -- that a large minority are visibly
+    two labels joined -- and that survives individual mis-classifications in a way a label list would
+    not.
+
+    The six-way split must also still partition the 93, which is what stops a class being silently
+    added or dropped."""
+    import re as _re
+    raw = ctx["raw"]
+    labs = sorted(set(raw[raw["_c"].str.startswith("[error]")]["_c"]))
+    TERR = ["inde", "cameroun", "syrie", "liban", "togo", "palestine", "afrique du sud", "papouasie",
+            "nouvelle-guinee", "honduras", "borneo", "malais", "erythree", "somalie", "mozambique",
+            "russi", "suisse", "sttisse", "tchecoslovaquie", "tehecoslovaquie", "bresil",
+            "etats-unis", "etais-unis", "japon", "turquie", "senegal", "porto-rico", "guadeloupe",
+            "trinite", "ceylan", "birmanie", "aden", "formose", "coree", "hawai", "alaska",
+            "grande-bretagne", "canada", "costa-rica", "miquelon", "eustache", "martin", "reunion",
+            "nyassaland", "congo", "guinee", "christmas", "tabago", "irlande"]
+    SECT = ["asie", "afrique", "oceanie", "amerique", "europe", "continent"]
+    COL = ["commerce", "commavec", "comm avec", "exportations", "importations", "douanes",
+           "par terre", "culture", "cocons", "possessions", "protectorat", "republique",
+           "avec les", "y compris"]
+
+    def kind(lab):
+        s = lab.replace("[error]", "").strip()
+        t = [x for x in TERR if x in s]
+        sec = [x for x in SECT if x in s]
+        col = [x for x in COL if x in s]
+        if t and sec:
+            return "terr+section"
+        if t and col:
+            return "terr+column"
+        if len(t) >= 2:
+            return "two territories"
+        if len(t) == 1:
+            return "one territory"
+        if sec or col:
+            return "header text only"
+        return "unrecognised"
+
+    k = collections.Counter(kind(x) for x in labs)
+    merged = k["terr+section"] + k["terr+column"] + k["two territories"]
+    return [("labels visibly merging TWO cells", merged, 43),
+            ("  territory + section heading", k["terr+section"], 19),
+            ("  territory + column heading", k["terr+column"], 12),
+            ("  two territories", k["two territories"], 12),
+            ("labels naming one territory only", k["one territory"], 22),
+            ("labels that are header text only", k["header text only"], 21),
+            ("unrecognised", k["unrecognised"], 7),
+            ("the six kinds partition the 93", sum(k.values()), 93)]
+
+
 def _corrupted_label_class_claims(ctx):
     """The 93 broken labels split three ways, and the split is what makes the exposure actionable.
 
@@ -126,8 +187,9 @@ def check_corrupted_country_labels(ctx):
     return ([("rows", len(e), 1237), ("distinct labels", e["_c"].nunique(), 93),
              ("broken product labels", prod_broken, 0)]
             + _corrupted_labels_split_claims(ctx)
-            + _corrupted_label_class_claims(ctx),
-            "the country axis is corrupted, the product axis is not, and the labels are French")
+            + _corrupted_label_class_claims(ctx)
+            + _corrupted_label_merge_claims(ctx),
+            "one extraction bug -- adjacent cells merged -- seen on three surfaces")
 
 
 def _corrupted_labels_split_claims(ctx):
