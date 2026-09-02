@@ -167,7 +167,14 @@ def build_evidence(unit: dict[str, Any], pols: list[dict[str, str]], iso: str,
         a(f"  system              {convention['system_name']}")
         a(f"  earliest possible   {convention['system_start_year']} — a FLOOR for the system, NOT "
           f"this unit's start ({convention.get('system_start_basis','')[:80]})")
-        a(f"  this unit's start   {convention.get('unit_start_rule','')[:140]}")
+        a(f"  start rule (DEFAULT) {convention.get('unit_start_rule','')[:140]}")
+        exc = convention.get("unit_start_exceptions") or []
+        if exc:
+            a(f"  DEPARTURES from that rule ({len(exc)}) — check whether THIS unit is one:")
+            for e in exc:
+                a(f"    {e['units'][:60]:62} start {e['start_year']}  ({e['basis'][:70]})")
+        a("  The rule is a default. If this unit's own history differs — it was created later, or "
+          "split from another unit — depart from it and say why in span_basis.")
         a(f"  open end_year       {convention['open_end_year']} (EXCLUSIVE) for any still-current "
           f"unit — use exactly this, not a round number and not the data's last year")
         a(f"  container chain     " + ", ".join(
@@ -407,6 +414,11 @@ What matters:
   unit's start. US states were admitted between 1787 and 1959, so a single number would span
   California from the wrong year. Give the floor AND `unit_start_rule`: how an individual unit's own
   start is found within the system.
+- `unit_start_exceptions` lists every unit that does NOT follow that rule. Re-read your own
+  `system_start_basis` before returning an empty list: Spain's answer wrote "(later 50, with the
+  1927 split of the Canary Islands)" in its basis and then said "all units begin at the floor, no
+  per-unit variation is needed" in its rule. Las Palmas was consequently dated 1833, 94 years before
+  it existed. The evidence was in the same object as the claim that contradicted it.
 - `open_end_year` is EXCLUSIVE and must be ONE value for every still-current unit. Unlike the start,
   this genuinely is country-wide, because a unit cannot outlive its container. Prefer the containing
   national row's own end_year COLUMN; a round number like 2100 asserts a span nobody has evidence for.

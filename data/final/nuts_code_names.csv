@@ -78,6 +78,8 @@ ES64,Ciudad de Melilla,"Eurostat GISCO NUTS 2021 attribute table (NUTS_AT_2021.c
 ES640,Melilla,"Eurostat GISCO NUTS 2021 attribute table (NUTS_AT_2021.csv), NAME_LATN"
 ES7,Canarias,"Eurostat GISCO NUTS 2021 attribute table (NUTS_AT_2021.csv), NAME_LATN"
 ES70,Canarias,"Eurostat GISCO NUTS 2021 attribute table (NUTS_AT_2021.csv), NAME_LATN"
+ES701,Las Palmas,"pre-2021 NUTS vintage (ES70 Canarias split by province, superseded by the per-island NUTS 2021 codes ES703-ES709 which are also in this table); official EU NUTS code list, ES7 CANARIAS > ES70 Canarias hierarchy, nuts_codes_eu.pdf (esf.de). The panel carries both layers: ES701/ES702 hold 25,314 rows each 1880-2021, ES705/ES709 hold 1,685 each 1865-2020."
+ES702,Santa Cruz de Tenerife,"pre-2021 NUTS vintage (ES70 Canarias split by province, superseded by the per-island NUTS 2021 codes ES703-ES709 which are also in this table); official EU NUTS code list, ES7 CANARIAS > ES70 Canarias hierarchy, nuts_codes_eu.pdf (esf.de). The panel carries both layers: ES701/ES702 hold 25,314 rows each 1880-2021, ES705/ES709 hold 1,685 each 1865-2020."
 ES703,El Hierro,"Eurostat GISCO NUTS 2021 attribute table (NUTS_AT_2021.csv), NAME_LATN"
 ES704,Fuerteventura,"Eurostat GISCO NUTS 2021 attribute table (NUTS_AT_2021.csv), NAME_LATN"
 ES705,Gran Canaria,"Eurostat GISCO NUTS 2021 attribute table (NUTS_AT_2021.csv), NAME_LATN"

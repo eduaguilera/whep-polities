@@ -430,6 +430,36 @@ def test_new_source_needed_cannot_name_an_already_registered_source():
     assert "but source_slug" in src and "is not registered" in src
 
 
+def test_the_start_rule_is_a_default_with_enumerated_departures():
+    """Spain's convention contradicted its own evidence, in the same object.
+
+    `system_start_basis` said the 1833 reform made "49 (later 50, with the 1927 split of the Canary
+    Islands) provinces"; `unit_start_rule` then said "all units begin at the floor (1833) ... no
+    per-unit variation is needed". The per-unit stage inherited the rule and dated Las Palmas 1833 --
+    94 years before it existed -- while the fact that refuted it sat two fields away.
+
+    So departures are a required field, and the per-unit evidence presents the rule as a default and
+    invites a justified departure. Re-decided, Spain returns 50 provinces at 1833 and exactly the two
+    Canary provinces at 1927.
+    """
+    import json as _json
+    schema = _json.loads((HERE / "schemas" / "country_convention.schema.json")
+                         .read_text(encoding="utf-8"))
+    assert "unit_start_exceptions" in schema["required"], "an empty list must be a stated claim"
+    items = schema["properties"]["unit_start_exceptions"]["items"]
+    assert items["required"] == ["units", "start_year", "basis"]
+    assert "1927 split of the Canary Islands" in \
+        schema["properties"]["unit_start_rule"]["description"], "the case must be quoted"
+
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "DEPARTURES from that rule" in src, "exceptions must reach the per-unit evidence"
+    assert "The rule is a default." in src
+    assert "Re-read your own" in src and "before returning an empty list" in src
+
+    # the floor must never be presented as the unit's own start
+    assert "a FLOOR for the system, NOT " in src
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

@@ -13,7 +13,8 @@
     "reasoning",
     "evidence_used",
     "system_start_basis",
-    "unit_start_rule"
+    "unit_start_rule",
+    "unit_start_exceptions"
   ],
   "properties": {
     "country": {
@@ -112,7 +113,36 @@
     "unit_start_rule": {
       "type": "string",
       "minLength": 40,
-      "description": "How to determine ONE unit's own start_year within this system -- e.g. 'the year the state was admitted to the Union', or 'all units begin at the floor because the reform created them simultaneously'. This is what a per-unit decision applies; the floor only bounds it from below."
+      "description": "How to determine ONE unit's own start_year within this system -- e.g. 'the year the state was admitted to the Union'. It is a DEFAULT, not a universal: state it, and then enumerate every departure in unit_start_exceptions. A rule saying 'all units begin at the floor, no per-unit variation is needed' was accepted for Spain while that same answer's own basis said '(later 50, with the 1927 split of the Canary Islands)'. The rule contradicted its own evidence, and the per-unit stage inherited the wrong half: Las Palmas was dated 1833, 94 years before it existed."
+    },
+    "unit_start_exceptions": {
+      "type": "array",
+      "description": "Every unit or group of units that does NOT begin at unit_start_rule's answer. An empty array is a claim that none does -- make it only after checking, and re-read your own system_start_basis before saying so, since that is where the Spanish exception was already written down.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "units",
+          "start_year",
+          "basis"
+        ],
+        "properties": {
+          "units": {
+            "type": "string",
+            "minLength": 3,
+            "description": "Which units, by name or by how to recognise them."
+          },
+          "start_year": {
+            "type": "integer",
+            "description": "The start_year these units carry instead."
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 25,
+            "description": "The documented event that created or changed them."
+          }
+        }
+      }
     }
   }
 }

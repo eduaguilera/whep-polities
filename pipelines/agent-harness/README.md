@@ -74,6 +74,15 @@ own start is found, and both bases are required. Re-decided, the USA returns flo
 re-validated against the schema on load, so tightening the contract reaches decisions already made
 rather than only countries not yet decided.
 
+**And the rule is a default, with departures enumerated.** Spain's convention then contradicted
+itself *within one object*: `system_start_basis` said the 1833 reform made "49 (later 50, with the
+1927 split of the Canary Islands) provinces", while `unit_start_rule` said "all units begin at the
+floor (1833) ... no per-unit variation is needed". The per-unit stage inherited the rule and dated
+Las Palmas **1833 — 94 years before it existed** — with the refuting fact two fields away.
+`unit_start_exceptions` is now required, so an empty list is a claim rather than a default, and the
+per-unit evidence presents the rule as a default and invites a justified departure. Re-decided,
+Spain returns **50 provinces at 1833-2025 and exactly the two Canary provinces at 1927-2025**.
+
 Stage 0 is checked against the polity table but **never corrected**. A container code that is not in
 the table, or an `open_end_year` that is not any container's own `end_year` *column* (the code string
 and the column disagree for some rows — read the column), is handed back as a stated objection and
@@ -188,6 +197,26 @@ in its `concerns`, not because a check failed:
    contributed nothing to the filtered list, and the empty list read as success. The red gates now
    travel separately from the attributable failures, and the status distinguishes `clean` from
    `clean_for_code`.
+
+## Where it stands
+
+Smoked end to end on the Ivorra/Infante-Amate/Aguilera/González de Molina provincial panel
+(`WHEP_SUBNATIONAL`, never committed):
+
+| | |
+|---|---|
+| Spain | **53 of 53 units decided**, no `insufficient_evidence`: 50 provinces `1833-2025`, the two Canary provinces `1927-2025`, one `match_existing` against a page the harness itself wrote |
+| USA | convention floor `1787` with a five-era container chain; California `1850-2025` in `USA-1848-1867`; `USA-RESID` → `not_a_territory`; Alaska → `match_existing` once its row exists |
+| stages | 0 convention, 1 routing, 2 polygon, 3 wiki, 4 repair — all exercised on real units |
+| pages | `ESP-CO-1833-2025`, `ESP-MD-1833-2025` — authored, gate-clean, committed as `status: draft` |
+| tests | 21, all in CI; every one is a defect that reached a real run |
+
+Two things a reader should not assume. The repair loop's **JUDGEMENT** mode has never fired, because
+no judgement-class failure has occurred yet — only its ARITHMETIC and clean paths are proven. And
+the NUTS crosswalk `data/final/nuts_code_names.csv` has **no fetch script**: its `basis` column cites
+the Eurostat GISCO NUTS 2021 table and, for `ES701`/`ES702`, the pre-2021 vintage, but neither is
+regenerable from this repo. Those two codes were the only gap in 165 panel units, and the harness
+found them the right way — it refused to guess and named the table to check.
 
 ## A constraint worth knowing
 
