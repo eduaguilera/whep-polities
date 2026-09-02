@@ -2,6 +2,8 @@ member_code,container_code,start_year,end_year,basis
 ALK-1867-1959,USA-1867-1959,1867,1959,"the Territory of Alaska inside the United States, from the 1867 purchase to statehood in 1959"
 BDI-1922-1962,RWB-1922-1962,1922,1962,Burundi as the southern half of the Ruanda-Urundi mandate/trust territory
 DZA-CVD-1902-1919,DZA-1902-1919,1902,1919,the three civil departments inside Algeria as constituted after the 1902 Saharan annexation
+ESP-CO-1833-2025,ESP-1800-2025,1833,2025,"A Coruña is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-MD-1833-2025."
+ESP-MD-1833-2025,ESP-1800-2025,1833,2025,"Madrid is a province/region of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap."
 IDN-BLB-1949-1951,IDN-1949-1963,1949,1951,Bali and Lombok as a reporting unit inside Indonesia
 IDN-JVM-1949-1951,IDN-1949-1963,1949,1951,Java and Madura as a reporting unit inside Indonesia
 IDN-OTH-1949-1951,IDN-1949-1963,1949,1951,the residual outer islands as a reporting unit inside Indonesia

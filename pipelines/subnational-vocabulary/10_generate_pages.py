@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 """Generate polity wiki pages for the subnational admin units a source actually reports.
 
+SUPERSEDED BY pipelines/agent-harness/. Kept as the record of how Japan's 46 prefectures were
+generated; do NOT add a country to COUNTRIES below. The dict is the problem: a human decided Japan
+needed prefectures and then configured a generator for it, which does not scale past the country in
+front of you and learns nothing from the data. In the harness, "we need provinces here" is an
+OUTPUT -- stage 0 decides the country's span and container convention once, stage 1 decides per unit
+whether an existing polity already IS that territory, and stage 3 authors the page. Run that instead.
+
 WHY A GENERATOR. The subnational compilation carries 431 real admin units across 26 countries
 (whep#1000), and the polity table is built FROM the wiki -- one row per page. Hand-writing 431 pages
 would take longer than the data took to compile and would drift; generating them keeps the vocabulary

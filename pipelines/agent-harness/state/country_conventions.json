@@ -1,0 +1,83 @@
+{
+  "Spain": {
+    "concerns": [],
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "ESP-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Spain",
+    "evidence_used": [
+      "ESP-1800-2025 national row (1800-2025)",
+      "ESP-CO-1833-2025 A Coru\u00f1a precedent (1833-2025)",
+      "ESP-MD-1833-2025 Madrid precedent (1833-2025)"
+    ],
+    "naming_pattern": "\"<Name> (province of Spain)\"",
+    "open_end_basis": "Both existing precedent rows (A Coru\u00f1a, Madrid) end in 2025, matching the containing national row ESP-1800-2025's own end_year of 2025. Using the container's own end_year avoids asserting an unevidenced round number like 2100.",
+    "open_end_year": 2025,
+    "reasoning": "The 1833 Javier de Burgos territorial reorganisation created all 50 Spanish provinces simultaneously, so 1833 is both the floor for the system and, absent evidence of a later split, the default start for every province. The panel's three example units (A Coru\u00f1a, Las Palmas, Santa Cruz de Tenerife) include the Canary Islands, which is the one documented exception: the two-province Canary Islands split (Las Palmas / Santa Cruz de Tenerife) occurred in 1927, so those two units must start then rather than in 1833. All units are contained by the single national row ESP-1800-2025, and their open end must equal that row's own end_year, 2025, rather than a round number like 2100.",
+    "system_name": "Spanish provincial system established by the 1833 territorial division (Javier de Burgos reform)",
+    "system_start_basis": "The 1833 royal decree (Javier de Burgos reform) divided Spain into 49 provinces at once; this is the earliest year any Spanish province can exist, and Madrid/A Coru\u00f1a's existing precedent rows both start in 1833, confirming the floor.",
+    "system_start_year": 1833,
+    "unit_start_exceptions": [
+      {
+        "basis": "The single Canary Islands province created in 1833 was split into two provinces, Las Palmas and Santa Cruz de Tenerife, by a 1927 decree; neither existed as a distinct unit before that split.",
+        "start_year": 1927,
+        "units": "Las Palmas and Santa Cruz de Tenerife (the two Canary Islands provinces)"
+      }
+    ],
+    "unit_start_rule": "Default: a province begins in 1833, the year of the Javier de Burgos territorial reform that created the Spanish provincial map at once. Exception: the Canary Islands province was split into two provinces (Las Palmas and Santa Cruz de Tenerife) in 1927, so those two begin in 1927, not 1833."
+  },
+  "United States of America": {
+    "concerns": [
+      "California became a state in 1850, before the container row USA-1848-1867 that would enclose it; unit_start_rule year (1850) must be checked against whichever container row covers that date when cutting edges",
+      "Some later-admitted states (e.g. Alaska, Hawaii) start only in 1959, inside the last pre-2025 container row; per-unit start still needs the admission year, not the system floor"
+    ],
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "USA-1800-1803",
+        "end_year": 1803,
+        "start_year": 1800
+      },
+      {
+        "code": "USA-1803-1848",
+        "end_year": 1848,
+        "start_year": 1803
+      },
+      {
+        "code": "USA-1848-1867",
+        "end_year": 1867,
+        "start_year": 1848
+      },
+      {
+        "code": "USA-1867-1959",
+        "end_year": 1959,
+        "start_year": 1867
+      },
+      {
+        "code": "USA-1959-2025",
+        "end_year": 2025,
+        "start_year": 1959
+      }
+    ],
+    "country": "United States of America",
+    "evidence_used": [
+      "National rows for USA (5, spanning 1800-2025)",
+      "Existing subnational precedent: ALK-1867-1959 (Territory of Alaska) then ALK-1959-2025 (Alaska, US state), cut at the 1959 national-row boundary",
+      "Panel unit example: California (state), data coverage 1866-2026 which is not itself a basis for the span"
+    ],
+    "naming_pattern": "\"<Name> (US state)\"",
+    "open_end_basis": "The last national container row, USA-1959-2025, has its own end_year of 2025; a state cannot outlive its container, so every still-current state's open end must equal that column value rather than an invented round number.",
+    "open_end_year": 2025,
+    "reasoning": "US states are admitted to the Union individually over a long span (Delaware 1787 through Hawaii 1959), so a single system-wide start_year cannot be copied onto every state -- that was the exact failure this stage exists to remove. The correct floor is 1787, the year the Constitution took effect and the first states began operating as states of the Union; each state's own start is the year Congress admitted it (unit_start_rule), which is why Alaska's precedent row starts its statehood span in 1959, not 1787 or 1867. Before admission, a territory (like the existing ALK-1867-1959 'Territory of Alaska' row) may exist as a distinct pre-statehood unit rather than a 'state' unit -- that is a separate admin_level, not covered by this state convention. Once admitted, a state's containment must be cut against whichever of the 5 national USA rows temporally overlaps its lifespan, and since a state cannot outlive its country, every currently-existing state must close its span at 2025, matching the end_year of the currently-open national row USA-1959-2025, per the Alaska precedent (ALK-1959-2025 also ends 2025).",
+    "system_name": "US states under the Union (federal admission system established by the 1787 Constitution)",
+    "system_start_basis": "The 1787 U.S. Constitution (ratified/effective 1788-1789) established the federal union into which states are admitted; Delaware and the other original 13 states became the first 'states' of this system at that founding, well before this panel's 1866 data coverage begins.",
+    "system_start_year": 1787,
+    "unit_noun": "state",
+    "unit_start_rule": "A state's own start_year is the year it was admitted to the Union (e.g. Delaware 1787, California 1850, Alaska and Hawaii 1959) -- not the system floor of 1787, which only bounds the earliest possible admission. Look up each state's individual admission year rather than defaulting to the floor or to the panel's data-coverage start (1866)."
+  }
+}

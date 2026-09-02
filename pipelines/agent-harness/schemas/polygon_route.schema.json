@@ -1,0 +1,55 @@
+{
+  "title": "Where a proposed polity's boundary would come from",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["unit_id", "route", "confidence", "reasoning", "evidence_used"],
+  "properties": {
+    "unit_id": {"type": "string"},
+    "route": {
+      "type": "string",
+      "enum": ["registered_source_feature", "construct_from_registered", "new_source_needed", "none_available"],
+      "description": "registered_source_feature: a source already in scripts/sources.yaml carries this exact feature. construct_from_registered: it can be built from registered features by union or difference. new_source_needed: a real boundary exists in the world but no registered source has it. none_available: no source is known to digitise this territory for this period."
+    },
+    "source_slug": {
+      "type": ["string", "null"],
+      "description": "The scripts/sources.yaml slug, when the route uses a registered source."
+    },
+    "feature_id": {
+      "type": ["string", "null"],
+      "description": "The identifier within that source, e.g. a GADM GID_1 such as JPN.1_1. Null when it must be constructed or does not exist."
+    },
+    "construction": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["method", "members", "why"],
+      "properties": {
+        "method": {"type": "string", "enum": ["union", "difference", "union_then_difference"]},
+        "members": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "why": {"type": "string", "minLength": 20}
+      }
+    },
+    "candidate_new_source": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["name", "why_it_fits", "licence_known"],
+      "properties": {
+        "name": {"type": "string"},
+        "url": {"type": ["string", "null"]},
+        "why_it_fits": {"type": "string", "minLength": 20},
+        "licence_known": {
+          "type": "boolean",
+          "description": "False when the licence has not been checked. A source cannot be adopted on an unchecked licence, so this must not be asserted true without evidence."
+        },
+        "admin_level": {"type": ["string", "null"]}
+      }
+    },
+    "vintage_risk": {
+      "type": ["string", "null"],
+      "description": "How far the proposed feature's date sits from the polity's span, and what that costs. A present-day boundary standing in for a 19th-century territory is a stated approximation, not a silent one."
+    },
+    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+    "reasoning": {"type": "string", "minLength": 40},
+    "evidence_used": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "concerns": {"type": "array", "items": {"type": "string"}}
+  }
+}
