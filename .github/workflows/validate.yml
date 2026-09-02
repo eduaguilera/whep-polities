@@ -1051,3 +1051,12 @@ jobs:
       - name: Gates — prove they fail on an injected defect
         if: '!cancelled()'
         run: python3 scripts/selftest_gates.py
+
+      # The harness that proposes new polities is itself checked, because every one of its tests is
+      # a defect that reached a real run: an iso3 resolved to the wrong country, a cycle that hid
+      # the candidate it should have matched, a repair that laundered a content change through an
+      # arithmetic fix, a `clean` that meant `nothing named our code`. The suite is offline -- it
+      # reads only this repository's own files and calls no model -- so it belongs in CI rather
+      # than in a smoke run somebody has to remember to do.
+      - name: The polity-proposing harness still refuses what it was taught to refuse
+        run: python3 pipelines/agent-harness/test_harness.py

@@ -25,6 +25,7 @@ def _load(name: str):
 
 runner = _load("runner")
 harness = _load("harness")
+repair = _load("repair")
 
 
 def test_cli_schema_strips_only_what_the_cli_rejects():
@@ -46,21 +47,25 @@ def test_cli_schema_strips_only_what_the_cli_rejects():
 
 
 def test_iso_resolution_does_not_confuse_united_states_with_the_emirates():
-    """BUG: a 6-character prefix match resolved 'United States of America' to ARE.
+    """The regression: a 6-character prefix resolved "United States of America" to ARE.
 
-    The verdicts that followed were plausible and built on another country's candidate rows.
+    The fix is no longer a full-name match plus a hand-written alias dict -- that dict was itself the
+    ad-hoc thing, needing a new line for every dataset. Resolution now comes from crosswalks the
+    repository already builds, and anything they do not answer is asked once and banked. So this
+    test asserts two things: the crosswalk resolves the case that broke, and no alias table has
+    grown back inside the harness.
     """
-    pols = [
-        {"polity_code": "ARE-1971-2025", "polity_name": "United Arab Emirates",
-         "iso3_code": "ARE", "polity_type": "national", "start_year": "1971", "end_year": "2025"},
-        {"polity_code": "USA-1959-2025", "polity_name": "United States of America (1959-2025)",
-         "iso3_code": "USA", "polity_type": "national", "start_year": "1959", "end_year": "2025"},
-    ]
-    assert harness.iso_for_country("United States of America", pols) == "USA"
-    assert harness.iso_for_country("United Arab Emirates", pols) == "ARE"
-    # An unresolvable country returns "" so the caller can refuse rather than guess a stem.
-    assert harness.iso_for_country("Ruritania", pols) == ""
+    cw = harness.crosswalk_iso()
+    assert cw.get(harness.norm("United States of America")) == "USA"
+    assert cw.get(harness.norm("Spain")) == "ESP"
+    assert cw.get(harness.norm("Japan")) == "JPN"
+    for label in ("United Arab Emirates", "Emirats arabes unis"):
+        assert cw.get(harness.norm(label), "ARE") == "ARE"
 
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "iso_for_country" not in src, "the prefix-matching version must be gone"
+    assert '"unitedstatesofamerica"' not in src, "no hand-maintained alias dict in the harness"
+    assert "def resolve_iso" in src and "ISO_LEDGER" in src, "asked-once-and-banked is the fallback"
 
 def test_boundary_name_match_is_bidirectional():
     """BUG: the panel calls it 'US Alaska'; a one-directional substring test never matched 'Alaska'.
@@ -157,6 +162,130 @@ def test_mutating_tools_are_denied_on_the_command_line():
     for tool in ("Edit", "Write", "NotebookEdit"):
         assert tool in cmd, tool
     assert "--permission-mode" in cmd and "bypassPermissions" in cmd
+
+
+def test_convention_open_end_year_is_taken_from_the_container_column_not_the_code():
+    """The polity CODE and the end_year COLUMN disagree for some rows; the column is the authority.
+
+    Spain's national row is ESP-1800-2025 with end_year 2025, so a proposal reading the code happens
+    to be right. Where they disagree, a unit spanned from the code outlives or under-runs its own
+    container -- and end_year is EXCLUSIVE, so one year short silently drops a year of data.
+
+    The harness does NOT correct the value. Picking one would be the harness deciding a country's
+    span from a rule I made up, and the whole point of this stage is that the decision is reasoned
+    and recorded. It states the disagreement and asks again, and refuses if that does not resolve.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "def objection(" in src, "the check must be expressible as a stated objection"
+    assert "read the column" in src, "the objection must say which of the two sources is authority"
+    assert "-retry" in src and "A PREVIOUS ANSWER WAS REJECTED" in src, "it must re-ask"
+    assert "HARNESS CORRECTION" not in src, "no silently invented span"
+    assert "units decided without one" in src, "refusal must be a reachable outcome"
+
+def test_convention_is_banked_as_a_decision_and_survives_unit_refresh():
+    """--refresh re-asks the UNITS. If it also re-asked the convention, the country's span could
+    change between runs, which is the disagreement this stage exists to remove."""
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "refresh=A.refresh_convention" in src, "convention must not be refreshed by --refresh"
+    assert "refresh=A.refresh)" in src, "unit calls must still honour --refresh"
+    assert "os.replace(tmp, CONVENTION_LEDGER)" in src, "the ledger must be written atomically"
+
+
+def test_a_red_gate_that_never_names_our_code_is_not_reported_as_clean():
+    """`clean` previously meant `no failure mentions our code`, which is not the same thing.
+
+    run_gates filters to failures naming the page's code -- correctly, since this loop must not
+    rewrite a page to fix another row. But a gate red only on other rows then contributed nothing,
+    the failure list came back empty, and the loop recorded `clean`. The two facts now travel
+    separately so the reassuring reading cannot be the default one.
+    """
+    src = (HERE / "repair.py").read_text(encoding="utf-8")
+    assert "def run_gates_detail" in src
+    assert "red.append(Path(gate).name)" in src, "every non-zero gate must be recorded as red"
+    hsrc = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert '"clean" if not red else "clean_for_code"' in hsrc
+    assert "repair_gates_red" in hsrc, "the red gate names must reach the ledger"
+    # and the resume filter must not treat clean_for_code as unfinished work
+    assert '("clean", "clean_for_code", "exhausted")' in hsrc
+
+
+def test_arithmetic_repair_cannot_launder_a_content_change():
+    """ARITHMETIC mode says "touch no prose". Enforce it, because asking did not work.
+
+    A real run fixed one span and also rewrote predecessors_and_successors, decisions and
+    open_questions. Losing an open question is the worst case: nobody resolved it, and the page
+    stops saying it is open.
+    """
+    prev = {"polity_code": "X-1-2", "frontmatter": {"end_year": 2025},
+            "summary": "kept", "why_this_entry_exists": "kept", "territorial_extent": "kept",
+            "predecessors_and_successors": "the original text",
+            "sourced_claims": [{"claim": "a"}], "decisions": ["one"],
+            "open_questions": ["is the 1927 boundary right?"]}
+    new = dict(prev, frontmatter={"end_year": 2026},
+               predecessors_and_successors="rewritten",
+               decisions=["one", "two"], open_questions=[])
+    merged, moved = repair.enforce_arithmetic_narrowness(prev, new)
+    assert merged["frontmatter"] == {"end_year": 2026}, "the arithmetic fix must survive"
+    assert merged["predecessors_and_successors"] == "the original text"
+    assert merged["decisions"] == ["one"]
+    assert merged["open_questions"] == ["is the 1927 boundary right?"], "an open question cannot be dropped"
+    assert set(moved) == {"predecessors_and_successors", "decisions", "open_questions"}, moved
+
+    # ...and the enforcement must NOT apply when the finding genuinely needs a content judgement
+    F = repair.Failure
+    assert repair.is_arithmetic_only([F("g", "l", "ARITHMETIC", "op")])
+    assert not repair.is_arithmetic_only([F("g", "l", "ARITHMETIC", "op"),
+                                          F("g", "l2", "JUDGEMENT", "op")])
+    assert not repair.is_arithmetic_only([]), "an empty set is not an arithmetic-only set"
+
+
+def test_every_schema_compiles_and_survives_the_cli_strip():
+    """A schema that does not compile makes the harness refuse every unit, silently and forever.
+
+    Both halves matter: our validator is the contract, so it must compile as Draft 2020-12; and the
+    CLI-facing copy is what the model is shown, so it must still be a usable object after the
+    unsupported keywords are stripped -- a schema whose entire shape lives in an `allOf` strips to
+    nothing and stops constraining the model at all.
+    """
+    from jsonschema import Draft202012Validator
+
+    found = sorted((HERE / "schemas").glob("*.schema.json"))
+    assert len(found) >= 4, f"expected the four stage schemas, found {[f.name for f in found]}"
+    for f in found:
+        full = json.loads(f.read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(full)
+        hint = runner.cli_schema(full)
+        assert hint.get("type") == "object", f"{f.name}: strips to no type"
+        assert hint.get("properties"), f"{f.name}: strips to no properties"
+        assert not (set(hint) & set(runner.CLI_UNSUPPORTED)), f"{f.name}: kept a rejected keyword"
+        # required must survive the strip, or the model may omit the fields the stage depends on
+        assert full.get("required"), f"{f.name}: declares nothing required"
+
+
+def test_an_unclassified_arm_is_learned_from_the_gate_source_not_from_a_regex_list():
+    """UNKNOWN meant no repair was aimed at a real, reported failure.
+
+    The alternative to asking is a regex list over the gates' prose, and that list is what already
+    failed: "the container's span" versus "the container span" -- one apostrophe -- dropped a
+    fixable arithmetic failure into the do-nothing class. An arm's nature is fixed by what the gate
+    compares, so it is asked once per (gate, arm) and banked, never per failing row.
+    """
+    src = (HERE / "repair.py").read_text(encoding="utf-8")
+    assert "def classify_unknown_arms" in src
+    assert 'f"{f.gate}|{m.group(1)}"' in src, "the bank key must be (gate, arm)"
+    assert "os.replace(tmp, LEARNED_ARMS)" in src, "written atomically"
+    # a learned arm must be honoured by the plain classifier too, with no runner in hand
+    assert "learned_arms().get(" in src
+    # declining is a real outcome: an UNKNOWN answer must not be banked as a classification
+    assert 'if r["kind"] == "UNKNOWN":' in src
+    hsrc = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "_repair.classify_unknown_arms(fails, runner)" in hsrc
+
+    # and a failure with no arm letter has no stable key, so it must stay UNKNOWN rather than
+    # being re-asked on every row forever
+    F = repair.Failure
+    noarm = F("g.py", "FAIL: something with no arm letter", "UNKNOWN", "unclassified")
+    assert repair.ARM_RE.match(noarm.line) is None
 
 
 if __name__ == "__main__":
