@@ -56,3 +56,7 @@ data/external/federico_tena/
 # state directory is tracked and a stray .tmp is one `git add -A` away from being committed.
 pipelines/polity-autoimprove/state/*.tmp
 data/final/*.tmp
+
+# agent harness: per-run prompts/stdout/results are reproducible artefacts, but the decision
+# ledger (state/routing_verdicts.csv) IS committed -- it is the record of what was decided.
+pipelines/agent-harness/state/runs/
