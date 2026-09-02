@@ -26,7 +26,10 @@ python3 pipelines/agent-harness/test_harness.py
 
 `--cycles N` escalates rather than repeats: a unit returning `insufficient_evidence` is re-asked
 with a wider candidate net and its siblings' verdicts. `--refresh` re-asks a decided unit, bypassing
-both the queue filter and the runner's cache. `--only` targets units without paying to reach them
+both the queue filter and the runner's cache — **on the first cycle only**. `--refresh --cycles 2`
+once re-asked all 53 Spanish units twice, re-opening settled high-confidence verdicts under a net
+that exists for units nothing could decide. `--refresh-convention` re-decides the country's
+convention, which `--refresh` deliberately leaves alone. `--only` targets units without paying to reach them
 alphabetically.
 
 ## Design
@@ -35,11 +38,46 @@ alphabetically.
 |---|---|
 | `runner.py` | owns the subprocess; one schema-valid result per job, cached and retried |
 | `harness.py` | assembles deterministic evidence, runs the cycles, records verdicts |
+| `repair.py` | classifies gate failures and aims the narrowest repair at each |
+| `schemas/country_convention.schema.json` | stage 0: the country's span, container chain and naming |
 | `schemas/routing_verdict.schema.json` | stage 1: match / create / not-a-territory / insufficient |
 | `schemas/polygon_route.schema.json` | stage 2: where a proposed boundary comes from |
+| `schemas/wiki_page.schema.json` | stage 3: the page, to this repo's page requirements |
+| `schemas/failure_class.schema.json` | stage 4: what an unrecognised gate arm actually checks |
+| `schemas/iso_resolution.schema.json` | a country label the repo's crosswalks do not answer |
 | `policy.json` | model, effort, timeout, budget — tunable without touching code |
 | `state/routing_verdicts.csv` | the decision ledger (committed) |
+| `state/country_conventions.json` | one span/container convention per country (committed) |
+| `state/country_iso.json` | labels resolved by asking, so they are asked once (committed) |
+| `state/gate_arm_kinds.json` | gate arms learned from their source (committed) |
 | `state/runs/` | per-run prompts, stdout and results (gitignored) |
+
+**A country's convention is decided once, before any of its units.** Spain's 44 `create_new`
+verdicts once proposed **five** different end years — 2025 ×17, 2026 ×18, 2100 ×3, 2022 ×1, and one
+starting 1927 — for provinces sharing one administrative history, because each unit was decided with
+no view of what its siblings chose. Nothing in a per-unit prompt can fix that. Stage 0 establishes
+`system_start_year`, one `open_end_year`, the container chain and the naming pattern, and every
+unit's evidence then carries them as a constraint. It is banked as a **decision**, not cached:
+`--refresh` re-asks the units and leaves the convention alone, because a convention that can change
+between runs is the disagreement all over again. `--refresh-convention` re-decides it.
+
+**The start is per-unit; only the end is country-wide.** Stage 0's first version asked for one
+`system_start_year` and Spain hid the flaw, because all 50 provinces were created at once by the 1833
+reform. The USA is the counterexample: the answer came back **1959**, the year the 50th state joined,
+with `system_start_basis` omitted entirely — the field had a `minLength` but was not `required`, so
+the constraint never applied. Injected as a constraint, that would have spanned California from 1959.
+
+`system_start_year` is now documented as a **floor**, `unit_start_rule` says how an individual unit's
+own start is found, and both bases are required. Re-decided, the USA returns floor **1787** with
+*"the year it was admitted to the Union (e.g. Delaware 1787, California 1850, Alaska and Hawaii
+1959)"* — and California comes out **1850-2025**, container `USA-1848-1867`. A banked convention is
+re-validated against the schema on load, so tightening the contract reaches decisions already made
+rather than only countries not yet decided.
+
+Stage 0 is checked against the polity table but **never corrected**. A container code that is not in
+the table, or an `open_end_year` that is not any container's own `end_year` *column* (the code string
+and the column disagree for some rows — read the column), is handed back as a stated objection and
+asked again, then refused. Choosing the value here would be the harness inventing a country's span.
 
 **Deterministic and judgement are kept apart.** The harness supplies coverage, candidate polities by
 iso3 and by normalised name, boundary availability, and identifier markers. The agent decides whether
@@ -73,6 +111,37 @@ rather than discouraged in the prompt. Applying a verdict is the harness's job, 
 audit→reconcile→fix loop) are **not yet ported**, so they stay. Deleting them now would remove
 working source-onboarding before this harness covers it.
 
+`pipelines/subnational-vocabulary/10_generate_pages.py` is **superseded by this harness** and kept
+only as the record of how Japan's 46 prefectures were generated. It carries a hand-written
+`COUNTRIES` dict — a human decided Japan needed prefectures and then configured a generator for it,
+which is the thing this harness exists not to do. Do not add a country to that dict; run stage 0 and
+stage 1 here instead.
+
+## Where the harness decides, and where it asks
+
+A deterministic step is worth having only where it is *certainly* right. Where it encodes a guess it
+is worse than asking, because it looks like a rule and has to be extended by hand for every new
+dataset. Three tables were removed on exactly that ground:
+
+| was | now |
+|---|---|
+| `{"unitedstatesofamerica": "USA", "russia": "RUS", ...}` | `faostat_area_polity_map.csv` + `label_alias_map.csv`, which this repo already builds and which answer **24 of the panel's 26** countries; the rest are asked once and banked |
+| a regex list over the gates' failure prose | the gate's own **source**, read once per `(gate, arm)` and banked |
+| `open_end_year` overridden to `max(container ends)` | the disagreement stated back and re-asked |
+
+The regex list is the clearest case: it is what already failed. One apostrophe between *the
+container's span* and *the container span* dropped a fixable arithmetic failure into the do-nothing
+class, and the fix is not a better regex.
+
+Two deterministic checks are kept, because neither is a guess:
+
+- **a container code either exists in the table or it does not** — refusing an absent one invents
+  nothing;
+- **arithmetic-mode repairs restore prose from the previous version** — that is a scope constraint,
+  and the alternative is asking an agent not to do what it has already done. A real run fixed one
+  span and also rewrote `predecessors_and_successors`, `decisions` and `open_questions`, dropping an
+  open question nobody had resolved.
+
 ## Hardening, and why each defence is there
 
 Every one of these exists because the obvious implementation fails:
@@ -105,6 +174,20 @@ in its `concerns`, not because a check failed:
    `Alaska`. Stage 2 had the reverse test and found `USA.2_1` while stage 1 reported no boundary.
 4. **`--refresh` was inert** — the queue filter excluded decided units, so the flag never reached the
    cache it existed to bust, and the printed verdict was the stale one.
+5. **The ledger was replaced instead of merged**, so `--refresh` on stage 1 destroyed the
+   `polygon_*` and `page_*` fields stage 2 had written; stage 3 then skipped that unit and authored a
+   page for a different one. A request for Alaska produced a page for California.
+6. **Later stages ignored `--only`**, acting on units nobody had asked for.
+7. **A chain edge was asserted without its counterpart.** The Alaska page declared
+   `predecessor: [ALK-1867-1959]`; that row declares `successor: [USA-1959-2025]` — the whole
+   country, not the state. `validate_chain_integrity` baselines asymmetry in **both** directions, so
+   one such edge (84 predecessor-only against a baseline of 83) fails CI. Detected here as a fact
+   and handed back with the counterpart's real fields: reciprocating automatically would give the
+   territory two successors and silently pick a reading of history.
+8. **`clean` meant "no failure named our code"** — not the same claim. A gate red only on other rows
+   contributed nothing to the filtered list, and the empty list read as success. The red gates now
+   travel separately from the attributable failures, and the status distinguishes `clean` from
+   `clean_for_code`.
 
 ## A constraint worth knowing
 

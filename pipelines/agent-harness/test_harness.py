@@ -288,6 +288,107 @@ def test_an_unclassified_arm_is_learned_from_the_gate_source_not_from_a_regex_li
     assert repair.ARM_RE.match(noarm.line) is None
 
 
+def test_a_later_cycle_escalates_what_is_undecided_and_never_repeats_what_is_settled():
+    """`--refresh --cycles 2` re-asked all 53 Spanish units a second time.
+
+    Two costs, and the second is the real one: 53 extra calls, and every settled high-confidence
+    verdict re-opened under the WIDE candidate net, which exists to help a unit that could not be
+    decided at all. --refresh means "re-ask what I decided before" -- that is cycle 1's job. A later
+    cycle is an escalation for what is still undecided.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "if A.refresh and cycle == 1:" in src, "refresh must apply to the first cycle only"
+    assert "wide = cycle > 1" in src, "the wide net must remain tied to escalation"
+
+    # the filter itself: only an absent, blank or insufficient_evidence verdict is undecided
+    ledger = {"a": {"verdict": "create_new"}, "b": {"verdict": "insufficient_evidence"},
+              "c": {"verdict": ""}, "d": {"verdict": "match_existing"},
+              "e": {"verdict": "not_a_territory"}}
+    undecided = [k for k, v in ledger.items()
+                 if v.get("verdict") in (None, "", "insufficient_evidence")]
+    assert sorted(undecided) == ["b", "c"], undecided
+    assert "d" not in undecided and "e" not in undecided, "a decided verdict is not re-opened"
+
+
+def test_the_code_convention_is_precedent_not_an_asserted_rule():
+    """The prompt asserted that a polity_code must begin with the country's iso3. The table refutes
+    it: ALK-1867-1959 (Territory of Alaska) and AUWA-1829-1900 (Western Australia) do not, and 62
+    rows in all. A hard check on that rule would have rejected them.
+
+    So the shapes are counted from the table at run time and shown as precedent. Counting rather
+    than pinning matters for the same reason the assertion was wrong -- a pinned number goes stale
+    silently, and this prompt has already carried one claim the data contradicts.
+    """
+    pols = [
+        {"polity_code": "DZA-CVD-1902-1919", "iso3_code": "DZA", "polity_type": "subnational",
+         "polity_name": "x", "start_year": "1902", "end_year": "1919"},
+        {"polity_code": "JPN-AICHI-1871-2025", "iso3_code": "JPN", "polity_type": "subnational",
+         "polity_name": "y", "start_year": "1871", "end_year": "2025"},
+        {"polity_code": "ALK-1867-1959", "iso3_code": "USA", "polity_type": "subnational",
+         "polity_name": "Territory of Alaska", "start_year": "1867", "end_year": "1959"},
+        {"polity_code": "BDI-1922-1962", "iso3_code": "BDI", "polity_type": "subnational",
+         "polity_name": "z", "start_year": "1922", "end_year": "1962"},
+        {"polity_code": "ESP-1800-2025", "iso3_code": "ESP", "polity_type": "national",
+         "polity_name": "Spain", "start_year": "1800", "end_year": "2025"},
+    ]
+    out = harness.code_precedent(pols, "JPN")
+    assert "Of 4 subnational rows" in out, out          # the national row is not precedent here
+    assert "<ISO3>-<SUBUNIT>-<start>-<end>" in out and "<BESPOKE>-<start>-<end>" in out
+    assert "ALK-1867-1959" in out, "the counter-example must be shown, not hidden"
+    assert "JPN-AICHI-1871-2025" in out
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "`CALI-1850-2026` is wrong" not in src, "the refuted assertion must be gone"
+
+
+def test_a_taken_polity_code_is_re_asked_not_skipped():
+    """`if dest.exists(): SKIP` silently dropped the polity the run was asked to create.
+
+    Whether a code is taken is a fact, so it is checked here rather than asked -- but the page it
+    collides with describes a DIFFERENT territory, so the answer is to state the clash and ask for a
+    free code, not to print a line that reads like an ordinary no-op.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "A CODE COLLISION MUST NOT BE A SKIP" in src
+    assert "is already in the table, held by" in src, "the clash must name the holder"
+    assert "Choose a code that is free. Change nothing else." in src, "narrow repair"
+    assert "could not find a free polity_code — not written" in src, "failing is better than clobbering"
+    # the surviving skip must be about THIS unit's own page, not any page at that path
+    assert 'if dest.exists() and v.get("page_written") and not A.refresh:' in src
+
+
+def test_an_unreciprocated_chain_edge_is_handed_back_not_written():
+    """One asymmetric edge added by this harness fails CI, because the gate baselines BOTH
+    directions: 84 predecessor-only edges against a baseline of 83 is a failure.
+
+    The Alaska smoke is the live case. The new ALK-1959-2025 page declared
+    `predecessor: [ALK-1867-1959]`; ALK-1867-1959 declares `successor: [USA-1959-2025]` -- the whole
+    country, not the state. Detecting that is a fact. Choosing between "the state is the successor"
+    and "the country is" is a claim about history, so the objection is handed back with the
+    counterpart's real fields rather than reciprocated automatically.
+    """
+    edges = {"ALK-1867-1959": (set(), {"USA-1959-2025"}),
+             "USA-1959-2025": (set(), set())}
+    page = {"polity_code": "ALK-1959-2025",
+            "frontmatter": {"predecessor": ["ALK-1867-1959"], "successor": []}}
+    obj = harness.unreciprocated(page, edges)
+    assert obj, "the live failing case must be caught"
+    assert "USA-1959-2025" in obj, "the counterpart's ACTUAL field must be shown"
+    assert "do not leave the asymmetry unremarked" in obj
+    assert "You cannot edit the other page" in obj
+
+    # reciprocated: silent
+    ok = {"polity_code": "B", "frontmatter": {"predecessor": ["A"], "successor": []}}
+    assert harness.unreciprocated(ok, {"A": (set(), {"B"})}) is None
+
+    # a code that is not in the table is a DIFFERENT arm (dead target) and must not be reported here
+    ghost = {"polity_code": "B", "frontmatter": {"predecessor": ["NOPE-1-2"], "successor": []}}
+    assert harness.unreciprocated(ghost, {"A": (set(), set())}) is None
+
+    # the successor direction too, not only predecessor
+    fwd = {"polity_code": "A", "frontmatter": {"predecessor": [], "successor": ["B"]}}
+    assert harness.unreciprocated(fwd, {"B": ({"C"}, set())})
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

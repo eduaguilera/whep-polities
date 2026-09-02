@@ -41,6 +41,8 @@ import re
 import subprocess
 import sys
 import unicodedata
+
+from jsonschema import Draft202012Validator
 from pathlib import Path
 from typing import Any
 
@@ -163,8 +165,9 @@ def build_evidence(unit: dict[str, Any], pols: list[dict[str, str]], iso: str,
         # A CONSTRAINT, not a suggestion: this is what stops 44 units inventing 44 spans.
         a("COUNTRY CONVENTION — already decided for this country; apply it, do not re-derive it")
         a(f"  system              {convention['system_name']}")
-        a(f"  system_start_year   {convention['system_start_year']}"
-          f"   ({convention.get('system_start_basis','')[:90]})")
+        a(f"  earliest possible   {convention['system_start_year']} — a FLOOR for the system, NOT "
+          f"this unit's start ({convention.get('system_start_basis','')[:80]})")
+        a(f"  this unit's start   {convention.get('unit_start_rule','')[:140]}")
         a(f"  open end_year       {convention['open_end_year']} (EXCLUSIVE) for any still-current "
           f"unit — use exactly this, not a round number and not the data's last year")
         a(f"  container chain     " + ", ".join(
@@ -398,11 +401,15 @@ produced three different end_years for provinces sharing one administrative hist
 failure this stage removes.
 
 What matters:
-- `system_start_year` is when the administrative system these units belong to came into being -- a
-  documented reform or reorganisation, not the first year this extract happens to cover.
-- `open_end_year` is EXCLUSIVE and must be ONE value for every still-current unit. Prefer the
-  containing national row's own end_year: a unit cannot outlive its container, and a round number
-  like 2100 asserts a span nobody has evidence for.
+- `system_start_year` is a FLOOR, not a value every unit copies. It is the earliest year any unit of
+  this system can begin -- a documented reform or founding, not the first year this extract happens
+  to cover. Spain's 50 provinces were all created at once in 1833, so there the floor is also every
+  unit's start. US states were admitted between 1787 and 1959, so a single number would span
+  California from the wrong year. Give the floor AND `unit_start_rule`: how an individual unit's own
+  start is found within the system.
+- `open_end_year` is EXCLUSIVE and must be ONE value for every still-current unit. Unlike the start,
+  this genuinely is country-wide, because a unit cannot outlive its container. Prefer the containing
+  national row's own end_year COLUMN; a round number like 2100 asserts a span nobody has evidence for.
 - `container_chain` is the national rows a unit of this country sits inside, in order. Each unit's
   containment edges are cut from this chain, so it must be complete and non-overlapping.
 
@@ -466,10 +473,21 @@ def country_convention(A, runner, pols, iso, units) -> dict[str, Any] | None:
     banked = load_conventions()
     if A.country in banked and not A.refresh_convention:
         c = banked[A.country]
-        print(f"  convention: {c['system_name'][:56]}   (banked; --refresh-convention to re-decide)")
-        print(f"    system start {c['system_start_year']}   open end_year {c['open_end_year']} "
-              f"({c['confidence']})")
-        return c
+        # A banked decision is still held to the CURRENT contract. Tightening the schema is how the
+        # US answer's missing system_start_basis was caught -- an unjustified 1959 floor that would
+        # have spanned every state from the year the 50th joined. Without this, the old answer would
+        # be reused forever and the tightening would reach only countries not yet decided.
+        errs = list(Draft202012Validator(
+            json.loads(CONVENTION_SCHEMA.read_text(encoding="utf-8"))).iter_errors(c))
+        if errs:
+            print(f"  banked convention for {A.country} no longer satisfies the schema "
+                  f"({errs[0].message[:70]}) — re-deciding")
+        else:
+            print(f"  convention: {c['system_name'][:56]}   (banked; --refresh-convention to "
+                  f"re-decide)")
+            print(f"    floor {c['system_start_year']}   open end_year {c['open_end_year']} "
+                  f"({c['confidence']})")
+            return c
     ev = convention_evidence(A.country, iso, pols, units)
     res = runner.call(f"convention-{norm(A.country)}", CONVENTION_PROMPT.format(evidence=ev),
                       CONVENTION_SCHEMA, refresh=A.refresh_convention)
@@ -724,11 +742,16 @@ WIKI_PROMPT = """Author the wiki page for a polity this pipeline has decided to 
 object satisfying the schema; you cannot write files, so the harness renders and writes what you
 return.
 
-THE POLITY CODE FOLLOWS THIS REPOSITORY'S CONVENTION, which the schema cannot express: it is
-`<ISO3>-<SUBUNIT>-<start>-<end>` for a named part of a country (DZA-CVD-1902-1919,
-IDN-BLB-1949-1951, JPN-AICHI-1871-2025), or `<ISO3>-<start>-<end>` where the row IS the whole
-territory. Do NOT invent a new iso-like prefix from the unit's name -- `CALI-1850-2026` is wrong,
-`USA-CALIFORNIA-1850-2026` is right. `end_year` is EXCLUSIVE.
+THE POLITY CODE IS YOURS TO CHOOSE, against the precedent below. It is not a rule this harness can
+check: an earlier version of this prompt asserted that a code must begin with the country's iso3,
+and the table refutes it -- ALK-1867-1959 (Territory of Alaska) and AUWA-1829-1900 (Western
+Australia) do not. What IS true is measured from the table and stated here:
+
+{code_precedent}
+
+Follow the dominant pattern unless the unit is a historical territory with a name of its own, which
+is what the bespoke codes are; if you depart from it, say why in `decisions`. `end_year` is
+EXCLUSIVE, and the years in the code must equal the years in the frontmatter -- a gate checks that.
 
 THE CONTAINER EDGES MUST TILE THE WHOLE SPAN. One edge per era of the containing chain, together
 covering start_year to end_year with no gap: a 1850-2026 span containered only by USA-1959-2025
@@ -769,7 +792,88 @@ THE DECISION THIS PAGE IMPLEMENTS
 """
 
 
-def run_wiki_stage(A, runner, ledger) -> None:
+def code_precedent(pols: list[dict[str, str]], iso: str) -> str:
+    """The code shapes actually in the table, counted now rather than pinned in the prompt.
+
+    Pinned counts go stale silently and this prompt already carried one claim the table refutes.
+    """
+    sub = [p for p in pols if p["polity_type"] == "subnational"]
+    kinds: dict[str, list[str]] = {}
+    for p in sub:
+        c, i3 = p["polity_code"], p["iso3_code"]
+        parts = len(c.split("-"))
+        if c.startswith(i3 + "-") and parts == 4:
+            k = "<ISO3>-<SUBUNIT>-<start>-<end>"
+        elif c.startswith(i3 + "-"):
+            k = "<ISO3>-<start>-<end>"
+        elif parts == 4:
+            k = "<BESPOKE>-<SUBUNIT>-<start>-<end>"
+        else:
+            k = "<BESPOKE>-<start>-<end>"
+        kinds.setdefault(k, []).append(c)
+    lines = [f"  Of {len(sub)} subnational rows in the table:"]
+    for k, cs in sorted(kinds.items(), key=lambda kv: -len(kv[1])):
+        eg = ", ".join(sorted(cs)[:3])
+        lines.append(f"    {len(cs):3}  {k:34} e.g. {eg}")
+    mine = sorted(p["polity_code"] for p in sub if p["iso3_code"] == iso)
+    lines.append(f"  Existing subnational codes for {iso} ({len(mine)}): "
+                 + (", ".join(mine[:10]) + (" ..." if len(mine) > 10 else "") if mine
+                    else "none -- this country sets its own precedent"))
+    return "\n".join(lines)
+
+
+def chain_edges(pols: list[dict[str, str]]) -> dict[str, tuple[set[str], set[str]]]:
+    """code -> (its declared predecessors, its declared successors), from the built table."""
+    def split(s: str) -> set[str]:
+        return {x.strip() for x in (s or "").replace("[", "").replace("]", "").split(",")
+                if x.strip() and x.strip() != "NA"}
+    return {p["polity_code"]: (split(p.get("predecessor", "")), split(p.get("successor", "")))
+            for p in pols}
+
+
+def unreciprocated(page: dict[str, Any], edges: dict[str, tuple[set[str], set[str]]]) -> str | None:
+    """State any chain edge this page asserts that its counterpart does not answer.
+
+    A FACT, so it is checked rather than asked -- but the REMEDY is a judgement and is left to the
+    agent. Alaska is the case that showed why: the new ALK-1959-2025 page declared
+    `predecessor: [ALK-1867-1959]`, and ALK-1867-1959 declares `successor: [USA-1959-2025]` -- the
+    whole country, not the state. Reciprocating automatically would give the territory two
+    successors and quietly decide which reading is right. Refusing the edge outright would throw
+    away a claim that is probably correct. Both are decisions about history, so the objection is
+    handed back with the counterpart's actual fields shown.
+
+    It matters because validate_chain_integrity baselines asymmetry BIDIRECTIONALLY: 84
+    predecessor-only edges where the baseline is 83 fails CI, so one unreciprocated edge added by
+    this harness turns the whole run red.
+    """
+    fm = page.get("frontmatter") or {}
+    def listed(key: str) -> list[str]:
+        v = fm.get(key) or page.get(key) or []
+        return [v] if isinstance(v, str) and v else list(v)
+
+    problems = []
+    for code in listed("predecessor"):
+        if code not in edges:
+            continue                       # a dead target is a different arm, and gated separately
+        if page["polity_code"] not in edges[code][1]:
+            problems.append(f"This page declares `predecessor: [{code}]`, but {code} declares "
+                            f"`successor: {sorted(edges[code][1]) or '[]'}` — not this row.")
+    for code in listed("successor"):
+        if code not in edges:
+            continue
+        if page["polity_code"] not in edges[code][0]:
+            problems.append(f"This page declares `successor: [{code}]`, but {code} declares "
+                            f"`predecessor: {sorted(edges[code][0]) or '[]'}` — not this row.")
+    if not problems:
+        return None
+    return ("\n".join(problems) + "\n\nvalidate_chain_integrity counts one-directional edges "
+            "against a baseline in BOTH directions, so an edge only this page asserts fails the "
+            "gate. You cannot edit the other page. So either drop the claim, or keep it and record "
+            "an open question that names the other page and the exact edit it needs — but do not "
+            "leave the asymmetry unremarked.")
+
+
+def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
     import json as _json
     scope = set(A.only) if A.only else None
     todo = [v for v in ledger.values()
@@ -781,6 +885,9 @@ def run_wiki_stage(A, runner, ledger) -> None:
               "(needs a create_new verdict that has been through the polygon stage)")
         return
     spec = page_spec_text()
+    precedent = code_precedent(pols, iso)
+    taken = {p["polity_code"] for p in pols}
+    edges = chain_edges(pols)
     exemplar = EXEMPLAR.read_text(encoding="utf-8")[:6000] if EXEMPLAR.is_file() else "(none)"
     print(f"\nstage 3 (wiki): authoring {len(todo)} page(s)")
     for v in todo:
@@ -794,17 +901,56 @@ def run_wiki_stage(A, runner, ledger) -> None:
             "polygon_reasoning": v.get("polygon_reasoning", ""),
         }, indent=2)
         job = f"wiki-{norm(v['unit_id'])}"
-        res = runner.call(job, WIKI_PROMPT.format(spec=spec, exemplar=exemplar,
-                                                  decision=decision), WIKI_SCHEMA,
-                          refresh=A.refresh)
+        prompt = WIKI_PROMPT.format(spec=spec, exemplar=exemplar, decision=decision,
+                                    code_precedent=precedent)
+        res = runner.call(job, prompt, WIKI_SCHEMA, refresh=A.refresh)
         if not res.ok:
             print(f"  FAIL  {v['unit_id']:24} {res.error}")
             continue
         page = res.result
+
+        # A CODE COLLISION MUST NOT BE A SKIP. Whether a code is taken is a fact, not a judgement,
+        # so it is checked here -- but the page it collides with belongs to another territory, and
+        # silently skipping drops the polity this run was asked to create while printing a line that
+        # looks like an ordinary no-op. Stated back, and asked again.
+        for retry in range(2):
+            code = page["polity_code"]
+            mine = v.get("page_polity_code") == code
+            clash = None
+            if code in taken and not mine:
+                other = next(p for p in pols if p["polity_code"] == code)
+                clash = (f"polity_code {code} is already in the table, held by "
+                         f"{other['polity_name']!r} ({other['start_year']}-{other['end_year']}). "
+                         f"That is a different territory from {v['admin_name']!r}.")
+            else:
+                claimed = [k for k, r in ledger.items()
+                           if r.get("page_polity_code") == code and k != v["unit_id"]]
+                if claimed:
+                    clash = (f"polity_code {code} was already assigned in this run to "
+                             f"{claimed[0]}, a different unit.")
+            if not clash:
+                clash = unreciprocated(page, edges)
+            if not clash:
+                break
+            print(f"  REJECT {v['unit_id']:23} {clash.splitlines()[0][:88]}")
+            res = runner.call(f"{job}-clash{retry + 1}",
+                              prompt + f"\n\nA PREVIOUS ANSWER WAS REJECTED\n{'-' * 30}\n{clash}\n"
+                                       f"Choose a code that is free. Change nothing else.",
+                              WIKI_SCHEMA, refresh=True)
+            if not res.ok:
+                print(f"  FAIL  {v['unit_id']:24} clash retry: {res.error}")
+                page = None
+                break
+            page = res.result
+        if page is None:
+            continue
         code = page["polity_code"]
+        if code in taken and v.get("page_polity_code") != code:
+            print(f"  FAIL  {v['unit_id']:24} could not find a free polity_code — not written")
+            continue
         dest = REPO / "wiki" / "polities" / f"{code.lower()}.md"
-        if dest.exists() and not A.refresh:
-            print(f"  SKIP  {code} — page already exists; --refresh to overwrite")
+        if dest.exists() and v.get("page_written") and not A.refresh:
+            print(f"  SKIP  {code} — this unit's page already exists; --refresh to overwrite")
             continue
         dest.write_text(render_page(page), encoding="utf-8")
         v["page_written"] = str(dest.relative_to(REPO))
@@ -980,9 +1126,19 @@ def main() -> int:
         # fingerprint cache. Without this the flag was inert: an already-decided unit never entered
         # the batch, so the cache it was meant to bust was never consulted and the printed verdict
         # was the stale one.
-        undecided = units if A.refresh else [
-            u for u in units
-            if ledger.get(u["unit_id"], {}).get("verdict") in (None, "", "insufficient_evidence")]
+        #
+        # But ONLY on the first cycle. `--refresh --cycles 2` re-asked all 53 Spanish units twice:
+        # the second pass paid for 53 more calls to re-decide units that had already returned a
+        # high-confidence verdict, and did it with the WIDE candidate net, which exists to help a
+        # unit that could not be decided at all. A later cycle is an escalation for what is still
+        # undecided, never a repeat of what is settled -- so the filter applies from cycle 2 on
+        # whatever the flag says.
+        if A.refresh and cycle == 1:
+            undecided = units
+        else:
+            undecided = [u for u in units
+                         if ledger.get(u["unit_id"], {}).get("verdict")
+                         in (None, "", "insufficient_evidence")]
         if not undecided:
             print(f"cycle {cycle}: nothing undecided")
             break
@@ -1055,7 +1211,7 @@ def main() -> int:
     if A.polygon_stage:
         run_polygon_stage(A, runner, pols, iso, feats, ledger)
     if A.wiki_stage:
-        run_wiki_stage(A, runner, ledger)
+        run_wiki_stage(A, runner, ledger, pols, iso)
     if A.repair_stage:
         run_repair_stage(A, runner, ledger)
 
