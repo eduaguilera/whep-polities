@@ -1,4 +1,29 @@
 {
+  "Spain": {
+    "concerns": [],
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "ESP-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Spain",
+    "evidence_used": [
+      "National row ESP-1800-2025 (Spain, 1800-2025)",
+      "Existing subnational rows ESP-CO-1833-2025 and ESP-MD-1833-2025, both 1833-2025",
+      "NUTS admin_level panel with data coverage 1865-2021 (not used as span basis)"
+    ],
+    "naming_pattern": "&lt;Name&gt; (province of Spain)",
+    "open_end_basis": "The containing national row ESP-1800-2025 ends in 2025 (exclusive); a province cannot outlive its container, so all still-current provinces inherit this same exclusive end year rather than an arbitrary round number.",
+    "open_end_year": 2025,
+    "reasoning": "Spain's 50 provinces were all created simultaneously by the 1833 territorial reform (Real Decreto of 30 November 1833, under Javier de Burgos), which replaced the prior kingdom/region divisions with the modern provincial map still in use today. Because this reform created every province at once, the system floor (1833) is also the start year for every unit \u2014 there is no per-unit variation like the US states case. Both existing precedent rows (A Coru\u00f1a, Madrid) already use 1833-2025, confirming this convention. The end year is cut from the containing national row ESP-1800-2025, which itself ends in 2025 (exclusive), not from the NUTS panel's data coverage (1865-2021), which is just an observation window and not evidence of the province's institutional lifespan.",
+    "system_name": "1833 Spanish provincial division (Javier de Burgos reform)",
+    "system_start_basis": "The Real Decreto of 30 November 1833 reorganized Spain into 49 (later 50, with the 1927 split of the Canary Islands) provinces, replacing the old kingdoms/regions; this single reform created all provinces simultaneously, fixing 1833 as the floor.",
+    "system_start_year": 1833,
+    "unit_start_rule": "All units begin at the floor (1833) because the 1833 reform created every province simultaneously; no per-unit variation is needed (unlike systems such as US statehood where units join at different times)."
+  },
   "United States of America": {
     "concerns": [
       "California became a state in 1850, before the container row USA-1848-1867 that would enclose it; unit_start_rule year (1850) must be checked against whichever container row covers that date when cutting edges",

@@ -226,6 +226,8 @@ ERI-1993-2025,Eritrea,1993,2025,national,ERI,531,Africa,draft,2026-04-13,cshapes
 ESH-1958-1975,Western Sahara (1958-1975),1958,1975,national,ESH,,Africa,draft,2026-04-13,gadm-4.1-adm0,ESH,,proxy,,SWA-1912-1958,ESH-1975-2025,
 ESH-1975-2025,Western Sahara,1975,2025,national,ESH,,Africa,draft,2026-04-13,gadm-4.1-adm0,ESH,,assigned,,ESH-1958-1975,,
 ESP-1800-2025,Spain,1800,2025,national,ESP,230,Europe,draft,2026-04-12,cshapes-2.0,230,1886,assigned,,,,
+ESP-CO-1833-2025,A Coruña (province of Spain),1833,2025,subnational,ESP,,Europe,draft,2026-09-02,mapspain-ign,,,unassigned,,,,
+ESP-MD-1833-2025,Madrid (province/region of Spain),1833,2025,subnational,ESP,,Europe,draft,2026-09-02,mapspain-ign,,,unassigned,,,,
 EST-1800-1918,Estonia (Governorate),1800,1918,national,EST,366,Europe,draft,2026-04-16,cshapes-2.0,366,1918,assigned,,,EST-1918-1940,
 EST-1918-1940,Estonia (interwar republic),1918,1940,national,EST,366,Europe,draft,2026-04-17,cshapes-2.0,366,1918,assigned,49295,EST-1800-1918,EST-1940-1991,
 EST-1940-1991,Estonian SSR,1940,1991,national,EST,366,Europe,draft,2026-04-16,cshapes-2.0,366,1918,assigned,,EST-1918-1940,EST-1991-2025,

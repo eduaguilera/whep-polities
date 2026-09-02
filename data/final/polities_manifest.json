@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "c1762977aa59a44a127d33e991ca9d67481f7b65b2683131011386ae6d903da6",
+ "identity_sha256": "65f6cb59d9fbb60a968c51b887d70a5b0809d57f01f06954bc682bf221c2adfb",
  "counts": {
-  "total": 829,
-  "live": 785,
+  "total": 831,
+  "live": 787,
   "dead": 44
  },
  "dead_status": [
@@ -1019,6 +1019,8 @@
   "ESH-1958-1975",
   "ESH-1975-2025",
   "ESP-1800-2025",
+  "ESP-CO-1833-2025",
+  "ESP-MD-1833-2025",
   "EST-1800-1918",
   "EST-1918-1940",
   "EST-1940-1991",

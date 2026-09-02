@@ -226,6 +226,8 @@ ERI-1993-2025,Eritrea,1993,2025,cshapes-2.0,1993.0,assigned,False,assumed_consta
 ESH-1958-1975,Western Sahara (1958-1975),1958,1975,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ESH-1975-2025,Western Sahara,1975,2025,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ESP-1800-2025,Spain,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,13360
+ESP-CO-1833-2025,A Coruña (province of Spain),1833,2025,mapspain-ign,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+ESP-MD-1833-2025,Madrid (province/region of Spain),1833,2025,mapspain-ign,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 EST-1800-1918,Estonia (Governorate),1800,1918,cshapes-2.0,1918.0,assigned,True,assumed_constant,True,False,single 1918 polygon held across a 118y span (1800-1918); borders may have changed,16
 EST-1918-1940,Estonia (interwar republic),1918,1940,cshapes-2.0,1918.0,assigned,True,measured,False,False,vintage 1918 faithful to period 1918-1940,506
 EST-1940-1991,Estonian SSR,1940,1991,cshapes-2.0,1918.0,assigned,True,back_projected,True,False,polygon vintage 1918 is BEFORE the period starts (1940),16
