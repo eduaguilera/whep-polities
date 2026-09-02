@@ -644,6 +644,7 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
     if not todo:
         print("\nstage 2 (polygon): nothing to route")
         return
+    slugs = polygon_slugs()
     print(f"\nstage 2 (polygon): {len(todo)} proposed polit(ies)")
     for v in todo:
         proposed = _json.loads(v["proposed_json"]) if v.get("proposed_json") else {}
@@ -656,6 +657,42 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
             print(f"  FAIL  {v['unit_id']:24} {res.error}")
             continue
         r = res.result
+
+        # `new_source_needed` NAMING AN ALREADY-REGISTERED SLUG is a contradiction, and it
+        # propagated: A Coruña was routed new_source_needed while its own detail said mapspain-ign
+        # was "already registered in scripts/sources.yaml" -- which it is, id_column cpro -- and
+        # stage 3 then wrote the route name into the page's polygon_source field. Whether a slug is
+        # registered is a fact; which route is right is a judgement, so this is handed back.
+        for retry in range(2):
+            obj = None
+            cand = ((r.get("candidate_new_source") or {}).get("name") or "").strip()
+            if r["route"] == "new_source_needed" and cand in slugs:
+                obj = (f"The route is `new_source_needed`, but {cand!r} is ALREADY registered in "
+                       f"scripts/sources.yaml. A registered source needs no new registration: if "
+                       f"its feature is identifiable, the route is `registered_source_feature` with "
+                       f"source_slug {cand!r}; if the file is not present locally or its licence is "
+                       f"unchecked, that is a reason to leave the geometry unattached and say so, "
+                       f"not a reason to call the source new.")
+            elif r["route"] == "registered_source_feature" and r.get("source_slug") not in slugs:
+                obj = (f"The route is `registered_source_feature` but source_slug "
+                       f"{r.get('source_slug')!r} is not registered. Registered slugs are: "
+                       f"{', '.join(sorted(slugs))}.")
+            if not obj:
+                break
+            print(f"  REJECT {v['unit_id']:23} {obj[:88]}")
+            res = runner.call(f"{job}-obj{retry + 1}",
+                              POLYGON_PROMPT.format(evidence=ev)
+                              + f"\n\nA PREVIOUS ANSWER WAS REJECTED\n{'-' * 30}\n{obj}\n"
+                                f"Fix only what the objection names.",
+                              POLYGON_SCHEMA, refresh=True)
+            if not res.ok:
+                print(f"  FAIL  {v['unit_id']:24} objection retry: {res.error}")
+                r = None
+                break
+            r = res.result
+        if r is None:
+            continue
+
         v["polygon_route"] = r["route"]
         v["polygon_source_slug"] = r.get("source_slug") or ""
         v["polygon_feature_id"] = r.get("feature_id") or ""
@@ -822,6 +859,37 @@ def code_precedent(pols: list[dict[str, str]], iso: str) -> str:
     return "\n".join(lines)
 
 
+def polygon_slugs() -> set[str]:
+    """The polygon source slugs registered in scripts/sources.yaml, read rather than listed here."""
+    import yaml as _yaml
+    with (REPO / "scripts" / "sources.yaml").open(encoding="utf-8") as fh:
+        return set((_yaml.safe_load(fh) or {}).get("sources", {}).keys())
+
+
+def bad_polygon_source(page: dict[str, Any], slugs: set[str]) -> str | None:
+    """`polygon_source` must name a registered slug or be exactly `none`.
+
+    A ROUTE NAME IS NOT A SOURCE. A Coruña's page came back with
+    `polygon_source: new_source_needed` -- stage 2's route enum written into the field that names a
+    source -- and validate_declared_sources arm D rejected it. Which slugs are registered is a fact
+    in sources.yaml, so it is checked here; but the remedy depends on whether a source exists for
+    this territory at all, which is stage 2's judgement, so the objection is handed back.
+    """
+    fm = page.get("frontmatter") or {}
+    v = fm.get("polygon_source") or page.get("polygon_source")
+    if v in (None, "", "none", "null") or v in slugs:
+        return None
+    routes = {"registered_source_feature", "new_source_needed", "none_available",
+              "constructed_union"}
+    extra = (" That is a polygon ROUTE, not a source. A route says where a boundary would come "
+             "from; polygon_source names the registered source it actually came from."
+             if v in routes else "")
+    return (f"`polygon_source: {v}` names nothing.{extra} It must be one of the slugs registered in "
+            f"scripts/sources.yaml -- {', '.join(sorted(slugs))} -- or exactly `none` when no "
+            f"geometry is attached. If the boundary is not attached yet, `none` is the honest value, "
+            f"and the reason belongs in an open question.")
+
+
 def chain_edges(pols: list[dict[str, str]]) -> dict[str, tuple[set[str], set[str]]]:
     """code -> (its declared predecessors, its declared successors), from the built table."""
     def split(s: str) -> set[str]:
@@ -886,8 +954,14 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
         return
     spec = page_spec_text()
     precedent = code_precedent(pols, iso)
-    taken = {p["polity_code"] for p in pols}
+    # TAKEN IS DECIDED BY THE WIKI, NOT THE DERIVED CSV. This repo builds the table from the wiki,
+    # one row per page, so a page file is what makes a code exist. Reading the CSV instead produced
+    # a FALSE clash: a page was withdrawn without rebuilding, the stale row still named the code, and
+    # the unit re-authoring its own page was pushed off ESP-CO-1833-2025 onto the NUTS-derived
+    # ESP-ES111-1833-2025 -- a worse name, chosen because a derived file had not caught up.
+    taken = {f.stem.upper() for f in (REPO / "wiki" / "polities").glob("*.md")}
     edges = chain_edges(pols)
+    slugs = polygon_slugs()
     exemplar = EXEMPLAR.read_text(encoding="utf-8")[:6000] if EXEMPLAR.is_file() else "(none)"
     print(f"\nstage 3 (wiki): authoring {len(todo)} page(s)")
     for v in todo:
@@ -918,16 +992,19 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
             mine = v.get("page_polity_code") == code
             clash = None
             if code in taken and not mine:
-                other = next(p for p in pols if p["polity_code"] == code)
-                clash = (f"polity_code {code} is already in the table, held by "
-                         f"{other['polity_name']!r} ({other['start_year']}-{other['end_year']}). "
-                         f"That is a different territory from {v['admin_name']!r}.")
+                other = next((p for p in pols if p["polity_code"] == code), None)
+                held = (f"{other['polity_name']!r} ({other['start_year']}-{other['end_year']})"
+                        if other else "a page whose row is not in the built table")
+                clash = (f"polity_code {code} already has a page in wiki/polities/, held by "
+                         f"{held}. That is a different territory from {v['admin_name']!r}.")
             else:
                 claimed = [k for k, r in ledger.items()
                            if r.get("page_polity_code") == code and k != v["unit_id"]]
                 if claimed:
                     clash = (f"polity_code {code} was already assigned in this run to "
                              f"{claimed[0]}, a different unit.")
+            if not clash:
+                clash = bad_polygon_source(page, slugs)
             if not clash:
                 clash = unreciprocated(page, edges)
             if not clash:
@@ -945,7 +1022,8 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
         if page is None:
             continue
         code = page["polity_code"]
-        if code in taken and v.get("page_polity_code") != code:
+        if code in taken and v.get("page_polity_code") != code and not (
+                REPO / "wiki" / "polities" / f"{code.lower()}.md").exists():
             print(f"  FAIL  {v['unit_id']:24} could not find a free polity_code — not written")
             continue
         dest = REPO / "wiki" / "polities" / f"{code.lower()}.md"

@@ -349,9 +349,14 @@ def test_a_taken_polity_code_is_re_asked_not_skipped():
     """
     src = (HERE / "harness.py").read_text(encoding="utf-8")
     assert "A CODE COLLISION MUST NOT BE A SKIP" in src
-    assert "is already in the table, held by" in src, "the clash must name the holder"
+    assert "held by" in src, "the clash must name the holder"
     assert "Choose a code that is free. Change nothing else." in src, "narrow repair"
     assert "could not find a free polity_code — not written" in src, "failing is better than clobbering"
+    # TAKEN must come from the wiki, not the derived CSV. Reading the CSV produced a FALSE clash: a
+    # withdrawn page left its row behind, and the unit re-authoring its own page was pushed off
+    # ESP-CO-1833-2025 onto the NUTS-derived ESP-ES111-1833-2025 by a stale derived file.
+    assert 'taken = {f.stem.upper() for f in (REPO / "wiki" / "polities").glob("*.md")}' in src
+    assert "already has a page in wiki/polities/" in src
     # the surviving skip must be about THIS unit's own page, not any page at that path
     assert 'if dest.exists() and v.get("page_written") and not A.refresh:' in src
 
@@ -387,6 +392,42 @@ def test_an_unreciprocated_chain_edge_is_handed_back_not_written():
     # the successor direction too, not only predecessor
     fwd = {"polity_code": "A", "frontmatter": {"predecessor": [], "successor": ["B"]}}
     assert harness.unreciprocated(fwd, {"B": ({"C"}, set())})
+
+
+def test_a_route_name_is_never_a_polygon_source():
+    """A Coruña's page came back with `polygon_source: new_source_needed` and
+    validate_declared_sources arm D rejected it: that is stage 2's route enum written into the
+    field that names a source. The two vocabularies are not interchangeable.
+
+    Which slugs are registered is a fact in sources.yaml, so it is read rather than listed here --
+    a list in this file would be one more table needing a line per new source.
+    """
+    slugs = harness.polygon_slugs()
+    assert "mapspain-ign" in slugs and "gadm-4.1-adm1" in slugs, sorted(slugs)[:6]
+    assert "new_source_needed" not in slugs, "a route must never be a registered slug"
+
+    bad = {"polity_code": "X", "frontmatter": {"polygon_source": "new_source_needed"}}
+    obj = harness.bad_polygon_source(bad, slugs)
+    assert obj and "That is a polygon ROUTE, not a source." in obj
+    assert "`none` is the honest value" in obj
+
+    for ok in ("none", "", None, "mapspain-ign"):
+        page = {"polity_code": "X", "frontmatter": {"polygon_source": ok}}
+        assert harness.bad_polygon_source(page, slugs) is None, ok
+    # a plausible-looking but unregistered slug must still be caught
+    assert harness.bad_polygon_source(
+        {"polity_code": "X", "frontmatter": {"polygon_source": "gadm-4.2-adm1"}}, slugs)
+
+
+def test_new_source_needed_cannot_name_an_already_registered_source():
+    """Stage 2 routed A Coruña to `new_source_needed` while its own detail said mapspain-ign was
+    "already registered in scripts/sources.yaml" -- which it is, with id_column cpro. The
+    contradiction then propagated into the page. A registered source needs no new registration."""
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "is ALREADY registered in" in src
+    assert "not a reason to call the source new" in src
+    # and the mirror case: claiming a registered route for a slug that is not registered
+    assert "but source_slug" in src and "is not registered" in src
 
 
 if __name__ == "__main__":
