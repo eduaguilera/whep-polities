@@ -962,6 +962,45 @@ def test_no_function_reads_a_name_it_never_defines():
             assert not unbound, f"{mod}:{fn.name} reads undefined name(s): {unbound}"
 
 
+def test_writing_the_ledger_does_not_invalidate_the_caller_s_references():
+    """`rows.clear(); rows.update(merged)` swapped in fresh dicts from disk and orphaned every
+    reference the caller held.
+
+    Each stage builds a `todo` list of the ledger's own dict objects, mutates them, and writes after
+    each unit. From the first write onward it was mutating orphans. Mexico routed 23 units through
+    stage 2 and 3 survived; stage 3 then found almost nothing to author. Nothing raised, the log
+    showed all 23 routes, and only comparing the log against the ledger revealed the loss -- which
+    is why this test drives it through a `todo` list rather than the dict directly.
+    """
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        harness.LEDGER = Path(d) / "l.csv"
+        harness.DIRTY.clear()
+        blank = {f: "" for f in harness.LEDGER_FIELDS}
+        ledger = {"A": dict(blank, unit_id="A"), "B": dict(blank, unit_id="B")}
+        todo = [ledger["A"], ledger["B"]]          # exactly what a stage holds
+
+        todo[0]["polygon_route"] = "route-A"
+        harness.mark("A")
+        harness.write_ledger(ledger)
+        # the second unit is mutated AFTER a write -- this is where the loss happened
+        todo[1]["polygon_route"] = "route-B"
+        harness.mark("B")
+        harness.write_ledger(ledger)
+
+        back = harness.read_ledger()
+        assert back["A"]["polygon_route"] == "route-A", "first unit lost"
+        assert back["B"]["polygon_route"] == "route-B", "unit mutated after a write was lost"
+        assert ledger["B"] is todo[1], "the caller's reference must stay live"
+
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    # checked on executable lines only: the comment above the fix quotes the old code
+    code = [ln.split("#")[0] for ln in src.split("\n")]
+    assert not any(ln.strip() == "rows.clear()" for ln in code), \
+        "clearing the caller's dict orphans its references"
+    assert "rows[k].update(fresh)" in src
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

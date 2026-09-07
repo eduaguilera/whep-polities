@@ -173,8 +173,17 @@ def write_ledger(rows: dict[str, dict[str, str]]) -> None:
                 w.writeheader()
                 w.writerows(ordered)
             os.replace(tmp, LEDGER)      # atomic: a killed run must not truncate the ledger
-            rows.clear()
-            rows.update(merged)          # the caller's view now includes everyone else's rows
+            # UPDATE IN PLACE, NEVER REPLACE. `rows.clear(); rows.update(merged)` swapped in fresh
+            # dict objects from disk and so invalidated every reference the caller was holding: each
+            # stage iterates a `todo` list of those very dicts, mutates them, then writes -- and from
+            # the first write onward it was mutating orphans. Mexico routed 23 units through stage 2
+            # and 3 survived; stage 3 then found almost nothing to author. Nothing errored, the log
+            # showed 23 routes, and only comparing the log against the ledger revealed the loss.
+            for k, fresh in merged.items():
+                if k in rows:
+                    rows[k].update(fresh)   # same object, so the caller's references stay live
+                else:
+                    rows[k] = fresh
         finally:
             fcntl.flock(lf, fcntl.LOCK_UN)
 
