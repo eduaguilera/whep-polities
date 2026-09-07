@@ -907,6 +907,61 @@ def test_a_second_page_for_the_same_territory_is_handed_back():
                                                  {}, existing) is None
 
 
+def test_no_function_reads_a_name_it_never_defines():
+    """`NameError: existing_pages is not defined` killed every country in a creation run.
+
+    There are two `slugs = polygon_slugs()` lines -- one per stage -- and a single-occurrence
+    replace put the new assignment in stage 2, which does not use it, while stage 3 read it. The
+    module imported, `ast.parse` was clean, and all 37 tests passed: nothing here exercised the
+    wiring, only the function in isolation. This closes that gap statically, for every function.
+    """
+    import ast, builtins
+
+    for mod in ("harness.py", "runner.py", "repair.py"):
+        src = (HERE / mod).read_text(encoding="utf-8")
+        tree = ast.parse(src)
+        module_level = {n.id for x in tree.body for n in ast.walk(x)
+                        if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store)}
+        module_level |= {x.name for x in tree.body
+                         if isinstance(x, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))}
+        for x in tree.body:
+            if isinstance(x, (ast.Import, ast.ImportFrom)):
+                module_level |= {(a.asname or a.name).split(".")[0] for a in x.names}
+        safe = module_level | set(dir(builtins))
+
+        for fn in [n for n in ast.walk(tree)
+                   if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))]:
+            bound = {a.arg for a in fn.args.args + fn.args.kwonlyargs}
+            if fn.args.vararg:
+                bound.add(fn.args.vararg.arg)
+            if fn.args.kwarg:
+                bound.add(fn.args.kwarg.arg)
+            for n in ast.walk(fn):
+                if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store):
+                    bound.add(n.id)
+                elif isinstance(n, (ast.Import, ast.ImportFrom)):
+                    bound |= {(a.asname or a.name).split(".")[0] for a in n.names}
+                elif isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                    bound.add(n.name)
+                elif isinstance(n, ast.ExceptHandler) and n.name:
+                    bound.add(n.name)
+                elif isinstance(n, (ast.comprehension,)):
+                    for t2 in ast.walk(n.target):
+                        if isinstance(t2, ast.Name):
+                            bound.add(t2.id)
+                elif isinstance(n, ast.Lambda):
+                    a2 = n.args
+                    bound |= {x.arg for x in a2.args + a2.kwonlyargs + a2.posonlyargs}
+                    if a2.vararg:
+                        bound.add(a2.vararg.arg)
+                    if a2.kwarg:
+                        bound.add(a2.kwarg.arg)
+            reads = {n.id for n in ast.walk(fn)
+                     if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load)}
+            unbound = sorted(reads - bound - safe)
+            assert not unbound, f"{mod}:{fn.name} reads undefined name(s): {unbound}"
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

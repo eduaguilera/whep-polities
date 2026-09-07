@@ -916,7 +916,6 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
         print("\nstage 2 (polygon): nothing to route")
         return
     slugs = polygon_slugs()
-    existing_pages = existing_territory_pages(pols, iso)
     print(f"\nstage 2 (polygon): {len(todo)} proposed polit(ies)")
     for v in todo:
         proposed = _json.loads(v["proposed_json"]) if v.get("proposed_json") else {}
@@ -1313,6 +1312,7 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
         return
     spec = page_spec_text()
     precedent = code_precedent(pols, iso)
+    existing_pages = existing_territory_pages(pols, iso)
     # TAKEN IS DECIDED BY THE WIKI, NOT THE DERIVED CSV. This repo builds the table from the wiki,
     # one row per page, so a page file is what makes a code exist. Reading the CSV instead produced
     # a FALSE clash: a page was withdrawn without rebuilding, the stale row still named the code, and
