@@ -138,6 +138,9 @@ def test_ledger_round_trip_keeps_stage_two_columns():
     import tempfile
     with tempfile.TemporaryDirectory() as d:
         harness.LEDGER = Path(d) / "l.csv"
+        # A row must be MARKED to be written: only modified keys are overlaid onto what is on disk,
+        # because writing the whole startup snapshot back is what clobbered other runs' rows.
+        harness.mark("U")
         harness.write_ledger({"U": {"unit_id": "U", "country": "C", "verdict": "create_new"}})
         back = harness.read_ledger()
         assert back["U"]["verdict"] == "create_new"
