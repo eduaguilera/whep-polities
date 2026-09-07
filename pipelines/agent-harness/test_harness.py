@@ -427,7 +427,13 @@ def test_new_source_needed_cannot_name_an_already_registered_source():
     contradiction then propagated into the page. A registered source needs no new registration."""
     src = (HERE / "harness.py").read_text(encoding="utf-8")
     assert "is ALREADY registered in" in src
-    assert "not a reason to call the source new" in src
+    assert "wrong source and naming it was a mistake" in src, "the objection must present the fork"
+    # It must NOT push one branch. The first version told the agent to switch to
+    # `registered_source_feature` -- and a FRENCH region had proposed `mapspain-ign`, which is
+    # Spain-only, so obeying it would have attached another country's boundary: exactly what
+    # validate_polygons exists to catch.
+    assert "Spain-only" in src and "another country's" in src
+    assert "records no extent for any source" in src, "say why the harness cannot decide it"
     # and the mirror case: claiming a registered route for a slug that is not registered
     assert "but source_slug" in src and "is not registered" in src
 
@@ -705,6 +711,13 @@ def test_the_method_profile_is_actually_read():
         "the column must be READ, or the profile is silently empty"
     assert 'if "method" not in df.columns:' in src and "NOTE: the panel has no `method` column" in src
     assert "HOW VALUES WERE MADE" in src, "and it must reach the evidence"
+    # A blank method must NOT be presented as proof the unit was observed. The first version said
+    # exactly that, and it pushed Portugal's five NUTS-2 regions -- 100% blank, running from 1870,
+    # for a classification that did not exist until 1989 -- away from back_cast and into marking
+    # 79% of their years unroutable.
+    assert "does NOT establish that this unit was observed" in src
+    assert "NUTS did not exist until 1989" in src
+    assert "not this column" in src, "the unit's existence date settles it, not the method"
 
 
 def test_a_usage_limit_is_recognised_where_the_cli_actually_puts_it():
@@ -743,6 +756,39 @@ def test_a_usage_limit_is_recognised_where_the_cli_actually_puts_it():
     hsrc = (HERE / "harness.py").read_text(encoding="utf-8")
     assert '"usage limit" in res.error' in hsrc and "STOPPING" in hsrc, \
         "the run must stop rather than fail every remaining unit identically"
+
+
+def test_registered_source_feature_must_name_a_feature():
+    """The route enum forced a false choice, so 20 units made an unverifiable claim.
+
+    All 20 were Spanish, all named mapspain-ign, all with an EMPTY feature_id -- because
+    data/geodata/mapspain-ign/provinces.gpkg does not exist in this checkout. That route asserts
+    one specific feature IS the boundary, so without a feature it cannot be checked;
+    `new_source_needed` was equally false, since the source needs FETCHING, not registering.
+
+    Same lesson as the `unroutable` threshold: before requiring precision, make sure an honest
+    answer exists to be precise with.
+    """
+    import json as _json
+    schema = _json.loads((HERE / "schemas" / "polygon_route.schema.json")
+                         .read_text(encoding="utf-8"))
+    enum = schema["properties"]["route"]["enum"]
+    assert "registered_source_unfetched" in enum, enum
+    desc = schema["properties"]["route"]["description"]
+    assert "20 Spanish units" in desc, "the case that motivated it must be recorded"
+    assert "needs fetching rather than registering" in desc
+
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "no feature_id is given, so the" in src, "an empty feature must be objected to"
+    assert "registered_source_unfetched`: name the slug" in src, "and the honest route offered"
+    # the new route must itself still name a REGISTERED slug, or it means nothing
+    assert '"registered_source_unfetched" and r.get("source_slug") not in slugs' in src
+    assert "that is `new_source_needed`." in src
+
+    # a department must not be given a country-boundaries source: FRA-FRF31 (Meurthe-et-Moselle)
+    # was routed to cshapes-2.0 reasoning it "should just inherit the country-level polygon".
+    # An empty feature_id is what makes that catchable without granularity metadata.
+    assert "asserts that one specific " in src
 
 
 if __name__ == "__main__":

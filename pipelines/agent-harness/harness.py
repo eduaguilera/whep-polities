@@ -361,10 +361,14 @@ def build_evidence(unit: dict[str, Any], pols: list[dict[str, str]], iso: str,
     a(f"  admin_name_clean   {unit['admin_name']!r}")
     if unit.get("method_profile"):
         a(f"  HOW VALUES WERE MADE  {unit['method_profile'][:170]}")
-        a(f"     A blank/observed method means the source measured this territory in those years. A "
-          f"`scaled`, `interpolated` or `fallback` method means the value was allocated or "
-          f"reconstructed, which is what `back_cast` coverage is for — the data is FOR this "
-          f"territory without the territory having existed yet.")
+        a(f"     A `scaled`, `interpolated` or `fallback` method means the value was allocated or "
+          f"reconstructed. A BLANK method means only that the source recorded no derivation for it "
+          f"— it does NOT establish that this unit was observed, because the source may have done "
+          f"its own aggregation before publishing. Portugal's five NUTS-2 regions are 100% blank "
+          f"and run from 1870, and NUTS did not exist until 1989: blank there means passed through, "
+          f"not measured. What settles it is the unit's own existence date, not this column. Where "
+          f"data predates the unit, that is `back_cast` — the data is FOR this territory without "
+          f"the territory having existed yet — and NOT `unroutable`.")
     if unit.get("official_name"):
         a(f"  OFFICIAL NAME      {unit['official_name']!r}   "
           f"(data/final/nuts_code_names.csv -- authoritative; do NOT resolve the code from memory)")
@@ -885,13 +889,35 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
         for retry in range(2):
             obj = None
             cand = ((r.get("candidate_new_source") or {}).get("name") or "").strip()
+            if r["route"] == "registered_source_unfetched" and r.get("source_slug") not in slugs:
+                obj = (f"The route is `registered_source_unfetched`, which means the source IS "
+                       f"registered — but source_slug {r.get('source_slug')!r} is not among the "
+                       f"registered slugs: {', '.join(sorted(slugs))}. If the source is not "
+                       f"registered at all, that is `new_source_needed`.")
             if r["route"] == "new_source_needed" and cand in slugs:
                 obj = (f"The route is `new_source_needed`, but {cand!r} is ALREADY registered in "
-                       f"scripts/sources.yaml. A registered source needs no new registration: if "
-                       f"its feature is identifiable, the route is `registered_source_feature` with "
-                       f"source_slug {cand!r}; if the file is not present locally or its licence is "
-                       f"unchecked, that is a reason to leave the geometry unattached and say so, "
-                       f"not a reason to call the source new.")
+                       f"scripts/sources.yaml, so it needs no new registration. That leaves a fork, "
+                       f"and you must pick the right side of it:\n"
+                       f"  (a) {cand!r} DOES cover this territory — then the route is "
+                       f"`registered_source_feature` with source_slug {cand!r} and the feature "
+                       f"named; if its file is not present locally or its licence is unchecked, say "
+                       f"so and leave the geometry unattached.\n"
+                       f"  (b) {cand!r} does NOT cover this country at all — then it is simply the "
+                       f"wrong source and naming it was a mistake; propose one whose extent "
+                       f"includes this territory, or answer `none_available`.\n"
+                       f"sources.yaml records no extent for any source, so nothing here can decide "
+                       f"this for you. A French region was proposed `mapspain-ign`, which is "
+                       f"Spain-only, and switching its route would have attached another country's "
+                       f"boundary — the exact defect validate_polygons exists to catch.")
+            elif r["route"] == "registered_source_feature" and not (
+                    r.get("feature_id") or "").strip():
+                obj = (f"The route is `registered_source_feature`, which asserts that one specific "
+                       f"feature IS this territory's boundary — but no feature_id is given, so the "
+                       f"claim cannot be checked. If the source's file is not present locally, that "
+                       f"is `registered_source_unfetched`: name the slug and say what must be "
+                       f"fetched. Twenty Spanish units took this route naming mapspain-ign with an "
+                       f"empty feature_id, and "
+                       f"data/geodata/mapspain-ign/provinces.gpkg does not exist here.")
             elif r["route"] == "registered_source_feature" and r.get("source_slug") not in slugs:
                 obj = (f"The route is `registered_source_feature` but source_slug "
                        f"{r.get('source_slug')!r} is not registered. Registered slugs are: "
