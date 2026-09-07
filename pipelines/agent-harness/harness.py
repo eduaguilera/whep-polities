@@ -33,7 +33,9 @@ from __future__ import annotations
 
 import argparse
 import builtins
+import fcntl
 import functools
+import collections
 import csv
 import json
 import os
@@ -75,9 +77,25 @@ LEDGER_FIELDS = ("unit_id", "country", "admin_name", "verdict", "matched_polity_
                  "polygon_detail", "polygon_confidence", "polygon_reasoning",
                  "page_written", "page_polity_code",
                  "repair_status", "repair_attempts", "repair_rank", "repair_remaining",
-                 "repair_gates_red")
+                 "repair_gates_red", "coverage_json", "coverage_ok")
 
 RESIDUAL_MARKERS = ("RESID", "OTHER", "NATIONAL", "UNKNOWN", "TOTAL", "REST")
+
+
+def nuts_basis() -> dict[str, str]:
+    """code -> the `basis` recorded for its name, which says WHICH vocabulary the code belongs to.
+
+    Not decoration. A code's shape suggests a system and can be wrong about it: PTAV's basis reads
+    "the 18 mainland districts (Wikipedia, Districts of Portugal); NOT an official code list", yet
+    every Portuguese unit came back named "(NUTS region of Portugal)" and dated to the 1989 NUTS
+    classification -- stranding 118 years of district-level data the source actually reports. The
+    panel's own `admin_level` column says "NUTS" for both of Portugal's layers, so it cannot settle
+    it either. The basis can.
+    """
+    if not NUTS_XW.is_file():
+        return {}
+    with NUTS_XW.open(newline="", encoding="utf-8") as fh:
+        return {r["nuts_id"]: r.get("basis", "") for r in csv.DictReader(fh)}
 
 
 def nuts_names() -> dict[str, str]:
@@ -114,14 +132,38 @@ def read_ledger() -> dict[str, dict[str, str]]:
 
 
 def write_ledger(rows: dict[str, dict[str, str]]) -> None:
+    """Merge our rows into whatever is on disk now, under an exclusive lock.
+
+    A whole-file write from an in-memory copy loaded at startup is only safe while one run exists.
+    With 444 units across 26 countries, running them one country at a time is hours of wall clock
+    for no reason -- but two concurrent runs would each write their own stale snapshot and silently
+    drop the other's rows, which is the same failure that once turned a request for Alaska into a
+    California page, one process further out.
+
+    So the write is a read-modify-write under flock: re-read the file, lay our rows over it, write
+    atomically. Our rows win on conflict, which is correct because we are the run that just decided
+    them. Any unit_id we have never touched is preserved byte for byte.
+    """
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
-    ordered = [{f: rows[k].get(f, "") for f in LEDGER_FIELDS} for k in sorted(rows)]
-    tmp = LEDGER.with_suffix(".tmp")
-    with open(tmp, "w", newline="\n", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(LEDGER_FIELDS), lineterminator="\n")
-        w.writeheader()
-        w.writerows(ordered)
-    os.replace(tmp, LEDGER)          # atomic: a killed run must not truncate the ledger
+    lock = LEDGER.with_suffix(".lock")
+    with open(lock, "w", encoding="utf-8") as lf:
+        fcntl.flock(lf, fcntl.LOCK_EX)
+        try:
+            merged = read_ledger()          # whatever any concurrent run has committed
+            merged.update(rows)             # ours are newer by construction
+            ordered = [{f: merged[k].get(f, "") for f in LEDGER_FIELDS} for k in sorted(merged)]
+            # A distinct temp name per process: two runs sharing one .tmp would interleave writes
+            # and os.replace whichever finished last, which is a torn file, not a merge.
+            tmp = LEDGER.with_suffix(f".{os.getpid()}.tmp")
+            with open(tmp, "w", newline="\n", encoding="utf-8") as fh:
+                w = csv.DictWriter(fh, fieldnames=list(LEDGER_FIELDS), lineterminator="\n")
+                w.writeheader()
+                w.writerows(ordered)
+            os.replace(tmp, LEDGER)      # atomic: a killed run must not truncate the ledger
+            rows.clear()
+            rows.update(merged)          # the caller's view now includes everyone else's rows
+        finally:
+            fcntl.flock(lf, fcntl.LOCK_UN)
 
 
 def polities() -> list[dict[str, str]]:
@@ -152,6 +194,137 @@ def gadm_names(iso: str) -> list[tuple[str, str]]:
               f"({g.GID_0.nunique()} countries in the file) — a new polity for this country would "
               f"need a boundary from another source")
     return hit
+
+
+def double_claim_objection(v: dict[str, Any], unit: dict[str, Any],
+                           ledger: dict[str, dict[str, str]], country: str) -> str | None:
+    """Is another unit of this country already matched to the same polity for overlapping years?
+
+    Two reporting units cannot both BE the same territory in the same years -- whichever is wrong,
+    the data is double-counted into one polity. AUS-VICTORIA came back matching VIC-1851-1900 for
+    1860-1899 and then AUS-1901-2025 -- the whole of Australia -- for 1901-2022, which every other
+    Australian state could equally claim.
+
+    Checked structurally rather than by polity_type, because the data defeats type-checking here:
+    VIC-1851-1900 is itself typed `national` while its sibling AUWA-1829-1900 is typed `colonial`,
+    so "a subnational unit matched a national row" does not separate the good case from the bad one.
+    Whether the collision means this unit is wrong or the other one is, is a judgement, so it is
+    stated and handed back.
+    """
+    mine = [s for s in (v.get("coverage") or [])
+            if s.get("disposition") == "matched" and s.get("polity_code")]
+    if not mine:
+        return None
+    clashes: list[str] = []
+    for other in ledger.values():
+        if other.get("country") != country or other.get("unit_id") == unit["unit_id"]:
+            continue
+        try:
+            theirs = json.loads(other.get("coverage_json") or "[]")
+        except json.JSONDecodeError:
+            continue
+        for a in mine:
+            for b in theirs:
+                if b.get("disposition") != "matched" or b.get("polity_code") != a["polity_code"]:
+                    continue
+                lo = max(a["start_year"], b["start_year"])
+                hi = min(a["end_year"], b["end_year"])
+                if lo <= hi:
+                    clashes.append(
+                        f"{a['polity_code']} is claimed for {lo}-{hi} by BOTH this unit and "
+                        f"{other['unit_id']} ({other.get('admin_name', '')}).")
+    if not clashes:
+        return None
+    uniq = sorted(set(clashes))
+    return ("\n".join(uniq[:6]) + "\n\nTwo reporting units cannot both BE the same territory in "
+            "the same years -- the data would be summed into one polity twice. Either this unit is "
+            "a different territory that needs its own polity, or the years belong to only one of "
+            "them. Note that matching a unit to its own CONTAINER has this shape: every sibling "
+            "could claim the container equally, which is what makes it wrong.")
+
+
+def coverage_objection(v: dict[str, Any], unit: dict[str, Any],
+                       pols: list[dict[str, str]]) -> str | None:
+    """Do the coverage segments account for every data year, and does each matched code cover its own?
+
+    Arithmetic, so it is checked rather than asked. The remedy is not: which polity should carry a
+    stranded stretch, or whether one must be created, is the judgement the stage exists for. So the
+    gap is stated and handed back.
+
+    This is what makes "all the data is matched" a measurable claim instead of an impression. Before
+    the field existed, five of fifteen match_existing verdicts silently stranded years -- 122 of them
+    for AUS-QUEENSLAND -- and nothing in the ledger showed it.
+    """
+    segs = v.get("coverage") or []
+    if not segs:
+        return "No `coverage` segments were given, so no year of this unit's data is accounted for."
+    u0, u1 = unit["y0"], unit["y1"]
+    by_code = {p["polity_code"]: p for p in pols}
+    problems: list[str] = []
+
+    for s in segs:
+        if s["start_year"] > s["end_year"]:
+            problems.append(f"Segment {s['start_year']}-{s['end_year']} runs backwards.")
+        if s["disposition"] == "back_cast" and not s.get("polity_code"):
+            problems.append(f"Segment {s['start_year']}-{s['end_year']} is `back_cast` but names no "
+                            f"polity_code. A reconstruction is still FOR some territory; say which, "
+                            f"or the years are not routed at all.")
+        if s["disposition"] == "matched":
+            code = s.get("polity_code")
+            if not code:
+                problems.append(f"Segment {s['start_year']}-{s['end_year']} is `matched` but names "
+                                f"no polity_code.")
+            elif code not in by_code:
+                problems.append(f"Segment {s['start_year']}-{s['end_year']} names {code}, which is "
+                                f"not a polity_code in the table.")
+            else:
+                p = by_code[code]
+                p0, p1 = int(p["start_year"]), int(p["end_year"])
+                # end_year is EXCLUSIVE on a polity; the segment's end_year is an inclusive data year
+                if s["start_year"] < p0 or s["end_year"] >= p1:
+                    problems.append(
+                        f"Segment {s['start_year']}-{s['end_year']} is matched to {code}, whose own "
+                        f"span is {p0}-{p1} (end_year EXCLUSIVE, so it carries data through "
+                        f"{p1 - 1}). Those years are not inside it.")
+
+    ordered = sorted(segs, key=lambda s: s["start_year"])
+    if ordered[0]["start_year"] > u0:
+        problems.append(f"Data starts at {u0} but the first segment starts at "
+                        f"{ordered[0]['start_year']}: {ordered[0]['start_year'] - u0} year(s) "
+                        f"unaccounted for.")
+    if ordered[-1]["end_year"] < u1:
+        problems.append(f"Data ends at {u1} but the last segment ends at "
+                        f"{ordered[-1]['end_year']}: {u1 - ordered[-1]['end_year']} year(s) "
+                        f"unaccounted for.")
+    for a, b in zip(ordered, ordered[1:]):
+        if b["start_year"] > a["end_year"] + 1:
+            problems.append(f"Gap between {a['end_year']} and {b['start_year']}: "
+                            f"{b['start_year'] - a['end_year'] - 1} year(s) unaccounted for.")
+        elif b["start_year"] <= a["end_year"]:
+            problems.append(f"Segments {a['start_year']}-{a['end_year']} and "
+                            f"{b['start_year']}-{b['end_year']} overlap.")
+    # A TILING IS NOT A ROUTING. Portugal's 23 units tiled their spans perfectly and left
+    # 1870-1988 `unroutable` -- 118 years, about 90% of the country's 341,508 rows -- and recorded
+    # coverage_ok=yes. `unroutable` is for years nothing could carry; a reporting unit that HAS data
+    # for a year had a territory in that year, whatever the statistical classification was called.
+    unroutable = sum(s["end_year"] - s["start_year"] + 1
+                     for s in segs if s.get("disposition") == "unroutable")
+    total = u1 - u0 + 1
+    if unroutable and unroutable / total > 0.10:
+        problems.append(
+            f"{unroutable} of this unit's {total} data years ({unroutable / total:.0%}) are marked "
+            f"`unroutable`. The source reports values for those years, so the territory existed and "
+            f"was being measured. `unroutable` is for a year nothing could ever carry -- not for a "
+            f"year before the classification that currently names the unit was invented. If the "
+            f"territory existed under an earlier administration, the polity's span starts then and "
+            f"the classification is just its current label; if a different territory reported those "
+            f"years, name it. Do not leave measured data with no polity.")
+    if not problems:
+        return None
+    return ("\n".join(problems) + f"\n\nThe segments must tile this unit's whole data span "
+            f"{u0}-{u1} with no gap and no overlap. Every year of data has to be accounted for -- by "
+            f"a polity that covers it, by a proposal, or by an explicit `unroutable` with a reason. "
+            f"Fix only the coverage; leave the verdict alone unless the gap changes it.")
 
 
 def build_evidence(unit: dict[str, Any], pols: list[dict[str, str]], iso: str,
@@ -186,9 +359,22 @@ def build_evidence(unit: dict[str, Any], pols: list[dict[str, str]], iso: str,
     a(f"UNIT")
     a(f"  admin_unit_id      {unit['unit_id']}")
     a(f"  admin_name_clean   {unit['admin_name']!r}")
+    if unit.get("method_profile"):
+        a(f"  HOW VALUES WERE MADE  {unit['method_profile'][:170]}")
+        a(f"     A blank/observed method means the source measured this territory in those years. A "
+          f"`scaled`, `interpolated` or `fallback` method means the value was allocated or "
+          f"reconstructed, which is what `back_cast` coverage is for — the data is FOR this "
+          f"territory without the territory having existed yet.")
     if unit.get("official_name"):
-        a(f"  OFFICIAL NAME      {unit['official_name']!r}   (Eurostat GISCO NUTS 2021, "
-          f"data/final/nuts_code_names.csv -- authoritative; do NOT resolve the code from memory)")
+        a(f"  OFFICIAL NAME      {unit['official_name']!r}   "
+          f"(data/final/nuts_code_names.csv -- authoritative; do NOT resolve the code from memory)")
+        basis = unit.get("name_basis")
+        if basis:
+            # The basis says WHICH vocabulary the code belongs to, and that often refutes what the
+            # code looks like: PTAV's basis reads "the 18 mainland districts ... NOT an official code
+            # list", yet Portugal's units were all named "(NUTS region of Portugal)" and dated to the
+            # 1989 NUTS classification, stranding 118 years of district-level data.
+            a(f"  NAME PROVENANCE    {basis[:150]}")
     elif unit["admin_level"] == "NUTS":
         a(f"  OFFICIAL NAME      NOT FOUND for this code in data/final/nuts_code_names.csv. Do not "
           f"guess the territory from the code: say what is missing instead.")
@@ -289,22 +475,43 @@ EVIDENCE
 def units_for_country(country: str) -> list[dict[str, Any]]:
     import pandas as pd
     df = pd.read_parquet(PANEL, columns=["country_clean", "admin_unit_id", "admin_name_clean",
-                                         "admin_level", "year", "indicator", "value_canonical"])
+                                         "admin_level", "year", "indicator", "value_canonical",
+                                         "method"])
     df = df[(df.country_clean == country) & df.value_canonical.notna()]
     if df.empty:
         return []
     src = pd.read_parquet(PANEL, columns=["country_clean", "source"])
     source = src[src.country_clean == country]["source"].mode()
+    # HOW each value was produced, per unit and era. This is what separates a territory the source
+    # OBSERVED from one it reconstructs: Colombia is 74% interpolated_scaled, Spain 97.5% blank.
+    # `if "method" in df.columns` was the first version, and `method` was not among the columns
+    # read above -- so the guard was always False, every profile came out empty, and nothing looked
+    # broken. An absent column is now stated rather than skipped.
+    meth = None
+    if "method" not in df.columns:
+        print("  NOTE: the panel has no `method` column, so observation cannot be separated from "
+              "reconstruction and `back_cast` coverage cannot be grounded")
+    else:
+        m = df.assign(_m=df["method"].fillna("").replace("", "(observed/blank)"))
+        meth = (m.groupby(["admin_unit_id", "_m"]).size()
+                 .groupby(level=0, group_keys=False)
+                 .apply(lambda s: (s / s.sum() * 100).round(1)))
     g = df.groupby("admin_unit_id").agg(
         admin_name=("admin_name_clean", "first"), admin_level=("admin_level", "first"),
         y0=("year", "min"), y1=("year", "max"), rows=("year", "size"),
         indicators=("indicator", lambda s: ", ".join(sorted(set(s)))))
     out = []
     for uid, r in g.sort_index().iterrows():
-        xw = nuts_names()
-        official = xw.get(str(r["admin_name"]).replace("_", ""), "")
+        xw, bs = nuts_names(), nuts_basis()
+        key = str(r["admin_name"]).replace("_", "")
+        official = xw.get(key, "")
+        prof = ""
+        if meth is not None and uid in meth.index.get_level_values(0):
+            prof = ", ".join(f"{k}={v}%" for k, v in
+                             meth.loc[uid].sort_values(ascending=False).items() if v >= 1.0)
         out.append({"unit_id": uid, "country": country, "admin_name": r["admin_name"],
-                    "official_name": official,
+                    "official_name": official, "name_basis": bs.get(key, ""),
+                    "method_profile": prof,
                     "admin_level": r["admin_level"], "y0": int(r["y0"]), "y1": int(r["y1"]),
                     "rows": int(r["rows"]), "indicators": r["indicators"],
                     "source": (source.iloc[0] if len(source) else "unknown")})
@@ -1241,21 +1448,80 @@ def main() -> int:
                         for x in ledger.values()
                         if x.get("country") == A.country
                         and "HARNESS REJECTION" in x.get("concerns", "")]
+        # THE SAME UNIT SHAPE MUST NOT GET DIFFERENT VERDICTS IN DIFFERENT COUNTRIES. Thirteen
+        # identical <ISO3>-NATIONAL units split 11 match_existing / 2 not_a_territory, because each
+        # country is decided in isolation and nothing showed how the shape had been read elsewhere.
+        # Keyed on the id's own suffix, so it generalises to any repeated marker without a list of
+        # markers to maintain.
+        def marker(uid: str) -> str:
+            return uid.split("-", 1)[1] if "-" in uid else ""
+
+        cross: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
+        for x in ledger.values():
+            if x.get("verdict") and x.get("country") != A.country:
+                m = marker(x["unit_id"])
+                if m:
+                    cross[m][x["verdict"]] += 1
+        def seg_summary(row: dict[str, str]) -> str:
+            try:
+                segs = json.loads(row.get("coverage_json") or "[]")
+            except json.JSONDecodeError:
+                return ""
+            return "  ".join(
+                f"{s['start_year']}-{s['end_year']}:{s['disposition']}"
+                f"{'=' + s['polity_code'] if s.get('polity_code') else ''}" for s in segs)
+
         siblings = [f"{v['unit_id']} -> {v['verdict']}"
                     f"{' ' + v['matched_polity_code'] if v['matched_polity_code'] else ''}"
+                    f"{'  [' + seg_summary(v) + ']' if seg_summary(v) else ''}"
                     for v in ledger.values()
                     if v.get("country") == A.country and v.get("verdict")
                     and v["verdict"] != "insufficient_evidence"]
         for u in batch:
+            same_shape = cross.get(marker(u["unit_id"]))
+            shape_note = ([f"OTHER COUNTRIES' UNITS WITH THE SAME id marker "
+                           f"{marker(u['unit_id'])!r}: {dict(same_shape)} — the same shape should "
+                           f"not read differently here without a reason"]
+                          if same_shape else [])
             ev = build_evidence(u, pols, iso, feats, wide=wide,
-                                sibling_verdicts=siblings + prior_reject[:6],
+                                sibling_verdicts=shape_note + siblings + prior_reject[:6],
                                 convention=convention)
             job = f"cycle{cycle:02d}-{norm(u['unit_id'])}"
             res = runner.call(job, PROMPT.format(evidence=ev), SCHEMA, refresh=A.refresh)
             if not res.ok:
                 print(f"  FAIL  {u['unit_id']:24} {res.error}")
+                if res.error and "usage limit" in res.error:
+                    # Every remaining unit would fail identically until the reset. Stopping keeps
+                    # the ledger honest and the cause visible; carrying on produced 56 lines of
+                    # "no schema-valid result" that read as the model failing to answer.
+                    print(f"\n  STOPPING {A.country}: {res.error}. "
+                          f"Re-run after the reset; decided units are already banked.")
+                    write_ledger(ledger)
+                    return 2
                 continue
             v = res.result
+            # Every data year must be accounted for, and that is arithmetic.
+            for attempt in range(2):
+                obj = coverage_objection(v, u, pols) or double_claim_objection(v, u, ledger,
+                                                                              A.country)
+                if not obj:
+                    break
+                print(f"  COVERAGE  {u['unit_id']:22} {obj.splitlines()[0][:80]}")
+                res = runner.call(f"{job}-cov{attempt + 1}",
+                                  PROMPT.format(evidence=ev)
+                                  + f"\n\nYOUR COVERAGE WAS REJECTED\n{'-' * 27}\n{obj}\n",
+                                  SCHEMA, refresh=True)
+                if not res.ok:
+                    print(f"  FAIL  {u['unit_id']:24} coverage retry: {res.error}")
+                    break
+                v = res.result
+            else:
+                obj = coverage_objection(v, u, pols) or double_claim_objection(v, u, ledger,
+                                                                              A.country)
+                if obj:
+                    v = {**v, "concerns": (v.get("concerns") or []) + [
+                        f"HARNESS: coverage still does not tile {u['y0']}-{u['y1']} after 2 "
+                        f"retries — {obj.splitlines()[0]}"]}
             # THE SPAN CHECK THE PROMPT COULD NOT ENFORCE. Ten of Spain's 47 verdicts proposed the
             # extract's own coverage as the span despite the instruction forbidding it, so this is
             # verified rather than requested: endpoints sitting on the data's own first and last
@@ -1283,6 +1549,8 @@ def main() -> int:
                 "confidence": v["confidence"], "reasoning": v["reasoning"],
                 "evidence_used": " | ".join(v.get("evidence_used", [])),
                 "concerns": " | ".join(v.get("concerns", [])),
+                "coverage_json": json.dumps(v.get("coverage") or [], sort_keys=True),
+                "coverage_ok": "yes" if coverage_objection(v, u, pols) is None else "no",
                 "cycle": str(cycle), "model": model, "effort": effort,
                 "decided_at": utc_now()})
             # A changed verdict invalidates what the later stages built on it.

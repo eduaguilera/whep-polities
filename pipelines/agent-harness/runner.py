@@ -55,6 +55,49 @@ THROTTLE_RE = re.compile(
     re.IGNORECASE,
 )
 
+# A USAGE LIMIT IS NOT A CAPACITY THROTTLE, and it does not arrive where the throttle check looked.
+# 56 calls across the final routing pass died reporting `return code 1, no schema-valid result`,
+# which reads as the model failing to answer. The real text was
+#   "You've hit your session limit · resets 3:10pm (Europe/Madrid)"
+# and it sat in the CLI's own `result` field in stdout, with stderr EMPTY -- so THROTTLE_RE, which
+# only ever read stderr, could not match it. Nine Portuguese verdicts then looked like a crosswalk
+# problem that had already been fixed, because the re-run's calls never landed.
+#
+# It also must not be retried on a backoff: a session limit clears at a stated time, so four
+# attempts 4s apart are guaranteed to fail and only make the cause harder to see. Recognised
+# separately, reported with its reset time, and not counted against the schema retries.
+LIMIT_RE = re.compile(
+    r"(?:hit\s+your\s+(?:session|usage|\w+)?\s*limit"
+    r"|usage\s+limit\s+reached"
+    r"|out\s+of\s+(?:credits|quota))",
+    re.IGNORECASE,
+)
+RESET_RE = re.compile(r"resets?\s+([^\n]{1,48})", re.IGNORECASE)
+
+
+def limit_signal(stdout_path: Path, stderr_text: str) -> str | None:
+    """The limit message, wherever the CLI put it, or None.
+
+    Reads the payload as well as stderr because that is where it actually appeared.
+    """
+    blobs = [stderr_text]
+    try:
+        raw = json.loads(stdout_path.read_text(encoding="utf-8"))
+        if isinstance(raw, dict):
+            blobs.append(str(raw.get("result", "")))
+            blobs.append(str(raw.get("error", "")))
+    except (OSError, json.JSONDecodeError):
+        pass
+    for b in blobs:
+        if b and LIMIT_RE.search(b):
+            m = RESET_RE.search(b)
+            when = m.group(1).strip().rstrip(".,;") if m else ""
+            if when.count("(") > when.count(")"):
+                when += ")"
+            return f"usage limit reached{'; resets ' + when if when else ''}"
+    return None
+
+
 # Denied rather than merely unmentioned: a verdict-emitting agent must not write to the tree.
 MUTATING_TOOLS = ("Edit", "Write", "NotebookEdit")
 
@@ -221,6 +264,12 @@ class ClaudeRunner:
             if timed_out:
                 error = f"timed out after {self.timeout}s with no schema-valid result"
                 continue
+            limit = limit_signal(stdout_path, stderr_text)
+            if limit:
+                # Distinct, and terminal for this job: retrying before the reset cannot succeed, and
+                # burning the remaining attempts is what disguised 56 of these as model failures.
+                error = limit
+                break
             if THROTTLE_RE.search(stderr_text):
                 error = "throttled"
                 time.sleep(self.throttle_backoff_seconds * attempt_no)

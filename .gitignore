@@ -60,3 +60,9 @@ data/final/*.tmp
 # agent harness: per-run prompts/stdout/results are reproducible artefacts, but the decision
 # ledger (state/routing_verdicts.csv) IS committed -- it is the record of what was decided.
 pipelines/agent-harness/state/runs/
+
+# The agent-harness ledger is written by a read-modify-write under flock so several countries can
+# run at once (444 units / 26 countries is hours of wall clock in sequence). The lock and the
+# per-process temp files are machinery, not decisions.
+pipelines/agent-harness/state/*.lock
+pipelines/agent-harness/state/*.tmp

@@ -116,7 +116,9 @@ def test_extract_accepts_the_string_envelope_and_rejects_invalid():
     schema = json.loads((HERE / "schemas" / "routing_verdict.schema.json").read_text())
     v = Draft202012Validator(schema)
     good = {"unit_id": "U", "verdict": "not_a_territory", "confidence": "high",
-            "reasoning": "x" * 45, "evidence_used": ["a"]}
+            "reasoning": "x" * 45, "evidence_used": ["a"],
+            "coverage": [{"start_year": 1900, "end_year": 1950, "disposition": "unroutable",
+                          "basis": "a residual bucket carries no territory"}]}
     import tempfile
     with tempfile.TemporaryDirectory() as d:
         p = Path(d) / "stdout.json"
@@ -458,6 +460,289 @@ def test_the_start_rule_is_a_default_with_enumerated_departures():
 
     # the floor must never be presented as the unit's own start
     assert "a FLOOR for the system, NOT " in src
+
+
+def test_the_ledger_write_merges_instead_of_replacing_the_file():
+    """A whole-file write from a startup snapshot is only safe while one run exists.
+
+    444 units across 26 countries is hours of wall clock one country at a time, so countries run
+    concurrently -- and two runs each writing their own stale snapshot would silently drop the
+    other's rows. That is the same failure that turned a request for Alaska into a California page,
+    one process further out.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "fcntl.flock(lf, fcntl.LOCK_EX)" in src, "the read-modify-write must be locked"
+    assert "merged = read_ledger()" in src and "merged.update(rows)" in src, "it must MERGE"
+    assert 'LEDGER.with_suffix(f".{os.getpid()}.tmp")' in src, \
+        "a shared .tmp between processes is a torn file, not a merge"
+    assert "rows.update(merged)" in src, "the caller must see rows another run committed"
+    assert "fcntl.flock(lf, fcntl.LOCK_UN)" in src
+
+    # ours must win on a conflicting key, since we are the run that just decided it
+    disk = {"A": {"verdict": "old"}, "B": {"verdict": "keep"}}
+    mine = {"A": {"verdict": "new"}}
+    disk.update(mine)
+    assert disk == {"A": {"verdict": "new"}, "B": {"verdict": "keep"}}
+
+
+def test_coverage_must_tile_the_units_whole_data_span():
+    """"All the data is matched" was an impression, not a measurement.
+
+    Of the first 15 match_existing verdicts, FIVE left years outside the matched polity's span and
+    nothing in the ledger showed it: AUS-QUEENSLAND has data 1860-2022 and matched QUE-1859-1900,
+    stranding 122 years; PER-NATIONAL has 1900-2023 and matched PER-1942-2025, crossing five
+    national eras. A single verdict code cannot cover a unit that outlives one polity.
+    """
+    pols = [{"polity_code": "QUE-1859-1900", "polity_name": "Queensland colony", "iso3_code": "AUS",
+             "polity_type": "subnational", "start_year": "1859", "end_year": "1900"}]
+    unit = {"unit_id": "AUS-QUEENSLAND", "y0": 1860, "y1": 2022}
+
+    # the live failing shape: one matched segment, 122 years stranded
+    v = {"coverage": [{"start_year": 1860, "end_year": 1900, "disposition": "matched",
+                       "polity_code": "QUE-1859-1900", "basis": "the colony carries these years"}]}
+    obj = harness.coverage_objection(v, unit, pols)
+    assert obj and "Data ends at 2022" in obj, obj
+    assert "122 year(s) unaccounted for" in obj, obj
+
+    # end_year is EXCLUSIVE on a polity, so 1900 itself is NOT inside QUE-1859-1900
+    v2 = {"coverage": [{"start_year": 1860, "end_year": 1900, "disposition": "matched",
+                        "polity_code": "QUE-1859-1900", "basis": "x" * 25},
+                       {"start_year": 1901, "end_year": 2022, "disposition": "proposed",
+                        "basis": "the state needs a polity of its own"}]}
+    assert "carries data through 1899" in (harness.coverage_objection(v2, unit, pols) or "")
+
+    # tiled correctly, with the exclusive end respected
+    v3 = {"coverage": [{"start_year": 1860, "end_year": 1899, "disposition": "matched",
+                        "polity_code": "QUE-1859-1900", "basis": "x" * 25},
+                       {"start_year": 1900, "end_year": 2022, "disposition": "proposed",
+                        "basis": "the state needs a polity of its own"}]}
+    assert harness.coverage_objection(v3, unit, pols) is None
+
+    # gaps, overlaps, a missing code and a ghost code are each named
+    for bad, want in (
+        ([{"start_year": 1860, "end_year": 1900, "disposition": "proposed", "basis": "x" * 25},
+          {"start_year": 1910, "end_year": 2022, "disposition": "proposed", "basis": "x" * 25}],
+         "Gap between 1900 and 1910"),
+        ([{"start_year": 1860, "end_year": 1950, "disposition": "proposed", "basis": "x" * 25},
+          {"start_year": 1940, "end_year": 2022, "disposition": "proposed", "basis": "x" * 25}],
+         "overlap"),
+        ([{"start_year": 1860, "end_year": 2022, "disposition": "matched", "basis": "x" * 25}],
+         "names no polity_code"),
+        ([{"start_year": 1860, "end_year": 2022, "disposition": "matched",
+           "polity_code": "NOPE-1-2", "basis": "x" * 25}],
+         "not a polity_code in the table"),
+    ):
+        got = harness.coverage_objection({"coverage": bad}, unit, pols) or ""
+        assert want in got, (want, got)
+
+    # an empty coverage list is the strongest failure, not a pass
+    assert harness.coverage_objection({"coverage": []}, unit, pols)
+
+
+def test_the_same_unit_shape_is_shown_how_other_countries_read_it():
+    """Thirteen identical <ISO3>-NATIONAL units split 11 match_existing / 2 not_a_territory.
+
+    The cause was in the schema -- not_a_territory listed "a national total wearing a subnational
+    label" while match_existing's wording fit it too, so both readings were faithful. Fixed by
+    making the test whether anything could EVER be routed to the identifier, and by showing each
+    unit how the same id marker was read elsewhere. Keyed on the id's own suffix, so no list of
+    markers has to be maintained.
+    """
+    import json as _json
+    schema = _json.loads((HERE / "schemas" / "routing_verdict.schema.json")
+                         .read_text(encoding="utf-8"))
+    desc = schema["properties"]["verdict"]["description"]
+    assert "INCLUDING a national total filed at admin1 level" in desc
+    assert "could EVER be routed" in desc
+    assert "SPLIT 11-2" in desc, "the divergence that motivated the wording must be recorded"
+
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "def marker(uid: str)" in src and 'uid.split("-", 1)[1]' in src
+    assert "OTHER COUNTRIES' UNITS WITH THE SAME id marker" in src
+    assert 'x.get("country") != A.country' in src, "it must look ACROSS countries"
+
+
+def test_two_units_cannot_both_be_the_same_polity_in_the_same_years():
+    """AUS-VICTORIA matched VIC-1851-1900 for 1860-1899 and then AUS-1901-2025 -- the whole of
+    Australia -- for 1901-2022. Every other Australian state could claim that equally, and the data
+    would be summed into one polity eight times.
+
+    Checked structurally, not by polity_type, because the data defeats type-checking here:
+    VIC-1851-1900 is itself typed `national` while its sibling AUWA-1829-1900 is typed `colonial`,
+    so "a subnational unit matched a national row" does not separate the good case from the bad.
+    """
+    ledger = {
+        "AUS-QUEENSLAND": {"country": "Australia", "unit_id": "AUS-QUEENSLAND",
+                           "admin_name": "Queensland",
+                           "coverage_json": json.dumps(
+                               [{"start_year": 1901, "end_year": 2022,
+                                 "disposition": "matched", "polity_code": "AUS-1901-2025"}])},
+    }
+    unit = {"unit_id": "AUS-VICTORIA", "y0": 1860, "y1": 2022}
+    v = {"coverage": [{"start_year": 1860, "end_year": 1899, "disposition": "matched",
+                       "polity_code": "VIC-1851-1900"},
+                      {"start_year": 1901, "end_year": 2022, "disposition": "matched",
+                       "polity_code": "AUS-1901-2025"}]}
+    obj = harness.double_claim_objection(v, unit, ledger, "Australia")
+    assert obj and "AUS-1901-2025 is claimed for 1901-2022 by BOTH" in obj, obj
+    assert "AUS-QUEENSLAND" in obj, "the other claimant must be named"
+    assert "matching a unit to its own CONTAINER has this shape" in obj
+
+    # no overlap in years -> no clash
+    v2 = {"coverage": [{"start_year": 1860, "end_year": 1899, "disposition": "matched",
+                        "polity_code": "AUS-1901-2025"}]}
+    assert harness.double_claim_objection(v2, unit, ledger, "Australia") is None
+
+    # a different country's unit is not a clash, and `proposed` segments never clash
+    assert harness.double_claim_objection(v, unit, ledger, "Spain") is None
+    v3 = {"coverage": [{"start_year": 1901, "end_year": 2022, "disposition": "proposed"}]}
+    assert harness.double_claim_objection(v3, unit, ledger, "Australia") is None
+
+
+def test_sibling_evidence_shows_how_a_year_was_disposed_of():
+    """Every Australian colony polity ends at 1900 EXCLUSIVE while the states begin 1901, so
+    calendar year 1900 is a seam. Within one country it got three different answers -- four units
+    called it `unroutable`, three matched it to AUS-1800-1901 -- because a sibling's verdict line
+    shows the verdict and not what it did with a year."""
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "def seg_summary(" in src
+    assert "s['disposition']" in src and "coverage_json" in src
+    assert "'  [' + seg_summary(v) + ']'" in src, "the segments must reach the sibling lines"
+
+
+def test_unroutable_years_are_pushed_back_on():
+    """A TILING IS NOT A ROUTING, and coverage_ok=yes said otherwise.
+
+    Portugal's 23 units tiled their spans perfectly while marking 1870-1988 `unroutable` -- 118
+    years, about 90% of the country's 341,508 rows. The cause was upstream: the convention read the
+    panel's `admin_level: NUTS` literally and dated every unit to the 1989 NUTS classification, but
+    18 of the 23 are DISTRICTS, an administrative division of 1835, and the source reports them from
+    1880. A reporting unit that has data for a year had a territory in that year, whatever the
+    statistical classification was called.
+    """
+    unit = {"unit_id": "PRT-PTAV", "y0": 1880, "y1": 2023}
+    pols = []
+    mostly_unroutable = {"coverage": [
+        {"start_year": 1880, "end_year": 1988, "disposition": "unroutable", "basis": "x" * 25},
+        {"start_year": 1989, "end_year": 2023, "disposition": "proposed", "basis": "x" * 25}]}
+    obj = harness.coverage_objection(mostly_unroutable, unit, pols)
+    assert obj, "the live Portuguese shape must be rejected"
+    assert "109 of this unit's 144 data years (76%)" in obj, obj
+    assert "the territory existed and was being measured" in obj
+    assert "not for a year before the classification that currently names the unit was invented" in obj
+
+    # a small genuine seam is still allowed -- the 1900 Australian federation gap is one year
+    small = {"coverage": [
+        {"start_year": 1880, "end_year": 1899, "disposition": "proposed", "basis": "x" * 25},
+        {"start_year": 1900, "end_year": 1900, "disposition": "unroutable", "basis": "x" * 25},
+        {"start_year": 1901, "end_year": 2023, "disposition": "proposed", "basis": "x" * 25}]}
+    assert harness.coverage_objection(small, unit, pols) is None
+
+
+def test_a_units_name_provenance_reaches_its_evidence():
+    """A code's shape suggests a vocabulary and can be wrong about it.
+
+    PTAV's crosswalk basis says "the 18 mainland districts ... NOT an official code list", which
+    refutes "NUTS region of Portugal" on its own -- and the panel's `admin_level` column says "NUTS"
+    for both Portuguese layers, so it cannot settle the question either.
+    """
+    basis = harness.nuts_basis()
+    assert basis.get("PTAV", "").startswith("derived:"), basis.get("PTAV")
+    assert "NOT an official code list" in basis["PTAV"]
+    assert "GISCO" in basis.get("ES111", ""), basis.get("ES111")
+    # the newly resolved districts must carry their own provenance, not inherit GISCO's
+    assert "HASC" in basis.get("PTBR", ""), basis.get("PTBR")
+    assert "by elimination" in basis.get("PTBG", ""), basis.get("PTBG")
+
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert '"name_basis": bs.get(key, "")' in src, "the basis must travel on the unit"
+    assert "NAME PROVENANCE" in src, "and reach the evidence"
+    # the evidence must no longer hard-assert GISCO for every code, since the basis can contradict it
+    assert "(Eurostat GISCO NUTS 2021, " not in src
+
+
+def test_back_cast_routes_data_without_inventing_administrative_history():
+    """Pushing back on `unroutable` moved 7,978 stranded data-years to only 7,484, because the
+    agent could not satisfy the objection: routing them meant either stretching a polity's span
+    back to 1900 (inventing administrative history) or abandoning the data. Neither is true.
+
+    The panel says which it is. `method` is blank for 96-100% of Spanish, Portuguese, French,
+    Japanese and Australian rows -- direct historical statistics -- while Colombia is 74%
+    `interpolated_scaled` plus 23% `scaled`, and Brazil 45% `fallback_interpolated`: every
+    subnational value there is an allocation of a national total. COL-CASANARE has data from 1900
+    and became a department in 1991.
+    """
+    import json as _json
+    schema = _json.loads((HERE / "schemas" / "routing_verdict.schema.json")
+                         .read_text(encoding="utf-8"))
+    disp = schema["properties"]["coverage"]["items"]["properties"]["disposition"]
+    assert disp["enum"] == ["matched", "proposed", "back_cast", "unroutable"]
+    assert "projecting it backwards" in disp["description"]
+    assert "invents administrative history" in disp["description"]
+
+    # a back_cast segment must still name the territory it is a reconstruction FOR
+    unit = {"unit_id": "COL-CASANARE", "y0": 1900, "y1": 2023}
+    nameless = {"coverage": [
+        {"start_year": 1900, "end_year": 1990, "disposition": "back_cast", "basis": "x" * 25},
+        {"start_year": 1991, "end_year": 2023, "disposition": "proposed", "basis": "x" * 25}]}
+    obj = harness.coverage_objection(nameless, unit, [])
+    assert obj and "is `back_cast` but names no polity_code" in obj, obj
+
+    # ...and once it does, the years are routed: no unroutable, so no threshold complaint
+    named = {"coverage": [
+        {"start_year": 1900, "end_year": 1990, "disposition": "back_cast",
+         "polity_code": "COL-CASANARE-1991-2025", "basis": "scaled onto the modern boundary"},
+        {"start_year": 1991, "end_year": 2023, "disposition": "proposed", "basis": "x" * 25}]}
+    assert harness.coverage_objection(named, unit, []) is None
+
+
+def test_the_method_profile_is_actually_read():
+    """`if "method" in df.columns` was the first version, and `method` was not among the columns
+    units_for_country reads -- so the guard was always False, every profile came out empty, and
+    nothing looked broken. The absence of the column is now stated instead of skipped."""
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert '"value_canonical",' in src and '"method"])' in src, \
+        "the column must be READ, or the profile is silently empty"
+    assert 'if "method" not in df.columns:' in src and "NOTE: the panel has no `method` column" in src
+    assert "HOW VALUES WERE MADE" in src, "and it must reach the evidence"
+
+
+def test_a_usage_limit_is_recognised_where_the_cli_actually_puts_it():
+    """56 calls in the final routing pass reported `return code 1, no schema-valid result`, which
+    reads as the model failing to answer. The real text was
+
+        You've hit your session limit · resets 3:10pm (Europe/Madrid)
+
+    and it sat in the CLI's own `result` field in STDOUT, with stderr empty -- so THROTTLE_RE, which
+    only read stderr, could not match it. Nine Portuguese verdicts then looked like a crosswalk gap
+    that had already been fixed, because the re-run's calls never landed.
+
+    Asserted against the real captured payload, not a hand-written string, so the shape cannot
+    drift out from under the check.
+    """
+    real = (HERE / "state" / "runs" / "portugal" / "agents" / "cycle02-prtptvi"
+            / "stdout.attempt-04.json")
+    if real.is_file():
+        got = runner.limit_signal(real, "")
+        assert got and got.startswith("usage limit reached"), got
+        assert "resets 3:10pm (Europe/Madrid)" in got, got
+        # the payload that fooled the old check: stderr was empty
+        assert not runner.THROTTLE_RE.search("")
+
+    # a capacity throttle is still a throttle, and must NOT be reclassified as a usage limit
+    assert runner.THROTTLE_RE.search("429 Too Many Requests")
+    assert runner.limit_signal(Path("/nonexistent"), "429 Too Many Requests") is None
+    assert runner.limit_signal(Path("/nonexistent"), "overloaded_error") is None
+    # ...and a genuine schema failure must stay a schema failure
+    assert runner.limit_signal(Path("/nonexistent"), "ValidationError: 'verdict' is required") is None
+
+    src = (HERE / "runner.py").read_text(encoding="utf-8")
+    assert 'blobs.append(str(raw.get("result", "")))' in src, "the payload must be read, not just stderr"
+    assert "error = limit\n                break" in src, "a limit must not burn the schema retries"
+
+    hsrc = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert '"usage limit" in res.error' in hsrc and "STOPPING" in hsrc, \
+        "the run must stop rather than fail every remaining unit identically"
 
 
 if __name__ == "__main__":
