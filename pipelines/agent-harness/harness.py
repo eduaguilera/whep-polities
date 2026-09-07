@@ -728,6 +728,16 @@ def country_convention(A, runner, pols, iso, units) -> dict[str, Any] | None:
         # The polity CODE string and the end_year COLUMN disagree for some rows, and the column is
         # the authority. Not corrected here on purpose: picking a value for the country would be
         # this harness inventing its span. The disagreement is handed back instead.
+        starts = sorted({int(by_code[e["code"]]["start_year"]) for e in c["container_chain"]})
+        if starts and c["system_start_year"] < starts[0]:
+            return (f"system_start_year is {c['system_start_year']}, but the earliest container era "
+                    f"in the chain begins {starts[0]}. A unit cannot be contained before its "
+                    f"container exists, so no unit of this country can start earlier than "
+                    f"{starts[0]} however old its territory is. The US answer gave a 1787 floor "
+                    f"against a chain beginning USA-1800-1803, and eleven states were then proposed "
+                    f"1787-1792 start years that the wiki stage had to truncate to 1800 on its own. "
+                    f"Either the floor is {starts[0]}, or the chain is missing an earlier era — say "
+                    f"which in system_start_basis.")
         ends = sorted({int(by_code[e["code"]]["end_year"]) for e in c["container_chain"]})
         if c["open_end_year"] not in ends:
             return (f"open_end_year is {c['open_end_year']}, but the containing national row(s) end "
@@ -1189,9 +1199,21 @@ def unreciprocated(page: dict[str, Any], edges: dict[str, tuple[set[str], set[st
 def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
     import json as _json
     scope = set(A.only) if A.only else None
+    def page_missing(v: dict[str, str]) -> bool:
+        """A recorded page whose FILE is absent counts as not written.
+
+        The file is the artefact -- this repo builds the polity table from the wiki -- so a ledger
+        row pointing at a page that does not exist is a stale claim, and trusting it means the unit
+        is skipped forever. USA-CALIFORNIA carried `page_polity_code: CALI-1850-2026` from a run
+        whose page was withdrawn for breaking the code convention, and California was consequently
+        skipped by every later wiki pass while looking done in the ledger.
+        """
+        rel = v.get("page_written") or ""
+        return not rel or not (REPO / rel).is_file()
+
     todo = [v for v in ledger.values()
             if v.get("country") == A.country and v.get("verdict") == "create_new"
-            and v.get("polygon_route") and not v.get("page_written")
+            and v.get("polygon_route") and page_missing(v)
             and (scope is None or v["unit_id"] in scope)]
     if not todo:
         print("\nstage 3 (wiki): nothing to author "
@@ -1553,6 +1575,17 @@ def main() -> int:
             # verified rather than requested: endpoints sitting on the data's own first and last
             # year are an extract-defined span, which must be re-spanned whenever the extract grows.
             prop = v.get("proposed") or {}
+            # A UNIT CANNOT PREDATE ITS OWN CONTAINER. Eleven US states were proposed 1787-1792
+            # against a chain that begins USA-1800-1803; stage 3 silently truncated each to 1800,
+            # so the ledger and the page disagreed and only a cross-check found it.
+            if convention and prop.get("start_year"):
+                chain_start = min((int(e["start_year"]) for e in convention["container_chain"]),
+                                  default=None)
+                if chain_start is not None and prop["start_year"] < chain_start:
+                    v = {**v, "concerns": (v.get("concerns") or []) + [
+                        f"HARNESS: proposed start {prop['start_year']} precedes the earliest "
+                        f"container era ({chain_start}); the page cannot contain it and will have "
+                        f"to truncate."]}
             if v["verdict"] == "create_new" and prop and prop.get("start_year") == u["y0"] \
                     and prop.get("end_year") in (u["y1"], u["y1"] + 1):
                 print(f"  REJECTED  {u['unit_id']:24} span "

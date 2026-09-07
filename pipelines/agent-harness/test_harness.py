@@ -791,6 +791,47 @@ def test_registered_source_feature_must_name_a_feature():
     assert "asserts that one specific " in src
 
 
+def test_a_recorded_page_whose_file_is_gone_counts_as_not_written():
+    """USA-CALIFORNIA carried `page_polity_code: CALI-1850-2026` with no page on disk.
+
+    That page was withdrawn for breaking the code convention, but the ledger still claimed it -- and
+    because the wiki stage skipped anything with `page_written` set, California was skipped by every
+    later pass while looking finished. This repo builds the polity table FROM the wiki, so the file
+    is the artefact and the ledger is only a record of it.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "def page_missing(" in src
+    assert 'not (REPO / rel).is_file()' in src, "the FILE must be checked, not just the field"
+    assert "and v.get(\"polygon_route\") and page_missing(v)" in src, "the todo filter must use it"
+    # the ledger row that exposed it
+    assert "CALI-1850-2026" in src, "record the case, so the fix cannot be undone as unmotivated"
+
+
+def test_a_unit_cannot_start_before_its_container_exists():
+    """Eleven US states carried a page start_year different from their own routing verdict.
+
+    Stage 1 proposed admission years -- Delaware 1787, Connecticut/Georgia/Maryland/Massachusetts
+    1788, Kentucky 1792 -- against a container chain that begins USA-1800-1803. Stage 3 was right
+    and truncated each to 1800, documenting "no earlier national container exists", but it did so
+    silently: the ledger and the page then disagreed, and only a cross-check found it. The floor
+    belongs where it can be enforced, in the convention.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "earliest container era" in src
+    assert "A unit cannot be contained before its" in src
+    assert "eleven states were then proposed" in src, "record the case that motivated it"
+    assert "or the chain is missing an earlier era" in src, "the other branch must stay open"
+    # and the per-unit cross-check, so a mismatch reaches the ledger as a concern
+    assert "precedes the earliest" in src and "will have \n" not in src
+    assert 'chain_start = min((int(e["start_year"]) for e in convention["container_chain"])' in src
+
+    # the arithmetic itself
+    chain = [{"code": "USA-1800-1803", "start_year": 1800, "end_year": 1803},
+             {"code": "USA-1803-1848", "start_year": 1803, "end_year": 1848}]
+    assert min(int(e["start_year"]) for e in chain) == 1800
+    assert 1787 < 1800, "Delaware's admission precedes the chain, which is the whole point"
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):
