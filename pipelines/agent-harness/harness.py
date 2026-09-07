@@ -900,9 +900,17 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
     # --only applies to EVERY stage: a later stage that ignores it acts on a unit nobody asked
     # about, which is how a request for Alaska produced a California page.
     scope = set(A.only) if A.only else None
+    def page_on_disk(v: dict[str, str]) -> bool:
+        rel = v.get("page_written") or ""
+        return bool(rel) and (REPO / rel).is_file()
+
+    # A unit whose PAGE already exists needs no route: the route was used to write it. Spain spent
+    # 45 stage-2 calls re-routing units that were already authored -- 49 of its 51 had pages -- and
+    # stage 3 then correctly reported nothing to author. The page is the artefact, so it is the
+    # thing to check, exactly as the wiki stage checks it.
     todo = [v for v in ledger.values()
             if v.get("country") == A.country and v.get("verdict") == "create_new"
-            and not v.get("polygon_route")
+            and not v.get("polygon_route") and not page_on_disk(v)
             and (scope is None or v["unit_id"] in scope)]
     if not todo:
         print("\nstage 2 (polygon): nothing to route")
@@ -1077,6 +1085,16 @@ Australia) do not. What IS true is measured from the table and stated here:
 Follow the dominant pattern unless the unit is a historical territory with a name of its own, which
 is what the bespoke codes are; if you depart from it, say why in `decisions`. `end_year` is
 EXCLUSIVE, and the years in the code must equal the years in the frontmatter -- a gate checks that.
+
+`polygon_source` TAKES A REGISTERED SLUG OR `none` — NEVER A ROUTE NAME. The routing decision below
+gives you a `polygon_route`, which is a category of answer (`registered_source_feature`,
+`registered_source_unfetched`, `new_source_needed`, `none_available`, `construct_from_registered`).
+Those are not sources. `polygon_source: new_source_needed` and `polygon_source:
+registered_source_unfetched` have both been written here and both were rejected by
+validate_declared_sources. When the route is `registered_source_unfetched`, the slug IS the source
+(it is registered, just not fetched here) and `polygon_status` is `unassigned`; when the route is
+`new_source_needed` or `none_available`, `polygon_source` is `none` and the source you would want
+belongs in an open question.
 
 THE CONTAINER EDGES MUST TILE THE WHOLE SPAN. One edge per era of the containing chain, together
 covering start_year to end_year with no gap: a 1850-2026 span containered only by USA-1959-2025

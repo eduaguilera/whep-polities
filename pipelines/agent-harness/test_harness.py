@@ -852,6 +852,32 @@ def test_a_unit_cannot_start_before_its_container_exists():
     assert 1787 < 1800, "Delaware's admission precedes the chain, which is the whole point"
 
 
+def test_stage_two_does_not_route_a_unit_that_already_has_a_page():
+    """Spain spent 45 stage-2 calls re-routing units that were already authored.
+
+    49 of its 51 create_new units had pages on disk; the route had already been used to write them,
+    and stage 3 then correctly reported "nothing to author". The page is the artefact -- the same
+    reason the wiki stage checks the file rather than the ledger field.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "def page_on_disk(" in src
+    assert 'not v.get("polygon_route") and not page_on_disk(v)' in src
+    assert "45 stage-2 calls" in src, "record the cost that motivated it"
+
+
+def test_the_wiki_prompt_forbids_a_route_name_as_polygon_source():
+    """`polygon_source: new_source_needed` was written once and rejected by
+    validate_declared_sources; adding `registered_source_unfetched` to the route enum immediately
+    produced the same category error with the new value (FRA-FRJ11). A route is a category of
+    answer, not a source, and each route has a different correct polygon_source."""
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "NEVER A ROUTE NAME" in src
+    assert "the slug IS the source" in src, "the unfetched case must be spelled out"
+    assert "`polygon_source` is `none` and the source you would want" in src
+    # and the runtime check still backs the prompt up
+    assert "def bad_polygon_source(" in src
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):
