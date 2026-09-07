@@ -484,11 +484,23 @@ def test_the_ledger_write_merges_instead_of_replacing_the_file():
     assert "rows.update(merged)" in src, "the caller must see rows another run committed"
     assert "fcntl.flock(lf, fcntl.LOCK_UN)" in src
 
-    # ours must win on a conflicting key, since we are the run that just decided it
-    disk = {"A": {"verdict": "old"}, "B": {"verdict": "keep"}}
-    mine = {"A": {"verdict": "new"}}
-    disk.update(mine)
-    assert disk == {"A": {"verdict": "new"}, "B": {"verdict": "keep"}}
+    # ONLY THE ROWS WE CHANGED. The first version was `merged.update(rows)`, and `rows` is this
+    # process's WHOLE ledger as loaded at startup -- so a long-running country overwrote every
+    # other country's fresh rows with its own stale copies of units it never touched. 163 pages
+    # existed on disk while the ledger recorded 51; 91 had to be recovered by matching each page's
+    # frontmatter back to the verdict that ordered it.
+    assert "merged.update({k: v for k, v in rows.items() if k in DIRTY})" in src
+    assert "def mark(unit_id: str)" in src, "a mutation must be recorded to be written"
+    assert src.count("mark(") >= 5, "every stage that mutates a row must mark it"
+
+    # the semantics: a stale copy of another run's row must NOT be written back
+    disk = {"A": {"verdict": "fresh from another run"}, "B": {"verdict": "keep"}}
+    mine = {"A": {"verdict": "my stale copy"}, "B": {"verdict": "keep"},
+            "C": {"verdict": "mine, changed"}}
+    dirty = {"C"}
+    disk.update({k: v for k, v in mine.items() if k in dirty})
+    assert disk["A"]["verdict"] == "fresh from another run", "untouched rows must survive"
+    assert disk["C"]["verdict"] == "mine, changed"
 
 
 def test_coverage_must_tile_the_units_whole_data_span():
@@ -756,6 +768,11 @@ def test_a_usage_limit_is_recognised_where_the_cli_actually_puts_it():
     hsrc = (HERE / "harness.py").read_text(encoding="utf-8")
     assert '"usage limit" in res.error' in hsrc and "STOPPING" in hsrc, \
         "the run must stop rather than fail every remaining unit identically"
+    # EVERY stage, not just stage 1. Adding it to the routing loop alone was half a fix: Australia's
+    # six units each failed separately through stages 2 and 3 with "usage limit reached; resets
+    # 3:50pm", because those loops only `continue`d.
+    assert hsrc.count("limit_hit(res") >= 4, "stages 1-4 must all abort"
+    assert "def limit_hit(" in hsrc, "one helper, so a new stage cannot forget it"
 
 
 def test_registered_source_feature_must_name_a_feature():

@@ -131,6 +131,14 @@ def read_ledger() -> dict[str, dict[str, str]]:
         return {r["unit_id"]: r for r in csv.DictReader(fh)}
 
 
+# unit_ids this process has modified. Only these are written over what is on disk.
+DIRTY: set[str] = set()
+
+
+def mark(unit_id: str) -> None:
+    DIRTY.add(unit_id)
+
+
 def write_ledger(rows: dict[str, dict[str, str]]) -> None:
     """Merge our rows into whatever is on disk now, under an exclusive lock.
 
@@ -150,7 +158,12 @@ def write_ledger(rows: dict[str, dict[str, str]]) -> None:
         fcntl.flock(lf, fcntl.LOCK_EX)
         try:
             merged = read_ledger()          # whatever any concurrent run has committed
-            merged.update(rows)             # ours are newer by construction
+            # ONLY THE ROWS WE ACTUALLY CHANGED. `merged.update(rows)` was the first version, and
+            # `rows` is this process's WHOLE ledger as loaded at startup -- so a long-running country
+            # overwrote every other country's fresh rows with its own stale copies of units it never
+            # touched. 163 pages existed on disk while the ledger recorded 51, and the difference was
+            # this line. "Ours are newer by construction" is only true of what we modified.
+            merged.update({k: v for k, v in rows.items() if k in DIRTY})
             ordered = [{f: merged[k].get(f, "") for f in LEDGER_FIELDS} for k in sorted(merged)]
             # A distinct temp name per process: two runs sharing one .tmp would interleave writes
             # and os.replace whichever finished last, which is a torn file, not a merge.
@@ -241,6 +254,23 @@ def double_claim_objection(v: dict[str, Any], unit: dict[str, Any],
             "a different territory that needs its own polity, or the years belong to only one of "
             "them. Note that matching a unit to its own CONTAINER has this shape: every sibling "
             "could claim the container equally, which is what makes it wrong.")
+
+
+def limit_hit(res, where: str, ledger: dict[str, dict[str, str]] | None = None) -> bool:
+    """True when a job failed on a usage limit, in which case the caller must stop.
+
+    Added to stage 1 first and only stage 1, which was half a fix: Australia's six units each
+    failed separately through stages 2 and 3 with `usage limit reached; resets 3:50pm`, because
+    those loops just `continue`d. Every remaining unit fails identically until the reset, so
+    carrying on only buries the cause under repetitions of itself.
+    """
+    if res.ok or not res.error or "usage limit" not in res.error:
+        return False
+    print(f"\n  STOPPING {where}: {res.error}. Re-run after the reset; "
+          f"completed work is already banked.")
+    if ledger is not None:
+        write_ledger(ledger)
+    return True
 
 
 def coverage_objection(v: dict[str, Any], unit: dict[str, Any],
@@ -888,6 +918,8 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
                           refresh=A.refresh)
         if not res.ok:
             print(f"  FAIL  {v['unit_id']:24} {res.error}")
+            if limit_hit(res, f"{A.country} stage 2", ledger):
+                return
             continue
         r = res.result
 
@@ -955,6 +987,7 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
             {k: r.get(k) for k in ("construction", "candidate_new_source", "vintage_risk")
              if r.get(k)}, sort_keys=True)
         v["polygon_confidence"] = r["confidence"]
+        mark(v["unit_id"])
         v["polygon_reasoning"] = r["reasoning"]
         write_ledger(ledger)
         detail = r.get("feature_id") or (
@@ -1247,6 +1280,8 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
         res = runner.call(job, prompt, WIKI_SCHEMA, refresh=A.refresh)
         if not res.ok:
             print(f"  FAIL  {v['unit_id']:24} {res.error}")
+            if limit_hit(res, f"{A.country} stage 3", ledger):
+                return
             continue
         page = res.result
 
@@ -1300,6 +1335,7 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
         dest.write_text(render_page(page), encoding="utf-8")
         v["page_written"] = str(dest.relative_to(REPO))
         v["page_polity_code"] = code
+        mark(v["unit_id"])
         write_ledger(ledger)
         nsec = len(page["decisions"]) + len(page["open_questions"])
         print(f"  wrote {dest.relative_to(REPO)}  "
@@ -1380,6 +1416,8 @@ def run_repair_stage(A, runner, ledger, max_attempts: int = 3) -> None:
                               WIKI_SCHEMA, refresh=True)
             if not res.ok:
                 print(f"      repair call failed: {res.error}")
+                if limit_hit(res, f"{code} stage 4", ledger):
+                    return
                 v["repair_status"] = "exhausted"
                 break
             cand = res.result
@@ -1401,6 +1439,7 @@ def run_repair_stage(A, runner, ledger, max_attempts: int = 3) -> None:
         v["repair_remaining"] = " | ".join(f"[{f.kind}] {f.line[:80]}" for f in best_fails)
         write_ledger(ledger)
         v["repair_gates_red"] = " | ".join(sorted(set(all_red)))
+        mark(v["unit_id"])
         print(f"  {code}: {v['repair_status']} after {len(attempts)} attempt(s); "
               f"{len(best_fails)} failure(s) naming {code}"
               + (f"; {len(set(all_red))} gate(s) red overall" if all_red else "; no gate red"))
@@ -1619,6 +1658,7 @@ def main() -> int:
                           "page_written", "page_polity_code"):
                     row[k] = ""
             ledger[u["unit_id"]] = row
+            mark(u["unit_id"])
             write_ledger(ledger)
             tag = "cached" if res.cached else "fresh"
             extra = v.get("matched_polity_code") or (
