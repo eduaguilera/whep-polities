@@ -916,6 +916,7 @@ def run_polygon_stage(A, runner, pols, iso, feats, ledger) -> None:
         print("\nstage 2 (polygon): nothing to route")
         return
     slugs = polygon_slugs()
+    existing_pages = existing_territory_pages(pols, iso)
     print(f"\nstage 2 (polygon): {len(todo)} proposed polit(ies)")
     for v in todo:
         proposed = _json.loads(v["proposed_json"]) if v.get("proposed_json") else {}
@@ -1247,6 +1248,46 @@ def unreciprocated(page: dict[str, Any], edges: dict[str, tuple[set[str], set[st
             "leave the asymmetry unremarked.")
 
 
+def existing_territory_pages(pols: list[dict[str, str]], iso: str) -> list[tuple[str, str]]:
+    """(code, name) for pages already representing a territory of this country."""
+    return [(p["polity_code"], p["polity_name"]) for p in pols if p["iso3_code"] == iso]
+
+
+def duplicate_territory_objection(page: dict[str, Any], unit: dict[str, Any],
+                                  existing: list[tuple[str, str]]) -> str | None:
+    """Does a page already exist for the territory this one is about?
+
+    A polity_code clash is refused and re-asked, which is right -- but it means a SECOND page for
+    the same province can be created under a different code, and that is worse than a clash because
+    nothing rejects it. It happened for real: runs whose ledger rows were clobbered left 35 authored
+    pages unclaimed, and 8 of them could not be matched back to their verdict, so a re-run would
+    have authored the same territories again under new codes.
+
+    Name similarity is the only signal available before the page is written, so the finding is
+    handed back rather than acted on: two provinces can legitimately share a name stem, and only
+    the author can say whether these are one territory or two.
+    """
+    def core(s: str) -> str:
+        # the distinctive part, before any parenthetical qualifier
+        return norm(re.sub(r"\(.*?\)", "", str(s)))
+
+    mine = core(page.get("polity_name", "")) or core(unit.get("official_name") or "")
+    if len(mine) < 4:
+        return None
+    hits = [(c, n) for c, n in existing
+            if c != page.get("polity_code") and core(n) and len(core(n)) >= 4
+            and (core(n) == mine or core(n) in mine or mine in core(n))]
+    if not hits:
+        return None
+    listed = "; ".join(f"{c} ({n})" for c, n in hits[:4])
+    return (f"A page already exists for a territory whose name matches this one: {listed}. Two "
+            f"polities must not represent the same territory over the same years -- data would be "
+            f"counted into both. Either that page IS this reporting unit, in which case this should "
+            f"have been `match_existing` and you should say so in `open_questions` rather than "
+            f"author a second page; or they are genuinely different territories, in which case say "
+            f"in `decisions` what distinguishes them. Do not silently create the second one.")
+
+
 def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
     import json as _json
     scope = set(A.only) if A.only else None
@@ -1323,6 +1364,8 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
                 if claimed:
                     clash = (f"polity_code {code} was already assigned in this run to "
                              f"{claimed[0]}, a different unit.")
+            if not clash:
+                clash = duplicate_territory_objection(page, v, existing_pages)
             if not clash:
                 clash = bad_polygon_source(page, slugs)
             if not clash:

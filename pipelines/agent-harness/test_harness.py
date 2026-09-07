@@ -878,6 +878,35 @@ def test_the_wiki_prompt_forbids_a_route_name_as_polygon_source():
     assert "def bad_polygon_source(" in src
 
 
+def test_a_second_page_for_the_same_territory_is_handed_back():
+    """A polity_code clash is refused and re-asked -- which lets a SECOND page for the same
+    province be authored under a DIFFERENT code, and nothing rejects that.
+
+    It nearly happened: runs whose ledger rows were clobbered left 35 authored pages unclaimed, and
+    8 could not be matched back to their verdict, so a re-run would have authored those territories
+    again. Handed back rather than acted on, because two provinces can legitimately share a name
+    stem and only the author can say whether these are one territory or two.
+    """
+    existing = [("ESP-CO-1833-2025", "A Coruña (province of Spain)"),
+                ("ESP-MD-1833-2025", "Madrid (province/region of Spain)")]
+    dup = {"polity_code": "ESP-ACORUNA-1833-2025", "polity_name": "A Coruña (province of Spain)"}
+    obj = harness.duplicate_territory_objection(dup, {"official_name": "A Coruña"}, existing)
+    assert obj and "ESP-CO-1833-2025" in obj, obj
+    assert "must not represent the same territory" in obj
+    assert "should have been `match_existing`" in obj
+    assert "Do not silently create the second one." in obj
+
+    # a genuinely different territory is not flagged
+    other = {"polity_code": "ESP-SE-1833-2025", "polity_name": "Sevilla (province of Spain)"}
+    assert harness.duplicate_territory_objection(other, {"official_name": "Sevilla"}, existing) is None
+    # the page must not flag ITSELF on a re-author
+    same = {"polity_code": "ESP-CO-1833-2025", "polity_name": "A Coruña (province of Spain)"}
+    assert harness.duplicate_territory_objection(same, {}, existing) is None
+    # a short or empty name cannot be matched on, so it must not guess
+    assert harness.duplicate_territory_objection({"polity_code": "X", "polity_name": "Po"},
+                                                 {}, existing) is None
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):
