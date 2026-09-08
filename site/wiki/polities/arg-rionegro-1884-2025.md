@@ -17,10 +17,14 @@ polygon_status: unassigned
 predecessor: []
 successor: []
 container:
-  - code: ARG-1884-1951
+  - code: ARG-1800-1899
     start_year: 1884
+    end_year: 1899
+    basis: Río Negro was a Territorio Nacional (Ley 1532, 1884) administered directly by the Argentine national government, so it sat inside the national row for this era. Split across the national chain because the previous single edge named ARG-1884-1951, a code that no longer exists after that page was renamed ARG-CHACO-1884-1951.
+  - code: ARG-1899-1902
+    start_year: 1899
     end_year: 1902
-    basis: Río Negro existed as a Territorio Nacional (Ley 1532, 1884) inside the Argentine Republic during the national government era that this container code spans before the 1902 administrative reorganisation of the territorios nacionales.
+    basis: Río Negro was a Territorio Nacional (Ley 1532, 1884) administered directly by the Argentine national government, so it sat inside the national row for this era. Split across the national chain because the previous single edge named ARG-1884-1951, a code that no longer exists after that page was renamed ARG-CHACO-1884-1951.
   - code: ARG-1902-2025
     start_year: 1902
     end_year: 2025

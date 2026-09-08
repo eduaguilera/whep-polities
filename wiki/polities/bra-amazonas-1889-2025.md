@@ -17,6 +17,14 @@ polygon_status: unassigned
 predecessor: []
 successor: []
 container:
+  - code: BRA-1800-1903
+    start_year: 1889
+    end_year: 1903
+    basis: Added to cover the member's own span — every national era its span overlaps needs one edge, clipped to the intersection. Without a covering edge WHEP's .drop_contained_candidates() cannot make this member step aside, so resolve_polity_label() sees it as a rival candidate for the country's own iso3 and returns NA. Pattern follows BRA-ALAGOAS-1889-2025.
+  - code: BRA-1903-1909
+    start_year: 1903
+    end_year: 1909
+    basis: Added to cover the member's own span — every national era its span overlaps needs one edge, clipped to the intersection. Without a covering edge WHEP's .drop_contained_candidates() cannot make this member step aside, so resolve_polity_label() sees it as a rival candidate for the country's own iso3 and returns NA. Pattern follows BRA-ALAGOAS-1889-2025.
   - code: BRA-1909-2025
     start_year: 1909
     end_year: 2025

@@ -1312,6 +1312,20 @@ def structural_page_objection(page: dict[str, Any], pols: list[dict[str, str]],
     # PER-1825-1909 and PER-1884-1909 all bind to feature 135. Both checks are right for a new
     # subnational page and wrong for the corpus, and only running them over every page showed it.
     is_sub = str(fm.get("type") or page.get("polity_type") or "subnational") == "subnational"
+    # A PAGE THE HARNESS CREATES IS A PART OF A COUNTRY, so `type: national` is almost always a
+    # slip -- and an expensive one. CHL-LI-1976-2025 is the O'Higgins REGION and was typed
+    # national, which gave Chile two entries claiming to be the country and made
+    # validate_order_decided_families unable to pick one for 2018-2024. The name says what it is.
+    name_l = str(page.get("polity_name") or "").lower()
+    if not is_sub and any(w in name_l for w in
+                          ("region of", "province of", "province,", "department of",
+                           "departement", "state of", "prefecture of", "district of",
+                           "county of", "territory of", "autonomous city of")):
+        problems.append(
+            f"`type: {fm.get('type')}` but the name {page.get('polity_name')!r} says this is a part "
+            f"of a country. A national row is the country itself; two of them live in the same year "
+            f"make the iso3 tie-break unable to choose, which is what "
+            f"validate_order_decided_families reports. Use `type: subnational`.")
 
     # SUBNATIONAL ONLY. Applied to every page this objected to 438 of them -- every existing
     # NATIONAL polity, PER-1825-1884 and DEU-1920-1938 among them, which use the bare shape
