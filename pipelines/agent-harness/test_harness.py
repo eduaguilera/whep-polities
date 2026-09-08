@@ -1048,6 +1048,45 @@ def test_structural_page_checks_catch_what_the_repo_gates_caught():
     assert harness.structural_page_objection(good, pols, "ARG") is None
 
 
+def test_stage_four_triages_before_rebuilding_per_page():
+    """The per-page repair loop rebuilds polities_database.csv before running the gates, because
+    the gates judge the DERIVED table rather than the page. Correct per page, unusable across many:
+    376 pages times a multi-minute rebuild is days of work to discover most pages are clean.
+
+    So the gates run once with no code filter, and a page named in no failure is recorded clean
+    without a rebuild of its own.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "TRIAGE ONCE, THEN REPAIR ONLY WHAT IS IMPLICATED" in src
+    assert "_repair.run_gates_detail()" in src, "the triage pass must run unfiltered"
+    assert "recorded clean without a rebuild" in src
+    # the triaged-clean pages must still record whether OTHER gates are red, not just say `clean`
+    assert '"clean" if not red_gates else "clean_for_code"' in src
+    # and the per-page loop must still exist for the pages that are implicated
+    assert "up to {max_attempts} attempt(s) each" in src
+
+
+def test_every_ledger_write_is_preceded_by_its_mark():
+    """`write_ledger` overlays only MARKED rows and refreshes the rest from disk, so a write that
+    precedes its mark publishes nothing AND reverts the row.
+
+    It showed as a blank status in a real run summary -- "ESP-IBZ-1833-2025:  after 2 attempt(s)" --
+    and would have made every repair re-run forever, because repair_status is what the todo filter
+    reads. Checked structurally: in each stage, the mark must appear before the write that follows
+    the mutations it covers.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8").split("\n")
+    marks = [i for i, ln in enumerate(src) if "mark(v[\"unit_id\"])" in ln
+             or 'mark(u["unit_id"])' in ln]
+    assert marks, "no mark() calls found"
+    for i in marks:
+        # the nearest write_ledger AFTER this mark, within the same block, is the one it covers;
+        # what must not happen is a write_ledger on the line immediately BEFORE the mark
+        prev = src[i - 1].strip()
+        assert prev != "write_ledger(ledger)", \
+            f"line {i + 1}: write_ledger runs before its mark, so the row reverts"
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

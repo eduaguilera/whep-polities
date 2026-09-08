@@ -1510,7 +1510,36 @@ def run_repair_stage(A, runner, ledger, max_attempts: int = 3) -> None:
     if not todo:
         print("\nstage 4 (repair): nothing to repair")
         return
-    print(f"\nstage 4 (repair): {len(todo)} page(s), up to {max_attempts} attempt(s) each")
+
+    # TRIAGE ONCE, THEN REPAIR ONLY WHAT IS IMPLICATED. The per-page loop below rebuilds
+    # polities_database.csv before running the gates, because the gates judge the derived table
+    # rather than the page. That is correct per page and unusable across many: 376 pages times a
+    # multi-minute rebuild is days of work to find that most pages are already clean. So the gates
+    # run ONCE here with no code filter, and a page whose code appears in no failure is recorded
+    # clean without a rebuild of its own.
+    print(f"\nstage 4 (repair): triaging {len(todo)} page(s)")
+    subprocess.run([sys.executable, "scripts/build_database.py"], cwd=str(REPO),
+                   capture_output=True, text=True, timeout=1800)
+    subprocess.run([sys.executable, "scripts/write_polity_containment.py"], cwd=str(REPO),
+                   capture_output=True, text=True, timeout=900)
+    all_fails, red_gates = _repair.run_gates_detail()
+    implicated = {v["page_polity_code"] for v in todo
+                  if any(v["page_polity_code"] in f.line for f in all_fails)}
+    clean_now = [v for v in todo if v["page_polity_code"] not in implicated]
+    for v in clean_now:
+        v["repair_status"] = "clean" if not red_gates else "clean_for_code"
+        v["repair_attempts"] = "0"
+        v["repair_gates_red"] = " | ".join(sorted(set(red_gates)))
+        mark(v["unit_id"])
+    if clean_now:
+        write_ledger(ledger)
+    print(f"  {len(all_fails)} attributable failure(s) over {len(red_gates)} red gate(s); "
+          f"{len(clean_now)} page(s) named in none — recorded clean without a rebuild")
+    todo = [v for v in todo if v["page_polity_code"] in implicated]
+    if not todo:
+        print("  nothing left to repair")
+        return
+    print(f"  repairing {len(todo)} page(s), up to {max_attempts} attempt(s) each")
 
     for v in todo:
         code = v["page_polity_code"]
@@ -1584,9 +1613,14 @@ def run_repair_stage(A, runner, ledger, max_attempts: int = 3) -> None:
         v["repair_attempts"] = str(len(attempts))
         v["repair_rank"] = str(best_rank)
         v["repair_remaining"] = " | ".join(f"[{f.kind}] {f.line[:80]}" for f in best_fails)
-        write_ledger(ledger)
         v["repair_gates_red"] = " | ".join(sorted(set(all_red)))
+        # MARK BEFORE WRITING. `write_ledger` overlays only marked rows and updates the rest from
+        # disk, so writing first and marking after published nothing and then overwrote this row's
+        # fresh values with the empty ones on disk. It showed as a blank status in the run summary
+        # ("ESP-IBZ-1833-2025:  after 2 attempt(s)") and would have made every repair re-run
+        # forever, since repair_status is what the todo filter reads.
         mark(v["unit_id"])
+        write_ledger(ledger)
         print(f"  {code}: {v['repair_status']} after {len(attempts)} attempt(s); "
               f"{len(best_fails)} failure(s) naming {code}"
               + (f"; {len(set(all_red))} gate(s) red overall" if all_red else "; no gate red"))
