@@ -1001,6 +1001,53 @@ def test_writing_the_ledger_does_not_invalidate_the_caller_s_references():
     assert "rows[k].update(fresh)" in src
 
 
+def test_structural_page_checks_catch_what_the_repo_gates_caught():
+    """Three gate failures over the 374 created polities, all facts rather than judgements.
+
+    validate_period_overlaps (7): a subnational row taking the bare <ISO3>-<start>-<end> shape joins
+    the national prefix family, so ARG-1884-1951 overlaps ARG-1800-1899, ARG-1899-1902 and
+    ARG-1900-1955. validate_chain_integrity (5): predecessors naming no row, e.g.
+    AUS-NSW-1901-2025 -> AUS-NSW-1800-1900. validate_polity_containment (10): a container code that
+    does not exist, or an edge running outside the container's own era.
+    """
+    pols = [
+        {"polity_code": "ARG-1800-1899", "polity_name": "Argentina", "iso3_code": "ARG",
+         "polity_type": "national", "start_year": "1800", "end_year": "1899"},
+        {"polity_code": "ARG-1902-2025", "polity_name": "Argentina", "iso3_code": "ARG",
+         "polity_type": "national", "start_year": "1902", "end_year": "2025"},
+    ]
+    # 1. the bare national shape for a subnational row
+    bare = {"polity_code": "ARG-1884-1951", "frontmatter": {}}
+    obj = harness.structural_page_objection(bare, pols, "ARG")
+    assert obj and "bare <ISO3>-<start>-<end> shape" in obj, obj
+    assert "validate_period_overlaps" in obj
+    # ...but the shape is fine where no national row occupies the family
+    assert harness.structural_page_objection({"polity_code": "XXX-1884-1951", "frontmatter": {}},
+                                             pols, "XXX") is None
+
+    # 2. a chain reference to a row that does not exist
+    dead = {"polity_code": "ARG-BA-1884-2025",
+            "frontmatter": {"predecessor": ["AUS-NSW-1800-1900"], "successor": []}}
+    assert "names no row in the polity table" in (harness.structural_page_objection(dead, pols, "ARG") or "")
+
+    # 3. a container edge outside the container's own era
+    outside = {"polity_code": "ARG-BA-1884-2025", "frontmatter": {
+        "container": [{"code": "ARG-1902-2025", "start_year": 1884, "end_year": 2025}]}}
+    got = harness.structural_page_objection(outside, pols, "ARG") or ""
+    assert "covers 1884-2025 but ARG-1902-2025 itself spans 1902-2025" in got, got
+    assert "one edge per era" in got
+    # a container that does not exist at all
+    ghost = {"polity_code": "ARG-BA-1884-2025", "frontmatter": {
+        "container": [{"code": "ESP-1833-2025", "start_year": 1884, "end_year": 2025}]}}
+    assert "is not a polity_code in the table" in (harness.structural_page_objection(ghost, pols, "ARG") or "")
+
+    # a well-formed page raises nothing
+    good = {"polity_code": "ARG-BA-1902-2025", "frontmatter": {
+        "predecessor": [], "successor": [],
+        "container": [{"code": "ARG-1902-2025", "start_year": 1902, "end_year": 2025}]}}
+    assert harness.structural_page_objection(good, pols, "ARG") is None
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

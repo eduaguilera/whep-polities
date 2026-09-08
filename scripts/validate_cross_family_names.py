@@ -66,6 +66,10 @@ BASELINE = frozenset({
     ("COL-CORDOBA-1952-2025", "ESP-COR-1833-2025"),
     ("BRA-AMAZONAS-1889-2025", "COL-AMA-1991-2025"),      # Amazonas: Brazil and Colombia
     ("GEO-1991-2025", "USA-GA-1800-2025"),                # Georgia the country, Georgia the US state
+    ("ARG-LARIOJA-1853-2025", "ESP-RI-1833-2025"),        # La Rioja: Argentina and Spain
+    ("ARG-SANTACRUZ-1955-2025", "BOL-SZ-1825-2025"),      # Santa Cruz: Argentina and Bolivia
+    ("ARG-1900-1955", "TWN-1895-1945"),                   # Formosa: an Argentine national territory
+                                                          # and Japanese Taiwan
 })
 
 

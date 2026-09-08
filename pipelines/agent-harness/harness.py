@@ -1257,8 +1257,83 @@ def unreciprocated(page: dict[str, Any], edges: dict[str, tuple[set[str], set[st
 
 
 def existing_territory_pages(pols: list[dict[str, str]], iso: str) -> list[tuple[str, str]]:
-    """(code, name) for pages already representing a territory of this country."""
-    return [(p["polity_code"], p["polity_name"]) for p in pols if p["iso3_code"] == iso]
+    """(code, name) for every polity already in the table -- NOT filtered to this iso3.
+
+    Filtering by iso3 was the first version and it missed the case it most needed to catch. This
+    repository uses LOCAL iso codes where no ISO 3166 code exists, so the pre-existing Canary
+    Islands polity is `ICN-1800-2025` with `iso3_code = ICN`. A Spanish unit therefore authored
+    `ESP-CN-1833-1927`, "Canary Islands (undivided province of Spain)", a second polity for the same
+    territory -- and the iso3 filter meant ICN was never among the candidates compared against.
+    It got past the check twice, and only validate_cross_family_names found it.
+
+    The cost of widening is objections on genuine cross-country namesakes -- Cordoba in Argentina,
+    Colombia and Spain; Formosa in Argentina and Japanese Taiwan. That is the right trade, because
+    the objection is handed back for the author to dismiss with a reason rather than acted on.
+    """
+    return [(p["polity_code"], p["polity_name"]) for p in pols]
+
+
+def structural_page_objection(page: dict[str, Any], pols: list[dict[str, str]],
+                              iso: str) -> str | None:
+    """Checks the repository's own gates make, applied before the page is written.
+
+    All three fired on pages this run produced, and all three are facts rather than judgements:
+
+    - `validate_period_overlaps` (7 new): a SUBNATIONAL row that takes the bare
+      `<ISO3>-<start>-<end>` shape joins the national prefix family, so ARG-1884-1951 overlaps
+      ARG-1800-1899, ARG-1899-1902 and ARG-1900-1955. The shape itself is legitimate -- 6 of 60
+      existing subnational rows use it -- but not where national rows already occupy that family.
+    - `validate_chain_integrity` (5 DEAD TARGETs): a predecessor naming no row, e.g.
+      AUS-NSW-1901-2025 -> AUS-NSW-1800-1900, and BRA-MATOGROSSO with no years at all.
+    - `validate_polity_containment` (10): a container code that does not exist (ESP-1833-2025), or
+      an edge whose interval runs outside the container's own era (BRA-SERGIPE-1889-2025 attached to
+      BRA-1909-2025 while covering 1889-2025).
+    """
+    by_code = {p["polity_code"]: p for p in pols}
+    fm = page.get("frontmatter") or {}
+    code = page.get("polity_code", "")
+    problems: list[str] = []
+
+    if code.count("-") == 2 and code.startswith(iso + "-"):
+        national = [p for p in pols if p["polity_code"].startswith(iso + "-")
+                    and p["polity_type"] == "national"]
+        if national:
+            problems.append(
+                f"`{code}` uses the bare <ISO3>-<start>-<end> shape, which puts it in the same "
+                f"prefix family as {iso}'s {len(national)} national row(s) -- so "
+                f"validate_period_overlaps sees a subnational span overlapping the national eras. "
+                f"Add a subunit segment: <ISO3>-<SUBUNIT>-<start>-<end>.")
+
+    def listed(key: str) -> list[str]:
+        v = fm.get(key) or page.get(key) or []
+        return [v] if isinstance(v, str) and v else list(v)
+
+    for key in ("predecessor", "successor"):
+        for ref in listed(key):
+            if ref not in by_code:
+                problems.append(
+                    f"`{key}: {ref}` names no row in the polity table, so every traversal that "
+                    f"reads it dead-ends. Name a code that exists, or leave the field empty and "
+                    f"put the relationship in an open question.")
+
+    for e in (fm.get("container") or []):
+        if not isinstance(e, dict):
+            continue
+        c = e.get("code")
+        if c not in by_code:
+            problems.append(f"container `{c}` is not a polity_code in the table.")
+            continue
+        cp = by_code[c]
+        c0, c1 = int(cp["start_year"]), int(cp["end_year"])
+        s, en = e.get("start_year"), e.get("end_year")
+        if s is not None and en is not None and (int(s) < c0 or int(en) > c1):
+            problems.append(
+                f"container edge to {c} covers {s}-{en} but {c} itself spans {c0}-{c1}. An edge "
+                f"must sit inside BOTH parties' spans -- attach the earlier years to the container "
+                f"era that actually covers them, adding one edge per era.")
+    if not problems:
+        return None
+    return "\n".join(problems)
 
 
 def duplicate_territory_objection(page: dict[str, Any], unit: dict[str, Any],
@@ -1373,6 +1448,8 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
                 if claimed:
                     clash = (f"polity_code {code} was already assigned in this run to "
                              f"{claimed[0]}, a different unit.")
+            if not clash:
+                clash = structural_page_objection(page, pols, iso)
             if not clash:
                 clash = duplicate_territory_objection(page, v, existing_pages)
             if not clash:
