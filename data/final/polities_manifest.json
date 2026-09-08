@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "6a5c536fb9ffaa49949abf48097e964b56e80826fe205f1f78865ea501a364b7",
+ "identity_sha256": "205cd226c5e16fbd58b669fcdefc14f90f050c1632fe893a622d669f5cbd3ac3",
  "counts": {
-  "total": 1205,
-  "live": 1161,
+  "total": 1206,
+  "live": 1162,
   "dead": 44
  },
  "dead_status": [
@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "baa2fae8ce482c7664b20ba01158b01470f2525bbd6239a91a2102b72f3b8abc",
-  "aliases": 1007,
-  "labels": 526,
+  "sha256": "1379b3a42be45d09468250002dcd25c628d0cfd2c0a58436b7caa3fc00a678b7",
+  "aliases": 1802,
+  "labels": 1256,
   "sources": [
    "crops-manure-n",
    "fao",
@@ -185,11 +185,17 @@
    "iia-cotton",
    "iia-tea",
    "juan",
+   "juan-subnational",
    "lassaletta-grassland-share",
    "mitchell",
    "mueller-synthetic-n",
    "sa_colonial",
    "trade-sources",
+   "whep-lab-australia",
+   "whep-lab-france-livestock",
+   "whep-lab-japan",
+   "whep-lab-latam",
+   "whep-lab-spain-provinces",
    "whep-split-2026-06-29"
   ]
  },
@@ -1158,6 +1164,7 @@
   "ESP-H-1833-2025",
   "ESP-HU-1833-2025",
   "ESP-IB-1833-2025",
+  "ESP-IBZ-1833-2025",
   "ESP-J-1833-2025",
   "ESP-LE-1833-2025",
   "ESP-LL-1833-2025",

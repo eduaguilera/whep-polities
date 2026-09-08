@@ -1156,6 +1156,20 @@ def main() -> int:
         print(f"Pages skipped:          {len(skipped_pages)}")
         for name, reason in skipped_pages:
             print(f"  - {name}: {reason}", file=sys.stderr)
+    dupes = [n for n, r in skipped_pages if "duplicate" in r.lower()]
+    if dupes:
+        # Two pages declaring one polity_code means one TERRITORY silently leaves the table: the row
+        # count still matches the code count, so nothing downstream can see the hole.
+        # esp-ibz-1833-2025.md (Eivissa y Formentera) declared ESP-IB-1833-2025, Illes Balears'
+        # code, and Eivissa vanished -- found only because an alias could not resolve to it.
+        print()
+        print(f"FAIL: {len(dupes)} page(s) declare a polity_code another page already declared, so "
+              f"their territory is ABSENT from the table:")
+        for name in dupes:
+            print(f"  - {name}")
+        print("Give each territory its own code. A page's filename is not the authority — the "
+              "`polity_code` in its frontmatter is.")
+        return 1
     unreadable = [n for n, r in skipped_pages if r == "unreadable frontmatter"]
     if unreadable:
         # This used to print a warning to stderr and exit 0, so the polity simply vanished from the
