@@ -1024,6 +1024,12 @@ def test_structural_page_checks_catch_what_the_repo_gates_caught():
     # ...but the shape is fine where no national row occupies the family
     assert harness.structural_page_objection({"polity_code": "XXX-1884-1951", "frontmatter": {}},
                                              pols, "XXX") is None
+    # ...and a NATIONAL page uses the bare shape precisely because it is national. Applied to every
+    # page, this check objected to 438 of them -- every existing national polity, PER-1825-1884 and
+    # DEU-1920-1938 included. It only ever ran on new subnational pages, so the false positive
+    # stayed hidden until the whole wiki was passed through it.
+    national_page = {"polity_code": "ARG-1902-2025", "frontmatter": {"type": "national"}}
+    assert harness.structural_page_objection(national_page, pols, "ARG") is None
 
     # 2. a chain reference to a row that does not exist
     dead = {"polity_code": "ARG-BA-1884-2025",
@@ -1113,6 +1119,45 @@ def test_informational_gate_output_is_not_counted_as_a_failure():
                  "  NEW cross-family name collision: X and Y",
                  "  ASYMMETRY: 84 predecessor-only chain edges"):
         assert shape.match(line), line
+
+
+def test_a_province_cannot_take_its_country_s_polygon_or_claim_absent_geometry():
+    """Two polygon defects the gates caught after my own checks let them through.
+
+    FRA-54, FRA-55 and FRA-57 all declared cshapes-2.0 / FRA-1919-2025 -- the outline of FRANCE --
+    for three separate departements. My earlier check objected only to an EMPTY feature_id; these
+    were populated, with the country's own feature, so validate_shared_polygons found them instead.
+
+    And 15 Spanish provinces declared `polygon_status: assigned` with mapspain-ign feature ids while
+    data/geodata/mapspain-ign/provinces.gpkg does not exist here, so validate_polygons reported
+    "status='assigned' but no geometry attached". `assigned` is what that gate reads to decide a
+    polygon is real, so it is a claim, not a label.
+    """
+    pols = [{"polity_code": "FRA-1919-2025", "polity_name": "France", "iso3_code": "FRA",
+             "polity_type": "national", "start_year": "1919", "end_year": "2025",
+             "polygon_source": "cshapes-2.0", "polygon_feature_id": "FRA-1919-2025"}]
+    stealing = {"polity_code": "FRA-54-1871-2025", "frontmatter": {
+        "polygon_source": "cshapes-2.0", "polygon_feature_id": "FRA-1919-2025"}}
+    obj = harness.structural_page_objection(stealing, pols, "FRA")
+    assert obj and "already the boundary of FRA-1919-2025" in obj, obj
+    assert "every sibling" in obj and "could claim it equally" in obj
+
+    # a feature at the unit's own granularity is fine
+    ok = {"polity_code": "FRA-54-1871-2025", "frontmatter": {
+        "polygon_source": "cshapes-2.0", "polygon_feature_id": "FRA.54_1"}}
+    assert harness.structural_page_objection(ok, pols, "FRA") is None
+
+    # `assigned` against a source whose file is absent
+    assert not harness.source_file("mapspain-ign").is_file(), "test premise: the file is absent here"
+    lying = {"polity_code": "ESP-B-1833-2025", "frontmatter": {
+        "polygon_source": "mapspain-ign", "polygon_feature_id": "08",
+        "polygon_status": "assigned"}}
+    got = harness.structural_page_objection(lying, [], "ESP") or ""
+    assert "is not present in this" in got, got
+    assert "The honest status is `unassigned`" in got
+    # ...and `unassigned` against the same absent source is correct, so it must not object
+    honest = dict(lying, frontmatter=dict(lying["frontmatter"], polygon_status="unassigned"))
+    assert harness.structural_page_objection(honest, [], "ESP") is None
 
 
 if __name__ == "__main__":

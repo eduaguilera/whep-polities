@@ -35,3 +35,28 @@
 # The cost was never the 14 false entries. It is that a REAL new ambiguity would have arrived
 # as a 15th line among 14 known-harmless ones, in a file whose header explained them away.
 # Empty means the next addition is unambiguously a regression.
+
+# ---------------------------------------------------------------------------------------
+# Added 2026-09-08 with the subnational vocabulary (444 reporting units, 26 countries).
+# Each of these is a name held by two DISTINCT territories, not a duplicate -- verified by
+# removing the genuine duplicates first, which validate_cross_family_names found: Aveyron and
+# Pyrenees-Orientales had been authored twice under different codes, an undivided Canary Islands
+# page duplicated ICN-1800-2025, and Algarve was authored twice. Those were deleted. These remain.
+#
+# A consumer resolving one of these labels by name alone still gets NA for the overlapping years,
+# which is the cost of the vocabulary and the reason each is recorded rather than normalised away.
+# Resolving them needs the country as well as the name.
+# amazonas: Brazil (BRA-AMAZONAS) and Colombia (COL-AMA)
+amazonas
+# cordoba: Argentina, Colombia, and the Spanish province all three are named for
+cordoba
+# formosa: an Argentine national territory (ARG-FORMOSA) and Japanese Taiwan (TWN-1895-1945)
+formosa
+# georgia: the country (GEO) and the US state (USA-GA)
+georgia
+# la rioja: Argentina (ARG-LARIOJA) and Spain (ESP-RI)
+la rioja
+# las palmas: two Spanish pages still overlap here -- see the note below, NOT settled
+las palmas
+# santa cruz: Argentina (ARG-SANTACRUZ) and Bolivia (BOL-SZ)
+santa cruz

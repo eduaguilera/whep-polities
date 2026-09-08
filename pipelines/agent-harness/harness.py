@@ -1273,6 +1273,18 @@ def existing_territory_pages(pols: list[dict[str, str]], iso: str) -> list[tuple
     return [(p["polity_code"], p["polity_name"]) for p in pols]
 
 
+def source_file(slug: str):
+    """The local path a registered source's file would occupy, or None if the slug is unknown."""
+    import yaml as _yaml
+    try:
+        with (REPO / "scripts" / "sources.yaml").open(encoding="utf-8") as fh:
+            s = (_yaml.safe_load(fh) or {}).get("sources", {}).get(slug) or {}
+    except OSError:
+        return None
+    rel = s.get("file")
+    return (REPO / rel) if rel else None
+
+
 def structural_page_objection(page: dict[str, Any], pols: list[dict[str, str]],
                               iso: str) -> str | None:
     """Checks the repository's own gates make, applied before the page is written.
@@ -1293,8 +1305,20 @@ def structural_page_objection(page: dict[str, Any], pols: list[dict[str, str]],
     fm = page.get("frontmatter") or {}
     code = page.get("polity_code", "")
     problems: list[str] = []
+    # SUBNATIONAL ONLY, for the checks that are about being a PART of something. Run over the whole
+    # wiki, the bare-code test objected to 438 pages and the shared-binding test to 427 -- every
+    # existing NATIONAL polity in both cases. National rows use the bare shape because they are
+    # national, and a country's eras legitimately share one cshapes feature: Peru's PER-1825-1884,
+    # PER-1825-1909 and PER-1884-1909 all bind to feature 135. Both checks are right for a new
+    # subnational page and wrong for the corpus, and only running them over every page showed it.
+    is_sub = str(fm.get("type") or page.get("polity_type") or "subnational") == "subnational"
 
-    if code.count("-") == 2 and code.startswith(iso + "-"):
+    # SUBNATIONAL ONLY. Applied to every page this objected to 438 of them -- every existing
+    # NATIONAL polity, PER-1825-1884 and DEU-1920-1938 among them, which use the bare shape
+    # precisely BECAUSE they are national rows. The check was written against newly authored
+    # subnational pages, where it is right, and the false positive stayed hidden until I ran it
+    # over the whole wiki.
+    if is_sub and code.count("-") == 2 and code.startswith(iso + "-"):
         national = [p for p in pols if p["polity_code"].startswith(iso + "-")
                     and p["polity_type"] == "national"]
         if national:
@@ -1315,6 +1339,41 @@ def structural_page_objection(page: dict[str, Any], pols: list[dict[str, str]],
                     f"`{key}: {ref}` names no row in the polity table, so every traversal that "
                     f"reads it dead-ends. Name a code that exists, or leave the field empty and "
                     f"put the relationship in an open question.")
+
+    # A SUBNATIONAL ROW MUST NOT BIND TO A FEATURE A NATIONAL ROW ALREADY BINDS TO. Three French
+    # departements -- FRA-54, FRA-55, FRA-57 -- all declared cshapes-2.0 / FRA-1919-2025, which is
+    # the outline of FRANCE. An earlier check only objected to an EMPTY feature_id; this one is
+    # populated, with the country's own feature, so it slipped through and validate_shared_polygons
+    # caught it instead.
+    src_slug = fm.get("polygon_source") or ""
+    feat = str(fm.get("polygon_feature_id") or "").strip()
+    if is_sub and feat and feat.lower() not in ("", "null", "none"):
+        owners = [q for q in pols
+                  if (q.get("polygon_feature_id") or "").strip() == feat
+                  and (q.get("polygon_source") or "") == src_slug
+                  and q["polity_code"] != code]
+        national = [q for q in owners if q["polity_type"] == "national"]
+        if national:
+            problems.append(
+                f"polygon_feature_id `{feat}` in `{src_slug}` is already the boundary of "
+                f"{national[0]['polity_code']} ({national[0]['polity_name']}), a NATIONAL row. A "
+                f"province cannot have its country's outline as its own geometry -- every sibling "
+                f"could claim it equally. Use a feature at this unit's own granularity, or leave "
+                f"the geometry unassigned and say what source would supply it.")
+
+    # `assigned` IS A CLAIM ABOUT GEOMETRY THAT IS PRESENT. 15 Spanish provinces declared
+    # `polygon_status: assigned` with mapspain-ign feature ids while
+    # data/geodata/mapspain-ign/provinces.gpkg does not exist in this checkout, so no geometry could
+    # attach and validate_polygons reported "status='assigned' but no geometry attached".
+    if str(fm.get("polygon_status") or "").strip() == "assigned" and src_slug:
+        f = source_file(src_slug)
+        if f and not f.is_file():
+            problems.append(
+                f"`polygon_status: assigned` says geometry IS attached, but {src_slug}'s file "
+                f"({f.relative_to(REPO) if REPO in f.parents else f}) is not present in this "
+                f"checkout, so nothing can attach. The honest status is `unassigned`, with the "
+                f"fetch recorded as an open question -- `assigned` is what validate_polygons reads "
+                f"to decide a polygon is real.")
 
     for e in (fm.get("container") or []):
         if not isinstance(e, dict):
