@@ -1087,6 +1087,34 @@ def test_every_ledger_write_is_preceded_by_its_mark():
             f"line {i + 1}: write_ledger runs before its mark, so the row reverts"
 
 
+def test_informational_gate_output_is_not_counted_as_a_failure():
+    """`... or codes` made the code filter WIDEN instead of narrow.
+
+    With a page code given, every non-PASS line mentioning it became a failure -- including
+    validate_polity_containment's informational print, "members whose container changes within
+    their own span: 268 [...]", which is emitted before the FAIL/PASS decision and is not a problem.
+    It classified as UNKNOWN, so no repair could ever address it, it inflated every attempt's rank,
+    and it is the likeliest reason a page reached `exhausted`.
+    """
+    src = (HERE / "repair.py").read_text(encoding="utf-8")
+    assert "A CODE FILTER MUST NARROW, NEVER WIDEN" in src
+    assert 'r"^(FAIL|\\s*[A-F]:|\\s*(?:NEW|ASYMMETRY|UNEXPLAINED|PIN))", line):' in src
+    assert '", line) or codes:' not in src, "the widening clause must be gone"
+
+    # the real informational line must not match the failure shape
+    import re
+    shape = re.compile(r"^(FAIL|\s*[A-F]:|\s*(?:NEW|ASYMMETRY|UNEXPLAINED|PIN))")
+    info = "  members whose container changes within their own span: 268 ['ARG-1884-1951']"
+    assert not shape.match(info), "the informational line must not read as a failure"
+    # ...while genuine failure lines still do
+    for line in ("FAIL: 10 problem(s)",
+                 "  A: ESP-IBZ-1833-2025 -> ESP-1833-2025: the container code is not in",
+                 "  C: FRA-AVE-1790-2025 -> FRA-1800-1871 covers 1790-1871 but",
+                 "  NEW cross-family name collision: X and Y",
+                 "  ASYMMETRY: 84 predecessor-only chain edges"):
+        assert shape.match(line), line
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

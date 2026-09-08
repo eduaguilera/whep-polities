@@ -241,7 +241,13 @@ def run_gates_detail(codes: tuple[str, ...] = ()) -> tuple[list[Failure], list[s
             # A failure is attributable when it names one of our codes, or when no codes were given.
             if codes and not any(c in s for c in codes):
                 continue
-            if re.match(r"^(FAIL|\s*[A-F]:|\s*(?:NEW|ASYMMETRY|UNEXPLAINED|PIN))", line) or codes:
+            # A CODE FILTER MUST NARROW, NEVER WIDEN. `... or codes` meant that when a page code
+            # was given, EVERY non-PASS line mentioning it counted as a failure -- including
+            # validate_polity_containment's informational `print`, "members whose container changes
+            # within their own span: 268 [...]", which is emitted before the FAIL/PASS decision and
+            # is not a problem at all. It was classified UNKNOWN, so no repair could ever address
+            # it, it inflated every rank, and it is the likeliest reason a page reached `exhausted`.
+            if re.match(r"^(FAIL|\s*[A-F]:|\s*(?:NEW|ASYMMETRY|UNEXPLAINED|PIN))", line):
                 out.append(classify(Path(gate).name, s))
     # De-duplicate: gates repeat a headline and its detail.
     seen, uniq = set(), []
