@@ -1156,6 +1156,22 @@ def main() -> int:
         print(f"Pages skipped:          {len(skipped_pages)}")
         for name, reason in skipped_pages:
             print(f"  - {name}: {reason}", file=sys.stderr)
+    unreadable = [n for n, r in skipped_pages if r == "unreadable frontmatter"]
+    if unreadable:
+        # This used to print a warning to stderr and exit 0, so the polity simply vanished from the
+        # table. It is a silent whole-row loss with no gate able to see it: the CSV is
+        # self-consistent afterwards, just missing an entry. Three pages lost their containment
+        # blocks that way in one session, each time because a generated `basis` contained a
+        # colon-space and broke the unquoted YAML scalar -- and each time the only symptom was a
+        # containment gate complaining that a polity declared no container.
+        print()
+        print(f"FAIL: {len(unreadable)} page(s) have frontmatter that does not parse, so their "
+              f"polities are ABSENT from the table rather than wrong in it:")
+        for name in unreadable:
+            print(f"  - {name}")
+        print("A common cause is an unquoted value containing ': ' — YAML reads that as a nested "
+              "mapping. Quote the value or replace the colon.")
+        return 1
     print(f"Geometries attached:    {n_assigned}")
     print(f"  source not fetched:   {n_source_not_fetched}"
           f"  (run scripts/sources/<slug>/fetch.*)")
