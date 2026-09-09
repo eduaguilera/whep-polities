@@ -10,10 +10,10 @@ cow: NA
 status: draft
 last_ingest: 2026-09-07
 sources: [juan-subnational]
-polygon_source: none
-polygon_feature_id: null
+polygon_source: gadm-4.1-adm1
+polygon_feature_id: COL.25_2
 polygon_feature_year: null
-polygon_status: unassigned
+polygon_status: assigned
 predecessor: [COL-CALDAS-1905-2025]
 successor: []
 container:

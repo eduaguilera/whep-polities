@@ -56,6 +56,21 @@ The dominant subnational pattern observed in the table (57 of 66 rows) is <ISO3>
 
 ## Open questions
 
+### oq-nuts-ii-geometry-needs-eurostat-gisco
+
+**A union of whole districts is not an acceptable proxy for this NUTS II boundary, measured**
+
+GADM's adm1 layer for Portugal is its 18 mainland DISTRICTS, and NUTS II boundaries cut across them, so a union of whole districts under-covers this region. Measured against the official NUTS II area:
+
+| region | district union | official | error |
+|---|---|---|---|
+| Norte | 18,156 km² | 21,278 km² | −14.7% |
+| Centro | 27,397 km² | 28,199 km² | −2.8% |
+| Alentejo | 23,740 km² | 31,605 km² | −24.9% |
+
+For Centro that is -2.8%. Attaching it would publish a polygon missing a large share of the territory while `polygon_status` claimed it was real, so the geometry is left unassigned. The correct source is the Eurostat GISCO NUTS geometry at the matching vintage — the same release whose attribute table already supplies data/final/nuts_code_names.csv — which needs registering as a source and fetching. Algarve is the one exception and is already assigned: NUTS II Algarve is coterminous with the district of Faro.
+
+
 ### oq-precentro-1870-1985-unrouted
 
 **119 of 151 data years (1870-1985) for this unit remain unrouted**

@@ -81,7 +81,9 @@ rm -f "$ADM0" "$ADM1" "$ADM2"
 # FRA added 2026-09-09: France's 89 subnational rows are DEPARTEMENTS, and GADM's adm1 for
 # France is its 13 regions -- so every one logged 'feature not found' against adm1. The
 # departements are adm2.
-ADM2_COUNTRIES=(IDN FRA)
+# ITA added 2026-09-09: ITA-ITH1 is the PROVINCE of Bolzano/South Tyrol, which is adm2;
+# GADM's adm1 for Italy is its 20 regions, where Bolzano sits inside Trentino-Alto Adige.
+ADM2_COUNTRIES=(IDN FRA ITA)
 
 for iso in "${COUNTRIES[@]}"; do
   CFILE="$OUT_DIR/gadm41_${iso}.gpkg"
