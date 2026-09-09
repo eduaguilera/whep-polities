@@ -63,6 +63,16 @@ sources:
     id_column: GID_0          # ISO3 country code
     id_type: str
 
+  gadm-4.1-adm2:
+    # Registered 2026-09-09. France's 89 subnational rows are DEPARTEMENTS; GADM's adm1 for France
+    # is its 13 regions, so every one of them logged 'feature not found' against adm1. Built only
+    # for the countries in scripts/sources/gadm-4.1/fetch.sh's ADM2_COUNTRIES, because a global
+    # adm2 extract is far larger than anything here needs.
+    url: https://gadm.org/
+    file: data/geodata/gadm-4.1/gadm41_adm2.gpkg
+    layer: polygons
+    id_column: GID_2
+    id_type: str
   gadm-4.1-adm1:
     url: https://gadm.org/
     file: data/geodata/gadm-4.1/gadm41_adm1.gpkg

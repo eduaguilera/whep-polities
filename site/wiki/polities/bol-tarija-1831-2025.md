@@ -13,7 +13,7 @@ sources: [juan-subnational]
 polygon_source: gadm-4.1-adm1
 polygon_feature_id: BOL.9_1
 polygon_feature_year: null
-polygon_status: unassigned
+polygon_status: assigned
 predecessor: []
 successor: []
 container:
