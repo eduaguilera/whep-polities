@@ -11,9 +11,9 @@ status: draft
 last_ingest: 2026-09-07
 sources: [juan-subnational]
 polygon_source: geobr-ibge
-polygon_feature_id: null
-polygon_feature_year: null
-polygon_status: unassigned
+polygon_feature_id: 'SP'
+polygon_feature_year: 2020
+polygon_status: assigned
 predecessor: []
 successor: []
 container:

@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "205cd226c5e16fbd58b669fcdefc14f90f050c1632fe893a622d669f5cbd3ac3",
+ "identity_sha256": "d1c16803188e52ba13d6bf206471e5349a9e5d5c4af7b941e1d806ede7b7784e",
  "counts": {
   "total": 1206,
   "live": 1162,
@@ -1158,6 +1158,7 @@
   "ESP-CR-1833-2025",
   "ESP-CS-1833-2025",
   "ESP-CU-1833-2025",
+  "ESP-GC-1833-2025",
   "ESP-GI-1833-2025",
   "ESP-GR2-1833-2025",
   "ESP-GU-1833-2025",
@@ -1168,7 +1169,6 @@
   "ESP-J-1833-2025",
   "ESP-LE-1833-2025",
   "ESP-LL-1833-2025",
-  "ESP-LP-1833-2025",
   "ESP-LP-1927-2025",
   "ESP-LU-1833-2025",
   "ESP-MA-1833-2025",

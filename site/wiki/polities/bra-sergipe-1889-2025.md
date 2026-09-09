@@ -11,9 +11,9 @@ status: draft
 last_ingest: 2026-09-08
 sources: [juan-subnational]
 polygon_source: geobr-ibge
-polygon_feature_id: null
-polygon_feature_year: null
-polygon_status: unassigned
+polygon_feature_id: 'SE'
+polygon_feature_year: 2020
+polygon_status: assigned
 predecessor: [BRA-1800-1903]
 successor: []
 container:
