@@ -70,8 +70,10 @@ ARG-TUCUMAN-1853-2025,ARG-1902-2025,1902,2025,Tucumán as a current province ins
 AUS-ACT-1911-2025,AUS-1901-2025,1911,2025,"The ACT has been a Commonwealth-administered territory inside Australia continuously since its excision from New South Wales in 1911; the containing national row AUS-1901-2025 spans the entire period, so one edge tiles the full 1911-2025 range."
 AUS-NSW-1901-2025,AUS-1901-2025,1901,2025,"NSW became a state of the Commonwealth of Australia at Federation on 1 January 1901 and has remained one continuously since; no departure rule applies to NSW (unlike NT or ACT), so the country convention's default start rule governs and the container edge is coextensive with the polity's own span."
 AUS-NT-1911-2025,AUS-1901-2025,1911,2025,"Northern Territory was excised from South Australia and placed under direct Commonwealth administration in 1911, and remains a Commonwealth territory within Australia to the present."
+AUS-QLD-1901-2025,AUS-1901-2025,1901,2025,Queensland has been a constituent state of the Commonwealth of Australia continuously since Federation on 1 January 1901.
 AUS-SA-1901-2025,AUS-1901-2025,1901,2025,South Australia has been a state of the Commonwealth of Australia continuously since Federation on 1 January 1901; no subsequent territorial reorganisation removed it from the Commonwealth.
 AUS-TAS-1901-2025,AUS-1901-2025,1901,2025,Tasmania became a state of the Commonwealth of Australia at Federation on 1 January 1901 and has remained one continuously; the containing national row AUS-1901-2025 spans the identical interval so a single edge tiles the whole span.
+AUS-VIC-1901-2025,AUS-1901-2025,1901,2025,Victoria has been a state of the Commonwealth of Australia continuously since Federation on 1 January 1901; the container spans the whole life of this row with no gap.
 AUS-WA-1901-2025,AUS-1901-2025,1901,2025,"Western Australia became a state of the Commonwealth of Australia at Federation on 1 January 1901 and remains one, with no subsequent split or dissolution."
 BDI-1922-1962,RWB-1922-1962,1922,1962,Burundi as the southern half of the Ruanda-Urundi mandate/trust territory
 BOL-BEN-1842-2025,BOL-1825-1903,1842,1903,"Beni department was created in 1842 by separation from the Amazonian territories of the Bolivian republic; from creation until 1903 it sat inside the country's first national era, BOL-1825-1903."
@@ -877,6 +879,7 @@ SER-1918-1945,F248-1918-1919,1918,1919,"Serbia inside the new Kingdom of Serbs, 
 SER-1918-1945,F248-1919-1920,1919,1920,"same territory, the 1919 boundary settlement"
 SER-1918-1945,F248-1920-1947,1920,1945,"same territory, interwar Yugoslavia; capped at this member's own end_year"
 SGP-1963-1965,MYS-1963-1965,1963,1965,"the State of Singapore inside Malaysia, from the 1963 federation to the 1965 separation"
+USA-AK-1959-2025,USA-1959-2025,1959,2025,"Alaska has been one of the fifty United States since admission to the Union in 1959, continuously through the present."
 USA-AL-1819-2025,USA-1803-1848,1819,1848,"Alabama entered the Union in 1819, within the span of the third national United States row"
 USA-AL-1819-2025,USA-1848-1867,1848,1867,continuous statehood through the fourth national United States row
 USA-AL-1819-2025,USA-1867-1959,1867,1959,"continuous statehood through the fifth national United States row, spanning Reconstruction to the year before Alaska/Hawaii statehood"

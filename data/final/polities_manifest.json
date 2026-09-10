@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "d1c16803188e52ba13d6bf206471e5349a9e5d5c4af7b941e1d806ede7b7784e",
+ "identity_sha256": "f6ff0c0397f1bc730c7cb12f7addf35e977cd0f296bab1738a32b8dff3c36e6e",
  "counts": {
-  "total": 1206,
-  "live": 1162,
+  "total": 1209,
+  "live": 1165,
   "dead": 44
  },
  "dead_status": [
@@ -873,8 +873,10 @@
   "AUS-ACT-1911-2025",
   "AUS-NSW-1901-2025",
   "AUS-NT-1911-2025",
+  "AUS-QLD-1901-2025",
   "AUS-SA-1901-2025",
   "AUS-TAS-1901-2025",
+  "AUS-VIC-1901-2025",
   "AUS-WA-1901-2025",
   "AUSA-1836-1900",
   "AUT-1800-1918",
@@ -1897,6 +1899,7 @@
   "USA-1848-1867",
   "USA-1867-1959",
   "USA-1959-2025",
+  "USA-AK-1959-2025",
   "USA-AL-1819-2025",
   "USA-AR-1836-2025",
   "USA-AZ-1863-2025",

@@ -603,7 +603,8 @@ def write_gpkg(
 
     defn = lyr.GetLayerDefn()
     repairs = {"repaired": [], "skipped": [], "failed": []}
-    simplifies = {"done": 0, "kept": [], "reduced": [], "s2_refined": [], "s2_unresolved": []}
+    simplifies = {"done": 0, "kept": [], "reduced": [], "s2_refined": [],
+                  "s2_unresolved": [], "s2_unsimplified": []}
     for row in rows:
         f = ogr.Feature(defn)
         for col in CSV_COLUMNS:
@@ -684,6 +685,9 @@ def write_gpkg(
     for code, factor in simplifies["s2_unresolved"]:
         print(f"  NO s2-LOADABLE TOLERANCE for {code}: published at x{factor:g}; "
               f"validate_s2_polygons.py will report it")
+    for code, factor in simplifies.get("s2_unsimplified", []):
+        print(f"  PUBLISHED UNSIMPLIFIED {code}: no tolerance from x{factor:g} down produced a "
+              f"geometry s2 can load, and the source itself is loadable")
 
 
 
@@ -831,12 +835,27 @@ def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict, 
                 simplifies["reduced"].append((polity_code, factor, change))
             return s
     if cheapest is not None:
+        # NO TOLERANCE PRODUCED SOMETHING s2 CAN LOAD, so publish the geometry UNSIMPLIFIED rather
+        # than a simplified one that is broken on the sphere. This used to return `cheapest` -- the
+        # cheapest simplified step -- and ARG-SANTACRUZ-1955-2025 was published that way: the GADM
+        # source loads under s2 cleanly, every ladder step from x1 down to x0.01 did not, and
+        # repair_s2_polygons could not rescue any of them. The province's many small coastal islands
+        # collapse into crossing rings at any tolerance (56,625 vertices to 582 at x1).
+        #
+        # Simplification exists to control file size; correctness outranks it for one feature, and
+        # the alternative was a LIVE row that no spherical step could measure at all -- sf has s2 on
+        # by default, so it aborts rather than degrades.
         s, factor, change = cheapest
-        simplifies["done"] += 1
-        simplifies["s2_unresolved"].append((polity_code, factor))
-        if factor != 1.0:
-            simplifies["reduced"].append((polity_code, factor, change))
-        return s
+        if not _s2_loadable(g, s2_check):
+            # even the original is unloadable: nothing here can help, so keep the old behaviour and
+            # let validate_s2_polygons report it against UNREPAIRABLE.
+            simplifies["done"] += 1
+            simplifies["s2_unresolved"].append((polity_code, factor))
+            if factor != 1.0:
+                simplifies["reduced"].append((polity_code, factor, change))
+            return s
+        simplifies["s2_unsimplified"].append((polity_code, factor))
+        return g
     simplifies["kept"].append((polity_code, worst if worst is not None else 1.0))
     return g
 
