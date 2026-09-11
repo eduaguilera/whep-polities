@@ -77,7 +77,7 @@ LEDGER_FIELDS = ("unit_id", "country", "admin_name", "verdict", "matched_polity_
                  "polygon_detail", "polygon_confidence", "polygon_reasoning",
                  "page_written", "page_polity_code",
                  "repair_status", "repair_attempts", "repair_rank", "repair_remaining",
-                 "repair_gates_red", "coverage_json", "coverage_ok")
+                 "repair_gates_red", "coverage_json", "coverage_ok", "extra_pages")
 
 RESIDUAL_MARKERS = ("RESID", "OTHER", "NATIONAL", "UNKNOWN", "TOTAL", "REST")
 
@@ -1444,7 +1444,13 @@ def duplicate_territory_objection(page: dict[str, Any], unit: dict[str, Any],
             f"in `decisions` what distinguishes them. Do not silently create the second one.")
 
 
-def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
+def _page_span(code: str) -> tuple[int, int] | None:
+    """(start, end) parsed from a polity_code's trailing years, or None."""
+    m = re.search(r"-(\d{4})-(\d{4})$", code or "")
+    return (int(m.group(1)), int(m.group(2))) if m else None
+
+
+def run_wiki_stage(A, runner, ledger, pols, iso, convention=None) -> None:
     import json as _json
     scope = set(A.only) if A.only else None
     def page_missing(v: dict[str, str]) -> bool:
@@ -1459,10 +1465,52 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
         rel = v.get("page_written") or ""
         return not rel or not (REPO / rel).is_file()
 
-    todo = [v for v in ledger.values()
+    def proposed_segments(v: dict[str, str]) -> list[dict[str, Any]]:
+        """The coverage segments that call for a NEW polity, in order."""
+        try:
+            return [s for s in json.loads(v.get("coverage_json") or "[]")
+                    if s.get("disposition") == "proposed"]
+        except json.JSONDecodeError:
+            return []
+
+    def segments_wanting_a_page(v: dict[str, str]) -> list[int]:
+        """Indices of proposed segments with no page yet.
+
+        ONE UNIT CAN NEED MORE THAN ONE POLITY, and stage 3 used to write exactly one page per
+        unit. Seven units' coverage called for two -- a national territory and the province that
+        succeeded it -- so only the first was ever created and the other era resolved to nothing.
+        ARG-CHACO and ARG-FORMOSA were the visible cost: two full Argentine provinces with data
+        for every year and no polity to carry it.
+        """
+        segs = proposed_segments(v)
+        if not segs:
+            return []
+        try:
+            done = {e.get("segment") for e in json.loads(v.get("extra_pages") or "[]")}
+        except json.JSONDecodeError:
+            done = set()
+        # MATCH THE EXISTING PAGE TO A SEGMENT BY ITS SPAN, not by assuming it is the first.
+        # ARG-LAPAMPA's page is the PROVINCE (1951+), which is its SECOND segment, so assuming
+        # index 0 made the harness author the province a second time -- a duplicate territory under
+        # a different code, which the clash check cannot refuse because the code is free.
+        if not page_missing(v):
+            have = _page_span(v.get("page_polity_code") or "")
+            best = None
+            for i, s in enumerate(segs):
+                if have is None:
+                    break
+                # a segment matches the page it produced when their starts agree
+                if int(s.get("start_year") or -1) == have[0]:
+                    best = i
+                    break
+            done.add(best if best is not None else 0)
+        return [i for i in range(len(segs)) if i not in done]
+
+    todo = [(v, i) for v in ledger.values()
             if v.get("country") == A.country and v.get("verdict") == "create_new"
-            and v.get("polygon_route") and page_missing(v)
-            and (scope is None or v["unit_id"] in scope)]
+            and v.get("polygon_route")
+            and (scope is None or v["unit_id"] in scope)
+            for i in segments_wanting_a_page(v)]
     if not todo:
         print("\nstage 3 (wiki): nothing to author "
               "(needs a create_new verdict that has been through the polygon stage)")
@@ -1480,17 +1528,41 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
     slugs = polygon_slugs()
     exemplar = EXEMPLAR.read_text(encoding="utf-8")[:6000] if EXEMPLAR.is_file() else "(none)"
     print(f"\nstage 3 (wiki): authoring {len(todo)} page(s)")
-    for v in todo:
+    for v, seg_i in todo:
+        segs = proposed_segments(v)
+        seg = segs[seg_i] if seg_i < len(segs) else {}
+        prop = _json.loads(v["proposed_json"]) if v.get("proposed_json") else {}
+        if len(segs) > 1:
+            # This unit needs one polity per era. Span the one being written from its own segment,
+            # not from the unit's whole coverage, and say which era it is so the page does not
+            # describe the other one.
+            end = (seg.get("end_year") or 0) + 1
+            if seg_i == len(segs) - 1 and convention and convention.get("open_end_year"):
+                # the last era is still current, so it takes the country's ONE open end_year rather
+                # than the extract's last year + 1 -- which produced ARG-CHACO-1951-2024 against a
+                # convention of 2025, the extract-defined span this harness refuses elsewhere.
+                end = int(convention["open_end_year"])
+            prop = dict(prop, start_year=seg.get("start_year"), end_year=end)
         decision = _json.dumps({
             "unit_id": v["unit_id"], "admin_name": v["admin_name"], "country": v["country"],
             "routing_reasoning": v["reasoning"], "routing_concerns": v["concerns"],
-            "proposed": _json.loads(v["proposed_json"]) if v.get("proposed_json") else {},
+            "era_of_this_page": (
+                f"segment {seg_i + 1} of {len(segs)}: {seg.get('start_year')}-{seg.get('end_year')}. "
+                f"This unit's data spans several administrations and needs ONE POLITY PER ERA. Write "
+                f"only this era. The other era(s) are "
+                + "; ".join(f"{s['start_year']}-{s['end_year']}" for j, s in enumerate(segs)
+                            if j != seg_i)
+                + ", and each gets its own page, so this page must not span them. State the "
+                  "relationship in `predecessors_and_successors` and set `predecessor`/`successor` "
+                  "where the other era's page already exists."
+                if len(segs) > 1 else "the whole of this unit's coverage"),
+            "proposed": prop,
             "polygon_route": v["polygon_route"], "polygon_source": v["polygon_source_slug"],
             "polygon_feature_id": v["polygon_feature_id"],
             "polygon_detail": v.get("polygon_detail", ""),
             "polygon_reasoning": v.get("polygon_reasoning", ""),
         }, indent=2)
-        job = f"wiki-{norm(v['unit_id'])}"
+        job = f"wiki-{norm(v['unit_id'])}" + (f"-seg{seg_i + 1}" if len(segs) > 1 else "")
         prompt = WIKI_PROMPT.format(spec=spec, exemplar=exemplar, decision=decision,
                                     code_precedent=precedent)
         res = runner.call(job, prompt, WIKI_SCHEMA, refresh=A.refresh)
@@ -1543,18 +1615,49 @@ def run_wiki_stage(A, runner, ledger, pols, iso) -> None:
             page = res.result
         if page is None:
             continue
+        # AN UNRESOLVED OBJECTION MUST NOT BE WRITTEN. The retry loop used to fall through and
+        # publish whatever the last attempt returned, so an objection the agent never satisfied
+        # became a page anyway: ARG-LAPAMPA was told twice that a La Pampa province page already
+        # existed, changed only its end year, and the duplicate was written with nothing in the log
+        # to say so. Refusing leaves the unit visibly undone instead of quietly wrong.
+        left = (structural_page_objection(page, pols, iso)
+                or duplicate_territory_objection(page, v, existing_pages)
+                or bad_polygon_source(page, slugs)
+                or unreciprocated(page, edges))
+        if left:
+            print(f"  REFUSED {v['unit_id']:22} objection unresolved after retries — not written: "
+                  f"{left.splitlines()[0][:90]}")
+            continue
         code = page["polity_code"]
         if code in taken and v.get("page_polity_code") != code and not (
                 REPO / "wiki" / "polities" / f"{code.lower()}.md").exists():
             print(f"  FAIL  {v['unit_id']:24} could not find a free polity_code — not written")
             continue
         dest = REPO / "wiki" / "polities" / f"{code.lower()}.md"
-        if dest.exists() and v.get("page_written") and not A.refresh:
+        already = (v.get("page_written") if seg_i == 0 else None)
+        if dest.exists() and already and not A.refresh:
             print(f"  SKIP  {code} — this unit's page already exists; --refresh to overwrite")
             continue
         dest.write_text(render_page(page), encoding="utf-8")
-        v["page_written"] = str(dest.relative_to(REPO))
-        v["page_polity_code"] = code
+        # MAIN IS WHICHEVER PAGE CAME FIRST, not segment 0. ARG-LAPAMPA's existing page was its
+        # SECOND era (the province), so writing the first era as "main" moved the pointer and
+        # orphaned the province page in the ledger.
+        if not (v.get("page_written") or "").strip():
+            v["page_written"] = str(dest.relative_to(REPO))
+            v["page_polity_code"] = code
+        else:
+            # A second or later era gets its own page, recorded beside the first rather than
+            # replacing it -- overwriting page_polity_code would make the unit look done while one
+            # era stayed uncreated, which is how ARG-CHACO and ARG-FORMOSA lost their provinces.
+            try:
+                extra = json.loads(v.get("extra_pages") or "[]")
+            except json.JSONDecodeError:
+                extra = []
+            extra = [e for e in extra if e.get("segment") != seg_i]
+            extra.append({"segment": seg_i, "polity_code": code,
+                          "page_written": str(dest.relative_to(REPO)),
+                          "span": [seg.get("start_year"), seg.get("end_year")]})
+            v["extra_pages"] = json.dumps(sorted(extra, key=lambda e: e["segment"]), sort_keys=True)
         mark(v["unit_id"])
         write_ledger(ledger)
         nsec = len(page["decisions"]) + len(page["open_questions"])
@@ -1922,7 +2025,7 @@ def main() -> int:
     if A.polygon_stage:
         run_polygon_stage(A, runner, pols, iso, feats, ledger)
     if A.wiki_stage:
-        run_wiki_stage(A, runner, ledger, pols, iso)
+        run_wiki_stage(A, runner, ledger, pols, iso, convention)
     if A.repair_stage:
         run_repair_stage(A, runner, ledger)
 

@@ -29,12 +29,15 @@ ARG-BA-1853-2025,Buenos Aires (province of Argentina),1853,2025,gadm-4.1-adm1,,a
 ARG-CAT-1853-2025,Catamarca (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-CF-1880-2025,Ciudad de Buenos Aires (Capital Federal / autonomous city of Argentina),1880,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-CHACO-1884-1951,Chaco (national territory of Argentina),1884,1951,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-CHACO-1951-2025,Chaco (province of Argentina),1951,2025,gadm-4.1-adm1,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 ARG-CHUBUT-1884-2025,Chubut (territory/province of Argentina),1884,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-CORDOBA-1853-2025,Córdoba (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-CORRIENTES-1853-2025,Corrientes (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-ER-1853-2025,Entre Ríos (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-FORMOSA-1900-1955,Formosa (national territory of Argentina),1900,1955,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-FORMOSA-1955-2025,Formosa (province of Argentina),1955,2025,gadm-4.1-adm1,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 ARG-JUJUY-1853-2025,Jujuy (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-LAPAMPA-1900-1951,La Pampa (national territory of Argentina),1900,1951,gadm-4.1-adm1,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 ARG-LAPAMPA-1951-2025,La Pampa (province of Argentina),1951,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-LARIOJA-1853-2025,La Rioja (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARG-MENDOZA-1853-2025,Mendoza (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
@@ -140,6 +143,7 @@ BRA-AMAZONAS-1889-2025,Amazonas,1889,2025,geobr-ibge,2020.0,assigned,True,assume
 BRA-BAHIA-1889-2025,Bahia,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
 BRA-CE-1889-2025,Ceará,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
 BRA-DF-1960-2023,Distrito Federal (Brasília),1960,2023,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 63y span (1960-2023); borders may have changed,0
+BRA-DFRJ-1900-1959,Distrito Federal (Rio de Janeiro),1900,1959,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 BRA-ES-1889-2025,Espírito Santo,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
 BRA-GOIAS-1889-2025,Goiás,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
 BRA-MARANHAO-1889-2025,Maranhão,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
@@ -653,6 +657,7 @@ ITA-CAL-1861-2025,Calabria (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,T
 ITA-CAM-1970-2025,Campania (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-EMR-1970-2025,Emilia-Romagna (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-ITH1-1919-2025,Bolzano/South Tyrol (province of Italy),1919,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-ITH2-1919-2025,Trento (province of Italy),1919,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-ITH4-1970-2025,Friuli-Venezia Giulia (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-ITI1-1861-2025,Toscana (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-ITI2-1970-2025,Umbria (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
@@ -660,10 +665,12 @@ ITA-LAZ-1970-2025,Lazio (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,Fals
 ITA-LIG-1970-2025,Liguria (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-LOM-1861-2025,Lombardia (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-MAR-1861-2025,Marche (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-MOL-1963-2025,Molise,1963,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-PIE-1970-2025,Piemonte (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-PUG-1861-2025,Puglia (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-SAR-1861-2025,Sardegna (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-SIC-1861-2025,Sicilia (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-VDA-1948-2025,Valle d'Aosta (region of Italy),1948,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITA-VEN-1866-2025,Veneto (region of Italy),1866,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,185

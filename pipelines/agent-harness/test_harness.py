@@ -363,7 +363,8 @@ def test_a_taken_polity_code_is_re_asked_not_skipped():
     assert 'taken = {f.stem.upper() for f in (REPO / "wiki" / "polities").glob("*.md")}' in src
     assert "already has a page in wiki/polities/" in src
     # the surviving skip must be about THIS unit's own page, not any page at that path
-    assert 'if dest.exists() and v.get("page_written") and not A.refresh:' in src
+    assert 'already = (v.get("page_written") if seg_i == 0 else None)' in src, \
+        "the skip must be per-segment: a later era has its own page"
 
 
 def test_an_unreciprocated_chain_edge_is_handed_back_not_written():
@@ -822,7 +823,8 @@ def test_a_recorded_page_whose_file_is_gone_counts_as_not_written():
     src = (HERE / "harness.py").read_text(encoding="utf-8")
     assert "def page_missing(" in src
     assert 'not (REPO / rel).is_file()' in src, "the FILE must be checked, not just the field"
-    assert "and v.get(\"polygon_route\") and page_missing(v)" in src, "the todo filter must use it"
+    assert "page_missing(v)" in src and "segments_wanting_a_page" in src, \
+        "the todo filter must consult the file, now per (unit, segment)"
     # the ledger row that exposed it
     assert "CALI-1850-2026" in src, "record the case, so the fix cannot be undone as unmotivated"
 
@@ -920,8 +922,17 @@ def test_no_function_reads_a_name_it_never_defines():
     for mod in ("harness.py", "runner.py", "repair.py"):
         src = (HERE / mod).read_text(encoding="utf-8")
         tree = ast.parse(src)
-        module_level = {n.id for x in tree.body for n in ast.walk(x)
-                        if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store)}
+        # MODULE LEVEL MEANS MODULE LEVEL. This used to be `for x in tree.body for n in
+        # ast.walk(x)`, and ast.walk descends INTO top-level function bodies -- so every name
+        # assigned anywhere in the file counted as global and almost nothing could be flagged. It
+        # missed `convention` being read in run_wiki_stage while only ever assigned inside main(),
+        # which crashed three countries with NameError after the tests passed.
+        module_level = set()
+        for x in tree.body:
+            if isinstance(x, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                continue
+            module_level |= {n.id for n in ast.walk(x)
+                             if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store)}
         module_level |= {x.name for x in tree.body
                          if isinstance(x, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))}
         for x in tree.body:
@@ -929,8 +940,17 @@ def test_no_function_reads_a_name_it_never_defines():
                 module_level |= {(a.asname or a.name).split(".")[0] for a in x.names}
         safe = module_level | set(dir(builtins))
 
+        # Analyse each function ONCE, at its outermost level. Walking nested functions separately
+        # reports a sibling nested def as undefined -- `segments_wanting_a_page` legitimately closes
+        # over `page_missing` and `proposed_segments` in the same enclosing scope. A nested body is
+        # still checked, because its parent's walk covers it.
+        nested = {id(n) for f in ast.walk(tree)
+                  if isinstance(f, (ast.FunctionDef, ast.AsyncFunctionDef))
+                  for n in ast.walk(f)
+                  if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n is not f}
         for fn in [n for n in ast.walk(tree)
-                   if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))]:
+                   if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))
+                   and id(n) not in nested]:
             bound = {a.arg for a in fn.args.args + fn.args.kwonlyargs}
             if fn.args.vararg:
                 bound.add(fn.args.vararg.arg)
@@ -943,6 +963,15 @@ def test_no_function_reads_a_name_it_never_defines():
                     bound |= {(a.asname or a.name).split(".")[0] for a in n.names}
                 elif isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
                     bound.add(n.name)
+                    # a nested def's own parameters are bound inside it, and the parent's walk
+                    # covers that body, so they must be collected here too
+                    if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                        a = n.args
+                        bound |= {x.arg for x in a.args + a.kwonlyargs + a.posonlyargs}
+                        if a.vararg:
+                            bound.add(a.vararg.arg)
+                        if a.kwarg:
+                            bound.add(a.kwarg.arg)
                 elif isinstance(n, ast.ExceptHandler) and n.name:
                     bound.add(n.name)
                 elif isinstance(n, (ast.comprehension,)):
@@ -1148,9 +1177,12 @@ def test_a_province_cannot_take_its_country_s_polygon_or_claim_absent_geometry()
     assert harness.structural_page_objection(ok, pols, "FRA") is None
 
     # `assigned` against a source whose file is absent
-    assert not harness.source_file("mapspain-ign").is_file(), "test premise: the file is absent here"
+    # mapspain-ign has since been FETCHED, so pick a registered source whose file is still absent
+    absent = next((s for s in sorted(harness.polygon_slugs())
+                   if (lambda f: f and not f.is_file())(harness.source_file(s))), None)
+    assert absent, "test premise: some registered source's file is absent"
     lying = {"polity_code": "ESP-B-1833-2025", "frontmatter": {
-        "polygon_source": "mapspain-ign", "polygon_feature_id": "08",
+        "polygon_source": absent, "polygon_feature_id": "08",
         "polygon_status": "assigned"}}
     got = harness.structural_page_objection(lying, [], "ESP") or ""
     assert "is not present in this" in got, got
@@ -1158,6 +1190,35 @@ def test_a_province_cannot_take_its_country_s_polygon_or_claim_absent_geometry()
     # ...and `unassigned` against the same absent source is correct, so it must not object
     honest = dict(lying, frontmatter=dict(lying["frontmatter"], polygon_status="unassigned"))
     assert harness.structural_page_objection(honest, [], "ESP") is None
+
+
+def test_a_unit_spanning_two_administrations_gets_one_polity_per_era():
+    """Stage 3 wrote exactly ONE page per unit, and seven units' coverage called for two.
+
+    ARG-CHACO and ARG-FORMOSA were the visible cost: each is a national territory that became a
+    province, the panel carries data for every year, and only the territory was ever created -- so
+    two full Argentine provinces resolved to nothing. ARG-LAPAMPA had the opposite half missing and
+    BRA-DISTRITOFEDERAL its pre-1960 era.
+
+    A later era is recorded BESIDE the first in `extra_pages`, never in place of it: overwriting
+    page_polity_code would leave the unit looking finished while one era stayed uncreated, which is
+    exactly how this went unnoticed.
+    """
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert "def segments_wanting_a_page" in src
+    assert "ONE UNIT CAN NEED MORE THAN ONE POLITY" in src
+    assert '"extra_pages"' in src and "extra.append(" in src
+    assert "e.get(\"segment\") != seg_i" in src, "re-authoring one era must not duplicate its entry"
+    assert "era_of_this_page" in src, "the agent must be told WHICH era it is writing"
+    assert "this page must not span them" in src
+
+    # the span handed to the agent comes from the segment, not the unit's whole coverage
+    assert "prop = dict(prop, start_year=seg.get(\"start_year\")" in src
+    # end_year is EXCLUSIVE on a polity while a coverage segment's end is an inclusive data year
+    assert '(seg.get("end_year") or 0) + 1' in src
+
+    # and each era gets its own job, so the cache cannot serve one for the other
+    assert 'f"-seg{seg_i + 1}"' in src
 
 
 if __name__ == "__main__":
