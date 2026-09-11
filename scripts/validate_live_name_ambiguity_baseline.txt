@@ -56,7 +56,5 @@ formosa
 georgia
 # la rioja: Argentina (ARG-LARIOJA) and Spain (ESP-RI)
 la rioja
-# las palmas: two Spanish pages still overlap here -- see the note below, NOT settled
-las palmas
 # santa cruz: Argentina (ARG-SANTACRUZ) and Bolivia (BOL-SZ)
 santa cruz

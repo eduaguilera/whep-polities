@@ -25,6 +25,30 @@ ARG-1800-1899,Argentina (to 1899),1800,1899,cshapes-2.0,1886.0,assigned,True,ass
 ARG-1800-2025,Argentina,1800,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,True,single 1902 polygon held across a 225y span (1800-2025); borders may have changed,0
 ARG-1899-1902,Argentina (1899-1902),1899,1902,cshapes-2.0,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1899-1902,48
 ARG-1902-2025,Argentina,1902,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,False,single 1902 polygon held across a 123y span (1902-2025); borders may have changed,4074
+ARG-BA-1853-2025,Buenos Aires (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-CAT-1853-2025,Catamarca (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-CF-1880-2025,Ciudad de Buenos Aires (Capital Federal / autonomous city of Argentina),1880,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-CHACO-1884-1951,Chaco (national territory of Argentina),1884,1951,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-CHUBUT-1884-2025,Chubut (territory/province of Argentina),1884,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-CORDOBA-1853-2025,Córdoba (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-CORRIENTES-1853-2025,Corrientes (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-ER-1853-2025,Entre Ríos (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-FORMOSA-1900-1955,Formosa (national territory of Argentina),1900,1955,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-JUJUY-1853-2025,Jujuy (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-LAPAMPA-1951-2025,La Pampa (province of Argentina),1951,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-LARIOJA-1853-2025,La Rioja (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-MENDOZA-1853-2025,Mendoza (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-MISIONES-1881-2025,Misiones (province of Argentina),1881,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-NEUQUEN-1884-2025,Neuquén (territory/province of Argentina),1884,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-RIONEGRO-1884-2025,Río Negro (province of Argentina),1884,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-SALTA-1853-2025,Salta (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-SANJUAN-1853-2025,San Juan (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-SANLUIS-1853-2025,San Luis (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-SANTACRUZ-1955-2025,Santa Cruz (province of Argentina),1955,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-SANTAFE-1853-2025,Santa Fe (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-SANTIAGODELESTERO-1853-2025,Santiago del Estero (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-TIERRADELFUEGO-1884-2025,Tierra del Fuego (territory/province of Argentina),1884,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ARG-TUCUMAN-1853-2025,Tucumán (province of Argentina),1853,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ARM-1991-2025,Armenia,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 ASH-1800-1896,Ashanti Empire,1800,1896,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ASM-1900-2025,Territory of American Samoa,1900,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,False,single 2023 polygon held across a 125y span (1900-2025); borders may have changed,38
@@ -36,6 +60,14 @@ AUH-1866-1908,Austria-Hungary (1866-1908),1866,1908,cliopatria,1880.0,assigned,T
 AUH-1908-1918,Austria-Hungary (1908-1918),1908,1918,cshapes-2.0,1908.0,assigned,True,measured,False,False,vintage 1908 faithful to period 1908-1918,0
 AUS-1800-1901,Australian Colonies (to 1901),1800,1901,cshapes-2.0,1901.0,proxy,True,assumed_constant,True,True,single 1901 polygon held across a 101y span (1800-1901); borders may have changed,715
 AUS-1901-2025,Australia,1901,2025,cshapes-2.0,1927.0,assigned,True,assumed_constant,True,True,single 1927 polygon held across a 124y span (1901-2025); borders may have changed,2411
+AUS-ACT-1911-2025,Australian Capital Territory (state of Australia),1911,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+AUS-NSW-1901-2025,New South Wales (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+AUS-NT-1911-2025,Northern Territory (territory of Australia),1911,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+AUS-QLD-1901-2025,Queensland (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+AUS-SA-1901-2025,South Australia (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+AUS-TAS-1901-2025,Tasmania (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+AUS-VIC-1901-2025,Victoria (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+AUS-WA-1901-2025,Western Australia (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 AUSA-1836-1900,South Australia (to 1900),1836,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 64y span (1836-1900); borders may have changed,195
 AUT-1800-1918,Austria (Cisleithania),1800,1918,histogis-1860-habsburg,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,1182
 AUT-1918-1919,Austria (1918-1919),1918,1919,cshapes-2.0,1918.0,assigned,True,measured,False,False,vintage 1918 faithful to period 1918-1919,35
@@ -88,10 +120,46 @@ BOL-1825-1903,Bolivia (to 1903),1825,1903,cshapes-2.0,1886.0,assigned,True,assum
 BOL-1903-1909,Bolivia (1903-1909),1903,1909,cshapes-2.0,1903.0,assigned,True,measured,False,False,vintage 1903 faithful to period 1903-1909,0
 BOL-1909-1938,Bolivia (1909-1938),1909,1938,cshapes-2.0,1909.0,assigned,True,assumed_constant,True,False,single 1909 polygon held across a 29y span (1909-1938); borders may have changed,305
 BOL-1938-2025,Bolivia,1938,2025,cshapes-2.0,1938.0,assigned,True,assumed_constant,True,False,single 1938 polygon held across a 87y span (1938-2025); borders may have changed,376
+BOL-BEN-1842-2025,Beni (department of Bolivia),1842,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-CHUQ-1825-2025,Chuquisaca (department of Bolivia),1825,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-COCH-1825-2025,Cochabamba (department of Bolivia),1825,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-LP-1825-2025,La Paz (department of Bolivia),1825,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-ORU-1825-2025,Oruro (department of Bolivia),1825,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-PND-1938-2025,Pando (department of Bolivia),1938,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-POT-1825-2025,Potosí (department of Bolivia),1825,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-SZ-1825-2025,Santa Cruz (department of Bolivia),1825,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BOL-TARIJA-1831-2025,Tarija (department of Bolivia),1831,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 BRA-1800-1903,Brazil (to 1903),1800,1903,cshapes-2.0,1890.0,polygon_vintage_drift,True,assumed_constant,True,False,single 1890 polygon held across a 103y span (1800-1903); borders may have changed,34
 BRA-1800-2025,Brazil,1800,2025,cshapes-2.0,1960.0,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 BRA-1903-1909,Brazil (1903-1909),1903,1909,cshapes-2.0,1905.0,assigned,True,measured,False,False,vintage 1905 faithful to period 1903-1909,37
 BRA-1909-2025,Brazil,1909,2025,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,False,single 1930 polygon held across a 116y span (1909-2025); borders may have changed,3413
+BRA-ACRE-1962-2025,Acre,1962,2025,geobr-ibge,2020.0,assigned,False,assumed_constant,True,False,single 2020 polygon held across a 63y span (1962-2025); borders may have changed,0
+BRA-ALAGOAS-1889-2025,Alagoas,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-AMAPA-1943-2025,Amapá,1943,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+BRA-AMAZONAS-1889-2025,Amazonas,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-BAHIA-1889-2025,Bahia,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-CE-1889-2025,Ceará,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-DF-1960-2023,Distrito Federal (Brasília),1960,2023,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 63y span (1960-2023); borders may have changed,0
+BRA-ES-1889-2025,Espírito Santo,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-GOIAS-1889-2025,Goiás,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-MARANHAO-1889-2025,Maranhão,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-MATOGROSSO-1889-2025,Mato Grosso,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-MINASGERAIS-1889-2025,Minas Gerais,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-MS-1977-2025,Mato Grosso do Sul,1977,2025,geobr-ibge,2020.0,assigned,False,assumed_constant,True,False,single 2020 polygon held across a 48y span (1977-2025); borders may have changed,0
+BRA-PARA-1889-2025,Pará,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-PARAIBA-1889-2025,Paraíba,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-PARANA-1889-2025,Paraná,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-PERNAMBUCO-1889-2025,Pernambuco,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-PIAUI-1889-2025,Piauí,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-RIODEJANEIRO-1889-2025,Rio de Janeiro,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-RIOGRANDEDOSUL-1889-2025,Rio Grande do Sul,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-RN-1889-2025,Rio Grande do Norte,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-RONDONIA-1943-2025,Rondônia,1943,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 82y span (1943-2025); borders may have changed,0
+BRA-RORAIMA-1988-2025,"Roraima (state, 1988-2025)",1988,2025,geobr-ibge,2020.0,assigned,False,assumed_constant,True,False,single 2020 polygon held across a 37y span (1988-2025); borders may have changed,0
+BRA-SANTACATARINA-1889-2025,Santa Catarina,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-SAOPAULO-1889-2025,São Paulo,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-SERGIPE-1889-2025,Sergipe,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
+BRA-TOCANTINS-1988-2025,Tocantins,1988,2025,geobr-ibge,2020.0,assigned,False,assumed_constant,True,False,single 2020 polygon held across a 37y span (1988-2025); borders may have changed,0
 BRB-1800-2025,Barbados,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,309
 BRG-1800-1897,Borgu Confederacy,1800,1897,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 BRL-1938-1945,Greater Berlin (1938-1945),1938,1945,gadm-4.1-adm1,2022.0,assigned,True,back_projected,True,False,polygon vintage 2022 is AFTER the period ends (1945) — later/modern border applied back,6
@@ -108,6 +176,7 @@ CAF-1906-1912,Central African Republic (1906-1912),1906,1912,cshapes-2.0,1906.0,
 CAF-1912-1919,Central African Republic (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,vintage 1912 faithful to period 1912-1919,0
 CAF-1919-1960,Central African Republic (1919-1960),1919,1960,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,False,single 1919 polygon held across a 41y span (1919-1960); borders may have changed,14
 CAF-1960-2025,Central African Republic,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 65y span (1960-2025); borders may have changed,1
+CAL-1850-2025,California (US state),1850,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CAN-1800-1866,Canada (pre-Confederation),1800,1866,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),39
 CAN-1866-1870,"Canada (original four provinces, 1866–1870)",1866,1870,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),4
 CAN-1866-1886,"Canada (Confederation era, to 1886)",1866,1886,cshapes-2.0,1886.0,proxy,True,measured,False,False,vintage 1886 faithful to period 1866-1886,0
@@ -127,6 +196,22 @@ CHL-1810-1884,Chile (to 1884),1810,1884,constructed,,proxy,True,assumed_constant
 CHL-1884-1899,Chile (1884-1899),1884,1899,cshapes-2.0,1886.0,assigned,True,measured,False,False,vintage 1886 faithful to period 1884-1899,105
 CHL-1899-1902,Chile (1899-1902),1899,1902,cshapes-2.0,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1899-1902,25
 CHL-1902-2025,Chile,1902,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,False,single 1902 polygon held across a 123y span (1902-2025); borders may have changed,2371
+CHL-AI-1976-2025,Aysén (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-AN-1976-2025,Antofagasta (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-AP-2007-2025,Arica y Parinacota,2007,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-AR-1976-2025,La Araucanía (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-AT-1976-2025,Atacama (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-BI-1976-2025,Biobío (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-CO-1976-2025,Coquimbo (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-LI-1976-2025,O'Higgins (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-LL-1976-2025,Los Lagos (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-LR-2007-2025,Los Ríos (region of Chile),2007,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-MA-1976-2025,Magallanes (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-ML-1976-2025,Maule (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-NB-2018-2025,Ñuble (region of Chile),2018,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-RM-1976-2025,Metropolitana (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-TA-1976-2025,Tarapacá (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+CHL-VS-1976-2025,Valparaíso (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 CHN-1800-1895,China (to 1895),1800,1895,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 95y span (1800-1895); borders may have changed,5
 CHN-1895-1913,China (1895-1913),1895,1913,cshapes-2.0,1899.0,assigned,True,measured,False,False,vintage 1899 faithful to period 1895-1913,5
 CHN-1913-1914,China (1913-1914),1913,1914,cshapes-2.0,1913.0,assigned,True,measured,False,False,vintage 1913 faithful to period 1913-1914,0
@@ -163,6 +248,38 @@ COL-1800-1830,Gran Colombia,1800,1830,cliopatria,1825.0,assigned,False,assumed_c
 COL-1830-1903,Colombia (to 1903),1830,1903,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 73y span (1830-1903); borders may have changed,7
 COL-1903-1922,Colombia (1903-1922),1903,1922,cshapes-2.0,1903.0,assigned,True,measured,False,False,vintage 1903 faithful to period 1903-1922,99
 COL-1922-2025,Colombia,1922,2025,cshapes-2.0,1922.0,assigned,True,assumed_constant,True,False,single 1922 polygon held across a 103y span (1922-2025); borders may have changed,1225
+COL-AMA-1991-2025,Amazonas (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-ANTIOQUIA-1886-2025,Antioquia (department of Colombia),1886,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-ARA-1991-2025,Arauca (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-ATL-1910-2025,Atlántico (department of Colombia),1910,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-BOLIVAR-1886-2025,Bolívar (department of Colombia),1886,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-BOYACA-1886-2025,Boyacá (department of Colombia),1886,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CALDAS-1905-2025,Caldas (department of Colombia),1905,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CAQUETA-1981-2025,Caquetá (department of Colombia),1981,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CASANARE-1991-2025,Casanare (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CAU-1886-2025,Cauca (department of Colombia),1886,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CESAR-1967-2025,Cesar (department of Colombia),1967,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CHO-1947-2025,Chocó (department of Colombia),1947,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CORDOBA-1952-2025,Córdoba (department of Colombia),1952,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-CUNDINAMARCA-1886-2025,Cundinamarca (department of Colombia),1886,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-GUA-1991-2025,Guainía (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-GUAJIRA-1965-2025,Guajira (department of Colombia),1965,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-GUAVIARE-1991-2025,Guaviare (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-HUILA-1905-2025,Huila (department of Colombia),1905,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-MAGDALENA-1915-2025,Magdalena (department of Colombia),1915,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-META-1959-2025,Meta (department of Colombia),1959,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-NARINO-1904-2025,Nariño (department of Colombia),1904,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-NORTEDESANTANDER-1910-2025,Norte de Santander (department of Colombia),1910,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-PUTUMAYO-1991-2025,Putumayo (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-QUINDIO-1966-2025,Quindío (department of Colombia),1966,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-RISARALDA-1966-2025,Risaralda (department of Colombia),1966,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-SANDRES-1991-2025,San Andrés y Providencia (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-SANTANDER-1886-2025,Santander (department of Colombia),1886,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-SUCRE-1966-2025,Sucre (department of Colombia),1966,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-TOLIMA-1886-2025,Tolima (department of Colombia),1886,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-VALLEDELCAUCA-1910-2025,Valle del Cauca (department of Colombia),1910,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-VAU-1991-2025,Vaupés (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+COL-VICHADA-1991-2025,Vichada (department of Colombia),1991,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 COM-1946-1975,Comoros (1946-1975),1946,1975,cshapes-2.0,1946.0,assigned,True,assumed_constant,True,False,single 1946 polygon held across a 29y span (1946-1975); borders may have changed,7
 COM-1975-2025,Comoros,1975,2025,cshapes-2.0,1946.0,assigned,False,back_projected,True,False,polygon vintage 1946 is BEFORE the period starts (1975),0
 CPV-1800-1886,Cape Verde (to 1886),1800,1886,cshapes-2.0,1886.0,proxy,True,assumed_constant,True,False,single 1886 polygon held across a 86y span (1800-1886); borders may have changed,0
@@ -225,9 +342,59 @@ ERI-1889-1952,"Eritrea (colony/administration, 1889-1952)",1889,1952,cshapes-2.0
 ERI-1993-2025,Eritrea,1993,2025,cshapes-2.0,1993.0,assigned,False,assumed_constant,True,False,single 1993 polygon held across a 32y span (1993-2025); borders may have changed,0
 ESH-1958-1975,Western Sahara (1958-1975),1958,1975,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ESH-1975-2025,Western Sahara,1975,2025,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-17-1833-2025,Girona (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ESP-1800-2025,Spain,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,13360
-ESP-CO-1833-2025,A Coruña (province of Spain),1833,2025,mapspain-ign,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
-ESP-MD-1833-2025,Madrid (province/region of Spain),1833,2025,mapspain-ign,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+ESP-A-1833-2025,Alicante/Alacant (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-AB-1833-2025,Albacete (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-AL-1833-2025,Almería (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-AS-1833-2025,Asturias (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-AV-1833-2025,Ávila (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-B-1833-2025,Barcelona (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-BA-1833-2025,Badajoz (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-BI-1833-2025,Bizkaia (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-BU-1833-2025,Burgos (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-CA-1833-2025,Cantabria (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-CC-1833-2025,Cáceres (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-CDZ-1833-2025,Cádiz (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-CO-1833-2025,A Coruña (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-COR-1833-2025,Córdoba (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-CR-1833-2025,Ciudad Real (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-CS-1833-2025,Castellón/Castelló (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-CU-1833-2025,Cuenca (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-GC-1833-2025,Gran Canaria (island of Spain),1833,2025,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+ESP-GI-1833-2025,Gipuzkoa (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-GR2-1833-2025,Granada (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-GU-1833-2025,Guadalajara (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-H-1833-2025,Huelva (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-HU-1833-2025,Huesca (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-IB-1833-2025,Illes Balears (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-IBZ-1833-2025,Eivissa y Formentera (province of Spain),1833,2025,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+ESP-J-1833-2025,Jaén (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-LE-1833-2025,León (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-LL-1833-2025,Lleida (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-LP-1927-2025,Las Palmas (province of Spain),1927,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-LU-1833-2025,Lugo (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-MA-1833-2025,Málaga (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-MD-1833-2025,Madrid (province/region of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-MU-1833-2025,Murcia (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-NV-1833-2025,Navarra (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-OR-1833-2025,Ourense (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-PA-1833-2025,Palencia (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-PO-1833-2025,Pontevedra (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-RI-1833-2025,La Rioja (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-SA-1833-2025,Salamanca (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-SCT-1927-2025,Santa Cruz de Tenerife (province of Spain),1927,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-SE-1833-2025,Sevilla (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-SG-1833-2025,Segovia (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-SO-1833-2025,Soria (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-T-1833-2025,Tarragona (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-TE-1833-2025,Teruel (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-TO-1833-2025,Toledo (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-V-1833-2025,Valencia/València (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-VA-1833-2025,Valladolid (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-VI-1833-2025,Araba/Álava (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-ZA-1833-2025,Zaragoza (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ESP-ZM-1833-2025,Zamora (province of Spain),1833,2025,mapspain-ign,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 EST-1800-1918,Estonia (Governorate),1800,1918,cshapes-2.0,1918.0,assigned,True,assumed_constant,True,False,single 1918 polygon held across a 118y span (1800-1918); borders may have changed,16
 EST-1918-1940,Estonia (interwar republic),1918,1940,cshapes-2.0,1918.0,assigned,True,measured,False,False,vintage 1918 faithful to period 1918-1940,506
 EST-1940-1991,Estonian SSR,1940,1991,cshapes-2.0,1918.0,assigned,True,back_projected,True,False,polygon vintage 1918 is BEFORE the period starts (1940),16
@@ -276,10 +443,99 @@ FIN-1917-1940,Finland (1917-1940),1917,1940,cshapes-2.0,1917.0,assigned,True,mea
 FIN-1940-2025,Finland (1940-2025),1940,2025,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,False,single 1940 polygon held across a 85y span (1940-2025); borders may have changed,742
 FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,520
 FLK-1833-2025,Falkland Islands,1833,2025,gadm-4.1-adm0,2023.0,proxy,True,assumed_constant,True,True,single 2023 polygon held across a 192y span (1833-2025); borders may have changed,25
+FRA-02-1800-2025,Aisne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-04-1790-2025,Alpes-de-Haute-Provence (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-05-1790-2025,Hautes-Alpes (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-08-1800-2025,Ardennes (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-13-1790-2025,Bouches-du-Rhône (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-14-1800-2025,Calvados (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-18-1800-2025,Cher,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 FRA-1800-1871,"France (with Alsace-Lorraine, to 1871)",1800,1871,cshapes-europe,1816.0,assigned,True,assumed_constant,True,True,single 1816 polygon held across a 71y span (1800-1871); borders may have changed,313
 FRA-1800-1919,France (to 1919),1800,1919,cshapes-europe,1816.0,assigned,True,assumed_constant,True,False,single 1816 polygon held across a 119y span (1800-1919); borders may have changed,0
 FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",1871,1919,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 48y span (1871-1919); borders may have changed,2358
+FRA-19-1800-2025,Corrèze (département of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 FRA-1919-2025,France,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4101
+FRA-21-1800-2025,Côte-d'Or,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-22-1800-2025,Côtes-d'Armor,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-23-1800-2025,Creuse (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-24-1800-2025,Dordogne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-25-1800-2025,Doubs,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-27-1800-2025,Eure,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-28-1800-2025,Eure-et-Loir,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-2A-1975-2025,Corse-du-Sud,1975,2025,gadm-4.1-adm2,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-35-1800-2025,Ille-et-Vilaine (department),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-36-1800-2025,Indre,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-37-1800-2025,Indre-et-Loire,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-39-1800-2025,Jura,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-41-1800-2025,Loir-et-Cher,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-42-1800-2025,"Loire (department, France)",1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-44-1800-2025,Loire-Atlantique (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-48-1800-2025,Lozère,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-49-1800-2025,Maine-et-Loire (department of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-50-1800-2025,Manche,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-52-1800-2025,Haute-Marne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-53-1800-2025,Mayenne,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-54-1871-2025,Meurthe-et-Moselle,1871,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-55-1800-2025,Meuse,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-MOR-1790-2025,Morbihan (department),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-57-1919-2025,Moselle,1919,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-58-1800-2025,Nièvre,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-59-1800-2025,Nord (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-60-1800-2025,Oise (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-61-1800-2025,Orne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-62-1800-2025,Pas-de-Calais,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-64-1800-2025,Pyrénées-Atlantiques,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-67-1919-2025,Bas-Rhin (département),1919,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-68-1919-2025,Haut-Rhin (département),1919,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-70-1800-2025,Haute-Saône,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-71-1800-2025,Saône-et-Loire,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-76-1800-2025,Seine-Maritime (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-77-1800-2025,Seine-et-Marne,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-79-1800-2025,Deux-Sèvres (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-80-1800-2025,Somme (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-81-1800-2025,Tarn (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-83-1790-2025,Var (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-84-1790-2025,Vaucluse (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-85-1800-2025,Vendée (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-88-1800-2025,Vosges (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-89-1800-2025,Yonne,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-91-1968-2025,Essonne,1968,2025,gadm-4.1-adm2,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-AIN-1800-2025,Ain (département of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-ALL-1800-2025,Allier,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-AM-1860-2025,Alpes-Maritimes,1860,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-ARD-1800-2025,Ardèche,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-ARI-1800-2025,Ariège,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-AUB-1800-2025,Aube (département of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-AUD-1800-2025,"Aude (department, 1800-2025)",1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-12-1800-2025,Aveyron (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-CANTAL-1800-2025,Cantal (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-CHTE-1800-2025,Charente,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-CMAR-1800-2025,Charente-Maritime,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-D32-1800-2025,Gers (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-DRO-1800-2025,Drôme (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-FIN-1800-2025,Finistère,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-GIR-1800-2025,Gironde (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-GRD-1800-2025,Gard (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-HER-1800-2025,Hérault,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-HG-1800-2025,Haute-Garonne,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-HLO-1800-2025,Haute-Loire,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-HP-1790-2025,Hautes-Pyrénées (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-HSAV-1860-2025,Haute-Savoie,1860,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-HVN-1800-2025,Haute-Vienne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-ISE-1800-2025,Isère (department),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-LAN-1800-2025,Landes (departement),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-LG-1800-2025,Lot-et-Garonne (département of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-LOI-1800-2025,Loiret,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-LOT-1800-2025,"Lot (département, France)",1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-MRN-1800-2025,Marne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-PDD-1800-2025,Puy-de-Dôme (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-PYRO-1790-2025,Pyrénées-Orientales,1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-RHO-1800-2025,Rhône,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-SAR-1800-2025,Sarthe (département of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-SAV-1860-2025,Savoie (department),1860,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-TDB-1922-2025,Territoire de Belfort,1922,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-TG-1808-2025,Tarn-et-Garonne,1808,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+FRA-VNE-1800-2025,Vienne (department),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 FRIN-1816-1954,French India (Établissements français dans l'Inde),1816,1954,constructed,2024.0,estimate,True,back_projected,True,False,polygon vintage 2024 is AFTER the period ends (1954) — later/modern border applied back,14
 FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,cshapes-2.0,1953.0,assigned,True,measured,False,False,vintage 1953 faithful to period 1953-1964,0
 FRO-1800-2025,Faroe Islands,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,13
@@ -335,6 +591,7 @@ GUM-1898-1950,Territory of Guam,1898,1950,gadm-4.1-adm0,2023.0,assigned,True,bac
 GUM-1950-2025,Guam (US Territory),1950,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,False,single 2023 polygon held across a 75y span (1950-2025); borders may have changed,28
 GUY-1800-2025,Guyana,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,551
 HATAY-1938-1939,Sanjak of Alexandretta / Hatay State,1938,1939,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+HAW-1959-2025,Hawaii (state of the United States),1959,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 HAWI-1898-1959,Territory of Hawaii,1898,1959,cshapes-2.0,1898.0,assigned,True,assumed_constant,True,False,single 1898 polygon held across a 61y span (1898-1959); borders may have changed,102
 HKG-1842-2025,Hong Kong,1842,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,70
 HND-1800-2025,Honduras,1800,2025,cshapes-2.0,1886.0,polygon_vintage_drift,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,899
@@ -390,6 +647,24 @@ ITA-1861-1919,Italy (to 1919),1861,1919,cshapes-europe,1886.0,assigned,True,assu
 ITA-1866-1870,Italy (1866-1870),1866,1870,cshapes-europe,1867.0,assigned,True,measured,False,False,vintage 1867 faithful to period 1866-1870,98
 ITA-1870-1919,Italy (1870-1919),1870,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 49y span (1870-1919); borders may have changed,1873
 ITA-1919-2025,Italy,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),5024
+ITA-ABR-1970-2025,Abruzzo (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-BAS-1861-2025,Basilicata (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-CAL-1861-2025,Calabria (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-CAM-1970-2025,Campania (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-EMR-1970-2025,Emilia-Romagna (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-ITH1-1919-2025,Bolzano/South Tyrol (province of Italy),1919,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-ITH4-1970-2025,Friuli-Venezia Giulia (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-ITI1-1861-2025,Toscana (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-ITI2-1970-2025,Umbria (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-LAZ-1970-2025,Lazio (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-LIG-1970-2025,Liguria (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-LOM-1861-2025,Lombardia (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-MAR-1861-2025,Marche (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-PIE-1970-2025,Piemonte (region of Italy),1970,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-PUG-1861-2025,Puglia (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-SAR-1861-2025,Sardegna (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-SIC-1861-2025,Sicilia (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+ITA-VEN-1866-2025,Veneto (region of Italy),1866,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,constructed,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,185
 JAM-1800-2025,Jamaica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,964
@@ -521,6 +796,38 @@ MDG-1882-2025,Madagascar,1882,2025,cshapes-2.0,1960.0,assigned,True,assumed_cons
 MDV-1800-2025,Maldives,1800,2025,gadm-4.1-adm0,1887.0,estimate,True,assumed_constant,True,False,single 1887 polygon held across a 225y span (1800-2025); borders may have changed,0
 MEX-1800-1848,Mexico (to 1848),1800,1848,cliopatria,1825.0,assigned,False,assumed_constant,True,False,single 1825 polygon held across a 48y span (1800-1848); borders may have changed,0
 MEX-1848-2025,Mexico,1848,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,single 1886 polygon held across a 177y span (1848-2025); borders may have changed,4253
+MEX-AGS-1857-2025,Aguascalientes,1857,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-BCN-1952-2025,Baja California,1952,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-BCS-1931-2025,Baja California Sur,1931,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-CAM-1863-2025,Campeche,1863,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-CHIAPAS-1824-2025,Chiapas,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-CHIHUAHUA-1824-2025,Chihuahua,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-CMX-1824-2025,Ciudad de México (Distrito Federal),1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-COAH-1824-2025,Coahuila,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-COL-1857-2025,Colima,1857,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-DGO-1824-2025,Durango (state),1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-GUANAJUATO-1824-2025,Guanajuato,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-GUE-1849-2025,Guerrero,1849,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-HIDALGO-1869-2025,Hidalgo,1869,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-JALISCO-1824-2025,Jalisco,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-MEX-1824-2025,Estado de México,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-MICHOACAN-1824-2025,Michoacán,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-MOR-1869-2025,Morelos,1869,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-NAYARIT-1917-2025,Nayarit,1917,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-NL-1824-2025,Nuevo León,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-OAXACA-1824-2025,Oaxaca,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-PUE-1824-2025,Puebla,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-QROO-1902-2025,Quintana Roo,1902,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-QUERETARO-1824-2025,Querétaro,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-SANLUISPOTOSI-1824-2025,San Luis Potosí (state of Mexico),1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-SIN-1830-2025,Sinaloa,1830,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-SON-1830-2025,Sonora,1830,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-TABASCO-1824-2025,Tabasco,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-TAMAULIPAS-1824-2025,Tamaulipas,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-TLAX-1857-2025,Tlaxcala,1857,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-VERACRUZ-1824-2025,Veracruz,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-YUC-1824-2025,Yucatán,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+MEX-ZAC-1824-2025,Zacatecas,1824,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MHL-1874-2025,Marshall Islands,1874,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 MKD-1991-2025,North Macedonia,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,True,single 1930 polygon held across a 44y span (1918-1962); borders may have changed,28
@@ -636,6 +943,29 @@ POL-1945-2025,Poland (1945-2025),1945,2025,cshapes-2.0,1945.0,assigned,True,assu
 PRI-1800-2025,Puerto Rico,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,936
 PRK-1948-2025,North Korea,1948,2025,cshapes-2.0,1948.0,assigned,True,assumed_constant,True,False,single 1948 polygon held across a 77y span (1948-2025); borders may have changed,30
 PRT-1800-2025,Portugal,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,1816
+PRT-ALE-1989-2025,Alentejo (NUTS II region of Portugal),1989,2025,none,,unassigned,False,unassigned,True,False,no polygon (honest gap; never a false territory),0
+PRT-AV-1835-2025,Aveiro (district of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-BG-1835-2025,Bragança (district of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-BJ-1986-2025,Beja (NUTS III region of Portugal),1986,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-BRA-1986-2025,Braga (NUTS III region of Portugal),1986,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-CB-1835-2025,Castelo Branco (district of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-CENTRO-1986-2025,Centro (NUTS II region of Portugal),1986,2025,none,,unassigned,False,unassigned,True,False,no polygon (honest gap; never a false territory),0
+PRT-CO-1835-2025,Coimbra (district/NUTS III region of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-EV-1989-2025,Évora (NUTS III region of Portugal),1989,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-FA-1989-2025,"Faro (Algarve, NUTS region of Portugal)",1989,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-GU-1835-2025,Guarda (district/NUTS region of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-LE-1835-2025,Leiria (district / NUTS region of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-LI-1835-2025,Lisboa (district/NUTS region of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-LIS-1835-2025,Área Metropolitana de Lisboa (Lisbon district/NUTS region of Portugal),1835,2025,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
+PRT-PG-1986-2025,Portalegre (NUTS region of Portugal),1986,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-PO-1835-2025,Porto (district of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-PT11-1986-2025,Norte (NUTS II region of Portugal),1986,2025,gadm-4.1-adm1,,unassigned,False,unassigned,True,False,no polygon (honest gap; never a false territory),0
+PRT-PT15-1986-2025,Algarve (NUTS II region of Portugal),1986,2025,none,,unassigned,False,unassigned,True,False,no polygon (honest gap; never a false territory),0
+PRT-SA-1989-2025,Santarém (NUTS region of Portugal),1989,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-SE-1989-2025,Setúbal (NUTS III region of Portugal),1989,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-VC-1835-2025,Viana do Castelo (district / NUTS III region of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-VI-1835-2025,Viseu (district/NUTS region of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+PRT-VR-1989-2025,Vila Real (district/NUTS III region of Portugal),1989,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0
 PRY-1811-1870,Paraguay (pre-Triple Alliance),1811,1870,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 PRY-1811-1938,Paraguay (to 1938),1811,1938,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,single 1886 polygon held across a 127y span (1811-1938); borders may have changed,0
 PRY-1870-1932,Paraguay (post-Triple Alliance),1870,1932,cshapes-2.0,1886.0,estimate,True,assumed_constant,True,False,single 1886 polygon held across a 62y span (1870-1932); borders may have changed,287
@@ -679,7 +1009,7 @@ RWA-1962-2025,Rwanda,1962,2025,cshapes-2.0,1962.0,assigned,False,assumed_constan
 RWB-1919-1922,Rwanda and Burundi,1919,1922,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
 RWB-1922-1962,Ruanda-Urundi (1922-1962),1922,1962,cshapes-2.0,1922.0,assigned,True,assumed_constant,True,False,single 1922 polygon held across a 40y span (1922-1962); borders may have changed,262
 RWK-1800-1890,Kingdom of Rwanda,1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
-RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year,5
+RYU-1937-1945,Ryukyu Islands / Okinawa Prefecture (Japanese),1937,1945,gadm-4.1-adm1,,assigned,True,assumed_constant,True,True,polygon present but no recorded vintage year,5
 RYU-1945-1972,Ryukyu Islands (US Administration),1945,1972,gadm-4.1-adm1,,proxy,True,assumed_constant,True,True,polygon present but no recorded vintage year; footnote coverage caveat (FAO/IIA yearbook),53
 SAA-1947-1957,Saar Protectorate,1947,1957,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,132
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,none,,unassigned,True,unassigned,True,False,no polygon (honest gap; never a false territory),0
@@ -702,7 +1032,7 @@ SGP-1946-1963,Singapore (Crown Colony),1946,1963,cshapes-2.0,1953.0,assigned,Tru
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,cshapes-2.0,1962.0,assigned,False,back_projected,True,False,polygon vintage 1962 is BEFORE the period starts (1963),0
 SGP-1965-2025,Singapore,1965,2025,cshapes-2.0,1965.0,assigned,False,assumed_constant,True,False,single 1965 polygon held across a 60y span (1965-2025); borders may have changed,0
 SGS-1800-2025,South Georgia and the South Sandwich Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
-SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,gadm-4.1-adm1,2024.0,proxy,True,back_projected,True,True,polygon vintage 2024 is AFTER the period ends (1967) — later/modern border applied back,15
+SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,gadm-4.1-adm1,2024.0,assigned,True,back_projected,True,True,polygon vintage 2024 is AFTER the period ends (1967) — later/modern border applied back,15
 SLB-1800-2025,Solomon Islands,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,polygon present but no recorded vintage year,30
 SLE-1800-1886,Sierra Leone,1800,1886,cshapes-2.0,1895.0,assigned,True,back_projected,True,False,polygon vintage 1895 is AFTER the period ends (1886) — later/modern border applied back,0
 SLE-1886-1889,Sierra Leone (1886-1889),1886,1889,cshapes-2.0,1886.0,assigned,True,measured,False,False,vintage 1886 faithful to period 1886-1889,0
@@ -801,6 +1131,54 @@ USA-1803-1848,United States (1803-1848),1803,1848,cliopatria,1815.0,assigned,Fal
 USA-1848-1867,United States (1848-1867),1848,1867,cliopatria,1849.0,assigned,True,measured,False,False,vintage 1849 faithful to period 1848-1867,46
 USA-1867-1959,United States (1867-1959),1867,1959,cliopatria,1880.0,assigned,True,assumed_constant,True,True,single 1880 polygon held across a 92y span (1867-1959); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),8231
 USA-1959-2025,United States of America,1959,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,single 1960 polygon held across a 66y span (1959-2025); borders may have changed,272
+USA-AK-1959-2025,Alaska (state of the United States),1959,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-AL-1819-2025,Alabama (state of the United States),1819,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-AR-1836-2025,Arkansas (state of the United States),1836,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-AZ-1863-2025,Arizona (state of the United States),1863,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-CO-1876-2025,Colorado (state of the United States),1876,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-CT-1800-2025,Connecticut (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-DE-1800-2025,Delaware (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-FL-1845-2025,Florida (state of the United States),1845,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-GA-1800-2025,Georgia (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-IA-1846-2025,Iowa (state of the United States),1846,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-ID-1890-2025,Idaho (state of the United States),1890,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-IL-1818-2025,Illinois (state of the United States),1818,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-IN-1816-2025,Indiana (state of the United States),1816,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-KS-1861-2025,Kansas (state of the United States),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-KY-1800-2025,Kentucky (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-LA-1812-2025,Louisiana (state of the United States),1812,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-MA-1800-2025,Massachusetts (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-MD-1800-2025,Maryland (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-ME-1820-2025,Maine (state of the United States),1820,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-MI-1837-2025,Michigan (state of the United States),1837,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-MN-1858-2025,Minnesota (state of the United States),1858,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-MO-1821-2025,Missouri (state of the United States),1821,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-MS-1817-2025,Mississippi (state of the United States),1817,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-MT-1889-2025,Montana (state of the United States),1889,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-NC-1800-2025,North Carolina (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-ND-1889-2025,North Dakota (state of the United States),1889,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-NE-1867-2025,Nebraska (state of the United States),1867,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-NH-1800-2025,New Hampshire (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-NJ-1800-2025,New Jersey (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-NM-1912-2025,New Mexico (state of the United States),1912,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-NV-1864-2025,Nevada (state of the United States),1864,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-NY-1800-2025,New York (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-OH-1803-2025,Ohio (state of the United States),1803,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-OK-1907-2025,Oklahoma (state of the United States),1907,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-OR-1859-2025,Oregon (state of the United States),1859,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-PA-1800-2025,Pennsylvania (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-RI-1790-2025,Rhode Island (state of the United States),1790,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-SC-1800-2025,South Carolina (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-SOUTHDAKOTA-1889-2025,South Dakota (state of the United States),1889,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-TN-1800-2025,Tennessee (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-TX-1845-2025,Texas (state of the United States),1845,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-UTAH-1896-2025,Utah (state of the United States),1896,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-VA-1800-2025,Virginia (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-VT-1800-2025,Vermont (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-WA-1889-2025,Washington (state of the United States),1889,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-WI-1848-2025,Wisconsin (state of the United States),1848,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-WV-1863-2025,West Virginia (state of the United States),1863,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
+USA-WY-1890-2025,Wyoming (state of the United States),1890,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 UZB-1991-2025,Uzbekistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 VAT-1929-2025,Holy See (Vatican City State),1929,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,polygon present but no recorded vintage year,0
 VCT-1800-1833,Saint Vincent (to 1833),1800,1833,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,polygon present but no recorded vintage year,0

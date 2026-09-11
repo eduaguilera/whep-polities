@@ -103,8 +103,6 @@ Algeria,faostat,1962,2024,DZA-1962-2025,Algeria (1962-2025),high,208548
 algeria,iia,1902,1918,DZA-CVD-1902-1919,"Algerian civil departments (Alger, Oran, Constantine, 1902-1919)",high,121
 algeria,mitchell,1902,1918,DZA-CVD-1902-1919,"Algerian civil departments (Alger, Oran, Constantine, 1902-1919)",high,297
 Amapá,juan-subnational,1943,2023,BRA-AMAPA-1943-2025,,high,
-Amazonas,juan-subnational,1900,2024,BRA-AMAZONAS-1889-2025,,high,
-Amazonas,juan-subnational,1991,2023,COL-AMA-1991-2025,,high,
 American Samoa,,,,ASM-1900-2025,Territory of American Samoa,high,
 American Samoa,faostat,1900,2025,ASM-1900-2025,Territory of American Samoa,high,0
 Andorra,faostat,1850,2025,AND-1800-2025,Andorra,high,0
@@ -530,8 +528,6 @@ czechoslovakia,,1947,1993,F51-1947-1993,Czechoslovakia (1947-1993),high,
 Czechoslovakia,faostat,1961,1992,F51-1947-1993,Czechoslovakia (1947-1993),high,92870
 czechoslovakia,juan,1914,1918,CZE-1804-1918,Czech Lands (Bohemia-Moravia-Silesia under Austria-Hungary),high,27
 Czechoslovakia,lassaletta-grassland-share,1961,1992,F51-1947-1993,Czechoslovakia (1947-1993),high,
-Córdoba,juan-subnational,1900,2023,ARG-CORDOBA-1853-2025,,high,
-Córdoba,juan-subnational,1952,2023,COL-CORDOBA-1952-2025,,medium,
 Côte d'Ivoire,faostat,1961,2024,CIV-1960-2025,Côte d'Ivoire,high,208865
 DELAWARE,juan-subnational,1866,2024,USA-DE-1800-2025,,high,
 Democratic People's Republic of Korea,faostat,1961,2024,PRK-1948-2025,North Korea,high,112014

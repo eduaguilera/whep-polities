@@ -14,7 +14,7 @@ polygon_source: gadm-4.1-adm1
 polygon_feature_id: COL.31_2
 polygon_feature_year: null
 polygon_status: assigned
-predecessor: [COL-CAU-1886-1910]
+predecessor: [COL-CAU-1886-2025]
 successor: []
 container:
   - code: COL-1903-1922
@@ -43,7 +43,7 @@ Valle del Cauca is a department of Colombia on the Pacific slope of the Cordille
 
 ## Predecessors and successors
 
-Predecessor: Cauca department (Colombia), from which Valle del Cauca was split by Law 8 of 1910; the wiki does not yet contain a Cauca department page, so `COL-CAU-1886-1910` is a forward reference following this country's dominant naming pattern rather than a confirmed existing code, and should be reconciled once Cauca's own page is created. No successor: the department continues to exist today, so `end_year: 2025` is open (exclusive) per the country convention for still-current subnational units, and `successor` is empty.
+Predecessor: Cauca department (Colombia), from which Valle del Cauca was split by Law 8 of 1910; `COL-CAU-1886-2025` is that department's page, spanning 1886-2025 — it exists, so this is a confirmed reference rather than a forward one. No successor: the department continues to exist today, so `end_year: 2025` is open (exclusive) per the country convention for still-current subnational units, and `successor` is empty.
 
 ## Sourced claims
 
@@ -69,7 +69,7 @@ The routing decision proposed a single container edge (COL-1922-2025) covering o
 
 **Recorded a predecessor code for Cauca department even though no such page exists yet**
 
-Because Valle del Cauca split off from Cauca department in 1910, I listed a predecessor code COL-CAU-1886-1910 by analogy with the dominant subnational naming pattern, even though the polity table does not yet contain a Cauca department row (the routing decision's own reasoning notes Cauca as a candidate territory but not as an existing distinct page). This forward reference will need to be corrected or confirmed once a Cauca department page is actually created; flagged as an open question below rather than left silently unresolved.
+Because Valle del Cauca split off from Cauca department in 1910, I listed a predecessor code COL-CAU-1886-2025 by analogy with the dominant subnational naming pattern, even though the polity table does not yet contain a Cauca department row (the routing decision's own reasoning notes Cauca as a candidate territory but not as an existing distinct page). That reference is now confirmed: COL-CAU-1886-2025 exists and the predecessor field names it.
 
 ## Open questions
 
@@ -77,7 +77,7 @@ Because Valle del Cauca split off from Cauca department in 1910, I listed a pred
 
 **Predecessor code for Cauca department is a forward reference, not a confirmed existing page**
 
-This entry lists `COL-CAU-1886-1910` as `predecessor`, following the dominant COL subnational naming convention, but no Cauca department page currently exists in the wiki (the routing decision that created this entry only names Cauca as a rejected match_existing candidate, not as an existing row). When Cauca's own page is eventually created, its actual code, start_year, and end_year need to be checked against this reference and the predecessor field corrected if they differ -- for instance if Cauca's page uses a different start year than 1886 or a different subunit token than CAU.
+This entry lists `COL-CAU-1886-2025` as `predecessor`, following the dominant COL subnational naming convention, but no Cauca department page currently exists in the wiki (the routing decision that created this entry only names Cauca as a rejected match_existing candidate, not as an existing row). When Cauca's own page is eventually created, its actual code, start_year, and end_year need to be checked against this reference and the predecessor field corrected if they differ -- for instance if Cauca's page uses a different start year than 1886 or a different subunit token than CAU.
 
 ### oq-1910-creation-date-unverified
 
