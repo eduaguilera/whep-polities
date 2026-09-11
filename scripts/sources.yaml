@@ -63,6 +63,16 @@ sources:
     id_column: GID_0          # ISO3 country code
     id_type: str
 
+  eurostat-gisco-nuts2:
+    # Registered 2026-09-11. Portugal's five mainland NUTS II regions had no geometry of their own:
+    # GADM's adm1 for Portugal is its 18 DISTRICTS, and a union of whole districts under-covers a
+    # NUTS II region badly (Alentejo by 24.9%, Norte by 14.7%), so there was nothing to attach.
+    # This is the geometry counterpart of the attribute tables that already supply
+    # data/final/nuts_code_names.csv.
+    url: https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_01M_2021_4326_LEVL_2.geojson
+    file: data/geodata/eurostat-gisco-nuts/nuts2_2021.geojson
+    id_column: NUTS_ID
+    id_type: str
   gadm-4.1-adm2:
     # Registered 2026-09-09. France's 89 subnational rows are DEPARTEMENTS; GADM's adm1 for France
     # is its 13 regions, so every one of them logged 'feature not found' against adm1. Built only

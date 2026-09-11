@@ -10,17 +10,17 @@ cow: NA
 status: draft
 last_ingest: 2026-09-07
 sources: [juan-subnational]
-polygon_source: none
-polygon_feature_id: null
+polygon_source: eurostat-gisco-nuts2
+polygon_feature_id: PT16
 polygon_feature_year: null
-polygon_status: unassigned
+polygon_status: assigned
 predecessor: []
 successor: []
 container:
   - code: PRT-1800-2025
     start_year: 1986
     end_year: 2025
-    basis: Centro is a NUTS II statistical region inside the sovereign Portuguese state throughout its existence; no change of sovereign container occurs across the span.
+    basis: NUTS II region of Portugal, introduced with the 1986 accession to the European Communities and a direct subunit of the Portuguese state for its whole span. Geometry is the Eurostat GISCO NUTS 2021 level-2 feature PT16.
 ---
 
 # Centro (NUTS II region of Portugal)
