@@ -84,6 +84,16 @@ BASELINE = frozenset({
     # was reclassified subnational (2026-08-04), which is the check working -- a new
     # link has to justify itself.
     ("ALK-1867-1959", "predecessor", "F228-1856-1905"),
+    # Quindio was carved out of Caldas by Law 2 of 1966, so the link is historically right -- but
+    # RISARALDA now lies between them, having itself been separated from Caldas the year before.
+    # The 1905-2025 Caldas row carries the MODERN Caldas polygon, which is the residue after both
+    # separations, so the two shapes are 9.7 km apart. GADM's own features do not touch either, and
+    # the areas match published figures (Quindio 1,942 km2 against ~1,845; Caldas 7,418 against
+    # ~7,888), so neither binding is wrong -- what is anachronistic is using one modern extent for
+    # a span during which the territory lost two departments. Recorded rather than fixed by
+    # deleting a correct link; territory_basis.csv already classes rows of this shape
+    # `assumed_constant`.
+    ("COL-QUINDIO-1966-2025", "predecessor", "COL-CALDAS-1905-2025"),
     # The GRL/ISL cluster that appeared here on 2026-08-05, when the parser fix made 145
     # previously-invisible links checkable, is GONE -- and the way it went is the point.
     #

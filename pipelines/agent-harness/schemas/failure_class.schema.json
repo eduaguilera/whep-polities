@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "failure_class",
+  "description": "Classify one arm of one repository gate, by reading that gate's own source, so a repair can be aimed at the right kind of change. Asked only for arms the harness does not already know, and the answer is banked per (gate, arm) rather than per failure line, because an arm's nature does not change between rows.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["gate", "arm", "kind", "operation", "reasoning"],
+  "properties": {
+    "gate": {"type": "string", "minLength": 3},
+    "arm": {"type": "string", "minLength": 1, "maxLength": 2,
+            "description": "The arm letter this classification is for."},
+    "kind": {"enum": ["ARITHMETIC", "JUDGEMENT", "MECHANICAL", "UNKNOWN"],
+             "description": "ARITHMETIC: the arm compares numbers, spans or codes that must agree, and a repair changes a number and no prose. JUDGEMENT: the arm says the CONTENT is wrong, thin or contradictory, so resolving it needs a decision about what is true. MECHANICAL: a regeneration or a rebuild fixes it with no page edit at all. UNKNOWN: you cannot tell from the source; say so rather than guessing, because a repair aimed at the wrong kind is how a loop starts oscillating."},
+    "operation": {"type": "string", "minLength": 15,
+                  "description": "The narrowest operation that could resolve this arm, phrased so a repair prompt can quote it. Narrow, because broad rewrites made earlier cases oscillate."},
+    "reasoning": {"type": "string", "minLength": 30,
+                  "description": "Cite what in the gate's source told you this — the comparison it makes, the columns it reads. Do not reason from the failure's prose alone: an apostrophe's worth of wording difference has already misrouted one arm."}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "iso_resolution",
+  "description": "Resolve one country label to the ISO3 code used by this repository's polity table. Asked only when the repository's own crosswalks do not already answer it, so that no hand-maintained alias list has to exist.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["label", "iso3_code", "matched_polity_name", "confidence", "basis"],
+  "properties": {
+    "label": {"type": "string", "minLength": 1,
+              "description": "The label exactly as it was given to you."},
+    "iso3_code": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$",
+                  "description": "The ISO3 code of the country this label names, or null if you cannot tell. Null is a valid answer and is better than a guess."},
+    "matched_polity_name": {"type": ["string", "null"],
+                            "description": "The polity_name of a national row in the table that this label refers to. It must be a name you were actually shown; do not recall one."},
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "basis": {"type": "string", "minLength": 20,
+              "description": "Why this label resolves to this code. A long-form official name matching a short common name is a good basis; a memory of a code is not."}
+  }
+}

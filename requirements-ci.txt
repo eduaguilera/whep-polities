@@ -30,8 +30,14 @@
 #              b'Mat\xe9 leaves' has to build an arrow table to reproduce the failure, and
 #              a guard that cannot run in CI does not guard. The matchers still do not run
 #              here; see issue #17.
+#   jsonschema pipelines/agent-harness/test_harness.py, as of 2026-09-02. The harness shows the
+#              model a schema with the keywords the CLI rejects stripped out, and validates the
+#              answer against the FULL schema -- hint versus contract. The test asserts that split
+#              still holds, which means compiling both halves, so the library is needed even though
+#              CI never calls a model. Pure Python, no system dependency.
 pandas>=2.0
 geopandas>=1.0
 pyyaml>=6.0
 spherely>=0.1.1
 pyarrow>=14.0
+jsonschema>=4.0

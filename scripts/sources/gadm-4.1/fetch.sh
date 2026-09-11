@@ -18,6 +18,11 @@ COUNTRIES=(
   # correct; the features were simply absent from this extract, so the build logged
   # 'feature not found' and attached nothing. See issue 59.
   USA JPN
+  # Added 2026-09-09 for the subnational vocabulary: 166 admin-1 rows across these
+  # countries cited gadm-4.1-adm1 and the build logged 'feature not found', because this
+  # extract had never included them. France 35, Colombia 30, Mexico 23, Argentina 22,
+  # Chile 13, Italy 12, Portugal 11, Bolivia 8.
+  FRA ITA PRT ARG BOL BRA CHL COL MEX AUS
   # Added 2026-08-05: the remaining polygon gaps in issue 59 are GADM unions or a
   # complement over these three. CAN-1800-1866 needs Ontario/Quebec/New Brunswick/
   # Nova Scotia/PEI; PTIND-1816-1961 needs Goa/Daman/Diu and FRIN-1816-1954 needs
@@ -73,7 +78,12 @@ rm -f "$ADM0" "$ADM1" "$ADM2"
 # is five districts (Lombok Barat/Tengah/Timur/Utara plus Mataram) totalling 4,570 km2, and
 # Bali + Lombok = 10,160, which is 3.3% of the declared figure. IDN-OTH-1949-1951 is the
 # complement of Java and Bali/Lombok, so it was blocked behind the same thing.
-ADM2_COUNTRIES=(IDN)
+# FRA added 2026-09-09: France's 89 subnational rows are DEPARTEMENTS, and GADM's adm1 for
+# France is its 13 regions -- so every one logged 'feature not found' against adm1. The
+# departements are adm2.
+# ITA added 2026-09-09: ITA-ITH1 is the PROVINCE of Bolzano/South Tyrol, which is adm2;
+# GADM's adm1 for Italy is its 20 regions, where Bolzano sits inside Trentino-Alto Adige.
+ADM2_COUNTRIES=(IDN FRA ITA)
 
 for iso in "${COUNTRIES[@]}"; do
   CFILE="$OUT_DIR/gadm41_${iso}.gpkg"
