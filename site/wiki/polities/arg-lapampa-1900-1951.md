@@ -17,6 +17,10 @@ polygon_status: unassigned
 predecessor: []
 successor: []
 container:
+  - code: ARG-1899-1902
+    start_year: 1900
+    end_year: 1902
+    basis: The national period ARG-1902-2025 begins in 1902, so the edge below could not cover this row's first two data years even though the basis on it already claimed coverage from 1900. ARG-1899-1902 is the live Argentine national period spanning those years, and La Pampa was a national territory under it exactly as it was under its successor. Added 2026-09-14.
   - code: ARG-1902-2025
     start_year: 1902
     end_year: 1951
