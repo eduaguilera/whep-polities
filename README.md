@@ -70,6 +70,7 @@ python3 scripts/write_faostat_area_map.py --check
 python3 scripts/write_label_alias_map.py --check
 python3 scripts/update_wiki_index.py --check
 python3 pipelines/polity-autoimprove/04_territory_basis.py --check
+python3 pipelines/polity-autoimprove/44_border_stability.py --check   # did the border actually move in the span? (asks year-stamped CShapes; SKIPs without data/geodata)
 python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 python3 scripts/write_feature_index.py --check
 python3 scripts/write_iso3_successor_map.py --check

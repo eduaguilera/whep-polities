@@ -71,6 +71,29 @@ ff = os.path.join(H, "footnote_flags.csv")
 if os.path.exists(ff):
     footnote_flagged = set(pd.read_csv(ff)["polity_code"].dropna())
 
+# THE BORDER MEASUREMENT (stage 44). The `assumed_constant` rule below is a guess from SPAN
+# LENGTH alone -- it compares no borders. 44_border_stability.py asks a year-stamped source
+# (CShapes 2.0) whether the border actually moved inside the span, and how far our own polygon's
+# area sits from that reference for the same years. Where the reference confirms the border held
+# for the WHOLE span and the areas agree, `assumed_constant` is a false alarm and the row does
+# not belong in the review queue: USA-1867-1959 (8,231 layer-B rows) is warned about for holding
+# one border across 92 years, while CShapes records a single US border from 1886 to 1959.
+#
+# state/border_stability.csv IS committed, so both paths below can read it anywhere. It is
+# declared volatile all the same: its own input (data/geodata/cshapes-2.0) is gitignored, so a
+# local run after deleting the file would collapse these columns exactly as issue 573 describes.
+border = {}
+bs = os.path.join(H, "border_stability.csv")
+if os.path.exists(bs):
+    _b = pd.read_csv(bs, keep_default_na=False, dtype=str)
+    border = {r["polity_code"]: r.to_dict() for _, r in _b.iterrows()}
+
+# Agreement this close means the reference and our polygon describe the same ground; beyond it
+# the two sources disagree about what the territory WAS (Sweden 1814-1905 sits at -41% because
+# CShapes' "Sweden" is the union with Norway, ours is Sweden proper -- a definitional split, not
+# a wrong polygon, which is why a gap alone never clears or condemns a row on its own).
+BORDER_GAP_TOL_PCT = 2.0
+
 # layer-B data magnitude per polity (optional hint)
 #
 # ORPHAN-CODE GUARD (issue 243). matched_rows.parquet is gitignored per-run state written
@@ -135,7 +158,24 @@ for _, r in pol.iterrows():
     overlaps = (s <= WIN_HI) and (e >= WIN_LO)
     basis, reason = classify(r)
     fn = r.polity_code in footnote_flagged
-    is_prio = ((basis in ("assumed_constant", "back_projected")) and (r.polity_code in flagged_02)) or fn
+    # the measurement, where there is one, overrides the span-length guess about whether this
+    # row's single polygon is an ASSUMPTION -- but only when both halves agree: the reference
+    # must hold one border across the whole span AND our area must match it.
+    _b = border.get(r.polity_code) if border.get(r.polity_code) is not None else {}
+    bchk = _b.get("border_verdict", "")
+    bgap = _b.get("source_gap_pct", "")
+    try:
+        _gap_ok = abs(float(bgap)) <= BORDER_GAP_TOL_PCT
+    except (TypeError, ValueError):
+        _gap_ok = False
+    border_confirms = (bchk == "stable_confirmed") and _gap_ok
+    assumed = (basis != "measured") and not border_confirms
+    if border_confirms and basis != "measured":
+        reason = (reason + f"; border VERIFIED STABLE across the whole span against CShapes "
+                           f"(area agrees within {abs(float(bgap)):.2f}%), so the single polygon "
+                           f"is not an assumption")
+    is_prio = ((basis in ("assumed_constant", "back_projected"))
+               and (r.polity_code in flagged_02) and not border_confirms) or fn
     if fn:
         reason = reason + "; footnote coverage caveat (FAO/IIA yearbook)"
     recs.append({
@@ -145,8 +185,9 @@ for _, r in pol.iterrows():
         "polygon_feature_year": (int(r.polygon_feature_year) if pd.notna(r.get("polygon_feature_year")) else None),
         "polygon_status": r.get("polygon_status"),
         "overlaps_1860_1961": overlaps,
-        "territory_basis": basis, "territory_assumed": basis != "measured",
+        "territory_basis": basis, "territory_assumed": assumed,
         "priority_review": is_prio,
+        "border_check": bchk, "border_source_gap_pct": bgap,
         "basis_reason": reason, "layerb_data_rows": int(rows_by_code.get(r.polity_code, 0)),
     })
 
@@ -164,9 +205,15 @@ _DEST = os.path.join(H, "territory_basis.csv")
 # THE TWO UNTRACKED INPUTS, named once and used by BOTH paths below. --check skips these
 # columns when their input is absent; the write path REFUSES, because the same absence that
 # makes a column uncomparable also makes it destructive to write (issue 573).
+_PRODUCER = {
+    "layerb_data_rows": "01_match_and_findings.py",
+    "priority_review": "02_territorial_evidence.py",
+    "border_check": "44_border_stability.py",
+}
 _VOLATILE = {
     "layerb_data_rows": os.path.join(H, "matched_rows.parquet"),
     "priority_review": os.path.join(H, "territorial_flagged.json"),
+    "border_check": os.path.join(H, "border_stability.csv"),
 }
 _missing = sorted(c for c, src in _VOLATILE.items() if not os.path.exists(src))
 
@@ -283,8 +330,10 @@ if _missing and os.path.exists(_DEST) and "--allow-collapsed-columns" not in sys
     print("Fix: regenerate the missing input(s) first --")
     for _c in _missing:
         _src = _VOLATILE[_c]
-        _stage = ("01_match_and_findings.py" if _src.endswith(".parquet")
-                  else "02_territorial_evidence.py")
+        # NAMED PER COLUMN, not inferred from the extension. The two-way guess this replaces
+        # ("parquet -> stage 01, else stage 02") told anyone hitting the border_check refusal to
+        # run 02_territorial_evidence.py, which does not write that file and never would.
+        _stage = _PRODUCER.get(_c, "the stage that writes it")
         print(f"  {_c:<18s} needs state/{os.path.basename(_src)}  (run {_stage})")
     print("Or pass --allow-collapsed-columns to write the collapse deliberately. See issue 573.")
     raise SystemExit(1)

@@ -389,6 +389,15 @@ jobs:
         if: '!cancelled()'
         run: python3 pipelines/polity-autoimprove/04_territory_basis.py --check
 
+      - name: border_stability.csv still matches the year-stamped reference
+        if: '!cancelled()'
+        # SKIPs in CI, where data/geodata is gitignored -- CShapes 2.0 is the reference this
+        # measurement reads, so without it there is nothing to compare and rebuilding would
+        # empty the file. Same rule as write_feature_index.py --check above: it verifies
+        # locally, which is the only place it can be regenerated. Here because the committed
+        # table feeds 04_territory_basis.py's border_check column in EVERY environment.
+        run: python3 pipelines/polity-autoimprove/44_border_stability.py --check
+
       - name: source_stated_areas.csv still matches the yearbooks
         if: '!cancelled()'
         run: python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
