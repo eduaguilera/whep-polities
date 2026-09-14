@@ -116,6 +116,46 @@ SAME_BORDER_TOL = 0.001
 MIN_REFERENCE_IOU = 0.5
 
 
+# BUILD_DATABASE IS NOT REPRODUCIBLE, so an exact comparison of areas fails for reasons that have
+# nothing to do with borders. Rebuilding the GPKG from unchanged inputs moves 54 of 1,186 geometries
+# (4.6%), worst case MEX-TAMAULIPAS-1824-2025 by 4.386 km2 and FJI-1800-2025 by 0.0121% of its area.
+# The first version of this check compared rounded integers and duly failed with "20 rows differ by
+# 1 km2" after an edge edit that touched no geometry at all. Filed separately -- the instability is
+# in the build, not here.
+#
+# So numeric columns compare within a tolerance, absolute OR relative, whichever is looser, with
+# roughly 2x headroom over the drift measured above. Everything else compares exactly, so the check
+# still fails on what it is for: a row appearing or vanishing, a verdict flipping, a change year
+# moving, a reference becoming incomparable.
+NUMERIC_TOL = {                       # column -> (absolute, relative fraction)
+    "our_km2": (10.0, 0.0003),
+    "reference_km2_at_start": (10.0, 0.0003),
+    "reference_km2_at_end": (10.0, 0.0003),
+    "source_gap_pct": (0.05, 0.0),    # percentage points; drift propagates at ~0.012pp
+    "reference_iou": (0.002, 0.0),
+    "max_step_ratio": (0.002, 0.0),
+}
+
+
+def _close(a, b, tol):
+    """Equal within tolerance, treating blanks as values in their own right.
+
+    A blank becoming a number (or the reverse) is a real change -- the reference appeared, or
+    stopped being comparable -- so it must NOT pass as "close".
+    """
+    a, b = (a or "").strip(), (b or "").strip()
+    if a == b:
+        return True
+    if not a or not b:
+        return False
+    try:
+        x, y = float(a), float(b)
+    except ValueError:
+        return False
+    absolute, relative = tol
+    return abs(x - y) <= max(absolute, relative * max(abs(x), abs(y)))
+
+
 def _iou(a, b):
     """Intersection over union, tolerant of the invalid geometries both sides contain.
 
@@ -276,11 +316,17 @@ def main() -> int:
                             f"{extra[:6]}")
         both = [i for i in f.index if i in c.index]
         for col in f.columns:
-            diff = [i for i in both if c.loc[i, col] != f.loc[i, col]]
+            tol = NUMERIC_TOL.get(col)
+            if tol is None:
+                diff = [i for i in both if c.loc[i, col] != f.loc[i, col]]
+            else:
+                diff = [i for i in both if not _close(c.loc[i, col], f.loc[i, col], tol)]
             if diff:
                 i = diff[0]
                 problems.append(f"{col}: {len(diff)} row(s) differ, e.g. {i} committed "
-                                f"{c.loc[i, col]!r} != regenerated {f.loc[i, col]!r}")
+                                f"{c.loc[i, col]!r} != regenerated {f.loc[i, col]!r}"
+                                + (f" (tolerance abs {tol[0]} / rel {tol[1]:.2%})"
+                                   if tol is not None else ""))
         if problems:
             print("FAIL: border_stability.csv no longer describes the current database")
             for p in problems:
