@@ -64,6 +64,7 @@ import warnings
 
 import geopandas as gpd
 import pandas as pd
+from shapely.validation import make_valid
 
 warnings.filterwarnings("ignore")
 
@@ -81,7 +82,8 @@ EQ_AREA = "ESRI:54034"
 FIELDS = ["polity_code", "start_year", "end_year", "cow_code", "polity_type",
           "our_source", "our_km2", "border_verdict", "n_reference_borders",
           "reference_covers", "reference_bookkeeping_steps", "reference_km2_at_start",
-          "reference_km2_at_end", "max_step_ratio", "change_years", "source_gap_pct"]
+          "reference_km2_at_end", "max_step_ratio", "change_years", "reference_iou",
+          "source_gap_pct"]
 
 # A CShapES feature can clip our span by a matter of DAYS and still share a calendar year with
 # it: gwcode 2's pre-statehood border ends 1959-01-02, so on a year-granular test it "overlaps"
@@ -97,6 +99,39 @@ MIN_OVERLAP_DAYS = 365
 # PAK-1949-1971, ROU-1913-1918 and six others, every one of them at a step ratio of 1.000x.
 # So consecutive features are ONE border when their shapes differ by less than this share.
 SAME_BORDER_TOL = 0.001
+
+# `cow_code` IS NOT A TERRITORY KEY, and joining on it alone compares the wrong ground. Colonial
+# and subnational rows carry their METROPOLE's code -- French India 220 (France), Portuguese India
+# 235 (Portugal), Hyderabad State 750 (India) -- and two rows carry a code for the wrong country
+# outright: IDN-1800-1889 and IDN-1889-1945 are 750 (India, not Indonesia's 850) and NNI-1904-1913
+# is 385 (Norway, not Nigeria's 475). Others are a legitimate SUBSET of the reference state, like
+# Tripolitania and Fezzan against Libya, or the Ottoman span against modern Turkey.
+#
+# Every one of those pairs still yields an area and a ratio, which is the danger: the number looks
+# like a measurement of our polygon and is a measurement of somebody else's. So the join must prove
+# itself geometrically -- intersection over union against the reference border -- and say
+# `reference_mismatch` instead of publishing a gap it cannot mean. 12 of 426 referenced rows fail
+# it. The threshold is deliberately loose: Sweden 1814-1905 sits at 0.574 against CShapes' Sweden-
+# Norway union and MUST stay visible, because that gap is the finding.
+MIN_REFERENCE_IOU = 0.5
+
+
+def _iou(a, b):
+    """Intersection over union, tolerant of the invalid geometries both sides contain.
+
+    Returns None when the operation cannot be done at all -- a mismatch must not be ASSUMED
+    from a topology error, since that would silently downgrade a row for a reason that has
+    nothing to do with its territory.
+    """
+    try:
+        if not a.is_valid:
+            a = make_valid(a)
+        if not b.is_valid:
+            b = make_valid(b)
+        u = a.union(b).area
+        return (a.intersection(b).area / u) if u else None
+    except Exception:
+        return None
 
 
 def _int(v):
@@ -117,12 +152,13 @@ def build() -> pd.DataFrame:
     by_code = {code: g.sort_values("gwsdate") for code, g in cs.groupby("gwcode")}
 
     pol = pd.read_csv(POLDB, keep_default_na=False, dtype=str)
-    ours = {}
+    ours, ours_geom = {}, {}
     if os.path.exists(GPKG):
         g = gpd.read_file(GPKG).to_crs(EQ_AREA)
         for _, r in g.iterrows():
             if r.geometry is not None and not r.geometry.is_empty:
                 ours[r["polity_code"]] = r.geometry.area / 1e6
+                ours_geom[r["polity_code"]] = r.geometry
 
     rows = []
     for _, p in pol.iterrows():
@@ -139,9 +175,11 @@ def build() -> pd.DataFrame:
                "border_verdict": "no_reference", "n_reference_borders": 0,
                "reference_covers": "", "reference_bookkeeping_steps": 0,
                "reference_km2_at_start": "", "reference_km2_at_end": "",
-               "max_step_ratio": "", "change_years": "", "source_gap_pct": ""}
+               "max_step_ratio": "", "change_years": "", "reference_iou": "",
+               "source_gap_pct": ""}
 
         feats = by_code.get(cow) if cow is not None else None
+        borders = []
         if feats is not None:
             lo = pd.Timestamp(year=s, month=1, day=1)
             hi = pd.Timestamp(year=last, month=12, day=31)
@@ -188,6 +226,16 @@ def build() -> pd.DataFrame:
         ref = rec["reference_km2_at_start"]
         if our_km2 and isinstance(ref, (int, float)) and ref:
             rec["source_gap_pct"] = round((our_km2 - ref) / ref * 100, 2)
+
+        # does the reference describe THIS ground? Cheap rejects first: no geometry either side,
+        # or no reference at all.
+        og = ours_geom.get(p["polity_code"])
+        if og is not None and borders:
+            iou = _iou(og, borders[0]["geom"])
+            if iou is not None:
+                rec["reference_iou"] = round(iou, 3)
+                if iou < MIN_REFERENCE_IOU:
+                    rec["border_verdict"] = "reference_mismatch"
         rows.append(rec)
 
     return pd.DataFrame(rows, columns=FIELDS)
@@ -247,7 +295,8 @@ def main() -> int:
     os.replace(tmp, DEST)
     print(f"measured {len(out)} polities -> state/border_stability.csv\n")
     v = out["border_verdict"].value_counts()
-    for k in ("stable_confirmed", "stable_where_covered", "changed", "no_reference"):
+    for k in ("stable_confirmed", "stable_where_covered", "changed",
+              "reference_mismatch", "no_reference"):
         if k in v:
             print(f"   {k:18} {v[k]:5}")
     return 0
