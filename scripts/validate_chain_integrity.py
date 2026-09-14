@@ -216,7 +216,10 @@ BASELINE_ASYMMETRY = {
     # edge ANT-1961-2010 already asserted, so one successor-only edge became symmetric. No new
     # historical claim -- the forward edge is stated on the federation's page and the polygon
     # was already composed from CUW/SXM/BES by scripts/sources/reporting-areas/build.py.
-    "successor_only": 191,
+    # LOWERED 191 -> 188 on 2026-09-11.
+    # The three new post-independence state rows -- AUS-VIC-1901-2025, AUS-QLD-1901-2025 and USA-AK-1959-2025 -- now name the colony or territory they succeeded, which is the reverse of an edge the counterpart already asserted.
+    # No new historical claim: VIC-1851-1900, QUE-1859-1900 and ALK-1867-1959 each already named a successor, and each named the whole COUNTRY, which is what was corrected.
+    "successor_only": 188,
     # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
     # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
     # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to
@@ -226,7 +229,10 @@ BASELINE_ASYMMETRY = {
     # asymmetry the F206 entry above describes, mirrored: an aggregate may BE a predecessor without
     # anything being its successor. NER-1911-1922, NER-1922-1947 and MRT-1920-1960 already carry
     # exactly this edge, predecessor-only, which is why 83 is consistency rather than drift.
-    "predecessor_only": 83,
+    # RAISED 83 -> 88 on 2026-09-11, and this one is a real increase rather than a correction.
+    # The subnational vocabulary added pages that name a predecessor whose counterpart does not reciprocate, because the counterpart is a pre-existing row whose own successor field points elsewhere.
+    # The authoring-time reciprocity check refuses these when it can see the conflict; these five predate it or name a counterpart it could not repoint.
+    "predecessor_only": 88,
 }
 
 BASELINE_LINKS = {

@@ -54,6 +54,22 @@ BASELINE = frozenset({
     # because it compares NAMES, which is the argument for keeping a name-keyed view.
 
     ("TAN-1922-1964", "TZA-1961-1964"),
+
+    # Added 2026-09-08 with the subnational vocabulary. These are DISTINCT territories that happen
+    # to share a name across countries, which is exactly what this check cannot tell apart on its
+    # own -- so each is recorded here rather than silently normalised away. Every one was reached
+    # by removing the genuine duplicates first: of nine new collisions, four were real (Aveyron and
+    # Pyrenees-Orientales authored twice under different codes, an undivided Canary Islands page
+    # duplicating ICN-1800-2025, and Algarve authored twice) and were deleted, leaving these five.
+    ("ARG-CORDOBA-1853-2025", "COL-CORDOBA-1952-2025"),   # Cordoba: Argentina and Colombia
+    ("ARG-CORDOBA-1853-2025", "ESP-COR-1833-2025"),       # ...and the Spanish province it is named for
+    ("COL-CORDOBA-1952-2025", "ESP-COR-1833-2025"),
+    ("BRA-AMAZONAS-1889-2025", "COL-AMA-1991-2025"),      # Amazonas: Brazil and Colombia
+    ("GEO-1991-2025", "USA-GA-1800-2025"),                # Georgia the country, Georgia the US state
+    ("ARG-LARIOJA-1853-2025", "ESP-RI-1833-2025"),        # La Rioja: Argentina and Spain
+    ("ARG-SANTACRUZ-1955-2025", "BOL-SZ-1825-2025"),      # Santa Cruz: Argentina and Bolivia
+    ("ARG-FORMOSA-1900-1955", "TWN-1895-1945"),           # Formosa: an Argentine national territory
+                                                          # and Japanese Taiwan
 })
 
 

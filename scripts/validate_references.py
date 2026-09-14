@@ -151,7 +151,15 @@ DESCRIPTIVE_KEYS = {
 }
 ALLOWED_KEYS = BUILDER_KEYS | DESCRIPTIVE_KEYS
 
-CODE_RE = re.compile(r"\b[A-Z][A-Z0-9]{1,9}-\d{4}-\d{4}\b")
+# A FOUR-PART CODE WAS INVISIBLE AND A PHANTOM WAS REPORTED IN ITS PLACE. The pattern was
+# `\b[A-Z][A-Z0-9]{1,9}-\d{4}-\d{4}\b`, which has no optional subunit segment, and a hyphen
+# creates a word boundary -- so `COL-CAU-1886-2025` matched as `CAU-1886-2025` and the real
+# code never matched at all. Every subunit code in a page body behaved that way
+# (`DZA-CVD-1902-1919` -> `CVD-1902-1919`, `JPN-AICHI-1871-2025` -> `AICHI-1871-2025`), so
+# arm 4 has been checking codes that cannot exist and ignoring the ones that can. The
+# lookbehind refuses a match that starts mid-code, and the optional group admits the
+# <ISO3>-<SUBUNIT>-<start>-<end> shape that 50 of 60 subnational rows use.
+CODE_RE = re.compile(r"(?<![A-Z0-9-])[A-Z][A-Z0-9]{1,9}(?:-[A-Z0-9]{1,12})?-\d{4}-\d{4}\b")
 # a link to another polity page, e.g. [CAN-1886-1948](can-1886-1948.md)
 PAGE_LINK_RE = re.compile(r"\]\((?!\.\.|https?:)([a-z0-9][a-z0-9_-]*\.md)(?:#[^)]*)?\)")
 CHAIN_LINE_RE = re.compile(r"^\s*[-*>]?\s*\**\s*(?:Predecessor|Successor)s?\b", re.I)

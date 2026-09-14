@@ -42,13 +42,25 @@ DB = os.path.join(REPO, "data/final/polities_database.csv")
 # Subnational rows that legitimately have no container edge, each with the reason. Restated here
 # rather than read from the pages: an exemption is a decision, and it should be visible in the gate
 # that would otherwise fail.
-EXEMPT = {
-    # Hyderabad was a princely state under British SUZERAINTY, not a province of British India.
-    # Asserting HYD ⊂ IND-* would be inference from the map rather than a relation the sources
-    # state, which is exactly the boundary whep#51 draws for this edge set. Left unclaimed until a
-    # source states it.
-    "HYD-1724-1948": "princely state under suzerainty, not part of British India proper",
-}
+# HYD-1724-1948 WAS HERE AND IS NOT ANY MORE, 2026-09-08. The reason recorded was that Hyderabad
+# was a princely state under British SUZERAINTY rather than a province of British India, so an
+# HYD ⊂ IND-* edge would be inference from the map rather than a relation the sources state.
+#
+# That was reversed, and the argument against it was weaker than it looked: the HYD row ALREADY
+# asserts the relationship in two other columns -- `polity_type: subnational` and
+# `iso3_code: IND` -- so withholding the edge withheld no claim. It only hid the claim from the one
+# place a consumer reads it, and WHEP's resolve_polity_label() consequently saw Hyderabad as a rival
+# candidate for IND, returned NA, and silently moved India to Rest of World for those years.
+#
+# The historical distinction survives where it belongs: in each edge's own `basis`, which states
+# that the edge asserts CONTAINMENT and not provincial status. That is what putting the interval on
+# the edge is for -- the same design that has Alsace-Lorraine inside Germany 1871-1918 and inside
+# France otherwise, without either edge claiming permanent sovereignty.
+#
+# The list is intended to stay a record of live decisions, so a code that gains a container must
+# leave it (arm E enforces that). Kept as an empty dict rather than deleted, because the mechanism
+# is still the right home for a polity whose parent genuinely is not stated anywhere.
+EXEMPT: dict[str, str] = {}
 
 
 def main() -> int:

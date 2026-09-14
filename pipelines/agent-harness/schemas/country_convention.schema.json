@@ -1,0 +1,148 @@
+{
+  "title": "The span and container convention for one country's admin units",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "country",
+    "system_name",
+    "system_start_year",
+    "open_end_year",
+    "open_end_basis",
+    "container_chain",
+    "confidence",
+    "reasoning",
+    "evidence_used",
+    "system_start_basis",
+    "unit_start_rule",
+    "unit_start_exceptions"
+  ],
+  "properties": {
+    "country": {
+      "type": "string"
+    },
+    "system_name": {
+      "type": "string",
+      "minLength": 10,
+      "description": "The administrative system these units belong to, named so a reader can look it up."
+    },
+    "system_start_year": {
+      "type": "integer",
+      "minimum": 1500,
+      "maximum": 2100,
+      "description": "The EARLIEST year any unit of this system can begin -- a floor, not a value to copy into every unit's span. Spain's 50 provinces were all created at once by the 1833 reform, so there the floor is also every unit's start; US states were admitted between 1787 and 1959, so a single number would span California from the wrong year. Give the floor, and give unit_start_rule for how an individual unit's own start is found."
+    },
+    "system_start_basis": {
+      "type": "string",
+      "minLength": 25,
+      "description": "The documented reform, reorganisation or founding that fixes the floor. Required: an unjustified floor was accepted once (the US answer gave 1959, the year the 50th state joined, with no basis at all) and it would have spanned every state from 1959."
+    },
+    "open_end_year": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2200,
+      "description": "EXCLUSIVE, and ONE value for every still-current unit of this country -- unlike the start, this genuinely is country-wide, because a unit cannot outlive its container. Prefer the containing national row's own end_year COLUMN. A round number like 2100 asserts a span nobody has evidence for."
+    },
+    "open_end_basis": {
+      "type": "string",
+      "minLength": 25,
+      "description": "Why that value. Prefer the containing national row's own end_year over a round number or the data's last observation."
+    },
+    "container_chain": {
+      "type": "array",
+      "minItems": 1,
+      "description": "The national rows a unit of this country sits inside, in order, each with the years it covers. Every unit's container edges are cut from this.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "start_year",
+          "end_year"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "start_year": {
+            "type": "integer"
+          },
+          "end_year": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "unit_noun": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "naming_pattern": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "How a unit of this country should be named, e.g. '<Name> (province of Spain)'. One pattern so 44 units do not invent 44 formats."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "reasoning": {
+      "type": "string",
+      "minLength": 60
+    },
+    "evidence_used": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "concerns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unit_start_rule": {
+      "type": "string",
+      "minLength": 40,
+      "description": "How to determine ONE unit's own start_year within this system -- e.g. 'the year the state was admitted to the Union'. It is a DEFAULT, not a universal: state it, and then enumerate every departure in unit_start_exceptions. A rule saying 'all units begin at the floor, no per-unit variation is needed' was accepted for Spain while that same answer's own basis said '(later 50, with the 1927 split of the Canary Islands)'. The rule contradicted its own evidence, and the per-unit stage inherited the wrong half: Las Palmas was dated 1833, 94 years before it existed."
+    },
+    "unit_start_exceptions": {
+      "type": "array",
+      "description": "Every unit or group of units that does NOT begin at unit_start_rule's answer. An empty array is a claim that none does -- make it only after checking, and re-read your own system_start_basis before saying so, since that is where the Spanish exception was already written down.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "units",
+          "start_year",
+          "basis"
+        ],
+        "properties": {
+          "units": {
+            "type": "string",
+            "minLength": 3,
+            "description": "Which units, by name or by how to recognise them."
+          },
+          "start_year": {
+            "type": "integer",
+            "description": "The start_year these units carry instead."
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 25,
+            "description": "The documented event that created or changed them."
+          }
+        }
+      }
+    }
+  }
+}

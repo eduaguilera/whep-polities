@@ -70,6 +70,7 @@ python3 scripts/write_faostat_area_map.py --check
 python3 scripts/write_label_alias_map.py --check
 python3 scripts/update_wiki_index.py --check
 python3 pipelines/polity-autoimprove/04_territory_basis.py --check
+python3 pipelines/polity-autoimprove/44_border_stability.py --check   # did the border actually move in the span? (asks year-stamped CShapes; SKIPs without data/geodata)
 python3 pipelines/polity-autoimprove/08_source_stated_areas.py --check
 python3 scripts/write_feature_index.py --check
 python3 scripts/write_iso3_successor_map.py --check
@@ -548,6 +549,8 @@ Declared in `scripts/sources.yaml`:
 | `cshapes-europe` | ETH Zürich ICR (pre-1886 extension) | `Id` + year | European pre-1886 |
 | `gadm-4.1-adm0` / `gadm-4.1-adm1` | [GADM 4.1](https://gadm.org/) | `GID_0` / `GID_1` | Per-country fetch, two levels |
 | `gadm-3.6` | GADM 3.6 (legacy subnational) | `GID_1` | Placeholder; no current wiki citations |
+| `gadm-4.1-adm2` | [GADM 4.1](https://gadm.org/) | `GID_2` | Second-level units where a country reports below admin-1 (`IDN`, `FRA`, `ITA`) |
+| `eurostat-gisco-nuts2` | [Eurostat GISCO](https://gisco-services.ec.europa.eu/distribution/v2/nuts/) NUTS 2021 level 2 | `NUTS_ID` | Portugal's five mainland NUTS II regions; a region cannot be unioned from whole districts (Alentejo falls 24.9% short) |
 | `paine-2024` | [Paine, Qiu & Ricart-Huguet (APSR 2024)](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/9QJVJ1) | `PCS` | Pre-colonial African states |
 | `cliopatria` | [Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria) | `Name` + year | Broad historical coverage |
 | `histogis-1860-habsburg` | [HistoGIS ACDH-CH](https://histogis.acdh.oeaw.ac.at/) (dissolved crownlands) | `polity_code` | Derived source (has `build.py`) |

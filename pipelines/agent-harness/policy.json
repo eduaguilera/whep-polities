@@ -1,0 +1,7 @@
+{
+  "model": "sonnet",
+  "effort": "low",
+  "timeout_seconds": 600,
+  "max_budget_usd": 2.0,
+  "_comment": "Tunable without touching code. `effort` is deliberately low: each job is one unit with pre-assembled evidence, which is a classification, not a research task. Raise it only if verdicts come back insufficient_evidence for reasons the wide cycle does not fix."
+}

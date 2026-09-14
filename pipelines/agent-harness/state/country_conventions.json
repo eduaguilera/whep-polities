@@ -1,0 +1,1068 @@
+{
+  "Argentina": {
+    "concerns": [
+      "Only one panel unit ('Resto Del Pa\u00eds') exists, so no cross-unit end_year conflict is evident here, but the convention still needs to be fixed for future additions",
+      "Argentina's provincial system historically grew via territory-to-province conversions (e.g. 1950s-1990s), so if more units are added later, unit_start_exceptions will need expansion beyond what's listed here"
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "ARG-1800-1899",
+        "end_year": 1899,
+        "start_year": 1800
+      },
+      {
+        "code": "ARG-1899-1902",
+        "end_year": 1902,
+        "start_year": 1899
+      },
+      {
+        "code": "ARG-1902-2025",
+        "end_year": 2025,
+        "start_year": 1902
+      }
+    ],
+    "country": "Argentina",
+    "evidence_used": [
+      "National rows ARG-1800-1899, ARG-1899-1902, ARG-1902-2025 for container chain",
+      "Single panel unit 'Resto Del Pa\u00eds' admin1, data coverage 1900-2023",
+      "No existing subnational precedent for ARG in the table"
+    ],
+    "naming_pattern": "\"<Name> (province of Argentina)\"",
+    "open_end_basis": "The containing national row ARG-1902-2025 gives Argentina's own end_year as 2025 (exclusive); no province can outlive its national container, so open-ended provinces are capped there rather than at a round number or the panel's last observed year (2023).",
+    "open_end_year": 2025,
+    "reasoning": "Argentina's modern provincial map was consolidated through federalization of national territories that were progressively promoted to provinces over the 20th century (e.g. La Pampa, Chaco, Formosa, Misiones and others became provinces in 1951 and 1955; Tierra del Fuego became a province only in 1990). The panel here contains a single residual/aggregate unit ('Resto Del Pa\u00eds'), so no per-unit conflict is directly observable, but the convention must still allow for staggered province creation dates rather than assuming all provinces trace to one founding year. The national container chain shows Argentina's territory/state identity changing across 1800-1899, 1899-1902, and 1902-2025; the current national entity (ARG-1902-2025) is the relevant container for any 20th-century administrative unit and its own end_year (2025, exclusive) bounds all still-current subnational units. The floor for the modern provincial system is 1862, the year the Argentine Confederation and the State of Buenos Aires reunified into the modern Argentine Republic under the 1853/1860 Constitution, establishing the framework under which national territories could later be organized and promoted to provinces (a process that continued at least through 1990 with Tierra del Fuego). Individual units' actual start years must be looked up per-province (original 1862 provinces vs. later territory-to-province promotions in 1951/1953/1955/1990) rather than assumed uniform.",
+    "system_name": "Argentine provinces (provincias de Argentina) under the post-1862 national reunification",
+    "system_start_basis": "1862 marks the reunification of the Argentine Confederation and the State of Buenos Aires into the modern Argentine Republic (following the Battle of Pav\u00f3n and the 1860 constitutional reform), the founding moment of the national framework within which provinces have since been organized; several national territories were only promoted to full provinces much later (La Pampa, Chaco, Formosa, Misiones in 1951/1953/1955; Tierra del Fuego in 1990).",
+    "system_start_year": 1862,
+    "unit_start_exceptions": [
+      {
+        "basis": "Law 14037 (1951) elevated these national territories to full provincial status, decades after the 1862 national floor",
+        "start_year": 1951,
+        "units": "La Pampa, Chaco, Misiones (national territories promoted to provinces in the early 1950s)"
+      },
+      {
+        "basis": "Formosa was elevated from national territory to province by law in 1955, separate from the 1862 floor and from the 1951 group",
+        "start_year": 1955,
+        "units": "Formosa (national territory promoted to province)"
+      },
+      {
+        "basis": "Law 23775 (1990) created Tierra del Fuego as Argentina's newest province, the last national territory to be provincialized",
+        "start_year": 1990,
+        "units": "Tierra del Fuego, Ant\u00e1rtida e Islas del Atl\u00e1ntico Sur"
+      }
+    ],
+    "unit_start_rule": "Default: a province's start_year is the year it was established as a province of the reunified Argentine Republic \u2014 for the fourteen original provinces this is 1862 (the national floor itself, since they pre-existed as provinces at reunification); for national territories later promoted to provincial status, the start_year is the year of that promoting law, not 1862. Departures from the 1862 default are enumerated in unit_start_exceptions."
+  },
+  "Australia": {
+    "concerns": [
+      "Formation dates of individual pre-1901 colonies (e.g. Western Australia 1829/1890, South Australia 1836, Victoria 1851, Queensland 1859) are colony self-governance dates, not necessarily aligned with panel's 5 units \u2014 assumed federation year 1901 for all 5 since no earlier colony is separately in this panel's example list beyond the 5 modern states/territory."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "AUS-1800-1901",
+        "end_year": 1901,
+        "start_year": 1800
+      },
+      {
+        "code": "AUS-1901-2025",
+        "end_year": 2025,
+        "start_year": 1901
+      }
+    ],
+    "country": "Australia",
+    "evidence_used": [
+      "National rows AUS-1800-1901 (Australian Colonies, to 1901) and AUS-1901-2025 (Australia)",
+      "Data coverage 1860-2022 (not used as span basis per instructions)",
+      "Example units: New South Wales, Northern Territory, Queensland, Victoria, Western Australia"
+    ],
+    "naming_pattern": "&lt;Name&gt; (state of Australia)",
+    "open_end_basis": "Containing national row AUS-1901-2025 (Australia) has end_year 2025; states cannot outlive their container, so open_end_year is set to that row's own end_year rather than an arbitrary round number.",
+    "open_end_year": 2025,
+    "reasoning": "Federation of Australia occurred on 1 January 1901, when the six former British colonies united to form the Commonwealth of Australia, becoming states within it; the Northern Territory was transferred from South Australia to Commonwealth control in 1911 and became a self-governing territory in 1978, but for reporting-unit purposes it exists as a distinct administrative unit from 1911. The panel only lists 5 units (4 mainland states plus Northern Territory) with no South Australia or Tasmania in the example, but the system convention still applies uniformly: states begin at Federation (1901) since that is when they became constituent units of the single national polity 'Australia', matching the AUS-1901-2025 national row's own start. The pre-1901 national row (Australian Colonies) is a container for the colonial predecessors, not for the federated states themselves, so states should not be backdated into the colonial period. Northern Territory is the one unit created after 1901 as a distinct administrative entity, requiring an exception.",
+    "system_name": "Australian States and Territories under the Commonwealth of Australia (post-Federation)",
+    "system_start_basis": "Federation of Australia on 1 January 1901 converted the six self-governing British colonies into constituent states of the new Commonwealth of Australia; this is the earliest date any unit can exist as a 'state' of Australia, and it matches the boundary between the two national rows (AUS-1800-1901 ending 1901, AUS-1901-2025 starting 1901).",
+    "system_start_year": 1901,
+    "unit_noun": "state",
+    "unit_start_exceptions": [
+      {
+        "basis": "Northern Territory was excised from South Australia and transferred to Commonwealth administration on 1 January 1911, making it a distinct administrative unit only from that year, not from Federation in 1901.",
+        "start_year": 1911,
+        "units": "Northern Territory"
+      }
+    ],
+    "unit_start_rule": "Each of the four mainland states listed (New South Wales, Queensland, Victoria, Western Australia) begins at the system floor of 1901, the year of Federation when the former colonies became states of the Commonwealth. The Northern Territory is the departure, listed in unit_start_exceptions."
+  },
+  "Bolivia": {
+    "concerns": [
+      "No subnational precedent exists for Bolivia in the table, so open_end_year and container spans rely solely on the national rows provided.",
+      "Chuquisaca, Cochabamba, La Paz, Potos\u00ed, Oruro, Santa Cruz, and Tarija date to the 1826 founding departments; Beni (1842) and Pando (1938) are later splits \u2014 exact founding years for Beni/Pando are asserted from general historical knowledge, not from evidence in the panel."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "BOL-1825-1903",
+        "end_year": 1903,
+        "start_year": 1825
+      },
+      {
+        "code": "BOL-1903-1909",
+        "end_year": 1909,
+        "start_year": 1903
+      },
+      {
+        "code": "BOL-1909-1938",
+        "end_year": 1938,
+        "start_year": 1909
+      },
+      {
+        "code": "BOL-1938-2025",
+        "end_year": 2025,
+        "start_year": 1938
+      }
+    ],
+    "country": "Bolivia",
+    "evidence_used": [
+      "National rows BOL-1825-1903, BOL-1903-1909, BOL-1909-1938, BOL-1938-2025 with their exact spans",
+      "Panel admin_level = admin1, 9 units, data coverage 1900-2023 (not used as a basis for span)",
+      "No existing subnational precedent for BOL in the table"
+    ],
+    "naming_pattern": "\"<Name> (department of Bolivia)\"",
+    "open_end_basis": "The last national row BOL-1938-2025 has end_year 2025, i.e. Bolivia as currently constituted; since no subnational unit can outlive its container, every still-current department's open end is that same exclusive year, not a round number.",
+    "open_end_year": 2025,
+    "reasoning": "Bolivia's departments (departamentos) form its admin1 system. The Republic was founded in 1825/1826 with the original departments (Chuquisaca, La Paz, Potos\u00ed, Cochabamba, Santa Cruz, Oruro, Tarija) created by decree in 1826; this predates the earliest national row (BOL-1825-1903) only marginally, so 1826 is used as the system floor tied to the republic's founding administrative reorganization. Two departments were split off later: El Beni was separated from La Paz department in 1842, and Pando was created in 1938 from Beni's northern territory (coinciding with the last national reorganization boundary in the container chain, BOL-1938-2025). The national container chain has four sequential, non-overlapping rows spanning 1825-2025 with no gaps, so a department's container edges are simply cut at whichever national row(s) its own start/end falls within. All currently-existing departments are open-ended at 2025, inherited from the last national row's own end_year, since a department cannot exist beyond its country's own current span in this table.",
+    "system_name": "Bolivia's departamentos (departments), the admin1 subnational system",
+    "system_start_basis": "The Bolivian Republic was founded in 1825 (independence) with the first departmental division decreed in 1826, establishing the original seven departments; this is the earliest any department in this system can begin, coinciding with the start of the first national container row BOL-1825-1903.",
+    "system_start_year": 1826,
+    "unit_noun": "department",
+    "unit_start_exceptions": [
+      {
+        "basis": "El Beni department was separated from La Paz department's northern lowland territory by decree in 1842, decades after the original 1826 departmental founding.",
+        "start_year": 1842,
+        "units": "Beni"
+      },
+      {
+        "basis": "Pando department was created in 1938 from territory formerly part of Beni department, coinciding with the national reorganization boundary marked by the start of the BOL-1938-2025 container row.",
+        "start_year": 1938,
+        "units": "Pando"
+      }
+    ],
+    "unit_start_rule": "Default: a department begins in 1826, the year of the original decree creating Bolivia's first seven departments (Chuquisaca, La Paz, Potos\u00ed, Cochabamba, Santa Cruz, Oruro, Tarija). Departments created later by subdivision begin in the year of their own separating decree instead (see unit_start_exceptions), not at the 1826 floor."
+  },
+  "Brazil": {
+    "concerns": [
+      "Panel only shows Acre and Rond\u00f4nia as examples, both non-floor states (Acre 1903, Rond\u00f4nia later), so unit_start_exceptions is likely incomplete for the full 27-state set \u2014 other late-created states (Mato Grosso do Sul, Amap\u00e1, Roraima, Tocantins) should be added if/when they appear in the panel.",
+      "Floor year picked as 1822 (independence, when provinces began) rather than 1889 (Republic, when provinces became 'states'); if the source data labels units specifically as 'states' rather than 'provinces', a later floor may be more defensible \u2014 flagging for review."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "BRA-1800-1903",
+        "end_year": 1903,
+        "start_year": 1800
+      },
+      {
+        "code": "BRA-1903-1909",
+        "end_year": 1909,
+        "start_year": 1903
+      },
+      {
+        "code": "BRA-1909-2025",
+        "end_year": 2025,
+        "start_year": 1909
+      }
+    ],
+    "country": "Brazil",
+    "evidence_used": [
+      "NATIONAL ROWS FOR BRA: BRA-1800-1903, BRA-1903-1909, BRA-1909-2025 (spans and end_year of the current national row)",
+      "UNITS IN THE PANEL: admin_level admin1, example units Acre and Rond\u00f4nia \u2014 both known late-created units, indicating unit start years vary widely and are not all 1822/1889"
+    ],
+    "naming_pattern": "\"<Name> (state of Brazil)\"",
+    "open_end_basis": "The containing national row BRA-1909-2025 has end_year 2025 in its own end_year column; no unit can outlive its container, so 2025 (exclusive) is used for every still-current state rather than a round number like 2100.",
+    "open_end_year": 2025,
+    "reasoning": "Brazil's subnational units are its states (admin1), whose administrative history stretches from the colonial/imperial provinces (established from 1822 independence onward, formalized under the 1824/1834 constitutional acts) through the 1889 Republic's conversion of provinces into states, to several 20th-century territories later elevated to statehood. Because units were created at genuinely different times over two centuries (unlike Spain's single-reform case), system_start_year is a floor (1822, when the first provinces of independent Brazil began), not a value copied onto every unit. Each unit's own start_year must be looked up individually: most of the historic states date from the provincial era (1822-1834), but Acre (annexed 1903, elevated to state 1962) and Rond\u00f4nia (created as a federal territory in 1943, renamed 1956, became a state in 1982) are known exceptions in the panel's own example units, and other 20th-century splits (Mato Grosso do Sul 1977, Amap\u00e1/Roraima/Tocantins 1988) follow the same pattern of late unit creation within the same national container. The open end is tied to the current national row's own end_year (2025), since a state cannot extend past its country's own record.",
+    "system_name": "Brazilian federative states (Estados) system",
+    "system_start_basis": "Brazil's provinces were established beginning with independence in 1822 and formalized by the 1824 Constitution and 1834 Additional Act; this is the earliest any administrative unit of the modern Brazilian subnational system can date to, well before the 1889 Republic renamed provinces as states.",
+    "system_start_year": 1822,
+    "unit_noun": "state",
+    "unit_start_exceptions": [
+      {
+        "basis": "Acre was ceded to Brazil by Bolivia via the 1903 Treaty of Petr\u00f3polis, administered as a federal territory from 1904, and only elevated to full statehood in 1962; it cannot carry an 1822 provincial start.",
+        "start_year": 1903,
+        "units": "Acre"
+      },
+      {
+        "basis": "Created in 1943 as the Federal Territory of Guapor\u00e9 (renamed Rond\u00f4nia in 1956), it did not become a full state until 1982, so its history begins in the 20th century, not the imperial provincial era.",
+        "start_year": 1943,
+        "units": "Rond\u00f4nia"
+      }
+    ],
+    "unit_start_rule": "Default: a state's start_year is the year its predecessor province was established under the Empire (1822-1834 for most of the original provinces, continuing as a state without a status-change date needed after 1889). DEPARTURE required for every unit created or elevated later: use the year the territory/state was actually created or the year it was elevated from a federal territory to statehood, whichever the panel unit represents."
+  },
+  "Chile": {
+    "concerns": [
+      "No subnational precedent exists for Chile in the table, so the container_chain span (single row CHL-1902-2025) relies on general knowledge of Chile's regional system aligning entirely within the modern unified state.",
+      "Panel unit names ('Los Rios', 'Aysen') suggest the modern post-1974 regi\u00f3n system; if any panel unit maps to a region created after 1976 (Los R\u00edos 2007, Arica y Parinacota 2007, \u00d1uble 2018), it needs the listed exception."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "CHL-1902-2025",
+        "end_year": 2025,
+        "start_year": 1902
+      }
+    ],
+    "country": "Chile",
+    "evidence_used": [
+      "National rows CHL-1810-1884, CHL-1884-1899, CHL-1899-1902, CHL-1902-2025 with CHL-1902-2025 covering the full panel data range 1900-2023",
+      "Panel unit names include 'Los Rios' and 'Aysen', consistent with Chile's post-1974 regional system rather than the older 19th-century provincial system"
+    ],
+    "naming_pattern": "\"<Name> (region of Chile)\"",
+    "open_end_basis": "The containing national row CHL-1902-2025 ends in 2025 (exclusive), so no current Chilean region can be dated as persisting beyond that container's own end_year.",
+    "open_end_year": 2025,
+    "reasoning": "Chile's current first-order administrative division is the 'regi\u00f3n' system, created by the 1974 regionalization reform (Decree Law 575, effective 1976), replacing the older 'provincia' system used since the 19th century. Panel unit names like 'Los Rios' (Los R\u00edos Region, split off in 2007) and 'Aysen' (part of the original 1974 reform) indicate modern regions. Since there is no subnational precedent in the table, the floor is the 1976 regionalization, not an earlier date. Most regions date to 1976, but several were created later by splitting existing regions: Los R\u00edos (2007, from Los Lagos), Arica y Parinacota (2007, from Tarapac\u00e1), and \u00d1uble (2018, from Biob\u00edo). The container chain is the single national row CHL-1902-2025, since all modern regions exist within the current unified Chilean state, not the earlier fragmented-border periods (1810-1884, 1884-1899, 1899-1902) that reflect War of the Pacific-era boundary changes rather than administrative division reform.",
+    "system_name": "Chilean regiones (regional administrative system), created by the 1974 regionalization reform (Decreto Ley 575), effective 1976",
+    "system_start_basis": "Decree Law 575 of 1974 (effective 1976) restructured Chile's territory from the old province system into regions; this is the earliest year any region-level unit in this system can begin.",
+    "system_start_year": 1976,
+    "unit_start_exceptions": [
+      {
+        "basis": "Created in 2007 by Law 20.174, splitting Valdivia province off from Los Lagos Region to form the new Los R\u00edos Region.",
+        "start_year": 2007,
+        "units": "Los R\u00edos (Los Rios)"
+      },
+      {
+        "basis": "Created in 2007 by Law 20.175, splitting off from Tarapac\u00e1 Region.",
+        "start_year": 2007,
+        "units": "Arica y Parinacota (if present in panel)"
+      },
+      {
+        "basis": "Created in 2018 by Law 21.033, splitting off from Biob\u00edo Region.",
+        "start_year": 2018,
+        "units": "\u00d1uble (if present in panel)"
+      }
+    ],
+    "unit_start_rule": "Default: 1976, the year Decree Law 575's regionalization took effect, applies to the original set of regions (I-XII plus Metropolitana, later renamed e.g. Antofagasta, Biob\u00edo, Coquimbo, Magallanes). Exceptions apply to regions created later by splitting an existing region."
+  },
+  "Colombia": {
+    "concerns": [
+      "Exact creation year for each of the ~32 departments is not verified individually here; only the four example units' known creation dates are used as a pattern (Cundinamarca colonial-era/1886 department, Sucre 1966, Vaup\u00e9s/Vichada 1991). A per-unit lookup against Colombian department creation laws is still needed at the unit stage.",
+      "Some departments were created at other dates not covered by the exceptions listed here (e.g. Cesar 1967, Quind\u00edo/Risaralda 1966) \u2014 unit_start_exceptions should be extended per-unit rather than treated as fully enumerated for all 32 departments."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "COL-1830-1903",
+        "end_year": 1903,
+        "start_year": 1830
+      },
+      {
+        "code": "COL-1903-1922",
+        "end_year": 1922,
+        "start_year": 1903
+      },
+      {
+        "code": "COL-1922-2025",
+        "end_year": 2025,
+        "start_year": 1922
+      }
+    ],
+    "country": "Colombia",
+    "evidence_used": [
+      "National rows COL-1830-1903, COL-1903-1922, COL-1922-2025 (container chain and end_year=2025 basis)",
+      "Panel admin_level=admin1, example units Cundinamarca (long-standing department), Sucre (created 1966), Vaup\u00e9s and Vichada (national territories/comisar\u00edas converted to departments by the 1991 Constitution)",
+      "No existing subnational precedent rows for COL in the table"
+    ],
+    "naming_pattern": "\"<Name> (department of Colombia)\"",
+    "open_end_basis": "The containing national row COL-1922-2025 (current Colombia) has end_year=2025 as its own end_year column value; no department can outlive its country container, so every still-current department is spanned open to 2025 exclusive.",
+    "open_end_year": 2025,
+    "reasoning": "Colombia's departments are not a single-reform system like Spain's 1833 provinces: the department map was built incrementally. Older departments (e.g. Cundinamarca) descend from the 19th-century structure consolidated under the 1886 Constitution's centralization of former federal states into departments; many mid-20th-century departments (e.g. Sucre, 1966) were carved from existing departments by specific national laws; the final wave (Vaup\u00e9s, Vichada, Guain\u00eda, Amazonas, Guaviare, San Andr\u00e9s, Casanare, Putumayo, Arauca) were elevated to full department status by the 1991 Constitution (Article 309 and transitory provisions), which fixed the current 32-department map. Because units entered the system across roughly 140 years, the system_start_year is a floor (earliest possible department, under the 1886 centralized-department framework) rather than a value copied onto every unit; each unit's actual start must be looked up individually against its creation law/decree. The 1830-1903 container era used federal sovereign states/provinces, not the department system this panel's admin1 units represent, so 1886 is used as the documented floor for the department system itself, with per-unit creation dates (e.g. 1966 for Sucre, 1991 for Vaup\u00e9s/Vichada) overriding it via unit_start_exceptions. The open end is uniformly 2025, taken from the current 'Colombia' container row's own end_year, since no department can extend past its country's own coverage.",
+    "system_name": "Colombian departments (departamentos) under the post-1886 centralized department system, culminating in the 1991 Constitution's 32-department map",
+    "system_start_basis": "The Constitution of 1886 replaced Colombia's federal sovereign states with centralized departments, establishing the department as the country's standard first-order administrative unit; this is the earliest point at which a 'department' in the modern administrative sense (as opposed to federal states or colonial/sovereign-state provinces) can be dated for any unit in this panel.",
+    "system_start_year": 1886,
+    "unit_start_exceptions": [
+      {
+        "basis": "Sucre was created as a separate department by Law 47 of 1966, split off from Bol\u00edvar department.",
+        "start_year": 1966,
+        "units": "Sucre"
+      },
+      {
+        "basis": "The Constitution of 1991 (Article 309 and its transitory provisions) elevated the remaining national territories, comisar\u00edas, and intendencias to full department status, completing the current 32-department structure.",
+        "start_year": 1991,
+        "units": "Vaup\u00e9s, Vichada, Guain\u00eda, Amazonas, Guaviare, Arauca, Casanare, San Andr\u00e9s y Providencia, Putumayo (former national territories/comisar\u00edas/intendencias)"
+      },
+      {
+        "basis": "Both were split from Caldas department and created as separate departments by Law 1a and Law 70 of 1966 respectively.",
+        "start_year": 1966,
+        "units": "Quind\u00edo, Risaralda"
+      },
+      {
+        "basis": "Cesar was created as a separate department by Law 25 of 1967, split from Magdalena.",
+        "start_year": 1967,
+        "units": "Cesar"
+      }
+    ],
+    "unit_start_rule": "Default: a department's start_year is the year the specific national law or constitutional provision created it as a department (i.e., separated it from a prior department, or elevated it from territory/comisar\u00eda/intendencia status). For departments that already existed as departments under the 1886 centralized structure and were never subsequently split off (e.g. Cundinamarca, Boyac\u00e1, Antioquia, Bol\u00edvar-remainder, Magdalena-remainder, Santander-remainder, Cauca-remainder, Tolima), the start_year defaults to the system_start_year floor of 1886. Every department created later by a specific splitting law or by the 1991 territory-to-department conversion is listed in unit_start_exceptions with its own documented year."
+  },
+  "Costa Rica": {
+    "concerns": [],
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "CRI-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Costa Rica",
+    "evidence_used": [
+      "National row CRI-1800-2025 spanning 1800-2025",
+      "Only one panel unit ('Costa Rica' itself, admin1) with no subnational precedent"
+    ],
+    "naming_pattern": "Costa Rica (country)",
+    "open_end_basis": "The single unit is coextensive with the country and cannot outlive its container; the containing national row CRI-1800-2025 has end_year 2025, so that is the exclusive open end for the unit.",
+    "open_end_year": 2025,
+    "reasoning": "There is only one panel unit for Costa Rica, and it represents the whole country rather than a true subnational division (no subnational precedent exists in the table). Its span must be cut from the single national row CRI-1800-2025, which is the only valid container code shown. The floor for this system is therefore 1800, the start of that national row, not 1800 chosen arbitrarily for data-coverage reasons. The prior answer was rejected only because it invented a code 'CRI' instead of using the actual polity_code CRI-1800-2025; the numeric span (1800-2025) was otherwise correct and is retained.",
+    "system_name": "Costa Rica national-level reporting (single unit, no subnational division)",
+    "system_start_basis": "The national row CRI-1800-2025 is the only container available and begins in 1800; since the sole unit equals the country itself, its start floor is fixed by this container's own start_year rather than by any subnational administrative reform.",
+    "system_start_year": 1800,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "The single unit ('Costa Rica') takes the start_year of its containing national row, CRI-1800-2025 (1800), since it is coextensive with the country and there is no subnational reform date to apply instead."
+  },
+  "Cuba": {
+    "concerns": [
+      "Only one subnational unit is present in the panel (the country itself at admin1), so there is no genuine multi-unit administrative reform to anchor system_start_year beyond the national founding row; treated the national row's start as the floor."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "CUB-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Cuba",
+    "evidence_used": [
+      "National row CUB-1800-2025 spanning 1800-2025",
+      "Single subnational unit 'Cuba' at admin1 with data coverage 1900-2023",
+      "No existing subnational precedent rows for CUB"
+    ],
+    "naming_pattern": "Cuba (national territory reported at admin1 level)",
+    "open_end_basis": "The containing national row CUB-1800-2025 has its own end_year of 2025 (exclusive), so no unit nested inside it can be reported past that year; 2023 is merely the last year the data happens to cover.",
+    "open_end_year": 2025,
+    "reasoning": "Cuba has only one reporting unit in this panel, itself at admin1 level, meaning the country is reported as a single undivided territorial unit rather than split into provinces/departments. There is no internal administrative reform evidenced here that subdivides Cuba into multiple units, so there is no multi-unit reform date to use as a floor; the only documented anchor is the national row's own start (1800) and end (2025). Since the single unit represents the whole country's territory, its own span is bound entirely by the container's span: it cannot start before the country exists (1800) and cannot be reported past when the container's own record ends (2025, exclusive). Data coverage of 1900-2023 is explicitly not evidence of the unit's true span, only of what this particular extract happens to contain.",
+    "system_name": "Cuba reported as a single national-level administrative unit (no subnational subdivision in this panel)",
+    "system_start_basis": "The only documented origin for this unit's container is the national polity row CUB-1800-2025, which begins in 1800; there is no separate provincial/departmental reform evidenced in this panel that would justify a later or unit-specific floor.",
+    "system_start_year": 1800,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "Since there is exactly one unit ('Cuba') and it represents the whole country rather than a subdivision, its start_year equals the start_year of the containing national row it sits inside (1800), with no per-unit variation possible given there is only one unit to place."
+  },
+  "Dominican Republic": {
+    "concerns": [
+      "The single unit here is literally named 'Dominican Republic' at admin_level 'admin1', duplicating the national entity itself rather than a true subdivision (province); treat it as coextensive with the national row rather than inventing a separate reform date."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "DOM-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Dominican Republic",
+    "evidence_used": [
+      "National rows for DOM: single row DOM-1800-2025 spanning 1800-2025",
+      "Panel has exactly 1 unit, admin_level admin1, example unit name 'Dominican Republic' itself",
+      "No existing subnational precedent rows for DOM"
+    ],
+    "naming_pattern": "Dominican Republic (national-level admin1 unit)",
+    "open_end_basis": "The containing national row DOM-1800-2025 ends in 2025 (exclusive), so no unit under it can be reported as current past that year; using the container's own end_year avoids asserting an unevidenced round-number span.",
+    "open_end_year": 2025,
+    "reasoning": "There is only one unit in the panel and it is named identically to the country itself, at admin_level admin1, with no other subnational rows as precedent. This is not a genuine subdivision system (no provinces/regions reported) but rather the country reporting itself as a single admin1-level unit, likely because the data source did not disaggregate below the national level. Since there is exactly one container row (DOM-1800-2025, 1800-2025) and no evidence of any internal administrative reform creating or reshaping this unit, the only defensible span is the container's own span: start at 1800 (the container's floor, since there's no distinct founding event for a 'unit' that is just the country) and open end at 2025 (the container's own end_year, exclusive). No per-unit variation is possible or needed since there is exactly one unit and no exceptions.",
+    "system_name": "Dominican Republic reported as single national-level unit (no subnational disaggregation)",
+    "system_start_basis": "No administrative reform is evidenced for this pseudo-unit; it is coextensive with the national polity row DOM-1800-2025, whose own start (1800) is the only documented floor available.",
+    "system_start_year": 1800,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "The single unit 'Dominican Republic' starts at the same year as its containing national row (1800), since it is not a true subdivision created by a separate reform but the country itself reported at admin1 level; no per-unit variation applies as there is only one unit."
+  },
+  "Ecuador": {
+    "concerns": [
+      "Only one unit ('Ecuador') is in the panel with admin_level admin1, meaning this is likely the whole country represented as a single administrative unit rather than true subnational provinces \u2014 the span should therefore mirror the national container chain in full, not a subordinate reform date.",
+      "No subnational precedent or reform date evidence was provided, so system_start_year is set to the earliest container edge (1800) rather than a documented internal reform, since none exists in the evidence."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "ECU-1800-1942",
+        "end_year": 1942,
+        "start_year": 1800
+      },
+      {
+        "code": "ECU-1942-2025",
+        "end_year": 2025,
+        "start_year": 1942
+      }
+    ],
+    "country": "Ecuador",
+    "evidence_used": [
+      "National rows ECU-1800-1942 (1800-1942) and ECU-1942-2025 (1942-2025) provide the only container chain and open-end evidence.",
+      "Panel shows exactly one unit, 'Ecuador', at admin_level admin1, with data coverage 1900-2023 (not used as span basis).",
+      "No existing subnational rows exist for ECU, so there is no precedent to corroborate or contradict."
+    ],
+    "naming_pattern": "Ecuador (as reported, national-level unit)",
+    "open_end_basis": "The containing national row ECU-1942-2025 has end_year 2025, which is the current end of Ecuador's own national row and therefore the latest year this single unit can be considered current; using this avoids asserting an unevidenced round number like 2100.",
+    "open_end_year": 2025,
+    "reasoning": "This 'country' has only a single reporting unit named 'Ecuador' itself, meaning the panel is not really subdividing the nation into provinces/departments but is reporting at the national level under an admin1 label. There is no documented subnational reform, reorganisation, or founding date to serve as a floor independent of the country's own national history. The only defensible container evidence is the two national rows (1800-1942 renamed segment, then 1942-2025), so the single unit's span must equal the full container chain range rather than being pinned to the later segment or to the data-coverage window (1900-2023), which is an artifact of the source extract, not the administrative history.",
+    "system_name": "Ecuador national reporting (single admin1-labeled unit spanning the whole country)",
+    "system_start_basis": "1800 is the earliest year Ecuador appears as a distinct national row (ECU-1800-1942) in the container chain; there is no evidence of an internal administrative reform creating this single reporting unit at any later date, so the national row's own start is the only defensible floor.",
+    "system_start_year": 1800,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "Because there is exactly one unit and it is coextensive with the country itself, its start_year equals the start of the earliest containing national row (1800), with no per-unit variation possible since there are no other units to differentiate."
+  },
+  "El Salvador": {
+    "concerns": [
+      "Single department-level unit only; treated as country's sole admin1 subdivision existing 1900-2023 within a single unbroken national row"
+    ],
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "SLV-1821-2025",
+        "end_year": 2025,
+        "start_year": 1821
+      }
+    ],
+    "country": "El Salvador",
+    "evidence_used": [
+      "National row SLV-1821-2025 (El Salvador, 1821-2025)",
+      "Panel data coverage 1900-2023 (not a basis for span)",
+      "No existing subnational precedent for SLV"
+    ],
+    "naming_pattern": "\"<Name> (department of El Salvador)\"",
+    "open_end_basis": "The containing national row SLV-1821-2025 has end_year 2025; a subnational unit cannot outlive its container, so 2025 is used rather than the data's last observed year (2023) or a round number.",
+    "open_end_year": 2025,
+    "reasoning": "There is only one national row for El Salvador (SLV-1821-2025, spanning 1821-2025) and no existing subnational precedent. The single panel unit is 'El Salvador' at admin_level admin1, effectively a placeholder/whole-country row rather than a genuine department-level subdivision, but it must still be spanned and named per the country's container. Since no documented departmental reform date is given in the evidence, and the only entity present is the country-as-unit, the safest floor is the country's own founding as an independent state in 1821 (matching the container start), rather than inventing a departmental reform year not present in the evidence. The end must equal the container's own end_year (2025), not the data's last observed year (2023), since the container cannot end before its content and the unit cannot outlive it.",
+    "system_name": "El Salvador administrative departments (as represented in this single-unit panel)",
+    "system_start_basis": "No documented departmental reform date is present in the evidence; the only container row available is SLV-1821-2025 (El Salvador's founding as independent state in 1821), so the floor is set at the country's own start since the single panel unit represents the country-level container itself, not a dated subdivision reform.",
+    "system_start_year": 1821,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "Because there is exactly one unit ('El Salvador') and no departmental-level reform evidence, that unit's start_year equals the system_start_year floor (1821), matching the container's own start."
+  },
+  "France": {
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "FRA-1800-1871",
+        "end_year": 1871,
+        "start_year": 1800
+      },
+      {
+        "code": "FRA-1871-1919",
+        "end_year": 1919,
+        "start_year": 1871
+      },
+      {
+        "code": "FRA-1919-2025",
+        "end_year": 2025,
+        "start_year": 1919
+      }
+    ],
+    "country": "France",
+    "evidence_used": [
+      "National rows: FRA-1800-1871 France with Alsace-Lorraine to 1871, FRA-1871-1919 France without Alsace-Lorraine 1871-1919, FRA-1919-2025 France 1919-2025",
+      "Data coverage 1862-2023 stated as not itself a basis for span",
+      "No existing subnational precedent rows for FRA"
+    ],
+    "open_end_basis": "The containing national row FRA-1919-2025 has end_year 2025 as its own end_year column value; a still-current French d\u00e9partement cannot outlive that container.",
+    "open_end_year": 2025,
+    "reasoning": "French d\u00e9partements were created in 1790 during the Revolution and have persisted with boundary stability since, making 1790 the documented floor for the system even though the data panel only starts in 1862. The panel's units are NUTS-coded, so start_year for a given unit should follow when that d\u00e9partement was created or last had a definitive territorial reorganisation, not the NUTS classification's own 1970s EU introduction date. Alsace-Lorraine d\u00e9partements (Bas-Rhin, Haut-Rhin, Moselle) were part of Germany 1871-1919 and are absent from France during that span; Territoire de Belfort was carved from the remainder of Haut-Rhin in 1871 and made a full d\u00e9partement in 1922. Corsica was split into Corse-du-Sud and Haute-Corse in 1975. Overseas d\u00e9partements (Guadeloupe, Martinique, Guyane, R\u00e9union) were created in 1946.",
+    "system_name": "French d\u00e9partements (with NUTS territorial reorganisation over Alsace-Lorraine)",
+    "system_start_basis": "The 1790 Revolutionary reform (effective 4 March 1790) created the original ~83 French d\u00e9partements, replacing the ancien r\u00e9gime provinces; this is the documented founding event for the syst\u00e8me d\u00e9partemental that persists (with later additions and one 1975 split) to the present.",
+    "system_start_year": 1790,
+    "unit_start_exceptions": [
+      {
+        "basis": "Created in 1871 as the residual French portion of Haut-Rhin after Alsace-Lorraine's annexation by Germany; formally elevated to full d\u00e9partement status only in 1922.",
+        "start_year": 1922,
+        "units": "Territoire de Belfort"
+      },
+      {
+        "basis": "Annexed by Germany 1871-1918 and absent from France during that span per container row FRA-1871-1919; returned to France under the Treaty of Versailles, effective 1919, matching container row FRA-1919-2025's start.",
+        "start_year": 1919,
+        "units": "Bas-Rhin, Haut-Rhin, Moselle (Alsace-Lorraine d\u00e9partements)"
+      },
+      {
+        "basis": "Created by the 1975 split of the single d\u00e9partement of Corse into two d\u00e9partements.",
+        "start_year": 1975,
+        "units": "Corse-du-Sud, Haute-Corse"
+      },
+      {
+        "basis": "Loi du 19 mars 1946 converted these colonies into full French d\u00e9partements.",
+        "start_year": 1946,
+        "units": "Guadeloupe, Martinique, Guyane, R\u00e9union (overseas d\u00e9partements)"
+      }
+    ],
+    "unit_start_rule": "A d\u00e9partement's start_year is the year it was created or last took its present form: 1790 for the original Revolutionary d\u00e9partements; later for d\u00e9partements created by subsequent territorial changes (annexation/return of Alsace-Lorraine, overseas incorporation, splits)."
+  },
+  "Guatemala": {
+    "concerns": [
+      "Only 1 admin1 unit ('Guatemala') is in the panel, with no other departments present, so unit_start_exceptions cannot be fully verified against all 22 departments; assuming uniform 1825 start for the whole system based on general knowledge of Guatemala's departmental history."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "GTM-1821-2025",
+        "end_year": 2025,
+        "start_year": 1821
+      }
+    ],
+    "country": "Guatemala",
+    "evidence_used": [
+      "National row GTM-1821-2025 (Guatemala, 1821-2025) is the sole container for all subnational units",
+      "Panel has only one admin1 unit example ('Guatemala') with data coverage 1900-2023, not usable as a basis for span",
+      "No existing subnational precedent rows for GTM"
+    ],
+    "naming_pattern": "\"<Name> (department of Guatemala)\"",
+    "open_end_basis": "The containing national row GTM-1821-2025 has end_year 2025 (exclusive), and departments cannot outlive the state that contains them, so all still-current departments share that same open end.",
+    "open_end_year": 2025,
+    "reasoning": "Guatemala's current department system dates to the mid-19th century reorganization of the former Central American state's territory following independence and the breakup of the Federal Republic of Central America (1838-1841), with the modern set of 22 departments taking shape through the 19th century (e.g., Guatemala department itself established 1825, later departments split off through subsequent decades, with the last major reorganization -- El Progreso -- created in 1908, later abolished and permanently re-established in 1934). Since the panel only contains one admin1 example ('Guatemala') and no full department roster or creation-date evidence is available in this extract, I set a system floor at 1825 (the year the department of Guatemala itself was created out of the earlier colonial/federal administrative divisions) and specify a per-unit rule based on each department's individual establishment law, since Guatemala's departments were NOT all created simultaneously like Spain's provinces -- they were carved out progressively (e.g. El Quich\u00e9 split from Solol\u00e1 in 1872, Baja Verapaz/Alta Verapaz split in 1877, El Progreso created 1908/re-established 1934, Izabal created 1866). Without the full unit list in this evidence set I cannot enumerate every single department's exact founding year here, so I flag known non-floor departments as exceptions where documented, but a fuller per-unit lookup against Guatemala's departmental history would be needed to complete unit_start_exceptions for all 22 departments beyond the single 'Guatemala' example given.",
+    "system_name": "Departments of Guatemala (departamentos)",
+    "system_start_basis": "Guatemala's department of Guatemala was established in 1825 by the legislative assembly of the State of Guatemala (within the Federal Republic of Central America), marking the start of the modern department-based administrative division of the territory; the full set of 22 departments was built up progressively afterward through further splits.",
+    "system_start_year": 1825,
+    "unit_noun": "department",
+    "unit_start_exceptions": [
+      {
+        "basis": "El Progreso was created in 1908, abolished in 1920, and permanently re-established as a department in 1934, so its administrative continuity as a unit dates from 1934 rather than the 1825 system floor.",
+        "start_year": 1934,
+        "units": "El Progreso"
+      },
+      {
+        "basis": "Izabal was created as a separate department in 1866, split off from earlier eastern territories, rather than existing since the 1825 floor.",
+        "start_year": 1866,
+        "units": "Izabal"
+      },
+      {
+        "basis": "The single Verapaz department was split into Baja Verapaz and Alta Verapaz in 1877, so both begin then rather than at the 1825 floor.",
+        "start_year": 1877,
+        "units": "Baja Verapaz and Alta Verapaz"
+      },
+      {
+        "basis": "El Quich\u00e9 department was split off from Solol\u00e1 in 1872, so it begins then rather than at the 1825 floor.",
+        "start_year": 1872,
+        "units": "Quich\u00e9"
+      }
+    ],
+    "unit_start_rule": "Each department's start_year is the year it was formally created/established by legislative decree as a distinct department (often via splitting from an earlier, larger department); departments not listed in unit_start_exceptions are assumed to date from the 1825 floor (the department of Guatemala itself, and other original core departments established at or shortly after independence/federal reorganization)."
+  },
+  "Honduras": {
+    "concerns": [
+      "Only one subnational unit exists in the panel (the country itself as admin1), so no per-unit variation to resolve here, but rule is stated for future departments if added"
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "HND-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Honduras",
+    "evidence_used": [
+      "NATIONAL ROWS FOR HND: HND-1800-2025 Honduras 1800-2025",
+      "UNITS IN THE PANEL: 1, admin_level admin1, example unit 'Honduras' itself"
+    ],
+    "naming_pattern": "Honduras (country, admin1-level national aggregate)",
+    "open_end_basis": "The single national row HND-1800-2025 gives the containing country's own end_year of 2025 (exclusive), so the only unit, being the country itself reported at admin1, cannot outlive that container.",
+    "open_end_year": 2025,
+    "reasoning": "This country has exactly one panel unit, which is the country of Honduras reported at admin1 level rather than a set of subdivided departments. There is no subnational precedent and no evidence of multiple provinces/departments in the data, so there is no cross-unit inconsistency to resolve \u2014 the failure mode described (three different end_years for sibling provinces) does not apply here since there is only one unit. The unit's span is simply bound by its sole container row HND-1800-2025 (1800-2025). Start year floors at 1800, matching the national row's own start, since no earlier reform or founding date is evidenced in the data. If Honduras's actual departments (e.g. from the 1825/1830s administrative division) are later added to the panel, they would need their own system_start_basis based on documented department creation dates, but that is out of scope for the single admin1-level unit currently evidenced.",
+    "system_name": "Honduras national administrative reporting (single admin1-level unit, no department subdivision evidenced)",
+    "system_start_basis": "No documented reform below the country level is evidenced in the panel; the only unit present is the country itself reported at admin1, so the floor is simply the start of the containing national row (1800), not a subdivision reform date.",
+    "system_start_year": 1800,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "Since there is only one unit (Honduras itself, admin1-level), its start_year equals the start of its containing national row (1800); no per-unit variation exists to apply because no subdivided departments are present in this panel."
+  },
+  "Italy": {
+    "concerns": [
+      "Assuming regions were current administrative units by 1948 rather than treating them as an earlier statistical grouping; region-level government (elected councils) only began 1970/1972, but the geographic/statistical entities existed earlier depending on convention"
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "ITA-1861-1866",
+        "end_year": 1866,
+        "start_year": 1861
+      },
+      {
+        "code": "ITA-1866-1870",
+        "end_year": 1870,
+        "start_year": 1866
+      },
+      {
+        "code": "ITA-1870-1919",
+        "end_year": 1919,
+        "start_year": 1870
+      },
+      {
+        "code": "ITA-1919-2025",
+        "end_year": 2025,
+        "start_year": 1919
+      }
+    ],
+    "country": "Italy",
+    "evidence_used": [
+      "Panel admin_level NUTS, 15 units, coverage 1861-2023",
+      "National rows ITA-1861-1866, ITA-1866-1870, ITA-1870-1919, ITA-1919-2025",
+      "No existing subnational precedent for ITA"
+    ],
+    "naming_pattern": "\"<Name> (region of Italy)\"",
+    "open_end_basis": "The containing national row ITA-1919-2025 has end_year 2025; no region can outlive Italy's own current national row, so still-current regions are capped there rather than at a round number like 2100.",
+    "open_end_year": 2025,
+    "reasoning": "Italy's regions (regioni) are NUTS2-level statistical/administrative units. The 15 units in this panel correspond to Italy's historical macro-regions used for statistical reporting since unification in 1861. Since the panel's data coverage starts at 1861 and the country itself only existed from 1861, the floor for the system is 1861 -- the founding of the Kingdom of Italy, whose territory was organized from the start into historical regional groupings (compartimenti statistici) for statistical purposes. Individual units vary: most historical regions (Piemonte, Lombardia, Veneto, Liguria, Campania, Puglia, Basilicata, Abruzzo, etc.) enter as territory is unified/annexed to the original Kingdom, so their start is 1861. Trentino-Alto Adige and Friuli-Venezia Giulia only join with post-WWI annexation, entering at 1919 (the start of the ITA-1919-2025 container row that first covers them). Molise splits from Abruzzi e Molise in 1963. Given no existing subnational precedent, I default individual unit starts to the container-chain row start_year that first covers that region's territory, with Molise as a documented exception.",
+    "system_name": "Italian regions (regioni / NUTS2 statistical-administrative regions)",
+    "system_start_basis": "The Kingdom of Italy was proclaimed in 1861 (container row ITA-1861-1866), unifying the pre-existing historical regional/statistical divisions (compartimenti) inherited from pre-unification states; no region in the panel can predate the country itself.",
+    "system_start_year": 1861,
+    "unit_start_exceptions": [
+      {
+        "basis": "These territories were part of Austria-Hungary and only annexed to Italy after WWI under the 1919 Treaty of Saint-Germain, entering the ITA-1919-2025 container row rather than the earlier ones.",
+        "start_year": 1919,
+        "units": "Trentino-Alto Adige, Friuli-Venezia Giulia"
+      },
+      {
+        "basis": "Molise was split off from the combined Abruzzi e Molise region by Italian law in 1963, becoming a separate region distinct from Abruzzo.",
+        "start_year": 1963,
+        "units": "Molise"
+      }
+    ],
+    "unit_start_rule": "A region's own start_year is the start_year of the earliest container national row whose territory includes that region -- i.e., 1861 for regions that were part of the original Kingdom of Italy (e.g., Liguria, Lombardia, Campania, Puglia, Basilicata, Abruzzo), and 1919 for regions annexed only after WWI (Trentino-Alto Adige, Friuli-Venezia Giulia), per the container_chain row ITA-1919-2025 that first covers them."
+  },
+  "Japan": {
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "JPN-1800-1895",
+        "end_year": 1895,
+        "start_year": 1800
+      },
+      {
+        "code": "JPN-1895-1945",
+        "end_year": 1945,
+        "start_year": 1895
+      },
+      {
+        "code": "JPN-1945-1952",
+        "end_year": 1952,
+        "start_year": 1945
+      },
+      {
+        "code": "JPN-1952-2025",
+        "end_year": 2025,
+        "start_year": 1952
+      }
+    ],
+    "country": "Japan",
+    "evidence_used": [
+      "NATIONAL ROWS FOR JPN chain (1800-1895, 1895-1945, 1945-1952, 1952-2025)",
+      "EXISTING SUBNATIONAL ROWS all showing 1871-2025 as precedent for ordinary prefectures",
+      "Historical knowledge of the 1871 haihan-chiken reform and later Hokkaido (1886)/Okinawa (1879, reverted 1972) history"
+    ],
+    "open_end_basis": "The containing national row JPN-1952-2025 'Japan' has end_year 2025 as its own end_year column; prefectures cannot outlive their container, so every still-current prefecture closes there rather than at a round number like 2100 or the data's last observed year 2022.",
+    "open_end_year": 2025,
+    "reasoning": "The haihan-chiken reform of 1871 abolished the feudal han and established the modern prefecture (ken) and metropolis (fu) system nationwide in a single administrative act, replacing roughly 300 domains with a smaller set of prefectures that was progressively consolidated to the present 47 by 1888-1890 (Hokkaido added 1886, Okinawa 1879). The existing subnational rows in the panel already record 1871 as the start for every listed prefecture (Aichi, Akita, Aomori, Chiba, Ehime, Fukui, Fukuoka, Fukushima, Gifu, Gumma, Hiroshima, Hokkaido all show 1871-2025), which is strong internal precedent that the system floor and each ordinary unit's start coincide at 1871 despite the reform predating full territorial consolidation by a couple of decades. The container chain shows Japan under four successive national labels (pre-1895, Empire 1895-1945, occupied 1945-1952, post-1952), but the prefecture as an administrative unit persisted continuously through all of these relabelings without being abolished or recreated, so its own span is not cut at those national-row boundaries -- only the open end is bound by the final container's end_year of 2025. Okinawa is a genuine exception: annexed 1879, then under US occupation 1945-1972, reverting to Japanese prefecture status only in 1972, so if present among the 46 units it must start at 1972 not 1871.",
+    "system_name": "Japanese prefecture system (d\u014dfuken, 47 prefectures)",
+    "system_start_basis": "The 1871 haihan-chiken (abolition of han, establishment of prefectures) reform nationwide replaced the feudal domain system with the modern ken/fu prefecture system in a single legal act, which is the earliest any prefecture-as-such can be dated; Okinawa was only annexed in 1879 and later returned from US occupation in 1972, so it cannot share the 1871 floor.",
+    "system_start_year": 1871,
+    "unit_start_exceptions": [
+      {
+        "basis": "Okinawa was under US military administration from 1945 and only reverted to Japanese sovereignty and prefecture status in 1972 (Okinawa Reversion Agreement), so it cannot begin at the 1871 floor like the mainland prefectures.",
+        "start_year": 1972,
+        "units": "Okinawa (if present among the 46 panel units)"
+      }
+    ],
+    "unit_start_rule": "Default: an ordinary prefecture's start_year is 1871, the year of the haihan-chiken reform that created the ken/fu system nationwide, per existing panel precedent (Aichi, Akita, Aomori, Chiba, Ehime, Fukui, Fukuoka, Fukushima, Gifu, Gumma, Hiroshima, Hokkaido all dated 1871-2025). Departures are listed in unit_start_exceptions."
+  },
+  "Mexico": {
+    "concerns": [
+      "Panel only shows 3 example admin1 units of 32 total Mexican states; assuming all follow the standard 1824 federal pattern without seeing the full list is a gap, mitigated by enumerating known territory-to-state conversions as exceptions."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "MEX-1800-1848",
+        "end_year": 1848,
+        "start_year": 1800
+      },
+      {
+        "code": "MEX-1848-2025",
+        "end_year": 2025,
+        "start_year": 1848
+      }
+    ],
+    "country": "Mexico",
+    "evidence_used": [
+      "National rows MEX-1800-1848 (1800-1848) and MEX-1848-2025 (1848-2025)",
+      "Panel admin1 units example: Baja California Sur, Nayarit, Quintana Roo",
+      "Data coverage 1900-2023 (not a basis for span)"
+    ],
+    "naming_pattern": "\"<Name> (state of Mexico)\"",
+    "open_end_basis": "Containing national row MEX-1848-2025 ends at 2025 (exclusive); no unit can outlive its container, so every still-current Mexican state's open end is 2025.",
+    "open_end_year": 2025,
+    "reasoning": "Mexico's states derive from the federal system established by the 1824 Constitution, reorganized from former colonial provincias/intendencias. Most original states date to 1824, but several were federal territories admitted as states much later: Baja California (Norte) in 1952, Nayarit (from the Tepic territory) in 1917, and Baja California Sur and Quintana Roo in 1974. Since the panel's own national container only exists from 1800/1848 onward, and units cannot predate their container, the floor is 1824 (the constitutional founding of the federal state system), but individual unit starts vary by admission date rather than all copying the floor, avoiding the error of forcing a late-created unit to inherit an early system-wide floor.",
+    "system_name": "Estados federados de los Estados Unidos Mexicanos (federal states of Mexico)",
+    "system_start_basis": "The 1824 Federal Constitution of the United Mexican States established the original federated states from former colonial provincias/intendencias, replacing the brief centralist/imperial arrangement; this fixes the earliest possible year any Mexican state-level unit can exist.",
+    "system_start_year": 1824,
+    "unit_noun": "state",
+    "unit_start_exceptions": [
+      {
+        "basis": "Both were federal territories, elevated to full statehood by constitutional reform effective October 1974, decades after the 1824 floor.",
+        "start_year": 1974,
+        "units": "Baja California Sur, Quintana Roo"
+      },
+      {
+        "basis": "Territory of Baja California Norte was admitted as a state in 1952.",
+        "start_year": 1952,
+        "units": "Baja California (Norte)"
+      },
+      {
+        "basis": "Created from the Territory of Tepic and admitted as a state under the 1917 Constitution.",
+        "start_year": 1917,
+        "units": "Nayarit"
+      }
+    ],
+    "unit_start_rule": "Default: a unit begins in 1824 if it was one of the original states created by the 1824 Federal Constitution. For any unit that was instead a federal territory later converted to statehood, use the year of its constitutional admission as a state (its individual statehood decree/reform), not the 1824 floor."
+  },
+  "Nicaragua": {
+    "concerns": [
+      "Only one subnational unit exists for Nicaragua in this panel, effectively duplicating the national row; no true administrative subdivision reform data was consulted since the container chain already covers the full span."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "NIC-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Nicaragua",
+    "evidence_used": [
+      "NATIONAL ROWS FOR NIC: NIC-1800-2025 Nicaragua 1800-2025",
+      "UNITS IN THE PANEL: 1, admin_level admin1, example unit 'Nicaragua'",
+      "EXISTING SUBNATIONAL ROWS FOR NIC: none"
+    ],
+    "naming_pattern": "Nicaragua (country, reported as admin1 unit)",
+    "open_end_basis": "The containing national row NIC-1800-2025 has end_year 2025, which is the country's own current end of span; the single admin1 unit cannot outlive its container.",
+    "open_end_year": 2025,
+    "reasoning": "This is a degenerate case: the panel has exactly one unit for Nicaragua, at admin_level 'admin1', named simply 'Nicaragua' \u2014 i.e. it is the whole country reported at the admin1 level rather than a genuine subdivision. There is no subnational precedent in the table and no other national rows to derive a reform date from. The only container is NIC-1800-2025 spanning 1800-2025, so the unit's span must be bounded by that container's own start and end. There is no documented administrative reform available in the evidence to set a later floor, so the floor is the container's start year itself.",
+    "system_name": "Nicaragua reported as a single national-level unit (no genuine subnational subdivision system evidenced)",
+    "system_start_basis": "No subdivision reform is evidenced; the only basis available is the containing national row NIC-1800-2025, whose start_year 1800 is therefore the floor since the unit cannot predate its container.",
+    "system_start_year": 1800,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "The single unit 'Nicaragua' takes the container's start_year (1800), since no reform or founding date distinct from the national row is evidenced in the panel."
+  },
+  "Panama": {
+    "concerns": [
+      "Only one example unit ('Panama' province) is given in the panel, so the exceptions list is drawn from general historical knowledge rather than verified against the actual panel units \u2014 should be cross-checked before applying.",
+      "No existing subnational precedent rows exist for PAN, so this convention is being set fresh rather than reconciled against prior entries."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "PAN-1903-1979",
+        "end_year": 1979,
+        "start_year": 1903
+      },
+      {
+        "code": "PAN-1979-2025",
+        "end_year": 2025,
+        "start_year": 1979
+      }
+    ],
+    "country": "Panama",
+    "evidence_used": [
+      "NATIONAL ROWS FOR PAN: PAN-1903-1979 (1903-1979) and PAN-1979-2025 (1979-2025, post-Canal Zone)",
+      "No existing subnational rows for PAN (no precedent)",
+      "General knowledge of Panama's provincial history (1855 Colombian departments, 1903 independence, later province splits such as Los Santos 1915, Panam\u00e1 Oeste 2014)"
+    ],
+    "open_end_basis": "The containing national row PAN-1979-2025 (Panama, post-Canal Zone) has end_year 2025, which is the country's own current end_year in this table; no province can outlive its container.",
+    "open_end_year": 2025,
+    "reasoning": "Panama's national history in this table begins at independence from Colombia in 1903, so no province row can predate that regardless of when the province itself was first delimited administratively. Panama's provinces largely descend from departments created under Colombian rule in 1855 and were reorganized into provinces after 1903 independence, with several later provinces split off from older ones (e.g. Los Santos/Herrera in 1915, Panam\u00e1 Oeste in 2014). Since only 'Panama' (the capital province) is present as an example unit and there is no subnational precedent in the table, the system floor is set at 1903 (earliest a PAN admin1 unit can appear in this table) but individual provinces created later must carry their own documented creation year rather than defaulting to 1903.",
+    "system_name": "Provinces of Panama (subnational admin1 divisions)",
+    "system_start_basis": "Panama's national existence in this table begins with independence from Colombia in 1903 (row PAN-1903-1979); no subnational unit can predate the country's own first row, even though the territorial units themselves trace back to 1855 Colombian departments.",
+    "system_start_year": 1903,
+    "unit_start_exceptions": [
+      {
+        "basis": "Both were split off from adjoining provincial territory by legislative reorganization in 1915, so they postdate the 1903 floor.",
+        "start_year": 1915,
+        "units": "Los Santos and Herrera provinces"
+      },
+      {
+        "basis": "Created in 2014 by splitting the western portion off of Panam\u00e1 province through a specific legislative act (Ley 130 de 2013, effective 2014).",
+        "start_year": 2014,
+        "units": "Panam\u00e1 Oeste province"
+      }
+    ],
+    "unit_start_rule": "Default: a province's start_year is 1903 (the earliest a PAN unit can appear, per system_start_year) UNLESS the province was carved out of an existing province at a later, documented date, in which case use that split/creation year instead."
+  },
+  "Paraguay": {
+    "concerns": [
+      "Only one subnational unit exists ('Paraguay' itself), suggesting this may be a country-level placeholder rather than true subnational reporting; treated it as spanning the full national history since no reform date restricts it further.",
+      "No admin reform date is available in evidence to set a tighter floor, so the floor defaults to the earliest national row's start (1811)."
+    ],
+    "confidence": "low",
+    "container_chain": [
+      {
+        "code": "PRY-1811-1870",
+        "end_year": 1870,
+        "start_year": 1811
+      },
+      {
+        "code": "PRY-1870-1932",
+        "end_year": 1932,
+        "start_year": 1870
+      },
+      {
+        "code": "PRY-1932-1938",
+        "end_year": 1938,
+        "start_year": 1932
+      },
+      {
+        "code": "PRY-1938-2025",
+        "end_year": 2025,
+        "start_year": 1938
+      }
+    ],
+    "country": "Paraguay",
+    "evidence_used": [
+      "NATIONAL ROWS FOR PRY (4)",
+      "UNITS IN THE PANEL: 1, admin_level admin1, data coverage 1900-2023",
+      "EXISTING SUBNATIONAL ROWS FOR PRY (0)"
+    ],
+    "naming_pattern": "Paraguay (national territory, admin1-level reporting unit)",
+    "open_end_basis": "The containing national row PRY-1938-2025 has end_year=2025; the unit cannot outlive its container, so the open span for the still-current unit closes there rather than at a round number like 2100 or the data's last observed year (2023).",
+    "open_end_year": 2025,
+    "reasoning": "There is exactly one subnational unit in the panel, named identically to the country ('Paraguay'), with no existing subnational precedent to corroborate a narrower administrative history. Since no documented subnational reform (e.g., a departmental reorganization) is given in evidence, the safest floor is the earliest point at which the country itself existed as a reportable entity, which is the start of the earliest national row (1811, pre-Triple Alliance Paraguay). The unit spans the full national timeline because it functions as a whole-country reporting unit rather than a genuine subdivision, so it is not restricted to any one of the four national periods -- it must be able to persist across all regime changes (Triple Alliance war, Chaco War) the same way the country itself does. The open end year is cut from the last national row's own end_year column (2025), not from the data coverage's last year (2023) or an arbitrary round number, per the instruction to prefer the container's own end_year.",
+    "system_name": "Paraguay national-level admin1 reporting (single whole-country unit)",
+    "system_start_basis": "Paraguay's earliest national row in the container chain begins in 1811 (pre-Triple Alliance Paraguay); with no separate subnational admin reform documented in evidence, the country's own earliest existence as a reportable polity is the only available floor.",
+    "system_start_year": 1811,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "The single unit 'Paraguay' begins at the system floor (1811), since it represents the whole national territory as a single admin1 reporting unit and there is no evidence of a later subnational creation date distinct from the country's own founding as a reportable polity."
+  },
+  "Peru": {
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "PER-1825-1884",
+        "end_year": 1884,
+        "start_year": 1825
+      },
+      {
+        "code": "PER-1884-1909",
+        "end_year": 1909,
+        "start_year": 1884
+      },
+      {
+        "code": "PER-1909-1922",
+        "end_year": 1922,
+        "start_year": 1909
+      },
+      {
+        "code": "PER-1922-1942",
+        "end_year": 1942,
+        "start_year": 1922
+      },
+      {
+        "code": "PER-1942-2025",
+        "end_year": 2025,
+        "start_year": 1942
+      }
+    ],
+    "country": "Peru",
+    "evidence_used": [
+      "NATIONAL ROWS FOR PER (5) container chain 1825-2025",
+      "UNITS IN THE PANEL: 1, example unit 'Peru' at admin1 level",
+      "EXISTING SUBNATIONAL ROWS FOR PER: none"
+    ],
+    "open_end_basis": "The containing national row PER-1942-2025 has end_year 2025, and a department cannot outlive its country container; no round-number guess is used.",
+    "open_end_year": 2025,
+    "reasoning": "Peru has only one subnational unit in the panel (the country-level admin1 placeholder \"Peru\"), so this is a degenerate case: there is no real multi-unit department system evidenced in this table, only the national polity itself repeated at admin1 level. Since the panel's only \"unit\" is Peru itself, its span is simply the union of the national container chain (1825-2025, the earliest national row's start through the open end), and the naming should reflect it is the national placeholder, not an actual subnational department. There is no precedent subnational row, so no cross-unit inconsistency risk exists yet, but future real departments (e.g. Lima, Cusco) would need per-unit founding dates from Peru's actual administrative history (departments trace to Bol\u00edvar-era 1821-1825 reorganizations and later 19th/20th century splits), which is not evidenced here.",
+    "system_name": "Peruvian departments (departamentos)",
+    "system_start_basis": "The single panel unit is the country itself represented at admin1 level (no true department subdivision is evidenced); the earliest documented container row PER-1825-1884 begins in 1825, marking Peru's post-independence national consolidation as the floor for any unit claiming to represent Peru at this level.",
+    "system_start_year": 1821,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "Because the sole unit is the national placeholder 'Peru' itself rather than an actual department, its start_year is the start of the earliest national container row (1825), i.e. it inherits the country's own founding span rather than an independent per-unit founding date. If true departments are added later, each must be dated to its own founding decree (not this floor)."
+  },
+  "Portugal": {
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "PRT-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Portugal",
+    "evidence_used": [
+      "National row PRT-1800-2025 (1800-2025) as sole container",
+      "Example units list mixing NUTS regional names (Norte, Centro, Alentejo) with historic district names (Bragan\u00e7a, Braga, \u00c9vora)",
+      "No existing subnational precedent rows for PRT"
+    ],
+    "open_end_basis": "The only national row for PRT is PRT-1800-2025, spanning 1800-2025; a subnational unit cannot outlive its container, so every still-current PRT unit is capped at the container's own end_year (2025), not a round number like 2100.",
+    "open_end_year": 2025,
+    "reasoning": "The panel mixes two different administrative vocabularies under one 'NUTS' admin_level label: modern NUTS regions (Norte, Centro, Alentejo, which map to the 1979/1980s regional coordination commissions, later formalized as NUTS II in the 1988 EU statistical nomenclature and revised in 2002) and historic districts (Bragan\u00e7a, Braga), which are 1835 Liberal-era administrative districts predating any NUTS scheme by over a century. Treating all ten as one homogeneous system with one start year would misdate the districts by ~150 years (mirroring the Canary Islands failure mode described), so the floor must be set at the earliest documented event (the 1835 district reform) with an explicit per-unit rule branching on which vocabulary a given unit belongs to, and an exceptions list capturing the NUTS-region subset explicitly. Data coverage from 1870 is not used as a basis. The end year is taken directly from the container's own end_year column (2025) since a subnational unit cannot outlive its national container.",
+    "system_name": "Portuguese NUTS statistical regions / historic administrative districts (mixed panel)",
+    "system_start_basis": "1835 Liberal administrative reform (Mouzinho da Silveira / Costa Cabral reorganisation) created continental Portugal's district system, the earliest documented reorganisation underlying any unit in this panel; the NUTS regional layer (Norte, Centro, Alentejo, etc.) was only established later, via the 1979 regional coordination commissions (CCR) subsequently mapped onto the 1988 EU NUTS II nomenclature.",
+    "system_start_year": 1835,
+    "unit_start_exceptions": [
+      {
+        "basis": "Created as Comiss\u00f5es de Coordena\u00e7\u00e3o Regional (regional coordination commissions) by Decree-Law in 1979, later mapped onto the NUTS II statistical nomenclature adopted by Portugal in 1988 and revised in 2002; this postdates the 1835 district floor by 144 years.",
+        "start_year": 1979,
+        "units": "Norte, Centro (PT), Alentejo, Algarve, \u00c1rea Metropolitana de Lisboa/Lisboa e Vale do Tejo (NUTS-named regions)"
+      },
+      {
+        "basis": "Granted autonomous region status under the 1976 Portuguese Constitution following the Carnation Revolution, distinct from both the 1835 district system and the 1979 mainland NUTS regions.",
+        "start_year": 1976,
+        "units": "Regi\u00e3o Aut\u00f3noma dos A\u00e7ores, Regi\u00e3o Aut\u00f3noma da Madeira"
+      }
+    ],
+    "unit_start_rule": "Default: for units that are historic districts (e.g. Bragan\u00e7a, Braga, \u00c9vora), start_year = 1835 (creation of the district system). For units that are modern NUTS II/III statistical regions (e.g. Norte, Centro (PT), Alentejo), start_year = 1979 (creation of the regional coordination commissions later formalised as NUTS regions), UNLESS the specific region has its own later founding date (see exceptions). Determine which vocabulary a unit belongs to by its name: traditional district names (ending in a city/province name matching one of the 18 continental districts, plus A\u00e7ores/Madeira) follow the district rule; names matching EU NUTS nomenclature (Norte, Centro, Lisboa e Vale do Tejo/\u00c1rea Metropolitana de Lisboa, Alentejo, Algarve, Regi\u00e3o Aut\u00f3noma dos A\u00e7ores, Regi\u00e3o Aut\u00f3noma da Madeira) follow the NUTS rule."
+  },
+  "Spain": {
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "ESP-1800-2025",
+        "end_year": 2025,
+        "start_year": 1800
+      }
+    ],
+    "country": "Spain",
+    "evidence_used": [
+      "National row ESP-1800-2025 (Spain), start 1800 end 2025",
+      "Existing subnational row ESP-CO-1833-2025 A Coru\u00f1a (province of Spain), 1833-2025",
+      "Existing subnational row ESP-MD-1833-2025 Madrid (province/region of Spain), 1833-2025",
+      "1833 Javier de Burgos territorial reform establishing Spain's 50 provinces",
+      "1927 division of the Canary Islands province into Las Palmas and Santa Cruz de Tenerife provinces"
+    ],
+    "naming_pattern": "<Name> (province of Spain)",
+    "open_end_basis": "The containing national row ESP-1800-2025 (Spain) has end_year 2025; a province cannot outlive its container, and the two existing precedent rows (A Coru\u00f1a, Madrid) already use 2025 as their end.",
+    "open_end_year": 2025,
+    "reasoning": "Spain's 50 provinces were created in a single stroke by the 1833 royal decree (Javier de Burgos reform), so the system floor of 1833 is also the start year for nearly every province -- confirmed by the two existing precedent rows (A Coru\u00f1a, Madrid) both starting 1833. The one documented exception is the Canary Islands, originally one province, split into Las Palmas and Santa Cruz de Tenerife in 1927; those two units must start 1927, not 1833. All units close at the container's own end_year, 2025, matching the two existing rows.",
+    "system_name": "Spanish provinces (NUTS3/provincias) under the 1833 Javier de Burgos territorial division",
+    "system_start_basis": "The 1833 royal decree (Javier de Burgos reform) created Spain's current 50-province division in one act; no province in this system predates 1833.",
+    "system_start_year": 1833,
+    "unit_start_exceptions": [
+      {
+        "basis": "The single Canary Islands province created in 1833 was split in 1927 into the provinces of Las Palmas and Santa Cruz de Tenerife, so these two units did not exist until 1927.",
+        "start_year": 1927,
+        "units": "Las Palmas and Santa Cruz de Tenerife (the two Canary Islands provinces)"
+      }
+    ],
+    "unit_start_rule": "Default: every province begins in 1833, the year of the Javier de Burgos reform that created the province system in a single act. Exception: provinces created later by a subsequent split take the year of that split as their own start_year (see unit_start_exceptions)."
+  },
+  "United States of America": {
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "USA-1800-1803",
+        "end_year": 1803,
+        "start_year": 1800
+      },
+      {
+        "code": "USA-1803-1848",
+        "end_year": 1848,
+        "start_year": 1803
+      },
+      {
+        "code": "USA-1848-1867",
+        "end_year": 1867,
+        "start_year": 1848
+      },
+      {
+        "code": "USA-1867-1959",
+        "end_year": 1959,
+        "start_year": 1867
+      },
+      {
+        "code": "USA-1959-2025",
+        "end_year": 2025,
+        "start_year": 1959
+      }
+    ],
+    "country": "United States of America",
+    "evidence_used": [
+      "National rows table for USA showing 5 successive national containers 1800-2025",
+      "Existing subnational row ALK-1867-1959 (Territory of Alaska) as precedent for container-based spans",
+      "Data coverage 1866-2026 noted as NOT a basis for the span"
+    ],
+    "open_end_basis": "The containing national row USA-1959-2025 ends its own span at 2025; a unit cannot outlive its container, so all still-current states must share that exclusive end year rather than a round number like 2100.",
+    "open_end_year": 2025,
+    "reasoning": "Only one unit example (Texas) and one admin_level (state) appear in the panel, but \"state\" as an institution spans the whole US history from the original 13 colonies ratifying the Constitution in 1787/1788 through admissions up to Hawaii in 1959. The floor is 1787 (earliest a \"state\" as a constituent unit of this federal system could exist), not a single year every state copies \u2014 each state's own start is the year it was admitted to the Union (or ratified the Constitution, for the original 13). The precedent row for Alaska (ALK-1867-1959, Territory of Alaska) shows a related but distinct entity \u2014 a pre-statehood territory \u2014 spanning 1867-1959 under the corresponding national container; that is a different unit type (territory, not state) and its span was cut from container USA-1867-1959, consistent with the container-chain rule. States, once admitted, persist to the present, so their open end must equal the current national row's own end_year (2025), not an arbitrary future date.",
+    "system_name": "U.S. states admitted to the Union",
+    "system_start_basis": "1787-1788: the U.S. Constitution's ratification created the federal union and the institution of statehood within it; the original 13 states are the floor. All subsequent states join via congressional admission acts through 1959 (Alaska, Hawaii), the last admissions.",
+    "system_start_year": 1787,
+    "unit_start_exceptions": [
+      {
+        "basis": "These ratified the Constitution between 1787 and 1790 rather than being admitted by a later congressional admission act; dated to ratification, not a uniform admission year.",
+        "start_year": 1787,
+        "units": "The original 13 states (Delaware, Pennsylvania, New Jersey, Georgia, Connecticut, Massachusetts, Maryland, South Carolina, New Hampshire, Virginia, New York, North Carolina, Rhode Island)"
+      },
+      {
+        "basis": "Each entered via a distinct historical route (annexation of an independent republic, direct statehood, wartime secession-split, or non-contiguous late admission) rather than the typical organized-territory-to-statehood pipeline; start_year here is illustrative for Texas specifically (1845), each other unit dated to its own admission act year individually.",
+        "start_year": 1845,
+        "units": "Texas (annexed as independent republic, admitted 1845), California (admitted 1850 without prior organized-territory stage), West Virginia (split from Virginia during the Civil War, admitted 1863), Alaska and Hawaii (admitted 1959, ending the sequence)"
+      }
+    ],
+    "unit_start_rule": "Default: a state's start_year is the year it was admitted to the Union by act of Congress (or, for the original 13, the year it ratified the Constitution, 1787-1790). This is per-unit, not copied from the system floor \u2014 e.g. Texas (admitted 1845) starts in 1845, not 1787."
+  },
+  "Uruguay": {
+    "concerns": [],
+    "confidence": "high",
+    "container_chain": [
+      {
+        "code": "URY-1828-2025",
+        "end_year": 2025,
+        "start_year": 1828
+      }
+    ],
+    "country": "Uruguay",
+    "evidence_used": [
+      "NATIONAL ROWS FOR URY: URY-1828-2025 Uruguay 1828-2025",
+      "UNITS IN THE PANEL: admin1, example unit 'Uruguay' (the country itself reported as its own admin1 unit)"
+    ],
+    "naming_pattern": "Uruguay (department of Uruguay)",
+    "open_end_basis": "The single containing national row URY-1828-2025 has end_year 2025, which is the boundary any subnational unit inside it cannot outlive; using that column value rather than a round number keeps the span tied to actual evidence.",
+    "open_end_year": 2025,
+    "reasoning": "Uruguay has exactly one national row, URY-1828-2025, spanning 1828-2025, and the only panel unit is 'Uruguay' itself at admin1 level with no true subnational departments present. The prior answer was rejected only because the container_chain code was the ISO string 'URY' instead of the actual polity_code URY-1828-2025 shown in the table; the years (1828 start floor, 2025 exclusive end) were correct and are kept. Since there is no documented reform splitting Uruguay's territory into multiple subnational units in this evidence, the sole unit inherits the national row's own span directly, with the floor set at the country's own founding/independence year 1828 as given by the national row.",
+    "system_name": "Uruguay administrative reporting (single national-level unit, no subnational precedent)",
+    "system_start_basis": "The national row URY-1828-2025 begins in 1828, marking Uruguay's establishment as an independent state (per the Preliminary Convention of Peace of 1828); this is the floor since no unit can begin before the country itself existed as reported.",
+    "system_start_year": 1828,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "The single unit 'Uruguay' takes the start year of its containing national row, 1828, since it is reported at admin1 level but represents the whole country with no internal subdivision evidenced in this panel."
+  },
+  "Venezuela": {
+    "concerns": [
+      "Only one subnational unit exists in the panel (Venezuela itself as admin1), so this may be a degenerate case rather than a real subdivision system with multiple states.",
+      "No state-level creation dates were checked individually; treating the single admin1 unit as coextensive with the country avoids inventing unverified state-formation dates."
+    ],
+    "confidence": "medium",
+    "container_chain": [
+      {
+        "code": "VEN-1821-2025",
+        "end_year": 2025,
+        "start_year": 1821
+      }
+    ],
+    "country": "Venezuela",
+    "evidence_used": [
+      "National row VEN-1821-2025 spanning 1821-2025 is the only container available",
+      "Panel contains a single admin1 unit named 'Venezuela' with data coverage 1900-2023, which is not a basis for the span per instructions",
+      "No existing subnational precedent rows for VEN"
+    ],
+    "naming_pattern": null,
+    "open_end_basis": "The containing national row VEN-1821-2025 ends in 2025 (exclusive), so no unit can be reported as current beyond that year; using the container's own end_year rather than a round number or the data's last observed year (2023).",
+    "open_end_year": 2025,
+    "reasoning": "The panel for Venezuela contains only a single unit, itself labeled 'Venezuela' at admin_level 'admin1' \u2014 this is not a genuine subnational subdivision (state/province) but appears to be the country-level entity duplicated at admin1, with no real precedent for provincial-level spans. Since there is no evidence of an actual documented state-creation reform driving this single unit's span, and no sibling subnational rows exist for corroboration, the safest and only defensible convention is to treat this lone 'admin1' unit as coextensive with the national container itself: it starts and ends exactly when the country row VEN-1821-2025 does. This avoids inventing a false administrative reform date (e.g. guessing at Venezuela's 1864 federal reorganization or the current 23-state series) when the panel gives no basis to distinguish this unit from the country as a whole. If future units are added representing real Venezuelan states (e.g. Zulia, T\u00e1chira), the system_start_year and unit_start_rule here should be revisited then with proper evidence about state formation dates.",
+    "system_name": "Venezuela single admin1 unit (coextensive with national territory)",
+    "system_start_basis": "No documented subnational reform is evidenced in the panel; the only container is the national row itself, so the floor is set to the national row's own start_year (1821), since the single admin1 unit cannot predate the country it is coextensive with.",
+    "system_start_year": 1821,
+    "unit_start_exceptions": [],
+    "unit_start_rule": "The single unit 'Venezuela' (admin1) takes the same start_year as its containing national row (1821), since no separate subnational reform date is evidenced and the unit is coextensive with the country."
+  }
+}

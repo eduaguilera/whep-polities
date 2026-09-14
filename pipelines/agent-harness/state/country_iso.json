@@ -1,0 +1,16 @@
+{
+  "Bolivia": {
+    "basis": "The table contains an exact national row named \"Bolivia\" mapped to iso3 BOL, matching the label directly with no ambiguity.",
+    "confidence": "high",
+    "iso3_code": "BOL",
+    "label": "Bolivia",
+    "matched_polity_name": "Bolivia"
+  },
+  "Venezuela": {
+    "basis": "The table lists a national row named exactly \"Venezuela\" with iso3 code VEN, a direct exact match to the label.",
+    "confidence": "high",
+    "iso3_code": "VEN",
+    "label": "Venezuela",
+    "matched_polity_name": "Venezuela"
+  }
+}

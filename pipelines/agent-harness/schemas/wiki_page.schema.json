@@ -1,0 +1,96 @@
+{
+  "title": "A full polity wiki page, authored from a create_new verdict",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["polity_code", "frontmatter", "summary", "why_this_entry_exists",
+               "territorial_extent", "predecessors_and_successors", "sourced_claims",
+               "decisions", "open_questions"],
+  "properties": {
+    "polity_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]{1,24}-[0-9]{4}-[0-9]{4}$"},
+    "frontmatter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["polity_name", "start_year", "end_year", "type", "iso3", "continent",
+                   "polygon_source", "polygon_feature_id", "polygon_status"],
+      "properties": {
+        "polity_name": {"type": "string", "minLength": 3},
+        "start_year": {"type": "integer", "minimum": 1500, "maximum": 2100},
+        "end_year": {"type": "integer", "minimum": 1500, "maximum": 2100},
+        "type": {"type": "string", "enum": ["national", "colonial", "subnational", "aggregate"]},
+        "iso3": {"type": "string", "minLength": 2, "maxLength": 5},
+        "continent": {"type": "string", "minLength": 4},
+        "polygon_source": {"type": "string", "minLength": 3},
+        "polygon_feature_id": {"type": ["string", "null"]},
+        "polygon_status": {
+          "type": "string",
+          "enum": ["assigned", "proxy", "estimate", "unassigned", "polygon_vintage_drift"]
+        },
+        "predecessor": {"type": "array", "items": {"type": "string"}},
+        "successor": {"type": "array", "items": {"type": "string"}},
+        "container": {
+          "type": "array",
+          "description": "Member-to-container edges, each with its own validity interval. The interval is on the EDGE because a container can change while the territory persists.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["code", "start_year", "end_year", "basis"],
+            "properties": {
+              "code": {"type": "string"},
+              "start_year": {"type": "integer"},
+              "end_year": {"type": "integer"},
+              "basis": {"type": "string", "minLength": 15}
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string", "minLength": 300,
+      "description": "What this territory was, in prose a reader unfamiliar with it can follow. Must state why the type is what it is."
+    },
+    "why_this_entry_exists": {
+      "type": "string", "minLength": 250,
+      "description": "The page-requirements spec demands three things: what input data this captures (source, label, years, row count); what the data was previously matched to and why that was wrong; and what confirms the entity was distinct."
+    },
+    "territorial_extent": {
+      "type": "string", "minLength": 300,
+      "description": "Polygon status and its justification, AND a territory description a reader can locate on a modern map with an approximate km2. A figure measured from the attached geometry must be labelled as such, never presented as independent evidence about the territory."
+    },
+    "predecessors_and_successors": {"type": "string", "minLength": 80},
+    "sourced_claims": {
+      "type": "array", "minItems": 2, "items": {"type": "string", "minLength": 40},
+      "description": "Statements a reader could check against a named source. Not restatements of the data."
+    },
+    "decisions": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["anchor", "title", "body"],
+        "properties": {
+          "anchor": {"type": "string", "pattern": "^d-[a-z0-9-]{4,60}$"},
+          "title": {"type": "string", "minLength": 8},
+          "body": {"type": "string", "minLength": 120}
+        }
+      }
+    },
+    "open_questions": {
+      "type": "array", "minItems": 1,
+      "description": "At least one. A page with nothing unresolved is almost always a page that did not look.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["anchor", "title", "body"],
+        "properties": {
+          "anchor": {"type": "string", "pattern": "^oq-[a-z0-9-]{4,60}$"},
+          "title": {"type": "string", "minLength": 8},
+          "body": {"type": "string", "minLength": 120}
+        }
+      }
+    },
+    "area_km2_measured": {
+      "type": ["number", "null"],
+      "description": "The attached feature's measured area, for the harness to cross-check against the geometry it attaches. NOT written to polygon_area_km2, which must not carry a self-referential figure."
+    }
+  }
+}
