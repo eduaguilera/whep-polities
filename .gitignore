@@ -66,3 +66,6 @@ pipelines/agent-harness/state/runs/
 # per-process temp files are machinery, not decisions.
 pipelines/agent-harness/state/*.lock
 pipelines/agent-harness/state/*.tmp
+
+# Playwright MCP scratch output (snapshots, console logs) from browser-testing the site
+.playwright-mcp/

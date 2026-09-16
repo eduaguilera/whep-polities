@@ -1073,9 +1073,15 @@ function initDataMap() {
       sources: {
         carto: {
           type: 'raster',
-          tiles: ['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
+          // Esri World Dark Gray Base, which needs no API key. CARTO's keyless
+          // basemaps.cartocdn.com/dark_all endpoint began serving tiles stamped
+          // "API KEY REQUIRED" across the whole image -- still HTTP 200, still a
+          // valid PNG, so nothing in the page could detect it. Note the {z}/{y}/{x}
+          // order: Esri's REST path is tile/{level}/{row}/{col}, not XYZ.
+          tiles: ['https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'],
           tileSize: 256,
-          attribution: '&copy; CARTO, &copy; OSM contributors'
+          maxzoom: 16,
+          attribution: 'Esri, HERE, Garmin, &copy; OSM contributors'
         }
       },
       layers: [{ id: 'carto', type: 'raster', source: 'carto' }]
@@ -1598,9 +1604,15 @@ async function init() {
       sources: {
         'carto': {
           type: 'raster',
-          tiles: ['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'],
+          // Esri World Dark Gray Base, which needs no API key. CARTO's keyless
+          // basemaps.cartocdn.com/dark_all endpoint began serving tiles stamped
+          // "API KEY REQUIRED" across the whole image -- still HTTP 200, still a
+          // valid PNG, so nothing in the page could detect it. Note the {z}/{y}/{x}
+          // order: Esri's REST path is tile/{level}/{row}/{col}, not XYZ.
+          tiles: ['https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'],
           tileSize: 256,
-          attribution: '&copy; CARTO, &copy; OSM contributors'
+          maxzoom: 16,
+          attribution: 'Esri, HERE, Garmin, &copy; OSM contributors'
         }
       },
       layers: [{ id: 'carto', type: 'raster', source: 'carto' }]
