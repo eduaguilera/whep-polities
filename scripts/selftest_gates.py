@@ -5116,6 +5116,72 @@ def mutate_containment_edge_dropped(root, gpd, make_valid, affinity):
         w.writeheader(); w.writerows(kept)
     return f"{victim} no longer states what contains it, with the table otherwise well-formed"
 
+def mutate_routed_unit_loses_its_alias(root, gpd, make_valid, affinity):
+    """Narrow one routed unit's alias so part of its routed span resolves to nothing.
+
+    Routing has two halves written by different tools: the harness picks the polity and writes the
+    page, apply_verdicts appends the alias that actually sends the source's rows there. Neither
+    checks the other, so a unit can carry a verdict, a page and a live polity while its label
+    resolves to nothing -- which is how USA-CALIFORNIA lost 34,452 valued rows, and how Braganca
+    lost 109 data years when seven sibling districts were re-spanned and it was not.
+
+    The mutation pushes one alias's `year_start` forward. The file stays valid CSV, the rule still
+    names a real polity, still sits inside its span and still carries a plausible range, so every
+    other alias check stays quiet -- and the years it stopped covering are years the ledger still
+    says belong to that polity. That is the shape of the failure: nothing is malformed, and the
+    data simply stops arriving.
+    """
+    import csv as _csv
+    import json as _json
+
+    _csv.field_size_limit(sys.maxsize)
+    ledger = os.path.join(root, "pipelines/agent-harness/state/routing_verdicts.csv")
+    path = os.path.join(root, "data/final/label_alias_map.csv")
+
+    # the polities the ledger says carry a routed segment, and the label each unit reports under
+    targets = {}
+    with open(ledger, newline="", encoding="utf-8") as fh:
+        for r in _csv.DictReader(fh):
+            raw = (r.get("coverage_json") or "").strip()
+            if not raw:
+                continue
+            try:
+                parsed = _json.loads(raw)
+            except ValueError:
+                continue
+            segs = parsed.get("segments", []) if isinstance(parsed, dict) else parsed
+            if not any(x.get("disposition") in ("matched", "proposed") for x in segs):
+                continue
+            code = (r.get("page_polity_code") or r.get("matched_polity_code") or "").strip()
+            if code:
+                targets.setdefault(code, set()).update({r["unit_id"], r.get("admin_name") or ""})
+
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+
+    victim = None
+    for r in sorted(rows, key=lambda x: (x["source_label"], x["source"])):
+        if r["polity_code"] not in targets or r["source_label"] not in targets[r["polity_code"]]:
+            continue
+        try:
+            lo, hi = int(r["year_start"]), int(r["year_end"])
+        except ValueError:
+            continue
+        if hi - lo >= 20:
+            victim = r
+            break
+    if victim is None:
+        raise AssertionError("no routed unit has an alias wide enough to narrow; the mutation "
+                             "would do nothing and the case would pass for the wrong reason")
+
+    was = victim["year_start"]
+    victim["year_start"] = str(int(was) + 20)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(rows)
+    return (f"{victim['source_label']!r} -> {victim['polity_code']} now starts at "
+            f"{victim['year_start']} instead of {was}, so 20 routed years resolve to nothing")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6193,6 +6259,14 @@ CASES = (
         "its name string where no consumer can read it -- the table stays valid CSV and every "
         "remaining edge still checks out, so only the coverage arm can see it",
     ),
+(
+        "validate_routed_units_are_aliased.py",
+        mutate_routed_unit_loses_its_alias,
+        "no alias",
+        "a reporting unit routed to a polity that its data cannot reach, because the alias was "
+        "never written or was narrowed away -- the verdict, the page and the polity all exist, "
+        "every alias check stays quiet, and any report keyed on the polity still looks complete",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -6925,6 +6999,14 @@ WRITABLE = {
     # the case rewrites the emitted edge table, so it needs a real copy rather than stage()'s
     # symlink. polities_database.csv is deliberately NOT listed: stage() already provides it, and
     # naming it again raises SameFileError -- which is how this entry was first written.
+    # The case narrows a rule in the alias map, so that must be a real copy rather than
+    # stage()'s symlink -- otherwise the mutation writes straight into the committed table.
+    # The ledger is read-only here but must be PRESENT: it is what says which years each unit
+    # routed, so without it the gate dies on a missing file rather than reporting the defect.
+    "validate_routed_units_are_aliased.py": (
+        "data/final/label_alias_map.csv",
+        "pipelines/agent-harness/state/routing_verdicts.csv",
+    ),
     "validate_polity_containment.py": (
         "data/final/polity_containment.csv",
     ),
