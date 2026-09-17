@@ -71,11 +71,11 @@ AUS-SA-1901-2025,South Australia (state of Australia),1901,2025,gadm-4.1-adm1,,a
 AUS-TAS-1901-2025,Tasmania (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 AUS-VIC-1901-2025,Victoria (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 AUS-WA-1901-2025,Western Australia (state of Australia),1901,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-AUSA-1836-1900,South Australia (to 1900),1836,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,no_reference,,single 1886 polygon held across a 64y span (1836-1900); borders may have changed,195
+AUSA-1836-1901,South Australia (to 1900),1836,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,no_reference,,single 1886 polygon held across a 65y span (1836-1901); borders may have changed,195
 AUT-1800-1918,Austria (Cisleithania),1800,1918,histogis-1860-habsburg,,assigned,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,1182
 AUT-1918-1919,Austria (1918-1919),1918,1919,cshapes-2.0,1918.0,assigned,True,measured,False,False,no_reference,,vintage 1918 faithful to period 1918-1919,35
 AUT-1919-2025,Austria,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,stable_where_covered,0.08,single 1919 polygon held across a 106y span (1919-2025); borders may have changed,2115
-AUWA-1829-1900,Western Australia (to 1900),1829,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 71y span (1829-1900); borders may have changed,195
+AUWA-1829-1901,Western Australia (to 1900),1829,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 72y span (1829-1901); borders may have changed,195
 AZE-1991-2025,Azerbaijan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.07,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 AZE-SSR-1920-1991,Azerbaijan SSR,1920,1991,cshapes-2.0,1991.0,proxy,True,assumed_constant,True,False,no_reference,,single 1991 polygon held across a 71y span (1920-1991); borders may have changed,27
 BCM-1916-1961,British Cameroons,1916,1961,cshapes-2.0,1953.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.05,single 1953 polygon held across a 45y span (1916-1961); borders may have changed,23
@@ -445,7 +445,7 @@ FID-1887-1954,French Indochina,1887,1954,constructed,1920.0,assigned,True,assume
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,cshapes-2.0,1917.0,assigned,True,assumed_constant,True,True,no_reference,,single 1917 polygon held across a 108y span (1809-1917); borders may have changed,411
 FIN-1917-1940,Finland (1917-1940),1917,1940,cshapes-2.0,1917.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1917 faithful to period 1917-1940,631
 FIN-1940-2025,Finland (1940-2025),1940,2025,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1940 polygon held across a 85y span (1940-2025); borders may have changed,742
-FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,3.42,polygon present but no recorded vintage year,520
+FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,3.43,polygon present but no recorded vintage year,520
 FLK-1833-2025,Falkland Islands,1833,2025,gadm-4.1-adm0,2023.0,proxy,True,assumed_constant,True,True,no_reference,,single 2023 polygon held across a 192y span (1833-2025); borders may have changed,25
 FRA-02-1800-2025,Aisne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-04-1790-2025,Alpes-de-Haute-Provence (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -910,7 +910,7 @@ NPL-1816-2025,Nepal,1816,2025,cliopatria,1929.0,assigned,True,assumed_constant,T
 NRH-1911-1953,Northern Rhodesia (1911-1953),1911,1953,cshapes-2.0,1911.0,assigned,True,assumed_constant,True,True,no_reference,,single 1911 polygon held across a 42y span (1911-1953); borders may have changed,246
 NRH-1953-1964,Northern Rhodesia within Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,cshapes-2.0,1953.0,assigned,True,measured,False,False,no_reference,,vintage 1953 faithful to period 1953-1964,8
 NRU-1888-2025,Nauru,1888,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,29
-NSW-1800-1900,New South Wales (to 1900),1800,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 100y span (1800-1900); borders may have changed,195
+NSW-1800-1901,New South Wales (to 1900),1800,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 101y span (1800-1901); borders may have changed,195
 NUP-1800-1897,Nupe Kingdom (Bida Emirate),1800,1897,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
 NWR-1900-1905,Northwestern Rhodesia (1900-1905),1900,1905,cshapes-2.0,1900.0,assigned,True,measured,False,False,no_reference,,vintage 1900 faithful to period 1900-1905,0
 NZL-1840-2025,New Zealand,1840,2025,cshapes-2.0,1907.0,assigned,True,assumed_constant,True,True,stable_where_covered,0.07,single 1907 polygon held across a 185y span (1840-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),1924
@@ -982,7 +982,7 @@ PSE-1948-2025,Palestine (West Bank and Gaza),1948,2025,gadm-4.1-adm0,,assigned,T
 PTIND-1816-1961,Portuguese India (Estado da India Portuguesa),1816,1961,constructed,,estimate,True,assumed_constant,True,False,reference_mismatch,-95.89,polygon present but no recorded vintage year,7
 PYF-1800-2025,French Polynesia,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,109
 QAT-1800-2025,Qatar,1800,2025,cshapes-2.0,1916.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.24,single 1916 polygon held across a 225y span (1800-2025); borders may have changed,4
-QUE-1859-1900,Queensland (to 1900),1859,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,no_reference,,single 1886 polygon held across a 41y span (1859-1900); borders may have changed,190
+QUE-1859-1901,Queensland (to 1900),1859,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 42y span (1859-1901); borders may have changed,190
 RAFR-1850-2021,Africa Other,1850,2021,reporting-areas,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
 RAFR-1850-2025,Africa Other,1850,2025,reporting-areas,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 RASI-1850-2021,Asia Other,1850,2021,reporting-areas,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
@@ -1088,7 +1088,7 @@ SYR-1967-2025,Syrian Arab Republic,1967,2025,cshapes-2.0,1967.0,assigned,False,a
 TAN-1891-1920,Tanzania (1891-1920),1891,1920,cshapes-2.0,1900.0,assigned,True,assumed_constant,True,True,no_reference,,single 1900 polygon held across a 29y span (1891-1920); borders may have changed,46
 TAN-1920-1922,Tanzania (1920-1922),1920,1922,cshapes-2.0,1921.0,assigned,True,measured,False,False,no_reference,,vintage 1921 faithful to period 1920-1922,8
 TAN-1922-1964,Tanzania (1922-1964),1922,1961,cshapes-2.0,1946.0,assigned,True,assumed_constant,True,True,no_reference,,single 1946 polygon held across a 39y span (1922-1961); borders may have changed,657
-TAS-1825-1900,Van Diemen's Land (Tasmania) (to 1900),1825,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 75y span (1825-1900); borders may have changed,195
+TAS-1825-1901,Tasmania (to 1900),1825,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 76y span (1825-1901); borders may have changed,195
 TCA-1800-2025,Turks and Caicos Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,2
 TCD-1900-1912,Chad (1900-1912),1900,1912,cshapes-2.0,1900.0,assigned,True,measured,False,False,no_reference,,vintage 1900 faithful to period 1900-1912,0
 TCD-1912-1919,Chad (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,no_reference,,vintage 1912 faithful to period 1912-1919,0
@@ -1192,7 +1192,7 @@ VCT-1800-1833,Saint Vincent (to 1833),1800,1833,gadm-4.1-adm0,,assigned,False,as
 VCT-1833-2025,Saint Vincent and the Grenadines,1833,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,265
 VEN-1821-2025,Venezuela,1821,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1886 polygon held across a 204y span (1821-2025); borders may have changed,1050
 VGB-1800-2025,British Virgin Islands,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,38
-VIC-1851-1900,Victoria (to 1900),1851,1900,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 49y span (1851-1900); borders may have changed,195
+VIC-1851-1901,Victoria (to 1900),1851,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 50y span (1851-1901); borders may have changed,195
 VIR-1917-2025,United States Virgin Islands,1917,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,True,no_reference,,single 2023 polygon held across a 108y span (1917-2025); borders may have changed,65
 VNM-1887-1954,Vietnam (French Indochina),1887,1954,cshapes-2.0,1894.0,assigned,True,assumed_constant,True,True,changed,-14.68,single 1894 polygon held across a 67y span (1887-1954); borders may have changed,489
 VNM-1975-2025,Vietnam,1975,2025,cshapes-2.0,1975.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.04,single 1975 polygon held across a 50y span (1975-2025); borders may have changed,0

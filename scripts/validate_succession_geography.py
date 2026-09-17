@@ -136,7 +136,10 @@ BASELINE = frozenset({
     # New South Wales on 3 December 1825, so NSW is its predecessor as chronology, by the same
     # reasoning `validate_chain_integrity` applies. A separation across water cannot produce
     # touching polygons.
-    ("TAS-1825-1900", "predecessor", "NSW-1800-1900"),
+    # Re-coded 2026-09-17 from -1900 to -1901 (federation 1 January 1901). Unchanged in
+    # substance: Tasmania is an island and its parent colony is on the mainland, so the two
+    # polygons cannot touch however the span is dated.
+    ("TAS-1825-1901", "predecessor", "NSW-1800-1901"),
 })
 
 

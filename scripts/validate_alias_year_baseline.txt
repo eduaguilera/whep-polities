@@ -128,7 +128,6 @@ USSR		F228-1921-1940
 USSR		F228-1940-1945
 USSR		F228-1945-1991
 USSR	faostat	F228-1945-1991
-Western Australia	sa_colonial	AUWA-1829-1900
 Western Sahara	faostat	ESH-1958-1975
 Yemen	fao1952	MKY-1918-1962
 Zanzibar and Pemba	fao1952	ZNZ-1890-1963
