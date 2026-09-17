@@ -194,8 +194,12 @@ BASELINE_CROSS_FAMILY = frozenset({
     ("MUS-1800-2025", "SYC-1903-2025"),                 # 122y 1903-2025
     ("SMO-1912-1956", "SWA-1912-1958"),                 #  44y 1912-1956
     # New South Wales before the other Australian colonies were carved out of it.
-    ("NSW-1800-1900", "QUE-1859-1900"),                 #  41y 1859-1900
-    ("NSW-1800-1900", "VIC-1851-1900"),                 #  49y 1851-1900
+    # Re-coded 2026-09-17 from -1900 to -1901 (federation was 1 January 1901, so the colonies
+    # existed through all of 1900). The overlap is the same fact and one year longer: NSW is the
+    # parent colony Queensland and Victoria were carved out of, so all three legitimately cover
+    # the separation years.
+    ("NSW-1800-1901", "QUE-1859-1901"),                 #  42y 1859-1901
+    ("NSW-1800-1901", "VIC-1851-1901"),                 #  50y 1851-1901
     # Ruanda-Urundi beside Tanganyika, both out of the same German colony.
     ("RWB-1919-1922", "TAN-1891-1920"),                 #   1y 1919-1920
     ("RWB-1919-1922", "TAN-1920-1922"),                 #   2y 1920-1922

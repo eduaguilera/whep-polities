@@ -605,15 +605,15 @@ def mutate_data_receiving_polity_without_geometry(root, gpd, make_valid, affinit
     stops considering it. The completeness harness meanwhile still counts its 195 layer-B
     rows as matched, because they are.
 
-    TAS-1825-1900 is used deliberately: it is the largest of the bindings the PR that added
+    TAS-1825-1901 is used deliberately: it is the largest of the bindings the PR that added
     this gate attached, so the mutation restores the precise state the gate was written to
     forbid rather than inventing a synthetic one.
     """
     g = gpd.read_file(GPKG)
-    i = g.index[g.polity_code == "TAS-1825-1900"][0]
+    i = g.index[g.polity_code == "TAS-1825-1901"][0]
     g.loc[i, "geometry"] = None
     write_gpkg(g, root)
-    return "dropped TAS-1825-1900's geometry while it still receives 195 layer-B rows"
+    return "dropped TAS-1825-1901's geometry while it still receives 195 layer-B rows"
 
 
 def mutate_map_year_end_past_coverage(root, gpd, make_valid, affinity):
@@ -6119,7 +6119,7 @@ CASES = (
     (
         "validate_data_without_geometry.py",
         mutate_data_receiving_polity_without_geometry,
-        "TAS-1825-1900",
+        "TAS-1825-1901",
         "a polity that receives data and carries no territory, so every area-weighted "
         "consumer drops its rows silently",
     ),

@@ -157,13 +157,13 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 156,switzerland|fao1952|1936-1951,Switzerland,fao1952,CHE-1800-2025,pending,name,210,1936-1951,8,1800-2025,national,draft,assigned,False,False,False,False,,False,weak_route
 157,ireland|fao1952|1937-1951,Ireland,fao1952,IRL-1921-2025,pending,name,201,1937-1951,8,1921-2025,national,draft,assigned,False,False,False,False,,False,weak_route
 158,norway|fao1952|1937-1951,Norway,fao1952,NOR-1800-2025,pending,name,196,1937-1951,7,1800-2025,national,draft,assigned,False,False,False,False,,False,weak_route
-159,new south wales|sa_colonial|1854-1898,New South Wales,sa_colonial,NSW-1800-1900,pending,name,195,1854-1898,45,1800-1900,national,draft,assigned,False,False,False,False,,False,weak_route
+159,new south wales|sa_colonial|1854-1898,New South Wales,sa_colonial,NSW-1800-1901,pending,name,195,1854-1898,45,1800-1900,national,draft,assigned,False,False,False,False,,False,weak_route
 160,new zealand|sa_colonial|1854-1898,New Zealand,sa_colonial,NZL-1840-2025,pending,name,195,1854-1898,45,1840-2025,national,draft,assigned,False,False,False,False,,False,weak_route
-161,south australia|sa_colonial|1854-1898,South Australia,sa_colonial,AUSA-1836-1900,pending,name,195,1854-1898,45,1836-1900,colonial,draft,assigned,False,False,False,False,,False,weak_route
-162,tasmania|sa_colonial|1854-1898,Tasmania,sa_colonial,TAS-1825-1900,pending,alias,195,1854-1898,45,1825-1900,national,draft,assigned,False,False,False,False,,False,weak_route
-163,victoria|sa_colonial|1854-1898,Victoria,sa_colonial,VIC-1851-1900,pending,name,195,1854-1898,45,1851-1900,national,draft,assigned,False,False,False,False,,False,weak_route
+161,south australia|sa_colonial|1854-1898,South Australia,sa_colonial,AUSA-1836-1901,pending,name,195,1854-1898,45,1836-1900,colonial,draft,assigned,False,False,False,False,,False,weak_route
+162,tasmania|sa_colonial|1854-1898,Tasmania,sa_colonial,TAS-1825-1901,pending,alias,195,1854-1898,45,1825-1900,national,draft,assigned,False,False,False,False,,False,weak_route
+163,victoria|sa_colonial|1854-1898,Victoria,sa_colonial,VIC-1851-1901,pending,name,195,1854-1898,45,1851-1900,national,draft,assigned,False,False,False,False,,False,weak_route
 164,denmark|fao1952|1937-1951,Denmark,fao1952,DNK-1920-2025,pending,name,190,1937-1951,8,1920-2025,national,reviewed,assigned,True,False,False,False,,False,weak_route
-165,queensland|sa_colonial|1859-1898,Queensland,sa_colonial,QUE-1859-1900,pending,name,190,1859-1898,40,1859-1900,national,draft,assigned,False,False,False,False,,False,weak_route
+165,queensland|sa_colonial|1859-1898,Queensland,sa_colonial,QUE-1859-1901,pending,name,190,1859-1898,40,1859-1900,national,draft,assigned,False,False,False,False,,False,weak_route
 166,luxembourg|fao1952|1937-1951,Luxembourg,fao1952,LUX-1839-2025,pending,name,185,1937-1951,8,1839-2025,national,reviewed,assigned,True,False,False,False,,False,weak_route
 167,tunisia|fao1952|1937-1951,Tunisia,fao1952,TUN-1881-2025,pending,name,184,1937-1951,6,1881-2025,national,draft,assigned,False,False,False,False,,False,weak_route
 168,finland|fao1952|1947-1951,Finland,fao1952,FIN-1940-2025,pending,name,167,1947-1951,5,1940-2025,national,draft,assigned,False,False,False,False,,False,weak_route
@@ -310,7 +310,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 309,dominican republic|mitchell|1901-1960,dominican republic,mitchell,DOM-1800-2025,pending,iso,207,1901-1960,60,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
 310,romania|iia|1920-1939,romania,iia,ROU-1920-1940,pending,applied_alias,206,1920-1939,16,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
 311,netherlands|iia|1909-1945,netherlands,iia,NLD-1830-2025,pending,iso,203,1909-1945,34,1830-2025,national,draft,assigned,False,False,False,False,,True,precedent
-312,western australia|sa_colonial|1854-1898,Western Australia,sa_colonial,AUWA-1829-1900,pending,applied_alias,195,1854-1898,45,1829-1900,colonial,draft,assigned,False,False,False,False,high,False,precedent
+312,western australia|sa_colonial|1854-1898,Western Australia,sa_colonial,AUWA-1829-1901,pending,applied_alias,195,1854-1898,45,1829-1900,colonial,draft,assigned,False,False,False,False,high,False,precedent
 313,el salvador|mitchell|1894-1960,el salvador,mitchell,SLV-1821-2025,pending,iso,192,1894-1960,66,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
 314,bulgaria|juan|1913-1917,bulgaria,juan,BGR-1913-1918,pending,applied_alias,189,1913-1917,5,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
 315,china mainland|iia|1932-1944,"china, mainland",iia,CHN-1932-1945,pending,applied_alias,189,1932-1944,13,1932-1945,national,draft,assigned,False,False,False,False,high,False,precedent
