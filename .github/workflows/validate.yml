@@ -385,6 +385,13 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/update_wiki_index.py --check
 
+      - name: Coverage segments name polities that exist
+        if: '!cancelled()'
+        # The ledger's per-segment `polity_code` was resolved by nothing, so 43 segments routed
+        # their years to codes that were never minted -- the unit's own id, or a code invented
+        # from a territory name. Reads only committed files.
+        run: python3 scripts/validate_coverage_targets.py
+
       - name: Every routed reporting unit can actually reach its polity
         if: '!cancelled()'
         # Routing's two halves are written by different tools that do not check each other, so a

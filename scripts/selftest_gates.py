@@ -5182,6 +5182,57 @@ def mutate_routed_unit_loses_its_alias(root, gpd, make_valid, affinity):
     return (f"{victim['source_label']!r} -> {victim['polity_code']} now starts at "
             f"{victim['year_start']} instead of {was}, so 20 routed years resolve to nothing")
 
+def mutate_coverage_target_never_minted(root, gpd, make_valid, affinity):
+    """Point one coverage segment at a polity code that was never minted.
+
+    Each segment in the harness ledger may name the polity its years route to, and for
+    `back_cast` the schema requires it. Nothing resolved that field, so 43 segments named codes
+    that do not exist -- an agent writing the reporting unit's own id ('BRA-TOCANTINS'), or
+    minting a plausible code from a territory name ('FRA-BASRHIN-1919-2025', where the real row
+    is FRA-67-1919-2025). Neither is a typo a reader would catch, and every downstream report
+    keys on the polity table, where they simply do not appear.
+
+    The mutation rewrites one segment's target to a well-formed code that is absent from the
+    table. The ledger stays valid CSV, the coverage still tiles the unit's span, every
+    disposition is still legal and the years are untouched -- so only a check that resolves the
+    field against the polity table can see it.
+    """
+    import csv as _csv
+    import json as _json
+
+    _csv.field_size_limit(sys.maxsize)
+    path = os.path.join(root, "pipelines/agent-harness/state/routing_verdicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+
+    victim = None
+    for r in rows:
+        raw = (r.get("coverage_json") or "").strip()
+        if not raw:
+            continue
+        try:
+            parsed = _json.loads(raw)
+        except ValueError:
+            continue
+        segs = parsed.get("segments", []) if isinstance(parsed, dict) else parsed
+        for s in segs:
+            if (s.get("polity_code") or "").strip():
+                s["polity_code"] = "NEVERMINTED-1900-2000"
+                r["coverage_json"] = _json.dumps(segs, ensure_ascii=False)
+                victim = r["unit_id"]
+                break
+        if victim:
+            break
+    if victim is None:
+        raise AssertionError("no coverage segment names a polity, so the mutation would do "
+                             "nothing and the case would pass for the wrong reason")
+
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(rows)
+    return (f"{victim}'s coverage now routes to 'NEVERMINTED-1900-2000', a well-formed code "
+            f"absent from the polity table, with the ledger otherwise intact")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6267,6 +6318,14 @@ CASES = (
         "never written or was narrowed away -- the verdict, the page and the polity all exist, "
         "every alias check stays quiet, and any report keyed on the polity still looks complete",
     ),
+(
+        "validate_coverage_targets.py",
+        mutate_coverage_target_never_minted,
+        "not a live polity",
+        "a coverage segment routing its years to a polity code that was never minted -- the "
+        "ledger stays valid, the coverage still tiles the span, and nothing else in the repo "
+        "resolves that field, so the years route to a territory that does not exist",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -7003,6 +7062,11 @@ WRITABLE = {
     # stage()'s symlink -- otherwise the mutation writes straight into the committed table.
     # The ledger is read-only here but must be PRESENT: it is what says which years each unit
     # routed, so without it the gate dies on a missing file rather than reporting the defect.
+    # The case rewrites a target inside coverage_json, so the ledger must be a real copy
+    # rather than stage()'s symlink -- otherwise the mutation writes into the committed ledger.
+    "validate_coverage_targets.py": (
+        "pipelines/agent-harness/state/routing_verdicts.csv",
+    ),
     "validate_routed_units_are_aliased.py": (
         "data/final/label_alias_map.csv",
         "pipelines/agent-harness/state/routing_verdicts.csv",
