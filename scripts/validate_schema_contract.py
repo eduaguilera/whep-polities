@@ -82,6 +82,14 @@ CSV_CONTRACT = {
     "data/final/label_alias_map.csv": [
         "source_label", "source", "year_start", "year_end", "polity_code",
         "common_name", "confidence", "observed_rows",
+        # Appended 2026-09-22. EMPTY means the source observed this territory in these years.
+        # `back_cast` means it reports them FOR this territory while projecting a later boundary
+        # backwards, so the values are a reconstruction: the routing verdict schema has always
+        # specified that such data routes to the polity while the polity's own span still begins
+        # when the territory did, and nothing in this vocabulary could say so -- 377,822 panel
+        # rows resolved to no polity at all. Readers updated with it: validate_aliases.py, whose
+        # before-target check must not fire on a range that begins before its target BY DESIGN.
+        "disposition",
     ],
     "data/final/faostat_area_polity_map.csv": [
         "area_code", "year_start", "year_end", "polity_code", "source_label",
@@ -118,6 +126,8 @@ CSV_CONTRACT = {
     "pipelines/polity-autoimprove/state/applied_aliases.csv": [
         "source_label", "source", "year_start", "year_end", "common_name",
         "polity_code", "confidence", "basis", "observed_rows",
+        # Appended 2026-09-22; see the note on label_alias_map.csv, which this table feeds.
+        "disposition",
     ],
     "pipelines/faostat-era-matching/state/faostat_aliases.csv": [
         "source_label", "source", "year_start", "year_end", "common_name",

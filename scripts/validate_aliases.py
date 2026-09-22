@@ -173,12 +173,26 @@ BASELINE_BEFORE_TARGET = frozenset({
     ("Trieste", "fao1952", "TRS-1947-1954"),
 })
 
+# A `back_cast` alias BEGINS BEFORE ITS TARGET BY DESIGN, and that is the whole point of the
+# disposition. The routing verdict schema has always specified it -- "the source reports these years
+# FOR this territory but is projecting it backwards ... so the data routes to the polity while the
+# polity's own span still begins when the territory did" -- and until 2026-09-22 nothing could
+# express it, so 377,822 panel rows resolved to no polity at all.
+#
+# This exemption does NOT weaken what the check was built for. Its four original findings were
+# UNEXAMINED COPIED RANGES: Gold Coast reaching back to 1821 past two polities that did exist,
+# Portuguese Timor to 1702, French Morocco inheriting 1904 from a retired duplicate. None carried a
+# disposition; all three were silently wrong about which polity should have the years. A `back_cast`
+# row asserts the opposite -- that no polity held this boundary then, which is why the reconstruction
+# lands on the modern one -- and it says so in a column a consumer can filter on.
 before_target = set()
 for r in rows:
     target = (r.get("polity_code") or "").strip()
     span = spans.get(target)
     y0 = (r.get("year_start") or "").strip()
     if not span or not YEAR_RE.match(y0):
+        continue
+    if (r.get("disposition") or "").strip() == "back_cast":
         continue
     if int(y0) < span[0]:
         before_target.add(((r.get("source_label") or "").strip(),

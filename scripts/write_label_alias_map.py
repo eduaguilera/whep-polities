@@ -48,6 +48,14 @@ COLUMNS = (
     "confidence",     # matcher confidence in the assignment
     "observed_rows",  # rows seen for this label: a count, 0 if measured and none,
     #                   EMPTY if this source's corpus is not in this repo (see below)
+    "disposition",    # EMPTY means the source observed this territory in these years, which is
+    #                   the ordinary case. `back_cast` means the source reports these years FOR
+    #                   this territory while projecting a later boundary backwards, so the values
+    #                   are a reconstruction: the data routes here, and the polity's own span
+    #                   still begins when the territory did. Added 2026-09-22; the routing
+    #                   verdict schema has always specified this behaviour and nothing could
+    #                   express it, which left 377,822 panel rows resolving to no polity at all.
+    #                   A consumer that wants observation only filters on this column.
 )
 
 ap = argparse.ArgumentParser()
@@ -112,6 +120,13 @@ for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
             # exactly the wrong conclusion, and an inert-alias check reading this
             # column would have flagged every one of them.
             "observed_rows": (r.get("observed_rows") or "").strip(),
+            # Carried through verbatim. EMPTY means observed; `back_cast` means these years are
+            # a reconstruction onto a boundary that did not exist yet. Publishing the registry's
+            # value unchanged is the point: validate_aliases.py's before-target check reads it to
+            # know that a range beginning before its target does so BY DESIGN, and a consumer
+            # wanting observation only filters on it. Dropping it here would have left the
+            # published map unable to distinguish the two, while the gate passed on the registry.
+            "disposition": (r.get("disposition") or "").strip(),
         }
     )
 
