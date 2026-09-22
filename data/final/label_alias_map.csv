@@ -117,6 +117,7 @@ Angola,lassaletta-grassland-share,1961,1974,ANG-1905-1975,Angola (1905-1975),hig
 Angola,lassaletta-grassland-share,1975,2009,AGO-1975-2025,"Angola (independent, 1975–2025)",high,,
 Antigua and Barbuda,faostat,1961,2024,ATG-1800-2025,Antigua and Barbuda,high,152103,
 Antioquia,juan-subnational,1915,2023,COL-ANTIOQUIA-1886-2025,,high,,
+Antofagasta,juan-subnational,1900,1975,CHL-AN-1976-2025,,high,,back_cast
 Antofagasta,juan-subnational,1976,2023,CHL-AN-1976-2025,,high,,
 Aomori,juan-subnational,1883,2022,JPN-AOMORI-1871-2025,,high,,
 ARG-BUENOSAIRES,whep-lab-latam,1900,2023,ARG-BA-1853-2025,,high,,
@@ -131,6 +132,7 @@ ARG-ENTRERIOS,whep-lab-latam,1900,2023,ARG-ER-1853-2025,,high,,
 ARG-FORMOSA,whep-lab-latam,1900,1954,ARG-FORMOSA-1900-1955,,medium,,
 ARG-FORMOSA,whep-lab-latam,1955,2024,ARG-FORMOSA-1955-2025,,high,,
 ARG-JUJUY,whep-lab-latam,1900,2023,ARG-JUJUY-1853-2025,,high,,
+ARG-LAPAMPA,whep-lab-latam,1900,1950,ARG-LAPAMPA-1900-1951,,high,,
 ARG-LAPAMPA,whep-lab-latam,1951,2023,ARG-LAPAMPA-1951-2025,,medium,,
 ARG-LARIOJA,whep-lab-latam,1900,2023,ARG-LARIOJA-1853-2025,,high,,
 ARG-MENDOZA,whep-lab-latam,1900,2023,ARG-MENDOZA-1853-2025,,high,,
@@ -186,6 +188,7 @@ Austria,faostat,1961,2024,AUT-1919-2025,Austria,high,255267,
 Austria,lassaletta-grassland-share,1961,2009,AUT-1919-2025,Austria,high,,
 Austria-Hungary,federico_tena,1830,1858,AUH-1800-1859,Austrian Empire (to 1859),high,58,
 Austria-Hungary,federico_tena,1859,1865,AUH-1859-1866,Austrian Empire (1859-1866),high,14,
+Aysen,juan-subnational,1900,1975,CHL-AI-1976-2025,,high,,back_cast
 Aysen,juan-subnational,1976,2023,CHL-AI-1976-2025,,high,,
 Azerbaijan,faostat,1992,2024,AZE-1991-2025,Azerbaijan,high,103326,
 azerbaijan,iia-tea,1920,1990,AZE-SSR-1920-1991,Azerbaijan SSR,high,,
@@ -194,6 +197,7 @@ Bahia,juan-subnational,1900,2023,BRA-BAHIA-1889-2025,,high,,
 Bahrain,faostat,1961,2024,BHR-1800-2025,Bahrain,high,77122,
 Baja California,juan-subnational,1900,1951,MEX-BCN-1952-2025,,high,,back_cast
 Baja California,juan-subnational,1952,2023,MEX-BCN-1952-2025,,high,,
+Baja California Sur,juan-subnational,1900,1930,MEX-BCS-1931-2025,,high,,back_cast
 Baja California Sur,juan-subnational,1931,2023,MEX-BCS-1931-2025,,medium,,
 Bangladesh,faostat,1961,1970,BGD-1947-1971,East Pakistan (1947-1971),high,203548,
 Bangladesh,faostat,1971,2024,BGD-1971-2025,Bangladesh,high,203548,
@@ -225,12 +229,14 @@ Bermuda,faostat,1968,2013,BMU-1968-2025,Bermuda,high,67310,
 Bermuda,federico_tena,1816,1938,BMU-1684-1968,British Crown Colony of Bermuda,high,213,
 bermuda,iia,1930,1945,BMU-1684-1968,Bermuda,high,17,
 Bhutan,faostat,1961,2024,BTN-1800-2025,Bhutan,high,46525,
+Biobío,juan-subnational,1900,1975,CHL-BI-1976-2025,,high,,back_cast
 Biobío,juan-subnational,1976,2023,CHL-BI-1976-2025,,medium,,
 BOL-BEN,whep-lab-latam,1900,2023,BOL-BEN-1842-2025,,high,,
 BOL-CHUQUISACA,whep-lab-latam,1900,2023,BOL-CHUQ-1825-2025,,high,,
 BOL-COCHABAMBA,whep-lab-latam,1900,2023,BOL-COCH-1825-2025,,high,,
 BOL-LAPAZ,whep-lab-latam,1900,2023,BOL-LP-1825-2025,,high,,
 BOL-ORURO,whep-lab-latam,1900,2023,BOL-ORU-1825-2025,,high,,
+BOL-PANDO,whep-lab-latam,1900,1937,BOL-PND-1938-2025,,high,,back_cast
 BOL-PANDO,whep-lab-latam,1938,2023,BOL-PND-1938-2025,,medium,,
 BOL-POTOSI,whep-lab-latam,1900,2023,BOL-POT-1825-2025,,high,,
 BOL-SANTACRUZ,whep-lab-latam,1900,2023,BOL-SZ-1825-2025,,medium,,
@@ -258,6 +264,7 @@ Br West Indies Montserrat,fao1952,1949,1950,MSR-1800-2025,Montserrat,high,6,
 Br West Indies St Kitts-Nevis Anguilla,fao1952,1949,1967,KNA-1800-2025,Saint Kitts-Nevis-Anguilla (British colony),high,,
 Br West Indies St Lucia,fao1952,1949,1951,LCA-1838-2025,Saint Lucia,high,12,
 Br West Indies St Vincent,fao1952,1949,1951,VCT-1833-2025,Saint Vincent and the Grenadines,high,12,
+BRA-ACRE,whep-lab-latam,1900,1902,BRA-ACRE-1962-2025,,high,,back_cast
 BRA-ACRE,whep-lab-latam,1903,1961,BRA-ACRE-1962-2025,,high,,back_cast
 BRA-ACRE,whep-lab-latam,1962,2023,BRA-ACRE-1962-2025,,medium,,
 BRA-ALAGOAS,whep-lab-latam,1900,2023,BRA-ALAGOAS-1889-2025,,high,,
@@ -266,6 +273,8 @@ BRA-AMAPA,whep-lab-latam,1943,2023,BRA-AMAPA-1943-2025,,high,,
 BRA-AMAZONAS,whep-lab-latam,1900,2024,BRA-AMAZONAS-1889-2025,,high,,
 BRA-BAHIA,whep-lab-latam,1900,2023,BRA-BAHIA-1889-2025,,high,,
 BRA-CEARA,whep-lab-latam,1900,2023,BRA-CE-1889-2025,,high,,
+BRA-DISTRITOFEDERAL,whep-lab-latam,1900,1958,BRA-DFRJ-1900-1959,,high,,
+BRA-DISTRITOFEDERAL,whep-lab-latam,1959,1959,BRA-DF-1960-2023,,high,,back_cast
 BRA-DISTRITOFEDERAL,whep-lab-latam,1960,2022,BRA-DF-1960-2023,,medium,,
 BRA-ESPIRITOSANTO,whep-lab-latam,1900,2023,BRA-ES-1889-2025,,high,,
 BRA-GOIAS,whep-lab-latam,1900,2023,BRA-GOIAS-1889-2025,,high,,
@@ -282,6 +291,7 @@ BRA-PIAUI,whep-lab-latam,1900,2023,BRA-PIAUI-1889-2025,,high,,
 BRA-RIODEJANEIRO,whep-lab-latam,1900,2023,BRA-RIODEJANEIRO-1889-2025,,high,,
 BRA-RIOGRANDEDONORTE,whep-lab-latam,1900,2023,BRA-RN-1889-2025,,high,,
 BRA-RIOGRANDEDOSUL,whep-lab-latam,1900,2023,BRA-RIOGRANDEDOSUL-1889-2025,,high,,
+BRA-RONDONIA,whep-lab-latam,1900,1942,BRA-RONDONIA-1943-2025,,high,,back_cast
 BRA-RONDONIA,whep-lab-latam,1943,2023,BRA-RONDONIA-1943-2025,,medium,,
 BRA-RORAIMA,whep-lab-latam,1900,1987,BRA-RORAIMA-1988-2025,,high,,back_cast
 BRA-RORAIMA,whep-lab-latam,1988,2023,BRA-RORAIMA-1988-2025,,medium,,
@@ -444,7 +454,9 @@ china taiwan,,1945,2025,TWN-1945-2025,,high,,
 "China, Manchuria Province of",mitchell,1945,1949,MAN-1945-1950,manchuria,high,,
 "china, taiwan province of",,1895,1944,TWN-1895-1945,Taiwan,high,,
 "China, Taiwan Province of",faostat,1961,2024,TWN-1945-2025,Taiwan,high,252667,
+CHL-AI,whep-lab-latam,1900,1975,CHL-AI-1976-2025,,high,,back_cast
 CHL-AI,whep-lab-latam,1976,2023,CHL-AI-1976-2025,,high,,
+CHL-AN,whep-lab-latam,1900,1975,CHL-AN-1976-2025,,high,,back_cast
 CHL-AN,whep-lab-latam,1976,2023,CHL-AN-1976-2025,,high,,
 CHL-AP,whep-lab-latam,1900,2006,CHL-AP-2007-2025,,high,,back_cast
 CHL-AP,whep-lab-latam,2007,2023,CHL-AP-2007-2025,,medium,,
@@ -452,18 +464,27 @@ CHL-AR,whep-lab-latam,1900,1975,CHL-AR-1976-2025,,high,,back_cast
 CHL-AR,whep-lab-latam,1976,2023,CHL-AR-1976-2025,,medium,,
 CHL-AT,whep-lab-latam,1900,1975,CHL-AT-1976-2025,,high,,back_cast
 CHL-AT,whep-lab-latam,1976,2023,CHL-AT-1976-2025,,high,,
+CHL-BI,whep-lab-latam,1900,1975,CHL-BI-1976-2025,,high,,back_cast
 CHL-BI,whep-lab-latam,1976,2023,CHL-BI-1976-2025,,medium,,
+CHL-CO,whep-lab-latam,1900,1975,CHL-CO-1976-2025,,high,,back_cast
 CHL-CO,whep-lab-latam,1976,2023,CHL-CO-1976-2025,,high,,
 CHL-LI,whep-lab-latam,1900,1975,CHL-LI-1976-2025,,high,,back_cast
 CHL-LI,whep-lab-latam,1976,2023,CHL-LI-1976-2025,,high,,
 CHL-LL,whep-lab-latam,1900,1975,CHL-LL-1976-2025,,high,,back_cast
 CHL-LL,whep-lab-latam,1976,2023,CHL-LL-1976-2025,,medium,,
+CHL-LR,whep-lab-latam,1900,2006,CHL-LR-2007-2025,,high,,back_cast
 CHL-LR,whep-lab-latam,2007,2023,CHL-LR-2007-2025,,medium,,
+CHL-MA,whep-lab-latam,1900,1975,CHL-MA-1976-2025,,high,,back_cast
 CHL-MA,whep-lab-latam,1976,2023,CHL-MA-1976-2025,,medium,,
+CHL-ML,whep-lab-latam,1900,1975,CHL-ML-1976-2025,,high,,back_cast
 CHL-ML,whep-lab-latam,1976,2023,CHL-ML-1976-2025,,high,,
+CHL-NB,whep-lab-latam,1900,2017,CHL-NB-2018-2025,,high,,back_cast
 CHL-NB,whep-lab-latam,2018,2023,CHL-NB-2018-2025,,medium,,
+CHL-RM,whep-lab-latam,1900,1975,CHL-RM-1976-2025,,high,,back_cast
 CHL-RM,whep-lab-latam,1976,2023,CHL-RM-1976-2025,,medium,,
+CHL-TA,whep-lab-latam,1900,1975,CHL-TA-1976-2025,,high,,back_cast
 CHL-TA,whep-lab-latam,1976,2023,CHL-TA-1976-2025,,medium,,
+CHL-VS,whep-lab-latam,1900,1975,CHL-VS-1976-2025,,high,,back_cast
 CHL-VS,whep-lab-latam,1976,2023,CHL-VS-1976-2025,,medium,,
 Chocó,juan-subnational,1915,1946,COL-CHO-1947-2025,,high,,back_cast
 Chocó,juan-subnational,1947,2023,COL-CHO-1947-2025,,medium,,
@@ -517,10 +538,13 @@ COL-RISARALDA,whep-lab-latam,1966,2023,COL-RISARALDA-1966-2025,,medium,,
 COL-SANANDRESYPROVIDEN,whep-lab-latam,1915,1990,COL-SANDRES-1991-2025,,high,,back_cast
 COL-SANANDRESYPROVIDEN,whep-lab-latam,1991,2023,COL-SANDRES-1991-2025,,medium,,
 COL-SANTANDER,whep-lab-latam,1915,2023,COL-SANTANDER-1886-2025,,high,,
+COL-SUCRE,whep-lab-latam,1915,1965,COL-SUCRE-1966-2025,,high,,back_cast
 COL-SUCRE,whep-lab-latam,1966,2023,COL-SUCRE-1966-2025,,medium,,
 COL-TOLIMA,whep-lab-latam,1915,2023,COL-TOLIMA-1886-2025,,medium,,
 COL-VALLEDELCAUCA,whep-lab-latam,1915,2023,COL-VALLEDELCAUCA-1910-2025,,medium,,
+COL-VAUPES,whep-lab-latam,1915,1990,COL-VAU-1991-2025,,high,,back_cast
 COL-VAUPES,whep-lab-latam,1991,2023,COL-VAU-1991-2025,,medium,,
+COL-VICHADA,whep-lab-latam,1915,1990,COL-VICHADA-1991-2025,,high,,back_cast
 COL-VICHADA,whep-lab-latam,1991,2023,COL-VICHADA-1991-2025,,medium,,
 Colima,juan-subnational,1900,2023,MEX-COL-1857-2025,,medium,,
 Colombia,faostat,1961,2024,COL-1922-2025,Colombia,high,235230,
@@ -539,10 +563,13 @@ congo,iia,1913,1945,AEF-1910-1960,French Equatorial Africa,high,241,
 Congo,lassaletta-grassland-share,1961,2009,COG-1960-2025,Congo,high,,
 CONNECTICUT,juan-subnational,1866,2024,USA-CT-1800-2025,,high,,
 Cook Islands,faostat,1961,2024,COK-1800-2025,Cook Islands,high,42137,
+Coquimbo,juan-subnational,1900,1975,CHL-CO-1976-2025,,high,,back_cast
 Coquimbo,juan-subnational,1976,2023,CHL-CO-1976-2025,,high,,
 Corrientes,juan-subnational,1900,2023,ARG-CORRIENTES-1853-2025,,high,,
 COS,mueller-synthetic-n,1800,2025,CRI-1800-2025,Costa Rica,high,,
+Costa Rica,faostat,1900,1960,CRI-1800-2025,,high,,
 Costa Rica,faostat,1961,2024,CRI-1800-2025,Costa Rica,high,216304,
+Costa Rica,lassaletta-grassland-share,1900,1960,CRI-1800-2025,,high,,
 Costa Rica,lassaletta-grassland-share,1961,2009,CRI-1800-2025,Costa Rica,high,,
 Cote d'Ivoire,lassaletta-grassland-share,1961,2009,CIV-1960-2025,Cote d'Ivoire,high,,
 Croatia,faostat,1992,2024,HRV-1992-2025,Croatia,high,122938,
@@ -575,6 +602,8 @@ Democratic Republic of the Congo,lassaletta-grassland-share,1961,2009,COD-1960-2
 Denmark,faostat,1961,2024,DNK-1920-2025,Denmark,high,255081,
 Denmark,lassaletta-grassland-share,1961,2009,DNK-1920-2025,Denmark,high,,
 denmark the faeroes,fao1952,1800,2025,FRO-1800-2025,Faroe Islands,high,,
+Distrito Federal,juan-subnational,1900,1958,BRA-DFRJ-1900-1959,,high,,
+Distrito Federal,juan-subnational,1959,1959,BRA-DF-1960-2023,,high,,back_cast
 Distrito Federal,juan-subnational,1960,2022,BRA-DF-1960-2023,,medium,,
 Djibouti,faostat,1961,1976,FRS-1884-1977,French Somaliland,high,140634,
 Djibouti,faostat,1977,2024,FRS-1977-2025,Djibouti (formerly French Somaliland),high,140634,
@@ -591,7 +620,11 @@ Durango,juan-subnational,1900,2023,MEX-DGO-1824-2025,,medium,,
 Dutch Caribbean,fao1952,1816,1960,ANT-1816-1961,Dutch Caribbean (colonial),high,,
 Dutch Guiana,mitchell,1886,1954,SUR-1886-1954,Dutch Guiana,high,,
 Eastern,fao1952,1949,1951,F77-1949-1990,East Germany,high,,
+Ecuador,faostat,1900,1941,ECU-1800-1942,,high,,
+Ecuador,faostat,1942,1960,ECU-1942-2025,,high,,
 Ecuador,faostat,1961,2024,ECU-1942-2025,Ecuador,high,221065,
+Ecuador,lassaletta-grassland-share,1900,1941,ECU-1800-1942,,high,,
+Ecuador,lassaletta-grassland-share,1942,1960,ECU-1942-2025,,high,,
 Ecuador,lassaletta-grassland-share,1961,2009,ECU-1942-2025,Ecuador,high,,
 Egypt,faostat,1961,1966,EGY-1925-1967,Egypt (1925-1967),high,243914,
 Egypt,faostat,1967,1978,EGY-1967-1979,Egypt (1967-1979),high,243914,
@@ -607,7 +640,9 @@ egypt,mitchell,1885,1899,EGY-1885-1899,Egypt (1885-1899),high,65,
 Egypt,trade-sources,1879,1879,EGY-1820-1885,Egypt with Sudan (1820-1885),high,,
 Ehime,juan-subnational,1883,2022,JPN-EHIME-1871-2025,,high,,
 EI Salvador,,,,SLV-1821-2025,El Salvador,high,,
+El Salvador,faostat,1900,1960,SLV-1821-2025,,high,,
 El Salvador,faostat,1961,2024,SLV-1821-2025,El Salvador,high,207960,
+El Salvador,lassaletta-grassland-share,1900,1960,SLV-1821-2025,,high,,
 El Salvador,lassaletta-grassland-share,1961,2009,SLV-1821-2025,El Salvador,high,,
 ELS,mueller-synthetic-n,1821,2025,SLV-1821-2025,El Salvador,high,,
 Entre Ríos,juan-subnational,1900,2023,ARG-ER-1853-2025,,high,,
@@ -811,17 +846,29 @@ ES620,eurostat-nuts2013,1865,2021,ESP-MU-1833-2025,,high,,
 ES620,eurostat-nuts2016,1865,2021,ESP-MU-1833-2025,,high,,
 ES620,jrc-nuts2016,1865,2021,ESP-MU-1833-2025,,high,,
 ES620,juan-subnational,1865,2021,ESP-MU-1833-2025,,high,,
+ES701,jrc-nuts2016,1880,1926,ESP-LP-1927-2025,,high,,back_cast
 ES701,jrc-nuts2016,1927,2021,ESP-LP-1927-2025,,medium,,
+ES701,juan-subnational,1880,1926,ESP-LP-1927-2025,,high,,back_cast
 ES701,juan-subnational,1927,2021,ESP-LP-1927-2025,,medium,,
+ES702,jrc-nuts2016,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ES702,jrc-nuts2016,1927,2021,ESP-SCT-1927-2025,,high,,
+ES702,juan-subnational,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ES702,juan-subnational,1927,2021,ESP-SCT-1927-2025,,high,,
 ES705,eurostat-nuts2013,1865,2020,ESP-GC-1833-2025,,medium,,
 ES705,eurostat-nuts2016,1865,2020,ESP-GC-1833-2025,,medium,,
 ES705,jrc-nuts2016,1865,2020,ESP-GC-1833-2025,,medium,,
 ES705,juan-subnational,1865,2020,ESP-GC-1833-2025,,medium,,
+ES709,eurostat-nuts2013,1865,1865,ESP-SCT-1927-2025,,high,,back_cast
+ES709,eurostat-nuts2013,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ES709,eurostat-nuts2013,1927,2020,ESP-SCT-1927-2025,,medium,,
+ES709,eurostat-nuts2016,1865,1865,ESP-SCT-1927-2025,,high,,back_cast
+ES709,eurostat-nuts2016,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ES709,eurostat-nuts2016,1927,2020,ESP-SCT-1927-2025,,medium,,
+ES709,jrc-nuts2016,1865,1865,ESP-SCT-1927-2025,,high,,back_cast
+ES709,jrc-nuts2016,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ES709,jrc-nuts2016,1927,2020,ESP-SCT-1927-2025,,medium,,
+ES709,juan-subnational,1865,1865,ESP-SCT-1927-2025,,high,,back_cast
+ES709,juan-subnational,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ES709,juan-subnational,1927,2020,ESP-SCT-1927-2025,,medium,,
 ESP-ES111,whep-lab-spain-provinces,1865,2021,ESP-CO-1833-2025,,high,,
 ESP-ES112,whep-lab-spain-provinces,1865,2021,ESP-LU-1833-2025,,high,,
@@ -872,9 +919,13 @@ ESP-ES616,whep-lab-spain-provinces,1865,2021,ESP-J-1833-2025,,high,,
 ESP-ES617,whep-lab-spain-provinces,1865,2021,ESP-MA-1833-2025,,high,,
 ESP-ES618,whep-lab-spain-provinces,1865,2021,ESP-SE-1833-2025,,high,,
 ESP-ES620,whep-lab-spain-provinces,1865,2021,ESP-MU-1833-2025,,high,,
+ESP-ES701,whep-lab-spain-provinces,1880,1926,ESP-LP-1927-2025,,high,,back_cast
 ESP-ES701,whep-lab-spain-provinces,1927,2021,ESP-LP-1927-2025,,medium,,
+ESP-ES702,whep-lab-spain-provinces,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ESP-ES702,whep-lab-spain-provinces,1927,2021,ESP-SCT-1927-2025,,high,,
 ESP-ES705,whep-lab-spain-provinces,1865,2020,ESP-GC-1833-2025,,medium,,
+ESP-ES709,whep-lab-spain-provinces,1865,1865,ESP-SCT-1927-2025,,high,,back_cast
+ESP-ES709,whep-lab-spain-provinces,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ESP-ES709,whep-lab-spain-provinces,1927,2020,ESP-SCT-1927-2025,,medium,,
 Espírito Santo,juan-subnational,1900,2023,BRA-ES-1889-2025,,high,,
 Estado de México,juan-subnational,1900,2023,MEX-MEX-1824-2025,,medium,,
@@ -947,6 +998,7 @@ FRA-FRF21,whep-lab-france-livestock,1862,2023,FRA-08-1800-2025,,high,,
 FRA-FRF22,whep-lab-france-livestock,1862,2023,FRA-AUB-1800-2025,,high,,
 FRA-FRF23,whep-lab-france-livestock,1862,2023,FRA-MRN-1800-2025,,high,,
 FRA-FRF24,whep-lab-france-livestock,1862,2023,FRA-52-1800-2025,,high,,
+FRA-FRF31,whep-lab-france-livestock,1862,1862,FRA-54-1871-2025,,high,,back_cast
 FRA-FRF31,whep-lab-france-livestock,1871,2023,FRA-54-1871-2025,,high,,
 FRA-FRF32,whep-lab-france-livestock,1862,2023,FRA-55-1800-2025,,high,,
 FRA-FRF33,whep-lab-france-livestock,1862,1918,FRA-57-1919-2025,,high,,back_cast
@@ -1125,8 +1177,11 @@ FRF23,juan-subnational,1862,2023,FRA-MRN-1800-2025,,high,,
 FRF24,eurostat-nuts2016,1862,2023,FRA-52-1800-2025,,high,,
 FRF24,jrc-nuts2016,1862,2023,FRA-52-1800-2025,,high,,
 FRF24,juan-subnational,1862,2023,FRA-52-1800-2025,,high,,
+FRF31,eurostat-nuts2016,1862,1862,FRA-54-1871-2025,,high,,back_cast
 FRF31,eurostat-nuts2016,1871,2023,FRA-54-1871-2025,,high,,
+FRF31,jrc-nuts2016,1862,1862,FRA-54-1871-2025,,high,,back_cast
 FRF31,jrc-nuts2016,1871,2023,FRA-54-1871-2025,,high,,
+FRF31,juan-subnational,1862,1862,FRA-54-1871-2025,,high,,back_cast
 FRF31,juan-subnational,1871,2023,FRA-54-1871-2025,,high,,
 FRF32,eurostat-nuts2016,1862,2023,FRA-55-1800-2025,,high,,
 FRF32,jrc-nuts2016,1862,2023,FRA-55-1800-2025,,high,,
@@ -1386,7 +1441,9 @@ Hidalgo,juan-subnational,1900,2023,MEX-HIDALGO-1869-2025,,medium,,
 Hiroshima,juan-subnational,1883,2022,JPN-HIROSHIMA-1871-2025,,high,,
 Hokkaido,juan-subnational,1883,2022,JPN-HOKKAIDO-1871-2025,,high,,
 HON,mueller-synthetic-n,1800,2025,HND-1800-2025,Honduras,high,,
+Honduras,faostat,1900,1960,HND-1800-2025,,high,,
 Honduras,faostat,1961,2024,HND-1800-2025,Honduras,high,213241,
+Honduras,lassaletta-grassland-share,1900,1960,HND-1800-2025,,high,,
 Honduras,lassaletta-grassland-share,1961,2009,HND-1800-2025,Honduras,high,,
 Huila,juan-subnational,1915,2023,COL-HUILA-1905-2025,,medium,,
 hungary,,1920,1920,HUN-1920-1938,Hungary (1920-1938),high,,
@@ -1396,6 +1453,7 @@ Hyogo,juan-subnational,1883,2022,JPN-HYOGO-1871-2025,,high,,
 Ibaraki,juan-subnational,1883,2022,JPN-IBARAKI-1871-2025,,high,,
 Iceland,faostat,1961,2024,ISL-1800-2025,Iceland,high,170791,
 Iceland,lassaletta-grassland-share,1961,2009,ISL-1800-2025,Iceland,high,,
+IDAHO,juan-subnational,1879,1889,USA-ID-1890-2025,,high,,back_cast
 IDAHO,juan-subnational,1890,2024,USA-ID-1890-2025,,high,,
 ILLINOIS,juan-subnational,1866,2024,USA-IL-1818-2025,,high,,
 India,faostat,1961,2024,IND-1949-2025,India,high,254312,
@@ -1462,9 +1520,13 @@ ITC1,jrc-nuts2016,1880,1969,ITA-PIE-1970-2025,,high,,back_cast
 ITC1,jrc-nuts2016,1970,2023,ITA-PIE-1970-2025,,high,,
 ITC1,juan-subnational,1880,1969,ITA-PIE-1970-2025,,high,,back_cast
 ITC1,juan-subnational,1970,2023,ITA-PIE-1970-2025,,high,,
+ITC3,eurostat-nuts2013,1861,1969,ITA-LIG-1970-2025,,high,,back_cast
 ITC3,eurostat-nuts2013,1970,2023,ITA-LIG-1970-2025,,high,,
+ITC3,eurostat-nuts2016,1861,1969,ITA-LIG-1970-2025,,high,,back_cast
 ITC3,eurostat-nuts2016,1970,2023,ITA-LIG-1970-2025,,high,,
+ITC3,jrc-nuts2016,1861,1969,ITA-LIG-1970-2025,,high,,back_cast
 ITC3,jrc-nuts2016,1970,2023,ITA-LIG-1970-2025,,high,,
+ITC3,juan-subnational,1861,1969,ITA-LIG-1970-2025,,high,,back_cast
 ITC3,juan-subnational,1970,2023,ITA-LIG-1970-2025,,high,,
 ITC4,eurostat-nuts2013,1861,2023,ITA-LOM-1861-2025,,medium,,
 ITC4,eurostat-nuts2016,1861,2023,ITA-LOM-1861-2025,,medium,,
@@ -1478,9 +1540,13 @@ ITF1,jrc-nuts2016,1861,1969,ITA-ABR-1970-2025,,high,,back_cast
 ITF1,jrc-nuts2016,1970,2023,ITA-ABR-1970-2025,,medium,,
 ITF1,juan-subnational,1861,1969,ITA-ABR-1970-2025,,high,,back_cast
 ITF1,juan-subnational,1970,2023,ITA-ABR-1970-2025,,medium,,
+ITF3,eurostat-nuts2013,1861,1969,ITA-CAM-1970-2025,,high,,back_cast
 ITF3,eurostat-nuts2013,1970,2023,ITA-CAM-1970-2025,,medium,,
+ITF3,eurostat-nuts2016,1861,1969,ITA-CAM-1970-2025,,high,,back_cast
 ITF3,eurostat-nuts2016,1970,2023,ITA-CAM-1970-2025,,medium,,
+ITF3,jrc-nuts2016,1861,1969,ITA-CAM-1970-2025,,high,,back_cast
 ITF3,jrc-nuts2016,1970,2023,ITA-CAM-1970-2025,,medium,,
+ITF3,juan-subnational,1861,1969,ITA-CAM-1970-2025,,high,,back_cast
 ITF3,juan-subnational,1970,2023,ITA-CAM-1970-2025,,medium,,
 ITF4,eurostat-nuts2013,1861,2023,ITA-PUG-1861-2025,,high,,
 ITF4,eurostat-nuts2016,1861,2023,ITA-PUG-1861-2025,,high,,
@@ -1519,12 +1585,16 @@ ITH3,eurostat-nuts2016,1861,1865,ITA-VEN-1866-2025,,high,,back_cast
 ITH3,eurostat-nuts2016,1866,2023,ITA-VEN-1866-2025,,high,,
 ITH3,jrc-nuts2016,1861,1865,ITA-VEN-1866-2025,,high,,back_cast
 ITH3,jrc-nuts2016,1866,2023,ITA-VEN-1866-2025,,high,,
+ITH4,eurostat-nuts2013,1880,1918,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,eurostat-nuts2013,1919,1969,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,eurostat-nuts2013,1970,2023,ITA-ITH4-1970-2025,,high,,
+ITH4,eurostat-nuts2016,1880,1918,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,eurostat-nuts2016,1919,1969,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,eurostat-nuts2016,1970,2023,ITA-ITH4-1970-2025,,high,,
+ITH4,jrc-nuts2016,1880,1918,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,jrc-nuts2016,1919,1969,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,jrc-nuts2016,1970,2023,ITA-ITH4-1970-2025,,high,,
+ITH4,juan-subnational,1880,1918,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,juan-subnational,1919,1969,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,juan-subnational,1970,2023,ITA-ITH4-1970-2025,,high,,
 ITH5,eurostat-nuts2013,1861,1969,ITA-EMR-1970-2025,,high,,back_cast
@@ -1644,6 +1714,7 @@ Kyoto,juan-subnational,1883,2022,JPN-KYOTO-1871-2025,,high,,
 Kyrgyzstan,faostat,1992,2024,KGZ-1991-2025,Kyrgyzstan,high,103359,
 La Araucanía,juan-subnational,1900,1975,CHL-AR-1976-2025,,high,,back_cast
 La Araucanía,juan-subnational,1976,2023,CHL-AR-1976-2025,,medium,,
+La Pampa,juan-subnational,1900,1950,ARG-LAPAMPA-1900-1951,,high,,
 La Pampa,juan-subnational,1951,2023,ARG-LAPAMPA-1951-2025,,medium,,
 La Rioja,juan-subnational,1900,2023,ARG-LARIOJA-1853-2025,,high,,
 Lao,,1954,2025,LAO-1954-2025,Lao People's Democratic Republic,high,0,
@@ -1681,7 +1752,9 @@ Libya Tripolitania,mitchell,1948,1950,TRP-1943-1951,British Military Administrat
 Libya: Cyrenaica,mitchell,1949,1950,CYR-1949-1951,Emirate of Cyrenaica,high,5,
 Liechtenstein,faostat,1850,2025,LIE-1800-2025,Liechtenstein,high,0,
 Lithuania,faostat,1992,2024,LTU-1991-2025,Lithuania,high,123044,
+Los Rios,juan-subnational,1900,2006,CHL-LR-2007-2025,,high,,back_cast
 Los Rios,juan-subnational,2007,2023,CHL-LR-2007-2025,,medium,,
+Los Rios,whep-lab-latam,1900,2006,CHL-LR-2007-2025,,high,,back_cast
 Los Rios,whep-lab-latam,2007,2023,CHL-LR-2007-2025,,high,,
 LOUISIANA,juan-subnational,1866,2024,USA-LA-1812-2025,,medium,,
 ltaly,fao1952,1934,1938,ITA-1919-2025,Italy,high,,
@@ -1689,6 +1762,7 @@ ltaly,fao1952,1949,1951,ITA-1919-2025,Italy,high,3,
 Luxembourg,faostat,2000,2024,LUX-1839-2025,Luxembourg,high,94451,
 Madagascar,faostat,1961,2024,MDG-1882-2025,Madagascar,high,207040,
 Madagascar,lassaletta-grassland-share,1961,2009,MDG-1882-2025,Madagascar,high,,
+Magallanes,juan-subnational,1900,1975,CHL-MA-1976-2025,,high,,back_cast
 Magallanes,juan-subnational,1976,2023,CHL-MA-1976-2025,,medium,,
 Magdalena,juan-subnational,1915,2023,COL-MAGDALENA-1915-2025,,high,,
 MAINE,juan-subnational,1866,2024,USA-ME-1820-2025,,high,,
@@ -1728,6 +1802,7 @@ MASSACHUSETTS,juan-subnational,1866,2024,USA-MA-1800-2025,,medium,,
 Mato Grosso,juan-subnational,1900,2023,BRA-MATOGROSSO-1889-2025,,high,,
 Mato Grosso do Sul,juan-subnational,1900,1976,BRA-MS-1977-2025,,high,,back_cast
 Mato Grosso do Sul,juan-subnational,1977,2023,BRA-MS-1977-2025,,medium,,
+Maule,juan-subnational,1900,1975,CHL-ML-1976-2025,,high,,back_cast
 Maule,juan-subnational,1976,2023,CHL-ML-1976-2025,,high,,
 Mauritania,faostat,1961,1974,MRT-1960-1975,Mauritania (1960-1975),high,148763,
 Mauritania,faostat,1975,1978,MRT-1975-1979,Mauritania (1975-1979),high,148763,
@@ -1738,10 +1813,12 @@ Mauritania,lassaletta-grassland-share,1979,2009,MRT-1979-2025,Mauritania,high,,
 Mauritius,faostat,1961,2024,MUS-1800-2025,Mauritius,high,205404,
 Mauritius,lassaletta-grassland-share,1961,2009,MUS-1800-2025,Mauritius,high,,
 Mendoza,juan-subnational,1900,2023,ARG-MENDOZA-1853-2025,,high,,
+Metropolitana,juan-subnational,1900,1975,CHL-RM-1976-2025,,high,,back_cast
 Metropolitana,juan-subnational,1976,2023,CHL-RM-1976-2025,,medium,,
 MEX-AGUASCALIENTES,whep-lab-latam,1900,2023,MEX-AGS-1857-2025,,medium,,
 MEX-BAJACALIFORNIA,whep-lab-latam,1900,1951,MEX-BCN-1952-2025,,high,,back_cast
 MEX-BAJACALIFORNIA,whep-lab-latam,1952,2023,MEX-BCN-1952-2025,,high,,
+MEX-BAJACALIFORNIASUR,whep-lab-latam,1900,1930,MEX-BCS-1931-2025,,high,,back_cast
 MEX-BAJACALIFORNIASUR,whep-lab-latam,1931,2023,MEX-BCS-1931-2025,,medium,,
 MEX-CAMPECHE,whep-lab-latam,1900,2023,MEX-CAM-1863-2025,,medium,,
 MEX-CHIAPAS,whep-lab-latam,1900,2023,MEX-CHIAPAS-1824-2025,,medium,,
@@ -1757,11 +1834,13 @@ MEX-JALISCO,whep-lab-latam,1900,2023,MEX-JALISCO-1824-2025,,high,,
 MEX-MEX,whep-lab-latam,1900,2023,MEX-MEX-1824-2025,,medium,,
 MEX-MICHOACAN,whep-lab-latam,1900,2023,MEX-MICHOACAN-1824-2025,,high,,
 MEX-MORELOS,whep-lab-latam,1900,2023,MEX-MOR-1869-2025,,medium,,
+MEX-NAYARIT,whep-lab-latam,1900,1916,MEX-NAYARIT-1917-2025,,high,,back_cast
 MEX-NAYARIT,whep-lab-latam,1917,2023,MEX-NAYARIT-1917-2025,,medium,,
 MEX-NUEVOLEON,whep-lab-latam,1900,2023,MEX-NL-1824-2025,,medium,,
 MEX-OAXACA,whep-lab-latam,1900,2023,MEX-OAXACA-1824-2025,,medium,,
 MEX-PUEBLA,whep-lab-latam,1900,2023,MEX-PUE-1824-2025,,high,,
 MEX-QUERETARO,whep-lab-latam,1900,2023,MEX-QUERETARO-1824-2025,,medium,,
+MEX-QUINTANAROO,whep-lab-latam,1900,1901,MEX-QROO-1902-2025,,high,,back_cast
 MEX-QUINTANAROO,whep-lab-latam,1902,2023,MEX-QROO-1902-2025,,medium,,
 MEX-SANLUISPOTOSI,whep-lab-latam,1900,2023,MEX-SANLUISPOTOSI-1824-2025,,medium,,
 MEX-SINALOA,whep-lab-latam,1900,2023,MEX-SIN-1830-2025,,medium,,
@@ -1819,6 +1898,7 @@ Nara,juan-subnational,1883,2022,JPN-NARA-1871-2025,,high,,
 Nariño,juan-subnational,1915,2023,COL-NARINO-1904-2025,,medium,,
 natal,,1910,1957,ZAF-1910-2025,Natal province (South Africa),medium,,
 Nauru,faostat,1961,2024,NRU-1888-2025,Nauru,high,21491,
+Nayarit,juan-subnational,1900,1916,MEX-NAYARIT-1917-2025,,high,,back_cast
 Nayarit,juan-subnational,1917,2023,MEX-NAYARIT-1917-2025,,medium,,
 NEBRASKA,juan-subnational,1866,1866,USA-NE-1867-2025,,high,,back_cast
 NEBRASKA,juan-subnational,1867,2024,USA-NE-1867-2025,,high,,
@@ -1858,7 +1938,9 @@ New South Wales,juan-subnational,1901,2022,AUS-NSW-1901-2025,,medium,,
 NEW YORK,juan-subnational,1866,2024,USA-NY-1800-2025,,high,,
 New Zealand,faostat,1961,2024,NZL-1840-2025,New Zealand,high,240961,
 New Zealand,lassaletta-grassland-share,1961,2009,NZL-1840-2025,New Zealand,high,,
+Nicaragua,faostat,1900,1960,NIC-1800-2025,,high,,
 Nicaragua,faostat,1961,2023,NIC-1800-2025,Nicaragua,high,208187,
+Nicaragua,lassaletta-grassland-share,1900,1960,NIC-1800-2025,,high,,
 Nicaragua,lassaletta-grassland-share,1961,2009,NIC-1800-2025,Nicaragua,high,,
 niger,,1911,1921,NER-1911-1922,Niger (Military Territory),high,,
 niger,,1922,1922,NER-1922-1947,Niger (Military Territory),high,,
@@ -1882,7 +1964,9 @@ Northern Territory,juan-subnational,1901,1910,AUS-SA-1901-2025,,high,,
 Northern Territory,juan-subnational,1911,2022,AUS-NT-1911-2025,,medium,,
 Norway,faostat,1961,2024,NOR-1800-2025,Norway,high,231582,
 Norway,lassaletta-grassland-share,1961,2009,NOR-1800-2025,Norway,high,,
+Nuble,juan-subnational,1900,2017,CHL-NB-2018-2025,,high,,back_cast
 Nuble,juan-subnational,2018,2023,CHL-NB-2018-2025,,medium,,
+Nuble,whep-lab-latam,1900,2017,CHL-NB-2018-2025,,high,,back_cast
 Nuble,whep-lab-latam,2018,2023,CHL-NB-2018-2025,,high,,
 Nuevo León,juan-subnational,1900,2023,MEX-NL-1824-2025,,medium,,
 O'Higgins,juan-subnational,1900,1975,CHL-LI-1976-2025,,high,,back_cast
@@ -1892,6 +1976,7 @@ Occupied Palestinian Territory,lassaletta-grassland-share,1961,2009,PSE-1948-202
 OHIO,juan-subnational,1866,2024,USA-OH-1803-2025,,high,,
 Oita,juan-subnational,1883,2022,JPN-OITA-1871-2025,,high,,
 Okayama,juan-subnational,1883,2022,JPN-OKAYAMA-1871-2025,,high,,
+OKLAHOMA,juan-subnational,1894,1906,USA-OK-1907-2025,,high,,back_cast
 OKLAHOMA,juan-subnational,1907,2024,USA-OK-1907-2025,,high,,
 Oman,faostat,1961,2024,OMN-1856-2025,Sultanate of Oman,high,144474,
 Oman,lassaletta-grassland-share,1961,2009,OMN-1856-2025,Sultanate of Oman,high,,
@@ -1920,8 +2005,12 @@ palau,iia,1915,1919,JPN-1895-1945,Palau (Japanese military occupation),high,5,
 palau,iia,1920,1932,CAR-1920-1945,Palau (Caroline Islands Japanese Mandate),high,4,
 Palestine,faostat,1961,2024,PSE-1948-2025,Palestine (West Bank and Gaza),high,32534,
 Palestine/Jordan,federico_tena,1920,1938,PAL-1920-1948,Palestine (1920-1948),medium,38,
+PAN-NATIONAL,juan-subnational,1903,1960,PAN-1903-1979,,high,,
+Panama,faostat,1903,1960,PAN-1903-1979,,high,,
 Panama,faostat,1961,1978,PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",high,196061,
 Panama,faostat,1979,2024,PAN-1979-2025,Panama (post-Canal Zone),high,196061,
+Panama,juan-subnational,1903,1960,PAN-1903-1979,,high,,
+Panama,lassaletta-grassland-share,1903,1960,PAN-1903-1979,,high,,
 Panama,lassaletta-grassland-share,1961,1978,PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",high,,
 Panama,lassaletta-grassland-share,1979,2009,PAN-1979-2025,Panama (post-Canal Zone),high,,
 panama canal zone,fao1952,1903,1979,CZN-1903-1979,Panama Canal Zone,high,5,
@@ -1933,7 +2022,13 @@ Papua New Guinea,faostat,1975,2024,PNG-1975-2025,Papua New Guinea,high,87626,
 papua new guinea,iia,1920,1940,TPAP-1906-1949,"Territory of Papua (IIA series, scope undetermined)",low,30,
 papua new guinea,mitchell,1922,1940,PAPNG-1920-1949,Papua and New Guinea (combined reporting unit),high,0,
 papua new guinea,mitchell,1949,1974,PNG-1949-1975,Territory of Papua and New Guinea,high,3,
+Paraguay,faostat,1900,1931,PRY-1870-1932,,high,,
+Paraguay,faostat,1932,1937,PRY-1932-1938,,high,,
+Paraguay,faostat,1938,1960,PRY-1938-2025,,high,,
 Paraguay,faostat,1961,2024,PRY-1938-2025,Paraguay,high,194468,
+Paraguay,lassaletta-grassland-share,1900,1931,PRY-1870-1932,,high,,
+Paraguay,lassaletta-grassland-share,1932,1937,PRY-1932-1938,,high,,
+Paraguay,lassaletta-grassland-share,1938,1960,PRY-1938-2025,,high,,
 Paraguay,lassaletta-grassland-share,1961,2009,PRY-1938-2025,Paraguay,high,,
 Paraná,juan-subnational,1900,2023,BRA-PARANA-1889-2025,,high,,
 Paraíba,juan-subnational,1900,2023,BRA-PARAIBA-1889-2025,,high,,
@@ -1941,7 +2036,15 @@ Pará,juan-subnational,1900,2023,BRA-PARA-1889-2025,,high,,
 PENNSYLVANIA,juan-subnational,1866,2024,USA-PA-1800-2025,,high,,
 Pernambuco,juan-subnational,1900,2023,BRA-PERNAMBUCO-1889-2025,,high,,
 Persia (Iran),federico_tena,1850,1938,IRN-1828-2025,Iran,high,179,
+Peru,faostat,1900,1908,PER-1884-1909,,high,,
+Peru,faostat,1909,1921,PER-1909-1922,,high,,
+Peru,faostat,1922,1941,PER-1922-1942,,high,,
+Peru,faostat,1942,1960,PER-1942-2025,,high,,
 Peru,faostat,1961,2024,PER-1942-2025,Peru,high,239266,
+Peru,lassaletta-grassland-share,1900,1908,PER-1884-1909,,high,,
+Peru,lassaletta-grassland-share,1909,1921,PER-1909-1922,,high,,
+Peru,lassaletta-grassland-share,1922,1941,PER-1922-1942,,high,,
+Peru,lassaletta-grassland-share,1942,1960,PER-1942-2025,,high,,
 Peru,lassaletta-grassland-share,1961,2009,PER-1942-2025,Peru,high,,
 Philippines,faostat,1961,2024,PHL-1800-2025,Philippines,high,234546,
 Philippines,lassaletta-grassland-share,1961,2009,PHL-1800-2025,Philippines,high,,
@@ -2022,6 +2125,7 @@ Queensland,whep-lab-australia,1901,2022,AUS-QLD-1901-2025,,high,,
 Querétaro,juan-subnational,1900,2023,MEX-QUERETARO-1824-2025,,medium,,
 Quindío,juan-subnational,1915,1965,COL-QUINDIO-1966-2025,,high,,back_cast
 Quindío,juan-subnational,1966,2023,COL-QUINDIO-1966-2025,,medium,,
+Quintana Roo,juan-subnational,1900,1901,MEX-QROO-1902-2025,,high,,back_cast
 Quintana Roo,juan-subnational,1902,2023,MEX-QROO-1902-2025,,medium,,
 Republic of Korea,faostat,1961,2024,KOR-1948-2025,South Korea,high,247177,
 Republic of Korea,lassaletta-grassland-share,1961,2009,KOR-1948-2025,South Korea,high,,
@@ -2042,6 +2146,7 @@ romania,,1920,1939,ROU-1920-1940,Romania,high,,
 romania,,1940,1946,ROU-1940-1947,Romania (1940-1947),high,,
 romania,,1947,2025,ROU-1947-2025,Romania (1947-2025),high,,
 Romania,faostat,1961,2024,ROU-1947-2025,Romania (1947-2025),high,234453,
+Rondônia,juan-subnational,1900,1942,BRA-RONDONIA-1943-2025,,high,,back_cast
 Rondônia,juan-subnational,1943,2023,BRA-RONDONIA-1943-2025,,medium,,
 RoW,crops-manure-n,1850,2022,ROW-1850-2025,Rest of World,high,,
 Russia/USSR,federico_tena,1800,1855,F228-1800-1856,Russian Empire (to 1856),high,62,
@@ -2157,6 +2262,7 @@ south africa,iia,1910,2025,ZAF-1910-2025,South Africa,high,90,
 South Australia,juan-subnational,1860,1900,AUSA-1836-1901,,high,,
 South Australia,juan-subnational,1901,2022,AUS-SA-1901-2025,,high,,
 SOUTH CAROLINA,juan-subnational,1866,2024,USA-SC-1800-2025,,high,,
+SOUTH DAKOTA,juan-subnational,1879,1888,USA-SOUTHDAKOTA-1889-2025,,high,,back_cast
 SOUTH DAKOTA,juan-subnational,1889,2024,USA-SOUTHDAKOTA-1889-2025,,high,,
 South Korea,faostat,1948,2025,KOR-1948-2025,Republic of Korea,high,0,
 South Sudan,faostat,2012,2024,SSD-2011-2025,South Sudan,high,17383,
@@ -2172,6 +2278,7 @@ SRM,mueller-synthetic-n,1992,2006,SCG-1992-2006,Serbia and Montenegro,high,,
 SSD,crops-manure-n,1956,2010,SUD-1956-2011,Sudan (1956-2011),high,,
 st helena,fao1952,1931,1951,SHN-1834-1967,Saint Helena,high,,
 St Pierre and Miquelon,fao1952,1937,1951,SPM-1816-2025,Saint Pierre and Miquelon,high,8,
+Sucre,juan-subnational,1915,1965,COL-SUCRE-1966-2025,,high,,back_cast
 Sucre,juan-subnational,1966,2023,COL-SUCRE-1966-2025,,medium,,
 sudan,,1899,1933,SUD-1899-1934,,medium,,
 sudan,,1934,1955,SUD-1934-1956,,medium,,
@@ -2213,6 +2320,7 @@ tanzania,,1922,1960,TAN-1922-1964,,medium,,
 tanzania,,1961,1963,TZA-1961-1964,Tanzania (1961-1964),high,,
 tanzania,,1964,1964,TZA-1964-2025,United Republic of Tanzania,high,,
 Tanzania,faostat,1964,2025,TZA-1964-2025,United Republic of Tanzania,high,0,
+Tarapaca,juan-subnational,1900,1975,CHL-TA-1976-2025,,high,,back_cast
 Tarapaca,juan-subnational,1976,2023,CHL-TA-1976-2025,,medium,,
 Tasmania,juan-subnational,1860,1900,TAS-1825-1901,,high,,
 Tasmania,juan-subnational,1901,2022,AUS-TAS-1901-2025,,high,,
@@ -2300,7 +2408,9 @@ United States Virgin Islands,faostat,1850,1916,DWI-1800-1917,Danish West Indies,
 United States Virgin Islands,faostat,1917,2025,VIR-1917-2025,United States Virgin Islands,high,0,
 united states virgin islands,iia,1909,1916,DWI-1800-1917,Danish West Indies,high,,
 united states virgin islands,iia,1917,1945,VIR-1917-2025,United States Virgin Islands,high,,
+Uruguay,faostat,1900,1960,URY-1828-2025,,high,,
 Uruguay,faostat,1961,2024,URY-1828-2025,Uruguay,high,212716,
+Uruguay,lassaletta-grassland-share,1900,1960,URY-1828-2025,,high,,
 Uruguay,lassaletta-grassland-share,1961,2009,URY-1828-2025,Uruguay,high,,
 US Alaska,whep-lab-usa,1960,2024,USA-AK-1959-2025,,high,,
 US Hawaii,juan-subnational,1934,1958,HAW-1959-2025,,high,,back_cast
@@ -2314,14 +2424,17 @@ UTAH,juan-subnational,1879,1895,USA-UTAH-1896-2025,,high,,back_cast
 UTAH,juan-subnational,1896,2024,USA-UTAH-1896-2025,,high,,
 Uzbekistan,faostat,1992,2024,UZB-1991-2025,Uzbekistan,high,94197,
 Valle del Cauca,juan-subnational,1915,2023,COL-VALLEDELCAUCA-1910-2025,,medium,,
+Valparaíso,juan-subnational,1900,1975,CHL-VS-1976-2025,,high,,back_cast
 Valparaíso,juan-subnational,1976,2023,CHL-VS-1976-2025,,medium,,
 Vanuatu,faostat,1961,2024,VUT-1800-2025,Vanuatu,high,132942,
+Vaupés,juan-subnational,1915,1990,COL-VAU-1991-2025,,high,,back_cast
 Vaupés,juan-subnational,1991,2023,COL-VAU-1991-2025,,medium,,
 Venezuela,juan-subnational,1900,2023,VEN-1821-2025,,high,,
 Venezuela (Bolivarian Republic of),faostat,1961,2024,VEN-1821-2025,Venezuela,high,232770,
 Venezuela (Bolivarian Republic of),lassaletta-grassland-share,1961,2009,VEN-1821-2025,Venezuela,high,,
 Veracruz,juan-subnational,1900,2023,MEX-VERACRUZ-1824-2025,,medium,,
 VERMONT,juan-subnational,1866,2024,USA-VT-1800-2025,,high,,
+Vichada,juan-subnational,1915,1990,COL-VICHADA-1991-2025,,high,,back_cast
 Vichada,juan-subnational,1991,2023,COL-VICHADA-1991-2025,,medium,,
 Victoria,juan-subnational,1860,1900,VIC-1851-1901,,medium,,
 Victoria,juan-subnational,1901,2022,AUS-VIC-1901-2025,,medium,,
@@ -2337,6 +2450,7 @@ Virgin Is US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high,,
 Virgin Islands US,fao1952,1917,2025,VIR-1917-2025,United States Virgin Islands,high,,
 VIRGINIA,juan-subnational,1866,2024,USA-VA-1800-2025,,high,,
 Wakayama,juan-subnational,1883,2022,JPN-WAKAYAMA-1871-2025,,high,,
+WASHINGTON,juan-subnational,1879,1888,USA-WA-1889-2025,,high,,back_cast
 WASHINGTON,juan-subnational,1889,2024,USA-WA-1889-2025,,high,,
 WEST VIRGINIA,juan-subnational,1866,2024,USA-WV-1863-2025,,high,,
 Western,fao1952,1949,1951,F78-1949-1990,West Germany,high,,
