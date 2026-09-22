@@ -201,7 +201,10 @@ BASELINE = {
     "TRP-1943-1951 / CYR-1943-1949": "two thirds of the same partition: disjoint, 0.0000 km2",
     "FEZ-1943-1951 / CYR-1943-1949": "two thirds of the same partition: disjoint, 0.0000 km2",
     # Two separate Australian colonies before federation.
-    "AUSA-1836-1900 / AUWA-1829-1900": "South vs Western Australia, different colonies",
+    # Re-coded 2026-09-17 from -1900 to -1901: federation was 1 January 1901, so both colonies
+    # existed through all of 1900. Unchanged in substance -- two adjacent colonies of
+    # comparable size, neither a component of the other.
+    "AUSA-1836-1901 / AUWA-1829-1901": "South vs Western Australia, different colonies",
 }
 
 # PAIRS THAT MUST MEASURE ZERO INTERSECTION, asserted rather than described.
