@@ -385,6 +385,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/update_wiki_index.py --check
 
+      - name: A matched segment names the territory the source reported
+        if: '!cancelled()'
+        # `matched` asserts the source OBSERVED that territory, so pointing it at the container
+        # attributes a region's data to its country -- which already receives its own national
+        # labels, and the consumer collapses duplicate keys with mean(). Measures AREA, because
+        # polity_type cannot tell NSW-1800-1901 (typed national, IS New South Wales) from a country.
+        run: python3 scripts/validate_matched_target_territory.py
+
       - name: Coverage segments name polities that exist
         if: '!cancelled()'
         # The ledger's per-segment `polity_code` was resolved by nothing, so 43 segments routed

@@ -5233,6 +5233,79 @@ def mutate_coverage_target_never_minted(root, gpd, make_valid, affinity):
     return (f"{victim}'s coverage now routes to 'NEVERMINTED-1900-2000', a well-formed code "
             f"absent from the polity table, with the ledger otherwise intact")
 
+def mutate_matched_segment_points_at_container(root, gpd, make_valid, affinity):
+    """Re-point one subnational unit's `matched` segment at its own container.
+
+    `matched` asserts the source OBSERVED that territory. Point it at the container and the
+    assertion is false, with a consequence that is not cosmetic: the data lands on the container,
+    which already receives its own national labels. ITA-1919-2025 carries 'italy', 'Italy' from
+    faostat and 'ltaly' from fao1952, and five Italian NUTS regions each hold a `matched` segment
+    naming it -- so executing those as aliases would put five regions and the country on one
+    polity, which the WHEP R package then collapses with mean(value).
+
+    The mutation takes a segment already matched to a same-territory polity and re-points it at a
+    much larger one. Every disposition stays legal, the coverage still tiles the span, the target
+    is still a live polity, and the years are untouched -- so only a check that compares the two
+    territories' AREAS can see it. polity_type cannot: NSW-1800-1901 is typed `national` and is
+    exactly New South Wales.
+    """
+    import csv as _csv
+    import json as _json
+
+    _csv.field_size_limit(sys.maxsize)
+    path = os.path.join(root, "pipelines/agent-harness/state/routing_verdicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+
+    g = gpd.read_file(GPKG)
+    area = {}
+    for _, r in g.to_crs("ESRI:54034").iterrows():
+        if r.geometry is not None and not r.geometry.is_empty:
+            area[r["polity_code"]] = r.geometry.area / 1e6
+    biggest = max(area, key=area.get)
+
+    victim = None
+    for r in rows:
+        raw = (r.get("coverage_json") or "").strip()
+        if not raw:
+            continue
+        try:
+            parsed = _json.loads(raw)
+        except ValueError:
+            continue
+        segs = parsed.get("segments", []) if isinstance(parsed, dict) else parsed
+        page = (r.get("page_polity_code") or "").strip()
+        if page not in area:
+            continue
+        for s in segs:
+            if s.get("disposition") != "matched":
+                continue
+            if area[biggest] / area[page] <= 3.0:
+                continue
+            # ONLY re-point a segment that currently PASSES. Re-pointing one of the 25 already
+            # baselined as container matches makes its baseline key go stale, so the gate fails
+            # on the wrong arm -- "baseline no longer matches" rather than "names a polity far
+            # larger" -- and the case then reports the right exit code for the wrong reason.
+            current = (s.get("polity_code") or "").strip()
+            if current not in area or area[current] / area[page] > 3.0:
+                continue
+            s["polity_code"] = biggest
+            r["coverage_json"] = _json.dumps(segs, ensure_ascii=False)
+            victim = (r["unit_id"], page)
+            break
+        if victim:
+            break
+    if victim is None:
+        raise AssertionError("no matched segment could be re-pointed at a larger polity, so the "
+                             "mutation would do nothing and the case would pass for the wrong "
+                             "reason")
+
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(rows)
+    return (f"{victim[0]}'s matched segment now names {biggest} instead of a polity the size of "
+            f"{victim[1]}, with every disposition still legal")
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6326,6 +6399,14 @@ CASES = (
         "ledger stays valid, the coverage still tiles the span, and nothing else in the repo "
         "resolves that field, so the years route to a territory that does not exist",
     ),
+(
+        "validate_matched_target_territory.py",
+        mutate_matched_segment_points_at_container,
+        "far larger than the territory",
+        "a `matched` segment naming the reporting unit's container rather than its own territory, "
+        "so the data would be attributed to a polity that already receives its own national "
+        "labels -- legal in every field, and visible only by comparing the two areas",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -7064,6 +7145,17 @@ WRITABLE = {
     # routed, so without it the gate dies on a missing file rather than reporting the defect.
     # The case rewrites a target inside coverage_json, so the ledger must be a real copy
     # rather than stage()'s symlink -- otherwise the mutation writes into the committed ledger.
+    # The case re-points a target inside coverage_json, so the ledger must be a real copy.
+    # The case re-points a target inside coverage_json, so the ledger must be a real copy. The
+    # GPKG must be PRESENT too: this gate compares POLYGON AREAS, and stage() only materialises a
+    # GeoPackage for cases whose mutator writes one. Without it the gate took its "geometry
+    # absent -> SKIP" path and returned 0 on a defect it is built to catch -- which this harness
+    # reported as a gate that cannot fail. The CSV is needed for polity_type.
+    "validate_matched_target_territory.py": (
+        "pipelines/agent-harness/state/routing_verdicts.csv",
+        "data/final/polities_database.gpkg",
+        "polities_database.csv",
+    ),
     "validate_coverage_targets.py": (
         "pipelines/agent-harness/state/routing_verdicts.csv",
     ),
