@@ -61,9 +61,13 @@ BASELINE = frozenset({
     ("IND", "FRIN-1816-1954", "IND-1947-1949"),
     ("IND", "FRIN-1816-1954", "IND-1949-2025"),
     ("IND", "IND-1800-1886", "FRIN-1816-1954"),
-    ("AUS", "AUS-1800-1901", "AUSA-1836-1900"),
-    ("AUS", "AUS-1800-1901", "AUWA-1829-1900"),
-    ("AUS", "AUWA-1829-1900", "AUSA-1836-1900"),
+    # Re-coded 2026-09-17 from -1900 to -1901: the Commonwealth was proclaimed on 1 January
+    # 1901, so these colonies existed through all of 1900 and their exclusive end_year is 1901.
+    # The collision is unchanged in kind -- the aggregate AUS row and its colonial members all
+    # carry iso3 AUS by design, which is what the containment edges are for.
+    ("AUS", "AUS-1800-1901", "AUSA-1836-1901"),
+    ("AUS", "AUS-1800-1901", "AUWA-1829-1901"),
+    ("AUS", "AUWA-1829-1901", "AUSA-1836-1901"),
     # BEL pair removed 2026-08-05: BLX-1921-1999 is retired as a duplicate of the
     # BLX-1850-1999 reporting row (issue 40). Its iso3 was BEL, which is what put a
     # Belgium-Luxembourg row in Belgium's family in the first place.
