@@ -172,8 +172,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "4963e8879ba4f36211b09bedf7a0711fd9c37c4e4d175980f71aa832632f04b8",
-  "aliases": 2261,
+  "sha256": "b8384440d1b9fbcf2dd193baf42749f94a2ea1033e3b0e35d992d56da0a76cc9",
+  "aliases": 2387,
   "labels": 1321,
   "sources": [
    "crops-manure-n",
