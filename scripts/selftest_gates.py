@@ -5402,6 +5402,43 @@ def mutate_matched_segment_points_at_container(root, gpd, make_valid, affinity):
     return (f"{victim[0]}'s matched segment now names {biggest} instead of a polity the size of "
             f"{victim[1]}, with every disposition still legal")
 
+def mutate_blank_alias_routes_panel_unit_abroad(root, gpd, make_valid, affinity):
+    """Key one BLANK-source alias on a panel unit's name and point it at another country.
+
+    'Formosa' (any source) -> TWN-1895-1945 was written for Federico-Tena's 'Formosa (Taiwan)'
+    and, having no source, also routed Argentina's ARG-FORMOSA (11,284 valued panel rows,
+    1900-1945) to Japanese Taiwan, until 2026-09-24. The name is carried by one panel country
+    only, so validate_name_labels_single_country.py cannot see the shape. The mutation re-creates
+    it generically: the first unit name in the names table, aliased with no source to a live
+    national polity of a different iso3 than the unit's.
+    """
+    import csv as _csv
+
+    names = os.path.join(root, "pipelines/agent-harness/state/panel_unit_names.csv")
+    path = os.path.join(root, "data/final/label_alias_map.csv")
+    with open(names, newline="", encoding="utf-8") as fh:
+        unit = next(_csv.DictReader(fh))
+    iso = unit["unit_id"].split("-")[0]
+    with open(CSV, newline="", encoding="utf-8") as fh:
+        pols = [r for r in _csv.DictReader(fh)
+                if r["polity_type"] == "national" and r["iso3_code"]
+                and r["iso3_code"] != iso and not r["successor"]
+                and r["wiki_status"] not in ("retired", "superseded")]
+    target = sorted(pols, key=lambda r: r["polity_code"])[0]["polity_code"]
+
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    new = {k: "" for k in rows[0]}
+    new.update(source_label=unit["admin_name"], source="", year_start="1960",
+               year_end="1970", polity_code=target, confidence="high")
+    rows.append(new)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(rows)
+    return (f"{unit['admin_name']!r} (any source) now routes to {target}, while it is the name "
+            f"of panel unit {unit['unit_id']} in {iso}")
+
+
 def mutate_name_label_shared_across_countries(root, gpd, make_valid, affinity):
     """Key one alias on a unit NAME that reporting units in two countries share.
 
@@ -6567,6 +6604,15 @@ CASES = (
         "data is routed to a foreign polity -- the row is well-formed, its own unit still "
         "resolves, and every per-label check passes",
     ),
+    (
+        "validate_alias_labels_cross_country.py",
+        mutate_blank_alias_routes_panel_unit_abroad,
+        "another country",
+        "a source-agnostic alias keyed on a name that is also a panel unit's, pointing at a "
+        "territory elsewhere, so every reader that does not pass the panel's own source routes "
+        "that unit's rows abroad -- the row names a live polity inside its span, the name is "
+        "carried by one country only, and the panel's own source-scoped rules still win for it",
+    ),
 (
         "validate_coverage_targets.py",
         mutate_coverage_target_never_minted,
@@ -7358,6 +7404,17 @@ WRITABLE = {
     "validate_name_labels_single_country.py": (
         "data/final/label_alias_map.csv",
         "pipelines/agent-harness/state/routing_verdicts.csv",
+        # Read since 2026-09-24 for the names the ledger does not keep; absent, the gate fails
+        # on the missing file rather than on the injected label.
+        "pipelines/agent-harness/state/panel_unit_names.csv",
+    ),
+    # The alias map is the file the case rewrites. The names table, ledger and containment table
+    # are read-only here but must be present, or the gate stops on the missing file.
+    "validate_alias_labels_cross_country.py": (
+        "data/final/label_alias_map.csv",
+        "data/final/polity_containment.csv",
+        "pipelines/agent-harness/state/routing_verdicts.csv",
+        "pipelines/agent-harness/state/panel_unit_names.csv",
     ),
     "validate_polity_containment.py": (
         "data/final/polity_containment.csv",
