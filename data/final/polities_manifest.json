@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "54287db3873094db1c8a4644a6265d11fa3b3e2509309cefd308f27779f9f98e",
-  "aliases": 2501,
-  "labels": 1321,
+  "sha256": "64608f769fe76fcab4a918aab356b0914e110824eb8613cbbc76305b16648000",
+  "aliases": 2516,
+  "labels": 1326,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
