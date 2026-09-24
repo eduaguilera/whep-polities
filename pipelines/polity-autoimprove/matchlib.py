@@ -137,9 +137,14 @@ def _yr(v):
 #
 # Scope is deliberately narrow: an exact source, label and item, and a DATED
 # year inside the rule's inclusive [year_start, year_end] (the alias convention,
-# read through alias_covers so there is one reading of it). A period-average row
-# (year null) is never touched; no rule today needs one, and a period that
-# straddles a rule's bound has no single right answer.
+# read through alias_covers so there is one reading of it). A PERIOD-AVERAGE row
+# (year null, period `YYYY-YYYY`) is touched only when BOTH ends of its period
+# lie inside the rule's range: a period that straddles a rule's bound has no
+# single right answer, so it is left alone. Period rows were out of scope until
+# 2026-09-24, when fao1952's USSR `rye` 1934-1938 averages needed a rule (its rye
+# series is on post-war boundaries while flax and linseed are not); measured
+# then, widening the scope changed the row count of none of the six existing
+# rules, all of whose labels carry no period row inside their years.
 LABEL_ITEM_CORRECTION_COLUMNS = (
     "source", "source_label", "item", "year_start", "year_end",
     "correct_label", "polity_code", "observed_rows", "issue", "evidence",
@@ -177,14 +182,35 @@ def load_label_item_corrections(path):
     return rules
 
 
-def label_item_correction(rules, source, label, item, year):
+def _period_bounds(period):
+    """(first, last) of a period label like '1934-1938', else None."""
+    if not isinstance(period, str):
+        return None
+    yy = re.findall(r"\d{4}", period)
+    if len(yy) < 2:
+        return None
+    return int(yy[0]), int(yy[-1])
+
+
+def label_item_rule_covers(ru, year, period=None):
+    """Does rule `ru`'s year range take this row? A dated row: its year is in range. A
+    period-average row (no year): BOTH ends of its period are in range. The one reading of
+    it, shared by the matcher, validate_label_item_corrections.py and validate_stated_areas.py."""
+    if year is not None and not pd.isna(year):
+        return alias_covers(ru["y0"], ru["y1"], int(year))
+    b = _period_bounds(period)
+    return b is not None and alias_covers(ru["y0"], ru["y1"], b[0]) \
+        and alias_covers(ru["y0"], ru["y1"], b[1])
+
+
+def label_item_correction(rules, source, label, item, year, period=None):
     """The rule relabelling this row, or None. At most one may match (the gate
     enforces no overlap); if two ever do, raise rather than let file order pick."""
-    if year is None or pd.isna(year):
+    if (year is None or pd.isna(year)) and _period_bounds(period) is None:
         return None
     hit = [ru for ru in rules
            if ru["source"] == source and ru["source_label"] == label and ru["item"] == item
-           and alias_covers(ru["y0"], ru["y1"], int(year))]
+           and label_item_rule_covers(ru, year, period)]
     if len(hit) > 1:
         raise ValueError(f"overlapping label/item corrections for {(source, label, item, year)}")
     return hit[0] if hit else None
@@ -195,22 +221,25 @@ def apply_label_item_corrections(df, rules, label_col="country"):
 
     Returns (frame, mask of relabelled rows, {rule index: rows hit}). The key
     columns are compared vectorised; the YEAR test then goes through
-    alias_covers row by row on that small subset, so the inclusive reading of
-    `year_end` lives in one place and is not re-typed here as a bare operator.
+    label_item_rule_covers (alias_covers underneath) row by row on that small
+    subset, so the inclusive reading of `year_end` lives in one place and is not
+    re-typed here as a bare operator.
     """
     out = df.copy()
     # Every rule is tested against the ORIGINAL label, so a relabelled row can never
     # be caught again by a rule keyed on its new label: corrections do not chain.
     orig = df[label_col]
     years = pd.to_numeric(out["year"], errors="coerce")
+    periods = out["period"] if "period" in out.columns else pd.Series(None, index=out.index)
     hit_any = pd.Series(False, index=out.index)
     per_rule = {}
     for k, ru in enumerate(rules):
         key = ((out["source"] == ru["source"]) & (orig == ru["source_label"])
-               & (out["item"] == ru["item"]) & years.notna())
+               & (out["item"] == ru["item"]))
         m = pd.Series(False, index=out.index)
         if key.any():
-            m.loc[key] = [alias_covers(ru["y0"], ru["y1"], int(y)) for y in years[key]]
+            m.loc[key] = [label_item_rule_covers(ru, y, p)
+                          for y, p in zip(years[key], periods[key])]
         if (m & hit_any).any():
             raise ValueError(f"label/item correction rule {k} overlaps an earlier rule")
         out.loc[m, label_col] = ru["correct_label"]

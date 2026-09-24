@@ -1384,9 +1384,9 @@ def _prewar_ratios(d, fao_label, others):
 
 
 def check_fao1952_present_boundaries(d):
-    """fao1952's pre-war columns are on PRESENT (post-war) boundaries, except the USSR (mixed by item).
+    """fao1952's pre-war columns are on PRESENT (post-war) boundaries, with NAMED exceptions.
 
-    Three instruments, all inside the panel:
+    Instruments, all inside the panel except one external figure (Canada, (5)):
 
     (1) PARTITION IDENTITY. 1937 `population total`: `India` + `Pakistan` is undivided British India
         (~370 million), so `India` alone is the future Union. Holds if Pakistan is >= 10% of the sum.
@@ -1395,15 +1395,36 @@ def check_fao1952_present_boundaries(d):
     (3) CROSS-SOURCE DIRECTION. fao1952's 1934-38 averages against juan/iia/mitchell's own
         contemporaneous 1934-38 series for the same label, which are on the boundaries of the time.
         A territory that lost ground after the war must come out BELOW 1 (Romania, Poland, Finland,
-        Czechoslovakia), and one that gained ground ABOVE 1 (Bulgaria, Southern Dobruja).
+        Czechoslovakia, Germany), and one that gained ground ABOVE 1 (Bulgaria, Southern Dobruja).
         Czechoslovakia is the weak member: Ruthenia was ~5% of the population but less of the
         farm output, so its bound is only < 1.0. India is NOT in this arm: iia `india` carries unit
         defects (ratios in the thousands on 4 series) and, pooled with mitchell's 0.88, gives a
         median of 1.03, so the partition identity (1) is the instrument for India.
-    USSR: MIXED, which is why its rows are NOT rerouted. Against iia `russian federation` (whole
-    USSR on the 1934-38 boundary), fibre and industrial crops sit within 6% while rye area and
-    soybeans run 13-26% above, i.e. some series include the 1939-45 annexations and some do not.
-    Holds while both classes are present.
+    (4) GERMANY CLOSING IDENTITY (added 2026-09-24). `Germany` = `Germany Western` + `Germany
+        Eastern` (+ `Germany Berlin` where printed) exactly, series by series, in the pre-war columns:
+        the zones are post-war units, so `Germany` is post-war Germany. Holds on >= 20 series.
+    (5) CANADA. 1937 `Canada` minus `Canada Newfoundland` is 11,045 thousand, Statistics Canada's
+        1 June 1937 estimate (Historical Statistics of Canada, series A1), which excludes Newfoundland
+        before 1949: so `Canada` includes Newfoundland, the post-1949 frame. Pinned exactly.
+    (6) JAPAN. `Ryukyu Islands` is printed separately in the 1937 population column, so `Japan` is
+        the home islands without the Ryukyus, the post-war (1945-1952) territory.
+
+    EXCEPTIONS, each measured, so this re-test does not certify a rule these labels break:
+    (7) USSR is MIXED BY ITEM. Against iia `russian federation` (whole USSR on the 1934-38 boundary)
+        fibre and industrial crops sit within 6% while rye and soybeans run 13-26% above. Rye and
+        the 1937 population are relabelled onto F228-1945-1991 (source_label_item_corrections.csv);
+        the rest stays on F228-1921-1940. Holds while both classes are present and rye is above.
+    (8) ROMANIA 1939 LIVESTOCK is on the INTERWAR boundary: its horses equal juan's 1939 `romania`
+        exactly (juan's 1940, after the cessions, is about half). Routed to ROU-1920-1940.
+    (9) GREECE is reported WITHOUT the Dodecanese in the pre-war columns: `Dodecanese` is its own
+        1937 row and `Greece and Dodecanese` appears only in the post-war column. Greece's pre-war
+        rows stay on GRC-1919-1947, the Dodecanese go to ITAEG-1912-1947.
+    (10) PALESTINE / ISRAEL / JORDAN are EXCLUDED from the rule, not asserted on a post-war frame:
+        all three are printed for 1937 (Israel 386, Palestine 385, Jordan 442 thousand), and no
+        instrument here decomposes them onto either the Mandate or the 1949 armistice lines. Their
+        pre-war rows stay on PAL-1920-1948 and JOR-1923-1946. The arm pins the three values, so a
+        rebuilt panel that changes them reopens the question.
+    Yugoslavia, Italy, Hungary, Korea and the Pacific labels are NOT asserted either way.
     """
     import statistics as st
     msg, ok = [], True
@@ -1428,6 +1449,7 @@ def check_fao1952_present_boundaries(d):
         "Finland": ([("juan", "finland"), ("iia", "finland")], "<", 0.97),
         "Czechoslovakia": ([("juan", "czechoslovakia"), ("iia", "czechoslovakia")], "<", 1.0),
         "Bulgaria": ([("juan", "bulgaria"), ("iia", "bulgaria")], ">", 1.0),
+        "Germany": ([("juan", "germany"), ("iia", "germany")], "<", 0.90),
     }
     for lab, (others, op, bound) in expect.items():
         rs = [r[3] for r in _prewar_ratios(d, lab, others)]
@@ -1439,13 +1461,71 @@ def check_fao1952_present_boundaries(d):
         good = med < bound if op == "<" else med > bound
         ok = ok and good
         msg.append(f"{lab} median {med:.2f} over {len(rs)} series (expect {op} {bound})")
+
+    # (4) Germany = Western + Eastern (+ Berlin), per pre-war series.
+    g = d[(d["source"] == "fao1952") & d["country"].isin(
+        ["Germany", "Germany Western", "Germany Eastern", "Germany Berlin"])
+        & (d["period"].eq("1934-1938") | d["year"].isin([1937, 1938]))].copy()
+    g["yk"] = g["period"].where(g["period"].notna(), g["year"].astype("string"))
+    pv = g.pivot_table(index=["item", "indicator", "unit", "yk"], columns="country",
+                       values="value", aggfunc="sum")
+    need = ["Germany", "Germany Western", "Germany Eastern"]
+    exact = 0
+    if set(need) <= set(pv.columns):
+        pv = pv.dropna(subset=need)
+        parts = pv["Germany Western"] + pv["Germany Eastern"]
+        if "Germany Berlin" in pv.columns:
+            parts = parts + pv["Germany Berlin"].fillna(0)
+        exact = int(((pv["Germany"] - parts).abs() < 1e-6).sum())
+    ok = ok and exact >= 20
+    msg.append(f"Germany = Western + Eastern (+ Berlin) exactly on {exact} pre-war series (expect >= 20)")
+
+    # (5) Canada without Newfoundland = Statistics Canada's 1937 estimate.
+    can, nfl = pop.get("Canada"), pop.get("Canada Newfoundland")
+    can_ok = bool(can and nfl) and round(can - nfl) == 11045
+    ok = ok and can_ok
+    msg.append(f"Canada {can:,.0f} - Newfoundland {nfl:,.0f} = {can - nfl:,.0f} (StatCan 1937: 11,045)"
+               if can and nfl else "Canada/Newfoundland 1937 population missing")
+
+    # (6) Japan's Ryukyus printed separately.
+    ryu = pop.get("Ryukyu Islands")
+    ok = ok and bool(ryu) and bool(pop.get("Japan"))
+    msg.append(f"Ryukyu Islands printed separately in 1937 ({ryu:,.0f})" if ryu
+               else "no separate 1937 Ryukyu row")
+
+    # (7) USSR mixed by item.
     u = _prewar_ratios(d, "USSR", [("iia", "russian federation")])
     near = [r for r in u if abs(r[3] - 1) <= 0.06]
     above = [r for r in u if r[3] >= 1.10]
-    mixed = len(near) >= 3 and len(above) >= 2
+    mixed = len(near) >= 3 and len(above) >= 2 and any(r[1] == "rye" for r in above)
     ok = ok and mixed
     msg.append(f"USSR {len(near)} series within 6% of iia and {len(above)} >= 1.10x "
                f"({', '.join(sorted({r[1] for r in above}))}): {'mixed' if mixed else 'NOT mixed'}")
+
+    # (8) Romania 1939 horses on the interwar boundary.
+    rh = d[(d["source"] == "fao1952") & (d["country"] == "Romania") & (d["year"] == 1939)
+           & (d["item"] == "horses mules asses")]["value"]
+    jh = d[(d["source"] == "juan") & (d["country"] == "romania") & (d["year"] == 1939)
+           & (d["item"] == "horses")]["value"]
+    ro_ok = len(rh) > 0 and len(jh) == 1 and abs(1000 * float(rh.max()) - float(jh.iloc[0])) < 1
+    ok = ok and ro_ok
+    msg.append(f"Romania 1939 horses {float(rh.max()) if len(rh) else float('nan'):,.0f}k vs juan "
+               f"{float(jh.iloc[0]) / 1000 if len(jh) else float('nan'):,.0f}k: "
+               f"{'interwar (exception holds)' if ro_ok else 'NOT the interwar figure'}")
+
+    # (9) Greece without the Dodecanese.
+    labs51 = set(d[(d["source"] == "fao1952") & (d["year"] == 1951)]["country"])
+    gr_ok = bool(pop.get("Greece")) and bool(pop.get("Dodecanese")) \
+        and "Greece and Dodecanese" not in pop and "Greece and Dodecanese" in labs51
+    ok = ok and gr_ok
+    msg.append(f"Greece 1937 without the Dodecanese: {'yes' if gr_ok else 'NO'}")
+
+    # (10) Palestine / Israel / Jordan on the Mandate frame.
+    pal, isr, jor = pop.get("Palestine"), pop.get("Israel"), pop.get("Jordan")
+    pij_ok = (pal, isr, jor) == (385.0, 386.0, 442.0)
+    ok = ok and pij_ok
+    msg.append(f"1937 Palestine {pal}, Israel {isr}, Jordan {jor} (pinned 385/386/442; excluded, "
+               f"not asserted)")
     return ok, "; ".join(msg)
 
 

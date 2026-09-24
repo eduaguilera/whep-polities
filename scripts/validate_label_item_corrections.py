@@ -7,7 +7,8 @@ pre-1910 item routes to the Cape through -- and South Africa's national 1945-195
 `natal`; fao1952 files two 1951 Netherlands New Guinea land-use rows under `New Guinea`. An alias
 maps (label, source, years) to a polity and has no item dimension, so no alias can fix these: the
 same label and years carry both territories. Each rule here re-labels the rows matching
-(source, source_label, item, dated year in [year_start, year_end]) to `correct_label` BEFORE
+(source, source_label, item, dated year in [year_start, year_end], or a period average lying wholly
+inside it) to `correct_label` BEFORE
 matching (01_match_and_findings.py, via matchlib.apply_label_item_corrections), and the ordinary
 machinery routes them. `polity_code` records where that lands, for a consumer that does not run
 this repository's matcher.
@@ -23,7 +24,7 @@ WHAT THIS GATE CHECKS, and which arms run where.
        rule's `source_label` would mean different things to a consumer applying them in
        sequence than to the matcher, which never chains. Both are refused.
     C  targets live and agree: `polity_code` is a LIVE polity whose period covers every year
-       of the rule, `correct_label` actually resolves to it in every one of those years, and
+       of the rule (or, for a year before it begins, is reached through a `back_cast` alias), `correct_label` actually resolves to it in every one of those years, and
        `source_label` does NOT (a rule whose label already routes there is redundant and would
        hide whatever changed underneath it).
     D  ceiling: the number of rules and the rows they cover are pinned, bidirectionally. A
@@ -56,8 +57,10 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 
 # Bidirectional. Raise deliberately, with the new rule's evidence in its row; a fall means a rule
 # was deleted and its rows went back to the territory the source misfiled them under.
-BASELINE_RULES = 6
-BASELINE_ROWS = 100
+# 6/100 -> 8/106 on 2026-09-24: fao1952 `USSR` rye (2 period rows) and 1937 population (4 rows) are
+# on post-war boundaries while the label's other pre-war items are not (source_conventions.csv).
+BASELINE_RULES = 8
+BASELINE_ROWS = 106
 
 
 def main() -> int:
@@ -118,10 +121,15 @@ def main() -> int:
             continue
         s, e = span[code]
         for y in range(r["y0"], r["y1"] + 1):
-            if not matchlib.covers(s, e, y):
+            got, _, how = matcher.assign(r["correct_label"], None, r["source"], y)
+            # A year before the target begins is allowed ONLY when the corrected label reaches the
+            # target through a `back_cast` alias -- the source reconstructs those years onto a
+            # boundary drawn later (fao1952's USSR rye and 1937 population, 2026-09-24). Any other
+            # uncovered year is still refused.
+            if not matchlib.covers(s, e, y) and not (
+                    got == code and how == "applied_alias_back_cast" and y < s):
                 problems.append(f"{key}: {code} ({s}-{e}) does not cover {y}")
                 break
-            got = matcher.assign(r["correct_label"], None, r["source"], y)[0]
             if got != code:
                 problems.append(
                     f"{key}: `{r['correct_label']}` resolves to {got} at {y}, not the recorded "
@@ -177,7 +185,9 @@ def main() -> int:
                 continue
             there = lb[(lb["source"] == r["source"]) & (lb["country"] == r["correct_label"])
                        & (lb["item"] == r["item"]) & ~hit]
-            clash = mine.merge(there, on=["unit", "year"], how="inner")
+            # `period` is part of the cell: a 1934-1938 average and a dated row are different cells
+            # (pandas matches NaN to NaN on a merge key, so two dated rows still pair on year alone).
+            clash = mine.merge(there, on=["unit", "year", "period"], how="inner")
             if len(clash):
                 problems.append(
                     f"{(r['source'], r['source_label'], r['item'])}: {len(clash)} relabelled row(s) "
@@ -193,8 +203,10 @@ def main() -> int:
                 for r in rules:
                     sel = m[(m["source"] == r["source"]) & (m["source_label_raw"] == r["source_label"])
                             & (m["item"] == r["item"]) & (m["country"] == r["correct_label"])]
-                    sel = sel[[matchlib.alias_covers(r["y0"], r["y1"], y)
-                               for y in pd.to_numeric(sel["year"], errors="coerce")]]
+                    # A boolean SERIES, not a list: an empty list would select no COLUMNS.
+                    sel = sel[pd.Series([matchlib.label_item_rule_covers(r, y, pp) for y, pp in
+                                         zip(pd.to_numeric(sel["year"], errors="coerce"),
+                                             sel["period"])], index=sel.index, dtype=bool)]
                     routed += len(sel)
                     wrong = sel[sel["whep_code"] != r["polity_code"]]
                     if len(wrong):

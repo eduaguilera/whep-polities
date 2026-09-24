@@ -29,7 +29,9 @@ ALIASES = os.path.join(REPO, "pipelines/polity-autoimprove/state/applied_aliases
 
 # Bidirectional, like every other ceiling here: the count dropping means a correction was deleted
 # and 25 rows quietly stopped resolving, which no other number in this repo would show.
-BASELINE_CORRECTIONS = 12
+# 12 -> 16 on 2026-09-24: the four Germany sub-row labels (`France Germany`, `France Eastern`,
+# `Western`, `Eastern`), proven by additive identities; see their notes.
+BASELINE_CORRECTIONS = 16
 
 # `British Guiana` resolves only when the matcher is built with `common_names_csv`, which the
 # pipeline passes and this gate cannot -- that file lives outside the repo. So one entry is

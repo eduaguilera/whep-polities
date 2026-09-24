@@ -198,6 +198,11 @@ BASELINE = frozenset({
     # FTT's 738, because it is mostly the Gulf of Trieste -- and no fetched source has an
     # Italian/Slovenian/Croatian coastline to clip the sea off with.
     "TRS-1947-1954",
+    # 1 row, added 2026-09-24: fao1952's 1937 `Dodecanese` population (141 thousand), printed separately
+    # because its pre-war `Greece` excludes the islands. NO SOURCE HAS IT, as the page records: CShapes 2.0
+    # has no Dodecanese/Aegean feature and Cliopatria's Rhodes entries are ancient. Routed anyway because
+    # the alternatives were the whole of Italy or of Greece; the row is matched and honestly geometry-less.
+    "ITAEG-1912-1947",
     # 39 rows. The recipe EXISTS and was measured WRONG: build.py carries
     # build_can_1800_1866 unregistered because the five modern provinces give
     # 2,735,024 km2 against the page's 1,209,852 — Ontario and Quebec reach Hudson Bay

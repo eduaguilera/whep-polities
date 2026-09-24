@@ -169,9 +169,10 @@ for i, r in enumerate(rows, start=2):  # +2: header is line 1
 # which is that gate's open item and no longer this one's. The remaining 198 aliases whose
 # inclusive year_end equals their target's exclusive end_year are the convention working, and
 # validate_alias_year_coverage.py pins that set by identity.
-BASELINE_BEFORE_TARGET = frozenset({
-    ("Trieste", "fao1952", "TRS-1947-1954"),
-})
+# EMPTIED 2026-09-24: the Trieste rule is now marked `back_cast` (fao1952 states its pre-war columns on
+# present boundaries, source_conventions.csv), so it is exempt by design like every other back_cast rule
+# and no longer an unexamined range. A new entry must again be a decision with its basis on the record.
+BASELINE_BEFORE_TARGET = frozenset()
 
 # A `back_cast` alias BEGINS BEFORE ITS TARGET BY DESIGN, and that is the whole point of the
 # disposition. The routing verdict schema has always specified it -- "the source reports these years

@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "6ad6c9ad85563a5fbdf4a7ebf1beef6ba707a3457708882d80bb3fa06306a7e9",
-  "aliases": 2496,
-  "labels": 1320,
+  "sha256": "54287db3873094db1c8a4644a6265d11fa3b3e2509309cefd308f27779f9f98e",
+  "aliases": 2501,
+  "labels": 1321,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -207,10 +207,10 @@
  },
  "label_item_corrections": {
   "path": "data/final/source_label_item_corrections.csv",
-  "sha256": "42fe79af8c9d10791796d727631358922cc84457d2ff79a5a33a9e30de7e4d90",
-  "rules": 6,
-  "observed_rows": 100,
-  "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; period-average rows with no year are never corrected). `polity_code` is where the corrected label then resolves. Rules do not chain: test each against the ORIGINAL label."
+  "sha256": "ebcce2e178c9ceb3990d6fb7854650a5d2c1cdc792c2b54fefc4cced01433284",
+  "rules": 8,
+  "observed_rows": 106,
+  "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; a period-average row with no year is corrected only when BOTH ends of its period lie in that range). `polity_code` is where the corrected label then resolves, possibly as a `back_cast` before the polity begins. Rules do not chain: test each against the ORIGINAL label."
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",

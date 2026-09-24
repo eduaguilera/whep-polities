@@ -378,9 +378,10 @@ if os.path.exists(LABEL_ITEM_CORRECTIONS):
             "Rows a source files under ANOTHER territory's label for one item. Before resolving "
             "a row's label with label_alias_map, replace it with `correct_label` when source, "
             "source_label and item match exactly and the row's year lies in "
-            "[year_start, year_end] (inclusive; period-average rows with no year are never "
-            "corrected). `polity_code` is where the corrected label then resolves. Rules do not "
-            "chain: test each against the ORIGINAL label."
+            "[year_start, year_end] (inclusive; a period-average row with no year is corrected "
+            "only when BOTH ends of its period lie in that range). `polity_code` is where the "
+            "corrected label then resolves, possibly as a `back_cast` before the polity begins. "
+            "Rules do not chain: test each against the ORIGINAL label."
         ),
     }
 
