@@ -145,6 +145,16 @@ def _yr(v):
 # series is on post-war boundaries while flax and linseed are not); measured
 # then, widening the scope changed the row count of none of the six existing
 # rules, all of whose labels carry no period row inside their years.
+#
+# UNROUTING (2026-09-24). A rule whose `polity_code` is LABEL_ITEM_UNROUTED relabels
+# its rows onto a `correct_label` that resolves to NO polity, so they leave the
+# panel unrouted instead of landing on a territory. It exists for rows that are a
+# WRONG territory with no right one to go to: iia `jamaica` cotton 1934-1945 is the
+# British West Indies total (doubled), and routing it to BWI-1833-1962 would sum
+# it beside iia `barbados` cotton, which that total already contains. The relabel
+# is the same mechanism, so nothing here changes; the gate checks the sentinel
+# rule's label resolves nowhere in every year of the rule.
+LABEL_ITEM_UNROUTED = "UNROUTED"
 LABEL_ITEM_CORRECTION_COLUMNS = (
     "source", "source_label", "item", "year_start", "year_end",
     "correct_label", "polity_code", "observed_rows", "issue", "evidence",
@@ -216,7 +226,7 @@ def label_item_correction(rules, source, label, item, year, period=None):
     return hit[0] if hit else None
 
 
-def apply_label_item_corrections(df, rules, label_col="country"):
+def apply_label_item_corrections(df, rules, label_col="country", iso_col="iso3c"):
     """Relabel the matching rows of a layer-B-shaped frame; returns a new frame.
 
     Returns (frame, mask of relabelled rows, {rule index: rows hit}). The key
@@ -243,6 +253,14 @@ def apply_label_item_corrections(df, rules, label_col="country"):
         if (m & hit_any).any():
             raise ValueError(f"label/item correction rule {k} overlaps an earlier rule")
         out.loc[m, label_col] = ru["correct_label"]
+        # The row's iso code came WITH the misfiled label (`fra` on Saint-Pierre-et-Miquelon's eggs,
+        # `jam` on the British West Indies cotton), and the matcher prefers an iso family over the
+        # name, so leaving it would route the relabelled row straight back to the territory it was
+        # misfiled under. Cleared, so the corrected label alone decides, exactly as the gate's arm C
+        # resolves it (iso None). Measured when added (2026-09-24): the 106 rows of the eight earlier
+        # rules route identically either way; 45 of the 49 new rows depended on it.
+        if iso_col in out.columns:
+            out.loc[m, iso_col] = None
         hit_any |= m
         per_rule[k] = int(m.sum())
     return out, hit_any, per_rule

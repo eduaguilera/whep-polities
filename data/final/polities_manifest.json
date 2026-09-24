@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "64608f769fe76fcab4a918aab356b0914e110824eb8613cbbc76305b16648000",
-  "aliases": 2516,
-  "labels": 1326,
+  "sha256": "07c1c45edc90cbe37f9b5fcf09444619b6b836acb7607cf865784bb943019098",
+  "aliases": 2517,
+  "labels": 1327,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -207,10 +207,10 @@
  },
  "label_item_corrections": {
   "path": "data/final/source_label_item_corrections.csv",
-  "sha256": "ebcce2e178c9ceb3990d6fb7854650a5d2c1cdc792c2b54fefc4cced01433284",
-  "rules": 8,
-  "observed_rows": 106,
-  "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; a period-average row with no year is corrected only when BOTH ends of its period lie in that range). `polity_code` is where the corrected label then resolves, possibly as a `back_cast` before the polity begins. Rules do not chain: test each against the ORIGINAL label."
+  "sha256": "855a2598fbf6b07199d5d9b681dc68dbf0e478007a4a44bf45e5987b03202d77",
+  "rules": 15,
+  "observed_rows": 155,
+  "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; a period-average row with no year is corrected only when BOTH ends of its period lie in that range). `polity_code` is where the corrected label then resolves, possibly as a `back_cast` before the polity begins. `polity_code` = `UNROUTED` means the rows belong to NO polity (a wrong territory with no right one to land on): drop them rather than resolving `correct_label`. Rules do not chain: test each against the ORIGINAL label."
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
@@ -220,8 +220,8 @@
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 398,
-  "polities": 270,
+  "bases": 399,
+  "polities": 271,
   "sources": [
    "fao",
    "iia"

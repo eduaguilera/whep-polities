@@ -631,7 +631,10 @@ BASELINE_COLLIDING_LEXICON_FORMS = 28
 BASELINE_LABEL_SPREAD = 5
 LABEL_SPREAD_FACTOR = 2.0
 
-BASELINE_INERT_LEXICON = 18
+# 18 -> 17 on 2026-09-24 (issue 687): `togo` -> `Togo` was inert because IIA states Togo's area only
+# for 1911 and 1913, before any TGO polity; the new `togo,iia,1884,1919 -> GTO-1884-1920` alias makes
+# it resolve, and the statement (87,200 km2) agrees with German Togoland's polygon (0.96).
+BASELINE_INERT_LEXICON = 17
 
 
 def normalise_label(raw: str) -> str:

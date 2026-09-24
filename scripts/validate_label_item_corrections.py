@@ -23,6 +23,12 @@ WHAT THIS GATE CHECKS, and which arms run where.
        be decided by file order, and a rule whose `correct_label` is another overlapping
        rule's `source_label` would mean different things to a consumer applying them in
        sequence than to the matcher, which never chains. Both are refused.
+    C' unrouting: a rule whose `polity_code` is the sentinel `UNROUTED`
+       (matchlib.LABEL_ITEM_UNROUTED, added 2026-09-24) takes its rows OFF the panel -- for a
+       row that is the wrong territory with no right one to land on (iia `jamaica` cotton
+       1934-1945, the doubled British West Indies total). Its `correct_label` must resolve to
+       NO polity in every year of the rule, and its `source_label` must still resolve to one
+       (else the rule is redundant); arm F then requires every such row to be unrouted.
     C  targets live and agree: `polity_code` is a LIVE polity whose period covers every year
        of the rule (or, for a year before it begins, is reached through a `back_cast` alias), `correct_label` actually resolves to it in every one of those years, and
        `source_label` does NOT (a rule whose label already routes there is redundant and would
@@ -59,8 +65,13 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # was deleted and its rows went back to the territory the source misfiled them under.
 # 6/100 -> 8/106 on 2026-09-24: fao1952 `USSR` rye (2 period rows) and 1937 population (4 rows) are
 # on post-war boundaries while the label's other pre-war items are not (source_conventions.csv).
-BASELINE_RULES = 8
-BASELINE_ROWS = 106
+# 8/106 -> 15/155 on 2026-09-24 (issue 687, the iia raw-extract fingerprint audit): iia `france` eggs
+# that are Saint-Pierre-et-Miquelon's (2 rules, 9 rows), `greece` grapes that are the Dodecanese's
+# (2 rules, 4 rows), `egypt` dry beans that are the Sudan's (1 rule, 4 rows), and the first two
+# UNROUTED rules -- `jamaica` cotton lint and seed 1934-1945, the doubled British West Indies total
+# (16 rows each).
+BASELINE_RULES = 15
+BASELINE_ROWS = 155
 
 
 def main() -> int:
@@ -113,6 +124,20 @@ def main() -> int:
     for r in rules:
         key = (r["source"], r["source_label"], r["item"], r["y0"], r["y1"])
         code = r["polity_code"]
+        if code == matchlib.LABEL_ITEM_UNROUTED:
+            for y in range(r["y0"], r["y1"] + 1):
+                got = matcher.assign(r["correct_label"], None, r["source"], y)[0]
+                if got is not None:
+                    problems.append(
+                        f"{key}: an UNROUTED rule's `{r['correct_label']}` resolves to {got} at "
+                        f"{y} -- the rows would land there instead of leaving the panel")
+                    break
+                if matcher.assign(r["source_label"], None, r["source"], y)[0] is None:
+                    problems.append(
+                        f"{key}: `{r['source_label']}` already resolves to nothing at {y}, so "
+                        "the UNROUTED rule is redundant")
+                    break
+            continue
         if code not in span:
             problems.append(f"{key}: polity_code {code} is not in the database")
             continue
@@ -208,7 +233,10 @@ def main() -> int:
                                          zip(pd.to_numeric(sel["year"], errors="coerce"),
                                              sel["period"])], index=sel.index, dtype=bool)]
                     routed += len(sel)
-                    wrong = sel[sel["whep_code"] != r["polity_code"]]
+                    if r["polity_code"] == matchlib.LABEL_ITEM_UNROUTED:
+                        wrong = sel[sel["whep_code"].notna()]
+                    else:
+                        wrong = sel[sel["whep_code"] != r["polity_code"]]
                     if len(wrong):
                         problems.append(
                             f"{(r['source'], r['source_label'], r['item'])}: {len(wrong)} relabelled "
