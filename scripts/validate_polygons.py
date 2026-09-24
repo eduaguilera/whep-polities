@@ -231,7 +231,13 @@ SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source w
 # with the geometry it is bound to for no gain -- the GADM outline for BES is accurate to 0.99x,
 # unusually good for a small-island outline (see issue 570), so there is nothing to correct.
 # The page says in prose that the figure is the polygon's own measurement.
-BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
+BASELINE_SELF_REFERENTIAL = 105     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
+#
+# 106 -> 105 on 2026-09-24 (issue 660), and NOT because a figure was sourced: the geometry moved.
+# build_database.py now simplifies on a GEOS without the use-after-free that made rebuilds drift,
+# and IRL-1800-1921's polygon came out 53 km2 smaller (84,366 -> 84,313 km2 against a declared
+# 84,433), taking it from -0.079% to -0.142% -- just outside the 0.1% band. Its declared area is
+# still the polygon-era measurement it always was; it simply no longer agrees to 0.1%.
 #
 # 105 -> 106 on 2026-09-01 with MAN-1950-1955 (issue 400). This one cannot be fixed the way the
 # message above asks, and the reason is worth stating rather than absorbing silently. The row

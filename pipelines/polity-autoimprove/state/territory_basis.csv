@@ -100,7 +100,7 @@ BGR-1918-1919,Bulgaria (1918-1919),1918,1919,cshapes-2.0,1918.0,assigned,True,me
 BGR-1919-1940,Bulgaria (1919-1940),1919,1940,cshapes-2.0,1919.0,assigned,True,measured,False,False,stable_confirmed,-0.07,vintage 1919 faithful to period 1919-1940,1282
 BGR-1940-2025,Bulgaria (1940-2025),1940,2025,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.04,single 1940 polygon held across a 85y span (1940-2025); borders may have changed,1115
 BHR-1800-2025,Bahrain,1800,2025,cshapes-2.0,1971.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.01,single 1971 polygon held across a 225y span (1800-2025); borders may have changed,0
-BHS-1800-2025,Bahamas,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,10.21,polygon present but no recorded vintage year,23
+BHS-1800-2025,Bahamas,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,10.14,polygon present but no recorded vintage year,23
 BIH-1992-2025,Bosnia and Herzegovina,1992,2025,cshapes-2.0,1992.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.08,single 1992 polygon held across a 33y span (1992-2025); borders may have changed,0
 BKN-1800-1897,Kingdom of Benin,1800,1897,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 BLI-1833-1960,British Leeward Islands Colony,1833,1960,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,30
@@ -445,7 +445,7 @@ FID-1887-1954,French Indochina,1887,1954,constructed,1920.0,assigned,True,assume
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,cshapes-2.0,1917.0,assigned,True,assumed_constant,True,True,no_reference,,single 1917 polygon held across a 108y span (1809-1917); borders may have changed,411
 FIN-1917-1940,Finland (1917-1940),1917,1940,cshapes-2.0,1917.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1917 faithful to period 1917-1940,598
 FIN-1940-2025,Finland (1940-2025),1940,2025,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1940 polygon held across a 85y span (1940-2025); borders may have changed,775
-FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,3.42,polygon present but no recorded vintage year,520
+FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,3.39,polygon present but no recorded vintage year,520
 FLK-1833-2025,Falkland Islands,1833,2025,gadm-4.1-adm0,2023.0,proxy,True,assumed_constant,True,True,no_reference,,single 2023 polygon held across a 192y span (1833-2025); borders may have changed,25
 FRA-02-1800-2025,Aisne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-04-1790-2025,Alpes-de-Haute-Provence (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1047,7 +1047,7 @@ SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,cshapes-2.0,1
 SGP-1965-2025,Singapore,1965,2025,cshapes-2.0,1965.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.08,single 1965 polygon held across a 60y span (1965-2025); borders may have changed,0
 SGS-1800-2025,South Georgia and the South Sandwich Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,gadm-4.1-adm1,2024.0,assigned,True,back_projected,True,True,no_reference,,polygon vintage 2024 is AFTER the period ends (1967) — later/modern border applied back,15
-SLB-1800-2025,Solomon Islands,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,changed,42.95,polygon present but no recorded vintage year,30
+SLB-1800-2025,Solomon Islands,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,changed,42.82,polygon present but no recorded vintage year,30
 SLE-1800-1886,Sierra Leone,1800,1886,cshapes-2.0,1895.0,assigned,True,back_projected,True,False,no_reference,,polygon vintage 1895 is AFTER the period ends (1886) — later/modern border applied back,0
 SLE-1886-1889,Sierra Leone (1886-1889),1886,1889,cshapes-2.0,1886.0,assigned,True,measured,False,False,stable_confirmed,-0.09,vintage 1886 faithful to period 1886-1889,0
 SLE-1889-1961,Sierra Leone (1889-1961),1889,1961,cshapes-2.0,1895.0,assigned,True,assumed_constant,False,False,stable_confirmed,0.03,"single 1895 polygon held across a 72y span (1889-1961); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.03%), so the single polygon is not an assumption",218
