@@ -837,6 +837,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_references.py
 
+      - name: A page's polygon-status headline agrees with its own frontmatter
+        if: '!cancelled()'
+        run: python3 scripts/validate_polygon_status_prose.py
+
       - name: No polity can shadow a sibling via family ordering
         if: '!cancelled()'
         run: python3 scripts/audit_family_shadowing.py

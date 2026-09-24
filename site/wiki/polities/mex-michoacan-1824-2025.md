@@ -41,9 +41,11 @@ This entry represents the Mexican state of Michoacán, one of the original 19 st
 
 ## Territorial extent
 
-**Polygon status:** Not yet assigned. No polygon feature could be attached at creation time, though the correct registered source is identified: `gadm-4.1-adm1` publishes Mexican state boundaries under `GID_1` codes (Michoacán would be `MEX.16_1`), but the repository's local copy of that GeoPackage under data/geodata/gadm-4.1/ is a curated subset covering 81 countries that excludes Mexico entirely (0 features for MEX). This is the `registered_source_unfetched` case: the source is correctly identified and registered, it just has not been fetched/added locally for this country. `polygon_source` is set to `gadm-4.1-adm1` (the slug, not the route name) with `polygon_feature_id` left null and `polygon_status: unassigned` until that local gap is closed.
+**Polygon status:** `assigned` — `gadm-4.1-adm1` feature `MEX.16_1`, bound on 2026-09-09 in commit 433a81a; the shipped geometry measures 58,594 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). Older text below that describes the polygon as missing predates that binding and is kept as the record of what blocked it.
 
-**Territory description:** Michoacán is a Mexican state on the Pacific coast of west-central Mexico, bordered by Jalisco, Guanajuato, Querétaro, México State, and Guerrero, with a Pacific coastline in the south. Its capital is Morelia. The modern state covers approximately 58,600 km², making it one of Mexico's mid-sized states (roughly the area of Croatia). This figure is drawn from present-day state statistics, not measured from any polygon attached to this entry (none is attached yet), and is offered only so a reader can locate and size the territory on a modern map. The state's historical boundaries have shifted somewhat since 1824 -- portions of its original territory were involved in 19th-century adjustments with neighboring states such as Colima, Guerrero, and Jalisco -- so the modern ~58,600 km² figure should not be assumed to hold exactly for the earliest years of this entry's span; see the open question on boundary vintage.
+**Polygon status (superseded 2026-09-24, kept as the record of what blocked it):** Not yet assigned. No polygon feature could be attached at creation time, though the correct registered source is identified: `gadm-4.1-adm1` publishes Mexican state boundaries under `GID_1` codes (Michoacán would be `MEX.16_1`), but the repository's local copy of that GeoPackage under data/geodata/gadm-4.1/ is a curated subset covering 81 countries that excludes Mexico entirely (0 features for MEX). This is the `registered_source_unfetched` case: the source is correctly identified and registered, it just has not been fetched/added locally for this country. `polygon_source` is set to `gadm-4.1-adm1` (the slug, not the route name) with `polygon_feature_id` left null and `polygon_status: unassigned` until that local gap is closed.
+
+**Territory description:** Michoacán is a Mexican state on the Pacific coast of west-central Mexico, bordered by Jalisco, Guanajuato, Querétaro, México State, and Guerrero, with a Pacific coastline in the south. Its capital is Morelia. The modern state covers approximately 58,600 km², making it one of Mexico's mid-sized states (roughly the area of Croatia). This figure is drawn from present-day state statistics, not measured from any polygon attached to this entry (none is attached yet), and is offered only so a reader can locate and size the territory on a modern map. The state's historical boundaries have shifted somewhat since 1824 -- portions of its original territory were involved in 19th-century adjustments with neighboring states such as Colima, Guerrero, and Jalisco -- so the modern ~58,600 km² figure should not be assumed to hold exactly for the earliest years of this entry's span; see the open question on boundary vintage. *(Superseded 2026-09-24: a polygon is now attached — `gadm-4.1-adm1` feature `MEX.16_1`, 58,594 km² as shipped; see the Polygon status line under Territorial extent.)*
 
 ## Predecessors and successors
 
@@ -52,7 +54,7 @@ Michoacán has no predecessor polity in this table: it is a founding state of th
 ## Sourced claims
 
 - Michoacán was one of the original 19 states named in the Constitution of 1824, which established the United Mexican States as a federal republic (Acta Constitutiva de la Federación Mexicana, 1824).
-- GADM 4.1's admin-1 layer for Mexico assigns Michoacán the GID_1 code MEX.16_1, but the repository's local extract of that dataset at data/geodata/gadm-4.1/ currently contains zero MEX features (confirmed by the routing decision's polygon_reasoning field, which reports the local file is an 81-country curated subset excluding MEX).
+- GADM 4.1's admin-1 layer for Mexico assigns Michoacán the GID_1 code MEX.16_1, but the repository's local extract of that dataset at data/geodata/gadm-4.1/ currently contains zero MEX features (confirmed by the routing decision's polygon_reasoning field, which reports the local file is an 81-country curated subset excluding MEX). *(Superseded 2026-09-24: a polygon is now attached — `gadm-4.1-adm1` feature `MEX.16_1`, 58,594 km² as shipped; see the Polygon status line under Territorial extent.)*
 
 ## Decisions
 
@@ -74,6 +76,8 @@ The polity table has two national MEX rows: MEX-1800-1848 (Mexico to 1848) and M
 
 The routing decision's polygon_route is registered_source_unfetched: gadm-4.1-adm1 is a registered source and does publish Mexican state boundaries under GID_1 codes (e.g. MEX.16_1 for Michoacán), but the local copy at data/geodata/gadm-4.1/ is a curated 81-country subset that excludes MEX entirely (0 features for that country). Per the routing instructions, when the route is registered_source_unfetched the slug IS the polygon_source (gadm-4.1-adm1), polygon_feature_id is left null since no feature can be identified from what's on disk, and polygon_status is unassigned rather than new_source_needed or none, which were both explicitly rejected by validate_declared_sources for this exact situation.
 
+**SUPERSEDED 2026-09-24.** The missing polygon recorded here no longer holds: `gadm-4.1-adm1` feature `MEX.16_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 58,594 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The decision text is kept as the record of the state it described.
+
 ## Open questions
 
 ### oq-gadm-mex-not-fetched
@@ -81,6 +85,8 @@ The routing decision's polygon_route is registered_source_unfetched: gadm-4.1-ad
 **Local GADM 4.1 admin-1 file excludes Mexico entirely**
 
 The repository's copy of gadm-4.1-adm1.gpkg under data/geodata/gadm-4.1/ is a curated 81-country subset and has zero features for MEX, even though GADM 4.1 globally does publish Mexican state boundaries (GID_1 codes like MEX.16_1 for Michoacán). Until MEX is added to that local extract, or the full global GADM 4.1 admin-1 layer is fetched, no polygon_feature_id can be assigned here and polygon_status must stay unassigned. This blocks not just Michoacán but any other Mexican state entries this pipeline creates later -- worth fetching the MEX slice once rather than re-discovering this gap per state.
+
+**RESOLVED 2026-09-24.** The polygon this question was waiting for is attached: `gadm-4.1-adm1` feature `MEX.16_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 58,594 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The text above is kept as the record of what blocked it.
 
 ### oq-boundary-changes-since-1824
 

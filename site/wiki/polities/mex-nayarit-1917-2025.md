@@ -33,7 +33,9 @@ Nayarit is a constituent state of the Mexican federation on the Pacific coast of
 
 ## Territorial extent
 
-**Polygon status:** Not yet assigned. No polygon has been fetched for this period; `polygon_source: gadm-4.1-adm1` names the registered source that should eventually supply it (GADM 4.1's admin-1 layer, the standard modern first-order administrative boundary dataset), but the locally cached GADM 4.1 subset in this repository's `data/geodata/gadm-4.1/gadm41_adm1.gpkg` covers only 81 countries and Mexico is not one of them. `polygon_feature_id` is left null and `polygon_status` is `unassigned` (registered_source_unfetched) rather than `assigned`, pending that fetch and the confirmation of which GID_1 feature is Nayarit.
+**Polygon status:** `assigned` — `gadm-4.1-adm1` feature `MEX.18_1`, bound on 2026-09-09 in commit 433a81a; the shipped geometry measures 28,104 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). Older text below that describes the polygon as missing predates that binding and is kept as the record of what blocked it.
+
+**Polygon status (superseded 2026-09-24, kept as the record of what blocked it):** Not yet assigned. No polygon has been fetched for this period; `polygon_source: gadm-4.1-adm1` names the registered source that should eventually supply it (GADM 4.1's admin-1 layer, the standard modern first-order administrative boundary dataset), but the locally cached GADM 4.1 subset in this repository's `data/geodata/gadm-4.1/gadm41_adm1.gpkg` covers only 81 countries and Mexico is not one of them. `polygon_feature_id` is left null and `polygon_status` is `unassigned` (registered_source_unfetched) rather than `assigned`, pending that fetch and the confirmation of which GID_1 feature is Nayarit.
 
 **Territory description:** Nayarit occupies Mexico's Pacific coast in the country's west, immediately northwest of Jalisco and Guadalajara, south of Sinaloa and Durango, and west of Zacatecas. Its terrain runs from coastal lowlands and the Marías Islands (Islas Marías) offshore in the Pacific up through the Sierra Madre Occidental foothills inland. The modern state covers approximately 27,800 km2 (INEGI's official figure for Nayarit is 27,857 km2), making it one of Mexico's smaller states by area. No polygon-derived measurement is attached to this entry yet, so this km2 figure is drawn from the modern administrative boundary as published by Mexico's national statistics institute (INEGI), not measured from any geometry in this repository. Nayarit's state boundary has been essentially stable since the 1917 admission aside from minor municipal-level adjustments, so a GADM adm1 feature fetched for the present day should serve as a low-risk proxy across the full 1917-2025 span once fetched.
 
@@ -66,6 +68,8 @@ Nayarit was the Territorio de Tepic, a federal territory carved from Jalisco in 
 
 The routing decision's polygon_route is registered_source_unfetched: GADM 4.1 adm1 is registered in scripts/sources.yaml but the local subset file (data/geodata/gadm-4.1/gadm41_adm1.gpkg) covers only 81 countries and Mexico is not among them. Per the harness rule for this route, the slug itself is the source and polygon_status is unassigned (not new_source_needed, which would misstate that GADM isn't registered at all, and not assigned, since no feature has actually been fetched). polygon_feature_id is left null pending that fetch.
 
+**SUPERSEDED 2026-09-24.** The missing polygon recorded here no longer holds: `gadm-4.1-adm1` feature `MEX.18_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 28,104 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The decision text is kept as the record of the state it described.
+
 ## Open questions
 
 ### oq-tepic-pre1917-gap
@@ -79,3 +83,5 @@ The data underlying this entry likely includes rows for Nayarit/Tepic before 191
 **GADM 4.1 adm1 boundary for Nayarit has not actually been fetched or verified**
 
 polygon_status is unassigned because the local GADM 4.1 adm1 subset (data/geodata/gadm-4.1/gadm41_adm1.gpkg) does not include Mexico at all (0 of the 81 covered countries). Fetching Mexico's adm1 layer and confirming which GID_1 feature corresponds to Nayarit (expected around GID_1 'MEX.18_1' by alphabetical convention in GADM 3.6/4.1, but this must be verified against the actual attribute table once fetched, not assumed) is required before polygon_status can move to assigned. Separately, the exact 1917 admission date (26 January per secondary sources consulted) has not been checked against a primary Diario Oficial or Mexican constitutional-history source in this session, so start_year could in principle need a one-year adjustment if that date is wrong.
+
+**RESOLVED 2026-09-24.** The polygon this question was waiting for is attached: `gadm-4.1-adm1` feature `MEX.18_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 28,104 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The text above is kept as the record of what blocked it.

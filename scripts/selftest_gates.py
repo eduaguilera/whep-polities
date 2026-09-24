@@ -1122,6 +1122,46 @@ def mutate_title_period_contradiction(root, gpd, make_valid, affinity):
     return "headed fra-1919-2025.md 'France (to 1940)' on a 1919-2025 row"
 
 
+def mutate_live_link_into_superseded_row(root, gpd, make_valid, affinity):
+    """Point a live page's chain at a superseded row, saying nothing about it.
+
+    This is check 4b's defect: FRA-1800-1919 was split into FRA-1800-1871 and FRA-1871-1919,
+    its page still exists (so check 4's broken-link test is satisfied), and a reader who follows
+    the link lands on a row the database no longer uses. Before 2026-09-24, 57 such lines sat on
+    live pages. fra-1919-2025 is used because its real predecessor is the live FRA-1871-1919, so
+    the mutation is exactly the stale-chain shape and nothing else.
+    """
+    page = os.path.join(root, "wiki/polities/fra-1919-2025.md")
+    with open(page, encoding="utf-8") as fh:
+        text = fh.read()
+    marker = "\n## Territorial extent"
+    assert marker in text, "no Territorial extent section in the France page"
+    line = "\nPredecessor: [fra-1800-1919](fra-1800-1919.md) -- France before Versailles.\n"
+    with open(page, "w", encoding="utf-8") as fh:
+        fh.write(text.replace(marker, line + marker, 1))
+    return "gave fra-1919-2025.md a Predecessor: line linking the superseded fra-1800-1919.md"
+
+
+def mutate_polygon_headline_denies_its_binding(root, gpd, make_valid, affinity):
+    """Open a bound page's Territorial extent with the template's 'Not yet assigned'.
+
+    The defect the 2026-09-09 bulk bindings left on ~320 pages: the frontmatter gained a polygon
+    and the prose headline kept saying there was none. fra-1919-2025 ships a CShapes polygon
+    (`polygon_status: assigned`), so a headline saying otherwise is a contradiction by
+    construction.
+    """
+    page = os.path.join(root, "wiki/polities/fra-1919-2025.md")
+    with open(page, encoding="utf-8") as fh:
+        text = fh.read()
+    marker = "## Territorial extent\n"
+    assert marker in text, "no Territorial extent section in the France page"
+    stale = ("**Polygon status:** Not yet assigned. No polygon is available in the GeoPackage "
+             "for this period.\n\n")
+    with open(page, "w", encoding="utf-8") as fh:
+        fh.write(text.replace(marker, marker + "\n" + stale, 1))
+    return "opened fra-1919-2025.md's Territorial extent with 'Polygon status: Not yet assigned'"
+
+
 def mutate_page_back_to_a_stub(root, gpd, make_valid, affinity):
     """Gut a documented, data-receiving page back to the CSV-derived stub it started as.
 
@@ -6097,6 +6137,21 @@ CASES = (
         "the database while naming no code at all",
     ),
     (
+        "validate_references.py",
+        mutate_live_link_into_superseded_row,
+        "fra-1800-1919.md",
+        "a live Predecessor: line linking a superseded row's page -- the page exists, so the "
+        "broken-link check is satisfied, and a reader following the chain lands on a row the "
+        "database no longer uses",
+    ),
+    (
+        "validate_polygon_status_prose.py",
+        mutate_polygon_headline_denies_its_binding,
+        "fra-1919-2025",
+        "a polygon-status headline saying 'Not yet assigned' on a page whose frontmatter binds a "
+        "polygon -- the shape ~320 pages were left in when bulk commits changed only frontmatter",
+    ),
+    (
         "validate_code_year_agreement.py",
         mutate_code_year_disagreement,
         "FRA-1800-1871",
@@ -7008,6 +7063,8 @@ WRITABLE = {
     # Rewrites a PAGE, so wiki/polities must be a real copy; the CSV is only read, but the
     # gate needs `wiki/polities` staged at all or it sees zero pages and cannot fire.
     "validate_references.py": ("wiki/polities",),
+    # Rewrites a PAGE (fra-1919-2025) and reads nothing else, so wiki/polities must be a real copy.
+    "validate_polygon_status_prose.py": ("wiki/polities",),
     # Rewrites one row's polygon_source, so the CSV must be a real copy -- the fifth time
     # this list has been the difference between a self-test and a write into the committed
     # database.
