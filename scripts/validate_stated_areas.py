@@ -487,7 +487,7 @@ SOURCE_NOTES = {
         "polygon is 28,624. Albania is about 28,750 km2, so the ~28,000 figures are right and 45,000 is "
         "wrong -- appearing, disappearing and reappearing, which is the product-switch shape "
         "(21_item_product_switches.py) applied to an area column rather than a single bad edition.",
-    ("ECU-1800-1942", "iia"):
+    ("ECU-1830-1942", "iia"):
         "A CLAIM, NOT A DEFECT AND NOT A BOUNDARY CHANGE. `EQUATEUR` reads 307,243 km2 in four "
         "editions, 451,180 in 1932, 306,644 in 1933 and 714,860 in 1937; our polygon is 341,715, "
         "closest to the 307,243 cluster. 714,860 km2 is Ecuador's CLAIMED Amazon territory before the "

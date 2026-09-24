@@ -107,10 +107,16 @@ BASELINE = frozenset({
     # has been told are related, so it will happily confirm that a nonexistent relationship spans
     # a plausible distance. validate_chain_integrity.py asks the prior question -- does this link
     # make sense as chronology at all -- and the 8 entries dissolved rather than being explained.
-    ("CAR-1920-1945", "predecessor", "JPN-1895-1945"),
+    # 2026-09-24: the two JPN-1895-1945 entries for the Carolines are gone because the links are:
+    # GCAR-1899-1914 -> CAR-1920-1945 is the real succession (German Carolines -> Japanese mandate),
+    # and it replaced the detour through the Japanese Empire row. The new pair is disjoint for a
+    # PROXY reason, not a historical one: GCAR borrows the GADM Palau polygon (the western
+    # Carolines) and CAR borrows the GADM Micronesia polygon (the central and eastern Carolines).
+    # Both rows are the whole archipelago, and neither proxy is.
+    ("CAR-1920-1945", "predecessor", "GCAR-1899-1914"),
     ("CXR-1946-1958", "predecessor", "GBM-1895-1946"),
     ("GCAR-1899-1914", "predecessor", "DEU-1871-1919"),
-    ("GCAR-1899-1914", "successor", "JPN-1895-1945"),
+    ("GCAR-1899-1914", "successor", "CAR-1920-1945"),
     # ("HAWI-1898-1959", "successor", "USA-1959-2025") REMOVED 2026-08-13 (issue 100).
     # The pair now INTERSECTS, and the reason is instructive: this entry was never about
     # Pacific distance, it was recording a wrong polygon. USA-1959-2025's binding was

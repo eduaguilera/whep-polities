@@ -393,9 +393,9 @@
     "confidence": "medium",
     "container_chain": [
       {
-        "code": "ECU-1800-1942",
+        "code": "ECU-1830-1942",
         "end_year": 1942,
-        "start_year": 1800
+        "start_year": 1830
       },
       {
         "code": "ECU-1942-2025",
@@ -405,7 +405,7 @@
     ],
     "country": "Ecuador",
     "evidence_used": [
-      "National rows ECU-1800-1942 (1800-1942) and ECU-1942-2025 (1942-2025) provide the only container chain and open-end evidence.",
+      "National rows ECU-1830-1942 (1800-1942) and ECU-1942-2025 (1942-2025) provide the only container chain and open-end evidence.",
       "Panel shows exactly one unit, 'Ecuador', at admin_level admin1, with data coverage 1900-2023 (not used as span basis).",
       "No existing subnational rows exist for ECU, so there is no precedent to corroborate or contradict."
     ],
@@ -414,7 +414,7 @@
     "open_end_year": 2025,
     "reasoning": "This 'country' has only a single reporting unit named 'Ecuador' itself, meaning the panel is not really subdividing the nation into provinces/departments but is reporting at the national level under an admin1 label. There is no documented subnational reform, reorganisation, or founding date to serve as a floor independent of the country's own national history. The only defensible container evidence is the two national rows (1800-1942 renamed segment, then 1942-2025), so the single unit's span must equal the full container chain range rather than being pinned to the later segment or to the data-coverage window (1900-2023), which is an artifact of the source extract, not the administrative history.",
     "system_name": "Ecuador national reporting (single admin1-labeled unit spanning the whole country)",
-    "system_start_basis": "1800 is the earliest year Ecuador appears as a distinct national row (ECU-1800-1942) in the container chain; there is no evidence of an internal administrative reform creating this single reporting unit at any later date, so the national row's own start is the only defensible floor.",
+    "system_start_basis": "1800 is the earliest year Ecuador appears as a distinct national row (ECU-1830-1942) in the container chain; there is no evidence of an internal administrative reform creating this single reporting unit at any later date, so the national row's own start is the only defensible floor.",
     "system_start_year": 1800,
     "unit_start_exceptions": [],
     "unit_start_rule": "Because there is exactly one unit and it is coextensive with the country itself, its start_year equals the start of the earliest containing national row (1800), with no per-unit variation possible since there are no other units to differentiate."
@@ -1044,21 +1044,21 @@
     "confidence": "medium",
     "container_chain": [
       {
-        "code": "VEN-1821-2025",
+        "code": "VEN-1830-2025",
         "end_year": 2025,
-        "start_year": 1821
+        "start_year": 1830
       }
     ],
     "country": "Venezuela",
     "evidence_used": [
-      "National row VEN-1821-2025 spanning 1821-2025 is the only container available",
+      "National row VEN-1830-2025 spanning 1821-2025 is the only container available",
       "Panel contains a single admin1 unit named 'Venezuela' with data coverage 1900-2023, which is not a basis for the span per instructions",
       "No existing subnational precedent rows for VEN"
     ],
     "naming_pattern": null,
-    "open_end_basis": "The containing national row VEN-1821-2025 ends in 2025 (exclusive), so no unit can be reported as current beyond that year; using the container's own end_year rather than a round number or the data's last observed year (2023).",
+    "open_end_basis": "The containing national row VEN-1830-2025 ends in 2025 (exclusive), so no unit can be reported as current beyond that year; using the container's own end_year rather than a round number or the data's last observed year (2023).",
     "open_end_year": 2025,
-    "reasoning": "The panel for Venezuela contains only a single unit, itself labeled 'Venezuela' at admin_level 'admin1' \u2014 this is not a genuine subnational subdivision (state/province) but appears to be the country-level entity duplicated at admin1, with no real precedent for provincial-level spans. Since there is no evidence of an actual documented state-creation reform driving this single unit's span, and no sibling subnational rows exist for corroboration, the safest and only defensible convention is to treat this lone 'admin1' unit as coextensive with the national container itself: it starts and ends exactly when the country row VEN-1821-2025 does. This avoids inventing a false administrative reform date (e.g. guessing at Venezuela's 1864 federal reorganization or the current 23-state series) when the panel gives no basis to distinguish this unit from the country as a whole. If future units are added representing real Venezuelan states (e.g. Zulia, T\u00e1chira), the system_start_year and unit_start_rule here should be revisited then with proper evidence about state formation dates.",
+    "reasoning": "The panel for Venezuela contains only a single unit, itself labeled 'Venezuela' at admin_level 'admin1' \u2014 this is not a genuine subnational subdivision (state/province) but appears to be the country-level entity duplicated at admin1, with no real precedent for provincial-level spans. Since there is no evidence of an actual documented state-creation reform driving this single unit's span, and no sibling subnational rows exist for corroboration, the safest and only defensible convention is to treat this lone 'admin1' unit as coextensive with the national container itself: it starts and ends exactly when the country row VEN-1830-2025 does. This avoids inventing a false administrative reform date (e.g. guessing at Venezuela's 1864 federal reorganization or the current 23-state series) when the panel gives no basis to distinguish this unit from the country as a whole. If future units are added representing real Venezuelan states (e.g. Zulia, T\u00e1chira), the system_start_year and unit_start_rule here should be revisited then with proper evidence about state formation dates.",
     "system_name": "Venezuela single admin1 unit (coextensive with national territory)",
     "system_start_basis": "No documented subnational reform is evidenced in the panel; the only container is the national row itself, so the floor is set to the national row's own start_year (1821), since the single admin1 unit cannot predate the country it is coextensive with.",
     "system_start_year": 1821,

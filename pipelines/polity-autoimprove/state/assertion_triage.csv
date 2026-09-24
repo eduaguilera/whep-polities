@@ -169,7 +169,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 168,finland|fao1952|1947-1951,Finland,fao1952,FIN-1940-2025,pending,name,167,1947-1951,5,1940-2025,national,draft,assigned,False,False,False,False,,False,weak_route
 169,madagascar|fao1952|1938-1951,Madagascar,fao1952,MDG-1882-2025,pending,name,166,1938-1951,7,1882-2025,national,draft,assigned,False,False,False,False,,False,weak_route
 170,portugal|fao1952|1934-1951,Portugal,fao1952,PRT-1800-2025,pending,name,165,1934-1951,8,1800-2025,national,draft,assigned,False,False,False,False,,False,weak_route
-171,venezuela|fao1952|1937-1951,Venezuela,fao1952,VEN-1821-2025,pending,name,151,1937-1951,7,1821-2025,national,draft,assigned,False,False,False,False,,False,weak_route
+171,venezuela|fao1952|1937-1951,Venezuela,fao1952,VEN-1830-2025,pending,name,151,1937-1951,7,1821-2025,national,draft,assigned,False,False,False,False,,False,weak_route
 172,colombia|fao1952|1937-1951,Colombia,fao1952,COL-1922-2025,pending,name,150,1937-1951,5,1922-2025,national,reviewed,assigned,True,False,False,False,,False,weak_route
 173,ethiopia|fao1952|1948-1951,Ethiopia,fao1952,ETH-1941-1952,pending,name,150,1948-1951,4,1941-1952,national,draft,assigned,False,False,False,False,,False,weak_route
 174,iran|fao1952|1937-1951,Iran,fao1952,IRN-1828-2025,pending,name,148,1937-1951,5,1828-2025,national,draft,assigned,False,False,False,False,,False,weak_route
@@ -226,7 +226,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 225,peru|fao1952|1929-1938,Peru,fao1952,PER-1922-1942,pending,name,32,1929-1938,3,1922-1942,national,draft,assigned,False,False,False,False,,False,weak_route
 226,palestine|fao1952|1937-1938,Palestine,fao1952,PAL-1920-1948,pending,name,25,1937-1938,2,1920-1948,national,draft,assigned,False,False,False,False,,False,weak_route
 227,lebanon|fao1952|1937-1938,Lebanon,fao1952,LBN-1920-1944,pending,name,24,1937-1938,2,1920-1944,national,draft,assigned,False,False,False,False,,False,weak_route
-228,ecuador|fao1952|1937-1939,Ecuador,fao1952,ECU-1800-1942,pending,name,20,1937-1939,3,1800-1942,national,draft,assigned,False,False,False,False,,False,weak_route
+228,ecuador|fao1952|1937-1939,Ecuador,fao1952,ECU-1830-1942,pending,name,20,1937-1939,3,1800-1942,national,draft,assigned,False,False,False,False,,False,weak_route
 229,british cameroons|fao1952|1937-1951,British Cameroons,fao1952,BCM-1916-1961,pending,name,19,1937-1951,5,1916-1961,colonial,draft,assigned,False,False,False,False,,False,weak_route
 230,taiwan|fao1952|1949-1951,Taiwan,fao1952,TWN-1945-2025,pending,name,19,1949-1951,3,1945-2025,national,draft,assigned,False,False,False,False,,False,weak_route
 231,saudi arabia|fao1952|1937-1951,Saudi Arabia,fao1952,SAU-1924-2025,pending,name,18,1937-1951,5,1924-2025,national,draft,assigned,False,False,False,False,,False,weak_route
@@ -282,7 +282,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 281,romania|juan|1940-1946,romania,juan,ROU-1940-1947,pending,applied_alias,327,1940-1946,7,1940-1947,national,reviewed,proxy,True,False,False,False,high,False,precedent
 282,france|fao1952|1937-1951,France,fao1952,FRA-1919-2025,pending,applied_alias,324,1937-1951,7,1919-2025,national,draft,assigned,False,False,False,False,high,False,precedent
 283,france|iia|1919-1945,france,iia,FRA-1919-2025,pending,applied_alias,322,1919-1945,24,1919-2025,national,draft,assigned,False,False,False,False,high,True,precedent
-284,venezuela|mitchell|1873-1960,venezuela,mitchell,VEN-1821-2025,pending,iso,317,1873-1960,71,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
+284,venezuela|mitchell|1873-1960,venezuela,mitchell,VEN-1830-2025,pending,iso,317,1873-1960,71,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
 285,tunisia|iia|1909-1945,tunisia,iia,TUN-1881-2025,pending,iso,313,1909-1945,34,1881-2025,national,draft,assigned,False,False,False,False,,True,precedent
 286,australia|fao1952|1937-1951,Australia,fao1952,AUS-1901-2025,pending,applied_alias,303,1937-1951,8,1901-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
 287,algeria|mitchell|1902-1918,algeria,mitchell,DZA-1902-1919,pending,applied_alias,297,1902-1918,17,1902-1919,national,draft,assigned,False,False,False,False,high,False,precedent
@@ -387,7 +387,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 386,romania|fao1952|1937-1939,Romania,fao1952,ROU-1920-1940,pending,applied_alias,54,1937-1939,3,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
 387,bulgaria|fao1952|1947-1951,Bulgaria,fao1952,BGR-1940-2025,pending,applied_alias,53,1947-1951,4,1940-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
 388,sudan|mitchell|1956-1960,sudan,mitchell,SUD-1956-2011,pending,applied_alias,53,1956-1960,5,1956-2011,national,draft,assigned,False,False,False,False,medium,False,precedent
-389,venezuela|iia|1910-1945,venezuela,iia,VEN-1821-2025,pending,iso,50,1910-1945,14,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
+389,venezuela|iia|1910-1945,venezuela,iia,VEN-1830-2025,pending,iso,50,1910-1945,14,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
 390,russian federation|iia|1914-1916,russian federation,iia,F228-1914-1917,pending,applied_alias,49,1914-1916,3,1914-1917,national,draft,assigned,False,False,False,False,high,False,precedent
 391,france|mitchell|1850-1870,france,mitchell,FRA-1800-1871,pending,applied_alias,48,1850-1870,21,1800-1871,national,draft,assigned,False,False,False,False,high,False,precedent
 392,latvia|iia|1923-1939,latvia,iia,LVA-1918-1940,pending,iso,48,1923-1939,12,1918-1940,national,draft,assigned,False,False,False,False,,True,precedent
@@ -621,7 +621,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 620,hungary|juan|1940-1943,hungary,juan,HUN-1940-1944,pending,iso,176,1940-1943,4,1940-1944,national,draft,proxy,False,False,False,False,,False,bulk
 621,iran|iia|1913-1945,iran,iia,IRN-1828-2025,pending,iso,173,1913-1945,21,1828-2025,national,draft,assigned,False,False,False,False,,False,bulk
 622,chile|iia|1909-1945,chile,iia,CHL-1902-2025,pending,iso,172,1909-1945,30,1902-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-623,ecuador|juan|1900-1941,ecuador,juan,ECU-1800-1942,pending,iso,171,1900-1941,42,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
+623,ecuador|juan|1900-1941,ecuador,juan,ECU-1830-1942,pending,iso,171,1900-1941,42,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
 624,canada|iia|1909-1945,canada,iia,CAN-1886-1949,reopened,iso,170,1909-1945,34,1886-1949,national,draft,assigned,False,False,False,False,,False,bulk
 625,chile|juan|1860-1883,chile,juan,CHL-1810-1884,pending,iso,168,1860-1883,24,1810-1884,national,draft,unassigned,False,False,False,False,,False,bulk
 626,montserrat|iia|1909-1945,montserrat,iia,MSR-1800-2025,pending,iso,166,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
@@ -635,7 +635,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 634,french west africa|fao1952|1937-1951,French West Africa,fao1952,AOF-1895-1960,pending,applied_alias,150,1937-1951,7,1895-1960,national,draft,assigned,False,False,False,False,,False,bulk
 635,eritrea|iia|1922-1938,eritrea,iia,ERI-1889-1952,pending,iso,149,1922-1938,14,1889-1952,national,draft,assigned,False,False,False,False,,False,bulk
 636,guinea|mitchell|1921-1957,guinea,mitchell,GIN-1894-1958,pending,iso,148,1921-1957,36,1894-1958,national,draft,assigned,False,False,False,False,,False,bulk
-637,ecuador|mitchell|1881-1941,ecuador,mitchell,ECU-1800-1942,pending,iso,147,1881-1941,61,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
+637,ecuador|mitchell|1881-1941,ecuador,mitchell,ECU-1830-1942,pending,iso,147,1881-1941,61,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
 638,grenada|iia|1909-1945,grenada,iia,GRD-1800-2025,pending,iso,146,1909-1945,34,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
 639,germany|juan|1945-1948,germany,juan,DEU-1945-1949,pending,iso,141,1945-1948,4,1945-1949,national,draft,assigned,False,False,False,False,,False,bulk
 640,brazil|iia|1910-1945,brazil,iia,BRA-1909-2025,pending,iso,138,1910-1945,25,1909-2025,national,draft,assigned,False,False,False,False,,False,bulk
@@ -718,7 +718,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 717,chad|mitchell|1930-1959,chad,mitchell,TCD-1919-1960,pending,iso,40,1930-1959,29,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
 718,morocco|mitchell|1958-1960,morocco,mitchell,MAR-1958-1975,pending,iso,40,1958-1960,3,1958-1975,national,draft,assigned,False,False,False,False,,False,bulk
 719,panama|iia|1912-1945,panama,iia,PAN-1903-1979,pending,iso,40,1912-1945,27,1903-1979,national,draft,assigned,False,False,False,False,,False,bulk
-720,ecuador|iia|1913-1941,ecuador,iia,ECU-1800-1942,pending,iso,38,1913-1941,13,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
+720,ecuador|iia|1913-1941,ecuador,iia,ECU-1830-1942,pending,iso,38,1913-1941,13,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
 721,gambia|mitchell|1922-1960,gambia,mitchell,GMB-1800-2025,pending,iso,38,1922-1960,38,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
 722,germany|juan|1866-1870,germany,juan,DEU-1866-1871,pending,iso,37,1866-1870,5,1866-1871,national,draft,assigned,False,False,False,False,,False,bulk
 723,peru|mitchell|1909-1921,peru,mitchell,PER-1909-1922,pending,iso,36,1909-1921,12,1909-1922,national,reviewed,assigned,True,False,False,False,,False,bulk

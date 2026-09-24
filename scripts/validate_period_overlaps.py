@@ -146,6 +146,14 @@ BASELINE_CROSS_FAMILY = frozenset({
     ("BGD-1947-1971", "PAK-1947-1949"),                 #   2y 1947-1949
     ("BGD-1947-1971", "PAK-1949-1971"),                 #  22y 1949-1971
     ("BGD-1971-2025", "PAK-1971-2025"),                 #  54y 1971-2025
+    # Colombia and Panama (added 2026-09-24): different ground after 1903. The pairs arrived
+    # because COL-1830-1903 now names PAN-1903-1979 and CZN-1903-1979 as successors. Panama and
+    # the Canal Zone were carved out of it in 1903, and the ISO3 successor map now answers
+    # PAN 1850-1902 with COL-1830-1903 where it had answered nothing. The overlap is not new;
+    # the territory link this check reads is. Post-1903 Colombia's polygons exclude the isthmus.
+    ("COL-1903-1922", "PAN-1903-1979"),                 #  19y 1903-1922
+    ("COL-1922-2025", "PAN-1903-1979"),                 #  57y 1922-1979
+    ("COL-1922-2025", "PAN-1979-2025"),                 #  46y 1979-2025
     # China against Taiwan and Manchukuo: disjoint ground held concurrently.
     ("CHN-1895-1913", "TWN-1895-1945"),                 #  18y 1895-1913
     ("CHN-1913-1914", "TWN-1895-1945"),                 #   1y 1913-1914
