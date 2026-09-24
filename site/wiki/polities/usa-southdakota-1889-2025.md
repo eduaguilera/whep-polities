@@ -52,6 +52,25 @@ No predecessor or successor polity row is set. Before 1889, South Dakota's terri
 
 ## Decisions
 
+### d-658-pre-1889-years-stay-back-cast
+
+**The 1879-1888 years stay `back_cast`; no Dakota Territory row is created (issue 658, 2026-09-24)**
+
+Issue 658 asked whether the pre-statehood years should move to a territory row, as they did for
+Washington, Idaho, Montana, Wyoming, Utah, New Mexico, Colorado and Nebraska. For the Dakotas the
+answer is no, and the reason is territorial. Dakota Territory (1861-1889) was ONE territory; the
+line between the two states was drawn only at the 1889 split. USDA NASS nevertheless reports
+`NORTH DAKOTA` and `SOUTH DAKOTA` separately for 1879-1888, and the two series are not copies
+of a territory total: in 1882 the maize area is 113,670 ha in South Dakota against 4,445 ha in
+North Dakota, the southern corn belt against the northern wheat country. Each series is
+therefore the future state's part of the territory -- a boundary that did not exist yet --
+which is exactly what `back_cast` records. Routing either series to a Dakota Territory row
+would put a part of the territory's output on the whole territory's area. At statehood the
+series continue on the same frame (median |dlog harvested area| across items at 1889: 0.19 for
+South Dakota, 0.33 for North Dakota, against 0.12 and 0.17 in the surrounding years; the
+frontier was expanding fast, and neither jump is the halving a whole-territory series would
+show). No data reports Dakota Territory as a whole, so no row is created for it.
+
 ### d-code-pattern
 
 **Polity code follows the <ISO3>-<SUBUNIT>-<start>-<end> minority pattern, not the dominant <ISO3>-<SUBUNIT>-2letter form**
@@ -73,6 +92,8 @@ The routing decision explicitly flags that the data available for this unit begi
 ## Open questions
 
 ### oq-pre1889-data-gap
+
+> **Resolved 2026-09-24 (issue 658):** the pre-statehood years stay `back_cast` on this row; see [d-658-pre-1889-years-stay-back-cast](#d-658-pre-1889-years-stay-back-cast).
 
 **Data years 1879-1888 predate this row's start_year but are attributed to South Dakota in the source**
 

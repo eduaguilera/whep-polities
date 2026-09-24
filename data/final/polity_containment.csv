@@ -922,6 +922,8 @@ USA-AZ-1863-2025,USA-1867-1959,1867,1959,"continuous territorial and (from 1912)
 USA-AZ-1863-2025,USA-1959-2025,1959,2025,continuous statehood through the current fifty-state national United States row
 USA-CO-1876-2025,USA-1867-1959,1876,1959,Colorado inside the United States from its 1876 admission to the Union through the end of this national-era row's span in 1959
 USA-CO-1876-2025,USA-1959-2025,1959,2025,"Colorado inside the United States for the remainder of its history, from the start of the current national-era row in 1959 through 2025"
+USA-COT-1861-1876,USA-1848-1867,1861,1867,Colorado Territory inside the United States during the 1848-1867 national era
+USA-COT-1861-1876,USA-1867-1959,1867,1876,"Colorado Territory inside the United States during the 1867-1959 national era, up to admission as a state"
 USA-CT-1800-2025,USA-1800-1803,1800,1803,"Connecticut, an original-13 state since 1788, falls within the first national United States row's span from that row's own start in 1800"
 USA-CT-1800-2025,USA-1803-1848,1803,1848,continuous statehood through the second national United States row
 USA-CT-1800-2025,USA-1848-1867,1848,1867,continuous statehood through the third national United States row
@@ -947,6 +949,7 @@ USA-IA-1846-2025,USA-1867-1959,1867,1959,"continuation of federal union membersh
 USA-IA-1846-2025,USA-1959-2025,1959,2025,"continuation of federal union membership through the present, spanning admission of Alaska and Hawaii to the current 50-state union"
 USA-ID-1890-2025,USA-1867-1959,1890,1959,"Idaho entered the Union in 1890, within the span of the fifth national United States row, continuous statehood through Reconstruction to the year before Alaska/Hawaii statehood"
 USA-ID-1890-2025,USA-1959-2025,1959,2025,continuous statehood through the current fifty-state national United States row
+USA-IDT-1868-1890,USA-1867-1959,1868,1890,"Idaho Territory inside the United States during the 1867-1959 national era, up to admission as a state"
 USA-IL-1818-2025,USA-1803-1848,1818,1848,"Illinois admitted to the Union in 1818, within the national era before the Mexican Cession"
 USA-IL-1818-2025,USA-1848-1867,1848,1867,"national-era container following the Mexican Cession, through the end of Reconstruction-era territorial changes"
 USA-IL-1818-2025,USA-1867-1959,1867,1959,national-era container from post-Civil War contiguous US through the admission of Alaska and Hawaii
@@ -998,6 +1001,8 @@ USA-MS-1817-2025,USA-1867-1959,1867,1959,continuation inside the United States t
 USA-MS-1817-2025,USA-1959-2025,1959,2025,continuation inside the United States as a current state through the end of this entry's span
 USA-MT-1889-2025,USA-1867-1959,1889,1959,"Montana was admitted to the Union on November 8, 1889, and remained part of the pre-1959 United States national entity through 1959 (before Alaska and Hawaii statehood closed that era's span)."
 USA-MT-1889-2025,USA-1959-2025,1959,2025,The United States national entity continues unbroken from 1959 (post Alaska/Hawaii statehood) to the present; Montana remains a constituent state throughout.
+USA-MTT-1864-1889,USA-1848-1867,1864,1867,Montana Territory inside the United States during the 1848-1867 national era
+USA-MTT-1864-1889,USA-1867-1959,1867,1889,"Montana Territory inside the United States during the 1867-1959 national era, up to admission as a state"
 USA-NC-1800-2025,USA-1800-1803,1800,1803,"North Carolina was one of the original thirteen states, already inside the federal union in this national era"
 USA-NC-1800-2025,USA-1803-1848,1803,1848,"continuous statehood inside the union through this national era, no boundary change to the state"
 USA-NC-1800-2025,USA-1848-1867,1848,1867,"continuous statehood inside the union; secession 1861-1865 not modelled as a container gap, see open question"
@@ -1007,6 +1012,7 @@ USA-ND-1889-2025,USA-1867-1959,1889,1959,North Dakota was admitted to the Union 
 USA-ND-1889-2025,USA-1959-2025,1959,2025,"Continuation of North Dakota statehood inside the post-1959 United States container era (post-Alaska/Hawaii admission), running to the open end_year."
 USA-NE-1867-2025,USA-1867-1959,1867,1959,"Nebraska's 1867 admission falls within the fifth national United States row, and it remained a state continuously through the following era"
 USA-NE-1867-2025,USA-1959-2025,1959,2025,"continuous statehood through the current fifty-state national United States row, from Alaska/Hawaii statehood to present"
+USA-NET-1863-1867,USA-1848-1867,1863,1867,Nebraska Territory inside the United States during the 1848-1867 national era
 USA-NH-1800-2025,USA-1800-1803,1800,1803,"New Hampshire, an original-13 state since 1788, falls within the first national United States row's span from that row's own start in 1800"
 USA-NH-1800-2025,USA-1803-1848,1803,1848,continuous statehood through the second national United States row
 USA-NH-1800-2025,USA-1848-1867,1848,1867,continuous statehood through the third national United States row
@@ -1019,6 +1025,8 @@ USA-NJ-1800-2025,USA-1867-1959,1867,1959,continuous statehood through the fourth
 USA-NJ-1800-2025,USA-1959-2025,1959,2025,continuous statehood through the current fifty-state national United States row
 USA-NM-1912-2025,USA-1867-1959,1912,1959,"New Mexico inside the United States from its January 6, 1912 admission to the Union through the end of this national-era row's span in 1959"
 USA-NM-1912-2025,USA-1959-2025,1959,2025,"New Mexico inside the United States for the remainder of its history, from the start of the current national-era row in 1959 through 2025"
+USA-NMT-1863-1912,USA-1848-1867,1863,1867,New Mexico Territory inside the United States during the 1848-1867 national era
+USA-NMT-1863-1912,USA-1867-1959,1867,1912,"New Mexico Territory inside the United States during the 1867-1959 national era, up to admission as a state"
 USA-NV-1864-2025,USA-1848-1867,1864,1867,Nevada inside the United States from its October 1864 admission through the end of this national-era row's span in 1867
 USA-NV-1864-2025,USA-1867-1959,1867,1959,"Nevada inside the United States for the middle national era, 1867 through 1959"
 USA-NV-1864-2025,USA-1959-2025,1959,2025,"Nevada inside the United States for the remainder of its history, from the start of the current national-era row in 1959 through 2025"
@@ -1064,6 +1072,7 @@ USA-TX-1845-2025,USA-1867-1959,1867,1959,Continuation of statehood through the l
 USA-TX-1845-2025,USA-1959-2025,1959,2025,Continuation of statehood in the modern 50-state national era.
 USA-UTAH-1896-2025,USA-1867-1959,1896,1959,"Utah as a state inside the United States during the era the polity table carries as USA-1867-1959, from statehood (1896) until that container era's own end (1959, Alaska/Hawaii admission)."
 USA-UTAH-1896-2025,USA-1959-2025,1959,2025,"Utah as a state inside the United States during the current container era, from 1959 (start of USA-1959-2025) to the open end of both container and this entry."
+USA-UTT-1868-1896,USA-1867-1959,1868,1896,"Utah Territory inside the United States during the 1867-1959 national era, up to admission as a state"
 USA-VA-1800-2025,USA-1800-1803,1800,1803,"Virginia is one of the original 13 states, already inside the United States when the container chain's first row begins; USA-1800-1803 is where the chain starts, so this edge's floor is the chain floor rather than Virginia's own 1788 ratification (see decisions)."
 USA-VA-1800-2025,USA-1803-1848,1803,1848,continuous statehood inside the United States through this national era
 USA-VA-1800-2025,USA-1848-1867,1848,1867,continuous statehood inside the United States through this national era; West Virginia's 1863 separation reduced Virginia's own territory but did not interrupt its statehood or containment
@@ -1076,6 +1085,8 @@ USA-VT-1800-2025,USA-1867-1959,1867,1959,"continuous statehood through the fourt
 USA-VT-1800-2025,USA-1959-2025,1959,2025,continuous statehood through the current fifty-state national United States row
 USA-WA-1889-2025,USA-1867-1959,1889,1959,Washington was admitted to the Union in 1889 and remained part of the pre-1959 United States container era until that era ends in 1959.
 USA-WA-1889-2025,USA-1959-2025,1959,2025,"Continuation of Washington statehood inside the post-1959 United States container era (post-Alaska/Hawaii admission), running to the open end_year."
+USA-WAT-1863-1889,USA-1848-1867,1863,1867,Washington Territory inside the United States during the 1848-1867 national era
+USA-WAT-1863-1889,USA-1867-1959,1867,1889,"Washington Territory inside the United States during the 1867-1959 national era, up to admission as a state"
 USA-WI-1848-2025,USA-1848-1867,1848,1867,Wisconsin as a state inside the United States during the pre-Reconstruction national era
 USA-WI-1848-2025,USA-1867-1959,1867,1959,Wisconsin inside the United States from Reconstruction to Alaskan/Hawaiian statehood
 USA-WI-1848-2025,USA-1959-2025,1959,2025,Wisconsin inside the modern 50-state United States
@@ -1084,3 +1095,4 @@ USA-WV-1863-2025,USA-1867-1959,1867,1959,"the container row for the United State
 USA-WV-1863-2025,USA-1959-2025,1959,2025,"the container row for the United States from Alaskan and Hawaiian statehood to the present, during which West Virginia's status as an admitted state did not change."
 USA-WY-1890-2025,USA-1867-1959,1890,1959,"Wyoming was admitted to the Union on 1890-07-10 and remained a state of the United States through the 1867-1959 national era (the era ends at Alaska/Hawaii statehood, not at any change to Wyoming itself)."
 USA-WY-1890-2025,USA-1959-2025,1959,2025,"The national polity row splits at 1959 because Alaska and Hawaii joined the Union that year, changing the country's total territory; Wyoming's own boundary is unaffected and it continues as a constituent state under the post-1959 national row through the present."
+USA-WYT-1868-1890,USA-1867-1959,1868,1890,"Wyoming Territory inside the United States during the 1867-1959 national era, up to admission as a state"
