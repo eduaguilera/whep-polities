@@ -29,7 +29,7 @@ for _,r in pol.iterrows():
 # --- BUILD the flag set (deterministic): existing matched polities that are
 #     territorially sensitive = data-magnitude step-change vs a sibling period,
 #     OR a README-documented known polygon/data extent mismatch. ---
-KNOWN={"JPN-1895-1945","JPN-1945-1952","F228-1905-1917","ZAF-1828-2025","IND-1937-1947","IND-1947-1949"}
+KNOWN=frozenset({"JPN-1895-1945","JPN-1945-1952","F228-1905-1917","ZAF-1828-2025","IND-1937-1947","IND-1947-1949"})
 risk=set(); stepev=defaultdict(list)
 for iso,fam in pol.groupby("iso3_code"):
     if not isinstance(iso,str) or fam.polity_code.nunique()<2: continue

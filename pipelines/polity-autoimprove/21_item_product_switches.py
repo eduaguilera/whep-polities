@@ -68,7 +68,7 @@ DEFAULT_RAW = os.path.expanduser(os.environ.get(
     "WHEP_IIA_RAW",
     "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"))
 
-PRODUCTION = {"production", "area", "bearing area", "production of cocoons"}
+PRODUCTION = frozenset({"production", "area", "bearing area", "production of cocoons"})
 MIN_CELLS = 8          # a series shorter than this cannot show a convincing return
 MIN_PER_PRODUCT = 2    # one cell of a product is as likely to be a collision as a switch
 LEVEL = 3.0            # the jump at a switch must clear this to be worth recording

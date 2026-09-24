@@ -38,8 +38,8 @@ PERIOD_VOLUME = {
     "1928-1932": "iia_1938_39",
     "1934-1938": "iia_1939_45",
 }
-LATE_VOLUMES = {"iia_1938_39", "iia_1939_45"}
-SCREEN_ITEMS = {"tobacco, unmanufactured", "hops"}
+LATE_VOLUMES = frozenset({"iia_1938_39", "iia_1939_45"})
+SCREEN_ITEMS = frozenset({"tobacco, unmanufactured", "hops"})
 SCREEN_UNIT = "tonnes"
 SCREEN_T = 500_000.0
 
@@ -58,7 +58,7 @@ SCREEN_BY_PERIOD = {
 # -- the USA was the world's largest tobacco producer at roughly 600 kt. Pinned as an exoneration: a
 # third clean-volume hit is a new finding and must not land silently, and losing these two means the
 # screen or the extract moved.
-CLEAN_HITS = {("india", "612500.0"), ("united states of america", "630805.5")}
+CLEAN_HITS = frozenset({("india", "612500.0"), ("united states of america", "630805.5")})
 # The scope gap this table exists to make countable: every implausible 1934-1938 row has an era
 # verdict, and no 1928-1932 row has one at all.
 ERA_COVERED_1934 = 41

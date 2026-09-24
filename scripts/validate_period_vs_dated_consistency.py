@@ -35,9 +35,9 @@ TABLE = os.path.join(REPO, "pipelines", "polity-autoimprove", "state",
 # Restated from 43_period_vs_dated_consistency.py, deliberately not imported.
 TOL = 0.15
 MIN_DATED = 3
-VERDICTS = {"consistent", "disagree_x100_period_higher", "disagree_x10_period_higher",
+VERDICTS = frozenset({"consistent", "disagree_x100_period_higher", "disagree_x10_period_higher",
             "disagree_x100_dated_higher", "disagree_x10_dated_higher",
-            "unexplained_period_higher", "unexplained_dated_higher"}
+            "unexplained_period_higher", "unexplained_dated_higher"})
 ROWS = 1655
 # (n, median) per volume. The median is the control; 1.000 is what licenses reading the tails.
 CONTROL = {"iia_1925_26": (224, 1.000000), "iia_1938_39": (642, 1.004844),
@@ -49,7 +49,7 @@ COUNTS = {"consistent": 1504, "unexplained_period_higher": 57, "unexplained_date
 # Of the 20 at 100x, 18 are tobacco or hops -- #416 arriving through the period rows. The other two
 # are the finding this table adds, so both halves are pinned.
 X100_TOBACCO_HOPS = 18
-X100_OTHER = {("indonesia", "cotton lint"), ("israel", "olives")}
+X100_OTHER = frozenset({("indonesia", "cotton lint"), ("israel", "olives")})
 # israel/olives/1934-1938: production x100 with the PAIRED AREA ROW CLEAN, which is #416's exact
 # signature on an item outside its scope. Both rows are pinned, because the area being consistent is
 # what turns the tonnage into an impossible YIELD rather than merely a large number:
@@ -63,7 +63,7 @@ OLIVE_YIELD_BAD = 59.1
 OLIVE_YIELD_OK = 0.59
 # `1925-1929` produces no comparable pair: no series has 3+ dated years in that window. Pinned as a
 # recorded negative so that its appearing later is noticed rather than absorbed.
-PERIODS = {"1900-1913", "1909-1913", "1928-1932", "1934-1938"}
+PERIODS = frozenset({"1900-1913", "1909-1913", "1928-1932", "1934-1938"})
 
 
 def reclassify(ratio):

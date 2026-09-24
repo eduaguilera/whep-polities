@@ -52,7 +52,7 @@ DEAD_STATUS = ("retired", "superseded")
 #                  exists — this row is the duplicate tracked in issue 43, and giving it
 #                  the same ISO code as its twin would create an ambiguity worse than the
 #                  non-ISO value. Fix the duplicate first.
-EXEMPT = {
+EXEMPT = frozenset({
     # PCI is FAOSTAT's own code for area 164, the Pacific Islands Trust Territory, and no
     # ISO 3166-1 alpha-3 exists for a dissolved UN trusteeship. Assigned on 2026-08-13 so
     # that area's 489 rows of land-use data (1961-1990) can reach the polity that already
@@ -85,7 +85,7 @@ EXEMPT = {
     # can be coded separately. Only the three USSR-era rows take SUN; the Russian Empire
     # rows are untouched. See scripts/validate_dissolved_iso_codes.py for the rule.
     "F228-1921-1940", "F228-1940-1945", "F228-1945-1991",                   # SUN
-}
+})
 
 # Aggregate reporting buckets are not countries and are keyed by WHEP-internal codes.
 AGGREGATE_PREFIXES = ("ROW", "RAFR", "RASI", "REUR", "RLAM", "RNAM", "ROCE", "BLX", "ANT")

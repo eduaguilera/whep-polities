@@ -351,7 +351,11 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        island groups, JPN<-RYU, MASG<-SGP, SYL<-LBN, AEF<-GAB/CAF/TCD. It also
                        DERIVES separate_series vs sum_risk by counting (item, unit, year) cells on
                        both sides, which used to rest on trust. --write refreshes
-                       state/composition_overlaps.csv
+                       state/composition_overlaps.csv. --check-keys (CI) recomputes the
+                       alias-only pairs from tracked files and fails if one is missing, not
+                       alias_visible, or outside the recorded years, or if a row names an
+                       unregistered pair: CI used to run report mode, which cannot fail, and the
+                       table went stale after the Manchuria reroute (12 missing CHN/MAN keys).
 20_item_provenance.py  which raw IIA label does each ITEM SERIES come from? 15_label_provenance.py
                        asks this per label; a label can be right for one commodity and wrong for
                        another, and the alias key has no item dimension, so no label-level reroute

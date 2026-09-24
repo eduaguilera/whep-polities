@@ -275,6 +275,12 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    env:
+      # Every `--check` tool that SKIPS here (its input is gitignored or outside the repo) prints
+      # `SKIP-IN-CI:` and appends its name to this file; the LAST step, validate_ci_skips.py,
+      # requires that set to equal its allowlist, so a new silent skip fails the run. Outside the
+      # workspace so the file can never show up in `git status` for the gates that read it.
+      WHEP_CI_SKIP_LOG: /tmp/whep-ci-skips.log
     steps:
       - uses: actions/checkout@v4
 
@@ -806,9 +812,12 @@ jobs:
       # reached by iso/name matching was invisible to the composition gate's double-count arm. 13
       # real overlaps were hidden, worst AOI-1936-1941 <- ERI-1889-1952 at 66 shared cells. The
       # table also DERIVES separate_series vs sum_risk by counting cells present on both sides.
+      # --check-keys, not report mode: report mode exits 0 whatever it finds, so this step could
+      # not fail and the table went stale after the Manchuria reroute (12 CHN/MAN keys missing).
+      # The full --check needs the gitignored panel; the alias-derivable keys need only the repo.
       - name: Composition overlaps table matches the registry
         if: '!cancelled()'
-        run: python3 pipelines/polity-autoimprove/19_composition_overlaps.py --layer-b /nonexistent
+        run: python3 pipelines/polity-autoimprove/19_composition_overlaps.py --check-keys
 
       # site/ is PUBLISHED output -- pages.yml deploys it on every change -- and until this
       # step existed `site/` appeared in exactly one workflow: the one that publishes it.
@@ -1134,3 +1143,11 @@ jobs:
       # than in a smoke run somebody has to remember to do.
       - name: The polity-proposing harness still refuses what it was taught to refuse
         run: python3 pipelines/agent-harness/test_harness.py
+
+      # LAST, because it reads what every step above logged. A step that prints SKIP and exits 0
+      # is green in the summary; three --check tools do that here by design (write_feature_index,
+      # 44_border_stability, 08_source_stated_areas), and this requires the steps that skipped to
+      # be exactly those three -- a new skip fails, and so does one of the three that stopped.
+      - name: CI skips — exactly the allowlisted --check tools skipped
+        if: '!cancelled()'
+        run: python3 scripts/validate_ci_skips.py

@@ -27,9 +27,13 @@ WHAT IS DERIVED, per ledger unit and per coverage segment:
                  contains those years (one per era -- this is what reaches Chaco's second era)
     back_cast -> a `back_cast` rule to the segment's polity for the years BEFORE that polity
                  starts. Years a back_cast segment spends INSIDE its target's span are not
-                 derived: a back_cast target inside its own span is the era's national row (the
-                 schema allows it), and aliasing a region onto its country there is exactly the
-                 averaging defect validate_matched_target_territory exists for. They are reported.
+                 derived: a back_cast target inside its own span is the era's national row, and
+                 aliasing a region onto its country there is exactly the averaging defect
+                 validate_matched_target_territory exists for. They BLOCK --check: 12 such
+                 segments (CHL-AP, CHL-AR, COL-AMAZONAS, COL-GUAINIA, ITA-ITF6) sat in the
+                 ledger naming the national row at 10-44x the unit's area while the registry
+                 routed the unit's own polity, and a report line nobody had to act on let the
+                 two halves of the routing disagree indefinitely. Re-recorded 2026-09-24.
     unroutable -> nothing
 
 Label forms are the unit's `admin_unit_id` and its `admin_name`. The NAME is written only when no
@@ -86,6 +90,10 @@ ALIAS_FIELDS = ("source_label", "source", "year_start", "year_end", "common_name
                 "polity_code", "confidence", "basis", "observed_rows", "disposition")
 DEAD = ("retired", "superseded")
 STAMP = "agent-harness derive_aliases"
+# Finding kinds that fail --check. `back_cast_inside` joined the first three once its 12 findings
+# were re-recorded: a back_cast inside its target's own span names the era's container, which the
+# registry does not route, so the ledger and the registry disagree about where the data goes.
+BLOCKING = ("missing", "conflict", "refused", "back_cast_inside")
 
 
 def norm(s: str) -> str:
@@ -423,11 +431,12 @@ def run(check: bool, country: str | None = None, verbose: bool = True,
     print(f"derive_aliases: {len(ledger)} ledger unit(s)"
           f"{' in ' + country if country else ''} against {len(aliases)} registry row(s)")
     report(res, verbose)
-    blocking = res["missing"] or res["conflict"] or res["refused"]
+    blocking = [k for k in BLOCKING if res[k]]
     if check:
         if blocking:
-            print("FAIL: the routing ledger and applied_aliases.csv disagree. `--write` appends "
-                  "the missing rows; conflicts and refusals need a decision, not a rerun.")
+            print(f"FAIL: the routing ledger and applied_aliases.csv disagree "
+                  f"({', '.join(blocking)}). `--write` appends the missing rows; conflicts, "
+                  f"refusals and back_cast-inside segments need a decision, not a rerun.")
             return 1
         print("PASS: every routed ledger year has its alias, and none is contradicted")
         return 0
@@ -440,8 +449,9 @@ def run(check: bool, country: str | None = None, verbose: bool = True,
             for script in ("write_label_alias_map.py", "write_manifest.py"):
                 subprocess.run([sys.executable, str(REPO / "scripts" / script)],
                                cwd=str(REPO), check=True)
-    if res["conflict"] or res["refused"]:
-        print("NOT RESOLVED: conflicts and refusals above were left alone -- each needs a decision")
+    if res["conflict"] or res["refused"] or res["back_cast_inside"]:
+        print("NOT RESOLVED: conflicts, refusals and back_cast-inside segments above were left "
+              "alone -- each needs a decision")
         return 1
     return 0
 

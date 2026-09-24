@@ -134,7 +134,7 @@ CSV_ONLY_KEYS = {c: k for c, k in CSV_COLUMN_TO_FM_KEY.items() if c != k}
 # Descriptive keys the builder ignores by design. They document a decision on the
 # page (why a polygon is a proxy, why a row was retired) and are not written to
 # the CSV. Anything outside this set plus BUILDER_KEYS is reported.
-DESCRIPTIVE_KEYS = {
+DESCRIPTIVE_KEYS = frozenset({
     "sources",                      # source slugs cited by the page
     # `container` declares the member -> container edges this page asserts, each with its own
     # validity interval, and is emitted to data/final/polity_containment.csv by
@@ -156,7 +156,7 @@ DESCRIPTIVE_KEYS = {
     "polygon_feature_date",         # exact source feature date, where known
     "polygon_vintage", "polygon_vintage_note", "polygon_vintage_proxy",
     "polygon_vintage_drift", "polygon_vintage_drift_note",
-}
+})
 ALLOWED_KEYS = BUILDER_KEYS | DESCRIPTIVE_KEYS
 
 # A FOUR-PART CODE WAS INVISIBLE AND A PHANTOM WAS REPORTED IN ITS PLACE. The pattern was

@@ -161,6 +161,21 @@ def extract() -> pd.DataFrame:
     return out.reset_index(drop=True)
 
 
+def skip_in_ci(message: str) -> int:
+    """Print the fixed CI-skip token and record this tool in $WHEP_CI_SKIP_LOG; returns 0.
+
+    A SKIP exits 0 and shows green, exactly like a check that verified something. The token and the
+    log are what let scripts/validate_ci_skips.py require the set of skipping CI steps to equal its
+    allowlist, so this skip stays a recorded decision and a NEW one cannot go silent.
+    """
+    print(f"SKIP-IN-CI: {message}")
+    log = os.environ.get("WHEP_CI_SKIP_LOG")
+    if log:
+        with open(log, "a", encoding="utf-8") as fh:
+            fh.write(os.path.basename(__file__) + "\n")
+    return 0
+
+
 def main() -> int:
     check = "--check" in sys.argv
     try:
@@ -168,8 +183,7 @@ def main() -> int:
     except FileNotFoundError as exc:
         # The tables are outside the repo, so absence is normal in CI and in a fresh clone.
         # SKIP rather than fail: this script's committed output is what the gate reads.
-        print(f"SKIP: {exc}")
-        return 0
+        return skip_in_ci(str(exc))
 
     if check:
         if not os.path.exists(DEST):

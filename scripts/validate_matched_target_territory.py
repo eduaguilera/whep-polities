@@ -37,6 +37,21 @@ issue 657 -- `back_cast` to the unit's own modern polity, or `matched` to an era
 territory -- so nothing is baselined. Bidirectional: a NEW one fails, and a resolved
 one must be removed from the baseline or this fails too.
 
+`back_cast` AND `proposed` SEGMENTS ARE HELD TO THE SAME TEST. The first version measured only
+`matched`, and 12 `back_cast` segments over five units (CHL-AP, CHL-AR, COL-AMAZONAS,
+COL-GUAINIA, ITA-ITF6) named the national row at 10-44x the unit's area while the alias registry
+routed the unit's own polity. A back_cast is a reconstruction FOR the reporting unit's territory;
+its target is that territory's polity, not the country that held it. Re-recorded 2026-09-24.
+
+SKIPS ARE COUNTED AND PINNED. A segment this cannot measure -- unparseable coverage, a page or a
+target with no polygon, years that are not integers -- used to be skipped silently, so a gate that
+measured nothing would still print PASS. Each kind is now printed, and the counts are pinned in
+EXPECTED_SKIPS: a new skip fails, and so does a pinned one that went away.
+
+MISSING PREREQUISITES FAIL. The ledger and the GeoPackage are committed, so their absence is a
+broken checkout, not an environment to tolerate. geopandas may be absent on a laptop (SKIP, loudly)
+but not in CI, which installs it: there a missing import fails instead of printing SKIP and exit 0.
+
 Reads only committed files plus the committed GeoPackage, so it runs anywhere.
 
 Usage:
@@ -67,18 +82,40 @@ MAX_RATIO = 3.0
 # reason the rule above cannot express.
 BASELINE = frozenset()
 
+# The dispositions whose target must be the reporting unit's own territory.
+DISPOSITIONS = ("matched", "back_cast", "proposed")
+
+# Segments this gate could NOT measure, by reason, pinned at their measured counts (2026-09-24).
+# Bidirectional: a new skip fails (something stopped being checkable) and a count that drops fails
+# too (lower the pin so the coverage is held). Informational counts -- rows outside this gate's
+# scope -- are printed but not pinned; see SCOPE below.
+EXPECTED_SKIPS = {
+    "coverage_json does not parse": 0,
+    "page polity has no polygon": 0,
+    "segment target has no polygon": 0,
+    "segment years are not integers": 0,
+}
+
+
+def _in_ci() -> bool:
+    return bool(os.environ.get("CI") or os.environ.get("GITHUB_ACTIONS"))
+
 
 def main() -> int:
-    if not os.path.exists(LEDGER):
-        print(f"SKIP: {os.path.relpath(LEDGER, REPO)} absent")
-        return 0
+    # Both files are COMMITTED: their absence is a broken checkout, never a reason to pass.
+    for path in (LEDGER, GPKG):
+        if not os.path.exists(path):
+            print(f"FAIL: {os.path.relpath(path, REPO)} absent -- it is committed, so this "
+                  f"checkout is broken; the gate cannot run and must not pass")
+            return 1
     try:
         import geopandas as gpd
     except ImportError:
-        print("SKIP: geopandas unavailable")
-        return 0
-    if not os.path.exists(GPKG):
-        print(f"SKIP: {os.path.relpath(GPKG, REPO)} absent")
+        if _in_ci():
+            print("FAIL: geopandas unavailable in CI, which installs it -- the gate would "
+                  "measure nothing")
+            return 1
+        print("SKIP: geopandas unavailable (outside CI only; CI fails here instead)")
         return 0
 
     csv.field_size_limit(sys.maxsize)
@@ -89,38 +126,74 @@ def main() -> int:
     area = {r["polity_code"]: r.geometry.area / 1e6 for _, r in g.iterrows()
             if r.geometry is not None and not r.geometry.is_empty}
 
+    skips = {k: [] for k in EXPECTED_SKIPS}
+    scope = {"no coverage_json": 0, "page polity not subnational": 0,
+             "segment names no polity (proposed, authored on the page)": 0}
+    measured = {d: 0 for d in DISPOSITIONS}
     found = {}
     with open(LEDGER, encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             raw = (r.get("coverage_json") or "").strip()
             if not raw:
+                scope["no coverage_json"] += 1
                 continue
             try:
                 parsed = json.loads(raw)
             except json.JSONDecodeError:
+                skips["coverage_json does not parse"].append(r["unit_id"])
                 continue
             segs = parsed.get("segments", []) if isinstance(parsed, dict) else parsed
             page = (r.get("page_polity_code") or r.get("matched_polity_code") or "").strip()
             if pol.get(page, {}).get("polity_type") != "subnational":
+                scope["page polity not subnational"] += 1
                 continue
             mine = area.get(page)
             if not mine:
+                skips["page polity has no polygon"].append(f"{r['unit_id']} ({page})")
                 continue
             for s in segs:
-                if s.get("disposition") != "matched":
+                disp = s.get("disposition")
+                if disp not in DISPOSITIONS:
                     continue
                 target = (s.get("polity_code") or "").strip()
+                if not target:
+                    if disp == "proposed":
+                        scope["segment names no polity (proposed, authored on the page)"] += 1
+                    else:
+                        skips["segment target has no polygon"].append(
+                            f"{r['unit_id']} {disp} (no polity_code)")
+                    continue
                 theirs = area.get(target)
                 if not theirs:
-                    continue
-                ratio = theirs / mine
-                if ratio <= MAX_RATIO:
+                    skips["segment target has no polygon"].append(
+                        f"{r['unit_id']} {disp} -> {target}")
                     continue
                 try:
                     key = (r["unit_id"], int(s["start_year"]), int(s["end_year"]), target)
                 except (KeyError, TypeError, ValueError):
+                    skips["segment years are not integers"].append(f"{r['unit_id']} {disp}")
                     continue
-                found[key] = (ratio, r["country"], page)
+                measured[disp] += 1
+                ratio = theirs / mine
+                if ratio <= MAX_RATIO:
+                    continue
+                found[key] = (ratio, r["country"], page, disp)
+
+    print("segments measured: " + ", ".join(f"{d} {n}" for d, n in measured.items()))
+    print("out of scope (not pinned): " + ", ".join(f"{k} {n}" for k, n in scope.items()))
+    print("skipped, unmeasurable (pinned): "
+          + ", ".join(f"{k} {len(v)}" for k, v in skips.items()))
+    drift = {k: (len(v), EXPECTED_SKIPS[k]) for k, v in skips.items()
+             if len(v) != EXPECTED_SKIPS[k]}
+    if drift:
+        print(f"FAIL: skip count(s) moved off their pin -- a segment this gate cannot measure is "
+              f"one it silently passes:")
+        for k, (have, pin) in drift.items():
+            print(f"  {k}: {have}, pinned {pin}")
+            for item in skips[k][:10]:
+                print(f"      {item}")
+        print("Fix what became unmeasurable, or update EXPECTED_SKIPS (both directions).")
+        return 1
 
     stale = sorted(set(BASELINE) - set(found))
     if stale:
@@ -131,21 +204,22 @@ def main() -> int:
 
     new = {k: v for k, v in found.items() if k not in BASELINE}
     if new:
-        print(f"FAIL: {len(new)} `matched` segment(s) name a polity far larger than the "
-              f"territory the source reported\n")
-        for (unit, lo, hi, target), (ratio, country, page) in sorted(
+        kinds = sorted({v[3] for v in new.values()})
+        print(f"FAIL: {len(new)} {'/'.join(f'`{d}`' for d in kinds)} segment(s) name a polity far "
+              f"larger than the territory the source reported\n")
+        for (unit, lo, hi, target), (ratio, country, page, disp) in sorted(
                 new.items(), key=lambda kv: -kv[1][0]):
-            print(f"  {unit} ({country}) {lo}-{hi} -> {target}")
-            print(f"      {ratio:.1f}x the area of {page}, this unit's own polity. `matched` "
-                  f"asserts the source OBSERVED that territory; at this ratio it observed a "
-                  f"part of it, and routing the data there attributes a region's values to its "
-                  f"container -- which already receives its own national labels.")
-        print("\nUse `back_cast` if the values are a reconstruction onto a boundary that did not "
-              "exist yet, or create the polity for the era. See issue 657.")
+            print(f"  {unit} ({country}) {lo}-{hi} {disp} -> {target}")
+            print(f"      {ratio:.1f}x the area of {page}, this unit's own polity. The segment "
+                  f"asserts the data is FOR that territory; at this ratio it is a part of it, and "
+                  f"routing the data there attributes a region's values to its container -- "
+                  f"which already receives its own national labels.")
+        print("\nUse `back_cast` to the unit's OWN polity if the values are a reconstruction onto "
+              "a boundary that did not exist yet, or create the polity for the era. See issue 657.")
         return 1
 
-    print(f"PASS: every `matched` segment names a polity within {MAX_RATIO}x the reporting "
-          f"unit's own territory ({len(BASELINE)} baselined)")
+    print(f"PASS: every {'/'.join(DISPOSITIONS)} segment names a polity within {MAX_RATIO}x "
+          f"the reporting unit's own territory ({len(BASELINE)} baselined)")
     return 0
 
 

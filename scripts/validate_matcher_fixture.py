@@ -80,7 +80,7 @@ REAL_POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 EXPECT_RULES = 6
 EXPECT_BLANKET = 2          # `riverland colony state` and the un-sourced `twinpeak`
 EXPECT_STALE = {"GHO-1800-2025": 1}
-EXPECT_AMBIGUOUS_LABELS = {"hinterland"}
+EXPECT_AMBIGUOUS_LABELS = frozenset({"hinterland"})
 
 # --- B. routing cases --------------------------------------------------------------
 # (label, iso, source, year, expected_code, expected_status, expected_how, why)
@@ -183,7 +183,7 @@ CASES = (
 # that exists in no family must be reported unresolved rather than absorbed.
 INTAKE_UNRESOLVED_LABEL = "Nowhereland"
 INTAKE_MIN_ROUTE_PCT = 50.0
-STATUS_VOCAB = {"pending", "reopened", "banked"}
+STATUS_VOCAB = frozenset({"pending", "reopened", "banked"})
 
 
 def check_registry(matchlib) -> tuple:

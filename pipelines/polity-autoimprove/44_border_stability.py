@@ -288,15 +288,29 @@ def build() -> pd.DataFrame:
     return pd.DataFrame(rows, columns=FIELDS)
 
 
+def skip_in_ci(message: str) -> int:
+    """Print the fixed CI-skip token and record this tool in $WHEP_CI_SKIP_LOG; returns 0.
+
+    A SKIP exits 0 and shows green, exactly like a check that verified something. The token and the
+    log are what let scripts/validate_ci_skips.py require the set of skipping CI steps to equal its
+    allowlist, so this skip stays a recorded decision and a NEW one cannot go silent.
+    """
+    print(f"SKIP-IN-CI: {message}")
+    log = os.environ.get("WHEP_CI_SKIP_LOG")
+    if log:
+        with open(log, "a", encoding="utf-8") as fh:
+            fh.write(os.path.basename(__file__) + "\n")
+    return 0
+
+
 def main() -> int:
     check = "--check" in sys.argv
     if not os.path.exists(CSHAPES):
         # A CHECK MAY DEGRADE ON A MISSING INPUT (04_territory_basis.py's rule): CShapes is
         # gitignored, so CI cannot reproduce a single column here. Skipping is honest;
         # rebuilding from nothing and writing it would delete every row.
-        print(f"SKIP: {os.path.relpath(CSHAPES, REPO)} absent (gitignored); "
-              f"this measurement verifies where the source is fetched")
-        return 0
+        return skip_in_ci(f"{os.path.relpath(CSHAPES, REPO)} absent (gitignored); "
+                          f"this measurement verifies where the source is fetched")
 
     out = build()
     if check:

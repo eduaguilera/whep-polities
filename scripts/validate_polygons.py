@@ -83,7 +83,7 @@ DEAD_STATUS = ("retired", "superseded")
 #
 # Retired and superseded rows are exempt, for the same reason check A0 exempts them: they
 # receive no data and one of them (DJI-1886-2025) carries no polygon_status at all.
-VOCABULARY = {"assigned", "proxy", "estimate", "polygon_vintage_drift", "unassigned"}
+VOCABULARY = frozenset({"assigned", "proxy", "estimate", "polygon_vintage_drift", "unassigned"})
 
 g = gpd.read_file(GPKG)
 have = g[g.geometry.notna() & ~g.geometry.is_empty].copy()
@@ -122,7 +122,7 @@ for r in off_vocab.itertuples():
 # before they were withdrawn, because build_database.py declines to rewrite the
 # GeoPackage when a run attaches fewer geometries — so the residue cannot be removed
 # without a full rebuild with the sources fetched. They receive no data either way.
-NO_CLAIM = {"unassigned", "excluded", "none", ""}
+NO_CLAIM = frozenset({"unassigned", "excluded", "none", ""})
 declared_none = have[
     have.get("polygon_status").fillna("").astype(str).isin(NO_CLAIM)
     & ~have.get("wiki_status").isin(DEAD_STATUS)
@@ -159,7 +159,7 @@ diverging = chk[chk.divergence > A.tolerance].sort_values("divergence", ascendin
 # divergence a contradiction. estimate/proxy/*_drift already say the polygon is
 # inexact, and those pages document the direction and magnitude — report but
 # don't fail, otherwise the gate punishes honest documentation.
-EXACT_CLAIM = {"assigned"}
+EXACT_CLAIM = frozenset({"assigned"})
 st = diverging.get("polygon_status").astype(str)
 bad_area = diverging[st.isin(EXACT_CLAIM)]
 documented = diverging[~st.isin(EXACT_CLAIM)]
@@ -459,7 +459,7 @@ elif selfref_over < 0:
 # summary line, so a page can claim an exact polygon while carrying none —
 # e.g. an id written as prose ("composed-union: cowcode=452 UNION cowcode=462")
 # instead of a resolvable value. That is a direct contradiction, not a gap.
-CLAIMS_POLYGON = {"assigned", "proxy", "estimate", "polygon_vintage_drift"}
+CLAIMS_POLYGON = frozenset({"assigned", "proxy", "estimate", "polygon_vintage_drift"})
 missing = g[g.geometry.isna() | g.geometry.is_empty].copy()
 missing["st"] = missing.get("polygon_status").astype(str)
 claim_no_geom = missing[missing.st.isin(CLAIMS_POLYGON)]

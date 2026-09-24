@@ -70,10 +70,10 @@ GUARD_TOKENS = (
 
 # Files whose only mention of layer B is documentation -- they read a DERIVED table, not the
 # parquet. Listed so the scan's variable resolution is checkable rather than implicit.
-SKIP = {
+SKIP = frozenset({
     "scripts/validate_layer_b_column_guard.py",   # this file
     "scripts/validate_schema_contract.py",        # documents the schema, reads no parquet
-}
+})
 
 READ_CALL = re.compile(r"read_parquet\(\s*([A-Za-z_][\w.$]*|['\"][^'\"]+['\"])")
 ASSIGN = re.compile(r"^\s*([A-Za-z_][\w.]*)\s*(?:=|<-)\s*(.+)$")

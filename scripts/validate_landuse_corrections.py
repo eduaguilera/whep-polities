@@ -48,7 +48,7 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/landuse_correctio
 
 COLUMNS = ["polity_code", "year", "item", "recorded", "implied_correct", "action",
            "diagnosis", "use_total", "territory_1000ha", "components_present"]
-ACTIONS = {"replace_value", "drop_row", "review_cell", "review"}
+ACTIONS = frozenset({"replace_value", "drop_row", "review_cell", "review"})
 
 SHIFT = re.compile(r"^decimal point dropped \(x(10|100|1000)\)")
 DROP_COMPONENT = re.compile(

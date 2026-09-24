@@ -74,7 +74,7 @@ COLUMNS = [
 # than as strings. Polygon areas come out of PROJ (ESRI:54034), and PROJ's last digits move
 # between releases; an exact compare would turn main red on a dependency bump rather than on a
 # data change, which is the failure mode this repo has already hit once with `air`.
-NUMERIC = {"stated_area_km2", "polygon_area_km2", "ratio_polygon_over_stated"}
+NUMERIC = frozenset({"stated_area_km2", "polygon_area_km2", "ratio_polygon_over_stated"})
 NUMERIC_TOLERANCE = 0.005  # 0.5%
 
 

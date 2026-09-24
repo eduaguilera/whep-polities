@@ -48,7 +48,7 @@ FIELDS = ["source", "country", "item", "unit", "indicator", "grid", "zeros", "ze
           "zeros_undated", "n_nonzero", "min_nonzero", "max_nonzero", "distinct_nonzero",
           "zero_share", "zero_years"]
 
-ALLOWED_GRIDS = {100.0, 1000.0}
+ALLOWED_GRIDS = frozenset({100.0, 1000.0})
 MIN_NONZERO = 3            # arm D: restated, not imported from the generator
 MIN_TOTAL_ZEROS = 60       # arm E: iceland/goats alone carries 69
 MIN_ROWS = 5

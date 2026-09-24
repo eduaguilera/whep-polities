@@ -297,7 +297,7 @@ for f in pin_failures:
     print(f"  FAIL  {f}")
 print()
 
-NON_ISO = {"NA", "NAN", "NONE", ""}
+NON_ISO = frozenset({"NA", "NAN", "NONE", ""})
 flagged = []
 for iso, fam in g.groupby("iso3_code"):
     if not isinstance(iso, str) or iso.strip().upper() in NON_ISO: continue

@@ -55,7 +55,7 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/subnational_sums.
 COLUMNS = ["source", "source_detail", "whole_label", "part_labels", "n_parts", "item",
            "indicator", "unit", "year", "period", "whole", "parts_sum", "residual",
            "action", "proposed", "diagnosis"]
-ACTIONS = {"mark_aggregate", "relabel_rows", "review"}
+ACTIONS = frozenset({"mark_aggregate", "relabel_rows", "review"})
 
 # Half a printed unit. The generator's own window; see its `tolerance`.
 TOL = 0.5

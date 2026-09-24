@@ -85,7 +85,7 @@ POW10_VOLUME = "iia_1933_34"
 # Every contradicted zero traced to this one volume. Not a threshold -- an observed 83 of 83.
 ZERO_VOLUME = "iia_1938_39"
 
-KINDS = {"zero_contradicted", "revised", "power_of_ten"}
+KINDS = frozenset({"zero_contradicted", "revised", "power_of_ten"})
 
 
 def main() -> int:

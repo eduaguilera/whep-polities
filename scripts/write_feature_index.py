@@ -167,6 +167,21 @@ def render(recs):
     return buf.getvalue()
 
 
+def skip_in_ci(message: str) -> int:
+    """Print the fixed CI-skip token and record this tool in $WHEP_CI_SKIP_LOG; returns 0.
+
+    A SKIP exits 0 and shows green, exactly like a check that verified something. The token and the
+    log are what let scripts/validate_ci_skips.py require the set of skipping CI steps to equal its
+    allowlist, so this skip stays a recorded decision and a NEW one cannot go silent.
+    """
+    print(f"SKIP-IN-CI: {message}")
+    log = os.environ.get("WHEP_CI_SKIP_LOG")
+    if log:
+        with open(log, "a", encoding="utf-8") as fh:
+            fh.write(os.path.basename(__file__) + "\n")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true",
@@ -198,9 +213,8 @@ def main() -> int:
             # run including a fully-fetched one -- treating them as "unavailable" would
             # make --check skip permanently and verify nothing, which is how a check
             # becomes decoration.
-            print(f"--check: SKIP — cannot verify, {len(unfetched)} source(s) not "
-                  f"fetched: {unfetched}")
-            return 0
+            return skip_in_ci(f"write_feature_index.py --check cannot verify, "
+                              f"{len(unfetched)} source(s) not fetched: {unfetched}")
         if have == text:
             print(f"--check: PASS — feature index is current ({len(recs)} rows)")
             return 0

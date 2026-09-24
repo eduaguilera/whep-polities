@@ -62,7 +62,7 @@ DEFAULT_RAW = os.path.expanduser(os.environ.get(
 # Only the variables layer B actually carries. Trade rows are 74% of the extract and would swamp the
 # zero rates with a different phenomenon -- an unreported import is genuinely zero far more often than
 # an unreported harvest.
-MEASURED = {"production", "area"}
+MEASURED = frozenset({"production", "area"})
 
 # A relative gap this small is float noise from the extract's own round-trips.
 EPS = 1e-9

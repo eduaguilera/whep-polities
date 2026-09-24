@@ -140,15 +140,15 @@ VERDICTS = frozenset({"already_flagged", "promote", "no_origin_evidence"})
 PARTNER_COLUMNS = frozenset({"partner", "partner_code", "partner_countries", "origin",
                              "origin_iso3"})
 
-TABLE_DERIVED_ENTREPOT = {
+TABLE_DERIVED_ENTREPOT = frozenset({
     "entrepot_rows", "entrepot_exceeds_availability", "entrepot_reexport",
     "entrepot_reporters", "entrepot_items", "entrepot_year_min", "entrepot_year_max",
-}
-TABLE_DERIVED_DIRECTION = {
+})
+TABLE_DERIVED_DIRECTION = frozenset({
     "direction_rows", "direction_resolved", "direction_exporter_impossible",
     "direction_importer_impossible", "direction_both_impossible",
     "direction_undetermined", "direction_whep_keeps_refuted_side",
-}
+})
 
 
 def num(s):

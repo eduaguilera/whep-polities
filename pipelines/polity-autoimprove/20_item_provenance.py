@@ -74,7 +74,7 @@ DEFAULT_RAW = os.path.expanduser(os.environ.get(
 
 # The raw `variable` column separates trade from output. Matching without it lets a trade tonnage
 # match a production tonnage, which is how 315's first pass produced numbers that meant nothing.
-PRODUCTION = {"production", "area", "bearing area", "production of cocoons"}
+PRODUCTION = frozenset({"production", "area", "bearing area", "production of cocoons"})
 
 MIN_VALUES = 8        # fewer than this and a share is not a measurement
 MIN_DISTINCT = 6      # THE filter: few distinct round values match anything (see the docstring)
@@ -119,8 +119,8 @@ def raw_sets(raw_path):
 
 
 # Words that carry no commodity information, so their overlap must not count as agreement.
-_STOP = {"of", "and", "the", "other", "raw", "total", "true", "n", "e", "c", "in", "shell",
-         "unmanufactured", "green", "dry", "dried", "fibre", "fiber", "beans", "seed", "hen"}
+_STOP = frozenset({"of", "and", "the", "other", "raw", "total", "true", "n", "e", "c", "in", "shell",
+         "unmanufactured", "green", "dry", "dried", "fibre", "fiber", "beans", "seed", "hen"})
 
 
 def product_agrees(item: str, product: str) -> str:

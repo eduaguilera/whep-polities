@@ -55,10 +55,10 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/collapse_groups.c
 FIELDS = ["whep_code", "item", "unit", "year", "n_rows", "n_distinct", "n_labels", "n_sources",
           "n_indicators", "verdict", "composition", "duplicate_class", "v_min", "v_max",
           "published_mean", "ratio_mean_max", "labels", "sources"]
-DUP_CLASSES = {"true_duplicate_key", "item_code_collision"}
-VERDICTS = {"values_identical", "values_differ"}
-COMPOSITIONS = {"one_label_one_source", "one_label_several_sources",
-                "several_labels_one_source", "several_labels_several_sources"}
+DUP_CLASSES = frozenset({"true_duplicate_key", "item_code_collision"})
+VERDICTS = frozenset({"values_identical", "values_differ"})
+COMPOSITIONS = frozenset({"one_label_one_source", "one_label_several_sources",
+                "several_labels_one_source", "several_labels_several_sources"})
 
 # --- C. curated anchors: (code, item, unit, year) -> the facts the issues assert ------------------
 # Each entry is quoted in an open issue. A change here is not necessarily a regression -- it may be a

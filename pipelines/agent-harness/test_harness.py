@@ -1324,6 +1324,9 @@ def test_back_cast_rows_end_the_year_before_their_target_starts():
                    ("Casanare", "1915", "1990", "COL-CASANARE-1991-2025", "back_cast")], got
     inside = " ".join(res["back_cast_inside"])
     assert "1991-1995" in inside and "CHL-1902-2025" in inside, inside
+    # And it BLOCKS: a back_cast onto the era's container is a ledger/registry disagreement, not a
+    # note. It was report-only until 12 of them sat in the ledger unnoticed.
+    assert "back_cast_inside" in derive.BLOCKING, derive.BLOCKING
 
 
 def test_a_hand_curated_row_is_never_overwritten():

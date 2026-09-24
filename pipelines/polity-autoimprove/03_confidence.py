@@ -68,7 +68,7 @@ out=pd.DataFrame(rows,columns=["source_label","source","polity_code","year_min",
         "observed_rows","method","iso_ok","name_ok","confidence_class","risk_flags"])
 out.to_csv(os.path.join(H,"match_confidence.csv"),index=False)
 
-SAFE={"safe_iso_name","ok_name_only","asserted_alias"}
+SAFE=frozenset({"safe_iso_name","ok_name_only","asserted_alias"})
 print(f"assertions: {len(out)} | rows: {out.observed_rows.sum():,}\n")
 print("by confidence_class (assertions | rows):")
 for c,g in out.groupby("confidence_class").agg(n=("source_label","size"),rows=("observed_rows","sum")).sort_values("rows",ascending=False).iterrows():
