@@ -313,11 +313,14 @@ resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
     }
     # Cape Colony → South Africa after Union (1910)
     if (iso == "CAP" && !is.na(year) && year > 1910) iso <- "ZAF"
-    # Manchuria: the MAN family 1932-1954 -- Manchukuo (MAN-1932-1945), then the
-    # Manchuria region rows MAN-1945-1950 and MAN-1950-1955 -- otherwise China (CHN).
+    # Manchuria: the MAN family 1921-1954 -- the Manchuria region row MAN-1921-1932, then
+    # Manchukuo (MAN-1932-1945), then the region rows MAN-1945-1950 and MAN-1950-1955 --
+    # otherwise China (CHN).
     # Widened from 1932-1945 on 2026-09-24 (world alias collisions) so this matcher agrees
-    # with the alias registry, which now routes the region's 1945-1954 rows to MAN.
-    if (iso == "MAN" && !is.na(year) && (year < 1932 || year > 1954)) iso <- "CHN"
+    # with the alias registry, which now routes the region's 1945-1954 rows to MAN; and
+    # again the same day from 1932 to 1921 (layer-B territory findings), when MAN-1921-1932
+    # was created for the 1928-1931 rows that sat on the whole of China (7.0x the region).
+    if (iso == "MAN" && !is.na(year) && (year < 1921 || year > 1954)) iso <- "CHN"
     # China polity split at 1932: CHN iso3c routes to CHN-1921-1932 (1921-1931)
     # or CHN-1932-1945 (1932-1945) automatically via year-span lookup in the
     # polities DB. Labels "china" / "china, mainland" in years 1921-1945 are

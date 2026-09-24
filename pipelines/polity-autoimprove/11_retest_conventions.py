@@ -1349,6 +1349,106 @@ def check_fao1952_meat_total_last(d):
                   f"in {part_hit}")
 
 
+# fao1952 1934-38 item -> the item name juan/iia/mitchell use for the same crop or animal.
+_PREWAR_ITEMS = {
+    "rye": "rye", "oats": "oats", "cattle": "cattle", "pigs": "swine / pigs", "sheep": "sheep",
+    "tobacco": "tobacco, unmanufactured", "linseed": "linseed", "dry beans": "beans, dry",
+    "wine": "wine", "goats": "goats", "rice paddy": "rice, paddy", "cotton lint": "cotton lint",
+    "groundnuts": "groundnuts, with shell", "sesame seed": "sesame seed", "rapeseed": "rapeseed",
+    "hops": "hops", "soybeans": "soybeans", "grapes": "grapes", "flax fiber": "flax fibre and tow",
+    "tea": "tea", "coffee": "coffee, green",
+}
+
+
+def _prewar_ratios(d, fao_label, others):
+    """fao1952's 1934-38 average over another source's own 1934-38 mean, per (item, unit) series.
+
+    `others` is [(source, label)]. The other source's mean needs >= 3 of the five years, so one odd
+    year cannot make a series. fao1952 reports in THOUSANDS; the others in units.
+    """
+    f = d[(d["source"] == "fao1952") & (d["country"] == fao_label) & (d["period"] == "1934-1938")
+          & d["item"].isin(_PREWAR_ITEMS)].copy()
+    f["oitem"] = f["item"].map(_PREWAR_ITEMS)
+    f["kind"] = f["unit"].map(lambda u: "ha" if "hect" in u else ("heads" if "head" in u else "tonnes"))
+    out = []
+    for src, lab in others:
+        o = d[(d["source"] == src) & (d["country"] == lab) & d["year"].between(1934, 1938)].copy()
+        o["kind"] = o["unit"].replace({"tons": "tonnes"})
+        g = o.groupby(["item", "kind"])["value"].agg(["mean", "count"])
+        g = g[g["count"] >= 3]
+        for r in f.itertuples():
+            key = (r.oitem, r.kind)
+            if key in g.index and g.loc[key, "mean"] > 0 and r.value > 0:
+                out.append((src, r.item, r.kind, 1000 * r.value / g.loc[key, "mean"]))
+    return out
+
+
+def check_fao1952_present_boundaries(d):
+    """fao1952's pre-war columns are on PRESENT (post-war) boundaries, except the USSR (mixed by item).
+
+    Three instruments, all inside the panel:
+
+    (1) PARTITION IDENTITY. 1937 `population total`: `India` + `Pakistan` is undivided British India
+        (~370 million), so `India` alone is the future Union. Holds if Pakistan is >= 10% of the sum.
+    (2) LAND IDENTITY. Poland's 1939 land-use `use total` is post-war Poland's area (312,685 km2),
+        not interwar Poland's (388,600). Holds if within 3% of the post-war area.
+    (3) CROSS-SOURCE DIRECTION. fao1952's 1934-38 averages against juan/iia/mitchell's own
+        contemporaneous 1934-38 series for the same label, which are on the boundaries of the time.
+        A territory that lost ground after the war must come out BELOW 1 (Romania, Poland, Finland,
+        Czechoslovakia), and one that gained ground ABOVE 1 (Bulgaria, Southern Dobruja).
+        Czechoslovakia is the weak member: Ruthenia was ~5% of the population but less of the
+        farm output, so its bound is only < 1.0. India is NOT in this arm: iia `india` carries unit
+        defects (ratios in the thousands on 4 series) and, pooled with mitchell's 0.88, gives a
+        median of 1.03, so the partition identity (1) is the instrument for India.
+    USSR: MIXED, which is why its rows are NOT rerouted. Against iia `russian federation` (whole
+    USSR on the 1934-38 boundary), fibre and industrial crops sit within 6% while rye area and
+    soybeans run 13-26% above, i.e. some series include the 1939-45 annexations and some do not.
+    Holds while both classes are present.
+    """
+    import statistics as st
+    msg, ok = [], True
+    f = d[(d["source"] == "fao1952") & (d["indicator"] == "population:population total")
+          & (d["year"] == 1937)]
+    pop = {c: float(v) for c, v in zip(f["country"], f["value"])}
+    ind, pak = pop.get("India"), pop.get("Pakistan")
+    if not (ind and pak) or pak / (ind + pak) < 0.10:
+        ok = False
+    msg.append(f"1937 population India {ind:,.0f} + Pakistan {pak:,.0f} = {ind + pak:,.0f} thousand"
+               if ind and pak else "1937 India/Pakistan population missing")
+    lt = d[(d["source"] == "fao1952") & (d["country"] == "Poland") & (d["year"] == 1939)
+           & (d["item"] == "use total")]["value"]
+    km2 = float(lt.iloc[0]) * 10 if len(lt) else None           # 1000 ha -> km2
+    if km2 is None or abs(km2 / 312685 - 1) > 0.03:
+        ok = False
+    msg.append(f"Poland 1939 land total {km2:,.0f} km2 (post-war 312,685, interwar 388,600)"
+               if km2 else "Poland 1939 land total missing")
+    expect = {
+        "Romania": ([("juan", "romania"), ("iia", "romania")], "<", 0.85),
+        "Poland": ([("juan", "poland"), ("iia", "poland")], "<", 0.85),
+        "Finland": ([("juan", "finland"), ("iia", "finland")], "<", 0.97),
+        "Czechoslovakia": ([("juan", "czechoslovakia"), ("iia", "czechoslovakia")], "<", 1.0),
+        "Bulgaria": ([("juan", "bulgaria"), ("iia", "bulgaria")], ">", 1.0),
+    }
+    for lab, (others, op, bound) in expect.items():
+        rs = [r[3] for r in _prewar_ratios(d, lab, others)]
+        if len(rs) < 5:
+            ok = False
+            msg.append(f"{lab}: only {len(rs)} comparable series")
+            continue
+        med = st.median(rs)
+        good = med < bound if op == "<" else med > bound
+        ok = ok and good
+        msg.append(f"{lab} median {med:.2f} over {len(rs)} series (expect {op} {bound})")
+    u = _prewar_ratios(d, "USSR", [("iia", "russian federation")])
+    near = [r for r in u if abs(r[3] - 1) <= 0.06]
+    above = [r for r in u if r[3] >= 1.10]
+    mixed = len(near) >= 3 and len(above) >= 2
+    ok = ok and mixed
+    msg.append(f"USSR {len(near)} series within 6% of iia and {len(above)} >= 1.10x "
+               f"({', '.join(sorted({r[1] for r in above}))}): {'mixed' if mixed else 'NOT mixed'}")
+    return ok, "; ".join(msg)
+
+
 CHECKS = {
     ("iia", "algeria", "*"): check_iia_algeria,
     ("fao1952", "France", "*"): check_fao1952_france,
@@ -1362,6 +1462,8 @@ CHECKS = {
     ("fao1952", "*", "horses mules asses"): check_fao1952_group_item_order,
     ("fao1952", "*", "poultry"): check_fao1952_poultry_order,
     ("fao1952", "*", "meat"): check_fao1952_meat_total_last,
+    # Source-wide and item-agnostic; ("fao1952", "*", "*") verified free before binding.
+    ("fao1952", "*", "*"): check_fao1952_present_boundaries,
     ("iia", "russian federation", "*"): check_iia_russia,
     ("iia", "south korea", "*"): check_iia_south_korea,
     ("juan", "germany", "*"): check_juan_germany,

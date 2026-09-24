@@ -313,7 +313,15 @@ BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # TNGU-1949-1975. The row declares 410,361, its CShapes feature's own measurement, so it becomes one
 # more row where a real comparison is available. Here the two agree (0.994x), so declaring the stated
 # figure would change nothing check A reports; left as the geometry's number, like the rows above.
-BASELINE_AVOIDABLE_SELF_REF = 40
+#
+# 40 -> 41 on 2026-09-24 (layer-B territory findings): MKY-1918-1962. validate_stated_areas.py now
+# tries the routing's source-scoped `fao1952` alias before the bare `fao` source, so FAO's 1947
+# `Yemen` statement (195,000 km2) resolves to MKY-1918-1962, the polity the fao1952 `Yemen` rows are
+# on, instead of the combined F249-1918-1990. The row declares 136,555, its CShapes polygon's own
+# area. Declaring 195,000 instead would manufacture a check-A failure: the stated figure counts the
+# undemarcated desert frontier that the polygon does not draw. The divergence is baselined with that
+# reason in validate_stated_areas.py.
+BASELINE_AVOIDABLE_SELF_REF = 41
 
 #
 

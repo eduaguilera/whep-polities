@@ -637,6 +637,7 @@ IND-1914-1937,1914,1937,750,national,constructed,4889739,stable_confirmed,1,1914
 IND-1937-1947,1937,1947,750,national,constructed,4223063,stable_confirmed,1,1937-1946,0,4227508,4227508,,,0.998,-0.11
 IND-1947-1949,1947,1949,750,national,constructed,3041829,stable_confirmed,1,1947-1948,0,3046196,3046196,,,0.998,-0.14
 IND-1949-2025,1949,2025,750,national,cshapes-2.0,3151797,stable_where_covered,1,1949-2019,0,3152040,3152040,,,0.999,-0.01
+INU-1937-1947,1937,1947,,subnational,constructed,3041829,no_reference,0,,0,,,,,,
 IRL-1800-1921,1800,1921,205,national,constructed,84366,no_reference,0,,0,,,,,,
 IRL-1921-2025,1921,2025,205,national,cshapes-2.0,69565,stable_where_covered,1,1921-2019,0,69578,69578,,,0.993,-0.02
 IRN-1800-1828,1800,1828,630,national,cliopatria,1743646,no_reference,0,,0,,,,,,
@@ -794,6 +795,7 @@ LVA-1991-2025,1991,2025,367,national,cshapes-2.0,64615,stable_where_covered,1,19
 LZI-1800-1890,1800,1890,,national,paine-2024,61160,no_reference,0,,0,,,,,,
 MAC-1800-2025,1800,2025,,national,gadm-4.1-adm1,34,no_reference,0,,0,,,,,,
 MAF-2007-2025,2007,2025,,territory,gadm-4.1-adm0,56,no_reference,0,,0,,,,,,
+MAN-1921-1932,1921,1932,,subnational,constructed,791708,no_reference,0,,0,,,,,,
 MAN-1932-1945,1932,1945,,national,constructed,791708,no_reference,0,,0,,,,,,
 MAN-1945-1950,1945,1950,,subnational,constructed,791708,no_reference,0,,0,,,,,,
 MAN-1950-1955,1950,1955,,subnational,constructed,791708,no_reference,0,,0,,,,,,

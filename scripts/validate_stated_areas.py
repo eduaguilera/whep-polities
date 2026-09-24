@@ -272,12 +272,23 @@ BASELINE = {
     # growing as the coast was surveyed -- a DIFFERENT QUANTITY, not a lost digit. A ~10x outlier
     # can be either, and the screen cannot tell them apart; it only stops the outlier widening the
     # accepted band, which is right in both cases but for different reasons.
-    ("F249-1918-1990", "fao"):
-        "SCOPE MISMATCH, not an error. FAO's `Yemen` for 1947 is 195,000 km2 -- NORTH Yemen "
-        "alone -- while F249-1918-1990 is the combined YAR + PDR reporting unit at 423,668. The "
-        "routing question (should a pre-1990 `Yemen` label reach the combined row or a "
-        "North-Yemen one?) is the pre-1990 Yemen gap already known from the production/trade "
-        "review; it is not answerable by area.",
+    # F249-1918-1990/fao REMOVED 2026-09-24 (layer-B territory findings). It explained a
+    # comparison this gate should never have made: FAO's 1947 `Yemen` statement was resolved
+    # under source `fao` before the `fao1952` synonym, and `Yemen|fao1952|1918-1962` routes to
+    # MKY-1918-1962 -- so the statement was checked against the combined YAR+PDR row that none
+    # of FAO 1952's `Yemen` rows reach. With the source-scoped alias tried first, it now lands
+    # on MKY-1918-1962, the polity the data is on, and the real disagreement is below.
+    ("MKY-1918-1962", "fao"):
+        "OUR POLYGON IS THE SMALLER TERRITORY, and neither figure can be called wrong yet. FAO 1952 "
+        "states 195,000 km2 for `Yemen` at 1947 against our 136,644 (0.70x), CShapes 678 at its "
+        "1930 vintage. 195,000 km2 is the conventional area of the Yemen Arab Republic for decades "
+        "afterwards, so it is not a one-off bad number. The gap is the undemarcated north and east: "
+        "the Imamate's desert frontier with Saudi Arabia (Najran, al-Jawf, the Rub al Khali edge) "
+        "and with the Aden Protectorate was not settled until the 2000 Jeddah treaty. A gazetteer "
+        "figure counts the claimed desert and a mapped polygon draws only the administered ground. "
+        "Surfaced 2026-09-24 when this gate began trying the routing's source-scoped `fao1952` "
+        "alias before the bare `fao` source, so the statement stopped being compared with "
+        "F249-1918-1990.",
     ("RYU-1945-1972", "fao"):
         "SCOPE MISMATCH, explained. FAO states 3,410 km2 against our 2,270. The US-administered "
         "Ryukyus included Amami Oshima (~1,200 km2) until it returned to Japan in 1953, and "
@@ -795,8 +806,17 @@ def analyse():
         # `source_stated_area_basis.csv` is keyed on (polity_code, source) and this gate's BASELINE
         # and SOURCE_NOTES are keyed on (code, "fao"), so renaming the source would move every one of
         # those keys. Trying the synonym only widens which aliases are considered; nothing published
-        # changes name, and a statement that already resolved keeps resolving to the same polity
-        # because the first attempt is unchanged.
+        # changes name.
+        #
+        # THE SYNONYM IS TRIED FIRST, not second (2026-09-24). The original order kept "a statement
+        # that already resolved keeps resolving to the same polity", which assumed the bare `fao`
+        # answer was right whenever there was one. It is not: with no `fao`-scoped rule, the bare
+        # source falls through to name/iso matching and can resolve to a polity the routing never
+        # uses. FAO's 1947 `Yemen` did exactly that, resolving by name to the combined
+        # F249-1918-1990, while `Yemen|fao1952|1918-1962` sends every fao1952 `Yemen` row to
+        # MKY-1918-1962. A stated area describes the territory the SOURCE'S rows are on, so the
+        # routing's source-scoped alias decides. Measured when reordered: 1 of 1,435 resolved
+        # statements moves (Yemen 1947, F249-1918-1990 -> MKY-1918-1962); nothing else changes.
         SOURCE_SYNONYMS = {"fao": ("fao1952",), "iia": ()}
         # ITEM-SCOPED LABEL CORRECTIONS (issue 675). A statement here IS one layer-B item -- the FAO
         # figures are fao1952's `use total` -- so a row that data/final/source_label_item_corrections.csv
@@ -814,7 +834,7 @@ def analyse():
         for candidate in (label, lexicon_target(lexicon, normalise_label(label), year)):
             if not candidate:
                 continue
-            for src_try in (row["source"], *SOURCE_SYNONYMS.get(row["source"], ())):
+            for src_try in (*SOURCE_SYNONYMS.get(row["source"], ()), row["source"]):
                 try:
                     code = matcher.assign(candidate, None, src_try, year)[0]
                 except Exception:
