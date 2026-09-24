@@ -3108,6 +3108,118 @@ def check_iia_mex_oats_arg_rapeseed_scale(ctx):
                  "axes, different factors, one volume; and argentina's dated 1939 row shares it")
 
 
+def _raw_cells(raw, country, product, variable, unit):
+    """(year-or-period string, value) pairs for one raw series, both spellings of year normalised."""
+    r = raw[(raw["_c"] == country) & (raw["_p"] == product) & (raw["_v"] == variable)
+            & (raw["unit"].astype(str).str.lower() == unit) & raw["value"].notna()]
+    yr = r["year"].astype(str).str.replace(r"\.0$", "", regex=True)
+    return list(zip(yr, r["value"].astype(float)))
+
+
+def _lb_cells(lb, label, item, unit):
+    g = lb[(lb["source"] == "iia") & (lb["country"] == label) & (lb["item"] == item)
+           & (lb["unit"] == unit) & lb["value"].notna()]
+    t = g["year"].astype("Int64").astype("string").fillna(g["period"]).astype(str)
+    return dict(zip(t, g["value"].astype(float)))
+
+
+def check_bwi_ginned_cotton_duplicated(ctx):
+    """Layer-B iia `jamaica` cotton lint from 1934 is the British West Indies total, doubled.
+
+    THE DOUBLING IS PINNED AT ITS CAUSE, not only at its effect. The raw extract carries every
+    `british west indies federation` `cotton: ginned` row TWICE, identical (16 production and area
+    cells, 32 rows, one reviewed sheet), and the layer-B lint is exactly 2x the single figure while
+    the seed -- whose raw rows are NOT duplicated -- equals it. Pinning only the 2.00 ratio would pass
+    on any doubling; pinning the duplicate count is what names this one, and the seed equality is the
+    control. The rows are unrouted by source_label_item_corrections.csv (UNROUTED rules), so the last
+    claim pins that none of the 32 reaches a polity.
+    """
+    raw, lb, m = ctx["raw"], ctx["panel"], ctx["matched"]
+    bwi = raw[(raw["_c"] == "british west indies federation") & (raw["_p"] == "cotton: ginned")
+              & raw["_v"].isin(["production", "area"])]
+    key = ["_v", "unit", "year", "value", "yearbook"]
+    dup_rows = int(bwi.duplicated(key, keep=False).sum())
+    lint_t = _lb_cells(lb, "jamaica", "cotton lint", "tonnes")
+    lint_ha = _lb_cells(lb, "jamaica", "cotton lint", "ha")
+    seed_t = _lb_cells(lb, "jamaica", "cotton seed", "tonnes")
+    raw_lint_t = dict(_raw_cells(raw, "british west indies federation", "cotton: ginned",
+                                 "production", "tonnes"))
+    raw_lint_ha = dict(_raw_cells(raw, "british west indies federation", "cotton: ginned",
+                                  "area", "hectares"))
+    raw_seed_t = dict(_raw_cells(raw, "british west indies federation", "cottonseed",
+                                 "production", "tonnes"))
+    doubled = sum(1 for k, v in raw_lint_t.items() if lint_t.get(k) == 2 * v) \
+        + sum(1 for k, v in raw_lint_ha.items() if lint_ha.get(k) == 2 * v)
+    seed_equal = sum(1 for k, v in raw_seed_t.items() if seed_t.get(k) == v)
+    routed = None
+    if m is not None:
+        s = m[(m["source"] == "iia") & (m["source_label_raw"] == "jamaica")
+              & m["item"].isin(["cotton lint", "cotton seed"])]
+        yrs = pd.to_numeric(s["year"], errors="coerce")
+        s = s[(yrs >= 1934) | (s["period"] == "1934-1938")]
+        routed = int(s["whep_code"].notna().sum())
+    return ([("raw BWI ginned rows that are duplicates", dup_rows, 32),
+             ("layer-B jamaica lint cells = 2x raw BWI", doubled, 16),
+             ("layer-B jamaica seed t cells = raw BWI (control)", seed_equal, 8),
+             ("jamaica cotton rows 1934+ still routed", routed, 0)],
+            "raw duplicates summed by the layer-B build; the rows are unrouted, not repaired")
+
+
+def check_france_eggs_spm_folded(ctx):
+    """Layer-B iia `france` eggs folds raw `french saint pierre and miquelon` in, three ways.
+
+    Nine dated cells ARE the islands' (relabelled to SPM by source_label_item_corrections.csv); the
+    1934-1938 average is the SUM of both labels, which is the pinned identity; and France's own 1932
+    figure (284,376.4, iia_1938_39) is absent from layer B, whose 1932 cell is the islands' 7.7616.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    fr = dict(_raw_cells(raw, "france", "eggs", "production", "tonnes"))
+    spm = _raw_cells(raw, "french saint pierre and miquelon", "eggs", "production", "tonnes")
+    lbf = _lb_cells(lb, "france", "eggs, hen, in shell", "tonnes")
+    spm_d = {}
+    for k, v in spm:
+        if v:
+            spm_d[k] = v
+    folded = sum(1 for k, v in spm_d.items() if k != "1934-1938" and lbf.get(k) == v)
+    per = lbf.get("1934-1938")
+    summed = round(fr.get("1934-1938", 0) + spm_d.get("1934-1938", 0), 4)
+    return ([("layer-B france egg cells equal to SPM's", folded, 9),
+             ("layer-B france 1934-1938", round(per, 4) if per is not None else None, 339575.39),
+             ("raw france + raw SPM 1934-1938", summed, 339575.39),
+             ("raw france 1932 (absent from layer B)", fr.get("1932"), 284376.4),
+             ("layer-B france 1932", lbf.get("1932"), 7.7616)],
+            "the period cell is a sum and stays on France (+0.0016%); France's 1932 figure is lost")
+
+
+def check_greece_grapes_dodecanese(ctx):
+    """Layer-B iia `greece` grapes carries six Dodecanese cells; two cannot be moved by a year rule.
+
+    Pinned: the four dated cells relabelled to ITAEG-1912-1947 and the two period averages left on
+    Greece (1928-1932 3,600 and 1934-1938 4,500, both equal to raw `italian dodecanese islands`
+    `vineyards: grapes, raisins`), plus what blocks them -- Greece's own 229,000 ha 1928-1932 average
+    under the same item, and Greece's 1936 row inside the 1934-1938 window. And the loss: Greece's own
+    1933 crop (73,600 + 530,000 + 75,000 t across its three `vineyards: grapes, raisins` series) is not
+    in layer B, whose 1933 cell is the islands' 1,600.
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    dod = {}
+    for k, v in _raw_cells(raw, "italian dodecanese islands", "vineyards: grapes, raisins",
+                           "production", "tonnes"):
+        dod.setdefault(k, set()).add(v)
+    g = _lb_cells(lb, "greece", "grapes", "tonnes")
+    gha = _lb_cells(lb, "greece", "grapes", "ha")
+    hits = sorted(k for k, v in g.items() if v in dod.get(k, ()))
+    gr33 = [v for k, v in _raw_cells(raw, "greece", "vineyards: grapes, raisins", "production",
+                                     "tonnes") if k == "1933"]
+    return ([("layer-B greece grape cells equal to Dodecanese", len(hits), 6),
+             ("of those, period averages left on Greece",
+              sum(1 for k in hits if "-" in k), 2),
+             ("greece grapes ha 1928-1932 (blocks the rule)", gha.get("1928-1932"), 229000.0),
+             ("greece grapes t 1936 (inside 1934-1938)", g.get("1936"), 680100.0),
+             ("raw greece 1933 total over its 3 series", round(sum(gr33), 1), 678600.0)],
+            "4 dated cells relabelled; the 2 period cells are recorded, not moved")
+
+
 CHECKS = {
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
     "iia-mex-oats-arg-rapeseed-scale-factors": check_iia_mex_oats_arg_rapeseed_scale,
@@ -3164,6 +3276,9 @@ CHECKS = {
     "fao1952-bwi-bahamas-land-area-x10": check_bahamas_area_x10,
     "fao1952-bwi-jamaica-dropped-leading-digit": check_jamaica_dropped_digit,
     "fao1952-yugoslavia-horses-dropped-leading-digit": check_yugoslavia_horses_dropped_digit,
+    "iia-bwi-ginned-cotton-duplicated-rows": check_bwi_ginned_cotton_duplicated,
+    "iia-france-eggs-spm-folded-in": check_france_eggs_spm_folded,
+    "iia-greece-grapes-dodecanese-period-cells": check_greece_grapes_dodecanese,
 }
 
 

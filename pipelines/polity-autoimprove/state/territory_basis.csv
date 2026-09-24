@@ -337,7 +337,7 @@ EGY-1800-1899,Egypt (to 1899),1800,1899,cliopatria,1848.0,assigned,True,assumed_
 EGY-1820-1885,Egypt with Sudan (1820-1885),1820,1885,cliopatria,1848.0,assigned,True,assumed_constant,True,True,no_reference,,single 1848 polygon held across a 65y span (1820-1885); borders may have changed,19
 EGY-1885-1899,Egypt (1885-1899),1885,1899,cshapes-2.0,1886.0,assigned,True,measured,False,False,stable_where_covered,0.01,vintage 1886 faithful to period 1885-1899,65
 EGY-1899-1925,Egypt (1899-1925),1899,1925,cshapes-2.0,1899.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.01,"single 1899 polygon held across a 26y span (1899-1925); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.01%), so the single polygon is not an assumption",479
-EGY-1925-1967,Egypt (1925-1967),1925,1967,cshapes-2.0,1925.0,assigned,True,assumed_constant,False,True,stable_confirmed,-0.01,"single 1925 polygon held across a 42y span (1925-1967); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.01%), so the single polygon is not an assumption; footnote coverage caveat (FAO/IIA yearbook)",1319
+EGY-1925-1967,Egypt (1925-1967),1925,1967,cshapes-2.0,1925.0,assigned,True,assumed_constant,False,True,stable_confirmed,-0.01,"single 1925 polygon held across a 42y span (1925-1967); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.01%), so the single polygon is not an assumption; footnote coverage caveat (FAO/IIA yearbook)",1315
 EGY-1967-1979,Egypt (1967-1979),1967,1979,cshapes-2.0,1967.0,assigned,False,measured,False,False,stable_confirmed,-0.01,vintage 1967 faithful to period 1967-1979,0
 EGY-1979-2025,Egypt,1979,2025,cshapes-2.0,1979.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.01,single 1979 polygon held across a 46y span (1979-2025); borders may have changed,0
 EGYSUD-1934-1956,Egypt and Anglo-Egyptian Sudan,1934,1956,constructed,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -458,7 +458,7 @@ FRA-1800-1871,"France (with Alsace-Lorraine, to 1871)",1800,1871,cshapes-europe,
 FRA-1800-1919,France (to 1919),1800,1919,cshapes-europe,1816.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.32,single 1816 polygon held across a 119y span (1800-1919); borders may have changed,0
 FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",1871,1919,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.0,single 1886 polygon held across a 48y span (1871-1919); borders may have changed,2358
 FRA-19-1800-2025,Corrèze (département of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-FRA-1919-2025,France,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,stable_where_covered,0.0,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4101
+FRA-1919-2025,France,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,stable_where_covered,0.0,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4092
 FRA-21-1800-2025,Côte-d'Or,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-22-1800-2025,Côtes-d'Armor,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-23-1800-2025,Creuse (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -584,13 +584,13 @@ GRC-1830-1881,Greece (1830–1881),1830,1881,cliopatria,1830.0,assigned,True,ass
 GRC-1830-1913,Greece (to 1913),1830,1913,cshapes-europe,1835.0,assigned,True,assumed_constant,True,False,stable_where_covered,-27.42,single 1835 polygon held across a 83y span (1830-1913); borders may have changed,0
 GRC-1881-1913,Greece (1881–1913),1881,1913,cshapes-europe,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.22,single 1886 polygon held across a 32y span (1881-1913); borders may have changed,60
 GRC-1913-1919,Greece (1913-1919),1913,1919,cshapes-2.0,1913.0,assigned,True,measured,False,False,stable_confirmed,-0.07,vintage 1913 faithful to period 1913-1919,170
-GRC-1919-1947,Greece (1919-1947),1919,1947,cshapes-2.0,1919.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.06,"single 1919 polygon held across a 28y span (1919-1947); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.06%), so the single polygon is not an assumption",1230
+GRC-1919-1947,Greece (1919-1947),1919,1947,cshapes-2.0,1919.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.06,"single 1919 polygon held across a 28y span (1919-1947); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.06%), so the single polygon is not an assumption",1226
 GRC-1919-2025,Greece,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.06,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),0
 GRC-1947-2025,Greece (1947-2025),1947,2025,cshapes-2.0,1944.0,assigned,True,back_projected,True,True,stable_where_covered,-0.06,polygon vintage 1944 is BEFORE the period starts (1947),1087
 GRD-1800-2025,Grenada,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,167
 GRL-1800-2025,Greenland,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,5
 GTM-1821-2025,Guatemala,1821,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.08,single 1886 polygon held across a 204y span (1821-2025); borders may have changed,1599
-GTO-1884-1920,German Togoland (1884-1920),1884,1920,constructed,1920.0,proxy,True,assumed_constant,True,False,no_reference,,single 1920 polygon held across a 36y span (1884-1920); borders may have changed,0
+GTO-1884-1920,German Togoland (1884-1920),1884,1920,constructed,1920.0,proxy,True,assumed_constant,True,False,no_reference,,single 1920 polygon held across a 36y span (1884-1920); borders may have changed,7
 GUF-1816-1946,French Guiana (Colony),1816,1946,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,changed,-0.06,single 1886 polygon held across a 130y span (1816-1946); borders may have changed,41
 GUF-1946-2025,French Guiana (Overseas Department),1946,2025,cshapes-2.0,1946.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.06,single 1946 polygon held across a 79y span (1946-2025); borders may have changed,44
 GUM-1898-1950,Territory of Guam,1898,1950,gadm-4.1-adm0,2023.0,assigned,True,back_projected,True,True,no_reference,,polygon vintage 2023 is AFTER the period ends (1950) — later/modern border applied back,19
@@ -678,9 +678,9 @@ ITA-SIC-1861-2025,Sicilia (region of Italy),1861,2025,gadm-4.1-adm1,,assigned,Tr
 ITA-TAA-1919-2025,Trentino-Alto Adige (region of Italy),1919,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 ITA-VDA-1948-2025,Valle d'Aosta (region of Italy),1948,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 ITA-VEN-1866-2025,Veneto (region of Italy),1866,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,none,,unassigned,True,unassigned,True,False,changed,,no polygon (honest gap; never a false territory),1
+ITAEG-1912-1947,Italian Islands of the Aegean (Dodecanese),1912,1947,none,,unassigned,True,unassigned,True,False,changed,,no polygon (honest gap; never a false territory),5
 ITS-1908-1960,Italian Somaliland (1908-1960),1908,1960,constructed,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,185
-JAM-1800-2025,Jamaica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.24,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,964
+JAM-1800-2025,Jamaica,1800,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.24,single 1886 polygon held across a 225y span (1800-2025); borders may have changed,932
 JOL-1800-1890,Kingdom of Jolof,1800,1890,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 JOR-1918-1920,Jordan (to 1920),1918,1920,cshapes-2.0,1920.0,assigned,True,measured,False,False,no_reference,,vintage 1920 faithful to period 1918-1920,0
 JOR-1920-1923,Jordan (1920-1923),1920,1923,cshapes-2.0,1920.0,assigned,True,measured,False,False,stable_confirmed,0.1,vintage 1920 faithful to period 1920-1923,0
@@ -1062,14 +1062,14 @@ SNI-1906-1913,Southern Nigeria (1906-1913),1906,1913,cshapes-2.0,1906.0,assigned
 SNW-1814-1905,"Sweden-Norway (Union, 1814-1905)",1814,1905,cshapes-europe,1816.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.1,single 1816 polygon held across a 91y span (1814-1905); borders may have changed,0
 SOK-1804-1903,Sokoto Caliphate,1804,1903,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SOM-1960-2025,Somalia,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.06,single 1960 polygon held across a 65y span (1960-2025); borders may have changed,4
-SPM-1816-2025,Saint Pierre and Miquelon,1816,2025,gadm-4.1-adm0,2024.0,proxy,True,assumed_constant,True,True,no_reference,,single 2024 polygon held across a 209y span (1816-2025); borders may have changed,8
+SPM-1816-2025,Saint Pierre and Miquelon,1816,2025,gadm-4.1-adm0,2024.0,proxy,True,assumed_constant,True,True,no_reference,,single 2024 polygon held across a 209y span (1816-2025); borders may have changed,17
 SRB-2006-2008,Serbia (including Kosovo),2006,2008,cshapes-2.0,2007.0,assigned,False,measured,False,False,no_reference,,vintage 2007 faithful to period 2006-2008,0
 SRB-2008-2025,Serbia,2008,2025,cshapes-2.0,2008.0,assigned,False,measured,False,False,no_reference,,vintage 2008 faithful to period 2008-2025,0
 SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,cshapes-2.0,1953.0,assigned,True,measured,False,False,no_reference,,vintage 1953 faithful to period 1953-1964,72
 SSD-2011-2025,South Sudan,2011,2025,cshapes-2.0,2011.0,assigned,False,measured,False,False,stable_where_covered,-0.01,vintage 2011 faithful to period 2011-2025,0
 STP-1800-2025,Sao Tome and Principe,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,89
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,cshapes-2.0,1914.0,assigned,True,assumed_constant,True,True,no_reference,,single 1914 polygon held across a 35y span (1899-1934); borders may have changed,97
-SUD-1934-1956,Sudan (1934-1956),1934,1956,cshapes-2.0,1934.0,assigned,True,measured,False,False,no_reference,,vintage 1934 faithful to period 1934-1956,266
+SUD-1934-1956,Sudan (1934-1956),1934,1956,cshapes-2.0,1934.0,assigned,True,measured,False,False,no_reference,,vintage 1934 faithful to period 1934-1956,270
 SUD-1956-2011,Sudan (1956-2011),1956,2011,cshapes-2.0,1956.0,assigned,True,assumed_constant,True,False,no_reference,,single 1956 polygon held across a 55y span (1956-2011); borders may have changed,53
 SUR-1800-1886,Dutch Guiana (to 1886),1800,1886,cshapes-2.0,1886.0,proxy,True,assumed_constant,True,False,no_reference,,single 1886 polygon held across a 86y span (1800-1886); borders may have changed,0
 SUR-1886-1954,Dutch Guiana,1886,1954,cshapes-2.0,1886.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.0,"single 1886 polygon held across a 68y span (1886-1954); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.00%), so the single polygon is not an assumption",354

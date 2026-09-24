@@ -202,6 +202,9 @@ BASELINE = frozenset({
     # because its pre-war `Greece` excludes the islands. NO SOURCE HAS IT, as the page records: CShapes 2.0
     # has no Dodecanese/Aegean feature and Cliopatria's Rhodes entries are ancient. Routed anyway because
     # the alternatives were the whole of Italy or of Greece; the row is matched and honestly geometry-less.
+    # 1 -> 5 rows 2026-09-24 (issue 687): four iia `greece` grape cells (1933-1935, 1937) that are raw
+    # `italian dodecanese islands`' are relabelled here by source_label_item_corrections.csv, for the
+    # same reason -- the alternative was Greece, a territory that did not include the islands.
     "ITAEG-1912-1947",
     # 39 rows. The recipe EXISTS and was measured WRONG: build.py carries
     # build_can_1800_1866 unregistered because the five modern provinces give

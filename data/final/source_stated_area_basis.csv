@@ -165,6 +165,7 @@ GRL-1800-2025,Greenland,fao,2176000,1,1952,Greenland,2148756,0.987,agrees,
 GRL-1800-2025,Greenland,iia,88100,7,1909;1925;1932;1933;1938,GROENLAND,2148756,24.390,source_figure_suspect,"PROBABLY A SCOPE STATEMENT, AND DELIBERATELY HEDGED. IIA states 88,100 km2 for Greenland in 1911-1925, then 313,000 in 1932/1933 and 341,700 in 1937, against a total area of 2,166,000 km2. No unit or digit error explains three different values, and the later two sit near Greenland's ICE-FREE area (roughly 410,000 km2), which is the quantity an agricultural yearbook would care about. So the likeliest reading is that the source states usable rather than total land and revised its estimate twice. I have NOT confirmed that against the volumes, so it is not baselined as understood -- the 1909-edition 88,100 is additionally dropped by this gate's own digit-error screen as ~10x from the polity median."
 GTM-1821-2025,Guatemala,fao,108890,1,1952,Guatemala,109118,1.002,agrees,
 GTM-1821-2025,Guatemala,iia,109960,9,1909;1925;1929;1932;1933;1938,GUATEMALA;GUATÉMALA;guatémala,109118,0.992,agrees,
+GTO-1884-1920,German Togoland (1884-1920),iia,87200,3,1909;1925;1929,TOGO german;Togo;togo,83683,0.960,agrees,
 GUF-1816-1946,French Guiana (Colony),iia,88240,9,1909;1925;1929;1932;1933;1938,GUYANE FRANÇAISE;GUYANE FRANÇAISE ET ININI;guyane française,83660,0.948,agrees,
 GUF-1946-2025,French Guiana (Overseas Department),fao,90000,1,1952,French Guiana,83660,0.930,agrees,
 GUM-1898-1950,Territory of Guam,iia,544,7,1909;1929;1932;1933;1938,GUAM;guam,550,1.012,agrees,

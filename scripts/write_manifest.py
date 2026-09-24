@@ -381,6 +381,8 @@ if os.path.exists(LABEL_ITEM_CORRECTIONS):
             "[year_start, year_end] (inclusive; a period-average row with no year is corrected "
             "only when BOTH ends of its period lie in that range). `polity_code` is where the "
             "corrected label then resolves, possibly as a `back_cast` before the polity begins. "
+            "`polity_code` = `UNROUTED` means the rows belong to NO polity (a wrong territory with "
+            "no right one to land on): drop them rather than resolving `correct_label`. "
             "Rules do not chain: test each against the ORIGINAL label."
         ),
     }
