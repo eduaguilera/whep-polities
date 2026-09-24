@@ -543,6 +543,9 @@ def densify_planar_edges(geom: ogr.Geometry, tolerance_deg: float) -> ogr.Geomet
     return geom
 
 
+GPKG_FIXED_TIMESTAMP = "2000-01-01T00:00:00.000Z"
+
+
 def write_gpkg(
     rows: list[dict[str, Any]],
     geometries: dict[str, ogr.Geometry],
@@ -583,8 +586,18 @@ def write_gpkg(
             f"  If the reduction is intended (rows superseded), re-run with "
             f"--allow-fewer-geometries.\n"
             f"{synced}")
+    # Resolve the simplifier BEFORE the old file is deleted: it can refuse (issue 660), and a
+    # refusal must leave the committed GeoPackage intact rather than half-written.
+    if simplify_tolerance > 0:
+        load_topology_simplifier()
     if out_path.exists():
         out_path.unlink()
+    # The GeoPackage driver stamps gpkg_contents.last_change with the wall clock, which was the
+    # ONLY byte that differed between identical rebuilds once the simplifier was deterministic
+    # (issue 660). Nothing reads it; a fixed value makes a rebuild from unchanged inputs
+    # byte-identical, so `git status` on the .gpkg means "the geometry changed" again.
+    from osgeo import gdal
+    gdal.SetConfigOption("OGR_CURRENT_DATE", GPKG_FIXED_TIMESTAMP)
     drv = ogr.GetDriverByName("GPKG")
     ds = drv.CreateDataSource(str(out_path))
 
@@ -786,6 +799,98 @@ SIMPLIFY_LADDER = (1.0, 0.1, 0.01)  # multipliers on the requested tolerance
 # alone produced -- the point is to fix one row, not to re-simplify 746.
 S2_REFINE_FACTOR = 0.5
 
+# THE SIMPLIFIER NEEDS A GEOS THAT DOES NOT READ FREED MEMORY (issue 660).
+#
+# `ogr.Geometry.SimplifyPreserveTopology` calls the GEOS that GDAL was linked against, and Ubuntu
+# 24.04 -- the machine this database is built on, and CI's `ubuntu-latest` -- links GEOS 3.12.1.
+# GEOS 3.12 added ring-endpoint simplification to TopologyPreservingSimplifier (3.11.4 has none), and
+# its TaggedLineString::removeRingEndpoint() `delete`s the ring's last result segment WITHOUT removing
+# it from the output segment index. Every later ring of the same geometry then tests its candidate
+# shortcuts against that dangling pointer, so whether a vertex is removed depends on whatever the
+# allocator has since written into the freed block. GEOS 3.12.3 fixed it ("TopologyPreserving-
+# Simplifier: fix to remove ring endpoints safely", GH-1110).
+#
+# That is the whole of the drift issue 660 measured. SimplifyPreserveTopology(0.01) of the SAME
+# source WKB hashes identically within one process and differently ACROSS processes
+# (FJI-1800-2025: two outcomes in three runs; USA-ME-1820-2025: three in three), and two
+# consecutive full rebuilds moved 55 rows. Only multi-ring geometries move -- a single ring has no
+# later ring to read the freed segment -- which is why the drift looked like "a small number of
+# states": the heap usually lands the same way, and sometimes does not. The tolerance ladder and
+# the s2 check were suspects and are innocent; they only re-select among what the simplifier
+# returns, deterministically.
+#
+# WHY A MINIMUM AND NOT JUST "NOT 3.12.0-3.12.2". GEOS 3.11 is deterministic too, but it predates
+# ring-endpoint simplification, so it is a different algorithm and not a fix: rebuilding with
+# shapely 2.0.7's GEOS 3.11.4 moved 729 of 1,201 geometries against the committed file, grew it
+# from 35.0 to 38.7 MB, and broke two gates on geometry nobody edited (RASI-1850-2025 stopped
+# qualifying as a container; KNA-1800-2025 fell to 93% inside BLI and BWI). GEOS 3.13.1 -- the
+# fixed version of the algorithm the committed file was built with -- moved 139, with no gate
+# failing beyond regenerable --check tables and one ratchet that loosened (validate_polygons A2). So the floor is the first fixed release, and a
+# machine below it is refused: silently simplifying with it would make the next diff look like
+# drift again, which is the failure this exists to end.
+#
+# shapely.simplify(preserve_topology=True) is the same GEOS call on shapely's OWN bundled GEOS
+# (shapely >= 2.1 bundles 3.13.1), which is pip-installable where the system GEOS is not. It is
+# preferred; GDAL's is used only when shapely is missing or older and GDAL's own GEOS is fixed.
+SIMPLIFY_MIN_GEOS = (3, 12, 3)  # first release with GH-1110 fixed
+
+# The GEOS the committed data/final/polities_database.gpkg was simplified with. Any GEOS at or
+# above the floor is deterministic, but a different release is a different, equally stable
+# answer, and a rebuild should say so rather than let the diff pass for drift.
+COMMITTED_SIMPLIFIER_GEOS = "3.13.1"
+
+_TOPOLOGY_SIMPLIFIER = None
+
+
+def _geos_simplify_is_safe(version) -> bool:
+    return tuple(version[:3]) >= SIMPLIFY_MIN_GEOS
+
+
+def load_topology_simplifier():
+    """`(ogr.Geometry, tolerance) -> ogr.Geometry`: a DETERMINISTIC topology-preserving simplify."""
+    global _TOPOLOGY_SIMPLIFIER
+    if _TOPOLOGY_SIMPLIFIER is not None:
+        return _TOPOLOGY_SIMPLIFIER
+    try:
+        import shapely
+    except ImportError:
+        shapely = None
+    gdal_geos = (ogr.GetGEOSVersionMajor(), ogr.GetGEOSVersionMinor(), ogr.GetGEOSVersionMicro())
+    if shapely is not None and _geos_simplify_is_safe(shapely.geos_version):
+        def simplify(g, tolerance):
+            s = shapely.simplify(
+                shapely.from_wkb(bytes(g.ExportToWkb())), tolerance, preserve_topology=True
+            )
+            return ogr.CreateGeometryFromWkb(shapely.to_wkb(s))
+        geos = shapely.geos_version_string
+        engine = f"shapely {shapely.__version__} (GEOS {geos})"
+    elif _geos_simplify_is_safe(gdal_geos):
+        def simplify(g, tolerance):
+            return g.SimplifyPreserveTopology(tolerance)
+        geos = ".".join(map(str, gdal_geos))
+        engine = f"GDAL (GEOS {geos})"
+    else:
+        found = ("shapely is not installed" if shapely is None
+                 else f"shapely {shapely.__version__} bundles GEOS {shapely.geos_version_string}")
+        raise SystemExit(
+            f"REFUSING to simplify: {found}, and GDAL links GEOS "
+            f"{'.'.join(map(str, gdal_geos))}. Simplification needs GEOS >= "
+            f"{'.'.join(map(str, SIMPLIFY_MIN_GEOS))}: 3.12.0-3.12.2 read freed memory in "
+            f"TopologyPreservingSimplifier (GEOS GH-1110), so identical rebuilds publish different "
+            f"geometry, and 3.11 is a different algorithm that reshapes 729 rows (issue 660).\n"
+            f"  Fix: pip install 'shapely>=2.1'   (bundles GEOS 3.13.1)\n"
+            f"  or pass --simplify-tolerance 0 to publish unsimplified geometry."
+        )
+    # Printed because the GEOS release is an input to the published geometry.
+    print(f"  topology-preserving simplifier: {engine}")
+    if geos != COMMITTED_SIMPLIFIER_GEOS:
+        print(f"  ! the committed GeoPackage was simplified with GEOS {COMMITTED_SIMPLIFIER_GEOS}; "
+              f"GEOS {geos} simplifies differently, so expect geometry diffs no input caused. "
+              f"Rebuild with the committed release before reading them as edits.")
+    _TOPOLOGY_SIMPLIFIER = simplify
+    return simplify
+
+
 
 def _s2_loadable(g, s2_check) -> bool:
     """Would this OGR geometry survive the s2 repair the write path applies below?"""
@@ -807,6 +912,7 @@ def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict, 
     before = g.GetArea()
     if before <= 0:
         return g
+    simplify = load_topology_simplifier()
     worst = None
     cheapest = None            # first step inside the budget, s2-loadable or not
     steps = []
@@ -817,7 +923,7 @@ def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict, 
     for factor, s2_only in steps:
         if s2_only and not s2_blocked:
             continue
-        s = g.SimplifyPreserveTopology(tolerance * factor)
+        s = simplify(g, tolerance * factor)
         if s is None or s.IsEmpty():
             continue
         change = abs(before - s.GetArea()) / before
