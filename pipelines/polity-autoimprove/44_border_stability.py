@@ -113,6 +113,13 @@ SAME_BORDER_TOL = 0.001
 # `reference_mismatch` instead of publishing a gap it cannot mean. 12 of 426 referenced rows fail
 # it. The threshold is deliberately loose: Sweden 1814-1905 sits at 0.574 against CShapes' Sweden-
 # Norway union and MUST stay visible, because that gap is the finding.
+#
+# That finding was decided in issue 656 (wiki/polities/swe-1814-1905.md, Decisions): the row is
+# Sweden PROPER, and its -41% gap is a scope difference, not a wrong polygon. juan and mitchell
+# report `sweden` and `norway` side by side for the same items and years, and the union is its own
+# row, SNW-1814-1905 (iou 0.99 against this same reference). SNW = SWE-1814-1905 + NOR-1800-2025
+# is registered in polity_composition.csv, so validate_composition_sums.py now guards the reading.
+# The row is left unsuppressed here because the measurement is true.
 MIN_REFERENCE_IOU = 0.5
 
 
