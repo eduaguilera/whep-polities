@@ -65,6 +65,30 @@ ROUTED = ("matched", "proposed")
 BASELINE = {}
 
 
+def extra_page_codes(raw: str) -> list[str]:
+    """Polity codes of a unit's second and later eras, from the ledger's `extra_pages`.
+
+    The harness writes this field as JSON -- a list of {"segment", "polity_code",
+    "page_written", "span"} objects (harness.py run_wiki_stage). This gate used to split it
+    on commas, which turns JSON into fragments like ' "polity_code": "ARG-CHACO-1951-2025"'
+    that match no polity, so every extra era was silently dropped from the check: the
+    territory-era years of a unit with two polities (ARG-CHACO, and the US territories of
+    issue 658) were never tested for an alias at all. A plain comma/semicolon list is still
+    accepted.
+    """
+    raw = raw.strip()
+    if not raw:
+        return []
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError:
+        return [c.strip() for c in raw.replace(";", ",").split(",") if c.strip()]
+    if isinstance(parsed, list):
+        return [str(e.get("polity_code") or "").strip() for e in parsed
+                if isinstance(e, dict) and (e.get("polity_code") or "").strip()]
+    return []
+
+
 def main() -> int:
     if not os.path.exists(LEDGER):
         print(f"SKIP: {os.path.relpath(LEDGER, REPO)} absent")
@@ -105,8 +129,7 @@ def main() -> int:
                 continue
 
             codes = [(r.get("page_polity_code") or r.get("matched_polity_code") or "").strip()]
-            codes += [c.strip() for c in
-                      (r.get("extra_pages") or "").replace(";", ",").split(",") if c.strip()]
+            codes += extra_page_codes(r.get("extra_pages") or "")
             codes = [c for c in codes if c in spans]
             if not codes:
                 continue

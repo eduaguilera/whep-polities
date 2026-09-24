@@ -1143,12 +1143,14 @@ USA-AL-1819-2025,Alabama (state of the United States),1819,2025,gadm-4.1-adm1,,a
 USA-AR-1836-2025,Arkansas (state of the United States),1836,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-AZ-1863-2025,Arizona (state of the United States),1863,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-CO-1876-2025,Colorado (state of the United States),1876,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-COT-1861-1876,Colorado Territory,1861,1876,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-CT-1800-2025,Connecticut (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-DE-1800-2025,Delaware (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-FL-1845-2025,Florida (state of the United States),1845,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-GA-1800-2025,Georgia (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-IA-1846-2025,Iowa (state of the United States),1846,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-ID-1890-2025,Idaho (state of the United States),1890,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-IDT-1868-1890,Idaho Territory,1868,1890,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-IL-1818-2025,Illinois (state of the United States),1818,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-IN-1816-2025,Indiana (state of the United States),1816,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-KS-1861-2025,Kansas (state of the United States),1861,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1162,12 +1164,15 @@ USA-MN-1858-2025,Minnesota (state of the United States),1858,2025,gadm-4.1-adm1,
 USA-MO-1821-2025,Missouri (state of the United States),1821,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-MS-1817-2025,Mississippi (state of the United States),1817,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-MT-1889-2025,Montana (state of the United States),1889,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-MTT-1864-1889,Montana Territory,1864,1889,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-NC-1800-2025,North Carolina (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-ND-1889-2025,North Dakota (state of the United States),1889,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-NE-1867-2025,Nebraska (state of the United States),1867,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-NET-1863-1867,Nebraska Territory,1863,1867,gadm-4.1-adm1,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-NH-1800-2025,New Hampshire (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-NJ-1800-2025,New Jersey (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-NM-1912-2025,New Mexico (state of the United States),1912,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-NMT-1863-1912,New Mexico Territory,1863,1912,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-NV-1864-2025,Nevada (state of the United States),1864,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-NY-1800-2025,New York (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-OH-1803-2025,Ohio (state of the United States),1803,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1180,12 +1185,15 @@ USA-SOUTHDAKOTA-1889-2025,South Dakota (state of the United States),1889,2025,ga
 USA-TN-1800-2025,Tennessee (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-TX-1845-2025,Texas (state of the United States),1845,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-UTAH-1896-2025,Utah (state of the United States),1896,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-UTT-1868-1896,Utah Territory,1868,1896,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-VA-1800-2025,Virginia (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-VT-1800-2025,Vermont (state of the United States),1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-WA-1889-2025,Washington (state of the United States),1889,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-WAT-1863-1889,Washington Territory,1863,1889,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-WI-1848-2025,Wisconsin (state of the United States),1848,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-WV-1863-2025,West Virginia (state of the United States),1863,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-WY-1890-2025,Wyoming (state of the United States),1890,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+USA-WYT-1868-1890,Wyoming Territory,1868,1890,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 UZB-1991-2025,Uzbekistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.05,single 1991 polygon held across a 34y span (1991-2025); borders may have changed,0
 VAT-1929-2025,Holy See (Vatican City State),1929,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 VCT-1800-1833,Saint Vincent (to 1833),1800,1833,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
