@@ -504,6 +504,16 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/write_polity_containment.py --check
 
+      # The edges are checked one at a time above; nothing checked them against each other. Five
+      # reporting aggregates (Piemonte with Valle d'Aosta, Abruzzi e Molise, Trentino-Alto Adige,
+      # Corsica, Seine-et-Oise) sat under the national row BESIDE their own parts, so summing a
+      # container's members counted 63,111 km2 twice (and Hyderabad's 211,298 km2 sat beside the
+      # future-Union row that contains it). Two members of one container may not share
+      # more than 2% of the smaller one's ground in the same years unless registered or baselined.
+      - name: Siblings under one container do not cover the same ground in the same years
+        if: '!cancelled()'
+        run: python3 scripts/validate_containment_sibling_overlaps.py
+
       # 335 raw IIA yearbook labels were collapsed onto 173 modern countries, and until the
       # mapping was tracked nothing here recorded which went where -- so `serbia` meaning
       # Yugoslavia and `viet nam` meaning Tonkin were both invisible. Layer B deduplicates, so a
