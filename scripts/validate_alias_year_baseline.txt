@@ -135,7 +135,6 @@ botswana		BEC-1885-1966
 british honduras		BLZ-1886-1970
 burkina faso	iia	BFA-1919-1932
 burma		MMR-1826-1852
-burma	mitchell	MMR-LWR-1852-1885
 # 'cape province||CAP-1800-1910' cleared 2026-08-14 (issue 22). Its year_end was 1910 against
 # CAP-1800-1910's exclusive end_year 1910, so it claimed a year the polity did not hold. The row
 # was split at the 1895 British Bechuanaland annexation: 1800-1894 -> CAP-1800-1895 and 1895-1909

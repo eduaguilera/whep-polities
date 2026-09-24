@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "1bb359f065f4fa15550664b8a348983db9dc2bf1fc38d88ae214f1068654149d",
-  "aliases": 2517,
-  "labels": 1327,
+  "sha256": "ce48ccd031267a217935d0afd9f8ee03022a47a861cc35734cb9e12869758f7a",
+  "aliases": 2514,
+  "labels": 1328,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -207,9 +207,9 @@
  },
  "label_item_corrections": {
   "path": "data/final/source_label_item_corrections.csv",
-  "sha256": "855a2598fbf6b07199d5d9b681dc68dbf0e478007a4a44bf45e5987b03202d77",
-  "rules": 15,
-  "observed_rows": 155,
+  "sha256": "4699dcafc6a831c93f57bca0593e4feac33892bd2bb2fee0861c5dc9bbf2c02e",
+  "rules": 23,
+  "observed_rows": 205,
   "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; a period-average row with no year is corrected only when BOTH ends of its period lie in that range). `polity_code` is where the corrected label then resolves, possibly as a `back_cast` before the polity begins. `polity_code` = `UNROUTED` means the rows belong to NO polity (a wrong territory with no right one to land on): drop them rather than resolving `correct_label`. Rules do not chain: test each against the ORIGINAL label."
  },
  "iso3_successor_map": {

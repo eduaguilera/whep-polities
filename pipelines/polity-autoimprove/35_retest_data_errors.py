@@ -437,15 +437,19 @@ def check_western_eastern_prefix(ctx):
     # 21/52/10/11 -> 18/46/9/9 on 2026-09-24 (fao1952 present boundaries second pass): `Western` (3 rows) and
     # `Eastern` (1), which had several candidates, and `Trieste` (2, parent `Trieste UK US`) stopped being
     # unrouted fragments -- the first two by OCR correction, Trieste by its 1937 rule becoming back_cast.
-    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 18))
+    # 18/46/9/9 -> 16/39/9/7 on 2026-09-24 (mitchell footnote routings, issue 688): the aliases for fao1952
+    # `Cyrenaica` (2 rows) and `Malaya Federation` (5) had been written under source `mitchell`, which never
+    # prints either label, so both sat unrouted as fragments of `Libya Cyrenaica` / `Malaya Federation of`,
+    # each with two candidate polities. Retagged to fao1952, they route, and leave the class.
+    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 16))
     # 42/11/10 -> 52/10/11 on 2026-09-24 (world alias collisions), two labels moving and the
     # class size (21) unchanged: fao1952 `Korea` 1949-1951 was unrouted (it is the peninsula, and
     # averaged with `Korea South`), so its 11 rows became a fragment of `Korea South`/`Korea North`
     # with three candidate polities; and `Great Britain` (1 row) stopped being a fragment, because
     # its only routed parent `United Kingdom Great Britain` was unrouted in the same change.
-    claims.append(("  rows they carry", sum(x[1] for x in frag), 46))
+    claims.append(("  rows they carry", sum(x[1] for x in frag), 39))
     claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 9))
-    claims.append(("  with several candidate polities", len(frag) - len(uniq), 9))
+    claims.append(("  with several candidate polities", len(frag) - len(uniq), 7))
     # `Portuga` is the counter-example: structurally unambiguous, three values on one key.
     pg = mm[(mm["lab"] == "Portuga")]
     claims.append(("`Portuga` distinct values on its single key",
@@ -3218,9 +3222,195 @@ def check_greece_grapes_dodecanese(ctx):
              ("greece grapes t 1936 (inside 1934-1938)", g.get("1936"), 680100.0),
              ("raw greece 1933 total over its 3 series", round(sum(gr33), 1), 678600.0)],
             "4 dated cells relabelled; the 2 period cells are recorded, not moved")
+# --- mitchell footnote-territory entries (issue 688) ------------------------------------------------------
+# Seven entries from one audit of Mitchell's table footnotes against layer B. Each records rows whose
+# footnoted territory has no polity yet (or, for the Vietnam output rows, no mechanism that can move them),
+# so the check pins WHERE THE ROWS SIT NOW and the figures that establish the territory, not a repair.
+
+def _mit_rows(ctx, label):
+    """mitchell rows of one RAW label in matched_rows (the label before any item-scoped relabel)."""
+    m = ctx["matched"]
+    if m is None:
+        return None
+    return m[(m["source"] == "mitchell") & (m["source_label_raw"] == label) & m["year"].notna()]
+
+
+def _cell(g, item, unit, year, indicator=None):
+    d = g[(g["item"] == item) & (g["unit"] == unit) & (g["year"] == year)]
+    if indicator is not None:
+        d = d[d["indicator"] == indicator]
+    return float(d["value"].iloc[0]) if len(d) == 1 else None
+
+
+def _on(g, code, y0, y1, items=None, unit=None, indicator=None):
+    d = g[(g["whep_code"] == code) & (g["year"] >= y0) & (g["year"] <= y1)]
+    if items is not None:
+        d = d[d["item"].isin(items)]
+    if unit is not None:
+        d = d[d["unit"] == unit]
+    if indicator is not None:
+        d = d[d["indicator"] == indicator]
+    return len(d)
+
+
+def check_mmr_1885_1889_lower_burma(ctx):
+    """Mitchell's `myanmar` rice area is Lower Burma to 1890 (1st line); from 1885 no polity is Lower Burma.
+
+    The series is ONE table (`page_26_table_1`, C1) and it is continuous across annexation: 1,469,000 ha in
+    1884 on MMR-LWR-1852-1885 (whose end year, 1885, is exclusive), then 1,497,000 to 1,756,000 in 1885-1889
+    on MMR-1885-2025 (all of Burma). The 2nd line (`page_30_table_1`, all Burma) begins at 2,291,000 ha in 1891, a 1.30x step
+    that is Upper Burma arriving in the series. That step is the control: it happens where the footnote says
+    the coverage changes, and not at 1885."""
+    g = _mit_rows(ctx, "myanmar")
+    if g is None:
+        return None
+    p26, p30 = "page_26_table_1", "page_30_table_1"
+    last = _cell(g, "rice, paddy", "ha", 1889, p26)
+    first2 = _cell(g, "rice, paddy", "ha", 1891, p30)
+    return ([("1855-1884 rows on MMR-LWR", _on(g, "MMR-LWR-1852-1885", 1852, 1885), 24),
+             ("1885-1889 rows on MMR-1885", _on(g, "MMR-1885-2025", 1885, 1889, indicator=p26), 5),
+             ("1884 ha (1st line)", _cell(g, "rice, paddy", "ha", 1884, p26), 1469000.0),
+             ("1889 ha (1st line)", last, 1756000.0),
+             ("1891 ha (2nd line, all Burma)", first2, 2291000.0),
+             ("  step 1889->1891 x100", int(round(100 * first2 / last)) if last and first2 else None, 130)],
+            "Lower Burma rows from 1885 sit on all of Burma; a Lower Burma segment after 1885 is issue 688")
+
+
+def check_vnm_1955_1960_output_north_plus_south(ctx):
+    """`viet nam` rice and maize OUTPUT 1955-1960 is North plus South; the paired AREA is South only.
+
+    The area table (C1, `page_49_table_1`) is footnoted 'South Vietnam only from 1954 to 1974'. The output table
+    (C2, `page_12_table_1`) is not, and the two cannot be one territory: rice 1959 is 10,285,000 t over
+    2,400,000 ha, i.e. 4.3 t/ha when South Vietnam yielded about 2; maize 1956 is 271,000 t over 28,000 ha,
+    9.7 t/ha. All 12 output rows ride the blank-source `viet nam` 1955-1974 alias to RVN-1954-1975. They
+    belong on F237-1954-1975, but an item-scoped correction cannot move them: the South-only AREA rows share
+    source, label, item and year, and only the unit separates them (issue 688)."""
+    g = _mit_rows(ctx, "viet nam")
+    if g is None:
+        return None
+    rt, ra = _cell(g, "rice, paddy", "tonnes", 1959), _cell(g, "rice, paddy", "ha", 1959)
+    mt, ma = _cell(g, "maize", "tonnes", 1956), _cell(g, "maize", "ha", 1956)
+    return ([("output rows 1955-60 on RVN", _on(g, "RVN-1954-1975", 1955, 1960, ["rice, paddy", "maize"],
+                                                 "tonnes"), 12),
+             ("  area rows, same years, RVN", _on(g, "RVN-1954-1975", 1955, 1960, ["rice, paddy", "maize"],
+                                                   "ha"), 12),
+             ("rice 1959 t", rt, 10285000.0), ("rice 1959 ha", ra, 2400000.0),
+             ("  t/ha x10", int(round(10 * rt / ra)) if rt and ra else None, 43),
+             ("maize 1956 t", mt, 271000.0), ("maize 1956 ha", ma, 28000.0),
+             ("  t/ha x10", int(round(10 * mt / ma)) if mt and ma else None, 97)],
+            "summed-territory output beside South-only area; the fix needs a unit-scoped correction")
+
+
+def check_vnm_1948_1953_south_only(ctx):
+    """`viet nam` groundnuts 1948-1953 and rubber 1950-1953 are South Vietnam only, on all of Vietnam.
+
+    C4 fn 6 'South Vietnam only to 1955 (1st line)' (groundnuts) and the rubber note 'South Vietnam only to
+    1968, in which year the output of North Vietnam was negligible'. Both series run straight on across 1954
+    into the RVN rows, which is the control that they are one South-only series: groundnuts 13,000 t (1953)
+    to 14,000 (1954), rubber 53,000 t to 55,000. For rubber the North's output was negligible, so the
+    VALUES are close to all-Vietnam's; for groundnuts they are not."""
+    g = _mit_rows(ctx, "viet nam")
+    if g is None:
+        return None
+    gn, rb = "groundnuts, with shell", "rubber, natural"
+    return ([("groundnut rows 1948-53 on VNM", _on(g, "VNM-1887-1954", 1948, 1953, [gn]), 6),
+             ("rubber rows 1950-53 on VNM", _on(g, "VNM-1887-1954", 1950, 1953, [rb]), 4),
+             ("groundnuts 1953 t", _cell(g, gn, "tonnes", 1953), 13000.0),
+             ("groundnuts 1954 t (RVN)", _cell(g, gn, "tonnes", 1954), 14000.0),
+             ("rubber 1953 t", _cell(g, rb, "tonnes", 1953), 53000.0),
+             ("rubber 1954 t (RVN)", _cell(g, rb, "tonnes", 1954), 55000.0)],
+            "South-only rows before 1954 have no southern polity to go to (issue 688)")
+
+
+def check_kor_1945_1948_south_only(ctx):
+    """From 1945 Mitchell's Korea columns are South Korea only; 1945-1948 they sit on the whole peninsula.
+
+    C1/C2 note 18: 'South Korea only from 1945'. The C16 fish column is headed 'South Korea'. KOR-1945-1948 is
+    the occupied PENINSULA, and no US-zone polity exists. The step is in the data itself: rice area 1,319,000
+    ha in 1944 (peninsula) to 1,046,000 ha in 1945, running on to 1,044,000 in 1949 on KOR-1948-2025. Wheat
+    output falls from 261,000 t to 44,000 because the wheat was in the North."""
+    g, s = _mit_rows(ctx, "korea"), _mit_rows(ctx, "south korea")
+    if g is None:
+        return None
+    return ([("korea rows 1945-48 on KOR-1945", _on(g, "KOR-1945-1948", 1945, 1948), 46),
+             ("south korea 1945-47 on KOR-1945", _on(s, "KOR-1945-1948", 1945, 1948), 12),
+             ("rice ha 1944 (peninsula)", _cell(g, "rice, paddy", "ha", 1944), 1319000.0),
+             ("rice ha 1945", _cell(g, "rice, paddy", "ha", 1945), 1046000.0),
+             ("rice ha 1949 (KOR-1948)", _cell(g, "rice, paddy", "ha", 1949), 1044000.0),
+             ("wheat t 1944", _cell(g, "wheat", "tonnes", 1944), 261000.0),
+             ("wheat t 1945", _cell(g, "wheat", "tonnes", 1945), 44000.0)],
+            "South-only rows on the peninsula polity; a US-zone polity 1945-1948 is issue 688")
+
+
+def check_kor_1944_marker_18000(ctx):
+    """Four `korea` 1944 area cells read exactly 18,000 ha: footnote marker 18 read as data.
+
+    The C1 area table (11-50.xlsx `page_41_table_1`) heads the column `Korea18`, and note 18 reads 'South Korea
+    only from 1945'. The PDF prints the break on the 1944 line, suffixing EVERY cell: `…18  …18  …18  1,31918
+    15218  …18`. Where the cell has a figure (rice 1,319, potatoes 152) the extract kept the figure. Where it
+    is `…` (no data), it read the bare marker as 18 thousand hectares, in four crops. Four unrelated crops
+    cannot agree to the digit, and their own 1941 areas are 1,043,000 (barley) and 313,000 (wheat). The four
+    cells are empty in the source. The 1944 OUTPUT cells (C2) are varied (maize 150,000 t, potatoes 891,000 t),
+    so the year is real. This is the broadcast shape of ind-1947-livestock-broadcast-3000, with a different
+    cause."""
+    g = _mit_rows(ctx, "korea")
+    if g is None:
+        return None
+    y44 = g[(g["year"] == 1944) & (g["unit"] == "ha")]
+    return ([("1944 ha cells at 18,000", int((y44["value"] == 18000.0).sum()), 4),
+             ("  of 1944 ha cells", len(y44), 6),
+             ("barley ha 1941", _cell(g, "barley", "ha", 1941), 1043000.0),
+             ("wheat ha 1941", _cell(g, "wheat", "ha", 1941), 313000.0),
+             ("maize t 1944 -- control", _cell(g, "maize", "tonnes", 1944), 150000.0),
+             ("potatoes t 1944 -- control", _cell(g, "potatoes", "tonnes", 1944), 891000.0)],
+            "the marker is on the area line only; the output line of 1944 is real")
+
+
+def check_cmr_cocoa_territory(ctx):
+    """Mitchell's `cameroon` cocoa is Kamerun PLUS Togoland to 1916 and French Cameroon 1917-1919.
+
+    C5 note 2: 'Data for Togoland are included with Cameroon to 1916. From 1917 to 1962 (1st line)
+    statistics are for French Cameroon.' 1900-1915 sit on German Kamerun (GKM) without Togoland; 1916 and
+    1917-1919 sit on BCM-1916-1961, British Cameroons, because GKM-1912-1916 ends (exclusive) at 1916 and
+    FCM-1920-1960 begins in 1920. The
+    1919-1920 seam is continuous (2,700 t on BCM, 3,300 t on FCM), which is the control that 1917-1919 are
+    the French series."""
+    g = _mit_rows(ctx, "cameroon")
+    if g is None:
+        return None
+    c = ["cacao, beans"]
+    return ([("1900-1915 rows on GKM", _on(g, "GKM-1884-1912", 1900, 1916, c)
+              + _on(g, "GKM-1912-1916", 1900, 1916, c), 16),
+             ("1916 row on BCM (Kamerun+Togo)", _on(g, "BCM-1916-1961", 1916, 1916, c), 1),
+             ("1917-1919 rows on BCM", _on(g, "BCM-1916-1961", 1917, 1919, c), 3),
+             ("1919 t (BCM)", _cell(g, "cacao, beans", "tonnes", 1919), 2700.0),
+             ("1920 t (FCM)", _cell(g, "cacao, beans", "tonnes", 1920), 3300.0)],
+            "Kamerun+Togoland and French-Cameroon cocoa with no polity of either shape (issue 688)")
+
+
+def check_nga_includes_british_cameroons(ctx):
+    """Mitchell's `nigeria` cocoa 1945-1959 and livestock to 1950 include British Cameroons.
+
+    C5 note 8 'Including British Cameroon from 1945 to 1959'; C11 note 13 'Statistics to 1950 include British
+    Cameroons'. Both sit on NGA-1914-1960, whose polygon is Nigeria without the mandate (BCM-1916-1961 is its
+    own polity), so the footnoted rows need a Nigeria + British Cameroons aggregate that does not exist."""
+    g = _mit_rows(ctx, "nigeria")
+    if g is None:
+        return None
+    liv = ["cattle", "goats", "sheep", "swine / pigs", "horses", "asses"]
+    return ([("cacao rows 1945-59 on NGA", _on(g, "NGA-1914-1960", 1945, 1959, ["cacao, beans"]), 15),
+             ("livestock rows to 1950 on NGA", _on(g, "NGA-1914-1960", 1900, 1950, liv), 133)],
+            "rows including British Cameroons on a polity without it (issue 688)")
 
 
 CHECKS = {
+    "mmr-1885-1889-rice-area-is-lower-burma": check_mmr_1885_1889_lower_burma,
+    "vnm-1955-1960-rice-maize-output-is-north-plus-south": check_vnm_1955_1960_output_north_plus_south,
+    "vnm-1948-1953-groundnuts-rubber-south-only": check_vnm_1948_1953_south_only,
+    "kor-1945-1948-south-only-on-peninsula-polity": check_kor_1945_1948_south_only,
+    "kor-1944-footnote-marker-read-as-18000-ha": check_kor_1944_marker_18000,
+    "cmr-cocoa-1900-1919-territory-mismatch": check_cmr_cocoa_territory,
+    "nga-cocoa-livestock-include-british-cameroons": check_nga_includes_british_cameroons,
     "iia-zero-refuted-by-paired-axis": check_zero_refuted_by_paired_axis,
     "iia-mex-oats-arg-rapeseed-scale-factors": check_iia_mex_oats_arg_rapeseed_scale,
     "ago-1936-sesame-area-31000-ha": check_ago_1936_sesame_area,
