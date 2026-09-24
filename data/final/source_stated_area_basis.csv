@@ -71,7 +71,7 @@ CHN-1895-1913,China (1895-1913),iia,11080000,1,1909,CHINE,11110684,1.003,agrees,
 CHN-1913-1914,China (1913-1914),iia,11080000,2,1925;1929,CHINE;chine,9224461,0.833,agrees,
 CHN-1921-1932,China (1921-1932),iia,11080000,3,1909;1925;1929,CHINE;chine,7496474,0.677,agrees,"SCOPE. IIA states 11,080,000 km2 for China against our 7,496,467. China's own claimed area including Outer Mongolia and Tibet was routinely given as ~11m in this period; the 1938 edition drops to 9,870,000 once Mongolia is excluded. Our polygon is effective Republican control, which is the right basis for production data."
 CHN-1932-1945,China (1932-1945),iia,11084000,3,1932;1933;1938,CHINE,6710151,0.605,review,"same as CHN-1921-1932, against the 1932 edition's 11,084,000."
-CHN-1947-1949,China (1947-1949),fao,5071820,3,1952,China;China 22 provinces;China Manchuria,7593571,1.497,agrees,"NEITHER SIDE IS WRONG -- THE WHOLE AND ITS PARTS COLLAPSE INTO ONE VOTE. Corrected 2026-08-24; the first version of this entry said `the source's label is a partial China`, which is not what happens. THREE FAO labels route to this polity -- `China` 9,736,290, `China 22 provinces` 5,071,820 and `China Manchuria` 1,069,300 -- so the one-vote-per-source rule takes their median and publishes 5,071,820, a PART's area, as this (polity, source) basis. Against the WHOLE our polygon is 7,593,571/9,736,290 = 0.780, comfortably inside the 25% tolerance; the divergence is an artefact of routing, not of measurement. FAO's own partition is exact: 22 provinces + Manchuria + Sinkiang + Sikang + Jehol + Tibet + Taiwan = 9,736,290 to the km2, which is issue 449's open question about what the `China` label is, answered by the source's arithmetic."
+CHN-1947-1949,China (1947-1949),fao,9736290,1,1952,China,7593571,0.780,agrees,
 COD-1910-1960,DR Congo (1910-1960),fao,2365000,1,1952,Belgian Congo,2326790,0.984,agrees,
 COD-1910-1960,DR Congo (1910-1960),iia,2385120,9,1909;1925;1929;1932;1933;1938,CONGO BELGE;congo belge,2326790,0.976,agrees,
 COL-1903-1922,Colombia (1903-1922),iia,1195870,4,1909;1925;1929,COLOMBIE;colombie,1093417,0.914,agrees,
@@ -216,7 +216,6 @@ KHM-1907-1953,Cambodia (1907-1953),fao,176000,1,1952,Indochina Cambodia,181798,1
 KHM-1907-1953,Cambodia (1907-1953),iia,181000,5,1929;1932;1933;1938,INDOCHINE: Cambodge;indochine: cambodge,181798,1.004,agrees,
 KNA-1800-2025,Saint Kitts and Nevis,fao,390,1,1952,Leeward Islands  St Kitts & Nevis,263,0.674,agrees,"THE SOURCE'S REPORTING UNIT INCLUDES ANGUILLA AND THIS POLITY DOES NOT. FAO states 390 km2 and IIA states 388-396 across six editions -- two independent sources agreeing -- against our 263, which is St Kitts (~168) plus Nevis (~93). The colonial unit was St Kitts-Nevis-Anguilla; Anguilla is modelled here as its own polity AIA-1800-2025, so the source's territory is larger than ours by construction. That two sources agree is what makes this a scope difference rather than a bad figure."
 KOR-1800-1945,Korea (to 1945),iia,220741,9,1909;1925;1929;1932;1933;1938,COREE;COREE jap;CORÉE;corée,219372,0.994,agrees,
-KOR-1948-2025,South Korea,fao,201890,1,1952,Korea,97097,0.481,review,"THE SOURCE'S LABEL IS THE WHOLE PENINSULA. FAO states 201,890 km2 against our 97,097 for South Korea; 201,890 is Korea north and south together. Same shape as the China entry above -- the yearbook's reporting unit predates or ignores the division, and the polity does not."
 KWT-1800-2025,Kuwait,fao,20720,1,1952,Kuwait,16798,0.811,agrees,
 LAO-1893-1954,Laos (1893-1954),fao,236800,1,1952,Indochina Laos,229987,0.971,agrees,
 LAO-1893-1954,Laos (1893-1954),iia,231400,5,1929;1932;1933;1938,INDOCHINE: Laos;indochine: laos,229987,0.994,agrees,
@@ -240,6 +239,7 @@ LUX-1839-2025,Luxembourg,iia,2586,9,1909;1925;1929;1932;1933;1938,LUXEMBOURG;lux
 LVA-1918-1940,Latvia (interwar republic),iia,65791,6,1909;1925;1929;1932;1933;1938,LETTONIE;lettonie,65978,1.003,agrees,
 MAC-1800-2025,"China, Macao SAR",iia,14,9,1909;1925;1929;1932;1933;1938,MACAO;macao,34,2.400,review,"THE TERRITORY GREW, AND BOTH FIGURES ARE RIGHT FOR THEIR DATE. IIA states 14 km2 for Macao; our polygon is 34 km2. Macao has roughly doubled by land reclamation across the 20th century, so a 1911-1937 statement of 14 km2 and a modern outline of 34 km2 are both accurate and the ratio is a vintage difference rather than a scope one. This is the issue 22 shape -- one long row against a territory that moved -- at a magnitude where it cannot be checked any other way, since anything under a few hundred km2 sits below this source's resolution. Surfaced on 2026-08-20 by the `macao` lexicon retarget (issue 195)."
 MAN-1932-1945,Manchukuo (1932-1945),iia,1303143,1,1938,MANDCHOUKOUO,791708,0.608,review,"SCOPE. IIA states 1,303,143 km2 for Manchukuo, which includes Jehol and the Inner Mongolian leagues; our 791,708 is the three north-eastern provinces. build_man_1932_1945() documents that choice, and this is the first external evidence of what it costs."
+MAN-1945-1950,"Manchuria (region, 1945-1950)",fao,1069300,1,1952,China Manchuria,791708,0.740,agrees,"OUR POLYGON IS THE SMALLER TERRITORY, and this is the known proxy gap. FAO 1952 states 1,069,300 km2 for `China Manchuria` at data year 1947 against our 791,708 (0.74x), the three-province GADM union reused from MAN-1932-1945. The reporting unit is larger than Heilongjiang+Jilin+Liaoning (the 1949-1954 northeast had nine provinces). Recorded as oq-three-province-proxy-under-covers-by-26pc on man-1950-1955. Became visible on 2026-09-24 when `China Manchuria` stopped routing to the CHN chain and its statement was attributed to the region instead of to China."
 MAR-1911-1958,Morocco (to 1958),fao,390800,1,1952,French Morocco,350268,0.896,agrees,
 MAR-1911-1958,Morocco (to 1958),iia,415000,9,1909;1925;1929;1932;1933;1938,MAROC FRANÇAIS;maroc français,350268,0.844,agrees,
 MCO-1800-2025,Monaco,fao,2,1,1952,Monaco,2,1.192,agrees,
@@ -300,7 +300,6 @@ PER-1922-1942,Peru (1922-1942),iia,1378360,5,1925;1929;1932;1933;1938,PÉROU;pé
 PER-1942-2025,Peru,fao,1249050,1,1952,Peru,1290852,1.033,agrees,
 PHL-1800-2025,Philippines,fao,299680,1,1952,Philippines,291825,0.974,agrees,
 PHL-1800-2025,Philippines,iia,296298,9,1909;1925;1929;1932;1933;1938,PHILIPPINES;philippines,291825,0.985,agrees,
-PNG-1949-1975,Territory of Papua and New Guinea,fao,412780,1,1952,New Guinea,461639,1.118,agrees,
 POL-1921-1945,Poland (1921-1945),fao,311730,1,1952,Poland,388370,1.246,agrees,
 POL-1921-1945,Poland (1921-1945),iia,388512,6,1909;1925;1929;1932;1933;1938,POLOGNE;pologne,388370,1.000,agrees,
 PRI-1800-2025,Puerto Rico,fao,8870,1,1952,Puerto Rico,8972,1.012,agrees,
@@ -360,6 +359,7 @@ THA-1909-2025,Thailand,fao,513520,1,1952,Thailand,512149,0.997,agrees,
 THA-1909-2025,Thailand,iia,518159,9,1909;1925;1929;1932;1933;1938,SIAM;siam,512149,0.988,agrees,
 TLS-1800-2025,Timor-Leste,fao,18990,1,1952,Portuguese Timor,14978,0.789,agrees,
 TLS-1800-2025,Timor-Leste,iia,18990,9,1909;1925;1929;1932;1933;1938,TIMOR ET KAMBING;timor et kambing,14978,0.789,agrees,
+TNGU-1949-1975,Territory of New Guinea (1949-1975),fao,412780,1,1952,New Guinea,237462,0.575,review,"THE STATEMENT IS NETHERLANDS NEW GUINEA'S, NOT THIS TERRITORY'S. FAO 1952 states 412,780 km2 for `New Guinea` at 1951, and the land table files that row under ASIA, while every other fao1952 `New Guinea` row (population, copra, rubber, tractors) is filed under OCEANIA. 412,780 is 1.006x Netherlands New Guinea's CShapes 851 polygon (410,361) and 1.74x this Trust Territory's 237,462. The same figure agreed with PNG-1949-1975 (1.12x) only because both labels sat on the union. A label-level alias cannot separate the two land-use rows from the rest of the label, so they follow it; see oq-land-use-rows-are-netherlands-new-guinea on tngu-1949-1975."
 TON-1800-2025,Tonga,fao,690,1,1952,Tonga,757,1.097,agrees,
 TPAP-1906-1949,Territory of Papua,iia,234494,5,1929;1932;1933;1938,AUSTRALIE: PAPOUASIE;australie: papouasie,224156,0.956,agrees,
 TRP-1943-1951,British Military Administration of Tripolitania,fao,353000,1,1952,Libya Tripolitania,314551,0.891,agrees,

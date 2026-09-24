@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "b3595482bfc1e94d1e6133fbf8be086ece9a53af6f248b7359e852ac0efe667d",
+ "identity_sha256": "19c2abbb8ea138885ac1cc628c0343aa9e490861b6957e7e16a91018a45d1545",
  "counts": {
-  "total": 1229,
-  "live": 1185,
+  "total": 1231,
+  "live": 1187,
   "dead": 44
  },
  "dead_status": [
@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "443336dc97896daec96d9f44dc41768b95658f0aafdefee99b39529eb12000a5",
-  "aliases": 2492,
-  "labels": 1323,
+  "sha256": "5b08dd00dc74d281ac297bb2c0ee4ec2eb438fa3b4b95c00aa8caa24b6cbf562",
+  "aliases": 2485,
+  "labels": 1320,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -1884,8 +1884,10 @@
   "TKM-1991-2025",
   "TLS-1800-2025",
   "TNGU-1920-1949",
+  "TNGU-1949-1975",
   "TON-1800-2025",
   "TPAP-1906-1949",
+  "TPAP-1949-1975",
   "TRP-1943-1951",
   "TRS-1947-1954",
   "TTO-1800-2025",

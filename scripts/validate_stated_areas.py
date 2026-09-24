@@ -149,16 +149,11 @@ BASELINE = {
         "1950 figure excludes it and a polygon drawn for the 1833-1960 span includes it. A composition "
         "difference across the span, not an error on either side.",
 
-    ("CHN-1947-1949", "fao"):
-        "NEITHER SIDE IS WRONG -- THE WHOLE AND ITS PARTS COLLAPSE INTO ONE VOTE. Corrected 2026-08-24; "
-        "the first version of this entry said `the source's label is a partial China`, which is not what "
-        "happens. THREE FAO labels route to this polity -- `China` 9,736,290, `China 22 provinces` "
-        "5,071,820 and `China Manchuria` 1,069,300 -- so the one-vote-per-source rule takes their median "
-        "and publishes 5,071,820, a PART's area, as this (polity, source) basis. Against the WHOLE our "
-        "polygon is 7,593,571/9,736,290 = 0.780, comfortably inside the 25% tolerance; the divergence is "
-        "an artefact of routing, not of measurement. FAO's own partition is exact: 22 provinces + "
-        "Manchuria + Sinkiang + Sikang + Jehol + Tibet + Taiwan = 9,736,290 to the km2, which is issue "
-        "449's open question about what the `China` label is, answered by the source's arithmetic.",
+    # CHN-1947-1949/fao REMOVED 2026-09-24 (world alias collisions). Its entry explained a divergence
+    # made by routing: `China 22 provinces` and `China Manchuria` both landed on CHN-1947-1949 beside
+    # `China`, and the one-vote-per-source median published a PART's area (5,071,820) as the basis.
+    # Manchuria now routes to MAN-1945-1950 and 22 provinces is unrouted after 1945, so only `China`
+    # (9,736,290) votes here, and the polygon sits at 0.780x of it, inside the tolerance.
 
     ("KNA-1800-2025", "fao"):
         "THE SOURCE'S REPORTING UNIT INCLUDES ANGUILLA AND THIS POLITY DOES NOT. FAO states 390 km2 and "
@@ -168,10 +163,27 @@ BASELINE = {
         "than ours by construction. That two sources agree is what makes this a scope difference rather "
         "than a bad figure.",
 
-    ("KOR-1948-2025", "fao"):
-        "THE SOURCE'S LABEL IS THE WHOLE PENINSULA. FAO states 201,890 km2 against our 97,097 for South "
-        "Korea; 201,890 is Korea north and south together. Same shape as the China entry above -- the "
-        "yearbook's reporting unit predates or ignores the division, and the polity does not.",
+    # KOR-1948-2025/fao REMOVED 2026-09-24 (world alias collisions): the entry said "THE SOURCE'S
+    # LABEL IS THE WHOLE PENINSULA", and it was. So fao1952 `Korea` 1949-1951 is no longer routed
+    # to South Korea (it averaged with `Korea South` on 5 keys), and no fao statement reaches this
+    # polity any more.
+    ("MAN-1945-1950", "fao"):
+        "OUR POLYGON IS THE SMALLER TERRITORY, and this is the known proxy gap. FAO 1952 states "
+        "1,069,300 km2 for `China Manchuria` at data year 1947 against our 791,708 (0.74x), the "
+        "three-province GADM union reused from MAN-1932-1945. The reporting unit is larger than "
+        "Heilongjiang+Jilin+Liaoning (the 1949-1954 northeast had nine provinces). Recorded as "
+        "oq-three-province-proxy-under-covers-by-26pc on man-1950-1955. Became visible on "
+        "2026-09-24 when `China Manchuria` stopped routing to the CHN chain and its statement "
+        "was attributed to the region instead of to China.",
+    ("TNGU-1949-1975", "fao"):
+        "THE STATEMENT IS NETHERLANDS NEW GUINEA'S, NOT THIS TERRITORY'S. FAO 1952 states 412,780 "
+        "km2 for `New Guinea` at 1951, and the land table files that row under ASIA, while every "
+        "other fao1952 `New Guinea` row (population, copra, rubber, tractors) is filed under "
+        "OCEANIA. 412,780 is 1.006x Netherlands New Guinea's CShapes 851 polygon (410,361) and "
+        "1.74x this Trust Territory's 237,462. The same figure agreed with PNG-1949-1975 (1.12x) "
+        "only because both labels sat on the union. A label-level alias cannot separate the two "
+        "land-use rows from the rest of the label, so they follow it; see "
+        "oq-land-use-rows-are-netherlands-new-guinea on tngu-1949-1975.",
 
     ("TCA-1800-2025", "fao"):
         "A VINTAGE DIFFERENCE, and ours is the modern figure. FAO states 520 km2 and IIA states 430-438 "
@@ -597,11 +609,12 @@ _NATIONALITY = re.compile(
 BASELINE_COLLIDING_LEXICON_FORMS = 28
 
 # (polity, source) groups whose several raw labels state areas >=2x apart -- the whole-and-parts /
-# outlier-edition class. See arm G. All six current members are explained in SOURCE_NOTES or BASELINE:
-# CHN (FAO's China beside two of its own parts), FRS + LTU (a single 1909 edition outlier), MCO (a lost
-# decimal separator), DZA (`ALGERIE french` is northern Algeria alone), JOR (IIA revised itself in 1938).
-# A SEVENTH is the thing worth looking at: it means a source is filing two territories under one polity.
-BASELINE_LABEL_SPREAD = 6
+# outlier-edition class. See arm G. All five current members are explained in SOURCE_NOTES or BASELINE:
+# FRS + LTU (a single 1909 edition outlier), MCO (a lost decimal separator), DZA (`ALGERIE french` is
+# northern Algeria alone), JOR (IIA revised itself in 1938). Lowered 6 -> 5 on 2026-09-24: CHN left
+# the class when FAO's two China parts stopped routing beside the whole (world alias collisions).
+# A SIXTH is the thing worth looking at: it means a source is filing two territories under one polity.
+BASELINE_LABEL_SPREAD = 5
 LABEL_SPREAD_FACTOR = 2.0
 
 BASELINE_INERT_LEXICON = 18

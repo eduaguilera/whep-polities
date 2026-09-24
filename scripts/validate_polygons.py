@@ -298,7 +298,15 @@ BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # Same direction as the earlier moves in this constant: every statement that starts resolving to a
 # self-declared row makes issue 195's option B available for one more polity. The metric counts
 # opportunities, not defects.
-BASELINE_AVOIDABLE_SELF_REF = 38
+#
+# 38 -> 39 on 2026-09-24 (world alias collisions): MAN-1945-1950. fao1952 `China Manchuria` stopped
+# routing to the CHN chain and now reaches this row, so its 1947 stated area (1,069,300 km2) is
+# attributed to the region for the first time. The row declares 791,708, its reused feature's own
+# measurement, and that is deliberate for the reason given for MAN-1950-1955 above: the stated figure
+# describes a larger reporting unit than the three-province polygon, so declaring it would
+# manufacture a check-A disagreement against a geometry that is smaller, not wrong. The divergence
+# is baselined with that reason in validate_stated_areas.py.
+BASELINE_AVOIDABLE_SELF_REF = 39
 
 #
 

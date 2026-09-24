@@ -1110,8 +1110,10 @@ TKL-1800-2025,1800,2025,,territory,gadm-4.1-adm0,16,no_reference,0,,0,,,,,,
 TKM-1991-2025,1991,2025,701,national,cshapes-2.0,471617,stable_where_covered,1,1991-2019,0,471678,471678,,,0.998,-0.01
 TLS-1800-2025,1800,2025,860,national,cshapes-2.0,14978,stable_where_covered,1,1886-2019,1,15024,15024,,,0.986,-0.31
 TNGU-1920-1949,1920,1949,912,colonial,cshapes-2.0,237462,stable_confirmed,1,1920-1948,0,237536,237536,,,0.995,-0.03
+TNGU-1949-1975,1949,1975,,subnational,cshapes-2.0,237462,no_reference,0,,0,,,,,,
 TON-1800-2025,1800,2025,955,national,gadm-4.1-adm0,757,no_reference,0,,0,,,,,,
 TPAP-1906-1949,1906,1949,911,colonial,cshapes-2.0,224156,stable_confirmed,1,1906-1948,1,224148,224148,,,0.996,0.0
+TPAP-1949-1975,1949,1975,,subnational,cshapes-2.0,224156,no_reference,0,,0,,,,,,
 TRP-1943-1951,1943,1951,620,national,constructed,314551,reference_mismatch,1,1943-1950,1,1617564,1617564,,,0.194,-80.55
 TRS-1947-1954,1947,1954,,national,constructed,,no_reference,0,,0,,,,,,
 TTO-1800-2025,1800,2025,52,national,cshapes-2.0,4953,stable_where_covered,1,1886-2019,1,4996,4996,,,0.976,-0.87

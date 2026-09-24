@@ -300,12 +300,24 @@ resolve_iso <- function(iso3c, polity_name, year, country = NA_character_) {
   }
   # Post-resolution time-dependent adjustments for name_override results
   if (!is.na(iso) && iso != "NA") {
-    # Natal → South Africa after Union (1910)
-    if (iso == "NAT" && !is.na(year) && year > 1910) iso <- "ZAF"
+    # Natal → South Africa after Union (1910) -- EXCEPT the bare "Natal" label, which is
+    # left unrouted after 1910 (2026-09-24, world alias collisions). Its post-Union rows
+    # are not a Natal-province series: the 1945-1957 horses continue South Africa's own
+    # national series (687k-487k against Natal's 40-67k before Union), and the 1957 pig
+    # figure sat beside South Africa's own on ZAF-1910-2025, where a mean() averaged them.
+    # Mirrors the removed `natal` alias in state/applied_aliases.csv. "NA" is this
+    # function's own no-answer sentinel (see the top of resolve_iso).
+    if (iso == "NAT" && !is.na(year) && year > 1910) {
+      lab <- tolower(c(polity_name, country))
+      iso <- if (any(!is.na(lab) & lab == "natal")) "NA" else "ZAF"
+    }
     # Cape Colony → South Africa after Union (1910)
     if (iso == "CAP" && !is.na(year) && year > 1910) iso <- "ZAF"
-    # Manchuria: only Manchukuo (MAN) 1932-1945; otherwise China (CHN)
-    if (iso == "MAN" && !is.na(year) && (year < 1932 || year > 1945)) iso <- "CHN"
+    # Manchuria: the MAN family 1932-1954 -- Manchukuo (MAN-1932-1945), then the
+    # Manchuria region rows MAN-1945-1950 and MAN-1950-1955 -- otherwise China (CHN).
+    # Widened from 1932-1945 on 2026-09-24 (world alias collisions) so this matcher agrees
+    # with the alias registry, which now routes the region's 1945-1954 rows to MAN.
+    if (iso == "MAN" && !is.na(year) && (year < 1932 || year > 1954)) iso <- "CHN"
     # China polity split at 1932: CHN iso3c routes to CHN-1921-1932 (1921-1931)
     # or CHN-1932-1945 (1932-1945) automatically via year-span lookup in the
     # polities DB. Labels "china" / "china, mainland" in years 1921-1945 are

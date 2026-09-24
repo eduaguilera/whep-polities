@@ -268,7 +268,7 @@ BASELINE_UNRESOLVED = frozenset()
 #    matchlib AOI-1936-1941, Italian East Africa). Both are real attribution questions
 #    about occupied/partitioned territory, which a matcher gate must not settle by itself.
 BASELINE_PRE1961_DIFFERENT = frozenset({
-    ("China, Manchuria Province of", "-", 1945),   # R MAN-1932-1945 / CHN-1945-1947
+    ("China, Manchuria Province of", "-", 1945),   # R MAN-1932-1945 / MAN-1945-1950 (was CHN-1945-1947 until 2026-09-24)
     ("Ethiopia", "ETH", 1936),                     # R ETH-1936-1941 / AOI-1936-1941
     ("Ethiopia", "ETH", 1938),
     ("Ethiopia", "ETH", 1940),
