@@ -1140,9 +1140,9 @@ UGA-1962-2025,Uganda,1962,2025,national,UGA,500,Africa,draft,2026-04-12,cshapes-
 UKR-1991-2014,Ukraine (1991-2014),1991,2014,national,UKR,369,Europe,draft,2026-04-12,cshapes-2.0,369,1991,assigned,,F228-1945-1991,UKR-2014-2025,
 UKR-2014-2025,Ukraine,2014,2025,national,UKR,369,Europe,draft,2026-04-12,cshapes-2.0,369,2014,assigned,,UKR-1991-2014,,
 URY-1828-2025,Uruguay,1828,2025,national,URY,165,South America,draft,2026-04-12,cshapes-2.0,165,1886,assigned,,,,
-USA-1800-1803,United States (original),1800,1803,national,USA,2,North America,draft,2026-04-12,cliopatria,United States of America,1800,assigned,,,USA-1803-1848,
-USA-1803-1848,United States (1803-1848),1803,1848,national,USA,2,North America,draft,2026-04-12,cliopatria,United States of America,1815,assigned,,USA-1800-1803,USA-1848-1867,
-USA-1848-1867,United States (1848-1867),1848,1867,national,USA,2,North America,draft,2026-04-12,cliopatria,United States of America,1849,assigned,,USA-1803-1848,USA-1867-1959,
+USA-1800-1803,United States (original),1800,1803,national,USA,2,North America,draft,2026-04-12,constructed,USA-1800-1803,,assigned,,,USA-1803-1848,
+USA-1803-1848,United States (1803-1848),1803,1848,national,USA,2,North America,draft,2026-04-12,constructed,USA-1803-1848,,proxy,,USA-1800-1803,USA-1848-1867,
+USA-1848-1867,United States (1848-1867),1848,1867,national,USA,2,North America,draft,2026-04-12,cshapes-2.0,2,1886,assigned,,USA-1803-1848,USA-1867-1959,
 USA-1867-1959,United States (1867-1959),1867,1959,national,USA,2,North America,draft,2026-04-12,cshapes-2.0,2,1959,assigned,,USA-1848-1867,USA-1959-2025,1959-01-03
 USA-1959-2025,United States of America,1959,2025,national,USA,2,North America,draft,2026-04-12,cshapes-2.0,2,1960,assigned,,USA-1867-1959,,
 USA-AK-1959-2025,Alaska (state of the United States),1959,2025,subnational,USA,,North America,draft,2026-09-10,gadm-4.1-adm1,USA.2_1,,assigned,,ALK-1867-1959,,
