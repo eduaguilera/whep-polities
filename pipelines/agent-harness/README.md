@@ -39,6 +39,7 @@ alphabetically.
 | `runner.py` | owns the subprocess; one schema-valid result per job, cached and retried |
 | `harness.py` | assembles deterministic evidence, runs the cycles, records verdicts |
 | `repair.py` | classifies gate failures and aims the narrowest repair at each |
+| `derive_aliases.py` | stage 5: the alias rows the ledger implies, derived rather than hand-written (`--check` in CI) |
 | `schemas/country_convention.schema.json` | stage 0: the country's span, container chain and naming |
 | `schemas/routing_verdict.schema.json` | stage 1: match / create / not-a-territory / insufficient |
 | `schemas/polygon_route.schema.json` | stage 2: where a proposed boundary comes from |
@@ -105,6 +106,54 @@ cache.
 
 **Read-only by construction.** `Edit`, `Write` and `NotebookEdit` are denied on the command line
 rather than discouraged in the prompt. Applying a verdict is the harness's job, in Python.
+
+## Routing has two halves, and the second is derived
+
+The ledger decides which polity a unit's years belong to; an alias row in
+`pipelines/polity-autoimprove/state/applied_aliases.csv` is what actually sends the source's rows
+there. The second half used to be written by other tools (`apply_verdicts.py`, hand scripts), and
+the gap between them is where most of 2026-09-24's defects came from: USA-CALIFORNIA routed with
+no alias (34,452 rows to nothing), ARG-CHACO's second-era polity never aliased, segments naming
+the unit's own id as a polity, Italian regions `matched` to Italy.
+
+```bash
+python3 pipelines/agent-harness/derive_aliases.py --check      # drift report; exit 1 on drift
+python3 pipelines/agent-harness/derive_aliases.py --write      # append only what is missing
+python3 pipelines/agent-harness/harness.py --country Chile --alias-stage
+```
+
+| segment | derived rule |
+|---|---|
+| `matched` | observed (`disposition` empty) to its polity, clipped to that polity's span |
+| `proposed` | observed to the authored polity -- its own `polity_code`, else the `page_polity_code` / `extra_pages` era whose span holds the year |
+| `back_cast` | `back_cast` to its polity, for the years **before** that polity starts; years inside it are the era's container and are reported, not derived |
+| `unroutable` | nothing |
+
+Labels are the unit's id and name, and a name another unit shares ('Santa Cruz', 'Distrito
+Federal') is never written. Slugs are the panel slugs already carrying the unit (policy.json
+`alias_derivation`), or `juan-subnational` when none does; official-vocabulary slugs keep their own
+meaning of a label. A target that is not a live polity is refused, an existing row is never
+rewritten, and a row that contradicts the ledger is a reported conflict. On the committed ledger
+the first run found **2 units, 3 rows**: `Queensland`'s state era (1901-2022) and `ITH3` (Veneto),
+both unaliased in the panel slug while other slugs had them. They are now in the registry.
+
+## A name match is not a territory match
+
+Stage 1 and stage 3 now ask whether each target MEASURES the territory the data measures. The
+panel's `landuse` classes sum to a unit's land area, constant across years for most units, and that
+total goes into the evidence (`LAND AREA`) and is compared against the target's polygon in
+`data/final/polities_database.gpkg` (ESRI:54034):
+
+- a `matched` or code-naming `proposed` segment outside `[1/tolerance, tolerance]` of the land
+  total is objected to and re-asked (stage 1), as is a page whose attached feature is (stage 3);
+- a `matched` segment more than `container_ratio` times the unit's own territory is its
+  container.
+
+Measured over the 349 (unit, target) pairs already in the ledger, legitimate targets run 0.56-1.60x;
+the defects it reproduces sit at **0.30x** (FR104 -> Essonne, when the data is Seine-et-Oise) and
+**0.54x** (ITH1 -> Bolzano, when the data is Trentino-Alto Adige). The low end of that band is
+narrow -- ARG-CABA is 0.56 -- which is why the thresholds are in `policy.json` (`territory_size`) and
+the finding is handed back rather than acted on. On the committed ledger it objects to nothing.
 
 ## What replacing the workflows still needs
 

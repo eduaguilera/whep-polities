@@ -265,6 +265,191 @@ def double_claim_objection(v: dict[str, Any], unit: dict[str, Any],
             "could claim the container equally, which is what makes it wrong.")
 
 
+# ---------------------------------------------------------------------------
+# Territory size: does the target's polygon measure the territory the data measures?
+# ---------------------------------------------------------------------------
+# A NAME MATCH IS NOT A TERRITORY MATCH, and three of one day's defects were exactly that:
+#
+#     FRA-FR104  data measures  6,037 km2  -> Essonne 1,819       (it is Seine-et-Oise, 6,019)
+#     ITA-ITH1   data measures 13,599 km2  -> Bolzano 7,379       (it is Trentino-Alto Adige, 13,605)
+#     BRA-DISTRITOFEDERAL  'Distrito Federal' names both Rio's district (to 1960) and Brasilia's;
+#                the data measures 5,993 km2 in every year, which is Brasilia's (5,761) --
+#                and a name rule on it also caught Mexico City (1,505)
+#
+# Each verdict was plausible from the name, and nothing in the evidence could refute it -- the
+# panel's own land total could. Its `landuse` block sums a unit's land-cover classes, and that sum
+# is constant across years (spread 1.00 for 50% of units) and within a few percent of the unit's
+# polygon. Measured over 349 (unit, target) pairs already in the ledger, legitimate targets run
+# 0.56-1.60x the unit's land total; the defects above sit at 0.30 and 0.54. The band is narrow at
+# the low end -- the tightest legitimate case is ARG-CABA (a city, 0.56) and the tightest defect
+# Bolzano (0.54) -- which is why the tolerance lives in policy.json and the finding is handed back
+# rather than acted on: a size mismatch says WHICH question to re-ask, not what the answer is.
+GPKG = REPO / "data" / "final" / "polities_database.gpkg"
+AREA_CRS = "ESRI:54034"   # the equal-area projection validate_matched_target_territory uses
+
+SIZE_DEFAULTS = {"indicator": "landuse", "max_spread": 1.5, "tolerance": 1.8,
+                 "container_ratio": 3.0}
+
+
+def size_policy() -> dict[str, Any]:
+    return {**SIZE_DEFAULTS, **(load_policy().get("territory_size") or {})}
+
+
+def size_signal(df, indicator: str = "landuse", max_spread: float = 1.5) -> dict[str, dict]:
+    """unit_id -> {km2, spread, years}: the unit's land total, where the panel carries one.
+
+    The median of the per-year totals, so one odd year cannot move it. A unit whose totals drift by
+    more than `max_spread` (max/min) carries no signal: the sum is then not a fixed area but a
+    reconstruction that changes shape, and measuring a boundary against it would be noise. Units
+    are hectares in the panel; anything else is not read, rather than guessed.
+    """
+    if df is None or not len(df) or "indicator" not in df.columns:
+        return {}
+    sub = df[df["indicator"] == indicator]
+    if "unit_canonical" in sub.columns:
+        sub = sub[sub["unit_canonical"].isin(["ha", "km2"])]
+    if not len(sub):
+        return {}
+    km2 = sub["value_canonical"] / sub["unit_canonical"].map({"ha": 100.0, "km2": 1.0}) \
+        if "unit_canonical" in sub.columns else sub["value_canonical"] / 100.0
+    tot = sub.assign(_km2=km2).groupby(["admin_unit_id", "year"])["_km2"].sum()
+    out = {}
+    for uid, s in tot.groupby(level=0):
+        s = s[s > 0]
+        if not len(s):
+            continue
+        spread = float(s.max() / s.min())
+        if spread > max_spread:
+            continue
+        out[uid] = {"km2": float(s.median()), "spread": spread, "years": int(len(s))}
+    return out
+
+
+@functools.lru_cache(maxsize=1)
+def polygon_areas() -> dict[str, float]:
+    """polity_code -> km2 of its polygon in the built GeoPackage, equal-area projected."""
+    if not GPKG.is_file():
+        print(f"  note: {GPKG.relative_to(REPO)} absent -- no territory-size check this run")
+        return {}
+    import warnings
+
+    import geopandas as gpd
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        g = gpd.read_file(GPKG, columns=["polity_code"]).to_crs(AREA_CRS)
+    return {r.polity_code: float(r.geometry.area) / 1e6 for r in g.itertuples()
+            if r.geometry is not None and not r.geometry.is_empty}
+
+
+def feature_area_km2(slug: str, feature_id: str) -> float | None:
+    """The km2 of one feature of a registered source, if its file is on disk; else None."""
+    import yaml as _yaml
+    if not slug or not feature_id or str(feature_id).lower() in ("null", "none"):
+        return None
+    with (REPO / "scripts" / "sources.yaml").open(encoding="utf-8") as fh:
+        spec = ((_yaml.safe_load(fh) or {}).get("sources", {}) or {}).get(slug) or {}
+    rel, col = spec.get("file"), spec.get("id_column")
+    if not rel or not col or not (REPO / rel).is_file():
+        return None
+    import warnings
+
+    import geopandas as gpd
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        g = gpd.read_file(REPO / rel)
+    if col not in g.columns:
+        return None
+    hit = g[g[col].astype(str) == str(feature_id)]
+    if hit.empty:
+        return None
+    return float(hit.to_crs(AREA_CRS).geometry.area.sum()) / 1e6
+
+
+def _size_line(unit: dict[str, Any]) -> str:
+    return (f"this unit's own data measures {unit['size_km2']:,.0f} km2 (the sum of its "
+            f"`landuse` classes, median of {unit.get('size_years', '?')} years, spread "
+            f"{unit.get('size_spread', 1.0):.2f})")
+
+
+def territory_size_objection(v: dict[str, Any], unit: dict[str, Any], areas: dict[str, float],
+                             own_code: str | None = None,
+                             cfg: dict[str, Any] | None = None) -> str | None:
+    """Does each target this verdict names measure the territory the unit's data measures?
+
+    Two checks, both arithmetic, both handed back:
+
+    - SIZE. Where the unit carries a land total, a `matched` or code-naming `proposed` target whose
+      polygon is outside [1/tolerance, tolerance] of it is objected to. `back_cast` is exempt: the
+      schema lets a back_cast name the era's national row, which is legitimately far larger.
+    - CONTAINER. A `matched` target more than `container_ratio` times the unit's own territory --
+      its land total, or else its own polity's polygon -- is its container. `matched` asserts the
+      source observed THAT territory; five Italian regions matched to ITA-1919-2025 would each
+      have been averaged with Italy's own national value by the consumer's mean().
+    """
+    cfg = {**SIZE_DEFAULTS, **(cfg or {})}
+    size = unit.get("size_km2")
+    own = areas.get(own_code) if own_code else None
+    ref = size or own
+    if not ref:
+        return None
+    tol, cont = float(cfg["tolerance"]), float(cfg["container_ratio"])
+    problems: list[str] = []
+    for s in v.get("coverage") or []:
+        code = (s.get("polity_code") or "").strip()
+        disp = s.get("disposition")
+        if not code or disp not in ("matched", "proposed") or code not in areas:
+            continue
+        a = areas[code]
+        where = f"Segment {s.get('start_year')}-{s.get('end_year')} ({disp}) names {code}"
+        if disp == "matched" and a / ref > cont:
+            basis = _size_line(unit) if size else f"this unit's own polity {own_code} measures " \
+                                                  f"{own:,.0f} km2"
+            problems.append(f"{where}, whose polygon measures {a:,.0f} km2 -- {a / ref:.1f}x what "
+                            f"{basis}. That is a container, not this territory.")
+        elif size and not (1 / tol <= a / size <= tol):
+            problems.append(f"{where}, whose polygon measures {a:,.0f} km2, but "
+                            f"{_size_line(unit)}: {a / size:.2f}x.")
+    if not problems:
+        return None
+    return ("\n".join(problems) + "\n\nA target must BE the territory the source reported, and "
+            "the unit's own land total says how large that territory was. A target much smaller "
+            "usually means the name has been read as a later, smaller unit (a departement carved "
+            "out of the one the data describes); much larger, a container or a neighbour's "
+            "union. Name the polity whose polygon measures what the data measures -- or, if none "
+            "exists, propose one -- and if you keep this target, say in `concerns` why the "
+            "areas disagree.")
+
+
+def page_size_objection(page: dict[str, Any], unit: dict[str, Any] | None,
+                        feature_km2: float | None = None,
+                        cfg: dict[str, Any] | None = None) -> str | None:
+    """Does the boundary this page attaches measure the territory the unit's data measures?
+
+    Stage 3 is where a proposed polity first acquires a boundary, so it is where Bolzano's page
+    bound GADM's Bolzano feature (7,379 km2) for a unit whose data measures 13,599 km2 -- the whole
+    of Trentino-Alto Adige. The area is the attached feature's own, measured here when its source
+    file is on disk, else the page's `area_km2_measured`.
+    """
+    cfg = {**SIZE_DEFAULTS, **(cfg or {})}
+    if not unit or not unit.get("size_km2"):
+        return None
+    a = feature_km2 if feature_km2 else page.get("area_km2_measured")
+    if not a:
+        return None
+    ratio = float(a) / unit["size_km2"]
+    tol = float(cfg["tolerance"])
+    if 1 / tol <= ratio <= tol:
+        return None
+    fm = page.get("frontmatter") or {}
+    return (f"The boundary attached to {page.get('polity_code')} "
+            f"({fm.get('polygon_source')} / {fm.get('polygon_feature_id')}) measures {a:,.0f} km2, "
+            f"but {_size_line(unit)}: {ratio:.2f}x. The page would give this unit's data a "
+            f"territory of the wrong size. Either the feature is a different (smaller or larger) "
+            f"unit than the one the source reports -- choose, or construct, the boundary whose "
+            f"area matches -- or the territory itself is not what the name suggests, which "
+            f"belongs in `territorial_extent` and an open question. Do not attach it silently.")
+
+
 def limit_hit(res, where: str, ledger: dict[str, dict[str, str]] | None = None) -> bool:
     """True when a job failed on a usage limit, in which case the caller must stop.
 
@@ -427,6 +612,14 @@ def build_evidence(unit: dict[str, Any], pols: list[dict[str, str]], iso: str,
     a(f"  valued rows        {unit['rows']:,}")
     a(f"  indicators         {unit['indicators']}")
     a(f"  source             {unit['source']}")
+    if unit.get("size_km2"):
+        # The one number in the evidence that can refute a name match: Essonne and Seine-et-Oise
+        # share a NUTS code, Bolzano and Trentino-Alto Adige a province name, and only the area
+        # says which one the data was collected on.
+        a(f"  LAND AREA          ~{unit['size_km2']:,.0f} km2 -- the sum of this unit's `landuse` "
+          f"classes (median of {unit.get('size_years', '?')} years, spread "
+          f"{unit.get('size_spread', 1.0):.2f}). A polity this unit IS should measure about this; "
+          f"a target far smaller or larger is a different territory whatever its name.")
 
     tail = unit["unit_id"].split("-", 1)[1] if "-" in unit["unit_id"] else unit["unit_id"]
     marks = [m for m in RESIDUAL_MARKERS if m in tail.upper()]
@@ -519,7 +712,7 @@ def units_for_country(country: str) -> list[dict[str, Any]]:
     import pandas as pd
     df = pd.read_parquet(PANEL, columns=["country_clean", "admin_unit_id", "admin_name_clean",
                                          "admin_level", "year", "indicator", "value_canonical",
-                                         "method"])
+                                         "unit_canonical", "method"])
     df = df[(df.country_clean == country) & df.value_canonical.notna()]
     if df.empty:
         return []
@@ -539,6 +732,8 @@ def units_for_country(country: str) -> list[dict[str, Any]]:
         meth = (m.groupby(["admin_unit_id", "_m"]).size()
                  .groupby(level=0, group_keys=False)
                  .apply(lambda s: (s / s.sum() * 100).round(1)))
+    sp = size_policy()
+    sizes = size_signal(df, sp["indicator"], float(sp["max_spread"]))
     g = df.groupby("admin_unit_id").agg(
         admin_name=("admin_name_clean", "first"), admin_level=("admin_level", "first"),
         y0=("year", "min"), y1=("year", "max"), rows=("year", "size"),
@@ -557,7 +752,9 @@ def units_for_country(country: str) -> list[dict[str, Any]]:
                     "method_profile": prof,
                     "admin_level": r["admin_level"], "y0": int(r["y0"]), "y1": int(r["y1"]),
                     "rows": int(r["rows"]), "indicators": r["indicators"],
-                    "source": (source.iloc[0] if len(source) else "unknown")})
+                    "source": (source.iloc[0] if len(source) else "unknown"),
+                    **({"size_km2": sizes[uid]["km2"], "size_spread": sizes[uid]["spread"],
+                        "size_years": sizes[uid]["years"]} if uid in sizes else {})})
     return out
 
 
@@ -1450,7 +1647,8 @@ def _page_span(code: str) -> tuple[int, int] | None:
     return (int(m.group(1)), int(m.group(2))) if m else None
 
 
-def run_wiki_stage(A, runner, ledger, pols, iso, convention=None) -> None:
+def run_wiki_stage(A, runner, ledger, pols, iso, convention=None,
+                   units: dict[str, dict[str, Any]] | None = None) -> None:
     import json as _json
     scope = set(A.only) if A.only else None
     def page_missing(v: dict[str, str]) -> bool:
@@ -1528,7 +1726,18 @@ def run_wiki_stage(A, runner, ledger, pols, iso, convention=None) -> None:
     slugs = polygon_slugs()
     exemplar = EXEMPLAR.read_text(encoding="utf-8")[:6000] if EXEMPLAR.is_file() else "(none)"
     print(f"\nstage 3 (wiki): authoring {len(todo)} page(s)")
+    sp = size_policy()
     for v, seg_i in todo:
+        unit_info = (units or {}).get(v["unit_id"])
+
+        def size_of_page(pg, _u=unit_info):
+            # THE UNIT'S LAND TOTAL AGAINST THE BOUNDARY THE PAGE ATTACHES. This is where
+            # Bolzano's page bound a 7,379 km2 feature for data measuring 13,599 km2.
+            fm = pg.get("frontmatter") or {}
+            feat = feature_area_km2(fm.get("polygon_source") or "",
+                                    str(fm.get("polygon_feature_id") or ""))
+            return page_size_objection(pg, _u, feat, sp)
+
         segs = proposed_segments(v)
         seg = segs[seg_i] if seg_i < len(segs) else {}
         prop = _json.loads(v["proposed_json"]) if v.get("proposed_json") else {}
@@ -1602,6 +1811,8 @@ def run_wiki_stage(A, runner, ledger, pols, iso, convention=None) -> None:
             if not clash:
                 clash = unreciprocated(page, edges)
             if not clash:
+                clash = size_of_page(page)
+            if not clash:
                 break
             print(f"  REJECT {v['unit_id']:23} {clash.splitlines()[0][:88]}")
             res = runner.call(f"{job}-clash{retry + 1}",
@@ -1623,7 +1834,8 @@ def run_wiki_stage(A, runner, ledger, pols, iso, convention=None) -> None:
         left = (structural_page_objection(page, pols, iso)
                 or duplicate_territory_objection(page, v, existing_pages)
                 or bad_polygon_source(page, slugs)
-                or unreciprocated(page, edges))
+                or unreciprocated(page, edges)
+                or size_of_page(page))
         if left:
             print(f"  REFUSED {v['unit_id']:22} objection unresolved after retries — not written: "
                   f"{left.splitlines()[0][:90]}")
@@ -1822,6 +2034,9 @@ def main() -> int:
                     help="author the wiki page for each create_new proposal that has a polygon route")
     ap.add_argument("--polygon-stage", action="store_true",
                     help="after routing, ask where each create_new proposal's boundary comes from")
+    ap.add_argument("--alias-stage", action="store_true",
+                    help="derive the country's alias rows from the ledger (deterministic; appends "
+                         "only what is missing, reports conflicts) -- see derive_aliases.py")
     A = ap.parse_args()
 
     if not PANEL.is_file():
@@ -1945,9 +2160,22 @@ def main() -> int:
                 continue
             v = res.result
             # Every data year must be accounted for, and that is arithmetic.
+            own_code = (ledger.get(u["unit_id"], {}).get("page_polity_code") or "").strip() or None
+
+            def size_obj(verdict, _u=u, _own=own_code):
+                # Only load the polygons when something names a target: stage 1 of a country that
+                # proposes everything should not pay for reading the GeoPackage.
+                if not _u.get("size_km2") and not _own:
+                    return None
+                if not any(s.get("polity_code") for s in verdict.get("coverage") or []):
+                    return None
+                return territory_size_objection(verdict, _u, polygon_areas(), _own,
+                                                size_policy())
+
             for attempt in range(2):
-                obj = coverage_objection(v, u, pols) or double_claim_objection(v, u, ledger,
-                                                                              A.country)
+                obj = (coverage_objection(v, u, pols)
+                       or double_claim_objection(v, u, ledger, A.country)
+                       or size_obj(v))
                 if not obj:
                     break
                 print(f"  COVERAGE  {u['unit_id']:22} {obj.splitlines()[0][:80]}")
@@ -1960,8 +2188,9 @@ def main() -> int:
                     break
                 v = res.result
             else:
-                obj = coverage_objection(v, u, pols) or double_claim_objection(v, u, ledger,
-                                                                              A.country)
+                obj = (coverage_objection(v, u, pols)
+                       or double_claim_objection(v, u, ledger, A.country)
+                       or size_obj(v))
                 if obj:
                     v = {**v, "concerns": (v.get("concerns") or []) + [
                         f"HARNESS: coverage still does not tile {u['y0']}-{u['y1']} after 2 "
@@ -2025,9 +2254,17 @@ def main() -> int:
     if A.polygon_stage:
         run_polygon_stage(A, runner, pols, iso, feats, ledger)
     if A.wiki_stage:
-        run_wiki_stage(A, runner, ledger, pols, iso, convention)
+        run_wiki_stage(A, runner, ledger, pols, iso, convention,
+                       units={u["unit_id"]: u for u in units})
     if A.repair_stage:
         run_repair_stage(A, runner, ledger)
+    if A.alias_stage:
+        # THE SECOND HALF OF ROUTING, derived rather than written separately. A routing decision
+        # whose alias lived in another tool's file is how USA-CALIFORNIA had a verdict, a page
+        # and a live polity and routed none of its 34,452 rows.
+        import derive_aliases
+        print("\nstage 5 (aliases): deriving from the ledger")
+        derive_aliases.run(check=False, country=A.country)
 
     decided = [v for v in ledger.values() if v.get("country") == A.country]
     from collections import Counter

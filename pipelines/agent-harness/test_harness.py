@@ -1221,6 +1221,281 @@ def test_a_unit_spanning_two_administrations_gets_one_polity_per_era():
     assert 'f"-seg{seg_i + 1}"' in src
 
 
+# ---------------------------------------------------------------------------
+# Stage 5 -- aliases derived from the ledger (derive_aliases.py)
+# ---------------------------------------------------------------------------
+derive = _load("derive_aliases")
+
+_LIVE = {
+    "CAL-1850-2025": {"start": 1850, "end": 2025, "name": "California (US state)"},
+    "ARG-CHACO-1884-1951": {"start": 1884, "end": 1951, "name": "Chaco (national territory)"},
+    "ARG-CHACO-1951-2025": {"start": 1951, "end": 2025, "name": "Chaco (province)"},
+    "COL-CASANARE-1991-2025": {"start": 1991, "end": 2025, "name": "Casanare"},
+    "CHL-1902-2025": {"start": 1902, "end": 2025, "name": "Chile"},
+    "CHL-AP-2007-2025": {"start": 2007, "end": 2025, "name": "Arica y Parinacota"},
+    "ARG-SANTACRUZ-1955-2025": {"start": 1955, "end": 2025, "name": "Santa Cruz"},
+}
+
+
+def _unit(uid, name, segs, page="", extra=None, country="X", conf="high"):
+    return {"unit_id": uid, "admin_name": name, "country": country, "confidence": conf,
+            "page_polity_code": page, "matched_polity_code": "",
+            "extra_pages": json.dumps(extra) if extra else "",
+            "coverage_json": json.dumps(segs)}
+
+
+def _seg(lo, hi, disp, code=None):
+    return {"start_year": lo, "end_year": hi, "disposition": disp, "polity_code": code,
+            "basis": "fixture segment basis, twenty characters"}
+
+
+def _alias(label, source, lo, hi, code, disp=""):
+    return {"source_label": label, "source": source, "year_start": str(lo), "year_end": str(hi),
+            "common_name": "", "polity_code": code, "confidence": "high", "basis": "hand",
+            "observed_rows": "", "disposition": disp}
+
+
+def test_a_unit_routed_with_no_alias_gets_its_alias_derived():
+    """BUG: USA-CALIFORNIA had a verdict, a page and a live CAL-1850-2025, and routed 34,452 rows
+    to nothing -- its only rules were usda-nass-fips '06', a vocabulary the panel does not use.
+
+    The derived row must name the authored polity, carry the panel slug, stop where the polity's
+    EXCLUSIVE end_year stops it (2025 is reported, not written), and be observed ('').
+    """
+    ledger = [_unit("USA-CALIFORNIA", "California", [_seg(1866, 2025, "proposed")],
+                    page="CAL-1850-2025", country="United States of America")]
+    aliases = [_alias("06", "usda-nass-fips", 1850, 2024, "CAL-1850-2025")]
+    res = derive.derive(ledger, aliases, _LIVE, derive.name_owners(ledger))
+    assert [(r["source_label"], r["source"], r["year_start"], r["year_end"], r["polity_code"],
+             r["disposition"]) for r in res["missing"]] == [
+        ("California", "juan-subnational", "1866", "2024", "CAL-1850-2025", "")], res["missing"]
+    assert any("2025-2025" in c for c in res["clipped"]), res["clipped"]
+    assert res["missing"][0]["basis"].startswith(derive.STAMP), "a derived row says it was derived"
+
+
+def test_a_second_era_polity_is_aliased_too():
+    """BUG: ARG-CHACO's province era ARG-CHACO-1951-2025 was created for these very years and
+    never aliased -- the page fields named one polity and `extra_pages` the other, and only the
+    first was ever turned into a rule. The existing 1900-1950 rule must not be duplicated.
+    """
+    ledger = [_unit("ARG-CHACO", "Chaco",
+                    [_seg(1900, 1950, "proposed"), _seg(1951, 2023, "proposed")],
+                    page="ARG-CHACO-1884-1951",
+                    extra=[{"segment": 1, "polity_code": "ARG-CHACO-1951-2025",
+                            "page_written": "wiki/polities/arg-chaco-1951-2025.md",
+                            "span": [1951, 2023]}])]
+    aliases = [_alias("Chaco", "juan-subnational", 1900, 1950, "ARG-CHACO-1884-1951")]
+    res = derive.derive(ledger, aliases, _LIVE, derive.name_owners(ledger))
+    got = [(r["source_label"], r["year_start"], r["year_end"], r["polity_code"])
+           for r in res["missing"]]
+    assert got == [("Chaco", "1951", "2023", "ARG-CHACO-1951-2025")], got
+    assert not res["conflict"] and not res["clipped"]
+
+
+def test_a_segment_naming_no_live_polity_is_refused():
+    """BUG: 43 segments named codes never minted -- 'COL-CASANARE' (the unit's own id),
+    'FRA-BASRHIN-1919-2025' (invented). Turning either into an alias would publish a rule to a
+    polity the consumer cannot resolve; it must be refused and reported, never written.
+    """
+    ledger = [_unit("COL-CASANARE", "Casanare",
+                    [_seg(1915, 1990, "back_cast", "COL-CASANARE"),
+                     _seg(1991, 2023, "matched", "FRA-BASRHIN-1919-2025")])]
+    res = derive.derive(ledger, [], _LIVE, derive.name_owners(ledger))
+    assert not res["missing"], res["missing"]
+    assert len(res["refused"]) == 2 and "COL-CASANARE'" in res["refused"][0], res["refused"]
+
+
+def test_back_cast_rows_end_the_year_before_their_target_starts():
+    """The schema's back_cast routes a reconstruction to a polity whose own span starts LATER.
+
+    Years a back_cast spends inside its target are not derived: there the target is the era's
+    national row (CHL-AP -> CHL-1902-2025), and a region's rule onto its country is what the
+    consumer's mean() turns into an average of the part and the whole.
+    """
+    ledger = [_unit("COL-CASANARE", "Casanare",
+                    [_seg(1915, 1995, "back_cast", "COL-CASANARE-1991-2025")]),
+              _unit("CHL-AP", "Arica y Parinacota",
+                    [_seg(1902, 2006, "back_cast", "CHL-1902-2025"),
+                     _seg(2007, 2023, "proposed")], page="CHL-AP-2007-2025")]
+    res = derive.derive(ledger, [], _LIVE, derive.name_owners(ledger))
+    got = sorted((r["source_label"], r["year_start"], r["year_end"], r["polity_code"],
+                  r["disposition"]) for r in res["missing"])
+    assert got == [("Arica y Parinacota", "2007", "2023", "CHL-AP-2007-2025", ""),
+                   ("Casanare", "1915", "1990", "COL-CASANARE-1991-2025", "back_cast")], got
+    inside = " ".join(res["back_cast_inside"])
+    assert "1991-1995" in inside and "CHL-1902-2025" in inside, inside
+
+
+def test_a_hand_curated_row_is_never_overwritten():
+    """A registry row that disagrees with the ledger is a CONFLICT, reported and left alone.
+
+    Either side may be the curated truth -- Southern-European units were hand-rerouted by their
+    land area after the ledger was written -- so the stage neither rewrites the row nor adds a
+    competing one for the same years.
+    """
+    ledger = [_unit("ARG-CHACO", "Chaco", [_seg(1900, 1950, "proposed")],
+                    page="ARG-CHACO-1884-1951")]
+    aliases = [_alias("Chaco", "juan-subnational", 1900, 1950, "CHL-1902-2025")]
+    before = [dict(a) for a in aliases]
+    res = derive.derive(ledger, aliases, _LIVE, derive.name_owners(ledger))
+    assert not res["missing"], res["missing"]
+    assert len(res["conflict"]) == 1 and "CHL-1902-2025" in res["conflict"][0], res["conflict"]
+    assert aliases == before
+
+
+def test_a_shared_name_is_never_written_as_a_label():
+    """BUG: 'Santa Cruz' -> ARG-SANTACRUZ also caught BOL-SANTACRUZ (7,164 rows), and
+    'Distrito Federal' -> Brazil also caught MEX-CMX, which the ledger calls 'Ciudad de Mexico'
+    and only the panel's name list calls 'Distrito Federal'. A shared name must fall back to the
+    unit id, which carries its country and cannot collide.
+    """
+    ledger = [_unit("ARG-SANTACRUZ", "Santa Cruz", [_seg(1955, 2023, "proposed")],
+                    page="ARG-SANTACRUZ-1955-2025"),
+              _unit("BOL-SANTACRUZ", "Santa Cruz", [_seg(1900, 2023, "unroutable")])]
+    res = derive.derive(ledger, [], _LIVE, derive.name_owners(ledger))
+    assert [r["source_label"] for r in res["missing"]] == ["ARG-SANTACRUZ"], res["missing"]
+
+    brazil = [_unit("BRA-DISTRITOFEDERAL", "Distrito Federal", [_seg(1960, 2023, "proposed")],
+                    page="CAL-1850-2025")]
+    names = [{"unit_id": "MEX-CMX", "admin_name": "Distrito Federal"}]
+    assert derive.label_forms(brazil[0], derive.name_owners(brazil)) == [
+        "BRA-DISTRITOFEDERAL", "Distrito Federal"]
+    assert derive.label_forms(brazil[0], derive.name_owners(brazil, names)) == [
+        "BRA-DISTRITOFEDERAL"], "the panel's other names count, not only the ledger's"
+
+
+def test_alias_write_is_append_only_atomic_and_idempotent():
+    """--write appends only what is missing, keeps every existing byte, and a re-run adds nothing.
+
+    The registry is CRLF, as csv writes it; a rewrite that changed line endings or quoting would
+    diff every one of its 2,493 rows and hide the three that changed.
+    """
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        d = Path(d)
+        led = d / "ledger.csv"
+        fields = list(harness.LEDGER_FIELDS)
+        with open(led, "w", newline="", encoding="utf-8") as fh:
+            import csv as _csv
+            w = _csv.DictWriter(fh, fieldnames=fields)
+            w.writeheader()
+            u = _unit("USA-CALIFORNIA", "California", [_seg(1866, 2024, "proposed")],
+                      page="CAL-1850-2025")
+            w.writerow({f: u.get(f, "") for f in fields})
+        al = d / "aliases.csv"
+        derive.write_atomic(al, [_alias("06", "usda-nass-fips", 1850, 2024, "CAL-1850-2025")])
+        db = d / "db.csv"
+        db.write_text("polity_code,polity_name,start_year,end_year,wiki_status\n"
+                      "CAL-1850-2025,California,1850,2025,draft\n", encoding="utf-8")
+        import contextlib, io as _io
+        saved = (derive.LEDGER, derive.ALIASES, derive.DB, derive.NAMES)
+        derive.LEDGER, derive.ALIASES, derive.DB, derive.NAMES = led, al, db, d / "absent.csv"
+        try:
+            with contextlib.redirect_stdout(_io.StringIO()):
+                original = al.read_bytes()
+                assert derive.run(check=True, verbose=False) == 1, "drift must fail --check"
+                assert derive.run(check=False, verbose=False, regenerate=False) == 0
+                after = al.read_bytes()
+                assert after.startswith(original), "existing rows must survive byte for byte"
+                assert after.count(b"\r\n") == original.count(b"\r\n") + 1
+                assert derive.run(check=False, verbose=False, regenerate=False) == 0
+                assert al.read_bytes() == after, "a second write must add nothing"
+                assert derive.run(check=True, verbose=False) == 0
+                assert not list(d.glob("*.tmp")), "no temp file left behind"
+        finally:
+            derive.LEDGER, derive.ALIASES, derive.DB, derive.NAMES = saved
+
+
+def test_committed_ledger_and_registry_agree():
+    """The committed state carries no drift. On its first run the stage found two units missing
+    three rows: 'Queensland' had a juan-subnational rule for the colony and none for the state
+    (1901-2022), and ITA-ITH3 (Veneto) had no rule in any panel slug while its siblings all did."""
+    import contextlib, io as _io
+    with contextlib.redirect_stdout(_io.StringIO()):
+        assert derive.run(check=True, verbose=False) == 0
+
+
+# ---------------------------------------------------------------------------
+# Territory size -- stage 1 and stage 3 objections
+# ---------------------------------------------------------------------------
+_AREAS = {"FRA-91-1968-2025": 1818.72, "FRA-SSO-1860-2025": 6019.17,
+          "ITA-1919-2025": 300310.44, "ITA-PVA-1861-2025": 28529.0,
+          "NSW-1800-1901": 801150.0, "AUS-NSW-1901-2025": 801100.0,
+          "CHL-1902-2025": 742597.37}
+
+
+def test_size_objection_refutes_a_name_match_of_the_wrong_size():
+    """BUG: FRA-FR104 was routed to Essonne (1,819 km2). Its own landuse total is 6,037 km2 in all
+    141 years -- Seine-et-Oise, which Essonne was carved out of in 1968. The name fits both."""
+    unit = {"unit_id": "FRA-FR104", "size_km2": 6036.57, "size_spread": 1.0, "size_years": 141}
+    bad = {"coverage": [_seg(1862, 2023, "proposed", "FRA-91-1968-2025")]}
+    obj = harness.territory_size_objection(bad, unit, _AREAS)
+    assert obj and "0.30x" in obj and "1,819" in obj and "6,037" in obj, obj
+    good = {"coverage": [_seg(1862, 2023, "proposed", "FRA-SSO-1860-2025")]}
+    assert harness.territory_size_objection(good, unit, _AREAS) is None
+
+
+def test_size_objection_refutes_a_region_matched_to_its_country():
+    """BUG: five Italian NUTS regions carried `matched` segments naming ITA-1919-2025, which
+    already receives Italy's own labels; the consumer's mean() would have averaged each region
+    with the country. With no land total, the unit's own polity is the reference."""
+    unit = {"unit_id": "ITA-ITC1"}
+    bad = {"coverage": [_seg(1919, 1969, "matched", "ITA-1919-2025")]}
+    obj = harness.territory_size_objection(bad, unit, _AREAS, own_code="ITA-PVA-1861-2025")
+    assert obj and "container" in obj and "10.5x" in obj, obj
+    # A colony matched to its own colonial row -- typed `national`, and correct -- is not objected.
+    nsw = {"unit_id": "AUS-NEWSOUTHWALES"}
+    ok = {"coverage": [_seg(1860, 1900, "matched", "NSW-1800-1901")]}
+    assert harness.territory_size_objection(ok, nsw, _AREAS, own_code="AUS-NSW-1901-2025") is None
+    # back_cast may legitimately name the era's national row, so it is exempt from both checks.
+    ap = {"unit_id": "CHL-AP", "size_km2": 14655.65}
+    bc = {"coverage": [_seg(1902, 2006, "back_cast", "CHL-1902-2025")]}
+    assert harness.territory_size_objection(bc, ap, _AREAS) is None
+
+
+def test_page_size_objection_refutes_bolzano_for_trentino_alto_adige():
+    """BUG: ITA-ITH1's page bound Bolzano (7,379 km2) for a unit whose data measures 13,599 km2 --
+    Bolzano plus Trento. Stage 3 is where the boundary is chosen, so it is checked there."""
+    unit = {"unit_id": "ITA-ITH1", "size_km2": 13599.41, "size_spread": 1.0, "size_years": 141}
+    page = {"polity_code": "ITA-ITH1-1919-2025", "area_km2_measured": None,
+            "frontmatter": {"polygon_source": "gadm-4.1-adm1", "polygon_feature_id": "ITA.17_1"}}
+    obj = harness.page_size_objection(page, unit, feature_km2=7379.27)
+    assert obj and "0.54x" in obj, obj
+    assert harness.page_size_objection(dict(page, area_km2_measured=7379.27), unit) is not None
+    assert harness.page_size_objection(page, unit, feature_km2=13604.68) is None
+    assert harness.page_size_objection(page, {"unit_id": "X"}, feature_km2=7379.27) is None, \
+        "no land total, no objection -- never a guess"
+
+
+def test_size_signal_is_the_constant_landuse_total():
+    """The panel's landuse classes sum to the unit's land area, the same in every year. A unit
+    whose total drifts is a reconstruction whose shape changes, so it carries no signal."""
+    import pandas as pd
+    rows = []
+    for y in (1900, 1950, 2000):
+        for cls, ha in (("cropland", 200000.0), ("pasture", 150000.0), ("forest", 253657.0)):
+            rows.append(("FRA-FR104", y, "landuse", cls, ha, "ha"))
+        rows.append(("ARG-MISIONES", y, "landuse", "cropland",
+                     {1900: 3.0e6, 1950: 4.5e6, 2000: 6.0e6}[y], "ha"))
+        rows.append(("FRA-FR104", y, "production", "wheat", 9.9e9, "t"))
+    df = pd.DataFrame(rows, columns=["admin_unit_id", "year", "indicator", "item_clean",
+                                     "value_canonical", "unit_canonical"])
+    sig = harness.size_signal(df, "landuse", 1.5)
+    assert set(sig) == {"FRA-FR104"}, sig
+    assert abs(sig["FRA-FR104"]["km2"] - 6036.57) < 0.01 and sig["FRA-FR104"]["years"] == 3
+
+
+def test_size_objections_are_wired_into_stage_1_and_stage_3():
+    """The checks are worthless unless both retry loops consult them, and the evidence shows the
+    number -- the agent cannot weigh an area it is never told."""
+    src = (HERE / "harness.py").read_text(encoding="utf-8")
+    assert src.count("or size_obj(v))") == 2, "stage 1: the retry loop and the final re-check"
+    assert "clash = size_of_page(page)" in src and "or size_of_page(page))" in src, "stage 3"
+    assert '"unit_canonical", "method"]' in src, "the panel read must include the unit column"
+    assert "LAND AREA" in src
+    assert "import derive_aliases" in src and '"--alias-stage"' in src
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):
