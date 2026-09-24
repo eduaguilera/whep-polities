@@ -142,7 +142,7 @@ BRA-AMAPA-1943-2025,Amapá,1943,2025,gadm-4.1-adm1,,assigned,True,assumed_consta
 BRA-AMAZONAS-1889-2025,Amazonas,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,no_reference,,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
 BRA-BAHIA-1889-2025,Bahia,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,no_reference,,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
 BRA-CE-1889-2025,Ceará,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,no_reference,,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
-BRA-DF-1960-2023,Distrito Federal (Brasília),1960,2023,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,no_reference,,single 2020 polygon held across a 63y span (1960-2023); borders may have changed,0
+BRA-DF-1960-2025,Distrito Federal (Brasília),1960,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,no_reference,,single 2020 polygon held across a 65y span (1960-2025); borders may have changed,0
 BRA-DFRJ-1900-1959,Distrito Federal (Rio de Janeiro),1900,1959,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
 BRA-ES-1889-2025,Espírito Santo,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,no_reference,,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0
 BRA-GOIAS-1889-2025,Goiás,1889,2025,geobr-ibge,2020.0,assigned,True,assumed_constant,True,False,no_reference,,single 2020 polygon held across a 136y span (1889-2025); borders may have changed,0

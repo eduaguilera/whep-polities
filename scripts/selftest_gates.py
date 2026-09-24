@@ -5306,6 +5306,49 @@ def mutate_matched_segment_points_at_container(root, gpd, make_valid, affinity):
     return (f"{victim[0]}'s matched segment now names {biggest} instead of a polity the size of "
             f"{victim[1]}, with every disposition still legal")
 
+def mutate_name_label_shared_across_countries(root, gpd, make_valid, affinity):
+    """Key one alias on a unit NAME that reporting units in two countries share.
+
+    Routing resolves a panel unit by its id OR its name, so a rule keyed on a bare name applies
+    to every unit carrying that name. 'Santa Cruz' -> ARG-SANTACRUZ-* also caught Bolivia's
+    BOL-SANTACRUZ (7,164 valued rows) until 2026-09-24. The mutation re-creates that shape
+    generically: it takes a name the ledger records for units in two countries and aliases it
+    to one of them. The row is well-formed, names a live polity inside its span, and the unit
+    it was written for still resolves correctly -- so no per-label check can see it.
+    """
+    import collections as _collections
+    import csv as _csv
+
+    _csv.field_size_limit(sys.maxsize)
+    ledger = os.path.join(root, "pipelines/agent-harness/state/routing_verdicts.csv")
+    path = os.path.join(root, "data/final/label_alias_map.csv")
+
+    by_name = _collections.defaultdict(dict)
+    with open(ledger, newline="", encoding="utf-8") as fh:
+        for r in _csv.DictReader(fh):
+            code = (r.get("page_polity_code") or r.get("matched_polity_code") or "").strip()
+            if r.get("admin_name") and code:
+                by_name[r["admin_name"]].setdefault(r["country"], code)
+    shared = sorted(n for n, c in by_name.items() if len(c) > 1)
+    if not shared:
+        raise AssertionError("the ledger records no name shared across countries; the mutation "
+                             "would do nothing and the case would pass for the wrong reason")
+    name = shared[0]
+    country, code = sorted(by_name[name].items())[0]
+
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    new = {k: "" for k in rows[0]}
+    new.update(source_label=name, source="juan-subnational", year_start="1960",
+               year_end="1970", polity_code=code, confidence="high")
+    rows.append(new)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(rows)
+    return (f"{name!r} (juan-subnational) now routes to {code}, the {country} unit, while "
+            f"units in {len(by_name[name])} countries carry that name")
+
+
 CASES = (
     (
         "validate_composition_sums.py",
@@ -6391,6 +6434,14 @@ CASES = (
         "never written or was narrowed away -- the verdict, the page and the polity all exist, "
         "every alias check stays quiet, and any report keyed on the polity still looks complete",
     ),
+    (
+        "validate_name_labels_single_country.py",
+        mutate_name_label_shared_across_countries,
+        "more than one country",
+        "an alias keyed on a unit name that another country's unit also carries, so that unit's "
+        "data is routed to a foreign polity -- the row is well-formed, its own unit still "
+        "resolves, and every per-label check passes",
+    ),
 (
         "validate_coverage_targets.py",
         mutate_coverage_target_never_minted,
@@ -7160,6 +7211,10 @@ WRITABLE = {
         "pipelines/agent-harness/state/routing_verdicts.csv",
     ),
     "validate_routed_units_are_aliased.py": (
+        "data/final/label_alias_map.csv",
+        "pipelines/agent-harness/state/routing_verdicts.csv",
+    ),
+    "validate_name_labels_single_country.py": (
         "data/final/label_alias_map.csv",
         "pipelines/agent-harness/state/routing_verdicts.csv",
     ),

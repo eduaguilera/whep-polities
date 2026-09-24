@@ -408,6 +408,13 @@ jobs:
         # gitignored panel is not needed and this runs here rather than only by hand.
         run: python3 scripts/validate_routed_units_are_aliased.py
 
+      - name: No alias label names reporting units in two countries
+        if: '!cancelled()'
+        # Routing resolves a panel unit by id OR name, so a rule keyed on a shared name ('Santa
+        # Cruz' is Argentina's and Bolivia's) sends every country's unit of that name to one
+        # polity. Reads only committed files (the ledger and the alias map).
+        run: python3 scripts/validate_name_labels_single_country.py
+
       - name: territory_basis.csv still describes the current database
         if: '!cancelled()'
         run: python3 pipelines/polity-autoimprove/04_territory_basis.py --check

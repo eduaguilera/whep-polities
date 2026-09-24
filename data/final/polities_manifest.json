@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "ff28f14e8e455e5c95d0c794589c5acf90e87042854481b8df08ffd2797912b6",
+ "identity_sha256": "d959e43de6a8622e1881fb743d67b36641e88a01318a7f7623ab319fe9590acf",
  "counts": {
   "total": 1216,
   "live": 1172,
@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "e913ca0fe6c8daf6feedaa15e478a4b73a8f6aa7ac51119a52822abaf37ff52c",
-  "aliases": 2501,
-  "labels": 1322,
+  "sha256": "7ea589e0e65b0ced934e590da36ea1ea0f8caa98525d2da96a9122a095fc9938",
+  "aliases": 2493,
+  "labels": 1323,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -955,7 +955,7 @@
   "BRA-AMAZONAS-1889-2025",
   "BRA-BAHIA-1889-2025",
   "BRA-CE-1889-2025",
-  "BRA-DF-1960-2023",
+  "BRA-DF-1960-2025",
   "BRA-DFRJ-1900-1959",
   "BRA-ES-1889-2025",
   "BRA-GOIAS-1889-2025",
