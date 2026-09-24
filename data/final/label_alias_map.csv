@@ -806,6 +806,7 @@ ES53,juan-subnational,1865,2020,ESP-IB-1833-2025,,high,,
 ES531,eurostat-nuts2013,1880,2021,ESP-IBZ-1833-2025,,high,,
 ES531,eurostat-nuts2016,1880,2021,ESP-IBZ-1833-2025,,high,,
 ES531,jrc-nuts2016,1880,2021,ESP-IBZ-1833-2025,,high,,
+ES531,juan-subnational,1880,2021,ESP-IB-1833-2025,,high,,
 ES611,eurostat-nuts2013,1865,2021,ESP-AL-1833-2025,,high,,
 ES611,eurostat-nuts2016,1865,2021,ESP-AL-1833-2025,,high,,
 ES611,jrc-nuts2016,1865,2021,ESP-AL-1833-2025,,high,,
@@ -853,7 +854,8 @@ ES702,juan-subnational,1927,2021,ESP-SCT-1927-2025,,high,,
 ES705,eurostat-nuts2013,1865,2020,ESP-GC-1833-2025,,medium,,
 ES705,eurostat-nuts2016,1865,2020,ESP-GC-1833-2025,,medium,,
 ES705,jrc-nuts2016,1865,2020,ESP-GC-1833-2025,,medium,,
-ES705,juan-subnational,1865,2020,ESP-GC-1833-2025,,medium,,
+ES705,juan-subnational,1865,1926,ESP-LP-1927-2025,,high,,back_cast
+ES705,juan-subnational,1927,2020,ESP-LP-1927-2025,,medium,,
 ES709,eurostat-nuts2013,1865,1865,ESP-SCT-1927-2025,,high,,back_cast
 ES709,eurostat-nuts2013,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ES709,eurostat-nuts2013,1927,2020,ESP-SCT-1927-2025,,medium,,
@@ -919,7 +921,8 @@ ESP-ES701,whep-lab-spain-provinces,1880,1926,ESP-LP-1927-2025,,high,,back_cast
 ESP-ES701,whep-lab-spain-provinces,1927,2021,ESP-LP-1927-2025,,medium,,
 ESP-ES702,whep-lab-spain-provinces,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ESP-ES702,whep-lab-spain-provinces,1927,2021,ESP-SCT-1927-2025,,high,,
-ESP-ES705,whep-lab-spain-provinces,1865,2020,ESP-GC-1833-2025,,medium,,
+ESP-ES705,whep-lab-spain-provinces,1865,1926,ESP-LP-1927-2025,,high,,back_cast
+ESP-ES705,whep-lab-spain-provinces,1927,2020,ESP-LP-1927-2025,,medium,,
 ESP-ES709,whep-lab-spain-provinces,1865,1865,ESP-SCT-1927-2025,,high,,back_cast
 ESP-ES709,whep-lab-spain-provinces,1880,1926,ESP-SCT-1927-2025,,high,,back_cast
 ESP-ES709,whep-lab-spain-provinces,1927,2020,ESP-SCT-1927-2025,,medium,,
@@ -956,11 +959,9 @@ FR104,eurostat-nuts2016,1862,1967,FRA-91-1968-2025,,high,,back_cast
 FR104,eurostat-nuts2016,1968,2023,FRA-91-1968-2025,,medium,,
 FR104,jrc-nuts2016,1862,1967,FRA-91-1968-2025,,high,,back_cast
 FR104,jrc-nuts2016,1968,2023,FRA-91-1968-2025,,medium,,
-FR104,juan-subnational,1862,1967,FRA-91-1968-2025,,high,,back_cast
-FR104,juan-subnational,1968,2023,FRA-91-1968-2025,,medium,,
+FR104,juan-subnational,1862,2023,FRA-SSO-1860-2025,,high,,
 FRA-FR102,whep-lab-france-livestock,1862,2023,FRA-77-1800-2025,,high,,
-FRA-FR104,whep-lab-france-livestock,1862,1967,FRA-91-1968-2025,,high,,back_cast
-FRA-FR104,whep-lab-france-livestock,1968,2023,FRA-91-1968-2025,,medium,,
+FRA-FR104,whep-lab-france-livestock,1862,2023,FRA-SSO-1860-2025,,high,,
 FRA-FRB01,whep-lab-france-livestock,1862,2023,FRA-18-1800-2025,,high,,
 FRA-FRB02,whep-lab-france-livestock,1862,2023,FRA-28-1800-2025,,high,,
 FRA-FRB03,whep-lab-france-livestock,1862,2023,FRA-36-1800-2025,,high,,
@@ -1047,14 +1048,13 @@ FRA-FRK25,whep-lab-france-livestock,1862,2023,FRA-42-1800-2025,,high,,
 FRA-FRK26,whep-lab-france-livestock,1862,2023,FRA-RHO-1800-2025,,high,,
 FRA-FRK27,whep-lab-france-livestock,1862,2023,FRA-SAV-1860-2025,,medium,,
 FRA-FRK28,whep-lab-france-livestock,1860,2023,FRA-HSAV-1860-2025,,medium,,
-FRA-FRL01,whep-lab-france-livestock,1862,2023,FRA-04-1790-2025,,high,,
-FRA-FRL02,whep-lab-france-livestock,1862,2023,FRA-05-1790-2025,,high,,
+FRA-FRL01,whep-lab-france-livestock,1862,2023,FRA-05-1790-2025,,high,,
+FRA-FRL02,whep-lab-france-livestock,1862,2023,FRA-04-1790-2025,,high,,
 FRA-FRL03,whep-lab-france-livestock,1862,2023,FRA-AM-1860-2025,,medium,,
 FRA-FRL04,whep-lab-france-livestock,1862,2023,FRA-13-1790-2025,,high,,
 FRA-FRL05,whep-lab-france-livestock,1862,2023,FRA-83-1790-2025,,high,,
 FRA-FRL06,whep-lab-france-livestock,1862,2023,FRA-84-1790-2025,,medium,,
-FRA-FRM01,whep-lab-france-livestock,1862,1974,FRA-2A-1975-2025,,high,,back_cast
-FRA-FRM01,whep-lab-france-livestock,1975,2023,FRA-2A-1975-2025,,high,,
+FRA-FRM01,whep-lab-france-livestock,1862,2023,FRA-COR-1800-2025,,high,,
 france,,1800,1870,FRA-1800-1871,France,high,,
 france,,1871,1918,FRA-1871-1919,France,high,,
 france,,1919,2025,FRA-1919-2025,France,high,,
@@ -1329,10 +1329,10 @@ FRK28,jrc-nuts2016,1862,2023,FRA-HSAV-1860-2025,,medium,,
 FRK28,juan-subnational,1860,2023,FRA-HSAV-1860-2025,,medium,,
 FRL01,eurostat-nuts2016,1862,2023,FRA-04-1790-2025,,high,,
 FRL01,jrc-nuts2016,1862,2023,FRA-04-1790-2025,,high,,
-FRL01,juan-subnational,1862,2023,FRA-04-1790-2025,,high,,
+FRL01,juan-subnational,1862,2023,FRA-05-1790-2025,,high,,
 FRL02,eurostat-nuts2016,1862,2023,FRA-05-1790-2025,,high,,
 FRL02,jrc-nuts2016,1862,2023,FRA-05-1790-2025,,high,,
-FRL02,juan-subnational,1862,2023,FRA-05-1790-2025,,high,,
+FRL02,juan-subnational,1862,2023,FRA-04-1790-2025,,high,,
 FRL03,eurostat-nuts2016,1862,2023,FRA-AM-1860-2025,,medium,,
 FRL03,jrc-nuts2016,1862,2023,FRA-AM-1860-2025,,medium,,
 FRL03,juan-subnational,1862,2023,FRA-AM-1860-2025,,medium,,
@@ -1349,6 +1349,7 @@ FRM01,eurostat-nuts2016,1862,1974,FRA-2A-1975-2025,,high,,back_cast
 FRM01,eurostat-nuts2016,1975,2023,FRA-2A-1975-2025,,high,,
 FRM01,jrc-nuts2016,1862,1974,FRA-2A-1975-2025,,high,,back_cast
 FRM01,jrc-nuts2016,1975,2023,FRA-2A-1975-2025,,high,,
+FRM01,juan-subnational,1862,2023,FRA-COR-1800-2025,,high,,
 FSU,lassaletta-grassland-share,1961,1991,F228-1945-1991,Soviet Union,high,,
 Fukui,juan-subnational,1883,2022,JPN-FUKUI-1871-2025,,high,,
 Fukuoka,juan-subnational,1883,2022,JPN-FUKUOKA-1871-2025,,high,,
@@ -1514,8 +1515,7 @@ ITC1,eurostat-nuts2016,1880,1969,ITA-PIE-1970-2025,,high,,back_cast
 ITC1,eurostat-nuts2016,1970,2023,ITA-PIE-1970-2025,,high,,
 ITC1,jrc-nuts2016,1880,1969,ITA-PIE-1970-2025,,high,,back_cast
 ITC1,jrc-nuts2016,1970,2023,ITA-PIE-1970-2025,,high,,
-ITC1,juan-subnational,1880,1969,ITA-PIE-1970-2025,,high,,back_cast
-ITC1,juan-subnational,1970,2023,ITA-PIE-1970-2025,,high,,
+ITC1,juan-subnational,1880,2023,ITA-PVA-1861-2025,,high,,
 ITC3,eurostat-nuts2013,1861,1969,ITA-LIG-1970-2025,,high,,back_cast
 ITC3,eurostat-nuts2013,1970,2023,ITA-LIG-1970-2025,,high,,
 ITC3,eurostat-nuts2016,1861,1969,ITA-LIG-1970-2025,,high,,back_cast
@@ -1534,8 +1534,7 @@ ITF1,eurostat-nuts2016,1861,1969,ITA-ABR-1970-2025,,high,,back_cast
 ITF1,eurostat-nuts2016,1970,2023,ITA-ABR-1970-2025,,medium,,
 ITF1,jrc-nuts2016,1861,1969,ITA-ABR-1970-2025,,high,,back_cast
 ITF1,jrc-nuts2016,1970,2023,ITA-ABR-1970-2025,,medium,,
-ITF1,juan-subnational,1861,1969,ITA-ABR-1970-2025,,high,,back_cast
-ITF1,juan-subnational,1970,2023,ITA-ABR-1970-2025,,medium,,
+ITF1,juan-subnational,1861,2023,ITA-ABM-1861-2025,,high,,
 ITF3,eurostat-nuts2013,1861,1969,ITA-CAM-1970-2025,,high,,back_cast
 ITF3,eurostat-nuts2013,1970,2023,ITA-CAM-1970-2025,,medium,,
 ITF3,eurostat-nuts2016,1861,1969,ITA-CAM-1970-2025,,high,,back_cast
@@ -1573,8 +1572,8 @@ ITH1,eurostat-nuts2016,1880,1918,ITA-ITH1-1919-2025,,high,,back_cast
 ITH1,eurostat-nuts2016,1919,2023,ITA-ITH1-1919-2025,,medium,,
 ITH1,jrc-nuts2016,1880,1918,ITA-ITH1-1919-2025,,high,,back_cast
 ITH1,jrc-nuts2016,1919,2023,ITA-ITH1-1919-2025,,medium,,
-ITH1,juan-subnational,1880,1918,ITA-ITH1-1919-2025,,high,,back_cast
-ITH1,juan-subnational,1919,2023,ITA-ITH1-1919-2025,,medium,,
+ITH1,juan-subnational,1880,1918,ITA-TAA-1919-2025,,high,,back_cast
+ITH1,juan-subnational,1919,2023,ITA-TAA-1919-2025,,high,,
 ITH3,eurostat-nuts2013,1861,1865,ITA-VEN-1866-2025,,high,,back_cast
 ITH3,eurostat-nuts2013,1866,2023,ITA-VEN-1866-2025,,high,,
 ITH3,eurostat-nuts2016,1861,1865,ITA-VEN-1866-2025,,high,,back_cast
@@ -2057,7 +2056,7 @@ PT11,eurostat-nuts2016,1986,2020,PRT-PT11-1986-2025,,high,,
 PT11,jrc-nuts2016,1870,1985,PRT-PT11-1986-2025,,high,,back_cast
 PT11,jrc-nuts2016,1986,2020,PRT-PT11-1986-2025,,high,,
 PT11,juan-subnational,1870,1985,PRT-PT11-1986-2025,,high,,back_cast
-PT11,juan-subnational,1989,2020,PRT-PT11-1986-2025,,high,,
+PT11,juan-subnational,1986,2020,PRT-PT11-1986-2025,,high,,
 PT15,eurostat-nuts2013,1870,1985,PRT-PT15-1986-2025,,high,,back_cast
 PT15,eurostat-nuts2013,1986,2020,PRT-PT15-1986-2025,,medium,,
 PT15,eurostat-nuts2016,1870,1985,PRT-PT15-1986-2025,,high,,back_cast
@@ -2073,7 +2072,7 @@ PT16,eurostat-nuts2016,1986,2020,PRT-CENTRO-1986-2025,,high,,
 PT16,jrc-nuts2016,1870,1985,PRT-CENTRO-1986-2025,,high,,back_cast
 PT16,jrc-nuts2016,1986,2020,PRT-CENTRO-1986-2025,,high,,
 PT16,juan-subnational,1870,1985,PRT-CENTRO-1986-2025,,high,,back_cast
-PT16,juan-subnational,1989,2020,PRT-CENTRO-1986-2025,,high,,
+PT16,juan-subnational,1986,2020,PRT-CENTRO-1986-2025,,high,,
 PT17,eurostat-nuts2013,1870,1985,PRT-LIS-1986-2025,,high,,back_cast
 PT17,eurostat-nuts2013,1986,2020,PRT-LIS-1986-2025,,medium,,
 PT17,eurostat-nuts2016,1870,1985,PRT-LIS-1986-2025,,high,,back_cast

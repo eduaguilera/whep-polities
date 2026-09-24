@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "e39b1a05c22db35ad16ae702d2c75597a8161708a2c9686cddb65762a2d10fd8",
+ "identity_sha256": "b3595482bfc1e94d1e6133fbf8be086ece9a53af6f248b7359e852ac0efe667d",
  "counts": {
-  "total": 1224,
-  "live": 1180,
+  "total": 1229,
+  "live": 1185,
   "dead": 44
  },
  "dead_status": [
@@ -172,8 +172,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "f3dc92878fc8ddf117bda8cce3c24b0ea040f9cb7103778018b2c1e738dc8b0c",
-  "aliases": 2493,
+  "sha256": "443336dc97896daec96d9f44dc41768b95658f0aafdefee99b39529eb12000a5",
+  "aliases": 2492,
   "labels": 1323,
   "sources": [
    "crops-manure-n",
@@ -1316,6 +1316,7 @@
   "FRA-CANTAL-1800-2025",
   "FRA-CHTE-1800-2025",
   "FRA-CMAR-1800-2025",
+  "FRA-COR-1800-2025",
   "FRA-D32-1800-2025",
   "FRA-DRO-1800-2025",
   "FRA-FIN-1800-2025",
@@ -1339,6 +1340,7 @@
   "FRA-RHO-1800-2025",
   "FRA-SAR-1800-2025",
   "FRA-SAV-1860-2025",
+  "FRA-SSO-1860-2025",
   "FRA-TDB-1922-2025",
   "FRA-TG-1808-2025",
   "FRA-VNE-1800-2025",
@@ -1441,6 +1443,7 @@
   "ITA-1866-1870",
   "ITA-1870-1919",
   "ITA-1919-2025",
+  "ITA-ABM-1861-2025",
   "ITA-ABR-1970-2025",
   "ITA-BAS-1861-2025",
   "ITA-CAL-1861-2025",
@@ -1458,8 +1461,10 @@
   "ITA-MOL-1963-2025",
   "ITA-PIE-1970-2025",
   "ITA-PUG-1861-2025",
+  "ITA-PVA-1861-2025",
   "ITA-SAR-1861-2025",
   "ITA-SIC-1861-2025",
+  "ITA-TAA-1919-2025",
   "ITA-VDA-1948-2025",
   "ITA-VEN-1866-2025",
   "ITAEG-1912-1947",
