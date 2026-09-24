@@ -5212,6 +5212,35 @@ def mutate_containment_edge_dropped(root, gpd, make_valid, affinity):
         w.writeheader(); w.writerows(kept)
     return f"{victim} no longer states what contains it, with the table otherwise well-formed"
 
+
+def mutate_part_edged_beside_its_aggregate(root, gpd, make_valid, affinity):
+    """Put Piemonte back directly under Italy, beside the Piemonte-with-Valle-d'Aosta aggregate.
+
+    This is the defect that was in the table until 2026-09-24, reproduced: ITA-PIE-1970-2025 was
+    declared inside ITA-1919-2025 next to ITA-PVA-1861-2025, which already holds 99.99% of it, so
+    summing Italy's members counted 25,271 km2 twice. Every edge is individually valid -- real codes,
+    inside both spans, every subnational row covered -- so validate_polity_containment passes it,
+    and only a check that compares edges AGAINST EACH OTHER can see it.
+    """
+    import csv as _csv
+
+    path = os.path.join(root, "data/final/polity_containment.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    hit = [r for r in rows
+           if r["member_code"] == "ITA-PIE-1970-2025" and r["container_code"] == "ITA-PVA-1861-2025"]
+    if len(hit) != 1:
+        raise AssertionError("ITA-PIE-1970-2025 -> ITA-PVA-1861-2025 edge not found once; the "
+                             "mutation would do nothing")
+    hit[0]["container_code"] = "ITA-1919-2025"
+    tmp = path + ".tmp"
+    with open(tmp, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(rows)
+    os.replace(tmp, path)
+    return ("re-edged ITA-PIE-1970-2025 onto ITA-1919-2025, beside ITA-PVA-1861-2025 which "
+            "contains it")
+
 def mutate_routed_unit_loses_its_alias(root, gpd, make_valid, affinity):
     """Narrow one routed unit's alias so part of its routed span resolves to nothing.
 
@@ -6588,6 +6617,14 @@ CASES = (
         "its name string where no consumer can read it -- the table stays valid CSV and every "
         "remaining edge still checks out, so only the coverage arm can see it",
     ),
+    (
+        "validate_containment_sibling_overlaps.py",
+        mutate_part_edged_beside_its_aggregate,
+        "ITA-PIE-1970-2025",
+        "a part declared directly under the country beside the reporting aggregate that already "
+        "contains it, so summing the country's members counts that ground twice -- every edge is "
+        "individually valid, so only a sibling-against-sibling comparison can see it",
+    ),
 (
         "validate_routed_units_are_aliased.py",
         mutate_routed_unit_loses_its_alias,
@@ -7418,6 +7455,14 @@ WRITABLE = {
     ),
     "validate_polity_containment.py": (
         "data/final/polity_containment.csv",
+    ),
+    # The edge table is what the case rewrites; the GeoPackage and the composition registry are
+    # read-only here but must be present, or the gate stops on the missing file (exit 2) and the
+    # case would pass on the traceback rather than on the overlap.
+    "validate_containment_sibling_overlaps.py": (
+        "data/final/polity_containment.csv",
+        "polities_database.gpkg",
+        "pipelines/polity-autoimprove/state/polity_composition.csv",
     ),
 }
 

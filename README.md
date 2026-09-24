@@ -164,6 +164,7 @@ python3 scripts/validate_territory_basis_write_guard.py # a pipeline tool may no
 python3 scripts/validate_quarantine_resolution_guard.py # a fallback route source may not close an adjudication
 python3 scripts/validate_data_errors_registry.py  # every defect-registry entry is covered by a re-test
 python3 scripts/validate_polity_containment.py  # containment edges are well-formed and cover every subnational polity
+python3 scripts/validate_containment_sibling_overlaps.py # two members of one container may not cover the same ground in the same years
 python3 scripts/validate_derived_counts.py         # every n_<thing> column must equal the list it counts
 python3 scripts/validate_edition_conflicts.py      # one yearbook volume may not contradict another about a cell
 python3 scripts/validate_series_collapses.py       # no year may read many times BELOW its own neighbours
