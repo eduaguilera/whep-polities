@@ -288,7 +288,9 @@ class Matcher:
                     "n": norm(r["source_label"]),
                     "src": (r.get("source") or "").strip() or None,
                     "y0": _yr(r.get("year_start")), "y1": _yr(r.get("year_end")),
-                    "code": tc})
+                    "code": tc,
+                    # '' (observed) or 'back_cast'; see assign()
+                    "disp": (r.get("disposition") or "").strip()})
         # Blanket means NEITHER bound, for the same reason match_alias below does:
         # keying on `y0` alone classified a rule bounded only above as blanket.
         self.blanket_override = {ru["n"]: ru["code"] for ru in self.override_rules
@@ -507,6 +509,22 @@ class Matcher:
                          or (ALIAS_YEAR_END_INCLUSIVE
                              and year == rec[4] and alias_rule["y1"] == year)):
                 return (ac, "matched", "applied_alias")
+            # A `back_cast` rule BEGINS BEFORE ITS TARGET BY DESIGN (validate_aliases.py, the
+            # routing verdict schema): the source reports those years FOR the target's territory,
+            # reconstructed onto a boundary that did not exist yet, so the data routes to the
+            # target while the target's own span still begins when the territory did. The
+            # published map (label_alias_map.csv) has always routed them there; this matcher did
+            # not, and fell back to the family's contemporaneous polity instead -- so PR 676's
+            # `Germany Western` 1937 and `palau` 1915-1918 read as unrouted in layer B, and a
+            # back_cast whose target has an ISO family (fao1952 `Romania` 1937 -> ROU-1947-2025)
+            # would have gone straight back to the pre-war ROU-1920-1940 it was written to
+            # leave. Only years BEFORE the target's start are affected, and only for a rule that
+            # says `back_cast`; a year after the target ended still falls through to the family.
+            # Measured when added (2026-09-24), before any new back_cast rule: 9 layer-B rows
+            # change, all of them PR 676's own intended routes, from unrouted.
+            if rec is not None and not pd.isna(year) and not pd.isna(rec[3]) \
+                    and alias_rule.get("disp") == "back_cast" and year < rec[3]:
+                return (ac, "matched", "applied_alias_back_cast")
             # year outside the target's own span: the alias names a family
             # representative — fall back to year-containment within the family
             rec, st = self.pick_by_year(self.fam_for_code(ac), year)

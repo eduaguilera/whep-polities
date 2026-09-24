@@ -390,8 +390,11 @@ def check_western_eastern_prefix(ctx):
         # Western` row is now `back_cast` to WZO-1938-1949 in the alias map, and matchlib -- whose
         # output this reads -- does not follow an alias to a target that has not started yet, so
         # the row reads as unrouted here. It no longer sits on DEU-1920-1938 beside the total.
+        # 253/254 -> 254/254 the same day (layer-B territory findings): matchlib now follows a
+        # `back_cast` rule to a target that has not started yet, so the row reads as routed to
+        # WZO-1938-1949, as the published map already had it.
         claims.append((f"`{twin}` routed -- the target exists", f"{tr}/{tn}",
-                       {"Germany Western": "253/254", "Germany Eastern": "109/109"}[twin]))
+                       {"Germany Western": "254/254", "Germany Eastern": "109/109"}[twin]))
         o = mm[mm["lab"] == orphan].copy()
         t = mm[mm["lab"] == twin].copy()
         ok = set(o[KEY].astype(str).agg("|".join, axis=1))
@@ -407,8 +410,10 @@ def check_western_eastern_prefix(ctx):
     # Was "DEU-1920-1938 vs DEU-1920-1938" -- issue 411's total-and-parts collision -- until
     # 2026-09-24, when the 1937 `Germany Western` row was re-pointed (back_cast) to WZO-1938-1949.
     # The part no longer lands on the Reich polity, so the right-hand side is now empty.
+    # Empty -> WZO-1938-1949 the same day (layer-B territory findings), when matchlib began
+    # following `back_cast` rules: the part is now ON its zone, still not on the Reich.
     claims.append(("1937 total vs part polity -- issue 411", f"{codes('Germany', 1937)} vs "
-                   f"{codes('Germany Western', 1937)}", "DEU-1920-1938 vs "))
+                   f"{codes('Germany Western', 1937)}", "DEU-1920-1938 vs WZO-1938-1949"))
     # The class this pair belongs to, found structurally rather than by identity proof.
     fr = mm[mm["whep_code"].fillna("").astype(str).str.strip() == ""]
     rt = mm[mm["whep_code"].notna()]

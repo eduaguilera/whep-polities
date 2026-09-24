@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "19c2abbb8ea138885ac1cc628c0343aa9e490861b6957e7e16a91018a45d1545",
+ "identity_sha256": "68a2a7743136318670b6270730771d38c089c8608ed272d0f10f8264293cbeea",
  "counts": {
-  "total": 1231,
-  "live": 1187,
+  "total": 1233,
+  "live": 1189,
   "dead": 44
  },
  "dead_status": [
@@ -172,8 +172,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "bb74d3f28aa3cdccafd94d027836f020b3a93c8ddb6cc3775336b010921f9506",
-  "aliases": 2486,
+  "sha256": "1c3b66b597fd3e43d90f3b47281b2d32e49873557e231c2b9de52869766fd65d",
+  "aliases": 2493,
   "labels": 1320,
   "sources": [
    "crops-manure-n",
@@ -214,19 +214,19 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "841fb65cceba2e84d8cfd74827e99da889ea49b36f564b4ff88c2a8478ebb873",
-  "relations": 5754,
+  "sha256": "97e899dbfaf292a8ed0d3de1b8d003f341d14731a76fe44bd1c3ba47af31c3c9",
+  "relations": 5743,
   "modern_iso3": 80
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
   "bases": 398,
-  "polities": 269,
+  "polities": 270,
   "sources": [
    "fao",
    "iia"
   ],
-  "review_flagged": 24,
+  "review_flagged": 23,
   "why": "Per (polity, source), the area the SOURCE stated for its own reporting unit beside the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more and are BOTH defensible -- a per-km2 denominator has to choose which territory the numerator was collected over. An empty `note` on such a row means no reason has been recorded for THAT source, not that the divergence is understood."
  },
  "source_flow_flags": {
@@ -461,8 +461,8 @@
   "MAN": [
    {
     "family": "CHN",
-    "year_min": 1921,
-    "year_max": 1931
+    "year_min": 1914,
+    "year_max": 1920
    }
   ],
   "MAR": [
@@ -1436,6 +1436,7 @@
   "IND-1937-1947",
   "IND-1947-1949",
   "IND-1949-2025",
+  "INU-1937-1947",
   "IRL-1800-1921",
   "IRL-1921-2025",
   "IRN-1800-1828",
@@ -1591,6 +1592,7 @@
   "LZI-1800-1890",
   "MAC-1800-2025",
   "MAF-2007-2025",
+  "MAN-1921-1932",
   "MAN-1932-1945",
   "MAN-1945-1950",
   "MAN-1950-1955",

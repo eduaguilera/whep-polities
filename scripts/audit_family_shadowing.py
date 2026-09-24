@@ -165,6 +165,12 @@ BASELINE = {
     # intersection measures 0.000 km2 -- Pondicherry and the other establishments are coastal, and
     # Hyderabad was the Deccan interior. PINNED_DISJOINT asserts that zero rather than describing it.
     "FRIN-1816-1954 / HYD-1724-1948": "French India vs Hyderabad State: disjoint (0.000 km2, 1.155 degrees apart), sharing iso3 IND only",
+    # Added 2026-09-24 with INU-1937-1947, the future-Union territory that fao1952 `India` reports
+    # on present boundaries (the mirror of PAK-1937-1947). It reuses the constructed IND-1947-1949
+    # feature, which subtracts the Pondicherry and Goa enclaves but not the smaller French
+    # establishments, so 47 km2 of French India's 547 lies inside it. Different territories that
+    # tie only because both are non-national rows under iso3 IND; INU is fao1952-alias-routed.
+    "FRIN-1816-1954 / INU-1937-1947": "French India vs the future-Union territory within British India: different territories, 47 km2 of FRIN's 547 inside the reused IND-1947-1949 feature; ties on iso3 IND only",
     "TNGU-1920-1949 / PAPNG-1920-1949": "New Guinea inside the Papua+New Guinea reporting unit (1.94x, by construction)",
     "BSW-1841-1963 / GBM-1895-1946": "Sarawak vs British Malaya, different territories",
     "BNB-1881-1963 / BSW-1841-1963": "North Borneo vs Sarawak, different territories",

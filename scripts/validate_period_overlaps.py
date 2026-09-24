@@ -151,6 +151,10 @@ BASELINE_CROSS_FAMILY = frozenset({
     ("CHN-1913-1914", "TWN-1895-1945"),                 #   1y 1913-1914
     ("CHN-1914-1921", "TWN-1895-1945"),                 #   7y 1914-1921
     ("CHN-1921-1932", "TWN-1895-1945"),                 #  11y 1921-1932
+    # MAN-1921-1932, the Manchuria region before Manchukuo, added 2026-09-24 for mitchell's
+    # 1928-1931 regional series (7.0x smaller than China). Subnational inside CHN-1921-1932 by
+    # design, under the same issue-400 policy as the 1950-1955 pair below.
+    ("CHN-1921-1932", "MAN-1921-1932"),                 #  11y 1921-1932
     ("CHN-1932-1945", "MAN-1932-1945"),                 #  13y 1932-1945
     ("CHN-1932-1945", "TWN-1895-1945"),                 #  13y 1932-1945
     ("CHN-1945-1947", "MAN-1945-1950"),                 #   2y 1945-1947

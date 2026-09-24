@@ -114,7 +114,6 @@ ETH-1941-1952,Ethiopia (1941-1952),fao,1060000,1,1952,Ethiopia,1127539,1.064,agr
 F228-1945-1991,USSR (1945-1991),fao,22270000,1,1952,USSR,22065490,0.991,agrees,
 F248-1920-1947,Yugoslavia (1920-1947),iia,248491,6,1909;1925;1929;1932;1933;1938,ETAT SERBE-CROATE-SLOVENE;VOUGOSLAVIE;YOUGOSLAVIE;yougoslavie,255147,1.027,agrees,
 F248-1947-1991,Yugoslavia (1947-1991),fao,256880,1,1952,Yugoslavia,255147,0.993,agrees,
-F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),fao,195000,1,1952,Yemen,423783,2.173,review,"SCOPE MISMATCH, not an error. FAO's `Yemen` for 1947 is 195,000 km2 -- NORTH Yemen alone -- while F249-1918-1990 is the combined YAR + PDR reporting unit at 423,668. The routing question (should a pre-1990 `Yemen` label reach the combined row or a North-Yemen one?) is the pre-1990 Yemen gap already known from the production/trade review; it is not answerable by area."
 F51-1918-1938,Czechoslovakia (1918-1938),iia,140491,6,1909;1925;1929;1932;1933;1938,TCHÉCOSLOVAQUIE;tchécoslovaquie,140306,0.999,agrees,
 F51-1947-1993,Czechoslovakia (1947-1993),fao,126480,1,1952,Czechoslovakia,127598,1.009,agrees,
 F77-1949-1990,East Germany,fao,107180,1,1952,Germany Eastern,109271,1.020,agrees,
@@ -249,6 +248,7 @@ MDG-1882-2025,Madagascar,iia,609753,9,1909;1925;1929;1932;1933;1938,MADAGASCAR;M
 MDV-1800-2025,Maldives,fao,300,1,1952,Maldive Islands,300,0.999,agrees,
 MEX-1848-2025,Mexico,fao,1970000,1,1952,Mexico,1956564,0.993,agrees,
 MEX-1848-2025,Mexico,iia,1969154,9,1909;1925;1929;1932;1933;1938,MEXIQUE;mexique,1956564,0.994,agrees,
+MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),fao,195000,1,1952,Yemen,136644,0.701,agrees,"OUR POLYGON IS THE SMALLER TERRITORY, and neither figure can be called wrong yet. FAO 1952 states 195,000 km2 for `Yemen` at 1947 against our 136,644 (0.70x), CShapes 678 at its 1930 vintage. 195,000 km2 is the conventional area of the Yemen Arab Republic for decades afterwards, so it is not a one-off bad number. The gap is the undemarcated north and east: the Imamate's desert frontier with Saudi Arabia (Najran, al-Jawf, the Rub al Khali edge) and with the Aden Protectorate was not settled until the 2000 Jeddah treaty. A gazetteer figure counts the claimed desert and a mapped polygon draws only the administered ground. Surfaced 2026-09-24 when this gate began trying the routing's source-scoped `fao1952` alias before the bare `fao` source, so the statement stopped being compared with F249-1918-1990."
 MLT-1800-2025,Malta,fao,320,1,1952,Malta,292,0.912,agrees,
 MLT-1800-2025,Malta,iia,303,7,1909;1925;1932;1933;1938,MALTE,292,0.963,agrees,
 MMR-1885-2025,Myanmar,fao,678020,1,1952,Burma,675971,0.997,agrees,
@@ -301,8 +301,8 @@ PER-1922-1942,Peru (1922-1942),iia,1378360,5,1925;1929;1932;1933;1938,PÉROU;pé
 PER-1942-2025,Peru,fao,1249050,1,1952,Peru,1290852,1.033,agrees,
 PHL-1800-2025,Philippines,fao,299680,1,1952,Philippines,291825,0.974,agrees,
 PHL-1800-2025,Philippines,iia,296298,9,1909;1925;1929;1932;1933;1938,PHILIPPINES;philippines,291825,0.985,agrees,
-POL-1921-1945,Poland (1921-1945),fao,311730,1,1952,Poland,388370,1.246,agrees,
 POL-1921-1945,Poland (1921-1945),iia,388512,6,1909;1925;1929;1932;1933;1938,POLOGNE;pologne,388370,1.000,agrees,
+POL-1945-2025,Poland (1945-2025),fao,311730,1,1952,Poland,311828,1.000,agrees,
 PRI-1800-2025,Puerto Rico,fao,8870,1,1952,Puerto Rico,8972,1.012,agrees,
 PRI-1800-2025,Puerto Rico,iia,8897,9,1909;1925;1929;1932;1933;1938,PORTO-RICO;porto-rico,8972,1.008,agrees,
 PRT-1800-2025,Portugal,fao,89060,1,1952,Portugal,91805,1.031,agrees,

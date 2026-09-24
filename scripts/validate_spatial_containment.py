@@ -273,6 +273,15 @@ LEGITIMATE_CONTAINERS = frozenset({
     # double-swallow blind spot rather than a new one: it is still visible at --min-contained 2,
     # and IND-1937-1947 still does NOT contain Burma while the three earlier periods do, which is
     # the evidence that the Burma separation is encoded in the polygons rather than assumed.
+    #
+    # IND-1937-1947 IS BACK, 2026-09-24, and this time for its legitimate contents only:
+    # HYD-1724-1948, PAK-1937-1947 and the new INU-1937-1947. INU is the future-Union territory
+    # that fao1952 `India` reports on present boundaries, the mirror of PAK-1937-1947, so the two
+    # halves of FAO's partition sit INSIDE British India by construction (both registered as
+    # `nested` in polity_composition.csv, which also names the sources that feed both levels).
+    # Hyderabad is inside INU as well (100% of its area), so any area-weighted use of these rows
+    # must pick one level -- the same trade-off as the AOF and FID entries above.
+    "IND-1937-1947",
 })
 
 # Containers that are DEFECTS, tracked so the gate stays useful while they are
