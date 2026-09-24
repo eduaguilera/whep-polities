@@ -64,7 +64,10 @@ British Togoland		BTL-1920-1957
 Cape Verde	lassaletta-grassland-share	CPV-1886-1975
 Cape Verde Islands	fao1952	CPV-1886-1975
 China Manchuria	fao1952	MAN-1932-1945
-Christmas Island	faostat	CXR-1946-1958
+# 'Christmas Island||CXR-1946-1958' cleared 2026-09-24 (FAOSTAT area-code territories): re-running
+# faostat-era-matching/match.R merged the registry rows it has written since the 2026-08-11
+# year_end fix (PR 204) into applied_aliases.csv, where the stale pre-fix row (1946-1958) was still
+# sitting; the alias now ends at 1957, inside the polity's exclusive end_year.
 # The nine 'ANT-1816-1960' entries and 'Gold Coast||GHA-1898-1956' cleared 2026-08-17 (issue
 # 252). Neither was the "dissolved entity's final reporting year" class this file accepts: in
 # both cases a SUCCESSOR ROW exists and starts the very next year (ANT-1961-2010, GHA-1957-2025),
@@ -112,7 +115,10 @@ Portuguese Guinea	fao1952	GNB-1886-1974
 Portuguese India	fao1952	PTIND-1816-1961
 SRM	mueller-synthetic-n	SCG-1992-2006
 Saar		SAA-1947-1957
-Saint Helena, Ascension and Tristan da Cunha	faostat	SHN-1834-1967
+# 'Saint Helena, Ascension and Tristan da Cunha||SHN-1834-1967' cleared 2026-09-24 (FAOSTAT area-code territories): re-running
+# faostat-era-matching/match.R merged the registry rows it has written since the 2026-08-11
+# year_end fix (PR 204) into applied_aliases.csv, where the stale pre-fix row (1850-1967) was still
+# sitting; the alias now ends at 1966, inside the polity's exclusive end_year.
 Spanish Guinea	fao1952	GNQ-1886-1968
 Sudan (former)	faostat	SUD-1956-2011
 Surinam	fao1952	SUR-1886-1954
@@ -127,7 +133,10 @@ USSR		F228-1921-1940
 USSR		F228-1940-1945
 USSR		F228-1945-1991
 USSR	faostat	F228-1945-1991
-Western Sahara	faostat	ESH-1958-1975
+# 'Western Sahara||ESH-1958-1975' cleared 2026-09-24 (FAOSTAT area-code territories): re-running
+# faostat-era-matching/match.R merged the registry rows it has written since the 2026-08-11
+# year_end fix (PR 204) into applied_aliases.csv, where the stale pre-fix row (1958-1975) was still
+# sitting; the alias now ends at 1974, inside the polity's exclusive end_year.
 Yemen	fao1952	MKY-1918-1962
 Zanzibar and Pemba	fao1952	ZNZ-1890-1963
 algeria		DZA-1919-1962

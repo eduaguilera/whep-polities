@@ -1200,6 +1200,77 @@ def build_f206_2011_2025() -> ogr.Geometry:
     return _union(_cshapes2_feature(625, 2015), _cshapes2_feature(626, 2015))
 
 
+# ---- FAOSTAT reporting-area polities (2026-09-24) -------------------------------------------
+# Seven FAOSTAT areas report a territory that is not the territory of the polity period covering
+# their years (see manual_territory_routes in pipelines/faostat-era-matching/match.R). Each
+# builder below composes the reporting area from the SAME features its container and siblings
+# bind, so the part cannot drift from the whole it sits in.
+
+
+def build_pak_wp_1949_1971() -> ogr.Geometry:
+    """West Pakistan, 1949-1971 = CShapes 770's 1967-1971 step (the whole of Pakistan, both
+    wings) MINUS CShapes 771 (Bangladesh), i.e. PAK-1949-1971's ground net of East Pakistan.
+
+    Measured, the difference is identical to CShapes 770's own post-1971 step (symmetric
+    difference 0.0 km2), so it is the same ground PAK-1971-2025 binds.
+    """
+    return _difference(_cshapes2_feature(770, 1968), _cshapes2_feature(771, 1980))
+
+
+def build_idn_xtl_1976_2002() -> ogr.Geometry:
+    """Indonesia net of East Timor, 1976-2002 = CShapes 850's 1976-2002 step MINUS CShapes 860
+    (East Timor, 2002 onward). Symmetric difference against CShapes 850's 2002 step: 0.9 km2."""
+    return _difference(_cshapes2_feature(850, 1990), _cshapes2_feature(860, 2010))
+
+
+def build_isr_ra_1967_2025() -> ogr.Geometry:
+    """Israel's national-statistics reporting area from 1967 = CShapes 666's 1979-2019 step
+    MINUS GADM 4.1's Palestine (West Bank and Gaza Strip).
+
+    Keeps the 1949 armistice-line territory and the Golan Heights (1,112 km2 outside the
+    1948-1967 step). GADM's West Bank includes East Jerusalem, so this polygon does NOT carry
+    East Jerusalem (~70 km2) although the statistics it stands for do: the one known gap, stated
+    on the page. Sinai is outside by construction (it is not in the 1979 step).
+    """
+    return _difference(_cshapes2_feature(666, 1990), _gadm_adm0("PSE"))
+
+
+def build_cyp_ra_1975_2025() -> ogr.Geometry:
+    """Cyprus, area under the effective control of the Government of the Republic of Cyprus,
+    from 1975 = CShapes 352 (the whole island, the outline CYP-1879-2025 binds) INTERSECTED with
+    Cliopatria's "Republic of Cyprus" 1976-2023 step, whose northern edge is the ceasefire line.
+
+    Intersection rather than Cliopatria alone because Cliopatria's coast is coarse (its 1961-1975
+    whole-island step measures 11,437 km2 against CShapes' 9,128): the outline comes from the
+    container, only the line comes from Cliopatria. Result 5,952 km2; the area outside it is
+    3,176 km2, centred at 33.48 E 35.25 N.
+    """
+    acc = _cshapes2_feature(352, 1990).Intersection(
+        _cliopatria_feature("Republic of Cyprus", 1990)
+    )
+    return ogr.ForceToMultiPolygon(acc)
+
+
+def build_scg_xk_1999_2006() -> ogr.Geometry:
+    """Serbia and Montenegro net of Kosovo, 1999-2006 = CShapes 345's 1992-2006 step MINUS
+    CShapes 347 (Kosovo, the feature KOS-2008-2025 binds)."""
+    return _difference(_cshapes2_feature(345, 2000), _cshapes2_feature(347, 2010))
+
+
+def build_srb_xk_2006_2008() -> ogr.Geometry:
+    """Serbia net of Kosovo, 2006-2008 = CShapes 340's 2006-2008 step MINUS CShapes 347 (Kosovo).
+    Symmetric difference against CShapes 340's 2008 step (SRB-2008-2025): 0.0 km2."""
+    return _difference(_cshapes2_feature(340, 2007), _cshapes2_feature(347, 2010))
+
+
+def build_f215_1961_1964() -> ogr.Geometry:
+    """Tanganyika and Zanzibar as one reporting unit, 1961-1964 = CShapes 510's 1961-1964 step
+    (Tanganyika, the feature TZA-1961-1964 binds) UNION CShapes 511's 1895-1963 step (Zanzibar,
+    the feature ZNZ-1890-1963 binds). The two do not intersect; the union equals CShapes 510's
+    post-1964 step (TZA-1964-2025) to within 0.00003 km2."""
+    return _union(_cshapes2_feature(510, 1962), _cshapes2_feature(511, 1950))
+
+
 def build_bwi_1833_1962() -> ogr.Geometry:
     """British West Indies colonial aggregate = the eleven territories the page enumerates.
 
@@ -2665,6 +2736,61 @@ BUILDERS = [
         "vs 2,457,381 (-0.47%); Oregon 738,247 vs 739,649 (-0.19%). The 1821-1845 configuration, "
         "standing for the whole row: overstates 1803-1821 (Florida, Red River basin), understates "
         "1845-1848 (Texas, Oregon). `proxy`. Replaces Cliopatria's 1815 step (1,586,289).",
+    ),
+    (
+        "PAK-WP-1949-1971",
+        "West Pakistan (1949-1971)",
+        build_pak_wp_1949_1971,
+        "CShapes 770's 1967-1971 step MINUS CShapes 771 (Bangladesh) = 876,534 km2 (ESRI:54034), "
+        "identical to CShapes 770's post-1971 step. FAOSTAT area 165 Pakistan 1961-1970 reports "
+        "this wing only; East Pakistan reports as area 16.",
+    ),
+    (
+        "IDN-XTL-1976-2002",
+        "Indonesia excluding East Timor (1976-2002)",
+        build_idn_xtl_1976_2002,
+        "CShapes 850's 1976-2002 step MINUS CShapes 860 (East Timor) = 1,877,244 km2 (ESRI:54034), "
+        "0.9 km2 from CShapes 850's 2002 step. FAOSTAT area 101 Indonesia 1976-2001; East Timor "
+        "reports as area 176 throughout.",
+    ),
+    (
+        "ISR-RA-1967-2025",
+        "Israeli national statistics area (1967-2025)",
+        build_isr_ra_1967_2025,
+        "CShapes 666's 1979-2019 step MINUS GADM 4.1 Palestine (West Bank, Gaza) = 21,898 km2 "
+        "(ESRI:54034) against Israel CBS's 22,072 (-0.8%). Includes the Golan Heights (1,112 km2); "
+        "excludes East Jerusalem (~70 km2), which GADM draws inside the West Bank. `proxy`.",
+    ),
+    (
+        "CYP-RA-1975-2025",
+        "Republic of Cyprus government-controlled area (1975-2025)",
+        build_cyp_ra_1975_2025,
+        "CShapes 352 (whole island) INTERSECTED with Cliopatria's 'Republic of Cyprus' 1976-2023 step = "
+        "5,952 km2 (ESRI:54034) against 5,896 (island 9,251 less the ~3,355 km2 north), +1.0%. "
+        "Outline from CShapes, ceasefire line from Cliopatria; the buffer zone and the Dhekelia "
+        "base area are not separated. `proxy`.",
+    ),
+    (
+        "SCG-XK-1999-2006",
+        "Serbia and Montenegro excluding Kosovo (1999-2006)",
+        build_scg_xk_1999_2006,
+        "CShapes 345's 1992-2006 step MINUS CShapes 347 (Kosovo) = 91,193 km2 (ESRI:54034) against "
+        "Serbia excluding Kosovo 77,474 plus Montenegro 13,812 = 91,286 (-0.1%).",
+    ),
+    (
+        "SRB-XK-2006-2008",
+        "Serbia excluding Kosovo (2006-2008)",
+        build_srb_xk_2006_2008,
+        "CShapes 340's 2006-2008 step MINUS CShapes 347 (Kosovo) = 77,183 km2 (ESRI:54034), "
+        "identical to CShapes 340's 2008 step (SRB-2008-2025).",
+    ),
+    (
+        "F215-1961-1964",
+        "Tanganyika and Zanzibar (combined reporting)",
+        build_f215_1961_1964,
+        "CShapes 510's 1961-1964 step (Tanganyika) UNION CShapes 511's 1895-1963 step (Zanzibar) = "
+        "941,361 km2 (ESRI:54034), equal to CShapes 510's post-1964 step. FAOSTAT area 215 "
+        "1961-1963 reports both before the 1964 union.",
     ),
 ]
 

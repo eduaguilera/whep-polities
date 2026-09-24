@@ -231,7 +231,14 @@ SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source w
 # with the geometry it is bound to for no gain -- the GADM outline for BES is accurate to 0.99x,
 # unusually good for a small-island outline (see issue 570), so there is nothing to correct.
 # The page says in prose that the figure is the polygon's own measurement.
-BASELINE_SELF_REFERENTIAL = 105     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
+BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
+#
+# 105 -> 106 on 2026-09-24 (FAOSTAT area-code territories), the TUR-1913-1914 way in: an
+# INDEPENDENT figure that happens to land in the band. SCG-XK-1999-2006 (Serbia and Montenegro
+# net of Kosovo, a constructed difference of CShapes 345 minus 347) declares 91,286 km2 = Serbia
+# excluding Kosovo 77,474 + Montenegro 13,812, both official figures, and its published polygon
+# measures 91,240 (-0.05%). Nothing was read off the geometry; the six other rows added the same
+# day declare official figures that sit 0.3% to 1.5% from their polygons.
 #
 # 106 -> 105 on 2026-09-24 (issue 660), and NOT because a figure was sourced: the geometry moved.
 # build_database.py now simplifies on a GEOS without the use-after-free that made rebuilds drift,

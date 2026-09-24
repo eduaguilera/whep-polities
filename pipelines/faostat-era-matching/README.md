@@ -82,6 +82,23 @@ Requires an accessible WHEP checkout (pins cache + area registry); set
    periods both include their boundary year — e.g. FAOSTAT
    `206 Sudan (former)` yields 1961–2010 → `SUD-1956-2011` and 2011 →
    `SDN-2011-2025`).
+3b. **Territory overrides.** `manual_territory_routes` in `match.R` re-routes a span whose
+   FAOSTAT reporting territory is not the covering period's territory (added 2026-09-24):
+   area 165 Pakistan 1961-1970 -> `PAK-WP-1949-1971` (West Pakistan; East Pakistan reports as
+   area 16), 101 Indonesia 1976-2001 -> `IDN-XTL-1976-2002` (East Timor reports as 176),
+   105 Israel 1967-2024 -> `ISR-RA-1967-2025`, 50 Cyprus 1975-2024 -> `CYP-RA-1975-2025`,
+   186 Serbia and Montenegro 1999-2005 -> `SCG-XK-1999-2006`, 272 Serbia 2006-2007 ->
+   `SRB-XK-2006-2008` (both net of Kosovo), and 215 Tanzania 1961-1963 -> `F215-1961-1964`
+   (Tanganyika plus Zanzibar). Each basis is the series break or separately-reported sibling
+   that shows the territory; the evidence is on the target's wiki page. Routes carry
+   `match_route = manual-territory`, and the function refuses a stale route or one whose
+   target does not cover its years. The registry branch (no-data areas) ranks polity types
+   only among periods that overlap in time, so a colonial predecessor no longer suppresses a
+   later territory period (area 88 Guam 1950-2024 had no row).
+3c. **Basis is carried over.** A row whose `(area_code, year_start, year_end, polity_code)`
+   is unchanged from the previous `state/faostat_aliases.csv` keeps that file's `basis`, so
+   hand-written provenance notes survive a re-run; only new or re-targeted rows get generated
+   text. State files are written to a temporary file and renamed into place.
 4. **Flags, not guesses.** Segments covered by genuinely simultaneous
    entities under different prefixes (e.g. Malaya vs Sarawak vs North
    Borneo for FAOSTAT "Malaysia" 1961–1962) go to `state/ambiguous.csv`;

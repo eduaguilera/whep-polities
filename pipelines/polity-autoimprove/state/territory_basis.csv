@@ -295,6 +295,7 @@ CUW-2010-2025,Curaçao,2010,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,
 CXR-1946-1958,Christmas Island (under Singapore administration),1946,1958,gadm-4.1-adm0,2023.0,assigned,True,back_projected,True,False,no_reference,,polygon vintage 2023 is AFTER the period ends (1958) — later/modern border applied back,6
 CYM-1800-2025,Cayman Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,2
 CYP-1879-2025,Cyprus,1879,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.05,single 1960 polygon held across a 146y span (1879-2025); borders may have changed,1130
+CYP-RA-1975-2025,Republic of Cyprus government-controlled area (1975-2025),1975,2025,constructed,,proxy,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CYR-1943-1949,British Military Administration of Cyrenaica,1943,1949,constructed,,proxy,True,assumed_constant,True,True,stable_confirmed,-48.2,polygon present but no recorded vintage year,4
 CYR-1949-1951,Emirate of Cyrenaica,1949,1951,constructed,,proxy,True,assumed_constant,True,True,stable_confirmed,-48.2,polygon present but no recorded vintage year,13
 CZE-1804-1918,"Czech Lands (Crownlands of Bohemia, 1804-1918)",1804,1918,constructed,1860.0,assigned,True,assumed_constant,True,False,no_reference,,single 1860 polygon held across a 114y span (1804-1918); borders may have changed,37
@@ -414,6 +415,7 @@ ETH-1941-1952,Ethiopia (1941-1952),1941,1952,cshapes-2.0,1941.0,assigned,True,me
 ETH-1952-1993,Ethiopia (1952-1993),1952,1993,cshapes-2.0,1952.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.01,"single 1952 polygon held across a 41y span (1952-1993); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.01%), so the single polygon is not an assumption",65
 ETH-1993-2025,Ethiopia,1993,2025,cshapes-2.0,1993.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.0,single 1993 polygon held across a 32y span (1993-2025); borders may have changed,0
 F206-2011-2025,Sudan and South Sudan (combined reporting),2011,2025,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+F215-1961-1964,Tanganyika and Zanzibar (combined reporting),1961,1964,constructed,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 F228-1800-1856,Russian Empire (to 1856),1800,1856,cliopatria,1815.0,assigned,False,assumed_constant,True,False,no_reference,,single 1815 polygon held across a 56y span (1800-1856); borders may have changed,0
 F228-1856-1905,Russian Empire (1856-1905),1856,1905,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,no_reference,,single 1886 polygon held across a 49y span (1856-1905); borders may have changed,10
 F228-1905-1914,Russian Empire (1905-1914),1905,1914,cshapes-2.0,1905.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1905 faithful to period 1905-1914,136
@@ -627,6 +629,7 @@ IDN-2002-2025,Indonesia,2002,2025,cshapes-2.0,2002.0,assigned,False,measured,Fal
 IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,24
 IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,27
 IDN-OTH-1949-1951,"Other islands (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,15
+IDN-XTL-1976-2002,Indonesia excluding East Timor (1976-2002),1976,2002,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 IGL-1800-1901,Igala Kingdom,1800,1901,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 IJB-1800-1892,Ijebu Kingdom,1800,1892,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 IND-1800-1886,British India (to 1886),1800,1886,constructed,,polygon_vintage_drift,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,1
@@ -649,6 +652,7 @@ ISL-1800-2025,Iceland,1800,2025,cshapes-2.0,1944.0,assigned,True,assumed_constan
 ISR-1948-1967,Israel (1948-1967),1948,1967,cshapes-2.0,1948.0,assigned,True,measured,False,False,stable_confirmed,0.32,vintage 1948 faithful to period 1948-1967,233
 ISR-1967-1979,Israel (1967-1979),1967,1979,cshapes-2.0,1967.0,assigned,False,measured,False,False,stable_confirmed,0.03,vintage 1967 faithful to period 1967-1979,0
 ISR-1979-2025,Israel,1979,2025,cshapes-2.0,1979.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.15,single 1979 polygon held across a 46y span (1979-2025); borders may have changed,0
+ISR-RA-1967-2025,Israeli national statistics area (1967-2025),1967,2025,constructed,,proxy,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 ITA-1861-1866,Italy (1861-1866),1861,1866,cshapes-europe,1862.0,assigned,True,measured,False,False,no_reference,,vintage 1862 faithful to period 1861-1866,120
 ITA-1861-1919,Italy (to 1919),1861,1919,cshapes-europe,1886.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.07,single 1886 polygon held across a 58y span (1861-1919); borders may have changed,0
 ITA-1866-1870,Italy (1866-1870),1866,1870,cshapes-europe,1867.0,assigned,True,measured,False,False,no_reference,,vintage 1867 faithful to period 1866-1870,98
@@ -931,6 +935,7 @@ PAK-1937-1947,"Pakistan (territory within British India, 1937–1947)",1937,1947
 PAK-1947-1949,Pakistan (1947-1949),1947,1949,cshapes-2.0,1947.0,assigned,True,measured,False,False,stable_confirmed,-0.01,vintage 1947 faithful to period 1947-1949,27
 PAK-1949-1971,Pakistan (1949-1971),1949,1971,cshapes-2.0,1949.0,assigned,True,measured,False,True,stable_confirmed,-0.0,vintage 1949 faithful to period 1949-1971; footnote coverage caveat (FAO/IIA yearbook),370
 PAK-1971-2025,Pakistan,1971,2025,cshapes-2.0,1971.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.0,single 1971 polygon held across a 54y span (1971-2025); borders may have changed,0
+PAK-WP-1949-1971,West Pakistan (1949-1971),1949,1971,constructed,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 PAL-1920-1948,Palestine (1920-1948),1920,1948,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,True,no_reference,,single 1920 polygon held across a 28y span (1920-1948); borders may have changed,440
 PAN-1903-1979,"Panama (1903-1979, before Canal Zone return)",1903,1979,cshapes-2.0,1903.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.08,"single 1903 polygon held across a 76y span (1903-1979); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.08%), so the single polygon is not an assumption",604
 PAN-1979-2025,Panama (post-Canal Zone),1979,2025,cshapes-2.0,1903.0,assigned,False,back_projected,True,False,stable_where_covered,-0.08,polygon vintage 1903 is BEFORE the period starts (1979),0
@@ -1032,6 +1037,7 @@ SAR-1800-1860,Sardinia,1800,1860,cliopatria,1815.0,assigned,True,assumed_constan
 SAU-1924-2025,Saudi Arabia,1924,2025,cshapes-2.0,1935.0,assigned,True,assumed_constant,True,True,changed,-0.01,single 1935 polygon held across a 101y span (1924-2025); borders may have changed,18
 SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_where_covered,0.02,vintage 1949 faithful to period 1938-1949,42
 SCG-1992-2006,Serbia and Montenegro,1992,2006,cshapes-2.0,1992.0,assigned,False,measured,False,False,no_reference,,vintage 1992 faithful to period 1992-2006,0
+SCG-XK-1999-2006,Serbia and Montenegro excluding Kosovo (1999-2006),1999,2006,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SDN-2011-2025,Sudan,2011,2025,cshapes-2.0,2011.0,assigned,False,measured,False,False,stable_where_covered,-0.0,vintage 2011 faithful to period 2011-2025,0
 SEN-1854-1886,Senegal (colony),1854,1886,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,no_reference,,single 1886 polygon held across a 32y span (1854-1886); borders may have changed,0
 SEN-1886-1960,Senegal (1886-1960),1886,1960,cshapes-2.0,1886.0,assigned,True,assumed_constant,False,False,stable_confirmed,0.08,"single 1886 polygon held across a 74y span (1886-1960); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.08%), so the single polygon is not an assumption",471
@@ -1065,6 +1071,7 @@ SOM-1960-2025,Somalia,1960,2025,cshapes-2.0,1960.0,assigned,True,assumed_constan
 SPM-1816-2025,Saint Pierre and Miquelon,1816,2025,gadm-4.1-adm0,2024.0,proxy,True,assumed_constant,True,True,no_reference,,single 2024 polygon held across a 209y span (1816-2025); borders may have changed,17
 SRB-2006-2008,Serbia (including Kosovo),2006,2008,cshapes-2.0,2007.0,assigned,False,measured,False,False,no_reference,,vintage 2007 faithful to period 2006-2008,0
 SRB-2008-2025,Serbia,2008,2025,cshapes-2.0,2008.0,assigned,False,measured,False,False,no_reference,,vintage 2008 faithful to period 2008-2025,0
+SRB-XK-2006-2008,Serbia excluding Kosovo (2006-2008),2006,2008,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,cshapes-2.0,1953.0,assigned,True,measured,False,False,no_reference,,vintage 1953 faithful to period 1953-1964,72
 SSD-2011-2025,South Sudan,2011,2025,cshapes-2.0,2011.0,assigned,False,measured,False,False,stable_where_covered,-0.01,vintage 2011 faithful to period 2011-2025,0
 STP-1800-2025,Sao Tome and Principe,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,89
