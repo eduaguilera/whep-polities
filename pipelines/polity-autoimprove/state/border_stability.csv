@@ -1140,9 +1140,9 @@ UGA-1962-2025,1962,2025,500,national,cshapes-2.0,242015,stable_where_covered,1,1
 UKR-1991-2014,1991,2014,369,national,cshapes-2.0,597627,stable_confirmed,1,1991-2013,0,597501,597501,,,0.998,0.02
 UKR-2014-2025,2014,2025,369,national,cshapes-2.0,571739,stable_where_covered,1,2014-2019,0,571665,571665,,,0.998,0.01
 URY-1828-2025,1828,2025,165,national,cshapes-2.0,177866,stable_where_covered,1,1886-2019,0,177857,177857,,,0.998,0.01
-USA-1800-1803,1800,1803,2,national,cliopatria,1184536,no_reference,0,,0,,,,,,
-USA-1803-1848,1803,1848,2,national,cliopatria,1586282,no_reference,0,,0,,,,,,
-USA-1848-1867,1848,1867,2,national,cliopatria,3469141,no_reference,0,,0,,,,,,
+USA-1800-1803,1800,1803,2,national,constructed,2322187,no_reference,0,,0,,,,,,
+USA-1803-1848,1803,1848,2,national,constructed,4760947,no_reference,0,,0,,,,,,
+USA-1848-1867,1848,1867,2,national,cshapes-2.0,7939540,no_reference,0,,0,,,,,,
 USA-1867-1959,1867,1959,2,national,cshapes-2.0,9445313,stable_where_covered,1,1886-1958,0,7939971,7939971,,,0.84,18.96
 USA-1959-2025,1959,2025,2,national,cshapes-2.0,9461945,stable_where_covered,1,1959-2019,0,9462898,9462898,,,0.999,-0.01
 USA-AK-1959-2025,1959,2025,,subnational,gadm-4.1-adm1,1505805,no_reference,0,,0,,,,,,

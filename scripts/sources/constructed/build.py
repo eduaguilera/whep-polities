@@ -52,10 +52,13 @@ CROWNLANDS = (
 # A GeoPackage has no such limit and is what every other polygon source here uses.
 OUT = REPO_ROOT / "data/geodata/constructed/constructed.gpkg"
 # Natural Earth 10m rivers + lake centrelines, as distributed INSIDE the Paine et al. 2024
-# replication package (data/geodata/paine-2024). It is not a separately registered WHEP source,
-# and it is used here for exactly one feature: the two line parts named "Panama Canal", which are
-# the only canal centreline in any fetched file. Named at the top rather than inside the builder
-# so that a future fetch reorganising paine-2024 breaks in one place.
+# replication package (data/geodata/paine-2024). It is not a separately registered WHEP source.
+# It was first used for exactly one feature: the two line parts named "Panama Canal", which are
+# the only canal centreline in any fetched file. Since 2026-09-24 it also supplies the upper
+# Mississippi (the 1783 line inside Minnesota, USA-1800-1803) and the Arkansas (the Adams-Onis line,
+# USA-1803-1848): no modern boundary follows either river there, and no fetched file has any other
+# centreline for them. Named at the top rather than inside the builders so that a future fetch
+# reorganising paine-2024 breaks in one place.
 NE10M_RIVERS = (
     REPO_ROOT
     / "data/geodata/paine-2024/AfricanBordersReplication/Shapefiles/Rivers"
@@ -1799,6 +1802,282 @@ def build_ita_pva_1861_2025() -> ogr.Geometry:
     return _union(_gadm_adm1("ITA.13_1"), _gadm_adm1("ITA.19_1"))
 
 
+
+# ---------- United States before 1848: the contiguous US MINUS what it had not yet acquired ----------
+#
+# Every pre-1848 US row is built by SUBTRACTION from one feature, CShapes gwcode 2's 1886-1959 step
+# (the 48 contiguous states, Great Lakes water included), rather than by uniting GADM states. That
+# keeps the US share of the Great Lakes, which every CShapes US row carries and GADM does not, so the
+# family's successive rows differ by territory and not by a water convention; and it makes the rows
+# nest exactly, USA-1800-1803 inside USA-1803-1848 inside the contiguous US, because each removal is
+# a superset of the next one's. The removed ground is described with GADM 4.1 state and county
+# outlines wherever a historical line follows a modern boundary (the Sabine and Red rivers ARE the
+# Texas outline, the 31st parallel IS the Alabama-Florida line), with parallels and meridians where
+# the treaty used one, and with the Natural Earth 10m centreline for the two rivers no modern
+# boundary follows (the upper Mississippi inside Minnesota, and the Arkansas).
+US_CONTIGUOUS_STEP = (2, 1886, 1959)
+US_ALBERS = 5070  # NAD83 / Conus Albers, the projection the removal margin is measured in
+# Removed land is widened by this margin before subtraction, then the KEPT land is cut back out of the
+# widened shape. The margin absorbs CShapes-vs-GADM coastline disagreement (bays, sounds, coastal
+# slivers GADM leaves as sea) on the removed side only; kept land is never touched, because it is
+# subtracted from the margin before the margin is applied.
+US_REMOVAL_MARGIN_M = 25_000
+# GADM 4.1 ships each country's own file with its admin-2 layer. The combined adm2 extract above is
+# built for three countries only, so US counties are read from the per-country download of the SAME
+# registered source (scripts/sources/gadm-4.1/fetch.sh writes it).
+GADM41_USA = REPO_ROOT / "data/geodata/gadm-4.1/gadm41_USA.gpkg"
+
+# States wholly EAST of the Mississippi and north of Spanish Florida, i.e. inside the 1783 Treaty of
+# Paris line as fixed at 31 N by Pinckney's Treaty (1795). Alabama and Mississippi are added north of
+# 31 N only; Minnesota east of the river only.
+US_1783_STATES = (
+    "Connecticut", "Delaware", "District of Columbia", "Georgia", "Illinois", "Indiana", "Kentucky",
+    "Maine", "Maryland", "Massachusetts", "Michigan", "New Hampshire", "New Jersey", "New York",
+    "North Carolina", "Ohio", "Pennsylvania", "Rhode Island", "South Carolina", "Tennessee",
+    "Vermont", "Virginia", "West Virginia", "Wisconsin",
+)
+# Oregon Country's US half (1846): everything north of 42 N and west of the continental divide.
+# Washington, Oregon and Idaho lie wholly inside it; in Montana and Wyoming the divide is taken as the
+# county line nearest to it, whole counties on the Pacific side. Every Montana county listed drains to
+# the Clark Fork or Kootenai; every Wyoming one to the Snake or the Green. Counties the divide cuts
+# (Glacier, Lewis and Clark, Beaverhead, Park) stay on the Atlantic side, Louisiana.
+OREGON_COUNTRY_STATES = ("Washington", "Oregon", "Idaho")
+OREGON_COUNTRY_COUNTIES = {
+    "Montana": ("Lincoln", "Sanders", "Mineral", "Flathead", "Lake", "Missoula", "Ravalli",
+                "Granite", "Powell", "Deer Lodge", "Silver Bow"),
+    # Lincoln County reaches below 42 N; the part south of it was Mexican, not Oregon, and is removed
+    # with the Mexican ground either way.
+    "Wyoming": ("Teton", "Sublette", "Lincoln"),
+}
+# Adams-Onis (1819, in force 1821): Sabine, 32 N, Red River to 100 W, due north to the Arkansas, the
+# Arkansas to its source, due north to 42 N, west along 42 N to the Pacific.
+ADAMS_ONIS_MERIDIAN = -100.0
+ADAMS_ONIS_PARALLEL = 42.0
+# Wholly on the Spanish/Mexican side: Texas (bounded by the Sabine and the Red), and the five states
+# that lie entirely south of 42 N and west of 100 W, south of the Arkansas or west of its source's
+# meridian. The line cuts four more.
+ADAMS_ONIS_WHOLE_STATES = ("Texas", "California", "Nevada", "Utah", "Arizona", "New Mexico")
+ADAMS_ONIS_CUT_STATES = ("Colorado", "Wyoming", "Kansas", "Oklahoma")
+
+
+def _gadm_us_states(names) -> ogr.Geometry:
+    """Union of GADM 4.1 adm1 United States states, by NAME_1 (not by GID, which says nothing)."""
+    if not GADM41_ADM1.exists():
+        raise FileNotFoundError(f"{GADM41_ADM1} missing - run scripts/sources/gadm-4.1/fetch.sh first.")
+    want = set(names)
+    ds = ogr.Open(str(GADM41_ADM1))
+    lyr = ds.GetLayer()
+    lyr.SetAttributeFilter("GID_0 = 'USA'")
+    found = {}
+    for f in lyr:
+        n = f.GetField("NAME_1")
+        if n in want:
+            found[n] = _valid(f.GetGeometryRef().Clone(), f"GADM {n}")
+    missing = want - set(found)
+    if missing:
+        raise LookupError(f"GADM 4.1 adm1 has no US state named {sorted(missing)}")
+    return _union(*(found[n] for n in sorted(found)))
+
+
+def _gadm_us_counties(state: str, names) -> ogr.Geometry:
+    """Union of GADM 4.1 US admin-2 counties of one state, by NAME_2."""
+    if not GADM41_USA.exists():
+        raise FileNotFoundError(f"{GADM41_USA} missing - run scripts/sources/gadm-4.1/fetch.sh first.")
+    want = set(names)
+    ds = ogr.Open(str(GADM41_USA))
+    lyr = ds.GetLayerByName("ADM_ADM_2")
+    lyr.SetAttributeFilter(f"NAME_1 = '{state}'")
+    found = {}
+    for f in lyr:
+        n = f.GetField("NAME_2")
+        if n in want:
+            if n in found:
+                raise LookupError(f"GADM 4.1 has two {state} counties named {n!r}")
+            found[n] = _valid(f.GetGeometryRef().Clone(), f"GADM {state}/{n}")
+    missing = want - set(found)
+    if missing:
+        raise LookupError(f"GADM 4.1 has no {state} county named {sorted(missing)}")
+    return _union(*(found[n] for n in sorted(found)))
+
+
+def _box(lon0: float, lat0: float, lon1: float, lat1: float) -> ogr.Geometry:
+    return ogr.CreateGeometryFromWkt(
+        f"POLYGON(({lon0} {lat0},{lon1} {lat0},{lon1} {lat1},{lon0} {lat1},{lon0} {lat0}))"
+    )
+
+
+def _ne10m_river_path(name: str) -> list[tuple[float, float]]:
+    """The Natural Earth 10m centreline of river `name` as ONE ordered list of (lon, lat), source first.
+
+    NE splits a river at every lake it crosses and closes small loops around islands, so the parts are
+    chained from the upstream end: start at the only part whose first vertex no other part ends at,
+    and at each junction continue along the longest part that starts there. Closed loops are skipped.
+    """
+    from shapely import wkb as _wkb
+    from shapely.ops import linemerge
+
+    merged = linemerge(_wkb.loads(bytes(_ne10m_river(name).ExportToWkb())))
+    parts = [list(g.coords) for g in getattr(merged, "geoms", [merged])
+             if g.coords[0] != g.coords[-1]]
+    ends = {p[-1] for p in parts}
+    heads = [p for p in parts if p[0] not in ends]
+    heads.sort(key=len, reverse=True)
+    if not heads:
+        raise LookupError(f"NE 10m {name!r}: no upstream end")
+    path = list(heads[0])
+    parts.remove(heads[0])
+    while True:
+        nxt = [p for p in parts if p[0] == path[-1]]
+        if not nxt:
+            break
+        best = max(nxt, key=len)
+        parts.remove(best)
+        path.extend(best[1:])
+    return [(c[0], c[1]) for c in path]
+
+
+def _polygon_from(coords) -> ogr.Geometry:
+    ring = ogr.Geometry(ogr.wkbLinearRing)
+    for x, y in coords:
+        ring.AddPoint_2D(x, y)
+    ring.CloseRings()
+    poly = ogr.Geometry(ogr.wkbPolygon)
+    poly.AddGeometry(ring)
+    return _valid(poly, "hand-closed polygon")
+
+
+def _west_of_upper_mississippi() -> ogr.Geometry:
+    """The half-plane WEST of the upper Mississippi, closed due north from its source.
+
+    The 1783 line ran "through the Lake of the Woods ... and from thence on a due west course to the
+    river Mississippi", which is impossible (the source lies south of the lake); the reading taken
+    here is the meridian of the source up to the northern boundary, then the river. Below Prescott the
+    river IS the Minnesota-Wisconsin line, so the half-plane only has to reach the Iowa line (43.5 N)
+    and is closed along 43 N, where nothing Minnesotan lies.
+    """
+    path = _ne10m_river_path("Mississippi")
+    src_lon, _ = path[0]
+    cut = next(i for i, (_, y) in enumerate(path) if y < 43.4)
+    upper = path[:cut]
+    end_lon, _ = upper[-1]
+    return _polygon_from([(src_lon, 50.0)] + upper + [(end_lon, 43.0), (-105.0, 43.0), (-105.0, 50.0)])
+
+
+def _mexico_under_adams_onis() -> ogr.Geometry:
+    """Spain's (from 1821 Mexico's) side of the Adams-Onis line WEST of 100 W: south of the Arkansas
+    between 100 W and the river's source, and everywhere south of 42 N west of the source's meridian.
+    East of 100 W the line is the Sabine and the Red, which is the Texas outline, so Texas is added by
+    the caller from GADM rather than approximated here.
+    """
+    path = _ne10m_river_path("Arkansas")
+    src_lon, _ = path[0]
+    idx = next(i for i, (x, _) in enumerate(path) if x > ADAMS_ONIS_MERIDIAN)
+    (x0, y0), (x1, y1) = path[idx - 1], path[idx]
+    y_cross = y0 + (y1 - y0) * (ADAMS_ONIS_MERIDIAN - x0) / (x1 - x0)
+    river = path[:idx] + [(ADAMS_ONIS_MERIDIAN, y_cross)]
+    return _polygon_from([(src_lon, ADAMS_ONIS_PARALLEL)] + river
+                         + [(ADAMS_ONIS_MERIDIAN, 24.0), (-126.0, 24.0), (-126.0, ADAMS_ONIS_PARALLEL)])
+
+
+def _us_states_land() -> ogr.Geometry:
+    """GADM 4.1 adm1 for the 48 contiguous states and DC, united: land (and GADM's inland water)."""
+    ds = ogr.Open(str(GADM41_ADM1))
+    lyr = ds.GetLayer()
+    lyr.SetAttributeFilter("GID_0 = 'USA' AND NAME_1 NOT IN ('Alaska', 'Hawaii')")
+    return _union(*(_valid(f.GetGeometryRef().Clone(), f.GetField("NAME_1")) for f in lyr))
+
+
+def _us_contiguous_minus(removed_land: ogr.Geometry, kept_land: ogr.Geometry) -> ogr.Geometry:
+    """CShapes' contiguous US minus `removed_land`, the removal widened only where nothing is kept.
+
+    removal = buffer(removed_land, margin) MINUS kept_land. Widening absorbs every piece of CShapes
+    coast, bay or lake that GADM leaves out on the REMOVED side; subtracting kept_land from the widened
+    shape guarantees no kept GADM ground is lost to the margin. Water shared by both sides (Sabine
+    Lake, Mobile Bay's eastern shore) goes with the removed side within the margin.
+    """
+    base = _valid(_cshapes2_step(*US_CONTIGUOUS_STEP), "CShapes gwcode 2 1886-1959")
+    removal = _buffer_metres(removed_land, US_REMOVAL_MARGIN_M, US_ALBERS).Difference(kept_land)
+    return _difference(base, removal)
+
+
+def _us_1821_1845_removed(land: ogr.Geometry) -> ogr.Geometry:
+    """Contiguous-US land that was NOT American between Adams-Onis (1821) and Texas (1845): Texas and
+    the Mexican north (the Adams-Onis side), and Oregon Country (joint occupation with Britain from
+    1818, US sovereign only from 1846)."""
+    # Whole states wherever a state lies wholly on one side, so that the seams between the Mexican and
+    # the Oregon ground are GADM's own shared borders and leave no slivers; the treaty lines are drawn
+    # only through the four states they actually cut.
+    mexico = _union(
+        _gadm_us_states(ADAMS_ONIS_WHOLE_STATES),
+        _mexico_under_adams_onis().Intersection(_gadm_us_states(ADAMS_ONIS_CUT_STATES)),
+    )
+    oregon = _union(
+        _gadm_us_states(OREGON_COUNTRY_STATES),
+        *(_gadm_us_counties(s, c).Intersection(_box(-126.0, ADAMS_ONIS_PARALLEL, -100.0, 50.0))
+          for s, c in OREGON_COUNTRY_COUNTIES.items()),
+    )
+    return _union(mexico, oregon)
+
+
+def _us_1795_1803_kept() -> ogr.Geometry:
+    """Contiguous-US land that WAS American between Pinckney's Treaty (1795) and Louisiana (1803)."""
+    north_of_31 = _gadm_us_states(["Alabama", "Mississippi"]).Intersection(_box(-95.0, 31.0, -84.0, 36.0))
+    mn_east = _gadm_us_states(["Minnesota"]).Difference(_west_of_upper_mississippi())
+    return _union(_gadm_us_states(US_1783_STATES), north_of_31, mn_east)
+
+
+def build_usa_1803_1848() -> ogr.Geometry:
+    """United States 1803-1848 = the ADAMS-ONIS configuration (1821-1845): the contiguous US minus
+    Texas, the Mexican north and Oregon Country.
+
+    Replaces Cliopatria's 1815 step (1,586,289 km2), which draws the settled frontier and leaves out
+    nearly all of the Louisiana Purchase -- the event that opens the row. One configuration has to
+    stand for 45 years of acquisitions, and this one holds for 24 of them (1821-1845), is what the
+    1820, 1830 and 1840 censuses measured, and is the configuration Historical Statistics of the
+    United States (series J 1-2) gives for all three: 1,788,006 sq mi = 4,630,914 km2.
+
+    MEASURED (EPSG:6933): 4,761,396 km2, of which 156,912 is the US share of the Great Lakes (GADM's
+    lake water bodies) = 4,604,484 km2 without lakes against the census 4,630,914 (-0.57%, the same
+    -0.57% by which the untouched CShapes contiguous US undershoots the census 1860 figure, so the
+    construction adds nothing measurable). The two removed pieces check against the census
+    acquisitions separately: Texas + Mexican Cession + Gadsden 2,445,912 against 2,457,381 (-0.47%),
+    Oregon 738,247 against 739,649 (-0.19%).
+
+    Stated approximations: 1803-1821 it overstates (Florida, the West Florida strips of 1810-1813, the
+    Red River basin of 1818); 1845-1848 it understates (Texas 1845, Oregon 1846, about 1.75M km2,
+    three years of the row). The Oregon/Louisiana line north of 42 N is the county line nearest the
+    continental divide, and Sweetwater County's strip north of 42 N (Great Divide Basin) is left on
+    the Louisiana side.
+    """
+    land = _us_states_land()
+    removed = _us_1821_1845_removed(land)
+    return _us_contiguous_minus(removed, land.Difference(removed))
+
+
+def build_usa_1800_1803() -> ogr.Geometry:
+    """United States 1800-1803 = the 1783 Treaty of Paris territory as fixed at 31 N by Pinckney's
+    Treaty (1795): everything east of the Mississippi and north of Spanish Florida.
+
+    Replaces Cliopatria's 1800-1802 step (1,184,595 km2), which stops at the settled frontier and
+    omits most of the Northwest and Mississippi Territories. The row's territory did not change
+    between 1795 and 1803, so this is the whole row's extent, not a proxy for part of it.
+
+    MEASURED (EPSG:6933): 2,322,628 km2, of which 156,912 is Great Lakes water = 2,165,716 km2
+    without lakes. The census figure for 1790-1800 (HSUS J 1-2: 888,811 sq mi = 2,302,010 km2)
+    includes the Red River of the North basin south of 49 N (its footnote; the public-domain table
+    J 3-7 gives the basin as 29,602 thousand acres = 119,795 km2), which this row leaves out because
+    it was Hudson's Bay Company land until the 1818 Convention. Against 2,302,010 - 119,795 =
+    2,182,215 the polygon is -0.76%, of which -0.57% is the offset CShapes carries for the whole
+    contiguous US, leaving about -0.2% for the Minnesota line and the 31 N strip.
+
+    Minnesota east of the Mississippi (83,330 of the state's 225,350 km2) is the one piece that
+    depends on the Natural Earth centreline; everywhere else the 1783/1795 line is a GADM state line.
+    """
+    land = _us_states_land()
+    kept = _us_1795_1803_kept()
+    return _us_contiguous_minus(land.Difference(kept), kept)
+
+
 BUILDERS = [
     (
         "CZN-1903-1979",
@@ -2358,6 +2637,34 @@ BUILDERS = [
         "Union of GADM 4.1 adm1 Piemonte ITA.13_1 and Valle d'Aosta ITA.19_1, the features the "
         "two member rows bind = 28,538 km2 against the panel unit ITC1's constant landuse total "
         "of 28,653.28 (+0.4%). Modern extent: the 1947 cessions to France are not added back.",
+    ),
+    (
+        "USA-1800-1803",
+        "United States (original)",
+        build_usa_1800_1803,
+        "CShapes gwcode 2's 1886-1959 step (the contiguous US, Great Lakes water included) MINUS all "
+        "land west of the Mississippi, Florida, and Alabama/Mississippi south of 31 N = 2,322,628 km2 "
+        "(EPSG:6933), 2,165,716 without the 156,912 km2 of US Great Lakes water. The 1783 Treaty of "
+        "Paris line as fixed at 31 N by Pinckney's Treaty (1795): removed ground is GADM 4.1 state "
+        "outlines, except inside Minnesota, where the line is the Natural Earth 10m Mississippi "
+        "centreline closed due north from its source. Census (HSUS J 1-2) 1790-1800: 888,811 sq mi = "
+        "2,302,010 km2 including the Red River basin (119,795 km2), which this row excludes as Hudson's "
+        "Bay Company land until 1818; against the remainder -0.76%, of which -0.57% is CShapes' own "
+        "offset for the contiguous US. Replaces Cliopatria's frontier-extent 1800 step (1,184,595).",
+    ),
+    (
+        "USA-1803-1848",
+        "United States (1803-1848)",
+        build_usa_1803_1848,
+        "CShapes gwcode 2's 1886-1959 step MINUS Texas and the Mexican north (the Adams-Onis side: "
+        "Texas, CA, NV, UT, AZ, NM whole, and CO/WY/KS/OK south of the Arkansas west of 100 W or south "
+        "of 42 N west of the Arkansas source) and MINUS Oregon Country (WA, OR, ID and the Pacific-slope "
+        "counties of MT and WY) = 4,761,396 km2 (EPSG:6933), 4,604,484 without Great Lakes water, "
+        "against the census 1820-1840 figure 1,788,006 sq mi = 4,630,914 km2 (-0.57%, exactly CShapes' "
+        "offset). Removed pieces vs the census acquisitions: Texas+Mexican Cession+Gadsden 2,445,912 "
+        "vs 2,457,381 (-0.47%); Oregon 738,247 vs 739,649 (-0.19%). The 1821-1845 configuration, "
+        "standing for the whole row: overstates 1803-1821 (Florida, Red River basin), understates "
+        "1845-1848 (Texas, Oregon). `proxy`. Replaces Cliopatria's 1815 step (1,586,289).",
     ),
 ]
 
