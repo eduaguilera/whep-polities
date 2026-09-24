@@ -70,8 +70,11 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # (2 rules, 4 rows), `egypt` dry beans that are the Sudan's (1 rule, 4 rows), and the first two
 # UNROUTED rules -- `jamaica` cotton lint and seed 1934-1945, the doubled British West Indies total
 # (16 rows each).
-BASELINE_RULES = 15
-BASELINE_ROWS = 155
+# 15/155 -> 23/205 on 2026-09-24 (issue 688, Mitchell footnotes): mitchell `ghana` livestock 1939-1952 (21 rows)
+# and crop area/output 1919-1955 (22) are Gold Coast plus British Togoland by Mitchell's own notes, and mitchell
+# `syrian arab republic` tobacco 1945-1951 (7) includes Lebanon; the label's other tables do not.
+BASELINE_RULES = 23
+BASELINE_ROWS = 205
 
 
 def main() -> int:

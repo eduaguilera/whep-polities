@@ -55,7 +55,6 @@ SUR-1954-1975     #  14 rows, 1796 B
 GKM-1884-1912     #  12 rows, 1605 B
 DWI-1800-1917     #   9 rows,  768 B
 BGD-1947-1971     #   8 rows, 2035 B
-F237-1954-1975    #   8 rows, 2408 B
 NER-1911-1922     #   8 rows,  759 B
 TNGU-1920-1949    #   6 rows, 1581 B -- flagged page_inadequate in state/suspect_wiki_pages.csv
 GKM-1912-1916     #   5 rows, 1550 B
