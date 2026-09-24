@@ -42,6 +42,14 @@ database does not contain and nothing notices. Four ways that happened:
      retired/superseded page's banner, which deliberately point at the rows
      that replaced it.
 
+  4b. LIVE LINKS INTO DEAD ROWS. Check 3's frontmatter dead targets stay
+     warnings because fixing them changes the published CSV. The same defect in
+     prose changes nothing published: on a live page, a markdown link to a
+     retired/superseded page, or a Predecessor:/Successor: line naming such a
+     code, FAILS unless the same line says the target is dead. Measured on
+     c514f8a (2026-09-24): 57, e.g. five pre-unification Italian states naming
+     the superseded ITA-1861-1919 as their successor.
+
   5. TITLE PERIODS. The same "body written for a split that was never applied"
      failure also shows up in the page's own heading, where no code has to be
      named at all: `blz-1800-2025` — a `superseded` umbrella row spanning
@@ -420,6 +428,52 @@ if not A.warnings and len(prose) > 5:
     print(f"   ... {len(prose) - 5} more (--warnings to list all)")
 
 # ---------------------------------------------------------------------------
+# 4b. live links into retired/superseded rows
+# ---------------------------------------------------------------------------
+# Check 3 WARNS about a frontmatter predecessor/successor that names a dead row, and stays a
+# warning because fixing frontmatter changes the published CSV. The same defect in PROSE changes
+# nothing published, so there is no reason to tolerate it. An audit on 2026-09-24 found 51 body
+# lines on live pages whose Predecessor:/Successor: line or markdown link pointed a reader at a
+# retired or superseded page -- e.g. five Italian pre-unification states naming ITA-1861-1919 as
+# their successor two months after it was split in three -- with no word on the line saying so.
+# A reader following the chain lands on a row the database no longer uses.
+#
+# What fails, on a live page and outside fenced code:
+#   - a markdown link to a wiki/polities page whose frontmatter status is retired/superseded, and
+#   - a Predecessor:/Successor: line naming a retired/superseded code,
+# unless the SAME line says the target is dead (retired, superseded, replaced, split, merged,
+# renamed, redirect, historical, ...). Repointing at the live row and naming the one it replaced
+# satisfies it; so does keeping a deliberate reference ("see the note on the superseded row").
+HISTORY_MARKER = re.compile(
+    r"retired|superseded|redirect|replaced|former(?:ly)?|split (?:from|of|into|at)|merged|renamed|"
+    r"deleted|historical|legacy|~~|no longer|previously", re.I)
+page_status = {os.path.basename(p): str(split_page(p)[0].get("status"))
+               for p in glob.glob(os.path.join(POLITIES, "*.md"))}
+dead_links, dead_links_baselined = [], 0
+for slug, (fm, body) in sorted(parsed.items()):
+    if str(fm.get("status")) in DEAD_STATUSES:
+        continue
+    for lineno, line in body_lines(body):
+        targets = [m.group(1) for m in PAGE_LINK_RE.finditer(line)
+                   if page_status.get(m.group(1)) in DEAD_STATUSES]
+        if CHAIN_LINE_RE.match(line):
+            targets += [m.group(0) for m in CODE_RE.finditer(line)
+                        if db_status.get(m.group(0)) in DEAD_STATUSES]
+        if not targets or HISTORY_MARKER.search(line):
+            continue
+        for target in dict.fromkeys(targets):
+            if baselined(slug, target):
+                dead_links_baselined += 1
+                continue
+            dead_links.append((slug, lineno, target, line.strip()[:70]))
+
+print(f"\n4b. LIVE LINKS INTO DEAD ROWS: {len(dead_links)} link(s) or chain line(s) pointing at a "
+      f"retired/superseded page without saying so ({dead_links_baselined} baselined)")
+for slug, lineno, target, ctx in dead_links:
+    print(f"   FAIL {slug:26s} L{lineno}: {target} is retired/superseded — point at its "
+          f"redirect/superseded_by, or say on the line that it is dead — {ctx}")
+
+# ---------------------------------------------------------------------------
 # 5. periods claimed by the page title / polity_name
 # ---------------------------------------------------------------------------
 bad_titles, title_baselined = [], 0
@@ -469,10 +523,10 @@ if not A.warnings and len(stale) > 8:
 
 # ---------------------------------------------------------------------------
 fail = bool(csv_name_typos or unknown_keys or dangling or asserted or broken_links
-            or bad_titles)
+            or dead_links or bad_titles)
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(csv_name_typos) + len(unknown_keys)} "
       f"bad frontmatter key(s), {len(dangling)} dangling chain ref(s), "
       f"{len(asserted)} asserted-but-absent code(s), {len(broken_links)} broken "
-      f"page link(s), {len(bad_titles)} bad title period(s); "
+      f"page link(s), {len(dead_links)} live link(s) into a dead row, {len(bad_titles)} bad title period(s); "
       f"{len(asymmetric) + len(dead) + len(prose) + len(stale)} warning(s) ignored")
 sys.exit(1 if fail else 0)

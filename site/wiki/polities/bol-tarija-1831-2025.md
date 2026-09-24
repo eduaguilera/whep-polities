@@ -45,7 +45,9 @@ Tarija is a department (admin-1 unit) of Bolivia in the country's far south, bor
 
 ## Territorial extent
 
-Polygon status: Not yet assigned (polygon_status: unassigned). The routing decision identified gadm-4.1-adm1 as the correct eventual source -- already registered and used for this same kind of department-level feature elsewhere in the table, including on BOL-BEN-1842-2025 -- with the likely feature BOL.9_1 following GADM's standard Bolivia department numbering. This is unverified: the GeoPackage cached locally at data/geodata/gadm-4.1/gadm41_adm1.gpkg is a curated 81-country subset that excludes Bolivia entirely, so no feature can be fetched or confirmed from what is on disk today. No polygon is attached, and no area figure is given, because there is nothing to measure yet -- fetching the global GADM 4.1 adm1 layer (or a Bolivia-specific extract) is the open task recorded below.
+**Polygon status:** `assigned` — `gadm-4.1-adm1` feature `BOL.9_1`, bound on 2026-09-09 in commit 433a81a; the shipped geometry measures 37,267 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). Older text below that describes the polygon as missing predates that binding and is kept as the record of what blocked it.
+
+**Polygon status (superseded 2026-09-24, kept as the record of what blocked it):** Not yet assigned (polygon_status: unassigned). The routing decision identified gadm-4.1-adm1 as the correct eventual source -- already registered and used for this same kind of department-level feature elsewhere in the table, including on BOL-BEN-1842-2025 -- with the likely feature BOL.9_1 following GADM's standard Bolivia department numbering. This is unverified: the GeoPackage cached locally at data/geodata/gadm-4.1/gadm41_adm1.gpkg is a curated 81-country subset that excludes Bolivia entirely, so no feature can be fetched or confirmed from what is on disk today. No polygon is attached, and no area figure is given, because there is nothing to measure yet -- fetching the global GADM 4.1 adm1 layer (or a Bolivia-specific extract) is the open task recorded below.
 
 Territory description: Tarija department occupies Bolivia's southernmost tip, a region of Andean valleys in the west transitioning to Chaco lowlands in the east, bordering Argentina to the south and Paraguay to the southeast. Its capital is the city of Tarija. On a modern map, present-day Tarija department covers roughly 37,600 km2 -- one of Bolivia's smaller departments by area, historically known for viticulture in its central valleys and, since the discovery of major natural gas fields in the Chaco lowlands in the latter 20th century, a significant hydrocarbon-producing region. No polygon (proxy or otherwise) is attached in this entry, so this km2 figure is drawn from general knowledge of the present-day department's extent, not measured from any geometry in this table; a source-backed figure should replace it once GADM 4.1 adm1 is fetched and BOL.9_1 (or the correct feature) is confirmed and attached.
 
@@ -79,6 +81,8 @@ The routing decision's own routing_concerns flagged this: a single container_cod
 
 The routing decision's polygon_route is registered_source_unfetched: GADM 4.1 publishes an adm1 feature for Tarija department, and gadm-4.1-adm1 is already the registered source used for this same kind of department-level feature elsewhere in the table (including on BOL-BEN-1842-2025). The blocker is not that no boundary exists or that the source is unregistered -- it is that the locally cached extract at data/geodata/gadm-4.1/gadm41_adm1.gpkg is a curated 81-country subset that excludes Bolivia entirely (0 Bolivia features, per the routing decision's own polygon_reasoning). Per the harness instructions, registered_source_unfetched means the slug IS the source and polygon_status is unassigned, which is what this entry declares. polygon_feature_id BOL.9_1 is recorded as GADM's standard Bolivia numbering guess (following the same convention Beni's entry used for BOL.2_1) but is explicitly unverified, since it cannot be confirmed against the missing local extract.
 
+**SUPERSEDED 2026-09-24.** The missing polygon recorded here no longer holds: `gadm-4.1-adm1` feature `BOL.9_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 37,267 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The decision text is kept as the record of the state it described.
+
 ## Open questions
 
 ### oq-gadm-bolivia-not-cached
@@ -86,6 +90,8 @@ The routing decision's polygon_route is registered_source_unfetched: GADM 4.1 pu
 **GADM 4.1 adm1 for Bolivia, including Tarija, is not present in the locally cached GeoPackage**
 
 The same gap already recorded on BOL-BEN-1842-2025 applies here: data/geodata/gadm-4.1/gadm41_adm1.gpkg is an 81-country subset that does not include Bolivia, so the feature ID BOL.9_1 recorded above is an unverified guess following GADM's standard country-numbering pattern, not a confirmed match. Fetching the global GADM 4.1 adm1 layer (or a Bolivia-specific extract) and re-running the polygon assignment step would confirm or correct this feature ID and let polygon_status move from unassigned to assigned. Until then, no area figure can be measured or cited for this entry.
+
+**RESOLVED 2026-09-24.** The polygon this question was waiting for is attached: `gadm-4.1-adm1` feature `BOL.9_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 37,267 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The text above is kept as the record of what blocked it.
 
 ### oq-boundary-vintage-19th-century
 

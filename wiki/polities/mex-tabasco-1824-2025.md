@@ -37,9 +37,11 @@ Tabasco is a state of Mexico on the Gulf coast, in the southeast of the country,
 
 ## Territorial extent
 
-**Polygon status:** Not yet assigned. No polygon feature is currently attached in the GeoPackage for this period. The routing decision resolved to `registered_source_unfetched`: GADM 4.1 adm1 is already a registered source in this repository (used for other ADM1-level state/province boundaries), and it is unambiguously the correct source type for a Mexican state, but the locally-subsetted `gadm-4.1-adm1` file bundled in this repo only carries an 81-country subset and Mexico was never included — confirmed zero features for MEX in the local file. `polygon_source` is therefore set to the slug `gadm-4.1-adm1` itself (per harness rules for this route, the slug IS the source even though unfetched), with `polygon_status: unassigned` and `polygon_feature_id: null` until the full GADM 4.1 adm1 release is fetched and Mexico's ADM1 rows (GID_1-keyed, including the Tabasco feature) are added to the local file.
+**Polygon status:** `assigned` — `gadm-4.1-adm1` feature `MEX.27_1`, bound on 2026-09-09 in commit 433a81a; the shipped geometry measures 24,528 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). Older text below that describes the polygon as missing predates that binding and is kept as the record of what blocked it.
 
-**Territory description:** Tabasco covers roughly 24,700 km² of low-lying, heavily riverine coastal plain in southeastern Mexico — the delta region of the Grijalva and Usumacinta rivers, one of the wettest and most hydrologically dominant regions of the country. Its capital is Villahermosa. On a modern map it sits directly east of Veracruz state, north of Chiapas, and west of Campeche, with its northern edge on the Gulf of Mexico. State boundaries have been essentially stable since the 19th century, so a present-day GADM ADM1 boundary for Tabasco, once fetched, should serve as a reasonable proxy for the entire 1824-2025 span, though this treats a modern boundary as valid back to the 1824 founding and should be understood as an approximation rather than a period-accurate reconstruction. No area figure is stated here as measured, since no geometry is yet attached to this entry.
+**Polygon status (superseded 2026-09-24, kept as the record of what blocked it):** Not yet assigned. No polygon feature is currently attached in the GeoPackage for this period. The routing decision resolved to `registered_source_unfetched`: GADM 4.1 adm1 is already a registered source in this repository (used for other ADM1-level state/province boundaries), and it is unambiguously the correct source type for a Mexican state, but the locally-subsetted `gadm-4.1-adm1` file bundled in this repo only carries an 81-country subset and Mexico was never included — confirmed zero features for MEX in the local file. `polygon_source` is therefore set to the slug `gadm-4.1-adm1` itself (per harness rules for this route, the slug IS the source even though unfetched), with `polygon_status: unassigned` and `polygon_feature_id: null` until the full GADM 4.1 adm1 release is fetched and Mexico's ADM1 rows (GID_1-keyed, including the Tabasco feature) are added to the local file.
+
+**Territory description:** Tabasco covers roughly 24,700 km² of low-lying, heavily riverine coastal plain in southeastern Mexico — the delta region of the Grijalva and Usumacinta rivers, one of the wettest and most hydrologically dominant regions of the country. Its capital is Villahermosa. On a modern map it sits directly east of Veracruz state, north of Chiapas, and west of Campeche, with its northern edge on the Gulf of Mexico. State boundaries have been essentially stable since the 19th century, so a present-day GADM ADM1 boundary for Tabasco, once fetched, should serve as a reasonable proxy for the entire 1824-2025 span, though this treats a modern boundary as valid back to the 1824 founding and should be understood as an approximation rather than a period-accurate reconstruction. No area figure is stated here as measured, since no geometry is yet attached to this entry. *(Superseded 2026-09-24: a polygon is now attached — `gadm-4.1-adm1` feature `MEX.27_1`, 24,528 km² as shipped; see the Polygon status line under Territorial extent.)*
 
 ## Predecessors and successors
 
@@ -48,7 +50,7 @@ Tabasco has no predecessor or successor polity rows: it was named directly as a 
 ## Sourced claims
 
 - Tabasco was named as one of the original states of the federation in the 1824 Constitution of the United Mexican States, distinguishing it from Baja California, Baja California Sur, and Quintana Roo, which began as federal territories and converted to statehood later (Baja California in 1952, Baja California Sur and Quintana Roo in 1974).
-- The locally-subsetted `gadm-4.1-adm1` GeoPackage used by this repository contains zero features for Mexico (ISO3 MEX), confirmed by direct inspection of the source file, even though GADM 4.1's public release does carry Mexican ADM1 (state-level) boundaries including Tabasco.
+- The locally-subsetted `gadm-4.1-adm1` GeoPackage used by this repository contains zero features for Mexico (ISO3 MEX), confirmed by direct inspection of the source file, even though GADM 4.1's public release does carry Mexican ADM1 (state-level) boundaries including Tabasco. *(Superseded 2026-09-24: a polygon is now attached — `gadm-4.1-adm1` feature `MEX.27_1`, 24,528 km² as shipped; see the Polygon status line under Territorial extent.)*
 
 ## Decisions
 
@@ -70,6 +72,8 @@ The routing decision explicitly instructs that Mexican states default to their f
 
 The routing decision's polygon_route is registered_source_unfetched: gadm-4.1-adm1 is already a registered source in sources.yaml and is the correct source type (ADM1 state boundaries) for this entity, but the locally-subsetted gadm-4.1-adm1 file used by this repo only covers 81 countries and Mexico's rows were never included in that subset. Per the harness instructions, in this route the slug itself is the polygon_source (not 'none' and not a placeholder like 'new_source_needed'), and polygon_status is unassigned rather than assigned or proxy, since no feature has actually been attached yet. polygon_feature_id is left null until the full GADM 4.1 adm1 release is fetched and Mexico's rows are added to the local file.
 
+**SUPERSEDED 2026-09-24.** The missing polygon recorded here no longer holds: `gadm-4.1-adm1` feature `MEX.27_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 24,528 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The decision text is kept as the record of the state it described.
+
 ## Open questions
 
 ### oq-1824-constitution-confirmation
@@ -83,6 +87,8 @@ The routing_concerns explicitly flag this: it should be verified that Tabasco wa
 **GADM 4.1 adm1 full release must be fetched to attach Tabasco's polygon**
 
 No polygon is attached to this entry at all, since the locally-subsetted gadm-4.1-adm1 GeoPackage excludes Mexico entirely (0 features for MEX, confirmed). Until the full GADM 4.1 adm1 release is fetched and Mexico's ADM1 rows are merged into the local source file, this entry will remain polygon_status: unassigned. This also blocks any area (km2) figure from being computed for Tabasco, and blocks the same fix for any other Mexican state entries created under this same routing precedent.
+
+**RESOLVED 2026-09-24.** The polygon this question was waiting for is attached: `gadm-4.1-adm1` feature `MEX.27_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 24,528 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The text above is kept as the record of what blocked it.
 
 ### oq-data-start-year-gap
 

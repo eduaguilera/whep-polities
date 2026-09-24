@@ -37,9 +37,11 @@ Querétaro is one of the 31 states of the United Mexican States, located on the 
 
 ## Territorial extent
 
-**Polygon status:** Not yet assigned. No polygon feature is currently matched in the GeoPackage for this state. The intended source is `gadm-4.1-adm1` (GID_1 `MEX.15_1` in the global GADM 4.1 dataset), which is registered in `scripts/sources.yaml` with `present_locally=True`, but the local file at `data/geodata/gadm-4.1/gadm41_adm1.gpkg` is a partial extract covering only 81 countries and does not include Mexico (0 rows for MEX). The source is therefore registered but unfetched for this country, not missing from the registry — `polygon_source: gadm-4.1-adm1` records the intended source and `polygon_status: unassigned` records that it has not actually been attached. Fetching the full global GADM 4.1 admin-1 dataset (or the Mexico-specific subset) would resolve this.
+**Polygon status:** `assigned` — `gadm-4.1-adm1` feature `MEX.22_1`, bound on 2026-09-09 in commit 433a81a; the shipped geometry measures 11,694 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). Older text below that describes the polygon as missing predates that binding and is kept as the record of what blocked it.
 
-**Territory description:** Querétaro is a small central Mexican state on the Bajío/central plateau, roughly 200 km northwest of Mexico City. Its capital is Santiago de Querétaro. The modern state covers approximately 11,700 km², one of the smaller Mexican states by area, bounded by Guanajuato to the northwest, San Luis Potosí to the north, Hidalgo to the east and México State to the south. No area figure is measured from an attached geometry here since none is attached; the ~11,700 km² figure is the state's present-day administrative area as commonly reported (e.g. INEGI), not a polygon measurement.
+**Polygon status (superseded 2026-09-24, kept as the record of what blocked it):** Not yet assigned. No polygon feature is currently matched in the GeoPackage for this state. The intended source is `gadm-4.1-adm1` (GID_1 `MEX.15_1` in the global GADM 4.1 dataset), which is registered in `scripts/sources.yaml` with `present_locally=True`, but the local file at `data/geodata/gadm-4.1/gadm41_adm1.gpkg` is a partial extract covering only 81 countries and does not include Mexico (0 rows for MEX). The source is therefore registered but unfetched for this country, not missing from the registry — `polygon_source: gadm-4.1-adm1` records the intended source and `polygon_status: unassigned` records that it has not actually been attached. Fetching the full global GADM 4.1 admin-1 dataset (or the Mexico-specific subset) would resolve this.
+
+**Territory description:** Querétaro is a small central Mexican state on the Bajío/central plateau, roughly 200 km northwest of Mexico City. Its capital is Santiago de Querétaro. The modern state covers approximately 11,700 km², one of the smaller Mexican states by area, bounded by Guanajuato to the northwest, San Luis Potosí to the north, Hidalgo to the east and México State to the south. No area figure is measured from an attached geometry here since none is attached; the ~11,700 km² figure is the state's present-day administrative area as commonly reported (e.g. INEGI), not a polygon measurement. *(Superseded 2026-09-24: a polygon is now attached — `gadm-4.1-adm1` feature `MEX.22_1`, 11,694 km² as shipped; see the Polygon status line under Territorial extent.)*
 
 ## Predecessors and successors
 
@@ -71,6 +73,8 @@ The proposed decision only supplied `MEX-1848-2025` as the container, but that r
 **GADM 4.1 admin-1 data for Mexico needs to be fetched**
 
 The registered source `gadm-4.1-adm1` is the correct polygon source for this state (GID_1 `MEX.15_1`), but the locally cached GeoPackage only covers 81 countries and Mexico is not among them. Until the full global GADM 4.1 admin-1 dataset (or a Mexico-specific extract) is fetched and loaded, this entry has `polygon_status: unassigned` and no geometry. Resolving this is a data-fetch task, not a routing or boundary-identification task — the feature ID to use once fetched should be `MEX.15_1`.
+
+**RESOLVED 2026-09-24.** The polygon this question was waiting for is attached: `gadm-4.1-adm1` feature `MEX.22_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 11,694 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The text above is kept as the record of what blocked it.
 
 ### oq-boundary-vintage-since-1824
 

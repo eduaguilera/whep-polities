@@ -37,9 +37,11 @@ Guanajuato is one of the 19 original states of the Mexican federation created un
 
 ## Territorial extent
 
-Polygon status: Not yet assigned. No polygon is available in the GeoPackage for this period. The routing decision identified gadm-4.1-adm1 as the correct registered source (GADM's admin-1 layer is already used elsewhere in this repo for country subdivisions, and Mexico's 32 states are standard GADM adm1 features), but the locally fetched gadm41_adm1.gpkg is a curated 81-country subset that does not currently include Mexico. This is registered_source_unfetched, not a missing-source or construction case: the source is registered and the boundary certainly exists in GADM, it simply has not been fetched to disk yet. polygon_source is set to the slug gadm-4.1-adm1 itself with polygon_feature_id null and polygon_status unassigned, per the rule that an unfetched-but-registered source names the slug directly rather than new_source_needed.
+**Polygon status:** `assigned` — `gadm-4.1-adm1` feature `MEX.11_1`, bound on 2026-09-09 in commit 433a81a; the shipped geometry measures 30,611 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). Older text below that describes the polygon as missing predates that binding and is kept as the record of what blocked it.
 
-Territory description: Guanajuato is a landlocked state in central Mexico, in the Bajio region, bordered by Jalisco, Zacatecas, San Luis Potosi, Queretaro, and Michoacan. Its capital is the city of Guanajuato; its largest city is Leon. On a modern map it sits roughly 300-400 km northwest of Mexico City. Its modern area is approximately 30,491 km2 (INEGI's published figure for the state), making it one of the smaller Mexican states by area (about 1.5% of national territory) but historically one of the most economically important owing to its silver-mining heritage (the colonial mines of Guanajuato and Valenciana). No polygon is attached to this entry yet, so this figure is drawn from external published state-area statistics, not measured from any geometry in this database.
+**Polygon status (superseded 2026-09-24, kept as the record of what blocked it):** Not yet assigned. No polygon is available in the GeoPackage for this period. The routing decision identified gadm-4.1-adm1 as the correct registered source (GADM's admin-1 layer is already used elsewhere in this repo for country subdivisions, and Mexico's 32 states are standard GADM adm1 features), but the locally fetched gadm41_adm1.gpkg is a curated 81-country subset that does not currently include Mexico. This is registered_source_unfetched, not a missing-source or construction case: the source is registered and the boundary certainly exists in GADM, it simply has not been fetched to disk yet. polygon_source is set to the slug gadm-4.1-adm1 itself with polygon_feature_id null and polygon_status unassigned, per the rule that an unfetched-but-registered source names the slug directly rather than new_source_needed.
+
+Territory description: Guanajuato is a landlocked state in central Mexico, in the Bajio region, bordered by Jalisco, Zacatecas, San Luis Potosi, Queretaro, and Michoacan. Its capital is the city of Guanajuato; its largest city is Leon. On a modern map it sits roughly 300-400 km northwest of Mexico City. Its modern area is approximately 30,491 km2 (INEGI's published figure for the state), making it one of the smaller Mexican states by area (about 1.5% of national territory) but historically one of the most economically important owing to its silver-mining heritage (the colonial mines of Guanajuato and Valenciana). No polygon is attached to this entry yet, so this figure is drawn from external published state-area statistics, not measured from any geometry in this database. *(Superseded 2026-09-24: a polygon is now attached — `gadm-4.1-adm1` feature `MEX.11_1`, 30,611 km² as shipped; see the Polygon status line under Territorial extent.)*
 
 ## Predecessors and successors
 
@@ -70,6 +72,8 @@ The proposed decision only names MEX-1848-2025 as container, but that leaves 182
 
 The routing decision's polygon_route is registered_source_unfetched: GADM 4.1 adm1 is a registered source and does cover Mexican states, but the locally fetched subset (81 countries) excludes Mexico, so no GID_1 feature id can be named today. Per instructions this means polygon_source is the slug itself (gadm-4.1-adm1), polygon_feature_id is null, and polygon_status is unassigned -- not new_source_needed and not a fabricated feature id.
 
+**SUPERSEDED 2026-09-24.** The missing polygon recorded here no longer holds: `gadm-4.1-adm1` feature `MEX.11_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 30,611 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The decision text is kept as the record of the state it described.
+
 ## Open questions
 
 ### oq-gadm-feature-id-unknown
@@ -77,6 +81,8 @@ The routing decision's polygon_route is registered_source_unfetched: GADM 4.1 ad
 **Guanajuato's GADM GID_1 code is unverified pending a full adm1 fetch**
 
 The locally fetched gadm41_adm1.gpkg only covers a curated 81-country subset and Mexico is not among them. The expected pattern is MEX.11_1 (GADM's alphabetical-by-state-name GID_1 numbering would place Guanajuato around 11th of 32), but this is a guess from the general convention, not confirmed against actual data. Fetching data/geodata/gadm-4.1/gadm41_adm1.gpkg for Mexico (or the full global adm1 layer) and identifying the correct GID_1 value for Guanajuato is required before polygon_status can move from unassigned to assigned.
+
+**RESOLVED 2026-09-24.** The polygon this question was waiting for is attached: `gadm-4.1-adm1` feature `MEX.11_1` was bound on 2026-09-09 in commit 433a81a, and the shipped geometry measures 30,611 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The text above is kept as the record of what blocked it.
 
 ### oq-1824-admission-date-uncorroborated
 

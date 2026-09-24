@@ -37,7 +37,9 @@ Oaxaca is one of the original states of the Mexican federation, a mountainous re
 
 ## Territorial extent
 
-Polygon status: Not yet assigned. No polygon available in the GeoPackage for this period. The routing decision names gadm-4.1-adm1 as the correct source type (ADM1-level state boundary, expected feature id pattern MEX.20_1 for Oaxaca) and identifies the concrete gap: the GADM 4.1 file present in this repository's data/geodata/gadm-4.1/ is a curated 81-country subset that does not include Mexico at all, so no feature can be looked up or verified yet. Since the missing dataset is a registered source not yet fetched, polygon_source here is "none" and the fetch requirement is recorded as an open question rather than asserted as fact.
+**Polygon status:** `assigned` — `gadm-4.1-adm1` feature `MEX.20_1`, bound on 2026-09-09 in commit af85272; the shipped geometry measures 92,748 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). Older text below that describes the polygon as missing predates that binding and is kept as the record of what blocked it.
+
+**Polygon status (superseded 2026-09-24, kept as the record of what blocked it):** Not yet assigned. No polygon available in the GeoPackage for this period. The routing decision names gadm-4.1-adm1 as the correct source type (ADM1-level state boundary, expected feature id pattern MEX.20_1 for Oaxaca) and identifies the concrete gap: the GADM 4.1 file present in this repository's data/geodata/gadm-4.1/ is a curated 81-country subset that does not include Mexico at all, so no feature can be looked up or verified yet. Since the missing dataset is a registered source not yet fetched, polygon_source here is "none" and the fetch requirement is recorded as an open question rather than asserted as fact.
 
 Territory description: Oaxaca is a Mexican state occupying the southern Pacific coast and adjoining highlands, bordered by Guerrero to the west, Puebla to the north, Veracruz to the northeast, and Chiapas to the east, with a long Pacific shoreline including the resort area around Huatulco and Puerto Escondido. Its modern state area is approximately 93,800 km2 (INEGI figure for the present-day state), one of Mexico's larger states. Oaxaca's state boundaries have been essentially stable since the 19th century, unlike some Mexican states that were split or merged, so a present-day ADM1 polygon, once fetched, would carry low vintage risk as a proxy for the full 1824-2025 span.
 
@@ -65,6 +67,8 @@ The routed source data for Oaxaca begins around 1900, but the polity's start_yea
 **GADM 4.1 ADM1 layer for Mexico has not been fetched into this repository**
 
 The local data/geodata/gadm-4.1/gadm41_adm1.gpkg is a curated 81-country subset that excludes Mexico entirely, so no feature_id for Oaxaca (expected pattern MEX.20_1 in the full GADM 4.1 release, but unconfirmed) can be looked up or declared yet. Until the full Mexico ADM1 layer is fetched and the correct GID_1 code for Oaxaca is verified against the actual file, polygon_status must remain unassigned. This blocks not just this entry but any other Mexican state-level polity this pipeline creates, since they all depend on the same missing dataset.
+
+**RESOLVED 2026-09-24.** The polygon this question was waiting for is attached: `gadm-4.1-adm1` feature `MEX.20_1` was bound on 2026-09-09 in commit af85272, and the shipped geometry measures 92,748 km² in `data/final/polities_database.gpkg` (ESRI:54034 equal-area). The text above is kept as the record of what blocked it.
 
 ### oq-1824-founding-state-confirmation
 
