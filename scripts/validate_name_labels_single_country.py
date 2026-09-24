@@ -22,9 +22,13 @@ WHAT THIS CHECKS. Every label in data/final/label_alias_map.csv, of any source, 
 `admin_name` of harness-ledger units in two or more countries fails. The ledger is the committed
 record of the panel's units, so the gate runs anywhere; the panel itself is gitignored.
 
-WHAT IT CANNOT SEE. The ledger keeps one name per unit. MEX-CMX is recorded as 'Ciudad de
-Mexico', so the 'Distrito Federal' collision above is invisible here -- it was found by reading
-the panel. A unit's other names reach this gate only if they reach the ledger.
+OTHER NAMES. The ledger keeps one name per unit. MEX-CMX is recorded as 'Ciudad de Mexico', so
+on the ledger alone the 'Distrito Federal' collision above was invisible -- it was found by
+reading the panel. Since 2026-09-24 the gate also reads every (unit, name) pair the panel
+carries from pipelines/agent-harness/state/panel_unit_names.csv (committed; regenerated with
+`validate_alias_labels_cross_country.py --refresh`), which records 'Distrito Federal' for
+MEX-CMX. That sibling gate checks the complementary case: a label that names a panel unit in
+only ONE country but routes it to a territory elsewhere ('Formosa' -> Japanese Taiwan).
 
 Bidirectional baseline: a new collision fails, and a baselined one that no longer occurs must be
 removed or this fails too.
@@ -40,23 +44,27 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(REPO, "pipelines/agent-harness/state/routing_verdicts.csv")
 ALIASES = os.path.join(REPO, "data/final/label_alias_map.csv")
+NAMES = os.path.join(REPO, "pipelines/agent-harness/state/panel_unit_names.csv")
 
 # label -> reason it is knowingly left in place.
 BASELINE = {}
 
 
 def main() -> int:
-    if not os.path.exists(LEDGER):
-        print(f"FAIL: {os.path.relpath(LEDGER, REPO)} is missing")
-        return 1
+    for path in (LEDGER, NAMES):
+        if not os.path.exists(path):
+            print(f"FAIL: {os.path.relpath(path, REPO)} is missing")
+            return 1
     csv.field_size_limit(sys.maxsize)
 
+    # The ledger's one name per unit, plus every other name the panel gives the unit.
     by_name = collections.defaultdict(set)
-    with open(LEDGER, encoding="utf-8", newline="") as fh:
-        for r in csv.DictReader(fh):
-            name = (r.get("admin_name") or "").strip()
-            if name:
-                by_name[name].add(((r.get("country") or "").strip(), r["unit_id"]))
+    for path in (LEDGER, NAMES):
+        with open(path, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                name = (r.get("admin_name") or "").strip()
+                if name:
+                    by_name[name].add(((r.get("country") or "").strip(), r["unit_id"]))
     shared = {n: u for n, u in by_name.items() if len({c for c, _ in u}) > 1}
 
     hits = collections.defaultdict(set)
@@ -89,7 +97,7 @@ def main() -> int:
         return 1
 
     print(f"PASS: no alias label names reporting units in two countries "
-          f"({len(shared)} shared ledger name(s) checked, {len(BASELINE)} baselined)")
+          f"({len(shared)} shared unit name(s) checked, {len(BASELINE)} baselined)")
     return 0
 
 

@@ -86,7 +86,6 @@ Egypt	mitchell	EGY-1885-1899
 Ethiopia		AOI-1936-1941
 FSU	lassaletta-grassland-share	F228-1945-1991
 Federation of Malaya	fao1952	MYS-1946-1957
-Formosa		TWN-1895-1945
 France Saar		SAA-1947-1957
 Germany Saar		SAA-1947-1957
 Gold Coast & Br Togoland	fao1952	GCT-1919-1956
