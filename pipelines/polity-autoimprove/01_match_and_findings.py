@@ -42,6 +42,7 @@ if os.path.exists(LEDGER):
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from matchlib import Matcher, norm, toks, eff_year as _eff_year, covers as _year_covers
+from matchlib import load_label_item_corrections, apply_label_item_corrections
 import extdata
 from atomic import write_csv_atomic
 
@@ -68,6 +69,11 @@ work = df[~df.is_aggregate].copy()
 # machinery below already gets right. Correcting the spelling defers that decision instead of
 # duplicating it. The corrected cells are disjoint from their correctly-spelled sibling's on
 # (item, unit, year) in every pair, so this adds observations rather than double-counting them.
+# The label AS LAYER B PRINTS IT, kept before either correction below rewrites `country`, and
+# written to matched_rows.parquet as `source_label_raw`. A consumer that aligns matched_rows with
+# layer B row by row (pipelines/historical-production-harmonized/build.R does, on `country`) must
+# compare against this column: the corrected label is by construction not what layer B says.
+work["source_label_raw"] = work["country"]
 _ocr = extdata.load_ocr_corrections()
 _before = work["country"].copy()
 for (_src, _bad), _good in _ocr.items():
@@ -75,6 +81,26 @@ for (_src, _bad), _good in _ocr.items():
     work.loc[_hit, "country"] = _good
 _n_ocr = int((work["country"] != _before).sum())
 print(f"OCR label corrections applied: {_n_ocr:,} row(s) across {len(_ocr)} tabled spelling(s)")
+# ITEM-SCOPED LABEL CORRECTIONS (issue 675). Some rows are filed under the WRONG territory's
+# label for one item only -- Mitchell prints Natal's pre-Union sugar cane under `south africa`,
+# South Africa's 1945-1957 horses under `natal`, fao1952 two 1951 Netherlands New Guinea land-use
+# rows under `New Guinea`. An alias has no item dimension, so these are relabelled here, after the
+# OCR spellings and before matching, and then route like any other row of the corrected label.
+# The table and its rationale: data/final/source_label_item_corrections.csv; its gate:
+# scripts/validate_label_item_corrections.py. See matchlib.apply_label_item_corrections.
+_lic = load_label_item_corrections(extdata.LABEL_ITEM_CORRECTIONS)
+work, _lic_hit, _lic_per_rule = apply_label_item_corrections(work, _lic)
+for _k, _n in _lic_per_rule.items():
+    _ru = _lic[_k]
+    if _n != int(_ru["observed_rows"]):
+        # Refuse rather than warn: the table pins how many rows each rule was ADJUDICATED over,
+        # and a different count means layer B was rebuilt under it -- the rule may now be
+        # relabelling rows nobody looked at, or none of the ones somebody did.
+        raise SystemExit(
+            f"label/item correction {(_ru['source'], _ru['source_label'], _ru['item'], _ru['year_start'], _ru['year_end'])} "
+            f"hits {_n} row(s), but the table records {_ru['observed_rows']}. Re-verify the rule "
+            f"against the rebuilt layer B and update observed_rows (or the rule) deliberately.")
+print(f"item-scoped label corrections applied: {int(_lic_hit.sum()):,} row(s) across {len(_lic)} rule(s)")
 # trust a prior code ONLY if it is a real period-specific WHEP polity_code. Bare-iso
 # stubs (deu, gbr, jpn) carry no period/territory -> do NOT trust them; send them to
 # the resolver so iso+year-containment resolves each to its period polity. Measured
@@ -500,11 +526,15 @@ json.dump({"summary": {
 # PROVENANCE (152 values: `page_17_table_1`, `copia de page_17_table_1`). A consumer must decide
 # per source; see 25_same_polity_overlaps.py, where keying on it for mitchell would separate the
 # very duplicates the table exists to find.
+# `source_label_raw` (issue 675) is appended LAST for the same reason: `country` is the label the
+# row was ROUTED under, after the OCR and item-scoped corrections, and `source_label_raw` is what
+# layer B itself prints. They differ on exactly the corrected rows.
 # The three `period_*` columns are APPENDED, after `match_method`, so nothing that reads this
 # file by position shifts. They answer, per row, the question `period` alone cannot: whether the
 # averaged window pokes outside the polity it was routed to, and by how many years at which end.
 work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method",
-      "period_straddles_polity_span","period_years_before_start","period_years_after_end"]] \
+      "period_straddles_polity_span","period_years_before_start","period_years_after_end",
+      "source_label_raw"]] \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 
 # coverage by source after

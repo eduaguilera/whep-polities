@@ -1134,6 +1134,20 @@ to all. `01_match_and_findings.py` picks the most specific matching rule per dat
 (year- and source-qualified rules beat blanket ones). Example: `Germany Western`
 resolves to West Germany **only for 1949–1951**; its 1937–48 rows stay an open finding.
 
+**When the territory depends on the ITEM, an alias is the wrong tool** (issue 675). The
+alias key has no item, so a label that carries two territories in the same years —
+Mitchell's pre-Union `south africa` is the Cape for livestock and wine but Natal for sugar
+cane — cannot be split by any alias. Such rows are relabelled instead, in
+`data/final/source_label_item_corrections.csv` (`source, source_label, item, year_start,
+year_end, correct_label, polity_code, observed_rows, issue, evidence`; inclusive years, dated
+rows only). `01_match_and_findings.py` applies it after the OCR spelling table and before
+matching, via `matchlib.apply_label_item_corrections`, and `matched_rows.parquet` keeps layer
+B's own label in `source_label_raw`. A new rule needs structural evidence in `evidence` (a
+sibling source carrying the territory separately, agronomy, the source's own filing), not a
+magnitude argument. `scripts/validate_label_item_corrections.py` refuses overlapping,
+chained, redundant or dead-target rules and, with layer B present, a rule whose row count has
+drifted or whose relabelled rows would collide with existing cells.
+
 ### What a source label actually means (avoid false precision)
 
 A label like "Germany Western" is **the source's own reporting unit**, with the

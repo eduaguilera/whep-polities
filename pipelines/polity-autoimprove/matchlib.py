@@ -113,6 +113,112 @@ def _yr(v):
     return int(v) if v.lstrip("-").isdigit() else None
 
 
+# ---------------------------------------------------------------------------
+# ITEM-SCOPED LABEL CORRECTIONS (issue 675).
+#
+# An alias maps (label, source, years) -> polity. It has no item dimension, so it
+# cannot express a source that files ONE item of one territory under ANOTHER
+# territory's label: Mitchell prints Natal's pre-Union sugar cane under `south
+# africa` (which, for every other item before 1910, is the Cape), and South
+# Africa's national 1945-1957 horse count under `natal`. Any single alias target
+# is wrong for one of the two.
+#
+# The fix the issue names as the clean one is to RE-LABEL those rows upstream, so
+# that is what this does: rows matching (source, source_label, item, year) are
+# given `correct_label` before matching, exactly as the OCR spelling corrections
+# are (issue 552), and the ordinary alias / family / year-containment machinery
+# then routes them. Relabelling rather than naming a polity directly keeps ONE
+# routing authority: a sugar-cane row at 1880 reaches NAT-1843-1895 and one at
+# 1900 NAT-1895-1910 because that is where `natal` resolves in those years, not
+# because a second table says so. `polity_code` is still recorded per rule, so a
+# consumer that does not run this matcher gets the answer, and
+# scripts/validate_label_item_corrections.py fails if the relabel and the
+# recorded code ever disagree.
+#
+# Scope is deliberately narrow: an exact source, label and item, and a DATED
+# year inside the rule's inclusive [year_start, year_end] (the alias convention,
+# read through alias_covers so there is one reading of it). A period-average row
+# (year null) is never touched; no rule today needs one, and a period that
+# straddles a rule's bound has no single right answer.
+LABEL_ITEM_CORRECTION_COLUMNS = (
+    "source", "source_label", "item", "year_start", "year_end",
+    "correct_label", "polity_code", "observed_rows", "issue", "evidence",
+)
+
+
+def load_label_item_corrections(path):
+    """Read data/final/source_label_item_corrections.csv into rule dicts.
+
+    Raises on a missing file, a wrong header, a blank key field, an unbounded or
+    inverted year range, or a no-op rule: the table is tracked, and silently
+    skipping it would put the misfiled rows back on the wrong territory with every
+    count still looking plausible. Overlaps and target liveness are the gate's job
+    (scripts/validate_label_item_corrections.py), because they need the database.
+    """
+    if not path or not os.path.exists(path):
+        raise FileNotFoundError(f"tracked label/item correction table missing: {path}")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        if tuple(reader.fieldnames or ()) != LABEL_ITEM_CORRECTION_COLUMNS:
+            raise ValueError(f"{path}: header {reader.fieldnames} != "
+                             f"{list(LABEL_ITEM_CORRECTION_COLUMNS)}")
+        rules = []
+        for i, r in enumerate(reader, start=2):
+            for col in ("source", "source_label", "item", "correct_label", "polity_code"):
+                if not (r.get(col) or "").strip():
+                    raise ValueError(f"{path}:{i}: empty `{col}`")
+            y0, y1 = _yr(r.get("year_start")), _yr(r.get("year_end"))
+            if y0 is None or y1 is None or y0 > y1:
+                raise ValueError(f"{path}:{i}: year range must be bounded and ordered, "
+                                 f"got {r.get('year_start')!r}-{r.get('year_end')!r}")
+            if r["source_label"] == r["correct_label"]:
+                raise ValueError(f"{path}:{i}: correction is a no-op ({r['source_label']!r})")
+            rules.append({**r, "y0": y0, "y1": y1})
+    return rules
+
+
+def label_item_correction(rules, source, label, item, year):
+    """The rule relabelling this row, or None. At most one may match (the gate
+    enforces no overlap); if two ever do, raise rather than let file order pick."""
+    if year is None or pd.isna(year):
+        return None
+    hit = [ru for ru in rules
+           if ru["source"] == source and ru["source_label"] == label and ru["item"] == item
+           and alias_covers(ru["y0"], ru["y1"], int(year))]
+    if len(hit) > 1:
+        raise ValueError(f"overlapping label/item corrections for {(source, label, item, year)}")
+    return hit[0] if hit else None
+
+
+def apply_label_item_corrections(df, rules, label_col="country"):
+    """Relabel the matching rows of a layer-B-shaped frame; returns a new frame.
+
+    Returns (frame, mask of relabelled rows, {rule index: rows hit}). The key
+    columns are compared vectorised; the YEAR test then goes through
+    alias_covers row by row on that small subset, so the inclusive reading of
+    `year_end` lives in one place and is not re-typed here as a bare operator.
+    """
+    out = df.copy()
+    # Every rule is tested against the ORIGINAL label, so a relabelled row can never
+    # be caught again by a rule keyed on its new label: corrections do not chain.
+    orig = df[label_col]
+    years = pd.to_numeric(out["year"], errors="coerce")
+    hit_any = pd.Series(False, index=out.index)
+    per_rule = {}
+    for k, ru in enumerate(rules):
+        key = ((out["source"] == ru["source"]) & (orig == ru["source_label"])
+               & (out["item"] == ru["item"]) & years.notna())
+        m = pd.Series(False, index=out.index)
+        if key.any():
+            m.loc[key] = [alias_covers(ru["y0"], ru["y1"], int(y)) for y in years[key]]
+        if (m & hit_any).any():
+            raise ValueError(f"label/item correction rule {k} overlaps an earlier rule")
+        out.loc[m, label_col] = ru["correct_label"]
+        hit_any |= m
+        per_rule[k] = int(m.sum())
+    return out, hit_any, per_rule
+
+
 class Matcher:
     """Deterministic candidate resolver over the polities DB + alias tables.
 

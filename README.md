@@ -120,6 +120,7 @@ python3 scripts/validate_stated_areas.py
 python3 scripts/validate_area_convention.py  # projected vs geodesic: one convention, and it stays the published one
 python3 scripts/validate_cross_source_agreement.py  # two publishers on one polity: every big disagreement is a recorded defect
 python3 scripts/validate_ocr_corrections.py  # tabled OCR label fixes are still needed, and still route
+python3 scripts/validate_label_item_corrections.py  # item-scoped relabels (issue 675): unambiguous, needed, and landing on a live polity
 python3 scripts/validate_shared_polygons.py
 python3 scripts/validate_coexisting_overlaps.py   # partial overlap: every substantial one classified, the sliver tail pinned
 python3 scripts/validate_polygon_period_fit.py

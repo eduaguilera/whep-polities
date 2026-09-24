@@ -120,6 +120,14 @@ CSV_CONTRACT = {
         "source", "label_pattern", "item_pattern", "flow_type", "polity_code",
         "origin_iso3", "wiki_page", "verified",
     ],
+    # Added with the table itself (issue 675). Pinned because a consumer APPLIES it: it
+    # relabels rows keyed on `source`/`source_label`/`item`/`year_start`/`year_end` before
+    # resolving them, and a rename of any key column makes that filter match nothing and
+    # silently put Natal's sugar back on the Cape. `polity_code` is where the relabel lands.
+    "data/final/source_label_item_corrections.csv": [
+        "source", "source_label", "item", "year_start", "year_end", "correct_label",
+        "polity_code", "observed_rows", "issue", "evidence",
+    ],
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,
     # not a published contract, so they could be unified now; `data/final/` could not.
@@ -164,10 +172,13 @@ MANIFEST_KEYS = [
     "_comment", "claims_polygon_status", "counts", "dead_polity_codes",
     "dead_status", "faostat_area_map", "faostat_unmapped_areas",
     "identity_fields", "identity_sha256", "iso3_successor_map", "label_alias_map",
-    "live_polity_codes", "local_iso3_codes", "local_iso3_why",
+    "label_item_corrections", "live_polity_codes", "local_iso3_codes", "local_iso3_why",
     "polygon_gap_polity_codes", "source", "source_flow_flags", "stated_area_basis",
     "territory_families", "territory_families_why",
 ]
+# `label_item_corrections` added 2026-09-24 (issue 675): the fingerprint of
+# data/final/source_label_item_corrections.csv, the rows a source files under the wrong
+# territory's label for one item. A consumer resolving labels itself must apply it first.
 # `stated_area_basis` added 2026-08-14 (issue 166): the shape of
 # data/final/source_stated_area_basis.csv, which says per (polity, source) which territory the
 # source's own numbers were collected over. Named here so a consumer reading the manifest can

@@ -829,6 +829,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_ocr_corrections.py
 
+      - name: Item-scoped label corrections are unambiguous, needed, and land on a live polity
+        if: '!cancelled()'
+        run: python3 scripts/validate_label_item_corrections.py
+
       - name: Wiki pages only name things that exist
         if: '!cancelled()'
         run: python3 scripts/validate_references.py

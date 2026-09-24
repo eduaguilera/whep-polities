@@ -371,6 +371,15 @@ OCR_CORRECTIONS = os.path.join(
 )
 
 
+# Item-scoped label corrections (issue 675). Tracked repo data, like the OCR table above; the
+# loader lives in matchlib (matchlib.load_label_item_corrections) because the gates that apply it
+# already import matchlib and nothing else from this directory.
+LABEL_ITEM_CORRECTIONS = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data/final/source_label_item_corrections.csv",
+)
+
+
 def load_ocr_corrections(path: str | None = None):
     """Load the tabled OCR spelling corrections as {(source, ocr_label): correct_label}.
 

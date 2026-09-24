@@ -74,6 +74,11 @@ import unicodedata
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATED_PATH = os.path.join(REPO, "data/final/source_stated_areas.csv")
+# Which layer-B (source, item) a statement of each source IS, so an item-scoped label correction
+# (issue 675) can be applied to it. The IIA `country area` table has no layer-B item, and so no
+# entry: nothing in the correction table can reach it.
+LABEL_ITEM_PATH = os.path.join(REPO, "data/final/source_label_item_corrections.csv")
+STATED_ITEM = {"fao": ("fao1952", "use total")}
 GPKG_PATH = os.path.join(REPO, "data/final/polities_database.gpkg")
 CSV_PATH = os.path.join(REPO, "data/final/polities_database.csv")
 LEXICON_PATH = os.path.join(REPO, "data/final/source_label_lexicon.csv")
@@ -175,15 +180,13 @@ BASELINE = {
         "oq-three-province-proxy-under-covers-by-26pc on man-1950-1955. Became visible on "
         "2026-09-24 when `China Manchuria` stopped routing to the CHN chain and its statement "
         "was attributed to the region instead of to China.",
-    ("TNGU-1949-1975", "fao"):
-        "THE STATEMENT IS NETHERLANDS NEW GUINEA'S, NOT THIS TERRITORY'S. FAO 1952 states 412,780 "
-        "km2 for `New Guinea` at 1951, and the land table files that row under ASIA, while every "
-        "other fao1952 `New Guinea` row (population, copra, rubber, tractors) is filed under "
-        "OCEANIA. 412,780 is 1.006x Netherlands New Guinea's CShapes 851 polygon (410,361) and "
-        "1.74x this Trust Territory's 237,462. The same figure agreed with PNG-1949-1975 (1.12x) "
-        "only because both labels sat on the union. A label-level alias cannot separate the two "
-        "land-use rows from the rest of the label, so they follow it; see "
-        "oq-land-use-rows-are-netherlands-new-guinea on tngu-1949-1975.",
+    # TNGU-1949-1975/fao REMOVED 2026-09-24 (issue 675). Its entry said "THE STATEMENT IS
+    # NETHERLANDS NEW GUINEA'S, NOT THIS TERRITORY'S": fao1952 files the 1951 `New Guinea` use total
+    # (412,780 km2) under ASIA, 1.006x NNG-1949-1963's polygon and 1.74x this Trust Territory's. An
+    # alias could not move one item of the label, so the row followed it here. The item-scoped
+    # correction table (data/final/source_label_item_corrections.csv) now relabels it
+    # `Netherlands New Guinea` before matching, this gate applies the same rule, and the statement
+    # votes on NNG-1949-1963, where it agrees with the polygon.
 
     ("TCA-1800-2025", "fao"):
         "A VINTAGE DIFFERENCE, and ours is the modern figure. FAO states 520 km2 and IIA states 430-438 "
@@ -718,6 +721,9 @@ def analyse():
 
     lexicon = load_lexicon()
     lex_tried, lex_live = {}, set()
+    # Raises if the table is missing: silently skipping it would move a statement back onto the
+    # territory the matcher took its row away from, with every count still plausible.
+    label_item_rules = matchlib.load_label_item_corrections(LABEL_ITEM_PATH)
     with open(STATED_PATH, encoding="utf-8") as fh:
         statements = list(csv.DictReader(fh))
 
@@ -792,8 +798,20 @@ def analyse():
         # changes name, and a statement that already resolved keeps resolving to the same polity
         # because the first attempt is unchanged.
         SOURCE_SYNONYMS = {"fao": ("fao1952",), "iia": ()}
+        # ITEM-SCOPED LABEL CORRECTIONS (issue 675). A statement here IS one layer-B item -- the FAO
+        # figures are fao1952's `use total` -- so a row that data/final/source_label_item_corrections.csv
+        # relabels before matching must be relabelled here too, or this gate attributes the area to
+        # the territory the matcher no longer sends the row to. The case that forced it: the 1951
+        # `New Guinea` use total filed under ASIA is Netherlands New Guinea's, and was baselined on
+        # TNGU-1949-1975 for exactly that reason until the row could be moved.
+        label = row["label"]
+        item_key = STATED_ITEM.get(row["source"])
+        if item_key:
+            rule = matchlib.label_item_correction(label_item_rules, item_key[0], label, item_key[1], year)
+            if rule:
+                label = rule["correct_label"]
         code = None
-        for candidate in (row["label"], lexicon_target(lexicon, normalise_label(row["label"]), year)):
+        for candidate in (label, lexicon_target(lexicon, normalise_label(label), year)):
             if not candidate:
                 continue
             for src_try in (row["source"], *SOURCE_SYNONYMS.get(row["source"], ())):
