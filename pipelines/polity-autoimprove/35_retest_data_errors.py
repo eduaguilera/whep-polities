@@ -386,8 +386,12 @@ def check_western_eastern_prefix(ctx):
         claims.append((f"  `{orphan}` still unrouted, by year/period", ",".join(tags),
                        {"Western": "1934-1938,1937", "Eastern": "1937"}[orphan]))
         tr, tn = routed(twin)
+        # 254/254 -> 253/254 on 2026-09-24 (world alias collisions): the one 1937 dated `Germany
+        # Western` row is now `back_cast` to WZO-1938-1949 in the alias map, and matchlib -- whose
+        # output this reads -- does not follow an alias to a target that has not started yet, so
+        # the row reads as unrouted here. It no longer sits on DEU-1920-1938 beside the total.
         claims.append((f"`{twin}` routed -- the target exists", f"{tr}/{tn}",
-                       {"Germany Western": "254/254", "Germany Eastern": "109/109"}[twin]))
+                       {"Germany Western": "253/254", "Germany Eastern": "109/109"}[twin]))
         o = mm[mm["lab"] == orphan].copy()
         t = mm[mm["lab"] == twin].copy()
         ok = set(o[KEY].astype(str).agg("|".join, axis=1))
@@ -400,8 +404,11 @@ def check_western_eastern_prefix(ctx):
 
     claims.append(("1949 total vs part polity", f"{codes('Germany', 1949)} vs "
                    f"{codes('Germany Western', 1949)}", "DEU-1949-1990 vs F78-1949-1990"))
+    # Was "DEU-1920-1938 vs DEU-1920-1938" -- issue 411's total-and-parts collision -- until
+    # 2026-09-24, when the 1937 `Germany Western` row was re-pointed (back_cast) to WZO-1938-1949.
+    # The part no longer lands on the Reich polity, so the right-hand side is now empty.
     claims.append(("1937 total vs part polity -- issue 411", f"{codes('Germany', 1937)} vs "
-                   f"{codes('Germany Western', 1937)}", "DEU-1920-1938 vs DEU-1920-1938"))
+                   f"{codes('Germany Western', 1937)}", "DEU-1920-1938 vs "))
     # The class this pair belongs to, found structurally rather than by identity proof.
     fr = mm[mm["whep_code"].fillna("").astype(str).str.strip() == ""]
     rt = mm[mm["whep_code"].notna()]
@@ -415,9 +422,14 @@ def check_western_eastern_prefix(ctx):
             frag.append((lab2, int((fr["lab"] == lab2).sum()), codes))
     uniq = [x for x in frag if len(x[2]) == 1]
     claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 21))
-    claims.append(("  rows they carry", sum(x[1] for x in frag), 42))
-    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 11))
-    claims.append(("  with several candidate polities", len(frag) - len(uniq), 10))
+    # 42/11/10 -> 52/10/11 on 2026-09-24 (world alias collisions), two labels moving and the
+    # class size (21) unchanged: fao1952 `Korea` 1949-1951 was unrouted (it is the peninsula, and
+    # averaged with `Korea South`), so its 11 rows became a fragment of `Korea South`/`Korea North`
+    # with three candidate polities; and `Great Britain` (1 row) stopped being a fragment, because
+    # its only routed parent `United Kingdom Great Britain` was unrouted in the same change.
+    claims.append(("  rows they carry", sum(x[1] for x in frag), 52))
+    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 10))
+    claims.append(("  with several candidate polities", len(frag) - len(uniq), 11))
     # `Portuga` is the counter-example: structurally unambiguous, three values on one key.
     pg = mm[(mm["lab"] == "Portuga")]
     claims.append(("`Portuga` distinct values on its single key",
@@ -1100,7 +1112,7 @@ def check_russia_asian_component(ctx):
 
 
 def check_nested_reporting_levels(ctx):
-    """72 cells receive more than one source label, and 7 of them now share a value.
+    """7 cells receive more than one source label (72 until 2026-09-24), and 3 of them share a value.
 
     THIS ENTRY IS WHY THE RE-TEST EXISTS. Written 2026-08-17 with 52 cells and 110 rows, it also
     claimed "NONE of the colliding values are equal, so this is not duplicate ingestion but genuinely
@@ -1119,7 +1131,7 @@ def check_nested_reporting_levels(ctx):
     """
     mr = ctx.get("matched")
     if mr is None:
-        return [("cells with more than one source label", None, 72)], "matched_rows.parquet absent"
+        return [("cells with more than one source label", None, 7)], "matched_rows.parquet absent"
     d = mr[mr["value"].notna() & mr["whep_code"].notna()]
     K = ["whep_code", "source", "item", "indicator", "year", "unit"]
     cells = rows = shared = 0
@@ -1133,9 +1145,17 @@ def check_nested_reporting_levels(ctx):
         if any(per[labs[i]] & per[labs[j]]
                for i in range(len(labs) - 1) for j in range(i + 1, len(labs))):
             shared += 1
-    return ([("cells with more than one source label", cells, 72),
-             ("rows in those cells", rows, 173),
-             ("cells where two DIFFERENT labels share a value", shared, 7)],
+    # 72/173/7 -> 7/14/3 on 2026-09-24 (world alias collisions). The 65 cells that left were the
+    # fixed families: China with its parts (Manchuria -> MAN-*, 22 provinces unrouted after 1945),
+    # DEU-1920-1938's 1937 and 1934-1938 zone/Berlin rows (-> WZO/BRL back_cast), Papua + New Guinea
+    # on PNG-1949-1975 (-> TPAP/TNGU-1949-1975), `korea` + `korea south`, `united kingdom` + `united
+    # kingdom great britain`, iia `japan` + `palau` 1915-1918 and `south africa` + `natal` 1957. Four
+    # of the 7 value-sharing cells went with them -- the three Korea fertilizer cells and PNG's 1950
+    # crawler tractors (8 and 8) -- leaving the three ethiopia/ethiopia pdr cells. The 7 cells that
+    # remain are ETH x3, PAL, SER x2 and VGB, none of them touched.
+    return ([("cells with more than one source label", cells, 7),
+             ("rows in those cells", rows, 14),
+             ("cells where two DIFFERENT labels share a value", shared, 3)],
             "the equality count is the diagnosis; the cell count is only the panel's size")
 
 

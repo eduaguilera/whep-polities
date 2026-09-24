@@ -146,7 +146,9 @@ burma	mitchell	MMR-LWR-1852-1885
 china 22 provinces	fao1952	CHN-1932-1945
 china, mainland		CHN-1800-1895
 china, mainland		CHN-1895-1913
-china, manchuria province of		CHN-1947-1949
+# 'china, manchuria province of||CHN-1947-1949' cleared 2026-09-24 (world alias collisions): the
+# 1947-1949 row now targets MAN-1945-1950, whose exclusive end_year 1950 covers 1949, so it no longer
+# claims a year its polity does not hold. The Manchuria region stopped routing to the CHN chain.
 czech republic		F51-1947-1993
 czechoslovakia		F51-1947-1993
 czechoslovakia	juan	CZE-1804-1918
