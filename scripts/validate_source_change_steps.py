@@ -98,6 +98,23 @@ BASELINE = {
         "Separately and in both rows: Istanbul falls OUTSIDE the polygon, so the empire's "
         "capital is not in it — same in both, so it does not drive this step."
     ),
+    # Surfaced 2026-09-24 by issue 655, which rebound USA-1867-1959 from Cliopatria 1880 to
+    # CShapes' 49-state step. The artefact is OLDER than that change: it was published as
+    # 3,469,141 -> 8,906,417 (2.57x) before, invisible here only because both rows were
+    # Cliopatria.
+    "USA-1848-1867 -> USA-1867-1959": (
+        "ARTEFACT: 3,469,141 -> 9,445,313 km2 (2.72x), of which only Alaska (CShapes gwcode 3, "
+        "1,506,241 km2, the 1867 purchase) is history. Measured by difference against CShapes' "
+        "contiguous US (gwcode 2, 1886-1959): Cliopatria's 1849 polygon misses 4,519,604 km2, "
+        "4,366,867 of it one piece centred near 108.5W 40.3N -- the trans-Mississippi West "
+        "(Mexican Cession, Oregon Country, the unorganised Louisiana interior), all US "
+        "sovereign territory by 1848. Cliopatria draws the US by settler-frontier extent and "
+        "fills the West in step by step (5,724,208 km2 by 1866, 7,948,373 by 1868), so the "
+        "earlier row understates the territory by more than half. NOT FIXED: CShapes has no "
+        "pre-1886 step and the Gadsden Purchase (1853) falls inside USA-1848-1867's span, so "
+        "the row needs a constructed polygon (CShapes contiguous US minus the Gadsden strip "
+        "for 1848-1853) through constructed/build.py, which is a geodata rebuild."
+    ),
     # ---------- SCOPE: the family changes what it denotes ----------
     "TUR-1800-1913 -> TUR-1913-1914": (
         "SCOPE: 780,180 -> 1,784,775 km2. Not an event and not a convention difference. "

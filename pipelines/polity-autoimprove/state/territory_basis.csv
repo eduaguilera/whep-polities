@@ -445,7 +445,7 @@ FID-1887-1954,French Indochina,1887,1954,constructed,1920.0,assigned,True,assume
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,cshapes-2.0,1917.0,assigned,True,assumed_constant,True,True,no_reference,,single 1917 polygon held across a 108y span (1809-1917); borders may have changed,411
 FIN-1917-1940,Finland (1917-1940),1917,1940,cshapes-2.0,1917.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1917 faithful to period 1917-1940,631
 FIN-1940-2025,Finland (1940-2025),1940,2025,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1940 polygon held across a 85y span (1940-2025); borders may have changed,742
-FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,3.43,polygon present but no recorded vintage year,520
+FJI-1800-2025,Fiji,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,stable_where_covered,3.42,polygon present but no recorded vintage year,520
 FLK-1833-2025,Falkland Islands,1833,2025,gadm-4.1-adm0,2023.0,proxy,True,assumed_constant,True,True,no_reference,,single 2023 polygon held across a 192y span (1833-2025); borders may have changed,25
 FRA-02-1800-2025,Aisne (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-04-1790-2025,Alpes-de-Haute-Provence (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1136,7 +1136,7 @@ URY-1828-2025,Uruguay,1828,2025,cshapes-2.0,1886.0,assigned,True,assumed_constan
 USA-1800-1803,United States (original),1800,1803,cliopatria,1800.0,assigned,False,measured,False,False,no_reference,,vintage 1800 faithful to period 1800-1803,0
 USA-1803-1848,United States (1803-1848),1803,1848,cliopatria,1815.0,assigned,False,assumed_constant,True,False,no_reference,,single 1815 polygon held across a 45y span (1803-1848); borders may have changed,0
 USA-1848-1867,United States (1848-1867),1848,1867,cliopatria,1849.0,assigned,True,measured,False,False,no_reference,,vintage 1849 faithful to period 1848-1867,46
-USA-1867-1959,United States (1867-1959),1867,1959,cliopatria,1880.0,assigned,True,assumed_constant,True,True,stable_where_covered,12.17,single 1880 polygon held across a 92y span (1867-1959); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),8231
+USA-1867-1959,United States (1867-1959),1867,1959,cshapes-2.0,1959.0,assigned,True,assumed_constant,True,True,stable_where_covered,18.96,single 1959 polygon held across a 92y span (1867-1959); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),8231
 USA-1959-2025,United States of America,1959,2025,cshapes-2.0,1960.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1960 polygon held across a 66y span (1959-2025); borders may have changed,272
 USA-AK-1959-2025,Alaska (state of the United States),1959,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 USA-AL-1819-2025,Alabama (state of the United States),1819,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
