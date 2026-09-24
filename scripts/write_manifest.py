@@ -357,6 +357,33 @@ if os.path.exists(FLOW_FLAGS):
         ),
     }
 
+# ITEM-SCOPED LABEL CORRECTIONS, fingerprinted like the tables above (issue 675).
+#
+# `label_alias_map` answers "which polity does this LABEL mean in this source and year", and for
+# a handful of rows that answer is wrong for one ITEM only: Mitchell files Natal's pre-Union sugar
+# cane under `south africa` (the Cape, for every other item) and South Africa's 1945-1957 horses
+# under `natal`. This repository relabels those rows before matching; a consumer that resolves
+# labels with the alias map alone would put them back, so the table is named here.
+LABEL_ITEM_CORRECTIONS = os.path.join(REPO, "data/final/source_label_item_corrections.csv")
+label_item_info = None
+if os.path.exists(LABEL_ITEM_CORRECTIONS):
+    raw = open(LABEL_ITEM_CORRECTIONS, "rb").read()
+    lic_rows = list(csv.DictReader(open(LABEL_ITEM_CORRECTIONS, encoding="utf-8")))
+    label_item_info = {
+        "path": "data/final/source_label_item_corrections.csv",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "rules": len(lic_rows),
+        "observed_rows": sum(int(r["observed_rows"]) for r in lic_rows),
+        "why": (
+            "Rows a source files under ANOTHER territory's label for one item. Before resolving "
+            "a row's label with label_alias_map, replace it with `correct_label` when source, "
+            "source_label and item match exactly and the row's year lies in "
+            "[year_start, year_end] (inclusive; period-average rows with no year are never "
+            "corrected). `polity_code` is where the corrected label then resolves. Rules do not "
+            "chain: test each against the ORIGINAL label."
+        ),
+    }
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -370,6 +397,8 @@ manifest = {
         "reporting area's data belongs to in a given year, and "
         "`label_alias_map` the mapping from a source's own country LABEL to a "
         "polity — prefer both over rebuilding those mappings yourself. "
+        "`label_item_corrections` lists the rows a source files under another territory's "
+        "label for one item; apply it BEFORE resolving labels with the alias map. "
         "`source_flow_flags` names the (source, label, item) combinations whose figures "
         "are NOT the labelled territory's production — entrepot/transit volumes — which "
         "no aggregate should sum beside the producing territory's own series. "
@@ -442,6 +471,7 @@ manifest = {
     },
     "faostat_area_map": area_map_info,
     "label_alias_map": alias_map_info,
+    "label_item_corrections": label_item_info,
     "iso3_successor_map": successor_map_info,
     "stated_area_basis": stated_area_basis,
     "source_flow_flags": flow_flags_info,

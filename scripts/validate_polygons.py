@@ -306,7 +306,14 @@ BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # describes a larger reporting unit than the three-province polygon, so declaring it would
 # manufacture a check-A disagreement against a geometry that is smaller, not wrong. The divergence
 # is baselined with that reason in validate_stated_areas.py.
-BASELINE_AVOIDABLE_SELF_REF = 39
+#
+# 39 -> 40 on 2026-09-24 (issue 675): NNG-1949-1963. The fao1952 1951 `New Guinea` use total
+# (412,780 km2), filed under ASIA, is relabelled `Netherlands New Guinea` by
+# data/final/source_label_item_corrections.csv and now votes on this row instead of on
+# TNGU-1949-1975. The row declares 410,361, its CShapes feature's own measurement, so it becomes one
+# more row where a real comparison is available. Here the two agree (0.994x), so declaring the stated
+# figure would change nothing check A reports; left as the geometry's number, like the rows above.
+BASELINE_AVOIDABLE_SELF_REF = 40
 
 #
 

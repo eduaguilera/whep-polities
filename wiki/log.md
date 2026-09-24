@@ -26,6 +26,50 @@ Kinds:
 
 ---
 
+## decision-item-scoped-label-corrections
+**Date:** 2026-09-24
+**Touched:** CAP-1800-1895, CAP-1895-1910, NAT-1843-1895, NAT-1895-1910, ZAF-1910-2025,
+TNGU-1949-1975, NNG-1949-1963 (data routing only; no polity row, date or polygon changed)
+**Source:** none
+**Kind:** decision
+
+**Some sources file one item of one territory under another territory's label, and an
+alias cannot say so.** An alias maps (label, source, years) to a polity, with no item
+dimension. [Issue 675](https://github.com/eduaguilera/whep-polities/issues/675) recorded
+three cases where the same label and years carry two territories. Mitchell's pre-Union
+`south africa` sugar cane is Natal's crop, on a label that routes every other pre-1910
+item to the Cape. Mitchell's 1945-1957 `natal` horses are South Africa's national series.
+fao1952's two 1951 `New Guinea` land-use rows filed under ASIA are Netherlands New Guinea's.
+
+The issue named re-labelling the rows upstream as the clean fix, and that is the mechanism
+chosen. `data/final/source_label_item_corrections.csv` holds one rule per
+(source, source_label, item, inclusive year range) with the `correct_label` to use.
+`01_match_and_findings.py` applies it after the OCR spelling corrections and before
+matching, so the ordinary alias and year-containment rules route the rows. It follows the
+OCR table's precedent (issue 552) rather than naming polities directly. There is then
+still one routing authority: the sugar-cane rows reach
+[nat-1843-1895](polities/nat-1843-1895.md) before 1895 and
+[nat-1895-1910](polities/nat-1895-1910.md) after it because that is where `natal`
+resolves. Each rule also records its `polity_code` for consumers that do not run this
+matcher. `scripts/validate_label_item_corrections.py` fails if the two ever disagree, if
+rules overlap or chain, if a target is dead, or if a rule is redundant. Where layer B is
+present, it also fails if a rule's row count drifts or a relabelled row collides with a
+cell the corrected label already has.
+
+100 rows move and the value total is unchanged: 67 + 24 Mitchell sugar-cane rows and one
+IIA 1909 raw-sugar row leave the Cape for Natal, 6 Mitchell horse rows that were unrouted
+now reach [zaf-1910-2025](polities/zaf-1910-2025.md), and 2 fao1952 land-use rows move from
+[tngu-1949-1975](polities/tngu-1949-1975.md) to
+[nng-1949-1963](polities/nng-1949-1963.md). The evidence for each rule is structural, not
+magnitude alone, and travels in the table's `evidence` column. The horse rule rests on an
+independent source: fao1952's own `Union of South Africa` horse column reads 778 thousand
+at 1937, equal to Mitchell's national figure, and 679 thousand at 1950, equal to the
+`natal` label's 1949 value. The 1957 `natal` pig row is not relabelled and stays unrouted.
+`validate_stated_areas.py` applies the same rule to the fao1952 `use total` statement, so
+its baseline entry explaining the TNGU divergence is removed.
+
+Signed off by: Claude (Claude Code), issue 675; pending review in its pull request.
+
 ## convention-period-rows-are-a-second-time-axis
 **Date:** 2026-09-01
 **Touched:** none (documents an existing convention; no polity row changed)

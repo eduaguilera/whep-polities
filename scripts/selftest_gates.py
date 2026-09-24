@@ -3124,6 +3124,62 @@ def mutate_ocr_correction_target_routes_nowhere(root, gpd, make_valid, affinity)
             "carries, so its two rows would be rewritten onto a label that still routes nowhere")
 
 
+def _rewrite_label_item_corrections(root, edit):
+    """Load the staged item-scoped correction table, let `edit` change its rows, write it back."""
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_label_item_corrections.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = _csv.DictReader(fh)
+        fields = list(reader.fieldnames)
+        rows = list(reader)
+    rows = edit(rows)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+
+
+def mutate_label_item_correction_wrong_polity(root, gpd, make_valid, affinity):
+    """Record the wrong `polity_code` on the fao1952 `New Guinea` use-total rule (issue 675).
+
+    The table carries BOTH a relabel (`correct_label`) and where it lands (`polity_code`), and
+    the two are read by different parties: the matcher follows the label, a consumer that does
+    not run the matcher reads the code. A code that no longer agrees with the label is a
+    silently different answer on each side -- every field still well-formed, the target still a
+    live polity -- so only a check that re-resolves the label can see it.
+    """
+    # TNGU-1949-1975 on purpose: it is LIVE and covers 1951, so the dead-target and span arms stay
+    # quiet and only the re-resolution arm can fire -- it is also where the row sat before the fix.
+    def edit(rows):
+        hit = [r for r in rows if r["source_label"] == "New Guinea" and r["item"] == "use total"]
+        assert hit, "the `New Guinea` use-total rule moved -- pick another rule"
+        assert hit[0]["polity_code"] == "NNG-1949-1963", "unexpected target"
+        hit[0]["polity_code"] = "TNGU-1949-1975"
+        return rows
+    _rewrite_label_item_corrections(root, edit)
+    return ("recorded TNGU-1949-1975 as the target of the fao1952 `New Guinea` use-total 1951 rule, "
+            "whose `Netherlands New Guinea` relabel resolves to NNG-1949-1963")
+
+
+def mutate_label_item_correction_overlap(root, gpd, make_valid, affinity):
+    """Stretch the pre-1895 sugar-cane rule over the post-1895 one's years.
+
+    Two rules on one (source, label, item) whose years intersect are decided by FILE ORDER, in
+    the matcher and in any consumer: the 1895-1909 rows would land on whichever rule comes first.
+    Nothing else is wrong -- both targets are live, both relabels resolve -- so the overlap arm is
+    the only thing that can refuse it.
+    """
+    def edit(rows):
+        hit = [r for r in rows if r["source_label"] == "south africa" and r["item"] == "sugar cane"
+               and r["year_end"] == "1894"]
+        assert hit, "the pre-1895 sugar-cane rule moved -- pick another rule"
+        hit[0]["year_end"] = "1900"
+        return rows
+    _rewrite_label_item_corrections(root, edit)
+    return ("widened the mitchell `south africa` sugar-cane 1859-1894 rule to 1900, over the "
+            "1895-1909 rule's years")
+
+
 def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
     """Add a lexicon entry whose English target names no polity, pushing the inert count past its
     ceiling.
@@ -5900,6 +5956,20 @@ CASES = (
         "resolve to no polity",
         "an OCR correction pointing at a spelling that routes nowhere — the table stays well-formed "
         "and the right size, and the row simply lands on a different unresolved label",
+    ),
+    (
+        "validate_label_item_corrections.py",
+        mutate_label_item_correction_wrong_polity,
+        "the relabel and the published polity_code disagree",
+        "an item-scoped correction whose recorded polity no longer matches where its relabel "
+        "resolves — the matcher and a consumer reading the code would route the rows differently",
+    ),
+    (
+        "validate_label_item_corrections.py",
+        mutate_label_item_correction_overlap,
+        "file order would decide",
+        "two item-scoped corrections on one label and item whose years overlap, so file order and "
+        "not a rule decides where the shared years land",
     ),    (
         "validate_stated_areas.py",
         mutate_source_files_two_territories_as_one,
@@ -6739,11 +6809,25 @@ WRITABLE = {
         "pipelines/polity-autoimprove/matchlib.py",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
     ),
+    # Both mutations rewrite the correction table; the gate re-resolves every relabel through
+    # matchlib and the alias registry, and imports extdata to find layer B (absent in CI, where
+    # arms E/F SKIP by name; present on a maintainer's machine, where they run in the scratch too).
+    "validate_label_item_corrections.py": (
+        "polities_database.csv",
+        "source_label_item_corrections.csv",
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/extdata.py",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
+    # source_label_item_corrections.csv since issue 675: the gate relabels the fao1952 `use total`
+    # statements with it and RAISES if it is absent, so without it every case below would die before
+    # reaching its own defect.
     "validate_stated_areas.py": (
         "polities_database.csv",
         "polities_database.gpkg",
         "source_stated_areas.csv",
         "source_label_lexicon.csv",
+        "source_label_item_corrections.csv",
         "pipelines/polity-autoimprove/matchlib.py",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
     ),

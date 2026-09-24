@@ -77,6 +77,14 @@ require_cols <- function(df, cols, label) {
 }
 
 validate_alignment <- function(layer_b, matches) {
+  # `country` in matched_rows is the label a row was ROUTED under, after the OCR
+  # spelling corrections (issue 552) and the item-scoped label corrections
+  # (issue 675) rewrite it; layer B's own label travels as `source_label_raw`.
+  # Comparing the routed label against layer B stopped this build on the 25 OCR
+  # rows, so compare the raw one wherever the matcher wrote it.
+  if ("source_label_raw" %in% names(matches)) {
+    matches$country <- matches$source_label_raw
+  }
   check_cols <- intersect(
     c("source", "country", "iso3c", "year", "item", "unit"),
     intersect(names(layer_b), names(matches))
