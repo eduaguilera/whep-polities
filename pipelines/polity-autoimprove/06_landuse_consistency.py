@@ -235,7 +235,7 @@ out = pd.DataFrame(rows, columns=COLS)
 if len(out):
     out = out.sort_values("recorded", ascending=False)
     out.to_csv(os.path.join(H, "landuse_corrections.csv"), index=False)
-APPLY = {"replace_value", "drop_row"}
+APPLY = frozenset({"replace_value", "drop_row"})
 n_rows_ok = int(out.action.isin(APPLY).sum()) if len(out) else 0
 n_blocks_ok = out[out.action.isin(APPLY)].groupby(["polity_code", "year"]).ngroups if len(out) else 0
 n_cell_only = int((out.action == "review_cell").sum()) if len(out) else 0

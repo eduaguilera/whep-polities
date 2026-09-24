@@ -37,6 +37,7 @@ never sum them. This records that the choice exists and has not been made.
 Usage:
   python3 pipelines/polity-autoimprove/19_composition_overlaps.py            # report only
   python3 pipelines/polity-autoimprove/19_composition_overlaps.py --write    # refresh the table
+  python3 pipelines/polity-autoimprove/19_composition_overlaps.py --check-keys  # CI: alias-derivable keys
 """
 from __future__ import annotations
 
@@ -75,10 +76,11 @@ def year(v):
         return None
 
 
-def routing_table():
+def routing_table(include_matcher=True):
     """(source, y0, y1, label, method) per polity, from the alias map AND the matcher's own output.
 
     A BLANK alias `source` is a wildcard, matching any source -- the same reading the matchers use.
+    `include_matcher=False` reads the tracked alias map only: that is the part CI can recompute.
     """
     out = defaultdict(list)
     with open(ALIASES, encoding="utf-8") as fh:
@@ -87,7 +89,7 @@ def routing_table():
             if y0 is not None and y1 is not None:
                 out[a["polity_code"]].append(
                     ((a.get("source") or "").strip(), y0, y1, a.get("source_label") or "", "alias"))
-    if os.path.exists(ROUTINGS):
+    if include_matcher and os.path.exists(ROUTINGS):
         with open(ROUTINGS, encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 y0, y1 = year(r.get("year_min")), year(r.get("year_max"))
@@ -116,6 +118,79 @@ def shared_cells(panel, source, whole_labels, part_labels):
     return len(kw & kp), len(items_w & items_p)
 
 
+def overlap_keys(routes, registry):
+    """{(whole, part, source): (y0, y1)} for every registered pair both of whose sides `routes` reach.
+
+    The same pairing rule as main() -- a blank source is a wildcard, years must intersect -- but
+    without labels, methods or panel counts, so it can run where only the tracked files exist.
+    """
+    out = {}
+    for r in registry:
+        whole = r["whole_code"].strip()
+        part = (r.get("part_code") or "").strip()
+        if not part:
+            continue
+        for wsrc, wy0, wy1, _wl, _wm in routes.get(whole, []):
+            for psrc, py0, py1, _pl, _pm in routes.get(part, []):
+                if wsrc and psrc and wsrc != psrc:
+                    continue
+                lo, hi = max(wy0, py0), min(wy1, py1)
+                if lo > hi:
+                    continue
+                k = (whole, part, wsrc or psrc or "(any)")
+                y0, y1 = out.get(k, (lo, hi))
+                out[k] = (min(y0, lo), max(y1, hi))
+    return out
+
+
+def check_keys(registry) -> int:
+    """The CI-computable half of --check: the alias-derivable KEYS of the table.
+
+    `--check` needs the gitignored matcher output and the layer-B panel, so in CI it cannot run, and
+    until this mode existed the CI step ran the script in report mode, which cannot fail: the table
+    went stale (the Manchuria reroute added CHN/MAN pairs nobody regenerated). What CI CAN recompute
+    is the alias map's contribution. Every (whole, part, source) key that aliases alone produce must
+    be in the committed table, marked alias_visible=yes, with a year span covering the alias span
+    (matcher routings can only widen it). And every committed row must still name a registered
+    whole/part pair. Labels, methods and cell counts need the panel and are not compared.
+    """
+    if not os.path.exists(OUT):
+        print(f"MISSING {os.path.relpath(OUT, REPO)}", file=sys.stderr)
+        return 1
+    with open(OUT, newline="", encoding="utf-8") as fh:
+        have = list(csv.DictReader(fh))
+    registered = {(r["whole_code"].strip(), (r.get("part_code") or "").strip()) for r in registry}
+    committed = {(r["whole_code"], r["part_code"], r["source"]): r for r in have}
+    want = overlap_keys(routing_table(include_matcher=False), registry)
+    problems = []
+    for k, (y0, y1) in sorted(want.items()):
+        r = committed.get(k)
+        if r is None:
+            problems.append(f"alias map routes both sides of {k[0]} <- {k[1]} in {k[2]} over "
+                            f"{y0}-{y1}, but the table has no such row")
+            continue
+        if r.get("alias_visible") != "yes":
+            problems.append(f"{k[0]} <- {k[1]} {k[2]}: aliases route both sides, but the table "
+                            f"says alias_visible={r.get('alias_visible')!r}")
+        ry0, ry1 = year(r.get("year_first")), year(r.get("year_last"))
+        if ry0 is None or ry1 is None or ry0 > y0 or ry1 < y1:
+            problems.append(f"{k[0]} <- {k[1]} {k[2]}: aliases alone overlap {y0}-{y1}, the table "
+                            f"records {r.get('year_first')}-{r.get('year_last')}")
+    for k in sorted(committed):
+        if (k[0], k[1]) not in registered:
+            problems.append(f"{k[0]} <- {k[1]} {k[2]}: row names a pair polity_composition.csv "
+                            f"no longer registers")
+    if problems:
+        print(f"STALE KEYS {os.path.relpath(OUT, REPO)}: {len(problems)} problem(s); rerun "
+              f"with --write on layer B", file=sys.stderr)
+        for p in problems:
+            print(f"  {p}", file=sys.stderr)
+        return 1
+    print(f"table keys are current: {len(want)} alias-derivable key(s) present, "
+          f"{len(have)} row(s) all on registered pairs")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -127,8 +202,15 @@ def main() -> int:
     # precondition 15_label_provenance did NOT meet, where a check would have invited data loss.
     ap.add_argument("--check", action="store_true",
                     help="exit 1 if the tracked table is not what this run produces")
+    ap.add_argument("--check-keys", action="store_true",
+                    help="exit 1 if the table's alias-derivable keys (whole, part, source, years) "
+                         "are stale; needs only tracked files, so CI runs this")
     ap.add_argument("--write", action="store_true", help=f"refresh {os.path.relpath(OUT, REPO)}")
     args = ap.parse_args()
+
+    if args.check_keys:
+        with open(REGISTRY, encoding="utf-8") as fh:
+            return check_keys(list(csv.DictReader(fh)))
 
     panel = None
     if os.path.exists(args.layer_b):

@@ -59,7 +59,7 @@ DEFAULT_RAW = os.path.expanduser(os.environ.get(
     "WHEP_IIA_RAW",
     "~/3itkt6h41pb7jdan/2025-10-06_iia-dataframe/outputs/processed data/harmonized_data.xlsx"))
 
-PRODUCTION = {"production", "area", "bearing area", "production of cocoons"}
+PRODUCTION = frozenset({"production", "area", "bearing area", "production of cocoons"})
 MIN_CELLS = 2       # one cell of a product in one series is as likely a value collision as a mapping
 VERDICTS = ("approved_rename", "approved_aggregation", "defect", "unresolved")
 COLS = ["item", "raw_product", "cells", "series", "names_share_word", "verdict", "note"]

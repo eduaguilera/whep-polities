@@ -50,12 +50,12 @@ FIELDS = ["source", "label", "item", "unit", "verdict", "n_attributable", "n_und
           "share_underselected", "worst_ratio", "worst_year", "worst_picked_product",
           "worst_picked_value", "worst_max_value"]
 
-ITEMS = {"p", "n", "k"}
+ITEMS = frozenset({"p", "n", "k"})
 MIN_CELLS = 4            # B: restated, not imported
 UNDERSEL_SHARE = 0.60    # B: restated, not imported
 SMALLER_THAN = 0.50      # A: the under-selection condition
-VERDICTS = {"underselects_minor_component", "attributable_no_underselection",
-            "too_few_attributable_cells"}
+VERDICTS = frozenset({"underselects_minor_component", "attributable_no_underselection",
+            "too_few_attributable_cells"})
 
 # THE TABLE IS A CENSUS OF IN-SCOPE SERIES, NOT A LIST OF FINDINGS, and that is what makes a floor
 # possible. This gate previously recorded, correctly, that neither the defect count nor

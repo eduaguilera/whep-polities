@@ -67,10 +67,10 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/assertion_triage.
 NESTING = os.path.join(REPO, "pipelines/polity-autoimprove/state/assertion_nesting_flags.csv")
 POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 
-TIERS = {"territory_basis_wrong", "nested_reporting", "boundary_year", "weak_route", "precedent",
-         "thin", "bulk"}
-STATUSES = {"pending", "reopened", "confirmed", "rejected", "withdrawn"}
-TRUEISH = {"true", "yes", "1"}
+TIERS = frozenset({"territory_basis_wrong", "nested_reporting", "boundary_year", "weak_route", "precedent",
+         "thin", "bulk"})
+STATUSES = frozenset({"pending", "reopened", "confirmed", "rejected", "withdrawn"})
+TRUEISH = frozenset({"true", "yes", "1"})
 
 
 def norm(s) -> str:

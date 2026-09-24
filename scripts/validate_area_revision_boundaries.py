@@ -53,7 +53,7 @@ BASIS = os.path.join(REPO, "data/final/source_stated_area_basis.csv")
 FIELDS = ["label", "footnote", "source", "step_pct", "year_before", "year_after", "area_before", "area_after",
           "polity_code", "polity_start", "polity_end", "verdict"]
 
-VERDICTS = {"one_polity_spans_the_revision", "our_boundary_falls_between"}
+VERDICTS = frozenset({"one_polity_spans_the_revision", "our_boundary_falls_between"})
 MIN_STEP_PCT = 50.0     # restated, not imported
 MIN_AGREEING = 6        # arm D: 11 today; a floor well below it, so a real change is a finding
 

@@ -51,10 +51,10 @@ MIN_VIOLATION_FRAC = 0.1
 # changes it should have to say so.
 BASELINE_IMPOSSIBLE = 20
 
-VERDICTS = {"impossible_outer_excludes_inner", "consistent_with_inclusion", "few_violations",
-            "no_shared_cells", "label_not_in_panel"}
+VERDICTS = frozenset({"impossible_outer_excludes_inner", "consistent_with_inclusion", "few_violations",
+            "no_shared_cells", "label_not_in_panel"})
 # The two the arithmetic cannot speak to: no cells were comparable, so no verdict is derivable.
-NO_CELL_VERDICTS = {"no_shared_cells", "label_not_in_panel"}
+NO_CELL_VERDICTS = frozenset({"no_shared_cells", "label_not_in_panel"})
 
 
 def num(x):

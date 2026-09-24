@@ -114,11 +114,11 @@ SERIES_COLUMNS = ["source", "country", "item", "year_first", "year_last",
                   "own_level_yield", "own_clean_pairs", "repair_anchor_basis",
                   "repair_anchor_yield", "anchor_factor", "noise_band_lo", "noise_band_hi",
                   "repair_residual", "repairable_without_source", "repair_factor", "years"]
-BASES = {"within-series", "peer-range", "none"}
-DIRECTIONS = {"production", "area", "area+production", "undetermined"}
-ANCHORS = {"own-clean-years", "peer-countries", "none"}
-VERDICTS = {"decimal-shift", "shift-outside-noise", "shift-unyardsticked",
-            "not-a-shift", "no-direction"}
+BASES = frozenset({"within-series", "peer-range", "none"})
+DIRECTIONS = frozenset({"production", "area", "area+production", "undetermined"})
+ANCHORS = frozenset({"own-clean-years", "peer-countries", "none"})
+VERDICTS = frozenset({"decimal-shift", "shift-outside-noise", "shift-unyardsticked",
+            "not-a-shift", "no-direction"})
 
 
 def num(s):

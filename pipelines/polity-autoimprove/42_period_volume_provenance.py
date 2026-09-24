@@ -66,11 +66,11 @@ DEFAULT_PANEL = os.path.expanduser(
 
 # The two volumes published from 1938 on. 1933 is the only year two volumes cover, so from 1934 these
 # are the sole source and their defects pass straight through -- the basis of #414, #415, #416, #417.
-LATE_VOLUMES = {"iia_1938_39", "iia_1939_45"}
+LATE_VOLUMES = frozenset({"iia_1938_39", "iia_1939_45"})
 
 # #416 names tobacco and hops, and only these. 500,000 t is implausible for tobacco against a world
 # total of 2-3 Mt; it is entirely ordinary for wheat, so the screen must not be applied item-blind.
-SCREEN_ITEMS = {"tobacco, unmanufactured", "hops"}
+SCREEN_ITEMS = frozenset({"tobacco, unmanufactured", "hops"})
 SCREEN_UNIT = "tonnes"
 SCREEN_T = 500_000.0
 

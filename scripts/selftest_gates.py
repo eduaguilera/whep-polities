@@ -141,9 +141,18 @@ def stage(gate: str, extra: tuple = (), writable: tuple = ()) -> str:
     os.makedirs(os.path.join(root, "scripts"))
     os.makedirs(os.path.join(root, "data/final"))
     for name in (gate, *extra):
-        src = os.path.join(REPO, "scripts", name)
+        # A name with a slash is a repo-relative tool outside scripts/ -- a pipelines/ tool's
+        # --check mode -- staged at the same relative path so its own HERE/REPO resolve inside
+        # the scratch root.
+        if "/" in name:
+            dest = os.path.join(root, name)
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            src = os.path.join(REPO, name)
+        else:
+            dest = os.path.join(root, "scripts", name)
+            src = os.path.join(REPO, "scripts", name)
         if os.path.exists(src):
-            shutil.copy(src, os.path.join(root, "scripts", name))
+            shutil.copy(src, dest)
     baseline = gate.replace(".py", "_baseline.txt")
     src = os.path.join(REPO, "scripts", baseline)
     if os.path.exists(src):
@@ -175,14 +184,63 @@ def stage(gate: str, extra: tuple = (), writable: tuple = ()) -> str:
     return root
 
 
+def gate_path(root: str, gate: str) -> str:
+    """Where a gate lives under `root`: scripts/<gate>, or the repo-relative path it is named by."""
+    return os.path.join(root, gate) if "/" in gate else os.path.join(root, "scripts", gate)
+
+
+# A mutator that needs the gate to see a different ENVIRONMENT (validate_ci_skips.py reads the CI
+# skip log from $WHEP_CI_SKIP_LOG) writes {name: value} here; run() applies it to that case only,
+# so no case can leak an environment variable into the next.
+ENV_OVERRIDES = ".selftest-env.json"
+
+
+def _gate_env() -> dict:
+    """os.environ minus the CI skip log: a gate run BY THIS HARNESS must not append to (or be judged
+    by) the log validate.yml's own steps write -- validate_ci_skips.py reads it last."""
+    return {k: v for k, v in os.environ.items() if k != "WHEP_CI_SKIP_LOG"}
+
+
 def run(root: str, gate: str) -> tuple:
+    env = _gate_env()
+    overrides = os.path.join(root, ENV_OVERRIDES)
+    if os.path.exists(overrides):
+        with open(overrides, encoding="utf-8") as fh:
+            env.update(json.load(fh))
     p = subprocess.run(
-        [sys.executable, os.path.join(root, "scripts", gate), *ARGS.get(gate, ())],
+        [sys.executable, gate_path(root, gate), *ARGS.get(gate, ())],
         capture_output=True,
         text=True,
         timeout=600,
+        env=env,
     )
     return p.returncode, (p.stdout or "") + (p.stderr or "")
+
+
+_UNMUTATED: dict = {}
+
+
+def run_unmutated(gate: str) -> tuple:
+    """The gate's output on the REAL repository, once per gate: the passing output a case's
+    `expect` string must be absent from.
+
+    A case passes when the mutated run exits non-zero AND its output contains `expect`. If `expect`
+    is also printed by the gate on clean data -- a polity code the PASS summary lists, a word in a
+    header line -- the name check cannot tell "detected the injected defect" from "printed its usual
+    report, then died for another reason". The 2026-09-24 audit found 11 such cases; the
+    `names ... in the passing output` arm of main() is what keeps it at zero.
+    """
+    if gate not in _UNMUTATED:
+        p = subprocess.run(
+            [sys.executable, gate_path(REPO, gate), *ARGS.get(gate, ())],
+            capture_output=True,
+            text=True,
+            timeout=600,
+            cwd=REPO,
+            env=_gate_env(),
+        )
+        _UNMUTATED[gate] = (p.returncode, (p.stdout or "") + (p.stderr or ""))
+    return _UNMUTATED[gate]
 
 
 # --- the mutations ------------------------------------------------------------
@@ -5431,6 +5489,200 @@ def mutate_matched_segment_points_at_container(root, gpd, make_valid, affinity):
     return (f"{victim[0]}'s matched segment now names {biggest} instead of a polity the size of "
             f"{victim[1]}, with every disposition still legal")
 
+def _read_ledger(root):
+    import csv as _csv
+    _csv.field_size_limit(sys.maxsize)
+    path = os.path.join(root, "pipelines/agent-harness/state/routing_verdicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        return path, list(_csv.DictReader(fh))
+
+
+def _write_rows(path, rows):
+    import csv as _csv
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
+        w.writeheader(); w.writerows(rows)
+
+
+def mutate_back_cast_segment_points_at_container(root, gpd, make_valid, affinity):
+    """Re-point one subnational unit's `back_cast` segment at a container.
+
+    The gate measured only `matched` until 2026-09-24, and 12 `back_cast` segments over five units
+    (CHL-AP, CHL-AR, COL-AMAZONAS, COL-GUAINIA, ITA-ITF6) sat in the ledger naming the national row
+    at 10-44x the unit's area. A back_cast is a reconstruction FOR the unit's territory, so its
+    target is that territory's polity. The mutation takes a back_cast segment that currently names
+    the unit's own polity and re-points it at the largest polygon: the disposition stays legal, the
+    target is live, the years are untouched -- only the area ratio can see it.
+    """
+    import json as _json
+    path, rows = _read_ledger(root)
+    g = gpd.read_file(GPKG).to_crs("ESRI:54034")
+    area = {r["polity_code"]: r.geometry.area / 1e6 for _, r in g.iterrows()
+            if r.geometry is not None and not r.geometry.is_empty}
+    biggest = max(area, key=area.get)
+    victim = None
+    for r in rows:
+        page = (r.get("page_polity_code") or "").strip()
+        raw = (r.get("coverage_json") or "").strip()
+        if page not in area or not raw:
+            continue
+        segs = _json.loads(raw)
+        for sg in segs:
+            if sg.get("disposition") == "back_cast" and sg.get("polity_code") == page:
+                sg["polity_code"] = biggest
+                r["coverage_json"] = _json.dumps(segs, sort_keys=True)
+                victim = r["unit_id"]
+                break
+        if victim:
+            break
+    if victim is None:
+        raise AssertionError("no back_cast segment names its unit's own polity; the mutation "
+                             "would do nothing and the case would pass for the wrong reason")
+    _write_rows(path, rows)
+    return f"{victim}'s back_cast segment now names {biggest} instead of the unit's own polity"
+
+
+def mutate_ledger_coverage_unparseable(root, gpd, make_valid, affinity):
+    """Truncate one subnational unit's coverage_json so it no longer parses.
+
+    The gate used to `continue` past a coverage it could not parse, so a corrupted ledger row was
+    simply not measured and the gate still printed PASS. It now counts each kind of skip and pins
+    the counts, and this is the cheapest skip to cause.
+    """
+    import csv as _csv
+    path, rows = _read_ledger(root)
+    with open(CSV, newline="", encoding="utf-8") as fh:
+        sub_codes = {r["polity_code"] for r in _csv.DictReader(fh)
+                     if r.get("polity_type") == "subnational"}
+    for r in rows:
+        if (r.get("page_polity_code") or "").strip() in sub_codes and r.get("coverage_json"):
+            r["coverage_json"] = r["coverage_json"][: len(r["coverage_json"]) // 2]
+            _write_rows(path, rows)
+            return f"{r['unit_id']}'s coverage_json truncated to half, so it no longer parses"
+    raise AssertionError("no subnational ledger row carries a coverage_json")
+
+
+def mutate_routing_ledger_removed(root, gpd, make_valid, affinity):
+    """Delete the committed routing ledger from the scratch checkout.
+
+    The gate used to print `SKIP: ... absent` and exit 0, so a checkout that lost the file it
+    measures passed. The ledger is committed; its absence is a broken checkout.
+    """
+    os.remove(os.path.join(root, "pipelines/agent-harness/state/routing_verdicts.csv"))
+    return "pipelines/agent-harness/state/routing_verdicts.csv deleted from the checkout"
+
+
+def mutate_composition_overlap_key_dropped(root, gpd, make_valid, affinity):
+    """Drop one alias-derivable row from the committed composition_overlaps.csv.
+
+    CI used to run 19_composition_overlaps.py in REPORT mode, which exits 0 whatever it finds, and
+    the table went stale when the Manchuria reroute added 12 CHN/MAN keys nobody regenerated. The
+    `--check-keys` mode recomputes the pairs the alias map alone produces; a row reached only by an
+    alias on both sides -- source `(any)`, two wildcard rules -- is one it must find.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/composition_overlaps.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    for i, r in enumerate(rows):
+        if r["source"] == "(any)":
+            del rows[i]
+            _write_rows(path, rows)
+            return f"row {r['whole_code']} <- {r['part_code']} (any) removed from the table"
+    raise AssertionError("no `(any)` row in composition_overlaps.csv to drop")
+
+
+def mutate_back_cast_onto_era_container(root, gpd, make_valid, affinity):
+    """Re-point one `back_cast` segment at the era's national row, which spans its years.
+
+    derive_aliases.py reported such a segment as `back_cast_inside` and still passed --check, so 12
+    of them sat in the ledger naming a container the registry does not route. It now blocks.
+    """
+    import csv as _csv
+    import json as _json
+    path, rows = _read_ledger(root)
+    with open(CSV, newline="", encoding="utf-8") as fh:
+        pols = [r for r in _csv.DictReader(fh)
+                if r["wiki_status"] not in ("retired", "superseded")]
+    by_code = {r["polity_code"]: r for r in pols}
+    for r in rows:
+        raw = (r.get("coverage_json") or "").strip()
+        if not raw:
+            continue
+        segs = _json.loads(raw)
+        for sg in segs:
+            t = by_code.get((sg.get("polity_code") or "").strip())
+            if sg.get("disposition") != "back_cast" or t is None:
+                continue
+            lo, hi = int(sg["start_year"]), int(sg["end_year"])
+            nat = sorted(p["polity_code"] for p in pols
+                         if p["iso3_code"] == t["iso3_code"] and p["polity_type"] == "national"
+                         and int(p["start_year"]) <= lo and hi < int(p["end_year"]))
+            if nat:
+                sg["polity_code"] = nat[0]
+                r["coverage_json"] = _json.dumps(segs, sort_keys=True)
+                _write_rows(path, rows)
+                return (f"{r['unit_id']} back_cast {lo}-{hi} now names {nat[0]}, the national "
+                        f"row that already spans those years")
+    raise AssertionError("no back_cast segment has a national row spanning its years")
+
+
+def mutate_back_cast_alias_reaches_into_target(root, gpd, make_valid, affinity):
+    """Extend one `back_cast` alias row to end in its target's first year.
+
+    A back_cast row is exempt from the before-target check because every year it routes predates
+    the polity. That exemption is sound only if the row ENDS before the target begins, which held
+    for every row but nothing pinned.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/applied_aliases.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    with open(CSV, newline="", encoding="utf-8") as fh:
+        start = {r["polity_code"]: r["start_year"] for r in _csv.DictReader(fh)}
+    for r in rows:
+        if (r.get("disposition") or "").strip() == "back_cast" and r["polity_code"] in start:
+            r["year_end"] = start[r["polity_code"]]
+            with open(path, "w", newline="", encoding="utf-8") as fh:
+                w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\r\n")
+                w.writeheader(); w.writerows(rows)
+            return (f"back_cast alias {r['source_label']!r} now ends {r['year_end']}, the year "
+                    f"{r['polity_code']} begins")
+    raise AssertionError("no back_cast alias row to extend")
+
+
+def _write_ci_skip_log(root, names):
+    log = os.path.join(root, "ci-skips.log")
+    with open(log, "w", encoding="utf-8") as fh:
+        fh.write("".join(f"{n}\n" for n in names))
+    with open(os.path.join(root, ENV_OVERRIDES), "w", encoding="utf-8") as fh:
+        json.dump({"WHEP_CI_SKIP_LOG": log}, fh)
+
+
+_CI_SKIP_ALLOWLIST = ("write_feature_index.py", "44_border_stability.py",
+                      "08_source_stated_areas.py")
+
+
+def mutate_unlisted_ci_skip(root, gpd, make_valid, affinity):
+    """A fourth tool logs a CI skip. Its step is green; it verified nothing."""
+    _write_ci_skip_log(root, _CI_SKIP_ALLOWLIST + ("new_tool.py",))
+    return "the CI skip log records new_tool.py beside the three allowlisted tools"
+
+
+def mutate_allowlisted_ci_skip_went_silent(root, gpd, make_valid, affinity):
+    """One allowlisted tool no longer logs its skip -- it lost the token, or its input reached CI."""
+    _write_ci_skip_log(root, _CI_SKIP_ALLOWLIST[1:])
+    return f"the CI skip log no longer records {_CI_SKIP_ALLOWLIST[0]}"
+
+
+def mutate_tool_declares_ci_skip(root, gpd, make_valid, affinity):
+    """A new tool prints the CI-skip token without being allowlisted (the static arm)."""
+    token = "SKIP-IN" + "-CI:"   # split so this file's source does not carry the token
+    with open(os.path.join(root, "scripts", "write_new_thing.py"), "w", encoding="utf-8") as fh:
+        fh.write(f'print("{token} inputs absent")\n')
+    return "scripts/write_new_thing.py prints the CI-skip token and is not allowlisted"
+
+
 def mutate_blank_alias_routes_panel_unit_abroad(root, gpd, make_valid, affinity):
     """Key one BLANK-source alias on a panel unit's name and point it at another country.
 
@@ -5515,7 +5767,7 @@ CASES = (
     (
         "validate_composition_sums.py",
         mutate_member_bound_to_a_siblings_polygon,
-        "AEF-1910-1960",
+        'A AEF-1910-1960: its 4 declared parts sum to',
         "a member bound to a sibling's polygon, which no per-row check can see because "
         "every property of the geometry is fine — only the parts-sum-to-the-whole identity "
         "contradicts it",
@@ -5542,7 +5794,7 @@ CASES = (
     (
         "validate_layer_b_column_guard.py",
         mutate_unrenamed_layer_b_column,
-        "build.R",
+        'build.R: reads layer B',
         "a layer-B read that keeps the column named `polity_code`, which holds lowercase ISO "
         "codes, so the obvious join returns zero rows and no error",
     ),
@@ -5846,7 +6098,7 @@ CASES = (
     (
         "validate_derived_counts.py",
         mutate_derived_count_drifts,
-        "no longer describes" if False else "entry(ies)",
+        '=42 but labels holds',
         "a count column set to a number its own list does not have -- the cheapest instance of a "
         "derived column disagreeing with its input, which is how two defects survived review while "
         "the columns beside them read correct",
@@ -6100,7 +6352,7 @@ CASES = (
     (
         "validate_iia_label_provenance.py",
         mutate_label_provenance_hides_mixing,
-        "verified_equal",
+        'verdicts claim `verified_equal` on an IIA label',
         "a per-SPAN provenance row that hides an observed whole-plus-parts merge, so equality "
         "claims on a span with no single territory stop being refused — the gate reads the span "
         "table in preference to the label table, and a mutator aimed at the wrong one passes",
@@ -6122,7 +6374,7 @@ CASES = (
     (
         "validate_coexisting_overlaps.py",
         mutate_enclave_overlap_grown,
-        "PTIND-1816-1961",
+        'ENCLAVE PIN IND-1949-2025 / PTIND-1816-1961 @1955 now measures',
         "a pre-1990 enclave double claim that grew, in the window this gate's year grid does "
         "not reach and where the enclave declares no area for check A to notice",
     ),
@@ -6167,7 +6419,7 @@ CASES = (
     (
         "audit_family_shadowing.py",
         mutate_pinned_disjoint_overlap,
-        "IDN-OTH-1949-1951",
+        'FAIL  IDN-OTH-1949-1951 / NNG-1949-1963: intersect',
         "two live rows claiming the same ground, the defect eduaguilera/whep#514 reports",
     ),
     (
@@ -6191,7 +6443,7 @@ CASES = (
     (
         "validate_spherical_edges.py",
         mutate_collapsed_planar_border,
-        "USA-1959-2025",
+        "USA-1959-2025's rendering of the 49th parallel",
         "a straight treaty border stored sparsely, which a spherical consumer "
         "renders 92 km off line while every conservation check still passes",
     ),
@@ -6329,14 +6581,14 @@ CASES = (
     (
         "validate_map_area_year.py",
         mutate_map_handover_year_claimed_by_nobody,
-        "handover",
+        'handover in area 101: IDN-1949-1963 maps through 1961',
         "a handover year claimed by NEITHER polity, the direction the ambiguity and "
         "past-coverage arms are both blind to — one answer too few looks like nothing at all",
     ),
     (
         "validate_map_era_scope.py",
         mutate_observed_area_backdated_before_the_reporting_era,
-        "before the reporting era",
+        '-> AFG-1919-2025 starts 1919, before the reporting era',
         "an observed area backdated past 1961, so the map asserts a polity for years FAOSTAT "
         "never reported — the guess the consumer was making with ISO3 prefixes, moved upstream "
         "where it stops looking like a guess",
@@ -6344,7 +6596,7 @@ CASES = (
     (
         "validate_polygons.py",
         mutate_area_read_off_its_own_polygon,
-        "self-referential",
+        'is above the pinned ceiling of',
         "a declared area overwritten with its own polygon's measurement, which silences check A",
     ),
     (
@@ -6403,7 +6655,7 @@ CASES = (
     (
         "validate_shared_polygons.py",
         mutate_shared_polygon,
-        "STP-1800-2025",
+        'SHARED BINDING GNQ-1886-1968 / STP-1800-2025',
         "two coexisting live polities on one polygon, which claims the ground twice",
     ),
     (
@@ -6644,7 +6896,7 @@ CASES = (
     (
         "validate_alias_labels_cross_country.py",
         mutate_blank_alias_routes_panel_unit_abroad,
-        "another country",
+        "alias rule(s) route a panel unit's label to another country",
         "a source-agnostic alias keyed on a name that is also a panel unit's, pointing at a "
         "territory elsewhere, so every reader that does not pass the panel's own source routes "
         "that unit's rows abroad -- the row names a live polity inside its span, the name is "
@@ -6666,6 +6918,64 @@ CASES = (
         "so the data would be attributed to a polity that already receives its own national "
         "labels -- legal in every field, and visible only by comparing the two areas",
     ),
+    (
+        "validate_matched_target_territory.py",
+        mutate_back_cast_segment_points_at_container,
+        "`back_cast` segment(s) name a polity far larger",
+        "a `back_cast` segment naming a container rather than the unit's own polity -- 12 such "
+        "segments sat unmeasured while the gate read only `matched`",
+    ),
+    (
+        "validate_matched_target_territory.py",
+        mutate_ledger_coverage_unparseable,
+        "coverage_json does not parse: 1, pinned 0",
+        "a ledger row the gate cannot parse, which it used to skip silently and still print PASS",
+    ),
+    (
+        "validate_matched_target_territory.py",
+        mutate_routing_ledger_removed,
+        "absent -- it is committed",
+        "the committed ledger missing from the checkout, which the gate used to SKIP with exit 0",
+    ),
+    (
+        "pipelines/polity-autoimprove/19_composition_overlaps.py",
+        mutate_composition_overlap_key_dropped,
+        "but the table has no such row",
+        "a composition-overlap pair the alias map alone produces missing from the committed table "
+        "-- the staleness CI's old report-mode step could not fail on",
+    ),
+    (
+        "pipelines/agent-harness/derive_aliases.py",
+        mutate_back_cast_onto_era_container,
+        "disagree (back_cast_inside)",
+        "a back_cast segment naming the era's national row inside its own span, which the "
+        "registry does not route -- reported but non-blocking until 2026-09-24",
+    ),
+    (
+        "validate_aliases.py",
+        mutate_back_cast_alias_reaches_into_target,
+        "back_cast row ends",
+        "a back_cast alias reaching into its target's own span, where the before-target exemption "
+        "it enjoys no longer holds",
+    ),
+    (
+        "validate_ci_skips.py",
+        mutate_unlisted_ci_skip,
+        "new_tool.py skipped in CI but is not allowlisted",
+        "a CI step that newly SKIPS -- green in the summary, verifying nothing",
+    ),
+    (
+        "validate_ci_skips.py",
+        mutate_allowlisted_ci_skip_went_silent,
+        "is allowlisted to skip but did not log a skip",
+        "an allowlisted tool whose skip is no longer recorded, so it skips silently again",
+    ),
+    (
+        "validate_ci_skips.py",
+        mutate_tool_declares_ci_skip,
+        "but is not in the allowlist",
+        "a tool that prints the CI-skip token without an allowlist entry, caught statically",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -6685,6 +6995,10 @@ ARGS = {
     # Same trap as write_manifest: run with no arguments this script REGENERATES the
     # published flags from the mutated state and exits 0, absorbing the defect.
     "write_source_flow_flags.py": ("--check",),
+    # Report mode exits 0 whatever it finds; --check-keys is the CI-computable mode.
+    "pipelines/polity-autoimprove/19_composition_overlaps.py": ("--check-keys",),
+    # Neither mode is the default: with no argument argparse exits 2 on every run.
+    "pipelines/agent-harness/derive_aliases.py": ("--check", "--quiet"),
 }
 
 # Non-script files under scripts/ that a gate reads before doing anything. build_database
@@ -7464,6 +7778,21 @@ WRITABLE = {
         "polities_database.gpkg",
         "pipelines/polity-autoimprove/state/polity_composition.csv",
     ),
+    # The case drops a row from the overlap table; the registry and alias map are read-only but
+    # must be present, since the tool reads both from its own state/ directory.
+    "pipelines/polity-autoimprove/19_composition_overlaps.py": (
+        "pipelines/polity-autoimprove/state/composition_overlaps.csv",
+        "pipelines/polity-autoimprove/state/polity_composition.csv",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
+    # The case rewrites a ledger segment. The registry, names table and policy are read-only but
+    # the tool resolves all three relative to its own directory.
+    "pipelines/agent-harness/derive_aliases.py": (
+        "pipelines/agent-harness/state/routing_verdicts.csv",
+        "pipelines/agent-harness/state/panel_unit_names.csv",
+        "pipelines/agent-harness/policy.json",
+        "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
 }
 
 
@@ -7493,6 +7822,36 @@ def _gates_without_a_case() -> list:
     )
 
 
+def ci_invoked_scripts(workflow: str) -> set:
+    """Repo-relative paths of every .py file a `run:` command in the workflow executes."""
+    import shlex
+    try:
+        import yaml
+    except ImportError:
+        yaml = None
+    with open(workflow, encoding="utf-8") as fh:
+        text = fh.read()
+    commands = []
+    if yaml is not None:
+        doc = yaml.safe_load(text)
+        for job in (doc.get("jobs") or {}).values():
+            for step in job.get("steps") or []:
+                if isinstance(step, dict) and isinstance(step.get("run"), str):
+                    commands.extend(step["run"].splitlines())
+    else:  # single-line `run:` values; every gate step in this workflow is one
+        commands = [m.group(1) for m in re.finditer(r"^\s*run:\s*(.+)$", text, re.M)]
+    out = set()
+    for line in commands:
+        try:
+            toks = shlex.split(line, comments=True)
+        except ValueError:
+            continue
+        for i, t in enumerate(toks[:-1]):
+            if os.path.basename(t) in ("python", "python3") and toks[i + 1].endswith(".py"):
+                out.add(os.path.normpath(toks[i + 1]))
+    return out
+
+
 def check_every_gate_runs_in_ci() -> list:
     """Every gate script must appear in the workflow that claims to run them all.
 
@@ -7509,14 +7868,17 @@ def check_every_gate_runs_in_ci() -> list:
     workflow = os.path.join(REPO, ".github/workflows/validate.yml")
     if not os.path.exists(workflow):
         return ["`.github/workflows/validate.yml` is missing"]
-    with open(workflow, encoding="utf-8") as fh:
-        text = fh.read()
+    invoked = ci_invoked_scripts(workflow)
     scripts = sorted(
         f
         for f in os.listdir(os.path.join(REPO, "scripts"))
         if f.startswith(("validate_", "crosscheck_", "audit_")) and f.endswith(".py")
     )
-    missing = [f for f in scripts if f not in text]
+    # INVOKED, not MENTIONED. This used to be a substring test over the whole workflow text, so a
+    # gate named only in a COMMENT -- validate.yml explains many gates in prose beside the step that
+    # runs a different one -- counted as running in CI. Now the script must be the program a `run:`
+    # command hands to python3.
+    missing = [f for f in scripts if f"scripts/{f}" not in invoked]
     problems = []
     if missing:
         problems.append(
@@ -7544,23 +7906,43 @@ def check_every_gate_runs_in_ci() -> list:
     #
     # Detected by AST rather than by regex: a first pass with a pattern misread
     # `BASELINE_DIFFERENT = {237}` as empty, because the heuristic looked for quotes.
+    #
+    # WIDENED 2026-09-24 from four name prefixes in scripts/ to EVERY uppercase module-level set in
+    # scripts/ and pipelines/. The prefixes missed the same trap under other names --
+    # validate_matcher_fixture.py's EXPECT_AMBIGUOUS_LABELS is a pinned expectation, one emptying
+    # away from `{}` -- and 64 module constants in 50 files were bare sets. A module-level
+    # UPPERCASE name is a constant by convention whatever its prefix, so the name is the rule.
+    # Baseline-prefixed names are still caught INSIDE functions too, as before.
     import ast
     import glob as _glob
     bare = []
-    for path in sorted(_glob.glob(os.path.join(REPO, "scripts", "*.py"))):
+    paths = sorted(_glob.glob(os.path.join(REPO, "scripts", "*.py"))) + sorted(
+        _glob.glob(os.path.join(REPO, "pipelines", "**", "*.py"), recursive=True))
+    for path in paths:
         try:
             tree = ast.parse(open(path, encoding="utf-8").read())
         except SyntaxError:
             continue
+        module_level = set(map(id, tree.body))
         for node in ast.walk(tree):
-            if not isinstance(node, ast.Assign) or not isinstance(node.value, ast.Set):
+            if isinstance(node, ast.Assign):
+                targets, value = node.targets, node.value
+            elif isinstance(node, ast.AnnAssign) and node.value is not None:
+                targets, value = [node.target], node.value
+            else:
                 continue
-            names = [getattr(t, "id", "") for t in node.targets]
-            if names and any(
+            if not isinstance(value, ast.Set):
+                continue
+            names = [getattr(t, "id", "") for t in targets]
+            if not names or not names[0]:
+                continue
+            constant = (id(node) in module_level and names[0].upper() == names[0]
+                        and any(c.isalpha() for c in names[0]))
+            if constant or any(
                 names[0].startswith(p)
                 for p in ("BASELINE", "KNOWN", "TRACKED", "LEGITIMATE")
             ):
-                bare.append(f"{os.path.basename(path)}:{names[0]}")
+                bare.append(f"{os.path.relpath(path, REPO)}:{names[0]}")
     if bare:
         problems.append(
             f"{len(bare)} baseline constant(s) declared as a bare set literal, which "
@@ -7727,10 +8109,19 @@ def main() -> int:
             code, out = run(root, gate)
             fired = code != 0
             names = expect in out
+            base_code, base_out = run_unmutated(gate)
+            in_passing = expect in base_out
             print(f"case {n}: {gate}")
             print(f"   mutation: {did}")
             print(f"   detects:  {why}")
-            print(f"   result:   exit={code} names {expect}: {names}")
+            print(f"   result:   exit={code} names {expect}: {names}; "
+                  f"unmutated exit={base_code} names it: {in_passing}")
+            if in_passing:
+                problems.append(
+                    f"case {n} ({gate}): {expect!r} also appears in the gate's output on the "
+                    f"UNMUTATED repository, so naming it proves nothing about the injected defect "
+                    f"-- pin a string only the failure message prints"
+                )
             if not fired:
                 problems.append(
                     f"{gate} PASSED a mutation it claims to catch ({did}) — the gate "

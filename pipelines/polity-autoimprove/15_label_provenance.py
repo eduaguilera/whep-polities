@@ -78,10 +78,10 @@ DEFAULT_PANEL = os.path.expanduser(
 
 # Raw `variable` values that are production-side rather than trade. Trade rows outnumber these
 # ~3:1 and matching against them produces false positives.
-PRODUCTION_VARIABLES = {
+PRODUCTION_VARIABLES = frozenset({
     "production", "area", "bearing area", "planted area", "dry production",
     "laying hens", "number", "production of cocoons", "eggs for incubation",
-}
+})
 
 # Chance-collision level between unrelated labels, measured across this panel. A match at or under
 # this is not evidence of anything.

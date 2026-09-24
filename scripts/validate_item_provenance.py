@@ -50,8 +50,8 @@ MIN_VALUES = 8
 MIN_DISTINCT = 6
 SHARE_FLOOR = 0.60
 
-STATUSES = {"attributable", "ambiguous", "split_candidate", "unattributable",
-            "too_few_distinct", "too_few_values"}
+STATUSES = frozenset({"attributable", "ambiguous", "split_candidate", "unattributable",
+            "too_few_distinct", "too_few_values"})
 
 # Measured 2026-08-18. BIDIRECTIONAL: repairing a mixture must remove its entry with a note.
 BASELINE_MIXED = frozenset({

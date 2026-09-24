@@ -80,8 +80,8 @@ BASELINE_PAIRS = 24
 # gate does not depend on the generator's constant to know what `undetermined` means.
 MIN_DIRECTIONAL = 5
 
-RELATIONS = {"containment", "identical", "identical_indistinct", "disagreement",
-             "orthographic_variant", "undetermined"}
+RELATIONS = frozenset({"containment", "identical", "identical_indistinct", "disagreement",
+             "orthographic_variant", "undetermined"})
 
 # Every pair with a supported verdict on the first run. GENERATED FROM THE TABLE, never hand-typed --
 # transcribing a baseline from a truncated printout once missed 18 of 30 entries.

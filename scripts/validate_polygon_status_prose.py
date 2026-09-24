@@ -53,8 +53,8 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POLITIES = os.path.join(REPO, "wiki/polities")
 BASELINE = os.path.join(REPO, "scripts/validate_polygon_status_prose_baseline.txt")
 
-BOUND = {"assigned", "proxy", "estimate", "polygon_vintage_drift"}
-DEAD = {"retired", "superseded"}
+BOUND = frozenset({"assigned", "proxy", "estimate", "polygon_vintage_drift"})
+DEAD = frozenset({"retired", "superseded"})
 
 SECTION = re.compile(r"territor|polygon", re.I)
 LABEL = re.compile(

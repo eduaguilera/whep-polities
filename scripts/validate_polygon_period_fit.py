@@ -71,7 +71,7 @@ INDEX = os.path.join(REPO, "data/final/polygon_feature_index.csv")
 GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
 WIKI = os.path.join(REPO, "wiki/polities")
 DEAD = ("retired", "superseded")
-TEMPORAL = {"cshapes-2.0", "cshapes-europe", "cliopatria"}
+TEMPORAL = frozenset({"cshapes-2.0", "cshapes-europe", "cliopatria"})
 TOL = 0.02          # a step counts as "differently sized" beyond 2%
 
 # Bindings judged and accepted. Two kinds, and the distinction is deliberate:

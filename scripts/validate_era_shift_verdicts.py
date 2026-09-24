@@ -94,9 +94,9 @@ FIELDS = ["source", "label", "whep_code", "item", "year", "period", "unit", "pro
 # tobacco area series beside it has no 1945 cell at all). If a future member of this class turns out
 # to be a real collapse, the honest fix is a new non-convicting verdict for it, not a silent
 # demotion of the whole arm back to one side.
-CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift",
-              "no_area_level_drop"}
-NOT_CONVICTING = {"high_yield_3to20", "plausible_yield", "no_area_level_consistent", "untestable"}
+CONVICTING = frozenset({"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift",
+              "no_area_level_drop"})
+NOT_CONVICTING = frozenset({"high_yield_3to20", "plausible_yield", "no_area_level_consistent", "untestable"})
 IMPOSSIBLE_YIELD, HIGH_YIELD, LEVEL_SHIFT, ERA_FROM = 20.0, 3.0, 30.0, 1934
 # DERIVED, NOT A SECOND TUNABLE. Two independent constants can be edited apart, and an arm whose
 # threshold has drifted to 0.0 stops firing while its twin keeps working -- silently, because each

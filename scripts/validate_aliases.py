@@ -39,6 +39,7 @@ Checks:
      these are where the debris lands.
   4. `year_start <= year_end` when both are present.
   5. `source` is a slug or empty, never prose.
+  6. a `back_cast` row ends before its target begins (year_end < start_year).
 
 Usage:
   python3 scripts/validate_aliases.py
@@ -55,7 +56,7 @@ ALIASES = os.path.join(
 POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 
 DEAD_STATUS = ("retired", "superseded")
-CONFIDENCE_VALUES = {"high", "medium", "low", ""}
+CONFIDENCE_VALUES = frozenset({"high", "medium", "low", ""})
 CODE_RE = re.compile(r"^[A-Za-z0-9]+(-[A-Za-z0-9]+)*-[0-9]{4}-[0-9]{4}$")
 # A source is a slug naming where the label came from (`faostat`, `fao1952`,
 # `iia-cotton`, `whep-split-2026-06-29`), or empty for a rule that applies to any
@@ -204,6 +205,32 @@ for key in sorted(before_target - BASELINE_BEFORE_TARGET):
         f"years route to a polity that did not yet exist. Clip year_start to the target's "
         f"start_year, or route the earlier years to a polity that does cover them (issue 54)"
     )
+# ...and a `back_cast` row must END before its target begins, which is the other half of what the
+# disposition asserts. The exemption above is sound only if the row's years are all BEFORE the
+# polity existed; a back_cast reaching into its target's own span is an observed rule wearing the
+# exemption, and one onto the era's container is the region-averaged-with-its-country defect
+# derive_aliases.py blocks as `back_cast_inside`. Holds for every row on 2026-09-24, so it is pinned
+# with no baseline.
+for i, r in enumerate(rows, start=2):
+    if (r.get("disposition") or "").strip() != "back_cast":
+        continue
+    target = (r.get("polity_code") or "").strip()
+    span = spans.get(target)
+    y1 = (r.get("year_end") or "").strip()
+    if not span:
+        continue  # an unknown target is already reported by check 1
+    if not YEAR_RE.match(y1):
+        problems.append(
+            f"line {i}, {r.get('source_label', '')!r}: back_cast row has no year_end -- a "
+            f"back_cast must end before {target} begins ({span[0]})"
+        )
+    elif int(y1) >= span[0]:
+        problems.append(
+            f"line {i}, {r.get('source_label', '')!r}: back_cast row ends {y1}, not before "
+            f"{target} begins ({span[0]}) -- years inside the target's span are observed, not "
+            f"back-cast; split the row or drop the disposition for those years"
+        )
+
 for key in sorted(BASELINE_BEFORE_TARGET - before_target):
     problems.append(
         f"alias {key[0]!r} [{key[1] or 'no source'}] -> {key[2]} is baselined as beginning "

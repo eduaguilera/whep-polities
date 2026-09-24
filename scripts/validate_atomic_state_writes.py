@@ -83,7 +83,7 @@ PROTECTED = {
 }
 
 # Calls that truncate their destination on open.
-TRUNCATING_SINKS = {"to_csv", "to_parquet", "to_json", "write_text", "write_bytes"}
+TRUNCATING_SINKS = frozenset({"to_csv", "to_parquet", "to_json", "write_text", "write_bytes"})
 # A target expression mentioning any of these is a temp handle, i.e. the atomic pattern.
 TEMP_HINTS = ("tmp", "fd", "tempfile", "TMP", "StringIO", "buf")
 

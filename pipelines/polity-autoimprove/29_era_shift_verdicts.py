@@ -132,8 +132,8 @@ LEVEL_DROP = 1.0 / LEVEL_SHIFT
 FIELDS = ("source", "label", "whep_code", "item", "year", "period", "unit", "production", "area_ha",
           "implied_yield", "own_pre_era_median", "ratio_to_own", "verdict", "convicted")
 
-CONVICTING = {"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift",
-              "no_area_level_drop"}
+CONVICTING = frozenset({"impossible_yield_zero_area", "impossible_yield", "no_area_level_shift",
+              "no_area_level_drop"})
 
 
 def _n(x, nd=6):

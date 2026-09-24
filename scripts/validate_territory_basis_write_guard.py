@@ -39,8 +39,8 @@ TOOL = os.path.join(REPO, "pipelines", "polity-autoimprove", "04_territory_basis
 
 # Restated here rather than imported: a gate that imports the constant it checks agrees with the
 # tool by construction. If either name is renamed, this gate must be updated deliberately.
-VOLATILE_COLUMNS = {"layerb_data_rows", "priority_review"}
-VOLATILE_INPUTS = {"matched_rows.parquet", "territorial_flagged.json"}
+VOLATILE_COLUMNS = frozenset({"layerb_data_rows", "priority_review"})
+VOLATILE_INPUTS = frozenset({"matched_rows.parquet", "territorial_flagged.json"})
 MISSING_NAME = "_missing"
 DEST_NAME = "_DEST"
 

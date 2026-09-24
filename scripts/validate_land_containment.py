@@ -58,8 +58,8 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/land_containment.
 COLUMNS = ["polity_code", "year", "arable_recorded", "crop_area_floor", "n_crops",
            "irrigated_arable", "binding_bound", "floor", "ratio", "use_total", "block_deficit",
            "implied_correct", "action", "diagnosis", "landuse_block_status"]
-ACTIONS = {"replace_value", "review_cell", "review"}
-BOUNDS = {"crop_area_floor", "irrigated_arable"}
+ACTIONS = frozenset({"replace_value", "review_cell", "review"})
+BOUNDS = frozenset({"crop_area_floor", "irrigated_arable"})
 # the generator's breach window, --tolerance, and its floor of half a printed unit
 TOLERANCE = 0.01
 # 06 verdicts that already name a value for the arable cell itself

@@ -44,7 +44,7 @@ AUDIT_OUT = os.path.join(H, "audit_sample_banked.csv")
 # flatter schema ({agree, own_verdict, own_polity_code, reason}); they are real
 # reviews and are counted, but they carry no model/lens and their agreement was
 # self-declared by the reviewer rather than compared in code.
-LEGACY_KEYS = {"agree", "own_verdict"}
+LEGACY_KEYS = frozenset({"agree", "own_verdict"})
 
 
 def load(path):
