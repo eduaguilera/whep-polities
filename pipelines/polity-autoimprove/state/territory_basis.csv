@@ -1,6 +1,6 @@
 polity_code,polity_name,start_year,end_year,polygon_source,polygon_feature_year,polygon_status,overlaps_1860_1961,territory_basis,territory_assumed,priority_review,border_check,border_source_gap_pct,basis_reason,layerb_data_rows
 ABW-1800-2025,Aruba,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-ADE-1839-1963,Aden Protectorate (1839-1963),1839,1963,cshapes-2.0,1967.0,proxy,True,back_projected,True,False,no_reference,,polygon vintage 1967 is AFTER the period ends (1963) — later/modern border applied back,18
+ADE-1839-1967,Aden Protectorate (1839-1967),1839,1967,cshapes-2.0,1967.0,proxy,True,assumed_constant,True,False,no_reference,,single 1967 polygon held across a 128y span (1839-1967); borders may have changed,18
 AEF-1910-1960,French Equatorial Africa (AEF),1910,1960,constructed,1938.0,assigned,True,assumed_constant,True,True,no_reference,,single 1938 polygon held across a 50y span (1910-1960); borders may have changed,373
 AFG-1800-1893,Afghanistan (to 1893),1800,1893,cshapes-2.0,1888.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.01,single 1888 polygon held across a 93y span (1800-1893); borders may have changed,0
 AFG-1893-1919,Afghanistan (1893-1919),1893,1919,cshapes-2.0,1893.0,assigned,True,assumed_constant,False,False,stable_confirmed,0.01,"single 1893 polygon held across a 26y span (1893-1919); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.01%), so the single polygon is not an assumption",0
@@ -329,7 +329,7 @@ DZA-1902-1919,Algeria (1902-1919),1902,1919,cshapes-2.0,1902.0,assigned,True,mea
 DZA-1919-1962,Algeria (1919-1962),1919,1962,cshapes-2.0,1919.0,assigned,True,assumed_constant,False,False,stable_confirmed,0.04,"single 1919 polygon held across a 43y span (1919-1962); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.04%), so the single polygon is not an assumption",1535
 DZA-1962-2025,Algeria (1962-2025),1962,2025,cshapes-2.0,1962.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.04,single 1962 polygon held across a 63y span (1962-2025); borders may have changed,0
 DZA-CVD-1902-1919,"Algerian civil departments (Alger, Oran, Constantine, 1902-1919)",1902,1919,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),418
-ECU-1800-1942,Ecuador (to 1942),1800,1942,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1886 polygon held across a 142y span (1800-1942); borders may have changed,376
+ECU-1830-1942,Ecuador (to 1942),1830,1942,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1886 polygon held across a 112y span (1830-1942); borders may have changed,376
 ECU-1942-2025,Ecuador,1942,2025,cshapes-2.0,1942.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1942 polygon held across a 83y span (1942-2025); borders may have changed,754
 EGB-1830-1914,Egba United Government (Abeokuta),1830,1914,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 EGY-1800-1820,Egypt (to 1820),1800,1820,cliopatria,1811.0,assigned,False,measured,False,False,no_reference,,vintage 1811 faithful to period 1800-1820,0
@@ -499,7 +499,7 @@ FRA-79-1800-2025,Deux-Sèvres (département),1800,2025,gadm-4.1-adm2,,assigned,T
 FRA-80-1800-2025,Somme (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-81-1800-2025,Tarn (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-83-1790-2025,Var (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-FRA-84-1790-2025,Vaucluse (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+FRA-84-1793-2025,Vaucluse (département),1793,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-85-1800-2025,Vendée (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-88-1800-2025,Vosges (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-89-1800-2025,Yonne,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1207,7 +1207,7 @@ UZB-1991-2025,Uzbekistan,1991,2025,cshapes-2.0,1991.0,assigned,False,assumed_con
 VAT-1929-2025,Holy See (Vatican City State),1929,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 VCT-1800-1833,Saint Vincent (to 1833),1800,1833,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 VCT-1833-2025,Saint Vincent and the Grenadines,1833,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,265
-VEN-1821-2025,Venezuela,1821,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1886 polygon held across a 204y span (1821-2025); borders may have changed,1050
+VEN-1830-2025,Venezuela,1830,2025,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1886 polygon held across a 195y span (1830-2025); borders may have changed,1050
 VGB-1800-2025,British Virgin Islands,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,38
 VIC-1851-1901,Victoria (to 1900),1851,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 50y span (1851-1901); borders may have changed,195
 VIR-1917-2025,United States Virgin Islands,1917,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,True,no_reference,,single 2023 polygon held across a 108y span (1917-2025); borders may have changed,65

@@ -59,7 +59,6 @@ F237-1954-1975    #   8 rows, 2408 B
 NER-1911-1922     #   8 rows,  759 B
 TNGU-1920-1949    #   6 rows, 1581 B -- flagged page_inadequate in state/suspect_wiki_pages.csv
 GKM-1912-1916     #   5 rows, 1550 B
-LSO-1868-1886     #   4 rows, 2430 B
 THA-1907-1909     #   4 rows, 1431 B
 COK-1800-2025     #   3 rows, 1834 B
 NIU-1800-2025     #   2 rows, 1549 B

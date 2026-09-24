@@ -10,7 +10,7 @@ MAR-1911-1958,1950,use unused productive land,37510.0,7510.0,replace_value,digit
 JPN-1945-1952,1951,(multiple),35848.0,36848.0,review,"leading digit dropped: one component is low by exactly 1,000 (10^3); 1 candidate(s) below that place value: use agricultural area permanent peadows pastures=356",36848.0,37114.7,4
 ZWE-1900-1953,1951,(multiple),34941.0,38941.0,review,"components sum to 34,941 but total is 38,941",38941.0,38971.6,4
 ECU-1942-2025,1949,(multiple),26500.0,27500.0,review,"leading digit dropped: one component is low by exactly 1,000 (10^3); 1 candidate(s) below that place value: use agricultural area permanent peadows pastures=700",27500.0,25524.1,5
-ADE-1839-1963,1947,use agricultural area arable land orchards,24110.0,110.0,replace_value,digits prepended,29008.0,28711.6,3
+ADE-1839-1967,1947,use agricultural area arable land orchards,24110.0,110.0,replace_value,digits prepended,29008.0,28711.6,3
 GBR-1921-2025,1951,(multiple),23401.0,24401.0,review,"leading digit dropped: one component is low by exactly 1,000 (10^3); 1 candidate(s) below that place value: use forests woodlands=539",24401.0,24396.4,4
 NCL-1800-2025,1949,use agricultural area arable land orchards,17612.0,1785.0,review_cell,value too large (basis unclear),1860.0,1879.8,2
 ISR-1948-1967,1951,use agricultural area arable land orchards,17397.0,397.0,replace_value,digits prepended,2059.0,2078.6,3

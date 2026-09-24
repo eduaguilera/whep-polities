@@ -241,7 +241,7 @@ iia,united kingdom,GBR-1921-2025,hops,,1934-1938,tonnes,1271100,7400,171.77027,1
 iia,united states of america,USA-1867-1959,hops,,1934-1938,tonnes,1768000,14000,126.285714,23431.9,75.452695,impossible_yield,True
 iia,united states of america,USA-1867-1959,"tobacco, unmanufactured",,1934-1938,tonnes,60387500,627000,96.311802,630805.5,95.730776,impossible_yield,True
 iia,uruguay,URY-1828-2025,"tobacco, unmanufactured",,1934-1938,tonnes,54000,1000,54,577.95,93.433688,impossible_yield,True
-iia,venezuela,VEN-1821-2025,"tobacco, unmanufactured",,1934-1938,tonnes,322100,8000,40.2625,,,impossible_yield,True
+iia,venezuela,VEN-1830-2025,"tobacco, unmanufactured",,1934-1938,tonnes,322100,8000,40.2625,,,impossible_yield,True
 iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",,1934-1938,tonnes,168700,2000,84.35,1275.6,132.251489,impossible_yield,True
 iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1934,,tonnes,124500,1000,124.5,1275.6,97.601129,impossible_yield,True
 iia,viet nam,VNM-1887-1954,"tobacco, unmanufactured",1935,,tonnes,111200,1000,111.2,1275.6,87.174663,impossible_yield,True
@@ -310,7 +310,7 @@ iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1935,,tonnes,59500,0,,294.7,
 iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1936,,tonnes,71700,0,,294.7,243.298269,impossible_yield_zero_area,True
 iia,tunisia,TUN-1881-2025,"tobacco, unmanufactured",1937,,tonnes,55900,0,,294.7,189.684425,impossible_yield_zero_area,True
 iia,austria,AUT-1919-2025,hops,,1934-1938,tonnes,4900,,,327.5,14.961832,no_area_level_consistent,False
-iia,ecuador,ECU-1800-1942,"tobacco, unmanufactured",,1934-1938,tonnes,69000,,,12751.05,5.411319,no_area_level_consistent,False
+iia,ecuador,ECU-1830-1942,"tobacco, unmanufactured",,1934-1938,tonnes,69000,,,12751.05,5.411319,no_area_level_consistent,False
 iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1939,,tonnes,5800,,,654,8.868502,no_area_level_consistent,False
 iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1940,,tonnes,2900,,,654,4.434251,no_area_level_consistent,False
 iia,guinea,GIN-1894-1958,"tobacco, unmanufactured",1942,,tonnes,2800,,,654,4.281346,no_area_level_consistent,False

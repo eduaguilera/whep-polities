@@ -323,7 +323,7 @@ chain; `German East Africa (Tanganyika)` → `TAN-1891-1920`;
 `Nyasaland Protectorate (Malawi)` → `MWI-1891-1953`;
 `Italian Libia Cyrenaica (Lybia)` → the `LBY-1912-1919`… chain;
 `Zanzibar` → `ZNZ-1890-1963`; `Newfoundland` → `NFL-1907-1949`;
-`Aden` → `ADE-1839-1963`; `St. Lucía` → `LCA-1838-2025`;
+`Aden` → `ADE-1839-1967`; `St. Lucía` → `LCA-1838-2025`;
 `St. Vincent` → `VCT-1800-1833`/`VCT-1833-2025`; `Oman` → `OMN-1856-2025`;
 `St. Helena` → `SHN-1834-1967`; `Germany/Zollverein` → the
 `DEU-1800-1866` *Prussia* chain; `Leeward Islands (…)` → `BLI-1833-1960`;

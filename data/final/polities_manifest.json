@@ -11,7 +11,7 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "68a2a7743136318670b6270730771d38c089c8608ed272d0f10f8264293cbeea",
+ "identity_sha256": "860232bb9e1369aacbce77b05c9e90adbccd59b6a9d6138a47ea341a0883339a",
  "counts": {
   "total": 1233,
   "live": 1189,
@@ -154,7 +154,7 @@
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
-  "sha256": "75c7efedca43b01eafd734e37310d5588bbd55635b99bfa8f2f626c98f8a2b24",
+  "sha256": "bcfb42c5dee2c18ac00ea5cd64eddd3059db15de2a9782ca9ada3ce4ba2ed441",
   "mappings": 297,
   "areas": 244,
   "coverage": {
@@ -172,7 +172,7 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "07c1c45edc90cbe37f9b5fcf09444619b6b836acb7607cf865784bb943019098",
+  "sha256": "1bb359f065f4fa15550664b8a348983db9dc2bf1fc38d88ae214f1068654149d",
   "aliases": 2517,
   "labels": 1327,
   "sources": [
@@ -214,9 +214,9 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "97e899dbfaf292a8ed0d3de1b8d003f341d14731a76fe44bd1c3ba47af31c3c9",
-  "relations": 5743,
-  "modern_iso3": 80
+  "sha256": "4a2a3c64de00da8bd817a4bc99dea0382eb0bcb64ce925eb55174ab0af2ed068",
+  "relations": 5796,
+  "modern_iso3": 81
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
@@ -346,8 +346,13 @@
   "DDR": [
    {
     "family": "DEU",
-    "year_min": 1938,
+    "year_min": 1945,
     "year_max": 1948
+   },
+   {
+    "family": "SBZ",
+    "year_min": 1938,
+    "year_max": 1944
    }
   ],
   "ERI": [
@@ -377,11 +382,6 @@
    }
   ],
   "FSM": [
-   {
-    "family": "CAR",
-    "year_min": 1920,
-    "year_max": 1944
-   },
    {
     "family": "TTPI",
     "year_min": 1947,
@@ -418,8 +418,13 @@
   ],
   "ITA": [
    {
-    "family": "PAP",
+    "family": "DMO",
     "year_min": 1850,
+    "year_max": 1859
+   },
+   {
+    "family": "PAP",
+    "year_min": 1860,
     "year_max": 1860
    }
   ],
@@ -517,6 +522,13 @@
     "family": "IGL",
     "year_min": 1893,
     "year_max": 1898
+   }
+  ],
+  "PAN": [
+   {
+    "family": "COL",
+    "year_min": 1850,
+    "year_max": 1902
    }
   ],
   "PCI": [
@@ -825,7 +837,7 @@
  "territory_families_why": "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not link the families that hold the same ground at different times, and a consumer matching on it alone gets no answer for the years before a modern code's own rows begin. Czech territory in 1950 is held by CSK (Czechoslovakia), Montenegrin by YUG, Moroccan before 1911 by the local code MOR -- none of which equals the code being asked about. Each entry names a family that held this modern code's territory and the years over which the database asserts it with a predecessor or successor EDGE (hop_depth 1). It is derived from those edges, not hand-written, so it cannot drift from the database. For per-year resolution, including the deeper traversals this field omits, read iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a polity whose edge is missing, or by no row at all -- SAU has no holder for 1912-1923, which is the second kind: SAU-1924-2025 names OTT-1908-1912 and nothing models the Hejaz or Nejd between them. This sentence read 'MAR has no holder for 1904-1910' until 2026-08-17, when MOR-1904-1911 was added and that hole was closed (issue 82). A NARROW YEAR RANGE IS ALSO NOT A HOLE: this field takes hop_depth 1 only, so a family that reaches the modern code through a chain of its OWN rows is reported over the last link's years alone -- MAR/MOR reads 1904-1910, not 1850-1910, because MOR-1800-1904 now sits behind MOR-1904-1911. Read iso3_successor_map for the rest.",
  "live_polity_codes": [
   "ABW-1800-2025",
-  "ADE-1839-1963",
+  "ADE-1839-1967",
   "AEF-1910-1960",
   "AFG-1800-1893",
   "AFG-1893-1919",
@@ -1142,7 +1154,7 @@
   "DZA-1919-1962",
   "DZA-1962-2025",
   "DZA-CVD-1902-1919",
-  "ECU-1800-1942",
+  "ECU-1830-1942",
   "ECU-1942-2025",
   "EGB-1830-1914",
   "EGY-1800-1820",
@@ -1308,7 +1320,7 @@
   "FRA-80-1800-2025",
   "FRA-81-1800-2025",
   "FRA-83-1790-2025",
-  "FRA-84-1790-2025",
+  "FRA-84-1793-2025",
   "FRA-85-1800-2025",
   "FRA-88-1800-2025",
   "FRA-89-1800-2025",
@@ -1988,7 +2000,7 @@
   "VAT-1929-2025",
   "VCT-1800-1833",
   "VCT-1833-2025",
-  "VEN-1821-2025",
+  "VEN-1830-2025",
   "VGB-1800-2025",
   "VIC-1851-1901",
   "VIR-1917-2025",

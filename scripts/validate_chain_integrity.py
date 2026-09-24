@@ -139,21 +139,14 @@ DEAD_STATUS = ("retired", "superseded")
 # intent that the database cannot yet satisfy, which is better than deleting it and losing
 # the fact that the predecessor existed.
 BASELINE_DEAD = {
-    ("BRL-1938-1945", "predecessor", "BRL-1920-1938"): "Berlin before the 1938 Greater Berlin boundary; no pre-1938 BRL row exists",
-    ("BRL-1945-1949", "successor", "EBL-1949-1990"): "East Berlin 1949-1990; no EBL row exists",
-    # REMOVED 2026-08-17 (issue 171): the two GTO-1919-1922 entries, one per mandate. German
-    # Togoland now HAS a row -- GTO-1884-1920, polygon `constructed/GTO-1884-1920` at 83,724
-    # km2 (CShapes gwcode 461 union the BTL difference) -- and both BTL-1920-1957 and
-    # FTO-1920-1960 point at it, symmetrically. It is not spanned 1919-1922, as the dead
-    # reference was: a 1919-1922 row would OVERLAP both of its own successors by two years,
-    # and it would leave 1884-1918 with no row at all. Dead targets 9 -> 7.
-    ("CZN-1903-1979", "predecessor", "PAN-1800-1979"): "Panama before the 1903 Canal Zone, i.e. as part of Colombia; the PAN chain starts at 1903",
-    ("HUN-1920-1938", "predecessor", "HUN-1919-1920"): "the 1919-1920 Hungarian interregnum; the HUN chain jumps 1918-1919 -> 1920-1938",
-    ("SYR-1920-1922", "predecessor", "SYR-1918-1920"): "OETA East / Arab Kingdom of Syria; the SYR chain starts at the 1920 mandate",
-    ("TNGU-1920-1949", "predecessor", "GNGU-1884-1914"): "German New Guinea; no GNGU row exists",
-    # The only entry here that is not a missing polity: both endpoints are dead rows, so no
-    # consumer can traverse the edge. Repointing it would be churn in retired history.
-    ("CAN-1948-2025", "predecessor", "CAN-1866-1948"): "CAN-1948-2025 is itself retired and CAN-1866-1948 was re-spanned; a dead row pointing at a dead row",
+    # EMPTIED 2026-09-24 (7 -> 0). Each entry was repointed at the row that exists or removed:
+    #   CZN-1903-1979 pred PAN-1800-1979  -> COL-1830-1903 (the isthmus was Colombian until 1903)
+    #   HUN-1920-1938 pred HUN-1919-1920  -> HUN-1918-1920 (which already named HUN-1920-1938)
+    #   BRL-1945-1949 succ EBL-1949-1990  -> F77-1949-1990 (East Berlin had no row of its own)
+    #   CAN-1948-2025 pred CAN-1866-1948  -> CAN-1886-1948 (dead to dead, as before, but real)
+    #   BRL-1938-1945 pred BRL-1920-1938, SYR-1920-1922 pred SYR-1918-1920 and
+    #   TNGU-1920-1949 pred GNGU-1884-1914 -> removed; each page now says in prose which entity
+    #   preceded it and that it has no row. The missing polities stay recorded on those pages.
 }
 
 # --- D: rows at the ceiling that declare a successor ---------------------------------------
@@ -219,7 +212,18 @@ BASELINE_ASYMMETRY = {
     # LOWERED 191 -> 188 on 2026-09-11.
     # The three new post-independence state rows -- AUS-VIC-1901-2025, AUS-QLD-1901-2025 and USA-AK-1959-2025 -- now name the colony or territory they succeeded, which is the reverse of an edge the counterpart already asserted.
     # No new historical claim: VIC-1851-1900, QUE-1859-1900 and ALK-1867-1959 each already named a successor, and each named the whole COUNTRY, which is what was corrected.
-    "successor_only": 188,
+    # LOWERED 188 -> 165 on 2026-09-24 (fix/wiki-dates-and-links): chain links into retired or
+    # superseded rows repointed at their live replacements (the five pre-unification Italian states,
+    # F248, GKM, CHN, IND, IDN, MNE, ANG/KSJ), historically wrong links corrected (F77, PAN, VNM,
+    # ETH, GCAR/CAR/TTPI/FSM, ZWE/SRH, BGD, SYR, POL, SER, SWE, DEU/AUT, BLX) and COL-1800-1830 now
+    # naming VEN/ECU, which begin in 1830. Most edges became symmetric by stating the reverse of an
+    # edge one side already asserted. It is 165, not 164, because SER-1918-1945 -> SRB-2006-2008
+    # was removed and then restored as a known stopgap: the ISO3 successor map reaches the whole
+    # Serbian chain through it (see that page and issue 686). Three historically correct edges
+    # (KSJ -> ANG-1905-1975, TRS -> F248-1947-1991, BRL-1945-1949 -> F77-1949-1990) were left
+    # out of the frontmatter because they made that map's first-found walk misattribute Angola,
+    # the Yugoslav states and East Germany. Each page says so.
+    "successor_only": 165,
     # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
     # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
     # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to
@@ -232,7 +236,8 @@ BASELINE_ASYMMETRY = {
     # RAISED 83 -> 88 on 2026-09-11, and this one is a real increase rather than a correction.
     # The subnational vocabulary added pages that name a predecessor whose counterpart does not reciprocate, because the counterpart is a pre-existing row whose own successor field points elsewhere.
     # The authoring-time reciprocity check refuses these when it can see the conflict; these five predate it or name a counterpart it could not repoint.
-    "predecessor_only": 88,
+    # LOWERED 88 -> 72 on 2026-09-24, same change as successor_only above.
+    "predecessor_only": 72,
 }
 
 BASELINE_LINKS = {
@@ -240,10 +245,6 @@ BASELINE_LINKS = {
     ("fcm-1920-1960.md", "bca-1919-1961"): "British Cameroon; page not yet created",
     # REMOVED 2026-08-17 (issue 171): fto-1920-1960.md's link to gto-1919-1922 is gone; the page
     # now links gto-1884-1920.md, which exists. Broken page links 7 -> 6.
-    ("hun-1920-1938.md", "hun-1919-1920"): "Hungarian interregnum; see BASELINE_DEAD",
-    ("can-1948-2025.md", "can-1866-1948"): "re-spanned Canada row; see BASELINE_DEAD",
-    ("syr-1920-1922.md", "syr-1918-1920"): "Arab Kingdom of Syria; see BASELINE_DEAD",
-    ("czn-1903-1979.md", "pan-1800-1979"): "pre-1903 Panama; see BASELINE_DEAD",
 }
 
 

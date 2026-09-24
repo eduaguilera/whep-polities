@@ -59,7 +59,7 @@ djibouti|iia|1930-1945,FRS-1884-1977,5,redirected,french somali coast,1.00,frenc
 dominican republic|iia|1910-1942,DOM-1800-2025,16,clean,dominican republic,1.00,dominican republic 100%
 dominica|iia|1909-1944,DMA-1800-2025,85,clean,british dominica,1.00,british dominica 100%
 dr congo|iia|1915-1945,COD-1910-1960,149,redirected,belgian congo,1.00,belgian congo 100%
-ecuador|iia|1922-1941,ECU-1800-1942,15,clean,ecuador,1.00,ecuador 100%
+ecuador|iia|1922-1941,ECU-1830-1942,15,clean,ecuador,1.00,ecuador 100%
 ecuador|iia|1942-1945,ECU-1942-2025,7,clean,ecuador,1.00,ecuador 100% [only 7 values — below the 8-value floor]
 egypt|iia|1909-1924,EGY-1899-1925,94,clean,egypt,0.73,egypt 73%
 egypt|iia|1925-1945,EGY-1925-1967,275,clean,egypt,0.65,egypt 65%
@@ -241,7 +241,7 @@ united states virgin islands|iia|1909-1916,DWI-1800-1917,8,redirected,us virgin 
 united states virgin islands|iia|1917-1945,VIR-1917-2025,24,redirected,us virgin islands,1.00,us virgin islands 100%
 uruguay|iia|1910-1945,URY-1828-2025,59,clean,uruguay,1.00,uruguay 100%
 vanuatu|iia|1911-1945,VUT-1800-2025,81,redirected,british‑french new hebrides,1.00,british‑french new hebrides 100%
-venezuela|iia|1910-1945,VEN-1821-2025,17,clean,venezuela,1.00,venezuela 100%
+venezuela|iia|1910-1945,VEN-1830-2025,17,clean,venezuela,1.00,venezuela 100%
 viet nam|iia|1930-1944,VNM-1887-1954,166,redirected,french tonkin,0.94,french tonkin 94%
 yemen|iia|1922-1945,MKY-1918-1962,17,redirected,british aden,1.00,british aden 100%
 zambia|iia|1922-1944,NRH-1911-1953,81,redirected,british northern rhodesia,1.00,british northern rhodesia 100%

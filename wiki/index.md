@@ -540,7 +540,7 @@ are a **curated selection**, not a complete listing.
 - [Colombia (to 1903)](polities/col-1830-1903.md) — `COL-1830-1903`, draft.
 - [Colombia (1903-1922)](polities/col-1903-1922.md) — `COL-1903-1922`, reviewed.
 - [Colombia](polities/col-1922-2025.md) — `COL-1922-2025`, reviewed.
-- [Ecuador (to 1942)](polities/ecu-1800-1942.md) — `ECU-1800-1942`, draft.
+- [Ecuador (to 1942)](polities/ecu-1830-1942.md) — `ECU-1830-1942`, draft.
 - [Ecuador](polities/ecu-1942-2025.md) — `ECU-1942-2025`, reviewed.
 - [Peru (to 1909)](polities/per-1825-1909.md) — `PER-1825-1909`, superseded.
 - [Peru (1909-1922)](polities/per-1909-1922.md) — `PER-1909-1922`, reviewed.
@@ -549,7 +549,7 @@ are a **curated selection**, not a complete listing.
 - [Paraguay (to 1938)](polities/pry-1811-1938.md) — `PRY-1811-1938`, superseded.
 - [Paraguay](polities/pry-1938-2025.md) — `PRY-1938-2025`, draft.
 - [Uruguay](polities/ury-1828-2025.md) — `URY-1828-2025`, draft.
-- [Venezuela](polities/ven-1821-2025.md) — `VEN-1821-2025`, draft.
+- [Venezuela](polities/ven-1830-2025.md) — `VEN-1830-2025`, draft.
 - [Guyana](polities/guy-1800-2025.md) — `GUY-1800-2025`, draft, 0 open questions. From database floor; British Guiana colony; independence 26 May 1966.
 - [Dutch Guiana](polities/sur-1886-1954.md) — `SUR-1886-1954`, draft. Dutch colony.
 - [Surinam (Autonomous)](polities/sur-1954-1975.md) — `SUR-1954-1975`, draft.

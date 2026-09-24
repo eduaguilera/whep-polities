@@ -1,5 +1,5 @@
 polity_code,polity_name,source,stated_area_km2,statements,editions,source_labels,polygon_area_km2,ratio_polygon_over_stated,basis_flag,note
-ADE-1839-1963,Aden Protectorate (1839-1963),fao,290080,1,1952,Aden Protectorate,287116,0.990,agrees,
+ADE-1839-1967,Aden Protectorate (1839-1967),fao,290080,1,1952,Aden Protectorate,287116,0.990,agrees,
 AEF-1910-1960,French Equatorial Africa (AEF),fao,2538450,1,1952,French Equat Africa,2495130,0.983,agrees,
 AEF-1910-1960,French Equatorial Africa (AEF),iia,2255870,9,1909;1925;1929;1932;1933;1938,AFRIQUE EQUATORIALE FRANÇAISE;AFRIQUE ÉQUATORIALE FRANÇAISE;afrique équatoriale française,2495130,1.106,agrees,
 AFG-1893-1919,Afghanistan (1893-1919),iia,635000,3,1909;1925;1929,AFGHANISTAN;afghanistan,641971,1.011,agrees,
@@ -99,7 +99,7 @@ DOM-1800-2025,Dominican Republic,fao,49540,1,1952,Dominican Republic,48333,0.976
 DOM-1800-2025,Dominican Republic,iia,50070,9,1909;1925;1929;1932;1933;1938,REPUBLIQUE DOMINICAINE;RÉPUBLIQUE DOMINICAINE;république dominicaine,48333,0.965,agrees,
 DZA-1919-1962,Algeria (1919-1962),fao,2204860,1,1952,Algeria,2318386,1.051,agrees,
 DZA-1919-1962,Algeria (1919-1962),iia,2195696,6,1909;1925;1929;1932;1933;1938,ALGÉRIE;ALGÉRIE french;algérie,2318386,1.056,agrees,
-ECU-1800-1942,Ecuador (to 1942),iia,307243,9,1909;1925;1929;1932;1933;1938,EQUATEUR;equateur,341715,1.112,agrees,"A CLAIM, NOT A DEFECT AND NOT A BOUNDARY CHANGE. `EQUATEUR` reads 307,243 km2 in four editions, 451,180 in 1932, 306,644 in 1933 and 714,860 in 1937; our polygon is 341,715, closest to the 307,243 cluster. 714,860 km2 is Ecuador's CLAIMED Amazon territory before the 1942 Rio Protocol, and 451,180 is an intermediate claim -- so the source is tracking what Ecuador asserted rather than what it administered. Neither figure is an error in the source and neither implies a missing period boundary; the polity's own span ends at 1942, which is the year the claim was settled."
+ECU-1830-1942,Ecuador (to 1942),iia,307243,9,1909;1925;1929;1932;1933;1938,EQUATEUR;equateur,341715,1.112,agrees,"A CLAIM, NOT A DEFECT AND NOT A BOUNDARY CHANGE. `EQUATEUR` reads 307,243 km2 in four editions, 451,180 in 1932, 306,644 in 1933 and 714,860 in 1937; our polygon is 341,715, closest to the 307,243 cluster. 714,860 km2 is Ecuador's CLAIMED Amazon territory before the 1942 Rio Protocol, and 451,180 is an intermediate claim -- so the source is tracking what Ecuador asserted rather than what it administered. Neither figure is an error in the source and neither implies a missing period boundary; the polity's own span ends at 1942, which is the year the claim was settled."
 ECU-1942-2025,Ecuador,fao,275000,1,1952,Ecuador,255241,0.928,agrees,
 EGY-1899-1925,Egypt (1899-1925),iia,1027996,4,1909;1925;1929,EGYPTE;egypte,1517113,1.476,agrees,"SCOPE, verified by containment rather than assumed. Our polygon is 1,517,144 km2 against IIA's 1,027,996 and a modern Egypt of 1,001,450 -- but Cairo, Aswan and Sinai are inside it while Wadi Halfa, Khartoum and Port Sudan are OUTSIDE, so it is not silently carrying Sudan. The extra ~500,000 km2 is the Libyan Desert: Egypt's western boundary with Cyrenaica was undefined until 1925 and CShapes encodes the maximal claim. IIA states the administered territory, which is the basis its agricultural figures were collected on."
 EGY-1925-1967,Egypt (1925-1967),fao,1000000,1,1952,Egypt,998328,0.998,agrees,
@@ -381,8 +381,8 @@ USA-1867-1959,United States (1867-1959),fao,7827830,1,1952,United States,9445313
 USA-1867-1959,United States (1867-1959),iia,7839432,9,1909;1925;1929;1932;1933;1938,ETATS-UNIS;etats-unis,9445313,1.205,agrees,
 VCT-1833-2025,Saint Vincent and the Grenadines,fao,340,1,1952,Windward Islands  St Vincent,391,1.150,agrees,
 VCT-1833-2025,Saint Vincent and the Grenadines,iia,388,9,1909;1925;1929;1932;1933;1938,INDES OCCIDENTALES BRITANNIQUES: ILES DU VENT: SAINT-VINCENT;indes occidentales britanniques: iles du vent: saint-vincent,391,1.008,agrees,
-VEN-1821-2025,Venezuela,fao,912050,1,1952,Venezuela,910634,0.998,agrees,
-VEN-1821-2025,Venezuela,iia,1020400,9,1909;1925;1929;1932;1933;1938,VENEZUELA;VENÉZUÉLA;VÉNÉZUÉLA;vénézuéla,910634,0.892,agrees,
+VEN-1830-2025,Venezuela,fao,912050,1,1952,Venezuela,910634,0.998,agrees,
+VEN-1830-2025,Venezuela,iia,1020400,9,1909;1925;1929;1932;1933;1938,VENEZUELA;VENÉZUÉLA;VÉNÉZUÉLA;vénézuéla,910634,0.892,agrees,
 VGB-1800-2025,British Virgin Islands,iia,150,9,1909;1925;1929;1932;1933;1938,INDES OCCIDENTALES BRITANNIQUES: ILES SOUS LE VENT: ILES VIERGES;indes occidentales britanniques: iles sous le vent: iles vierges,168,1.120,agrees,
 VIR-1917-2025,United States Virgin Islands,fao,340,1,1952,Virgin Is US,367,1.079,agrees,
 VIR-1917-2025,United States Virgin Islands,iia,343,6,1909;1925;1929;1932;1933;1938,ILES VIERGES;iles vierges,367,1.069,agrees,

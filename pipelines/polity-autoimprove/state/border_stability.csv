@@ -1,6 +1,6 @@
 polity_code,start_year,end_year,cow_code,polity_type,our_source,our_km2,border_verdict,n_reference_borders,reference_covers,reference_bookkeeping_steps,reference_km2_at_start,reference_km2_at_end,max_step_ratio,change_years,reference_iou,source_gap_pct
 ABW-1800-2025,1800,2025,,territory,gadm-4.1-adm0,182,no_reference,0,,0,,,,,,
-ADE-1839-1963,1839,1963,,colonial,cshapes-2.0,287116,no_reference,0,,0,,,,,,
+ADE-1839-1967,1839,1967,,colonial,cshapes-2.0,287116,no_reference,0,,0,,,,,,
 AEF-1910-1960,1910,1960,,national,constructed,2495130,no_reference,0,,0,,,,,,
 AFG-1800-1893,1800,1893,700,national,cshapes-2.0,809046,stable_where_covered,1,1886-1892,1,808996,808996,,,0.999,0.01
 AFG-1893-1919,1893,1919,700,national,cshapes-2.0,641971,stable_confirmed,1,1893-1918,0,641913,641913,,,0.999,0.01
@@ -329,7 +329,7 @@ DZA-1902-1919,1902,1919,615,national,cshapes-2.0,2442683,stable_confirmed,1,1902
 DZA-1919-1962,1919,1962,615,national,cshapes-2.0,2318386,stable_confirmed,1,1919-1961,0,2317513,2317513,,,0.999,0.04
 DZA-1962-2025,1962,2025,615,national,cshapes-2.0,2318386,stable_where_covered,1,1962-2019,0,2317513,2317513,,,0.999,0.04
 DZA-CVD-1902-1919,1902,1919,,subnational,none,,no_reference,0,,0,,,,,,
-ECU-1800-1942,1800,1942,130,national,cshapes-2.0,341715,stable_where_covered,1,1886-1941,0,341765,341765,,,0.998,-0.01
+ECU-1830-1942,1830,1942,130,national,cshapes-2.0,341715,stable_where_covered,1,1886-1941,0,341765,341765,,,0.998,-0.01
 ECU-1942-2025,1942,2025,130,national,cshapes-2.0,255241,stable_where_covered,1,1942-2019,0,255274,255274,,,0.997,-0.01
 EGB-1830-1914,1830,1914,,national,paine-2024,2949,no_reference,0,,0,,,,,,
 EGY-1800-1820,1800,1820,651,national,cliopatria,604489,no_reference,0,,0,,,,,,
@@ -499,7 +499,7 @@ FRA-79-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,6035,no_reference,0,,0,,,,
 FRA-80-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,6221,no_reference,0,,0,,,,,,
 FRA-81-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,5765,no_reference,0,,0,,,,,,
 FRA-83-1790-2025,1790,2025,,subnational,gadm-4.1-adm2,6044,no_reference,0,,0,,,,,,
-FRA-84-1790-2025,1790,2025,,subnational,gadm-4.1-adm2,3562,no_reference,0,,0,,,,,,
+FRA-84-1793-2025,1793,2025,,subnational,gadm-4.1-adm2,3562,no_reference,0,,0,,,,,,
 FRA-85-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,6778,no_reference,0,,0,,,,,,
 FRA-88-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,5865,no_reference,0,,0,,,,,,
 FRA-89-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,7461,no_reference,0,,0,,,,,,
@@ -1207,7 +1207,7 @@ UZB-1991-2025,1991,2025,704,national,cshapes-2.0,446367,stable_where_covered,1,1
 VAT-1929-2025,1929,2025,,national,gadm-4.1-adm0,1,no_reference,0,,0,,,,,,
 VCT-1800-1833,1800,1833,,national,gadm-4.1-adm0,391,no_reference,0,,0,,,,,,
 VCT-1833-2025,1833,2025,57,national,gadm-4.1-adm0,391,no_reference,0,,0,,,,,,
-VEN-1821-2025,1821,2025,101,national,cshapes-2.0,910634,stable_where_covered,1,1886-2019,0,910834,910834,,,0.998,-0.02
+VEN-1830-2025,1830,2025,101,national,cshapes-2.0,910634,stable_where_covered,1,1886-2019,0,910834,910834,,,0.998,-0.02
 VGB-1800-2025,1800,2025,,national,gadm-4.1-adm0,168,no_reference,0,,0,,,,,,
 VIC-1851-1901,1851,1901,,national,cshapes-2.0,238319,no_reference,0,,0,,,,,,
 VIR-1917-2025,1917,2025,,colonial,gadm-4.1-adm0,367,no_reference,0,,0,,,,,,
