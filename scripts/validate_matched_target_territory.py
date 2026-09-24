@@ -32,9 +32,9 @@ cleanly:
                    1911. A container, but a recorded decision, and below the threshold.
     5.70 - 112.8x  a province or region matched to its whole country.
 
-Threshold is 3.0x. Everything above it is baselined below, because the right disposition for those
-years is a modelling decision (`back_cast`, or a polity for the era that does not exist yet) rather
-than something this gate can pick -- see issue 657. Bidirectional: a NEW one fails, and a resolved
+Threshold is 3.0x. The 25 cases above it that this gate found when it landed were resolved in
+issue 657 -- `back_cast` to the unit's own modern polity, or `matched` to an era polity of the same
+territory -- so nothing is baselined. Bidirectional: a NEW one fails, and a resolved
 one must be removed from the baseline or this fails too.
 
 Reads only committed files plus the committed GeoPackage, so it runs anywhere.
@@ -58,35 +58,14 @@ GPKG = os.path.join(REPO, "data/final/polities_database.gpkg")
 # Above this, the target is a container rather than the territory the source observed.
 MAX_RATIO = 3.0
 
-# (unit_id, start_year, end_year, target) knowingly matched to a container. The right
-# disposition is a modelling decision (issue 657), not this gate's call.
-BASELINE = frozenset({
-    ("AUS-TASMANIA", 1900, 1900, "AUS-1800-1901"),  # 112.8x
-    ("CHL-LI", 1902, 1975, "CHL-1902-2025"),  # 45.4x
-    ("CHL-LI", 1900, 1901, "CHL-1899-1902"),  # 42.6x
-    ("ITA-ITH4", 1919, 1969, "ITA-1919-2025"),  # 38.7x
-    ("ITA-ITI2", 1919, 1969, "ITA-1919-2025"),  # 35.5x
-    ("ITA-ITI2", 1870, 1918, "ITA-1870-1919"),  # 33.7x
-    ("ITA-ITI2", 1866, 1869, "ITA-1866-1870"),  # 32.3x
-    ("ITA-ITI2", 1861, 1865, "ITA-1861-1866"),  # 29.3x
-    ("MEX-BAJACALIFORNIA", 1900, 1951, "MEX-1848-2025"),  # 26.8x
-    ("COL-GUAVIARE", 1922, 1990, "COL-1922-2025"),  # 20.5x
-    ("COL-GUAVIARE", 1915, 1921, "COL-1903-1922"),  # 19.7x
-    ("ITA-ITI4", 1919, 1969, "ITA-1919-2025"),  # 17.4x
-    ("ITA-ITI4", 1870, 1918, "ITA-1870-1919"),  # 16.5x
-    ("ITA-ITI4", 1866, 1869, "ITA-1866-1870"),  # 15.8x
-    ("ITA-ITI4", 1861, 1865, "ITA-1861-1866"),  # 14.3x
-    ("ITA-ITH5", 1919, 1969, "ITA-1919-2025"),  # 13.6x
-    ("ITA-ITH5", 1870, 1918, "ITA-1870-1919"),  # 12.9x
-    ("ITA-ITH5", 1866, 1869, "ITA-1866-1870"),  # 12.3x
-    ("ITA-ITC1", 1919, 1969, "ITA-1919-2025"),  # 11.9x
-    ("ARG-SANTACRUZ", 1900, 1901, "ARG-1899-1902"),  # 11.6x
-    ("ARG-SANTACRUZ", 1902, 1954, "ARG-1902-2025"),  # 11.4x
-    ("ITA-ITC1", 1880, 1918, "ITA-1870-1919"),  # 11.3x
-    ("ITA-ITH5", 1861, 1865, "ITA-1861-1866"),  # 11.2x
-    ("AUS-SOUTHAUSTRALIA", 1900, 1900, "AUS-1800-1901"),  # 7.8x
-    ("AUS-NORTHERNTERRITORY", 1900, 1900, "AUS-1800-1901"),  # 5.7x
-})
+# (unit_id, start_year, end_year, target) knowingly matched to a container. Empty since issue
+# 657 was resolved: the 25 segments baselined here (Italian NUTS regions, CHL-LI, COL-GUAVIARE,
+# MEX-BAJACALIFORNIA, ARG-SANTACRUZ, and three Australian colonies' 1900) were re-recorded --
+# as `back_cast` to the unit's own modern polity where no era polity of the same territory
+# exists, and as `matched` to the colony itself for the Australian 1900s, whose colonial rows
+# (end_year exclusive, 1901) already covered that year. Keep it empty: a new entry needs a
+# reason the rule above cannot express.
+BASELINE = frozenset()
 
 
 def main() -> int:
