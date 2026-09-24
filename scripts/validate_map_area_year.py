@@ -65,6 +65,7 @@ from collections import defaultdict
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAP = os.path.join(REPO, "data/final/faostat_area_polity_map.csv")
 DB = os.path.join(REPO, "data/final/polities_database.csv")
+EDGES = os.path.join(REPO, "data/final/polity_containment.csv")
 DEAD_STATUS = ("retired", "superseded")
 
 # (area_code, year) pairs known to have two live answers. See the module docstring.
@@ -151,7 +152,27 @@ def year_end_past_coverage(mappings, spans):
     return out
 
 
-def handover_problems(mappings, spans, live):
+def containment_edges() -> dict:
+    """(member, container) -> list of (start_year, end_year) edge intervals, end EXCLUSIVE."""
+    out = defaultdict(list)
+    if not os.path.exists(EDGES):
+        return out
+    with open(EDGES, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            try:
+                out[(r["member_code"], r["container_code"])].append(
+                    (int(r["start_year"]), int(r["end_year"])))
+            except (KeyError, TypeError, ValueError):
+                continue
+    return out
+
+
+def _is_member_handover(out_code, in_code, in_start, edges) -> bool:
+    """True when the incoming polity is a declared member of the outgoing one at `in_start`."""
+    return any(s <= in_start < e for s, e in edges.get((in_code, out_code), ()))
+
+
+def handover_problems(mappings, spans, live, edges=None):
     """Every handover inside one area must give the transfer year to the INCOMING polity.
 
     A handover is two consecutive live mappings for the same `area_code`. The convention
@@ -169,9 +190,19 @@ def handover_problems(mappings, spans, live):
     by `year_end_past_coverage` in the other direction either, since that arm only looks at
     year_end too HIGH, and only for closed periods.
 
+    ONE EXCEPTION TO ARM A, added 2026-09-24: a handover from a polity to one of its own
+    declared MEMBERS (an edge in data/final/polity_containment.csv covering the incoming row's
+    first year). There the outgoing polity does not end -- the area starts reporting only part
+    of it, as area 50 Cyprus does from 1975 (CYP-1879-2025 -> CYP-RA-1975-2025) and area 186
+    Serbia and Montenegro from 1999 (SCG-1992-2006 -> SCG-XK-1999-2006) -- so "year_end must be
+    the outgoing polity's last covered year" does not describe the event. Arm B still applies in
+    full: the member must start the year after the outgoing row ends. The exception needs the
+    edge, not a name or a type, so it cannot excuse a handover between unrelated polities.
+
     Returns a list of message strings, all containing the word "handover" so the self-test
     can tell this arm apart from the other two.
     """
+    edges = containment_edges() if edges is None else edges
     by_area = defaultdict(list)
     for m in mappings:
         code = (m.get("polity_code") or "").strip()
@@ -189,7 +220,7 @@ def handover_problems(mappings, spans, live):
         for (_, out_end, out_code), (in_start, _, in_code) in zip(rows, rows[1:]):
             boundaries += 1
             expected = spans[out_code][1] - 1
-            if out_end != expected:
+            if out_end != expected and not _is_member_handover(out_code, in_code, in_start, edges):
                 problems.append(
                     f"handover in area {area}: {out_code} maps through {out_end} but covers "
                     f"..{expected} (end_year is exclusive), then {in_code} takes over. The "

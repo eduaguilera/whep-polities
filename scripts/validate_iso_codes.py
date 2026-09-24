@@ -61,6 +61,10 @@ EXEMPT = {
     "ICN-1800-2025",
     "KOS-2008-2025",
     "SCG-1992-2006",
+    # Serbia and Montenegro net of Kosovo, 1999-2006: a reporting area inside SCG-1992-2006
+    # (FAOSTAT area 186 from 1999), carrying its container's withdrawn-but-real code for the
+    # same reason SCG-1992-2006 does. Added 2026-09-24.
+    "SCG-XK-1999-2006",
     "SER-2006-2008",
     # Dissolved states carrying their ISO 3166-3 code (issue 55). 3166-3 is the register OF
     # FORMERLY-USED codes, so by construction no 3166-1 alpha-3 exists for any of them --

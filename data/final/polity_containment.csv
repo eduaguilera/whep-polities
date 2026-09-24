@@ -80,6 +80,8 @@ AUS-TAS-1901-2025,AUS-1901-2025,1901,2025,Tasmania became a state of the Commonw
 AUS-VIC-1901-2025,AUS-1901-2025,1901,2025,Victoria has been a state of the Commonwealth of Australia continuously since Federation on 1 January 1901; the container spans the whole life of this row with no gap.
 AUS-WA-1901-2025,AUS-1901-2025,1901,2025,"Western Australia became a state of the Commonwealth of Australia at Federation on 1 January 1901 and remains one, with no subsequent split or dissolution."
 BDI-1922-1962,RWB-1922-1962,1922,1962,Burundi as the southern half of the Ruanda-Urundi mandate/trust territory
+BGD-1947-1971,PAK-1947-1949,1947,1949,"East Pakistan, the eastern wing of Pakistan, inside the PAK-1947-1949 polygon"
+BGD-1947-1971,PAK-1949-1971,1949,1971,"East Pakistan, the eastern wing of Pakistan, inside the PAK-1949-1971 polygon"
 BOL-BEN-1842-2025,BOL-1825-1903,1842,1903,"Beni department was created in 1842 by separation from the Amazonian territories of the Bolivian republic; from creation until 1903 it sat inside the country's first national era, BOL-1825-1903."
 BOL-BEN-1842-2025,BOL-1903-1909,1903,1909,"Beni remained a department of Bolivia through the national-era boundary at 1903, which reflects a change in the country row, not in Beni's own borders."
 BOL-BEN-1842-2025,BOL-1909-1938,1909,1938,"Beni remained a department of Bolivia through the national-era boundary at 1909; Pando was not yet split off, so Beni still included the territory that became Pando in 1938."
@@ -255,6 +257,7 @@ COL-VALLEDELCAUCA-1910-2025,COL-1903-1922,1910,1922,"Valle del Cauca was created
 COL-VALLEDELCAUCA-1910-2025,COL-1922-2025,1922,2025,The department continued as a first-order division of Colombia through the still-open modern national era COL-1922-2025.
 COL-VAU-1991-2025,COL-1922-2025,1991,2025,"Vaupés is a department of the Republic of Colombia for its entire span as a first-level administrative unit; the national row COL-1922-2025 already covers 1991-2025 with no gap, so a single container edge tiles the whole span."
 COL-VICHADA-1991-2025,COL-1922-2025,1991,2025,"Vichada existed as a department inside the unitary Republic of Colombia from the 1991 Constitution onward, the same national era (COL-1922-2025) that has held since 1922; no national-level break occurs across this span."
+CYP-RA-1975-2025,CYP-1879-2025,1975,2025,"the part of Cyprus under the effective control of the Government of the Republic of Cyprus, the area its statistics cover from 1975"
 DZA-CVD-1902-1919,DZA-1902-1919,1902,1919,the three civil departments inside Algeria as constituted after the 1902 Saharan annexation
 ESP-17-1833-2025,ESP-1800-2025,1833,2025,"Girona has been one of Spain's fifty provinces, and thus part of the unified Spanish national statistical territory, continuously since the 1833 Javier de Burgos reform; no intervening change of sovereignty or provincial boundary interrupts this span."
 ESP-A-1833-2025,ESP-1800-2025,1833,2025,"Alicante/Alacant is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for the other seven ESP subnational provinces (ESP-AS, ESP-CA, ESP-CO, ESP-LU, ESP-MD, ESP-OR, ESP-PO)."
@@ -570,6 +573,7 @@ FRA-VNE-1800-2025,FRA-1800-1871,1800,1871,"Split across the French national chai
 FRA-VNE-1800-2025,FRA-1871-1919,1871,1919,"Split across the French national chain because the previous edge named FRA-1800-1919, which is SUPERSEDED -- a dead polity is never a resolution candidate, so the member never steps aside and resolve_polity_label() returns NA for France 1850-1918. FRA-1871-1919 is France without Alsace-Lorraine, which is correct for this département — it lies far from Alsace-Lorraine and never belonged to F248."
 FRA-VNE-1800-2025,FRA-1919-2025,1919,2025,"continuation of the same department inside post-Versailles France, unaffected by the Alsace-Lorraine reintegration that defines this era's boundary relative to FRA-1871-1919"
 HAW-1959-2025,USA-1959-2025,1959,2025,Hawaii has been a U.S. state within this exact chain-row's span since admission on 1959-08-21; the container edge covers the full 1959-2025 span with no gap since the row itself starts at statehood.
+HKG-1842-2025,CHN-1950-2025,1997,2025,Hong Kong Special Administrative Region of the People's Republic of China from 1 July 1997
 HYD-1724-1948,IND-1800-1886,1800,1886,"Hyderabad State lay inside the territory British India administered, and this repository already treats it as a sub-unit of India — the row carries polity_type subnational and iso3_code IND. The edge says the same thing in the place a consumer can read it. It asserts CONTAINMENT for these years, not that Hyderabad was a province — it was a princely state under British paramountcy, retaining internal government, and the interval sits on the edge precisely so a period-specific container relation need not imply permanent sovereignty — the same design that puts Alsace-Lorraine inside Germany 1871-1918 and inside France otherwise."
 HYD-1724-1948,IND-1886-1893,1886,1893,"Hyderabad State lay inside the territory British India administered, and this repository already treats it as a sub-unit of India — the row carries polity_type subnational and iso3_code IND. The edge says the same thing in the place a consumer can read it. It asserts CONTAINMENT for these years, not that Hyderabad was a province — it was a princely state under British paramountcy, retaining internal government, and the interval sits on the edge precisely so a period-specific container relation need not imply permanent sovereignty — the same design that puts Alsace-Lorraine inside Germany 1871-1918 and inside France otherwise."
 HYD-1724-1948,IND-1893-1914,1893,1914,"Hyderabad State lay inside the territory British India administered, and this repository already treats it as a sub-unit of India — the row carries polity_type subnational and iso3_code IND. The edge says the same thing in the place a consumer can read it. It asserts CONTAINMENT for these years, not that Hyderabad was a province — it was a princely state under British paramountcy, retaining internal government, and the interval sits on the edge precisely so a period-specific container relation need not imply permanent sovereignty — the same design that puts Alsace-Lorraine inside Germany 1871-1918 and inside France otherwise."
@@ -579,7 +583,10 @@ HYD-1724-1948,IND-1947-1949,1947,1948,"Hyderabad State lay inside the territory 
 IDN-BLB-1949-1951,IDN-1949-1963,1949,1951,Bali and Lombok as a reporting unit inside Indonesia
 IDN-JVM-1949-1951,IDN-1949-1963,1949,1951,Java and Madura as a reporting unit inside Indonesia
 IDN-OTH-1949-1951,IDN-1949-1963,1949,1951,the residual outer islands as a reporting unit inside Indonesia
+IDN-XTL-1976-2002,IDN-1976-2002,1976,2002,"Indonesia's territory net of East Timor, the reporting area of FAOSTAT area 101 in 1976-2001"
 INU-1937-1947,IND-1937-1947,1937,1947,"the provinces and princely states that formed the Dominion of India at partition, inside British India between the separation of Burma (1 April 1937) and independence (15 August 1947)"
+ISR-RA-1967-2025,ISR-1967-1979,1967,1979,"the area covered by Israel's national statistics, inside the ISR-1967-1979 polygon"
+ISR-RA-1967-2025,ISR-1979-2025,1979,2025,"the area covered by Israel's national statistics, inside the ISR-1979-2025 polygon"
 ITA-ABM-1861-2025,ITA-1861-1866,1861,1866,The former Neapolitan provinces of the Abruzzi and Molise were part of the Kingdom of Italy from its 1861 proclamation.
 ITA-ABM-1861-2025,ITA-1866-1870,1866,1870,Unaffected by the 1866 annexation of Venetia; inside Italy.
 ITA-ABM-1861-2025,ITA-1870-1919,1870,1919,Unaffected by the 1870 annexation of Rome; inside Italy.
@@ -820,6 +827,7 @@ JPN-YAMANASHI-1871-2025,JPN-1800-1895,1871,1895,prefecture inside JPN-1800-1895 
 JPN-YAMANASHI-1871-2025,JPN-1895-1945,1895,1945,prefecture inside JPN-1895-1945 for those years
 JPN-YAMANASHI-1871-2025,JPN-1945-1952,1945,1952,prefecture inside JPN-1945-1952 for those years
 JPN-YAMANASHI-1871-2025,JPN-1952-2025,1952,2025,prefecture inside JPN-1952-2025 for those years
+MAC-1800-2025,CHN-1950-2025,1999,2025,Macao Special Administrative Region of the People's Republic of China from 20 December 1999
 MAN-1921-1932,CHN-1921-1932,1921,1932,"the Three Eastern Provinces (Fengtian/Liaoning, Jilin, Heilongjiang) inside the Republic of China, until the founding of Manchukuo on 1 March 1932"
 MAN-1945-1950,CHN-1945-1947,1945,1947,"the Manchuria region inside the Republic of China, post-surrender"
 MAN-1945-1950,CHN-1947-1949,1947,1949,"same territory, the ROC's 1947 constitutional period"
@@ -878,6 +886,7 @@ MEX-YUC-1824-2025,MEX-1800-1848,1824,1848,Yucatán was a constituent state of th
 MEX-YUC-1824-2025,MEX-1848-2025,1848,2025,"Continues as a state of Mexico under the post-1848 national row (cshapes-2.0 boundary lineage), through the later 1858-1863 split-off of Campeche and later Quintana Roo, to the present."
 MEX-ZAC-1824-2025,MEX-1800-1848,1824,1848,"Zacatecas was one of the original states of the Mexican federation under the 1824 Constitution, within Mexico's pre-Mexican-American-War national territory"
 MEX-ZAC-1824-2025,MEX-1848-2025,1848,2025,"Zacatecas continued as a constituent state of Mexico after the 1848 Treaty of Guadalupe Hidalgo territorial loss, through to the present"
+PAK-WP-1949-1971,PAK-1949-1971,1949,1971,"the western wing of Pakistan, the part of PAK-1949-1971 that is not East Pakistan"
 PRT-ALE-1986-2025,PRT-1800-2025,1986,2025,"NUTS II region of Portugal, introduced with the 1986 accession to the European Communities and a direct subunit of the Portuguese state for its whole span. Geometry is the Eurostat GISCO NUTS 2021 level-2 feature PT18."
 PRT-AV-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
 PRT-AV-1835-2025,PRT-CENTRO-1986-2025,1986,2025,"Measured against Eurostat GISCO NUTS 2021 level-2 geometry the district straddles NUTS II boundaries — 63% of its area falls in Centro and the rest in Norte 36%. The edge records the region holding the largest share, so reading this district as a subunit of Centro is approximate; the five regions themselves tile Portugal exactly."
@@ -921,10 +930,12 @@ PRT-VR-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 adm
 PRT-VR-1835-2025,PRT-PT11-1986-2025,1986,2025,"Measured against Eurostat GISCO NUTS 2021 level-2 geometry the district lies wholly inside Norte, 99.7% of its area."
 RWA-1922-1962,RWB-1922-1962,1922,1962,Rwanda as the northern half of the Ruanda-Urundi mandate/trust territory
 RYU-1937-1945,JPN-1895-1945,1937,1945,"Okinawa Prefecture inside the Japanese Empire, for the years the Ryukyu series is reported separately"
+SCG-XK-1999-2006,SCG-1992-2006,1999,2006,"the Federal Republic of Yugoslavia / Serbia and Montenegro without Kosovo, which its statistics cover from 1999"
 SER-1918-1945,F248-1918-1919,1918,1919,"Serbia inside the new Kingdom of Serbs, Croats and Slovenes"
 SER-1918-1945,F248-1919-1920,1919,1920,"same territory, the 1919 boundary settlement"
 SER-1918-1945,F248-1920-1947,1920,1945,"same territory, interwar Yugoslavia; capped at this member's own end_year"
 SGP-1963-1965,MYS-1963-1965,1963,1965,"the State of Singapore inside Malaysia, from the 1963 federation to the 1965 separation"
+SRB-XK-2006-2008,SRB-2006-2008,2006,2008,"Serbia without Kosovo, the area Serbia's statistics cover in 2006-2008"
 TNGU-1949-1975,PNG-1949-1975,1949,1975,"the Trust Territory of New Guinea inside the Papua and New Guinea administrative union, from the Papua and New Guinea Act 1949 (in force 1 July 1949) until independence on 16 September 1975"
 TPAP-1949-1975,PNG-1949-1975,1949,1975,"the Territory of Papua inside the Papua and New Guinea administrative union, from the Papua and New Guinea Act 1949 (in force 1 July 1949) until independence on 16 September 1975"
 USA-AK-1959-2025,USA-1959-2025,1959,2025,"Alaska has been one of the fifty United States since admission to the Union in 1959, continuously through the present."

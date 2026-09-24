@@ -170,6 +170,20 @@ BASELINE_DIFFERENT = frozenset({
     (237, 1967),
     (237, 1974),
     (272, 2008),
+    # Added 2026-09-24: match.R's `manual_territory_routes`, which OVERRIDE a family + year
+    # match because the area reports a different ground than the covering period (area 165
+    # Pakistan 1961-1970 is West Pakistan, area 50 Cyprus from 1975 the government-controlled
+    # area, area 215 Tanzania 1961-1963 Tanganyika plus Zanzibar, and so on; the evidence is on
+    # each target's wiki page). A resolver with the faostat rules stripped cannot reproduce a
+    # territory override by construction, so these disagree on purpose. The routes themselves
+    # are pinned by FIXTURE entries below, which read the full alias registry.
+    (50, 1975), (50, 1999), (50, 2024),
+    (101, 1976), (101, 1988), (101, 2001),
+    (105, 1995), (105, 2024),
+    (165, 1961), (165, 1965), (165, 1970),
+    (186, 1999), (186, 2002), (186, 2005),
+    (215, 1961), (215, 1962), (215, 1963),
+    (272, 2006), (272, 2007),
 })
 
 # Golden fixture: (source_label, iso3, source, year) -> the polity code matchlib must
@@ -217,6 +231,20 @@ FIXTURE = (
     ("Pakistan", "PAK", None, 1949, "PAK-1949-1971"),
     ("Argentina", "ARG", None, 1900, "ARG-1899-1902"),
     ("Brazil", "BRA", None, 1900, "BRA-1800-1903"),
+    # FAOSTAT reporting-area routes (2026-09-24, match.R manual_territory_routes), each at a
+    # year inside the route and, where the route starts inside a live polity, at the year before.
+    ("Pakistan", "PAK", "faostat", 1965, "PAK-WP-1949-1971"),
+    ("Pakistan", "PAK", "faostat", 1971, "PAK-1971-2025"),
+    ("Indonesia", "IDN", "faostat", 1990, "IDN-XTL-1976-2002"),
+    ("Israel", "ISR", "faostat", 1966, "ISR-1948-1967"),
+    ("Israel", "ISR", "faostat", 1990, "ISR-RA-1967-2025"),
+    ("Cyprus", "CYP", "faostat", 1974, "CYP-1879-2025"),
+    ("Cyprus", "CYP", "faostat", 1975, "CYP-RA-1975-2025"),
+    ("Serbia and Montenegro", "SCG", "faostat", 1998, "SCG-1992-2006"),
+    ("Serbia and Montenegro", "SCG", "faostat", 1999, "SCG-XK-1999-2006"),
+    ("Serbia", "SRB", "faostat", 2007, "SRB-XK-2006-2008"),
+    ("United Republic of Tanzania", "TZA", "faostat", 1963, "F215-1961-1964"),
+    ("United Republic of Tanzania", "TZA", "faostat", 1964, "TZA-1964-2025"),
 )
 
 # Labels matchlib cannot resolve without the faostat alias, so an explicit route is

@@ -31,4 +31,6 @@ syria||
 united states of america||
 united states of america||iia
 ussr||
-western sahara||faostat
+# 'western sahara||faostat' cleared 2026-09-24 (FAOSTAT area-code territories): the
+# re-merged registry rows end ESH-1958-1975's alias at 1974, so it no longer touches the
+# 1975 row. Chains whose ranges touch: 16 -> 15.

@@ -431,10 +431,20 @@ match_area <- function(row) {
         note = "registry area with no polity family (non-country/aggregate)"
       ))
   }
-  fam |>
-    filter(
-      .polity_type_rank(polity_type) == min(.polity_type_rank(fam$polity_type))
-    ) |>
+  # The type preference is applied AMONG THE PERIODS THAT OVERLAP EACH OTHER, not across the
+  # whole family. Ranking over the whole family let one period's type veto every other period
+  # of the chain even where the two never coexist: area 88 Guam has GUM-1898-1950 (colonial)
+  # and GUM-1950-2025 (territory), the colonial rank won family-wide, and 1950-2024 was left
+  # with no row at all. A period is kept when no period overlapping it in time outranks it;
+  # periods are [start_year, end_year) with end_year EXCLUSIVE, so adjacent periods sharing a
+  # boundary year do not overlap.
+  fam_rank <- .polity_type_rank(fam$polity_type)
+  best_in_window <- vapply(seq_len(nrow(fam)), function(i) {
+    overlapping <- fam$start_year < fam$end_year[i] &
+      fam$end_year > fam$start_year[i]
+    fam_rank[i] == min(fam_rank[overlapping])
+  }, logical(1))
+  fam[best_in_window, ] |>
     transmute(
       area_code = row$area_code,
       area_name = row$area_name,
@@ -623,11 +633,148 @@ manual_span_routes <- tibble::tribble(
   matches
 }
 
+# Curated routes that OVERRIDE an unambiguous period match, because the territory FAOSTAT
+# reports for an area is not the territory of the polity period that covers its years. The
+# deterministic matcher picks the polity that governed the ground; these areas report a
+# DIFFERENT ground -- a wing, a part under one administration, or a union FAOSTAT reports
+# before the state existed -- and routing them to the covering period attributes the data to
+# territory it does not describe (or to territory another area already reports: area 165
+# Pakistan 1961-1970 on PAK-1949-1971 claimed East Pakistan, which area 16 reports).
+# Each target is a reporting-area polity whose wiki page carries the evidence; the basis
+# below is the series break or the separately-reported sibling that shows the territory.
+# `.apply_territory_routes()` refuses a route whose target is unknown, retired, or does not
+# cover the years, and one that no longer overlaps any matched row (a stale route).
+manual_territory_routes <- tibble::tribble(
+  ~area_code,
+  ~year_start,
+  ~year_end,
+  ~target_polity_code,
+  ~route_basis,
+  165L, 1961L, 1970L, "PAK-WP-1949-1971",
+  paste(
+    "FAOSTAT Pakistan 1961-1970 is West Pakistan only: East Pakistan reports",
+    "separately as area 16 Bangladesh from 1961 (rice 1961: area 165 1.69 Mt,",
+    "area 16 14.43 Mt; jute: area 165 0 t, area 16 1.31 Mt), and area 165 shows",
+    "no break at 1971"
+  ),
+  101L, 1976L, 2001L, "IDN-XTL-1976-2002",
+  paste(
+    "FAOSTAT Timor-Leste (area 176) reports East Timor separately for every year",
+    "1961-2024, so area 101 Indonesia 1976-2001 is Indonesia net of East Timor",
+    "(no break in area 101 at 2002: harvested area 2001 31.72 Mha, 2002 31.97 Mha)"
+  ),
+  105L, 1967L, 2024L, "ISR-RA-1967-2025",
+  paste(
+    "FAOSTAT Israel shows no step in 1967 (olives harvested 11,400 ha in 1966,",
+    "11,000 ha in 1967; total harvested area 288,073 -> 316,025 ha, 2% above",
+    "1965) and area 299 Palestine reports the West Bank and Gaza from",
+    "1991: the series follows the area of Israeli national statistics"
+  ),
+  50L, 1975L, 2024L, "CYP-RA-1975-2025",
+  paste(
+    "FAOSTAT Cyprus drops at 1975 to the area under the effective control of the",
+    "Government of the Republic of Cyprus: wheat harvested 86,957 ha in 1974,",
+    "26,756 in 1975; barley 73,579 -> 29,432; total harvested area",
+    "300,826 -> 169,088 ha"
+  ),
+  186L, 1999L, 2005L, "SCG-XK-1999-2006",
+  paste(
+    "FAOSTAT Serbia and Montenegro excludes Kosovo from 1999: total harvested",
+    "area 3.40 Mha in 1998, 3.09 Mha in 1999 (cattle stocks 1.81 M in 1999,",
+    "1.43 M in 2000), and 2005's 3.00 Mha continues without a step into",
+    "area 272 Serbia 2.95 Mha plus area 273 Montenegro 0.03 Mha in 2006"
+  ),
+  272L, 2006L, 2007L, "SRB-XK-2006-2008",
+  paste(
+    "FAOSTAT Serbia shows no step at 2008, when Kosovo's declaration of",
+    "independence ends SRB-2006-2008 (total harvested area 2007 3.01 Mha,",
+    "2008 2.99 Mha), and continues area 186's Kosovo-excluding series:",
+    "2006-2007 is Serbia net of Kosovo"
+  ),
+  215L, 1961L, 1963L, "F215-1961-1964",
+  paste(
+    "FAOSTAT United Republic of Tanzania 1961-1963 includes Zanzibar before the",
+    "1964 union: cloves, grown almost only on Zanzibar and Pemba, are 9,500 t in",
+    "1961 and 13,000 t in 1963, with no step at 1964 (10,000 t)"
+  )
+)
+
+.apply_territory_routes <- function(matches, routes, polities) {
+  matches$.ord <- seq_len(nrow(matches))
+  for (i in seq_len(nrow(routes))) {
+    r <- routes[i, ]
+    target <- polities[polities$polity_code == r$target_polity_code, ]
+    if (nrow(target) != 1L) {
+      stop(
+        "manual territory route for area ", r$area_code, " targets ",
+        r$target_polity_code, ", which is not a live polity",
+        call. = FALSE
+      )
+    }
+    if (
+      target$start_year > r$year_start ||
+        last_covered_year(target$end_year) < r$year_end
+    ) {
+      stop(
+        "manual territory route for area ", r$area_code, " (", r$year_start,
+        "-", r$year_end, ") falls outside ", r$target_polity_code, "'s years",
+        call. = FALSE
+      )
+    }
+    hit <- matches$area_code == r$area_code &
+      matches$match_status == "matched" &
+      matches$year_start <= r$year_end &
+      matches$year_end >= r$year_start
+    if (!any(hit)) {
+      stop(
+        "manual territory route for area ", r$area_code, " (", r$year_start,
+        "-", r$year_end, ") overlaps no matched row: stale route",
+        call. = FALSE
+      )
+    }
+    covered <- matches[hit, ]
+    if (
+      min(covered$year_start) > r$year_start ||
+        max(covered$year_end) < r$year_end
+    ) {
+      stop(
+        "manual territory route for area ", r$area_code, " (", r$year_start,
+        "-", r$year_end, ") reaches past the area's matched years",
+        call. = FALSE
+      )
+    }
+    # Rows straddling the route keep their years outside it; the years inside go to the
+    # route's target. `.ord` keeps every piece where the row it came from was.
+    before <- covered |>
+      filter(year_start < r$year_start) |>
+      mutate(year_end = r$year_start - 1L)
+    after <- covered |>
+      filter(year_end > r$year_end) |>
+      mutate(year_start = r$year_end + 1L, .ord = .ord + 0.9)
+    routed <- covered[1L, ] |>
+      mutate(
+        year_start = r$year_start,
+        year_end = r$year_end,
+        target_polity_code = r$target_polity_code,
+        common_name = target$polity_name,
+        match_route = "manual-territory",
+        match_status = "matched",
+        note = r$route_basis,
+        .ord = .ord + 0.5
+      )
+    matches <- bind_rows(matches[!hit, ], before, routed, after)
+  }
+  matches |>
+    arrange(.ord, year_start) |>
+    select(-.ord)
+}
+
 matches <- inventory |>
   group_split(area_code) |>
   map(\(g) match_area(as.list(g[1, ]))) |>
   bind_rows() |>
   .apply_span_routes(manual_span_routes, polities) |>
+  .apply_territory_routes(manual_territory_routes, polities) |>
   left_join(
     inventory |> select(area_code, n_rows, pins),
     by = "area_code"
@@ -676,9 +823,36 @@ alias_base <- matches |>
   )
 
 aliases <- alias_base |> filter(match_status == "matched")
+
+# KEEP AN EXISTING `basis` FOR A ROW WHOSE DECISION HAS NOT CHANGED. `basis` is prose, and some
+# of it was written by hand when a row was added or corrected (48 rows on 2026-09-24, e.g. the
+# Indonesia 1963 split and the 16 registry rows added in PR 210). Regenerating it silently
+# replaced that record with boilerplate. So when the previous state file holds the same
+# (area_code, year_start, year_end, polity_code), its basis is carried over; only a row whose
+# area, years or target changed gets freshly generated text.
+.carry_basis <- function(aliases, prior_path) {
+  if (!file.exists(prior_path)) {
+    return(aliases)
+  }
+  prior <- read_csv(prior_path, col_types = cols(.default = "c"), progress = FALSE) |>
+    transmute(
+      area_code = as.integer(area_code),
+      year_start = as.integer(year_start),
+      year_end = as.integer(year_end),
+      polity_code,
+      prior_basis = basis
+    ) |>
+    filter(!is.na(prior_basis)) |>
+    distinct(area_code, year_start, year_end, polity_code, .keep_all = TRUE)
+  aliases |>
+    left_join(prior, by = c("area_code", "year_start", "year_end", "polity_code")) |>
+    mutate(basis = coalesce(prior_basis, basis)) |>
+    select(-prior_basis)
+}
+
 ambiguous <- alias_base |> filter(match_status == "ambiguous")
 gaps <- aliases |>
-  filter(!is.na(note), match_route != "manual-span") |>
+  filter(!is.na(note), !match_route %in% c("manual-span", "manual-territory")) |>
   distinct(area_code, .keep_all = TRUE)
 
 # Data-bearing areas with no polity family are ACTIONABLE (create a polity);
@@ -704,10 +878,22 @@ refuse_orphan_codes(
               "re-check the manual routes above and re-run."),
   polities_csv = file.path("data", "final", "polities_database.csv")
 )
-write_csv(select(aliases, -note), file.path(state_dir, "faostat_aliases.csv"))
-write_csv(ambiguous, file.path(state_dir, "ambiguous.csv"))
-write_csv(unmatched, file.path(state_dir, "unmatched.csv"))
-write_csv(registry_unmapped, file.path(state_dir, "registry_unmapped.csv"))
+# State files are written to a temporary file and renamed into place, so an error part-way
+# through a write never leaves a truncated table behind. Defined after the orphan guard so
+# that no write path exists before it (validate_matcher_orphan_guard reads the source order).
+.write_csv_atomic <- function(df, path) {
+  tmp <- paste0(path, ".tmp")
+  write_csv(df, tmp)
+  if (!file.rename(tmp, path)) {
+    stop("could not move ", tmp, " into place", call. = FALSE)
+  }
+}
+# Carried over here, after the orphan guard: it changes only `basis`, never a polity code.
+aliases <- .carry_basis(aliases, file.path(state_dir, "faostat_aliases.csv"))
+.write_csv_atomic(select(aliases, -note), file.path(state_dir, "faostat_aliases.csv"))
+.write_csv_atomic(ambiguous, file.path(state_dir, "ambiguous.csv"))
+.write_csv_atomic(unmatched, file.path(state_dir, "unmatched.csv"))
+.write_csv_atomic(registry_unmapped, file.path(state_dir, "registry_unmapped.csv"))
 write_csv(
   aggregates |> rename(source_label = area_name, observed_rows = n_rows),
   file.path(state_dir, "aggregates.csv")
