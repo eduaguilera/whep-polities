@@ -1745,6 +1745,60 @@ def build_czn_1903_1979() -> ogr.Geometry:
     return _buffer_metres(_ne10m_river("Panama Canal"), CZN_HALF_WIDTH_M, CZN_UTM)
 
 
+# FRA-SSO: the six post-1968 departements that were Seine-et-Oise plus the suburban (non-Paris)
+# part of Seine. GADM 4.1 adm2 inside Ile-de-France (FRA.8_1), Paris (FRA.8.3_1) and
+# Seine-et-Marne (FRA.8.4_1) deliberately left out.
+SSO_GADM_ADM2 = (
+    "FRA.8.8_1",  # Yvelines          (78)
+    "FRA.8.1_1",  # Essonne           (91)
+    "FRA.8.2_1",  # Hauts-de-Seine    (92)
+    "FRA.8.5_1",  # Seine-Saint-Denis (93)
+    "FRA.8.7_1",  # Val-de-Marne      (94)
+    "FRA.8.6_1",  # Val-d'Oise        (95)
+)
+
+
+def build_fra_sso_1860_2025() -> ogr.Geometry:
+    """Seine-et-Oise with suburban Seine = the union of six GADM 4.1 adm2 departements.
+
+    WHY THIS TERRITORY. The Mediterranean subnational panel labels a unit `FR104`, which in every
+    NUTS vintage is Essonne (1,819 km2). Its own landuse block says otherwise: the per-year sum of
+    its land classes is a constant 6,036.57 km2 in all 141 landuse years, 3.3x Essonne. Measured
+    in ESRI:54034 against the same GADM features:
+
+        78+91+92+93+94+95  (this union)           6,035 km2   +0.03%
+        75+78+91+92+93+94+95  (with Paris)         6,140 km2   -1.7%
+        Essonne alone                              1,819 km2
+
+    The other eight French units of the same panel sit between -1.0% and +0.1% of their own GADM
+    feature (Seine-et-Marne, FR102, is 5,928.17 against 5,928.1), so the with-Paris reading is
+    outside the band and the without-Paris reading is inside it. Paris itself (105 km2) carries
+    essentially no agricultural land, so the choice moves area, not values.
+    """
+    return _union(*(_gadm_adm2(g) for g in SSO_GADM_ADM2))
+
+
+def build_ita_abm_1861_2025() -> ogr.Geometry:
+    """Abruzzi e Molise = GADM 4.1 adm1 Abruzzo (ITA.1_1) union Molise (ITA.12_1).
+
+    The same two features ITA-ABR-1970-2025 and ITA-MOL-1963-2025 bind, so the union cannot drift
+    from its parts. The panel's ITF1 landuse total is a constant 15,234.96 km2; Abruzzo alone is
+    10,784 and the union 15,216 (+0.12%).
+    """
+    return _union(_gadm_adm1("ITA.1_1"), _gadm_adm1("ITA.12_1"))
+
+
+def build_ita_pva_1861_2025() -> ogr.Geometry:
+    """Piemonte with Valle d'Aosta = GADM 4.1 adm1 Piemonte (ITA.13_1) union Valle d'Aosta
+    (ITA.19_1), the features ITA-PIE-1970-2025 and ITA-VDA-1948-2025 bind.
+
+    The panel's ITC1 landuse total is a constant 28,653.28 km2; Piemonte alone is 25,290 and the
+    union 28,538 (+0.4%). Modern boundaries throughout, so the 1947 cessions to France (Tende,
+    La Brigue and the Alpine crest adjustments) are NOT in the pre-1947 extent -- stated on the page.
+    """
+    return _union(_gadm_adm1("ITA.13_1"), _gadm_adm1("ITA.19_1"))
+
+
 BUILDERS = [
     (
         "CZN-1903-1979",
@@ -2278,6 +2332,32 @@ BUILDERS = [
         "composed-union-goa-daman-diu; it had no polygon_feature_id, which is why "
         "an earlier pass read it as having no recipe. Excludes Dadra and Nagar "
         "Haveli, held until 1954 but not named by the page.",
+    ),
+    (
+        "FRA-SSO-1860-2025",
+        "Seine-et-Oise with suburban Seine",
+        build_fra_sso_1860_2025,
+        "Union of GADM 4.1 adm2 Yvelines, Essonne, Hauts-de-Seine, Seine-Saint-Denis, "
+        "Val-de-Marne and Val-d'Oise = 6,035 km2 (ESRI:54034) against the panel unit FR104's "
+        "constant landuse total of 6,036.57 (+0.03%). Paris and Seine-et-Marne excluded: with "
+        "Paris the union is 6,140 (-1.7%), outside the -1.0..+0.1% band the panel's other French "
+        "units show against their own GADM features.",
+    ),
+    (
+        "ITA-ABM-1861-2025",
+        "Abruzzi e Molise",
+        build_ita_abm_1861_2025,
+        "Union of GADM 4.1 adm1 Abruzzo ITA.1_1 and Molise ITA.12_1, the features the two "
+        "member rows bind = 15,216 km2 against the panel unit ITF1's constant landuse total of "
+        "15,234.96 (+0.12%).",
+    ),
+    (
+        "ITA-PVA-1861-2025",
+        "Piemonte with Valle d'Aosta",
+        build_ita_pva_1861_2025,
+        "Union of GADM 4.1 adm1 Piemonte ITA.13_1 and Valle d'Aosta ITA.19_1, the features the "
+        "two member rows bind = 28,538 km2 against the panel unit ITC1's constant landuse total "
+        "of 28,653.28 (+0.4%). Modern extent: the 1947 cessions to France are not added back.",
     ),
 ]
 
