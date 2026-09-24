@@ -366,14 +366,20 @@ def check_western_eastern_prefix(ctx):
     if m is None:
         return None
     mm = m[m["source"] == "fao1952"].copy()
-    mm["lab"] = mm["country"].astype(str).str.strip()
+    # The label AS PRINTED (`source_label_raw`), not the matcher's `country`: since 2026-09-24 `Western`
+    # and `Eastern` are OCR-corrected to `Germany Western`/`Germany Eastern` before matching, so under
+    # `country` they would vanish and their twins would absorb them. The claims are about the printed labels.
+    mm["lab"] = mm["source_label_raw"].astype(str).str.strip()
     KEY = ["item", "indicator", "unit", "year", "period"]
 
     def routed(lab):
         d = mm[mm["lab"] == lab]
         return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
 
-    ROUTED_NOW = {"Western": "10/13", "Eastern": "4/5"}
+    # 10/13, 4/5 -> 13/13, 5/5 on 2026-09-24 (fao1952 present boundaries second pass): `Germany` 1934-1939 is
+    # now back_cast to DEU-1945-1949, so the back-projected zone rows no longer land beside the total, and
+    # `Western`/`Eastern` are OCR-corrected to their twins' labels. Nothing is left unrouted.
+    ROUTED_NOW = {"Western": "13/13", "Eastern": "5/5"}
     for orphan, twin, n in (("Western", "Germany Western", 13), ("Eastern", "Germany Eastern", 5)):
         r, tot = routed(orphan)
         claims.append((f"`{orphan}` routed", f"{r}/{tot}", ROUTED_NOW[orphan]))
@@ -384,7 +390,7 @@ def check_western_eastern_prefix(ctx):
         tags = sorted({(str(int(x)) if pd.notna(x) else str(pp))
                        for x, pp in zip(left["year"], left["period"])})
         claims.append((f"  `{orphan}` still unrouted, by year/period", ",".join(tags),
-                       {"Western": "1934-1938,1937", "Eastern": "1937"}[orphan]))
+                       {"Western": "", "Eastern": ""}[orphan]))
         tr, tn = routed(twin)
         # 254/254 -> 253/254 on 2026-09-24 (world alias collisions): the one 1937 dated `Germany
         # Western` row is now `back_cast` to WZO-1938-1949 in the alias map, and matchlib -- whose
@@ -412,8 +418,10 @@ def check_western_eastern_prefix(ctx):
     # The part no longer lands on the Reich polity, so the right-hand side is now empty.
     # Empty -> WZO-1938-1949 the same day (layer-B territory findings), when matchlib began
     # following `back_cast` rules: the part is now ON its zone, still not on the Reich.
+    # DEU-1920-1938 -> DEU-1945-1949 on the left the same day (fao1952 present boundaries second pass): the
+    # total is back_cast to post-war Germany, whose zones the parts are. Still two polities, never one.
     claims.append(("1937 total vs part polity -- issue 411", f"{codes('Germany', 1937)} vs "
-                   f"{codes('Germany Western', 1937)}", "DEU-1920-1938 vs WZO-1938-1949"))
+                   f"{codes('Germany Western', 1937)}", "DEU-1945-1949 vs WZO-1938-1949"))
     # The class this pair belongs to, found structurally rather than by identity proof.
     fr = mm[mm["whep_code"].fillna("").astype(str).str.strip() == ""]
     rt = mm[mm["whep_code"].notna()]
@@ -426,15 +434,18 @@ def check_western_eastern_prefix(ctx):
             codes = sorted({str(x) for x in rt[rt["lab"].isin(par)]["whep_code"].dropna()})
             frag.append((lab2, int((fr["lab"] == lab2).sum()), codes))
     uniq = [x for x in frag if len(x[2]) == 1]
-    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 21))
+    # 21/52/10/11 -> 18/46/9/9 on 2026-09-24 (fao1952 present boundaries second pass): `Western` (3 rows) and
+    # `Eastern` (1), which had several candidates, and `Trieste` (2, parent `Trieste UK US`) stopped being
+    # unrouted fragments -- the first two by OCR correction, Trieste by its 1937 rule becoming back_cast.
+    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 18))
     # 42/11/10 -> 52/10/11 on 2026-09-24 (world alias collisions), two labels moving and the
     # class size (21) unchanged: fao1952 `Korea` 1949-1951 was unrouted (it is the peninsula, and
     # averaged with `Korea South`), so its 11 rows became a fragment of `Korea South`/`Korea North`
     # with three candidate polities; and `Great Britain` (1 row) stopped being a fragment, because
     # its only routed parent `United Kingdom Great Britain` was unrouted in the same change.
-    claims.append(("  rows they carry", sum(x[1] for x in frag), 52))
-    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 10))
-    claims.append(("  with several candidate polities", len(frag) - len(uniq), 11))
+    claims.append(("  rows they carry", sum(x[1] for x in frag), 46))
+    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 9))
+    claims.append(("  with several candidate polities", len(frag) - len(uniq), 9))
     # `Portuga` is the counter-example: structurally unambiguous, three values on one key.
     pg = mm[(mm["lab"] == "Portuga")]
     claims.append(("`Portuga` distinct values on its single key",
@@ -2038,6 +2049,48 @@ def check_jamaica_dropped_digit(ctx):
             "a decimal shift does not explain it, and the gate passes on a 7.7x gap")
 
 
+
+def check_yugoslavia_horses_dropped_digit(ctx):
+    """fao1952's Yugoslav horse count lost its leading `1,` in 1939, 1949 and 1950, and juan fixes the column.
+
+    THE COLUMN IS IDENTIFIED BY ITS NEIGHBOURS, NOT BY THE SUSPECT CELL. fao1952 packs asses, horses and
+    mules into one item (`horses mules asses`, the group order the fao1952/*/horses convention records),
+    and for 1949-1951 the asses (162/158/152) and mules (34/33/32) cells equal juan's `yugoslav sfr` to the
+    thousand. The horse cells are 50 and 97 thousand against juan's 1,050,000 and 1,097,000, and in 1951,
+    where nothing was lost, 1,095 against 1,095,000. Restoring a leading 1 reproduces juan EXACTLY in all
+    three defective years, including 1939 (273 -> 1,273 = juan's interwar 1,273,000). A territory or scope
+    difference cannot do that: it would move asses and mules too, and it would not leave a residual of
+    exactly 1,000 thousand three times.
+
+    NOT CORRECTED in the data: the repaired value is the obvious one, but a repair belongs in its own change.
+    """
+    lb = ctx["panel"]
+    f = lb[(lb["source"] == "fao1952") & (lb["country"] == "Yugoslavia")
+           & (lb["item"] == "horses mules asses")].sort_index()
+    j = lb[(lb["source"] == "juan") & (lb["country"] == "yugoslav sfr")]
+
+    def jv(item, yr):
+        v = j[(j["item"] == item) & (j["year"] == yr)]["value"]
+        return float(v.iloc[0]) / 1000 if len(v) == 1 else None
+
+    out = [("fao1952 Yugoslavia horses/mules/asses rows", len(f), 12)]
+    for yr in (1939, 1949, 1950, 1951):
+        vals = sorted(float(v) for v in f[f["year"] == yr]["value"])
+        h = jv("horses", yr)
+        restored = [v for v in vals if h is not None and v + 1000 == h]
+        plain = [v for v in vals if h is not None and v == h]
+        out.append((f"  {yr} juan horses (thousand)", h,
+                    {1939: 1273.0, 1949: 1050.0, 1950: 1097.0, 1951: 1095.0}[yr]))
+        out.append((f"    fao1952 cell + 1,000 equals it", restored[0] if restored else "none",
+                    {1939: 273.0, 1949: 50.0, 1950: 97.0, 1951: "none"}[yr]))
+        out.append((f"    fao1952 cell equals it as printed", plain[0] if plain else "none",
+                    {1951: 1095.0}.get(yr, "none")))
+        if yr >= 1949:
+            same = sum(1 for it in ("asses", "mules and hinnies") if jv(it, yr) in vals)
+            out.append((f"    asses and mules equal juan", same, 2))
+    return out, ("a leading `1,` lost three times, reproducing juan exactly; the neighbouring asses and "
+                 "mules cells identify the column")
+
 MATCHED_DF = [None]   # filled by main(); _unrouted() reads the assignment artefact through it
 
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
@@ -3110,6 +3163,7 @@ CHECKS = {
     "united-states-california-double-count": check_california_double_count,
     "fao1952-bwi-bahamas-land-area-x10": check_bahamas_area_x10,
     "fao1952-bwi-jamaica-dropped-leading-digit": check_jamaica_dropped_digit,
+    "fao1952-yugoslavia-horses-dropped-leading-digit": check_yugoslavia_horses_dropped_digit,
 }
 
 
