@@ -1582,6 +1582,8 @@ ITH3,eurostat-nuts2016,1861,1865,ITA-VEN-1866-2025,,high,,back_cast
 ITH3,eurostat-nuts2016,1866,2023,ITA-VEN-1866-2025,,high,,
 ITH3,jrc-nuts2016,1861,1865,ITA-VEN-1866-2025,,high,,back_cast
 ITH3,jrc-nuts2016,1866,2023,ITA-VEN-1866-2025,,high,,
+ITH3,juan-subnational,1861,1865,ITA-VEN-1866-2025,Veneto (region of Italy),high,,back_cast
+ITH3,juan-subnational,1866,2023,ITA-VEN-1866-2025,Veneto (region of Italy),high,,
 ITH4,eurostat-nuts2013,1880,1918,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,eurostat-nuts2013,1919,1969,ITA-ITH4-1970-2025,,high,,back_cast
 ITH4,eurostat-nuts2013,1970,2023,ITA-ITH4-1970-2025,,high,,
@@ -2115,6 +2117,7 @@ Putumayo,juan-subnational,1915,1990,COL-PUTUMAYO-1991-2025,,high,,back_cast
 Putumayo,juan-subnational,1991,2023,COL-PUTUMAYO-1991-2025,,high,,
 Qatar,faostat,1961,2024,QAT-1800-2025,Qatar,high,67600,
 Queensland,juan-subnational,1860,1900,QUE-1859-1901,,medium,,
+Queensland,juan-subnational,1901,2022,AUS-QLD-1901-2025,Queensland (state of Australia),high,,
 Queensland,whep-lab-australia,1901,2022,AUS-QLD-1901-2025,,high,,
 Querétaro,juan-subnational,1900,2023,MEX-QUERETARO-1824-2025,,medium,,
 Quindío,juan-subnational,1915,1965,COL-QUINDIO-1966-2025,,high,,back_cast

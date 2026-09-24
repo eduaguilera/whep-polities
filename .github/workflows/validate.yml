@@ -408,6 +408,15 @@ jobs:
         # gitignored panel is not needed and this runs here rather than only by hand.
         run: python3 scripts/validate_routed_units_are_aliased.py
 
+      - name: Every routed ledger year has the alias the harness derives for it
+        if: '!cancelled()'
+        # The gate above accepts a rule in ANY slug; this one derives the rules the ledger
+        # implies under the panel's own slugs (pipelines/agent-harness/derive_aliases.py) and
+        # fails on any that is missing, contradicted by a registry row, or aimed at a code that
+        # is not a live polity. Its first run found Queensland's state era and Veneto unaliased
+        # in the panel slug while every other slug had them. `--write` appends what is missing.
+        run: python3 pipelines/agent-harness/derive_aliases.py --check --quiet
+
       - name: No alias label names reporting units in two countries
         if: '!cancelled()'
         # Routing resolves a panel unit by id OR name, so a rule keyed on a shared name ('Santa

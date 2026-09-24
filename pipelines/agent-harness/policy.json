@@ -3,5 +3,17 @@
   "effort": "low",
   "timeout_seconds": 600,
   "max_budget_usd": 2.0,
-  "_comment": "Tunable without touching code. `effort` is deliberately low: each job is one unit with pre-assembled evidence, which is a classification, not a research task. Raise it only if verdicts come back insufficient_evidence for reasons the wide cycle does not fix."
+  "_comment": "Tunable without touching code. `effort` is deliberately low: each job is one unit with pre-assembled evidence, which is a classification, not a research task. Raise it only if verdicts come back insufficient_evidence for reasons the wide cycle does not fix.",
+  "territory_size": {
+    "indicator": "landuse",
+    "max_spread": 1.5,
+    "tolerance": 1.8,
+    "container_ratio": 3.0,
+    "_comment": "A unit's land total (median per-year sum of its `indicator` classes, ignored when max/min across years exceeds max_spread) against the target polygon's km2 in ESRI:54034. Objected to outside [1/tolerance, tolerance]; a `matched` target above container_ratio x the unit's own territory is its container. Measured 2026-09-24 over 349 ledger (unit, target) pairs: legitimate 0.56-1.60x; the Essonne and Bolzano defects 0.30x and 0.54x."
+  },
+  "alias_derivation": {
+    "panel_slug": "juan-subnational",
+    "panel_slug_prefixes": ["whep-lab-"],
+    "_comment": "derive_aliases.py writes rules only under slugs that carry the panel's own vocabulary: the panel slug, and any slug with one of these prefixes that already carries the unit. Official-vocabulary slugs (eurostat-*, jrc-*) keep their own meaning of a label and are never written."
+  }
 }
