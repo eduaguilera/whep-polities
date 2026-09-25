@@ -1144,7 +1144,7 @@ def test_informational_gate_output_is_not_counted_as_a_failure():
     # ...while genuine failure lines still do
     for line in ("FAIL: 10 problem(s)",
                  "  A: ESP-IBZ-1833-2025 -> ESP-1833-2025: the container code is not in",
-                 "  C: FRA-AVE-1790-2025 -> FRA-1800-1871 covers 1790-1871 but",
+                 "  C: FRA-AVE-1790-2025 -> FRA-1800-1860 covers 1790-1860 but",
                  "  NEW cross-family name collision: X and Y",
                  "  ASYMMETRY: 84 predecessor-only chain edges"):
         assert shape.match(line), line

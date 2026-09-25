@@ -467,8 +467,9 @@ FRA-08-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,5234,no_reference,0,,0,,,,
 FRA-13-1790-2025,1790,2025,,subnational,gadm-4.1-adm2,5288,no_reference,0,,0,,,,,,
 FRA-14-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,5601,no_reference,0,,0,,,,,,
 FRA-18-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,7310,no_reference,0,,0,,,,,,
-FRA-1800-1871,1800,1871,220,national,cshapes-europe,533999,no_reference,0,,0,,,,,,
+FRA-1800-1860,1800,1860,220,national,cshapes-europe,533999,no_reference,0,,0,,,,,,
 FRA-1800-1919,1800,1919,220,national,cshapes-europe,533999,stable_where_covered,1,1886-1918,0,532307,532307,,,0.943,0.32
+FRA-1860-1871,1860,1871,220,national,cshapes-europe,547642,no_reference,0,,0,,,,,,
 FRA-1871-1919,1871,1919,220,national,cshapes-2.0,532305,stable_where_covered,1,1886-1918,0,532307,532307,,,0.998,-0.0
 FRA-19-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,5920,no_reference,0,,0,,,,,,
 FRA-1919-2025,1919,2025,220,national,cshapes-2.0,548058,stable_where_covered,1,1919-2019,0,548041,548041,,,0.998,0.0

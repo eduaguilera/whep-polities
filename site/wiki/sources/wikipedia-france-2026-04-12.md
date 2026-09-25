@@ -41,7 +41,10 @@ article.
 "Piedmont ceded its provinces of Nice and Savoy to France in
 March 1860." Context: reward for French support against Austria
 in the 1859 war. docs/03_ENTRIES_RATIONALE.md:99 records this as
-8,261 km².
+8,261 km². That figure is not from this source and is contradicted by
+measurement (added 2026-09-25): CShapes-Europe's France grows by 13,631 km²
+between its 1816-1860 and 1861-1870 steps; see
+[fra-1800-1860](../polities/fra-1800-1860.md#contradictions).
 
 ### 1871-alsace-lorraine
 *Loss of Alsace-Lorraine.*

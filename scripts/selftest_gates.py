@@ -273,7 +273,7 @@ def mutate_shadowing_twin(root, gpd, make_valid, affinity):
     import pandas as pd
 
     g = gpd.read_file(GPKG)
-    base = g[g.polity_code == "FRA-1800-1871"].iloc[0].copy()
+    base = g[g.polity_code == "FRA-1800-1860"].iloc[0].copy()
     twin = base.copy()
     twin["polity_code"] = "FRA-1820-1860"
     twin["start_year"], twin["end_year"] = 1820, 1860
@@ -283,7 +283,7 @@ def mutate_shadowing_twin(root, gpd, make_valid, affinity):
         crs=g.crs,
     )
     out.to_file(os.path.join(root, "data/final/polities_database.gpkg"), driver="GPKG")
-    return "added FRA-1820-1860, a small same-type twin overlapping FRA-1800-1871"
+    return "added FRA-1820-1860, a small same-type twin overlapping FRA-1800-1860"
 
 
 def mutate_disjoint_successor(root, gpd, make_valid, affinity):
@@ -303,11 +303,11 @@ def mutate_shrunk_successor(root, gpd, make_valid, affinity):
     """A period bound to a much smaller feature INSIDE the right territory. The
     containment gate cannot see this by construction; the area gate must."""
     g = gpd.read_file(GPKG)
-    src = g.loc[g.polity_code == "FRA-1800-1871", "geometry"].iloc[0]
+    src = g.loc[g.polity_code == "FRA-1800-1860", "geometry"].iloc[0]
     i = g.index[g.polity_code == "FRA-1871-1919"][0]
     g.loc[i, "geometry"] = src.centroid.buffer(0.3)
     g.to_file(os.path.join(root, "data/final/polities_database.gpkg"), driver="GPKG")
-    return "shrank FRA-1871-1919 to a disc inside FRA-1800-1871"
+    return "shrank FRA-1871-1919 to a disc inside FRA-1800-1860"
 
 
 
@@ -350,15 +350,15 @@ def mutate_code_year_disagreement(root, gpd, make_valid, affinity):
         fields = rows[0].keys()
     hit = 0
     for r in rows:
-        if r["polity_code"] == "FRA-1800-1871":
+        if r["polity_code"] == "FRA-1800-1860":
             r["start_year"] = "1799"
             hit += 1
-    assert hit == 1, f"expected one FRA-1800-1871 row, found {hit}"
+    assert hit == 1, f"expected one FRA-1800-1860 row, found {hit}"
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=list(fields))
         w.writeheader()
         w.writerows(rows)
-    return "set FRA-1800-1871's start_year to 1799, contradicting its own code"
+    return "set FRA-1800-1860's start_year to 1799, contradicting its own code"
 
 
 def mutate_cross_family_overlap(root, gpd, make_valid, affinity):
@@ -6640,7 +6640,7 @@ CASES = (
     (
         "validate_code_year_agreement.py",
         mutate_code_year_disagreement,
-        "FRA-1800-1871",
+        "FRA-1800-1860",
         "a code whose embedded years contradict its own columns",
     ),
     (

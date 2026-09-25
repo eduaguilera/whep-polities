@@ -451,9 +451,14 @@
     "confidence": "medium",
     "container_chain": [
       {
-        "code": "FRA-1800-1871",
-        "end_year": 1871,
+        "code": "FRA-1800-1860",
+        "end_year": 1860,
         "start_year": 1800
+      },
+      {
+        "code": "FRA-1860-1871",
+        "end_year": 1871,
+        "start_year": 1860
       },
       {
         "code": "FRA-1871-1919",
@@ -468,7 +473,7 @@
     ],
     "country": "France",
     "evidence_used": [
-      "National rows: FRA-1800-1871 France with Alsace-Lorraine to 1871, FRA-1871-1919 France without Alsace-Lorraine 1871-1919, FRA-1919-2025 France 1919-2025",
+      "National rows: FRA-1800-1860 France before Savoy and Nice to 1860, FRA-1860-1871 France with Savoy, Nice and Alsace-Lorraine 1860-1871, FRA-1871-1919 France without Alsace-Lorraine 1871-1919, FRA-1919-2025 France 1919-2025",
       "Data coverage 1862-2023 stated as not itself a basis for span",
       "No existing subnational precedent rows for FRA"
     ],
