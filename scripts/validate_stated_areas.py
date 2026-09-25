@@ -435,6 +435,19 @@ BASELINE = {
     # with ratio 7.747, beside a new JAM-1800-2025/iia row near 11,000, so a per-source consumer sees
     # both; and the defect stays logged with its sibling Bahamas error in
     # pipelines/polity-autoimprove/state/data_errors.csv, where it is re-tested.
+    # ADC-1937-1967, added 2026-09-25 (geodata batch 3). FAO 1952 states 21 thousand ha for `Aden Colony
+    # Inc Perim and Kuria` (1947 land total, one statement, rounded to the thousand ha). The polygon is
+    # the colony's parts drawn from modern GADM districts: the town (Crater, Tawahi, Al Mualla with
+    # Perim) 42 km2, Khormaksar, Sheikh Othman and Mansura 112, Little Aden clipped at 12.78 N 62, and
+    # the Kuria Muria Islands (Al Halaniyat) 80. Every part is the colony's; the overshoot is in the
+    # outlines, Khormaksar's salt pans and airport ground and a latitude line for Little Aden where the
+    # colony boundary is not drawn by any fetched source. Not a scope difference: FAO's label names the
+    # same parts.
+    ("ADC-1937-1967", "fao"):
+        "FAO 1952 states 210 km2 (21 thousand ha, 1947) for the colony with Perim and Kuria Muria; the "
+        "polygon's parts are the same (town, Sheikh Othman, Little Aden, Perim, Kuria Muria) from modern "
+        "GADM districts, whose outlines are larger than the colony's land (salt pans, a latitude line "
+        "for Little Aden). An outline overshoot, not a scope difference.",
 }
 
 # (polity_code, source) -> why ONE SOURCE's figure is wrong for a polity the gate does NOT fail on.

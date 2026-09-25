@@ -11,6 +11,7 @@ BLX-1850-1999,LUX-1839-2025,fao1952,1937,1940,Belgium and Luxembourg,luxembourg,
 CAN-1949-2025,CAN-NL-1949-2025,fao1952,1949,1951,canada,Canada Newfoundland;canada  newfoundland;canada newfoundland,name,alias;applied_alias,1,2,no
 CHN-1921-1932,MAN-1921-1932,iia,1922,1931,"china, mainland","china, manchuria province of",applied_alias,alias,0,0,no
 CHN-1945-1947,MAN-1945-1950,iia,1945,1945,"china, mainland","china, manchuria province of",applied_alias,alias,0,0,no
+DEU-1949-1990,BRL-1949-1990,fao1952,1949,1951,germany,Berlin;Germany Berlin;berlin;germany  berlin,name,alias;applied_alias,10,26,no
 FID-1887-1954,KHM-1907-1953,mitchell,1907,1948,indochina,cambodia;indochina cambodia,applied_alias,alias;iso,7,0,no
 FID-1887-1954,LAO-1893-1954,mitchell,1936,1948,indochina,indochina laos;lao,applied_alias,alias;iso,5,0,no
 FID-1887-1954,VNM-1887-1954,mitchell,1887,1948,indochina,indochina viet nam;viet nam,applied_alias,alias;applied_alias,9,0,no

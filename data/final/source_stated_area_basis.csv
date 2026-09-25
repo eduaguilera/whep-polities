@@ -1,5 +1,6 @@
 polity_code,polity_name,source,stated_area_km2,statements,editions,source_labels,polygon_area_km2,ratio_polygon_over_stated,basis_flag,note
-ADE-1839-1967,Aden Protectorate (1839-1967),fao,290080,1,1952,Aden Protectorate,287116,0.990,agrees,
+ADC-1937-1967,Aden Colony (State of Aden from 1963),fao,210,1,1952,Aden Colony Inc Perim and Kuria,291,1.386,agrees,"FAO 1952 states 210 km2 (21 thousand ha, 1947) for the colony with Perim and Kuria Muria; the polygon's parts are the same (town, Sheikh Othman, Little Aden, Perim, Kuria Muria) from modern GADM districts, whose outlines are larger than the colony's land (salt pans, a latitude line for Little Aden). An outline overshoot, not a scope difference."
+ADE-1839-1967,Aden Protectorate (1839-1967),fao,290080,1,1952,Aden Protectorate,286872,0.989,agrees,
 AEF-1910-1960,French Equatorial Africa (AEF),fao,2538450,1,1952,French Equat Africa,2495130,0.983,agrees,
 AEF-1910-1960,French Equatorial Africa (AEF),iia,2255870,9,1909;1925;1929;1932;1933;1938,AFRIQUE EQUATORIALE FRANÇAISE;AFRIQUE ÉQUATORIALE FRANÇAISE;afrique équatoriale française,2495130,1.106,agrees,
 AFG-1893-1919,Afghanistan (1893-1919),iia,635000,3,1909;1925;1929,AFGHANISTAN;afghanistan,641971,1.011,agrees,
@@ -163,7 +164,7 @@ GNB-1886-1974,Guinea-Bissau (1886-1974),iia,36125,9,1909;1925;1929;1932;1933;193
 GNQ-1886-1968,Equatorial Guinea (1886-1968),fao,28050,1,1952,Spanish Guinea,26904,0.959,agrees,
 GNQ-1886-1968,Equatorial Guinea (1886-1968),iia,26630,9,1909;1925;1929;1932;1933;1938,GUINEE ESPAGNOLE;GUINÉE ESPAGNOLE;guinée espagnole,26904,1.010,agrees,
 GRC-1881-1913,Greece (1881–1913),iia,119050,3,1909;1925;1929,GRECE;GRÈCE;grèce,63612,0.534,review,"PERIOD MISMATCH IN THE SOURCE, not in us. IIA's 1925 edition states 119,050 km2 under the data year 1913 -- post-Balkan-Wars Greece -- while this row ends in 1913 and covers the 63,211 km2 kingdom. Our 63,612 is right for the row. The yearbook is labelling a 1913 column with the territory Greece held after the treaties of that year."
-GRC-1919-1947,Greece (1919-1947),iia,130199,6,1909;1925;1929;1932;1933;1938,GRECE;GRÈCE;grèce,129841,0.997,agrees,
+GRC-1919-1947,Greece (1919-1947),iia,130199,6,1909;1925;1929;1932;1933;1938,GRECE;GRÈCE;grèce,127506,0.979,agrees,
 GRC-1947-2025,Greece (1947-2025),fao,132560,1,1952,Greece,129841,0.979,agrees,
 GRD-1800-2025,Grenada,fao,340,1,1952,Windward Islands  Grenada,359,1.057,agrees,
 GRD-1800-2025,Grenada,iia,344,9,1909;1925;1929;1932;1933;1938,INDES OCCIDENTALES BRITANNIQUES: ILES DU VENT: GRENADE;indes occidentales britanniques: iles du vent: grenade,359,1.045,agrees,
@@ -352,8 +353,8 @@ SLE-1889-1961,Sierra Leone (1889-1961),fao,72330,1,1952,Sierra Leone,72503,1.002
 SLE-1889-1961,Sierra Leone (1889-1961),iia,70580,9,1909;1925;1929;1932;1933;1938,SIERRA LEONE;SIERRA LEONE colonie et protectorade;SIERRA-LEONE;SIERRA-LEONE british;sierra leone,72503,1.027,agrees,
 SLV-1821-2025,El Salvador,fao,34130,1,1952,EI Salvador,20558,0.602,review,"EXTRACTION DAMAGE, visible in the label itself: the row is `EI Salvador`, an OCR misread of `El`. The stated 34,130 km2 is 62% above El Salvador's 21,041, so the number is as suspect as the name. Belongs to the digitisation review, not to this repo."
 SLV-1821-2025,El Salvador,iia,34126,9,1909;1925;1929;1932;1933;1938,"""SAN SALVADOR;SAN SALVADOR;san salvador",20558,0.602,review,"A STALE SOURCE FIGURE, NOT A TRANSCRIPTION ERROR, AND THE STABILITY IS THE EVIDENCE. IIA states 34,126 km2 for `SAN SALVADOR` in EVERY edition -- 1913, 1925, 1929, 1932, 1933 and 1937, byte-identical -- against El Salvador's 21,041 km2. A digit slip would not reproduce across six editions; a figure the yearbook believed and never revised would. 34,126 is a pre-boundary-survey estimate of the kind older gazetteers carried, so this is a vintage disagreement about the same territory rather than a different scope. Our 20,558 is right. Recorded because a 1.62x ratio with no note reads as a possible routing error, and it is not one."
-SMO-1912-1956,Spanish Morocco (1912-1956),fao,45870,1,1952,Sp Morocco and possessions in North Africa,52792,1.151,agrees,
-SMO-1912-1956,Spanish Morocco (1912-1956),iia,21800,8,1909;1925;1929;1932;1933;1938,MAROC ESPAGNOL;maroc espagnol,52792,2.422,review,
+SMO-1912-1956,Spanish Morocco (1912-1956),fao,45870,1,1952,Sp Morocco and possessions in North Africa,52634,1.147,agrees,
+SMO-1912-1956,Spanish Morocco (1912-1956),iia,21800,8,1909;1925;1929;1932;1933;1938,MAROC ESPAGNOL;maroc espagnol,52634,2.414,review,
 SMR-1800-2025,San Marino,fao,100,1,1952,San Marino,61,0.612,review,"ROUNDING AT LOW MAGNITUDE. FAO's smallest unit is 1,000 hectares = 10 km2, so San Marino's 61 km2 can only be recorded as 6 or 10 -- it is recorded as 10, giving 100. Our 61 is right. This lived in BASELINE until 2026-08-20, when retargeting the `saint marin` lexicon entry brought IIA's nine statements in; IIA states 61 against our 61, so the polity is no longer outside every stated area and the baseline became stale. The FAO row still reads 0.612x and still needs explaining, which is what this dict is for."
 SMR-1800-2025,San Marino,iia,61,9,1909;1925;1929;1932;1933;1938,SAINT-MARIN;saint-marin,61,1.003,agrees,
 SPM-1816-2025,Saint Pierre and Miquelon,fao,240,1,1952,St Pierre and Miquelon,230,0.958,agrees,
@@ -384,6 +385,7 @@ THA-1909-2025,Thailand,iia,518159,9,1909;1925;1929;1932;1933;1938,SIAM;siam,5121
 TIB-1913-1950,Tibet (1913-1950),fao,1215780,1,1952,Tibet,1125941,0.926,agrees,
 TLS-1800-2025,Timor-Leste,fao,18990,1,1952,Portuguese Timor,14978,0.789,agrees,
 TLS-1800-2025,Timor-Leste,iia,18990,9,1909;1925;1929;1932;1933;1938,TIMOR ET KAMBING;timor et kambing,14978,0.789,agrees,
+TNG-1912-1956,Tangier Zone (International Zone from 1925),fao,350,1,1952,Tangier,322,0.919,agrees,
 TON-1800-2025,Tonga,fao,690,1,1952,Tonga,757,1.097,agrees,
 TPAP-1906-1949,Territory of Papua,iia,234494,5,1929;1932;1933;1938,AUSTRALIE: PAPOUASIE;australie: papouasie,224156,0.956,agrees,
 TRP-1943-1951,British Military Administration of Tripolitania,fao,353000,1,1952,Libya Tripolitania,314551,0.891,agrees,

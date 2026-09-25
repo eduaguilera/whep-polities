@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "8b0b523dc902ccc99b2eb0f177e05010a392f1ca8a5f918d9b591445ba3f64e1",
+ "identity_sha256": "e6165ca285fc80099c03ee02577dee3337277af83ec0b467e5c9269c951c03ce",
  "counts": {
-  "total": 1264,
-  "live": 1220,
+  "total": 1267,
+  "live": 1223,
   "dead": 44
  },
  "dead_status": [
@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "04a20560fbe0623d2a91eaf63115f64745c857ea4e15c53cf23dc074a263b705",
-  "aliases": 2683,
-  "labels": 1426,
+  "sha256": "202cbbf54f77cd7bbffe568245a2b875a7160c079bfb465d2056dd411383e417",
+  "aliases": 2687,
+  "labels": 1430,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -221,8 +221,8 @@
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 423,
-  "polities": 292,
+  "bases": 425,
+  "polities": 294,
   "sources": [
    "fao",
    "iia"
@@ -838,6 +838,7 @@
  "territory_families_why": "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not link the families that hold the same ground at different times, and a consumer matching on it alone gets no answer for the years before a modern code's own rows begin. Czech territory in 1950 is held by CSK (Czechoslovakia), Montenegrin by YUG, Moroccan before 1911 by the local code MOR -- none of which equals the code being asked about. Each entry names a family that held this modern code's territory and the years over which the database asserts it with a predecessor or successor EDGE (hop_depth 1). It is derived from those edges, not hand-written, so it cannot drift from the database. For per-year resolution, including the deeper traversals this field omits, read iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a polity whose edge is missing, or by no row at all -- SAU has no holder for 1912-1923, which is the second kind: SAU-1924-2025 names OTT-1908-1912 and nothing models the Hejaz or Nejd between them. This sentence read 'MAR has no holder for 1904-1910' until 2026-08-17, when MOR-1904-1911 was added and that hole was closed (issue 82). A NARROW YEAR RANGE IS ALSO NOT A HOLE: this field takes hop_depth 1 only, so a family that reaches the modern code through a chain of its OWN rows is reported over the last link's years alone -- MAR/MOR reads 1904-1910, not 1850-1910, because MOR-1800-1904 now sits behind MOR-1904-1911. Read iso3_successor_map for the rest.",
  "live_polity_codes": [
   "ABW-1800-2025",
+  "ADC-1937-1967",
   "ADE-1839-1967",
   "AEF-1910-1960",
   "AFG-1800-1893",
@@ -1002,6 +1003,7 @@
   "BRG-1800-1897",
   "BRL-1938-1945",
   "BRL-1945-1949",
+  "BRL-1949-1990",
   "BRN-1816-1888",
   "BRN-1888-2025",
   "BSS-1884-1960",
@@ -1935,6 +1937,7 @@
   "TKL-1800-2025",
   "TKM-1991-2025",
   "TLS-1800-2025",
+  "TNG-1912-1956",
   "TNGU-1920-1949",
   "TNGU-1949-1975",
   "TON-1800-2025",

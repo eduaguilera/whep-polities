@@ -452,15 +452,18 @@ def check_western_eastern_prefix(ctx):
     # their own and leave the class -- `China 22 provinces` (56 rows) to CHN-P22-1939-1953, `French North
     # Africa` (15) to FNA-1912-1956 and `Korea` 1949-1951 (11) to KORP-1948-1953 -- each a whole or part
     # beside, never on, the polity its longer-named sibling routes to.
-    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 4))
+    # 4/7/1/3 -> 3/5/1/2 on 2026-09-25 (geodata batch 3): fao1952 `Berlin` (goats 1950-1951, 2 unrouted rows;
+    # its 1949 row reached BRL-1945-1949 by name) is the goats table's name for `Germany Berlin`, the whole
+    # city after the division, and now routes by alias to BRL-1949-1990 with it, so it leaves the class.
+    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 3))
     # 42/11/10 -> 52/10/11 on 2026-09-24 (world alias collisions), two labels moving and the
     # class size (21) unchanged: fao1952 `Korea` 1949-1951 was unrouted (it is the peninsula, and
     # averaged with `Korea South`), so its 11 rows became a fragment of `Korea South`/`Korea North`
     # with three candidate polities; and `Great Britain` (1 row) stopped being a fragment, because
     # its only routed parent `United Kingdom Great Britain` was unrouted in the same change.
-    claims.append(("  rows they carry", sum(x[1] for x in frag), 7))
+    claims.append(("  rows they carry", sum(x[1] for x in frag), 5))
     claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 1))
-    claims.append(("  with several candidate polities", len(frag) - len(uniq), 3))
+    claims.append(("  with several candidate polities", len(frag) - len(uniq), 2))
     # `Portuga` was the counter-example: structurally unambiguous, three values on one key. It is now
     # OCR-corrected to `Portugal` (2026-09-25), so it is read by its raw label and has left the class.
     # The three values are the fao1952 `poultry` species group (source_conventions: one row per species,

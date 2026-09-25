@@ -2076,6 +2076,219 @@ def build_chn_p22_1939_1953() -> ogr.Geometry:
     return _union(base, *(_gadm_adm2(g) for g in CHN_P22_PLUS_GID2))
 
 
+# ---------- geodata batch 3 (2026-09-25): Tangier, Aden Colony, the Dodecanese ----------
+#
+# These read GADM 4.1 PER-COUNTRY files (gadm41_<ISO>.gpkg, fetched by the gadm-4.1 fetch script's
+# FETCH_ONLY list) at the level they need, instead of the combined adm0/adm1/adm2 extracts: the
+# territories are communes, districts and municipalities (adm2-adm4), and adding the countries to the
+# combined files would move nothing into them that any row reads.
+GADM41_DIR = REPO_ROOT / "data/geodata/gadm-4.1"
+
+
+def _gadm_country(iso: str, level: int, gid: str) -> ogr.Geometry:
+    """The GADM 4.1 feature `gid` (GID_<level>) from the per-country file gadm41_<iso>.gpkg."""
+    path = GADM41_DIR / f"gadm41_{iso}.gpkg"
+    if not path.exists():
+        raise FileNotFoundError(f"{path} missing - run scripts/sources/gadm-4.1/fetch.sh first.")
+    ds = ogr.Open(str(path))
+    lyr = ds.GetLayerByName(f"ADM_ADM_{level}")
+    if lyr is None:
+        raise LookupError(f"{path.name} has no ADM_ADM_{level} layer")
+    for f in lyr:
+        if f.GetField(f"GID_{level}") == gid:
+            return f.GetGeometryRef().Clone()
+    raise LookupError(f"{path.name} ADM_ADM_{level} has no feature with GID_{level}={gid!r}")
+
+
+def _minus_zone(base: ogr.Geometry, zone: ogr.Geometry, land: ogr.Geometry,
+                envelope: ogr.Geometry | None = None) -> ogr.Geometry:
+    """`base` minus `zone`, also dropping what `base` draws as land where `land` has SEA inside the
+    zone's bounding box.
+
+    Written for a coarse CShapes outline losing a small coastal territory drawn from GADM. Subtracting
+    the GADM outline alone leaves CShapes' coastal overhang (land in CShapes, sea in GADM) behind as
+    slivers that would still be attributed to `base`. Inside the zone's envelope, everything that is
+    not GADM land is removed too; `base`'s real land in that box is untouched, because it is GADM land
+    and only the non-land part of the box is subtracted. `envelope` replaces the zone's own bounding
+    box where the zone has a far-off part (Aden's Perim) whose box would reach along a long coast.
+    """
+    sea_in_box = (envelope or _envelope_of(zone)).Difference(land)
+    return _difference(base, zone, sea_in_box)
+
+
+# Tangier. Article 7 of the Franco-Spanish convention of 27 November 1912 set Tangier and its
+# surroundings apart from the Spanish zone with a special regime and defined their limits; the
+# international administration under the 1923 Paris Convention began on 1 June 1925. Cliopatria
+# draws the zone from 1912 (275 km2) but on a coast so coarse that it leaves 38 of the 47 km2 of the
+# city commune itself (GADM `Tanger`) outside, so the city's three urban communes are added.
+TNG_URBAN_GID4 = (
+    "MAR.14.4.5.1_1",  # Tanger (the city)               46.7 km2, 8.6 inside Cliopatria's zone
+    "MAR.14.4.4.1_1",  # Charf (southern Tangier)          35.2 km2, 26.0 inside
+    "MAR.14.2.2.1_1",  # Bni Makada (eastern Tangier)      17.4 km2, 17.4 inside
+)
+
+
+def build_tng_1912_1956() -> ogr.Geometry:
+    """The Tangier Zone = Cliopatria's "Tangier International Zone" (its 1912-1955 step) union the
+    GADM 4.1 communes of Tangier city, clipped to GADM Morocco's land.
+
+    About 322 km2 against the 382 usually quoted and FAO 1952's 35 thousand ha (1947 land total);
+    `proxy`, because Cliopatria's inland line is its own reconstruction and the coast is GADM's.
+    """
+    zone = _union(_cliopatria_feature("Tangier International Zone", 1930),
+                  *(_gadm_country("MAR", 4, g) for g in TNG_URBAN_GID4))
+    return _union(zone.Intersection(_gadm_country("MAR", 0, "MAR")))
+
+
+def build_smo_1912_1956() -> ogr.Geometry:
+    """Spanish Morocco = CShapes 602 (its single 1912-1956 step) MINUS the Tangier Zone.
+
+    CShapes draws the zone inside the Spanish protectorate (GADM's Tanger, Charf and Boukhalef
+    communes are 39.5 of 46.7, 34.7 of 35.2 and 192.1 of 193.8 km2 inside it), although the 1912
+    convention that created the protectorate excluded Tangier. The Spanish occupation of 1940-1945 is
+    the one period Tangier was run from Tetuan; neither row has data in those years (the page says so).
+    """
+    return _minus_zone(_cshapes2_feature(602, 1930), build_tng_1912_1956(),
+                       _gadm_country("MAR", 0, "MAR"))
+
+
+# Aden Colony (a Crown colony from 1 April 1937; the Aden Settlement of British India before it):
+# the town (Crater, Tawahi, Ma'alla), Khormaksar, Sheikh Othman and Mansura, Little Aden, and the
+# islands administered with it. GADM puts Perim inside Al Mualla (7.5 km2 of mainland + 12.8 of
+# island), so Perim comes with that district. Dar Saad (65.7 km2, north of Sheikh Othman) was Lahej
+# territory and stays in the protectorate.
+ADEN_COLONY_GID2 = (
+    "YEM.1.6_1",  # Crater                        11.0 km2
+    "YEM.1.5_1",  # Tawahi                        10.8
+    "YEM.1.3_1",  # Al Mualla (with Perim)        20.3
+    "YEM.1.8_1",  # Khormaksar                    51.6
+    "YEM.1.4_1",  # Sheikh Othman                 27.5
+    "YEM.1.2_1",  # Al Mansura                    32.8
+)
+# Little Aden is the Jebel Ihsan peninsula at the south of GADM's Al Buraiqeh (506 km2, most of it the
+# inland Aqrabi and Lahej ground of the protectorate); the part south of 12.78 N is 61.7 km2.
+LITTLE_ADEN_BOX = (44.60, 12.60, 44.95, 12.78)
+# The sea removed with the colony is taken from Aden's own bay only (Little Aden to Khormaksar), not
+# from the box that Perim, 150 km west, would stretch along the protectorate's coast.
+ADEN_SEA_BOX = (44.60, 12.60, 45.20, 13.00)
+KURIA_MURIA_GID2 = "OMN.9.1_1"  # Al Halaniyat Islands, Dhofar (80.2 km2); ceded to Muscat in 1967
+
+
+def _aden_colony_mainland() -> ogr.Geometry:
+    little_aden = _gadm_country("YEM", 2, "YEM.1.1_1").Intersection(_box(*LITTLE_ADEN_BOX))
+    return _union(*(_gadm_country("YEM", 2, g) for g in ADEN_COLONY_GID2), little_aden)
+
+
+def build_adc_1937_1967() -> ogr.Geometry:
+    """Aden Colony = the six GADM 4.1 YEM districts above + Little Aden + the Kuria Muria Islands
+    (GADM 4.1 OMN Al Halaniyat), about 296 km2. FAO 1952 states 21 thousand ha for `Aden Colony
+    including Perim and Kuria` (1947)."""
+    return _union(_aden_colony_mainland(), _gadm_country("OMN", 2, KURIA_MURIA_GID2))
+
+
+def build_ade_1839_1967() -> ogr.Geometry:
+    """The Aden Protectorate = CShapes 680 (South Yemen, 1967-1990) MINUS Aden Colony's mainland.
+
+    CShapes 680 is the successor state and holds the Colony's inland districts (Sheikh Othman 27.5 of
+    27.5 km2, Khormaksar 47.7 of 51.6, Mansura 31.9 of 32.8); FAO 1952 reports the Colony and the
+    Protectorate as separate units in the same tables, so the Protectorate's outline must not hold it.
+    """
+    return _minus_zone(_cshapes2_feature(680, 1970), _aden_colony_mainland(),
+                       _gadm_country("YEM", 0, "YEM"), _box(*ADEN_SEA_BOX))
+
+
+# The Dodecanese: the fifteen GADM 4.1 GRC municipalities (adm3) of the South Aegean that were the
+# Italian Islands of the Aegean. Kastellorizo (Megisti) was French-occupied 1915-1921 and Italian
+# from 1921; it is 13.2 km2 and is kept in for the whole span.
+DODECANESE_GID3 = (
+    "GRC.1.2.1_1",   # Agathonisi      16.0 km2
+    "GRC.1.2.6_1",   # Astypalaia     122.0
+    "GRC.1.2.7_1",   # Chalki          38.0
+    "GRC.1.2.10_1",  # Kalymnos       140.6
+    "GRC.1.2.11_1",  # Karpathos      335.7
+    "GRC.1.2.12_1",  # Kasos           73.3
+    "GRC.1.2.15_1",  # Kos            288.7
+    "GRC.1.2.17_1",  # Leipsoi         18.5
+    "GRC.1.2.18_1",  # Leros           81.2
+    "GRC.1.2.19_1",  # Megisti         13.2
+    "GRC.1.2.23_1",  # Nisyros         51.5
+    "GRC.1.2.25_1",  # Patmos          47.1
+    "GRC.1.2.26_1",  # Rhodos        1406.9
+    "GRC.1.2.30_1",  # Symi            67.7
+    "GRC.1.2.33_1",  # Tilos           66.2
+)
+DODECANESE_MARGIN_M = 3000   # CShapes-vs-GADM coastline disagreement around the islands
+GRC_UTM = 32635              # UTM zone 35N; the islands sit at 26.2-29.6 E
+
+
+def build_itaeg_1912_1947() -> ogr.Geometry:
+    """The Italian Islands of the Aegean = the fifteen Dodecanese municipalities, 2,767 km2 at source
+    against the usual 2,714."""
+    return _union(*(_gadm_country("GRC", 3, g) for g in DODECANESE_GID3))
+
+
+def _greece_without_dodecanese(start: int, end: int) -> ogr.Geometry:
+    """CShapes 350's step (start, end) MINUS the Dodecanese widened by DODECANESE_MARGIN_M.
+
+    The margin removes CShapes' own coarser outline of each island (which the GADM outline alone
+    would leave behind as rings of coast) and cannot touch other Greek land: the nearest Greek island
+    outside the group, Ikaria/Fourni to Patmos and Amorgos to Astypalaia, is over 15 km away.
+    """
+    margin = _buffer_metres(build_itaeg_1912_1947(), DODECANESE_MARGIN_M, GRC_UTM)
+    return _difference(_cshapes2_step(350, start, end), margin)
+
+
+def build_grc_1913_1919() -> ogr.Geometry:
+    """Greece 1913-1919 = CShapes 350's 1913-1919 step without the Dodecanese (Italian from 1912)."""
+    return _greece_without_dodecanese(1913, 1919)
+
+
+# The Austrian Empire before 1859 in Italy was Lombardy-Venetia (with Trentino and the Littoral), which
+# stopped at the Ticino and the Po. Cliopatria's "Austrian Empire" also draws Tuscany as Austrian (it
+# has no separate Tuscany polity in 1820), and a strip south of the Po and west of the Ticino: at its
+# 1820-1827 step, 19,677 km2 of GADM's Toscana, 2,485 of Emilia-Romagna, 1,319 of Piemonte, 763 of
+# Umbria, 388 of Lazio and 288 of Marche lie inside it. The Grand Duchy of Tuscany, Parma, Modena, the
+# Papal States and Sardinia-Piedmont were separate states; none of these six modern regions was
+# Austrian between 1815 and 1859.
+AUH_NOT_AUSTRIAN_GID1 = (
+    "ITA.16_1",  # Toscana
+    "ITA.6_1",   # Emilia-Romagna
+    "ITA.13_1",  # Piemonte
+    "ITA.18_1",  # Umbria
+    "ITA.8_1",   # Lazio
+    "ITA.11_1",  # Marche
+)
+
+
+AUH_AUSTRIAN_ITALY_GID1 = (
+    "ITA.10_1",  # Lombardia
+    "ITA.20_1",  # Veneto
+    "ITA.7_1",   # Friuli-Venezia Giulia
+    "ITA.17_1",  # Trentino-Alto Adige
+)
+AUH_MARGIN_M = 20_000
+ITALY_UTM = 32632  # UTM zone 32N
+
+
+def build_auh_1800_1859() -> ogr.Geometry:
+    """The Austrian Empire to 1859 = Cliopatria's "Austrian Empire" at 1820 MINUS the six modern
+    Italian regions it wrongly includes (AUH_NOT_AUSTRIAN_GID1)."""
+    ae = _valid(_cliopatria_feature("Austrian Empire", 1820), "Cliopatria Austrian Empire 1820")
+    removed = _union(*(_gadm_adm1(g) for g in AUH_NOT_AUSTRIAN_GID1))
+    # Cliopatria's Tuscan coast and islands do not follow GADM's (its Elba is 233 km2 that GADM's
+    # Toscana does not cover), so the removed regions are widened by AUH_MARGIN_M, and the Austrian
+    # regions they border are cut back out of the widening, so no Austrian ground is lost to it.
+    kept = _union(*(_gadm_adm1(g) for g in AUH_AUSTRIAN_ITALY_GID1))
+    margin = _buffer_metres(removed, AUH_MARGIN_M, ITALY_UTM).Difference(kept)
+    return _difference(ae, removed, margin)
+
+
+def build_grc_1919_1947() -> ogr.Geometry:
+    """Greece 1919-1947 = CShapes 350's 1919-2019 step without the Dodecanese, which CShapes draws as
+    Greek from 1919 although they were ceded by Italy only in the 1947 Treaty of Paris."""
+    return _greece_without_dodecanese(1919, 2019)
+
+
 STATUTE_MILE_M = 1609.344
 CZN_HALF_WIDTH_M = 5 * STATUTE_MILE_M  # 8,046.72 m -- the treaty's five miles each side
 CZN_UTM = 32617                        # UTM zone 17N; the canal sits at 79.6-79.9W, 8.96-9.30N
@@ -3229,6 +3442,67 @@ BUILDERS = [
         "Panzhihua (Sikang) and Chengde (Jehol), plus the Inner Mongolian adm2 units that were "
         "Chahar, Suiyuan and Ningxia's Alxa. About 5.11 million km2 against FAO 1952's stated "
         "5,071,820. Receives `China 22 provinces` (issue 449).",
+    ),
+    (
+        "TNG-1912-1956",
+        "Tangier Zone (International Zone from 1925)",
+        build_tng_1912_1956,
+        "Cliopatria 'Tangier International Zone' (1912-1955 step) UNION GADM 4.1 MAR communes Tanger, "
+        "Charf and Bni Makada, clipped to GADM Morocco = about 323 km2 (ESRI:54034) against the 382 "
+        "usually quoted. `proxy`. Receives FAO 1952's `Tangier`.",
+    ),
+    (
+        "SMO-1912-1956",
+        "Spanish Morocco (1912-1956)",
+        build_smo_1912_1956,
+        "CShapes 602 (1912-1956) MINUS the Tangier Zone (TNG-1912-1956) and the sea in its bounding "
+        "box = 52,576 km2 (ESRI:54034), 329 less than CShapes, which draws the zone inside the "
+        "protectorate that the 1912 convention excluded it from.",
+    ),
+    (
+        "ADC-1937-1967",
+        "Aden Colony (State of Aden from 1963)",
+        build_adc_1937_1967,
+        "Union of GADM 4.1 YEM adm2 Crater, Tawahi, Al Mualla (with Perim), Khormaksar, Sheikh Othman "
+        "and Al Mansura, Al Buraiqeh south of 12.78 N (Little Aden), and GADM 4.1 OMN Al Halaniyat "
+        "Islands (Kuria Muria) = about 296 km2 (ESRI:54034). Receives FAO 1952's `Aden Colony` labels.",
+    ),
+    (
+        "ADE-1839-1967",
+        "Aden Protectorate (1839-1967)",
+        build_ade_1839_1967,
+        "CShapes 680 (South Yemen, 1967-1990) MINUS Aden Colony's mainland (ADC-1937-1967) and the sea "
+        "in Aden's bay = 286,906 km2 (ESRI:54034). `proxy`: the successor state's outline.",
+    ),
+    (
+        "ITAEG-1912-1947",
+        "Italian Islands of the Aegean (Dodecanese)",
+        build_itaeg_1912_1947,
+        "Union of the fifteen GADM 4.1 GRC adm3 municipalities of the Dodecanese = 2,767 km2 "
+        "(ESRI:54034) against the usual 2,714. Receives FAO 1952's `Dodecanese` and IIA's Italian "
+        "Aegean rows.",
+    ),
+    (
+        "GRC-1913-1919",
+        "Greece (1913-1919)",
+        build_grc_1913_1919,
+        "CShapes 350's 1913-1919 step MINUS the Dodecanese widened by 3 km = 119,369 km2 (ESRI:54034), "
+        "2,328 less than CShapes, which draws the Italian-held islands as Greek.",
+    ),
+    (
+        "GRC-1919-1947",
+        "Greece (1919-1947)",
+        build_grc_1919_1947,
+        "CShapes 350's 1919-2019 step MINUS the Dodecanese widened by 3 km = 127,585 km2 (ESRI:54034); "
+        "the islands were Italian until the 1947 Treaty of Paris.",
+    ),
+    (
+        "AUH-1800-1859",
+        "Austrian Empire (to 1859)",
+        build_auh_1800_1859,
+        "Cliopatria 'Austrian Empire' (1820-1827 step) MINUS GADM 4.1 Toscana, Emilia-Romagna, "
+        "Piemonte, Umbria, Lazio and Marche (widened 20 km, the bordering Austrian regions cut back out) "
+        "= 666,434 km2 (ESRI:54034), 25,307 less than Cliopatria, which draws Tuscany as Austrian.",
     ),
 ]
 
