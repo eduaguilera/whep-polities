@@ -1383,6 +1383,52 @@ def _prewar_ratios(d, fao_label, others):
     return out
 
 
+def _ussr_closing_identity(d, item, kind):
+    """fao1952 `USSR` 1934-38 over (iia's own 1934-38 USSR + what the 1939-45 annexations grew).
+
+    The gain is measured on the pre-war owners' own 1934-38 series (juan, dated, >= 3 of the five years)
+    net of what fao1952 leaves them on the post-war boundary: the Baltic states whole; Finland, Romania
+    (net of the Southern Dobruja that Bulgaria gained), Czechoslovakia, Poland and Germany (less the Saar)
+    each as juan minus fao1952. Returns (fao/iia, fao/(iia+gain)), or None where a component is missing.
+    """
+    import math
+    oitem = _PREWAR_ITEMS[item]
+    unit_fao = "1000 hectares" if kind == "ha" else "1000 tonnes"
+    f = d[(d["source"] == "fao1952") & (d["item"] == item) & (d["period"] == "1934-1938")
+          & (d["unit"] == unit_fao)]
+    flab = f["country"].astype(str).str.split().str.join(" ")
+
+    def fao(lab):
+        x = f[flab == lab]["value"]
+        return 1000 * float(x.sum()) if len(x) else math.nan
+
+    def own(lab):
+        x = d[(d["source"] == "juan") & (d["country"] == lab) & (d["item"] == oitem)
+              & (d["unit"] == kind) & d["year"].between(1934, 1938)]
+        g = x.groupby("year")["value"].sum()
+        return float(g.mean()) if len(g) >= 3 else math.nan
+
+    ip = d[(d["source"] == "iia") & (d["country"] == "russian federation") & (d["item"] == oitem)
+           & (d["unit"] == kind) & d["year"].isna()
+           & (d["period"].astype(str).str.replace(" ", "") == "1934-1938")]["value"]
+    if not len(ip):
+        return None
+    ip = float(ip.sum())
+
+    def z(x):
+        return 0.0 if math.isnan(x) else x
+
+    gain = (sum(own(x) for x in ("estonia", "latvia", "lithuania"))
+            + own("finland") - fao("Finland")
+            + own("romania") - fao("Romania") - z(fao("Bulgaria") - own("bulgaria"))
+            + own("czechoslovakia") - fao("Czechoslovakia")
+            + own("poland") - fao("Poland") + own("germany") - fao("Germany") - z(fao("France Saar")))
+    u = fao("USSR")
+    if math.isnan(gain) or math.isnan(u):
+        return None
+    return u / ip, u / (ip + gain)
+
+
 def check_fao1952_present_boundaries(d):
     """fao1952's pre-war columns are on PRESENT (post-war) boundaries, with NAMED exceptions.
 
@@ -1414,6 +1460,12 @@ def check_fao1952_present_boundaries(d):
         fibre and industrial crops sit within 6% while rye and soybeans run 13-26% above. Rye and
         the 1937 population are relabelled onto F228-1945-1991 (source_label_item_corrections.csv);
         the rest stays on F228-1921-1940. Holds while both classes are present and rye is above.
+    (7b) USSR CLOSING IDENTITY (added 2026-09-25). fao1952's 1934-38 USSR over iia's own 1934-38 USSR
+        average PLUS what the 1939-45 annexations grew on their pre-war owners' own series
+        (_ussr_closing_identity). Rye and oats close to within 1.5% on both area and production, so both
+        are relabelled onto F228-1945-1991; oats is tested here because iia has no DATED oats, so arm (7),
+        which reads dated rows, cannot see it. Flax fibre must stay below 0.95 with the gains added,
+        the pre-war boundary. Soybeans and rapeseed are NOT asserted: production closes, area does not.
     (8) ROMANIA 1939 LIVESTOCK is on the INTERWAR boundary: its horses equal juan's 1939 `romania`
         exactly (juan's 1940, after the cessions, is about half). Routed to ROU-1920-1940.
     (9) GREECE is reported WITHOUT the Dodecanese in the pre-war columns: `Dodecanese` is its own
@@ -1501,6 +1553,20 @@ def check_fao1952_present_boundaries(d):
     ok = ok and mixed
     msg.append(f"USSR {len(near)} series within 6% of iia and {len(above)} >= 1.10x "
                f"({', '.join(sorted({r[1] for r in above}))}): {'mixed' if mixed else 'NOT mixed'}")
+
+    # (7b) USSR closing identity: rye and oats post-war, flax fibre pre-war.
+    ci = {(it, k): _ussr_closing_identity(d, it, k)
+          for it in ("rye", "oats", "flax fiber") for k in ("ha", "tonnes")}
+    closes = all(ci[(it, k)] is not None and abs(ci[(it, k)][1] - 1) <= 0.015
+                 for it in ("rye", "oats") for k in ("ha", "tonnes"))
+    flax_old = all(ci[("flax fiber", k)] is not None and ci[("flax fiber", k)][1] < 0.95
+                   for k in ("ha", "tonnes"))
+    ok = ok and closes and flax_old
+    msg.append("USSR closing identity fao/(iia + annexed gains): " + ", ".join(
+        f"{it} {k} {ci[(it, k)][1]:.3f}" if ci[(it, k)] else f"{it} {k} n/a"
+        for it in ("rye", "oats", "flax fiber") for k in ("ha", "tonnes"))
+        + f" (rye/oats within 1.5%: {'yes' if closes else 'NO'}; flax below 0.95: "
+          f"{'yes' if flax_old else 'NO'})")
 
     # (8) Romania 1939 horses on the interwar boundary.
     rh = d[(d["source"] == "fao1952") & (d["country"] == "Romania") & (d["year"] == 1939)

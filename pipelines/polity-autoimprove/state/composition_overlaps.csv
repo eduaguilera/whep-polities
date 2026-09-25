@@ -32,9 +32,10 @@ SYL-1944-1953,LBN-1944-2025,fao1952,1949,1951,Syria and Lebanon;syria and lebano
 SYL-1944-1953,LBN-1944-2025,mitchell,1944,1952,Syria and Lebanon;syria and lebanon,lebanon,alias;applied_alias,iso,0,0,no
 AOI-1936-1941,ETH-1936-1941,fao1952,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,ethiopia,alias,alias;applied_alias,56,136,yes
 AOI-1936-1941,ETH-1936-1941,iia,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,ethiopia;ethiopia pdr,alias,alias;iso,1,1,yes
+AOI-1936-1941,ETH-1936-1941,mitchell,1936,1940,Africa Orientale Italiana;Ethiopia;Italian East Africa,ethiopia,alias,alias;applied_alias,13,136,yes
 AOI-1936-1941,ITS-1908-1960,fao1952,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,Somalia;somalia,alias,alias;applied_alias,29,48,yes
 AOI-1936-1941,ITS-1908-1960,iia,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,somalia,alias,alias;applied_alias,0,0,yes
-AOI-1936-1941,ITS-1908-1960,mitchell,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa;ethiopia,somalia,alias;applied_alias,alias;applied_alias,4,11,yes
+AOI-1936-1941,ITS-1908-1960,mitchell,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,somalia,alias,alias;applied_alias,4,11,yes
 BLI-1833-1960,ATG-1800-2025,fao1952,1949,1951,Br West Indies Leeward Is;Br West Indies Leeward Islands;British West Indies  Leeward Islands;British West Indies Leeward Is,Br West Indies Antigua;British West Indies Antigua;Leeward Islands  Antigua;br west indies antigua,alias;applied_alias,alias;applied_alias,7,5,yes
 BLI-1833-1960,KNA-1800-2025,fao1952,1949,1951,Br West Indies Leeward Is;Br West Indies Leeward Islands;British West Indies  Leeward Islands;British West Indies Leeward Is,Br West Indies St Kitts-Nevis Anguilla;British West Indies St Kitts-Nevis;Leeward Islands  St Kitts & Nevis;br west indies st kitts-nevis anguilla,alias;applied_alias,alias;applied_alias,7,7,yes
 BLI-1833-1960,MSR-1800-2025,fao1952,1949,1951,Br West Indies Leeward Is;Br West Indies Leeward Islands;British West Indies  Leeward Islands;British West Indies Leeward Is,Br West Indies Montserrat;British West Indies Montserrat;Leeward Islands  Montserrat;br west indies montserrat,alias;applied_alias,alias;applied_alias,7,7,yes

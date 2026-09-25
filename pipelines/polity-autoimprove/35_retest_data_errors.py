@@ -2152,37 +2152,6 @@ def check_attributable_single_cells(ctx):
                  "entry says each cell needs that judgement separately and this does not make it")
 
 
-def check_constant_run_placeholders(ctx):
-    """The two constant runs that are placeholders because the repeated value is off-scale.
-
-    Both repeat a round 1,000. What proves them placeholders is the SCALE of the series each sits
-    in, and the two run in OPPOSITE directions -- india's 1,000 ha against a median of 2.2 million
-    is far too small, new zealand's 1,000 ha against a median of 83 is twelve times too large. A
-    one-sided test would have found only one of them, which is why the check asserts both ratios
-    rather than a single "orders of magnitude" threshold.
-    """
-    mr = ctx.get("matched")
-    if mr is None:
-        return None
-    import statistics as _st
-    out = []
-    for lab, item, lo, hi, n_run, n_other in (("india", "sesame seed", 1934, 1945, 10, 8),
-                                              ("new zealand", "tobacco, unmanufactured",
-                                               1934, 1945, 11, 9)):
-        v = _paired_series(mr, "iia", lab, item, "ha")
-        run = {y: x for y, x in v.items() if lo <= y <= hi}
-        other = [x for y, x in v.items() if not (lo <= y <= hi)]
-        out.append((f"{lab} {item} ha: run years", len(run), n_run))
-        out.append((f"{lab} {item} ha: distinct run values",
-                    ",".join(f"{x:g}" for x in sorted(set(run.values()))), "1000"))
-        out.append((f"{lab} {item} ha: other values", len(other), n_other))
-        if other:
-            out.append((f"{lab} {item} ha: run/median", round(1000.0 / _st.median(other), 5),
-                        round(1000.0 / _st.median(other), 5)))
-    return out, ("india is 0.00045x its own median and new zealand 12.05x theirs -- the same "
-                 "placeholder shape pointing opposite ways")
-
-
 def _iia_grid(pa, vol, unit, step):
     """`k/n` non-zero values in (vol, unit) that are exact multiples of `step`."""
     import numpy as np
@@ -3418,6 +3387,157 @@ def check_nga_includes_british_cameroons(ctx):
             "rows including British Cameroons now on NGBC-1916-1960 (issue 688, fixed)")
 
 
+# --- cross-source routing audit (2026-09-25) -------------------------------------------------------------
+
+_FI_ITEMS = {"sesame seed": "sesame", "groundnuts, with shell": "groundnut",
+             "eggs, hen, in shell": "eggs", "cotton lint": "cotton: ginned", "cotton seed": "cottonseed"}
+
+
+def _iia_india_vs_french_india(ctx):
+    """Every layer-B iia `india` cell (source_label_raw) on the five items whose value equals raw
+    `french india` on the same product, variable and year-or-period. Non-zero cells only: a zero
+    matches every territory that grows none. Returns (hits, matched-rows frame of the label)."""
+    m, raw = ctx.get("matched"), ctx["raw"]
+    if m is None:
+        return None, None
+    g = m[(m["source"] == "iia") & (m["source_label_raw"] == "india") & m["item"].isin(_FI_ITEMS)
+          & m["value"].notna()].copy()
+    g["yk"] = g["year"].astype("Int64").astype("string").fillna(g["period"]).astype(str)
+    hits = []
+    for r in g.itertuples():
+        var = {"ha": "area", "tonnes": "production"}.get(r.unit)
+        if var is None or float(r.value) == 0.0:
+            continue
+        prods = {"cotton: ginned", "cottonseed"} if r.item.startswith("cotton") else {_FI_ITEMS[r.item]}
+        for p in prods:
+            if any(k == r.yk and v == float(r.value)
+                   for k, v in _raw_cells(raw, "french india", p, var,
+                                               {"ha": "hectares"}.get(r.unit, r.unit))):
+                hits.append(r)
+                break
+    return hits, g
+
+
+def check_constant_run_placeholders(ctx):
+    """ONE constant run is a placeholder because its value is off-scale; the other was French India's.
+
+    Both repeat a round 1,000. What proves New Zealand's a placeholder is the SCALE of the series it sits
+    in: 1,000 ha against a median of 83 for the series' other values is twelve times too large, for an
+    interwar tobacco acreage in the tens of hectares.
+
+    AMENDED 2026-09-25 (cross-source routing audit): india's run was the entry's other proven placeholder
+    (1,000 ha against a median of 2.2 million), and it is not a placeholder. Every one of its cells equals raw
+    iia `french india` sesame area, and fao1952 prints French India's 1934-38 sesame as 1 thousand ha. The
+    series was misfiled, not invented. source_label_item_corrections.csv now relabels the run to `french india`
+    (FRIN-1816-1954), so this check pins it as MOVED: no 1934-1945 dated cell is left under `india`, the ten
+    relabelled cells all read 1,000 and sit on FRIN-1816-1954, and raw `french india` carries the same 1,000 in
+    each of those years. India's own eight other values, and their median, are unchanged.
+    """
+    mr = ctx.get("matched")
+    if mr is None:
+        return None
+    import statistics as _st
+    out = []
+    lab, item, lo, hi, n_run, n_other = "new zealand", "tobacco, unmanufactured", 1934, 1945, 11, 9
+    v = _paired_series(mr, "iia", lab, item, "ha")
+    run = {y: x for y, x in v.items() if lo <= y <= hi}
+    other = [x for y, x in v.items() if not (lo <= y <= hi)]
+    out.append((f"{lab} {item} ha: run years", len(run), n_run))
+    out.append((f"{lab} {item} ha: distinct run values",
+                ",".join(f"{x:g}" for x in sorted(set(run.values()))), "1000"))
+    out.append((f"{lab} {item} ha: other values", len(other), n_other))
+    if other:
+        out.append((f"{lab} {item} ha: run/median", round(1000.0 / _st.median(other), 5),
+                    round(1000.0 / _st.median(other), 5)))
+    # india: the run has moved to French India.
+    v = _paired_series(mr, "iia", "india", "sesame seed", "ha")
+    out.append(("india sesame ha: 1934-1945 cells left", sum(1 for y in v if 1934 <= y <= 1945), 0))
+    other = [x for y, x in v.items() if not (1934 <= y <= 1945)]
+    out.append(("india sesame ha: other values", len(other), 8))
+    out.append(("india sesame ha: their median", round(_st.median(other), 1) if other else None,
+                2208439.5))
+    fi = mr[(mr["source"] == "iia") & (mr["source_label_raw"] == "india") & (mr["country"] == "french india")
+            & (mr["item"] == "sesame seed") & (mr["unit"] == "ha") & mr["year"].notna()]
+    out.append(("  relabelled to french india (dated)", len(fi), 10))
+    out.append(("  their distinct values", ",".join(f"{x:g}" for x in sorted(set(fi["value"]))), "1000"))
+    out.append(("  on FRIN-1816-1954", int((fi["whep_code"] == "FRIN-1816-1954").sum()), 10))
+    rawfi = {k: v for k, v in _raw_cells(ctx["raw"], "french india", "sesame", "area", "hectares")}
+    same = sum(1 for y in fi["year"].astype(int) if rawfi.get(str(y)) == 1000.0)
+    out.append(("  raw french india sesame = 1,000 ha", same, 10))
+    return out, ("new zealand 12.05x its own median is a placeholder; india's 1,000 ha is French India's "
+                 "sesame area, relabelled to FRIN-1816-1954 (issue 372)")
+
+
+def check_iia_india_french_india_period_cells(ctx):
+    """iia `india` carries French India's cells; 46 non-zero ones move, 6 stay because no year rule isolates them.
+
+    Pinned by the entry's own method (a value equal to raw `french india` on the same product, variable and
+    year-or-period), not by a cell list, so a rebuilt layer B that changes which cells match fails here:
+    52 non-zero matches in all, 46 of them relabelled onto FRIN-1816-1954 by source_label_item_corrections.csv
+    and 6 period averages left on India (1928-1932 sesame, groundnuts and lint; 1934-1938 cotton seed).
+    What blocks each is pinned too: British India's dated 1930-1932 cells inside 1928-1932, and the
+    unattributed 1934-1936 cotton-seed cells inside 1934-1938.
+    """
+    hits, g = _iia_india_vs_french_india(ctx)
+    if hits is None:
+        return None
+    moved = [h for h in hits if h.country == "french india"]
+    left = [h for h in hits if h.country != "french india"]
+    tags = sorted(f"{h.item}/{h.unit}/{h.yk}" for h in left)
+    cs = g[(g["country"] == "india") & (g["item"] == "cotton seed") & g["year"].between(1934, 1936)
+           & (g["value"] > 0)]
+    ses = g[(g["country"] == "india") & (g["item"] == "sesame seed") & (g["unit"] == "ha")
+            & g["year"].between(1930, 1932)]
+    return ([("non-zero india cells equal to raw french india", len(hits), 52),
+             ("  relabelled, on FRIN-1816-1954",
+              sum(1 for h in moved if h.whep_code == "FRIN-1816-1954"), 46),
+             ("  left on India", len(left), 6),
+             ("  left cells", ";".join(tags),
+              "cotton lint/tonnes/1928-1932;cotton seed/tonnes/1934-1938;"
+              "groundnuts, with shell/ha/1928-1932;groundnuts, with shell/tonnes/1928-1932;"
+              "sesame seed/ha/1928-1932;sesame seed/tonnes/1928-1932"),
+             ("british india sesame ha 1930-1932 (blocks 1928-1932)", len(ses), 3),
+             ("unattributed cotton seed cells 1934-1936", len(cs), 5),
+             ("  their values", ",".join(f"{x:g}" for x in sorted(cs["value"])), "800,1700,2000,5000,5000")],
+            "46 French India cells relabelled; 6 period averages and 5 unattributed cells recorded, not moved")
+
+
+def check_germany_oats_area_1949(ctx):
+    """fao1952 `Germany Western` 1949 oats area is 21,134 thousand ha, and `Germany` inherits it.
+
+    The cell is impossible on the zone's own axes: 2,600 thousand t over 21,134 thousand ha is 0.12 t/ha,
+    against 2.2 t/ha in 1950 (2,545 / 1,158) and 2.0 in 1934-38 (2,843 / 1,405). `Germany` 1949 (21,794)
+    is exactly Western + Eastern + Berlin (21,134 + 658 + 2), so the total carries the same error, while
+    in 1950 the same identity holds on sane figures (1,158 + 710 + 1 = 1,869). juan's whole-Germany 1949
+    oats area is 1,678,000 ha. Pinned: the two cells, the identity in both years, and the yields.
+    """
+    lb = ctx["panel"]
+    f = lb[(lb["source"] == "fao1952") & (lb["item"] == "oats")
+           & lb["country"].isin(["Germany", "Germany Western", "Germany Eastern", "Germany Berlin"])]
+
+    def v(lab, unit, yr):
+        d = f[(f["country"] == lab) & (f["unit"] == unit) & (f["year"] == yr)]["value"]
+        return float(d.iloc[0]) if len(d) == 1 else None
+
+    ha, t = "1000 hectares", "1000 tonnes"
+    out = [("Germany Western 1949 oats area (1000 ha)", v("Germany Western", ha, 1949), 21134.0),
+           ("Germany 1949 oats area (1000 ha)", v("Germany", ha, 1949), 21794.0)]
+    for yr in (1949, 1950):
+        parts = [v(x, ha, yr) for x in ("Germany Western", "Germany Eastern", "Germany Berlin")]
+        tot = v("Germany", ha, yr)
+        out.append((f"  {yr} Germany = W + E + Berlin", None if None in parts or tot is None
+                    else tot == sum(parts), True))
+    w49, w50 = v("Germany Western", t, 1949), v("Germany Western", t, 1950)
+    out.append(("Western yield 1949 (t/ha)", round(w49 / v("Germany Western", ha, 1949), 3)
+                if w49 else None, 0.123))
+    out.append(("Western yield 1950 (t/ha)", round(w50 / v("Germany Western", ha, 1950), 3)
+                if w50 else None, 2.198))
+    j = lb[(lb["source"] == "juan") & (lb["country"] == "germany") & (lb["item"] == "oats")
+           & (lb["unit"] == "ha") & (lb["year"] == 1949)]["value"]
+    out.append(("juan germany 1949 oats area (ha)", float(j.iloc[0]) if len(j) == 1 else None, 1678000.0))
+    return out, "a 1949 area cell ~18x the zone's own 1950 figure, carried into the Germany total"
+
+
 CHECKS = {
     "mmr-1885-1889-rice-area-is-lower-burma": check_mmr_1885_1889_lower_burma,
     "vnm-1955-1960-rice-maize-output-is-north-plus-south": check_vnm_1955_1960_output_north_plus_south,
@@ -3484,6 +3604,8 @@ CHECKS = {
     "iia-bwi-ginned-cotton-duplicated-rows": check_bwi_ginned_cotton_duplicated,
     "iia-france-eggs-spm-folded-in": check_france_eggs_spm_folded,
     "iia-greece-grapes-dodecanese-period-cells": check_greece_grapes_dodecanese,
+    "iia-india-french-india-period-cells": check_iia_india_french_india_period_cells,
+    "fao1952-germany-oats-area-1949-impossible": check_germany_oats_area_1949,
 }
 
 
