@@ -658,7 +658,11 @@ LABEL_SPREAD_FACTOR = 2.0
 # the joint mandate's area only for 1925-1938, before SYL-1944-1953; SYL-1920-1944 and its fao1952
 # `Syria and Lebanon` 1934-1938 alias make it resolve, and the statement (203,000 km2) agrees with the
 # union polygon (0.977).
-BASELINE_INERT_LEXICON = 16
+# 16 -> 14 on 2026-09-25 (geodata batch 2): `Svalbard` and `Tibet` were inert because no polity carried
+# either territory. SVB-1925-2025 and TIB-1913-1950 make them resolve, and the statements agree with the
+# new polygons: Svalbard fao 62,110 and iia 1925 `Spitzberg` 65,178 km2 against 59,825 (0.96, 0.92);
+# Tibet fao 1,215,780 against the TAR outline's 1,125,941 (0.93).
+BASELINE_INERT_LEXICON = 14
 
 
 def normalise_label(raw: str) -> str:

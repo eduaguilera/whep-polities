@@ -134,6 +134,7 @@ HTI
 HUN
 ICN  # local
 IDN
+IMN
 IND
 IRL
 IRN

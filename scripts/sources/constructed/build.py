@@ -1879,6 +1879,203 @@ def build_krs_1945_1948() -> ogr.Geometry:
     return _union(_cshapes2_feature(730, 1930).Intersection(_box(123.0, 32.0, 133.0, 38.0)))
 
 
+# Chile's six regions that the LatAm panel does NOT name, north and south: Arica y Parinacota,
+# Tarapaca, Antofagasta, Atacama (the Norte Grande and Norte Chico) and Aysen, Magallanes (the far
+# south). In every one of the panel's 3,132 `Otras Regiones` cells the named units are the same nine
+# (CO VS RM LI ML BI AR LL plus this residual), and Nuble and Los Rios are NOT in the residual: their
+# crops are inside Biobio and Los Lagos throughout (Biobio's wheat does not step down in 2018, and
+# the residual's wheat is 40-60 ha a year after 2006 against tens of thousands for either region).
+CHL_OTR_GID1 = (
+    "CHL.4_1",   # Arica y Parinacota
+    "CHL.15_1",  # Tarapaca
+    "CHL.2_1",   # Antofagasta
+    "CHL.5_1",   # Atacama
+    "CHL.1_1",   # Aysen
+    "CHL.11_1",  # Magallanes y Antartica Chilena
+)
+
+
+def _drop_holes_below(geom: ogr.Geometry, max_deg2: float) -> ogr.Geometry:
+    """Remove interior rings smaller than `max_deg2` square degrees from a (multi)polygon.
+
+    Written for one measured defect. GADM's Aysen and Magallanes each carry one pin-hole ring
+    (together 0.00028 km2, at 71.7 W 46.5 S and 71.7 W 52.0 S). In the union of the two, the
+    build's simplifier moves the shell across a pin-hole at EVERY tolerance on its ladder (0.01 down
+    to 0.00005 degrees), s2 rejects the result ("Loop 1072 edge ... crosses loop 1074"), and the
+    union was published unsimplified -- 2.1 million vertices, doubling the GeoPackage. Without the
+    two rings, the 0.01-degree step loads in s2. The area moved is the rings' own, 0.00028 km2.
+    """
+    out = ogr.Geometry(ogr.wkbMultiPolygon)
+    for i in range(geom.GetGeometryCount()):
+        part = geom.GetGeometryRef(i)
+        poly = ogr.Geometry(ogr.wkbPolygon)
+        poly.AddGeometry(part.GetGeometryRef(0).Clone())
+        for j in range(1, part.GetGeometryCount()):
+            ring = part.GetGeometryRef(j)
+            hole = ogr.Geometry(ogr.wkbPolygon)
+            hole.AddGeometry(ring.Clone())
+            if hole.GetArea() >= max_deg2:
+                poly.AddGeometry(ring.Clone())
+        out.AddGeometry(poly)
+    return out
+
+
+def build_chl_otr_1976_2025() -> ogr.Geometry:
+    """Chile's `Otras Regiones` = the six regions the LatAm subnational panel does not name
+    (GADM 4.1 adm1, the same features the six regions' own rows carry).
+
+    A fixed complement, not a catch-all: the named set is constant over all 1935-2023 cells, so
+    the residual is always the same ground (see CHL_OTR_GID1). Arica y Parinacota and Tarapaca are
+    both inside it, so their 2007 split does not change the union. The two GADM pin-hole rings are
+    dropped (see _drop_holes_below) so that the union can be simplified at all.
+    """
+    return _drop_holes_below(_union(*(_gadm_adm1(g) for g in CHL_OTR_GID1)), 1e-6)
+
+
+def build_korp_1948_1953() -> ogr.Geometry:
+    """The whole Korean peninsula while divided = CShapes 731 (DPRK) + 732 (ROK), both at 1950.
+
+    FAO 1952 reports `Korea` for 1949-1951 as one unit (its 1949 nitrogen, 108.9 thousand t, is
+    South 98.9 + North 10.0). Both CShapes features are single steps from 1948 to 2019, so the
+    union is the same ground in every year: 122,203 + 97,195 = 219,398 km2.
+    """
+    return _union(_cshapes2_feature(731, 1950), _cshapes2_feature(732, 1950))
+
+
+def build_fna_1912_1956() -> ogr.Geometry:
+    """French North Africa = Algeria (615) + the French protectorate of Morocco (600) + Tunisia
+    (616), all at 1930.
+
+    600 at 1930 is the French zone only (350,331 km2): CShapes' 1912-1956 Morocco step excludes the
+    Spanish zone and Tangier, which is the French protectorate FAO means. 615 at 1930 is Algeria
+    with its Saharan territories (2,317,513). FAO 1952's 1950 nitrogen for the whole, 12.2
+    thousand t, is Algeria 9.0 + Morocco 1.4 + Tunisia 1.8.
+    """
+    return _union(_cshapes2_feature(615, 1930), _cshapes2_feature(600, 1930),
+                  _cshapes2_feature(616, 1930))
+
+
+GB_GID1 = ("GBR.1_1", "GBR.3_1", "GBR.4_1")  # England (NAME_1 is "NA" in GADM 4.1), Scotland, Wales
+
+
+def build_gbr_gb_1800_2025() -> ogr.Geometry:
+    """Great Britain = England + Scotland + Wales (GADM 4.1 adm1); the United Kingdom without
+    Northern Ireland (GBR.2_1) and, before 1922, without Ireland."""
+    return _union(*(_gadm_adm1(g) for g in GB_GID1))
+
+
+def build_gei_1916_1976() -> ogr.Geometry:
+    """The Gilbert and Ellice Islands Colony = GADM 4.1 adm0 KIR + TUV (1,054 km2).
+
+    Modern Kiribati includes the Phoenix Islands (in the colony from 1937) and the Line Islands
+    (Fanning and Washington from 1916, Christmas from 1919), and Tokelau was in the colony until
+    1926 and is not included, so the outline is the colony's later extent. FAO 1952 states 970 km2.
+    """
+    return _union(_gadm_adm0("KIR"), _gadm_adm0("TUV"))
+
+
+def build_nzi_1926_1965() -> ogr.Geometry:
+    """New Zealand's island territories = GADM 4.1 adm0 COK + NIU + TKL (566 km2): Cook Islands,
+    Niue and Tokelau, together under New Zealand administration from Tokelau's transfer in 1926 to
+    Cook Islands self-government in 1965. FAO 1952 reports them as one unit and states 530 km2."""
+    return _union(_gadm_adm0("COK"), _gadm_adm0("NIU"), _gadm_adm0("TKL"))
+
+
+def build_chi_1800_2025() -> ogr.Geometry:
+    """The Channel Islands = GADM 4.1 adm0 JEY (Bailiwick of Jersey) + GGY (Bailiwick of Guernsey,
+    with Alderney and Sark), 214 km2. FAO 1952 states 190 km2."""
+    return _union(_gadm_adm0("JEY"), _gadm_adm0("GGY"))
+
+
+def build_ker_1887_2025() -> ogr.Geometry:
+    """The Kermadec Islands = the parts of GADM 4.1 NZL.10_1 ("Northern Islands") east of the
+    antimeridian.
+
+    NZL.10_1 also carries the Three Kings Islands off Cape Reinga (172.1 E, 34.2 S), which are
+    part of Northland and lie just outside CShapes' New Zealand; the envelope keeps Raoul, Macauley,
+    Curtis and L'Esperance (177.8-179.0 W, 29.2-31.4 S) and drops them.
+    """
+    return _keep_parts_within(_gadm_adm1("NZL.10_1"), -179.5, -31.7, -177.5, -29.0)
+
+
+PRT_AZM_GID1 = ("PRT.2_1", "PRT.13_1")  # Azores, Madeira
+
+
+def build_prt_azm_1800_2025() -> ogr.Geometry:
+    """Portugal's Atlantic islands = GADM 4.1 adm1 Azores + Madeira (3,122 km2). FAO 1952 states
+    3,100 km2 for `Portugal: Azores and Madeira`."""
+    return _union(*(_gadm_adm1(g) for g in PRT_AZM_GID1))
+
+
+# The Republic of China's 22 provinces of China proper (FAO 1952 `China 22 provinces`, stated
+# 5,071,820 km2): Jiangsu, Zhejiang, Anhui, Jiangxi, Hubei, Hunan, Sichuan, Hebei, Shandong, Shanxi,
+# Henan, Shaanxi, Gansu, Qinghai, Fujian, Guangdong, Guangxi, Yunnan, Guizhou, Chahar, Suiyuan and
+# Ningxia. That is the Republic's 35 provinces minus the nine north-eastern ones (Manchuria), Jehol,
+# Sikang, Sinkiang and Taiwan -- each of which FAO reports on its own. Drawn from modern units:
+CHN_P22_GID1 = (
+    "CHN.1_1",   # Anhui
+    "CHN.2_1",   # Beijing (Hebei)
+    "CHN.3_1",   # Chongqing (Sichuan)
+    "CHN.4_1",   # Fujian
+    "CHN.5_1",   # Gansu
+    "CHN.6_1",   # Guangdong
+    "CHN.7_1",   # Guangxi
+    "CHN.8_1",   # Guizhou
+    "CHN.9_1",   # Hainan (Guangdong)
+    "CHN.10_1",  # Hebei (Chengde removed below: it was Jehol)
+    "CHN.12_1",  # Henan
+    "CHN.13_1",  # Hubei
+    "CHN.14_1",  # Hunan
+    "CHN.15_1",  # Jiangsu
+    "CHN.16_1",  # Jiangxi
+    "CHN.20_1",  # Ningxia (the Republic's Ningxia also held Alxa, added below)
+    "CHN.21_1",  # Qinghai
+    "CHN.22_1",  # Shaanxi
+    "CHN.23_1",  # Shandong
+    "CHN.24_1",  # Shanghai (Jiangsu)
+    "CHN.25_1",  # Shanxi
+    "CHN.26_1",  # Sichuan (the Sikang prefectures removed below)
+    "CHN.27_1",  # Tianjin (Hebei)
+    "CHN.30_1",  # Yunnan
+    "CHN.31_1",  # Zhejiang
+)
+# Removed: Sikang's eastern prefectures (the province was cut from Sichuan in 1939) and Jehol's
+# Chengde. Added: the Inner Mongolian leagues that were Chahar (Xilingol, Ulanqab), Suiyuan (Hohhot,
+# Baotou, Ordos, Bayannur, Wuhai) and the Alxa banners of Ningxia. Hulunbuir, Xing'an and Tongliao
+# were Manchurian and Chifeng was Jehol, so they stay out.
+CHN_P22_MINUS_GID2 = (
+    "CHN.26.5_1",   # Garze (Sikang)
+    "CHN.26.19_1",  # Ya'an (Sikang)
+    "CHN.26.9_1",   # Liangshan (Sikang's Ningyuan)
+    "CHN.26.17_1",  # Panzhihua (Sikang's Ningyuan)
+    "CHN.10.3_1",   # Chengde (Jehol)
+)
+CHN_P22_PLUS_GID2 = (
+    "CHN.19.11_1",  # Xilin Gol (Chahar)
+    "CHN.19.9_1",   # Ulaan Chab (Chahar / Suiyuan)
+    "CHN.19.5_1",   # Hohhot (Suiyuan)
+    "CHN.19.2_1",   # Baotou (Suiyuan)
+    "CHN.19.7_1",   # Ordos (Suiyuan)
+    "CHN.19.3_1",   # Bayannur (Suiyuan)
+    "CHN.19.10_1",  # Wuhai (Suiyuan)
+    "CHN.19.1_1",   # Alxa (Ningxia)
+)
+
+
+def build_chn_p22_1939_1953() -> ogr.Geometry:
+    """China proper, the Republic's 22 provinces, from GADM 4.1 modern provinces and prefectures.
+
+    25 modern adm1 units, minus five adm2 prefectures (Sikang's four and Jehol's Chengde), plus the
+    eight Inner Mongolian adm2 units that were Chahar, Suiyuan and western Ningxia. Measured with
+    ESRI:54034 before the build's own simplification this is about 5.11 million km2, 0.8% above
+    FAO 1952's stated 5,071,820. `proxy`: the outline is modern (the 1947 provincial lines followed
+    the same county boundaries only approximately).
+    """
+    base = _union(*(_gadm_adm1(g) for g in CHN_P22_GID1))
+    base = _difference(base, *(_gadm_adm2(g) for g in CHN_P22_MINUS_GID2))
+    return _union(base, *(_gadm_adm2(g) for g in CHN_P22_PLUS_GID2))
+
+
 STATUTE_MILE_M = 1609.344
 CZN_HALF_WIDTH_M = 5 * STATUTE_MILE_M  # 8,046.72 m -- the treaty's five miles each side
 CZN_UTM = 32617                        # UTM zone 17N; the canal sits at 79.6-79.9W, 8.96-9.30N
@@ -2957,6 +3154,81 @@ BUILDERS = [
         "definition. CShapes 732 draws the 1953 armistice line from 1945, 5,644 km2 north and "
         "2,443 km2 south of the parallel on the wrong side. Receives Mitchell's `korea` and "
         "`south korea` 1945-1947, footnoted South Korea only (issue 688).",
+    ),
+    (
+        "CHL-OTR-1976-2025",
+        "Chile: other regions (Arica y Parinacota, Tarapaca, Antofagasta, Atacama, Aysen, Magallanes)",
+        build_chl_otr_1976_2025,
+        "Union of GADM 4.1 adm1 CHL.4_1, CHL.15_1, CHL.2_1, CHL.5_1, CHL.1_1, CHL.11_1: the six "
+        "regions the LatAm subnational panel does not name. Receives the panel's `Otras Regiones` "
+        "(CHL-RESID), a fixed complement of the nine named units in every cell.",
+    ),
+    (
+        "KORP-1948-1953",
+        "Korea (whole peninsula, North and South)",
+        build_korp_1948_1953,
+        "CShapes 731 (DPRK) UNION CShapes 732 (ROK), both at 1950 = 219,398 km2 (ESRI:54034). "
+        "Receives FAO 1952's `Korea` 1949-1951, the divided peninsula as one unit.",
+    ),
+    (
+        "FNA-1912-1956",
+        "French North Africa (Algeria, French Morocco, Tunisia)",
+        build_fna_1912_1956,
+        "CShapes 615 (Algeria) UNION 600 (French Morocco, the 1912-1956 step without the Spanish "
+        "zone and Tangier) UNION 616 (Tunisia), all at 1930. Receives FAO 1952's `French North "
+        "Africa` fertilizer totals.",
+    ),
+    (
+        "GBR-GB-1800-2025",
+        "Great Britain (England, Scotland and Wales)",
+        build_gbr_gb_1800_2025,
+        "Union of GADM 4.1 adm1 GBR.1_1 (England), GBR.3_1 (Scotland), GBR.4_1 (Wales): the United "
+        "Kingdom without Northern Ireland. Receives FAO 1952's `United Kingdom Great Britain`.",
+    ),
+    (
+        "GEI-1916-1976",
+        "Gilbert and Ellice Islands Colony",
+        build_gei_1916_1976,
+        "Union of GADM 4.1 adm0 KIR and TUV = 1,054 km2 (ESRI:54034); FAO 1952 states 970. "
+        "Receives FAO 1952's `Gilbert and Ellice Islands` labels.",
+    ),
+    (
+        "NZI-1926-1965",
+        "New Zealand island territories (Cook Islands, Niue, Tokelau)",
+        build_nzi_1926_1965,
+        "Union of GADM 4.1 adm0 COK, NIU and TKL = 566 km2 (ESRI:54034); FAO 1952 states 530. "
+        "Receives FAO 1952's `Cook Niue and Tokelau Islands`.",
+    ),
+    (
+        "CHI-1800-2025",
+        "Channel Islands (Bailiwicks of Jersey and Guernsey)",
+        build_chi_1800_2025,
+        "Union of GADM 4.1 adm0 JEY and GGY = 214 km2 (ESRI:54034); FAO 1952 states 190. Crown "
+        "dependencies outside CShapes' United Kingdom. Receives `United Kingdom Channel Islands`.",
+    ),
+    (
+        "KER-1887-2025",
+        "Kermadec Islands (New Zealand)",
+        build_ker_1887_2025,
+        "GADM 4.1 adm1 NZL.10_1 (Northern Islands) kept inside 179.5-177.5 W, 31.7-29.0 S, which "
+        "drops the Three Kings Islands. Outside CShapes' New Zealand. Receives `New Zealand "
+        "Kermadec Islands`.",
+    ),
+    (
+        "PRT-AZM-1800-2025",
+        "Azores and Madeira (Portuguese Atlantic islands)",
+        build_prt_azm_1800_2025,
+        "Union of GADM 4.1 adm1 PRT.2_1 (Azores) and PRT.13_1 (Madeira) = 3,122 km2 (ESRI:54034); "
+        "FAO 1952 states 3,100. Receives `Portugal Azores and Madeira`.",
+    ),
+    (
+        "CHN-P22-1939-1953",
+        "China proper (the 22 provinces)",
+        build_chn_p22_1939_1953,
+        "25 GADM 4.1 CHN adm1 units, minus the adm2 prefectures Garze, Ya'an, Liangshan and "
+        "Panzhihua (Sikang) and Chengde (Jehol), plus the Inner Mongolian adm2 units that were "
+        "Chahar, Suiyuan and Ningxia's Alxa. About 5.11 million km2 against FAO 1952's stated "
+        "5,071,820. Receives `China 22 provinces` (issue 449).",
     ),
 ]
 

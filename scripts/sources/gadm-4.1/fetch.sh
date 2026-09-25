@@ -65,6 +65,12 @@ COUNTRIES=(
   # provinces north of Thanh Hoa, and no fetched source carries anything finer than all of Vietnam.
   # Appended LAST so every feature already in the combined files keeps its position.
   VNM
+  # Added 2026-09-25 (geodata batch 2), appended last for the same reason. Each is the only source
+  # of an outline for a territory that no fetched polygon covers at all: JEY GGY (the Channel
+  # Islands) and IMN (the Isle of Man) are Crown dependencies outside CShapes' United Kingdom; NZL
+  # adm1 carries the Kermadec Islands ("Northern Islands"), which lie outside CShapes' New Zealand;
+  # ECU adm1 separates the Galapagos, which FAO 1952 reports on their own.
+  JEY GGY IMN NZL ECU
 )
 
 ADM0="$OUT_DIR/gadm41_adm0.gpkg"
@@ -127,6 +133,22 @@ for iso in "${COUNTRIES[@]}"; do
     fi
   fi
 done
+
+# Level 2 for countries whose per-country file is fetched EARLY in COUNTRIES, appended AFTER the loop
+# so every adm2 feature already in the combined file keeps its position (adding one to
+# ADM2_COUNTRIES would insert it ahead of IDN).
+#
+# CHN added 2026-09-25 (geodata batch 2, issue 449): FAO 1952's `China 22 provinces` is the
+# Republic's 22 provinces of China proper, which modern adm1 cannot draw -- Chahar, Suiyuan and the
+# Alxa banners of old Ningxia are inside modern Inner Mongolia, western Sichuan was Sikang, and
+# Chengde was Jehol. The prefectures (adm2) separate all of them.
+ADM2_LATE=(CHN)
+for iso in "${ADM2_LATE[@]}"; do
+  CFILE="$OUT_DIR/gadm41_${iso}.gpkg"
+  if [ -f "$CFILE" ] && ogrinfo -q "$CFILE" 2>/dev/null | grep -q 'ADM_ADM_2'; then
+    ogr2ogr -f GPKG -update -append -nln polygons "$ADM2" "$CFILE" ADM_ADM_2
+  fi
+done
 echo "Wrote: $ADM0"
 echo "Wrote: $ADM1"
-[ -f "$ADM2" ] && echo "Wrote: $ADM2 (countries: ${ADM2_COUNTRIES[*]})"
+[ -f "$ADM2" ] && echo "Wrote: $ADM2 (countries: ${ADM2_COUNTRIES[*]} ${ADM2_LATE[*]})"
