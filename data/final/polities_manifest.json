@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "0c51e65c4431590597123ad0d3df80b4d1c8c40277ab3c4043222c4013560483",
-  "aliases": 2534,
-  "labels": 1347,
+  "sha256": "5710ecb10eadbbd4b5ad467cf5372a7d23da6abc735230f88e2e30a77a9124a5",
+  "aliases": 2660,
+  "labels": 1405,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -207,9 +207,9 @@
  },
  "label_item_corrections": {
   "path": "data/final/source_label_item_corrections.csv",
-  "sha256": "a4960d72811017f64746466a9b0d95364cad694926fed9b177bd1cdbbf2a7138",
-  "rules": 59,
-  "observed_rows": 892,
+  "sha256": "0e893726232c7319d579d8da46eeba7d3a0f45d0ba409463e4f0609aa1df46dc",
+  "rules": 60,
+  "observed_rows": 900,
   "scoped_rules": 4,
   "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; a period-average row with no year is corrected only when BOTH ends of its period lie in that range), AND, where the rule's `unit` or `indicator` is non-blank, the row's own unit / indicator equals it exactly (blank = any unit / indicator; a consumer that cannot supply the row's unit must not apply a unit-scoped rule). `polity_code` is where the corrected label then resolves, possibly as a `back_cast` before the polity begins. `polity_code` = `UNROUTED` means the rows belong to NO polity (a wrong territory with no right one to land on): drop them rather than resolving `correct_label`. Rules do not chain: test each against the ORIGINAL label."
  },
@@ -221,13 +221,13 @@
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 401,
-  "polities": 273,
+  "bases": 409,
+  "polities": 279,
   "sources": [
    "fao",
    "iia"
   ],
-  "review_flagged": 23,
+  "review_flagged": 27,
   "why": "Per (polity, source), the area the SOURCE stated for its own reporting unit beside the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more and are BOTH defensible -- a per-km2 denominator has to choose which territory the numerator was collected over. An empty `note` on such a row means no reason has been recorded for THAT source, not that the divergence is understood."
  },
  "source_flow_flags": {

@@ -97,8 +97,11 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # 1955-1960 (tonnes, 12 rows -> F237-1954-1975; C2 prints North and South apart, layer B holds the sum) and
 # mitchell `syrian arab republic` wheat and barley OUTPUT 1920-1940 (tonnes, 42 rows -> SYL-1920-1944; C2
 # note 17 'Including Lebanon to 1940'). All four are scoped `unit=tonnes`: the same keys' area rows stay.
-BASELINE_RULES = 59
-BASELINE_ROWS = 892
+# 59/892 -> 60/900 on 2026-09-25 (unrouted-rows audit, Claude): fao1952 `French Morocco & Br Gold Coast` dry
+# peas 1934-1951 (8 rows) are French Morocco's; the label carries nothing else and the Gold Coast grows no dry
+# peas. Unscoped (unit and indicator blank), so BASELINE_SCOPED_RULES is unchanged.
+BASELINE_RULES = 60
+BASELINE_ROWS = 900
 BASELINE_SCOPED_RULES = 4
 
 # Units a scope may name, per source: layer B's own `unit` vocabulary, measured 2026-09-25 over

@@ -334,7 +334,14 @@ BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 
 # area. Declaring 195,000 instead would manufacture a check-A failure: the stated figure counts the
 # undemarcated desert frontier that the polygon does not draw. The divergence is baselined with that
 # reason in validate_stated_areas.py.
-BASELINE_AVOIDABLE_SELF_REF = 41
+#
+# 41 -> 43 on 2026-09-25 (unrouted-rows audit, Claude): SGP-1946-1963 and SWA-1912-1958. Neither row
+# changed; each ENTERED the band because a newly aliased fao1952 label published the first stated
+# figure for it (`Singapore including Christmas and Cocos Islands` 750 km2, `Spanish Sahara` 274,920).
+# SGP must not declare 750: that is the colony WITH Christmas and Cocos, which its polygon does not
+# draw (baselined in validate_stated_areas.py). SWA's 274,920 agrees with its polygon (1.02x), so
+# declaring it would change nothing check A reports -- the same choice as TNGU-1949-1975 above.
+BASELINE_AVOIDABLE_SELF_REF = 43
 
 #
 

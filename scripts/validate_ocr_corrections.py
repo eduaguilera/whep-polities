@@ -31,7 +31,10 @@ ALIASES = os.path.join(REPO, "pipelines/polity-autoimprove/state/applied_aliases
 # and 25 rows quietly stopped resolving, which no other number in this repo would show.
 # 12 -> 16 on 2026-09-24: the four Germany sub-row labels (`France Germany`, `France Eastern`,
 # `Western`, `Eastern`), proven by additive identities; see their notes.
-BASELINE_CORRECTIONS = 16
+# 16 -> 23 on 2026-09-25 (unrouted-rows audit, Claude): `Portuga`, `Israei`, `Guadel pe` (misreadings),
+# `Nepal 6`, `Indonesia 4` (footnote markers), `El Guadeloupe` (the preceding `El` carried over, the
+# `France Germany` shape) and iia `curaã§ao` (UTF-8 read as Latin-1). 20 rows; each note gives its cell check.
+BASELINE_CORRECTIONS = 23
 
 # `British Guiana` resolves only when the matcher is built with `common_names_csv`, which the
 # pipeline passes and this gate cannot -- that file lives outside the repo. So one entry is

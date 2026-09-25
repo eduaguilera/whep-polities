@@ -318,13 +318,33 @@ BASELINE = {
         "Sudan. The extra ~500,000 km2 is the Libyan Desert: Egypt's western boundary with "
         "Cyrenaica was undefined until 1925 and CShapes encodes the maximal claim. IIA states the "
         "administered territory, which is the basis its agricultural figures were collected on.",
-    ("SMO-1912-1956", "iia"):
-        "SCOPE, and OUR POLYGON IS ARGUABLY THE MORE COMPLETE. 52,792 km2 in TWO parts, bounds "
-        "27.67-35.92N: the northern zone (Tetouan and Nador inside) plus the Tarfaya strip in the "
-        "far southwest. Spanish Morocco did include that Southern Protectorate, so the union is "
-        "right. IIA's 21,800 is the northern zone alone, matching the ~20,948 km2 usually quoted "
-        "for it. Anyone using Spanish Morocco as a denominator needs to know which of the two the "
-        "numerator came from.",
+    # SMO-1912-1956 / iia was baselined here ("IIA's 21,800 is the northern zone alone") and the gate
+    # REMOVED IT on 2026-09-25, when fao1952 `Sp Morocco and possessions in North Africa` was aliased
+    # to SMO: FAO's 45,870 km2 for 1949 puts our 52,792 (northern zone plus Tarfaya) inside the
+    # accepted band. The scope point stands -- IIA's figure is the northern zone alone.
+    # Four added 2026-09-25 with the unrouted-rows audit (Claude): each label was aliased because the
+    # NAME identifies the territory, and each stated area is the source's own problem, not the polygon's.
+    ("ARE-1892-2025", "fao"):
+        "THE SOURCE'S AREA CELLS ARE INTERNALLY INCONSISTENT. fao1952 `Trucial Oman` states `use total` "
+        "500 thousand ha (5,000 km2) beside `use builton wasteland` 1,500 thousand ha in the same table, "
+        "so the total is smaller than one of its own parts. Our 70,407 km2 is the Trucial States / UAE "
+        "extent (modern UAE ~71,000-83,600 by source); the label is routed on its name and its 80/76 "
+        "thousand population, not on the area.",
+    ("PCN-1800-2025", "fao"):
+        "SCOPE. fao1952 `Pitcairn` states 5 km2, which is Pitcairn Island alone (4.6 km2). Our 54 km2 "
+        "polygon is the Pitcairn Islands group, including the uninhabited Henderson (37 km2), Oeno and "
+        "Ducie. The group is the only polity for the territory, and the uninhabited islands carry no "
+        "land use beyond waste, so a per-km2 denominator overstates by the empty islands.",
+    ("SGP-1946-1963", "fao"):
+        "SCOPE, THE LABEL SAYS SO. fao1952 1951 `Singapore including Christmas and Cocos Islands` states "
+        "750 km2: the Crown Colony as legally constituted (Cocos to 1955, Christmas Island to 1958). Our "
+        "545 km2 is Singapore island; Christmas Island (~139 km2) is CXR-1946-1958's polygon and Cocos "
+        "(~14) has none, so 545 + 139 + 14 = 698 (0.93x). The 1951 land-use rows carry the dependencies "
+        "the polygon omits.",
+    ("VAT-1929-2025", "fao"):
+        "CELL DEFECT IN THE SOURCE. fao1952 1947 `Vatican` states `use total` 5 thousand ha = 50 km2 "
+        "for a state of 0.44 km2, about 100x; our 1 km2 polygon is right. The label's identity is not "
+        "in doubt, so it is routed and the value flagged here rather than the row dropped.",
     ("SLV-1821-2025", "fao"):
         "EXTRACTION DAMAGE, visible in the label itself: the row is `EI Salvador`, an OCR misread "
         "of `El`. The stated 34,130 km2 is 62% above El Salvador's 21,041, so the number is as "
