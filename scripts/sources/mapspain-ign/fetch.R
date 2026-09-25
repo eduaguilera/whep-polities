@@ -20,7 +20,10 @@ proj_root <- normalizePath(file.path(dirname(script_path), "../../.."))
 out_dir   <- file.path(proj_root, "data/geodata/mapspain-ign")
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
-provinces <- esp_get_prov(resolution = 3)
+# moveCAN = FALSE: mapSpain by default shifts the Canary Islands next to the Peninsula as a
+# map inset (lon -13..-8.5, lat 34.7..36.3), which placed Las Palmas and Santa Cruz de Tenerife
+# in the ocean off Morocco instead of at their true position (lon -18.2..-13.3, lat 27.6..29.5).
+provinces <- esp_get_prov(resolution = 3, moveCAN = FALSE)
 # mapSpain uses `cpro` as the 2-digit province code.
 keep <- c("cpro", "ine.prov.name", "iso2.prov.code", "geometry")
 keep <- intersect(keep, names(provinces))

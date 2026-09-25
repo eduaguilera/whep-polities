@@ -171,7 +171,6 @@ indochina cambodia		KHM-1907-1953
 israel		ISR-1948-1967
 israel/palestine		PAL-1920-1948
 italy	iia	SAR-1800-1860
-micronesia (federated states of)	iia	CAR-1920-1945
 pacific is us trust	fao1952	TTPI-1947-1994
 palau	iia	GCAR-1899-1914
 panama canal zone	fao1952	CZN-1903-1979

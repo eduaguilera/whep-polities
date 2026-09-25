@@ -1765,6 +1765,120 @@ def build_syl_1944_1953() -> ogr.Geometry:
     return _union(_cshapes2_feature(652, 1950), _cshapes2_feature(660, 1950))
 
 
+def build_syl_1920_1944() -> ogr.Geometry:
+    """Syria and Lebanon under the French Mandate, 1920-1944, as one reporting unit
+    = Syria (652) + Lebanon (660), both sampled at 1930.
+
+    The mandate-era predecessor of SYL-1944-1953, for Mitchell's `syrian arab republic` series
+    whose footnotes say they include Lebanon (issue 688). 1930 sits inside Syria's 1922-1945 step
+    and Lebanon's 1920-1944 step. The union is the same ground as build_syl_1944_1953's, because
+    CShapes draws neither country's border as moving between 1922 and 1953: 188,004 + 10,209 =
+    198,213 km2. CShapes keeps the Sanjak of Alexandretta (Hatay, ceded to Turkey in 1939) outside
+    Syria for the whole 1922-1945 step, and so does this union; SYR-1922-1946 has the same
+    convention.
+    """
+    return _union(_cshapes2_feature(652, 1930), _cshapes2_feature(660, 1930))
+
+
+def build_bfcm_1920_1960() -> ogr.Geometry:
+    """French Cameroun + British Cameroons as one reporting unit = CShapes 471 + 472 at 1930.
+
+    The IIA reports several Cameroon crops under one `british-french cameroon` heading (issue 687).
+    Sampled at 1930, inside 471's 1922-1959 step and 472's 1922-1961 step: 423,069 + 87,444 =
+    510,513 km2, which is German Kamerun's pre-1911 extent (CShapes 470, 510,512) to 1 km2 -- the
+    two mandates divided exactly the Altkamerun that Germany held before the 1911 Neukamerun
+    cession, and Neukamerun went back to French Equatorial Africa in 1916.
+    """
+    return _union(_cshapes2_feature(471, 1930), _cshapes2_feature(472, 1930))
+
+
+def build_ngbc_1916_1960() -> ogr.Geometry:
+    """Nigeria + British Cameroons as one reporting unit = CShapes 475 + 472 at 1930.
+
+    Mitchell's `nigeria` cacao 1945-1959 and livestock to 1950 are footnoted as including British
+    Cameroons (issue 688); the mandate was administered from Lagos as part of Nigeria. 862,547 +
+    87,444 = 949,991 km2. 1930 is inside 475's 1914-1960 step and 472's 1922-1961 step.
+    """
+    return _union(_cshapes2_feature(475, 1930), _cshapes2_feature(472, 1930))
+
+
+# The Japanese mandate districts' modern successors. Guam, a US possession from 1898, was never
+# in the mandate and is excluded.
+SSM_MEMBERS = ("FSM", "MHL", "MNP", "PLW")
+
+
+def build_ssm_1914_1945() -> ogr.Geometry:
+    """Japan's South Seas Islands (Nan'yo Gunto), 1914-1945 = the four successor territories'
+    modern coastlines: the Carolines (FSM), the Marshalls (MHL), the Northern Marianas (MNP) and
+    Palau (PLW).
+
+    Occupied by the Japanese navy in October 1914 and held under a League Class C mandate from
+    1920; the island groups were the same throughout, and the same four make up the Trust
+    Territory that followed (TTPI-1947-1994, built from the same members). The IIA's `japanese
+    south pacific` totals are this territory (issue 687); CAR-1920-1945 is the Carolines only.
+    Modern coastlines are the only source that separates these islands at all.
+    """
+    return _union(*(_gadm_adm0(g) for g in SSM_MEMBERS))
+
+
+# French Tonkin (Bac Ky) in modern GADM provinces: everything north of Thanh Hoa, which belonged to
+# Annam. The Sip Song Chau Tai (modern Dien Bien and Lai Chau), occupied by France in 1888-1889,
+# was administered from Tonkin, so it is included; the list is the modern Northern Midlands and
+# Mountains plus the Red River Delta regions.
+TONKIN_GID1 = (
+    "VNM.26_1",  # Ha Giang
+    "VNM.14_1",  # Cao Bang
+    "VNM.38_1",  # Lao Cai
+    "VNM.36_1",  # Lai Chau
+    "VNM.4_1",   # Bac Kan
+    "VNM.60_1",  # Tuyen Quang
+    "VNM.35_1",  # Lang Son
+    "VNM.63_1",  # Yen Bai
+    "VNM.20_1",  # Dien Bien
+    "VNM.56_1",  # Thai Nguyen
+    "VNM.62_1",  # Vinh Phuc
+    "VNM.3_1",   # Bac Giang
+    "VNM.44_1",  # Phu Tho
+    "VNM.49_1",  # Quang Ninh
+    "VNM.52_1",  # Son La
+    "VNM.5_1",   # Bac Ninh
+    "VNM.27_1",  # Ha Noi
+    "VNM.22_1",  # Hai Duong
+    "VNM.31_1",  # Hung Yen
+    "VNM.23_1",  # Hai Phong
+    "VNM.30_1",  # Hoa Binh
+    "VNM.28_1",  # Ha Nam
+    "VNM.55_1",  # Thai Binh
+    "VNM.40_1",  # Nam Dinh
+    "VNM.42_1",  # Ninh Binh
+)
+
+
+def build_vnm_ton_1887_1945() -> ogr.Geometry:
+    """French Tonkin 1887-1945 = the 25 modern Vietnamese provinces north of Thanh Hoa (GADM 4.1).
+
+    The union measures 115,912 km2 (ESRI:54034). The figure usually quoted for Tonkin in French
+    colonial statistics is about 115,700 km2 (not re-checked against a scan here). The Tonkin-Annam line ran along the Ninh Binh / Thanh Hoa
+    boundary, which the modern provinces still follow. `proxy` because the provinces are modern:
+    the northern frontier with China is the 1887-1895 convention line, which the modern border
+    follows with small later adjustments.
+    """
+    return _union(*(_gadm_adm1(g) for g in TONKIN_GID1))
+
+
+def build_krs_1945_1948() -> ogr.Geometry:
+    """Korea south of the 38th parallel, 1945-1948 = CShapes' whole peninsula (730, 1910-1945 step)
+    clipped to latitudes below 38 N.
+
+    The US and Soviet zones were defined BY the parallel, so the clip is the territory's own
+    definition, not a proxy. CShapes' Republic of Korea (732) cannot be used for these years: it
+    draws the 1953 armistice line from 1945 on, which puts 5,644 km2 north of the parallel inside
+    the south (the east-coast salient) and 2,443 km2 south of it (Ongjin, Kaesong) in the north.
+    `_box` is defined further down the module; it is looked up when this runs, not when it is read.
+    """
+    return _union(_cshapes2_feature(730, 1930).Intersection(_box(123.0, 32.0, 133.0, 38.0)))
+
+
 STATUTE_MILE_M = 1609.344
 CZN_HALF_WIDTH_M = 5 * STATUTE_MILE_M  # 8,046.72 m -- the treaty's five miles each side
 CZN_UTM = 32617                        # UTM zone 17N; the canal sits at 79.6-79.9W, 8.96-9.30N
@@ -2791,6 +2905,58 @@ BUILDERS = [
         "CShapes 510's 1961-1964 step (Tanganyika) UNION CShapes 511's 1895-1963 step (Zanzibar) = "
         "941,361 km2 (ESRI:54034), equal to CShapes 510's post-1964 step. FAOSTAT area 215 "
         "1961-1963 reports both before the 1964 union.",
+    ),
+    (
+        "SSM-1914-1945",
+        "South Seas Islands under Japan (Nan'yo Gunto)",
+        build_ssm_1914_1945,
+        "Union of GADM 4.1 adm0 FSM, MHL, MNP and PLW = 2,063 km2 (ESRI:54034), the same members "
+        "as TTPI-1947-1994: the Japanese mandate and the US trust territory held the same island "
+        "groups. Guam excluded. `proxy`: modern coastlines include reef and lagoon area that land "
+        "figures leave out. Receives the iia `japanese south pacific` totals filed under "
+        "`micronesia (federated states of)` and Angaur's phosphate under `palau` (issue 687).",
+    ),
+    (
+        "VNM-TON-1887-1945",
+        "Tonkin (within French Indochina)",
+        build_vnm_ton_1887_1945,
+        "Union of the 25 GADM 4.1 adm1 provinces of Vietnam north of Thanh Hoa = 115,912 km2 "
+        "(ESRI:54034); the Tonkin-Annam line is the Ninh Binh / Thanh Hoa boundary. `proxy` because "
+        "the provinces are modern. Receives the iia `viet nam` series that are raw `french tonkin` "
+        "(issue 687).",
+    ),
+    (
+        "BFCM-1920-1960",
+        "British and French Cameroons (combined reporting unit)",
+        build_bfcm_1920_1960,
+        "CShapes 471 (French Cameroun) UNION CShapes 472 (British Cameroons), both at 1930 = "
+        "510,512 km2 (ESRI:54034), German Kamerun's pre-1911 extent (CShapes 470, 510,512) to the "
+        "km2. Receives the iia `cameroon` series that are raw `british-french cameroon` (issue 687).",
+    ),
+    (
+        "NGBC-1916-1960",
+        "Nigeria and British Cameroons (combined reporting unit)",
+        build_ngbc_1916_1960,
+        "CShapes 475 (Nigeria) UNION CShapes 472 (British Cameroons), both at 1930 = 949,991 km2 "
+        "(ESRI:54034). Receives Mitchell's `nigeria` series footnoted as including British "
+        "Cameroons (issue 688).",
+    ),
+    (
+        "SYL-1920-1944",
+        "Syria and Lebanon (French Mandate, combined reporting unit)",
+        build_syl_1920_1944,
+        "CShapes 652 (Syria) UNION CShapes 660 (Lebanon), both at 1930 = 198,213 km2 (ESRI:54034), "
+        "the same ground as SYL-1944-1953. Receives Mitchell's `syrian arab republic` series "
+        "footnoted as including Lebanon (issue 688).",
+    ),
+    (
+        "KRS-1945-1948",
+        "Korea south of the 38th parallel (US Army Military Government)",
+        build_krs_1945_1948,
+        "CShapes 730 (Korea, 1910-1945 step) clipped to latitudes below 38 N: the US zone's own "
+        "definition. CShapes 732 draws the 1953 armistice line from 1945, 5,644 km2 north and "
+        "2,443 km2 south of the parallel on the wrong side. Receives Mitchell's `korea` and "
+        "`south korea` 1945-1947, footnoted South Korea only (issue 688).",
     ),
 ]
 

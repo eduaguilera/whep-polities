@@ -2573,7 +2573,9 @@ def check_nga_1950_livestock_broadcast(ctx):
     import pandas as pd
 
     g = m[m.whep_code.notna() & m.value.notna()]
-    g = g[(g.source == "mitchell") & (g.country.astype(str).str.lower() == "nigeria")]
+    # The RAW label: since 2026-09-24 these livestock rows are relabelled to the Nigeria + British Cameroons
+    # landing label by an item-scoped correction (issue 688), so `country` no longer reads `nigeria`.
+    g = g[(g.source == "mitchell") & (g.source_label_raw.astype(str).str.lower() == "nigeria")]
     out = []
     BROADCAST = ("cattle", "goats", "sheep", "swine / pigs")
     for item in BROADCAST:
@@ -3332,14 +3334,20 @@ def check_kor_1945_1948_south_only(ctx):
     g, s = _mit_rows(ctx, "korea"), _mit_rows(ctx, "south korea")
     if g is None:
         return None
-    return ([("korea rows 1945-48 on KOR-1945", _on(g, "KOR-1945-1948", 1945, 1948), 46),
-             ("south korea 1945-47 on KOR-1945", _on(s, "KOR-1945-1948", 1945, 1948), 12),
+    # FIXED 2026-09-24 (issue 688): KRS-1945-1948, the US zone clipped at the 38th parallel, now takes the
+    # 1945-1947 rows, and the 1948 `korea` rows go to KOR-1948-2025 (the Republic's first year). The counts
+    # pin that routing, and the zero pins that nothing Mitchell files as South-only is left on the peninsula.
+    return ([("korea rows 1945-47 on KRS-1945", _on(g, "KRS-1945-1948", 1945, 1947), 34),
+             ("korea 1948 rows on KOR-1948", _on(g, "KOR-1948-2025", 1948, 1948), 12),
+             ("south korea 1945-47 on KRS", _on(s, "KRS-1945-1948", 1945, 1947), 12),
+             ("  left on KOR-1945-1948", _on(g, "KOR-1945-1948", 1945, 1948)
+              + _on(s, "KOR-1945-1948", 1945, 1948), 0),
              ("rice ha 1944 (peninsula)", _cell(g, "rice, paddy", "ha", 1944), 1319000.0),
              ("rice ha 1945", _cell(g, "rice, paddy", "ha", 1945), 1046000.0),
              ("rice ha 1949 (KOR-1948)", _cell(g, "rice, paddy", "ha", 1949), 1044000.0),
              ("wheat t 1944", _cell(g, "wheat", "tonnes", 1944), 261000.0),
              ("wheat t 1945", _cell(g, "wheat", "tonnes", 1945), 44000.0)],
-            "South-only rows on the peninsula polity; a US-zone polity 1945-1948 is issue 688")
+            "South-only rows now on the US-zone polity KRS-1945-1948 (issue 688, fixed)")
 
 
 def check_kor_1944_marker_18000(ctx):
@@ -3382,10 +3390,12 @@ def check_cmr_cocoa_territory(ctx):
     return ([("1900-1915 rows on GKM", _on(g, "GKM-1884-1912", 1900, 1916, c)
               + _on(g, "GKM-1912-1916", 1900, 1916, c), 16),
              ("1916 row on BCM (Kamerun+Togo)", _on(g, "BCM-1916-1961", 1916, 1916, c), 1),
-             ("1917-1919 rows on BCM", _on(g, "BCM-1916-1961", 1917, 1919, c), 3),
+             # (b) FIXED 2026-09-24: FCM-1916-1920, the French occupation zone, takes 1917-1919.
+             ("1917-1919 rows on FCM-1916", _on(g, "FCM-1916-1920", 1917, 1919, c), 3),
+             ("  1917-1919 left on BCM", _on(g, "BCM-1916-1961", 1917, 1919, c), 0),
              ("1919 t (BCM)", _cell(g, "cacao, beans", "tonnes", 1919), 2700.0),
              ("1920 t (FCM)", _cell(g, "cacao, beans", "tonnes", 1920), 3300.0)],
-            "Kamerun+Togoland and French-Cameroon cocoa with no polity of either shape (issue 688)")
+            "Kamerun+Togoland cocoa 1900-1916 still has no polity; 1917-1919 fixed on FCM-1916-1920 (688)")
 
 
 def check_nga_includes_british_cameroons(ctx):
@@ -3398,9 +3408,14 @@ def check_nga_includes_british_cameroons(ctx):
     if g is None:
         return None
     liv = ["cattle", "goats", "sheep", "swine / pigs", "horses", "asses"]
-    return ([("cacao rows 1945-59 on NGA", _on(g, "NGA-1914-1960", 1945, 1959, ["cacao, beans"]), 15),
-             ("livestock rows to 1950 on NGA", _on(g, "NGA-1914-1960", 1900, 1950, liv), 133)],
-            "rows including British Cameroons on a polity without it (issue 688)")
+    # FIXED 2026-09-24 (issue 688): NGBC-1916-1960 (Nigeria + British Cameroons) takes them through item-scoped
+    # corrections; the zeros pin that none is left on Nigeria alone.
+    return ([("cacao rows 1945-59 on NGBC", _on(g, "NGBC-1916-1960", 1945, 1959, ["cacao, beans"]), 15),
+             ("livestock rows to 1950 on NGBC", _on(g, "NGBC-1916-1960", 1900, 1950, liv), 133),
+             ("  left on NGA", _on(g, "NGA-1914-1960", 1945, 1959, ["cacao, beans"])
+              + _on(g, "NGA-1914-1960", 1900, 1950, liv), 0),
+             ("cacao 1944 stays on NGA (no note)", _on(g, "NGA-1914-1960", 1944, 1944, ["cacao, beans"]), 1)],
+            "rows including British Cameroons now on NGBC-1916-1960 (issue 688, fixed)")
 
 
 CHECKS = {

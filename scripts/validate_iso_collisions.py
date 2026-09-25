@@ -82,6 +82,18 @@ BASELINE = frozenset({
     # every other source to the colony.
     ("CMR", "BCM-1916-1961", "CMR-1960-1961"),
     ("CMR", "BCM-1916-1961", "FCM-1920-1960"),
+    # Four pairs joined on 2026-09-24 (issues 687, 688), all the GCT class: a combined reporting
+    # unit or an occupation segment sharing its parts' code. BFCM and NGBC are `aggregate` beside
+    # `national` FCM/NGA and `colonial` BCM, so polity_type resolves them, and every label that
+    # reaches them does so through an alias or an item-scoped correction. KRS-1945-1948 is
+    # `colonial` beside the `national` peninsula row, the KRS-1910-1945 pair's shape. FCM-1916-1920
+    # and BCM are both `colonial`; that one is order-decided and pinned by alias in
+    # validate_order_decided_families.py.
+    ("CMR", "BCM-1916-1961", "BFCM-1920-1960"),
+    ("CMR", "BFCM-1920-1960", "FCM-1920-1960"),
+    ("CMR", "FCM-1916-1920", "BCM-1916-1961"),
+    ("KOR", "KOR-1945-1948", "KRS-1945-1948"),
+    ("NGA", "NGA-1914-1960", "NGBC-1916-1960"),
     ("COD", "COD-1910-1960", "CODRU-1922-1960"),
     ("EGY", "EGY-1925-1967", "EGYSUD-1934-1956"),
     ("GHA", "GCT-1919-1956", "BTL-1920-1957"),

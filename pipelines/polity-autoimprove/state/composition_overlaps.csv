@@ -5,6 +5,7 @@ AEF-1910-1960,TCD-1919-1960,iia,1922,1924,congo,chad,alias;applied_alias,iso,2,6
 AEF-1910-1960,TCD-1919-1960,mitchell,1939,1951,French Equat Africa,chad,alias,iso,0,0,no
 AOI-1936-1941,ERI-1889-1952,fao1952,1937,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,name,34,66,no
 AOI-1936-1941,ERI-1889-1952,iia,1936,1937,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,iso,1,0,no
+BFCM-1920-1960,FCM-1920-1960,iia,1933,1945,British and French Cameroons (combined reporting unit);british and french cameroons (combined reporting unit),cameroon,alias;applied_alias,iso,0,0,no
 CHN-1921-1932,MAN-1921-1932,iia,1922,1931,"china, mainland","china, manchuria province of",applied_alias,alias,0,0,no
 CHN-1945-1947,MAN-1945-1950,iia,1945,1945,"china, mainland","china, manchuria province of",applied_alias,alias,0,0,no
 FID-1887-1954,KHM-1907-1953,fao1952,1937,1951,indochina,cambodia;indochina cambodia;indochina: cambodia,applied_alias,alias;applied_alias;name,2,5,no
@@ -21,6 +22,12 @@ IND-1937-1947,PAK-1937-1947,mitchell,1945,1946,india,pakistan,iso,iso,26,245,no
 JPN-1895-1945,RYU-1937-1945,iia,1937,1944,japan,Ryukyu Islands,iso,alias,0,0,no
 JPN-1895-1945,RYU-1937-1945,mitchell,1937,1944,japan,Ryukyu Islands,iso,alias,0,0,no
 MASG-1946-1963,SGP-1946-1963,fao1952,1948,1951,Malaya Federation of and Singapore;malaya federation of and singapore,singapore,alias;applied_alias,name,1,2,no
+NGBC-1916-1960,BCM-1916-1961,fao1952,1950,1951,Nigeria and Br Cameroons;Nigeria and British cameroon;Nigeria and British cameroons;Nigeria and british cameroon,british cameroons,alias;applied_alias,name,0,0,no
+NGBC-1916-1960,NGA-1914-1960,fao1952,1950,1951,Nigeria and Br Cameroons;Nigeria and British cameroon;Nigeria and British cameroons;Nigeria and british cameroon,nigeria,alias;applied_alias,name,2,0,no
+NGBC-1916-1960,NGA-1914-1960,mitchell,1920,1959,Nigeria and British Cameroons (combined reporting unit);nigeria and british cameroons (combined reporting unit),nigeria,alias;applied_alias,iso,0,0,no
+SYL-1920-1944,LBN-1920-1944,fao1952,1937,1938,Syria and Lebanon,lebanon,alias,name,0,0,no
+SYL-1920-1944,SYR-1922-1946,fao1952,1937,1938,Syria and Lebanon,syria,alias,name,0,0,no
+SYL-1920-1944,SYR-1922-1946,mitchell,1922,1939,"Syria and Lebanon (French Mandate, combined reporting unit);syria and lebanon (french mandate, combined reporting unit)",syrian arab republic,alias;applied_alias,iso,0,0,no
 SYL-1944-1953,LBN-1944-2025,fao1952,1949,1951,Syria and Lebanon;syria and lebanon,lebanon,alias;applied_alias,name,0,0,no
 SYL-1944-1953,LBN-1944-2025,mitchell,1944,1952,Syria and Lebanon;syria and lebanon,lebanon,alias;applied_alias,iso,0,0,no
 AOI-1936-1941,ETH-1936-1941,fao1952,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,ethiopia,alias,alias;applied_alias,56,136,yes
@@ -69,6 +76,7 @@ MYS-1963-1965,SGP-1963-1965,lassaletta-grassland-share,1963,1964,Malaysia,Singap
 SYL-1944-1953,SYR-1946-1967,fao1952,1946,1953,Syria and Lebanon;syria and lebanon,Syria;syria,alias;applied_alias,alias;applied_alias,0,0,yes
 SYL-1944-1953,SYR-1946-1967,mitchell,1946,1952,Syria and Lebanon;syria and lebanon,Syria;syrian arab republic,alias;applied_alias,alias;iso,0,0,yes
 USA-1867-1959,ALK-1867-1959,fao1952,1867,1959,united states;united states and dependent territories;united states of america,Alaska;alaska,alias;applied_alias;name,alias;applied_alias,20,25,yes
+VNM-1887-1954,VNM-TON-1887-1945,iia,1925,1944,indochina viet nam;viet nam,Tonkin (within French Indochina);tonkin (within french indochina),alias;applied_alias,alias;applied_alias,0,0,yes
 WIN-1833-1960,DMA-1800-2025,fao1952,1938,1951,British West Indies Windward Islands;Windward Islands;british west indies  windward islands;british west indies windward islands,British West Indies Dominica;british west indies dominica,alias;applied_alias,alias;applied_alias,0,0,yes
 WIN-1833-1960,GRD-1800-2025,fao1952,1937,1951,British West Indies Windward Islands;Windward Islands;british west indies  windward islands;british west indies windward islands,Br West Indies Grenada;British West Indies Grenada;Windward Islands  Grenada;br west indies grenada,alias;applied_alias,alias;applied_alias,6,6,yes
 WIN-1833-1960,LCA-1838-2025,fao1952,1937,1951,British West Indies Windward Islands;Windward Islands;british west indies  windward islands;british west indies windward islands,Br West Indies St Lucia;British West Indies St L cia;British West Indies St Lucia;Jamaica St Lucia,alias;applied_alias,alias;applied_alias,6,6,yes

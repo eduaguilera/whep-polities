@@ -634,7 +634,11 @@ LABEL_SPREAD_FACTOR = 2.0
 # 18 -> 17 on 2026-09-24 (issue 687): `togo` -> `Togo` was inert because IIA states Togo's area only
 # for 1911 and 1913, before any TGO polity; the new `togo,iia,1884,1919 -> GTO-1884-1920` alias makes
 # it resolve, and the statement (87,200 km2) agrees with German Togoland's polygon (0.96).
-BASELINE_INERT_LEXICON = 17
+# 17 -> 16 on 2026-09-24 (issue 688): `syrie et liban` -> `Syria and Lebanon` was inert because IIA states
+# the joint mandate's area only for 1925-1938, before SYL-1944-1953; SYL-1920-1944 and its fao1952
+# `Syria and Lebanon` 1934-1938 alias make it resolve, and the statement (203,000 km2) agrees with the
+# union polygon (0.977).
+BASELINE_INERT_LEXICON = 16
 
 
 def normalise_label(raw: str) -> str:
