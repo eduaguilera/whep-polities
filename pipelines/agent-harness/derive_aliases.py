@@ -22,6 +22,7 @@ disagree without this saying so.
 WHAT IS DERIVED, per ledger unit and per coverage segment:
 
     matched   -> an observed rule (disposition '') to the segment's polity, clipped to its span
+                 (a polity live at the 2025 CEILING covers 2025 itself; see `in_span`)
     proposed  -> an observed rule to the polity authored for it: the segment's own polity_code if
                  it names one, else the unit's page_polity_code / extra_pages polity whose span
                  contains those years (one per era -- this is what reaches Chaco's second era)
@@ -94,6 +95,19 @@ STAMP = "agent-harness derive_aliases"
 # were re-recorded: a back_cast inside its target's own span names the era's container, which the
 # registry does not route, so the ledger and the registry disagree about where the data goes.
 BLOCKING = ("missing", "conflict", "refused", "back_cast_inside")
+# A live polity whose EXCLUSIVE end_year is this ceiling has no real last year: `CAL-1850-2025`
+# ends at 2025 because the registry stops there, not because California did. So the ceiling year
+# itself IS covered, and an alias may end at 2025 -- the exception validate_alias_year_coverage.py
+# (and validate_map_area_year.py) already make, with the same constant and the same `<= CEILING`
+# guard: a year BEYOND the ceiling (a panel reaching 2026) is still outside every polity. Without
+# it this stage cut every panel unit's 2025 year (6,354 rows over 50 US states on 2026-09-25)
+# while the gate that polices alias years accepted the very rule it refused to write.
+CEILING = 2025
+
+
+def in_span(y: int, start: int, end: int) -> bool:
+    """Whether year `y` lies inside a polity running `start` to EXCLUSIVE `end`, the ceiling aside."""
+    return start <= y < end or (end >= CEILING and start <= y <= CEILING)
 
 
 def norm(s: str) -> str:
@@ -224,7 +238,7 @@ def intended(unit: dict[str, str], live: dict[str, dict[str, Any]]):
             cands = [c for c in page_codes if c in live]
             clipped = []
             for y in range(lo, hi + 1):
-                alive = [c for c in cands if live[c]["start"] <= y < live[c]["end"]]
+                alive = [c for c in cands if in_span(y, live[c]["start"], live[c]["end"])]
                 if len(alive) == 1:
                     plan[y] = (alive[0], "", basis)
                 elif not alive:
@@ -247,8 +261,8 @@ def intended(unit: dict[str, str], live: dict[str, dict[str, Any]]):
         p0, p1 = live[code]["start"], live[code]["end"]
         if disp == "back_cast":
             before = [y for y in range(lo, hi + 1) if y < p0]
-            inside = [y for y in range(lo, hi + 1) if p0 <= y < p1]
-            after = [y for y in range(lo, hi + 1) if y >= p1]
+            inside = [y for y in range(lo, hi + 1) if in_span(y, p0, p1)]
+            after = [y for y in range(lo, hi + 1) if y >= p0 and not in_span(y, p0, p1)]
             for y in before:
                 plan[y] = (code, "back_cast", basis)
             for a, b in runs(inside):
@@ -260,9 +274,9 @@ def intended(unit: dict[str, str], live: dict[str, dict[str, Any]]):
             continue
         # matched, or proposed naming its polity: observed, clipped to the target's span
         for y in range(lo, hi + 1):
-            if p0 <= y < p1:
+            if in_span(y, p0, p1):
                 plan[y] = (code, "", basis)
-        out = [y for y in range(lo, hi + 1) if not p0 <= y < p1]
+        out = [y for y in range(lo, hi + 1) if not in_span(y, p0, p1)]
         for a, b in runs(out):
             findings.append(("clipped", f"{where}: {a}-{b} is outside {code}'s span {p0}-{p1}"))
     return plan, findings
@@ -397,6 +411,24 @@ def write_atomic(path: Path, rows: list[dict[str, str]]) -> None:
     os.replace(tmp, path)
 
 
+def append_atomic(path: Path, rows: list[dict[str, str]]) -> None:
+    """Append rows to the registry, leaving every existing byte as it is, then os.replace.
+
+    Rewriting the whole file through DictWriter re-serialises rows it never meant to touch: 300
+    registry rows written without a trailing empty `disposition` field came back with one, so a
+    52-row append showed up as a 650-line diff that buried the rows actually added.
+    """
+    old = path.read_bytes()
+    sio = io.StringIO()
+    w = csv.DictWriter(sio, fieldnames=list(ALIAS_FIELDS), lineterminator="\r\n")
+    w.writerows({f: r.get(f, "") for f in ALIAS_FIELDS} for r in rows)
+    sep = b"" if not old or old.endswith(b"\n") else b"\r\n"
+    tmp = path.with_suffix(f".{os.getpid()}.tmp")
+    with open(tmp, "wb") as fh:
+        fh.write(old + sep + sio.getvalue().encode("utf-8"))
+    os.replace(tmp, path)
+
+
 def report(res: dict[str, list], verbose: bool = True) -> None:
     labels = {"missing": "alias row(s) the ledger implies and the registry lacks",
               "conflict": "year range(s) where the registry routes the unit elsewhere",
@@ -441,7 +473,7 @@ def run(check: bool, country: str | None = None, verbose: bool = True,
         print("PASS: every routed ledger year has its alias, and none is contradicted")
         return 0
     if res["missing"]:
-        write_atomic(ALIASES, aliases + res["missing"])
+        append_atomic(ALIASES, res["missing"])
         print(f"appended {len(res['missing'])} row(s) to {ALIASES}")
         if regenerate:
             # The published map is derived from the registry, and the manifest fingerprints the

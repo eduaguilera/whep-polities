@@ -441,21 +441,31 @@ def check_western_eastern_prefix(ctx):
     # `Cyrenaica` (2 rows) and `Malaya Federation` (5) had been written under source `mitchell`, which never
     # prints either label, so both sat unrouted as fragments of `Libya Cyrenaica` / `Malaya Federation of`,
     # each with two candidate polities. Retagged to fao1952, they route, and leave the class.
-    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 16))
+    # 16/39/9/7 -> 7/89/2/5 on 2026-09-25 (unrouted-rows audit): eleven fragments were routed by alias or
+    # OCR correction (Aden, Brunei, Canal Zone, Germany 1948, Norfolk, Norfolk Is, North Borneo, Pacific
+    # Islands, Portuga, Ryukyu Is, Salvador, Singapore 1937), and routing `China 22 provinces and Manchuria`,
+    # `Greece and Dodecanese` and the three `French North Africa` parts made their unrouted shorter forms
+    # fragments for the first time: `China 22 provinces` (56 rows, China proper, issue 449), `Dodecanese`
+    # (1) and `French North Africa` (15, the whole beside its parts). The rows rise because those three are
+    # large; none of the three was routed or changed.
+    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 7))
     # 42/11/10 -> 52/10/11 on 2026-09-24 (world alias collisions), two labels moving and the
     # class size (21) unchanged: fao1952 `Korea` 1949-1951 was unrouted (it is the peninsula, and
     # averaged with `Korea South`), so its 11 rows became a fragment of `Korea South`/`Korea North`
     # with three candidate polities; and `Great Britain` (1 row) stopped being a fragment, because
     # its only routed parent `United Kingdom Great Britain` was unrouted in the same change.
-    claims.append(("  rows they carry", sum(x[1] for x in frag), 39))
-    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 9))
-    claims.append(("  with several candidate polities", len(frag) - len(uniq), 7))
-    # `Portuga` is the counter-example: structurally unambiguous, three values on one key.
-    pg = mm[(mm["lab"] == "Portuga")]
+    claims.append(("  rows they carry", sum(x[1] for x in frag), 89))
+    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 2))
+    claims.append(("  with several candidate polities", len(frag) - len(uniq), 5))
+    # `Portuga` was the counter-example: structurally unambiguous, three values on one key. It is now
+    # OCR-corrected to `Portugal` (2026-09-25), so it is read by its raw label and has left the class.
+    # The three values are the fao1952 `poultry` species group (source_conventions: one row per species,
+    # no total), which is why one key carries three -- structure still did not make it a duplicate.
+    pg = mm[(mm["source_label_raw"].astype(str).str.strip() == "Portuga")]
     claims.append(("`Portuga` distinct values on its single key",
                    int(pg["value"].nunique()), 3))
     claims.append(("  it is in the unambiguous list -- structure is NOT sufficiency",
-                   "yes" if any(x[0] == "Portuga" for x in uniq) else "no", "yes"))
+                   "yes" if any(x[0] == "Portuga" for x in uniq) else "no", "no"))
     return (claims, "a residual constant per variable identifies the zones; the prefix loss is a "
                     "class of 21, and structural unambiguity does not clear a label")
 
@@ -992,7 +1002,9 @@ def check_estates_label_prefix(ctx):
         return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
 
     ind_r, ind_n = routed("Indonesia")
-    claims.append(("`Indonesia` rows routed -- the collision premise", f"{ind_r}/{ind_n}", "144/144"))
+    # 144/144 -> 145/145 on 2026-09-25: `Indonesia 4` (1 jute row, footnote marker) is OCR-corrected to
+    # `Indonesia` and routes with it.
+    claims.append(("`Indonesia` rows routed -- the collision premise", f"{ind_r}/{ind_n}", "145/145"))
     claims.append(("`Indonesia` coffee rows",
                    len(f[(f["lab"] == "Indonesia") & (f["item"] == "coffee")]), 4))
     for lab in ("Estates", "Indonesia Estates"):
@@ -1948,7 +1960,12 @@ def check_california_double_count(ctx):
     The entry's exclusion rests on the ratio, so both sides are pinned. Its stated range `161-225` kt
     omits 1951: the label also carries 147 at 1951, inside the entry's own 1949-1951 scope, so the
     range is 147-225. That does not change the verdict -- California is 5-9% of the national figure in
-    every year, and routing it to USA-1867-1959 would double-count in all three."""
+    every year, and routing it to USA-1867-1959 would double-count in all three.
+
+    RESOLVED 2026-09-25: the entry's own remedy, a separate California polity, exists (CAL-1850-2025),
+    and the label is aliased there. So the pinned routing flips from "reaches no polity" to "all 7 rows
+    reach CAL-1850-2025 and none reaches the national polity" -- the double count the entry refused is
+    still refused, which is the half of the claim that has to keep reproducing."""
     lb = ctx["panel"]
     ca = lb[lb["country"].astype(str).str.strip() == "United States California"]
     us = lb[(lb["source"] == "fao1952") & (lb["country"].astype(str).str.strip() == "United States")
@@ -1958,6 +1975,13 @@ def check_california_double_count(ctx):
     usv = {int(t.year): float(t.value) for t in us.itertuples()
            if t.unit == "1000 tonnes" and pd.notna(t.year)}
     rows, routed = _unrouted(lb, "United States California")
+    m = MATCHED_DF[0]
+    on_cal = on_usa = None
+    if m is not None:
+        d = m[m["country"].astype(str).str.strip() == "United States California"]
+        codes = d["whep_code"].fillna("").astype(str)
+        on_cal = int((codes == "CAL-1850-2025").sum())
+        on_usa = int(codes.str.startswith("USA-").sum())
     return ([("california 1949", cav.get(1949), 161.0),
              ("california 1950", cav.get(1950), 225.0),
              ("california 1951", cav.get(1951), 147.0),
@@ -1965,8 +1989,10 @@ def check_california_double_count(ctx):
              ("national 1951", usv.get(1951), 3071.0),
              ("max california share %", round(100 * max(cav[y] / usv[y] for y in cav if y in usv), 1),
               9.2),
-             ("rows reaching a polity", routed, 0)],
-            "the entry's 161-225 omits 1951's 147; the exclusion is unaffected")
+             ("rows reaching a polity", routed, 7),
+             ("rows reaching CAL-1850-2025", on_cal, 7),
+             ("rows reaching a USA national polity", on_usa, 0)],
+            "the entry's 161-225 omits 1951's 147; resolved by routing to CAL-1850-2025, never USA")
 
 
 def check_bahamas_area_x10(ctx):

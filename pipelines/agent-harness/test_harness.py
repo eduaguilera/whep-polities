@@ -1259,8 +1259,9 @@ def test_a_unit_routed_with_no_alias_gets_its_alias_derived():
     """BUG: USA-CALIFORNIA had a verdict, a page and a live CAL-1850-2025, and routed 34,452 rows
     to nothing -- its only rules were usda-nass-fips '06', a vocabulary the panel does not use.
 
-    The derived row must name the authored polity, carry the panel slug, stop where the polity's
-    EXCLUSIVE end_year stops it (2025 is reported, not written), and be observed ('').
+    The derived row must name the authored polity, carry the panel slug, run to the 2025 CEILING
+    (CAL-1850-2025 is live there, so its exclusive end_year is the registry stopping, not the
+    state), and be observed ('').
     """
     ledger = [_unit("USA-CALIFORNIA", "California", [_seg(1866, 2025, "proposed")],
                     page="CAL-1850-2025", country="United States of America")]
@@ -1268,9 +1269,32 @@ def test_a_unit_routed_with_no_alias_gets_its_alias_derived():
     res = derive.derive(ledger, aliases, _LIVE, derive.name_owners(ledger))
     assert [(r["source_label"], r["source"], r["year_start"], r["year_end"], r["polity_code"],
              r["disposition"]) for r in res["missing"]] == [
-        ("California", "juan-subnational", "1866", "2024", "CAL-1850-2025", "")], res["missing"]
-    assert any("2025-2025" in c for c in res["clipped"]), res["clipped"]
+        ("California", "juan-subnational", "1866", "2025", "CAL-1850-2025", "")], res["missing"]
+    assert not res["clipped"], res["clipped"]
     assert res["missing"][0]["basis"].startswith(derive.STAMP), "a derived row says it was derived"
+
+
+def test_the_ceiling_year_is_covered_but_nothing_past_it_or_before_a_real_end():
+    """BUG: every panel unit's 2025 row was cut (6,354 rows over 50 US states) because this stage
+    read a live polity's `end_year` 2025 as exclusive, while validate_alias_year_coverage.py
+    accepts an alias ending at the ceiling of a live polity. The exception is the gate's, exactly:
+    2025 is covered when the polity runs to the ceiling, 2026 never is, and a polity that really
+    ends (ARG-CHACO-1884-1951) keeps its exclusive end year.
+    """
+    ledger = [_unit("USA-ARIZONA", "Arizona", [_seg(1882, 2026, "proposed")],
+                    page="CAL-1850-2025"),
+              _unit("ARG-CHACO", "Chaco", [_seg(1900, 1951, "proposed")],
+                    page="ARG-CHACO-1884-1951")]
+    res = derive.derive(ledger, [], _LIVE, derive.name_owners(ledger))
+    got = sorted((r["source_label"], r["year_start"], r["year_end"]) for r in res["missing"])
+    assert got == [("Arizona", "1882", "2025"), ("Chaco", "1900", "1950")], got
+    assert sorted(res["clipped"]) == sorted([
+        "ARG-CHACO 1900-1951 (proposed): 1951-1951 lies outside every authored polity "
+        "(ARG-CHACO-1884-1951)",
+        "USA-ARIZONA 1882-2026 (proposed): 2026-2026 lies outside every authored polity "
+        "(CAL-1850-2025)"]), res["clipped"]
+    assert derive.in_span(2025, 1850, 2025) and not derive.in_span(2026, 1850, 2025)
+    assert not derive.in_span(1951, 1884, 1951)
 
 
 def test_a_second_era_polity_is_aliased_too():
