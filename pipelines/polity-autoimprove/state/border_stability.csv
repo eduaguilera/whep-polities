@@ -91,6 +91,7 @@ BES-2010-2025,2010,2025,,territory,gadm-4.1-adm0,323,no_reference,0,,0,,,,,,
 BFA-1919-1932,1919,1932,439,national,cshapes-2.0,272322,stable_confirmed,1,1919-1931,0,272338,272338,,,0.998,-0.01
 BFA-1947-1960,1947,1960,439,national,cshapes-2.0,272322,stable_confirmed,1,1947-1959,0,272338,272338,,,0.998,-0.01
 BFA-1960-2025,1960,2025,439,national,cshapes-2.0,272322,stable_where_covered,1,1960-2019,0,272338,272338,,,0.998,-0.01
+BFCM-1920-1960,1920,1960,,aggregate,constructed,510433,no_reference,0,,0,,,,,,
 BGA-1800-1894,1800,1894,,national,paine-2024,38704,no_reference,0,,0,,,,,,
 BGD-1947-1971,1947,1971,771,national,cshapes-2.0,137848,no_reference,0,,0,,,,,,
 BGD-1971-2025,1971,2025,771,national,cshapes-2.0,137848,stable_where_covered,1,1971-2019,0,137848,137848,,,0.994,-0.0
@@ -377,7 +378,7 @@ ESP-IBZ-1833-2025,1833,2025,,subnational,none,,no_reference,0,,0,,,,,,
 ESP-J-1833-2025,1833,2025,,subnational,mapspain-ign,13498,no_reference,0,,0,,,,,,
 ESP-LE-1833-2025,1833,2025,,subnational,mapspain-ign,15600,no_reference,0,,0,,,,,,
 ESP-LL-1833-2025,1833,2025,,subnational,mapspain-ign,12189,no_reference,0,,0,,,,,,
-ESP-LP-1927-2025,1927,2025,,subnational,mapspain-ign,3521,no_reference,0,,0,,,,,,
+ESP-LP-1927-2025,1927,2025,,subnational,mapspain-ign,4090,no_reference,0,,0,,,,,,
 ESP-LU-1833-2025,1833,2025,,subnational,mapspain-ign,9857,no_reference,0,,0,,,,,,
 ESP-MA-1833-2025,1833,2025,,subnational,mapspain-ign,7324,no_reference,0,,0,,,,,,
 ESP-MD-1833-2025,1833,2025,,subnational,mapspain-ign,8021,no_reference,0,,0,,,,,,
@@ -388,7 +389,7 @@ ESP-PA-1833-2025,1833,2025,,subnational,mapspain-ign,8010,no_reference,0,,0,,,,,
 ESP-PO-1833-2025,1833,2025,,subnational,mapspain-ign,4500,no_reference,0,,0,,,,,,
 ESP-RI-1833-2025,1833,2025,,subnational,mapspain-ign,5068,no_reference,0,,0,,,,,,
 ESP-SA-1833-2025,1833,2025,,subnational,mapspain-ign,12336,no_reference,0,,0,,,,,,
-ESP-SCT-1927-2025,1927,2025,,subnational,mapspain-ign,2882,no_reference,0,,0,,,,,,
+ESP-SCT-1927-2025,1927,2025,,subnational,mapspain-ign,3351,no_reference,0,,0,,,,,,
 ESP-SE-1833-2025,1833,2025,,subnational,mapspain-ign,14023,no_reference,0,,0,,,,,,
 ESP-SG-1833-2025,1833,2025,,subnational,mapspain-ign,6921,no_reference,0,,0,,,,,,
 ESP-SO-1833-2025,1833,2025,,subnational,mapspain-ign,10291,no_reference,0,,0,,,,,,
@@ -441,6 +442,7 @@ F51-1947-1993,1947,1993,315,national,cshapes-2.0,127598,stable_confirmed,1,1947-
 F77-1949-1990,1949,1990,265,national,cshapes-2.0,109271,stable_confirmed,1,1949-1989,0,109254,109254,,,0.997,0.02
 F78-1949-1990,1949,1990,260,national,cshapes-2.0,247552,stable_confirmed,1,1949-1989,0,247663,247663,,,0.998,-0.04
 FCC-1862-1887,1862,1887,,national,constructed,66039,no_reference,0,,0,,,,,,
+FCM-1916-1920,1916,1920,,colonial,cshapes-2.0,422964,no_reference,0,,0,,,,,,
 FCM-1920-1960,1920,1960,471,national,cshapes-2.0,422964,stable_confirmed,1,1920-1959,1,423069,423069,,,0.998,-0.02
 FEZ-1943-1951,1943,1951,620,national,constructed,463617,reference_mismatch,1,1943-1950,1,1617564,1617564,,,0.286,-71.34
 FID-1887-1954,1887,1954,,national,constructed,753049,no_reference,0,,0,,,,,,
@@ -762,6 +764,7 @@ KOR-1945-1948,1945,1948,730,national,cshapes-2.0,219402,no_reference,0,,0,,,,,,
 KOR-1948-2025,1948,2025,732,national,cshapes-2.0,97097,stable_where_covered,1,1948-2019,0,97195,97195,,,0.996,-0.1
 KOS-2008-2025,2008,2025,347,national,cshapes-2.0,10735,stable_where_covered,1,2008-2019,0,10737,10737,,,0.992,-0.02
 KRS-1910-1945,1910,1945,,colonial,cshapes-2.0,97097,no_reference,0,,0,,,,,,
+KRS-1945-1948,1945,1948,,colonial,constructed,93864,no_reference,0,,0,,,,,,
 KSJ-1800-1911,1800,1911,,national,paine-2024,18372,no_reference,0,,0,,,,,,
 KWT-1800-2025,1800,2025,690,national,cshapes-2.0,16798,stable_where_covered,1,1961-2019,0,16753,16753,,,0.989,0.27
 KZM-1800-1899,1800,1899,,national,paine-2024,16244,no_reference,0,,0,,,,,,
@@ -907,6 +910,7 @@ NGA-1886-1914,1886,1914,,national,cshapes-2.0,862491,no_reference,0,,0,,,,,,
 NGA-1914-1960,1914,1960,475,national,cshapes-2.0,862491,stable_confirmed,1,1914-1959,0,862547,862547,,,0.999,-0.01
 NGA-1960-1961,1960,1961,475,national,cshapes-2.0,862491,no_reference,0,,0,,,,,,
 NGA-1961-2025,1961,2025,475,national,cshapes-2.0,908470,stable_where_covered,1,1961-2019,0,908494,908494,,,0.999,-0.0
+NGBC-1916-1960,1916,1960,,aggregate,constructed,949950,no_reference,0,,0,,,,,,
 NIC-1800-2025,1800,2025,93,national,cshapes-2.0,128077,stable_where_covered,1,1886-2019,0,128097,128097,,,0.997,-0.02
 NIU-1800-2025,1800,2025,,territory,gadm-4.1-adm0,264,no_reference,0,,0,,,,,,
 NKR-1800-1901,1800,1901,,national,paine-2024,13134,no_reference,0,,0,,,,,,
@@ -1074,6 +1078,7 @@ SRB-2008-2025,2008,2025,345,national,cshapes-2.0,77251,no_reference,0,,0,,,,,,
 SRB-XK-2006-2008,2006,2008,,subnational,constructed,77242,no_reference,0,,0,,,,,,
 SRH-1953-1964,1953,1964,552,national,cshapes-2.0,389716,no_reference,0,,0,,,,,,
 SSD-2011-2025,2011,2025,626,national,cshapes-2.0,627258,stable_where_covered,1,2011-2019,0,627318,627318,,,0.999,-0.01
+SSM-1914-1945,1914,1945,,aggregate,constructed,2026,no_reference,0,,0,,,,,,
 STP-1800-2025,1800,2025,403,national,gadm-4.1-adm0,1012,no_reference,0,,0,,,,,,
 SUD-1899-1934,1899,1934,,national,cshapes-2.0,2580014,no_reference,0,,0,,,,,,
 SUD-1934-1956,1934,1956,,national,cshapes-2.0,2486812,no_reference,0,,0,,,,,,
@@ -1094,6 +1099,7 @@ SWK-1800-1894,1800,1894,,national,paine-2024,22366,no_reference,0,,0,,,,,,
 SWZ-1894-2025,1894,2025,572,national,cshapes-2.0,17103,stable_where_covered,1,1895-2019,2,17111,17111,,,0.997,-0.04
 SXM-2010-2025,2010,2025,,territory,gadm-4.1-adm0,38,no_reference,0,,0,,,,,,
 SYC-1903-2025,1903,2025,591,national,gadm-4.1-adm0,488,no_reference,0,,0,,,,,,
+SYL-1920-1944,1920,1944,,aggregate,constructed,198309,no_reference,0,,0,,,,,,
 SYL-1944-1953,1944,1953,,aggregate,constructed,198309,no_reference,0,,0,,,,,,
 SYR-1920-1922,1920,1922,,national,cshapes-2.0,188105,no_reference,0,,0,,,,,,
 SYR-1922-1946,1922,1946,652,national,cshapes-2.0,188105,stable_confirmed,1,1922-1945,0,188004,188004,,,0.998,0.05
@@ -1220,6 +1226,7 @@ VIC-1851-1901,1851,1901,,national,cshapes-2.0,238319,no_reference,0,,0,,,,,,
 VIR-1917-2025,1917,2025,,colonial,gadm-4.1-adm0,367,no_reference,0,,0,,,,,,
 VNM-1887-1954,1887,1954,815,national,cshapes-2.0,324094,changed,2,1887-1953,0,379848,324216,1.172,1893,0.851,-14.68
 VNM-1975-2025,1975,2025,816,national,cshapes-2.0,324094,stable_where_covered,1,1975-2019,0,324216,324216,,,0.996,-0.04
+VNM-TON-1887-1945,1887,1945,,subnational,constructed,115832,no_reference,0,,0,,,,,,
 VUT-1800-2025,1800,2025,935,national,gadm-4.1-adm0,12181,no_reference,0,,0,,,,,,
 WAD-1800-1912,1800,1912,,national,paine-2024,362774,no_reference,0,,0,,,,,,
 WBK-1950-1967,1950,1967,6631,colonial,cshapes-2.0,5847,stable_confirmed,1,1950-1966,0,5871,5871,,,0.985,-0.41

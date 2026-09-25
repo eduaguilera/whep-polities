@@ -68,6 +68,11 @@ FIRST_YEAR, LAST_YEAR = 1800, 2025
 # to list position. If new data arrives under a label these codes could both answer to, the
 # alias is the fix -- not a change to this file.
 BASELINE_ORDERED = {
+    ("CMR", ("BCM-1916-1961", "FCM-1916-1920")):
+        "1916-1919, added 2026-09-24 (issue 688): the British and French occupation zones of Kamerun "
+        "coexisted and both are `colonial`. Every observed label is pinned: mitchell `cameroon` "
+        "1917-1919 to FCM-1916-1920 (French Cameroon by C5 note 2) and 1916 to BCM-1916-1961 (Kamerun "
+        "plus Togoland, no matching polity; kept where it was and recorded as a data error).",
     ("MYS", ("BNB-1881-1963", "BSW-1841-1963", "GBM-1895-1946")):
         "British North Borneo, Sarawak and British Malaya coexisted; all three are typed "
         "`colonial`, so no member is `national` and the filter leaves zero. 207 rows pinned "

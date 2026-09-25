@@ -119,6 +119,14 @@ BASELINE = {
     # relationship that actually holds. The type field was carrying the information all along; it
     # was just set to the wrong value.
     "BTL-1920-1957 / GCT-1919-1956": "British Togoland inside the Gold Coast + Br Togoland reporting unit (9.00x, by construction)",
+    # Two CMR pairs, added 2026-09-24 (issues 687, 688). The first is the GCT/BTL shape: British
+    # Cameroons inside the British + French Cameroons reporting unit, by construction (CShapes
+    # 471 + 472). The second is NOT a component: FCM-1916-1920 is CShapes 471 (French zone) and
+    # BCM-1916-1961 is 472 (British zone), neighbours that share only a border. Both are
+    # `colonial` on CMR over 1916-1919; the one label that reaches either in those years
+    # (mitchell `cameroon`) is pinned year by year with explicit aliases.
+    "BCM-1916-1961 / BFCM-1920-1960": "British Cameroons inside the British + French Cameroons reporting unit (5.83x, by construction)",
+    "BCM-1916-1961 / FCM-1916-1920": "British and French occupation zones of Kamerun: ADJACENT, not nested (CShapes 472 vs 471); all their labels pinned by alias",
     # Java and Netherlands New Guinea, added 2026-08-07 when IDN-JVM's polygon was attached.
     #
     # THE AUDIT LABELS THIS "probable component in parent" AND THAT LABEL IS WRONG HERE. Measured:

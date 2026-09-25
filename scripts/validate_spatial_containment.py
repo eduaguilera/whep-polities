@@ -248,6 +248,9 @@ LEGITIMATE_CONTAINERS = frozenset({
     # was first built: SYL-1944-1953 is Syria + Lebanon, so it necessarily contains
     # the SYR and LBN period-polities.
     "SYL-1944-1953",
+    # Its mandate-era predecessor, added 2026-09-24 (issue 688): the same union at 1930, so it contains
+    # LBN-1920-1944 and the SYR-1920-1922 / SYR-1922-1946 rows by construction.
+    "SYL-1920-1944",
     # BRITISH INDIA 1886-1947: ALL FOUR ENTRIES REMOVED ON 2026-08-13 (issue 84), and the reason
     # is a correction to what this list used to claim. They were added on 2026-08-04 with a note
     # arguing that their contents -- Hyderabad, Burma-as-a-province, the territory that became

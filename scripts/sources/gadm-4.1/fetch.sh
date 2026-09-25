@@ -61,6 +61,10 @@ COUNTRIES=(
   # 'feature not found'. The recipe names the three lower-delta regions annexed after the Second
   # Anglo-Burmese War, which is what this row covers.
   JAM TTO MMR
+  # Added 2026-09-25 for issue 687: VNM-TON-1887-1945 (French Tonkin) is a union of the Vietnamese
+  # provinces north of Thanh Hoa, and no fetched source carries anything finer than all of Vietnam.
+  # Appended LAST so every feature already in the combined files keeps its position.
+  VNM
 )
 
 ADM0="$OUT_DIR/gadm41_adm0.gpkg"

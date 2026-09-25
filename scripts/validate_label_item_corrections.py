@@ -73,8 +73,13 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # 15/155 -> 23/205 on 2026-09-24 (issue 688, Mitchell footnotes): mitchell `ghana` livestock 1939-1952 (21 rows)
 # and crop area/output 1919-1955 (22) are Gold Coast plus British Togoland by Mitchell's own notes, and mitchell
 # `syrian arab republic` tobacco 1945-1951 (7) includes Lebanon; the label's other tables do not.
-BASELINE_RULES = 23
-BASELINE_ROWS = 205
+# 23/205 -> 49/785 on 2026-09-24 (issues 687 and 688, the polities those two issues asked for): iia `viet nam`
+# items that are raw `french tonkin` (10 rules, 258 rows -> VNM-TON-1887-1945), iia `cameroon` items that are raw
+# `british-french cameroon` (6 rules, 124 -> BFCM-1920-1960), Mitchell `nigeria` cacao 1945-1959 and livestock to
+# 1950, footnoted as including British Cameroons (7 rules, 148 -> NGBC-1916-1960), and Mitchell `syrian arab
+# republic` olive oil, sheep and goats footnoted as including Lebanon (3 rules, 50 -> SYL-1920-1944).
+BASELINE_RULES = 49
+BASELINE_ROWS = 785
 
 
 def main() -> int:
