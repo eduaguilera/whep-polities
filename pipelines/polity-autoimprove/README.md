@@ -1138,6 +1138,17 @@ to all. `01_match_and_findings.py` picks the most specific matching rule per dat
 (year- and source-qualified rules beat blanket ones). Example: `Germany Western`
 resolves to West Germany **only for 1949–1951**; its 1937–48 rows stay an open finding.
 
+Two columns were appended later: `disposition` (2026-09-22; `back_cast` marks a
+reconstruction onto a boundary that did not exist yet) and `indicator` (2026-09-25), an
+optional scope, **blank = any**, limiting a rule to panel rows whose `indicator` equals it
+(`area`, `production`, `yield`, `livestock_stock`, `landuse`). It is for a subnational panel
+unit whose indicators are two territories under one id and name, as `CHL-LL` is (crops for
+Los Lagos + Los Ríos, landuse and livestock for Los Lagos alone). Allowed on panel slugs only
+(`juan-subnational`, `whep-lab-*`); the matcher skips scoped rows, since layer B carries no
+panel indicator. In the years a label is split, EVERY rule must be scoped: a blank rule
+beside a scoped one claims the same rows, and `validate_aliases.py` refuses it. The number of
+scoped rows is pinned (0 until the WHEP consumer matches the column, whep#1294).
+
 **When the territory depends on the ITEM, an alias is the wrong tool** (issue 675). The
 alias key has no item, so a label that carries two territories in the same years —
 Mitchell's pre-Union `south africa` is the Cape for livestock and wine but Natal for sugar

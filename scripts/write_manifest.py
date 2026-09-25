@@ -234,6 +234,24 @@ if os.path.exists(ALIAS_MAP):
         "aliases": len(alias_rows),
         "labels": len({r["source_label"] for r in alias_rows}),
         "sources": sorted({r["source"] for r in alias_rows if r["source"]}),
+        # Rows carrying the optional `indicator` scope (2026-09-25). Published so a consumer can
+        # refuse a map it cannot read correctly: while this is 0 a reader that ignores the column
+        # resolves exactly as before; once it is not, such a reader meets two rules for one label
+        # and years and picks one by file order.
+        "indicator_scoped_aliases": sum(1 for r in alias_rows if (r.get("indicator") or "").strip()),
+        "indicator_scope_why": (
+            "`indicator` is an optional scope on a rule, BLANK = ANY: a non-blank value limits the "
+            "rule to rows whose panel `indicator` (area, production, yield, livestock_stock, "
+            "landuse) equals it exactly -- the convention of source_label_item_corrections.csv's "
+            "unit/indicator scope. It exists for a panel unit whose indicators are two "
+            "territories under one id and name (CHL-LL: crops for Los Lagos + Los Rios, landuse "
+            "and livestock for Los Lagos alone). A row's candidate rules are those matching "
+            "label, source and year whose indicator is blank or equals the row's. Published "
+            "rules never let a blank and a scoped rule, or two rules with one scope, claim the "
+            "same label, source and year (validate_aliases.py), so at most one candidate remains "
+            "and no precedence is needed. A consumer that cannot supply a row's indicator must "
+            "treat a label/year that only scoped rules cover as unresolved, not pick one of them."
+        ),
     }
 
 # The cross-family TERRITORY link, and the reason this block exists at all.

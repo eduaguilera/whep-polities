@@ -1523,6 +1523,60 @@ def test_size_objections_are_wired_into_stage_1_and_stage_3():
     assert "import derive_aliases" in src and '"--alias-stage"' in src
 
 
+def _scoped(label, source, lo, hi, code, indicator):
+    a = _alias(label, source, lo, hi, code)
+    a["indicator"] = indicator
+    return a
+
+
+_LIVE_SPLIT = dict(_LIVE, **{
+    "CHL-LL-1976-2025": {"start": 1976, "end": 2025, "name": "Los Lagos"},
+    "CHL-LLX-1976-2025": {"start": 1976, "end": 2025, "name": "Los Lagos + Los Rios (fixture)"},
+})
+
+
+def test_an_indicator_split_naming_the_ledgers_polity_covers_its_years():
+    """The registry may split a unit by panel `indicator` (column added 2026-09-25): CHL-LL's crops
+    are Los Lagos + Los Rios, its landuse and livestock Los Lagos alone. The ledger has no indicator
+    dimension and names the default territory, so a split in which ONE rule names that polity
+    agrees with it -- no missing row is derived (an unscoped row there would collide with the
+    split), no conflict, and the years are listed as `scoped`, never blocking."""
+    ledger = [_unit("CHL-LL", "Los Lagos", [_seg(1976, 2023, "proposed")],
+                    page="CHL-LL-1976-2025", country="Chile")]
+    aliases = [_scoped("CHL-LL", "whep-lab-latam", 1976, 2023, "CHL-LLX-1976-2025", i)
+               for i in ("area", "production", "yield")]
+    aliases += [_scoped("CHL-LL", "whep-lab-latam", 1976, 2023, "CHL-LL-1976-2025", i)
+                for i in ("landuse", "livestock_stock")]
+    res = derive.derive(ledger, aliases, _LIVE_SPLIT, derive.name_owners(ledger))
+    assert not res["missing"] and not res["conflict"], (res["missing"], res["conflict"])
+    assert res["scoped"] == ["CHL-LL [whep-lab-latam] 1976-2023: routed only for indicator(s) "
+                             "area,landuse,livestock_stock,production,yield; any other indicator "
+                             "routes nowhere in these years"], res["scoped"]
+    assert "scoped" not in derive.BLOCKING
+
+
+def test_an_indicator_split_naming_none_of_the_ledgers_polities_is_a_conflict():
+    """A split is still routing: if none of its rules names the polity the ledger routes the unit
+    to, the two halves of the routing disagree, exactly as for an unscoped rule."""
+    ledger = [_unit("CHL-LL", "Los Lagos", [_seg(1976, 2023, "proposed")],
+                    page="CHL-LL-1976-2025", country="Chile")]
+    aliases = [_scoped("CHL-LL", "whep-lab-latam", 1976, 2023, "CHL-LLX-1976-2025", i)
+               for i in ("area", "landuse")]
+    res = derive.derive(ledger, aliases, _LIVE_SPLIT, derive.name_owners(ledger))
+    assert len(res["conflict"]) == 1 and "CHL-LLX-1976-2025" in res["conflict"][0], res["conflict"]
+
+
+def test_derived_rows_are_unscoped_and_the_registry_column_is_last():
+    """Every derived row is unscoped (the ledger cannot know indicators), and `indicator` is the
+    registry's LAST column, where it was appended, so a row written before it -- with no trailing
+    field -- still lines up."""
+    assert derive.ALIAS_FIELDS[-1] == "indicator"
+    ledger = [_unit("USA-CALIFORNIA", "California", [_seg(1866, 2025, "proposed")],
+                    page="CAL-1850-2025")]
+    res = derive.derive(ledger, [], _LIVE, derive.name_owners(ledger))
+    assert res["missing"] and all(r["indicator"] == "" for r in res["missing"]), res["missing"]
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

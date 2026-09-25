@@ -99,7 +99,14 @@ def main() -> int:
                 hi = int(end) if end else 10**6
             except ValueError:
                 continue
-            chains[f"{label.lower()}||{source}"].append(
+            # A row scoped to one panel `indicator` (column added 2026-09-25; blank = any)
+            # belongs to its own chain: rules for DISJOINT indicators may share years by design
+            # (CHL-LL's crops and its landuse are two territories), and reading them as one
+            # chain would report that split as a touch. An unscoped key keeps its old spelling,
+            # so the baseline is unchanged. A scoped rule colliding with an UNSCOPED one on the
+            # same years is validate_aliases.py's check 8, which compares every pair.
+            scope = (row.get("indicator") or "").strip()
+            chains[f"{label.lower()}||{source}" + (f"||{scope}" if scope else "")].append(
                 (lo, hi, row.get("polity_code", ""))
             )
 

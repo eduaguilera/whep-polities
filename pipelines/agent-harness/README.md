@@ -129,6 +129,12 @@ python3 pipelines/agent-harness/harness.py --country Chile --alias-stage
 | `back_cast` | `back_cast` to its polity, for the years **before** that polity starts; years inside it are the era's container and are reported, not derived |
 | `unroutable` | nothing |
 
+Every derived row is unscoped: the ledger has no indicator dimension. A registry row scoped to
+one panel `indicator` (the optional column added 2026-09-25) is a hand decision; it counts as
+coverage for its years, agrees with the ledger when one of the split's polities is the
+ledger's, and is a `conflict` otherwise. Years routed only per indicator are listed as
+`scoped` (not blocking), because whatever indicator the split leaves out routes nowhere.
+
 Labels are the unit's id and name, and a name another unit shares ('Santa Cruz', 'Distrito
 Federal') is never written. Slugs are the panel slugs already carrying the unit (policy.json
 `alias_derivation`), or `juan-subnational` when none does; official-vocabulary slugs keep their own

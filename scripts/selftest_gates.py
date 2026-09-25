@@ -5706,6 +5706,98 @@ def mutate_back_cast_alias_reaches_into_target(root, gpd, make_valid, affinity):
     raise AssertionError("no back_cast alias row to extend")
 
 
+# --- the alias `indicator` scope (2026-09-25) -------------------------------------------------
+# The registry row every case below edits: the panel's CHL-LL under its unit id, 1976-2023. It is
+# the unit the scope was added for (crops on Los Lagos + Los Rios, landuse and livestock on Los
+# Lagos), so the mutations are the mistakes a real split of it could make.
+_SCOPE_FIELDS_NOTE = "registry rows written before `indicator` existed lack the field"
+
+
+def _rewrite_registry(root, edit):
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/applied_aliases.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rdr = _csv.DictReader(fh)
+        fields = list(rdr.fieldnames)
+        rows = list(rdr)
+    assert "indicator" in fields, "the registry has no `indicator` column -- " + _SCOPE_FIELDS_NOTE
+    rows = edit(rows)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\r\n")
+        w.writeheader()
+        w.writerows({f: (r.get(f) or "") for f in fields} for r in rows)
+
+
+def _chl_ll_row(rows):
+    hit = [r for r in rows if r["source_label"] == "CHL-LL" and r["source"] == "whep-lab-latam"
+           and r["year_start"] == "1976"]
+    assert len(hit) == 1, "the CHL-LL whep-lab-latam 1976 alias moved -- pick another row"
+    return hit[0]
+
+
+def mutate_alias_scope_beside_unscoped(root, gpd, make_valid, affinity):
+    """Add a crop-scoped twin of CHL-LL's unscoped 1976-2023 rule.
+
+    The tempting reading is "the blank rule is the default and the scoped one the exception", and
+    a consumer implementing no precedence would then meet two rules for every crop row and take
+    whichever it reached first. Blank means ANY indicator, so the two claim the same rows.
+    """
+    def edit(rows):
+        twin = dict(_chl_ll_row(rows))
+        twin["indicator"] = "area"
+        rows.append(twin)
+        return rows
+    _rewrite_registry(root, edit)
+    return "added an `indicator=area` twin beside CHL-LL's unscoped whep-lab-latam 1976-2023 rule"
+
+
+def mutate_alias_scope_typo(root, gpd, make_valid, affinity):
+    """Scope CHL-LL's rule on `crops`, which is not a panel indicator.
+
+    Scopes compare exactly, so the rule selects no row and CHL-LL routes nowhere for 1976-2023. In
+    CI the panel is absent and nothing counts rows, so only the pinned vocabulary refuses it.
+    """
+    def edit(rows):
+        _chl_ll_row(rows)["indicator"] = "crops"
+        return rows
+    _rewrite_registry(root, edit)
+    return "scoped CHL-LL's whep-lab-latam 1976-2023 rule on `crops`, which no panel row carries"
+
+
+def mutate_alias_scope_on_layer_b_slug(root, gpd, make_valid, affinity):
+    """Scope a fao1952 rule on `area`.
+
+    Layer B's `indicator` is a table id, not a panel indicator, and matchlib skips every scoped
+    rule -- so the rule would stop routing its label in layer B while reading as a narrowing.
+    """
+    def edit(rows):
+        hit = [r for r in rows if r["source"] == "fao1952"]
+        assert hit, "no fao1952 alias to scope"
+        hit[0]["indicator"] = "area"
+        return rows
+    _rewrite_registry(root, edit)
+    return "scoped the first fao1952 alias on `area`, a source with no panel indicator"
+
+
+def mutate_alias_scope_split_unannounced(root, gpd, make_valid, affinity):
+    """Replace CHL-LL's unscoped rule by five DISJOINT scoped rules, one per panel indicator.
+
+    This is the correct shape of a split, so checks 7 and 8 pass it: no two of the rules can claim
+    one row. What must still fail is the pin -- the WHEP consumer reads the map without the column
+    today, and would see five rules for one label and years. Only the count can see that.
+    """
+    def edit(rows):
+        base = _chl_ll_row(rows)
+        rows.remove(base)
+        for ind in ("area", "production", "yield", "livestock_stock", "landuse"):
+            r = dict(base)
+            r["indicator"] = ind
+            rows.append(r)
+        return rows
+    _rewrite_registry(root, edit)
+    return "split CHL-LL's whep-lab-latam 1976-2023 rule into five disjoint indicator-scoped rules"
+
+
 def _write_ci_skip_log(root, names):
     log = os.path.join(root, "ci-skips.log")
     with open(log, "w", encoding="utf-8") as fh:
@@ -7033,6 +7125,33 @@ CASES = (
         "back_cast row ends",
         "a back_cast alias reaching into its target's own span, where the before-target exemption "
         "it enjoys no longer holds",
+    ),
+    (
+        "validate_aliases.py",
+        mutate_alias_scope_beside_unscoped,
+        "so file order would decide",
+        "an indicator-scoped alias beside an unscoped one on the same label and years: a blank "
+        "scope means any indicator, so the two claim the same rows",
+    ),
+    (
+        "validate_aliases.py",
+        mutate_alias_scope_typo,
+        "is not a panel indicator",
+        "an indicator scope no panel row carries, so the rule selects nothing and the unit routes "
+        "nowhere -- invisible in CI, where the panel is absent",
+    ),
+    (
+        "validate_aliases.py",
+        mutate_alias_scope_on_layer_b_slug,
+        "no panel indicator vocabulary",
+        "an indicator scope on a layer-B slug, which matchlib skips, so the label stops routing",
+    ),
+    (
+        "validate_aliases.py",
+        mutate_alias_scope_split_unannounced,
+        "indicator-scoped alias rows against the pinned 0",
+        "a correctly disjoint indicator split published before the consumer matches the column, "
+        "which it would read as five rules for one label and years",
     ),
     (
         "validate_ci_skips.py",

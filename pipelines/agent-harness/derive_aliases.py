@@ -37,6 +37,13 @@ WHAT IS DERIVED, per ledger unit and per coverage segment:
                  two halves of the routing disagree indefinitely. Re-recorded 2026-09-24.
     unroutable -> nothing
 
+INDICATOR-SCOPED REGISTRY ROWS (`indicator` non-blank, added 2026-09-25) cover their years for the
+purpose of this comparison: a year the registry splits by indicator is routed, and it agrees with
+the ledger when ONE of the split's polities is the ledger's (the ledger names the unit's default
+territory; the split sends some indicators elsewhere). A split naming none of them is a
+`conflict`. Years covered ONLY by scoped rows are listed as `scoped` (non-blocking), because
+whatever indicators the split leaves out route nowhere and only a human can say that is right.
+
 Label forms are the unit's `admin_unit_id` and its `admin_name`. The NAME is written only when no
 other unit of the ledger or the panel (state/panel_unit_names.csv) carries it: 'Santa Cruz' is both
 ARG-SANTACRUZ and BOL-SANTACRUZ, and 'Distrito Federal' is Brazil's unit and also a name the panel
@@ -87,8 +94,13 @@ ALIASES = REPO / "pipelines" / "polity-autoimprove" / "state" / "applied_aliases
 DB = REPO / "data" / "final" / "polities_database.csv"
 POLICY = HERE / "policy.json"
 
+# `indicator` (appended 2026-09-25) is the optional scope of a registry row: blank = every row of
+# the label, a value = only rows whose panel `indicator` equals it. The ledger has no indicator
+# dimension, so every row this stage derives is UNSCOPED; scoped rows are hand decisions (a unit
+# whose indicators are two territories, like the panel's CHL-LL) and are read, never written.
 ALIAS_FIELDS = ("source_label", "source", "year_start", "year_end", "common_name",
-                "polity_code", "confidence", "basis", "observed_rows", "disposition")
+                "polity_code", "confidence", "basis", "observed_rows", "disposition",
+                "indicator")
 DEAD = ("retired", "superseded")
 STAMP = "agent-harness derive_aliases"
 # Finding kinds that fail --check. `back_cast_inside` joined the first three once its 12 findings
@@ -309,7 +321,7 @@ def derive(ledger: list[dict[str, str]], aliases: list[dict[str, str]],
     cfg = cfg or {"panel_slug": "juan-subnational", "panel_slug_prefixes": ("whep-lab-",)}
     out: dict[str, list] = {"missing": [], "conflict": [], "refused": [], "clipped": [],
                             "back_cast_inside": [], "ambiguous": [], "unauthored": [],
-                            "unrecorded": []}
+                            "unrecorded": [], "scoped": []}
     by_label: dict[str, list[dict[str, str]]] = collections.defaultdict(list)
     for a in aliases:
         by_label[norm(a["source_label"])].append(a)
@@ -338,13 +350,30 @@ def derive(ledger: list[dict[str, str]], aliases: list[dict[str, str]],
             # A blank-source rule applies to every source, so it covers this slug too.
             mine = [a for a in existing if a["source"] in (slug, "")]
             covered: dict[int, set[str]] = collections.defaultdict(set)
+            # year -> the indicator scopes covering it, and whether an unscoped row does too.
+            scopes: dict[int, set[str]] = collections.defaultdict(set)
+            unscoped: set[int] = set()
             for a in mine:
                 try:
                     a0, a1 = int(a["year_start"]), int(a["year_end"])
                 except (TypeError, ValueError):
                     continue
+                ind = (a.get("indicator") or "").strip()
                 for y in range(a0, a1 + 1):
                     covered[y].add(a["polity_code"])
+                    if ind:
+                        scopes[y].add(ind)
+                    else:
+                        unscoped.add(y)
+            split = {}
+            for y in sorted(set(scopes) - unscoped):
+                if y in plan:
+                    split.setdefault(",".join(sorted(scopes[y])), []).append(y)
+            for inds, ys in split.items():
+                for a, b in runs(ys):
+                    out["scoped"].append(f"{unit['unit_id']} [{slug}] {a}-{b}: routed only for "
+                                         f"indicator(s) {inds}; any other indicator routes "
+                                         f"nowhere in these years")
             for a in shared:
                 if a["source"] not in (slug, ""):
                     continue
@@ -395,7 +424,7 @@ def derive(ledger: list[dict[str, str]], aliases: list[dict[str, str]],
                                   f"{unit['unit_id']} ({unit.get('admin_name', '')}), coverage "
                                   f"{'back_cast' if disp else 'observed'} {a}-{b} -> {code}. "
                                   f"Segment basis: {seg_basis[:300]}"),
-                        "observed_rows": "", "disposition": disp})
+                        "observed_rows": "", "disposition": disp, "indicator": ""})
     return out
 
 
@@ -437,7 +466,8 @@ def report(res: dict[str, list], verbose: bool = True) -> None:
               "back_cast_inside": "back_cast range(s) inside their target's own span",
               "ambiguous": "year(s) two authored eras both claim",
               "unauthored": "proposed segment(s) with no page yet",
-              "unrecorded": "registry range(s) the ledger does not route (not acted on)"}
+              "unrecorded": "registry range(s) the ledger does not route (not acted on)",
+              "scoped": "year range(s) the registry routes only per indicator (not acted on)"}
     for k, what in labels.items():
         items = res[k]
         print(f"  {len(items):5}  {what}")
