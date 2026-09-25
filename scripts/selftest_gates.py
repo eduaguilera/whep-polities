@@ -3278,6 +3278,61 @@ def mutate_label_item_correction_overlap(root, gpd, make_valid, affinity):
             "1895-1909 rule's years")
 
 
+def _vnm_rice_output_rule(rows):
+    hit = [r for r in rows if r["source"] == "mitchell" and r["source_label"] == "viet nam"
+           and r["item"] == "rice, paddy" and r.get("unit") == "tonnes"]
+    assert len(hit) == 1, "the unit-scoped Vietnam rice-output rule moved -- pick another rule"
+    return hit[0]
+
+
+def mutate_label_item_correction_scope_blanked(root, gpd, make_valid, affinity):
+    """Blank the `unit` scope of the mitchell `viet nam` rice-output rule (issue 688).
+
+    The scope is the whole point of that rule: the same label, item and years carry North+South
+    OUTPUT (tonnes) and South-only AREA (ha). Blanked, the rule relabels the area rows onto the
+    combined polity too -- and in CI, where layer B is absent, the rule count, the row count and
+    every target check are unchanged, so only the pinned number of scoped rules can see it.
+    """
+    def edit(rows):
+        _vnm_rice_output_rule(rows)["unit"] = ""
+        return rows
+    _rewrite_label_item_corrections(root, edit)
+    return ("blanked the `unit=tonnes` scope of the mitchell `viet nam` rice-output 1955-1960 rule, "
+            "so it would also move the South-only area rows")
+
+
+def mutate_label_item_correction_scope_typo(root, gpd, make_valid, affinity):
+    """Scope the Vietnam rice-output rule on `tonne` instead of `tonnes`.
+
+    Scopes compare exactly, so the misspelt rule selects no row and the 6 summed rows go back to
+    RVN-1954-1975. In CI nothing counts rows, so only the unit-vocabulary check refuses it.
+    """
+    def edit(rows):
+        _vnm_rice_output_rule(rows)["unit"] = "tonne"
+        return rows
+    _rewrite_label_item_corrections(root, edit)
+    return "misspelt the Vietnam rice-output rule's unit scope as `tonne`, which no row carries"
+
+
+def mutate_label_item_correction_scoped_overlaps_unscoped(root, gpd, make_valid, affinity):
+    """Add an UNSCOPED twin of the unit-scoped Vietnam rice-output rule.
+
+    Disjoint scopes (tonnes vs ha) are allowed to share a key and years, so the overlap arm must
+    skip them -- but a blank scope means ANY unit, and a twin with none selects every tonnes row the
+    scoped rule does. If the disjointness test read a blank as "different", this would pass and
+    file order would decide the 6 rows.
+    """
+    def edit(rows):
+        twin = dict(_vnm_rice_output_rule(rows))
+        twin["unit"] = ""
+        twin["correct_label"] = "viet nam south"
+        rows.append(twin)
+        return rows
+    _rewrite_label_item_corrections(root, edit)
+    return ("added an unscoped mitchell `viet nam` rice 1955-1960 rule beside the `unit=tonnes` one, "
+            "so both claim the tonnes rows")
+
+
 def mutate_lexicon_entry_routes_nowhere(root, gpd, make_valid, affinity):
     """Add a lexicon entry whose English target names no polity, pushing the inert count past its
     ceiling.
@@ -6328,6 +6383,27 @@ CASES = (
         "file order would decide",
         "two item-scoped corrections on one label and item whose years overlap, so file order and "
         "not a rule decides where the shared years land",
+    ),
+    (
+        "validate_label_item_corrections.py",
+        mutate_label_item_correction_scope_blanked,
+        "a scope was blanked",
+        "a unit-scoped correction whose scope is blanked, so it also relabels the rows the scope "
+        "exists to leave alone -- every rule and row count unchanged in CI",
+    ),
+    (
+        "validate_label_item_corrections.py",
+        mutate_label_item_correction_scope_typo,
+        "the rule would select no row",
+        "a unit scope misspelt so that it matches no layer-B row, sending the rule's rows back to "
+        "the territory it moves them off",
+    ),
+    (
+        "validate_label_item_corrections.py",
+        mutate_label_item_correction_scoped_overlaps_unscoped,
+        "file order would decide",
+        "a scoped and an unscoped correction on one key and years: a blank scope means any unit, "
+        "so the two claim the same rows",
     ),    (
         "validate_stated_areas.py",
         mutate_source_files_two_territories_as_one,

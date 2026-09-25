@@ -1143,8 +1143,15 @@ alias key has no item, so a label that carries two territories in the same years
 Mitchell's pre-Union `south africa` is the Cape for livestock and wine but Natal for sugar
 cane — cannot be split by any alias. Such rows are relabelled instead, in
 `data/final/source_label_item_corrections.csv` (`source, source_label, item, year_start,
-year_end, correct_label, polity_code, observed_rows, issue, evidence`; inclusive years, dated
-rows only). `01_match_and_findings.py` applies it after the OCR spelling table and before
+year_end, unit, indicator, correct_label, polity_code, observed_rows, issue, evidence`; inclusive
+years; dated rows, and period averages lying wholly inside the years). `unit` and `indicator`
+(added 2026-09-25, issue 688) are an optional scope, **blank = any**: a non-blank value restricts
+the rule to rows whose layer-B `unit` / `indicator` equal it exactly. It exists for a label whose
+item carries two territories that only the table separates — Mitchell's `viet nam` 1955-1960 rice
+and maize OUTPUT (tonnes) is North + South summed and goes to F237-1954-1975, while the same
+label's AREA (ha) is South only and stays on RVN-1954-1975; and Syria's wheat and barley OUTPUT
+1920-1940 is footnoted as including Lebanon while its area is not. Prefer `unit`; `indicator` is a
+table id and only as stable as the extraction that names it. `01_match_and_findings.py` applies it after the OCR spelling table and before
 matching, via `matchlib.apply_label_item_corrections`, and `matched_rows.parquet` keeps layer
 B's own label in `source_label_raw`. A new rule needs structural evidence in `evidence` (a
 sibling source carrying the territory separately, agronomy, the source's own filing), not a

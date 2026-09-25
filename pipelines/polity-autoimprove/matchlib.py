@@ -154,9 +154,21 @@ def _yr(v):
 # it beside iia `barbados` cotton, which that total already contains. The relabel
 # is the same mechanism, so nothing here changes; the gate checks the sentinel
 # rule's label resolves nowhere in every year of the rule.
+#
+# UNIT / INDICATOR SCOPE (2026-09-25, issue 688). A source can file one item's rows under two
+# territories that differ ONLY in the table they come from: Mitchell's `viet nam` 1955-1960 rice
+# and maize OUTPUT (C2, tonnes) is North plus South summed, while the same label, item and years
+# of AREA (C1, ha) are South Vietnam only. (source, source_label, item, year) cannot separate
+# them, so an item rule would trade the 12 wrong rows for 12 right ones. The optional `unit` and
+# `indicator` columns narrow a rule to rows whose layer-B `unit` / `indicator` equal the value
+# EXACTLY; BLANK MEANS ANY, so every rule written before the columns existed selects the same
+# rows it always did. `unit` is the preferred scope (a measure, stable across layer-B rebuilds);
+# `indicator` is the source table id (`page_12_table_1`) for the case where one unit carries two
+# territories, and is only as stable as the extraction that names it.
 LABEL_ITEM_UNROUTED = "UNROUTED"
+LABEL_ITEM_SCOPE_COLUMNS = ("unit", "indicator")
 LABEL_ITEM_CORRECTION_COLUMNS = (
-    "source", "source_label", "item", "year_start", "year_end",
+    "source", "source_label", "item", "year_start", "year_end", *LABEL_ITEM_SCOPE_COLUMNS,
     "correct_label", "polity_code", "observed_rows", "issue", "evidence",
 )
 
@@ -188,8 +200,28 @@ def load_label_item_corrections(path):
                                  f"got {r.get('year_start')!r}-{r.get('year_end')!r}")
             if r["source_label"] == r["correct_label"]:
                 raise ValueError(f"{path}:{i}: correction is a no-op ({r['source_label']!r})")
-            rules.append({**r, "y0": y0, "y1": y1})
+            scope = {}
+            for col in LABEL_ITEM_SCOPE_COLUMNS:
+                v = r.get(col) or ""
+                if v != v.strip():
+                    # Compared exactly against layer B's column, so a stray space would select
+                    # nothing -- and a rule selecting nothing leaves its rows on the wrong territory.
+                    raise ValueError(f"{path}:{i}: `{col}` {v!r} has surrounding whitespace")
+                scope[col] = v
+            rules.append({**r, **scope, "y0": y0, "y1": y1})
     return rules
+
+
+def label_item_rule_scope(ru):
+    """{column: value} of the scope columns this rule sets (blank = any, so omitted)."""
+    return {c: ru[c] for c in LABEL_ITEM_SCOPE_COLUMNS if ru.get(c)}
+
+
+def label_item_scopes_disjoint(a, b):
+    """True when no row can satisfy both rules' unit/indicator scopes: some column is set on
+    BOTH to different values. A column blank on either side constrains nothing, so a scoped
+    rule and an unscoped one on the same key and years still overlap."""
+    return any(a.get(c) and b.get(c) and a[c] != b[c] for c in LABEL_ITEM_SCOPE_COLUMNS)
 
 
 def _period_bounds(period):
@@ -213,14 +245,29 @@ def label_item_rule_covers(ru, year, period=None):
         and alias_covers(ru["y0"], ru["y1"], b[1])
 
 
-def label_item_correction(rules, source, label, item, year, period=None):
+def label_item_correction(rules, source, label, item, year, period=None, unit=None,
+                          indicator=None):
     """The rule relabelling this row, or None. At most one may match (the gate
-    enforces no overlap); if two ever do, raise rather than let file order pick."""
+    enforces no overlap); if two ever do, raise rather than let file order pick.
+
+    `unit` / `indicator` are the row's own values. A rule scoped on one of them is decided by
+    it, so a caller that does not pass it for a key such a rule covers gets a ValueError rather
+    than a silent miss, which would leave the row on the territory the rule moves it off."""
     if (year is None or pd.isna(year)) and _period_bounds(period) is None:
         return None
-    hit = [ru for ru in rules
-           if ru["source"] == source and ru["source_label"] == label and ru["item"] == item
-           and label_item_rule_covers(ru, year, period)]
+    row_scope = {"unit": unit, "indicator": indicator}
+    hit = []
+    for ru in rules:
+        if not (ru["source"] == source and ru["source_label"] == label and ru["item"] == item
+                and label_item_rule_covers(ru, year, period)):
+            continue
+        scope = label_item_rule_scope(ru)
+        missing = [c for c in scope if row_scope[c] is None]
+        if missing:
+            raise ValueError(f"label/item correction for {(source, label, item)} is scoped on "
+                             f"{missing}; pass the row's value to decide it")
+        if all(row_scope[c] == v for c, v in scope.items()):
+            hit.append(ru)
     if len(hit) > 1:
         raise ValueError(f"overlapping label/item corrections for {(source, label, item, year)}")
     return hit[0] if hit else None
@@ -246,6 +293,13 @@ def apply_label_item_corrections(df, rules, label_col="country", iso_col="iso3c"
     for k, ru in enumerate(rules):
         key = ((out["source"] == ru["source"]) & (orig == ru["source_label"])
                & (out["item"] == ru["item"]))
+        # Unit / indicator scope (blank = any). A frame without the column cannot decide a
+        # scoped rule, so it is refused rather than read as "matches every row".
+        for col, val in label_item_rule_scope(ru).items():
+            if col not in out.columns:
+                raise ValueError(f"label/item correction rule {k} is scoped on `{col}`, which "
+                                 "the frame does not carry")
+            key &= out[col] == val
         m = pd.Series(False, index=out.index)
         if key.any():
             m.loc[key] = [label_item_rule_covers(ru, y, p)

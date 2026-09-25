@@ -13,6 +13,12 @@ matching (01_match_and_findings.py, via matchlib.apply_label_item_corrections), 
 machinery routes them. `polity_code` records where that lands, for a consumer that does not run
 this repository's matcher.
 
+UNIT / INDICATOR SCOPE (2026-09-25, issue 688). Two optional columns, `unit` and `indicator`,
+narrow a rule to rows whose layer-B `unit` / `indicator` equal the value exactly; BLANK MEANS ANY,
+so a rule without them selects what it always did. They exist because some sources file one
+item's rows under two territories that only the TABLE separates: Mitchell's `viet nam` 1955-1960
+rice and maize output (tonnes) is North plus South, the same label's area (ha) South only.
+
 WHAT THIS GATE CHECKS, and which arms run where.
 
   Everywhere (CI included -- none of it needs layer B):
@@ -22,7 +28,11 @@ WHAT THIS GATE CHECKS, and which arms run where.
     B  no overlap: two rules on one (source, source_label, item) whose years intersect would
        be decided by file order, and a rule whose `correct_label` is another overlapping
        rule's `source_label` would mean different things to a consumer applying them in
-       sequence than to the matcher, which never chains. Both are refused.
+       sequence than to the matcher, which never chains. Both are refused. Two rules whose
+       unit/indicator scopes are DISJOINT (a column set on both, to different values) select
+       no common row and do not overlap; a scoped and an unscoped rule on one key still do.
+       A scope value must be a known layer-B unit (SCOPE_UNITS below), so a typo that would
+       select nothing fails here, in CI, and not only where layer B is present.
     C' unrouting: a rule whose `polity_code` is the sentinel `UNROUTED`
        (matchlib.LABEL_ITEM_UNROUTED, added 2026-09-24) takes its rows OFF the panel -- for a
        row that is the wrong territory with no right one to land on (iia `jamaica` cotton
@@ -35,7 +45,9 @@ WHAT THIS GATE CHECKS, and which arms run where.
        hide whatever changed underneath it).
     D  ceiling: the number of rules and the rows they cover are pinned, bidirectionally. A
        deleted rule silently puts its rows back on the wrong territory, and nothing else in
-       the repository would count that.
+       the repository would count that. So is the number of SCOPED rules: blanking a scope
+       leaves every count above unchanged in CI while widening the rule onto the rows the scope
+       exists to leave alone (Vietnam's South-only area onto the North+South aggregate).
 
   Where layer B is present (a maintainer's machine; SKIPped by name in CI):
     E  scope: each rule selects exactly `observed_rows` non-aggregate rows, so a rebuild of
@@ -81,8 +93,27 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # 49/785 -> 55/838 on 2026-09-25 (cross-source routing audit): iia `india` sesame, groundnuts, eggs, cotton
 # lint 1934-1945 and cotton seed 1937-1945 are French India's (5 rules, 51 rows, issue 372), and fao1952
 # `USSR` oats 1934-1938 closes on post-war boundaries as rye does (1 rule, 2 rows, issue 681).
-BASELINE_RULES = 55
-BASELINE_ROWS = 838
+# 55/838 -> 59/892 on 2026-09-25 (issue 688, the unit scope): mitchell `viet nam` rice and maize OUTPUT
+# 1955-1960 (tonnes, 12 rows -> F237-1954-1975; C2 prints North and South apart, layer B holds the sum) and
+# mitchell `syrian arab republic` wheat and barley OUTPUT 1920-1940 (tonnes, 42 rows -> SYL-1920-1944; C2
+# note 17 'Including Lebanon to 1940'). All four are scoped `unit=tonnes`: the same keys' area rows stay.
+BASELINE_RULES = 59
+BASELINE_ROWS = 892
+BASELINE_SCOPED_RULES = 4
+
+# Units a scope may name, per source: layer B's own `unit` vocabulary, measured 2026-09-25 over
+# consolidated_layer_b.parquet (every non-null value of the column, by source). A scope outside it
+# selects nothing, and a rule that selects nothing leaves its rows on the wrong territory, so it is
+# refused here where CI can see it. Arm E re-measures the vocabulary where layer B is present, so a
+# rebuild that adds or renames a unit fails there rather than leaving this list quietly stale.
+SCOPE_UNITS = {
+    "fao1952": {"1000 tonnes", "1000 hectares", "1000 heads", "kilograms", "number", "tonnes",
+                "hectoliters", "1000000 hectares", "1000 people"},
+    "iia": {"ha", "tonnes"},
+    "juan": {"tonnes", "ha", "heads"},
+    "mitchell": {"ha", "heads", "tonnes", "tons"},
+    "sa_colonial": {"Bushels", "Tons", "Gallons"},
+}
 
 
 def main() -> int:
@@ -106,6 +137,11 @@ def main() -> int:
             if not (r.get(col) or "").strip():
                 problems.append(f"{where}: empty `{col}` -- a rule is a judgement the alias "
                                 "table could not record, so the reasoning must travel with it")
+        unit = r.get("unit") or ""
+        if unit and unit not in SCOPE_UNITS.get(r["source"], set()):
+            problems.append(f"{where}: unit scope {unit!r} is not a layer-B unit of "
+                            f"{r['source']} ({sorted(SCOPE_UNITS.get(r['source'], set()))}) -- the "
+                            "rule would select no row")
 
     # --- B: no overlap, no chains ---------------------------------------------------------
     def intersects(a, b):
@@ -115,6 +151,8 @@ def main() -> int:
         for b in rules[i + 1:]:
             if a["source"] != b["source"] or a["item"] != b["item"] or not intersects(a, b):
                 continue
+            if matchlib.label_item_scopes_disjoint(a, b):
+                continue   # e.g. tonnes vs ha: no row can satisfy both, so neither can decide it
             if a["source_label"] == b["source_label"]:
                 problems.append(
                     f"overlapping rules on {(a['source'], a['source_label'], a['item'])}: "
@@ -190,6 +228,14 @@ def main() -> int:
     if total != BASELINE_ROWS:
         problems.append(f"the rules cover {total} rows against the pinned {BASELINE_ROWS}; "
                         "update BASELINE_ROWS in the same change that moves them")
+    scoped = sum(1 for r in rules if matchlib.label_item_rule_scope(r))
+    print(f"  of which scoped on unit/indicator: {scoped} (pinned {BASELINE_SCOPED_RULES})")
+    if scoped != BASELINE_SCOPED_RULES:
+        problems.append(
+            f"{scoped} unit/indicator-scoped rules against the pinned {BASELINE_SCOPED_RULES} -- "
+            + ("a scope was blanked, so its rule now also relabels the rows the scope left alone "
+               "(the rule and row counts cannot see this in CI)" if scoped < BASELINE_SCOPED_RULES
+               else "raise BASELINE_SCOPED_RULES deliberately, with the scope's reason in `evidence`"))
 
     # --- E/F: against layer B and the matcher's output, where present ----------------------
     import extdata
@@ -199,6 +245,14 @@ def main() -> int:
     else:
         import pandas as pd
         lb = extdata.load_layer_b()
+        # Vocabulary over EVERY row, aggregates included (fao1952's `1000000 hectares` is on
+        # aggregate rows only), since that is the whole set a scope could ever be compared with.
+        for src in sorted({r["source"] for r in rules}):
+            got = set(lb.loc[lb["source"] == src, "unit"].dropna())
+            if got != SCOPE_UNITS.get(src, set()):
+                problems.append(
+                    f"layer B's `unit` vocabulary for {src} is {sorted(got)}, SCOPE_UNITS pins "
+                    f"{sorted(SCOPE_UNITS.get(src, set()))} -- re-measure it")
         lb = lb[~lb["is_aggregate"]]
         try:
             _, hit, per_rule = matchlib.apply_label_item_corrections(lb, rules)
@@ -239,6 +293,8 @@ def main() -> int:
                 for r in rules:
                     sel = m[(m["source"] == r["source"]) & (m["source_label_raw"] == r["source_label"])
                             & (m["item"] == r["item"]) & (m["country"] == r["correct_label"])]
+                    for col, val in matchlib.label_item_rule_scope(r).items():
+                        sel = sel[sel[col] == val]
                     # A boolean SERIES, not a list: an empty list would select no COLUMNS.
                     sel = sel[pd.Series([matchlib.label_item_rule_covers(r, y, pp) for y, pp in
                                          zip(pd.to_numeric(sel["year"], errors="coerce"),

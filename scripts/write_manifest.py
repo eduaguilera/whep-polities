@@ -374,12 +374,19 @@ if os.path.exists(LABEL_ITEM_CORRECTIONS):
         "sha256": hashlib.sha256(raw).hexdigest(),
         "rules": len(lic_rows),
         "observed_rows": sum(int(r["observed_rows"]) for r in lic_rows),
+        # Rules carrying a unit/indicator scope (2026-09-25, issue 688). A consumer that reads
+        # an older table shape and ignores the scope columns would apply these to every unit.
+        "scoped_rules": sum(1 for r in lic_rows
+                            if (r.get("unit") or "").strip() or (r.get("indicator") or "").strip()),
         "why": (
             "Rows a source files under ANOTHER territory's label for one item. Before resolving "
             "a row's label with label_alias_map, replace it with `correct_label` when source, "
             "source_label and item match exactly and the row's year lies in "
             "[year_start, year_end] (inclusive; a period-average row with no year is corrected "
-            "only when BOTH ends of its period lie in that range). `polity_code` is where the "
+            "only when BOTH ends of its period lie in that range), AND, where the rule's `unit` "
+            "or `indicator` is non-blank, the row's own unit / indicator equals it exactly (blank "
+            "= any unit / indicator; a consumer that cannot supply the row's unit must not apply "
+            "a unit-scoped rule). `polity_code` is where the "
             "corrected label then resolves, possibly as a `back_cast` before the polity begins. "
             "`polity_code` = `UNROUTED` means the rows belong to NO polity (a wrong territory with "
             "no right one to land on): drop them rather than resolving `correct_label`. "

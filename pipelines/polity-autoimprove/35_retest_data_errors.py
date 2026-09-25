@@ -3253,23 +3253,58 @@ def check_vnm_1955_1960_output_north_plus_south(ctx):
     The area table (C1, `page_49_table_1`) is footnoted 'South Vietnam only from 1954 to 1974'. The output table
     (C2, `page_12_table_1`) is not, and the two cannot be one territory: rice 1959 is 10,285,000 t over
     2,400,000 ha, i.e. 4.3 t/ha when South Vietnam yielded about 2; maize 1956 is 271,000 t over 28,000 ha,
-    9.7 t/ha. All 12 output rows ride the blank-source `viet nam` 1955-1974 alias to RVN-1954-1975. They
-    belong on F237-1954-1975, but an item-scoped correction cannot move them: the South-only AREA rows share
-    source, label, item and year, and only the unit separates them (issue 688)."""
+    9.7 t/ha. The 12 output rows rode the blank-source `viet nam` 1955-1974 alias to RVN-1954-1975. They
+    belong on F237-1954-1975, and an item-scoped correction could not move them: the South-only AREA rows share
+    source, label, item and year, and only the unit separates them (issue 688).
+
+    FIXED 2026-09-25: the correction table's optional `unit` scope. Two `unit=tonnes` rules relabel the 12
+    output rows to F237-1954-1975; the zeros pin that none is left on RVN, and the area rows and the same
+    table's South-only cassava / sweet-potato output (North column '...') are pinned where they stay."""
     g = _mit_rows(ctx, "viet nam")
     if g is None:
         return None
     rt, ra = _cell(g, "rice, paddy", "tonnes", 1959), _cell(g, "rice, paddy", "ha", 1959)
     mt, ma = _cell(g, "maize", "tonnes", 1956), _cell(g, "maize", "ha", 1956)
-    return ([("output rows 1955-60 on RVN", _on(g, "RVN-1954-1975", 1955, 1960, ["rice, paddy", "maize"],
-                                                 "tonnes"), 12),
-             ("  area rows, same years, RVN", _on(g, "RVN-1954-1975", 1955, 1960, ["rice, paddy", "maize"],
-                                                   "ha"), 12),
+    rm = ["rice, paddy", "maize"]
+    return ([("output rows 1955-60 on F237", _on(g, "F237-1954-1975", 1955, 1960, rm, "tonnes"), 12),
+             ("  output rows left on RVN", _on(g, "RVN-1954-1975", 1955, 1960, rm, "tonnes"), 0),
+             ("  area rows, same years, RVN", _on(g, "RVN-1954-1975", 1955, 1960, rm, "ha"), 12),
+             ("  area rows on F237", _on(g, "F237-1954-1975", 1955, 1960, rm, "ha"), 0),
+             ("cassava/sw pots output 1958-60 stay on RVN",
+              _on(g, "RVN-1954-1975", 1958, 1960, ["cassava, fresh", "sweet potatoes"], "tonnes"), 6),
              ("rice 1959 t", rt, 10285000.0), ("rice 1959 ha", ra, 2400000.0),
              ("  t/ha x10", int(round(10 * rt / ra)) if rt and ra else None, 43),
              ("maize 1956 t", mt, 271000.0), ("maize 1956 ha", ma, 28000.0),
              ("  t/ha x10", int(round(10 * mt / ma)) if mt and ma else None, 97)],
-            "summed-territory output beside South-only area; the fix needs a unit-scoped correction")
+            "summed-territory output now on F237-1954-1975, South-only area on RVN (issue 688, fixed)")
+
+
+def check_syr_wheat_barley_output_includes_lebanon(ctx):
+    """Mitchell's `syrian arab republic` wheat and barley OUTPUT 1920-1940 includes Lebanon; the area does not say so.
+
+    C2 heads the Syria column `Syria17`, note 17 'Including Lebanon to 1940.' The output rows
+    (`page_42_table_1 (2)`, tonnes) now route to SYL-1920-1944 through two `unit=tonnes` corrections; the
+    C1 area rows (`page_31_table_1`, ha, no such note) share source, label, item and year and stay on
+    SYR-1922-1946. The control is Mitchell's own `lebanon` label: no wheat or barley output at all, and its
+    wheat area begins in 1941, the year after the note stops applying."""
+    g = _mit_rows(ctx, "syrian arab republic")
+    if g is None:
+        return None
+    wb = ["wheat", "barley"]
+    m = ctx["matched"]
+    leb = m[(m["source"] == "mitchell") & (m["source_label_raw"] == "lebanon") & m["item"].isin(wb)]
+    return ([("output rows 1920-40 on SYL", _on(g, "SYL-1920-1944", 1920, 1940, wb, "tonnes"), 42),
+             ("  output left on SYR-1920-1922", _on(g, "SYR-1920-1922", 1920, 1940, wb, "tonnes"), 0),
+             ("  output left on SYR-1922-1946", _on(g, "SYR-1922-1946", 1920, 1940, wb, "tonnes"), 0),
+             ("area rows 1922-38 stay on SYR-1922-1946", _on(g, "SYR-1922-1946", 1922, 1938, wb, "ha"), 34),
+             ("  area rows on SYL", _on(g, "SYL-1920-1944", 1920, 1944, wb, "ha"), 0),
+             ("output 1941 stays on SYR-1922-1946", _on(g, "SYR-1922-1946", 1941, 1941, wb, "tonnes"), 2),
+             ("wheat 1920 t", _cell(g, "wheat", "tonnes", 1920), 249000.0),
+             ("barley 1940 t", _cell(g, "barley", "tonnes", 1940), 276000.0),
+             ("mitchell `lebanon` wheat/barley output rows", int((leb["unit"] == "tonnes").sum()), 0),
+             ("  first `lebanon` wheat area year", int(leb.loc[leb["unit"] == "ha", "year"].min())
+              if (leb["unit"] == "ha").any() else None, 1941)],
+            "Syria+Lebanon output now on SYL-1920-1944, Syria area on SYR (issue 688, fixed)")
 
 
 def check_vnm_1948_1953_south_only(ctx):
@@ -3541,6 +3576,7 @@ def check_germany_oats_area_1949(ctx):
 CHECKS = {
     "mmr-1885-1889-rice-area-is-lower-burma": check_mmr_1885_1889_lower_burma,
     "vnm-1955-1960-rice-maize-output-is-north-plus-south": check_vnm_1955_1960_output_north_plus_south,
+    "syr-1920-1940-wheat-barley-output-includes-lebanon": check_syr_wheat_barley_output_includes_lebanon,
     "vnm-1948-1953-groundnuts-rubber-south-only": check_vnm_1948_1953_south_only,
     "kor-1945-1948-south-only-on-peninsula-polity": check_kor_1945_1948_south_only,
     "kor-1944-footnote-marker-read-as-18000-ha": check_kor_1944_marker_18000,
