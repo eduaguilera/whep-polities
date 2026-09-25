@@ -80,7 +80,7 @@ REGRESSION_PINS = {
     # km2 and keeps Guangzhouwan. The new figure being LARGER despite dropping territory is the
     # vintage moving 1900 -> 1920, into Cliopatria's stable 1908-1939 plateau.
     "FID-1887-1954": 755_602.0,
-    "FRA-1800-1871": 532_627.0,
+    "FRA-1800-1860": 532_627.0,
     "FRA-1800-1919": 532_627.0,
     "GBR-1800-1921": 312_224.0,
     "IND-1800-1886": 4_220_004.0,

@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "e6165ca285fc80099c03ee02577dee3337277af83ec0b467e5c9269c951c03ce",
+ "identity_sha256": "36a45d07abe7b7ddeb4b0fab7327c3a87a89ad8fe476c92f7de111f67bbc5eb8",
  "counts": {
-  "total": 1267,
-  "live": 1223,
+  "total": 1268,
+  "live": 1224,
   "dead": 44
  },
  "dead_status": [
@@ -172,8 +172,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "8574178e5515146aa15a2d1fbbbc4a2b542f1f8479a59b6a01e476027d830ea1",
-  "aliases": 2687,
+  "sha256": "d46e1864d0a8441fe1335c51e1453a65e5dae19fe712b7362a4c5339f18e548e",
+  "aliases": 2689,
   "labels": 1430,
   "sources": [
    "crops-manure-n",
@@ -1293,7 +1293,8 @@
   "FRA-13-1790-2025",
   "FRA-14-1800-2025",
   "FRA-18-1800-2025",
-  "FRA-1800-1871",
+  "FRA-1800-1860",
+  "FRA-1860-1871",
   "FRA-1871-1919",
   "FRA-19-1800-2025",
   "FRA-1919-2025",

@@ -14,17 +14,17 @@ double the real polity total.)
 
 | Metric | Value |
 |---|---|
-| Polities in the database | 1267 |
-| Polity pages | 1267 |
+| Polities in the database | 1268 |
+| Polity pages | 1268 |
 | Sources ingested | 34 |
-| `status: draft` | 1164 |
+| `status: draft` | 1165 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 21 / 23 |
 | Pages with no source citation | 633 |
-| Pages citing biger-1995 | 413 |
-| Open questions (`### oq-`) | 2005 |
+| Pages citing biger-1995 | 414 |
+| Open questions (`### oq-`) | 2006 |
 
-**By continent:** Europe 374 · Africa 283 · Asia 224 · North America 163 · South America 160 · Oceania 60 · World 2
+**By continent:** Europe 375 · Africa 283 · Asia 224 · North America 163 · South America 160 · Oceania 60 · World 2
 
 Regenerate with `python3 scripts/update_wiki_index.py`. The authoritative
 catalog is `data/final/polities_database.csv`; the per-continent notes below
@@ -58,9 +58,15 @@ are a **curated selection**, not a complete listing.
   Vichy 1942-44.
 - [France (to 1919)](polities/fra-1800-1919.md) —
   `FRA-1800-1919`, draft, 5 open questions. 120-year row
-  covering Napoleonic France through Versailles. No mid-row
-  splits at 1860 (Nice/Savoy) or 1871 (Alsace-Lorraine) — both
-  flagged as candidate split points.
+  covering Napoleonic France through Versailles. Since split at
+  1871 (Alsace-Lorraine) and 1860 (Nice/Savoy) into the two
+  rows below and FRA-1871-1919.
+- [France (before Savoy and Nice, to 1860)](polities/fra-1800-1860.md) —
+  `FRA-1800-1860`, draft. Post-1815 France to the
+  Treaty of Turin.
+- [France (with Savoy, Nice and Alsace-Lorraine, 1860-1871)](polities/fra-1860-1871.md) —
+  `FRA-1860-1871`, draft. Treaty of Turin to the Treaty of Frankfurt;
+  +13,631 km² at 1860.
 - [Belgium](polities/bel-1831-2025.md) —
   `BEL-1831-2025`, draft, 4 open questions. 195-year row from
   Belgian Revolution (1830). Successor of NLD-1800-1830.

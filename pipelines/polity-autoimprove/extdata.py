@@ -715,13 +715,13 @@ def _selftest() -> int:
     print("pass: the same comparison succeeds case-insensitively")
 
     df = pd.DataFrame({"polity_code": ["fra", "deu"], "value": [1, 2]})
-    out = rename_layer_b_misnamed(df, polity_codes={"FRA-1800-1871"}, where="selftest")
+    out = rename_layer_b_misnamed(df, polity_codes={"FRA-1800-1860"}, where="selftest")
     assert "polity_code" not in out.columns and list(out["iso3_lower"]) == ["fra", "deu"]
     print("pass: layer B's ISO-holding `polity_code` is renamed to `iso3_lower`")
 
-    df = pd.DataFrame({"polity_code": ["FRA-1800-1871"], "value": [1]})
+    df = pd.DataFrame({"polity_code": ["FRA-1800-1860"], "value": [1]})
     try:
-        rename_layer_b_misnamed(df, polity_codes={"FRA-1800-1871"}, where="selftest")
+        rename_layer_b_misnamed(df, polity_codes={"FRA-1800-1860"}, where="selftest")
         print("FAIL: renamed a column that had started holding real polity codes"); ok = False
     except ExternalDataError as e:
         assert "REAL polity codes" in str(e)

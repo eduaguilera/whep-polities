@@ -38,7 +38,8 @@ DEAD_STATUS = ("retired", "superseded")
 BASELINE = frozenset({
     # PER pairs removed 2026-08-05: PER-1825-1909 is superseded (issue 49).
 
-    ("220", "FRA-1800-1871", "FRIN-1816-1954"),
+    ("220", "FRA-1800-1860", "FRIN-1816-1954"),
+    ("220", "FRIN-1816-1954", "FRA-1860-1871"),
     ("220", "FRIN-1816-1954", "FRA-1871-1919"),
     ("220", "FRIN-1816-1954", "FRA-1919-2025"),
     ("235", "PRT-1800-2025", "PTIND-1816-1961"),

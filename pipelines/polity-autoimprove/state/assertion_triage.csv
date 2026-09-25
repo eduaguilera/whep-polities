@@ -290,106 +290,106 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 289,viet nam|iia|1929-1944,viet nam,iia,VNM-1887-1954,pending,applied_alias,273,1929-1944,16,1887-1954,national,draft,assigned,False,False,False,False,high,False,precedent
 290,cuba|mitchell|1850-1960,cuba,mitchell,CUB-1800-2025,pending,iso,272,1850-1960,109,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
 291,madagascar|iia|1911-1945,madagascar,iia,MDG-1882-2025,pending,iso,270,1911-1945,26,1882-2025,national,draft,assigned,False,False,False,False,,True,precedent
-292,france|juan|1850-1870,france,juan,FRA-1800-1871,pending,applied_alias,265,1850-1870,21,1800-1871,national,draft,assigned,False,False,False,False,high,False,precedent
-293,french morocco|fao1952|1937-1951,French Morocco,fao1952,MAR-1911-1958,pending,applied_alias,261,1937-1951,6,1911-1958,national,draft,assigned,False,False,False,False,high,False,precedent
-294,israel|iia|1922-1945,israel,iia,PAL-1920-1948,pending,applied_alias,259,1922-1945,21,1920-1948,national,draft,assigned,False,False,False,False,medium,False,precedent
-295,new zealand|iia|1909-1945,new zealand,iia,NZL-1840-2025,pending,iso,258,1909-1945,32,1840-2025,national,draft,assigned,False,False,False,False,,True,precedent
-296,algeria|fao1952|1937-1951,Algeria,fao1952,DZA-1919-1962,pending,applied_alias,257,1937-1951,6,1919-1962,national,draft,assigned,False,False,False,False,high,False,precedent
-297,colombia|mitchell|1922-1960,colombia,mitchell,COL-1922-2025,pending,iso,247,1922-1960,39,1922-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
-298,united states of america|juan|1959-1960,united states of america,juan,USA-1959-2025,pending,applied_alias,247,1959-1960,2,1959-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-299,sri lanka|iia|1909-1945,sri lanka,iia,LKA-1800-2025,pending,iso,242,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-300,algeria|mitchell|1886-1901,algeria,mitchell,DZA-1886-1902,pending,applied_alias,241,1886-1901,16,1886-1902,national,draft,assigned,False,False,False,False,high,False,precedent
-301,czech republic|iia|1938-1944,czech republic,iia,F51-1938-1945,pending,applied_alias,239,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,high,False,precedent
-302,algeria|mitchell|1860-1885,algeria,mitchell,DZA-1831-1886,pending,applied_alias,237,1860-1885,23,1831-1886,national,draft,assigned,False,False,False,False,high,False,precedent
-303,jamaica|iia|1909-1945,jamaica,iia,JAM-1800-2025,pending,iso,237,1909-1945,32,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-304,belgium|iia|1909-1945,belgium,iia,BEL-1831-2025,pending,applied_alias,230,1909-1945,34,1831-2025,national,draft,assigned,False,False,False,False,,True,precedent
-305,dr congo|iia|1913-1945,dr congo,iia,COD-1910-1960,pending,iso,220,1913-1945,27,1910-1960,national,draft,assigned,False,False,False,False,,True,precedent
-306,austria|iia|1919-1945,austria,iia,AUT-1919-2025,pending,iso,219,1919-1945,24,1919-2025,national,draft,assigned,False,False,False,False,,True,precedent
-307,switzerland|iia|1909-1945,switzerland,iia,CHE-1800-2025,pending,iso,218,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-308,guatemala|mitchell|1884-1960,guatemala,mitchell,GTM-1821-2025,pending,iso,210,1884-1960,71,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
-309,dominican republic|mitchell|1901-1960,dominican republic,mitchell,DOM-1800-2025,pending,iso,207,1901-1960,60,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-310,romania|iia|1920-1939,romania,iia,ROU-1920-1940,pending,applied_alias,206,1920-1939,16,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
-311,netherlands|iia|1909-1945,netherlands,iia,NLD-1830-2025,pending,iso,203,1909-1945,34,1830-2025,national,draft,assigned,False,False,False,False,,True,precedent
-312,western australia|sa_colonial|1854-1898,Western Australia,sa_colonial,AUWA-1829-1901,pending,applied_alias,195,1854-1898,45,1829-1900,colonial,draft,assigned,False,False,False,False,high,False,precedent
-313,el salvador|mitchell|1894-1960,el salvador,mitchell,SLV-1821-2025,pending,iso,192,1894-1960,66,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
-314,bulgaria|juan|1913-1917,bulgaria,juan,BGR-1913-1918,pending,applied_alias,189,1913-1917,5,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
-315,china mainland|iia|1932-1944,"china, mainland",iia,CHN-1932-1945,pending,applied_alias,189,1932-1944,13,1932-1945,national,draft,assigned,False,False,False,False,high,False,precedent
-316,mexico|iia|1910-1945,mexico,iia,MEX-1848-2025,pending,iso,180,1910-1945,30,1848-2025,national,draft,assigned,False,False,False,False,,True,precedent
-317,puerto rico|mitchell|1850-1960,puerto rico,mitchell,PRI-1800-2025,pending,iso,173,1850-1960,109,1800-2025,national,draft,proxy,False,False,False,False,,True,precedent
-318,china mainland|mitchell|1932-1944,"china, mainland",mitchell,CHN-1932-1945,pending,applied_alias,172,1932-1944,13,1932-1945,national,draft,assigned,False,False,False,False,high,False,precedent
-319,cape of good hope|sa_colonial|1854-1894,Cape of Good Hope,sa_colonial,CAP-1800-1895,pending,applied_alias,171,1854-1894,41,1800-1895,national,draft,polygon_vintage_drift,False,False,False,False,high,False,precedent
-320,guatemala|iia|1910-1945,guatemala,iia,GTM-1821-2025,pending,iso,169,1910-1945,28,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
-321,thailand|iia|1911-1944,thailand,iia,THA-1909-2025,pending,iso,167,1911-1944,30,1909-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
-322,sudan|mitchell|1934-1955,sudan,mitchell,SUD-1934-1956,pending,applied_alias,155,1934-1955,22,1934-1956,national,draft,assigned,False,False,False,False,medium,False,precedent
-323,japan|mitchell|1945-1951,japan,mitchell,JPN-1945-1952,pending,applied_alias,153,1945-1951,7,1945-1952,national,draft,assigned,False,False,False,False,high,False,precedent
-324,southern rhodesia|fao1952|1937-1951,Southern Rhodesia,fao1952,ZWE-1900-1953,pending,applied_alias,147,1937-1951,7,1900-1953,national,draft,assigned,False,False,False,False,medium,False,precedent
-325,sweden|iia|1909-1945,sweden,iia,SWE-1905-2025,pending,iso,147,1909-1945,34,1905-2025,national,draft,assigned,False,False,False,False,,True,precedent
-326,ecuador|mitchell|1942-1960,ecuador,mitchell,ECU-1942-2025,pending,iso,146,1942-1960,19,1942-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
-327,nicaragua|mitchell|1893-1960,nicaragua,mitchell,NIC-1800-2025,pending,iso,146,1893-1960,67,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-328,union of south africa|fao1952|1937-1951,Union of South Africa,fao1952,ZAF-1910-2025,pending,applied_alias,145,1937-1951,7,1910-2025,national,reviewed,assigned,True,False,False,False,medium,False,precedent
-329,tanzania|iia|1922-1945,tanzania,iia,TAN-1922-1964,pending,applied_alias,140,1922-1945,21,1922-1961,national,draft,assigned,False,False,False,False,medium,False,precedent
-330,malta|iia|1909-1945,malta,iia,MLT-1800-2025,pending,iso,138,1909-1945,34,1800-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+292,french morocco|fao1952|1937-1951,French Morocco,fao1952,MAR-1911-1958,pending,applied_alias,261,1937-1951,6,1911-1958,national,draft,assigned,False,False,False,False,high,False,precedent
+293,israel|iia|1922-1945,israel,iia,PAL-1920-1948,pending,applied_alias,259,1922-1945,21,1920-1948,national,draft,assigned,False,False,False,False,medium,False,precedent
+294,new zealand|iia|1909-1945,new zealand,iia,NZL-1840-2025,pending,iso,258,1909-1945,32,1840-2025,national,draft,assigned,False,False,False,False,,True,precedent
+295,algeria|fao1952|1937-1951,Algeria,fao1952,DZA-1919-1962,pending,applied_alias,257,1937-1951,6,1919-1962,national,draft,assigned,False,False,False,False,high,False,precedent
+296,colombia|mitchell|1922-1960,colombia,mitchell,COL-1922-2025,pending,iso,247,1922-1960,39,1922-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+297,united states of america|juan|1959-1960,united states of america,juan,USA-1959-2025,pending,applied_alias,247,1959-1960,2,1959-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+298,sri lanka|iia|1909-1945,sri lanka,iia,LKA-1800-2025,pending,iso,242,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+299,algeria|mitchell|1886-1901,algeria,mitchell,DZA-1886-1902,pending,applied_alias,241,1886-1901,16,1886-1902,national,draft,assigned,False,False,False,False,high,False,precedent
+300,czech republic|iia|1938-1944,czech republic,iia,F51-1938-1945,pending,applied_alias,239,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,high,False,precedent
+301,algeria|mitchell|1860-1885,algeria,mitchell,DZA-1831-1886,pending,applied_alias,237,1860-1885,23,1831-1886,national,draft,assigned,False,False,False,False,high,False,precedent
+302,jamaica|iia|1909-1945,jamaica,iia,JAM-1800-2025,pending,iso,237,1909-1945,32,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+303,belgium|iia|1909-1945,belgium,iia,BEL-1831-2025,pending,applied_alias,230,1909-1945,34,1831-2025,national,draft,assigned,False,False,False,False,,True,precedent
+304,dr congo|iia|1913-1945,dr congo,iia,COD-1910-1960,pending,iso,220,1913-1945,27,1910-1960,national,draft,assigned,False,False,False,False,,True,precedent
+305,austria|iia|1919-1945,austria,iia,AUT-1919-2025,pending,iso,219,1919-1945,24,1919-2025,national,draft,assigned,False,False,False,False,,True,precedent
+306,switzerland|iia|1909-1945,switzerland,iia,CHE-1800-2025,pending,iso,218,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+307,guatemala|mitchell|1884-1960,guatemala,mitchell,GTM-1821-2025,pending,iso,210,1884-1960,71,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
+308,dominican republic|mitchell|1901-1960,dominican republic,mitchell,DOM-1800-2025,pending,iso,207,1901-1960,60,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+309,romania|iia|1920-1939,romania,iia,ROU-1920-1940,pending,applied_alias,206,1920-1939,16,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
+310,netherlands|iia|1909-1945,netherlands,iia,NLD-1830-2025,pending,iso,203,1909-1945,34,1830-2025,national,draft,assigned,False,False,False,False,,True,precedent
+311,western australia|sa_colonial|1854-1898,Western Australia,sa_colonial,AUWA-1829-1901,pending,applied_alias,195,1854-1898,45,1829-1900,colonial,draft,assigned,False,False,False,False,high,False,precedent
+312,el salvador|mitchell|1894-1960,el salvador,mitchell,SLV-1821-2025,pending,iso,192,1894-1960,66,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
+313,bulgaria|juan|1913-1917,bulgaria,juan,BGR-1913-1918,pending,applied_alias,189,1913-1917,5,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
+314,china mainland|iia|1932-1944,"china, mainland",iia,CHN-1932-1945,pending,applied_alias,189,1932-1944,13,1932-1945,national,draft,assigned,False,False,False,False,high,False,precedent
+315,mexico|iia|1910-1945,mexico,iia,MEX-1848-2025,pending,iso,180,1910-1945,30,1848-2025,national,draft,assigned,False,False,False,False,,True,precedent
+316,puerto rico|mitchell|1850-1960,puerto rico,mitchell,PRI-1800-2025,pending,iso,173,1850-1960,109,1800-2025,national,draft,proxy,False,False,False,False,,True,precedent
+317,china mainland|mitchell|1932-1944,"china, mainland",mitchell,CHN-1932-1945,pending,applied_alias,172,1932-1944,13,1932-1945,national,draft,assigned,False,False,False,False,high,False,precedent
+318,cape of good hope|sa_colonial|1854-1894,Cape of Good Hope,sa_colonial,CAP-1800-1895,pending,applied_alias,171,1854-1894,41,1800-1895,national,draft,polygon_vintage_drift,False,False,False,False,high,False,precedent
+319,guatemala|iia|1910-1945,guatemala,iia,GTM-1821-2025,pending,iso,169,1910-1945,28,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
+320,thailand|iia|1911-1944,thailand,iia,THA-1909-2025,pending,iso,167,1911-1944,30,1909-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+321,sudan|mitchell|1934-1955,sudan,mitchell,SUD-1934-1956,pending,applied_alias,155,1934-1955,22,1934-1956,national,draft,assigned,False,False,False,False,medium,False,precedent
+322,japan|mitchell|1945-1951,japan,mitchell,JPN-1945-1952,pending,applied_alias,153,1945-1951,7,1945-1952,national,draft,assigned,False,False,False,False,high,False,precedent
+323,southern rhodesia|fao1952|1937-1951,Southern Rhodesia,fao1952,ZWE-1900-1953,pending,applied_alias,147,1937-1951,7,1900-1953,national,draft,assigned,False,False,False,False,medium,False,precedent
+324,sweden|iia|1909-1945,sweden,iia,SWE-1905-2025,pending,iso,147,1909-1945,34,1905-2025,national,draft,assigned,False,False,False,False,,True,precedent
+325,ecuador|mitchell|1942-1960,ecuador,mitchell,ECU-1942-2025,pending,iso,146,1942-1960,19,1942-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+326,nicaragua|mitchell|1893-1960,nicaragua,mitchell,NIC-1800-2025,pending,iso,146,1893-1960,67,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+327,union of south africa|fao1952|1937-1951,Union of South Africa,fao1952,ZAF-1910-2025,pending,applied_alias,145,1937-1951,7,1910-2025,national,reviewed,assigned,True,False,False,False,medium,False,precedent
+328,tanzania|iia|1922-1945,tanzania,iia,TAN-1922-1964,pending,applied_alias,140,1922-1945,21,1922-1961,national,draft,assigned,False,False,False,False,medium,False,precedent
+329,malta|iia|1909-1945,malta,iia,MLT-1800-2025,pending,iso,138,1909-1945,34,1800-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+330,france|juan|1860-1870,france,juan,FRA-1860-1871,pending,applied_alias,136,1860-1870,11,1860-1871,national,draft,assigned,False,False,False,False,high,False,precedent
 331,portugal|iia|1910-1945,portugal,iia,PRT-1800-2025,pending,iso,135,1910-1945,32,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
 332,tanganyika|fao1952|1937-1951,Tanganyika,fao1952,TAN-1922-1964,pending,applied_alias,135,1937-1951,7,1922-1961,national,draft,assigned,False,False,False,False,medium,False,precedent
 333,uruguay|iia|1910-1945,uruguay,iia,URY-1828-2025,pending,iso,133,1910-1945,24,1828-2025,national,draft,assigned,False,False,False,False,,True,precedent
 334,israel|fao1952|1948-1951,Israel,fao1952,ISR-1948-1967,pending,applied_alias,129,1948-1951,4,1948-1967,national,draft,assigned,False,False,False,False,medium,False,precedent
-335,botswana|mitchell|1903-1960,botswana,mitchell,BEC-1885-1966,pending,applied_alias,125,1903-1960,41,1885-1966,national,draft,assigned,False,False,False,False,medium,False,precedent
-336,algeria|iia|1909-1918,algeria,iia,DZA-1902-1919,pending,applied_alias,121,1909-1918,10,1902-1919,national,draft,assigned,False,False,False,False,high,False,precedent
-337,italy|juan|1861-1865,italy,juan,ITA-1861-1866,pending,applied_alias,120,1861-1865,5,1861-1866,national,draft,assigned,False,False,False,False,high,False,precedent
-338,honduras|mitchell|1925-1960,honduras,mitchell,HND-1800-2025,pending,iso,117,1925-1960,36,1800-2025,national,draft,polygon_vintage_drift,False,False,False,False,,True,precedent
-339,germany|iia|1920-1937,germany,iia,DEU-1920-1938,pending,iso,116,1920-1937,15,1920-1938,national,draft,assigned,False,False,False,False,,True,precedent
-340,romania|juan|1913-1917,romania,juan,ROU-1913-1918,pending,applied_alias,115,1913-1917,5,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
-341,luxembourg|iia|1909-1945,luxembourg,iia,LUX-1839-2025,pending,iso,114,1909-1945,34,1839-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
-342,belgium|mitchell|1850-1960,belgium,mitchell,BEL-1831-2025,pending,iso,108,1850-1960,108,1831-2025,national,draft,assigned,False,False,False,False,,True,precedent
-343,united kingdom|iia|1921-1945,united kingdom,iia,GBR-1921-2025,pending,iso,105,1921-1945,22,1921-2025,national,draft,assigned,False,False,False,False,,True,precedent
-344,france|iia|1909-1918,france,iia,FRA-1871-1919,pending,applied_alias,104,1909-1918,10,1871-1919,national,draft,assigned,False,False,False,False,high,True,precedent
-345,france|mitchell|1871-1918,france,mitchell,FRA-1871-1919,pending,applied_alias,104,1871-1918,48,1871-1919,national,draft,assigned,False,False,False,False,high,True,precedent
-346,hawaii|fao1952|1937-1951,Hawaii,fao1952,HAWI-1898-1959,pending,applied_alias,102,1937-1951,6,1898-1959,national,draft,assigned,False,False,False,False,high,False,precedent
-347,malaysia|mitchell|1898-1945,malaysia,mitchell,GBM-1895-1946,pending,applied_alias,101,1898-1945,48,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
-348,costa rica|mitchell|1884-1960,costa rica,mitchell,CRI-1800-2025,pending,iso,98,1884-1960,53,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-349,italy|juan|1866-1869,italy,juan,ITA-1866-1870,pending,applied_alias,98,1866-1869,4,1866-1870,national,draft,assigned,False,False,False,False,high,False,precedent
-350,paraguay|mitchell|1938-1960,paraguay,mitchell,PRY-1938-2025,pending,iso,98,1938-1960,23,1938-2025,national,draft,assigned,False,False,False,False,,True,precedent
-351,france|mitchell|1919-1960,france,mitchell,FRA-1919-2025,pending,applied_alias,97,1919-1960,42,1919-2025,national,draft,assigned,False,False,False,False,high,True,precedent
-352,sudan|mitchell|1903-1933,sudan,mitchell,SUD-1899-1934,pending,applied_alias,97,1903-1933,31,1899-1934,national,draft,assigned,False,False,False,False,medium,False,precedent
-353,italy|iia|1909-1918,italy,iia,ITA-1870-1919,pending,applied_alias,95,1909-1918,10,1870-1919,national,draft,assigned,False,False,False,False,high,False,precedent
-354,viet nam|mitchell|1955-1960,viet nam,mitchell,RVN-1954-1975,pending,applied_alias,93,1955-1960,6,1954-1975,national,draft,assigned,False,False,False,False,high,False,precedent
-355,norway|iia|1909-1945,norway,iia,NOR-1800-2025,pending,iso,92,1909-1945,30,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-356,china manchuria province of|mitchell|1932-1944,"china, manchuria province of",mitchell,MAN-1932-1945,pending,applied_alias,90,1932-1944,13,1932-1945,national,draft,assigned,False,False,False,False,medium,False,precedent
-357,norway|mitchell|1870-1960,norway,mitchell,NOR-1800-2025,pending,iso,89,1870-1960,89,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-358,denmark|iia|1920-1945,denmark,iia,DNK-1920-2025,pending,iso,86,1920-1945,23,1920-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
-359,ireland|iia|1929-1945,ireland,iia,IRL-1921-2025,pending,iso,85,1929-1945,17,1921-2025,national,draft,assigned,False,False,False,False,,True,precedent
-360,cape province|mitchell|1852-1894,cape province,mitchell,CAP-1800-1895,pending,applied_alias,84,1852-1894,15,1800-1895,national,draft,polygon_vintage_drift,False,False,False,False,medium,False,precedent
-361,costa rica|iia|1909-1944,costa rica,iia,CRI-1800-2025,pending,iso,83,1909-1944,30,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-362,burundi|iia|1929-1938,burundi,iia,RWB-1922-1962,pending,applied_alias,82,1929-1938,10,1922-1962,national,draft,assigned,False,False,False,False,high,False,precedent
-363,korea|mitchell|1949-1960,korea,mitchell,KOR-1948-2025,pending,applied_alias,81,1949-1960,12,1948-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-364,nicaragua|iia|1910-1945,nicaragua,iia,NIC-1800-2025,pending,iso,76,1910-1945,25,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-365,switzerland|mitchell|1885-1960,switzerland,mitchell,CHE-1800-2025,pending,iso,75,1885-1960,75,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-366,colombia|iia|1924-1945,colombia,iia,COL-1922-2025,pending,iso,74,1924-1945,17,1922-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
-367,somalia|iia|1922-1938,somalia,iia,BSS-1884-1960,pending,applied_alias,74,1922-1938,13,1884-1960,national,draft,assigned,False,False,False,False,medium,False,precedent
-368,united kingdom|mitchell|1850-1920,united kingdom,mitchell,GBR-1800-1921,pending,iso,74,1850-1920,57,1800-1921,national,draft,assigned,False,False,False,False,,True,precedent
-369,somalia|fao1952|1939-1951,Somalia,fao1952,ITS-1908-1960,pending,applied_alias,73,1939-1951,4,1908-1960,national,draft,assigned,False,False,False,False,high,False,precedent
-370,zimbabwe|mitchell|1953-1960,zimbabwe,mitchell,SRH-1953-1964,pending,applied_alias,72,1953-1960,8,1953-1964,national,draft,assigned,False,False,False,False,high,False,precedent
-371,bulgaria|iia|1940-1945,bulgaria,iia,BGR-1940-2025,pending,applied_alias,69,1940-1945,6,1940-2025,national,reviewed,assigned,True,False,False,False,high,True,precedent
-372,suriname|mitchell|1909-1953,suriname,mitchell,SUR-1886-1954,pending,applied_alias,67,1909-1953,44,1886-1954,national,draft,assigned,False,False,False,False,high,False,precedent
-373,bulgaria|iia|1913-1917,bulgaria,iia,BGR-1913-1918,pending,applied_alias,66,1913-1917,5,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
-374,bulgaria|fao1952|1937-1939,Bulgaria,fao1952,BGR-1919-1940,pending,applied_alias,65,1937-1939,3,1919-1940,national,draft,assigned,False,False,False,False,high,False,precedent
-375,u of s africa|fao1952|1938-1951,U of S Africa,fao1952,ZAF-1910-2025,pending,applied_alias,65,1938-1951,5,1910-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
-376,romania|fao1952|1947-1951,Romania,fao1952,ROU-1947-2025,pending,applied_alias,64,1947-1951,5,1947-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
-377,united kingdom|mitchell|1921-1960,united kingdom,mitchell,GBR-1921-2025,pending,iso,64,1921-1960,40,1921-2025,national,draft,assigned,False,False,False,False,,True,precedent
-378,yugoslavia|fao1952|1937-1939,Yugoslavia,fao1952,F248-1920-1947,pending,applied_alias,64,1937-1939,3,1920-1947,national,draft,assigned,False,False,False,False,high,False,precedent
-379,anglo egypt sudan|fao1952|1938-1951,Anglo-Egypt Sudan,fao1952,SUD-1934-1956,pending,applied_alias,63,1938-1951,4,1934-1956,national,draft,assigned,False,False,False,False,high,False,precedent
-380,austria|mitchell|1851-1917,austria,mitchell,AUT-1800-1918,pending,iso,63,1851-1917,63,1800-1918,national,draft,assigned,False,False,False,False,,True,precedent
-381,germany|iia|1909-1918,germany,iia,DEU-1871-1919,pending,iso,62,1909-1918,10,1871-1919,national,draft,assigned,False,False,False,False,,True,precedent
-382,reunion|iia|1909-1945,reunion,iia,REU-1816-1946,pending,applied_alias,62,1909-1945,34,1816-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
-383,el salvador|iia|1910-1944,el salvador,iia,SLV-1821-2025,pending,iso,59,1910-1944,22,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
-384,sweden|mitchell|1905-1960,sweden,mitchell,SWE-1905-2025,pending,iso,55,1905-1960,55,1905-2025,national,draft,assigned,False,False,False,False,,True,precedent
-385,finland|iia|1919-1939,finland,iia,FIN-1917-1940,pending,iso,54,1919-1939,18,1917-1940,national,draft,assigned,False,False,False,False,,True,precedent
-386,romania|fao1952|1937-1939,Romania,fao1952,ROU-1920-1940,pending,applied_alias,54,1937-1939,3,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
-387,bulgaria|fao1952|1947-1951,Bulgaria,fao1952,BGR-1940-2025,pending,applied_alias,53,1947-1951,4,1940-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
-388,sudan|mitchell|1956-1960,sudan,mitchell,SUD-1956-2011,pending,applied_alias,53,1956-1960,5,1956-2011,national,draft,assigned,False,False,False,False,medium,False,precedent
-389,venezuela|iia|1910-1945,venezuela,iia,VEN-1830-2025,pending,iso,50,1910-1945,14,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
-390,russian federation|iia|1914-1916,russian federation,iia,F228-1914-1917,pending,applied_alias,49,1914-1916,3,1914-1917,national,draft,assigned,False,False,False,False,high,False,precedent
-391,france|mitchell|1850-1870,france,mitchell,FRA-1800-1871,pending,applied_alias,48,1850-1870,21,1800-1871,national,draft,assigned,False,False,False,False,high,False,precedent
+335,france|juan|1850-1859,france,juan,FRA-1800-1860,pending,applied_alias,129,1850-1859,10,1800-1860,national,draft,assigned,False,False,False,False,high,False,precedent
+336,botswana|mitchell|1903-1960,botswana,mitchell,BEC-1885-1966,pending,applied_alias,125,1903-1960,41,1885-1966,national,draft,assigned,False,False,False,False,medium,False,precedent
+337,algeria|iia|1909-1918,algeria,iia,DZA-1902-1919,pending,applied_alias,121,1909-1918,10,1902-1919,national,draft,assigned,False,False,False,False,high,False,precedent
+338,italy|juan|1861-1865,italy,juan,ITA-1861-1866,pending,applied_alias,120,1861-1865,5,1861-1866,national,draft,assigned,False,False,False,False,high,False,precedent
+339,honduras|mitchell|1925-1960,honduras,mitchell,HND-1800-2025,pending,iso,117,1925-1960,36,1800-2025,national,draft,polygon_vintage_drift,False,False,False,False,,True,precedent
+340,germany|iia|1920-1937,germany,iia,DEU-1920-1938,pending,iso,116,1920-1937,15,1920-1938,national,draft,assigned,False,False,False,False,,True,precedent
+341,romania|juan|1913-1917,romania,juan,ROU-1913-1918,pending,applied_alias,115,1913-1917,5,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
+342,luxembourg|iia|1909-1945,luxembourg,iia,LUX-1839-2025,pending,iso,114,1909-1945,34,1839-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+343,belgium|mitchell|1850-1960,belgium,mitchell,BEL-1831-2025,pending,iso,108,1850-1960,108,1831-2025,national,draft,assigned,False,False,False,False,,True,precedent
+344,united kingdom|iia|1921-1945,united kingdom,iia,GBR-1921-2025,pending,iso,105,1921-1945,22,1921-2025,national,draft,assigned,False,False,False,False,,True,precedent
+345,france|iia|1909-1918,france,iia,FRA-1871-1919,pending,applied_alias,104,1909-1918,10,1871-1919,national,draft,assigned,False,False,False,False,high,True,precedent
+346,france|mitchell|1871-1918,france,mitchell,FRA-1871-1919,pending,applied_alias,104,1871-1918,48,1871-1919,national,draft,assigned,False,False,False,False,high,True,precedent
+347,hawaii|fao1952|1937-1951,Hawaii,fao1952,HAWI-1898-1959,pending,applied_alias,102,1937-1951,6,1898-1959,national,draft,assigned,False,False,False,False,high,False,precedent
+348,malaysia|mitchell|1898-1945,malaysia,mitchell,GBM-1895-1946,pending,applied_alias,101,1898-1945,48,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
+349,costa rica|mitchell|1884-1960,costa rica,mitchell,CRI-1800-2025,pending,iso,98,1884-1960,53,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+350,italy|juan|1866-1869,italy,juan,ITA-1866-1870,pending,applied_alias,98,1866-1869,4,1866-1870,national,draft,assigned,False,False,False,False,high,False,precedent
+351,paraguay|mitchell|1938-1960,paraguay,mitchell,PRY-1938-2025,pending,iso,98,1938-1960,23,1938-2025,national,draft,assigned,False,False,False,False,,True,precedent
+352,france|mitchell|1919-1960,france,mitchell,FRA-1919-2025,pending,applied_alias,97,1919-1960,42,1919-2025,national,draft,assigned,False,False,False,False,high,True,precedent
+353,sudan|mitchell|1903-1933,sudan,mitchell,SUD-1899-1934,pending,applied_alias,97,1903-1933,31,1899-1934,national,draft,assigned,False,False,False,False,medium,False,precedent
+354,italy|iia|1909-1918,italy,iia,ITA-1870-1919,pending,applied_alias,95,1909-1918,10,1870-1919,national,draft,assigned,False,False,False,False,high,False,precedent
+355,viet nam|mitchell|1955-1960,viet nam,mitchell,RVN-1954-1975,pending,applied_alias,93,1955-1960,6,1954-1975,national,draft,assigned,False,False,False,False,high,False,precedent
+356,norway|iia|1909-1945,norway,iia,NOR-1800-2025,pending,iso,92,1909-1945,30,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+357,china manchuria province of|mitchell|1932-1944,"china, manchuria province of",mitchell,MAN-1932-1945,pending,applied_alias,90,1932-1944,13,1932-1945,national,draft,assigned,False,False,False,False,medium,False,precedent
+358,norway|mitchell|1870-1960,norway,mitchell,NOR-1800-2025,pending,iso,89,1870-1960,89,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+359,denmark|iia|1920-1945,denmark,iia,DNK-1920-2025,pending,iso,86,1920-1945,23,1920-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+360,ireland|iia|1929-1945,ireland,iia,IRL-1921-2025,pending,iso,85,1929-1945,17,1921-2025,national,draft,assigned,False,False,False,False,,True,precedent
+361,cape province|mitchell|1852-1894,cape province,mitchell,CAP-1800-1895,pending,applied_alias,84,1852-1894,15,1800-1895,national,draft,polygon_vintage_drift,False,False,False,False,medium,False,precedent
+362,costa rica|iia|1909-1944,costa rica,iia,CRI-1800-2025,pending,iso,83,1909-1944,30,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+363,burundi|iia|1929-1938,burundi,iia,RWB-1922-1962,pending,applied_alias,82,1929-1938,10,1922-1962,national,draft,assigned,False,False,False,False,high,False,precedent
+364,korea|mitchell|1949-1960,korea,mitchell,KOR-1948-2025,pending,applied_alias,81,1949-1960,12,1948-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+365,nicaragua|iia|1910-1945,nicaragua,iia,NIC-1800-2025,pending,iso,76,1910-1945,25,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+366,switzerland|mitchell|1885-1960,switzerland,mitchell,CHE-1800-2025,pending,iso,75,1885-1960,75,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+367,colombia|iia|1924-1945,colombia,iia,COL-1922-2025,pending,iso,74,1924-1945,17,1922-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+368,somalia|iia|1922-1938,somalia,iia,BSS-1884-1960,pending,applied_alias,74,1922-1938,13,1884-1960,national,draft,assigned,False,False,False,False,medium,False,precedent
+369,united kingdom|mitchell|1850-1920,united kingdom,mitchell,GBR-1800-1921,pending,iso,74,1850-1920,57,1800-1921,national,draft,assigned,False,False,False,False,,True,precedent
+370,somalia|fao1952|1939-1951,Somalia,fao1952,ITS-1908-1960,pending,applied_alias,73,1939-1951,4,1908-1960,national,draft,assigned,False,False,False,False,high,False,precedent
+371,zimbabwe|mitchell|1953-1960,zimbabwe,mitchell,SRH-1953-1964,pending,applied_alias,72,1953-1960,8,1953-1964,national,draft,assigned,False,False,False,False,high,False,precedent
+372,bulgaria|iia|1940-1945,bulgaria,iia,BGR-1940-2025,pending,applied_alias,69,1940-1945,6,1940-2025,national,reviewed,assigned,True,False,False,False,high,True,precedent
+373,suriname|mitchell|1909-1953,suriname,mitchell,SUR-1886-1954,pending,applied_alias,67,1909-1953,44,1886-1954,national,draft,assigned,False,False,False,False,high,False,precedent
+374,bulgaria|iia|1913-1917,bulgaria,iia,BGR-1913-1918,pending,applied_alias,66,1913-1917,5,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
+375,bulgaria|fao1952|1937-1939,Bulgaria,fao1952,BGR-1919-1940,pending,applied_alias,65,1937-1939,3,1919-1940,national,draft,assigned,False,False,False,False,high,False,precedent
+376,u of s africa|fao1952|1938-1951,U of S Africa,fao1952,ZAF-1910-2025,pending,applied_alias,65,1938-1951,5,1910-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
+377,romania|fao1952|1947-1951,Romania,fao1952,ROU-1947-2025,pending,applied_alias,64,1947-1951,5,1947-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
+378,united kingdom|mitchell|1921-1960,united kingdom,mitchell,GBR-1921-2025,pending,iso,64,1921-1960,40,1921-2025,national,draft,assigned,False,False,False,False,,True,precedent
+379,yugoslavia|fao1952|1937-1939,Yugoslavia,fao1952,F248-1920-1947,pending,applied_alias,64,1937-1939,3,1920-1947,national,draft,assigned,False,False,False,False,high,False,precedent
+380,anglo egypt sudan|fao1952|1938-1951,Anglo-Egypt Sudan,fao1952,SUD-1934-1956,pending,applied_alias,63,1938-1951,4,1934-1956,national,draft,assigned,False,False,False,False,high,False,precedent
+381,austria|mitchell|1851-1917,austria,mitchell,AUT-1800-1918,pending,iso,63,1851-1917,63,1800-1918,national,draft,assigned,False,False,False,False,,True,precedent
+382,germany|iia|1909-1918,germany,iia,DEU-1871-1919,pending,iso,62,1909-1918,10,1871-1919,national,draft,assigned,False,False,False,False,,True,precedent
+383,reunion|iia|1909-1945,reunion,iia,REU-1816-1946,pending,applied_alias,62,1909-1945,34,1816-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
+384,el salvador|iia|1910-1944,el salvador,iia,SLV-1821-2025,pending,iso,59,1910-1944,22,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
+385,sweden|mitchell|1905-1960,sweden,mitchell,SWE-1905-2025,pending,iso,55,1905-1960,55,1905-2025,national,draft,assigned,False,False,False,False,,True,precedent
+386,finland|iia|1919-1939,finland,iia,FIN-1917-1940,pending,iso,54,1919-1939,18,1917-1940,national,draft,assigned,False,False,False,False,,True,precedent
+387,romania|fao1952|1937-1939,Romania,fao1952,ROU-1920-1940,pending,applied_alias,54,1937-1939,3,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
+388,bulgaria|fao1952|1947-1951,Bulgaria,fao1952,BGR-1940-2025,pending,applied_alias,53,1947-1951,4,1940-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
+389,sudan|mitchell|1956-1960,sudan,mitchell,SUD-1956-2011,pending,applied_alias,53,1956-1960,5,1956-2011,national,draft,assigned,False,False,False,False,medium,False,precedent
+390,venezuela|iia|1910-1945,venezuela,iia,VEN-1830-2025,pending,iso,50,1910-1945,14,1821-2025,national,draft,assigned,False,False,False,False,,True,precedent
+391,russian federation|iia|1914-1916,russian federation,iia,F228-1914-1917,pending,applied_alias,49,1914-1916,3,1914-1917,national,draft,assigned,False,False,False,False,high,False,precedent
 392,latvia|iia|1923-1939,latvia,iia,LVA-1918-1940,pending,iso,48,1923-1939,12,1918-1940,national,draft,assigned,False,False,False,False,,True,precedent
 393,anglo egyptian sudan|fao1952|1937-1951,Anglo-Egyptian Sudan,fao1952,SUD-1934-1956,pending,applied_alias,47,1937-1951,6,1934-1956,national,draft,assigned,False,False,False,False,high,False,precedent
 394,germany|mitchell|1871-1918,germany,mitchell,DEU-1871-1919,pending,iso,47,1871-1918,47,1871-1919,national,draft,assigned,False,False,False,False,,True,precedent
@@ -416,382 +416,384 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 415,romania|mitchell|1881-1912,romania,mitchell,ROU-1859-1913,pending,applied_alias,31,1881-1912,31,1859-1913,national,draft,assigned,False,False,False,False,high,False,precedent
 416,czech republic|iia|1945-1945,czech republic,iia,F51-1945-1947,pending,applied_alias,30,1945-1945,1,1945-1947,national,draft,assigned,False,False,False,False,high,False,precedent
 417,israel|mitchell|1935-1947,israel,mitchell,PAL-1920-1948,pending,applied_alias,30,1935-1947,13,1920-1948,national,draft,assigned,False,False,False,False,medium,False,precedent
-418,cape province|mitchell|1895-1909,cape province,mitchell,CAP-1895-1910,pending,applied_alias,29,1895-1909,8,1895-1910,national,draft,assigned,False,False,False,False,medium,False,precedent
-419,romania|iia|1913-1916,romania,iia,ROU-1913-1918,pending,applied_alias,29,1913-1916,4,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
-420,romania|juan|1918-1918,romania,juan,ROU-1918-1919,pending,applied_alias,29,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
-421,denmark|mitchell|1891-1919,denmark,mitchell,DNK-1864-1920,pending,iso,28,1891-1919,28,1864-1920,national,draft,assigned,False,False,False,False,,True,precedent
-422,china manchuria province of|mitchell|1928-1931,"china, manchuria province of",mitchell,CHN-1921-1932,pending,applied_alias,27,1928-1931,4,1921-1932,national,draft,assigned,False,False,False,False,medium,False,precedent
-423,micronesia|iia|1932-1942,micronesia (federated states of),iia,CAR-1920-1945,pending,applied_alias,27,1932-1942,8,1920-1945,colonial,draft,proxy,False,False,False,False,high,False,precedent
-424,trieste uk us|fao1952|1949-1951,Trieste UK-US,fao1952,TRS-1947-1954,pending,applied_alias,27,1949-1951,3,1947-1954,national,draft,unassigned,False,False,False,False,high,False,precedent
-425,tanzania|mitchell|1897-1919,tanzania,mitchell,TAN-1891-1920,pending,applied_alias,26,1897-1919,19,1891-1920,national,draft,assigned,False,False,False,False,medium,False,precedent
-426,china mainland|mitchell|1921-1931,"china, mainland",mitchell,CHN-1921-1932,pending,applied_alias,25,1921-1931,11,1921-1932,national,draft,assigned,False,False,False,False,high,False,precedent
-427,united states of america|mitchell|1959-1960,united states of america,mitchell,USA-1959-2025,pending,applied_alias,25,1959-1960,2,1959-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-428,cape of good hope|sa_colonial|1895-1898,Cape of Good Hope,sa_colonial,CAP-1895-1910,pending,applied_alias,24,1895-1898,4,1895-1910,national,draft,assigned,False,False,False,False,high,False,precedent
-429,portugal|mitchell|1937-1960,portugal,mitchell,PRT-1800-2025,pending,iso,24,1937-1960,24,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
-430,bulgaria|iia|1909-1912,bulgaria,iia,BGR-1878-1913,pending,applied_alias,23,1909-1912,4,1878-1913,national,draft,assigned,False,False,False,False,high,False,precedent
-431,indonesia|fao1952|1937-1939,Indonesia,fao1952,IDN-1800-1945,pending,applied_alias,23,1937-1939,3,1800-1945,colonial,draft,polygon_vintage_drift,False,False,False,False,high,False,precedent
-432,iraq|iia|1922-1931,iraq,iia,IRQ-1921-1932,pending,iso,23,1922-1931,7,1921-1932,national,draft,assigned,False,False,False,False,,True,precedent
-433,lao|mitchell|1954-1960,lao,mitchell,LAO-1954-2025,pending,applied_alias,23,1954-1960,7,1954-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-434,china mainland|mitchell|1914-1920,"china, mainland",mitchell,CHN-1914-1921,pending,applied_alias,22,1914-1920,6,1914-1921,national,draft,assigned,False,False,False,False,high,False,precedent
-435,bulgaria|mitchell|1919-1939,bulgaria,mitchell,BGR-1919-1940,pending,applied_alias,21,1919-1939,21,1919-1940,national,draft,assigned,False,False,False,False,high,True,precedent
-436,finland|mitchell|1940-1960,finland,mitchell,FIN-1940-2025,pending,iso,21,1940-1960,21,1940-2025,national,draft,assigned,False,False,False,False,,True,precedent
-437,indochina|mitchell|1866-1886,indochina,mitchell,FCC-1862-1887,pending,applied_alias,20,1866-1886,19,1862-1887,national,draft,unassigned,False,False,False,False,high,False,precedent
-438,romania|mitchell|1920-1939,romania,mitchell,ROU-1920-1940,pending,applied_alias,20,1920-1939,20,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
-439,sweden|mitchell|1885-1904,sweden,mitchell,SWE-1814-1905,pending,iso,20,1885-1904,20,1814-1905,national,draft,proxy,False,False,False,False,,True,precedent
-440,tanzania|iia|1910-1913,tanzania,iia,TAN-1891-1920,pending,applied_alias,20,1910-1913,4,1891-1920,national,draft,assigned,False,False,False,False,medium,False,precedent
-441,yemen|iia|1922-1945,yemen,iia,MKY-1918-1962,pending,applied_alias,20,1922-1945,19,1918-1962,national,draft,assigned,False,False,False,False,high,False,precedent
-442,czech republic|mitchell|1919-1937,czech republic,mitchell,F51-1918-1938,pending,applied_alias,19,1919-1937,19,1918-1938,national,draft,assigned,False,False,False,False,high,False,precedent
-443,bulgaria|mitchell|1895-1912,bulgaria,mitchell,BGR-1878-1913,pending,applied_alias,17,1895-1912,17,1878-1913,national,draft,assigned,False,False,False,False,high,False,precedent
-444,finland|iia|1940-1945,finland,iia,FIN-1940-2025,pending,iso,17,1940-1945,6,1940-2025,national,draft,assigned,False,False,False,False,,True,precedent
-445,germany|mitchell|1920-1937,germany,mitchell,DEU-1920-1938,pending,iso,16,1920-1937,16,1920-1938,national,draft,assigned,False,False,False,False,,True,precedent
-446,honduras|iia|1912-1938,honduras,iia,HND-1800-2025,pending,iso,16,1912-1938,7,1800-2025,national,draft,polygon_vintage_drift,False,False,False,False,,True,precedent
-447,pacific is us trust|fao1952|1949-1951,Pacific Is us trust,fao1952,TTPI-1947-1994,pending,applied_alias,16,1949-1951,3,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
-448,romania|iia|1909-1912,romania,iia,ROU-1859-1913,pending,applied_alias,16,1909-1912,4,1859-1913,national,draft,assigned,False,False,False,False,high,False,precedent
-449,russian federation|mitchell|1924-1939,russian federation,mitchell,F228-1921-1940,pending,applied_alias,16,1924-1939,16,1921-1940,national,draft,assigned,False,False,False,False,high,False,precedent
-450,russian federation|mitchell|1945-1960,russian federation,mitchell,F228-1945-1991,pending,applied_alias,16,1945-1960,16,1945-1991,national,draft,assigned,False,False,False,False,high,False,precedent
-451,czech republic|mitchell|1947-1960,czech republic,mitchell,F51-1947-1993,pending,applied_alias,14,1947-1960,14,1947-1993,national,draft,assigned,False,False,False,False,high,False,precedent
-452,netherlands west indies|fao1952|1937-1951,Netherlands West Indies,fao1952,ANT-1816-1961,pending,applied_alias,14,1937-1951,4,1816-1961,colonial,draft,proxy,False,False,False,False,high,False,precedent
-453,virgin is us|fao1952|1936-1951,Virgin Is US,fao1952,VIR-1917-2025,pending,applied_alias,14,1936-1951,4,1917-2025,colonial,draft,assigned,False,False,False,False,high,False,precedent
-454,ivory coast|mitchell|1960-1960,ivory coast,mitchell,CIV-1960-2025,pending,applied_alias,13,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-455,bulgaria|mitchell|1948-1960,bulgaria,mitchell,BGR-1940-2025,pending,applied_alias,12,1948-1960,12,1940-2025,national,reviewed,assigned,True,False,False,False,high,True,precedent
-456,germany|mitchell|1949-1960,germany,mitchell,DEU-1949-1990,pending,iso,12,1949-1960,12,1949-1990,national,draft,assigned,False,False,False,False,,True,precedent
-457,romania|mitchell|1948-1960,romania,mitchell,ROU-1947-2025,pending,applied_alias,12,1948-1960,12,1947-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
-458,korea|fao1952|1949-1951,Korea,fao1952,KOR-1948-2025,pending,applied_alias,11,1949-1951,3,1948-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-459,singapore|iia|1909-1919,singapore,iia,GBM-1895-1946,pending,applied_alias,11,1909-1919,11,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
-460,british solomon is|fao1952|1949-1951,British Solomon Is,fao1952,SLB-1800-2025,pending,applied_alias,9,1949-1951,3,1800-2025,national,draft,proxy,False,False,False,False,high,False,precedent
-461,dr congo|mitchell|1960-1960,dr congo,mitchell,COD-1960-2025,pending,applied_alias,9,1960-1960,1,1960-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
-462,finland|mitchell|1932-1939,finland,mitchell,FIN-1917-1940,pending,iso,8,1932-1939,8,1917-1940,national,draft,assigned,False,False,False,False,,True,precedent
-463,russian federation|iia|1917-1917,russian federation,iia,F228-1917-1918,pending,applied_alias,8,1917-1917,1,1917-1918,national,draft,assigned,False,False,False,False,high,False,precedent
-464,russian federation|iia|1918-1918,russian federation,iia,F228-1918-1920,pending,applied_alias,8,1918-1918,1,1918-1920,national,draft,assigned,False,False,False,False,high,False,precedent
-465,russian federation|mitchell|1906-1913,russian federation,mitchell,F228-1905-1914,pending,applied_alias,8,1906-1913,8,1905-1914,national,draft,assigned,False,False,False,False,high,False,precedent
-466,viet nam|mitchell|1954-1954,viet nam,mitchell,F237-1954-1975,pending,applied_alias,8,1954-1954,1,1954-1975,aggregate,draft,estimate,False,False,False,False,high,False,precedent
-467,yemen|fao1952|1937-1951,Yemen,fao1952,MKY-1918-1962,pending,applied_alias,8,1937-1951,6,1918-1962,national,draft,assigned,False,False,False,False,high,False,precedent
-468,zambia|mitchell|1953-1960,zambia,mitchell,NRH-1953-1964,pending,applied_alias,8,1953-1960,7,1953-1964,national,draft,assigned,False,False,False,False,high,False,precedent
-469,bulgaria|iia|1918-1918,bulgaria,iia,BGR-1918-1919,pending,applied_alias,7,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
-470,cape of good hope|mitchell|1865-1892,cape of good hope,mitchell,CAP-1800-1895,pending,applied_alias,7,1865-1892,7,1800-1895,national,draft,polygon_vintage_drift,False,False,False,False,high,False,precedent
-471,comoro islands|fao1952|1949-1951,Comoro Islands,fao1952,COM-1946-1975,pending,applied_alias,7,1949-1951,3,1946-1975,national,draft,assigned,False,False,False,False,high,False,precedent
-472,czech republic|mitchell|1938-1944,czech republic,mitchell,F51-1938-1945,pending,applied_alias,7,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,high,False,precedent
-473,ecuador|iia|1942-1945,ecuador,iia,ECU-1942-2025,pending,iso,7,1942-1945,4,1942-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
-474,israel|fao1952|1937-1938,Israel,fao1952,PAL-1920-1948,pending,applied_alias,7,1937-1938,2,1920-1948,national,draft,assigned,False,False,False,False,medium,False,precedent
-475,natal|mitchell|1945-1957,natal,mitchell,ZAF-1910-2025,pending,applied_alias,7,1945-1957,6,1910-2025,national,reviewed,assigned,True,False,False,False,medium,False,precedent
-476,tanzania|mitchell|1920-1921,tanzania,mitchell,TAN-1920-1922,pending,applied_alias,7,1920-1921,2,1920-1922,national,draft,assigned,False,False,False,False,medium,False,precedent
-477,british solomon islands|fao1952|1937-1951,British Solomon Islands,fao1952,SLB-1800-2025,pending,applied_alias,6,1937-1951,4,1800-2025,national,draft,proxy,False,False,False,False,high,False,precedent
-478,china mainland|iia|1914-1917,"china, mainland",iia,CHN-1914-1921,pending,applied_alias,6,1914-1917,4,1914-1921,national,draft,assigned,False,False,False,False,high,False,precedent
-479,libya|mitchell|1945-1947,libya,mitchell,LBY-1943-1949,pending,applied_alias,6,1945-1947,2,1943-1949,national,draft,assigned,False,False,False,False,high,False,precedent
-480,ltaly|fao1952|1949-1951,ltaly,fao1952,ITA-1919-2025,pending,applied_alias,6,1949-1951,3,1919-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-481,necherlands|fao1952|1949-1951,Necherlands,fao1952,NLD-1830-2025,pending,applied_alias,6,1949-1951,3,1830-2025,national,draft,assigned,False,False,False,False,high,False,precedent
-482,pacific is u s|fao1952|1949-1951,Pacific Is (U S,fao1952,TTPI-1947-1994,pending,applied_alias,6,1949-1951,3,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
-483,singapore christmas island|fao1952|1949-1951,Singapore Christmas Island,fao1952,CXR-1946-1958,pending,applied_alias,6,1949-1951,3,1946-1958,colonial,draft,assigned,False,False,False,False,high,False,precedent
-484,botswana|iia|1929-1933,botswana,iia,BEC-1885-1966,pending,applied_alias,5,1929-1933,5,1885-1966,national,draft,assigned,False,False,False,False,medium,False,precedent
-485,china mainland|iia|1913-1913,"china, mainland",iia,CHN-1913-1914,pending,applied_alias,5,1913-1913,1,1913-1914,national,draft,assigned,False,False,False,False,high,False,precedent
-486,china mainland|mitchell|1887-1891,"china, mainland",mitchell,CHN-1800-1895,pending,applied_alias,5,1887-1891,5,1800-1895,national,draft,assigned,False,False,False,False,high,False,precedent
-487,pacific is|fao1952|1950-1950,Pacific Is,fao1952,TTPI-1947-1994,pending,applied_alias,5,1950-1950,1,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
-488,panama canal zone|fao1952|1951-1951,Panama Canal Zone,fao1952,CZN-1903-1979,pending,applied_alias,5,1951-1951,1,1903-1979,colonial,draft,unassigned,False,False,False,False,high,False,precedent
-489,russian federation|iia|1920-1920,russian federation,iia,F228-1920-1921,pending,applied_alias,5,1920-1920,1,1920-1921,national,draft,assigned,False,False,False,False,high,False,precedent
-490,trieste uk ans us|fao1952|1949-1951,Trieste UK ans US,fao1952,TRS-1947-1954,pending,applied_alias,5,1949-1951,3,1947-1954,national,draft,unassigned,False,False,False,False,high,False,precedent
-491,trieste us uk|fao1952|1949-1951,Trieste us uk,fao1952,TRS-1947-1954,pending,applied_alias,5,1949-1951,3,1947-1954,national,draft,unassigned,False,False,False,False,high,False,precedent
-492,bulgaria|mitchell|1913-1917,bulgaria,mitchell,BGR-1913-1918,pending,applied_alias,4,1913-1917,4,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
-493,libya cyrenaica|fao1952|1948-1948,Libya Cyrenaica,fao1952,CYR-1943-1949,pending,applied_alias,4,1948-1948,1,1943-1949,national,draft,proxy,False,False,False,False,high,False,precedent
-494,pacific islands u s|fao1952|1949-1951,Pacific Islands (U S,fao1952,TTPI-1947-1994,pending,applied_alias,4,1949-1951,3,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
-495,romania|mitchell|1940-1943,romania,mitchell,ROU-1940-1947,pending,applied_alias,4,1940-1943,4,1940-1947,national,reviewed,proxy,True,False,False,False,high,False,precedent
-496,cape of good hope|mitchell|1897-1904,cape of good hope,mitchell,CAP-1895-1910,pending,applied_alias,3,1897-1904,3,1895-1910,national,draft,assigned,False,False,False,False,high,False,precedent
-497,japan|iia|1945-1945,japan,iia,JPN-1945-1952,pending,applied_alias,3,1945-1945,1,1945-1952,national,draft,assigned,False,False,False,False,high,False,precedent
-498,libya|iia|1943-1945,libya,iia,LBY-1943-1949,pending,applied_alias,3,1943-1945,3,1943-1949,national,draft,assigned,False,False,False,False,high,False,precedent
-499,libya|mitchell|1949-1949,libya,mitchell,LBY-1949-1951,pending,applied_alias,3,1949-1949,1,1949-1951,national,draft,assigned,False,False,False,False,high,False,precedent
-500,netherlands new guinea|fao1952|1949-1951,Netherlands New Guinea,fao1952,NNG-1949-1963,pending,applied_alias,3,1949-1951,3,1949-1963,colonial,draft,assigned,False,False,False,False,high,False,precedent
-501,romania|mitchell|1913-1916,romania,mitchell,ROU-1913-1918,pending,applied_alias,3,1913-1916,3,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
-502,british west indies cayman islands|fao1952|1947-1947,British West Indies Cayman Islands,fao1952,CYM-1800-2025,pending,applied_alias,2,1947-1947,1,1800-2025,territory,draft,estimate,False,False,False,False,high,False,precedent
-503,british west indies turks and caicos|fao1952|1948-1948,British West Indies Turks and Caicos,fao1952,TCA-1800-2025,pending,applied_alias,2,1948-1948,1,1800-2025,territory,draft,estimate,False,False,False,False,high,False,precedent
-504,czech republic|mitchell|1945-1946,czech republic,mitchell,F51-1945-1947,pending,applied_alias,2,1945-1946,2,1945-1947,national,draft,assigned,False,False,False,False,high,False,precedent
-505,malaya federation of|fao1952|1939-1939,Malaya Federation of,fao1952,GBM-1895-1946,pending,applied_alias,2,1939-1939,1,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
-506,malaya federation of and singapore|fao1952|1937-1937,Malaya Federation of and Singapore,fao1952,GBM-1895-1946,pending,applied_alias,2,1937-1937,1,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
-507,romania|iia|1918-1918,romania,iia,ROU-1918-1919,pending,applied_alias,2,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
-508,romania|iia|1919-1919,romania,iia,ROU-1919-1920,pending,applied_alias,2,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,high,False,precedent
-509,bulgaria|mitchell|1918-1918,bulgaria,mitchell,BGR-1918-1919,pending,applied_alias,1,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
-510,ethiopia|fao1952|1937-1937,Ethiopia,fao1952,ETH-1936-1941,pending,applied_alias,1,1937-1937,1,1936-1941,national,draft,assigned,False,False,False,False,high,False,precedent
-511,ethiopia|iia|1938-1938,ethiopia,iia,ETH-1936-1941,pending,applied_alias,1,1938-1938,1,1936-1941,national,draft,assigned,False,False,False,False,high,False,precedent
-512,israel palestine|mitchell|1949-1949,israel/palestine,mitchell,ISR-1948-1967,pending,applied_alias,1,1949-1949,1,1948-1967,national,draft,assigned,False,False,False,False,medium,False,precedent
-513,romania|mitchell|1919-1919,romania,mitchell,ROU-1919-1920,pending,applied_alias,1,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,high,False,precedent
-514,russian federation|mitchell|1914-1914,russian federation,mitchell,F228-1914-1917,pending,applied_alias,1,1914-1914,1,1914-1917,national,draft,assigned,False,False,False,False,high,False,precedent
-515,russian federation|mitchell|1940-1940,russian federation,mitchell,F228-1940-1945,pending,applied_alias,1,1940-1940,1,1940-1945,national,draft,assigned,False,False,False,False,high,False,precedent
-516,tanzania|iia|1921-1921,tanzania,iia,TAN-1920-1922,pending,applied_alias,1,1921-1921,1,1920-1922,national,draft,assigned,False,False,False,False,medium,False,precedent
-517,austria|juan|1918-1918,austria,juan,AUT-1918-1919,pending,iso,30,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,,False,thin
-518,germany|juan|1919-1919,germany,juan,DEU-1919-1920,pending,iso,27,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,,False,thin
-519,nigeria|mitchell|1960-1960,nigeria,mitchell,NGA-1960-1961,pending,iso,16,1960-1960,1,1960-1961,national,draft,assigned,False,False,False,False,,False,thin
-520,senegal|mitchell|1960-1960,senegal,mitchell,SEN-1960-2025,pending,iso,14,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-521,denmark|juan|1861-1861,denmark,juan,DNK-1800-1864,pending,iso,11,1861-1861,1,1800-1864,national,draft,assigned,False,False,False,False,,False,thin
-522,lithuania|juan|1940-1940,lithuania,juan,LTU-1940-1991,pending,iso,11,1940-1940,1,1940-1991,national,draft,assigned,False,False,False,False,,False,thin
-523,burkina faso|mitchell|1960-1960,burkina faso,mitchell,BFA-1960-2025,pending,iso,10,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-524,bolivia|iia|1938-1938,bolivia,iia,BOL-1938-2025,pending,iso,9,1938-1938,1,1938-2025,national,reviewed,assigned,True,False,False,False,,False,thin
-525,mali|mitchell|1960-1960,mali,mitchell,MLI-1960-2025,pending,iso,7,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-526,benin|mitchell|1960-1960,benin,mitchell,BEN-1960-2025,pending,iso,6,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-527,togo|mitchell|1960-1960,togo,mitchell,TGO-1960-2025,pending,iso,6,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-528,colombia|juan|1900-1902,colombia,juan,COL-1830-1903,pending,iso,5,1900-1902,3,1830-1903,national,draft,assigned,False,False,False,False,,False,thin
-529,ethiopia pdr|iia|1936-1940,ethiopia pdr,iia,ETH-1936-1941,pending,iso,5,1936-1940,5,1936-1941,national,draft,assigned,False,False,False,False,,False,thin
-530,germany|mitchell|1866-1870,germany,mitchell,DEU-1866-1871,pending,iso,5,1866-1870,5,1866-1871,national,draft,assigned,False,False,False,False,,False,thin
-531,kiribati|iia|1929-1933,kiribati,iia,KIR-1800-2025,pending,iso,5,1929-1933,5,1800-2025,national,draft,assigned,False,False,False,False,,False,thin
-532,nigeria|iia|1913-1913,nigeria,iia,NGA-1886-1914,pending,iso,5,1913-1913,1,1886-1914,national,draft,assigned,False,False,False,False,,False,thin
-533,peru|iia|1942-1945,peru,iia,PER-1942-2025,pending,iso,5,1942-1945,4,1942-2025,national,reviewed,assigned,True,False,False,False,,False,thin
-534,singapore|mitchell|1956-1960,singapore,mitchell,SGP-1946-1963,pending,iso,5,1956-1960,5,1946-1963,colonial,draft,assigned,False,False,False,False,,False,thin
-535,south korea|iia|1945-1945,south korea,iia,KOR-1945-1948,pending,iso,5,1945-1945,1,1945-1948,national,draft,assigned,False,False,False,False,,False,thin
-536,austria|iia|1918-1918,austria,iia,AUT-1918-1919,pending,iso,4,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,,False,thin
-537,chile|mitchell|1900-1901,chile,mitchell,CHL-1899-1902,pending,iso,4,1900-1901,2,1899-1902,national,reviewed,assigned,True,False,False,False,,False,thin
-538,ethiopia pdr|iia|1932-1935,ethiopia pdr,iia,ETH-1907-1936,pending,iso,4,1932-1935,4,1907-1936,national,draft,assigned,False,False,False,False,,False,thin
-539,ethiopia pdr|iia|1942-1945,ethiopia pdr,iia,ETH-1941-1952,pending,iso,4,1942-1945,4,1941-1952,national,draft,assigned,False,False,False,False,,False,thin
-540,germany|iia|1919-1919,germany,iia,DEU-1919-1920,pending,iso,4,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,,False,thin
-541,kenya|mitchell|1902-1905,kenya,mitchell,KEN-1902-1907,pending,iso,4,1902-1905,4,1902-1907,national,draft,assigned,False,False,False,False,,False,thin
-542,latvia|juan|1913-1913,latvia,juan,LVA-1800-1918,pending,iso,4,1913-1913,1,1800-1918,national,draft,assigned,False,False,False,False,,False,thin
-543,lesotho|mitchell|1875-1875,lesotho,mitchell,LSO-1868-1886,pending,iso,4,1875-1875,1,1868-1886,national,draft,assigned,False,False,False,False,,False,thin
-544,lithuania|juan|1913-1913,lithuania,juan,LTU-1800-1918,pending,iso,4,1913-1913,1,1800-1918,national,draft,assigned,False,False,False,False,,False,thin
-545,mauritania|mitchell|1960-1960,mauritania,mitchell,MRT-1960-1975,pending,iso,4,1960-1960,1,1960-1975,national,draft,assigned,False,False,False,False,,False,thin
-546,somalia|mitchell|1960-1960,somalia,mitchell,SOM-1960-2025,pending,iso,4,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-547,syrian arab republic|mitchell|1920-1921,syrian arab republic,mitchell,SYR-1920-1922,pending,iso,4,1920-1921,2,1920-1922,national,draft,assigned,False,False,False,False,,False,thin
-548,thailand|mitchell|1907-1908,thailand,mitchell,THA-1907-1909,pending,iso,4,1907-1908,2,1907-1909,national,draft,assigned,False,False,False,False,,False,thin
-549,indonesia|iia|1945-1945,indonesia,iia,IDN-1945-1949,pending,iso,3,1945-1945,1,1945-1949,national,draft,assigned,False,False,False,False,,False,thin
-550,libya|iia|1922-1924,libya,iia,LBY-1919-1925,pending,iso,3,1922-1924,2,1919-1925,national,draft,assigned,False,False,False,False,,False,thin
-551,central african republic|mitchell|1958-1959,central african republic,mitchell,CAF-1919-1960,pending,iso,2,1958-1959,2,1919-1960,national,draft,assigned,False,False,False,False,,False,thin
-552,chad|mitchell|1960-1960,chad,mitchell,TCD-1960-2025,pending,iso,2,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-553,colombia|mitchell|1901-1902,colombia,mitchell,COL-1830-1903,pending,iso,2,1901-1902,2,1830-1903,national,draft,assigned,False,False,False,False,,False,thin
-554,germany|mitchell|1947-1948,germany,mitchell,DEU-1945-1949,pending,iso,2,1947-1948,2,1945-1949,national,draft,assigned,False,False,False,False,,False,thin
-555,ghana|mitchell|1896-1897,ghana,mitchell,GHA-1888-1898,pending,iso,2,1896-1897,2,1888-1898,national,draft,assigned,False,False,False,False,,False,thin
-556,hungary|iia|1918-1919,hungary,iia,HUN-1918-1920,pending,iso,2,1918-1919,2,1918-1920,national,draft,assigned,False,False,False,False,,False,thin
-557,hungary|mitchell|1945-1946,hungary,mitchell,HUN-1944-1947,pending,iso,2,1945-1946,2,1944-1947,national,draft,assigned,False,False,False,False,,False,thin
-558,thailand|mitchell|1906-1906,thailand,mitchell,THA-1904-1907,pending,iso,2,1906-1906,1,1904-1907,national,draft,assigned,False,False,False,False,,False,thin
-559,austria|mitchell|1918-1918,austria,mitchell,AUT-1918-1919,pending,iso,1,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,,False,thin
-560,central african republic|mitchell|1960-1960,central african republic,mitchell,CAF-1960-2025,pending,iso,1,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-561,congo|mitchell|1960-1960,congo,mitchell,COG-1960-2025,pending,iso,1,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-562,ethiopia|iia|1932-1932,ethiopia,iia,ETH-1907-1936,pending,iso,1,1932-1932,1,1907-1936,national,draft,assigned,False,False,False,False,,False,thin
-563,ethiopia|iia|1945-1945,ethiopia,iia,ETH-1941-1952,pending,iso,1,1945-1945,1,1941-1952,national,draft,assigned,False,False,False,False,,False,thin
-564,gabon|mitchell|1960-1960,gabon,mitchell,GAB-1960-2025,pending,iso,1,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
-565,germany|iia|1945-1945,germany,iia,DEU-1945-1949,pending,iso,1,1945-1945,1,1945-1949,national,draft,assigned,False,False,False,False,,False,thin
-566,germany|mitchell|1919-1919,germany,mitchell,DEU-1919-1920,pending,iso,1,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,,False,thin
-567,hungary|mitchell|1918-1918,hungary,mitchell,HUN-1918-1920,pending,iso,1,1918-1918,1,1918-1920,national,draft,assigned,False,False,False,False,,False,thin
-568,hungary|mitchell|1938-1938,hungary,mitchell,HUN-1938-1940,pending,iso,1,1938-1938,1,1938-1940,national,draft,assigned,False,False,False,False,,False,thin
-569,india|mitchell|1885-1885,india,mitchell,IND-1800-1886,pending,iso,1,1885-1885,1,1800-1886,national,draft,polygon_vintage_drift,False,False,False,False,,False,thin
-570,italy|juan|1919-1960,italy,juan,ITA-1919-2025,pending,applied_alias+iso,4229,1919-1960,42,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
-571,brazil|juan|1909-1960,brazil,juan,BRA-1909-2025,pending,iso,2547,1909-1960,52,1909-2025,national,draft,assigned,False,False,False,False,,False,bulk
-572,chile|juan|1902-1960,chile,juan,CHL-1902-2025,reopened,iso,1705,1902-1960,59,1902-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-573,canada|juan|1900-1948,canada,juan,CAN-1886-1949,reopened,applied_alias+iso,1574,1900-1948,49,1886-1949,national,draft,assigned,False,False,False,False,,False,bulk
-574,hungary|juan|1851-1917,hungary,juan,HUN-1800-1918,reopened,iso,1003,1851-1917,55,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
-575,indonesia|mitchell|1850-1944,indonesia,mitchell,IDN-1800-1945,pending,iso,810,1850-1944,95,1800-1945,colonial,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
-576,peru|juan|1942-1960,peru,juan,PER-1942-2025,reopened,iso,694,1942-1960,19,1942-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-577,hungary|juan|1920-1937,hungary,juan,HUN-1920-1938,reopened,applied_alias+iso,677,1920-1937,18,1920-1938,national,draft,assigned,False,False,False,False,,False,bulk
-578,canada|juan|1949-1960,canada,juan,CAN-1949-2025,reopened,iso,600,1949-1960,12,1949-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-579,hungary|juan|1947-1960,hungary,juan,HUN-1947-2025,reopened,iso,565,1947-1960,14,1947-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-580,syrian arab republic|iia|1922-1945,syrian arab republic,iia,SYR-1922-1946,reopened,iso,492,1922-1945,21,1922-1946,national,draft,assigned,False,False,False,False,,False,bulk
-581,brazil|mitchell|1909-1960,brazil,mitchell,BRA-1909-2025,pending,iso,466,1909-1960,52,1909-2025,national,draft,assigned,False,False,False,False,,False,bulk
-582,haiti|juan|1900-1960,haiti,juan,HTI-1800-2025,pending,iso,419,1900-1960,59,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-583,canada|mitchell|1886-1948,canada,mitchell,CAN-1886-1949,reopened,applied_alias+iso,414,1886-1948,63,1886-1949,national,draft,assigned,False,False,False,False,,False,bulk
-584,finland|juan|1878-1916,finland,juan,FIN-1809-1917,pending,iso,405,1878-1916,39,1809-1917,national,draft,assigned,False,False,False,False,,False,bulk
-585,guyana|mitchell|1850-1960,guyana,mitchell,GUY-1800-2025,pending,iso,383,1850-1960,110,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-586,italy|iia|1919-1945,italy,iia,ITA-1919-2025,pending,applied_alias+iso,382,1919-1945,24,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
-587,panama|juan|1912-1960,panama,juan,PAN-1903-1979,pending,iso,379,1912-1960,48,1903-1979,national,draft,assigned,False,False,False,False,,False,bulk
-588,indonesia|iia|1909-1944,indonesia,iia,IDN-1800-1945,pending,iso,375,1909-1944,33,1800-1945,colonial,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
-589,senegal|mitchell|1886-1959,senegal,mitchell,SEN-1886-1960,pending,iso,365,1886-1959,45,1886-1960,national,draft,assigned,False,False,False,False,,False,bulk
-590,india|mitchell|1949-1960,india,mitchell,IND-1949-2025,pending,iso,350,1949-1960,12,1949-2025,national,draft,assigned,False,False,False,False,,False,bulk
-591,nigeria|mitchell|1914-1959,nigeria,mitchell,NGA-1914-1960,pending,iso,347,1914-1959,46,1914-1960,national,reviewed,assigned,True,False,False,False,,False,bulk
-592,zimbabwe|mitchell|1901-1952,zimbabwe,mitchell,ZWE-1900-1953,pending,iso,332,1901-1952,49,1900-1953,national,draft,assigned,False,False,False,False,,False,bulk
-593,iran|mitchell|1905-1960,iran,mitchell,IRN-1828-2025,pending,iso,305,1905-1960,56,1828-2025,national,draft,assigned,False,False,False,False,,False,bulk
-594,mozambique|mitchell|1901-1960,mozambique,mitchell,MOZ-1891-1975,pending,iso,285,1901-1960,58,1891-1975,national,draft,assigned,False,False,False,False,,False,bulk
-595,germany|juan|1938-1944,germany,juan,DEU-1938-1945,pending,iso,280,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,,False,bulk
-596,uganda|mitchell|1926-1960,uganda,mitchell,UGA-1926-1962,pending,iso,274,1926-1960,35,1926-1962,national,draft,assigned,False,False,False,False,,False,bulk
-597,zimbabwe|iia|1911-1945,zimbabwe,iia,ZWE-1900-1953,pending,iso,273,1911-1945,31,1900-1953,national,draft,assigned,False,False,False,False,,False,bulk
-598,indonesia|mitchell|1949-1960,indonesia,mitchell,IDN-1949-1963,pending,iso,268,1949-1960,12,1949-1963,national,draft,assigned,False,False,False,False,,False,bulk
-599,chile|mitchell|1902-1960,chile,mitchell,CHL-1902-2025,pending,iso,265,1902-1960,58,1902-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-600,fiji|mitchell|1879-1960,fiji,mitchell,FJI-1800-2025,pending,iso,254,1879-1960,81,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-601,bolivia|juan|1938-1960,bolivia,juan,BOL-1938-2025,pending,iso,250,1938-1960,23,1938-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-602,peru|juan|1922-1941,peru,juan,PER-1922-1942,pending,iso,248,1922-1941,20,1922-1942,national,draft,assigned,False,False,False,False,,False,bulk
-603,trinidad and tobago|mitchell|1850-1960,trinidad and tobago,mitchell,TTO-1800-2025,pending,iso,243,1850-1960,109,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-604,saint vincent and the grenadines|iia|1909-1945,saint vincent and the grenadines,iia,VCT-1833-2025,pending,iso,232,1909-1945,34,1833-2025,national,draft,assigned,False,False,False,False,,False,bulk
-605,japan|mitchell|1851-1894,japan,mitchell,JPN-1800-1895,pending,iso,231,1851-1894,42,1800-1895,national,draft,assigned,False,False,False,False,,False,bulk
-606,kenya|mitchell|1926-1960,kenya,mitchell,KEN-1926-1963,pending,iso,226,1926-1960,35,1926-1963,national,draft,assigned,False,False,False,False,,False,bulk
-607,japan|mitchell|1952-1960,japan,mitchell,JPN-1952-2025,pending,applied_alias+iso,224,1952-1960,9,1952-2025,national,draft,assigned,False,False,False,False,,False,bulk
-608,congo|iia|1919-1945,congo,iia,COG-1919-1960,pending,iso,223,1919-1945,21,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
-609,yugoslavia|fao1952|1947-1951,Yugoslavia,fao1952,F248-1947-1991,pending,applied_alias+name,211,1947-1951,5,1947-1991,national,draft,estimate,False,False,False,False,,False,bulk
-610,bolivia|juan|1910-1937,bolivia,juan,BOL-1909-1938,pending,iso,205,1910-1937,17,1909-1938,national,draft,assigned,False,False,False,False,,False,bulk
-611,mauritius|iia|1909-1945,mauritius,iia,MUS-1800-2025,pending,iso,192,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-612,paraguay|juan|1911-1931,paraguay,juan,PRY-1870-1932,pending,iso,190,1911-1931,21,1870-1932,national,draft,estimate,False,False,False,False,,False,bulk
-613,guadeloupe|iia|1909-1945,guadeloupe,iia,GLP-1816-2025,pending,iso,187,1909-1945,34,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
-614,suriname|iia|1909-1945,suriname,iia,SUR-1886-1954,pending,iso,185,1909-1945,33,1886-1954,national,draft,assigned,False,False,False,False,,False,bulk
-615,guadeloupe|mitchell|1850-1960,guadeloupe,mitchell,GLP-1816-2025,pending,iso,183,1850-1960,105,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
-616,mauritius|mitchell|1856-1960,mauritius,mitchell,MUS-1800-2025,pending,iso,181,1856-1960,101,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-617,belgian congo|fao1952|1937-1951,Belgian Congo,fao1952,COD-1910-1960,pending,applied_alias,180,1937-1951,6,1910-1960,national,draft,assigned,False,False,False,False,,False,bulk
-618,fiji|iia|1909-1945,fiji,iia,FJI-1800-2025,pending,iso,178,1909-1945,33,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-619,ghana|mitchell|1898-1956,ghana,mitchell,GHA-1898-1957,pending,iso,177,1898-1956,59,1898-1957,national,draft,assigned,False,False,False,False,,False,bulk
-620,hungary|juan|1940-1943,hungary,juan,HUN-1940-1944,pending,iso,176,1940-1943,4,1940-1944,national,draft,proxy,False,False,False,False,,False,bulk
-621,iran|iia|1913-1945,iran,iia,IRN-1828-2025,pending,iso,173,1913-1945,21,1828-2025,national,draft,assigned,False,False,False,False,,False,bulk
-622,chile|iia|1909-1945,chile,iia,CHL-1902-2025,pending,iso,172,1909-1945,30,1902-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-623,ecuador|juan|1900-1941,ecuador,juan,ECU-1830-1942,pending,iso,171,1900-1941,42,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
-624,canada|iia|1909-1945,canada,iia,CAN-1886-1949,reopened,iso,170,1909-1945,34,1886-1949,national,draft,assigned,False,False,False,False,,False,bulk
-625,chile|juan|1860-1883,chile,juan,CHL-1810-1884,pending,iso,168,1860-1883,24,1810-1884,national,draft,unassigned,False,False,False,False,,False,bulk
-626,montserrat|iia|1909-1945,montserrat,iia,MSR-1800-2025,pending,iso,166,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-627,kenya|iia|1929-1945,kenya,iia,KEN-1926-1963,pending,iso,161,1929-1945,17,1926-1963,national,draft,assigned,False,False,False,False,,False,bulk
-628,barbados|mitchell|1850-1960,barbados,mitchell,BRB-1800-2025,pending,iso,160,1850-1960,108,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-629,ivory coast|mitchell|1947-1959,ivory coast,mitchell,CIV-1947-1960,pending,iso,160,1947-1959,13,1947-1960,national,draft,assigned,False,False,False,False,,False,bulk
-630,syrian arab republic|mitchell|1922-1945,syrian arab republic,mitchell,SYR-1922-1946,pending,iso,160,1922-1945,24,1922-1946,national,draft,assigned,False,False,False,False,,False,bulk
-631,peru|mitchell|1942-1960,peru,mitchell,PER-1942-2025,pending,iso,158,1942-1960,19,1942-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-632,saint kitts and nevis|iia|1909-1945,saint kitts and nevis,iia,KNA-1800-2025,pending,iso,156,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-633,rwanda and burundi|mitchell|1924-1960,rwanda and burundi,mitchell,RWB-1922-1962,pending,applied_alias,155,1924-1960,31,1922-1962,national,draft,assigned,False,False,False,False,,False,bulk
-634,french west africa|fao1952|1937-1951,French West Africa,fao1952,AOF-1895-1960,pending,applied_alias,150,1937-1951,7,1895-1960,national,draft,assigned,False,False,False,False,,False,bulk
-635,eritrea|iia|1922-1938,eritrea,iia,ERI-1889-1952,pending,iso,149,1922-1938,14,1889-1952,national,draft,assigned,False,False,False,False,,False,bulk
-636,guinea|mitchell|1921-1957,guinea,mitchell,GIN-1894-1958,pending,iso,148,1921-1957,36,1894-1958,national,draft,assigned,False,False,False,False,,False,bulk
-637,ecuador|mitchell|1881-1941,ecuador,mitchell,ECU-1830-1942,pending,iso,147,1881-1941,61,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
-638,grenada|iia|1909-1945,grenada,iia,GRD-1800-2025,pending,iso,146,1909-1945,34,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-639,germany|juan|1945-1948,germany,juan,DEU-1945-1949,pending,iso,141,1945-1948,4,1945-1949,national,draft,assigned,False,False,False,False,,False,bulk
-640,brazil|iia|1910-1945,brazil,iia,BRA-1909-2025,pending,iso,138,1910-1945,25,1909-2025,national,draft,assigned,False,False,False,False,,False,bulk
-641,martinique|mitchell|1850-1960,martinique,mitchell,MTQ-1816-2025,pending,iso,137,1850-1960,109,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
-642,zambia|iia|1922-1944,zambia,iia,NRH-1911-1953,pending,iso,136,1922-1944,19,1911-1953,colonial,draft,assigned,False,False,False,False,,False,bulk
-643,hungary|iia|1920-1937,hungary,iia,HUN-1920-1938,pending,applied_alias+iso,135,1920-1937,14,1920-1938,national,draft,assigned,False,False,False,False,,False,bulk
-644,syrian arab republic|mitchell|1946-1960,syrian arab republic,mitchell,SYR-1946-1967,pending,iso,132,1946-1960,15,1946-1967,national,draft,assigned,False,False,False,False,,False,bulk
-645,saint lucia|iia|1909-1945,saint lucia,iia,LCA-1838-2025,pending,iso,130,1909-1945,34,1838-2025,national,draft,assigned,False,False,False,False,,False,bulk
-646,benin|iia|1929-1945,benin,iia,BEN-1898-1960,pending,iso,127,1929-1945,17,1898-1960,national,draft,assigned,False,False,False,False,,False,bulk
-647,lesotho|mitchell|1904-1960,lesotho,mitchell,LSO-1886-1966,pending,iso,124,1904-1960,32,1886-1966,national,draft,assigned,False,False,False,False,,False,bulk
-648,hungary|juan|1944-1946,hungary,juan,HUN-1944-1947,pending,iso,123,1944-1946,3,1944-1947,national,draft,assigned,False,False,False,False,,False,bulk
-649,antigua and barbuda|iia|1909-1945,antigua and barbuda,iia,ATG-1800-2025,pending,iso,122,1909-1945,32,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-650,benin|mitchell|1921-1959,benin,mitchell,BEN-1898-1960,pending,iso,121,1921-1959,34,1898-1960,national,draft,assigned,False,False,False,False,,False,bulk
-651,peru|juan|1909-1921,peru,juan,PER-1909-1922,pending,iso,120,1909-1921,13,1909-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
-652,iraq|mitchell|1932-1960,iraq,mitchell,IRQ-1932-2025,pending,iso,119,1932-1960,29,1932-2025,national,draft,assigned,False,False,False,False,,False,bulk
-653,germany|juan|1850-1865,germany,juan,DEU-1800-1866,pending,iso,116,1850-1865,16,1800-1866,national,draft,assigned,False,False,False,False,,False,bulk
-654,malaysia|iia|1909-1944,malaysia,iia,BNB-1881-1963,pending,iso,116,1909-1944,30,1881-1963,colonial,draft,assigned,False,False,False,False,,False,bulk
-655,dominica|iia|1909-1944,dominica,iia,DMA-1800-2025,pending,iso,115,1909-1944,31,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-656,panama|mitchell|1921-1960,panama,mitchell,PAN-1903-1979,pending,iso,115,1921-1960,40,1903-1979,national,draft,assigned,False,False,False,False,,False,bulk
-657,guinea|iia|1913-1945,guinea,iia,GIN-1894-1958,pending,iso,114,1913-1945,22,1894-1958,national,draft,assigned,False,False,False,False,,False,bulk
-658,vanuatu|iia|1911-1945,vanuatu,iia,VUT-1800-2025,pending,iso,112,1911-1945,27,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-659,mauritania|iia|1922-1945,mauritania,iia,MRT-1920-1960,pending,iso,111,1922-1945,21,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
-660,trinidad and tobago|iia|1909-1945,trinidad and tobago,iia,TTO-1800-2025,pending,iso,109,1909-1945,33,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-661,senegal|iia|1922-1945,senegal,iia,SEN-1886-1960,pending,iso,106,1922-1945,21,1886-1960,national,draft,assigned,False,False,False,False,,False,bulk
-662,chile|juan|1884-1898,chile,juan,CHL-1884-1899,pending,iso,105,1884-1898,15,1884-1899,national,draft,assigned,False,False,False,False,,False,bulk
-663,canada|mitchell|1949-1960,canada,mitchell,CAN-1949-2025,reopened,iso,104,1949-1960,12,1949-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-664,namibia|mitchell|1920-1960,namibia,mitchell,NAM-1920-1990,pending,iso,103,1920-1960,35,1920-1990,national,draft,assigned,False,False,False,False,,False,bulk
-665,sierra leone|iia|1913-1945,sierra leone,iia,SLE-1889-1961,pending,iso,103,1913-1945,25,1889-1961,national,draft,assigned,False,False,False,False,,False,bulk
-666,ghana|iia|1909-1945,ghana,iia,GHA-1898-1957,pending,iso,102,1909-1945,34,1898-1957,national,draft,assigned,False,False,False,False,,False,bulk
-667,ivory coast|mitchell|1932-1946,ivory coast,mitchell,CIV-1932-1947,pending,iso,101,1932-1946,15,1932-1947,national,draft,assigned,False,False,False,False,,False,bulk
-668,lebanon|iia|1923-1943,lebanon,iia,LBN-1920-1944,pending,iso,101,1923-1943,14,1920-1944,national,draft,assigned,False,False,False,False,,False,bulk
-669,mauritania|mitchell|1921-1959,mauritania,mitchell,MRT-1920-1960,pending,iso,101,1921-1959,36,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
-670,haiti|iia|1909-1945,haiti,iia,HTI-1800-2025,pending,iso,99,1909-1945,29,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-671,iraq|iia|1932-1945,iraq,iia,IRQ-1932-2025,pending,iso,97,1932-1945,14,1932-2025,national,draft,assigned,False,False,False,False,,False,bulk
-672,mozambique|iia|1913-1937,mozambique,iia,MOZ-1891-1975,pending,iso,97,1913-1937,14,1891-1975,national,draft,assigned,False,False,False,False,,False,bulk
-673,barbados|iia|1909-1943,barbados,iia,BRB-1800-2025,pending,iso,92,1909-1943,29,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-674,guyana|iia|1909-1945,guyana,iia,GUY-1800-2025,pending,iso,92,1909-1945,33,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-675,peru|mitchell|1922-1941,peru,mitchell,PER-1922-1942,pending,iso,91,1922-1941,20,1922-1942,national,draft,assigned,False,False,False,False,,False,bulk
-676,uganda|mitchell|1910-1925,uganda,mitchell,UGA-1910-1926,pending,iso,84,1910-1925,16,1910-1926,national,draft,assigned,False,False,False,False,,False,bulk
-677,hungary|juan|1938-1939,hungary,juan,HUN-1938-1940,pending,iso,83,1938-1939,2,1938-1940,national,draft,assigned,False,False,False,False,,False,bulk
-678,niger|mitchell|1947-1959,niger,mitchell,NER-1947-1960,reopened,iso,82,1947-1959,13,1947-1960,national,draft,assigned,False,False,False,False,,False,bulk
-679,peru|iia|1922-1941,peru,iia,PER-1922-1942,pending,iso,81,1922-1941,16,1922-1942,national,draft,assigned,False,False,False,False,,False,bulk
-680,bolivia|mitchell|1938-1960,bolivia,mitchell,BOL-1938-2025,pending,iso,80,1938-1960,23,1938-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-681,nigeria|iia|1922-1945,nigeria,iia,NGA-1914-1960,pending,iso,79,1922-1945,21,1914-1960,national,reviewed,assigned,True,False,False,False,,False,bulk
-682,togo|mitchell|1933-1959,togo,mitchell,FTO-1920-1960,pending,iso,76,1933-1959,20,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
-683,india|iia|1909-1913,india,iia,IND-1893-1914,pending,iso,75,1909-1913,5,1893-1914,national,draft,assigned,False,False,False,False,,False,bulk
-684,haiti|mitchell|1918-1960,haiti,mitchell,HTI-1800-2025,pending,iso,69,1918-1960,42,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-685,ivory coast|mitchell|1914-1931,ivory coast,mitchell,CIV-1902-1932,pending,iso,69,1914-1931,18,1902-1932,national,draft,assigned,False,False,False,False,,False,bulk
-686,libya|iia|1925-1933,libya,iia,LBY-1925-1934,pending,iso,69,1925-1933,6,1925-1934,national,draft,assigned,False,False,False,False,,False,bulk
-687,paraguay|juan|1932-1937,paraguay,juan,PRY-1932-1938,pending,iso,69,1932-1937,6,1932-1938,national,draft,assigned,False,False,False,False,,False,bulk
-688,paraguay|iia|1909-1931,paraguay,iia,PRY-1870-1932,pending,iso,68,1909-1931,18,1870-1932,national,draft,estimate,False,False,False,False,,False,bulk
-689,india|mitchell|1947-1948,india,mitchell,IND-1947-1949,pending,iso,66,1947-1948,2,1947-1949,national,draft,assigned,False,False,False,False,,False,bulk
-690,ethiopia|mitchell|1952-1960,ethiopia,mitchell,ETH-1952-1993,pending,iso,65,1952-1960,9,1952-1993,national,draft,assigned,False,False,False,False,,False,bulk
-691,colombia|juan|1903-1921,colombia,juan,COL-1903-1922,pending,iso,61,1903-1921,19,1903-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
-692,equatorial guinea|mitchell|1900-1959,equatorial guinea,mitchell,GNQ-1886-1968,pending,iso,60,1900-1959,60,1886-1968,national,draft,assigned,False,False,False,False,,False,bulk
-693,indonesia|mitchell|1945-1948,indonesia,mitchell,IDN-1945-1949,pending,iso,60,1945-1948,4,1945-1949,national,draft,assigned,False,False,False,False,,False,bulk
-694,sao tome and principe|mitchell|1900-1959,sao tome and principe,mitchell,STP-1800-2025,pending,iso,60,1900-1959,60,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-695,hungary|juan|1918-1919,hungary,juan,HUN-1918-1920,pending,iso,56,1918-1919,2,1918-1920,national,draft,assigned,False,False,False,False,,False,bulk
-696,hungary|mitchell|1861-1917,hungary,mitchell,HUN-1800-1918,pending,iso,56,1861-1917,56,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
-697,cambodia|mitchell|1953-1960,cambodia,mitchell,KHM-1953-2025,pending,iso,55,1953-1960,8,1953-2025,national,draft,assigned,False,False,False,False,,False,bulk
-698,sierra leone|mitchell|1914-1960,sierra leone,mitchell,SLE-1889-1961,pending,iso,55,1914-1960,42,1889-1961,national,draft,assigned,False,False,False,False,,False,bulk
-699,germany|iia|1938-1944,germany,iia,DEU-1938-1945,pending,iso,54,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,,False,bulk
-700,nigeria|mitchell|1889-1913,nigeria,mitchell,NGA-1886-1914,pending,iso,53,1889-1913,24,1886-1914,national,draft,assigned,False,False,False,False,,False,bulk
-701,eswatini|mitchell|1909-1960,eswatini,mitchell,SWZ-1894-2025,pending,iso,49,1909-1960,47,1894-2025,national,draft,assigned,False,False,False,False,,False,bulk
-702,jordan|iia|1929-1944,jordan,iia,JOR-1923-1946,pending,iso,47,1929-1944,13,1923-1946,national,draft,assigned,False,False,False,False,,False,bulk
-703,libya|iia|1934-1942,libya,iia,LBY-1934-1943,pending,iso,47,1934-1942,9,1934-1943,national,draft,assigned,False,False,False,False,,False,bulk
-704,martinique|iia|1909-1945,martinique,iia,MTQ-1816-2025,pending,iso,47,1909-1945,32,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
-705,reunion|fao1952|1949-1951,Réunion,fao1952,REU-1946-2025,pending,applied_alias,47,1949-1951,3,1946-2025,national,draft,assigned,False,False,False,False,,False,bulk
-706,samoa|iia|1910-1945,samoa,iia,WSM-1900-2025,pending,iso,47,1910-1945,28,1900-2025,national,draft,assigned,False,False,False,False,,False,bulk
-707,afghanistan|mitchell|1954-1960,afghanistan,mitchell,AFG-1919-2025,pending,iso,45,1954-1960,6,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
-708,hungary|iia|1909-1916,hungary,iia,HUN-1800-1918,pending,iso,44,1909-1916,8,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
-709,kenya|mitchell|1908-1923,kenya,mitchell,KEN-1907-1924,pending,iso,43,1908-1923,16,1907-1924,national,draft,assigned,False,False,False,False,,False,bulk
-710,malaysia|mitchell|1946-1956,malaysia,mitchell,MYS-1946-1957,pending,iso,43,1946-1956,11,1946-1957,national,draft,assigned,False,False,False,False,,False,bulk
-711,cabo verde|iia|1932-1944,cabo verde,iia,CPV-1886-1975,pending,iso,42,1932-1944,10,1886-1975,colonial,draft,assigned,False,False,False,False,,False,bulk
-712,liberia|mitchell|1919-1960,liberia,mitchell,LBR-1847-2025,pending,iso,42,1919-1960,36,1847-2025,national,draft,assigned,False,False,False,False,,False,bulk
-713,hungary|iia|1938-1939,hungary,iia,HUN-1938-1940,pending,iso,41,1938-1939,2,1938-1940,national,draft,assigned,False,False,False,False,,False,bulk
-714,india|iia|1937-1945,india,iia,IND-1937-1947,pending,iso,41,1937-1945,9,1937-1947,national,draft,assigned,False,False,False,False,,False,bulk
-715,italy|mitchell|1919-1960,italy,mitchell,ITA-1919-2025,pending,applied_alias+iso,41,1919-1960,41,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
-716,lebanon|mitchell|1944-1960,lebanon,mitchell,LBN-1944-2025,pending,iso,41,1944-1960,17,1944-2025,national,draft,assigned,False,False,False,False,,False,bulk
-717,chad|mitchell|1930-1959,chad,mitchell,TCD-1919-1960,pending,iso,40,1930-1959,29,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
-718,morocco|mitchell|1958-1960,morocco,mitchell,MAR-1958-1975,pending,iso,40,1958-1960,3,1958-1975,national,draft,assigned,False,False,False,False,,False,bulk
-719,panama|iia|1912-1945,panama,iia,PAN-1903-1979,pending,iso,40,1912-1945,27,1903-1979,national,draft,assigned,False,False,False,False,,False,bulk
-720,ecuador|iia|1913-1941,ecuador,iia,ECU-1830-1942,pending,iso,38,1913-1941,13,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
-721,gambia|mitchell|1922-1960,gambia,mitchell,GMB-1800-2025,pending,iso,38,1922-1960,38,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-722,germany|juan|1866-1870,germany,juan,DEU-1866-1871,pending,iso,37,1866-1870,5,1866-1871,national,draft,assigned,False,False,False,False,,False,bulk
-723,peru|mitchell|1909-1921,peru,mitchell,PER-1909-1922,pending,iso,36,1909-1921,12,1909-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
-724,bolivia|mitchell|1910-1937,bolivia,mitchell,BOL-1909-1938,pending,iso,35,1910-1937,9,1909-1938,national,draft,assigned,False,False,False,False,,False,bulk
-725,ethiopia|mitchell|1942-1951,ethiopia,mitchell,ETH-1941-1952,pending,iso,35,1942-1951,8,1941-1952,national,draft,assigned,False,False,False,False,,False,bulk
-726,lebanon|iia|1944-1945,lebanon,iia,LBN-1944-2025,pending,iso,35,1944-1945,2,1944-2025,national,draft,assigned,False,False,False,False,,False,bulk
-727,eswatini|iia|1922-1944,eswatini,iia,SWZ-1894-2025,pending,iso,34,1922-1944,18,1894-2025,national,draft,assigned,False,False,False,False,,False,bulk
-728,equatorial guinea|iia|1910-1945,equatorial guinea,iia,GNQ-1886-1968,pending,iso,32,1910-1945,23,1886-1968,national,draft,assigned,False,False,False,False,,False,bulk
-729,zambia|mitchell|1912-1952,zambia,mitchell,NRH-1911-1953,pending,iso,32,1912-1952,32,1911-1953,colonial,draft,assigned,False,False,False,False,,False,bulk
-730,ivory coast|iia|1913-1931,ivory coast,iia,CIV-1902-1932,pending,iso,30,1913-1931,5,1902-1932,national,draft,assigned,False,False,False,False,,False,bulk
-731,ghana|mitchell|1957-1960,ghana,mitchell,GHA-1957-2025,pending,iso,29,1957-1960,4,1957-2025,national,draft,assigned,False,False,False,False,,False,bulk
-732,jordan|mitchell|1946-1960,jordan,mitchell,JOR-1946-2025,pending,iso,29,1946-1960,15,1946-2025,national,draft,assigned,False,False,False,False,,False,bulk
-733,paraguay|iia|1932-1936,paraguay,iia,PRY-1932-1938,pending,iso,29,1932-1936,5,1932-1938,national,draft,assigned,False,False,False,False,,False,bulk
-734,bolivia|iia|1929-1934,bolivia,iia,BOL-1909-1938,pending,iso,28,1929-1934,5,1909-1938,national,draft,assigned,False,False,False,False,,False,bulk
-735,guinea bissau|mitchell|1924-1960,guinea-bissau,mitchell,GNB-1886-1974,pending,iso,28,1924-1960,28,1886-1974,national,draft,assigned,False,False,False,False,,False,bulk
-736,north korea|mitchell|1949-1960,north korea,mitchell,PRK-1948-2025,pending,iso,28,1949-1960,8,1948-2025,national,draft,assigned,False,False,False,False,,False,bulk
-737,libya|mitchell|1951-1960,libya,mitchell,LBY-1951-2025,pending,iso,27,1951-1960,8,1951-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-738,brazil|mitchell|1879-1902,brazil,mitchell,BRA-1800-1903,pending,iso,26,1879-1902,24,1800-1903,national,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
-739,ethiopia|mitchell|1909-1935,ethiopia,mitchell,ETH-1907-1936,pending,iso,26,1909-1935,26,1907-1936,national,draft,assigned,False,False,False,False,,False,bulk
-740,gabon|iia|1912-1918,gabon,iia,GAB-1912-1919,pending,iso,26,1912-1918,7,1912-1919,national,draft,assigned,False,False,False,False,,False,bulk
-741,hungary|iia|1940-1943,hungary,iia,HUN-1940-1944,pending,iso,25,1940-1943,4,1940-1944,national,draft,proxy,False,False,False,False,,False,bulk
-742,peru|iia|1909-1921,peru,iia,PER-1909-1922,pending,iso,25,1909-1921,13,1909-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
-743,peru|mitchell|1884-1908,peru,mitchell,PER-1884-1909,pending,iso,25,1884-1908,25,1884-1909,national,draft,assigned,False,False,False,False,,False,bulk
-744,brazil|juan|1903-1908,brazil,juan,BRA-1903-1909,pending,iso,24,1903-1908,6,1903-1909,national,draft,assigned,False,False,False,False,,False,bulk
-745,gabon|iia|1919-1932,gabon,iia,GAB-1919-1960,pending,iso,24,1919-1932,10,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
-746,kenya|iia|1913-1923,kenya,iia,KEN-1907-1924,pending,iso,24,1913-1923,4,1907-1924,national,draft,assigned,False,False,False,False,,False,bulk
-747,brunei darussalam|iia|1932-1945,brunei darussalam,iia,BRN-1888-2025,pending,iso,22,1932-1945,10,1888-2025,national,draft,assigned,False,False,False,False,,False,bulk
-748,nepal|iia|1913-1944,nepal,iia,NPL-1816-2025,pending,iso,22,1913-1944,20,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
-749,chile|juan|1899-1901,chile,juan,CHL-1899-1902,pending,iso,21,1899-1901,3,1899-1902,national,reviewed,assigned,True,False,False,False,,False,bulk
-750,namibia|mitchell|1903-1912,namibia,mitchell,NAM-1886-1915,pending,iso,21,1903-1912,7,1886-1915,national,draft,assigned,False,False,False,False,,False,bulk
-751,colombia|mitchell|1903-1921,colombia,mitchell,COL-1903-1922,pending,iso,20,1903-1921,19,1903-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
-752,timor leste|iia|1909-1940,timor-leste,iia,TLS-1800-2025,pending,iso,20,1909-1940,19,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-753,pakistan|mitchell|1947-1948,pakistan,mitchell,PAK-1947-1949,pending,iso,19,1947-1948,2,1947-1949,national,draft,assigned,False,False,False,False,,False,bulk
-754,seychelles|iia|1909-1933,seychelles,iia,SYC-1903-2025,pending,iso,19,1909-1933,15,1903-2025,national,draft,assigned,False,False,False,False,,False,bulk
-755,colombia|iia|1913-1921,colombia,iia,COL-1903-1922,pending,iso,18,1913-1921,6,1903-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
-756,congo|iia|1913-1918,congo,iia,COG-1912-1919,pending,iso,18,1913-1918,6,1912-1919,national,draft,assigned,False,False,False,False,,False,bulk
-757,hungary|mitchell|1920-1937,hungary,mitchell,HUN-1920-1938,pending,applied_alias+iso,18,1920-1937,18,1920-1938,national,draft,assigned,False,False,False,False,,False,bulk
-758,sao tome and principe|iia|1913-1944,sao tome and principe,iia,STP-1800-2025,pending,iso,17,1913-1944,13,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
-759,nauru|iia|1909-1933,nauru,iia,NRU-1888-2025,pending,iso,16,1909-1933,16,1888-2025,national,draft,assigned,False,False,False,False,,False,bulk
-760,germany|mitchell|1850-1865,germany,mitchell,DEU-1800-1866,pending,iso,15,1850-1865,15,1800-1866,national,draft,assigned,False,False,False,False,,False,bulk
-761,jordan|mitchell|1927-1943,jordan,mitchell,JOR-1923-1946,pending,iso,15,1927-1943,15,1923-1946,national,draft,assigned,False,False,False,False,,False,bulk
-762,malaysia|mitchell|1957-1960,malaysia,mitchell,MYS-1957-1963,pending,iso,15,1957-1960,4,1957-1963,national,draft,assigned,False,False,False,False,,False,bulk
-763,estonia|juan|1940-1958,estonia,juan,EST-1940-1991,pending,iso,14,1940-1958,8,1940-1991,national,draft,assigned,False,False,False,False,,False,bulk
-764,hungary|mitchell|1947-1960,hungary,mitchell,HUN-1947-2025,pending,iso,14,1947-1960,14,1947-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
-765,suriname|mitchell|1954-1960,suriname,mitchell,SUR-1954-1975,pending,applied_alias+iso,14,1954-1960,7,1954-1975,national,draft,assigned,False,False,False,False,,False,bulk
-766,paraguay|mitchell|1910-1930,paraguay,mitchell,PRY-1870-1932,pending,iso,13,1910-1930,6,1870-1932,national,draft,estimate,False,False,False,False,,False,bulk
-767,paraguay|mitchell|1932-1937,paraguay,mitchell,PRY-1932-1938,pending,iso,13,1932-1937,6,1932-1938,national,draft,assigned,False,False,False,False,,False,bulk
-768,brazil|mitchell|1903-1908,brazil,mitchell,BRA-1903-1909,pending,iso,12,1903-1908,6,1903-1909,national,draft,assigned,False,False,False,False,,False,bulk
-769,central african republic|iia|1922-1931,central african republic,iia,CAF-1919-1960,pending,iso,12,1922-1931,6,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
-770,dr congo|mitchell|1898-1909,dr congo,mitchell,COD-1894-1910,pending,iso,12,1898-1909,12,1894-1910,national,draft,assigned,False,False,False,False,,False,bulk
-771,french w africa|fao1952|1949-1951,French W Africa,fao1952,AOF-1895-1960,pending,applied_alias,12,1949-1951,3,1895-1960,national,draft,assigned,False,False,False,False,,False,bulk
-772,gambia|iia|1913-1945,gambia,iia,GMB-1800-2025,pending,iso,12,1913-1945,11,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
-773,guinea|mitchell|1958-1960,guinea,mitchell,GIN-1958-2025,pending,iso,12,1958-1960,3,1958-2025,national,draft,assigned,False,False,False,False,,False,bulk
-774,liberia|iia|1938-1945,liberia,iia,LBR-1847-2025,pending,iso,12,1938-1945,8,1847-2025,national,draft,assigned,False,False,False,False,,False,bulk
-775,libya|mitchell|1935-1938,libya,mitchell,LBY-1934-1943,pending,iso,12,1935-1938,4,1934-1943,national,draft,assigned,False,False,False,False,,False,bulk
-776,south korea|mitchell|1945-1947,south korea,mitchell,KOR-1945-1948,pending,iso,12,1945-1947,3,1945-1948,national,draft,assigned,False,False,False,False,,False,bulk
-777,uganda|mitchell|1905-1909,uganda,mitchell,UGA-1902-1910,pending,iso,11,1905-1909,5,1902-1910,national,draft,assigned,False,False,False,False,,False,bulk
-778,estonia|juan|1908-1916,estonia,juan,EST-1800-1918,pending,iso,10,1908-1916,3,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
-779,guinea bissau|iia|1929-1945,guinea-bissau,iia,GNB-1886-1974,pending,iso,10,1929-1945,6,1886-1974,national,draft,assigned,False,False,False,False,,False,bulk
-780,kenya|iia|1924-1925,kenya,iia,KEN-1924-1926,pending,iso,10,1924-1925,2,1924-1926,national,draft,assigned,False,False,False,False,,False,bulk
-781,kenya|mitchell|1924-1925,kenya,mitchell,KEN-1924-1926,pending,iso,10,1924-1925,2,1924-1926,national,draft,assigned,False,False,False,False,,False,bulk
-782,namibia|iia|1929-1938,namibia,iia,NAM-1920-1990,pending,iso,10,1929-1938,9,1920-1990,national,draft,assigned,False,False,False,False,,False,bulk
-783,peru|mitchell|1873-1883,peru,mitchell,PER-1825-1884,pending,iso,10,1873-1883,10,1825-1884,national,draft,assigned,False,False,False,False,,False,bulk
-784,brazil|juan|1900-1902,brazil,juan,BRA-1800-1903,pending,iso,8,1900-1902,3,1800-1903,national,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
-785,libya|mitchell|1925-1928,libya,mitchell,LBY-1925-1934,pending,iso,8,1925-1928,2,1925-1934,national,draft,assigned,False,False,False,False,,False,bulk
-786,mongolia|mitchell|1957-1960,mongolia,mitchell,MNG-1921-2025,pending,iso,8,1957-1960,4,1921-2025,national,draft,assigned,False,False,False,False,,False,bulk
-787,peru|juan|1901-1908,peru,juan,PER-1884-1909,pending,iso,8,1901-1908,8,1884-1909,national,draft,assigned,False,False,False,False,,False,bulk
-788,cambodia|iia|1929-1943,cambodia,iia,KHM-1907-1953,pending,iso,7,1929-1943,6,1907-1953,national,draft,assigned,False,False,False,False,,False,bulk
-789,hungary|iia|1944-1945,hungary,iia,HUN-1944-1947,pending,iso,7,1944-1945,2,1944-1947,national,draft,assigned,False,False,False,False,,False,bulk
-790,lebanon|mitchell|1940-1943,lebanon,mitchell,LBN-1920-1944,pending,iso,7,1940-1943,4,1920-1944,national,draft,assigned,False,False,False,False,,False,bulk
-791,togo|iia|1938-1945,togo,iia,FTO-1920-1960,pending,iso,7,1938-1945,2,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
-792,chad|iia|1922-1924,chad,iia,TCD-1919-1960,pending,iso,6,1922-1924,3,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
-793,faroe islands|iia|1929-1939,faroe islands,iia,FRO-1800-2025,pending,iso,6,1929-1939,6,1800-2025,territory,draft,assigned,False,False,False,False,,False,bulk
-794,gabon|iia|1909-1911,gabon,iia,GAB-1839-1912,pending,iso,6,1909-1911,3,1839-1912,national,draft,assigned,False,False,False,False,,False,bulk
-795,germany|mitchell|1938-1943,germany,mitchell,DEU-1938-1945,pending,iso,6,1938-1943,6,1938-1945,national,draft,assigned,False,False,False,False,,False,bulk
-796,reunion|fao1952|1936-1938,Réunion,fao1952,REU-1816-1946,pending,applied_alias,6,1936-1938,3,1816-1946,colonial,draft,assigned,False,False,False,False,,False,bulk
+418,france|mitchell|1860-1870,france,mitchell,FRA-1860-1871,pending,applied_alias,30,1860-1870,11,1860-1871,national,draft,assigned,False,False,False,False,high,False,precedent
+419,cape province|mitchell|1895-1909,cape province,mitchell,CAP-1895-1910,pending,applied_alias,29,1895-1909,8,1895-1910,national,draft,assigned,False,False,False,False,medium,False,precedent
+420,romania|iia|1913-1916,romania,iia,ROU-1913-1918,pending,applied_alias,29,1913-1916,4,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
+421,romania|juan|1918-1918,romania,juan,ROU-1918-1919,pending,applied_alias,29,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
+422,denmark|mitchell|1891-1919,denmark,mitchell,DNK-1864-1920,pending,iso,28,1891-1919,28,1864-1920,national,draft,assigned,False,False,False,False,,True,precedent
+423,china manchuria province of|mitchell|1928-1931,"china, manchuria province of",mitchell,CHN-1921-1932,pending,applied_alias,27,1928-1931,4,1921-1932,national,draft,assigned,False,False,False,False,medium,False,precedent
+424,micronesia|iia|1932-1942,micronesia (federated states of),iia,CAR-1920-1945,pending,applied_alias,27,1932-1942,8,1920-1945,colonial,draft,proxy,False,False,False,False,high,False,precedent
+425,trieste uk us|fao1952|1949-1951,Trieste UK-US,fao1952,TRS-1947-1954,pending,applied_alias,27,1949-1951,3,1947-1954,national,draft,unassigned,False,False,False,False,high,False,precedent
+426,tanzania|mitchell|1897-1919,tanzania,mitchell,TAN-1891-1920,pending,applied_alias,26,1897-1919,19,1891-1920,national,draft,assigned,False,False,False,False,medium,False,precedent
+427,china mainland|mitchell|1921-1931,"china, mainland",mitchell,CHN-1921-1932,pending,applied_alias,25,1921-1931,11,1921-1932,national,draft,assigned,False,False,False,False,high,False,precedent
+428,united states of america|mitchell|1959-1960,united states of america,mitchell,USA-1959-2025,pending,applied_alias,25,1959-1960,2,1959-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+429,cape of good hope|sa_colonial|1895-1898,Cape of Good Hope,sa_colonial,CAP-1895-1910,pending,applied_alias,24,1895-1898,4,1895-1910,national,draft,assigned,False,False,False,False,high,False,precedent
+430,portugal|mitchell|1937-1960,portugal,mitchell,PRT-1800-2025,pending,iso,24,1937-1960,24,1800-2025,national,draft,assigned,False,False,False,False,,True,precedent
+431,bulgaria|iia|1909-1912,bulgaria,iia,BGR-1878-1913,pending,applied_alias,23,1909-1912,4,1878-1913,national,draft,assigned,False,False,False,False,high,False,precedent
+432,indonesia|fao1952|1937-1939,Indonesia,fao1952,IDN-1800-1945,pending,applied_alias,23,1937-1939,3,1800-1945,colonial,draft,polygon_vintage_drift,False,False,False,False,high,False,precedent
+433,iraq|iia|1922-1931,iraq,iia,IRQ-1921-1932,pending,iso,23,1922-1931,7,1921-1932,national,draft,assigned,False,False,False,False,,True,precedent
+434,lao|mitchell|1954-1960,lao,mitchell,LAO-1954-2025,pending,applied_alias,23,1954-1960,7,1954-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+435,china mainland|mitchell|1914-1920,"china, mainland",mitchell,CHN-1914-1921,pending,applied_alias,22,1914-1920,6,1914-1921,national,draft,assigned,False,False,False,False,high,False,precedent
+436,bulgaria|mitchell|1919-1939,bulgaria,mitchell,BGR-1919-1940,pending,applied_alias,21,1919-1939,21,1919-1940,national,draft,assigned,False,False,False,False,high,True,precedent
+437,finland|mitchell|1940-1960,finland,mitchell,FIN-1940-2025,pending,iso,21,1940-1960,21,1940-2025,national,draft,assigned,False,False,False,False,,True,precedent
+438,indochina|mitchell|1866-1886,indochina,mitchell,FCC-1862-1887,pending,applied_alias,20,1866-1886,19,1862-1887,national,draft,unassigned,False,False,False,False,high,False,precedent
+439,romania|mitchell|1920-1939,romania,mitchell,ROU-1920-1940,pending,applied_alias,20,1920-1939,20,1920-1940,national,draft,assigned,False,False,False,False,high,False,precedent
+440,sweden|mitchell|1885-1904,sweden,mitchell,SWE-1814-1905,pending,iso,20,1885-1904,20,1814-1905,national,draft,proxy,False,False,False,False,,True,precedent
+441,tanzania|iia|1910-1913,tanzania,iia,TAN-1891-1920,pending,applied_alias,20,1910-1913,4,1891-1920,national,draft,assigned,False,False,False,False,medium,False,precedent
+442,yemen|iia|1922-1945,yemen,iia,MKY-1918-1962,pending,applied_alias,20,1922-1945,19,1918-1962,national,draft,assigned,False,False,False,False,high,False,precedent
+443,czech republic|mitchell|1919-1937,czech republic,mitchell,F51-1918-1938,pending,applied_alias,19,1919-1937,19,1918-1938,national,draft,assigned,False,False,False,False,high,False,precedent
+444,france|mitchell|1850-1859,france,mitchell,FRA-1800-1860,pending,applied_alias,18,1850-1859,10,1800-1860,national,draft,assigned,False,False,False,False,high,False,precedent
+445,bulgaria|mitchell|1895-1912,bulgaria,mitchell,BGR-1878-1913,pending,applied_alias,17,1895-1912,17,1878-1913,national,draft,assigned,False,False,False,False,high,False,precedent
+446,finland|iia|1940-1945,finland,iia,FIN-1940-2025,pending,iso,17,1940-1945,6,1940-2025,national,draft,assigned,False,False,False,False,,True,precedent
+447,germany|mitchell|1920-1937,germany,mitchell,DEU-1920-1938,pending,iso,16,1920-1937,16,1920-1938,national,draft,assigned,False,False,False,False,,True,precedent
+448,honduras|iia|1912-1938,honduras,iia,HND-1800-2025,pending,iso,16,1912-1938,7,1800-2025,national,draft,polygon_vintage_drift,False,False,False,False,,True,precedent
+449,pacific is us trust|fao1952|1949-1951,Pacific Is us trust,fao1952,TTPI-1947-1994,pending,applied_alias,16,1949-1951,3,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
+450,romania|iia|1909-1912,romania,iia,ROU-1859-1913,pending,applied_alias,16,1909-1912,4,1859-1913,national,draft,assigned,False,False,False,False,high,False,precedent
+451,russian federation|mitchell|1924-1939,russian federation,mitchell,F228-1921-1940,pending,applied_alias,16,1924-1939,16,1921-1940,national,draft,assigned,False,False,False,False,high,False,precedent
+452,russian federation|mitchell|1945-1960,russian federation,mitchell,F228-1945-1991,pending,applied_alias,16,1945-1960,16,1945-1991,national,draft,assigned,False,False,False,False,high,False,precedent
+453,czech republic|mitchell|1947-1960,czech republic,mitchell,F51-1947-1993,pending,applied_alias,14,1947-1960,14,1947-1993,national,draft,assigned,False,False,False,False,high,False,precedent
+454,netherlands west indies|fao1952|1937-1951,Netherlands West Indies,fao1952,ANT-1816-1961,pending,applied_alias,14,1937-1951,4,1816-1961,colonial,draft,proxy,False,False,False,False,high,False,precedent
+455,virgin is us|fao1952|1936-1951,Virgin Is US,fao1952,VIR-1917-2025,pending,applied_alias,14,1936-1951,4,1917-2025,colonial,draft,assigned,False,False,False,False,high,False,precedent
+456,ivory coast|mitchell|1960-1960,ivory coast,mitchell,CIV-1960-2025,pending,applied_alias,13,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+457,bulgaria|mitchell|1948-1960,bulgaria,mitchell,BGR-1940-2025,pending,applied_alias,12,1948-1960,12,1940-2025,national,reviewed,assigned,True,False,False,False,high,True,precedent
+458,germany|mitchell|1949-1960,germany,mitchell,DEU-1949-1990,pending,iso,12,1949-1960,12,1949-1990,national,draft,assigned,False,False,False,False,,True,precedent
+459,romania|mitchell|1948-1960,romania,mitchell,ROU-1947-2025,pending,applied_alias,12,1948-1960,12,1947-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
+460,korea|fao1952|1949-1951,Korea,fao1952,KOR-1948-2025,pending,applied_alias,11,1949-1951,3,1948-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+461,singapore|iia|1909-1919,singapore,iia,GBM-1895-1946,pending,applied_alias,11,1909-1919,11,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
+462,british solomon is|fao1952|1949-1951,British Solomon Is,fao1952,SLB-1800-2025,pending,applied_alias,9,1949-1951,3,1800-2025,national,draft,proxy,False,False,False,False,high,False,precedent
+463,dr congo|mitchell|1960-1960,dr congo,mitchell,COD-1960-2025,pending,applied_alias,9,1960-1960,1,1960-2025,national,reviewed,assigned,True,False,False,False,high,False,precedent
+464,finland|mitchell|1932-1939,finland,mitchell,FIN-1917-1940,pending,iso,8,1932-1939,8,1917-1940,national,draft,assigned,False,False,False,False,,True,precedent
+465,russian federation|iia|1917-1917,russian federation,iia,F228-1917-1918,pending,applied_alias,8,1917-1917,1,1917-1918,national,draft,assigned,False,False,False,False,high,False,precedent
+466,russian federation|iia|1918-1918,russian federation,iia,F228-1918-1920,pending,applied_alias,8,1918-1918,1,1918-1920,national,draft,assigned,False,False,False,False,high,False,precedent
+467,russian federation|mitchell|1906-1913,russian federation,mitchell,F228-1905-1914,pending,applied_alias,8,1906-1913,8,1905-1914,national,draft,assigned,False,False,False,False,high,False,precedent
+468,viet nam|mitchell|1954-1954,viet nam,mitchell,F237-1954-1975,pending,applied_alias,8,1954-1954,1,1954-1975,aggregate,draft,estimate,False,False,False,False,high,False,precedent
+469,yemen|fao1952|1937-1951,Yemen,fao1952,MKY-1918-1962,pending,applied_alias,8,1937-1951,6,1918-1962,national,draft,assigned,False,False,False,False,high,False,precedent
+470,zambia|mitchell|1953-1960,zambia,mitchell,NRH-1953-1964,pending,applied_alias,8,1953-1960,7,1953-1964,national,draft,assigned,False,False,False,False,high,False,precedent
+471,bulgaria|iia|1918-1918,bulgaria,iia,BGR-1918-1919,pending,applied_alias,7,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
+472,cape of good hope|mitchell|1865-1892,cape of good hope,mitchell,CAP-1800-1895,pending,applied_alias,7,1865-1892,7,1800-1895,national,draft,polygon_vintage_drift,False,False,False,False,high,False,precedent
+473,comoro islands|fao1952|1949-1951,Comoro Islands,fao1952,COM-1946-1975,pending,applied_alias,7,1949-1951,3,1946-1975,national,draft,assigned,False,False,False,False,high,False,precedent
+474,czech republic|mitchell|1938-1944,czech republic,mitchell,F51-1938-1945,pending,applied_alias,7,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,high,False,precedent
+475,ecuador|iia|1942-1945,ecuador,iia,ECU-1942-2025,pending,iso,7,1942-1945,4,1942-2025,national,reviewed,assigned,True,False,False,False,,True,precedent
+476,israel|fao1952|1937-1938,Israel,fao1952,PAL-1920-1948,pending,applied_alias,7,1937-1938,2,1920-1948,national,draft,assigned,False,False,False,False,medium,False,precedent
+477,natal|mitchell|1945-1957,natal,mitchell,ZAF-1910-2025,pending,applied_alias,7,1945-1957,6,1910-2025,national,reviewed,assigned,True,False,False,False,medium,False,precedent
+478,tanzania|mitchell|1920-1921,tanzania,mitchell,TAN-1920-1922,pending,applied_alias,7,1920-1921,2,1920-1922,national,draft,assigned,False,False,False,False,medium,False,precedent
+479,british solomon islands|fao1952|1937-1951,British Solomon Islands,fao1952,SLB-1800-2025,pending,applied_alias,6,1937-1951,4,1800-2025,national,draft,proxy,False,False,False,False,high,False,precedent
+480,china mainland|iia|1914-1917,"china, mainland",iia,CHN-1914-1921,pending,applied_alias,6,1914-1917,4,1914-1921,national,draft,assigned,False,False,False,False,high,False,precedent
+481,libya|mitchell|1945-1947,libya,mitchell,LBY-1943-1949,pending,applied_alias,6,1945-1947,2,1943-1949,national,draft,assigned,False,False,False,False,high,False,precedent
+482,ltaly|fao1952|1949-1951,ltaly,fao1952,ITA-1919-2025,pending,applied_alias,6,1949-1951,3,1919-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+483,necherlands|fao1952|1949-1951,Necherlands,fao1952,NLD-1830-2025,pending,applied_alias,6,1949-1951,3,1830-2025,national,draft,assigned,False,False,False,False,high,False,precedent
+484,pacific is u s|fao1952|1949-1951,Pacific Is (U S,fao1952,TTPI-1947-1994,pending,applied_alias,6,1949-1951,3,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
+485,singapore christmas island|fao1952|1949-1951,Singapore Christmas Island,fao1952,CXR-1946-1958,pending,applied_alias,6,1949-1951,3,1946-1958,colonial,draft,assigned,False,False,False,False,high,False,precedent
+486,botswana|iia|1929-1933,botswana,iia,BEC-1885-1966,pending,applied_alias,5,1929-1933,5,1885-1966,national,draft,assigned,False,False,False,False,medium,False,precedent
+487,china mainland|iia|1913-1913,"china, mainland",iia,CHN-1913-1914,pending,applied_alias,5,1913-1913,1,1913-1914,national,draft,assigned,False,False,False,False,high,False,precedent
+488,china mainland|mitchell|1887-1891,"china, mainland",mitchell,CHN-1800-1895,pending,applied_alias,5,1887-1891,5,1800-1895,national,draft,assigned,False,False,False,False,high,False,precedent
+489,pacific is|fao1952|1950-1950,Pacific Is,fao1952,TTPI-1947-1994,pending,applied_alias,5,1950-1950,1,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
+490,panama canal zone|fao1952|1951-1951,Panama Canal Zone,fao1952,CZN-1903-1979,pending,applied_alias,5,1951-1951,1,1903-1979,colonial,draft,unassigned,False,False,False,False,high,False,precedent
+491,russian federation|iia|1920-1920,russian federation,iia,F228-1920-1921,pending,applied_alias,5,1920-1920,1,1920-1921,national,draft,assigned,False,False,False,False,high,False,precedent
+492,trieste uk ans us|fao1952|1949-1951,Trieste UK ans US,fao1952,TRS-1947-1954,pending,applied_alias,5,1949-1951,3,1947-1954,national,draft,unassigned,False,False,False,False,high,False,precedent
+493,trieste us uk|fao1952|1949-1951,Trieste us uk,fao1952,TRS-1947-1954,pending,applied_alias,5,1949-1951,3,1947-1954,national,draft,unassigned,False,False,False,False,high,False,precedent
+494,bulgaria|mitchell|1913-1917,bulgaria,mitchell,BGR-1913-1918,pending,applied_alias,4,1913-1917,4,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
+495,libya cyrenaica|fao1952|1948-1948,Libya Cyrenaica,fao1952,CYR-1943-1949,pending,applied_alias,4,1948-1948,1,1943-1949,national,draft,proxy,False,False,False,False,high,False,precedent
+496,pacific islands u s|fao1952|1949-1951,Pacific Islands (U S,fao1952,TTPI-1947-1994,pending,applied_alias,4,1949-1951,3,1947-1994,colonial,draft,proxy,False,False,False,False,high,False,precedent
+497,romania|mitchell|1940-1943,romania,mitchell,ROU-1940-1947,pending,applied_alias,4,1940-1943,4,1940-1947,national,reviewed,proxy,True,False,False,False,high,False,precedent
+498,cape of good hope|mitchell|1897-1904,cape of good hope,mitchell,CAP-1895-1910,pending,applied_alias,3,1897-1904,3,1895-1910,national,draft,assigned,False,False,False,False,high,False,precedent
+499,japan|iia|1945-1945,japan,iia,JPN-1945-1952,pending,applied_alias,3,1945-1945,1,1945-1952,national,draft,assigned,False,False,False,False,high,False,precedent
+500,libya|iia|1943-1945,libya,iia,LBY-1943-1949,pending,applied_alias,3,1943-1945,3,1943-1949,national,draft,assigned,False,False,False,False,high,False,precedent
+501,libya|mitchell|1949-1949,libya,mitchell,LBY-1949-1951,pending,applied_alias,3,1949-1949,1,1949-1951,national,draft,assigned,False,False,False,False,high,False,precedent
+502,netherlands new guinea|fao1952|1949-1951,Netherlands New Guinea,fao1952,NNG-1949-1963,pending,applied_alias,3,1949-1951,3,1949-1963,colonial,draft,assigned,False,False,False,False,high,False,precedent
+503,romania|mitchell|1913-1916,romania,mitchell,ROU-1913-1918,pending,applied_alias,3,1913-1916,3,1913-1918,national,draft,assigned,False,False,False,False,high,False,precedent
+504,british west indies cayman islands|fao1952|1947-1947,British West Indies Cayman Islands,fao1952,CYM-1800-2025,pending,applied_alias,2,1947-1947,1,1800-2025,territory,draft,estimate,False,False,False,False,high,False,precedent
+505,british west indies turks and caicos|fao1952|1948-1948,British West Indies Turks and Caicos,fao1952,TCA-1800-2025,pending,applied_alias,2,1948-1948,1,1800-2025,territory,draft,estimate,False,False,False,False,high,False,precedent
+506,czech republic|mitchell|1945-1946,czech republic,mitchell,F51-1945-1947,pending,applied_alias,2,1945-1946,2,1945-1947,national,draft,assigned,False,False,False,False,high,False,precedent
+507,malaya federation of|fao1952|1939-1939,Malaya Federation of,fao1952,GBM-1895-1946,pending,applied_alias,2,1939-1939,1,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
+508,malaya federation of and singapore|fao1952|1937-1937,Malaya Federation of and Singapore,fao1952,GBM-1895-1946,pending,applied_alias,2,1937-1937,1,1895-1946,colonial,draft,assigned,False,False,False,False,high,False,precedent
+509,romania|iia|1918-1918,romania,iia,ROU-1918-1919,pending,applied_alias,2,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
+510,romania|iia|1919-1919,romania,iia,ROU-1919-1920,pending,applied_alias,2,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,high,False,precedent
+511,bulgaria|mitchell|1918-1918,bulgaria,mitchell,BGR-1918-1919,pending,applied_alias,1,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
+512,ethiopia|fao1952|1937-1937,Ethiopia,fao1952,ETH-1936-1941,pending,applied_alias,1,1937-1937,1,1936-1941,national,draft,assigned,False,False,False,False,high,False,precedent
+513,ethiopia|iia|1938-1938,ethiopia,iia,ETH-1936-1941,pending,applied_alias,1,1938-1938,1,1936-1941,national,draft,assigned,False,False,False,False,high,False,precedent
+514,israel palestine|mitchell|1949-1949,israel/palestine,mitchell,ISR-1948-1967,pending,applied_alias,1,1949-1949,1,1948-1967,national,draft,assigned,False,False,False,False,medium,False,precedent
+515,romania|mitchell|1919-1919,romania,mitchell,ROU-1919-1920,pending,applied_alias,1,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,high,False,precedent
+516,russian federation|mitchell|1914-1914,russian federation,mitchell,F228-1914-1917,pending,applied_alias,1,1914-1914,1,1914-1917,national,draft,assigned,False,False,False,False,high,False,precedent
+517,russian federation|mitchell|1940-1940,russian federation,mitchell,F228-1940-1945,pending,applied_alias,1,1940-1940,1,1940-1945,national,draft,assigned,False,False,False,False,high,False,precedent
+518,tanzania|iia|1921-1921,tanzania,iia,TAN-1920-1922,pending,applied_alias,1,1921-1921,1,1920-1922,national,draft,assigned,False,False,False,False,medium,False,precedent
+519,austria|juan|1918-1918,austria,juan,AUT-1918-1919,pending,iso,30,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,,False,thin
+520,germany|juan|1919-1919,germany,juan,DEU-1919-1920,pending,iso,27,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,,False,thin
+521,nigeria|mitchell|1960-1960,nigeria,mitchell,NGA-1960-1961,pending,iso,16,1960-1960,1,1960-1961,national,draft,assigned,False,False,False,False,,False,thin
+522,senegal|mitchell|1960-1960,senegal,mitchell,SEN-1960-2025,pending,iso,14,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+523,denmark|juan|1861-1861,denmark,juan,DNK-1800-1864,pending,iso,11,1861-1861,1,1800-1864,national,draft,assigned,False,False,False,False,,False,thin
+524,lithuania|juan|1940-1940,lithuania,juan,LTU-1940-1991,pending,iso,11,1940-1940,1,1940-1991,national,draft,assigned,False,False,False,False,,False,thin
+525,burkina faso|mitchell|1960-1960,burkina faso,mitchell,BFA-1960-2025,pending,iso,10,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+526,bolivia|iia|1938-1938,bolivia,iia,BOL-1938-2025,pending,iso,9,1938-1938,1,1938-2025,national,reviewed,assigned,True,False,False,False,,False,thin
+527,mali|mitchell|1960-1960,mali,mitchell,MLI-1960-2025,pending,iso,7,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+528,benin|mitchell|1960-1960,benin,mitchell,BEN-1960-2025,pending,iso,6,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+529,togo|mitchell|1960-1960,togo,mitchell,TGO-1960-2025,pending,iso,6,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+530,colombia|juan|1900-1902,colombia,juan,COL-1830-1903,pending,iso,5,1900-1902,3,1830-1903,national,draft,assigned,False,False,False,False,,False,thin
+531,ethiopia pdr|iia|1936-1940,ethiopia pdr,iia,ETH-1936-1941,pending,iso,5,1936-1940,5,1936-1941,national,draft,assigned,False,False,False,False,,False,thin
+532,germany|mitchell|1866-1870,germany,mitchell,DEU-1866-1871,pending,iso,5,1866-1870,5,1866-1871,national,draft,assigned,False,False,False,False,,False,thin
+533,kiribati|iia|1929-1933,kiribati,iia,KIR-1800-2025,pending,iso,5,1929-1933,5,1800-2025,national,draft,assigned,False,False,False,False,,False,thin
+534,nigeria|iia|1913-1913,nigeria,iia,NGA-1886-1914,pending,iso,5,1913-1913,1,1886-1914,national,draft,assigned,False,False,False,False,,False,thin
+535,peru|iia|1942-1945,peru,iia,PER-1942-2025,pending,iso,5,1942-1945,4,1942-2025,national,reviewed,assigned,True,False,False,False,,False,thin
+536,singapore|mitchell|1956-1960,singapore,mitchell,SGP-1946-1963,pending,iso,5,1956-1960,5,1946-1963,colonial,draft,assigned,False,False,False,False,,False,thin
+537,south korea|iia|1945-1945,south korea,iia,KOR-1945-1948,pending,iso,5,1945-1945,1,1945-1948,national,draft,assigned,False,False,False,False,,False,thin
+538,austria|iia|1918-1918,austria,iia,AUT-1918-1919,pending,iso,4,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,,False,thin
+539,chile|mitchell|1900-1901,chile,mitchell,CHL-1899-1902,pending,iso,4,1900-1901,2,1899-1902,national,reviewed,assigned,True,False,False,False,,False,thin
+540,ethiopia pdr|iia|1932-1935,ethiopia pdr,iia,ETH-1907-1936,pending,iso,4,1932-1935,4,1907-1936,national,draft,assigned,False,False,False,False,,False,thin
+541,ethiopia pdr|iia|1942-1945,ethiopia pdr,iia,ETH-1941-1952,pending,iso,4,1942-1945,4,1941-1952,national,draft,assigned,False,False,False,False,,False,thin
+542,germany|iia|1919-1919,germany,iia,DEU-1919-1920,pending,iso,4,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,,False,thin
+543,kenya|mitchell|1902-1905,kenya,mitchell,KEN-1902-1907,pending,iso,4,1902-1905,4,1902-1907,national,draft,assigned,False,False,False,False,,False,thin
+544,latvia|juan|1913-1913,latvia,juan,LVA-1800-1918,pending,iso,4,1913-1913,1,1800-1918,national,draft,assigned,False,False,False,False,,False,thin
+545,lesotho|mitchell|1875-1875,lesotho,mitchell,LSO-1868-1886,pending,iso,4,1875-1875,1,1868-1886,national,draft,assigned,False,False,False,False,,False,thin
+546,lithuania|juan|1913-1913,lithuania,juan,LTU-1800-1918,pending,iso,4,1913-1913,1,1800-1918,national,draft,assigned,False,False,False,False,,False,thin
+547,mauritania|mitchell|1960-1960,mauritania,mitchell,MRT-1960-1975,pending,iso,4,1960-1960,1,1960-1975,national,draft,assigned,False,False,False,False,,False,thin
+548,somalia|mitchell|1960-1960,somalia,mitchell,SOM-1960-2025,pending,iso,4,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+549,syrian arab republic|mitchell|1920-1921,syrian arab republic,mitchell,SYR-1920-1922,pending,iso,4,1920-1921,2,1920-1922,national,draft,assigned,False,False,False,False,,False,thin
+550,thailand|mitchell|1907-1908,thailand,mitchell,THA-1907-1909,pending,iso,4,1907-1908,2,1907-1909,national,draft,assigned,False,False,False,False,,False,thin
+551,indonesia|iia|1945-1945,indonesia,iia,IDN-1945-1949,pending,iso,3,1945-1945,1,1945-1949,national,draft,assigned,False,False,False,False,,False,thin
+552,libya|iia|1922-1924,libya,iia,LBY-1919-1925,pending,iso,3,1922-1924,2,1919-1925,national,draft,assigned,False,False,False,False,,False,thin
+553,central african republic|mitchell|1958-1959,central african republic,mitchell,CAF-1919-1960,pending,iso,2,1958-1959,2,1919-1960,national,draft,assigned,False,False,False,False,,False,thin
+554,chad|mitchell|1960-1960,chad,mitchell,TCD-1960-2025,pending,iso,2,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+555,colombia|mitchell|1901-1902,colombia,mitchell,COL-1830-1903,pending,iso,2,1901-1902,2,1830-1903,national,draft,assigned,False,False,False,False,,False,thin
+556,germany|mitchell|1947-1948,germany,mitchell,DEU-1945-1949,pending,iso,2,1947-1948,2,1945-1949,national,draft,assigned,False,False,False,False,,False,thin
+557,ghana|mitchell|1896-1897,ghana,mitchell,GHA-1888-1898,pending,iso,2,1896-1897,2,1888-1898,national,draft,assigned,False,False,False,False,,False,thin
+558,hungary|iia|1918-1919,hungary,iia,HUN-1918-1920,pending,iso,2,1918-1919,2,1918-1920,national,draft,assigned,False,False,False,False,,False,thin
+559,hungary|mitchell|1945-1946,hungary,mitchell,HUN-1944-1947,pending,iso,2,1945-1946,2,1944-1947,national,draft,assigned,False,False,False,False,,False,thin
+560,thailand|mitchell|1906-1906,thailand,mitchell,THA-1904-1907,pending,iso,2,1906-1906,1,1904-1907,national,draft,assigned,False,False,False,False,,False,thin
+561,austria|mitchell|1918-1918,austria,mitchell,AUT-1918-1919,pending,iso,1,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,,False,thin
+562,central african republic|mitchell|1960-1960,central african republic,mitchell,CAF-1960-2025,pending,iso,1,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+563,congo|mitchell|1960-1960,congo,mitchell,COG-1960-2025,pending,iso,1,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+564,ethiopia|iia|1932-1932,ethiopia,iia,ETH-1907-1936,pending,iso,1,1932-1932,1,1907-1936,national,draft,assigned,False,False,False,False,,False,thin
+565,ethiopia|iia|1945-1945,ethiopia,iia,ETH-1941-1952,pending,iso,1,1945-1945,1,1941-1952,national,draft,assigned,False,False,False,False,,False,thin
+566,gabon|mitchell|1960-1960,gabon,mitchell,GAB-1960-2025,pending,iso,1,1960-1960,1,1960-2025,national,draft,assigned,False,False,False,False,,False,thin
+567,germany|iia|1945-1945,germany,iia,DEU-1945-1949,pending,iso,1,1945-1945,1,1945-1949,national,draft,assigned,False,False,False,False,,False,thin
+568,germany|mitchell|1919-1919,germany,mitchell,DEU-1919-1920,pending,iso,1,1919-1919,1,1919-1920,national,draft,assigned,False,False,False,False,,False,thin
+569,hungary|mitchell|1918-1918,hungary,mitchell,HUN-1918-1920,pending,iso,1,1918-1918,1,1918-1920,national,draft,assigned,False,False,False,False,,False,thin
+570,hungary|mitchell|1938-1938,hungary,mitchell,HUN-1938-1940,pending,iso,1,1938-1938,1,1938-1940,national,draft,assigned,False,False,False,False,,False,thin
+571,india|mitchell|1885-1885,india,mitchell,IND-1800-1886,pending,iso,1,1885-1885,1,1800-1886,national,draft,polygon_vintage_drift,False,False,False,False,,False,thin
+572,italy|juan|1919-1960,italy,juan,ITA-1919-2025,pending,applied_alias+iso,4229,1919-1960,42,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
+573,brazil|juan|1909-1960,brazil,juan,BRA-1909-2025,pending,iso,2547,1909-1960,52,1909-2025,national,draft,assigned,False,False,False,False,,False,bulk
+574,chile|juan|1902-1960,chile,juan,CHL-1902-2025,reopened,iso,1705,1902-1960,59,1902-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+575,canada|juan|1900-1948,canada,juan,CAN-1886-1949,reopened,applied_alias+iso,1574,1900-1948,49,1886-1949,national,draft,assigned,False,False,False,False,,False,bulk
+576,hungary|juan|1851-1917,hungary,juan,HUN-1800-1918,reopened,iso,1003,1851-1917,55,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
+577,indonesia|mitchell|1850-1944,indonesia,mitchell,IDN-1800-1945,pending,iso,810,1850-1944,95,1800-1945,colonial,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
+578,peru|juan|1942-1960,peru,juan,PER-1942-2025,reopened,iso,694,1942-1960,19,1942-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+579,hungary|juan|1920-1937,hungary,juan,HUN-1920-1938,reopened,applied_alias+iso,677,1920-1937,18,1920-1938,national,draft,assigned,False,False,False,False,,False,bulk
+580,canada|juan|1949-1960,canada,juan,CAN-1949-2025,reopened,iso,600,1949-1960,12,1949-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+581,hungary|juan|1947-1960,hungary,juan,HUN-1947-2025,reopened,iso,565,1947-1960,14,1947-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+582,syrian arab republic|iia|1922-1945,syrian arab republic,iia,SYR-1922-1946,reopened,iso,492,1922-1945,21,1922-1946,national,draft,assigned,False,False,False,False,,False,bulk
+583,brazil|mitchell|1909-1960,brazil,mitchell,BRA-1909-2025,pending,iso,466,1909-1960,52,1909-2025,national,draft,assigned,False,False,False,False,,False,bulk
+584,haiti|juan|1900-1960,haiti,juan,HTI-1800-2025,pending,iso,419,1900-1960,59,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+585,canada|mitchell|1886-1948,canada,mitchell,CAN-1886-1949,reopened,applied_alias+iso,414,1886-1948,63,1886-1949,national,draft,assigned,False,False,False,False,,False,bulk
+586,finland|juan|1878-1916,finland,juan,FIN-1809-1917,pending,iso,405,1878-1916,39,1809-1917,national,draft,assigned,False,False,False,False,,False,bulk
+587,guyana|mitchell|1850-1960,guyana,mitchell,GUY-1800-2025,pending,iso,383,1850-1960,110,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+588,italy|iia|1919-1945,italy,iia,ITA-1919-2025,pending,applied_alias+iso,382,1919-1945,24,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
+589,panama|juan|1912-1960,panama,juan,PAN-1903-1979,pending,iso,379,1912-1960,48,1903-1979,national,draft,assigned,False,False,False,False,,False,bulk
+590,indonesia|iia|1909-1944,indonesia,iia,IDN-1800-1945,pending,iso,375,1909-1944,33,1800-1945,colonial,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
+591,senegal|mitchell|1886-1959,senegal,mitchell,SEN-1886-1960,pending,iso,365,1886-1959,45,1886-1960,national,draft,assigned,False,False,False,False,,False,bulk
+592,india|mitchell|1949-1960,india,mitchell,IND-1949-2025,pending,iso,350,1949-1960,12,1949-2025,national,draft,assigned,False,False,False,False,,False,bulk
+593,nigeria|mitchell|1914-1959,nigeria,mitchell,NGA-1914-1960,pending,iso,347,1914-1959,46,1914-1960,national,reviewed,assigned,True,False,False,False,,False,bulk
+594,zimbabwe|mitchell|1901-1952,zimbabwe,mitchell,ZWE-1900-1953,pending,iso,332,1901-1952,49,1900-1953,national,draft,assigned,False,False,False,False,,False,bulk
+595,iran|mitchell|1905-1960,iran,mitchell,IRN-1828-2025,pending,iso,305,1905-1960,56,1828-2025,national,draft,assigned,False,False,False,False,,False,bulk
+596,mozambique|mitchell|1901-1960,mozambique,mitchell,MOZ-1891-1975,pending,iso,285,1901-1960,58,1891-1975,national,draft,assigned,False,False,False,False,,False,bulk
+597,germany|juan|1938-1944,germany,juan,DEU-1938-1945,pending,iso,280,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,,False,bulk
+598,uganda|mitchell|1926-1960,uganda,mitchell,UGA-1926-1962,pending,iso,274,1926-1960,35,1926-1962,national,draft,assigned,False,False,False,False,,False,bulk
+599,zimbabwe|iia|1911-1945,zimbabwe,iia,ZWE-1900-1953,pending,iso,273,1911-1945,31,1900-1953,national,draft,assigned,False,False,False,False,,False,bulk
+600,indonesia|mitchell|1949-1960,indonesia,mitchell,IDN-1949-1963,pending,iso,268,1949-1960,12,1949-1963,national,draft,assigned,False,False,False,False,,False,bulk
+601,chile|mitchell|1902-1960,chile,mitchell,CHL-1902-2025,pending,iso,265,1902-1960,58,1902-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+602,fiji|mitchell|1879-1960,fiji,mitchell,FJI-1800-2025,pending,iso,254,1879-1960,81,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+603,bolivia|juan|1938-1960,bolivia,juan,BOL-1938-2025,pending,iso,250,1938-1960,23,1938-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+604,peru|juan|1922-1941,peru,juan,PER-1922-1942,pending,iso,248,1922-1941,20,1922-1942,national,draft,assigned,False,False,False,False,,False,bulk
+605,trinidad and tobago|mitchell|1850-1960,trinidad and tobago,mitchell,TTO-1800-2025,pending,iso,243,1850-1960,109,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+606,saint vincent and the grenadines|iia|1909-1945,saint vincent and the grenadines,iia,VCT-1833-2025,pending,iso,232,1909-1945,34,1833-2025,national,draft,assigned,False,False,False,False,,False,bulk
+607,japan|mitchell|1851-1894,japan,mitchell,JPN-1800-1895,pending,iso,231,1851-1894,42,1800-1895,national,draft,assigned,False,False,False,False,,False,bulk
+608,kenya|mitchell|1926-1960,kenya,mitchell,KEN-1926-1963,pending,iso,226,1926-1960,35,1926-1963,national,draft,assigned,False,False,False,False,,False,bulk
+609,japan|mitchell|1952-1960,japan,mitchell,JPN-1952-2025,pending,applied_alias+iso,224,1952-1960,9,1952-2025,national,draft,assigned,False,False,False,False,,False,bulk
+610,congo|iia|1919-1945,congo,iia,COG-1919-1960,pending,iso,223,1919-1945,21,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
+611,yugoslavia|fao1952|1947-1951,Yugoslavia,fao1952,F248-1947-1991,pending,applied_alias+name,211,1947-1951,5,1947-1991,national,draft,estimate,False,False,False,False,,False,bulk
+612,bolivia|juan|1910-1937,bolivia,juan,BOL-1909-1938,pending,iso,205,1910-1937,17,1909-1938,national,draft,assigned,False,False,False,False,,False,bulk
+613,mauritius|iia|1909-1945,mauritius,iia,MUS-1800-2025,pending,iso,192,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+614,paraguay|juan|1911-1931,paraguay,juan,PRY-1870-1932,pending,iso,190,1911-1931,21,1870-1932,national,draft,estimate,False,False,False,False,,False,bulk
+615,guadeloupe|iia|1909-1945,guadeloupe,iia,GLP-1816-2025,pending,iso,187,1909-1945,34,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
+616,suriname|iia|1909-1945,suriname,iia,SUR-1886-1954,pending,iso,185,1909-1945,33,1886-1954,national,draft,assigned,False,False,False,False,,False,bulk
+617,guadeloupe|mitchell|1850-1960,guadeloupe,mitchell,GLP-1816-2025,pending,iso,183,1850-1960,105,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
+618,mauritius|mitchell|1856-1960,mauritius,mitchell,MUS-1800-2025,pending,iso,181,1856-1960,101,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+619,belgian congo|fao1952|1937-1951,Belgian Congo,fao1952,COD-1910-1960,pending,applied_alias,180,1937-1951,6,1910-1960,national,draft,assigned,False,False,False,False,,False,bulk
+620,fiji|iia|1909-1945,fiji,iia,FJI-1800-2025,pending,iso,178,1909-1945,33,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+621,ghana|mitchell|1898-1956,ghana,mitchell,GHA-1898-1957,pending,iso,177,1898-1956,59,1898-1957,national,draft,assigned,False,False,False,False,,False,bulk
+622,hungary|juan|1940-1943,hungary,juan,HUN-1940-1944,pending,iso,176,1940-1943,4,1940-1944,national,draft,proxy,False,False,False,False,,False,bulk
+623,iran|iia|1913-1945,iran,iia,IRN-1828-2025,pending,iso,173,1913-1945,21,1828-2025,national,draft,assigned,False,False,False,False,,False,bulk
+624,chile|iia|1909-1945,chile,iia,CHL-1902-2025,pending,iso,172,1909-1945,30,1902-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+625,ecuador|juan|1900-1941,ecuador,juan,ECU-1830-1942,pending,iso,171,1900-1941,42,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
+626,canada|iia|1909-1945,canada,iia,CAN-1886-1949,reopened,iso,170,1909-1945,34,1886-1949,national,draft,assigned,False,False,False,False,,False,bulk
+627,chile|juan|1860-1883,chile,juan,CHL-1810-1884,pending,iso,168,1860-1883,24,1810-1884,national,draft,unassigned,False,False,False,False,,False,bulk
+628,montserrat|iia|1909-1945,montserrat,iia,MSR-1800-2025,pending,iso,166,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+629,kenya|iia|1929-1945,kenya,iia,KEN-1926-1963,pending,iso,161,1929-1945,17,1926-1963,national,draft,assigned,False,False,False,False,,False,bulk
+630,barbados|mitchell|1850-1960,barbados,mitchell,BRB-1800-2025,pending,iso,160,1850-1960,108,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+631,ivory coast|mitchell|1947-1959,ivory coast,mitchell,CIV-1947-1960,pending,iso,160,1947-1959,13,1947-1960,national,draft,assigned,False,False,False,False,,False,bulk
+632,syrian arab republic|mitchell|1922-1945,syrian arab republic,mitchell,SYR-1922-1946,pending,iso,160,1922-1945,24,1922-1946,national,draft,assigned,False,False,False,False,,False,bulk
+633,peru|mitchell|1942-1960,peru,mitchell,PER-1942-2025,pending,iso,158,1942-1960,19,1942-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+634,saint kitts and nevis|iia|1909-1945,saint kitts and nevis,iia,KNA-1800-2025,pending,iso,156,1909-1945,34,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+635,rwanda and burundi|mitchell|1924-1960,rwanda and burundi,mitchell,RWB-1922-1962,pending,applied_alias,155,1924-1960,31,1922-1962,national,draft,assigned,False,False,False,False,,False,bulk
+636,french west africa|fao1952|1937-1951,French West Africa,fao1952,AOF-1895-1960,pending,applied_alias,150,1937-1951,7,1895-1960,national,draft,assigned,False,False,False,False,,False,bulk
+637,eritrea|iia|1922-1938,eritrea,iia,ERI-1889-1952,pending,iso,149,1922-1938,14,1889-1952,national,draft,assigned,False,False,False,False,,False,bulk
+638,guinea|mitchell|1921-1957,guinea,mitchell,GIN-1894-1958,pending,iso,148,1921-1957,36,1894-1958,national,draft,assigned,False,False,False,False,,False,bulk
+639,ecuador|mitchell|1881-1941,ecuador,mitchell,ECU-1830-1942,pending,iso,147,1881-1941,61,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
+640,grenada|iia|1909-1945,grenada,iia,GRD-1800-2025,pending,iso,146,1909-1945,34,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+641,germany|juan|1945-1948,germany,juan,DEU-1945-1949,pending,iso,141,1945-1948,4,1945-1949,national,draft,assigned,False,False,False,False,,False,bulk
+642,brazil|iia|1910-1945,brazil,iia,BRA-1909-2025,pending,iso,138,1910-1945,25,1909-2025,national,draft,assigned,False,False,False,False,,False,bulk
+643,martinique|mitchell|1850-1960,martinique,mitchell,MTQ-1816-2025,pending,iso,137,1850-1960,109,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
+644,zambia|iia|1922-1944,zambia,iia,NRH-1911-1953,pending,iso,136,1922-1944,19,1911-1953,colonial,draft,assigned,False,False,False,False,,False,bulk
+645,hungary|iia|1920-1937,hungary,iia,HUN-1920-1938,pending,applied_alias+iso,135,1920-1937,14,1920-1938,national,draft,assigned,False,False,False,False,,False,bulk
+646,syrian arab republic|mitchell|1946-1960,syrian arab republic,mitchell,SYR-1946-1967,pending,iso,132,1946-1960,15,1946-1967,national,draft,assigned,False,False,False,False,,False,bulk
+647,saint lucia|iia|1909-1945,saint lucia,iia,LCA-1838-2025,pending,iso,130,1909-1945,34,1838-2025,national,draft,assigned,False,False,False,False,,False,bulk
+648,benin|iia|1929-1945,benin,iia,BEN-1898-1960,pending,iso,127,1929-1945,17,1898-1960,national,draft,assigned,False,False,False,False,,False,bulk
+649,lesotho|mitchell|1904-1960,lesotho,mitchell,LSO-1886-1966,pending,iso,124,1904-1960,32,1886-1966,national,draft,assigned,False,False,False,False,,False,bulk
+650,hungary|juan|1944-1946,hungary,juan,HUN-1944-1947,pending,iso,123,1944-1946,3,1944-1947,national,draft,assigned,False,False,False,False,,False,bulk
+651,antigua and barbuda|iia|1909-1945,antigua and barbuda,iia,ATG-1800-2025,pending,iso,122,1909-1945,32,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+652,benin|mitchell|1921-1959,benin,mitchell,BEN-1898-1960,pending,iso,121,1921-1959,34,1898-1960,national,draft,assigned,False,False,False,False,,False,bulk
+653,peru|juan|1909-1921,peru,juan,PER-1909-1922,pending,iso,120,1909-1921,13,1909-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
+654,iraq|mitchell|1932-1960,iraq,mitchell,IRQ-1932-2025,pending,iso,119,1932-1960,29,1932-2025,national,draft,assigned,False,False,False,False,,False,bulk
+655,germany|juan|1850-1865,germany,juan,DEU-1800-1866,pending,iso,116,1850-1865,16,1800-1866,national,draft,assigned,False,False,False,False,,False,bulk
+656,malaysia|iia|1909-1944,malaysia,iia,BNB-1881-1963,pending,iso,116,1909-1944,30,1881-1963,colonial,draft,assigned,False,False,False,False,,False,bulk
+657,dominica|iia|1909-1944,dominica,iia,DMA-1800-2025,pending,iso,115,1909-1944,31,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+658,panama|mitchell|1921-1960,panama,mitchell,PAN-1903-1979,pending,iso,115,1921-1960,40,1903-1979,national,draft,assigned,False,False,False,False,,False,bulk
+659,guinea|iia|1913-1945,guinea,iia,GIN-1894-1958,pending,iso,114,1913-1945,22,1894-1958,national,draft,assigned,False,False,False,False,,False,bulk
+660,vanuatu|iia|1911-1945,vanuatu,iia,VUT-1800-2025,pending,iso,112,1911-1945,27,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+661,mauritania|iia|1922-1945,mauritania,iia,MRT-1920-1960,pending,iso,111,1922-1945,21,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
+662,trinidad and tobago|iia|1909-1945,trinidad and tobago,iia,TTO-1800-2025,pending,iso,109,1909-1945,33,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+663,senegal|iia|1922-1945,senegal,iia,SEN-1886-1960,pending,iso,106,1922-1945,21,1886-1960,national,draft,assigned,False,False,False,False,,False,bulk
+664,chile|juan|1884-1898,chile,juan,CHL-1884-1899,pending,iso,105,1884-1898,15,1884-1899,national,draft,assigned,False,False,False,False,,False,bulk
+665,canada|mitchell|1949-1960,canada,mitchell,CAN-1949-2025,reopened,iso,104,1949-1960,12,1949-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+666,namibia|mitchell|1920-1960,namibia,mitchell,NAM-1920-1990,pending,iso,103,1920-1960,35,1920-1990,national,draft,assigned,False,False,False,False,,False,bulk
+667,sierra leone|iia|1913-1945,sierra leone,iia,SLE-1889-1961,pending,iso,103,1913-1945,25,1889-1961,national,draft,assigned,False,False,False,False,,False,bulk
+668,ghana|iia|1909-1945,ghana,iia,GHA-1898-1957,pending,iso,102,1909-1945,34,1898-1957,national,draft,assigned,False,False,False,False,,False,bulk
+669,ivory coast|mitchell|1932-1946,ivory coast,mitchell,CIV-1932-1947,pending,iso,101,1932-1946,15,1932-1947,national,draft,assigned,False,False,False,False,,False,bulk
+670,lebanon|iia|1923-1943,lebanon,iia,LBN-1920-1944,pending,iso,101,1923-1943,14,1920-1944,national,draft,assigned,False,False,False,False,,False,bulk
+671,mauritania|mitchell|1921-1959,mauritania,mitchell,MRT-1920-1960,pending,iso,101,1921-1959,36,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
+672,haiti|iia|1909-1945,haiti,iia,HTI-1800-2025,pending,iso,99,1909-1945,29,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+673,iraq|iia|1932-1945,iraq,iia,IRQ-1932-2025,pending,iso,97,1932-1945,14,1932-2025,national,draft,assigned,False,False,False,False,,False,bulk
+674,mozambique|iia|1913-1937,mozambique,iia,MOZ-1891-1975,pending,iso,97,1913-1937,14,1891-1975,national,draft,assigned,False,False,False,False,,False,bulk
+675,barbados|iia|1909-1943,barbados,iia,BRB-1800-2025,pending,iso,92,1909-1943,29,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+676,guyana|iia|1909-1945,guyana,iia,GUY-1800-2025,pending,iso,92,1909-1945,33,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+677,peru|mitchell|1922-1941,peru,mitchell,PER-1922-1942,pending,iso,91,1922-1941,20,1922-1942,national,draft,assigned,False,False,False,False,,False,bulk
+678,uganda|mitchell|1910-1925,uganda,mitchell,UGA-1910-1926,pending,iso,84,1910-1925,16,1910-1926,national,draft,assigned,False,False,False,False,,False,bulk
+679,hungary|juan|1938-1939,hungary,juan,HUN-1938-1940,pending,iso,83,1938-1939,2,1938-1940,national,draft,assigned,False,False,False,False,,False,bulk
+680,niger|mitchell|1947-1959,niger,mitchell,NER-1947-1960,reopened,iso,82,1947-1959,13,1947-1960,national,draft,assigned,False,False,False,False,,False,bulk
+681,peru|iia|1922-1941,peru,iia,PER-1922-1942,pending,iso,81,1922-1941,16,1922-1942,national,draft,assigned,False,False,False,False,,False,bulk
+682,bolivia|mitchell|1938-1960,bolivia,mitchell,BOL-1938-2025,pending,iso,80,1938-1960,23,1938-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+683,nigeria|iia|1922-1945,nigeria,iia,NGA-1914-1960,pending,iso,79,1922-1945,21,1914-1960,national,reviewed,assigned,True,False,False,False,,False,bulk
+684,togo|mitchell|1933-1959,togo,mitchell,FTO-1920-1960,pending,iso,76,1933-1959,20,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
+685,india|iia|1909-1913,india,iia,IND-1893-1914,pending,iso,75,1909-1913,5,1893-1914,national,draft,assigned,False,False,False,False,,False,bulk
+686,haiti|mitchell|1918-1960,haiti,mitchell,HTI-1800-2025,pending,iso,69,1918-1960,42,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+687,ivory coast|mitchell|1914-1931,ivory coast,mitchell,CIV-1902-1932,pending,iso,69,1914-1931,18,1902-1932,national,draft,assigned,False,False,False,False,,False,bulk
+688,libya|iia|1925-1933,libya,iia,LBY-1925-1934,pending,iso,69,1925-1933,6,1925-1934,national,draft,assigned,False,False,False,False,,False,bulk
+689,paraguay|juan|1932-1937,paraguay,juan,PRY-1932-1938,pending,iso,69,1932-1937,6,1932-1938,national,draft,assigned,False,False,False,False,,False,bulk
+690,paraguay|iia|1909-1931,paraguay,iia,PRY-1870-1932,pending,iso,68,1909-1931,18,1870-1932,national,draft,estimate,False,False,False,False,,False,bulk
+691,india|mitchell|1947-1948,india,mitchell,IND-1947-1949,pending,iso,66,1947-1948,2,1947-1949,national,draft,assigned,False,False,False,False,,False,bulk
+692,ethiopia|mitchell|1952-1960,ethiopia,mitchell,ETH-1952-1993,pending,iso,65,1952-1960,9,1952-1993,national,draft,assigned,False,False,False,False,,False,bulk
+693,colombia|juan|1903-1921,colombia,juan,COL-1903-1922,pending,iso,61,1903-1921,19,1903-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
+694,equatorial guinea|mitchell|1900-1959,equatorial guinea,mitchell,GNQ-1886-1968,pending,iso,60,1900-1959,60,1886-1968,national,draft,assigned,False,False,False,False,,False,bulk
+695,indonesia|mitchell|1945-1948,indonesia,mitchell,IDN-1945-1949,pending,iso,60,1945-1948,4,1945-1949,national,draft,assigned,False,False,False,False,,False,bulk
+696,sao tome and principe|mitchell|1900-1959,sao tome and principe,mitchell,STP-1800-2025,pending,iso,60,1900-1959,60,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+697,hungary|juan|1918-1919,hungary,juan,HUN-1918-1920,pending,iso,56,1918-1919,2,1918-1920,national,draft,assigned,False,False,False,False,,False,bulk
+698,hungary|mitchell|1861-1917,hungary,mitchell,HUN-1800-1918,pending,iso,56,1861-1917,56,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
+699,cambodia|mitchell|1953-1960,cambodia,mitchell,KHM-1953-2025,pending,iso,55,1953-1960,8,1953-2025,national,draft,assigned,False,False,False,False,,False,bulk
+700,sierra leone|mitchell|1914-1960,sierra leone,mitchell,SLE-1889-1961,pending,iso,55,1914-1960,42,1889-1961,national,draft,assigned,False,False,False,False,,False,bulk
+701,germany|iia|1938-1944,germany,iia,DEU-1938-1945,pending,iso,54,1938-1944,7,1938-1945,national,draft,assigned,False,False,False,False,,False,bulk
+702,nigeria|mitchell|1889-1913,nigeria,mitchell,NGA-1886-1914,pending,iso,53,1889-1913,24,1886-1914,national,draft,assigned,False,False,False,False,,False,bulk
+703,eswatini|mitchell|1909-1960,eswatini,mitchell,SWZ-1894-2025,pending,iso,49,1909-1960,47,1894-2025,national,draft,assigned,False,False,False,False,,False,bulk
+704,jordan|iia|1929-1944,jordan,iia,JOR-1923-1946,pending,iso,47,1929-1944,13,1923-1946,national,draft,assigned,False,False,False,False,,False,bulk
+705,libya|iia|1934-1942,libya,iia,LBY-1934-1943,pending,iso,47,1934-1942,9,1934-1943,national,draft,assigned,False,False,False,False,,False,bulk
+706,martinique|iia|1909-1945,martinique,iia,MTQ-1816-2025,pending,iso,47,1909-1945,32,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
+707,reunion|fao1952|1949-1951,Réunion,fao1952,REU-1946-2025,pending,applied_alias,47,1949-1951,3,1946-2025,national,draft,assigned,False,False,False,False,,False,bulk
+708,samoa|iia|1910-1945,samoa,iia,WSM-1900-2025,pending,iso,47,1910-1945,28,1900-2025,national,draft,assigned,False,False,False,False,,False,bulk
+709,afghanistan|mitchell|1954-1960,afghanistan,mitchell,AFG-1919-2025,pending,iso,45,1954-1960,6,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
+710,hungary|iia|1909-1916,hungary,iia,HUN-1800-1918,pending,iso,44,1909-1916,8,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
+711,kenya|mitchell|1908-1923,kenya,mitchell,KEN-1907-1924,pending,iso,43,1908-1923,16,1907-1924,national,draft,assigned,False,False,False,False,,False,bulk
+712,malaysia|mitchell|1946-1956,malaysia,mitchell,MYS-1946-1957,pending,iso,43,1946-1956,11,1946-1957,national,draft,assigned,False,False,False,False,,False,bulk
+713,cabo verde|iia|1932-1944,cabo verde,iia,CPV-1886-1975,pending,iso,42,1932-1944,10,1886-1975,colonial,draft,assigned,False,False,False,False,,False,bulk
+714,liberia|mitchell|1919-1960,liberia,mitchell,LBR-1847-2025,pending,iso,42,1919-1960,36,1847-2025,national,draft,assigned,False,False,False,False,,False,bulk
+715,hungary|iia|1938-1939,hungary,iia,HUN-1938-1940,pending,iso,41,1938-1939,2,1938-1940,national,draft,assigned,False,False,False,False,,False,bulk
+716,india|iia|1937-1945,india,iia,IND-1937-1947,pending,iso,41,1937-1945,9,1937-1947,national,draft,assigned,False,False,False,False,,False,bulk
+717,italy|mitchell|1919-1960,italy,mitchell,ITA-1919-2025,pending,applied_alias+iso,41,1919-1960,41,1919-2025,national,draft,assigned,False,False,False,False,,False,bulk
+718,lebanon|mitchell|1944-1960,lebanon,mitchell,LBN-1944-2025,pending,iso,41,1944-1960,17,1944-2025,national,draft,assigned,False,False,False,False,,False,bulk
+719,chad|mitchell|1930-1959,chad,mitchell,TCD-1919-1960,pending,iso,40,1930-1959,29,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
+720,morocco|mitchell|1958-1960,morocco,mitchell,MAR-1958-1975,pending,iso,40,1958-1960,3,1958-1975,national,draft,assigned,False,False,False,False,,False,bulk
+721,panama|iia|1912-1945,panama,iia,PAN-1903-1979,pending,iso,40,1912-1945,27,1903-1979,national,draft,assigned,False,False,False,False,,False,bulk
+722,ecuador|iia|1913-1941,ecuador,iia,ECU-1830-1942,pending,iso,38,1913-1941,13,1800-1942,national,draft,assigned,False,False,False,False,,False,bulk
+723,gambia|mitchell|1922-1960,gambia,mitchell,GMB-1800-2025,pending,iso,38,1922-1960,38,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+724,germany|juan|1866-1870,germany,juan,DEU-1866-1871,pending,iso,37,1866-1870,5,1866-1871,national,draft,assigned,False,False,False,False,,False,bulk
+725,peru|mitchell|1909-1921,peru,mitchell,PER-1909-1922,pending,iso,36,1909-1921,12,1909-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
+726,bolivia|mitchell|1910-1937,bolivia,mitchell,BOL-1909-1938,pending,iso,35,1910-1937,9,1909-1938,national,draft,assigned,False,False,False,False,,False,bulk
+727,ethiopia|mitchell|1942-1951,ethiopia,mitchell,ETH-1941-1952,pending,iso,35,1942-1951,8,1941-1952,national,draft,assigned,False,False,False,False,,False,bulk
+728,lebanon|iia|1944-1945,lebanon,iia,LBN-1944-2025,pending,iso,35,1944-1945,2,1944-2025,national,draft,assigned,False,False,False,False,,False,bulk
+729,eswatini|iia|1922-1944,eswatini,iia,SWZ-1894-2025,pending,iso,34,1922-1944,18,1894-2025,national,draft,assigned,False,False,False,False,,False,bulk
+730,equatorial guinea|iia|1910-1945,equatorial guinea,iia,GNQ-1886-1968,pending,iso,32,1910-1945,23,1886-1968,national,draft,assigned,False,False,False,False,,False,bulk
+731,zambia|mitchell|1912-1952,zambia,mitchell,NRH-1911-1953,pending,iso,32,1912-1952,32,1911-1953,colonial,draft,assigned,False,False,False,False,,False,bulk
+732,ivory coast|iia|1913-1931,ivory coast,iia,CIV-1902-1932,pending,iso,30,1913-1931,5,1902-1932,national,draft,assigned,False,False,False,False,,False,bulk
+733,ghana|mitchell|1957-1960,ghana,mitchell,GHA-1957-2025,pending,iso,29,1957-1960,4,1957-2025,national,draft,assigned,False,False,False,False,,False,bulk
+734,jordan|mitchell|1946-1960,jordan,mitchell,JOR-1946-2025,pending,iso,29,1946-1960,15,1946-2025,national,draft,assigned,False,False,False,False,,False,bulk
+735,paraguay|iia|1932-1936,paraguay,iia,PRY-1932-1938,pending,iso,29,1932-1936,5,1932-1938,national,draft,assigned,False,False,False,False,,False,bulk
+736,bolivia|iia|1929-1934,bolivia,iia,BOL-1909-1938,pending,iso,28,1929-1934,5,1909-1938,national,draft,assigned,False,False,False,False,,False,bulk
+737,guinea bissau|mitchell|1924-1960,guinea-bissau,mitchell,GNB-1886-1974,pending,iso,28,1924-1960,28,1886-1974,national,draft,assigned,False,False,False,False,,False,bulk
+738,north korea|mitchell|1949-1960,north korea,mitchell,PRK-1948-2025,pending,iso,28,1949-1960,8,1948-2025,national,draft,assigned,False,False,False,False,,False,bulk
+739,libya|mitchell|1951-1960,libya,mitchell,LBY-1951-2025,pending,iso,27,1951-1960,8,1951-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+740,brazil|mitchell|1879-1902,brazil,mitchell,BRA-1800-1903,pending,iso,26,1879-1902,24,1800-1903,national,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
+741,ethiopia|mitchell|1909-1935,ethiopia,mitchell,ETH-1907-1936,pending,iso,26,1909-1935,26,1907-1936,national,draft,assigned,False,False,False,False,,False,bulk
+742,gabon|iia|1912-1918,gabon,iia,GAB-1912-1919,pending,iso,26,1912-1918,7,1912-1919,national,draft,assigned,False,False,False,False,,False,bulk
+743,hungary|iia|1940-1943,hungary,iia,HUN-1940-1944,pending,iso,25,1940-1943,4,1940-1944,national,draft,proxy,False,False,False,False,,False,bulk
+744,peru|iia|1909-1921,peru,iia,PER-1909-1922,pending,iso,25,1909-1921,13,1909-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
+745,peru|mitchell|1884-1908,peru,mitchell,PER-1884-1909,pending,iso,25,1884-1908,25,1884-1909,national,draft,assigned,False,False,False,False,,False,bulk
+746,brazil|juan|1903-1908,brazil,juan,BRA-1903-1909,pending,iso,24,1903-1908,6,1903-1909,national,draft,assigned,False,False,False,False,,False,bulk
+747,gabon|iia|1919-1932,gabon,iia,GAB-1919-1960,pending,iso,24,1919-1932,10,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
+748,kenya|iia|1913-1923,kenya,iia,KEN-1907-1924,pending,iso,24,1913-1923,4,1907-1924,national,draft,assigned,False,False,False,False,,False,bulk
+749,brunei darussalam|iia|1932-1945,brunei darussalam,iia,BRN-1888-2025,pending,iso,22,1932-1945,10,1888-2025,national,draft,assigned,False,False,False,False,,False,bulk
+750,nepal|iia|1913-1944,nepal,iia,NPL-1816-2025,pending,iso,22,1913-1944,20,1816-2025,national,draft,assigned,False,False,False,False,,False,bulk
+751,chile|juan|1899-1901,chile,juan,CHL-1899-1902,pending,iso,21,1899-1901,3,1899-1902,national,reviewed,assigned,True,False,False,False,,False,bulk
+752,namibia|mitchell|1903-1912,namibia,mitchell,NAM-1886-1915,pending,iso,21,1903-1912,7,1886-1915,national,draft,assigned,False,False,False,False,,False,bulk
+753,colombia|mitchell|1903-1921,colombia,mitchell,COL-1903-1922,pending,iso,20,1903-1921,19,1903-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
+754,timor leste|iia|1909-1940,timor-leste,iia,TLS-1800-2025,pending,iso,20,1909-1940,19,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+755,pakistan|mitchell|1947-1948,pakistan,mitchell,PAK-1947-1949,pending,iso,19,1947-1948,2,1947-1949,national,draft,assigned,False,False,False,False,,False,bulk
+756,seychelles|iia|1909-1933,seychelles,iia,SYC-1903-2025,pending,iso,19,1909-1933,15,1903-2025,national,draft,assigned,False,False,False,False,,False,bulk
+757,colombia|iia|1913-1921,colombia,iia,COL-1903-1922,pending,iso,18,1913-1921,6,1903-1922,national,reviewed,assigned,True,False,False,False,,False,bulk
+758,congo|iia|1913-1918,congo,iia,COG-1912-1919,pending,iso,18,1913-1918,6,1912-1919,national,draft,assigned,False,False,False,False,,False,bulk
+759,hungary|mitchell|1920-1937,hungary,mitchell,HUN-1920-1938,pending,applied_alias+iso,18,1920-1937,18,1920-1938,national,draft,assigned,False,False,False,False,,False,bulk
+760,sao tome and principe|iia|1913-1944,sao tome and principe,iia,STP-1800-2025,pending,iso,17,1913-1944,13,1800-2025,national,draft,proxy,False,False,False,False,,False,bulk
+761,nauru|iia|1909-1933,nauru,iia,NRU-1888-2025,pending,iso,16,1909-1933,16,1888-2025,national,draft,assigned,False,False,False,False,,False,bulk
+762,germany|mitchell|1850-1865,germany,mitchell,DEU-1800-1866,pending,iso,15,1850-1865,15,1800-1866,national,draft,assigned,False,False,False,False,,False,bulk
+763,jordan|mitchell|1927-1943,jordan,mitchell,JOR-1923-1946,pending,iso,15,1927-1943,15,1923-1946,national,draft,assigned,False,False,False,False,,False,bulk
+764,malaysia|mitchell|1957-1960,malaysia,mitchell,MYS-1957-1963,pending,iso,15,1957-1960,4,1957-1963,national,draft,assigned,False,False,False,False,,False,bulk
+765,estonia|juan|1940-1958,estonia,juan,EST-1940-1991,pending,iso,14,1940-1958,8,1940-1991,national,draft,assigned,False,False,False,False,,False,bulk
+766,hungary|mitchell|1947-1960,hungary,mitchell,HUN-1947-2025,pending,iso,14,1947-1960,14,1947-2025,national,reviewed,assigned,True,False,False,False,,False,bulk
+767,suriname|mitchell|1954-1960,suriname,mitchell,SUR-1954-1975,pending,applied_alias+iso,14,1954-1960,7,1954-1975,national,draft,assigned,False,False,False,False,,False,bulk
+768,paraguay|mitchell|1910-1930,paraguay,mitchell,PRY-1870-1932,pending,iso,13,1910-1930,6,1870-1932,national,draft,estimate,False,False,False,False,,False,bulk
+769,paraguay|mitchell|1932-1937,paraguay,mitchell,PRY-1932-1938,pending,iso,13,1932-1937,6,1932-1938,national,draft,assigned,False,False,False,False,,False,bulk
+770,brazil|mitchell|1903-1908,brazil,mitchell,BRA-1903-1909,pending,iso,12,1903-1908,6,1903-1909,national,draft,assigned,False,False,False,False,,False,bulk
+771,central african republic|iia|1922-1931,central african republic,iia,CAF-1919-1960,pending,iso,12,1922-1931,6,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
+772,dr congo|mitchell|1898-1909,dr congo,mitchell,COD-1894-1910,pending,iso,12,1898-1909,12,1894-1910,national,draft,assigned,False,False,False,False,,False,bulk
+773,french w africa|fao1952|1949-1951,French W Africa,fao1952,AOF-1895-1960,pending,applied_alias,12,1949-1951,3,1895-1960,national,draft,assigned,False,False,False,False,,False,bulk
+774,gambia|iia|1913-1945,gambia,iia,GMB-1800-2025,pending,iso,12,1913-1945,11,1800-2025,national,draft,assigned,False,False,False,False,,False,bulk
+775,guinea|mitchell|1958-1960,guinea,mitchell,GIN-1958-2025,pending,iso,12,1958-1960,3,1958-2025,national,draft,assigned,False,False,False,False,,False,bulk
+776,liberia|iia|1938-1945,liberia,iia,LBR-1847-2025,pending,iso,12,1938-1945,8,1847-2025,national,draft,assigned,False,False,False,False,,False,bulk
+777,libya|mitchell|1935-1938,libya,mitchell,LBY-1934-1943,pending,iso,12,1935-1938,4,1934-1943,national,draft,assigned,False,False,False,False,,False,bulk
+778,south korea|mitchell|1945-1947,south korea,mitchell,KOR-1945-1948,pending,iso,12,1945-1947,3,1945-1948,national,draft,assigned,False,False,False,False,,False,bulk
+779,uganda|mitchell|1905-1909,uganda,mitchell,UGA-1902-1910,pending,iso,11,1905-1909,5,1902-1910,national,draft,assigned,False,False,False,False,,False,bulk
+780,estonia|juan|1908-1916,estonia,juan,EST-1800-1918,pending,iso,10,1908-1916,3,1800-1918,national,draft,assigned,False,False,False,False,,False,bulk
+781,guinea bissau|iia|1929-1945,guinea-bissau,iia,GNB-1886-1974,pending,iso,10,1929-1945,6,1886-1974,national,draft,assigned,False,False,False,False,,False,bulk
+782,kenya|iia|1924-1925,kenya,iia,KEN-1924-1926,pending,iso,10,1924-1925,2,1924-1926,national,draft,assigned,False,False,False,False,,False,bulk
+783,kenya|mitchell|1924-1925,kenya,mitchell,KEN-1924-1926,pending,iso,10,1924-1925,2,1924-1926,national,draft,assigned,False,False,False,False,,False,bulk
+784,namibia|iia|1929-1938,namibia,iia,NAM-1920-1990,pending,iso,10,1929-1938,9,1920-1990,national,draft,assigned,False,False,False,False,,False,bulk
+785,peru|mitchell|1873-1883,peru,mitchell,PER-1825-1884,pending,iso,10,1873-1883,10,1825-1884,national,draft,assigned,False,False,False,False,,False,bulk
+786,brazil|juan|1900-1902,brazil,juan,BRA-1800-1903,pending,iso,8,1900-1902,3,1800-1903,national,draft,polygon_vintage_drift,False,False,False,False,,False,bulk
+787,libya|mitchell|1925-1928,libya,mitchell,LBY-1925-1934,pending,iso,8,1925-1928,2,1925-1934,national,draft,assigned,False,False,False,False,,False,bulk
+788,mongolia|mitchell|1957-1960,mongolia,mitchell,MNG-1921-2025,pending,iso,8,1957-1960,4,1921-2025,national,draft,assigned,False,False,False,False,,False,bulk
+789,peru|juan|1901-1908,peru,juan,PER-1884-1909,pending,iso,8,1901-1908,8,1884-1909,national,draft,assigned,False,False,False,False,,False,bulk
+790,cambodia|iia|1929-1943,cambodia,iia,KHM-1907-1953,pending,iso,7,1929-1943,6,1907-1953,national,draft,assigned,False,False,False,False,,False,bulk
+791,hungary|iia|1944-1945,hungary,iia,HUN-1944-1947,pending,iso,7,1944-1945,2,1944-1947,national,draft,assigned,False,False,False,False,,False,bulk
+792,lebanon|mitchell|1940-1943,lebanon,mitchell,LBN-1920-1944,pending,iso,7,1940-1943,4,1920-1944,national,draft,assigned,False,False,False,False,,False,bulk
+793,togo|iia|1938-1945,togo,iia,FTO-1920-1960,pending,iso,7,1938-1945,2,1920-1960,national,draft,assigned,False,False,False,False,,False,bulk
+794,chad|iia|1922-1924,chad,iia,TCD-1919-1960,pending,iso,6,1922-1924,3,1919-1960,national,draft,assigned,False,False,False,False,,False,bulk
+795,faroe islands|iia|1929-1939,faroe islands,iia,FRO-1800-2025,pending,iso,6,1929-1939,6,1800-2025,territory,draft,assigned,False,False,False,False,,False,bulk
+796,gabon|iia|1909-1911,gabon,iia,GAB-1839-1912,pending,iso,6,1909-1911,3,1839-1912,national,draft,assigned,False,False,False,False,,False,bulk
+797,germany|mitchell|1938-1943,germany,mitchell,DEU-1938-1945,pending,iso,6,1938-1943,6,1938-1945,national,draft,assigned,False,False,False,False,,False,bulk
+798,reunion|fao1952|1936-1938,Réunion,fao1952,REU-1816-1946,pending,applied_alias,6,1936-1938,3,1816-1946,colonial,draft,assigned,False,False,False,False,,False,bulk

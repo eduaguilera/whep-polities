@@ -467,8 +467,9 @@ FRA-08-1800-2025,Ardennes (département),1800,2025,gadm-4.1-adm2,,assigned,True,
 FRA-13-1790-2025,Bouches-du-Rhône (département),1790,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-14-1800-2025,Calvados (département),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-18-1800-2025,Cher,1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-FRA-1800-1871,"France (with Alsace-Lorraine, to 1871)",1800,1871,cshapes-europe,1816.0,assigned,True,assumed_constant,True,True,no_reference,,single 1816 polygon held across a 71y span (1800-1871); borders may have changed,313
+FRA-1800-1860,"France (before Savoy and Nice, to 1860)",1800,1860,cshapes-europe,1816.0,assigned,True,assumed_constant,True,True,no_reference,,single 1816 polygon held across a 60y span (1800-1860); borders may have changed,147
 FRA-1800-1919,France (to 1919),1800,1919,cshapes-europe,1816.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.32,single 1816 polygon held across a 119y span (1800-1919); borders may have changed,0
+FRA-1860-1871,"France (with Savoy, Nice and Alsace-Lorraine, 1860-1871)",1860,1871,cshapes-europe,1861.0,assigned,True,measured,False,False,no_reference,,vintage 1861 faithful to period 1860-1871,166
 FRA-1871-1919,"France (without Alsace-Lorraine, 1871-1919)",1871,1919,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.0,single 1886 polygon held across a 48y span (1871-1919); borders may have changed,2358
 FRA-19-1800-2025,Corrèze (département of France),1800,2025,gadm-4.1-adm2,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FRA-1919-2025,France,1919,2025,cshapes-2.0,1919.0,assigned,True,assumed_constant,True,True,stable_where_covered,0.0,single 1919 polygon held across a 106y span (1919-2025); borders may have changed; footnote coverage caveat (FAO/IIA yearbook),4092
