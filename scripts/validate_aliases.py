@@ -40,6 +40,11 @@ Checks:
   4. `year_start <= year_end` when both are present.
   5. `source` is a slug or empty, never prose.
   6. a `back_cast` row ends before its target begins (year_end < start_year).
+  7. `indicator` (the optional scope, 2026-09-25; blank = any) names a value of the panel's
+     own `indicator` vocabulary, and only on a panel slug.
+  8. no two rules on one label and source (a blank source counting as every source) claim a
+     common year unless their indicator scopes are DISJOINT -- both set, to different values.
+  9. the number of scoped rows is pinned, bidirectionally.
 
 Usage:
   python3 scripts/validate_aliases.py
@@ -80,6 +85,32 @@ for _r in polities:
         spans[_r["polity_code"]] = (int(_r["start_year"]), int(_r["end_year"]))
     except (KeyError, TypeError, ValueError):
         continue
+
+# --- the indicator scope (checks 7-9) -------------------------------------------------------
+#
+# WHY IT EXISTS. The alias key is (label, source, years), so a panel unit whose INDICATORS are two
+# territories cannot be routed. Measured 2026-09-25 on whep_production_subnational.parquet: CHL-LL
+# reports crops (area, production, yield) for Los Lagos + Los Rios in every year -- Los Rios has no
+# crop row at all and Los Lagos' crops do not step down at the 2007 split -- while its landuse
+# (42,302 km2 in every year) and livestock are Los Lagos alone (Los Rios carries its own), under one
+# id and one name. CHL-BI is the same shape with Nuble. An optional `indicator` column, BLANK = ANY,
+# the convention source_label_item_corrections.csv took for its unit/indicator scope in #700.
+#
+# The vocabulary is the panel's own `indicator` column, every value it carries (8,929,673 rows,
+# measured 2026-09-25). A scope outside it selects no row, and a rule that selects nothing leaves
+# those rows routed nowhere -- so a typo fails here, in CI, where the panel is absent.
+SCOPE_INDICATORS = frozenset({"area", "production", "yield", "livestock_stock", "landuse"})
+# Panel slugs: pipelines/agent-harness/policy.json `alias_derivation` (panel_slug and the
+# `whep-lab-` prefix). No other source has a pinned indicator vocabulary, and layer B's
+# `indicator` is a table id, not a panel indicator, so matchlib skips scoped rows entirely: a
+# scope on a layer-B slug would silently route nothing there.
+PANEL_SLUG = "juan-subnational"
+PANEL_SLUG_PREFIXES = ("whep-lab-",)
+# How many rows carry a scope. PINNED, both ways, and 0 on purpose: the consumer (eduaguilera/whep
+# `resolve_polity_label()`, whep issue 1294) must match the column before the first scoped rule is
+# published, because one that ignores it sees two rules for one label and years and takes whichever
+# it reaches first. Raise this in the same change as the rows, once the consumer honours the scope.
+BASELINE_SCOPED_ROWS = 0
 
 rows = list(csv.DictReader(open(ALIASES, encoding="utf-8")))
 problems: list[str] = []
@@ -231,6 +262,79 @@ for i, r in enumerate(rows, start=2):
             f"back-cast; split the row or drop the disposition for those years"
         )
 
+# --- 7: the scope names a panel indicator, on a panel slug ------------------------------------
+def _scope(r):
+    return (r.get("indicator") or "").strip()
+
+
+for i, r in enumerate(rows, start=2):
+    ind = _scope(r)
+    if not ind:
+        continue
+    src = (r.get("source") or "").strip()
+    where = f"line {i}, {r.get('source_label', '')!r} [{src or 'no source'}]"
+    if not (src == PANEL_SLUG or src.startswith(PANEL_SLUG_PREFIXES)):
+        problems.append(
+            f"{where}: indicator scope {ind!r} on a source with no panel indicator vocabulary -- "
+            f"the scope exists for the subnational panel's slugs only, and matchlib skips "
+            f"scoped rows, so the rule would route nothing")
+    elif ind not in SCOPE_INDICATORS:
+        problems.append(
+            f"{where}: indicator scope {ind!r} is not a panel indicator "
+            f"({sorted(SCOPE_INDICATORS)}) -- the rule would select no row")
+
+
+# --- 8: rules on one label and source that claim a common year --------------------------------
+#
+# Two rules claiming one row leave the consumer to choose by file order. For UNSCOPED rules that is
+# validate_alias_chain_overlaps.py's business (it baselines the historical touches); what is new
+# with the scope is this: a scoped rule beside an unscoped one on common years collides, because a
+# blank scope means ANY indicator -- so neither may be read as "the default" and the other as "the
+# exception". Two scoped rules collide unless their values differ. Labels compared case-folded, as
+# the chain gate compares them; a blank `source` applies to every source, as in matchlib.
+def _span(r):
+    y0 = (r.get("year_start") or "").strip()
+    y1 = (r.get("year_end") or "").strip()
+    return (int(y0) if YEAR_RE.match(y0) else -10**6, int(y1) if YEAR_RE.match(y1) else 10**6)
+
+
+by_label: dict = {}
+for i, r in enumerate(rows, start=2):
+    by_label.setdefault((r.get("source_label") or "").strip().lower(), []).append((i, r))
+for label, group in by_label.items():
+    if not any(_scope(r) for _, r in group):
+        continue
+    for k, (ia, a) in enumerate(group):
+        for ib, b in group[k + 1:]:
+            if not (_scope(a) or _scope(b)):
+                continue   # unscoped pairs: the chain gate's
+            sa, sb = (a.get("source") or "").strip(), (b.get("source") or "").strip()
+            if sa and sb and sa != sb:
+                continue
+            (a0, a1), (b0, b1) = _span(a), _span(b)
+            if max(a0, b0) > min(a1, b1):
+                continue
+            if _scope(a) and _scope(b) and _scope(a) != _scope(b):
+                continue   # disjoint: no row carries two indicators
+            problems.append(
+                f"lines {ia} and {ib}, {label!r}: rules scoped "
+                f"{_scope(a) or '(any)'!r} -> {a.get('polity_code')} and "
+                f"{_scope(b) or '(any)'!r} -> {b.get('polity_code')} both claim "
+                f"{max(a0, b0)}-{min(a1, b1)}, so file order would decide -- a blank scope "
+                f"means ANY indicator; scope every rule in the years it is split")
+
+# --- 9: the number of scoped rows ---------------------------------------------------------------
+n_scoped = sum(1 for r in rows if _scope(r))
+if n_scoped != BASELINE_SCOPED_ROWS:
+    problems.append(
+        f"{n_scoped} indicator-scoped alias rows against the pinned {BASELINE_SCOPED_ROWS} -- "
+        + ("raise BASELINE_SCOPED_ROWS in the same change, and only once the consumer "
+           "(whep resolve_polity_label, whep issue 1294) matches `indicator`: one that ignores "
+           "it takes whichever of the split's rules it reaches first"
+           if n_scoped > BASELINE_SCOPED_ROWS else
+           "a scope was blanked or a scoped row deleted, which widens a rule onto the "
+           "indicators the scope existed to leave alone"))
+
 for key in sorted(BASELINE_BEFORE_TARGET - before_target):
     problems.append(
         f"alias {key[0]!r} [{key[1] or 'no source'}] -> {key[2]} is baselined as beginning "
@@ -251,5 +355,5 @@ if problems:
 
 print(
     f"PASS: all {len(rows)} aliases target a live polity, with well-formed "
-    f"years and confidence"
+    f"years and confidence; {n_scoped} indicator-scoped (pinned {BASELINE_SCOPED_ROWS})"
 )

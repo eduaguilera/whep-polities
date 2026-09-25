@@ -56,6 +56,17 @@ COLUMNS = (
     #                   verdict schema has always specified this behaviour and nothing could
     #                   express it, which left 377,822 panel rows resolving to no polity at all.
     #                   A consumer that wants observation only filters on this column.
+    "indicator",      # EMPTY means the rule applies to every row of the label, the ordinary case.
+    #                   A value limits it to rows whose panel `indicator` equals it exactly
+    #                   (`area`, `production`, `yield`, `livestock_stock`, `landuse`). Added
+    #                   2026-09-25 for a unit whose indicators are two territories: the panel's
+    #                   CHL-LL reports crops for Los Lagos + Los Rios and landuse/livestock for
+    #                   Los Lagos alone, under one id and one name. Same convention as the
+    #                   `unit` / `indicator` scope of source_label_item_corrections.csv (#700):
+    #                   blank = any. Appended LAST so a positional reader of the earlier shape
+    #                   keeps its columns. A consumer that cannot supply a row's indicator must
+    #                   not use a scoped rule, and must refuse (not guess) a label/year that
+    #                   only scoped rules cover -- see the manifest's `label_alias_map`.
 )
 
 ap = argparse.ArgumentParser()
@@ -127,6 +138,10 @@ for r in csv.DictReader(open(REGISTRY, encoding="utf-8")):
             # wanting observation only filters on it. Dropping it here would have left the
             # published map unable to distinguish the two, while the gate passed on the registry.
             "disposition": (r.get("disposition") or "").strip(),
+            # Carried through verbatim, like `disposition`: a scope dropped here would publish
+            # two rules for one label and years, and a consumer would pick one by file order.
+            # A registry row written before the column existed has no field at all (None).
+            "indicator": (r.get("indicator") or "").strip(),
         }
     )
 
@@ -136,6 +151,7 @@ rows.sort(
         r["source_label"].lower(),
         r["source"],
         r["year_start"],
+        r["indicator"],
         r["polity_code"],
     )
 )
@@ -177,7 +193,11 @@ if A.check:
     sys.exit(1)
 
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
-open(OUT, "w", encoding="utf-8").write(new)
+# Atomic: a killed run must not leave a truncated contract behind for a consumer to embed.
+tmp = f"{OUT}.{os.getpid()}.tmp"
+with open(tmp, "w", encoding="utf-8") as fh:
+    fh.write(new)
+os.replace(tmp, OUT)
 print(
     f"wrote {os.path.relpath(OUT, REPO)}: {len(rows)} aliases over "
     f"{len(labels)} labels and {len(sources)} sources"

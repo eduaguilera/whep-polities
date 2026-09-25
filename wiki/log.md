@@ -26,6 +26,27 @@ Kinds:
 
 ---
 
+## proposal-indicator-scoped-aliases
+**Date:** 2026-09-25
+**Touched:** CHL-BI-1976-2025, CHL-LL-1976-2025
+(mechanism only; no alias, polity row, date or polygon changed)
+**Source:** juan-subnational
+**Kind:** proposal
+
+**A panel unit's indicators can be two territories.** The subnational panel's `CHL-LL` reports its
+crops (area, production, yield) for Los Lagos + Los Ríos in every year and its landuse and livestock
+for Los Lagos alone, under one unit id and one name; `CHL-BI` is the same with Ñuble
+([chl-ll-1976-2025](polities/chl-ll-1976-2025.md), [chl-bi-1976-2025](polities/chl-bi-1976-2025.md)).
+The alias key was (label, source, years), so no rule could route them apart. The registry and the
+published alias map now carry an optional `indicator` column, blank = any, the convention
+`source_label_item_corrections.csv` uses for its scope.
+
+**Proposed, not applied:** a pre-split polity for each (Biobío ∪ Ñuble, 37,129 km²; Los Lagos ∪ Los
+Ríos, 66,431 km², composed from the GADM features already bound) and crop-scoped rules routing the two
+units' `area` / `production` / `yield` there. It waits on the composed polygons, which are built into
+the shared geodata, and on WHEP's consumer reading the column (eduaguilera/whep#1294). No human has
+signed off; written by Claude.
+
 ## decision-unit-scoped-label-corrections
 **Date:** 2026-09-25
 **Touched:** RVN-1954-1975, F237-1954-1975, SYR-1920-1922, SYR-1922-1946, SYL-1920-1944

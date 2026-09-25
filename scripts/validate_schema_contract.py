@@ -90,6 +90,13 @@ CSV_CONTRACT = {
         # rows resolved to no polity at all. Readers updated with it: validate_aliases.py, whose
         # before-target check must not fire on a range that begins before its target BY DESIGN.
         "disposition",
+        # Appended 2026-09-25: an optional scope, BLANK = ANY, limiting a rule to rows whose panel
+        # `indicator` equals it (the unit/indicator convention source_label_item_corrections.csv
+        # took in #700). A KEY column: a consumer ignoring it would see two rules for one label and
+        # years and pick one by file order. Readers updated with it: validate_aliases.py (collision
+        # and vocabulary), validate_alias_chain_overlaps.py (chains keyed on it), matchlib (skips
+        # scoped rules; layer B carries no panel indicator), derive_aliases.py (coverage).
+        "indicator",
     ],
     "data/final/faostat_area_polity_map.csv": [
         "area_code", "year_start", "year_end", "polity_code", "source_label",
@@ -140,6 +147,9 @@ CSV_CONTRACT = {
         "polity_code", "confidence", "basis", "observed_rows",
         # Appended 2026-09-22; see the note on label_alias_map.csv, which this table feeds.
         "disposition",
+        # Appended 2026-09-25, likewise (the indicator scope). Rows written before it have no
+        # trailing field, which csv.DictReader reads as None and every reader treats as blank.
+        "indicator",
     ],
     "pipelines/faostat-era-matching/state/faostat_aliases.csv": [
         "source_label", "source", "year_start", "year_end", "common_name",

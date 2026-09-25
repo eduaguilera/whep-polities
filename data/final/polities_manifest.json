@@ -172,7 +172,7 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "202cbbf54f77cd7bbffe568245a2b875a7160c079bfb465d2056dd411383e417",
+  "sha256": "8574178e5515146aa15a2d1fbbbc4a2b542f1f8479a59b6a01e476027d830ea1",
   "aliases": 2687,
   "labels": 1430,
   "sources": [
@@ -203,7 +203,9 @@
    "whep-lab-spain-provinces",
    "whep-lab-usa",
    "whep-split-2026-06-29"
-  ]
+  ],
+  "indicator_scoped_aliases": 0,
+  "indicator_scope_why": "`indicator` is an optional scope on a rule, BLANK = ANY: a non-blank value limits the rule to rows whose panel `indicator` (area, production, yield, livestock_stock, landuse) equals it exactly -- the convention of source_label_item_corrections.csv's unit/indicator scope. It exists for a panel unit whose indicators are two territories under one id and name (CHL-LL: crops for Los Lagos + Los Rios, landuse and livestock for Los Lagos alone). A row's candidate rules are those matching label, source and year whose indicator is blank or equals the row's. Published rules never let a blank and a scoped rule, or two rules with one scope, claim the same label, source and year (validate_aliases.py), so at most one candidate remains and no precedence is needed. A consumer that cannot supply a row's indicator must treat a label/year that only scoped rules cover as unresolved, not pick one of them."
  },
  "label_item_corrections": {
   "path": "data/final/source_label_item_corrections.csv",

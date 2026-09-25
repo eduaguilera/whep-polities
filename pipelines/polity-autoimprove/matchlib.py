@@ -376,8 +376,17 @@ class Matcher:
         # unit need not match our period splits.
         self.override_rules = []
         self.stale_alias_targets = defaultdict(int)   # alias rows aimed at dead polities
+        # Rows scoped to one panel `indicator` (column added 2026-09-25; blank = any). Layer B
+        # carries no panel indicator -- its `indicator` is a table id -- and validate_aliases.py
+        # allows the scope on panel slugs only, which layer B never uses. So a scoped row can
+        # never apply here, and loading it unscoped would turn a rule meant for crops into one for
+        # every row of the label. Skipped and counted, not silently dropped.
+        self.indicator_scoped_rules = 0
         if applied_aliases_csv and os.path.exists(applied_aliases_csv):
             for r in csv.DictReader(open(applied_aliases_csv)):
+                if (r.get("indicator") or "").strip():
+                    self.indicator_scoped_rules += 1
+                    continue
                 tc = (r.get("polity_code") or "").strip()
                 if tc in self.dead_codes:
                     # the alias itself is stale: let the label fall through to
