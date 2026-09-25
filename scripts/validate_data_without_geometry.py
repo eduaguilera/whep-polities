@@ -198,14 +198,10 @@ BASELINE = frozenset({
     # FTT's 738, because it is mostly the Gulf of Trieste -- and no fetched source has an
     # Italian/Slovenian/Croatian coastline to clip the sea off with.
     "TRS-1947-1954",
-    # 1 row, added 2026-09-24: fao1952's 1937 `Dodecanese` population (141 thousand), printed separately
-    # because its pre-war `Greece` excludes the islands. NO SOURCE HAS IT, as the page records: CShapes 2.0
-    # has no Dodecanese/Aegean feature and Cliopatria's Rhodes entries are ancient. Routed anyway because
-    # the alternatives were the whole of Italy or of Greece; the row is matched and honestly geometry-less.
-    # 1 -> 5 rows 2026-09-24 (issue 687): four iia `greece` grape cells (1933-1935, 1937) that are raw
-    # `italian dodecanese islands`' are relabelled here by source_label_item_corrections.csv, for the
-    # same reason -- the alternative was Greece, a territory that did not include the islands.
-    "ITAEG-1912-1947",
+    # ITAEG-1912-1947 WAS HERE AND IS FIXED, 2026-09-25 (geodata batch 3, 5 rows): "NO SOURCE HAS IT"
+    # held for CShapes and Cliopatria, but GADM 4.1's per-country GRC file carries the Dodecanese as
+    # fifteen adm3 municipalities (2,767 km2 against the usual 2,714); build_itaeg_1912_1947 unions
+    # them, and Greece's 1913-1947 polygons lose the islands CShapes had drawn inside them.
     # 39 rows. The recipe EXISTS and was measured WRONG: build.py carries
     # build_can_1800_1866 unregistered because the five modern provinces give
     # 2,735,024 km2 against the page's 1,209,852 — Ontario and Quebec reach Hudson Bay
@@ -216,24 +212,11 @@ BASELINE = frozenset({
     # "before" -- and the legacy data/geodata/polities_polygons.gpkg, which does carry a
     # CAN-1866-1948 feature, measures it at 9,553,644 km2, i.e. modern Canada.
     "CAN-1800-1866",
-    # 24 rows. West Berlin's three western sectors (~480 km2) cannot be recovered from
-    # any fetched source: CShapes has no Berlin feature.
-    # Its predecessor BRL-1945-1949 is now bound to the whole city, which is deliberately
-    # NOT reused here: 892 km2 for a 480 km2 territory would be an 86% overstatement.
-    #
-    # THIS ENTRY'S REASON WAS HYPOTHETICAL AND IS REPLACED BY A MEASUREMENT. It said Berlin's
-    # 2001 district reform merged boroughs ACROSS the sector line (Mitte = Mitte + Tiergarten +
-    # Wedding; Friedrichshain-Kreuzberg spans it) "so even GADM adm2 could not reproduce it".
-    # True of the reform, but it never had to be argued: GADM 4.1's DEU file carries Berlin as a
-    # SINGLE feature at adm2 (403 units nationally), adm3 (4,680) AND adm4 (11,302). There is no
-    # sub-Berlin unit at any level to union, coarse or fine. Two further sources were queried and
-    # neither helps: CShapes-Europe's German Federal Republic 1949-1989 is 247,632 km2 in ONE part
-    # with no exclave near Berlin, and its GDR 1949-1989 (109,361) has no interior ring, so West
-    # Berlin is absent from both rather than liftable as a hole; and the legacy
-    # data/geodata/polities_polygons.gpkg does carry a "West Berlin" feature (GWB-1800-1982) at
-    # 891.5 km2 -- byte-identical in area to its own East Berlin feature, i.e. both are the whole
-    # city, which is the same 892 this entry already refuses.
-    "WBL-1949-1990",
+    # WBL-1949-1990 WAS HERE, 2026-09-25 (geodata batch 3): its 24 fao1952 `Germany Berlin` 1949-1951
+    # rows are the WHOLE city (1951 population 3,343 thousand; West Berlin had about two million) and
+    # now route to BRL-1949-1990, bound to GADM DEU.3_1 like BRL-1945-1949. WBL keeps no geometry --
+    # still no fetched source draws the sector line (GADM's Berlin is one feature at adm2, adm3 and
+    # adm4) -- but it no longer receives a row, so it is no longer data without geometry.
     # FCC-1862-1887 WAS HERE AND IS FIXED, 2026-08-17 (20 rows). This entry said French
     # Cochinchina "needs the six southern Vietnamese provinces of the 1860s-80s; GADM 4.1's
     # fetched set has no VNM file, and Cliopatria's 'French Indochina' is the whole federation

@@ -1,6 +1,7 @@
 polity_code,start_year,end_year,cow_code,polity_type,our_source,our_km2,border_verdict,n_reference_borders,reference_covers,reference_bookkeeping_steps,reference_km2_at_start,reference_km2_at_end,max_step_ratio,change_years,reference_iou,source_gap_pct
 ABW-1800-2025,1800,2025,,territory,gadm-4.1-adm0,182,no_reference,0,,0,,,,,,
-ADE-1839-1967,1839,1967,,colonial,cshapes-2.0,287116,no_reference,0,,0,,,,,,
+ADC-1937-1967,1937,1967,,colonial,constructed,291,no_reference,0,,0,,,,,,
+ADE-1839-1967,1839,1967,,colonial,constructed,286872,no_reference,0,,0,,,,,,
 AEF-1910-1960,1910,1960,,national,constructed,2495130,no_reference,0,,0,,,,,,
 AFG-1800-1893,1800,1893,700,national,cshapes-2.0,809046,stable_where_covered,1,1886-1892,1,808996,808996,,,0.999,0.01
 AFG-1893-1919,1893,1919,700,national,cshapes-2.0,641971,stable_confirmed,1,1893-1918,0,641913,641913,,,0.999,0.01
@@ -57,7 +58,7 @@ ASH-1800-1896,1800,1896,,national,paine-2024,194151,no_reference,0,,0,,,,,,
 ASM-1900-2025,1900,2025,,colonial,gadm-4.1-adm0,204,no_reference,0,,0,,,,,,
 ATF-1800-2025,1800,2025,,territory,gadm-4.1-adm0,7858,no_reference,0,,0,,,,,,
 ATG-1800-2025,1800,2025,58,national,gadm-4.1-adm0,432,no_reference,0,,0,,,,,,
-AUH-1800-1859,1800,1859,300,national,cliopatria,691741,no_reference,0,,0,,,,,,
+AUH-1800-1859,1800,1859,300,national,constructed,666416,no_reference,0,,0,,,,,,
 AUH-1859-1866,1859,1866,300,national,cliopatria,649037,no_reference,0,,0,,,,,,
 AUH-1866-1908,1866,1908,300,national,cliopatria,677491,stable_where_covered,1,1886-1907,0,624185,624185,,,0.868,8.54
 AUH-1908-1918,1908,1918,300,national,cshapes-2.0,675711,stable_confirmed,1,1908-1917,0,675720,675720,,,0.998,-0.0
@@ -169,6 +170,7 @@ BRB-1800-2025,1800,2025,53,national,gadm-4.1-adm0,435,stable_where_covered,1,188
 BRG-1800-1897,1800,1897,,national,paine-2024,122725,no_reference,0,,0,,,,,,
 BRL-1938-1945,1938,1945,,city-territory,gadm-4.1-adm1,901,no_reference,0,,0,,,,,,
 BRL-1945-1949,1945,1949,,city-territory,gadm-4.1-adm1,901,no_reference,0,,0,,,,,,
+BRL-1949-1990,1949,1990,,city-territory,gadm-4.1-adm1,901,no_reference,0,,0,,,,,,
 BRN-1816-1888,1816,1888,835,national,cshapes-2.0,5685,no_reference,0,,0,,,,,,
 BRN-1888-2025,1888,2025,835,national,cshapes-2.0,5685,stable_where_covered,1,1888-2019,1,5729,5729,,,0.984,-0.77
 BSS-1884-1960,1884,1960,,national,cshapes-2.0,171627,no_reference,0,,0,,,,,,
@@ -596,8 +598,8 @@ GOB-1800-1808,1800,1808,,national,paine-2024,9764,no_reference,0,,0,,,,,,
 GRC-1830-1881,1830,1881,350,national,cliopatria,45004,no_reference,0,,0,,,,,,
 GRC-1830-1913,1830,1913,350,national,cshapes-europe,46271,stable_where_covered,1,1886-1912,0,63755,63755,,,0.711,-27.42
 GRC-1881-1913,1881,1913,350,national,cshapes-europe,63612,stable_where_covered,1,1886-1912,0,63755,63755,,,0.973,-0.22
-GRC-1913-1919,1913,1919,350,national,cshapes-2.0,121615,stable_confirmed,1,1913-1918,0,121697,121697,,,0.99,-0.07
-GRC-1919-1947,1919,1947,350,national,cshapes-2.0,129841,stable_confirmed,1,1919-1946,0,129913,129913,,,0.99,-0.06
+GRC-1913-1919,1913,1919,350,national,constructed,119280,stable_confirmed,1,1913-1918,0,121697,121697,,,0.971,-1.99
+GRC-1919-1947,1919,1947,350,national,constructed,127506,stable_confirmed,1,1919-1946,0,129913,129913,,,0.972,-1.85
 GRC-1919-2025,1919,2025,350,national,cshapes-2.0,129841,stable_where_covered,1,1919-2019,0,129913,129913,,,0.99,-0.06
 GRC-1947-2025,1947,2025,350,national,cshapes-2.0,129841,stable_where_covered,1,1947-2019,0,129913,129913,,,0.99,-0.06
 GRD-1800-2025,1800,2025,55,national,gadm-4.1-adm0,359,no_reference,0,,0,,,,,,
@@ -694,7 +696,7 @@ ITA-SIC-1861-2025,1861,2025,,subnational,gadm-4.1-adm1,25797,no_reference,0,,0,,
 ITA-TAA-1919-2025,1919,2025,,subnational,gadm-4.1-adm1,13605,no_reference,0,,0,,,,,,
 ITA-VDA-1948-2025,1948,2025,,subnational,gadm-4.1-adm1,3256,no_reference,0,,0,,,,,,
 ITA-VEN-1866-2025,1866,2025,,subnational,gadm-4.1-adm1,17888,no_reference,0,,0,,,,,,
-ITAEG-1912-1947,1912,1947,325,colonial,none,,changed,2,1912-1946,0,284652,300049,1.054,1919,,
+ITAEG-1912-1947,1912,1947,325,colonial,constructed,2730,reference_mismatch,2,1912-1946,0,284652,300049,1.054,1919,0.0,-99.04
 ITS-1908-1960,1908,1960,,national,constructed,464286,no_reference,0,,0,,,,,,
 JAM-1800-2025,1800,2025,51,national,cshapes-2.0,11001,stable_where_covered,1,1886-2019,1,11028,11028,,,0.987,-0.24
 JMY-1930-2025,1930,2025,,territory,gadm-4.1-adm1,398,no_reference,0,,0,,,,,,
@@ -1079,7 +1081,7 @@ SLE-1889-1961,1889,1961,451,national,cshapes-2.0,72503,stable_confirmed,1,1889-1
 SLE-1961-2025,1961,2025,451,national,cshapes-2.0,72503,stable_where_covered,1,1961-2019,0,72479,72479,,,0.996,0.03
 SLM-1800-1887,1800,1887,,national,paine-2024,16999,no_reference,0,,0,,,,,,
 SLV-1821-2025,1821,2025,92,national,cshapes-2.0,20558,stable_where_covered,1,1886-2019,0,20556,20556,,,0.992,0.01
-SMO-1912-1956,1912,1956,,national,cshapes-2.0,52792,no_reference,0,,0,,,,,,
+SMO-1912-1956,1912,1956,,national,constructed,52634,no_reference,0,,0,,,,,,
 SMR-1800-2025,1800,2025,,national,gadm-4.1-adm0,61,no_reference,0,,0,,,,,,
 SNE-1800-1887,1800,1887,,national,paine-2024,17418,no_reference,0,,0,,,,,,
 SNI-1899-1906,1899,1906,,national,cshapes-2.0,130457,no_reference,0,,0,,,,,,
@@ -1141,6 +1143,7 @@ TJK-1991-2025,1991,2025,702,national,cshapes-2.0,142363,stable_where_covered,1,1
 TKL-1800-2025,1800,2025,,territory,gadm-4.1-adm0,16,no_reference,0,,0,,,,,,
 TKM-1991-2025,1991,2025,701,national,cshapes-2.0,471617,stable_where_covered,1,1991-2019,0,471678,471678,,,0.998,-0.01
 TLS-1800-2025,1800,2025,860,national,cshapes-2.0,14978,stable_where_covered,1,1886-2019,1,15024,15024,,,0.986,-0.31
+TNG-1912-1956,1912,1956,,city-territory,constructed,322,no_reference,0,,0,,,,,,
 TNGU-1920-1949,1920,1949,912,colonial,cshapes-2.0,237462,stable_confirmed,1,1920-1948,0,237536,237536,,,0.995,-0.03
 TNGU-1949-1975,1949,1975,,subnational,cshapes-2.0,237462,no_reference,0,,0,,,,,,
 TON-1800-2025,1800,2025,955,national,gadm-4.1-adm0,757,no_reference,0,,0,,,,,,

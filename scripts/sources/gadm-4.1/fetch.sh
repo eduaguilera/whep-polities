@@ -149,6 +149,27 @@ for iso in "${ADM2_LATE[@]}"; do
     ogr2ogr -f GPKG -update -append -nln polygons "$ADM2" "$CFILE" ADM_ADM_2
   fi
 done
+# Per-country files that are DOWNLOADED ONLY, never appended to the combined adm0/adm1/adm2 files, so
+# every feature already in those keeps its position and bytes. The constructed builders read them at
+# the level they need (scripts/sources/constructed/build.py `_gadm_country`).
+#
+# Added 2026-09-25 (geodata batch 3): MAR adm4 communes draw the Tangier Zone (TNG-1912-1956) and so
+# Spanish Morocco without it; YEM adm2 districts draw Aden Colony (ADC-1937-1967) and the Aden
+# Protectorate without it; OMN adm2 has the Kuria Muria Islands (Al Halaniyat), administered from Aden
+# until 1967; GRC adm3 municipalities draw the Dodecanese (ITAEG-1912-1947) and Greece 1913-1947
+# without them.
+FETCH_ONLY=(MAR YEM OMN GRC)
+for iso in "${FETCH_ONLY[@]}"; do
+  CFILE="$OUT_DIR/gadm41_${iso}.gpkg"
+  if [ ! -f "$CFILE" ]; then
+    if curl -fL -o "$CFILE" "https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_${iso}.gpkg"; then
+      echo "Fetched: $CFILE"
+    else
+      rm -f "$CFILE"
+      echo "WARN: GADM 4.1 has no fetchable file for ${iso}; skipping." >&2
+    fi
+  fi
+done
 echo "Wrote: $ADM0"
 echo "Wrote: $ADM1"
 [ -f "$ADM2" ] && echo "Wrote: $ADM2 (countries: ${ADM2_COUNTRIES[*]} ${ADM2_LATE[*]})"
