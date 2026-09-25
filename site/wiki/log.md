@@ -26,6 +26,36 @@ Kinds:
 
 ---
 
+## decision-unit-scoped-label-corrections
+**Date:** 2026-09-25
+**Touched:** RVN-1954-1975, F237-1954-1975, SYR-1920-1922, SYR-1922-1946, SYL-1920-1944
+(data routing only; no polity row, date or polygon changed)
+**Source:** none
+**Kind:** decision
+
+**Sometimes a label's item carries two territories that only the table separates.** Mitchell
+prints Vietnam's 1954-1974 crop OUTPUT (C2) in separate North and South columns, and layer
+B's `viet nam` rice and maize tonnes for 1955-1960 are the two summed. The same label's
+AREA (C1) is footnoted "South Vietnam only from 1954 to 1974". Mitchell's Syria wheat and
+barley OUTPUT is footnoted "Including Lebanon to 1940" (C2 note 17), and its AREA is not.
+The item-scoped correction table keyed on (source, label, item, years), and those keys are
+the same for the output and area rows. So an item rule would have moved the correct area
+rows along with the wrong output rows
+([issue 688](https://github.com/eduaguilera/whep-polities/issues/688)).
+
+`data/final/source_label_item_corrections.csv` now has two optional scope columns, `unit`
+and `indicator`. **Blank means any**, so the 55 earlier rules select exactly what they did
+before. Four new rules are scoped `unit=tonnes`. 12 Vietnam output rows move from
+[rvn-1954-1975](polities/rvn-1954-1975.md) to [f237-1954-1975](polities/f237-1954-1975.md).
+In the PDF, each of the 12 cells equals North plus South to the digit. 42 Syria output rows
+move from [syr-1920-1922](polities/syr-1920-1922.md) (4) and
+[syr-1922-1946](polities/syr-1922-1946.md) (38) to
+[syl-1920-1944](polities/syl-1920-1944.md). Mitchell's own `lebanon` label is the control:
+it has no wheat or barley output, and its wheat area begins in 1941. 54 rows move in all.
+The value total by unit is unchanged, and no row gains or loses a polity.
+
+Signed off by: Claude (Claude Code), issue 688; pending review in its pull request.
+
 ## decision-item-scoped-label-corrections
 **Date:** 2026-09-24
 **Touched:** CAP-1800-1895, CAP-1895-1910, NAT-1843-1895, NAT-1895-1910, ZAF-1910-2025,

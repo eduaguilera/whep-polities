@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "825fe3fe0e5ae61a7b9b100d989705eeb22e345ecb13b45fab13b1d388bc6c91",
-  "aliases": 2533,
-  "labels": 1346,
+  "sha256": "0c51e65c4431590597123ad0d3df80b4d1c8c40277ab3c4043222c4013560483",
+  "aliases": 2534,
+  "labels": 1347,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -207,10 +207,11 @@
  },
  "label_item_corrections": {
   "path": "data/final/source_label_item_corrections.csv",
-  "sha256": "d41d4a4cf6fd5b008b24804121166259430e1100062b79eb6b3c3b853a7f25e4",
-  "rules": 55,
-  "observed_rows": 838,
-  "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; a period-average row with no year is corrected only when BOTH ends of its period lie in that range). `polity_code` is where the corrected label then resolves, possibly as a `back_cast` before the polity begins. `polity_code` = `UNROUTED` means the rows belong to NO polity (a wrong territory with no right one to land on): drop them rather than resolving `correct_label`. Rules do not chain: test each against the ORIGINAL label."
+  "sha256": "a4960d72811017f64746466a9b0d95364cad694926fed9b177bd1cdbbf2a7138",
+  "rules": 59,
+  "observed_rows": 892,
+  "scoped_rules": 4,
+  "why": "Rows a source files under ANOTHER territory's label for one item. Before resolving a row's label with label_alias_map, replace it with `correct_label` when source, source_label and item match exactly and the row's year lies in [year_start, year_end] (inclusive; a period-average row with no year is corrected only when BOTH ends of its period lie in that range), AND, where the rule's `unit` or `indicator` is non-blank, the row's own unit / indicator equals it exactly (blank = any unit / indicator; a consumer that cannot supply the row's unit must not apply a unit-scoped rule). `polity_code` is where the corrected label then resolves, possibly as a `back_cast` before the polity begins. `polity_code` = `UNROUTED` means the rows belong to NO polity (a wrong territory with no right one to land on): drop them rather than resolving `correct_label`. Rules do not chain: test each against the ORIGINAL label."
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",

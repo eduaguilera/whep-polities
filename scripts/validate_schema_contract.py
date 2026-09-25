@@ -124,9 +124,13 @@ CSV_CONTRACT = {
     # relabels rows keyed on `source`/`source_label`/`item`/`year_start`/`year_end` before
     # resolving them, and a rename of any key column makes that filter match nothing and
     # silently put Natal's sugar back on the Cape. `polity_code` is where the relabel lands.
+    # `unit` and `indicator` added 2026-09-25 (issue 688): optional scope columns, BLANK = ANY, that
+    # a consumer must ALSO match on -- a consumer ignoring them applies a unit-scoped rule to every
+    # unit (Mitchell's South-only Vietnam AREA onto the North+South aggregate), so they are key
+    # columns and are pinned like the others.
     "data/final/source_label_item_corrections.csv": [
-        "source", "source_label", "item", "year_start", "year_end", "correct_label",
-        "polity_code", "observed_rows", "issue", "evidence",
+        "source", "source_label", "item", "year_start", "year_end", "unit", "indicator",
+        "correct_label", "polity_code", "observed_rows", "issue", "evidence",
     ],
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,

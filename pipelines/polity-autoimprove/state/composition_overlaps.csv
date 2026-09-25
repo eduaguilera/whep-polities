@@ -26,8 +26,9 @@ NGBC-1916-1960,BCM-1916-1961,fao1952,1950,1951,Nigeria and Br Cameroons;Nigeria 
 NGBC-1916-1960,NGA-1914-1960,fao1952,1950,1951,Nigeria and Br Cameroons;Nigeria and British cameroon;Nigeria and British cameroons;Nigeria and british cameroon,nigeria,alias;applied_alias,name,2,0,no
 NGBC-1916-1960,NGA-1914-1960,mitchell,1920,1959,Nigeria and British Cameroons (combined reporting unit);nigeria and british cameroons (combined reporting unit),nigeria,alias;applied_alias,iso,0,0,no
 SYL-1920-1944,LBN-1920-1944,fao1952,1937,1938,Syria and Lebanon,lebanon,alias,name,0,0,no
+SYL-1920-1944,LBN-1920-1944,mitchell,1940,1940,"Syria and Lebanon (French Mandate, combined reporting unit);syria and lebanon (french mandate, combined reporting unit)",lebanon,alias;applied_alias,iso,0,0,no
 SYL-1920-1944,SYR-1922-1946,fao1952,1937,1938,Syria and Lebanon,syria,alias,name,0,0,no
-SYL-1920-1944,SYR-1922-1946,mitchell,1922,1939,"Syria and Lebanon (French Mandate, combined reporting unit);syria and lebanon (french mandate, combined reporting unit)",syrian arab republic,alias;applied_alias,iso,0,0,no
+SYL-1920-1944,SYR-1922-1946,mitchell,1922,1940,"Syria and Lebanon (French Mandate, combined reporting unit);syria and lebanon (french mandate, combined reporting unit)",syrian arab republic,alias;applied_alias,iso,0,0,no
 SYL-1944-1953,LBN-1944-2025,fao1952,1949,1951,Syria and Lebanon;syria and lebanon,lebanon,alias;applied_alias,name,0,0,no
 SYL-1944-1953,LBN-1944-2025,mitchell,1944,1952,Syria and Lebanon;syria and lebanon,lebanon,alias;applied_alias,iso,0,0,no
 AOI-1936-1941,ETH-1936-1941,fao1952,1936,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,ethiopia,alias,alias;applied_alias,56,136,yes
@@ -66,7 +67,7 @@ CHN-1949-1950,MAN-1945-1950,fao1952,1949,1949,"China and Manchuria;china;china a
 CHN-1949-1950,MAN-1945-1950,mitchell,1949,1949,"china, mainland","China, Manchuria Province of;china, manchuria province of",alias;applied_alias,alias,11,56,yes
 CHN-1949-1950,MAN-1945-1950,trade-sources,1949,1949,China,"china, manchuria province of",alias,alias,0,0,yes
 F237-1954-1975,RVN-1954-1975,faostat,1961,1974,Viet Nam,viet nam,alias,alias,0,0,yes
-F237-1954-1975,RVN-1954-1975,mitchell,1954,1954,viet nam,viet nam,alias,alias;applied_alias,18,184,yes
+F237-1954-1975,RVN-1954-1975,mitchell,1954,1960,Vietnam (combined reporting: DRV and RVN);viet nam;vietnam (combined reporting: drv and rvn),viet nam,alias;applied_alias,alias;applied_alias,18,184,yes
 GCT-1919-1956,BTL-1920-1957,fao1952,1920,1956,Gold Coast & Br Togoland;Gold Coast and Br Tog;Gold Coast and Br Togoland;Gold Coast and British Togoland,British Togoland;british togoland,alias;applied_alias,alias;applied_alias,4,0,yes
 GCT-1919-1956,BTL-1920-1957,mitchell,1920,1955,Gold Coast and British Togoland;gold coast and british togoland,British Togoland,alias;applied_alias,alias,0,0,yes
 GCT-1919-1956,GHA-1898-1957,fao1952,1919,1956,Gold Coast & Br Togoland;Gold Coast and Br Tog;Gold Coast and Br Togoland;Gold Coast and British Togoland,Gold Coast;gold coast,alias;applied_alias,alias;applied_alias,4,0,yes
