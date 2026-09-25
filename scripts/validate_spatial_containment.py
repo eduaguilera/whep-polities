@@ -251,6 +251,12 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Its mandate-era predecessor, added 2026-09-24 (issue 688): the same union at 1930, so it contains
     # LBN-1920-1944 and the SYR-1920-1922 / SYR-1922-1946 rows by construction.
     "SYL-1920-1944",
+    # French North Africa, added 2026-09-25 (geodata batch 2): FAO 1952's fertilizer total for
+    # Algeria + French Morocco + Tunisia, built as the union of CShapes 615, 600 and 616 at 1930, so
+    # it contains DZA-1919-1962, MAR-1911-1958 and TUN-1881-2025 by construction, and DZA-1902-1919
+    # (the larger pre-1919 Algeria step) for the 1912-1918 years the two coexist. Registered as a
+    # partition in polity_composition.csv with fao1952 as the source that feeds both levels.
+    "FNA-1912-1956",
     # BRITISH INDIA 1886-1947: ALL FOUR ENTRIES REMOVED ON 2026-08-13 (issue 84), and the reason
     # is a correction to what this list used to claim. They were added on 2026-08-04 with a note
     # arguing that their contents -- Hyderabad, Burma-as-a-province, the territory that became

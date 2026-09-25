@@ -150,7 +150,6 @@ burma		MMR-1826-1852
 # -> CAP-1895-1910, both ending one year inside their target. Measured: 113 layer-B rows labelled
 # "cape province" (mitchell, 1852-1909), of which the 29 dated 1895-1909 now resolve to the
 # observed 716,102 km2 CShapes step instead of the 600,802 km2 one (+19.2% territory).
-china 22 provinces	fao1952	CHN-1932-1945
 china, mainland		CHN-1800-1895
 china, mainland		CHN-1895-1913
 # 'china, manchuria province of||CHN-1947-1949' cleared 2026-09-24 (world alias collisions): the

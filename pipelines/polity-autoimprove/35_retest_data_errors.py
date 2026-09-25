@@ -448,15 +448,19 @@ def check_western_eastern_prefix(ctx):
     # fragments for the first time: `China 22 provinces` (56 rows, China proper, issue 449), `Dodecanese`
     # (1) and `French North Africa` (15, the whole beside its parts). The rows rise because those three are
     # large; none of the three was routed or changed.
-    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 7))
+    # 7/89/2/5 -> 4/7/1/3 on 2026-09-25 (geodata batch 2): three of those fragments now route to polities of
+    # their own and leave the class -- `China 22 provinces` (56 rows) to CHN-P22-1939-1953, `French North
+    # Africa` (15) to FNA-1912-1956 and `Korea` 1949-1951 (11) to KORP-1948-1953 -- each a whole or part
+    # beside, never on, the polity its longer-named sibling routes to.
+    claims.append(("fao1952 labels that are a FRAGMENT of a routed one", len(frag), 4))
     # 42/11/10 -> 52/10/11 on 2026-09-24 (world alias collisions), two labels moving and the
     # class size (21) unchanged: fao1952 `Korea` 1949-1951 was unrouted (it is the peninsula, and
     # averaged with `Korea South`), so its 11 rows became a fragment of `Korea South`/`Korea North`
     # with three candidate polities; and `Great Britain` (1 row) stopped being a fragment, because
     # its only routed parent `United Kingdom Great Britain` was unrouted in the same change.
-    claims.append(("  rows they carry", sum(x[1] for x in frag), 89))
-    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 2))
-    claims.append(("  with several candidate polities", len(frag) - len(uniq), 5))
+    claims.append(("  rows they carry", sum(x[1] for x in frag), 7))
+    claims.append(("  with a parent routing to exactly ONE polity", len(uniq), 1))
+    claims.append(("  with several candidate polities", len(frag) - len(uniq), 3))
     # `Portuga` was the counter-example: structurally unambiguous, three values on one key. It is now
     # OCR-corrected to `Portugal` (2026-09-25), so it is read by its raw label and has left the class.
     # The three values are the fao1952 `poultry` species group (source_conventions: one row per species,
@@ -690,7 +694,8 @@ def check_china_whole_and_five_parts(ctx):
     and route nowhere. Routing them -- the ordinary repair for an unrouted label, and the one applied
     in PR 610 -- would take the double-count from 63% to 87%. If any of the three ever acquires a
     whep_code, this check fails, which is the intended behaviour: it should be a deliberate decision
-    taken with the whole-versus-parts question, not a routine routing fix.
+    taken with the whole-versus-parts question, not a routine routing fix. (Taken 2026-09-25: the
+    parts get polities of their own; see the comment above the targets pin below.)
 
     THE ITEM-LEVEL MIXING IS PINNED AS A PAIR, land against livestock, because either number alone
     looks unremarkable. `use total` matching China's actual area to 1.4% is what makes 95,000 pigs
@@ -721,13 +726,23 @@ def check_china_whole_and_five_parts(ctx):
         d = f[f["lab"] == lab]
         return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
 
-    for lab in ("China 22 provinces", "China Manchuria"):
-        r, n = routed(lab)
-        claims.append((f"`{lab}` routed", "yes" if r else "no", "yes"))
-    for lab in ("China Sinkiang", "China Sikang", "China Jehol"):
-        r, n = routed(lab)
-        # Bidirectional on purpose: routing these WORSENS the double-count.
-        claims.append((f"`{lab}` routed -- must stay NO", "yes" if r else "no", "no"))
+    # THE DECISION THE DOCSTRING ASKED FOR WAS TAKEN 2026-09-25 (geodata batch 2): each part gets a
+    # polity of its own, never the whole's. `China 22 provinces` -> CHN-P22-1939-1953 and `China
+    # Sinkiang` -> CHN-XJ-1884-2025 (with `China Manchuria` already on MAN-1945-1950), so no part
+    # shares a polity with `China` and the double count on the whole's row is gone rather than moved
+    # from 63% to 87%. The pin is now the target of each 1947 part row, plus the one claim that
+    # carries the old warning: no 1947 part row sits on the polity the whole is on.
+    def targets(lab):
+        d = f[(f["lab"] == lab) & (f["year"] == 1947)]
+        return ",".join(sorted(set(d["whep_code"].dropna().astype(str)))) or "-"
+
+    WANT_TARGET = {"China 22 provinces": "CHN-P22-1939-1953", "China Manchuria": "MAN-1945-1950",
+                   "China Sinkiang": "CHN-XJ-1884-2025", "China Sikang": "-", "China Jehol": "-"}
+    for lab, want in WANT_TARGET.items():
+        claims.append((f"`{lab}` 1947 routes to", targets(lab), want))
+    whole_codes = set(f[(f["lab"] == "China") & (f["year"] == 1947)]["whep_code"].dropna().astype(str))
+    on_whole = f[f["lab"].isin(PARTS) & (f["year"] == 1947) & f["whep_code"].astype(str).isin(whole_codes)]
+    claims.append(("  1947 part rows on the whole's polity -- must stay 0", len(on_whole), 0))
 
     ch = f[f["lab"] == "China"]
 

@@ -89,7 +89,21 @@ SUM_BASELINE = frozenset({"AOF-1895-1960"})
 #                1879, so the relation is right; the shortfall is GADM island outlines against a
 #                CShapes national outline at a different resolution. Small in absolute terms and
 #                not a binding error, so recorded rather than chased.
-CONTAINMENT_BASELINE = frozenset({("JPN-1895-1945", "RYU-1937-1945")})
+#
+# CHN-1932-1945 / CHN-1947-1949 / CHN-1949-1950  <-  CHN-P22-1939-1953   86.8% inside each whole
+#                (2026-09-25, geodata batch 2). 674,208 of the 22 provinces' 5,110,763 km2 lie
+#                outside the three wholes' CShapes 710 polygons, 643,838 of them in modern Qinghai:
+#                CShapes draws the southern Qinghai plateau as Tibet (gwcode 711) for 1913-1950.
+#                FAO 1952's stated area for the 22 provinces (5,071,820 km2) includes that ground,
+#                because the Republic's Qinghai did, and the part follows FAO (0.8% above it). The
+#                same part is 99.6% inside CHN-1950-2025, whose CShapes step includes the plateau.
+#                A disagreement between two sources about the ground, not a mis-binding.
+CONTAINMENT_BASELINE = frozenset({
+    ("JPN-1895-1945", "RYU-1937-1945"),
+    ("CHN-1932-1945", "CHN-P22-1939-1953"),
+    ("CHN-1947-1949", "CHN-P22-1939-1953"),
+    ("CHN-1949-1950", "CHN-P22-1939-1953"),
+})
 
 
 def year(value):

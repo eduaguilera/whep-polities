@@ -8,11 +8,13 @@ AOI-1936-1941,ERI-1889-1952,iia,1936,1937,Africa Orientale Italiana;Ethiopia;Ita
 BFCM-1920-1960,FCM-1920-1960,iia,1933,1945,British and French Cameroons (combined reporting unit);british and french cameroons (combined reporting unit),cameroon,alias;applied_alias,iso,0,0,no
 BLX-1850-1999,BEL-1831-2025,fao1952,1937,1940,Belgium and Luxembourg,belgium,alias,name,0,0,no
 BLX-1850-1999,LUX-1839-2025,fao1952,1937,1940,Belgium and Luxembourg,luxembourg,alias,name,0,0,no
+CAN-1949-2025,CAN-NL-1949-2025,fao1952,1949,1951,canada,Canada Newfoundland;canada  newfoundland;canada newfoundland,name,alias;applied_alias,1,2,no
 CHN-1921-1932,MAN-1921-1932,iia,1922,1931,"china, mainland","china, manchuria province of",applied_alias,alias,0,0,no
 CHN-1945-1947,MAN-1945-1950,iia,1945,1945,"china, mainland","china, manchuria province of",applied_alias,alias,0,0,no
 FID-1887-1954,KHM-1907-1953,mitchell,1907,1948,indochina,cambodia;indochina cambodia,applied_alias,alias;iso,7,0,no
 FID-1887-1954,LAO-1893-1954,mitchell,1936,1948,indochina,indochina laos;lao,applied_alias,alias;iso,5,0,no
 FID-1887-1954,VNM-1887-1954,mitchell,1887,1948,indochina,indochina viet nam;viet nam,applied_alias,alias;applied_alias,9,0,no
+GBR-1921-2025,GBR-GB-1800-2025,fao1952,1937,1951,united kingdom,Great Britain;United Kingdom Great Britain;great britain;united kingdom great britain,name,alias;applied_alias,5,6,no
 GCT-1919-1956,GHA-1898-1957,mitchell,1919,1955,Gold Coast and British Togoland;gold coast and british togoland,ghana,alias;applied_alias,iso,0,0,no
 IDN-1949-1963,IDN-BLB-1949-1951,fao1952,1949,1951,indonesia,Indonesia Bali and Lombok;indonesia bali and lombok,name,alias;applied_alias,2,6,no
 IDN-1949-1963,IDN-JVM-1949-1951,fao1952,1949,1951,indonesia,Indonesia Java and Madura;indonesia java and madura,name,alias;applied_alias,2,6,no
@@ -20,6 +22,7 @@ IDN-1949-1963,IDN-OTH-1949-1951,fao1952,1949,1951,indonesia,Indonesia Other isla
 IND-1937-1947,PAK-1937-1947,mitchell,1945,1946,india,pakistan,iso,iso,26,245,no
 JPN-1895-1945,RYU-1937-1945,iia,1937,1944,japan,Ryukyu Islands,iso,alias,0,0,no
 JPN-1895-1945,RYU-1937-1945,mitchell,1937,1944,japan,Ryukyu Islands,iso,alias,0,0,no
+KORP-1948-1953,PRK-1948-2025,fao1952,1949,1949,Korea;korea,korea north,alias;applied_alias,tokenset,1,1,no
 NGBC-1916-1960,BCM-1916-1961,fao1952,1950,1951,Nigeria and Br Cameroons;Nigeria and British cameroon;Nigeria and British cameroons;Nigeria and british cameroon,british cameroons,alias;applied_alias,name,0,0,no
 NGBC-1916-1960,NGA-1914-1960,fao1952,1950,1951,Nigeria and Br Cameroons;Nigeria and British cameroon;Nigeria and British cameroons;Nigeria and british cameroon,nigeria,alias;applied_alias,name,2,0,no
 NGBC-1916-1960,NGA-1914-1960,mitchell,1920,1959,Nigeria and British Cameroons (combined reporting unit);nigeria and british cameroons (combined reporting unit),nigeria,alias;applied_alias,iso,0,0,no
@@ -49,32 +52,46 @@ BWI-1833-1962,LCA-1838-2025,fao1952,1937,1951,British West Indies;british west i
 BWI-1833-1962,MSR-1800-2025,fao1952,1949,1951,British West Indies;british west indies,Br West Indies Montserrat;British West Indies Montserrat;Leeward Islands  Montserrat;br west indies montserrat,alias;applied_alias,alias;applied_alias,0,0,yes
 BWI-1833-1962,TTO-1800-2025,fao1952,1937,1951,British West Indies;british west indies,Br W Indies Trinidad and Tobago;British W Indies Trinidad and Tobago;British West Indies Trinidad & Tobago;British West Indies Trinidad and Tobago,alias;applied_alias,alias;applied_alias;name,1,2,yes
 BWI-1833-1962,VCT-1833-2025,fao1952,1939,1951,British West Indies;british west indies,Br West Indies St Vincent;British West Indies St Vincent;Jamaica St Vincent;Windward Islands  St Vincent,alias;applied_alias,alias;applied_alias,0,0,yes
+CHL-OTR-1976-2025,CHL-AI-1976-2025,juan-subnational,1935,2023,Otras Regiones,Aysen,alias,alias,0,0,yes
+CHL-OTR-1976-2025,CHL-AN-1976-2025,juan-subnational,1935,2023,Otras Regiones,Antofagasta,alias,alias,0,0,yes
+CHL-OTR-1976-2025,CHL-AP-2007-2025,juan-subnational,1935,2023,Otras Regiones,Arica y Parinacota,alias,alias,0,0,yes
+CHL-OTR-1976-2025,CHL-MA-1976-2025,juan-subnational,1935,2023,Otras Regiones,Magallanes,alias,alias,0,0,yes
+CHL-OTR-1976-2025,CHL-TA-1976-2025,juan-subnational,1935,2023,Otras Regiones,Tarapaca,alias,alias,0,0,yes
 CHN-1921-1932,MAN-1921-1932,(any),1921,1931,"china, mainland","china, manchuria province of",alias,alias,,,yes
 CHN-1921-1932,MAN-1921-1932,mitchell,1921,1931,"china, mainland","china, manchuria province of",alias;applied_alias,alias;applied_alias,11,56,yes
 CHN-1921-1932,MAN-1921-1932,trade-sources,1921,1931,China,"china, manchuria province of",alias,alias,0,0,yes
+CHN-1932-1945,CHN-P22-1939-1953,fao1952,1937,1944,"china;china, mainland",China 22 provinces;china 22 provinces,alias;name,alias;applied_alias,5,5,yes
 CHN-1945-1947,MAN-1945-1950,(any),1945,1946,"china, mainland","china, manchuria province of",alias,alias,,,yes
 CHN-1945-1947,MAN-1945-1950,fao1952,1945,1946,"china, mainland",China Manchuria,alias,alias,0,0,yes
 CHN-1945-1947,MAN-1945-1950,mitchell,1945,1946,"china, mainland","China, Manchuria Province of;china, manchuria province of",alias;applied_alias,alias;applied_alias,11,56,yes
 CHN-1945-1947,MAN-1945-1950,trade-sources,1945,1946,China,"china, manchuria province of",alias,alias,0,0,yes
+CHN-1947-1949,CHN-P22-1939-1953,fao1952,1947,1948,"china;china, mainland",China 22 provinces;china 22 provinces,alias;name,alias;applied_alias,5,5,yes
+CHN-1947-1949,CHN-XJ-1884-2025,fao1952,1947,1948,"china;china, mainland",China Sinkiang;china sinkiang,alias;name,alias;applied_alias,2,2,yes
 CHN-1947-1949,MAN-1945-1950,(any),1947,1948,"china, mainland","china, manchuria province of",alias,alias,,,yes
 CHN-1947-1949,MAN-1945-1950,fao1952,1947,1948,"china;china, mainland","China Manchuria;china manchuria;china, manchuria province of",alias;name,alias;applied_alias,4,3,yes
 CHN-1947-1949,MAN-1945-1950,mitchell,1947,1948,"china, mainland","China, Manchuria Province of;china, manchuria province of",alias;applied_alias,alias;applied_alias,11,56,yes
 CHN-1947-1949,MAN-1945-1950,trade-sources,1947,1948,China,"china, manchuria province of",alias,alias,0,0,yes
+CHN-1949-1950,CHN-P22-1939-1953,fao1952,1937,1949,China and Manchuria;China and manchuria;china;china and manchuria,China 22 provinces;china 22 provinces,alias;applied_alias;name,alias;applied_alias,5,5,yes
 CHN-1949-1950,MAN-1945-1950,(any),1949,1949,"china, mainland","china, manchuria province of",alias,alias,,,yes
 CHN-1949-1950,MAN-1945-1950,fao1952,1949,1949,"China and Manchuria;china;china and manchuria;china, mainland","China Manchuria;china manchuria;china, manchuria province of",alias;applied_alias;name,alias;applied_alias,4,3,yes
 CHN-1949-1950,MAN-1945-1950,mitchell,1949,1949,"china, mainland","China, Manchuria Province of;china, manchuria province of",alias;applied_alias,alias,11,56,yes
 CHN-1949-1950,MAN-1945-1950,trade-sources,1949,1949,China,"china, manchuria province of",alias,alias,0,0,yes
+CHN-1950-2025,CHN-P22-1939-1953,fao1952,1950,1952,China 22 provinces and Manchuria;China and Manchuria;china;china 22 provinces and manchuria,China 22 provinces;china 22 provinces,alias;applied_alias;name,alias;applied_alias,6,5,yes
 F237-1954-1975,RVN-1954-1975,faostat,1961,1974,Viet Nam,viet nam,alias,alias,0,0,yes
 F237-1954-1975,RVN-1954-1975,mitchell,1954,1960,Vietnam (combined reporting: DRV and RVN);viet nam;vietnam (combined reporting: drv and rvn),viet nam,alias;applied_alias,alias;applied_alias,18,184,yes
 FID-1887-1954,KHM-1907-1953,fao1952,1937,1951,"Indochina Cambodia, Laos and Viet Nam;indochina;indochina cambodia, laos and viet nam",cambodia;indochina cambodia;indochina: cambodia,alias;applied_alias,alias;applied_alias;name,3,5,yes
 FID-1887-1954,LAO-1893-1954,fao1952,1937,1951,"Indochina Cambodia, Laos and Viet Nam;indochina;indochina cambodia, laos and viet nam",indochina laos;laos,alias;applied_alias,alias;applied_alias;name,3,5,yes
 FID-1887-1954,VNM-1887-1954,fao1952,1937,1951,"Indochina Cambodia, Laos and Viet Nam;indochina;indochina cambodia, laos and viet nam",Indochina Viet Nam;Indochina: Viet Nam;indochina viet nam;indochina: viet nam,alias;applied_alias,alias;applied_alias,3,5,yes
+FNA-1912-1956,DZA-1919-1962,fao1952,1934,1955,French North Africa;french north africa,French North Africa Algeria;algeria;french north africa algeria,alias;applied_alias,alias;applied_alias,3,6,yes
+FNA-1912-1956,MAR-1911-1958,fao1952,1934,1955,French North Africa;french north africa,French Morocco;French North Africa Morocco;french morocco;french north africa morocco,alias;applied_alias,alias;applied_alias;name,3,6,yes
+FNA-1912-1956,TUN-1881-2025,fao1952,1937,1951,French North Africa;french north africa,French North Africa Tunisia;french north africa tunisia;tunisia,alias;applied_alias,alias;applied_alias;name,3,6,yes
 GCT-1919-1956,BTL-1920-1957,fao1952,1920,1956,Gold Coast & Br Togoland;Gold Coast and Br Tog;Gold Coast and Br Togoland;Gold Coast and British Togoland,British Togoland;british togoland,alias;applied_alias,alias;applied_alias,4,0,yes
 GCT-1919-1956,BTL-1920-1957,mitchell,1920,1955,Gold Coast and British Togoland;gold coast and british togoland,British Togoland,alias;applied_alias,alias,0,0,yes
 GCT-1919-1956,GHA-1898-1957,fao1952,1919,1956,Gold Coast & Br Togoland;Gold Coast and Br Tog;Gold Coast and Br Togoland;Gold Coast and British Togoland,Gold Coast;gold coast,alias;applied_alias,alias;applied_alias,4,0,yes
 IND-1937-1947,INU-1937-1947,fao1952,1934,1940,India (incl;India and Pakistan;India and pakistan;india (incl,India;india,alias;applied_alias,alias;applied_alias,1,1,yes
 IND-1937-1947,PAK-1937-1947,fao1952,1937,1940,India (incl;India and Pakistan;India and pakistan;india (incl,Pakistan;pakistan,alias;applied_alias,alias;applied_alias,1,1,yes
 JPN-1895-1945,RYU-1937-1945,federico_tena,1937,1938,Japan,Ryukyu Islands,alias,alias,0,0,yes
+KORP-1948-1953,KOR-1948-2025,fao1952,1948,1951,Korea;korea,*korea south;Korea South;korea south,alias;applied_alias,alias;applied_alias,6,4,yes
 MASG-1946-1963,MYS-1946-1957,fao1952,1946,1957,Malaya Federation of and Singapore;malaya federation of and singapore,Federation of Malaya;Malaya Fed of;Malaya Federation;Malaya Federation of,alias;applied_alias,alias;applied_alias,1,2,yes
 MASG-1946-1963,SGP-1946-1963,fao1952,1946,1951,Malaya Federation of and Singapore;malaya federation of and singapore,Singapore including Christmas and Cocos Islands;singapore;singapore including christmas and cocos islands,alias;applied_alias,alias;applied_alias;name,1,2,yes
 MYS-1963-1965,SGP-1963-1965,faostat,1963,1964,Malaysia,Singapore,alias,alias,0,0,yes
