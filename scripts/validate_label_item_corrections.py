@@ -78,8 +78,11 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # `british-french cameroon` (6 rules, 124 -> BFCM-1920-1960), Mitchell `nigeria` cacao 1945-1959 and livestock to
 # 1950, footnoted as including British Cameroons (7 rules, 148 -> NGBC-1916-1960), and Mitchell `syrian arab
 # republic` olive oil, sheep and goats footnoted as including Lebanon (3 rules, 50 -> SYL-1920-1944).
-BASELINE_RULES = 49
-BASELINE_ROWS = 785
+# 49/785 -> 55/838 on 2026-09-25 (cross-source routing audit): iia `india` sesame, groundnuts, eggs, cotton
+# lint 1934-1945 and cotton seed 1937-1945 are French India's (5 rules, 51 rows, issue 372), and fao1952
+# `USSR` oats 1934-1938 closes on post-war boundaries as rye does (1 rule, 2 rows, issue 681).
+BASELINE_RULES = 55
+BASELINE_ROWS = 838
 
 
 def main() -> int:
