@@ -11,10 +11,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "36a45d07abe7b7ddeb4b0fab7327c3a87a89ad8fe476c92f7de111f67bbc5eb8",
+ "identity_sha256": "2131bfbb905da98e1219f43ef79c01faca77ffdde288b644cf764a1b73c65d74",
  "counts": {
-  "total": 1268,
-  "live": 1224,
+  "total": 1270,
+  "live": 1226,
   "dead": 44
  },
  "dead_status": [
@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "d46e1864d0a8441fe1335c51e1453a65e5dae19fe712b7362a4c5339f18e548e",
-  "aliases": 2689,
-  "labels": 1430,
+  "sha256": "f1f2dda3f118a15561042ade80c9b44ea9fc2e6e3c7625f4dea7d318a242b663",
+  "aliases": 2723,
+  "labels": 1431,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -204,7 +204,7 @@
    "whep-lab-usa",
    "whep-split-2026-06-29"
   ],
-  "indicator_scoped_aliases": 0,
+  "indicator_scoped_aliases": 40,
   "indicator_scope_why": "`indicator` is an optional scope on a rule, BLANK = ANY: a non-blank value limits the rule to rows whose panel `indicator` (area, production, yield, livestock_stock, landuse) equals it exactly -- the convention of source_label_item_corrections.csv's unit/indicator scope. It exists for a panel unit whose indicators are two territories under one id and name (CHL-LL: crops for Los Lagos + Los Rios, landuse and livestock for Los Lagos alone). A row's candidate rules are those matching label, source and year whose indicator is blank or equals the row's. Published rules never let a blank and a scoped rule, or two rules with one scope, claim the same label, source and year (validate_aliases.py), so at most one candidate remains and no precedence is needed. A consumer that cannot supply a row's indicator must treat a label/year that only scoped rules cover as unresolved, not pick one of them."
  },
  "label_item_corrections": {
@@ -1042,9 +1042,11 @@
   "CHL-AR-1976-2025",
   "CHL-AT-1976-2025",
   "CHL-BI-1976-2025",
+  "CHL-BINB-1976-2025",
   "CHL-CO-1976-2025",
   "CHL-LI-1976-2025",
   "CHL-LL-1976-2025",
+  "CHL-LLLR-1976-2025",
   "CHL-LR-2007-2025",
   "CHL-MA-1976-2025",
   "CHL-ML-1976-2025",

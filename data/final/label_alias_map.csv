@@ -242,8 +242,16 @@ Bermuda,faostat,1968,2013,BMU-1968-2025,Bermuda,high,67310,,
 Bermuda,federico_tena,1816,1938,BMU-1684-1968,British Crown Colony of Bermuda,high,213,,
 bermuda,iia,1930,1945,BMU-1684-1968,Bermuda,high,17,,
 Bhutan,faostat,1961,2024,BTN-1800-2025,Bhutan,high,48167,,
-Biobío,juan-subnational,1900,1975,CHL-BI-1976-2025,,high,,back_cast,
-Biobío,juan-subnational,1976,2023,CHL-BI-1976-2025,,medium,,,
+Biobío,juan-subnational,1900,1975,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,back_cast,area
+Biobío,juan-subnational,1900,1975,CHL-BI-1976-2025,,high,,back_cast,landuse
+Biobío,juan-subnational,1900,1975,CHL-BI-1976-2025,,high,,back_cast,livestock_stock
+Biobío,juan-subnational,1900,1975,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,back_cast,production
+Biobío,juan-subnational,1900,1975,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,back_cast,yield
+Biobío,juan-subnational,1976,2023,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,,area
+Biobío,juan-subnational,1976,2023,CHL-BI-1976-2025,,medium,,,landuse
+Biobío,juan-subnational,1976,2023,CHL-BI-1976-2025,,medium,,,livestock_stock
+Biobío,juan-subnational,1976,2023,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,,production
+Biobío,juan-subnational,1976,2023,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,,yield
 BOL-BEN,whep-lab-latam,1900,2023,BOL-BEN-1842-2025,,high,,,
 BOL-CHUQUISACA,whep-lab-latam,1900,2023,BOL-CHUQ-1825-2025,,high,,,
 BOL-COCHABAMBA,whep-lab-latam,1900,2023,BOL-COCH-1825-2025,,high,,,
@@ -490,14 +498,30 @@ CHL-AR,whep-lab-latam,1900,1975,CHL-AR-1976-2025,,high,,back_cast,
 CHL-AR,whep-lab-latam,1976,2023,CHL-AR-1976-2025,,medium,,,
 CHL-AT,whep-lab-latam,1900,1975,CHL-AT-1976-2025,,high,,back_cast,
 CHL-AT,whep-lab-latam,1976,2023,CHL-AT-1976-2025,,high,,,
-CHL-BI,whep-lab-latam,1900,1975,CHL-BI-1976-2025,,high,,back_cast,
-CHL-BI,whep-lab-latam,1976,2023,CHL-BI-1976-2025,,medium,,,
+CHL-BI,whep-lab-latam,1900,1975,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,back_cast,area
+CHL-BI,whep-lab-latam,1900,1975,CHL-BI-1976-2025,,high,,back_cast,landuse
+CHL-BI,whep-lab-latam,1900,1975,CHL-BI-1976-2025,,high,,back_cast,livestock_stock
+CHL-BI,whep-lab-latam,1900,1975,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,back_cast,production
+CHL-BI,whep-lab-latam,1900,1975,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,back_cast,yield
+CHL-BI,whep-lab-latam,1976,2023,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,,area
+CHL-BI,whep-lab-latam,1976,2023,CHL-BI-1976-2025,,medium,,,landuse
+CHL-BI,whep-lab-latam,1976,2023,CHL-BI-1976-2025,,medium,,,livestock_stock
+CHL-BI,whep-lab-latam,1976,2023,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,,production
+CHL-BI,whep-lab-latam,1976,2023,CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),high,,,yield
 CHL-CO,whep-lab-latam,1900,1975,CHL-CO-1976-2025,,high,,back_cast,
 CHL-CO,whep-lab-latam,1976,2023,CHL-CO-1976-2025,,high,,,
 CHL-LI,whep-lab-latam,1900,1975,CHL-LI-1976-2025,,high,,back_cast,
 CHL-LI,whep-lab-latam,1976,2023,CHL-LI-1976-2025,,high,,,
-CHL-LL,whep-lab-latam,1900,1975,CHL-LL-1976-2025,,high,,back_cast,
-CHL-LL,whep-lab-latam,1976,2023,CHL-LL-1976-2025,,medium,,,
+CHL-LL,whep-lab-latam,1900,1975,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,back_cast,area
+CHL-LL,whep-lab-latam,1900,1975,CHL-LL-1976-2025,,high,,back_cast,landuse
+CHL-LL,whep-lab-latam,1900,1975,CHL-LL-1976-2025,,high,,back_cast,livestock_stock
+CHL-LL,whep-lab-latam,1900,1975,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,back_cast,production
+CHL-LL,whep-lab-latam,1900,1975,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,back_cast,yield
+CHL-LL,whep-lab-latam,1976,2023,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,,area
+CHL-LL,whep-lab-latam,1976,2023,CHL-LL-1976-2025,,medium,,,landuse
+CHL-LL,whep-lab-latam,1976,2023,CHL-LL-1976-2025,,medium,,,livestock_stock
+CHL-LL,whep-lab-latam,1976,2023,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,,production
+CHL-LL,whep-lab-latam,1976,2023,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,,yield
 CHL-LR,whep-lab-latam,1900,2006,CHL-LR-2007-2025,,high,,back_cast,
 CHL-LR,whep-lab-latam,2007,2023,CHL-LR-2007-2025,,medium,,,
 CHL-MA,whep-lab-latam,1900,1975,CHL-MA-1976-2025,,high,,back_cast,
@@ -1834,6 +1858,16 @@ Libya Fezzan,fao1952,1943,1950,FEZ-1943-1951,French Military Administration of F
 Libya Tripolitania,fao1952,1943,1951,TRP-1943-1951,British Military Administration of Tripolitania,high,37,,
 Liechtenstein,faostat,1850,2024,LIE-1800-2025,Liechtenstein,high,0,,
 Lithuania,faostat,1992,2024,LTU-1991-2025,Lithuania,high,125108,,
+Los Lagos,juan-subnational,1900,1975,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,back_cast,area
+Los Lagos,juan-subnational,1900,1975,CHL-LL-1976-2025,,high,,back_cast,landuse
+Los Lagos,juan-subnational,1900,1975,CHL-LL-1976-2025,,high,,back_cast,livestock_stock
+Los Lagos,juan-subnational,1900,1975,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,back_cast,production
+Los Lagos,juan-subnational,1900,1975,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,back_cast,yield
+Los Lagos,juan-subnational,1976,2023,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,,area
+Los Lagos,juan-subnational,1976,2023,CHL-LL-1976-2025,,medium,,,landuse
+Los Lagos,juan-subnational,1976,2023,CHL-LL-1976-2025,,medium,,,livestock_stock
+Los Lagos,juan-subnational,1976,2023,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,,production
+Los Lagos,juan-subnational,1976,2023,CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),high,,,yield
 Los Rios,juan-subnational,1900,2006,CHL-LR-2007-2025,,high,,back_cast,
 Los Rios,juan-subnational,2007,2023,CHL-LR-2007-2025,,medium,,,
 Los Rios,whep-lab-latam,1900,2006,CHL-LR-2007-2025,,high,,back_cast,

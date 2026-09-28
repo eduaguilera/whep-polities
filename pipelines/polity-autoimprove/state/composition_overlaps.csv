@@ -53,6 +53,14 @@ BWI-1833-1962,LCA-1838-2025,fao1952,1937,1951,British West Indies;british west i
 BWI-1833-1962,MSR-1800-2025,fao1952,1949,1951,British West Indies;british west indies,Br West Indies Montserrat;British West Indies Montserrat;Leeward Islands  Montserrat;br west indies montserrat,alias;applied_alias,alias;applied_alias,0,0,yes
 BWI-1833-1962,TTO-1800-2025,fao1952,1937,1951,British West Indies;british west indies,Br W Indies Trinidad and Tobago;British W Indies Trinidad and Tobago;British West Indies Trinidad & Tobago;British West Indies Trinidad and Tobago,alias;applied_alias,alias;applied_alias;name,1,2,yes
 BWI-1833-1962,VCT-1833-2025,fao1952,1939,1951,British West Indies;british west indies,Br West Indies St Vincent;British West Indies St Vincent;Jamaica St Vincent;Windward Islands  St Vincent,alias;applied_alias,alias;applied_alias,0,0,yes
+CHL-BINB-1976-2025,CHL-BI-1976-2025,juan-subnational,1900,2023,Biobío,Biobío,alias,alias,0,0,yes
+CHL-BINB-1976-2025,CHL-BI-1976-2025,whep-lab-latam,1900,2023,CHL-BI,CHL-BI,alias,alias,0,0,yes
+CHL-BINB-1976-2025,CHL-NB-2018-2025,juan-subnational,1900,2023,Biobío,Nuble,alias,alias,0,0,yes
+CHL-BINB-1976-2025,CHL-NB-2018-2025,whep-lab-latam,1900,2023,CHL-BI,CHL-NB;Nuble,alias,alias,0,0,yes
+CHL-LLLR-1976-2025,CHL-LL-1976-2025,juan-subnational,1900,2023,Los Lagos,Los Lagos,alias,alias,0,0,yes
+CHL-LLLR-1976-2025,CHL-LL-1976-2025,whep-lab-latam,1900,2023,CHL-LL,CHL-LL,alias,alias,0,0,yes
+CHL-LLLR-1976-2025,CHL-LR-2007-2025,juan-subnational,1900,2023,Los Lagos,Los Rios,alias,alias,0,0,yes
+CHL-LLLR-1976-2025,CHL-LR-2007-2025,whep-lab-latam,1900,2023,CHL-LL,CHL-LR;Los Rios,alias,alias,0,0,yes
 CHL-OTR-1976-2025,CHL-AI-1976-2025,juan-subnational,1935,2023,Otras Regiones,Aysen,alias,alias,0,0,yes
 CHL-OTR-1976-2025,CHL-AN-1976-2025,juan-subnational,1935,2023,Otras Regiones,Antofagasta,alias,alias,0,0,yes
 CHL-OTR-1976-2025,CHL-AP-2007-2025,juan-subnational,1935,2023,Otras Regiones,Arica y Parinacota,alias,alias,0,0,yes
