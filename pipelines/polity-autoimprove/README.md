@@ -1147,7 +1147,9 @@ Los Lagos + Los Ríos, landuse and livestock for Los Lagos alone). Allowed on pa
 (`juan-subnational`, `whep-lab-*`); the matcher skips scoped rows, since layer B carries no
 panel indicator. In the years a label is split, EVERY rule must be scoped: a blank rule
 beside a scoped one claims the same rows, and `validate_aliases.py` refuses it. The number of
-scoped rows is pinned (0 until the WHEP consumer matches the column, whep#1294).
+scoped rows is pinned: 40 since 2026-09-25, the `CHL-BI` and `CHL-LL` splits (crops to
+CHL-BINB-1976-2025 and CHL-LLLR-1976-2025, landuse and livestock on the post-split regions). The
+WHEP consumer must match the column (whep#1294) before it re-syncs past them.
 
 **When the territory depends on the ITEM, an alias is the wrong tool** (issue 675). The
 alias key has no item, so a label that carries two territories in the same years —

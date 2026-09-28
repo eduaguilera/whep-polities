@@ -106,11 +106,18 @@ SCOPE_INDICATORS = frozenset({"area", "production", "yield", "livestock_stock", 
 # scope on a layer-B slug would silently route nothing there.
 PANEL_SLUG = "juan-subnational"
 PANEL_SLUG_PREFIXES = ("whep-lab-",)
-# How many rows carry a scope. PINNED, both ways, and 0 on purpose: the consumer (eduaguilera/whep
-# `resolve_polity_label()`, whep issue 1294) must match the column before the first scoped rule is
-# published, because one that ignores it sees two rules for one label and years and takes whichever
-# it reaches first. Raise this in the same change as the rows, once the consumer honours the scope.
-BASELINE_SCOPED_ROWS = 0
+# How many rows carry a scope. PINNED, both ways. It was 0 until the consumer (eduaguilera/whep
+# `resolve_polity_label()`, whep PR 1294) matched the column, because one that ignores it sees two
+# rules for one label and years and takes whichever it reaches first. Raise it in the same change as
+# the rows.
+#
+# 40 (2026-09-25): the CHL-BI and CHL-LL splits. Each of eight (label, source, years) keys is split
+# into five rules, one per panel indicator: area/production/yield to the pre-split region
+# (CHL-BINB-1976-2025, CHL-LLLR-1976-2025), landuse/livestock_stock to the post-split one. The keys
+# are CHL-BI and CHL-LL under whep-lab-latam, and Biobio and Los Lagos under juan-subnational, each
+# for 1976-2023 and 1900-1975 (back_cast). WHEP must not re-sync past this change before whep#1294
+# is merged.
+BASELINE_SCOPED_ROWS = 40
 
 rows = list(csv.DictReader(open(ALIASES, encoding="utf-8")))
 problems: list[str] = []

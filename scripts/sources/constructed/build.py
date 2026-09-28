@@ -1932,6 +1932,31 @@ def build_chl_otr_1976_2025() -> ogr.Geometry:
     return _drop_holes_below(_union(*(_gadm_adm1(g) for g in CHL_OTR_GID1)), 1e-6)
 
 
+def build_chl_binb_1976_2025() -> ogr.Geometry:
+    """Biobio as it was until 2018 = GADM 4.1 adm1 Biobio (CHL.6_1) + Nuble (CHL.13_1).
+
+    The same two features CHL-BI-1976-2025 and CHL-NB-2018-2025 carry, so the whole and its parts
+    are drawn from one source and tile exactly. Nuble was Biobio's northern province until it became a region
+    (operative September 2018). The LatAm subnational panel's `CHL-BI` crop rows (area, production,
+    yield) cover this whole in every year 1935-2023: the panel's Nuble unit has no crop row, and
+    Biobio's share of Chile's crop area does not step at the split (0.248 in 2017, 0.247 in 2018).
+    Its landuse and livestock rows are modern Biobio alone and stay on CHL-BI-1976-2025.
+    """
+    return _union(_gadm_adm1("CHL.6_1"), _gadm_adm1("CHL.13_1"))
+
+
+def build_chl_lllr_1976_2025() -> ogr.Geometry:
+    """Los Lagos as it was until 2007 = GADM 4.1 adm1 Los Lagos (CHL.9_1) + Los Rios (CHL.10_1).
+
+    The same two features CHL-LL-1976-2025 and CHL-LR-2007-2025 carry. Los Rios (Valdivia and Ranco
+    provinces) was split from Los Lagos, created December 2006 and dated 2007. The panel's `CHL-LL`
+    crop rows cover this whole in every year 1935-2023: the panel's Los Rios unit has no crop row, and
+    Los Lagos' share of Chile's crop area does not step at the split (0.098, 0.095, 0.105 in
+    2006-2008). Its landuse and livestock rows are modern Los Lagos alone and stay on CHL-LL-1976-2025.
+    """
+    return _union(_gadm_adm1("CHL.9_1"), _gadm_adm1("CHL.10_1"))
+
+
 def build_korp_1948_1953() -> ogr.Geometry:
     """The whole Korean peninsula while divided = CShapes 731 (DPRK) + 732 (ROK), both at 1950.
 
@@ -3503,6 +3528,23 @@ BUILDERS = [
         "Cliopatria 'Austrian Empire' (1820-1827 step) MINUS GADM 4.1 Toscana, Emilia-Romagna, "
         "Piemonte, Umbria, Lazio and Marche (widened 20 km, the bordering Austrian regions cut back out) "
         "= 666,434 km2 (ESRI:54034), 25,307 less than Cliopatria, which draws Tuscany as Austrian.",
+    ),
+    (
+        "CHL-BINB-1976-2025",
+        "Biobio and Nuble (Biobio region before the 2018 split)",
+        build_chl_binb_1976_2025,
+        "Union of GADM 4.1 adm1 CHL.6_1 (Biobio) and CHL.13_1 (Nuble), the features of CHL-BI-1976-2025 "
+        "and CHL-NB-2018-2025. Receives the LatAm panel's CHL-BI crop rows (area, production, yield), "
+        "which are Biobio + Nuble in every year; its landuse and livestock stay on CHL-BI-1976-2025.",
+    ),
+    (
+        "CHL-LLLR-1976-2025",
+        "Los Lagos and Los Rios (Los Lagos region before the 2007 split)",
+        build_chl_lllr_1976_2025,
+        "Union of GADM 4.1 adm1 CHL.9_1 (Los Lagos) and CHL.10_1 (Los Rios), the features of "
+        "CHL-LL-1976-2025 and CHL-LR-2007-2025. Receives the LatAm panel's CHL-LL crop rows (area, "
+        "production, yield), which are Los Lagos + Los Rios in every year; its landuse and livestock "
+        "stay on CHL-LL-1976-2025.",
     ),
 ]
 

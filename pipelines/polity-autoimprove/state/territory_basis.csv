@@ -211,9 +211,11 @@ CHL-AP-2007-2025,Arica y Parinacota,2007,2025,gadm-4.1-adm1,,assigned,False,assu
 CHL-AR-1976-2025,La Araucanía (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-AT-1976-2025,Atacama (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-BI-1976-2025,Biobío (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+CHL-BINB-1976-2025,Biobío and Ñuble (Biobío region before the 2018 split),1976,2025,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-CO-1976-2025,Coquimbo (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-LI-1976-2025,O'Higgins (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-LL-1976-2025,Los Lagos (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+CHL-LLLR-1976-2025,Los Lagos and Los Ríos (Los Lagos region before the 2007 split),1976,2025,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-LR-2007-2025,Los Ríos (region of Chile),2007,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-MA-1976-2025,Magallanes (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-ML-1976-2025,Maule (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0

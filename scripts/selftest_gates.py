@@ -5707,9 +5707,11 @@ def mutate_back_cast_alias_reaches_into_target(root, gpd, make_valid, affinity):
 
 
 # --- the alias `indicator` scope (2026-09-25) -------------------------------------------------
-# The registry row every case below edits: the panel's CHL-LL under its unit id, 1976-2023. It is
-# the unit the scope was added for (crops on Los Lagos + Los Rios, landuse and livestock on Los
-# Lagos), so the mutations are the mistakes a real split of it could make.
+# The registry row the first cases below edit: the panel's CHL-LL under its unit id, 1976-2023, the
+# unit the scope was added for (crops on Los Lagos + Los Rios, landuse and livestock on Los Lagos).
+# Since 2026-09-25 that key IS split (five scoped rules), so the cases take its `area` rule and the
+# mutations are the mistakes an edit of a real split could make. The unannounced-split case needs a
+# key that is NOT yet split, and uses CHL-LR's.
 _SCOPE_FIELDS_NOTE = "registry rows written before `indicator` existed lack the field"
 
 
@@ -5730,13 +5732,13 @@ def _rewrite_registry(root, edit):
 
 def _chl_ll_row(rows):
     hit = [r for r in rows if r["source_label"] == "CHL-LL" and r["source"] == "whep-lab-latam"
-           and r["year_start"] == "1976"]
-    assert len(hit) == 1, "the CHL-LL whep-lab-latam 1976 alias moved -- pick another row"
+           and r["year_start"] == "1976" and (r.get("indicator") or "") == "area"]
+    assert len(hit) == 1, "the CHL-LL whep-lab-latam 1976 `area` alias moved -- pick another row"
     return hit[0]
 
 
 def mutate_alias_scope_beside_unscoped(root, gpd, make_valid, affinity):
-    """Add a crop-scoped twin of CHL-LL's unscoped 1976-2023 rule.
+    """Add an UNSCOPED twin of CHL-LL's `area`-scoped 1976-2023 rule.
 
     The tempting reading is "the blank rule is the default and the scoped one the exception", and
     a consumer implementing no precedence would then meet two rules for every crop row and take
@@ -5744,11 +5746,11 @@ def mutate_alias_scope_beside_unscoped(root, gpd, make_valid, affinity):
     """
     def edit(rows):
         twin = dict(_chl_ll_row(rows))
-        twin["indicator"] = "area"
+        twin["indicator"] = ""
         rows.append(twin)
         return rows
     _rewrite_registry(root, edit)
-    return "added an `indicator=area` twin beside CHL-LL's unscoped whep-lab-latam 1976-2023 rule"
+    return "added an unscoped twin beside CHL-LL's `area`-scoped whep-lab-latam 1976-2023 rule"
 
 
 def mutate_alias_scope_typo(root, gpd, make_valid, affinity):
@@ -5761,7 +5763,7 @@ def mutate_alias_scope_typo(root, gpd, make_valid, affinity):
         _chl_ll_row(rows)["indicator"] = "crops"
         return rows
     _rewrite_registry(root, edit)
-    return "scoped CHL-LL's whep-lab-latam 1976-2023 rule on `crops`, which no panel row carries"
+    return "scoped CHL-LL's whep-lab-latam 1976-2023 `area` rule on `crops`, which no panel row carries"
 
 
 def mutate_alias_scope_on_layer_b_slug(root, gpd, make_valid, affinity):
@@ -5780,14 +5782,18 @@ def mutate_alias_scope_on_layer_b_slug(root, gpd, make_valid, affinity):
 
 
 def mutate_alias_scope_split_unannounced(root, gpd, make_valid, affinity):
-    """Replace CHL-LL's unscoped rule by five DISJOINT scoped rules, one per panel indicator.
+    """Replace CHL-LR's unscoped 2007-2023 rule by five DISJOINT scoped rules, one per indicator.
 
     This is the correct shape of a split, so checks 7 and 8 pass it: no two of the rules can claim
-    one row. What must still fail is the pin -- the WHEP consumer reads the map without the column
-    today, and would see five rules for one label and years. Only the count can see that.
+    one row. What must still fail is the pin -- a split the count does not announce reaches a WHEP
+    consumer that was only told about the pinned ones. Only the count can see that. (CHL-LL was the
+    target until its own split was published on 2026-09-25; CHL-LR's key is not split.)
     """
     def edit(rows):
-        base = _chl_ll_row(rows)
+        hit = [r for r in rows if r["source_label"] == "CHL-LR" and r["source"] == "whep-lab-latam"
+               and r["year_start"] == "2007" and not (r.get("indicator") or "")]
+        assert len(hit) == 1, "the CHL-LR whep-lab-latam 2007 alias moved -- pick another row"
+        base = hit[0]
         rows.remove(base)
         for ind in ("area", "production", "yield", "livestock_stock", "landuse"):
             r = dict(base)
@@ -5795,7 +5801,7 @@ def mutate_alias_scope_split_unannounced(root, gpd, make_valid, affinity):
             rows.append(r)
         return rows
     _rewrite_registry(root, edit)
-    return "split CHL-LL's whep-lab-latam 1976-2023 rule into five disjoint indicator-scoped rules"
+    return "split CHL-LR's whep-lab-latam 2007-2023 rule into five disjoint indicator-scoped rules"
 
 
 def _write_ci_skip_log(root, names):
@@ -7149,7 +7155,7 @@ CASES = (
     (
         "validate_aliases.py",
         mutate_alias_scope_split_unannounced,
-        "indicator-scoped alias rows against the pinned 0",
+        "indicator-scoped alias rows against the pinned",
         "a correctly disjoint indicator split published before the consumer matches the column, "
         "which it would read as five rules for one label and years",
     ),

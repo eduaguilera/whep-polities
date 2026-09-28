@@ -26,6 +26,25 @@ Kinds:
 
 ---
 
+## decision-chile-presplit-crop-polities
+**Date:** 2026-09-25
+**Touched:** CHL-BINB-1976-2025 (new), CHL-LLLR-1976-2025 (new), CHL-BI-1976-2025, CHL-LL-1976-2025,
+CHL-NB-2018-2025, CHL-LR-2007-2025, CHL-OTR-1976-2025
+**Source:** juan-subnational, gadm-4.1
+**Kind:** decision
+
+**Applies proposal-indicator-scoped-aliases.** Two constructed polities hold the pre-split regions
+whose ground the panel's Chilean crop series report in every year:
+[chl-binb-1976-2025](polities/chl-binb-1976-2025.md) (Biobío ∪ Ñuble, GADM `CHL.6_1` + `CHL.13_1`,
+37,133 km² as shipped) and [chl-lllr-1976-2025](polities/chl-lllr-1976-2025.md) (Los Lagos ∪ Los
+Ríos, `CHL.9_1` + `CHL.10_1`, 66,448 km²), both built in `constructed/build.py`. Every rule for the
+two units is split into five indicator-scoped rules: `area`, `production`, `yield` to the new rows,
+`landuse` and `livestock_stock` on the post-split regions. 40 scoped rules; 9,573 panel crop rows
+move (5,045 `CHL-BI`, 4,528 `CHL-LL`), none of any other indicator or unit. Whole and parts are
+registered as partitions with `separate_series`: the indicators are disjoint, and Ñuble and Los Ríos
+have no crop row, so nothing is averaged. WHEP must merge eduaguilera/whep#1294 before it re-syncs
+past this change. No human has signed off; written by Claude.
+
 ## proposal-indicator-scoped-aliases
 **Date:** 2026-09-25
 **Touched:** CHL-BI-1976-2025, CHL-LL-1976-2025
