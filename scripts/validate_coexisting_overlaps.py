@@ -159,6 +159,13 @@ DECIDED_OVERLAPS = {
     # ---- class 2, nested sub-polity: DECIDED, polygons are gross ----
     # 7,027 km2, 93.2% of the Canaries, inside Spain's polygon.
     ("ESP-1800-2025", "ICN-1800-2025"): "nested",
+    # whep-normalize (2026-09-30): the two plazas and the two bailiwicks, each drawn from the same
+    # GADM feature as its joint row, sit inside it by construction (nested, declared as container
+    # edges on the part's page).
+    ("CEM-1800-2025", "ESP-CE-1800-2025"): "nested",
+    ("CEM-1800-2025", "ESP-ML-1800-2025"): "nested",
+    ("CHI-1800-2025", "GGY-1800-2025"): "nested",
+    ("CHI-1800-2025", "JEY-1800-2025"): "nested",
     # 893 km2, 79.2% of Hong Kong, inside China's.
     ("CHN-1950-2025", "HKG-1842-2025"): "nested",
     # 6 km2, 19.2% of Macau, inside China's. Small in area, large in share, which is why

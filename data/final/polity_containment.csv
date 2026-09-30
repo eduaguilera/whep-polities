@@ -1,4 +1,8 @@
 member_code,container_code,start_year,end_year,basis
+ADS-1839-1937,IND-1800-1886,1839,1886,Aden was a dependency of the Bombay Presidency of British India.
+ADS-1839-1937,IND-1886-1893,1886,1893,Aden was a dependency of the Bombay Presidency of British India.
+ADS-1839-1937,IND-1893-1914,1893,1914,Aden was a dependency of the Bombay Presidency of British India.
+ADS-1839-1937,IND-1914-1937,1914,1937,Aden was governed as part of British India (a chief commissioner's province from 1932) until 1 April 1937.
 ALK-1867-1959,USA-1867-1959,1867,1959,"the Territory of Alaska inside the United States, from the 1867 purchase to statehood in 1959"
 ARG-BA-1853-2025,ARG-1800-1899,1853,1899,"Buenos Aires province organized under the 1853 Argentine Constitution existed inside the Argentine Confederation/Republic of this era, prior to the 1899 CoW-boundary national row split"
 ARG-BA-1853-2025,ARG-1899-1902,1899,1902,short national-row era between the two adjacent Argentina national spans; Buenos Aires province continues unchanged through it
@@ -223,6 +227,7 @@ CHN-XJ-1884-2025,CHN-1945-1947,1945,1947,Same province inside the Republic of Ch
 CHN-XJ-1884-2025,CHN-1947-1949,1947,1949,"Same province, the Republic's 1947 constitutional period."
 CHN-XJ-1884-2025,CHN-1949-1950,1949,1950,"Same province, the People's Republic's first months."
 CHN-XJ-1884-2025,CHN-1950-2025,1950,2025,"Same territory inside the People's Republic, a province until 1955 and the Xinjiang Uygur Autonomous Region since."
+CHN-XZ-1951-2025,CHN-1950-2025,1951,2025,Central Tibet was annexed by the People's Republic of China in 1951 and is its Tibet Autonomous Region since 1965.
 COL-AMA-1991-2025,COL-1922-2025,1991,2025,"Amazonas has been a first-level department of the Republic of Colombia since its 1991 constitutional elevation from territorio nacional status; the containing national polity COL-1922-2025 (Colombia, 1922-2025) spans this entire window without a change of national sovereign."
 COL-ANTIOQUIA-1886-2025,COL-1830-1903,1886,1903,"Antioquia was constituted as a department of the unitary Republic of Colombia under the 1886 Constitution, which this row's container COL-1830-1903 (Colombia to 1903) still covers at its tail end"
 COL-ANTIOQUIA-1886-2025,COL-1903-1922,1903,1922,Antioquia continued as a department of Colombia through the 1903-1922 national era (bounded by Panama's 1903 secession and the 1922 US-Colombia treaty ratification)
@@ -293,6 +298,7 @@ ESP-BU-1833-2025,ESP-1800-2025,1833,2025,Burgos existed as a province inside the
 ESP-CA-1833-2025,ESP-1800-2025,1833,2025,"Cantabria is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching ESP-CO-1833-2025 and ESP-MD-1833-2025."
 ESP-CC-1833-2025,ESP-1800-2025,1833,2025,"Cáceres is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-AS-1833-2025 and ESP-MD-1833-2025."
 ESP-CDZ-1833-2025,ESP-1800-2025,1833,2025,"Cádiz has been one of the 50 Spanish provinces since the 1833 Javier de Burgos territorial reform, continuously contained within the Spanish state to the present."
+ESP-CE-1800-2025,CEM-1800-2025,1800,2025,Ceuta is one of the two Spanish plazas de soberanía on the North African coast throughout the span.
 ESP-CO-1833-2025,ESP-1800-2025,1833,2025,"A Coruña is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-MD-1833-2025."
 ESP-COR-1833-2025,ESP-1800-2025,1833,2025,Córdoba province exists within sovereign Spain for the whole span; no change of sovereign container occurs across 1833-2025.
 ESP-CR-1833-2025,ESP-1800-2025,1833,2025,"Ciudad Real has been one of the 50 provinces of Spain continuously since the 1833 Javier de Burgos territorial reform, nested inside the Spanish state for the entirety of this polity's span with no change of sovereign container."
@@ -314,6 +320,7 @@ ESP-LP-1927-2025,ESP-1800-2025,1927,2025,Las Palmas has been one of Spain's 50 p
 ESP-LU-1833-2025,ESP-1800-2025,1833,2025,"Lugo is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-CO-1833-2025 and ESP-MD-1833-2025."
 ESP-MA-1833-2025,ESP-1800-2025,1833,2025,"Málaga is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit created in 1833; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-AS-1833-2025, ESP-CO-1833-2025, and ESP-MD-1833-2025."
 ESP-MD-1833-2025,ESP-1800-2025,1833,2025,"Madrid is a province/region of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap."
+ESP-ML-1800-2025,CEM-1800-2025,1800,2025,Melilla is one of the two Spanish plazas de soberanía on the North African coast throughout the span.
 ESP-MU-1833-2025,ESP-1800-2025,1833,2025,"Murcia is one of the 49 provinces established simultaneously by the 1833 Javier de Burgos territorial reform under the Spanish state, and it remains a current province of Spain (single-province autonomous community) through the present."
 ESP-NV-1833-2025,ESP-1800-2025,1833,2025,"Navarra is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-AS-1833-2025, ESP-CA-1833-2025 and the other Spanish province rows."
 ESP-OR-1833-2025,ESP-1800-2025,1833,2025,"Ourense is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-CO-1833-2025, ESP-LU-1833-2025 and ESP-MD-1833-2025."
@@ -333,6 +340,7 @@ ESP-VA-1833-2025,ESP-1800-2025,1833,2025,"Valladolid is a province of the Kingdo
 ESP-VI-1833-2025,ESP-1800-2025,1833,2025,"Araba/Álava is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-CO-1833-2025 and ESP-MD-1833-2025."
 ESP-ZA-1833-2025,ESP-1800-2025,1833,2025,"Zaragoza is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, matching the treatment already used for ESP-AS-1833-2025, ESP-CO-1833-2025 and ESP-MD-1833-2025."
 ESP-ZM-1833-2025,ESP-1800-2025,1833,2025,"Zamora is a province of the Kingdom/Republic/State of Spain throughout its existence as an administrative unit; ESP-1800-2025 is the national row spanning the whole period, so one edge covers the full 1833-2025 span with no gap, the same treatment already used for ESP-CO-1833-2025, ESP-MD-1833-2025 and ESP-PO-1833-2025."
+FMS-1909-1946,GBM-1895-1946,1909,1946,The Federated Malay States are one of the three units British Malaya is composed of.
 FRA-02-1800-2025,FRA-1800-1860,1800,1860,"Aisne is a Picardy département on the Belgian frontier, entirely outside Alsace-Lorraine, so the with/without Alsace-Lorraine split in the FRA chain is immaterial to it; it sits inside metropolitan France throughout this era."
 FRA-02-1800-2025,FRA-1860-1871,1860,1871,"Aisne was French before and after the Treaty of Turin (24 March 1860); the annexation of Savoy and Nice enlarged France without touching it, so it sits in FRA-1860-1871, the national row from 1860 to the 1871 loss of Alsace-Lorraine."
 FRA-02-1800-2025,FRA-1871-1919,1871,1919,"Continuous metropolitan French territory; Aisne was not part of the 1871 Alsace-Lorraine cession and is unaffected by the container split at that date, despite being a front-line département during the First World War (1914-1918)."
@@ -673,8 +681,12 @@ FRA-VNE-1800-2025,FRA-1800-1860,1800,1860,"Split across the French national chai
 FRA-VNE-1800-2025,FRA-1860-1871,1860,1871,"Vienne was French before and after the Treaty of Turin (24 March 1860); the annexation of Savoy and Nice enlarged France without touching it, so it sits in FRA-1860-1871, the national row from 1860 to the 1871 loss of Alsace-Lorraine."
 FRA-VNE-1800-2025,FRA-1871-1919,1871,1919,"Split across the French national chain because the previous edge named FRA-1800-1919, which is SUPERSEDED -- a dead polity is never a resolution candidate, so the member never steps aside and resolve_polity_label() returns NA for France 1850-1918. FRA-1871-1919 is France without Alsace-Lorraine, which is correct for this département — it lies far from Alsace-Lorraine and never belonged to F248."
 FRA-VNE-1800-2025,FRA-1919-2025,1919,2025,"continuation of the same department inside post-Versailles France, unaffected by the Alsace-Lorraine reintegration that defines this era's boundary relative to FRA-1871-1919"
+GBR-EW-1800-2025,GBR-GB-1800-2025,1800,2025,England and Wales are Great Britain less Scotland throughout the span.
 GBR-GB-1800-2025,GBR-1800-1921,1800,1921,Great Britain was the larger island of the United Kingdom of Great Britain and Ireland from the 1801 union to the 1921 partition of Ireland.
 GBR-GB-1800-2025,GBR-1921-2025,1921,2025,Great Britain together with Northern Ireland constitutes the United Kingdom after the 1921-1922 settlement.
+GBR-NIR-1921-2025,GBR-1921-2025,1921,2025,Northern Ireland is the part of the United Kingdom on the island of Ireland from the 1921 partition.
+GBR-SCT-1800-2025,GBR-GB-1800-2025,1800,2025,"Scotland is the northern part of Great Britain, inside it since the 1707 union and throughout the span."
+GGY-1800-2025,CHI-1800-2025,1800,2025,The Bailiwick of Guernsey is one of the two bailiwicks of the Channel Islands throughout the span.
 HAW-1959-2025,USA-1959-2025,1959,2025,Hawaii has been a U.S. state within this exact chain-row's span since admission on 1959-08-21; the container edge covers the full 1959-2025 span with no gap since the row itself starts at statehood.
 HKG-1842-2025,CHN-1950-2025,1997,2025,Hong Kong Special Administrative Region of the People's Republic of China from 1 July 1997
 HYD-1724-1948,IND-1800-1886,1800,1886,"Hyderabad State lay inside the territory British India administered, and this repository already treats it as a sub-unit of India — the row carries polity_type subnational and iso3_code IND. The edge says the same thing in the place a consumer can read it. It asserts CONTAINMENT for these years, not that Hyderabad was a province — it was a princely state under British paramountcy, retaining internal government, and the interval sits on the edge precisely so a period-specific container relation need not imply permanent sovereignty — the same design that puts Alsace-Lorraine inside Germany 1871-1918 and inside France otherwise."
@@ -683,10 +695,32 @@ HYD-1724-1948,IND-1893-1914,1893,1914,"Hyderabad State lay inside the territory 
 HYD-1724-1948,IND-1914-1937,1914,1937,"Hyderabad State lay inside the territory British India administered, and this repository already treats it as a sub-unit of India — the row carries polity_type subnational and iso3_code IND. The edge says the same thing in the place a consumer can read it. It asserts CONTAINMENT for these years, not that Hyderabad was a province — it was a princely state under British paramountcy, retaining internal government, and the interval sits on the edge precisely so a period-specific container relation need not imply permanent sovereignty — the same design that puts Alsace-Lorraine inside Germany 1871-1918 and inside France otherwise."
 HYD-1724-1948,INU-1937-1947,1937,1947,"Re-edged to depth 2 on 2026-09-24 (fix/aggregate-part-double-count). From 2026-09-24 IND-1937-1947 also holds INU-1937-1947, the future-Union territory on present boundaries that fao1952 reports as `India`, and that territory includes Hyderabad: measured on the ESRI:54034 polygons all 211,298 km2 of this row (100.00%) lie inside INU-1937-1947's 3,041,826 km2 and none inside PAK-1937-1947. With both declared directly under IND-1937-1947, summing its members counted Hyderabad twice for 1937-1947; the chain is now HYD -> INU -> IND-1937-1947. Hyderabad acceded to India only in September 1948, so this edge, like the others, asserts territorial CONTAINMENT and not accession. Previously: Hyderabad State lay inside the territory British India administered, and this repository already treats it as a sub-unit of India — the row carries polity_type subnational and iso3_code IND. The edge says the same thing in the place a consumer can read it. It asserts CONTAINMENT for these years, not that Hyderabad was a province — it was a princely state under British paramountcy, retaining internal government, and the interval sits on the edge precisely so a period-specific container relation need not imply permanent sovereignty — the same design that puts Alsace-Lorraine inside Germany 1871-1918 and inside France otherwise."
 HYD-1724-1948,IND-1947-1949,1947,1948,"Hyderabad State lay inside the territory British India administered, and this repository already treats it as a sub-unit of India — the row carries polity_type subnational and iso3_code IND. The edge says the same thing in the place a consumer can read it. It asserts CONTAINMENT for these years, not that Hyderabad was a province — it was a princely state under British paramountcy, retaining internal government, and the interval sits on the edge precisely so a period-specific container relation need not imply permanent sovereignty — the same design that puts Alsace-Lorraine inside Germany 1871-1918 and inside France otherwise."
+IDN-BAL-1800-1949,IDN-OUT-1800-1949,1800,1949,"The island was one of the Outer Provinces (Buitengewesten), the Dutch East Indies outside Java and Madura."
 IDN-BLB-1949-1951,IDN-1949-1963,1949,1951,Bali and Lombok as a reporting unit inside Indonesia
+IDN-JAV-1800-1949,IDN-1800-1945,1800,1945,The island was part of the Dutch East Indies.
+IDN-JAV-1800-1949,IDN-1945-1949,1945,1949,The island was part of the Dutch-claimed / Republican Indonesian territory until the 1949 transfer of sovereignty.
 IDN-JVM-1949-1951,IDN-1949-1963,1949,1951,Java and Madura as a reporting unit inside Indonesia
+IDN-LOM-1800-1949,IDN-OUT-1800-1949,1800,1949,"The island was one of the Outer Provinces (Buitengewesten), the Dutch East Indies outside Java and Madura."
+IDN-MAD-1800-1949,IDN-1800-1945,1800,1945,The island was part of the Dutch East Indies.
+IDN-MAD-1800-1949,IDN-1945-1949,1945,1949,The island was part of the Dutch-claimed / Republican Indonesian territory until the 1949 transfer of sovereignty.
 IDN-OTH-1949-1951,IDN-1949-1963,1949,1951,the residual outer islands as a reporting unit inside Indonesia
+IDN-OUT-1800-1949,IDN-1800-1945,1800,1945,The island was part of the Dutch East Indies.
+IDN-OUT-1800-1949,IDN-1945-1949,1945,1949,The island was part of the Dutch-claimed / Republican Indonesian territory until the 1949 transfer of sovereignty.
+IDN-SUM-1800-1949,IDN-OUT-1800-1949,1800,1949,"The island was one of the Outer Provinces (Buitengewesten), the Dutch East Indies outside Java and Madura."
 IDN-XTL-1976-2002,IDN-1976-2002,1976,2002,"Indonesia's territory net of East Timor, the reporting area of FAOSTAT area 101 in 1976-2001"
+IND-AN-1868-2025,IND-1800-1886,1868,1886,The islands were part of British India from 1868.
+IND-AN-1868-2025,IND-1886-1893,1886,1893,The islands were part of British India (a chief commissioner's province).
+IND-AN-1868-2025,IND-1893-1914,1893,1914,The islands were part of British India (a chief commissioner's province).
+IND-AN-1868-2025,IND-1914-1937,1914,1937,The islands were part of British India (a chief commissioner's province).
+IND-AN-1868-2025,INU-1937-1947,1937,1947,"The islands were part of the British India territory that became the Dominion of India; Japanese-occupied 1942-1945, a de facto change the database does not model."
+IND-AN-1868-2025,IND-1947-1949,1947,1949,The islands passed to the Dominion of India at independence.
+IND-AN-1868-2025,IND-1949-2025,1949,2025,The islands are a union territory of India.
+IND-SK-1890-2025,IND-1886-1893,1890,1893,"Sikkim was a British protectorate from the 1890 Anglo-Chinese convention; containment, not provincial status."
+IND-SK-1890-2025,IND-1893-1914,1893,1914,"British protectorate attached to British India; containment, not provincial status."
+IND-SK-1890-2025,IND-1914-1937,1914,1937,"British protectorate attached to British India; containment, not provincial status."
+IND-SK-1890-2025,INU-1937-1947,1937,1947,British protectorate inside the territory that became the Dominion of India.
+IND-SK-1890-2025,IND-1947-1949,1947,1949,Indian protectorate from 1947.
+IND-SK-1890-2025,IND-1949-2025,1949,2025,"An Indian protectorate to 1975, then a state of India."
 INU-1937-1947,IND-1937-1947,1937,1947,"the provinces and princely states that formed the Dominion of India at partition, inside British India between the separation of Burma (1 April 1937) and independence (15 August 1947)"
 ISR-RA-1967-2025,ISR-1967-1979,1967,1979,"the area covered by Israel's national statistics, inside the ISR-1967-1979 polygon"
 ISR-RA-1967-2025,ISR-1979-2025,1979,2025,"the area covered by Israel's national statistics, inside the ISR-1979-2025 polygon"
@@ -746,6 +780,7 @@ ITA-VDA-1948-2025,ITA-PVA-1861-2025,1948,2025,"Re-edged to depth 2 on 2026-09-24
 ITA-VEN-1866-2025,ITA-1866-1870,1866,1870,"Veneto was annexed to the Kingdom of Italy in 1866 (Third Italian War of Independence, plebiscite of October 1866), so the earliest national container whose territory includes Veneto is ITA-1866-1870, not the earlier ITA-1861-1866."
 ITA-VEN-1866-2025,ITA-1870-1919,1870,1919,Continuity of Veneto within the Kingdom of Italy from the capture of Rome (1870) to the post-WWI settlement (1919); Veneto's own boundary is unaffected by either change.
 ITA-VEN-1866-2025,ITA-1919-2025,1919,2025,"Continuity of Veneto within Italy (Kingdom, then Republic from 1946) from the post-WWI settlement to the present; the WWI annexations (Trentino-Alto Adige, Julian March) added territory to Veneto's east and north but did not redraw Veneto's own regional boundary, which had already reached its modern extent by 1866."
+JEY-1800-2025,CHI-1800-2025,1800,2025,The Bailiwick of Jersey is one of the two bailiwicks of the Channel Islands throughout the span.
 JPN-AICHI-1871-2025,JPN-1800-1895,1871,1895,prefecture inside JPN-1800-1895 for those years
 JPN-AICHI-1871-2025,JPN-1895-1945,1895,1945,prefecture inside JPN-1895-1945 for those years
 JPN-AICHI-1871-2025,JPN-1945-1952,1945,1952,prefecture inside JPN-1945-1952 for those years
@@ -930,6 +965,7 @@ JPN-YAMANASHI-1871-2025,JPN-1800-1895,1871,1895,prefecture inside JPN-1800-1895 
 JPN-YAMANASHI-1871-2025,JPN-1895-1945,1895,1945,prefecture inside JPN-1895-1945 for those years
 JPN-YAMANASHI-1871-2025,JPN-1945-1952,1945,1952,prefecture inside JPN-1945-1952 for those years
 JPN-YAMANASHI-1871-2025,JPN-1952-2025,1952,2025,prefecture inside JPN-1952-2025 for those years
+KAR-1905-1945,JPN-1895-1945,1905,1945,Karafuto was part of the Empire of Japan from the 1905 Treaty of Portsmouth to the 1945 Soviet invasion.
 MAC-1800-2025,CHN-1950-2025,1999,2025,Macao Special Administrative Region of the People's Republic of China from 20 December 1999
 MAN-1921-1932,CHN-1921-1932,1921,1932,"the Three Eastern Provinces (Fengtian/Liaoning, Jilin, Heilongjiang) inside the Republic of China, until the founding of Manchukuo on 1 March 1932"
 MAN-1945-1950,CHN-1945-1947,1945,1947,"the Manchuria region inside the Republic of China, post-surrender"
@@ -994,6 +1030,7 @@ PRT-ALE-1986-2025,PRT-1800-2025,1986,2025,"NUTS II region of Portugal, introduce
 PRT-AV-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
 PRT-AV-1835-2025,PRT-CENTRO-1986-2025,1986,2025,"Measured against Eurostat GISCO NUTS 2021 level-2 geometry the district straddles NUTS II boundaries — 63% of its area falls in Centro and the rest in Norte 36%. The edge records the region holding the largest share, so reading this district as a subunit of Centro is approximate; the five regions themselves tile Portugal exactly."
 PRT-AZM-1800-2025,PRT-1800-2025,1800,2025,"The Azores and Madeira archipelagos are part of Portugal throughout, today its two autonomous regions."
+PRT-AZO-1800-2025,PRT-AZM-1800-2025,1800,2025,The Azores are one of Portugal's two Atlantic archipelagos throughout the span.
 PRT-BG-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
 PRT-BG-1835-2025,PRT-PT11-1986-2025,1986,2025,"Measured against Eurostat GISCO NUTS 2021 level-2 geometry the district lies wholly inside Norte, 99.6% of its area."
 PRT-BJ-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
@@ -1016,6 +1053,7 @@ PRT-LE-1835-2025,PRT-CENTRO-1986-2025,1986,2025,"Measured against Eurostat GISCO
 PRT-LI-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
 PRT-LI-1835-2025,PRT-LIS-1986-2025,1986,2025,"Measured against Eurostat GISCO NUTS 2021 level-2 geometry the district straddles NUTS II boundaries — 48% of its area falls in Área Metropolitana de Lisboa and the rest in Centro 42%; Alentejo 10%. The edge records the region holding the largest share, so reading this district as a subunit of Área Metropolitana de Lisboa is approximate; the five regions themselves tile Portugal exactly."
 PRT-LIS-1986-2025,PRT-1800-2025,1986,2025,"NUTS II region of Portugal, introduced with the 1986 accession to the European Communities and a direct subunit of the Portuguese state for its whole span. Geometry is the Eurostat GISCO NUTS 2021 level-2 feature PT17."
+PRT-MAD-1800-2025,PRT-AZM-1800-2025,1800,2025,Madeira is one of Portugal's two Atlantic archipelagos throughout the span.
 PRT-PG-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
 PRT-PG-1835-2025,PRT-ALE-1986-2025,1986,2025,"Measured against Eurostat GISCO NUTS 2021 level-2 geometry the district lies wholly inside Alentejo, 99.5% of its area."
 PRT-PO-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
@@ -1038,10 +1076,13 @@ SCG-XK-1999-2006,SCG-1992-2006,1999,2006,"the Federal Republic of Yugoslavia / S
 SER-1918-1945,F248-1918-1919,1918,1919,"Serbia inside the new Kingdom of Serbs, Croats and Slovenes"
 SER-1918-1945,F248-1919-1920,1919,1920,"same territory, the 1919 boundary settlement"
 SER-1918-1945,F248-1920-1947,1920,1945,"same territory, interwar Yugoslavia; capped at this member's own end_year"
+SGP-1824-1946,STS-1826-1946,1826,1946,Singapore was governed as part of the Straits Settlements from 1826 to 1946.
 SGP-1963-1965,MYS-1963-1965,1963,1965,"the State of Singapore inside Malaysia, from the 1963 federation to the 1965 separation"
 SRB-XK-2006-2008,SRB-2006-2008,2006,2008,"Serbia without Kosovo, the area Serbia's statistics cover in 2006-2008"
+STS-1826-1946,GBM-1895-1946,1895,1946,The Straits Settlements are one of the three units British Malaya is composed of (with the Federated and Unfederated Malay States).
 TNGU-1949-1975,PNG-1949-1975,1949,1975,"the Trust Territory of New Guinea inside the Papua and New Guinea administrative union, from the Papua and New Guinea Act 1949 (in force 1 July 1949) until independence on 16 September 1975"
 TPAP-1949-1975,PNG-1949-1975,1949,1975,"the Territory of Papua inside the Papua and New Guinea administrative union, from the Papua and New Guinea Act 1949 (in force 1 July 1949) until independence on 16 September 1975"
+UMS-1909-1946,GBM-1895-1946,1909,1946,The Unfederated Malay States are one of the three units British Malaya is composed of.
 USA-AK-1959-2025,USA-1959-2025,1959,2025,"Alaska has been one of the fifty United States since admission to the Union in 1959, continuously through the present."
 USA-AL-1819-2025,USA-1803-1848,1819,1848,"Alabama entered the Union in 1819, within the span of the third national United States row"
 USA-AL-1819-2025,USA-1848-1867,1848,1867,continuous statehood through the fourth national United States row
