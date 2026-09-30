@@ -2023,6 +2023,101 @@ def build_ker_1887_2025() -> ogr.Geometry:
     return _keep_parts_within(_gadm_adm1("NZL.10_1"), -179.5, -31.7, -177.5, -29.0)
 
 
+# whep-normalize (2026-09-30): the subunits a colleague's normalized IIA/FAO-yearbook label list
+# reports on their own ('united kingdom: england, wales', 'portugal: mainland', 'spain: ceuta',
+# 'spain: melilla'). Each is a union or a split of GADM 4.1 adm1 features already used above.
+GBR_EW_GID1 = ("GBR.1_1", "GBR.4_1")  # England (NAME_1 is NA in GADM 4.1), Wales
+
+
+def build_gbr_ew_1800_2025() -> ogr.Geometry:
+    """England and Wales, the single legal jurisdiction = GADM 4.1 adm1 England + Wales; Great
+    Britain (GBR-GB-1800-2025) without Scotland."""
+    return _union(*(_gadm_adm1(g) for g in GBR_EW_GID1))
+
+
+def build_prt_con_1800_2025() -> ogr.Geometry:
+    """Mainland (continental) Portugal = the 18 GADM 4.1 adm1 districts, i.e. every PRT adm1
+    feature except the Azores (PRT.2_1) and Madeira (PRT.13_1)."""
+    return _union(*(_gadm_adm1(f"PRT.{i}_1") for i in range(1, 21)
+                    if f"PRT.{i}_1" not in PRT_AZM_GID1))
+
+
+def build_esp_ce_1800_2025() -> ogr.Geometry:
+    """Ceuta = the western part of GADM 4.1 adm1 ESP.7_1 ('Ceuta y Melilla', one feature for both
+    plazas): the parts inside 5.40-5.25 W, 35.85-35.94 N, 20.76 km2 (ESRI:54034). The envelope
+    stops east of 5.40 W so that Perejil islet (5.42 W, 0.17 km2), which GADM files in the same
+    feature but which is not part of the city, stays out; so do the plazas menores (Velez,
+    Alhucemas, Chafarinas), which lie outside both envelopes."""
+    return _keep_parts_within(_gadm_adm1("ESP.7_1"), -5.40, 35.85, -5.25, 35.94)
+
+
+def build_esp_ml_1800_2025() -> ogr.Geometry:
+    """Melilla = the eastern part of GADM 4.1 adm1 ESP.7_1: the parts inside 3.00-2.90 W,
+    35.25-35.33 N (the two plazas are 215 km apart, so the envelopes cannot overlap), 7.56 km2
+    (ESRI:54034) -- GADM draws the city smaller than its stated 12.3 km2."""
+    return _keep_parts_within(_gadm_adm1("ESP.7_1"), -3.00, 35.25, -2.90, 35.33)
+
+
+# whep-normalize batch 2 (2026-09-30): Dutch East Indies islands the label list reports one by one
+# ('dutch java', 'dutch madura', 'dutch sumatra', 'dutch bali', 'dutch lombok', 'dutch east indies:
+# other islands'), and the combined reporting units 'norway: svalbard and jan mayen' and
+# 'united states: florida, louisiana'.
+IDN_JAVA_GID1 = ("IDN.4_1", "IDN.7_1", "IDN.9_1", "IDN.10_1", "IDN.33_1")  # Banten, Jakarta, W/C Java, Yogyakarta
+IDN_MADURA_GID2 = ("IDN.11.1_1", "IDN.11.31_1", "IDN.11.27_1", "IDN.11.34_1")  # Bangkalan, Sampang, Pamekasan, Sumenep
+IDN_LOMBOK_GID2 = ("IDN.20.4_1", "IDN.20.5_1", "IDN.20.6_1", "IDN.20.7_1", "IDN.20.8_1")  # Lombok B/T/T/U, Mataram
+IDN_SUMATRA_GID1 = ("IDN.1_1", "IDN.32_1", "IDN.30_1", "IDN.24_1", "IDN.8_1", "IDN.31_1", "IDN.5_1", "IDN.17_1")
+
+
+def _idn_east_java_without_madura() -> ogr.Geometry:
+    parts = [f"IDN.11.{i}_1" for i in range(1, 39)]
+    return _union(*(_gadm_adm2(g) for g in parts if g not in IDN_MADURA_GID2))
+
+
+def build_idn_jav_1800_1949() -> ogr.Geometry:
+    """Java island = GADM 4.1 adm1 Banten, Jakarta Raya, Jawa Barat, Jawa Tengah, Yogyakarta, and
+    Jawa Timur without the four Madura regencies (adm2 Bangkalan, Sampang, Pamekasan, Sumenep)."""
+    return _union(*(_gadm_adm1(g) for g in IDN_JAVA_GID1), _idn_east_java_without_madura())
+
+
+def build_idn_mad_1800_1949() -> ogr.Geometry:
+    """Madura = GADM 4.1 adm2 Bangkalan, Sampang, Pamekasan and Sumenep (with Sumenep's islands)."""
+    return _union(*(_gadm_adm2(g) for g in IDN_MADURA_GID2))
+
+
+def build_idn_sum_1800_1949() -> ogr.Geometry:
+    """Sumatra = the eight GADM 4.1 adm1 provinces on the island (Aceh, North, West and South
+    Sumatra, Riau, Jambi, Bengkulu, Lampung); the Riau Islands and Bangka-Belitung, separate
+    residencies in the Dutch period, are left out."""
+    return _union(*(_gadm_adm1(g) for g in IDN_SUMATRA_GID1))
+
+
+def build_idn_lom_1800_1949() -> ogr.Geometry:
+    """Lombok = the GADM 4.1 adm2 units of Nusa Tenggara Barat on the island (Lombok Barat,
+    Tengah, Timur, Utara and Kota Mataram)."""
+    return _union(*(_gadm_adm2(g) for g in IDN_LOMBOK_GID2))
+
+
+def build_idn_out_1800_1949() -> ogr.Geometry:
+    """The Outer Provinces (Buitengewesten) = every GADM 4.1 adm1 province of Indonesia except the
+    six on Java island (Madura included), i.e. the archipelago outside Java and Madura, western New
+    Guinea included (the Dutch kept it in 1949)."""
+    java_madura = set(IDN_JAVA_GID1) | {"IDN.11_1"}
+    gids = [f"IDN.{i}_1" for i in range(1, 36) if f"IDN.{i}_1" not in java_madura and i != 15]
+    return _union(*(_gadm_adm1(g) for g in gids))
+
+
+def build_sjm_1930_2025() -> ogr.Geometry:
+    """Svalbard and Jan Mayen together = GADM 4.1 adm1 SJM.2_1 + SJM.1_1, the features of
+    SVB-1925-2025 and JMY-1930-2025."""
+    return _union(_gadm_adm1("SJM.2_1"), _gadm_adm1("SJM.1_1"))
+
+
+def build_usa_flla_1845_2025() -> ogr.Geometry:
+    """Louisiana and Florida together = GADM 4.1 adm1 USA.19_1 + USA.10_1, the features of
+    USA-LA-1812-2025 and USA-FL-1845-2025."""
+    return _union(_gadm_adm1("USA.19_1"), _gadm_adm1("USA.10_1"))
+
+
 PRT_AZM_GID1 = ("PRT.2_1", "PRT.13_1")  # Azores, Madeira
 
 
@@ -3545,6 +3640,74 @@ BUILDERS = [
         "CHL-LL-1976-2025 and CHL-LR-2007-2025. Receives the LatAm panel's CHL-LL crop rows (area, "
         "production, yield), which are Los Lagos + Los Rios in every year; its landuse and livestock "
         "stay on CHL-LL-1976-2025.",
+    ),
+    (
+        "GBR-EW-1800-2025",
+        "England and Wales",
+        build_gbr_ew_1800_2025,
+        "Union of GADM 4.1 adm1 GBR.1_1 (England) and GBR.4_1 (Wales): Great Britain without Scotland. "
+        "whep-normalize 'united kingdom: england, wales'.",
+    ),
+    (
+        "PRT-CON-1800-2025",
+        "Mainland Portugal",
+        build_prt_con_1800_2025,
+        "Union of the 18 GADM 4.1 adm1 districts of Portugal (every PRT adm1 feature but the Azores and "
+        "Madeira). whep-normalize 'portugal: mainland'.",
+    ),
+    (
+        "ESP-CE-1800-2025",
+        "Ceuta",
+        build_esp_ce_1800_2025,
+        "The Ceuta parts of GADM 4.1 adm1 ESP.7_1 ('Ceuta y Melilla'). whep-normalize 'spain: ceuta'.",
+    ),
+    (
+        "ESP-ML-1800-2025",
+        "Melilla",
+        build_esp_ml_1800_2025,
+        "The Melilla parts of GADM 4.1 adm1 ESP.7_1 ('Ceuta y Melilla'). whep-normalize 'spain: melilla'.",
+    ),
+    (
+        "IDN-JAV-1800-1949",
+        "Java",
+        build_idn_jav_1800_1949,
+        "Java island: GADM 4.1 adm1 Banten, Jakarta Raya, Jawa Barat, Jawa Tengah, Yogyakarta and Jawa Timur less the four Madura regencies (adm2). whep-normalize 'dutch java'.",
+    ),
+    (
+        "IDN-MAD-1800-1949",
+        "Madura",
+        build_idn_mad_1800_1949,
+        "Madura: GADM 4.1 adm2 Bangkalan, Sampang, Pamekasan, Sumenep. whep-normalize 'dutch madura'.",
+    ),
+    (
+        "IDN-SUM-1800-1949",
+        "Sumatra",
+        build_idn_sum_1800_1949,
+        "Sumatra: eight GADM 4.1 adm1 provinces on the island (Riau Islands and Bangka-Belitung excluded). whep-normalize 'dutch sumatra'.",
+    ),
+    (
+        "IDN-LOM-1800-1949",
+        "Lombok",
+        build_idn_lom_1800_1949,
+        "Lombok: GADM 4.1 adm2 Lombok Barat, Tengah, Timur, Utara and Mataram. whep-normalize 'dutch lombok'.",
+    ),
+    (
+        "IDN-OUT-1800-1949",
+        "Outer Provinces of the Dutch East Indies",
+        build_idn_out_1800_1949,
+        "Indonesia outside Java and Madura: every GADM 4.1 adm1 province but the six on Java. whep-normalize 'dutch east indies: other islands'.",
+    ),
+    (
+        "SJM-1930-2025",
+        "Svalbard and Jan Mayen (combined reporting unit)",
+        build_sjm_1930_2025,
+        "Union of GADM 4.1 adm1 SJM.2_1 (Svalbard) and SJM.1_1 (Jan Mayen). whep-normalize 'norway: svalbard and jan mayen'.",
+    ),
+    (
+        "USA-FLLA-1845-2025",
+        "Louisiana and Florida (combined reporting unit)",
+        build_usa_flla_1845_2025,
+        "Union of GADM 4.1 adm1 USA.19_1 (Louisiana) and USA.10_1 (Florida). whep-normalize 'united states: florida, louisiana'.",
     ),
 ]
 

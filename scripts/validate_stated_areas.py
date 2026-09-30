@@ -675,7 +675,12 @@ LABEL_SPREAD_FACTOR = 2.0
 # either territory. SVB-1925-2025 and TIB-1913-1950 make them resolve, and the statements agree with the
 # new polygons: Svalbard fao 62,110 and iia 1925 `Spitzberg` 65,178 km2 against 59,825 (0.96, 0.92);
 # Tibet fao 1,215,780 against the TAR outline's 1,125,941 (0.93).
-BASELINE_INERT_LEXICON = 14
+# 14 -> 9 on 2026-09-30 (whep-normalize): `Andaman and Nicobar Islands`, `Federated Malay States`,
+# `Unfederated Malay States`, `Straits Settlements` and `Karafuto` were inert because no polity
+# carried those names. The rows created for a colleague's normalized label list (IND-AN-1868-2025,
+# FMS-1909-1946, UMS-1909-1946, STS-1826-1946, KAR-1905-1945) now take IIA's stated areas, and all
+# five agree with their polygons (ratios 0.934, 1.003, 0.936, 0.862, 0.889).
+BASELINE_INERT_LEXICON = 9
 
 
 def normalise_label(raw: str) -> str:

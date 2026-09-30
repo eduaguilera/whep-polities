@@ -73,6 +73,11 @@ LEGITIMATE_CONTAINERS = frozenset({
     # Colonial federations and their groupings
     "AOF-1895-1960", "AEF-1910-1960", "CODRU-1922-1960", "FRN-1953-1964",
     "MASG-1946-1963",
+    # GBM-1895-1946 added 2026-09-30 (whep-normalize): British Malaya is DEFINED as the union of the
+    # Straits Settlements, the Federated and the Unfederated Malay States (CShapes 827 + 821 + 822),
+    # which now have rows of their own (STS-1826-1946, FMS-1909-1946, UMS-1909-1946), and Singapore
+    # (SGP-1824-1946) sits inside the first. The union is exact: 3,601 + 71,415 + 57,024 = 132,040 km2.
+    "GBM-1895-1946",
     # AOI-1936-1941 added 2026-08-17, when its polygon was first built (issue 155). Italian
     # East Africa is DEFINED as the union of Ethiopia, Eritrea and Italian Somaliland, so the
     # polygon necessarily contains ETH-1907-1936, ERI-1889-1952 and ITS-1908-1960, all three of
