@@ -172,8 +172,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "96780a29ed70e6fd909db1bc09187d1a5494511a83099c4c342651be2277e377",
-  "aliases": 3157,
+  "sha256": "ad4972be94261920e1ed2c3e91e1196e07ce1c0353326f10dbe69f8de5ab0f8c",
+  "aliases": 3164,
   "labels": 1713,
   "sources": [
    "crops-manure-n",
@@ -184,6 +184,7 @@
    "faostat",
    "federico_tena",
    "ibge-uf",
+   "ihme-gbd",
    "iia",
    "iia-cotton",
    "iia-tea",
