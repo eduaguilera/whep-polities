@@ -158,7 +158,11 @@ done
 # Protectorate without it; OMN adm2 has the Kuria Muria Islands (Al Halaniyat), administered from Aden
 # until 1967; GRC adm3 municipalities draw the Dodecanese (ITAEG-1912-1947) and Greece 1913-1947
 # without them.
-FETCH_ONLY=(MAR YEM OMN GRC)
+#
+# Added 2026-10-01 (harmonize audit, issue 706): MYS adm1 draws the individual Malay states and the
+# Straits Settlements of Penang, Malacca and Labuan, which the IIA reports one by one; COD adm1 draws
+# the colonial Leopoldville province (Kinshasa, Kongo-Central, Kwango, Kwilu, Mai-Ndombe).
+FETCH_ONLY=(MAR YEM OMN GRC MYS COD)
 for iso in "${FETCH_ONLY[@]}"; do
   CFILE="$OUT_DIR/gadm41_${iso}.gpkg"
   if [ ! -f "$CFILE" ]; then

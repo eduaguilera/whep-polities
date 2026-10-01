@@ -78,6 +78,13 @@ LEGITIMATE_CONTAINERS = frozenset({
     # which now have rows of their own (STS-1826-1946, FMS-1909-1946, UMS-1909-1946), and Singapore
     # (SGP-1824-1946) sits inside the first. The union is exact: 3,601 + 71,415 + 57,024 = 132,040 km2.
     "GBM-1895-1946",
+    # Added 2026-10-01 (harmonize audit, issue 706). Each is DEFINED as a union of rows that now
+    # exist on their own: the Federated (Perak, Selangor, Negeri Sembilan, Pahang) and Unfederated
+    # (Johor, Kedah, Kelantan, Perlis, Terengganu) Malay States; Nigeria plus the British Cameroons
+    # (NGBC-1916-1960 holds NGA-1914-1960 and, through it, the new Northern and Southern halves);
+    # and China plus Taiwan (CHT-*), which holds the PRC/ROC row, Taiwan and the PRC's own regional
+    # rows. Containment is the definition, not a swallowing error.
+    "FMS-1909-1946", "UMS-1909-1946", "NGBC-1916-1960", "CHT-1949-1950", "CHT-1950-2025",
     # AOI-1936-1941 added 2026-08-17, when its polygon was first built (issue 155). Italian
     # East Africa is DEFINED as the union of Ethiopia, Eritrea and Italian Somaliland, so the
     # polygon necessarily contains ETH-1907-1936, ERI-1889-1952 and ITS-1908-1960, all three of

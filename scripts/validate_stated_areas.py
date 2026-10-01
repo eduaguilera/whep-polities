@@ -680,7 +680,10 @@ LABEL_SPREAD_FACTOR = 2.0
 # carried those names. The rows created for a colleague's normalized label list (IND-AN-1868-2025,
 # FMS-1909-1946, UMS-1909-1946, STS-1826-1946, KAR-1905-1945) now take IIA's stated areas, and all
 # five agree with their polygons (ratios 0.934, 1.003, 0.936, 0.862, 0.889).
-BASELINE_INERT_LEXICON = 9
+# 9 -> 8 on 2026-10-01 (harmonize audit): IIA's `Bosnie et Herzegovine` was inert because no polity
+# covered 1909-1929 Bosnia; BIH-1878-1918 now takes its stated 51,199 km2 against a 51,576 km2
+# polygon (1.007).
+BASELINE_INERT_LEXICON = 8
 
 
 def normalise_label(raw: str) -> str:

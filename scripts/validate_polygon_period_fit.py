@@ -91,6 +91,11 @@ TOL = 0.02          # a step counts as "differently sized" beyond 2%
 BASELINE = frozenset({
     # --- documented proxies (signal A) ---
     "A:F237-1954-1975",
+    # A:GNG-1900-1920 added 2026-10-01 (harmonize audit). CShapes 912's in-span steps (1900-1920,
+    # 228,080 km2) draw Kaiser-Wilhelmsland and the Bismarck Archipelago WITHOUT Bougainville and
+    # Buka, which were German until 1914 and are in the 1920 step (237,536 km2, TNGU-1920-1949's).
+    # The out-of-span step is the territory the row covers; gng-1900-1920.md says so.
+    "A:GNG-1900-1920",
     # A:ITA-1861-1866 and A:ITA-1866-1870 LEFT this list on 2026-08-13. They were filed as
     # "documented proxies", and the pages did document them -- both said the 1886 vintage
     # overstated the row and that "no such polygon exists in CShapes 2.0 or CShapes-Europe

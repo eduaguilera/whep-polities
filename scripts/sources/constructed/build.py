@@ -2118,6 +2118,96 @@ def build_usa_flla_1845_2025() -> ogr.Geometry:
     return _union(_gadm_adm1("USA.19_1"), _gadm_adm1("USA.10_1"))
 
 
+
+# Harmonize audit (2026-10-01, issue 706): territories a colleague's harmonized IIA/FAO dataset
+# reports on their own, each drawn from a polygon source already used above or from a GADM 4.1
+# per-country file fetched FETCH_ONLY (MYS, COD; scripts/sources/gadm-4.1/fetch.sh).
+MYS_STATE_GID1 = {
+    "MYS-JHR-1909-1946": ("MYS.1_1",),                        # Johor
+    "MYS-KDH-1909-1946": ("MYS.2_1",),                        # Kedah
+    "MYS-KTN-1909-1946": ("MYS.3_1",),                        # Kelantan
+    "MYS-PLS-1909-1946": ("MYS.10_1",),                       # Perlis
+    "MYS-TRG-1909-1946": ("MYS.16_1",),                       # Terengganu ("Trengganu")
+    "MYS-PRK-1909-1946": ("MYS.9_1",),                        # Perak
+    "MYS-SGR-1909-1946": ("MYS.15_1", "MYS.4_1", "MYS.12_1"),  # Selangor + Kuala Lumpur (1974) + Putrajaya (2001)
+    "MYS-NSN-1909-1946": ("MYS.7_1",),                        # Negeri Sembilan
+    "MYS-PHG-1909-1946": ("MYS.8_1",),                        # Pahang
+    "MYS-PNG-1826-1946": ("MYS.11_1",),                       # Pulau Pinang (island + Province Wellesley)
+    "MYS-MLK-1826-1946": ("MYS.6_1",),                        # Melaka
+    "MYS-LBN-1907-1946": ("MYS.5_1",),                        # Labuan
+}
+
+
+def _mys_state(code: str) -> ogr.Geometry:
+    return _union(*(_gadm_country("MYS", 1, g) for g in MYS_STATE_GID1[code]))
+
+
+COD_LEOPOLDVILLE_GID1 = ("COD.10_1", "COD.11_1", "COD.12_1", "COD.13_1", "COD.16_1")
+
+
+def build_cod_leo_1933_1962() -> ogr.Geometry:
+    """Leopoldville province = GADM 4.1 adm1 Kinshasa, Kongo-Central, Kwango, Kwilu and Mai-Ndombe
+    (362,284 km2, ESRI:54034): the capital and the colonial districts of Bas-Congo, Kwango, Kwilu and
+    Lac Leopold II that formed the province until the 1962 provincettes."""
+    return _union(*(_gadm_country("COD", 1, g) for g in COD_LEOPOLDVILLE_GID1))
+
+
+KWANTUNG_WHOLE_GID3 = ("CHN.18.4.1_1", "CHN.18.4.2_1", "CHN.18.4.3_1", "CHN.18.4.4_1")  # Changhai, Dalian, Jinzhou, Lushunkou
+KWANTUNG_SPLIT_GID3 = ("CHN.18.4.5_1", "CHN.18.4.6_1")  # Wafangdian, Xinjin (Pulandian): south of 39.45 N only
+KWANTUNG_NORTH_LAT = 39.45
+
+
+def build_kwa_1905_1945() -> ogr.Geometry:
+    """The Kwantung Leased Territory = GADM 4.1 adm3 Dalian (urban), Lushunkou, Jinzhou and the
+    Changhai islands, plus Wafangdian and Xinjin (Pulandian) south of 39.45 N, a straight stand-in
+    for the 1898 line from the head of Adams (Pulandian) Bay to Pitzuwo (Pikou) Bay: 3,327 km2
+    (ESRI:54034) against the stated 3,462 km2."""
+    whole = [_gadm_country("CHN", 3, g) for g in KWANTUNG_WHOLE_GID3]
+    south = _box(115.0, 35.0, 125.0, KWANTUNG_NORTH_LAT)
+    split = [_gadm_country("CHN", 3, g).Intersection(south) for g in KWANTUNG_SPLIT_GID3]
+    return _union(*whole, *split)
+
+
+def build_idn_jvm_1800_1949() -> ogr.Geometry:
+    """Java and Madura together = the IDN-JAV-1800-1949 and IDN-MAD-1800-1949 recipes."""
+    return _union(build_idn_jav_1800_1949(), build_idn_mad_1800_1949())
+
+
+def build_idn_blb_1800_1949() -> ogr.Geometry:
+    """Bali and Lombok together = GADM 4.1 adm1 IDN.2_1 (Bali, IDN-BAL-1800-1949's feature) and the
+    IDN-LOM-1800-1949 recipe."""
+    return _union(_gadm_adm1("IDN.2_1"), build_idn_lom_1800_1949())
+
+
+def build_gei_1892_1916() -> ogr.Geometry:
+    """The Gilbert and Ellice Islands Protectorate = the parts of GADM 4.1 adm0 KIR inside
+    169-178 E (the Gilbert Islands and Banaba/Ocean Island, annexed 1900) plus adm0 TUV (the Ellice
+    Islands); the Line and Phoenix Islands, added to the colony from 1916, lie east of 180 and are
+    left out."""
+    return _union(_keep_parts_within(_gadm_adm0("KIR"), 169.0, -3.0, 178.0, 4.0), _gadm_adm0("TUV"))
+
+
+def build_cze_cl_1938_1945() -> ogr.Geometry:
+    """The Czech lands after Munich (the rump Czech lands of the Second Republic, then the
+    Protectorate of Bohemia and Moravia) = CShapes 2.0 316 (Czech Republic, 1993) intersected with
+    CShapes 315's 1938-1945 step (Czecho-Slovakia after the Munich and Vienna cessions)."""
+    acc = _cshapes2_feature(316, 1993).Intersection(_cshapes2_step(315, 1938, 1945))
+    return ogr.ForceToMultiPolygon(acc) if acc.GetGeometryType() != ogr.wkbMultiPolygon else acc
+
+
+def build_cht_1949_1950() -> ogr.Geometry:
+    """China and Taiwan together, 1949 = CShapes 2.0 710's 1949-1950 step (CHN-1949-1950's) + 713
+    (Taiwan, 1949). Named by its bounds: by containment 1949 also matches the 1947-1949 step, which
+    already holds Taiwan."""
+    return _union(_cshapes2_step(710, 1949, 1950), _cshapes2_feature(713, 1949))
+
+
+def build_cht_1950_2025() -> ogr.Geometry:
+    """China and Taiwan together from 1950 = CShapes 2.0 710's 1950-2019 step (CHN-1950-2025's) + 713
+    (Taiwan, 1949). Named by its bounds: by containment 1950 also matches the 1949-1950 step."""
+    return _union(_cshapes2_step(710, 1950, 2019), _cshapes2_feature(713, 1949))
+
+
 PRT_AZM_GID1 = ("PRT.2_1", "PRT.13_1")  # Azores, Madeira
 
 
@@ -3708,6 +3798,125 @@ BUILDERS = [
         "Louisiana and Florida (combined reporting unit)",
         build_usa_flla_1845_2025,
         "Union of GADM 4.1 adm1 USA.19_1 (Louisiana) and USA.10_1 (Florida). whep-normalize 'united states: florida, louisiana'.",
+    ),    (
+        "MYS-JHR-1909-1946",
+        "Johor",
+        lambda code="MYS-JHR-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Johor (per-country file, FETCH_ONLY). Harmonize audit 'british johor'.",
+    ),
+    (
+        "MYS-KDH-1909-1946",
+        "Kedah",
+        lambda code="MYS-KDH-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Kedah (per-country file, FETCH_ONLY). Harmonize audit 'british kedah'.",
+    ),
+    (
+        "MYS-KTN-1909-1946",
+        "Kelantan",
+        lambda code="MYS-KTN-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Kelantan (per-country file, FETCH_ONLY). Harmonize audit 'british kelantan'.",
+    ),
+    (
+        "MYS-PLS-1909-1946",
+        "Perlis",
+        lambda code="MYS-PLS-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Perlis (per-country file, FETCH_ONLY). Harmonize audit 'british perlis'.",
+    ),
+    (
+        "MYS-TRG-1909-1946",
+        "Terengganu",
+        lambda code="MYS-TRG-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Terengganu (per-country file, FETCH_ONLY). Harmonize audit 'british terengganu'.",
+    ),
+    (
+        "MYS-PRK-1909-1946",
+        "Perak",
+        lambda code="MYS-PRK-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Perak (per-country file, FETCH_ONLY). Harmonize audit 'british perak'.",
+    ),
+    (
+        "MYS-SGR-1909-1946",
+        "Selangor",
+        lambda code="MYS-SGR-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Selangor (per-country file, FETCH_ONLY). Harmonize audit 'british selangor'.",
+    ),
+    (
+        "MYS-NSN-1909-1946",
+        "Negeri Sembilan",
+        lambda code="MYS-NSN-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Negeri Sembilan (per-country file, FETCH_ONLY). Harmonize audit 'british negeri sembilan'.",
+    ),
+    (
+        "MYS-PHG-1909-1946",
+        "Pahang",
+        lambda code="MYS-PHG-1909-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Pahang (per-country file, FETCH_ONLY). Harmonize audit 'british pahang'.",
+    ),
+    (
+        "MYS-PNG-1826-1946",
+        "Penang",
+        lambda code="MYS-PNG-1826-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Penang (per-country file, FETCH_ONLY). Harmonize audit 'british penang'.",
+    ),
+    (
+        "MYS-MLK-1826-1946",
+        "Malacca",
+        lambda code="MYS-MLK-1826-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Malacca (per-country file, FETCH_ONLY). Harmonize audit 'british malacca'.",
+    ),
+    (
+        "MYS-LBN-1907-1946",
+        "Labuan",
+        lambda code="MYS-LBN-1907-1946": _mys_state(code),
+        "GADM 4.1 MYS adm1 Labuan (per-country file, FETCH_ONLY). Harmonize audit 'british labuan'.",
+    ),
+    (
+        "COD-LEO-1933-1962",
+        "Leopoldville Province",
+        build_cod_leo_1933_1962,
+        "Union of GADM 4.1 COD adm1 Kinshasa, Kongo-Central, Kwango, Kwilu, Mai-Ndombe. Harmonize audit 'belgian congo: leopoldville'.",
+    ),
+    (
+        "KWA-1905-1945",
+        "Kwantung Leased Territory",
+        build_kwa_1905_1945,
+        "GADM 4.1 CHN adm3 Dalian, Lushunkou, Jinzhou, Changhai plus Wafangdian and Xinjin south of 39.45 N. whep-normalize 'japanese kwantung'.",
+    ),
+    (
+        "IDN-JVM-1800-1949",
+        "Java and Madura (Dutch East Indies)",
+        build_idn_jvm_1800_1949,
+        "Union of the IDN-JAV-1800-1949 and IDN-MAD-1800-1949 recipes. Harmonize audit 'dutch java; dutch madura'.",
+    ),
+    (
+        "IDN-BLB-1800-1949",
+        "Bali and Lombok (Dutch East Indies)",
+        build_idn_blb_1800_1949,
+        "Union of GADM 4.1 adm1 IDN.2_1 (Bali) and the IDN-LOM-1800-1949 recipe. Harmonize audit 'dutch bali; dutch lombok'.",
+    ),
+    (
+        "GEI-1892-1916",
+        "Gilbert and Ellice Islands Protectorate",
+        build_gei_1892_1916,
+        "GADM 4.1 adm0 KIR parts inside 169-178 E (Gilberts, Banaba) plus adm0 TUV. whep-normalize 'british gilbert and ellice islands'.",
+    ),
+    (
+        "CZE-CL-1938-1945",
+        "Czech lands after Munich / Protectorate of Bohemia and Moravia",
+        build_cze_cl_1938_1945,
+        "CShapes 2.0 316 (1993) intersected with CShapes 315's 1938-1945 step. whep-normalize 'czechoslovakia: bohemia, moravia, silesia' 1939-1944.",
+    ),
+    (
+        "CHT-1949-1950",
+        "China and Taiwan (combined reporting unit, 1949)",
+        build_cht_1949_1950,
+        "Union of CShapes 2.0 710 (1949 step) and 713 (1949). Harmonize audit 'china; taiwan' 1949.",
+    ),
+    (
+        "CHT-1950-2025",
+        "China and Taiwan (combined reporting unit)",
+        build_cht_1950_2025,
+        "Union of CShapes 2.0 710 (1950 step) and 713 (1949). Harmonize audit 'china; taiwan' 1950-1954.",
     ),
 ]
 

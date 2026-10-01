@@ -42,6 +42,7 @@ BHR-1800-2025,Bahrain,fao,600,1,1952,Bahrein Islands,629,1.048,agrees,
 BHR-1800-2025,Bahrain,iia,552,3,1925;1933,BAHREIN,629,1.140,agrees,
 BHS-1800-2025,Bahamas,fao,1400,1,1952,British West Indies Bahamas,13270,9.479,review,
 BHS-1800-2025,Bahamas,iia,11406,9,1909;1925;1929;1932;1933;1938,INDES OCCIDENTALES BRITANNIQUES: BAHAMA;INDES OCCIDENTALES BRITANNIQUES: BAHAMAS;indes occidentales britanniques: bahamas,13270,1.163,agrees,
+BIH-1878-1918,Bosnia and Herzegovina (Austro-Hungarian administration),iia,51199,3,1909;1925;1929,BOSNIE ET HERZÉGOVINE;bosnie et herzégovine,51576,1.007,agrees,
 BLI-1833-1960,British Leeward Islands Colony,fao,1090,1,1952,Leeward Islands,1693,1.553,review,"OUR POLYGON IS THE LARGER TERRITORY, and the difference is Dominica. FAO 1952 states 1,090 km2 for the Leeward Islands at 1950 and lists its members separately -- Antigua 440, St Kitts & Nevis 390, Montserrat 80 -- while our polygon is 1,693 and 43.9% of it is DMA-1800-2025 (~747 km2). Dominica was transferred from the Leeward Islands to the Windwards in 1940, so a 1950 figure excludes it and a polygon drawn for the 1833-1960 span includes it. A composition difference across the span, not an error on either side."
 BLZ-1886-1970,British Honduras,fao,22970,1,1952,British Honduras,22076,0.961,agrees,
 BLZ-1886-1970,British Honduras,iia,22268,9,1909;1925;1929;1932;1933;1938,HONDURAS BRITANNIQUE;honduras britannique,22076,0.991,agrees,

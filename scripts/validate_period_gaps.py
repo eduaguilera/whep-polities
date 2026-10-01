@@ -95,6 +95,10 @@ CODE_RE = re.compile(r"^(.*)-(\d{4})-(\d{4})$")
 # (earlier_code, later_code) pairs with a known gap between them. See the docstring:
 # most are correct, four are issue 77.
 BASELINE = frozenset({
+    # Added 2026-10-01 (harmonize audit, issue 706): Bosnia and Herzegovina under Austria-Hungary
+    # (1878-1918) and the modern state (1992-) share the BIH prefix; in between the territory was
+    # part of Yugoslavia, which the gate itself finds (F248-1918-1919 at map depth 4).
+    ("BIH-1878-1918", "BIH-1992-2025"),
     # ("ANT-1816-1960", "ANT-1961-2010") removed 2026-08-17 (issue 252): the gap is CLOSED, by
     # moving ANT-1816-1960's exclusive end_year to 1961 (renamed ANT-1816-1961). The page said in
     # so many words "End year 1960 is the final year before the existing ANT-1961-2010 row
