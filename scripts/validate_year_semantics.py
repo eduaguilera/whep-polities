@@ -120,6 +120,15 @@ BASELINE_EXPIRED_WINS = frozenset({
     # Fixing it means teaching pick_by_year that a family can be concurrent, which is a matcher
     # change, not a data one.
     ("CYR-1943-1949", 1949),
+    # Added 2026-10-01 (harmonize audit, issue 706), family unreachable: these rows carry no iso3
+    # (subunits and a protectorate whose sovereign's code would capture other data), so
+    # fam_for_code resolves each to itself and it is the only candidate at its own end year. Every
+    # alias that reaches the boundary names the successor explicitly (`czechoslovakia: bohemia,
+    # moravia, silesia` 1938 -> CZE-CL-1938-1945 and 1945 -> CZE-CL-1945-1993; `british gilbert
+    # and ellice islands` 1916 -> GEI-1916-1976), so no observed row takes this path.
+    ("CZE-CL-1918-1938", 1938),
+    ("CZE-CL-1938-1945", 1945),
+    ("GEI-1892-1916", 1916),
     ("F228-1856-1905", 1905),     # family unreachable
     ("F228-1914-1917", 1917),     # family unreachable
     ("F228-1917-1918", 1918),     # family unreachable

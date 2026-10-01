@@ -98,7 +98,20 @@ SUM_BASELINE = frozenset({"AOF-1895-1960"})
 #                because the Republic's Qinghai did, and the part follows FAO (0.8% above it). The
 #                same part is 99.6% inside CHN-1950-2025, whose CShapes step includes the plateau.
 #                A disagreement between two sources about the ground, not a mis-binding.
+#
+# UMS-1909-1946 <- MYS-KDH-1909-1946 / MYS-PLS-1909-1946, STS-1826-1946 <- MYS-PNG-1826-1946
+#                (2026-10-01, harmonize audit). 94.3%, 92.5% and 86.3% inside: GADM 4.1 state outlines
+#                against CShapes 822/827 (the 1909-1946 Unfederated Malay States and the Straits
+#                Settlements). 244 of Kedah's 543 km2 outside lie on the Kedah / Province Wellesley line
+#                near 100.55 E 5.32 N and 72 of Penang's 148 on the mainland near 100.39 E 5.42 N --
+#                CShapes draws the boundary between the two units a few km off GADM's -- and most of the
+#                rest are coastal and island slivers (Langkawi, the Perlis coast). Each state was inside
+#                its grouping for the whole span, so the relation is right and the shortfall is two
+#                sources' resolution.
 CONTAINMENT_BASELINE = frozenset({
+    ("UMS-1909-1946", "MYS-KDH-1909-1946"),
+    ("UMS-1909-1946", "MYS-PLS-1909-1946"),
+    ("STS-1826-1946", "MYS-PNG-1826-1946"),
     ("JPN-1895-1945", "RYU-1937-1945"),
     ("CHN-1932-1945", "CHN-P22-1939-1953"),
     ("CHN-1947-1949", "CHN-P22-1939-1953"),

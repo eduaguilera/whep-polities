@@ -135,7 +135,7 @@ identity, not an aggregation bucket. **558 pairs over 40 labels.**
 
 ## Unresolved territories
 
-**1,415 pairs.** Kinds: `subunit` (a part of a polity that has no row of its own), `era` (a
+**1,415 pairs** at onboarding; labels the harmonize audit (2026-10-01) routed are removed from the table below. Kinds: `subunit` (a part of a polity that has no row of its own), `era` (a
 territory whose row does not reach that year), `composite` (a combination of territories no row is),
 `ambiguous` (the label cannot be read with confidence) and `dberror` (a polity row's own years are
 wrong).
@@ -160,15 +160,12 @@ wrong).
 | `spain: mainland, balearic islands, canary islands` | composite | 3 | 1945..1954 | Spain excluding the plazas de soberania: no polity (differs from ESP by ~30 km2 but is not stated to include them) |
 | `west indies federation` | composite | 3 | 1958..1960 | the West Indies Federation (1958-1962): no polity (BWI-1833-1962 also includes non-member Bahamas etc.) |
 | `french antilles` | composite | 2 | 1911..1913 | Guadeloupe plus Martinique together: no polity |
-| `china: mainland, pescadores, taiwan` | composite | 1 | 1951..1951 | mainland China plus Taiwan and the Pescadores in 1951: no polity (same gap as fao1952 'China 22 provinces & Taiwan') |
 | `indonesia: bali and lombok, other islands` | composite | 1 | 1952..1952 | Bali+Lombok plus the Outer Islands (1952): no polity |
 | `libya: cyrenaica, fezzan` | composite | 1 | 1948-1952..1948-1952 | Cyrenaica plus Fezzan: no polity |
 | `west indies federation: cayman islands, jamaica` | composite | 1 | 1960..1960 | Jamaica plus the Cayman Islands: no polity |
 | `west indies federation: jamaica, turks and caicos islands` | composite | 1 | 1960..1960 | Jamaica plus Turks and Caicos: no polity |
 | `british north nigeria` | dberror | 1 | 1913..1913 | 1913: the Northern Nigeria Protectorate lasted until amalgamation on 1 January 1914, but NNI-1904-1913's exclusive end_year stops coverage at 1912 |
 | `british south nigeria` | dberror | 1 | 1913..1913 | 1913: the Southern Nigeria Protectorate lasted until 1 January 1914, but SNI-1906-1913's exclusive end_year stops at 1912 |
-| `japanese kwantung` | era | 31 | 1909..1939 | Kwantung Leased Territory: no polity |
-| `german new guinea` | era | 9 | 1909-1913..1917 | German New Guinea before the 1920 mandate: no polity (the family-extension route to Papua TPAP was wrong) |
 | `eritrea and ethiopia federation: eritrea` | era | 7 | 1952..1960 | Eritrea inside the federation (1952-1960): ERI-1889-1952 ends at federation; a row for Eritrea inside Ethiopia was tried and withdrawn, because the ERI and ETH families would both claim 1952-1993 (validate_period_overlaps) and ERI-1889-1952 would still win 1952 |
 | `indonesia: java, madura` | era | 7 | 1951..1957 | Java and Madura after 1951: IDN-JVM-1949-1951 ends |
 | `indonesia: other islands` | era | 7 | 1951..1957 | Outer Islands after 1951: IDN-OTH-1949-1951 ends |
@@ -176,15 +173,12 @@ wrong).
 | `british weihaiwei` | era | 5 | 1911..1929 | Weihaiwei leased territory (1898-1930): no polity |
 | `french indochina: guangzhouwan` | era | 5 | 1913..1937 | Kwangchowan leased territory (1898-1945): no polity |
 | `spanish ifni` | era | 5 | 1948-1952..1960 | Ifni: no polity |
-| `us pacific islands` | era | 5 | 1934..1946 | the US Pacific islands before the 1947 trusteeship: no polity |
-| `british gilbert and ellice islands` | era | 4 | 1909-1913..1915 | Gilbert and Ellice Islands Protectorate 1892-1915: GEI-1916-1976 starts at the Crown colony and no row covers the protectorate |
 | `saar basin` | era | 4 | 1957..1960 | the Saar after its 1957 return to Germany: SAA-1947-1957 ends and no row covers the Saarland |
 | `state of alawis` | era | 4 | 1926..1929 | Alawite State (1920-1936): no polity |
 | `china: manchuria` | era | 3 | 1915..1917 | Manchuria region before 1921 has no row (MAN-1921-1932 starts with CHN-1921-1932) |
 | `german kiautschou bay` | era | 3 | 1911..1921 | Kiautschou leased territory: no polity |
 | `greece: dodecanese` | era | 3 | 1947..1951 | the Dodecanese inside Greece from 1947: ITAEG-1912-1947 ends and no row covers the islands after |
 | `libya` | era | 3 | 1909..1911 | Ottoman Tripolitania before the 1912 Italian row: no polity |
-| `bosnia and herzegovina` | era | 2 | 1911..1913 | Bosnia-Herzegovina 1911-1913 (Austro-Hungarian condominium) has no polity |
 | `french comoros` | era | 2 | 1934-1938..1937 | the Comoros before 1946 were administered as part of Madagascar: no polity |
 | `german mariana islands` | era | 2 | 1911..1913 | German Northern Mariana Islands: no polity |
 | `indonesia: bali and lombok` | era | 2 | 1951..1952 | Bali and Lombok after 1951: IDN-BLB-1949-1951 ends |
@@ -203,8 +197,6 @@ wrong).
 | `memel territory` | era | 1 | 1921..1921 | Memel Territory (1920-1923): no polity |
 | `norway: spitsbergen` | era | 1 | 1913..1913 | Spitsbergen before the 1925 Svalbard Treaty came into force (terra nullius): no polity |
 | `ryukyu islands` | era | 1 | 1934..1934 | Okinawa prefecture in 1934: RYU-1937-1945 starts 1937 |
-| `british nigeria: north` | subunit | 56 | 1914..1960 | Northern Provinces/Region of Nigeria after amalgamation (1914-1960): no polity; NNI-1904-1913 stops at amalgamation |
-| `british nigeria: south` | subunit | 56 | 1914..1960 | Southern Provinces of Nigeria after amalgamation: no polity |
 | `british north cameroon` | subunit | 46 | 1909-1913..1960 | Northern Cameroons (the part of the British mandate administered with Northern Nigeria): no polity; BCM-1916-1961 is both parts |
 | `british south cameroon` | subunit | 46 | 1909-1913..1960 | Southern Cameroons: no polity; BCM-1916-1961 is both parts |
 | `spanish fernando po` | subunit | 44 | 1909-1913..1959 | Fernando Po (Bioko) alone: no polity (GNQ-1886-1968 is all Spanish Guinea) |
@@ -219,22 +211,12 @@ wrong).
 | `portuguese kambing` | subunit | 23 | 1909-1913..1940 | Kambing (Atauro) island: no polity |
 | `portuguese mozambique: colony` | subunit | 23 | 1909-1913..1938 | the directly-administered part of Mozambique: no polity |
 | `portuguese mozambique: mozambique company` | subunit | 22 | 1909-1913..1938 | Mozambique Company territory (Manica and Sofala): no polity |
-| `british johor` | subunit | 21 | 1909-1913..1929 | Johor (Unfederated Malay State): no polity |
 | `italian libya: cyrenaica` | subunit | 21 | 1913..1937 | Cyrenaica under Italy (before CYR-1943-1949): no polity |
-| `british kelantan` | subunit | 20 | 1909-1913..1929 | Kelantan (Unfederated Malay State): no polity |
-| `british perlis` | subunit | 20 | 1909-1913..1928 | Perlis (Unfederated Malay State): no polity |
 | `italian libya: tripolitania` | subunit | 20 | 1913..1937 | Tripolitania under Italy (before TRP-1943-1951): no polity |
-| `british kedah` | subunit | 17 | 1909-1913..1928 | Kedah (Unfederated Malay State): no polity |
-| `british straits settlements: malacca` | subunit | 17 | 1909..1924 | Malacca: no polity |
-| `british straits settlements: penang` | subunit | 17 | 1909..1924 | Penang: no polity |
-| `british terengganu` | subunit | 17 | 1909-1913..1929 | Terengganu (Unfederated Malay State): no polity |
-| `british unfederated malay states: terengganu` | subunit | 16 | 1913..1945 | Terengganu: no polity |
 | `japanese palau` | subunit | 16 | 1921..1940 | Palau alone under the Japanese mandate: no polity (SSM-1914-1945 is the whole mandate; CAR-1920-1945's polygon is the FSM Carolines only) |
 | `japanese palau: angaur` | subunit | 15 | 1915..1932 | Angaur island (phosphate): no polity |
 | `libya: cyrenaica` | subunit | 15 | 1914..1960 | Cyrenaica outside 1943-1950 (Italian province / Libyan province): no polity |
 | `libya: tripolitania` | subunit | 15 | 1914..1960 | Tripolitania outside the 1943-1950 British administration: no polity |
-| `british straits settlements: labuan` | subunit | 14 | 1909..1921 | Labuan: no polity |
-| `belgian congo: leopoldville` | subunit | 13 | 1937..1960 | Leopoldville province of the Belgian Congo has no polity (the name route to French Congo COG was wrong) |
 | `french dakar` | subunit | 13 | 1925-1929..1944 | Dakar and dependencies: no polity |
 | `dutch sumatra: east` | subunit | 11 | 1909..1919 | East Coast of Sumatra residency: no polity |
 | `british gozo` | subunit | 10 | 1937..1957 | Gozo is part of Malta (MLT-1800-2025); no polity for the island alone |
@@ -250,10 +232,7 @@ wrong).
 | `japanese mariana islands` | subunit | 9 | 1921..1940 | Northern Marianas under the Japanese mandate: no polity (SSM-1914-1945 is the whole mandate) |
 | `russia: other provinces` | subunit | 9 | 1909..1917 | the remaining Asiatic governments: no polity |
 | `spanish rio de oro` | subunit | 9 | 1911..1947 | Rio de Oro: no polity (SWA is all Spanish West Africa) |
-| `czechoslovakia: bohemia, moravia, silesia` | subunit | 8 | 1934-1938..1945 | the Czech lands inside Czechoslovakia/the Protectorate 1934-1945: CZE-1804-1918 ends 1918 and no later row exists |
 | `british nigeria: west` | subunit | 7 | 1947-1951..1959 | Western Region/Provinces of Nigeria: no polity |
-| `british unfederated malay states: kedah` | subunit | 7 | 1912..1929 | Kedah: no polity |
-| `british unfederated malay states: perlis` | subunit | 7 | 1913..1939 | Perlis: no polity |
 | `dutch sint eustatius` | subunit | 7 | 1909-1913..1926 | Sint Eustatius: no polity (part of ANT) |
 | `dutch sint maarten` | subunit | 7 | 1909-1913..1926 | Dutch Sint Maarten: no polity (part of ANT) |
 | `french morocco: western zone` | subunit | 7 | 1915..1921 | western zone of French Morocco: no polity |
@@ -264,14 +243,9 @@ wrong).
 | `libya: fezzan` | subunit | 6 | 1951..1960 | Fezzan as a Libyan province from 1951: no polity |
 | `tianjin foreign concessions` | subunit | 6 | 1911..1932 | Tianjin foreign concessions: no polity |
 | `british india (excl burma): british provinces` | subunit | 5 | 1932..1936 | the British (governors') provinces of British India, excluding princely states: no polity |
-| `british negri sembilan` | subunit | 5 | 1911..1929 | Negri Sembilan (Federated Malay State): no polity |
-| `british pahang` | subunit | 5 | 1911..1929 | Pahang (Federated Malay State): no polity |
-| `british perak` | subunit | 5 | 1911..1929 | Perak (Federated Malay State): no polity |
-| `british selangor` | subunit | 5 | 1911..1929 | Selangor (Federated Malay State): no polity |
 | `sheikh said` | subunit | 5 | 1913..1937 | Sheikh Said peninsula: no polity |
 | `spain: mainland` | subunit | 5 | 1934-1938..1954 | peninsular Spain alone: no polity |
 | `british mauritius: rodrigues` | subunit | 4 | 1937..1957 | Rodrigues island: no polity |
-| `british unfederated malay states: kelantan` | subunit | 4 | 1913..1929 | Kelantan: no polity |
 | `french amsterdam` | subunit | 4 | 1911..1925 | Amsterdam Island alone: no polity (ATF-1800-2025 is all French sub-Antarctic lands) |
 | `french guadeloupe: saint vincent, marie galante` | subunit | 4 | 1934-1938..1941 | dependencies of Guadeloupe (Marie-Galante etc.): no polity |
 | `french juan de nova` | subunit | 4 | 1926..1929 | Juan de Nova island: no polity |
@@ -285,7 +259,6 @@ wrong).
 | `portuguese mozambique: nyassa company` | subunit | 3 | 1921-1925..1927 | Nyassa Company territory: no polity |
 | `british mauritius: other islands (excl rodrigues)` | subunit | 2 | 1937..1957 | the dependencies of Mauritius (Rodrigues, Agalega, Chagos, St Brandon...) other than the main island: no polity |
 | `british perim: khuriya muriya` | subunit | 2 | 1937..1947 | Kuria Muria islands: no polity |
-| `british unfederated malay states: johor` | subunit | 2 | 1913..1929 | Johor: no polity |
 | `dutch new guinea` | subunit | 2 | 1934-1938..1937 | western New Guinea before 1949 was a residency of the Dutch East Indies: no polity (the name route to Australian TNGU was wrong) |
 | `germany: berlin east` | subunit | 2 | 1957..1960 | East Berlin: no polity (BRL-1949-1990 is the whole city) |
 | `greece: aegean` | subunit | 2 | 1913..1925 | Greek Aegean islands: no polity |
@@ -395,10 +368,10 @@ spanish rio muni` and the 1937 row of `british aden; british khuriya muriya` (re
 
 `china; taiwan` used to reach **TWN-1945-2025, Taiwan alone**, through the blank-source `China,
 Taiwan` alias, which put the mainland's figures on 36,000 km2. 1946-1948 now go to the China rows
-whose polygons hold Taiwan (CHN-1945-1947, CHN-1947-1949; 0.999 of TWN inside each). **From 1949 the
-label still reaches TWN-1945-2025**: after the Republic's retreat no row is the mainland plus Taiwan,
-and an alias cannot route a label to nothing. The same holds for `china (incl manchuria); taiwan`
-1953, which shares the key.
+whose polygons hold Taiwan (CHN-1945-1947, CHN-1947-1949; 0.999 of TWN inside each). From 1949 no
+row was the mainland plus Taiwan, and an alias cannot route a label to nothing, so the second step
+below adds the combined rows CHT-1949-1950 and CHT-1950-2025 for it (and for `china (incl
+manchuria); taiwan` 1953, which shares the key).
 
 ### More not-a-territory labels
 
@@ -415,19 +388,14 @@ Kinds as above. `era` rows are years of an otherwise routed label.
 
 | label | kind | pairs | rows | years | why unresolved |
 |---|---|---:|---:|---|---|
-| `dutch java; dutch madura` | composite | 45 | 2,138 | 1909..1948 | before 1949: no row is Java plus Madura |
 | `british kenya; british uganda` | composite | 27 | 1,362 | 1921-1925..1954 | Kenya plus Uganda (the customs union's joint reporting): no row is the pair |
 | `egypt; syria` | composite | 11 | 388 | 1947..1960 | Egypt plus Syria, 1947-1960: no row is the pair (the United Arab Republic 1958-1961 has no row either) |
 | `british federated malay states; british singapore` | composite | 3 | 320 | 1926-1938..1934-1938 | the Federated Malay States plus Singapore: no row |
-| `british penang` | subunit | 17 | 250 | 1909..1924 | Penang alone: no row |
-| `british malacca` | subunit | 17 | 240 | 1909..1924 | Malacca alone: no row |
-| `british labuan` | subunit | 14 | 181 | 1909..1921 | Labuan alone: no row |
 | `french senegal; french sudan` | composite | 5 | 174 | 1934..1938 | Senegal plus French Sudan: no row |
 | `korea north; korea south` | era | 8 | 132 | 1953..1960 | 1953-1960: KORP-1948-1953 ends and no row is the whole peninsula later |
 | `french morocco; spanish morocco` | composite | 12 | 109 | 1909-1913..1955 | the French and Spanish zones together (Morocco without Tangier): no row is the pair |
 | `bhutan; china: tibet; nepal; sikkim` | composite | 12 | 97 | 1934-1938..1960 | four Himalayan territories under three sovereigns: no row |
 | `french chad; french ubangi shari` | composite | 15 | 74 | 1909-1913..1933 | Chad plus Ubangi-Shari: no row is the pair |
-| `dutch bali; dutch lombok` | composite | 6 | 70 | 1934-1938..1948 | before 1949: no row is Bali plus Lombok |
 | `cambodia; laos; vietnam north; vietnam south` | composite | 2 | 56 | 1954..1955 | the former Indochina, 1954-1955: FID-1887-1954 ends at the Geneva settlement and no row is the four states |
 | `french morocco: west` | subunit | 7 | 54 | 1915..1921 | western zone of French Morocco (1915-1921): no row |
 | `british brunei; british north borneo; british sarawak` | composite | 13 | 44 | 1934-1938..1954 | British Borneo (Brunei, North Borneo, Sarawak): no row is the three |
@@ -486,6 +454,67 @@ Kinds as above. `era` rows are years of an otherwise routed label.
 | `british nigeria: north; british north cameroon` | composite | 1 | 1 | 1934-1938 | the Northern Provinces plus the Northern Cameroons: no row |
 | `british montserrat; british saint kitts and nevis; british virgin islands` | composite | 1 | 1 | 1951 | three Leeward Islands presidencies: no row |
 | `british aden; british khuriya muriya` | ambiguous | 1 | 1 | 1937 | 1937 only: IIA's 7,500 ha sits in the same table cell as 'british aden; british perim' (20,700 ha), so it is not the colony; 1947 routes to ADC-1937-1967 |
+
+### New polities (2026-10-01, second step)
+
+Twenty-six territories the harmonized dataset reports on their own got a row, each from a polygon
+source already used here or fetched by an existing script (GADM 4.1 MYS and COD per-country files,
+`FETCH_ONLY` in `scripts/sources/gadm-4.1/fetch.sh`); facts from
+[wikipedia-harmonize-audit-2026-10-01](wikipedia-harmonize-audit-2026-10-01.md). Each page states
+its polygon status, the km2 reasoning and why it exists.
+
+| polity | labels | years | pairs | rows |
+|---|---|---|---:|---:|
+| [IDN-JVM-1800-1949](../polities/idn-jvm-1800-1949.md) | `dutch java; dutch madura` | 1909..1948 | 45 | 2,138 |
+| [COD-LEO-1933-1962](../polities/cod-leo-1933-1962.md) | `belgian congo: leopoldville` | 1937..1960 | 11 | 577 |
+| [KWA-1905-1945](../polities/kwa-1905-1945.md) | `japanese kwantung` | 1909..1939 | 31 | 498 |
+| [MYS-PNG-1826-1946](../polities/mys-png-1826-1946.md) | `british penang` | 1909..1924 | 17 | 250 |
+| [MYS-MLK-1826-1946](../polities/mys-mlk-1826-1946.md) | `british malacca` | 1909..1924 | 17 | 240 |
+| [MYS-LBN-1907-1946](../polities/mys-lbn-1907-1946.md) | `british labuan` | 1909..1921 | 14 | 181 |
+| [MYS-JHR-1909-1946](../polities/mys-jhr-1909-1946.md) | `british johor` | 1909-1913..1929 | 21 | 155 |
+| [MYS-KTN-1909-1946](../polities/mys-ktn-1909-1946.md) | `british kelantan` | 1909-1913..1929 | 20 | 141 |
+| [MYS-KDH-1909-1946](../polities/mys-kdh-1909-1946.md) | `british kedah` | 1909-1913..1929 | 18 | 89 |
+| [MYS-TRG-1909-1946](../polities/mys-trg-1909-1946.md) | `british terengganu` | 1909-1913..1945 | 29 | 74 |
+| [IDN-BLB-1800-1949](../polities/idn-blb-1800-1949.md) | `dutch bali; dutch lombok` | 1934-1938..1948 | 6 | 70 |
+| [NGA-N-1914-1961](../polities/nga-n-1914-1961.md) | `british nigeria: north` | 1932..1960 | 14 | 64 |
+| [MYS-PLS-1909-1946](../polities/mys-pls-1909-1946.md) | `british perlis` | 1909-1913..1939 | 26 | 63 |
+| [GNG-1900-1920](../polities/gng-1900-1920.md) | `german new guinea` | 1909-1913..1917 | 9 | 36 |
+| [NGA-S-1914-1967](../polities/nga-s-1914-1967.md) | `british nigeria: south` | 1932..1939 | 5 | 22 |
+| [CHT-1950-2025](../polities/cht-1950-2025.md) | `china (incl manchuria); taiwan`, `china; taiwan` | 1948-1950..1954 | 6 | 21 |
+| [CZE-CL-1938-1945](../polities/cze-cl-1938-1945.md) | `czechoslovakia: bohemia, moravia, silesia` | 1939..1944 | 6 | 18 |
+| [GEI-1892-1916](../polities/gei-1892-1916.md) | `british gilbert and ellice islands` | 1909-1913..1915 | 4 | 6 |
+| [MYS-NSN-1909-1946](../polities/mys-nsn-1909-1946.md) | `british negri sembilan` | 1911..1929 | 5 | 6 |
+| [MYS-PHG-1909-1946](../polities/mys-phg-1909-1946.md) | `british pahang` | 1911..1929 | 5 | 6 |
+| [MYS-PRK-1909-1946](../polities/mys-prk-1909-1946.md) | `british perak` | 1911..1929 | 5 | 6 |
+| [MYS-SGR-1909-1946](../polities/mys-sgr-1909-1946.md) | `british selangor` | 1911..1929 | 5 | 6 |
+| [CZE-CL-1945-1993](../polities/cze-cl-1945-1993.md) | `czechoslovakia: bohemia, moravia, silesia` | 1945 | 1 | 3 |
+| [CZE-CL-1918-1938](../polities/cze-cl-1918-1938.md) | `czechoslovakia: bohemia, moravia, silesia` | 1934-1938 | 1 | 3 |
+| [BIH-1878-1918](../polities/bih-1878-1918.md) | `bosnia and herzegovina` | 1911..1913 | 2 | 3 |
+| [CHT-1949-1950](../polities/cht-1949-1950.md) | `china; taiwan` | 1949 | 1 | 2 |
+
+Harmonized dataset after both steps: **13,227 of 14,813 pairs (89.3%) and
+684,876 of 794,782 value rows (86.2%) routed**. The label list: 13,313 of
+14,902 pairs route. `china; taiwan` 1949-1954 (and `china (incl manchuria); taiwan` 1953) leave Taiwan alone
+(TWN-1945-2025) for the combined rows CHT-1949-1950 and CHT-1950-2025. The same-cell check of the
+first step: 65 cells after, against 67 before (the two `china; taiwan` cells that shared TWN with
+`taiwan`).
+
+Re-edged so that sums count each part once: IDN-JAV-1800-1949 and IDN-MAD-1800-1949 now sit under
+IDN-JVM-1800-1949, IDN-BAL-1800-1949 and IDN-LOM-1800-1949 under IDN-BLB-1800-1949.
+
+Not created, and why:
+
+- **German Alsace-Lorraine (1871-1918)**: no row routes there; `france: alsace` is Alsace alone
+  (Bas-Rhin and Haut-Rhin), whose departement rows FRA-67/FRA-68 start in 1919 and would have to be
+  re-edged under a new Alsace row. Left unrouted.
+- **The Northern and Southern Cameroons apart, and the Eastern and Western Regions of Nigeria**: no
+  fetched polygon draws the line between them (GADM NGA and CMR are not fetched); the harmonized
+  dataset carries the Cameroons only together.
+- **Kenya with Uganda** (`british kenya; british uganda`, 1,362 rows) and the other compound labels
+  listed above: no row is the pair, and the audit's brief was to route or document them, not to build
+  new aggregates for each.
+- **Somaliland under British military administration** and **the US Pacific Islands 1945-1947**:
+  see the first step (no change of territory; back_cast respectively).
 
 ### Conventions the audit questioned, re-checked
 

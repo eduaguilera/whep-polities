@@ -120,6 +120,17 @@ BASELINE = {
         "Anatolian throughout — not a polygon question, so it is not decided here."
     ),
     # ---------- EVENT: real history at the boundary year ----------
+    # Added 2026-10-01 (harmonize audit, issue 706).
+    "CZE-CL-1918-1938 -> CZE-CL-1938-1945": (
+        "EVENT: Munich Agreement, 30 September 1938. 78,683 -> 54,895 km2 (1.43x); the Czech lands "
+        "lost the Sudetenland to Germany (and the Teschen strip to Poland) in October 1938. The "
+        "post-Munich row is CShapes 316 intersected with CShapes 315's 1938-1945 step, hence the "
+        "source change; its outline gives back about 6,000 km2 of the Sudetenland against the "
+        "Protectorate's stated ~49,000 km2, which the page records."),
+    "CZE-CL-1938-1945 -> CZE-CL-1945-1993": (
+        "EVENT: liberation and restoration of Czechoslovakia, May 1945. 54,895 -> 78,683 km2 "
+        "(1.43x); the pre-Munich boundary of the Czech lands was restored, and the row is again "
+        "CShapes 316 directly."),
     # Key renamed 2026-08-17 (issue 252): HUN-1918-1919 -> HUN-1918-1920, when the row's
     # exclusive end_year moved 1919 -> 1920 to give 1919 back its coverage. Re-measured after
     # the rename: still 325,419 -> 93,004 km2, still 3.50x, still a source change. Only the

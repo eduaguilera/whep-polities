@@ -60,7 +60,13 @@ DB = os.path.join(REPO, "data/final/polities_database.csv")
 # The list is intended to stay a record of live decisions, so a code that gains a container must
 # leave it (arm E enforces that). Kept as an empty dict rather than deleted, because the mechanism
 # is still the right home for a polity whose parent genuinely is not stated anywhere.
-EXEMPT: dict[str, str] = {}
+EXEMPT: dict[str, str] = {
+    "MYS-LBN-1907-1946": (
+        "Labuan was a Straits settlement 1907-1946, but CShapes' Straits Settlements outline "
+        "(STS-1826-1946's polygon) does not draw the island at all (0% of the GADM outline lies "
+        "inside it), so a container edge would fail the spatial containment check; the "
+        "membership is stated on the page (harmonize audit, 2026-10-01)."),
+}
 
 
 def main() -> int:

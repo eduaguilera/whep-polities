@@ -26,6 +26,25 @@ Kinds:
 
 ---
 
+## ingest-harmonize-audit-polities
+**Date:** 2026-10-01
+**Touched:** MYS-JHR-1909-1946, MYS-KDH-1909-1946, MYS-KTN-1909-1946, MYS-PLS-1909-1946, MYS-TRG-1909-1946, MYS-PRK-1909-1946, MYS-SGR-1909-1946, MYS-NSN-1909-1946, MYS-PHG-1909-1946, MYS-PNG-1826-1946, MYS-MLK-1826-1946, MYS-LBN-1907-1946, COD-LEO-1933-1962, KWA-1905-1945, NGA-N-1914-1961, NGA-S-1914-1967, GNG-1900-1920, GEI-1892-1916, BIH-1878-1918, CZE-CL-1918-1938, CZE-CL-1938-1945, CZE-CL-1945-1993, IDN-JVM-1800-1949, IDN-BLB-1800-1949, CHT-1949-1950, CHT-1950-2025, IDN-JAV-1800-1949, IDN-MAD-1800-1949, IDN-BAL-1800-1949, IDN-LOM-1800-1949
+**Source:** wikipedia-harmonize-audit-2026-10-01
+**Kind:** ingest
+
+Twenty-six territories a colleague's harmonized IIA/FAO dataset reports on their own got rows (issue
+706): the twelve Malay states and Straits settlements, Leopoldville province, the Kwantung Leased
+Territory, the Northern and Southern halves of Nigeria after 1914, German New Guinea before the
+mandate, the Gilbert and Ellice protectorate, Bosnia-Herzegovina under Austria-Hungary, the Czech
+lands before, during and after the 1938-1945 break, Java with Madura and Bali with Lombok before
+1949, and China plus Taiwan from 1949. Every polygon comes from a source already used here or a GADM
+4.1 per-country file fetched by `scripts/sources/gadm-4.1/fetch.sh` (MYS, COD); the existing
+constructed features are byte-identical. IDN-JAV/MAD and IDN-BAL/LOM are re-edged under the new
+unions so a sum counts each island once. Details and the moved rows:
+[whep-normalize](sources/whep-normalize.md) § New polities (2026-10-01, second step).
+
+---
+
 ## proposal-status-change-splits
 **Date:** 2026-10-01
 **Touched:** GLP-1816-2025, MTQ-1816-2025, GUF-1816-1946, GUF-1946-2025, REU-1816-1946, REU-1946-2025, GRL-1800-2025
