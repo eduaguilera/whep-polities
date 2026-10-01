@@ -26,6 +26,31 @@ Kinds:
 
 ---
 
+## proposal-status-change-splits
+**Date:** 2026-10-01
+**Touched:** GLP-1816-2025, MTQ-1816-2025, GUF-1816-1946, GUF-1946-2025, REU-1816-1946, REU-1946-2025, GRL-1800-2025
+(nothing changed; for human review)
+**Source:** whep-normalize
+**Kind:** proposal
+
+A polity audit of a colleague's harmonized IIA/FAO dataset asked why the database splits French Guiana
+and Reunion at the 1946 departmentalisation (law 46-451 of 19 March 1946) but keeps Guadeloupe and
+Martinique, which changed status by the same law on the same day, as single rows, and keeps Greenland
+whole across its 1953 integration into Denmark. Measured: each of the four 1946 territories has the
+same polygon on both sides of 1946 (GUF and REU: 0.0 km2 symmetric difference between the two rows),
+so none of them changed territory. Under `decision-whep-polity-definition` ("a new polity row is
+created when the territory changes substantially, not when the legal status of the unit changes") the
+GLP, MTQ and GRL pages are right and the GUF and REU splits are not. In practice the database splits
+at status changes routinely: **148 of 478** chain links where a successor starts in its predecessor's
+end year and both rows carry a polygon join two rows whose polygons differ by under 0.5% (Guam 1950,
+Surinam 1954, the US territories at statehood, the Rhodesias and Nyasaland in 1953, Libya 1949 and
+1951, and so on). Either the rule or the practice has to give way, and the change is registry-wide
+(FAOSTAT areas 69, 85, 87, 135 and 182 are mapped to these codes), so neither GUF/REU are merged nor
+GLP/MTQ/GRL split here. Where a split exists the year convention is applied consistently: the 1946
+splits give 1946 to the incoming row.
+
+---
+
 ## decision-chile-presplit-crop-polities
 **Date:** 2026-09-25
 **Touched:** CHL-BINB-1976-2025 (new), CHL-LLLR-1976-2025 (new), CHL-BI-1976-2025, CHL-LL-1976-2025,
