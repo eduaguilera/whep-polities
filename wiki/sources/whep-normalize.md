@@ -302,6 +302,223 @@ wrong).
 | `spanish morocco: north` | subunit | 1 | 1954..1954 | northern (Rif) zone: no polity |
 | `spanish morocco: south` | subunit | 1 | 1953..1953 | southern zone (Tarfaya strip): no polity |
 
+## The harmonized dataset (2026-10-01)
+
+The same colleague's harmonized dataset (`whep_data_harmonize`, **794,782 value rows**; columns
+hemisphere, continent, polity, commodity, variable, unit, year, value, notes, yearbook, document;
+IIA yearbooks 1921-1945 and FAO yearbooks 1949-1961; not committed) is built on this vocabulary.
+Its `polity` column has **620 labels over 14,813 (label, year) pairs** (the year axis mixes dated
+years and multi-year periods, as above); 113 of the labels are not in the label list, nearly all of
+them compound `A; B` labels joining two or more territories. A polity audit of that column (Claude,
+2026-10-01) re-checked how this source resolves every pair, and the routing was corrected where the
+resolution was wrong or missing. **No layer-B row moves** -- every rule is scoped to
+`source = whep-normalize` (stage 01 re-run: 0 of 190,529 matched rows change code).
+
+| | pairs | value rows |
+|---|---:|---:|
+| routed before | 12,503 (84.4%) | 669,533 (84.2%) |
+| **routed after** | **12,910 (87.2%)** | **680,221 (85.6%)** |
+| ... newly routed | 407 | 10,688 |
+| ... re-routed | 3 | 14 |
+
+### New routes
+
+Compound labels that name the members of a row that already exists (a combined reporting unit, an
+aggregate, or a territory whose polygon holds all the members) route to it; the gaps are years the
+harmonized dataset carries that the label list did not (`french reunion` 1946 and 1953-1960, `british
+kenya` 1920, `french central african republic` 1959).
+
+| label | polity | years | pairs | rows | was |
+|---|---|---|---:|---:|---|
+| `french lebanon; french syria` | SYL-1920-1944 | 1921-1925..1939 | 23 | 2,341 | unrouted |
+| `british nigeria: north; british nigeria: south` | NGA-1914-1960 | 1914..1959 | 54 | 2,014 | unrouted |
+| `british malaya federation; british singapore` | MASG-1946-1963 | 1946..1956 | 13 | 1,420 | unrouted |
+| `british malaya federation` | MYS-1946-1957 | 1946..1956 | 14 | 579 | unrouted |
+| `british singapore; malaya federation` | MASG-1946-1963 | 1957..1960 | 4 | 568 | unrouted |
+| `french reunion` | REU-1946-2025 | 1946..1960 | 9 | 563 | unrouted |
+| `british north cameroon; british south cameroon` | BCM-1916-1961 | 1909-1913..1960 | 45 | 533 | unrouted |
+| `lebanon; syria` | SYL-1944-1953 | 1946..1952 | 9 | 470 | unrouted |
+| `vietnam north; vietnam south` | F237-1954-1975 | 1954..1957 | 4 | 291 | unrouted |
+| `korea north; korea south` | KORP-1948-1953 | 1947-1951..1952 | 8 | 227 | unrouted |
+| `british gold coast; british togoland` | GCT-1919-1956 | 1934-1938..1954 | 12 | 183 | unrouted |
+| `british india; british pakistan` | IND-1937-1947 | 1934-1938..1946 | 2 | 180 | unrouted |
+| `portuguese kambing; portuguese timor` | TLS-1800-2025 | 1909-1913..1940 | 23 | 152 | unrouted |
+| `japanese korea: south` | KRS-1910-1945 | 1934-1938..1939 | 5 | 117 | unrouted |
+| `british north cameroon; british south cameroon; french cameroon` | BFCM-1920-1960 | 1909..1959 | 20 | 103 | unrouted |
+| `british aden; british perim` | ADS-1839-1937 | 1909-1913..1936 | 21 | 95 | unrouted |
+| `british north nigeria; british south nigeria` | NGA-1886-1914 | 1900-1913..1913 | 7 | 85 | unrouted |
+| `british north rhodesia; british nyasaland; british south rhodesia` | FRN-1953-1964 | 1934-1938..1952 | 5 | 85 | unrouted |
+| `french annam; french cochinchina; french tonkin` | VNM-1887-1954 | 1934-1938..1938 | 5 | 69 | unrouted |
+| `french algeria; french morocco; french tunisia` | FNA-1912-1956 | 1934-1938..1954 | 14 | 64 | unrouted |
+| `british nigeria: north; british nigeria: south` | NGA-1960-1961 | 1960 | 1 | 55 | unrouted |
+| `french cambodia; french laos; french vietnam` | FID-1887-1954 | 1953 | 1 | 47 | unrouted |
+| `british nigeria: north; british nigeria: south; british north cameroon; british south cameroon` | NGBC-1916-1960 | 1934-1938..1954 | 13 | 46 | unrouted |
+| `us pacific islands` | SSM-1914-1945 | 1934..1937 | 4 | 40 | unrouted |
+| `germany: west; saar basin` | WZO-1938-1949 | 1934-1938..1948 | 6 | 36 | unrouted |
+| `korea north; korea south` | KOR-1945-1948 | 1946..1947 | 2 | 33 | unrouted |
+| `spain: ceuta; spain: melilla` | CEM-1800-2025 | 1937..1960 | 10 | 33 | unrouted |
+| `french central african republic` | CAF-1919-1960 | 1959 | 1 | 28 | unrouted |
+| `australian papua; papua and new guinea` | PNG-1949-1975 | 1948-1952..1960 | 8 | 23 | unrouted |
+| `british gozo; british malta` | MLT-1800-2025 | 1937..1957 | 10 | 22 | unrouted |
+| `japanese caroline islands; japanese mariana islands; japanese marshall islands; japanese palau` | SSM-1914-1945 | 1921..1940 | 9 | 18 | unrouted |
+| `british kenya` | KEN-1907-1924 | 1920 | 1 | 17 | unrouted |
+| `belgian congo; belgian ruanda-urundi` | CODRU-1922-1960 | 1934-1938..1948 | 4 | 16 | unrouted |
+| `british eritrea; ethiopia` | ETH-1952-1993 | 1934-1938..1948-1952 | 4 | 16 | unrouted |
+| `british aden; british perim` | ADC-1937-1967 | 1937..1939 | 3 | 14 | unrouted |
+| `dutch java; dutch madura` | IDN-JVM-1949-1951 | 1948-1950 | 1 | 13 | unrouted |
+| `japan; us ryukyu` | JPN-1945-1952 | 1946..1948 | 3 | 12 | unrouted |
+| `dutch bali; dutch lombok` | IDN-BLB-1949-1951 | 1948-1950 | 1 | 11 | unrouted |
+| `japanese korea: south` | KRS-1945-1948 | 1945 | 1 | 10 | unrouted |
+| `china; taiwan` | CHN-1947-1949 | 1947..1948 | 2 | 10 | TWN-1945-2025 |
+| `british nigeria; british north cameroon; british south cameroon` | NGBC-1916-1960 | 1934-1939..1947-1951 | 2 | 7 | unrouted |
+| `greece; greece: dodecanese` | GRC-1947-2025 | 1948 | 1 | 7 | unrouted |
+| `british aden; british khuriya muriya` | ADC-1937-1967 | 1947 | 1 | 6 | unrouted |
+| `british aden; british kuria; british perim` | ADC-1937-1967 | 1947 | 1 | 6 | unrouted |
+| `ethiopia; italian eritrea; italian somaliland` | AOI-1936-1941 | 1928-1932..1937 | 6 | 6 | unrouted |
+| `british malaya; british singapore` | MASG-1946-1963 | 1947..1948 | 2 | 6 | unrouted |
+| `panama; us panama canal` | PAN-1903-1979 | 1934-1938..1954 | 5 | 5 | unrouted |
+| `japan; japan: ryukyu` | JPN-1895-1945 | 1938 | 1 | 4 | unrouted |
+| `china; taiwan` | CHN-1945-1947 | 1946 | 1 | 4 | TWN-1945-2025 |
+| `dutch east indies; dutch new guinea` | IDN-1800-1945 | 1934-1938 | 1 | 4 | unrouted |
+| `british burma; british india` | IND-1914-1937 | 1926-1936..1931 | 2 | 3 | unrouted |
+| `japanese pescadores; japanese taiwan` | TWN-1895-1945 | 1933..1937 | 2 | 2 | unrouted |
+| `french syria; lebanon` | SYL-1944-1953 | 1945 | 1 | 1 | unrouted |
+| `french dakar; french senegal` | SEN-1886-1960 | 1929 | 1 | 1 | unrouted |
+| `us pacific islands` | TTPI-1947-1994 | 1946 | 1 | 1 | unrouted |
+
+**Every route was checked for two labels landing on one polity in one table cell** (same yearbook,
+document, commodity, variable, unit, notes and year), the way a consumer collapsing on (polity, item,
+unit, year) would average them: 67 such cells before the change, **67 after**. Four candidate routes
+failed that check and are not made -- `dutch east indies: other islands; dutch java; dutch madura`,
+`us caroline islands; us mariana islands; us marshall islands; us palau`, `spanish fernando po;
+spanish rio muni` and the 1937 row of `british aden; british khuriya muriya` (reasons below).
+
+`china; taiwan` used to reach **TWN-1945-2025, Taiwan alone**, through the blank-source `China,
+Taiwan` alias, which put the mainland's figures on 36,000 km2. 1946-1948 now go to the China rows
+whose polygons hold Taiwan (CHN-1945-1947, CHN-1947-1949; 0.999 of TWN inside each). **From 1949 the
+label still reaches TWN-1945-2025**: after the Republic's retreat no row is the mainland plus Taiwan,
+and an alias cannot route a label to nothing. The same holds for `china (incl manchuria); taiwan`
+1953, which shares the key.
+
+### More not-a-territory labels
+
+| label | pairs | rows | years | reason |
+|---|---:|---:|---|---|
+| `caribbean; latin america` | 26 | 4,595 | 1934..1960 | regional aggregate (the Caribbean plus Latin America), like `caribbean` and `latin america` on their own |
+| `caribbean net; latin america net` | 5 | 45 | 1934-1938..1952 | regional aggregate (net trade), like `caribbean net` and `latin america net` |
+| `british dependent territories in europe` | 4 | 10 | 1938..1948 | aggregate of the British dependencies in Europe |
+| `united states; us dependent territories` | 13 | 120 | 1934-1938..1954 | the United States plus all its dependencies: an aggregate, like `us dependent territories` on its own |
+
+### Compound and other labels left unresolved
+
+Kinds as above. `era` rows are years of an otherwise routed label.
+
+| label | kind | pairs | rows | years | why unresolved |
+|---|---|---:|---:|---|---|
+| `dutch java; dutch madura` | composite | 45 | 2,138 | 1909..1948 | before 1949: no row is Java plus Madura |
+| `british kenya; british uganda` | composite | 27 | 1,362 | 1921-1925..1954 | Kenya plus Uganda (the customs union's joint reporting): no row is the pair |
+| `egypt; syria` | composite | 11 | 388 | 1947..1960 | Egypt plus Syria, 1947-1960: no row is the pair (the United Arab Republic 1958-1961 has no row either) |
+| `british federated malay states; british singapore` | composite | 3 | 320 | 1926-1938..1934-1938 | the Federated Malay States plus Singapore: no row |
+| `british penang` | subunit | 17 | 250 | 1909..1924 | Penang alone: no row |
+| `british malacca` | subunit | 17 | 240 | 1909..1924 | Malacca alone: no row |
+| `british labuan` | subunit | 14 | 181 | 1909..1921 | Labuan alone: no row |
+| `french senegal; french sudan` | composite | 5 | 174 | 1934..1938 | Senegal plus French Sudan: no row |
+| `korea north; korea south` | era | 8 | 132 | 1953..1960 | 1953-1960: KORP-1948-1953 ends and no row is the whole peninsula later |
+| `french morocco; spanish morocco` | composite | 12 | 109 | 1909-1913..1955 | the French and Spanish zones together (Morocco without Tangier): no row is the pair |
+| `bhutan; china: tibet; nepal; sikkim` | composite | 12 | 97 | 1934-1938..1960 | four Himalayan territories under three sovereigns: no row |
+| `french chad; french ubangi shari` | composite | 15 | 74 | 1909-1913..1933 | Chad plus Ubangi-Shari: no row is the pair |
+| `dutch bali; dutch lombok` | composite | 6 | 70 | 1934-1938..1948 | before 1949: no row is Bali plus Lombok |
+| `cambodia; laos; vietnam north; vietnam south` | composite | 2 | 56 | 1954..1955 | the former Indochina, 1954-1955: FID-1887-1954 ends at the Geneva settlement and no row is the four states |
+| `french morocco: west` | subunit | 7 | 54 | 1915..1921 | western zone of French Morocco (1915-1921): no row |
+| `british brunei; british north borneo; british sarawak` | composite | 13 | 44 | 1934-1938..1954 | British Borneo (Brunei, North Borneo, Sarawak): no row is the three |
+| `british nauru; ocean island` | composite | 20 | 36 | 1915..1951 | Nauru plus Ocean Island (the phosphate islands): no row |
+| `british india; british pakistan` | era | 1 | 30 | 1947 | 1947: the two dominions from 15 August have no single row |
+| `china; japanese taiwan` | composite | 2 | 28 | 1934-1938..1938 | China with Japanese Taiwan: no row |
+| `british somaliland; italian somaliland` | composite | 9 | 25 | 1913..1937 | the two Somalilands, 1913-1937: no row before the 1960 union |
+| `british guernsey; british isle of man; british jersey` | composite | 10 | 25 | 1932..1960 | the three Crown dependencies: CHI-1800-2025 is the Channel Islands without Man |
+| `india; pakistan` | composite | 4 | 23 | 1948..1950 | the two dominions after partition, 1948-1950: no row is both |
+| `british christmas island; british singapore` | composite | 9 | 22 | 1934-1938..1951 | Singapore with Christmas Island: SGP-1946-1963 is Singapore alone |
+| `french comoros; french madagascar` | composite | 9 | 18 | 1934-1938..1954 | Madagascar with the Comoros: MDG-1882-2025 is the island alone (COM-1946-1975's polygon is not inside it) |
+| `dutch east indies: other islands; dutch java; dutch madura` | ambiguous | 9 | 18 | 1922..1944 | names the whole Dutch East Indies, but in the same IIA tables it is a fraction of 'dutch east indies' (coffee 1934-1938: 8,600 t against 123,600 t; cocoa 1922: 921 t against 1,260 t), so it is a sub-category of the colony's figures, not its territory |
+| `canada; united states` | composite | 18 | 18 | 1909..1925 | Canada plus the United States: no row |
+| `british christmas island; british cocos islands; british singapore` | composite | 3 | 18 | 1951..1954 | Singapore with Christmas and the Cocos Islands: no row |
+| `us caroline islands; us mariana islands; us marshall islands; us palau` | ambiguous | 10 | 17 | 1946..1960 | names the whole US trust, but in the same FAO tables it differs from 'us pacific islands' (land area 1960: 10,000 ha against 178,000 ha; phosphate rock 1949: 211,000 t against 135,000 t), so it is not the territory TTPI-1947-1994 holds |
+| `british saint helena; british saint helena: ascension; british tristan da cunha` | composite | 2 | 12 | 1946..1958 | St Helena with Ascension and Tristan: SHN-1834-1967 is the island alone (123 km2) |
+| `british antigua; british saint kitts and nevis` | composite | 3 | 12 | 1949..1951 | two Leeward Islands presidencies: no row |
+| `british jamaica; british turks and caicos islands` | composite | 9 | 11 | 1911..1937 | Jamaica with its Turks and Caicos dependency: JAM-1800-2025 is Jamaica alone |
+| `german nauru; ocean island` | composite | 7 | 8 | 1909..1914 | Nauru plus Ocean Island: no row |
+| `dutch java; dutch sumatra` | composite | 4 | 8 | 1922..1925 | Java plus Sumatra: no row |
+| `british north cameroon; british south cameroon; french cameroon` | era | 1 | 8 | 1960 | 1960: French Cameroun was independent from 1 January and no row is it plus the British Cameroons |
+| `japanese korea: north` | subunit | 4 | 7 | 1934-1938..1938 | Korea north of the 38th parallel under Japan: no row (KRS-1910-1945 is the south) |
+| `dutch sint eustatius; dutch sint maarten` | composite | 7 | 7 | 1909-1913..1926 | two of the six Dutch Caribbean islands: no row |
+| `indonesia: java, madura; indonesia: other islands` | composite | 3 | 6 | 1955..1957 | Java and Madura plus the Outer Islands after 1951 (= Indonesia without Bali and Lombok): no row |
+| `french cochinchina; french tonkin` | composite | 6 | 6 | 1925..1937 | two of Vietnam's three ky: no row |
+| `british zanzibar; union of south africa` | ambiguous | 3 | 6 | 1949..1951 | Zanzibar and South Africa in one label: not a territory any row can hold; a normalisation slip |
+| `british north rhodesia; british south rhodesia` | composite | 5 | 6 | 1911..1929 | the two Rhodesias, 1911-1929: no row |
+| `spanish fernando po; spanish rio muni` | composite | 4 | 5 | 1934-1938..1952 | Fernando Po plus Rio Muni: in the same FAO tables 'spanish guinea' reports the whole (cocoa 1934-1938: 12,300 t against 11,700 t), so routing the pair to GNQ-1886-1968 would put two figures on one cell |
+| `french sahara` | subunit | 4 | 5 | 1911..1925 | the Southern Territories of Algeria: no row |
+| `french chad; french middle congo; french ubangi shari` | composite | 1 | 5 | 1921-1925 | French Equatorial Africa without Gabon: no row |
+| `french annam; french tonkin` | composite | 5 | 5 | 1925..1929 | two of Vietnam's three ky: no row |
+| `french annam; french cochinchina` | composite | 5 | 5 | 1925..1929 | two of Vietnam's three ky: no row |
+| `china; japanese manchukuo` | composite | 1 | 5 | 1934-1938 | China with Manchukuo, 1934-1938: no row (CHN-1932-1945 excludes Manchukuo) |
+| `british east africa; british uganda` | composite | 1 | 5 | 1909-1913 | the East Africa Protectorate plus Uganda: no row |
+| `french reunion: amsterdam, kerguelen, saint paul` | subunit | 4 | 4 | 1911..1925 | three of the French sub-Antarctic islands: ATF-1800-2025 is all of them with Crozet and the Scattered Islands |
+| `french morocco: east` | subunit | 1 | 4 | 1916 | eastern zone of French Morocco (1916): no row |
+| `french cameroon; french equatorial africa` | composite | 3 | 4 | 1934-1938..1954 | French Cameroun plus French Equatorial Africa: no row |
+| `egypt; french syria` | composite | 1 | 4 | 1937 | Egypt plus Syria, 1937: no row is the pair |
+| `german caroline islands; german mariana islands; german marshall islands; german palau` | composite | 2 | 3 | 1911..1913 | German Micronesia: no row is the four groups |
+| `french gabon; french middle congo` | composite | 3 | 3 | 1915..1921-1925 | Gabon plus Middle Congo: no row |
+| `british jamaica; british saint vincent` | composite | 3 | 3 | 1949..1951 | Jamaica plus Saint Vincent: no row |
+| `british jamaica; british saint lucia` | composite | 3 | 3 | 1949..1951 | Jamaica plus Saint Lucia: no row |
+| `british aden; british socotra` | composite | 3 | 3 | 1913..1937 | Aden plus Socotra: no row (Socotra is in the Aden Protectorate) |
+| `lebanon; syria` | era | 2 | 2 | 1953..1954 | 1953-1954: SYL-1944-1953 ends and no row is the pair later |
+| `dutch java; dutch madura; dutch sumatra` | composite | 1 | 2 | 1948 | Java, Madura and Sumatra: no row |
+| `dutch east indies; dutch new guinea` | composite | 1 | 2 | 1948-1950 | 1948-1950: from 1949 Indonesia and Netherlands New Guinea are two rows |
+| `burma; french cambodia; french laos; french vietnam` | composite | 2 | 2 | 1948-1950..1952 | Burma plus Indochina: no row |
+| `british nigeria: lagos` | subunit | 1 | 2 | 1960 | Lagos alone (1960): no row |
+| `british cayman islands; british jamaica` | composite | 2 | 2 | 1937..1948-1952 | Jamaica with its Cayman dependency: JAM-1800-2025 is Jamaica alone |
+| `british burma; french indochina` | composite | 1 | 2 | 1934-1938 | Burma plus French Indochina: no row |
+| `australian cocos islands; british christmas island` | composite | 1 | 2 | 1947 | the Cocos plus Christmas Island: no row |
+| `japanese pescadores; us taiwan` | ambiguous | 1 | 1 | 1932 | a US prefix on Japanese Taiwan inside a compound (1932): the same slip as 'us taiwan' |
+| `french reunion; rhodesia and nyasaland federation` | ambiguous | 1 | 1 | 1954 | Reunion and the Rhodesian federation in one label: a normalisation slip |
+| `french morocco; french tunisia` | composite | 1 | 1 | 1951 | French Morocco plus Tunisia: no row is the pair |
+| `british togoland; french togoland` | composite | 1 | 1 | 1921-1925 | the two Togoland mandates, 1921-1925: no row after GTO-1884-1920 |
+| `british nigeria: north; british north cameroon` | composite | 1 | 1 | 1934-1938 | the Northern Provinces plus the Northern Cameroons: no row |
+| `british montserrat; british saint kitts and nevis; british virgin islands` | composite | 1 | 1 | 1951 | three Leeward Islands presidencies: no row |
+| `british aden; british khuriya muriya` | ambiguous | 1 | 1 | 1937 | 1937 only: IIA's 7,500 ha sits in the same table cell as 'british aden; british perim' (20,700 ha), so it is not the colony; 1947 routes to ADC-1937-1967 |
+
+### Conventions the audit questioned, re-checked
+
+- **`british india` 1947 -> IND-1947-1949 stands.** The audit's rule gives a transition year to the
+  polity valid for more of its days (British India held 226 of 1947's), but this repository gives a
+  handover year to the INCOMING row (`wiki/README.md`, year convention; issue 74), and
+  `british pakistan` 1947 goes to PAK-1947-1949 by the same rule. The label's 1947 rows are FAO
+  1949-1950 columns, 33 of whose 80 (yearbook, table, variable, year) cells sit beside a separate
+  `british pakistan` cell, so they are the Indian Union's territory on either reading. The alias basis
+  now says so instead of "the successor convention".
+- **`us philippines` 1947-1960 is a normalisation slip**, the class of `us taiwan`/`us karafuto`/`us
+  kwantung`: the US prefix outlives independence (4 July 1946). The routing to PHL-1800-2025 stands --
+  one row for the islands on both sides of 1946 -- and the alias is split at 1946/1947 so the 1947-1960
+  half carries the caveat.
+- **Estonia, Latvia and Lithuania switch to their SSR rows in 1940**, the year of the Soviet
+  occupation (June) and annexation (August); the handover year belongs to the incoming row, so this
+  is the convention applied, not an exception to it.
+- **Guadeloupe and Martinique (one row each across the 1946 departmentalisation) against French Guiana
+  and Reunion (split at 1946)**, and Greenland (one row across 1953): the year convention is applied
+  consistently -- where a row splits, it splits at 1946 -- but whether a status change over the same
+  territory makes a row at all is a polity-definition question the database answers both ways. It is
+  recorded as a proposal in `wiki/log.md` (`proposal-status-change-splits`), not changed here.
+- **Ex-Italian Somaliland under British military administration (1941-1950)** keeps the single row
+  ITS-1908-1960. Libya's 1943-1951 rows exist because the country was administered as three
+  territories (CYR, TRP, FEZ); Somaliland was administered whole, so it changed administrator, not
+  territory, which the polity-definition rule does not split on.
+- **`australia (excl victoria)` still reaches all of Australia** (1934-1938, 1 pair, 1 row), and
+  `british india (excl burma)` 1926-1936 still reaches IND-1914-1937, which includes Burma. Both
+  share `matchlib.norm()`'s key with their base labels (`australia`, `british india`), because the
+  key drops parentheticals, and the WHEP consumer builds the same key (`.norm_polity_label`), so no
+  rule here can separate them. A fix needs the label to change (e.g. `australia: excl victoria`) or a
+  key change made in both repositories at once.
+
 ## Cross-check against layer B
 
 3,247 (label, year) pairs coincide with a layer-B `country` string (case-insensitively, 136 labels).
