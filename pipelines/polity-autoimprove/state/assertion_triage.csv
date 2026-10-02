@@ -422,7 +422,7 @@ verify_order,key,label,source,candidate,status,route,rows,years_observed,n_disti
 421,romania|juan|1918-1918,romania,juan,ROU-1918-1919,pending,applied_alias,29,1918-1918,1,1918-1919,national,draft,assigned,False,False,False,False,high,False,precedent
 422,denmark|mitchell|1891-1919,denmark,mitchell,DNK-1864-1920,pending,iso,28,1891-1919,28,1864-1920,national,draft,assigned,False,False,False,False,,True,precedent
 423,china manchuria province of|mitchell|1928-1931,"china, manchuria province of",mitchell,CHN-1921-1932,pending,applied_alias,27,1928-1931,4,1921-1932,national,draft,assigned,False,False,False,False,medium,False,precedent
-424,micronesia|iia|1932-1942,micronesia (federated states of),iia,CAR-1920-1945,pending,applied_alias,27,1932-1942,8,1920-1945,colonial,draft,proxy,False,False,False,False,high,False,precedent
+424,micronesia federated states of|iia|1932-1942,micronesia (federated states of),iia,CAR-1920-1945,pending,applied_alias,27,1932-1942,8,1920-1945,colonial,draft,proxy,False,False,False,False,high,False,precedent
 425,trieste uk us|fao1952|1949-1951,Trieste UK-US,fao1952,TRS-1947-1954,pending,applied_alias,27,1949-1951,3,1947-1954,national,draft,unassigned,False,False,False,False,high,False,precedent
 426,tanzania|mitchell|1897-1919,tanzania,mitchell,TAN-1891-1920,pending,applied_alias,26,1897-1919,19,1891-1920,national,draft,assigned,False,False,False,False,medium,False,precedent
 427,china mainland|mitchell|1921-1931,"china, mainland",mitchell,CHN-1921-1932,pending,applied_alias,25,1921-1931,11,1921-1932,national,draft,assigned,False,False,False,False,high,False,precedent

@@ -24,8 +24,10 @@ yearbook country names:
 - **`country: subunit`** names a part: `british perim: socotra`, `germany: bizone, french`,
   `rhodesia and nyasaland federation: north rhodesia`, `united kingdom: england, wales`;
 - **parenthetical qualifiers** mark coverage (`total (excl china, ussr)`, `british india (excl
-  burma)`, `french morocco (former)`); `matchlib.norm()` drops them, so each such label shares the
-  alias rows of its base label;
+  burma)`, `french morocco (former)`). They are part of the label: since 2026-10-02 the matcher keys
+  a source label WITH its qualifier (`matchlib.label_key`), so such a label routes only by a rule
+  written for the full label and never by its base label's rules or name (see "Qualified labels"
+  below);
 - **aggregates and residuals**: `total ...`, `other countries in ...`, regional totals.
 
 Only 143 of the labels coincide (case-insensitively) with a layer-B `country` string, so it is a
@@ -541,12 +543,37 @@ Not created, and why:
   ITS-1908-1960. Libya's 1943-1951 rows exist because the country was administered as three
   territories (CYR, TRP, FEZ); Somaliland was administered whole, so it changed administrator, not
   territory, which the polity-definition rule does not split on.
-- **`australia (excl victoria)` still reaches all of Australia** (1934-1938, 1 pair, 1 row), and
-  `british india (excl burma)` 1926-1936 still reaches IND-1914-1937, which includes Burma. Both
-  share `matchlib.norm()`'s key with their base labels (`australia`, `british india`), because the
-  key drops parentheticals, and the WHEP consumer builds the same key (`.norm_polity_label`), so no
-  rule here can separate them. A fix needs the label to change (e.g. `australia: excl victoria`) or a
-  key change made in both repositories at once.
+- **`australia (excl victoria)` and `british india (excl burma)` no longer reach the whole
+  country.** They used to share their base labels' key, because `matchlib.norm()` dropped
+  parentheticals from source labels and the WHEP consumer built the same key. Fixed in both
+  repositories at once on 2026-10-02: see "Qualified labels" below.
+
+### Qualified labels (2026-10-02)
+
+The matcher now keys a source label with its bracketed qualifier, and a qualified label may fall
+back only to a polity name carrying the same qualifier, so a part or remainder cannot land on its
+whole. Measured over all 14,813 pairs, resolved before and after the change with the same rules
+(a period pair takes the polity covering most of its years): **37 pairs (972 rows of the harmonized
+dataset) changed, all 12 labels carrying a qualifier and nothing else.** New rules re-route the
+labels whose qualifier names the same territory as a polity; what is left:
+
+| label | pairs (rows) | before | now |
+|---|---:|---|---|
+| `british india (excl burma)` 1926-1936 | 5 (19) | IND-1914-1937 (includes Burma, 13.6% of its area) | IND-1937-1947, `back_cast` (differs only by the Aden Settlement, 293 km2) |
+| `british india (excl burma)` 1937 | 1 (4) | IND-1937-1947 | IND-1937-1947 |
+| `french morocco (former)` 1956-1957 | 2 (365) | MAR-1911-1958 | MAR-1911-1958 |
+| `french west africa (former)` 1959 | 1 (22) | AOF-1895-1960 | AOF-1895-1960 |
+| `italian somaliland (former)` 1946-1959 | 15 (365) | ITS-1908-1960 | ITS-1908-1960 |
+| `ussr (incl dagestan)` 1934, 1939 | 2 (2) | F228-1921-1940 | F228-1921-1940 (Dagestan is in the RSFSR) |
+| `china (incl manchuria); taiwan` 1953 | 1 (1) | CHT-1950-2025 | CHT-1950-2025 |
+| `australia (excl victoria)` 1934-1938 | 1 (1) | AUS-1901-2025 | unrouted: no polity is Australia without Victoria |
+| `russia (excl far east, transcaucasia, turkestan)` 1909-1913 | 1 (22) | F228-1905-1914 | unrouted: no polity is that remainder |
+| `ussr (excl far east, transcaucasia, turkestan)` 1922-1925 | 4 (82) | F228-1921-1940 | unrouted: likewise |
+| `china (incl jehol, manchuria, sikang, sinkiang, taiwan, tibet)` 1947 | 1 (18) | CHN-1947-1949 | unrouted: CHN-1947-1949 excludes Tibet (TIB-1913-1950); no row is the union |
+| `french west africa (former)` 1960, `italian somaliland (former)` 1960, `spanish morocco (former)` 1956 | 3 (71) | the outgoing polity, via the bare label's end-year fallback | unrouted: the polity ends exclusively that year and no alias may claim it (`validate_alias_year_coverage.py`) |
+
+The unrouted ones need a polygon (a remainder or a union) and so a geodata change; they are left
+for a follow-up rather than routed to a whole they are not.
 
 ## Cross-check against layer B
 

@@ -235,13 +235,13 @@ if not A.no_geometry:
 exclusion_keys = set()
 if nesting_rows and os.path.exists(A.layer_b):
     sys.path.insert(0, HERE)
-    from matchlib import eff_year, norm            # same normalization as 00_intake
+    from matchlib import eff_year, label_key       # same normalization as 00_intake
 
     panel = pd.read_parquet(A.layer_b, columns=["country", "year", "value", "item",
                                                 "unit", "period", "is_aggregate", "source"])
     panel = panel[~panel.is_aggregate.fillna(False)]
     panel = panel[panel.unit.isin({u.strip() for u in A.additive_units.split(",")})]
-    panel["lab"] = panel.country.map(norm)
+    panel["lab"] = panel.country.map(label_key)
     panel["y"] = [eff_year(a, b) for a, b in zip(panel.year, panel.period)]
     idx = {k: v for k, v in panel.groupby(["lab", "source"])}
 

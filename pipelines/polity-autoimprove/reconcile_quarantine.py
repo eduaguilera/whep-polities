@@ -84,7 +84,7 @@ if os.path.exists(ASSERTIONS):
         bundle_candidate[a["key"]] = a["candidate"]
 
 # (b) fallback: re-derive through the shared deterministic matcher. The key
-#     encodes norm(label)|source|y0-y1, which is exactly assign()'s input minus
+#     encodes label_key(label)|source|y0-y1, which is exactly assign()'s input minus
 #     the row's iso — so route every year of the observed span and collect the
 #     targets. "changed" only if the recorded candidate appears for NO year.
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

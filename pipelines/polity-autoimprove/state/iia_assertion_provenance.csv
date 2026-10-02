@@ -73,7 +73,7 @@ ethiopia pdr|iia|1933-1935,ETH-1907-1936,3,redirected,italian east africa,1.00,i
 ethiopia pdr|iia|1936-1940,ETH-1936-1941,4,redirected,ethiopian empire,0.50,ethiopian empire 50% [only 4 values — below the 8-value floor]
 ethiopia pdr|iia|1942-1945,ETH-1941-1952,4,redirected,ethiopian empire,1.00,ethiopian empire 100% [only 4 values — below the 8-value floor]
 ethiopia|iia|1945-1945,ETH-1941-1952,1,redirected,australia,1.00,australia 100% [only 1 values — below the 8-value floor]
-falkland islands|iia|1914-1919,FLK-1833-2025,0,unmeasured,,,no dated values in this span
+falkland islands malvinas|iia|1914-1919,FLK-1833-2025,0,unmeasured,,,no dated values in this span
 faroe islands|iia|1929-1939,FRO-1800-2025,5,redirected,denmark: faroe islands,1.00,denmark: faroe islands 100% [only 5 values — below the 8-value floor]
 fiji|iia|1909-1945,FJI-1800-2025,138,redirected,british fiji islands,1.00,british fiji islands 100%
 finland|iia|1919-1939,FIN-1917-1940,27,clean,finland,1.00,finland 100%
@@ -152,7 +152,7 @@ martinique|iia|1909-1945,MTQ-1816-2025,37,clean,french martinique,1.00,french ma
 mauritania|iia|1922-1945,MRT-1920-1960,90,clean,french mauritania,1.00,french mauritania 100%
 mauritius|iia|1909-1945,MUS-1800-2025,159,clean,british mauritius,1.00,british mauritius 100%
 mexico|iia|1910-1945,MEX-1848-2025,84,clean,mexico,0.93,mexico 93%
-micronesia|iia|1932-1942,CAR-1920-1945,0,unmeasured,,,no dated values in this span
+micronesia federated states of|iia|1932-1942,CAR-1920-1945,0,unmeasured,,,no dated values in this span
 montserrat|iia|1909-1945,MSR-1800-2025,115,clean,british montserrat,1.00,british montserrat 100%
 morocco|iia|1911-1945,MAR-1911-1958,243,clean,french morocco,0.99,french morocco 99%
 mozambique|iia|1922-1937,MOZ-1891-1975,62,redirected,portuguese mozambique: company concession,0.68,portuguese mozambique: company concession 68%

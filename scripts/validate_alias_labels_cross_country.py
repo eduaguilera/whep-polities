@@ -31,7 +31,7 @@ when it has a rule on one of the unit's forms that routes into the unit's own co
 panel slugs that means every unit they report.
 
 WHAT THIS CHECKS. For every row of data/final/label_alias_map.csv whose label, normalised as
-matchlib.norm and the WHEP consumer's .norm_polity_label normalise it, equals a panel unit's id
+matchlib.label_key and the WHEP consumer's .norm_polity_label normalise it, equals a panel unit's id
 or any of its names:
   * the target polity must belong to the unit's country, or
   * the rule's source must be one that does not carry the unit.
@@ -80,11 +80,12 @@ BASELINE = {}
 
 
 def norm(s: str) -> str:
-    """matchlib.norm, verbatim. It is the same key the WHEP consumer builds (.norm_polity_label),
-    so 'México', 'Mexico' and 'MEXICO' are one label here, as they are at resolution time."""
+    """matchlib.label_key, verbatim: the key a SOURCE label is looked up by, here and in the WHEP
+    consumer (.norm_polity_label), so 'México', 'Mexico' and 'MEXICO' are one label here, as they
+    are at resolution time. Bracketed qualifiers are KEPT, as they are at resolution time: a
+    qualified label is its own label, not a spelling of its base."""
     s = (s or "").strip().lower()
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
-    s = re.sub(r"\s*\(.*?\)\s*", " ", s)
     s = re.sub(r"^the\s+", "", s)
     s = re.sub(r"[^a-z0-9 ]", " ", s)
     return re.sub(r"\s+", " ", s).strip()

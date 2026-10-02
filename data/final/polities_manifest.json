@@ -172,9 +172,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "2349d72a2914fbbfe1857fb7dc87a440c72a3ddcc31420e9f6dd664fdb7f3c99",
-  "aliases": 3251,
-  "labels": 1784,
+  "sha256": "c4659b5d1548955582c3eaa7664a61914232eef44bacd89d84a55ec76fb98fce",
+  "aliases": 3264,
+  "labels": 1792,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -206,6 +206,7 @@
    "whep-split-2026-06-29"
   ],
   "indicator_scoped_aliases": 40,
+  "label_key_why": "Compare a row's label with `source_label` on a folded key: lowercase, accents to ASCII, a leading 'the' dropped, every other non-alphanumeric character (brackets included) to a space, whitespace squashed (matchlib.label_key). BRACKETED TEXT IS KEPT: it is part of the territory the label names, so 'british india (excl burma)' and 'british india' are different labels and neither resolves by the other's rules. A consumer that also matches labels to polity NAMES may drop a polity name's own qualifier ('Santa Cruz (department of Bolivia)' answers to 'santa cruz'), but must not let a label that carries a qualifier fall back to a name without that qualifier.",
   "indicator_scope_why": "`indicator` is an optional scope on a rule, BLANK = ANY: a non-blank value limits the rule to rows whose panel `indicator` (area, production, yield, livestock_stock, landuse) equals it exactly -- the convention of source_label_item_corrections.csv's unit/indicator scope. It exists for a panel unit whose indicators are two territories under one id and name (CHL-LL: crops for Los Lagos + Los Rios, landuse and livestock for Los Lagos alone). A row's candidate rules are those matching label, source and year whose indicator is blank or equals the row's. Published rules never let a blank and a scoped rule, or two rules with one scope, claim the same label, source and year (validate_aliases.py), so at most one candidate remains and no precedence is needed. A consumer that cannot supply a row's indicator must treat a label/year that only scoped rules cover as unresolved, not pick one of them."
  },
  "label_item_corrections": {

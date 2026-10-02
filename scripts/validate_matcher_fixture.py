@@ -74,10 +74,10 @@ INTAKE = os.path.join(REPO, "pipelines/polity-autoimprove/00_intake.py")
 REAL_POLITIES = os.path.join(REPO, "data/final/polities_database.csv")
 
 # --- A. what loading the registry must produce -------------------------------------
-# The fixture registry has EIGHT rows and only SIX may survive: one targets a `retired`
+# The fixture registry has NINE rows and only SEVEN may survive: one targets a `retired`
 # polity (stale) and one targets a code that does not exist (unknown). Both are dropped
 # silently by matchlib, which is why they are counted here rather than trusted.
-EXPECT_RULES = 6
+EXPECT_RULES = 7
 EXPECT_BLANKET = 2          # `riverland colony state` and the un-sourced `twinpeak`
 EXPECT_STALE = {"GHO-1800-2025": 1}
 EXPECT_AMBIGUOUS_LABELS = frozenset({"hinterland"})
@@ -168,6 +168,19 @@ CASES = (
      "MATCHES it still wins. iso is preferred precisely because names are ambiguous "
      "across families, so the fallback must be unreachable for a matching row — not "
      "merely outranked by it"),
+    ("kappa (excl north)", None, None, 1920, "KAX-1900-1950", "matched", "applied_alias",
+     "A SOURCE LABEL'S BRACKETED QUALIFIER IS PART OF ITS IDENTITY: the rule written for the "
+     "qualified label routes it to the part it names"),
+    ("Kappa", None, None, 1920, "KAP-1900-1950", "matched", "name",
+     "and the PART's rule must not capture the WHOLE. With the qualifier dropped from the key the "
+     "rule above read `kappa` and sent the bare label to KAX -- the shape that put whep-normalize's "
+     "`australia (excl victoria)` on all of Australia. The bare label still reaches a polity whose "
+     "NAME carries a qualifier (`Kappa (to 1950)`): that stripping is the polity-name side, and stays"),
+    ("Kappa (excl south)", None, None, 1920, None, "unresolved", "none",
+     "a qualified label with no rule of its own must NOT fall back to the bare name: `(excl ...)`, "
+     "`(incl ...)` and `(former)` name a different territory, so the honest answer is no polity"),
+    ("Kappa (to 1950)", None, None, 1920, "KAP-1900-1950", "matched", "name",
+     "while a label carrying exactly the polity name's own qualifier still matches that name"),
     ("Mandaria", "XAN", None, None, None, "no_year", "iso",
      "a year-less row stays unrouted. NOT a guard case, and the distinction is worth "
      "recording: I wrote it as one, then mutated the fallback to fire on `no_year` too "
@@ -333,8 +346,12 @@ def check_helpers(matchlib) -> list:
     problems = []
     for got, want, why in (
         (matchlib.norm("The Gambia (to 1919)"), "gambia",
-         "a leading article, a parenthetical and case must all normalise away, or one "
-         "spelling of a label becomes two assertions"),
+         "on the POLITY-NAME side a leading article, a parenthetical and case all normalise "
+         "away, so an unqualified label still reaches a name that carries its own qualifier"),
+        (matchlib.label_key("The British India (excl. Burma)"), "british india excl burma",
+         "a SOURCE label keeps its bracketed qualifier: it is part of the territory the label names"),
+        (matchlib.label_key("Côte d'Ivoire"), matchlib.norm("Côte d'Ivoire"),
+         "on a label without a qualifier the two keys agree, so no unqualified label moves"),
         (matchlib.norm("Côte d'Ivoire"), "cote d ivoire",
          "accents fold to ASCII and punctuation becomes a space"),
         (matchlib.toks("Korea, South"), matchlib.toks("South Korea"),
