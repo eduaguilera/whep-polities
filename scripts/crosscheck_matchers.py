@@ -247,6 +247,51 @@ FIXTURE = (
     ("United Republic of Tanzania", "TZA", "faostat", 1964, "TZA-1964-2025"),
 )
 
+# Every YEAR a whep-normalize label WITH A BRACKETED QUALIFIER occurs in, pinned to its
+# answer: (label, expected code or None, the label's years). Since the label-qualifier fix
+# (#711) a qualified label routes only by rules written for its FULL form, so a rule set
+# written from one copy of the label list can silently miss years another copy carries:
+# #711's rules came from the harmonized dataset, and `french morocco (former)` 1934-1955,
+# `spanish morocco (former)` 1934-1955, `french guinea (former)` 1947-1952 and `french
+# central african republic (former)` 1948-1952 -- years only the year_polity.xlsx list
+# states -- became unrouted (24 pairs). The years are the union of both copies (periods
+# expanded to every year they span), measured 2026-10-02; the `total (...)` aggregates
+# are left out, as no polity is a world total. A None entry is a DECISION too: the
+# qualifier names a territory no polity is (`excl victoria`), or the year is the target's
+# exclusive end year that no alias may claim (1956, 1960). A NEW qualified label in the
+# list is not covered until it is added here.
+QUALIFIED_LABEL_YEARS = (
+    ('australia (excl victoria)', None, "1934-1938"),
+    ('british india (excl burma)', 'IND-1937-1947', "1926-1937"),
+    ('british india (excl burma): british provinces', None, "1932-1936"),
+    ('british mauritius: other islands (excl rodrigues)', None, "1937 1957"),
+    ('china (incl jehol, manchuria, sikang, sinkiang, taiwan, tibet)', None, "1947"),
+    ('china (incl manchuria); taiwan', 'CHT-1950-2025', "1953"),
+    ('french central african republic (former)', 'CAF-1919-1960', "1948-1952"),
+    ('french guinea (former)', 'GIN-1894-1958', "1947-1952"),
+    ('french morocco (former)', 'MAR-1911-1958', "1934-1938 1947-1957"),
+    ('french morocco (former)', None, "1958-1960"),
+    ('french west africa (former)', 'AOF-1895-1960', "1959"),
+    ('french west africa (former)', None, "1960"),
+    ('italian somaliland (former)', 'ITS-1908-1960', "1946-1959"),
+    ('italian somaliland (former)', None, "1960"),
+    ('other countries in asia (excl china)', None, "1948-1950 1952-1954"),
+    ('russia (excl far east, transcaucasia, turkestan)', None, "1909-1913"),
+    ('spanish morocco (former)', 'SMO-1912-1956', "1934-1938 1945 1947-1955"),
+    ('spanish morocco (former)', None, "1956-1960"),
+    ('ussr (excl far east, transcaucasia, turkestan)', None, "1922-1925"),
+    ('ussr (incl dagestan)', 'F228-1921-1940', "1934 1939"),
+)
+QUALIFIED_LABEL_SOURCE = "whep-normalize"
+
+
+def expand_years(spec: str) -> list:
+    out = []
+    for part in spec.split():
+        a, _, b = part.partition("-")
+        out.extend(range(int(a), int(b or a) + 1))
+    return out
+
 # Labels matchlib cannot resolve without the faostat alias, so an explicit route is
 # REQUIRED. One area, and it is genuinely nominal: the Yugoslav SFR chain sits under
 # F248-*, a combined-reporting prefix, and the label "Yugoslav SFR" with iso3 YUG leads
@@ -521,6 +566,18 @@ def main() -> int:
                     f"receive data"
                 )
 
+        n_qualified = 0
+        for label, expect, years in QUALIFIED_LABEL_YEARS:
+            for year in expand_years(years):
+                n_qualified += 1
+                code, _status, how = full.assign(label, None, QUALIFIED_LABEL_SOURCE, year)
+                if code != expect:
+                    fixture_failures.append(
+                        f"qualified label {label!r} [{QUALIFIED_LABEL_SOURCE}] {year}: "
+                        f"expected {expect}, matchlib returned {code} ({how}). A full-label "
+                        f"rule set must cover every year the label occurs in"
+                    )
+
         (p_probes, p_agree, p_different, p_unresolved,
          p_problems) = check_pre1961(full, dead, all_codes())
     finally:
@@ -565,6 +622,7 @@ def main() -> int:
     print(f"  matchlib cannot resolve     : {len(unresolved)}")
     print(f"  golden fixture cases        : {len(FIXTURE)}, "
           f"{len(fixture_failures)} failing")
+    print(f"  qualified-label year pins   : {n_qualified}")
     print(f"  matchers excluding dead rows: "
           f"{len(DEAD_STATUS_DECLARERS) - len(check_dead_status_declared())}"
           f"/{len(DEAD_STATUS_DECLARERS)}")
