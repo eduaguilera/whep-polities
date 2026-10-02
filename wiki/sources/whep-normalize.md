@@ -575,6 +575,27 @@ labels whose qualifier names the same territory as a polity; what is left:
 The unrouted ones need a polygon (a remainder or a union) and so a geodata change; they are left
 for a follow-up rather than routed to a whole they are not.
 
+**Years only the label list states (fixed 2026-10-02, the same day).** The rules above were written
+from the (label, year) pairs of the harmonized dataset, and four `(former)` labels also occur in the
+label list (`year_polity.xlsx`) in EARLIER years the dataset does not carry: the later FAO yearbooks
+print the label for the colonial unit's own back series (1934-1938 and 1947-1951/1948-1952 averages,
+single years to 1955). Those 24 pairs were left unrouted by the first rule set and now have rules of
+their own, on the same polity they reached before:
+
+| label | pairs | polity (rule years) |
+|---|---:|---|
+| `french morocco (former)` 1934-1938, 1936, 1937, 1947-1951, 1948-1952, 1950-1955 | 11 | MAR-1911-1958, the French zone (1934-1955) |
+| `spanish morocco (former)` 1934-1938, 1937, 1945, 1947-1951, 1948-1952, 1951-1955 | 10 | SMO-1912-1956, the Spanish zone without Tangier (1934-1955) |
+| `french guinea (former)` 1947-1951, 1948-1952 | 2 | GIN-1894-1958 (1947-1952) |
+| `french central african republic (former)` 1948-1952 | 1 | CAF-1919-1960 (1948-1952) |
+
+(`french morocco (former)` 1956-1957 were already covered; `spanish morocco (former)` 1956 stays
+unrouted as the table above records.) Re-measured over every pair of a bracketed label in either copy
+(301 pairs, 30 labels) against the resolver of the commit before the qualifier fix: the only
+remaining differences are the intended ones listed above. `scripts/crosscheck_matchers.py` now pins
+every year each qualified label occurs in (`QUALIFIED_LABEL_YEARS`, 110 label-years), so a full-label
+rule set that misses years of a label fails CI.
+
 ## Cross-check against layer B
 
 3,247 (label, year) pairs coincide with a layer-B `country` string (case-insensitively, 136 labels).
