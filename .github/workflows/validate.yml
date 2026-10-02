@@ -1060,6 +1060,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_code_year_agreement.py
 
+      - name: Identity — subnational codes are ISO 3166-2 shaped, and renames stay one-way
+        # 304 subnational codes were recoded on 2026-10-02 (ARG-MENDOZA-1853-2025 ->
+        # ARG-M-1853-2025). This fails if a SUB part is longer than 4 characters -- the
+        # shape a generator produces when it copies a panel unit id -- or if
+        # polity_code_renames.csv stops being a one-way function.
+        if: '!cancelled()'
+        run: python3 scripts/validate_subunit_codes.py
+
       - name: Identity — every component reads end_year the same way
         # `end_year` is EXCLUSIVE here and matchlib read it INCLUSIVELY, so at a
         # transition year an ENDED period competed for the year and, wherever a third

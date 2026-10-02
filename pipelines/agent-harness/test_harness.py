@@ -327,7 +327,7 @@ def test_the_code_convention_is_precedent_not_an_asserted_rule():
     pols = [
         {"polity_code": "DZA-CVD-1902-1919", "iso3_code": "DZA", "polity_type": "subnational",
          "polity_name": "x", "start_year": "1902", "end_year": "1919"},
-        {"polity_code": "JPN-AICHI-1871-2025", "iso3_code": "JPN", "polity_type": "subnational",
+        {"polity_code": "JPN-23-1871-2025", "iso3_code": "JPN", "polity_type": "subnational",
          "polity_name": "y", "start_year": "1871", "end_year": "2025"},
         {"polity_code": "ALK-1867-1959", "iso3_code": "USA", "polity_type": "subnational",
          "polity_name": "Territory of Alaska", "start_year": "1867", "end_year": "1959"},
@@ -340,7 +340,7 @@ def test_the_code_convention_is_precedent_not_an_asserted_rule():
     assert "Of 4 subnational rows" in out, out          # the national row is not precedent here
     assert "<ISO3>-<SUBUNIT>-<start>-<end>" in out and "<BESPOKE>-<start>-<end>" in out
     assert "ALK-1867-1959" in out, "the counter-example must be shown, not hidden"
-    assert "JPN-AICHI-1871-2025" in out
+    assert "JPN-23-1871-2025" in out
     src = (HERE / "harness.py").read_text(encoding="utf-8")
     assert "`CALI-1850-2026` is wrong" not in src, "the refuted assertion must be gone"
 
@@ -359,7 +359,7 @@ def test_a_taken_polity_code_is_re_asked_not_skipped():
     assert "could not find a free polity_code — not written" in src, "failing is better than clobbering"
     # TAKEN must come from the wiki, not the derived CSV. Reading the CSV produced a FALSE clash: a
     # withdrawn page left its row behind, and the unit re-authoring its own page was pushed off
-    # ESP-CO-1833-2025 onto the NUTS-derived ESP-ES111-1833-2025 by a stale derived file.
+    # ESP-15-1833-2025 onto the NUTS-derived ESP-ES111-1833-2025 by a stale derived file.
     assert 'taken = {f.stem.upper() for f in (REPO / "wiki" / "polities").glob("*.md")}' in src
     assert "already has a page in wiki/polities/" in src
     # the surviving skip must be about THIS unit's own page, not any page at that path
@@ -713,7 +713,7 @@ def test_back_cast_routes_data_without_inventing_administrative_history():
     # ...and once it does, the years are routed: no unroutable, so no threshold complaint
     named = {"coverage": [
         {"start_year": 1900, "end_year": 1990, "disposition": "back_cast",
-         "polity_code": "COL-CASANARE-1991-2025", "basis": "scaled onto the modern boundary"},
+         "polity_code": "COL-CAS-1991-2025", "basis": "scaled onto the modern boundary"},
         {"start_year": 1991, "end_year": 2023, "disposition": "proposed", "basis": "x" * 25}]}
     assert harness.coverage_objection(named, unit, []) is None
 
@@ -889,20 +889,20 @@ def test_a_second_page_for_the_same_territory_is_handed_back():
     again. Handed back rather than acted on, because two provinces can legitimately share a name
     stem and only the author can say whether these are one territory or two.
     """
-    existing = [("ESP-CO-1833-2025", "A Coruña (province of Spain)"),
-                ("ESP-MD-1833-2025", "Madrid (province/region of Spain)")]
+    existing = [("ESP-15-1833-2025", "A Coruña (province of Spain)"),
+                ("ESP-28-1833-2025", "Madrid (province/region of Spain)")]
     dup = {"polity_code": "ESP-ACORUNA-1833-2025", "polity_name": "A Coruña (province of Spain)"}
     obj = harness.duplicate_territory_objection(dup, {"official_name": "A Coruña"}, existing)
-    assert obj and "ESP-CO-1833-2025" in obj, obj
+    assert obj and "ESP-15-1833-2025" in obj, obj
     assert "must not represent the same territory" in obj
     assert "should have been `match_existing`" in obj
     assert "Do not silently create the second one." in obj
 
     # a genuinely different territory is not flagged
-    other = {"polity_code": "ESP-SE-1833-2025", "polity_name": "Sevilla (province of Spain)"}
+    other = {"polity_code": "ESP-41-1833-2025", "polity_name": "Sevilla (province of Spain)"}
     assert harness.duplicate_territory_objection(other, {"official_name": "Sevilla"}, existing) is None
     # the page must not flag ITSELF on a re-author
-    same = {"polity_code": "ESP-CO-1833-2025", "polity_name": "A Coruña (province of Spain)"}
+    same = {"polity_code": "ESP-15-1833-2025", "polity_name": "A Coruña (province of Spain)"}
     assert harness.duplicate_territory_objection(same, {}, existing) is None
     # a short or empty name cannot be matched on, so it must not guess
     assert harness.duplicate_territory_objection({"polity_code": "X", "polity_name": "Po"},
@@ -1181,7 +1181,7 @@ def test_a_province_cannot_take_its_country_s_polygon_or_claim_absent_geometry()
     absent = next((s for s in sorted(harness.polygon_slugs())
                    if (lambda f: f and not f.is_file())(harness.source_file(s))), None)
     assert absent, "test premise: some registered source's file is absent"
-    lying = {"polity_code": "ESP-B-1833-2025", "frontmatter": {
+    lying = {"polity_code": "ESP-08-1833-2025", "frontmatter": {
         "polygon_source": absent, "polygon_feature_id": "08",
         "polygon_status": "assigned"}}
     got = harness.structural_page_objection(lying, [], "ESP") or ""
@@ -1228,12 +1228,12 @@ derive = _load("derive_aliases")
 
 _LIVE = {
     "CAL-1850-2025": {"start": 1850, "end": 2025, "name": "California (US state)"},
-    "ARG-CHACO-1884-1951": {"start": 1884, "end": 1951, "name": "Chaco (national territory)"},
-    "ARG-CHACO-1951-2025": {"start": 1951, "end": 2025, "name": "Chaco (province)"},
-    "COL-CASANARE-1991-2025": {"start": 1991, "end": 2025, "name": "Casanare"},
+    "ARG-H-1884-1951": {"start": 1884, "end": 1951, "name": "Chaco (national territory)"},
+    "ARG-H-1951-2025": {"start": 1951, "end": 2025, "name": "Chaco (province)"},
+    "COL-CAS-1991-2025": {"start": 1991, "end": 2025, "name": "Casanare"},
     "CHL-1902-2025": {"start": 1902, "end": 2025, "name": "Chile"},
     "CHL-AP-2007-2025": {"start": 2007, "end": 2025, "name": "Arica y Parinacota"},
-    "ARG-SANTACRUZ-1955-2025": {"start": 1955, "end": 2025, "name": "Santa Cruz"},
+    "ARG-Z-1955-2025": {"start": 1955, "end": 2025, "name": "Santa Cruz"},
 }
 
 
@@ -1279,18 +1279,18 @@ def test_the_ceiling_year_is_covered_but_nothing_past_it_or_before_a_real_end():
     read a live polity's `end_year` 2025 as exclusive, while validate_alias_year_coverage.py
     accepts an alias ending at the ceiling of a live polity. The exception is the gate's, exactly:
     2025 is covered when the polity runs to the ceiling, 2026 never is, and a polity that really
-    ends (ARG-CHACO-1884-1951) keeps its exclusive end year.
+    ends (ARG-H-1884-1951) keeps its exclusive end year.
     """
     ledger = [_unit("USA-ARIZONA", "Arizona", [_seg(1882, 2026, "proposed")],
                     page="CAL-1850-2025"),
               _unit("ARG-CHACO", "Chaco", [_seg(1900, 1951, "proposed")],
-                    page="ARG-CHACO-1884-1951")]
+                    page="ARG-H-1884-1951")]
     res = derive.derive(ledger, [], _LIVE, derive.name_owners(ledger))
     got = sorted((r["source_label"], r["year_start"], r["year_end"]) for r in res["missing"])
     assert got == [("Arizona", "1882", "2025"), ("Chaco", "1900", "1950")], got
     assert sorted(res["clipped"]) == sorted([
         "ARG-CHACO 1900-1951 (proposed): 1951-1951 lies outside every authored polity "
-        "(ARG-CHACO-1884-1951)",
+        "(ARG-H-1884-1951)",
         "USA-ARIZONA 1882-2026 (proposed): 2026-2026 lies outside every authored polity "
         "(CAL-1850-2025)"]), res["clipped"]
     assert derive.in_span(2025, 1850, 2025) and not derive.in_span(2026, 1850, 2025)
@@ -1298,21 +1298,21 @@ def test_the_ceiling_year_is_covered_but_nothing_past_it_or_before_a_real_end():
 
 
 def test_a_second_era_polity_is_aliased_too():
-    """BUG: ARG-CHACO's province era ARG-CHACO-1951-2025 was created for these very years and
+    """BUG: ARG-CHACO's province era ARG-H-1951-2025 was created for these very years and
     never aliased -- the page fields named one polity and `extra_pages` the other, and only the
     first was ever turned into a rule. The existing 1900-1950 rule must not be duplicated.
     """
     ledger = [_unit("ARG-CHACO", "Chaco",
                     [_seg(1900, 1950, "proposed"), _seg(1951, 2023, "proposed")],
-                    page="ARG-CHACO-1884-1951",
-                    extra=[{"segment": 1, "polity_code": "ARG-CHACO-1951-2025",
-                            "page_written": "wiki/polities/arg-chaco-1951-2025.md",
+                    page="ARG-H-1884-1951",
+                    extra=[{"segment": 1, "polity_code": "ARG-H-1951-2025",
+                            "page_written": "wiki/polities/arg-h-1951-2025.md",
                             "span": [1951, 2023]}])]
-    aliases = [_alias("Chaco", "juan-subnational", 1900, 1950, "ARG-CHACO-1884-1951")]
+    aliases = [_alias("Chaco", "juan-subnational", 1900, 1950, "ARG-H-1884-1951")]
     res = derive.derive(ledger, aliases, _LIVE, derive.name_owners(ledger))
     got = [(r["source_label"], r["year_start"], r["year_end"], r["polity_code"])
            for r in res["missing"]]
-    assert got == [("Chaco", "1951", "2023", "ARG-CHACO-1951-2025")], got
+    assert got == [("Chaco", "1951", "2023", "ARG-H-1951-2025")], got
     assert not res["conflict"] and not res["clipped"]
 
 
@@ -1337,7 +1337,7 @@ def test_back_cast_rows_end_the_year_before_their_target_starts():
     consumer's mean() turns into an average of the part and the whole.
     """
     ledger = [_unit("COL-CASANARE", "Casanare",
-                    [_seg(1915, 1995, "back_cast", "COL-CASANARE-1991-2025")]),
+                    [_seg(1915, 1995, "back_cast", "COL-CAS-1991-2025")]),
               _unit("CHL-AP", "Arica y Parinacota",
                     [_seg(1902, 2006, "back_cast", "CHL-1902-2025"),
                      _seg(2007, 2023, "proposed")], page="CHL-AP-2007-2025")]
@@ -1345,7 +1345,7 @@ def test_back_cast_rows_end_the_year_before_their_target_starts():
     got = sorted((r["source_label"], r["year_start"], r["year_end"], r["polity_code"],
                   r["disposition"]) for r in res["missing"])
     assert got == [("Arica y Parinacota", "2007", "2023", "CHL-AP-2007-2025", ""),
-                   ("Casanare", "1915", "1990", "COL-CASANARE-1991-2025", "back_cast")], got
+                   ("Casanare", "1915", "1990", "COL-CAS-1991-2025", "back_cast")], got
     inside = " ".join(res["back_cast_inside"])
     assert "1991-1995" in inside and "CHL-1902-2025" in inside, inside
     # And it BLOCKS: a back_cast onto the era's container is a ledger/registry disagreement, not a
@@ -1361,7 +1361,7 @@ def test_a_hand_curated_row_is_never_overwritten():
     competing one for the same years.
     """
     ledger = [_unit("ARG-CHACO", "Chaco", [_seg(1900, 1950, "proposed")],
-                    page="ARG-CHACO-1884-1951")]
+                    page="ARG-H-1884-1951")]
     aliases = [_alias("Chaco", "juan-subnational", 1900, 1950, "CHL-1902-2025")]
     before = [dict(a) for a in aliases]
     res = derive.derive(ledger, aliases, _LIVE, derive.name_owners(ledger))
@@ -1377,7 +1377,7 @@ def test_a_shared_name_is_never_written_as_a_label():
     unit id, which carries its country and cannot collide.
     """
     ledger = [_unit("ARG-SANTACRUZ", "Santa Cruz", [_seg(1955, 2023, "proposed")],
-                    page="ARG-SANTACRUZ-1955-2025"),
+                    page="ARG-Z-1955-2025"),
               _unit("BOL-SANTACRUZ", "Santa Cruz", [_seg(1900, 2023, "unroutable")])]
     res = derive.derive(ledger, [], _LIVE, derive.name_owners(ledger))
     assert [r["source_label"] for r in res["missing"]] == ["ARG-SANTACRUZ"], res["missing"]
@@ -1484,7 +1484,7 @@ def test_page_size_objection_refutes_bolzano_for_trentino_alto_adige():
     """BUG: ITA-ITH1's page bound Bolzano (7,379 km2) for a unit whose data measures 13,599 km2 --
     Bolzano plus Trento. Stage 3 is where the boundary is chosen, so it is checked there."""
     unit = {"unit_id": "ITA-ITH1", "size_km2": 13599.41, "size_spread": 1.0, "size_years": 141}
-    page = {"polity_code": "ITA-ITH1-1919-2025", "area_km2_measured": None,
+    page = {"polity_code": "ITA-BZ-1919-2025", "area_km2_measured": None,
             "frontmatter": {"polygon_source": "gadm-4.1-adm1", "polygon_feature_id": "ITA.17_1"}}
     obj = harness.page_size_objection(page, unit, feature_km2=7379.27)
     assert obj and "0.54x" in obj, obj

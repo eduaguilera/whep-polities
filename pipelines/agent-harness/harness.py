@@ -1360,7 +1360,13 @@ def code_precedent(pols: list[dict[str, str]], iso: str) -> str:
         else:
             k = "<BESPOKE>-<start>-<end>"
         kinds.setdefault(k, []).append(c)
-    lines = [f"  Of {len(sub)} subnational rows in the table:"]
+    lines = ["  RULE (scripts/validate_subunit_codes.py): <ISO3>-<SUB>-<start>-<end>, where SUB is the "
+             "unit's ISO 3166-2 code without the country prefix (AR-M -> ARG-M, JP-23 -> JPN-23); "
+             "in Spain the INE province number (ESP-17); for a unit with no ISO code (a union, a "
+             "remainder, a colonial unit) an abbreviation of at most 4 characters [A-Z0-9]. NEVER "
+             "the source's unit id or a spelled-out name, and never a code listed as old_code in "
+             "data/final/polity_code_renames.csv.",
+             f"  Of {len(sub)} subnational rows in the table:"]
     for k, cs in sorted(kinds.items(), key=lambda kv: -len(kv[1])):
         eg = ", ".join(sorted(cs)[:3])
         lines.append(f"    {len(cs):3}  {k:34} e.g. {eg}")
@@ -1495,7 +1501,7 @@ def structural_page_objection(page: dict[str, Any], pols: list[dict[str, str]],
     - `validate_chain_integrity` (5 DEAD TARGETs): a predecessor naming no row, e.g.
       AUS-NSW-1901-2025 -> AUS-NSW-1800-1900, and BRA-MATOGROSSO with no years at all.
     - `validate_polity_containment` (10): a container code that does not exist (ESP-1833-2025), or
-      an edge whose interval runs outside the container's own era (BRA-SERGIPE-1889-2025 attached to
+      an edge whose interval runs outside the container's own era (BRA-SE-1889-2025 attached to
       BRA-1909-2025 while covering 1889-2025).
     """
     by_code = {p["polity_code"]: p for p in pols}
@@ -1719,7 +1725,7 @@ def run_wiki_stage(A, runner, ledger, pols, iso, convention=None,
     # TAKEN IS DECIDED BY THE WIKI, NOT THE DERIVED CSV. This repo builds the table from the wiki,
     # one row per page, so a page file is what makes a code exist. Reading the CSV instead produced
     # a FALSE clash: a page was withdrawn without rebuilding, the stale row still named the code, and
-    # the unit re-authoring its own page was pushed off ESP-CO-1833-2025 onto the NUTS-derived
+    # the unit re-authoring its own page was pushed off ESP-15-1833-2025 onto the NUTS-derived
     # ESP-ES111-1833-2025 -- a worse name, chosen because a derived file had not caught up.
     taken = {f.stem.upper() for f in (REPO / "wiki" / "polities").glob("*.md")}
     edges = chain_edges(pols)

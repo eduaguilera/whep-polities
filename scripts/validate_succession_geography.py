@@ -93,7 +93,7 @@ BASELINE = frozenset({
     # a span during which the territory lost two departments. Recorded rather than fixed by
     # deleting a correct link; territory_basis.csv already classes rows of this shape
     # `assumed_constant`.
-    ("COL-QUINDIO-1966-2025", "predecessor", "COL-CALDAS-1905-2025"),
+    ("COL-QUI-1966-2025", "predecessor", "COL-CAL-1905-2025"),
     # The GRL/ISL cluster that appeared here on 2026-08-05, when the parser fix made 145
     # previously-invisible links checkable, is GONE -- and the way it went is the point.
     #

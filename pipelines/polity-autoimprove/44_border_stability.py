@@ -125,7 +125,7 @@ MIN_REFERENCE_IOU = 0.5
 
 # BUILD_DATABASE IS NOT REPRODUCIBLE, so an exact comparison of areas fails for reasons that have
 # nothing to do with borders. Rebuilding the GPKG from unchanged inputs moves 54 of 1,186 geometries
-# (4.6%), worst case MEX-TAMAULIPAS-1824-2025 by 4.386 km2 and FJI-1800-2025 by 0.0121% of its area.
+# (4.6%), worst case MEX-TAM-1824-2025 by 4.386 km2 and FJI-1800-2025 by 0.0121% of its area.
 # The first version of this check compared rounded integers and duly failed with "20 rows differ by
 # 1 km2" after an edge edit that touched no geometry at all. Filed separately -- the instability is
 # in the build, not here.

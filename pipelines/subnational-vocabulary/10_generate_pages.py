@@ -77,6 +77,13 @@ COUNTRIES = {
             "Hyogo": "Hyōgo",        # macron in GADM
             "Nagasaki": "Naoasaki",  # GADM DEFECT: gadm41_adm1 misspells Nagasaki
         },
+        # ISO 3166-2 codes for the GADM features whose ISO_1 column is NA (GADM leaves it blank
+        # for some accented or misspelled names). Keyed on the GADM NAME_1, checked against the
+        # ISO 3166-2:JP list, and the only place a code is not read straight from GADM.
+        "iso_fixes": {
+            "Hyōgo": "JP-28",
+            "Naoasaki": "JP-42",
+        },
     },
 }
 
@@ -130,7 +137,7 @@ def main() -> int:
         print(f"FAIL: no rows for {A.country!r} in the panel")
         return 1
 
-    g = gpd.read_file(GADM, columns=["GID_0", "GID_1", "NAME_1"])
+    g = gpd.read_file(GADM, columns=["GID_0", "GID_1", "NAME_1", "ISO_1"])
     g = g[g.GID_0 == cfg["iso"]].copy()
     # Measured from the attached feature in an equal-area projection, and the centroid in WGS84 so a
     # reader can place the unit on a modern map. Both are required by the "Wiki page requirements"
@@ -146,7 +153,7 @@ def main() -> int:
         g["featarea"] = g.to_crs("ESRI:54034").area / 1e6
         pt = g.geometry.representative_point()
         g["featlat"], g["featlon"] = pt.y, pt.x
-    by_name = {norm(r.NAME_1): (r.GID_1, r.NAME_1, r.featarea, r.featlat, r.featlon)
+    by_name = {norm(r.NAME_1): (r.GID_1, r.NAME_1, r.featarea, r.featlat, r.featlon, r.ISO_1)
                for r in g.itertuples()}
 
     units = (df.groupby("admin_unit_id")
@@ -172,8 +179,21 @@ def main() -> int:
         if not hit:
             skipped.append((uid, f"no GADM feature matches {panel_name!r}"))
             continue
-        gid, gadm_name, feat_area, feat_lat, feat_lon = hit
-        code = f"{cfg['code_prefix']}-{tail}-{cfg['start_year']}-{cfg['end_year']}"
+        gid, gadm_name, feat_area, feat_lat, feat_lon, iso_1 = hit
+        # THE SUBUNIT PART IS THE ISO 3166-2 CODE, never the panel's unit id. This line used to
+        # read `f"{prefix}-{tail}-..."`, which is how 101 codes came to be spelled out
+        # (JPN-AICHI, ARG-MENDOZA, BRA-RIOGRANDEDOSUL) until they were recoded on 2026-10-02.
+        # The ISO code comes from GADM's ISO_1 column, or from `iso_fixes` where GADM left it
+        # blank. A unit with neither is refused, so it is never minted under a guessed code.
+        # scripts/validate_subunit_codes.py enforces the same shape on every row.
+        iso_code = iso_1 if isinstance(iso_1, str) and re.fullmatch(r"[A-Z]{2}-[A-Z0-9]{1,4}", iso_1) \
+            else cfg.get("iso_fixes", {}).get(gadm_name)
+        if not iso_code:
+            skipped.append((uid, f"GADM feature {gid} ({gadm_name!r}) has no ISO 3166-2 code; "
+                                 "add it to iso_fixes after checking the ISO list"))
+            continue
+        sub = iso_code.split("-", 1)[1]
+        code = f"{cfg['code_prefix']}-{sub}-{cfg['start_year']}-{cfg['end_year']}"
         slug = code.lower()
         made.append((code, slug, uid, panel_name, gadm_name, gid, r,
                      feat_area, feat_lat, feat_lon))

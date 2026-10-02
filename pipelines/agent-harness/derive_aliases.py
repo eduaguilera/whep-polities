@@ -9,7 +9,7 @@ polity each reporting unit belongs to and records it as coverage segments in
 most of one day's defects came from:
 
     USA-CALIFORNIA   routed, page written, CAL-1850-2025 live -- no alias: 34,452 rows to nothing
-    ARG-CHACO        second era ARG-CHACO-1951-2025 created for these very years -- never aliased
+    ARG-CHACO        second era ARG-H-1951-2025 created for these very years -- never aliased
     COL-CASANARE     back_cast segment naming 'COL-CASANARE', the unit's own id, not a polity
     ITA regions      `matched` to ITA-1919-2025 -- executing that would average a region with Italy
 

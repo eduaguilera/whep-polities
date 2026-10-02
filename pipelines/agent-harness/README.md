@@ -263,7 +263,7 @@ Smoked end to end on the Ivorra/Infante-Amate/Aguilera/González de Molina provi
 | Spain | **53 of 53 units decided**, no `insufficient_evidence`: 50 provinces `1833-2025`, the two Canary provinces `1927-2025`, one `match_existing` against a page the harness itself wrote |
 | USA | convention floor `1787` with a five-era container chain; California `1850-2025` in `USA-1848-1867`; `USA-RESID` → `not_a_territory`; Alaska → `match_existing` once its row exists |
 | stages | 0 convention, 1 routing, 2 polygon, 3 wiki, 4 repair — all exercised on real units |
-| pages | `ESP-CO-1833-2025`, `ESP-MD-1833-2025` — authored, gate-clean, committed as `status: draft` |
+| pages | `ESP-15-1833-2025`, `ESP-28-1833-2025` — authored, gate-clean, committed as `status: draft` |
 | tests | 21, all in CI; every one is a defect that reached a real run |
 
 Two things a reader should not assume. The repair loop's **JUDGEMENT** mode has never fired, because

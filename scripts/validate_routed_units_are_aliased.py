@@ -13,8 +13,8 @@ WHAT IT FOUND (2026-09-17, measured against the 8.9M-row subnational panel):
     USA-CALIFORNIA    34,452 valued rows   CAL-1850-2025 existed, page written, no alias
     USA-NORTHDAKOTA   21,560              USA-ND-1889-2025      "        "        "
     USA-NEWMEXICO     15,473              USA-NM-1912-2025      "        "        "
-    ARG-CHACO         21,347              ARG-CHACO-1951-2025 created for these very years
-    ARG-FORMOSA       19,020              ARG-FORMOSA-1955-2025          "
+    ARG-CHACO         21,347              ARG-H-1951-2025 created for these very years
+    ARG-FORMOSA       19,020              ARG-P-1955-2025          "
     PRT-PTBG          109 data years      alias started 1989, polity starts 1835
 
 The three US states were the sharpest case: each WAS aliased, under `usda-nass-fips`, whose
@@ -70,7 +70,7 @@ def extra_page_codes(raw: str) -> list[str]:
 
     The harness writes this field as JSON -- a list of {"segment", "polity_code",
     "page_written", "span"} objects (harness.py run_wiki_stage). This gate used to split it
-    on commas, which turns JSON into fragments like ' "polity_code": "ARG-CHACO-1951-2025"'
+    on commas, which turns JSON into fragments like ' "polity_code": "ARG-H-1951-2025"'
     that match no polity, so every extra era was silently dropped from the check: the
     territory-era years of a unit with two polities (ARG-CHACO, and the US territories of
     issue 658) were never tested for an alias at all. A plain comma/semicolon list is still

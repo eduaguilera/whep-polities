@@ -339,6 +339,28 @@ def mutate_collapsed_planar_border(root, gpd, make_valid, affinity):
     )
 
 
+def mutate_spelled_out_subunit_code(root, gpd, make_valid, affinity):
+    """Give Mendoza back the spelled-out code a source panel's unit id once minted for it.
+    The rename of 2026-10-02 retired ARG-MENDOZA-1853-2025 for ARG-M-1853-2025, so this row
+    is both a non-standard subunit part AND a retired code reused -- the two things
+    validate_subunit_codes.py exists to refuse."""
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = rows[0].keys()
+    hit = 0
+    for r in rows:
+        if r["polity_code"] == "ARG-M-1853-2025":
+            r["polity_code"] = "ARG-MENDOZA-1853-2025"
+            hit += 1
+    assert hit == 1, f"expected one ARG-M-1853-2025 row, found {hit}"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(fields))
+        w.writeheader()
+        w.writerows(rows)
+    return "recoded ARG-M-1853-2025 back to the retired ARG-MENDOZA-1853-2025"
+
+
 def mutate_code_year_disagreement(root, gpd, make_valid, affinity):
     """Make one polity's start_year disagree with the years in its own code. A consumer
     reading the span off the identifier then gets a different answer from one reading the
@@ -5329,7 +5351,7 @@ def mutate_containment_edge_dropped(root, gpd, make_valid, affinity):
 def mutate_part_edged_beside_its_aggregate(root, gpd, make_valid, affinity):
     """Put Piemonte back directly under Italy, beside the Piemonte-with-Valle-d'Aosta aggregate.
 
-    This is the defect that was in the table until 2026-09-24, reproduced: ITA-PIE-1970-2025 was
+    This is the defect that was in the table until 2026-09-24, reproduced: ITA-21-1970-2025 was
     declared inside ITA-1919-2025 next to ITA-PVA-1861-2025, which already holds 99.99% of it, so
     summing Italy's members counted 25,271 km2 twice. Every edge is individually valid -- real codes,
     inside both spans, every subnational row covered -- so validate_polity_containment passes it,
@@ -5341,9 +5363,9 @@ def mutate_part_edged_beside_its_aggregate(root, gpd, make_valid, affinity):
     with open(path, newline="", encoding="utf-8") as fh:
         rows = list(_csv.DictReader(fh))
     hit = [r for r in rows
-           if r["member_code"] == "ITA-PIE-1970-2025" and r["container_code"] == "ITA-PVA-1861-2025"]
+           if r["member_code"] == "ITA-21-1970-2025" and r["container_code"] == "ITA-PVA-1861-2025"]
     if len(hit) != 1:
-        raise AssertionError("ITA-PIE-1970-2025 -> ITA-PVA-1861-2025 edge not found once; the "
+        raise AssertionError("ITA-21-1970-2025 -> ITA-PVA-1861-2025 edge not found once; the "
                              "mutation would do nothing")
     hit[0]["container_code"] = "ITA-1919-2025"
     tmp = path + ".tmp"
@@ -5351,7 +5373,7 @@ def mutate_part_edged_beside_its_aggregate(root, gpd, make_valid, affinity):
         w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
         w.writeheader(); w.writerows(rows)
     os.replace(tmp, path)
-    return ("re-edged ITA-PIE-1970-2025 onto ITA-1919-2025, beside ITA-PVA-1861-2025 which "
+    return ("re-edged ITA-21-1970-2025 onto ITA-1919-2025, beside ITA-PVA-1861-2025 which "
             "contains it")
 
 def mutate_routed_unit_loses_its_alias(root, gpd, make_valid, affinity):
@@ -6650,6 +6672,13 @@ CASES = (
         "a code whose embedded years contradict its own columns",
     ),
     (
+        "validate_subunit_codes.py",
+        mutate_spelled_out_subunit_code,
+        "ARG-MENDOZA-1853-2025",
+        "a subnational code spelled out from a panel unit id, which also reuses a code the "
+        "published rename table says is retired",
+    ),
+    (
         "validate_alias_year_coverage.py",
         mutate_alias_past_the_ceiling,
         "Andorra",
@@ -7046,7 +7075,7 @@ CASES = (
     (
         "validate_containment_sibling_overlaps.py",
         mutate_part_edged_beside_its_aggregate,
-        "ITA-PIE-1970-2025",
+        "ITA-21-1970-2025",
         "a part declared directly under the country beside the reporting aggregate that already "
         "contains it, so summing the country's members counts that ground twice -- every edge is "
         "individually valid, so only a sibling-against-sibling comparison can see it",
@@ -7658,6 +7687,9 @@ WRITABLE = {
         "polygon_feature_index.csv",
     ),
     "validate_code_year_agreement.py": ("polities_database.csv",),
+    # Rewrites one row's code in the CSV; the rename table is only read, but stage() creates
+    # nothing it was not asked for, and without it the gate exits 2 naming no defect.
+    "validate_subunit_codes.py": ("polities_database.csv", "polity_code_renames.csv"),
     # Rewrites a PAGE, so wiki/polities must be a real copy; the CSV is only read, but the
     # gate needs `wiki/polities` staged at all or it sees zero pages and cannot fire.
     "validate_references.py": ("wiki/polities",),

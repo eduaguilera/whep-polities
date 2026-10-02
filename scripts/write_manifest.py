@@ -425,6 +425,29 @@ if os.path.exists(LABEL_ITEM_CORRECTIONS):
         ),
     }
 
+# POLITY CODE RENAMES (2026-10-02). Subnational codes were standardised to ISO 3166-2
+# suffixes (INE province numbers for Spain), e.g. ARG-MENDOZA-1853-2025 -> ARG-M-1853-2025.
+# A consumer holding data keyed on an old code cannot discover the new one from the database,
+# which only carries live codes, so the old -> new table is published and fingerprinted here.
+# It is append-only, and validate_subunit_codes.py guarantees no old code is ever reissued.
+RENAMES = os.path.join(REPO, "data/final/polity_code_renames.csv")
+renames_info = None
+if os.path.exists(RENAMES):
+    raw = open(RENAMES, "rb").read()
+    ren_rows = list(csv.DictReader(open(RENAMES, encoding="utf-8")))
+    renames_info = {
+        "path": "data/final/polity_code_renames.csv",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "renames": len(ren_rows),
+        "why": (
+            "Codes that were renamed without any change of territory, years or data. Map "
+            "`old_code` to `new_code` in any data keyed on polity codes from before "
+            "`renamed_on`. The mapping is one-to-one, does not chain, and no `old_code` is "
+            "ever reused for a different polity. Data keyed on source labels needs nothing: "
+            "label_alias_map already resolves to the new codes."
+        ),
+    }
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -445,6 +468,8 @@ manifest = {
         "no aggregate should sum beside the producing territory's own series. "
         "`territory_families` and `iso3_successor_map` say which OTHER families cover "
         "one territory, which iso3_code cannot: do not infer that link from the code. "
+        "`polity_code_renames` maps codes renamed without any territorial change "
+        "(old_code -> new_code); apply it to data keyed on codes from before the rename. "
         "Regenerate with scripts/write_manifest.py."
     ),
     "source": "data/final/polities_database.csv",
@@ -516,6 +541,7 @@ manifest = {
     "iso3_successor_map": successor_map_info,
     "stated_area_basis": stated_area_basis,
     "source_flow_flags": flow_flags_info,
+    "polity_code_renames": renames_info,
     "territory_families": territory_families,
     "territory_families_why": (
         "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not "

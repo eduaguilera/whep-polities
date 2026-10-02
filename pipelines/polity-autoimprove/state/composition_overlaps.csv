@@ -129,10 +129,10 @@ FID-1887-1954,LAO-1893-1954,fao1952,1937,1951,"Indochina Cambodia, Laos and Viet
 FID-1887-1954,LAO-1893-1954,whep-normalize,1948,1953,french cambodia; french laos; french vietnam,french laos;indochina laos,alias,alias,0,0,yes
 FID-1887-1954,VNM-1887-1954,fao1952,1937,1951,"Indochina Cambodia, Laos and Viet Nam;indochina;indochina cambodia, laos and viet nam",Indochina Viet Nam;Indochina: Viet Nam;indochina viet nam;indochina: viet nam,alias;applied_alias,alias;applied_alias,3,5,yes
 FID-1887-1954,VNM-1887-1954,whep-normalize,1948,1953,french cambodia; french laos; french vietnam,french vietnam;indochina viet nam;viet nam,alias,alias,0,0,yes
-FMS-1909-1946,MYS-NSN-1909-1946,whep-normalize,1909,1939,british federated malay states,british negri sembilan,alias,alias,0,0,yes
-FMS-1909-1946,MYS-PHG-1909-1946,whep-normalize,1909,1939,british federated malay states,british pahang,alias,alias,0,0,yes
-FMS-1909-1946,MYS-PRK-1909-1946,whep-normalize,1909,1939,british federated malay states,british perak,alias,alias,0,0,yes
-FMS-1909-1946,MYS-SGR-1909-1946,whep-normalize,1909,1939,british federated malay states,british selangor,alias,alias,0,0,yes
+FMS-1909-1946,MYS-05-1909-1946,whep-normalize,1909,1939,british federated malay states,british negri sembilan,alias,alias,0,0,yes
+FMS-1909-1946,MYS-06-1909-1946,whep-normalize,1909,1939,british federated malay states,british pahang,alias,alias,0,0,yes
+FMS-1909-1946,MYS-08-1909-1946,whep-normalize,1909,1939,british federated malay states,british perak,alias,alias,0,0,yes
+FMS-1909-1946,MYS-10-1909-1946,whep-normalize,1909,1939,british federated malay states,british selangor,alias,alias,0,0,yes
 FNA-1912-1956,DZA-1919-1962,fao1952,1934,1955,French North Africa;french north africa,French North Africa Algeria;algeria;french north africa algeria,alias;applied_alias,alias;applied_alias,3,6,yes
 FNA-1912-1956,DZA-1919-1962,whep-normalize,1934,1954,french algeria; french morocco; french tunisia,algeria;french algeria,alias,alias,0,0,yes
 FNA-1912-1956,MAR-1911-1958,fao1952,1934,1955,French North Africa;french north africa,French Morocco;French North Africa Morocco;french morocco;french north africa morocco,alias;applied_alias,alias;applied_alias;name,3,6,yes
@@ -154,7 +154,7 @@ IDN-1800-1945,IDN-OUT-1800-1949,whep-normalize,1909,1944,dutch east indies;dutch
 IDN-1949-1963,IDN-BLB-1949-1951,whep-normalize,1949,1950,dutch east indies,dutch bali; dutch lombok;indonesia: bali and lombok,alias,alias,0,0,yes
 IDN-1949-1963,IDN-JVM-1949-1951,whep-normalize,1949,1950,dutch east indies,"dutch java; dutch madura;indonesia: java, madura",alias,alias,0,0,yes
 IDN-1949-1963,IDN-OTH-1949-1951,whep-normalize,1949,1950,dutch east indies,dutch east indies: other islands;indonesia: other islands,alias,alias,0,0,yes
-IDN-BLB-1800-1949,IDN-BAL-1800-1949,whep-normalize,1934,1948,dutch bali; dutch lombok,dutch bali,alias,alias,0,0,yes
+IDN-BLB-1800-1949,IDN-BA-1800-1949,whep-normalize,1934,1948,dutch bali; dutch lombok,dutch bali,alias,alias,0,0,yes
 IDN-BLB-1800-1949,IDN-LOM-1800-1949,whep-normalize,1934,1948,dutch bali; dutch lombok,dutch lombok,alias,alias,0,0,yes
 IDN-JVM-1800-1949,IDN-JAV-1800-1949,whep-normalize,1909,1948,dutch java; dutch madura,dutch java,alias,alias,0,0,yes
 IDN-JVM-1800-1949,IDN-MAD-1800-1949,whep-normalize,1909,1948,dutch java; dutch madura,dutch madura,alias,alias,0,0,yes
@@ -178,24 +178,24 @@ NGA-1914-1960,NGA-N-1914-1961,whep-normalize,1914,1959,british nigeria;british n
 NGA-1914-1960,NGA-S-1914-1967,whep-normalize,1914,1959,british nigeria;british nigeria: north; british nigeria: south;nigeria federation,british nigeria: south,alias,alias,0,0,yes
 NGBC-1916-1960,BCM-1916-1961,whep-normalize,1934,1954,british nigeria: north; british nigeria: south; british north cameroon; british south cameroon;british nigeria; british north cameroon; british south cameroon,british cameroon;british north cameroon; british south cameroon,alias,alias,0,0,yes
 NGBC-1916-1960,NGA-1914-1960,whep-normalize,1934,1954,british nigeria: north; british nigeria: south; british north cameroon; british south cameroon;british nigeria; british north cameroon; british south cameroon,british nigeria;british nigeria: north; british nigeria: south;nigeria federation,alias,alias,0,0,yes
-PRT-AZM-1800-2025,PRT-AZO-1800-2025,whep-normalize,1948,1960,"portugal: azores, madeira",portugal: azores,alias,alias,0,0,yes
-PRT-AZM-1800-2025,PRT-MAD-1800-2025,whep-normalize,1925,1952,"portugal: azores, madeira",portugal: madeira,alias,alias,0,0,yes
+PRT-AZM-1800-2025,PRT-20-1800-2025,whep-normalize,1948,1960,"portugal: azores, madeira",portugal: azores,alias,alias,0,0,yes
+PRT-AZM-1800-2025,PRT-30-1800-2025,whep-normalize,1925,1952,"portugal: azores, madeira",portugal: madeira,alias,alias,0,0,yes
 SJM-1930-2025,JMY-1930-2025,whep-normalize,1937,1948,"norway: jan mayen, svalbard;norway: svalbard and jan mayen",norway: jan mayen,alias,alias,0,0,yes
 SJM-1930-2025,SVB-1925-2025,whep-normalize,1937,1949,"norway: jan mayen, svalbard;norway: svalbard and jan mayen",norway: svalbard,alias,alias,0,0,yes
 SSM-1914-1945,CAR-1920-1945,whep-normalize,1921,1940,japanese caroline islands; japanese mariana islands; japanese marshall islands; japanese palau;japanese south pacific;us pacific islands,japanese caroline islands,alias,alias,0,0,yes
-STS-1826-1946,MYS-MLK-1826-1946,whep-normalize,1909,1939,british straits settlements,british malacca;british straits settlements: malacca,alias,alias,0,0,yes
-STS-1826-1946,MYS-PNG-1826-1946,whep-normalize,1909,1939,british straits settlements,british penang;british straits settlements: penang,alias,alias,0,0,yes
+STS-1826-1946,MYS-04-1826-1946,whep-normalize,1909,1939,british straits settlements,british malacca;british straits settlements: malacca,alias,alias,0,0,yes
+STS-1826-1946,MYS-07-1826-1946,whep-normalize,1909,1939,british straits settlements,british penang;british straits settlements: penang,alias,alias,0,0,yes
 STS-1826-1946,SGP-1824-1946,whep-normalize,1909,1939,british straits settlements,british singapore,alias,alias,0,0,yes
 SYL-1920-1944,LBN-1920-1944,whep-normalize,1921,1939,french lebanon; french syria,french lebanon,alias,alias,0,0,yes
 SYL-1920-1944,SYR-1922-1946,whep-normalize,1922,1939,french lebanon; french syria,french syria,alias,alias,0,0,yes
 SYL-1944-1953,SYR-1946-1967,fao1952,1946,1953,Syria and Lebanon;syria and lebanon,Syria;syria,alias;applied_alias,alias;applied_alias,0,0,yes
 SYL-1944-1953,SYR-1946-1967,mitchell,1946,1952,Syria and Lebanon;syria and lebanon,Syria;syrian arab republic,alias;applied_alias,alias;iso,0,0,yes
 SYL-1944-1953,SYR-1946-1967,whep-normalize,1946,1952,lebanon; syria,Syria,alias,alias,0,0,yes
-UMS-1909-1946,MYS-JHR-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british johor;british unfederated malay states: johor,alias,alias,0,0,yes
-UMS-1909-1946,MYS-KDH-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british kedah;british unfederated malay states: kedah,alias,alias,0,0,yes
-UMS-1909-1946,MYS-KTN-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british kelantan;british unfederated malay states: kelantan,alias,alias,0,0,yes
-UMS-1909-1946,MYS-PLS-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british perlis;british unfederated malay states: perlis,alias,alias,0,0,yes
-UMS-1909-1946,MYS-TRG-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british terengganu;british unfederated malay states: terengganu,alias,alias,0,0,yes
+UMS-1909-1946,MYS-01-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british johor;british unfederated malay states: johor,alias,alias,0,0,yes
+UMS-1909-1946,MYS-02-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british kedah;british unfederated malay states: kedah,alias,alias,0,0,yes
+UMS-1909-1946,MYS-03-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british kelantan;british unfederated malay states: kelantan,alias,alias,0,0,yes
+UMS-1909-1946,MYS-09-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british perlis;british unfederated malay states: perlis,alias,alias,0,0,yes
+UMS-1909-1946,MYS-11-1909-1946,whep-normalize,1913,1937,british unfederated malay states,british terengganu;british unfederated malay states: terengganu,alias,alias,0,0,yes
 USA-1867-1959,ALK-1867-1959,fao1952,1867,1959,united states;united states and dependent territories;united states of america,Alaska;alaska,alias;applied_alias;name,alias;applied_alias,20,25,yes
 USA-1867-1959,ALK-1867-1959,whep-normalize,1909,1958,united states;united states of america,united states: alaska,alias,alias,0,0,yes
 USA-FLLA-1845-2025,USA-LA-1812-2025,whep-normalize,1928,1929,"united states: florida, louisiana",united states: louisiana,alias,alias,0,0,yes

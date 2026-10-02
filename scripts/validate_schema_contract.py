@@ -123,6 +123,12 @@ CSV_CONTRACT = {
     # that an AGGREGATION reads it: a consumer excluding entrepôt rows joins on
     # `source`/`label_pattern`/`item_pattern`, and a rename of any of the three makes the
     # anti-join match nothing and silently restore the double count it was added to remove.
+    # Added with the table itself (2026-10-02). Pinned because a consumer APPLIES it to data
+    # keyed on codes from before a rename: a renamed `old_code`/`new_code` column makes that
+    # lookup translate nothing, and the stale codes then match no polity at all.
+    "data/final/polity_code_renames.csv": [
+        "old_code", "new_code", "renamed_on", "change_ref", "rule_applied", "iso3166_2", "reason",
+    ],
     "data/final/source_flow_flags.csv": [
         "source", "label_pattern", "item_pattern", "flow_type", "polity_code",
         "origin_iso3", "wiki_page", "verified",
@@ -187,9 +193,12 @@ MANIFEST_KEYS = [
     "dead_status", "faostat_area_map", "faostat_unmapped_areas",
     "identity_fields", "identity_sha256", "iso3_successor_map", "label_alias_map",
     "label_item_corrections", "live_polity_codes", "local_iso3_codes", "local_iso3_why",
-    "polygon_gap_polity_codes", "source", "source_flow_flags", "stated_area_basis",
-    "territory_families", "territory_families_why",
+    "polity_code_renames", "polygon_gap_polity_codes", "source", "source_flow_flags",
+    "stated_area_basis", "territory_families", "territory_families_why",
 ]
+# `polity_code_renames` added 2026-10-02: the fingerprint of data/final/polity_code_renames.csv,
+# old -> new for the 304 subnational codes recoded to ISO 3166-2 subunit parts. A consumer
+# holding data keyed on an old code finds the new one only through this table.
 # `label_item_corrections` added 2026-09-24 (issue 675): the fingerprint of
 # data/final/source_label_item_corrections.csv, the rows a source files under the wrong
 # territory's label for one item. A consumer resolving labels itself must apply it first.
