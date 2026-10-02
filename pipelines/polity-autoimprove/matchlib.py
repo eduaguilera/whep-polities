@@ -84,19 +84,69 @@ def alias_covers(y0, y1, year):
     return True
 
 
-def norm(s):
+# ---------------------------------------------------------------------------
+# TWO KEYS, ONE PER SIDE (issue: bracketed qualifiers in source labels).
+#
+# A SOURCE LABEL's bracketed text is part of what territory it names:
+# `australia (excl victoria)` is not `australia`, `british india (excl burma)` is
+# not `british india`, `french morocco (former)` in 1958 is not the protectorate.
+# `label_key()` therefore folds case, accents, punctuation and a leading "the",
+# and KEEPS the bracketed words. Every lookup keyed on a source label -- alias
+# rules, the blanket-alias index, the spelling-alias table, assertion keys --
+# uses it.
+#
+# `norm()` is the POLITY-NAME side (and the item side, which is not a territory).
+# It still drops parenthesised qualifiers, because a polity's name carries its
+# own disambiguation there -- "Santa Cruz (department of Bolivia)",
+# "British India (1886-1893)" -- and an unqualified label must still reach it.
+#
+# Until this split `norm()` was used on BOTH sides, so a qualified label shared
+# every alias rule and every name of its base label: whep-normalize's
+# `australia (excl victoria)` resolved to AUS-1901-2025 and `british india (excl
+# burma)` to the whole of British India. The name fallback is now one-way too:
+# a label that carries a qualifier matches a polity name only when the name
+# carries the SAME qualifier (see Matcher.resolve_family).
+def _fold(s):
     if s is None or (isinstance(s, float) and np.isnan(s)): return ""
     s = str(s).strip().lower()
-    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
-    s = re.sub(r"\s*\(.*?\)\s*", " ", s)          # drop "(to 1919)" etc.
+    return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
+
+
+def _squash(s):
     s = re.sub(r"^the\s+", "", s)
     s = re.sub(r"[^a-z0-9 ]", " ", s)
     return re.sub(r"\s+", " ", s).strip()
 
 
+def label_key(s):
+    """SOURCE-label key: case, accents, punctuation and a leading "the" fold away;
+    bracketed qualifiers are KEPT (their brackets become spaces)."""
+    return _squash(_fold(s))
+
+
+def has_qualifier(s):
+    """Does the label carry a bracketed qualifier (closed or truncated)?"""
+    return bool(re.search(r"[(\[]", _fold(s)))
+
+
+def norm(s):
+    """POLITY-NAME (and item) key: as label_key, but parenthesised qualifiers are
+    DROPPED, so "Gambia (to 1919)" answers to "gambia". Never key a source label
+    on this: use label_key()."""
+    s = _fold(s)
+    s = re.sub(r"\s*\(.*?\)\s*", " ", s)          # drop "(to 1919)" etc.
+    return _squash(s)
+
+
 def toks(s):
-    """singularized token set, for order-insensitive name matching."""
+    """singularized token set, for order-insensitive name matching (name side)."""
     return frozenset(t[:-1] if len(t) > 3 and t.endswith("s") else t for t in norm(s).split() if t)
+
+
+def label_toks(s):
+    """toks() over label_key(): the qualifier's words stay in the set."""
+    return frozenset(t[:-1] if len(t) > 3 and t.endswith("s") else t
+                     for t in label_key(s).split() if t)
 
 
 def eff_year(year, period=None):
@@ -348,6 +398,10 @@ class Matcher:
         self.valid_codes = set(live["polity_code"])   # matchable codes only
 
         self.iso_fam, self.name_fam, self.tok_fam = defaultdict(list), defaultdict(list), defaultdict(list)
+        # The same names keyed WITH their qualifiers, for a source label that carries one:
+        # it may match a polity name only when the name carries the same qualifier, never
+        # the bare name (see resolve_family).
+        self.name_full, self.tok_full = defaultdict(list), defaultdict(list)
         for _, p in live.iterrows():
             rec = (p.polity_code, p.polity_name, p.iso3_code, p.s, p.e, p.polity_type)
             if isinstance(p.iso3_code, str) and p.iso3_code.strip():
@@ -355,6 +409,9 @@ class Matcher:
             self.name_fam[p.base].append(rec)
             t = toks(p.polity_name)
             if t: self.tok_fam[t].append(rec)
+            self.name_full[label_key(p.polity_name)].append(rec)
+            t = label_toks(p.polity_name)
+            if t: self.tok_full[t].append(rec)
         self.code_row = {p.polity_code: (p.polity_code, p.polity_name, p.iso3_code, p.s, p.e, p.polity_type)
                          for _, p in live.iterrows()}
         if verbose and self.dead_codes:
@@ -364,12 +421,17 @@ class Matcher:
         # spelling-alias table: norm(original_name) -> norm(common_name).
         # `original_name` here is NOT our spelling: common_names.csv is an EXTERNAL file
         # (Gleditsch/CoW-style common names), so issue 95's rename does not reach it.
-        self.alias = {}
+        # Its original_names are gazetteer names that carry their own qualifiers ("Aden
+        # (1937-1962)"), so it is indexed like the polity names: stripped for an unqualified
+        # label, exact-with-qualifier (alias_full) for a qualified one.
+        self.alias, self.alias_full = {}, {}
         if common_names_csv and os.path.exists(common_names_csv):
             cn = pd.read_csv(common_names_csv)
             for _, r in cn.iterrows():
                 o, c = norm(r["original_name"]), norm(r["common_name"])
                 if o and c: self.alias.setdefault(o, c)
+                of = label_key(r["original_name"])
+                if of and c: self.alias_full.setdefault(of, c)
 
         # APPLIED aliases: (source_label [, source] [, year_start-year_end]) -> polity_code.
         # A label can resolve to DIFFERENT polities by year/source — the SOURCE's reporting
@@ -395,7 +457,7 @@ class Matcher:
                     continue
                 if tc not in self.code_row: continue
                 self.override_rules.append({
-                    "n": norm(r["source_label"]),
+                    "n": label_key(r["source_label"]),   # qualifiers are identity
                     "src": (r.get("source") or "").strip() or None,
                     "y0": _yr(r.get("year_start")), "y1": _yr(r.get("year_end")),
                     "code": tc,
@@ -485,7 +547,7 @@ class Matcher:
         two components of one repository read the same field differently, and
         the gate's reasoning is the one worth keeping.
         """
-        n = norm(name); src = (source or "")
+        n = label_key(name); src = (source or "")
         best, best_rank = None, None
         for ru in self.override_rules:
             if ru["n"] != n: continue
@@ -557,12 +619,29 @@ class Matcher:
 
     def resolve_family(self, name, iso):
         """return (family, how). High-precision only: applied-alias override, iso,
-        exact name, token-set equality, or alias-table."""
-        n = norm(name)
+        exact name, token-set equality, or alias-table.
+
+        A label carrying a bracketed qualifier is keyed WITH it (label_key), and its
+        name fallback is one-way: it matches a polity name, token set or spelling
+        alias only when that carries the same qualifier. `australia (excl victoria)`
+        therefore never reaches the `australia` family by name; a curated alias rule
+        for the full label is the only way to route it. An unqualified label is
+        unaffected: label_key and norm agree on it, and it still reaches a polity
+        whose name carries a qualifier ("Gambia (to 1919)")."""
+        n = label_key(name)
         if n in self.blanket_override:                       # year/source-independent applied alias
             return self.fam_for_code(self.blanket_override[n]), "applied_alias"
         if isinstance(iso, str) and iso.strip().upper() in self.iso_fam:
             return self.iso_fam[iso.strip().upper()], "iso"
+        if has_qualifier(name):
+            if n in self.name_full: return self.name_full[n], "name"
+            t = label_toks(name)
+            if t in self.tok_full: return self.tok_full[t], "tokenset"
+            if n in self.alias_full:
+                a = self.alias_full[n]
+                if a in self.name_fam: return self.name_fam[a], "alias"
+                if toks(a) in self.tok_fam: return self.tok_fam[toks(a)], "alias"
+            return None, "none"
         if n in self.name_fam: return self.name_fam[n], "name"
         t = toks(name)
         if t in self.tok_fam: return self.tok_fam[t], "tokenset"   # "Korea South" == "South Korea"

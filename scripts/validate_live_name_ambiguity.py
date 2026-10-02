@@ -69,10 +69,12 @@ BASELINE_PATH = os.path.join(
 
 
 def norm(s: str) -> str:
-    """Mirror matchlib.norm and resolve_polity_label()'s normalisation exactly.
+    """Mirror matchlib.norm and resolve_polity_label()'s POLITY-NAME normalisation exactly.
 
-    Both sides fold accents, DROP parenthesised qualifiers, strip a leading "the" and
-    map punctuation to spaces. The parenthetical rule is what makes this check
+    Polity names fold accents, DROP parenthesised qualifiers, strip a leading "the" and
+    map punctuation to spaces; an UNQUALIFIED source label is looked up against that key.
+    (A label that carries a qualifier keeps it -- matchlib.label_key -- and matches only a
+    name carrying the same qualifier, so it cannot meet the ambiguity measured here.) The parenthetical rule is what makes this check
     necessary at all: "Greece (1830-1881)" and "Greece" both reduce to "greece", so
     period qualifiers written into the NAME do not separate two rows the way the year
     columns do.

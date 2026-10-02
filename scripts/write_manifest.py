@@ -239,6 +239,19 @@ if os.path.exists(ALIAS_MAP):
         # resolves exactly as before; once it is not, such a reader meets two rules for one label
         # and years and picks one by file order.
         "indicator_scoped_aliases": sum(1 for r in alias_rows if (r.get("indicator") or "").strip()),
+        # How a row's label meets `source_label` (2026-10-02). Stated because the consumer must
+        # build the same key, and for two years both sides dropped bracketed text, which put
+        # `australia (excl victoria)` on all of Australia.
+        "label_key_why": (
+            "Compare a row's label with `source_label` on a folded key: lowercase, accents to "
+            "ASCII, a leading 'the' dropped, every other non-alphanumeric character (brackets "
+            "included) to a space, whitespace squashed (matchlib.label_key). BRACKETED TEXT IS "
+            "KEPT: it is part of the territory the label names, so 'british india (excl burma)' "
+            "and 'british india' are different labels and neither resolves by the other's rules. "
+            "A consumer that also matches labels to polity NAMES may drop a polity name's own "
+            "qualifier ('Santa Cruz (department of Bolivia)' answers to 'santa cruz'), but must "
+            "not let a label that carries a qualifier fall back to a name without that qualifier."
+        ),
         "indicator_scope_why": (
             "`indicator` is an optional scope on a rule, BLANK = ANY: a non-blank value limits the "
             "rule to rows whose panel `indicator` (area, production, yield, livestock_stock, "

@@ -3,6 +3,12 @@ AEF-1910-1960,CAF-1919-1960,iia,1922,1931,congo,central african republic,alias;a
 AEF-1910-1960,GAB-1919-1960,iia,1919,1932,congo,gabon,alias;applied_alias,iso,8,17,no
 AEF-1910-1960,TCD-1919-1960,iia,1922,1924,congo,chad,alias;applied_alias,iso,2,6,no
 AEF-1910-1960,TCD-1919-1960,mitchell,1939,1951,French Equat Africa,chad,alias,iso,0,0,no
+AOF-1895-1960,BEN-1898-1960,whep-normalize,1959,1959,french west africa (former),french dahomey,alias,alias,0,0,yes
+AOF-1895-1960,BFA-1947-1960,whep-normalize,1959,1959,french west africa (former),french upper volta,alias,alias,0,0,yes
+AOF-1895-1960,CIV-1947-1960,whep-normalize,1959,1959,french west africa (former),french ivory coast,alias,alias,0,0,yes
+AOF-1895-1960,MLI-1890-1960,whep-normalize,1959,1959,french west africa (former),mali,alias,alias,0,0,yes
+AOF-1895-1960,NER-1947-1960,whep-normalize,1959,1959,french west africa (former),french niger,alias,alias,0,0,yes
+AOF-1895-1960,SEN-1886-1960,whep-normalize,1959,1959,french west africa (former),french senegal,alias,alias,0,0,yes
 AOI-1936-1941,ERI-1889-1952,fao1952,1937,1941,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,name,34,66,no
 AOI-1936-1941,ERI-1889-1952,iia,1936,1937,Africa Orientale Italiana;Ethiopia;Italian East Africa,eritrea,alias,iso,1,0,no
 BFCM-1920-1960,FCM-1920-1960,iia,1933,1945,British and French Cameroons (combined reporting unit);british and french cameroons (combined reporting unit),cameroon,alias;applied_alias,iso,0,0,no

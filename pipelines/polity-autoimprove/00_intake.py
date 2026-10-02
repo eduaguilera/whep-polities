@@ -33,7 +33,7 @@ import pandas as pd, numpy as np, json, csv, os, sys, argparse, hashlib, re
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from matchlib import Matcher, norm, eff_year
+from matchlib import Matcher, norm, label_key, eff_year
 from protocol import protocol_version, ledger_protocol_version
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -178,10 +178,11 @@ CONVENTIONS = os.path.join(OUT_DIR, "source_conventions.csv")
 conventions = list(csv.DictReader(open(CONVENTIONS))) if os.path.exists(CONVENTIONS) else []
 def conventions_for(label, source, items):
     out = []
-    ln, items_n = norm(label), [norm(i) for i in items]
+    # The label side keeps its bracketed qualifiers (matchlib.label_key); items still use norm.
+    ln, items_n = label_key(label), [norm(i) for i in items]
     for c in conventions:
         if (c.get("source") or "*") not in ("*", str(source)): continue
-        lp = norm(c.get("label_pattern") or "*")
+        lp = label_key(c.get("label_pattern") or "*")
         if lp not in ("", "*") and lp not in ln: continue
         ip = norm(c.get("item_pattern") or "*")
         if ip not in ("", "*") and not any(ip in i for i in items_n): continue
@@ -222,7 +223,9 @@ mm = w[matched].copy()
 # ("China and Manchuria" vs "China and manchuria") are the SAME assertion, and
 # grouping them separately produced duplicate keys — which silently corrupts
 # banking, since a key maps to one ledger row and one evidence bundle.
-mm["label_n"] = mm["label"].map(norm)
+# Keyed WITH its bracketed qualifiers (matchlib.label_key): `british india (excl burma)` is a
+# different territory from `british india`, so it is a different assertion, not a spelling variant.
+mm["label_n"] = mm["label"].map(label_key)
 assertions, by_label_src = [], defaultdict(list)
 for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
     yrs = grp.eff_year.dropna()
@@ -283,7 +286,7 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
                                  ev["candidate_meta"]["period"] if ev["candidate_meta"] else None,
                                  sorted(ev["neighbor_segments"].items())])
     # ledger: full assertion key first, then legacy bare-label key
-    row = banked.get(key.lower()) or banked.get(norm(label))
+    row = banked.get(key.lower()) or banked.get(label_key(label))
     if row is not None and (row.get("evidence_hash") or "").strip() == ev["evidence_hash"]:
         # evidence unchanged — but was it judged under the CURRENT rules? A row
         # banked below the current protocol version is reopened exactly as a
@@ -298,7 +301,7 @@ for (label_n, src, code), grp in mm.groupby(["label_n", "source", "code"]):
                           f"-> v{PROTOCOL} since banked "
                           f"(ledger last_run {row.get('last_run') or 'n/a'})]")
             n_proto_reopened += 1
-    elif row is not None and row is banked.get(norm(label)) and not (row.get("evidence_hash") or "").strip():
+    elif row is not None and row is banked.get(label_key(label)) and not (row.get("evidence_hash") or "").strip():
         # LEGACY bare-label banking, no evidence hash. This used to be reported as
         # its own terminal status ("banked_legacy") and skipped like a banked
         # assertion. It is not banked: the pre-assertion ledger recorded only that

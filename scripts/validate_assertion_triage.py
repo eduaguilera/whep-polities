@@ -12,7 +12,7 @@ table is checkable. It turned out to be the most re-derivable of the three.
 
 Almost nothing here is a pinned count. Five of the six arms recompute the column from other columns:
 
-    A  key            == norm(label)|source|years_observed   [+ |candidate when disambiguated]
+    A  key            == label_key(label)|source|years_observed   [+ |candidate when disambiguated]
     B  keys unique    -- a key maps to one ledger row and one evidence bundle (00_intake.py:354)
     C  verify_order   is a dense permutation of 1..N, so no assertion is unreachable or duplicated
     D  n_distinct_years in [1, span width] -- cannot observe more years than the span contains
@@ -73,8 +73,11 @@ STATUSES = frozenset({"pending", "reopened", "confirmed", "rejected", "withdrawn
 TRUEISH = frozenset({"true", "yes", "1"})
 
 
-def norm(s) -> str:
-    """matchlib.norm, restated so the gate does not import the generator to know what a key means.
+def label_key(s) -> str:
+    """matchlib.label_key, restated so the gate does not import the generator to know what a key means.
+
+    The SOURCE-label key: bracketed qualifiers are KEPT (their brackets become spaces), so a part
+    such as `british india (excl burma)` never shares an assertion key with its whole.
 
     Cross-checked against the real one below when it is importable; CI has no numpy guarantee, so
     this gate must not depend on that import to run its main arms.
@@ -83,7 +86,6 @@ def norm(s) -> str:
         return ""
     s = str(s).strip().lower()
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
-    s = re.sub(r"\s*\(.*?\)\s*", " ", s)
     s = re.sub(r"^the\s+", "", s)
     s = re.sub(r"[^a-z0-9 ]", " ", s)
     return re.sub(r"\s+", " ", s).strip()
@@ -147,7 +149,7 @@ def main() -> int:
         where = f"line {i} {key or '<no key>'}"
 
         # --- A: the key must be rebuildable from the columns it claims to summarise ---
-        base = f"{norm(label)}|{src}|{span}"
+        base = f"{label_key(label)}|{src}|{span}"
         cand = (r.get("candidate") or "").strip()
         if key not in (base, f"{base}|{cand}"):
             problems.append(
@@ -250,14 +252,14 @@ def main() -> int:
     # Drift check on the restated normaliser. Optional by design: it needs the generator's numpy.
     try:
         sys.path.insert(0, os.path.join(REPO, "pipelines/polity-autoimprove"))
-        from matchlib import norm as real_norm  # noqa: PLC0415
+        from matchlib import label_key as real_key  # noqa: PLC0415
     except Exception:
         pass
     else:
-        drift = [r["label"] for r in rows if norm(r.get("label")) != real_norm(r.get("label"))]
+        drift = [r["label"] for r in rows if label_key(r.get("label")) != real_key(r.get("label"))]
         if drift:
             problems.append(
-                f"this gate's restated norm() has drifted from matchlib.norm on {len(drift)} labels "
+                f"this gate's restated label_key() has drifted from matchlib.label_key on {len(drift)} labels "
                 f"(e.g. {drift[:3]}) — arm A is then checking a rule the generator does not use")
 
     print(f"assertion triage: {len(rows)} rows, {rederived} keys rebuilt from their own columns, "
