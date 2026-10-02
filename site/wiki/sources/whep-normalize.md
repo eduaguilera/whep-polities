@@ -68,7 +68,7 @@ source already on hand -- GADM 4.1, CShapes 2.0, or an existing row's feature
 ([wikipedia-whep-normalize-2026-09-30](wikipedia-whep-normalize-2026-09-30.md) for the facts):
 
 - **parts of states**: Scotland (GBR-SCT-1800-2025), England and Wales (GBR-EW-1800-2025), Northern
-  Ireland (GBR-NIR-1921-2025), Madeira (PRT-MAD-1800-2025), the Azores (PRT-AZO-1800-2025), mainland
+  Ireland (GBR-NIR-1921-2025), Madeira (PRT-30-1800-2025), the Azores (PRT-20-1800-2025), mainland
   Portugal (PRT-CON-1800-2025, an aggregate of the districts), Ceuta (ESP-CE-1800-2025), Melilla
   (ESP-ML-1800-2025), the Andaman and Nicobar Islands (IND-AN-1868-2025), Sikkim (IND-SK-1890-2025),
   Tibet within the PRC (CHN-XZ-1951-2025);
@@ -470,25 +470,25 @@ its polygon status, the km2 reasoning and why it exists.
 | [IDN-JVM-1800-1949](../polities/idn-jvm-1800-1949.md) | `dutch java; dutch madura` | 1909..1948 | 45 | 2,138 |
 | [COD-LEO-1933-1962](../polities/cod-leo-1933-1962.md) | `belgian congo: leopoldville` | 1937..1960 | 11 | 577 |
 | [KWA-1905-1945](../polities/kwa-1905-1945.md) | `japanese kwantung` | 1909..1939 | 31 | 498 |
-| [MYS-PNG-1826-1946](../polities/mys-png-1826-1946.md) | `british penang` | 1909..1924 | 17 | 250 |
-| [MYS-MLK-1826-1946](../polities/mys-mlk-1826-1946.md) | `british malacca` | 1909..1924 | 17 | 240 |
-| [MYS-LBN-1907-1946](../polities/mys-lbn-1907-1946.md) | `british labuan` | 1909..1921 | 14 | 181 |
-| [MYS-JHR-1909-1946](../polities/mys-jhr-1909-1946.md) | `british johor` | 1909-1913..1929 | 21 | 155 |
-| [MYS-KTN-1909-1946](../polities/mys-ktn-1909-1946.md) | `british kelantan` | 1909-1913..1929 | 20 | 141 |
-| [MYS-KDH-1909-1946](../polities/mys-kdh-1909-1946.md) | `british kedah` | 1909-1913..1929 | 18 | 89 |
-| [MYS-TRG-1909-1946](../polities/mys-trg-1909-1946.md) | `british terengganu` | 1909-1913..1945 | 29 | 74 |
+| [MYS-07-1826-1946](../polities/mys-07-1826-1946.md) | `british penang` | 1909..1924 | 17 | 250 |
+| [MYS-04-1826-1946](../polities/mys-04-1826-1946.md) | `british malacca` | 1909..1924 | 17 | 240 |
+| [MYS-15-1907-1946](../polities/mys-15-1907-1946.md) | `british labuan` | 1909..1921 | 14 | 181 |
+| [MYS-01-1909-1946](../polities/mys-01-1909-1946.md) | `british johor` | 1909-1913..1929 | 21 | 155 |
+| [MYS-03-1909-1946](../polities/mys-03-1909-1946.md) | `british kelantan` | 1909-1913..1929 | 20 | 141 |
+| [MYS-02-1909-1946](../polities/mys-02-1909-1946.md) | `british kedah` | 1909-1913..1929 | 18 | 89 |
+| [MYS-11-1909-1946](../polities/mys-11-1909-1946.md) | `british terengganu` | 1909-1913..1945 | 29 | 74 |
 | [IDN-BLB-1800-1949](../polities/idn-blb-1800-1949.md) | `dutch bali; dutch lombok` | 1934-1938..1948 | 6 | 70 |
 | [NGA-N-1914-1961](../polities/nga-n-1914-1961.md) | `british nigeria: north` | 1932..1960 | 14 | 64 |
-| [MYS-PLS-1909-1946](../polities/mys-pls-1909-1946.md) | `british perlis` | 1909-1913..1939 | 26 | 63 |
+| [MYS-09-1909-1946](../polities/mys-09-1909-1946.md) | `british perlis` | 1909-1913..1939 | 26 | 63 |
 | [GNG-1900-1920](../polities/gng-1900-1920.md) | `german new guinea` | 1909-1913..1917 | 9 | 36 |
 | [NGA-S-1914-1967](../polities/nga-s-1914-1967.md) | `british nigeria: south` | 1932..1939 | 5 | 22 |
 | [CHT-1950-2025](../polities/cht-1950-2025.md) | `china (incl manchuria); taiwan`, `china; taiwan` | 1948-1950..1954 | 6 | 21 |
 | [CZE-CL-1938-1945](../polities/cze-cl-1938-1945.md) | `czechoslovakia: bohemia, moravia, silesia` | 1939..1944 | 6 | 18 |
 | [GEI-1892-1916](../polities/gei-1892-1916.md) | `british gilbert and ellice islands` | 1909-1913..1915 | 4 | 6 |
-| [MYS-NSN-1909-1946](../polities/mys-nsn-1909-1946.md) | `british negri sembilan` | 1911..1929 | 5 | 6 |
-| [MYS-PHG-1909-1946](../polities/mys-phg-1909-1946.md) | `british pahang` | 1911..1929 | 5 | 6 |
-| [MYS-PRK-1909-1946](../polities/mys-prk-1909-1946.md) | `british perak` | 1911..1929 | 5 | 6 |
-| [MYS-SGR-1909-1946](../polities/mys-sgr-1909-1946.md) | `british selangor` | 1911..1929 | 5 | 6 |
+| [MYS-05-1909-1946](../polities/mys-05-1909-1946.md) | `british negri sembilan` | 1911..1929 | 5 | 6 |
+| [MYS-06-1909-1946](../polities/mys-06-1909-1946.md) | `british pahang` | 1911..1929 | 5 | 6 |
+| [MYS-08-1909-1946](../polities/mys-08-1909-1946.md) | `british perak` | 1911..1929 | 5 | 6 |
+| [MYS-10-1909-1946](../polities/mys-10-1909-1946.md) | `british selangor` | 1911..1929 | 5 | 6 |
 | [CZE-CL-1945-1993](../polities/cze-cl-1945-1993.md) | `czechoslovakia: bohemia, moravia, silesia` | 1945 | 1 | 3 |
 | [CZE-CL-1918-1938](../polities/cze-cl-1918-1938.md) | `czechoslovakia: bohemia, moravia, silesia` | 1934-1938 | 1 | 3 |
 | [BIH-1878-1918](../polities/bih-1878-1918.md) | `bosnia and herzegovina` | 1911..1913 | 2 | 3 |
@@ -502,7 +502,7 @@ first step: 65 cells after, against 67 before (the two `china; taiwan` cells tha
 `taiwan`).
 
 Re-edged so that sums count each part once: IDN-JAV-1800-1949 and IDN-MAD-1800-1949 now sit under
-IDN-JVM-1800-1949, IDN-BAL-1800-1949 and IDN-LOM-1800-1949 under IDN-BLB-1800-1949.
+IDN-JVM-1800-1949, IDN-BA-1800-1949 and IDN-LOM-1800-1949 under IDN-BLB-1800-1949.
 
 Not created, and why:
 

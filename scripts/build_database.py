@@ -943,7 +943,7 @@ def _simplify_if_cheap(g, tolerance: float, polity_code: str, simplifies: dict, 
     if cheapest is not None:
         # NO TOLERANCE PRODUCED SOMETHING s2 CAN LOAD, so publish the geometry UNSIMPLIFIED rather
         # than a simplified one that is broken on the sphere. This used to return `cheapest` -- the
-        # cheapest simplified step -- and ARG-SANTACRUZ-1955-2025 was published that way: the GADM
+        # cheapest simplified step -- and ARG-Z-1955-2025 was published that way: the GADM
         # source loads under s2 cleanly, every ladder step from x1 down to x0.01 did not, and
         # repair_s2_polygons could not rescue any of them. The province's many small coastal islands
         # collapse into crossing rings at any tolerance (56,625 vertices to 582 at x1).
@@ -1285,7 +1285,7 @@ def main() -> int:
     if dupes:
         # Two pages declaring one polity_code means one TERRITORY silently leaves the table: the row
         # count still matches the code count, so nothing downstream can see the hole.
-        # esp-ibz-1833-2025.md (Eivissa y Formentera) declared ESP-IB-1833-2025, Illes Balears'
+        # esp-ibz-1833-2025.md (Eivissa y Formentera) declared ESP-07-1833-2025, Illes Balears'
         # code, and Eivissa vanished -- found only because an alias could not resolve to it.
         print()
         print(f"FAIL: {len(dupes)} page(s) declare a polity_code another page already declared, so "

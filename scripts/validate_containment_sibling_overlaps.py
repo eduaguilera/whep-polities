@@ -11,13 +11,13 @@ What that let through, measured on 2026-09-24 against the ESRI:54034 polygons: f
 AGGREGATES declared directly under the national row BESIDE their own parts, so a member sum counted
 the parts' ground twice --
 
-    ITA-1919-2025  ITA-PVA-1861-2025 (Piemonte with Valle d'Aosta)  with  ITA-PIE-1970-2025 (99.99%)
-                                                                    and   ITA-VDA-1948-2025 (99.88%)
-    ITA-1919-2025  ITA-ABM-1861-2025 (Abruzzi e Molise)             with  ITA-ABR-1970-2025 (99.86%)
-                                                                    and   ITA-MOL-1963-2025 (99.93%)
-    ITA-1919-2025  ITA-TAA-1919-2025 (Trentino-Alto Adige)          with  ITA-ITH1-1919-2025 (99.79%)
-                                                                    and   ITA-ITH2-1919-2025 (99.80%)
-    FRA-1919-2025  FRA-COR-1800-2025 (Corsica, whole island)        with  FRA-2A-1975-2025 (99.90%)
+    ITA-1919-2025  ITA-PVA-1861-2025 (Piemonte with Valle d'Aosta)  with  ITA-21-1970-2025 (99.99%)
+                                                                    and   ITA-23-1948-2025 (99.88%)
+    ITA-1919-2025  ITA-ABM-1861-2025 (Abruzzi e Molise)             with  ITA-65-1970-2025 (99.86%)
+                                                                    and   ITA-67-1963-2025 (99.93%)
+    ITA-1919-2025  ITA-32-1919-2025 (Trentino-Alto Adige)          with  ITA-BZ-1919-2025 (99.79%)
+                                                                    and   ITA-TN-1919-2025 (99.80%)
+    FRA-1919-2025  FRA-20R-1800-2025 (Corsica, whole island)        with  FRA-2A-1975-2025 (99.90%)
     FRA-1919-2025  FRA-SSO-1860-2025 (Seine-et-Oise + suburban Seine) with FRA-91-1968-2025 (99.35%)
 
 (share = the smaller member's area inside the larger). Every one of those parts was re-edged onto
@@ -45,10 +45,10 @@ the list stays a record of live decisions rather than of past ones.
 
 WHY 2%. After the re-edging the largest sibling overlap anywhere is 0.74% (USA-CT-1800-2025 /
 USA-RI-1790-2025, 21 km2 of the smaller state), then AUS-ACT-1911-2025 / AUS-NSW-1901-2025 at 0.71%
-and JPN-KYOTO-1871-2025 / JPN-OSAKA-1871-2025 at 0.61% -- outline resolution along a shared border,
+and JPN-26-1871-2025 / JPN-27-1871-2025 at 0.61% -- outline resolution along a shared border,
 not territory. An aggregate beside its part scores ~99%, and a real straddle scores its straddle
 share, so the threshold sits well clear of the noise and far below every defect of this shape.
-The Portuguese districts that straddle NUTS II regions (PRT-AV-1835-2025 is 63% Centro) do NOT
+The Portuguese districts that straddle NUTS II regions (PRT-01-1835-2025 is 63% Centro) do NOT
 appear: they are depth-split already -- under PRT-1800-2025 until 1986 and under their NUTS II
 region from 1986 -- so a district and a region are never siblings in the same year.
 

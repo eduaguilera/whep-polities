@@ -163,7 +163,7 @@ ALLOWED_KEYS = BUILDER_KEYS | DESCRIPTIVE_KEYS
 # `\b[A-Z][A-Z0-9]{1,9}-\d{4}-\d{4}\b`, which has no optional subunit segment, and a hyphen
 # creates a word boundary -- so `COL-CAU-1886-2025` matched as `CAU-1886-2025` and the real
 # code never matched at all. Every subunit code in a page body behaved that way
-# (`DZA-CVD-1902-1919` -> `CVD-1902-1919`, `JPN-AICHI-1871-2025` -> `AICHI-1871-2025`), so
+# (`DZA-CVD-1902-1919` -> `CVD-1902-1919`, `JPN-23-1871-2025` -> `AICHI-1871-2025`), so
 # arm 4 has been checking codes that cannot exist and ignoring the ones that can. The
 # lookbehind refuses a match that starts mid-code, and the optional group admits the
 # <ISO3>-<SUBUNIT>-<start>-<end> shape that 50 of 60 subnational rows use.
