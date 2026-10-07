@@ -3827,6 +3827,126 @@ def check_iia_tobacco_hops_late_volume_scale(ctx):
                     "the convicted dated rows are exactly the divided ones bar ivory coast")
 
 
+def _fertilizer_component_census(ctx):
+    """Classify every iia fertilizer cell against the same-category materials the source prints.
+
+    Returns a list of (label, item, period-key, value, class, picked product, largest non-zero,
+    number of non-zero same-category materials printed).
+    The category is the tracked crosswalk `item_equivalences.csv` (the same one
+    33_component_underselection.py uses), so the census moves with the repo's own mapping rather than
+    with an outside spreadsheet. A raw row joins a layer-B cell on (label, period key, unit), the
+    label through `iia_label_provenance.csv`'s dominant raw label exactly as 33 does.
+    """
+    import itertools
+    fam = collections.defaultdict(set)
+    with open(os.path.join(STATE, "item_equivalences.csv"), newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            item = r["item"].strip().replace("fertilizer mixed", "fertilizer, mixed")
+            if item in _FERT_ITEMS:
+                fam[item].add(r["raw_product"].strip().lower())
+    lp = {}
+    with open(os.path.join(STATE, "iia_label_provenance.csv"), newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            d = (r.get("dominant_raw_label") or "").strip().lower()
+            k = (r.get("layer_b_label") or "").strip().lower()
+            if d and k:
+                lp[k] = d
+    raw = ctx["raw"]
+    raw = raw[(raw["_v"] == "production") & raw["value"].notna()]
+    raw = raw.assign(_k=raw["year"].astype(str).str.strip().str.replace(r"\.0$", "", regex=True),
+                     _u=raw["unit"].astype(str).str.strip().str.lower())
+    # Every printed value is kept, not one per product: two volumes can print the same product-year
+    # differently, and a cell matching EITHER printing is that product's. Size uses the largest.
+    idx = {k: g[["_p", "value"]] for k, g in raw.groupby(["_c", "_k", "_u"])}
+    lb = ctx["panel"]
+    lb = lb[(lb["source"] == "iia") & lb["item"].isin(_FERT_ITEMS) & lb["value"].notna()
+            & ~lb["is_aggregate"].fillna(False).astype(bool)]
+    key = lb["year"].astype("Int64").astype("string").fillna(lb["period"]).astype(str).str.strip()
+    out = []
+    for c, item, k, u, v in zip(lb["country"].astype(str).str.lower(), lb["item"], key,
+                                lb["unit"].astype(str).str.lower(), lb["value"].astype(float)):
+        rows = [idx[(lab, k, u)] for lab in sorted({lp.get(c, c), c}) if (lab, k, u) in idx]
+        rows = pd.concat(rows) if rows else None
+        if rows is not None:
+            rows = rows[rows["_p"].isin(fam[item])]
+        tol = max(0.5, 0.005 * abs(v))
+        if rows is None or rows.empty:
+            out.append((c, item, k, v, "no_raw_material", "", None, 0))
+            continue
+        mats = rows.groupby("_p")["value"].max()
+        nz = mats[mats > 0]
+        hit = sorted(set(rows.loc[(rows["value"] - v).abs() <= tol, "_p"]))
+        big = float(nz.max()) if len(nz) else None
+        if len(hit) > 1:
+            cls = "ambiguous"
+        elif not hit:
+            sums = any(abs(sum(s) - v) <= tol for n in range(2, len(nz) + 1)
+                       for s in itertools.combinations(nz.tolist(), n))
+            cls = "sum_of_materials" if sums else "matches_none"
+        elif len(nz) < 2:
+            cls = "only_material"
+        elif v == 0:
+            cls = "zero_beside_nonzero"
+        elif v >= 0.995 * big:
+            cls = "largest_of_several"
+        else:
+            cls = "minor_under_half" if v < 0.5 * big else "minor_over_half"
+        out.append((c, item, k, v, cls, hit[0] if len(hit) == 1 else "", big, len(nz)))
+    return out
+
+
+_FERT_ITEMS = ("n", "p", "k", "fertilizer, mixed")
+
+
+def check_iia_fertilizer_one_material(ctx):
+    """A nutrient cell is ONE raw material, never a sum -- across every iia fertilizer series (issue 490).
+
+    The entry's claim is generic, so the re-test is generic: every layer-B iia `n`, `p`, `k` and
+    `fertilizer, mixed` cell, dated and period, is classified against the same-category materials
+    the raw extract prints for that label and period. The pinned figures:
+
+      * NO CELL IS A SUM. Among cells where the source prints two or more non-zero same-category
+        materials, none equals the sum of any subset of two or more of them. Upstream keeps one row
+        per (label, item, period); it does not aggregate, and nothing in the item name says which
+        row survived.
+      * WHICH ROW SURVIVES IS NOT THE LARGEST. Of the cells attributable to exactly one material
+        beside others, the counts that are the largest, a minor one under half the largest, and a
+        minor one over half. The under-half class is the defect; it is what 33's census thresholds
+        into 8 series and what reaches 21 here without the 4-cell floor or the 60% share.
+      * POTASSIUM HAS NO UNDER-HALF CELL, the narrowing recorded on the issue.
+      * THE EXHIBIT: spain / p carries phosphate ROCK in every one of its cells, the superphosphate
+        printed beside it in each.
+
+    A remedy that publishes a genuine nutrient total makes the under-half count fall and, by design,
+    this check FAIL: the entry is then to be rewritten, not re-pinned.
+    """
+    cells = _fertilizer_component_census(ctx)
+    under = [c for c in cells if c[4] == "minor_under_half"]
+    series = {(c[0], c[1]) for c in under}
+    sp = [c for c in cells if c[0] == "spain" and c[1] == "p"]
+    rock = sum(1 for c in sp if c[5] == "fertilizers: phosphate, natural")
+    worst = max(under, key=lambda c: c[6] / c[3]) if under else None
+    sev = collections.Counter(c[4] for c in cells if c[7] >= 2)
+    return ([("iia fertilizer cells", len(cells), 1130),
+             ("beside >=2 non-zero materials", sum(sev.values()), 343),
+             ("  equal to a SUM of them", sev["sum_of_materials"], 0),
+             ("  the largest material", sev["largest_of_several"], 149),
+             ("  a minor one, < half", sev["minor_under_half"], 122),
+             ("  a minor one, >= half", sev["minor_over_half"], 44),
+             ("  a 0 beside non-zero ones", sev["zero_beside_nonzero"], 6),
+             ("  two materials equal", sev["ambiguous"], 8),
+             ("  no material, no sum", sev["matches_none"], 14),
+             ("series with a <half cell", len(series), 21),
+             ("  of them n", sum(1 for s in series if s[1] == "n"), 8),
+             ("  of them p", sum(1 for s in series if s[1] == "p"), 12),
+             ("  of them k", sum(1 for s in series if s[1] == "k"), 0),
+             ("spain p cells", len(sp), 16),
+             ("  of them phosphate rock", rock, 16),
+             ("worst ratio (x, rounded)", round(worst[6] / worst[3]) if worst else None, 3138)],
+            "no fertilizer cell is a sum of materials; the surviving one is a minor material "
+            "in 122 cells across 21 series, and k is clean")
+
+
 CHECKS = {
     "mmr-1885-1889-rice-area-is-lower-burma": check_mmr_1885_1889_lower_burma,
     "vnm-1955-1960-rice-maize-output-is-north-plus-south": check_vnm_1955_1960_output_north_plus_south,
@@ -3873,6 +3993,7 @@ CHECKS = {
     "iia-tobacco-hops-late-volume-unit-scale": check_iia_tobacco_hops_late_volume_scale,
     "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
     "iia-item-series-switch-raw-products": check_item_product_switches,
+    "iia-fertilizer-nutrient-item-is-one-material": check_iia_fertilizer_one_material,
     "mitchell-flax-fibre-area-is-linseed": check_mitchell_flax_is_linseed,
     "iia-flax-fibre-item-is-mostly-linseed": check_iia_flax_is_mostly_linseed,
     "fao1952-malaya-female-agric-1937-is-total": check_malaya_female_agric_is_total,
