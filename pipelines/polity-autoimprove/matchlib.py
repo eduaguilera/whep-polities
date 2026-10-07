@@ -379,18 +379,34 @@ def apply_label_item_corrections(df, rules, label_col="country", iso_col="iso3c"
 # a per-row DIVISOR that matched_rows.parquet carries beside the value, and the harmonized build
 # (pipelines/historical-production-harmonized/build.R) divides by it. Table:
 # data/final/source_value_scale_corrections.csv; gate: scripts/validate_value_scale_corrections.py.
+#
+# CELL RULES (issue 424). The same table also carries single cells one volume printed a power of ten
+# off while another volume prints the right figure for the same year -- iia_1933_34's 1933 cells
+# ten times too small (japan soybean area 32,367 where iia_1938_39 prints 324,000). Those are scoped
+# by `labels` (the layer-B labels the rule is restricted to; blank = every label) and carry a
+# divisor BELOW 1 (0.1 multiplies by ten). `volume` names the yearbook volume(s) whose PRINTING the
+# rule corrects (`iia_1938_39;iia_1939_45` for the tobacco block, `iia_1933_34` for a 1933 cell); for
+# a cell rule it is checked against state/volume_scale_conflicts.csv, where the cell was convicted
+# (46_volume_scale_conflicts.py). Layer B carries no volume column, so it documents and is checked,
+# but does not select rows.
 VALUE_SCALE_CORRECTION_COLUMNS = (
     "source", "item", "unit", "year_start", "year_end", "divisor", "exempt_labels",
-    "observed_rows", "issue", "evidence",
+    "observed_rows", "issue", "evidence", "labels", "volume",
 )
+
+# A divisor is a power of ten other than 1, written plainly: a fitted factor (68x, 9.88x) typed here
+# would publish a guess as a correction.
+_POW10_DIVISORS = {"10": 10, "100": 100, "1000": 1000, "10000": 10000,
+                   "0.1": 0.1, "0.01": 0.01, "0.001": 0.001}
 
 
 def load_value_scale_corrections(path):
     """Read data/final/source_value_scale_corrections.csv into rule dicts.
 
-    Raises on a missing file, a wrong header, a blank key, an unbounded or inverted year range, or a
-    divisor that is not a power of ten above 1: the defect this table exists for is a unit change,
-    and a fitted factor (68x, 9.88x) typed here would publish a guess as a correction."""
+    Raises on a missing file, a wrong header, a blank key, an unbounded or inverted year range, a
+    divisor that is not a power of ten other than 1 (0.1 to 10,000), or a rule naming both `labels`
+    and `exempt_labels`: the defect this table exists for is a printed power of ten, and a fitted
+    factor (68x, 9.88x) typed here would publish a guess as a correction."""
     if not path or not os.path.exists(path):
         raise FileNotFoundError(f"tracked value-scale correction table missing: {path}")
     with open(path, newline="", encoding="utf-8") as fh:
@@ -400,19 +416,23 @@ def load_value_scale_corrections(path):
                              f"{list(VALUE_SCALE_CORRECTION_COLUMNS)}")
         rules = []
         for i, r in enumerate(reader, start=2):
-            for col in ("source", "item", "unit", "divisor", "observed_rows", "issue", "evidence"):
+            for col in ("source", "item", "unit", "divisor", "observed_rows", "issue", "evidence",
+                        "volume"):
                 if not (r.get(col) or "").strip():
                     raise ValueError(f"{path}:{i}: empty `{col}`")
             y0, y1 = _yr(r.get("year_start")), _yr(r.get("year_end"))
             if y0 is None or y1 is None or y0 > y1:
                 raise ValueError(f"{path}:{i}: year range must be bounded and ordered, "
                                  f"got {r.get('year_start')!r}-{r.get('year_end')!r}")
-            d = _yr(r.get("divisor"))
-            if d is None or d < 10 or str(d) != "1" + "0" * (len(str(d)) - 1):
+            d = _POW10_DIVISORS.get((r.get("divisor") or "").strip())
+            if d is None:
                 raise ValueError(f"{path}:{i}: divisor {r.get('divisor')!r} is not a power of ten "
-                                 "above 1")
+                                 f"other than 1 (one of {sorted(_POW10_DIVISORS, key=float)})")
             exempt = tuple(x.strip() for x in (r.get("exempt_labels") or "").split(";") if x.strip())
-            rules.append({**r, "y0": y0, "y1": y1, "div": d, "exempt": exempt})
+            labels = tuple(x.strip() for x in (r.get("labels") or "").split(";") if x.strip())
+            if exempt and labels:
+                raise ValueError(f"{path}:{i}: a rule names `labels` or `exempt_labels`, not both")
+            rules.append({**r, "y0": y0, "y1": y1, "div": d, "exempt": exempt, "labels": labels})
     return rules
 
 
@@ -422,8 +442,8 @@ def value_scale_divisors(df, rules, label_col="country"):
     Returns (Series of divisors, {rule index: rows hit}). DATED ROWS ONLY: a period average cannot be
     assigned a volume by its years (`1928-1932` is printed by the inflated iia_1938_39), and the
     harmonized build drops period rows anyway. `label_col` must hold the label AS LAYER B PRINTS IT
-    -- the exemptions name source labels, not the corrected ones. Two rules hitting one row raise,
-    because file order must never decide a factor."""
+    -- the exemptions and the `labels` scope name source labels, not the corrected ones. Two rules
+    hitting one row raise, because file order must never decide a factor."""
     years = pd.to_numeric(df["year"], errors="coerce")
     div = pd.Series(1.0, index=df.index)
     hit_any = pd.Series(False, index=df.index)
@@ -434,6 +454,8 @@ def value_scale_divisors(df, rules, label_col="country"):
              & (years >= ru["y0"]) & (years <= ru["y1"]))
         if ru["exempt"]:
             m &= ~df[label_col].isin(ru["exempt"])
+        if ru.get("labels"):
+            m &= df[label_col].isin(ru["labels"])
         if (m & hit_any).any():
             raise ValueError(f"value-scale correction rule {k} overlaps an earlier rule")
         div.loc[m] = float(ru["div"])

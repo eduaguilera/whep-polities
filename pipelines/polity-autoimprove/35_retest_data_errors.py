@@ -1615,14 +1615,34 @@ def check_1933_x10_provenance_linked(ctx):
     by = collections.defaultdict(set)
     for c, w, v in zip(g["country"], when, g["value"]):
         by[str(c)].add((str(w).strip(), round(float(v), 6)))
-    confirmed = 0
+    confirmed, linked = 0, set()
     for r in cand:
         s, y = round(float(r["value_a"]), 6), str(r["year"]).strip()
-        if any((y, s) in by.get(t, ()) for t in lab2lb.get(r["label"].strip().lower(), ())):
+        hit = [t for t in lab2lb.get(r["label"].strip().lower(), ()) if (y, s) in by.get(t, ())]
+        if hit:
             confirmed += 1
+            linked |= {(t, int(y), s) for t in hit}
+    # ADJUDICATED 2026-10-07 (issue 424) by 46_volume_scale_conflicts.py: each linked cell judged
+    # against its own series' neighbours (with issue 416's rules applied to them). Not all 14 are
+    # wrong: the three 1933 hops AREAS read right, because the 10x side is iia_1938_39's hops-area
+    # unit (416); four have a neighbour missing or on neither side. The 7 convicted cells (8 rows:
+    # syria's one printed area feeds cotton lint too) carry a x10 cell rule in
+    # data/final/source_value_scale_corrections.csv.
+    with open(os.path.join(STATE, "volume_scale_conflicts.csv"), newline="", encoding="utf-8") as fh:
+        vsc = list(csv.DictReader(fh))
+    verdict = {}
+    for c in vsc:
+        k = (c["layer_b_label"], int(c["year"]), round(float(c["carried_value"]), 6))
+        if k in linked:
+            verdict.setdefault(k, set()).add(c["verdict"])
+    n = collections.Counter(v for vs in verdict.values() for v in vs)
     return ([("x10 candidates with iia_1933_34 holding the smaller value", len(cand), 32),
-             ("of those, PROVENANCE-LINKED into layer B", confirmed, 14)],
-            "label-level provenance reproduces 14; item-level gives only 9")
+             ("of those, PROVENANCE-LINKED into layer B", confirmed, 14),
+             ("linked cells judged by the volume comparison", len(verdict), 14),
+             ("  convicted (corrected by a x10 cell rule)", n["carried_convicted"], 7),
+             ("  consistent (the hops areas: the 10x side is 416's unit)", n["carried_consistent"], 3),
+             ("  undecided", n["undecided"], 4)],
+            "label-level provenance reproduces 14; item-level gives only 9; 7 convicted, 3 refuted")
 
 
 def check_nauru_1933_transposition(ctx):
@@ -3758,8 +3778,10 @@ def check_iia_tobacco_hops_late_volume_scale(ctx):
     import importlib
     sys.path.insert(0, HERE)
     matchlib = importlib.import_module("matchlib")
-    rules = matchlib.load_value_scale_corrections(
-        os.path.join(REPO, "data/final/source_value_scale_corrections.csv"))
+    # The issue-416 BLOCK rules only; the table also carries issue 424's single-cell rules, re-tested
+    # by check_1933_x10_provenance_linked.
+    rules = [r for r in matchlib.load_value_scale_corrections(
+        os.path.join(REPO, "data/final/source_value_scale_corrections.csv")) if not r["labels"]]
     lb = ctx["panel"]
     lb = lb[~lb["is_aggregate"].fillna(False).astype(bool)]
     div, per_rule = matchlib.value_scale_divisors(lb, rules)

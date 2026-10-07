@@ -1189,7 +1189,7 @@ extract is not in CI.
 The IIA's late volumes print tobacco and hops production 100x too large from 1934 and
 iia_1938_39 prints hops area 10x too large; that is a property of a volume's column, so it is
 recorded as one rule per block in `data/final/source_value_scale_corrections.csv` (`source, item,
-unit, year_start, year_end, divisor, exempt_labels, observed_rows, issue, evidence`; inclusive
+unit, year_start, year_end, divisor, exempt_labels, observed_rows, issue, evidence, labels, volume`; inclusive
 years, DATED rows only, `divisor` an exact power of ten, `exempt_labels` a `;`-list of layer-B
 labels the rule leaves alone). `01_match_and_findings.py` computes the per-row divisor on the label
 layer B prints (`matchlib.value_scale_divisors`) and writes it to `matched_rows.parquet` as
@@ -1198,6 +1198,20 @@ layer B prints (`matchlib.value_scale_divisors`) and writes it to `matched_rows.
 series (same polity and year in juan/mitchell, fao1952's period averages) and a measured edge, not
 a fitted factor. `scripts/validate_value_scale_corrections.py` pins every rule in full and, with
 layer B present, re-measures the sibling agreement and the control rows each edge leaves alone.
+
+**When one volume printed a single cell a power of ten off, a cell rule corrects it** (issue 424).
+IIA volumes overlap (iia_1933_34 and iia_1938_39 both print 1933), so some cells are printed twice.
+`46_volume_scale_conflicts.py` pairs those printings on the layer-B key (label via
+`iia_label_provenance.csv`, item via `item_equivalences.csv`, which also pairs a product renamed
+between volumes) and judges every power-of-ten disagreement against the series' nearest neighbour
+on each side, with the value-scale rules applied to the neighbours: `carried_convicted` (layer B's
+value fits neither, the other volume's fits both), `carried_consistent`, `undecided`,
+`not_in_layer_b`. Its tracked output is `state/volume_scale_conflicts.csv` (`--write`, `--check`;
+needs the raw extract). Each convicted cell gets a row in the same value-scale table with `labels`
+(the layer-B label), one year, `volume` (the printing corrected) and `divisor` 0.1, and the gate
+checks the two tables against each other in both directions, in CI. A power-of-ten disagreement is
+not a verdict: the three 1933 hops areas in the original x10 list read right, because the 10x side
+is iia_1938_39's hops-area unit.
 
 ### What a source label actually means (avoid false precision)
 
