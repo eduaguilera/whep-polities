@@ -70,10 +70,10 @@ Effect on the consumer-collapsed totals, 2026-10-07 panel, before -> after:
 ```
           before             after              change     withheld keys carried
 ha        33,084,288,112     33,033,610,621     -0.153%    52,678,607
-tonnes    68,152,965,039     68,097,626,398     -0.081%    58,183,573
+tonnes    67,684,626,039     67,629,287,398     -0.082%    58,183,573
 heads     84,928,919,271     84,820,666,637     -0.127%    94,805,500
 
-keys 142,138 -> 141,882: 256 withheld (251 cross-source contradictions, 5 unreadable
+keys 141,974 -> 141,718: 256 withheld (251 cross-source contradictions, 5 unreadable
 single-source groups); 1,451 retained keys change value, median ratio 1.001
 ```
 
