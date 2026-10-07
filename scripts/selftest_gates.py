@@ -5189,6 +5189,63 @@ def mutate_territorybasis_write_guard_removed(root, gpd, make_valid, affinity):
         fh.write(src[:i] + src[j:])
     return "04_territory_basis.py can now overwrite priority_review with its collapsed value, exit 0"
 
+def _queue_rewrite(root, name, edit):
+    """Rewrite one adjudication-queue CSV in the scratch tree through `edit(rows, fields)`."""
+    path = os.path.join(root, "pipelines/polity-autoimprove/state", name)
+    with open(path, newline="", encoding="utf-8") as fh:
+        rd = csv.DictReader(fh)
+        rows, fields = list(rd), list(rd.fieldnames)
+    if not rows:
+        raise AssertionError(f"{name} has no rows, so this mutation has nothing to edit")
+    what = edit(rows, fields)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return what
+
+
+def mutate_queue_quarantine_orphan_candidate(root, gpd, make_valid, affinity):
+    """A quarantine candidate naming a polity the database does not hold (the #17/#244 class)."""
+    def edit(rows, fields):
+        rows[0]["candidate"] = "ZZZ-1800-1801"
+        return f"quarantine.csv row 1 candidate -> ZZZ-1800-1801 ({rows[0]['key']})"
+    return _queue_rewrite(root, "quarantine.csv", edit)
+
+
+def mutate_queue_resolved_same_candidate(root, gpd, make_valid, affinity):
+    """A `route_changed` archive row whose current candidate equals the one it says changed."""
+    def edit(rows, fields):
+        hit = next(r for r in rows if r["resolution"] == "route_changed")
+        hit["current_candidate"] = hit["candidate"]
+        return f"quarantine_resolved.csv {hit['key']} current_candidate -> its own candidate"
+    return _queue_rewrite(root, "quarantine_resolved.csv", edit)
+
+
+def mutate_queue_suspect_page_retired(root, gpd, make_valid, affinity):
+    """A suspect-page finding re-pointed at a retired/superseded polity."""
+    with open(os.path.join(root, "data/final/polities_database.csv"), newline="",
+              encoding="utf-8") as fh:
+        dead = next(r["polity_code"] for r in csv.DictReader(fh)
+                    if r["wiki_status"] in ("retired", "superseded")
+                    and os.path.exists(os.path.join(
+                        root, "wiki/polities", r["polity_code"].lower() + ".md")))
+    def edit(rows, fields):
+        rows[0]["polity_code"] = dead
+        return f"suspect_wiki_pages.csv row 1 polity_code -> {dead}"
+    return _queue_rewrite(root, "suspect_wiki_pages.csv", edit)
+
+
+def mutate_queue_findings_column_dropped(root, gpd, make_valid, affinity):
+    """A column dropped from the findings archive, so every reader of `reason` sees nothing."""
+    def edit(rows, fields):
+        fields.remove("reason")
+        for r in rows:
+            r.pop("reason")
+        return "wiki_findings_resolved.csv lost its `reason` column"
+    return _queue_rewrite(root, "wiki_findings_resolved.csv", edit)
+
+
 def mutate_quarantine_fallback_resolves(root, gpd, make_valid, affinity):
     """Strip reconcile_quarantine.py's refusal, letting a fallback route close an adjudication.
 
@@ -7206,6 +7263,31 @@ CASES = (
         "but is not in the allowlist",
         "a tool that prints the CI-skip token without an allowlist entry, caught statically",
     ),
+    (
+        "validate_adjudication_queues.py",
+        mutate_queue_quarantine_orphan_candidate,
+        "candidate 'ZZZ-1800-1801' is not in polities_database.csv",
+        "a quarantine row whose candidate polity does not exist, the orphan-code class #17/#244 paid "
+        "for, in a queue no other gate reads the content of",
+    ),
+    (
+        "validate_adjudication_queues.py",
+        mutate_queue_resolved_same_candidate,
+        "says no longer applies",
+        "an archived route_changed row whose current candidate is the one it claims was left",
+    ),
+    (
+        "validate_adjudication_queues.py",
+        mutate_queue_suspect_page_retired,
+        "can no longer be acted on",
+        "a wiki finding about a retired page, which reconcile_wiki_queues.py exists to drop",
+    ),
+    (
+        "validate_adjudication_queues.py",
+        mutate_queue_findings_column_dropped,
+        "is not the writer's field list",
+        "a schema change to the archive that every reader would see as an empty string",
+    ),
 )
 
 # Gates that need an argument to run in check mode rather than write mode. Verified, not
@@ -8025,6 +8107,16 @@ WRITABLE = {
         "pipelines/agent-harness/state/panel_unit_names.csv",
         "pipelines/agent-harness/policy.json",
         "pipelines/polity-autoimprove/state/applied_aliases.csv",
+    ),
+    # The cases rewrite the five adjudication queues, so real copies; the wiki pages are read for
+    # existence only but must be PRESENT in the scratch root.
+    "validate_adjudication_queues.py": (
+        "pipelines/polity-autoimprove/state/quarantine.csv",
+        "pipelines/polity-autoimprove/state/quarantine_resolved.csv",
+        "pipelines/polity-autoimprove/state/suspect_wiki_pages.csv",
+        "pipelines/polity-autoimprove/state/wiki_notes_queue.csv",
+        "pipelines/polity-autoimprove/state/wiki_findings_resolved.csv",
+        "wiki/polities",
     ),
 }
 
