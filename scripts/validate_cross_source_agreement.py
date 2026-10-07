@@ -48,8 +48,16 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/cross_source_agre
 ERRORS = os.path.join(REPO, "pipelines/polity-autoimprove/state/data_errors.csv")
 
 BIG_RATIO = 10.0
-BASELINE_UNEXPLAINED = 0        # reachable today; a new one is a finding
-BASELINE_MIN_CELLS = 700        # 804 today. A floor, so the surface cannot quietly disappear.
+BASELINE = os.path.join(REPO, "pipelines/polity-autoimprove/state/cross_source_unexplained_baseline.csv")
+# Issue 612 normalised fao1952's thousands, taking the surface from 804 to 2,989 cells and exposing
+# unexplained >=10x cells that no check could see before. Each is committed in BASELINE with a
+# reason; the gate compares the SET, not a count, so one cell cannot be swapped for another and a
+# cell adjudicated into data_errors.csv must also be removed from the file.
+BASELINE_MIN_CELLS = 2900       # 2,989 today. A floor, so the surface cannot quietly disappear.
+# Reach pin (issue 612): cells in which fao1952 is a source. It was 0 while `unit` was keyed raw,
+# because fao1952 reports `1000 tonnes` where every other source says `tonnes`. The total floor above
+# would NOT notice this regress -- iia/juan/mitchell alone give ~800 cells.
+BASELINE_MIN_FAO1952_CELLS = 2100   # 2,183 today
 
 # Arm E. The key excludes `indicator` on purpose -- the column holds a measurement type for fao1952
 # and iia (`crops:production`) and a PAGE REFERENCE for mitchell (`page_12_table_1`), so keying on it
@@ -72,6 +80,9 @@ def main() -> int:
     with open(ERRORS, newline="", encoding="utf-8") as fh:
         known_ids = {e["issue_id"] for e in csv.DictReader(fh)}
 
+    with open(BASELINE, newline="", encoding="utf-8") as fh:
+        baseline = {(b["polity_code"], b["item"], b["unit"], b["year"]): b
+                    for b in csv.DictReader(fh)}
     problems = []
     big, unexplained, dangling, conflicts = [], [], [], []
     for r in rows:
@@ -96,7 +107,11 @@ def main() -> int:
             if issue_id not in known_ids:
                 dangling.append(f"{r['polity_code']}/{r['item']}/{r['year']} -> {issue_id}")
         # nulls are written as an empty segment, so a cell reads e.g. ";page_14_table_1"
-        annotated = {x for x in r.get("indicators", "").split(";") if x}
+        # Only MEASUREMENT TYPES (`crops:production`) can conflict. A mitchell page reference
+        # (`page_12_table_1`, `copia de page_20_table_1`) says where a number was printed, not what
+        # it measures, so pairing it with fao1952's `livestock:livestock` is not a disagreement --
+        # issue 612 admitted fao1952 and 517 such pairs appeared.
+        annotated = {x for x in r.get("indicators", "").split(";") if ":" in x}
         if len(annotated) > 1:
             conflicts.append(f"{r['polity_code']}/{r['item']}/{r['year']}: "
                              f"{sorted(annotated)} across {r['sources']}")
@@ -105,10 +120,22 @@ def main() -> int:
             if not r["known_defect"]:
                 unexplained.append(r)
 
+    fao = [r for r in rows if "fao1952" in r["sources"].split(";")]
+    print(f"{len(fao):,} cells involve fao1952 (floor {BASELINE_MIN_FAO1952_CELLS})")
+    if len(fao) < BASELINE_MIN_FAO1952_CELLS:
+        problems.append(
+            f"only {len(fao)} cross-source cells involve fao1952, below the floor of "
+            f"{BASELINE_MIN_FAO1952_CELLS}. fao1952 reports in thousands (`1000 tonnes`), so unless "
+            f"39_cross_source_agreement.py normalises UNIT_MAP before keying it can never share a "
+            f"cell with another source and gets no cross-source validation at all (issue 612)")
+    thousands = sorted({r["unit"] for r in rows if r["unit"].startswith("1000 ")})
+    if thousands:
+        problems.append(f"unnormalised thousand-unit(s) {thousands} in the table: values in "
+                        f"thousands cannot be compared with another source's units")
     print(f"{len(rows):,} cross-source cells across {len({r['polity_code'] for r in rows})} polities "
           f"(floor {BASELINE_MIN_CELLS})")
     print(f"  disagreeing by >={BIG_RATIO:g}x: {len(big)}   "
-          f"with NO recorded defect: {len(unexplained)} (ceiling {BASELINE_UNEXPLAINED})")
+          f"with NO recorded defect: {len(unexplained)}")
 
     if len(rows) < BASELINE_MIN_CELLS:
         problems.append(
@@ -116,7 +143,7 @@ def main() -> int:
             f"because several labels route to one polity, so it SHRINKS when a reroute separates "
             f"them -- which may be correct, but it removes the only place two publishers are "
             f"comparable and should be a deliberate act")
-    # ARM F -- THE CEILING MUST BE REACHABLE (issue 635). BASELINE_UNEXPLAINED = 0 above is only a
+    # ARM F -- THE CEILING MUST BE REACHABLE (issue 635). the zero-unexplained premise is only a
     # check if some cell CAN be unexplained. It could not be: `coverage()` ignored the registry's
     # `polity_code` column, so one entry with 17 declared codes, `commodity = (all)` and a
     # placeholder label matched 804 of 804 cells and pre-absorbed everything. The arm had never been
@@ -132,7 +159,7 @@ def main() -> int:
     if rows and universal:
         problems.append(
             f"entry/entries {universal} are attributed to ALL {len(rows)} cells, so no cell can ever "
-            f"appear as unexplained and the ceiling of {BASELINE_UNEXPLAINED} above cannot be "
+            f"appear as unexplained and the baseline of unexplained cells above cannot be "
             f"exceeded by anything. An entry that covers everything explains nothing. Scope it with "
             f"`polity_code`, `commodity` or `label` in data_errors.csv -- see issue 635, where this "
             f"state hid 8 disagreements at 10-14x.")
@@ -140,19 +167,26 @@ def main() -> int:
           f"recorded defect; widest entry covers "
           f"{max(absorbed.values()) if absorbed else 0} of {len(rows)}")
 
-    if len(unexplained) > BASELINE_UNEXPLAINED:
-        for r in unexplained[:8]:
-            print(f"   UNEXPLAINED {r['polity_code']:16}{r['item'][:22]:24}{r['unit'][:8]:10}"
-                  f"{r['year']:6}{r['ratio']:>10}x  {r['sources']}  [{r['labels']}]")
+    ukeys = {(r["polity_code"], r["item"], r["unit"], r["year"]) for r in unexplained}
+    fresh, gone = sorted(ukeys - set(baseline)), sorted(set(baseline) - ukeys)
+    print(f"  unexplained set vs committed baseline: {len(fresh)} new, {len(gone)} resolved "
+          f"({len(baseline)} baselined)")
+    for k in fresh[:8]:
+        r = next(x for x in unexplained if (x["polity_code"], x["item"], x["unit"], x["year"]) == k)
+        print(f"   UNEXPLAINED {r['polity_code']:16}{r['item'][:22]:24}{r['unit'][:8]:10}"
+              f"{r['year']:11}{r['ratio']:>10}x  {r['sources']}  [{r['labels']}]")
+    if fresh:
         problems.append(
-            f"{len(unexplained)} cell(s) disagree by >={BIG_RATIO:g}x with no entry in "
-            f"data_errors.csv explaining them, above the ceiling of {BASELINE_UNEXPLAINED}. Two "
-            f"independent publishers differing by an order of magnitude on the same polity, item, "
-            f"unit and year is either a routing that put incompatible series together or a defect "
-            f"nobody has recorded")
-    elif len(unexplained) < BASELINE_UNEXPLAINED:
-        problems.append(f"only {len(unexplained)} unexplained cell(s), below the ceiling of "
-                        f"{BASELINE_UNEXPLAINED} -- lower it so the improvement is held")
+            f"{len(fresh)} cell(s) disagree by >={BIG_RATIO:g}x with no entry in data_errors.csv "
+            f"explaining them and are not in the committed baseline. Two independent publishers "
+            f"differing by an order of magnitude on the same polity, item, unit and year is either a "
+            f"routing that put incompatible series together or a defect nobody has recorded")
+    if gone:
+        problems.append(
+            f"{len(gone)} baselined cell(s) are no longer unexplained (now explained by a "
+            f"data_errors entry, or no longer disagreeing): remove them from "
+            f"cross_source_unexplained_baseline.csv so the improvement is held: "
+            + "; ".join("/".join(k) for k in gone[:4]))
     print(f"  cells whose sources give DIFFERENT non-null indicators: {len(conflicts)} "
           f"(ceiling {BASELINE_INDICATOR_CONFLICTS})")
     if len(conflicts) > BASELINE_INDICATOR_CONFLICTS:
