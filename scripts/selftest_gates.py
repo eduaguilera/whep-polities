@@ -3118,6 +3118,30 @@ def mutate_new_cow_code_collision(root, gpd, make_valid, affinity):
             "over overlapping years, so one new collision appears and no baselined pair leaves")
 
 
+def mutate_cow_code_of_another_country(root, gpd, make_valid, affinity):
+    """Give a polity another country's COW code, on a row the collision check does not see.
+
+    This is the defect of issue 653: IDN-1800-1889 carried 750 (India's). Reverting it reproduces
+    the original failure exactly -- the row is superseded, so the collision arm skips it -- which
+    is why the iso3 arm exists. Only the `carries cow 750` arm should fire.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/polities_database.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    hit = [r for r in rows if r["polity_code"] == "IDN-1800-1889"]
+    assert hit and hit[0]["cow_code"] == "850", "IDN-1800-1889 no longer carries 850 -- pick another"
+    assert hit[0]["wiki_status"] in ("retired", "superseded"), "row is live now: collision arm fires too"
+    hit[0]["cow_code"] = "750"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return ("set superseded IDN-1800-1889's cow_code back to 750, which is India's, so the row's "
+            "iso3 IDN disagrees with the iso3 COW files 750 under and the collision check is blind")
+
+
 def mutate_lexicon_year_ranges_overlap(root, gpd, make_valid, affinity):
     """Give one lexicon form two dated entries whose ranges overlap on different targets.
 
@@ -6471,6 +6495,13 @@ CASES = (
         "shares except by being NEW — so only a baselined set can tell them apart",
     ),
     (
+        "validate_cow_codes.py",
+        mutate_cow_code_of_another_country,
+        "IDN-1800-1889",
+        "a polity carrying another country's COW code on a superseded row -- the collision check "
+        "skips dead rows and the polygon pipeline never reads the column (issue 653)",
+    ),
+    (
         "validate_stated_areas.py",
         mutate_lexicon_year_ranges_overlap,
         "OVERLAPPING year ranges",
@@ -7477,7 +7508,7 @@ WRITABLE = {
     "validate_iso_collisions.py": ("polities_database.csv",),
     "validate_unranged_aliases.py": ("label_alias_map.csv",),
     "validate_iso_codes.py": ("polities_database.csv",),
-    "validate_cow_codes.py": ("polities_database.csv",),
+    "validate_cow_codes.py": ("polities_database.csv", "data/external/cow_state_system.csv"),
     # This gate SKIPs unless it can read the geometry, the database, the statements, the lexicon
     # AND import matchlib off `pipelines/polity-autoimprove` -- which is why it had no case for as
     # long as it has existed. A SKIP exits 0, so a case that did not stage all five would report
