@@ -124,6 +124,7 @@ polygon_feature_id:   <value matching that source's id_column>
 polygon_feature_year: <int, only if the source has a temporal block>
 polygon_status:       assigned | proxy | missing | excluded
 polygon_area_km2:     <int, optional; ETRS89 LAEA for Europe, equivalent equal-area elsewhere>
+polygon_area_source:  <required exactly when polygon_area_km2 is set: source-stated | official-gazetteer | derived-arithmetic | measured-from-polygon>
 ```
 
 If `polygon_source` names a slug that isn't in `sources.yaml`, the

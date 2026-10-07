@@ -170,7 +170,7 @@ source files on disk.
 
   | value | means | validator behaviour |
   |---|---|---|
-  | `assigned` | the polygon **is** this polity's territory for the period | check A **fails** if the geometry's measured area diverges >25% from `polygon_area_km2` |
+  | `assigned` | the polygon **is** this polity's territory for the period | check A **fails** if the geometry's measured area diverges >25% from `polygon_area_km2` (rows labelled `measured-from-polygon` are skipped; see `polygon_area_source`) |
   | `proxy` | a stand-in from another period or entity, knowingly inexact | divergence reported, not failed — but the page must document direction and magnitude |
   | `estimate` | approximate, no exact feature exists | same as `proxy` |
   | `polygon_vintage_drift` | the polygon's vintage is unrepresentative of much of the row's span — typically a single snapshot back-projected across a long period. The vintage is usually INSIDE the span, not outside it: every row carrying this value today has a vintage within its own dates (`BRA-1800-1903` uses an 1890 polygon, `IND-1800-1886` an 1880 one). An earlier wording said "sits outside the row's span", which is not how the value is used and led to two rows being mislabelled `proxy`. | same as `proxy` |
@@ -209,7 +209,36 @@ source files on disk.
   2026-08-13, the largest movement across all 735 is 2.1%. So check A's 25% tolerance tests
   the territory, and a divergence means the declared figure or the binding is wrong, never
   the rendering. Declare the official or source-stated area; do **not** re-measure it off
-  the shipped polygon, which is the tautology check A2 counts.
+  the shipped polygon unless you label it `measured-from-polygon` (below).
+
+  **Two meanings, now separated (issue 600).** The field has always held one of two different
+  things, and nothing said which: a figure a *source* states (a yearbook, an official land
+  area), or a figure *read off our own polygon*. For the second kind, validate_polygons check
+  A compared a polygon with itself and could not fail — which hid three real errors (#195).
+  `polygon_area_km2` is therefore **unchanged and kept for compatibility, but ambiguous on its
+  own**; read it with the field below, or use the two unambiguous published columns.
+- `polygon_area_source` — **required exactly when `polygon_area_km2` is set**, empty otherwise.
+  Where the declared figure came from:
+
+  | value | means | what check A does with it |
+  |---|---|---|
+  | `source-stated` | a yearbook or dataset figure (FAO, IIA, a CShapes `area` attribute for a *different* extent than the shipped one) | compared against the geometry; A7 wants it corroborated by `source_stated_area_basis.csv` |
+  | `official-gazetteer` | an official land area (statistics office, Factbook) | compared against the geometry |
+  | `derived-arithmetic` | a sum or difference of published figures (island areas added up) | compared against the geometry |
+  | `measured-from-polygon` | read off the row's own shipped geometry, **including a dataset's `area` attribute for the very feature the row ships** | **skipped** (it cannot disagree); counted by A2, and A6 fails if it has gone stale (>2% from the geometry) |
+  | `unrecorded` | a legacy figure whose origin the page does not say (49 live rows at migration) | compared; a **ceiling that may only fall** — do not use it on a new page |
+
+  Prefer a sourced figure to a measured one. A figure within 0.1% of the polygon that is *not*
+  labelled `measured-from-polygon` and that no source corroborates fails A2c: it is
+  indistinguishable from a copy.
+- **Published columns** (schema version 2, see `polities_manifest.json` → `polities_schema`):
+  `polygon_area_source` and `stated_area_km2` in the CSV and the GeoPackage, and
+  `computed_polygon_area_km2` in the GeoPackage only. `stated_area_km2` is `polygon_area_km2`
+  where the source is independent of the polygon (`source-stated`, `official-gazetteer`,
+  `derived-arithmetic`) and empty otherwise, **derived by `build_database.py`, never hand-written**.
+  `computed_polygon_area_km2` is the shipped geometry's planar area in `ESRI:54034`, measured by
+  `build_database.py` (so the two meanings sit side by side), and re-measured by check A8.
+
 - `predecessor`, `successor` — YAML lists of UPPERCASE `polity_code`s
   (`[]` for none). Drives the site's Graph tab edges and the coverage-
   chain integrity checks in lint. Every code listed here should also

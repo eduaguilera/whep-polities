@@ -1,5 +1,43 @@
 {
- "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. `label_item_corrections` lists the rows a source files under another territory's label for one item; apply it BEFORE resolving labels with the alias map. `source_flow_flags` names the (source, label, item) combinations whose figures are NOT the labelled territory's production — entrepot/transit volumes — which no aggregate should sum beside the producing territory's own series. `territory_families` and `iso3_successor_map` say which OTHER families cover one territory, which iso3_code cannot: do not infer that link from the code. `polity_code_renames` maps codes renamed without any territorial change (old_code -> new_code); apply it to data keyed on codes from before the rename. Regenerate with scripts/write_manifest.py.",
+ "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. `label_item_corrections` lists the rows a source files under another territory's label for one item; apply it BEFORE resolving labels with the alias map. `source_flow_flags` names the (source, label, item) combinations whose figures are NOT the labelled territory's production — entrepot/transit volumes — which no aggregate should sum beside the producing territory's own series. `territory_families` and `iso3_successor_map` say which OTHER families cover one territory, which iso3_code cannot: do not infer that link from the code. `polity_code_renames` maps codes renamed without any territorial change (old_code -> new_code); apply it to data keyed on codes from before the rename. `polities_schema.version` names the schema of polities_database.{csv,gpkg}; it changes whenever a column is added, removed, renamed or changes meaning, and `polities_schema.area_fields` says which of the area columns to read for what. Regenerate with scripts/write_manifest.py.",
+ "polities_schema": {
+  "version": 2,
+  "csv_columns": [
+   "polity_code",
+   "polity_name",
+   "start_year",
+   "end_year",
+   "polity_type",
+   "iso3_code",
+   "cow_code",
+   "continent",
+   "wiki_status",
+   "last_ingest",
+   "polygon_source",
+   "polygon_feature_id",
+   "polygon_feature_year",
+   "polygon_status",
+   "polygon_area_km2",
+   "predecessor",
+   "successor",
+   "polygon_feature_date",
+   "polygon_area_source",
+   "stated_area_km2"
+  ],
+  "gpkg_extra_fields": [
+   "computed_polygon_area_km2"
+  ],
+  "history": {
+   "1": "17 columns ending predecessor/successor, then polygon_feature_date (issue 100).",
+   "2": "Appends polygon_area_source and stated_area_km2 to the CSV and the GeoPackage, and computed_polygon_area_km2 (GeoPackage only) after the CSV columns (issue 600). No column was removed, renamed or reordered, and no existing value changed: a reader that selects columns by name is unaffected."
+  },
+  "area_fields": {
+   "polygon_area_km2": "UNCHANGED and now documented as AMBIGUOUS: the declared area, which is either a figure a source states or a figure read off the row's own polygon. Read polygon_area_source to tell which. Kept byte-identical so existing readers keep working; prefer stated_area_km2 or computed_polygon_area_km2.",
+   "polygon_area_source": "Where polygon_area_km2 came from: measured-from-polygon, source-stated, official-gazetteer, derived-arithmetic, or unrecorded (a legacy figure whose origin the page does not say). Empty when polygon_area_km2 is empty.",
+   "stated_area_km2": "polygon_area_km2 where it is INDEPENDENT of the polygon (source-stated, official-gazetteer, derived-arithmetic), else empty. The one column to use for 'what a source says this territory's area is'. Derived, never hand-written.",
+   "computed_polygon_area_km2": "GeoPackage only. The planar area of the shipped geometry in ESRI:54034, km2, rounded to 0.01; empty on rows without a geometry. Never hand-written: build_database.py measures it, and validate_polygons.py check A8 re-measures it."
+  }
+ },
  "source": "data/final/polities_database.csv",
  "identity_fields": [
   "polity_code",

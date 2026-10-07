@@ -165,6 +165,9 @@ Check, in order:
     `## Territorial extent` must back them up. Check for:
     - Pages missing any of the five polygon fields. Frontmatter
       schema violations — must-fix.
+    - Pages with `polygon_area_km2` set but no `polygon_area_source`
+      (or the reverse). `build_database.py --check` rejects both, and a
+      new page must not use `unrecorded` (issue 600).
     - Pages with `polygon_status: assigned` whose
       `## Territorial extent` has boilerplate like "No polygon"
       (contradiction — either frontmatter or prose is wrong).

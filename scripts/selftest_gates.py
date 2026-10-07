@@ -1066,6 +1066,61 @@ def mutate_area_read_off_its_own_polygon(root, gpd, make_valid, affinity):
     return f"rewrote {hit}'s declared area to {newval:,}, exactly what its polygon measures"
 
 
+def mutate_declared_area_loses_its_provenance(root, gpd, make_valid, affinity):
+    """Blank `polygon_area_source` on a row that declares an area (issue 600).
+
+    Without the label nothing says whether the figure is a source's or the polygon's own
+    measurement, which is the ambiguity the field exists to remove: check A would compare the row
+    as if it were independent whichever it was. Written to the GeoPackage, which is where
+    validate_polygons reads it.
+    """
+    g = gpd.read_file(GPKG)
+    hit = g.index[(g.polygon_area_source == "source-stated")
+                  & g.geometry.notna() & ~g.geometry.is_empty][0]
+    code = g.loc[hit, "polity_code"]
+    g.loc[hit, "polygon_area_source"] = ""
+    write_gpkg(g, root)
+    return f"blanked polygon_area_source on {code}, which still declares {g.loc[hit, 'polygon_area_km2']} km2"
+
+
+def mutate_measured_area_goes_stale(root, gpd, make_valid, affinity):
+    """Move a `measured-from-polygon` figure 10% off its polygon (issue 600).
+
+    The label claims the figure IS the geometry's measurement. Check A skips such rows because they
+    cannot disagree, so only A6 can see that the geometry moved and the claim stopped being true.
+    """
+    g = gpd.read_file(GPKG)
+    live = g[g.geometry.notna() & ~g.geometry.is_empty & (g.polygon_area_source == "measured-from-polygon")]
+    hit = live.index[0]
+    new = float(g.loc[hit, "polygon_area_km2"]) * 1.10
+    g.loc[hit, "polygon_area_km2"] = str(round(new, 1))
+    write_gpkg(g, root)
+    return f"made {g.loc[hit, 'polity_code']}'s measured-from-polygon figure 10% larger than its polygon"
+
+
+def mutate_copied_area_relabelled_independent(root, gpd, make_valid, affinity):
+    """Relabel a polygon-copied figure `official-gazetteer` (issue 600).
+
+    The cheapest way past the tautology count: leave the number, change the label. A2c catches a
+    figure within 0.1% of its own polygon that claims independence and has no corroborating source.
+    Picks a row with no entry in source_stated_area_basis.csv, so no corroboration can exist.
+    """
+    import pandas as _pd
+    basis = _pd.read_csv(os.path.join(os.path.dirname(GPKG), "source_stated_area_basis.csv"))
+    covered = set(basis.polity_code)
+    g = gpd.read_file(GPKG)
+    ok = g[g.geometry.notna() & ~g.geometry.is_empty & (g.polygon_area_source == "measured-from-polygon")
+           & ~g.polity_code.isin(covered) & ~g.wiki_status.isin(("retired", "superseded"))]
+    eq = ok.to_crs("ESRI:54034")
+    for i, r in eq.iterrows():
+        dec = float(g.loc[i, "polygon_area_km2"])
+        if abs(r.geometry.area / 1e6 / dec - 1) <= 0.0005:
+            g.loc[i, "polygon_area_source"] = "official-gazetteer"
+            write_gpkg(g, root)
+            return f"relabelled {g.loc[i, 'polity_code']}'s polygon-measured area as an official gazetteer figure"
+    raise AssertionError("no tight measured-from-polygon row without a basis figure")
+
+
 def mutate_oversimplified_archipelago(root, gpd, make_valid, affinity):
     """Thin an archipelago's polygon at the build's own default tolerance, which is the
     defect issue 71 describes, reproduced exactly rather than modelled.
@@ -7144,6 +7199,27 @@ CASES = (
         mutate_area_read_off_its_own_polygon,
         'is above the pinned ceiling of',
         "a declared area overwritten with its own polygon's measurement, which silences check A",
+    ),
+    (
+        "validate_polygons.py",
+        mutate_declared_area_loses_its_provenance,
+        "(allowed: derived-arithmetic",
+        "a declared area whose provenance label is blank, so nobody can tell a source's figure "
+        "from the polygon's own measurement",
+    ),
+    (
+        "validate_polygons.py",
+        mutate_measured_area_goes_stale,
+        "-- re-measure it or source a figure",
+        "a figure labelled as measured off the polygon that the polygon no longer matches, which "
+        "check A skips by construction",
+    ),
+    (
+        "validate_polygons.py",
+        mutate_copied_area_relabelled_independent,
+        "A figure within 0.1% of its own polygon is not evidence",
+        "a polygon-copied area relabelled as an official figure, the cheapest way past the "
+        "self-referential count",
     ),
     (
         "validate_simplification_loss.py",

@@ -26,6 +26,23 @@ Kinds:
 
 ---
 
+## decision-polygon-area-provenance
+**Date:** 2026-10-07
+**Touched:** every page declaring `polygon_area_km2` (255 frontmatter lines gained `polygon_area_source`; no figure changed)
+**Source:** none
+**Kind:** decision
+
+**`polygon_area_km2` meant two things; the page now says which** ([issue 600](https://github.com/eduaguilera/whep-polities/issues/600),
+[195](https://github.com/eduaguilera/whep-polities/issues/195)). Re-measured on main: 246 of 1,285 live rows declare an
+area; 239 also carry a polygon; 33 of those disagree with it by over 5%; 106 agree within 0.1%. Each declared figure
+now carries `polygon_area_source`: 106 measured-from-polygon, 58 source-stated, 36 official-gazetteer, 4
+derived-arithmetic, 51 `unrecorded` (legacy, origin not on the page; a ceiling that may only fall). Labels were assigned mechanically (a figure matching `source_stated_area_basis.csv` within
+1% is source-stated; one within 0.1% of its polygon with no source is measured-from-polygon; otherwise a cue in the
+page's own prose; otherwise unrecorded), so some are first-pass and should be corrected by whoever reads the page. Check A
+now skips measured-from-polygon rows (they cannot disagree) and A2/A2c/A6/A7/A8 test what can be false instead. Schema
+version 2 appends `polygon_area_source` and `stated_area_km2` (CSV and GeoPackage) and `computed_polygon_area_km2`
+(GeoPackage only); `polygon_area_km2` is unchanged.
+
 ## decision-mitchell-footers-java-indochina
 **Date:** 2026-10-07
 **Touched:** IDN-JVM-1800-1949, IDN-1800-1945, IDN-1945-1949, VNM-1887-1954, FID-1887-1954

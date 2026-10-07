@@ -78,6 +78,11 @@ CSV_CONTRACT = {
         # narrows a source's candidate steps by DAY, which is the only way to pin a
         # binding whose year is shared by three or more steps.
         "polygon_feature_date",
+        # Appended by issue 600 (schema version 2): where the declared `polygon_area_km2` came
+        # from, and the independent half of it. `polygon_area_km2` is unchanged and ambiguous;
+        # these two say which of its two meanings a row has. Appended so no position-reading
+        # consumer shifts.
+        "polygon_area_source", "stated_area_km2",
     ],
     "data/final/label_alias_map.csv": [
         "source_label", "source", "year_start", "year_end", "polity_code",
@@ -203,9 +208,12 @@ MANIFEST_KEYS = [
     "dead_status", "faostat_area_map", "faostat_unmapped_areas",
     "identity_fields", "identity_sha256", "iso3_successor_map", "label_alias_map",
     "label_item_corrections", "live_polity_codes", "local_iso3_codes", "local_iso3_why",
-    "polity_code_renames", "polygon_gap_polity_codes", "source", "source_flow_flags",
+    "polity_code_renames", "polities_schema", "polygon_gap_polity_codes", "source", "source_flow_flags",
     "stated_area_basis", "territory_families", "territory_families_why",
 ]
+# `polities_schema` added 2026-10-07 (issue 600): the explicit VERSION of the polities table's schema, its
+# column list, the GeoPackage-only fields and what each area column means. Pinned against
+# POLITIES_SCHEMA_VERSION below so the version cannot stay put while the columns move.
 # `polity_code_renames` added 2026-10-02: the fingerprint of data/final/polity_code_renames.csv,
 # old -> new for the 304 subnational codes recoded to ISO 3166-2 subunit parts. A consumer
 # holding data keyed on an old code finds the new one only through this table.
@@ -223,6 +231,13 @@ MANIFEST_KEYS = [
 # (issue 82). The successor-map CSV was published on 2026-08-06 and was the only published
 # table the manifest did not name, so a consumer reading the manifest to find out what
 # exists could not find the one file that says which families cover one territory.
+
+# The schema version the manifest must declare, and the GeoPackage fields beyond the CSV columns.
+# Changing CSV_CONTRACT["data/final/polities_database.csv"] without bumping this fails the gate below,
+# and so does bumping it without changing the columns (issue 600).
+POLITIES_SCHEMA_VERSION = 2
+POLITIES_CSV_COLUMNS_AT_VERSION = {1: 18, 2: 20}
+GPKG_EXTRA_FIELDS = ["computed_polygon_area_km2"]
 
 # Not gated -- outside the repo, so CI cannot read it. Documented because its
 # `polity_code` column is the trap that cost the most.
@@ -326,6 +341,53 @@ def main() -> int:
                 + (f"; GONE: {missing}" if missing else "")
                 + (f"; NEW: {added}" if added else "")
             )
+
+    # The explicit schema version (issue 600) and the GeoPackage's field list.
+    try:
+        man = json.load(open(mpath, encoding="utf-8"))
+    except Exception:
+        man = {}
+    sch = man.get("polities_schema")
+    cols = CSV_CONTRACT["data/final/polities_database.csv"]
+    checked += 1
+    if not isinstance(sch, dict):
+        problems.append("polities_manifest.json: `polities_schema` missing")
+    else:
+        if sch.get("version") != POLITIES_SCHEMA_VERSION:
+            problems.append(
+                f"polities_manifest.json: polities_schema.version is {sch.get('version')!r}, "
+                f"this gate pins {POLITIES_SCHEMA_VERSION} -- bump both together")
+        if sch.get("csv_columns") != cols:
+            problems.append("polities_manifest.json: polities_schema.csv_columns differs from the "
+                            "pinned column list -- regenerate with scripts/write_manifest.py")
+        if sch.get("gpkg_extra_fields") != GPKG_EXTRA_FIELDS:
+            problems.append("polities_manifest.json: polities_schema.gpkg_extra_fields differs "
+                            f"from {GPKG_EXTRA_FIELDS}")
+    if POLITIES_CSV_COLUMNS_AT_VERSION.get(POLITIES_SCHEMA_VERSION) != len(cols):
+        problems.append(
+            f"polities_database.csv pins {len(cols)} columns but schema version "
+            f"{POLITIES_SCHEMA_VERSION} is recorded with "
+            f"{POLITIES_CSV_COLUMNS_AT_VERSION.get(POLITIES_SCHEMA_VERSION)} -- the columns moved "
+            f"without a version bump (or the reverse)")
+    gp = os.path.join(REPO, "data/final/polities_database.gpkg")
+    if os.path.exists(gp):
+        import sqlite3
+        checked += 1
+        try:
+            con = sqlite3.connect(f"file:{gp}?mode=ro", uri=True)
+            tbl = con.execute("select table_name from gpkg_contents where data_type='features'"
+                              ).fetchone()[0]
+            gcols = [r[1] for r in con.execute(f'pragma table_info("{tbl}")')
+                     if r[1] not in ("fid", "geom", "geometry")]
+            con.close()
+            want = cols + GPKG_EXTRA_FIELDS
+            if gcols != want:
+                problems.append(
+                    "data/final/polities_database.gpkg: attribute fields differ from the CSV "
+                    f"contract plus {GPKG_EXTRA_FIELDS}; GONE: "
+                    f"{[c for c in want if c not in gcols]}; NEW: {[c for c in gcols if c not in want]}")
+        except Exception as exc:
+            problems.append(f"data/final/polities_database.gpkg: unreadable ({exc})")
 
     print(f"tables with a pinned column list: {checked}")
     print(f"external tables documented but not gated: {len(EXTERNAL)}")

@@ -448,6 +448,53 @@ if os.path.exists(RENAMES):
         ),
     }
 
+# The published schema of polities_database.{csv,gpkg}, versioned EXPLICITLY (issue 600). The column
+# lists were pinned by validate_schema_contract.py but a consumer had no way to ask "which schema is
+# this?" short of diffing headers, and the contract gains columns by appending, which is invisible to
+# a reader that selects by name. Bump `version` whenever a column is added, removed, renamed or
+# changes meaning; validate_schema_contract.py pins this number to the column list, so the two
+# cannot move apart.
+with open(os.path.join(REPO, "data/final/polities_database.csv"), newline="", encoding="utf-8") as _fh:
+    _csv_header = next(csv.reader(_fh))
+POLITIES_SCHEMA_VERSION = 2
+polities_schema = {
+    "version": POLITIES_SCHEMA_VERSION,
+    "csv_columns": _csv_header,
+    "gpkg_extra_fields": ["computed_polygon_area_km2"],
+    "history": {
+        "1": "17 columns ending predecessor/successor, then polygon_feature_date (issue 100).",
+        "2": (
+            "Appends polygon_area_source and stated_area_km2 to the CSV and the GeoPackage, and "
+            "computed_polygon_area_km2 (GeoPackage only) after the CSV columns (issue 600). No "
+            "column was removed, renamed or reordered, and no existing value changed: a reader "
+            "that selects columns by name is unaffected."
+        ),
+    },
+    "area_fields": {
+        "polygon_area_km2": (
+            "UNCHANGED and now documented as AMBIGUOUS: the declared area, which is either a "
+            "figure a source states or a figure read off the row's own polygon. Read "
+            "polygon_area_source to tell which. Kept byte-identical so existing readers keep "
+            "working; prefer stated_area_km2 or computed_polygon_area_km2."
+        ),
+        "polygon_area_source": (
+            "Where polygon_area_km2 came from: measured-from-polygon, source-stated, "
+            "official-gazetteer, derived-arithmetic, or unrecorded (a legacy figure whose origin "
+            "the page does not say). Empty when polygon_area_km2 is empty."
+        ),
+        "stated_area_km2": (
+            "polygon_area_km2 where it is INDEPENDENT of the polygon (source-stated, "
+            "official-gazetteer, derived-arithmetic), else empty. The one column to use for "
+            "'what a source says this territory's area is'. Derived, never hand-written."
+        ),
+        "computed_polygon_area_km2": (
+            "GeoPackage only. The planar area of the shipped geometry in ESRI:54034, km2, "
+            "rounded to 0.01; empty on rows without a geometry. Never hand-written: "
+            "build_database.py measures it, and validate_polygons.py check A8 re-measures it."
+        ),
+    },
+}
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -470,8 +517,12 @@ manifest = {
         "one territory, which iso3_code cannot: do not infer that link from the code. "
         "`polity_code_renames` maps codes renamed without any territorial change "
         "(old_code -> new_code); apply it to data keyed on codes from before the rename. "
+        "`polities_schema.version` names the schema of polities_database.{csv,gpkg}; it "
+        "changes whenever a column is added, removed, renamed or changes meaning, and "
+        "`polities_schema.area_fields` says which of the area columns to read for what. "
         "Regenerate with scripts/write_manifest.py."
     ),
+    "polities_schema": polities_schema,
     "source": "data/final/polities_database.csv",
     "identity_fields": list(IDENTITY_FIELDS),
     "identity_sha256": identity_hash,

@@ -141,6 +141,10 @@ BASELINE_SUBFLOOR_ASSIGNED = 0
 
 # ---------- A: area agreement ----------
 have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
+# A figure labelled measured-from-polygon IS the geometry's own measurement, so comparing it with
+# that geometry cannot fail. Check A skips those rows -- A2 counts them and A6 tests the one thing
+# that can be false about them (that they are still the measurement).
+have["asrc"] = have.get("polygon_area_source", pd.Series("", index=have.index)).fillna("").astype(str).str.strip()
 # Skip only when BOTH the claimed and the measured area are small — a genuine
 # microstate, where projection noise dominates. Filtering on the CLAIMED value
 # alone made the check exempt exactly the errors it should catch loudest: a claim
@@ -150,7 +154,7 @@ have["claimed"] = pd.to_numeric(have.get("polygon_area_km2"), errors="coerce")
 # certainly a square-degrees value written into a km2 field — and this check
 # reported zero disagreements for as long as the filter used `claimed`.
 chk = have[
-    have.claimed.notna()
+    have.claimed.notna() & (have.asrc != "measured-from-polygon")
     & ((have.claimed >= A.min_km2) | (have.measured_km2 >= A.min_km2))
 ].copy()
 chk["divergence"] = (chk.measured_km2 - chk.claimed).abs() / chk.claimed
@@ -189,7 +193,7 @@ print(f"\nA3. BELOW CHECK A'S {A.min_km2:.0f} km2 FLOOR — {len(_sub)} live row
 for r in _sub_soft.sort_values("dev", ascending=False).itertuples():
     print(f"   {r.dev*100:6.1f}%  {r.polity_code:18s} declared {r.claimed:>8,.1f} km2  "
           f"polygon {r.measured_km2:>8,.1f}  status={r.polygon_status}")
-print(f"\nA. AREA AGREEMENT — {len(chk)} polities state an area; {len(diverging)} diverge "
+print(f"\nA. AREA AGREEMENT — {len(chk)} polities state an area independent of their polygon; {len(diverging)} diverge "
       f"from their geometry by >{A.tolerance:.0%} ({len(bad_area)} claim polygon_status=assigned)")
 for r in bad_area.itertuples():
     print(f"   FAIL {r.divergence*100:6.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2, "
@@ -198,267 +202,168 @@ for r in documented.itertuples():
     print(f"   ok   {r.divergence*100:6.0f}%  {r.polity_code:18s} claims {r.claimed:>12,.0f} km2 vs "
           f"{r.measured_km2:>12,.0f} km2 — declared '{r.polygon_status}', divergence documented")
 
-# ---------- A2: how many of check A's comparisons cannot fail ----------
+# ---------- A2: provenance of the declared area (issue 600; was issue 195's tautology count) ----------
 #
-# CHECK A COMPARES A DECLARED AREA AGAINST THE GEOMETRY IT WAS OFTEN COPIED FROM.
+# CHECK A COMPARES A DECLARED AREA AGAINST THE GEOMETRY IT WAS OFTEN COPIED FROM, and until issue
+# 600 nothing recorded which rows those were: `polygon_area_km2` meant "what a source states" on
+# some pages and "what our polygon measures" on others. The tautology hid three real errors, each
+# of which agreed with its polygon to under 1% while both were wrong the same way
+# (IDN-OTH-1949-1951 and IND-1800-1886 both included territory they should not -- West Papua,
+# Ceylon -- and CAN-1800-1866 was the recipe minus Quebec).
 #
-# `polygon_area_km2` has no recorded provenance. Some pages declare an official land area or a
-# yearbook figure -- TKL-1800-2025 declares 12 km2 against a GADM 15.95, deliberately -- and some
-# declare what their own polygon measures. For the second kind, check A is a no-op: a polygon
-# cannot disagree with a number read off it, and the row reports PASS whatever is wrong with it.
+# Every declared area now carries `polygon_area_source` (wiki/README.md), and this block makes the
+# comparison NON-TAUTOLOGICAL by testing what each kind of figure can actually be tested against:
 #
-# THAT TAUTOLOGY HID THREE REAL ERRORS, each of which agreed to under 1%:
+#   measured-from-polygon   cannot be compared with the polygon -- it IS the polygon -- so check A
+#                           skips it (counted below). What CAN fail is the claim: the figure must
+#                           still equal what the shipped geometry measures. If it does not, the
+#                           geometry moved and the "measurement" is stale (A6).
+#   source-stated           must be corroborated by a figure in source_stated_area_basis.csv for
+#                           that polity (A7). Uncorroborated ones are pinned, not forbidden: some are
+#                           dataset attributes (CShapes `area`) that no yearbook table carries.
+#   official-gazetteer / derived-arithmetic / unrecorded
+#                           compared against the geometry by check A like any independent figure.
 #
-#     IDN-OTH-1949-1951   declared 1,757,495 vs measured 1,747,408   0.6%    both included West Papua
-#     IND-1800-1886       declared 4,209,917 vs measured 4,209,869   0.001%  both included Ceylon
-#     CAN-1800-1866       declared 1,209,852, recipe 2,735,024       -       declared = recipe minus Quebec
-#
-# The right fix is provenance metadata -- a `polygon_area_source` field distinguishing
-# measured-from-polygon / source-stated / official-gazetteer / derived-arithmetic -- which is
-# issue 195 and a schema change. This is the cheap half: COUNT the comparisons that cannot fail,
-# so the number is visible on every run and can only be argued down.
-#
-# NOT BIDIRECTIONAL, unlike every other baseline in this repo, and the reason is specific. A
-# DECREASE here does not mean the provenance improved; it means the GEOMETRY MOVED -- PR 189
-# changed 42 geometries and would have pushed rows out of the tight band without anyone sourcing
-# a single figure. Failing on a decrease would print "lock in the improvement" when nothing
-# improved. A row can only ENTER the band by someone re-deriving a declared figure from a
-# polygon, which is a human act and worth failing on. So this is a ceiling.
+# And the loophole this closes: a figure copied from the polygon but filed under an independent
+# label. Any row NOT labelled measured-from-polygon whose figure sits within 0.1% of its own
+# polygon, with no basis-table corroboration, is exactly that (A2c).
+AREA_SOURCES = frozenset({
+    "measured-from-polygon", "source-stated", "official-gazetteer",
+    "derived-arithmetic", "unrecorded",
+})
+# `unrecorded` is a legacy bucket (figures whose origin the page does not state). A CEILING that may
+# only fall: new pages name one of the other four. 49 live rows on 2026-10-07, the migration of
+# issue 600 (51 pages in all; two are superseded rows).
+BASELINE_UNRECORDED_AREA_SOURCE = 49
+# source-stated figures no row of source_stated_area_basis.csv corroborates within 2%. 14 on 2026-10-07.
+BASELINE_SOURCE_STATED_UNCORROBORATED = 14
+# Rows labelled independent whose figure sits within 0.1% of their own polygon with no corroboration,
+# i.e. indistinguishable from a copy. 0 on 2026-10-07: the migration of issue 600 labelled every such
+# row measured-from-polygon, including CShapes `area` attributes, which describe the very feature
+# the row ships and so are not independent of it.
+BASELINE_INDEPENDENT_IN_BAND = 0
+# measured-from-polygon rows for which a yearbook figure is already published: option B of issue 195,
+# declaring the source's number, is available for them. Pinned so the set cannot grow while it is decided.
+BASELINE_AVOIDABLE_SELF_REF = 33  # 43 by the old 0.1%-band heuristic (issue 195); 33 by label, 2026-10-07
 SELF_REF_TOLERANCE = 0.001          # 0.1%: closer than any independent source would land
-# 105 on 2026-08-24 (issue 554): BES-2010-2025 declares 325 km2 against a 324.9 km2 polygon.
-# That is deliberate and the alternative was worse: the reference land area for Bonaire +
-# Sint Eustatius + Saba is 328 km2, and declaring 328 would make the declared figure disagree
-# with the geometry it is bound to for no gain -- the GADM outline for BES is accurate to 0.99x,
-# unusually good for a small-island outline (see issue 570), so there is nothing to correct.
-# The page says in prose that the figure is the polygon's own measurement.
-BASELINE_SELF_REFERENTIAL = 106     # 103 on 2026-08-10; 104 on 2026-08-12; 102 on 2026-08-13; 103 then 104 on 2026-08-14, see below
-#
-# 105 -> 106 on 2026-09-24 (FAOSTAT area-code territories), the TUR-1913-1914 way in: an
-# INDEPENDENT figure that happens to land in the band. SCG-XK-1999-2006 (Serbia and Montenegro
-# net of Kosovo, a constructed difference of CShapes 345 minus 347) declares 91,286 km2 = Serbia
-# excluding Kosovo 77,474 + Montenegro 13,812, both official figures, and its published polygon
-# measures 91,240 (-0.05%). Nothing was read off the geometry; the six other rows added the same
-# day declare official figures that sit 0.3% to 1.5% from their polygons.
-#
-# 106 -> 105 on 2026-09-24 (issue 660), and NOT because a figure was sourced: the geometry moved.
-# build_database.py now simplifies on a GEOS without the use-after-free that made rebuilds drift,
-# and IRL-1800-1921's polygon came out 53 km2 smaller (84,366 -> 84,313 km2 against a declared
-# 84,433), taking it from -0.079% to -0.142% -- just outside the 0.1% band. Its declared area is
-# still the polygon-era measurement it always was; it simply no longer agrees to 0.1%.
-#
-# 105 -> 106 on 2026-09-01 with MAN-1950-1955 (issue 400). This one cannot be fixed the way the
-# message above asks, and the reason is worth stating rather than absorbing silently. The row
-# reuses feature MAN-1932-1945, shared with its two siblings, so its declared 791,708 km2 IS
-# that feature's measured area -- there is no independent measurement of this shape to declare
-# instead. Two yearbook figures for the territory exist and BOTH describe something larger:
-# iia 1938 states 1,303,143 km2 for Manchukuo (already in source_stated_area_basis.csv with
-# basis_flag review) and fao1952 states 1,069,300 km2 for `China Manchuria` at 1947, which is
-# 1.35x the polygon. Declaring either would manufacture a >25% disagreement in check A against
-# a geometry that is not wrong, only smaller than the reporting unit -- so the honest record is
-# polygon_status: proxy plus the stated figures documented on the page, which is what
-# wiki/polities/man-1950-1955.md does under oq-three-province-proxy-under-covers-by-26pc.
+STALE_MEASUREMENT_TOLERANCE = 0.02  # a measured-from-polygon figure may drift this far (rebuilds,
+                                    # the two area conventions' 0.8%) before it is called stale
 
-# A2b: OF the self-referential areas, how many were AVOIDABLE -- i.e. an INDEPENDENT figure
-# for that (polity, source) already exists in data/final/source_stated_area_basis.csv and the
-# row declares its own polygon's measurement anyway. That is the difference between "nobody
-# knows what this territory's area was" and "a yearbook says, and we wrote down our own number
-# instead", and only the second is fixable without new research.
-#
-# Measured 2026-08-17: 111 self-referential, of which 28 avoidable and 83 not. Six of the 28
-# diverge from their stated figure by more than 20% -- CHN-1932-1945 39.5%, MAN-1932-1945 39.2%,
-# PRY-1932-1938 35.9%, GKM-1884-1912 35.4%, CHN-1921-1932 32.3%, ITS-1908-1960 30.1% -- so
-# check A is silent today on six rows where the source and the polygon disagree by a third.
-#
-# WHICH number each should declare is a judgement about published figures and is issue 195's
-# open question; this is a CEILING so the avoidable set cannot GROW while that is decided. A new
-# row copying its own polygon's area, where a stated figure was available, fails here.
-#
-# 28 -> 32 on 2026-08-20, and the direction of causation matters because a raised ceiling normally
-# means drift. Nothing declared a new self-referential area. The ceiling counts rows that COULD
-# have compared against a source, so it grows when the SOURCE side grows: retargeting 14
-# `source_label_lexicon.csv` entries from English exonyms (`Ceylon`, `Gold Coast`, `Newfoundland`)
-# to actual polity_names took `source_stated_area_basis.csv` from 205 polities to 223, and 4 of the
-# 18 newly-covered rows already declared their own geometry's area. So this arm gained reach over
-# 4 rows rather than losing ground on 4, which is the outcome issue 195 asks for -- and the arm now
-# reports on 32 rows where check A is silent while a yearbook figure exists.
-#
-# It was briefly set to 33, from a first version of that change that also retargeted `allemagne`,
-# `finlande` and `hongrie`. Those three are year-dependent and were reverted, which is why the
-# number is 32 and not 33: a ceiling one above the true count would let a real regression in
-# unnoticed, so it is pinned at the measured value in both directions.
-# 32 -> 33 on 2026-08-24. The new one is TPAP-1906-1949, which declares 224,148 km2 against a
-# 224,156 polygon -- self-referential to 0.004% -- and has just acquired an INDEPENDENT figure: IIA's
-# `AUSTRALIE: PAPOUASIE` states 234,494, routed for the first time by a lexicon entry added in the
-# same change (#195). So this is the metric MOVING IN THE RIGHT DIRECTION: one more row where issue
-# 195's option B (declare the source's figure instead of the polygon's own measurement) is available
-# without a schema change. It is pinned at the measurement in both directions, as a0fe282 established,
-# so a real regression cannot hide under a loose ceiling.
-# 33 -> 34, same day and same cause: NER-1922-1947 declares 1,182,017 km2 against a 1,181,761
-# polygon (0.02%) and has just acquired an independent figure -- IIA's
-# `AFRIQUE OCCIDENTALE FRANÇAISE: Niger` states 1,250,850-1,293,810, routed for the first time by a
-# lexicon entry in the same change. TPAP-1906-1949 was the previous one, for the identical reason.
-#
-# Both are issue 195's option B becoming available, not a regression, and the pattern is now clear
-# enough to state: every lexicon entry that routes a stated figure to a polity whose declared area was
-# read off its own geometry moves this metric UP by one. That is the metric doing its job -- it counts
-# rows where a real comparison is possible and is not being made.
-# 34 -> 38 on 2026-08-24 (issue 553): CYR-1943-1949, FEZ-1943-1951, TRP-1943-1951 and GCT-1919-1956
-# each declare their own polygon's area and have just acquired an independent one, because the
-# source-scope synonym stopped 39 FAO statements being discarded. The first three are the Libyan
-# occupation territories, which issue 156 records as having no independent figure at all -- they now
-# have one.
-#
-# Same direction as the earlier moves in this constant: every statement that starts resolving to a
-# self-declared row makes issue 195's option B available for one more polity. The metric counts
-# opportunities, not defects.
-#
-# 38 -> 39 on 2026-09-24 (world alias collisions): MAN-1945-1950. fao1952 `China Manchuria` stopped
-# routing to the CHN chain and now reaches this row, so its 1947 stated area (1,069,300 km2) is
-# attributed to the region for the first time. The row declares 791,708, its reused feature's own
-# measurement, and that is deliberate for the reason given for MAN-1950-1955 above: the stated figure
-# describes a larger reporting unit than the three-province polygon, so declaring it would
-# manufacture a check-A disagreement against a geometry that is smaller, not wrong. The divergence
-# is baselined with that reason in validate_stated_areas.py.
-#
-# 39 -> 40 on 2026-09-24 (issue 675): NNG-1949-1963. The fao1952 1951 `New Guinea` use total
-# (412,780 km2), filed under ASIA, is relabelled `Netherlands New Guinea` by
-# data/final/source_label_item_corrections.csv and now votes on this row instead of on
-# TNGU-1949-1975. The row declares 410,361, its CShapes feature's own measurement, so it becomes one
-# more row where a real comparison is available. Here the two agree (0.994x), so declaring the stated
-# figure would change nothing check A reports; left as the geometry's number, like the rows above.
-#
-# 40 -> 41 on 2026-09-24 (layer-B territory findings): MKY-1918-1962. validate_stated_areas.py now
-# tries the routing's source-scoped `fao1952` alias before the bare `fao` source, so FAO's 1947
-# `Yemen` statement (195,000 km2) resolves to MKY-1918-1962, the polity the fao1952 `Yemen` rows are
-# on, instead of the combined F249-1918-1990. The row declares 136,555, its CShapes polygon's own
-# area. Declaring 195,000 instead would manufacture a check-A failure: the stated figure counts the
-# undemarcated desert frontier that the polygon does not draw. The divergence is baselined with that
-# reason in validate_stated_areas.py.
-#
-# 41 -> 43 on 2026-09-25 (unrouted-rows audit, Claude): SGP-1946-1963 and SWA-1912-1958. Neither row
-# changed; each ENTERED the band because a newly aliased fao1952 label published the first stated
-# figure for it (`Singapore including Christmas and Cocos Islands` 750 km2, `Spanish Sahara` 274,920).
-# SGP must not declare 750: that is the colony WITH Christmas and Cocos, which its polygon does not
-# draw (baselined in validate_stated_areas.py). SWA's 274,920 agrees with its polygon (1.02x), so
-# declaring it would change nothing check A reports -- the same choice as TNGU-1949-1975 above.
-BASELINE_AVOIDABLE_SELF_REF = 43
+_basis_path = os.path.join(REPO, "data/final/source_stated_area_basis.csv")
+_basis = pd.DataFrame(columns=["polity_code", "stated_area_km2"])
+if os.path.exists(_basis_path):
+    _basis = pd.read_csv(_basis_path)
+    _basis = _basis[pd.to_numeric(_basis.stated_area_km2, errors="coerce").notna()]
 
-#
-
-
-# THE CEILING IS NOT A PURE RATCHET, and one day of use falsified the reason given for making it
-# one. The original note argued: "a row can only ENTER the band by someone re-deriving a declared
-# figure from a polygon, which is a human act worth failing on." That is not the only way in.
-#
-# TUR-1913-1914 entered it on 2026-08-12 by having its GEOMETRY CORRECTED. The row declared
-# 1,785,218 km2 and published 1,705,971 -- a 4.5% disagreement -- because polygon_feature_year 1914
-# resolved to CShapes 640's `1914-1918` step, one that begins after the row ends. Rebinding it to
-# the `1913-1914` step it had always declared brought the measurement to 1,784,775, which agrees
-# with the declared figure to 0.02% and so counts as self-referential here.
-#
-# But that declared figure PREDATES the fix and was independently right -- it is what identified
-# the correct step in the first place. Nothing was copied off a polygon; a polygon was corrected
-# to match an independently-stated number. That is the best outcome available, and it raises this
-# count.
-#
-# So the ceiling moves up for a geometry fix and down for a sourcing fix, and the two cannot be
-# told apart without the provenance field issue 195 asks for. Until then, raising it requires the
-# reason to be written here -- which is the actual guard, rather than the number.
-#
-# 104 -> 102 on 2026-08-13, AND THIS IS THE "GEOMETRY SIMPLY MOVED" CASE THE NOTE ABOVE WARNS
-# ABOUT, not a sourcing improvement. Issue 84 rebuilt six British India periods as their CShapes
-# step MINUS Portuguese India MINUS French India. Two of the six declare an area, and both were
-# declaring the UNCUT step, so removing 4,246 km2 of enclave pushed each just outside the 0.1%
-# band:
-#
-#     IND-1886-1893   declared 4,652,712   measured 4,647,939   0.1026%   was 0.000%
-#     IND-1937-1947   declared 4,227,508   measured 4,223,063   0.1051%   was 0.000%
-#
-# Their declared figures were left alone deliberately. Rewriting them to the post-cut measurement
-# would put both straight back into this band and re-create exactly the tautology A2 exists to
-# count -- the declared number is now a source-stated CShapes figure disagreeing with a corrected
-# polygon by 0.1%, which is check A doing its job. The pin is lowered because selftest_gates
-# requires the ceiling to bite: at 104 the harness's own mutation (rewriting a declared area to
-# what its polygon measures, +1) landed at 103 and the gate PASSED a defect it claims to catch.
-#
-# (Pinned at 103, not the 105 this note originally said: it was written against a base of 104,
-# and the issue-84 cuts above had since taken that to 102. 102 + this one new row = 103,
-# measured on rebase 2026-08-14.)
-#
-# 105 ON 2026-08-13, and this is a THIRD way in that neither note above anticipated: a NEW ROW
-# BOUND TO AN EXISTING POLYGON. CYR-1943-1949 (the British military administration of Cyrenaica,
-# issue 198) declares 837,876 km2 and reuses CYR-1949-1951's constructed feature unchanged, so it
-# lands in the band by construction -- there is one geometry and now two rows reading the same
-# number off it. Exactly the pattern MAN-1932-1945 / MAN-1945-1950 already shows in the `exact`
-# list above, where both periods of Manchuria declare 791,708.
-#
-# No figure was re-derived and no polygon was corrected. Declaring FAO 1952's independent 855,400
-# instead would have dropped the count -- and would have been a fabrication, because the row's
-# geometry is the 8 GADM shabiyat, not FAO's outline; the -2.0% gap between the two is stated on
-# the page instead, which is what `polygon_status: proxy` is for. Issue 195's provenance field is
-# what would record "measured from the geometry" honestly; a ceiling cannot.
-#
-# 103 -> 104 ON 2026-08-14 (issue 22), and it is a FOURTH way in: A SPLIT. CAP-1800-1910 was one
-# row across 110 years holding CShapes gwcode 561's 1886-1895 step (600,802 km2) while the source
-# also ships a 1895-1910 step (716,102 km2). It was split into CAP-1800-1895 and CAP-1895-1910,
-# each declaring ITS OWN step's stated `area` attribute, which is what wiki/README.md asks for
-# ("declare the official or source-stated area"). Net +1 rather than +2, because A2 counts LIVE
-# rows and the old row is now `superseded`, so it left the band as the two replacements entered.
-#
-# No figure was re-derived off a shipped polygon: 716,102 is CShapes' own number for the step, the
-# same provenance as NAT-1895-1910's 72,516 already in this band. The honest alternative would be
-# an independently stated Cape area, and the repository has none -- data/final/source_stated_areas.csv
-# carries no Cape Colony row, only Cape Verde. Leaving polygon_area_km2 blank would have kept the
-# count at 103 by publishing less information, which is the wrong trade for a check that exists to
-# make provenance visible rather than to be minimised.
-
-# Live rows only, matching the population check A actually judges -- `have` includes the
-# retired and superseded rows that still carry geometry, and check A exempts those.
-with_both = have[
+live_decl = have[
     have.claimed.notna() & (have.claimed > 0) & have.measured_km2.notna()
     & ~have.get("wiki_status").isin(DEAD_STATUS)
 ].copy()
-with_both["dev"] = (with_both.measured_km2 / with_both.claimed - 1).abs()
-selfref = with_both[with_both.dev <= SELF_REF_TOLERANCE]
-exact = with_both[with_both.dev <= 0.000005]
-print(f"\nA2. SELF-REFERENTIAL AREAS — {len(selfref)} of {len(with_both)} declared areas agree with "
-      f"their own geometry within {SELF_REF_TOLERANCE:.1%}, so check A cannot fail for them "
-      f"({len(exact)} agree to every digit)")
-for r in exact.sort_values("polity_code").itertuples():
-    print(f"   exact  {r.polity_code:18s} {r.claimed:>12,.0f} km2   ({r.polygon_source})")
-# A2b. Of those, the AVOIDABLE ones: an independent stated figure exists and the row declared
-# its own polygon's measurement anyway. Reads the table write_stated_area_basis.py publishes,
-# so it needs no geometry beyond what A2 already measured.
-_basis_path = os.path.join(REPO, "data/final/source_stated_area_basis.csv")
-_have_stated = set()
-if os.path.exists(_basis_path):
-    _b = pd.read_csv(_basis_path)
-    _b = _b[pd.to_numeric(_b.stated_area_km2, errors="coerce").notna()]
-    _have_stated = set(_b.polity_code)
+live_decl["dev"] = (live_decl.measured_km2 / live_decl.claimed - 1).abs()
+live_decl["asrc"] = live_decl.get("polygon_area_source").fillna("").astype(str).str.strip()
+
+# A2a. Provenance present and in vocabulary. Read from the GeoPackage like `claimed` is.
+_any_decl = g[
+    pd.to_numeric(g.get("polygon_area_km2"), errors="coerce").notna()
+    & ~g.get("wiki_status").isin(DEAD_STATUS)
+].copy()
+_any_decl["asrc"] = _any_decl.get("polygon_area_source").fillna("").astype(str).str.strip()
+no_src = _any_decl[~_any_decl.asrc.isin(AREA_SOURCES)]
+print(f"\nA2a. PROVENANCE — {len(_any_decl)} live rows declare an area; {len(no_src)} name no "
+      f"valid polygon_area_source")
+for r in no_src.itertuples():
+    print(f"   FAIL {r.polity_code:18s} declares {r.polygon_area_km2} km2 with "
+          f"polygon_area_source={r.asrc!r} (allowed: {', '.join(sorted(AREA_SOURCES))})")
+n_unrec = int((_any_decl.asrc == "unrecorded").sum())
+print(f"   {n_unrec} are `unrecorded` legacy figures (ceiling {BASELINE_UNRECORDED_AREA_SOURCE})")
+if n_unrec > BASELINE_UNRECORDED_AREA_SOURCE:
+    print(f"   FAIL: {n_unrec} is above the pinned ceiling of {BASELINE_UNRECORDED_AREA_SOURCE}. "
+          f"Name where the figure came from -- source-stated, official-gazetteer, "
+          f"derived-arithmetic or measured-from-polygon -- instead of `unrecorded`.")
+elif n_unrec < BASELINE_UNRECORDED_AREA_SOURCE:
+    print(f"   note: {n_unrec} is BELOW the pinned {BASELINE_UNRECORDED_AREA_SOURCE}. Lower the "
+          f"pin; provenance improved.")
+
+# A2b. What cannot fail, now counted EXACTLY from the label rather than guessed from a 0.1% band.
+selfref = live_decl[live_decl.asrc == "measured-from-polygon"]
+print(f"\nA2. SELF-REFERENTIAL AREAS — {len(selfref)} of {len(live_decl)} declared areas are labelled "
+      f"measured-from-polygon, so check A skips them (a polygon cannot disagree with a number "
+      f"read off it)")
+_have_stated = set(_basis.polity_code)
 avoidable = sorted(selfref[selfref.polity_code.isin(_have_stated)].polity_code)
 print(f"   of which AVOIDABLE — an independent stated figure exists for them: {len(avoidable)} "
-      f"(the other {len(selfref) - len(avoidable)} have no stated figure at all)")
-avoidable_over = len(avoidable) - BASELINE_AVOIDABLE_SELF_REF
-if avoidable_over > 0:
-    print(f"   FAIL: {len(avoidable)} is above the pinned ceiling of "
-          f"{BASELINE_AVOIDABLE_SELF_REF}. These rows declare their own polygon's area while a "
-          f"yearbook figure for them is already published in source_stated_area_basis.csv, so "
-          f"check A compares the polygon against itself when it could have compared it against "
-          f"a source. Declare the stated figure, or say on the page why the polygon is the "
-          f"better number (issue 195)")
-    for _c in avoidable[-min(6, avoidable_over):]:
+      f"(ceiling {BASELINE_AVOIDABLE_SELF_REF})")
+if len(avoidable) > BASELINE_AVOIDABLE_SELF_REF:
+    print(f"   FAIL: {len(avoidable)} is above the pinned ceiling of {BASELINE_AVOIDABLE_SELF_REF}. "
+          f"These rows declare their own polygon's area while a yearbook figure for them is "
+          f"already published in source_stated_area_basis.csv; declare that figure instead, as "
+          f"source-stated (issue 195 option B)")
+    for _c in avoidable:
         print(f"     {_c}")
 
-selfref_over = len(selfref) - BASELINE_SELF_REFERENTIAL
-if selfref_over > 0:
-    print(f"   FAIL: {len(selfref)} is above the pinned ceiling of {BASELINE_SELF_REFERENTIAL}. "
-          f"A declared area within {SELF_REF_TOLERANCE:.1%} of its own polygon is not evidence "
-          f"about the territory -- source it from a yearbook or an official gazetteer, or say in "
-          f"polygon_method that it was measured from the geometry.")
-elif selfref_over < 0:
-    print(f"   note: {len(selfref)} is BELOW the pinned {BASELINE_SELF_REFERENTIAL}. Lower the pin "
-          f"to keep the ratchet tight -- but check first whether a figure was actually sourced, or "
-          f"whether the geometry simply moved.")
+# A6. The claim a self-measured figure makes is that it still IS the polygon's measurement.
+stale = selfref[selfref.dev > STALE_MEASUREMENT_TOLERANCE]
+print(f"\nA6. STALE MEASUREMENT — {len(stale)} measured-from-polygon figure(s) no longer match their "
+      f"geometry within {STALE_MEASUREMENT_TOLERANCE:.0%}")
+for r in stale.sort_values("dev", ascending=False).itertuples():
+    print(f"   FAIL {r.dev*100:6.1f}%  {r.polity_code:18s} declares {r.claimed:>12,.1f} km2, "
+          f"geometry now measures {r.measured_km2:>12,.1f} -- re-measure it or source a figure")
+
+# A7. A `source-stated` figure should be one a source states.
+ss = live_decl[live_decl.asrc == "source-stated"]
+def _corroborated(r):
+    b = _basis[_basis.polity_code == r.polity_code]
+    return bool(((b.stated_area_km2.astype(float) / r.claimed - 1).abs() <= 0.02).any())
+unc = sorted(r.polity_code for r in ss.itertuples() if not _corroborated(r))
+print(f"\nA7. SOURCE-STATED CORROBORATION — {len(ss) - len(unc)} of {len(ss)} source-stated figures "
+      f"match a row of source_stated_area_basis.csv within 2%; {len(unc)} do not "
+      f"(ceiling {BASELINE_SOURCE_STATED_UNCORROBORATED})")
+if len(unc) > BASELINE_SOURCE_STATED_UNCORROBORATED:
+    print(f"   FAIL: {len(unc)} is above the pinned ceiling of {BASELINE_SOURCE_STATED_UNCORROBORATED}. "
+          f"Either the figure is not a source's (label it measured-from-polygon, "
+          f"official-gazetteer or derived-arithmetic) or the source's label is not yet routed to "
+          f"this polity in source_label_lexicon.csv.")
+    for _c in unc:
+        print(f"     {_c}")
+
+# A2c. Independent label, polygon-sized figure, no corroboration: indistinguishable from a copy.
+_ind = live_decl[live_decl.asrc.isin(AREA_SOURCES - {"measured-from-polygon", "source-stated"})
+                 | live_decl.polity_code.isin(unc)]
+in_band = sorted(r.polity_code for r in _ind.itertuples() if r.dev <= SELF_REF_TOLERANCE)
+print(f"\nA2c. INDEPENDENT LABEL, POLYGON-SIZED FIGURE — {len(in_band)} row(s) not labelled "
+      f"measured-from-polygon sit within {SELF_REF_TOLERANCE:.1%} of their own geometry with no "
+      f"corroborating source figure (ceiling {BASELINE_INDEPENDENT_IN_BAND})")
+for _c in in_band:
+    print(f"     {_c}")
+if len(in_band) > BASELINE_INDEPENDENT_IN_BAND:
+    print(f"   FAIL: {len(in_band)} is above the pinned ceiling of {BASELINE_INDEPENDENT_IN_BAND}. "
+          f"A figure within {SELF_REF_TOLERANCE:.1%} of its own polygon is not evidence about the "
+          f"territory. If it was read off the geometry, label it measured-from-polygon; if a source "
+          f"states it, show that source in source_stated_area_basis.csv.")
+elif len(in_band) < BASELINE_INDEPENDENT_IN_BAND:
+    print(f"   note: {len(in_band)} is BELOW the pinned {BASELINE_INDEPENDENT_IN_BAND}. Lower the pin.")
+
+# A8. The published MEASURED area (GeoPackage field written by build_database.py) must be what the
+# geometry measures, so a consumer reading the two fields side by side compares real things.
+if "computed_polygon_area_km2" in g.columns:
+    _pub = have.assign(pub=pd.to_numeric(have["computed_polygon_area_km2"], errors="coerce"))
+    _bad = _pub[
+        _pub.pub.isna() | ((_pub.pub - _pub.measured_km2).abs() > 0.02 + 0.001 * _pub.measured_km2)
+    ]
+else:
+    _bad = have
+print(f"\nA8. PUBLISHED MEASURED AREA — {len(_bad)} of {len(have)} geometries carry a "
+      f"computed_polygon_area_km2 that is missing or disagrees with the geometry")
+for r in _bad.head(10).itertuples():
+    print(f"   FAIL {r.polity_code:18s} measured {r.measured_km2:>12,.2f} km2, field says "
+          f"{getattr(r, 'computed_polygon_area_km2', None)!r} -- run scripts/build_database.py")
+
+a2_fail = (
+    len(no_src) > 0 or n_unrec > BASELINE_UNRECORDED_AREA_SOURCE
+    or len(avoidable) > BASELINE_AVOIDABLE_SELF_REF or len(stale) > 0
+    or len(unc) > BASELINE_SOURCE_STATED_UNCORROBORATED
+    or len(in_band) > BASELINE_INDEPENDENT_IN_BAND or len(_bad) > 0
+)
 
 # ---------- C: status claims a polygon that was never attached ----------
 # `assigned`/`proxy`/`estimate` all assert a polygon exists. When the build
@@ -605,11 +510,11 @@ for _r in _sub_bad.itertuples():                                                
 
 fail = (len(bad_area) > 0 or len(declared_none) > 0 or len(new_claim_no_geom) > 0
         or len(stale_baseline) > 0 or len(undoc) > 0 or len(off_vocab) > 0
-        or selfref_over > 0 or avoidable_over > 0 or _subfloor_over > 0
+        or a2_fail or _subfloor_over > 0
         or (A.strict and mismatch))
 print(f"\n{'FAIL' if fail else 'PASS'}: {len(off_vocab)} off-vocabulary status(es), "
       f"{len(bad_area)} area disagreement(s), "
-      f"{max(selfref_over, 0)} self-referential area(s) above the ceiling, "
+      f"{int(a2_fail)} area-provenance failure(s) (A2a/A2/A2c/A6/A7/A8), "
       f"{len(declared_none)} declares-none-but-has-one, "
       f"{len(new_claim_no_geom)} NEW claimed-but-absent polygon(s), {len(undoc)} undocumented-but-reviewed"
       + f", {max(_subfloor_over, 0)} sub-floor assigned area(s) above the ceiling"
