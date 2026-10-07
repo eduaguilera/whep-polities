@@ -700,6 +700,12 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_quarantine_resolution_guard.py
 
+      # Five of the ten files validate_atomic_state_writes.py calls unregenerable had no gate reading
+      # their CONTENT (issue 633): schema, codes against the database, vocabularies, dates.
+      - name: Adjudication queues — schema, codes and vocabularies of the five unread state files
+        if: '!cancelled()'
+        run: python3 scripts/validate_adjudication_queues.py
+
       # A derived column can be wrong while every column beside it is right: collapse_groups'
       # ratio disagreed with its own rounded inputs (#457), and cross_label_duplication's
       # smaller_label named the LARGER label in all six rows while the column next to it stayed
