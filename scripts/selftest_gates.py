@@ -860,6 +860,55 @@ def mutate_cross_source_indicators_disagree(root, gpd, make_valid, affinity):
             f"tonnage")
 
 
+def mutate_cross_source_fao1952_unreachable(root, gpd, make_valid, affinity):
+    """Drop every cross-source cell that involves fao1952, as the raw-`unit` key did (issue 612).
+
+    fao1952 reports `1000 tonnes` where iia, juan and mitchell say `tonnes`, so keying on the raw unit
+    string meant it could never share a cell with another source: 21,167 routed rows and zero
+    cross-source checks, with the table still holding ~800 healthy-looking cells from the other three
+    sources. The mutation leaves what remains internally consistent -- ratios, citations, indicator
+    arm and the unexplained set (those cells are baselined, so removing them only shows as "resolved"
+    for any that were unexplained, which the case keeps out by deleting from the baseline too) -- so
+    only the reach floor on fao1952 cells can see the regression.
+    """
+    import csv as _csv
+    base = os.path.join(root, "pipelines/polity-autoimprove/state")
+    path = os.path.join(base, "cross_source_agreement.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    kept = [r for r in rows if "fao1952" not in r["sources"].split(";")]
+    assert len(kept) < len(rows), "no cell involves fao1952 -- the case is obsolete"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(kept)
+    bpath = os.path.join(base, "cross_source_unexplained_baseline.csv")
+    with open(bpath, newline="", encoding="utf-8") as fh:
+        brows = [b for b in _csv.DictReader(fh)]
+        bfields = list(brows[0].keys())
+    with open(bpath, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=bfields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(b for b in brows if "fao1952" not in b["sources"].split(";"))
+    return f"removed the {len(rows) - len(kept)} cross-source cells that involve fao1952"
+
+
+def mutate_cross_source_thousand_unit_leaks(root, gpd, make_valid, affinity):
+    """Let one `1000 tonnes` row into the table, as an unnormalised extraction would (issue 612)."""
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/cross_source_agreement.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+        fields = list(rows[0].keys())
+    rows[0]["unit"] = "1000 tonnes"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return f"relabelled {rows[0]['polity_code']}/{rows[0]['item']}/{rows[0]['year']} as `1000 tonnes`"
+
+
 def mutate_cross_source_defect_citation_vanishes(root, gpd, make_valid, affinity):
     """Strip the recorded explanation from a large cross-source disagreement.
 
@@ -6582,6 +6631,21 @@ CASES = (
         "recorded defect all stay exactly as they were, so nothing but the indicator arm moves",
     ),    (
         "validate_cross_source_agreement.py",
+        mutate_cross_source_fao1952_unreachable,
+        "involve fao1952, below the floor",
+        "fao1952 shut out of the cross-source table again because its thousands cannot share a "
+        "key with another source's units -- the other three sources still give ~800 healthy cells, "
+        "so only a reach floor on fao1952 itself can see it",
+    ),
+    (
+        "validate_cross_source_agreement.py",
+        mutate_cross_source_thousand_unit_leaks,
+        "unnormalised thousand-unit",
+        "a value in thousands left in the table beside another source's units, so its ratio is "
+        "off by 1000 and reads as a defect or hides one",
+    ),
+    (
+        "validate_cross_source_agreement.py",
         mutate_cross_source_defect_citation_vanishes,
         "with no entry in data_errors.csv explaining them",
         "a large cross-source disagreement losing the entry that explained it — the cell, the ratio "
@@ -7793,6 +7857,7 @@ WRITABLE = {
     # measurement, which lives in a sibling script rather than in the gate.
     "validate_cross_source_agreement.py": (
         "pipelines/polity-autoimprove/state/cross_source_agreement.csv",
+        "pipelines/polity-autoimprove/state/cross_source_unexplained_baseline.csv",
         "pipelines/polity-autoimprove/state/data_errors.csv",
     ),
     "validate_area_convention.py": (

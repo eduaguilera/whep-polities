@@ -32,6 +32,24 @@ excludes nulls too, so a check for "does this cell mix indicators" answers 0 whe
 none. Arm E in the gate tests the thing that WOULD invalidate a comparison -- both sides annotated and
 disagreeing -- rather than the presence of the column.
 
+UNIT NORMALISATION (issue 612). fao1952 reports in THOUSANDS (`1000 tonnes`, `1000 hectares`,
+`1000 heads`) while iia, juan and mitchell report in units, and the key contains `unit` as a raw
+string -- so fao1952 could never share a cell with anyone: 21,167 routed rows, zero cross-source
+comparisons. `UNIT_MAP` rescales to the base unit before keying. It lists only EXACT conversions;
+`1000 people` has no counterpart anywhere, and `tons` / sa_colonial's `Tons` are a long (1.016 t) or
+short (0.907 t) ton, not 1.0, so they are deliberately left unmapped rather than folded in wrongly.
+The factor is confirmed by the data, not assumed: with it the per-source median ratio is 1.0000,
+without it 1000.0.
+
+Admitting fao1952 makes two latent flaws of the old key live, so the key changed with it:
+  * PER-SOURCE COLLAPSE. fao1952 is the source with duplicate keys (several raw rows on one key,
+    e.g. poultry types all filed as `poultry`), so `max/min` over the raw rows reports a source's
+    spread AGAINST ITSELF as a cross-source disagreement (27 of the first 87 unexplained cells had
+    min and max from the SAME source, up to 2,172x). Each source is collapsed to its median first.
+  * PERIOD IN THE KEY. `year.astype(str)` turned every period row into "nan", which was harmless
+    while no period row could be multi-source and wrong once it could: USA olives then compared a
+    1909-1913 average against a 1934-1938 one. Period rows now key on their span.
+
 NO --check MODE, DELIBERATELY. This reads layer B, which is not redistributable and is absent in CI,
 so a check comparing the committed table against a regeneration could only ever run on a developer
 machine -- and would report OK in CI by comparing nothing. That is the failure issue 573 describes.
@@ -57,8 +75,24 @@ OUT = os.path.join(HERE, "state/cross_source_agreement.csv")
 # this" when it means "never tested". Same shape as the one-sided thresholds recorded in the
 # retest registry: the excluded tail was the interesting one.
 BIG_RATIO = 10.0
+# (factor to the base unit, base unit). Exact conversions only -- see the docstring.
+UNIT_MAP = {
+    "1000 tonnes": (1000.0, "tonnes"),
+    "1000 hectares": (1000.0, "ha"),
+    "1000 heads": (1000.0, "heads"),
+    "kilograms": (0.001, "tonnes"),
+}
 COLUMNS = ("polity_code", "item", "unit", "year", "sources", "labels", "indicators",
            "value_min", "value_max", "ratio", "known_defect")
+
+
+def normalise_units(frame):
+    """Rescale rows to the base unit named in UNIT_MAP; leave every other unit untouched."""
+    frame = frame.copy()
+    fac = frame["unit"].map(lambda u: UNIT_MAP.get(u, (1.0, u))[0])
+    frame["unit"] = frame["unit"].map(lambda u: UNIT_MAP.get(u, (1.0, u))[1])
+    frame["value"] = frame["value"] * fac
+    return frame
 
 
 def coverage(row, errors):
@@ -111,19 +145,27 @@ def main() -> int:
         return 0
     frame = pd.read_parquet(MATCHED)
     frame = frame[frame.whep_code.notna() & frame.value.notna()].copy()
-    frame["yr"] = frame["year"].astype(str)
+    frame = normalise_units(frame)
+    # Period rows key on their span, never on the string "nan" (see the docstring).
+    frame["yr"] = frame["year"].astype("Int64").astype(str)
+    isper = frame["year"].isna()
+    frame.loc[isper, "yr"] = frame.loc[isper, "period"].astype(str)
     key = ["whep_code", "item", "unit", "yr"]
-    multi = frame[frame.groupby(key)["source"].transform("nunique") > 1]
-    # dropna=False on every groupby whose key can hold a null. `indicator` is not in this key, but
-    # `unit` and `item` can be blank, and the default would drop those rows without saying so.
+    # One value per (cell, source): the median of that source's rows. dropna=False on every groupby
+    # whose key can hold a null -- `unit` and `item` can be blank.
+    per = frame.groupby(key + ["source"], dropna=False).agg(
+        value=("value", "median"),
+        labels=("country", lambda s: ";".join(sorted({str(x).lower() for x in s}))),
+        # Nulls counted as their own value -- see the docstring on why nunique() would not do.
+        indicators=("indicator", lambda s: {"" if pd.isna(x) else str(x) for x in s}),
+    ).reset_index()
+    multi = per[per.groupby(key, dropna=False)["source"].transform("nunique") > 1]
     agg = multi.groupby(key, dropna=False).agg(
         value_min=("value", "min"),
         value_max=("value", "max"),
         sources=("source", lambda s: ";".join(sorted(set(s)))),
-        labels=("country", lambda s: ";".join(sorted({str(x).lower() for x in s}))),
-        # Nulls counted as their own value -- see the docstring on why nunique() would not do.
-        indicators=("indicator", lambda s: ";".join(sorted({
-            "" if pd.isna(x) else str(x) for x in s}))),
+        labels=("labels", lambda s: ";".join(sorted({l for x in s for l in x.split(";")}))),
+        indicators=("indicators", lambda s: ";".join(sorted({i for x in s for i in x}))),
     ).reset_index()
     agg = agg[agg.value_min > 0].copy()
     agg["ratio"] = agg.value_max / agg.value_min
